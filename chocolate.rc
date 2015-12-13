@@ -1,0 +1,60 @@
+#!/bin/sh
+
+# General
+FOREGROUND="#cc4c00"
+BACKGROUND="#2a0308"
+## WALLPAPER="/etc/wallpaper.jpg"
+
+# Greeter
+GREETFONT="-xos4-terminus-*-*-*-*-12-*-*-*-*-*-*-*"
+GREETFACE="DejaVuSans-8"
+
+GREETFOREGROUND="#cc4c00"
+
+
+# Login
+LOGINFONT="-xos4-terminus-medium-*-*-*-14-*-*-*-*-*-*-*"
+LOGINFACE="Sans-9"
+
+PROMPTFONT="-xos4-terminus-medium-*-*-*-14-*-*-*-*-*-*-*"
+PROMPTFACE="DejaVuSans-9"
+
+FAILFONT="-*-arial-*-i-*-*-*-*-*-*-*-*-*-*"
+FAILFACE="DejaVuSans-9:bold:italic"
+FAILTEXT="Access denied"
+FAILTIMEOUT="10"
+
+LOGINBACKGROUND="#2a0308"
+LOGINFOREGROUND="white"
+LOGINSHDCOLOR="#404040"
+LOGINHICOLOR="#737373"
+FAILFOREGROUND="yellow"
+
+# Chooser
+LABELFONT="-xos4-terminus-medium-*-*-*-14-*-*-*-*-*-*-*"
+LABELFACE="DejaVuSans-9"
+LISTFACE="DejaVuSans-9"
+CMDFACE="DejaVuSans-9"
+
+# Logo
+## LOGOFILENAME="/usr/share/xdm/pixmaps/xorg.xpm"
+LOGOPADDING="0"
+
+# Menu
+MENUFONT="-xos4-terminus-medium-*-*-*-14-*-*-*-*-*-*-*"
+MENUFACE="DejaVuSans-9"
+MENUGEOMETRY="$(( $WIDTH - 256 ))x32+0-0"
+
+# Clock
+CLOCKFACE="DejaVuSans-10"
+CLOCKFORMAT="%a %e %b %H:%M:%S"
+CLOCKUPDATE="1"
+CLOCKGEOMETRY="256x32-0-0"
+
+# Notification
+NOTIFYTIMEOUT="15"
+NOTIFYGEOMETRY="+24-64"
+
+# XFreq
+XFREQFOREGROUND="0x994c00"
+XFREQBACKGROUND=$BACKGROUND

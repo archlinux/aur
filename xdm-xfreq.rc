@@ -2,9 +2,12 @@
 
 read WIDTH HEIGHT <<< $(xdpyinfo | awk -F'[ x]+' '/dimensions:/{print $3, $4}')
 
+source /etc/xdm-xfreq/xdm-theme.rc
+
+
 # Keyboard NumLock ON
-# XDM_XFREQ_KEYB_LED_PATH=numlockx
-# XDM_XFREQ_KEYB_LED_ARGS=""
+XDM_XFREQ_KEYB_LED_PATH=numlockx
+XDM_XFREQ_KEYB_LED_ARGS=""
 
 # Screen settings
 XDM_XFREQ_SCREEN_SET_PATH=xset
@@ -12,20 +15,22 @@ XDM_XFREQ_SCREEN_SET_ARGS="dpms"
 
 # Background color
 XDM_XFREQ_BG_COLOR_PATH=xsetroot
-XDM_XFREQ_BG_COLOR_ARGS="-solid #2a0308"
+XDM_XFREQ_BG_COLOR_ARGS="-solid $BACKGROUND"
 
 # Background picture
-# XDM_XFREQ_BG_WALLPAPER_PATH=display
-# XDM_XFREQ_BG_WALLPAPER_ARGS="-backdrop -window root /etc/xdm-xfreq/wallpaper.jpg"
+if [[ -v WALLPAPER ]]; then
+	XDM_XFREQ_BG_WALLPAPER_PATH=display
+	XDM_XFREQ_BG_WALLPAPER_ARGS="-backdrop -window root $WALLPAPER"
+fi
 
 # Clock settings
 XDM_XFREQ_CLOCK_PATH=xclock
-XDM_XFREQ_CLOCK_ARGS="-geometry 256x32-0-0 -twentyfour"
+XDM_XFREQ_CLOCK_ARGS="-twentyfour -geometry $CLOCKGEOMETRY"
 XDM_XFREQ_CLOCK_PID="/var/run/xdm-xfreq-clock.pid"
 
 # Buttons and Notify settings
 XDM_XFREQ_BUTTONS_PATH=xmessage
-XDM_XFREQ_BUTTONS_ARGS="-geometry $(( $WIDTH - 256 ))x32+0-0"
+XDM_XFREQ_BUTTONS_ARGS="-geometry $MENUGEOMETRY"
 XDM_XFREQ_BUTTONS_PID="/var/run/xdm-xfreq-buttons.pid"
 XDM_XFREQ_BUTTONS_MENU="-buttons \:\):99,PowerOff:11,Halt:12,Reboot:13,Sleep:14,Rescue:15"
 XDM_XFREQ_BUTTONS_PWROFF="-buttons PowerOff?:11,Cancel?:12 -default Cancel? -timeout 6"
@@ -35,7 +40,7 @@ XDM_XFREQ_BUTTONS_RESCUE="-buttons Rescue?:11,Cancel?:12 -default Cancel? -timeo
 XDM_XFREQ_BUTTONS_SUBMENU="-buttons \<\<:99,Screenshot:11,ScreenSaver=5min:20,ScreenSaver=7min:21,ScreenSaver=10min:22,ScreenSaver=12min:23,ScreenSaver=15min:24,ScreenSaver=20min:25"
 
 XDM_XFREQ_NOTIFY_PATH=xmessage
-XDM_XFREQ_NOTIFY_ARGS="-geometry +24-64 -timeout 15 -buttons"
+XDM_XFREQ_NOTIFY_ARGS="-geometry $NOTIFYGEOMETRY -timeout $NOTIFYTIMEOUT -buttons"
 
 # Screenshot
 XDM_XFREQ_SCREENSHOT_PATH=scrot
@@ -51,7 +56,7 @@ XDM_XFREQ_SCREENSAVER[5]=1500
 
 # XFreq
 XDM_XFREQ_GUI_PATH=xfreq-gui
-XDM_XFREQ_GUI_ARGS="-D 0 -f 0x994c00 -l 1 -w 1 -n 1 -N 1 -I 0x1000 -U 0x21 -g 0:0x0+24-48,1:0x0-24+16,2:0x0+24+16,3:0x0+540+16,4:0x0-24-48,5:0x0+540-48"
+XDM_XFREQ_GUI_ARGS="-D 0 -f $XFREQFOREGROUND -b $XFREQBACKGROUND -l 1 -w 1 -n 1 -N 1 -I 0x1000 -U 0x21 -g 0:0x0+24-48,1:0x0-24+16,2:0x0+24+16,3:0x0+540+16,4:0x0-24-48,5:0x0+540-48"
 XDM_XFREQ_GUI_PID=/var/run/xdm-xfreq-gui.pid
 
 # PowerOff

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+source /etc/xdm-xfreq/xdm-xfreq.rc
+
 declare -i X=0
 case $# in
 3)
@@ -54,6 +56,65 @@ case $# in
 		echo "    <Key>Return: set-session-argument($A) finish-field()" >> /var/run/xdm-xfreq-xdesktops
 		echo "" >> /var/run/xdm-xfreq-xdesktops
 		echo $G >> /var/run/xdm-xfreq-xdesktops
+
+		echo "*Foreground:"$FOREGROUND >> /var/run/xdm-xfreq-xdesktops
+		echo "*Background:"$BACKGROUND >> /var/run/xdm-xfreq-xdesktops
+
+		echo "xlogin*greetFont:"$GREETFONT >> /var/run/xdm-xfreq-xdesktops
+		echo "xlogin*greetFace:"$GREETFACE >> /var/run/xdm-xfreq-xdesktops
+
+		echo "xlogin*font:"$LOGINFONT >> /var/run/xdm-xfreq-xdesktops
+		echo "xlogin*face:"$LOGINFACE >> /var/run/xdm-xfreq-xdesktops
+		echo "xlogin*promptFont:"$PROMPTFONT >> /var/run/xdm-xfreq-xdesktops
+		echo "xlogin.Login.promptFace:"$PROMPTFACE >> /var/run/xdm-xfreq-xdesktops
+		echo "xlogin*failFont:"$FAILFONT >> /var/run/xdm-xfreq-xdesktops
+		echo "xlogin.Login.failFace:"$FAILFACE >> /var/run/xdm-xfreq-xdesktops
+
+		echo "xlogin*greetColor:"$GREETFOREGROUND >> /var/run/xdm-xfreq-xdesktops
+		echo "xlogin*background:"$LOGINBACKGROUND >> /var/run/xdm-xfreq-xdesktops
+		echo "xlogin*foreground:"$LOGINFOREGROUND >> /var/run/xdm-xfreq-xdesktops
+		echo "xlogin*shdColor:"$LOGINSHDCOLOR >> /var/run/xdm-xfreq-xdesktops
+		echo "xlogin*hiColor:"$LOGINHICOLOR >> /var/run/xdm-xfreq-xdesktops
+		echo "xlogin*failColor:"$FAILFOREGROUND >> /var/run/xdm-xfreq-xdesktops
+
+		echo "xlogin*fail:"$FAILTEXT >> /var/run/xdm-xfreq-xdesktops
+		echo "xlogin.Login.failTimeout:"$FAILTIMEOUT >> /var/run/xdm-xfreq-xdesktops
+		echo "xlogin*sepWidth:0" >> /var/run/xdm-xfreq-xdesktops
+		echo "xlogin*borderWidth:1" >> /var/run/xdm-xfreq-xdesktops
+		echo "xlogin*frameWidth:1" >> /var/run/xdm-xfreq-xdesktops
+		echo "xlogin*innerFramesWidth:2" >> /var/run/xdm-xfreq-xdesktops
+		echo "xlogin*useShape:true" >> /var/run/xdm-xfreq-xdesktops
+
+		if [[ -v LOGOFILENAME ]]; then
+			echo "xlogin*logoFileName:"$LOGOFILENAME >> /var/run/xdm-xfreq-xdesktops
+		fi
+		echo "xlogin*logoPadding:"$LOGOPADDING >> /var/run/xdm-xfreq-xdesktops
+
+		echo "Chooser*label.font:"$LABELFONT >> /var/run/xdm-xfreq-xdesktops
+		echo "Chooser*label.face:"$LABELFACE >> /var/run/xdm-xfreq-xdesktops
+		echo "Chooser*list.face:"$LISTFACE >> /var/run/xdm-xfreq-xdesktops
+		echo "Chooser*Command.Face:"$CMDFACE >> /var/run/xdm-xfreq-xdesktops
+		echo "Chooser*allowShellResize:false" >> /var/run/xdm-xfreq-xdesktops
+		echo "Chooser*viewport.forceBars:false" >> /var/run/xdm-xfreq-xdesktops
+		echo "Chooser*label.label:XDMCP Host Menu from CLIENTHOST" >> /var/run/xdm-xfreq-xdesktops
+
+		echo "Xmessage*font:"$MENUFONT >> /var/run/xdm-xfreq-xdesktops
+		echo "Xmessage*Text.face:"$MENUFACE >> /var/run/xdm-xfreq-xdesktops
+		echo "Xmessage*message.scrollVertical:never" >> /var/run/xdm-xfreq-xdesktops
+		echo "Xmessage*message.scrollHorizontal:never" >> /var/run/xdm-xfreq-xdesktops
+		echo "Xmessage*borderWidth:0" >> /var/run/xdm-xfreq-xdesktops
+		echo "Xmessage*Text.borderWidth:0" >> /var/run/xdm-xfreq-xdesktops
+		echo "Xmessage*Command.highlightThickness:1" >> /var/run/xdm-xfreq-xdesktops
+		echo "Xmessage*Command.internalWidth:12" >> /var/run/xdm-xfreq-xdesktops
+		echo "Xmessage*Command.internalHeight:4" >> /var/run/xdm-xfreq-xdesktops
+		echo "Xmessage*Command.shapeStyle:rectangle" >> /var/run/xdm-xfreq-xdesktops
+
+		echo "XClock*face:"$CLOCKFACE >> /var/run/xdm-xfreq-xdesktops
+		echo "XClock*strftime:"$CLOCKFORMAT >> /var/run/xdm-xfreq-xdesktops
+		echo "XClock*update:"$CLOCKUPDATE >> /var/run/xdm-xfreq-xdesktops
+		echo "XClock*analog:false" >> /var/run/xdm-xfreq-xdesktops
+		echo "XClock*borderWidth:0" >> /var/run/xdm-xfreq-xdesktops
+
 		exit 0
 	else
 		echo "$(basename $0): cannot access $P: No such directory."
