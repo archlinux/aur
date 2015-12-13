@@ -5,7 +5,7 @@
 
 pkgname=hoichess
 pkgver=0.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Xboard compatible chess engine and xiangqi (Chinese chess) engine"
 arch=('i686' 'x86_64')
 license=('GPL2')
