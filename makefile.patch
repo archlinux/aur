@@ -1,0 +1,45 @@
+From fbea49705cbac8554d4cdc99ef04a1c9288e7033 Mon Sep 17 00:00:00 2001
+From: anthraxx <levente@leventepolyak.net>
+Date: Mon, 14 Dec 2015 23:43:29 +0100
+Subject: [PATCH] improve Makefile with adaptive and overridable variables
+
+---
+ Makefile | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 1581be4..92dbeaa 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,20 +1,22 @@
+ GTK_PIDGIN_INCLUDES= `pkg-config --cflags gtk+-2.0 pidgin`
+ 
+-CFLAGS= -O2 -Wall -fpic -g
+-LDFLAGS= -shared
++CC ?= gcc
++CFLAGS += -O2 -Wall -fpic
++LDFLAGS += -shared
++DESTDIR =
++PLUGINDIR = ~/.purple/plugins/
+ 
+ INCLUDES = \
+       $(GTK_PIDGIN_INCLUDES)
+ 
+ xmpp-receipts.so: xmpp-receipts.c
+-	gcc xmpp-receipts.c $(CFLAGS) $(INCLUDES) $(LDFLAGS) -o xmpp-receipts.so
++	$(CC) xmpp-receipts.c $(CFLAGS) $(INCLUDES) $(LDFLAGS) -o xmpp-receipts.so
+ 
+ install: xmpp-receipts.so
+-	mkdir -p ~/.purple/plugins
+-	cp xmpp-receipts.so ~/.purple/plugins/
++	install -Dm755 xmpp-receipts.so -t $(DESTDIR)$(PLUGINDIR)
+ 
+ uninstall:
+-	rm -f ~/.purple/plugins/xmpp-receipts.so
++	rm -f $(DESTDIR)$(PLUGINDIR)/xmpp-receipts.so
+ 
+ clean:
+ 	rm -f xmpp-receipts.so
+-- 
+2.6.4
+
