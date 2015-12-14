@@ -9,7 +9,7 @@
 _pack=octclip
 pkgname=octave-$_pack
 pkgver=1.0.8
-pkgrel=2
+pkgrel=3
 pkgdesc="This package allows to do boolean operations with polygons using the Greiner-Hormann algorithm."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
