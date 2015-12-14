@@ -1,3 +1,7 @@
+Subject: Fix NetPacket buffer size by adapting its member types
+Author: Fabian Greffrath <fabian+debian@greffrath.com>
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=762698
+
 --- network.h.orig	2015-12-13 02:08:25.346244000 +0100
 +++ network.h	2015-12-13 02:09:56.248672920 +0100
 @@ -51,11 +51,11 @@

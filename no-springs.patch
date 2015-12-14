@@ -1,3 +1,18 @@
+From 4a0a965547b52afc953d9bd11ab059f543551459 Mon Sep 17 00:00:00 2001
+From: Fabian Greffrath <fabian@greffrath.com>
+Date: Tue, 16 Sep 2014 19:02:37 +0200
+Subject: [PATCH] fix rabbit disappearing in upper left corner
+
+aka "undesired springs added above the screen"
+
+If the bunny jumps out of the screen, its
+y-coordinate becomes negative. Thus, the array that is checked for the
+position of the objects on the map overflows and returns some bogus,
+e.g. that there are springs whereas there aren't. This patch
+checks for the y-coordinate and caps it at zero.
+
+c.f. https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=370650
+
 --- main.c.orig	2015-12-12 14:28:44.122453000 +0100
 +++ main.c	2015-12-12 14:35:47.141659120 +0100
 @@ -1365,6 +1365,8 @@
