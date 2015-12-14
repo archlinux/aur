@@ -4,7 +4,7 @@
 pkgname=vdr-autostart
 pkgver=0.9.6
 _vdrapi=2.2.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Automatic start of other plug-ins on change or insertion of removable devices"
 url="http://www.uli-eckhardt.de/vdr/autostart.en.shtml"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -13,12 +13,12 @@ depends=('libcdio' 'libdbus' 'libdvdread' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
 backup=("var/lib/vdr/plugins/$_plugname/cd.mpg")
 source=("http://www.uli-eckhardt.de/vdr/download/${pkgname}-${pkgver}.tgz"
-        "autostart-improve_libcdio.diff::http://hg.uli-eckhardt.de/autostart/raw-rev/51e4428d565d"
+        "autostart-improve_libcdio.diff::https://git.uli-eckhardt.de/?p=vdr-plugin-autostart.git;a=patch;h=1a6154bed8db840eec09274dd1c47b6362efa2e0"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf"
         "var/lib/vdr/plugins/$_plugname/$_plugname.conf")
 md5sums=('7d833142939d21a3edae907f9fa0b55b'
-         '826139f5212b9ee465f2233ad084e137'
+         '44aec23d96b5895bcc54771295fe0273'
          'bfac43507495484a347bf5ab6c158651')
 
 prepare() {
