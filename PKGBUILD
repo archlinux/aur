@@ -10,7 +10,7 @@
 _pack=optiminterp
 pkgname=octave-$_pack
 pkgver=0.3.4
-pkgrel=2
+pkgrel=3
 pkgdesc="An optimal interpolation toolbox for octave. This package provides functions to perform a n-dimensional optimal interpolations of arbitrarily distributed data points."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
