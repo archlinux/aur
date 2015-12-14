@@ -1,7 +1,7 @@
 pkgbase = vdr-vdrboblight
 	pkgdesc = Boblight with data from softhddevice
 	pkgver = 0.0.6
-	pkgrel = 6
+	pkgrel = 7
 	url = http://projects.vdr-developer.org/projects/plg-boblight
 	arch = x86_64
 	arch = i686

@@ -4,7 +4,7 @@
 pkgname=vdr-vdrboblight
 pkgver=0.0.6
 _vdrapi=2.2.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Boblight with data from softhddevice"
 url="http://projects.vdr-developer.org/projects/plg-boblight"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
