@@ -3,7 +3,7 @@
 
 pkgname=openframeworks
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="openFrameworks is an open source C++ toolkit for creative coding."
 url="http://openframeworks.cc/"
 arch=('x86_64' 'i686')
@@ -17,7 +17,7 @@ options=(!strip)
 install=openframeworks.install
 
 [[ "$CARCH" == "i686" ]] && _arch="linux" || _arch="linux64"
-_name=of_v${pkgver}_${_arch}_release
+_name="of_v${pkgver}_${_arch}_release"
 
 source=("http://www.openframeworks.cc/versions/v${pkgver}/${_name}.tar.gz" "of-make-workspace")
 
@@ -25,14 +25,37 @@ source=("http://www.openframeworks.cc/versions/v${pkgver}/${_name}.tar.gz" "of-m
 
 md5sums+=("594d0a3c82e0451f7b7fb353e3b658c6")
 
-build() {
-	cd ${srcdir}/$_name/scripts/linux/
+prepare() {
+	export OF_ROOT=${srcdir}/${_name}
+	export LC_ALL=C
 
-	msg2 "Building openFrameworks..."
-	./compileOF.sh > /dev/null
+	ARCH=$(uname -m)
+
+	if [ "$ARCH" = "x86_64" ]; then
+		LIBSPATH=linux64
+	else
+		LIBSPATH=linux
+	fi
+
+	JOBS=1
+}
+
+build() {
+	cd ${srcdir}/${_name}
+
+	cd libs/openFrameworksCompiled/project
+
+	msg2 "Building openFrameworks Debug version"
+	make -j$JOBS Debug
+
+	msg2 "Building openFrameworks Release version"
+	make -j$JOBS Release
+
+	cd ${srcdir}/${_name}
 
 	msg2 "Building the OF Project Generator..."
-	./compilePG.sh > /dev/null
+	cd libs/openFrameworksCompiled/project
+	make -j$JOBS Release
 }
 
 package() {
