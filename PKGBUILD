@@ -3,7 +3,7 @@
 
 pkgname=cutecom-patched
 pkgver=0.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cutecom graphical serial terminal, with some improvements taken from patches not officially commited"
 arch=('i686' 'x86_64')
 url="http://cutecom.sourceforge.net"
@@ -12,14 +12,17 @@ depends=('qt4' 'lrzsz')
 makedepends=('cmake')
 conflicts=('cutecom')
 source=("${url}/cutecom-${pkgver}.tar.gz"
-        'improvements.diff')
+        '00-improvements.diff'
+        '01-add-ctrl_c-button.diff')
 
 md5sums=('dd85ceecf5a60b4d9e4b21a338920561'
-         'd5707a9f872571d1d27f2bdffa8e8e20')
+         'd5707a9f872571d1d27f2bdffa8e8e20'
+         'b86a2e1326c62fd1cb1d02fef13afaaf')
 
 prepare(){
 	cd ${srcdir}/cutecom-${pkgver}
-	patch -p1 -i ../improvements.diff
+	patch -p1 -i ../00-improvements.diff
+	patch -p1 -i ../01-add-ctrl_c-button.diff
 }
          
 build() {
