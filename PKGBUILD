@@ -1,7 +1,7 @@
 # Maintainer: Javier Torres <javitonino [at] gmail [dot] com>
 
 pkgname=python2-kolabformat
-pkgver=1.1.0
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='Python bindings for Kolab XML Format Schema Definitions Library'
 url='http://www.kolab.org'
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('libkolabxml')
 makedepends=('cmake' 'boost' 'xsd' 'qt4' 'swig')
 source=("http://mirror.kolabsys.com/pub/releases/libkolabxml-${pkgver}.tar.gz")
-sha256sums=('5743bc7cbee168932faeddefcea00eadddbc6eca90f39e76ca77f9a2ac53d462')
+sha256sums=('1de632572da1421c0e4b580cba763932bc943d457743abc7fb836e6200861fac')
 
 prepare() {
     mkdir build
