@@ -13,7 +13,7 @@ source=(https://github.com/catkin/${_pkgname}/archive/${pkgver}.tar.gz)
 
 package() {
   cd "$srcdir/${_pkgname}-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:
