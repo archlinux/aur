@@ -1,5 +1,5 @@
 #
-AutoRaise               { "TWM Icon Manager" "Clock" "PopUp" "Terminal" "XFreq-Gui" }
+AutoRaise               { "TWM Icon Manager" "Clock" "PopUp" "XFreq-Gui" }
 BorderWidth		4
 ButtonIndent		2
 # ClientBorderWidth

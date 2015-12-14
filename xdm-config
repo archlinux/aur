@@ -2,9 +2,9 @@ DisplayManager.authDir:		/var/lib/xdm
 DisplayManager.errorLogFile:	/var/log/xdm.log
 DisplayManager.pidFile:		/var/run/xdm.pid
 DisplayManager.keyFile:		/etc/X11/xdm/xdm-keys
-DisplayManager.servers:		:0 local /usr/bin/X :0 vt11
+DisplayManager.servers:		/etc/X11/xdm/Xservers
 DisplayManager.accessFile:	/etc/X11/xdm/Xaccess
-DisplayManager*resources:	/var/run/xdm-xfreq-xdesktops
+DisplayManager*resources:	/var/run/xdm-xfreq.Xresources
 DisplayManager.willing:		su nobody -s /bin/sh -c /etc/X11/xdm/Xwilling
 DisplayManager*authorize:	true
 

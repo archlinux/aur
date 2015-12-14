@@ -16,6 +16,11 @@ case $# in
 		echo "Usage: $(basename $0) XSessionDir [DesktopNum] [AbortKey]"
 		exit 0
 	elif [ -d $P ]; then
+
+		if [[ -v XSESSION_LAST_NUM ]]; then
+			X=$XSESSION_LAST_NUM
+		fi
+
 		declare G
 		declare -i I=1
 		if (( $X == $I )); then
@@ -23,8 +28,8 @@ case $# in
 		else
 			G="xlogin*greeting: [F1] XSession\\040\\040\\040"
 		fi
-		echo "xlogin*login.translations: #override \\" > /var/run/xdm-xfreq-xdesktops
-		echo "    <Key>F1: set-session-argument() finish-field()\n\\" >> /var/run/xdm-xfreq-xdesktops
+		echo "xlogin*login.translations: #override \\" > /var/run/xdm-xfreq.Xresources
+		echo "    <Key>F1: set-session-argument() finish-field()\n\\" >> /var/run/xdm-xfreq.Xresources
 
 		declare D A
 		for D in $P/*.desktop
@@ -38,82 +43,82 @@ case $# in
 			else
 				G=$G"[F$I] ${N}\\040\\040\\040"
 			fi
-			echo "    <Key>F${I}: set-session-argument(${R}) finish-field()\n\\" >> /var/run/xdm-xfreq-xdesktops
+			echo "    <Key>F${I}: set-session-argument(${R}) finish-field()\n\\" >> /var/run/xdm-xfreq.Xresources
 		done
 		if [[ -v K && $K == "AbortKey" ]]; then
-			echo "    Ctrl<Key>R: abort-display()\n\\" >> /var/run/xdm-xfreq-xdesktops
-			echo "    Ctrl<Key>S: abort-session()\n\\" >> /var/run/xdm-xfreq-xdesktops
-			echo "    Ctrl<Key>C: restart-session()\n\\" >> /var/run/xdm-xfreq-xdesktops
+			echo "    Ctrl<Key>R: abort-display()\n\\" >> /var/run/xdm-xfreq.Xresources
+			echo "    Ctrl<Key>S: abort-session()\n\\" >> /var/run/xdm-xfreq.Xresources
+			echo "    Ctrl<Key>C: restart-session()\n\\" >> /var/run/xdm-xfreq.Xresources
 		fi
-		echo "    <Key>Delete: delete-character()\n\\" >> /var/run/xdm-xfreq-xdesktops
-		echo "    <Key>Left: move-backward-character()\n\\" >> /var/run/xdm-xfreq-xdesktops
-		echo "    <Key>Right: move-forward-character()\n\\" >> /var/run/xdm-xfreq-xdesktops
-		echo "    <Key>Home: move-to-begining()\n\\" >> /var/run/xdm-xfreq-xdesktops
-		echo "    <Key>End: move-to-end()\n\\" >> /var/run/xdm-xfreq-xdesktops
-		echo "    Ctrl<Key>KP_Enter: set-session-argument(failsafe) finish-field()\n\\" >> /var/run/xdm-xfreq-xdesktops
-		echo "    <Key>KP_Enter: set-session-argument($A) finish-field()\n\\" >> /var/run/xdm-xfreq-xdesktops
-		echo "    Ctrl<Key>Return: set-session-argument(failsafe) finish-field()\n\\" >> /var/run/xdm-xfreq-xdesktops
-		echo "    <Key>Return: set-session-argument($A) finish-field()" >> /var/run/xdm-xfreq-xdesktops
-		echo "" >> /var/run/xdm-xfreq-xdesktops
-		echo $G >> /var/run/xdm-xfreq-xdesktops
+		echo "    <Key>Delete: delete-character()\n\\" >> /var/run/xdm-xfreq.Xresources
+		echo "    <Key>Left: move-backward-character()\n\\" >> /var/run/xdm-xfreq.Xresources
+		echo "    <Key>Right: move-forward-character()\n\\" >> /var/run/xdm-xfreq.Xresources
+		echo "    <Key>Home: move-to-begining()\n\\" >> /var/run/xdm-xfreq.Xresources
+		echo "    <Key>End: move-to-end()\n\\" >> /var/run/xdm-xfreq.Xresources
+		echo "    Ctrl<Key>KP_Enter: set-session-argument(failsafe) finish-field()\n\\" >> /var/run/xdm-xfreq.Xresources
+		echo "    <Key>KP_Enter: set-session-argument($A) finish-field()\n\\" >> /var/run/xdm-xfreq.Xresources
+		echo "    Ctrl<Key>Return: set-session-argument(failsafe) finish-field()\n\\" >> /var/run/xdm-xfreq.Xresources
+		echo "    <Key>Return: set-session-argument($A) finish-field()" >> /var/run/xdm-xfreq.Xresources
+		echo "" >> /var/run/xdm-xfreq.Xresources
+		echo $G >> /var/run/xdm-xfreq.Xresources
 
-		echo "*Foreground:"$FOREGROUND >> /var/run/xdm-xfreq-xdesktops
-		echo "*Background:"$BACKGROUND >> /var/run/xdm-xfreq-xdesktops
+		echo "*Foreground:"$FOREGROUND >> /var/run/xdm-xfreq.Xresources
+		echo "*Background:"$BACKGROUND >> /var/run/xdm-xfreq.Xresources
 
-		echo "xlogin*greetFont:"$GREETFONT >> /var/run/xdm-xfreq-xdesktops
-		echo "xlogin*greetFace:"$GREETFACE >> /var/run/xdm-xfreq-xdesktops
+		echo "xlogin*greetFont:"$GREETFONT >> /var/run/xdm-xfreq.Xresources
+		echo "xlogin*greetFace:"$GREETFACE >> /var/run/xdm-xfreq.Xresources
 
-		echo "xlogin*font:"$LOGINFONT >> /var/run/xdm-xfreq-xdesktops
-		echo "xlogin*face:"$LOGINFACE >> /var/run/xdm-xfreq-xdesktops
-		echo "xlogin*promptFont:"$PROMPTFONT >> /var/run/xdm-xfreq-xdesktops
-		echo "xlogin.Login.promptFace:"$PROMPTFACE >> /var/run/xdm-xfreq-xdesktops
-		echo "xlogin*failFont:"$FAILFONT >> /var/run/xdm-xfreq-xdesktops
-		echo "xlogin.Login.failFace:"$FAILFACE >> /var/run/xdm-xfreq-xdesktops
+		echo "xlogin*font:"$LOGINFONT >> /var/run/xdm-xfreq.Xresources
+		echo "xlogin*face:"$LOGINFACE >> /var/run/xdm-xfreq.Xresources
+		echo "xlogin*promptFont:"$PROMPTFONT >> /var/run/xdm-xfreq.Xresources
+		echo "xlogin.Login.promptFace:"$PROMPTFACE >> /var/run/xdm-xfreq.Xresources
+		echo "xlogin*failFont:"$FAILFONT >> /var/run/xdm-xfreq.Xresources
+		echo "xlogin.Login.failFace:"$FAILFACE >> /var/run/xdm-xfreq.Xresources
 
-		echo "xlogin*greetColor:"$GREETFOREGROUND >> /var/run/xdm-xfreq-xdesktops
-		echo "xlogin*background:"$LOGINBACKGROUND >> /var/run/xdm-xfreq-xdesktops
-		echo "xlogin*foreground:"$LOGINFOREGROUND >> /var/run/xdm-xfreq-xdesktops
-		echo "xlogin*shdColor:"$LOGINSHDCOLOR >> /var/run/xdm-xfreq-xdesktops
-		echo "xlogin*hiColor:"$LOGINHICOLOR >> /var/run/xdm-xfreq-xdesktops
-		echo "xlogin*failColor:"$FAILFOREGROUND >> /var/run/xdm-xfreq-xdesktops
+		echo "xlogin*greetColor:"$GREETFOREGROUND >> /var/run/xdm-xfreq.Xresources
+		echo "xlogin*background:"$LOGINBACKGROUND >> /var/run/xdm-xfreq.Xresources
+		echo "xlogin*foreground:"$LOGINFOREGROUND >> /var/run/xdm-xfreq.Xresources
+		echo "xlogin*shdColor:"$LOGINSHDCOLOR >> /var/run/xdm-xfreq.Xresources
+		echo "xlogin*hiColor:"$LOGINHICOLOR >> /var/run/xdm-xfreq.Xresources
+		echo "xlogin*failColor:"$FAILFOREGROUND >> /var/run/xdm-xfreq.Xresources
 
-		echo "xlogin*fail:"$FAILTEXT >> /var/run/xdm-xfreq-xdesktops
-		echo "xlogin.Login.failTimeout:"$FAILTIMEOUT >> /var/run/xdm-xfreq-xdesktops
-		echo "xlogin*sepWidth:0" >> /var/run/xdm-xfreq-xdesktops
-		echo "xlogin*borderWidth:1" >> /var/run/xdm-xfreq-xdesktops
-		echo "xlogin*frameWidth:1" >> /var/run/xdm-xfreq-xdesktops
-		echo "xlogin*innerFramesWidth:2" >> /var/run/xdm-xfreq-xdesktops
-		echo "xlogin*useShape:true" >> /var/run/xdm-xfreq-xdesktops
+		echo "xlogin*fail:"$FAILTEXT >> /var/run/xdm-xfreq.Xresources
+		echo "xlogin.Login.failTimeout:"$FAILTIMEOUT >> /var/run/xdm-xfreq.Xresources
+		echo "xlogin*sepWidth:0" >> /var/run/xdm-xfreq.Xresources
+		echo "xlogin*borderWidth:1" >> /var/run/xdm-xfreq.Xresources
+		echo "xlogin*frameWidth:1" >> /var/run/xdm-xfreq.Xresources
+		echo "xlogin*innerFramesWidth:2" >> /var/run/xdm-xfreq.Xresources
+		echo "xlogin*useShape:true" >> /var/run/xdm-xfreq.Xresources
 
-		if [[ -v LOGOFILENAME ]]; then
-			echo "xlogin*logoFileName:"$LOGOFILENAME >> /var/run/xdm-xfreq-xdesktops
+		if [[ -v LOGOFILENAME && -e $LOGOFILENAME ]]; then
+			echo "xlogin*logoFileName:"$LOGOFILENAME >> /var/run/xdm-xfreq.Xresources
 		fi
-		echo "xlogin*logoPadding:"$LOGOPADDING >> /var/run/xdm-xfreq-xdesktops
+		echo "xlogin*logoPadding:"$LOGOPADDING >> /var/run/xdm-xfreq.Xresources
 
-		echo "Chooser*label.font:"$LABELFONT >> /var/run/xdm-xfreq-xdesktops
-		echo "Chooser*label.face:"$LABELFACE >> /var/run/xdm-xfreq-xdesktops
-		echo "Chooser*list.face:"$LISTFACE >> /var/run/xdm-xfreq-xdesktops
-		echo "Chooser*Command.Face:"$CMDFACE >> /var/run/xdm-xfreq-xdesktops
-		echo "Chooser*allowShellResize:false" >> /var/run/xdm-xfreq-xdesktops
-		echo "Chooser*viewport.forceBars:false" >> /var/run/xdm-xfreq-xdesktops
-		echo "Chooser*label.label:XDMCP Host Menu from CLIENTHOST" >> /var/run/xdm-xfreq-xdesktops
+		echo "Chooser*label.font:"$LABELFONT >> /var/run/xdm-xfreq.Xresources
+		echo "Chooser*label.face:"$LABELFACE >> /var/run/xdm-xfreq.Xresources
+		echo "Chooser*list.face:"$LISTFACE >> /var/run/xdm-xfreq.Xresources
+		echo "Chooser*Command.Face:"$CMDFACE >> /var/run/xdm-xfreq.Xresources
+		echo "Chooser*allowShellResize:false" >> /var/run/xdm-xfreq.Xresources
+		echo "Chooser*viewport.forceBars:false" >> /var/run/xdm-xfreq.Xresources
+		echo "Chooser*label.label:XDMCP Host Menu from CLIENTHOST" >> /var/run/xdm-xfreq.Xresources
 
-		echo "Xmessage*font:"$MENUFONT >> /var/run/xdm-xfreq-xdesktops
-		echo "Xmessage*Text.face:"$MENUFACE >> /var/run/xdm-xfreq-xdesktops
-		echo "Xmessage*message.scrollVertical:never" >> /var/run/xdm-xfreq-xdesktops
-		echo "Xmessage*message.scrollHorizontal:never" >> /var/run/xdm-xfreq-xdesktops
-		echo "Xmessage*borderWidth:0" >> /var/run/xdm-xfreq-xdesktops
-		echo "Xmessage*Text.borderWidth:0" >> /var/run/xdm-xfreq-xdesktops
-		echo "Xmessage*Command.highlightThickness:1" >> /var/run/xdm-xfreq-xdesktops
-		echo "Xmessage*Command.internalWidth:12" >> /var/run/xdm-xfreq-xdesktops
-		echo "Xmessage*Command.internalHeight:4" >> /var/run/xdm-xfreq-xdesktops
-		echo "Xmessage*Command.shapeStyle:rectangle" >> /var/run/xdm-xfreq-xdesktops
+		echo "Xmessage*font:"$MENUFONT >> /var/run/xdm-xfreq.Xresources
+		echo "Xmessage*Text.face:"$MENUFACE >> /var/run/xdm-xfreq.Xresources
+		echo "Xmessage*message.scrollVertical:never" >> /var/run/xdm-xfreq.Xresources
+		echo "Xmessage*message.scrollHorizontal:never" >> /var/run/xdm-xfreq.Xresources
+		echo "Xmessage*borderWidth:0" >> /var/run/xdm-xfreq.Xresources
+		echo "Xmessage*Text.borderWidth:0" >> /var/run/xdm-xfreq.Xresources
+		echo "Xmessage*Command.highlightThickness:1" >> /var/run/xdm-xfreq.Xresources
+		echo "Xmessage*Command.internalWidth:12" >> /var/run/xdm-xfreq.Xresources
+		echo "Xmessage*Command.internalHeight:4" >> /var/run/xdm-xfreq.Xresources
+		echo "Xmessage*Command.shapeStyle:rectangle" >> /var/run/xdm-xfreq.Xresources
 
-		echo "XClock*face:"$CLOCKFACE >> /var/run/xdm-xfreq-xdesktops
-		echo "XClock*strftime:"$CLOCKFORMAT >> /var/run/xdm-xfreq-xdesktops
-		echo "XClock*update:"$CLOCKUPDATE >> /var/run/xdm-xfreq-xdesktops
-		echo "XClock*analog:false" >> /var/run/xdm-xfreq-xdesktops
-		echo "XClock*borderWidth:0" >> /var/run/xdm-xfreq-xdesktops
+		echo "XClock*face:"$CLOCKFACE >> /var/run/xdm-xfreq.Xresources
+		echo "XClock*strftime:"$CLOCKFORMAT >> /var/run/xdm-xfreq.Xresources
+		echo "XClock*update:"$CLOCKUPDATE >> /var/run/xdm-xfreq.Xresources
+		echo "XClock*analog:false" >> /var/run/xdm-xfreq.Xresources
+		echo "XClock*borderWidth:0" >> /var/run/xdm-xfreq.Xresources
 
 		exit 0
 	else

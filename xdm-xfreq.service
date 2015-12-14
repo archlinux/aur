@@ -4,8 +4,8 @@ After=systemd-user-sessions.service
 
 [Service]
 ExecStartPre=/usr/lib/systemd/scripts/xdm-xfreq-xdesktops /usr/share/xsessions 1
-ExecStart=/usr/bin/xdm -nodaemon -config /etc/xdm-xfreq/xdm-config
-ExecStopPost=/usr/bin/rm -f /var/run/xdm-xfreq-buttons.pid /var/run/xdm-xfreq-clock.pid /var/run/xdm-xfreq-gui.pid /var/run/xdm-xfreq-xdesktops
+ExecStart=/usr/bin/xdm -nodaemon -config /etc/X11/xdm/xdm-xfreq/xdm-config
+ExecStopPost=/usr/bin/rm -f /var/run/xdm-xfreq-buttons.pid /var/run/xdm-xfreq-clock.pid /var/run/xdm-xfreq-gui.pid /var/run/xdm-xfreq.Xresources
 
 [Install]
 Alias=display-manager.service
