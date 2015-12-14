@@ -1,6 +1,6 @@
 pkgname=wp-cli
 pkgver=0.21.1
-pkgrel=2
+pkgrel=1
 pkgdesc="A command-line tool for managing WordPress"
 url="http://wp-cli.org/"
 arch=('any')
