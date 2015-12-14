@@ -4,7 +4,7 @@
 
 pkgname=logkeys
 pkgver=0.1.1a
-pkgrel=12
+pkgrel=13
 pkgdesc="Simple keylogger supporting also USB keyboards."
 license=('GPLv3')
 arch=('i686' 'x86_64')
