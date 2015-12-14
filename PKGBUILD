@@ -9,7 +9,7 @@
 _pack=octproj
 pkgname=octave-$_pack
 pkgver=1.1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="This package allows to call functions of PROJ.4 library for cartographic projections transformations."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
