@@ -4,7 +4,7 @@
 pkgname=vdr-svdrposd
 pkgver=1.0.0
 _vdrapi=2.2.0
-pkgrel=14
+pkgrel=15
 pkgdesc="Make contents of OSD menu available via SVDRP"
 url="http://vdr.schmirler.de/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
