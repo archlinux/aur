@@ -11,10 +11,10 @@
 # Contributor: djnm <nmihalich [at} gmail dott com>
 
 pkgname=dwarffortress-spacefox
-pkgver=0.42.02
-_dfver=42_02
-_sfver=42.02
-_ufver=0.42.02
+pkgver=0.42.03
+_dfver=42_03
+_sfver=42.03
+_ufver=0.42.03
 pkgrel=1
 pkgdesc="A single-player fantasy game. You control a dwarven outpost or an adventurer in a randomly generated persistent world. Packed with Spacefox's tileset and graphics pack.  Does not replace other dwarffortress packages."
 arch=(i686 x86_64)
@@ -40,17 +40,17 @@ backup=('opt/df_linux-sf/data/init/colors.txt'
         'opt/df_linux-sf/data/init/d_init.txt'
         'opt/df_linux-sf/data/init/interface.txt')
 
-source=("df.tar.bz2::http://www.bay12games.com/dwarves/df_${_dfver}_linux.tar.bz2"
-        "spacefox.zip::https://github.com/fricy/Spacefox/archive/${_sfver}.zip"
-        "unfuck.zip::https://github.com/svenstaro/dwarf_fortress_unfuck/archive/${_ufver}.zip"
+source=("df_${_dfver}.tar.bz2::http://www.bay12games.com/dwarves/df_${_dfver}_linux.tar.bz2"
+        "spacefox_${_sfver}.zip::https://github.com/fricy/Spacefox/archive/${_sfver}.zip"
+        "unfuck_${_ufver}.zip::https://github.com/svenstaro/dwarf_fortress_unfuck/archive/${_ufver}.zip"
         "dwarffortress-sf"
         "dwarffortress-sf.desktop"
         "dwarffortress-sf.png"
         "LICENSE-sf")
 
-md5sums=('802aaf29810be2fb78120a1171dfbc6d'
-         '1f58b274ffd835dad352e5cdfe0ebd06'
-         'a9b8667d6c3f376f83768f420ef5a058'
+md5sums=('e586cbb4eacb16945458ad7a2f436769'
+         '540ff826ce6951121f7e6c7e5f8f972b'
+         '27c7531422ebe9712e5fdcdbe3ba0390'
          '53c9d5bfcb35281c81b78fea23da0698'
          '60de2d654998220f426bbe41f2e57471'
          'b1d51f82400073af9bb179e34a9209d0'
@@ -71,7 +71,7 @@ build() {
 package() {
   cd $srcdir/df_linux
   install -dm755 $pkgdir/opt/
-  install -dm775 -o root -g games $pkgdir/opt/${_installname}
+  install -dm755 -o root -g games $pkgdir/opt/${_installname}
 
   # cp df
   cp -r $srcdir/df_linux/* $pkgdir/opt/${_installname}/
@@ -87,6 +87,8 @@ package() {
   # permissions
   find $pkgdir/opt/${_installname} -type d -exec chmod 755 {} +
   find $pkgdir/opt/${_installname} -type f -exec chmod 644 {} +
+  chmod 755 $pkgdir/opt/${_installname}/libs/Dwarf_Fortress
+  chmod 664 $pkgdir/opt/${_installname}/data/index
   chown -R root:games $pkgdir/opt/${_installname}
 
   install -d -m775 -o root -g games $pkgdir/opt/${_installname}/data/save
