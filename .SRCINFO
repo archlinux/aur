@@ -1,7 +1,7 @@
 pkgbase = vdr-xvdr
 	pkgdesc = VDR plugin to handle XBMC clients
 	pkgver = 0.9.9_64_gb300fc3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pipelka/vdr-plugin-xvdr
 	arch = x86_64
 	arch = i686
