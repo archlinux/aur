@@ -4,7 +4,7 @@
 pkgname=vdr-radio
 pkgver=1.0.0
 _vdrapi=2.2.0
-pkgrel=16
+pkgrel=17
 pkgdesc="Display an background image while the vdr is switched to radio channels"
 url="http://www.egal-vdr.de/plugins/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
