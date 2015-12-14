@@ -4,7 +4,7 @@
 pkgname=vdr-satip
 pkgver=2.2.3
 _vdrapi=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrates SAT>IP network devices seamlessly into VDR"
 url="http://www.saunalahti.fi/rahrenbe/vdr/satip/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')

@@ -1,7 +1,7 @@
 pkgbase = vdr-satip
 	pkgdesc = Integrates SAT>IP network devices seamlessly into VDR
 	pkgver = 2.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.saunalahti.fi/rahrenbe/vdr/satip/
 	arch = x86_64
 	arch = i686
