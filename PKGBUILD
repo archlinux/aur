@@ -2,8 +2,8 @@
 # No namcap warnings or errors
 
 pkgname=infiniband-diags
-pkgver=1.6.5
-pkgrel=2
+pkgver=1.6.6
+pkgrel=1
 pkgdesc='OpenFabrics Alliance diagnostic programs and scripts for InfiniBand subnets'
 arch=('x86_64' 'i686')
 url=('https://www.openfabrics.org/index.php/overview.html')
@@ -11,7 +11,7 @@ license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('libibmad' 'opensm' 'systemd' 'glib2')
 source=("https://www.openfabrics.org/downloads/management/${pkgname}-${pkgver}.tar.gz"
         'rdma-ndd.service')
-md5sums=('2a587bda5fc8287643c83363e4b6ec21'
+md5sums=('b855ca3b98afefc2ad6a2de378ab71dd'
          '4958d94ab0760c4b5b1908d66895e118')
 
 build() {
