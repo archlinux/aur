@@ -3,7 +3,7 @@
 # Contributor: [Vitaliy Berdinskikh](mailto:ur6lad@archlinux.org.ua) aka UR6LAD
 
 pkgname=mysql-jdbc
-pkgver=5.1.36
+pkgver=5.1.38
 _fullname=mysql-connector-java-${pkgver}
 pkgrel=1
 pkgdesc='The official JDBC driver for MySQL'
@@ -14,7 +14,7 @@ depends=('java-runtime')
 install=mysql-jdbc.install
 validpgpkeys=('A4A9406876FCBD3C456770C88C718D3B5072E1F5')
 source=("https://cdn.mysql.com/Downloads/Connector-J/${_fullname}.tar.gz"{,.asc})
-md5sums=('9a06f655da5d533a3c1b2565b76306c7'
+md5sums=('8f8e768a91338328f2ac5cd6b6683c88'
          'SKIP')
 
 package() {
