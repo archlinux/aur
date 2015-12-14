@@ -2,7 +2,7 @@
 _gitname=idle_master_py
 pkgname=steam-idle-master-git
 epoch=1
-pkgver=r3.8b2015e
+pkgver=r14.d14fd81
 pkgrel=1
 pkgdesc="Get your Steam Trading Cards the Easy Way"
 arch=(any)
