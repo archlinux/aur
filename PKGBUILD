@@ -55,12 +55,12 @@ package_drush-extensions() {
   )
 
   declare -A _pkgver=(
-    ['drush-aegir-up']=2.0-rc3
-    ['drush-drupal-up']=1.0-beta3
+    ['drush-aegir-up']=2.0_rc3
+    ['drush-drupal-up']=1.0_beta3
     ['drush-hosts']=1.1
     ['drush-registry-rebuild']=2.3
-    ['drush-vagrant']=2.0-rc4
-    ['drush-entity']=5.0-alpha2
+    ['drush-vagrant']=2.0_rc4
+    ['drush-entity']=5.0_alpha2
     ['drush-buildmanager']=20140613.115
     ['drush-subtree']=20141007.131
   )
@@ -111,7 +111,7 @@ package_drush-extensions() {
 
   pkgname=$1
   _pkgname="${_pkgname[$pkgname]}"
-  pkgver="7.x-${_pkgver[$pkgname]//-/_}"
+  pkgver="7.x_${_pkgver[$pkgname]//-/_}"
   pkgdesc="${_pkgdesc[$pkgname]}"
   url="${_url[$pkgname]}"
   read -a depends <<< "${depends[*]} ${_depends[$pkgname]}"

@@ -12,12 +12,12 @@ pkgbase = drush-extensions
 	makedepends = git
 	depends = drush
 	source = install
-	source = http://ftp.drupal.org/files/projects/aegir-up-7.x-2.0-rc3.tar.gz
-	source = http://ftp.drupal.org/files/projects/drupal-up-7.x-1.0-beta3.tar.gz
-	source = http://ftp.drupal.org/files/projects/drush-hosts-7.x-1.1.tar.gz
-	source = http://ftp.drupal.org/files/projects/registry_rebuild-7.x-2.3.tar.gz
-	source = http://ftp.drupal.org/files/projects/drush-vagrant-7.x-2.0-rc4.tar.gz
-	source = http://ftp.drupal.org/files/projects/drush_entity-7.x-5.0-alpha2.tar.gz
+	source = http://ftp.drupal.org/files/projects/aegir-up-7.x_2.0-rc3.tar.gz
+	source = http://ftp.drupal.org/files/projects/drupal-up-7.x_1.0-beta3.tar.gz
+	source = http://ftp.drupal.org/files/projects/drush-hosts-7.x_1.1.tar.gz
+	source = http://ftp.drupal.org/files/projects/registry_rebuild-7.x_2.3.tar.gz
+	source = http://ftp.drupal.org/files/projects/drush-vagrant-7.x_2.0-rc4.tar.gz
+	source = http://ftp.drupal.org/files/projects/drush_entity-7.x_5.0-alpha2.tar.gz
 	source = buildmanager::git+https://github.com/WhiteHouse/buildmanager.git
 	source = drushsubtree::git+https://github.com/WhiteHouse/drushsubtree.git
 	md5sums = f68c7407446bc4dfe95fbe1741928a15
@@ -31,31 +31,31 @@ pkgbase = drush-extensions
 	md5sums = SKIP
 
 pkgname = drush-aegir-up
-	pkgver = 7.x-2.0-rc3
+	pkgver = 7.x_2.0_rc3
 	pkgdesc = Blueprint provider for Drush Vagrant to build a local Aegir VMs
 	url = https://www.drupal.org/project/aegir_up
 	depends = drush-vagrant
 
 pkgname = drush-drupal-up
-	pkgver = 7.x-1.0-beta3
+	pkgver = 7.x_1.0_beta3
 	pkgdesc = Blueprint provider for Drush Vagrant to build local Drupal VMs
 	url = https://www.drupal.org/project/drupal_up
 	depends = drush-vagrant
 
 pkgname = drush-hosts
-	pkgver = 7.x-1.1
+	pkgver = 7.x_1.1
 	pkgdesc = Simple commands for managing entries in /etc/hosts
 	url = https://www.drupal.org/project/drush_hosts
 	depends = drush
 
 pkgname = drush-registry-rebuild
-	pkgver = 7.x-2.3
+	pkgver = 7.x_2.3
 	pkgdesc = Simple command for rebuilding a Drupal site system registry
 	url = https://www.drupal.org/project/registry_rebuild
 	depends = drush
 
 pkgname = drush-vagrant
-	pkgver = 7.x-2.0-rc4
+	pkgver = 7.x_2.0_rc4
 	pkgdesc = Vagrant templating framework to use Vagrant blueprints to build and test projects like Drupal and Puppet modules
 	url = https://www.drupal.org/project/drush-vagrant
 	depends = drush-hosts
@@ -64,19 +64,19 @@ pkgname = drush-vagrant
 	optdepends = nfs-utils: NFS support
 
 pkgname = drush-entity
-	pkgver = 7.x-5.0-alpha2
+	pkgver = 7.x_5.0_alpha2
 	pkgdesc = Query and manipulate entities directly.
 	url = https://www.drupal.org/project/drush-entity
 	depends = drush
 
 pkgname = drush-buildmanager
-	pkgver = 7.x-20140613.115
+	pkgver = 7.x_20140613.115
 	pkgdesc = Drush Make wrapper to simplify maintaining Drupal builds.
 	url = https://github.com/whitehouse/buildmanager
 	depends = drush
 
 pkgname = drush-subtree
-	pkgver = 7.x-20141007.131
+	pkgver = 7.x_20141007.131
 	pkgdesc = Integrate git-subtree with Drush Make for automated and efficient Drupal builds.
 	url = https://github.com/whitehouse/drushsubtree
 	depends = drush-buildmanager
