@@ -3,7 +3,7 @@
 # Maintainer: Alexander Grothe <seahawk1986[at]hotmail[dot]com>
 pkgname=vdr-restfulapi
 pkgver=0.2.5.0
-pkgrel=1
+pkgrel=3
 _vdrapi=2.2.0
 pkgdesc="Restful-API Control for VDR"
 url="https://github.com/yavdr/vdr-plugin-restfulapi"
