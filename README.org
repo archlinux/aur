@@ -1,0 +1,8 @@
+#+TITLE: ArXiv-open
+
+A small script to open arXiv links of the form ~arxiv:xyz~ and ~arXiv:xyz~ by
+opening the appropriate page in the browser.  The desktop entry introduces the
+appropriate ~x-scheme-handler~ so that arXiv links can be handled system wide.
+
+Although not standard, it also supports links of the form ~arxiv://xyz~ and
+~arXiv://xyz~.

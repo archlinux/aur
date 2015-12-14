@@ -1,0 +1,64 @@
+#!/bin/zsh
+
+help () {
+    echo "Usage: $1 [options] [path].. pattern"
+    echo "Search all PDFs in the provided path(s) for the given grep pattern."
+    echo "If no path is provided, it defaults to the current directory."
+    echo ""
+    echo "  -r, --recursive Search recursively in the paths."
+    echo ""
+    echo "  -h, --help      Display this message."
+}
+
+recursive=0
+
+while [ "$#" -gt 0 ]; do
+    case $1 in
+        (--help|-h)
+            help ${0##*/}
+            exit 0
+            ;;
+        (--recursive|-r)
+            recursive=1
+            ;;
+        (--*|-*)
+            echo "Argument '$1' unknown; this will be ignored.  Please refer to '--help' for usage information." >&2
+            ;;
+        (*)
+            args=($1 $args)
+            ;;
+    esac
+    shift
+done
+
+if [ $#args -eq 0 ]; then
+    echo "A grep pattern is required.  Please refer to '--help' for usage informatino." >&2
+    exit 1
+else
+    pattern=${args[1]}
+    search_paths=(${args[2,-1]})
+fi
+
+if [ $#search_paths -eq 0 ]; then
+    search_paths=(. $search_paths)
+fi
+
+for search_path in $search_paths; do
+    if [ $recursive -eq 0 ]; then
+        for file in $search_path/*.pdf(N); do
+            output=$(pdftotext $file - | grep --line-number --color=always --extended-regexp --ignore-case $pattern) 2>/dev/null
+            if [ $? -eq 0 ]; then
+                print -P -- "%F{blue}${file%/*}/%F{red}${file##*/}%k%f"
+                echo $output
+            fi
+        done
+    else
+        for file in $search_path/**/*.pdf(N); do
+            output=$(pdftotext $file - | grep --line-number --color=always --extended-regexp --ignore-case $pattern) 2>/dev/null
+            if [ $? -eq 0 ]; then
+                print -P -- "%F{blue}${file%/*}/%F{red}${file##*/}%k%f"
+                echo $output
+            fi
+        done
+    fi
+done
