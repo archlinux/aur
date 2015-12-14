@@ -1,3 +1,22 @@
+2015-12-12
+
+	* V0.8.0
+	Bug fix: Cannot push repository with massive commits like Linux kernel #279
+	Bug fix: SMTP authentication makes invalid assumption on protocol #2152
+	Improvement: Send email when a new pull request is submitted #1612
+	Improvement: Auto login after install if admin is configured #1627
+	Improvement: Disable change username and password for non-local users #1374 #1938 #2154
+	Improvement: Able to config git fsck timeout #1943
+	Improvement: Able to show and edit mirror address on repository pages #1984
+	Improvement: Do not show content of issue in activity timeline #2029
+	Improvement: Show author email in commit diff #2035
+	Improvement: Able to change mirror source address
+	Improvement: Add "New Mirror" button on dashboard #2037
+	Improvement: Able to set external URL for wiki #2114
+	Features: Able to limit repository creation per user #1575
+	Features: Able to select branch in commits page #1846
+	Others: Drop 0.5.x support, minimum auto-migration version is 0.6.0.
+
 2015-12-07
 
 	* V0.7.33
