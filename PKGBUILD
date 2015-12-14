@@ -1,9 +1,9 @@
 # Maintainer: Parazyd <parazyd AT dyne DOT org>
 pkgname=jaromail
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A commandline tool to easily and privately handle your e-mail"
-arch=('any')
+arch=('x86_64' 'i686')
 url="http://dyne.org/software/jaro-mail"
 license=('GPL3')
 depends=('zsh' 'mutt' 'fetchmail' 'vim' 'msmtp' 'notmuch' 'abook' 'elinks' 'pinentry' 'wipe' 'alot')
