@@ -3,7 +3,7 @@
 
 _pkgname=qbittorrent
 pkgname=${_pkgname}-qt5-git
-pkgver=3.3.0RC.r6386.gfd39efd
+pkgver=3.4.0alpha.6443.450b1e7
 pkgrel=1
 pkgdesc='A bittorrent client based on libtorrent-rasterbar. Qt5 UI. Development version.'
 arch=('i686' 'x86_64')
@@ -34,11 +34,7 @@ sha512sums=(
 pkgver() {
 	# Updating package version
 	cd ${srcdir}/qBittorrent
-	(
-		set -o pipefail
-		printf "%s.r%s.g%s" "$(qmake-qt5 ../get_version.pri 2>/dev/null)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+	printf '%s.%s.%s' "$(qmake-qt5 ../get_version.pri 2>/dev/null)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" | sed 's/-/./g'
 }
 
 prepare() {	
