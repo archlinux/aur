@@ -11,7 +11,7 @@ BLUE="${BOLD}$(tput setaf 4)"
 GREEN="${BOLD}$(tput setaf 2)"
 
 _depmod() {
-  EXTRAMODULES=extramodules-4.0-ARCH
+  EXTRAMODULES=extramodules-4.2-ARCH
   depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
 }
 
