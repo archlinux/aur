@@ -2,13 +2,13 @@
 # Contributor: Joker-jar <joker-jar@yandex.ru>
 
 pkgname="psi-plus-git"
-pkgver=0.16.457
+pkgver=0.16.475
 pkgrel=1
 pkgdesc="Psi+ is a powerful Jabber client (Qt, C++) designed for the Jabber power users"
 url="http://psi-plus.com"
 license=('GPL2')
 arch=('i686' 'x86_64')
-depends=('qt4' 'qca-ossl' 'libidn' 'aspell' 'libxss')
+depends=('qt4' 'qca-qt4' 'libidn' 'aspell' 'libxss')
 makedepends=('git' 'patch' 'qconf-git')
 optdepends=('qca-gnupg: encrypted client-to-client connection')
 provides=("psi-plus=$pkgver")
@@ -22,12 +22,12 @@ source=('git://github.com/psi-im/psi.git'
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
-	 'SKIP')
+         'SKIP')
 
 pkgver() {
-	cd psi-plus
+  cd psi-plus
 
-	git describe --tags | cut -d - -f 1-2 --output-delimiter=.
+  git describe --tags | cut -d - -f 1-2 --output-delimiter=.
 }
 
 prepare() {
@@ -62,7 +62,7 @@ build() {
               --libdir=/usr/lib \
               --enable-plugins \
               --disable-enchant \
-	      --qtdir="/usr/lib/qt4"
+              --qtdir="/usr/lib/qt4"
   make
 }
 
