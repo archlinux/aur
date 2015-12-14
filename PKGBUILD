@@ -5,16 +5,16 @@
 
 pkgname=infinipath-psm
 pkgver=3.3
-_pkgver_subver=2
-_pkgver_commit=g6f42cdb
-pkgrel=1
+_pkgver_subver=7
+_pkgver_commit=g05f6f14
+pkgrel=2
 pkgdesc='OpenFabrics Alliance Intel Performance Scaled Messaging library'
 arch=('x86_64' 'i686')
 url=('https://www.openfabrics.org/index.php/overview.html')
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('glibc' 'libutil-linux')
 source=("https://www.openfabrics.org/downloads/${pkgname}/${pkgname}-${pkgver}-${_pkgver_subver}_${_pkgver_commit}_open.tar.gz")
-md5sums=('d52fc5711e23418c32beaf405b2ce6f6')
+md5sums=('ad26294b2dc5d4769d7724db61de0c6c')
 
 prepare() {
   # v3.3-2_g6f42cdb uses /usr/lib64 without a proper way to override it
