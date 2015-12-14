@@ -3,7 +3,7 @@
 
 pkgname=gtk-theme-arc
 _pkgname=Arc-theme
-pkgver=20151031
+pkgver=20151214
 pkgrel=1
 pkgdesc="A flat theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell. Official releases only."
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('gtk3' 'gtk-engine-murrine')
 source=("https://github.com/horst3180/${_pkgname}/archive/$pkgver.tar.gz")
 conflicts=('gtk-theme-arc-git')
-md5sums=('380341a9c32c2fb9bbcd25e13b7424a3')
+md5sums=('41b87f6dfceaf49dbe68ec9fcb1dc557')
 
 build() {
 	cd "${_pkgname}-$pkgver"
