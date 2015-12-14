@@ -18,7 +18,7 @@
 
 pkgbase=linux-w110er
 _srcname=linux-4.3
-pkgver=4.3
+pkgver=4.3.2
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -37,13 +37,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         'change-default-console-loglevel.patch')
 
-sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
-            'SKIP'
-            'cf0f984ebfbb8ca8ffee1a12fd791437064b9ebe0712d6f813fd5681d4840791'
-            '8b87509e4a32e7a191197dac23f67ab8eb86273f49acdbbc63575d18f1289048'
-            'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
-
+md5sums=('58b35794eee3b6d52ce7be39357801e7'
+         'SKIP'
+         '2bb07837febe3baaced4c1c0afb0507c'
+         'c320955ab7d7a76f509cb24b1b55229d'
+         'eb14dcfd80c00852ef81ded6e826826a'
+         'df7fceae6ee5d7e7be7b60ecd7f6bb35')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
