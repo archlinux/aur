@@ -130,11 +130,8 @@ server_command() {
 
 	sudo -u ${MC_USER} screen -S ${SESSION_NAME} -Q select . > /dev/null
 	if [ $? -eq 0 ]; then
-		mc_command "$@"
-		tailf -n 0 ${LOGPATH}/latest.log &
-		TAILFPID=$! # Process id of tailf command
-		sleep 0.1
-		kill ${TAILFPID}
+		mc_command "$@" &
+		tailf --pid=$! -n 0 ${LOGPATH}/latest.log &
 	else
 		echo "There is no ${SESSION_NAME} session to connect to."
 	fi
@@ -152,18 +149,18 @@ server_console() {
 
 # Help function, no arguments required
 help() {
-	cat << 'EOF'
+	cat <<- 'EOF'
 	This script was design to easily control any minecraft server. Quite every parameter for a given
 	minecraft server derivative can be altered by editing the variables in the configuration file.
 
 	Usage: minecraftd {start|stop|status|backup|command <command>|console}
-	start                Start the minecraft server
-	stop                 Stop the minecraft server
-	restart              Restart the minecraft server
-	status               Print some status information
-	backup               Backup the world data
-	command <command>    Run the given comman at the minecraft server console
-	console              Enter the server console through a screen session
+	    start                Start the minecraft server
+	    stop                 Stop the minecraft server
+	    restart              Restart the minecraft server
+	    status               Print some status information
+	    backup               Backup the world data
+	    command <command>    Run the given comman at the minecraft server console
+	    console              Enter the server console through a screen session
 
 	Copyright (c) Gordian Edenhofer <gordian.edenhofer@gmail.com>
 	EOF
