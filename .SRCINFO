@@ -1,7 +1,7 @@
 pkgbase = vdr-remoteosd
 	pkgdesc = Display the menu of a remote VDR as submenu item of your local VDR menu
 	pkgver = 1.0.0
-	pkgrel = 13
+	pkgrel = 14
 	url = http://vdr.schmirler.de/
 	arch = x86_64
 	arch = i686
