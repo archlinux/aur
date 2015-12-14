@@ -1,0 +1,40 @@
+--- Makefile.orig	2015-12-12 12:31:26.850930000 +0100
++++ Makefile	2015-12-12 12:33:25.507572377 +0100
+@@ -10,7 +10,7 @@
+ TARGET = jumpnbump
+ BINARIES = $(TARGET) jumpnbump.svgalib jumpnbump.fbcon $(MODIFY_TARGET) \
+ 	jnbmenu.tcl
+-PREFIX ?= /usr/local
++PREFIX ?= /usr/
+ 
+ .PHONY: data
+ 
+@@ -43,18 +43,18 @@
+ 	rm -f $(TARGET) *.o globals.h jnbmenu.tcl
+ 
+ install:
+-	mkdir -p $(PREFIX)/games/
+-	mkdir -p $(PREFIX)/share/jumpnbump/
+-	mkdir -p $(PREFIX)/share/man/man6/
+-	install -o root -g games -m 755 $(BINARIES) $(PREFIX)/games/
+-	install -o root -g games -m 644 data/jumpbump.dat \
+-	$(PREFIX)/share/jumpnbump/jumpbump.dat
+-	install -o root -g root -m 644 jumpnbump.6 $(PREFIX)/share/man/man6/
++	mkdir -p $(PREFIX)/usr/bin/
++	mkdir -p $(PREFIX)/usr/share/jumpnbump/
++	mkdir -p $(PREFIX)/usr/share/man/man6/
++	install -o root -g root -m 755 $(BINARIES) $(PREFIX)/usr/bin/
++	install -o root -g root -m 644 data/jumpbump.dat \
++	$(PREFIX)/usr/share/jumpnbump/jumpbump.dat
++	install -o root -g root -m 644 jumpnbump.6 $(PREFIX)/usr/share/man/man6/
+ 
+ uninstall:
+-	cd $(PREFIX)/games && rm -f $(BINARIES)
+-	rm -rf $(PREFIX)/share/jumpnbump
+-	rm -f $(PREFIX)/share/man/man6/jumpnbump.6
++	cd $(PREFIX)/usr/bin/ && rm -f $(BINARIES)
++	rm -rf $(PREFIX)/usr/share/jumpnbump
++	rm -f $(PREFIX)/usr/share/man/man6/jumpnbump.6
+ 
+ doc:
+ 	rman jumpnbump.6 -f HTML >jumpnbump.html
