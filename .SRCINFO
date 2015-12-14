@@ -1,7 +1,7 @@
 pkgbase = vdr
 	pkgdesc = 'open' digital satellite receiver and timer controlled video disk recorder
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tvdr.de/
 	install = vdr.install
 	arch = x86_64
