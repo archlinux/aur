@@ -1,7 +1,7 @@
 pkgbase = vdr-skinsoppalusikka
 	pkgdesc = Standalone skin providing the good old "ElchiAIO" looks
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.saunalahti.fi/~rahrenbe/vdr/soppalusikka/
 	arch = x86_64
 	arch = i686
