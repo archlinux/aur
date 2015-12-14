@@ -1,7 +1,7 @@
 pkgbase = serdisplib
 	pkgdesc = Library to drive displays with built-in controllers
 	pkgver = 1.97.9
-	pkgrel = 5
+	pkgrel = 6
 	url = http://serdisplib.sourceforge.net/
 	arch = x86_64
 	arch = i686
