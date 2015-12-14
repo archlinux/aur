@@ -3,7 +3,7 @@
 
 pkgname="fbpager-git"
 pkgver=r7.8e0927e
-pkgrel=2
+pkgrel=3
 pkgdesc="A virtual desktop pager for fluxbox (Development tree)"
 url="http://www.fluxbox.org/fbpager"
 license=('MIT')
