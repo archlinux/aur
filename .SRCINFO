@@ -1,6 +1,6 @@
 pkgbase = dddvb-dkms
 	pkgdesc = Official Digital Devices driver package as DKMS
-	pkgver = 0.9.20
+	pkgver = 0.9.21
 	pkgrel = 1
 	url = http://download.digital-devices.de
 	install = dddvb-dkms.install
@@ -16,8 +16,8 @@ pkgbase = dddvb-dkms
 	replaces = digitaldevices-dvb-drivers
 	replaces = dvbsky-dvb-drivers
 	replaces = technotrend-dvb-drivers
-	source = https://github.com/DigitalDevices/dddvb/archive/0.9.20.tar.gz
-	md5sums = 9ad46fe47ba464081b1fe6e07ba6149d
+	source = https://github.com/DigitalDevices/dddvb/archive/0.9.21.tar.gz
+	md5sums = cbd7bbecf9713e537e58eccad312d249
 
 pkgname = dddvb-dkms
 
