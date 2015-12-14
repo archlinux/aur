@@ -10,7 +10,7 @@
 _pack=lssa
 pkgname=octave-$_pack
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A package implementing tools to compute spectral decompositions of irregularly-spaced time series.  Currently includes functions based off the Lomb-Scargle periodogram and Adolf Mathias' implementation for R and C (see URLs). "
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
