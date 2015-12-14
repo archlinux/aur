@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Chusovitin <dchusovitin@gmail.com>
 
 pkgname=docker-machine
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 epoch=2
 pkgdesc='Machine management for a container-centric world'
@@ -16,13 +16,14 @@ conflicts=('docker-machine-bin')
 source=('https://raw.githubusercontent.com/docker/machine/master/LICENSE')
 sha256sums=('SKIP')
 
-source_x86_64=("https://github.com/docker/machine/releases/download/v${pkgver//_/-}/docker-machine_linux-amd64.zip")
-source_i686=("https://github.com/docker/machine/releases/download/v${pkgver//_/-}/docker-machine_linux-386.zip")
+source_x86_64=("docker-machine::https://github.com/docker/machine/releases/download/v${pkgver//_/-}/docker-machine_linux-amd64")
+source_i686=("docker-machine::https://github.com/docker/machine/releases/download/v${pkgver//_/-}/docker-machine_linux-386")
 
-sha256sums_x86_64=('62c43ff97420a68b13fc10c4db38dfe2ac79ad07254c16770d32ab342c671cb5')
-sha256sums_i686=('1947a4f4127c2a0d58033ae0319bd7f856bb9c249e3fadf57dc337c723e3b8c7')
+sha256sums_x86_64=('909cae9be74b39cc529fc015aa7c015e1d8f96322d7d92a64004957054965a81')
+sha256sums_i686=('71cacb6afe654dd6ad2715fc4c59656c4c0868b6235563315cc629abcf8ee452')
 
 package() {
-    find ${srcdir} -name "*docker-machine*" -executable -type f -exec install -Dm755 {} -t ${pkgdir}/usr/bin \;
+    install -Dm755 ${srcdir}/docker-machine ${pkgdir}/usr/bin/docker-machine
+    install -Dm644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/docker-machine/LICENSE
 }
 
