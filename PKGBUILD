@@ -2,24 +2,21 @@
 # Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 
 pkgname=dsview-git
-pkgver=0.94.r2.g1cd6420
+pkgver=0.94.r32.g3100bc8
 pkgrel=1
 pkgdesc='GUI programe for supporting various instruments from DreamSourceLab, including logic analyzer, oscilloscope, etc.'
 arch=(i686 x86_64)
 url='http://www.dreamsourcelab.com/'
 license=(GPL3)
-depends=(boost-libs qt5-base libsigrok4dsl-git libsigrokdecode)
+# Upstream added VCS dependency to libsigrokdecode :/
+depends=(boost-libs qt5-base libsigrok4dsl-git libsigrokdecode-git)
 makedepends=(boost cmake)
 source=(git://github.com/DreamSourceLab/DSView
-        0001-Fix-compilation-error-found-at-Linux-Arch.patch
-        0002-Use-usr-share-for-resource-files-bin-folder-is-for-b.patch
-        0003-Fix-compile-error.patch
+        Use-usr-share-for-resource-files-bin-folder-is-for-b.patch
         udev.rules
         dsview.desktop)
 sha1sums=('SKIP'
-          'e5ae41c0157e8e318866be7785ff9bee3198d387'
-          '0fe0fb09ce13383c26c39f016d23a37a9af82bef'
-          '64fb34f100c4a94ab497581a871f006012727b5c'
+          '80beaa22bab87925a38a9be56abdb7cb77d4ac5e'
           '50f23061fcd03e0aafdefb3b676f1846c036c856'
           '96d3a0168f392af655e2b309711d7810ad3c022f')
 install=dsview.install
@@ -31,17 +28,13 @@ pkgver() {
 
 prepare() {
   cd DSView
-  patch -p1 < "$srcdir/0001-Fix-compilation-error-found-at-Linux-Arch.patch"
-  patch -p1 < "$srcdir/0002-Use-usr-share-for-resource-files-bin-folder-is-for-b.patch"
-  patch -p1 < "$srcdir/0003-Fix-compile-error.patch"
+  patch -p1 < "$srcdir/Use-usr-share-for-resource-files-bin-folder-is-for-b.patch"
 }
 
 build() {
   cd DSView/DSView
 
-  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_SKIP_RPATH=1 .
-
-  # for f in $(find . -type f -name "*.png"); do echo "Processing $f ..."; convert $f -strip $f; done
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release # -DCMAKE_SKIP_RPATH=1
   make
 }
 

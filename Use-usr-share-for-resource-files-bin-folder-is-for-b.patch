@@ -1,7 +1,7 @@
-From 691a7be3dbf7b0685d410a88efd57bfc6ca41ec1 Mon Sep 17 00:00:00 2001
+From 3ccc5276eefd927c6e999b22fb6cc997b79fc8a4 Mon Sep 17 00:00:00 2001
 From: Anatol Pomozov <anatol.pomozov@gmail.com>
-Date: Fri, 15 May 2015 16:28:42 -0700
-Subject: [PATCH 2/4] Use /usr/share for resource files bin folder is for
+Date: Mon, 14 Dec 2015 09:05:10 -0800
+Subject: [PATCH] Use /usr/share for resource files bin folder is for 
  binaries.
 
 ---
@@ -10,10 +10,10 @@ Subject: [PATCH 2/4] Use /usr/share for resource files bin folder is for
  2 files changed, 20 insertions(+), 15 deletions(-)
 
 diff --git a/DSView/CMakeLists.txt b/DSView/CMakeLists.txt
-index 652cb58..9c146b8 100644
+index c5703c6..eb8bbc0 100644
 --- a/DSView/CMakeLists.txt
 +++ b/DSView/CMakeLists.txt
-@@ -350,21 +350,21 @@ set_target_properties(${PROJECT_NAME} PROPERTIES INSTALL_RPATH "/usr/local/lib")
+@@ -352,21 +352,21 @@ set_target_properties(${PROJECT_NAME} PROPERTIES INSTALL_RPATH "/usr/local/lib")
  
  # Install the executable.
  install(TARGETS ${PROJECT_NAME} DESTINATION bin/)
@@ -51,27 +51,27 @@ index 652cb58..9c146b8 100644
  #===============================================================================
  #= Packaging (handled by CPack)
 diff --git a/DSView/pv/devicemanager.cpp b/DSView/pv/devicemanager.cpp
-index a3d6d21..99b49ec 100644
+index 066af64..d6406d9 100644
 --- a/DSView/pv/devicemanager.cpp
 +++ b/DSView/pv/devicemanager.cpp
 @@ -103,12 +103,17 @@ std::list<boost::shared_ptr<device::DevInst> > DeviceManager::driver_scan(
  
      // Check If DSL hardware driver
-     if (strcmp(driver->name, "demo") != 0) {
-+        /*
+     if (strncmp(driver->name, "virtual", 7)) {
++	/*
          QDir dir(QCoreApplication::applicationDirPath());
          if (!dir.cd("res"))
              return driver_devices;
          QString str = dir.absolutePath() + "/";
          QString str_utf8 = QString::fromLocal8Bit(str.toLocal8Bit());
          strcpy(config_path, str_utf8.toUtf8().data());
-+        */
-+        // dirty
-+        // maybe use  QStandardPaths::standardLocations(QStandardPaths::AppDataLocation);
-+        strcpy(config_path, "/usr/share/dsview/");
++	*/
++	// dirty
++	// maybe use  QStandardPaths::standardLocations(QStandardPaths::AppDataLocation);
++	strcpy(config_path, "/usr/share/dsview/");
      }
  
  	// Do the scan
 -- 
-2.4.4
+2.6.4
 
