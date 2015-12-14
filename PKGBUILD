@@ -4,7 +4,7 @@
 pkgname=hyperion
 _gitrev=c8a2fe8b6b1becaf518c861e75fa78af40f810cd
 pkgver=r680.c8a2fe8
-pkgrel=1
+pkgrel=3
 pkgdesc="Opensource 'AmbiLight' implementation"
 url="http://code.google.com/p/boblight/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')

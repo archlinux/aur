@@ -1,7 +1,7 @@
 pkgbase = hyperion
 	pkgdesc = Opensource 'AmbiLight' implementation
 	pkgver = r680.c8a2fe8
-	pkgrel = 1
+	pkgrel = 3
 	url = http://code.google.com/p/boblight/
 	arch = x86_64
 	arch = i686
