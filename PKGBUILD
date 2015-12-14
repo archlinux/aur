@@ -1,8 +1,8 @@
 # Maintainer: abilke <andreas@bilke.org>
 
 pkgname=python-powerlaw-git
-pkgrel=2
-pkgver=r1.3.5.948d3d3
+pkgrel=1
+pkgver=r1.4.d666092
 pkgdesc='A Python Package for Analysis of Heavy-Tailed Distributions'
 arch=('any')
 url='https://github.com/jeffalstott/powerlaw'
