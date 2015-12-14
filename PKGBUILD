@@ -1,8 +1,8 @@
 # Maintainer: Tatsunori Aoki <ginjiro.135 at gmail dot com>
 # Contributor: kuina <kuinanein at gmail dot com>
 pkgname=man-pages-ja
-pkgver=0.5.0.0.20150805
-pkgrel=2
+pkgver=0.5.0.0.20151214
+pkgrel=1
 pkgdesc="Man pages for Japanese"
 arch=('any')
 url="http://osdn.jp/projects/linuxjm/"
