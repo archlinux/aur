@@ -2,7 +2,7 @@
 # Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 
 pkgname=dsview-git
-pkgver=0.94.r32.g3100bc8
+pkgver=0.95.r0.g3100bc8
 pkgrel=1
 pkgdesc='GUI programe for supporting various instruments from DreamSourceLab, including logic analyzer, oscilloscope, etc.'
 arch=(i686 x86_64)
