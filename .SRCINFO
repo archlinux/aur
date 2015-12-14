@@ -1,0 +1,16 @@
+pkgbase = twm-xfreq
+	pkgdesc = A customized Twm for XFreq
+	pkgver = 0.01
+	pkgrel = 1
+	url = http://github.com/cyring/xdm-xfreq
+	arch = any
+	license = GPL
+	depends = xdm-xfreq
+	depends = xorg-twm
+	source = twm-xfreq.desktop
+	source = start-twm-xfreq
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = twm-xfreq
+
