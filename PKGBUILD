@@ -6,11 +6,11 @@ pkgrel=1
 pkgdesc="Code audit tool for python"
 arch=('any')
 url="https://github.com/klen/pylama"
-license=(GPL3)
+license=('GPL3')
 depends=(pep8 pep257 python-pyflakes python-mccabe)
 optdepends=('pylama_pylint: pylint support')
 source=("https://github.com/klen/pylama/archive/$pkgver.tar.gz")
-md5sums=('3bfdaabc7f0d62e2237d5c1f8f147c10')
+sha256sums=('4db9183491a3fa6080361a06a0c74645c988f65745cf4b7b9951d2783c88479c')
 
 package() {
   cd "$pkgname-$pkgver"

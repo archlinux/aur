@@ -11,7 +11,7 @@ pkgbase = pylama
 	depends = python-mccabe
 	optdepends = pylama_pylint: pylint support
 	source = https://github.com/klen/pylama/archive/7.0.6.tar.gz
-	md5sums = 3bfdaabc7f0d62e2237d5c1f8f147c10
+	sha256sums = 4db9183491a3fa6080361a06a0c74645c988f65745cf4b7b9951d2783c88479c
 
 pkgname = pylama
 
