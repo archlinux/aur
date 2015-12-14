@@ -4,7 +4,7 @@
 pkgname=vdr-devstatus
 pkgver=0.4.1
 _vdrapi=2.2.0
-pkgrel=20
+pkgrel=21
 pkgdesc="displays the status of all available dvb devices"
 url="http://www.u32.de/vdr.html"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
