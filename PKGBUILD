@@ -1,5 +1,5 @@
 #!/bin/zsh
-_nginx_ver_latest=1.9.5
+_nginx_ver_latest=1.9.9
 _nginx_ver_stable=1.8.0
 
 OPTIONS=(!strip debug) #nchan is still young, in case something goes wrong we want good coredumps
@@ -8,7 +8,7 @@ if [[ ! -z $MTUNE_GENERIC ]]; then
   CFLAGS="${CFLAGS//mtune=native/mtune=generic}"
 fi
 
-_nginx_ver=$_nginx_ver_stable
+_nginx_ver=$_nginx_ver_latest
 _pkgname=nginx
 
 _user="http"
@@ -31,7 +31,7 @@ pkgver() {
 
 
 pkgname=nginx-nchan-git
-pkgver=1.8.0.nchan0.9.r10.g82a4e4b
+pkgver=1.9.9.nchan0.931.r0.g395957e
 pkgrel=1
 pkgdesc="Nginx + Nchan - a flexible pub/sub server (git version)"
 arch=('i686' 'x86_64')
@@ -62,11 +62,11 @@ source=("http://nginx.org/download/nginx-${_nginx_ver}.tar.gz"
   "git+https://github.com/slact/nchan.git"
        )
 
-md5sums=('3ca4a37931e9fa301964b8ce889da8cb'
-         '845cab784b50f1666bbf89d7435ac7af'
-         '79031b58828462dec53a9faed9ddb36a'
-         '6696dc228a567506bca3096b5197c9db'
-         'SKIP')
+md5sums=('50fdfa08e93ead7a111cba5a5f5735af'
+	 '845cab784b50f1666bbf89d7435ac7af'
+	 '79031b58828462dec53a9faed9ddb36a'
+	 '6696dc228a567506bca3096b5197c9db'
+	          'SKIP')
 
 build() {
   local _src_dir="${srcdir}/nginx-$_nginx_ver"
