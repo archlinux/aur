@@ -1,8 +1,8 @@
 # Maintainer: Sergio Conde <skgsergio@gmail.com>
 
 pkgname=gr-air-modes-git
-pkgver=20150710
-pkgrel=2
+pkgver=20150903
+pkgrel=1
 pkgdesc="A software-defined radio receiver for Mode S transponder signals, including ADS-B reports from equipped aircraft."
 arch=('i686' 'x86_64')
 url='https://github.com/bistromath/gr-air-modes'
