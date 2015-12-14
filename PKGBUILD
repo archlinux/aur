@@ -4,7 +4,7 @@
 pkgname=vdr-dummydevice
 pkgver=2.0.0
 _vdrapi=2.2.0
-pkgrel=11
+pkgrel=12
 pkgdesc="Output device that does nothing"
 url="http://phivdr.dyndns.org/vdr/vdr-dummydevice/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
