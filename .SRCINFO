@@ -1,7 +1,7 @@
 pkgbase = vdr-bgprocess
 	pkgdesc = Displays information about background processes
 	pkgver = 0.1.0
-	pkgrel = 20
+	pkgrel = 21
 	url = http://projects.vdr-developer.org/projects/plg-undelete
 	arch = x86_64
 	arch = i686
