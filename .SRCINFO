@@ -1,7 +1,7 @@
 pkgbase = vdr-chanman
 	pkgdesc = Change channel with a multi level choice
 	pkgver = 0.0.10
-	pkgrel = 18
+	pkgrel = 19
 	url = http://projects.vdr-developer.org/projects/plg-chanman
 	arch = x86_64
 	arch = i686
