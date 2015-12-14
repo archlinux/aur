@@ -4,7 +4,7 @@
 pkgname=vdr-gamepad
 pkgver=0.0.1
 _vdrapi=2.2.0
-pkgrel=14
+pkgrel=15
 pkgdesc="Control VDR via a joystick device."
 url="http://projects.vdr-developer.org/projects/plg-gamepad"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
