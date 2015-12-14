@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Bubble Chains
+Exec=chains
+Icon=chains.png
+Comment=A 2d arcade-puzzle game.
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Categories=Qt;Game;LogicGame;
+Encoding=UTF-8
+StartupNotify=true
+
+ 
