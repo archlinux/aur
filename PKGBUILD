@@ -16,7 +16,7 @@ install=$pkgname.install
 source=("https://github.com/dun/munge/archive/$pkgname-$pkgver.tar.gz"
 	"arch_munge.init")
 md5sums=('0b00f0a352f9619f205d41a31a2f3f80'
-	'668942f323275199d35db5a534d9a80e')
+         '3cdaf129182a96e220c5c42ee3ac63fe')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgname-$pkgver"

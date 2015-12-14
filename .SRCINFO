@@ -15,7 +15,7 @@ pkgbase = munge
 	source = https://github.com/dun/munge/archive/munge-0.5.11.tar.gz
 	source = arch_munge.init
 	md5sums = 0b00f0a352f9619f205d41a31a2f3f80
-	md5sums = 668942f323275199d35db5a534d9a80e
+	md5sums = 3cdaf129182a96e220c5c42ee3ac63fe
 
 pkgname = munge
 
