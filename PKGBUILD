@@ -72,8 +72,7 @@ build() {
 
 check() {
     cd "$srcdir/$pkgname"
-    make vmtest
-    ./vm/vm/test/vmtest
+    make test
 }
 
 package() {
