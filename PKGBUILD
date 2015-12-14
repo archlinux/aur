@@ -3,7 +3,7 @@
 # Contributor: Bill Durr <billyburly [at] gmail [dot] com>
 pkgname=crashplan
 pkgver=4.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An online/offsite backup solution"
 url="http://www.crashplan.com"
 arch=('i686' 'x86_64')
@@ -57,6 +57,10 @@ package() {
 	if [ "$CARCH" = "i686" ]; then
 		rm "$pkgdir/opt/$pkgname/"*64.so
 	fi
+
+	# Use systemctl start/stop commands when it attempts to auto-update
+	sed -i 's/^$ENGINE_SCRIPT stop.*/systemctl stop crashplan >> $logfile 2>\&1/g' "$pkgdir/opt/crashplan/bin/restartLinux.sh"
+	sed -i 's/^$ENGINE_SCRIPT start.*/systemctl start crashplan >> $logfile 2>\&1/g' "$pkgdir/opt/crashplan/bin/restartLinux.sh"
 
 	for size in 16x16 32x32 64x64 128x128
 	do
