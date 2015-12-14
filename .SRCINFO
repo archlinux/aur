@@ -1,7 +1,7 @@
 pkgbase = vdr-play
 	pkgdesc = Mediaplayer plugin for VDR and X11
 	pkgver = 0.0.14_21_g8035264
-	pkgrel = 13
+	pkgrel = 14
 	url = http://projects.vdr-developer.org/projects/plg-play
 	arch = x86_64
 	arch = i686
