@@ -4,7 +4,7 @@
 pkgname=vdr-neutrinoepg
 pkgver=0.3.6
 _vdrapi=2.2.0
-pkgrel=13
+pkgrel=14
 pkgdesc="Neat EPG-Viewer for VDR"
 url="http://projects.vdr-developer.org/projects/plg-neutrinoepg"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')

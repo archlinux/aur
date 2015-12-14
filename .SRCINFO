@@ -1,7 +1,7 @@
 pkgbase = vdr-neutrinoepg
 	pkgdesc = Neat EPG-Viewer for VDR
 	pkgver = 0.3.6
-	pkgrel = 13
+	pkgrel = 14
 	url = http://projects.vdr-developer.org/projects/plg-neutrinoepg
 	arch = x86_64
 	arch = i686
