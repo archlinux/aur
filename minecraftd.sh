@@ -130,8 +130,10 @@ server_command() {
 
 	sudo -u ${MC_USER} screen -S ${SESSION_NAME} -Q select . > /dev/null
 	if [ $? -eq 0 ]; then
+		sleep 0.1s &
+		SLEEP_PID=$!
 		mc_command "$@" &
-		tailf --pid=$! -n 0 ${LOGPATH}/latest.log &
+		tail -f --pid=${SLEEP_PID} -n 0 ${LOGPATH}/latest.log
 	else
 		echo "There is no ${SESSION_NAME} session to connect to."
 	fi

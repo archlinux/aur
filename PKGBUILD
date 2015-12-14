@@ -22,11 +22,11 @@ source=("https://s3.amazonaws.com/Minecraft.Download/versions/${pkgver}/minecraf
 	"minecraftd.sh")
 noextract=("minecraft_server.${pkgver}.jar")
 md5sums=('a0671390aa0691e70a950155aab06ffb'
-	'2cf6cdf65e0ed6aa6d452943b1e84357'
-	'c644abdf293c2f98033a64d732a4945c'
-	'5ed78e366146e47f8498347e93ad5423'
-	'd4656f27716fd78ab64344a517b07443'
-	'9011b19dc6218d41989835a6bba033e0')
+         '2cf6cdf65e0ed6aa6d452943b1e84357'
+         'c644abdf293c2f98033a64d732a4945c'
+         '5ed78e366146e47f8498347e93ad5423'
+         'd4656f27716fd78ab64344a517b07443'
+         '2a54c072bb414eb6a14867efabfc163a')
 
 package() {
 	install -Dm644 minecraftd.conf              "${pkgdir}/etc/conf.d/minecraft"
