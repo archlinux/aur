@@ -1,6 +1,6 @@
 pkgbase = picoscope
 	pkgdesc = gui for picotech oscilloscope
-	pkgver = 6.11.6_4r33
+	pkgver = 6.11.8_4r10
 	pkgrel = 1
 	url = http://www.picotech.com/linux.html
 	install = picoscope.install
@@ -16,10 +16,10 @@ pkgbase = picoscope
 	optdepends = libps2000: support for picoscope 2000 series
 	optdepends = libps2000a: support for picoscope 2000 series
 	options = !strip
-	source = http://labs.picotech.com/debian/pool/main/p/picoscope/picoscope_6.11.6-4r33_all.deb
+	source = http://labs.picotech.com/debian/pool/main/p/picoscope/picoscope_6.11.8-4r10_all.deb
 	source = picoscope.install
 	source = 95-pico.rules
-	md5sums = f5aaa5ec4163cd29d2e4e706eff0163c
+	md5sums = f46ad725d7521c5383c708dcb416bcc5
 	md5sums = 503df69f2e6001e3e9269970a552af13
 	md5sums = afedfca88c003ead013c18f26f789fd4
 
