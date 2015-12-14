@@ -2,7 +2,7 @@
 
 pkgname=mozart2-git
 pkgver=v2.0.0.alpha.0.4141.ga2413d4
-pkgrel=0
+pkgrel=2
 pkgdesc="The Mozart Programming System version 2"
 arch=('i686' 'x86_64')
 url="https://github.com/mozart/mozart2"
