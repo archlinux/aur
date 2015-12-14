@@ -6,7 +6,7 @@
 
 pkgname=fish-git
 _gitname="fish-shell"
-pkgver=2.2.0.r278.ge70ed96
+pkgver=2.2.0.r459.gf045d9b
 pkgrel=1
 epoch=2
 pkgdesc="User friendly shell intended mostly for interactive use."
@@ -40,6 +40,4 @@ build() {
 package() {
 	cd "$srcdir/$_gitname"
 	make DESTDIR="$pkgdir" install
-	# Workaround for file conflict:
-	rm "$pkgdir/usr/share/fish/completions/docker.fish"
 }
