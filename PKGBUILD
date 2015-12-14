@@ -9,7 +9,7 @@
 _pack=optim
 pkgname=octave-$_pack
 pkgver=1.4.1
-pkgrel=1
+pkgrel=3
 pkgdesc="Non-linear optimization toolkit."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
@@ -26,6 +26,10 @@ source=("http://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
 md5sums=('baedb7446a4fb7c7fc7329d35e99a1db')
 
+_octave_run() {
+	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
+}
+
 _install_dir() {
 	src=$1
 	dst=$2
@@ -38,7 +42,7 @@ build() {
 	_archprefix="$srcdir"/install_archprefix
 	mkdir -p "$_prefix" "$_archprefix"
 	cd "$srcdir"
-	octave -q -f --eval "$(cat <<-EOF
+	_octave_run "$(cat <<-EOF
 		pkg local_list octave_packages;
 		pkg prefix $_prefix $_archprefix;
 		pkg install -verbose -nodeps $_archive;
