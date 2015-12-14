@@ -1,6 +1,6 @@
 # Maintainer: Alexandr Boiko <brdcom@ya.ru>
 pkgname=accel-ppp-ipoe-module-lts
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Ipoe kernel module for accel-ppp running under linux-lts"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('linux-lts')
 makedepends=('dkms' 'linux-lts-headers' "accel-ppp-ipoe-dkms=$pkgver")
 install='accel-ppp-ipoe-module-lts.install'
 
-_extramodules=extramodules-3.14-lts
+_extramodules=extramodules-4.1-lts
 
 prepare() {
 	# dkms need modification to be run as user
