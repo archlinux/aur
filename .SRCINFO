@@ -1,7 +1,7 @@
 pkgbase = vdr-extrecmenu
 	pkgdesc = provides additional functions to VDR's recordings menu
 	pkgver = 1.2.4
-	pkgrel = 7
+	pkgrel = 8
 	epoch = 1
 	url = http://projects.vdr-developer.org/projects/show/plg-extrecmenu
 	arch = x86_64
