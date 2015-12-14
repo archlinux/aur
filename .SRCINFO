@@ -1,7 +1,7 @@
 pkgbase = vdr-remotetimers
 	pkgdesc = Add/Edit/Remove timers on both, the local (client) VDR and a remote (server) VDR
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://vdr.schmirler.de/
 	arch = x86_64
 	arch = i686
