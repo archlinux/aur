@@ -1,7 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Name=Twm for XFreq
-Comment=Tab Window Manager
-Exec=start-twm-xfreq
-Icon=twm
-Type=XSession

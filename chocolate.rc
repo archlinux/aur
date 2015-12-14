@@ -11,7 +11,6 @@ GREETFACE="DejaVuSans-8"
 
 GREETFOREGROUND="#cc4c00"
 
-
 # Login
 LOGINFONT="-xos4-terminus-medium-*-*-*-14-*-*-*-*-*-*-*"
 LOGINFACE="Sans-9"
@@ -109,5 +108,7 @@ WMTITLEFONT="-misc-fixed-*-*-*-*-14-110-*-*-*-*-*-*"
 WMICONFONT="-misc-fixed-*-*-*-*-14-110-*-*-*-*-*-*"
 WMRESIZEFONT="-misc-fixed-*-*-*-*-12-*-*-*-*-*-*-*"
 WMPOPUPFONT="-misc-fixed-*-*-*-*-14-*-*-*-*-*-*-*"
-WMTERMFONT="-misc-fixed-medium-*-*-*-18-*-*-*-*-*-*-*"
 WMCLOCKFACE="DejaVuSans-9:bold"
+WMTERMBIGFONT="-misc-fixed-medium-*-*-*-18-*-*-*-*-*-*-*"
+WMTERMMEDFONT="-misc-fixed-medium-*-*-*-15-*-*-*-*-*-*-*"
+WMTERMSMLFONT="-misc-fixed-medium-*-*-*-12-*-*-*-*-*-*-*"

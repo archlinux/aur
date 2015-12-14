@@ -49,6 +49,9 @@ case $# in
 			echo "    Ctrl<Key>R: abort-display()\n\\" >> /var/run/xdm-xfreq.Xresources
 			echo "    Ctrl<Key>S: abort-session()\n\\" >> /var/run/xdm-xfreq.Xresources
 			echo "    Ctrl<Key>C: restart-session()\n\\" >> /var/run/xdm-xfreq.Xresources
+		else
+			echo "    Ctrl<Key>C: erase-line()\n\\" >> /var/run/xdm-xfreq.Xresources
+			echo "    Ctrl<Key>\\: erase-to-end-of-line()\n\\" >> /var/run/xdm-xfreq.Xresources
 		fi
 		echo "    <Key>Delete: delete-character()\n\\" >> /var/run/xdm-xfreq.Xresources
 		echo "    <Key>Left: move-backward-character()\n\\" >> /var/run/xdm-xfreq.Xresources
