@@ -9,10 +9,11 @@ url='http://sourceforge.net/projects/ghdl-updates/'
 license=('GPLv2')
 
 provides=('ghdl')
-conflicts=('ghdl' 'ghdl-hg' 'ghdl-mcode-hg' 'ghdl-gcc-git' 'ghdl-mcode-git')
+conflicts=('ghdl' 'ghdl-gcc-git' 'ghdl-mcode-git')
 makedepends=('gcc-ada' 'git' 'llvm35' 'clang35')
 
 source=(
+	#"ghdl::git://git.code.sf.net/p/ghdl-updates/ghdl-updates.git"
 	"ghdl::git://github.com/tgingold/ghdl.git"
 )
 md5sums=(
