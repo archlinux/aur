@@ -1,15 +1,16 @@
 # Maintainer: Dennis Fink <the_metalgamer@hackerspace.lu>
 
 pkgname=yaah
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Yet another AUR helper"
 arch=('any')
 url="https://bitbucket.org/the_metalgamer/yaah"
 license=('GPL3')
 depends=('pacman' 'jshon' 'tar')
+optdepends=('git: AUR4 git support')
 source=("https://bitbucket.org/the_metalgamer/yaah/downloads/$pkgname-$pkgver.tar.gz")
-sha512sums=('7a7ce8d5f0e6f274cb86c11f378936cb27333e5679093db95ae35d15206bc0a24ed5514ded85b18c1c7c2912625bd873b423049768e841456979f000acfe3f27')
+sha512sums=('0b1973d7856f8a07609510799fd4c7784a73bc733f83cfa1f004373df391e8ddcc62c80f0e4530bc7a97988ae9183bba0a14c57544d5d1e034b037ea00db8b37')
 
 package() {
 
