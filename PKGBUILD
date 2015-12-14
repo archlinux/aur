@@ -68,7 +68,7 @@ pkgname=fcitx-mozc-ut
 pkgdesc="Fcitx Module of A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with Mozc UT Dictionary (additional dictionary)"
 pkgver=${_mozcver}.${_utdicver}
 _fcitx_patchver=2.17.2102.102.1
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc_01.html"
 license=('custom')
@@ -83,7 +83,7 @@ source=(mozc-${_mozcver}::git+https://github.com/google/mozc.git#commit=${_mozc_
         protobuf::git+https://github.com/google/protobuf.git#commit=${_protobuf_rev}
         fontTools::git+https://github.com/googlei18n/fonttools.git#commit=${_fonttools_rev}
         "x-ken-all-${_zipcode_rel}.zip::http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=naoina&DownloadId=1527310&FileTime=130941443058430000&Build=21031"
-        "edict-${_utdicver}.gz::http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=naoina&DownloadId=1527309&FileTime=130941443051900000&Build=21031"
+        "edict-${_utdicver}.gz::http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=naoina&DownloadId=1527309&FileTime=130945321365000000&Build=21031"
         "jigyosyo-${_zipcode_rel}.zip::http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=naoina&DownloadId=1527311&FileTime=130941443059370000&Build=21031"
         mozcdic-ut-${_utdicver}.tar.bz2::http://osdn.jp/frs/chamber_redir.php?f=%2Fusers%2F9%2F9619%2Fmozcdic-ut-${_utdicver}.tar.bz2
         EDICT_license.html
@@ -193,7 +193,7 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'bacb68bc64dd62322d332f38babf3c9933bf4a113081d795c8bc7e33a8e8e4e3e47320fd520f522c55830f519337c828c115ddb3275ace3076ebff4480b20805'
-            'ded925d2b921c228911b3f8c1d63276ce764e670b2654f6c11a8792cf860f9439910ae7276ff2a10d798af6d836ce3ff1520fb99f365125f311dde64e99e4dba'
+            '35c8c0b283e53f9c249b1a66e668acfe439223cabe4e0ba83fdc5fcc250c53ce2cf9df20f0e74cc66ee670f6684286f316f7dd855620aa14248a74e516366293'
             '9ebc0565366533ade36c5af19e47165641bb4d75393f87ba971e27d5bed038795731cb7426d769740ebf6cc3b91ca7c1f5cab200ac82097a3f880414a220d166'
             'dde61d78c2ecd65f6029dfe72e4f9cc26318c8e5f41eaf7dbe981fbd2b066fbc09bf4763c77d11effa54e45a378f50273a53ce494969ef78659b9a93a9d8b430'
             '4899c7ee01e387c7c5c628356a0b32e7ba28643580701b779138361ca657864ec17ae0f38d298d60e44093e52a3dfe37d922f780b791e3bd17fc4f056f22dbbb'
