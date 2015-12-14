@@ -4,7 +4,7 @@
 pkgname=vdr-plex
 pkgver=0.1.4
 _vdrapi=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Plex plugin for Linux VDR"
 url="https://github.com/chriszero/vdr-plugin-plex"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -14,7 +14,7 @@ _plugname=${pkgname//vdr-/}
 source=("http://projects.vdr-developer.org/git/vdr-plugin-$_plugname.git/snapshot/vdr-plugin-$_plugname-$pkgver.tar.bz2"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-md5sums=('23fffc2a4a6d33eb7e89673ee4db56b8'
+md5sums=('85171982d26818f5cff2438897ae6482'
          '6cae9281ef39d6c64569580fbffefe11')
 
 build() {
