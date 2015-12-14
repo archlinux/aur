@@ -4,7 +4,7 @@
 pkgname=vdr-checkts
 pkgver=0.1
 _gitver=0e7880576c0dcf84eaa53cd9c73bc2b5bf1e8d01
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to check VDR recordings for errors"
 url="http://projects.vdr-developer.org/git/vdr-checkts.git/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')

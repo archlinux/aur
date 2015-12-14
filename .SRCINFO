@@ -1,7 +1,7 @@
 pkgbase = vdr-checkts
 	pkgdesc = Tool to check VDR recordings for errors
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://projects.vdr-developer.org/git/vdr-checkts.git/
 	arch = x86_64
 	arch = i686
