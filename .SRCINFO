@@ -1,7 +1,7 @@
 pkgbase = vdr-vdrtva
 	pkgdesc = Automatic 'series record' function. Written for UK Freeview
-	pkgver = 0.3.5
-	pkgrel = 1
+	pkgver = 0.3.6
+	pkgrel = 2
 	url = http://projects.vdr-developer.org/projects/vdrtva
 	arch = x86_64
 	arch = i686
@@ -13,9 +13,9 @@ pkgbase = vdr-vdrtva
 	depends = gcc-libs
 	depends = vdr-api=2.2.0
 	backup = etc/vdr/conf.avail/50-vdrtva.conf
-	source = http://projects.vdr-developer.org/git/vdrtva.git/snapshot/vdrtva-0.3.5.tar.bz2
+	source = http://projects.vdr-developer.org/attachments/download/1965/vdrtva-0.3.6.tar.gz
 	source = 50-vdrtva.conf
-	md5sums = 0810a954f6b93c4163f8e8b63dd227d4
+	md5sums = 79d08007a2794b970b5d7864c213c980
 	md5sums = 64e2f9ed3471495641a465e705c85447
 
 pkgname = vdr-vdrtva
