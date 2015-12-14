@@ -4,7 +4,7 @@
 pkgname=kodi-addon-pvr-vdr-vnsi
 pkgver=1.11.4
 _gitver=73de793af0eca67170b5a790db42d435c3a07b4d
-pkgrel=2
+pkgrel=3
 url="https://github.com/kodi-pvr/pvr.vdr.vnsi"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 license=('GPL2')
