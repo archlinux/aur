@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=sdlpal
+Name[zh_CN]=仙剑奇侠传
+Exec=sdlpal
+Comment=A SDL-based reimplemention of the classic Chinese-language RPG "Xian Jian Qi Xia Zhuan"
+Comment[zh_CN]=基于SDL重制的经典中文角色扮演游戏——仙剑奇侠传
+Icon=sdlpal
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;StrategyGame;
