@@ -4,13 +4,13 @@
 
 pkgname=open-iscsi-git
 pkgver=2.0.873.r146.g4c9d6f9
-pkgrel=1
+pkgrel=2
 pkgdesc='iSCSI userland tools - git checkout'
 arch=('i686' 'x86_64')
 url='http://www.open-iscsi.org/'
 license=('GPL')
 install=open-iscsi.install
-depends=('libutil-linux')
+depends=('libutil-linux' 'openssl')
 makedepends=('git' 'open-isns')
 provides=('open-iscsi')
 conflicts=('open-iscsi')
