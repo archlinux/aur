@@ -4,34 +4,29 @@ _plugin_name=https-everywhere
 _plugin_version=5.1.1
 pkgname=firefox-extension-$_plugin_name
 pkgver=$_plugin_version
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugin for firefox which ensures you are using https whenever it's possible."
 license=('GPL2')
 arch=('any')
 url="https://www.eff.org/https-everywhere"
 depends=("firefox")
 makedepends=("unzip")
-source=("https://www.eff.org/files/https-everywhere-${_plugin_version}-eff.xpi")
-noextract=("https://www.eff.org/files/https-everywhere-${_plugin_version}-eff.xpi")
-sha256sums=('c5eee0285962daeda587499ca284281f4606f2cc27a51ada611996dbd84444a4')
+source=("https://addons.cdn.mozilla.net/user-media/addons/229918/https_everywhere-5.1.1-sm+tb+fx+an.xpi")
+noextract=("https_everywhere-${_plugin_version}-sm+tb+fx+an.xpi")
+sha256sums=('d79e6c3bebdf5671e77c6c0e62b568d2b3c52aa60be072851b23172dc2be0211')
 
 prepare() {
   cd "$srcdir"
 
   # Ugly hack, bsdtar does not extract the xpi properly...
-  unzip -qqo https-everywhere-${_plugin_version}-eff.xpi
+  unzip -qqo "https_everywhere-${_plugin_version}-sm+tb+fx+an.xpi"
 }
 
 package() {
-  cd "$srcdir"
-
-  emid=$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' install.rdf)
-  local dstdir="${pkgdir}/usr/lib/firefox/browser/extensions/${emid}"
-
-  install -d "$dstdir"
-  cp -dpr --no-preserve=ownership * "$dstdir"
-  rm "${dstdir}/https-everywhere-${_plugin_version}-eff.xpi"
-
-  find $pkgdir -type d -exec chmod 0755 {} \;
-  find $pkgdir -type f -exec chmod 0644 {} \;
+  cd $srcdir
+  local _emid=$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' install.rdf) || return 1
+  test ! -z "${_emid}"
+  local _file=(*.xpi)
+  test "${#_file[@]}" -eq 1
+  install -Dpm644 "${_file}" "${pkgdir}/usr/lib/firefox/browser/extensions/${_emid}.xpi"
 }
