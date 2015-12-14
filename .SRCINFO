@@ -1,7 +1,7 @@
 pkgbase = vdr-scraper2vdr
 	pkgdesc = Acts as client and provides scraped metadata for tvshows and movies from epgd
 	pkgver = 0.1.12
-	pkgrel = 2
+	pkgrel = 4
 	url = http://projects.vdr-developer.org/projects/plg-scraper2vdr
 	arch = x86_64
 	arch = i686
