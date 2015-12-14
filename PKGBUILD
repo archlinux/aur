@@ -4,7 +4,7 @@
 pkgname=vdr-externalplayer
 pkgver=0.3.2
 _vdrapi=2.2.0
-pkgrel=15
+pkgrel=16
 pkgdesc="use external players in VDR"
 url="http://www.uli-eckhardt.de/vdr/external.en.shtml"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')

@@ -1,7 +1,7 @@
 pkgbase = vdr-externalplayer
 	pkgdesc = use external players in VDR
 	pkgver = 0.3.2
-	pkgrel = 15
+	pkgrel = 16
 	url = http://www.uli-eckhardt.de/vdr/external.en.shtml
 	arch = x86_64
 	arch = i686
