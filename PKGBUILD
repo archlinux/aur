@@ -1,14 +1,14 @@
 # Maintainer: Davorin Učakar <davorin.ucakar@gmail.com>
 
 pkgname=xcursor-openzone
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="OpenZone X11 cursor theme"
 url="http://opendesktop.org/content/show.php/OpenZone?content=111343"
 arch=('any')
 license=('custom:xcursor-openzone')
 source=("http://opendesktop.org/CONTENT/content-files/111343-OpenZone-${pkgver}.tar.xz")
-sha1sums=('3cdc4841689f022436d6e83dd5587313e65efc17')
+md5sums=('4bb8b3e96d3c7be22db383977a758498')
 
 package() {
   install -D -d -m755 ${pkgdir}/usr/share/icons
