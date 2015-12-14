@@ -147,6 +147,7 @@ if [ -d $USERTMPFS ]; then
 	echo "\"\"              f.nop" >> $USERTMPFS/twm-xfreq.rc
 	echo "}" >> $USERTMPFS/twm-xfreq.rc
 	echo "menu \"screensaver\"" >> $USERTMPFS/twm-xfreq.rc
+	echo "{" >> $USERTMPFS/twm-xfreq.rc
 	echo "\"\"              f.nop" >> $USERTMPFS/twm-xfreq.rc
 	echo "\"   Default\"    f.exec \"xset s default\"" >> $USERTMPFS/twm-xfreq.rc
 	echo "\" 5 minutes\"    f.exec \"xset s 300 300\"" >> $USERTMPFS/twm-xfreq.rc
