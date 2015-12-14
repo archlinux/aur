@@ -2,7 +2,7 @@
 
 pkgname=jumpnbump-menu
 pkgver=0.6
-pkgrel=5
+pkgrel=6
 pkgdesc="A pygtk launcher for jump'n'bump."
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -16,9 +16,9 @@ source=(http://fr.archive.ubuntu.com/ubuntu/pool/universe/j/jumpnbump/jumpnbump_
 sha256sums=('dd4930cb19b458c68d743f26f9a72120906d0e9cd7c4d1897b098f79d4334c18'
             '86affe4b630765a238bd704011cb4346d835a8d86dc7ed3c0980fbf14d3108b4'
             '1e18deece67700ac0e8e61a33e852a85ab4549f9d20b0595aa5bea91287c4d71'
-            '51da6b326f1241679a4a191e512ad24d8ff0413f3e8e344a0825be893cc15cd8'
+            '27418fb389a59cdd67bf204dbf3fda462da5e6ce9d5b5b1e5ac60f636cc6bf37'
             'adbcc65c336dc33514fc2a17cbfd487f80f962f688eb96d410f34e1791454819')
-[ "$CARCH" == "x86_64" ] && sha256sums=('dd4930cb19b458c68d743f26f9a72120906d0e9cd7c4d1897b098f79d4334c18' '86affe4b630765a238bd704011cb4346d835a8d86dc7ed3c0980fbf14d3108b4' '1e18deece67700ac0e8e61a33e852a85ab4549f9d20b0595aa5bea91287c4d71' '51da6b326f1241679a4a191e512ad24d8ff0413f3e8e344a0825be893cc15cd8' 'adbcc65c336dc33514fc2a17cbfd487f80f962f688eb96d410f34e1791454819')
+[ "$CARCH" == "x86_64" ] && sha256sums=('dd4930cb19b458c68d743f26f9a72120906d0e9cd7c4d1897b098f79d4334c18' '86affe4b630765a238bd704011cb4346d835a8d86dc7ed3c0980fbf14d3108b4' '1e18deece67700ac0e8e61a33e852a85ab4549f9d20b0595aa5bea91287c4d71' '27418fb389a59cdd67bf204dbf3fda462da5e6ce9d5b5b1e5ac60f636cc6bf37' 'adbcc65c336dc33514fc2a17cbfd487f80f962f688eb96d410f34e1791454819')
 
 package() {
   cd $srcdir

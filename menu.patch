@@ -1,5 +1,5 @@
 --- jumpnbump-menu.orig	2011-06-25 12:47:35.000000000 +0200
-+++ jumpnbump-menu	2015-12-13 11:31:09.575832463 +0100
++++ jumpnbump-menu	2015-12-14 14:31:01.744231516 +0100
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
@@ -41,7 +41,21 @@
      elif (client.get_active()):
          execute ('-player', str (player_num.get_value_as_int()),
                   '-connect', server_entry.get_text(),
-@@ -191,14 +181,13 @@
+@@ -139,11 +129,8 @@
+ 
+ def get_level():
+     level = []
+-    if (mirror.get_active()):
+-        level.append ('-mirror')
+-    else:
+-        level.append ('-dat')
+-        level.append (choosen_level)
++    level.append ('-dat')
++    level.append (choosen_level)
+ 
+     return level
+ 
+@@ -191,14 +178,13 @@
  
      gui = gtk.glade.XML (gladefile, 'main', domain=application)
  
@@ -57,7 +71,7 @@
      client = gui.get_widget ('client')
      server = gui.get_widget ('server')
      treeview = gui.get_widget ('level_treeview')
-@@ -214,11 +203,12 @@
+@@ -214,11 +200,12 @@
      noflies = gui.get_widget ('noflies')
      withmusic = gui.get_widget ('withmusic')
      image = gui.get_widget ('image')
