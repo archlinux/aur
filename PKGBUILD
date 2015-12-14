@@ -2,12 +2,12 @@
 
 pkgname=limba-git
 pkgver=280.c75853a
-pkgrel=10
+pkgrel=11
 pkgdesc="Limba is a new project which allows 3rd-party software installations on Linux"
 arch=('i686' 'x86_64')
 url="https://github.com/ximion/limba"
 license=('GPLv2' 'LGPL2.1')
-depends=('glib2' 'gobject-introspection' 'appstream' 'polkit' 'libarchive' 'gpgme' 'docbook-xsl' 'xmlto' 'curl' 'libutil-linux' 'intltool')
+depends=('glib2' 'gobject-introspection' 'appstream>=0.9.0' 'polkit' 'libarchive' 'gpgme' 'docbook-xsl' 'xmlto' 'curl' 'libutil-linux' 'intltool')
 makedepends=('git' 'cmake')
 source=('git+https://github.com/ximion/limba.git'
          'sources.list')
