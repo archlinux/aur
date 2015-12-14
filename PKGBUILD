@@ -1,17 +1,17 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.info>
 
 pkgname=firefox-extension-ublock-origin
-pkgver=1.3.5
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc='An efficient blocker add-on for your browser. Fast, potent, and lean.'
 url=https://github.com/gorhill/uBlock
 arch=('any')
 license=('GPL3')
 depends=('firefox')
 conflicts=('firefox-extension-ublock')
-source=("https://addons.cdn.mozilla.net/user-media/addons/607454/ublock_origin-$pkgver-sm+tb+fx+an.xpi")
+source=("https://addons.cdn.mozilla.net/user-media/addons/607454/ublock_origin-$pkgver-an+sm+tb+fx.xpi")
 noextract=("${source##*/}")
-sha256sums=('2bdb14022f15138194f8c58d86d2899afd2984f93e24f2aa823d54ec00691782')
+sha256sums=('755da6f96ae02cfed40c1142e66842f0fdd571f5fd0d7e515d05c2fb5890651d')
 
 package() {
   install -Dm755 "${source##*/}" "$pkgdir"/usr/lib/firefox/browser/extensions/uBlock0@raymondhill.net.xpi
