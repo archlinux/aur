@@ -9,9 +9,7 @@ license=('GPL')
 url="http://github.com/cyring/xdm-xfreq"
 depends=('xfreq-git' 'xorg-xdm' 'xorg-xclock' 'xorg-xmessage' 'xorg-xsetroot' 'xorg-xdpyinfo' 'xorg-twm' 'xdg-utils' 'xterm' 'scrot' 'dmenu' 'gawk')
 optdepends=('imagemagick' 'numlockx')
-backup=(etc/xdm-xfreq/xdm-xfreq.rc
-	etc/xdm-xfreq/twm-xfreq.rc
-	etc/xdm-xfreq/twm-xfreq.Xresources)
+backup=(etc/xdm-xfreq/xdm-xfreq.rc)
 install=xdm-xfreq.install
 source=(xdm-config
 	Xsetup
@@ -21,14 +19,10 @@ source=(xdm-config
 	xdm-xfreq-xdesktops
 	xdm-xfreq.service
 	twm-xfreq.desktop
-	twm-xfreq.rc
-	twm-xfreq.Xresources
 	start-twm-xfreq
 	chocolate.rc
 	navy.rc)
 md5sums=('SKIP'
-	 'SKIP'
-	 'SKIP'
 	 'SKIP'
 	 'SKIP'
 	 'SKIP'
@@ -43,7 +37,7 @@ md5sums=('SKIP'
 package() {
   mkdir -p ${pkgdir}/etc/xdm-xfreq/theme
   cp chocolate.rc navy.rc ${pkgdir}/etc/xdm-xfreq/theme
-  cp xdm-xfreq.rc twm-xfreq.rc twm-xfreq.Xresources ${pkgdir}/etc/xdm-xfreq
+  cp xdm-xfreq.rc ${pkgdir}/etc/xdm-xfreq
   chmod 0755 ${pkgdir}/etc/xdm-xfreq/xdm-xfreq.rc
   ln -s /etc/xdm-xfreq/theme/chocolate.rc ${pkgdir}/etc/xdm-xfreq/xdm-theme.rc
   mkdir -p ${pkgdir}/etc/X11/xdm/xdm-xfreq

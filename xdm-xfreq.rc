@@ -75,5 +75,10 @@ XDM_XFREQ_SLEEP_CMD="systemctl suspend"
 XDM_XFREQ_RESCUE_CMD="systemctl rescue"
 
 # Users settings
-XSESSION_ERR_PATH="$HOME/.xsession-errors"
+USERTMPFS="/var/run/user/$(id --user)"
+if [ -d $USERTMPFS ]; then
+	XSESSION_ERR_PATH="$USERTMPFS/.xsession-errors"
+else
+	XSESSION_ERR_PATH="$HOME/.xsession-errors"
+fi
 XSESSION_LAST_NUM=1
