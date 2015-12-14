@@ -1,7 +1,7 @@
 pkgbase = naludump
 	pkgdesc = Tool to delete NALU fill data from h.264 streams
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.udo-richter.de/vdr/naludump.html
 	arch = x86_64
 	arch = i686

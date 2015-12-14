@@ -3,7 +3,7 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=naludump
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to delete NALU fill data from h.264 streams"
 url="http://www.udo-richter.de/vdr/naludump.html"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
