@@ -2,7 +2,7 @@
 # Contributor: Nathan Owe. <ndowens04+AUR@gmail.com>
 pkgname=blackbox-cvs
 pkgver=0.70.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Blackbox CVS"
 arch=(i686 x86_64)
 url="http://blackboxwm.sourceforge.net"
