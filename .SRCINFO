@@ -1,7 +1,7 @@
 pkgbase = vdr-skinflatplus
 	pkgdesc = Simple and slim skin for VDR
 	pkgver = 0.5.1
-	pkgrel = 3
+	pkgrel = 5
 	url = http://projects.vdr-developer.org/projects/plg-skinflatplus
 	arch = x86_64
 	arch = i686
