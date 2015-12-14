@@ -1,7 +1,7 @@
 pkgbase = vdr-epgsync
 	pkgdesc = Import the EPG of a remote VDR
 	pkgver = 1.0.1
-	pkgrel = 7
+	pkgrel = 8
 	url = http://vdr.schmirler.de/
 	arch = x86_64
 	arch = i686

@@ -4,7 +4,7 @@
 pkgname=vdr-epgsync
 pkgver=1.0.1
 _vdrapi=2.2.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Import the EPG of a remote VDR"
 url="http://vdr.schmirler.de/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
