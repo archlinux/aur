@@ -1,6 +1,6 @@
 # Contributor:  TDY <tdy@archlinux.info>
 # Contributor: Dennis Craven <dcraven@gmail.com>
-# Maintainer: CRT <cirkit@koderoot.net>
+# Maintainer: CRT <cirkit@kode.email>
 
 pkgname=ctw
 pkgver=0.6
