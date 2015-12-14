@@ -3,7 +3,7 @@
 # https://aur.archlinux.org/packages/ghdl/
 
 pkgname=ghdl-gcc-git
-pkgver=0.34dev.git20151127
+pkgver=0.34dev.git20151207
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='VHDL simulator - GCC flavour'
@@ -29,7 +29,7 @@ source=(
 )
 md5sums=(
 	'SKIP'
-	'4df8ee253b7f3863ad0b86359cd39c43'
+	'6f831b4d251872736e8e9cc09746f327'
 	'e039bfcfb6c2ab039b8ee69bf883e824'
 	'e34fca0540d840e5d0f6427e98c92252'
 )
