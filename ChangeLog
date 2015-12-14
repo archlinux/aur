@@ -1,3 +1,8 @@
+2015-12-13  André Silva  <emulatorman@parabola.nu>
+
+	* linux-libre-4.3.2_gnu-1
+	* Enabled CONFIG_DISPLAY_PANEL_TPO_TD028TTEC1 and CONFIG_USB_G_DBGP modules [7][8]
+
 2015-09-23  André Silva  <emulatorman@parabola.nu>
 
 	* linux-libre-4.2.1_gnu-1
@@ -82,3 +87,5 @@
 [4] https://www.gnu.org/graphics/gnu-and-freedo/gnu-and-freedo.html
 [5] https://labs.parabola.nu/issues/685
 [6] https://labs.parabola.nu/issues/750
+[7] https://labs.parabola.nu/issues/857
+[8] https://labs.parabola.nu/issues/858
