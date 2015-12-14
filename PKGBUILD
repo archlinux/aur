@@ -2,7 +2,7 @@
 
 pkgname=mumble-snapshot-tts
 pkgver=1.3.0_883_g2a31708
-pkgrel=1
+pkgrel=2
 pkgdesc="A high quality voice chat program. (snapshot build + text to speech)"
 arch=('i686' 'x86_64')
 url="http://mumble.info/"
@@ -50,8 +50,8 @@ package() {
     ln -s libcelt0.so.0.7.0 $pkgdir/usr/lib/mumble/libcelt0.so.0.7
 
     # plugins
-    install -m755 -D ./release/plugins/liblink.so $pkgdir/usr/lib/mumble/plugins/liblink.so
-    install -m755 -D ./release/plugins/libmanual.so $pkgdir/usr/lib/mumble/plugins/libmanual.so
+    install -m755 -D ./release/plugins/liblink.so $pkgdir/usr/lib/mumble/liblink.so
+    install -m755 -D ./release/plugins/libmanual.so $pkgdir/usr/lib/mumble/libmanual.so
 
     # other
     install -m755 -d $pkgdir/usr/share/man/man1
