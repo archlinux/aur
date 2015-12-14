@@ -15,7 +15,8 @@ install="${pkgname}.install"
 license=('custom: unknown')
 depends=('openssl' 'glibc' 'zlib')
 source=("http://www.thc.org/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('0d75fc5d6aaf22130c57436fea3ca339')
+sha256sums=('3e8dcaedf39a11ebaeac6e4d75175fcc724c6255904ef4e27bf72c9788119a04')
+
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}" || return 1
