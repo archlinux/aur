@@ -5,7 +5,7 @@
 
 pkgname=fbdesk
 pkgver=1.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Fluxbox Utility for creating and managing Icons on a Fluxbox Desktop"
 url="http://fluxbox.org/fbdesk/"
 license=('GPL')
@@ -20,13 +20,13 @@ md5sums=('b65136d2d52524492c8a5bc233b7f34b'
          '7cc0f132b43dd7fcdf9daac798eb7275')
 
 build() {
-  cd "$srcdir/fbdesk-$pkgver"
-  patch -p1 <../$pkgname-$pkgver-gcc43.patch || return 1
-  patch -p1 <../$pkgname-$pkgver-options.patch || return 1
-  ./configure --prefix=/usr --disable-png || return 1
+  cd $pkgname-$pkgver
+  patch -p1 <../$pkgname-$pkgver-gcc43.patch
+  patch -p1 <../$pkgname-$pkgver-options.patch
+  ./configure --prefix=/usr --disable-png
   make
 }
 package() {
-  cd "$srcdir/fbdesk-$pkgver"
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 }
