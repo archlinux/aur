@@ -1,7 +1,7 @@
 pkgbase = vdr-upnp
 	pkgdesc = extends the VDR with the possibility to act as an UPnP/DLNA Media Server (DMS)
 	pkgver = 1.0.0_14_g11a035a
-	pkgrel = 15
+	pkgrel = 16
 	url = http://projects.vdr-developer.org/projects/plg-softhddevice
 	arch = x86_64
 	arch = i686
