@@ -11,7 +11,7 @@ makedepends=('dkms' 'linux-headers' "accel-ppp-ipoe-dkms=$pkgver")
 conflicts=('')
 install='accel-ppp-ipoe-module.install'
 
-_extramodules=extramodules-4.0-ARCH
+_extramodules=extramodules-4.2-ARCH
 
 prepare() {
 	# dkms need modification to be run as user
