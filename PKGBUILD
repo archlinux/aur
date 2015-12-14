@@ -4,7 +4,7 @@
 pkgname=vdr-zaphistory
 pkgver=0.9.6
 _vdrapi=2.2.0
-pkgrel=13
+pkgrel=14
 pkgdesc="History of the latest viewed channels"
 url="http://projects.vdr-developer.org/projects/plg-zaphistory"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
