@@ -6,7 +6,7 @@
 
 pkgname=omniorb417
 pkgver=4.1.7
-pkgrel=2
+pkgrel=3
 pkgdesc="A CORBA object request broker for C++ and Python. Legacy version."
 arch=('i686' 'x86_64')
 url="http://omniorb.sourceforge.net/"
@@ -33,7 +33,8 @@ build() {
          --prefix=/usr \
          --with-omniORB-config=/etc/omniORB.cfg \
          --with-omniNames-logdir=/var/log/omniORB \
-         --with-openssl=/usr
+         --with-openssl=/usr \
+         --disable-ipv6
 
   make
 }
