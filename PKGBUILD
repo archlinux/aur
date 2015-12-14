@@ -3,7 +3,7 @@
 
 pkgname=flphoto
 pkgver=1.3.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Basic image management and display program based on the FLTK toolkit"
 arch=('i686' 'x86_64')
 url="http://www.easysw.com/~mike/flphoto/"
@@ -18,17 +18,17 @@ md5sums=('5e02353cadfc07250731f34f24e83866'
          'c8a81fe1ba9708d85c29972ad28057fd')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   patch -Np2 -b -z .orig -i ../fixes.patch
 }
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   ./configure --prefix=/usr
   make espmsg
   make
 }
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
   install -Dm0644 "doc/flphoto.png" "$pkgdir/usr/share/pixmaps/flphoto.png"
   install -Dm0644 "$srcdir/flphoto.desktop" "$pkgdir/usr/share/applications/flphoto.desktop"
