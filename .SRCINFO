@@ -1,7 +1,7 @@
 pkgbase = vdr-hddarchive
 	pkgdesc = Brings the archive-hdd functionality to VDR.
 	pkgver = 0.0.1_6_gd014d52
-	pkgrel = 7
+	pkgrel = 8
 	epoch = 1
 	url = http://projects.vdr-developer.org/projects/show/plg-hddarchive
 	install = vdr-hddarchive.install
