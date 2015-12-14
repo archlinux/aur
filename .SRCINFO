@@ -1,7 +1,7 @@
 pkgbase = vdr-channellists
 	pkgdesc = Plugin to manage your Channellists
 	pkgver = 0.0.5
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.zulu-entertainment.de/content.php?f=VDR-Plugins&sub=Channellists
 	arch = x86_64
 	arch = i686

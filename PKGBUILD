@@ -4,7 +4,7 @@
 pkgname=vdr-channellists
 pkgver=0.0.5
 _vdrapi=2.2.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Plugin to manage your Channellists"
 url="http://www.zulu-entertainment.de/content.php?f=VDR-Plugins&sub=Channellists"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
