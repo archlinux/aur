@@ -4,7 +4,7 @@
 pkgname=boblight
 _svnrev=479
 pkgver=r479
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of tools for driving lights connected to an external controller"
 url="http://code.google.com/p/boblight/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')

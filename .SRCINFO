@@ -1,7 +1,7 @@
 pkgbase = boblight
 	pkgdesc = Collection of tools for driving lights connected to an external controller
 	pkgver = r479
-	pkgrel = 1
+	pkgrel = 2
 	url = http://code.google.com/p/boblight/
 	arch = x86_64
 	arch = i686
