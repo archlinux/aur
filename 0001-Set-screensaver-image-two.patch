@@ -1,0 +1,40 @@
+From a80de52c97000afc3282c2f354b913e00de6c5f9 Mon Sep 17 00:00:00 2001
+From: FIL <fil@recursion.pro>
+Date: Tue, 15 Dec 2015 02:01:36 +0300
+Subject: [PATCH] Set screensaver image two
+
+---
+ src/eog-config-keys.h | 2 ++
+ src/eog-window.c      | 3 +++
+ 2 files changed, 5 insertions(+)
+
+diff --git a/src/eog-config-keys.h b/src/eog-config-keys.h
+index f171138..3f84352 100644
+--- a/src/eog-config-keys.h
++++ b/src/eog-config-keys.h
+@@ -34,6 +34,8 @@
+ 
+ #define EOG_CONF_DESKTOP_WALLPAPER_SCHEMA	"org.gnome.desktop.background"
+ #define EOG_CONF_DESKTOP_WALLPAPER		"picture-uri"
++#define EOG_CONF_DESKTOP_SCREENSAVER_SCHEMA	"org.gnome.desktop.screensaver"
++#define EOG_CONF_DESKTOP_SCREENSAVER		"picture-uri"
+ 
+ #define EOG_CONF_DESKTOP_LOCKDOWN_SCHEMA	"org.gnome.desktop.lockdown"
+ #define EOG_CONF_DESKTOP_CAN_PRINT		"disable-printing"
+diff --git a/src/eog-window.c b/src/eog-window.c
+index bae7803..4a1d9ec 100644
+--- a/src/eog-window.c
++++ b/src/eog-window.c
+@@ -2646,6 +2646,9 @@ eog_window_set_wallpaper (EogWindow *window, const gchar *filename, const gchar
+ 	settings = g_settings_new (EOG_CONF_DESKTOP_WALLPAPER_SCHEMA);
+ 	g_settings_set_string (settings, EOG_CONF_DESKTOP_WALLPAPER, uri);
+ 	g_object_unref (settings);
++	settings = g_settings_new (EOG_CONF_DESKTOP_SCREENSAVER_SCHEMA);
++	g_settings_set_string (settings, EOG_CONF_DESKTOP_SCREENSAVER, uri);
++	g_object_unref (settings);
+ 	g_free (uri);
+ 
+ 	info_bar = gtk_info_bar_new_with_buttons (_("_Open Background Preferences"),
+-- 
+2.6.4
+
