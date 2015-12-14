@@ -5,7 +5,7 @@
 pkgname=graphlcd-base
 pkgver=20130520
 _gitver=1e01a8963f9ab95ba40ddb44a6c166b8e546053d
-pkgrel=2
+pkgrel=4
 pkgdesc="Project to support graphical LC displays connected to the PC"
 url="http://projects.vdr-developer.org/projects/show/graphlcd"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
