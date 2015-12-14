@@ -2,7 +2,7 @@
 # * No namcap warnings or errors
 
 pkgname=libfabric
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='OpenFabrics Alliance fabric service interface communication library'
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ url=('https://www.openfabrics.org/index.php/overview.html')
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('glibc')
 source=("https://www.openfabrics.org/downloads/ofi/${pkgname}-${pkgver}.tar.gz")
-md5sums=('9272fead8b89d6ee8db2e537215e6b19')
+md5sums=('c627e297a6ab532805a4a5f3911df719')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
