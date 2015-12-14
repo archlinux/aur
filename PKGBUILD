@@ -3,12 +3,12 @@
 
 pkgname=genymotion
 pkgver=2.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Complete set of tools that provides a virtual environment for Android."
 arch=('i686' 'x86_64')
 license="UNKNOWN"
 url="http://www.genymotion.com/"
-depends=('virtualbox' 'qtwebkit' 'libpng' 'net-tools' 'qca' 'ffmpeg-compat' 'protobuf' 'qt5-script')
+depends=('virtualbox' 'libpng' 'net-tools' 'qca' 'ffmpeg-compat' 'protobuf' 'qt5-script' 'qt5-webkit')
 install=$pkgname.install
 sha512sums=('48e9bafe1d64b688c51eceb8d129f44d690060ff9a6d82eefcf3295f7834516ce62439faf4f4454287f594fc410aafbafd30a43537ea3d295c42bee8e4e03ac7')
 
