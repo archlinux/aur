@@ -4,7 +4,7 @@
 pkgname=irmplircd
 pkgver=20141124
 _gitver=98d9b36ee6037ff41919b43e2127a041a8d02695
-pkgrel=2
+pkgrel=3
 pkgdesc="zeroconf LIRC daemon that reads IRMP events from the USB IR Remote Receiver"
 url="https://github.com/realglotzi/irmplircd"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')

@@ -1,7 +1,7 @@
 pkgbase = irmplircd
 	pkgdesc = zeroconf LIRC daemon that reads IRMP events from the USB IR Remote Receiver
 	pkgver = 20141124
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/realglotzi/irmplircd
 	install = irmplircd.install
 	arch = x86_64
