@@ -1,7 +1,7 @@
 pkgbase = vdr-mpv
 	pkgdesc = mpv player plugin for VDR
 	pkgver = 0.0.4_6_g559ef4b
-	pkgrel = 1
+	pkgrel = 2
 	url = http://projects.vdr-developer.org/projects/plg-mpv
 	arch = x86_64
 	arch = i686
