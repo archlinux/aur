@@ -11,12 +11,12 @@ url='http://sourceforge.net/projects/ghdl-updates/'
 license=('GPLv2')
 
 provides=('ghdl')
-conflicts=('ghdl' 'ghdl-hg')
+conflicts=('ghdl' 'ghdl-llvm-git' 'ghdl-mcode-git')
 makedepends=('gcc-ada' 'git')
 install=ghdl.install
 options=(!emptydirs staticlibs)
 
-_gccver=4.9.2
+_gccver=4.9.3
 _islver=0.12.2
 _cloogver=0.18.1
 
