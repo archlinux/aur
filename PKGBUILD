@@ -5,7 +5,7 @@
 
 pkgname=vdr-loadepg
 pkgver=0.2.6
-pkgrel=13
+pkgrel=14
 _vdrapi=2.2.0
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 pkgdesc="Displays Canal+ group (Mediahighway) and Sky EPG Data"
