@@ -1,7 +1,7 @@
 # $Id$
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
-pkgbase=(harfbuzz)
+pkgbase=(harfbuzz-git)
 pkgname=(harfbuzz harfbuzz-icu)
 pkgver=1.1.2.r19.g15f2c05
 pkgrel=1
@@ -10,6 +10,9 @@ arch=(i686 x86_64)
 url="http://www.freedesktop.org/wiki/Software/HarfBuzz"
 license=(MIT)
 makedepends=(glib2 freetype2 graphite cairo icu gobject-introspection)
+conflicts="harfbuzz harfbuzz-icu"
+provides="harfbuzz harfbuzz-icu"
+
 source=(git://github.com/behdad/harfbuzz.git)
 sha256sums=('SKIP')
 _gitname=harfbuzz
