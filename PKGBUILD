@@ -4,7 +4,7 @@
 pkgname=vdr-zappilot
 pkgver=0.0.5
 _vdrapi=2.2.0
-pkgrel=15
+pkgrel=16
 pkgdesc="Plugin for VDR forked from the plugin pilotskin to browse EPG in channel info"
 url="http://projects.vdr-developer.org/projects/plg-zappilot"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
