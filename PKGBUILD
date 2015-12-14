@@ -4,8 +4,8 @@
 
 _pkgname=freeminer
 pkgname=${_pkgname}-git
-pkgver=0.4.13.7.r726.g7e62806
-pkgrel=1
+pkgver=0.4.13.7.779.g57d6532
+pkgrel=2
 pkgdesc='An open source sandbox game inspired by Minecraft. Development version.'
 arch=('i686' 'x86_64')
 url='http://freeminer.org/'
@@ -32,11 +32,7 @@ sha512sums=(
 pkgver() {
 	# Updating package version
 	cd ${srcdir}/${_pkgname}
-	(
-		set -o pipefail
-		git describe --long --tags 2>/dev/null | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+	git describe --long --tags | sed 's/-/./g'
 }
 
 prepare() {
