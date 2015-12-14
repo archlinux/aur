@@ -1,7 +1,7 @@
 pkgbase = vdr-eepg
 	pkgdesc = Extended EPG (EEPG) plugin for VDR
 	pkgver = 0.0.5_187_gd7dc614
-	pkgrel = 2
+	pkgrel = 3
 	url = http://projects.vdr-developer.org/projects/plg-eepg
 	arch = x86_64
 	arch = i686
