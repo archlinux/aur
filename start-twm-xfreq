@@ -11,9 +11,8 @@ if [ -d $USERTMPFS ]; then
 	echo "Xmessage*message.scrollVertical:never" >> $USERTMPFS/twm-xfreq.Xresources
 	echo "Xmessage*message.scrollHorizontal:never" >> $USERTMPFS/twm-xfreq.Xresources
 	echo "Xmessage*Text.borderWidth:0" >> $USERTMPFS/twm-xfreq.Xresources
-	echo -e "\r" >> $USERTMPFS/twm-xfreq.Xresources
-	echo "XTerm*vt100.allowBoldFonts:false" >> $USERTMPFS/twm-xfreq.Xresources
 	echo "" >> $USERTMPFS/twm-xfreq.Xresources
+	echo "XTerm*vt100.allowBoldFonts:false" >> $USERTMPFS/twm-xfreq.Xresources
 
 	xrdb -load $USERTMPFS/twm-xfreq.Xresources
 
@@ -25,7 +24,7 @@ if [ -d $USERTMPFS ]; then
 	echo "IconBorderWidth 1" >> $USERTMPFS/twm-xfreq.rc
 	echo "IconifyByUnmapping" >> $USERTMPFS/twm-xfreq.rc
 	echo "IconBorderWidth 1" >> $USERTMPFS/twm-xfreq.rc
-	echo "IconDirectory /usr/share/icons" >> $USERTMPFS/twm-xfreq.rc
+	echo "IconDirectory \"/usr/share/icons\"" >> $USERTMPFS/twm-xfreq.rc
 	echo "IconFont \"$WMICONFONT\"" >> $USERTMPFS/twm-xfreq.rc
 	echo "IconRegion \"=160x1024+0+64\" North West 5 10" >> $USERTMPFS/twm-xfreq.rc
 	echo "IconRegion \"=160x1024-0+64\" North East 5 10" >> $USERTMPFS/twm-xfreq.rc
@@ -46,7 +45,7 @@ if [ -d $USERTMPFS ]; then
 	echo "TitleButtonBorderWidth 1" >> $USERTMPFS/twm-xfreq.rc
 	echo "TitleFont \"$WMTITLEFONT\"" >> $USERTMPFS/twm-xfreq.rc
 	echo "TitlePadding 8" >> $USERTMPFS/twm-xfreq.rc
-	echo -e "\r" >> $USERTMPFS/twm-xfreq.rc
+	echo "" >> $USERTMPFS/twm-xfreq.rc
 	echo "Color" >> $USERTMPFS/twm-xfreq.rc
 	echo "{" >> $USERTMPFS/twm-xfreq.rc
 	echo "  BorderColor \"$WMBORDERCOLOR\"" >> $USERTMPFS/twm-xfreq.rc
@@ -74,7 +73,7 @@ if [ -d $USERTMPFS ]; then
 	echo "  IconManagerForeground \"$WMTASKSFG\"" >> $USERTMPFS/twm-xfreq.rc
 	echo "  IconManagerHighlight \"$WMTASKSLIGHT\"" >> $USERTMPFS/twm-xfreq.rc
 	echo "}" >> $USERTMPFS/twm-xfreq.rc
-	echo -e "\r" >> $USERTMPFS/twm-xfreq.rc
+	echo "" >> $USERTMPFS/twm-xfreq.rc
 	echo "MoveDelta 3" >> $USERTMPFS/twm-xfreq.rc
 	echo "Function \"move-or-lower\" { f.move f.deltastop f.lower }" >> $USERTMPFS/twm-xfreq.rc
 	echo "Function \"move-or-raise\" { f.move f.deltastop f.raise }" >> $USERTMPFS/twm-xfreq.rc
@@ -88,9 +87,9 @@ if [ -d $USERTMPFS ]; then
 	echo "}" >> $USERTMPFS/twm-xfreq.rc
 	echo "Function \"screenshot-root\"" >> $USERTMPFS/twm-xfreq.rc
 	echo "{" >> $USERTMPFS/twm-xfreq.rc
-	echo "  f.exec \"scrot --silent --delay 1 --exec 'xmessage -buttons Close -timeout 15 -fg \"$WMPOPUPFG\" -bg \"$WMPOPUPBG\" -bd \"$WMPOPUPFG\" -geometry -16-32 -fn $WMPOPUPFONT -name PopUp \$f &' '/tmp/%Y%m%d-%H%M%S-\$wx\$h.png'\"" >> $USERTMPFS/twm-xfreq.rc
+	echo "  f.exec \"scrot --silent --delay 1 --exec 'xmessage -buttons Close -timeout 15 -fg \\\"$WMPOPUPFG\\\" -bg \\\"$WMPOPUPBG\\\" -bd \\\"$WMPOPUPFG\\\" -geometry -16-32 -fn $WMPOPUPFONT -name PopUp \$f &' '$USERTMPFS/%Y%m%d-%H%M%S-\$wx\$h.png'\"" >> $USERTMPFS/twm-xfreq.rc
 	echo "}" >> $USERTMPFS/twm-xfreq.rc
-	echo -e "\r" >> $USERTMPFS/twm-xfreq.rc
+	echo "" >> $USERTMPFS/twm-xfreq.rc
 	echo "Button1 =       : root          : f.menu \"leftops\"" >> $USERTMPFS/twm-xfreq.rc
 	echo "Button2 =       : root          : f.menu \"TwmWindows\"" >> $USERTMPFS/twm-xfreq.rc
 	echo "Button3 =       : root          : f.menu \"rightops\"" >> $USERTMPFS/twm-xfreq.rc
@@ -102,7 +101,7 @@ if [ -d $USERTMPFS ]; then
 	echo "Button3 = m     : window|icon   : f.function \"move-or-raise\"" >> $USERTMPFS/twm-xfreq.rc
 	echo "Button1 =       : title         : f.function \"move-or-raise\"" >> $USERTMPFS/twm-xfreq.rc
 	echo "Button2 =       : title         : f.fullzoom" >> $USERTMPFS/twm-xfreq.rc
-	echo "Button3 =       : title         : f.menu \"winops\"" >> $USERTMPFS/twm-xfreq.rc
+	echo "Button3 =       : title|iconmgr : f.menu \"winops\"" >> $USERTMPFS/twm-xfreq.rc
 	echo "Button1 =       : icon          : f.function \"move-or-iconify\"" >> $USERTMPFS/twm-xfreq.rc
 	echo "Button2 =       : icon          : f.iconify" >> $USERTMPFS/twm-xfreq.rc
 	echo "Button1 =       : iconmgr       : f.iconify" >> $USERTMPFS/twm-xfreq.rc
@@ -113,7 +112,7 @@ if [ -d $USERTMPFS ]; then
 	echo "\"F2\" =          : root          : f.function \"run-app\"" >> $USERTMPFS/twm-xfreq.rc
 	echo "\"r\" = c         : root          : f.function \"run-app\"" >> $USERTMPFS/twm-xfreq.rc
 	echo "\"p\" = c         : root          : f.function \"screenshot-root\"" >> $USERTMPFS/twm-xfreq.rc
-	echo -e "\r" >> $USERTMPFS/twm-xfreq.rc
+	echo "" >> $USERTMPFS/twm-xfreq.rc
 	echo "menu \"winops\"" >> $USERTMPFS/twm-xfreq.rc
 	echo "{" >> $USERTMPFS/twm-xfreq.rc
 	echo "\"\"              f.nop" >> $USERTMPFS/twm-xfreq.rc
@@ -139,7 +138,7 @@ if [ -d $USERTMPFS ]; then
 	echo "\"Hibernate\"     f.exec \"systemctl hibernate\"" >> $USERTMPFS/twm-xfreq.rc
 	echo "\"Hybrid-sleep\"  f.exec \"systemctl hybrid-sleep\"" >> $USERTMPFS/twm-xfreq.rc
 	echo "\"\"              f.nop" >> $USERTMPFS/twm-xfreq.rc
-	echo "\"Rescue\"        f.exec \"(xmessage -buttons Rescue:11,Cancel:99 -default Cancel -timeout 30 -fg '$WMPOPUPFG' -bg '$WMPOPUPBG' -bd '$WMPOPUPFG' -16-32 -fn '$WMPOPUPFONT' -name PopUp 'Enter rescue mode ?'; if [[ \$? == 11 ]]; then systemctl rescue; fi) &\"" >> $USERTMPFS/twm-xfreq.rc
+	echo "\"Rescue\"        f.exec \"(xmessage -buttons Rescue:11,Cancel:99 -default Cancel -timeout 30 -fg '$WMPOPUPFG' -bg '$WMPOPUPBG' -bd '$WMPOPUPFG' -geometry -16-32 -fn '$WMPOPUPFONT' -name PopUp 'Enter rescue mode ?'; if [[ \$? == 11 ]]; then systemctl rescue; fi) &\"" >> $USERTMPFS/twm-xfreq.rc
 	echo "\"Reboot\"        f.exec \"(xmessage -buttons Reboot:11,Cancel:99 -default Cancel -timeout 30 -fg '$WMPOPUPFG' -bg '$WMPOPUPBG' -bd '$WMPOPUPFG' -geometry -16-32 -fn '$WMPOPUPFONT' -name PopUp 'Shut down and reboot the system ?'; if [[ \$? == 11 ]]; then systemctl reboot; fi) &\"" >> $USERTMPFS/twm-xfreq.rc
 	echo "\"PowerOff\"      f.exec \"(xmessage -buttons PowerOff:11,Cancel:99 -default Cancel -timeout 30 -fg '$WMPOPUPFG' -bg '$WMPOPUPBG' -bd '$WMPOPUPFG' -geometry -16-32 -fn '$WMPOPUPFONT' -name PopUp 'Shut down and power-off the system ?'; if [[ \$? == 11 ]]; then systemctl poweroff; fi) &\"" >> $USERTMPFS/twm-xfreq.rc
 	echo "\"\"              f.nop" >> $USERTMPFS/twm-xfreq.rc
