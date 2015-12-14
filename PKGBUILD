@@ -10,7 +10,7 @@
 _pack=instrument-control
 pkgname=octave-$_pack
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Low level I/O functions for serial, i2c, parallel, tcp, gpib, vxi11 and usbtmc interfaces."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
