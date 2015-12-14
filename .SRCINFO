@@ -1,7 +1,7 @@
 pkgbase = vdr-skinenigmang
 	pkgdesc = skin based on the Enigma text2skin addon
 	pkgver = 0.1.2_16_g0147c0e
-	pkgrel = 8
+	pkgrel = 9
 	epoch = 1
 	url = http://andreas.vdr-developer.org/enigmang/index.html
 	arch = x86_64
