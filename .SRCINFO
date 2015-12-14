@@ -1,7 +1,7 @@
 pkgbase = vdr-markad
 	pkgdesc = automatic advertisement detection
 	pkgver = 0.1.4_37_gc55f43f
-	pkgrel = 8
+	pkgrel = 9
 	epoch = 1
 	url = http://projects.vdr-developer.org/projects/plg-markad
 	arch = x86_64
