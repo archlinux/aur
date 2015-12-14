@@ -2,9 +2,9 @@
 # namcap says dependency 'libibmad' is not needed, but without it, configure fails with "cannot find infiniband/mad.h", provided by libibmad, and mstflint-4.0.1/mtcr_ul/mtcr_ib_ofed.c does include "infiniband/mad.h"
 
 pkgname=mstflint
-pkgver=4.0.1
-_pkgver_subver=1.43
-_pkgver_commit=g97d7275
+pkgver=4.1.0
+_pkgver_subver=1.46
+_pkgver_commit=gb1cdaf7
 pkgrel=1
 pkgdesc='OpenFabrics Alliance firmware burning application for Mellanox HCA/NIC cards'
 arch=('x86_64' 'i686')
@@ -13,8 +13,8 @@ license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('bash' 'zlib' 'libibmad')
 source=("https://www.openfabrics.org/downloads/${pkgname}/${pkgname}-${pkgver}-${_pkgver_subver}.${_pkgver_commit}.tar.gz"
         'disableWerror.patch')
-md5sums=('7bcf30aa21f1951c6da918dbae25b23a'
-         '526da982d2827af23d00fe8f7306923b')
+md5sums=('030179e989e09562320e11511648f4e7'
+         '00467463d323ca845f121145bdd22dde')
 
 prepare() {
   # v4.0.1.143.g97d7275 triggers -Werror, due to maybe uninitialized variables at fs3_ops.cpp:1727, 1863, and 1068
