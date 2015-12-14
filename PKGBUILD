@@ -2,11 +2,11 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-softhddevice
-pkgver=0.6.1rc1_54_g700c8e8
+pkgver=0.6.1rc1_63_g4fa4f66
 epoch=1
-_gitver=700c8e8767e4632a63123b004c304892b31b5074
+_gitver=4fa4f6616a17fe38344d28bd186a493d89ef3b85
 _vdrapi=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="software and GPU emulated HD output device plugin for VDR"
 url="http://projects.vdr-developer.org/projects/plg-softhddevice"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -32,21 +32,11 @@ prepare() {
   # Disable OSS. Arch Linux doesn't ship OSS
   sed -i '/OSS /d' Makefile
 
-  # Enable EOS_TRICKSPEED to fix rewind on 1080i channels
-  sed -i 's/#CONFIG += -DH264_EOS_TRICKSPEED/CONFIG += -DH264_EOS_TRICKSPEED/g' Makefile
-
-  # Enable USE_MPEG_COMPLETE to fix partially missing video decoding of SD channels
-  sed -i 's/#CONFIG += -DUSE_MPEG_COMPLETE/CONFIG += -DUSE_MPEG_COMPLETE/g' Makefile
-
   # Enable this to increase AV_INFO logging
   #sed -i 's/3000/500/g' Makefile
 
   # Enable this to compile with debug logging
   #sed -i 's/# -DDEBUG/-DDEBUG/g' Makefile
-
-  # Enable VA-API
-  sed -i 's/#VAAPI/VAAPI/g' Makefile
-  sed -i 's/#OPENGL/OPENGL/g' Makefile
 }
 
 build() {
