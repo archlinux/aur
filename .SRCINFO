@@ -1,10 +1,11 @@
 pkgbase = python2-neovim-git
 	pkgdesc = Python client to neovim, git version. Use this to keep up with neovim-git
-	pkgver = 0.r242.8051657
+	pkgver = 0.r262.605897b
 	pkgrel = 1
 	url = http://github.com/neovim/python-client
 	arch = any
 	license = Apache2
+	makedepends = git
 	depends = python2
 	depends = python2-msgpack
 	depends = python2-greenlet
