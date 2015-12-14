@@ -12,7 +12,7 @@
 pkgbase=llvm-debug
 pkgname=('llvm-debug' 'llvm-libs-debug' 'clang-debug' 'clang-analyzer-debug' 'clang-tools-extra-debug')
 _pkgname='llvm'
-pkgver=226159
+pkgver=255492
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://llvm.org"
@@ -29,13 +29,15 @@ source=("${_pkgname}::svn+http://llvm.org/svn/llvm-project/llvm/tags/${_svn_tag}
         "clang-tools-extra::svn+http://llvm.org/svn/llvm-project/clang-tools-extra/tags/${_svn_tag}"
         "compiler-rt::svn+http://llvm.org/svn/llvm-project/compiler-rt/tags/${_svn_tag}"
         llvm-Config-config.h
-        llvm-Config-llvm-config.h)
+        llvm-Config-llvm-config.h
+        bug-20176-template-friend-fix.patch)
 sha256sums=('SKIP'
             'SKIP'    
             'SKIP'
             'SKIP'
             '312574e655f9a87784ca416949c505c452b819fad3061f2cde8aced6540a19a3'
-            '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48')
+            '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48'
+            'b3d583b2609c28b7b41cae828b85f96b882b9b5474f3d888e72734fb00879d3d')
 
 _ocamlver()
 {
@@ -54,6 +56,9 @@ prepare() {
     svn export "${srcdir}/clang" tools/clang
     svn export "${srcdir}/clang-tools-extra" tools/clang/tools/extra
     svn export "${srcdir}/compiler-rt" projects/compiler-rt
+
+    # Fix bug 20176
+    patch -p1 < "${srcdir}/bug-20176-template-friend-fix.patch"
 
     # Fix docs installation directory
     sed -e 's:$(PROJ_prefix)/docs/llvm:$(PROJ_prefix)/share/doc/llvm:' \

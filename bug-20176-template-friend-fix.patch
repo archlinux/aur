@@ -1,0 +1,13 @@
+diff --git a/include/llvm/ADT/IntrusiveRefCntPtr.h b/include/llvm/ADT/IntrusiveRefCntPtr.h
+--- a/include/llvm/ADT/IntrusiveRefCntPtr.h
++++ b/include/llvm/ADT/IntrusiveRefCntPtr.h
+@@ -197,6 +197,9 @@ public:
+   private:
+     void retain() { if (Obj) IntrusiveRefCntPtrInfo<T>::retain(Obj); }
+     void release() { if (Obj) IntrusiveRefCntPtrInfo<T>::release(Obj); }
++
++    template <typename X>
++    friend class IntrusiveRefCntPtr;
+   };
+ 
+   template<class T, class U>
