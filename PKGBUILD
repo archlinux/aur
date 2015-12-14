@@ -4,7 +4,7 @@
 pkgname=vdr-remote
 pkgver=0.7.0
 _vdrapi=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Extends the remote control capabilities of vdr"
 url="http://www.escape-edv.de/endriss/vdr/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')

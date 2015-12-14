@@ -1,7 +1,7 @@
 pkgbase = vdr-remote
 	pkgdesc = Extends the remote control capabilities of vdr
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.escape-edv.de/endriss/vdr/
 	arch = x86_64
 	arch = i686
