@@ -1,6 +1,6 @@
 pkgbase = vdr-mp3
 	pkgver = 0.10.2
-	pkgrel = 15
+	pkgrel = 16
 	url = http://www.muempf.de/
 	arch = x86_64
 	arch = i686
