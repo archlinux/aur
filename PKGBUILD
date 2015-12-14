@@ -9,7 +9,7 @@
 _pack=msh
 pkgname=octave-$_pack
 pkgver=1.0.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Create and manage triangular and tetrahedral meshes for Finite Element or Finite Volume PDE solvers. Use a mesh data structure compatible with PDEtool. Rely on gmsh for unstructured mesh generation."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
