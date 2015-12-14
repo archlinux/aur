@@ -1,7 +1,7 @@
 pkgbase = vdr-live
 	pkgdesc = Adds the possibility to control VDR and some of it's plugins by a web interface.
 	pkgver = 0.3.0_21_g6ea279a
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://projects.vdr-developer.org/projects/plg-live
 	install = vdr-live.install
