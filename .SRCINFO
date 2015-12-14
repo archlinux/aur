@@ -1,7 +1,7 @@
 pkgbase = vdr-rpihddevice
 	pkgdesc = Output device for Raspberry Pi
-	pkgver = 0.1.0_3_gb5421aa
-	pkgrel = 1
+	pkgver = 1.0.0
+	pkgrel = 2
 	url = http://projects.vdr-developer.org/projects/plg-rpihddevice
 	arch = armv6h
 	arch = armv7h
@@ -12,7 +12,7 @@ pkgbase = vdr-rpihddevice
 	depends = raspberrypi-firmware-tools
 	depends = vdr-api=2.2.0
 	backup = etc/vdr/conf.avail/50-rpihddevice.conf
-	source = git://projects.vdr-developer.org/vdr-plugin-rpihddevice.git#commit=b5421aa946c8bfe9aec220bb48cf79c19e1c11e6
+	source = git://projects.vdr-developer.org/vdr-plugin-rpihddevice.git#commit=f4b9c55f3e4eb6e60aceba43d97f611020dc0361
 	source = 50-rpihddevice.conf
 	md5sums = SKIP
 	md5sums = 60564c9e26e39aedf8a932d8093f999a
