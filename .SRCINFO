@@ -1,15 +1,15 @@
 pkgbase = vdrctl
 	pkgdesc = Tool which adds/removes symlinks or lists the available or active plugins of vdr
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.1.1
+	pkgrel = 1
 	url = https://github.com/CReimer/vdrctl
 	arch = any
 	license = GPL3
 	depends = perl
 	depends = pkg-config
 	depends = vdr
-	source = https://github.com/CReimer/vdrctl/archive/v0.1.0.tar.gz
-	md5sums = 3ec22b89b7f02980738535d86262ac57
+	source = https://github.com/CReimer/vdrctl/archive/v0.1.1.tar.gz
+	md5sums = ccca8b2ea13bc485fdd6f194d27273a2
 
 pkgname = vdrctl
 
