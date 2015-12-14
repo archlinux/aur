@@ -1,0 +1,19 @@
+pkgbase = python-pylint-1.4.4
+	pkgdesc = Analyzes Python code looking for bugs and signs of poor quality
+	pkgver = 1.4.4
+	pkgrel = 1
+	url = http://pylint.org
+	arch = any
+	license = GPL
+	makedepends = mercurial
+	depends = python-astroid
+	depends = python-setuptools
+	depends = python-six
+	optdepends = tk: Pylint GUI
+	provides = python-pylint=1.4.4
+	conflicts = python-pylint
+	source = hg+https://felixonmars@bitbucket.org/logilab/pylint#tag=pylint-1.4.4
+	sha1sums = SKIP
+
+pkgname = python-pylint-1.4.4
+
