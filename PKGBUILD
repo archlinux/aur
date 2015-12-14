@@ -20,7 +20,7 @@ makedepends_i686=('nasm')
 makedepends_x86_64=('yasm')
 options=(!makeflags)
 install=$pkgname.install
-source=("http://downloads.sourceforge.net/project/${_srcname}/${pkgname}/${pkgver}/${_srcname}_${pkgver}_src_all.tar.bz2"
+source=("http://downloads.sourceforge.net/project/${_srcname}/${_srcname}/${pkgver}/${_srcname}_${pkgver}_src_all.tar.bz2"
         '7zFM.desktop')
 sha256sums=('fd5019109c9a1bf34ad3257d37a6853eae8151ff50345f0a3ffba7d8c5fdb995'
             '8cb662ccbacd1badc2c41ff00618c53d1c7fb8bca5472cca4ac7bd7f619acb27')
