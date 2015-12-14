@@ -1,7 +1,7 @@
 pkgbase = vdr-tvguide
 	pkgdesc = highly customizable 2D EPG viewer plugin.
 	pkgver = 1.2.2
-	pkgrel = 8
+	pkgrel = 10
 	epoch = 1
 	url = http://projects.vdr-developer.org/projects/plg-tvguide
 	arch = x86_64
