@@ -14,6 +14,5 @@ post_upgrade() {
 }
 
 pre_remove() {
-  getent passwd tor &>/dev/null && userdel tor &> /dev/null
-  getent group tor &>/dev/null && groupdel tor &> /dev/null
+  echo
 }
