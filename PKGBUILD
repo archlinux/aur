@@ -4,7 +4,7 @@
 pkgname=vdr-trayopenng
 pkgver=1.0.1
 _vdrapi=2.2.0
-pkgrel=8
+pkgrel=9
 pkgdesc="Open or close the CD/DVD tray via the menu or via a function key of the remote control"
 url="http://www.uli-eckhardt.de/vdr/trayopenng.en.shtml"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
