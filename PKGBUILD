@@ -2,8 +2,8 @@
 # * No namcap warnings or errors
 
 pkgname=ibacm
-pkgver=1.0.9
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='OpenFabrics Alliance InfiniBand communication manager daemon for librdmacm'
 #        Helps reduce load of managing path lookup records on large InfiniBand fabrics.
 #        When properly configured, can reduce SA packet load of a large IB cluster from O(n^2) to O(n).
@@ -14,7 +14,7 @@ license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('libibverbs' 'libibumad')
 source=("https://www.openfabrics.org/downloads/rdmacm/${pkgname}-${pkgver}.tar.gz"
         'ibacm.service')
-md5sums=('67c323e8c31671e27ccf5583ef8e7443'
+md5sums=('0e31f454343f5adb677c443125680eae'
          'ddb76ae6e28a18fcc984770b5699ea00')
 
 build() {
