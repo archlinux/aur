@@ -2,15 +2,15 @@
 # Maintainer: adament <adament@adament.net>
 
 pkgname=hunspell-da
-pkgver=2.2
-pkgrel=2
+pkgver=2.3
+pkgrel=1
 pkgdesc="Danish hunspell dictionaries"
 arch="any"
 url="http://www.stavekontrolden.dk/"
 license=('GPL2' 'LGPL2.1' 'MPL')
 optdepends=('hunspell:	the spell checking libraries and apps')
 source=(http://extensions.libreoffice.org/extension-center/stavekontrolden-danish-dictionary/pscreleasefolder.2011-09-30.0280139318/$pkgver/dict-da-${pkgver/./-}.oxt)
-sha256sums=('16e0bc0ae9cf90b141b69e45f7d56a61d6629542661bea03d79efb8912a5938f')
+sha256sums=('ecc4cb145d0a14403d5ec39b9fd398307fa66b3d6329b979a39de3edaeac5d15')
 
 package() {
   cd "$srcdir"
