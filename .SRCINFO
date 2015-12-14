@@ -1,0 +1,17 @@
+pkgbase = python-miniupnpc
+	pkgdesc = Repack of the original miniupnp project to facilitate install via PyPi
+	pkgver = 1.9
+	pkgrel = 1
+	url = https://github.com/chenhouwu/miniupnpc
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = python-setuptools
+	depends = python
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/m/miniupnpc/miniupnpc-1.9.tar.gz
+	md5sums = 396f0e9a694582e422d2f140ae9781d2
+	sha256sums = 498b35c5443e8de566f3a4de4bceae28fbf6e08ed59afb5ffd516d0bb718bca6
+
+pkgname = python-miniupnpc
+
