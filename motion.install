@@ -1,0 +1,14 @@
+post_install() {
+	echo " ==> Add Motion to system startup wtih 'rc-update add motion default'"
+	echo " ==> Start Motion now with 'rc-service motion start'"
+	echo " ==> Edit /etc/conf.d/motion to change paths if required"
+	echo " ==> Motion will run as *root* by default - not recommended"
+}
+
+post_upgrade() {
+	post_install "$1"
+}
+
+pre_remove() {
+	echo " ==> Make sure to 'rc-update del motion default'"
+}

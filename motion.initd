@@ -1,0 +1,45 @@
+#!/usr/bin/openrc-run
+# Apache License 2015
+
+user="${user:-root}"
+group="${group:-root}"
+daemon="${daemon:-/usr/bin/motion}"
+conf="${defaultconf:-/etc/motion/motion.conf}"
+startwait="${startwait:-500}"
+
+depend() {
+	need motion localmount
+	use mysql postgresql logger dns
+	after bootmisc
+}
+
+start_pre() {
+	if [ ! -r "${conf}" ] ; then
+		einfo "Cannot read configuration file '${conf}' - please create or edit '/etc/conf.d/motion'"
+		return 1
+	fi
+}
+
+start() {
+	ebegin "Starting ${SVCNAME}"
+
+	sh -c "start-stop-daemon \
+		--start \
+		--user ${user} \
+		--group ${group} \
+		--wait=${startwait} \
+		--exec ${daemon} \
+		-- -c ${conf}"
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+
+	start-stop-daemon \
+		${DEBUG:+"--verbose"} \
+		--stop \
+		--exec "${daemon}"
+	eend $?
+	return 0;
+}

@@ -1,0 +1,23 @@
+#!/usr/bin/openrc-run
+# Apache License 2015
+
+# What user and group should Motion run as?
+# It is recommended you create a 'motion' user, give it
+# necessary permissions for PID file and output, then
+# apply those settings here
+user="root"
+group="root"
+
+# Where is the Motion executable installed?
+daemon="/usr/bin/motion"
+
+# Where does Motion keep the configuration file(s)?
+conf="/etc/motion/motion.conf"
+
+# How long should we wait for Gogs itself to start?
+# Expects a number (in milliseconds)
+# Default 500
+startwait=500
+
+# Motion manages its own PID file - see the motion.conf
+# file for PID file location etc
