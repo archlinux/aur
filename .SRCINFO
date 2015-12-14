@@ -17,7 +17,7 @@ pkgbase = munge-git
 	source = munge-git::git+https://github.com/dun/munge.git
 	source = arch_munge.init
 	md5sums = SKIP
-	md5sums = 668942f323275199d35db5a534d9a80e
+	md5sums = 3cdaf129182a96e220c5c42ee3ac63fe
 
 pkgname = munge-git
 

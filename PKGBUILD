@@ -17,7 +17,7 @@ install=$pkgname.install
 source=("${pkgname}"::"git+https://github.com/dun/munge.git"
 	"arch_munge.init")
 md5sums=('SKIP'
-	'668942f323275199d35db5a534d9a80e')
+         '3cdaf129182a96e220c5c42ee3ac63fe')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
