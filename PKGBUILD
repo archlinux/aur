@@ -1,4 +1,5 @@
-# Maintainer: kfgz <kfgz at interia dot pl>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: kfgz <kfgz at interia dot pl>
 # Contributor: Andrea Scarpino <andrea at archlinux dot org>
 # Contributor: Jason Chu <jason at archlinux dot org>
 # Contributor: Thomas Zervogiannis <tzervo at gmail dot com>
@@ -6,7 +7,7 @@
 
 pkgname=eboard
 pkgver=1.1.1
-pkgrel=5
+pkgrel=6
 pkgdesc="A chess interface to ICS and chess engines"
 url="http://www.bergo.eng.br/eboard/"
 arch=('i686' 'x86_64')
@@ -25,7 +26,7 @@ md5sums=('03dcdaa2bc85218b1b18c4bee276fea7'
 	'8999e1c3ae7e14740c361294049c607d')
 
 build() {
-   cd "${srcdir}"/${pkgname}-${pkgver}
+   cd ${pkgname}-${pkgver}
    patch -Np0 -i "${srcdir}"/gcc-4.4.patch
    patch -Np0 -i "${srcdir}"/libpng-1.5.8.patch
    ./configure --prefix=/usr --man-prefix=/usr/share/man --extra-libs=dl
@@ -33,7 +34,7 @@ build() {
 }   
 
 package() {
-  cd "${srcdir}"/${pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
   install -d "${pkgdir}"/usr/share/{pixmaps,applications}
   install -m644 "${srcdir}"/eboard.desktop "${pkgdir}"/usr/share/applications
