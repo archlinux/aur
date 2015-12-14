@@ -7,7 +7,7 @@ pkgdesc="Pylint support for pylama"
 arch=('any')
 url="https://github.com/klen/pylama_pylint"
 license=('BSD')
-depends=('pylama' 'python-pylint=1.4.4' 'python-logilab-common')
+depends=('pylama' 'python-pylint-1.4.4' 'python-logilab-common')
 source=("https://github.com/klen/pylama_pylint/archive/$pkgver.tar.gz")
 sha256sums=('e6080ad00d3bda7cfd79b0eb6f746a4ca5bec4e1d9edb292e7d673ab4a27c1f6')
 
