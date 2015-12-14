@@ -1,7 +1,7 @@
 pkgbase = vdr-graphlcd
 	pkgdesc = VDR Plugin to support graphical LC displays
 	pkgver = 20130127
-	pkgrel = 13
+	pkgrel = 14
 	url = http://projects.vdr-developer.org/projects/show/graphlcd
 	arch = x86_64
 	arch = i686
