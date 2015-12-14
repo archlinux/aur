@@ -1,7 +1,7 @@
 pkgbase = vdr-cinebars
 	pkgdesc = Overlays cinema-bars over the live picture
 	pkgver = 0.1.0
-	pkgrel = 13
+	pkgrel = 14
 	url = http://www.egal-vdr.de/plugins/
 	arch = x86_64
 	arch = i686

@@ -4,7 +4,7 @@
 pkgname=vdr-cinebars
 pkgver=0.1.0
 _vdrapi=2.2.0
-pkgrel=13
+pkgrel=14
 pkgdesc="Overlays cinema-bars over the live picture"
 url="http://www.egal-vdr.de/plugins/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
