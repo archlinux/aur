@@ -1,7 +1,7 @@
 pkgbase = vdr-epgsearch
 	pkgdesc = Searchtimer and replacement of the VDR program menu
 	pkgver = 1.0.1.beta5_12_ga908daa
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://winni.vdr-developer.org/epgsearch
 	arch = x86_64
