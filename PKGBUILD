@@ -4,7 +4,7 @@
 pkgname=vdr-tvguideng
 pkgver=0.1.5
 _vdrapi=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="highly customizable 2D EPG viewer plugin."
 url="http://projects.vdr-developer.org/projects/plg-tvguideng"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -13,7 +13,7 @@ depends=("vdr-api=$_vdrapi" 'vdr-skindesigner')
 _plugname=${pkgname//vdr-/}
 source=("http://projects.vdr-developer.org/git/vdr-plugin-$_plugname.git/snapshot/vdr-plugin-$_plugname-$pkgver.tar.bz2")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-md5sums=('ca81e1c0d98ff62edda1e402e78c3af1')
+md5sums=('415cea445c57fee9e621bc555378e1ef')
 
 build() {
   cd "$srcdir/vdr-plugin-$_plugname-$pkgver"
