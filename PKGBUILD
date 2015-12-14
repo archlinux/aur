@@ -1,11 +1,11 @@
-# Maintainer: Steve Ponsford <stvnpnsfrd@gmail.com>
-# Contributor: Brian Bidulock <bidulock@openss7.org>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Steve Ponsford <stvnpnsfrd@gmail.com>
 # Contributor: Thayer Williams <thayer@archlinux.org>
 # Contributor: gnud <gnud@gawab.com> 
 
 pkgname=bbdock
 pkgver=0.2.9
-pkgrel=4
+pkgrel=5
 pkgdesc="An application launcher dockapp supporting PNG files and transparency"
 arch=('i686' 'x86_64')
 url="http://bbdock.nethence.com/"
@@ -19,7 +19,7 @@ md5sums=('58c19526f5c425c9a9f0f09d191a83b0'
          'f33fd591743da8fab5cd74992ee00cb1')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd ${pkgname}-${pkgver}
   patch -p1 <"${srcdir}/libpng12.patch"
 
   ./configure CPPFLAGS="-I/usr/include/libpng12 $CPPFLAGS" --prefix=/usr
@@ -27,7 +27,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd ${pkgname}-${pkgver}
   make DESTDIR="$pkgdir" install
   install -Dm655 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
