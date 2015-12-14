@@ -4,7 +4,7 @@
 pkgname=vdr-rssreader
 pkgver=2.2.1
 _vdrapi=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides a simple OSD menu based user interface for reading user-defined RSS streams"
 url="http://www.saunalahti.fi/rahrenbe/vdr/rssreader/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
