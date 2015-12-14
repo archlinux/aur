@@ -4,7 +4,7 @@
 
 pkgname=ctw
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 _branch=master
 pkgdesc="An ncurses client for retrieving weather forecasts"
 arch=('any')
@@ -42,7 +42,7 @@ package() {
   cd "$srcdir/$_gitname"
   python3 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
   install -m755 "$pkgname" "$pkgdir/usr/bin/$pkgname" 
-  install -m644 weatherfeed.py "$pkgdir/usr/lib/python3.4/"
+  install -m644 weatherfeed.py "$pkgdir/usr/lib/python3.5/"
 }
 
 # vim:set ts=2 sw=2 et:
