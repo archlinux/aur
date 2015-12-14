@@ -15,7 +15,7 @@ source=('accel-ppp::git+git://git.code.sf.net/p/accel-ppp/code'
         'dkms.conf')
 
 md5sums=('SKIP'
-         'bb0d3a131f571fc88f49d508e7026a2b')
+         '1af1d013743f7e67a84dd6605fc0045c')
 
 install=accel-ppp-ipoe-dkms-git.install
 
