@@ -7,7 +7,7 @@ User=sonarr
 Group=sonarr
 ExecStart=/usr/bin/sonarr
 Type=simple
-PIDFile=/var/lib/sonarr/sonarr/.config/NzbDrone/nzbdrone.pid
+PIDFile=/var/lib/sonarr/.config/NzbDrone/nzbdrone.pid
 Restart=always
 
 [Install]

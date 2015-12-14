@@ -7,7 +7,7 @@ _git_patches=""
 _git_patches+="783:mono-process-name "
 
 pkgname="sonarr-git"
-pkgver=2.0.0.r6542
+pkgver=2.0.0.r6602
 pkgrel=1
 pkgdesc="Automated TV series manager and downloader - git branch ${_gitbranch}"
 arch=(any)
@@ -35,8 +35,9 @@ source=("git://github.com/Sonarr/Sonarr.git#branch=${_gitbranch}"
         "sonarr.install")
 sha256sums=('SKIP'
             'd594c4d5ad3c1b196a00cb9f005d4917ad4d8bb2ebf501010e8be7f349b3caa6'
-            '579d37819eb2df8ceefae474000bb3622a1ca9f13c9bbe8ebe2882bcc47ab187'
+            '1ebf903e6199dae6032c7839b00ed20566404daf87cb307ffc9ee8539722a845'
             '7e9c1c5b5114355f4016b8c248975af19dbe40be086c1d4a555b61aac3386169')
+
 
 pkgver() {
   cd "${_gitname}"
