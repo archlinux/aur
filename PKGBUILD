@@ -90,13 +90,10 @@ package() {
   for icon in {qgis,qbrowser}_icon; do
     install -Dm644 images/icons/$icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/${icon%%_*}.svg"
   done
-  install -Dm644 images/icons/qgis-mime-icon.png "$pkgdir/usr/share/pixmaps/qgis-mime.png"
 
-  # TODO: these aren't working for some reason, ie, .qgs files are not opened by QGIS...
-  # Appears to be a conflict with some file types being defaulted to google-chrome/chromium if that's installed as well.
-  for mime in debian/mime/application/*.desktop
-    do install -Dm644 "$mime" -t "$pkgdir/usr/share/mimelnk/application/"
-  done
+  # install mime information and icon
+  install -Dm644 debian/qgis.xml "$pkgdir/usr/share/mime/packages/qgis.xml"
+  install -Dm644 images/icons/qgis-mime-icon.png "$pkgdir/usr/share/icons/hicolor/128x128/mimetypes/qgis-mime.png"
 
   # compile python files, since the cmake option doesn't seem to account for DESTDIR
   python2 -m compileall -q "$pkgdir"
