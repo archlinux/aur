@@ -4,8 +4,8 @@
 pkgbase=(harfbuzz-git)
 pkgname=(harfbuzz-git harfbuzz-icu-git)
 pkgver=1.1.2.r19.g15f2c05
-pkgrel=1
-pkgdesc="OpenType text shaping engine"
+pkgrel=2
+pkgdesc="OpenType text shaping engine (git version)"
 arch=(i686 x86_64)
 url="http://www.freedesktop.org/wiki/Software/HarfBuzz"
 license=(MIT)
