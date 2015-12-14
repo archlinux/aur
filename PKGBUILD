@@ -1,7 +1,7 @@
-# Contributor: Brian Bidulock <bidulock@openss7.org>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=fbautostart
 pkgver=2.718281828
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight XDG autostarter for Fluxbox"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/fbautostart"
@@ -12,15 +12,14 @@ md5sums=('06495f9b23b1c9b1bf35c2346cb48f63'
          '3b20fd23a403ee99b09928d2c3b70e19')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir/" install
-
   install -Dm644 $startdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
