@@ -73,25 +73,22 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname-$pkgver/build
 
   # Add optional deps based on selected or autodetected options
-  [[ -n "$(awk -F= '/^GRASS_PREFIX:/ {print $2}' build/CMakeCache.txt)" ]] && \
-    optdepends+=('grass6: GRASS6 plugin')
-  [[ -n "$(awk -F= '/^GRASS_PREFIX7:/ {print $2}' build/CMakeCache.txt)" ]] && \
-    optdepends+=('grass: GRASS7 plugin')
-  [[ "$(awk -F= '/^WITH_SERVER:/ {print $2}' build/CMakeCache.txt)" == "TRUE" ]] && \
-    optdepends+=('fcgi: Map Server')
-  [[ "$(awk -F= '/^WITH_GLOBE:/ {print $2}' build/CMakeCache.txt)" == "TRUE" ]] && \
-    optdepends+=('osgearth: Globe plugin')
+  [[ -n "$(sed -n '/^GRASS_PREFIX:/ s/.*=//p' CMakeCache.txt)" ]] && optdepends+=('grass6: GRASS6 plugin')
+  [[ -n "$(sed -n '/^GRASS_PREFIX7:/ s/.*=//p' CMakeCache.txt)" ]] && optdepends+=('grass: GRASS7 plugin')
+  [[ "$(sed -n '/^WITH_SERVER:/ s/.*=//p' CMakeCache.txt)" == "TRUE" ]] && optdepends+=('fcgi: Map Server')
+  [[ "$(sed -n '/^WITH_GLOBE:/ s/.*=//p' CMakeCache.txt)" == "TRUE" ]] && optdepends+=('osgearth: Globe plugin')
 
-  make -C build DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" install
+
+  cd "$srcdir/$pkgname-$pkgver"
 
   # install desktop files and icons
   install -Dm644 debian/{qgis,qbrowser}.desktop -t "$pkgdir/usr/share/applications/"
   for icon in qgis-icon{,-16x16,-60x60} qbrowser-icon{,-60x60}; do
-    local _resolution="${icon##*-}"
-    [[ "$_resolution" == "icon" ]] && _resolution="512x512"
+    local _resolution="${icon##*-}"; [[ "$_resolution" == "icon" ]] && _resolution="512x512"
     install -Dm644 images/icons/$icon.png "$pkgdir/usr/share/icons/hicolor/$_resolution/apps/${icon%%-*}.png"
   done
   for icon in {qgis,qbrowser}_icon; do
