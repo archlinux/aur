@@ -1,7 +1,7 @@
 pkgbase = vdr-undelete
 	pkgdesc = allows to undelete accidentally deleted VDR recordings
 	pkgver = 0.0.7
-	pkgrel = 20
+	pkgrel = 21
 	url = http://projects.vdr-developer.org/projects/plg-undelete
 	arch = x86_64
 	arch = i686

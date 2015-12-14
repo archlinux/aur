@@ -4,7 +4,7 @@
 pkgname=vdr-undelete
 pkgver=0.0.7
 _vdrapi=2.2.0
-pkgrel=20
+pkgrel=21
 pkgdesc="allows to undelete accidentally deleted VDR recordings"
 url="http://projects.vdr-developer.org/projects/plg-undelete"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
