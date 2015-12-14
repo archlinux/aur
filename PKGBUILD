@@ -10,8 +10,8 @@ arch=(i686 x86_64)
 url="http://www.freedesktop.org/wiki/Software/HarfBuzz"
 license=(MIT)
 makedepends=(glib2 freetype2 graphite cairo icu gobject-introspection)
-conflicts="harfbuzz harfbuzz-icu"
-provides="harfbuzz harfbuzz-icu"
+conflicts=(harfbuzz harfbuzz-icu)
+provides=(harfbuzz harfbuzz-icu)
 source=(git://github.com/behdad/harfbuzz.git)
 sha256sums=('SKIP')
 _gitname=harfbuzz
@@ -43,7 +43,7 @@ check() {
   PATH="$srcdir/path:$PATH" make -k check || :
 }
 
-package_harfbuzz() {
+package_harfbuzz_git() {
   depends=(glib2 freetype2 graphite)
   optdepends=('cairo: hb-view program')
 
@@ -58,7 +58,7 @@ package_harfbuzz() {
   mv "$pkgdir"/usr/include/harfbuzz/hb-icu.h ./usr/include/harfbuzz
 }
 
-package_harfbuzz-icu(){
+package_harfbuzz-icu_git(){
   pkgdesc="$pkgdesc (ICU integration)"
   depends=(harfbuzz icu)
 
