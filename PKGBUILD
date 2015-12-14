@@ -9,7 +9,7 @@
 _pack=audio
 pkgname=octave-$_pack
 pkgver=1.1.4
-pkgrel=3
+pkgrel=6
 pkgdesc="Audio recording, processing and playing tools."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
@@ -26,6 +26,10 @@ source=("http://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
 md5sums=('643dac1ecf0f31c870b4bd9ce7bbd98c')
 
+_octave_run() {
+	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
+}
+
 _install_dir() {
 	src=$1
 	dst=$2
@@ -38,10 +42,10 @@ build() {
 	_archprefix="$srcdir"/install_archprefix
 	mkdir -p "$_prefix" "$_archprefix"
 	cd "$srcdir"
-	octave -q -f --eval "$(cat <<-EOF
+	_octave_run "$(cat <<-EOF
 		pkg local_list octave_packages;
 		pkg prefix $_prefix $_archprefix;
-		pkg install -verbose -nodeps $_archive;
+		pkg install -verbose -nodeps -noauto $_archive;
 		EOF
 		)"
 }
