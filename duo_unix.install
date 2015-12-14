@@ -1,0 +1,12 @@
+post_install() {
+  echo '==> You need to make some configuration changes to use duo_unix'
+  echo '==> Instructions can be found here: https://www.duosecurity.com/docs/duounix'
+  echo '==> Make sure to use /usr/bin/login_duo rather than /usr/sbin/login_duo'
+}
+
+post_upgrade() {
+  if [[ $(vercmp $2 1.9-3) -lt 0 ]]; then
+    echo '==> login_duo has moved to /usr/bin alongside all binaries'
+    echo '==> Please update this path in your scripts or configs if applicable'
+  fi
+}
