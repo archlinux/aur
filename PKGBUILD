@@ -4,7 +4,7 @@
 pkgname=vdr-cdplayer
 pkgver=1.2.3
 _vdrapi=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="CD-Player plugin which supports CD-Text and CDDB-Database"
 url="http://uli-eckhardt.de/vdr/cdplayer.en.shtml"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')

@@ -1,7 +1,7 @@
 pkgbase = vdr-cdplayer
 	pkgdesc = CD-Player plugin which supports CD-Text and CDDB-Database
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://uli-eckhardt.de/vdr/cdplayer.en.shtml
 	arch = x86_64
 	arch = i686
