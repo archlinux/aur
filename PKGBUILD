@@ -4,7 +4,7 @@
 pkgname=vdr-wirbelscan
 pkgver=0.0.9
 _vdrapi=2.2.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Performs a channel scans for DVB-T, DVB-C and DVB-S"
 url="http://wirbel.htpc-forum.de/wirbelscan/index2.html"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
