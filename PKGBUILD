@@ -2,7 +2,7 @@
 # * No namcap warnings or errors
 
 pkgname=libcxgb4
-pkgver=1.3.5
+pkgver=1.3.6
 pkgrel=1
 pkgdesc='OpenFabrics Alliance userspace Chelsio T4/T5 iWARP RNIC driver'
 #        Plug-in module for libibverbs.
@@ -12,7 +12,7 @@ url=('https://www.openfabrics.org/downloads/cxgb4/README.html')
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('libibverbs')
 source=("https://www.openfabrics.org/downloads/cxgb4/${pkgname}-${pkgver}.tar.gz")
-md5sums=('d186d374318511c2a0c572f1433ac2c2')
+md5sums=('129b8cd955c6de29258697f98dfbb351')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
