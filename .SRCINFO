@@ -1,7 +1,7 @@
 pkgbase = vdr-tvscraper
 	pkgdesc = Runs in the background and collects metadata for all available EPG events
 	pkgver = 0.2.0
-	pkgrel = 8
+	pkgrel = 9
 	url = http://www.vdr-portal.de/board1-news/board2-vdr-news/119880-announce-tvscrapper-0-0-1/
 	arch = x86_64
 	arch = i686
