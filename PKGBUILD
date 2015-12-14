@@ -4,7 +4,7 @@
 pkgname=kodi-addon-xvdr
 pkgver=0.9.8_83_g88265b8
 _gitver=88265b86896513a219acb8d5f0c0f77956fae939
-pkgrel=1
+pkgrel=2
 url="https://github.com/pipelka/xbmc-addon-xvdr"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 license=('GPL2')
