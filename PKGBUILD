@@ -34,7 +34,7 @@ prepare() {
 build() {
   cd DSView/DSView
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release # -DCMAKE_SKIP_RPATH=1
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
   make
 }
 
