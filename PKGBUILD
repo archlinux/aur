@@ -2,7 +2,7 @@
 
 _pkgname=ocenaudio
 pkgname="$_pkgname-bin"
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="Cross-platform, easy to use, fast and functional audio editor"
 arch=('i686' 'x86_64')
@@ -13,17 +13,12 @@ depends=('desktop-file-utils' 'gtk-update-icon-cache' 'pulseaudio' 'qt5-base'
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 install=("$_pkgname.install")
-if [[ $CARCH == 'i686' ]]; then
-  _arch=32
-  sha256sums=('ce2efe35d3dede50eaeb2a36fa46d757ae720cce0b25f152c20526ff6c653b1b')
-elif [[ $CARCH == 'x86_64' ]]; then
-  sha256sums=('7f85d726b3a0b6699df22cacc61e6822b275e0346b3951ed8026befadd1fa51f')
-  _arch=64
-fi
-
-source=("http://www.ocenaudio.com.br/downloads/ocenaudio_debian${_arch}.deb"
-        "LICENSE.txt")
-sha256sums+=('056a0443fc2a8a562d193dd1acdc99933b9ceada4f8f544f89c314253b117801')
+source=("LICENSE.txt")
+sha256sums=('056a0443fc2a8a562d193dd1acdc99933b9ceada4f8f544f89c314253b117801')
+sha256sums_i686=('7515831135bfb7e2023c02f27b5c7f19711e0af111b14da10ec4ca8ddd74cef8')
+sha256sums_x86_64=('65fc9b1b2dbdb12ff782ab0b0bbb6c707c0faeaaea61e430554a492075034044')
+source_i686=("http://www.ocenaudio.com.br/downloads/ocenaudio_debian32.deb")
+source_x86_64=("http://www.ocenaudio.com.br/downloads/ocenaudio_debian64.deb")
 
 package() {
   tar -xJf ${srcdir}/data.tar.xz -C "${pkgdir}"
