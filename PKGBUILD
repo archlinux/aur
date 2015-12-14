@@ -2,7 +2,7 @@
 
 pkgname=limba-git
 pkgver=280.c75853a
-pkgrel=9
+pkgrel=10
 pkgdesc="Limba is a new project which allows 3rd-party software installations on Linux"
 arch=('i686' 'x86_64')
 url="https://github.com/ximion/limba"
@@ -32,7 +32,7 @@ package() {
   cd build 
   make DESTDIR="${pkgdir}" install
   install -Dm 644 "${srcdir}"/sources.list "${pkgdir}"/etc/limba/sources.list
-  chmod 700 "${pkgdir}"/usr/share/polkit-1/rules.d/
+  chmod 750 "${pkgdir}"/usr/share/polkit-1/rules.d/
 }
 
 pkgver() {
