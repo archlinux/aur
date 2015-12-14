@@ -4,7 +4,7 @@
 pkgname=vdr-femon
 pkgver=2.2.1
 _vdrapi=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="DVB Frontend Status Monitor plugin"
 url="http://www.saunalahti.fi/rahrenbe/vdr/femon/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
