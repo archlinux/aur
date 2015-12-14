@@ -1,8 +1,8 @@
-# Maintainer: Christian Karl <christian.karl@protonmail.com>
+# Maintainer: Christian Karl <christian dot karl at protonmail dot com>
 
 pkgname='vimiv-git'
 pkgrel=1
-pkgver=r41.597246c
+pkgver=r46.720b6c4
 pkgdesc="An image viewer with vim-like keybindings"
 arch=('any')
 url="https://github.com/karlch/vimiv"
@@ -22,9 +22,5 @@ pkgver() {
 package() {
     cd "$srcdir/$pkgname"
 
-    install -D -m755 vimiv "$pkgdir/usr/bin/vimiv"
-    install -D -m644 vimivrc.py "$pkgdir/etc/vimiv/vimivrc.py"
-    install -D -m644 vimiv.desktop "$pkgdir/usr/share/applications/vimiv.desktop"
-    install -D -m644 LICENSE "$pkgdir/usr/share/licenses/vimiv/LICENSE"
-    install -D -m644 vimiv.1 "$pkgdir/usr/share/man/man1/vimiv.1"
+    make DESTDIR="$pkgdir" install
 }
