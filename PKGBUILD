@@ -4,12 +4,12 @@
 
 pkgbase=etlegacy-git
 pkgname=('etlegacy-git' 'etlegacy-mod-git')
-pkgver=2.74.241.g3ba998b
+pkgver=2.74.443.g24ff24d
 pkgrel=1
 arch=('x86_64')
 url="http://etlegacy.com/"
 license=('GPL3')
-makedepends=('git' 'cmake' 'zip' 'alsa-lib' 'curl' 'freetype2' 'glew' 'libjpeg-turbo' 'libtheora' 'libvorbis' 'lua' 'sdl2')
+makedepends=('git' 'cmake' 'zip' 'alsa-lib' 'curl' 'freetype2' 'glew' 'libjpeg-turbo' 'libtheora' 'libvorbis' 'lua' 'minizip' 'openal' 'sdl2' 'sqlite')
 options=(!strip)
 source=('git+https://github.com/etlegacy/etlegacy.git')
 sha512sums=('SKIP')
@@ -72,7 +72,8 @@ build() {
     cmakeopts+=(
         "-D FEATURE_CURL=1"
         "-D FEATURE_OGG_VORBIS=1"
-        "-D FEATURE_OPENAL=0"
+        "-D FEATURE_THEORA=1"
+        "-D FEATURE_OPENAL=1"
         "-D FEATURE_FREETYPE=1"
         "-D FEATURE_TRACKER=0"
         "-D FEATURE_LUA=1"
@@ -90,6 +91,7 @@ build() {
         "-D FEATURE_JANSSON=0"
         "-D FEATURE_SERVERMDX=1"
         "-D FEATURE_LIVEAUTH=1"
+        "-D FEATURE_DBMS=1"
     )
     # omnibot
     cmakeopts+=(
@@ -103,7 +105,7 @@ build() {
 
 package_etlegacy-git() {
     pkgdesc="Wolfenstein: Enemy Territory 2.60b compatible client/server (etlegacy engine)"
-    depends=('etlegacy-mod-git' 'alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libtheora' 'libvorbis' 'lua' 'sdl2')
+    depends=('etlegacy-mod-git' 'alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libtheora' 'libvorbis' 'lua' 'minizip' 'openal' 'sdl2' 'sqlite')
     provides=('etlegacy')
     conflicts=('etlegacy')
     backup=('etc/xdg/etlegacy/etmain/etl_server.cfg'
