@@ -1,7 +1,7 @@
 pkgbase = vdr-filebrowser
 	pkgdesc = filebrowser with custom commands for vdr
 	pkgver = 0.2.1
-	pkgrel = 16
+	pkgrel = 17
 	url = http://opensource.holgerbrunn.net/vdr/filebrowser/
 	arch = x86_64
 	arch = i686
