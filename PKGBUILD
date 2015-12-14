@@ -5,7 +5,7 @@ pkgname=vdr-imonlcd
 pkgver=1.0.1
 epoch=1
 _vdrapi=2.2.0
-pkgrel=19
+pkgrel=20
 pkgdesc="shows information about the current state of VDR on iMON LCD"
 url="http://projects.vdr-developer.org/projects/show/plg-imonlcd"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -20,8 +20,8 @@ source=("http://projects.vdr-developer.org/attachments/download/1327/$pkgname-$p
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 md5sums=('a7f2d49355758d2ccc33ea21dbadc3de'
-         '260e88452dda6327d532ee61d5c3c45e'
-         'bf67023030f3d5547441e41a709bc7e0'
+         '995b01a6fc9eda31c2b6d6acab956cac'
+         '2b672776968e0329993a20ef56e52cc7'
          '4f012281b8a7025e99067e9945aabda0'
          'bdd88de7c03a24e7a42573b40ed7da32')
 
