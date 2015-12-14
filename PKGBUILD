@@ -9,7 +9,7 @@
 _pack=mechanics
 pkgname=octave-$_pack
 pkgver=1.3.1
-pkgrel=2
+pkgrel=4
 pkgdesc="Library with functions useful for numerical computation in classical mechanics and structural analysis."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
@@ -26,6 +26,10 @@ source=("http://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
 md5sums=('24382a5047a944ac98c41a277c264e04')
 
+_octave_run() {
+	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
+}
+
 _install_dir() {
 	src=$1
 	dst=$2
@@ -38,7 +42,7 @@ build() {
 	_archprefix="$srcdir"/install_archprefix
 	mkdir -p "$_prefix" "$_archprefix"
 	cd "$srcdir"
-	octave -q -f --eval "$(cat <<-EOF
+	_octave_run "$(cat <<-EOF
 		pkg local_list octave_packages;
 		pkg prefix $_prefix $_archprefix;
 		pkg install -verbose -nodeps $_archive;
