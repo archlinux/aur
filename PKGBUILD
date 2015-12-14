@@ -33,6 +33,13 @@ prepare() {
   # Fixing shebang for .py files
   sed -i 's/\(env \|\/usr\/bin\/\)python$/&2/' $(find . -iname "*.py")
 
+  # Remove mime types already defined by freedesktop.org
+  sed -e '/type="image\/tiff"/,/<\/mime-type>/d' \
+      -e '/type="image\/jpeg"/,/<\/mime-type>/d' \
+      -e '/type="image\/jp2"/,/<\/mime-type>/d' \
+      -e '/type="application\/x-adobe-mif"/,/<\/mime-type>/d' \
+      -i debian/qgis.xml
+
   # Fix console.py for new pyqt build system
   sed -e '/from PyQt4.QtCore/ s/$/, QT_VERSION/' \
       -e '/import pyqtconfig/d' \
