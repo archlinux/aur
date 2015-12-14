@@ -10,7 +10,7 @@
 _pack=tisean
 pkgname=octave-$_pack
 pkgver=0.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Port of TISEAN 3.0.1"
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
