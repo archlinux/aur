@@ -9,7 +9,7 @@
 _pack=io
 pkgname=octave-$_pack
 pkgver=2.2.11
-pkgrel=1
+pkgrel=3
 pkgdesc="Input/Output in external formats."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
