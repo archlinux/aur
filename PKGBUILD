@@ -1,4 +1,5 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=lutris
 pkgver=0.3.6.3
