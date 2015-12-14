@@ -34,8 +34,8 @@ if [ -n "$VIRTUAL_ENV" ]; then
 fi
 
 pkgver() {
-  cd "${_pkgname}"
-  printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
