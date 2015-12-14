@@ -1,5 +1,5 @@
 --- jumpnbump-menu.orig	2011-06-25 12:47:35.000000000 +0200
-+++ jumpnbump-menu	2015-05-22 13:26:47.153275252 +0200
++++ jumpnbump-menu	2015-12-13 11:31:09.575832463 +0100
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
@@ -17,7 +17,47 @@
  
  application = "jumpnbump-menu"
  gettext.install(application)
-@@ -214,6 +214,8 @@
+@@ -72,14 +72,6 @@
+     nogore.set_sensitive (1)
+     noflies.set_sensitive (1)
+ 
+-def fireworks_mode (widget):
+-    disable_enable_level (0)
+-    disable_enable_server (0)
+-    nogore.set_sensitive (0)
+-    nogore.set_active (0)
+-    noflies.set_sensitive (0)
+-    noflies.set_active (0)
+-
+ def disable_enable_server (setting):
+     server_entry.set_sensitive (setting)
+     player_num.set_sensitive (setting)
+@@ -127,8 +119,6 @@
+ def run (widget):
+     if (standalone.get_active()):
+         execute (*get_level()+common_options())
+-    elif (fireworks.get_active()):
+-        execute ('-fireworks', *common_options())
+     elif (client.get_active()):
+         execute ('-player', str (player_num.get_value_as_int()),
+                  '-connect', server_entry.get_text(),
+@@ -191,14 +181,13 @@
+ 
+     gui = gtk.glade.XML (gladefile, 'main', domain=application)
+ 
+-    global about_dialog, choosen_level, standalone, fireworks, client, server, treeview, \
++    global about_dialog, choosen_level, standalone, client, server, treeview, \
+            mirror, num_clients, server_entry, player_num, fullscreen, \
+            nogore, double_res, nosound, noflies, withmusic, image
+ 
+     about_dialog = None
+     choosen_level = ''
+     standalone = gui.get_widget ('standalone')
+-    fireworks = gui.get_widget ('fireworks')
+     client = gui.get_widget ('client')
+     server = gui.get_widget ('server')
+     treeview = gui.get_widget ('level_treeview')
+@@ -214,11 +203,12 @@
      noflies = gui.get_widget ('noflies')
      withmusic = gui.get_widget ('withmusic')
      image = gui.get_widget ('image')
@@ -26,3 +66,8 @@
      
      gui.signal_autoconnect ({'standalone_mode': standalone_mode,
                               'client_mode': client_mode,
+                              'server_mode': server_mode,
+-                             'fireworks_mode': fireworks_mode,
+                              'level_changed': level_changed, 
+                              'quit': lambda *args: gtk.main_quit(),
+                              'run': run,
