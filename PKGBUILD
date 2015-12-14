@@ -1,6 +1,6 @@
 # Maintainer: Daniel Escoz <darkhogg[at]gmail[dot]com>
 pkgname=trainsported-git
-pkgver=r571.246d9bc
+pkgver=r592.d5869a7
 pkgrel=1
 pkgdesc="A game about writing train AIs."
 url="http://trainsportedgame.no-ip.org/"
