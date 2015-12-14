@@ -2,7 +2,7 @@
 
 pkgname=c++-gtk-utils-gtk2
 _pkgname=c++-gtk-utils
-pkgver=2.0.24
+pkgver=2.0.29
 pkgrel=1
 pkgdesc="Classes and functions for programming in GTK+"
 arch=('i686' 'x86_64')
@@ -14,10 +14,10 @@ conflicts=($_pkgname)
 depends=('gtk2')
 options=('!libtool' '!docs' '!emptydirs')
 source=("http://downloads.sourceforge.net/project/cxx-gtk-utils/cxx-gtk-utils/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('61cdf1bf94a5ac3430dd5ea39946142b')
+md5sums=('9fdc2f04cd4dffb619002b66a1191032')
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd ${_pkgname}-${pkgver}
 
   ./configure-gtk2 --prefix=/usr \
               --disable-rpath \
@@ -26,7 +26,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd ${_pkgname}-${pkgver}
 
   make DESTDIR="${pkgdir}" install
 }
