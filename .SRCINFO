@@ -1,7 +1,7 @@
 pkgbase = vdr-dbus2vdr
 	pkgdesc = Expose some methods via DBus to control the vdr
 	pkgver = 26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flensrocker/vdr-plugin-dbus2vdr
 	arch = x86_64
 	arch = i686
