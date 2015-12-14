@@ -1,22 +1,20 @@
 # Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 pkgname=firefox-extension-privacybadger
-pkgver=1.0.2
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Privacy Badger blocks spying ads and invisible trackers."
 license=('GPL3')
 arch=('any')
 url="https://www.eff.org/privacybadger"
 depends=("firefox")
-source=("https://www.eff.org/files/privacy-badger-latest.xpi")
-sha256sums=('bea838d1e7e5fbd581cf80cfffa6e9c2be64925160154473ec3b8c5876631c65')
+source=("https://addons.cdn.mozilla.net/user-media/addons/506646/privacy_badger-1.0.5-fx.xpi")
+sha256sums=('fa2a143ffac744187b2e45c449a1cdb892c0863a6667d39308d4d08bc5efc249')
 
 package() {
   cd $srcdir
-  emid=$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' install.rdf) || return 1
-
-  local dstdir=$pkgdir/usr/lib/firefox/browser/extensions/${emid}
-  install -d $dstdir
-  cp -dpr --no-preserve=ownership * $dstdir
-  rm $dstdir/privacy-badger-latest.xpi
-  chmod -R 755 $dstdir
+  local _emid=$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' install.rdf) || return 1
+  test ! -z "${_emid}"
+  local _file=(*.xpi)
+  test "${#_file[@]}" -eq 1
+  install -Dpm644 "${_file}" "${pkgdir}/usr/lib/firefox/browser/extensions/${_emid}.xpi"
 }
