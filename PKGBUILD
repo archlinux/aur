@@ -5,7 +5,7 @@
 
 pkgname=libdvbcsa
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A free implementation of the DVB Common Scrambling Algorithm"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="http://www.videolan.org/developers/libdvbcsa.html"
