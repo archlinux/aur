@@ -1,0 +1,16 @@
+pkgbase = foma
+	pkgdesc = A set of utilities for constructing finite-state automata and transducers
+	pkgver = 0.9.18
+	pkgrel = 1
+	url = https://code.google.com/p/foma/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	depends = zlib
+	depends = termcap
+	depends = readline
+	source = https://bitbucket.org/mhulden/foma/downloads/foma-0.9.18.tar.gz
+	md5sums = 70c8d11f477bec87cc5a5a1e4ad57ee5
+
+pkgname = foma
+
