@@ -3,7 +3,7 @@
 pkgname=wmcdplay
 pkgdesc="A CD player WindowMaker dock app"
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 url="http://windowmaker.org/dockapps/?name=$pkgname"
 license=('GPL')
