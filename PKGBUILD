@@ -26,7 +26,7 @@ package() {
 
     # copy config in etc and link it
     cp usr/share/webapps/${pkgname}/config.php.default etc/webapps/${pkgname}/config.php
-    cp usr/share/webapps/${pkgname}/config.php.default etc/webapps/${pkgname}/config.php.default
+    mv usr/share/webapps/${pkgname}/config.php.default etc/webapps/${pkgname}/config.php.default
     ln -s ../../../../etc/webapps/${pkgname}/config.php usr/share/webapps/${pkgname}/config.php
     ln -s ../,,/,,/,,/etc/webapps/${pkgname}/config.php.default usr/share/webapps/${pkgname}/config.php.default
     rm ../../../../etc/webapps/${pkgname}/config.php
