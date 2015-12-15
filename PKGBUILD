@@ -6,19 +6,19 @@
 
 pkgname=wine-d3dadapter
 _pkgbasename=wine
-pkgver=1.7.55
+pkgver=1.8rc1
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
 
-source=(https://dl.winehq.org/wine/source/1.7/$_pkgbasename-$_pkgbasever.tar.bz2
+source=(https://dl.winehq.org/wine/source/1.8/$_pkgbasename-$_pkgbasever.tar.bz2
         30-win32-aliases.conf
         wine-d3d9-$pkgver.patch)
-sha1sums=('55c4af456f08ca4fcf67785bc7a90280c752fc06'
+sha1sums=('fe0afdbe16841077975b601935a0469d5bf9cff7'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
-          '20787cb633b2c454c0cb7a91fd912c419a7fb36f')
+          '88f2705d254a95da5c2c42c8817bcaa1d3ce5081')
 
-pkgdesc="A compatibility layer for running Windows programs (with d3dadapter patch)"
+pkgdesc="A compatibility layer for running Windows programs"
 url="http://www.winehq.com"
 arch=(i686 x86_64)
 options=(staticlibs)
@@ -96,40 +96,31 @@ if [[ $CARCH == i686 ]]; then
   optdepends=(${optdepends[@]/*32-*/})
 else
   makedepends=(${makedepends[@]} ${_depends[@]})
-  provides=('wine' 'bin32-wine=$pkgver' 'wine-wow64=$pkgver' 'wine-staging=$pkgver')
-  conflicts=('wine' 'bin32-wine' 'wine-wow64' 'wine-staging')
+  provides=("wine" "bin32-wine=$pkgver" "wine-wow64=$pkgver")
+  conflicts=('wine''bin32-wine' 'wine-wow64''wine-staging')
 fi
 
 prepare() {
   cd $_pkgbasename-$_pkgbasever
-
-  sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
-
   msg2 "patching d3d9..."
   patch -p1 -i "${srcdir}/wine-d3d9-${pkgver}.patch" 
-}
-
-build() {
-  cd "$srcdir"
-
-  # remove once https://bugs.winehq.org/show_bug.cgi?id=38653 is resolved
-  export CFLAGS="${CFLAGS/-O2/} -O0"
-  export CXXFLAGS="${CXXFLAGS/-O2/} -O0"
-
+  autoreconf -f
+  cd ..
   # Allow ccache to work
   mv $_pkgbasename-$_pkgbasever $_pkgbasename
 
-cd $_pkgbasename
-  autoreconf -f
-  cd ..
+  sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i $_pkgbasename/configure*
 
+# These additional CPPFLAGS solve FS#27662 and FS#34195
+export CPPFLAGS="${CPPFLAGS/-D_FORTIFY_SOURCE=2/} -D_FORTIFY_SOURCE=0"
 
   # Get rid of old build dirs
   rm -rf $_pkgbasename-{32,64}-build
   mkdir $_pkgbasename-32-build
+}
 
-  # These additional CPPFLAGS solve FS#27662 and FS#34195
-  export CPPFLAGS="${CPPFLAGS/-D_FORTIFY_SOURCE=2/} -D_FORTIFY_SOURCE=0"
+build() {
+cd "$srcdir"
 
   if [[ $CARCH == x86_64 ]]; then
     msg2 "Building Wine-64..."
