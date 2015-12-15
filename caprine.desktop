@@ -1,0 +1,9 @@
+[Desktop Entry]
+Exec=caprine %U
+Name=Caprine
+GenericName=Facebook Instant Messenger
+Icon=Caprine
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Network;InstantMessaging;
