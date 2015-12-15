@@ -1,7 +1,7 @@
 # Maintainer: Tatsunori Aoki <ginjiro.135 at gmail dot com>
 # Contributor: kuina <kuinanein at gmail dot com>
 pkgname=man-pages-ja
-pkgver=0.5.0.0.20151214
+pkgver=0.5.0.0.20151215
 pkgrel=1
 pkgdesc="Man pages for Japanese"
 arch=('any')
