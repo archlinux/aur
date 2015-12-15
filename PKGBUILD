@@ -3,7 +3,7 @@
 pkgname=slim-xdm
 _pkgname=slim
 pkgver=1.3.6.30
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop-independent graphical login manager for X11 with XDM support"
 arch=('i686' 'x86_64')
 #url="http://slim.berlios.de/"
