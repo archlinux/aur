@@ -3,7 +3,7 @@
 # Contributor: Stefan Husmann <Stefan-Husmann@t-online.de>
 pkgname=xpaint
 pkgver=2.9.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A color image editing tool which features most standard \
 paint program options."
 arch=('i686' 'x86_64')
