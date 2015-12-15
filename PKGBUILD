@@ -10,6 +10,7 @@ _GRUB_EMU_BUILD="0"
 
 _pkgver="2.02"
 _GRUB_GIT_TAG="grub-2.02-beta2"
+_GRUB_EXTRAS_COMMIT=4a56e2c2cc3d78f12f1788c27669a651071dee49
 
 _UNIFONT_VER="6.3.20131217"
 
@@ -22,8 +23,8 @@ _UNIFONT_VER="6.3.20131217"
 pkgname="grub"
 pkgdesc="GNU GRand Unified Bootloader (2)"
 pkgver=2.02.beta2
-pkgrel=5
-epoch="1"
+pkgrel=6
+epoch=1
 url="https://www.gnu.org/software/grub/"
 arch=('x86_64' 'i686')
 license=('GPL3')
@@ -53,11 +54,12 @@ if [[ "${_GRUB_EMU_BUILD}" == "1" ]]; then
 fi
 
 source=("grub-${_pkgver}::git+git://git.sv.gnu.org/grub.git#tag=${_GRUB_GIT_TAG}"
-        "grub-extras::git+git://git.sv.gnu.org/grub-extras.git#branch=master"
+        "grub-extras::git+git://git.sv.gnu.org/grub-extras.git#commit=${_GRUB_EXTRAS_COMMIT}"
         "http://ftp.gnu.org/gnu/unifont/unifont-${_UNIFONT_VER}/unifont-${_UNIFONT_VER}.bdf.gz"
         "http://ftp.gnu.org/gnu/unifont/unifont-${_UNIFONT_VER}/unifont-${_UNIFONT_VER}.bdf.gz.sig"
+        '0001-Fix-security-issue-when-reading-username-and-passwor.patch'
         'grub-10_linux-detect-archlinux-initramfs.patch'
-	'grub-intel-ucode.patch'
+        'grub-intel-ucode.patch'
         'grub-add-GRUB_COLOR_variables.patch'
         '60_memtest86+'
         'grub.default'
@@ -67,8 +69,9 @@ md5sums=('SKIP'
          'SKIP'
          '728b7439ac733a7c0d56049adec364c7'
          'SKIP'
+         '9589ec46a04f9bb4d5da987340a4a324'
          '945527e0de8d384166a4cf23439ae9ee'
-	 'a678629bc82c4e70c48d28242036d1d7'
+         'a678629bc82c4e70c48d28242036d1d7'
          'e506ae4a9f9f7d1b765febfa84e10d48'
          'be55eabc102f2c60b38ed35c203686d6'
          'a03ffd56324520393bf574cefccb893d'
@@ -83,6 +86,9 @@ _pkgver() {
 prepare() {
 	
 	cd "${srcdir}/grub-${_pkgver}/"
+
+	# CVE-2015-8370
+	patch -Np1 -i ../0001-Fix-security-issue-when-reading-username-and-passwor.patch
 	
 	msg "Patch to load Intel microcode"
 	patch -Np1 -i "${srcdir}/grub-intel-ucode.patch"
