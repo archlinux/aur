@@ -27,13 +27,13 @@ if (pacman -Q lm_sensors >/dev/null); then
 fi
 
 pkgver() {
-	cd ${pkgbase}
+	cd "${pkgbase}"
 	_rev=$(git rev-list --count HEAD)
 	printf "1.0.r$_rev"
 }
 
 build() {
-	cd ${pkgbase}
+	cd "${pkgbase}"
 	if (pacman -Q libatasmart >/dev/null); then
 		msg "building against libatasmart"
 		cmake -DUSE_ATASMART:BOOL=ON -DCMAKE_INSTALL_PREFIX:PATH=/usr \
@@ -52,18 +52,18 @@ package_thinkfan-openrc() {
 	replaces=("${pkgname}<=$pkgver" "${pkgname}-git<=$pkgver")
 	depends+=('openrc')
 	install="openrc.install"
-	cd ${pkgbase}
-	make install DESTDIR=${pkgdir}
-	install -d ${pkgdir}/etc
+	cd "${pkgbase}"
+	make install DESTDIR="${pkgdir}"
+	install -d "${pkgdir}"/etc
 ###let this thing run at full speed(7) unitl configured
-	printf "#full speed see /usr/share/doc/thinkfan for proper configuration\n(7,0,32767)\n" > ${pkgdir}/etc/thinkfan.conf
+	printf "#full speed see /usr/share/doc/thinkfan for proper configuration\n(7,0,32767)\n" > "${pkgdir}"/etc/thinkfan.conf
 ###not really needed 
 	sed -i 's|#!/sbin/runscript|#!/usr/bin/openrc-run|' rcscripts/thinkfan.gentoo
-	install -Dm755 rcscripts/thinkfan.gentoo ${pkgdir}/etc/init.d/thinkfan
-	install -Dm644 COPYING ${pkgdir}/usr/share/licenses/thinkfan/COPYING
+	install -Dm755 rcscripts/thinkfan.gentoo "${pkgdir}"/etc/init.d/thinkfan
+	install -Dm644 COPYING "${pkgdir}"/usr/share/licenses/thinkfan/COPYING
 ###thinkpad modules load
-	install -d ${pkgdir}/etc/modprobe.d
-	printf "options thinkpad_acpi fan_control=1" > ${pkgdir}/etc/modprobe.d/thinkfan-thinkpad.conf
+	install -d "${pkgdir}"/etc/modprobe.d
+	printf "options thinkpad_acpi fan_control=1" > "${pkgdir}"/etc/modprobe.d/thinkfan-thinkpad.conf
 }
 
 package_thinkfan-systemd() {
@@ -72,14 +72,15 @@ package_thinkfan-systemd() {
 	replaces=("${pkgname}<=$pkgver" "${pkgname}-git<=$pkgver")
 	depends+=('systemd')
 	install="systemd.install"
-	cd ${pkgbase}
-	make install DESTDIR=${pkgdir}
-	install -d ${pkgdir}/etc
+	cd "${pkgbase}"
+	make install DESTDIR="${pkgdir}"
+	install -d "${pkgdir}"/etc
 ###let this thing run at full speed(7) unitl configured
-	printf "#full speed see /usr/share/doc/thinkfan for proper configuration\n(7,0,32767)\n" > ${pkgdir}/etc/thinkfan.conf
-	install -Dm644 rcscripts/thinkfan.service ${pkgdir}/usr/lib/systemd/system/thinkfan.service
+	printf "#full speed see /usr/share/doc/thinkfan for proper configuration\n(7,0,32767)\n" > "${pkgdir}"/etc/thinkfan.conf
+	install -Dm644 rcscripts/thinkfan.service "${pkgdir}"/usr/lib/systemd/system/thinkfan.service
+	install -Dm644 COPYING "${pkgdir}"/usr/share/licenses/thinkfan/COPYING
 ###thinkpad modules load
-	install -d ${pkgdir}/etc/modprobe.d
-	printf "options thinkpad_acpi fan_control=1" > ${pkgdir}/etc/modprobe.d/thinkfan-thinkpad.conf
+	install -d "${pkgdir}"/etc/modprobe.d
+	printf "options thinkpad_acpi fan_control=1" > "${pkgdir}"/etc/modprobe.d/thinkfan-thinkpad.conf
 }
 

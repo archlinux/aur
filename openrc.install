@@ -10,9 +10,11 @@ post_install() {
 
 For proper configuration see README and example configurations in /usr/share/doc/thinkfan
 
-#2 add/enable the service:
+#2 add/enable the service at boot:
 
 rc-update add thinkfan default
+
+#3 reboot!
 
 EOF
 sleep 5
