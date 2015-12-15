@@ -35,11 +35,11 @@ EOF
 }
 
 package_glare-themes() {
-	pkgname=("${pkgname}" "${pkgname}-git=${pkgver}")
+	pkgname=("${pkgname}")
 	provides=("${pkgname}" "${pkgname}-git=${pkgver}")
 	conflicts=("${pkgname}" "${pkgname}-git<${pkgver}")
 	replaces=("${pkgname}" "${pkgname}-git<${pkgver}")
-	pkgdesc='A generic theme for X11 desktops(includes GTK2, GTK3, Kvantum, XFWM, Marco, LXQt, WinAMP & SLiM themes)'
+	pkgdesc='simple toolkit independent theme for a less distracted desktop experience'
 	optdepends=(
 	'gtk2: for the GTK2 theme'
 	'gtk-engines: for transparent Icons and text in the GTK2 theme'
