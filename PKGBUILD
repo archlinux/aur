@@ -3,7 +3,7 @@
 
 pkgname=wrk2-git
 _pkgname=wrk2
-pkgver=r82.6a91d32
+pkgver=r87.c4250ac
 pkgrel=1
 pkgdesc='a HTTP benchmarking tool based mostly on wrk'
 arch=('i686' 'x86_64')
