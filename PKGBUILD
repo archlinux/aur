@@ -17,7 +17,7 @@ pkgver() {
 }
 
 build() {
-	cd ${pkgbase}
+	cd "${pkgbase}"
 	msg "executing color script...."
 	cat <<\EOF
  
@@ -37,29 +37,29 @@ EOF
 package_glare-themes() {
 	pkgname=("${pkgname}")
 	provides=("${pkgname}" "${pkgname}-git=${pkgver}")
-	conflicts=("${pkgname}" "${pkgname}-git<${pkgver}")
-	replaces=("${pkgname}" "${pkgname}-git<${pkgver}")
+	conflicts=("${pkgname}" "${pkgname}-git<=${pkgver}")
+	replaces=("${pkgname}" "${pkgname}-git<=${pkgver}")
 	pkgdesc='simple toolkit independent theme for a less distracted desktop experience'
 	optdepends=(
-	'gtk2: for the GTK2 theme'
-	'gtk-engines: for transparent Icons and text in the GTK2 theme'
-	'gtk3: for the GTK3 theme'
-	'gtk3-nocsd: strongly recommend for the GTK3 theme'
-	'qt4-style-kvantum: for the Qt4 theme'
-	'qt5-style-kvantum: for the Qt5 theme'
-	'kvantum-manager: to easily change the Qt themes'
-	'xfwm4: for full Xfce support'
-	'xfce4-notifyd: for full Xfce support'
-	'slim: inludes a SLiM theme'
-	'audacious: includes a Winamp2.x Skin'
-	'qmmp: includes a Winamp 2.x Skin'
-	'palemoon: Inludes a PaleMoon fix'
-	'openbox: Includes Openbox 3 themes'
-	'lxqt-config: Includes a LXQt theme')	
+		'gtk2: for the GTK2 theme'
+		'gtk-engines: for transparent Icons and text in the GTK2 theme'
+		'gtk3: for the GTK3 theme'
+		'gtk3-nocsd: strongly recommend for the GTK3 theme'
+		'qt4-style-kvantum: for the Qt4 theme'
+		'qt5-style-kvantum: for the Qt5 theme'
+		'kvantum-manager: to easily change the Qt themes'
+		'xfwm4: for full Xfce support'
+		'xfce4-notifyd: for full Xfce support'
+		'slim: inludes a SLiM theme'
+		'audacious: includes a Winamp2.x Skin'
+		'qmmp: includes a Winamp 2.x Skin'
+		'palemoon: Inludes a PaleMoon fix'
+		'openbox: Includes Openbox 3 themes'
+		'lxqt-config: Includes a LXQt theme')	
 	###start here
-	install -d ${pkgdir}/usr/{share/{themes,color-schemes,apps/color-schemes,lxqt/themes,audacious/Skins,qmmp/skins,slim/themes,aurorae/themes},lib/palemoon/browser/extensions/}
-	mv ${pkgbase} ${pkgdir}/usr/share/themes/Glare
-	cd ${pkgdir}/usr/share/themes
+	install -d "${pkgdir}"/usr/{share/{themes,color-schemes,apps/color-schemes,lxqt/themes,audacious/Skins,qmmp/skins,slim/themes,aurorae/themes},lib/palemoon/browser/extensions/}
+	mv "${pkgbase}" "${pkgdir}"/usr/share/themes/Glare
+	cd "${pkgdir}"/usr/share/themes
 	ln -sv Glare/GlareYang
 	ln -sv Glare/GlareYin
 	ln -sv Glare/EXTRAS/WinDecos/Glare-cupertino-dusK-x1.5
@@ -68,7 +68,7 @@ package_glare-themes() {
 	ln -sv Glare/EXTRAS/WinDecos/Glare-default
 	if [ -f /usr/bin/gtk3-widget-factory ]; then
 		_gtk3majver=$(pacman -Q gtk3|cut -d" " -f2|sed 's/^\(.\{4\}\).*/\1/')
-		cd ${pkgdir}/usr/share/themes/Glare/GlareYang
+		cd "${pkgdir}"/usr/share/themes/Glare/GlareYang
 		if [ -d gtk-"$(echo $_gtk3majver)" ]; then
 			printf "\nGTK3 version is $_gtk3majver, relinking themes\n"
 			rm -v gtk-3.0
@@ -79,21 +79,21 @@ package_glare-themes() {
 		fi
 	fi
 #KDEStuff
-	cd ${pkgdir}/usr/share/color-schemes
+	cd "${pkgdir}"/usr/share/color-schemes
 	ln -sv ../themes/Glare/EXTRAS/ConfigFiles/KDEColorScheme/GlareYang.colors
 	ln -sv ../themes/Glare/EXTRAS/ConfigFiles/KDEColorScheme/GlareYin.colors
-	cd ${pkgdir}/usr/share/apps/color-schemes
+	cd "${pkgdir}"/usr/share/apps/color-schemes
 	ln -sv ../../themes/Glare/EXTRAS/ConfigFiles/KDEColorScheme/GlareYang.colors
 	ln -sv ../../themes/Glare/EXTRAS/ConfigFiles/KDEColorScheme/GlareYin.colors
-	cd ${pkgdir}/usr/share/aurorae/themes
+	cd "${pkgdir}"/usr/share/aurorae/themes
 	ln -sv ../../themes/Glare/EXTRAS/WinDecos/Glare-default/Aurorae/Glare
 #otherstuff
-	install -Dm0644 ${pkgdir}/usr/share/themes/Glare/EXTRAS/Winamp2.xSkin/Glare-qmmp.wsz ${pkgdir}/usr/share/qmmp/skins/Glare-qmmp.wsz
-	install -Dm0644 ${pkgdir}/usr/share/themes/Glare/EXTRAS/Winamp2.xSkin/Glare.wsz ${pkgdir}/usr/share/audacious/Skins/Glare.wsz
-	cd ${pkgdir}/usr/share/lxqt/themes
+	install -Dm0644 "${pkgdir}"/usr/share/themes/Glare/EXTRAS/Winamp2.xSkin/Glare-qmmp.wsz "${pkgdir}"/usr/share/qmmp/skins/Glare-qmmp.wsz
+	install -Dm0644 "${pkgdir}"/usr/share/themes/Glare/EXTRAS/Winamp2.xSkin/Glare.wsz "${pkgdir}"/usr/share/audacious/Skins/Glare.wsz
+	cd "${pkgdir}"/usr/share/lxqt/themes
 	ln -sv ../../themes/Glare/EXTRAS/LXQtTheme/Glare
-	cd ${pkgdir}/usr/share/slim/themes
+	cd "${pkgdir}"/usr/share/slim/themes
 	ln -sv ../../themes/Glare/EXTRAS/SLiMTheme/GlareSimple
-	cd ${pkgdir}/usr/lib/palemoon/browser/extensions
+	cd "${pkgdir}"/usr/lib/palemoon/browser/extensions
 	ln -sv ../../../../share/themes/Glare/EXTRAS/PaleMoonFixes/Glare.xpi Glare@ssfgh.com.xpi
 }
