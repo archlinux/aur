@@ -2,7 +2,7 @@
 
 pkgname=dvbcut-qt4
 pkgver=273.3c1f90f
-pkgrel=2
+pkgrel=3
 pkgdesc='QT4 port of dvbcut, an MPEG2 video editing software'
 arch=('i686' 'x86_64')
 url='https://github.com/nextghost/dvbcut-qt4'
@@ -12,8 +12,10 @@ optdepends=('mplayer: for video playback inside of DVBCUT')
 makedepends=('git')
 conflicts=("dvbcut")
 install="$pkgname.install"
-source=("$pkgname::git+https://github.com/nextghost/dvbcut-qt4.git")
-sha256sums=('SKIP')
+source=("$pkgname::git+https://github.com/nextghost/dvbcut-qt4.git"
+        "file_dialog.patch")
+sha256sums=('SKIP'
+            "0a8aff42f7543d1d31cf1ff6f8112e915b48d2a44d4da45afd37d27eecabcdac")
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -22,6 +24,8 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
+  # Applying patch
+  patch src/dvbcut.cpp < "${srcdir}/file_dialog.patch"
   qmake-qt4 dvbcut.pro
   make
   # Adjust desktop file

@@ -1,0 +1,25 @@
+From d66bf2f60664cbb4a050d72c76c6e06a510438f8 Mon Sep 17 00:00:00 2001
+From: Tinxy <arch at tinx dot eu>
+Date: Tue, 15 Dec 2015 16:18:49 +0100
+Subject: [PATCH] Fixed file dialog
+
+---
+ src/dvbcut.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/dvbcut.cpp b/src/dvbcut.cpp
+index 4d1a87d..43a48e3 100644
+--- a/src/dvbcut.cpp
++++ b/src/dvbcut.cpp
+@@ -1019,7 +1019,7 @@ void dvbcut::open(std::list<std::string> filenames, std::string idxfilename, std
+ 	  QString s=QFileDialog::getSaveFileName(
+ 		  this,
+ 		  tr("Choose the name of the index file"),
+-		  "file:" + finfo.fileName(),
++		  finfo.fileName(),
+ 		  tr(DVBCUT_IDXFILTER),
+ 		  NULL,
+ 		  QFileDialog::DontConfirmOverwrite);
+-- 
+2.6.4
+
