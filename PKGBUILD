@@ -10,7 +10,7 @@ depends=("php")
 install="${pkgname}.install"
 source=("https://github.com/Halleck45/PhpMetrics/raw/v${pkgver}/build/${pkgname}.phar"
         "https://raw.githubusercontent.com/Halleck45/PhpMetrics/v${pkgver}/LICENSE")
-sha512sums=('5cbab771fde11dc8a9b34aa57ca1c961abecaa0534daec23c9eaa69b472c046995b2a40768f038d0cfedf22b60d666235a319ab706cb3a498e82cf71827aa078'
+sha512sums=('330594c4ffee43e17272d73a52e56662aff2fd036bb7552814e2ebad1441920fffc14381d240f0bbdce9f663270214bc0a61a5a9b9729c4696cb44cc37750a2b'
             'be822058c3c747ff43933ef66163ae99ed3901f8633f561811ada1d7d761309188301ae6ace33d3f53195793f0a500462ee666c7089faa2c80b6d9809a1b61b3')
 
 package() {
