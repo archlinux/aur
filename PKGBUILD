@@ -10,7 +10,7 @@ url="https://github.com/itchio/itch"
 license=('MIT')
 
 depends=('alsa-lib' 'libnotify' 'nss' 'gconf' 'gtk2' 'libxtst' 'desktop-file-utils' 'gtk-update-icon-cache')
-makedepends=('nodejs-babel-cli' 'sassc' 'electron' 'nodejs')
+makedepends=('nodejs-babel-cli' 'sassc' 'electron' 'nodejs' 'nodejs-grunt-cli')
 options=('!strip')
 install="itch.install"
 
