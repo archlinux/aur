@@ -3,7 +3,7 @@
 pkgname=icewm2
 _realname=icewm
 pkgver=1.3.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager designed for speed, usability and consitency (enhanced)"
 arch=('i686' 'x86_64')
 url="http://github.com/bbidulock/icewm"
