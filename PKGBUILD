@@ -40,6 +40,10 @@ pkgver() {
 }
 
 build() {
+  cd Clementine
+  git revert -n 170c64cd8bef9df2ea88dd4f72eec641c250bcfd
+  cd ../
+
   mkdir -p build
   cd build
 
