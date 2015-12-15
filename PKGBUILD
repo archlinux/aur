@@ -9,13 +9,14 @@
 pkgname=p7zip-gui
 _srcname=p7zip
 pkgver=9.38.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphic user interface (alpha quality) for the 7zip file archiver'
 url='http://p7zip.sourceforge.net/'
 license=('GPL' 'custom')
 arch=('i686' 'x86_64')
 depends=('p7zip' 'gcc-libs' 'sh' 'wxgtk')
 optdepends=('desktop-file-utils: desktop entries')
+makedepends=('webkitgtk2')
 makedepends_i686=('nasm')
 makedepends_x86_64=('yasm')
 options=(!makeflags)
@@ -41,7 +42,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_srcname}_${pkgver}"
-  make all4 OPTFLAGS="${CFLAGS}"
+  make 7zFM 7zG OPTFLAGS="${CFLAGS}"
 }
 
 package() {
@@ -52,7 +53,7 @@ package() {
 	DEST_MAN="/usr/share/man"
 
   # remove files provided by p7zip package
-  rm -fR "${pkgdir}/"{usr/bin,usr/lib/p7zip}/{7z,7za,7zr,7z.so,7zCon.sfx,Codecs}
+  rm -fR "${pkgdir}/usr/lib/p7zip/"{7z.so,Codecs}
   rm -R "${pkgdir}/usr/share/"{doc,man}
 
   install -Dm644 GUI/p7zip_32.png "${pkgdir}/usr/share/icons/hicolor/32x32/apps/p7zip.png"
