@@ -4,12 +4,16 @@ _datadir=/usr/share/webapps/librenms
 _etcdir=/etc/webapps/librenms
 
 post_install() {
+    echo "Adding new User"
     useradd librenms -d /usr/share/webapps/librenms -M -r
     usermod -a -G librenms http
+    echo "Changing file permissions"
     chown -R librenms:librenms /usr/share/webapps/${pkgname}
     chown -R librenms:librenms /etc/webapps/${pkgname}
     chown http:http /var/log/${pkgname}
-
+    echo "Install new pear modules"
+    pear install Net_IPv4
+    pear install Net_IPv6
     echo "You have to configure the database configuration"
     echo "in ${_etcdir}/config.php"
 }

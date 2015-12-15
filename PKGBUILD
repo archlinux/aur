@@ -36,5 +36,5 @@ package() {
     # php.ini
     install -dm0755 $pkgdir/etc/php/conf.d/
  
-   echo 'open_basedir = ${open_basedir}:/usr/share/webapps/librenms:/etc/webapps/librenms' > etc/php/conf.d/${pkgname}.ini
+   echo 'open_basedir = ${open_basedir}:/usr/share/webapps/librenms:/etc/webapps/librenms:/proc' > etc/php/conf.d/${pkgname}.ini
 }
