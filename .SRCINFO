@@ -13,7 +13,7 @@ pkgbase = python-toxcore
 	makedepends = python
 	depends = toxcore
 	depends = python
-	source = git+https://github.com/abbat/pytoxcore.git#tag=v0.0.17
+	source = git+https://github.com/abbat/pytoxcore.git#tag=v0.0.18
 	sha512sums = SKIP
 
 pkgname = python-toxcore
