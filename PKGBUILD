@@ -2,7 +2,7 @@
 
 pkgbase=mpv
 pkgname=mpv-light
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='Video player based on MPlayer/mplayer2, with selection of features.'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ provides=("${pkgbase}")
 conflicts=("${pkgbase}")
 install=mpv.install
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/mpv-player/${pkgbase}/archive/v${pkgver}.tar.gz")
-sha256sums=('1372704fd8f5701ef7d60f347fd15fe536e23ef148279bf4a4415e72896912db')
+sha256sums=('042937f483603f0c3d1dec11e8f0045e8c27f19eee46ea64d81a3cdf01e51233')
 
 prepare() {
   cd ${pkgbase}-${pkgver}
@@ -30,6 +30,7 @@ build() {
   ./waf configure --prefix=/usr \
     --confdir=/etc/mpv \
     --lua=52arch \
+    --enable-gpl3 \
     --enable-zsh-comp \
     --enable-libmpv-shared \
     --enable-termios \
@@ -62,7 +63,6 @@ build() {
     --disable-tv \
     --disable-tv-v4l2 \
     --disable-libv4l2 \
-    --disable-pvr \
     --disable-dvbin
 
   ./waf build
