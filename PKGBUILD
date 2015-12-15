@@ -3,9 +3,9 @@
 # Contributors: L43y, aeosynth, Dan Serban, Kalipath
 _name=firefox
 _channel=aurora
-_milestone=44.0a2
+_milestone=45.0a2
 pkgname="${_name}-${_channel}"
-pkgver=44.0a2.20151213004008
+pkgver=45.0a2.20151214122242
 pkgrel=1
 pkgdesc="Firefox Aurora channel - Nightly build"
 url="http://www.mozilla.org/en-US/${_name}/${_channel}/"
