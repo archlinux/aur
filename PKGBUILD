@@ -10,8 +10,8 @@ url="http://www.kornelix.com/picpuz/"
 license=('GPL3')
 depends=('gtk3')
 makedepends=('pkgconfig')
-source=("http://www.kornelix.com/uploads/1/3/0/3/13035936/$pkgname-$pkgver.tar.gz")
-md5sums=('38f7d3852853bed419070df2418cf4a8')
+source=("http://www.kornelix.net/downloads/tarballs/$pkgname-$pkgver.tar.gz")
+md5sums=('d5559e98d06fdc1109a5bf51791d4038')
 
 build() {
   cd ${srcdir}/$pkgname-$pkgver
