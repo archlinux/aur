@@ -24,6 +24,11 @@ package() {
     
     cp -a "$srcdir"/${pkgname}-${pkgver} usr/share/webapps/${pkgname}
 
+    sed -i 's/\/opt\/librenms/\/usr\/share\/webapps\/librenms/g' usr/share/webapps/${pkgname}/librenms.nonroot.cron
+    sed -i 's/\/opt\/librenms/\/usr\/share\/webapps\/librenms/g' usr/share/webapps/${pkgname}/librenms.cron
+    sed -i 's/\/opt\/librenms/\/usr\/share\/webapps\/librenms/g' usr/share/webapps/${pkgname}/poller-service.conf
+
+
     # copy config in etc and link it
     cp usr/share/webapps/${pkgname}/config.php.default etc/webapps/${pkgname}/config.php
     mv usr/share/webapps/${pkgname}/config.php.default etc/webapps/${pkgname}/config.php.default
