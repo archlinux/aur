@@ -2,7 +2,7 @@
 
 pkgbase=linux-ec2
 _srcname=linux-4.3
-pkgver=4.3.2
+pkgver=4.3.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://git.uplinklabs.net/snoonan/projects/archlinux/ec2/ec2-packages.git/tree/linux-ec2"
@@ -27,7 +27,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         )
 sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
             'SKIP'
-            'a96b8a4e90887dea82066b4d804ac193700c200b6c0075fecba0b691b0240a5e'
+            '95cd81fcbb87953f672150d60950548edc04a88474c42de713b91811557fefa5'
             'SKIP'
             'SKIP'
             'SKIP'
