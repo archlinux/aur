@@ -2,7 +2,7 @@
 # Contributor: Alad <alad@archlinux.info>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=wmutils-git
-pkgver=1.2.r6.gbd9cebb
+pkgver=1.1.r0.g7b86e8b
 pkgrel=1
 pkgdesc="A set of tools for X windows manipulation."
 url="https://github.com/wmutils/core"
