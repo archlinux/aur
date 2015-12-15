@@ -3,7 +3,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-gtk3
-pkgver=42.0
+pkgver=43.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=('i686' 'x86_64')
@@ -22,36 +22,19 @@ options=('!emptydirs' '!makeflags')
 provides=('firefox')
 conflicts=('firefox')
 source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
-        mozconfig firefox.desktop firefox-install-dir.patch vendor.js firefox-fixed-loading-icon.png
-        firefox-build.patch xulrunner-24.0-jemalloc-ppc.patch xulrunner-24.0-s390-inlines.patch mozilla-1192243.patch)
+        mozconfig firefox.desktop vendor.js firefox-fixed-loading-icon.png)
 
-sha256sums=('994a346699298277b64ec0cab72660b8d3e5b879a2ac79207576f7e6c33da3ae'
+sha256sums=('a5b16741dcce9344ca71e39e0efb0e7e1336ca5160cb9b6b12f8985f402d8fea'
             '26c7aca32b4799f2aeb9dbc0e88133252453424bf56662c92333dda676243695'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
-            'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
-            '68e3a5b47c6d175cc95b98b069a15205f027cab83af9e075818d38610feb6213'
-            'b218d44fd498bdc66919f98878a15720d953720c77f282ee8a70a0ae320698ed'
-            'a1468e528d0362e4bcc4757881156d102b8fdcc76466f88e69774f71efe35a1b'
-            '2c995f0d248e7f6fec1d7aa1e8d35d2d7e537afd9c122ffe582857980f641795'
-            '577d9b99d7852bc7b1501e8a766b88a7c9250764b707d69cae437fc173689ae7')
+            '68e3a5b47c6d175cc95b98b069a15205f027cab83af9e075818d38610feb6213')
 
 prepare() {
-  ln -sf firefox-$pkgver mozilla-release
-
-  cd mozilla-release
+  cd firefox-$pkgver
 
   cp ../mozconfig .mozconfig
 
-# global patche  
-  patch -p1 -i ../firefox-install-dir.patch
-  patch -p2 -i ../firefox-build.patch
-  patch -p2 -i ../xulrunner-24.0-jemalloc-ppc.patch
-  patch -p2 -i ../xulrunner-24.0-s390-inlines.patch
-
-# firefox gtk3 patches
-  patch -p1 -i ../mozilla-1192243.patch
- 
   mkdir -p "$srcdir/path"
 
   # WebRTC build tries to execute "python" and expects Python 2
@@ -68,7 +51,7 @@ prepare() {
 }
 
 build() {
-  cd mozilla-release
+  cd firefox-$pkgver
 
   export MOZ_SMP_FLAGS=-j1
   export PATH="$srcdir/path:$PATH"
@@ -79,7 +62,7 @@ build() {
 }
 
 package() {
-  cd mozilla-release
+  cd firefox-$pkgver
   make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
 
   install -Dm644 ../vendor.js "$pkgdir/usr/lib/firefox/browser/defaults/preferences/vendor.js"
