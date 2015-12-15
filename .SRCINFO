@@ -36,9 +36,9 @@ pkgbase = google-chrome
 	source = eula_text.html
 	md5sums = 99fa93d5e7fb5d622cef0f9621f3ffa3
 	md5sums = b7e752f549b215ac77f284b6486794b6
-	source_i686 = google-chrome-stable_47.0.2526.73_i386.deb::https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb
+	source_i686 = google-chrome-stable_47.0.2526.106_i386.deb::https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb
 	md5sums_i686 = 93cf807452e6d69d079e4b874f1bd085
-	source_x86_64 = google-chrome-stable_47.0.2526.73_amd64.deb::https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+	source_x86_64 = google-chrome-stable_47.0.2526.106_amd64.deb::https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 	md5sums_x86_64 = ac9a6f982fb0e64a96ca63229ae7b56e
 
 pkgname = google-chrome
