@@ -1,0 +1,5 @@
+pkg
+src
+ghc7.4-*.pkg.tar.xz
+ghc-7.4.*-src.tar.bz2
+ghc-7.4.*-testsuite.tar.bz2

@@ -1,0 +1,10 @@
+--- ghc-7.4.2/libraries/gen_contents_index.original	2012-06-10 22:23:28.810059378 +0000
++++ ghc-7.4.2/libraries/gen_contents_index	2012-06-10 22:24:00.289814576 +0000
+@@ -47,7 +47,6 @@
+ esac
+ 
+ # Now create the combined contents and index pages
+-echo $HADDOCK_ARGS
+ $HADDOCK --gen-index --gen-contents -o . \
+          -t "Haskell Hierarchical Libraries" \
+          -p "prologue.txt" \
