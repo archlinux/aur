@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=lutris-git
-pkgver=0.3.6.2.r161.be2ab37
+pkgver=0.3.7.r24.dced914
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
