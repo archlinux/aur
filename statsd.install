@@ -1,0 +1,6 @@
+post_install() {
+    echo "==> You should create a config file at /opt/statsd/dConfig.js"
+    echo "==> See /opt/statsd/exampleConfig.js for a good default"
+    echo "==> Then systemctl enable / start statsd"
+}
+

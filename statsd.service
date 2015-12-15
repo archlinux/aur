@@ -1,0 +1,11 @@
+[Unit]
+Description=Statsd
+Wants=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/node /opt/statsd/stats.js /opt/statsd/dConfig.js
+
+[Install]
+WantedBy=multi-user.target
+
