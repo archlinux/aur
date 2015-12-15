@@ -1,15 +1,15 @@
 # Maintainer: Bernhard Landauer <oberon@manjaro.org>
 
 pkgname=samsung-printers
-pkgver=1.00.21
+pkgver=1.00.36
 pkgrel=1
 pkgdesc="CUPS drivers for a variety of Samsung printers"
 arch=('i686' 'x86_64')
 url="http://www.samsung.com"
 license=('custom:samsung')
 depends=('cups' 'ghostscript')
-source=("http://org.downloadcenter.samsung.com/content/DR/201403/20140312133051625/ULD_V1.00.21.tar.gz")
-md5sums=('9ab77b1bb5ed3ad10aea1a1a08bfa753')
+source=("http://downloadcenter.samsung.com/content/DR/201510/20151028111741150/uld_v1.00.36_00.91.tar.gz")
+md5sums=('ba1d213aa726efaf20c1b31f4da9fcdc')
 
 package() {
 	cd $srcdir
