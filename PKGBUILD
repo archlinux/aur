@@ -2,7 +2,7 @@
 
 pkgname=sipp-git
 pkgver=3.5.0.rc1.149.gd787e09
-pkgrel=1
+pkgrel=2
 pkgdesc="A free open source test tool and traffic generator for the SIP protocol"
 arch=('i686' 'x86_64')
 url="http://github.com/sipp"
