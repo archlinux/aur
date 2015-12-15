@@ -2,18 +2,19 @@
 
 pkgname=lib32-libcurl-compat
 _pkgname=curl
-pkgver=7.23.1
-pkgrel=3
-pkgdesc="An URL retrieval library (old 32bit version)"
+pkgver=7.46.0
+pkgrel=1
+pkgdesc="An URL retrieval library (32bit version)"
 arch=('x86_64')
 url="http://curl.haxx.se"
 license=('MIT')
 depends=('ca-certificates' 'lib32-gnutls' 'lib32-openssl' 'lib32-zlib')
 makedepends=('gcc-multilib')
-#provides=('libcurl.so.3' 'libcurl-gnutls.so.3' 'libcurl-gnutls.so.4.2.0' 'libcurl-gnutls.so.4.2.0')
+provides=('lib32-libcurl' 'lib32-libcurl-gnutls')
+replaces=('lib32-libcurl' 'lib32-libcurl-gnutls')
 options=('strip')
 source=("http://curl.haxx.se/download/${_pkgname}-$pkgver.tar.gz")
-md5sums=('8e23151f569fb54afef093ac0695077d')
+md5sums=('230e682d59bf8ab6eca36da1d39ebd75')
 install=curl-compat.install
 
 build() {
@@ -24,7 +25,7 @@ build() {
       --disable-ldaps \
       --enable-ipv6 \
       --disable-manual \
-      --enable-versioned-symbols \
+      --disable-versioned-symbols \
       --enable-threaded-resolver \
       --without-gssapi \
       --without-libidn \
@@ -39,25 +40,30 @@ build() {
 
   cd "${_pkgname}-$pkgver-gnutls"
   $config --without-ssl --with-gnutls
-  make -C lib
+  make
 
   cd "../${_pkgname}-$pkgver"
   $config
-  make -C lib
+  make
 }
 
 package() {
   cd "${_pkgname}-$pkgver-gnutls"
-  make -C lib DESTDIR="$pkgdir" install
-  mv $pkgdir/usr/lib32/libcurl{,-gnutls}.so.4.2.0
+  make DESTDIR="$pkgdir" install
+  mv $pkgdir/usr/lib32/libcurl{,-gnutls}.so.4.4.0
   cd "../${_pkgname}-$pkgver"
-  make -C lib DESTDIR="$pkgdir" install
-  rm $pkgdir/usr/lib32/libcurl.so{,.4}
-  rm -rf $pkgdir/etc
-  ln -s libcurl.so.4.2.0  $pkgdir/usr/lib32/libcurl.so.3
-  ln -s libcurl-gnutls.so.4.2.0  $pkgdir/usr/lib32/libcurl-gnutls.so.3
+  make DESTDIR="$pkgdir" install
+  rm -rf "${pkgdir}"/usr/{share,bin}
+  ln -s libcurl.so.4.4.0  "$pkgdir"/usr/lib32/libcurl.so.4.2.0
+  ln -s libcurl.so.4.4.0  "$pkgdir"/usr/lib32/libcurl.so.3
+  ln -s libcurl-gnutls.so.4.4.0  "$pkgdir"/usr/lib32/libcurl-gnutls.so.4.2.0
+  ln -s libcurl-gnutls.so.4.4.0  "$pkgdir"/usr/lib32/libcurl-gnutls.so.4
+  ln -s libcurl-gnutls.so.4.4.0  "$pkgdir"/usr/lib32/libcurl-gnutls.so.3
+
+  find "${pkgdir}"/usr/include/curl -type f -not -name curlbuild.h -delete
+  mv "$pkgdir"/usr/include/curl/curlbuild.h "$pkgdir"/usr/include/"$_pkgname"/curlbuild-32.h
 
   # license
-  install -d "$pkgdir/usr/share/licenses"
-  ln -s "$_pkgname" "$pkgdir/usr/share/licenses/$pkgname"
+  install -d "$pkgdir"/usr/share/licenses
+  ln -s "$_pkgname" "$pkgdir"/usr/share/licenses/"$pkgname"
 }
