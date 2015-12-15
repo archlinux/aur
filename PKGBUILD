@@ -1,7 +1,7 @@
 # Maintainer : ziggi <xziggix@gmail.com>
 pkgname='zalc'
 pkgver=1.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc='A small, FLTK-based calculator'
 arch=('i686' 'x86_64')
 url='http://ziggi.org/category/developments/zalc/'
