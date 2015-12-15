@@ -11,7 +11,7 @@ depends=('lua' 'lua-filesystem' 'sh')
 source=("https://github.com/mpeterv/$pkgname/archive/$pkgver.tar.gz"
         "luacheck")
 sha256sums=('3f8306f5210eeac7dd3057cff7924b487229ebc15a595c0767715d3e4c300e47'
-            '5bbc0a1be3684c2691cf34aea8bc5538d819e3591ec3ec363bf4a911f53c8f78')
+            'fefc290dbea67b126b2fbdc0ae08f990b6561ec97f0c86bb53fbdd5cb27de201')
 
 package() {
   cd "$pkgname-$pkgver"
