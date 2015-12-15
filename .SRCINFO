@@ -1,7 +1,7 @@
 pkgbase = rr
 	pkgdesc = a nondeterministic debugger
 	pkgver = 4.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://rr-project.org/
 	arch = i686
 	arch = x86_64

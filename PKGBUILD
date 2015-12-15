@@ -3,7 +3,7 @@
 
 pkgname=rr
 pkgver=4.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='a nondeterministic debugger'
 arch=(i686 x86_64)
 url='http://rr-project.org/'
@@ -17,9 +17,6 @@ sha1sums=('d41f76d1207fbc153a50dee93f7a9383d8b5e597')
 prepare() {
 	cd $pkgname-$pkgver
 	mkdir -p build
-	sed -i~ -e 's/ python / python2 /g' CMakeLists.txt
-	sed -i~ -e 's/^\(#define \)_BSD_SOURCE$/\1_DEFAULT_SOURCE/' src/Command.cc
-
 }
 
 build() {
