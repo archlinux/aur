@@ -4,8 +4,8 @@
 pkgname=lenmus
 _pkgver=5.4
 pkgver=${_pkgver}.0
-pkgrel=5
-_pkgcommit=723
+pkgrel=6
+_pkgcommit=724
 pkgdesc="A free program to learn music"
 arch=('i686' 'x86_64')
 url="http://www.lenmus.org/en/phonascus/intro"
@@ -15,25 +15,20 @@ optdepends=('timidity++: for sound without external midi player')
 makedepends=('boost' 'unittestpp' 'cmake>=2.8')
 
 source=("https://launchpad.net/${pkgname}/trunk/${_pkgver}/+download/${pkgname}-${pkgver}-${_pkgcommit}.tar.gz"
-        'cmake-boost.patch'
-	'cmake-find.patch'
-	'cmake-freetype.patch'
-	'cmake-wxgtk.patch')
-md5sums=('f8a033fb566fb1bd9b2b2bfecddf06fe'
-         '2deed1b6d5fb615a88c849fa5db671c1'
-         '4dfbbbf1a1a34ff8d53767a5f2744ee7'
-         'c406113341ec3f5bdc87573a62d1954b'
-         '923d4c27a992d5a9c0590e3529665a57')
+       cmake-lomse.patch)
+md5sums=('6a9a8c2df8621a46e9a90a9bdd1f8206'
+         '62526ac739012a3d6a37b260751f8b2c')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${_pkgver}"
+  patch < "${srcdir}/cmake-lomse.patch" || return 1
 
   cd "$srcdir"
   rm -rf build
   mkdir build
 
   cd build
-  cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr "../${pkgname}-${pkgver}/"
+  cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr "../${pkgname}-${_pkgver}/"
 
   make -j$(nproc) || return 1
 }

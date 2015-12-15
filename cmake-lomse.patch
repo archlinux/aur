@@ -1,0 +1,10 @@
+--- CMakeLists__orig.txt	2015-12-15 01:06:54.653713447 +0100
++++ CMakeLists.txt	2015-12-15 01:06:58.563577916 +0100
+@@ -314,6 +314,7 @@
+         ${LOMSE_ROOT_DIR}/src/agg/font_freetype
+         ${LOMSE_ROOT_DIR}/packages/utfcpp
+         ${LOMSE_ROOT_DIR}/packages/minizip
++	${LOMSE_ROOT_DIR}/packages
+     )
+     message("LOMSE: Not using Lomse library, but building with its sources")
+ else()
