@@ -1,9 +1,7 @@
 # Maintainer: Benjamin Bukowski <benjamin.bukowski@gmail.com>
 pkgname=firebird-superserver
-_pkgver=2.5.5.26952
-_buildver=0
-pkgver=${_pkgver}_${_buildver}
-pkgrel=2
+pkgver=2.5.5.26952
+pkgrel=1
 pkgdesc="A open source SQL relational database management system (RDMS)"
 arch=('i686' 'x86_64')
 url="http://www.firebirdsql.org/"
@@ -14,7 +12,7 @@ conflicts=('firebird-classicserver' 'libfbclient')
 options=('!makeflags')
 install=firebird-superserver.install
 
-source=("http://downloads.sourceforge.net/firebird/Firebird-$_pkgver-$_buildver.tar.bz2"
+source=("http://downloads.sourceforge.net/firebird/Firebird-$pkgver-0.tar.bz2"
         'firebird-tmpfiles.conf'
         'firebird-systemd.service')
 md5sums=('b0b5293991fcf07347b38431c80be1d4'
@@ -22,7 +20,7 @@ md5sums=('b0b5293991fcf07347b38431c80be1d4'
          'ee9068e9bfdfa01e9dc79c72d1bfcdd8')
 
 build() {
-  cd $srcdir/Firebird-$_pkgver-$_buildver
+  cd $srcdir/Firebird-$pkgver-0
   
   ./configure --prefix=/opt/firebird --libdir=/usr/lib --includedir=/usr/include \
               --enable-superserver --with-system-icu --with-system-editline
@@ -31,11 +29,11 @@ build() {
 }
 
 package() {
-  cd $srcdir/Firebird-$_pkgver-$_buildver/gen
+  cd $srcdir/Firebird-$pkgver-0/gen
   
   ./install/makeInstallImage.sh 
   
-  cd $srcdir/Firebird-$_pkgver-$_buildver
+  cd $srcdir/Firebird-$pkgver-0
   
   cp -av gen/buildroot/* $pkgdir/
   
