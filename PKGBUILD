@@ -2,7 +2,7 @@
 
 pkgname=pcap-dnsproxy-git
 _pkgname=pcap-dnsproxy
-pkgver=20151118
+pkgver=20151214
 pkgrel=1
 pkgdesc="A local DNS server base on WinPcap and LibPcap."
 arch=("any")
