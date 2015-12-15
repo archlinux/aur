@@ -1,6 +1,4 @@
-# $Id$
-# Maintainer: Jan de Groot <jgc@archlinux.org>
-
+# Maintainer: Kamran Mackey <kamranm1200@gmail.com>
 pkgbase=(harfbuzz-git)
 pkgname=(harfbuzz-git harfbuzz-icu-git)
 pkgver=1.1.2.r19.g15f2c05
