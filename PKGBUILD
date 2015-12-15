@@ -4,7 +4,7 @@
 pkgname=temperature.app
 _pkgname=Temperature.app
 pkgver=1.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Window Maker applet which info from http://weather.noaa.gov and displays it"
 arch=('i686' 'x86_64')
 #url="http://dockapps.windowmaker.org/file.php/id/86"
