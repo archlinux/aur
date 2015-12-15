@@ -8,7 +8,6 @@ pkgbase = rr
 	license = custom
 	makedepends = git
 	makedepends = cmake
-	makedepends = gcc-multilib
 	depends = libpfm4
 	depends = libdisasm
 	depends = python2-pexpect
