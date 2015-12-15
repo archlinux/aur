@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=k3b-frameworks-git
-pkgver=2.9.90.r5865.d5b1016
+pkgver=2.9.90.r5938.f81dde8
 pkgrel=1
 pkgdesc="Feature-rich and easy to handle CD burning application. KF5 Frameworks branch. (Git version)"
 arch=('i686' 'x86_64')
@@ -31,9 +31,13 @@ optdepends=('cdrdao: for CD DAO mode burning support'
 provides=('k3b')
 conflicts=('k3b')
 source=('git://anongit.kde.org/k3b.git#branch=kf5'
-        'patch.txt')
+        'fix_install_knotify_kxmlgui_files.txt'
+        'k3b-fixbuild.diff::https://git.reviewboard.kde.org/r/126370/diff/raw/'
+        'k3b-fix-mp3decoder.diff::https://git.reviewboard.kde.org/r/126371/diff/raw/')
 sha1sums=('SKIP'
-          'SKIP')
+          '9ff1dfbf14d9fecbc41a5ee5eadeaef10327a2c2'
+          'ade1b3a4fc7a21a3eb9b0268bbc5f1b0fe058127'
+          'c18a305f96b4bd39ea7eb68d0744a2b7c95688d1')
 install=k3b-frameworks-git.install
 
 pkgver() {
@@ -45,7 +49,10 @@ pkgver() {
 prepare() {
   mkdir -p build
 
-  patch -d k3b -p0 -i ../patch.txt
+  cd k3b
+  patch -p0 -i "${srcdir}/fix_install_knotify_kxmlgui_files.txt"
+  patch -p1 -i "${srcdir}/k3b-fixbuild.diff"
+  patch -p1 -i "${srcdir}/k3b-fix-mp3decoder.diff"
 }
 
 build() {
