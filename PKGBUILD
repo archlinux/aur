@@ -24,7 +24,7 @@ package() {
     mkdir -p ${pkgdir}/usr/bin
     make INSTALLPATH=${pkgdir}/opt/highmoon INSTALLBIN=${pkgdir}/usr/bin install
 
-    echo 'cd /opt/highmoon/ && ./ufo \$1' > ${pkgdir}/usr/bin/highmoon
+    echo 'cd /opt/highmoon/ && ./ufo $1' > ${pkgdir}/usr/bin/highmoon
     chmod +x ${pkgdir}/usr/bin/highmoon
 }
 
