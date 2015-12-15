@@ -9,7 +9,7 @@ license=('GPL2' 'LGPL2.1')
 depends=('openssl')
 conflicts=('rtmpdump' 'rtmpdump-svn' 'rtmpdump-git' 'rtmpdump-ksv')
 provides=('rtmpdump' 'rtmpdump-git')
-source=('git://git.ffmpeg.org/rtmpdump' 'Patch.diff')
+source=('git://git.ffmpeg.org/rtmpdump#commit=a107cef' 'Patch.diff')
 sha256sums=('SKIP'
             'd16a9ad3f8d89b1dcaf22751d90ec6a413b8f55b1b02cb9483a1e17ab548ce66')
 
