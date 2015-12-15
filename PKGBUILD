@@ -20,6 +20,7 @@ package() {
   install -D -m755 ${srcdir}/portecle.sh ${pkgdir}/usr/bin/portecle
   install -D -m644 portecle.jar ${pkgdir}/usr/share/java/${pkgname}/portecle.jar
   install -D -m644 bcprov.jar ${pkgdir}/usr/share/java/${pkgname}/bcprov.jar
+  install -D -m644 bcpkix.jar ${pkgdir}/usr/share/java/${pkgname}/bcpkix.jar
 
   install -D -m644 portecle.desktop ${pkgdir}/usr/share/applications/portecle.desktop
   install -D -m644 portecle.png ${pkgdir}/usr/share/pixmaps/portecle.png
