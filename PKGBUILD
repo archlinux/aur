@@ -43,7 +43,7 @@ check() {
   PATH="$srcdir/path:$PATH" make -k check || :
 }
 
-package_harfbuzz_git() {
+package_harfbuzz-git() {
   depends=(glib2 freetype2 graphite)
   optdepends=('cairo: hb-view program')
 
@@ -51,14 +51,14 @@ package_harfbuzz_git() {
   make DESTDIR="$pkgdir" install
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/harfbuzz/COPYING"
 
-# Split harfbuzz-icu
+  # Split harfbuzz-icu
   mkdir -p ../hb-icu/usr/{include/harfbuzz,lib/pkgconfig}; cd ../hb-icu
   mv "$pkgdir"/usr/lib/libharfbuzz-icu* ./usr/lib
   mv "$pkgdir"/usr/lib/pkgconfig/harfbuzz-icu.pc ./usr/lib/pkgconfig
   mv "$pkgdir"/usr/include/harfbuzz/hb-icu.h ./usr/include/harfbuzz
 }
 
-package_harfbuzz-icu_git(){
+package_harfbuzz-icu-git(){
   pkgdesc="$pkgdesc (ICU integration)"
   depends=(harfbuzz icu)
 
