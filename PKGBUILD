@@ -21,6 +21,8 @@ prepare() {
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
+
+  export CFLAGS="$CFLAGS -Wno-error=deprecated-declarations"
   ./configure --sysconfdir=/etc --prefix=/usr \
     --libexecdir=/usr/lib/networkmanager \
     --with-charon=/usr/lib/strongswan/charon-nm
