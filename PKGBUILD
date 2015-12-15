@@ -1,7 +1,7 @@
 # Maintainer: American_Jesus <american.jesus.pt AT gmail DOT com>
 pkgname=connman-gtk
-pkgver=1.1
-pkgrel=5
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="GTK GUI for ConnMan"
 arch=('i686' 'x86_64')
 url="https://github.com/jgke/connman-gtk"
