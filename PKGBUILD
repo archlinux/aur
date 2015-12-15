@@ -4,14 +4,12 @@
 pkgbase=(harfbuzz-git)
 pkgname=(harfbuzz-git harfbuzz-icu-git)
 pkgver=1.1.2.r19.g15f2c05
-pkgrel=4
+pkgrel=5
 pkgdesc="OpenType text shaping engine"
 arch=(i686 x86_64)
 url="http://www.freedesktop.org/wiki/Software/HarfBuzz"
 license=(MIT)
 makedepends=(glib2 freetype2 graphite cairo icu gobject-introspection)
-conflicts=(harfbuzz harfbuzz-icu)
-provides=(harfbuzz harfbuzz-icu)
 source=(git://github.com/behdad/harfbuzz.git)
 sha256sums=('SKIP')
 _gitname=harfbuzz
@@ -46,6 +44,8 @@ check() {
 package_harfbuzz-git() {
   depends=(glib2 freetype2 graphite)
   optdepends=('cairo: hb-view program')
+  conflcts=(harfbuzz)
+  provides=(harfbuzz)
 
   cd "$_gitname"
   make DESTDIR="$pkgdir" install
@@ -61,6 +61,8 @@ package_harfbuzz-git() {
 package_harfbuzz-icu-git(){
   pkgdesc="$pkgdesc (ICU integration)"
   depends=(harfbuzz icu)
+  conflicts=(harfbuzz-icu)
+  provides=(harfbuzz-icu)
 
   mv hb-icu/* "$pkgdir"
 
