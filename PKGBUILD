@@ -6,7 +6,7 @@ pkgdesc="A open source SQL relational database management system (RDMS)"
 arch=('i686' 'x86_64')
 url="http://www.firebirdsql.org/"
 license=('custom:IPL' 'custom:IDPL')
-provides=("libfbclient=${_pkgver}")
+provides=("libfbclient=${pkgver}")
 depends=('icu' 'libedit')
 conflicts=('firebird-classicserver' 'libfbclient')
 options=('!makeflags')
