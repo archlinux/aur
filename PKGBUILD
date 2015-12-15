@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/peha/deco"
 license=('GPL3')
 optdepends=('deco-archive: extractor wrappers for various formats')
-source=($pkgname-$pkgver::https://github.com/peha/deco/archive/$pkgver.tar.gz)
+source=($pkgname-$pkgver.tar.gz::https://github.com/peha/deco/archive/$pkgver.tar.gz)
 sha256sums=('6139b3efbe9df995ea0bb4506ba2edc00398d0dff6ba2728a1148366208cfdb7')
 
 package() {
