@@ -4,11 +4,12 @@
 pkgname=wxlauncher
 _pkgtar=wxLauncher
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 
-source=("https://github.com/scp-fs2open/wxLauncher/archive/release-${pkgver}.zip"
+source=("https://github.com/wxLauncher/wxlauncher/archive/release-${pkgver}.zip"
 	"wxlauncher.png"
 	"wxlauncher.desktop")
+
 sha256sums=('aaf721fb44eb23362da92e243ea62e9dc6d9ba80064579d66d9c411f3430327e'
             'e3bf9cbe7c61378026331a21313fccd891b051e949448715625d1cfd3ae72576'
             '8de688171c12fdf273ece4f33177fd773395204c81cf212f8c4293f0ddd16582')
@@ -20,7 +21,7 @@ license=(GPL2)
 # change below if you want to modify the resources intall directory.  The default installs it along side fs2_open resources.
 resourcesdir=/opt/fs2_open/wxlauncher
 
-depends=('wxpython' 'python2' 'python2-markdown' 'openal')
+depends=('wxpython' 'python2' 'python2-markdown' 'openal' 'sdl2')
 optdepends=('fs2_open')
 makedepends=(cmake)
 
