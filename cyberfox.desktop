@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Cyberfox
+Exec=/usr/bin/cyberfox
+Icon=/usr/share/pixmaps/cyberfox-icon.png
+Categories=Network;
+Comment=Cyberfox: Fast and privacy oriented fork of Mozilla firefox.
