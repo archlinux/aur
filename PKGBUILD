@@ -1,5 +1,5 @@
 pkgname=coin-or-ipopt
-pkgver=3.12.3
+pkgver=3.12.4
 pkgrel=1
 pkgdesc="Interior Point OPTimizer"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ groups=('coin-or')
 depends=('lapack')
 makedepends=()
 source=("http://www.coin-or.org/download/source/Ipopt/Ipopt-$pkgver.tgz")
-sha1sums=('6a2aa349117b5362a8f2da43c865aac83e89551b')
+sha1sums=('b244850a22651a35919bae87dc889ebf0f520ead')
 
 build() {
   cd "$srcdir/Ipopt-$pkgver/ThirdParty/ASL" && ./get.ASL
