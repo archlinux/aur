@@ -2,7 +2,7 @@
 
 pkgname=glasswm
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Small windowmanager forked from aewm++"
 arch=(x86_64 i686)
 url="https://github.com/RiJo/glass"
