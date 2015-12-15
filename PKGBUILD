@@ -1,38 +1,16 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=lutris-git
 pkgver=0.3.6.2.r161.be2ab37
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
-url='http://lutris.net/'
+url='https://lutris.net/'
 license=('GPL3')
-depends=('desktop-file-utils' 'glib-networking' 'gvfs' 'hicolor-icon-theme'
-         'polkit' 'python2-gobject' 'python2-xdg' 'python2-yaml' 'xorg-xrandr')
+depends=('desktop-file-utils' 'hicolor-icon-theme' 'polkit' 'xorg-xrandr'
+         'python2-dbus' 'python2-gobject' 'python2-xdg' 'python2-yaml')
 makedepends=('git' 'python2-setuptools')
-optdepends=('atari800: Atari 800/800XL/130XE/5200 Emulator'
-            'dolphin-emu: Nintendo Gamecube/Wii/Triforce Emulator'
-            'dosbox: DOS Emulator'
-            'frotz: Z-machine Interpreter'
-            'fs-uae: Amiga Emulator'
-            'gens-gs: Sega Genesis/CD/32X Emulator'
-            'hatari: Atari ST/STE Emulator'
-            'jzintv: Matel Intellivision Emulator'
-            'mednafen: Multi-system Emulator'
-            'mupen64plus: Nintendo 64 Emulator'
-            'o2em: Magnavox Odyssey 2 Emulator'
-            'openmsx: MSX Emulator'
-            'osmose: Sega Master System/Gamegear Emulator'
-            'pcsxr: Sony Playstation emulator'
-            'residualvm: 3D Point and Click Virtual Machine'
-            'scummvm: 2D Point and Click Virtual Machine'
-            'sdlmame: Multiple Arcade Machine Emulator'
-            'snes9x-gtk: Super Nintendo Emulator'
-            'steam: Digital Gaming Platform'
-            'stella: Atari 2600 Emlator'
-            'vice: Commodore 64 Emulator'
-            'virtualjaguar: Atari Jaguar Emulator'
-            'wine: Windows Compatibility Layer')
 provides=('lutris')
 conflicts=('lutris')
 install='lutris.install'
