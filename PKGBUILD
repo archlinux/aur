@@ -42,7 +42,7 @@ build() {
 }
 
 package_qt5-style-kvantum() {
-	pkgname=("${pkgname}" "${pkgname}-git=${pkgver}")
+	pkgname=("${pkgname}")
 	provides=("${pkgname}" "${pkgname}-git=${pkgver}")
 	conflicts=("${pkgname}" "${pkgname}-git<${pkgver}")
 	replaces=("${pkgname}" "${pkgname}-git<${pkgver}")
@@ -52,7 +52,7 @@ package_qt5-style-kvantum() {
 }
 
 package_qt4-style-kvantum() {
-	pkgname=("${pkgname}" "${pkgname}-git=${pkgver}")
+	pkgname=("${pkgname}")
 	provides=("${pkgname}" "${pkgname}-git=${pkgver}")
 	conflicts=("${pkgname}" "${pkgname}-git<${pkgver}")
 	replaces=("${pkgname}" "${pkgname}-git<${pkgver}")
@@ -77,7 +77,7 @@ package_kvantum-manager() {
 }
 
 package_kvantum-themes() {
-	pkgname=("${pkgname}" "${pkgname}-git=${pkgver}")
+	pkgname=("${pkgname}")
 	provides=("${pkgname}" "${pkgname}-git=${pkgver}")
 	conflicts=("${pkgname}" "${pkgname}-git<${pkgver}")
 	replaces=("${pkgname}" "${pkgname}-git<${pkgver}")
@@ -92,7 +92,7 @@ package_kvantum-themes() {
 }
 
 package_kvantum-kde-colorschemes() {
-	pkgname=("${pkgname}" "${pkgname}-git=${pkgver}")
+	pkgname=("${pkgname}")
 	provides=("${pkgname}" "${pkgname}-git=${pkgver}")
 	conflicts=("${pkgname}" "${pkgname}-git<${pkgver}")
 	replaces=("${pkgname}" "${pkgname}-git<${pkgver}")
