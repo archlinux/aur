@@ -97,7 +97,7 @@ if [[ $CARCH == i686 ]]; then
 else
   makedepends=(${makedepends[@]} ${_depends[@]})
   provides=("wine" "bin32-wine=$pkgver" "wine-wow64=$pkgver")
-  conflicts=('wine''bin32-wine' 'wine-wow64''wine-staging')
+  conflicts=('wine''bin32-wine' 'wine-wow64')
 fi
 
 prepare() {
