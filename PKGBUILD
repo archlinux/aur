@@ -8,8 +8,8 @@ pkgdesc="A Linux clone of Notepad++"
 arch=('i686' 'x86_64')
 url="http://notepadqq.altervista.org/wp/"
 license=('GPL3')
-depends=('qt5-webkit' 'hicolor-icon-theme' 'desktop-file-utils')
-makedepends=('git' 'qt5-svg')
+depends=('qt5-webkit>5.2' 'hicolor-icon-theme' 'desktop-file-utils')
+makedepends=('git' 'qt5-svg>5.2')
 provides=('notepadqq')
 conflicts=('notepadqq-bin' 'notepadqq' 'notepadqq-common')
 install=${_pkgname}.install
@@ -28,7 +28,7 @@ pkgver() {
 build() {
 	cd "${srcdir}/${_pkgname}"
 	
-	 ./configure --qmake-path qmake-qt5 --prefix "${pkgdir}/usr"
+	 ./configure --prefix "${pkgdir}/usr"
 	 make
 	
 }
