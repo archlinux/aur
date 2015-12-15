@@ -1,0 +1,5 @@
+pkg
+src
+ghc-7.4.*-i386-unknown-linux.tar.bz2
+ghc-7.4.*-x86_64-unknown-linux.tar.bz2
+ghc7.4-bin-*.pkg.tar.xz
