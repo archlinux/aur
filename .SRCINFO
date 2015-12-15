@@ -1,0 +1,23 @@
+pkgbase = voikko-fi
+	pkgdesc = Finnish dictionary for libvoikko based spell checkers.
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://voikko.puimula.org/
+	arch = any
+	license = GPL2
+	makedepends = libvoikko>=4.0
+	makedepends = python
+	makedepends = foma
+	source = http://www.puimula.org/voikko-sources/voikko-fi/voikko-fi-2.0.tar.gz
+	source = http://www.puimula.org/voikko-sources/voikko-fi/voikko-fi-2.0.tar.gz.asc
+	md5sums = 8a399ff8d56a0d62c52f93a7f4ec8507
+	md5sums = SKIP
+
+pkgname = voikko-fi
+	pkgdesc = Finnish dictionary for libvoikko based spell checkers. (vvfst format)
+
+pkgname = voikko-fi-malaga
+	pkgdesc = Finnish dictionary for libvoikko based spell checkers. (old malaga format)
+	provides = suomi-malaga-voikko
+	conflicts = suomi-malaga-voikko
+
