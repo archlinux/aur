@@ -4,9 +4,9 @@
 
 pkgname=fzf-git
 pkgver=20151213
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line fuzzy finder"
-arch=('armv6h' 'i686' 'x86_64')
+arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 depends=('ncurses')
 makedepends=('git' 'go' 'make')
 optdepends=('fish: fish keybindings'
@@ -17,7 +17,7 @@ optdepends=('fish: fish keybindings'
 url="https://github.com/junegunn/fzf"
 license=('MIT')
 source=(git+https://github.com/junegunn/fzf
-        git+https://github.com/junegunn/${pkgname%-git}.wiki
+        git+https://github.com/junegunn/fzf.wiki
         key-bindings.bash.patch
         key-bindings.zsh.patch)
 sha256sums=('SKIP'
