@@ -3,7 +3,7 @@
 
 pkgname=retrovol
 pkgver=0.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A sound volume mixer"
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
