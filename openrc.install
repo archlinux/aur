@@ -1,0 +1,27 @@
+post_install() {
+	rc-update add thinkfan default
+	cat <<\EOF
+
+Until you configure Thinkfan(/etc/thinkfan.conf) it will always run at
+full speed!
+
+For proper configuration see the README and example configurations in /usr/share/doc/thinkfan
+
+Thinkfan will also start automatically after the next reboot!
+
+EOF
+sleep 5
+}
+
+pre_remove() {
+	rc-service thinkfan stop
+	rc-update del thinkfan default
+}
+
+pre_upgrade() {
+	rc-service thinkfan stop
+}
+
+post_upgrade() {
+	rc-service thinkfan restart
+}

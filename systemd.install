@@ -1,0 +1,27 @@
+post_install() {
+	systemctl enable thinkfan.service
+	cat <<\EOF
+
+Until you configure Thinkfan(/etc/thinkfan.conf) it will always run at
+full speed!
+
+For proper configuration see the README and example configurations in /usr/share/doc/thinkfan
+
+Thinkfan will also start automatically after the next reboot!
+
+EOF
+sleep 5
+}
+
+pre_remove() {
+	systemctl stop thinkfan.service
+	systemctl disable thinkfan.service
+}
+
+pre_upgrade() {
+	systemctl stop thinkfan.service
+}
+
+post_upgrade() {
+	systemctl restart thinkfan.service
+}
