@@ -1,6 +1,6 @@
 # Maintainer: James W. Barnett <jbarnet4 at tulane dot edu>
 pkgname=libgmxcpp
-pkgver=3.3.1
+pkgver=3.4
 pkgrel=1
 pkgdesc="A library for use in analyzing GROMACS simulation output files"
 arch=(any)
