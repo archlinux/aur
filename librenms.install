@@ -1,8 +1,5 @@
 # Maintainer: Nils Czernia <nils[at]czserver[dot]de>
 
-_datadir=/usr/share/webapps/librenms
-_etcdir=/etc/webapps/librenms
-
 post_install() {
     echo "Adding new User"
     useradd librenms -d /usr/share/webapps/librenms -M -r
@@ -12,8 +9,6 @@ post_install() {
     chown -R librenms:librenms /etc/webapps/${pkgname}
     chown http:http /var/log/${pkgname}
     echo "Install new pear modules"
-    pear install Net_IPv4
-    pear install Net_IPv6
     echo "You have to configure the database configuration"
     echo "in ${_etcdir}/config.php"
 }

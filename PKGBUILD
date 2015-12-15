@@ -6,7 +6,7 @@ pkgdesc='LibreNMS is an autodiscovering PHP/MySQL-based network monitoring syste
 arch=('any')
 url='http://www.librenms.org/'
 license=('GPLv3')
-depends=('php' 'php-intl' 'php-gd' 'php-pear' 'net-snmp' 'graphviz' 'php-snmp' 'php-mcrypt' 'fping' 'imagemagick' 'whois' 'nmap' 'rrdtool' 'git')
+depends=('php' 'php-intl' 'php-gd' 'php-pear' 'net-snmp' 'graphviz' 'php-snmp' 'php-mcrypt' 'fping' 'imagemagick' 'whois' 'nmap' 'rrdtool' 'git' 'perl-net-ip')
 backup=("etc/webapps/${pkgname}/config.php")
 source=("https://github.com/librenms/${pkgname}/archive/${pkgver}.tar.gz"
         "apache.example.conf"
@@ -26,7 +26,10 @@ package() {
 
     # copy config in etc and link it
     cp usr/share/webapps/${pkgname}/config.php.default etc/webapps/${pkgname}/config.php
+    cp usr/share/webapps/${pkgname}/config.php.default etc/webapps/${pkgname}/config.php.default
     ln -s ../../../../etc/webapps/${pkgname}/config.php usr/share/webapps/${pkgname}/config.php
+    ln -s ../,,/,,/,,/etc/webapps/${pkgname}/config.php.default usr/share/webapps/${pkgname}/config.php.default
+    rm ../../../../etc/webapps/${pkgname}/config.php
     
     # move logs to /var/log
     ln -s ../../../../var/log/${pkgname} usr/share/webapps/${pkgname}/logs
