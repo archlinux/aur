@@ -1,4 +1,4 @@
-pkgbase = wicd
+pkgbase = wicd-patched
 	pkgdesc = Wired and wireless network manager for Linux. Include patches that fix wicd-curses bugs.
 	pkgver = 1.7.3
 	pkgrel = 1

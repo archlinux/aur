@@ -2,7 +2,7 @@
 # Maintainer: Daniel Isenmann <daniel@archlinux.org>
 # Contributor: Rashif "Don Ray" Rahman <rayrashif@gmail.com>
 
-pkgbase='wicd'
+_pkgbase='wicd'
 pkgname='wicd-patched'
 pkgver=1.7.3
 pkgrel=1
@@ -34,7 +34,7 @@ makedepends=('python2' 'python2-babel' 'python2-setuptools' 'gettext' 'dbus-glib
 options=('emptydirs')
 
 prepare() {
-  cd $pkgbase-$pkgver
+  cd $_pkgbase-$pkgver
 
   find . -type f -exec sed -i 's@#!/usr.*python@#!/usr/bin/python2@' {} \;
   sed -i 's/pybabel/pybabel2/g' setup.py 
@@ -47,7 +47,7 @@ prepare() {
 }
 
 build() {
-  cd $pkgbase-$pkgver
+  cd $_pkgbase-$pkgver
   python2 setup.py configure \
       --no-install-init \
       --resume=/usr/share/wicd/scripts/ \
@@ -67,7 +67,7 @@ build() {
 }
 
 package() {
-  cd $pkgbase-$pkgver
+  cd $_pkgbase-$pkgver
   python2 setup.py install --skip-build --optimize=1 --root="$pkgdir"
 
   cd build/lib/wicd
