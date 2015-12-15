@@ -1,8 +1,8 @@
 # Maintainer: OmeGa <omega [U+0040] mailoo [.] org>
 
 pkgname=firefox-extension-vimfx
-_file=372797
-pkgver=0.9.0
+_file=374186
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Introduces Vim-style keyboard shortcuts for browsing and navigation without using the mouse."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('firefox>=40.0')
 source=(https://addons.mozilla.org/firefox/downloads/file/$_file/vimfx-$pkgver.xpi
         LICENSE)
-sha1sums=('33e7e28aa439117b96fc7e47a2e8fda72e6ddc75'
+sha1sums=('77e0dad27233f13f3c51bff3741bcd3cb9aee577'
           'f1eaf939b37946dea611a5d55ef4784306c70a53')
 
 package() {
