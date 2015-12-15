@@ -4,9 +4,9 @@
 
 pkgname=fzf
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line fuzzy finder"
-arch=('armv6h' 'i686' 'x86_64')
+arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 depends=('ncurses')
 makedepends=('git' 'go' 'make')
 optdepends=('fish: fish keybindings'
