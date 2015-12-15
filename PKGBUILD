@@ -14,14 +14,14 @@ source=("${pkgbase//-git/}::git://github.com/luebking/virtuality#branch=master")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd ${pkgbase//-git/}
+	cd "${pkgbase//-git/}"
 	_rev=$(git rev-list --count HEAD)
 	printf "1.0.r$_rev"
 }
 
 build() {
 ###great! now we need to build everything until they split build...
-	cd ${pkgbase//-git/}/build-qt5
+	cd "${pkgbase//-git/}"/build-qt5
 	cmake -DWITH_QT5=ON -DENABLE_KDE=OFF -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
 	make
 	cd ../build-qt4
@@ -30,7 +30,7 @@ build() {
 }
 
 prepare() {
-	cd ${pkgbase//-git/}
+	cd "${pkgbase//-git/}"
 	install -d build-qt4 build-qt5
 }
 
@@ -41,7 +41,7 @@ package_qt5-style-virtuality() {
 	replaces=("${pkgname}" "${pkgname}-git<${pkgver}")
 	pkgdesc='futustic widget style for Qt5'
 	depends=('qt5-base' 'qt5-x11extras')
-	install -Dm0644 ${pkgbase//-git/}/build-qt5/libvirtuality.so ${pkgdir}/usr/lib/qt/plugins/styles/libvirtuality.so
+	install -Dm0644 "${pkgbase//-git/}"/build-qt5/libvirtuality.so "${pkgdir}"/usr/lib/qt/plugins/styles/libvirtuality.so
 }
 
 package_qt4-style-virtuality() {
@@ -51,7 +51,7 @@ package_qt4-style-virtuality() {
 	replaces=("${pkgname}" "${pkgname}-git<${pkgver}")
 	pkgdesc='futustic widget style for Qt4'
 	depends=('qt4')
-	install -Dm0644 ${pkgbase//-git/}/build-qt4/libvirtuality.so ${pkgdir}/usr/lib/qt4/plugins/styles/libvirtuality.so
+	install -Dm0644 "${pkgbase//-git/}"/build-qt4/libvirtuality.so "${pkgdir}"/usr/lib/qt4/plugins/styles/libvirtuality.so
 }
 
 package_virtuality-config() {
@@ -61,11 +61,11 @@ package_virtuality-config() {
 	replaces=("${pkgname}" "${pkgname}-git<${pkgver}")
 	pkgdesc='An easy way to configure Virtuality'
 	depends=('qt5-base')
-	cd ${pkgbase//-git/}/build-qt5
-	make install DESTDIR=${pkgdir}
-	rm -rf ${pkgdir}/usr/lib/
-	install -d "$pkgdir/usr/share/applications/"
-	cat <<\EOF > "$pkgdir/usr/share/applications/${pkgname}.desktop"
+	cd "${pkgbase//-git/}"/build-qt5
+	make install DESTDIR="${pkgdir}"
+	rm -rf "${pkgdir}"/usr/lib/
+	install -d "${pkgdir}/usr/share/applications/"
+	cat <<\EOF > "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 [Desktop Entry]
 Version=1.0
 Name=Virtuality Config
