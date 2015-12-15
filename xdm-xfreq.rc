@@ -1,9 +1,10 @@
 #!/bin/sh
 
-read WIDTH HEIGHT <<< $(xdpyinfo | awk -F'[ x]+' '/dimensions:/{print $3, $4}')
+if [[ -v DISPLAY ]]; then
+	read WIDTH HEIGHT <<< $(xdpyinfo | awk -F'[ x]+' '/dimensions:/{print $3, $4}')
+fi
 
 source /etc/xdm-xfreq/xdm-theme.rc
-
 
 # Keyboard NumLock ON
 XDM_XFREQ_KEYB_LED_PATH=numlockx
