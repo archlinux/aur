@@ -1,13 +1,13 @@
 # Maintainer: Yuval Adam <yuval at y3xz dot com> PGP-Key: 271386AA2EB7672F
 
 pkgname=coreclr-git
-pkgver=7309fb8
+pkgver=32b981a
 pkgrel=1
 pkgdesc="The .NET Core Runtime"
 arch=('x86_64')
 url="https://github.com/dotnet/coreclr"
 license=(MIT)
-makedepends=('clang' 'cmake' 'llvm' 'lldb' 'libunwind')
+makedepends=('icu' 'git' 'clang35' 'cmake' 'llvm35' 'lldb' 'libunwind' 'lttng-ust')
 provides=('coreclr')
 source=('git+https://github.com/dotnet/coreclr') 
 sha1sums=('SKIP')
