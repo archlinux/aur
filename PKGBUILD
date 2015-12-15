@@ -2,7 +2,7 @@
 pkgname=wm2-svn
 _pkgname=wm2
 pkgver=r114
-pkgrel=1
+pkgrel=2
 pkgdesc="The ideal window manager for today's elegant and ascetic programmer"
 arch=('x86_64' 'i686')
 url="http://www.all-day-breakfast.com/wm2/"
