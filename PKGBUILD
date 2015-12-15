@@ -2,18 +2,18 @@
 
 pkgbase='glare-themes-git'
 pkgname=('glare-themes')
-pkgver=2015.12.13
+pkgver=2015.12.15.0011
 pkgrel=1
-pkgdesc='simple platform independent theme'
+pkgdesc='simple toolkit independent theme for a less distracted desktop experience'
 arch=('any')
 url='http://sixsixfive.deviantart.com/art/Glare-494114516'
-license=('CCBYSA4')
-makedepends=('sed' 'p7zip' 'bc' 'make' 'findutils' 'git' 'imagemagick')
+license=("CCPL:cc-by-sa-4.0")
+makedepends=('sed' 'p7zip' 'bc' 'make' 'findutils' 'git' 'imagemagick' 'gawk')
 source=("${pkgbase}::git+https://github.com/sixsixfive/Glare.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	printf "$(date +%Y.%m.%d)"
+	printf "$(date -u +%Y.%m.%d.%H%M)"
 }
 
 build() {
@@ -22,7 +22,7 @@ build() {
 	cat <<\EOF
  
 Would You like to change the blue hilight color to something else? [N/y]
-NOTE: Choose a color that has a good contrast to white!
+NOTE: Choose a vibrant color that has a good contrast to white!
  
 EOF
 	read _askcolor
@@ -54,6 +54,7 @@ package_glare-themes() {
 	'audacious: includes a Winamp2.x Skin'
 	'qmmp: includes a Winamp 2.x Skin'
 	'palemoon: Inludes a PaleMoon fix'
+	'openbox: Includes Openbox 3 themes'
 	'lxqt-config: Includes a LXQt theme')	
 	###start here
 	install -d ${pkgdir}/usr/{share/{themes,color-schemes,apps/color-schemes,lxqt/themes,audacious/Skins,qmmp/skins,slim/themes,aurorae/themes},lib/palemoon/browser/extensions/}
