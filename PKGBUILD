@@ -1,24 +1,24 @@
-# Maintainer:  Ionut Biru <ibiru@archlinux.org
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Ionut Biru <ibiru@archlinux.org
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: Mikko Seppälä <t-r-a-y@mbnet.fi>
 
 _pkgbasename=gtk2
 pkgname=lib32-$_pkgbasename
-pkgver=2.24.28
+pkgver=2.24.29
 pkgrel=1
-pkgdesc="The GTK+ Toolkit (v2) (32-bit)"
+pkgdesc="GObject-based multi-platform GUI toolkit (legacy) (32-bit)"
 arch=('x86_64')
 url="http://www.gtk.org/"
 install=gtk2.install
 depends=(lib32-{'atk>=1.30.0','pango>=1.28.0','cairo>=1.10.0','gdk-pixbuf2>=2.22.1'}
          lib32-lib{'cups>=1.4.4',xcursor,'xrandr>=1.3','xi>=1.3',xinerama,xcomposite,xdamage}
          $_pkgbasename)
-makedepends=('pkgconfig' 'gcc-multilib')
 options=('!libtool' '!docs')
 license=('LGPL')
 source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/2.24/gtk+-${pkgver}.tar.xz
         xid-collision-debug.patch)
-sha256sums=('b2c6441e98bc5232e5f9bba6965075dcf580a8726398f7374d39f90b88ed4656'
+sha256sums=('0741c59600d3d810a223866453dc2bbb18ce4723828681ba24aa6519c37631b8'
             'd758bb93e59df15a4ea7732cf984d1c3c19dff67c94b957575efea132b8fe558')
 
 prepare() {
