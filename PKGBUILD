@@ -2,14 +2,14 @@
 # Contributor: William Giokas <1007380@gmail.com>
 
 pkgname=i3status-git
-pkgver=2.9.r37.gadaa832
+pkgver=2.9.r80.g395d025
 pkgrel=1
 pkgdesc='Generates status bar to use with dzen2 or wmii'
 arch=('i686' 'x86_64')
 url='http://i3wm.org/i3status/'
 license=('BSD')
 groups=('i3-vcs')
-depends=('wireless_tools' 'confuse' 'alsa-lib' 'yajl' 'libpulse')
+depends=('confuse' 'alsa-lib' 'yajl' 'libpulse' 'libnl')
 makedepends=('git' 'pkgconfig' 'asciidoc')
 options=('docs')
 install=i3status.install
