@@ -14,20 +14,20 @@ source=("${pkgbase//-git/}::git://code.qt.io/qt/qtstyleplugins.git#branch=master
 sha256sums=('SKIP')
 
 pkgver() {
-	cd ${pkgbase//-git/}
+	cd "${pkgbase//-git/}"
 	_ver=$(git describe --abbrev=0 --tags|sed 's/^v//')
 	_rev=$(git rev-list --count HEAD)
 	printf "$_ver.r$_rev"
 }
 
 prepare() {
-	cd ${pkgbase//-git/}
+	cd "${pkgbase//-git/}"
 #rm the blackberry10 style since there is no qpixmapstyle
 	sed -i '/bb10style/d;/plastique /c\    plastique'  src/plugins/styles/styles.pro
 }
 
 build() {
-	cd ${pkgbase//-git/}
+	cd "${pkgbase//-git/}"
 	/usr/lib/qt/bin/qmake
 	make
 }
@@ -39,7 +39,7 @@ package_qt5-style-plastique() {
 	replaces=("${pkgname}" "${pkgname}-git<${pkgver}")
 	pkgdesc='Plastique style ported to Qt5'
 	depends=('qt5-base')
-	install -Dm0644 ${pkgbase//-git/}/plugins/styles/libqplastiquestyle.so ${pkgdir}/usr/lib/qt/plugins/styles/libqplastiquestyle.so
+	install -Dm0644 "${pkgbase//-git/}"/plugins/styles/libqplastiquestyle.so "${pkgdir}"/usr/lib/qt/plugins/styles/libqplastiquestyle.so
 }
 
 package_qt5-style-motif() {
@@ -49,7 +49,7 @@ package_qt5-style-motif() {
 	replaces=("${pkgname}" "${pkgname}-git<${pkgver}")
 	pkgdesc='Motif style ported to Qt5'
 	depends=('qt5-base')
-	install -Dm0644 ${pkgbase//-git/}/plugins/styles/libqmotifstyle.so ${pkgdir}/usr/lib/qt/plugins/styles/libqmotifstyle.so
+	install -Dm0644 "${pkgbase//-git/}"/plugins/styles/libqmotifstyle.so "${pkgdir}"/usr/lib/qt/plugins/styles/libqmotifstyle.so
 }
 
 package_qt5-style-cleanlooks() {
@@ -59,7 +59,7 @@ package_qt5-style-cleanlooks() {
 	replaces=("${pkgname}" "${pkgname}-git<${pkgver}")
 	pkgdesc='cleanlooks style ported to Qt5'
 	depends=('qt5-base')
-	install -Dm0644 ${pkgbase//-git/}/plugins/styles/libqcleanlooksstyle.so ${pkgdir}/usr/lib/qt/plugins/styles/libqcleanlooksstyle.so
+	install -Dm0644 "${pkgbase//-git/}"/plugins/styles/libqcleanlooksstyle.so "${pkgdir}"/usr/lib/qt/plugins/styles/libqcleanlooksstyle.so
 }
 
 package_qt5-style-gtk2() {
@@ -69,5 +69,5 @@ package_qt5-style-gtk2() {
 	replaces=("${pkgname}" "${pkgname}-git<${pkgver}")
 	pkgdesc='GTK2 style ported to Qt5'
 	depends=('qt5-base' 'gconf' 'gtk2')
-	install -Dm0644 ${pkgbase//-git/}/plugins/styles/libqgtk2style.so ${pkgdir}/usr/lib/qt/plugins/styles/libqgtk2style.so
+	install -Dm0644 "${pkgbase//-git/}"/plugins/styles/libqgtk2style.so "${pkgdir}"/usr/lib/qt/plugins/styles/libqgtk2style.so
 }
