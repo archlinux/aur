@@ -2,7 +2,7 @@
 # Thanks to Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=libmygpo-qt5-git
-pkgver=1.0.8.3.gfd4e40a
+pkgver=1.0.8.8.g5e633a2
 pkgrel=1
 pkgdesc="A C++/Qt client library for gpodder.net. Git and Qt5 version."
 arch=('i686' 'x86_64')
