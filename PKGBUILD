@@ -44,7 +44,7 @@ prepare() {
   sed -i '/tabs/d' ${pkgbase}-${pkgver}/src/context/applets/CMakeLists.txt
   sed -i '/upcomingevents/d' ${pkgbase}-${pkgver}/src/context/applets/CMakeLists.txt
   sed -i '/wikipedia/d' ${pkgbase}-${pkgver}/src/context/applets/CMakeLists.txt
-  
+
   # engines
   sed -i '/current/d' ${pkgbase}-${pkgver}/src/context/engines/CMakeLists.txt
   sed -i '/info/d' ${pkgbase}-${pkgver}/src/context/engines/CMakeLists.txt
@@ -55,7 +55,7 @@ prepare() {
   sed -i '/tabs/d' ${pkgbase}-${pkgver}/src/context/engines/CMakeLists.txt
   sed -i '/upcomingevents/d' ${pkgbase}-${pkgver}/src/context/engines/CMakeLists.txt
   sed -i '/wikipedia/d' ${pkgbase}-${pkgver}/src/context/engines/CMakeLists.txt
-  
+
   # collections
   sed -i '/audiocd/d' ${pkgbase}-${pkgver}/src/core-impl/collections/CMakeLists.txt
   sed -i '/daap/d' ${pkgbase}-${pkgver}/src/core-impl/collections/CMakeLists.txt
@@ -65,7 +65,7 @@ prepare() {
   sed -i '/playdarcollection/d' ${pkgbase}-${pkgver}/src/core-impl/collections/CMakeLists.txt
   sed -i '/umscollection/d' ${pkgbase}-${pkgver}/src/core-impl/collections/CMakeLists.txt
   sed -i '/upnpcollection/d' ${pkgbase}-${pkgver}/src/core-impl/collections/CMakeLists.txt
-  
+
   # services
   sed -i '/amazon/d' ${pkgbase}-${pkgver}/src/services/CMakeLists.txt
   sed -i '/ampache/d' ${pkgbase}-${pkgver}/src/services/CMakeLists.txt
@@ -75,16 +75,16 @@ prepare() {
   sed -i '/magnatune/d' ${pkgbase}-${pkgver}/src/services/CMakeLists.txt
   sed -i '/mp3tunes/d' ${pkgbase}-${pkgver}/src/services/CMakeLists.txt
   sed -i '/opmldirectory/d' ${pkgbase}-${pkgver}/src/services/CMakeLists.txt
-  
+
   # scripts
   sed -i '/free_music_charts_service/d' ${pkgbase}-${pkgver}/src/scripts/CMakeLists.txt
   sed -i '/librivox_service/d' ${pkgbase}-${pkgver}/src/scripts/CMakeLists.txt
   sed -i '/lyrics_lyricwiki/d' ${pkgbase}-${pkgver}/src/scripts/CMakeLists.txt
   sed -i '/radio_station_service/d' ${pkgbase}-${pkgver}/src/scripts/CMakeLists.txt
-  
+
   # utilities
   sed -i '/amzdownloader/d' ${pkgbase}-${pkgver}/utilities/CMakeLists.txt
-  
+
   # languages
   sed -i '/(bs)/d' ${pkgbase}-${pkgver}/po/CMakeLists.txt
   sed -i '/(ca)/d' ${pkgbase}-${pkgver}/po/CMakeLists.txt
@@ -136,13 +136,13 @@ prepare() {
   sed -i '/(ru)/d' ${pkgbase}-${pkgver}/doc/CMakeLists.txt
   sed -i '/(sv)/d' ${pkgbase}-${pkgver}/doc/CMakeLists.txt
   sed -i '/(uk)/d' ${pkgbase}-${pkgver}/doc/CMakeLists.txt
-  
+
   if [[ -d build ]]
   then
     rm -rf build
   fi
   mkdir build
-  
+
 }
 
 build() {
@@ -164,13 +164,13 @@ build() {
     -DWITH_Soprano=OFF \
     -DWITH_PLAYGROUND=OFF
   make
-  
+
 }
 
 package(){
 
   cd build
   make DESTDIR="${pkgdir}" install
-  
+
 }
 
