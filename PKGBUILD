@@ -44,7 +44,7 @@ check() {
 package_harfbuzz-git() {
   depends=(glib2 freetype2 graphite)
   optdepends=('cairo: hb-view program')
-  conflcts=(harfbuzz)
+  conflicts=(harfbuzz)
   provides=(harfbuzz)
 
   cd "$_gitname"
