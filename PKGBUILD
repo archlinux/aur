@@ -2,7 +2,7 @@
 # Contributor: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 pkgname=pep257
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PEP 257 docstring style checker."
 arch=(any)
 url="https://github.com/GreenSteam/pep257"
@@ -17,7 +17,7 @@ package() {
   python setup.py install --root="${pkgdir}" --optimize=1
 
   install -m 755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m 755 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE-MIT
+  install -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE-MIT
 }
 
 # vim:set ts=2 sw=2 et:
