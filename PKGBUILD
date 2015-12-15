@@ -3,12 +3,10 @@
 # SET pkgver & sha256sums
 pkgname=('sisu')
 pkgdesc="documents - structuring, publishing in multiple formats & search"
-pkgver=7.1.5
+pkgver=7.1.6
 pkgrel=1
-#source=("http://ftp.de.debian.org/debian/pool/main/s/sisu/${pkgname}_${pkgver}.orig.tar.xz")
 source=("http://www.sisudoc.org/sisu/archive/pool/main/s/sisu/${pkgname}_${pkgver}.orig.tar.xz")
-#source=("http://www.jus.uio.no/sisu/archive/pool/main/s/sisu/${pkgname}_${pkgver}.orig.tar.xz")
-sha256sums=('adf5286d1a5504c80f3486ae3ee2bb5dfbcb6987505a4f3bb4617795b50ba299')
+sha256sums=('6673cc927845a03f731f9f9c60ce79f58e8aaac66845ed070108957d3fb6b554')
 arch=('any')
 url="http://sisudoc.org"
 license=('GPL3')
