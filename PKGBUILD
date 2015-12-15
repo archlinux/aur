@@ -2,7 +2,7 @@
 pkgname=herbstluftwm-git
 _pkgname=herbstluftwm
 pkgver=0.6.2.r77.g1f6066b
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Manual tiling window manager for X"
 arch=('i686' 'x86_64')
