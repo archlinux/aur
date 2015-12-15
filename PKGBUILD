@@ -2,22 +2,22 @@
 # Maintainer:  Jesse Jaara   <gmail.com: jesse.jaara>
 
 pkgname=voikko-libreoffice
-pkgver=4.1
-pkgrel=3
+pkgver=5.0
+pkgrel=1
 pkgdesc="Finnish spellchecker, grammar checker and hyphenator extension for libreoffice"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://voikko.sourceforge.net"
-license=('GPL3')
-depends=('libvoikko' 'libreoffice')
-makedepends=('zip' 'libreoffice-sdk')
+license=('MPL')
+depends=('voikko-fi' 'libreoffice' 'python')
+makedepends=('zip')
 install=voikko-libreoffice.install
-source=("http://www.puimula.org/voikko-sources/libreoffice-voikko/libreoffice-voikko-${pkgver}.tar.gz")
-md5sums=('a07b386d4f4356b686e667a2acb1aff6')
+source=("http://www.puimula.org/voikko-sources/libreoffice-voikko/libreoffice-voikko-${pkgver}.tar.gz"
+        "http://www.puimula.org/voikko-sources/libreoffice-voikko/libreoffice-voikko-${pkgver}.tar.gz.asc")
+md5sums=('594c68d586cbf8aaea5fda4a8547c60e'
+         'SKIP')
 
 build() {
   cd "${srcdir}/libreoffice-voikko-${pkgver}"
-
-  . /usr/lib/libreoffice/sdk/setsdkenv_unix.sh
 
   make oxt
 }
