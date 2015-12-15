@@ -2,7 +2,7 @@
 
 pkgname=wmmixer
 pkgver=1.7+20141005
-pkgrel=1
+pkgrel=2
 pkgdesc="A mixer application written for the WindowMaker dock."
 arch=('i686' 'x86_64')
 url="http://windowmaker.org/dockapps/?name=$pkgname"
