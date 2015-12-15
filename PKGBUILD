@@ -20,7 +20,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   export CFLAGS="$CFLAGS -Wno-error=deprecated-declarations"
   ./configure --sysconfdir=/etc --prefix=/usr \
@@ -30,7 +30,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
 }
 
