@@ -17,7 +17,7 @@ _iconcvtver=1.0
 _rrunver=0.5
 _mergeprefsver=0.5
 
-pkgrel=6
+pkgrel=7
 pkgdesc="Suite of tools for IceWM"
 arch=(i686 x86_64)
 license=("GPL")
