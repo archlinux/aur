@@ -4,7 +4,7 @@
 
 pkgname=cyrus-imapd
 pkgver=2.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Cyrus IMAP mail server"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.cyrusimap.org/"
@@ -57,7 +57,10 @@ package() {
     mkdir -m 0755 -p $pkgdir/etc/cyrus
     mkdir -m 0755 -p $pkgdir/etc/conf.d
     mkdir -m 0755 -p $pkgdir/etc/rc.d
-
+    mkdir -m 0755 -p $pkgdir/usr/bin
+    
+    install -m 755 ${srcdir}/$pkgname-$pkgver/tools/mkimap ${pkgdir}/usr/bin/
+    
     # rename master.8 so it doesn't conflict with master.8 from Postfix
     mv $pkgdir/usr/share/man/man8/master.8 $pkgdir/usr/share/man/man8/cyrus-master.8
 
