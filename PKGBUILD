@@ -2,15 +2,15 @@
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
 pkgname=deco
-pkgver=1.6.3
+pkgver=1.6.4
 pkgrel=1
 pkgdesc="A command-line utility to extract various archive file formats"
 arch=('i686' 'x86_64')
-url="http://hartlich.com/deco/"
+url="https://github.com/peha/deco"
 license=('GPL3')
 optdepends=('deco-archive: extractor wrappers for various formats')
-source=(http://hartlich.com/deco/download/$pkgname-$pkgver.tar.gz)
-sha256sums=('18caa51d3a967076a93d4f287f70071cc40c06eb68cc7f663e9ce3269ddad6f5')
+source=($pkgname-$pkgver::https://github.com/peha/deco/archive/$pkgver.tar.gz)
+sha256sums=('6139b3efbe9df995ea0bb4506ba2edc00398d0dff6ba2728a1148366208cfdb7')
 
 package() {
   cd $pkgname-$pkgver
