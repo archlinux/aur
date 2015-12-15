@@ -28,8 +28,8 @@ package() {
     cp usr/share/webapps/${pkgname}/config.php.default etc/webapps/${pkgname}/config.php
     mv usr/share/webapps/${pkgname}/config.php.default etc/webapps/${pkgname}/config.php.default
     ln -s ../../../../etc/webapps/${pkgname}/config.php usr/share/webapps/${pkgname}/config.php
-    ln -s ../,,/,,/,,/etc/webapps/${pkgname}/config.php.default usr/share/webapps/${pkgname}/config.php.default
-    rm ../../../../etc/webapps/${pkgname}/config.php
+    ln -s ../../../../etc/webapps/${pkgname}/config.php.default usr/share/webapps/${pkgname}/config.php.default
+    rm etc/webapps/${pkgname}/config.php
     
     # move logs to /var/log
     ln -s ../../../../var/log/${pkgname} usr/share/webapps/${pkgname}/logs
