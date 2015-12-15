@@ -2,7 +2,7 @@
 # Contributor: Daniel Albers <daniel@lbe.rs>
 
 pkgver=15.2.2
-pkgrel=2
+pkgrel=3
 arch=(i686 x86_64)
 groups=('bareos')
 pkgdesc="Bareos - Backup Archiving REcovery Open Sourced"
@@ -118,13 +118,16 @@ _etc_files() {
 
 
 package_bareos-bat() {
-  conflicts=("alsa-utils")
   pkgdesc="${pkgdesc} - Admin Tool (GUI)"
   depends=("bareos-common=$pkgver" "qt4")
   makedepends+=('qt4')
   backup=(`_etc_files ${pkgname}.install`)
   install=bareos-bat.install
   _install_files ${pkgname}
+
+  # Temp, while waiting on bug: https://bugs.bareos.org/view.php?id=576
+  mv ${pkgdir}/usr/bin/bat ${pkgdir}/usr/bin/bareos-bat
+  mv ${pkgdir}/usr/share/man/man1/bat.1.gz ${pkgdir}/usr/share/man/man1/bareos-bat.1.gz
 }
 
 package_bareos-bconsole() {
