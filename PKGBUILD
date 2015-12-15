@@ -3,7 +3,7 @@
 
 pkgname=wmsmixer
 pkgver=0.5.1
-pkgrel=4
+pkgrel=5
 pkgdesc="a hack to wmmixer which makes some changes to the display"
 arch=('i686' 'x86_64')
 #url="http://dockapps.windowmaker.org/file.php/id/63"
