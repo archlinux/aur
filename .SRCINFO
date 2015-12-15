@@ -1,7 +1,7 @@
 pkgbase = yle-dl
 	pkgdesc = Download video and audio from YLE Areena.
-	pkgver = 2.8.1
-	pkgrel = 2
+	pkgver = 2.9.0
+	pkgrel = 0
 	url = http://aajanki.github.io/yle-dl/
 	arch = any
 	license = GPL2
@@ -11,10 +11,10 @@ pkgbase = yle-dl
 	optdepends = rtmpdump: old rtmpdump backend
 	conflicts = rtmpdump-yle
 	replaces = rtmpdump-yle
-	source = yle-dl-2.8.1.tar.gz::https://github.com/aajanki/yle-dl/tarball/2.8.1
-	source = AdobeHDS-2015.09.18.php::https://raw.githubusercontent.com/K-S-V/Scripts/f7128c622047b3312e1aa4cfb91cd566d8b76700/AdobeHDS.php
-	md5sums = 23a5934c394b040e9548ef1b00350afc
-	md5sums = b08a4344f44007ed78df5565c54b8d19
+	source = yle-dl-2.9.0.tar.gz::https://github.com/aajanki/yle-dl/tarball/2.9.0
+	source = AdobeHDS-2015.11.29.php::https://raw.githubusercontent.com/K-S-V/Scripts/ef9a6acde7ae79d39496e7d784ad20e7227adae7/AdobeHDS.php
+	md5sums = 4f6a2b012c13886462cd43105c5ae1c1
+	md5sums = 4bcaeca03f8ff339eda37f994c3ca9a9
 
 pkgname = yle-dl
 
