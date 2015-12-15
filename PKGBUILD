@@ -1,6 +1,6 @@
 # Maintainer: Benjamin Bukowski <benjamin.bukowski@gmail.com>
 pkgname=firebird-superserver
-_pkgver=2.5.4.26856
+_pkgver=2.5.5.26952
 _buildver=0
 pkgver=${_pkgver}_${_buildver}
 pkgrel=2
@@ -17,7 +17,7 @@ install=firebird-superserver.install
 source=("http://downloads.sourceforge.net/firebird/Firebird-$_pkgver-$_buildver.tar.bz2"
         'firebird-tmpfiles.conf'
         'firebird-systemd.service')
-md5sums=('7a17ec9889424b98baa29e001a054434'
+md5sums=('b0b5293991fcf07347b38431c80be1d4'
          '98eff99fd8d195a45c251610d67bd473'
          'ee9068e9bfdfa01e9dc79c72d1bfcdd8')
 
