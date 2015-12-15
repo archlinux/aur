@@ -3,14 +3,15 @@
 
 pkgname=libvoikko
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A library of free Finnish language tools using Malaga"
 arch=('i686' 'x86_64')
 url="http://voikko.sourceforge.net"
 license=('GPL2')
 makedepends=('python')
 optdepends=('voikko-fi: The actual dictionary'
-            'voikko-fi-malaga: Old malaga based dictionary')
+            'voikko-fi-malaga: Old malaga based dictionary'
+            'python: For python bindings')
 options=(!libtool)
 source=(http://www.puimula.org/voikko-sources/libvoikko/${pkgname}-${pkgver}.tar.gz)
 md5sums=('c22c63d85554776e354372567e0e67fe')
@@ -32,5 +33,7 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   make DESTDIR="${pkgdir}/" install
+  mkdir -p "${pkgdir}/usr/lib/python3.5/site-packages"
+  cp python/libvoikko.py "${pkgdir}/usr/lib/python3.5/site-packages/libvoikko.py"
 }
 

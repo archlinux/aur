@@ -1,7 +1,7 @@
 pkgbase = libvoikko
 	pkgdesc = A library of free Finnish language tools using Malaga
 	pkgver = 4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://voikko.sourceforge.net
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = libvoikko
 	makedepends = python
 	optdepends = voikko-fi: The actual dictionary
 	optdepends = voikko-fi-malaga: Old malaga based dictionary
+	optdepends = python: For python bindings
 	options = !libtool
 	source = http://www.puimula.org/voikko-sources/libvoikko/libvoikko-4.0.tar.gz
 	md5sums = c22c63d85554776e354372567e0e67fe
