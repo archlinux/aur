@@ -10,7 +10,7 @@ arch=("i686" "x86_64" "armv5tel" "armv7l")
 url="https://github.com/esmil/stupidterm"
 license=("LGPL")
 depends=("vte3")
-conflicts=("stupidterm")
+conflicts=("stupidterm" "st")
 source=("${_pkgname}::git+https://github.com/esmil/stupidterm.git")
 md5sums=('SKIP')
 

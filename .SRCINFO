@@ -10,6 +10,7 @@ pkgbase = stupidterm-git
 	license = LGPL
 	depends = vte3
 	conflicts = stupidterm
+	conflicts = st
 	source = stupidterm::git+https://github.com/esmil/stupidterm.git
 	md5sums = SKIP
 
