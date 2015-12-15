@@ -10,6 +10,7 @@ arch=("i686" "x86_64" "armv5tel" "armv7l")
 url="https://github.com/esmil/stupidterm"
 license=("LGPL")
 depends=("vte3")
+conflicts=("stupidterm")
 source=("${_pkgname}::git+https://github.com/esmil/stupidterm.git")
 md5sums=('SKIP')
 
@@ -30,5 +31,3 @@ package() {
 
     make DESTDIR="${pkgdir}" prefix=/usr install
 }
-
-# vim:set ts=2 sw=2 et:
