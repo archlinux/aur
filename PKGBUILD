@@ -5,10 +5,10 @@ pkgrel=1
 pkgdesc="A library for use in analyzing GROMACS simulation output files"
 arch=(any)
 url="https://github.com/wesbarnett/libgmxcpp"
-license=('GPL','LGPL')
+license=('GPL')
 makedepends=('cmake')
 source=(${url}/archive/v${pkgver}.tar.gz)
-md5sums=('bfd94ae47211c460abf2d893471531f0')
+md5sums=('f476144d223f2547f5f8d8a2fe922aa0')
 
 build() {
 	cd "$pkgname-$pkgver"
