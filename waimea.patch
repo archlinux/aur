@@ -1,0 +1,69 @@
+diff -up src/waimea-0.4.0/src/Resources.cc.orig src/waimea-0.4.0/src/Resources.cc
+--- src/waimea-0.4.0/src/Resources.cc.orig	2002-11-06 04:55:10.000000000 -0700
++++ src/waimea-0.4.0/src/Resources.cc	2013-09-10 21:15:30.000000000 -0600
+@@ -1568,7 +1568,7 @@ void ResourceHandler::LoadActions(WaScre
+                                                            NULL);
+                             str = str + i3 + 1;
+                             ReadActions((char *) buffer2, defs, &wacts,
+-                                        &ext_list->list, wascreen);
++                                        &ext_list->alist, wascreen);
+                         }
+                         else if (str[0] == 'n' && str[1] == '/') {
+                             for (i3 = 2; str[i3] != '\0' &&
+@@ -1583,7 +1583,7 @@ void ResourceHandler::LoadActions(WaScre
+                                                            NULL);
+                             str = str + i3 + 1;
+                             ReadActions((char *) buffer2, defs, &wacts,
+-                                        &ext_list->list, wascreen);
++                                        &ext_list->alist, wascreen);
+                         }
+                         else if (str[0] == 't' && str[1] == '/') {
+                             for (i3 = 2; str[i3] != '\0' &&
+@@ -1598,7 +1598,7 @@ void ResourceHandler::LoadActions(WaScre
+                                                            str + 2);
+                             str = str + i3 + 1;
+                             ReadActions((char *) buffer2, defs, &wacts,
+-                                        &ext_list->list, wascreen);
++                                        &ext_list->alist, wascreen);
+                         }
+                         else if (! strncasecmp(str, "window", 6)) {
+                             str = str + 6;
+diff -up src/waimea-0.4.0/src/Resources.hh.orig src/waimea-0.4.0/src/Resources.hh
+--- src/waimea-0.4.0/src/Resources.hh.orig	2002-11-06 04:55:10.000000000 -0700
++++ src/waimea-0.4.0/src/Resources.hh	2013-09-10 21:11:05.000000000 -0600
+@@ -193,13 +193,13 @@ public:
+         delete name;
+         delete cl;
+         delete title;
+-        ACTLISTCLEAR(list);
++        ACTLISTCLEAR(alist);
+     }
+     
+     Regex *name;
+     Regex *cl;
+     Regex *title;
+-    list<WaAction *> list;
++    list<WaAction *> alist;
+ };
+ 
+ class StrComp {
+diff -up src/waimea-0.4.0/src/Window.cc.orig src/waimea-0.4.0/src/Window.cc
+--- src/waimea-0.4.0/src/Window.cc.orig	2002-11-06 04:55:10.000000000 -0700
++++ src/waimea-0.4.0/src/Window.cc	2013-09-10 21:12:29.000000000 -0600
+@@ -280,13 +280,13 @@ list <WaAction *> *WaWindow::GetActionLi
+         if (classhint) {
+             if (classhint->res_name &&
+                 (*it)->name->Match(classhint->res_name))
+-                return &((*it)->list);
++                return &((*it)->alist);
+             else if (classhint->res_class &&
+                      (*it)->cl->Match(classhint->res_class))
+-                return &((*it)->list);
++                return &((*it)->alist);
+         }
+         if ((*it)->title->Match(name))
+-            return &((*it)->list);
++            return &((*it)->alist);
+     }
+     return NULL;
+ }
