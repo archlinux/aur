@@ -2,7 +2,7 @@
 # Previous maintainer: Joel Teichroeb <joel@teichroeb.net>
 
 pkgname=rr-git
-pkgver=4.0.1.r6.gc4e5fdb
+pkgver=4.0.2.r59.g7770179
 pkgrel=1
 pkgdesc='a nondeterministic debugger'
 arch=(i686 x86_64)
@@ -24,8 +24,6 @@ pkgver() {
 prepare() {
 	cd rr
 	mkdir -p build
-	sed -i~ -e 's/ python / python2 /g' CMakeLists.txt
-	sed -i~ -e 's/^\(#define \)_BSD_SOURCE$/\1_DEFAULT_SOURCE/' src/Command.cc
 }
 
 build() {

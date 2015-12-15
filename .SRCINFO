@@ -1,6 +1,6 @@
 pkgbase = rr-git
 	pkgdesc = a nondeterministic debugger
-	pkgver = 4.0.1.r6.gc4e5fdb
+	pkgver = 4.0.2.r59.g7770179
 	pkgrel = 1
 	url = http://rr-project.org/
 	arch = i686
@@ -8,7 +8,6 @@ pkgbase = rr-git
 	license = custom
 	makedepends = git
 	makedepends = cmake
-	makedepends = gcc-multilib
 	depends = libpfm4
 	depends = libdisasm
 	depends = python2-pexpect
