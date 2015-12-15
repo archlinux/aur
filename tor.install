@@ -1,0 +1,18 @@
+post_install() {
+  echo "==> "
+  echo "==> Tor has been preconfigured to run as a client only"
+  echo "==> Tor is experimental software, Do not rely on it for strong anonymity."
+  echo "==> "
+  post_upgrade
+}
+
+post_upgrade() {
+  systemd-sysusers tor.conf
+  systemd-tmpfiles --create tor.conf
+  chown -R tor:tor /etc/tor
+  chmod -R 750 /etc/tor
+}
+
+pre_remove() {
+  echo
+}

@@ -1,0 +1,20 @@
+---
+ src/or/or.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/or/or.h b/src/or/or.h
+index 945934e..e0f1c5f 100644
+--- a/src/or/or.h
++++ b/src/or/or.h
+@@ -4472,7 +4472,7 @@ struct socks_request_t {
+ /********************************* circuitbuild.c **********************/
+ 
+ /** How many hops does a general-purpose circuit have by default? */
+-#define DEFAULT_ROUTE_LEN 3
++#define DEFAULT_ROUTE_LEN 6
+ 
+ /* Circuit Build Timeout "public" structures. */
+ 
+-- 
+2.6.4
+

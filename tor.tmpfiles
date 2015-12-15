@@ -1,0 +1,4 @@
+# systemd tmpfile settings for tor
+# See tmpfiles.d(5) for details
+
+d /var/lib/tor 0700 tor tor -
