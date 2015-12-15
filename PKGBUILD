@@ -4,7 +4,7 @@
 pkgname=wmspaceclock
 _prgname=spaceclock
 pkgver=1.2d
-pkgrel=4
+pkgrel=5
 pkgdesc="Dockapp showing antialiased analog clock."
 url="http://$pkgname.sourceforge.net/"
 arch=('i686' 'x86_64')
