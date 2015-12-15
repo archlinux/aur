@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=wmapp
 pkgver=0.0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="DockApp Graphics Library"
 arch=('i686' 'x86_64')
 url="http://www.starplot.org/wmapp/"
