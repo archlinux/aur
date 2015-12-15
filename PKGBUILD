@@ -36,6 +36,11 @@ build() {
   grunt -v "electron:linux-${_ELECTRON_ARCH}"
 }
 
+check() {
+  cd "$srcdir/itch-${pkgver}"
+  npm test
+}
+
 package() {
   cd "$srcdir/itch-$pkgver"
 
