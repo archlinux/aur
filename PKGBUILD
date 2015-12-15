@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd lutris
 
-  printf "%s" "$(git describe | sed 's/v//; s/-/.r/; s/-g/./')"
+  git describe | sed 's/v//; s/-/.r/; s/-g/./'
 }
 
 prepare() {
