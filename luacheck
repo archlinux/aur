@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /usr/share/luacheck/bin/luacheck "$@"
+exec /usr/share/lua/5.3/luacheck/bin/luacheck "$@"
