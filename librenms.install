@@ -8,7 +8,7 @@ post_install() {
     usermod -a -G librenms http
     chown -R librenms:librenms /usr/share/webapps/${pkgname}
     chown -R librenms:librenms /etc/webapps/${pkgname}
-    chown http:http /var/logs/${pkgname}
+    chown http:http /var/log/${pkgname}
 
     echo "You have to configure the database configuration"
     echo "in ${_etcdir}/config.php"

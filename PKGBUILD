@@ -29,12 +29,12 @@ package() {
     ln -s ../../../../etc/webapps/${pkgname}/config.php usr/share/webapps/${pkgname}/config.php
     
     # move logs to /var/log
-    ln -s ../../../../var/logs/${pkgname} usr/share/webapps/${pkgname}/logs
+    ln -s ../../../../var/log/${pkgname} usr/share/webapps/${pkgname}/logs
 
     install -dm0775 usr/share/webapps/${pkgname}/rrd
 
     # php.ini
     install -dm0755 $pkgdir/etc/php/conf.d/
  
-   echo 'open_basedir = ${open_basedir}:/usr/share/webapps/librenms' > etc/php/conf.d/${pkgname}.ini
+   echo 'open_basedir = ${open_basedir}:/usr/share/webapps/librenms:/etc/webapps/librenms' > etc/php/conf.d/${pkgname}.ini
 }
