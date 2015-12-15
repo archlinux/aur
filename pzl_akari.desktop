@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=pzl games Akari
+Comment=Akari (pzl games)
+Categories=Game;LogicGame
+Exec=python2 /usr/share/pzl_games/akari.pyw
+Terminal=false
+Icon=/usr/share/pixmaps/pzl_games/akari_logo.gif
+Type=Application
