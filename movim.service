@@ -1,0 +1,14 @@
+[Unit]
+Description=Movim xmpp web client
+After=local-fs.target network.target mysql.service nginx.service
+
+[Service]
+WorkingDirectory=/usr/share/webapps/movim
+EnvironmentFile=/etc/default/movim
+ExecStart=/usr/bin/php daemon.php $MOVIM_URL $MOVIM_PORT
+Restart= always
+User=http
+
+[Install]
+WantedBy=multi-user.target
+
