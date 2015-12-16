@@ -1,8 +1,8 @@
 # Maintainer: Nikola Milinković <nikmil@gmail.com>
 # Submitter: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
-#pkgbase=python-regex
-#pkgname=('python-regex' 'python2-regex')
+pkgbase=python-regex
+pkgname=('python-regex' 'python2-regex')
 pkgname=python-regex
 pkgver=2015.11.22
 pkgrel=1
@@ -16,19 +16,19 @@ options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/r/regex/regex-${pkgver}.tar.gz")
 md5sums=('0bd2c23059f99cbaf9046000d51d3de7')
 
-#package_python2-regex() {
-#  depends=('python2')
-#  conflicts=('python2-regex-hg')
-#  pkgdesc="Alternative python regular expression module. (python2 version)"
-#  
-#  cd "${srcdir}/regex-${pkgver}"
-#  python2 setup.py install --root="${pkgdir}/" --optimize=1
-#
-#  install -v -m755 -d "${pkgdir}/usr/share/doc/python2-regex"
-#  install -v -m644 ./docs/Features.html "${pkgdir}/usr/share/doc/python2-regex/"
-#  install -v -m644 ./docs/Features.rst "${pkgdir}/usr/share/doc/python2-regex/"
-#  install -v -m644 ./docs/UnicodeProperties.txt "${pkgdir}/usr/share/doc/python2-regex/"
-#}
+package_python2-regex() {
+  depends=('python2')
+  conflicts=('python2-regex-hg')
+  pkgdesc="Alternative python regular expression module. (python2 version)"
+  
+  cd "${srcdir}/regex-${pkgver}"
+  python2 setup.py install --root="${pkgdir}/" --optimize=1
+
+  install -v -m755 -d "${pkgdir}/usr/share/doc/python2-regex"
+  install -v -m644 ./docs/Features.html "${pkgdir}/usr/share/doc/python2-regex/"
+  install -v -m644 ./docs/Features.rst "${pkgdir}/usr/share/doc/python2-regex/"
+  install -v -m644 ./docs/UnicodeProperties.txt "${pkgdir}/usr/share/doc/python2-regex/"
+}
 
 package_python-regex() {
   depends=('python')
