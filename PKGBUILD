@@ -9,7 +9,7 @@ license=('custom')
 arch=('i686' 'x86_64')
 depends=('alsa-lib' 'glu' 'libsm' 'gtk2' 'mpg123')
 optdepends=('gtk-engines: libclearlooks.so library')
-makedepends=('upx')
+makedepends=('upx' 'ucl')
 depends_x86_64=('lib32-alsa-lib' 'lib32-glu' 'lib32-libsm' 'lib32-gtk2' 'lib32-mpg123')
 optdepends_x86_64=('lib32-gtk-engines: libclearlooks.so library'
                    'lib32-alsa-plugins: for PulseAudio users')
