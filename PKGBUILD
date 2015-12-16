@@ -3,12 +3,12 @@
 
 pkgname=koji
 pkgver=1.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Koji is a system for building and tracking RPMS. This base package contains shared libraries and the command-line interface.'
 arch=('any')
 license=('GPL2' 'LGPL2.1')
 url=('https://fedorahosted.org/koji/')
-depends=('python2-krbv' 'python2-pyopenssl' 'urlgrabber' 'rpm-org')
+depends=('python2-krbv' 'python2-pyopenssl' 'urlgrabber' 'rpm-org' 'yum')
 makedepends=('python2')
 backup=('etc/httpd/conf.d/kojihub.conf'
         'etc/httpd/conf.d/kojiweb.conf'
