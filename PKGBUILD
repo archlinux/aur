@@ -8,11 +8,12 @@
 #   pulse
 #   add policytool desktop files
 
+# Package 'openjfx' must be updated when this one is
 pkgname=('jre8-openjdk-headless-infinality' 'jre8-openjdk-infinality' 'jdk8-openjdk-infinality')
 pkgbase=java8-openjdk
 _java_ver=8
 # Found @ http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
-_jdk_update=65
+_jdk_update=66
 _jdk_build=17
 pkgver=${_java_ver}.u${_jdk_update}
 _repo_ver=jdk${_java_ver}u${_jdk_update}-b${_jdk_build}
@@ -35,14 +36,14 @@ source=(jdk8u-${_repo_ver}.tar.gz::${_url_src}/archive/${_repo_ver}.tar.gz
         004_add-fontconfig.patch
         005_enable-infinality.patch)
 
-sha256sums=('472c8cd32a52a7f84d28439d2364696e82abd1b438fd43609c463c3727123e52'
-            '3491c94851b72c5569e76cb18706025c20dca4b9f26843f8ad0f31ca5df1e0b6'
-            '7ef89c932bb829d3a69ff827493254657cdc98724f3a16956027922b3604e82e'
-            '53782fadf27e8dac8f778016c8e6e59363556e0bc4d9f349526f7779fe9f0722'
-            'def69c47603258bdc638ce0d3bd888bb83f5dce04452e0d14284814dc75343fa'
-            '91004628ceb2b52f9a9121301ec74d3e02181787d972f06a46390184703d89ce'
-            '047b3390680fe8fb03c5d63f9582cae2216cbe1d912eff480613b051c97d29c6'
-            '64e966d7774a4134ae489992017ce791091ff57ecb0fc928d0f6c3fb82dbe510'
+sha256sums=('7bd68bbe99094c46744dbaf5563e3e49b08adc8ed7a8e24d8f10520d42b1a63b'
+            '1dfa95d3e5747a48f2acf91b4c3f3b7233f65fd37078c096015ade80ceb5d93d'
+            'f552ab7216d233296f64cb2551f43090b4ff1c0383bec365c910a913e25e61bb'
+            'a6368996acc5f914acab7b000ce70f387b7994776fb00dc82882bdefc676c77b'
+            '317f85ae5af4d2be44b8b5a4318512d344895e978530cc87544bf9987860b0cb'
+            'e4a95401c4e45fc0471e42b2b62bdfad025eee57715583ce58b0da785159e2eb'
+            'b58d81b7e873c2ebd9f96a6bbd538f68c1f457e4dfea3b262e52973a33f2e6f7'
+            'ad5c17b67999179966175caa35684056a48eb74186191e8f1b8ff900b580b25a'
             '3e67013b249fe702b0176e5d39f7ddef85ef0df121ef0b3a898ea82772712f55'
             'efeee8db0710bc217b5e886224450f6cf50938004e8c140eb9aee0a699d2d5ac')
 
