@@ -1,0 +1,11 @@
+--- branches/multikey/src/qjoypad.pro	2011/01/20 16:14:37132
++++ branches/multikey/src/qjoypad.pro	2011/12/22 15:17:14133
+@@ -31,7 +31,7 @@
+ 
+ TEMPLATE = app
+ INCLUDEPATH += .
+-QMAKE_LIBS += -lXtst
++QMAKE_LIBS += -lXtst -lX11
+ 
+ # Input
+ HEADERS += axis.h \

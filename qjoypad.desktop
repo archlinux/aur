@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=QJoyPad
+GenericName=Simulated Keystrokes
+GenericName[de]=Simulierte Tastendrücke
+Comment=Trigger keystrokes and mouse actions with gamepads/joysticks
+Comment[de]=Löse mit dem Gamepad/Joystick Tastendrücke und Mausbewegungen aus
+Icon=qjoypad
+Exec=qjoypad
+Terminal=false
+Type=Application
+Categories=Utility;Game;
+StartupNotify=false
+Encoding=UTF-8
