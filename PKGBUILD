@@ -6,7 +6,7 @@
 
 pkgname=chromium-minimum
 _pkgname=chromium
-pkgver=47.0.2526.80
+pkgver=47.0.2526.106
 pkgrel=1
 _launcher_ver=3
 pkgdesc="The open-source project behind Google Chrome, with a minimum number of dependencies."
@@ -32,7 +32,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         chromium-fix-print-preview-on-en_GB-locale.patch
         0001-Add-FPDFAPIJPEG_-prefix-to-more-libjpeg-functions.patch
         chromium-widevine.patch)
-sha256sums=('b107148323a3b641eae29bfeda298183c0d1c110ef96a04a13f329015d614d05'
+sha256sums=('64535073330a3d37aad228d10a15cdcbb5b389e59d079d1a3b22d023b99a58e6'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             '6fff45aafa31fb35a032b4e2175a341e08f9d2a9b37c5cf080c318180f558378'
