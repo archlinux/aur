@@ -1,7 +1,9 @@
-# Maintainer: qs9rx < that nick at enjoys döt it>
+# Maintainer: Frederic Bezies < fredbezies at gmail dot com >
+# Contributor: qs9rx < that nick at enjoys döt it>
 # Contributor: Christoph Zeiler <rabyte*gmail> (the fitzquake PKGBUILD was a base)
 pkgname=quakespasm-svn
-pkgver=1261
+_pkgname=quakespasm
+pkgver=1265
 pkgrel=1
 pkgdesc="A modern Quake 1 engine. Forked from Fitzquake and improved in many ways such as Vorbis/MP3 support for music."
 arch=('i686' 'x86_64')
@@ -15,17 +17,17 @@ md5sums=('SKIP')
 source=('svn+https://svn.code.sf.net/p/quakespasm/code/trunk/quakespasm')
 
 pkgver() {
-  cd "$srcdir/quakespasm"
+  cd "$srcdir/$_pkgname"
   svnversion
 }
 
 build() {
-  cd "$srcdir/quakespasm/Quake/"
+  cd "$srcdir/$_pkgname/Quake/"
   msg "Starting make..."
   make DO_USERDIRS=1 USE_SDL2=1
 }
 
 package() {
-  cd "$srcdir/quakespasm/Quake/"
+  cd "$srcdir/$_pkgname/Quake/"
   install -Dm755 quakespasm "$pkgdir"/usr/bin/$pkgname
 }
