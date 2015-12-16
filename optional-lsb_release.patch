@@ -4,7 +4,7 @@ diff -Naur mate-menu.orig/lib/mate-menu.py mate-menu/lib/mate-menu.py
 @@ -563,11 +563,12 @@
      def createPanelButton( self ):
          self.button_icon = Gtk.Image.new_from_file( self.buttonIcon )
-         self.systemlabel = Gtk.Label(label= self.buttonText )
+         self.systemlabel = Gtk.Label(label= "%s " % self.buttonText )
 -        process = subprocess.Popen(['lsb_release', '-d'], stdout=subprocess.PIPE)
 -        out, err = process.communicate()
 -        tooltip = out.replace('Description:', '').strip()
