@@ -1,9 +1,8 @@
 # Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
 
-pkgname=0xdbe
-_pkgname=0xDBE
+pkgname=datagrip
+_pkgname=DataGrip
 pkgver=1.0
-_pkgver=143.1301.4
 pkgrel=5
 pkgdesc='Smart SQL Editor and Advanced Database Client Packed Together for Optimum Productivity'
 arch=('i686' 'x86_64')
@@ -11,10 +10,11 @@ options=('!strip')
 url="http://www.jetbrains.com/${pkgname}/"
 license=('Commercial')
 depends=('java-environment>=6')
-source=(https://download.jetbrains.com/dbe/${pkgname}-${_pkgver}.tar.gz
-        jetbrains-0xdbe.desktop)
-sha256sums=('f9cd4e649ed7ce745be1c9d73f9863dab4297fc59871d6223dcf5c64bb7e97a1'
-            'b138f90cdeaa4dcc6cbc8cf911d65a3265938824abe64c734b1ff76e580e42c3')
+provide=('0xdbe' '0xdbe-eap')
+source=(https://download.jetbrains.com/$pkgname/${pkgname}-${pkgver}-custom-jdk-linux.tar.gz
+        jetbrains-datagrip.desktop)
+sha256sums=('33cd788e1af18c75699dfb58607aa90d29d4240020122bfc17b7aa1e38903a24'
+            'fb14bffa9455575cef0d166ca314d3d24b3971eebc06a4568442235a1fe0ead9')
 
 package() {
   install -d -m 755 ${pkgdir}/opt/
@@ -22,7 +22,7 @@ package() {
   install -d -m 755 ${pkgdir}/usr/share/applications/
   install -d -m 755 ${pkgdir}/usr/share/pixmaps/
 
-  cp -a ${srcdir}/${_pkgname}-${_pkgver} $pkgdir/opt/${pkgname}
+  cp -a ${srcdir}/${_pkgname}-${pkgver} $pkgdir/opt/${pkgname}
 
   ln -s /opt/$pkgname/bin/${pkgname}.sh $pkgdir/usr/bin/${pkgname}
   install -D -m 644 ${srcdir}/jetbrains-${pkgname}.desktop ${pkgdir}/usr/share/applications/

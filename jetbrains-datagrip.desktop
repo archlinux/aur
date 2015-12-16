@@ -1,10 +1,10 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=0xDBE
-Icon=/opt/0xdbe/bin/0xdbe.png
-Exec="/opt/0xdbe/bin/0xdbe.sh" %f
+Name=DataGrip
+Icon=/opt/datagrip/bin/0xdbe.png
+Exec="/opt/datagrip/bin/0xdbe.sh" %f
 Comment=Develop with pleasure!
 Categories=Development;IDE;
 Terminal=false
-StartupWMClass=jetbrains-0xdbe
+StartupWMClass=jetbrains-datagrip
