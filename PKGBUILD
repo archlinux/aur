@@ -1,13 +1,13 @@
-# $Id: PKGBUILD 247915 2015-09-30 05:17:55Z fyan $
-# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+#  Maintainer: sudokode <sudokode@gmail.com>
+# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=nvidia-zen
 pkgname=(nvidia-zen nvidia-zen-dkms)
 pkgver=358.16
 _extramodules=extramodules-4.2-zen
-pkgrel=2.1
+pkgrel=3
 pkgdesc="NVIDIA drivers for linux-zen"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -80,5 +80,4 @@ package_nvidia-zen-dkms() {
     cd ${_pkg}
     install -dm 755 "${pkgdir}"/usr/{lib/modprobe.d,src}
     cp -dr --no-preserve='ownership' kernel-dkms "${pkgdir}/usr/src/nvidia-${pkgver}"
-    echo 'blacklist nouveau' > "${pkgdir}/usr/lib/modprobe.d/nvidia.conf"
 }
