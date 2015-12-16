@@ -22,7 +22,7 @@
 #          (your mileage may vary.)
 pkgname=ghc7.6
 pkgver=7.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Legacy GHC. Compatible with Haskell Platform 2013.2'
 arch=('i686' 'x86_64')
 url='http://www.haskell.org/ghc/'
@@ -101,7 +101,8 @@ build() {
 
   ./configure \
     --prefix=/usr \
-	--with-ghc=ghc-7.6
+    --with-ghc=ghc-7.6 \
+    --docdir=/usr/share/doc/ghc-7.6
 
   make
 }
@@ -154,7 +155,6 @@ package() {
   mv ${pkgdir}/usr/bin/runghc     ${pkgdir}/usr/bin/runghc-7.6
   rm ${pkgdir}/usr/bin/runhaskell # use runghc-7.6 instead
 
-  mv ${pkgdir}/usr/share/doc/ghc  ${pkgdir}/usr/share/doc/ghc-7.6
   mv ${pkgdir}/usr/share/man/man1/ghc.1 ${pkgdir}/usr/share/man/man1/ghc-7.6.1
 
   install -d            ${pkgdir}/usr/share/licenses/ghc-7.6
