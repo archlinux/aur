@@ -3,21 +3,24 @@
 pkgname=python2-cabocha
 _pkgname=cabocha
 pkgver=0.69
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet Another Japanese Dependency Structure Analyzer (Python2 interface)"
 url="https://taku910.github.io/cabocha/"
 arch=('x86_64' 'i686')
 license=('LGPL2.1' 'BSD')
 depends=('crfpp' 'mecab' 'cabocha' 'python')
-source=("${_pkgname}-${pkgver}.tar.bz2::https://doc-04-74-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/4d2ns4qhmb0vqdmnjdkrt6i4kd89toa8/1433851200000/13553212398903315502/*/0B4y35FiV1wh7SDd1Q1dUQkZQaUU?e=download"
+source=("${pkgname}-${pkgver}.tar.bz2::https://googledrive.com/host/0B4y35FiV1wh7cGRCUUJHVTNJRnM/cabocha-0.69.tar.bz2"
         "setup.patch")
 sha1sums=('9196098628c5d1f0b83b371a03352b6652c04001'
           'b2d920fb3eec220339dcc71e964523cd2eab0ac9')
 
+prepare() {
+  cd ${srcdir}/${_pkgname}-${pkgver}/python
+  patch < ${srcdir}/setup.patch
+}
+
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}/python
-
-  patch < ${srcdir}/setup.patch
   python2 setup.py build_ext
 }
 
