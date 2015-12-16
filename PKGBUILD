@@ -6,7 +6,7 @@ pkgbase=xorg-server1.12
 _pkgbase=xorg-server
 pkgname=('xorg-server1.12' 'xorg-server1.12-xephyr' 'xorg-server1.12-xdmx' 'xorg-server1.12-xvfb' 'xorg-server1.12-xnest' 'xorg-server1.12-common' 'xorg-server1.12-devel')
 pkgver=1.12.4
-pkgrel=5
+pkgrel=6
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://xorg.freedesktop.org"
@@ -21,14 +21,16 @@ source=(${url}/releases/individual/xserver/${_pkgbase}-${pkgver}.tar.bz2
         xvfb-run
         xvfb-run.1
         10-quirks.conf
-        0001-sdksyms.sh-Make-sdksyms.sh-work-with-gcc5.patch)
+        0001-sdksyms.sh-Make-sdksyms.sh-work-with-gcc5.patch
+	bad-impl.patch)
 sha256sums=('8ac07c35306ba3fb3c0972722dd4e919303039eca1d40ac7862560e0b2c94cf7'
             'f1e94a4284672f93d47d51ac5fd19731058761a5ab9de471b5fdfa226ab62b56'
             'd027776fac1f7675b0a9ee817502290b1c45f9c09b0f0a6bb058c35f92361e84'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
             '94612f5c0d34a3b7152915c2e285c7b462e9d8e38d3539bd551a339498eac166'
-            'b4a4fbddebfa614d1a97e77dde98748682ee331fbf7be394480050670d6203aa')
+            'b4a4fbddebfa614d1a97e77dde98748682ee331fbf7be394480050670d6203aa'
+            'b7dbca90cd80ed987441a835998af5006f4d08cdb403a290440604086e7d2260')
 
 build() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
@@ -41,6 +43,9 @@ build() {
 
   # fix FS#45245, merged upstream
   patch -Np1 -i ../0001-sdksyms.sh-Make-sdksyms.sh-work-with-gcc5.patch
+
+  # Fix error with catalyst driver
+  patch -Np1 -i "${srcdir}/bad-impl.patch"
 
   autoreconf -fi
   ./configure --prefix=/usr \
