@@ -19,7 +19,7 @@
 # ghc, such as 7.8 and 7.10, are not able to compile GHC 7.4.
 pkgname=ghc7.4-bin
 pkgver=7.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Binary version of legacy GHC (7.4).  Originally released on June 2012'
 arch=('i686' 'x86_64')
 url='http://www.haskell.org/ghc/'
@@ -91,7 +91,8 @@ build() {
   sed -i 's,"$bindir/ghc","$bindir/ghc-7.4",' utils/runghc/runghc.wrapper
 
   ./configure \
-    --prefix=/usr
+    --prefix=/usr \
+    --docdir=/usr/share/doc/ghc-7.4
 }
 
 package() {
@@ -109,7 +110,6 @@ package() {
   mv ${pkgdir}/usr/bin/runghc     ${pkgdir}/usr/bin/runghc-7.4
   rm ${pkgdir}/usr/bin/runhaskell # use runghc-7.4 instead
 
-  mv ${pkgdir}/usr/share/doc/ghc  ${pkgdir}/usr/share/doc/ghc-7.4
   mv ${pkgdir}/usr/share/man/man1/ghc.1 ${pkgdir}/usr/share/man/man1/ghc-7.4.1
 
   install -d            ${pkgdir}/usr/share/licenses/ghc-7.4
