@@ -2,7 +2,7 @@
 
 pkgname=pilas-engine
 my_pkgname=pilas
-pkgver=1.1.0
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Un motor para hacer videojuegos de manera sencilla en Python.  An engine to make games in an easy way with Python."
 arch=('any')
@@ -12,7 +12,7 @@ conflicts=('pilas-hg' 'pilas-git', 'pilas-engine-git')
 license=('LGPL')
 url="http://www.pilas-engine.com.ar"
 
-source=("https://github.com/hugoruscitti/${pkgname}/archive/${pkgver}.zip")
+source=("https://github.com/hugoruscitti/${my_pkgname}/archive/${pkgver}.tar.gz")
 
 package() {
     cd $srcdir/$my_pkgname-$pkgver
