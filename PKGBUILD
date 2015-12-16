@@ -2,7 +2,7 @@
 
 pkgname=starplot
 pkgver=0.95.5
-pkgrel=3
+pkgrel=4
 pkgdesc="A 3-dimensional star chart viewer."
 arch=('i686' 'x86_64')
 url="http://starplot.org/"
