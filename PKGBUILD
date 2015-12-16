@@ -6,7 +6,7 @@
 pkgname=xlockmore-nomotif
 _pkgname=xlockmore
 pkgver=5.46
-pkgrel=1
+pkgrel=2
 pkgdesc="screen saver / locker for the X Window System - no motif"
 arch=(i686 x86_64)
 license=('BSD')
