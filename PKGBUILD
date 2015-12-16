@@ -3,31 +3,37 @@
 # Contributor: Milos Kaurin <milos dot kaurin gmail>
 
 pkgname=java-p7zip-binding
-pkgver=4.65_1.06rc
-pkgver1_=4.65-1.06-rc   # helper var for the download filename
-pkgver2_=4.65-1.06rc    # same as above
+pkgver=9.20_2.00beta
+_pkgver=9.20-2.00beta
 pkgrel=1
 pkgdesc="Java wrapper for 7-Zip C++ library."
 arch=('i686' 'x86_64')
-url="http://sevenzipjbind.sourceforge.net/"
+url="https://github.com/borisbrodski/sevenzipjbinding"
 license=('LGPL')
 depends=('java-runtime')
-makedepends=('unzip' 'java-environment')
-source=(http://downloads.sourceforge.net/project/sevenzipjbind/7-Zip-JBinding/$pkgver2_-extr-only/sevenzipjbinding-$pkgver1_-extr-only-AllLinux.zip)
-md5sums=('45e6c9859f507321216192ba6207ad25')
+makedepends=('cmake' 'java-environment')
+source=(https://github.com/borisbrodski/sevenzipjbinding/archive/Release-$_pkgver.tar.gz)
+md5sums=('42f091aa8a1fa84260a55bcaa0381f6c')
+
+build() {
+  cd "$srcdir"/sevenzipjbinding-Release-$_pkgver
+  cmake .
+  make 7-Zip-JBinding
+  make sevenzipjbinding-jar
+  make sevenzipjbinding-lib-jar
+}
 
 package() {
-  cd $srcdir
-  unzip -oqq sevenzipjbinding-$pkgver1_-extr-only-AllLinux.zip
-  cd sevenzipjbinding-$pkgver1_-extr-only-AllLinux/lib
-  jar xf sevenzipjbinding-AllLinux.jar
-  m_arch=`uname -m`
-  if [ "$m_arch" = "i686" ]; then
-    install -Dm755 Linux-i386/lib7-Zip-JBinding.so "$pkgdir/$J2REDIR/lib/i386/lib7-Zip-JBinding.so"
-  elif [ "$m_arch" = "x86_64" ]; then
-    install -Dm755 Linux-amd64/lib7-Zip-JBinding.so "$pkgdir/$J2REDIR/lib/amd64/lib7-Zip-JBinding.so"
+  cd "$srcdir"/sevenzipjbinding-Release-$_pkgver
+  if [ "$CARCH" = "i686" ]; then
+    install -Dm755 Linux-i386/lib7-Zip-JBinding.so "$pkgdir/usr/lib/lib7-Zip-JBinding.so"
+    install -Dm644 sevenzipjbinding-Linux-i386.jar "$pkgdir/usr/share/java/sevenzipjbinding-Linux-i386.jar"
+  elif [ "$CARCH" = "x86_64" ]; then
+    install -Dm755 Linux-amd64/lib7-Zip-JBinding.so "$pkgdir/usr/lib/lib7-Zip-JBinding.so"
+    install -Dm644 sevenzipjbinding-Linux-amd64.jar "$pkgdir/usr/share/java/sevenzipjbinding-Linux-amd64.jar"
   else
     echo "Wrong architecture type. Check your PKGBUILD"
   return 1
   fi
 }
+
