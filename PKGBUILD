@@ -2,7 +2,7 @@
 # Contributor: kuina <kuinanein at gmail dot com>
 pkgname=man-pages-ja
 pkgver=20151216
-pkgrel=2
+pkgrel=1
 pkgdesc="Man pages for Japanese"
 arch=('any')
 url="http://osdn.jp/projects/linuxjm/"
@@ -19,7 +19,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd $srcdir/jm
-  echo 0.5.0.0.$(git log --pretty=format:%ci -n1 | cut -f 1 -d " " | sed "s/-//g")
+  echo $(git log --pretty=format:%ci -n1 | cut -f 1 -d " " | sed "s/-//g")
 }
 
 prepare() {
