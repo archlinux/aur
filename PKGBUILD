@@ -2,6 +2,7 @@
 # Maintainer: Tom Gundersen <teg@jklm.no>
 
 pkgbase=systemd-kdbus
+_pkgbase=${pkgbase%-kdbus}
 pkgname=('systemd-kdbus' 'libsystemd-kdbus' 'systemd-sysvcompat-kdbus')
 pkgver=226
 pkgrel=1
@@ -28,13 +29,13 @@ md5sums=('SKIP'
          '634f663eb24f034501dba173f33d8727')
 
 prepare() {
-  cd "$pkgbase"
+  cd "$_pkgbase"
 
   ./autogen.sh
 }
 
 build() {
-  cd "$pkgbase"
+  cd "$_pkgbase"
 
   local timeservers=({0..3}.arch.pool.ntp.org)
 
@@ -91,7 +92,7 @@ package_systemd-kdbus() {
           etc/udev/udev.conf)
   install="systemd.install"
 
-  make -C "$pkgbase" DESTDIR="$pkgdir" install
+  make -C "$_pkgbase" DESTDIR="$pkgdir" install
 
   # don't write units to /etc by default. some of these will be re-enabled on
   # post_install.
@@ -101,7 +102,7 @@ package_systemd-kdbus() {
   rm -r "$pkgdir/usr/lib/rpm"
 
   # add back tmpfiles.d/legacy.conf
-  install -m644 "$pkgbase/tmpfiles.d/legacy.conf" "$pkgdir/usr/lib/tmpfiles.d"
+  install -m644 "$_pkgbase/tmpfiles.d/legacy.conf" "$pkgdir/usr/lib/tmpfiles.d"
 
   # Replace dialout/tape/cdrom group in rules with uucp/storage/optical group
   sed -i 's#GROUP="dialout"#GROUP="uucp"#g;
