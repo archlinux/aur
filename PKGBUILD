@@ -2,7 +2,7 @@
 
 pkgname=nautilus-nutstore
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Nutstore integration for Nautilus.'
 arch=(x86_64 i686)
 url='https://jianguoyun.com/'
@@ -29,4 +29,4 @@ package()
     install -D -m 644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
     rm -rf $pkgdir/usr/share/icons/hicolor/64x64/apps/
 }
-md5sums=('5d2afc990450b7a8e1839a664e351944')
+md5sums=('60db9e2747eda4fb684dd802a2259abe')
