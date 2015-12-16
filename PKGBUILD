@@ -2,8 +2,8 @@
 # Submitter: TDY <tdy[at]gmx[dot]com>
 
 pkgname=qftp
-pkgver=1.5.7
-pkgrel=2
+pkgver=1.5.8
+pkgrel=1
 pkgdesc="QFtp is a user interface for Ftp file transfer."
 url="http://hugo.pereira.free.fr/software/index.php?page=package&package_list=software_list_qt4&package=qftp&full=0"
 arch=('x86_64' 'i686')
@@ -31,5 +31,5 @@ package() {
   install -m644 "${srcdir}"/qftp.desktop "${pkgdir}"/usr/share/applications
   install -m644 "${srcdir}"/"${pkgname}-${pkgver}"/qftp.png "${pkgdir}"/usr/share/pixmaps/qftp.png
 }
-sha256sums=('4884790c7d05d3729c02e9b2fbcc8a744afdb371dc2cff6550a70b8d950356ff'
+sha256sums=('360666ad73d913c43140364897c59be25d8cbeb25e3e44fb64633a00e95f3c6d'
             'f47e84a94e6be6361b56e581110e549cc7533ccca425f2a4ba98470dba43969b')
