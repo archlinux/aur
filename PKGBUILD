@@ -2,7 +2,7 @@
 # Maintainer: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=mate-tweak
-pkgver=3.5.2a
+pkgver=3.5.3
 pkgrel=1
 pkgdesc="Tweak tool for MATE, a fork of mintDesktop"
 arch=('any')
