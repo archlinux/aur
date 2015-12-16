@@ -27,11 +27,13 @@ build() {
 
   # aapt cannot be found without this line
   PATH="/opt/android-sdk/build-tools/$(ls -1 /opt/android-sdk/build-tools/ | head -1):$PATH"
-  
+
   cd "$srcdir/$_gitname"
 
+  ./gradlew applyPatches
+
   # Build (OpenJDK sometimes fails to find aapt)
-   ./gradlew build fatJar proguard # proguard isn't needed, but makes the binary a little bit smaller
+  ./gradlew build fatJar proguard # proguard isn't needed, but makes the binary a little bit smaller
 }
 
 package() {
