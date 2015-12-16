@@ -1,0 +1,34 @@
+post_install() {
+cat <<EOT
+
+==================================================================================
+
+1. To run devolo DLAN Cockpit, you need to start devolonetsvc.service 
+   $ sudo systemctl start devolonetsvc.service
+
+
+2. (OPTIONAL) start devolonetsvc.service at boot
+   $ sudo systemctl enable devolonetsvc.service
+
+==================================================================================
+
+EOT
+}
+
+pre_upgrade() {
+	systemctl stop devolonetsvc.service
+}
+
+post_upgrade() {
+ systemctl daemon-reload
+ post_install
+}
+
+
+pre_remove() {
+	systemctl stop devolonetsvc.service
+}
+
+post_remove() {
+	systemctl daemon-reload
+}

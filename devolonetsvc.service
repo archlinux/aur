@@ -1,0 +1,13 @@
+[Unit]
+Description=devolo Network Service
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/lib/devolonetsvc
+ExecStart=/usr/bin/devolonetsvc
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
+
