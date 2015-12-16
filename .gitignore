@@ -1,3 +1,5 @@
 ghc-7.6.*-src.tar.bz2
 ghc-7.6.*-testsuite.tar.bz2
 ghc7.6-7.6.*-*-*.pkg.tar.xz
+pkg
+src
