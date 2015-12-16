@@ -19,7 +19,6 @@ post_install() {
 EOF
 }
 
-
 pre_remove() {
     systemctl stop flickmagnet
 }
