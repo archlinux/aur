@@ -6,8 +6,9 @@
 
 pkgname=clion-eap
 _pkgname=clion
-pkgver=143.1183
-_pkgver=1.2.2-RC
+_archname=CLion
+pkgver=144.2151.8
+_pkgver=${pkgver}
 pkgrel=1
 pkgdesc="C/C++ IDE. 30-day evaluation."
 arch=('x86_64')
@@ -22,14 +23,15 @@ optdepends=(
   'clang: LLVM compiler'
   'biicode: C/C++ dependency manager'
   'gtest: C++ testing'
+  'swift-bin: Swift programming language support (Also requires the plugin)'
 )
-source=("https://download.jetbrains.com/cpp/${_pkgname}-${_pkgver}.tar.gz")
-sha512sums=('056f1f618d16dbfb380ef9760e56a38a428c5b57ce7010ec9bde0afa4c4063cfda5a1768fb338fc06271e7b35865cf4860eea4641bc7071e0820da9d9f1c674e')
-noextract=("${_pkgname}-${_pkgver}.tar.gz")
+source=("https://download.jetbrains.com/cpp/${_archname}-${_pkgver}.tar.gz")
+sha512sums=('990d84ec3db7982d130e5c96f01448741d890c3197b26d5390e25cad368041d211bbca5c7311ef41b52c3a346fcef1dc302b5bc8aac49cb1f6217b073ce7e880')
+noextract=("${_archname}-${_pkgver}.tar.gz")
 
 package() {
   mkdir -p "${pkgdir}/opt/${pkgname}"
-  bsdtar --strip-components 1 -xf "${_pkgname}-${_pkgver}.tar.gz" -C "${pkgdir}/opt/${pkgname}"
+  bsdtar --strip-components 1 -xf "${_archname}-${_pkgver}.tar.gz" -C "${pkgdir}/opt/${pkgname}"
 
   # Uncomment to use system JRE, CMake and/or GDB instead of the bundled one(s)
   #rm -r "${pkgdir}/opt/${pkgname}/jre"
