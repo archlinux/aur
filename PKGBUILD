@@ -2,7 +2,7 @@
 # Contributor: Linus Sjögren <thelinx@unreliablepollution.net>
 # Contributor: Andrzej Giniewicz < gginiu@gmail.com >
 pkgname=love-hg
-pkgver=r2457.b341ee227769
+pkgver=r2651.7f6a147e5501
 pkgrel=1
 pkgdesc="An open-source 2D game engine which uses the versatile Lua scripting language to create dynamic gaming experiences."
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ url="http://love2d.org/"
 license=('ZLIB')
 depends=(
 	'luajit' 'physfs' 'freetype2' 'mpg123' 'openal' 'libvorbis' 'libmodplug'
-	'sdl2' 'zlib' 'libpng' 'libjpeg-turbo'
+	'sdl2' 'zlib' 'libpng' 'libjpeg-turbo' 'libtheora'
 )
 source=('hg+https://bitbucket.org/rude/love')
 makedepends=('mercurial')
