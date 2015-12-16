@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Don't Starve
+Comment=An uncompromising wilderness survival game full of science and magic
+Exec=gog-dont-starve
+Icon=gog-dont-starve
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;AudioVideo;
+Encoding=UTF-8
