@@ -1,0 +1,4 @@
+*.pkg.tar*
+/pebble-tool/
+/pkg/
+/src/

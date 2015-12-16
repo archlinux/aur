@@ -1,0 +1,34 @@
+pkgbase = pebble-tool-git
+	pkgdesc = The pebble tool that goes with libpebble2
+	pkgver = v4.0
+	pkgrel = 1
+	url = https://github.com/pebble/pebble-tool
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-libpebble2-git
+	depends = python2-httplib2
+	depends = python2-oauth2client
+	depends = python2-progressbar2-old
+	depends = python2-pyasn1
+	depends = python2-pyasn1-modules
+	depends = python2-pypng
+	depends = python2-pyqrcode
+	depends = python2-requests
+	depends = python2-rsa
+	depends = python2-pyserial
+	depends = python2-six
+	depends = python2-websocket-client
+	depends = python2-wheel
+	depends = python2-colorama
+	optdepends = python2-virtualenv: Required for installing SDK
+	optdepends = arm-none-eabi-gcc: Required for installing SDK
+	optdepends = arm-none-eabi-newlib: Required for installing SDK
+	optdepends = qemu: Emulation support
+	conflicts = pebble-sdk
+	source = git+https://github.com/pebble/pebble-tool.git
+	md5sums = SKIP
+
+pkgname = pebble-tool-git
+
