@@ -102,4 +102,4 @@ package_libsystemd-udev() {
   install -Dm644 src/libudev/libudev.h "${pkgdir}/usr/include/libudev.h"
 }
 
-sha1sums=('ee92ac467bd2fada5495d46e21228851227f4164')
+sha1sums=('15475d874dc38f8d759f334bbcf7d8aff4b412da')
