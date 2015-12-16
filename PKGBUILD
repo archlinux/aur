@@ -21,7 +21,7 @@
 #          (your mileage may vary.)
 pkgname=ghc7.4
 pkgver=7.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Legacy GHC (7.4 series). Originally released on June 2012.'
 arch=('i686' 'x86_64')
 url='http://www.haskell.org/ghc/'
@@ -103,7 +103,8 @@ build() {
 
   ./configure \
     --prefix=/usr \
-	--with-ghc=ghc-7.4
+    --with-ghc=ghc-7.4 \
+    --docdir=/usr/share/doc/ghc-7.4
 
   make
 }
@@ -137,7 +138,6 @@ package() {
   mv ${pkgdir}/usr/bin/runghc     ${pkgdir}/usr/bin/runghc-7.4
   rm ${pkgdir}/usr/bin/runhaskell # use runghc-7.4 instead
 
-  mv ${pkgdir}/usr/share/doc/ghc  ${pkgdir}/usr/share/doc/ghc-7.4
   mv ${pkgdir}/usr/share/man/man1/ghc.1 ${pkgdir}/usr/share/man/man1/ghc-7.4.1
 
   install -d            ${pkgdir}/usr/share/licenses/ghc-7.4
