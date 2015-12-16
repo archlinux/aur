@@ -2,7 +2,7 @@
 pkgbase=diaspora-git
 _projectname=diaspora
 pkgname=('diaspora-mysql-git' 'diaspora-postgresql-git')
-pkgver=0.5.1.2.r271.g1cd2562
+pkgver=0.5.5.0.r633.g1302923
 pkgrel=1
 pkgdesc="A distributed privacy aware social network (development head)"
 arch=('i686' 'x86_64')
@@ -70,9 +70,9 @@ _package() {
   HOME=$_srcdir $_bundle clean
 
   msg "Patch configuration examples"
-  _version="head-p$(git --git-dir="$srcdir/$_projectname/.git" log -1 --pretty="format:%H" | cut -c1-8)"
+  _version="$(git --git-dir="$srcdir/$_projectname/.git" log -1 --pretty="format:%H" | cut -c1-8)"
 
-  sed -i -e "s|number: \"head\"|number: \"$_version\"|" \
+  sed -i -e "s|number: \"\([^\"]*\)\"|number: \"\1-p$_version\"|" \
       $_srcdir/config/defaults.yml
   sed -i -e "s|#certificate_authorities: '/etc/ssl/certs/ca-certificates.crt'|certificate_authorities: '/etc/ssl/certs/ca-certificates.crt'|" \
          -e "s|#rails_environment: 'production'|rails_environment: 'production'|" \
