@@ -1,7 +1,7 @@
 pkgbase = avp
 	pkgdesc = Alien Versus Predator Gold engine
 	pkgver = 20150214
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.icculus.org/avp
 	install = avp.install
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = avp
 	license = custom
 	makedepends = cmake
 	makedepends = glu
+	makedepends = mesa
 	depends = sdl
 	depends = libgl
 	depends = openal
