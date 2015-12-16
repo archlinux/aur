@@ -2,7 +2,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname="cups-nosystemd"
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="The CUPS Printing System - daemon package"
 arch=('i686' 'x86_64')
@@ -38,7 +38,7 @@ source=(http://www.cups.org/software/${pkgver}/cups-${pkgver}-source.tar.bz2
 	cups-1.6.0-fix-install-perms.patch
 	cups-1.6.2-statedir.patch
 	)
-md5sums=('9a231a4409140b167946f8147d638ffb'
+md5sums=('b3ba0ca676d56857bbd9b182ef4b14b3'
          '9657daa21760bb0b5fa3d8b51d5e01a1'
          'fc8286f185e2cc5f7e1f6843bf193e2b'
          '96f82c38f3f540b53f3e5144900acf17'
