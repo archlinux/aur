@@ -1,0 +1,4 @@
+phpctags-*.pkg.tar*
+phpctags.phar
+/pkg/
+/src/

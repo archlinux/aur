@@ -1,0 +1,8 @@
+#!/bin/sh
+
+post_install() {
+  echo "NOTE: you may need update your /etc/php/php.ini for this to work!"
+  echo "      The following changes are needed:"
+  echo "        - Make sure the extension phar.so is activated"
+  echo "        - Disable open_basedir restriction"
+}
