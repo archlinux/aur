@@ -9,8 +9,8 @@
 # Based on linux package
 
 pkgbase=linux-libre-pck
-_pkgbasever=4.2-gnu
-_pkgver=4.2.5-gnu
+_pkgbasever=4.3-gnu
+_pkgver=4.3.2-gnu
 _pckpatchver=pck1
 
 _replacesarchkernel=('linux-zen')
@@ -21,7 +21,7 @@ _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}.${_pckpatchver}
 pkgrel=1
-rcnrel=armv7-x2
+rcnrel=armv7-x1
 arch=('i686' 'x86_64' 'armv7h')
 url="https://wiki.parabola.nu/PCK"
 license=('GPL2')
@@ -48,8 +48,8 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         'linux.preset'
         'change-default-console-loglevel.patch'
         # armv7h patches
-        "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
-        "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch.sig"
+        "https://repo.parabola.nu/other/rcn-libre-pck/patches/${_pkgver%-*}/rcn-libre-pck-${_pkgver%-*}-${rcnrel}.patch"
+        "https://repo.parabola.nu/other/rcn-libre-pck/patches/${_pkgver%-*}/rcn-libre-pck-${_pkgver%-*}-${rcnrel}.patch.sig"
         '0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch'
         '0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch'
         '0003-SMILE-Plug-device-tree-file.patch'
@@ -58,11 +58,11 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch'
         '0007-set-default-cubietruck-led-triggers.patch'
         '0008-USB-armory-support.patch')
-sha256sums=('3a8fc9da5a38f15cc4ed0c5132d05b8245dfc1007c37e7e1994b2486535ecf49'
+sha256sums=('1d280ae2730eb6c9b8c7e920cac2e8111c8db02c498db0c142860a84106cc169'
             'SKIP'
-            '3fd7d8305cd9c9f581e9a64806be9949c72176b1fc0247f688febac5eaaf8362'
+            '672023776ea8a80b0a5fb21ef10d02299ff223ea13e715bdcde9183d1d60e535'
             'SKIP'
-            '7cdae0f87b11ebf1f2ed1fa8d49855af53c67aa541a0306515765324bc5e1c12'
+            'b0bec7b935bd8e5911e4ee655bff7b5fedb9f44cd1609308e550e452bfa06066'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -70,12 +70,12 @@ sha256sums=('3a8fc9da5a38f15cc4ed0c5132d05b8245dfc1007c37e7e1994b2486535ecf49'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            'b1dedb5f1f4a187d79c8fde27bfc826ede33fae94a51ee89ebf0832bc3eda8be'
-            '5df513d6427f0d9fd274569967c70c6279346715e1fbb513da9120f1488b6244'
-            '229b9a693539c0f35eb4c3173d48b06cc978f09ea6f502fd5903e1f0c18d5a27'
+            '8977381dcffa1e26ac5682d2859ecd447a54811f347ba951c6229744b886b95c'
+            'cae6bc8e021b3d59eb87b7b6651ffce8ceb5022c12478ace1548a3c632081f76'
+            'efa5e244c99ceca9ec5832bc4e135d311c2c6b678dc0e1ace9e296f5f9539fcf'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '4969456f0bf72be5d23aa86c2edc487217a3708ce6fde4e1a3a8f930444174c9'
+            '1e90df4fb94c40c4255352f58214620e3411ae9475c205e2f5f9a57d7c170c83'
             'SKIP'
             '2654680bc8f677f647bca6e2b367693bf73ffb2edc21e3757a329375355a335d'
             '842e4f483fa36c0e7dbe18ad46d78223008989cce097e5bef1e14450280f5dfe'
@@ -111,7 +111,7 @@ prepare() {
 
   if [ "${CARCH}" = "armv7h" ]; then
     # RCN patch (CM3 firmware deblobbed)
-    git apply -v "${srcdir}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
+    git apply -v "${srcdir}/rcn-libre-pck-${_pkgver%-*}-${rcnrel}.patch"
 
     # ALARM patches
     patch -p1 -i "${srcdir}/0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch"
