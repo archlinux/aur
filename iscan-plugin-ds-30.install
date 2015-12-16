@@ -1,0 +1,9 @@
+post_install() {
+  echo "Running iscan-registry to register plugins with iscan"
+  iscan-registry -a interpreter usb 0x04b8 0x0147 /usr/lib/iscan/libiscan-plugin-ds-30
+}
+
+pre_remove() {
+  echo "Unregistering ds-30 plugins"
+  iscan-registry -r interpreter usb 0x04b8 0x0147 /usr/lib/iscan/libiscan-plugin-ds-30
+}
