@@ -1,7 +1,7 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=gnome-shell-theme-aurora
-pkgver=3.18.20151207
+pkgver=3.18.20151216
 pkgrel=1
 pkgdesc="Aurora GNOME Shell,GTK2,GTK3 theme"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=(gnome-{shell,themes-standard} gtk-{engines,engine-murrine} gdk-pixbuf2)
 optdepends=("gnome-tweak-tool: A tool to customize advanced GNOME 3 options.")
 source=("${pkgname}-${pkgver}.tar.gz::https://www.dropbox.com/s/4ik0pbbpsiqe4ci/Aurora-3.18.tar.gz?dl=1")
-sha256sums=('b8c6dcf29d99b838ef8d267abca31e242454c85574eeb44f884839d14986165d')
+sha256sums=('9c7b6482bb767f5e55968e1b1ed7b7709a4a0dfb01f6126c9686ee5f5a9d6da7')
 
 package() {
     install -dm755 ${pkgdir}/usr/share/themes
