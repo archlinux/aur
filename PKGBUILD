@@ -2,7 +2,7 @@
 # Contributor: skydrome <skydrome@i2pmail.org>
 
 pkgname=acquisition-plus
-pkgver=0.3f
+pkgver=0.4
 pkgrel=1
 pkgdesc="Inventory management tool for Path of Exile"
 url="https://github.com/Novynn/acquisitionplus"

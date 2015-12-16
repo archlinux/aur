@@ -1,6 +1,6 @@
 pkgbase = acquisition-plus
 	pkgdesc = Inventory management tool for Path of Exile
-	pkgver = 0.3f
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://github.com/Novynn/acquisitionplus
 	install = acquisition.install
@@ -11,7 +11,7 @@ pkgbase = acquisition-plus
 	depends = libxkbcommon-x11
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
-	source = https://github.com/Novynn/acquisitionplus/archive/0.3f-PLUS.tar.gz
+	source = https://github.com/Novynn/acquisitionplus/archive/0.4-PLUS.tar.gz
 	source = acquisition.desktop
 	sha256sums = c5809b29ad3fc0f850fb5510e5cd0e0820318ee4f1916a1e58e478aa3045b1f7
 	sha256sums = 556e8a764ecaf9ac4b9b7f6b6340c7bff7aae9c1b179fc0601d93886bc810e81
