@@ -1,16 +1,17 @@
 pkgname=gtk3-optional-csd
-pkgver=3.18.5
+pkgver=3.18.6
 pkgrel=1
 
-pkgdesc='GObject-based multi-platform GUI toolkit with optionally enabled CSD.'
+pkgdesc='GObject-based multi-platform GUI toolkit with optionally enabled CSD'
 url='http://www.gtk.org/'
 arch=('i686' 'x86_64')
 license=('LGPL')
 
 depends=('libcups' 'libxcursor' 'libxinerama' 'libxrandr' 'libepoxy'
-         'libxcomposite' 'shared-mime-info' 'colord' 'at-spi2-atk'
-         'libxkbcommon' 'adwaita-icon-theme' 'json-glib' 'rest')
+         'libxcomposite' 'shared-mime-info' 'colord' 'libxkbcommon'
+         'adwaita-icon-theme' 'json-glib' 'rest')
 makedepends=('gobject-introspection')
+optdepends=('at-spi2-atk: accessibility')
 
 provides=('gtk3')
 conflicts=('gtk3')
@@ -18,7 +19,7 @@ conflicts=('gtk3')
 source=("https://download.gnome.org/sources/gtk+/${pkgver:0:4}/gtk+-$pkgver.tar.xz"
         'gtk3-make-csd-optional.patch')
 
-sha1sums=('dee38a27d75fc877bcb1d1ce5302f439faa00f88'
+sha1sums=('e7dd8a397031316c57b845bc76744ed5886385b1'
           '5975f8fc5a582288f59b32112c3a3207dc842696')
 
 install='gtk3.install'
