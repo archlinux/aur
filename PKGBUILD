@@ -15,7 +15,7 @@ options=('emptydirs')
 source=("http://gdlp01.c-wss.com/gds/0/0100005520/01/scangearmp-mg3500series-2.20-1-rpm.tar.gz")
 md5sums=('78aca903bc0281be1e79a0bc276c7f15')
 
-build() {
+package() {
   if [ "${CARCH}" = 'x86_64' ]; then
     rpmfile=$(find "$srcdir" -name $pkgcommon-$pkgver*${CARCH}*.rpm)
   elif [ "${CARCH}" = 'i686' ]; then
@@ -23,10 +23,6 @@ build() {
   fi
   cd $pkgdir
   rpmextract.sh $rpmfile
-}
-
-package() {
-  cd $pkgdir
   mv usr/lib64 usr/lib
   mv usr/local/share/* usr/share/
   mkdir usr/bin
