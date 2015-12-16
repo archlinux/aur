@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Lovers In A Dangerous Spacetime
+Comment=Only through teamwork can you triumph over the evil forces of Anti-Love.
+Exec=gog-lovers-in-a-dangerous-spacetime
+Icon=gog-lovers-in-a-dangerous-spacetime
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;AudioVideo;
+Encoding=UTF-8
