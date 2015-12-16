@@ -1,8 +1,9 @@
-# Maintainer:  TDY <tdy@gmx.com>
+# Maintainer: Quan Guo <guotsuan@gamil.com>, James Harvey <jamespharvey20@gmail.com>
+# Contributor:  TDY <tdy@gmx.com>
 # Contributor: zhuqin <zhuqin83@gmail.com>
 
 pkgname=terminator-bzr
-pkgver=0.98.r1670
+pkgver=0.98.r1702
 pkgrel=1
 pkgdesc="A tool for arranging multiple terminals in a single window"
 arch=('i686' 'x86_64')
