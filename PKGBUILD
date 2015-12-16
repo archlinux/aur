@@ -19,4 +19,4 @@ package() {
     python2 setup.py build
     python2 setup.py install --prefix=/usr --root "${pkgdir}" || return 1
 }
-md5sums=('7803101a29aadaa28ebc18d22a6a4823')
+md5sums=('c0468863b2be047968e37fb1c056b969')
