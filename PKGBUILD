@@ -22,6 +22,7 @@ md5sums=('SKIP'
 build() {
   cd "$srcdir/$pkgname-git/src"
   cp Makefile.arch Makefile
+  make clean
   make -j1
 }
 
