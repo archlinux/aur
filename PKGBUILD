@@ -1,4 +1,4 @@
-pkgname=douane-dialog
+pkgname=douane-dialog-git
 pkgver=1
 pkgrel=1
 pkgdesc="Douane Firewall Kernel GTK GUI"
