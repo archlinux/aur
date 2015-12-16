@@ -9,7 +9,7 @@
 # use the following command to print out packages that need to get rebuilt
 # grep -r ghc /var/abs/ | awk -F '/' '{ print $5; }' | sort -u
 
-pkgname=ghc7.8
+pkgname=ghc7.8-bin
 pkgver=7.8.4
 pkgrel=1
 pkgdesc='The Glasgow Haskell Compiler'
@@ -24,7 +24,8 @@ makedepends=('perl' 'libxslt' 'docbook-xsl')
 checkdepends=('python2')
 install='ghc.install'
 options=('staticlibs')
-provides=('haskell7.8-array=0.5.0.0'
+provides=('ghc7.8'
+          'haskell7.8-array=0.5.0.0'
           'haskell7.8-base=4.7.0.2'
           'haskell7.8-binary=0.7.1.0'
           'haskell7.8-bin-package-db=0.0.0.0'
@@ -80,6 +81,7 @@ replaces=('haskell7.8-array'
           'haskell7.8-xhtml'
           'haskell7.8-cabal'
           )
+conflicts=('ghc7.8')
 source_x86_64=("https://www.haskell.org/ghc/dist/${pkgver}/ghc-${pkgver}-x86_64-unknown-linux-deb7.tar.bz2")
 source_i686=("https://www.haskell.org/ghc/dist/${pkgver}/ghc-${pkgver}-i386-unknown-linux-deb7.tar.bz2")
 noextract=("ghc-${pkgver}-x86_64-unknown-linux-deb7.tar.bz2"
