@@ -1,4 +1,4 @@
-_kernel_version=4.3.1-zen-nogrsec+
+_kernel_version=4.3.3-zen+
 
 _r="\033[00;31m"
 _y="\033[00;33m"
