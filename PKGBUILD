@@ -2,18 +2,18 @@
 
 pkgname=(freedm freedoom1 freedoom2)
 pkgbase=freedoom
-pkgver=0.9
+pkgver=0.10
 pkgrel=1
 pkgdesc="Free game based on the Doom engine"
 arch=('any')
 url="https://freedoom.github.io/"
 license=('BSD')
-source=('https://dl.dropboxusercontent.com/u/13513277/freedoom/dist.tar.xz'
-  'https://github.com/freedoom/freedoom/releases/download/v0.9/freedm-0.9.zip'
-  'https://github.com/freedoom/freedoom/releases/download/v0.9/freedoom-0.9.zip')
-sha256sums=('079ae7933ffcea9a3d198e6e8ee9d99a045ce9202e8b9ac7071b4d92d3960425'
-            '2fabcf6f1d957d48f81f508788bd1c6a780632dda41b837f9cae32972bdad56c'
-            '959695b428992feea180942e510e7a6f0109cc7fd47b0d5293d2dbce951743b6')
+source=(https://dl.dropboxusercontent.com/u/13513277/freedoom/dist.tar.xz
+  https://github.com/freedoom/freedoom/releases/download/v$pkgver/freedm-$pkgver.zip
+  https://github.com/freedoom/freedoom/releases/download/v$pkgver/freedoom-$pkgver.zip)
+sha256sums=('0dcc2f323d67c7e1f7fbd46191841ee4d97ade76f47889a0049e1bff35cf1e82'
+            '8bc795579c91a270cc1dea276b418a43d6321c4620d610cbb33d61d02ebe25a1'
+            '300cac74fe7f34fed49cb8a4d53d774a3e90898b3f47779f68211e7ee5175f9d')
 
 make_pkg_dirs() {
   install -d "$pkgdir"/usr/bin
@@ -35,7 +35,6 @@ install_pkg_files() {
 }
 
 prepare() {
-  # Somehow I find this easier than fixing the other function.
   ln -s "$srcdir"/freedoom-"$pkgver" "$srcdir"/freedoom1-"$pkgver"
   ln -s "$srcdir"/freedoom-"$pkgver" "$srcdir"/freedoom2-"$pkgver"
 }
