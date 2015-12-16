@@ -8,7 +8,7 @@
 # Contributor: Eugenio Ferreira <eugfcl@gmail.com>
 
 pkgname=lighttable
-pkgver=0.8.0_alpha
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="New interactive IDE that lets you modify running programs and embed anything from websites to games."
 url="http://www.lighttable.com/"
@@ -24,7 +24,7 @@ source=(lighttable
         lighttable.png
         LICENSE)
 md5sums=('cad9cb77799f087aef08f0436b853412'
-         'f8eed30abad6aef0e06678968031cbf9'
+         'ac8484d589b8b1ff4de11a0954ef49f7'
          '04a62702b59810a36bca7623bf9e932c'
          'f8c055be2f047ff4aaffdd028f62f027'
          '8870b5e12f58e6a19a53f4fa938755e8')
