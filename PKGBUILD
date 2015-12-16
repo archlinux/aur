@@ -2,14 +2,14 @@
 _model=mg6200
 pkgname=scangearmp-${_model}
 pkgver=1.80
-pkgrel=2
+pkgrel=3
 _pkgver=1.80-1
 pkgdesc="Canon Scanner Driver (for ${_model} series)"
 url="http://support-au.canon.com.au/contents/AU/EN/0100393102.html"
 arch=('i686' 'x86_64')
 license=('custom')
 depends=('sane' 'gtk2' 'libpng>=1.2.8')
-makedepends=('findutils' 'grep' 'gawk')
+makedepends=('findutils' 'grep' 'gawk' 'libusb-compat' 'gimp')
 source=("http://gdlp01.c-wss.com/gds/1/0100003931/01/scangearmp-source-${_pkgver}.tar.gz"
 	'fix_scanfile.patch'
 	'configures.patch')
@@ -31,6 +31,7 @@ _getlibdir() {
 }
 
 build() {
+	libdir=$(_getlibdir)
 
 	# Apply patch
 	cd ${srcdir}/scangearmp-source-${_pkgver}
