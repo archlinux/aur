@@ -1,0 +1,10 @@
+
+
+post_install() {
+    echo "Create the django database with: python2 /opt/graphite/webapp/graphite/manage.py syncdb"
+    echo "Run Carbon with systemctl enable / start carbon"
+    echo "Run Graphite webserver with 'uwsgi --ini /opt/graphite/conf/uwsgi-graphite.ini' (requires uwsgi)"
+    echo "Also note that Graphite listens on port 2003 by default and this package configures the webserver to listen on port 81 by default"
+    echo "So, you might want to filter who can access those ports, for instance with iptables"
+}
+

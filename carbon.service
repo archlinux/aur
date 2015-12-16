@@ -1,0 +1,10 @@
+[Unit]
+Description=Carbon Cache
+Wants=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python2 /opt/graphite/bin/carbon-cache.py start
+
+[Install]
+WantedBy=multi-user.target
