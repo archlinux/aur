@@ -4,7 +4,7 @@
 pkgname=gnash
 pkgdesc="A GNU Flash movie player"
 pkgver=0.8.12
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 url="http://www.gnu.org/software/gnash/"
 license=(GPL3)
@@ -19,7 +19,6 @@ install=gnash-gtk.install
 source=("gnash::git://git.sv.gnu.org/gnash.git"	)
 sha256sums=('SKIP')
 
-
 prepare() {
   cd gnash
   ./autogen.sh
@@ -27,6 +26,8 @@ prepare() {
 
 build() {
   cd gnash
+  sed -i '27371s/--cxxflags/--cflags/' configure
+  sed -i '27371s%"$% -I/usr/include/jemalloc"%' configure
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
