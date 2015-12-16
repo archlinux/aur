@@ -1,4 +1,4 @@
-pkgname=douane-dkms
+pkgname=douane-dkms-git
 pkgver=1
 pkgrel=1
 pkgdesc="Douane Firewall Kernel Module (DKMS)"
