@@ -3,7 +3,7 @@
 
 pkgname=vivaldi-beta
 pkgver=1.0.303.52
-pkgrel=2
+pkgrel=3
 pkgdesc='An advanced browser made with the power user in mind. (beta)'
 url="https://vivaldi.com"
 install=vivaldi.install
@@ -17,8 +17,8 @@ optdepends=(
 )
 conflicts=('vivaldi')
 source=('vivaldi-ffmpeg-codecs.patch')
-source_i686=("https://vivaldi.com/download/vivaldi-beta-${pkgver}-2.i386.rpm")
-source_x86_64=("https://vivaldi.com/download/vivaldi-beta-${pkgver}-2.x86_64.rpm")
+source_i686=("https://vivaldi.com/download/stable/vivaldi-beta-${pkgver}-2.i386.rpm")
+source_x86_64=("https://vivaldi.com/download/stable/vivaldi-beta-${pkgver}-2.x86_64.rpm")
 sha256sums=('8e24a7074d9c8719040f6731ab91ab888a410d98bd41486aca96b35f79eeef6b')
 sha256sums_i686=('3910a588bb3e1b6ad4cf9e5b6ab48e8b496b9b45cc7b212b5bceb5d43507c527')
 sha256sums_x86_64=('75a91e2b228a516507af61d35dbfceb282f9d97614e0c402ebca75cf5ecfd81d')
