@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0;
+Type=Application
+Categories=Development;IDE;
+Exec=coedit
+Terminal=false
+MimeType=text/x-dsrc;
+Patterns=*.d;*.D;
+GenericName=D Language IDE
+X-MultipleArgs=false
+Icon=coedit
+Name=Coedit
