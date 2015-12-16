@@ -2,10 +2,10 @@
 
 pkgname=couchbase-server-community
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A document database featuring a powerful query language and unrivaled performance at scale."
 arch=('x86_64')
-url="http://www.manager.io"
+url="http://www.couchbase.com/"
 source=(
   "${pkgname}-v${pkgver}.deb::http://packages.couchbase.com/releases/${pkgver}/${pkgname}_${pkgver}-ubuntu14.04_amd64.deb"
   "couchbase-server.service"

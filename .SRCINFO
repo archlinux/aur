@@ -1,8 +1,8 @@
 pkgbase = couchbase-server-community
 	pkgdesc = A document database featuring a powerful query language and unrivaled performance at scale.
 	pkgver = 4.0.0
-	pkgrel = 1
-	url = http://www.manager.io
+	pkgrel = 2
+	url = http://www.couchbase.com/
 	install = couchbase-server.install
 	arch = x86_64
 	depends = glibc
