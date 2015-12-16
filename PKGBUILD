@@ -1,9 +1,9 @@
-# Maintainer: Branislav Holy <branoholy@gmail.com>
+# Maintainer: Branislav Holý <branoholy@gmail.com>
 pkgname=neatoc
 pkgver=1.0
 pkgrel=1
 pkgdesc="A simple C++ library for communication with the Neato XV robot"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/branoholy/neatoc"
 license=('GPL3')
 depends=('boost>=1.54.0')
