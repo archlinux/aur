@@ -6,7 +6,7 @@
 pkgname=({freedm,freedoom1,freedoom2}-git)
 pkgbase=freedoom-git
 pkgdesc="Free game data files for Doom gaming engines"
-pkgver=0.9.r222.g1af359d
+pkgver=0.10.r0.g4a7329b
 pkgrel=1
 epoch=1
 arch=('any')
@@ -18,7 +18,7 @@ md5sums=(SKIP)
 
 pkgver() {
   cd "$srcdir/freedoom"
-  git describe | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
