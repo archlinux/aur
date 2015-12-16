@@ -3,7 +3,7 @@
 pkgname=python-cabocha
 _pkgname=cabocha
 pkgver=0.69
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet Another Japanese Dependency Structure Analyzer (Python interface)"
 url="https://taku910.github.io/cabocha/"
 arch=('x86_64' 'i686')
