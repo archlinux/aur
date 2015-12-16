@@ -6,7 +6,7 @@
 pkgname=xlockmore-blank
 _pkgname=xlockmore
 pkgver=5.46
-pkgrel=1
+pkgrel=2
 pkgdesc="screen saver / locker for the X Window System - blank only"
 arch=(i686 x86_64)
 license=('BSD')
