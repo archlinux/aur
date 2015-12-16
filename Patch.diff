@@ -25,7 +25,7 @@ index 2c1c790..e367535 100644
  LIBS_mingw=-lws2_32 -lwinmm -lgdi32
  LIB_GNUTLS=-lgnutls -lhogweed -lnettle -lgmp $(LIBZ)
 diff --git librtmp/amf.c librtmp/amf.c
-index 73d1486..cf4ffff 100644
+index 1c5f99f..1310cbe 100644
 --- librtmp/amf.c
 +++ librtmp/amf.c
 @@ -319,6 +319,13 @@ AMFProp_SetName(AMFObjectProperty *prop, AVal *name)
@@ -42,7 +42,7 @@ index 73d1486..cf4ffff 100644
  AMFDataType
  AMFProp_GetType(AMFObjectProperty *prop)
  {
-@@ -501,6 +508,9 @@ AMF3Prop_Decode(AMFObjectProperty *prop, const char *pBuffer, int nSize,
+@@ -503,6 +510,9 @@ AMF3Prop_Decode(AMFObjectProperty *prop, const char *pBuffer, int nSize,
        return -1;
      }
  
@@ -52,7 +52,7 @@ index 73d1486..cf4ffff 100644
    /* decode name */
    if (bDecodeName)
      {
-@@ -584,7 +594,7 @@ AMF3Prop_Decode(AMFObjectProperty *prop, const char *pBuffer, int nSize,
+@@ -586,7 +596,7 @@ AMF3Prop_Decode(AMFObjectProperty *prop, const char *pBuffer, int nSize,
        }
      case AMF3_OBJECT:
        {
@@ -61,7 +61,7 @@ index 73d1486..cf4ffff 100644
  	if (nRes == -1)
  	  return -1;
  	nSize -= nRes;
-@@ -618,6 +628,9 @@ AMFProp_Decode(AMFObjectProperty *prop, const char *pBuffer, int nSize,
+@@ -620,6 +630,9 @@ AMFProp_Decode(AMFObjectProperty *prop, const char *pBuffer, int nSize,
        return -1;
      }
  
@@ -71,7 +71,7 @@ index 73d1486..cf4ffff 100644
    if (bDecodeName && nSize < 4)
      {				/* at least name (length + at least 1 byte) and 1 byte of data */
        RTMP_Log(RTMP_LOGDEBUG,
-@@ -647,9 +660,8 @@ AMFProp_Decode(AMFObjectProperty *prop, const char *pBuffer, int nSize,
+@@ -649,9 +662,8 @@ AMFProp_Decode(AMFObjectProperty *prop, const char *pBuffer, int nSize,
        return -1;
      }
  
@@ -82,7 +82,7 @@ index 73d1486..cf4ffff 100644
    switch (prop->p_type)
      {
      case AMF_NUMBER:
-@@ -695,9 +707,13 @@ AMFProp_Decode(AMFObjectProperty *prop, const char *pBuffer, int nSize,
+@@ -697,9 +709,13 @@ AMFProp_Decode(AMFObjectProperty *prop, const char *pBuffer, int nSize,
        break;
      case AMF_REFERENCE:
        {
@@ -99,7 +99,7 @@ index 73d1486..cf4ffff 100644
        }
      case AMF_ECMA_ARRAY:
        {
-@@ -729,13 +745,13 @@ AMFProp_Decode(AMFObjectProperty *prop, const char *pBuffer, int nSize,
+@@ -731,13 +747,13 @@ AMFProp_Decode(AMFObjectProperty *prop, const char *pBuffer, int nSize,
        }
      case AMF_DATE:
        {
@@ -115,7 +115,7 @@ index 73d1486..cf4ffff 100644
  
  	nSize -= 10;
  	break;
-@@ -807,8 +823,8 @@ AMFProp_Dump(AMFObjectProperty *prop)
+@@ -809,8 +825,8 @@ AMFProp_Dump(AMFObjectProperty *prop)
      }
    else
      {
@@ -126,7 +126,7 @@ index 73d1486..cf4ffff 100644
      }
    if (name.av_len > 18)
      name.av_len = 18;
-@@ -1019,11 +1035,18 @@ AMF3_Decode(AMFObject *obj, const char *pBuffer, int nSize, int bAMFData)
+@@ -1021,11 +1037,18 @@ AMF3_Decode(AMFObject *obj, const char *pBuffer, int nSize, int bAMFData)
    obj->o_props = NULL;
    if (bAMFData)
      {
@@ -150,7 +150,7 @@ index 73d1486..cf4ffff 100644
      }
  
    ref = 0;
-@@ -1041,8 +1064,12 @@ AMF3_Decode(AMFObject *obj, const char *pBuffer, int nSize, int bAMFData)
+@@ -1043,8 +1066,12 @@ AMF3_Decode(AMFObject *obj, const char *pBuffer, int nSize, int bAMFData)
      {
        int32_t classRef = (ref >> 1);
  
@@ -165,7 +165,15 @@ index 73d1486..cf4ffff 100644
        AMFObjectProperty prop;
  
        if ((classRef & 0x1) == 0)
-@@ -1068,17 +1095,18 @@ AMF3_Decode(AMFObject *obj, const char *pBuffer, int nSize, int bAMFData)
+@@ -1061,6 +1088,7 @@ AMF3_Decode(AMFObject *obj, const char *pBuffer, int nSize, int bAMFData)
+ 	  cd.cd_dynamic = ((classExtRef >> 1) & 0x1) == 1;
+ 
+ 	  cdnum = classExtRef >> 2;
++          cd.cd_num = cdnum;
+ 
+ 	  /* class name */
+ 
+@@ -1070,24 +1098,25 @@ AMF3_Decode(AMFObject *obj, const char *pBuffer, int nSize, int bAMFData)
  
  	  /*std::string str = className; */
  
@@ -176,24 +184,61 @@ index 73d1486..cf4ffff 100644
 +          RTMP_Log(RTMP_LOGDEBUG, "Class name: %.*s, externalizable: %d, dynamic: %d, classMembers: %d",
 +                   cd.cd_name.av_len, cd.cd_name.av_val, cd.cd_externalizable, cd.cd_dynamic, cd.cd_num);
  
- 	  for (i = 0; i < cd.cd_num; i++)
+ 	  for (i = 0; i < cdnum; i++)
 -	    {
 -	      AVal memberName;
+-	      if (nSize <=0)
++            {
++              AVal memberName = {NULL, 0};
++              if (nSize <= 0)
+ 		{
+ invalid:
+ 		  RTMP_Log(RTMP_LOGDEBUG, "%s, invalid class encoding!",
+ 		    __FUNCTION__);
+ 		  return nOriginalSize;
+-		}
 -	      len = AMF3ReadString(pBuffer, &memberName);
 -	      RTMP_Log(RTMP_LOGDEBUG, "Member: %s", memberName.av_val);
 -	      AMF3CD_AddProp(&cd, &memberName);
-+            {
-+              AVal memberName = {NULL, 0};
++                }
 +              len = AMF3ReadString(pBuffer, &memberName);
 +              if (memberName.av_val)
 +                {
-+                  RTMP_Log(RTMP_LOGDEBUG, "Member: %s", memberName.av_val);
++                  RTMP_Log(RTMP_LOGDEBUG, "Member: %.*s", memberName.av_len, memberName.av_val);
 +                  AMF3CD_AddProp(&cd, &memberName);
 +                }
  	      nSize -= len;
  	      pBuffer += len;
  	    }
-@@ -1141,7 +1169,15 @@ AMF3_Decode(AMFObject *obj, const char *pBuffer, int nSize, int bAMFData)
+@@ -1118,10 +1147,10 @@ invalid:
+       else
+ 	{
+ 	  int nRes, i;
+-	  for (i = 0; i < cd.cd_num; i++)	/* non-dynamic */
+-	    {
+-	      if (nSize <=0)
+-	        goto invalid;
++          for (i = 0; i < cd.cd_num; i++) /* non-dynamic */
++            {
++              if (nSize <= 0)
++                goto invalid;
+ 	      nRes = AMF3Prop_Decode(&prop, pBuffer, nSize, FALSE);
+ 	      if (nRes == -1)
+ 		RTMP_Log(RTMP_LOGDEBUG, "%s, failed to decode AMF3 property!",
+@@ -1138,9 +1167,9 @@ invalid:
+ 	      int len = 0;
+ 
+ 	      do
+-		{
+-		  if (nSize <=0)
+-		    goto invalid;
++                {
++                  if (nSize <= 0)
++                    goto invalid;
+ 		  nRes = AMF3Prop_Decode(&prop, pBuffer, nSize, TRUE);
+ 		  AMF_AddProp(obj, &prop);
+ 
+@@ -1154,7 +1183,15 @@ invalid:
  	}
        RTMP_Log(RTMP_LOGDEBUG, "class object!");
      }
@@ -210,7 +255,7 @@ index 73d1486..cf4ffff 100644
  }
  
  int
-@@ -1259,7 +1295,8 @@ AMF3CD_AddProp(AMF3ClassDef *cd, AVal *prop)
+@@ -1272,7 +1309,8 @@ AMF3CD_AddProp(AMF3ClassDef *cd, AVal *prop)
  {
    if (!(cd->cd_num & 0x0f))
      cd->cd_props = realloc(cd->cd_props, (cd->cd_num + 16) * sizeof(AVal));
@@ -451,7 +496,7 @@ index 9f4e2c0..01b97e2 100644
  	  fprintf(f, "hash: ");
  	  for (i = 0; i < SHA256_DIGEST_LENGTH; i++)
 diff --git librtmp/log.c librtmp/log.c
-index 0012985..856e3e4 100644
+index 1b52000..7564a15 100644
 --- librtmp/log.c
 +++ librtmp/log.c
 @@ -52,8 +52,8 @@ static void rtmp_log_default(int level, const char *format, va_list vl)
@@ -3135,7 +3180,7 @@ index 3e47602..e56b855 100644
  	     defaultRTMPRequest.bufferTime);
  
 diff --git rtmpsrv.c rtmpsrv.c
-index a9e9045..c7dc773 100644
+index 5df4d3a..eccaa9c 100644
 --- rtmpsrv.c
 +++ rtmpsrv.c
 @@ -25,9 +25,13 @@
@@ -3329,15 +3374,11 @@ index a9e9045..c7dc773 100644
  	  len += 9;
  	  len += countAMF(&p->p_vu.p_object, argc);
  	  (*argc) += 2;
-@@ -404,12 +501,14 @@ countAMF(AMFObject *obj, int *argc)
- static char *
- dumpAMF(AMFObject *obj, char *ptr, AVal *argv, int *argc)
- {
--  int i, len, ac = *argc;
-+  int i, ac = *argc;
+@@ -407,9 +504,11 @@ dumpAMF(AMFObject *obj, char *ptr, AVal *argv, int *argc)
+   int i, ac = *argc;
    const char opt[] = "NBSO Z";
  
--  for (i=0, len=0; i < obj->o_num; i++)
+-  for (i=0; i < obj->o_num; i++)
 +  for (i = 0; i < obj->o_num; i++)
      {
        AMFObjectProperty *p = &obj->o_props[i];
@@ -3381,7 +3422,7 @@ index a9e9045..c7dc773 100644
    else if (AVMATCH(&method, &av_play))
      {
        char *file, *p, *q, *cmd, *ptr;
-@@ -600,6 +716,17 @@ ServeInvoke(STREAMING_SERVER *server, RTMP * r, RTMPPacket *packet, unsigned int
+@@ -602,6 +718,17 @@ ServeInvoke(STREAMING_SERVER *server, RTMP * r, RTMPPacket *packet, unsigned int
        if (obj.o_num > 5)
  	r->Link.length = AMFProp_GetNumber(AMF_GetProp(&obj, NULL, 5));
        */
@@ -3399,7 +3440,7 @@ index a9e9045..c7dc773 100644
        if (r->Link.tcUrl.av_len)
  	{
  	  len = server->arglen + r->Link.playpath.av_len + 4 +
-@@ -617,6 +744,7 @@ ServeInvoke(STREAMING_SERVER *server, RTMP * r, RTMPPacket *packet, unsigned int
+@@ -619,6 +746,7 @@ ServeInvoke(STREAMING_SERVER *server, RTMP * r, RTMPPacket *packet, unsigned int
  	  argv[argc].av_val = ptr + 1;
  	  argv[argc++].av_len = 2;
  	  argv[argc].av_val = ptr + 5;
@@ -3407,7 +3448,7 @@ index a9e9045..c7dc773 100644
  	  ptr += sprintf(ptr," -r \"%s\"", r->Link.tcUrl.av_val);
  	  argv[argc++].av_len = r->Link.tcUrl.av_len;
  
-@@ -641,6 +769,7 @@ ServeInvoke(STREAMING_SERVER *server, RTMP * r, RTMPPacket *packet, unsigned int
+@@ -643,6 +771,7 @@ ServeInvoke(STREAMING_SERVER *server, RTMP * r, RTMPPacket *packet, unsigned int
  	      argv[argc].av_val = ptr + 1;
  	      argv[argc++].av_len = 2;
  	      argv[argc].av_val = ptr + 5;
@@ -3415,7 +3456,7 @@ index a9e9045..c7dc773 100644
  	      ptr += sprintf(ptr, " -W \"%s\"", r->Link.swfUrl.av_val);
  	      argv[argc++].av_len = r->Link.swfUrl.av_len;
  	    }
-@@ -663,10 +792,17 @@ ServeInvoke(STREAMING_SERVER *server, RTMP * r, RTMPPacket *packet, unsigned int
+@@ -665,10 +794,17 @@ ServeInvoke(STREAMING_SERVER *server, RTMP * r, RTMPPacket *packet, unsigned int
  	      r->Link.usherToken.av_val = NULL;
  	      r->Link.usherToken.av_len = 0;
  	    }
@@ -3437,7 +3478,7 @@ index a9e9045..c7dc773 100644
  	  argv[argc].av_val = ptr + 1;
  	  argv[argc++].av_len = 2;
  	  argv[argc].av_val = ptr + 5;
-@@ -674,7 +810,13 @@ ServeInvoke(STREAMING_SERVER *server, RTMP * r, RTMPPacket *packet, unsigned int
+@@ -676,7 +812,13 @@ ServeInvoke(STREAMING_SERVER *server, RTMP * r, RTMPPacket *packet, unsigned int
  	    r->Link.playpath.av_len, r->Link.playpath.av_val);
  	  argv[argc++].av_len = r->Link.playpath.av_len;
  
@@ -3452,7 +3493,7 @@ index a9e9045..c7dc773 100644
  	  /* strip trailing URL parameters */
  	  q = memchr(av.av_val, '?', av.av_len);
  	  if (q)
-@@ -708,25 +850,82 @@ ServeInvoke(STREAMING_SERVER *server, RTMP * r, RTMPPacket *packet, unsigned int
+@@ -710,25 +852,82 @@ ServeInvoke(STREAMING_SERVER *server, RTMP * r, RTMPPacket *packet, unsigned int
  
  	  memcpy(file, av.av_val, av.av_len);
  	  file[av.av_len] = '\0';
@@ -3549,7 +3590,7 @@ index a9e9045..c7dc773 100644
  	  now = RTMP_GetTime();
  	  if (now - server->filetime < DUPTIME && AVMATCH(&argv[argc], &server->filename))
  	    {
-@@ -740,7 +939,21 @@ ServeInvoke(STREAMING_SERVER *server, RTMP * r, RTMPPacket *packet, unsigned int
+@@ -742,7 +941,21 @@ ServeInvoke(STREAMING_SERVER *server, RTMP * r, RTMPPacket *packet, unsigned int
  	      server->filetime = now;
  	      free(server->filename.av_val);
  	      server->filename = argv[argc++];
@@ -3572,7 +3613,7 @@ index a9e9045..c7dc773 100644
  	    }
  
  	  free(cmd);
-@@ -859,12 +1072,18 @@ controlServerThread(void *unused)
+@@ -861,12 +1074,18 @@ controlServerThread(void *unused)
  	{
  	case 'q':
  	  RTMP_LogPrintf("Exiting\n");
@@ -3593,7 +3634,7 @@ index a9e9045..c7dc773 100644
      }
    TFRET();
  }
-@@ -1052,7 +1271,6 @@ stopStreaming(STREAMING_SERVER * server)
+@@ -1054,7 +1273,6 @@ stopStreaming(STREAMING_SERVER * server)
      }
  }
  
@@ -3601,7 +3642,7 @@ index a9e9045..c7dc773 100644
  void
  sigIntHandler(int sig)
  {
-@@ -1189,3 +1407,15 @@ AVreplace(AVal *src, const AVal *orig, const AVal *repl)
+@@ -1191,3 +1409,15 @@ AVreplace(AVal *src, const AVal *orig, const AVal *repl)
    src->av_val = dest;
    src->av_len = dptr - dest;
  }
