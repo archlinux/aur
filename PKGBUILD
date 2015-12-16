@@ -18,7 +18,7 @@ _use_gtk3=1            # If set 1, then build with GTK3 support, if set 0, then 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=48.0.2564.22
+pkgver=49.0.2587.3
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -82,7 +82,7 @@ source=("https://commondatastorage.googleapis.com/chromium-browser-official/chro
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-jinja-r7.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-ffmpeg-r1.patch'
         # Misc Patches
-        'enable_vaapi_on_linux-r2.diff'
+        'enable_vaapi_on_linux-r3.diff'
         # Patch from crbug (chromium bugtracker)
         )
 sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?marker=chromium-${pkgver}.tar.x | awk -v FS='<td>"' -v RS='"</td>' '$0=$2' | head -n1)"
@@ -95,7 +95,7 @@ sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?m
           'c24d14029714d2295f3220a7173a5a7362f578a2'
           '6c25b8e8b6bd17d64606dd14353c43a7728daf03'
           # Misc Patches
-          'd114dc0d1d9379f1ab08fc015541922c34db21fa'
+          'aab4fa1f9aad1a80fdb35545eb74739a240fe0ae'
           # Patch from crbug (chromium bugtracker)
           )
 options=('!strip')
@@ -275,6 +275,7 @@ _necesary=('base/third_party/dmg_fp'
            'third_party/webdriver'
            'third_party/webrtc'
            'third_party/widevine'
+           'third_party/woff2'
            'third_party/x86inc'
            'third_party/zlib/google'
            'url/third_party/mozilla'
@@ -328,6 +329,7 @@ _flags=("-Dclang=${_use_clang}"
         "-Duse_gnome_keyring=${_use_gnome_keyring}"
         "-Duse_gtk3=${_use_gtk3}"
         "-Duse_pulseaudio=${_use_pulseaudio}"
+        '-Duse_sysroot=0'
         '-Dwerror='
         )
 
@@ -426,7 +428,7 @@ prepare() {
   patch -p1 -i ../chromium-system-ffmpeg-r1.patch
 
   # Misc Patches:
-  patch -p1 -i ../enable_vaapi_on_linux-r2.diff
+  patch -p1 -i ../enable_vaapi_on_linux-r3.diff
 
   # Patch from crbug (chromium bugtracker)
   # fix the missing define (if not, fail build) (need upstream fix) # https://crbug.com/473866
@@ -441,6 +443,8 @@ prepare() {
   # Remove most bundled libraries. Some are still needed.
   msg2 "Removing unnecessary components to save space"
   python2 build/linux/unbundle/remove_bundled_libraries.py ${_necesary[@]} --do-remove
+  rm -fr native_client/toolchain
+  rm -fr build/linux/debian*
 
   if [ "${_build_pnacl}" = "1" ]; then
     msg2 "Setup NaCl/PNaCl SDK: Download and install NaCl/PNaCl toolchains"

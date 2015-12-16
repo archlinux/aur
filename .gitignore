@@ -6,4 +6,4 @@
 !chromium-dev.install
 !chromium-dev.xml
 !chromium-dev.svg
-!enable_vaapi_on_linux-r2.diff
+!enable_vaapi_on_linux-r3.diff

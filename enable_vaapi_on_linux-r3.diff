@@ -7,7 +7,7 @@ Index: beta.vivid/content/common/gpu/media/gpu_video_decode_accelerator.cc
 @@ -33,7 +33,7 @@
  #include "content/common/gpu/media/dxva_video_decode_accelerator.h"
  #elif defined(OS_MACOSX)
- #include "content/common/gpu/media/vt_video_decode_accelerator.h"
+ #include "content/common/gpu/media/vt_video_decode_accelerator_mac.h"
 -#elif defined(OS_CHROMEOS)
 +#elif defined(OS_CHROMEOS) || defined(OS_LINUX)
  #if defined(USE_V4L2_CODEC)
@@ -252,11 +252,11 @@ Index: dev.vivid/chrome/browser/about_flags.cc
 +++ dev.vivid/chrome/browser/about_flags.cc	2015-06-02 15:12:59.292303758 -0400
 @@ -1072,7 +1072,7 @@
       "disable-accelerated-video-decode",
-      IDS_FLAGS_DISABLE_ACCELERATED_VIDEO_DECODE_NAME,
-      IDS_FLAGS_DISABLE_ACCELERATED_VIDEO_DECODE_DESCRIPTION,
+      IDS_FLAGS_ACCELERATED_VIDEO_DECODE_NAME,
+      IDS_FLAGS_ACCELERATED_VIDEO_DECODE_DESCRIPTION,
 -     kOsMac | kOsWin | kOsCrOS,
 +     kOsAll,
-      SINGLE_VALUE_TYPE(switches::kDisableAcceleratedVideoDecode),
+      SINGLE_DISABLE_VALUE_TYPE(switches::kDisableAcceleratedVideoDecode),
      },
  #if defined(USE_ASH)
 Index: dev.vivid/content/common/gpu/media/vaapi_wrapper.cc
