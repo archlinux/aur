@@ -6,6 +6,7 @@ pkgbase = bitlbee-libpurple
 	install = bitlbee.install
 	arch = i686
 	arch = x86_64
+	arch = armv6h
 	license = GPL
 	makedepends = libotr
 	makedepends = python
