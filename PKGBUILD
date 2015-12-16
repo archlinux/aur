@@ -1,8 +1,9 @@
-# Maintainer: archtux <antonio dot arias99999 at gmail dot com>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: archtux <antonio dot arias99999 at gmail dot com>
 
 pkgname=seahaven
 pkgver=1.60
-pkgrel=3
+pkgrel=4
 pkgdesc="Seahaven Towers is a classic Unix solitaire game updated with new card images."
 arch=('i686' 'x86_64')
 url="http://seahaven.sourceforge.net/"
