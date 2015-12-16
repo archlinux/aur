@@ -1,0 +1,12 @@
+diff --git a/src/cpp/desktop/3rdparty/qtsingleapplication/qtlocalpeer.cpp b/src/cpp/desktop/3rdparty/qtsingleapplication/qtlocalpeer.cpp
+index 09ab680..a0e77d6 100644
+--- a/src/cpp/desktop/3rdparty/qtsingleapplication/qtlocalpeer.cpp
++++ b/src/cpp/desktop/3rdparty/qtsingleapplication/qtlocalpeer.cpp
+@@ -41,6 +41,7 @@
+ 
+ #include "qtlocalpeer.h"
+ #include <QCoreApplication>
++#include <QDataStream>
+ #include <QTime>
+ 
+ #if defined(Q_OS_WIN)

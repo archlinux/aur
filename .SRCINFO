@@ -1,7 +1,7 @@
 pkgbase = rstudio-desktop
 	pkgdesc = Open source and enterprise-ready professional software for the R community
-	pkgver = 0.99.451
-	pkgrel = 2
+	pkgver = 0.99.486
+	pkgrel = 1
 	url = http://www.rstudio.com/
 	install = rstudio-desktop.install
 	arch = i686
@@ -27,14 +27,16 @@ pkgbase = rstudio-desktop
 	conflicts = rstudio-desktop-preview-bin
 	noextract = core-dictionaries.zip
 	noextract = gin-1.5.zip
-	source = rstudio-0.99.451.tar.gz::https://github.com/rstudio/rstudio/tarball/v0.99.451
+	source = rstudio-0.99.486.tar.gz::https://github.com/rstudio/rstudio/tarball/v0.99.486
 	source = https://s3.amazonaws.com/rstudio-buildtools/gin-1.5.zip
 	source = https://s3.amazonaws.com/rstudio-buildtools/gwt-2.7.0.zip
 	source = https://s3.amazonaws.com/rstudio-dictionaries/core-dictionaries.zip
-	sha256sums = f172d3017f3e5e34dda99e50eba6708bbf256f68177722b381b93b7fec375205
+	source = qdatastream.patch
+	sha256sums = e6e8dff7506f31293b319ac26ee58e4fbd8da528b8887b70e31438d8b407d3c9
 	sha256sums = f561f4eb5d5fe1cff95c881e6aed53a86e9f0de8a52863295a8600375f96ab94
 	sha256sums = aa65061b73836190410720bea422eb8e787680d7bc0c2b244ae6c9a0d24747b3
 	sha256sums = 4341a9630efb9dcf7f215c324136407f3b3d6003e1c96f2e5e1f9f14d5787494
+	sha256sums = 3147f02fe9fb557c7dee4d332db9626da4ac4b563ad3d00fc68c6f955afd0a41
 
 pkgname = rstudio-desktop
 
