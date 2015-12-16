@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Chusovitin <dchusovitin@gmail.com>
 
 pkgname=rabbitmqadmin
-pkgver=3.5.4
+pkgver=3.5.7
 pkgrel=1
 pkgdesc='A command-line tool for managing RabbitMQ server (requires "management" plugin)'
 arch=('any')
