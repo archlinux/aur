@@ -1,5 +1,5 @@
-# Maintainer: David Manouchehri <d@32t.ca>
-# Contributor (original PKGBUILD): Philipp 'TamCore' B. <philipp {at} tamcore {dot} eu>
+# Maintainer: David Manouchehri <manouchehri@riseup.net>
+# Contributor: Philipp 'TamCore' B. <philipp {at} tamcore {dot} eu>
 
 pkgname=android-apktool-git
 _gitname=Apktool
