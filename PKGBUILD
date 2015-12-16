@@ -18,13 +18,13 @@ _COMPILER="GCC49"
 ################
 
 ################
-_OPENSSL_VERSION="1.0.2d"
+_OPENSSL_VERSION="1.0.2e"
 ################
 
 _pkgname="ovmf"
 pkgname="${_pkgname}-git"
 
-pkgver=659.1bf35ac
+pkgver=17363.e7e1201
 pkgrel=1
 pkgdesc="UEFI Firmware (OVMF) with Secure Boot Support - for Virtual Machines (QEMU) - from Tianocore EDK2 - GIT Version"
 url="https://tianocore.github.io/ovmf/"
@@ -40,36 +40,17 @@ provides=('ovmf' 'ovmf-bin' 'ovmf-svn')
 
 install="${_pkgname}.install"
 
-source=("https://www.openssl.org/source/openssl-${_OPENSSL_VERSION}.tar.gz")
+source=("${_TIANO_DIR_}::git+https://github.com/tianocore/edk2.git#branch=master"
+        "https://www.openssl.org/source/openssl-${_OPENSSL_VERSION}.tar.gz")
 
-for _DIR_ in BaseTools MdePkg MdeModulePkg IntelFrameworkPkg IntelFrameworkModulePkg ; do
-	source+=("${_TIANO_DIR_}-${_DIR_}::git+${_TIANOCORE_GIT_URL}-${_DIR_}.git#branch=master")
-done
-
-for _DIR_ in PcAtChipsetPkg UefiCpuPkg OptionRomPkg CryptoPkg SecurityPkg ShellPkg FatBinPkg OvmfPkg ; do
-	source+=("${_TIANO_DIR_}-${_DIR_}::git+${_TIANOCORE_GIT_URL}-${_DIR_}.git#branch=master")
-done
-
-sha1sums=('d01d17b44663e8ffa6a33a5a30053779d9593c3d'
-          'SKIP'
-          'SKIP'
-          'SKIP'
-          'SKIP'
-          'SKIP'
-          'SKIP'
-          'SKIP'
-          'SKIP'
-          'SKIP'
-          'SKIP'
-          'SKIP'
-          'SKIP'
-          'SKIP')
+sha1sums=('SKIP'
+          '2c5691496761cb18f98476eefa4d35c835448fb6')
 
 noextract=("openssl-${_OPENSSL_VERSION}.tar.gz")
 
 pkgver() {
 	
-	cd "${srcdir}/${_TIANO_DIR_}-OvmfPkg/"
+	cd "${srcdir}/${_TIANO_DIR_}/"
 	echo "$(git rev-list --count HEAD).$(git describe --always)" | sed -e 's|-|\.|g'
 	
 }
@@ -93,20 +74,6 @@ _setup_env_vars() {
 
 _prepare_tianocore_sources() {
 	
-	msg "Delete old UDK BUILD dir"
-	rm -rf "${_UDK_DIR}/" || true
-	
-	msg "Create UDK BUILD dir"
-	mkdir -p "${_UDK_DIR}/"
-	
-	for _DIR_ in BaseTools MdePkg MdeModulePkg IntelFrameworkPkg IntelFrameworkModulePkg ; do
-		mv "${srcdir}/${_TIANO_DIR_}-${_DIR_}" "${_UDK_DIR}/${_DIR_}"
-	done
-	
-	for _DIR_ in PcAtChipsetPkg UefiCpuPkg OptionRomPkg CryptoPkg SecurityPkg ShellPkg FatBinPkg OvmfPkg ; do
-		mv "${srcdir}/${_TIANO_DIR_}-${_DIR_}" "${_UDK_DIR}/${_DIR_}"
-	done
-	
 	cd "${_UDK_DIR}/"
 	
 	msg "Cleanup UDK config files"
@@ -122,11 +89,6 @@ _prepare_tianocore_sources() {
 	msg "Fix GCC Warning as error"
 	sed 's|-Werror |-Wno-error -Wno-unused-but-set-variable |g' -i "${EDK_TOOLS_PATH}/Source/C/Makefiles/header.makefile" || true
 	sed 's|-Werror |-Wno-error -Wno-unused-but-set-variable |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
-	
-	msg "Fix GCC >=4.7 error - gcc: error: unrecognized command line option '-melf_x86_64'"
-	sed 's| -m64 --64 -melf_x86_64| -m64|g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
-	sed 's|--64 | |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
-	sed 's| -m64 -melf_x86_64| -m64|g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
 	
 	msg "Remove GCC -g debug option and add -O0 -mabi=ms -maccumulate-outgoing-args"
 	sed 's|DEFINE GCC_ALL_CC_FLAGS            = -g |DEFINE GCC_ALL_CC_FLAGS            = -O0 -mabi=ms -maccumulate-outgoing-args |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
