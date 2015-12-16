@@ -2,7 +2,7 @@
 # Maintainer: Anthony Ruhier <anthony.ruhier@gmail.com>
 
 pkgname=torrents_dispatcher
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc='Dispatch your torrents between multiple torrent clients'
 arch=('any')
@@ -10,7 +10,7 @@ url='https://github.com/Anthony25/torrents_dispatcher'
 license=('BSD')
 depends=('python-appdirs' 'python-argparse' 'python-bencodepy' 'python-setuptools')
 source=("https://github.com/Anthony25/torrents_dispatcher/archive/${pkgver}.tar.gz")
-sha256sums=('013cd4e44bfb3b56acb77e62c6dba44630c15691842257de62b2e594030c8734')
+sha256sums=('d5ec105578610e98f0e8c5a175e7d9622146cbef66d67d61ace2804880353ab5')
 
 build() {
   cd torrents_dispatcher-${pkgver}
