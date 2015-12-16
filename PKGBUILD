@@ -2,12 +2,13 @@
 
 pkgname=gog-dont-starve
 pkgver=2.1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An uncompromising wilderness survival game full of science and magic"
 url="https://www.kleientertainment.com/games/dont-starve"
 license=('custom')
 arch=('i686' 'x86_64')
 depends=('sdl2' 'libcurl-gnutls')
+optdepends=('gog-dont-starve-rog: Reign of Giants DLC')
 source=("gog://gog_don_t_starve_${pkgver}.sh"
         "${pkgname}.desktop")
 sha256sums=('8f8fca4d89626e43f4ee2d378cc30daf2a45c24c91a3bc1694d83a00fb0a062b'
