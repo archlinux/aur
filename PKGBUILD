@@ -4,15 +4,19 @@
 pkgname=vtun
 pkgver=3.0.3.2013.d
 _pkgver=3.0.3
-pkgrel=5
+pkgrel=6
 pkgdesc="The easiest way to create Virtual Tunnels over TCP/IP networks with traffic shaping, compression, encryption and IPv6 support."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="http://vtun.sourceforge.net/"
 license=('GPL')
 depends=('openssl' 'zlib' 'lzo2')
 backup=('etc/vtund.conf' 'etc/tun-cfg.conf')
-source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${_pkgver}/${pkgname}-${_pkgver}.tar.gz" cvs-2013.patch openlog.patch 00-sslauth.patch 01-pidfile.patch 02-dumpfile.patch 03-signedness-warnings.patch 04-implicit-pointer-conversions.patch 05-unix98pty.patch 06-ipv6.patch 07-dual-family-transport.patch vtund-ipv6-client.conf vtund-ipv6-server.conf android-dev.patch tun-cat.c tun-cfg tun-cfg.conf README.tun-cfg)
-sha512sums=('5fa789d08b556f97492b89515a89c2322c4b0a8fa95bd1035f5ed19061b3654a6a36a9911792096ac872ae9ae5451848cab87d0343dc0ffc064affea1f7d0d54' SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
+source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${_pkgver}/${pkgname}-${_pkgver}.tar.gz"
+"https://gist.githubusercontent.com/Mic92/f2d0980682a3ad2247b7/raw/9c2045facaa1f82420b84c581aeeef9ba96fd0c7/0001-fix-bison-compile-error.patch"
+ cvs-2013.patch openlog.patch 00-sslauth.patch 01-pidfile.patch 02-dumpfile.patch 03-signedness-warnings.patch 04-implicit-pointer-conversions.patch 05-unix98pty.patch 06-ipv6.patch 07-dual-family-transport.patch vtund-ipv6-client.conf vtund-ipv6-server.conf android-dev.patch tun-cat.c tun-cfg tun-cfg.conf README.tun-cfg)
+sha512sums=('5fa789d08b556f97492b89515a89c2322c4b0a8fa95bd1035f5ed19061b3654a6a36a9911792096ac872ae9ae5451848cab87d0343dc0ffc064affea1f7d0d54'
+'178f8cfc67f5de4b893bd0790f637c8e6988c4a317428330a7690d01ede0368920de8bcf8a1a08ad74300b772571d7e3d7a063cbfc685bf55dd4651f64d56558'
+ SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
 install=vtun.install
 
 prepare() {
@@ -20,7 +24,7 @@ prepare() {
   HELPSTR=/usr/bin/tun-cfg ./tun-cfg --help > README.tun-cfg
   cd "${srcdir}/${pkgname}-${_pkgver}"
   # adding latest CVS 3_X2 branch changes and patches ported from Debian Jessie
-  for p in cvs-2013.patch openlog.patch 00-sslauth.patch 01-pidfile.patch 02-dumpfile.patch 03-signedness-warnings.patch 04-implicit-pointer-conversions.patch 05-unix98pty.patch 06-ipv6.patch 07-dual-family-transport.patch; do
+  for p in cvs-2013.patch openlog.patch 00-sslauth.patch 01-pidfile.patch 02-dumpfile.patch 03-signedness-warnings.patch 04-implicit-pointer-conversions.patch 05-unix98pty.patch 06-ipv6.patch 07-dual-family-transport.patch 0001-fix-bison-compile-error.patch; do
    patch -p1 -i "${srcdir}/$p" || exit 1
   done
   [[ "$CARCH" =~ ^arm ]] && patch -p1 -i "${srcdir}/android-dev.patch"

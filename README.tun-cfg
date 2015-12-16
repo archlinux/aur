@@ -1,4 +1,4 @@
-Tunnel-configurer version 1.6.1
+Tunnel-configurer version 1.7
  Client-server IP tunnel configuration via the same IP tunnel.
 
 -- vtund.conf --
@@ -62,6 +62,8 @@ TIMEOUT=10
 LOCAL=server.vpn
  # routes for sending to clients (example)
 ROUTES='10.10.10.0/24 10.10.0.0/24'
+ # kill connection on server side if client still not configured
+ABORT=yes
 
 -- Command-line description --
 ifconfig wrapper:
@@ -97,6 +99,8 @@ noroutes|-r         : server - Don't send any routes from config
                     : client - Don't get IPv4 routes from server
 no6routes|-R        : Don't get IPv6 routes from server (client only)
  timeout|-t <sec>   : default=10, 0=endless
+   abort|-k         : Abort connection after timeout (server only)
+    keep|-K         : ... or don't do it
   nofork|-B  | nobg | nobackground
 
 NOTE:
