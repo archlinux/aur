@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Nitrogen
+Comment=
+Exec=nitrogen %f
+Terminal=false
+Type=Application
+Icon=nitrogen
+Categories=GTK;Graphics;2DGraphics;Viewer;
+MimeType=image/bmp;image/gif;image/jpeg;image/jpg;image/pjpeg;image/png;image/tiff;image/x-bmp;image/x-pcx;image/x-png;image/x-portable-anymap;image/x-portable-bitmap;image/x-portable-graymap;image/x-portable-pixmap;image/x-sun-raster;image/x-tga;image/x-xbitmap;image/x-xpixmap;image/svg+xml;
