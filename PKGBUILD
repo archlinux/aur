@@ -1,4 +1,4 @@
-pkgname=douane-configurator
+pkgname=douane-configurator-git
 pkgver=1
 pkgrel=1
 pkgdesc="Douane Firewall Kernel GTK GUI"
@@ -39,6 +39,6 @@ package() {
   # Install
   cd "$srcdir/$pkgname"
   msg2 "Starting make install..."
-  python setup.py build -e "/usr/bin/env python3" install --prefix=/usr --root="${pkgdir}" 
+  python setup.py build -e "/usr/bin/env python3" install --prefix=/usr --root="${pkgdir}"
 
 }
