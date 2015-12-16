@@ -3,7 +3,7 @@ Description=Carbon Cache
 Wants=network.target
 
 [Service]
-Type=simple
+Type=forking
 ExecStart=/usr/bin/python2 /opt/graphite/bin/carbon-cache.py start
 
 [Install]
