@@ -1,12 +1,14 @@
 pkgname=skypeweb-git
 pkgver=1.0.20151216.3af15e7
 pkgrel=1
-pkgdesc='SkypeWeb Plugin for Pidgin'
+pkgdesc='SkypeWeb Plugin for Pidgin (development)'
 arch=('any')
 url='https://github.com/EionRobb/skype4pidgin/tree/master/skypeweb'
 license=('GPL')
 depends=('libpurple' 'json-glib')
 makedepends=('git')
+conflicts=('skypeweb')
+provides=('skypeweb')
 source=('git+https://github.com/EionRobb/skype4pidgin.git')
 md5sums=('SKIP')
 
