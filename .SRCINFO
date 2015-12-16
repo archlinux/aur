@@ -1,8 +1,8 @@
 pkgbase = libtorrent-pyro-git
 	pkgdesc = BitTorrent library written in C++ (git version)
-	pkgver = 20150519
-	pkgrel = 2
-	url = http://libtorrent.rakshasa.no
+	pkgver = 20150908
+	pkgrel = 1
+	url = https://rakshasa.github.io/rtorrent
 	install = libtorrent-pyro.install
 	arch = i686
 	arch = x86_64
