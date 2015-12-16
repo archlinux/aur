@@ -21,5 +21,9 @@ build() {
   fi
   cd $pkgdir
   rpmextract.sh $rpmfile
+}
+
+package() {
+  cd $pkgdir
   mv usr/lib64 usr/lib
 }
