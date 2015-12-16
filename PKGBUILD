@@ -2,7 +2,7 @@
 # Contributor: veox <veox at wre dot ath dot cx>
 
 pkgname=zsh-history-substring-search-git
-pkgver=74.3bd84be
+pkgver=92.2f8a5f8
 pkgrel=1
 epoch=1
 pkgdesc="A ZSH plugin to search history, a clean-room implementation of the Fish shell feature"
@@ -26,7 +26,7 @@ package() {
   local name="${pkgname%-git}"
   cd "$srcdir/$name"
   install -d -m755 "$pkgdir/usr/share/zsh/plugins/$name"
-  install -m644 README.md "$name".{zsh,plugin.zsh} "$pkgdir/usr/share/zsh/plugins/$name"
+  install -m644 README.md "$name".zsh "$pkgdir/usr/share/zsh/plugins/$name"
 }
 
 # vim:set ts=2 sw=2 et:

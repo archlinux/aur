@@ -1,6 +1,6 @@
 pkgbase = zsh-history-substring-search-git
 	pkgdesc = A ZSH plugin to search history, a clean-room implementation of the Fish shell feature
-	pkgver = 74.3bd84be
+	pkgver = 92.2f8a5f8
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/zsh-users/zsh-history-substring-search
