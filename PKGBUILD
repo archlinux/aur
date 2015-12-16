@@ -1,4 +1,4 @@
-# Maintainer: David Manouchehri <david@davidmanouchehri.com>
+# Maintainer: David Manouchehri <manouchehri@riseup.net>
 # Contributor: Matthieu Rakotojaona <matthieu.rakotojaona@gmail.com>
 
 pkgname=python-elasticsearch
