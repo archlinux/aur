@@ -28,6 +28,8 @@ package() {
     sed -i 's/\/opt\/librenms/\/usr\/share\/webapps\/librenms/g' usr/share/webapps/${pkgname}/librenms.cron
     sed -i 's/\/opt\/librenms/\/usr\/share\/webapps\/librenms/g' usr/share/webapps/${pkgname}/poller-service.conf
 
+    sed -i 's/python/python2/g' usr/share/webapps/${pkgname}/poller-service.py
+    sed -i 's/python/python2/g' usr/share/webapps/${pkgname}/poller-wrapper.py
 
     # copy config in etc and link it
     cp usr/share/webapps/${pkgname}/config.php.default etc/webapps/${pkgname}/config.php
