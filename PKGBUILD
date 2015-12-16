@@ -4,7 +4,7 @@
 
 pkgname=gst123
 pkgver=0.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A more flexible command line player in the spirit of ogg123 and mpg123, based on gstreamer"
 arch=('i686' 'x86_64')
 url="http://space.twc.de/~stefan/gst123.php"
