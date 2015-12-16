@@ -1,4 +1,4 @@
-pkgname=douane-daemon
+pkgname=douane-daemon-git
 pkgver=1
 pkgrel=1
 pkgdesc="Douane Firewall Kernel Daemon"
@@ -40,7 +40,7 @@ build() {
 }
 
 package() {
-  
+
    # Main service (in case it doesn't exist or owned by us)
     if [[ ! -f /usr/lib/systemd/system/douane-daemon.service || $(pacman -Qo /usr/lib/systemd/system/douane-daemon.service 2>&-) ]]; then
 	install -d "${pkgdir}"/usr/lib/systemd/system/
