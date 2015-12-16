@@ -1,0 +1,35 @@
+diff --git a/qtools/qglobal.h b/qtools/qglobal.h
+index 5417861..b8c5067 100644
+--- a/qtools/qglobal.h
++++ b/qtools/qglobal.h
+@@ -86,7 +86,16 @@
+ #  if !defined(MAC_OS_X_VERSION_10_5)
+ #       define MAC_OS_X_VERSION_10_5 MAC_OS_X_VERSION_10_4 + 1
+ #  endif
+-#  if (MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5)
++#  if !defined(MAC_OS_X_VERSION_10_6)
++#       define MAC_OS_X_VERSION_10_6 MAC_OS_X_VERSION_10_5 + 1
++#  endif
++#  if !defined(MAC_OS_X_VERSION_10_7)
++#       define MAC_OS_X_VERSION_10_7 MAC_OS_X_VERSION_10_6 + 1
++#  endif
++#  if !defined(MAC_OS_X_VERSION_10_8)
++#       define MAC_OS_X_VERSION_10_8 MAC_OS_X_VERSION_10_7 + 1
++#  endif
++#  if (MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_8)
+ #    error "This version of Mac OS X is unsupported"
+ #  endif
+ #elif defined(MSDOS) || defined(_MSDOS) || defined(__MSDOS__)
+diff --git a/qtools/qvaluestack.h b/qtools/qvaluestack.h
+index 3fb61fd..fe4462a 100644
+--- a/qtools/qvaluestack.h
++++ b/qtools/qvaluestack.h
+@@ -49,7 +49,7 @@ class Q_EXPORT QValueStack : public QValueList<T>
+ public:
+     QValueStack() {}
+    ~QValueStack() {}
+-    void  push( const T& d ) { append(d); }
++    void  push( const T& d ) { QValueList<T>::append(d); }
+     T pop()
+     {
+ 	T elem( this->last() );
