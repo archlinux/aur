@@ -17,11 +17,6 @@ md5sums=('SKIP'
          'd9ef996a4bb92abd7dfc7bb19013ce95'
          'eb138d945bba86fbc8c83768581178c8')
 
-pkgver() {
-  cd $srcdir/jm
-  echo $(git log --pretty=format:%ci -n1 | cut -f 1 -d " " | sed "s/-//g")
-}
-
 prepare() {
   cp $srcdir/jm/JM.rules $srcdir/jm/JM.rules.orig
   sed -e "s!JMHOME\=.*\$!JMHOME\=$srcdir/jm/pkgbuild!g" \
