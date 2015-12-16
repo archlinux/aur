@@ -2,7 +2,7 @@
 
 pkgname=gspiceui
 pkgver=1.1.00
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI to various freely available Spice electronic ciruit simulators"
 url="http://users.tpg.com.au/micksw012/gspiceui.html"
 license=('GPL')
