@@ -4,7 +4,6 @@
 _SHELL_IA32_ARCH_X64="1"
 
 ###############
-_TIANOCORE_GIT_URL="https://github.com/tianocore/edk2"
 _TIANO_DIR_="edk2"
 ###############
 
@@ -26,7 +25,7 @@ _COMPILER="GCC49"
 _pkgname="uefi-shell"
 pkgname="${_pkgname}-git"
 
-pkgver=681.85807a5
+pkgver=17363.e7e1201
 pkgrel=1
 pkgdesc="UEFI Shell v2 - from Tianocore EDK2 - GIT Version"
 url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=ShellPkg"
@@ -42,20 +41,13 @@ provides=('uefi-shell' 'uefi-shell-svn')
 
 install="${_pkgname}.install"
 
-source=()
+source=("${_TIANO_DIR_}::git+https://github.com/tianocore/edk2.git#branch=master")
 
-for _DIR_ in BaseTools MdePkg MdeModulePkg ShellPkg ; do
-	source+=("${_TIANO_DIR_}-${_DIR_}::git+${_TIANOCORE_GIT_URL}-${_DIR_}.git#branch=master")
-done
-
-sha1sums=('SKIP'
-          'SKIP'
-          'SKIP'
-          'SKIP')
+sha1sums=('SKIP')
 
 pkgver() {
 	
-	cd "${srcdir}/${_TIANO_DIR_}-${_TIANOCORE_PKG}Pkg/"
+	cd "${srcdir}/${_TIANO_DIR_}/"
 	echo "$(git rev-list --count HEAD).$(git describe --always)" | sed -e 's|-|\.|g'
 	
 }
@@ -69,16 +61,6 @@ _setup_env_vars() {
 }
 
 _prepare_tianocore_sources() {
-	
-	msg "Delete old UDK BUILD dir"
-	rm -rf "${_UDK_DIR}/" || true
-	
-	msg "Create UDK BUILD dir"
-	mkdir -p "${_UDK_DIR}/"
-	
-	for _DIR_ in BaseTools MdePkg MdeModulePkg ShellPkg ; do
-		mv "${srcdir}/${_TIANO_DIR_}-${_DIR_}" "${_UDK_DIR}/${_DIR_}"
-	done
 	
 	cd "${_UDK_DIR}/"
 	
@@ -97,11 +79,6 @@ _prepare_tianocore_sources() {
 	msg "Fix GCC Warning as error"
 	sed 's|-Werror |-Wno-error -Wno-unused-but-set-variable |g' -i "${EDK_TOOLS_PATH}/Source/C/Makefiles/header.makefile" || true
 	sed 's|-Werror |-Wno-error -Wno-unused-but-set-variable |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
-	
-	msg "Fix GCC >=4.7 error - gcc: error: unrecognized command line option '-melf_x86_64'"
-	sed 's| -m64 --64 -melf_x86_64| -m64|g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
-	sed 's|--64 | |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
-	sed 's| -m64 -melf_x86_64| -m64|g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
 	
 	msg "Remove GCC -g debug option and add -O0 -mabi=ms -maccumulate-outgoing-args"
 	sed 's|DEFINE GCC_ALL_CC_FLAGS            = -g |DEFINE GCC_ALL_CC_FLAGS            = -O0 -mabi=ms -maccumulate-outgoing-args |g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template" || true
