@@ -4,24 +4,19 @@
 pkgname=('backintime' 'backintime-cli')
 _pkgname="backintime"
 pkgver=1.1.8
-pkgrel=3
+pkgrel=4
 arch=('any')
-url="https://launchpad.net/backintime"
+url="https://github.com/bit-team/backintime"
 license=('GPL')
 makedepends=('python')
-_stupidnumber=219057574
-source=("https://launchpadlibrarian.net/$_stupidnumber/$_pkgname-$pkgver.tar.gz"
-"Fix_bug_473-AttributeError.patch"
-"https://launchpadlibrarian.net/$((_stupidnumber + 1))/$_pkgname-$pkgver.tar.gz.asc")
-sha256sums=('a1f2d210e95633dfe383eb50b3b560d1e09c43de4ce89dd4cb193cab40cb8a1e'
-            '281b75fa6726e621b8ecabe8310b7e9e126848eb2215082df38fdf2cbdc52786'
-            'SKIP')
-validpgpkeys=('3E70692EE3DB8BDDA5991C90615F366D944B4826') # Germar Reitze
-# https://wiki.archlinux.org/index.php/Makepkg#Signature_checking
+source=("https://github.com/bit-team/$_pkgname/archive/v$pkgver.tar.gz"
+"Fix_bug_473-AttributeError.patch")
+sha256sums=('d5475eddcbe9612eb8814cb811bee394ad140a560d28c4d20258f3a6078648ff'
+            '281b75fa6726e621b8ecabe8310b7e9e126848eb2215082df38fdf2cbdc52786')
 
 prepare() {
-	cd "$_pkgname-$pkgver"
-	patch -Np1 -i "$srcdir/Fix_bug_473-AttributeError.patch"
+	cd "$_pkgname-$pkgver/common"
+	patch -i "$srcdir/Fix_bug_473-AttributeError.patch"
 }
 
 build() {
