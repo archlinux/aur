@@ -1,9 +1,9 @@
 # Maintainer: Bidossessi Sodonon
 
 pkgname=odoo
-pkgver=9.0
-_pkgsubver=20151109
-pkgrel=3
+pkgver=9.0c
+_pkgsubver=20151216
+pkgrel=4
 pkgdesc="Web-based Open Source Business Apps"
 url=http://odoo.com/
 arch=('any')
@@ -33,7 +33,6 @@ depends=(
     'python2-markupsafe'
     'python2-mock'
     'python2-openid'
-    #'python2-openssl'
     'python2-passlib'
     'python2-paramiko'
     'python2-pillow'
@@ -62,6 +61,9 @@ depends=(
     'python2-zsi'
     'wkhtmltopdf-static'
 )
+optdepends=(
+    'python2-ofxparse'
+)
 
 source=(
   "http://nightly.odoo.com/9.0/nightly/src/${pkgname}_${pkgver}.${_pkgsubver}.tar.gz"
@@ -84,7 +86,7 @@ package()
   install -Dm 644 ${srcdir}/odoo.service ${pkgdir}/usr/lib/systemd/system/odoo.service
   install -Dm 644 ${srcdir}/odoo.conf ${pkgdir}/etc/odoo/odoo.conf
 }
-md5sums=('a0e46123bf5a80c2ea8366d693b3a6fe'
+md5sums=('2750bc52e1bcfd15c7057f14c5038cec'
          '742fa9ad94a92ac2aa910197a26af4e8'
          '00314ef227c9075767d0165527de9841'
          '0c205f95168a60d140411cce4e173eb8')
