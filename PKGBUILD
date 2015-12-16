@@ -3,7 +3,7 @@
 pkgname=datagrip
 _pkgname=DataGrip
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Smart SQL Editor and Advanced Database Client Packed Together for Optimum Productivity'
 arch=('i686' 'x86_64')
 options=('!strip')
