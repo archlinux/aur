@@ -3,7 +3,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-autovivification'
-pkgver='0.15'
+pkgver='0.16'
 pkgrel='1'
 pkgdesc="Lexically disable autovivification."
 arch=('i686' 'x86_64' 'armv7h')
@@ -13,7 +13,7 @@ depends=('perl>=5.8.3')
 makedepends=()
 url='http://search.cpan.org/dist/autovivification'
 source=("http://www.cpan.org/authors/id/V/VP/VPIT/autovivification-$pkgver.tar.gz")
-md5sums=('5f2120f1591f5b0600b1a927bfc51e55')
+md5sums=('7e20817f6034910c1bc23351d81a0658')
 _distdir="autovivification-$pkgver"
 
 build() {
