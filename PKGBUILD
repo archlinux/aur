@@ -3,7 +3,7 @@
 pkgname=python2-graphite-web
 _pkgname=graphite
 pkgver=0.9.15
-pkgrel=2
+pkgrel=3
 pkgdesc="Graphite provides real-time graphing for monitoring purposes"
 url="http://www.graphite.wikidot.com"
 arch=('any')
