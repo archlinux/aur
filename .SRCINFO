@@ -1,0 +1,13 @@
+pkgbase = crunch
+	pkgdesc = A wordlist generator where you can specify a standard character set or a character set you specify and generate all possible combinations and permutations.
+	pkgver = 3.6
+	pkgrel = 1
+	url = http://sourceforge.net/projects/crunch-wordlist/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	source = http://downloads.sourceforge.net/project/crunch-wordlist/crunch-wordlist/crunch-3.6.tgz
+	md5sums = 1cbab783805d1bd382bd2edf33298108
+
+pkgname = crunch
+
