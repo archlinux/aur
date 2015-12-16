@@ -2,6 +2,8 @@
  * Vault configuration. See: https://vaultproject.io/docs/config/
  */
 
+disable_mlock = true
+
 backend "file" {
 	path = "/var/lib/vault"
 }
