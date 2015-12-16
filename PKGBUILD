@@ -5,8 +5,8 @@
 
 pkgname=xf86-input-evdev1.12
 _pkgname=xf86-input-evdev
-pkgver=2.9.2
-pkgrel=2
+pkgver=2.10.0
+pkgrel=1
 pkgdesc="X.org evdev input driver"
 arch=(i686 x86_64)
 url="http://xorg.freedesktop.org/"
@@ -17,7 +17,7 @@ conflicts=('xorg-server<1.12.0' 'xorg-server>=1.12.99' 'xf86-input-evdev' 'X-ABI
 provides=("$_pkgname=$pkgver")
 options=('!makeflags')
 source=(${url}/releases/individual/driver/${_pkgname}-${pkgver}.tar.bz2)
-sha256sums=('792329b531afc6928ccda94e4b51a5520d4ddf8ef9a00890a5d0d31898acefec')
+sha256sums=('d097298eb07b7a9edf4493b5c3c058041458ca52c8c62dbd4f40b84c5086d117')
 
 build() {
   cd ${_pkgname}-${pkgver}
