@@ -13,6 +13,7 @@ pkgbase = coreclr-git
 	depends = lldb
 	depends = libunwind
 	depends = lttng-ust
+	optdepends = mono: for building mscorlib.dll
 	provides = coreclr
 	source = git+https://github.com/dotnet/coreclr
 	sha1sums = SKIP

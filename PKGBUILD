@@ -9,6 +9,7 @@ url="https://github.com/dotnet/coreclr"
 license=(MIT)
 depends=('icu' 'lldb' 'libunwind' 'lttng-ust')
 makedepends=('git' 'cmake' 'clang35' 'llvm35')
+optdepends=('mono: for building mscorlib.dll')
 provides=('coreclr')
 source=('git+https://github.com/dotnet/coreclr') 
 sha1sums=('SKIP')
