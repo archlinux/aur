@@ -1,7 +1,7 @@
 # Maintainer: Yamakaky <yamakaky@yamaworld.fr>
 _pkgname=rustfmt
 pkgname=$_pkgname-git
-pkgver=r573.bd0fdbb
+pkgver=r753.ecf1277
 pkgrel=1
 pkgdesc=""
 arch=('x86' 'x86_64')
@@ -30,5 +30,5 @@ check() {
 package() {
     cd "$srcdir/$_pkgname"
     install -D "target/release/rustfmt" "$pkgdir/usr/bin/rustfmt"
-    #install -D -m 644 "LICENSE" "$pkgdir/usr/share/licences/${_pkgname}/LICENSE"
+    install -D "target/release/cargo-fmt" "$pkgdir/usr/bin/cargo-fmt"
 }
