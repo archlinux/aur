@@ -4,7 +4,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-esr
-pkgver=38.4.0
+pkgver=38.5.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=('i686' 'x86_64')
@@ -24,16 +24,15 @@ provides=(firefox)
 conflicts=(firefox)
 install=firefox.install
 options=('!emptydirs' '!makeflags')
-source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/latest-esr/source/firefox-${pkgver}esr.source.tar.bz2
+source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.bz2
         mozconfig firefox.desktop firefox-install-dir.patch vendor.js
-        firefox-fixed-loading-icon.png freetype26.patch)
-sha256sums=('028a1f7ce16b3016b0d98e5a5ef73bcb3f732b80d406e54f49e3c246e207f2c7'
+        firefox-fixed-loading-icon.png)
+sha256sums=('2a1f90cfe390ab20be88fed38cb9f61a18281cfbee47505c67e0254d339cdb20'
             'ffcb2a0ba2ed08f74931a11043717391ef380234cadccc6f0c13f1186ad80e8b'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
-            '68e3a5b47c6d175cc95b98b069a15205f027cab83af9e075818d38610feb6213'
-            'b9c440406644fde5097da8717f0b5e5e973d11ec4dd6d4a0570ca7094d96dc85')
+            '68e3a5b47c6d175cc95b98b069a15205f027cab83af9e075818d38610feb6213')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -47,9 +46,6 @@ prepare() {
 
   cp ../mozconfig .mozconfig
   patch -Np1 -i ../firefox-install-dir.patch
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1143411
-  patch -Np1 -i ../freetype26.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo "ac_add_options --with-google-api-keyfile=\"$PWD/google-api-key\"" >>.mozconfig
