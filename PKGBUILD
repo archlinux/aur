@@ -37,11 +37,8 @@ package() {
         install -Dm644 ${srcdir}/${_pkgname}/doc/PF_RING-UsersGuide.pages $pkgdir/usr/share/doc/${pkgname}/PF_RING-UsersGuide.pages
         install -Dm644 ${srcdir}/${_pkgname}/doc/UsersGuide.pdf $pkgdir/usr/share/doc/${pkgname}/UsersGuide.pdf
         install -Dm644 ${srcdir}/${_pkgname}/doc/UsersGuide_Russian.pdf $pkgdir/usr/share/doc/${pkgname}/UsersGuide_Russian.pdf 
-        install -Dm644 ${srcdir}/${_pkgname}/ChangeLog $pkgdir/usr/share/doc/${pkgname}/ChangeLog
-        install -Dm644 ${srcdir}/${_pkgname}/README $pkgdir/usr/share/doc/${pkgname}/README 
-        install -Dm644 ${srcdir}/${_pkgname}/README.DNA_Libzero $pkgdir/usr/share/doc/${pkgname}/README.DNA_Libzero
-        install -Dm644 ${srcdir}/${_pkgname}/README.FIRST $pkgdir/usr/share/doc/${pkgname}/README.FIRST
-        install -Dm644 ${srcdir}/${_pkgname}/README.MIGRATE_DNA_to_ZC $pkgdir/usr/share/doc/${pkgname}/README.MIGRATE_DNA_to_ZC
-        install -Dm644 ${srcdir}/${_pkgname}/README.ZC $pkgdir/usr/share/doc/${pkgname}/README.ZC
-        install -Dm644 ${srcdir}/${_pkgname}/README.hugepages $pkgdir/usr/share/doc/${pkgname}/README.hugepages 
+        install -Dm644 ${srcdir}/${_pkgname}/doc/README.DNA_Libzero $pkgdir/usr/share/doc/${pkgname}/README.DNA_Libzero
+        install -Dm644 ${srcdir}/${_pkgname}/doc/README.MIGRATE_DNA_to_ZC $pkgdir/usr/share/doc/${pkgname}/README.MIGRATE_DNA_to_ZC
+        install -Dm644 ${srcdir}/${_pkgname}/doc/README.ZC $pkgdir/usr/share/doc/${pkgname}/README.ZC
+        install -Dm644 ${srcdir}/${_pkgname}/doc/README.hugepages $pkgdir/usr/share/doc/${pkgname}/README.hugepages 
 }
