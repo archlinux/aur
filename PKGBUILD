@@ -2,7 +2,7 @@
 # Contributor: Hugo Lobo
 
 pkgname=binkplayer
-pkgver=2.5k
+pkgver=2.5m
 pkgrel=1
 pkgdesc="Bink Video Player"
 url="http://www.radgametools.com/bnkmain.htm"
