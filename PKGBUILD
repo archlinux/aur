@@ -6,7 +6,7 @@ pkgdesc="A transport layer for coarray Fortran compilers."
 url="http://www.opencoarrays.org/"
 arch=('x86_64' 'i686')
 license=('BSD')
-depends=('openmpi' 'gcc-fortran')
+depends=('mpich' 'gcc-fortran')
 source=("https://github.com/sourceryinstitute/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('43d82c80a8b3ca3d06d26f1f422c228f')
 
