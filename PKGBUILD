@@ -3,13 +3,14 @@
 
 pkgname=opennx
 pkgver=0.16.0.729
-pkgrel=2
+pkgrel=3
 pkgdesc="A GPL replacement for the NoMachine client"
 url="http://opennx.sf.net/"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('wxgtk2.8' 'libcups' 'libxext' 'libxft' 'xorg-xauth' 'curl' 'nx-common' 'hicolor-icon-theme')
 makedepends=('zip' 'opensc' 'libpulse' 'smbclient' 'libusb-compat')
+install=${pkgname}.install
 source=(http://downloads.sourceforge.net/project/opennx/opennx/CI-source/opennx-$pkgver.tar.gz)
 md5sums=('5271a2430693858803f2e1ca860e5a6c')
 
@@ -38,14 +39,3 @@ package() {
   find ./ -maxdepth 1 -mindepth 1 -type d -not -name hicolor -exec mv {} hicolor/ \;
 }
 
-post_install() {
-  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-}
-
-post_upgrade() {
-  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-}
-
-post_remove() {
-  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-}
