@@ -4,11 +4,11 @@ pkgname=nginx-google_filter
 _pkgname=nginx
 pkgver=1.8.0
 _mod1=ngx_http_google_filter_module
-_mod1ver=0.1.9
+_mod1ver=0.2.0
 _mod2=ngx_http_substitutions_filter_module
 _mod2ver=0.6.4
-pkgrel=1
-pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, with ngx_http_google_filter_module'
+pkgrel=2
+pkgdesc="Lightweight HTTP server and IMAP/POP3 proxy server, with ngx_http_google_filter_module $_mod1ver"
 provides=("nginx=${pkgver}")
 conflicts=('nginx')
 arch=('i686' 'x86_64')
@@ -34,7 +34,7 @@ source=(http://nginx.org/download/${_pkgname}-${pkgver}.tar.gz
         logrotate
         google.conf)
 sha256sums=('23cca1239990c818d8f6da118320c4979aadf5386deda691b1b7c2c96b9df3d5'
-            'a5923f40cc62152bb69b386dbee2c8f67b1db0c807eb6de471a74f12043a74a9'
+            '9cd68c8e092efb1a419e1087bb9ca23aab1ff8650c400c0aa815d461d79385de'
             'ed4ddbcf0c434f4a1e97b61251a63ace759792764bd5cb79ff20efe348db8db3'
             '4ecbc33ce4bf2965996f51b0c7edb677904ba5cff9a32e93e1487a428d3a751b'
             '2613986dd5faab09ca962264f16841c8c55c3a0bc7a5bb737eabd83143090878'
