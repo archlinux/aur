@@ -1,0 +1,24 @@
+diff -Naur mate-menu-5.6.6.orig/lib/mate-menu-config.py mate-menu-5.6.6/lib/mate-menu-config.py
+--- mate-menu-5.6.6.orig/lib/mate-menu-config.py	2015-12-17 02:33:58.891764000 +0100
++++ mate-menu-5.6.6/lib/mate-menu-config.py	2015-12-17 02:45:06.730681243 +0100
+@@ -384,17 +384,17 @@
+ 
+     def getBackgroundColor( self ):
+         color = Gdk.Color(0,0,0)
+-        self.backgroundColor.get_color(color)
++        color = self.backgroundColor.get_color()
+         return self.gdkColorToString( color )
+ 
+     def getBorderColor( self ):
+         color = Gdk.Color(0,0,0)
+-        self.borderColor.get_color(color)
++        color = self.borderColor.get_color()
+         return self.gdkColorToString( color )
+ 
+     def getHeadingColor( self ):
+         color = Gdk.Color(0,0,0)
+-        self.headingColor.get_color(color)
++        color = self.headingColor.get_color()
+         return self.gdkColorToString( color )
+ 
+     def gdkColorToString( self, gdkColor ):
