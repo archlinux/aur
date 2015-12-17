@@ -2,7 +2,7 @@
 
 pkgname=aegir
 pkgver=7.x_3.2
-pkgrel=6
+pkgrel=7
 pkgdesc="Configuration for a dedicated Aegir server to host Drupal sites."
 arch=('any')
 url='http://aegirproject.org'
@@ -77,7 +77,7 @@ package() {
     ln -s /etc/drush "$pkgdir/srv/http/.drush"
     ln -s /etc/drush "$pkgdir/etc/skel/.drush"
     ln -s /etc/drush "$pkgdir/usr/share/webapps/$pkgname/.drush"
-    ln -s "$pkgdir/usr/share/webapps/$pkgname/.ssh" "$pkgdir/srv/http/.ssh"
+    ln -s "/usr/share/webapps/$pkgname/.ssh" "$pkgdir/srv/http/.ssh"
     umask 066
     mkdir -p "$pkgdir/usr/share/webapps/$pkgname/"{config{,/{includes,server_{localhost,master{,/nginx}}}},clients}
     umask 077
