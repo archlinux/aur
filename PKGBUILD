@@ -10,7 +10,9 @@
 pkgname=kodi-standalone-service
 pkgver=1.8
 pkgrel=2
-pkgdesc="Systemd service and user to autostart kodi at boot"
+pkgdesc="Systemd service and user to run kodi in stand-alone mode"
+# Arch ARM users do NOT attempt to use this package on Arch ARM!
+# This is only for x86_64 and i686. You have been warned.
 arch=('x86_64' 'i686')
 url="https://wiki.archlinux.org/index.php/Kodi#Kodi-standalone-service"
 license=('GPL')
