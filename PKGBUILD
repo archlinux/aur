@@ -5,7 +5,7 @@
 
 pkgname=openafs-modules-dkms
 _srcname=openafs
-pkgver=1.6.15
+pkgver=1.6.16
 pkgrel=1
 pkgdesc="Kernel module for OpenAFS (dkms)"
 arch=('i686' 'x86_64' 'armv7h')
@@ -18,7 +18,7 @@ options=(!emptydirs)
 source=(http://openafs.org/dl/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2
 	dkms.conf)
 install=openafs-modules-dkms.install
-sha256sums=('456db6544b4b9334fbeee638ca804adcbd4be1a306d60f0da03d7675d1ecef26'
+sha256sums=('3431702bdcbd1b27833060c50869e618a192495877ebb0a66e4610de0b48eb81'
             'ea7d1e6dfb5006016e25738be722c8793765f52ad55c0bbf588dd7fdf2bdd2bf')
 
 prepare() {
