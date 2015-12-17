@@ -1,5 +1,4 @@
-# $Id$
-# Maintainer: Iacopo Isimbaldi <isiachi@rhyeworld.it>
+# Maintainer: Iacopo Isimbaldi <isiachi@rhye.it>
 # Original maintainer: Rudolf Polzer <divVerent[at]xonotic[dot]org>
 # Original maintainer: Ionut Biru <ibiru@archlinux.org>
 # Original maintainer: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
@@ -11,7 +10,7 @@
 # needs too.
 
 pkgname=ffmpeg-full
-pkgver=2.8.1
+pkgver=2.8.3
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (with all options)'
@@ -23,7 +22,8 @@ depends=(
       'libbluray' 'libmodplug' 'libpulse' 'libsoxr' 'libssh' 'libtheora'
       'libva' 'libvdpau' 'libwebp' 'opencore-amr' 'openjpeg' 'opus'
       'schroedinger' 'sdl' 'speex' 'v4l-utils' 'xvidcore' 'zlib'
-      'libvorbis.so' 'libvorbisenc.so' 'libvpx.so' 'libx264.so' 'libx265.so'
+      'libdcadec.so' 'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so'
+      'libvpx.so' 'libx264.so' 'libx265.so'
       'celt' 'faac' 'frei0r-plugins' 'jack' 'ladspa' 'libaacplus'
       'libavc1394' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libcl' 'libdc1394'
       'libfdk-aac' 'libgme' 'libiec61883' 'libutvideo-git'
@@ -35,18 +35,25 @@ conflicts=('ffmpeg' 'ffmpeg-git' 'ffmpeg-full-git')
 provides=(
       'libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
       'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
-      'libswscale.so'
+      'libswscale.so' 'openh264' 'snappy' 'xavs'
       'ffmpeg'
       )
 source=(http://ffmpeg.org/releases/ffmpeg-$pkgver.tar.bz2{,.asc}
-        UNREDISTRIBUTABLE.txt)
+        UNREDISTRIBUTABLE.txt
+        ffmpeg-2.8.1-libvpxenc-remove-some-unused-ctrl-id-mappings.patch)
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # ffmpeg-devel
-sha256sums=('e2ed5ab28dee1af94336739173eb0019afc21a54e38a96f4e3208e94a07866e2'
+sha256sums=('1bcf993a71839bb4a37eaa0c51daf315932b6dad6089f672294545cc51a5caf6'
             'SKIP'
-            'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4')
+            'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4'
+            '277994aca5a6e40c1a90750859828817e0646bfb28142fdb34d5f9d3196c3f7a')
+
+prepare() {
+  cd ${pkgname%-full}-$pkgver
+
+  patch -p1 -i ../ffmpeg-2.8.1-libvpxenc-remove-some-unused-ctrl-id-mappings.patch
+}
 
 build() {
-  #source /etc/profile.d/perlbin.sh
   cd ${pkgname%-full}-$pkgver
 
   ./configure \
@@ -69,6 +76,7 @@ build() {
     --enable-libaacplus \
     --enable-libass \
     --enable-libbluray \
+    --enable-libdcadec \
     --enable-libbs2b \
     --enable-libcaca \
     --enable-libcdio \
@@ -86,12 +94,14 @@ build() {
     --enable-libopencore-amrnb \
     --enable-libopencore-amrwb \
     --enable-libopencv \
+    --enable-libopenh264 \
     --enable-libopenjpeg \
     --enable-libopus \
     --enable-libpulse \
     --enable-librtmp \
     --enable-libschroedinger \
     --enable-libshine \
+    --enable-libsnappy \
     --enable-libsoxr \
     --enable-libspeex \
     --enable-libssh \
@@ -108,6 +118,11 @@ build() {
     --enable-libwebp \
     --enable-libx264 \
     --enable-libx265 \
+    --enable-libxavs \
+    --enable-libxcb \
+    --enable-libxcb-shm \
+    --enable-libxcb-xfixes \
+    --enable-libxcb-shape \
     --enable-libxvid \
     --enable-libzmq \
     --enable-libzvbi \
@@ -119,8 +134,7 @@ build() {
     --enable-runtime-cpudetect \
     --enable-swresample \
     --enable-vdpau \
-    --enable-version3 \
-    --enable-x11grab
+    --enable-version3
 
   make
   make tools/qt-faststart
