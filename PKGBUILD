@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-lts
 _pkgbasever=4.1-gnu
-_pkgver=4.1.13-gnu
+_pkgver=4.1.15-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -45,6 +45,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         'linux.preset'
         'change-default-console-loglevel.patch'
         '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch'
+        '0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
         # armv7h patches
         "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
         "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch.sig"
@@ -58,7 +59,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0008-USB-armory-support.patch')
 sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
-            '74b6b3e854a01c09d9c27fbf047deab699c9feddc22a42d156bed48369f0cac4'
+            'c7ae216251d4f2557ad39a498b8b393403cbe673962e2d4ad533bb2bf49d6875'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -68,11 +69,12 @@ sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
             '2c0a885ad357f33a2798d75fede26ba21f45f2771eeee9ab8d1b9dde9318176d'
             'f0bc5cb42ce335d5757ef38a2e7cecd0da5cc0271b70874afe78d8bff9f5557c'
-            '454be705d118e6600e83014c8d3801ef42d34d17303a063169e45eff7cc2b52c'
+            'e64cd7bf23e42a0db85e2d48a5af4fefacb26de5f517da8f268b18d1fc319769'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '38cf6bdf70dc070ff0b785937d99347bb91f8531ea2bcca50283c8923a184c6d'
-            'cee2eea33a034e7dc2a6d2d907f20f77eae8fb32bf8281e6b2634e054ebf2173'
+            '3d3266bd082321dccf429cc2200d1a4d870d2031546f9f591b6dfbb698294808'
+            'b485e9da38a70cb2a878714384ce4ddb36b0c3524b90d80cbff8a9a18c519e0b'
             'SKIP'
             '203b07cc241f2374d1e18583fc9940cc69da134f992bff65a8b376c717aa7ea7'
             '28fb8c937c2a0dc824ea755efba26ac5a4555f9a97d79f4e31f24b23c5eae59c'
@@ -133,11 +135,15 @@ prepare() {
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
-  # Make the radeon driver load without the firmwares
+  # make the radeon driver load without the firmwares
   # http://www.fsfla.org/pipermail/linux-libre/2015-August/003098.html
   if [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then ## This patch is only needed for x86 computers, so we disable it for others
     patch -p1 -i "${srcdir}/0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch"
   fi
+
+  # maintain the TTY over USB disconnects
+  # http://www.coreboot.org/EHCI_Gadget_Debug
+  patch -p1 -i "${srcdir}/0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch"
 
   cat "${srcdir}/config.${CARCH}" > ./.config
 
