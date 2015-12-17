@@ -14,8 +14,9 @@
 
 pkgname=mpv-legacy-af-git
 _gitname=mpv
-pkgver=0.13.0_88_gf8982df
-pkgrel=1
+pkgver="0.14.0+1"
+pkgrel=2
+epoch=1
 pkgdesc='Video player based on MPlayer/mplayer2 (git version) including legacy audio filters'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -34,15 +35,6 @@ md5sums=('SKIP'
          'ffb774b13decbefc62908dda0332046b')
 sha256sums=('SKIP'
             'ce974e160347202e0dc63f6a7a5a89e52d2cc1db2d000c661fddb9dc1d007c02')
-
-pkgver() {
-  cd "$srcdir/$_gitname"
-  _curtag="$(git rev-list --tags --max-count=1)"
-  _tagver="$(git describe --tags $_curtag | sed -e 's:^v::' -e 's:-:_:g')"
-  _commits="$(git rev-list --count HEAD --since=$_tagver)"
-  _sha="$(git rev-parse --short HEAD)"
-  printf "%s_%s_g%s" $_tagver $_commits $_sha
-}
 
 prepare() {
   cd "$srcdir/$_gitname"
