@@ -3,7 +3,7 @@
 pkgname=opera-ffmpeg-codecs
 pkgver=47.0.2526.73
 _opver=34
-pkgrel=1
+pkgrel=2
 pkgdesc="additional support for proprietary codecs for opera"
 arch=('i686' 'x86_64')
 url="https://ffmpeg.org/"
@@ -45,6 +45,9 @@ build() {
     -Dclang=0 \
     -Duse_gnome_keyring=0 \
     -Duse_gconf=0 \
+    -Dlinux_use_bundled_binutils=0 \
+    -Dlinux_use_bundled_gold=0 \
+    -Dlinux_use_gold_flags=0 \
     -Dcomponent=shared_library \
     -Dffmpeg_branding=ChromeOS
 
