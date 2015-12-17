@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=ktorrent-frameworks-git
-pkgver=5.0.0.r2195.b451535
+pkgver=5.0.0.r2198.5fb306e
 pkgrel=1
 pkgdesc="A powerful BitTorrent client. KF5 Frameworks branch. (GIT version)"
 arch=('i686' 'x86_64')
@@ -10,7 +10,6 @@ license=('GPL')
 depends=('libktorrent-frameworks-git'
          'knotifyconfig'
          'kcmutils'
-         'kcrash'
          'kdelibs4support'
          )
 makedepends=('extra-cmake-modules'
@@ -19,8 +18,11 @@ makedepends=('extra-cmake-modules'
              'python'
              'boost'
              'taglib'
+             'geoip'
              )
-optdepends=('taglib: for mediaplayer plugin')
+optdepends=('taglib: for mediaplayer plugin'
+            'geoip: for infowidget plugin'
+            )
 provides=('ktorrent')
 source=('git://anongit.kde.org/ktorrent.git#branch=frameworks')
 sha1sums=('SKIP')
@@ -34,7 +36,6 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-  sed 's|ui.rc DESTINATION ${DATA_INSTALL_DIR}|ui.rc DESTINATION ${KXMLGUI_INSTALL_DIR}|g' -i ktorrent/plugins/*/CMakeLists.txt
 }
 
 build() {
@@ -44,7 +45,9 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLIB_INSTALL_DIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DBUILD_TESTING=OFF
+    -DBUILD_TESTING=OFF \
+    -DWITH_SYSTEM_GEOIP=ON \
+    -DENABLE_SHUTDOWN_PLUGIN=OFF
   make
 }
 

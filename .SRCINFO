@@ -1,6 +1,6 @@
 pkgbase = ktorrent-frameworks-git
 	pkgdesc = A powerful BitTorrent client. KF5 Frameworks branch. (GIT version)
-	pkgver = 5.0.0.r2195.b451535
+	pkgver = 5.0.0.r2198.5fb306e
 	pkgrel = 1
 	url = https://userbase.kde.org/KTorrent
 	install = ktorrent-frameworks-git.install
@@ -13,12 +13,13 @@ pkgbase = ktorrent-frameworks-git
 	makedepends = python
 	makedepends = boost
 	makedepends = taglib
+	makedepends = geoip
 	depends = libktorrent-frameworks-git
 	depends = knotifyconfig
 	depends = kcmutils
-	depends = kcrash
 	depends = kdelibs4support
 	optdepends = taglib: for mediaplayer plugin
+	optdepends = geoip: for infowidget plugin
 	provides = ktorrent
 	source = git://anongit.kde.org/ktorrent.git#branch=frameworks
 	sha1sums = SKIP
