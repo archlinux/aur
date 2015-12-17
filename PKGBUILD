@@ -2,7 +2,7 @@
 
 pkgname=gtk-theme-windows10
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK 3.x Theme made to emulate a Windows 10 environment on Linux machines."
 arch=('any')
 url="https://github.com/Elbullazul/Windows-10"
@@ -14,7 +14,7 @@ source=("https://github.com/Elbullazul/Windows-10/releases/download/v0.8.2/Windo
 sha1sums=('c8dd2b801d29a5bbfbe5d789ad04b59f585ec3ac')
 
 package() {
-  cd Windows\ 10
+  cd Windows\ 10 \ Light
 
   # create theme dir
   install -d -m 755 "$pkgdir/usr/share/themes/Windows10"
