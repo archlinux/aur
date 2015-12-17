@@ -1,6 +1,6 @@
 pkgbase = twm-xfreq
 	pkgdesc = A customized Twm for XFreq
-	pkgver = 0.03
+	pkgver = 0.04
 	pkgrel = 1
 	url = http://github.com/cyring/xdm-xfreq
 	arch = any
