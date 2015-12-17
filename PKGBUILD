@@ -8,7 +8,7 @@
 # The build script generates and updates the pkgver and _kernel* variables.
 #
 pkgname="zfs-utils-lts"
-pkgver=0.6.5.3_4.1.14_1
+pkgver=0.6.5.3_4.1.15_1
 pkgrel=1
 pkgdesc="Kernel module support files for the Zettabyte File System."
 depends=("spl-lts")
