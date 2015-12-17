@@ -2,7 +2,7 @@
 
 pkgname=('workspace-d-git')
 pkgver=r9.c8ebc09
-pkgrel=1
+pkgrel=2
 pkgdesc="Wraps dcd, dfmt and dscanner to one unified environment managed by dub"
 arch=('i686' 'x86_64')
 url="https://github.com/WebFreak001/workspace-d"
@@ -12,7 +12,6 @@ makedepends=('dmd' 'git' 'dub')
 depends=('libphobos' 'dub' 'dcd' 'dfmt' 'dscanner')
 provides=('workspace-d')
 conflicts=('workspace-d')
-options=('!strip')
 
 source=(
     "git+https://github.com/WebFreak001/workspace-d"
@@ -34,6 +33,7 @@ prepare() {
 build() {
     cd $srcdir/workspace-d
     dub build
+		strip workspace-d
 }
 
 package(){
