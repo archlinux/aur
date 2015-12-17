@@ -1,9 +1,9 @@
 # Maintainer: Jozef Riha <jose1711@gmail.com>
 
 pkgname=tcpconsole
-arch=('i686')
+arch=('i686' 'x86_64')
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 license=('GPL')
 pkgdesc="a network emergency console for Linux which uses lowlevel Linux system calls"
 url="http://www.vanheusden.com/tcpconsole/"
