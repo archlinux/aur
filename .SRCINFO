@@ -1,7 +1,7 @@
 pkgbase = nodejs-bower
 	pkgdesc = A package manager for the web
-	pkgver = 1.5.3
-	pkgrel = 4
+	pkgver = 1.7.1
+	pkgrel = 1
 	url = http://bower.io/
 	arch = any
 	license = MIT
@@ -9,10 +9,10 @@ pkgbase = nodejs-bower
 	depends = nodejs
 	provides = bower
 	conflicts = bower
-	noextract = bower-1.5.3.tgz
-	source = http://registry.npmjs.org/bower/-/bower-1.5.3.tgz
+	noextract = bower-1.7.1.tgz
+	source = http://registry.npmjs.org/bower/-/bower-1.7.1.tgz
 	source = LICENSE
-	md5sums = 3a4130a26d21148a6d3230a4f8555704
+	md5sums = 06fd72e159d9b4798fa7e7a3afc6888c
 	md5sums = 135697567327f92e904ef0be2082da5e
 
 pkgname = nodejs-bower
