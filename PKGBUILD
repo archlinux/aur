@@ -3,13 +3,13 @@
 
 pkgname='perl-test-simple'
 pkgver='1.001014'
-pkgrel='1'
+pkgrel=2
 pkgdesc="Basic utilities for writing tests."
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=5.006')
-makedepends=()
+conflicts=('perl-test-tester')
 url='https://metacpan.org/release/Test-Simple'
 source=('http://search.cpan.org/CPAN/authors/id/E/EX/EXODIST/Test-Simple-1.001014.tar.gz')
 md5sums=('db7f57fd595e3e1c93c972307a88fa6e')
