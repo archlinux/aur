@@ -2,8 +2,8 @@
 
 pkgname=topmenu-mozilla-git
 _gitname=topmenu-mozilla
-pkgver=2015.01.21
-pkgrel=3
+pkgver=2015.08.05
+pkgrel=1
 pkgdesc="Firefox/Thunderbird Javascript module for TopMenu."
 url="https://git.javispedro.com/cgit/topmenu-gtk.git/about/"
 arch=('any')
