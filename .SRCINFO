@@ -1,13 +1,15 @@
 pkgbase = python-aiohttp
 	pkgdesc = http client/server for asyncio
 	pkgver = 0.19.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pypi.python.org/pypi/aiohttp
 	arch = any
 	license = Apache
+	makedepends = cython
 	makedepends = python-setuptools
-	depends = python>=3.4
+	depends = python>=3.4.1
 	depends = python-chardet
+	optdepends = python-cchardet: faster character encoding detector
 	source = https://pypi.python.org/packages/source/a/aiohttp/aiohttp-0.19.0.tar.gz
 	md5sums = f1c56892fc8b1b4f781470c7dd4226eb
 
