@@ -1,7 +1,7 @@
 # Maintainer: superlex
 
 _lang=it
-_debver=42.0
+_debver=43.0
 _debrel=1
 _debrepo=http://ftp.debian.org/debian/pool/main/i/
 
@@ -14,7 +14,7 @@ url="https://packages.debian.org/experimental/iceweasel-l10n-it"
 license=('MPL' 'GPL')
 depends=("iceweasel>=$_debver") 
 source=("${_debrepo}/iceweasel/iceweasel-l10n-${_lang}_${_debver}-${_debrel}_all.deb")
-sha1sums=('6b47f2deff7b10dfb1b3781e200a3f061c0c989d')
+sha1sums=('fd85f34cb46e8448c6d28f7e381c9051775a2964')
 
 package() {
   msg2 "Installing Language Pack..."
