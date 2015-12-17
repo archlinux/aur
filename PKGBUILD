@@ -1,7 +1,7 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=nodejs-jslinter
-pkgver=0.1.20151202
+pkgver=0.1.20151205
 pkgrel=1
 pkgdesc='JSLint for Node.js'
 arch=('any')
