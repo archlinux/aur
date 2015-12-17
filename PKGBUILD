@@ -22,7 +22,7 @@ source=(https://dist.apache.org/repos/dist/release/tomcat/tomcat-8/v${pkgver}/bi
         systemd_tmpfiles.d_${pkgname}.conf)
 
 sha256sums=('2fc3dde305e08388a12bd2868063ab6829a1d70acd9affe3a8707bd9679e0059'
-            'd44056248b7cdd6671fd4de08a9453b3bd1a83980343d249a99b74939d46f4d4'
+            '01ba022e06d6afa71f6f7d774e48c042c63eca9e06f0c95c92cf8d5a3828a8b2'
             '02e7a1edb82ed117629189806d40c2c7b70ec994ecbafc11cb7dc7eec35af216'
             '0dc1fdb537d3488756755f3fb713a9638597d4c68596f6f94f2707e8363cf5e2')
 

@@ -10,6 +10,8 @@ Environment=TOMCAT_JAVA_HOME=/usr/lib/jvm/default-runtime
 Environment=CATALINA_HOME=/usr/share/tomcat8
 Environment=CATALINA_BASE=/usr/share/tomcat8
 Environment=CATALINA_OPTS=
+Environment=ERRFILE=SYSLOG
+Environment=OUTFILE=SYSLOG
 
 ExecStart=/usr/bin/jsvc \
             -Dcatalina.home=${CATALINA_HOME} \
@@ -19,8 +21,8 @@ ExecStart=/usr/bin/jsvc \
             -user tomcat8 \
             -java-home ${TOMCAT_JAVA_HOME} \
             -pidfile /var/run/tomcat8.pid \
-            -errfile SYSLOG \
-            -outfile SYSLOG \
+            -errfile ${ERRFILE} \
+            -outfile ${OUTFILE} \
             $CATALINA_OPTS \
             org.apache.catalina.startup.Bootstrap
 
