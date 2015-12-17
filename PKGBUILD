@@ -13,7 +13,8 @@ depends=('mplayer' 'mencoder' 'zenity' 'gksu' 'imdb-cli' 'bdchapters' 'mkvtoolni
 	 'mediainfo' 'lame' 'vorbis-tools' 'ogmtools' 'p7zip' 'imagemagick' 'libdvdcss' 'lsdvd')
 optdepends=('vlc: video dumping support'
             'cdrkit: genisoimage - DVD to iso file suppport'
-            'opus-tools: Opus audio support')
+            'opus-tools: Opus audio support'
+            'ccextractor: Closed Captions subtitles extract support')
 source=("https://github.com/Booloki/$pkgname/archive/$pkgver.tar.gz")
 md5sums=('39d64199157243b982118d3116d22a48')
 
