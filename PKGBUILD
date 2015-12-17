@@ -5,7 +5,7 @@
 
 pkgname=flexget-git
 _pkgname=Flexget
-pkgver=1.2.400.r6884.6ec288e
+pkgver=1.2.411.r7047.fac6b40
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -21,7 +21,7 @@ depends=('python2'
          'python2-sqlalchemy<=1.999'
          'python2-yaml'
          'python2-beautifulsoup4>=4.1'
-         'python2-beautifulsoup4<4.4'
+         'python2-beautifulsoup4<4.5'
          'python2-html5lib>=0.11'
          'python2-pyrss2gen' #AUR#
          'python2-pynzb' #AUR#
@@ -47,11 +47,12 @@ depends=('python2'
          'python2-flask-login>=0.3.2'
          'python2-pyparsing>=2.0.3'
          'python2-pyscss>=1.3.4'
-         'python2-pytvmaze>=1.3.7'
+         'python2-pytvmaze>=1.4.0'
          )
 optdepends=('python2-guppy: for memusage plugin' #AUR#
             'python2-transmissionrpc: Transmission support' #AUR#
             'python2-rarfile: decompress plugin' #AUR#
+            'python2-boto3: SNS output plugin' #AUR#
             )
 makedepends=('python2-paver'
              'python2-setuptools'
@@ -59,6 +60,8 @@ makedepends=('python2-paver'
              'bower'
              'gulp'
              )
+
+checkdepends=('python2-vcr')
 
 provides=('flexget')
 conflicts=('flexget')
@@ -90,6 +93,12 @@ build() {
   npm install
   XDG_CONFIG_HOME="${_srcdir}" bower --config.analytics=false install
   XDG_CONFIG_HOME="${_srcdir}" gulp
+}
+
+check() {
+  cd "${_pkgname}"
+
+  python2 setup.py test
 }
 
 package() {
