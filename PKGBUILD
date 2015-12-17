@@ -2,7 +2,7 @@
 
 _pkgname="arc-firefox-theme"
 pkgname="${_pkgname}-git"
-pkgver=42.20151103
+pkgver=20151215.30ef15f
 pkgrel=1
 pkgdesc="Arc Firefox Theme"
 url="https://github.com/horst3180/arc-firefox-theme"
