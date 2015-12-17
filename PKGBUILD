@@ -3,7 +3,7 @@
 
 pkgname=st-white-git
 _pkgname=st
-pkgver=0.6.r32.gbf8c71e
+pkgver=0.6.r54.g375b287
 pkgrel=1
 
 pkgdesc='A simple virtual terminal emulator for X.'
@@ -17,7 +17,7 @@ makedepends=('ncurses' 'libxext' 'git')
 source=("$pkgname::git://git.suckless.org/st"
 	'config.h')
 md5sums=('SKIP'
-         'c3cd89ac96406c7c5381a7d1eb65ede0')
+         '1f022b612297651c1f2f8464b41c513b')
 
 pkgver() {
   cd $pkgname
