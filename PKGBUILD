@@ -2,7 +2,7 @@
 
 pkgname=topmenu-gtk3-git
 _gitname=topmenu-gtk
-pkgver=2015.03.22
+pkgver=2015.12.10
 pkgrel=1
 pkgdesc="Gtk3 module for topmenu."
 url="https://git.javispedro.com/cgit/topmenu-gtk.git/about/"
@@ -24,7 +24,7 @@ build() {
 
    autoreconf -fi
    ./configure --prefix=/usr --with-gtk=3 --with-wnck=wnck1 --disable-static \
-      --disable-mate-applet --disable-xfce-applet --libexecdir=/usr/lib/topmenu
+      --disable-mate-applet --disable-xfce-applet --disable-lxpanel-plugin --libexecdir=/usr/lib/topmenu
    make
 }
 
