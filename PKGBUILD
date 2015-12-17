@@ -4,7 +4,7 @@
 
 pkgname=wazzuf-ripper
 pkgver=5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Wazzuf Ripper is a software to rip various media as DVD and Blu-ray to .mkv file(s)."
 arch=(any)
 license=('GPL3')
