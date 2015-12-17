@@ -3,7 +3,7 @@
 
 pkgname=zita-ajbridge
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Jack client to use additional ALSA devices."
 url="http://kokkinizita.linuxaudio.org/linuxaudio/zita-ajbridge-doc/quickguide.html"
@@ -23,17 +23,15 @@ build() {
 package() {
   cd "$pkgname-$pkgver"/source
 
-  #make PREFIX=/usr DESTDIR="$pkgdir/" install
-
   mkdir -p "$pkgdir"/usr/bin
   mkdir -p "$pkgdir"/usr/share/man/man1
-  mkdir -p "$pkgdir"/usr/share/doc
+  mkdir -p "$pkgdir"/usr/share/doc/"$pkgname"
   
   install -m 755 zita-a2j "$pkgdir"/usr/bin 
   install -m 755 zita-j2a "$pkgdir"/usr/bin
   install -m 644 zita-ajbridge.1.gz "$pkgdir"/usr/share/man/man1
   install -m 644 zita-a2j.1.gz "$pkgdir"/usr/share/man/man1
   install -m 644 zita-j2a.1.gz "$pkgdir"/usr/share/man/man1
-  install -m644 ../README "$pkgdir"/usr/share/doc
+  install -m644 ../README "$pkgdir"/usr/share/doc/"$pkgname"
 }
 # vim:set ts=2 sw=2 et:
