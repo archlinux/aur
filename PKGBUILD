@@ -36,4 +36,4 @@ package() {
 	cd "${pkgdir}${install_prefix}/bin"; ln -s watchman-service service
 }
 
-sha1sums=('89038bdfa32ecf002c10c315236f81a936a35455')
+sha1sums=('64c21402530602a54483053137b303a959ed21f3')
