@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Listen for VT switches"
 arch=(i686 x86_64)
 url="https://github.com/maandree/vtchs"
-license=('GPL3' 'custom:GFDL1.3')
+license=('MIT' 'custom:GFDL1.3')
 depends=(linux glibc)
 makedepends=(linux-api-headers glibc make coreutils gcc 'texinfo>=4.11')
 install=$pkgname.install
