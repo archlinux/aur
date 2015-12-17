@@ -15,7 +15,7 @@
 pkgname=mpv-legacy-af-git
 _gitname=mpv
 pkgver="0.14.0+1"
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Video player based on MPlayer/mplayer2 (git version) including legacy audio filters'
 arch=('i686' 'x86_64')
@@ -49,7 +49,8 @@ build() {
   ./waf configure --prefix=/usr \
         --confdir=/etc/mpv \
         --enable-zsh-comp \
-        --enable-libmpv-shared
+        --enable-libmpv-shared \
+        --enable-gpl3 # vo_opengl: enable nnedi
 
   ./waf build
 }
