@@ -1,6 +1,6 @@
 pkgbase = gcc-multilib-x32
 	pkgdesc = The GNU Compiler Collection for multilib with x32 ABI support
-	pkgver = 5.2.0
+	pkgver = 5.3.0
 	pkgrel = 2.1
 	url = http://gcc.gnu.org
 	arch = x86_64
@@ -17,22 +17,20 @@ pkgbase = gcc-multilib-x32
 	makedepends = lib32-glibc>=2.22
 	makedepends = libx32-glibc>=2.22
 	options = !emptydirs
-	source = ftp://gcc.gnu.org/pub/gcc/releases/gcc-5.2.0/gcc-5.2.0.tar.bz2
-	source = http://isl.gforge.inria.fr/isl-0.14.1.tar.bz2
-	source = pr66035.patch
-	md5sums = a51bcfeb3da7dd4c623e27207ed43467
-	md5sums = 118d1a379abf7606a3334c98a8411c79
-	md5sums = 5b980076cd5fcbc3aff6014f306282dd
+	source = ftp://gcc.gnu.org/pub/gcc/releases/gcc-5.3.0/gcc-5.3.0.tar.bz2
+	source = http://isl.gforge.inria.fr/isl-0.15.tar.bz2
+	md5sums = c9616fd448f980259c31de613e575719
+	md5sums = 8428efbbc6f6e2810ce5c1ba73ecf98c
 
 pkgname = gcc-multilib-x32
 	pkgdesc = The GNU Compiler Collection - C and C++ frontends for multilib with x32 ABI support
 	install = gcc.install
 	groups = x32-devel
-	depends = gcc-libs-multilib-x32=5.2.0-2.1
+	depends = gcc-libs-multilib-x32=5.3.0-2.1
 	depends = binutils>=2.25
 	depends = libmpc
-	provides = gcc=5.2.0-2
-	provides = gcc-multilib=5.2.0-2
+	provides = gcc=5.3.0-2
+	provides = gcc-multilib=5.3.0-2
 	conflicts = gcc
 	conflicts = gcc-x32-seed
 	conflicts = gcc-multilib
@@ -42,10 +40,10 @@ pkgname = gcc-libs-multilib-x32
 	pkgdesc = Runtime libraries shipped by GCC for multilib with x32 ABI support
 	install = gcc-libs.install
 	depends = glibc>=2.22
-	depends = lib32-gcc-libs=5.2.0-2
-	depends = libx32-gcc-libs=5.2.0-2.1
-	provides = gcc-libs=5.2.0-2
-	provides = gcc-libs-multilib=5.2.0-2
+	depends = lib32-gcc-libs=5.3.0-2
+	depends = libx32-gcc-libs=5.3.0-2.1
+	provides = gcc-libs=5.3.0-2
+	provides = gcc-libs-multilib=5.3.0-2
 	conflicts = gcc-libs
 	options = !emptydirs
 	options = !strip
@@ -59,25 +57,25 @@ pkgname = libx32-gcc-libs
 pkgname = gcc-fortran-multilib-x32
 	pkgdesc = Fortran front-end for GCC for multilib with x32 ABI support
 	install = gcc-fortran.install
-	depends = gcc-multilib-x32=5.2.0-2.1
-	provides = gcc-fortran=5.2.0-2
-	provides = gcc-fortran-multilib=5.2.0-2
+	depends = gcc-multilib-x32=5.3.0-2.1
+	provides = gcc-fortran=5.3.0-2
+	provides = gcc-fortran-multilib=5.3.0-2
 	conflicts = gcc-fortran
 	options = !emptydirs
 
 pkgname = gcc-objc-multilib-x32
 	pkgdesc = Objective-C front-end for GCC for multilib with x32 ABI support
-	depends = gcc-multilib-x32=5.2.0-2.1
-	provides = gcc-objc=5.2.0-2
-	provides = gcc-objc-multilib=5.2.0-2
+	depends = gcc-multilib-x32=5.3.0-2.1
+	provides = gcc-objc=5.3.0-2
+	provides = gcc-objc-multilib=5.3.0-2
 	conflicts = gcc-objc
 
 pkgname = gcc-ada-multilib-x32
 	pkgdesc = Ada front-end for GCC (GNAT) for multilib with x32 ABI support
 	install = gcc-ada.install
-	depends = gcc-multilib-x32=5.2.0-2.1
-	provides = gcc-ada=5.2.0-2
-	provides = gcc-ada-multilib=5.2.0-2
+	depends = gcc-multilib-x32=5.3.0-2.1
+	provides = gcc-ada=5.3.0-2
+	provides = gcc-ada-multilib=5.3.0-2
 	conflicts = gcc-ada
 	options = staticlibs
 	options = !emptydirs
@@ -85,9 +83,9 @@ pkgname = gcc-ada-multilib-x32
 pkgname = gcc-go-multilib-x32
 	pkgdesc = Go front-end for GCC for multilib with x32 ABI support
 	install = gcc-go.install
-	depends = gcc-multilib-x32=5.2.0-2.1
-	provides = gcc-go=5.2.0-2
-	provides = gcc-go-multilib=5.2.0-2
+	depends = gcc-multilib-x32=5.3.0-2.1
+	provides = gcc-go=5.3.0-2
+	provides = gcc-go-multilib=5.3.0-2
 	conflicts = go
 	conflicts = gcc-go
 	options = !emptydirs
