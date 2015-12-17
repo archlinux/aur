@@ -3,8 +3,8 @@
 # Maintainer: TWPHoenix1982 <rene DOT landscheidt AT gmx DOT de>
 pkgname=xojo
 pkgver=2015r4
-pkgrel=2
-pkgdesc="A RAD environment based on BASIC that compiles native applications for Windows, Mac, Linux, the web and ow with 64Bit and ARM V2 (Raspberry Pi 2) support."
+pkgrel=3
+pkgdesc="A RAD environment based on BASIC that compiles native applications for Windows, Mac, Linux, the web and now with 64Bit and ARM V2 (Raspberry Pi 2) support."
 arch=(i686 x86_64)
 url="http://www.xojo.com"
 license=("custom")
@@ -35,11 +35,13 @@ package() {
     xargs -rtl1 -I {} rm -r {}
 	mkdir -p "$pkgdir/usr/bin" "$pkgdir/opt" "$pkgdir/usr/share/licenses/xojo" "$pkgdir/usr/lib32"
 	cp -r "xojo$pkgver" "$pkgdir/opt/xojo"
-	cp -r "xojo.xpm" "$pkgdir/opt/xojo"
+	cp "xojo.xpm" "$pkgdir/opt/xojo"
 	# Reparieren der Dateirechte	
 	chmod 755 "$pkgdir/opt/xojo/Xojo Resources/Linux/HoudiniAssistant"
 	chmod 755 "$pkgdir/opt/xojo/Xojo Resources/Linux/libc++.so.1"
 	chmod 755 "$pkgdir/opt/xojo/Xojo Resources/SDKStubs/linux-arm/libgcc_s.so.1"
+	chmod 755 "$pkgdir/opt/xojo/Xojo Libs/XojoGUIFramework32.so"
+	chmod 755 "$pkgdir/opt/xojo/Xojo Libs/libc++.so.1"
 	ln -s "/opt/xojo/Xojo Resources/Linux/libc++.so.1" "$pkgdir/usr/lib32/libc++.so.1"
 	ln -s "/opt/xojo/Xojo" "$pkgdir/usr/bin/Xojo"
 	ln -s "/opt/xojo/Extras/Lingua/Lingua Linux" "$pkgdir/usr/bin/Lingua"
