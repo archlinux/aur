@@ -9,8 +9,8 @@ arch=('x86_64')
 license=('GPL' 'LGPL' 'FDL')
 depends=('kdelibs4support'
          'qimageblitz-qt5-svn'
-         'libkexiv2-frameworks-git'
-         'libksane-frameworks-git'
+         'libkexiv2'
+         'libksane'
          'hicolor-icon-theme'
          )
 makedepends=('extra-cmake-modules'
