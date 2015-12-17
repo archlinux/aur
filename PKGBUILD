@@ -9,7 +9,7 @@ pkgdesc="Wazzuf Ripper is a software to rip various media as DVD and Blu-ray to 
 arch=(any)
 license=('GPL3')
 url="http://wazzuf-ripper.lokizone.net/"
-depends=('mplayer' 'mencoder' 'zenity' 'gksu' 'imdb-cli' 'bdchapters' 'mkvtoolnix-cli' 'tsmuxer'
+depends=('mplayer' 'mencoder' 'zenity' 'gksu' 'imdb-cli' 'bdchapters' 'mkvtoolnix-cli' 'tsmuxer-cli'
 	 'mediainfo' 'lame' 'vorbis-tools' 'ogmtools' 'p7zip' 'imagemagick' 'libdvdcss' 'lsdvd')
 optdepends=('vlc: video dumping support'
             'cdrkit: genisoimage - DVD to iso file suppport'
