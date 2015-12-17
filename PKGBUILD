@@ -2,9 +2,9 @@
 
 pkgname=nmonmerge
 pkgver=2
-pkgrel=2
+pkgrel=3
 pkgdesc="Filter to join two nmon output files into one"
-arch=('i686')
+arch=('i686' 'x86_64')
 url="http://www-941.haw.ibm.com/collaboration/wiki/display/WikiPtype/nmon"
 license=("custom")
 source=("http://www.ibm.com/developerworks/wikis/download/attachments/53871937/${pkgname}2.tar.gz?version=1")
