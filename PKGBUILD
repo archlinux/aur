@@ -7,7 +7,7 @@ pkgdesc="Command line tools for working with catkin"
 arch=(any)
 url="https://github.com/catkin/catkin_tools"
 license=('Apache')
-depends=('python2')
+depends=('python2' 'python2-yaml')
 options=(!emptydirs)
 source=(https://github.com/catkin/${_pkgname}/archive/${pkgver}.tar.gz)
 
