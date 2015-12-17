@@ -5,7 +5,7 @@
 
 pkgname=chromium
 pkgver=47.0.2526.106
-pkgrel=1
+pkgrel=2
 _launcher_ver=3
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
@@ -28,12 +28,14 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         chromium.desktop
         chromium-fix-print-preview-on-en_GB-locale.patch
         0001-Add-FPDFAPIJPEG_-prefix-to-more-libjpeg-functions.patch
+        0001-Use-kwalletd5-in-KDE-5-environments.patch
         chromium-widevine.patch)
 sha256sums=('64535073330a3d37aad228d10a15cdcbb5b389e59d079d1a3b22d023b99a58e6'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             '6fff45aafa31fb35a032b4e2175a341e08f9d2a9b37c5cf080c318180f558378'
             'd114def156d60d5f4c9e42f2955ba19bdebe38037a330ef947af24ace25db39d'
+            '5a4c852ee40c29a2317c3175452aafaf72ecc6d09f0e6d2106ae403ec419ec2d'
             '379b746e187de28f80f5a7cd19edcfa31859656826f802a1ede054fcb6dfb221')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -67,6 +69,9 @@ prepare() {
 
   # https://code.google.com/p/chromium/issues/detail?id=505226
   patch -d third_party/pdfium -Np1 <../0001-Add-FPDFAPIJPEG_-prefix-to-more-libjpeg-functions.patch
+
+  # https://code.google.com/p/chromium/issues/detail?id=500281
+  patch -Np1 -i ../0001-Use-kwalletd5-in-KDE-5-environments.patch
 
   # Enable support for the Widevine CDM plugin
   # The actual libraries are not included, but can be copied over from Chrome:
