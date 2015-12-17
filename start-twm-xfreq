@@ -1,8 +1,11 @@
 #!/bin/sh
 
-source /etc/xdm-xfreq/xdm-xfreq.rc
+if [ -f $HOME/.twmrc ]; then
+    twm -f $HOME/.twmrc
+else
+    source /etc/xdm-xfreq/xdm-xfreq.rc
 
-if [ -d $USERTMPFS ]; then
+    if [ -d $USERTMPFS ]; then
 	echo "*Foreground:"$FOREGROUND > $USERTMPFS/twm-xfreq.Xresources
 	echo "*Background:"$BACKGROUND >> $USERTMPFS/twm-xfreq.Xresources
 	echo "" >> $USERTMPFS/twm-xfreq.Xresources
@@ -229,4 +232,7 @@ if [ -d $USERTMPFS ]; then
 	echo "}" >> $USERTMPFS/twm-xfreq.rc
 
 	twm -f $USERTMPFS/twm-xfreq.rc
+    else
+	twm
+    fi
 fi
