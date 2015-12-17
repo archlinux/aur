@@ -50,7 +50,7 @@ url='http://www.microsoft.com/typography/fonts/product.aspx?PID=164'
 license=(custom)
 depends=(fontconfig xorg-fonts-encodings xorg-mkfontscale xorg-mkfontdir)
 provides=(ttf-font)
-conflicts=(ttf-{vista,win7}-fonts)
+conflicts=(ttf-vista-fonts)
 install=$pkgbase.install
 
 _ttf_ms_win10=(
@@ -319,7 +319,7 @@ sha256sums=('95766b58f7d869b0fa2cf6e6feb26c1b21cdf2631f1c5863fc9bd206d5c6e8ee'
             SKIP)
 
 _package() {
-    conflicts+=(${pkgname/10/8})
+    conflicts+=(${pkgname/10/8} ttf-win7-fonts${pkgname##*10})
 
     install -Dm644 $@ -t "$pkgdir/usr/share/fonts/TTF"
     install -Dm644 license.rtf -t "$pkgdir/usr/share/licenses/$pkgname"
