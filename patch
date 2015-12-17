@@ -1,0 +1,12 @@
+diff --git a/data/node-webkit/package.json b/data/node-webkit/package.json
+index f65413b..ee50fd8 100644
+--- a/data/node-webkit/package.json
++++ b/data/node-webkit/package.json
+@@ -17,6 +17,5 @@
+   "nodejs": true,
+   "dependencies": {
+     "fs-extra": "~0.24.0"
+-  },
+-  "chromium-args" : "--data-path='../../nwjsdata/'"
++  }
+ }
