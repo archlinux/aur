@@ -9,7 +9,7 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=2.8.3
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
@@ -24,7 +24,8 @@ depends=('alsa-lib' 'bzip2' 'celt' 'faac' 'fontconfig' 'frei0r-plugins' 'fribidi
          'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex' 'rtmpdump' 'shine'
          'twolame' 'v4l-utils' 'vid.stab' 'vo-aacenc' 'vo-amrwbenc' 'xvidcore' 
          'wavpack' 'zeromq' 'zlib' 'zvbi' 'libdcadec.so'
-         'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so' 'libx265.so')
+         'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so' 'libx265.so'
+         'snappy' 'openh264' 'xavs')
 makedepends=('hardening-wrapper' 'libvdpau' 'nvenc-api' 'yasm')
 optdepends=('avxsynth-git: for Avisynth support'
             'cuda: for CUDA support')
@@ -90,11 +91,13 @@ build() {
     --enable-libopencore-amrnb \
     --enable-libopencore-amrwb \
     --enable-libopencv \
+    --enable-libopenh264 \
     --enable-libopenjpeg \
     --enable-libopus \
     --enable-libpulse \
     --enable-libschroedinger \
     --enable-libshine \
+    --enable-libsnappy \
     --enable-libsoxr \
     --enable-libspeex \
     --enable-libssh \
@@ -109,6 +112,11 @@ build() {
     --enable-libvpx \
     --enable-libwavpack \
     --enable-libwebp \
+    --enable-libxavs \
+    --enable-libxcb \
+    --enable-libxcb-shm \
+    --enable-libxcb-xfixes \
+    --enable-libxcb-shape \
     --enable-libx264 \
     --enable-libx265 \
     --enable-libxvid \
@@ -117,6 +125,7 @@ build() {
     --enable-nonfree \
     --enable-nvenc \
     --enable-openal \
+    --enable-opencl \
     --enable-opengl \
     --enable-openssl \
     --enable-postproc\
@@ -125,7 +134,6 @@ build() {
     --enable-vda \
     --enable-vdpau \
     --enable-version3 \
-    --enable-x11grab \
     --enable-zlib \
 
   msg "Starting make"
