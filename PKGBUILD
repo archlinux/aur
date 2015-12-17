@@ -8,7 +8,7 @@ arch=('any')
 url="https://wiki.gnome.org/GnomeDirectoryThumbnailer"
 license=('LGPL2.1')
 depends=('gnome-desktop')
-makedepends=('glib2' 'gdk-pixbuf2' 'glib2')
+makedepends=('glib2' 'gdk-pixbuf2')
 source=(http://ftp.acc.umu.se/pub/GNOME/sources/gnome-directory-thumbnailer/0.1/$pkgname-$pkgver.tar.xz)
 md5sums=('dac98a3becbc71015a927fa3a1621038')
 
