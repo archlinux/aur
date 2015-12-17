@@ -321,10 +321,7 @@ sha256sums=('95766b58f7d869b0fa2cf6e6feb26c1b21cdf2631f1c5863fc9bd206d5c6e8ee'
 _package() {
     conflicts+=(${pkgname/10/8})
 
-    for font in $@; do
-        install -Dm644 $font -t "$pkgdir/usr/share/fonts/TTF"
-    done
-
+    install -Dm644 $@ -t "$pkgdir/usr/share/fonts/TTF"
     install -Dm644 license.rtf -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
