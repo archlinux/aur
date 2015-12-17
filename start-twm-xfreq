@@ -23,7 +23,7 @@ else
 	xrdb -load $USERTMPFS/twm-xfreq.Xresources
 
 	echo "AutoRaise { \"TWM Icon Manager\" \"Clock\" \"PopUp\" }" > $USERTMPFS/twm-xfreq.rc
-	echo "BorderWidth 4" >> $USERTMPFS/twm-xfreq.rc
+	echo "BorderWidth 3" >> $USERTMPFS/twm-xfreq.rc
 	echo "ButtonIndent 2" >> $USERTMPFS/twm-xfreq.rc
 	echo "DecorateTransients" >> $USERTMPFS/twm-xfreq.rc
 	echo "FramePadding 1" >> $USERTMPFS/twm-xfreq.rc
