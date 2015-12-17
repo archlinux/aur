@@ -55,7 +55,7 @@ export GTK_OVERLAY_SCROLLING=0
 ##No silly CSD stuff
 export GTK_CSD=0
 ##that preload works for both 32 and 64 bit but will always show errors
-#export LD_PRELOAD="$LD_PRELOAD:/usr/lib32/libgtk3-nocsd.so.0:/usr/lib/libgtk3-nocsd.so.0" gtk3-dem
+#export LD_PRELOAD="$LD_PRELOAD:/usr/lib32/libgtk3-nocsd.so.0:/usr/lib/libgtk3-nocsd.so.0"
 export LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgtk3-nocsd.so.0"
 EOF
 	chmod +x "${pkgdir}"/etc/profile.d/gtk3-nocsd.sh
