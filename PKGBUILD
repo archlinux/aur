@@ -2,7 +2,7 @@
 
 pkgname=gnome-directory-thumbnailer
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A GNOME thumbnailer utility that will generate a thumbnail for a directory"
 arch=('any')
 url="https://wiki.gnome.org/GnomeDirectoryThumbnailer"
