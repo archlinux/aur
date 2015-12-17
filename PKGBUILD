@@ -3,13 +3,13 @@
 
 pkgname=umsjava7
 pkgver=5.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal Media Server: a DLNA-compliant UPnP Media Server. Build based on Java 7."
 arch=('any')
 url="http://www.universalmediaserver.com/"
 license=('GPL2')
 provides=('ums: Universal Media Server')
-depends=('mplayer' 'ffmpeg' 'mencoder' 'tsmuxer-ng' 'libmediainfo' 'java-runtime=7' 'desktop-file-utils')
+depends=('mplayer' 'ffmpeg' 'mencoder' 'tsmuxer-cli-ng' 'libmediainfo' 'java-runtime=7' 'desktop-file-utils')
 makedepends=("unzip")
 optdepends=('vlc: Internet video/audio support'
             'dcraw: thumbnails creation support')
@@ -31,7 +31,7 @@ package() {
   mkdir $pkgdir/opt/$pkgname/database
   mkdir -p $pkgdir/usr/bin
   chmod -R 755 $srcdir/ums-$pkgver/plugins $srcdir/ums-$pkgver/documentation
-  rm -rf $srcdir/ums-$pkgver/linux
+  rm $srcdir/ums-$pkgver/linux/*
   rm $srcdir/ums-$pkgver/UMS.sh
   cp -r $srcdir/ums-$pkgver/* $pkgdir/opt/$pkgname/
   touch $pkgdir/opt/$pkgname/UMS.conf
@@ -52,4 +52,9 @@ package() {
   install -Dm 644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -D -m 644 $srcdir/$pkgname.service $pkgdir/usr/lib/systemd/user/$pkgname.service
   install -Dm 0755 $srcdir/ums $pkgdir/usr/bin/ums
+
+  ln -s /usr/bin/ffmpeg $pkgdir/opt/$pkgname/linux/ffmpeg
+  ln -s /usr/bin/ffmpeg $pkgdir/opt/$pkgname/linux/ffmpeg64
+  ln -s /usr/bin/tsMuxeR $pkgdir/opt/$pkgname/linux/tsMuxeR
+  ln -s /usr/bin/tsMuxeR $pkgdir/opt/$pkgname/linux/tsMuxeR-new
 }
