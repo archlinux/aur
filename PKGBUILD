@@ -1,13 +1,13 @@
 # Maintainer: Allonsy < linuxbash8 [at@at] gmail [dot.dot] com >
 pkgname=git-town
-pkgver=0.7.3
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A git extension for generic high-level git workflow support"
 url="https://github.com/Originate/git-town"
 arch=('x86_64' 'i686')
 license=('MIT')
 depends=('bash' 'git' 'dialog')
-source=("$pkgname"::'git://github.com/Originate/git-town#tag=v0.7.3')
+source=("$pkgname"::'git://github.com/Originate/git-town#tag=v0.9.0')
 md5sums=('SKIP')
 
 package() {
