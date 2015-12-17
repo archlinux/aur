@@ -3,7 +3,7 @@
 pkgbase=gtk3-nocsd-git
 pkgname=('gtk3-nocsd' 'lib32-gtk3-nocsd')
 pkgver=2.r36
-pkgrel=2
+pkgrel=3
 pkgdesc="A hack to disable the GTK+3 client side decorations, to integrate them better into other desktop environments"
 arch=('x86_64' 'i686')
 url='https://github.com/PCMan/gtk3-nocsd'
@@ -54,9 +54,7 @@ package_gtk3-nocsd() {
 export GTK_OVERLAY_SCROLLING=0
 ##No silly CSD stuff
 export GTK_CSD=0
-##that preload works for both 32 and 64 bit but will always show errors
-#export LD_PRELOAD="$LD_PRELOAD:/usr/lib32/libgtk3-nocsd.so.0:/usr/lib/libgtk3-nocsd.so.0"
-export LD_PRELOAD="$LD_PRELOAD:/usr/lib/libgtk3-nocsd.so.0"
+export LD_PRELOAD="/usr/\${LIB}/libgtk3-nocsd.so.0:${LD_LIBRARY_PATH}"
 EOF
 	chmod +x "${pkgdir}"/etc/profile.d/gtk3-nocsd.sh
 } 
