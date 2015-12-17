@@ -3,8 +3,9 @@
 # Contributor: Ricardo Liang (rliang) <ricardoliang@gmail.com>
 
 pkgname=gdmenu
-pkgver=r18.d0b9dfc
-pkgrel=2
+pkgver=18
+pkgrel=1
+epoch=1
 pkgdesc="GTK+ dmenu clone"
 arch=('i686' 'x86_64')
 url="https://github.com/rliang/gdmenu"
@@ -16,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s" "$(git rev-list --count HEAD)"
 }
 
 build() {
