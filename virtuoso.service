@@ -1,0 +1,15 @@
+[Unit]
+Description=Virtuoso Opensource
+After=syslog.target
+
+[Service]
+User=virtuoso
+Group=virtuoso
+Type=forking
+ExecStart=/usr/bin/virtuosod +configfile /etc/virtuoso/virtuoso.ini
+PrivateTmp=False
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
