@@ -3,7 +3,7 @@
 pkgname=afterstep-git
 _name=AfterStep
 _pkgname=afterstep
-pkgver=2.2.12.r19.g6518e9d
+pkgver=2.2.12.r20.g8de50a8
 pkgrel=1
 pkgdesc="A Window Manager based on NextStep Interface"
 arch=('i686' 'x86_64')
