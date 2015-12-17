@@ -1,10 +1,12 @@
 # Maintainer: AJSlye (jameskittsmiller@gmail.com) / Bernhard Landauer <oberon@manjaro.org>
 
 pkgname=plasma-wallpaper-snow
-pkgver=r5.89d9d94
+pkgver=20151128
 pkgrel=1
+_snapshot=89d9d94c5369e027f234ad9f3af02645fd103d90
 pkgdesc='Snowfall Live Wallpaper for KDE Plasma 5'
 arch=('i686' 'x86_64')
+url="https://github.com/IvanSafonov/$pkgname"
 license=('LGPL')
 depends=('plasma-desktop')
 makedepends=('git'
@@ -12,16 +14,11 @@ makedepends=('git'
 	'kdoctools'
 	'plasma-framework'
 	'python')
-source=("git://github.com/IvanSafonov/plasma-wallpaper-snow.git")
-md5sums=('SKIP')
-
-pkgver() {
-  cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$_snapshot.tar.gz")
+md5sums=('3f194f36c431b6aead3fe805929ad29f')
 
 build() {
-  cd ${srcdir}/${pkgname}
+  cd $srcdir/$pkgname-$_snapshot
   
   mkdir -p build
   cd build
@@ -36,6 +33,6 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/${pkgname}/build
+  cd $srcdir/$pkgname-$_snapshot/build
   make DESTDIR="${pkgdir}" install
 }
