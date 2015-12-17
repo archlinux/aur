@@ -9,8 +9,8 @@
 # Based on linux package
 
 pkgbase=linux-libre-audit
-_pkgbasever=4.2-gnu
-_pkgver=4.2.6-gnu
+_pkgbasever=4.3-gnu
+_pkgver=4.3.3-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -20,7 +20,7 @@ _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}
 pkgrel=1
-rcnrel=armv7-x3
+rcnrel=armv7-x1
 arch=('i686' 'x86_64' 'armv7h')
 url="http://linux-libre.fsfla.org/"
 license=('GPL2')
@@ -45,6 +45,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         'linux.preset'
         'change-default-console-loglevel.patch'
         '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch'
+        '0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
         # armv7h patches
         "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
         "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch.sig"
@@ -56,9 +57,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch'
         '0007-set-default-cubietruck-led-triggers.patch'
         '0008-USB-armory-support.patch')
-sha256sums=('3a8fc9da5a38f15cc4ed0c5132d05b8245dfc1007c37e7e1994b2486535ecf49'
+sha256sums=('1d280ae2730eb6c9b8c7e920cac2e8111c8db02c498db0c142860a84106cc169'
             'SKIP'
-            'eeb789dc08b73958694db66763d263071591cb2f16a076acc521b044aaccac30'
+            '4e5d062db675a304a1b7bb99a9d2eb1ff617fd31fac9b28df059444b5a98b1d5'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -66,13 +67,14 @@ sha256sums=('3a8fc9da5a38f15cc4ed0c5132d05b8245dfc1007c37e7e1994b2486535ecf49'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '0c93653e22b89ce77b581da985ea41cabcb16841852130fe823415c2d449d325'
-            '7bcbdc0600a123e0404044cb1422ad98e080801a9217ada34fbb6ad2901b054f'
-            'd70238b00be1a70204b5288c9c49898169eff1950c7017a4a7a108b942008342'
+            '68683ea5bf77ad41aab4b2bcff99bf2edebdc5439e197d018eb1d0fdb6a33d07'
+            'fdd10e6680181e425c7ccf2645289fe57e7fe8a62f7a63c23ecdcfb6133ae28f'
+            '4418fd403823317634c96e3340fa9bd4a5f939f2c54d201cd367daa8e5d7c3e0'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '61370b766e0c60b407c29d2c44b3f55fc352e9049c448bc8fcddb0efc53e42fc'
-            '8516a699054b78ed921bca546af3b955c10eb422ada14787a5b05a45bd193572'
+            '3d3266bd082321dccf429cc2200d1a4d870d2031546f9f591b6dfbb698294808'
+            '74cdff6bfa54fe96f7d443524881041ba04516944e9132fd0c3e7bad88945596'
             'SKIP'
             '2654680bc8f677f647bca6e2b367693bf73ffb2edc21e3757a329375355a335d'
             '842e4f483fa36c0e7dbe18ad46d78223008989cce097e5bef1e14450280f5dfe'
@@ -133,11 +135,15 @@ prepare() {
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
-  # Make the radeon driver load without the firmwares
+  # make the radeon driver load without the firmwares
   # http://www.fsfla.org/pipermail/linux-libre/2015-August/003098.html
   if [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then ## This patch is only needed for x86 computers, so we disable it for others
     patch -p1 -i "${srcdir}/0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch"
   fi
+
+  # maintain the TTY over USB disconnects
+  # http://www.coreboot.org/EHCI_Gadget_Debug
+  patch -p1 -i "${srcdir}/0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch"
 
   cat "${srcdir}/config.${CARCH}" > ./.config
 
