@@ -1,4 +1,4 @@
-# Maintainer: Michael Yang <ymh1232001@gmail.com>
+# Maintainer: Michael Yang <ohmyarchlinux@gmail.com>
 pkgname=cpprestsdk
 pkgver=2.7.0
 pkgrel=1
