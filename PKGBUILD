@@ -8,8 +8,8 @@
 # Based on linux-pae package
 
 pkgbase=linux-libre-pae
-_pkgbasever=4.2-gnu
-_pkgver=4.2.6-gnu
+_pkgbasever=4.3-gnu
+_pkgver=4.3.3-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -39,10 +39,11 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch')
-sha256sums=('3a8fc9da5a38f15cc4ed0c5132d05b8245dfc1007c37e7e1994b2486535ecf49'
+        '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch'
+        '0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch')
+sha256sums=('1d280ae2730eb6c9b8c7e920cac2e8111c8db02c498db0c142860a84106cc169'
             'SKIP'
-            'eeb789dc08b73958694db66763d263071591cb2f16a076acc521b044aaccac30'
+            '4e5d062db675a304a1b7bb99a9d2eb1ff617fd31fac9b28df059444b5a98b1d5'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -50,10 +51,11 @@ sha256sums=('3a8fc9da5a38f15cc4ed0c5132d05b8245dfc1007c37e7e1994b2486535ecf49'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            'c6d30aa1488910e814ff440e5bc5ddd345220e20b8378064e4129f38ab2d1b62'
+            '882cd516f8315465479d704ee98537c2c028c38e52e987cfdce4b2c724ba4461'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '61370b766e0c60b407c29d2c44b3f55fc352e9049c448bc8fcddb0efc53e42fc')
+            '61370b766e0c60b407c29d2c44b3f55fc352e9049c448bc8fcddb0efc53e42fc'
+            '3d3266bd082321dccf429cc2200d1a4d870d2031546f9f591b6dfbb698294808')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               '684D54A189305A9CC95446D36B888913DDB59515' # Márcio Silva
@@ -84,9 +86,13 @@ prepare() {
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
-  # Make the radeon driver load without the firmwares
+  # make the radeon driver load without the firmwares
   # http://www.fsfla.org/pipermail/linux-libre/2015-August/003098.html
   patch -p1 -i "${srcdir}/0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch"
+
+  # maintain the TTY over USB disconnects
+  # http://www.coreboot.org/EHCI_Gadget_Debug
+  patch -p1 -i "${srcdir}/0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch"
 
   cat "${srcdir}/config" > ./.config # simpler
 
