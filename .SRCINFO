@@ -21,7 +21,7 @@ pkgname = tsmuxer-cli-ng
 	conflicts = tsmuxer-cli
 
 pkgname = tsmuxer-gui-ng
-	pkgdesc = Transport Stream muxer. New Generation (3D capable). GIT
+	pkgdesc = Transport Stream muxer. New Generation (3D capable). GUI
 	install = tsmuxer-ng.install
 	provides = tsmuxer-gui
 	conflicts = tsmuxer

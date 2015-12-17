@@ -27,7 +27,7 @@ package_tsmuxer-cli-ng() {
 }
 
 package_tsmuxer-gui-ng() {
-  pkgdesc="Transport Stream muxer. New Generation (3D capable). GIT"
+  pkgdesc="Transport Stream muxer. New Generation (3D capable). GUI"
   depends_i686=('gcc-libs'
                 'freetype2'
                 'qt4'
