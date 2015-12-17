@@ -18,7 +18,7 @@ build() {
   R CMD INSTALL --library=$PWD utils/rot_1.4.6.tar.gz
   export R_LIBS=$PWD
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_SKIPT_INSTALL_RPATH=ON \
+        -DCMAKE_SKIP_INSTALL_RPATH=ON \
         -DOPENTURNS_SYSCONFIG_PATH=/etc \
         .
   make
