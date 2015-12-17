@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 license=('GPL3')
 makedepends=(git make arm-none-eabi-gcc arm-none-eabi-newlib)
 #depends=(devkitarm)
-depends=(devkitarm)
+depends=(devkitarm proxmark3-flasher)
 source=('git+https://github.com/Proxmark/proxmark3.git')
 sha256sums=('SKIP')
 
@@ -27,5 +27,4 @@ package() {
     cd "$srcdir/proxmark3/client"
     mkdir -p $pkgdir/usr/bin
     install proxmark3 -t $pkgdir/usr/bin
-    install flasher $pkgdir/usr/bin/proxmark3-flasher
 }
