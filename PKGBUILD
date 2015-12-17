@@ -1,7 +1,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=vivaldi-ffmpeg-codecs
-pkgver=45.0.2454.99
+pkgver=47.0.2526.80
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for vivaldi"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ options=('!strip')
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
 )
-sha256sums=('15d1a31fd0acfca07d614249518192983890507641e09db8d4c91d9ddf7ea340')
+sha256sums=('b107148323a3b641eae29bfeda298183c0d1c110ef96a04a13f329015d614d05')
 
 
 prepare() {
@@ -28,6 +28,10 @@ prepare() {
   [[ -d "$srcdir/python2-path" ]] && rm -rf "$srcdir/python2-path"
   mkdir "$srcdir/python2-path"
   ln -s /usr/bin/python2 "$srcdir/python2-path/python"
+
+  # chromium 46 gives an error about a missing file
+  # workaround create empty
+  touch chrome/test/data/webui/i18n_process_css_test.html
 }
 
 build() {
@@ -40,6 +44,9 @@ build() {
     -Dclang=0 \
     -Duse_gnome_keyring=0 \
     -Duse_gconf=0 \
+    -Dlinux_use_bundled_binutils=0 \
+    -Dlinux_use_bundled_gold=0 \
+    -Dlinux_use_gold_flags=0 \
     -Dcomponent=shared_library \
     -Dffmpeg_branding=ChromeOS
 
@@ -50,7 +57,7 @@ package() {
   cd "$srcdir/chromium-$pkgver"
 
 	install -Dm644 out/Release/lib/libffmpeg.so \
-    "$pkgdir/usr/lib/vivaldi-ffmpeg-codecs/libffmpeg.so"
+    "$pkgdir/opt/vivaldi/libffmpeg.so"
 }
 
 # vim:set ts=2 sw=2 et:
