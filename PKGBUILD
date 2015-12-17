@@ -1,4 +1,4 @@
-# Maintainer: American_Jesus <american.jesus.pt AT gmail DOT com>
+#9a111e928deb9a142606c47709502eb5bf1e8cf2u Maintainer: American_Jesus <american.jesus.pt AT gmail DOT com>
 # Contributor: Yardena Cohen <yardenack at gmail dot com>
 # Contributor: Max Roder <maxroder@web.de>
 # Contributor: Felipe Facundes <felipe.facundes@gmail.com>
@@ -8,7 +8,7 @@
 # AND (!) the first line in the .install file!
 
 pkgname='tor-browser-pt'
-pkgver='5.0.4'
+pkgver='5.0.5'
 _language='pt-PT'
 pkgrel=1
 pkgdesc='Tor Browser Bundle: Anonymous browsing using firefox and tor'
@@ -34,9 +34,9 @@ source+=("${pkgname}.desktop"
          "${pkgname}.png"
          "${pkgname}.sh")
 
-sha256sums_x86_64=('e15527791d7829eb56f1100a6943458ac626f126b666a4246d4b8ea49646fca8'
+sha256sums_x86_64=('19588207968d12f3652b2b6a9a111e928deb9a142606c47709502eb5bf1e8cf2'
                    'SKIP')
-sha256sums_i686=('2d1ea4c87ce9786ce5c61f91acaee0eb2e567b246f100b321be617e9fd511596'
+sha256sums_i686=('da7e06e9a4e7fe4e233cb7e986b8e31e37c123c6b880414bd44992cc9aeeeca2'
                  'SKIP')
 sha256sums+=('3d5fc01f2cfbae0a00b7117b0b0a24028d1686e6f81a347809f74de2d8522ff7'
              '17fc2f5784d080233aca16e788d62ab6fe3e57cf781b123cfe32767de97d6d3b'
