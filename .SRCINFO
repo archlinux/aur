@@ -1,17 +1,11 @@
 pkgbase = tsmuxer-ng
 	pkgdesc = Transport Stream muxer. New Generation (3D capable)
 	pkgver = 2.6.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://forum.doom9.org/showthread.php?t=168539
-	install = tsmuxer-ng.install
 	arch = i686
 	arch = x86_64
 	license = custom
-	depends = bash
-	provides = tsmuxer
-	provides = tsmuxer-gui
-	conflicts = tsmuxer
-	conflicts = tsmuxer-gui
 	options = !strip
 	source = tsmuxer-2.6.11.tar.gz::https://docs.google.com/uc?authuser=0&id=0B0VmPcEZTp8NekJxLUVJRWMwejQ&export=download
 	source = tsMuxerGUI.desktop
@@ -19,12 +13,23 @@ pkgbase = tsmuxer-ng
 	sha1sums = aa3a7d45ddf4ca77b5e94c8602081ac0e56e4015
 	sha1sums = 6708b8ff7d7401e142a7d64c0fd588c365e009c1
 	sha1sums = 07a5eab9c7b3579d73bc80461ba566954f26d1e4
+
+pkgname = tsmuxer-cli-ng
+	pkgdesc = Transport Stream muxer. New Generation (3D capable). CLI
+	provides = tsmuxer-cli
+	conflicts = tsmuxer
+	conflicts = tsmuxer-cli
+
+pkgname = tsmuxer-gui-ng
+	pkgdesc = Transport Stream muxer. New Generation (3D capable). GIT
+	install = tsmuxer-ng.install
+	provides = tsmuxer-gui
+	conflicts = tsmuxer
+	conflicts = tsmuxer-gui
 	depends_i686 = gcc-libs
 	depends_i686 = freetype2
 	depends_i686 = qt4
 	depends_x86_64 = lib32-gcc-libs
 	depends_x86_64 = lib32-freetype2
 	depends_x86_64 = lib32-qt4
-
-pkgname = tsmuxer-ng
 
