@@ -2,7 +2,7 @@
 # PKGBUILD source: https://github.com/bwrsandman/pkgbuild/tree/master/ogrebullet-git
 
 pkgname=ogrebullet-git
-pkgver=r40.448f97c
+pkgver=r42.b3c4e1e
 pkgrel=1
 pkgdesc="Bullet Physics wrapper for OGRE"
 arch=('i686' 'x86_64')
@@ -10,10 +10,8 @@ url="http://www.ogre3d.org/tikiwiki/OgreBullet"
 license=('lgpl')
 depends=(ogre bullet boost)
 makedepends=(git cmake)
-source=(git+https://bitbucket.org/alexeyknyshev/ogrebullet.git
-        bullet281.patch)
-sha1sums=('SKIP'
-          '8a52583e0ef2a2012ed9394ee4de168144658c36')
+source=(git+https://bitbucket.org/alexeyknyshev/ogrebullet.git)
+sha1sums=('SKIP')
 conflicts=('ogrebullet-svn')
 provides=('ogrebullet')
 
@@ -24,11 +22,6 @@ pkgver() {
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
-}
-
-prepare() {
-  cd "$srcdir/${pkgname%-git}"
-  patch -p0 -i "${srcdir}/bullet281.patch"
 }
 
 build() {
