@@ -1,0 +1,12 @@
+[Unit]
+Description=Statsite daemon
+Documentation=https://github.com/armon/statsite
+After=network.target
+ConditionFileNotEmpty=/etc/statsite.conf
+
+[Service]
+User=nobody
+ExecStart=/usr/bin/statsite -f /etc/statsite.conf
+
+[Install]
+WantedBy=multi-user.target
