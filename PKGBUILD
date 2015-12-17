@@ -1,7 +1,7 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=libcroco
-pkgver=0.6.10
+pkgver=0.6.11
 pkgrel=1
 pkgdesc="A CSS parsing library"
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ makedepends=('intltool')
 license=('LGPL')
 source=(http://ftp.gnome.org/pub/gnome/sources/$pkgname/0.6/$pkgname-$pkgver.tar.xz)
 url="http://www.gnome.org"
-sha256sums=('72066611df77f5c4fb28268cfc7306ecc1517212a6182c2ea756c326a154246c')
+sha256sums=('132b528a948586b0dfa05d7e9e059901bca5a3be675b6071a90a90b81ae5a056')
 
 build() {
   cd $pkgname-$pkgver
