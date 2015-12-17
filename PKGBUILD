@@ -2,7 +2,7 @@
 
 pkgname=aegir
 pkgver=7.x_3.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Configuration for a dedicated Aegir server to host Drupal sites."
 arch=('any')
 url='http://aegirproject.org'
@@ -58,6 +58,7 @@ package() {
     install -dm750 "$pkgdir/etc/sudoers.d"
     install -Dm644 msmtprc "$pkgdir/etc/msmtprc.$pkgname"
     install -Dm644 nginx.conf "$pkgdir/etc/nginx/$pkgname.conf"
+    install -Dm644 php.ini   "$pkgdir/etc/php/conf.d/$pkgname.ini"
     install -Dm644 php-fpm.conf   "$pkgdir/etc/php/fpm.d/$pkgname.conf"
     install -Dm400 sudoers "$pkgdir/etc/sudoers.d/$pkgname"
     install -Dm644 --owner=http --group=http <( ) "$pkgdir/var/spool/cron/$pkgname"
