@@ -2,7 +2,7 @@
 
 pkgname=samsung-unified-driver
 pkgver=1.00.36
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Unified Linux Driver for Samsung printers and scanners."
 arch=(i686 x86_64)
@@ -18,10 +18,12 @@ sha512sums=('3f824b1af9dd4dd200a289832289ba44841fc85586322126ff44986d1e44a53fab1
             '325d2e3e42bf74663ba0ac3aa0fc3ee70ef5a5197d03c069fac6bc0f8da0d9e12d50e4b59feacef3000eff5a85d3db7f66834809013b18b31532cfea252460ef')
 
 package() {
-    if [ "$arch" = "i686" ]; then
-        arch=i386
+    local _arch
+
+    if [ "$CARCH" == "i686" ]; then
+        _arch=i386
     else
-        arch=$CARCH
+        _arch=$CARCH
     fi
 
     mkdir -p "$pkgdir"/etc/sane.d
@@ -33,17 +35,17 @@ package() {
     echo xerox_mfp-smfp > "$pkgdir"/etc/sane.d/dll.d/smfp-scanner-fix
 
     mkdir -p "$pkgdir"/usr/lib
-    cp "$srcdir"/uld/$arch/libscmssc.so "$pkgdir"/usr/lib
+    cp "$srcdir"/uld/$_arch/libscmssc.so "$pkgdir"/usr/lib
 
     mkdir -p "$pkgdir"/usr/lib/cups/backend
-    cp "$srcdir"/uld/$arch/smfpnetdiscovery "$pkgdir"/usr/lib/cups/backend
+    cp "$srcdir"/uld/$_arch/smfpnetdiscovery "$pkgdir"/usr/lib/cups/backend
 
     mkdir -p "$pkgdir"/usr/lib/cups/filter
-    cp "$srcdir"/uld/$arch/pstosecps "$pkgdir"/usr/lib/cups/filter
-    cp "$srcdir"/uld/$arch/rastertospl "$pkgdir"/usr/lib/cups/filter
+    cp "$srcdir"/uld/$_arch/pstosecps "$pkgdir"/usr/lib/cups/filter
+    cp "$srcdir"/uld/$_arch/rastertospl "$pkgdir"/usr/lib/cups/filter
 
     mkdir -p "$pkgdir"/usr/lib/sane
-    cp "$srcdir"/uld/$arch/libsane-smfp.so.1.0.1 "$pkgdir"/usr/lib/sane
+    cp "$srcdir"/uld/$_arch/libsane-smfp.so.1.0.1 "$pkgdir"/usr/lib/sane
     ln -s libsane-smfp.so.1.0.1 "$pkgdir"/usr/lib/sane/libsane-smfp.so.1
     ln -s libsane-smfp.so.1 "$pkgdir"/usr/lib/sane/libsane-smfp.so
 
