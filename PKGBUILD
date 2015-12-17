@@ -11,7 +11,7 @@
 
 pkgname=ffmpeg-full
 pkgver=2.8.3
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (with all options)'
 arch=('i686' 'x86_64')
@@ -27,15 +27,16 @@ depends=(
       'celt' 'faac' 'frei0r-plugins' 'jack' 'ladspa' 'libaacplus'
       'libavc1394' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libcl' 'libdc1394'
       'libfdk-aac' 'libgme' 'libiec61883' 'libutvideo-git'
-      'libxv' 'mesa' 'openal' 'opencl-headers' 'rtmpdump' 'shine' 'twolame'
-      'vid.stab' 'vo-aacenc' 'vo-amrwbenc' 'wavpack' 'zeromq' 'zvbi' 
+      'libxv' 'mesa' 'openal' 'opencl-headers' 'openh264'
+      'rtmpdump' 'shine' 'snappy' 'twolame' 'vid.stab'
+      'vo-aacenc' 'vo-amrwbenc' 'wavpack' 'xavs' 'zeromq' 'zvbi'
       )
 makedepends=('hardening-wrapper' 'libvdpau' 'yasm')
 conflicts=('ffmpeg' 'ffmpeg-git' 'ffmpeg-full-git')
 provides=(
       'libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
       'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
-      'libswscale.so' 'openh264' 'snappy' 'xavs'
+      'libswscale.so'
       'ffmpeg'
       )
 source=(http://ffmpeg.org/releases/ffmpeg-$pkgver.tar.bz2{,.asc}
