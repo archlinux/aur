@@ -1,16 +1,29 @@
 pkgbase = sshuttle-git
-	pkgdesc = Transparent proxy server that works as a poor man's VPN. Forwards all TCP packets over ssh (and even DNS requests when using --dns option). Doesn't require admin privileges on the server side.
-	pkgver = 20150104
+	pkgdesc = Transparent proxy server that forwards all TCP packets over ssh
+	pkgver = v0.73+51_ge433c59
 	pkgrel = 1
-	url = https://github.com/apenwarr/sshuttle
+	url = https://github.com/sshuttle/sshuttle
 	arch = any
-	license = GPL
+	license = GPL2
+	checkdepends = python-pytest-runner
+	checkdepends = python-mock
 	makedepends = git
-	depends = python2
+	makedepends = pandoc
+	depends = python-setuptools
 	depends = iptables
+	depends = openssh
+	depends = net-tools
 	conflicts = sshuttle
-	source = arch-install.patch
-	md5sums = 15ed72e2b68dd07ef97abfdcb828d188
+	backup = etc/sshuttle/tunnel.conf
+	backup = etc/sshuttle/prefixes.conf
+	source = git+https://github.com/sshuttle/sshuttle.git
+	source = sshuttle.service
+	source = prefixes.conf
+	source = tunnel.conf
+	md5sums = SKIP
+	md5sums = f2cd1660dcdb4e24b45b71e589da73f3
+	md5sums = e780f69851445f739ea76774bb3a3b17
+	md5sums = 4137f5e6d5dd92b7f7f34a1bfdbda45c
 
 pkgname = sshuttle-git
 

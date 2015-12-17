@@ -1,74 +1,51 @@
 # Contributor: alphazo <alphazo@gmail.com>
-# This version fetches and install master branch from Git repo.
+# This version fetches and install master branch from Git repo (now using the same repo as [Community] version).
+
 pkgname=sshuttle-git
-pkgver=20150104
+_gitname=sshuttle
+pkgver=v0.73+51_ge433c59
+#_commit=e433c599e40bc47c7b0e4d16934815c84b26eea8
 pkgrel=1
-pkgdesc="Transparent proxy server that works as a poor man's VPN. Forwards all TCP packets over ssh (and even DNS requests when using --dns option). Doesn't require admin privileges on the server side."
+pkgdesc='Transparent proxy server that forwards all TCP packets over ssh'
 arch=('any')
-url="https://github.com/apenwarr/sshuttle"
-license=('GPL')
-groups=()
-depends=('python2' 'iptables')
-makedepends=('git')
-optdepends=()
-provides=()
+url="https://github.com/sshuttle/sshuttle"
+license=('GPL2')
+depends=('python-setuptools' 'iptables' 'openssh' 'net-tools')
+makedepends=('git' 'pandoc')
+checkdepends=('python-pytest-runner' 'python-mock')
 conflicts=('sshuttle')
-replaces=()
-backup=()
-options=()
+backup=('etc/sshuttle/tunnel.conf' 'etc/sshuttle/prefixes.conf')
+source=("git+https://github.com/sshuttle/sshuttle.git"
+        'sshuttle.service' 'prefixes.conf' 'tunnel.conf')
+md5sums=('SKIP'
+         'f2cd1660dcdb4e24b45b71e589da73f3'
+         'e780f69851445f739ea76774bb3a3b17'
+         '4137f5e6d5dd92b7f7f34a1bfdbda45c')
 
-source=(arch-install.patch)
-md5sums=('15ed72e2b68dd07ef97abfdcb828d188')
+pkgver() {
+        cd "$_gitname"
+        git describe | sed 's|sshuttle-||;s|-|+|;s|-|_|'
+}
 
+build() {
+  cd "$_gitname"
+  python setup.py build
 
-_gitroot="git://github.com/apenwarr/sshuttle.git"
-_gitname="sshuttle"
+  pandoc -s -r markdown -w man -o sshuttle.8 sshuttle/sshuttle.md
+}
+
+check() {
+  cd "$_gitname"
+  python setup.py ptr
+}
 
 package() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
+  cd "$_gitname"
+  python setup.py install --root="$pkgdir" -O1
 
-  if [ -d $_gitname ] ; then
-    cd $_gitname && git pull origin
-    msg "The local files are updated."
-  else
-    git clone $_gitroot $_gitname
-  fi
+  install -Dm644 sshuttle.8 "$pkgdir/usr/share/man/man8/sshuttle.8"
 
-  msg "GIT checkout done or server timeout"
-  msg "Starting make..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
-  # Patch launcher with files location (/usr/share/sshuttle)
-  patch -p1 -i "${srcdir}/arch-install.patch"
-
-  #
-  # BUILD HERE
-  #
-  # Original build
-  #install -Dm755 $srcdir/$_gitname-build/sshuttle $pkgdir/usr/bin/sshuttle || return 1
-  #mkdir -p $pkgdir/usr/share/sshuttle 
-  #cp -r $srcdir/$_gitname-build/* $pkgdir/usr/share/sshuttle || return 1
-  #
-
-  # Modification proposed by bladud
-  cd "$srcdir/$_gitname-build/Documentation"
-  sed -i 's/python/python2/' md2man.py
-  cd ..
-  make  #Make the manpage
-  cd "$srcdir/$_gitname-build"
-  install -Dm755 $srcdir/$_gitname-build/sshuttle $pkgdir/usr/bin/sshuttle || return 1
-  mkdir -p $pkgdir/usr/share/sshuttle 
-
-  cp $srcdir/$_gitname-build/LICENSE $pkgdir/usr/share/sshuttle || return 1
-  cp $srcdir/$_gitname-build/README.md $pkgdir/usr/share/sshuttle || return 1
-  cp $srcdir/$_gitname-build/Documentation/sshuttle.md $pkgdir/usr/share/sshuttle || return 1
-  cp $srcdir/$_gitname-build/*.py $pkgdir/usr/share/sshuttle || return 1
-  mkdir $pkgdir/usr/share/sshuttle/version
-  mkdir $pkgdir/usr/share/sshuttle/compat
-  cp -R $srcdir/$_gitname-build/version/*.py $pkgdir/usr/share/sshuttle/version || return 1
-  cp -R $srcdir/$_gitname-build/compat/*.py $pkgdir/usr/share/sshuttle/compat || return 1
+  install -d "$pkgdir/etc/sshuttle"
+  install -m644 "$srcdir"/{tunnel.conf,prefixes.conf} "$pkgdir/etc/sshuttle"
+  install -Dm644 "$srcdir/sshuttle.service" "$pkgdir/usr/lib/systemd/system/sshuttle.service"
 }

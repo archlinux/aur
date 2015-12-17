@@ -1,0 +1,8 @@
+[Unit]
+Description=Create a transparent proxy over SSH
+
+[Service]
+ExecStart=/usr/bin/sshuttle --dns --listen 0.0.0.0 --remote sshuttle_tunnel -s /etc/sshuttle/prefixes.conf -e "ssh -F /etc/sshuttle/tunnel.conf"
+
+[Install]
+WantedBy=multi-user.target
