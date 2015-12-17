@@ -109,14 +109,9 @@ package_seafile-server() {
   cp -r -p "${srcdir}/seafile-${pkgver}-server/scripts" \
     "${pkgdir}/usr/share/$pkgname/scripts"
 
-  # Remove win32-specific scripts
+  # Remove win32 and other distributions specific scripts
+  rm -rf "${pkgdir}/usr/share/$pkgname/scripts/build"
   rm -rf "${pkgdir}/usr/share/$pkgname/scripts/upgrade/win32"
-
-  # Workaround for strange behaviour in the Makefile, which
-  # installs python bindings in the package root directory,
-  # even though they were disabled
-  rm -rf "${pkgdir}/seaserv"
-  rm -rf "${pkgdir}/seafile"
 
   # Install systemd service
   install -D -m644 "${srcdir}/seafile-server@.service" \
