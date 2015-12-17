@@ -1,7 +1,7 @@
 # Maintainer: Marius Nestor <marius softpedia com>
 
 pkgname=musictube
-pkgver=1.5
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="A YouTube music player"
 arch=('i686' 'x86_64')
@@ -12,13 +12,13 @@ install='musictube.install'
 
 if [[ "$CARCH" == "i686" ]]; then
 	source=("http://flavio.tordini.org/files/musictube/musictube.deb")
-	sha256sums=('65fe0bba1fa4352a969abc22b95d83d865aa08d764bab2d75cb948e88e9f9674')
+	sha256sums=('1ee861f49b1ae9cd54f50c826ddabf2873c2ec72b74ed01e6d7f0b633cb9591e')
 elif [[ "$CARCH" == "x86_64" ]]; then
 	source=("http://flavio.tordini.org/files/musictube/musictube64.deb")
-	sha256sums=('e0bd22d7694c51ecfe620f93de089ee286de62ec178132fe74912681ffb721bb')
+	sha256sums=('14b91736d8b84a94dae78679032091ab663f6c187695c0b87403261474d66341')
 fi
 
 package() {
-  tar xzvf "$srcdir/data.tar.gz" -C "$pkgdir/"
+  tar xvf "$srcdir/data.tar.xz" -C "$pkgdir/"
 }
 
