@@ -5,6 +5,7 @@ post_install() {
   for file in ${filelist[@]}; do
     install-info $infodir/$file $infodir/dir 2> /dev/null
   done
+  update-mime-database usr/share/mime 
 }
 
 post_upgrade() {
@@ -15,4 +16,5 @@ pre_remove() {
   for file in ${filelist[@]}; do
     install-info --delete $infodir/$file $infodir/dir 2> /dev/null
   done
+  update-mime-database usr/share/mime
 }
