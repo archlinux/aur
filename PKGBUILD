@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=xde-ctools-git
-pkgver=0.1.174.g135d245
+pkgver=1.0.1.g0710dc0
 pkgrel=1
 pkgdesc="X Desktop Environment C-language tools"
 arch=('i686' 'x86_64')
