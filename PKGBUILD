@@ -1,10 +1,10 @@
-# $Id: PKGBUILD 139578 2015-09-08 08:31:32Z lcarlier $
+# $Id: PKGBUILD 153157 2015-12-13 10:05:37Z lcarlier $
 # Maintainer : Ionut Biru <ibiru@archlinux.org>
 # x32 Maintainer: Fantix King <fantix.king at gmail.com>
 
 pkgname=libx32-libdbus
 _pkgbasename=libdbus
-pkgver=1.10.0
+pkgver=1.10.4
 pkgrel=1.1
 pkgdesc="DBus library (x32 ABI)"
 arch=('x86_64')
@@ -16,9 +16,10 @@ provides=('libx32-dbus-core' 'libx32-dbus')
 conflicts=('libx32-dbus-core' 'libx32-dbus')
 replaces=('libx32-dbus-core' 'libx32-dbus')
 source=(http://dbus.freedesktop.org/releases/dbus/dbus-${pkgver}.tar.gz{,.asc})
-md5sums=('5af6297348107a906c8449817a728b3b'
+md5sums=('27b8e99ffad603b8acfa25201c6e3d5c'
          'SKIP')
-validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90') # Simon McVittie <simon.mcvittie@collabora.co.uk>
+validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90'  # Simon McVittie <simon.mcvittie@collabora.co.uk>
+              '3C8672A0F49637FE064AC30F52A43A1E4B77B059') # Simon McVittie <simon.mcvittie@collabora.co.uk>
 
 build() {
     export CC="gcc -mx32"
