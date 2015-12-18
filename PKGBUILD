@@ -5,7 +5,7 @@
 # Contributor: mosra <mosra@centrum.cz>
 
 pkgname=kdevplatform-git
-pkgver=4.90.90.r12903.70ef09a
+pkgver=4.90.90.r12962.d0596e4
 pkgrel=1
 pkgdesc="A C/C++ development platform for KDE. (GIT Version)"
 arch=('i686' 'x86_64')
