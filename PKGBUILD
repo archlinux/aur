@@ -1,6 +1,6 @@
 # Maintainer: parazyd <parazyd AT dyne DOT org>
 pkgname=gtomb-git
-pkgver=0.5.2
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="GUI wrapper for Tomb, the crypto undertaker"
 arch=('any')
@@ -19,9 +19,8 @@ pkgver() {
 package() {
     cd gtomb
     install -D -m 755 gtomb $pkgdir/usr/local/bin/gtomb
-    install -m 644 monmort.png $pkgdir/usr/local/bin/monmort.png
 
     printf "\n\n*******************IMPORTANT*******************\n\n"
-    printf "Edit /usr/local/bin/gtomb if your tomb executable path is different from /usr/local/bin/tomb"
-    printf "\n\n***********************************************"
+    printf "Edit /usr/local/bin/gtomb if your tomb executable\n path is different from /usr/local/bin/tomb"
+    printf "\n\n***********************************************\n\n"
 }
