@@ -7,8 +7,9 @@ url="https://www.gimp.org/tutorials/Using_GAP/"
 arch=('x86_64' 'i686')
 license=('GPLv3')
 depends=('gimp>=2.6.0' 'glib2')
+makedepends=('intltool')
 optdepends=('xvidcore: compression codec' 
-			'libbz2: data compressor' 
+			'lbzip2: data compressor' 
 			'faac: audio encoder' 
 			'faad2: audio decoder' 
 			'lame: mpeg layer 3 codec' 
