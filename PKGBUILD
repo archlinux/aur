@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 144547 2015-10-21 05:26:35Z fyan $
+# $Id: PKGBUILD 148311 2015-12-04 05:36:13Z fyan $
 # Maintainer:  Ionut Biru <ibiru@archlinux.org>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: Mikko Seppälä <t-r-a-y@mbnet.fi>
@@ -6,7 +6,7 @@
 
 _pkgbasename=glib2
 pkgname=libx32-$_pkgbasename
-pkgver=2.46.1
+pkgver=2.46.2
 pkgrel=1.1
 pkgdesc="Common C routines used by GTK+ 2.4 and other libs (x32 ABI)"
 url="http://www.gtk.org/"
@@ -16,24 +16,21 @@ depends=('libx32-dbus' 'libx32-libffi' 'libx32-pcre' 'libx32-zlib' "$_pkgbasenam
 makedepends=('gcc-multilib-x32' 'python2')
 options=('!docs')
 source=("http://ftp.gnome.org/pub/GNOME/sources/glib/${pkgver%.*}/glib-${pkgver}.tar.xz"
-        'revert-warn-glib-compile-schemas.patch')
-sha256sums=('5a1f03b952ebc3a7e9f612b8724f70898183e31503db329b4f15d07163c8fdfb'
-            '049240975cd2f1c88fbe7deb28af14d4ec7d2640495f7ca8980d873bb710cc97')
+        'revert-warn-glib-compile-schemas.patch' 'memleak.patch')
+sha256sums=('5031722e37036719c1a09163cc6cf7c326e4c4f1f1e074b433c156862bd733db'
+            '049240975cd2f1c88fbe7deb28af14d4ec7d2640495f7ca8980d873bb710cc97'
+            '8337eeba4a32133d41575c8338fca32ac6a867e6e4a4e021355fcdeb606420a6')
 
 prepare() {
   cd "${srcdir}/glib-${pkgver}"
   patch -Rp1 -i ../revert-warn-glib-compile-schemas.patch
+  patch -Np1 -i ../memleak.patch
 }
 
 build() {
   export CC="gcc -mx32"
   export CXX="g++ -mx32"
   export PKG_CONFIG_PATH="/usr/libx32/pkgconfig"
-
-  ## Prevent runtime unloading of glib
-  # https://bugs.archlinux.org/task/46619
-  # https://bugzilla.gnome.org/show_bug.cgi?id=755609
-  LDFLAGS+=" -Wl,-z,nodelete"
 
   cd "${srcdir}/glib-${pkgver}"
   PYTHON=/usr/bin/python2 ./configure --prefix=/usr --sysconfdir=/etc \
