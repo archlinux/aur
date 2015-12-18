@@ -2,7 +2,7 @@
 _name=ripe.atlas.tools
 pkgname=ripe-atlas-tools
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The official command-line client for RIPE Atlas"
 arch=('any')
 url="https://pypi.python.org/pypi/$_name"
@@ -17,5 +17,5 @@ md5sums=('47882407a8264456106d8493f20eaf2a')
 package() {
     cd "$srcdir/$_name-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1 || return 1
-    rm -r "ripe/__pycache__" "ripe/atlas/__pycache__"
+    rm -rf "ripe/__pycache__" "ripe/atlas/__pycache__"
 }
