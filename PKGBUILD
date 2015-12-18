@@ -54,7 +54,7 @@ package_gtk3-nocsd() {
 export GTK_OVERLAY_SCROLLING=0
 ##No silly CSD stuff
 export GTK_CSD=0
-export LD_PRELOAD="/usr/\${LIB}/libgtk3-nocsd.so.0:${LD_LIBRARY_PATH}"
+export LD_PRELOAD="/usr/\${LIB}/libgtk3-nocsd.so.0:${LD_PRELOAD}"
 EOF
 	chmod +x "${pkgdir}"/etc/profile.d/gtk3-nocsd.sh
 } 
