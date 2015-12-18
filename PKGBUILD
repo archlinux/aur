@@ -2,7 +2,7 @@
 
 pkgbase='glare-themes-git'
 pkgname=('glare-themes')
-pkgver=2015.12.15.0011
+pkgver=2015.12.18.0011
 pkgrel=1
 pkgdesc='simple toolkit independent theme for a less distracted desktop experience'
 arch=('any')
@@ -96,4 +96,14 @@ package_glare-themes() {
 	ln -sv ../../themes/Glare/EXTRAS/SLiMTheme/GlareSimple
 	cd "${pkgdir}"/usr/lib/palemoon/browser/extensions
 	ln -sv ../../../../share/themes/Glare/EXTRAS/PaleMoonFixes/Glare.xpi Glare@ssfgh.com.xpi
+	install -d "${pkgdir}"/usr/share/backgrounds
+	cd "${pkgdir}"/usr/share/backgrounds
+	ln -sv ../themes/Glare/EXTRAS/Wallpapers/Fixed/Glare_colorlines.png
+	ln -sv ../themes/Glare/EXTRAS/Wallpapers/Patterns/Glare_ACID_inverted.png
+	ln -sv ../themes/Glare/EXTRAS/Wallpapers/Patterns/Glare_ACID.png
+	ln -sv ../themes/Glare/EXTRAS/Wallpapers/Patterns/Glare_dot_grey.png
+	ln -sv ../themes/Glare/EXTRAS/Wallpapers/Patterns/Glare_lines_dark.png
+	ln -sv ../themes/Glare/EXTRAS/Wallpapers/Patterns/Glare_lines_trans.png
+	mkdir xfce
+	find -maxdepth 1 -name "Glare*.png" -exec ln -sv ../{} xfce/{} \;
 }
