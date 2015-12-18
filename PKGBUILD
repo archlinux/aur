@@ -1,10 +1,9 @@
 # Maintainer: Piotr Rogoza <piotr dot p dot public at gmail dot com>
-# Contributor: Piotr Rogoza <piotr dot p dot public at gmail dot com>
 # Contributor: Arnoud Willemsen <mail at lynthium.com>
 
 pkgname=nginx-devel
 _pkgname=nginx
-pkgver=1.9.7
+pkgver=1.9.9
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server - development version'
 url="http://nginx.org"
@@ -147,7 +146,7 @@ ${_modulesURL[*]}
 )
 validpgpkeys=(
 )
-sha256sums=('794bd217affdfce1c6263d9199c3961f387a2df9d57dcb42876faaf41c1748d5'
+sha256sums=('de66bb2b11c82533aa5cb5ccc27cbce736ab87c9f2c761e5237cda0b00068d73'
             '05fdc0c0483410944b988d7f4beabb00bec4a44a41bd13ebc9b78585da7d3f9b'
             '272907d3213d69dac3bd6024d6d150caa23cb67d4f121e4171f34ba5581f9e98'
             'e299680e919a97c7ec06b62e4fabc3b5ead837fe486a5f87260bd16d0b51e112'
