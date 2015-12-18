@@ -5,7 +5,7 @@
 _plugin_name=ghostery
 pkgname=firefox-extension-$_plugin_name
 pkgver=5.4.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Firefox which detects and/or blocks website trackers"
 arch=('any')
 url="https://www.ghostery.com"
@@ -15,17 +15,22 @@ source=("https://addons.mozilla.org/firefox/downloads/latest/9609/addon-9609-lat
         "ghostery.license")
 sha1sums=('80a03dace47298d7837fe3abf5ce9f2533692777'
           'cf0f4f850554edfd907f07ce3a6451cbc5637e68')
+noextract=('addon-9609-latest.xpi')
 
+prepare() {
+  mkdir -p "$srcdir/addon"
+  cd "$srcdir/addon/"
+  unzip -q ../addon-9609-latest.xpi
+}
 
 package() {
-  cd $srcdir
+  cd "$srcdir/addon/"
   emid=$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' install.rdf)
   local dstdir="$pkgdir/usr/lib/firefox/browser/extensions/${emid}"
-  install -Dm644 ghostery.license "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "$srcdir/ghostery.license" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   
   install -d "$dstdir"
   cp -dpr --no-preserve=ownership * "$dstdir"
-  rm "$dstdir"/{addon-9609-latest.xpi,ghostery.license}
 
   find "$dstdir" -type f -exec chmod +r {} \;
 }
