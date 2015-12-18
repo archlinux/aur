@@ -4,7 +4,7 @@
 
 _pkgname=marble
 pkgname=$_pkgname-qt
-pkgver=15.08.3
+pkgver=15.12.0
 pkgrel=1
 pkgdesc="Desktop Globe - Qt version"
 arch=(i686 x86_64)
@@ -19,7 +19,7 @@ conflicts=(marble)
 install=$pkgname.install
 source=("http://download.kde.org/stable/applications/$pkgver/src/$_pkgname-$pkgver.tar.xz"
 	       plugin-dir.patch::"https://quickgit.kde.org/?p=marble.git&a=commitdiff&h=f59d559&o=plain")
-md5sums=('98f8a4392897da9a475076ccd106c0b2'
+md5sums=('a7a481936281a7d584b9168d98fcd5d5'
          'e4441d763de7588a8c4fa93b83d945fe')
 
 prepare() {
@@ -27,7 +27,7 @@ prepare() {
 
 # fix installation designer plugins path https://bugs.kde.org/show_bug.cgi?id=348554
   cd $_pkgname-$pkgver
-  patch -p1 -i ../plugin-dir.patch
+  #patch -p1 -i ../plugin-dir.patch
   cd ..
 
   # only build the KDE app
