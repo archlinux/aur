@@ -36,6 +36,13 @@ build() {
   go get github.com/phzfi/RIC/server
 }
 
+check() {
+  cd $srcdir
+
+  export GOPATH=$srcdir
+  go test github.com/phzfi/RIC/server
+}
+
 package() {
   cd $srcdir
 
