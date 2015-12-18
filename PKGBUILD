@@ -37,7 +37,24 @@ prepare() {
 		LIBSPATH=linux
 	fi
 
-	JOBS=1
+	sys_cores=$(getconf _NPROCESSORS_ONLN)
+	if [ $sys_cores -gt 1 ]; then
+		cores=$(($sys_cores-1))
+	else
+		cores=1
+	fi
+
+	msg2 "Found $sys_cores core/s, set sail!"
+
+	GCC_MAJOR_GT_4=$(expr `gcc -dumpversion | cut -f1 -d.` \> 4)
+	if [ $GCC_MAJOR_GT_4 -eq 1 ]; then
+
+		msg2 "Rebuilding POCO libraries for gcc5, this could take a while..."
+
+    cd ${OF_ROOT}/scripts/apothecary
+    ./apothecary -j${cores} update poco
+
+	fi
 }
 
 build() {
@@ -46,24 +63,33 @@ build() {
 	cd libs/openFrameworksCompiled/project
 
 	msg2 "Building openFrameworks Debug version"
-	make -j$JOBS Debug
+	make -j$cores Debug
 
 	msg2 "Building openFrameworks Release version"
-	make -j$JOBS Release
+	make -j$cores Release
 
 	cd ${srcdir}/${_name}
 
-	msg2 "Building the OF Project Generator..."
+	msg2 "Building OF Project Generator tool..."
+	cd apps/projectGenerator/commandLine
+	make -j$cores Release
+
+	cd ${srcdir}/${_name}
+
+	msg2 "Building OF Project Generator interface..."
 	cd libs/openFrameworksCompiled/project
-	make -j$JOBS Release
+	make -j$cores Release
 }
 
 package() {
-	install -d -m755 "${pkgdir}/opt"
+	install -Dm755 "${srcdir}/${_name}/apps/projectGenerator/commandLine/bin/projectGenerator" \
+	"${pkgdir}/usr/bin/projectGenerator"
+
+	install -dm755 "${pkgdir}/opt"
 
 	cp -R "${srcdir}/${_name}" "${pkgdir}/opt/openFrameworks"
 
-	install -D -m775 "${srcdir}/of-make-workspace" "${pkgdir}/usr/bin/of-make-workspace"
+	install -Dm775 "${srcdir}/of-make-workspace" "${pkgdir}/usr/bin/of-make-workspace"
 
 	msg2 "Fixing emptyExample project files permissions..."
 
