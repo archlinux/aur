@@ -1,5 +1,5 @@
 pkgbase = phpctags
-	pkgdesc = A script to help you manage your notes and access them quickly
+	pkgdesc = An enhanced php ctags index generator
 	pkgver = 0.5.1
 	pkgrel = 0
 	url = https://github.com/winged/notevim

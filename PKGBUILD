@@ -4,7 +4,7 @@
 pkgname=phpctags
 pkgver=0.5.1
 pkgrel=0
-pkgdesc="A script to help you manage your notes and access them quickly"
+pkgdesc="An enhanced php ctags index generator"
 arch=('x86_64' 'i686')
 license=('GPLv2')
 url=('https://github.com/winged/notevim')
