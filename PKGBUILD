@@ -4,13 +4,13 @@
 pkgname=ampache-git
 _gitname=ampache
 pkgver=3.8.1.7.g799165a
-pkgrel=1
+pkgrel=2
 pkgdesc="A PHP-based tool for managing and playing your audio/video files via a web interface"
 arch=('i686' 'x86_64')
 url="http://www.ampache.org/"
 license=('GPL')
 depends=('mariadb>=5.0' 'php>=5.4' 'curl')
-makedepends=('git')
+makedepends=('git' 'php-composer')
 optdepends=('ffmpeg: all transcoding/downsampling'
             'lame: mp3 transcoding/downsampling'
             'vorbis-tools: ogg transcoding/downsampling'
@@ -36,6 +36,8 @@ package() {
   cd ${srcdir}/${_gitname}
   mkdir -p ${pkgdir}/srv/http/${_gitname}
   cp -a * ${pkgdir}/srv/http/${_gitname}/
+  cd ${pkgdir}/srv/http/${_gitname}
+  composer install --prefer-source --no-interaction
   mkdir -p ${pkgdir}/usr/share/doc/${_gitname}
   install -D -m644 ${srcdir}/nginx-example.conf ${pkgdir}/usr/share/doc/${_gitname}/
 }
