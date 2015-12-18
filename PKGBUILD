@@ -2,7 +2,7 @@
 
 pkgname=('dscanner')
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Swiss-army knife for D source code"
 arch=('i686' 'x86_64')
 url="https://github.com/Hackerpilot/Dscanner"
@@ -21,11 +21,6 @@ sha256sums=(
 	'SKIP'
 )
 
-pkgver() {
-	cd $srcdir/Dscanner
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 prepare() {
 	cd $srcdir/Dscanner
 	git submodule update --init --recursive
@@ -34,6 +29,8 @@ prepare() {
 build() {
 	cd $srcdir/Dscanner
 	make
+
+	strip bin/dscanner
 }
 
 package(){
