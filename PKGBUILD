@@ -9,7 +9,7 @@ _version=5.3.0
 _build=f4
 _buildtag=20151218
 pkgver=${_version}${_build}+${_buildtag}
-pkgrel=2
+pkgrel=3
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
 arch=('x86_64')
 url='https://unity3d.com/'
@@ -23,7 +23,8 @@ depends=('desktop-file-utils'
          'libpng12'
          'libxtst'
          'libpqxx'
-         'monodevelop')
+         'monodevelop'
+         'npm')
 optdepends=('ffmpeg: for WebGL exporting'
             'nodejs: for WebGL exporting'
             'java-runtime: for WebGL exporting'
