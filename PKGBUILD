@@ -2,7 +2,7 @@
 
 pkgname=vimb-gtk2
 _pkgname=vimb
-pkgver=2.10
+pkgver=2.11
 pkgrel=1
 pkgdesc="A lightweight vim-like webkit-based browser"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('webkitgtk2')
 conflicts=('vimb')
 provides=('vimb')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/fanglingsu/$_pkgname/archive/$pkgver.tar.gz")
-md5sums=('74ff7458e89406fd3537c89507bf6596')
+md5sums=('9ffc6e01e0af8c2db6949d27455cc919')
 
 build() {
   cd $_pkgname-$pkgver
