@@ -15,6 +15,7 @@ source=("http://www.puimula.org/voikko-sources/libreoffice-voikko/libreoffice-vo
         "http://www.puimula.org/voikko-sources/libreoffice-voikko/libreoffice-voikko-${pkgver}.tar.gz.asc")
 md5sums=('594c68d586cbf8aaea5fda4a8547c60e'
          'SKIP')
+validpgpkeys=('AC5D65F10C8596D7E2DAE2633D309B604AE3942E') 
 
 build() {
   cd "${srcdir}/libreoffice-voikko-${pkgver}"
@@ -27,4 +28,3 @@ package() {
 
   install -D -m644 voikko.oxt "${pkgdir}/usr/lib/libreoffice/share/extensions/install/voikko.oxt"
 }
-
