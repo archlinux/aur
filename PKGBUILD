@@ -1,6 +1,6 @@
 # Maintainer: dryes <joswiseman@cock.li>
 pkgname='wav2png-git'
-pkgver=98
+pkgver=100
 pkgrel=1
 pkgdesc='Creates waveform pngs out of audio files.'
 url='https://github.com/beschulz/wav2png'
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 license=('GPL2')
 provides=('wav2png')
 depends=('libsndfile' 'libpng' 'libpng12' 'png++')
-makedepends=('git')
+makedepends=('git' 'boost')
 optdepends=('sox')
 source=('git://github.com/beschulz/wav2png.git')
 md5sums=('SKIP')
