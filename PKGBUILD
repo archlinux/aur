@@ -3,7 +3,7 @@
 
 pkgname=genymotion
 pkgver=2.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Complete set of tools that provides a virtual environment for Android."
 arch=('i686' 'x86_64')
 license="UNKNOWN"
@@ -35,6 +35,7 @@ package(){
   ln -s /opt/genymotion/genymotion $pkgdir/usr/bin/genymotion
   ln -s /opt/genymotion/genymotion-shell $pkgdir/usr/bin/genymotion-shell
   ln -s /opt/genymotion/player $pkgdir/usr/bin/genymotion-player
+  ln -s /opt/genymotion/gmtool $pkgdir/usr/bin/gmtool
   install -Dm644 $srcdir/genymotion.desktop $pkgdir/usr/share/applications/genymotion.desktop
   chown -R root:root $pkgdir/opt/genymotion
 }
