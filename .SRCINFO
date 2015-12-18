@@ -1,7 +1,7 @@
 pkgbase = bitmonero-git
 	pkgdesc = Peer-to-peer network based anonymous digital currency (includes deaemon, wallet and miner)
 	pkgver = 0.8.8.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://getmonero.org/
 	arch = x86_64
 	license = custom:Cryptonote

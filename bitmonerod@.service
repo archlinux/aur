@@ -1,0 +1,11 @@
+[Unit]
+Description=Bitmonerod on %I
+After=network.target
+
+[Service]
+User=%I
+Type=forking
+ExecStart=/usr/bin/bitmonerod --detach
+
+[Install]
+WantedBy=multi-user.target
