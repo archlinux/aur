@@ -2,12 +2,12 @@
 
 pkgname=bdf-tewi-git
 _gitname=tewi-font
-pkgver=0.205.486a8c6
+pkgver=0.228.273eb0e
 pkgrel=1
 pkgdesc='Bitmap font'
 arch=('any')
 url="https://github.com/lucy/tewi-font"
-license=('custom:GPL3')
+license=('MIT')
 depends=('xorg-fonts-encodings' 'xorg-font-utils')
 makedepends=('git')
 install="$pkgname.install"
@@ -21,7 +21,7 @@ pkgver() {
 
 package() {
 	cd "$srcdir/$_gitname"
-	install -T -Dm644 "COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+	install -T -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -d -m755 "$pkgdir/usr/share/fonts/misc/"
 	install -m644 -t "$pkgdir/usr/share/fonts/misc/" \
 		"tewi-bold-11.bdf" "tewi-normal-11.bdf" \
