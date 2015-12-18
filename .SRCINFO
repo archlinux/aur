@@ -1,6 +1,6 @@
 pkgbase = osvr-libfunctionality-git
 	pkgdesc = A minimal library for dynamically-loaded or statically-linked functionality modules.
-	pkgver = v0.1.r12.g7d4f679
+	pkgver = v0.1.r17.g315e786
 	pkgrel = 1
 	url = https://github.com/OSVR/libfunctionality
 	arch = i686
