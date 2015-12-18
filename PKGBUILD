@@ -1,4 +1,4 @@
-# Maintainer: Edison Ibañez <edison@openmailbox.org> 
+# Maintainer: Edison Ibañez <edison@openmailbox.org>
 
 pkgname=pilas-engine
 my_pkgname=pilas
@@ -13,10 +13,10 @@ license=('LGPL')
 url="http://www.pilas-engine.com.ar"
 
 source=("https://github.com/hugoruscitti/${my_pkgname}/archive/${pkgver}.tar.gz")
+md5sums=('dbcccce24afe5689d35d504fbe002ec0')
 
 package() {
     cd $srcdir/$my_pkgname-$pkgver
     python2 setup.py build
     python2 setup.py install --prefix=/usr --root "${pkgdir}" || return 1
 }
-md5sums=('dbcccce24afe5689d35d504fbe002ec0')
