@@ -8,8 +8,11 @@
 PKGEXT='.pkg.tar'
 
 pkgname=unity-editor-bin
-pkgver=5.2.2f1+20151018
-pkgrel=2
+_version=5.3.0
+_build=f4
+_buildtag=20151218
+pkgver=${_version}${_build}+${_buildtag}
+pkgrel=1
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
 arch=('x86_64')
 license=('custom')
@@ -26,8 +29,8 @@ provides=('unity-editor')
 conflicts=('unity-editor')
 options=(!strip)
 install=${pkgname}.install
-source=("http://files.unity3d.com/levi/unity-editor-${pkgver}_amd64.deb")
-md5sums=('5ef887483b737b0d20ca69ff4d368103')
+source=("http://download.unity3d.com/download_unity/linux/unity-editor-${pkgver}_amd64.deb")
+md5sums=('33c43de91ddcf71bdf105f10096b2ddf')
 
 package() {
 	bsdtar xf data.tar.gz
