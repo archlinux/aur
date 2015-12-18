@@ -5,8 +5,8 @@
 pkgname=libpng14
 _realname=libpng
 pkgver=1.4.19
-_apngver=1.4.18
-pkgrel=0
+_apngver=1.4.19
+pkgrel=1
 pkgdesc="A collection of routines used to create PNG format graphics files - 1.4 version"
 arch=('i686' 'x86_64')
 url="http://www.libpng.org/pub/png/libpng.html"
