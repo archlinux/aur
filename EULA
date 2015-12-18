@@ -1,6 +1,9 @@
+*** for an up-to-date EULA refer to (https://unity3d.com/legal/eula) ***
+
+
           Unity Pro and Unity Personal Software License Agreement 5.x
 
-   Last updated: March 2, 2015
+   Last updated: October 7, 2015
 
 Summary of Important Use Restrictions
 
@@ -31,8 +34,8 @@ Summary of Important Use Restrictions
 
   Which Version You Can Use - Unity Personal Revenue Restrictions
 
-   Unity Personal (including the iOS and Android platform deployment options)
-   may not be used by:
+   Except for a thirty (30) day trial period, Unity Personal (including the
+   iOS and Android platform deployment options) may not be used by:
 
     1. a Commercial Entity that has either: (a) reached annual gross revenues
        in excess of US$100,000, or (b) raised funds (including but not
@@ -43,9 +46,9 @@ Summary of Important Use Restrictions
        department)) for the most recently completed fiscal year; or
     3. an individual (not acting on behalf of a Legal Entity) or a Sole
        Proprietor that has reached annual gross revenues in excess of
-       US$100,000 from its use of the Software during the most recently
+       US$100,000 from its use of the Unity Software during the most recently
        completed fiscal year, which does not include any income earned by
-       that individual which is unrelated to its use of the Software.
+       that individual which is unrelated to its use of the Unity Software.
 
   You May Not Use Unity Personal with Unity Pro or any Unity Pro Add-On Products
 
@@ -189,9 +192,13 @@ UNITY SOFTWARE LICENSE AGREEMENT 5.x
        version of the Software, your license to use the Software and
        distribute the runtime portion of the Software in your Licensee
        Content is limited to educational, non-commercial purposes.
-    4. Trial Product Restrictions. If you are using a trial version of the
-       Software, you may install the Software on a single computer only and
-       you may not publish or distribute any Licensee Content.
+    4. Trial Use Restrictions. Anyone may use Unity Personal solely for
+       non-commercial, evaluation purposes for a one-time period of thirty
+       (30) days. Users not eligible to use Unity Personal must cease all use
+       of Unity Personal thirty (30) days after the initial installation of
+       Unity Personal. If you are using the Software on a trial basis, you
+       may install the Software on a single computer only and you may not
+       publish or distribute any Licensee Content.
     5. Unity Console Add-on Developer Requirements. Use of the Software with
        certain console platforms is subject to the Unity Console Add-on
        Developer Requirements as set forth on the Unity website. The license
@@ -224,7 +231,7 @@ UNITY SOFTWARE LICENSE AGREEMENT 5.x
        phones, tablets, televisions or set top boxes as long as such Licensee
        Content does not provide the user interface or primary functionality
        of such device.
-    3. Streaming and Cloud Gaming Restriction. You may not directly or
+    3. Streaming and Cloud Gaming Restrictions. You may not directly or
        indirectly distribute interactive Licensee Content by means of
        streaming or broadcasting such Licensee Content that is primarily
        executed on a server and transmitted over the Internet or other
@@ -239,28 +246,34 @@ UNITY SOFTWARE LICENSE AGREEMENT 5.x
        you may not: (a) copy (except in the course of loading or installing)
        or modify or create derivative works of the Software; (b) distribute,
        transfer, sublicense, lease, lend, rent or otherwise provide access to
-       the Software to any third party; (c) make the functionality of the
-       Software available to multiple users or third parties through any
-       means, including but not limited to by uploading the Software to a
-       network or file-sharing service or through any hosting, application
-       services provider, service bureau, software-as-a-service (SaaS) or any
-       other type of services; (d) use the Software to develop a competing
-       product; or (e) do anything that could cause or result in the Software
-       (including the runtime portion thereof) being subject to any open
-       source license (or similar license) that requires as a condition of
-       use, modification or distribution that the Software (including the
-       runtime portion thereof) or other software combined or distributed
-       with the Software be: (i) disclosed or distributed in source code
-       form; (ii) licensed for the purpose of making derivative works; or
-       (iii) redistributable at no charge. You acknowledge and agree that
-       portions of the Software, including but not limited to the source code
-       and the specific design and structure of individual modules or
-       programs, are confidential and constitute or contain trade secrets of
-       Unity and its licensors. Accordingly, you agree not to disassemble,
-       decompile or reverse engineer the Software, in whole or in part, or
-       permit or authorize a third party to do so, except to the extent such
-       activities are expressly permitted by law notwithstanding this
-       prohibition.
+       the Software to any third party; (c) directly or indirectly make the
+       functionality of the Software available to multiple users or third
+       parties through any means, including but not limited to by uploading
+       the Software to a network or file-sharing service or through any
+       hosting, application services provider, service bureau,
+       software-as-a-service (SaaS) or any other technology or service; (d)
+       use the Software for competitive analysis or to develop a competing
+       product or service; or (e) do anything that could cause or result in
+       the Software (including the runtime portion thereof) being subject to
+       any open source license (or similar license) that requires as a
+       condition of use, modification or distribution that the Software
+       (including the runtime portion thereof) or other software combined or
+       distributed with the Software be: (i) disclosed or distributed in
+       source code form; (ii) licensed for the purpose of making derivative
+       works; or (iii) redistributable at no charge. You acknowledge and
+       agree that portions of the Software, including but not limited to the
+       source code and the specific design and structure of individual
+       modules or programs, are confidential and constitute or contain trade
+       secrets of Unity and its licensors. Accordingly, you agree not to
+       disassemble, decompile or reverse engineer the Software, in whole or
+       in part, or permit or authorize a third party to do so, except to the
+       extent such activities are expressly permitted by this Agreement or by
+       law notwithstanding this prohibition. Notwithstanding the restriction
+       prohibiting decompiling in the immediately preceding sentence, you may
+       decompile the Unity Common Language Infrastructure (CLI) assemblies
+       solely to inspect their functionality for purposes of understanding or
+       improving performance of your Licensee Content or any editor extension
+       to the Software.
 
   3. Ownership.
 
@@ -294,7 +307,8 @@ UNITY SOFTWARE LICENSE AGREEMENT 5.x
    you will promptly furnish Unity with written documentation of all such tax
    payments, including receipts.
 
-  5. Consent to Data Collection, Privacy Policy Obligations and Verification.
+  5. Consent to Data Collection; Privacy Policy Obligations; Unity Analytics,
+  Unity Ads and Unity Cloud Build Terms of Service; Verification.
 
     1. You acknowledge and accept [3]Unity's privacy policy. You agree that
        the Software (including the Unity runtime in your Licensee Content)
@@ -311,7 +325,14 @@ UNITY SOFTWARE LICENSE AGREEMENT 5.x
        that Unity is your service provider and collects certain data from
        your Licensee Content, along with a link to [4]Unity's privacy policy,
        which may be updated from time to time.
-    3. To ensure compliance with this Agreement, you agree that within thirty
+    3. If you access the Unity Analytics service made available with the
+       Software, you acknowledge and accept the [5]Unity Analytics Terms of
+       Service.
+    4. If you decide to display advertisements via the Unity Ads service, you
+       acknowledge and accept the [6]Unity Ads Publisher Terms of Service.
+    5. If you decide to use the Unity Cloud Build service, you acknowledge
+       and accept the [7]Unity Cloud Build Terms of Service.
+    6. To ensure compliance with this Agreement, you agree that within thirty
        (30) days from the date of Unity or its authorized representative’s
        request, you shall provide all pertinent records and information
        requested in order to verify that your installation and use of any and
@@ -338,26 +359,27 @@ UNITY SOFTWARE LICENSE AGREEMENT 5.x
 
   7. Term.
 
-   If you have licensed a trial version of the Software, the license granted
-   under this Agreement will remain in effect for a period of 30 days, unless
-   earlier terminated in accordance with this Agreement. For paid in full,
-   perpetual licenses, the license granted under this Agreement will remain
-   in effect unless earlier terminated in accordance with this Agreement. For
-   subscription based licenses, the license granted under this Agreement is
-   for the initial subscription period, and thereafter such license will
-   automatically renew on a month to month basis unless you renew the
-   subscription for a new subscription term or terminate and cancel the
-   license as described on the Unity web site at the time of license
-   purchase. Unity may cease offering perpetual licenses and/or updates and
-   new versions for such perpetual licenses and may modify or terminate
-   subscription or other Software license or service offerings at any time.
-   The license granted under this Agreement will automatically terminate,
-   with or without notice from Unity, if you breach any term of this
-   Agreement or fail to pay all fees due for the license. Upon termination,
-   you must at Unity’s option either promptly delete and destroy or return to
-   Unity all copies of the Software in your possession or control. Unity may
-   also disable the Software you have licensed upon expiration of a
-   subscription term license or in the event you breach this Agreement.
+   If you are using the Software on a trial basis (including using Unity
+   Personal on a trial basis), the license granted under this Agreement will
+   remain in effect for a period of 30 days, unless earlier terminated in
+   accordance with this Agreement. For paid in full, perpetual licenses, the
+   license granted under this Agreement will remain in effect unless earlier
+   terminated in accordance with this Agreement. For subscription based
+   licenses, the license granted under this Agreement is for the initial
+   subscription period, and thereafter such license will automatically renew
+   on a month to month basis unless you renew the subscription for a new
+   subscription term or terminate and cancel the license as described on the
+   Unity web site at the time of license purchase. Unity may cease offering
+   perpetual licenses and/or updates and new versions for such perpetual
+   licenses and may modify or terminate subscription or other Software
+   license or service offerings at any time. The license granted under this
+   Agreement will automatically terminate, with or without notice from Unity,
+   if you breach any term of this Agreement or fail to pay all fees due for
+   the license. Upon termination, you must at Unity’s option either promptly
+   delete and destroy or return to Unity all copies of the Software in your
+   possession or control. Unity may also disable the Software you have
+   licensed upon expiration of a subscription term license or in the event
+   you breach this Agreement.
 
   8. No Warranty.
 
@@ -455,24 +477,24 @@ UNITY SOFTWARE LICENSE AGREEMENT 5.x
        arbitrate disputes.
     5. Arbitration Exceptions. Notwithstanding the parties’ agreement to
        resolve all disputes through arbitration, either party may bring an
-       action in court: (a) to seek injunctive relief or to enforce its
-       intellectual property rights (“intellectual property rights” means
-       patents, copyrights, moral rights, trademarks, and trade secrets, but
-       not privacy or publicity rights), including without limitation to seek
-       injunctive relief; or (b) in cases that do not involve intellectual
-       property rights, to seek temporary, preliminary or other expedited or
-       provisional injunctive relief (but not money damages). If you reside
-       (or your principal place of business is) within the United States and
-       the parties have an intellectual property rights dispute, you and
-       Unity agree to submit to the personal and exclusive jurisdiction of
-       and venue the state and federal courts located in San Francisco
-       County, California. If you reside (or your principal place of business
-       is) outside of the United States and the parties have an intellectual
-       property rights dispute, you and Unity agree to submit to the personal
-       and exclusive jurisdiction of and venue the courts located in
-       Copenhagen, Denmark. The parties agree to accept service of process by
-       mail, and hereby waive any and all jurisdictional and venue defenses
-       otherwise available.
+       action in court: (a) to enforce its intellectual property rights
+       (“intellectual property rights” means patents, copyrights, moral
+       rights, trademarks, and trade secrets, but not privacy or publicity
+       rights), including without limitation to seek injunctive relief; or
+       (b) in cases that do not involve intellectual property rights, to seek
+       temporary, preliminary or other expedited or provisional injunctive
+       relief (but not money damages). If you reside (or your principal place
+       of business is) within the United States and the parties have an
+       intellectual property rights dispute, you and Unity agree to submit to
+       the personal and exclusive jurisdiction of and venue the state and
+       federal courts located in San Francisco County, California. If you
+       reside (or your principal place of business is) outside of the United
+       States and the parties have an intellectual property rights dispute,
+       you and Unity agree to submit to the personal and exclusive
+       jurisdiction of and venue the courts located in Copenhagen, Denmark.
+       The parties agree to accept service of process by mail, and hereby
+       waive any and all jurisdictional and venue defenses otherwise
+       available.
 
   14. General.
 
