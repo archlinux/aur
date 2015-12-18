@@ -1,7 +1,7 @@
 # Maintainer: martadinata666 <martadinata666@gmail.com>
 
 pkgname=compiz-core-git
-pkgver=compiz.0.8.10.r1.gab72c84
+pkgver=0.8.10.r6.gb1aea52
 pkgrel=1
 pkgdesc="This is the latest stable release of Compiz without DE deps"
 url="http://git.northfield.ws/compiz/?p=compiz/core;a=summary"
@@ -20,7 +20,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/core"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^compiz.//g'
 }
 
 build()
