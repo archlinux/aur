@@ -1,9 +1,7 @@
 # Maintainer: argymeg <argymeg at gmail dot com>
 
 pkgname=firefox-beta
-pkgver=43.0rc1
-_realpkgver=43.0
-_rcbuild=1
+pkgver=44.0b1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Beta (build from source)"
 arch=('i686' 'x86_64')
@@ -21,13 +19,13 @@ provides=("firefox=$pkgver")
 conflicts=("firefox-beta-bin")            
 install=firefox-beta.install
 options=('!emptydirs' '!makeflags')
-source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/candidates/$_realpkgver-candidates/build$_rcbuild/source/firefox-$_realpkgver.source.tar.xz
+source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
         mozconfig
         firefox-beta.desktop
         firefox-install-dir.patch
         vendor.js
         firefox-fixed-loading-icon.png)
-sha256sums=('a5b16741dcce9344ca71e39e0efb0e7e1336ca5160cb9b6b12f8985f402d8fea'
+sha256sums=('3fb21e244965b936611d4f4028588107c4446dba9f8636dbf44732cb413121f3'
             'd67d089fdfab328cea42833903ece1db23571dd62eea1a8549aa240292c63999'
             'cf19552d5bbd14c2747aad9b92a2897b88701e9b42990cf28cf40c2d50a41909'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
@@ -51,7 +49,7 @@ _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
 
 prepare() {
-  cd firefox-$_realpkgver
+  cd firefox-$pkgver
 
   cp ../mozconfig .mozconfig
   patch -Np1 -i ../firefox-install-dir.patch
@@ -81,7 +79,7 @@ prepare() {
 }
 
 build() {
-  cd firefox-$_realpkgver
+  cd firefox-$pkgver
 
   export PATH="$srcdir/path:$PATH"
   export PYTHON="/usr/bin/python2"
@@ -92,7 +90,7 @@ build() {
 }
 
 package() {
-  cd firefox-$_realpkgver
+  cd firefox-$pkgver
   make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
   mkdir "$pkgdir"/opt/firefox-beta
   mv "$pkgdir"/opt/firefox/* "$pkgdir"/opt/firefox-beta/
