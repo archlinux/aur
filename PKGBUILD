@@ -1,17 +1,17 @@
-# $Id: PKGBUILD 143033 2015-10-06 02:39:33Z fyan $
+# $Id: PKGBUILD 148309 2015-12-04 05:30:35Z fyan $
 # Maintainer: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # x32 Maintainer: Fantix King <fantix.king at gmail.com>
 
 _pkgbasename=freetype2
 pkgname=libx32-$_pkgbasename
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1.1
 pkgdesc="TrueType font rendering library (x32 ABI)"
 arch=(x86_64)
 license=('GPL')
 url="http://www.freetype.org/"
-# adding harfbuzz for improved OpenType features auto-hinting 
+# adding harfbuzz for improved OpenType features auto-hinting
 # introduces a cycle dep to harfbuzz depending on freetype wanted by upstream
 depends=('libx32-zlib' 'libx32-bzip2' 'libx32-libpng' 'libx32-harfbuzz' $_pkgbasename)
 makedepends=(gcc-multilib-x32)
@@ -20,7 +20,7 @@ source=(http://download.savannah.gnu.org/releases/freetype/freetype-${pkgver}.ta
         0002-Enable-subpixel-rendering.patch
         0003-Enable-subpixel-hinting.patch
         0004-Mask-subpixel-hinting-with-an-env-var.patch)
-sha1sums=('393447fbf64c107b20a1ccc9e9a9a52f39786ae0'
+sha1sums=('29c22b85b77cb22cf95c13e7062e21f39fe6b17a'
           'SKIP'
           '1c7bc438df0428a63f881e7e4343b22c5b09ecb1'
           'e2d2b8c4847ab9cfd497179c7140835e99ece711'
