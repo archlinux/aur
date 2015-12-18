@@ -1,10 +1,10 @@
 # Maintainer: Grigorii Horos <horosgrisa@gmail.com>
 
-_git=4df815d7c77b5f68dfd7dfd8818bae59eadbbeec
+_git=e8ea84fd7b02b780f7e3aa51887ebc0155e5245a
 _repo=papirus-pack-kde
 pkgbase=papirus
-pkgname=( 'papirus' 'bomi-skin-papirus' 'libreoffice-style-papirus' 'papirus-color-scheme' 'papirus-kmail-theme' 'plasma-theme-papirus' 'papirus-gtk-theme' 'papirus-konsole-colorscheme' 'yakuake-skin-papirus' 'papirus-aurorae-theme' 'papirus-icon-theme' 'papirus-plasma-theme' )
-pkgver=20151216
+pkgname=( 'papirus' 'bomi-skin-papirus' 'libreoffice-style-papirus' 'papirus-color-scheme' 'papirus-kmail-theme' 'plasma-theme-papirus' 'papirus-gtk-theme' 'papirus-konsole-colorscheme' 'yakuake-skin-papirus' 'vlc-skin-papirus' 'papirus-aurorae-theme' 'papirus-icon-theme' 'papirus-plasma-theme' )
+pkgver=20151218
 pkgrel=1
 arch=('any')
 url="https://github.com/varlesh/${_repo}"
@@ -12,7 +12,7 @@ license=('CCPL:by-sa')
 
 options=('!strip')
 source=("${_repo}-${pkgver}.tar.gz::${url}/archive/${_git}.tar.gz")
-sha256sums=('54ba8d5a31be04a91deae55c1312f2d8b72722bfe77680601bd485bf9f657fbb')
+sha256sums=('5a378c5bec12d3ef149dc038a409c8dfd1e09bf1c16f0bec40c214e904c71b64')
 
 package_papirus() {
     pkgdesc="Look-and-feel package for modified and adaptive Paper theme for KDE."
@@ -21,7 +21,8 @@ package_papirus() {
                 'papirus-konsole-colorscheme: Modified and adaptive Paper colorscheme for Konsole'
                 'papirus-kmail-theme: Modified and adaptive Paper theme for Kmail'
                 'bomi-skin-papirus: Papirus theme for Bomi'
-                'libreoffice-style-papirus: Papirus theme for Libreoffice')
+                'libreoffice-style-papirus: Papirus theme for Libreoffice'
+                'vlc-skin-papirus: Paper skin for VLC Media Player')
    install -d ${pkgdir}/usr/share/plasma/look-and-feel
    cp -r ${srcdir}/${_repo}-${_git}/look-and-feel/* ${pkgdir}/usr/share/plasma/look-and-feel/
    install -D -m644  ${srcdir}/${_repo}-${_git}/plasma-themes/papirus/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
@@ -45,10 +46,13 @@ package_libreoffice-style-papirus() {
     depends=('libreoffice')
     replaces=('libreoffice-papirus-theme')
     install -d ${pkgdir}/usr/lib/libreoffice/share/config
-    cp -r ${srcdir}/${_repo}-${_git}/libreoffice-icons/images_papirus.zip ${pkgdir}/usr/lib/libreoffice/share/config
+    install -Dm644 -t "${pkgdir}/usr/lib/libreoffice/share/config/" ${srcdir}/${_repo}-${_git}/libreoffice-icons/*.zip
+    install -Dm644 -t "${pkgdir}/opt/libreoffice5.0/share/config/"  ${srcdir}/${_repo}-${_git}/libreoffice-icons/*.zip
     install -D -m644  ${srcdir}/${_repo}-${_git}/libreoffice-icons/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
     find ${pkgdir}/usr -type d -exec chmod 755 {} \;
+    find ${pkgdir}/opt -type f -exec chmod 644 {} \;
+    find ${pkgdir}/opt -type d -exec chmod 755 {} \;
 } 
 
 package_papirus-aurorae-theme() {
@@ -144,6 +148,16 @@ package_yakuake-skin-papirus() {
     find ${pkgdir}/usr -type d -exec chmod 755 {} \;
 } 
 
+
+package_vlc-skin-papirus(){
+    pkgdesc="Paper skin for VLC Media Player"
+    options=('!strip')
+    depends=('vlc')
+    install -dm755 ${pkgdir}/usr/share/vlc/skins2
+    cp -r ${srcdir}/${_repo}-${_git}//vlc-skins/Papirus* ${pkgdir}/usr/share/vlc/skins2/
+    find ${pkgdir}/usr -type f -exec chmod 644 {} \;
+    find ${pkgdir}/usr -type d -exec chmod 755 {} \;
+}
 
 package_papirus-plasma-theme(){
     pkgdesc="This is fake package, please install \`plasma-theme-papirus\`"
