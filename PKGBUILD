@@ -6,15 +6,15 @@
 # Contributor: teratomata <teratomat@gmail.com>
 
 pkgname=mathematica
-pkgver=10.3.0
-pkgrel=2
+pkgver=10.3.1
+pkgrel=1
 pkgdesc="A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing."
 arch=('i686' 'x86_64')
 url="http://www.wolfram.com/mathematica/"
 license=('proprietary')
 depends=('ttf-bitstream-vera')
 source=("file://Mathematica_${pkgver}_LINUX.sh")
-md5sums=('46f3b4eb9b52a94ff8833f26fedefbb4')
+md5sums=('4af9ca41e354419c71884597d46d75e4')
 install='mathematica.install'
 options=('!strip')
 
@@ -58,10 +58,10 @@ package() {
 
     cd ${pkgdir}/opt/Mathematica/SystemFiles/Installation
 
-    sed -Ei 's|^(\s*TryExec=).*|\1/usr/bin/Mathematica|g' wolfram-mathematica10.desktop
-    sed -Ei 's|^(\s*Exec=).*|\1/usr/bin/Mathematica %F|g' wolfram-mathematica10.desktop
-    cp wolfram-mathematica10.desktop ${pkgdir}/usr/share/applications/wolfram-mathematica10.desktop
-    echo -e '\t\tCategories=Science;Math;NumericalAnalysis;DataVisualization;' >> ${pkgdir}/usr/share/applications/wolfram-mathematica10.desktop
+    sed -Ei 's|^(\s*TryExec=).*|\1/usr/bin/Mathematica|g' wolfram-mathematica.desktop
+    sed -Ei 's|^(\s*Exec=).*|\1/usr/bin/Mathematica %F|g' wolfram-mathematica.desktop
+    cp wolfram-mathematica.desktop ${pkgdir}/usr/share/applications/wolfram-mathematica.desktop
+    echo -e '\t\tCategories=Science;Math;NumericalAnalysis;DataVisualization;' >> ${pkgdir}/usr/share/applications/wolfram-mathematica.desktop
     
     cp wolfram-all.directory ${pkgdir}/usr/share/desktop-directories/
     cp *.xml ${pkgdir}/usr/share/mime/packages/
