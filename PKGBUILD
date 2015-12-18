@@ -1,5 +1,5 @@
 pkgname=osvr-core-git
-pkgver=v0.6.r244.g4c0398f
+pkgver=v0.6.r618.g95e0038
 pkgrel=1
 pkgdesc="The core libraries, applications, and plugins of the OSVR software platform."
 arch=(i686 x86_64)
@@ -46,7 +46,8 @@ build() {
   git submodule init
   git submodule update
   cd "$srcdir/osvr-core-build"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug -DOSVR_UTIL_DEV_VERBOSE=1 ../osvr-core
+  # tests don't link, undefined reference to json lib
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DOSVR_UTIL_DEV_VERBOSE=1 -DBUILD_TESTING=0 -DBUILD_HEADER_DEPENDENCY_TESTS=0 ../osvr-core
 # -DCMAKE_MODULE_PATH="$srcdir" ../osvr-core
 # -Djsoncpp_DIR="$srcdir/osvr-core-build/jsoncppmake" ../osvr-core
   make
