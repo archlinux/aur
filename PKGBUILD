@@ -1,7 +1,7 @@
 # Maintainer: Thomas Gatzweiler <thomas.gatzweiler@gmail.com>
 
 pkgname=wsjtx-bin
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Software for Amateur Radio Weak-Signal Communication (JT9 and JT65)"
 arch=(i686 x86_64)
@@ -13,11 +13,11 @@ conflicts=(wsjtx)
 makedepends=()
 
 if [ "$CARCH" == "x86_64" ]; then
-  debfile="wsjtx_1.5.0_amd64.deb"
-  md5sums=(19c56e6a2dd273eaf3d6125933cb6381)
+  debfile="wsjtx_1.6.0_amd64.deb"
+  md5sums=(4d886a91e7ef105f623fa22ef23f228f)
 else
-  debfile="wsjtx_1.5.0_i386.deb"
-  md5sums=(c3e3fe2351cebf1f81133de140d8ff6c)
+  debfile="wsjtx_1.6.0_i386.deb"
+  md5sums=(37737d36da5beaacff6c56c722e11335)
 fi
   
 source=("http://physics.princeton.edu/pulsar/k1jt/${debfile}")
