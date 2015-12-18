@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://getmonero.org/"
 license=('custom:Cryptonote')
 
-depends=('boost-libs>=1.45'  'unbound>=1.4.16'  'miniupnpc>=1.6' 'db')
+depends=('boost-libs>=1.45'  'unbound>=1.4.16'  'miniupnpc>=1.6')
 makedepends=('git' 'cmake' 'boost')
 
 
@@ -19,8 +19,7 @@ source=("$_gitname::git+https://github.com/monero-project/bitmonero.git"
 )
 	
 md5sums=('SKIP'
-         '86e9747ec3fb24ed48fc44e550279c9829ea70d7'
-	)
+         '4e5089fbbf7fd7c2300a4086862e3911')
 
 pkgver() {
 	cd "$srcdir/$_gitname"
@@ -48,7 +47,7 @@ package() {
         install -D -m755 "$srcdir/$_gitname/build/release/bin/simplewallet" "$pkgdir/usr/bin/simpleminer"
 
         # install unit-file for service bitmonerod
-        install -Dm644 ../bitmonerod@.service "${pkgdir}/usr/lib/systemd/system/bitmonerod@.service"
+        install -Dm644 $srcdir/bitmonerod@.service "${pkgdir}/usr/lib/systemd/system/bitmonerod@.service"
 	
         # install license when pull request accepted
 	#install -D -m644 "$srcdir/$_gitname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
