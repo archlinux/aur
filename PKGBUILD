@@ -18,8 +18,8 @@
 
 pkgbase=linux-w110er
 _srcname=linux-4.3
-pkgver=4.3.2
-pkgrel=2
+pkgver=4.3.3
+pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -39,7 +39,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 md5sums=('58b35794eee3b6d52ce7be39357801e7'
          'SKIP'
-         '3a465c7cf55ec9dbf2d72d9292aa5fde'
+         'd3235b3640ae6ac1ab579171943fda4b'
          'SKIP'
          '2bb07837febe3baaced4c1c0afb0507c'
          'c320955ab7d7a76f509cb24b1b55229d'
