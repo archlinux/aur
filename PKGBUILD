@@ -3,12 +3,12 @@
 
 pkgname=seafile-server
 pkgver=5.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Next-generation open source cloud storage with advanced features on privacy protection and teamwork. (Server components, without seahub)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/haiwen/seafile/"
 license=('GPL3')
-depends=('seafile-shared=5.0.2' 'python2-mako' 'python2-dateutil' 'python2-webpy' 'python2-pip' 'python2-virtualenv' 'python2-flup' 'python2-six' 'libevhtp-seafile=1.2.10' 'git')
+depends=('seafile-shared=5.0.2' 'python2-mako' 'python2-dateutil' 'python2-webpy' 'python2-pip' 'python2-virtualenv' 'python2-flup' 'python2-six' 'libevhtp-seafile=1.2.9' 'git')
 makedepends=('vala' 'intltool')
 conflicts=('django' 'django-rest-framework', 'seafile')
 options=('!libtool' '!emptydirs')
