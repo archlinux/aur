@@ -3,9 +3,9 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=pycharm-eap
-_buildver=143.1183.3
-_pkgver=5.0.2
-_eap="False"
+_buildver=143.1453.1
+_pkgver=5.0.3
+_eap="True"
 pkgver="${_pkgver}.${_buildver}"
 pkgrel=1
 pkgdesc="Powerful Python and Django IDE, Early Access Program (EAP) build. Professional edition."
@@ -41,8 +41,6 @@ package() {
 		"${pkgdir}/usr/bin/" \
 		"${pkgdir}/usr/share/licenses/${pkgname}/" \
 		"${pkgdir}/usr/share/applications/"
-
-	_eap="False"
 
 	if [[ "True" = "${_eap}" ]]; then
 		cp -R --no-preserve=ownership "${srcdir}/pycharm-${_buildver}/"* "${pkgdir}/opt/${pkgname}"
