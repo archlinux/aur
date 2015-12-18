@@ -16,7 +16,7 @@ options=('!libtool')
 source=("http://downloads.sourceforge.net/sourceforge/$_realname/libpng-${pkgver}.tar.xz"
 "http://downloads.sourceforge.net/sourceforge/libpng-apng/$pkgname/$pkgver/libpng-${_apngver}-apng.patch.gz")
 md5sums=('57f2c94dee3cd425c40f1ef5e82a9e77'
-         '0d493602a5191bc7c1a5ae151156b152')
+         '946881077f55c8939ace56346a8538fa')
 
 build() {
   cd "${srcdir}/${_realname}-${pkgver}"
