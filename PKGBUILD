@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 248014 2015-10-01 16:04:08Z fyan $
+# $Id: PKGBUILD 255786 2015-12-11 07:23:13Z fyan $
 # Maintainer: Angel Velasquez <angvp@archlinux.org>
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Stéphane Gaudreault <stephane@archlinux.org>
@@ -8,8 +8,8 @@
 
 _pkgbasename=python
 pkgname=libx32-python
-pkgver=3.5.0
-pkgrel=2.1
+pkgver=3.5.1
+pkgrel=1.1
 _pybasever=3.5
 pkgdesc="Next generation of the python high-level scripting language (x32 ABI)"
 arch=('x86_64')
@@ -19,6 +19,8 @@ depends=('libx32-expat' 'libx32-bzip2' 'libx32-gdbm' 'libx32-openssl' 'libx32-li
 makedepends=('libx32-tk' 'libx32-sqlite' 'bluez-libs' 'libx32-mpdecimal' 'libx32-readline' 'libx32-xz')
 checkdepends=('gdb' 'xorg-server-xvfb')
 optdepends=('libx32-sqlite'
+            'libx32-readline'
+            'libx32-ncurses: for curses'
             'libx32-mpdecimal: for decimal'
             'libx32-xz: for lzma'
             'libx32-tk: for tkinter')
@@ -26,27 +28,17 @@ options=('!makeflags')
 source=("http://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz"
         pyconfig-stub.h
         venv-x32.patch
-        test_gdb-version-fix.patch
-        dont-make-libpython-readonly.patch
-        issue25150.patch)
-sha1sums=('871a06df9ab70984b7398ac53047fe125c757a70'
+        dont-make-libpython-readonly.patch)
+sha1sums=('0186da436db76776196612b98bb9c2f76acfe90e'
           '74e5b55b394b1dfe5c430734e2ce049d595fb50f'
           'af6b854349f4992892471b9cb363e8a6ce19ea6b'
-          'ab86515aff465385675e2e6e593f09596e0a8db0'
-          'c22b24324b8e53326702de439c401d97927ee3f2'
-          'bd068695d22931320069200f240c425096bb5011')
+          'c22b24324b8e53326702de439c401d97927ee3f2')
 
 prepare() {
   cd Python-${pkgver}
 
-  # https://bugs.python.org/issue25096
-  patch -p1 -i ../test_gdb-version-fix.patch
-
   # FS#45809
   patch -p1 -i ../dont-make-libpython-readonly.patch
-
-  # https://bugs.python.org/issue25150
-  patch -p1 -i ../issue25150.patch
 
   # x32 venv
   patch -p1 -i ../venv-x32.patch
@@ -102,15 +94,20 @@ build() {
 check() {
   # Failures:
   # test_pathlib & test_posixpath: https://bugs.python.org/issue24950
+  # test_gdb
+  # test_distutils: because of our EXTRA_CFLAGS
+  # test_nntplib: downloading external files and failed
 
   # Hacks:
   # test_tk: xvfb-run
   # test_unicode_file: LC_CTYPE=en_US.utf-8
+  # test_gdb: SHELL=/bin/sh
 
   cd Python-${pkgver}
+  SHELL=/bin/sh \
   LD_LIBRARY_PATH="${srcdir}/Python-${pkgver}":${LD_LIBRARY_PATH} \
   LC_CTYPE=en_US.utf-8 xvfb-run \
-    "${srcdir}/Python-${pkgver}/python-x32" -m test.regrtest -uall || warning "Expected failure"
+    "${srcdir}/Python-${pkgver}/python-x32" -m test.regrtest -v -uall || warning "Expected failure"
 }
 
 package() {
