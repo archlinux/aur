@@ -44,6 +44,9 @@ package() {
         # install simpleminer
         install -D -m755 "$srcdir/$_gitname/build/release/bin/simplewallet" "$pkgdir/usr/bin/simpleminer"
 
-	# install license when pull request accepted
+        # install unit-file for service bitmonerod
+        install -Dm644 ../bitmonerod@.service "${pkgdir}/usr/lib/systemd/system/bitmonerod@.service"
+	
+        # install license when pull request accepted
 	#install -D -m644 "$srcdir/$_gitname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
