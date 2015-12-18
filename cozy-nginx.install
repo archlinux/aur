@@ -246,7 +246,7 @@ post_install() {
 		            cp /usr/share/cozy/nginx-config /etc/nginx/cozy.conf;
 		        fi
 			msg_blue 'Restarting Nginx web server...'
-		        systemctl restart httpd
+		        systemctl restart nginx
 		    fi
 		fi
 	else
