@@ -1,0 +1,11 @@
+--- configure.orig	2015-12-18 14:48:28.000000000 +0100
++++ configure	2015-12-18 15:01:39.619986497 +0100
+@@ -1893,7 +1893,7 @@
+ 
+   echo "$ac_t""getpseudotty" 1>&6
+ else
+-if test -c /dev/ptmx && test -c /dev/pts/0
++if test -c /dev/ptmx
+ then
+   cat >> confdefs.h <<\EOF
+ #define HAVE_DEV_PTMX 1
