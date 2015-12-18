@@ -1,0 +1,23 @@
+diff -aur a/baobab/src/baobab-utils.c b/baobab/src/baobab-utils.c
+--- a/baobab/src/baobab-utils.c	2015-10-06 09:12:40.000000000 -0700
++++ b/baobab/src/baobab-utils.c	2015-12-17 14:57:16.581061284 -0700
+@@ -399,14 +399,11 @@
+ 	application = g_app_info_get_default_for_type (content, TRUE);
+ 
+ 	if (!application) {
+-			primary = g_strdup_printf (_("Could not open folder \"%s\""), 
+-			                           g_file_get_basename (file));
+-			message (primary, 
+-			         _("There is no installed viewer capable "
+-				   "of displaying the folder."),
+-				 GTK_MESSAGE_ERROR,
+-				 baobab.window);
+-			g_free (primary);
++                gchar *uri_file = g_file_get_uri (file);
++                primary = g_strdup_printf ("xdg-open \"%s\"", uri_file);
++                system (primary);
++                g_free (uri_file);
++		 g_free (primary);
+ 	}
+ 	else {
+ 		GList *uris = NULL;
