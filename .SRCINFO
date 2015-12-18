@@ -1,0 +1,15 @@
+pkgbase = ufiformat
+	pkgdesc = USB floppy disk format utility
+	pkgver = 0.9.9
+	pkgrel = 1
+	url = http://www.geocities.jp/tedi_world/format_usbfdd_e.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	provides = ufiformat
+	conflicts = ufiformat
+	source = http://www.geocities.jp/tedi_world/ufiformat-0.9.9.tar.gz
+	md5sums = 18e41a189b81b1599a38ce8640698b7f
+
+pkgname = ufiformat
+
