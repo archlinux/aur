@@ -16,6 +16,6 @@ md5sums=('23588474a1859954e252534bd6939689'
          '509caab1fb6ad3990e87890a5dfb7d81')
 
 package() {
-    install -Dm644 "Atlas-Beta-${pkgver}/Atlas-Beta.jar" "$pkgdir/usr/share/java/atlas-maps/atlas.jar"
+    install -Dm644 "atlas-beta/atlas-beta.jar" "$pkgdir/usr/share/java/atlas-maps/atlas.jar"
     install -Dm755 atlas-maps.sh "$pkgdir/usr/bin/atlas-maps"
 }
