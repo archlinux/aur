@@ -1,7 +1,7 @@
 # Contributor: Sébastien Duquette <ekse.0x@gmail.com>
 # Contributor: damir <damir@archlinux.org>
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
-# Maintainer: CRT <cirkit@koderoot.net>
+# Maintainer: CRT <cirkit@archlinux.email>
 
 pkgname=lft
 pkgver=3.73
