@@ -1,6 +1,6 @@
 # Contributor: Sebastian Wolf <fatmike303 at googlemail dot com>
 pkgname=chipmachine
-pkgver=1.01
+pkgver=1.2
 pkgrel=1
 pkgdesc='A demoscene/retro Jukebox/spotify-like music player'
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ makedepends=('cmake' 'ninja')
 license=('MIT')
 source=(https://github.com/sasq64/${pkgname}/archive/v${pkgver}.tar.gz
         https://github.com/sasq64/apone/archive/${pkgname}-v${pkgver}.tar.gz)
-sha256sums=(f39a4688ed3e2ee545b35af40bf7577d52596e0db74eddea12ad7cf878c981cc
-            37a39f2a3ed502e2c5ee55d005c8634888d5129a0ca0af79d53028f279ee6623)
+sha256sums=(1371734728b99fa22ebd36a7aa9ccc88e8f975ff8abb749075c10afc01eb3b51
+            96fd8f1ec540a8c3121145dbdf51adf9ad2efe2b0ed58b68d7512d7c45fc5806)
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
