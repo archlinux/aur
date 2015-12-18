@@ -2,7 +2,7 @@
 # Contributor: mjheagle <mjheagle8@gmail.com>
 _name='zsh-syntax-highlighting'
 pkgname="${_name}-git"
-pkgver=0.2.1.452.e60737d
+pkgver=0.4.0.r11.g38c3ac8
 pkgrel=1
 pkgdesc='Fish shell like syntax highlighting for Zsh'
 url='https://github.com/zsh-users/zsh-syntax-highlighting'
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
    cd "${srcdir}/${_name}"
-   echo "0.2.1.$(git rev-list --count HEAD).$(git describe --always )"
+   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
