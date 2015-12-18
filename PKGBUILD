@@ -4,8 +4,8 @@
 _pkgname=papirus-pack-kde
 pkgbase=papirus-git
 pkgname=('papirus-git' 'papirus-plasma-theme-git' 'papirus-icon-theme-git' 'papirus-color-scheme-git' 'papirus-gtk-theme-git' 'papirus-aurorae-theme-git'
-         'papirus-konsole-colorscheme-git' 'papirus-yakuake-theme-git' 'bomi-skin-papirus-git' 'libreoffice-papirus-theme-git' 'papirus-kmail-theme-git')
-pkgver=r379.b3bc341
+         'papirus-konsole-colorscheme-git' 'papirus-yakuake-theme-git' 'bomi-skin-papirus-git' 'libreoffice-papirus-theme-git' 'papirus-kmail-theme-git' 'papirus-vlc-theme-git')
+pkgver=r383.0c6fc69
 pkgrel=1
 pkgdesc="Look-and-feel package for modified and adaptive Paper theme for KDE"
 arch=('any')
@@ -25,7 +25,7 @@ pkgver(){
 
 package_papirus-git() {
     depends=('papirus-plasma-theme-git' 'papirus-icon-theme-git' 'papirus-color-scheme-git' 'papirus-gtk-theme-git' 'papirus-aurorae-theme-git'
-             'papirus-konsole-colorscheme-git' 'papirus-yakuake-theme-git' 'libreoffice-papirus-theme-git')
+             'papirus-konsole-colorscheme-git' 'papirus-yakuake-theme-git' 'libreoffice-papirus-theme-git' 'papirus-vlc-theme-git')
     optdepends=('bomi-skin-papirus-git' 'papirus-kmail-theme-git')
     install -dm755 ${pkgdir}/usr/share/plasma/look-and-feel
     cp -r ${srcdir}/${_pkgname}/look-and-feel/* ${pkgdir}/usr/share/plasma/look-and-feel/
@@ -161,6 +161,17 @@ package_papirus-kmail-theme-git() {
     conflicts=('papirus-kmail-theme')
     install -dm755 ${pkgdir}/usr/share/messageviewer/themes
     cp -r ${srcdir}/${_pkgname}/kmail-theme/papirus* ${pkgdir}/usr/share/messageviewer/themes/
+    find ${pkgdir}/usr -type f -exec chmod 644 {} \;
+    find ${pkgdir}/usr -type d -exec chmod 755 {} \;
+}
+
+package_papirus-vlc-theme-git() {
+    pkgdesc="Modified and adaptive Paper theme for VLC Media Player"
+    options=('!strip')
+    depends=('vlc')
+    makedepends=('git')
+    install -dm755 ${pkgdir}/usr/share/vlc/skins2
+    cp -r ${srcdir}/${_pkgname}/vlc-skins/Papirus ${pkgdir}/usr/share/vlc/skins2/
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
     find ${pkgdir}/usr -type d -exec chmod 755 {} \;
 }
