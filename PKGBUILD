@@ -2,7 +2,7 @@
 _name=ripe.atlas.cousteau
 pkgname=python-ripe-atlas-cousteau
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A python wrapper around RIPE ATLAS API"
 arch=('any')
 url="https://github.com/RIPE-NCC/ripe-atlas-cousteau"
@@ -16,5 +16,5 @@ md5sums=('196933a791e4d0c2eb123ca5a79162e0')
 package() {
     cd "$srcdir/$_name-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1 || return 1
-    rm -r "ripe/__pycache__" "ripe/atlas/__pycache__"
+    rm -rf "ripe/__pycache__" "ripe/atlas/__pycache__"
 }
