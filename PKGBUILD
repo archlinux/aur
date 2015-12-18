@@ -3,13 +3,13 @@
 pkgname=little_boxes
 pkgdesc="Put boxes around stdin"
 url="https://github.com/giodamelio/little_boxes"
-pkgrel=3
+pkgrel=1
 makedepends=('rust' 'cargo')
 arch=('x86_64')
 license=('MIT')
-pkgver='1.0.1'
+pkgver='1.0.2'
 source=("https://github.com/giodamelio/little_boxes/archive/$pkgver.zip")
-sha1sums=("a63bb721961ba3e58206b8080a738265c9d52e81")
+sha1sums=("0711e17d4c537664acd41f3fed190be67acf1391")
 
 build(){
     unzip -o $pkgver.zip
