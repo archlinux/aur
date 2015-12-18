@@ -2,7 +2,7 @@
 
 pkgname=('dfmt')
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Dfmt is a formatter for D source code "
 arch=('i686' 'x86_64')
 url="https://github.com/Hackerpilot/dfmt"
@@ -21,11 +21,6 @@ sha256sums=(
 	'SKIP'
 )
 
-pkgver() {
-	cd $srcdir/dfmt
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 prepare() {
 	cd $srcdir/dfmt
 	git submodule update --init --recursive
@@ -34,6 +29,8 @@ prepare() {
 build() {
 	cd $srcdir/dfmt
 	make
+
+	strip bin/dfmt
 }
 
 package(){
