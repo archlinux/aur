@@ -14,7 +14,7 @@ install='acquisition.install'
 source=("https://github.com/Novynn/acquisitionplus/archive/${pkgver}-PLUS.tar.gz"
         "acquisition.desktop")
 
-sha256sums=('c5809b29ad3fc0f850fb5510e5cd0e0820318ee4f1916a1e58e478aa3045b1f7'
+sha256sums=('f5cfc5fe1f89764d5693a3c2e7cd43a93da442e41449bfd5f4d069ccd80fbd71'
             '556e8a764ecaf9ac4b9b7f6b6340c7bff7aae9c1b179fc0601d93886bc810e81')
 
 prepare() {
