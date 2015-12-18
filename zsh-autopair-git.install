@@ -3,9 +3,5 @@ post_install() {
 To use, source the library from your .zshrc:
 
     source /usr/share/zsh/plugins/zsh-autopair/autopair.zsh
-
-The example key bindings are also found there:
-
-    source /usr/share/zsh/plugins/zsh-autopair/example-bindings.zsh
 "
 }
