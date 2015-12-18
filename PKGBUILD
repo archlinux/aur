@@ -2,7 +2,7 @@
 pkgname='bitmonero-git'
 _gitname='bitmonero'
 pkgver=0.8.8.7
-pkgrel=1
+pkgrel=3
 arch=('x86_64')
 url="https://getmonero.org/"
 license=('custom:Cryptonote')
@@ -14,9 +14,12 @@ makedepends=('git' 'cmake' 'boost')
 pkgdesc="Peer-to-peer network based anonymous digital currency (includes deaemon, wallet and miner)"
 provides=('bitmonerod' 'simplewallet' 'simpleminer')
 conflicts=('bitmonerod' 'simplewallet' 'simpleminer')
-source=("$_gitname::git+https://github.com/monero-project/bitmonero.git")
+source=("$_gitname::git+https://github.com/monero-project/bitmonero.git"
+        "bitmonerod@.service"
+)
 	
 md5sums=('SKIP'
+         '86e9747ec3fb24ed48fc44e550279c9829ea70d7'
 	)
 
 pkgver() {
