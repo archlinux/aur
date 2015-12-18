@@ -9,7 +9,7 @@
 _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
 pkgver=2.8.3
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=('i686' 'x86_64')
@@ -21,8 +21,7 @@ depends=(
       'libva' 'libvdpau' 'libwebp' 'opencore-amr' 'openjpeg' 'opus'
       'schroedinger' 'sdl' 'speex' 'v4l-utils' 'xvidcore' 'zlib'
       'libdcadec.so' 'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so'
-      'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so' 'libvpx.so'
-      'libx264.so' 'libx265.so'
+      'libvpx.so' 'libx264.so' 'libx265.so'
       'libfdk-aac'
       )
 makedepends=('hardening-wrapper' 'ladspa' 'libvdpau' 'yasm')
