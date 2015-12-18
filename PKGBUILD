@@ -7,6 +7,7 @@ arch=('any')
 url="https://www.dropbox.com/s/zihpxwdizov1ecr/heinlein"
 license=('WTFPL')
 depends=('fortune-mod')
+makedepends=('wget')
 source=("$url")
 md5sums=('e3696e7e2b0f221f6f29e30d8b40ed64')
 
