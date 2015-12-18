@@ -2,7 +2,7 @@
 
 pkgname="unagi"
 pkgver=0.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Compositing manager for implementing effects with regular window managers."
 arch=('i686' 'x86_64')
 url="http://projects.mini-dweeb.org/projects/unagi"
@@ -18,7 +18,7 @@ build() {
   cd "$pkgname-$pkgver"
   mkdir m4
   ./autogen.sh
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --sysconfdir=/etc
   make
 }
 package() {
