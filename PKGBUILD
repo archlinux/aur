@@ -4,7 +4,7 @@
 #Contributor: Diego <cdprincipe@gmail.com
 pkgname=ampache
 pkgver=3.8.1
-pkgrel=1
+pkgrel=3
 pkgdesc="A PHP-based tool for managing and playing your audio/video files via a web interface"
 arch=('i686' 'x86_64')
 url="http://www.ampache.org/"
@@ -17,9 +17,9 @@ optdepends=('lame: all transcoding/downsampling'
                 'mp3splt: mp3 and ogg transcoding/downsampling')
 conflicts=('ampache-git' 'ampache-development')
 install=${pkgname}.install
-source=(https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz
+source=(https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}_all.zip
         'nginx-example.conf')
-sha256sums=('2eff94b5674ceb3cfc3a53c1addb297b016f74b1e732f17e9d05920f2ed2a35a'
+sha256sums=('20fc3679830e0f950b94e632c23fce79d0192f6338db0c23b29443a5ef87607f'
             'efb63c0ac7e6462ee5c705b9c1998a1d2462502e19e7e5c97fce2c5142b8e62e')
 
 build() {
@@ -27,9 +27,11 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${srcdir}
   mkdir -p ${pkgdir}/srv/http/${pkgname}
-  cp -a * ${pkgdir}/srv/http/${pkgname}/
+  cp -r * ${pkgdir}/srv/http/${pkgname}/
+  unlink ${pkgdir}/srv/http/${pkgname}/${pkgname}-${pkgver}_all.zip
+  unlink ${pkgdir}/srv/http/${pkgname}/nginx-example.conf
   mkdir -p ${pkgdir}/usr/share/doc/${pkgname}
   install -D -m644 ${srcdir}/nginx-example.conf ${pkgdir}/usr/share/doc/${pkgname}/
 }
