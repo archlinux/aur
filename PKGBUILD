@@ -2,7 +2,7 @@
 
 pkgname=peazip-gtk2-portable
 pkgver=5.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="NATIVE 64-BIT GTK2 archiver utility, portable version with few dependencies"
 arch=(x86_64)
 url=http://www.peazip.org/peazip-linux-64.html
@@ -48,11 +48,11 @@ package() {
     fi
     # Integrate into Dolphin
     if [ -f "/usr/bin/dolphin" ]; then cd "$_deskdir/kde4-dolphin/usr/share/kde4/services/ServiceMenus"
-      install -Dm755 "peazipadd" "$_doldir/peazipadd"
-      install -Dm755 "peazipext" "$_doldir/peazipext"
-      install -Dm755 "peazipextfolder" "$_doldir/peazipextfolder"
-      install -Dm755 "peazipexthere" "$_doldir/peazipexthere"
-      install -Dm755 "peazipopen" "$_doldir/peazipopen"
+      install -Dm755 "peazipadd.desktop" "$_doldir/peazipadd.desktop"
+      install -Dm755 "peazipext.desktop" "$_doldir/peazipext.desktop"
+      install -Dm755 "peazipextfolder.desktop" "$_doldir/peazipextfolder.desktop"
+      install -Dm755 "peazipexthere.desktop" "$_doldir/peazipexthere.desktop"
+      install -Dm755 "peazipopen.desktop" "$_doldir/peazipopen.desktop"
       chown -R $USER:users $_doldir
     fi
 }
