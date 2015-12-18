@@ -6,4 +6,5 @@ unset GTK_IM_MODULE
 # HACK: fixes WebGL builds by adding a symlink (python -> python2) to the PATH
 export PATH=/opt/Unity/Editor:$PATH
 
+mkdir -p ~/.local/share/unity3d/Packages
 exec /opt/Unity/Editor/Unity "$@"
