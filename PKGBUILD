@@ -2,7 +2,7 @@
 
 pkgname=pilas-engine
 my_pkgname=pilas
-pkgver=1.3.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Un motor para hacer videojuegos de manera sencilla en Python.  An engine to make games in an easy way with Python."
 arch=('any')
@@ -19,4 +19,4 @@ package() {
     python2 setup.py build
     python2 setup.py install --prefix=/usr --root "${pkgdir}" || return 1
 }
-md5sums=('c0468863b2be047968e37fb1c056b969')
+md5sums=('dbcccce24afe5689d35d504fbe002ec0')
