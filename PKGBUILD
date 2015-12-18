@@ -11,6 +11,7 @@ arch=('any')
 url="https://www.ghostery.com"
 license=('custom')
 depends=("firefox")
+makedepends=("unzip")
 source=("https://addons.mozilla.org/firefox/downloads/latest/9609/addon-9609-latest.xpi"
         "ghostery.license")
 sha1sums=('80a03dace47298d7837fe3abf5ce9f2533692777'
