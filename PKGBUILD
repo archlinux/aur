@@ -12,7 +12,7 @@ _islver=0.12.2
 _cloogver=0.18.1
 pkgrel=2
 #_snapshot=4.9-20150304
-pkgdesc="The GNU Compiler Collection for multilib"
+pkgdesc="The GNU Compiler Collection 4.9 for multilib"
 arch=('x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
 url="http://gcc.gnu.org"
@@ -104,7 +104,7 @@ check() {
 
 package_lib32-gcc49-alternative-libs()
 {
-  pkgdesc="Runtime libraries shipped by GCC (32-bit)"
+  pkgdesc="Runtime GCC 4.9 libraries (32-bit)"
   depends=('lib32-glibc>=2.20')
   options=('!emptydirs' '!strip')
 
@@ -132,7 +132,7 @@ package_lib32-gcc49-alternative-libs()
 
 package_gcc49-alternative-libs-multilib()
 {
-  pkgdesc="Runtime libraries shipped by GCC for multilib"
+  pkgdesc="Runtime GCC 4.9 libraries for multilib"
 #  depends=('glibc>=2.20' "lib32-gcc-libs=$pkgver-$pkgrel")
   depends=('glibc>=2.20' "lib32-gcc49-alternative-libs=$pkgver-$pkgrel")
   provides=("gcc49-alternative-libs=$pkgver-$pkgrel")
@@ -189,7 +189,7 @@ package_gcc49-alternative-libs-multilib()
 
 package_gcc49-alternative-multilib()
 {
-  pkgdesc="The GNU Compiler Collection - C and C++ frontends for multilib"
+  pkgdesc="The GNU Compiler Collection 4.9 - C and C++ frontends for multilib"
   depends=("gcc49-alternative-libs-multilib=$pkgver-$pkgrel" 'binutils>=2.25' 'libmpc')
   groups=('multilib-devel')
   options=('staticlibs')
