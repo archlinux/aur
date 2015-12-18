@@ -14,6 +14,7 @@ source=(http://www.puimula.org/voikko-sources/voikko-fi/voikko-fi-${pkgver}.tar.
         http://www.puimula.org/voikko-sources/voikko-fi/voikko-fi-${pkgver}.tar.gz.asc)
 md5sums=('8a399ff8d56a0d62c52f93a7f4ec8507'
          'SKIP')
+validpgpkeys=('AC5D65F10C8596D7E2DAE2633D309B604AE3942E')
 
 build() {
   cd "${srcdir}/voikko-fi-${pkgver}"
