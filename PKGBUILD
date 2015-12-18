@@ -2,7 +2,7 @@
 pkgname='bitmonero-git'
 _gitname='bitmonero'
 pkgver=0.8.8.7
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://getmonero.org/"
 license=('custom:Cryptonote')
