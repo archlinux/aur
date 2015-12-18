@@ -71,7 +71,7 @@ _NUMAdisable=y	# Disable NUMA in kernel config
 pkgname=(linux-lts-ck linux-lts-ck-headers)
 _kernelname=-lts-ck
 _srcname=linux-4.1
-pkgver=4.1.14
+pkgver=4.1.15
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -102,7 +102,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha512sums=('168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d201625c66e375a23226745eaada9176eb006ca023613cec089349e91751f3c0'
             'SKIP'
-            'dcce40f93c1ea3c9bc95feedb0b576c842faa9e2f08a3969cdf613b18283c11bf3c27898c6d2a929b1d04bbfd66dabc03b01c165fa6d704b3c5701abc195d7a1'
+            '646daf16c01fb8c3013c7c9919c18c3635eb6bd37560623cb56cc7a6d0b22fb13290cee8865dfbcc435cd8544cc3ecb6f3aae538d10c9e0b1098806f233155a3'
             'SKIP'
             'ebcfabb18103802bd607f2a9b1a6750b25e57739eb6d36bad8f15e1f8c31daf9064b4a2398d6d8c9fdfc9d95b0b06fd2cc084506477435ef70f9430158f4f5d4'
             '032296ba49ff77bd70568a4653899a5ce67bd3e9ad11648bbd559553ebdae726a7db5e29c28079b34628fd3f4ed58bccf936dc6450025e4c9aff9a025df827b1'
@@ -266,7 +266,7 @@ package_linux-lts-ck() {
 	#_Kpkgdesc='Linux Kernel and modules with the ck2 patchset featuring the Brain Fuck Scheduler v0.464.'
 	#pkgdesc="${_Kpkgdesc}"
 	depends=('coreutils' 'linux-firmware' 'mkinitcpio>=0.7')
-	optdepends=('crda: to set the correct wireless channels of your country'  'nvidia-lts-ck: nVidia drivers for linux-lts-ck' 'nvidia-340xx-lts-ck: nVidia drivers for linux-lts-ck' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
+	optdepends=('crda: to set the correct wireless channels of your country'  'nvidia-lts-ck: nVidia drivers for linux-lts-ck' 'nvidia-340xx-lts-ck: nVidia drivers for linux-lts-ck' 'modprobed_db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
 	provides=("linux-lts-ck=${pkgver}")
 	replaces=('kernel26-lts-ck')
 	backup=("etc/mkinitcpio.d/linux-lts-ck.preset")
