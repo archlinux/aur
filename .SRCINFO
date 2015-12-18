@@ -1,6 +1,6 @@
 pkgbase = kdevelop-git
 	pkgdesc = A C/C++ development environment for KDE. (GIT Version)
-	pkgver = 4.90.90.r23015.0fe2047
+	pkgver = 4.90.90.r23077.4a1aad7
 	pkgrel = 1
 	url = http://www.kdevelop.org
 	install = kdevelop-git.install
