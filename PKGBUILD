@@ -1,27 +1,21 @@
-# $Id: PKGBUILD 134826 2015-06-05 06:32:39Z seblu $
+# $Id: PKGBUILD 153365 2015-12-15 09:39:47Z fyan $
 # Maintainer: Ionut Biru <ibiru@archlinux.org>
 # x32 Maintainer: Fantix King <fantix.king at gmail.com>
 
 _pkgbasename=pcre
 pkgname=libx32-$_pkgbasename
-pkgver=8.37
-pkgrel=2.1
+pkgver=8.38
+pkgrel=1.1
 pkgdesc="A library that implements Perl 5-style regular expressions (x32 ABI)"
 arch=('x86_64')
 url="http://pcre.sourceforge.net"
 license=('custom')
 depends=('libx32-gcc-libs' $_pkgbasename)
 makedepends=('gcc-multilib-x32')
-source=(ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/${_pkgbasename}-${pkgver}.tar.bz2{,.sig}
-		'01-seven-security-patches.patch')
-md5sums=('ed91be292cb01d21bc7e526816c26981'
-         'SKIP'
-         '45df6737e61738cc8bb061e0b9c0fbb2')
+source=(ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/${_pkgbasename}-${pkgver}.tar.bz2{,.sig})
+md5sums=('00aabbfe56d5a48b270f999b508c5ad2'
+         'SKIP')
 validpgpkeys=('45F68D54BBE23FB3039B46E59766E084FB0F43D8') # Philip Hazel
-
-prepare() {
-  patch -p1 -d $_pkgbasename-$pkgver < 01-seven-security-patches.patch
-}
 
 build() {
   cd "${srcdir}"/${_pkgbasename}-${pkgver}
