@@ -1,44 +1,39 @@
-# Maintainer: Piotr Rogoża <rogoza dot piotr at gmail dot com>
-# Contributor: Piotr Rogoża <rogoza dot piotr at gmail dot com>
-# vim:set ts=2 sw=2 et ft=sh tw=100: expandtab
+# Maintainer: dracorp aka Piotr Rogoza <piotr.r.public@gmail.com>
 
 pkgname=vim-vjde
 pkgver=2.6.18
 _scriptid=17026
 _ext=tgz
-pkgrel=4
+pkgrel=5
 pkgdesc='Just a Development Environment for VIM'
 arch=('i686' 'x86_64')
-url='http://vim.org/scripts/script.php?script_id=1213'
+url='http://www.vim.org/scripts/script.php?script_id=1213'
 license=('GPL')
 groups=('vim-plugins')
 depends=('vim-runtime')
-makedepends=()
 optdepends=(
 'ctags: to replace readtags'
 'jdk: to install java-runtime and java-environment'
 'jre: to install java-runtime'
 )
 install='vimdoc.install'
-source=(
-  "$pkgname-$pkgver.${_ext}::http://www.vim.org/scripts/download_script.php?src_id=${_scriptid}"
-)
-_fix_files(){ #{{{
+source=("$pkgname-$pkgver.${_ext}::http://www.vim.org/scripts/download_script.php?src_id=${_scriptid}")
+sha256sums=('fa6169dfff44ce68e96b45b2a495177ae8c9913757d20e69a16e520cdf4b6930')
+_fix_files() {
   local orig_file=$1
   if [ ! -w "$orig_file" -o ! -s "$orig_file" ]; then
     return
   fi
-  
+
   # remove 'carriage return'
   sed -e 's/\r//g' -i $orig_file
 
   # change encoding
   iconv -c -f gbk -t utf8 $orig_file > ${orig_file}.fix && \
     mv ${orig_file}.fix ${orig_file} || return 1
-} #}}}
+}
 export -f _fix_files
-
-build() {
+package() {
 	_vim_dir='/usr/share/vim/vimfiles'
 
   # compile readtags
@@ -57,7 +52,7 @@ build() {
     --exclude $pkgname-$pkgver.${_ext} \
     --exclude src \
     | tar -xC "$pkgdir"/${_vim_dir}
-  
+
   mv "$pkgdir"/${_vim_dir}/plugin/vjde/readtags \
     ${pkgdir}/usr/bin
   ln -s /usr/bin/readtags \
@@ -67,4 +62,3 @@ build() {
   find "$pkgdir"/${_vim_dir} -type f -a ! -name '*.class' -a ! -name '*.jar' -exec bash -c '_fix_files {}' ';'
 }
 
-md5sums=('29fa90a0ec504ed2b5587d401455ba1e')
