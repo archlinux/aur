@@ -14,12 +14,12 @@ install=perfection-v550.install
 
 if [ "$CARCH" = "i686" ]; then
   _arch=$CARCH
-  md5sums=('6c6824318f7747cf14ed3e7040815633')
-  source=(http://a1227.g.akamai.net/f/1227/40484/7d/download.ebz.epson.net/dsc/f/01/00/02/50/84/8925740c098b683e0481f69c1b01f399e5d6392b/iscan-plugin-perfection-v550-1.0.0-2.i386.rpm)
+  md5sums=('836f3963ececd6822ab114a7df56dbe1')
+  source=(https://download2.ebz.epson.net/iscan/plugin/perfection-v550/rpm/x86/iscan-perfection-v550-bundle-1.0.0.x86.rpm.tar.gz)
 elif [ "$CARCH" = "x86_64" ]; then
   _arch=$CARCH
-  md5sums=('e681b41e8ff62011dd996ab79c150285')
-  source=(http://a1227.g.akamai.net/f/1227/40484/7d/download.ebz.epson.net/dsc/f/01/00/02/50/84/11b8cdbb026274db075bd61d6de6ddd5b9481377/iscan-plugin-perfection-v550-1.0.0-2.x86_64.rpm)
+  md5sums=('2c5beb5dd8d737bbeba28954a27626b1')
+  source=(https://download2.ebz.epson.net/iscan/plugin/perfection-v550/rpm/x64/iscan-perfection-v550-bundle-1.0.0.x64.rpm.tar.gz)
 fi
 
 package() {
