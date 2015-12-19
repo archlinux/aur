@@ -1,40 +1,40 @@
 # Maintainer: Jörg Behrmann <behrmann@physik.fu-berlin.de>
 # Contributor: Max Schlemmer <max.schlemmer@gmail.com>
-pkgname=python2-kwant
-pkgver=1.1.1
+pkgname=python-kwant
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Python package for numerical calculations on tight-binding models with a strong focus on quantum transport"
 arch=('any')
 url="http://kwant-project.org/"
 license=('BSD')
-depends=(python2 python2-scipy lapack blas python2-tinyarray)
+depends=(python python-scipy lapack blas python-tinyarray)
 optdepends=(
-	'python2-matplotlib: needed for plotting support and the tutorial'
+	'python-matplotlib: needed for plotting support and the tutorial'
 	'mumps: a sparse linear algebra library for speed up and memory usage reduction'
 )
-checkdepends=(python2-nose)
+checkdepends=(python-nose)
 source=(
 	http://downloads.kwant-project.org/kwant/kwant-$pkgver.tar.gz
 	http://downloads.kwant-project.org/kwant/kwant-$pkgver.tar.gz.asc
 )
-sha1sums=('c6a76fc7e791f93632216ce40758d8622e5335f5'
+sha1sums=('7a2aa07492c3aee8930fd7de402e62fea84f3eca'
           'SKIP')
 validpgpkeys=('52299057FAD799653C4F088AC3F147F5980F3535')
 
 build() {
     cd "$srcdir/kwant-$pkgver"
-    python2 setup.py build
+    python setup.py build
 }
 
 package() {
     cd "$srcdir/kwant-$pkgver"
-    python2 setup.py install --skip-build -O1 --root="$pkgdir" --optimize=1
+    python setup.py install --skip-build -O1 --root="$pkgdir" --optimize=1
 
     # Install license
-    install -D -m644 "${srcdir}/kwant-${pkgver}/LICENSE.rst" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" || return 1
+    install -D -m644 "${srcdir}/kwant-${pkgver}/LICENSE.rst" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.rst" || return 1
 }
 
 check() {
     cd  "$srcdir/kwant-$pkgver"
-    python2 setup.py test
+    python setup.py test
 }
