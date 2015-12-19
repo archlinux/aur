@@ -67,7 +67,7 @@ package() {
     cp -r ./util/ ${pkgdir}$ICAROOT
 
     # Install License
-    install -m644 -D nls/en/eula.txt \
+    install -m644 -D nls/en.UTF-8/eula.txt \
       "${pkgdir}$ICAROOT/eula.txt"
 
     # create /config/.server to enable user customization using ~/.ICACLient/ overrides. Thanks Tomek
