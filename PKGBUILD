@@ -1,10 +1,14 @@
 # Maintainer: Aleksej Komarov <stylemistake@gmail.com>
+# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Contributor: Slash <demodevil5[at]yahoo[dot]com>
+# Contributor: Babets
+# Contributor: Vain
 
 pkgname='warsow-beta'
 _pkgname_server='wsw-server-beta'
 _pkgname_tv='wswtv-server-beta'
-pkgver='2.0'
-pkgrel='2'
+pkgver='2.0.1'
+pkgrel='1'
 pkgdesc='Free online multiplayer competitive FPS based on the Qfusion engine'
 url='https://www.warsow.gg/'
 license=('GPL')
@@ -22,13 +26,13 @@ source=(
   'warsow.launcher'
   'wsw-server.launcher'
   'wswtv-server.launcher'
-  'http://mirror.null.one/warsow_20_sdk.tar.gz'
+  'http://mirror.null.one/warsow_201_sdk.tar.gz'
 )
 md5sums=(
   '9f45e1a4a7eb2cc1bdf4b509cf32bbbc'
   'ab24df17a04185a1448d4c1958ba38d7'
   'ef59b7439ca732d9eb9f2956809ff9dd'
-  'd0efb5d3754ef6838c1e8a7aa09c6e60'
+  'e66809592094f45ec853b460ccaaa579'
 )
 
 prepare() {
