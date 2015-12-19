@@ -5,8 +5,8 @@
 
 pkgname=firefox-gtk2
 _pkgname=firefox
-pkgver=43.0
-pkgrel=2
+pkgver=43.0.1
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -31,7 +31,7 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/
         firefox-install-dir.patch
         vendor.js
         firefox-fixed-loading-icon.png)
-sha256sums=('a5b16741dcce9344ca71e39e0efb0e7e1336ca5160cb9b6b12f8985f402d8fea'
+sha256sums=('b1f9173c6ddbd2bf868d94a815fde364bc37aa46a00981903fd1fe86a8f873d8'
             '272fa8b8ca6afa224d9adf15d458dea6c8510248e62550254b9a5dfb286204de'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
