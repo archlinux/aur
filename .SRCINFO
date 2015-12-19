@@ -1,14 +1,14 @@
 pkgbase = catalyst-test
 	pkgdesc = AMD/ATI Catalyst drivers for linux AKA Crimson. catalyst-hook + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. PRE-GCN Radeons ARE NOT SUPPORTED
-	pkgver = 15.11
-	pkgrel = 3
+	pkgver = 15.12
+	pkgrel = 1
 	url = http://www.amd.com
 	install = catalyst-test.install
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = linux>=3.0
-	depends = linux<4.4
+	depends = linux<4.5
 	depends = linux-headers
 	depends = xorg-server>=1.7.0
 	depends = xorg-server<1.18.0
@@ -29,12 +29,12 @@ pkgbase = catalyst-test
 	optdepends = acpid: acpi event support / atieventsd
 	optdepends = procps-ng: brings pgrep used in acpi event support
 	provides = libgl
-	provides = libatical=15.11
-	provides = catalyst=15.11
-	provides = catalyst-utils=15.11
-	provides = catalyst-hook=15.11
-	provides = catalyst-libgl=15.11
-	provides = opencl-catalyst=15.11
+	provides = libatical=15.12
+	provides = catalyst=15.12
+	provides = catalyst-utils=15.12
+	provides = catalyst-hook=15.12
+	provides = catalyst-libgl=15.12
+	provides = opencl-catalyst=15.12
 	provides = libcl
 	provides = dri
 	provides = libtxc_dxtn
@@ -54,7 +54,7 @@ pkgbase = catalyst-test
 	options = libtool
 	options = !strip
 	options = !upx
-	source = http://www2.ati.com/drivers/linux/radeon-crimson-15.11-15.30.1025.zip
+	source = http://www2.ati.com/drivers/linux/radeon-crimson-15.12-15.302-151217a-297685e.zip
 	source = catalyst_build_module
 	source = lib32-catalyst.sh
 	source = catalyst.sh
@@ -80,7 +80,9 @@ pkgbase = catalyst-test
 	source = 4.3-kolasa-seq_printf.patch
 	source = 4.3-gentoo-mtrr.patch
 	source = crimson_i686_xg.patch
-	md5sums = 7ba22f465970fbe2bb9ff974beb0a918
+	source = 4.4-manjaro-xstate.patch
+	source = grsec_arch.patch
+	md5sums = 39808c8a9bcc9041f1305e3531b60622
 	md5sums = 601d9c756571dd79d26944e54827631e
 	md5sums = af7fb8ee4fc96fd54c5b483e33dc71c4
 	md5sums = bdafe749e046bfddee2d1c5e90eabd83
@@ -106,6 +108,8 @@ pkgbase = catalyst-test
 	md5sums = 0e0666e95d1d590a7a83192805679485
 	md5sums = 98828e3eeaec2b3795e584883cc1b746
 	md5sums = 6cdbaf5f71d867d225721a0369413616
+	md5sums = d9bea135ae3e1b3ca87c5bbe6dcf8e72
+	md5sums = 8941e91fc58cb44ce21ab9bda135754e
 
 pkgname = catalyst-test
 

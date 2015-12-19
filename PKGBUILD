@@ -20,20 +20,21 @@
 # Contributor: solar (authatieventsd' patch s/-1/255)
 # Contributor: kolasa (part of 4.3 kernel patches)
 # Contributor: gentoo (part of 4.3 kernel patches)
+# Contributor: 	Philip Müller @ Manjaro (4.4 kernel patch)
 
 # PKGEXT='.pkg.tar.gz' # imho time to pack this pkg into tar.xz is too long, unfortunatelly yaourt got problems when ext is different from .pkg.tar.xz - V
 
 pkgname=catalyst-test
-pkgver=15.11
-pkgrel=3
+pkgver=15.12
+pkgrel=1
 # _betano=1.0
-_amdver=15.30.1025
+_amdver=15.302
 pkgdesc="AMD/ATI Catalyst drivers for linux AKA Crimson. catalyst-hook + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. PRE-GCN Radeons ARE NOT SUPPORTED"
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
-depends=('linux>=3.0' 'linux<4.4' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.18.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4')
+depends=('linux>=3.0' 'linux<4.5' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.18.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4')
 optdepends=('qt4: to run ATi Catalyst Control Center (amdcccle)'
 	    'libxxf86vm: to run ATi Catalyst Control Center (amdcccle)'
 	    'opencl-headers: headers necessary for OpenCL development'
@@ -66,7 +67,7 @@ source=(
 #     http://www2.ati.com/drivers/linux/amd-catalyst-${pkgver/./-}-linux-x86-x86-64.zip
 #     http://www2.ati.com/drivers/linux/amd-catalyst-omega-14.12-linux-run-installers.zip
 #     http://www2.ati.com/drivers/linux/amd-driver-installer-${_amdver}-x86.x86_64.zip
-    http://www2.ati.com/drivers/linux/radeon-crimson-15.11-15.30.1025.zip
+    http://www2.ati.com/drivers/linux/radeon-crimson-15.12-15.302-151217a-297685e.zip
     catalyst_build_module
     lib32-catalyst.sh
     catalyst.sh
@@ -91,9 +92,11 @@ source=(
     fglrx_gpl_symbol.patch
     4.3-kolasa-seq_printf.patch
     4.3-gentoo-mtrr.patch
-    crimson_i686_xg.patch)
+    crimson_i686_xg.patch
+    4.4-manjaro-xstate.patch
+    grsec_arch.patch)
 
-md5sums=('7ba22f465970fbe2bb9ff974beb0a918'
+md5sums=('39808c8a9bcc9041f1305e3531b60622'
 	 '601d9c756571dd79d26944e54827631e'
 	 'af7fb8ee4fc96fd54c5b483e33dc71c4'
          'bdafe749e046bfddee2d1c5e90eabd83'
@@ -118,12 +121,14 @@ md5sums=('7ba22f465970fbe2bb9ff974beb0a918'
 	 'ef97fc080ce7e5a275fe0c372bc2a418'
 	 '0e0666e95d1d590a7a83192805679485'
 	 '98828e3eeaec2b3795e584883cc1b746'
-	 '6cdbaf5f71d867d225721a0369413616')
+	 '6cdbaf5f71d867d225721a0369413616'
+	 'd9bea135ae3e1b3ca87c5bbe6dcf8e72'
+	 '8941e91fc58cb44ce21ab9bda135754e')
 
 
 build() {
   ## Unpack archive
-     /bin/sh ./fglrx-15.30.1025/amd-driver-installer-${_amdver}-x86.x86_64.run --extract archive_files
+     /bin/sh ./fglrx-${_amdver}/amd-driver-installer-${_amdver}-x86.x86_64.run --extract archive_files
 # mkdir common
 # mv etc lib usr common
 # mkdir archive_files
@@ -301,11 +306,11 @@ package() {
       patch -Np1 -i ../lano1106_fglrx_intel_iommu.patch
       patch -Np1 -i ../lano1106_kcl_agp_13_4.patch
       test "${CARCH}" = "i686" && patch -Np1 -i ../fglrx_gpl_symbol.patch
-#	since 3.19 not only i686 needs gpl symbol - V
-#       patch -Np1 -i ../fglrx_gpl_symbol.patch
       patch -Np1 -i ../4.3-kolasa-seq_printf.patch
       patch -Np1 -i ../4.3-gentoo-mtrr.patch
       test "${CARCH}" = "i686" && patch -Np1 -i ../crimson_i686_xg.patch
+      patch -Np1 -i ../4.4-manjaro-xstate.patch
+      patch -Np1 -i ../grsec_arch.patch
 
     # Prepare modules source files
       _archdir=x86_64
