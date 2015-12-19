@@ -7,18 +7,21 @@
 # ======================================
 # Maintainer: James Harvey <jamespharvey20@gmail.com>
 #    * This PKGBUILD as closely as possible matches core's gcc 5.3.0-2
-#    * All namcap warnings are essentially identical, as of 6.0.0.r143486.3afbcf4, except:
+#    * All namcap warnings are essentially identical, as of 6.0.0.r143656.5ab11d5
 #       * Error of a missing custom license directory of /usr/share/licenses/gcc*-git
-#       * Symlink /usr/lib/bfd-plugins/liblto_plugin.so points to non-existing /usr/lib/gcc/x86_64-pc-linux-gnu/6.0.0.r140049.cab0d20/liblto_plugin.so -- will be fixing this
-#       * gcc-go-git gives a "Referenced library 'libgo.so.8' is an uninstalled dependency -- will be looking into this
-#    * _pkgver_base is hard coded at the moment to 6.0.0; can't parse from source at that point
+#       * gcc-go-git gives a "Referenced library 'libgo.so.8' is an uninstalled dependency -- this is provided within gcc-go-git, which is not installed in a chroot build because gcc-go is already installed, and it assumes no for the conflict
+#    * _pkgver_base is hard coded at the moment to 6.0.0; can't parse from source
+#       * git source is downloaded just before pkgver(), so source doesn't exist to be parsed when globals (incl_pkgver_base) are currently set
+#       * can't set it to an empty string and silently re-set it at the beginning of pkgver(), because the new value of _pkgver_base is only within the scope of pkgver()
+#       * would have to re-set it at the beginning of every function that uses it, which is messy and error-prone
+#       * to-do: could test in pkgver() or prepare() if _pkgver_base is different than gcc/BASE-VER and error
 
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 # NOTE: libtool requires rebuilt with each new gcc version
 
 pkgname=('gcc-git' 'gcc-libs-git' 'gcc-fortran-git' 'gcc-objc-git' 'gcc-ada-git' 'gcc-go-git')
 _pkgname=gcc
-pkgver=6.0.0.r139654.12dcc3b
+pkgver=6.0.0.r143656.5ab11d5
 _pkgver_base=6.0.0
 _pkgver=6
 _islver=0.15
@@ -47,8 +50,6 @@ _basedir=${_pkgname}
 _CHOST=${CHOST}
 if [[ "${CHOST}" == 'x86_64-unknown-linux-gnu' ]]; then
   _CHOST='x86_64-pc-linux-gnu'
-elif [[ "${CHOST}" == 'i686-unknown-linux-gnu' ]]; then
-  _CHOST='i686-pc-linux-gnu'
 fi
 
 _libdir="usr/lib/gcc/$_CHOST/$_pkgver_base"
@@ -202,7 +203,7 @@ package_gcc-git()
   
   make -C lto-plugin DESTDIR=${pkgdir} install
   install -dm755 ${pkgdir}/usr/lib/bfd-plugins/
-  ln -s /usr/lib/gcc/$_CHOST/${pkgver}/liblto_plugin.so \
+  ln -s /usr/lib/gcc/$_CHOST/${_pkgver_base}/liblto_plugin.so \
     ${pkgdir}/usr/lib/bfd-plugins/
 
   make -C $_CHOST/libcilkrts DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS \
