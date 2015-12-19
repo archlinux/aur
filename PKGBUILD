@@ -1,15 +1,19 @@
 # Maintainer: Aleksej Komarov <stylemistake@gmail.com>
+# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Contributor: Slash <demodevil5[at]yahoo[dot]com>
+# Contributor: Babets
+# Contributor: Vain
 
 pkgname='warsow-beta-data'
 _pkgname='warsow-beta'
-pkgver='2.0'
+pkgver='2.0.1'
 pkgrel='1'
 pkgdesc='Free online multiplayer competitive FPS based on the Qfusion engine (data files)'
 url='https://www.warsow.gg/'
 license=('custom:Warsow Content License')
 arch=('any')
-source=('http://mirror.null.one/warsow_20_unified.tar.gz')
-md5sums=('4c35ac6ca5971e7dcb273dadabc07963')
+source=('http://mirror.null.one/warsow_201_unified.tar.gz')
+md5sums=('fee194075847f9a2508f65da89b6cfea')
 
 package() {
   local srcdir_wsw="${srcdir}/warsow_20"
