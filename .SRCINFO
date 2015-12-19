@@ -1,26 +1,28 @@
 pkgbase = audiotools
 	pkgdesc = A collection of Python-based command-line audio handling programs
-	pkgver = 2.22
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = http://audiotools.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = python2-urwid
+	makedepends = python-setuptools
+	depends = python-urwid
 	depends = libcdio-paranoia
 	depends = lame
 	depends = twolame
 	depends = vorbis-tools
 	depends = faad2
 	depends = faac
-	depends = pygtk
 	depends = opus-tools
 	depends = opusfile
 	depends = libpulse
+	depends = wavpack
 	optdepends = cdrkit: CD burning without cuesheet support
 	optdepends = cdrdao: CD burning with cuesheeet support
-	source = http://downloads.sourceforge.net/audiotools/audiotools-2.22.tar.gz
-	md5sums = 8e373a6c8caf4d55bcd501c5ab6ea555
+	optdepends = pygtk: coverview
+	source = http://downloads.sourceforge.net/audiotools/audiotools-3.1.1.tar.gz
+	md5sums = 08c52afbdfd41f18d068c525bcf93e42
 
 pkgname = audiotools
 
