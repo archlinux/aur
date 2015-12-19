@@ -3,8 +3,8 @@
 
 
 pkgname=symfony2
-pkgver=2.7
-pkgrel=2
+pkgver=2.8
+pkgrel=1
 pkgdesc="A web-application framework for PHP projects"
 arch=('any')
 url="http://symfony.com"
@@ -24,6 +24,5 @@ package() {
 
     install -Dm755 symfony2 "$pkgdir"/usr/share/webapps/symfony
 }
-
-md5sums=('ce1c11410254583dd98fdc78ceec376e'
+md5sums=('5e41360d0e9c20ebf72db94e210d7f19'
          '2772cb1b65cc83a90e25122dbc526078')
