@@ -8,27 +8,15 @@ url="https://sourceforge.net/projects/netrider/"
 license=('BSD')
 groups=()
 depends=('libxft' 'libxinerama' 'gcc' 'sqlite' 'curl' 'libxslt' 'libxtst')
-makedepends=('libarchive')
 
-md5sums=('SKIP')
-if [ "${CARCH}" = 'x86_64' ]; then
-  #md5sums=('b99e5d60f167f2dca62d10fa02cfca30')
-  _archname="x86_64"
-elif [ "${CARCH}" = 'i686' ]; then
-  #md5sums=('cd50258ce581f77ad6c648e72a1f1e66')
-  _archname="i586"
-fi
+source_i686=("http://downloads.sourceforge.net/project/netrider/NetRider-${pkgver}-${pkgrel}.i586.rpm")
+source_x86_64=("http://downloads.sourceforge.net/project/netrider/NetRider-${pkgver}-${pkgrel}.x86_64.rpm")
 
-source=("http://downloads.sourceforge.net/project/netrider/NetRider-$pkgver-$pkgrel.$_archname.rpm")
-
-build() {
-  cd "${srcdir}"
-  bsdtar -xf "NetRider-$pkgver-$pkgrel.$_archname.rpm"
-}
+sha256sums_i686=('ac40e52fc0892cd1c0b44e56b7fd7958790097388b667824234ac8d8317c7db0')
+sha256sums_x86_64=('d721839bb637fa32f58756034f59a5afcd76f4245842fe5b2f8cd6a67d10bc94')
 
 package() {
   mkdir -p "$pkgdir/usr"
-  cp -R --preserve=timestamps "$srcdir/usr/local/bin" "$pkgdir/usr"
-  cp -R --preserve=timestamps "$srcdir/usr/local/lib" "$pkgdir/usr" || :
-  cp -R --preserve=timestamps "$srcdir/home/netrider" "$pkgdir/home"
+  cp -rn --preserve=timestamps "usr/local/bin" "$pkgdir/usr"
+  cp -rn --preserve=timestamps "usr/local/lib" "$pkgdir/usr"
 }
