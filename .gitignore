@@ -1,0 +1,6 @@
+*.tgz
+*.tar.gz
+*.pkg.tar.xz
+src/
+pkg/
+droid-sans
