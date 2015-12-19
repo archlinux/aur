@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=ocaml-ctypes-git
-pkgver=0.4.1.51.g07b21d7
+pkgver=0.4.1.56.g028910f
 pkgrel=1
 pkgdesc='Library for binding to C libraries using pure OCaml'
 arch=('i686' 'x86_64')
@@ -27,11 +27,12 @@ build() {
 }
 
 package() {
-  mkdir -p "$pkgdir/$(ocamlfind printconf destdir)/stublibs"
+  install -d "$pkgdir/$(ocamlfind printconf destdir)/stublibs"
 
   cd $pkgname
   export OCAMLFIND_DESTDIR="${pkgdir}/$(ocamlfind printconf destdir)"
   export OCAMLFIND_LDCONF=ignore
   make install
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
  
