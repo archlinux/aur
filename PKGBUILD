@@ -1,13 +1,13 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=mpdris2
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc="MPRIS2 support for MPD"
 url="https://github.com/eonpatapon/mpDris2"
 arch=('any')
 license=('GPL3')
-depends=('python2-dbus' 'python2-gobject' 'python2-mpd')
+depends=('python2-dbus' 'python2-gobject2' 'python2-mpd')
 makedepends=('intltool')
 optdepends=(
   'mutagen: read covers from music files'
@@ -27,4 +27,4 @@ package() {
   make DESTDIR="$pkgdir" install
 }
 
-sha256sums=('7feba8f552ced721c7cbd44a828e6a3ffad185479c18a2873719362a6455b57d')
+sha256sums=('41fc24128e13d4d2b58095c8496357079544fb6a52caca234690a6c265e6ba24')
