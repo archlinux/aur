@@ -16,18 +16,13 @@ conflicts=('libevhtp')
 source=("${_pkgname}-${pkgver}.zip::https://github.com/ellzey/libevhtp/archive/${pkgver}.zip")
 
 build () {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DEVHTP_DISABLE_SSL=ON -DEVHTP_BUILD_SHARED=ON ./
-	make
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DEVHTP_DISABLE_SSL=ON -DEVHTP_BUILD_SHARED=ON ./
+    make
 }
 
 package () {
-	#install library and header files
-	cd "${srcdir}/${_pkgname}-${pkgver}"
-	make DESTDIR="${pkgdir}" install
-
-	#copy license over
-	mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
-	cp LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    make DESTDIR="${pkgdir}" install
 }
 sha256sums=('fc8572823ae7ed77cd0db8fd0e25983ebc770b271d36905fb1379db371aab28a')
