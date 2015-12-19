@@ -11,7 +11,7 @@ depends=('glibc' 'sh')
 conflicts=('srm')
 license=('GPL')
 arch=('i686' 'x86_64')
-source=(http://freeworld.thc.org/releases/$pkgfile.tar.gz)
+source=(https://thesqrtminus1.com/files/linux_stuff/$pkgfile.tar.gz)
 sha256sums=('a9d846d1dce3f1bdf13bbb306e8596bc1f263198a086f6beecd90ccf7bddf8d5')
 
 build()
