@@ -19,9 +19,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         'change-default-console-loglevel.patch'
         'override_for_missing_acs_capabilities.patch'
-        'i915_317.patch'
-        'kvm-x86-obey-KVM_X86_QUIRK_CD_NW_CLEARED-in-kvm_set_cr0.patch'
-        )
+        'i915_317.patch')
 sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
             'SKIP'
             '95cd81fcbb87953f672150d60950548edc04a88474c42de713b91811557fefa5'
@@ -31,8 +29,7 @@ sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '975f79348119bfba8dd972a9fbfe6b38484c45bfd228f2f6d48a0c02426ba149'
-            'ff2bb84f054633c6088ad31b450b7b96b5f4ee18667dd56772dff1d8c1687854'
-            '2d8bf50218cff86db6723f3623823a47b1c8299a2eb0589458b0a19887799f4e')
+            'ff2bb84f054633c6088ad31b450b7b96b5f4ee18667dd56772dff1d8c1687854')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -67,10 +64,6 @@ prepare() {
   # Overrides for missing acs capabilities
   echo '==> Applying ACS override patch'
   patch -p1 -i "${srcdir}/override_for_missing_acs_capabilities.patch"
-
-  # Backport of 879ae1880449 from 4.4 to fix booting with OVMF
-  echo '==> Applying OVMF kvm boot patch'
-  patch -p1 -i "${srcdir}/kvm-x86-obey-KVM_X86_QUIRK_CD_NW_CLEARED-in-kvm_set_cr0.patch"
 
   if [ "${_kernelname}" != "" ]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
