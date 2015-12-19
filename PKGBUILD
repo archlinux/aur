@@ -2,7 +2,7 @@
 
 pkgname=i3-sensible-browser-git
 _pkgname=i3-sensible-browser
-pkgver=8.d4654a2
+pkgver=9.9c226c3
 pkgrel=1
 pkgdesc='Launches $BROWSER with fallbacks'
 url='https://github.com/ascarpino/i3-sensible-browser'
@@ -19,5 +19,5 @@ pkgver() {
 
 package() {
   cd ${_pkgname}
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" PREFIX=/usr install
 }
