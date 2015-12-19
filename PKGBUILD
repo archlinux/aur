@@ -4,16 +4,15 @@ pkgdesc="ROS - Provides service calls for getting ros meta-information, like lis
 url='http://ros.org/wiki/rosapi'
 
 pkgname='ros-indigo-rosapi'
-pkgver='0.6.8'
+pkgver='0.7.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-indigo-rosbridge-library
-  ros-indigo-catkin
+ros_makedepends=(ros-indigo-message-generation
   ros-indigo-rospy
-  ros-indigo-message-generation)
+  ros-indigo-catkin)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]})
 
