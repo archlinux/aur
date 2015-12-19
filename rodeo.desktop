@@ -1,0 +1,19 @@
+[Desktop Entry]
+Comment=Rodeo: A data science IDE for Python
+Exec=/opt/rodeo/Rodeo
+GenericName[en_US]=Rodeo
+GenericName=Rodeo
+Icon=/opt/rodeo/logo.svg
+MimeType=
+Name[en_US]=Rodeo
+Name=Rodeo
+Path=/opt/rodeo/
+StartupNotify=true
+Terminal=false
+Type=Application
+Version=1.0
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
+Categories=Science;
