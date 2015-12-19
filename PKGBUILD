@@ -1,26 +1,28 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
-pkgdesc="ROS - A ROS Node to Stream Image Topics Via a MJPEG Server."
+pkgdesc="ROS - HTTP Streaming of ROS Image Topics in Multiple Formats."
 url='http://ros.org/wiki/web_video_server'
 
 pkgname='ros-indigo-web-video-server'
-pkgver='0.0.1'
+pkgver='0.0.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-indigo-roslib
-  ros-indigo-image-transport
+ros_makedepends=(ros-indigo-roscpp
+  ros-indigo-cv-bridge
   ros-indigo-catkin
-  ros-indigo-roscpp
-  ros-indigo-cv-bridge)
+  ros-indigo-async-web-server-cpp
+  ros-indigo-image-transport
+  ros-indigo-roslib)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
   ffmpeg)
 
 ros_depends=(ros-indigo-roslib
   ros-indigo-image-transport
+  ros-indigo-async-web-server-cpp
   ros-indigo-roscpp
   ros-indigo-cv-bridge)
 depends=(${ros_depends[@]}
