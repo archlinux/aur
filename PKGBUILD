@@ -2,14 +2,14 @@
 # Contributor: Benjamin Hedrich <kiwisauce (a) pagenotfound (dot) de>
 
 pkgname=tvheadend-git
-_gitname='tvheadend'
-pkgver=4.1.r442.g824f46e
+_gitname='tvheadend-git'
+pkgver=4.1.r1235.gd822a74
 pkgrel=1
 pkgdesc="TV streaming server for Linux"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://tvheadend.org/"
 license=('GPL3')
-depends=('avahi' 'openssl' 'python2' 'uriparser' 'ffmpeg')
+depends=('avahi' 'openssl' 'python2' 'uriparser' 'ffmpeg' 'linuxtv-dvb-apps')
 makedepends=('git')
 optdepends=('xmltv: For an alternative source of programme listings')
 provides=('tvheadend')
