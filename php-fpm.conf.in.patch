@@ -1,15 +1,8 @@
---- sapi/fpm/php-fpm.conf.in	2015-01-21 01:40:37.000000000 +0100
-+++ sapi/fpm/php-fpm.conf.in	2015-01-22 16:22:09.076969777 +0100
-@@ -12,7 +12,7 @@
- ; Relative path can also be used. They will be prefixed by:
- ;  - the global prefix if it's been set (-p argument)
- ;  - @prefix@ otherwise
--;include=etc/fpm.d/*.conf
-+include=/etc/php/fpm.d/*.conf
- 
- ;;;;;;;;;;;;;;;;;;
- ; Global Options ;
-@@ -22,7 +22,7 @@
+diff --git sapi/fpm/php-fpm.conf.in sapi/fpm/php-fpm.conf.in
+index 9e5b593..10b36e9 100644
+--- sapi/fpm/php-fpm.conf.in
++++ sapi/fpm/php-fpm.conf.in
+@@ -14,7 +14,7 @@
  ; Pid file
  ; Note: the default prefix is @EXPANDED_LOCALSTATEDIR@
  ; Default Value: none
@@ -18,7 +11,17 @@
  
  ; Error log file
  ; If it's set to "syslog", log is sent to syslogd instead of being written
-@@ -161,7 +161,8 @@
+@@ -122,4 +122,4 @@
+ ; Relative path can also be used. They will be prefixed by:
+ ;  - the global prefix if it's been set (-p argument)
+ ;  - @prefix@ otherwise
+-include=@php_fpm_sysconfdir@/php-fpm.d/*.conf
++include=/etc/php/fpm.d/*.conf
+diff --git sapi/fpm/www.conf.in sapi/fpm/www.conf.in
+index 394e278..6d546db 100644
+--- sapi/fpm/www.conf.in
++++ sapi/fpm/www.conf.in
+@@ -33,7 +33,8 @@ group = @php_fpm_group@
  ;                            (IPv6 and IPv4-mapped) on a specific port;
  ;   '/path/to/unix/socket' - to listen on a unix socket.
  ; Note: This value is mandatory.
@@ -27,9 +30,9 @@
 +listen = /run/php-fpm/php-fpm.sock
  
  ; Set listen(2) backlog.
- ; Default Value: 65535 (-1 on FreeBSD and OpenBSD)
-@@ -172,9 +173,9 @@
- ; BSD-derived systems allow connections regardless of permissions. 
+ ; Default Value: 511 (-1 on FreeBSD and OpenBSD)
+@@ -44,9 +45,9 @@ listen = 127.0.0.1:9000
+ ; BSD-derived systems allow connections regardless of permissions.
  ; Default Values: user and group are set as the running user
  ;                 mode is set to 0660
 -;listen.owner = @php_fpm_user@
@@ -41,12 +44,12 @@
  ; When POSIX Access Control Lists are supported you can set them using
  ; these options, value is a comma separated list of user/group names.
  ; When set, listen.owner and listen.group are ignored
-@@ -476,7 +477,7 @@
+@@ -352,7 +353,7 @@ pm.max_spare_servers = 3
  ; Chdir to this directory at the start.
  ; Note: relative path can be used.
  ; Default Value: current directory or / when chroot
 -;chdir = /var/www
 +;chdir = /srv/http
-  
+ 
  ; Redirect worker stdout and stderr into main error log. If not set, stdout and
  ; stderr will be redirected to /dev/null according to FastCGI specs.

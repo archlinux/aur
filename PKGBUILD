@@ -20,7 +20,7 @@ pkgname=('php7'
 		 'php7-xsl')
 
 pkgver=7.0.1
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 license=('PHP')
 url='http://www.php.net'
@@ -37,7 +37,7 @@ md5sums=('23aba67d57d53145becacb982ed498d5'
 		 '3bdf401291d4de96caa33d053a000e46'
 		 'cc2940f5312ba42e7aa1ddfab74b84c4'
 		 'c60343df74f8e1afb13b084d5c0e47ed'
-		 '42f5bb6ad8041b48240ee184e4978fc0'
+		 '04178a124117dd645c4860086e49ccb3'
 		 '092c7cef2bb413b6bfaff1e5ce299eeb')
 validpgpkeys=('6E4F6AB321FDC07F2C332E3AC2BF0BC433CFC8B3')
 
@@ -45,6 +45,7 @@ prepare() {
 	cd ${srcdir}/${_pkgbase}-${pkgver}
 
 	patch -p0 -i ${srcdir}/php.ini.patch
+	patch -p0 -i ${srcdir}/php-fpm.conf.in.patch
 	# Just because our Apache 2.4 is configured with a threaded MPM by default does not mean we want to build a ZTS PHP.
 	# Let's supress this behaviour and build a SAPI that works fine with the prefork MPM.
 	sed '/APACHE_THREADED_MPM=/d' -i sapi/apache2handler/config.m4 -i configure
