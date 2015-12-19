@@ -2,7 +2,7 @@
 # Maintainer: Edvinas Valatka <edacval@gmail.com>
 
 pkgname=ccnet
-pkgver=5.0.2
+pkgver=5.0.3
 pkgrel=1
 pkgdesc="A framework for writing networked applications in C."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
@@ -32,6 +32,6 @@ package () {
     cd "$srcdir/$pkgname-$pkgver-server"
     make DESTDIR="$pkgdir" install
 }
-sha256sums=('e734ac1a243c073456b4ef82fac412a63b5731f4fddb45bf27170ff45d29f11b'
+sha256sums=('d9912fc2ca7ea1c41f58c8f461cc02c6d650d5d59f79b8337a987478306eb175'
             'c07aeccf581c255e60acbddcc6af90290e0d6354e6ec0ee1987b82845d3d57ac'
             '66c3b02c3981db6a80819e0ae103bedadf8dfdf81405a7f75a9cba714acf973f')
