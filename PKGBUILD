@@ -21,9 +21,9 @@
 
 pkgname=('gcc-git' 'gcc-libs-git' 'gcc-fortran-git' 'gcc-objc-git' 'gcc-ada-git' 'gcc-go-git')
 _pkgname=gcc
-pkgver=6.0.0.r143656.5ab11d5
+pkgver=6.0.0.r143660.7b0b2ad
 _pkgver_base=6.0.0
-_pkgver=6
+_pkgver=1
 _islver=0.15
 pkgrel=1
 
@@ -42,11 +42,7 @@ md5sums=('SKIP'
 _basedir=${_pkgname}
 
 # CHOST is in the form <architecture>-<vendor>-<operatingSystem>-<cLibrary>
-# Arch currently reports CHOST with vendor "unknown".  GCC expected this until recently, and on my machine is expecting "pc".
-# Core's gcc and this package define arch to only be 'i686' or 'x86_64', so this workaround should work for whatever architecture is expected to be given.
-# It is unknown to me if gcc will see everyone running arch as vendor "pc", or if it will see "softfloat", "hardfloat", or "unknown" here.
-# (You may have to change the value of _CHOST.)
-# Rather than having an else cause an error, I'm letting it go through, on the hopes that whatever is defined might work.
+# Arch currently reports CHOST with vendor "unknown".  GCC expected this until recently, when for architecture x86_64 it now expects "pc".
 _CHOST=${CHOST}
 if [[ "${CHOST}" == 'x86_64-unknown-linux-gnu' ]]; then
   _CHOST='x86_64-pc-linux-gnu'
