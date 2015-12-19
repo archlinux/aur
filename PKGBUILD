@@ -2,7 +2,7 @@
 _hkgname=simtreelo
 pkgname=haskell-simtreelo
 pkgver=0.1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Loads data organized in a tree'
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('GPL3')

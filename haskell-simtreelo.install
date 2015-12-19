@@ -4,7 +4,7 @@ post_install() {
 	(cd usr/share/doc/ghc/html/libraries; ./gen_contents_index)
 }
 pre_upgrade() {
-#	${HS_DIR}/unregister.sh
+	${HS_DIR}/unregister.sh
 }
 post_upgrade() {
 	${HS_DIR}/register.sh
