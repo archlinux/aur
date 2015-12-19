@@ -3,7 +3,7 @@
 
 pkgname=pd-pure
 pkgver=0.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Loader plugin for the Pure programming language which lets you write external Pd objects in Pure"
 arch=('i686' 'x86_64')
 url="http://purelang.bitbucket.org/"
@@ -20,5 +20,5 @@ build() {
 
 package() {
   cd $srcdir/$pkgname-$pkgver
-  make DESTDIR=$pkgdir install
+  make DESTDIR=$pkgdir prefix=/usr install
 }
