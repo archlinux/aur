@@ -4,7 +4,7 @@ pkgdesc="ROS - Server Side tools for Authorization and Authentication of ROS Cli
 url='http://ros.org/wiki/rosauth'
 
 pkgname='ros-indigo-rosauth'
-pkgver='0.1.4'
+pkgver='0.1.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -15,7 +15,8 @@ ros_makedepends=(ros-indigo-message-generation
   ros-indigo-roscpp
   ros-indigo-catkin)
 makedepends=('cmake' 'git' 'ros-build-tools'
-  ${ros_makedepends[@]})
+  ${ros_makedepends[@]}
+  openssl)
 
 ros_depends=(ros-indigo-message-runtime
   ros-indigo-roscpp)
