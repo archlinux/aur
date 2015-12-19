@@ -2,7 +2,7 @@
 _hkgname=descrilo
 pkgname=haskell-descrilo
 pkgver=0.1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Loads a list of items with fields'
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('GPL3')
