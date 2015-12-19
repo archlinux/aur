@@ -3,7 +3,7 @@
 _npmname=jpm
 pkgname=nodejs-$_npmname # All lowercase
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Jetpack Mechanic utilities for creating, testing, running and packaging Mozilla Jetpack Addons'
 arch=(any)
 url='https://developer.mozilla.org/en-US/Add-ons/SDK/Tools/jpm'
@@ -22,7 +22,7 @@ package() {
   cp -r --no-preserve=ownership package "$_npmdir/$_npmname"
 
   cd "$_npmdir/$_npmname"
-  npm install
+  npm install --production
 
   mkdir -p "$pkgdir/usr/bin"
   ln -s "/usr/lib/node_modules/jpm/bin/jpm" "$pkgdir/usr/bin/jpm"
