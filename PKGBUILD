@@ -11,7 +11,7 @@ makedepends=('git')
 conflicts=('assem')
 
 _gitroot='https://github.com/jakubfi/assem.git'
-_gitname='emdas'
+_gitname='assem'
 
 build() {
   cd "$srcdir"
