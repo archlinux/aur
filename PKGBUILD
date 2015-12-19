@@ -1,30 +1,30 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=pkg_scripts
-pkgver=2015.12
+pkgver=2015.12.19.2
 pkgrel=1
 pkgdesc='A collection of pacman and package-related utilities.'
 arch=(any)
 license=(GPL)
 url="http://xyne.archlinux.ca/projects/pkg_scripts"
-depends=(pyalpm python3)
+depends=(pyalpm python3 python3-xcpf)
 source=(
-  http://xyne.archlinux.ca/projects/pkg_scripts/src/pkg_scripts-2015.12.tar.xz
-  http://xyne.archlinux.ca/projects/pkg_scripts/src/pkg_scripts-2015.12.tar.xz.sig
+  http://xyne.archlinux.ca/projects/pkg_scripts/src/pkg_scripts-2015.12.19.2.tar.xz
+  http://xyne.archlinux.ca/projects/pkg_scripts/src/pkg_scripts-2015.12.19.2.tar.xz.sig
 )
 sha512sums=(
-  144816be331d37f66b00346a36443a8d537334a84c728d29979179328ea8475f734325b637ad6795c18ea128448b67e876b25f95b2a95a75a815b356ad5189a6
-  88eda2107766a762df570b571f9ae7231cb8e71dc22d9a0e954ab7863dac38caf58ee7fd8d095454791171c4f431ed6b364e74fba711cebce255f90f7db8826a
+  e6fc6d437952d7ed2db9aa57d9f22c9600b4b2b7a57cadc6e60b81ac10f53c9d9cc1431018e5f197b80039d90f508c1743f57fdd51903a5a2e438900b197b7db
+  af918c6b60de3cf5fc7d08bae579beca189eb86233b9e3e0fa9ee65ce1af3de3ae4b908ca0bb19d07dd5f6b1e04b2bc7b6417cad4b8716bd107e656bc2956cf6
 )
 md5sums=(
-  3295d5960fc623c226d6760560084507
-  9045fee9a7359896bf77ce7e672bc744
+  3faedccd5f81963dac2e9a276b7d5c4a
+  22c8a4326345f7f89ed0be3f7c4957d9
 )
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 
 package ()
 {
   cd "$srcdir/$pkgname-$pkgver/src"
-  for pkg in pkg-*
+  for pkg in pkg-* db-*
   do
     name="${pkg##*/}"
     install -Dm755 "$name" "$pkgdir/usr/bin/$name"
