@@ -3,7 +3,7 @@
 # Maintainer: Albert Graef <aggraef@gmail.com>
 
 pkgname=pure-hg
-pkgver=5592.c229999c496e
+pkgver=5603.18b658dbc088
 pkgrel=1
 pkgdesc="Pure is a modern-style functional programming language based on term rewriting."
 arch=("i686" "x86_64")
