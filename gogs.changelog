@@ -1,3 +1,15 @@
+2015-12-18
+
+	* V0.8.10
+	Bug fix: Can't identify git version on Windows #2167
+	Bug fix: Wiki preview does not work on Firefox #2171
+	Bug fix: 500 when view repository watchers and stargazers with PostgreSQL #2176
+	Bug fix: Cannot detect correct file encoding #2185
+	Bug fix: Huge diff hangs
+	Bug fix: Cannot handle non-commit tag
+	Bug fix: Dashboard news feeds for organizations are wrong #2223
+	Features: Add more APIs: user emails, organizations #1692
+
 2015-12-12
 
 	* V0.8.0

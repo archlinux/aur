@@ -6,27 +6,27 @@
 < ROOT =
 ---
 > ROOT = /srv/gogs/repo
-75c75
+74c74
 < STATIC_ROOT_PATH =
 ---
 > STATIC_ROOT_PATH = /usr/share/themes/gogs/default
-91c91
+90c90
 < PATH = data/gogs.db
 ---
 > PATH = /srv/gogs/sqlite/gogs.db
-192c192
+191c191
 < PROVIDER_CONFIG = data/sessions
 ---
 > PROVIDER_CONFIG = /srv/gogs/sessions
-207c207
+206c206
 < AVATAR_UPLOAD_PATH = data/avatars
 ---
 > AVATAR_UPLOAD_PATH = /srv/gogs/data/avatars
-217c217
+216c216
 < PATH = data/attachments
 ---
 > PATH = /srv/gogs/data/attachments
-232c232
+231c231
 < ROOT_PATH =
 ---
 > ROOT_PATH = /var/log/gogs
