@@ -1,0 +1,11 @@
+--- src/sage/misc/sage_timeit.py.orig	2015-12-19 11:09:42.836938821 +0100
++++ src/sage/misc/sage_timeit.py	2015-12-19 11:10:27.090217304 +0100
+@@ -217,7 +217,7 @@
+     # but is there a better way to achieve that the code stmt has access
+     # to the shell namespace?
+ 
+-    src = timeit_.template % {'stmt': timeit_.reindent(stmt, 8),
++    src = timeit_.template % {'init': "", 'stmt': timeit_.reindent(stmt, 8),
+                              'setup': "pass"}
+     code = compile(src, "<magic-timeit>", "exec")
+     ns = {}

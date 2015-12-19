@@ -7,14 +7,14 @@
 # Special thanks to Nareto for moving the compile from the .install to the PKGBUILD
 
 pkgname=sagemath-git
-pkgver=6.10.beta5.r0.g4ca26b3
+pkgver=6.10.r0.ga1b60f2
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(i686 x86_64)
 url="http://www.sagemath.org"
 license=(GPL)
 depends=(ipython2 atlas-lapack ppl mpfi palp brial singular libcliquer maxima-ecl gfan sympow tachyon python2-rpy2
-  python2-matplotlib python2-scipy python2-sympy python2-networkx python2-igraph libgap gap flintqs lcalc lrcalc lrs arb
+  python2-matplotlib python2-scipy python2-sympy python2-networkx python2-igraph libgap flintqs lcalc lrcalc lrs arb
   eclib gmp-ecm zn_poly gd python2-cvxopt pynac linbox gsl rubiks pari-galdata pari-seadata-small planarity rankwidth
   sage-data-combinatorial_designs sage-data-elliptic_curves sage-data-graphs sage-data-polytopes_db sage-data-conway_polynomials)
 optdepends=('cython2: to compile cython code' 'jmol: 3D plots' 'sage-notebook: Browser-based (flask) notebook interface'
@@ -29,7 +29,7 @@ conflicts=(sagemath)
 provides=(sagemath sage-mathematics)
 source=("git://git.sagemath.org/sage.git#branch=develop" 
         "http://mirrors.mit.edu/sage/spkg/upstream/pexpect/pexpect-2.0.tar.bz2"
-        anal.h package.patch env.patch paths.patch clean.patch skip-check.patch test-optional.patch
+        anal.h package.patch env.patch paths.patch clean.patch skip-check.patch test-optional.patch python-2.7.11.patch
         pexpect-env.patch pexpect-del.patch disable-fes.patch jupyter-path.patch)
 md5sums=('SKIP'
          'd9a3e113ed147dcee8f89962a8dccd43'
@@ -40,6 +40,7 @@ md5sums=('SKIP'
          '6d9ae0978ce6a05a0da2cafdfb178a09'
          '5947a420a0b1483f0cbc74c76895789b'
          'cdcabd475b80afe0534a5621e972736e'
+         'ef927896f2071b442b1d07d7e69f5f3a'
          'a83a3b1bc7fcb7cbf752a83a8311fc42'
          'f333939ea6c41377b66407c81016cee4'
          '4eb23a3c7363258bc9ba764d6e5512ba'
@@ -80,6 +81,8 @@ prepare(){
   patch -p0 -i ../test-optional.patch
 # fix jupyter path
   patch -p0 -i ../jupyter-path.patch
+# fix timeit with Python 2.7.11
+  patch -p0 -i ../python-2.7.11.patch
 
 # Upstream patches  
 # fix build against libfes 0.2 http://trac.sagemath.org/ticket/15209
@@ -89,7 +92,7 @@ prepare(){
 
 # use python2
   sed -e 's|#!/usr/bin/env python|#!/usr/bin/env python2|' -e 's|exec python|exec python2|' -i src/bin/*
-  sed -e 's|cython %s %s|cython2 %s %s|' -e 's|python setup.py|python2 setup.py|' -i src/sage/misc/cython.py
+  sed -e 's|cython {OPT}|cython2 {OPT}|' -e 's|python setup.py|python2 setup.py|' -i src/sage/misc/cython.py
   sed -e 's|exec ipython|exec ipython2|' -e 's|cygdb|cygdb2|' -i src/bin/sage
   sed -e "s|'cython'|'cython2'|" -i src/bin/sage-cython
   sed -e 's|python -c|python2 -c|' -i src/Makefile
