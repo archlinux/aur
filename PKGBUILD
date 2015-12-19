@@ -4,35 +4,33 @@ pkgdesc="ROS - The core rosbridge package, repsonsible for interpreting JSON and
 url='http://ros.org/wiki/rosbridge_library'
 
 pkgname='ros-indigo-rosbridge-library'
-pkgver='0.6.8'
+pkgver='0.7.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-indigo-rosservice
-  ros-indigo-geometry-msgs
-  ros-indigo-rospy
+ros_makedepends=(ros-indigo-std-msgs
   ros-indigo-catkin
   ros-indigo-message-generation
-  ros-indigo-rostopic)
+  ros-indigo-rospy
+  ros-indigo-geometry-msgs)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
-  python2-pillow)
+  python2-pillow
+  python2-bson)
 
 ros_depends=(ros-indigo-rosservice
-  ros-indigo-rospy-tutorials
+  ros-indigo-rosgraph
+  ros-indigo-roscpp
   ros-indigo-geometry-msgs
+  ros-indigo-std-msgs
   ros-indigo-message-runtime
   ros-indigo-rospy
-  ros-indigo-std-srvs
-  ros-indigo-rostopic
-  ros-indigo-actionlib-msgs
-  ros-indigo-stereo-msgs
-  ros-indigo-sensor-msgs
-  ros-indigo-nav-msgs)
+  ros-indigo-rostopic)
 depends=(${ros_depends[@]}
-  python2-pillow)
+  python2-pillow
+  python2-bson)
 
 _tag=release/indigo/rosbridge_library/${pkgver}-${_pkgver_patch}
 _dir=rosbridge_library
