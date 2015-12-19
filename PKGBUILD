@@ -12,7 +12,7 @@
 # You will also need to install osgearth or fcgi, respectively, before building.
 
 pkgname=qgis
-pkgver=2.12.1
+pkgver=2.12.2
 pkgrel=1
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats'
 url='http://qgis.org/'
@@ -25,7 +25,7 @@ makedepends=('cmake' 'txt2tags' 'perl')
 optdepends=('gpsbabel: GPS Tool plugin')
 install="$pkgname.install"
 source=("http://qgis.org/downloads/$pkgname-$pkgver.tar.bz2")
-md5sums=('b47a7e040341164fd2b8f7970055e3d0')
+md5sums=('1d5d1d417d77f401b52a8437a63b299b')
 
 prepare() {
   cd $pkgname-$pkgver
