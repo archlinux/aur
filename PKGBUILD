@@ -8,10 +8,11 @@
 # -Wbemprox videocontroller query fix v2 (see https://bugs.winehq.org/show_bug.cgi?id=38879 )
 # -SNI support (see https://bugs.winehq.org/show_bug.cgi?id=38409 )
 # -Steam patch, Crossover Hack version (see https://bugs.winehq.org/show_bug.cgi?id=39403 )
+# -HD7700M support (not referenced in Wine)
 
 pkgname=wine-gaming-nine
-pkgver=1.8rc3
-pkgrel=2
+pkgver=1.8rc4
+pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
 _winesrcdir="wine-patched-staging-$_pkgbasever"
@@ -27,7 +28,7 @@ source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbas
         steam.patch
         wbemprox_query_v2.patch
         )
-sha1sums=('071e2a11c94c7fd8963fa3e51c29537d828f5841'
+sha1sums=('7d42649e4574056ba71c6c3fff82bf1fad492eb9'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
           '8fa4b03f68f18b4de80f10c7a43c0e99a5cb017c'
           '0f4ac455436d5714a2cf0b537ed25f4fa5c1a7fd'
