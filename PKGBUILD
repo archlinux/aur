@@ -3,7 +3,7 @@
 
 pkgname=pure-octave
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="embed an Octave interpreter into Pure."
 arch=("i686" "x86_64")
 license=('GPL3')
