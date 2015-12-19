@@ -2,7 +2,7 @@
 
 pkgname=gnumeric-pure
 pkgver=0.15
-pkgrel=1
+pkgrel=2
 pkgdesc="A Gnumeric extension which lets you use Pure functions in Gnumeric, the Gnome spreadsheet."
 arch=('i686' 'x86_64')
 url="http://docs.pure-lang.googlecode.com/hg/pd-pure.html"
@@ -19,5 +19,5 @@ build() {
 
 package() {
   cd $srcdir/$pkgname-$pkgver
-  make DESTDIR=$startdir/pkg install
+  make DESTDIR=$pkgdir install
 }
