@@ -1,6 +1,6 @@
 pkgbase = tor-browser-es
 	pkgdesc = Tor Browser Bundle: Navegación anónima utilizando Firefox y Tor
-	pkgver = 5.0.5
+	pkgver = 5.0.6
 	pkgrel = 1
 	url = https://www.torproject.org/projects/torbrowser.html
 	install = tor-browser-es.install
@@ -34,13 +34,13 @@ pkgbase = tor-browser-es
 	sha1sums = 28e65f7537e7dc76af475166365ad0deabb91cb9
 	sha1sums = 7a283313a21bb9cd8331891f99d2646186231636
 	sha1sums = d4da2996d4b99d847a9ed382401b9f41cea4098b
-	source_i686 = https://dist.torproject.org/torbrowser/5.0.5/tor-browser-linux32-5.0.5_es-ES.tar.xz
-	source_i686 = https://dist.torproject.org/torbrowser/5.0.5/tor-browser-linux32-5.0.5_es-ES.tar.xz.asc
-	sha256sums_i686 = 8538bf463b942e32fb243c7ceddc3b45fa0f505be0f3e8722c18779f30c56440
+	source_i686 = https://dist.torproject.org/torbrowser/5.0.6/tor-browser-linux32-5.0.6_es-ES.tar.xz
+	source_i686 = https://dist.torproject.org/torbrowser/5.0.6/tor-browser-linux32-5.0.6_es-ES.tar.xz.asc
+	sha256sums_i686 = 1f282b088b959faf7b9af06ca101ac2aed206bb0d554f1a0442c56bf9295711f
 	sha256sums_i686 = SKIP
-	source_x86_64 = https://dist.torproject.org/torbrowser/5.0.5/tor-browser-linux64-5.0.5_es-ES.tar.xz
-	source_x86_64 = https://dist.torproject.org/torbrowser/5.0.5/tor-browser-linux64-5.0.5_es-ES.tar.xz.asc
-	sha256sums_x86_64 = 6e5e74c6cb0bf3688948990c070269f0e674e80925eda9a14f2ec47e9c7202e8
+	source_x86_64 = https://dist.torproject.org/torbrowser/5.0.6/tor-browser-linux64-5.0.6_es-ES.tar.xz
+	source_x86_64 = https://dist.torproject.org/torbrowser/5.0.6/tor-browser-linux64-5.0.6_es-ES.tar.xz.asc
+	sha256sums_x86_64 = 1871443c5f2196e3c66890858d8a55e749ad53697bd4c6d819400ca9006175d5
 	sha256sums_x86_64 = SKIP
 
 pkgname = tor-browser-es
