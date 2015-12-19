@@ -4,7 +4,7 @@
 
 pkgname=mutt-patched
 pkgver=1.5.24
-pkgrel=2
+pkgrel=3
 pkgdesc='Small but very powerful text-based mail client (plus a huge pile of patches mostly from debian)'
 url='http://www.mutt.org/'
 license=('GPL')
@@ -160,7 +160,7 @@ build() {
     --prefix=/usr \
     --sysconfdir=/etc \
     --mandir=/usr/share/man \
-    --with-docdir=/usr/share/doc \
+    --with-docdir=/usr/share/doc/mutt-patched \
     --with-mailpath=/var/mail \
     --disable-dependency-tracking \
     --enable-compressed \
