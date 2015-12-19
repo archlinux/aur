@@ -16,9 +16,10 @@ changelog=$pkgname.changelog
 if [[ $CARCH == "x86_64" ]]
 then
     _suffix=amd64
-sha1sums=('faf662813356cfd6443aa0d361d65d1b50534345')
+md5sums=('905cf3b44940ce83031d40c96694f680')
 else
     _suffix=i386
+md5sums=('5a0d74a87049519e06e11b7dc6214f5e')
 fi
 
 source=($url/installers/rescuetime_current_$_suffix.deb)
