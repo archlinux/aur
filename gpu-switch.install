@@ -1,0 +1,22 @@
+post_install() {
+    echo -e '\E[1;34m'
+    echo "<==== INFORMATION ====>"
+    echo " "
+    echo "* gpu-switch is now installed."
+	echo "* Based on https://github.com/0xbb/gpu-switch"
+    echo " "
+	echo "* Usage (run as root):"
+	echo "* To switch to the Intel GPU:"
+	echo "*   gpu-switch -i"
+	echo "* To switch to the discrete GPU:"
+	echo "*   gpu-switch -d"
+	echo " "
+	echo "* Tested on:"
+	echo "* - MacBook Pro 5,2  (Early 2009, Non-Retina)"
+	echo "* - MacBook Pro 5,3  (Mid  2009, Non-Retina)"
+	echo "* - MacBook Pro 8,2  (Late 2011, Non-Retina)"
+	echo "* - MacBook Pro 9,1  (Mid  2012, Non-Retina)"
+	echo "* - MacBook Pro 10,1 (Mid  2012, Retina)"
+	echo "* - MacBook Pro 11,3 (Late 2013, Retina)"
+tput sgr0 
+} 
