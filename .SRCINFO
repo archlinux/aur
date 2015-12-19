@@ -1,0 +1,29 @@
+pkgbase = roundcubemail-beta
+	pkgdesc = A PHP web-based mail client
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://www.roundcube.net
+	install = roundcubemail.install
+	arch = any
+	license = GPL
+	depends = php
+	depends = php-pear
+	depends = pear-net-idna2
+	depends = pear-mail-mime
+	depends = pear-net-smtp
+	depends = pear-auth-sasl
+	depends = pear-mail-mime-decode
+	depends = pear-net-sieve
+	optdepends = python2
+	conflicts = roundcubemail
+	options = !strip
+	options = emptydirs
+	backup = etc/webapps/roundcubemail/.htaccess
+	backup = etc/webapps/roundcubemail/apache.conf
+	source = http://downloads.sourceforge.net/project/roundcubemail/roundcubemail-beta/1.2-beta/roundcubemail-1.2-beta-complete.tar.gz
+	source = apache.conf
+	sha512sums = f1e471143842453acb99fcbbf2ce054eea8a744bd43ab0a7bcc3bae5cb6a363005c3679f05b8bf52b7337e3b7f7107b1c0120f85f4edd9f3b9b8fd50a150bf8d
+	sha512sums = 0e80317ae6f040386b0980d0764bc8a9aa5f7cbf028a210a896763cb7a7fea6d91600eda588922a0eb6d519f2ec1e0a2f723bd7ab554c8b1ad4af49a95101f6e
+
+pkgname = roundcubemail-beta
+
