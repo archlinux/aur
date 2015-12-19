@@ -4,10 +4,10 @@
 pkgname=python2-meshpy
 _pkgname=MeshPy
 pkgver=2014.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Bibtex parser in python2"
 arch=('any')
-url="https://meshpy.readthedocs.org/"
+url="https://pypi.python.org/pypi/MeshPy"
 license=('LGPL3')
 depends=('python2' 'python2-pyvtk')
 makedepends=('python2-setuptools')
