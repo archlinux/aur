@@ -1,7 +1,7 @@
 # Maintainer: Juhani Numminen <juhaninumminen0@gmail.com>
 
 pkgname=pentobi
-pkgver=10.0
+pkgver=10.1
 pkgrel=1
 pkgdesc="computer opponent for the board game Blokus"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('cmake' 'extra-cmake-modules' 'kio' 'qt5-tools')
 optdepends=('kio: KDE thumbnailer')
 install=${pkgname}.install
 source=("http://dl.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('9ca2bd1178e6bbfbfcab76a05dac736359194df72fc313a79f291f67c6648663')
+sha256sums=('5e797aac5a7fd365efc15c5c04468cedea7f4e60e4ec7d90e30d8930e70d9cda')
 
 prepare() {
   mkdir -p build
