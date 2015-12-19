@@ -3,7 +3,7 @@
 
 pkgname=libsearpc
 pkgver=3.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and easy-to-use C language RPC framework (including both server side & client side) based on GObject System."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/haiwen/libsearpc/"
