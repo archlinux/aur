@@ -1,7 +1,7 @@
 # Maintainer: ava1ar <mail(at)ava1ar(dot)me>
 
 pkgname=system76-driver
-pkgver=15.10.7
+pkgver=15.10.10
 pkgrel=1
 pkgdesc="System76 Driver provides drivers, restore, and regression support for System76 computers"
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
 	'pulseaudio: To apply microphone fix')
 source=("https://launchpad.net/~system76-dev/+archive/stable/+files/${pkgname}_${pkgver}.tar.gz"
 	'system76.service' 'galu1.patch' 'grub.patch' 'gtk.patch' 'cli.patch')
-sha1sums=('ab99186d530fcec21526d936f7481116ded2fe3c'
+sha1sums=('020e4587d9d4ad72fe90611d51df1608d0888e3d'
           'cf763432441c3da0563eee041145a02109f2bb3a'
           '8567b36332ff4ed0bc1e8516f9247628e0ba55ae'
           'ea729019c9dbf82b8813fbdace1568242155e386'
@@ -37,6 +37,8 @@ package() {
 	# installing system76-driver-pkexec script and polkit configuration
 	install -m755 -D system76-driver-pkexec ${pkgdir}/usr/bin/system76-driver-pkexec
 	install -m644 -D com.system76.pkexec.system76-driver.policy ${pkgdir}/usr/share/polkit-1/actions/com.system76.pkexec.system76-driver.policy
+	# creating /var/lib/system76-driver directory for brightness settings saving
+	install -m755 -d ${pkgdir}/var/lib/system76-driver 
 	
 	cd ${pkgdir}
 
@@ -55,5 +57,5 @@ package() {
 	###########
 	# cleanup #
 	###########
-	rm -rf ${pkgdir}/usr/lib/python3.4/site-packages/system76driver/tests/
+	rm -rf ${pkgdir}/usr/lib/python*/site-packages/system76driver/{__pycache__,tests}
 } 
