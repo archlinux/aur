@@ -1,7 +1,7 @@
 # Maintainer: FrozenCow <frozencow@gmail.com>
 
 pkgname=itch
-pkgver=0.10.2
+pkgver=0.10.4
 pkgrel=1
 pkgdesc="The best way to play itch.io games."
 
