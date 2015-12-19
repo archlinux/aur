@@ -20,7 +20,7 @@ pkgname=('php7'
 		 'php7-xsl')
 
 pkgver=7.0.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('PHP')
 url='http://www.php.net'
@@ -30,13 +30,15 @@ makedepends=('apache' 'imap' 'postgresql-libs' 'libldap' 'postfix'
 			 'curl' 'libxslt' 'openssl' 'db' 'gmp' 'systemd')
 
 source=("http://us2.php.net/distributions/php-${pkgver}.tar.xz"
-		'php.ini.patch' 'apache.conf'
-		'php-fpm.service' 'php-fpm.tmpfiles')
+		'php.ini.patch' 'apache.conf' 'php-fpm.service' 'php-fpm.tmpfiles'
+		'php-fpm.conf.in.patch' 'php-fpm.install')
 md5sums=('23aba67d57d53145becacb982ed498d5'
-		 '3def4d1897c38fb15f7d61b63682a71d'
+		 'e8cf681d7044a64bc4a17d18ff2961e1'
 		 '3bdf401291d4de96caa33d053a000e46'
 		 'cc2940f5312ba42e7aa1ddfab74b84c4'
-		 'c60343df74f8e1afb13b084d5c0e47ed')
+		 'c60343df74f8e1afb13b084d5c0e47ed'
+		 '42f5bb6ad8041b48240ee184e4978fc0'
+		 '092c7cef2bb413b6bfaff1e5ce299eeb')
 validpgpkeys=('6E4F6AB321FDC07F2C332E3AC2BF0BC433CFC8B3')
 
 prepare() {
@@ -100,7 +102,6 @@ build() {
 		--with-imap-ssl \
 		--with-imap=shared \
 		--with-jpeg-dir=/usr \
-		--with-vpx-dir=/usr \
 		--with-ldap=shared \
 		--with-ldap-sasl \
 		--with-libzip \
@@ -249,7 +250,7 @@ package_php7-apache() {
 package_php7-fpm() {
 	pkgdesc='FastCGI Process Manager for PHP'
 	depends=("php=${pkgver}" 'systemd')
-	backup=('etc/php/php-fpm.conf')
+	backup=('etc/php/php-fpm.conf' 'etc/php/fpm.d/www.conf')
 	install='php-fpm.install'
 	provides=("php-fpm=${pkgver}")
 	conflicts=('php-fpm')
@@ -257,6 +258,7 @@ package_php7-fpm() {
 	install -D -m755 ${srcdir}/build-fpm/sapi/fpm/php-fpm ${pkgdir}/usr/bin/php-fpm
 	install -D -m644 ${srcdir}/build-fpm/sapi/fpm/php-fpm.8 ${pkgdir}/usr/share/man/man8/php-fpm.8
 	install -D -m644 ${srcdir}/build-fpm/sapi/fpm/php-fpm.conf ${pkgdir}/etc/php/php-fpm.conf
+	install -D -m644 ${srcdir}/build-fpm/sapi/fpm/www.conf ${pkgdir}/etc/php/fpm.d/www.conf
 	install -d -m755 ${pkgdir}/etc/php/fpm.d
 	install -D -m644 ${srcdir}/php-fpm.tmpfiles ${pkgdir}/usr/lib/tmpfiles.d/php-fpm.conf
 	install -D -m644 ${srcdir}/php-fpm.service ${pkgdir}/usr/lib/systemd/system/php-fpm.service

@@ -5,7 +5,7 @@
  ;  - the global prefix if it's been set (-p argument)
  ;  - @prefix@ otherwise
 -;include=etc/fpm.d/*.conf
-+;include=/etc/php/fpm.d/*.conf
++include=/etc/php/fpm.d/*.conf
  
  ;;;;;;;;;;;;;;;;;;
  ; Global Options ;
