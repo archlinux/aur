@@ -1,5 +1,6 @@
-# Maintainer:  Martin C. Doege <mdoege at compuserve dot com>
+# Contributor:  Martin C. Doege <mdoege at compuserve dot com>
 # Contributor: kotyz <kotyz.king@gmail.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=tkimg
 pkgver=1.4.2
