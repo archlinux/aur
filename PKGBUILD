@@ -9,7 +9,7 @@ pkgdesc="Firefox Aurora Developer Edition (Polish l10n)"
 url=https://www.mozilla.org/en-US/firefox/developer/all/
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
-depends=('gtk2' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 
+depends=('gtk3' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 
 	 'alsa-lib' 'dbus-glib' 'libnotify' 'desktop-file-utils' 'hicolor-icon-theme'
 	 'libvpx' 'libevent' 'nss>=3.14.1' 'hunspell')
 optdepends=()
