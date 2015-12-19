@@ -1,6 +1,6 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=pbget
-pkgver=2015.12.6
+pkgver=2015.12.19.1
 pkgrel=1
 pkgdesc='Retrieve PKGBUILDs and local source files from Git, ABS and the AUR for makepkg.'
 arch=(any)
@@ -8,16 +8,16 @@ license=(GPL)
 url="http://xyne.archlinux.ca/projects/pbget"
 depends=(pm2ml python3 python3-aur python3-xcgf python3-xcpf)
 source=(
-  http://xyne.archlinux.ca/projects/pbget/src/pbget-2015.12.6.tar.xz
-  http://xyne.archlinux.ca/projects/pbget/src/pbget-2015.12.6.tar.xz.sig
+  http://xyne.archlinux.ca/projects/pbget/src/pbget-2015.12.19.1.tar.xz
+  http://xyne.archlinux.ca/projects/pbget/src/pbget-2015.12.19.1.tar.xz.sig
 )
 sha512sums=(
-  e1baa69dec2bac08415d018a11a17256dfc444b6d0a90b4a4886375df976a37542325798e241d44e668c1a54a6f926802986fff561a1250241c301eb7b8de19f
-  cf7509e64dbe6c8c1123ed065e1411888d0867efc7137717073b8fe23b43ae18b5d3690248f83b186a5d9f26bb9254e943d53ac14460e477e2e5aae88ce59e40
+  9dd3b80c6f3e39f0703b5154b73446de22a882678ddf608205d87937e20e4697a57ad65aaac727e2ad459a6d512ca063b878de760f36357b7f4495d13544c5eb
+  698ab9de7ee6fdcf122a4f9f59bba04a74b10a668ed3c7e655a28d9102c05580baa0d9f169e9292637364d8d0567dbfd6ec901ed5f3eb86ca8c1b9ccacd36813
 )
 md5sums=(
-  e77771d8ec37e45f77c7a5e85c238695
-  6e73999c8e2e1c48cddcc1aed7053ea9
+  f3b103befb66c542569af30ed9734f44
+  6295be1fdbae8bb63e189cea18b12ed5
 )
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 
