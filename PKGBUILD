@@ -1,7 +1,7 @@
 # Maintainer: Georg Potthast <nospam at georgpotthast.de>
 pkgname=netrider-bin
 pkgver=0.94
-pkgrel=1
+pkgrel=2
 pkgdesc="Webkit based browser"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/netrider/"
