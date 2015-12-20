@@ -3,8 +3,8 @@
 pkgname=cauchy-hg
 _hgrepo=cauchy
 pkgver=446.814aa99d9341
-pkgrel=1
-pkgdesc='Matlab/Octave to MathML compiler'
+pkgrel=2
+pkgdesc='Matlab/Octave to C++ transformer'
 arch=('i686' 'x86_64')
 url='https://bitbucket.org/cyrille/cauchy'
 license=('LGPL')
