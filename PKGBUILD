@@ -1,6 +1,6 @@
 # Maintainer: Br Anthony VanBerkum <anthonyvbop AT gmail DOT com>
 pkgname=editorconfig-vim
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="EditorConfig plugin for Vim - editorconfig.org"
 arch=("any")
@@ -9,8 +9,8 @@ license=("custom")
 groups=("vim-plugins")
 depends=("vim")
 install=vimdoc.install
-source=("https://github.com/editorconfig/editorconfig-vim/archive/v0.3.2.tar.gz")
-sha256sums=("841661603c94cb0e259734576b5eca3d21692ff5543a25d83526a16d3a65d4a3")
+source=("https://github.com/editorconfig/editorconfig-vim/archive/v0.3.3.tar.gz")
+sha256sums=("fd579672c426a089835e9bc57a1fd5fc18dba77c014b67141153372e83c92c57")
 
 package() {
   mkdir -p $pkgdir/usr/share/vim/vimfiles/{plugin,doc,autoload}
