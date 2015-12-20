@@ -2,8 +2,8 @@
 # Contributor: robotanarchy
 
 pkgname=minted
-pkgver=2.0
-pkgrel=2
+pkgver=2.1
+pkgrel=1
 pkgdesc="Highlighted source code for LaTeX."
 url="https://github.com/gpoore/${pkgname}"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('texlive-latexextra' 'pygmentize')
 source=("https://github.com/gpoore/minted/archive/v${pkgver}.tar.gz"
         "minted.install")
 install=minted.install
-md5sums=('1716f44432f79eab08f9e465e8ddbb83'
+md5sums=('a578a2e19f6a7254aa1f1c4e233a93a8'
          'a573ca786bc416e905171f49abf3ba46')
 
 build() {
