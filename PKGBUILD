@@ -20,9 +20,9 @@ _amo_os=Linux
 #@
 #@ --------------------------------------------
 #@ Lines below automatically added by update_pkgbuild.sh.
-pkgver='1.5.3'
-source=('https://addons.mozilla.org/firefox/downloads/file/350852/keefox-1.5.3-tb+fx-linux.xpi?src=api')
+pkgver='1.5.4'
+source=('https://addons.mozilla.org/firefox/downloads/file/374446/keefox-1.5.4-tb+fx-linux.xpi?src=api')
 #@ --------------------------------------------
 #@
-md5sums=('ae694ee51911f0a25f4435f3bd2d699e')
-sha384sums=('4a010e987f29ba8f6a4a48eafa7c3392675689724f45ed205fea16d13b31deaf7832ee28ba3c7b31e257b87a1f24d98d')
+md5sums=('f3434ecfac0f3a1c07f7eff3e5b32cf2')
+sha384sums=('6c8d8c8ce69f2f9d92bfef0d3346326e98a4fccec123da6285bcdf991974b830fbde680ea01acf0e25c3016f6dc5634e')
