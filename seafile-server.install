@@ -1,30 +1,21 @@
-## arg 1:  the new package version
 pre_install() {
     virtualenv2 --system-site-packages /usr/lib/seafile/seafileenv
     virtualenv2 --relocatable /usr/lib/seafile/seafileenv
     source /usr/lib/seafile/seafileenv/bin/activate
 
-    pip install pip
-
-    # Dependencies as per
-    # http://manual.seafile.com/build_seafile/server.html
+    pip install chardet
+    pip install simplejson
+    pip install six
+    pip install python-dateutil
+    pip install django-pipeline
     pip install "Django>=1.5.8,<1.6"
     pip install "Djblets==0.6.14" --no-deps --allow-external Djblets --allow-unverified Djblets
-    # sqlite3 module should be included in python distribution
-    pip install simplejson
-    # Pillow as replacement for PIL
     pip install "Pillow>=2.6.1,<3.0.0"
-    pip install chardet
     pip install "gunicorn==18"
     pip install "django-compressor==1.4"
     pip install "django-statici18n==1.1.2"
-    pip install six
-    pip install python-dateutil
     pip install "git+git://github.com/haiwen/django-constance.git@bde7f7cdfd0ed1631a6817fd4cd76f37bf54fe35#egg=django-constance[database]"
     pip install "openpyxl==2.3.0"
-
-    # Additional dependencies
-    pip install django-pipeline
 
     deactivate
 }
@@ -34,50 +25,31 @@ post_install() {
     systemctl daemon-reload
 }
 
-## arg 1:  the new package version
-## arg 2:  the old package version
 pre_upgrade() {
     virtualenv2 --system-site-packages /usr/lib/seafile/seafileenv
     virtualenv2 --relocatable /usr/lib/seafile/seafileenv
     source /usr/lib/seafile/seafileenv/bin/activate
 
-    pip install --upgrade pip
-
-    # Dependencies as per
-    # http://manual.seafile.com/build_seafile/server.html
+    pip install --upgrade chardet
+    pip install --upgrade simplejson
+    pip install --upgrade six
+    pip install --upgrade python-dateutil
+    pip install --upgrade django-pipeline
     pip install --upgrade "Django>=1.5.8,<1.6"
     pip install --upgrade "Djblets==0.6.14" --no-deps --allow-external Djblets --allow-unverified Djblets
-    # sqlite3 module should be included in python distribution
-    pip install --upgrade simplejson
-    # Pillow as replacement for PIL
     pip install --upgrade  "Pillow>=2.6.1,<3.0.0"
-    pip install --upgrade chardet
     pip install --upgrade "gunicorn==18"
     pip install "django-compressor==1.4"
     pip install "django-statici18n==1.1.2"
-    pip install --upgrade six
-    pip install --upgrade python-dateutil
     pip install --upgrade "git+git://github.com/haiwen/django-constance.git@bde7f7cdfd0ed1631a6817fd4cd76f37bf54fe35#egg=django-constance[database]"
     pip install --upgrade "openpyxl==2.3.0"
-
-    # Additional dependencies
-    pip install --upgrade django-pipeline
-
     deactivate
 }
 
-## arg 1:  the new package version
-## arg 2:  the old package version
 post_upgrade() {
     post_install
 }
 
-## arg 1:  the old package version
-pre_remove() {
-    echo " " > /dev/null
-}
-
-## arg 1:  the old package version
 post_remove() {
     rm -rf /usr/lib/seafile/seafileenv
     post_install
