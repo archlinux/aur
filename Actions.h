@@ -219,7 +219,7 @@ int ReadArm(char *package) {
 	curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)&chunk);
 	result = curl_easy_perform(curl);
 	if(result != CURLE_OK) {
-		printf ("Please check you internet connection. Error 2\n");
+		printf ("Please check you internet connection. Error 2 (Can`t read ARM)\n");
 		return -1; // Exit with error
 	}		
 	curl_easy_cleanup(curl);
