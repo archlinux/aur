@@ -1,6 +1,6 @@
 pkgname=ghdl
 pkgver=0.33
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc='VHDL simulator'
 url='http://sourceforge.net/projects/ghdl-updates/'
@@ -14,10 +14,8 @@ _gccver=4.9.3
 _islver=0.12.2
 _cloogver=0.18.1
 
-# "tag=ghdl-0.33" refers to the 0.33 branch, not a fixed and released version.
 source=(
-  #"ghdl::hg+http://hg.code.sf.net/p/ghdl-updates/code#tag=ghdl-${pkgver}_release"
-  "ghdl::hg+http://hg.code.sf.net/p/ghdl-updates/code#revision=900"
+  "git://github.com/tgingold/ghdl#tag=v${pkgver}"
   "ftp://ftp.gnu.org/gnu/gcc/gcc-${_gccver}/gcc-${_gccver}.tar.bz2"
   "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
   "http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz"
@@ -35,6 +33,7 @@ prepare() {
   make copy-sources
 
   cd "${srcdir}/gcc-${_gccver}"
+
   # link isl/cloog for in-tree builds
   ln -s ../isl-${_islver} isl
   ln -s ../cloog-${_cloogver} cloog
@@ -44,13 +43,15 @@ prepare() {
 
   # Arch Linux installs x86_64 libraries /lib
   [[ $CARCH == "x86_64" ]] && sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
+
+  # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
+  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
+
+  mkdir ${srcdir}/gcc-build
 }
 
 build() {
-  mkdir "${srcdir}/gcc-build"
   cd "${srcdir}/gcc-build"
-
-  CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=2/}
 
   # using -pipe causes spurious test-suite failures
   # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
