@@ -1,6 +1,6 @@
 # Maintainer: Graham Edgecombe <graham@grahamedgecombe.com>
 pkgname=openrct2-git
-pkgver=r4919.10674fe
+pkgver=r5340.44bb3ac
 pkgrel=1
 pkgdesc='Open source clone of RollerCoaster Tycoon 2'
 arch=('i686' 'x86_64')
@@ -46,22 +46,19 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname"
 
-  cmake -DCMAKE_BUILD_TYPE=Debug .
-  make
-
-  # openrct2 sprite build segfaults even if it finishes successfully, so we
-  # ignore its return code.
-  ./openrct2 sprite build data/g2.dat resources/g2 || true
+  mkdir -p build
+  cd build
+  cmake -DCMAKE_BUILD_TYPE=Debug ..
+  make all g2
 }
 
 package() {
   cd "$srcdir/$pkgname"
 
   # Standard OpenRCT2 distribution files.
-  install -Dm755 openrct2 "$pkgdir/usr/share/openrct2/openrct2"
-  install -Dm644 openrct2.exe "$pkgdir/usr/share/openrct2/openrct2.exe"
+  install -Dm755 build/openrct2 "$pkgdir/usr/share/openrct2/openrct2"
 
-  install -Dm644 data/g2.dat "$pkgdir/usr/share/openrct2/data/g2.dat"
+  install -Dm644 build/g2.dat "$pkgdir/usr/share/openrct2/data/g2.dat"
 
   install -dm755 "$pkgdir/usr/share/openrct2/data/language"
   install -m644 data/language/* "$pkgdir/usr/share/openrct2/data/language/"
