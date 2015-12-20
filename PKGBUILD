@@ -8,7 +8,7 @@
 #
 
 pkgname=electrum-git
-pkgver=20151130
+pkgver=20151214
 pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
@@ -56,10 +56,6 @@ pkgver() {
 
 prepare() {
   cd ${pkgname%-git}
-
-  msg2 'Fixing Python version...'
-  find . -type f -print0 | xargs -0 sed -i 's#/usr/bin/python#/usr/bin/python2#g'
-  find . -type f -print0 | xargs -0 sed -i 's#/usr/bin/env python#/usr/bin/env python2#g'
 
   msg2 'Fixing app.fil...'
   # plugins/labels.py → plugins/labels/labels.py
