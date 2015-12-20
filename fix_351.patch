@@ -1,0 +1,36 @@
+From 237c256ffafe5a178d6740e5c299b5a2a6c0b0aa Mon Sep 17 00:00:00 2001
+From: Micdu70 <Micdu70@users.noreply.github.com>
+Date: Tue, 17 Nov 2015 16:44:54 +0100
+Subject: [PATCH] Fix Pull Request #351
+
+---
+ src/core/download_factory.cc | 2 +-
+ src/core/download_store.cc   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/core/download_factory.cc b/src/core/download_factory.cc
+index f19a481..b1bdd64 100644
+--- a/src/core/download_factory.cc
++++ b/src/core/download_factory.cc
+@@ -419,7 +419,7 @@ DownloadFactory::initialize_rtorrent(Download* download, torrent::Object* rtorre
+     download->info()->mutable_up_rate()->set_total(rtorrent->get_key_value("total_uploaded"));
+ 
+   if (rtorrent->has_key_value("total_downloaded"))
+-    download->info()->mutable_dl_rate()->set_total(rtorrent->get_key_value("total_downloaded"));
++    download->info()->mutable_down_rate()->set_total(rtorrent->get_key_value("total_downloaded"));
+ 
+   if (rtorrent->has_key_value("chunks_done") && rtorrent->has_key_value("chunks_wanted"))
+     download->download()->set_chunks_done(rtorrent->get_key_value("chunks_done"), rtorrent->get_key_value("chunks_wanted"));
+diff --git a/src/core/download_store.cc b/src/core/download_store.cc
+index a85dca9..536dba1 100644
+--- a/src/core/download_store.cc
++++ b/src/core/download_store.cc
+@@ -140,7 +140,7 @@ DownloadStore::save(Download* d, int flags) {
+   rtorrent_base->insert_key("chunks_done",    d->download()->file_list()->completed_chunks());
+   rtorrent_base->insert_key("chunks_wanted",  d->download()->data()->wanted_chunks());
+   rtorrent_base->insert_key("total_uploaded", d->info()->up_rate()->total());
+-  rtorrent_base->insert_key("total_downloaded", d->info()->dl_rate()->total());
++  rtorrent_base->insert_key("total_downloaded", d->info()->down_rate()->total());
+ 
+   // Don't save for completed torrents when we've cleared the uncertain_pieces.
+   torrent::resume_save_progress(*d->download(), *resume_base);

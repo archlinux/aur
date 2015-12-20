@@ -1,7 +1,7 @@
 src/
 pkg/
 rtorrent/
-*.patch
+rtorrent.patch
 *.cc
 *.h
 *.pkg.tar

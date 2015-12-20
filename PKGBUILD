@@ -10,7 +10,7 @@ _debug=n
 _commit=HEAD
 
 pkgname=rtorrent-pyro-git
-pkgver=20150908
+pkgver=20151117
 pkgrel=1
 pkgdesc="Ncurses BitTorrent client based on libTorrent - rTorrent-git with Pyroscope patches"
 url="https://github.com/pyroscope/rtorrent-ps"
@@ -18,10 +18,7 @@ license=('GPL')
 arch=('i686' 'x86_64')
 depends=('libtorrent-pyro-git' 'libsigc++' 'ncurses' 'curl' 'xmlrpc-c')
 makedepends=('git' 'cppunit')
-optdepends=('ttf-dejavu: for utf8 glyphs'
-            'ttf-everson-mono'
-            'ttf-unifont'
-            'ttf-andale-mono')
+optdepends=('ttf-dejavu: for utf8 glyphs')
 conflicts=('rtorrent' 'rtorrent-git')
 provides=('rtorrent')
 install='pyroscope.install'
@@ -65,6 +62,9 @@ prepare() {
     sed -i ../command_pyroscope.cc \
         -e 's:view_filter:view.filter:' \
         -e 's:RT_HEX_VERSION < 0x000904:RT_HEX_VERSION > 0x000904:'
+
+    [[ $(grep "dl_rate" "src/core/download_store.cc") ]] &&
+        patch -uNp1 -i "$startdir/fix_351.patch"
 
     for i in ${srcdir}/*.patch; do
         sed -f doc/scripts/update_commands_0.9.sed -i "$i"
