@@ -1,4 +1,4 @@
-# Maintainer: Joris Steyn <jorissteyn@gmail.com>
+# Maintainer: Joris Steyn <joris@j0r1s.nl>
 #
 # Example usage:
 #  $ man array_pop
