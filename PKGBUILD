@@ -4,7 +4,7 @@
 
 pkgbase=gtk-theme-elementary-bzr
 pkgname=('gtk-theme-elementary-bzr' 'plank-theme-pantheon-bzr')
-pkgver=r550
+pkgver=r614
 pkgrel=1
 arch=('any')
 url='https://launchpad.net/egtk'
@@ -22,7 +22,7 @@ pkgver() {
 
 package_gtk-theme-elementary-bzr() {
   pkgdesc='elementary GTK theme'
-  depends=('gtk-engine-murrine' 'gtk-engine-unico')
+  depends=('gtk-engine-murrine')
   optdepends=('elementary-icon-theme')
   provides=('gtk-theme-elementary')
   conflicts=('gtk-theme-elementary')
