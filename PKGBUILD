@@ -16,9 +16,9 @@ pkgver() {
 }
 
 package() {
-	install -Dm644 "${srcdir}"/${pkgname}/51-these-are-not-joysticks-rm.rules "${pkgdir}"/etc/udev/rules.d/51-these-are-not-joysticks-rm.rules
+	install -Dm644 "${srcdir}"/${pkgname}/51-these-are-not-joysticks-rm.rules "${pkgdir}"/usr/lib/udev/rules.d/51-these-are-not-joysticks-rm.rules
 	## Alternatively, if you don't want to remove the erroneous
 	## devices but set their permissions to 0000, comment the above
 	## line and uncomment the one below
-	#install -Dm644 "${srcdir}/${pkgname}"/51-these-are-not-joysticks.rules "${pkgdir}"/etc/udev/rules.d/51-these-are-not-joysticks.rules
+	#install -Dm644 "${srcdir}/${pkgname}"/51-these-are-not-joysticks.rules "${pkgdir}"/usr/lib/udev/rules.d/51-these-are-not-joysticks.rules
 }
