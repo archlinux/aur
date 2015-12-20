@@ -1,23 +1,15 @@
-## arg 1:  the new package version
-## arg 2:  the old package version
-
 post_install() {
-  cd /usr/share/selinux/refpolicy-arch/
   echo ">>> Loading refpolicy-arch. Please wait ..."
-  /bin/ls *.pp | /bin/grep -Ev "base.pp|enableaudit.pp" | /usr/bin/xargs /usr/sbin/semodule -s refpolicy-arch -b base.pp -i
-  echo ">>> Relabeling filesystems. This may take some time. Please wait ..."
-  /sbin/restorecon -r /
+  /usr/bin/semodule -s refpolicy-arch -i /usr/share/selinux/refpolicy-arch/*.pp
+  echo ">>> Relabeling the filesystem may be needed."
+  echo ">>> This can be done with: /usr/bin/restorecon -rF /"
 }
 
 post_upgrade() {
-  cd /usr/share/selinux/refpolicy-arch/
-  echo ">>> Reloading refpolicy-arch. Please wait ..."
-  /bin/ls *.pp | /bin/grep -Ev "base.pp|enableaudit.pp" | /usr/bin/xargs /usr/sbin/semodule -s refpolicy-arch -b base.pp -i
-  echo ">>> Relabeling filesystems. This may take some time. Please wait ..."
-  /sbin/restorecon -r /
+  post_install
 }
 
 post_remove() {
-  echo ">>> Removing refpolicy left-over files. Please wait ..."
+  echo ">>> Removing refpolicy left-over files."
   /bin/rm -rf /etc/selinux/refpolicy-arch
 }

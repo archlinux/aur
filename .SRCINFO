@@ -1,28 +1,22 @@
 pkgbase = selinux-refpolicy-arch
 	pkgdesc = Modular SELinux reference policy including headers and docs with Arch Linux patch
-	pkgver = 20110726.1
-	pkgrel = 3
+	pkgver = 20151208.0
+	pkgrel = 1
 	url = http://oss.tresys.com/projects/refpolicy
 	install = selinux-refpolicy-arch.install
 	arch = any
 	groups = selinux
-	groups = selinux-policies
 	license = GPL
-	makedepends = selinux-usr-checkpolicy>=2.0.16
-	makedepends = selinux-usr-policycoreutils>=2.0.0
-	makedepends = selinux-usr-libsepol>=2.0.29
-	makedepends = selinux-usr-libsemanage>=2.0.29
-	makedepends = pyxml
+	makedepends = checkpolicy>=2.1.8
+	makedepends = policycoreutils>=2.1.10
+	makedepends = libsepol>=2.1.4
+	makedepends = libsemanage>=2.0.29
 	depends = linux-selinux
-	conflicts = selinux-refpolicy
-	options = !makeflags
 	backup = etc/selinux/config
-	source = http://oss.tresys.com/files/refpolicy/refpolicy-2.20110726.tar.bz2
+	source = https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-2.20151208.tar.bz2
 	source = config
-	source = selinux-refpolicy-arch.patch
-	sha256sums = 8159b7535aa0f805510e4e3504b1317d7083b227f0ef3df51c6f002ed70ecedb
-	sha256sums = 4803739c58a47b0226899e41239df714ee72e86267c9929d4776b819de370cb4
-	sha256sums = b03d8afcc71f0d67ba3c8688003f353c27d00bf8a87ef925e23c54fafe2d4880
+	sha256sums = 2dd2f45a7132137afe8302805c3b7839739759b9ab73dd1815c01afe34ac99de
+	sha256sums = c9f7cce9a06fd0595b3dd47d4fdde9d9c7457120c42c5f08bfdc5e89eb9a61df
 
 pkgname = selinux-refpolicy-arch
 
