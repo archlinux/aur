@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains the description (mechanical, kinematic, vis
 url='http://ros.org/wiki/pr2_description'
 
 pkgname='ros-indigo-pr2-description'
-pkgver='1.11.9'
+pkgver='1.11.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
