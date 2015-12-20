@@ -8,7 +8,7 @@ url="http://www.exploit-db.com"
 license="custom"
 arch=('any')
 depends=('bash' 'wget' 'grep' 'sed' 'tar')
-source=('http://www.exploit-db.com/archive.tar.bz2'
+source=('https://www.exploit-db.com/archive.tar.bz2'
         'exploit-db.sh')
 md5sums=('SKIP'
          'e4ef0ae3f8e4073648089b935a758a0b')
