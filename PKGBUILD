@@ -5,7 +5,7 @@
 _pkgname=terminus-font
 pkgname=${_pkgname}-ll2-td1
 pkgver=4.40
-pkgrel=1
+pkgrel=2
 pkgdesc='A superb, monospace bitmap font (for X11 and console) with ll2 patch (pass the il1I test) and td1 patch (centered ascii tilde)'
 arch=(any)
 url=http://sourceforge.net/projects/terminus-font/
@@ -21,7 +21,7 @@ build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   patch < alt/ll2.diff
   patch < alt/td1.diff
-  sh ./configure --prefix=/usr --x11dir=/usr/share/fonts/local --psfdir=/usr/share/kbd/consolefonts
+  ./configure --prefix=/usr --x11dir=/usr/share/fonts/misc --psfdir=/usr/share/kbd/consolefonts
   make
 }
 
