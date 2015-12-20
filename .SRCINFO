@@ -1,17 +1,17 @@
 pkgbase = fanficfare
 	pkgdesc = A tool for downloading fanfiction to eBook formats
-	pkgver = 2.2.15
+	pkgver = 2.2.16
 	pkgrel = 1
 	url = https://github.com/JimmXinu/FanFicFare
-	changelog = auto-changelog.txt
+	changelog = changelog.txt
 	arch = any
 	license = Apache
 	depends = python2
 	depends = python2-beautifulsoup4
 	depends = python2-chardet
 	depends = python2-html5lib
-	source = https://github.com/JimmXinu/FanFicFare/archive/v2.2.15.tar.gz
-	sha256sums = cb3dbf21ef1f8401d21f3267ded1825a1c3790ac9cf00e0b86bb08884505a4e8
+	source = https://github.com/JimmXinu/FanFicFare/archive/v2.2.16.tar.gz
+	sha256sums = 84f1a493ea2e6541ebd121c0aabd29f4fae8acbc4ccb6eaf9018a1c9da16ef28
 
 pkgname = fanficfare
 

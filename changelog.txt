@@ -1,0 +1,26 @@
+Version 2.2.16 - 19 Dec 2015
+- Update for changes to storiesonline.net site.
+- Set is_adult cookie for FimF on 'Get URLs from Page' if set in personal.ini.
+- Fix for hpfandom.net change so one-shot stories will work correctly.
+- Improvements to basic chapter_title_strip_pattern, add warning comments for same.
+- Update to BeautifulSoup 4.4.1 everywhere, remove included BS3. Effected parts:
+  ---- MOBI generation
+  ---- replace_br_with_p feature
+  ---- base_efiction adapters
+  ---- Most site adapters.
+- Strip <script> tags from HTML. Added for FimF, but applies to all sites.
+- Remove 'like' from XenForoForum chapter links in index post.
+- Make metadata lists unique even when keep_in_order_.
+- Change entities to actual utf8 chars in adapter_fanfictionjunkiesde.py.
+- Add keep_html_attrs feature - deprecates keep_style_attr and keep_title_attr.
+- Add replace_tags_with_spans feature.
+- Fix for yet another storiesonline.net site change. Thanks davidfor for
+  figuring it out for me.
+- New site mcstories.com. Thanks user39189!. Fair warning: mcstories.com is
+  titled "The Erotic Mind-Control Story Archive".
+- Fix for literotica.com. Thanks again to davidfor for figuring out the problem.
+- New centeredcat_to_characters pairingcat_to_characters_ships and
+  romancecat_to_characters_ships features for tthfanfic.org. These default to
+  'true', set them to false in your personal.ini if you want the old behavior.
+  See: http://www.mobileread.com/forums/showthread.php?p=3224924&postcount=829
+- Remove HTML comments when using replace_br_with_p.

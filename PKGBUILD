@@ -1,17 +1,19 @@
 # Maintainer: Eli Schwartz <eschwartz93@gmail.com>
 
+# All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
+
 _pkgname=FanFicFare
 pkgname=fanficfare
-pkgver=2.2.15
+pkgver=2.2.16
 pkgrel=1
 pkgdesc="A tool for downloading fanfiction to eBook formats"
 arch=('any')
 url="https://github.com/JimmXinu/${_pkgname}"
 license=('Apache')
-changelog=auto-changelog.txt
+changelog=changelog.txt
 depends=('python2' 'python2-beautifulsoup4' 'python2-chardet' 'python2-html5lib')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('cb3dbf21ef1f8401d21f3267ded1825a1c3790ac9cf00e0b86bb08884505a4e8')
+sha256sums=('84f1a493ea2e6541ebd121c0aabd29f4fae8acbc4ccb6eaf9018a1c9da16ef28')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -20,9 +22,5 @@ build() {
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    python2 setup.py install --root="${pkgdir}" --optimize=1
-
-    # Install changelog
-    echo "${pkgver}-${pkgrel}:" > ${startdir}/auto-changelog.txt
-    sed -n '1h; 1!H; ${ g; s|.*<h3>Changes:</h3>\s\+<ul>\n\(.*\)\n\s\+</ul>.*|\1|; s|[\t ]\+<li>\([^\n]*\)</li>|\1|g p }' webservice/index.html >> ${startdir}/auto-changelog.txt
+    python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
