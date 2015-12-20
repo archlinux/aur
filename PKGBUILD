@@ -18,7 +18,7 @@ makedepends=('cmake' 'git' 'ros-build-tools'
 
 ros_depends=()
 depends=(${ros_depends[@]}
-  python2-websocket
+  python2-websocket-client
   boost
   openssl)
 
