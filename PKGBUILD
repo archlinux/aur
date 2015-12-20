@@ -7,7 +7,7 @@ pkgname="sozi"
 pkgver=15.11
 # the build version is obtained from [here](https://github.com/senshu/Sozi/releases)
 _buildver=15.11.210709
-pkgrel=1
+pkgrel=2
 
 pkgdesc="A zooming presentation based on SVG, using JavaScript"
 url="http://sozi.baierouge.fr/"
@@ -23,9 +23,9 @@ makedepends=('npm' 'bower' 'nodejs-grunt-cli'
   'jq' 'npm-semver')
 
 source=("https://github.com/senshu/Sozi/archive/${pkgver}.tar.gz"
-  "http://www.fontsquirrel.com/fonts/download/droid-sans")
+  "http://www.1001freefonts.com/d/5854/droid_sans.zip")
 sha1sums=('17a53a4a87a1b774e4e1f81011b857ac77bc5570'
-  '19838487569f237635a7345faccb919e4ba8eec0')
+  '265b6cc7b7cea7bcfb74eec52bc9c0e44f039740')
 
 source_i686=('http://dl.nwjs.io/v0.12.3/nwjs-v0.12.3-linux-ia32.tar.gz'
   'buildConfig-i686.js')
