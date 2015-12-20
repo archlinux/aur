@@ -1,143 +1,76 @@
-# Maintainer: M Rawash <mrawash@gmail.com>
+# Contributor: Chris Dunder <echo Y2R1bmRlckBnbWFpbC5jb20K | base64 -d>
+# Contributor: M Rawash <mrawash@gmail.com>
 # Contributor: olvar <beren dot olvar (at) gmail dot com>
 # Contributor: Andrew Antle <andrew dot antle at gmail dot com>
 # Contributor: joyfulgirl <joyfulgirl (at) archlinux.us>
 # Contributor: Jonathan Friedman <jonf@gojon.com>
 
 pkgname=stumpwm-git
-pkgver=20110924
+_pkgname=stumpwm
+pkgver=0.9.9.r107.g1af3363
 pkgrel=1
 pkgdesc="A tiling, keyboard-driven window manager written in common lisp"
 arch=('i686' 'x86_64')
-url="http://www.nongnu.org/stumpwm/"
+url="https://stumpwm.github.io"
 license=('GPL2')
 provides=('stumpwm')
-
-if pacman -Qq sbcl &>/dev/null; then
-    depends=('sbcl' 'clx' 'cl-ppcre')
-    _lisp=sbcl
-elif pacman -Qq clisp-new-clx &>/dev/null; then
-  # If somebody compiled this specially, chances are they want to use it
-  depends=('clisp-new-clx' 'cl-ppcre' 'cl-asdf')
-  _lisp=clisp
-  source=(http://common-lisp.net/project/asdf/asdf.lisp)
-  md5sums=('0f172cc814e11054c37c29fa2acfbfae')
-else
-  # No, this isn't redundant.
-  depends=('sbcl' 'clx' 'cl-ppcre')
-  _lisp=sbcl
-fi
-
-makedepends=('git' 'texinfo' 'autoconf')
-optdepends=('emacs: Edit and eval stumpwm code with M-x stumpwm-mode'
-            'alsa-utils: Use contrib/amixer.lisp to control audio volume'
-            'aumix: Use contrib/aumix.lisp to control audio volume'
-            'mpd: Use contrib/mpd.lisp to control the mpd'
-            'surfraw: Use contrib/surfraw.lisp to surf the Internet')
+makedepends=('autoconf')
 install=stumpwm.install
+md5sums=('SKIP' 'SKIP')
+
+source=(${_pkgname}::git+https://github.com/stumpwm/stumpwm
+        ${_pkgname}-contrib::git+https://github.com/stumpwm/stumpwm-contrib)
+
+depends=('common-lisp' 'cl-asdf' 'clx-git' 'cl-ppcre')
+optdepends=('xorg-xprop: for stumpish (StumpWM Interactive Shell)'
+            'rlwrap: for stumpish completion and history'
+            'emacs: Edit and eval stumpwm code with M-x stumpwm-mode'
+            'alsa-utils: for amixer.lisp (control audio volume)'
+            'aumix: for aumix.lisp (control audio volume)'
+            'mpd: for mpd.lisp (control the mpd)'
+            'surfraw: for surfraw.lisp (surf the Internet)'
+            'clx-truetype: for ttf-fonts.lisp (Xft fonts)')
+
+# Binary will not run other
 options=(!strip)  # Thanks to sidereus for pointing this out
 
-# this is necesary since the AUR packages do not modify the asdf's registry by default
-_sbcl_bopt=$(cat sbcl_bopt)
-_sbcl_iopt=$(cat sbcl_iopt)
+pkgver() {
+  cd ${srcdir}/${_pkgname}
+  ( set -o pipefail
+    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
 
-_gitroot="git://git.savannah.nongnu.org/stumpwm.git"
-_gitname="stumpwm"
+_contribdest=/usr/share/stumpwm/contrib
 
 build() {
-  msg "Connecting to ${_gitroot}..."
-
-  if [ -d ${srcdir}/${_gitname} ] ; then
-    cd ${srcdir}/${_gitname} && git pull origin master
-  else
-    git clone $_gitroot
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting make..."
-
-  rm -rf ${srcdir}/${_gitname}-build
-  cp -a ${srcdir}/${_gitname} ${srcdir}/${_gitname}-build
-  cd ${srcdir}/${_gitname}-build
-
+  cd ${srcdir}/${_pkgname}
 
   autoconf
-  if [ "$_lisp" = "sbcl" ]; then
+  ./configure --prefix=/usr --with-module-dir=${_contribdest}
+  make
+} 
 
-    ./configure --prefix=/usr \
-                --with-lisp=$_lisp \
-                --with-ppcre=/usr/share/common-lisp/source/cl-ppcre
+package() {
+  cd ${srcdir}/${_pkgname}
 
-    make "$_sbcl_bopt" "$_sbcl_iopt"
+  make destdir="$pkgdir/" install
 
-  elif [ "$_lisp" = "clisp" ]; then
-    _lisp_source=/usr/share/common-lisp/source/
-    _ppcre_source=${_lisp_source}cl-ppcre/
+  install -Dm 644 sample-stumpwmrc.lisp ${pkgdir}/usr/share/${_pkgname}/stumpwmrc.sample
 
-    # Sometimes there are no compiled versions of ppcre.
-    # in this case we need to compile and use our own, and then we install them
-    if [ ! -f ${_ppcre_source}/api.fas ]; then
+  # contrib modules
+  install -d ${pkgdir}${_contribdest}
+  cp -dr --no-preserve=ownership ${srcdir}/${_pkgname}-contrib/* ${pkgdir}${_contribdest}
 
-      _own_fas=1
+  # stumpish
+  install -d ${pkgdir}/usr/bin
+  mv ${pkgdir}${_contribdest}/util/stumpish/stumpish ${pkgdir}/usr/bin
+  rmdir ${pkgdir}${_contribdest}/util/stumpish
 
-      mkdir ${srcdir}/cl-ppcre_temp
-      mkdir ${srcdir}/cl-ppcre_temp/systems
-      mkdir ${srcdir}/cl-ppcre_temp/source
-
-      export ASDF_OUTPUT_TRANSLATIONS="/usr/share/common-lisp/source/:${srcdir}/cl-ppcre_temp/source/"
-      # for compiling we use the asdf source we donwloaded
-      clisp -norc -K full -on-error exit \
-            -x "(require 'asdf '(\"${srcdir}/asdf.lisp\"))" \
-            -x "(pushnew #p\"/usr/share/common-lisp/systems/\" asdf:*central-registry* :test #'equal)" \
-            -x "(asdf:operate 'asdf:compile-op 'cl-ppcre)"
-
-      # once we have cl-ppcre compiled we copy the necesary files to
-      # this new location, and set the necessary options for make
-      cp $_ppcre_source/cl-ppcre.asd ${srcdir}/cl-ppcre_temp/source/cl-ppcre/
-      cp $_ppcre_source/*.lisp ${srcdir}/cl-ppcre_temp/source/cl-ppcre/
-      _ppcre_source=${srcdir}/cl-ppcre_temp/source/cl-ppcre/
-
-      _clisp_bopt="clisp_BUILDOPTS=-K full -on-error exit \
-                  -x \"(require 'asdf '(\\\"asdf.lisp\\\"))\" \
-                  -x \"(pushnew \\\"${srcdir}/cl-ppcre_temp/systems/\\\" \
-                  asdf:*central-registry* \
-                  :test #'equal)\" \
-                  -x \"(load \\\"./make-image.lisp\\\")\""
-    fi
-
-    ./configure --prefix=/usr \
-	              --with-lisp=$_lisp \
-                --with-ppcre=$_ppcre_source
-
-    if [ -z "$_clisp_bopt" ]; then
-		  make
-    else
-		  make "$_clisp_bopt"
-    fi
-  fi
-
-  make destdir=$pkgdir install
-
-  rm -f ${pkgdir}/usr/share/info/dir
-
-  # Installation of stumpish, the contributed lisp,
-  # and the emacs stumpwm mode.
-  install -m 755 ${srcdir}/${_gitname}-build/contrib/stumpish ${pkgdir}/usr/bin
-
-  install -Dm 644 sample-stumpwmrc.lisp ${pkgdir}/etc/stumpwmrc.sample
-  install -d ${pkgdir}/usr/share/${_gitname}
-  install -m 644 ${srcdir}/${_gitname}-build/contrib/*.lisp ${pkgdir}/usr/share/${_gitname}
-
-  install -Dm 644 ${srcdir}/${_gitname}-build/contrib/stumpwm-mode.el \
-    ${pkgdir}/usr/share/emacs/site-lisp/stumpwm-mode.el
-
-
-  # if we had to compile our own fas files, then we need to install them too.
-  if [ "x$_own_fas" = "x1" ]; then
-    install -d ${pkgdir}/usr/share/common-lisp/source/cl-ppcre
-    install -m 644 ${srcdir}/cl-ppcre_temp/source/cl-ppcre/*.fas \
-      ${pkgdir}/usr/share/common-lisp/source/cl-ppcre/
-  fi
+  # emacs mode
+  install -d ${pkgdir}/usr/share/emacs/site-lisp/
+  mv ${pkgdir}${_contribdest}/util/swm-emacs/*.el ${pkgdir}/usr/share/emacs/site-lisp/
 }
 
 # vim:sw=2 ts=2 et si:

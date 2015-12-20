@@ -1,10 +1,6 @@
 post_install() {
     cd /usr/share/info
     install-info stumpwm.info dir
-    cat << "EOM"
-    To load contrib/ modules, put the following line in your ~/.stumpwmrc:
-        (set-contrib-dir "/usr/share/stumpwm")
-EOM
 }
 
 post_upgrade() {
