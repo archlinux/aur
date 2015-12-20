@@ -1,9 +1,9 @@
 # Maintainer: Tavian Barnes <tavianator@tavianator.com>
 pkgname=bfs-git
-pkgver=r39.9298c37
+pkgver=r50.da51ac2
 pkgrel=1
 pkgdesc="A breadth-first version of find."
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://tavianator.com/cgit/bfs.git/"
 license=('custom:WTFPL')
 groups=()
