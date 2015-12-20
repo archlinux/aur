@@ -3,7 +3,7 @@
 
 pkgname=python-pygame-hg
 pkgver=r3449.d61ea8eabd56
-pkgrel=1
+pkgrel=2
 pkgdesc="Python game library"
 arch=(i686 x86_64)
 url="http://pygame.org/"
@@ -11,9 +11,8 @@ license=('LGPL')
 depends=('python' 'libjpeg-turbo' 'sdl_ttf'
          'sdl_image' 'sdl_mixer' 'portmidi')
 makedepends=('mercurial' 'python-setuptools')
-provides=('python3-pygame' 'python3-pygame-svn')
-conflicts=('python3-pygame' 'python3-pygame-svn')
-replaces=('python3-pygame-svn')
+provides=('python-pygame')
+conflicts=('python-pygame')
 source=("$pkgname::hg+https://bitbucket.org/pygame/pygame")
 md5sums=('SKIP')
 
