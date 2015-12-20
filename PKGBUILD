@@ -1,7 +1,7 @@
 # Maintainer: Viliam Ganz <viliam.ganz@gmail.com>
 pkgname=nvidia-xrun
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Script to run dedicated X server with discrete nvidia graphics"
 arch=("x86_64")
