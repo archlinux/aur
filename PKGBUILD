@@ -4,7 +4,7 @@
 
 pkgname=kluppe
 pkgver=0.6.16
-pkgrel=1
+pkgrel=2
 pkgdesc="A loop-player and recorder, designed for live use."
 arch=('i686' 'x86_64')
 url="http://kluppe.klingt.org/"
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('gtk2' 'jack' 'liblo' 'libusb-compat' 'libsndfile' 'libxml2')
 provides=('kluppe')
 install="$pkgname.install"
-source=("http://kluppe.klingt.org/downloads/$pkgname-$pkgver.tar.gz"
+source=("http://kluppe.klingt.org/downloads/old_files/$pkgname-$pkgver.tar.gz"
         "kluppe-${pkgver}.patch"
         "kluppe.desktop")
 sha256sums=('641e222759579256ed176274f1657570688e50ee1b66b73e548329927548f403'
