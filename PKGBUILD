@@ -4,7 +4,7 @@
 
 pkgname=ffmpeg-git
 pkgver=r77404.70f13ab
-pkgrel=9
+pkgrel=10
 pkgdesc="Complete solution to record, convert and stream audio and video (git version)"
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -20,7 +20,7 @@ depends=(
 makedepends=('hardening-wrapper' 'ladspa' 'libvdpau' 'yasm')
 optdepends=('ladspa: LADSPA filters')
 provides=(
-      'ilibavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
+      'libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
       'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
       'libswscale.so' 'ffmpeg'
 )
