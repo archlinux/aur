@@ -4,8 +4,9 @@
 # Contributor: tty0 <vt.tty0[d0t]gmail.com>
 
 pkgname=teensyduino
-pkgver=1.25
-_arduino=1.6.5-r5
+pkgver=1.27beta1
+_pkgver=1.27-beta1
+_arduino=1.6.7
 pkgrel=1
 pkgdesc="Arduino SDK with Teensyduino"
 arch=('i686' 'x86_64')
@@ -22,13 +23,13 @@ source=('arduino.desktop'
         'arduino.xml'
         'teensyduino.sh'
         'teensy-loader.desktop'
-        "git+https://github.com/PaulStoffregen/teensy_loader_cli.git#commit=001da416bc362ff24485ff97e3a729bd921afe98"
+        "git+https://github.com/PaulStoffregen/teensy_loader_cli.git#commit=8420103e1d8fa5b226d36a05f2f70f49382d6208"
         "http://www.pjrc.com/teensy/49-teensy.rules"
         'LICENSE')
 source_i686+=("http://downloads.arduino.cc/arduino-${_arduino}-linux32.tar.xz"
-              "http://www.pjrc.com/teensy/td_${pkgver//./}/teensyduino.32bit")
+              "http://www.pjrc.com/teensy/td_${_pkgver//./}/teensyduino.32bit")
 source_x86_64+=("http://downloads.arduino.cc/arduino-${_arduino}-linux64.tar.xz"
-                "http://www.pjrc.com/teensy/td_${pkgver//./}/teensyduino.64bit")
+                "http://www.pjrc.com/teensy/td_${_pkgver//./}/teensyduino.64bit")
 sha256sums=('ee29f80cc63cf3a21e844372721686372c2ca4b36e35430350d72e0b788a0ae2'
             '473b82156505e9bd903e4d8484e8d183f2e3bf3c1f7e29940b815929ae597b68'
             'bdd3da81cad5429e1d59c7950f40e75a96d2dd6cab07c2ffb77153e6e860f4b3'
@@ -36,10 +37,10 @@ sha256sums=('ee29f80cc63cf3a21e844372721686372c2ca4b36e35430350d72e0b788a0ae2'
             'SKIP'
             'fa7eff0e0f1e8230941c3b016c40617887f52f1991db655a498309824291ca54'
             '25980feb5927b8bea8b8e999f5002e110825b1bc3d546fa902c2db5c824d33f3')
-sha256sums_i686=('deeb345c2e01d38f37f2860c764030c1aabfbda06ef7b348e798bfdc378e25ba'
-                 '5d8f5eaf8639a9e04e05e514974192237bbcd87bb3a5527b285597fd33f4c9f0')
-sha256sums_x86_64=('38eb40574d0335dee09f8a34c9870985aca65cb8e9b7625e71c47aea6e1957f4'
-                   '313e4fa6a0aec01d096d1b0d5b5787c93ff3f1a7a23177aff043bf2538a8c3fa')
+sha256sums_i686=('f210501a25285c85051dbaa0bf1b4381bab25c24ba0c5d60fa9b7e83404d576e'
+                 '32e196805ab94220294cd0dc6a6549cbd1394dc445fe9e678c067ebc6b470616')
+sha256sums_x86_64=('d8667da7299807ae76c4957d7c9501c437b768c88af710744d3759e95bf658d7'
+                   'd5fcab67eb156d1f1044b24d1873bcff54bf7dfd6f08523371cbb333d19514bb')
 
 if [ "$CARCH" == 'x86_64' ]; then
   _bits=64
