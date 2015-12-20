@@ -1,0 +1,17 @@
+Description: Fix ftbfs with ld --as-needed
+Forwarded: no
+Origin: no
+Bug-Debian: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=641397
+Author: Matthias Klose <doko@ubuntu.com>
+
+--- a/Makefile	2011-09-27 12:22:03.000000000 +0900
++++ b/Makefile	2011-09-27 12:22:13.000000000 +0900
+@@ -3,7 +3,7 @@
+ CFLAGS?=-Os -pedantic -Wall
+ 
+ all:
+-	$(CC) $(CFLAGS) -I$(PREFIX)/include -L$(PREFIX)/lib -lX11 -o tinywm tinywm.c
++	$(CC) $(CFLAGS) -I$(PREFIX)/include tinywm.c -L$(PREFIX)/lib -lX11 -o tinywm
+ 
+ install:
+ 	install -d ${DESTDIR}${BINDIR}
