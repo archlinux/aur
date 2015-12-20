@@ -1,21 +1,22 @@
 # Maintainer: Py64 <py64.wolflinux@gmail.com>
 
 pkgname=httpjs-git
-pkgver=r35.a4a958e
+pkgver=r42.4acce7f
 pkgrel=1
 pkgdesc='Lightweight web server'
 arch=('i686' 'x86_64')
 url='https://httpjs.wolflinux.org'
 license=('custom')
-depends=('nodejs' 'zlib' 'openssl')
-makedepends=('git' 'npm')
+depends=('nodejs' 'zlib' 'openssl' 'linux>2.6.24')
+makedepends=('git' 'npm' 'sudo' 'gcc' 'make')
+optdepends=("letsencrypt: get Let's Encrypt certificates")
 backup=('etc/httpjs/GoFile')
 conflicts=('httpjs')
 replaces=('httpjs')
 provides=('httpjs')
 install=httpjs.install
-source=("git+https://github.com/HTTPjs/HTTPjs.git" 'httpjs.patch' 'httpjs.sh')
-md5sums=('SKIP' 'SKIP' 'SKIP')
+source=("git+https://github.com/HTTPjs/HTTPjs.git" 'httpjs.sh')
+md5sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd "$srcdir/HTTPjs"
@@ -32,9 +33,8 @@ package() {
 	"$pkgdir/srv/http" "$pkgdir/usr/share" "$pkgdir/usr/share/httpjs" \
 	"$pkgdir/usr/share/httpjs/errors" "$pkgdir/etc" "$pkgdir/etc/httpjs" \
         "$pkgdir/var/lib" "$pkgdir/var/lib/httpjs" \
-        "$pkgdir/var/lib/httpjs/letsencrypt-client" "$pkgdir/var/lib/httpjs/js" \
+        "$pkgdir/var/lib/httpjs/js" \
         "$pkgdir/var/lib/httpjs/js/node_modules"
-  patch < "$srcdir/httpjs.patch"
   cp lib/*.js "$pkgdir/var/lib/httpjs/js/"
   cp http.js "$pkgdir/var/lib/httpjs/httpjs"
   cp "$srcdir/httpjs.sh" "$pkgdir/usr/bin/httpjs"
@@ -42,8 +42,12 @@ package() {
   cp GoFile.example "$pkgdir/etc/httpjs"
   cp GoFile.example "$pkgdir/etc/httpjs/GoFile"
   cp public/index.html "$pkgdir/srv/http"
-  cp error-pages/*.html "$pkgdir/usr/share/httpjs/errors"  
-  
+  cp error-pages/*.html "$pkgdir/usr/share/httpjs/errors"
+
+  echo "Fixing https://github.com/HTTPjs/HTTPjs/issues/37"
+  sudo setcap 'cap_net_bind_service=+ep' "$pkgdir/var/lib/httpjs/httpjs"
+  sudo setcap 'cap_net_bind_service=+ep' "$pkgdir/usr/bin/httpjs"
+
   echo "Installing dependencies..."
   npm install --prefix "$pkgdir/var/lib/httpjs/js/" stream-buffers@3.0.0 \
               fastcgi-parser@0.1.x \

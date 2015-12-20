@@ -1,9 +1,4 @@
 post_install() {
-  echo "Installing dependencies..."
-  npm install -g stream-buffers@3.0.0 \
-              fastcgi-parser@0.1.x \
-              mmmagic@0.4.1 \
-              spdy@3.0.0 \
-              js-yaml@3.4.6
+  setcap 'cap_net_bind_service=+ep' /usr/bin/node
   echo "You can run HTTPjs with httpjs command."
 }
