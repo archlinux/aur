@@ -5,9 +5,9 @@
 
 pkgname=arduino
 epoch=1
-_arduino=1.6.5-r5
-pkgver=1.6.5.r5
-pkgrel=2
+pkgver=1.6.7
+_pkgver=1.6.7
+pkgrel=1
 pkgdesc="Arduino prototyping platform SDK"
 arch=('i686' 'x86_64')
 url="http://arduino.cc/en/Main/Software"
@@ -18,21 +18,21 @@ makedepends=('icoutils')
 install="arduino.install"
 source=('arduino.desktop'
         'arduino.xml')
-source_i686+=("http://downloads.arduino.cc/arduino-${_arduino}-linux32.tar.xz")
-source_x86_64+=("http://downloads.arduino.cc/arduino-${_arduino}-linux64.tar.xz")
+source_i686+=("http://downloads.arduino.cc/arduino-${_pkgver}-linux32.tar.xz")
+source_x86_64+=("http://downloads.arduino.cc/arduino-${_pkgver}-linux64.tar.xz")
 sha256sums=('ee29f80cc63cf3a21e844372721686372c2ca4b36e35430350d72e0b788a0ae2'
             '473b82156505e9bd903e4d8484e8d183f2e3bf3c1f7e29940b815929ae597b68')
-sha256sums_i686=('deeb345c2e01d38f37f2860c764030c1aabfbda06ef7b348e798bfdc378e25ba')
-sha256sums_x86_64=('38eb40574d0335dee09f8a34c9870985aca65cb8e9b7625e71c47aea6e1957f4')
+sha256sums_i686=('f210501a25285c85051dbaa0bf1b4381bab25c24ba0c5d60fa9b7e83404d576e')
+sha256sums_x86_64=('d8667da7299807ae76c4957d7c9501c437b768c88af710744d3759e95bf658d7')
 
 build() {
-  cd "arduino-${_arduino}"
+  cd "arduino-${_pkgver}"
 
   icotool -x -o .. lib/arduino_icon.ico
 }
 
 package() {
-  cd "arduino-${_arduino}"
+  cd "arduino-${_pkgver}"
 
   mkdir -p "${pkgdir}/usr/bin"
   mkdir -p "${pkgdir}/usr/share/"{doc,applications,mime/packages}
