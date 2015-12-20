@@ -3,7 +3,7 @@
 pkgname=ginn
 pkgver=r93
 pkgrel=2
-pkgdesc="Gesture Injector: No-GEIS, No-Toolkits"
+pkgdesc="Gesture Injector: No-GEIS, No-Toolkits."
 arch=('i686' 'x86_64')
 url="https://launchpad.net/ginn/"
 license=('GPL3')
