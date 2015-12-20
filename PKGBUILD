@@ -2,15 +2,14 @@
 
 pkgname=beat
 pkgver=03
-pkgrel=1
+pkgrel=2
 pkgdesc='Delta patcher for the higan emulator'
 arch=('i686' 'x86_64')
-url='http://byuu.org/programming/beat/'
+url='http://byuu.org/tool/beat'
 license=('GPL3')
 depends=('gtk2')
 makedepends=('gendesk')
-DLAGENTS=("http::/usr/bin/curl -A 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)' -fLC - --retry 3 --retry-delay 3 -o %o %u")
-source=("http://byuu.net/files/beat_v${pkgver}.tar.xz")
+source=("http://files.byuu.org/download/beat_v${pkgver}.tar.xz")
 sha256sums=('0f4a33cbbe54af28077433ca9f855e5d80ae942d5d976a0d654a8e1a528a1a1a')
 
 prepare() {
