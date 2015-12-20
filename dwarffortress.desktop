@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Dwarf Fortress Ironhand
+GenericName=Dwarf Fortress Ironhand
+Comment=A single-player fantasy game.
+Exec=dwarffortress-ironhand
+Icon=/usr/share/pixmaps/dwarffortress-ironhand.png
+Terminal=false
+Type=Application
+Categories=Game;
