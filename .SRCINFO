@@ -1,6 +1,6 @@
 pkgbase = pdfchain
 	pkgdesc = PDF Chain is a Graphical User Interface for the PDF Tool Kit
-	pkgver = 0.4.4.1
+	pkgver = 0.4.4.2
 	pkgrel = 1
 	url = http://pdfchain.sourceforge.net/
 	install = pdfchain.install
@@ -14,9 +14,9 @@ pkgbase = pdfchain
 	depends = gtkmm3
 	depends = fontconfig
 	depends = libpng
-	source = http://sourceforge.net/projects/pdfchain/files/pdfchain-0.4.4.1/pdfchain-0.4.4.1.tar.gz
+	source = http://sourceforge.net/projects/pdfchain/files/pdfchain-0.4.4.2/pdfchain-0.4.4.2.tar.gz
 	source = POTFILES.skip
-	md5sums = 7bc3e255816007eedf96e41462496adb
+	md5sums = 8b20a3d46ea4caa174dbe12ca6bc39be
 	md5sums = b16ca527af3a13ec163c86927555f125
 
 pkgname = pdfchain

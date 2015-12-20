@@ -2,7 +2,7 @@
 # Contributor: yury <polek_yury@ukr.net>
 
 pkgname=pdfchain
-pkgver=0.4.4.1
+pkgver=0.4.4.2
 pkgrel=1
 pkgdesc="PDF Chain is a Graphical User Interface for the PDF Tool Kit"
 url="http://pdfchain.sourceforge.net/"
@@ -14,7 +14,7 @@ depends=('pdftk' 'gtkmm3' 'fontconfig' 'libpng')
 makedepends=('intltool' 'atkmm' 'glibmm')
 source=("http://sourceforge.net/projects/pdfchain/files/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "POTFILES.skip")
-md5sums=('7bc3e255816007eedf96e41462496adb'
+md5sums=('8b20a3d46ea4caa174dbe12ca6bc39be'
          'b16ca527af3a13ec163c86927555f125')
 
 build() {
