@@ -41,6 +41,7 @@ php -n \
   -d open_basedir=/ \
   -d extension=sqlite3.so \
   -d date.timezone=Europe/Amsterdam \
+  -d memory_limit=256M \
   $@
 '
     chmod +x php-wrapper.sh
