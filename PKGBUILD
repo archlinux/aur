@@ -8,12 +8,12 @@
 pkgname=lib32-taglib
 _pkgname=taglib
 pkgver=1.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A Library for reading and editing the meta-data of several popular audio formats, lib32"
 arch=('x86_64')
 url="http://developer.kde.org/~wheeler/taglib.html"
 license=('LGPL' 'MPL')
-depends=('lib32-zlib')
+depends=($_pkgname 'lib32-zlib')
 makedepends=('cmake')
 options=('!libtool')
 source=("http://taglib.github.io/releases/$_pkgname-$pkgver.tar.gz")
