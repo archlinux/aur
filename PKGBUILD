@@ -3,7 +3,7 @@
 _pkgname=seafile-client
 pkgname=${_pkgname}-qt5
 pkgver=5.0.1
-pkgrel=0
+pkgrel=1
 pkgdesc="This is seafile client for synchronizing your local files with seafile server. Qt5 version."
 arch=('i686' 'x86_64')
 url="https://github.com/haiwen/seafile-client/"
