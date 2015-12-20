@@ -4,7 +4,7 @@ _pkgbase=jucipp
 pkgbase=$_pkgbase-git
 pkgname=("$_pkgbase-git")
 pkgdesc='A lightweight platform-independent C++ IDE'
-pkgver=r1134.0837f6c
+pkgver=r1136.472e45a
 pkgrel=1
 
 arch=('i686' 'x86_64')
@@ -15,9 +15,8 @@ makedepends=('git' 'cmake' 'pkg-config' 'boost')
 
 source=("$_pkgbase::git+https://github.com/cppit/jucipp.git"
   "git+https://github.com/cppit/libclangmm.git"
-  "git+https://github.com/eidheim/tiny-process-library"
-  "CMakeLists.patch")
-sha1sums=('SKIP' 'SKIP' 'SKIP' '64ac5afbe9a3a8b92cc3001897529834cda501a5')
+  "git+https://github.com/eidheim/tiny-process-library")
+sha1sums=('SKIP' 'SKIP' 'SKIP') 
 
 pkgver() {
   cd "$srcdir/$_pkgbase"
@@ -32,7 +31,6 @@ prepare() {
   git config submodule.tiny-process-library.url "$srcdir/tiny-process-library"
   git submodule update
 
-  git apply "$srcdir/CMakeLists.patch"
   mkdir -p build
 }
 
