@@ -3,7 +3,7 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=r77404.70f13ab
+pkgver=r77407.f6830cf
 pkgrel=11
 pkgdesc="Complete solution to record, convert and stream audio and video (git version)"
 arch=('i686' 'x86_64')
@@ -46,7 +46,6 @@ build() {
     --prefix=/usr \
     --disable-debug \
     --disable-static \
-    --disable-stripping \
     --enable-shared \
     --enable-avisynth \
     --enable-avresample \
