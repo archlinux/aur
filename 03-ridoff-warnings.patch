@@ -1,0 +1,95 @@
+--- ftpcommand.c
++++ ftpcommand.c
+@@ -261,7 +261,8 @@
+ 
+ int waitaccept(int nr)
+ {
+-  int socksize,soc;
++  unsigned int socksize;
++  int soc;
+   struct sockaddr_in sai;
+ 
+   signal(SIGALRM,childtimeout);
+@@ -386,6 +387,7 @@
+     }
+     
+     hp=gethostbyaddr((char *)&addr,sizeof(addr),AF_INET);
++    printf("Hostname:%s\n", hp->h_name);
+     
+ #ifdef DEBUG
+     fprintf(stderr,"Making connection to: %s:%d\n",cmd,pchild[nr]->dataport);
+@@ -438,7 +440,10 @@
+   char allowed[MAXPATHLEN+4],path[MAXPATHLEN+4];
+   struct stat buf;
+ /* fixed bug by PaN */
+-  char myparam[MAXPATHLEN+4], myparamtmp[MAXPATHLEN+4];
++  char myparam[MAXPATHLEN+4];
++#ifdef REMOVE
++  char myparamtmp[MAXPATHLEN+4];
++#endif
+   int i;
+ 
+   /* Rule for checking path, added by Chen-I */
+@@ -555,6 +560,7 @@
+     if ((int)addr==-1) return RET_501;
+     
+     hp=gethostbyaddr((char *)&addr,sizeof(addr),AF_INET);
++    printf("Hostname:%s\n", hp->h_name);
+     
+     if ((soc=socket(AF_INET,SOCK_STREAM,0))<0) return RET_501;
+     socksize=sizeof(struct sockaddr_in);
+@@ -731,6 +737,7 @@
+     if ((int)addr==-1) return 1;
+     
+     hp=gethostbyaddr((char *)&addr,sizeof(addr),AF_INET);
++    printf("Hostname:%s\n", hp->h_name);
+     
+ #ifdef DEBUG
+     fprintf(stderr,"Making connection to: %s:%d\n",cmd,pchild[nr]->dataport);
+@@ -1081,7 +1088,10 @@
+ {
+   char path[1024];
+ /* fixed bug by PaN */
+-  char myparam[MAXPATHLEN+4], myparamtmp[MAXPATHLEN+4];
++  char myparam[MAXPATHLEN+4];
++#ifdef REMOVE
++  myparamtmp[MAXPATHLEN+4];
++#endif
+   int i;
+ 
+ #ifdef REMOVE
+@@ -1139,7 +1149,10 @@
+ {
+   char path[2048];
+ /* fixed bug by PaN */
+-  char myparam[MAXPATHLEN+4], myparamtmp[MAXPATHLEN+4];
++  char myparam[MAXPATHLEN+4];
++#ifdef REMOVE  
++  myparamtmp[MAXPATHLEN+4];
++#endif
+   int i;
+ 
+ #ifdef REMOVE
+--- ftpdconfig.c
++++ ftpdconfig.c
+@@ -464,7 +464,7 @@
+ 
+   static unsigned char myip[4];
+   struct sockaddr_in sa;
+-  int size;
++  socklen_t size;
+ 
+   size=sizeof(struct sockaddr_in);
+   memset(myip,0,sizeof(myip));
+--- stupid-ftpd.c
++++ stupid-ftpd.c
+@@ -78,7 +78,8 @@
+ }
+ 
+ void init_login(void) {
+-  int nr,sock,sock_size;
++  int nr,sock;
++  unsigned int sock_size;
+   char buffer[128];
+   struct sockaddr_in sa;
+   struct hostent *hp;
