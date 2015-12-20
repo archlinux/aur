@@ -1,0 +1,13 @@
+post_install() {
+	printf "\nupdating desktop database\n"
+	update-desktop-database -v /usr/share/applications
+}
+
+post_remove() {
+	post_install
+}
+
+
+post_upgrade() {
+	post_install
+}
