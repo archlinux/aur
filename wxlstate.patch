@@ -1,0 +1,14 @@
+Index: modules/wxlua/wxlstate.cpp
+===================================================================
+--- modules/wxlua/wxlstate.cpp	(revision 251)
++++ modules/wxlua/wxlstate.cpp	(working copy)
+@@ -404,6 +404,9 @@
+     if ((m_lua_State == NULL) || m_wxlStateData->m_is_closing || m_lua_State_coroutine)
+         return true;
+ 
++    if (lua_status(m_lua_State) != LUA_OK)
++        return true;
++
+     m_wxlStateData->m_is_closing = true;
+ 
+     //wxCHECK_MSG(m_lua_State, false, wxT("Interpreter not created"));

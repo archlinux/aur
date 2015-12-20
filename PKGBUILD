@@ -5,7 +5,7 @@
 pkgname=wxlua-svn
 _pkgname=wxlua
 pkgver=251
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of bindings to the wxWidgets library for the Lua programming language - svn version"
 arch=('i686' 'x86_64')
 url="http://wxlua.sourceforge.net"
@@ -29,6 +29,9 @@ build() {
 
   # wxstedit doc folder fix
   sed -i 's|doc/|share/&|' modules/wxstedit/CMakeLists.txt
+
+  # fix segfault
+  svn patch ../../../wxlstate.patch
 
   cd build
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
