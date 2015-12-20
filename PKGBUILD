@@ -3,14 +3,15 @@
 
 pkgname=seafile-client
 pkgver=5.0.0
-pkgrel=1
-pkgdesc="Seafile is an online file storage and collaboration tool. This is seafile client for synchronizing your local files with seafile server."
+pkgrel=2
+pkgdesc="This is seafile client for synchronizing your local files with seafile server. Qt4 version."
 arch=('i686' 'x86_64')
 url="https://github.com/haiwen/seafile-client/"
 license=('Apache')
-depends=('seafile-shared=5.0.2' 'qt4' 'qtwebkit')
+depends=('seafile-shared>=4.3.0' 'qt4>=4.8.0' 'qtwebkit')
 makedepends=('cmake')
 options=('!libtool' '!emptydirs')
+conflicts=('seafile-client-qt5')
 install=seafile-client.install
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/haiwen/${pkgname}/archive/v${pkgver}.tar.gz")
 
