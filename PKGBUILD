@@ -4,7 +4,7 @@
 
 pkgname=ffmpeg-git
 pkgver=r77404.70f13ab
-pkgrel=5
+pkgrel=6
 pkgdesc="Complete solution to record, convert and stream audio and video (git version)"
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -25,10 +25,8 @@ provides=(
       'libswscale.so'
 )
 conflicts=('ffmpeg')
-source=("$pkgname"::'git://github.com/ffmpeg/ffmpeg.git'
-	ffmpeg-2.8.1-libvpxenc-remove-some-unused-ctrl-id-mappings.patch)
-md5sums=('SKIP'
-         'SKIP')
+source=("$pkgname"::'git://github.com/ffmpeg/ffmpeg.git')
+md5sums=('SKIP')
 
 prepare() {
   cd "$srcdir/$pkgname"
