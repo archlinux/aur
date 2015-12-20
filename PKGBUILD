@@ -4,7 +4,7 @@
 
 pkgname=ffmpeg-git
 pkgver=r77404.70f13ab
-pkgrel=6
+pkgrel=7
 pkgdesc="Complete solution to record, convert and stream audio and video (git version)"
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -27,11 +27,6 @@ provides=(
 conflicts=('ffmpeg')
 source=("$pkgname"::'git://github.com/ffmpeg/ffmpeg.git')
 md5sums=('SKIP')
-
-prepare() {
-  cd "$srcdir/$pkgname"
-  patch -p1 -i ../ffmpeg-2.8.1-libvpxenc-remove-some-unused-ctrl-id-mappings.patch
-}
 
 pkgver() {
   cd "$srcdir/$pkgname"
