@@ -6,7 +6,7 @@
 
 pkgname="flacon"
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Extracts individual tracks from one big audio file containing the \
  entire album of music and saves them as separate audio files."
 arch=('i686' 'x86_64')
@@ -21,6 +21,7 @@ optdepends=('flac: For FLAC support'
             'ttaenc: For TrueAudio support'
             'lame: For MP3 support'
             'mp3gain: For MP3 Replay Gain support'
+            'opus-tools: For OPUS support'   
             'vorbisgain: For OGG Replay Gain support')
 conflicts=('flacon-git')
 provides=("${pkgname}")
@@ -43,3 +44,6 @@ package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 	make DESTDIR="${pkgdir}" install
 }
+
+
+# vim:set ts=4 sw=2 ft=sh et:
