@@ -3,7 +3,7 @@
 pkgbase = seafile-client-qt5
 	pkgdesc = This is seafile client for synchronizing your local files with seafile server. Qt5 version.
 	pkgver = 5.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/haiwen/seafile-client/
 	install = seafile-client-qt5.install
 	arch = i686
