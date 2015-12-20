@@ -2,12 +2,12 @@
 
 pkgname=feeluown-git
 _pkgname=FeelUOwn
-pkgver=20151123
+pkgver=20151219
 pkgrel=1
 pkgdesc="个性化音乐服务 For Mac And Linux"
 arch=("any")
 url="https://github.com/cosven/FeelUOwn"
-license=('MIT')
+license=('GPL3')
 depends=('python-pyqt5' 'qt5-webkit' 'python-xlib' 'qt5-multimedia' 'python-requests' 'python-quamash' 'xdg-utils' 'python-sqlalchemy')
 optdepends=('vlc')
 makedepends=('git')
@@ -48,7 +48,7 @@ EOF
     # save login data to ~/.FeelUOwn
     cd "$srcdir/$_pkgname/src"
     sed -i '2 i import os' constants.py
-    sed -i 's!^DATA_PATH.*$!DATA_PATH = os.path.join(os.path.expanduser("~"), ".FeelUOwn/")!g' constants.py
+    sed -i 's!^DATA_PATH.*$!DATA_PATH = os.path.expanduser("~/.FeelUOwn/")!g' constants.py
 }
 
 package() {
