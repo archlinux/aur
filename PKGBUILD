@@ -4,9 +4,10 @@
 
 pkgname=diffpdf
 pkgver=2.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Diffing pdf files visually or textually"
-url="http://www.qtrac.eu/diffpdf.html"
+#url="http://www.qtrac.eu/diffpdf.html"
+url="http://www.qtrac.eu/diffpdf-foss.html"
 screenshot="http://www.qtrac.eu/diffpdf.png"
 license=('GPL')
 arch=('i686' 'x86_64')
@@ -37,5 +38,5 @@ package() {
   install -Dpm644 CHANGES README help.html ${_docdir}/
   install -Dpm644 gpl-2.0.txt ${_licdir}/
   install -Dpm644 images/icon.png ${_pngdir}/${pkgname}.png
-  install -Dpm644 ../../diffpdf.desktop ${_appdir}/
+  install -Dpm644 ${srcdir}/diffpdf.desktop ${_appdir}/
 }
