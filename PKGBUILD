@@ -31,4 +31,4 @@ package() {
 	install -Dm 755 nvidia-xrun "$pkgdir/usr/bin/nvidia-xrun"
 	mkdir "$pkdgir/etc/X11/nvidia-xorg.conf.d"
 }
-md5sums=('96ee491905ff47e8cd35e9e0fddcd502')
+md5sums=('5ea15f551e85f6a4adeefa22250d8b42')
