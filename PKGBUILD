@@ -14,11 +14,9 @@ options=('!buildflags')
 install=openrct2.install
 source=("$pkgname"::'git+https://github.com/OpenRCT2/OpenRCT2.git#branch=develop'
         'https://openrct.net/launcher/libs/orctlibs.zip'
-        'openrct2'
         'openrct2.desktop')
 sha256sums=('SKIP'
             '0a7b5ea46e9cb4b19000b69690eae0b75929752f7db192c78bd7ffb61d696835'
-            '2cead106464f257d64c74333280ee6bf4056167cc69840371e81a77e64858989'
             'b916d4a9f56af82693ba21f43e09ababe9f132fd7c3b78efa1b4387ee1bc3a4d')
 
 if [ "$CARCH" = "i686" ]; then
@@ -56,21 +54,20 @@ package() {
   cd "$srcdir/$pkgname"
 
   # Standard OpenRCT2 distribution files.
-  install -Dm755 build/openrct2 "$pkgdir/usr/share/openrct2/openrct2"
+  install -Dm755 build/openrct2 "$pkgdir/usr/bin/openrct2"
 
-  install -Dm644 build/g2.dat "$pkgdir/usr/share/openrct2/data/g2.dat"
+  install -Dm644 build/g2.dat "$pkgdir/usr/share/openrct2/g2.dat"
 
-  install -dm755 "$pkgdir/usr/share/openrct2/data/language"
-  install -m644 data/language/* "$pkgdir/usr/share/openrct2/data/language/"
+  install -dm755 "$pkgdir/usr/share/openrct2/language"
+  install -m644 data/language/* "$pkgdir/usr/share/openrct2/language/"
 
-  install -dm755 "$pkgdir/usr/share/openrct2/data/title/openrct2"
-  install -m644 data/title/openrct2/* "$pkgdir/usr/share/openrct2/data/title/openrct2"
+  install -dm755 "$pkgdir/usr/share/openrct2/title/openrct2"
+  install -m644 data/title/openrct2/* "$pkgdir/usr/share/openrct2/title/openrct2"
 
-  install -dm755 "$pkgdir/usr/share/openrct2/data/title/rct2"
-  install -m644 data/title/rct2/* "$pkgdir/usr/share/openrct2/data/title/rct2"
+  install -dm755 "$pkgdir/usr/share/openrct2/title/rct2"
+  install -m644 data/title/rct2/* "$pkgdir/usr/share/openrct2/title/rct2"
 
-  # ArchLinux-specific stuff (launcher, .desktop file and icon).
-  install -Dm755 "$srcdir/openrct2" "$pkgdir/usr/bin/openrct2"
+  # ArchLinux-specific stuff (.desktop file and icon).
   install -Dm644 "$srcdir/openrct2.desktop" "$pkgdir/usr/share/applications/openrct2.desktop"
   install -Dm644 resources/logo/icon_flag.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/openrct2.svg"
 }
