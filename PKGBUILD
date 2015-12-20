@@ -1,10 +1,11 @@
-# $Id: PKGBUILD 61158 2011-12-22 21:01:49Z lcarlier $
+# $Id: PKGBUILD 92705 2013-06-12 16:03:23Z lcarlier $
 # Maintainer: Thomas Bächler <thomas@archlinux.org>
+# x32 Maintainer: Fantix King <fantix.king at gmail.com>
 
 _pkgbasename=attr
 pkgname=libx32-$_pkgbasename
-pkgver=2.4.46
-pkgrel=2.1
+pkgver=2.4.47
+pkgrel=1.1
 pkgdesc="Extended attribute support library for ACL support (x32 ABI)"
 arch=(x86_64)
 url="http://savannah.nongnu.org/projects/attr"
@@ -13,7 +14,7 @@ depends=('libx32-glibc' $_pkgbasename)
 makedepends=('gcc-multilib-x32' 'gettext')
 options=('!libtool')
 source=(http://download.savannah.gnu.org/releases/attr/attr-${pkgver}.src.tar.gz)
-sha256sums=('dcd69bdca7ff166bc45141eddbcf21967999a6b66b0544be12a1cc2fd6340e1f')
+sha256sums=('25772f653ac5b2e3ceeb89df50e4688891e21f723c460636548971652af0a859')
 
 build() {
   cd ${srcdir}/attr-${pkgver} 
@@ -24,14 +25,16 @@ build() {
   export INSTALL_USER=root INSTALL_GROUP=root
   ./configure --prefix=/usr --libdir=/usr/libx32 --libexecdir=/usr/libx32
   make 
+}
 
-  # Doesn't like building as non-root
+package() {
+  cd ${srcdir}/attr-${pkgver} 
 
-#  make prefix=${pkgdir}/usr \
-#    PKG_LIB_DIR=$pkgdir/usr/libx32 \
-#    PKG_DEVLIB_DIR=$pkgdir/usr/libx32 \
-  make DIST_ROOT="${pkgdir}" \
-    install-lib install-dev
+  make DIST_ROOT="${pkgdir}" install-lib install-dev
+
+  # tidy up
+  rm -f "$pkgdir"/usr/libx32/libattr.a
+  chmod 0755 "$pkgdir"/usr/libx32/libattr.so.*.*.*
 
   rm -rf "${pkgdir}"/usr/{bin,include,share}
 }
