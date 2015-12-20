@@ -4,7 +4,7 @@
 
 pkgname=ffmpeg-git
 pkgver=r77404.70f13ab
-pkgrel=1
+pkgrel=2
 pkgdesc="Complete solution to record, convert and stream audio and video (git version)"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -68,6 +68,7 @@ build() {
     --enable-libx264 \
     --enable-libx265 \
     --enable-libxvid \
+    --enable-nonfree \
     --enable-shared \
     --enable-version3 \
     --enable-x11grab \
