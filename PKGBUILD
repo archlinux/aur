@@ -5,12 +5,11 @@
 pkgbase=menda-themes-git
 pkgname=("menda-themes-git" "menda-themes-dark-git")
 pkgver=r85.0ee4e31
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/manjaro/artwork-menda"
 license=('GPL3')
-depends=('gtk-engine-murrine' 'gtk-engines')
-optdepends=("menda-circle-icon-theme-git: Recommended icon theme")
+depends=('gtk-engine-murrine')
 source=(${pkgname}::'git+https://github.com/manjaro/artwork-menda.git')
 sha1sums=('SKIP')
 
