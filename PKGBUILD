@@ -1,4 +1,4 @@
-# Maintainer: Mateusz Łukasik <mati75@linuxmint.pl>
+# Contributor: Mateusz Łukasik <mati75@linuxmint.pl>
 
 pkgname=tinywm-git
 pkgver=20121222
