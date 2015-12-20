@@ -1,6 +1,6 @@
 pkgbase = rtorrent-pyro-git
 	pkgdesc = Ncurses BitTorrent client based on libTorrent - rTorrent-git with Pyroscope patches
-	pkgver = 20150908
+	pkgver = 20151117
 	pkgrel = 1
 	url = https://github.com/pyroscope/rtorrent-ps
 	install = pyroscope.install
@@ -15,9 +15,6 @@ pkgbase = rtorrent-pyro-git
 	depends = curl
 	depends = xmlrpc-c
 	optdepends = ttf-dejavu: for utf8 glyphs
-	optdepends = ttf-everson-mono
-	optdepends = ttf-unifont
-	optdepends = ttf-andale-mono
 	provides = rtorrent
 	conflicts = rtorrent
 	conflicts = rtorrent-git
