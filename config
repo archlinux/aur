@@ -1,0 +1,13 @@
+# This file controls the state of SELinux on the system.
+# SELINUX= can take one of these three values:
+#       enforcing - SELinux security policy is enforced.
+#       permissive - SELinux prints warnings 
+#                       instead of enforcing.
+#       disabled - No SELinux policy is loaded.
+SELINUX=permissive
+# SELINUXTYPE= takes the name of SELinux policy to
+# be used. Current options are:
+# 	refpolicy (vanilla reference policy)
+# 	refpolicy-arch (reference policy with 
+# 	Arch Linux patch)
+SELINUXTYPE=refpolicy-arch
