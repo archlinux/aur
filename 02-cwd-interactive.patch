@@ -1,0 +1,40 @@
+--- ftpdconfig.c
++++ ftpdconfig.c
+@@ -299,16 +299,6 @@
+       break;
+     case OPT_COMMENT:
+       break;
+-    case OPT_ROOT:
+-      if (strlen(serverroot)>MAXPATHLEN) {
+-	printf("serverroot option argument is too long.");
+-	fclose(fp);
+-	return -1;
+-      }
+-      strcpy(serverroot,arg);
+-      if (serverroot[strlen(serverroot)-1]=='/')
+-	serverroot[strlen(serverroot)-1]=0;
+-      break;
+     case OPT_PORT:
+       serverport=atoi(arg);
+       break;
+@@ -334,6 +324,20 @@
+       strtoupper(arg);
+       if (!strcmp(arg,"DAEMON")) daemonmode=1;
+       break;
++    case OPT_ROOT:
++      if (strlen(serverroot)>MAXPATHLEN) {
++	printf("serverroot option argument is too long.");
++	fclose(fp);
++	return -1;
++      }
++      if (daemonmode==1)
++	strcpy(serverroot,arg);
++      else
++	getcwd(serverroot, sizeof(serverroot));
++
++      if (serverroot[strlen(serverroot)-1]=='/')
++	serverroot[strlen(serverroot)-1]=0;
++      break;
+     case OPT_LOG:
+       if (arg==NULL || strlen(arg)==0) break;
+       logfile=fopen(arg,"a");

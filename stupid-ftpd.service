@@ -1,0 +1,10 @@
+[Unit]
+Description=stupid-ftpd daemon
+
+[Service]
+ExecStart=/usr/sbin/stupid-ftpd
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target

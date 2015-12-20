@@ -1,0 +1,58 @@
+ 
+post_install() {
+  cat << EOF
+
+
+******************************************************************
+**  WARNING!!!: this ftp server is not focused on security,	**
+**  it's a lightweight ftp server good for occasional use	**
+**  								**
+**								**
+**  IMPORTANT:							**
+**  Edit /etc/stupid-ftpd/stupid-ftpd.conf to configure		**
+**  								**
+**  There are two modes:					**
+**								**
+**  Interactive mode: (default) at por 2121 doesn't require 	**
+**  root privilegies. The shared directory is the current 	**
+**  working dir.						**
+**								**
+**  Daemon mode: the shared directory will be the one defined	**
+**  in the configuration file.					**
+**  								**
+**								**
+**								**
+**  Just execute stupid-ftpd as a normal user and have fun. 	**
+**  (the current working directory will be shared at port 2121)	**
+**								**
+******************************************************************
+
+EOF
+}
+
+post_upgrade() {
+  cat << EOF
+
+
+******************************************************************
+**  IMPORTANT:							**
+**  Edit /etc/stupid-ftpd/stupid-ftpd.conf to configure		**
+**  								**
+**  There are two modes:					**
+**								**
+**  Interactive mode: (default) at por 2121 doesn't require 	**
+**  root privilegies. The shared directory is the current 	**
+**  working dir.						**
+**								**
+**  Daemon mode: the shared directory will be the one defined	**
+**  in the configuration file.					**
+**  								**
+**								**
+**								**
+**  Just execute stupid-ftpd as a normal user and have fun. 	**
+**  (the current working directory will be shared at port 2121)	**
+**								**
+******************************************************************
+
+EOF
+}

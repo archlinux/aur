@@ -1,0 +1,746 @@
+--- ftpcommand.c
++++ ftpcommand.c
+@@ -16,6 +16,7 @@
+ #include <time.h>
+ #include <sys/time.h>
+ #include <sys/types.h>
++#include <fcntl.h>	// Added by PaN
+ #ifdef __CYGWIN__
+ #include <winsock2.h>
+ #else
+@@ -28,6 +29,7 @@
+ #endif
+ #include <signal.h>
+ #include <errno.h>
++#include <sys/sendfile.h>
+ 
+ #include "ftpcommand.h"
+ #include "stupid-ftpd.h"
+@@ -37,12 +39,14 @@
+ 
+ #define TRFMSG_INTERVAL 1000000
+ 
+-#define REQ_COUNT 23
++#define REQ_COUNT 25	// Modified 23 to 25 by PaN
+ const char *request[REQ_COUNT]={
+   "SYST","QUIT","TYPE","PORT","LIST","CWD","PWD","RETR",
+   "USER","PASS","REST","SIZE","MDTM","STOR","CDUP","NOOP","GET",
+-  "NLST","PASV","ABOR","MKD","RMD","DELE"
+-};
++  "NLST","PASV","ABOR","MKD","RMD","DELE","RNFR","RNTO"
++};	// Added "RNFR" and "RNTO" for rename filename by PaN
++
++static char oldpath[MAXPATHLEN+4] , newpath[MAXPATHLEN+4], cwdpath[MAXPATHLEN+4];	// Added for rename filename by PaN
+ 
+ const char *ftp_returnstr[]={
+   "150 OK\r\n",
+@@ -76,10 +80,11 @@
+   "491 Download in progress.\r\n",
+   "257 MKD command successful.\r\n",
+   "258 RMD command successful.\r\n",
+-  "259 File successfully deleted.\r\n"
+-  "540 User banned.\r\n",
++  "259 File successfully deleted.\r\n",
+   "540 User banned.\r\n",
+   "550 not a file.\r\n",
++  "350 File exists, ready for destination name.\r\n",
++  "250 RNTO command successful.\r\n",
+   NULL
+ };
+ 
+@@ -100,6 +105,8 @@
+ int do_mkdir(int,char *);
+ int do_rmdir(int,char *);
+ int do_dele(int,char *);
++int do_rnfr(int,char *);	// Added by PaN
++int do_rnto(int,char *);	// Added by PaN
+ 
+ 
+ void user_return(int nr,int id)
+@@ -111,15 +118,18 @@
+ void user_spool(int nr,int id,char *file)
+ {
+   char buffer[1024],marker[32];
+-  FILE *fp;
++  //FILE *fp;
++  int fp;
+   fd_set fds;
+   struct timeval tv;
+   int n;
+ 
+   if (file[0]!=0) {
+-    if ((fp=fopen(file,"r"))!=NULL) {
++    // Removed by PaN if ((fp=fopen(file,"r"))!=NULL) {
++    if ((fp=open(file, O_RDONLY)) >= 0) {
+       n=0;
+-      while (fgets(buffer,sizeof(buffer)-1,fp)!=NULL) {
++      // Removed by PaN while (fgets(buffer,sizeof(buffer)-1,fp)!=NULL) {
++      while ( read(fp,buffer,sizeof(buffer)-1) > 0 ) {
+ 	if (n==0) sprintf(marker,"%d- ",id);
+ 	write(pchild[nr]->sock,marker,strlen(marker));
+ 
+@@ -142,6 +152,7 @@
+ 	} while (!FD_ISSET(pchild[nr]->sock,&fds));
+ 	
+ 	write(pchild[nr]->sock,buffer,strlen(buffer));
++	close(fp);	// Fixed bug by PaN
+       }
+     }
+   }
+@@ -200,6 +211,9 @@
+ #ifdef DEBUG
+   printf("Debug: path has now %d/%d chars.\n",strlen(path),MAXPATHLEN);
+ #endif
++  
++  /* Add by Joey to update cwdpath here */
++  strcpy(cwdpath, path);
+ 
+   return 0;
+ }
+@@ -210,16 +224,10 @@
+   time_t tm;
+ 
+   if (!daemonmode) {
+-    printf("User %d, killed.\n",nr+1);
++    //printf("User %d, killed.\n",nr+1);
+     out_prompt();
+   }
+ 
+-  /* close passive port */
+-  if (pchild[nr]->pasvsock) {
+-    close(pchild[nr]->pasvsock);
+-    pchild[nr]->pasvsock=0;
+-  }
+-
+   /* checking retr subprocess */
+   if (pchild[nr]->pid) kill(pchild[nr]->pid,SIGTERM);
+   pchild[nr]->pid=0;
+@@ -429,8 +437,60 @@
+ {
+   char allowed[MAXPATHLEN+4],path[MAXPATHLEN+4];
+   struct stat buf;
++/* fixed bug by PaN */
++  char myparam[MAXPATHLEN+4], myparamtmp[MAXPATHLEN+4];
++  int i;
+ 
+-  if (checkpath(nr,param,path)) return 1;
++  /* Rule for checking path, added by Chen-I */
++  /* 1. check absolutely path 		     */
++  /* 2. check check relative path with cwd   */ 
++  /* 3. check absolutely path without '/'    */
++
++#ifdef REMOVE
++  if (param[0] != '/' && param[0] != '.' ) {
++  	  myparam[0] = '/';
++  	  for (i=1; i< strlen(param)+1; i++)
++		  myparam[i]=param[i-1];
++	  myparam[i]='\0';
++  }
++  else 
++#endif
++  {
++	  for (i=0; i< strlen(param); i++)
++		  myparam[i]=param[i];
++	  myparam[i]='\0';
++  }
++  //printf("chdir-haha: %s:%s:%s\n", myparam, param, cwdpath);
++/* End PaN */
++
++  if (checkpath(nr,myparam,path)) 
++  {
++#ifdef REMOVE
++	  for (i=0; i< strlen(cwdpath); i++)
++		  myparamtmp[i]=cwdpath[i];
++	  for (i=strlen(cwdpath); i< strlen(cwdpath)+strlen(myparam); i++)
++		  myparamtmp[i]=myparam[i-strlen(cwdpath)];
++	  myparamtmp[i]='\0';
++	  for (i=0; i< strlen(myparamtmp); i++)
++		  myparam[i]=myparamtmp[i];
++	  myparam[i]='\0';
++#endif
++ 	  printf("chdir: %s:%s:%s:%s\n", myparam, param, cwdpath, path);
++                
++  	  myparam[0] = '/';
++  	  for (i=1; i< strlen(param)+1; i++)
++	  	myparam[i]=param[i-1];
++	  myparam[i]='\0';
++
++	  if (checkpath(nr, myparam,path))
++	        return 1;	// fixed bug by PaN : param to myparam	  	
++  }
++
++  //for (i=0; i< strlen(myparam); i++)
++  //	  cwdpath[i]=myparam[i];
++  
++  //printf("cwd: %s:%s\n", cwdpath, path);
++ 
+   if (strlen(pchild[nr]->rootdir)>=MAXPATHLEN) return 1;
+   sprintf(allowed,"%s/",pchild[nr]->rootdir);
+   
+@@ -451,7 +511,8 @@
+ int do_retr(int nr,char *param) 
+ {
+   struct hostent *hp;
+-  FILE *fp;
++  // Removed by PaN FILE *fp;
++  int fp;
+   char cmd[2048],path[2048];
+   unsigned long addr;
+   int soc;
+@@ -510,17 +571,21 @@
+     }
+   }
+   
+-  if ((fp=fopen(path,"r"))==NULL) {
++  // Removed by PaN if ((fp=fopen(path,"r"))==NULL) {
++  if ((fp=open(path,O_RDONLY)) < 0) { // Added by PaN
+     close(soc);
+     return RET_501;
+   }
+-  fseek(fp,0,SEEK_END);
++  // Removed by PaN fseek(fp,0,SEEK_END);
++  // bytestot=ftell(fp);
++  bytestot=lseek(fp,0,SEEK_END);
+   
+-  bytestot=ftell(fp);bytesnow=byteslast=pchild[nr]->resume;
++  bytesnow=byteslast=pchild[nr]->resume;
+   sprintf(cmd,
+ 	  "150 Opening BINARY mode data connection for '%s' (%ld bytes).\r\n",
+ 	  param,bytestot);
+-  fseek(fp,pchild[nr]->resume,SEEK_SET);
++  // Removed by PaN fseek(fp,pchild[nr]->resume,SEEK_SET);
++  lseek(fp,pchild[nr]->resume,SEEK_SET);
+ 
+   write(pchild[nr]->sock,cmd,strlen(cmd));
+ 
+@@ -529,8 +594,23 @@
+     out_prompt();
+   }
+ 
++#if 0
++	if (transfertimeout) {
++		tv.tv_sec = transfertimeout;
++		tv.tv_usec = 0;
++		setsockopt(soc, SOL_SOCKET, SO_SNDTIMEO, &tv, sizeof(tv));
++	}
++
++	if (sendfile(soc, fp, NULL, bytestot - bytesnow) < 0) 
++	{
++		close(fp);
++		close(soc);
++		return RET_501;
++	}
++#else
+   tm_start=time(NULL)-1;
+-  while ((n=fread(cmd,1,sizeof(cmd),fp))>0) {
++  // Removed by PaN while ((n=fread(cmd,1,sizeof(cmd),fp))>0) {
++  while ((n=read(fp,cmd,sizeof(cmd)))>0) {
+     do {
+       FD_ZERO(&fds);
+       FD_SET(soc,&fds);
+@@ -539,7 +619,8 @@
+ #ifdef DEBUG
+ 	fprintf(stderr,"Send timeout to client %d.\n",nr+1);
+ #endif
+-	fclose(fp);
++	// Removed by PaN fclose(fp);
++	close(fp);	// Added by PaN
+ 	close(soc);
+ 	return RET_501;
+       }
+@@ -560,8 +641,9 @@
+       }
+     }
+   }
+-
+-  fclose(fp);
++#endif
++  // Removed by PaN fclose(fp);
++  close(fp);	// Added by PaN
+   
+   close(soc);
+ 
+@@ -571,8 +653,9 @@
+ int do_stor(int nr,char *param) 
+ {
+   struct hostent *hp;
+-  FILE *fp;
+-  char cmd[2048],path[2048],path2[2048];
++  //FILE *fp;
++  int fp;
++  char cmd[32768],path[2048],path2[2048];
+   unsigned long addr;
+   int soc,ret;
+   unsigned int socksize,n;
+@@ -622,14 +705,19 @@
+ #endif
+     }
+   }
++  //frank,050824, not allow to store in root dir
++  //if(path[0] == '/' && path[1] == '/') return 2; 
+ 
+   /* END OF BUGFIX */
+ 
+   /* overwrite protection */
+   if (!(pchild[nr]->perm & PERM_OVERWRITE)) {
+-    fp=fopen(path,"r");
+-    if (fp!=NULL) {
+-      fclose(fp);
++    // Removed by PaN fp=fopen(path,"r");
++    fp=open(path, O_RDONLY);	// Added by PaN
++    //Removed by PaN if (fp!=NULL) {
++    if (fp>=0) {	// Added by PaN
++      // Removed by PaN fclose(fp);
++      close(fp);
+       return 2;
+     } 
+   }
+@@ -668,7 +756,8 @@
+   fprintf(stderr,"Writing file %s\n",path);
+ #endif
+ 
+-  if ((fp=fopen(path,"w"))==NULL) {
++  // Removed by PaN if ((fp=fopen(path,"w"))==NULL) {
++  if ((fp=open(path, O_WRONLY | O_CREAT | O_TRUNC, 0666))<0) {	// Added by PaN
+     close(soc);
+     return 1;
+   }
+@@ -688,7 +777,8 @@
+     FD_SET(soc,&fds);
+     tv.tv_sec=transfertimeout;tv.tv_usec=0;
+     if (select(soc+1,&fds,NULL,NULL,&tv)<=0) {
+-      fclose(fp);
++      // Removed by PaN fclose(fp);
++      close(fp);	// Added by PaN
+       close(soc);
+ #ifdef DEBUG
+       fprintf(stderr,"Receive timeout from client %d.\n",nr+1);
+@@ -699,7 +789,8 @@
+     if (FD_ISSET(soc,&fds)) {
+       n=read(soc,cmd,sizeof(cmd));
+       if (n<=0) break; /* client closed con, file complete ? should be ! */
+-      fwrite(cmd,1,n,fp);
++      // Removed by PaN fwrite(cmd,1,n,fp);
++      write(fp, cmd, n);	// Added by PaN
+       bytesnow+=n;
+       if (bytesnow-byteslast > TRFMSG_INTERVAL) {
+ 	byteslast+=TRFMSG_INTERVAL;
+@@ -714,7 +805,8 @@
+     }
+   }
+ 
+-  fclose(fp);
++  // Removed by PaN fclose(fp);
++  close(fp);	// Added by PaN
+   
+   close(soc);
+ 
+@@ -762,10 +854,13 @@
+   }
+ 
+   if (!strcmp(param,"anonymous")) {
+-    if (user<logininfocount) user_return(nr,RET_331);
+-    else {
+-      user_return(nr,RET_531);
+-      kill_connection(nr);
++    if (user<logininfocount) {
++	user_return(nr,RET_331);
++    }
++    else 
++	{
++      	user_return(nr,RET_531);
++      	kill_connection(nr);
+     }
+   } else {
+     sprintf(buffer,"331 Password required for user %s.\r\n",param);
+@@ -960,15 +1055,20 @@
+ 
+ int do_mkdir(int nr,char *param)
+ {
+-  char path[MAXPATHLEN+4];
++  char cmd[32],path[MAXPATHLEN+4];
+ 
++  strcpy(cmd,".");
+   if (strlen(param)>512) param[512]=0;
+-  if (checkpath(nr,param,path)) return 1;
++  if (checkpath(nr,cmd,path)) 
++  {	
++	return 1;
++  }
+ 
+-	/*
+-  if (strlen(path)+strlen(param)>MAXPATHLEN) return 1;
++  if (strlen(path)+strlen(param)>MAXPATHLEN) 
++  {	
++	return 1;
++  } 
+   strcat(path,param);
+-	*/
+ 
+ #ifdef DEBUG
+   printf("Making directory '%s'.\n",path);
+@@ -980,21 +1080,53 @@
+ int do_rmdir(int nr,char *param)
+ {
+   char path[1024];
+-  char allowed[MAXPATHLEN+4];
+-
+-  if (strlen(param)>512) param[512]=0;
+-  if (checkpath(nr,param,path)) return 1;
++/* fixed bug by PaN */
++  char myparam[MAXPATHLEN+4], myparamtmp[MAXPATHLEN+4];
++  int i;
+ 
+-  if (!strcmp(pchild[nr]->rootdir,"/")) {
+-    strcpy(allowed,pchild[nr]->rootdir);
++#ifdef REMOVE
++  if (param[0] != '/') {
++	  myparam[0] = '/';
++	  for (i=1; i< strlen(param)+1; i++)
++		  myparam[i]=param[i-1];
++	  myparam[i]='\0';
+   }
+-  else {
+-    /* should not happen */
+-    if (strlen(pchild[nr]->rootdir)>=MAXPATHLEN) return 1;
+-    sprintf(allowed,"%s/",pchild[nr]->rootdir);
++  else 
++#endif
++  {
++	  for (i=0; i< strlen(param); i++)
++		  myparam[i]=param[i];
++	  myparam[i]='\0';
+   }
++  //printf("rmdir-haha: %s\n", myparam);
++/* End PaN */
+ 
+-  if (strcmp(allowed, path)==0) return 1;
++  if (strlen(myparam)>512) myparam[512]=0;	// fixed bug by PaN : param to myparam
++  if (checkpath(nr,myparam,path)) 
++  {
++#ifdef REMOVE
++	  for (i=0; i< strlen(cwdpath); i++)
++		  myparamtmp[i]=cwdpath[i];
++  	  //printf("rmdir-haha3: %s\n", myparamtmp);
++  	  //printf("rmdir-haha: %s\n", myparam);
++	  for (i=strlen(cwdpath); i< strlen(cwdpath)+strlen(myparam); i++)
++		  myparamtmp[i]=myparam[i-strlen(cwdpath)];
++	  myparamtmp[i]='\0';
++  	  //printf("rmdir-haha4: %s\n", myparamtmp);
++	  for (i=0; i< strlen(myparamtmp); i++)
++		  myparam[i]=myparamtmp[i];
++	  myparam[i]='\0';
++  	  //printf("rmdir-haha5: %s\n", myparam);
++#endif
++	  
++          myparam[0] = '/';
++	  for (i=1; i< strlen(param)+1; i++)
++	      myparam[i]=param[i-1];
++	  myparam[i]='\0';
++
++	  if (checkpath(nr,myparam,path))
++	  	return 1;	// fixed bug by PaN : param to myparam
++  }
+ 
+ #ifdef DEBUG
+   printf("Removing directory '%s'.\n",path);
+@@ -1006,8 +1138,59 @@
+ int do_dele(int nr,char *param)
+ {
+   char path[2048];
++/* fixed bug by PaN */
++  char myparam[MAXPATHLEN+4], myparamtmp[MAXPATHLEN+4];
++  int i;
+ 
+-  if (strlen(param)==0 || checkpath(nr,param,path)) return 1;
++#ifdef REMOVE
++  //printf("dele-: %s\n", param);
++  if (param[0] != '/') {
++	  myparam[0] = '/';
++	  for (i=1; i< strlen(param)+1; i++)
++		  myparam[i]=param[i-1];
++	  myparam[i]='\0';
++  }
++  else 
++#endif
++  {
++	  for (i=0; i< strlen(param); i++)
++		  myparam[i]=param[i];
++	  myparam[i]='\0';
++  }
++  //printf("dele-haha: %s\n", myparam);
++  
++/* End PaN */
++
++  //if (strlen(myparam)==0 || checkpath(nr,myparam,path)) return 1;
++  if (strlen(myparam)==0) return 1;
++
++  if (checkpath(nr,myparam,path)) 
++  {
++#ifdef REMOVE
++	  for (i=0; i< strlen(cwdpath); i++)
++		  myparamtmp[i]=cwdpath[i];
++  	  //printf("dele-haha3: %s\n", myparamtmp);
++  	  //printf("dele-haha: %s\n", myparam);
++	  for (i=strlen(cwdpath); i< strlen(cwdpath)+strlen(myparam); i++)
++		  myparamtmp[i]=myparam[i-strlen(cwdpath)];
++	  myparamtmp[i]='\0';
++  	  //printf("dele-haha4: %s\n", myparamtmp);
++	  for (i=0; i< strlen(myparamtmp); i++)
++		  myparam[i]=myparamtmp[i];
++	  myparam[i]='\0';
++  	  //printf("dele-haha5: %s\n", myparam);
++#endif
++	  myparam[0] = '/';
++	  for (i=1; i< strlen(param)+1; i++)
++		  myparam[i]=param[i-1];
++	  myparam[i]='\0';
++
++	  if (checkpath(nr,myparam,path))
++	  	return 1;	// fixed bug by PaN : param to myparam
++  }
++  // fixed bug by PaN : param to myparam
++  //printf("dele-haha2: %s\n", myparam);
++  //printf("dele-haha6: %s\n", path);
+ 
+   if (path[strlen(path)-1]=='/') path[strlen(path)-1]=0;
+ 
+@@ -1018,6 +1201,83 @@
+   return unlink(path);
+ }
+ 
++/* Added by PaN */
++int do_rnfr(int nr, char *param)
++{
++  char cmd[32],path[MAXPATHLEN+4];
++  int i;
++
++  strcpy(cmd,"/");
++  if (strlen(param)>512) param[512]=0;
++  if (strlen(path)+strlen(param)>MAXPATHLEN) return 1;
++  if (checkpath(nr,cmd,path)) return 1;
++  strcat(path,param);
++
++#ifdef DEBUG
++  printf("Renaming file from '%s'.\n",path);
++#endif
++  for (i=0; i< strlen(path); i++)
++  	oldpath[i]=path[i];
++  oldpath[i]='\0';
++
++  if (!strstr(oldpath,cwdpath)) 
++  {
++  	if (checkpath(nr,cwdpath,path))
++		return 1;
++	else {
++ 		strcat(path,oldpath);
++  		for (i=0; i< strlen(path); i++)
++  			oldpath[i]=path[i];
++  		oldpath[i]='\0';
++ 		//printf("rnfr1: %s\n", oldpath);
++	}
++  }
++  //printf("rnfr: %s\n", oldpath);
++  
++  return 0;
++}
++int do_rnto(int nr, char *param)
++{
++  char cmd[32],path[MAXPATHLEN+4];
++  int i;
++
++  strcpy(cmd,"/");
++  if (strlen(param)>512) param[512]=0;
++  if (strlen(path)+strlen(param)>MAXPATHLEN) return 1;
++  if (checkpath(nr,cmd,path)) return 1;
++  strcat(path,param);
++
++#ifdef DEBUG
++  printf("Renaming file to '%s'.\n",path);
++#endif
++  for (i=0; i< strlen(path); i++)
++  	newpath[i]=path[i];
++  newpath[i]='\0';
++  //printf("rnto0: %s\n", newpath);
++
++  if (!strstr(newpath,cwdpath)) {
++  	if (checkpath(nr,cwdpath,path))
++		return 1;
++	else {
++ 		strcat(path,newpath);
++  		for (i=0; i< strlen(path); i++)
++  			newpath[i]=path[i];
++  		newpath[i]='\0';
++  		printf("rnto2: %s\n", newpath);
++	}
++  }
++  //printf("rnto: %s\n", newpath);
++  //printf("rnto: %s\n", oldpath);
++  i=0;
++  while (newpath[i]=='/')
++	  i++;
++  //printf("-%c-%c\n", newpath[i-1], newpath[i]);
++  if (newpath[i]==' ') return 1;
++  
++  return rename(oldpath, newpath);
++}
++// End PaN
++
+ void handle_suspects(int nr)
+ {
+   user_return(nr,RET_422);
+@@ -1057,9 +1317,14 @@
+   }
+ 
+   for (r=0;r<strlen(buffer);r++)
+-    buffer[r]=toupper(buffer[r]);
++     buffer[r]=toupper(buffer[r]);
++
+   for (r=0;r<REQ_COUNT;r++)
+-    if (!strcmp(buffer,request[r])) break;
++  {
++    if (!strcmp(buffer,request[r])) break;	
++    // Added by Joey to handle 'XMDIR' or other commands started with X
++    if (buffer[0]=='X' && !strcmp(buffer+1, request[r])) break;
++  }
+ 
+   if (pchild[nr]->state==USR_ONLINE) {
+     switch (r) {
+@@ -1269,12 +1534,25 @@
+       if (pchild[nr]->perm & PERM_UPLOAD) {
+ 	if (param) {
+ 	  /*	  if (strchr(param,'/')==NULL) {*/
++	    //printf("-%s-%c-%d\n", param, param[0], param[0]);
++	    /* fixed bug by PaN */
++	    if (param[0] == ' ')
++	    {	
++	       user_return(nr,RET_553);
++	    }	
++	    // End PaN
+ 	    if (!do_mkdir(nr,param))
+ 	      user_return(nr,RET_257);
+-	    else user_return(nr,RET_553);
++	    else
++	    {	 
++		user_return(nr,RET_553);
++	    }	
+ 	    /*} else user_return(nr,RET_501);*/
+ 	} else user_return(nr,RET_501);
+-      } else user_return(nr,RET_553);
++      } else 
++	{
++		user_return(nr,RET_553);
++	}
+       break;
+     case REQ_RMD:
+       if (pchild[nr]->perm & PERM_ERASE) {
+@@ -1291,13 +1569,39 @@
+       if (pchild[nr]->perm & PERM_ERASE) {
+ 	if (param) {
+ 	  param[512]=0;
+-	  if (strchr(param,' ')) *strchr(param,' ')=0;
++	  // Removed by PaN if (strchr(param,' ')) *strchr(param,' ')=0;
++	  if (strchr(param,20)) *strchr(param,20)=0;	// Fixed bug by PaN
+ 	  if (!do_dele(nr,param)) 
+ 	    user_return(nr,RET_259);
+ 	  else user_return(nr,RET_501);
+ 	} else handle_suspects(nr);
+       } else user_return(nr,RET_553);
+       break;
++/* Added by PaN */
++    case REQ_RNFR:
++      if (pchild[nr]->perm & PERM_ERASE) {
++	if (param) {
++	    if (!do_rnfr(nr, param)) 
++	      user_return(nr, RET_260);
++	    else user_return(nr,RET_553);
++	} else user_return(nr,RET_501);
++      } else {
++	      user_return(nr,RET_553);
++      }
++      break;
++    case REQ_RNTO:
++      if (pchild[nr]->perm & PERM_ERASE) {
++	if (param) {
++            printf("-%s-%c-%d", param, param[0], param[0]);
++	    if (!do_rnto(nr, param))	
++	      user_return(nr, RET_261);	
++	    else user_return(nr,RET_553);
++	} else user_return(nr,RET_501);
++      } else {
++	      user_return(nr,RET_553);
++      }
++      break;
++// End PaN
+     default:
+       if ((unsigned char)buffer[0]>0x7F) {
+ 	user_return(nr,RET_209);
+@@ -1336,7 +1640,7 @@
+       kill_connection(nr);
+       break;
+     default:
+-      handle_suspects(nr);
++      user_return(nr,RET_503);
+       break;
+     }
+   }
+--- ftpcommand.h
++++ ftpcommand.h
+@@ -34,6 +34,8 @@
+ #define REQ_MKD  20
+ #define REQ_RMD  21
+ #define REQ_DELE 22
++#define REQ_RNFR 23	// Added by PaN
++#define REQ_RNTO 24	// Added by PaN
+ 
+ 
+ /* additional routines */
+--- ftperror.h
++++ ftperror.h
+@@ -33,6 +33,8 @@
+ #define RET_259 31
+ #define RET_540 32
+ #define RET_550 33
++#define RET_260 34	// Added by PaN
++#define RET_261 35	// Added by PaN
+ 
+ 
+ extern const char *ftp_returnstr[];
+--- stupid-ftpd.c
++++ stupid-ftpd.c
+@@ -29,7 +29,6 @@
+ #include <sys/wait.h>
+ #include <time.h>
+ #include <sys/time.h>
+-
+ #include "stupid-ftpd.h"
+ #include "ftpdconfig.h"
+ #include "ftpcommand.h"
+@@ -160,9 +159,9 @@
+       case USR_ONLINE:
+ 	if (pchild[n]->pid==0 || waitpid(pchild[n]->pid,NULL,WNOHANG)<0) {
+ 	  pchild[n]->pid=0;
+-	  if (t-pchild[n]->idletime>=idletimeout) {
+-	    handle_timeout(n);
+-	  }
++	  if (idletimeout && t-pchild[n]->idletime>=idletimeout) {
++ 	    handle_timeout(n);
++ 	  }
+ 	} else pchild[n]->idletime=t;
+ 	break;
+       case USR_USER:
+@@ -403,8 +402,12 @@
+     do_writepidfile();
+     do_changeroot();
+ 
+-    if (daemonmode) {
+-      if (fork()==0) startserver();
++    if (daemonmode) 
++	{
++      if (fork()==0) 
++	  {	
++		startserver();
++	  }
+       exit(0); /* better be sure */
+     } else startserver();
+     for (n=0;n<maxusers;n++)
