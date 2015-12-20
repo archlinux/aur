@@ -3,7 +3,7 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=r77411.9e569ab
+pkgver=r77414.d4c4733
 pkgrel=1
 pkgdesc="Complete solution to record, convert and stream audio and video (git version)"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ provides=(
       'libswscale.so' 'ffmpeg'
 )
 conflicts=('ffmpeg' 'ffmpeg-full-git')
-source=("$pkgname"::'git://github.com/ffmpeg/ffmpeg.git')
+source=("$pkgname"::'git://source.ffmpeg.org/ffmpeg.git')
 md5sums=('SKIP')
 
 pkgver() {
