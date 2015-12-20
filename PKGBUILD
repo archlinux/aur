@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emscripten-git
-pkgver=1.35.14.8.g5ae6f39
+pkgver=1.35.14.11.g71f223f
 pkgrel=1
 pkgdesc="LLVM-to-JavaScript compiler"
 arch=('i686' 'x86_64')
@@ -43,7 +43,7 @@ prepare() {
       -i tools/settings_template_readonly.py
   
   # python2 shebang fixes
-  sed '1s|python$|python2|' -i $(find third_party tools -name \*.py) emrun emcc em++
+  sed '1s|python$|python2|' -i $(find third_party tools -name \*.py) emrun emcc{,.py} em++{,.py}
   sed '1s|python$|python2|' -i $srcdir/emscripten-fastcomp-clang/tools/scan-view/bin/scan-view
   cd $srcdir/emscripten-fastcomp
   
