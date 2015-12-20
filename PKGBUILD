@@ -13,8 +13,11 @@ license=('MIT')
 depends=('gtksourceviewmm' 'clang' 'aspell')
 makedepends=('git' 'cmake' 'pkg-config' 'boost')
 
-source=("$_pkgbase::git+https://github.com/cppit/jucipp.git" "CMakeLists.patch")
-sha1sums=('SKIP' 'SKIP')
+source=("$_pkgbase::git+https://github.com/cppit/jucipp.git"
+  "git+https://github.com/cppit/libclangmm.git"
+  "git+https://github.com/eidheim/tiny-process-library"
+  "CMakeLists.patch")
+sha1sums=('SKIP' 'SKIP' 'SKIP' '64ac5afbe9a3a8b92cc3001897529834cda501a5')
 
 pkgver() {
   cd "$srcdir/$_pkgbase"
@@ -23,7 +26,11 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgbase"
-  git submodule update --init
+
+  git submodule init
+  git config submodule.libclangmm.url "$srcdir/libclangmm"
+  git config submodule.tiny-process-library.url "$srcdir/tiny-process-library"
+  git submodule update
 
   git apply "$srcdir/CMakeLists.patch"
   mkdir -p build
