@@ -1,8 +1,10 @@
 # Maintainer: Eli Schwartz <eschwartz93@gmail.com>
 
+# All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
+
 _pkgname=FanFicFare
 pkgname=fanficfare-git
-pkgver=2.2.15.r0.g6b28482
+pkgver=2.2.16.r0.g4a82818
 pkgrel=1
 pkgdesc="A tool for downloading fanfiction to eBook formats"
 arch=('any')
@@ -27,5 +29,5 @@ build() {
 
 package() {
     cd "${srcdir}/${_pkgname}"
-    python2 setup.py install --root="${pkgdir}" --optimize=1
+    python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
