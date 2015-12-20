@@ -2,8 +2,8 @@
 # Maintainer: Edvinas Valatka <edacval@gmail.com>
 
 pkgname=seafile-client
-pkgver=5.0.0
-pkgrel=2
+pkgver=5.0.1
+pkgrel=1
 pkgdesc="This is seafile client for synchronizing your local files with seafile server. Qt4 version."
 arch=('i686' 'x86_64')
 url="https://github.com/haiwen/seafile-client/"
@@ -25,4 +25,4 @@ package () {
     cd "${srcdir}/${pkgname}-${pkgver}"
     make DESTDIR="${pkgdir}" install
 }
-sha256sums=('38a64c8bd0a32765ebccd4b32e9a12abd754b55a64bc18d32ddf75bbac142994')
+sha256sums=('672640dc6bb9775847dfab3761aa4fb952fc1c93363b8f11b1461872ab0799e4')
