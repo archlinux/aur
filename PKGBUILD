@@ -21,10 +21,6 @@ else
   md5sums[0]='fc45af6bfce0ed7eb9d52bc55444a6a5'
 fi
 
-if which gconftool-2 &>/dev/null;then
-  depends=(${depends[@]} gconf)
-fi
-
 source=("http://rodeo-releases.s3.amazonaws.com/$pkgver/Rodeo-v$pkgver-linux_$_arch.zip" 'rodeo.install' 'logo.svg' 'rodeo.desktop')
 
 package() {
