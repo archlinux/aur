@@ -2,7 +2,7 @@
 # Contributor: Anonymo <meowdib at gmail dot com>
 
 pkgname=clarity-icon-theme
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Vector icons in 8 colourthemes for GTK"
 arch=('any')
@@ -11,7 +11,7 @@ url="http://gnome-look.org/content/show.php/Clarity?content=135654"
 license=('GPL3')
 options=(!strip !zipman)
 source=(http://load.boenki.org/${pkgname}_${pkgver}.tar.gz)
-md5sums=('f697ed1b0e18a63c5c99db877749a913')
+md5sums=('94c4207731668bc1dc7c51e9dc1a5229')
 
 ##############################################################
 #Put the themes you want to build in _buildtheme array below.#
