@@ -1,7 +1,7 @@
 # Maintainer: FrozenCow <frozencow@gmail.com>
 
 pkgname=itch
-pkgver=0.10.4
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="The best way to play itch.io games."
 
@@ -15,7 +15,7 @@ options=('!strip')
 install="itch.install"
 
 source=("https://github.com/itchio/itch/archive/v${pkgver}.tar.gz")
-sha256sums=('2b8ac4efef39b881f5e054b35edcd7acc4438a2ebe74d0777d83f3680d8f875b')
+sha256sums=('3fc2b3fde5aae413ea33242ccf3b864832555579607fd17db93c7fa76380ad53')
 
 [ "$CARCH" = "i686" ]   && _ELECTRON_ARCH=ia32
 [ "$CARCH" = "x86_64" ] && _ELECTRON_ARCH=x64
