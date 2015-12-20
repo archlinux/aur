@@ -4,10 +4,10 @@ pkgdesc="ROS - Assorted filters designed to operate on 2D planar laser scanners,
 url='http://ros.org/wiki/laser_filters'
 
 pkgname='ros-indigo-laser-filters'
-pkgver='1.7.3'
-_pkgver_patch=0
+pkgver='1.7.4'
+_pkgver_patch=1
 arch=('any')
-pkgrel=4
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-indigo-roscpp
@@ -62,6 +62,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
