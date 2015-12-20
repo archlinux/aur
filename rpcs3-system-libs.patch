@@ -1,6 +1,6 @@
 diff -rupN rpcs3.orig/CMakeLists.txt rpcs3/CMakeLists.txt
---- rpcs3.orig/CMakeLists.txt	2015-09-26 12:36:05.102057620 +0200
-+++ rpcs3/CMakeLists.txt	2015-09-26 12:36:25.371090050 +0200
+--- rpcs3.orig/CMakeLists.txt	2015-12-20 12:35:43.613341223 +0100
++++ rpcs3/CMakeLists.txt	2015-12-20 12:36:16.795736740 +0100
 @@ -11,7 +11,6 @@ if(NOT CMAKE_SIZEOF_VOID_P EQUAL 8)
  	message( FATAL_ERROR "RPCS3 can only be compiled on 64-bit platforms." )
  endif()
@@ -10,9 +10,9 @@ diff -rupN rpcs3.orig/CMakeLists.txt rpcs3/CMakeLists.txt
  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE "${PROJECT_BINARY_DIR}/bin")
  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG "${PROJECT_BINARY_DIR}/bin")
 diff -rupN rpcs3.orig/rpcs3/CMakeLists.txt rpcs3/rpcs3/CMakeLists.txt
---- rpcs3.orig/rpcs3/CMakeLists.txt	2015-09-26 12:28:22.058624605 +0200
-+++ rpcs3/rpcs3/CMakeLists.txt	2015-09-26 12:34:01.975575577 +0200
-@@ -101,12 +101,12 @@ ${GLEW_INCLUDE_DIR}
+--- rpcs3.orig/rpcs3/CMakeLists.txt	2015-12-20 12:35:44.436651188 +0100
++++ rpcs3/rpcs3/CMakeLists.txt	2015-12-20 12:43:56.333388231 +0100
+@@ -105,12 +105,12 @@ ${GLEW_INCLUDE_DIR}
  ${wxWidgets_INCLUDE_DIRS}
  ${OPENAL_INCLUDE_DIR}
  ${LLVM_INCLUDE_DIRS}
@@ -24,21 +24,25 @@ diff -rupN rpcs3.orig/rpcs3/CMakeLists.txt rpcs3/rpcs3/CMakeLists.txt
  "${RPCS3_SRC_DIR}/.."
 -"${RPCS3_SRC_DIR}/../asmjit/src/asmjit"
 +"/usr/include/asmjit"
+ "${RPCS3_SRC_DIR}/../glm"
  )
  if(WIN32)
- 	include_directories(BEFORE "${RPCS3_SRC_DIR}/../minidx9/Include")
-@@ -127,7 +127,7 @@ if(LLVM_FOUND)
+@@ -137,11 +137,7 @@ else()
  	endif()
  endif()
  
--link_directories("${RPCS3_SRC_DIR}/../ffmpeg/${PLATFORM_ARCH}/lib" "${RPCS3_SRC_DIR}/../asmjit/")
-+link_directories("/usr/lib")
+-link_directories("${RPCS3_SRC_DIR}/../asmjit/" "${RPCS3_SRC_DIR}/../minidx12/")
+-
+-if(MSVC OR NOT WIN32)
+-	link_directories("${RPCS3_SRC_DIR}/../ffmpeg/${PLATFORM_ARCH}/lib")
+-endif()
++link_directories("/usr/lib" "${RPCS3_SRC_DIR}/../minidx12/")
  
  get_property(dirs DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY INCLUDE_DIRECTORIES)
  foreach(dir ${dirs})
-@@ -151,9 +151,7 @@ list(REMOVE_ITEM RPCS3_SRC ${RPCS3_SRC_D
- 
+@@ -164,9 +160,7 @@ RPCS3_SRC
  add_executable(rpcs3 ${RPCS3_SRC})
+ 
  
 -if(NOT MSVC)
 -	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -L${CMAKE_CURRENT_BINARY_DIR}/../asmjit/") #hack because the asmjit cmake file force fno exceptions upd: not sure if vs2015 build is affected
@@ -47,8 +51,8 @@ diff -rupN rpcs3.orig/rpcs3/CMakeLists.txt rpcs3/rpcs3/CMakeLists.txt
  	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS /NODEFAULTLIB:libc.lib /NODEFAULTLIB:libcmt.lib /NODEFAULTLIB:libcd.lib /NODEFAULTLIB:libcmtd.lib /NODEFAULTLIB:msvcrtd.lib")
  endif()
  if(WIN32) # I'm not sure we need all of these libs, but we link them in vs
-@@ -165,11 +163,11 @@ if(WIN32) # I'm not sure we need all of
- 	endif()
+@@ -182,11 +176,11 @@ if(WIN32) # I'm not sure we need all of
+ 	target_link_libraries(rpcs3  asmjit.lib avformat.lib avcodec.lib avutil.lib swresample.lib swscale.lib ${wxWidgets_LIBRARIES} ${OPENAL_LIBRARY} ${ADDITIONAL_LIBS})
  else()
  	if(LLVM_FOUND)
 -		target_link_libraries(rpcs3  asmjit.a  ${wxWidgets_LIBRARIES} ${OPENAL_LIBRARY} ${GLEW_LIBRARY} ${OPENGL_LIBRARIES})

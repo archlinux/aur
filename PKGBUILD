@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.0.5.r2529.286d296
+pkgver=0.0.0.6.r279.8a21e0f
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('rpcs3')
 source=('git+https://github.com/DHrpcs3/rpcs3.git'
         'rpcs3-system-libs.patch')
 sha256sums=('SKIP'
-            '975459f9ecd2311b69ff514ae51e85e1b7cf6d585998fe86caa6be9c963bef13')
+            'dea43bf8c143753fb9985c2f0d9921daec025876b21817e98e3e5ddc875887e9')
 
 pkgver() {
   cd rpcs3
