@@ -3,14 +3,14 @@
 
 pkgname=moslight-themes-git
 pkgver=r183.58a4334
-pkgrel=1
+pkgrel=2
 pkgdesc="Slick GTK 2/3 and GNOME Shell themes resembling the elementary look"
 arch=('any')
-url="http://dasnoopy.deviantart.com/art/MosLight-3-12-448823771"
+url='https://github.com/dasnoopy/moslight-themes'
 license=('GPL2')
 depends=('gtk-engine-murrine' 'gtk-engines' 'gnome-themes-standard')
 makedepends=('git')
-source=("${pkgname}::git://github.com/dasnoopy/moslight-themes")
+source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
 
 pkgver() {
