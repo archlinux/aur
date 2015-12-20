@@ -4,13 +4,26 @@
 
 pkgname=ffmpeg-git
 pkgver=r77404.70f13ab
-pkgrel=2
+pkgrel=3
 pkgdesc="Complete solution to record, convert and stream audio and video (git version)"
 arch=('i686' 'x86_64')
-license=('GPL')
+license=('GPL3')
 url="http://ffmpeg.org/"
-depends=('alsa-lib' 'bzip2' 'freetype2' 'gnutls' 'lame' 'libass' 'libfdk-aac' 'libtheora' 'libva' 'libvdpau' 'libvorbis' 'libvpx' 'opus' 'sdl' 'texinfo' 'libx264' 'x265-hg' 'zlib')
-makedepends=('git' 'yasm')
+depends=(
+      'alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'gnutls' 'gsm' 'lame' 'libass'
+      'libbluray' 'libmodplug' 'libpulse' 'libsoxr' 'libssh' 'libtheora'
+      'libva' 'libvdpau' 'libwebp' 'opencore-amr' 'openjpeg' 'opus'
+      'schroedinger' 'sdl' 'speex' 'v4l-utils' 'xvidcore' 'zlib'
+      'libdcadec.so' 'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so'
+      'libvpx.so' 'libx264.so' 'libx265.so'
+)
+makedepends=('hardening-wrapper' 'ladspa' 'libvdpau' 'yasm')
+optdepends=('ladspa: LADSPA filters')
+provides=(
+      'libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
+      'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
+      'libswscale.so'
+)
 conflicts=('ffmpeg')
 provides=("ffmpeg=$pkgver" "qt-faststart")
 source=("$pkgname"::'git://source.ffmpeg.org/ffmpeg.git'
