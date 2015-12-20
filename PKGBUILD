@@ -14,7 +14,7 @@ groups=('system')
 makedepends=('gnome-doc-utils' 'gobject-introspection' 'intltool' 'gnome-common' 'exo' 'git')
 depends=('lightdm' 'webkit2gtk>=2.10' 'webkit2gtk<2.12' 'gtk-engines'
 		'gtk3>=3.18' 'gtk3<3.20' 'dbus-glib')
-provides=('lightdm-webkit-greeter' 'lightdm-webkit-theme-antergos=2.2.4')
+provides=('lightdm-webkit-greeter' 'lightdm-webkit-theme-antergos=2.2.5')
 conflicts=('lightdm-webkit-greeter' 'lightdm-webkit-theme-antergos')
 replaces=('lightdm-webkit-greeter' 'lightdm-webkit-theme-antergos<2.2.4')
 options=(!libtool)
