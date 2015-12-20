@@ -3,7 +3,7 @@
 
 _srcname=fancontrol-gui
 pkgname=${_srcname}-git
-pkgver=v0.3.r9.g665863a
+pkgver=v0.3.r11.ge1e666b
 pkgrel=1
 pkgdesc="GUI for the fancontrol script and systemd service"
 arch=('i686' 'x86_64')
@@ -36,7 +36,9 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DLIB_INSTALL_DIR=lib \
-        -DBUILD_TESTING=off
+        -DBUILD_TESTING=off \
+        -DSTANDARD_CONFIG_FILE=/etc/fancontrol \
+        -DSTANDARD_SERVICE_NAME=fancontrol
   make
 }
 
