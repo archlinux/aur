@@ -10,7 +10,7 @@ url='https://github.com/yede/yefm'
 license=('GPL2')
 groups=()
 install=('pkg.install')
-makedepends=('qt5-base' 'git')
+makedepends=('git')
 source=("${pkgbase//-git/}::git://github.com/yede/yefm.git#branch=master")
 sha256sums=('SKIP')
 
@@ -33,7 +33,7 @@ package_yefm() {
 	conflicts=("${pkgname}" "${pkgname}-git<=${pkgver}")
 	replaces=("${pkgname}" "${pkgname}-git<=${pkgver}")
 	pkgdesc='Simple 2 pane file manager based on Qt, rewritten from qtFM'
-	depends=('desktop-file-utils' 'shared-mime-info')
+	depends=('desktop-file-utils' 'qt5-base')
 	install -Dm0755 "${pkgbase//-git/}"/bin/yefm "${pkgdir}"/usr/bin/yefm
 	install -Dm0644 "${pkgbase//-git/}"/data/yefm.desktop "${pkgdir}"/usr/share/applications/yefm.desktop
 	install -d "${pkgdir}"/usr/share/yefm
