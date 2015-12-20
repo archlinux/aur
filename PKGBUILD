@@ -5,10 +5,10 @@
 
 _basename=util-linux
 pkgname=${_basename}-aes
-_basever=2.26
-pkgver=${_basever}.2
-pkgrel=2
-aneurysma=${pkgver}
+_basever=2.27
+pkgver=${_basever}.1
+pkgrel=1
+aneurysma=${pkgver}-20151110
 
 pkgdesc="Miscellaneous system utilities for Linux, with loop-AES support"
 url="http://sourceforge.net/projects/loop-aes/"
@@ -27,24 +27,14 @@ conflicts=(${replaces[*]})
 install=${pkgname}.install
 makedepends=('systemd' 'python' 'autoconf' 'automake')
 
-# ToChk
-#   autopoint:  /usr/bin/autopoint (GNU gettext-tools) 0.18.3
-#   aclocal:    aclocal (GNU automake) 1.14.1
-#   autoconf:   autoconf (GNU Autoconf) 2.69
-#   autoheader: autoheader (GNU Autoconf) 2.69
-#   automake:   automake (GNU automake) 1.14.1
-#   libtoolize: libtoolize (GNU libtool) 2.4.2
-
-#validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284') # Karel Zak
-#source=("https://www.kernel.org/pub/linux/utils/${_basename}/v${_basever}/${_basename}-${pkgver}.tar."{xz,sign}
-
-source=("https://www.kernel.org/pub/linux/utils/${_basename}/v${_basever}/${_basename}-${pkgver}.tar.xz"
+source=("https://www.kernel.org/pub/linux/utils/util-linux/v${pkgver%.?}/${_basename}-${pkgver}.tar.xz"
+#  "https://www.kernel.org/pub/linux/utils/util-linux/v${pkgver%.?}/${_basename}-${pkgver}.tar."{xz,sign}
   pam-common::"https://projects.archlinux.org/svntogit/packages.git/plain/trunk/pam-common?h=packages/${_basename}"
   pam-login::"https://projects.archlinux.org/svntogit/packages.git/plain/trunk/pam-login?h=packages/${_basename}"
   pam-su::"https://projects.archlinux.org/svntogit/packages.git/plain/trunk/pam-su?h=packages/${_basename}"
-  uuidd.tmpfiles::"https://projects.archlinux.org/svntogit/packages.git/plain/trunk/uuidd.tmpfiles?h=packages/${_basename}"
-#  http://loop-aes.sourceforge.net/updates/${_basename}-${aneurysma}.diff.bz2
-  ${_basename}-${aneurysma}.diff
+  "http://loop-aes.sourceforge.net/updates/${_basename}-${aneurysma}.diff.bz2"
+#  "http://loop-aes.sourceforge.net/updates/${_basename}-${aneurysma}.diff.bz2"{,.sign}
+#  ${_basename}-${aneurysma}.diff
 )
 
 build() {
@@ -103,11 +93,10 @@ EOF
   install -m644 "${srcdir}/pam-su" "${pkgdir}/etc/pam.d/su"
   install -m644 "${srcdir}/pam-su" "${pkgdir}/etc/pam.d/su-l"
 
-  # include tmpfiles fragment for uuidd
   # TODO(dreisner): offer this upstream?
-  install -Dm644 "${srcdir}/uuidd.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/uuidd.conf"
+  sed -i '/ListenStream/ aRuntimeDirectory=uuidd' "$pkgdir/usr/lib/systemd/system/uuidd.socket"
 
-  # usrmove
+  # TODO(dreisner): fix configure.ac upstream so that this isn't needed
   cd "${pkgdir}"
   mv {,usr/}sbin/* usr/bin
   rmdir sbin usr/sbin
@@ -115,9 +104,9 @@ EOF
   # DO NOT create libutil-linux split : The AUR does not support split packages!
 }
 
-md5sums=('9bdf368c395f1b70325d0eb22c7f48fb'
+md5sums=('3cd2698d1363a2c64091c2dadc974647'
          'a31374fef2cba0ca34dfc7078e2969e4'
          '4368b3f98abd8a32662e094c54e7f9b1'
          'fa85e5cce5d723275b14365ba71a8aad'
-         'a39554bfd65cccfd8254bb46922f4a67'
-         '430bd16a629e44d33ffe299f993e8a2c')
+         '2e9ab9fe6f7f5065fc5fa0e38e1f7225'
+)
