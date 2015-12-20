@@ -1,6 +1,6 @@
 # Maintainer: Moritz Lipp <mlq@pwmt.org>
 pkgname=python2-gitinspector-git
-pkgver=v0.1.0.205.g37d78ff
+pkgver=v0.4.2.75.g9b5bbc4
 pkgrel=1
 pkgdesc="The statistical analysis tool for git repositories."
 arch=('any')
@@ -11,7 +11,7 @@ provides=('python2-gitinspector')
 conflicts=('python2-gitinspector')
 makedepends=('git')
 options=(!emptydirs)
-source=('gitinspector::git+https://code.google.com/p/gitinspector')
+source=('gitinspector::git+https://github.com/ejwa/gitinspector')
 md5sums=('SKIP')
 _gitname=gitinspector
 
@@ -22,7 +22,7 @@ package() {
 
 pkgver() {
   cd "$_gitname"
-  local ver="$(git describe --long)"
+  local ver="$(git describe --long --tags)"
   printf "%s" "${ver//-/.}"
 }
 
