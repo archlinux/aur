@@ -1,4 +1,4 @@
-# Maintainer: Gauthier P. <kendos dot kenlen at gmail dot com>
+# Maintainer: Leonidas Spyropoulos <artafinde at gmail dot com>
 # Based on Pycharm-EAP PKGBUILD by lots0logs
 
 pkgname=intellij-idea-ue-eap
