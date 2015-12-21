@@ -1,7 +1,7 @@
 pkgbase = netzob-git
 	pkgdesc = Netzob is an opensource tool which supports the expert in its operations of reverse engineering, evaluation and simulation of communication protocols. This package pulls the current version from master branch containing the current version.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://netzob.org
 	arch = i686
 	arch = x86_64
