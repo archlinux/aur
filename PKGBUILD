@@ -1,7 +1,7 @@
 # Maintainer: Anthony Samartsev <kycok@archlinux.info>
 
 pkgname=populate-git
-pkgver=34.13dd0b3
+pkgver=39.4170011
 pkgrel=1
 pkgdesc="A simple game, written in vala"
 arch=('any')

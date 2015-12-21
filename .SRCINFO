@@ -1,6 +1,6 @@
 pkgbase = populate-git
 	pkgdesc = A simple game, written in vala
-	pkgver = 34.13dd0b3
+	pkgver = 39.4170011
 	pkgrel = 1
 	url = https://github.com/alsoijw/populate
 	arch = any
