@@ -1,7 +1,7 @@
 pkgbase = rhythmbox-plugin-alternative-toolbar-git
 	pkgdesc = Replace the Rhythmbox large toolbar with a Client-Side Decorated or Compact Toolbar which can be hidden
-	pkgver = 0.r210.fc71d3c
-	pkgrel = 2
+	pkgver = 0.r251.1427c62
+	pkgrel = 1
 	url = https://github.com/fossfreedom/alternative-toolbar
 	install = rhythmbox-plugin-alternative-toolbar.install
 	arch = any
