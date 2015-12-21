@@ -9,6 +9,7 @@ pkgname=nitrogen-git
 _gitname=nitrogen
 pkgver=r250.2109c85
 pkgrel=1
+epoch=1
 pkgdesc="Background browser and setter for X windows - git version"
 arch=('i686' 'x86_64')
 url="http://projects.l3ib.org/nitrogen/"
