@@ -3,28 +3,26 @@
 # Contributor: William Giokas (KaiSforza) <1007380@gmail.com>
 
 pkgname=libbitcoin-git
-pkgver=20150707
+pkgver=20151220
 pkgrel=1
 pkgdesc="Bitcoin Cross-Platform C++ Development Toolkit"
 arch=('i686' 'x86_64')
-depends=('boost'
-         'boost-libs'
-         'curl'
-         'icu'
-         'leveldb'
-         'openssl'
-         'secp256k1-git')
 makedepends=('autoconf'
              'automake'
+             'boost'
+             'boost-libs'
+             'curl'
              'gcc'
              'git'
+             'icu'
              'libtool'
              'make'
-             'pkg-config')
+             'pkg-config'
+             'secp256k1-git')
 groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin"
 license=('AGPL3')
-source=(git+https://github.com/libbitcoin/libbitcoin)
+source=(git+https://github.com/libbitcoin/libbitcoin#branch=version2)
 sha256sums=('SKIP')
 provides=('libbitcoin')
 conflicts=('libbitcoin')
@@ -56,7 +54,7 @@ package() {
   cd ${pkgname%-git}
 
   msg2 'Installing license...'
-  install -Dm 644 COPYING "$pkgdir/usr/share/licenses/libbitcoin/COPYING"
+  install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/libbitcoin"
 
   msg2 'Installing...'
   make DESTDIR="$pkgdir" install
