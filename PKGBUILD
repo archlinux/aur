@@ -10,7 +10,6 @@ pkgdesc='Monitors and Controls incoming TCP connections - 32 bit libraries'
 arch=('x86_64')
 url='ftp://ftp.porcupine.org/pub/security/index.html'
 license=('custom')
-groups=('base')
 depends=('lib32-glibc')
 source=("ftp://ftp.porcupine.org/pub/security/${_pkgname}_${pkgver}.tar.gz"
 	"http://archlinux-stuff.googlecode.com/files/tcp-wrappers-${pkgver}%2B.patch.gz")
