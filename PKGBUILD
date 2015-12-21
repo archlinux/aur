@@ -17,12 +17,14 @@ depends=('mimetex' 'opencv' 'poppler-qt4' 'qt4' 'sqlite' 'tidyhtml' 'qtwebkit' '
 provides=('nixnote2')
 conflicts=('nixnote' 'nixnote2-git')
 replaces=('nixnote')
+source=("nixnote2.desktop")
+sha256sums=('6c88cd5ae3f5c18e342fcf5165891b22d99818d3fe2ac2b124262b8ba23bb4d1')
 source_x86_64=("http://download2.polytechnic.edu.na/pub4/sourceforge/n/ne/nevernote/${_pkgver}/${_pkgname}-2.0-${_beta_release}_amd64.tar.gz")
 sha256sums_x86_64=('6898d2e47f23ef6d3255948b407cb4507bb773b2b0b47be505bd50f3eae56d8f')
 source_i686=("http://download2.polytechnic.edu.na/pub4/sourceforge/n/ne/nevernote/${_pkgver}/${_pkgname}-2.0-${_beta_release}_i386.tar.gz")
 sha256sums_i686=('c32c8cda51867c582e0ba765270d92d01b6e5e980cac48bd015cdf4234396a30')
 
-package()
-{
+package() {
 cp -R "${srcdir}/nixnote2/usr" "${pkgdir}/"
+install -D -m644 nixnote2.desktop ${pkgdir}/usr/share/applications/nixnote2.desktop
 }
