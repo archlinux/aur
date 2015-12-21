@@ -18,7 +18,7 @@ build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   php -d extension=phar.so -d open_basedir=~:/usr/:`pwd` /usr/bin/composer install --prefer-dist --no-dev
   sed -i '/git-commit/d' box.json
-  php -d extension=phar.so -d phar.readonly=Off -d display_errors=Off /usr/bin/php-box build
+  php -d extension=phar.so -d phar.readonly=Off /usr/bin/php-box build
 }
 
 check() {
