@@ -1,0 +1,26 @@
+# Maintainer: surefire <surefire@cryptomile.net>
+
+pkgname=cinnamon-applet-mailnag-git
+pkgver=r33.631fe2f
+pkgrel=1
+pkgdesc="This is a Cinnamon applet for showing new mail notifications"
+arch=('x86_64' 'i686')
+url="https://github.com/clehner/sylpheed-imap-notify"
+license=('GPL')
+depends=('cinnamon' 'mailnag')
+provides=('cinnamon-applet-mailnag')
+conflicts=('cinnamon-applet-mailnag')
+source=("${pkgname}::git+https://bitbucket.org/hyOzd/mailnagapplet.git")
+md5sums=(SKIP)
+
+pkgver() {
+  cd "${pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd "${pkgname}"
+  appletdir="${pkgdir}/usr/share/cinnamon/applets/mailnagapplet@ozderya.net"
+  install -dm0755 "${appletdir}"
+  install -m0644 mailnagapplet@ozderya.net/* "${appletdir}"
+}
