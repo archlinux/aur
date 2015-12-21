@@ -1,7 +1,7 @@
 # Maintainer: THEGUSPROJECT <gus@thegusproject.xyz>
 
 pkgname=zukitwo-manjaro
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="A green varient of the Zukitwo GTK theme specifically tailored for Manjaro Linux. It works with all GTK 2 and 3 compatible desktop environments and window managers."
 arch=('any')
