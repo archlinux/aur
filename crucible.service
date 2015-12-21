@@ -1,0 +1,14 @@
+[Unit]
+Description=Crucible code review tool by Atlassian
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/opt/atlassian-crucible/bin/start.sh
+ExecStop=/opt/atlassian-crucible/bin/stop.sh
+KillSignal=SIGINT
+LimitNOFILE=8196
+
+[Install]
+WantedBy=multi-user.target
+

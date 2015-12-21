@@ -1,0 +1,15 @@
+post_install() {
+  post_upgrade
+}
+
+post_upgrade() {
+  systemd-sysusers crucible.conf
+  systemd-tmpfiles --create crucible.conf
+  chown -R crucible:crucible /etc/crucible
+  chmod -R 750 /etc/crucible
+}
+
+pre_remove() {
+	getent passwd crucible &>/dev/null && userdel crucible &> /dev/null
+	getent group crucible &>/dev/null && groupdel crucible &> /dev/null
+}

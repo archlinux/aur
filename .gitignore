@@ -1,0 +1,9 @@
+*.pkg.tar
+*.src.tar.gz
+pkg/
+src/
+crucible/
+fecru-*/
+*.sw[op]
+*.pkg.tar.xz
+crucible*.zip
