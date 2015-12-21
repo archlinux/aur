@@ -2,7 +2,7 @@
 # Contributor: J0k3r <moebius282 at gmail dot com>
 
 pkgname=lib32-sdl2-hg
-pkgver=2.0.3.r528.3331d2f57704
+pkgver=2.0.3.r1337.8da3e4d25202
 pkgrel=1
 pkgdesc="A library for portable low-level access to video, audio and input (Version 2, 32 bit, development version)"
 arch=('x86_64')
@@ -36,8 +36,9 @@ build() {
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
   cd build
-  cmake ../"${pkgname%-*}" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_LIBRARY_PATH=/usr/lib32 \
-    -DARTS=OFF -DNAS=OFF -DESD=OFF -DSDL_STATIC=OFF -DRPATH=OFF -DVIDEO_WAYLAND=OFF
+  cmake ../"${pkgname%-*}" -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_LIBRARY_PATH=/usr/lib32 -DLIB_SUFFIX=32 -DSDL_STATIC=OFF \
+    -DARTS=OFF -DNAS=OFF -DESD=OFF -DRPATH=OFF -DVIDEO_WAYLAND=OFF
   make
 }
 
