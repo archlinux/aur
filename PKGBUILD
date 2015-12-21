@@ -1,31 +1,34 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-server-git
-pkgver=20150707
+pkgver=20151221
 pkgrel=1
 pkgdesc="Bitcoin Full Node and Query Server"
 arch=('i686' 'x86_64')
-depends=('boost'
-         'boost-libs'
-         'czmq-git'
-         'czmqpp-git'
-         'libbitcoin-node-git'
-         'libsodium'
-         'secp256k1-git'
-         'zeromq')
 makedepends=('autoconf'
              'automake'
+             'boost'
+             'boost-libs'
+             'czmq-git'
+             'czmqpp-git'
              'gcc'
              'git'
+             'libbitcoin'
+             'libbitcoin-blockchain'
+             'libbitcoin-consensus'
+             'libbitcoin-node'
              'libconfig'
+             'libsodium'
              'libtool'
              'make'
-             'pkg-config')
+             'pkg-config'
+             'secp256k1-git'
+             'zeromq')
 optdepends=('libbitcoin-explorer: CurveZMQ client/server authentication')
 groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin-server"
 license=('AGPL3')
-source=(git+https://github.com/libbitcoin/libbitcoin-server
+source=(git+https://github.com/libbitcoin/libbitcoin-server#branch=version2
         git+https://github.com/libbitcoin/libbitcoin-server.wiki
         bs.logrotate
         bs.service
@@ -49,10 +52,10 @@ prepare() {
 
   msg2 'Configuring...'
   cp -dpr --no-preserve=ownership data/bs.cfg data/bs.cfg.in
-  sed -i 's@^blockchain_path.*@blockchain_path = /srv/bs/blockchain@' data/bs.cfg.in
+  sed -i 's@^database_path.*@database_path = /srv/bs/blockchain@' data/bs.cfg.in
   sed -i 's@^debug_file.*@debug_file = /var/log/bs/debug.log@' data/bs.cfg.in
   sed -i 's@^error_file.*@error_file = /var/log/bs/error.log@' data/bs.cfg.in
-  sed -i 's@^hosts_file.*@hosts_file = /etc/bs/hosts@' data/bs.cfg.in
+  sed -i 's@^hosts_file.*@hosts_file = /etc/bs/hosts.cache@' data/bs.cfg.in
 }
 
 build() {
@@ -76,7 +79,7 @@ package() {
   cd ${pkgname%-git}
 
   msg2 'Installing license...'
-  install -Dm 644 COPYING "$pkgdir/usr/share/licenses/libbitcoin-server/COPYING"
+  install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/libbitcoin-server"
 
   msg2 'Installing...'
   install -dm 700 "$pkgdir/etc/bs"
