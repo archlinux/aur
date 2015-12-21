@@ -2,8 +2,8 @@
 # Revived from: Vincent Berset <msieurhappy@gmail.com>
 
 pkgname=mpd-sima
-pkgver=0.13.1
-pkgrel=2
+pkgver=0.14.0
+pkgrel=1
 pkgdesc="Automagically add title to mpd playlist based on last.fm recomendations"
 arch=('any')
 url="http://codingteam.net/project/sima"
@@ -11,7 +11,6 @@ license=('GPL')
 depends=('python' 'python-musicpd')
 makedepends=('make')
 source=("http://codingteam.net/project/sima/download/file/mpd_sima-$pkgver.tar.xz")
-md5sums=('75c21858d5a220438dca794dcc0822da')
 
 build() {
     cd "$srcdir/MPD_sima-${pkgver}"
@@ -25,3 +24,5 @@ package() {
     python setup.py install --prefix=/usr --root="$pkgdir" || return 1
 }
 
+md5sums=('bc652d4103988ed137602c8789ed93f8')
+md5sums=('7575df527e29ab5f414fd44a8a5760cd')
