@@ -1,28 +1,29 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-client
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="The Bitcoin Client Protocol Implementation"
 arch=('i686' 'x86_64')
-depends=('boost'
-         'boost-libs'
-         'czmq-git'
-         'czmqpp-git'
-         'libsodium'
-         'secp256k1-git'
-         'zeromq')
 makedepends=('autoconf'
              'automake'
+             'boost'
+             'boost-libs'
+             'czmq-git'
+             'czmqpp-git'
              'gcc'
+             'libbitcoin'
+             'libsodium'
              'libtool'
              'make'
-             'pkg-config')
+             'pkg-config'
+             'secp256k1-git'
+             'zeromq')
 groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin-client"
 license=('AGPL3')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/libbitcoin/$pkgname/tar.gz/v$pkgver)
-sha256sums=('49d776b9c4c7d0b9978f91bd01ea305c5ac1d5eb881cb17a126056ee1e54fe7f')
+sha256sums=('a350e55b16af8e53ec46071fe552b0ec1dd95e233005bc4f55adb82a0d85e9bc')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -45,7 +46,7 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   msg2 'Installing license...'
-  install -Dm 644 COPYING "$pkgdir/usr/share/licenses/libbitcoin-client/COPYING"
+  install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/libbitcoin-client"
 
   msg2 'Installing...'
   make DESTDIR="$pkgdir" install
