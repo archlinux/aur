@@ -1,7 +1,7 @@
 # Maintainer: Mickael BLATIERE <blatiere@gmail.com>
 pkgname=boris
 pkgver=1.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A tiny, but robust REPL for PHP"
 url="https://github.com/borisrepl/boris"
 arch=("any")
@@ -23,5 +23,5 @@ package() {
     install -d "$pkgdir/usr/share/pear/$pkgname"
     cp -R "$srcdir/boris-$pkgver/"{lib,bin} "$pkgdir/usr/share/pear/$pkgname/"
     install -d "$pkgdir/usr/bin"
-    ln -s "$pkgdir/usr/share/pear/$pkgname/bin/boris" "$pkgdir/usr/bin/boris"
+    ln -s "/usr/share/pear/$pkgname/bin/boris" "$pkgdir/usr/bin/boris"
 }
