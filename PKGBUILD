@@ -32,6 +32,7 @@ build() {
 }
 
 package_tcp_wrappers() {
+	groups=('base')
 	depends=('bash' 'tcp_wrappers-libs')
 	optdepends_x86_64=('lib32-tcp_wrappers-libs: 32 bit support')
 	backup=('etc/hosts.allow'
