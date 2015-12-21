@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=QReduce
+Comment=Qt-based worksheet GUI for Reduce
+Icon=/usr/share/qreduce/Bumblebee.png
+Type=Application
+Categories=Education;Science;Math;
+Exec=qreduce
+Terminal=true

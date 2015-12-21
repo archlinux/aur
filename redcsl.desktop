@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Redcsl
+GenericName=Reduce Algebra System (CSL version)
+Comment=A portable general-purpose computer algebra system (CSL version)
+Icon=redcsl
+Type=Application
+Categories=Education;Science;Math;
+Exec=redcsl
+Terminal=true
