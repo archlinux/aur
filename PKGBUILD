@@ -1,8 +1,8 @@
 # Maintainer: Per Magnus Auby <permagnus@gmail.com>
 
 pkgname=brainfpv
-pkgver=20150928
-pkgrel=2
+pkgver=20150928_R1
+pkgrel=1
 pkgdesc="Ground control station and firmware for BrainFPV flight controller."
 url="https://github.com/BrainFPV/TauLabs"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=()
 source=("https://github.com/BrainFPV/TauLabs/releases/download/Brain-${pkgver//_/-}/Brain-${pkgver//_/-}_linux_x86.tar.gz"
         "brainfpv.desktop"
         "brainfpv.png")
-md5sums=('0a1c6a235757e6466e1b7110b89dc37f'
+md5sums=('06be317f3ec4a0df0ea17634ed0b5047'
          'e1ef1df6a257211fe11c06c7c3dd2e87'
          '21b01c08ddde3f0d9f056b9eca4ab67a')
 
