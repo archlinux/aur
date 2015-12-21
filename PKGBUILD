@@ -3,7 +3,7 @@
 
 _pkgname=godot
 pkgname=${_pkgname}-git
-pkgver=1.1.r1488.e9bbb97
+pkgver=2.0.r2549.1bc9184
 pkgrel=1
 pkgdesc="Godot Game Engine."
 url="http://www.godotengine.org"
@@ -22,7 +22,7 @@ else
 fi
 
 source=(
-	"git://github.com/okamstudio/${_pkgname}.git#branch=master"
+	"git://github.com/godotengine/${_pkgname}.git#branch=master"
 	godot.desktop
 	icon.png
 )
