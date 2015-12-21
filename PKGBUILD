@@ -5,7 +5,7 @@
 pkgname=qtox
 _pkgname=qTox
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Powerful Tox client written in C++/Qt that follows the Tox design guidelines'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url='https://github.com/tux3/qTox'
@@ -14,10 +14,11 @@ depends=('desktop-file-utils'
          'libfilteraudio-git'
          'libxkbcommon-x11'
          'libxss'
-         'opencv'
          'openal'
-         'qt5-svg'
+         'opencv'
          'qrencode'
+         'qt5-svg'
+         'sqlcipher'
          'toxcore')
 makedepends=('qt5-tools')
 install=$pkgname.install
