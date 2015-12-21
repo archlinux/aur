@@ -1,7 +1,7 @@
 # Maintainer: Maarten de Vries
 
 pkgname=libfreenect2
-_pkgver='0.1-rc1'
+_pkgver='0.1-rc2'
 pkgver=${_pkgver/-/}
 pkgrel=1
 pkgdesc="Open source drivers for the Kinect for Windows v2"
@@ -11,7 +11,7 @@ license=(Apache GPL)
 depends=(libusb glfw turbojpeg)
 makedepends=(cmake)
 source=("https://github.com/OpenKinect/libfreenect2/archive/v${_pkgver}.tar.gz")
-sha256sums=('ae337fc301b506f87a9bfb4baad891600e464c81abae3c646e201ed7720a3305')
+sha256sums=('0b9bacfd876b406101ac088263ccfceeef607521877ca38d55e40d20b57e6f14')
 
 prepare() {
 	cd "${srcdir}/libfreenect2-$_pkgver"
