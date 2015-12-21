@@ -4,7 +4,7 @@
 
 pkgname=qtox
 _pkgname=qTox
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc='Powerful Tox client written in C++/Qt that follows the Tox design guidelines'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -22,7 +22,7 @@ depends=('desktop-file-utils'
 makedepends=('qt5-tools')
 install=$pkgname.install
 source=("https://github.com/tux3/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('679bc14f6b48b81f3d9af40ac987789ec34a5892a4f5e44f84fe058e503569ddf1a113caa7e62bf5544982f404ea58963d607d872a9e71fc145c0c80fbb9815b')
+sha512sums=('f667d8c998d1b908069782b2123a3922c8ae554ab58a686eced060a6692cb12fbb4348c91e826a3e651e86df744fb0195dbf0e9fe0979aa40b32e6d29439740b')
 
 build() {
   cd $_pkgname-$pkgver
