@@ -1,25 +1,26 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-blockchain
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Bitcoin Blockchain Implementation"
 arch=('i686' 'x86_64')
-depends=('boost'
-         'boost-libs'
-         'libbitcoin'
-         'secp256k1-git')
 makedepends=('autoconf'
              'automake'
+             'boost'
+             'boost-libs'
              'gcc'
+             'libbitcoin'
+             'libbitcoin-consensus'
              'libtool'
              'make'
-             'pkg-config')
+             'pkg-config'
+             'secp256k1-git')
 groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin-blockchain"
 license=('AGPL3')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/libbitcoin/$pkgname/tar.gz/v$pkgver)
-sha256sums=('ab0cd69de566c8af7bd996bc4b8abfad8b6dd5d066d66235622880e703e498b5')
+sha256sums=('78bb395c0233ff0210cc13b9601985c98b2d0210e65617b11e1f2b786381af41')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -43,7 +44,7 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   msg2 'Installing license...'
-  install -Dm 644 COPYING "$pkgdir/usr/share/licenses/libbitcoin-blockchain/COPYING"
+  install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/libbitcoin-blockchain"
 
   msg2 'Installing...'
   make DESTDIR="$pkgdir" install
