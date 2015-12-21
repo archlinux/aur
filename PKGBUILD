@@ -1,10 +1,10 @@
 # Maintainer: taij33n <bwbuiz@gmail.com>
 pkgname=picolisp      
-pkgver=3.1.11.14.r0.g922e2f5
-pkgrel=3
+pkgver=15.11.r0.g633a276
+pkgrel=1
 pkgdesc="Fast and tiny 64-bit Lisp interpreter: OO, dynamic and functional (database, prolog, coroutines)."
 url="http://www.picolisp.com"
-arch=('x86_64' 'i686')
+arch=('any')
 license=('MIT')
 depends=('bash' 'openssl')
 optdepends=('jre: for picolisp ersatz.jar')
