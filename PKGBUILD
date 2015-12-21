@@ -1,26 +1,28 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-server
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Bitcoin Full Node and Query Server"
 arch=('i686' 'x86_64')
-depends=('boost'
-         'boost-libs'
-         'czmq-git'
-         'czmqpp-git'
-         'libbitcoin-node'
-         'libsodium'
-         'secp256k1-git'
-         'zeromq')
 makedepends=('autoconf'
              'automake'
+             'boost'
+             'boost-libs'
+             'czmq-git'
+             'czmqpp-git'
              'gcc'
-             'git'
+             'libbitcoin'
+             'libbitcoin-blockchain'
+             'libbitcoin-consensus'
+             'libbitcoin-node'
              'libconfig'
+             'libsodium'
              'libtool'
              'make'
-             'pkg-config')
+             'pkg-config'
+             'secp256k1-git'
+             'zeromq')
 optdepends=('libbitcoin-explorer: CurveZMQ client/server authentication')
 groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin-server"
@@ -30,7 +32,7 @@ source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/libbitcoin/$pkgname
         bs.logrotate
         bs.service
         bsinit.service)
-sha256sums=('118ce7ea2f25a62a5d180bc9ee2a46a104d9344d41104675698dd1a4c75a5ac9'
+sha256sums=('7df19518ce2401100b8689c7adb77e9c7c68317219b9c48c0e464c181f5f47d8'
             'SKIP'
             '09ea3d2bf7cb87a0760c2a73893d62d1868d232c9e925cabf6140b1b031efee3'
             '564112d0860f1523049bd89779e1b1bfc189a3d143d2cc808441981ed793658a'
@@ -42,10 +44,10 @@ prepare() {
 
   msg2 'Configuring...'
   cp -dpr --no-preserve=ownership data/bs.cfg data/bs.cfg.in
-  sed -i 's@^blockchain_path.*@blockchain_path = /srv/bs/blockchain@' data/bs.cfg.in
+  sed -i 's@^database_path.*@database_path = /srv/bs/blockchain@' data/bs.cfg.in
   sed -i 's@^debug_file.*@debug_file = /var/log/bs/debug.log@' data/bs.cfg.in
   sed -i 's@^error_file.*@error_file = /var/log/bs/error.log@' data/bs.cfg.in
-  sed -i 's@^hosts_file.*@hosts_file = /etc/bs/hosts@' data/bs.cfg.in
+  sed -i 's@^hosts_file.*@hosts_file = /etc/bs/hosts.cache@' data/bs.cfg.in
 }
 
 build() {
@@ -69,7 +71,7 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   msg2 'Installing license...'
-  install -Dm 644 COPYING "$pkgdir/usr/share/licenses/libbitcoin-server/COPYING"
+  install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/libbitcoin-server"
 
   msg2 'Installing...'
   install -dm 700 "$pkgdir/etc/bs"
