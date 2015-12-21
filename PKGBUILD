@@ -23,7 +23,7 @@ build() {
 
 check() {
   if ! php -i | grep 'PHP Archive support => enabled' >/dev/null 2>&1; then
-      echo -e "\e[1;31m Warning: phar.so must be loaded in your php.ini to install and use ${pkgname}\e[0m"
+      echo -e "Warning: phar.so must be loaded in your php.ini to install and use ${pkgname}"
       exit 1
   fi
 }
