@@ -5,7 +5,7 @@ _pkgname=papirus-pack-kde
 pkgbase=papirus-git
 pkgname=('papirus-git' 'papirus-plasma-theme-git' 'papirus-icon-theme-git' 'papirus-color-scheme-git' 'papirus-gtk-theme-git' 'papirus-aurorae-theme-git' 
          'papirus-konsole-colorscheme-git' 'papirus-yakuake-theme-git' 'bomi-skin-papirus-git' 'libreoffice-papirus-theme-git' 'papirus-kmail-theme-git' 'papirus-vlc-theme-git')
-pkgver=r388.7139bde
+pkgver=r395.18cb901
 pkgrel=1
 pkgdesc="Look-and-feel package for modified and adaptive Paper theme for KDE"
 arch=('any')
@@ -170,8 +170,7 @@ package_papirus-vlc-theme-git() {
     options=('!strip')
     depends=('vlc')
     makedepends=('git')
-    install -dm755 ${pkgdir}/usr/share/vlc/skins2
-    cp -r ${srcdir}/${_pkgname}/vlc-skins/Papirus* ${pkgdir}/usr/share/vlc/skins2/
+    install -Dm644 -t "${pkgdir}/usr/share/vlc/skins2/" ${srcdir}/${_pkgname}/vlc-skins/*.vlt
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
     find ${pkgdir}/usr -type d -exec chmod 755 {} \;
 }
