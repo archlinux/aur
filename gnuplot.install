@@ -3,7 +3,7 @@ post_install() {
     echo "Updating TeX tree..."
     mktexlsr
   fi
-  install-info /usr/share/info/gnuplot-info.gz /usr/share/info/dir
+  install-info /usr/share/info/gnuplot.info.gz /usr/share/info/dir
 }
 
 post_upgrade() {
@@ -11,7 +11,7 @@ post_upgrade() {
 }
 
 pre_remove() {
-  install-info --delete /usr/share/info/gnuplot-info /usr/share/info/dir 
+  install-info --delete /usr/share/info/gnuplot.info /usr/share/info/dir 
 }
 
 post_remove() {
