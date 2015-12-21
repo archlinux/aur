@@ -9,10 +9,10 @@
 # Based on linux-grsec package
 
 pkgbase=linux-libre-grsec-knock
-_pkgbasever=4.2-gnu
-_pkgver=4.2.6-gnu
+_pkgbasever=4.3-gnu
+_pkgver=4.3.3-gnu
 _grsecver=3.1
-_timestamp=201511282239
+_timestamp=201512162141
 _knockpatchver=4.2_2
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
@@ -23,7 +23,7 @@ _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}.${_timestamp}
 pkgver=${_pkgver//-/_}.${_timestamp}
 pkgrel=1
-rcnrel=armv7-x3
+rcnrel=armv7-x1
 arch=('i686' 'x86_64' 'armv7h')
 url="https://wiki.parabola.nu/Grsecurity%2BKnock"
 license=('GPL2')
@@ -55,6 +55,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         'change-default-console-loglevel.patch'
         'btrfs-overflow.patch'
         '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch'
+        '0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
         # armv7h patches
         "https://repo.parabola.nu/other/rcn-libre-grsec/patches/${_pkgver%-*}/rcn-libre-grsec-${_pkgver%-*}-${rcnrel}.patch"
         "https://repo.parabola.nu/other/rcn-libre-grsec/patches/${_pkgver%-*}/rcn-libre-grsec-${_pkgver%-*}-${rcnrel}.patch.sig"
@@ -66,11 +67,11 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch'
         '0007-set-default-cubietruck-led-triggers.patch'
         '0008-USB-armory-support.patch')
-sha256sums=('3a8fc9da5a38f15cc4ed0c5132d05b8245dfc1007c37e7e1994b2486535ecf49'
+sha256sums=('1d280ae2730eb6c9b8c7e920cac2e8111c8db02c498db0c142860a84106cc169'
             'SKIP'
-            'eeb789dc08b73958694db66763d263071591cb2f16a076acc521b044aaccac30'
+            '4e5d062db675a304a1b7bb99a9d2eb1ff617fd31fac9b28df059444b5a98b1d5'
             'SKIP'
-            '2feaae512652fa6eb18e1d40110bfcc56ad4993d4ae4775cb7f89337d3d11f98'
+            '13d78800d39cd1a38669d68a8b3861417d8caf8344781253cf3e5de749cdae76'
             'SKIP'
             'c7c4ab580f00dca4114c185812a963e73217e6bf86406c240d669026dc3f98a4'
             'SKIP'
@@ -80,14 +81,15 @@ sha256sums=('3a8fc9da5a38f15cc4ed0c5132d05b8245dfc1007c37e7e1994b2486535ecf49'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '6b4529314e010cedc33a7dacd21f04082ff6382b7cd03bddd4af0ce9dfb5f908'
-            'e429edf4191ada7cb5260ff07166a761847cb0d97e36b3fb5014c7dde71d95d0'
-            '67181591627c0f2771ede4176eb8069989df0d310a3a4cc7aff8416acbe33d17'
+            '76d15ea422e1dc4bf14af4e02eaa275a514a891991d3b06306d8df06044c5b29'
+            'e01a77ed063fe6835b948083943d5e118f0fa15014cc5600a89dc000c0a423b4'
+            'd4377df75b4e0832273d38df17b993a4ed6d8aa2ab09c9ab74020287bdbab42c'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '82efb1d533b579e8ea6103456e76ace1f749c9f055b0eaf95b980dc9ae544e5f'
             '61370b766e0c60b407c29d2c44b3f55fc352e9049c448bc8fcddb0efc53e42fc'
-            'd0035c2183afa3be70e2f8744a065f98146faa97dc04b5ffd8f23db9b4f9a68b'
+            '3d3266bd082321dccf429cc2200d1a4d870d2031546f9f591b6dfbb698294808'
+            '7f58bf48fd6b0c93b448ced408ef5b6cb41da392f58378475f8d5f5c09f2a98f'
             'SKIP'
             '2654680bc8f677f647bca6e2b367693bf73ffb2edc21e3757a329375355a335d'
             '842e4f483fa36c0e7dbe18ad46d78223008989cce097e5bef1e14450280f5dfe'
@@ -158,11 +160,15 @@ prepare() {
 
   patch -p1 -i "$srcdir/btrfs-overflow.patch"
 
-  # Make the radeon driver load without the firmwares
+  # make the radeon driver load without the firmwares
   # http://www.fsfla.org/pipermail/linux-libre/2015-August/003098.html
   if [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then ## This patch is only needed for x86 computers, so we disable it for others
     patch -p1 -i "${srcdir}/0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch"
   fi
+
+  # maintain the TTY over USB disconnects
+  # http://www.coreboot.org/EHCI_Gadget_Debug
+  patch -p1 -i "${srcdir}/0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch"
 
   cat "${srcdir}/config.${CARCH}" > ./.config
 
