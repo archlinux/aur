@@ -1,6 +1,6 @@
 # Maintainer: Ashley Towns <mail(at)ashleytowns(dot)id(dot)au>
 
-_version=2.2-SNAPSHOT-2015-12-10-a
+_version=2.2-SNAPSHOT-2015-12-18-a
 
 pkgname=swift-bin
 pkgver=${_version//-/.}
@@ -9,7 +9,7 @@ pkgdesc="The Swift programming language, the binary drops from the official webs
 arch=('x86_64')
 url="https://swift.org"
 license=('apache')
-depends=('icu55' 'ncurses5-compat-libs' 'libedit' 'python2' 'libutil-linux' 'libbsd' 'clang' 'libtinfo')
+depends=('icu55' 'ncurses5-compat-libs' 'libedit' 'python2' 'libutil-linux' 'libbsd' 'clang' 'libtinfo' 'python2-six')
 conflicts=('lldb' 'swift-language-git')
 options=('!strip')
 validpgpkeys=('7463A81A4B2EEA1B551FFBCFD441C977412B37AD')
@@ -20,7 +20,7 @@ source=(
   "https://swift.org/builds/ubuntu1510/swift-${_version}/swift-${_version}-ubuntu15.10.tar.gz"
   "https://swift.org/builds/ubuntu1510/swift-${_version}/swift-${_version}-ubuntu15.10.tar.gz.sig"
 )
-sha256sums=('ee518e50c6bbc414980ea2a58dfe0d41a76068dba2cff718430164089d998abc'
+sha256sums=('350e096af4ed051574021fe8bc7c90ac1087fb0e749b6f2c11f7c83a6674a62e'
             'SKIP')
 
 package() {
@@ -35,6 +35,14 @@ package() {
     # Yuck! patching libedit SONAME
     find "${pkgdir}/usr/bin" -type f -exec sed -i 's/libedit\.so\.2/libedit\.so\.0/g' {} \;
     find "${pkgdir}/usr/lib" -type f -exec sed -i 's/libedit\.so\.2/libedit\.so\.0/g' {} \;
+
+    # remove the six.py dumped in python's site packages
+    rm "${pkgdir}/usr/lib/python2.7/site-packages/six.py"
+
+    # Ensure the items have the right permissions..
+    # some tarballs from upstream seem to have the wrong ones
+    find "${pkgdir}/usr/bin" -type f -exec chmod a+rx {} \;
+    find "${pkgdir}/usr/lib" -type f -exec chmod a+r {} \; 
 
     # Update glibc map paths
     sed -i 's/\/x86_64-linux-gnu//g' "${pkgdir}/usr/lib/swift/glibc/module.map"
