@@ -1,6 +1,6 @@
 # Maintainer: ian <ian at kremlin dot cc>
 pkgname=bashstyle-git
-pkgver=bashstyleng.9.1.r86.g8fecd78
+pkgver=0.9.1.r86.g8fecd78
 pkgrel=1
 pkgdesc="A PyGTK client for managing bash, readline, vim, and nano settings (git version)"
 arch=('any')
@@ -19,7 +19,7 @@ md5sums=('SKIP'
 
 pkgver() {
 	cd "$srcdir/bashstyle-ng"
-	git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+	 git describe --long | sed 's/^bashstyleng-/0./;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 build() {
 	cd "$srcdir/bashstyle-ng"
