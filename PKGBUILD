@@ -2,14 +2,14 @@
 # Contributor: <kfgz at interia dot pl>
 
 pkgname=nwipe
-pkgver=0.16
+pkgver=0.17
 pkgrel=1
 pkgdesc="A fork of the dwipe command that will securely erase disks using a variety of recognised methods"
 arch=('i686' 'x86_64')
 url="http://www.andybev.com/index.php/Nwipe"
 depends=('device-mapper' 'ncurses' 'parted')
 license=('GPL2')
-source=(${pkgname}-${pkgver}.tar.gz::http://sourceforge.net/projects/${pkgname}/files/${pkgname}-${pkgver}.tar.gz/download)
+source=("https://github.com/martijnvanbrummelen/nwipe/archive/${pkgver}.tar.gz")
 
 build() {
   cd "${srcdir}"/${pkgname}-${pkgver}
@@ -23,4 +23,4 @@ package() {
   make DESTDIR="${pkgdir}" install
 }
 
-md5sums=('98487303370494b65df47e98649a054a')
+md5sums=('05201bacf469d53177b3c2a3c80fc492')
