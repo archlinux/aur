@@ -2,12 +2,13 @@
 
 pkgname=perl4-corelibs
 pkgver=0.003
-pkgrel=3
+pkgrel=4
 pkgdesc="Deprecated libraries slated for removal from perl5"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/~zefram/Perl4-CoreLibs-${pkgver}"
 license=('PerlArtistic')
 depends=('perl')
+makedepends=('perl-module-build')
 source=(http://search.cpan.org/CPAN/authors/id/Z/ZE/ZEFRAM/Perl4-CoreLibs-${pkgver}.tar.gz)
 
 build() {
