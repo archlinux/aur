@@ -15,7 +15,7 @@ conflicts=('r')
 depends=('intel-mkl' 'bzip2'  'libpng' 'libjpeg' 'libtiff'
          'ncurses' 'pcre' 'readline' 'zlib' 'perl' 'gcc-libs'
          'libxt' 'libxmu' 'pango' 'xz' 'desktop-file-utils' 'zip' 'unzip')
-makedepends=('jdk8-openjdk' 'gcc-fortran' 'tk')
+makedepends=('jdk8-openjdk-infinality' 'gcc-fortran' 'tk')
 optdepends=('tk: tcl/tk interface' 'texlive-bin: latex sty files'
             'icc: intel compiler' 'icpc: intel compiler' 'xiar: intel compiler'
             'xild: intel compiler')
@@ -39,13 +39,13 @@ sha512sums=('71ba470875262b9f00fb6970f209788df4dad30e0a28373b824b60d8bc6401afb77
 
 if [ "$CARCH" == "x86_64" ]; then
     _intel_arch=intel64
-    _intel_lib=mkl_gf_lp64
+    _intel_lib=mkl_intel_lp64
 elif [ "$CARCH" == "i686" ]; then
     _intel_arch=ia32
     _intel_lib=mkl_gf
 fi
 
-#_CC="icc" # uncomment to build with the Intel compiler
+_CC="icc" # uncomment to build with the Intel compiler
 
 prepare() {
     cd R-${pkgver}
@@ -60,10 +60,17 @@ prepare() {
 build() {
     # Set up the environment for MKL
     source /opt/intel/mkl/bin/mklvars.sh ${_intel_arch}
+    source /opt/intel/composerxe/linux/bin/ifortvars.sh ${_intel_arch}
     _icclibpath=$(echo $MKLROOT | sed "s%mkl%compiler%g")/lib/${_intel_arch}
     _mkllibpath=$MKLROOT/lib/${_intel_arch}
-    _mkllibs=" -fopenmp -Wl,--no-as-needed -L${_mkllibpath} -l${_intel_lib} -lmkl_core -lmkl_gnu_thread -ldl -lpthread -lm"
+    _openmplibpath=${PROD_DIR}/compiler/lib/intel64
+    _mkllibs="-L${_mkllibpath} -L${_openmplibpath} -Wl,--no-as-needed \
+              -l${_intel_lib} \
+              -lmkl_intel_thread \
+              -lmkl_core \
+              -liomp5 -ldl -lpthread -lm"
     LDFLAGS="${LDFLAGS} -L${_icclibpath}"
+    export MAIN_LDFLAGS="-qopenmp"
     
     
     if [ $_CC = "icc" ]; then
@@ -73,6 +80,10 @@ build() {
         export LD="xild"
         export _F77="ifort"
         export _FC="ifort"
+        export CFLAGS="-O3 -ipo -qopenmp -parallel -xHost -fp-model strict -qopt-mem-layout-trans=3 -I${MKLROOT}/include"
+        export CXXFLAGS="-O3 -ipo -qopenmp -parallel -xHost -fp-model strict -qopt-mem-layout-trans=3 -I${MKLROOT}/include"
+        export FFLAGS="-O3 -ipo -qopenmp -parallel -xHost -fp-model strict -qopt-mem-layout-trans=3 -I${MKLROOT}/include"
+        export FCFLAGS="-O3 -ipo -qopenmp -parallel -xHost -fp-model strict -qopt-mem-layout-trans=3 -I${MKLROOT}/include"
     else
         export _F77="gfortran"
         export _FC="gfortran"
@@ -87,11 +98,14 @@ build() {
      	rincludedir=/usr/include/R/ \
      	rdocdir=/usr/share/doc/R/ \
      	--with-x \
-     	--enable-R-shlib \
-     	--with-blas="${_mkllibs}" \
-     	--with-lapack \
-     	F77=${_F77} \
-     	FC=${_FC} \
+        --with-blas="${_mkllibs}" \
+        --with-lapack \
+        --enable-R-shlib \
+        --enable-memory-profiling \
+        --enable-BLAS-shlib \
+        --enable-openmp \
+        F77=${_F77} \
+        FC=${_FC} \
      	LIBnn=lib
     
     # Place Intel's basic math library prior to GLIBC libm 
