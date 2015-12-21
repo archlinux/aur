@@ -2,7 +2,7 @@
 
 pkgname=pdextended-mdnsbrowser-git
 pkgver=7.9e37aff
-pkgrel=1
+pkgrel=2
 pkgdesc="Zeroconf service advertising and discovery for Pd, Pd-Extended version"
 arch=("i686" "x86_64")
 license=('BSD')
@@ -19,10 +19,10 @@ pkgver() {
 
 build() {
      cd $srcdir/pd-mdnsbrowser
-     make PD=pd-extended PDEXE=pd
+     make prefix=/usr PD=pd-extended PDEXE=pd
 }
 
 package() {
      cd $srcdir/pd-mdnsbrowser
-     make DESTDIR=$pkgdir PD=pd-extended PDEXE=pd install
+     make prefix=/usr DESTDIR=$pkgdir PD=pd-extended PDEXE=pd install
 }
