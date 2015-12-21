@@ -1,4 +1,5 @@
-# Maintainer: David Sutton <kantras - gmail.com>
+# Maintainer: Joseph Kogut <joseph.kogut+AUR@gmail.com>
+# Contributor: David Sutton <kantras - gmail.com>
 # Contributor: Shanmu Thiagaraja <sthiagaraja+AUR@prshanmu.com>
 # Contributor: Limao Luo
 # Contributor: Luceo
@@ -6,15 +7,16 @@
 
 pkgname=xen-igvtg
 pkgver=4.5.0_2015Q3
-pkgrel=1
+pkgrel=2
 pkgdesc="Virtual Machine Hypervisor & Tools"
-arch=(i686 x86_64)
+arch=(x86_64)
 url="http://www.xenproject.org/"
 license=(GPL2)
-depends=(linux-igvtg bridge-utils curl gnutls iproute2 libaio libcap-ng libiscsi libjpeg-turbo libpng libseccomp lzo2 nss pixman pciutils python python2 sdl yajl spice usbredir)
+depends=(bridge-utils curl glusterfs gnutls iproute2 libaio libcap-ng libiscsi libjpeg-turbo libpng libseccomp lzo2 nss pixman 
+pciutils python python2 sdl yajl spice usbredir)
 [[ "$CARCH" == "x86_64" ]] && depends+=(lib32-glibc)
-makedepends=(bin86 cmake dev86 git iasl markdown ocaml-findlib figlet wget spice-protocol)
-optdepends=('xen-docs: Official Xen Documentation' 'openvswitch: Optional Networking support')
+makedepends=(bin86 cmake dev86 git iasl markdown ocaml-findlib figlet wget mingw-w64-binutils)
+optdepends=('linux-igvtg: iGVT-g Kernel' 'xen-docs: Official Xen Documentation' 'openvswitch: Optional Networking support')
 conflicts=(xen-4.2{,-testing-hg} xen-{gdbsx,hg-unstable,rc,git} xen-4.3{,-testing-hg})
 backup=(etc/modules-load.d/$pkgname.conf etc/xen/xl.conf etc/conf.d/xen{stored,consoled,domains,commons} etc/xen/grub.conf)
 options=(!buildflags !strip)
@@ -32,6 +34,7 @@ source=(xen_src::git+https://github.com/01org/igvtg-xen
     http://xenbits.xen.org/xen-extfiles/tpm_emulator-0.7.4.tar.gz
     http://xenbits.xen.org/xen-extfiles/gmp-4.3.2.tar.bz2
     https://raw.githubusercontent.com/jakogut/xen-xengt-aur/master/fix_array_subscript_above_bounds.patch
+    xen_efi_build.patch
     $pkgname.install
     tmpfiles.d-xen.conf
     09_xen
@@ -68,6 +71,7 @@ sha256sums=('SKIP'
             '4e48ea0d83dd9441cc1af04ab18cd6c961b9fa54d5cbf2c2feee038988dea459'
             '936162c0312886c21581002b79932829aa048cfaf9937c6265aeaa14f1cd1775'
             '3404b4b0c72a2ccddc21ca5ba00e4e206e26394adf58bdeb06b176341d8b6bdc'
+            'a8ce42777e22af49080131e174b6b89c6e7597539838fb8b17a12280fd10b10b'
             '5bc10f125bdc1ae5f9e3eeb58888970d02e7856e94e2435d66ddb717884db016'
             '40e0760810a49f925f2ae9f986940b40eba477dc6d3e83a78baaae096513b3cf'
             '06c9f6140f7ef4ccfc4b1a7d9732a673313e269733180f53afcd9e43bf6c26bb'
@@ -114,6 +118,9 @@ prepare() {
     # Uncomment line below if you want to enable ATI Passthrough support (some reported successes, untested with 4.4)
     #patch -Np1 -i "$srcdir/ati-passthrough.patch"
 
+    # Build EFI binary
+    patch -Np1 -i "$srcdir/xen_efi_build.patch"
+
     ## Fix Install Paths
     sed -i 's:\$localstatedir/run/xen:/run/xen:' m4/paths.m4
     sed -i 's:/var/run:/run:' tools/ocaml/xenstored/define.ml
@@ -135,6 +142,8 @@ prepare() {
 build() {
     cd "$srcdir/xen_src/"
     export CFLAGS="-fno-caller-saves -Wno-error"
+    export LD_EFI="/usr/x86_64-w64-mingw32/bin/ld"
+
     ./autogen.sh
     ./configure PYTHON=/usr/bin/python2 --prefix=/usr --sbindir=/usr/bin --with-sysconfig-leaf-dir=conf.d --with-initddir=/etc/init.d \
         --enable-systemd --disable-docs --with-extra-qemu-configure-args="--disable-bluez --disable-gtk"
@@ -180,13 +189,9 @@ package() {
 	cd ../
     fi
 
+    # Xen binaries
     install -Dm755 "$srcdir/xen_src/xen/xen.gz" boot/$pkgname.gz
-
-    # If EFI binaries build, move to /boot
-    if [[ -f usr/lib/efi/xen.efi ]]; then
-        mv usr/lib/efi/xen-$pkgver.efi boot/xen-$pkgver.efi
-        rm -rf usr/lib/efi
-    fi
+    install -Dm755 "$srcdir/xen_src/xen/xen.efi" boot/$pkgname.efi
 
     # Compress syms file and move to a share location
     #gzip boot/$pkgname-syms-*
