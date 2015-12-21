@@ -1,4 +1,6 @@
-# Maintainer: Garrett <floft.net/contact>
+# Maintainer: Simon <simon dot hanna at serve-me dot info>
+# Contributor: Garrett <floft.net/contact>
+
 pkgname=openlp
 pkgver=2.2.1
 pkgrel=1
@@ -42,3 +44,5 @@ package() {
     lconvert -i "$file" -o "$tdestdir/${file%%ts}qm"
   done
 }
+
+# vim:set ts=2 sw=2 et:
