@@ -1,12 +1,12 @@
 # Maintainer: Elena ``of Valhalla'' Grandi <elena.valhalla@gmail.com>
 pkgname=python2-caldav
-pkgver=0.2.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="a caldav client library"
 arch=('any')
 url="https://bitbucket.org/cyrilrbt/caldav/wiki/Home"
 license=('GPL')
-depends=('python2' 'python2-lxml' 'python2-vobject' 'python2-dateutil' 'python2-distribute')
+depends=('python2' 'python2-lxml' 'python2-vobject' 'python2-dateutil' 'python2-distribute' 'python2-six' 'python2-requests')
 backup=()
 conflicts=()
 options=(!emptydirs)
@@ -19,6 +19,6 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('c038dcd9564fa1260ebb25976f136610')
-sha1sums=('b8d84565aeb5be77d3572b172acf7f4aff8ad0df')
-sha256sums=('845ed1c76c6755e0d036ddf7bf4f77d159edaaafa62561b9125b09712d944ef9')
+md5sums=('0ebae509fb16e1ee7c113639c1567645')
+sha1sums=('c94d749f22767162693bb8523acd45f6f3c83a1b')
+sha256sums=('1e512f2989901d853ba43a3e98b1daff77569663ac3a7e29492fcecf4e86f858')
