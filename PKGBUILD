@@ -16,9 +16,9 @@ source=('vgaswitcheroo.service'
 	    'vgaswitcheroo_stop.sh'
 	    'check_active_gpu.sh')
 md5sums=('a01b63dacaa632b03cd2bfe1832f4d31'
-         '4919673009c0a5c54322a1a9624801e9'
+         'f0305d6f4be6e2f3e3d8cf80b889b744'
          'fcbb48340873f67f4ad493a96ef951a4'
-         '1f105cbe6dc07c4e76862944b9086596')
+         '31363eacd067cd53a0571b2436600dcf')
 
 package() {
   install -Dm644 "${srcdir}/vgaswitcheroo.service" "${pkgdir}/usr/lib/systemd/system/vgaswitcheroo.service"

@@ -11,5 +11,8 @@ do
     fi
 done
 
-echo DIGD > /sys/kernel/debug/vgaswitcheroo/switch
-echo OFF > /sys/kernel/debug/vgaswitcheroo/switch
+if [ "$(check_active_gpu.sh)" == "IGD" ]; then
+	echo DIGD > /sys/kernel/debug/vgaswitcheroo/switch
+	echo OFF > /sys/kernel/debug/vgaswitcheroo/switch
+fi
+	
