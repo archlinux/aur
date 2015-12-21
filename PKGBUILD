@@ -2,12 +2,12 @@
 
 pkgname=mumble-snapshot
 pkgver=1.3.0_883_g2a31708
-pkgrel=2
+pkgrel=3
 pkgdesc="A high quality voice chat program. (snapshot build)"
 arch=('i686' 'x86_64')
 url="http://mumble.info/"
 license=('BSD')
-depends=('qt5-base' 'opus' 'speex' 'libpulse' 'avahi' 'protobuf')
+depends=('qt5-base' 'qt5-tools' 'opus' 'speex' 'libpulse' 'avahi' 'protobuf')
 makedepends=('boost')
 provides=('mumble')
 conflicts=('mumble')
