@@ -1,0 +1,13 @@
+#!/bin/sh
+
+SRC_DIR="/opt/tresorit"
+DST_DIR="$HOME/.local/share/tresorit"
+
+mkdir -p $DST_DIR
+cp $SRC_DIR/tresorit $DST_DIR
+cp $SRC_DIR/libTresorit.so $DST_DIR
+cp -r $SRC_DIR/fonts $DST_DIR
+
+mkdir -p "$HOME/.local/share/applications"
+cp /opt/tresorit/tresorit.desktop "$HOME/.local/share/applications/tresorit.desktop"
+sed -i "s|\$HOME|$HOME|" "$HOME/.local/share/applications/tresorit.desktop"

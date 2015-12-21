@@ -1,0 +1,32 @@
+post_install() {
+post_upgrade
+}
+
+post_upgrade() {
+cat << EOF
+
+NOTE: You need to run the script below to finish setting things up for your user account.
+
+/opt/tresorit/archlinux_user_install
+
+
+To reload user systemd modules:         systemctl --user daemon-reload
+To start tresorit manually:             systemctl --user start tresorit
+To autostart tresorit on user login:    systemctl --user enable tresorit
+
+EOF
+}
+
+post_remove() {
+cat << EOF
+
+NOTE: To fully clean up you should also remove the following directory if you don't need your tresorit data anymore:
+
+\$HOME/.local/share/tresorit
+
+Also remove the application shortcut:
+
+\$HOME/.local/share/applications/tresorit.desktop
+
+EOF
+}

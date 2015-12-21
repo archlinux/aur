@@ -1,0 +1,6 @@
+src
+pkg
+*.zip
+*.tar.xz
+*.src.tar.gz
+tresorit_installer.run
