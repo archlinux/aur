@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Hyperstake
+Comment=Hyperstake P2P Cryptocurrency
+Comment[fr]=Hyperstake, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Hyperstake, eşten eşe kriptografik sanal para birimi
+Exec=/usr/bin/hyperstake-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/hyperstake128.png
+MimeType=x-scheme-handler/hyperstake;
+Categories=Office;
