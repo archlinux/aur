@@ -1,9 +1,9 @@
 # Maintainer: Andrew Krasichkov <buglloc _ at _ yandex _ dot _ru>
 
 pkgname=brick
-pkgver=0.2.7.31
+pkgver=0.2.9.34
 pkgrel=1
-pkgdesc="Bitrix24 messenger"
+pkgdesc="An open source Bitrix24 messenger client"
 arch=('i686' 'x86_64')
 url="https://github.com/buglloc/brick"
 license=("MIT")
@@ -13,11 +13,11 @@ conflicts=("brick-git" "mesa-demos")
 makedepends=("p7zip" "cmake")
 install=${pkgname}.install
 source=("https://github.com/buglloc/brick/archive/v${pkgver}.tar.gz")
-sha256sums=("c82aa65ecb069f05fbc56f3ae4890bb965b3caca3109ae18bc76535b45dbdc4c")
-source_x86_64=("https://github.com/buglloc/cef-builds/raw/a719238c09e3ff3b341650b5f5ca115799560edd/libs/cef-x86_64.tar.gz")
-sha256sums_x86_64=("2d826a502b576da18d5d31f7028d3a2d10d1969b6450175c4ec596cec02d38e7")
-source_i686=("https://github.com/buglloc/cef-builds/raw/f9bef61268792ac8b37bd1f45bbe62840b2682a1/libs/cef-i686.tar.gz")
-sha256sums_i686=("bc8e3338ef6ea73c961a138f325ad613abbb8632fb34d4219fe58c8708c6e2fe")
+sha256sums=("924da8a1dc4f4cd12c1ac2ec16e1c562af99dadc849b39e58c8c5a7768d8f7ee")
+source_x86_64=("https://github.com/buglloc/cef-builds/raw/0d15971961fda87682bd5e067cdcf5450e72b6b8/libs/cef-x86_64.tar.gz")
+sha256sums_x86_64=("5edf8e04ffb6acbcb88c26b3d4fcae9020d18967c9c4b9d3afa32530354e883d")
+source_i686=("https://github.com/buglloc/cef-builds/raw/0d15971961fda87682bd5e067cdcf5450e72b6b8/libs/cef-i686.tar.gz")
+sha256sums_i686=("8ed11e59556f77de7249804a6eb32fdf88f1236a7b22bc6acae0894564d4c2c5")
 noextract=("cef-i686.tar.gz" "cef-x86_64.tar.gz")
 
 prepare() {
@@ -29,7 +29,7 @@ build() {
   cd ${srcdir}
   mkdir -p out
   cd out
-  cmake -DCMAKE_INSTALL_PREFIX=${pkgdir} "../brick-${pkgver}"
+  cmake -DCMAKE_INSTALL_PREFIX=${pkgdir} -DSKIP_BRICK_REGISTER=1 "../brick-${pkgver}"
   make
 }
 
@@ -37,8 +37,6 @@ package() {
   cd ${srcdir}/out
   make install
   install -dm755 "${pkgdir}/usr/bin"
-  rm -f "${pkgdir}/usr/bin/brick"
-  rm -f "${pkgdir}/usr/bin/brick-client"
-  ln -s /opt/brick/brick "${pkgdir}/usr/bin/brick"
-  ln -s /opt/brick/bin/brick-client "${pkgdir}/usr/bin/brick-client"
+  ln -sf /opt/brick/brick "${pkgdir}/usr/bin/brick"
+  ln -sf /opt/brick/bin/brick-client "${pkgdir}/usr/bin/brick-client"
 }
