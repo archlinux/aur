@@ -8,6 +8,7 @@ arch=('x86_64' 'i686')
 url="https://bitbucket.org/hyOzd/mailnagapplet/"
 license=('GPL')
 depends=('cinnamon' 'mailnag')
+makedepends=('git')
 provides=('cinnamon-applet-mailnag')
 conflicts=('cinnamon-applet-mailnag')
 source=("${pkgname}::git+https://bitbucket.org/hyOzd/mailnagapplet.git")
