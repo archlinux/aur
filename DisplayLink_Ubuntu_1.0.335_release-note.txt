@@ -3,8 +3,8 @@
 
 DisplayLink Ubuntu Software Release Note
 
-Version: 1.0.138
-Date: 18th August 2015
+Version: 1.0.335
+Date: 11th December 2015
 
 DisplayLink DL-5xxx, DL-3x00 Firmware Version: 8.12.4.73304
 DisplayLink DL-41xx Firmware Version: 8.12.4.73304
@@ -17,9 +17,9 @@ Extensible Virtual Display Interface version included: 1.0.68
 A. Introduction
 ===============
 
-This is the second release of DisplayLink Driver Software v1.0 for Ubuntu. It provides initial, beta quality support for DisplayLink USB 3.0 devices on specific variants of desktop Ubuntu Linux. 
+This is the third beta of DisplayLink Driver Software v1.0 for Ubuntu. It provides initial, beta quality support for DisplayLink USB 3.0 devices on specific variants of desktop Ubuntu Linux.
 
-The driver enables video support for products using DisplayLink USB 3.0 technology. Standard native ubuntu drivers provide support for DisplayLink audio and Ethernet interfaces. 
+The driver enables video support for products using DisplayLink USB 3.0 technology. Standard native Ubuntu drivers provide support for DisplayLink audio and Ethernet interfaces.
 
 
 A1. Important notes about DL5xxx, DL-3x00 and DL-41xx Firmware
@@ -35,16 +35,24 @@ B. Contents
 A.  Introduction
 A1. Important notes about DL-5xxx, DL-3xxx and DL-41xx Firmware
 B.  Contents
-C.  Issues fixed since DisplayLink Driver Software v1.0 for Ubuntu (1.0.68)
+C.  Issues fixed
 D.  Supported O/S variants
 E.  Release components
 F.  How to Install
 G.  Supported Features & Hardware
 H.  Limitations & Known issues
-I.  Future Development  
+I.  Future Development
 
-C. Issues fixed since DisplayLink Driver Software v1.0 for Ubuntu (1.0.68)
+C. Issues fixed
 ==========================================================================
+
+Issues fixed since DisplayLink Driver Software v1.0 Beta 2 for Ubuntu (1.0.138)
+-------------------------------------------------------------------------------
+
+The installer does not create systemd service on Ubuntu 15.10 . (21018)
+
+Issues fixed since DisplayLink Driver Software v1.0 Beta 1 for Ubuntu (1.0.68)
+------------------------------------------------------------------------------
 
 DisplayLink service component may crash on device replug (20215)
 
@@ -57,7 +65,7 @@ DisplayLink service component may crash when no EVDI module is loaded. (20398)
 D. Supported O/S variants
 =========================
 
-This release has been prepared to be compatible with Ubuntu 14.04.2 LTS. Other variants and editions may be compatible if they meet minimum O/S requirements, but are not supported by DisplayLink.
+This release has been prepared to be compatible with Ubuntu 15.10. Other variants and editions may be compatible if they meet minimum O/S requirements, but are not supported by DisplayLink.
 
 The Software contains binaries which work on Intel x86 platform (32 bit and 64 bit).
 Minimum supported Linux Kernel version is 3.16.
@@ -84,7 +92,7 @@ More detailed information on installation can be found at http://support.display
 G. Supported Features & Hardware
 ================================
 
-This driver will support up to 2 displays connected to DisplayLink devices. More than 2 DisplayLink displays may work, but not supported or tested by DisplayLink. 
+This driver will support up to 2 displays connected to DisplayLink devices. More than 2 DisplayLink displays may work, but not supported or tested by DisplayLink.
 
 Resolutions up to 4K are supported on the appropriate DisplayLink hardware.
 
@@ -104,10 +112,10 @@ http://support.displaylink.com/knowledgebase/articles/641668
 I. Future Development
 ======================
 
-DisplayLink are open to suggestions and feedback on improving the proposed architecture and will gladly review patches or proposals from the developer community. Please find a current list of areas we identify as requiring attention below. 
+DisplayLink are open to suggestions and feedback on improving the proposed architecture and will gladly review patches or proposals from the developer community. Please find a current list of areas we identify as requiring attention below.
 
 - In this preview release, the user mode driver service is running with root permissions. In future versions, we would like to reduce the privilege level required for this process – e.g. by using a separate low-privileged user and a separate group, to ensure the permissions needed for driving DisplayLink screens are as low as possible.
-  
+
 - The communication between the EVDI kernel module and the wrapper libevdi library is not access-controlled or authenticated. This could be improved in future releases, making it harder to compromise the data EVDI is sending and receiving.
-  
+
 - EVDI kernel module driver is currently a platform_driver, for multiple reasons; most importantly because virtual displays are not discoverable, i.e. cannot be enumerated at the hardware level. EVDI is also a generic device, not tied to any particular kind of device, transport layer or a bus.
