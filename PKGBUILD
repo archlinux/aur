@@ -2,8 +2,8 @@
 # lizardfs is a fork of moosefs and as such is a replacement for it.
 pkgname=lizardfs
 pkgver=3.9.4
-pkgrel=1
-pksdesc='High performing and fault tolerant distributed file system'
+pkgrel=2
+pkgdesc='LizardFS is a highly reliable, scalable and efficient distributed file system. It spreads data over a number of physical servers, making it visible to an end user as a single file system.'
 url='http://lizardfs.com'
 conflics=('moosefs' 'mfs-master' 'mfs-chunkserver' 'mfs-client')
 arch=('x86_64' 'i686')
