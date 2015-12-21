@@ -16,7 +16,7 @@ sha512sums=('337eeb18b9d6ab41fda772bb3372467a6093a153f336f804b2d2ca1b4631e1ea99f
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  php -d extension=phar.so -d open_basedir=/usr/:~ /usr/bin/composer install --prefer-dist --no-dev
+  php -d extension=phar.so -d open_basedir=~:/usr/:`pwd` /usr/bin/composer install --prefer-dist --no-dev
   sed -i '/git-commit/d' box.json
   php -d extension=phar.so -d phar.readonly=Off -d display_errors=Off /usr/bin/php-box build
 }
