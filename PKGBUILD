@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Cycling Power Analysis Software. We believe that cyclists and triathletes should be able to download their power data to the
 computer of their choice, analyze it in whatever way they see fit, and share their methods of
 analysis with others."
-arch=('any')
+arch=('i686' 'x86_64')
 url="http://www.goldencheetah.org/"
 license=('GPL')
 makedepends=(bison flex 'gcc' 'make' 'qt5-tools')
