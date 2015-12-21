@@ -3,11 +3,11 @@
 
 pkgname=intellij-idea-ue-eap
 _pkgname=idea-IU
-_buildver=143.1453.5
-_pkgver=15.0.3
+_buildver=144.2151.16
+_pkgver=16
 _eap="True"
 epoch=3
-pkgver=15.${_buildver}
+pkgver=16.${_buildver}
 pkgrel=1
 pkgdesc="Early access version of the upcoming version of Intellij Idea IDE (ultimate version)"
 arch=('any')
@@ -17,8 +17,8 @@ license=('custom')
 depends=('java-environment' 'giflib' 'libxtst')
 makedepends=('wget')
 if [[ ${_eap} = "True" ]]; then
-	source=("http://download.jetbrains.com/idea/ideaIU-${_buildver}.tar.gz")
-	sha256sums=$(wget -q "${source}.sha256" && cat "ideaIU-${_buildver}.tar.gz.sha256" | cut -f1 -d" ")
+	source=("http://download.jetbrains.com/idea/ideaIU-${_buildver}-custom-jdk-linux.tar.gz")
+	sha256sums=$(wget -q "${source}.sha256" && cat "ideaIU-${_buildver}-custom-jdk-linux.tar.gz.sha256" | cut -f1 -d" ")
 else
 	source=("http://download.jetbrains.com/idea/ideaIU-${_pkgver}.tar.gz")
 	sha256sums=$(wget -q "${source}.sha256" && cat "ideaIU-${_pkgver}.tar.gz.sha256" | cut -f1 -d" ")
