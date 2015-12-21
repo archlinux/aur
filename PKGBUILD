@@ -1,24 +1,24 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-consensus-git
-pkgver=20150707
+pkgver=20151220
 pkgrel=1
 pkgdesc="Libbitcoin Consensus Library"
 arch=('i686' 'x86_64')
-depends=('boost'
-         'boost-libs'
-         'secp256k1-git')
 makedepends=('autoconf'
              'automake'
+             'boost'
+             'boost-libs'
              'gcc'
              'git'
              'libtool'
              'make'
-             'pkg-config')
+             'pkg-config'
+             'secp256k1-git')
 groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin-consensus"
 license=('AGPL3')
-source=(git+https://github.com/libbitcoin/libbitcoin-consensus)
+source=(git+https://github.com/libbitcoin/libbitcoin-consensus#branch=version2)
 sha256sums=('SKIP')
 provides=('libbitcoin-consensus')
 conflicts=('libbitcoin-consensus')
@@ -41,8 +41,6 @@ build() {
     --sharedstatedir=/usr/share/libbitcoin-consensus \
     --localstatedir=/var/lib/libbitcoin-consensus \
     --with-gnu-ld \
-    --with-secp256k1 \
-    --without-openssl \
     --without-tests
   make
 }
@@ -51,7 +49,7 @@ package() {
   cd ${pkgname%-git}
 
   msg2 'Installing license...'
-  install -Dm 644 COPYING "$pkgdir/usr/share/licenses/libbitcoin-consensus/COPYING"
+  install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/libbitcoin-consensus"
 
   msg2 'Installing...'
   make DESTDIR="$pkgdir" install
