@@ -1,0 +1,37 @@
+--- src/liblprof/lcmsprf.h.bak	2007-08-31 15:36:20.000000000 -0700
++++ src/liblprof/lcmsprf.h	2007-08-31 15:37:39.000000000 -0700
+@@ -67,6 +67,9 @@
+ #define mmax(a,b) ((a) > (b)?(a):(b))
+ #endif
+ 
++#if LCMS_VERSION > 116
++typedef int BOOL;
++#endif
+ 
+ /* Misc operations ------------------------------------------------------------------------ */
+ 
+--- SConstruct
++++ SConstruct
+@@ -81,8 +81,8 @@ def DoWithVariables(variables, prefix, what):
+ 
+ def CheckForQtAt(context, qtdir):
+   context.Message('Checking for Qt at %s... ' % qtdir)
+-  libp = os.path.join(qtdir, 'lib')
+-  cppp = os.path.join(qtdir, 'include')
++  libp = os.path.join(qtdir, 'lib', 'qt3')
++  cppp = os.path.join(qtdir, 'include', 'qt3')
+   result = AttemptLinkWithVariables(context,
+       { "LIBS": "qt-mt", "LIBPATH": libp , "CPPPATH": cppp },
+       """
+@@ -210,9 +210,9 @@ env['QT_AUTOSCAN'] = 1
+ print "QTDIR = " + env['QTDIR']
+ env.Replace(QT_BINPATH = os.path.join ( env['QTDIR'] , 'bin')) 
+ print 'Setting up QT_BINPATH = ' + env['QT_BINPATH']
+-env.Replace(QT_UIC = os.path.join ( env['QTDIR'] , 'bin', 'uic')) 
++env.Replace(QT_UIC = os.path.join ( env['QTDIR'] , 'bin', 'uic-qt3')) 
+ print 'Setting up QT_UIC = ' + env['QT_UIC']
+-env.Replace(QT_MOC = os.path.join ( env['QTDIR'] , 'bin', 'moc')) 
++env.Replace(QT_MOC = os.path.join ( env['QTDIR'] , 'bin', 'moc-qt3')) 
+ print 'Setting up QT_MOC = ' + env['QT_MOC']
+ # env.Append(QT_DEBUG = 1)
+ 
