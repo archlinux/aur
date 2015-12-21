@@ -1,0 +1,32 @@
+LFS_USER=mfs
+LFS_GROUP=mfs
+
+post_install() {
+  if ! getent passwd $LFS_USER &> /dev/null; then
+    useradd -u $LFS_UID -g $LFS_GROUP -m -s /bin/false $LFS_USER &> /dev/null
+    passwd -l $LFS_USER &> /dev/null
+    echo "  ==> User '$LFS_USER' created"
+  fi
+  echo
+  echo 'For configuring LizardFS, the .cfg.dist files in /etc/mfs can'
+  echo 'be used as a basis for writing the corresponding .cfg files.'
+  echo
+  echo 'For troubleshooting a service, like "mfschunkserver", just running'
+  echo '"/usr/bin/mfschunkserver start" can be helpful.'
+  echo
+}
+
+post_remove() {
+  userdel $LFS_USER &> /dev/null
+  echo "  ==> User '$LFS_USER' removed"
+}
+
+post_upgrade() {
+  echo
+  echo 'The latest release of MooseFS had several changes to how'
+  echo 'files are packaged and installed. There were also changes to'
+  echo 'the systemd service files. Please double-check that every'
+  echo 'service you wish to run is running as you intended.'
+  echo
+}
+
