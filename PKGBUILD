@@ -1,4 +1,5 @@
 # Maintainer: Maarten de Vries
+# Contributor: Nathan Ringo <tikiking1@gmail.com>
 
 pkgname=libfreenect2
 _pkgver='0.1-rc2'
