@@ -3,7 +3,7 @@
 
 pkgname=ipager
 pkgver=1.1.0
-pkgrel=10
+pkgrel=11
 pkgdesc="a lightweight beautiful pager from Fluxbox"
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -12,7 +12,7 @@ url="http://fluxbox.org/screenshots/"
 depends=('imlib2' 'libxmu')
 makedepends=('patch' 'scons')
 #source=(http://www.useperl.ru/ipager/src/ipager-$pkgver.tar.gz ipager-1.1.0-20120429.patch)
-source=(http://slackware.org.uk/slacky/slackware-13.0/desktop/ipager/1.1.0/src/ipager-1.1.0.tar.gz ipager-1.1.0-20120429.patch)
+source=(http://slackware.uk/slacky/slackware-13.0/desktop/ipager/1.1.0/src/ipager-1.1.0.tar.gz ipager-1.1.0-20120429.patch)
 install=$pkgname.install
 md5sums=('d74409836f5c31eb55a55f00783b1f6f' '073682d8f76e1e91b9d3f2415f4a6c52')
 
