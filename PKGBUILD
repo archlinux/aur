@@ -31,7 +31,8 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-  make PREFIX=/usr
+  # disable X11 because https://github.com/JFreegman/toxic/issues/277
+  make PREFIX=/usr DISABLE_X11=1
 }
 
 package() {
