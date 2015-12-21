@@ -1,29 +1,31 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-explorer-git
-pkgver=20150707
+pkgver=20151221
 pkgrel=1
 pkgdesc="The Bitcoin Command Line Tool"
 arch=('i686' 'x86_64')
-depends=('boost'
-         'boost-libs'
-         'czmq-git'
-         'czmqpp-git'
-         'libbitcoin-client-git'
-         'libsodium'
-         'secp256k1-git'
-         'zeromq')
 makedepends=('autoconf'
              'automake'
+             'boost'
+             'boost-libs'
+             'czmq-git'
+             'czmqpp-git'
              'gcc'
              'git'
+             'icu'
+             'libbitcoin'
+             'libbitcoin-client'
+             'libsodium'
              'libtool'
              'make'
-             'pkg-config')
+             'pkg-config'
+             'secp256k1-git'
+             'zeromq')
 groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin-explorer"
 license=('AGPL3')
-source=(git+https://github.com/libbitcoin/libbitcoin-explorer)
+source=(git+https://github.com/libbitcoin/libbitcoin-explorer#branch=version2)
 sha256sums=('SKIP')
 provides=('libbitcoin-explorer')
 conflicts=('libbitcoin-explorer')
@@ -55,7 +57,7 @@ package() {
   cd ${pkgname%-git}
 
   msg2 'Installing license...'
-  install -Dm 644 COPYING "$pkgdir/usr/share/licenses/libbitcoin-explorer/COPYING"
+  install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/libbitcoin-explorer"
 
   msg2 'Installing...'
   make DESTDIR="$pkgdir" install
