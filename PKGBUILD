@@ -8,6 +8,7 @@ pkgrel=2
 pkgdesc="LPR and CUPS driver for the Brother MFC-${_model}"
 arch=('i686' 'x86_64')
 url="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html"
+# See also: http://support.brother.com/g/b/producttop.aspx?c=de&lang=de&prod=mfcj615w_all
 license=('unknown')
 depends=('tcsh' 'deb2targz' 'perl' 'a2ps')
 if test "$CARCH" == x86_64; then
