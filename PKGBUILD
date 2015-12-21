@@ -26,3 +26,4 @@ package() {
   ls
   install -Dm644 $srcdir/vendor.js $pkgdir/opt/firefox-$_channel/browser/defaults/preferences/vendor.js
 }
+
