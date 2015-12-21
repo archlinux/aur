@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=tex2page-git
-pkgver=20151201
+pkgver=20151221
 pkgrel=1
 pkgdesc="Lisp program for making Web pages from TeX documents"
 arch=('any')
@@ -49,7 +49,7 @@ package() {
   # for texinfo sources
   install -Dm644 texi2p.tex $pkgdir/usr/share/texmf/tex/plain/texi2p.tex
   # manpage
-  install -Dm644 "$_gitname".1 $pkgdir/usr/share/man/man1/"$_gitname".1
+  install -Dm644 "man/man1/$_gitname".1 $pkgdir/usr/share/man/man1/"$_gitname".1
   # bibtex file 
   install -Dm644 "$_gitname".bib \
 	  $pkgdir/usr/share/texmf/bibtex/bib/"$_gitname"/"$_gitname".bib
