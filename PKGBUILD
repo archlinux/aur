@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=sxemacs-git
-pkgver=22.1.15.245.g28b6c19
+pkgver=22.1.15.249.g9c176f5
 pkgrel=1
 pkgdesc="A derivation of xemacs - git checkout"
 arch=('i686' 'x86_64')
@@ -19,6 +19,11 @@ options=('!libtool' '!makeflags')
 pkgver() {
   cd "$srcdir/${_gitname}"
   git describe --tags | sed -e 's|-|.|g' -e 's|v||'
+}
+
+prepare() {
+  cd "$srcdir/${_gitname}/etc"
+  sed -i 's+StartupWMClass=Emacs+StartupWMClass=SXEmacs+' sxemacs.desktop.in
 }
 
 build() {
