@@ -11,7 +11,6 @@ pkgdesc='Monitors and Controls incoming TCP connections'
 arch=('i686' 'x86_64' 'armv5te' 'armv6h' 'armv6l' 'armv7h' 'armv7l')
 url='ftp://ftp.porcupine.org/pub/security/index.html'
 license=('custom')
-groups=('base')
 source=("ftp://ftp.porcupine.org/pub/security/${pkgbase}_${pkgver}.tar.gz"
 	"http://archlinux-stuff.googlecode.com/files/tcp-wrappers-${pkgver}%2B.patch.gz"
 	'hosts.allow'
