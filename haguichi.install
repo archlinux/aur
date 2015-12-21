@@ -1,6 +1,6 @@
 
 post_install() {
-  _themes="hicolor Adwaita ubuntu-mono-dark ubuntu-mono-light"
+  _themes="hicolor ubuntu-mono-dark ubuntu-mono-light"
   for _t in $_themes; do
     gtk-update-icon-cache -q -t -f usr/share/icons/$_t
   done
