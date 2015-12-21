@@ -14,7 +14,7 @@ md5sums=(badca33309f469930e13a7d40ea6eadf)
 
 build() {
   cd "${srcdir}/srmio-$pkgver/"
-  ./configure
+  ./configure --prefix=/usr/
   make -j8
 }
 
