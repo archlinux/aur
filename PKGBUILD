@@ -2,7 +2,7 @@
 
 pkgname=vagrant-substrate
 _pkgname=vagrant-installers
-pkgver=484.9e058bc
+pkgver=524.64c5261
 pkgrel=1
 pkgdesc="Substrate layer for Vagrant"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 options=('!emptydirs')
 makedepends=('git' 'puppet' 'chrpath' 'wget')
 depends=('lzo')
-source=(git://github.com/mitchellh/$_pkgname.git#commit=9e058bc
+source=(git://github.com/mitchellh/$_pkgname.git#commit=64c5261
         puppet_module_libiconv.patch
         libiconv.patch
         readline.patch)
@@ -45,7 +45,7 @@ prepare() {
   patch -Np0 -i "$srcdir"/readline.patch
 
   # https://github.com/mitchellh/vagrant-installers/issues/60
-  sed -i '61 s/^/#/' modules/ruby/manifests/source.pp
+  sed -i 's/^    environment/#    environment/' modules/ruby/manifests/source.pp
 }
 
 build() {
