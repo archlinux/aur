@@ -5,7 +5,7 @@
 # Contributor: nesl247 <nesl247@gmail.com>
 
 pkgname=compiz-fusion-plugins-experimental-git
-pkgver=0.8.11
+pkgver=r4.8fd9a92
 pkgrel=1
 pkgdesc="Compiz Fusion Experimental plugins"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ source=(
 )
 
 pkgver() {
-  cd "$pkgname"
+  cd "${srcdir}/plugins-experimental"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
