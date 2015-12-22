@@ -22,13 +22,20 @@ pkgver() {
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
+prepare() {
+  cd "$_gitname"
+  git submodule init
+  git submodule update
+}
+
 build() {
   cd "$_gitname"
+  ./configure  
   make -f Makefile.libretro
 }
 
 package()
 {
-  install -Dm644 "$srcdir/$_gitname/picodrive_libretro.so" "$pkgdir/usr/lib/libretro/libretro-picodrive.so"
-  install -Dm644 "picodrive_libretro.info" "${pkgdir}/usr/lib/libretro/libretro-picodrive.info"
+  install -Dm644 "$srcdir/$_gitname/picodrive_libretro.so" "$pkgdir/usr/lib/libretro/picodrive_libretro.so"
+  install -Dm644 "picodrive_libretro.info" "${pkgdir}/usr/lib/libretro/picodrive_libretro.info"
 }
