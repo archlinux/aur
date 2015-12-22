@@ -3,15 +3,16 @@ pkgname=archlinuxinfo
 pkgver=2
 pkgrel=4
 pkgdesc="C program to display system infomation alongside the Arch Linux logo"
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://github.com/8100d1r0n/logo"
 license=('GPL2')
-depends=("gcc")
-source=(https://raw.githubusercontent.com/8100d1r0n/logo/master/${pkgname}.c)
+depends=('glibc')
+makedepends=('make')
+source=(https://raw.githubusercontent.com/8100d1r0n/logo/master/$pkgname.c)
 sha512sums=('SKIP')
 package() {
 	msg "Compile..."
-	make ${pkgname}
+	make $pkgname
 	msg "Install..."
-	install -Dm755 ${pkgname} "$pkgdir/usr/bin/${pkgname}"
+	install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
 }
