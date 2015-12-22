@@ -1,6 +1,6 @@
 pkgname=linphone-plugin-msx264
 _pkgname=msx264
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Linphone plugin that enables H.264 video codec"
 url="http://www.linphone.org/"
@@ -9,7 +9,7 @@ license=('GPL')
 source=(http://download-mirror.savannah.gnu.org/releases/linphone/plugins/sources/$_pkgname-$pkgver.tar.gz)
 depends=('linphone')
 options=('!makeflags')
-md5sums=('8161005fb75ca6f8ed9a1a798a33e19b')
+md5sums=('877113f35d47b68b0ee60f934a2fee3f')
  
 build() {
  
