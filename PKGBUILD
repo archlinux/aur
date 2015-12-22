@@ -54,6 +54,7 @@ build() {
   cd $_pkgname/substrate
 
   FACTER_param_output_dir="$srcdir" puppet apply \
+    --detailed-exitcodes \
     --hiera_config=config/hiera.yaml --confdir=config \
     --modulepath=modules manifests/init.pp
 }
