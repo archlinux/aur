@@ -3,16 +3,16 @@
 pkgname=perl-net-mac-vendor
 _cpanname=Net-MAC-Vendor
 _module=Net::MAC::Vendor
-pkgver=1.23
+pkgver=1.26
 pkgrel=1
 pkgdesc="$_module - look up the vendor for a MAC"
 arch=('any')
 url="https://metacpan.org/release/$_cpanname"
 license=('GPL' 'PerlArtistic')
-depends=('perl-libwww' 'perl-lwp-protocol-https')
+depends=('perl-libwww' 'perl-lwp-protocol-https' 'perl-mojolicious')
 options=('!emptydirs')
 source=("http://cpan.metacpan.org/authors/id/B/BD/BDFOY/${_cpanname}-${pkgver}.tar.gz")
-md5sums=('bfbdbca033512803c9da47e4ae3b39de')
+md5sums=('8fc0bff958d0e0761e3b9f812bddd6be')
 
 build() {
     cd $_cpanname-$pkgver
