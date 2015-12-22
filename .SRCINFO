@@ -1,0 +1,32 @@
+pkgbase = openlp-bzr
+	pkgdesc = Church presentation software.
+	pkgver = r2576
+	pkgrel = 1
+	url = http://openlp.org/
+	install = openlp.install
+	arch = any
+	license = GPLv2
+	checkdepends = python-mock
+	checkdepends = python-nose
+	makedepends = qt5-tools
+	makedepends = bzr
+	depends = python
+	depends = python-pyqt5
+	depends = phonon
+	depends = python-chardet
+	depends = python-lxml
+	depends = python-beautifulsoup4
+	depends = python-pyenchant
+	depends = python-alembic
+	optdepends = libreoffice-fresh: display impress presentations
+	optdepends = vlc: play multimedia
+	optdepends = mupdf: display pdfs
+	provides = openlp
+	conflicts = openlp
+	source = bzr+http://bazaar.launchpad.net/~openlp-core/openlp/trunk/
+	source = openlp.sh
+	sha256sums = SKIP
+	sha256sums = 19c2f3c622585bf308efc259013fb5518feaf8cf14b51613e1e71778fcc2e8cf
+
+pkgname = openlp-bzr
+
