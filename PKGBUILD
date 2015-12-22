@@ -4,7 +4,7 @@
 
 pkgname='frotz'
 pkgver='2.44'
-pkgrel=2
+pkgrel=3
 pkgdesc='Z-machine interpreter for interactive fiction games.'
 arch=('i686' 'x86_64')
 url='http://frotz.sourceforge.net/'
@@ -16,7 +16,8 @@ prepare() {
 	cd "frotz-$pkgver"
 	sed -e '/^OPTS =/d' \
 		-e '/^PREFIX/ s:/usr/local:/usr:' \
-		-e '/^CONFIG_DIR/ s:/usr/local/etc:/etc:' \
+		-e '/^CONFIG_DIR = $(PREFIX)/ s/^/#/' \
+		-e '/^CONFIG_DIR/ s:/usr/local::' \
 		-e '/^CURSES/ s/-lcurses/-lncurses/' \
 		-e '/^#CURSES_DEF/ s/^#//' \
 		-i Makefile
