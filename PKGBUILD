@@ -2,7 +2,7 @@
 
 pkgname=domoticz-git
 _gitname="domoticz"
-pkgver=r3778
+pkgver=r3868
 pkgrel=1
 pkgdesc="Web based home automation"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
