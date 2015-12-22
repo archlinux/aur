@@ -1,4 +1,6 @@
 # Maintainer: Christian Rebischke <echo Q2hyaXMuUmViaXNjaGtlQGdtYWlsLmNvbQo= | base64 -d>
+# Maintainer: Matt Bilker <me@mbilker.us>
+
 _pkgname='N1'
 pkgname='n1-git'
 pkgver=..0edbf51
@@ -7,28 +9,32 @@ pkgdesc="A new mail client, built on the modern web and designed to be extended.
 arch=('any')
 url="https://github.com/mbilker/N1/tree/node-v4"
 license=('GPL3')
-depends=('nodejs' 'npm')
-makedepends=('git')
-optdepends=()
+depends=('gconf' 'nodejs' 'libgnome-keyring' 'nss' 'python2')
+makedepends=('git' 'npm')
 provides=('n1')
 conflicts=('n1')
-install=
-source=('git+https://github.com/mbilker/N1.git')
-noextract=()
-sha512sums=('SKIP') 
+source=('git+https://github.com/nylas/N1.git')
+sha512sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
-  printf "%s.%s.%s" "$(git describe --tags --abbrev=0)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "nylas"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd "$_pkgname"
-  ./script/bootstrap
 
+  export PYTHON=python2
+  script/bootstrap
+  script/grunt build --build-dir "$srcdir/nylas-build"
+  script/grunt set-version --build-dir "$srcdir/nylas-build"
+  script/grunt generate-asar --build-dir "$srcdir/nylas-build"
 }
 
 package() {
-  mkdir "${pkgdir}/opt/"
-  cp -r "${srcdir}/$_pkgname" "${pkgdir}/opt/"
+  cd "$_pkgname"
+
+  script/grunt install --build-dir "$srcdir/nylas-build" --install-dir "$pkgdir/usr"
+  install -Dm644 build/resources/linux/Nylas.desktop "$pkgdir/usr/share/applications/nylas.desktop"
+  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
