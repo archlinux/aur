@@ -6,7 +6,7 @@
 # Contributor: Stefan Tatschner <stefan@sevenbyte.org>
 
 pkgname=gitlab-shell
-pkgver=2.6.8
+pkgver=2.6.9
 pkgrel=1
 pkgdesc="Self hosted Git management software. Replacement for gitolite"
 arch=('any')
@@ -20,10 +20,11 @@ backup=(
 	"etc/webapps/${pkgname}/config.yml"
 	"etc/webapps/${pkgname}/secret"
 	"usr/share/webapps/${pkgname}/.gitlab_shell_secret")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gitlabhq/gitlab-shell/archive/v${pkgver}.tar.gz"
+#source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gitlabhq/gitlab-shell/archive/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/gitlab-org/gitlab-shell/repository/archive.tar.gz?ref=v${pkgver}"
 	gitlab-shell.tmpfiles.d
 	)
-sha512sums=('8093476675a63b97a56f50838a27fed1f0f355533177927056acdad5d5da450ff4a82242d9b618bc5f6c289820a01f1aaa924787966779e087ce3c8b2c84507d'
+sha512sums=('751f2e00256f8ef3dd439f4d232f9738cb173aba7715b4e847ca9dc24d74bff3bae20df764db4a58d9fa59e8ed9e24313709301511dd66e21e68a809a6c6604a'
 	'f5d82441b1bb4992dcde5b95830496a1511299de5e2e85ac434021d00d20f88af5d206da2cb43a7d264a5c3d922559f205749bfa76d945ce9eae420de392c5b9')
 _homedir='/var/lib/gitlab'
 _datadir="/usr/share/webapps/${pkgname}"
@@ -32,6 +33,7 @@ _logdir='/var/log/gitlab'
 _etcdir="/etc/webapps/${pkgname}"
 
 prepare() {
+	ln -sf $(ls ${srcdir} | grep ${pkgname}-v${pkgver}-* | grep -v .tgz) ${pkgname}-${pkgver}
 	cd "${srcdir}/${_srcdir}"
 
 	sed -e 's|user: git|user: gitlab|' \
