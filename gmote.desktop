@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=GmoteServer
+Name[en_US]=GmoteServer
+Categories=Network;
+Exec=/opt/gmote/GmoteServer.sh
+Icon=/opt/gmote/gmote.png
+MimeType=
+Path=/opt/gmote/
+Type=Application
