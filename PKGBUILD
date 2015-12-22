@@ -18,7 +18,7 @@ build() {
   cd "$pkgname-$pkgver"
   mkdir m4
   ./autogen.sh
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --sysconfdir=/etc
   make
 }
 package() {
