@@ -2,8 +2,8 @@
 # Maintainer: Pavol (Lopo) Hluchy <lopo AT losys DOT eu>
 
 pkgname=gitlab-workhorse
-pkgver=0.4.2
-pkgrel=3
+pkgver=0.5.1
+pkgrel=1
 pkgdesc="HTTP server to unload Git HTTP traffic from GitLab Rails app (Unicorn)"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/gitlab-org/gitlab-workhorse"
@@ -14,7 +14,7 @@ makedepends=('gcc-go')
 source=("${pkgname}-${pkgver}.tgz::https://gitlab.com/gitlab-org/gitlab-workhorse/repository/archive.tar.gz?ref=${pkgver}"
 	gitlab-workhorse.service
 	)
-sha512sums=('41ed8fb2b8e8a0a6584662a4b808e9e7f0380d8a736c340d813e61f220dffdbd141da6ff3b7465057b00df46a952110c6f3185937fd7bc7f169ccbb5bb882726'
+sha512sums=('58753ee55c244cb672dd27996d23fa1488108c4db23068fb1a616843175f95adcfc64b73ac9777e376252e6aefa154d19a16a4fd6925f428e65af38083102a99'
 	'cbcdca5f9c33f59361407b2d5cc3d1e6d2ac4785bcd0ebb6232628b88b3a3b99d38a0dbacfcefcae76b97d3a13f0e4b7a027d1caff8fcd236ac5b5c2ca63c1e7'
 	)
 
