@@ -2,7 +2,7 @@
 
 pkgname=bitcoinxt
 pkgver=0.11D
-pkgrel=1
+pkgrel=2
 pkgdesc="BitcoinXT headless P2P node"
 arch=('i686' 'x86_64')
 url="https://bitcoinxt.software"
