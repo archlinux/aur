@@ -2,16 +2,16 @@
 _pkgname=opustags
 pkgname=opustags-git
 pkgver=0.36.fcd6470
-pkgrel=1
+pkgrel=2
 pkgdesc="View and edit tags for opus files from the command line."
 arch=('any')
-url="http://github.com/fmang/pkgname"
-license=('GPL3')
+url="https://github.com/fmang/$_pkgname"
+license=('BSD3')
 depends=('libogg')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+git://github.com/fmang/$_pkgname.git")
+source=("git+https://github.com/fmang/$_pkgname.git")
 md5sums=("SKIP")
 
  pkgver()
