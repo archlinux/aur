@@ -1,4 +1,4 @@
-# Maintainer: THEGUSPROJECT <gus@thegusproject.xyz>
+# Maintainer: Gus deMayo <gus@thegusproject.xyz>
 
 pkgname=tunesviewer
 pkgver=1.5.3
