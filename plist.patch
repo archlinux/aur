@@ -1,0 +1,11 @@
+diff -Naur ../o/Info.plist ./Info.plist
+--- ../o/Info.plist	2012-12-16 19:46:48.000000000 +0000
++++ ./Info.plist	2015-12-22 02:55:13.030162838 +0000
+@@ -14,6 +14,7 @@
+         <string>ASEKey</string>
+         <string>ASEKey</string>
+     </array>
++    <key>CFBundleExecutable</key>
+     <array>
+         <string>libASEKey.so</string>
+         <string>libASEKey.so</string>
