@@ -29,8 +29,6 @@ build() {
 package() {
 	cd "${srcdir}/libfreenect2-$_pkgver"
 	make DESTDIR="${pkgdir}" install
-	#mkdir -p ${pkgdir}/usr/bin
-	#install bin/Protonect ${pkgdir}/usr/bin/Protonect
 	mkdir -p ${pkgdir}/etc/udev/rules.d
 	install rules/90-kinect2.rules ${pkgdir}/etc/udev/rules.d/90-kinect2.rules
 }
