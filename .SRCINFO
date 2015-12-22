@@ -1,0 +1,20 @@
+pkgbase = fftw-mpi
+	pkgdesc = fftw, compiled with MPI and OpenMP support
+	pkgver = 3.3.4
+	pkgrel = 1
+	url = http://www.fftw.org/
+	install = fftw.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc-fortran
+	depends = glibc
+	depends = bash
+	depends = openmpi
+	provides = fftw
+	conflicts = fftw
+	source = http://www.fftw.org/fftw-3.3.4.tar.gz
+	sha1sums = fd508bac8ac13b3a46152c54b7ac885b69734262
+
+pkgname = fftw-mpi
+
