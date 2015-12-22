@@ -4,7 +4,7 @@
 
 pkgname=texmacs-svn
 _pkgname=texmacs
-pkgver=20151220.9909
+pkgver=20151222.9912
 pkgrel=1
 pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG editor and CAS-interface."
 arch=('i686' 'x86_64')
@@ -19,9 +19,9 @@ optdepends=('transfig: convert images using fig2ps'
             'imagemagick: convert images'
             'aspell: spell checking')
 makedepends=('ghostscript')
-source=("${_pkgname}::svn+http://svn.savannah.gnu.org/texmacs/trunk/src")
+source=("${_pkgname}::svn://svn.savannah.gnu.org/texmacs/trunk/src")
 install=${_pkgname}.install
-options=('!emptydirs')
+options=('!emptydirs' '!ccache')
 sha1sums=('SKIP')
 provides=('texmacs')
 conflicts=('texmacs')
@@ -41,9 +41,9 @@ prepare() {
     TeXmacs/misc/inkscape_extension/texmacs_reedit.py
   sed -i 's/"python"/"python2"/' plugins/python/progs/init-python.scm
   sed -i '/^LDPATH/d' src/makefile.in
-  sed -i -e 's/"guile18"/"guile1.8"/g' \
-         -e 's/guile18-config/guile-config1.8/g' \
-         configure
+  #sed -i -e 's/"guile18"/"guile1.8"/g' \
+  #       -e 's/guile18-config/guile-config1.8/g' \
+  #       configure
 
  # Don't generate icon-cache and mime-database (namcap tells that they should not be in a package)
   sed -i '/update-mime-database/d' Makefile.in
