@@ -2,16 +2,17 @@
 
 post_install() {
 	ln -s /opt/brother/PTouch/ql720nw/{inf,lpd} /usr/share/brother/PTouch/ql720nw/.
-	/usr/share/brother/PTouch/ql720nw/cupswrapper/cupswrapperql720nwpt1
+	/usr/share/brother/cupswrapper/cupswrapperql720nwpt1
 	systemctl restart cups
 }
 
 pre_remove() {
-	/usr/share/brother/PTouch/ql720nw/cupswrapper/cupswrapperql720nwpt1 -e
+	/usr/share/brother/cupswrapper/cupswrapperql720nwpt1 -e
 }
 
 post_remove() {
 	rm /usr/share/brother/PTouch/ql720nw/{inf,lpd}
+	rm /usr/share/brother/cupswrapper/cupswrapperql720nwpt1
 	systemctl restart cups
 }
 
