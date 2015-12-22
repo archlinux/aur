@@ -1,7 +1,7 @@
 # Maintainer: Eduardo Sánchez Muñoz
 
 pkgname=cling-git
-pkgver=r2704.30cc58a
+pkgver=r2795.7644a68
 pkgrel=1
 pkgdesc="Interactive C++ interpreter built on the top of LLVM and Clang libraries."
 arch=('i686' 'x86_64')
@@ -47,6 +47,7 @@ build() {
 		-DLLVM_ENABLE_SPHINX=OFF \
 		-DLLVM_ENABLE_DOXYGEN=OFF \
 		-DFFI_INCLUDE_DIR=$(pkg-config --cflags-only-I libffi | cut -c3-) \
+		-DCMAKE_CXX_FLAGS="-D_GLIBCXX_USE_CXX11_ABI=0" \
 		"$srcdir/llvm"
 	
 	make -C tools/clang
