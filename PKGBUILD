@@ -2,7 +2,7 @@
 
 pkgname=libbitcoin-server-git
 pkgver=20151221
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Full Node and Query Server"
 arch=('i686' 'x86_64')
 makedepends=('autoconf'
