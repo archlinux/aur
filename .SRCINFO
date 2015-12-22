@@ -1,7 +1,7 @@
 pkgbase = fmodex4.26.36
 	pkgdesc = An advanced audio engine (version 4.26.36)
 	pkgver = 4.26.36
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.fmod.org/
 	arch = i686
 	arch = x86_64

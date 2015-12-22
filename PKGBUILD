@@ -5,7 +5,7 @@
 
 pkgname=fmodex4.26.36
 pkgver=4.26.36
-pkgrel=2
+pkgrel=3
 pkgdesc="An advanced audio engine (version 4.26.36)"
 arch=('i686' 'x86_64')
 url="http://www.fmod.org/"
@@ -30,8 +30,8 @@ package() {
   if [[ $CARCH == "x86_64" ]]; then
     cd ${pkgdir}/usr/lib
     ln -sf libfmodex64-${pkgver}.so libfmodex-${pkgver}.so
-    ln -sf libfmodexL64-${pkgver}.so libfmodexL-${pkgver}.so
-    ln -sf libfmodex64p-${pkgver}.so libfmodexp-${pkgver}.so
+    ln -sf libfmodex64L-${pkgver}.so libfmodexL-${pkgver}.so
+    ln -sf libfmodexp64-${pkgver}.so libfmodexp-${pkgver}.so
     cd ${srcdir}/fmodapi${pkgver//./}linux${_pkgarch}
   fi
 
