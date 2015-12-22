@@ -15,7 +15,7 @@ sha1sums=SKIP
 package() {
     cd "${srcdir}/"
 
-    install -d -m 755 "${pkgdir}/usr/share/themes/"
+    install -dm644 "${pkgdir}/usr/share/themes/"
     cp -r zukitwo-manjaro "${pkgdir}/usr/share/themes/"
 }
 
