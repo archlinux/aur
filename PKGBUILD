@@ -2,7 +2,7 @@
 
 pkgname=fu-git
 pkgver=r35.47c0867
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple python2 tool for querying commandlinefu.com"
 url="https://github.com/samirahmed/fu"
 arch=(any)
@@ -22,4 +22,5 @@ pkgver() {
 package() {
     cd "${srcdir}/${_gitname}"
     python2 setup.py -q install --root="${pkgdir}" --optimize=1
+    mv "${pkgdir}/usr/bin/fu" "${pkgdir}/usr/bin/fu.py"
 }
