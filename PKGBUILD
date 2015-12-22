@@ -2,10 +2,11 @@
 # Contributor: Patrick Burroughs (Celti) <celticmadman@gmail.com>
 # Contributor: Dave Reisner <dreisner@archlinux.org>
 # Contributor: Florian Bruhin (The-Compiler) <archlinux.org@the-compiler.org>
-# Maintainer: Kaleb Elwert (belak) <belak@coded.io>
+# Contributor: Kaleb Elwert (belak) <belak@coded.io>
+# Maintainer: 3onyc <3onyc@x3tech.com>
 
-pkgname=bitlbee-git
-pkgver=3.4.1.r25.gf5bbaba
+pkgname=bitlbee-libpurple-git
+pkgver=3.4.1.r121.gea39049
 pkgrel=1
 pkgdesc='Brings instant messaging (XMPP, MSN, Yahoo!, AIM, ICQ, Twitter) to IRC'
 url='http://www.bitlbee.org/'
@@ -15,15 +16,21 @@ depends=('gnutls' 'glib2')
 makedepends=('git' 'libotr' 'python')
 optdepends=('skype4py: to use skyped'
             'libotr: for OTR encryption support')
-source=('bitlbee::git+https://github.com/bitlbee/bitlbee'
-        'bitlbee.tmpfiles')
-sha1sums=('SKIP'
-          '3695ed2fe22436c4d0fc3ead829f7d1f89bc491c')
-backup=('etc/bitlbee/bitlbee.conf'
-        'etc/bitlbee/motd.txt')
+source=(
+    'bitlbee::git+https://github.com/bitlbee/bitlbee'
+    'bitlbee.tmpfiles'
+)
+sha512sums=(
+    'SKIP'
+    'fe5ab700dfe77eab8366f2f1157bd3015898ede62ca41cc8f463c363a4ab1004023865ea38db6ac8e34b63da28aaeec929645bb11ebf5feffa4e5e088bdf7eca'
+)
+backup=(
+    'etc/bitlbee/bitlbee.conf'
+    'etc/bitlbee/motd.txt'
+)
 install=bitlbee.install
 provides=('bitlbee')
-conflicts=('bitlbee' 'bitlbee-bzr')
+conflicts=('bitlbee' 'bitlbee-bzr' 'bitlbee-libpurple' 'bitlbee-git')
 
 pkgver() {
   cd "$srcdir/bitlbee"
@@ -43,7 +50,8 @@ build() {
     --ssl=gnutls \
     --strip=0 \
     --otr=plugin \
-    --skype=plugin
+    --skype=plugin \
+    --purple=1
 
   make
 }
