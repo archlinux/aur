@@ -1,10 +1,9 @@
-# Maintainer: THEGUSPROJECT <gus@thegusproject.xyz>
+# Maintainer: Gus deMayo <gus@thegusproject.xyz>
 
 pkgname=zukitwo-manjaro
 pkgver=1.1
 pkgrel=1
-pkgdesc="A green varient of the Zukitwo GTK theme specifically tailored for Manjaro Linux. It works with all GTK 2 and 3 compatible desktop environments and window managers."
-arch=('any')
+pkgdesc="A simple green varient of the Zukitwo theme."
 url="https://github.com/THEGUSPROJECT/zukitwo-manjaro"
 license=('GPL3')
 depends=('gtk-engine-murrine' 'gtk-engines')
