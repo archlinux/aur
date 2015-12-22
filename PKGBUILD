@@ -10,24 +10,24 @@
 
 pkgname=dolphin-klook-frameworks
 _origpkgname="${pkgname%%-*}"
-pkgver=15.08.3
+_patch="$_origpkgname-15.08.1-klook.patch"
+pkgver=15.12.0
 pkgrel=1
 pkgdesc="KDE 5 File Manager with KLook support"
 arch=(i686 x86_64)
 url="http://kde.org/applications/system/dolphin/"
 license=(LGPL)
-depends=(baloo-widgets knewstuff kio-extras ktexteditor kactivities-frameworks kde-templates klook-git desktop-file-utils)
+depends=(baloo-widgets knewstuff kio-extras kactivities klook-git desktop-file-utils)
 makedepends=(extra-cmake-modules kdoctools python)
-optdepends=('kde-cli-tools: For editing file type options' 'ffmpegthumbs: Video thumbnails' 'ruby: servicemenu installation')
+optdepends=('kde-cli-tools: For editing file type options' 'ffmpegthumbs: Video thumbnails' 'ruby: installing new service menus with GHNS')
 conflicts=('kdebase-dolphin<15.08' kdebase-dolphin-klook "$_origpkgname")
 replaces=(kdebase-dolphin)
 provides=("$_origpkgname")
 groups=(kde-applications kdebase)
-_patch="$_origpkgname-15.08.1-klook.patch"
 source=("http://download.kde.org/stable/applications/$pkgver/src/$_origpkgname-$pkgver.tar.xz"
         "https://abf.rosalinux.ru/openmandriva/dolphin/raw/master/$_patch")
 install="$_origpkgname.install"
-md5sums=('14cfa16663881b27a6db452c6af49948'
+md5sums=('30f452fd08914cd302b37c29143428f9'
          '37f0810bd85506f751984be3c31cdd7e')
 
 prepare() {
