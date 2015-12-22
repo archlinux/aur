@@ -4,8 +4,8 @@
 
 pkgbase=fcitx
 pkgname=('fcitx' 'fcitx-gtk2' 'fcitx-gtk3' 'fcitx-qt4')
-pkgver=4.2.9
-pkgrel=2
+pkgver=4.2.9.1
+pkgrel=1
 groups=('fcitx-im')
 arch=('i686' 'x86_64')
 url="http://fcitx-im.org"
@@ -13,7 +13,7 @@ license=('GPL' 'LGPL')
 makedepends=('extra-cmake-modules' 'doxygen' 'gtk2' 'gtk3' 'qt4' 'icu' 'mesa' 'opencc' \
              'iso-codes' 'gobject-introspection' 'libxkbfile' 'enchant' 'python2')
 source=("http://download.fcitx-im.org/$pkgbase/$pkgbase-${pkgver}_dict.tar.xz")
-sha512sums=('4bad2efc283858bf9af7f7f283f7beefb210aa361ff034464ff97ea0e536f084c99d876f3595a5375114b68cd51714bd0b5c622a53efc57154a4e629fd416093')
+sha512sums=('5d3b669ed97423f976116385571d07f832e9e18007e6a3c2aef12957219739a81fbf2343825fea4a1b01a83a6bf9e40e9ffa88466c651876602517c6da1fb25d')
 
 prepare() {
   mkdir build
