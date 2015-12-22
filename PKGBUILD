@@ -1,36 +1,31 @@
-# Contributor: Weirch Sodora <sodora@gmail.com>
-# Contributor: Brian Bidulock <bidulock@openss7.org>
+# Maintainer: Weirch Sodora <sodora at gmail dot com>
 
 pkgname=perl-net-mac-vendor
 _cpanname=Net-MAC-Vendor
 _module=Net::MAC::Vendor
-pkgver=1.1901
-pkgrel=2
+pkgver=1.23
+pkgrel=1
 pkgdesc="$_module - look up the vendor for a MAC"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://metacpan.org/release/$_cpanname"
 license=('GPL' 'PerlArtistic')
-depends=()
-checkdepends=('perl-libwww')
+depends=('perl-libwww' 'perl-lwp-protocol-https')
 options=('!emptydirs')
 source=("http://cpan.metacpan.org/authors/id/B/BD/BDFOY/${_cpanname}-${pkgver}.tar.gz")
-md5sums=('8466cb380c0163cb445044e231cd03df')
+md5sums=('bfbdbca033512803c9da47e4ae3b39de')
 
 build() {
-  cd "$srcdir/$_cpanname-$pkgver"
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
-  make
+    cd $_cpanname-$pkgver
+    perl Makefile.PL INSTALLDIRS=vendor
+    make
 }
 
 check() {
-  cd "$srcdir/$_cpanname-$pkgver"
-  make test
+    cd $_cpanname-$pkgver
+    make test
 }
 
 package() {
-  cd "$srcdir/$_cpanname-$pkgver"
-  make install DESTDIR="$pkgdir"
-  find "$pkgdir" -name '.packlist' -o -name '*.pod' -delete
+    cd $_cpanname-$pkgver
+    make DESTDIR="$pkgdir" install
 }
-
-# vim:set ts=2 sw=2 et:
