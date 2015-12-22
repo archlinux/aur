@@ -3,7 +3,10 @@ _bs_group=bs
 
 post_install() {
   _mkuser
-  _disable_cow
+  # disable Copy-On-Write (btrfs directories only)
+  for _dir in /srv/bs /var/log/bs; do
+    _is_btrfs "$_dir" && _disable_cow "$_dir"
+  done
   chown -R $_bs_user:$_bs_group /etc/bs /srv/bs /var/log/bs
   printf "%b\n" "$xx"
 }
@@ -65,7 +68,7 @@ _chattrify() {
   # disable btrfs CoW on re-made dir
   chattr +C "$1"
 
-  # recursive copy to restore backed up dir while mainintaining disabled CoW
+  # recursive copy to restore backed up dir while maintaining disabled CoW
   [[ -d "${_orig_dir}"_old ]] \
     && find "${_orig_dir}"_old -mindepth 1 -maxdepth 1 -exec cp -R '{}' "$1" \;
 
@@ -76,12 +79,10 @@ _chattrify() {
   [[ -d "${_orig_dir}"_old ]] && rm -rf "${_orig_dir}"_old
 }
 
-# if blockchain or log dir has btrfs filesystem, disable CoW:
 _disable_cow() {
-  for _dir in /srv/bs /var/log/bs; do
-    _is_btrfs "$_dir" && _chattrify "$_dir" "700" "$_bs_user" "$_bs_group"
-  done
+  _chattrify "$1" "700" "$_bs_user" "$_bs_group"
 }
+
 
 read -d '' xx <<'EOF'
 libbitcoin-server
