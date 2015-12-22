@@ -2,14 +2,14 @@
 
 _pkgname=screencloud
 pkgname=${_pkgname}-git
-pkgver=1.2.0.46.g5a493dd
-pkgrel=3
+pkgver=1.2.0.49.g5975819
+pkgrel=2
 pkgdesc='An easy to use screenshot sharing tool. Experimental Qt5 UI. Development version.'
 arch=('i686' 'x86_64')
 url='https://screencloud.net/'
 license=('GPL2')
 
-depends=('pythonqt-qt5' 'quazip-qt5' 'qt5-x11extras' 'xdg-utils' 'hicolor-icon-theme')
+depends=('qt5-x11extras' 'qt5-svg' 'qt5-multimedia' 'pythonqt-qt5' 'quazip-qt5' 'xdg-utils' 'hicolor-icon-theme')
 optdepends=(
 	'python-crypto: for SFTP support'
 )
@@ -21,9 +21,11 @@ install=${pkgname}.install
 
 source=(
 	"git+https://github.com/olav-st/${_pkgname}.git"
+	'cmake_fix.patch'
 )
 sha512sums=(
 	'SKIP'
+	'713f3563abb5f3e6b25fb2e00d23ff6428e479a09374a17531f5c9e185bbe2ad4a0fe3225b7375be9fdf4be5e15549ab5f030efdf8bbf093e5fe528258bd4da1'
 )
 
 pkgver() {
@@ -33,6 +35,10 @@ pkgver() {
 }
 
 prepare() {
+	# Fix installation issues
+	cd ${srcdir}/${_pkgname}
+	patch -p1 < ../cmake_fix.patch
+	
 	# Create build directory
 	mkdir -p ${srcdir}/build
 }
@@ -57,9 +63,9 @@ package() {
 	# Installing package
 	cd ${srcdir}/build
 	
-	# Make a copy of the PythonQt lib
 	mkdir -p ${srcdir}/build/PythonQt
-	cp /usr/lib/libPythonQt.so ${srcdir}/build/PythonQt/
+	cp /usr/lib/libPythonQt.so ${srcdir}/build/PythonQt/libPythonQt.so
 	
+	# Install files
 	make DESTDIR=${pkgdir} install
 }
