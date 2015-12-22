@@ -1,10 +1,10 @@
 # Maintainer: Thomas Gubler <thomasgubler@gmail.com>
-pkgname_raw=omodoro
-cmd_name=$pkgname_raw
-install_dir=/usr/bin/
-pkgname=$pkgname_raw-git
+_pkgname_raw=omodoro
+_cmd_name=$_pkgname_raw
+_install_dir=/usr/bin/
+pkgname=$_pkgname_raw-git
 pkgver=r27.51574fd
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple commandline tool to use the pomodoro technique"
 arch=('any')
 url="https://github.com/okraits/omodoro"
@@ -28,7 +28,7 @@ pkgver() {
 }
 
 package() {
-	mkdir -p "$pkgdir$install_dir"
-	cp "$srcdir/$pkgname_raw/$cmd_name" "$pkgdir$install_dir"
-	chmod +x "$pkgdir$install_dir$cmd_name"
+	mkdir -p "$pkgdir$_install_dir"
+	cp "$srcdir/$_pkgname_raw/$_cmd_name" "$pkgdir$_install_dir"
+	chmod +x "$pkgdir$_install_dir$_cmd_name"
 }
