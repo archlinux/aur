@@ -7,7 +7,7 @@ set -u
 _gitauth='lavv17'
 _pkgname='le'
 pkgname="${_pkgname}-git"
-pkgver=1.15.1.r9.g179ba50
+pkgver=1.16.0.r4.g431bde7
 pkgrel=1
 pkgdesc='A text editor in memorial to Norton Editor with block and binary operations'
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ _srcdir="${_pkgname}-${pkgver}"
 #source=("http://lav.yar.ru/download/le/${_pkgname}-${pkgver}.tar.gz")
 source=('git://git.sv.gnu.org/gnulib' "${_pkgname}-${pkgver}.tar.gz::https://github.com/${_gitauth}/${_pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('SKIP'
-            '497c2bc0176ee91033dd87c57c90f1d2bf9acc29b32585cfb4c1d32e6ce34834')
+            '02144a818ec39fab6a4a22ec1c62415128ac8810437a702bd7763531f3c96192')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   unset _verwatch
@@ -42,14 +42,12 @@ fi
 prepare() {
   set -u
   cd "${_srcdir}"
-  if [ -z "${SKIP_PREPARE:-}" ]; then
-    if [ -s 'autogen.sh' ]; then
-      #chmod 770 "${srcdir}/gnulib/gnulib-tool"
-      PATH="$PATH:${srcdir}/gnulib" \
-      ./autogen.sh --prefix='/usr'
-    else
-      ./configure --prefix='/usr'
-    fi
+  if [ -s 'autogen.sh' ]; then
+    #chmod 770 "${srcdir}/gnulib/gnulib-tool"
+    PATH="$PATH:${srcdir}/gnulib" \
+    ./autogen.sh --prefix='/usr'
+  else
+    ./configure --prefix='/usr'
   fi
   set +u
 }
