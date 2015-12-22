@@ -3,7 +3,7 @@
 
 pkgname=split2flac
 pkgver=115
-pkgrel=2
+pkgrel=3
 pkgdesc="Split flac/ape/wv/wav + cue sheet into separate tracks."
 arch=('any')
 url=("https://github.com/ftrvxmtrx/split2flac")
@@ -14,7 +14,6 @@ optdepends=('aacgain-cvs:      to adjust gain in m4a'
 'enca:         to automatically detect charset if not UTF8'
 'faac:         to split into m4a'
 'flac:         for flac replay gain support'
-'flake8:        faster FLAC encoding'
 'mac:          to split APE format'
 'id3lib:       to set tags in mp3 (unicode not supported)'
 'imagemagick:  to convert/resize album cover images'
