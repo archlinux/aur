@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -o errexit
+set -o nounset
+set -o pipefail
+TEMPFILE="$(mktemp PKGBUILD.XXXXXXXXXX)"
+python update.py > "$TEMPFILE"
+updpkgsums "$TEMPFILE"
+mv "$TEMPFILE" PKGBUILD
+if ! git diff --quiet -- PKGBUILD .SRCINFO; then
+  mksrcinfo
+  git add PKGBUILD .SRCINFO
+  (. PKGBUILD; git commit -m "s25rttr-nightly-bin $pkgver")
+fi
