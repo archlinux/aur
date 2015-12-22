@@ -29,7 +29,7 @@ post_remove() {
 # ------------------------------------------------------------------------------
 
 _mkuser() {
-  getent passwd bitcoin &>/dev/null || {
+  getent passwd $_xt_user &>/dev/null || {
     echo -n "Creating bitcoin user... "
     grep -E "^$_xt_group:" /etc/group >/dev/null || groupadd $_xt_group
     useradd -m -d /etc/bitcoin -g $_xt_group -s /usr/bin/nologin $_xt_user 2>/dev/null
