@@ -27,6 +27,7 @@ options=('emptydirs')
 backup=('etc/conf.d/libvirt-guests'
 	'etc/conf.d/libvirtd'
 	'etc/libvirt/libvirt.conf'
+	'etc/libvirt/virtlogd.conf'
 	'etc/libvirt/libvirtd.conf'
 	'etc/libvirt/lxc.conf'
 	'etc/libvirt/nwfilter/allow-arp.xml'
