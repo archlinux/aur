@@ -29,7 +29,7 @@ post_remove() {
 # ------------------------------------------------------------------------------
 
 _mkuser() {
-  getent passwd electrum-server &>/dev/null || {
+  getent passwd $_es_user &>/dev/null || {
     echo -n "Creating electrum-server user... "
     grep -E "^$_es_group:" /etc/group >/dev/null || groupadd $_es_group
     useradd -m -d /etc/electrum-server -g $_es_group -s /usr/bin/nologin $_es_user
