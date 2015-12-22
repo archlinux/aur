@@ -2,7 +2,7 @@
 
 pkgname=feeluown-git
 _pkgname=FeelUOwn
-pkgver=20151219
+pkgver=20151222
 pkgrel=1
 pkgdesc="个性化音乐服务 For Mac And Linux"
 arch=("any")
@@ -42,18 +42,18 @@ DATA_PATH="\${HOME}/.${_pkgname}"
 if [ ! -d \${DATA_PATH} ]; then
     mkdir -p \${DATA_PATH}
 fi
-python /usr/share/${pkgname}/src/main.py
+python /usr/share/${pkgname}/feeluown/main.py
 EOF
 
     # save login data to ~/.FeelUOwn
-    cd "$srcdir/$_pkgname/src"
+    cd "$srcdir/$_pkgname/feeluown"
     sed -i '2 i import os' constants.py
     sed -i 's!^DATA_PATH.*$!DATA_PATH = os.path.expanduser("~/.FeelUOwn/")!g' constants.py
 }
 
 package() {
     cd "$srcdir/$_pkgname"
-    find ./{src,icons} -type f -exec install -Dm644 {} \
+    find ./{feeluown,icons} -type f -exec install -Dm644 {} \
         "${pkgdir}/usr/share/${pkgname}/{}" \;
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
