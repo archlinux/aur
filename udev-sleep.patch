@@ -1,0 +1,11 @@
+--- openct-0.6.20/etc/openct.udev.in.orig	2012-06-01 10:50:32.419033188 +0300
++++ openct-0.6.20/etc/openct.udev.in	2012-06-01 10:50:51.225616679 +0300
+@@ -22,7 +22,7 @@
+ # 2010-01-06 removed, as latest udev doesn't know WAIT_FOR_ATTR any more.
+ 
+ # sleep for 100ms - the wait_for_sysfs might not be enough
+-PROGRAM="/bin/sleep 0.1"
++PROGRAM="/usr/bin/sleep 0.1"
+ 
+ # ccid
+ ATTR{bInterfaceClass}=="0b", ATTR{bInterfaceSubClass}=="00", ATTR{bInterfaceProtocol}=="00", ATTRS{idVendor}=="?*"  RUN+="@udevdir@/openct_usb /dev/$parent"
