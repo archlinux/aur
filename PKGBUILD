@@ -2,7 +2,7 @@
 
 _pkgname=vagrant
 pkgname=vagrant-git
-pkgver=1.7.4.43.gb721eb6
+pkgver=1.8.0.2.gf7bdcb1
 pkgrel=1
 pkgdesc="Build and distribute virtualized development environments"
 arch=('i686' 'x86_64')
