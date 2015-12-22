@@ -1,4 +1,4 @@
-# Maintainer: THEGUSPROJECT <gus@thegusproject.xyz>
+# Maintainer: Gus deMayo <gus@thegusproject.xyz>
 
 pkgname=jammr
 pkgver=1.2.6
