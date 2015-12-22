@@ -1,8 +1,8 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=libretro-bsnes-git
-pkgver=r457.1f9f61a
-pkgrel=3
+pkgver=r470.55132fe
+pkgrel=1
 pkgdesc='Super Nintendo Entertainment System cores'
 arch=('i686' 'x86_64')
 url='https://github.com/libretro/bsnes-libretro'
@@ -23,6 +23,12 @@ pkgver() {
   cd libretro-bsnes
 
   echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd libretro-bsnes
+
+  sed 's/g++-4.9/g++/g' -i nall/GNUmakefile
 }
 
 build() {
