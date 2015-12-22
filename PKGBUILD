@@ -3,8 +3,8 @@
 _author=syohex
 pkgname=fu-perl
 pkgver=0.01
-pkgrel=2
-pkgdesc="A simple perl script to query commandlinefu"
+pkgrel=3
+pkgdesc="A simple perl script to query commandlinefu.com"
 arch=('any')
 url="http://syohex.hatenablog.com/entry/20110123/1295778589"
 license=('PerlArtistic')
