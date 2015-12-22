@@ -1,10 +1,17 @@
+_es_user=electrum-server
+_es_group=electrum-server
+
 post_install() {
   _mkuser
-  chown -R electrum-server:electrum-server /etc/electrum-server        \
-                                           /etc/electrum-server.conf   \
-                                           /etc/electrum-server.banner \
-                                           /usr/share/electrum-server  \
-                                           /var/log/electrum-server
+  # disable Copy-On-Write (btrfs directories only)
+  for _dir in /usr/share/electrum-server /var/log/electrum-server; do
+    _is_btrfs "$_dir" && _disable_cow "$_dir"
+  done
+  chown -R $_es_user:$_es_group /etc/electrum-server        \
+                                /etc/electrum-server.conf   \
+                                /etc/electrum-server.banner \
+                                /usr/share/electrum-server  \
+                                /var/log/electrum-server
   printf "%b\n" "$ecdsa"
 }
 
@@ -16,20 +23,73 @@ post_remove() {
   _rmuser
 }
 
+
+# ------------------------------------------------------------------------------
+# helper functions for creating electrum-server user / group
+# ------------------------------------------------------------------------------
+
 _mkuser() {
   getent passwd electrum-server &>/dev/null || {
     echo -n "Creating electrum-server user... "
-    grep -E "^electrum-server:" /etc/group >/dev/null || groupadd electrum-server
-    useradd -m -d /etc/electrum-server -g electrum-server -s /usr/bin/nologin electrum-server
+    grep -E "^$_es_group:" /etc/group >/dev/null || groupadd $_es_group
+    useradd -m -d /etc/electrum-server -g $_es_group -s /usr/bin/nologin $_es_user
     echo "done"
   }
 }
 
 _rmuser() {
   echo -n "Removing electrum-server user... "
-  userdel -rf electrum-server 2>/dev/null
+  userdel -rf $_es_user 2>/dev/null
   echo "done"
 }
+
+
+# ------------------------------------------------------------------------------
+# helper functions for disabling btrfs Copy-On-Write (CoW)
+# https://wiki.archlinux.org/index.php/Btrfs#Copy-On-Write_.28CoW.29
+# ------------------------------------------------------------------------------
+
+# check if dir is btrfs
+_is_btrfs() {
+  if [[ $(df -TP "$1" | tail -n 1 | awk '{print $2}') == 'btrfs' ]]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+# disable btrfs CoW
+_chattrify() {
+  # original dir, with trailing slash stripped if it exists
+  _orig_dir=$( echo "$1" | sed 's@/$@@' )
+
+  # if original dir exists, back it up
+  [[ -d "$1" ]] && mv "$1" "${_orig_dir}"_old
+
+  # re-make original dir
+  mkdir -p "$1"
+
+  # set permissions on re-made dir
+  chmod "$2" "$1"
+
+  # disable btrfs CoW on re-made dir
+  chattr +C "$1"
+
+  # recursive copy to restore backed up dir while maintaining disabled CoW
+  [[ -d "${_orig_dir}"_old ]] \
+    && find "${_orig_dir}"_old -mindepth 1 -maxdepth 1 -exec cp -R '{}' "$1" \;
+
+  # set ownership on re-made dir
+  chown -R $3:$4 "$1"
+
+  # purge backed up dir
+  [[ -d "${_orig_dir}"_old ]] && rm -rf "${_orig_dir}"_old
+}
+
+_disable_cow() {
+  _chattrify "$1" "700" "$_es_user" "$_es_group"
+}
+
 
 read -d '' ecdsa <<'EOF'
 ########################################################################
