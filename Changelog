@@ -1,3 +1,7 @@
+2015-12-21  Ivy Foster  <joyfulgirl@archlinux.us>
+	* 120527.1.241.ga1f7e87-1
+	- Clean up PKGBUILD style a little
+
 2015-03-18  Ivy Foster  <joyfulgirl@archlinux.us>
 	* 120527.1.225.g5bd1200-1:
 	- Update PKGBUILD to use conkeror's new Makefile features

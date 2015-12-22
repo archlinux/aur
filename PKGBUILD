@@ -3,33 +3,33 @@
 # Contributor: Heeru Kiyura <M8R-p9i5nh@mailinator.com>
 
 pkgname=conkeror-git
-pkgver=120527.1.227.g22a107c
+pkgver=120527.1.241.ga1f7e87
 pkgrel=1
-pkgdesc="A highly programmable web browser based on Mozilla XULRunner."
+pkgdesc='A highly programmable web browser based on Mozilla XULRunner'
 arch=('i686' 'x86_64')
-url="http://conkeror.mozdev.org/"
+url='http://conkeror.mozdev.org/'
 license=('MPL' 'GPL' 'LGPL')
 depends=('xulrunner' 'desktop-file-utils')
 makedepends=('git')
-provides=(conkeror)
-changelog=Changelog
-install=conkeror-git.install
+provides=('conkeror')
+conflicts=('conkeror')
+changelog='Changelog'
+install='conkeror-git.install'
 source=('git://repo.or.cz/conkeror.git')
 md5sums=('SKIP')
-_gitname="conkeror"
 
 pkgver() {
-  cd $_gitname
-  git describe --always|sed -e 's/debian.*+git//' -e 's/-/./g'
+	cd conkeror
+	git describe --always | sed -e 's/debian.*+git//' -e 's/-/./g'
 }
 
 build() {
-  cd $_gitname
-  make PREFIX=/usr
+	cd conkeror
+	make PREFIX=/usr
 }
 
 package() {
-  cd $_gitname
-  make DESTDIR="$pkgdir" PREFIX=/usr install
-  rm -f "$pkgdir"/usr/share/doc/conkeror/COPYING
+	cd conkeror
+	make DESTDIR="$pkgdir" PREFIX=/usr install
+	rm -f "$pkgdir"/usr/share/doc/conkeror/COPYING
 }
