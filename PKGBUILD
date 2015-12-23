@@ -26,5 +26,4 @@ package() {
   install -Dm755 10-kalenji.rules "$pkgdir/etc/udev/rules.d/10-kalenji.rules"
   cd kalenji-gps-watch-reader
   install -Dm755 kalenji_reader "$pkgdir/usr/bin/kalenji_reader"
-  install -Dm755 scripts/kalenji_export.sh "$pkgdir/usr/bin/kalenji_export.sh"
 }
