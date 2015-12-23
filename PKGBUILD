@@ -8,7 +8,7 @@ url="https://github.com/edenhill/kafkacat"
 license=('BSD')
 source=(git+https://github.com/edenhill/kafkacat)
 arch=(i686 x86_64 armv7h)
-depends=(glibc zlib librdkafka-git)
+depends=(glibc zlib librdkafka-git yajl)
 makedepends=(git)
 sha256sums=('SKIP')
 
