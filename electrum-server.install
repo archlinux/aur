@@ -16,7 +16,13 @@ post_install() {
 }
 
 post_upgrade() {
-  post_install
+  _mkuser
+  chown -R $_es_user:$_es_group /etc/electrum-server        \
+                                /etc/electrum-server.conf   \
+                                /etc/electrum-server.banner \
+                                /usr/share/electrum-server  \
+                                /var/log/electrum-server
+  printf "%b\n" "$ecdsa"
 }
 
 post_remove() {
