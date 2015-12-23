@@ -2,7 +2,7 @@
 
 pkgname=(freedm freedoom1 freedoom2)
 pkgbase=freedoom
-pkgver=0.10
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Free game based on the Doom engine"
 arch=('any')
@@ -12,8 +12,8 @@ source=(https://dl.dropboxusercontent.com/u/13513277/freedoom/dist.tar.xz
   https://github.com/freedoom/freedoom/releases/download/v$pkgver/freedm-$pkgver.zip
   https://github.com/freedoom/freedoom/releases/download/v$pkgver/freedoom-$pkgver.zip)
 sha256sums=('0dcc2f323d67c7e1f7fbd46191841ee4d97ade76f47889a0049e1bff35cf1e82'
-            '8bc795579c91a270cc1dea276b418a43d6321c4620d610cbb33d61d02ebe25a1'
-            '300cac74fe7f34fed49cb8a4d53d774a3e90898b3f47779f68211e7ee5175f9d')
+            'da75ebe8af648fc315491f4051d46458b134ad844fc87742551aa1930ccd6857'
+            '7d20c4b458b6966a58f8f1d9d67db67999364a66e67616e2c320d01b396338da')
 
 make_pkg_dirs() {
   install -d "$pkgdir"/usr/bin
