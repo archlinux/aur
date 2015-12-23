@@ -1,5 +1,6 @@
+# Maintainer: Jefferson Gonzalez <jgmdev@gmail.com>
 # Contributor: foxbunny <bg.branko@gmail.com>
-# Maintainer: Vinzenz Vietzke <vinz@vinzv.de>
+# Contributor: Vinzenz Vietzke <vinz@vinzv.de>
 
 pkgname="eci-icc"
 pkgver=2009
