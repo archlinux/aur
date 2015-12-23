@@ -6,8 +6,8 @@
 # Contributor: Muhammad 'MJ' Jassim <UnbreakableMJ@gmail.com> 
 
 pkgname=icecat
-pkgver=38.4.0
-_pkgver=38.4.0-gnu1
+pkgver=38.5.0
+_pkgver=38.5.0-gnu1
 _pkgverbase=${pkgver%%.*}
 pkgrel=1
 pkgdesc="GNU version of the Firefox browser."
@@ -33,16 +33,14 @@ source=(http://ftpmirror.gnu.org/gnuzilla/${pkgver}/${pkgname}-${_pkgver}.tar.bz
 	mozconfig
         icecat.desktop
         icecat-safe.desktop
-        vendor.js
-        freetype26.patch)
+        vendor.js)
 
-sha256sums=('d7358b4fdf52691f6d2bafab6954fe529e52513ae8b38d45e3943d9753508a65'
+sha256sums=('462a27cce5153d36a03e7b46ad38d860b84498835058d580d292a0be6f05c2ad'
             'SKIP'
             '4602066304f0bb10bdaea75405570d500dae3199b77b04a45167d423fdf9bf6f'
             'c44eab35f71dd3028a74632463710d674b2e8a0682e5e887535e3233a3b7bbb3'
             '190577ad917bccfc89a9bcafbc331521f551b6f54e190bb6216eada48dcb1303'
-            '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
-            'b9c440406644fde5097da8717f0b5e5e973d11ec4dd6d4a0570ca7094d96dc85')
+            '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4')
 
 validpgpkeys=(A57369A8BABC2542B5A0368C3C76EED7D7E04784) # Ruben Rodriguez (GNU IceCat releases key) <ruben@gnu.org>
 
@@ -53,9 +51,6 @@ prepare() {
   # Patch to move files directly to /usr/lib/icecat. No more symlinks.
   sed -e 's;$(libdir)/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION);$(libdir)/$(MOZ_APP_NAME);g' -i config/baseconfig.mk
   sed -e 's;$(libdir)/$(MOZ_APP_NAME)-devel-$(MOZ_APP_VERSION);$(libdir)/$(MOZ_APP_NAME)-devel;g' -i config/baseconfig.mk
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1143411
-  patch -Np1 -i ../freetype26.patch
 
   msg2 "Starting build..."
 
