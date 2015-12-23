@@ -10,7 +10,7 @@ license=('GPL3')
 depends=(gnome-{shell,themes-standard} gtk-{engines,engine-murrine} gdk-pixbuf2)
 optdepends=("gnome-tweak-tool: A tool to customize advanced GNOME 3 options.")
 source=("${pkgname}-${pkgver}.tar.gz::https://www.dropbox.com/s/4ik0pbbpsiqe4ci/Aurora-3.18.tar.gz?dl=1")
-sha256sums=('5833fa767299e004aa2f3ac79617365ee12f11d1816dca3179e18ac7b2e89c06')
+sha256sums=('bae3d9c16ed37ad9e3a67a4d019d2e8bff70a7fadbf87a722c2a960d6fd56a4c')
 
 package() {
     install -dm755 ${pkgdir}/usr/share/themes
