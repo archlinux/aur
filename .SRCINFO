@@ -1,7 +1,7 @@
 pkgbase = amdapp-codexl
 	pkgdesc = AMD CodeXL is an OpenCL and OpenGL Debugger and Profiler, with static OpenCL kernel analyzer. It supports OpenCL 2.0
 	pkgver = 1.9
-	pkgrel = 10132
+	pkgrel = 10132.1
 	url = http://developer.amd.com/tools/heterogeneous-computing/codexl/
 	arch = x86_64
 	groups = amdapp
@@ -9,6 +9,7 @@ pkgbase = amdapp-codexl
 	depends = libpng12
 	depends = libgl
 	depends = libcl
+	depends = xorg-xhost
 	options = staticlibs
 	options = libtool
 	options = !strip
