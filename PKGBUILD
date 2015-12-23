@@ -1,12 +1,12 @@
 # Maintainer: wolftankk <wolftankk@gmail.com>
 pkgname=zephir
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Zephir is a compiled high level language aimed to the creation of C-extensions for PHP http://zephir-lang.com/"
 url="https://github.com/phalcon/zephir"
 arch=('x86_64' 'i686')
 license=('GPL')
-depends=('json-c' 're2c')
+depends=('re2c' 'json-c')
 makedepends=('unzip' 'php' 'gcc' 'pcre')
 backup=('etc/php/conf.d/zephir.ini')
 
@@ -18,13 +18,14 @@ source=(
 	"https://github.com/phalcon/zephir/archive/$pkgver.zip"
 )
 
-sha256sums=('ea5161da9b02674c16f9d60fb5966b2576e431762f43834b5a3d7f7a2ce28943')
+sha256sums=('7faac752b183a4a59a790395414f0f631faa03d9ad75ccf0bbf0fbdd03fca980')
 
+#build zephir-parser
 build() {
   cd "$srcdir/zephir-$pkgver/parser"
 
   if [ ! -f lemon ]; then
-	gcc -w lemon.c -o lemon
+       gcc -w lemon.c -o lemon
   fi
   re2c -o scanner.c scanner.re && ./lemon -s parser.lemon && cat base.c >> parser.c
   sed s/"\#line"/"\/\/"/g scanner.c > xx && mv -f xx scanner.c
@@ -48,6 +49,7 @@ package() {
   install -Dm777 compiler.php "$pkgdir"/opt/zephir/compiler.php
   install -Dm777 bootstrap.php "$pkgdir"/opt/zephir/bootstrap.php
   cp -a Library "$pkgdir"/opt/zephir/Library
+  cp -a kernels "$pkgdir"/opt/zephir/kernels
   cp -a ext "$pkgdir"/opt/zephir/ext
   cp -a prototypes "$pkgdir"/opt/zephir/prototypes
   cp -a runtime "$pkgdir"/opt/zephir/runtime
