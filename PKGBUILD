@@ -18,11 +18,12 @@ package() {
   tar xvfJ data.tar.xz
   mkdir -p $pkgdir/usr/share
   cd $srcdir/usr
-  rm -Rf doc
-  rm -Rf man
-  rm -Rf python-support
-  perl -pi -w -e 's/env python/env python2/g;' tunesviewer/*.py
-  cd ..
+  rm -Rf share/doc
+  rm -Rf share/man
+  rm -Rf share/python-support
+  cd $srcdir/usr/share/tunesviewer
+  perl -pi -w -e 's/env python/env python2/g;' *.py
+  cd $srcdir	
   cp -r usr $pkgdir
   chmod -R 755 $pkgdir/usr/bin/tunesviewer
   chmod -R 755 $pkgdir/usr/share/applications/TunesViewer.desktop
