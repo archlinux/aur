@@ -7,7 +7,7 @@ pkgdesc="Parse and unpack OS X Installer .pkg packages."
 arch=('i686' 'x86_64')
 url="http://www.tonymacx86.com/general-help/135458-$pkgname.html"
 license=('GPL3')
-depends=('libxml2' 'xar')
+depends=('xar')
 makedepends=('recode')
 source=("$pkgname.html"::"http://www.tonymacx86.com/general-help/135458-pbzx-stream-parser.html"
         typecast-pointer.patch)
