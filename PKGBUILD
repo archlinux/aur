@@ -1,4 +1,4 @@
-# Maintainer: yourname <yourmail>
+# Maintainer: Lukas Spies <luspi (AT) gmx _DOT_ de>
 pkgname=mingw-w64-graphicsmagick
 pkgver=1.3.23
 pkgrel=1
@@ -21,7 +21,7 @@ build() {
     ${_arch}-configure --enable-shared --without-x --with-quantum-depth=16 --with-modules --with-threads
     sed -i "s/\/usr\/include/\/usr\/${_arch}\/include/g" Makefile
     sed -i "s/\/usr\/lib/\/usr\/${_arch}\/lib/g" Makefile
-    make -j4
+    make
     popd
   done
 }
