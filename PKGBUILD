@@ -13,7 +13,7 @@ pkgver() {
   cd "$srcdir/$pkgname"
   printf "0.10.r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
-pkgdesc="Lightweight and extensible Jabber/XMPP server written in Lua"
+pkgdesc="Lightweight and extensible Jabber/XMPP server written in Lua (nightly builds)"
 arch=('i686' 'x86_64')
 url="http://prosody.im/"
 license=('MIT')
