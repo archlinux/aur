@@ -8,7 +8,7 @@ arch=('x86_64' 'i686')
 url="http://sourceforge.net/projects/tunesviewer/"
 options=('!strip')
 
-source=("http://tcpdiag.dl.sourceforge.net/project/tunesviewer/${pkgname}_${pkgver}.deb")
+source=("http://iweb.dl.sourceforge.net/project/tunesviewer/${pkgname}_${pkgver}.deb")
 sha1sums=('92f756ea12acce46f76008da88413edb8546ec50')
 
 depends=("python2" "pygtk" "python2-lxml" "pywebkitgtk")
