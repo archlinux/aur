@@ -21,7 +21,7 @@ source=("git+http://www.oscam.cc/git/oscam-mirror#commit=$_gitrev"
         'oscam.service'
         'oscam.sysuser')
 md5sums=('SKIP'
-         'eb7c974bfac602eb6ee9d0b5a8de16d4',
+         'eb7c974bfac602eb6ee9d0b5a8de16d4'
          '596b902e3f4a66d39e7f993437feec74'
          'be0d9d7a5fdd8cf4918c4ea91cebd989')
 
