@@ -2,7 +2,7 @@
 
 pkgname=tresorit
 pkgver=1.0.125.402
-pkgrel=1
+pkgrel=2
 pkgdesc='Encrypted cloud storage for your confidential files. Using Tresorit, files are encrypted before being uploaded to the cloud. Start encrypting files for free.'
 arch=('i686' 'x86_64')
 url="http://www.tresorit.com/"
@@ -30,13 +30,10 @@ package() {
       cp -r ./tresorit/tresorit_x86/* "$pkgdir/opt/tresorit"
   fi
 
-  echo "Exec=\$HOME/.local/share/tresorit/tresorit" >> "${pkgdir}"/opt/tresorit/tresorit.desktop
+  echo "Exec=\$HOME/.local/share/tresorit/tresorit --hidden" >> "${pkgdir}"/opt/tresorit/tresorit.desktop
   echo "Icon=/opt/tresorit/tresorit.png" >> "${pkgdir}"/opt/tresorit/tresorit.desktop
 
   mkdir -p "${pkgdir}"/usr/share/licenses/tresorit
   ln -s /opt/tresorit/LICENSES.txt \
         "${pkgdir}"/usr/share/licenses/tresorit/LICENSE
-
-  # install systemd units
-  install -Dm644 ../tresorit_user.service "${pkgdir}"/usr/lib/systemd/user/tresorit.service
 }

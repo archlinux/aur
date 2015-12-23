@@ -9,10 +9,7 @@ NOTE: You need to run the script below to finish setting things up for your user
 
 /opt/tresorit/archlinux_user_install
 
-
-To reload user systemd modules:         systemctl --user daemon-reload
-To start tresorit manually:             systemctl --user start tresorit
-To autostart tresorit on user login:    systemctl --user enable tresorit
+It'll install tresorit to ~/.local/share/tresorit directory for the user you run it as.
 
 EOF
 }
