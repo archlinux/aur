@@ -3,7 +3,7 @@
 pkgbase=moc_notify-git
 pkgname=$pkgbase
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Notifier for 'Music On Console' using libnotify."
 arch=('i686' 'x86_64')
 url='https://github.com/daltomi/moc_notify'
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('gtk2' 'libnotify' 'moc')
 makedepends=('git' 'cmake')
 _gitroot=$url.git
-_gitname=$pkgbase
+_gitname=moc_notify
 
 prepare() {
   cd "$srcdir"
@@ -21,7 +21,7 @@ prepare() {
     cd "$_gitname" && git pull origin
     msg "The local files are updated."
   else
-    git clone "$_gitroot" --depth=1 --single-branch "$_gitname"
+    git clone "$_gitroot" --branch "v.$pkgver"
   fi
 
   msg "GIT checkout done or server timeout"
