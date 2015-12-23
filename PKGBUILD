@@ -1,6 +1,6 @@
 # Maintainer: Tom van der Lee <t0m.vd.l33@gmail.com>
 pkgname=acts-git
-pkgver=r62.002cda5
+pkgver=r79.2d707f3
 pkgrel=1
 pkgdesc="Another Calendar-based Tarsnap Script: master branch"
 arch=("any")
@@ -21,6 +21,12 @@ pkgver() {
 	  git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
 	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
+}
+
+prepare() {
+	cd "$pkgname"
+
+	sed -i "s/^ExecStart=.*$/ExecStart=\/usr\/bin\/acts/g" contrib/systemd/acts.service
 }
 
 package() {
