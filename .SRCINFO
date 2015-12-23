@@ -1,0 +1,12 @@
+pkgbase = pokeshell
+	pkgdesc = Displays pokemons in your shell
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/XenGi/pokeshell
+	arch = any
+	license = MIT
+	options = !emptydirs
+	source = https://github.com/rossy/pokeshell/archive/v1.0.0.tar.gz
+
+pkgname = pokeshell
+
