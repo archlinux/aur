@@ -3,17 +3,17 @@
 # Contributor: Boohbah <boohbah at gmail.com>
 
 pkgname=gtk3-git
-pkgver=3.17.8.r154.g51a1bc2
+pkgver=3.19.5.r193.ge20826f
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (GIT Version)"
 arch=('i686' 'x86_64')
 url="http://www.gtk.org/"
 license=('LGPL')
-depends=('at-spi2-atk' 'atk-git' 'cairo' 'colord' 'glib2-git>=2.43.4'
+depends=('at-spi2-atk' 'atk-git' 'cairo' 'colord' 'glib2-git>=2.45.8'
          'gtk-update-icon-cache' 'libcups' 'libepoxy' 'libxcomposite'
          'libxcursor' 'libxdamage' 'libxi' 'libxinerama'
          'libxkbcommon' 'libxrandr' 'pango-git' 'shared-mime-info'
-         'wayland-git')
+         'wayland-git' 'wayland-protocols-git')
 makedepends=('gobject-introspection-git')
 optdepends=('gnome-icon-theme: Default icon theme'
             'gnome-themes-standard: Default widget theme')
