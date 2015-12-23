@@ -14,7 +14,7 @@ options=('!libtool')
 install=aqsis.install
 source=("http://downloads.sourceforge.net/project/aqsis/aqsis-source/$pkgver/$pkgname-$pkgver.tar.gz"
         "pfto.patch"
-		"imfinputfile-forward-declaration.diff")
+        "imfinputfile-forward-declaration.diff")
 md5sums=('399967e99f12cfbd1a7385c4e1d39c3b'
          '908487f2e7b495b100dfa6b3aa8945ae'
          'e52f27d3041e88a63531b691ad05a6aa')
