@@ -1,7 +1,7 @@
 pkgbase = catalyst-firepro
 	pkgdesc = AMD/ATI beta drivers for FirePro/GL/MV brand cards. catalyst-hook + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport.
-	pkgver = 14.502.1040
-	pkgrel = 2
+	pkgver = 15.201.2401
+	pkgrel = 1
 	url = http://www.amd.com
 	install = catalyst-firepro.install
 	arch = i686
@@ -9,10 +9,10 @@ pkgbase = catalyst-firepro
 	license = custom
 	makedepends = unzip
 	depends = linux>=3.0
-	depends = linux<4.4
+	depends = linux<4.5
 	depends = linux-headers
 	depends = xorg-server>=1.7.0
-	depends = xorg-server<1.17.0
+	depends = xorg-server<1.18.0
 	depends = libxrandr
 	depends = libsm
 	depends = fontconfig
@@ -24,18 +24,17 @@ pkgbase = catalyst-firepro
 	depends = patch
 	depends = libxinerama
 	depends = mesa>=10.1.0-4
-	depends = gcc49
 	optdepends = qt4: to run ATi Catalyst Control Center (amdcccle)
 	optdepends = libxxf86vm: to run ATi Catalyst Control Center (amdcccle)
 	optdepends = opencl-headers: headers necessary for OpenCL development
 	optdepends = acpid: acpi event support / atieventsd
 	optdepends = linux-lts-headers: to build the fglrx module for the linux-lts kernel
 	provides = libgl
-	provides = libatical=14.502.1040
-	provides = catalyst=14.502.1040
-	provides = catalyst-libgl=14.502.1040
-	provides = catalyst-utils=14.502.1040
-	provides = catalyst-hook=14.502.1040
+	provides = libatical=15.201.2401
+	provides = catalyst=15.201.2401
+	provides = catalyst-libgl=15.201.2401
+	provides = catalyst-utils=15.201.2401
+	provides = catalyst-hook=15.201.2401
 	provides = libcl
 	provides = dri
 	provides = libtxc_dxtn
@@ -55,7 +54,7 @@ pkgbase = catalyst-firepro
 	options = libtool
 	options = !strip
 	options = !upx
-	source = http://www2.ati.com/drivers/firepro/14.502.1040-linux-cert-retail.zip
+	source = http://www2.ati.com/drivers/firepro/15.201.2401-linux-retail_end_user.zip
 	source = catalyst_build_module
 	source = lib32-catalyst.sh
 	source = catalyst.sh
@@ -80,18 +79,14 @@ pkgbase = catalyst-firepro
 	source = lano1106_fglrx-13.8_proc.patch
 	source = cold-fglrx-3.14-current_euid.patch
 	source = fglrx_gpl_symbol.patch
-	source = fglrx_3.17rc6-no_hotplug.patch
-	source = kolasa-3.19-get_cpu_var.patch
-	source = ubuntu_buildfix_kernel_4.0.patch
-	source = ubuntu_buildfix_kernel_4.1.patch
-	source = ubuntu_buildfix_kernel_4.2.patch
-	source = 4.2-fglrx-has_fpu.patch
-	source = 4.2-kolasa-fpu_save_init.patch
-	source = ubuntu_buildfix_kernel_4.2-build.copy_xregs_to_kernel.patch
 	source = 4.3-kolasa-seq_printf.patch
 	source = 4.3-gentoo-mtrr.patch
-	md5sums = 37d01238c76792592bfbc77c11dfa9fc
-	md5sums = f3aaed0084725304cf607f6915e4bfee
+	source = 4.2-amd-from_crimson_15.11.patch
+	source = crimson_i686_xg.patch
+	source = 4.4-manjaro-xstate.patch
+	source = grsec_arch.patch
+	md5sums = 6b5633069fa8a331185ac903252507f5
+	md5sums = 601d9c756571dd79d26944e54827631e
 	md5sums = af7fb8ee4fc96fd54c5b483e33dc71c4
 	md5sums = bdafe749e046bfddee2d1c5e90eabd83
 	md5sums = 9d9ea496eadf7e883d56723d65e96edf
@@ -115,16 +110,12 @@ pkgbase = catalyst-firepro
 	md5sums = 2ab4837233de42332753882445373d7b
 	md5sums = ba33b6ef10896d3e1b5e4cd96390b771
 	md5sums = ef97fc080ce7e5a275fe0c372bc2a418
-	md5sums = 67a22f624bae95a76638ce269392cb01
-	md5sums = 3aa45013515b724a71bbd8e01f98ad99
-	md5sums = 40aaf97acae268f8f7949e0fecb926d9
-	md5sums = 982451bcc1fa1ee3da53ffa481d65581
-	md5sums = 88832af8d6769aa51fa9b266a74394e0
-	md5sums = ed7748a593d6b894269f8c7856b7ae50
-	md5sums = dd51495a1d8f2d1042f04a783bf01e08
-	md5sums = 2f7d42fde403a1b4a22e5db8de738d0f
 	md5sums = 0e0666e95d1d590a7a83192805679485
 	md5sums = 98828e3eeaec2b3795e584883cc1b746
+	md5sums = fd2851026228ca72124972d1ea0335ea
+	md5sums = 6cdbaf5f71d867d225721a0369413616
+	md5sums = d9bea135ae3e1b3ca87c5bbe6dcf8e72
+	md5sums = 8941e91fc58cb44ce21ab9bda135754e
 
 pkgname = catalyst-firepro
 

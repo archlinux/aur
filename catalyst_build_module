@@ -35,7 +35,7 @@ install_module(){
 
   ## Compile module using _ati_check variables
     CFLAGS_MODULE="-DMODULE -DATI -DFGL -DPAGE_ATTR_FIX=$PAGE_ATTR_FIX -DCOMPAT_ALLOC_USER_SPACE=$COMPAT_ALLOC_USER_SPACE $def_smp $def_modversions"
-    make CC=gcc-4.9 -C /usr/lib/modules/${kernver}/build SUBDIRS="`pwd`" ARCH=${arch} \
+    make -C /usr/lib/modules/${kernver}/build SUBDIRS="`pwd`" ARCH=${arch} \
       MODFLAGS="$CFLAGS_MODULE" \
       CFLAGS_MODULE="$CFLAGS_MODULE" \
       PAGE_ATTR_FIX=$PAGE_ATTR_FIX COMPAT_ALLOC_USER_SPACE=$COMPAT_ALLOC_USER_SPACE modules || return 1
