@@ -1,0 +1,31 @@
+*** main.c	2015-12-22 23:20:17.238017267 -0500
+--- main.c~	2015-12-22 23:18:44.111994162 -0500
+***************
+*** 41,47 ****
+  {
+  
+      // insert code here...
+!     char xbuf[XBSZ], *zbuf = malloc(ZBSZ);
+      xar_t x;
+      err(argc < 2, "No file specified");
+      err(!(x = xar_open(argv[1], READ)), "XAR open failure");
+--- 41,47 ----
+  {
+  
+      // insert code here...
+!     char xbuf[XBSZ], *zbuf = (char*) malloc(ZBSZ);
+      xar_t x;
+      err(argc < 2, "No file specified");
+      err(!(x = xar_open(argv[1], READ)), "XAR open failure");
+***************
+*** 90,94 ****
+      lzma_end(&zs);
+      xar_close(x);
+      return 0;
+! }
+! 
+--- 90,93 ----
+      lzma_end(&zs);
+      xar_close(x);
+      return 0;
+! }
