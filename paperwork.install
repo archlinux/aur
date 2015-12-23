@@ -1,0 +1,15 @@
+post_install() {
+    echo 'You need to install tesseract-data for at least one language'
+    echo 'pacman -S tesseract-data'
+    echo 'and select your language(s)'
+}
+
+post_upgrade() {
+    echo 'You need to install tesseract-data for at least one language'
+    echo 'pacman -S tesseract-data'
+    echo 'and select your language(s)'
+}
+
+post_remove() {
+    true
+}
