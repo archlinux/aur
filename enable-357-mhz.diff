@@ -1,0 +1,22 @@
+diff --git a/reader-common.c b/reader-common.c
+index 603f468..636ae27 100644
+--- a/reader-common.c
++++ b/reader-common.c
+@@ -354,7 +354,7 @@ bool cardreader_init(struct s_reader *reader)
+ 				if (reader->cardmhz >= 436)  reader->cardmhz =  436; else
+ 				if (reader->cardmhz >= 400)  reader->cardmhz =  400; else
+ 				if (reader->cardmhz >= 369)  reader->cardmhz =  369; else
+-				if (reader->cardmhz == 357)  reader->cardmhz =  369; else // 357 not a default smartreader setting
++				if (reader->cardmhz >= 357)  reader->cardmhz =  357; else
+ 				if (reader->cardmhz >= 343)  reader->cardmhz =  343; else 
+ 				reader->cardmhz =  320;
+ 				if (reader->mhz >= 1600) reader->mhz = 1600; else
+@@ -369,7 +369,7 @@ bool cardreader_init(struct s_reader *reader)
+ 				if (reader->mhz >= 436)  reader->mhz =  436; else
+ 				if (reader->mhz >= 400)  reader->mhz =  369; else
+ 				if (reader->mhz >= 369)  reader->mhz =  369; else
+-				if (reader->mhz == 357)  reader->mhz =  369; else // 357 not a default smartreader setting
++				if (reader->mhz >= 357)  reader->mhz =  357; else
+ 				if (reader->mhz >= 343)  reader->mhz =  343; else 
+ 				reader->mhz =  320;
+ 	    	}
