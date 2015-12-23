@@ -1,7 +1,7 @@
-From c159b5460e267edd377ba74a3ae6154e885b0a98 Mon Sep 17 00:00:00 2001
+From 2f1d304c4ffef9124795872d471237ad2031bbe0 Mon Sep 17 00:00:00 2001
 From: Jurgen Kramer <gtmkramer@xs4all.nl>
-Date: Sun, 5 Jul 2015 10:38:28 +0200
-Subject: [PATCH] Add native DSD support to MPD 0.19.10
+Date: Mon, 23 Nov 2015 11:07:18 +0100
+Subject: [PATCH] Add native DSD support to MPD 0.19.11
 
 Add native DSD support to MPD 0.19 using DSD_U8 and DSD_U32_BE sample formats.
 
@@ -114,14 +114,14 @@ index 0000000..d896020
 +
 +
 diff --git a/configure.ac b/configure.ac
-index 1a3471f..190d53f 100644
+index 3d29e72..1216881 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -1,6 +1,6 @@
  AC_PREREQ(2.60)
  
--AC_INIT(mpd, 0.19.10, musicpd-dev-team@lists.sourceforge.net)
-+AC_INIT(mpd, 0.19.10-dsd, gtmkramer@xs4all.nl)
+-AC_INIT(mpd, 0.19.11, musicpd-dev-team@lists.sourceforge.net)
++AC_INIT(mpd, 0.19.11-dsd, gtmkramer@xs4all.nl)
  
  VERSION_MAJOR=0
  VERSION_MINOR=19
@@ -788,3 +788,4 @@ index b12d8fd..ec718be 100644
  	}
 -- 
 2.1.0
+
