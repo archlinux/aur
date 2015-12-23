@@ -1,7 +1,7 @@
 # Maintainer: Martchus <martchus@gmx.net>
 pkgname=mingw-w64-freetype2
 pkgver=2.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="TrueType font rendering library (mingw-w64)"
 arch=('any')
 url="http://www.freetype.org/"
@@ -10,9 +10,9 @@ license=('GPL')
 # introduces a cycle dep to harfbuzz depending on freetype wanted by upstream
 depends=(mingw-w64-crt mingw-w64-zlib mingw-w64-harfbuzz mingw-w64-bzip2)
 makedepends=(mingw-w64-gcc mingw-w64-configure)
-provides=(mingw-w64-freetype)
-replaces=(mingw-w64-freetype)
-conflicts=(mingw-w64-freetype)
+provides=(mingw-w64-freetype $pkgname-bootstrap)
+replaces=(mingw-w64-freetype $pkgname-bootstrap)
+conflicts=(mingw-w64-freetype $pkgname-bootstrap)
 source=(http://download.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.bz2{,.sig}
         0001-Enable-table-validation-modules.patch
         0002-Enable-subpixel-rendering.patch
@@ -51,7 +51,7 @@ build() {
     done
 }
 
-package () {
+package() {
     for _arch in ${_architectures}; do
         cd "${srcdir}/freetype-${pkgver}/build-${_arch}"
         make DESTDIR="${pkgdir}" install
