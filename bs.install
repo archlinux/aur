@@ -11,6 +11,12 @@ post_install() {
   printf "%b\n" "$xx"
 }
 
+post_upgrade() {
+  _mkuser
+  chown -R $_bs_user:$_bs_group /etc/bs /srv/bs /var/log/bs
+  printf "%b\n" "$xx"
+}
+
 post_remove() {
   _rmuser
   rm -rf /etc/bs /srv/bs /var/log/bs
