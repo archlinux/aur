@@ -1,0 +1,28 @@
+#!/bin/bash
+pre_install() {
+kernver="$(uname -r)"
+drmdir="/usr/lib/modules/$kernver/kernel/drivers/gpu/drm"
+	if [ -e $drmdir/vmwgfx ]; then
+		mv "$drmdir/vmwgfx" "$drmdir/vmwgfx_bak"
+	fi
+}
+
+post_install() {
+kernver="$(uname -r)"
+depmod $(cat /usr/lib/modules/$kernver/extramodules/version)
+}
+
+post_upgrade() {
+kernver="$(uname -r)"
+	depmod $(cat /usr/lib/modules/$kernver/extramodules/version)
+	echo 'Please reload vmwgfx module manually, to start using it.'
+}
+
+post_remove() {
+kernver="$(uname -r)"
+drmdir="/usr/lib/modules/$kernver/kernel/drivers/gpu/drm"
+	if [ -e $drmdir/vmwgfx_bak ]; then
+		mv $drmdir/vmwgfx_bak $drmdir/vmwgfx
+	fi
+	depmod $(cat /usr/lib/modules/$kernver/extramodules/version)
+}
