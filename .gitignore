@@ -1,0 +1,7 @@
+adusk/*
+src/*
+pkg/*
+
+*.pkg.tar.xz
+
+*.swp
