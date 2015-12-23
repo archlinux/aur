@@ -2,13 +2,13 @@
 
 _pkgname=adusk
 pkgname=$_pkgname-git
-pkgver=2fdf72b
+pkgver=latest
 pkgrel=1
 pkgdesc="A standalone virtual keyboard for the Steam Controller"
 arch=('i686' 'x86_64')
 url="https://github.com/archshift/adusk"
 license=('GPL3')
-makedepends=('git' 'python-distutils-extra')
+makedepends=('git' 'python-setuptools')
 depends=('python' 'python-steamcontroller-git' 'python-pysdl2')
 provides=("$_pkgname")
 source=("$_pkgname::git+https://github.com/archshift/adusk.git")
