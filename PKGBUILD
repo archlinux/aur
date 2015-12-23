@@ -56,13 +56,13 @@ backup=()
 options=()
 install=INSTALL
 changelog=
-source=(https://github.com/bragagia/kana-p/archive/kana-p-$pkgver.tar.gz)
+source=(https://github.com/bragagia/kana-p/archive/$pkgver.tar.gz)
 noextract=()
 md5sums=('SKIP')
 
 package() {
 	mv -T $srcdir/$pkgname-$pkgver $pkgdir
-	rm $pkgdir/.gitignore
-	rm $pkgdir/LICENSE
-	rm $pkgdir/README.md
+	rm -f $pkgdir/.gitignore
+	rm -f $pkgdir/LICENSE
+	rm -f $pkgdir/README.md
 }
