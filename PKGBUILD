@@ -2,7 +2,7 @@
 
 _pkgname=chromeos-apk
 pkgname=$_pkgname-git
-pkgver=20150616.r125.41fa9ee
+pkgver=20151222.r127.fbb6d18
 pkgrel=1
 pkgdesc='Extract Android APKs for running in Chrome OS OR Chrome in OS X, Linux and Windows'
 arch=('any')
