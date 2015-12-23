@@ -1,13 +1,13 @@
-# Maintainer: Nikolaos Bezirgiannis <bezeria@gmail.com>
+# Maintainer: Ebrahim Azarisooreh <ebrahim.azarisooreh@gmail.com>
+# Contributor: Nikolaos Bezirgiannis <bezeria@gmail.com>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Jachym Barvinek <jachymb@gmail.com>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: John Proctor <jproctor@prium.net>
 # Contributor: Juergen Hoetzel <juergen@archlinux.org>
-# Contributor: eazar001
 
 pkgname=swi-prolog-devel
-pkgver=7.3.8
+pkgver=7.3.14
 pkgrel=1
 pkgdesc='Prolog environment (development version)'
 arch=('x86_64' 'i686')
@@ -23,7 +23,7 @@ optdepends=('unixodbc: for using the odbc4pl library'
             'java-environment: for interfacing java with the jpl package')
 #options=('!makeflags')
 source=("http://swi-prolog.org/download/devel/src/swipl-${pkgver}.tar.gz")
-sha256sums=('c7a31eac0020831cddd31045bc12dca10b437b737545a8a42fa193a3937ae882')
+sha256sums=('2f201f79a01c65a9c2296b622d207749442c3ae1c62d3d9866a4a03f71d5e64f')
 conflicts=('swi-prolog')
 provides=('swi-prolog')
 
