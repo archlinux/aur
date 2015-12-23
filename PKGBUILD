@@ -7,7 +7,7 @@
 # Special thanks to Nareto for moving the compile from the .install to the PKGBUILD
 
 pkgname=sagemath-git
-pkgver=6.10.r0.ga1b60f2
+pkgver=7.0.beta0.r0.gd83dab1
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(i686 x86_64)
@@ -28,9 +28,8 @@ makedepends=(cython2 boost ratpoints symmetrica fflas-ffpack python2-jinja coin-
 conflicts=(sagemath)
 provides=(sagemath sage-mathematics)
 source=("git://git.sagemath.org/sage.git#branch=develop" 
-        "http://mirrors.mit.edu/sage/spkg/upstream/pexpect/pexpect-2.0.tar.bz2"
         anal.h package.patch env.patch paths.patch clean.patch skip-check.patch test-optional.patch python-2.7.11.patch
-        pexpect-env.patch pexpect-del.patch disable-fes.patch jupyter-path.patch)
+        disable-fes.patch jupyter-path.patch)
 md5sums=('SKIP'
          'd9a3e113ed147dcee8f89962a8dccd43'
          'a906a180d198186a39820b0a2f9a9c63'
@@ -82,7 +81,7 @@ prepare(){
 # fix jupyter path
   patch -p0 -i ../jupyter-path.patch
 # fix timeit with Python 2.7.11
-  patch -p0 -i ../python-2.7.11.patch
+  patch -p0 -i ../python-2.7.11.patch
 
 # Upstream patches  
 # fix build against libfes 0.2 http://trac.sagemath.org/ticket/15209
@@ -103,12 +102,6 @@ prepare(){
 
 # remove developer interface
   rm -r src/sage/dev
-
-  cd "$srcdir"/pexpect-2.0
-# fix env in pexpect
-  patch -p1 -i ../pexpect-env.patch
-# hide exceptions in pexpect
-  patch -p1 -i ../pexpect-del.patch
 }
 
 
@@ -123,11 +116,6 @@ build() {
   make sage/ext/interpreters/__init__.py
 
   python2 setup.py build
-
-# build pexpect
-  pushd "$srcdir"/pexpect-2.0
-    python2 setup.py build
-  popd
 }
 
 
@@ -157,10 +145,4 @@ package() {
   
 # Create SAGE_SRC, needed for the notebook
   mkdir "$pkgdir"/usr/share/sage/source
-
-# Install Sage's own pexpect
-  cd "$srcdir"/pexpect-2.0
-  python2 setup.py install --root="$pkgdir" --optimize=1
-  mkdir -p "$pkgdir"/usr/lib/sage/site-packages/
-  mv "$pkgdir"/usr/lib/python2.7/site-packages/pexpect* "$pkgdir"/usr/lib/sage/site-packages/
 }
