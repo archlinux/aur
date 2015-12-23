@@ -16,16 +16,7 @@ _gitname=moc_notify
 prepare() {
   cd "$srcdir"
   msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" --branch "v.$pkgver"
-  fi
-
-  msg "GIT checkout done or server timeout"
-
+  git clone "$_gitroot" --branch "v.$pkgver"
 }
 
 build() {
