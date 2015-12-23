@@ -17,11 +17,11 @@ pkgver() {
 
 build() {
   cd althreat
-  ./configure --prefix=$pkgdir/usr
+  ./configure --prefix=/usr
   make
 }
 
 package() {
   cd althreat
-  make install
+  make DESTDIR="$pkgdir/" install
 }
