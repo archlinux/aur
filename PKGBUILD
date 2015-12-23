@@ -11,7 +11,7 @@
 
 pkgbase=mesa-git
 pkgname=('opencl-mesa-git' 'libva-mesa-driver-git' 'mesa-vdpau-git' 'mesa-git' 'mesa-libgl-git')
-pkgver=11.2.0_devel.74737.bc2470d
+pkgver=11.2.0_devel.75334.8326eb1
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
@@ -66,7 +66,10 @@ build () {
                --with-clang-libdir=/usr/lib
 
   make
+#               --with-gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl \
+#              --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
 
+  
   # fake installation
   mkdir -p "${srcdir}/fakeinstall"
   make DESTDIR="${srcdir}/fakeinstall" install
@@ -74,7 +77,7 @@ build () {
 
 package_opencl-mesa-git () {
   pkgdesc="OpenCL support for AMD/ATI Radeon Mesa drivers"
-  depends=('libxfixes' 'libxext' 'ocl-icd' 'libclc' 'nettle' "mesa-git=${pkgver}")
+  depends=('libxfixes' 'libxext' 'libcl' 'libclc' 'nettle' "mesa-git=${pkgver}")
   optdepends=('opencl-headers: headers necessary for OpenCL development')
   provides=("opencl-mesa=$(_mesaver)")
   replaces=('opencl-mesa')
@@ -121,7 +124,7 @@ package_mesa-vdpau-git() {
 
 package_mesa-git () {
   pkgdesc="an open-source implementation of the OpenGL specification"
-  depends=('libdrm' 'wayland' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'systemd' 'elfutils'
+  depends=('libdrm>=2.4.66' 'wayland' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'systemd' 'elfutils'
            'libomxil-bellagio' 'libtxc_dxtn' 'llvm-libs-svn' 'libxvmc')
   optdepends=('nettle: for GLX-TLS support'
               'opengl-man-pages: for the OpenGL API man pages'
