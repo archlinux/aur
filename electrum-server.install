@@ -51,7 +51,7 @@ _rmuser() {
 
 # check if dir is btrfs
 _is_btrfs() {
-  if [[ $(df -TP "$1" | tail -n 1 | awk '{print $2}') == 'btrfs' ]]; then
+  if [[ $(findmnt --target $1 --output FSTYPE --noheadings) == 'btrfs' ]]; then
     return 0
   else
     return 1
