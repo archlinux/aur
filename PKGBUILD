@@ -6,7 +6,7 @@ pkgdesc="FORM is a Symbolic Manipulation System."
 url="https://www.nikhef.nl/~form/"
 license=('GPL')
 depends=('gmp>=4.2' 'zlib>=1.2' 'openmpi')
-makedepends=('git' 'autoconf>=2.59' 'automake>=1.7' 'make' 'gcc' 'doxygen>=1.3' )
+makedepends=('git' 'autoconf>=2.59' 'automake>=1.7' 'make' 'gcc')
 provides=("${pkgname%-git}")
 source=("git://github.com/vermaseren/form.git")
 md5sums=('SKIP')
