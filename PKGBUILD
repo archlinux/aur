@@ -1,6 +1,4 @@
-# Maintainer: Bastian Plettner <b.pletttner at archlinux dot info>
-# Contributor: <kfgz at interia dot pl>
-# Other Contributor: gabe <thesqrtminus1 at gmail dot com>
+# Maintainer: gabe <thesqrtminus1 at gmail dot com> (also thesqrtminus1.com) [also this is my first time working with git please don't hurt me]
 pkgname=y-cruncher
 pkgver=0.6.9.9462
 pkgrel=1
