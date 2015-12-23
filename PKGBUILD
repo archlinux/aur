@@ -4,8 +4,9 @@
 # PKGEXT='.pkg.tar.gz'  # imho time to pack this pkg into tar.xz is too long, unfortunatelly yaourt got problems when ext is different from .pkg.tar.xz - V
 
 pkgname=amdapp-codexl
-pkgver=1.8
-pkgrel=9654
+pkgver=1.9
+pkgrel=10132
+_pkgrel=10132
 pkgdesc="AMD CodeXL is an OpenCL and OpenGL Debugger and Profiler, with static OpenCL kernel analyzer. It supports OpenCL 2.0"
 arch=('x86_64')
 url="http://developer.amd.com/tools/heterogeneous-computing/codexl/"
@@ -13,11 +14,11 @@ license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
 groups=('amdapp')
 depends=('libpng12' 'libgl' 'libcl')
-source=(http://developer.amd.com/download/AMD_CodeXL_Linux_x86_64_$pkgver.$pkgrel.tar.gz
+source=(http://developer.amd.com/download/AMD_CodeXL_Linux_x86_64_$pkgver.$_pkgrel.tar.gz
       CodeXL.sh
       codexl.png
       codexl.desktop)
-  md5sums=('2fa1620a9fd27bebfed864ce21d1e8c8'
+  md5sums=('4c33f12d1a51a40dd945ea1ad260bfc6'
       'aa9e53ea4c6fca125fbedaf6d968a76a'
       '34792207ff65c7b2314a9bd8cbeb4e1f'
       'a80e16b7378abdd3e0d6d34e485246e1')
@@ -27,7 +28,7 @@ _ipath='opt/AMDAPP/CodeXL'
 
 package() {
   mkdir -p "${pkgdir}/${_ipath}"
-  cd "${srcdir}/AMD_CodeXL_Linux_x86_64_$pkgver.$pkgrel/"
+  cd "${srcdir}/AMD_CodeXL_Linux_x86_64_$pkgver.$_pkgrel/"
   cp -a *  "${pkgdir}/${_ipath}"
   install -D -m644 "Legal/CodeXLEndUserLicenseAgreement-Linux.htm" "$pkgdir/usr/share/licenses/$pkgname/EULA.htm"
 
