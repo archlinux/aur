@@ -1,7 +1,7 @@
 # Maintainer: Javier Tia <javier dot tia at gmail dot com>
 
 pkgname=sift
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A fast and powerful open source alternative to grep"
 arch=('i686' 'x86_64')
@@ -13,37 +13,25 @@ conflicts=('sift-bin')
 replaces=('sift-bin')
 provides=("sift=${pkgver}")
 source=("https://github.com/svent/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('efa1877761e6c86a5ef04548923f9f99bc7a8bacd54fe8926c3b74900bf72e20')
-
-# Go URLs
-_github_gourl='github.com/svent'
-_golang_gourl='golang.org'
-
-prepare() {
-  export GOPATH="${srcdir}"
-  go get -fix -v -x ${_github_gourl}/go-flags
-  go get -fix -v -x ${_github_gourl}/go-nbreader
-  go get -fix -v -x ${_golang_gourl}/x/crypto/ssh/terminal
-}
+sha256sums=('64451f67c2450a913f9ddbe1bb4726d3da225fe6fd11ebe79c71af259d1e5c9d')
+_gourl="github.com/svent/${pkgname}"
 
 build() {
   cd "${pkgname}-${pkgver}"
-
-  GOPATH="${srcdir}" go build
-}
-
-check() {
   export GOPATH="${srcdir}"
-  go test -v -x ${_github_gourl}/go-flags
-  go test -v -x ${_github_gourl}/go-nbreader
-  go test -v -x ${_golang_gourl}/x/crypto/ssh/terminal
+  go get -v ${_gourl}
 }
+
+# check() {
+  # export GOPATH="${srcdir}"
+  # go test -v -x github.com/svent/sift
+# }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-
-  install -Dm 775 "${pkgname}-${pkgver}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 775 "${srcdir}/bin/${pkgname}" \
+    "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm 644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ft=sh ts=2 sw=2 et:
