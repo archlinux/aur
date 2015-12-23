@@ -1,27 +1,24 @@
 # Maintainer: Morten Linderud <morten@linderud.pw>
 # Contributor: Andreas Krinke <andreas dot krinke at gmx dot de>
 pkgname=gephi
-pkgver=0.8.2beta
-pkgrel=1
+pkgver=0.9.0
+pkgrel=2
 pkgdesc="An interactive graph visualization and exploration platform"
 arch=('i686' 'x86_64')
 url="http://gephi.org"
 license=('CDDL' 'GPL3')
-depends=('java-runtime' 'libxxf86vm' 'jdk7-openjdk')
+depends=('java-runtime' 'libxxf86vm' 'jdk8-openjdk')
 makedepends=()
 options=(!strip)
-source=("http://launchpad.net/gephi/0.8/0.8.2beta/+download/gephi-0.8.2-beta.tar.gz")
-sha256sums=('cc07dc6059f9a94dd729d8edfda230f95bc25d91dce17d94d73e5ead289bb365')
+source=("https://github.com/gephi/gephi/releases/download/v0.9.0/gephi-0.9.0-linux.tar.gz")
+sha256sums=('8e5e3289de31b31d736fb1f23c318d168ae18c2aa835b357375e259c6e2c8e8f')
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
 
   mkdir -p "$pkgdir/opt/$pkgname"
   cp -r * "$pkgdir/opt/$pkgname"
   chmod -R 755 "$pkgdir/opt/$pkgname"
-  sed -i -e 's/#jdkhome.*/jdkhome=\"\/usr\/lib\/jvm\/java-7-openjdk\"/g' $pkgdir/opt/$pkgname/etc/gephi.conf
   mkdir -p "$pkgdir/usr/bin"
   ln -s "/opt/$pkgname/bin/gephi" "$pkgdir/usr/bin"
 }
-
-# vim:set ts=2 sw=2 et:
