@@ -7,7 +7,7 @@
 
 pkgname=tvbrowser
 pkgver=3.4.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Java-based TV guide which is easily extensible using plugins"
 arch=('any')
 url="http://www.tvbrowser.org"
@@ -20,7 +20,7 @@ source=(http://downloads.sourceforge.net/project/tvbrowser/TV-Browser%20Releases
         $pkgname.desktop
         $pkgname.install)
 sha256sums=('4b5e8c87774470688cadc2f8568777237e231de7cc5cd8bf43b42f0af7e40992'
-            'b8f8c8bade17ad3667e6cebb837288430458c9ce0eee6e7b09c7d37c1454fece'
+            'd5bcdf07965ef86fcaa0cb3e0dbde07ff370dd8af4e89d0d75f328e3c1631c4e'
             '9b7f35f6f30a2048ef70740929d327d34ac412dcf4c8850620370dafab6c1ca5'
             '61fe7278dcfb3a8b4557af36890cd68bc2e804b1e9bd1b6187e581c6d05e5693'
             '2fee8410377967df66bae9118d2160ea5ed5d6d116e772c8500a81b91b2ec5a1')
