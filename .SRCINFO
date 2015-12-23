@@ -1,7 +1,7 @@
 pkgbase = miller-git
 	pkgdesc = Miller is like sed, awk, cut, join, and sort for name-indexed data such as CSV
-	pkgver = 20150816
-	pkgrel = 2
+	pkgver = 20151224
+	pkgrel = 1
 	url = https://github.com/johnkerl/miller
 	arch = x86_64
 	arch = i686
@@ -15,9 +15,7 @@ pkgbase = miller-git
 	provides = miller
 	conflicts = miller-git
 	source = https://github.com/johnkerl/miller/archive/master.zip
-	source = makefile.patch
 	md5sums = SKIP
-	md5sums = 320be39efd357eb894362ce5f788f88e
 
 pkgname = miller-git
 
