@@ -1,7 +1,7 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=yafaray-blender-exporter-git
-pkgver=499.d382b1f
-_blendver=2.75
+pkgver=540.9183932
+_blendver=2.76
 pkgrel=1
 pkgdesc="Blender exporter for YafaRay"
 arch=('i686' 'x86_64')
