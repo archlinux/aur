@@ -3,8 +3,8 @@
 # CAUTION: Will not even build if an existing rust is in PATH
 
 pkgname=multirust
-pkgver=0.0.6
-pkgrel=5
+pkgver=0.0.7
+pkgrel=1
 pkgdesc="A tool for managing multiple Rust installations"
 arch=('any')
 url="https://github.com/brson/multirust"
@@ -18,19 +18,19 @@ conflict=('rust' 'rust-nightly' 'rust-nightly-bin' 'rust-beta-bin' 'rust-git')
 provides=('rust' 'cargo')
 
 prepare() {
-  cd "${srcdir}/multirust"
+  cd "$pkgname"
   git checkout $pkgver
   git submodule update --init
 }
 
 build() {
-  cd "${srcdir}/multirust"
+  cd "$pkgname"
 
   ./build.sh
 }
 
 package() {
-  cd "${srcdir}/multirust"
+  cd "$pkgname"
 
-  ./install.sh --destdir="${pkgdir}"
+  ./install.sh --prefix="$pkgdir/usr/"
 }
