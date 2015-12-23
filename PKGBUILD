@@ -1,7 +1,7 @@
 # Maintainer: Gus deMayo <gus@thegusproject.xyz>
 
 pkgname=zukitwo-manjaro
-pkgver=1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A simple green varient of the Zukitwo theme."
 url="https://github.com/THEGUSPROJECT/zukitwo-manjaro"
