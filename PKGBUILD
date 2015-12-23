@@ -1,16 +1,16 @@
-# Contributor: Storm Dragon <stormdragon2976@gmail.com>
+# Maintainer: Storm Dragon <stormdragon2976@gmail.com>
 pkgname=jot
-pkgver=1.0
-pkgrel=1
+pkgver=1.1
+pkgrel=2
 pkgdesc="Really fast single line notes for the CLI."
 arch=('any')
-url="https://github.com/2mb-solutions/jot"
+url="https://github.com/stormdragon2976/$pkgname"
 source=("${url}/archive/${pkgver}.tar.gz")
 license=('unlicense')
 optdepends=('xclip: Clipboard support')
 provides=("$pkgname")
 conflicts=("$pkgname")
-md5sums=('dfc825534cc7fad4870854324e77d64f')
+md5sums=('f7bfe4ea61f8f6203dd512a56051a4e7')
 
 package()
  {
