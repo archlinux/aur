@@ -1,0 +1,11 @@
+post_install() {
+    echo "put something like this at the end of your ~/.bashrc to get a random pokemon on every bash launch:"
+    echo ""
+    echo "cat /usr/share/pokeshell/\$((\$RANDOM % 151 + 1)).pokemon"
+}
+
+post_upgrade() {
+    echo "put something like this at the end of your ~/.bashrc to get a random pokemon on every bash launch:"
+    echo ""
+    echo "cat /usr/share/pokeshell/\$((\$RANDOM % 151 + 1)).pokemon"
+}
