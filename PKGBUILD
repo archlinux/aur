@@ -12,10 +12,10 @@
 
 pkgbase=lib32-mesa-git
 pkgname=('lib32-mesa-vdpau-git' 'lib32-mesa-git' 'lib32-mesa-libgl-git' 'lib32-libva-mesa-driver-git')
-pkgver=11.2.0_devel.74737.bc2470d
+pkgver=11.2.0_devel.75335.52865ef
 pkgrel=1
 arch=('x86_64')
-makedepends=('python2' 'lib32-libxml2' 'lib32-expat' 'lib32-libx11' 'glproto' 'lib32-libdrm' 'dri2proto' 'dri3proto' 'presentproto'
+makedepends=('python2' 'lib32-libxml2' 'lib32-expat' 'lib32-libx11' 'glproto' 'lib32-libdrm>=2.4.66' 'dri2proto' 'dri3proto' 'presentproto'
              'lib32-libxshmfence' 'lib32-libxxf86vm' 'lib32-libxdamage' 'gcc-multilib' 'lib32-elfutils'  'lib32-systemd'
              'lib32-libvdpau' 'lib32-wayland' 'python2-mako' 'lib32-libtxc_dxtn' 'git' 'lib32-gnutls' 'lib32-openssl'
              'mesa-git' 'libva-mesa-driver-git' 'mesa-vdpau-git' 'mesa-libgl-git' 'lib32-llvm-libs-svn' 'lib32-llvm-svn' )
