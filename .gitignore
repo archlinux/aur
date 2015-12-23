@@ -1,0 +1,5 @@
+codelite/
+pkg/
+src/
+*.tar.xz
+*.tar.gz
