@@ -6,12 +6,11 @@
 # -Keybind patch reversion
 # -Heap allocation perfomance improvement patch
 # -Wbemprox videocontroller query fix v2 (see https://bugs.winehq.org/show_bug.cgi?id=38879 )
-# -SNI support (see https://bugs.winehq.org/show_bug.cgi?id=38409 )
 # -Steam patch, Crossover Hack version (see https://bugs.winehq.org/show_bug.cgi?id=39403 )
 # -HD7700M support (not referenced in Wine)
 
 pkgname=wine-gaming-nine
-pkgver=1.8rc4
+pkgver=1.8
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
@@ -23,19 +22,17 @@ source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbas
         heap_perf.patch
         keybindings.patch
         mipmap.patch
-        nine-1.8rc2.patch
-        sni_support.patch
+        nine-1.8.patch
         steam.patch
         wbemprox_query_v2.patch
         )
-sha1sums=('7d42649e4574056ba71c6c3fff82bf1fad492eb9'
+sha1sums=('6aea600b850ac2ac4fed608d96c688c8d470222f'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
           '8fa4b03f68f18b4de80f10c7a43c0e99a5cb017c'
           '0f4ac455436d5714a2cf0b537ed25f4fa5c1a7fd'
           'f3febb8836f38320742a546c667106608d4c4395'
           'c3096fccbac23e520d03f592db7f23350cbbc0bc'
-          '2ef0002b9db25f6014cca83c5176e3fad60e4233'
-          '8193eadee7de2a4d89abe7ca8dff43e877878a52'
+          'a5832a96432979b6fc18019f931f80e4d3ecc240'
           'a7da16c5fac7d74c665e7a76bddbcd6c8333830b'
           'e26d369e9964657b481ac4b7b18c575786ec9c8c'
           )
@@ -66,7 +63,7 @@ _depends=(
 )
 
 makedepends=(autoconf ncurses bison perl fontforge flex
-  'gcc>=4.5.0-2'  'gcc-multilib>=4.5.0-2'
+  'gcc>=5.3.0-3'  'gcc-multilib>=5.3.0-3'
   giflib          lib32-giflib
   libpng          lib32-libpng
   gnutls          lib32-gnutls
@@ -131,44 +128,15 @@ else
     conflicts=('wine' 'wine-wow64' 'wine-staging')
 fi
 
-#Needed for testing gcc version
-check_gcc()
-{
-    curver=($(gcc -dumpversion | sed 's/\./ /g'))
-    minver=(5 3 0)
-
-    for ((i=${#curver[@]}; i<${#minver[@]}; i++))
-    do
-        curver[i]=0
-    done
-
-    for ((i=0; i<${#curver[@]}; i++))
-    do
-        if [[ -z ${minver[i]} ]]
-        then
-            minver[i]=0
-        fi
-
-        if [ "${curver[i]}" -lt "${minver[i]}" ]; then
-            return 1
-        elif [ "${curver[i]}" -gt "${minver[i]}" ]; then
-            return 0
-        fi
-    done
-
-    return 0
-}
-
 prepare()
 {
     cd wine-patched-staging-$_pkgbasever
 
-    patch -p1 < ../nine-1.8rc2.patch
+    patch -p1 < ../nine-1.8.patch
     patch -p1 < ../steam.patch
     patch -p1 < ../mipmap.patch
     patch -p1 < ../heap_perf.patch
     patch -p1 < ../wbemprox_query_v2.patch
-    patch -p1 < ../sni_support.patch
     patch -p1 < ../hd7700m_support.patch
 
     patch -p1 -R < ../keybindings.patch
@@ -176,13 +144,6 @@ prepare()
     autoreconf -f
 
     sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
-
-    if [ ! check_gcc ]; then
-        # https://bugs.winehq.org/show_bug.cgi?id=38653 fixed sinced GCC 5.3.0
-        echo "GCC Version <5.3.0 detected, using -O0 flag... You should upgrade!"
-        export CFLAGS="${CFLAGS/-O2/} -O0"
-        export CXXFLAGS="${CXXFLAGS/-O2/} -O0"
-    fi
 
     # These additional CPPFLAGS solve FS#27662 and FS#34195
     export CPPFLAGS="${CPPFLAGS/-D_FORTIFY_SOURCE=2/} -D_FORTIFY_SOURCE=0"
