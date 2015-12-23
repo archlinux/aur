@@ -1,13 +1,13 @@
 # Maintainer: Narazaka <https://narazaka.net/>
 
 pkgname=qvwm
-pkgver=1.1.12.0
+pkgver=1.1.12.1
 pkgrel=1
 pkgdesc="Qvwm is a Windows 95/98/NT like window manager for X Window System."
 url="https://github.com/mytoh/qvwm"
 arch=('i686' 'x86_64')
 license=('GPL2')
-depends=('imlib' 'libxpm' 'bison' 'flex')
+depends=('imlib' 'libxpm' 'bison' 'flex' 'libxss')
 source=(https://github.com/mytoh/qvwm/archive/master.zip)
 
 build() {
