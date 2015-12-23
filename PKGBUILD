@@ -11,10 +11,10 @@
 
 pkgbase=mesa-git
 pkgname=('opencl-mesa-git' 'libva-mesa-driver-git' 'mesa-vdpau-git' 'mesa-git' 'mesa-libgl-git')
-pkgver=11.2.0_devel.75334.8326eb1
+pkgver=11.2.0_devel.75335.52865ef
 pkgrel=1
 arch=('i686' 'x86_64')
-makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
+makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm>=2.4.66' 'dri2proto' 'dri3proto' 'presentproto' 
              'libxshmfence' 'libxxf86vm'  'libxdamage' 'libvdpau' 'libva' 'wayland' 'elfutils' 'llvm-svn'
              'systemd' 'libomxil-bellagio' 'libclc' 'clang-svn' 'git'
              'libtxc_dxtn' 'ocl-icd' 'openssl' 'gnutls')
