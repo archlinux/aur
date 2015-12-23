@@ -1,0 +1,8 @@
+post_install()
+{
+    echo ":: This works best(or sometimes at all) with the rest of the graphics stack from git (x11 etc.)"
+}
+post_upgrade()
+{
+    echo ":: This works best(or sometimes at all) with the rest of the graphics stack from git (x11 etc.)"
+}
