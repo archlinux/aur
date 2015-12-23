@@ -5,26 +5,28 @@
 
 # Note: The patch is based on https://github.com/mikkeloscar/pulseaudio-raop2
 # which is basically https://github.com/hfujita/pulseaudio-raop2 rebased to
-# pulseaudio v6.0
+# pulseaudio v7.1
 
 _pkgbase=pulseaudio
 pkgbase=$_pkgbase-raop2
 pkgname=(pulseaudio-raop2 libpulse-raop2 pulseaudio-{gconf,zeroconf,lirc,xen,jack,bluetooth,equalizer}-raop2)
 pkgdesc="A featureful, general-purpose sound server with AirPlay/Airtunes/RAOP v2 patchset"
-pkgver=6.0
+pkgver=7.1
 pkgrel=1
 arch=(i686 x86_64)
 url="http://hfujita.github.io/pulseaudio-raop2/"
 license=(LGPL)
-makedepends=(libasyncns libcap attr libxtst libsm libsndfile libtool rtkit
+makedepends=(libasyncns libcap attr libxtst libsm libsndfile libtool rtkit libsoxr
              speexdsp tdb systemd dbus avahi bluez bluez-libs gconf intltool jack2-dbus sbc
              lirc openssl xenstore fftw orc json-c gtk3 webrtc-audio-processing
              check)
 options=(!emptydirs)
 source=("$pkgbase-$pkgver::git+http://anongit.freedesktop.org/git/pulseaudio/pulseaudio.git#commit=v$pkgver"
+        padsp-lib32.patch
         raopv2.patch)
 sha256sums=('SKIP'
-            'a616505d2167df87f8bdaa6f0c674576fee14ac5e04a6d7e92e33ba0075b9127')
+            '572ff890dbed1e4a5654b7ed4ea3b3f2a91c871fb2224799bc789c317bb49964'
+            '8a88962ac4f9918d781f2dd7059991d5d8f68569f1abbaf0bee92c589e140044')
 
 prepare() {
   cd $pkgbase-$pkgver
@@ -47,7 +49,8 @@ build() {
     --disable-bluez4 \
     --disable-samplerate \
     --disable-rpath \
-    --disable-default-build-tests
+    --disable-default-build-tests \
+    DATADIRNAME=share
 
   # fight unused direct deps
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
@@ -57,9 +60,9 @@ build() {
 
 package_pulseaudio-raop2() {
   depends=("libpulse-raop2=$pkgver-$pkgrel" rtkit libltdl speexdsp tdb orc
-           webrtc-audio-processing sbc)
+           webrtc-audio-processing sbc libsoxr)
   optdepends=('pulseaudio-alsa: ALSA configuration (recommended)')
-  provides=(pulseaudio)
+  provides=("pulseaudio=$pkgver-$pkgrel")
   conflicts=(pulseaudio)
   backup=(etc/pulse/{daemon.conf,default.pa,system.pa})
   install=pulseaudio.install
@@ -68,74 +71,91 @@ package_pulseaudio-raop2() {
   make -j1 DESTDIR="$pkgdir" install \
     bashcompletiondir=/usr/share/bash-completion/completions
 
-  # Speed up pulseaudio shutdown so that it exits immediately with
-  # the last user session (module-systemd-login keeps it alive)
-  sed -e '/exit-idle-time/iexit-idle-time=0' \
-      -i "$pkgdir/etc/pulse/daemon.conf"
+  cd "$pkgdir"
+  patch -Np1 -i "$srcdir/padsp-lib32.patch"
+
+  sed -e '/flat-volumes/iflat-volumes=no' \
+      -i etc/pulse/daemon.conf
+
+  # Superseded by socket activation
+  sed -e '/autospawn/iautospawn=no' \
+      -i etc/pulse/client.conf
 
   # Disable cork-request module, can result in e.g. media players unpausing
   # when there's a Skype call incoming
   sed -e 's|/usr/bin/pactl load-module module-x11-cork-request|#&|' \
-      -i "$pkgdir/usr/bin/start-pulseaudio-x11"
+      -i usr/bin/start-pulseaudio-x11
 
-  rm "$pkgdir/etc/dbus-1/system.d/pulseaudio-system.conf"
+  rm etc/dbus-1/system.d/pulseaudio-system.conf
+
+  mkdir usr/lib/systemd/user/sockets.target.wants
+  ln -s ../pulseaudio.socket \
+    usr/lib/systemd/user/sockets.target.wants/pulseaudio.socket
 
 ### Split libpulse
 
   mkdir -p "$srcdir"/libpulse/{etc/pulse,usr/{bin,lib/pulseaudio,share/man/man{1,5}}}
 
-  mv {"$pkgdir","$srcdir/libpulse"}/etc/pulse/client.conf
+  mv etc/pulse/client.conf \
+     "$srcdir/libpulse/etc/pulse"
 
-  mv "$pkgdir"/usr/bin/pa{cat,ctl,dsp,mon,play,rec,record} \
+  mv usr/bin/pa{cat,ctl,dsp,mon,play,rec,record} \
      "$srcdir/libpulse/usr/bin"
 
-  mv "$pkgdir"/usr/lib/libpulse{,-simple,-mainloop-glib}.so* \
+  mv usr/lib/libpulse{,-simple,-mainloop-glib}.so* \
+     usr/lib/{cmake,pkgconfig} \
      "$srcdir/libpulse/usr/lib"
 
-  mv "$pkgdir"/usr/lib/pulseaudio/libpulsedsp.so \
-     "$pkgdir"/usr/lib/pulseaudio/libpulsecommon-*.so \
+  mv usr/lib/pulseaudio/libpulse{dsp,common-*}.so \
      "$srcdir/libpulse/usr/lib/pulseaudio"
 
-  mv {"$pkgdir","$srcdir/libpulse"}/usr/lib/cmake
-  mv {"$pkgdir","$srcdir/libpulse"}/usr/lib/pkgconfig
+  mv usr/include \
+     "$srcdir/libpulse/usr"
 
-  mv {"$pkgdir","$srcdir/libpulse"}/usr/include
-
-  mv "$pkgdir"/usr/share/man/man1/pa{cat,ctl,dsp,play}.1 \
+  mv usr/share/man/man1/pa{cat,ctl,dsp,mon,play,rec,record}.1 \
      "$srcdir/libpulse/usr/share/man/man1"
 
-  mv {"$pkgdir","$srcdir/libpulse"}/usr/share/man/man5/pulse-client.conf.5
-  mv {"$pkgdir","$srcdir/libpulse"}/usr/share/vala
+  mv usr/share/man/man5/pulse-client.conf.5 \
+     "$srcdir/libpulse/usr/share/man/man5"
+
+  mv usr/share/vala \
+     "$srcdir/libpulse/usr/share"
 
 ### Split modules
 
   mkdir -p "$srcdir"/{gconf,zeroconf,lirc,xen,jack,bluetooth,equalizer}/usr/lib/pulse-$pkgver/modules \
            "$srcdir"/{gconf/usr/lib/pulse,equalizer/usr/bin}
 
-  mv {"$pkgdir","$srcdir/gconf"}/usr/lib/pulse-$pkgver/modules/module-gconf.so
-  mv {"$pkgdir","$srcdir/gconf"}/usr/lib/pulse/gconf-helper
+  mv usr/lib/pulse-$pkgver/modules/module-gconf.so \
+     "$srcdir/gconf/usr/lib/pulse-$pkgver/modules"
+  mv usr/lib/pulse/gconf-helper \
+     "$srcdir/gconf/usr/lib/pulse"
 
-  mv "$pkgdir"/usr/lib/pulse-$pkgver/modules/{libavahi-wrap,module-{zeroconf-{publish,discover},raop-discover}}.so \
+  mv usr/lib/pulse-$pkgver/modules/{libavahi-wrap,module-{zeroconf-{publish,discover},raop-discover}}.so \
      "$srcdir/zeroconf/usr/lib/pulse-$pkgver/modules"
 
-  mv {"$pkgdir","$srcdir/lirc"}/usr/lib/pulse-$pkgver/modules/module-lirc.so
+  mv usr/lib/pulse-$pkgver/modules/module-lirc.so \
+     "$srcdir/lirc/usr/lib/pulse-$pkgver/modules"
 
-  mv {"$pkgdir","$srcdir/xen"}/usr/lib/pulse-$pkgver/modules/module-xenpv-sink.so
+  mv usr/lib/pulse-$pkgver/modules/module-xenpv-sink.so \
+     "$srcdir/xen/usr/lib/pulse-$pkgver/modules"
 
-  mv "$pkgdir"/usr/lib/pulse-$pkgver/modules/module-jack{-sink,-source,dbus-detect}.so \
+  mv usr/lib/pulse-$pkgver/modules/module-jack{-sink,-source,dbus-detect}.so \
      "$srcdir/jack/usr/lib/pulse-$pkgver/modules"
 
-  mv "$pkgdir"/usr/lib/pulse-$pkgver/modules/{libbluez5-util,module-{bluetooth-{discover,policy},bluez5-{discover,device}}}.so \
+  mv usr/lib/pulse-$pkgver/modules/{libbluez5-util,module-{bluetooth-{discover,policy},bluez5-{discover,device}}}.so \
      "$srcdir/bluetooth/usr/lib/pulse-$pkgver/modules"
 
-  mv {"$pkgdir","$srcdir/equalizer"}/usr/lib/pulse-$pkgver/modules/module-equalizer-sink.so
-  mv {"$pkgdir","$srcdir/equalizer"}/usr/bin/qpaeq
+  mv usr/lib/pulse-$pkgver/modules/module-equalizer-sink.so \
+     "$srcdir/equalizer/usr/lib/pulse-$pkgver/modules"
+  mv usr/bin/qpaeq \
+     "$srcdir/equalizer/usr/bin"
 }
 
 package_libpulse-raop2() {
   pkgdesc="$pkgdesc (client library)"
   depends=(dbus libasyncns libcap libxtst libsm libsndfile json-c systemd)
-  provides=(libpulse)
+  provides=("libpulse=$pkgver-$pkgrel")
   conflicts=(libpulse)
   backup=(etc/pulse/client.conf)
 
@@ -144,8 +164,8 @@ package_libpulse-raop2() {
 
 package_pulseaudio-gconf-raop2(){
   pkgdesc="GConf support for PulseAudio"
-  depends=(pulseaudio-raop2 gconf)
-  provides=(pulseaudio-gconf)
+  depends=("pulseaudio-raop2=$pkgver-$pkgrel" gconf)
+  provides=("pulseaudio-gconf=$pkgver-$pkgrel")
   conflicts=(pulseaudio-gconf)
 
   mv "$srcdir"/gconf/* "$pkgdir"
@@ -153,8 +173,8 @@ package_pulseaudio-gconf-raop2(){
 
 package_pulseaudio-zeroconf-raop2(){
   pkgdesc="Zeroconf support for PulseAudio"
-  depends=(pulseaudio-raop2 avahi openssl)
-  provides=(pulseaudio-zeroconf)
+  depends=("pulseaudio-raop2=$pkgver-$pkgrel" avahi openssl)
+  provides=("pulseaudio-zeroconf=$pkgver-$pkgrel")
   conflicts=(pulseaudio-zeroconf)
 
   mv "$srcdir"/zeroconf/* "$pkgdir"
@@ -162,8 +182,8 @@ package_pulseaudio-zeroconf-raop2(){
 
 package_pulseaudio-lirc-raop2(){
   pkgdesc="IR (lirc) support for PulseAudio"
-  depends=(pulseaudio-raop2 lirc)
-  provides=(pulseaudio-lirc)
+  depends=("pulseaudio-raop2=$pkgver-$pkgrel" lirc)
+  provides=("pulseaudio-lirc=$pkgver-$pkgrel")
   conflicts=(pulseaudio-lirc)
 
   mv "$srcdir"/lirc/* "$pkgdir"
@@ -171,8 +191,8 @@ package_pulseaudio-lirc-raop2(){
 
 package_pulseaudio-xen-raop2(){
   pkgdesc="Xen support for PulseAudio"
-  depends=(pulseaudio-raop2 xenstore)
-  provides=(pulseaudio-xen)
+  depends=("pulseaudio-raop2=$pkgver-$pkgrel" xenstore)
+  provides=("pulseaudio-xen=$pkgver-$pkgrel")
   conflicts=(pulseaudio-xen)
   license=(GPL2)
 
@@ -181,8 +201,8 @@ package_pulseaudio-xen-raop2(){
 
 package_pulseaudio-jack-raop2(){
   pkgdesc="Jack support for PulseAudio"
-  depends=(pulseaudio-raop2 jack2)
-  provides=(pulseaudio-jack)
+  depends=("pulseaudio-raop2=$pkgver-$pkgrel" jack2)
+  provides=("pulseaudio-jack=$pkgver-$pkgrel")
   conflicts=(pulseaudio-jack)
 
   mv "$srcdir"/jack/* "$pkgdir"
@@ -190,8 +210,8 @@ package_pulseaudio-jack-raop2(){
 
 package_pulseaudio-bluetooth-raop2(){
   pkgdesc="Bluetooth support for PulseAudio"
-  depends=(pulseaudio-raop2 bluez bluez-libs)
-  provides=(pulseaudio-bluetooth)
+  depends=("pulseaudio-raop2=$pkgver-$pkgrel" bluez bluez-libs)
+  provides=("pulseaudio-bluetooth=$pkgver-$pkgrel")
   conflicts=(pulseaudio-bluetooth)
 
   mv "$srcdir"/bluetooth/* "$pkgdir"
@@ -199,8 +219,8 @@ package_pulseaudio-bluetooth-raop2(){
 
 package_pulseaudio-equalizer-raop2(){
   pkgdesc="Equalizer for PulseAudio"
-  depends=(pulseaudio-raop2 python-pyqt4 fftw)
-  provides=(pulseaudio-equalizer)
+  depends=("pulseaudio-raop2=$pkgver-$pkgrel" python-pyqt4 fftw)
+  provides=("pulseaudio-equalizer=$pkgver-$pkgrel")
   conflicts=(pulseaudio-equalizer)
   license=(AGPL3)
 

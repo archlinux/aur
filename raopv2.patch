@@ -1,8 +1,149 @@
+diff --git a/bootstrap.sh b/bootstrap.sh
+index c9a083c..187abaa 100755
+--- a/bootstrap.sh
++++ b/bootstrap.sh
+@@ -50,6 +50,6 @@ autopoint --force
+ AUTOPOINT='intltoolize --automake --copy' autoreconf --force --install --verbose
+ 
+ if test "x$NOCONFIGURE" = "x"; then
+-    CFLAGS="$CFLAGS -g -O0" ./configure --sysconfdir=/etc --localstatedir=/var --enable-force-preopen "$@"
+-    make clean
++    CFLAGS="$CFLAGS -g -O0" ./configure --sysconfdir=/etc --localstatedir=/var --enable-force-preopen "$@" && \
++        make clean
+ fi
+diff --git a/configure.ac b/configure.ac
+index f777223..003673e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -212,7 +212,7 @@ AC_SUBST([IMMEDIATE_LDFLAGS])
+ # On ELF systems we don't want the libraries to be unloaded since we don't clean them up properly,
+ # so we request the nodelete flag to be enabled.
+ # On other systems, we don't really know how to do that, but it's welcome if somebody can tell.
+-AX_APPEND_LINK_FLAGS([-Wl,-z,nodelete], [NODELETE_LDFLAGS])
++AX_APPEND_LINK_FLAGS([-Wl,-z,nodelete], [NODELETE_LDFLAGS], [-shared])
+ AC_SUBST([NODELETE_LDFLAGS])
+ 
+ # Check for the proper way to build libraries that have no undefined symbols
 diff --git a/src/Makefile.am b/src/Makefile.am
-index 5cb5564..694cb42 100644
+index 9df5ddd..2019744 100644
 --- a/src/Makefile.am
 +++ b/src/Makefile.am
-@@ -1110,8 +1110,12 @@ librtp_la_LDFLAGS = $(AM_LDFLAGS) -avoid-version
+@@ -54,7 +54,9 @@ SERVER_CFLAGS = -D__INCLUDED_FROM_PULSE_AUDIO
+ 
+ AM_LIBADD = $(PTHREAD_LIBS) $(INTLLIBS)
+ AM_LDADD = $(PTHREAD_LIBS) $(INTLLIBS)
+-AM_LDFLAGS = $(NODELETE_LDFLAGS)
++AM_LDFLAGS =
++# Should only be applied to libraries.
++AM_LIBLDFLAGS = $(NODELETE_LDFLAGS)
+ 
+ if HAVE_GCOV
+ AM_CFLAGS+=$(GCOV_CFLAGS)
+@@ -77,7 +79,7 @@ endif
+ 
+ FOREIGN_CFLAGS = -w
+ 
+-MODULE_LDFLAGS = $(AM_LDFLAGS) -module -disable-static -avoid-version $(NOUNDEFINED_LDFLAGS)
++MODULE_LDFLAGS = $(AM_LDFLAGS) $(AM_LIBLDFLAGS) -module -disable-static -avoid-version $(NOUNDEFINED_LDFLAGS)
+ MODULE_LIBADD = $(AM_LIBADD) libpulsecore-@PA_MAJORMINOR@.la libpulsecommon-@PA_MAJORMINOR@.la libpulse.la
+ 
+ ###################################
+@@ -720,7 +722,7 @@ libpulsecommon_@PA_MAJORMINOR@_la_SOURCES += pulsecore/poll-posix.c pulsecore/po
+ endif
+ 
+ libpulsecommon_@PA_MAJORMINOR@_la_CFLAGS = $(AM_CFLAGS) $(LIBJSON_CFLAGS) $(LIBSNDFILE_CFLAGS)
+-libpulsecommon_@PA_MAJORMINOR@_la_LDFLAGS = $(AM_LDFLAGS) -avoid-version
++libpulsecommon_@PA_MAJORMINOR@_la_LDFLAGS = $(AM_LDFLAGS) $(AM_LIBLDFLAGS) -avoid-version
+ libpulsecommon_@PA_MAJORMINOR@_la_LIBADD = $(AM_LIBADD) $(LIBJSON_LIBS)  $(LIBWRAP_LIBS) $(WINSOCK_LIBS) $(LTLIBICONV) $(LIBSNDFILE_LIBS)
+ 
+ if HAVE_X11
+@@ -870,7 +872,7 @@ libpulse_la_SOURCES = \
+ 
+ libpulse_la_CFLAGS = $(AM_CFLAGS) $(LIBJSON_CFLAGS)
+ libpulse_la_LIBADD = $(AM_LIBADD) $(WINSOCK_LIBS) $(LTLIBICONV) $(LIBJSON_LIBS) libpulsecommon-@PA_MAJORMINOR@.la
+-libpulse_la_LDFLAGS = $(AM_LDFLAGS) $(VERSIONING_LDFLAGS) -version-info $(LIBPULSE_VERSION_INFO)
++libpulse_la_LDFLAGS = $(AM_LDFLAGS) $(AM_LIBLDFLAGS) $(VERSIONING_LDFLAGS) -version-info $(LIBPULSE_VERSION_INFO)
+ 
+ if HAVE_DBUS
+ libpulse_la_CFLAGS += $(DBUS_CFLAGS)
+@@ -880,12 +882,12 @@ endif
+ libpulse_simple_la_SOURCES = pulse/simple.c pulse/simple.h
+ libpulse_simple_la_CFLAGS = $(AM_CFLAGS)
+ libpulse_simple_la_LIBADD = $(AM_LIBADD) libpulse.la libpulsecommon-@PA_MAJORMINOR@.la
+-libpulse_simple_la_LDFLAGS = $(AM_LDFLAGS) $(VERSIONING_LDFLAGS) -version-info $(LIBPULSE_SIMPLE_VERSION_INFO)
++libpulse_simple_la_LDFLAGS = $(AM_LDFLAGS) $(AM_LIBLDFLAGS) $(VERSIONING_LDFLAGS) -version-info $(LIBPULSE_SIMPLE_VERSION_INFO)
+ 
+ libpulse_mainloop_glib_la_SOURCES = pulse/glib-mainloop.h pulse/glib-mainloop.c
+ libpulse_mainloop_glib_la_CFLAGS = $(AM_CFLAGS) $(GLIB20_CFLAGS)
+ libpulse_mainloop_glib_la_LIBADD = $(AM_LIBADD) libpulse.la libpulsecommon-@PA_MAJORMINOR@.la $(GLIB20_LIBS)
+-libpulse_mainloop_glib_la_LDFLAGS = $(AM_LDFLAGS) $(VERSIONING_LDFLAGS) -version-info $(LIBPULSE_MAINLOOP_GLIB_VERSION_INFO)
++libpulse_mainloop_glib_la_LDFLAGS = $(AM_LDFLAGS) $(AM_LIBLDFLAGS) $(VERSIONING_LDFLAGS) -version-info $(LIBPULSE_MAINLOOP_GLIB_VERSION_INFO)
+ 
+ ###################################
+ #         OSS emulation           #
+@@ -909,7 +911,7 @@ endif
+ libpulsedsp_la_SOURCES = utils/padsp.c
+ libpulsedsp_la_CFLAGS = $(AM_CFLAGS)
+ libpulsedsp_la_LIBADD = $(AM_LIBADD) libpulse.la libpulsecommon-@PA_MAJORMINOR@.la
+-libpulsedsp_la_LDFLAGS = $(AM_LDFLAGS) -avoid-version -disable-static
++libpulsedsp_la_LDFLAGS = $(AM_LDFLAGS) $(AM_LIBLDFLAGS) -avoid-version -disable-static
+ 
+ ###################################
+ #      Daemon core library        #
+@@ -972,7 +974,7 @@ libpulsecore_@PA_MAJORMINOR@_la_SOURCES = \
+ 		pulsecore/database.h
+ 
+ libpulsecore_@PA_MAJORMINOR@_la_CFLAGS = $(AM_CFLAGS) $(SERVER_CFLAGS) $(LIBSNDFILE_CFLAGS) $(WINSOCK_CFLAGS)
+-libpulsecore_@PA_MAJORMINOR@_la_LDFLAGS = $(AM_LDFLAGS) -avoid-version
++libpulsecore_@PA_MAJORMINOR@_la_LDFLAGS = $(AM_LDFLAGS) $(AM_LIBLDFLAGS) -avoid-version
+ libpulsecore_@PA_MAJORMINOR@_la_LIBADD = $(AM_LIBADD) $(LIBLTDL) $(LIBSNDFILE_LIBS) $(WINSOCK_LIBS) $(LTLIBICONV) libpulsecommon-@PA_MAJORMINOR@.la libpulse.la libpulsecore-foreign.la
+ 
+ if HAVE_NEON
+@@ -1087,24 +1089,24 @@ modlibexec_LTLIBRARIES += \
+ endif
+ 
+ libprotocol_simple_la_SOURCES = pulsecore/protocol-simple.c pulsecore/protocol-simple.h
+-libprotocol_simple_la_LDFLAGS = $(AM_LDFLAGS) -avoid-version
++libprotocol_simple_la_LDFLAGS = $(AM_LDFLAGS) $(AM_LIBLDFLAGS) -avoid-version
+ libprotocol_simple_la_LIBADD = $(AM_LIBADD) libpulsecore-@PA_MAJORMINOR@.la libpulsecommon-@PA_MAJORMINOR@.la libpulse.la
+ 
+ libcli_la_SOURCES = pulsecore/cli.c pulsecore/cli.h
+-libcli_la_LDFLAGS = $(AM_LDFLAGS) -avoid-version
++libcli_la_LDFLAGS = $(AM_LDFLAGS) $(AM_LIBLDFLAGS) -avoid-version
+ libcli_la_LIBADD = $(AM_LIBADD) libpulsecore-@PA_MAJORMINOR@.la libpulsecommon-@PA_MAJORMINOR@.la libpulse.la
+ 
+ libprotocol_cli_la_SOURCES = pulsecore/protocol-cli.c pulsecore/protocol-cli.h
+-libprotocol_cli_la_LDFLAGS = $(AM_LDFLAGS) -avoid-version
++libprotocol_cli_la_LDFLAGS = $(AM_LDFLAGS) $(AM_LIBLDFLAGS) -avoid-version
+ libprotocol_cli_la_LIBADD = $(AM_LIBADD) libpulsecore-@PA_MAJORMINOR@.la libpulsecommon-@PA_MAJORMINOR@.la libpulse.la libcli.la
+ 
+ libprotocol_http_la_SOURCES = pulsecore/protocol-http.c pulsecore/protocol-http.h pulsecore/mime-type.c pulsecore/mime-type.h
+-libprotocol_http_la_LDFLAGS = $(AM_LDFLAGS) -avoid-version
++libprotocol_http_la_LDFLAGS = $(AM_LDFLAGS) $(AM_LIBLDFLAGS) -avoid-version
+ libprotocol_http_la_LIBADD = $(AM_LIBADD) libpulsecore-@PA_MAJORMINOR@.la libpulsecommon-@PA_MAJORMINOR@.la libpulse.la
+ 
+ libprotocol_native_la_SOURCES = pulsecore/protocol-native.c pulsecore/protocol-native.h pulsecore/native-common.h
+ libprotocol_native_la_CFLAGS = $(AM_CFLAGS) $(SERVER_CFLAGS)
+-libprotocol_native_la_LDFLAGS = $(AM_LDFLAGS) -avoid-version
++libprotocol_native_la_LDFLAGS = $(AM_LDFLAGS) $(AM_LIBLDFLAGS) -avoid-version
+ libprotocol_native_la_LIBADD = $(AM_LIBADD) libpulsecore-@PA_MAJORMINOR@.la libpulsecommon-@PA_MAJORMINOR@.la libpulse.la
+ if HAVE_DBUS
+ libprotocol_native_la_CFLAGS += $(DBUS_CFLAGS)
+@@ -1113,7 +1115,7 @@ endif
+ 
+ if HAVE_ESOUND
+ libprotocol_esound_la_SOURCES = pulsecore/protocol-esound.c pulsecore/protocol-esound.h pulsecore/esound.h
+-libprotocol_esound_la_LDFLAGS = $(AM_LDFLAGS) -avoid-version
++libprotocol_esound_la_LDFLAGS = $(AM_LDFLAGS) $(AM_LIBLDFLAGS) -avoid-version
+ libprotocol_esound_la_LIBADD = $(AM_LIBADD) libpulsecore-@PA_MAJORMINOR@.la libpulsecommon-@PA_MAJORMINOR@.la libpulse.la
+ endif
+ 
+@@ -1123,19 +1125,23 @@ librtp_la_SOURCES = \
+ 		modules/rtp/sap.c modules/rtp/sap.h \
+ 		modules/rtp/rtsp_client.c modules/rtp/rtsp_client.h \
+ 		modules/rtp/headerlist.c modules/rtp/headerlist.h
+-librtp_la_LDFLAGS = $(AM_LDFLAGS) -avoid-version
++librtp_la_LDFLAGS = $(AM_LDFLAGS) $(AM_LIBLDFLAGS) -avoid-version
  librtp_la_LIBADD = $(AM_LIBADD) libpulsecore-@PA_MAJORMINOR@.la libpulsecommon-@PA_MAJORMINOR@.la libpulse.la
  
  libraop_la_SOURCES = \
@@ -15,8 +156,178 @@ index 5cb5564..694cb42 100644
 +        modules/raop/raop-sink.c modules/raop/raop-sink.h
 +
  libraop_la_CFLAGS = $(AM_CFLAGS) $(OPENSSL_CFLAGS) -I$(top_srcdir)/src/modules/rtp
- libraop_la_LDFLAGS = $(AM_LDFLAGS) -avoid-version
+-libraop_la_LDFLAGS = $(AM_LDFLAGS) -avoid-version
++libraop_la_LDFLAGS = $(AM_LDFLAGS) $(AM_LIBLDFLAGS) -avoid-version
  libraop_la_LIBADD = $(AM_LIBADD) $(OPENSSL_LIBS) libpulsecore-@PA_MAJORMINOR@.la librtp.la libpulsecommon-@PA_MAJORMINOR@.la libpulse.la
+ 
+ # Avahi
+ libavahi_wrap_la_SOURCES = pulsecore/avahi-wrap.c pulsecore/avahi-wrap.h
+-libavahi_wrap_la_LDFLAGS = $(AM_LDFLAGS) -avoid-version
++libavahi_wrap_la_LDFLAGS = $(AM_LDFLAGS) $(AM_LIBLDFLAGS) -avoid-version
+ libavahi_wrap_la_CFLAGS = $(AM_CFLAGS) $(AVAHI_CFLAGS)
+ libavahi_wrap_la_LIBADD = $(AM_LIBADD) $(AVAHI_CFLAGS) libpulsecore-@PA_MAJORMINOR@.la libpulsecommon-@PA_MAJORMINOR@.la libpulse.la
+ 
+diff --git a/src/daemon/cmdline.c b/src/daemon/cmdline.c
+index 68a02e3..117147d 100644
+--- a/src/daemon/cmdline.c
++++ b/src/daemon/cmdline.c
+@@ -395,7 +395,7 @@ int pa_cmdline_parse(pa_daemon_conf *conf, int argc, char *const argv [], int *d
+     }
+ 
+     pa_xfree(conf->script_commands);
+-    conf->script_commands = pa_strbuf_tostring_free(buf);
++    conf->script_commands = pa_strbuf_to_string_free(buf);
+ 
+     *d = optind;
+ 
+diff --git a/src/daemon/daemon-conf.c b/src/daemon/daemon-conf.c
+index 21a8edb..f94cdeb 100644
+--- a/src/daemon/daemon-conf.c
++++ b/src/daemon/daemon-conf.c
+@@ -804,5 +804,5 @@ char *pa_daemon_conf_dump(pa_daemon_conf *c) {
+ 
+     pa_xfree(log_target);
+ 
+-    return pa_strbuf_tostring_free(s);
++    return pa_strbuf_to_string_free(s);
+ }
+diff --git a/src/daemon/main.c b/src/daemon/main.c
+index 7734f52..c7b15e7 100644
+--- a/src/daemon/main.c
++++ b/src/daemon/main.c
+@@ -1082,7 +1082,7 @@ int main(int argc, char *argv[]) {
+         if (r >= 0)
+             r = pa_cli_command_execute(c, conf->script_commands, buf, &conf->fail);
+ 
+-        pa_log_error("%s", s = pa_strbuf_tostring_free(buf));
++        pa_log_error("%s", s = pa_strbuf_to_string_free(buf));
+         pa_xfree(s);
+ 
+         if (r < 0 && conf->fail) {
+diff --git a/src/modules/alsa/alsa-mixer.c b/src/modules/alsa/alsa-mixer.c
+index 7580e8a..486da83 100644
+--- a/src/modules/alsa/alsa-mixer.c
++++ b/src/modules/alsa/alsa-mixer.c
+@@ -4273,7 +4273,7 @@ static int profile_verify(pa_alsa_profile *p) {
+                 pa_strbuf_printf(sb, _("%s Input"), m->description);
+             }
+ 
+-        p->description = pa_strbuf_tostring_free(sb);
++        p->description = pa_strbuf_to_string_free(sb);
+     }
+ 
+     return 0;
+@@ -4333,7 +4333,7 @@ void pa_alsa_decibel_fix_dump(pa_alsa_decibel_fix *db_fix) {
+         for (i = 0; i < nsteps; ++i)
+             pa_strbuf_printf(buf, "[%li]:%0.2f ", i + db_fix->min_step, db_fix->db_values[i] / 100.0);
+ 
+-        db_values = pa_strbuf_tostring_free(buf);
++        db_values = pa_strbuf_to_string_free(buf);
+     }
+ 
+     pa_log_debug("Decibel fix %s, min_step=%li, max_step=%li, db_values=%s",
+diff --git a/src/modules/bluetooth/module-bluez4-device.c b/src/modules/bluetooth/module-bluez4-device.c
+index db69d34..a23c2a9 100644
+--- a/src/modules/bluetooth/module-bluez4-device.c
++++ b/src/modules/bluetooth/module-bluez4-device.c
+@@ -75,7 +75,6 @@ PA_MODULE_USAGE(
+         "rate=<sample rate> "
+         "channels=<number of channels> "
+         "path=<device object path> "
+-        "auto_connect=<automatically connect?> "
+         "sco_sink=<SCO over PCM sink name> "
+         "sco_source=<SCO over PCM source name>");
+ 
+@@ -94,7 +93,6 @@ static const char* const valid_modargs[] = {
+     "rate",
+     "channels",
+     "path",
+-    "auto_connect",
+     "sco_sink",
+     "sco_source",
+     NULL
+@@ -148,7 +146,6 @@ struct userdata {
+     pa_hook_slot *transport_speaker_changed_slot;
+ 
+     pa_bluez4_discovery *discovery;
+-    bool auto_connect;
+ 
+     char *output_port_name;
+     char *input_port_name;
+@@ -2460,12 +2457,6 @@ int pa__init(pa_module *m) {
+         goto fail;
+     }
+ 
+-    u->auto_connect = true;
+-    if (pa_modargs_get_value_boolean(ma, "auto_connect", &u->auto_connect)) {
+-        pa_log("Failed to parse auto_connect= argument");
+-        goto fail;
+-    }
+-
+     channels = u->sample_spec.channels;
+     if (pa_modargs_get_value_u32(ma, "channels", &channels) < 0 ||
+         !pa_channels_valid(channels)) {
+diff --git a/src/modules/dbus/iface-core.c b/src/modules/dbus/iface-core.c
+index d29c70a..1b14195 100644
+--- a/src/modules/dbus/iface-core.c
++++ b/src/modules/dbus/iface-core.c
+@@ -1504,7 +1504,7 @@ static void handle_load_module(DBusConnection *conn, DBusMessage *msg, void *use
+         dbus_message_iter_next(&dict_iter);
+     }
+ 
+-    arg_string = pa_strbuf_tostring(arg_buffer);
++    arg_string = pa_strbuf_to_string(arg_buffer);
+ 
+     if (!(module = pa_module_load(c->core, name, arg_string))) {
+         pa_dbus_send_error(conn, msg, DBUS_ERROR_FAILED, "Failed to load module.");
+diff --git a/src/modules/macosx/module-coreaudio-device.c b/src/modules/macosx/module-coreaudio-device.c
+index cb62661..cbf1f27 100644
+--- a/src/modules/macosx/module-coreaudio-device.c
++++ b/src/modules/macosx/module-coreaudio-device.c
+@@ -411,7 +411,7 @@ static int ca_device_create_sink(pa_module *m, AudioBuffer *buf, int channel_idx
+         pa_strbuf_puts(strbuf, tmp);
+     }
+ 
+-    ca_sink->name = pa_strbuf_tostring_free(strbuf);
++    ca_sink->name = pa_strbuf_to_string_free(strbuf);
+ 
+     pa_log_debug("Stream name is >%s<", ca_sink->name);
+ 
+@@ -529,7 +529,7 @@ static int ca_device_create_source(pa_module *m, AudioBuffer *buf, int channel_i
+         pa_strbuf_puts(strbuf, tmp);
+     }
+ 
+-    ca_source->name = pa_strbuf_tostring_free(strbuf);
++    ca_source->name = pa_strbuf_to_string_free(strbuf);
+ 
+     pa_log_debug("Stream name is >%s<", ca_source->name);
+ 
+diff --git a/src/modules/module-rygel-media-server.c b/src/modules/module-rygel-media-server.c
+index 0baf3c8..e2c2e6f 100644
+--- a/src/modules/module-rygel-media-server.c
++++ b/src/modules/module-rygel-media-server.c
+@@ -937,7 +937,7 @@ static DBusHandlerResult sinks_and_sources_handler(DBusConnection *c, DBusMessag
+             }
+ 
+             pa_strbuf_puts(sb, CONTAINER_INTROSPECT_XML_POSTFIX);
+-            xml = pa_strbuf_tostring_free(sb);
++            xml = pa_strbuf_to_string_free(sb);
+ 
+             pa_assert_se(r = dbus_message_new_method_return(m));
+             pa_assert_se(dbus_message_append_args(r, DBUS_TYPE_STRING, &xml, DBUS_TYPE_INVALID));
+diff --git a/src/modules/module-udev-detect.c b/src/modules/module-udev-detect.c
+index df0d187..bb41a96 100644
+--- a/src/modules/module-udev-detect.c
++++ b/src/modules/module-udev-detect.c
+@@ -421,7 +421,7 @@ static void card_changed(struct userdata *u, struct udev_device *dev) {
+     if (u->tsched_buffer_size_valid)
+         pa_strbuf_printf(args_buf, " tsched_buffer_size=%" PRIu32, u->tsched_buffer_size);
+ 
+-    d->args = pa_strbuf_tostring_free(args_buf);
++    d->args = pa_strbuf_to_string_free(args_buf);
+ 
+     pa_hashmap_put(u->devices, d->path, d);
+ 
 diff --git a/src/modules/raop/base64.c b/src/modules/raop/base64.c
 deleted file mode 100644
 index cdf52a6..0000000
@@ -1256,10 +1567,10 @@ index 6037038..82fa48d 100644
  }
 diff --git a/src/modules/raop/raop-client.c b/src/modules/raop/raop-client.c
 new file mode 100644
-index 0000000..3d23a78
+index 0000000..d52d4b3
 --- /dev/null
 +++ b/src/modules/raop/raop-client.c
-@@ -0,0 +1,1766 @@
+@@ -0,0 +1,1767 @@
 +/***
 +  This file is part of PulseAudio.
 +
@@ -1348,6 +1659,7 @@ index 0000000..3d23a78
 +#define VOLUME_MIN -144.0
 +
 +#define UDP_DEFAULT_PKT_BUF_SIZE 1000
++#define APPLE_CHALLENGE_LENGTH 16
 +
 +struct pa_raop_client {
 +    pa_core *core;
@@ -2188,7 +2500,7 @@ index 0000000..3d23a78
 +        }
 +
 +        case STATE_OPTIONS: {
-+            pa_log_debug("RAOP: OPTIONS");
++            pa_log_debug("RAOP: OPTIONS (stream cb)");
 +
 +            break;
 +        }
@@ -2452,7 +2764,7 @@ index 0000000..3d23a78
 +    switch (state) {
 +        case STATE_CONNECT: {
 +            char *sci = NULL, *sac = NULL;
-+            uint16_t rac;
++            uint8_t rac[APPLE_CHALLENGE_LENGTH];
 +            struct {
 +                uint32_t ci1;
 +                uint32_t ci2;
@@ -2463,9 +2775,9 @@ index 0000000..3d23a78
 +            sci = pa_sprintf_malloc("%08x%08x",rci.ci1, rci.ci2);
 +            pa_rtsp_add_header(c->rtsp, "Client-Instance", sci);
 +
-+            pa_random(&rac, sizeof(rac));
++            pa_random(rac, APPLE_CHALLENGE_LENGTH);
 +            /* Generate a random Apple-Challenge key */
-+            pa_raop_base64_encode(&rac, 8 * sizeof(rac), &sac);
++            pa_raop_base64_encode(rac, APPLE_CHALLENGE_LENGTH, &sac);
 +            rtrim_char(sac, '=');
 +            pa_rtsp_add_header(c->rtsp, "Apple-Challenge", sac);
 +
@@ -2485,7 +2797,7 @@ index 0000000..3d23a78
 +            char *realm = NULL, *nonce = NULL, *response = NULL;
 +            char comma[] = ",";
 +
-+            pa_log_debug("RAOP: OPTIONS");
++            pa_log_debug("RAOP: OPTIONS (auth cb)");
 +            /* We do not consider the Apple-Response */
 +            pa_rtsp_remove_header(c->rtsp, "Apple-Challenge");
 +
@@ -5105,8 +5417,21 @@ index b349a54..0000000
 -void pa_raop_client_set_closed_callback(pa_raop_client* c, pa_raop_client_closed_cb_t callback, void *userdata);
 -
 -#endif
+diff --git a/src/modules/rtp/headerlist.c b/src/modules/rtp/headerlist.c
+index 2ea7226..1fb0b41 100644
+--- a/src/modules/rtp/headerlist.c
++++ b/src/modules/rtp/headerlist.c
+@@ -159,7 +159,7 @@ char *pa_headerlist_to_string(pa_headerlist *p) {
+             pa_strbuf_printf(buf, "%s: %s\r\n", key, v);
+     }
+ 
+-    return pa_strbuf_tostring_free(buf);
++    return pa_strbuf_to_string_free(buf);
+ }
+ 
+ int pa_headerlist_contains(pa_headerlist *p, const char *key) {
 diff --git a/src/modules/rtp/rtsp_client.c b/src/modules/rtp/rtsp_client.c
-index a279aee..8c72a77 100644
+index a279aee..34210f9 100644
 --- a/src/modules/rtp/rtsp_client.c
 +++ b/src/modules/rtp/rtsp_client.c
 @@ -41,6 +41,7 @@
@@ -5181,7 +5506,7 @@ index a279aee..8c72a77 100644
          return;
      }
  
-@@ -190,17 +192,35 @@ static void line_callback(pa_ioline *line, const char *s, void *userdata) {
+@@ -190,22 +192,40 @@ static void line_callback(pa_ioline *line, const char *s, void *userdata) {
          *s2p = '\0';
          s2p -= 1;
      }
@@ -5221,7 +5546,21 @@ index a279aee..8c72a77 100644
      if (!strlen(s2)) {
          /* End of headers */
          /* We will have a header left from our looping iteration, so add it in :) */
-@@ -227,7 +247,7 @@ static void line_callback(pa_ioline *line, const char *s, void *userdata) {
+         if (c->last_header) {
+-            char *tmp = pa_strbuf_tostring_free(c->header_buffer);
++            char *tmp = pa_strbuf_to_string_free(c->header_buffer);
+             /* This is not a continuation header so let's dump it into our proplist */
+             pa_headerlist_puts(c->response_headers, c->last_header, tmp);
+             pa_xfree(tmp);
+@@ -216,7 +236,6 @@ static void line_callback(pa_ioline *line, const char *s, void *userdata) {
+ 
+         pa_log_debug("Full response received. Dispatching");
+         headers_read(c);
+-        c->waiting = 1;
+         goto exit;
+     }
+ 
+@@ -227,13 +246,13 @@ static void line_callback(pa_ioline *line, const char *s, void *userdata) {
      if (c->last_header && ' ' == s2[0]) {
          pa_assert(c->header_buffer);
  
@@ -5230,7 +5569,14 @@ index a279aee..8c72a77 100644
          pa_strbuf_puts(c->header_buffer, &(s2[1]));
          goto exit;
      }
-@@ -269,6 +289,7 @@ static void line_callback(pa_ioline *line, const char *s, void *userdata) {
+ 
+     if (c->last_header) {
+-        char *tmp = pa_strbuf_tostring_free(c->header_buffer);
++        char *tmp = pa_strbuf_to_string_free(c->header_buffer);
+         /* This is not a continuation header so let's dump the full
+           header/value into our proplist */
+         pa_headerlist_puts(c->response_headers, c->last_header, tmp);
+@@ -269,6 +288,7 @@ static void line_callback(pa_ioline *line, const char *s, void *userdata) {
  
      /* Save the header name */
      c->last_header = pa_xstrdup(s2);
@@ -5238,7 +5584,7 @@ index a279aee..8c72a77 100644
    exit:
      pa_xfree(s2);
  }
-@@ -309,14 +330,14 @@ static void on_connection(pa_socket_client *sc, pa_iochannel *io, void *userdata
+@@ -309,14 +329,14 @@ static void on_connection(pa_socket_client *sc, pa_iochannel *io, void *userdata
              }
          } else if (AF_INET6 == sa.sa.sa_family) {
              if ((res = inet_ntop(AF_INET6, &sa.in6.sin6_addr, buf, sizeof(buf)))) {
@@ -5255,7 +5601,7 @@ index a279aee..8c72a77 100644
  }
  
  int pa_rtsp_connect(pa_rtsp_client *c) {
-@@ -335,6 +356,7 @@ int pa_rtsp_connect(pa_rtsp_client *c) {
+@@ -335,6 +355,7 @@ int pa_rtsp_connect(pa_rtsp_client *c) {
      pa_socket_client_set_callback(c->sc, on_connection, c);
      c->waiting = 1;
      c->state = STATE_CONNECT;
@@ -5263,7 +5609,7 @@ index a279aee..8c72a77 100644
      return 0;
  }
  
-@@ -348,30 +370,45 @@ void pa_rtsp_set_callback(pa_rtsp_client *c, pa_rtsp_cb_t callback, void *userda
+@@ -348,30 +369,45 @@ void pa_rtsp_set_callback(pa_rtsp_client *c, pa_rtsp_cb_t callback, void *userda
  void pa_rtsp_disconnect(pa_rtsp_client *c) {
      pa_assert(c);
  
@@ -5314,7 +5660,7 @@ index a279aee..8c72a77 100644
      pa_assert(c);
      pa_assert(key);
      pa_assert(value);
-@@ -379,19 +416,26 @@ void pa_rtsp_add_header(pa_rtsp_client *c, const char* key, const char* value) {
+@@ -379,19 +415,26 @@ void pa_rtsp_add_header(pa_rtsp_client *c, const char* key, const char* value) {
      pa_headerlist_puts(c->headers, key, value);
  }
  
@@ -5347,7 +5693,19 @@ index a279aee..8c72a77 100644
  
      pa_assert(c);
      pa_assert(c->url);
-@@ -441,43 +485,69 @@ static int rtsp_exec(pa_rtsp_client* c, const char* cmd,
+@@ -432,52 +475,79 @@ static int rtsp_exec(pa_rtsp_client* c, const char* cmd,
+     }
+ 
+     /* Our packet is created... now we can send it :) */
+-    hdrs = pa_strbuf_tostring_free(buf);
++    hdrs = pa_strbuf_to_string_free(buf);
+     /*pa_log_debug("Submitting request:");
+     pa_log_debug(hdrs);*/
+     pa_ioline_puts(c->ioline, hdrs);
+     pa_xfree(hdrs);
+-
++    /* The command is sent we can configure the rtsp client structure to handle a new answer */
++    c->waiting = 1;
      return 0;
  }
  
@@ -5566,11 +5924,210 @@ index f0ff95a..4e031d8 100644
 +int pa_rtsp_teardown(pa_rtsp_client *c);
  
  #endif
+diff --git a/src/modules/x11/module-x11-publish.c b/src/modules/x11/module-x11-publish.c
+index 418c6c9..553b341 100644
+--- a/src/modules/x11/module-x11-publish.c
++++ b/src/modules/x11/module-x11-publish.c
+@@ -83,7 +83,7 @@ static void publish_servers(struct userdata *u, pa_strlist *l) {
+         char *s;
+ 
+         l = pa_strlist_reverse(l);
+-        s = pa_strlist_tostring(l);
++        s = pa_strlist_to_string(l);
+         pa_strlist_reverse(l);
+ 
+         pa_x11_set_prop(pa_x11_wrapper_get_xcb_connection(u->x11_wrapper), screen, "PULSE_SERVER", s);
+diff --git a/src/pulse/proplist.c b/src/pulse/proplist.c
+index 6111661..4e2901b 100644
+--- a/src/pulse/proplist.c
++++ b/src/pulse/proplist.c
+@@ -435,7 +435,7 @@ char *pa_proplist_to_string_sep(pa_proplist *p, const char *sep) {
+         }
+     }
+ 
+-    return pa_strbuf_tostring_free(buf);
++    return pa_strbuf_to_string_free(buf);
+ }
+ 
+ char *pa_proplist_to_string(pa_proplist *p) {
+diff --git a/src/pulse/pulseaudio.h b/src/pulse/pulseaudio.h
+index f5c5b0d..063d5e2 100644
+--- a/src/pulse/pulseaudio.h
++++ b/src/pulse/pulseaudio.h
+@@ -140,6 +140,15 @@
+  *  - `PULSE_LOG_SYSLOG`: If defined, force all client libraries to log
+  *     their output using the syslog(3) mechanism. Default behavior is to
+  *     log all output to stderr.
++ *  - `PULSE_LOG_JOURNAL`: If defined, force all client libraries to log
++ *     their output using the systemd journal. If both `PULSE_LOG_JOURNAL`
++ *     and `PULSE_LOG_SYSLOG` are defined, logging to the systemd journal
++ *     takes a higher precedence. Each message originating library file name
++ *     and function are included by default through the journal fields
++ *     `CODE_FILE`, `CODE_FUNC`, and `CODE_LINE`. Any backtrace attached to
++ *     the logging message is sent through the PulseAudio-specific journal
++ *     field `PULSE_BACKTRACE`. This environment variable has no effect if
++ *     PulseAudio was compiled without systemd journal support.
+  *  - `PULSE_LOG_COLORS`: If defined, enables colored logging output.
+  *  - `PULSE_LOG_TIME`: If defined, include timestamps with each message.
+  *  - `PULSE_LOG_FILE`: If defined, include each message originating file
+diff --git a/src/pulsecore/card.c b/src/pulsecore/card.c
+index 6f9391e..7f6d255 100644
+--- a/src/pulsecore/card.c
++++ b/src/pulsecore/card.c
+@@ -135,7 +135,7 @@ pa_card *pa_card_new(pa_core *core, pa_card_new_data *data) {
+     pa_assert(data->profiles);
+     pa_assert(!pa_hashmap_isempty(data->profiles));
+ 
+-    c = pa_xnew(pa_card, 1);
++    c = pa_xnew0(pa_card, 1);
+ 
+     if (!(name = pa_namereg_register(core, data->name, PA_NAMEREG_CARD, c, data->namereg_fail))) {
+         pa_xfree(c);
+@@ -172,9 +172,6 @@ pa_card *pa_card_new(pa_core *core, pa_card_new_data *data) {
+     PA_HASHMAP_FOREACH(port, c->ports, state)
+         port->card = c;
+ 
+-    c->active_profile = NULL;
+-    c->save_profile = false;
+-
+     if (data->active_profile)
+         if ((c->active_profile = pa_hashmap_get(c->profiles, data->active_profile)))
+             c->save_profile = data->save_profile;
+@@ -196,9 +193,6 @@ pa_card *pa_card_new(pa_core *core, pa_card_new_data *data) {
+         pa_assert(c->active_profile);
+     }
+ 
+-    c->userdata = NULL;
+-    c->set_profile = NULL;
+-
+     pa_device_init_description(c->proplist, c);
+     pa_device_init_icon(c->proplist, true);
+     pa_device_init_intended_roles(c->proplist);
+diff --git a/src/pulsecore/cli-text.c b/src/pulsecore/cli-text.c
+index d296692..af79a1e 100644
+--- a/src/pulsecore/cli-text.c
++++ b/src/pulsecore/cli-text.c
+@@ -68,7 +68,7 @@ char *pa_module_list_to_string(pa_core *c) {
+         pa_xfree(t);
+     }
+ 
+-    return pa_strbuf_tostring_free(s);
++    return pa_strbuf_to_string_free(s);
+ }
+ 
+ char *pa_client_list_to_string(pa_core *c) {
+@@ -98,7 +98,7 @@ char *pa_client_list_to_string(pa_core *c) {
+         pa_xfree(t);
+     }
+ 
+-    return pa_strbuf_tostring_free(s);
++    return pa_strbuf_to_string_free(s);
+ }
+ 
+ static const char *available_to_string(pa_available_t a) {
+@@ -193,7 +193,7 @@ char *pa_card_list_to_string(pa_core *c) {
+         append_port_list(s, card->ports);
+     }
+ 
+-    return pa_strbuf_tostring_free(s);
++    return pa_strbuf_to_string_free(s);
+ }
+ 
+ static const char *sink_state_to_string(pa_sink_state_t state) {
+@@ -345,7 +345,7 @@ char *pa_sink_list_to_string(pa_core *c) {
+                     sink->active_port->name);
+     }
+ 
+-    return pa_strbuf_tostring_free(s);
++    return pa_strbuf_to_string_free(s);
+ }
+ 
+ char *pa_source_list_to_string(pa_core *c) {
+@@ -460,7 +460,7 @@ char *pa_source_list_to_string(pa_core *c) {
+                     source->active_port->name);
+     }
+ 
+-    return pa_strbuf_tostring_free(s);
++    return pa_strbuf_to_string_free(s);
+ }
+ 
+ char *pa_source_output_list_to_string(pa_core *c) {
+@@ -557,7 +557,7 @@ char *pa_source_output_list_to_string(pa_core *c) {
+         pa_xfree(t);
+     }
+ 
+-    return pa_strbuf_tostring_free(s);
++    return pa_strbuf_to_string_free(s);
+ }
+ 
+ char *pa_sink_input_list_to_string(pa_core *c) {
+@@ -653,7 +653,7 @@ char *pa_sink_input_list_to_string(pa_core *c) {
+         pa_xfree(t);
+     }
+ 
+-    return pa_strbuf_tostring_free(s);
++    return pa_strbuf_to_string_free(s);
+ }
+ 
+ char *pa_scache_list_to_string(pa_core *c) {
+@@ -712,7 +712,7 @@ char *pa_scache_list_to_string(pa_core *c) {
+         }
+     }
+ 
+-    return pa_strbuf_tostring_free(s);
++    return pa_strbuf_to_string_free(s);
+ }
+ 
+ char *pa_full_status_string(pa_core *c) {
+@@ -755,5 +755,5 @@ char *pa_full_status_string(pa_core *c) {
+         pa_xfree(t);
+     }
+ 
+-    return pa_strbuf_tostring_free(s);
++    return pa_strbuf_to_string_free(s);
+ }
+diff --git a/src/pulsecore/cli.c b/src/pulsecore/cli.c
+index d72642f..f942629 100644
+--- a/src/pulsecore/cli.c
++++ b/src/pulsecore/cli.c
+@@ -152,7 +152,7 @@ static void line_callback(pa_ioline *line, const char *s, void *userdata) {
+     else
+         pa_cli_command_execute_line(c->core, s, buf, &c->fail);
+     c->defer_kill--;
+-    pa_ioline_puts(line, p = pa_strbuf_tostring_free(buf));
++    pa_ioline_puts(line, p = pa_strbuf_to_string_free(buf));
+     pa_xfree(p);
+ 
+     if (c->kill_requested) {
+diff --git a/src/pulsecore/client.c b/src/pulsecore/client.c
+index 003bcf8..2e6af47 100644
+--- a/src/pulsecore/client.c
++++ b/src/pulsecore/client.c
+@@ -60,7 +60,7 @@ pa_client *pa_client_new(pa_core *core, pa_client_new_data *data) {
+     if (pa_hook_fire(&core->hooks[PA_CORE_HOOK_CLIENT_NEW], data) < 0)
+         return NULL;
+ 
+-    c = pa_xnew(pa_client, 1);
++    c = pa_xnew0(pa_client, 1);
+     c->core = core;
+     c->proplist = pa_proplist_copy(data->proplist);
+     c->driver = pa_xstrdup(pa_path_get_filename(data->driver));
+@@ -69,10 +69,6 @@ pa_client *pa_client_new(pa_core *core, pa_client_new_data *data) {
+     c->sink_inputs = pa_idxset_new(NULL, NULL);
+     c->source_outputs = pa_idxset_new(NULL, NULL);
+ 
+-    c->userdata = NULL;
+-    c->kill = NULL;
+-    c->send_event = NULL;
+-
+     pa_assert_se(pa_idxset_put(core->clients, c, &c->index) >= 0);
+ 
+     pa_log_info("Created %u \"%s\"", c->index, pa_strnull(pa_proplist_gets(c->proplist, PA_PROP_APPLICATION_NAME)));
 diff --git a/src/pulsecore/core-util.c b/src/pulsecore/core-util.c
-index 9b16936..957e3e3 100644
+index ba31221..5e3fa53 100644
 --- a/src/pulsecore/core-util.c
 +++ b/src/pulsecore/core-util.c
-@@ -2907,6 +2907,26 @@ bool pa_in_system_mode(void) {
+@@ -2974,6 +2974,26 @@ bool pa_in_system_mode(void) {
      return !!atoi(e);
  }
  
@@ -5597,11 +6154,54 @@ index 9b16936..957e3e3 100644
  /* Checks a whitespace-separated list of words in haystack for needle */
  bool pa_str_in_list_spaces(const char *haystack, const char *needle) {
      char *s;
+@@ -3060,12 +3080,21 @@ char *pa_machine_id(void) {
+     /* The returned value is supposed be some kind of ascii identifier
+      * that is unique and stable across reboots. */
+ 
+-    /* First we try the /etc/machine-id, which is the best option we
+-     * have, since it fits perfectly our needs and is not as volatile
++    /* First we try ${sysconfdir}/etc/machine-id, with fallbacks to
++     * ${localstatedir}/lib/dbus/machine-id, /etc/machine-id and
++     * /var/lib/dbus/machine-id, which are the best option we
++     * have, since they fit perfectly our needs and are not as volatile
+      * as the hostname which might be set from dhcp. */
+ 
+     if ((f = pa_fopen_cloexec(PA_MACHINE_ID, "r")) ||
+-        (f = pa_fopen_cloexec(PA_MACHINE_ID_FALLBACK, "r"))) {
++        (f = pa_fopen_cloexec(PA_MACHINE_ID_FALLBACK, "r")) ||
++#if !defined(OS_IS_WIN32)
++        (f = pa_fopen_cloexec("/etc/machine-id", "r")) ||
++        (f = pa_fopen_cloexec("/var/lib/dbus/machine-id", "r"))
++#else
++        false
++#endif
++        ) {
+         char ln[34] = "", *r;
+ 
+         r = fgets(ln, sizeof(ln)-1, f);
+@@ -3193,7 +3222,7 @@ char *pa_replace(const char*s, const char*a, const char *b) {
+ 
+     pa_strbuf_puts(sb, s);
+ 
+-    return pa_strbuf_tostring_free(sb);
++    return pa_strbuf_to_string_free(sb);
+ }
+ 
+ char *pa_escape(const char *p, const char *chars) {
+@@ -3215,7 +3244,7 @@ char *pa_escape(const char *p, const char *chars) {
+         pa_strbuf_putc(buf, *s);
+     }
+ 
+-    return pa_strbuf_tostring_free(buf);
++    return pa_strbuf_to_string_free(buf);
+ }
+ 
+ char *pa_unescape(char *p) {
 diff --git a/src/pulsecore/core-util.h b/src/pulsecore/core-util.h
-index dcdc40e..516cd98 100644
+index d5a2d39..56b527f 100644
 --- a/src/pulsecore/core-util.h
 +++ b/src/pulsecore/core-util.h
-@@ -105,8 +105,8 @@ static inline const char *pa_strna(const char *x) {
+@@ -109,8 +109,8 @@ static inline const char *pa_strna(const char *x) {
      return x ? x : "n/a";
  }
  
@@ -5612,7 +6212,7 @@ index dcdc40e..516cd98 100644
  char *pa_split_spaces(const char *c, const char **state);
  
  char *pa_strip_nl(char *s);
-@@ -224,6 +224,7 @@ static inline bool pa_safe_streq(const char *a, const char *b) {
+@@ -228,6 +228,7 @@ static inline bool pa_safe_streq(const char *a, const char *b) {
  }
  
  bool pa_str_in_list_spaces(const char *needle, const char *haystack);
@@ -5620,6 +6220,40 @@ index dcdc40e..516cd98 100644
  
  char *pa_get_host_name_malloc(void);
  char *pa_get_user_name_malloc(void);
+diff --git a/src/pulsecore/log.c b/src/pulsecore/log.c
+index 552d416..3c876f6 100644
+--- a/src/pulsecore/log.c
++++ b/src/pulsecore/log.c
+@@ -60,6 +60,7 @@
+ #include "log.h"
+ 
+ #define ENV_LOG_SYSLOG "PULSE_LOG_SYSLOG"
++#define ENV_LOG_JOURNAL "PULSE_LOG_JOURNAL"
+ #define ENV_LOG_LEVEL "PULSE_LOG"
+ #define ENV_LOG_COLORS "PULSE_LOG_COLORS"
+ #define ENV_LOG_PRINT_TIME "PULSE_LOG_TIME"
+@@ -293,6 +294,13 @@ static void init_defaults(void) {
+             target_override_set = true;
+         }
+ 
++#ifdef HAVE_SYSTEMD_JOURNAL
++        if (getenv(ENV_LOG_JOURNAL)) {
++            target_override = PA_LOG_JOURNAL;
++            target_override_set = true;
++        }
++#endif
++
+         if ((e = getenv(ENV_LOG_LEVEL))) {
+             maximum_level_override = (pa_log_level_t) atoi(e);
+ 
+@@ -493,6 +501,7 @@ void pa_log_levelv_meta(
+                                 "CODE_FILE=%s", file,
+                                 "CODE_FUNC=%s", func,
+                                 "CODE_LINE=%d", line,
++                                "PULSE_BACKTRACE=%s", pa_strempty(bt),
+                                 NULL) < 0) {
+ #ifdef HAVE_SYSLOG_H
+                     pa_log_target new_target = { .type = PA_LOG_SYSLOG, .file = NULL };
 diff --git a/src/pulsecore/parseaddr.c b/src/pulsecore/parseaddr.c
 index 7f72e79..b909f52 100644
 --- a/src/pulsecore/parseaddr.c
@@ -5650,6 +6284,54 @@ index 5d2c358..6bb4d85 100644
 +bool pa_is_ip6_address(const char *a);
 +
  #endif
+diff --git a/src/pulsecore/protocol-dbus.c b/src/pulsecore/protocol-dbus.c
+index d07d067..59afc1a 100644
+--- a/src/pulsecore/protocol-dbus.c
++++ b/src/pulsecore/protocol-dbus.c
+@@ -257,7 +257,7 @@ static void update_introspection(struct object_entry *oe) {
+     pa_strbuf_puts(buf, "</node>\n");
+ 
+     pa_xfree(oe->introspection);
+-    oe->introspection = pa_strbuf_tostring_free(buf);
++    oe->introspection = pa_strbuf_to_string_free(buf);
+ }
+ 
+ /* Return value of find_handler() and its subfunctions. */
+@@ -689,7 +689,7 @@ static pa_hashmap *extract_method_signatures(pa_hashmap *method_handlers) {
+                 pa_strbuf_puts(sig_buf, handler->arguments[i].type);
+         }
+ 
+-        pa_hashmap_put(signatures, (char *) handler->method_name, pa_strbuf_tostring_free(sig_buf));
++        pa_hashmap_put(signatures, (char *) handler->method_name, pa_strbuf_to_string_free(sig_buf));
+     }
+ 
+     return signatures;
+diff --git a/src/pulsecore/protocol-http.c b/src/pulsecore/protocol-http.c
+index da8e220..25a2cd0 100644
+--- a/src/pulsecore/protocol-http.c
++++ b/src/pulsecore/protocol-http.c
+@@ -294,7 +294,7 @@ static char *escape_html(const char *t) {
+     if (p > e)
+         pa_strbuf_putsn(sb, e, p-e);
+ 
+-    return pa_strbuf_tostring_free(sb);
++    return pa_strbuf_to_string_free(sb);
+ }
+ 
+ static void http_response(
+diff --git a/src/pulsecore/resampler.c b/src/pulsecore/resampler.c
+index 5478e6d..bf3fdb8 100644
+--- a/src/pulsecore/resampler.c
++++ b/src/pulsecore/resampler.c
+@@ -1149,7 +1149,7 @@ static void setup_remap(const pa_resampler *r, pa_remap_t *m, bool *lfe_remixed)
+         pa_strbuf_puts(s, "\n");
+     }
+ 
+-    pa_log_debug("Channel matrix:\n%s", t = pa_strbuf_tostring_free(s));
++    pa_log_debug("Channel matrix:\n%s", t = pa_strbuf_to_string_free(s));
+     pa_xfree(t);
+ 
+     /* initialize the remapping function */
 diff --git a/src/pulsecore/socket-client.c b/src/pulsecore/socket-client.c
 index b4067f0..c87406d 100644
 --- a/src/pulsecore/socket-client.c
@@ -5693,3 +6375,135 @@ index b4067f0..c87406d 100644
      pa_xfree(a.path_or_host);
      return c;
  
+diff --git a/src/pulsecore/strbuf.c b/src/pulsecore/strbuf.c
+index adcd3eb..11f131b 100644
+--- a/src/pulsecore/strbuf.c
++++ b/src/pulsecore/strbuf.c
+@@ -69,7 +69,7 @@ void pa_strbuf_free(pa_strbuf *sb) {
+ 
+ /* Make a C string from the string buffer. The caller has to free
+  * string with pa_xfree(). */
+-char *pa_strbuf_tostring(pa_strbuf *sb) {
++char *pa_strbuf_to_string(pa_strbuf *sb) {
+     char *t, *e;
+     struct chunk *c;
+ 
+@@ -91,12 +91,12 @@ char *pa_strbuf_tostring(pa_strbuf *sb) {
+     return t;
+ }
+ 
+-/* Combination of pa_strbuf_free() and pa_strbuf_tostring() */
+-char *pa_strbuf_tostring_free(pa_strbuf *sb) {
++/* Combination of pa_strbuf_free() and pa_strbuf_to_string() */
++char *pa_strbuf_to_string_free(pa_strbuf *sb) {
+     char *t;
+ 
+     pa_assert(sb);
+-    t = pa_strbuf_tostring(sb);
++    t = pa_strbuf_to_string(sb);
+     pa_strbuf_free(sb);
+ 
+     return t;
+diff --git a/src/pulsecore/strbuf.h b/src/pulsecore/strbuf.h
+index 562fe38..469f6f7 100644
+--- a/src/pulsecore/strbuf.h
++++ b/src/pulsecore/strbuf.h
+@@ -27,8 +27,8 @@ typedef struct pa_strbuf pa_strbuf;
+ 
+ pa_strbuf *pa_strbuf_new(void);
+ void pa_strbuf_free(pa_strbuf *sb);
+-char *pa_strbuf_tostring(pa_strbuf *sb);
+-char *pa_strbuf_tostring_free(pa_strbuf *sb);
++char *pa_strbuf_to_string(pa_strbuf *sb);
++char *pa_strbuf_to_string_free(pa_strbuf *sb);
+ 
+ size_t pa_strbuf_printf(pa_strbuf *sb, const char *format, ...)  PA_GCC_PRINTF_ATTR(2,3);
+ void pa_strbuf_puts(pa_strbuf *sb, const char *t);
+diff --git a/src/pulsecore/strlist.c b/src/pulsecore/strlist.c
+index 37e4847..7e5b070 100644
+--- a/src/pulsecore/strlist.c
++++ b/src/pulsecore/strlist.c
+@@ -50,7 +50,7 @@ pa_strlist* pa_strlist_prepend(pa_strlist *l, const char *s) {
+     return n;
+ }
+ 
+-char *pa_strlist_tostring(pa_strlist *l) {
++char *pa_strlist_to_string(pa_strlist *l) {
+     int first = 1;
+     pa_strbuf *b;
+ 
+@@ -62,7 +62,7 @@ char *pa_strlist_tostring(pa_strlist *l) {
+         pa_strbuf_puts(b, ITEM_TO_TEXT(l));
+     }
+ 
+-    return pa_strbuf_tostring_free(b);
++    return pa_strbuf_to_string_free(b);
+ }
+ 
+ pa_strlist* pa_strlist_remove(pa_strlist *l, const char *s) {
+diff --git a/src/pulsecore/strlist.h b/src/pulsecore/strlist.h
+index 84a5777..3cc71e8 100644
+--- a/src/pulsecore/strlist.h
++++ b/src/pulsecore/strlist.h
+@@ -29,7 +29,7 @@ pa_strlist* pa_strlist_prepend(pa_strlist *l, const char *s);
+ pa_strlist* pa_strlist_remove(pa_strlist *l, const char *s);
+ 
+ /* Make a whitespace separated string of all server strings. Returned memory has to be freed with pa_xfree() */
+-char *pa_strlist_tostring(pa_strlist *l);
++char *pa_strlist_to_string(pa_strlist *l);
+ 
+ /* Free the entire list */
+ void pa_strlist_free(pa_strlist *l);
+diff --git a/src/tests/memblockq-test.c b/src/tests/memblockq-test.c
+index a65b097..eea6cfa 100644
+--- a/src/tests/memblockq-test.c
++++ b/src/tests/memblockq-test.c
+@@ -70,7 +70,7 @@ static void dump(pa_memblockq *bq, int n) {
+     buf = pa_strbuf_new();
+     dump_chunk(&out, buf);
+     pa_memblock_unref(out.memblock);
+-    str = pa_strbuf_tostring_free(buf);
++    str = pa_strbuf_to_string_free(buf);
+     fail_unless(pa_streq(str, fixed[n]));
+     pa_xfree(str);
+     fprintf(stderr, "<\n");
+@@ -87,7 +87,7 @@ static void dump(pa_memblockq *bq, int n) {
+         pa_memblock_unref(out.memblock);
+         pa_memblockq_drop(bq, out.length);
+     }
+-    str = pa_strbuf_tostring_free(buf);
++    str = pa_strbuf_to_string_free(buf);
+     fail_unless(pa_streq(str, manual[n]));
+     pa_xfree(str);
+     fprintf(stderr, "<\n");
+diff --git a/src/tests/strlist-test.c b/src/tests/strlist-test.c
+index 6a4f4bb..f4ec1c3 100644
+--- a/src/tests/strlist-test.c
++++ b/src/tests/strlist-test.c
+@@ -20,7 +20,7 @@ START_TEST (strlist_test) {
+     l = pa_strlist_prepend(l, "b");
+     l = pa_strlist_prepend(l, "a");
+ 
+-    t = pa_strlist_tostring(l);
++    t = pa_strlist_to_string(l);
+     pa_strlist_free(l);
+ 
+     fprintf(stderr, "1: %s\n", t);
+@@ -29,7 +29,7 @@ START_TEST (strlist_test) {
+     l = pa_strlist_parse(t);
+     pa_xfree(t);
+ 
+-    t = pa_strlist_tostring(l);
++    t = pa_strlist_to_string(l);
+     fprintf(stderr, "2: %s\n", t);
+     fail_unless(pa_streq(t, "a b c d e"));
+     pa_xfree(t);
+@@ -41,7 +41,7 @@ START_TEST (strlist_test) {
+ 
+     l = pa_strlist_remove(l, "c");
+ 
+-    t = pa_strlist_tostring(l);
++    t = pa_strlist_to_string(l);
+     fprintf(stderr, "4: %s\n", t);
+     fail_unless(pa_streq(t, "b d e"));
+     pa_xfree(t);
