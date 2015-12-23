@@ -12,8 +12,6 @@ source=('thunderbird_attachment.desktop')
 sha256sums=('f985f587f5598ace64075cdd4a1686cd39a8e8cb325b695549862b20da8d7331')
 
 package() {
-    install -dm755 ${pkgdir}/usr/share/kservices5/ServiceMenus/ 
-    install -dm755 ${pkgdir}/usr/share/kde4/services/ServiceMenus/
-    install -D -m644 thunderbird_attachment.desktop ${pkgdir}/usr/share/kservices5/ServiceMenus/
-    install -D -m644 thunderbird_attachment.desktop ${pkgdir}/usr/share/kde4/services/ServiceMenus/
+    install -Dm644 -t "${pkgdir}/usr/share/kservices5/ServiceMenus/"    ${srcdir}/thunderbird_attachment.desktop
+    install -Dm644 -t "${pkgdir}/usr/share/kde4/services/ServiceMenus/" ${srcdir}/thunderbird_attachment.desktop
 }
