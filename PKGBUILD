@@ -11,7 +11,7 @@ options=('!strip')
 source=("http://tcpdiag.dl.sourceforge.net/project/tunesviewer/${pkgname}_${pkgver}.deb")
 sha1sums=('92f756ea12acce46f76008da88413edb8546ec50')
 
-depends=("python2" "pygtk" "python2-lxml" "python2-notify" "python2-support" "pywebkitgtk")
+depends=("python2" "pygtk" "python2-lxml" "pywebkitgtk")
 optdepends=("soundconverter" "vlc")
 
 package() {
