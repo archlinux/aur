@@ -15,6 +15,8 @@ package() {
   cp -r $srcdir/* $pkgdir/opt/
   mkdir -p $pkgdir/usr/bin
   ln -s /opt/geophar/geophar.pyw $pkgdir/usr/bin/geophar
+  mkdir $pkgdir/opt/geophar/config
+  chmod a+w $pkgdir/opt/geophar/config
 
   # Forces usage of python2
   sed -i 's,/usr/bin/env python$,/usr/bin/env python2,' $pkgdir/opt/geophar/geophar.pyw
