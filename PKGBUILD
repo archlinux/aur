@@ -26,13 +26,15 @@ build() {
   cd "$srcdir/$pkgname"
   make
 
-  gzip -f "facetimehd.ko"
+  gzip -9f "facetimehd.ko"
 }
 
 package() {
   cd "$srcdir/$pkgname"
 
-  # TODO: Get kernel name trimming from uname -r
-  install -Dm 644 facetimehd.ko.gz "$pkgdir/usr/lib/modules/extramodules-4.3-ARCH/facetimehd.ko.gz"
-  install -Dm 644 "$srcdir"/firmware.bin "$pkgdir/usr/lib/firmware/facetimehd/firmware.bin"
+  KERNEL_VERSION=$(uname -r | cut -d '.' -f 1,2)
+  install -Dm 644 facetimehd.ko.gz \
+    "$pkgdir/usr/lib/modules/extramodules-${KERNEL_VERSION}-ARCH/facetimehd.ko.gz"
+  install -Dm 644 "$srcdir"/firmware.bin \
+    "$pkgdir/usr/lib/firmware/facetimehd/firmware.bin"
 }
