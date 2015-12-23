@@ -1,0 +1,7 @@
+post_install() {
+  echo '------------------------------------------------------------------------------------'
+  echo ' You must edit ~/.xscreensaver to add support for this screensaver'
+  echo ' Find the line "programs:" and simply add the following below it:'
+  echo ' "ATV4" atv4 \n\'
+  echo '------------------------------------------------------------------------------------'
+}
