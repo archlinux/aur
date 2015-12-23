@@ -3,7 +3,7 @@
 pkgname=retroarch-git
 _gitname=RetroArch
 epoch=2
-pkgver=1.2.2.r1547.db4430e
+pkgver=1.2.2.r3723.acb4682
 pkgrel=1
 pkgdesc="Simple frontend for the Libretro API"
 arch=('i686' 'x86_64' 'arm' 'armv6h')
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$_gitname"
 
-  printf "%s" "$(git describe --long --tags | sed 's/v//g;s/\([^-]*-\)g/r\1/;s/-/./g')"
+  printf "%s" "$(git describe --first-parent --long --tags | sed 's/v//g;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
