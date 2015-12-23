@@ -5,7 +5,7 @@ _pkgname=papirus-pack-kde
 pkgbase=papirus-git
 pkgname=('papirus-git' 'papirus-plasma-theme-git' 'papirus-icon-theme-git' 'papirus-color-scheme-git' 'papirus-gtk-theme-git' 'papirus-aurorae-theme-git' 
          'papirus-konsole-colorscheme-git' 'papirus-yakuake-theme-git' 'bomi-skin-papirus-git' 'libreoffice-papirus-theme-git' 'papirus-kmail-theme-git' 'papirus-vlc-theme-git')
-pkgver=r400.53c1dbd
+pkgver=r406.854fe81
 pkgrel=1
 pkgdesc="Look-and-feel package for modified and adaptive Paper theme for KDE"
 arch=('any')
