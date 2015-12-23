@@ -17,7 +17,7 @@ package() {
     cd "$pkgdir"
     install -dm0755 usr/share/webapps
     install -dm0755 var/lib/${_pkgname}
-    cp -a "$srcdir"/${_pkgname} usr/share/webapps/${_pkgname}
+    cp -a "$srcdir"/${pkgname} usr/share/webapps/${_pkgname}
 
     # move data in var
     ln -s ../../../var/lib/moodle usr/share/webapps/moodledata
