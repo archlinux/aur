@@ -6,7 +6,7 @@ pkgdesc="A C++/SDL shoot'em up"
 arch=('i686' 'x86_64')
 url="https://github.com/ColinPitrat/althreat"
 license=('GPL2')
-depends=('sdl' 'sdl_image' 'sdl_mixer' 'sdl_ttf')
+depends=('sdl_image' 'sdl_mixer' 'sdl_ttf')
 source=(git://github.com/ColinPitrat/althreat/)
 sha256sums=('SKIP')
 
