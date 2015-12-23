@@ -1,0 +1,5 @@
+ACTION=="add", SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", GROUP="uucp"
+ACTION=="add", SUBSYSTEMS=="usb", ATTRS{idVendor}=="067b", ATTRS{idProduct}=="2303", GROUP="uucp"
+ACTION=="add", SUBSYSTEMS=="usb", ATTRS{idVendor}=="0fcf", ATTRS{idProduct}=="1008", GROUP="uucp"
+ACTION=="add", SUBSYSTEMS=="usb", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea61", GROUP="uucp"
+ACTION=="add", SUBSYSTEMS=="usb", ATTRS{idVendor}=="283e", ATTRS{idProduct}=="0007", GROUP="uucp"

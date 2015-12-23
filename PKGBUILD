@@ -7,8 +7,10 @@ arch=('i686' 'x86_64')
 url="https://github.com/ColinPitrat/kalenji-gps-watch-reader"
 license=('GPL2')
 depends=('libusb' 'libxml2' 'curl')
-source=(git://github.com/ColinPitrat/kalenji-gps-watch-reader/)
-sha256sums=('SKIP')
+source=(git://github.com/ColinPitrat/kalenji-gps-watch-reader/
+        '10-kalenji.rules')
+sha256sums=('SKIP'
+            '06262244b33a337ef76ada34f6f647fdd3c8528914e5c5f79ff99bdb2791990a')
 
 pkgver() {
   cd kalenji-gps-watch-reader
@@ -24,4 +26,5 @@ package() {
   cd kalenji-gps-watch-reader
   install -Dm755 kalenji_reader "$pkgdir/usr/bin/kalenji_reader"
   install -Dm755 scripts/kalenji_export.sh "$pkgdir/usr/bin/kalenji_export.sh"
+  install -Dm755 10-kalenji.rules "$pkgdir/etc/udev/rules.d/10-kalenji.rules"
 }
