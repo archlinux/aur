@@ -8,8 +8,6 @@ pkgdesc='A tool to make papers searchable - scan & forget'
 arch=('any')
 url='https://github.com/jflesch/paperwork'
 license=('GPL3')
-provides=('paperwork')
-conflicts=('paperwork')
 depends=('pygobject2-devel' 'pygtk' 'python2-pycountry'
          'python2-poppler' 'python2-pyinsane-git' 'python2-pyocr'
          'python2-levenshtein' 'python2-whoosh' 'python2-pyenchant'
