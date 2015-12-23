@@ -2,7 +2,7 @@
 # Contributor: Gino Pezzin <pezzin@gmail.com>
 pkgname=aqsis
 pkgver=1.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A high quality, photorealistic, 3D rendering solution"
 arch=('i686' 'x86_64')
 url="http://www.aqsis.org"
@@ -12,15 +12,19 @@ depends=('boost-libs' 'openexr' 'hicolor-icon-theme' 'shared-mime-info' 'desktop
 makedepends=('cmake' 'boost' 'openexr' 'libpng' 'qt4' 'mesa')
 options=('!libtool')
 install=aqsis.install
-source=(http://downloads.sourceforge.net/project/aqsis/aqsis-source/$pkgver/$pkgname-$pkgver.tar.gz \
-		imfinputfile-forward-declaration.diff)
+source=("http://downloads.sourceforge.net/project/aqsis/aqsis-source/$pkgver/$pkgname-$pkgver.tar.gz"
+        "pfto.patch"
+		"imfinputfile-forward-declaration.diff")
 md5sums=('399967e99f12cfbd1a7385c4e1d39c3b'
+         '908487f2e7b495b100dfa6b3aa8945ae'
          'e52f27d3041e88a63531b691ad05a6aa')
 
 prepare() {
   cd "$srcdir"/$pkgname-$pkgver
   # fix build with OpenEXR 2.0 (?)
-  patch -Np1 < "$srcdir"/imfinputfile-forward-declaration.diff || true
+  patch -Np1 < "$srcdir/imfinputfile-forward-declaration.diff" || true
+  # fix build with boost 1.59
+  patch -Np1 < "$srcdir/pfto.patch"
 }
 
 build() {
