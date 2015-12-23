@@ -18,7 +18,7 @@ source=("https://github.com/buchen/portfolio/archive/$pkgver.tar.gz")
 sha1sums=("f4ced544e9e1fc85bca37084f8703fe887f8c40c")
 
 build() {
-    expor  MAVEN_OPTS="-Xmx1g"
+    export MAVEN_OPTS="-Xmx1g"
     export JAVA_HOME=/usr/lib/jvm/java-8-openjdk/jre
     cd $pkgname-$pkgver
     cd portfolio-app
