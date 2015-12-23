@@ -5,7 +5,7 @@ pkgdesc="Linux Intelligent OCR Solution is an easy to use ORC suite for tesserac
 arch=(any)
 license=('LGPL')
 url=('https://gitlab.com/groups/Nalin-x-Linux')
-source=('https://gitlab.com/Nalin-x-Linux/lios-3.git')
+source=('git+https://gitlab.com/Nalin-x-Linux/lios-3.git')
 depends=('tesseract' 'imagemagick' 'cuneiform' 'python-pyinsane' 'espeak' 'poppler' 'python-pyenchant' 'aspell-en' 'speech-dispatcher')
 makedepends=('git' 'gcc')
 
