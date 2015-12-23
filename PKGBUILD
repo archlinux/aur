@@ -2,7 +2,7 @@
 # Contributor: Olaf Bauer <hydro@freenet.de>
 
 pkgname=makemkv-cli
-pkgver=1.9.7
+pkgver=1.9.8
 pkgrel=1
 pkgdesc="DVD and Blu-ray to MKV converter and network streamer - CLI only"
 arch=('i686' 'x86_64')
@@ -18,8 +18,8 @@ source=(${url}/download/makemkv-bin-${pkgver}.tar.gz
         ${url}/download/makemkv-oss-${pkgver}.tar.gz
         makemkvcon.1
         mmdtsdec.1)
-sha256sums=('de6d0fd802c13fbaac4a3d0720e3de15f81b006fde0042a2df42d784b46b33ac'
-            '69fd254a2eb63e90f616051fde6cd7188c3ee454033bdf288c63843876a02e99'
+sha256sums=('3c08a9881f5d45bc1117cad87948e25d718da497e656ae2360864a3cb526d201'
+            '15c6dde52430086ff9749750952ca0d2e0002017be2f8c30f9961ca4997ab065'
             'f12c0facf2f0071a9f728b138986f0a4c2b4ff6ace2dfb2e96364e215e9fda6f'
             '2a6237d3d5ce073734c658c7ec5d2141ecd0047e6d3c45d1bd594135c928878f')
 
