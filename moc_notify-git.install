@@ -1,0 +1,12 @@
+post_install () {
+    echo
+    echo "Please see /usr/share/moc_notify"
+}
+
+
+post_upgrade() {
+    post_install
+}
+
+
+
