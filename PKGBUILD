@@ -7,15 +7,12 @@ pkgdesc="Reverse engineered Linux driver for the Broadcom 1570 PCIe webcam."
 arch=('x86_64')
 url="https://github.com/patjak/bcwc_pcie"
 license=('unknown')
-depends=('kmod')
+depends=('kmod' 'bcwc-pcie-firmware')
 makedepends=('linux' 'linux-headers' 'git')
 install="$pkgname.install"
 
-# firmware.bin needs to be extracted from OS X manually.
-source=("$pkgname::git+https://github.com/patjak/bcwc_pcie.git"
-        "firmware.bin::https://github.com/patjak/bcwc_pcie/wiki/Get-Started")
-md5sums=('SKIP'
-         '4e1d11e205e5c55d128efa0029b268fe')
+source=("$pkgname::git+https://github.com/patjak/bcwc_pcie.git")
+md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -35,6 +32,4 @@ package() {
   KERNEL_VERSION=$(uname -r | cut -d '.' -f 1,2)
   install -Dm 644 facetimehd.ko.gz \
     "$pkgdir/usr/lib/modules/extramodules-${KERNEL_VERSION}-ARCH/facetimehd.ko.gz"
-  install -Dm 644 "$srcdir"/firmware.bin \
-    "$pkgdir/usr/lib/firmware/facetimehd/firmware.bin"
 }
