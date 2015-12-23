@@ -2,17 +2,17 @@
 _pkgname=gasher
 pkgname=gasher-git
 pkgver=0
-pkgrel=1
+pkgrel=2
 pkgdesc="A GNU Social client written in bash."
 arch=('any')
-url="http://github.com/wmb-solutions/gasher"
-license=('GPL3')
+url="https://github.com/stormdragon2976/gasher"
+license=('unlicense')
 depends=('bash' 'curl')
 makedepends=('git')
 optdepends=('sox: soundclip support')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+git://github.com/2mb-solutions/$_pkgname.git")
+source=("git+https://github.com/stormdragon2976/$_pkgname.git")
 md5sums=("SKIP")
 
  pkgver()
