@@ -3,7 +3,7 @@ _plugin_name="block-site"
 _plugin_version=1.1.8
 _plugin_id=3145
 pkgdesc="Automagically blocks websites of your choice."
-license=('LGPL')
+license=('GPL')
 
 pkgname=firefox-extension-$_plugin_name
 pkgver=$_plugin_version
