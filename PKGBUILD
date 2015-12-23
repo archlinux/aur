@@ -4,7 +4,7 @@
 _npmname=brunch
 pkgname=nodejs-$_npmname
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight approach to building HTML5 applications with emphasis on elegance and simplicity."
 arch=('any')
 url="http://brunch.io/"
@@ -26,4 +26,5 @@ package() {
   mkdir -p "$_npmdir"
   cd "$_npmdir"
   npm install --user root -g --prefix "$pkgdir/usr" $_npmname@$pkgver
+  rm -r "$pkgdir"/usr/etc
 }
