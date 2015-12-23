@@ -4,7 +4,7 @@
 
 pkgname=universal-ctags-git
 _gitname=ctags
-pkgver=0.r3104.cb9dd96
+pkgver=0.r3170.edbecb3
 pkgrel=1
 pkgdesc="multilanguage reimplementation of the Unix ctags utility"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_gitname}"
-  autoreconf -vif
+  ./autogen.sh
   ./configure --prefix=/usr \
               --libexecdir=/usr/lib \
               --sysconfdir=/etc
