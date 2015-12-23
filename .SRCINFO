@@ -1,0 +1,17 @@
+pkgbase = kafkacat-git
+	pkgdesc = Apache Kafka command line producer and consumer
+	pkgver = r103.7116f28
+	pkgrel = 1
+	url = https://github.com/edenhill/kafkacat
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = BSD
+	makedepends = git
+	depends = glibc
+	depends = zlib
+	source = git+https://github.com/edenhill/kafkacat
+	sha256sums = SKIP
+
+pkgname = kafkacat-git
+
