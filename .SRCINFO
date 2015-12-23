@@ -1,0 +1,11 @@
+pkgbase = spice-html5
+	pkgdesc = a html5 client for the spice protocol
+	pkgver = 0.1.6
+	pkgrel = 1
+	arch = any
+	license = GPL
+	source = https://github.com/SPICE/spice-html5/archive/spice-html5-0.1.6.tar.gz
+	sha256sums = f3a349d878e851df047a03944f326d118fd490e9543f87cf4ce0c0d5601afcc7
+
+pkgname = spice-html5
+

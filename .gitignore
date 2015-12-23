@@ -1,0 +1,5 @@
+pkg/
+src/
+spice-html5*.tar.xz
+spice-html5*.tar.gz
+spice-html5*.tar.xz.sig
