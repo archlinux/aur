@@ -1,10 +1,10 @@
 # Maintainer: Mathias Bragagia <youremail@domain.com>
 pkgname=kana-p
-pkgver=0.2
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Middlewar meta-package"
 arch=('any')
-url=""
+url="https://github.com/bragagia/kana-p"
 license=('GPL')
 groups=()
 depends=(
@@ -14,6 +14,7 @@ depends=(
 	'openssh'
 	'pulseaudio'
 	'pulseaudio-alsa'
+	'pulseaudio-ctl'
 	'bluez'
 	'bluez-utils'
 
@@ -25,6 +26,7 @@ depends=(
 
 	'xorg-server'
 	'xorg-server-utils'
+	'light'
 
 	'lightdm'
 	'lightdm-gtk-greeter'
@@ -50,11 +52,11 @@ depends=(
 makedepends=()
 optdepends=()
 provides=()
-conflicts=('kana-p-dev')
+conflicts=()
 replaces=()
 backup=()
 options=()
-install=INSTALL
+install=.INSTALL
 changelog=
 source=(https://github.com/bragagia/kana-p/archive/$pkgver.tar.gz)
 noextract=()
