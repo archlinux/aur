@@ -3,13 +3,13 @@
 # and takes a fortnight to download
 pkgname=miller-git
 pkgver=20151224
-pkgrel=2
+pkgrel=3
 pkgdesc="Miller is like sed, awk, cut, join, and sort for name-indexed data such as CSV"
 arch=('x86_64' 'i686')
 url="https://github.com/johnkerl/miller"
 license=('MIT')
 depends=('glibc')
-makedepends=('make' 'gcc' 'flex' 'ctags' 'valgrind')
+makedepends=('make' 'gcc' 'flex' 'ctags' 'valgrind' 'autoconf' 'automake')
 provides=('miller')
 conflicts=('miller-git')
 source=(https://github.com/johnkerl/miller/archive/master.zip)
