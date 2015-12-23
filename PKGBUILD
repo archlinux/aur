@@ -5,7 +5,7 @@
 pkgname=lib32-libdrm-git
 _pkgname=libdrm
 pkgver=5795.b38a4b2
-pkgrel=1
+pkgrel=2
 pkgdesc="Userspace interface to kernel DRM services, git 32-bit version"
 arch=(i686 x86_64)
 license=('custom')
@@ -55,6 +55,7 @@ check() {
 package() {
   cd ${_pkgname}
   make DESTDIR="${pkgdir}" install
+  rm -rf "${pkgdir}"/usr/{include,share,bin}
   install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m644 ${srcdir}/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
