@@ -1,13 +1,14 @@
 # Maintainer: Francois Boulogne <fboulogne@april.org>
 
 pkgname=python-pyinsane
-pkgver=1.3.6
+pkgver=1.3.8
 pkgrel=1
 pkgdesc='Python implementation of the Sane API (using ctypes) and abstration layer'
 arch=('any')
 url='https://github.com/jflesch/pyinsane'
 license=('GPL3')
 depends=('libksane')
+optdepends=('python-pillow')
 provides=('python-pyinsane')
 conflicts=('python-pyinsane')
 makedepends=('python' 'python-setuptools')
@@ -24,4 +25,4 @@ package() {
   install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 # vim:ts=2:sw=2:et:
-md5sums=('a532a050638b2bef762a741ff91904e0')
+md5sums=('ac7a0b2ebc14800dc82a88bc35314069')
