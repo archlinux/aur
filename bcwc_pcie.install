@@ -1,0 +1,21 @@
+_depmod() {
+  EXTRAMODULES="extramodules-4.2-ARCH"
+  depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
+}
+
+post_install() {
+  cat << EOF
+===> You must load facetimehd in order to use the webcam:
+===> # modprobe facetimehd
+EOF
+  _depmod
+}
+
+post_upgrade() {
+  _depmod
+  echo 'In order to use the new version, reload the facetimehd module manually.'
+}
+
+post_remove() {
+  _depmod
+}
