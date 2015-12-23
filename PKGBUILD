@@ -1,7 +1,7 @@
 # Maintainer: Nils Czernia <nils[at]czserver[dot]de>
 pkgname=moodle-git
 _pkgname=moodle
-pkgver=3.0
+pkgver=20151223
 pkgrel=1
 pkgdesc='Moodle is a open-source software learning management system'
 arch=('any')
