@@ -1,6 +1,6 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=yafaray-git
-pkgver=535.f7c293a
+pkgver=569.ee254c6
 pkgrel=1
 pkgdesc="A free open-source raytracing engine"
 arch=('i686' 'x86_64')
@@ -23,8 +23,8 @@ build() {
   cd "$srcdir/yafaray"
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
-    -DYAF_PY_VERSION=3.4 \
-    -DYAF_BINDINGS_PY_DIR=/usr/lib/python3.4 \
+    -DYAF_PY_VERSION=3.5 \
+    -DYAF_BINDINGS_PY_DIR=/usr/lib/python3.5 \
     .
   make
 }
