@@ -1,6 +1,6 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=python3-colorsysplus
-pkgver=2015
+pkgver=2015.12
 pkgrel=1
 pkgdesc='An extension of the standard colorsys module with support for CMYK, terminal colors, ANSI and more.'
 arch=(any)
@@ -8,16 +8,16 @@ license=(GPL)
 url="http://xyne.archlinux.ca/projects/python3-colorsysplus"
 depends=(python3)
 source=(
-  http://xyne.archlinux.ca/projects/python3-colorsysplus/src/python3-colorsysplus-2015.tar.xz
-  http://xyne.archlinux.ca/projects/python3-colorsysplus/src/python3-colorsysplus-2015.tar.xz.sig
+  http://xyne.archlinux.ca/projects/python3-colorsysplus/src/python3-colorsysplus-2015.12.tar.xz
+  http://xyne.archlinux.ca/projects/python3-colorsysplus/src/python3-colorsysplus-2015.12.tar.xz.sig
 )
 sha512sums=(
-  4a76da8f020a5427107351080c3e120d1ca3d9049af88d7017038a78ea948611318e8abf415ddb342b2e9940fa5cc2178ad4483d59b16507989623734a63c952
-  f31abd49e75e98892ee28f58fa090aff9f190105940875ee241f028b4fcd26bdd85677e77dab9a82b837793a85f6a9ac72ade4bd7dfc35d203700e2b536e6d9d
+  7345901cb8391a3d4a759cc67c0d732a3787948c8aef01a86dca21376b6278137346087d412ee6a9a165b1a0be3ba4fd7a2ccd046a3282785c60fb1e89a04493
+  caf43d917b959b54219bf8f3df4ebb6d274e40b6be08e59e474afcd23230072c9e9c10debecdbf852810a23ffbd8e329bba05f4d4ccec00ba1fc795b18f8998b
 )
 md5sums=(
-  c07fbb885a54f0b6ae35c176d468b871
-  38e2eb2393a20167f2cfa1a553252177
+  c89fedad9b8c2821acf9c2a9787b6cb3
+  a1f180b855402f5f3fa3b3bee9560983
 )
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 
@@ -25,6 +25,7 @@ package ()
 {
   cd "$srcdir/$pkgname-$pkgver"
   python3 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+  install -Dm755 ctconv "$pkgdir/usr/bin/ctconv"
 }
 
 
