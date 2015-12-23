@@ -27,7 +27,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/vogl"
-  git am "$srcdir/0001-fix-qt-5.5-build-error.patch"
+  patch -Np1 < "$srcdir/0001-fix-qt-5.5-build-error.patch"
   # disable building of glxspheres64 demo to keep the dependencies minimal
   sed -i 's|add_subdirectory.*glxspheres.*|#&|' CMakeLists.txt
   # disable tests
