@@ -2,7 +2,7 @@
 
 _perlmod=Travel-Status-DE-IRIS
 pkgname=perl-travel-status-de-iris
-pkgver=1.04
+pkgver=1.05
 pkgrel=1
 pkgdesc='Interface to IRIS-based web departure monitors (as used by DeutscheBahn)'
 url='http://finalrewind.org/projects/Travel-Status-DE-IRIS/'
@@ -15,7 +15,7 @@ makedepends=('perl-module-build' 'perl-test-compile' 'perl-test-fatal' 'perl-tes
 options=('!emptydirs')
 validpgpkeys=('781BB7071C6BF648EAEB08A1100D5BFB5166E005')
 source=("http://finalrewind.org/projects/${_perlmod}/${_perlmod}-${pkgver}.tar.gz"{,.asc})
-md5sums=('ce040885c265f8ffef8be106294db1ef' '237b482ee675ffb3cae39255b8d441d7')
+md5sums=('6026c18edcd87bf0810307277b55bda3' 'fb0685d74bc733d1bb747c4a38e3daa1')
 
 build() {
   cd "${srcdir}"/${_perlmod}-${pkgver}
