@@ -5,7 +5,7 @@
 
 pkgname=frescobaldi
 pkgver=2.18.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A LilyPond sheet music text editor."
 arch=('any')
 url="http://www.frescobaldi.org/"
@@ -24,7 +24,7 @@ optdepends=(
   'lilypond: Music engraving (recommended)'
 # python-portmidi is currently a python2 package
 #  'python-portmidi: MIDI playback (default engine)'
-  'python-pygame-hg: MIDI playback (alternate engine)'
+  'python-pygame: MIDI playback (alternate engine)'
   'portmidi: MIDI playback (fallback engine)'
   'hyphen-de: German hyphenation rules'
   'hyphen-en: English hyphenation rules'
@@ -36,22 +36,20 @@ optdepends=(
   'hyphen-ro: Romanian hyphenation rules'
 )
 source=(https://github.com/wbsoft/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
-install=$pkgname.install
+install=${pkgname}.install
 md5sums=('3cf2aae0d74717d5a7aff089fe46bc8c')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  # Work around a bug in setuptools. Should be fixed soon.
-  sed -i '/win/ d' setup.cfg
+  cd "${srcdir}/${pkgname}-${pkgver}"
   # Provided by tango-icon-theme
   rm -rf "frescobaldi_app/icons/Tango"
   # Provided by hyphen-*
-  rm -rf "frescobaldi_app/hyphdicts"
+  rm -f "frescobaldi_app/hyphdicts/hyph_*.dic"
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}/" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:
