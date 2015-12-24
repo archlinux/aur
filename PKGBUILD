@@ -8,8 +8,8 @@
 
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
-pkgver=2.8.3
-pkgrel=2
+pkgver=2.8.4
+pkgrel=1
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
@@ -34,19 +34,11 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
           'libswscale.so' 'ffmpeg' 'qt-faststart')
 source=(http://ffmpeg.org/releases/$_pkgbasename-$pkgver.tar.bz2{,.asc}
-        'UNREDISTRIBUTABLE.txt'
-        'ffmpeg-2.8.1-libvpxenc-remove-some-unused-ctrl-id-mappings.patch')
+        'UNREDISTRIBUTABLE.txt')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-sha256sums=('1bcf993a71839bb4a37eaa0c51daf315932b6dad6089f672294545cc51a5caf6'
+sha256sums=('83cc8136a7845546062a43cda9ae3cf0a02f43ef5e434d2f997f055231a75f8e'
             'SKIP'
-            'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4'
-            '277994aca5a6e40c1a90750859828817e0646bfb28142fdb34d5f9d3196c3f7a')
-
-prepare() {
-  cd $_pkgbasename-$pkgver
-
-  patch -p1 -i ../ffmpeg-2.8.1-libvpxenc-remove-some-unused-ctrl-id-mappings.patch
-}
+            'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4')
 
 build() {
   cd $_pkgbasename-$pkgver
@@ -56,7 +48,7 @@ build() {
     --enable-shared \
     --disable-debug \
     --disable-static \
-    --prefix=/usr \
+    --prefix='/usr' \
     --enable-avisynth \
     --enable-avresample \
     --enable-decoder=atrac3 \
@@ -134,7 +126,7 @@ build() {
     --enable-vda \
     --enable-vdpau \
     --enable-version3 \
-    --enable-zlib \
+    --enable-zlib
 
   msg "Starting make"
   make
@@ -145,6 +137,6 @@ build() {
 package() {
   cd ffmpeg-$pkgver
   make DESTDIR="$pkgdir" install install-man
-  install -Dm755 tools/qt-faststart "$pkgdir/usr/bin/qt-faststart"
-  install -Dm644 "$srcdir"/UNREDISTRIBUTABLE.txt "$pkgdir/usr/share/licenses/$pkgname/UNREDISTRIBUTABLE.txt"
+  install -Dm 755 tools/qt-faststart "${pkgdir}"/usr/bin/
+  install -Dm 644 "$srcdir"/UNREDISTRIBUTABLE.txt "$pkgdir/usr/share/licenses/$pkgname/UNREDISTRIBUTABLE.txt"
 }
