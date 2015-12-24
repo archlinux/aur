@@ -4,8 +4,10 @@ pkgrel=1
 pkgdesc="Mascot Constructive Pilot for X – Cloudef's fork"
 url="https://github.com/Cloudef/macopix-fork"
 arch=(x86_64)
-depends=(gtk2)
 license=(GPL2 LGPL2.1)
+depends=(gtk2)
+provides=(macopix=$pkgver)
+conflicts=(macopix)
 source=(git+https://github.com/Cloudef/macopix-fork)
 sha256sums=(SKIP)
 
