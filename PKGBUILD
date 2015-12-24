@@ -8,8 +8,8 @@
 
 _pack=io
 pkgname=octave-$_pack
-pkgver=2.2.11
-pkgrel=3
+pkgver=2.4.0
+pkgrel=1
 pkgdesc="Input/Output in external formats."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
@@ -24,7 +24,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("http://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('b16237b388eecefa05e6009d2a0cce64')
+md5sums=('33d26ad7f61a1af95a2d6fbf32eb7d92')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
