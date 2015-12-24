@@ -63,7 +63,8 @@ package_lib32-gtk3-nocsd() {
 	provides=("${pkgname}" "${pkgname}-git=${pkgver}")
 	conflicts=("${pkgname}" "${pkgname}-git<=${pkgver}")
 	replaces=("${pkgname}" "${pkgname}-git<=${pkgver}")
-	depends=('gtk3-nocsd')
+###there is no way to fore extra makedeps so we add this here
+	depends=('gtk3-nocsd' 'gcc-multilib')
 	arch=('x86_64')
 	install -d "${pkgdir}"/usr/lib32/
 	install -Dm644 ${srcdir}/${pkgbase//-git/}/lib32/libgtk3-nocsd.so.0 "${pkgdir}"/usr/lib32/libgtk3-nocsd.so.0
