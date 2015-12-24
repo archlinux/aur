@@ -1,7 +1,7 @@
 # Maintainer:  Tristan Webb <tristan@fpcomplete.com>
 pkgname=haskell-stack
 _pkgname=stack
-pkgver='0.1.10.1'
+pkgver='1.0.0'
 pkgrel=1
 pkgdesc="The Haskell Tool Stack"
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=('haskell-stack')
 conflicts=('haskell-stack-git')
 if [ "${CARCH}" = 'x86_64' ]; then
     _arch='x86_64'
-    sha1sums=('6f512a8d987eb81ba5cc36412a6b09201f328ba0')
+    sha1sums=('5fdc7d4539f2b583854a42dcde79aaac2662b8b9')
 fi
 source=("https://s3.amazonaws.com/download.fpcomplete.com/archlinux/${_pkgname}_${pkgver}-${_arch}.tar.gz")
 # install=
