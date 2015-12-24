@@ -2,26 +2,25 @@
 
 pkgname=bitcoin-qt-addrindex
 pkgver=0.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Core GUI P2P wallet with addrindex"
 arch=('i686' 'x86_64')
 url="https://github.com/btcdrak/bitcoin"
+depends=('boost'
+         'boost-libs'
+         'miniupnpc'
+         'openssl'
+         'protobuf'
+         'qrencode'
+         'qt4')
 makedepends=('autoconf'
              'automake'
              'binutils'
-             'boost'
-             'boost-libs'
              'gcc'
              'gettext'
              'libtool'
              'make'
-             'miniupnpc'
-             'openssl'
-             'pkg-config'
-             'protobuf'
-             'qrencode'
-             'qt4'
-             'yasm')
+             'pkg-config')
 license=('MIT')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/btcdrak/${pkgname%%-*}/tar.gz/v$pkgver-addrindex)
 sha256sums=('e3c3bd7b887b5486df8991c2ca651145b1bf50edec7f1bb5519e2dcc70cb076b')
