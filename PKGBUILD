@@ -1,13 +1,13 @@
-# $Id: PKGBUILD 138440 2015-08-17 06:39:32Z tpowa $
+# $Id: PKGBUILD 153377 2015-12-15 13:13:19Z mtorromeo $
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Contributor: Bob Fanger < bfanger(at)gmail >
 # Contributor: Filip <fila pruda com>, Det < nimetonmaili(at)gmail >
 # AUFS ver   : GI_Jack <iamjacksemail@hackermail.com>
 
-_pkgname=r8168
 pkgname=r8168-aufs
-pkgver=8.040.00
-pkgrel=6
+_pkgname=r8168
+pkgver=8.041.00
+pkgrel=1
 pkgdesc="A kernel module for Realtek 8168 network cards(aufs_friendly kernel)"
 url="http://www.realtek.com.tw"
 license=("GPL")
@@ -16,7 +16,7 @@ depends=('glibc' 'linux-aufs_friendly')
 makedepends=('linux-aufs_friendly-headers')
 install=$_pkgname.install
 source=(https://github.com/mtorromeo/r8168/archive/$pkgver/$_pkgname-$pkgver.tar.gz)
-sha256sums=('1f7aad3a066c152837e03e558ba720742e792d281c96c5412cff32d68875415b')
+sha256sums=('d56f60e4157ccbf8f8717270b1acb391b0a959d9a96c2f0b4a91c683aa8b83a5')
 
 build() {
 	_kernver=$(pacman -Q linux-aufs_friendly | sed -r 's#.* ([0-9]+\.[0-9]+).*#\1#')
