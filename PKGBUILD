@@ -2,27 +2,26 @@
 
 pkgname=libbitcoin-server
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Bitcoin Full Node and Query Server"
 arch=('i686' 'x86_64')
+depends=('boost'
+         'boost-libs'
+         'czmq-git'
+         'czmqpp-git'
+         'libbitcoin'
+         'libbitcoin-blockchain'
+         'libbitcoin-consensus'
+         'libbitcoin-node'
+         'libsodium'
+         'secp256k1-git'
+         'zeromq')
 makedepends=('autoconf'
              'automake'
-             'boost'
-             'boost-libs'
-             'czmq-git'
-             'czmqpp-git'
              'gcc'
-             'libbitcoin'
-             'libbitcoin-blockchain'
-             'libbitcoin-consensus'
-             'libbitcoin-node'
-             'libconfig'
-             'libsodium'
              'libtool'
              'make'
-             'pkg-config'
-             'secp256k1-git'
-             'zeromq')
+             'pkg-config')
 optdepends=('libbitcoin-explorer: CurveZMQ client/server authentication')
 groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin-server"
