@@ -14,7 +14,8 @@ optdepends=()
 makedepends=('boost' 'cmake' 'mesa' 'sharutils' 'simgear-git')
 provides=('flightgear-git')
 conflicts=('flightgear')
-source=(git://git.code.sf.net/p/flightgear/flightgear)
+source=(git://git.code.sf.net/p/flightgear/flightgear
+        'explicitely-link-with-libX11.patch')
 md5sums=('SKIP')
 
 pkgver() {
