@@ -15,7 +15,7 @@ pkgdesc="takes compile jobs from your build and distributes it to remote machine
 url="http://en.opensuse.org/Icecream"
 license=('GPL2')
 makedepends=('')
-depends=('gcc' 'bash' 'libcap-ng')
+depends=('bash' 'libcap-ng' 'lzo')
 provides=('icecream')
 optdepends=('iceberg-git: A QT based monitor for icecream nodes'
             'ccache: ccache enabled remote builds.')
