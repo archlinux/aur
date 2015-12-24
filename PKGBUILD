@@ -2,25 +2,25 @@
 
 pkgname=libbitcoin-protocol-git
 pkgver=20151220
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Blockchain Query Privacy Protocol"
 arch=('i686' 'x86_64')
+depends=('boost'
+         'boost-libs'
+         'czmq-git'
+         'czmqpp-git'
+         'libbitcoin'
+         'libsodium'
+         'protobuf'
+         'secp256k1-git'
+         'zeromq')
 makedepends=('autoconf'
              'automake'
-             'boost'
-             'boost-libs'
-             'czmq-git'
-             'czmqpp-git'
              'gcc'
              'git'
-             'libbitcoin'
-             'libsodium'
              'libtool'
              'make'
-             'pkg-config'
-             'protobuf'
-             'secp256k1-git'
-             'zeromq')
+             'pkg-config')
 groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin-protocol"
 license=('AGPL3')
