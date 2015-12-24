@@ -2,7 +2,7 @@
 
 pkgname=perl6-json-tiny
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A tiny JSON parser and emitter for Perl 6 on Rakudo"
 arch=('any')
 depends=('rakudo')
@@ -18,7 +18,7 @@ check() {
   cd "$srcdir/$pkgname-$pkgver"
 
   msg2 'Running tests...'
-  prove -r -e perl6
+  PERL6LIB=lib prove -r -e perl6
 }
 
 package() {
