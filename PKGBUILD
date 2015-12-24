@@ -2,24 +2,23 @@
 
 pkgname=bitcoin-core-addrindex-git
 pkgver=20151115
-pkgrel=2
+pkgrel=3
 pkgdesc="Bitcoin Core headless P2P node with addrindex"
 arch=('i686' 'x86_64')
 url="https://github.com/btcdrak/bitcoin"
+depends=('boost'
+         'boost-libs'
+         'miniupnpc'
+         'openssl')
 makedepends=('autoconf'
              'automake'
              'binutils'
-             'boost'
-             'boost-libs'
              'expect'
              'gcc'
              'git'
              'libtool'
              'make'
-             'miniupnpc'
-             'openssl'
-             'pkg-config'
-             'yasm')
+             'pkg-config')
 license=('MIT')
 source=(git+https://github.com/btcdrak/bitcoin#branch=addrindex-0.11
         bitcoin.conf
