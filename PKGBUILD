@@ -13,7 +13,7 @@ license=('custom')
 depends=()
 makedepends=("unzip")
 options=()
-source=("https://s3.amazonaws.com/unrealtournament/UnrealTournament-Client-XAN-${pkgver}-Linux.zip"
+source=("UnrealTournament-Client-XAN-${pkgver}-Linux.zip"
         "UnrealTournament"
         "UnrealTournament4.desktop")
 noextract=("UnrealTournament-Client-XAN-${pkgver}-Linux.zip")
