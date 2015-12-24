@@ -25,5 +25,5 @@ build() {
 package() {
 	cd macopix-fork
 	make DESTDIR="$pkgdir" install
-	mkdir -p "$pkgdir/usr/share/macopix"
+	mkdir -p "$pkgdir/usr/share/macopix/pixmap"
 }
