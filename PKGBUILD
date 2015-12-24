@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 256477 2015-12-16 14:18:06Z foutrelis $
+# $Id: PKGBUILD 257059 2015-12-21 08:03:24Z foutrelis $
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor : Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
@@ -6,7 +6,7 @@
 pkgname=firefox-gtk2
 _pkgname=firefox
 pkgver=43.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -23,19 +23,23 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'upower: Battery API')
 install=firefox.install
 options=('!emptydirs' '!makeflags')
-provides=('firefox')
-conflicts=('firefox')
+provides=("firefox=${pkgver}-${pkgrel}")
+conflicts=("firefox")
 source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
         mozconfig
         firefox.desktop
         firefox-install-dir.patch
         vendor.js
+        firefox-disable-GMP-PDM.patch
+        firefox-support-YUV420J-pixel-format.patch
         firefox-fixed-loading-icon.png)
 sha256sums=('b1f9173c6ddbd2bf868d94a815fde364bc37aa46a00981903fd1fe86a8f873d8'
             '272fa8b8ca6afa224d9adf15d458dea6c8510248e62550254b9a5dfb286204de'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
+            'fb1f631363c9b50c8246a0d8738c40570717b3e15b5457dacad9f447449d7e92'
+            '4a949e5b4281be4df0bece8087ecad0a3debb4828efc6a587bd3bd931ab70c94'
             '68e3a5b47c6d175cc95b98b069a15205f027cab83af9e075818d38610feb6213')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 
@@ -56,6 +60,12 @@ _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
 prepare() {
   cd $_pkgname-$pkgver
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1233429
+  patch -Np1 -i ../firefox-disable-GMP-PDM.patch
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1233340
+  patch -Np1 -i ../firefox-support-YUV420J-pixel-format.patch
 
   cp ../mozconfig .mozconfig
   patch -Np1 -i ../firefox-install-dir.patch
