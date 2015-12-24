@@ -1,0 +1,8 @@
+post_install() {
+  systemctl start svscan
+}
+
+post_remove() {
+  systemctl stop svscan
+}
+

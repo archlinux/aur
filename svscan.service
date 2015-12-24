@@ -1,0 +1,10 @@
+[Unit]
+Description=svscan service of daemontools 
+After=syslog.target
+
+[Service]
+ExecStart=/usr/bin/svscanboot
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
