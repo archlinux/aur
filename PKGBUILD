@@ -4,21 +4,11 @@
 
 pkgname=libbitcoin-git
 pkgver=20151220
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Cross-Platform C++ Development Toolkit"
 arch=('i686' 'x86_64')
-makedepends=('autoconf'
-             'automake'
-             'boost'
-             'boost-libs'
-             'curl'
-             'gcc'
-             'git'
-             'icu'
-             'libtool'
-             'make'
-             'pkg-config'
-             'secp256k1-git')
+depends=('boost' 'boost-libs' 'icu' 'secp256k1-git')
+makedepends=('autoconf' 'automake' 'gcc' 'git' 'libtool' 'make' 'pkg-config')
 groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin"
 license=('AGPL3')
