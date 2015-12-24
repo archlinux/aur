@@ -9,8 +9,8 @@
 
 _pack=level-set
 pkgname=octave-$_pack
-pkgver=0.2.0
-pkgrel=3
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Routines for calculating the time-evolution of the level-set equation and extracting geometric information from the level-set function."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
@@ -25,7 +25,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("http://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('b9d56845f41f13cee4b92f7d679e80bc')
+md5sums=('633742a569099ad745319684ed378c69')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
