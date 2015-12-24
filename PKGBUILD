@@ -13,8 +13,8 @@ source=(http://mirror.lihnidos.org/GNU/savannah//netsukuku/${pkgname}-${pkgver}.
 
 build() {
   cd $srcdir/${pkgname}-${pkgver}
-  ./configure --enable-logtasklet --sysconfdir=/etc --prefix=/usr
-  make
+  ./configure --enable-logtasklet --sysconfdir=/etc --prefix=/usr --sbindir=/usr/bin
+  make 'CFLAGS=-Wc90-c99-compat -std=gnu89'
 }
 
 package() {
