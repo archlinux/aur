@@ -1,6 +1,6 @@
 pkgbase = grib_api
 	pkgdesc = A program interface for encoding and decoding GRIB messages
-	pkgver = 1.14.2
+	pkgver = 1.14.4
 	pkgrel = 1
 	url = https://software.ecmwf.int/wiki/display/GRIB/Home
 	arch = i686
@@ -20,8 +20,8 @@ pkgbase = grib_api
 	conflicts = grib_def
 	replaces = grib_api
 	replaces = grib_def
-	source = http://software.ecmwf.int/wiki/download/attachments/3473437/grib_api-1.14.2-Source.tar.gz
-	md5sums = a3da20f368984e6e83cdf2041fa54229
+	source = http://software.ecmwf.int/wiki/download/attachments/3473437/grib_api-1.14.4-Source.tar.gz
+	md5sums = e687efcb4afa94a86c0411a7996fa35c
 
 pkgname = grib_api
 
