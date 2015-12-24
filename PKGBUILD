@@ -2,7 +2,7 @@
 _pkgname=search-and-view
 pkgname=${_pkgname}-git
 pkgver=r12.df55f03
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools to make searching and viewing easy."
 arch=('any')
 url="https://github.com/lilydjwg/search-and-view"
