@@ -1,5 +1,6 @@
 #
 # Maintainer: Clemens Buchacher <drizzd@aon.at>
+# Contributor: wangjiezhe <wangjiezhe AT yandex DOT com>
 #
 # You can use the newpkg script from
 # https://github.com/drizzd/octave-forge-archlinux to automatically generate
