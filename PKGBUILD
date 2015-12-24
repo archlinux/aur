@@ -1,7 +1,7 @@
 # Maintainer: Raphaël Doursenaud <rdoursenaud@free.fr>
 pkgname=mysql-utilities-beta
 _pkgname=mysql-utilities
-pkgver=1.4.2
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="A collection of command-line utilities that are used for maintaining and administering MySQL servers"
 arch=('any')
@@ -16,12 +16,12 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=(http://cdn.mysql.com/Downloads/MySQLGUITools/$_pkgname-$pkgver.tar.gz)
-md5sums=('e4866f431fe10932080507956130b31d')
+source=(http://cdn.mysql.com/Downloads/MySQLGUITools/${_pkgname}-${pkgver}.tar.gz)
+md5sums=('68b99fc66fd4e7a1a64160e41e543890')
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py install --root="${pkgdir}/" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:
