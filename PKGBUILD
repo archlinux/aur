@@ -16,7 +16,8 @@ provides=('flightgear-git')
 conflicts=('flightgear')
 source=(git://git.code.sf.net/p/flightgear/flightgear
         'explicitely-link-with-libX11.patch')
-md5sums=('SKIP')
+md5sums=('SKIP'
+        'fc264184d88afdc12c669f1eabb5bbea')
 
 pkgver() {
   echo "$(date +"%Y%m%d")"
