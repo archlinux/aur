@@ -12,7 +12,7 @@ optdepends=('mingw-w64-jasper: jp2 module'
 		'mingw-w64-libtiff: ps2, ps3, tiff modules'
 		'mingw-w64-ghostscript: pdf, ps modules')
 makedepends=('mingw-w64-configure' 'mingw-w64-pcre' 'mingw-w64-libpng' 'mingw-w64-libxml2' 'mingw-w64-libtiff')
-depends=('mingw-w64-crt' 'mingw-w64-freetype' 'mingw-w64-lcms2' 'mingw-w64-libltdl' 'mingw-w64-bzip2' 'mingw-w64-xz')
+depends=('mingw-w64-crt' 'mingw-w64-freetype' 'mingw-w64-lcms2' 'mingw-w64-bzip2' 'mingw-w64-xz')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("ftp://ftp.graphicsmagick.org/pub/GraphicsMagick/1.3/GraphicsMagick-$pkgver.tar.xz")
 md5sums=('9885ff5d91bc215a0adb3be1185e9777')
