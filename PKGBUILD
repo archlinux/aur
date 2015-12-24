@@ -1,8 +1,8 @@
 # Maintainer: Black_Codec <orso.f.regna@gmail.com>
  
 pkgname=guacamole-server
-pkgver=0.9.8
-pkgrel=2
+pkgver=0.9.9
+pkgrel=1
 pkgdesc="Guacamole proxy daemon"
 arch=('i686' 'x86_64')
 url="http://guacamole.sourceforge.net/"
@@ -19,7 +19,7 @@ optdepends=('libssh: for ssh protocol support'
  
 source=("http://downloads.sourceforge.net/project/guacamole/current/source/$pkgname-$pkgver.tar.gz" 'guacd.service')
  
-md5sums=('5b85fcf9db744788d4aa578e20d5e181' 'dfaa29349d2e73af6dac75d6cafbd762')
+md5sums=('00afa10a477a059b9794850a0260e63a' 'dfaa29349d2e73af6dac75d6cafbd762')
  
 build() {
 	cd "$srcdir"/$pkgname-$pkgver
