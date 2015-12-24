@@ -1,0 +1,19 @@
+pkgbase = kancolletool
+	pkgdesc = Makes KanColle better
+	pkgver = 0.9.6
+	pkgrel = 1
+	url = http://kancolletool.github.io/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = qt5-base
+	makedepends = qt5-webkit
+	makedepends = git
+	makedepends = cmake
+	depends = flashplugin
+	conflicts = kancolletool-viewer-git
+	source = kancolletool::git://github.com/KanColleTool/KanColleTool.git#tag=v0.9.6
+	md5sums = SKIP
+
+pkgname = kancolletool
+
