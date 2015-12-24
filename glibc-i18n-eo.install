@@ -1,0 +1,9 @@
+post_install() {
+  sed -i '/en_ZW ISO-8859-1/a eo UTF-8' /etc/locale.gen
+  locale-gen
+}
+
+post_remove() {
+  sed -i '/eo UTF-8/d' /etc/locale.gen
+  locale-gen
+}

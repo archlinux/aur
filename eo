@@ -1,0 +1,216 @@
+comment_char %
+escape_char /
+
+% Esperanto language locale for ...
+% Edmund GRIMLEY EVANS <edmundo at rano dot org>
+
+LC_IDENTIFICATION
+title      "Esperanto locale"
+source     ""
+address    ""
+contact    ""
+email      "debian-esperanto@lists.debian.org"
+tel        ""
+fax        ""
+language   "Esperanto"
+territory  ""
+revision   "draft"
+date       "2002-07-04"
+%
+category  "eo:2000";LC_IDENTIFICATION
+category  "eo:2000";LC_CTYPE
+category  "eo:2000";LC_COLLATE
+category  "eo:2000";LC_TIME
+category  "eo:2000";LC_NUMERIC
+category  "eo:2000";LC_MONETARY
+category  "eo:2000";LC_MESSAGES
+category  "eo:2000";LC_PAPER
+category  "eo:2000";LC_NAME
+category  "eo:2000";LC_ADDRESS
+category  "eo:2000";LC_TELEPHONE
+
+END LC_IDENTIFICATION
+
+LC_CTYPE
+copy "i18n"
+END LC_CTYPE
+
+LC_COLLATE
+copy "iso14651_t1"
+
+collating-symbol <ccirc>
+collating-symbol <gcirc>
+collating-symbol <hcirc>
+collating-symbol <jcirc>
+collating-symbol <scirc>
+collating-symbol <ubreve>
+
+reorder-after <c>
+<ccirc>
+reorder-after <g>
+<gcirc>
+reorder-after <h>
+<hcirc>
+reorder-after <j>
+<jcirc>
+reorder-after <s>
+<scirc>
+reorder-after <u>
+<ubreve>
+
+reorder-after <U0043>
+<U0108> <ccirc>;<CIR>;<CAP>;IGNORE % Ĉ
+reorder-after <U0063>
+<U0109> <ccirc>;<CIR>;<MIN>;IGNORE % ĉ
+reorder-after <U0047>
+<U011C> <gcirc>;<CIR>;<CAP>;IGNORE % Ĝ
+reorder-after <U0067>
+<U011D> <gcirc>;<CIR>;<MIN>;IGNORE % ĝ
+reorder-after <U0048>
+<U0124> <hcirc>;<CIR>;<CAP>;IGNORE % Ĥ
+reorder-after <U0068>
+<U0125> <hcirc>;<CIR>;<MIN>;IGNORE % ĥ
+reorder-after <U004A>
+<U0134> <jcirc>;<CIR>;<CAP>;IGNORE % Ĵ
+reorder-after <U006A>
+<U0135> <jcirc>;<CIR>;<MIN>;IGNORE % ĵ
+reorder-after <U0053>
+<U015C> <scirc>;<CIR>;<CAP>;IGNORE % Ŝ
+reorder-after <U0073>
+<U015D> <scirc>;<CIR>;<MIN>;IGNORE % ŝ
+reorder-after <U0055>
+<U016C> <ubreve>;<BRE>;<CAP>;IGNORE % Ŭ
+reorder-after <U0075>
+<U016D> <ubreve>;<BRE>;<MIN>;IGNORE % ŭ
+
+reorder-end
+
+END LC_COLLATE
+
+LC_MONETARY
+int_curr_symbol         "<U0045><U0055><U0052><U0020>" % "EUR"
+currency_symbol         "<U0045><U0055><U0052><U0020>" % "EUR"
+% "<U20AC>" ne eblas en ISO-8859-3
+mon_decimal_point       "<U002C>"
+mon_thousands_sep       "<U0020>"
+mon_grouping            3;3
+positive_sign           ""
+negative_sign           "<U002D>"
+int_frac_digits         2
+frac_digits             2
+p_cs_precedes           1
+p_sep_by_space          1
+n_cs_precedes           1
+n_sep_by_space          1
+p_sign_posn             1
+n_sign_posn             1
+END LC_MONETARY
+
+LC_NUMERIC
+decimal_point           "<U002C>"
+thousands_sep           ""
+grouping                0;0
+END LC_NUMERIC
+
+LC_TIME
+
+% "dim";"lun";"mar";"mer";"ĵaŭ";"ven";"sab"
+abday	"<U0064><U0069><U006D>";"<U006C><U0075><U006E>";/
+	"<U006D><U0061><U0072>";"<U006D><U0065><U0072>";/
+	"<U0135><U0061><U016D>";"<U0076><U0065><U006E>";/
+	"<U0073><U0061><U0062>"
+
+% "dimanĉo";"lundo";"mardo";"merkredo";"ĵaŭdo";"vendredo";"sabato"
+day	"<U0064><U0069><U006D><U0061><U006E><U0109><U006F>";/
+	"<U006C><U0075><U006E><U0064><U006F>";/
+	"<U006D><U0061><U0072><U0064><U006F>";/
+	"<U006D><U0065><U0072><U006B><U0072><U0065><U0064><U006F>";/
+	"<U0135><U0061><U016D><U0064><U006F>";/
+	"<U0076><U0065><U006E><U0064><U0072><U0065><U0064><U006F>";/
+	"<U0073><U0061><U0062><U0061><U0074><U006F>"
+
+% "Jan";"Feb";"Mar";"Apr";"Maj";"Jun";"Jul";"Aŭg";"Sep";"Okt";"Nov";"Dec"
+abmon	"<U004A><U0061><U006E>";"<U0046><U0065><U0062>";/
+	"<U004D><U0061><U0072>";"<U0041><U0070><U0072>";/
+	"<U004D><U0061><U006A>";"<U004A><U0075><U006E>";/
+	"<U004A><U0075><U006C>";"<U0041><U016D><U0067>";/
+	"<U0053><U0065><U0070>";"<U004F><U006B><U0074>";/
+	"<U004E><U006F><U0076>";"<U0044><U0065><U0063>"
+
+% "Januaro";"Februaro";"Marto";"Aprilo";"Majo";"Junio";
+% "Julio";"Aŭgusto";"Septembro";"Oktobro";"Novembro";"Decembro"
+mon	"<U004A><U0061><U006E><U0075><U0061><U0072><U006F>";/
+	"<U0046><U0065><U0062><U0072><U0075><U0061><U0072><U006F>";/
+	"<U004D><U0061><U0072><U0074><U006F>";/
+	"<U0041><U0070><U0072><U0069><U006C><U006F>";/
+	"<U004D><U0061><U006A><U006F>";/
+	"<U004A><U0075><U006E><U0069><U006F>";/
+	"<U004A><U0075><U006C><U0069><U006F>";/
+	"<U0041><U016D><U0067><U0075><U0073><U0074><U006F>";/
+	"<U0053><U0065><U0070><U0074><U0065><U006D><U0062><U0072><U006F>";/
+	"<U004F><U006B><U0074><U006F><U0062><U0072><U006F>";/
+	"<U004E><U006F><U0076><U0065><U006D><U0062><U0072><U006F>";/
+	"<U0044><U0065><U0063><U0065><U006D><U0062><U0072><U006F>"
+
+am_pm	"";""
+
+% "%a %d %b %Y %T %z"
+d_t_fmt	"<U0025><U0061><U0020><U0025><U0064><U0020><U0025><U0062><U0020><U0025><U0059><U0020><U0025><U0054><U0020><U0025><U007A>"
+
+% "%Y-%m-%d"
+d_fmt	"<U0025><U0059><U002D><U0025><U006D><U002D><U0025><U0064>"
+
+% "%T"
+t_fmt	"<U0025><U0054>"
+
+t_fmt_ampm ""
+
+% date_fmt ?
+
+END LC_TIME
+
+LC_MESSAGES
+% "^[JjYy].*"
+yesexpr	"<U005E><U005B><U004A><U006A><U0059><U0079><U005D><U002E><U002A>"
+% "^[Nn].*"
+noexpr	"<U005E><U005B><U006E><U004E><U005D><U002E><U002A>"
+END LC_MESSAGES
+
+LC_PAPER
+height	297
+width	210
+END LC_PAPER
+
+LC_TELEPHONE
+% "+%c %a %l"
+tel_int_fmt	"<U002B><U0025><U0063><U0020><U0025><U0061><U0020>/
+<U0025><U006C>"
+% "00"
+int_select	"<U0030><U0030>"
+END LC_TELEPHONE
+
+LC_MEASUREMENT
+measurement    1
+END LC_MEASUREMENT
+
+LC_NAME
+% "%d%t%g%t%m%t%f"
+name_fmt    "<U0025><U0064><U0025><U0074><U0025><U0067><U0025><U0074>/
+<U0025><U006D><U0025><U0074><U0025><U0066>"
+name_mr     "<U0073><U002D><U0072><U006F>"              % "s-ro"
+name_mrs    "<U0073><U002D><U0069><U006E><U006F>"       % "s-ino"
+name_ms     "<U0073><U002D><U0069><U006E><U006F>"       % "s-ino"
+END LC_NAME
+
+LC_ADDRESS
+% "%f%N%a%N%d%N%b%N%s %h %e %r%N%%z %T%N%c%N"
+postal_fmt    "<U0025><U0066><U0025><U004E><U0025><U0061><U0025><U004E>/
+<U0025><U0064><U0025><U004E><U0025><U0062><U0025><U004E><U0025><U0073>/
+<U0020><U0025><U0068><U0020><U0025><U0065><U0020><U0025><U0072><U0025>/
+<U004E><U0025><U0025><U007A><U0020><U0025><U0054><U0025>/
+<U004E><U0025><U0063><U0025><U004E>"
+% "Esperanto"
+lang_name     "<U0045><U0073><U0070><U0065><U0072><U0061><U006E><U0074><U006F>"
+lang_ab       "<U0065><U006F>" % "eo"
+lang_term     "<U0065><U0070><U006F>" % "epo"
+END LC_ADDRESS
