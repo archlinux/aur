@@ -1,6 +1,6 @@
 pkgname=mingw-w64-libsquish
 pkgver=1.13
-pkgrel=1
+pkgrel=2
 pkgdesc="DXT compression library (mingw-w64)"
 arch=(any)
 url="http://sourceforge.net/projects/libsquish"
@@ -16,7 +16,6 @@ sha1sums=('7bcdd7d0f0460a29e25dcdab8dc41a30e58bb366'
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
-  find . -type f -exec dos2unix {} \;
   patch -Np0 -i ../gcc440.patch
 }
 
