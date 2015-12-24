@@ -22,8 +22,7 @@ depends=('nss' 'alsa-lib' 'bzip2' 'libevent' 'icu' 'libgcrypt'
 makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'libexif' 'libsecret')
 makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
-            'gnome-keyring: for storing passwords in GNOME keyring'
-            'kdeutils-kwalletmanager: for storing passwords in KWallet')
+            'gnome-keyring: for storing passwords in GNOME keyring')
 conflicts=('chromium')
 provides=('chromium')
 options=('!strip')
