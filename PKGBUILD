@@ -1,14 +1,14 @@
-# $Id: PKGBUILD 138441 2015-08-17 06:39:34Z tpowa $
+# $Id: PKGBUILD 145069 2015-10-27 07:00:35Z tpowa $
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Based on SUSE spec https://build.opensuse.org/package/files?package=rt3562sta&project=driver%3Awireless
-# AUFS stuff: GI_Jack <iamjacksemail@hackermail.com>
+# AUFS Version: GI_Jack <iamjacksemail@hackermail.com>
 
-_pkgname=rt3562sta
 pkgname=rt3562sta-aufs
-pkgver=2.4.1.1_r2
+_pkgname=rt3562sta
+pkgver=2.4.1.1_r3
 _patchrel=${pkgver/*_r/}
-pkgrel=12
-pkgdesc="Ralink RT3562 PCI WLAN adaptors kernel module"
+pkgrel=1
+pkgdesc="Ralink RT3562 PCI WLAN adaptors kernel module(aufs_friendly)"
 arch=(i686 x86_64)
 url="http://www.mediatek.com/en/products/connectivity/wifi/consumer-electronics/pcie/rt3562/"
 license=('GPL')
@@ -36,7 +36,7 @@ package() {
 
 	cd "$srcdir"/rt3562sta-linux-r$_patchrel
 
-	install -Dm 0640 RT3562STA.dat "$pkgdir/etc/Wireless/RT3562STA/RT3562STA.dat"
+	install -Dm 0644 RT3562STA.dat "$pkgdir/etc/Wireless/RT3562STA/RT3562STA.dat"
 	install -Dm 0644 os/linux/$_pkgname.ko "$pkgdir/usr/lib/modules/extramodules-$_kernver-aufs_friendly/$_pkgname.ko"
 	install -dm 0755 "$pkgdir/usr/share/doc/$_pkgname"
 	install -m 0644 iwpriv_usage.txt README* RT3562STA* sta_ate_iwpriv_usage.txt "$pkgdir/usr/share/doc/$_pkgname"
@@ -45,4 +45,4 @@ package() {
 	sed -i "s|extramodules-.*-aufs_friendly|extramodules-$_kernver-aufs_friendly|" "$startdir/$_pkgname.install"
 }
 
-sha256sums=('fbb31034fac14d63f9ed16039b79743746d91e0587e3bdd036697f7fd39cef9a')
+sha256sums=('3428c37e91f04dfb0d5e4aae9bbcbf72a3816e8804d0735110a53d1140c37eaa')
