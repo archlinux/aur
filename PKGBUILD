@@ -2,22 +2,22 @@
 
 pkgname=libbitcoin-node-git
 pkgver=20151221
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Full Node"
 arch=('i686' 'x86_64')
+depends=('boost'
+         'boost-libs'
+         'libbitcoin'
+         'libbitcoin-blockchain'
+         'libbitcoin-consensus'
+         'secp256k1-git')
 makedepends=('autoconf'
              'automake'
-             'boost'
-             'boost-libs'
              'gcc'
              'git'
-             'libbitcoin'
-             'libbitcoin-consensus'
-             'libbitcoin-blockchain'
              'libtool'
              'make'
-             'pkg-config'
-             'secp256k1-git')
+             'pkg-config')
 groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin-node"
 license=('AGPL3')
