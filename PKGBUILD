@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 
 pkgname=h5ai
-pkgver=0.27.0
+pkgver=0.28.1
 pkgrel=1
 arch=(any)
 pkgdesc="A modern file indexer for HTTP web servers with focus on your files"
@@ -29,4 +29,4 @@ package() {
     chmod 777 -R ${pkgdir}/$webapps/${pkgname}/cache
 }
 
-md5sums=('e53a805e79eeebf40a4341128dab5702')
+md5sums=('d99b2d43102e23f52eb0c645a5a3b3dc')
