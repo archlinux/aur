@@ -7,6 +7,8 @@ arch=('i686' 'x86_64')
 url="http://skarnet.org/software/${pkgname}/"
 license=('ISC')
 depends=('skalibs')
+#/usr/bin/import conflicts
+conflicts=('imagemagick')
 source=("http://skarnet.org/software/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('ab4451d4992a5d7fb2ae34cffe4d0806e4902bf9aa27ee3b75617aa35379356f')
 
