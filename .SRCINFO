@@ -1,6 +1,6 @@
 pkgbase = biosdevname
 	pkgdesc = Udev helper for naming devices per BIOS names
-	pkgver = 0.6.2
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = http://linux.dell.com/cgi-bin/cgit.cgi/biosdevname.git
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = biosdevname
 	license = GPL
 	makedepends = zlib
 	depends = pciutils
-	source = http://linux.dell.com/cgi-bin/cgit.cgi/biosdevname.git/snapshot/biosdevname-0.6.2.tar.bz2
-	md5sums = eb527f82700de06a9ab29dce950bad29
+	source = http://linux.dell.com/cgi-bin/cgit.cgi/biosdevname.git/snapshot/biosdevname-0.7.1.tar.bz2
+	md5sums = e814c7b21f5974b248e469402bdb999d
 
 pkgname = biosdevname
 

@@ -1,6 +1,6 @@
 # Maintainer: Graziano Giuliani <graziano.giuliani@gmail.com>
 pkgname=biosdevname
-pkgver=0.6.2
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Udev helper for naming devices per BIOS names"
 arch=(i686 x86_64)
@@ -9,7 +9,7 @@ license=('GPL')
 depends=(pciutils)
 makedepends=(zlib)
 source=(http://linux.dell.com/cgi-bin/cgit.cgi/${pkgname}.git/snapshot/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('eb527f82700de06a9ab29dce950bad29')
+md5sums=('e814c7b21f5974b248e469402bdb999d')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
