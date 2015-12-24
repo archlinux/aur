@@ -1,18 +1,18 @@
 # Maintainer: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=iouyap
-pkgver=0.95
+pkgver=0.97
 pkgrel=1
 pkgdesc='Bridge IOU to UDP, TAP and Ethernet. GNS3 tool.'
 arch=('i686' 'x86_64')
 url='https://github.com/GNS3/iouyap'
 license=('GPL3')
 groups=('gns3')
-makedepends=('iniparser')
+# makedepends=('iniparser')
 depends=()
 optdepends=()
-md5sums=('bcb103e450be1ddc3c3f4c31119652a4')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/GNS3/${pkgname}/archive/${pkgver}.tar.gz")
+md5sums=('d874e11fd32c3348c1d5f92d60274f72')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/GNS3/${pkgname}/archive/v${pkgver}.tar.gz")
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
