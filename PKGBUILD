@@ -1,7 +1,7 @@
 # Maintainer: Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
 
 pkgname=sidef
-pkgver=2.12
+pkgver=2.13
 pkgrel=1
 pkgdesc="A modern object-oriented programming language."
 url="https://github.com/trizen/${pkgname}"
@@ -14,7 +14,7 @@ depends=('perl>=5.22.0' 'perl-data-dump')
 optdepends=('perl-math-bigint-gmp: for faster numerical calculations')
 
 source="https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz"
-sha256sums=('3764afa2b3edb68ce7f06e4e49e50f2c9cd9646a8be64690b71801def0e285b8')
+sha256sums=('47f3a79342ded1919022ed1f35a7864fae2f25520727979d38e396afc97d2455')
 
 package() {
     cd "$pkgname-$pkgver"
