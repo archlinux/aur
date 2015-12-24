@@ -2,8 +2,8 @@
 # Contributor: Andrew67 (.desktop file, icon, 64bit compatibility)
 
 pkgname=energia
-pkgver=0016
-pkgrel=8
+pkgver=0017
+pkgrel=1
 pkgdesc="Energia is a Arduino IDE clone for use with the MSP430 launchpad"
 arch=('i686' 'x86_64')
 url="http://energia.nu/"
@@ -11,7 +11,7 @@ license=('GPL')
 depends=(java-environment java-rxtx)
 provides=('energia')
 # staticlibs keeps all *.a files which are necessary since we bundle a toolchain
-# !strip disable stripping of debug symbols which are useful 
+# !strip disable stripping of debug symbols which are useful
 options=(!strip staticlibs)
 install='energia.install'
 source=('energia.desktop'
@@ -20,10 +20,10 @@ md5sums=('a7ce061d9fc0f9530e058204e532b40b'
          'dcdf66ac4ae446dcfadbcd6a2dbb6f31')
 if [[ $CARCH == "x86_64" ]]; then
  source+=("$pkgname-$pkgver-$CARCH.tgz::http://energia.nu/downloads/downloadv3.php?file=energia-0101E$pkgver-linux64.tgz")
- md5sums+=('9e3a183383424264f15c212fa031ee0f')
+ md5sums+=('cbb348ff40c2f9d42c025eb9a6484ae2')
 elif [[ $CARCH == "i686" ]]; then
  source+=("$pkgname-$pkgver-$CARCH.tgz::http://energia.nu/downloads/downloadv3.php?file=energia-0101E$pkgver-linux.tgz")
- md5sums+=('513d6f0a98fde775b11d66ad866c34b8')
+ md5sums+=('a4c11b8478f6b142de31b28a8847e7c1')
 fi
 
 # Don't compress, takes too long
