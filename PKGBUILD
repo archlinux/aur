@@ -5,20 +5,11 @@
 
 pkgname=zeromq-git
 pkgver=20151221
-pkgrel=1
+pkgrel=2
 pkgdesc="ZeroMQ core engine in C++"
 arch=('i686' 'x86_64')
-makedepends=('autoconf'
-             'automake'
-             'gcc'
-             'gcc-libs'
-             'git'
-             'libpgm'
-             'libsodium'
-             'libtool'
-             'make'
-             'pkg-config'
-             'util-linux')
+depends=('gcc-libs' 'libpgm' 'libsodium')
+makedepends=('autoconf' 'automake' 'gcc' 'git' 'libtool' 'make' 'pkg-config')
 url="https://github.com/zeromq/libzmq"
 license=('LGPL3')
 options=('staticlibs')
