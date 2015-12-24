@@ -1,5 +1,6 @@
 post_install() {
     update-desktop-database -q
+	ldconfig
 }
 
 post_upgrade() {
