@@ -3,7 +3,8 @@ post_install() {
 	systemctl enable NetworkManager.service > /dev/null
 
 	sed -i "s/^\(OnlyShowIn=.*\)$/\1Awesome;/g" /etc/xdg/autostart/*.desktop
-	echo "background=/usr/share/kana-p/login-wallpaper.jpg" >> /etc/lightdm/lightdm-gtk-greeter.conf
+	sed -i "s#^background=.*\$#background=/usr/share/kana-p/login-wallpaper.jpg#g" /etc/lightdm/lightdm-webkit-greeter.conf
+	sed -i "s#^webkit-theme=.*\$#webkit-theme=Bevel#g" /etc/lightdm/lightdm-webkit-greeter.conf
 }
 
 pre_upgrade() {
@@ -16,9 +17,10 @@ post_upgrade() {
 
 pre_remove()
 {
-	systemctl disable gdm.service > /dev/null
+	systemctl disable lightdm.service > /dev/null
 	systemctl disable NetworkManager.service > /dev/null
 
 	sed -i "s/^\(OnlyShowIn=.*\)Awesome;\(.*\)$/\1\2/g" /etc/xdg/autostart/*.desktop
-	sed -i 's#^background=/usr/share/kana-p/login-wallpaper.jpg$##g' /etc/lightdm/lightdm-gtk-greeter.conf
+	sed -i 's#^background=/usr/share/kana-p/login-wallpaper.jpg$#background=#g' /etc/lightdm/lightdm-webkit-greeter.conf
+	sed -i "s#^webkit-theme=Bevel\$#webkit-theme=webkit#g" /etc/lightdm/lightdm-webkit-greeter.conf
 }

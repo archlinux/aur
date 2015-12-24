@@ -1,8 +1,8 @@
 # Maintainer: Mathias Bragagia <youremail@domain.com>
 pkgname=kana-p
-pkgver=0.2.2
-pkgrel=2
-pkgdesc="Middlewar meta-package"
+pkgver=0.2.3
+pkgrel=1
+pkgdesc="Lite desktop manager - use lightdm, awesome and compton"
 arch=('any')
 url="https://github.com/bragagia/kana-p"
 license=('GPL')
@@ -21,11 +21,13 @@ depends=(
 	'bluez'
 	'bluez-utils'
 	'udevil'
+	'ntp'
+	'networkmanager-dispatcher-ntpd'
 
 	'net-tools'
 	'sudo'
 	'adduser'
-	'most'
+	'util-linux'
 
 	'zsh'
 
@@ -34,7 +36,9 @@ depends=(
 	'light'
 
 	'lightdm'
-	'lightdm-gtk-greeter'
+	'lightdm-webkit-greeter'
+	'lightdm-webkit-theme-bevel-git'
+	'light-locker'
 
 	'compton'
 	'awesome'
@@ -49,6 +53,7 @@ depends=(
 	'xdg-user-dirs-gtk'
 	'dex'
 	'feh'
+	'most'
 
 	'rxvt-unicode'
 	'git'
