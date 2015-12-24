@@ -1,8 +1,8 @@
 # Maintainer: Black_Codec <orso.f.regna@gmail.com>
  
 pkgname=guacamole-client
-pkgver=0.9.8
-pkgrel=2
+pkgver=0.9.9
+pkgrel=1
 pkgdesc="Java and Maven components of Guacamole"
 arch=('any')
 url="http://guacamole.sourceforge.net/"
