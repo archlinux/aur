@@ -1,6 +1,6 @@
 # Maintainer: Borislav Borisov <borislav.borisov@gmail.com>
 pkgname=valentina-studio
-pkgver=6.2.2
+pkgver=6.2.3
 pkgrel=1
 pkgdesc="MySQL, MariaDB, PostgreSQL, MS SQL Server, Valentina DB and SQLite GUI Admin Tool"
 arch=('i686' 'x86_64')
@@ -9,8 +9,8 @@ license=('custom')
 makedepends=('rpmextract')
 source_i686=("http://www.valentina-db.com/en/studio/download/current/vstudio_lin_32_rpm?format=raw")
 source_x86_64=("http://www.valentina-db.com/en/studio/download/current/vstudio_x64_lin-rpm?format=raw")
-sha256sums_i686=('59a758dd2f694443a436641c95627fcf344ba403c8fb755334a8fde816908414')
-sha256sums_x86_64=('3bc7543c77cd38fae67f7cb35bc8a21601dfc62dd1ab91bb461c45a3789f00f0')
+sha256sums_i686=('f9f35cc41c5ac5bf4e6a85d2959fd57d02c04a73e4b606be7e672641920158e7')
+sha256sums_x86_64=('54fee193f24e6e90bc56f0c4370bf40534a610c5f4883250bf7d9333d5abbff5')
 
 build() {
 	if test "$CARCH" == x86_64; then
