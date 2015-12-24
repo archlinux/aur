@@ -1,15 +1,16 @@
-#!/bin/bash
+#!/bin/sh
+
 . /etc/icecream.conf
 
 netname=
-if test -n "${ICECREAM_NETNAME}"; then
-    netname="-n ${ICECREAM_NETNAME}"
+if test -n "$ICECREAM_NETNAME"; then
+    netname="-n $ICECREAM_NETNAME"
 fi
 logfile=""
-if test -n "${ICECREAM_LOG_FILE}"; then
-    touch ${ICECREAM_LOG_FILE}
-    chown icecc:icecc ${ICECREAM_LOG_FILE}
-    logfile="-l ${ICECREAM_LOG_FILE}"
+if test -n "$ICECREAM_LOG_FILE"; then
+    touch $ICECREAM_LOG_FILE
+    chown icecream:icecream $ICECREAM_LOG_FILE
+    logfile="-l $ICECREAM_LOG_FILE"
 fi
 
-/usr/lib/icecream/sbin/icecc-scheduler -d ${netname} ${logfile} &>/dev/null
+/usr/lib/icecream/sbin/icecc-scheduler -u icecream ${netname} ${logfile} &>/dev/null

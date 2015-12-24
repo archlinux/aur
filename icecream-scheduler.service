@@ -1,10 +1,12 @@
 [Unit]
-Description=icecream scheduler
-Wants=network.target
+Description=Icecream distributed compiler scheduler
 
 [Service]
-Type=forking
+Type=simple
+User=icecream
+Group=icecream
+SyslogIdentifier=icecc-scheduler
 ExecStart=/usr/lib/icecream/icecream-schedulerd
 
 [Install]
-Alias=multi-user.target.wants/icecream-scheduler.service
+WantedBy=multi-user.target

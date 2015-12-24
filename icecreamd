@@ -32,4 +32,4 @@ if test -n "${ICECREAM_MAX_JOBS}"; then
     fi
 fi
 
-/usr/lib/icecream/sbin/iceccd -d ${logfile} ${nice} ${scheduler} ${netname} -b "${ICECREAM_BASEDIR}" ${maxjobs} ${noremote}  &>/dev/null
+/usr/lib/icecream/sbin/iceccd -u icecream ${logfile} ${nice} ${scheduler} ${netname} -b "${ICECREAM_BASEDIR}" ${maxjobs} ${noremote}  &>/dev/null
