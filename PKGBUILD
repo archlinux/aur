@@ -1,6 +1,6 @@
 # Maintainer: Leif Warner <abimelech@gmail.com>
 pkgname=idris
-pkgver=0.9.20.1
+pkgver=0.9.20.2
 pkgrel=1
 pkgdesc="Functional Programming Language with Dependent Types"
 url="http://www.idris-lang.org/"
@@ -11,12 +11,12 @@ depends=('gmp' 'libffi' 'zlib' 'gcc')
 provides=('idris')
 conflicts=('idris-git')
 source=(http://hackage.haskell.org/packages/archive/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz)
-md5sums=('a3ea7fda6aedafc70de96bcbfba8eabe')
+md5sums=('7bf368fd7d64ca974744fe9ed2547903')
 build() {
     cd ${srcdir}/${pkgname}-${pkgver}
 
     cabal sandbox init
-    cabal install --only-dependencies
+    cabal install --only-dependencies -fFFI -fGMP
     cabal configure -O --prefix=/usr -fFFI -fGMP
 
     cabal build
