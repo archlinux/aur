@@ -5,8 +5,8 @@
 
 pkgname=keepassx-git
 _gitname=keepassx
-pkgver=2.0.beta2.r83.g0c36c40
-pkgrel=2
+pkgver=2.0.0.r60.gecfbf72
+pkgrel=1
 pkgdesc="It is an OpenSource password safe which helps you to manage your passwords in an easy and secure way"
 arch=('i686' 'x86_64')
 url="https://github.com/keepassx/keepassx"
