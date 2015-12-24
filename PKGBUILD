@@ -2,23 +2,23 @@
 
 pkgname=libbitcoin-client
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Bitcoin Client Protocol Implementation"
 arch=('i686' 'x86_64')
+depends=('boost'
+         'boost-libs'
+         'czmq-git'
+         'czmqpp-git'
+         'libbitcoin'
+         'libsodium'
+         'secp256k1-git'
+         'zeromq')
 makedepends=('autoconf'
              'automake'
-             'boost'
-             'boost-libs'
-             'czmq-git'
-             'czmqpp-git'
              'gcc'
-             'libbitcoin'
-             'libsodium'
              'libtool'
              'make'
-             'pkg-config'
-             'secp256k1-git'
-             'zeromq')
+             'pkg-config')
 groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin-client"
 license=('AGPL3')
