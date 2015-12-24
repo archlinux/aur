@@ -3,16 +3,11 @@
 
 pkgname=czmqpp-git
 pkgver=20150212
-pkgrel=2
+pkgrel=3
 pkgdesc="C++ wrapper for czmq"
 arch=('i686' 'x86_64')
-makedepends=('autoconf'
-             'czmq-git'
-             'gcc'
-             'git'
-             'make'
-             'pkg-config'
-             'zeromq')
+depends=('czmq-git' 'zeromq')
+makedepends=('autoconf' 'gcc' 'git' 'make' 'pkg-config')
 url="https://github.com/zeromq/czmqpp"
 license=('LGPL3')
 source=(git+https://github.com/zeromq/czmqpp)
