@@ -4,11 +4,11 @@ pkg_base=dogecoin
 pkgname=('dogecoin-daemon')
 pkgver=1.10.0
 _git_branch=master
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url='http://dogecoin.com/'
 makedepends=('boost' 'automoc4' 'protobuf')
-conflicts=('dogecoin-qt') # /usr/bin/dogecoind exists in filesystem
+conflicts=('dogecoin-qt')
 license=('MIT')
 source=(
     https://github.com/$pkg_base/$pkg_base/archive/$_git_branch.tar.gz
