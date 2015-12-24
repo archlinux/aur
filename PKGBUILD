@@ -3,7 +3,7 @@ pkgver=1.7.4+cloudef8
 pkgrel=1
 pkgdesc="Mascot Constructive Pilot for X – Cloudef's fork"
 url="https://github.com/Cloudef/macopix-fork"
-arch=(x86_64)
+arch=(i686 x86_64)
 license=(GPL2 LGPL2.1)
 depends=(gtk2)
 provides=(macopix=$pkgver)
