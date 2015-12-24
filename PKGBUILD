@@ -8,6 +8,8 @@ arch=('any')
 url="http://minetest.ig42.org/"
 license=('LGPL')
 depends=('minetest')
+provides=('minetest-lott')
+conflicts=('minetest-lott')
 
 makedepends=('git')
 source=("$pkgname::git://github.com/minetest-LOTT/Lord-of-the-Test.git")
