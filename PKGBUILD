@@ -1,35 +1,26 @@
+# Maintainer: M0Rf30
+
 pkgname=netsukuku
-pkgver=0.0.9b
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="an experimental peer-to-peer routing system"
 arch=('i686' 'x86_64')
 url="http://netsukuku.freaknet.org"
 license=('GPL')
-depends=(bash)
-install=netsukuku.install
-source=(http://netsukuku.freaknet.org/files/packages/${pkgname}-${pkgver}-i486-9.tgz)
+depends=(libgee vala tasklet zcd netsukuku-rpc andns-rpc ntkresolv)
+
+source=(http://mirror.lihnidos.org/GNU/savannah//netsukuku/${pkgname}-${pkgver}.tar.gz)
+
+build() {
+  cd $srcdir/${pkgname}-${pkgver}
+  ./configure --enable-logtasklet --sysconfdir=/etc --prefix=/usr
+  make
+}
 
 package() {
-  cd $srcdir
-
-  # Program 
-  install -d -m 755 ${pkgdir}/usr/bin
-  install -D -m 755 usr/bin/* ${pkgdir}/usr/bin
-
-  # Conf files
-  install -d -m 755 ${pkgdir}/etc/${pkgname}/
-  install -D -m 664 etc/${pkgname}/*  ${pkgdir}/etc/${pkgname}/
-
-  #Move the daemon file
-  install -d -m 755 ${pkgdir}/etc/rc.d/
-  install -D -m 755 ${pkgdir}/etc/${pkgname}/rc.ntk ${pkgdir}/etc/rc.d/ntkd
-  rm ${pkgdir}/etc/${pkgname}/rc.ntk
-
-  # Man files
-  install -d -m 755 ${pkgdir}/usr/share/man/{man5,man8}
-  install -D -m 664 usr/man/man5/* ${pkgdir}/usr/share/man/man5/
-  install -D -m 664 usr/man/man8/* ${pkgdir}/usr/share/man/man8/
+  cd $srcdir/${pkgname}-${pkgver}
+  make DESTDIR=$pkgdir install
 }
  
-md5sums=('1ef4ce3eed387d5e69c6b1a6d2bd036f')
 
+md5sums=('c5c77172d3eefed9c9e0c5edad86501e')
