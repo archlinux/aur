@@ -1,5 +1,5 @@
 # Maintainer: Ryan Medeiros <giganitris at gmail dot com>
-pkgname=corrupter
+pkgname=corrupt
 pkgver=B.0.2.0
 pkgrel=1
 pkgdesc="Linux ROM corruptor."
