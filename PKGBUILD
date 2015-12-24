@@ -9,7 +9,7 @@ url='https://github.com/GNS3/gns3-gui'
 license=('GPL3')
 groups=('gns3')
 makedepends=('python-setuptools')
-depends=('python-apache-libcloud' 'python-paramiko' 'python-requests' 'python-raven' 'gns3-converter' 'python-pyqt4') 
+depends=('python-apache-libcloud' 'python-paramiko' 'python-requests' 'python-raven' 'gns3-converter' 'python-pyqt4')
 # ? 'python-rsa'
 optdepends=('gns3-server: GNS3 backend. Manages emulators such as Dynamips, VirtualBox or Qemu/KVM.'
             'dynamips: Cisco router emulator.'
