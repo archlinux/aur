@@ -1,6 +1,6 @@
 # Maintainer: Graham Edgecombe <graham@grahamedgecombe.com>
 pkgname=openrct2-git
-pkgver=r5340.44bb3ac
+pkgver=r5394.3820db3
 pkgrel=1
 pkgdesc='Open source clone of RollerCoaster Tycoon 2'
 arch=('i686' 'x86_64')
@@ -20,10 +20,10 @@ sha256sums=('SKIP'
             'b916d4a9f56af82693ba21f43e09ababe9f132fd7c3b78efa1b4387ee1bc3a4d')
 
 if [ "$CARCH" = "i686" ]; then
-  depends+=('sdl2' 'sdl2_ttf' 'curl' 'jansson' 'speexdsp')
+  depends+=('sdl2' 'sdl2_ttf' 'curl' 'jansson' 'speexdsp' 'fontconfig')
 else
   depends+=('lib32-sdl2' 'lib32-sdl2_ttf' 'lib32-curl' 'lib32-jansson'
-            'lib32-speexdsp')
+            'lib32-speexdsp' 'lib32-fontconfig')
   makedepends+=('gcc-multilib')
 fi
 
