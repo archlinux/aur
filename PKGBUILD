@@ -9,7 +9,7 @@ depends=(gtk2)
 provides=(macopix=$pkgver)
 conflicts=(macopix)
 source=("git+https://github.com/Cloudef/macopix-fork")
-sha256sums=(SKIP)
+sha256sums=('SKIP')
 
 pkgver() {
 	cd macopix-fork
