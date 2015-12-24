@@ -3,7 +3,7 @@
 pkgbase = macopix-cloudef
 	pkgdesc = Mascot Constructive Pilot for X – Cloudef's fork
 	pkgver = 1.7.4+cloudef8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Cloudef/macopix-fork
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,27 @@ pkgbase = macopix-cloudef
 	provides = macopix=1.7.4+cloudef8
 	conflicts = macopix
 	source = git+https://github.com/Cloudef/macopix-fork
+	source = http://rosegray.sakura.ne.jp/macopix/macopix-mascot-HxB-euc-ja-0.30.tar.gz
+	source = http://rosegray.sakura.ne.jp/macopix/macopix-mascot-marimite-euc-ja-2.20.tar.gz
+	source = http://rosegray.sakura.ne.jp/macopix/macopix-mascot-cosmos-euc-ja-1.02.tar.gz
+	source = http://rosegray.sakura.ne.jp/macopix/macopix-mascot-mizuiro-euc-ja-1.02.tar.gz
+	source = http://rosegray.sakura.ne.jp/macopix/macopix-mascot-pia2-euc-ja-1.02.tar.gz
+	source = http://rosegray.sakura.ne.jp/macopix/macopix-mascot-tsukihime-euc-ja-1.02.tar.gz
+	source = http://rosegray.sakura.ne.jp/macopix/macopix-mascot-triangle_heart-euc-ja-1.02.tar.gz
+	source = http://rosegray.sakura.ne.jp/macopix/macopix-mascot-comic_party-euc-ja-1.02.tar.gz
+	source = http://rosegray.sakura.ne.jp/macopix/macopix-mascot-kanon-euc-ja-1.02.tar.gz
+	source = http://rosegray.sakura.ne.jp/macopix/macopix-mascot-one-euc-ja-1.02.tar.gz
 	sha256sums = SKIP
+	sha256sums = 3e8ca25e163a97fca12e1a134943a7815e245c779ff88e9444b7af5ee117f4fb
+	sha256sums = dd64c0834032dd37b83dc5f660dc813fcb0c514f3331f942afc61ff483126418
+	sha256sums = e39ef6da31f8f8c4c9c8a50fe0e1e00800fe7258b51d1cb4a9b6512962f8a3aa
+	sha256sums = f57a40f8b107f862162ce40d07f2237670b850af353b4b3ca880e7190e4e104f
+	sha256sums = b3ae2b2480173673010f91fd0864249e05bd990af9af9fccddd43a2bd829d76b
+	sha256sums = 6dcf1add046046f45ad9b23ed174b22537e23cfa3686b6bc84f607bd34a7ea8e
+	sha256sums = 5849b6e40a8037e0739b523aed7b597cb2464418bb922d7917dd95c7ed65cdef
+	sha256sums = 3dbdcd20f2f1f99062263b70bcef92e31f81b1e3e6c62ac0de8f71df83cb1983
+	sha256sums = 3b2b1d6cbc5f413404680866e2e4506e6ec081af7f90dfa015f5674c8454729b
+	sha256sums = d365e516557fd6f3826d9086f7348c3e444256371cac87f901078ece7c118454
 
 pkgname = macopix-cloudef
 
