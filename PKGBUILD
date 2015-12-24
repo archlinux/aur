@@ -2,18 +2,11 @@
 
 pkgname=libbitcoin-consensus
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Libbitcoin Consensus Library"
 arch=('i686' 'x86_64')
-makedepends=('autoconf'
-             'automake'
-             'boost'
-             'boost-libs'
-             'gcc'
-             'libtool'
-             'make'
-             'pkg-config'
-             'secp256k1-git')
+depends=('boost' 'boost-libs' 'secp256k1-git')
+makedepends=('autoconf' 'automake' 'gcc' 'libtool' 'make' 'pkg-config')
 groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin-consensus"
 license=('AGPL3')
