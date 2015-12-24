@@ -4,9 +4,9 @@
 # Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
 
 pkgname=avahi-nosystemd
-pkgver=0.6.31
-pkgrel=2
-_commit=573e3b5
+pkgver=0.6.32rc
+pkgrel=1
+_commit=bc4e85846991d0efca89add631c7cd16033f0bef
 pkgdesc='Multicast DNS-SD / Zeroconf Suite'
 url='http://www.avahi.org/'
 license=('LGPL')
@@ -78,7 +78,7 @@ package() {
 
 	make DESTDIR="${pkgdir}" install
 	make DESTDIR="$pkgdir" -C avahi-python/avahi3 install \
-		PYTHON=/usr/bin/python3 pythondir=/usr/lib/python3.4/site-packages
+		PYTHON=/usr/bin/python3 pythondir=/usr/lib/python3.5/site-packages
 
 	# howl and mdnsresponder compatability
 	ln -s avahi-compat-howl "$pkgdir/usr/include/howl"
