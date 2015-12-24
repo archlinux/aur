@@ -8,7 +8,7 @@ license=(GPL2 LGPL2.1)
 depends=(gtk2)
 provides=(macopix=$pkgver)
 conflicts=(macopix)
-source=(git+https://github.com/Cloudef/macopix-fork)
+source=("git+https://github.com/Cloudef/macopix-fork")
 sha256sums=(SKIP)
 
 pkgver() {
