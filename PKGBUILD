@@ -1,7 +1,7 @@
 # Maintainer: Josh VanderLinden <arch@cloudlery.com>
 pkgname=execline
 pkgver=2.1.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A (non-interactive) scripting language, like sh"
 arch=('i686' 'x86_64')
 url="http://skarnet.org/software/${pkgname}/"
@@ -14,7 +14,7 @@ sha256sums=('ab4451d4992a5d7fb2ae34cffe4d0806e4902bf9aa27ee3b75617aa35379356f')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  ./configure --prefix=/usr/lib/execline/bin
+  ./configure --prefix=/usr
 
   make
 }
