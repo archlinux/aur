@@ -16,7 +16,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=(https://raw.githubusercontent.com/tastyminerals/line_up/master/line_up.py)
-md5sums=(3bd8536c8bac0b45f4635bd031fa7bea)
+md5sums=(528dac9084723ce9b01370f4c3fcb533)
 
 package() {
   # python setup.py install --root="$pkgdir/" --optimize=1
