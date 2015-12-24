@@ -27,8 +27,6 @@ build() {
 
     mkdir -p build-${_arch} && pushd build-${_arch}
 
-    export
-
     ### NOTE ###
     # if you manage to get libltdl installed, you can add the flag '--with-modules' for support of synamically loaded modules
     ${_arch}-configure --enable-shared --without-x --with-quantum-depth=16 --with-threads
