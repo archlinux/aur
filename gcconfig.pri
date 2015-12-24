@@ -6,7 +6,7 @@
 
 # We recommend a debug build for development and a release build for deployment
 #CONFIG += debug
-#CONFIG += release
+CONFIG += release
 
 # If you want a console window to appear on Windows machines
 # then uncomment the following two lines.
@@ -20,12 +20,12 @@
 
 # We use g++ on all platforms so switch on auto vectorization amongst other
 # things to speed up looping over ride file points
-#QMAKE_CXXFLAGS += -O3
+QMAKE_CXXFLAGS += -O3
 
 # Let us know where flex and bison are installed.
 # You may need to specify the full path if things don't work.
-#QMAKE_LEX  = flex
-#QMAKE_YACC = bison
+QMAKE_LEX  = flex
+QMAKE_YACC = bison
 #win32 {
 #  QMAKE_YACC = bison --file-prefix=y -t
 #  QMAKE_MOVE = cmd /c move
@@ -42,9 +42,11 @@
 # SRMIO_LIBS    = $${SRMIO_INSTALL}/lib/libsrmio.a
 # You may override the INCLUDE and LIB files if you like.
 # You *must* define SRMIO_INSTALL to use this feature.
-#SRMIO_INSTALL = 
-#SRMIO_INCLUDE = 
-#SRMIO_LIBS    = 
+exists(/usr/lib/libsrmio.a) {
+    SRMIO_INSTALL = yes
+    SRMIO_INCLUDE = /usr/include/
+    SRMIO_LIBS    = /usr/lib/libsrmio.a
+}
 
 # If you want D2XX device downloads, you need the D2XX libraries
 #    http://www.ftdichip.com/Drivers/D2XX.htm
@@ -54,8 +56,10 @@
 # If for some reason you need a library to compile d2xx support
 # specify it on the D2XX_LIBS = line.
 # You *must* define D2XX_INCLUDE to use this feature.
-#D2XX_INCLUDE = 
-#D2XX_LIBS    =
+exists(/usr/lib/libftd2xx.so) {
+    D2XX_INCLUDE = /usr/include/
+    D2XX_LIBS    = /usr/lib/libftd2xx.so
+}
 
 # If you want Twitter support you must install a QT OAUTH library kQoAUTH
 #     http://github.com/kypeli/kQOAuth (Version >= 0.98 - tested with 0.98))
@@ -69,9 +73,9 @@
 # You may override the INCLUDE and LIB files if you like.
 # You *must* define KQOAUTH_INSTALL to use this feature.
 
-#KQOAUTH_INSTALL = 
-#KQOAUTH_INCLUDE =
-#KQOAUTH_LIBS =
+KQOAUTH_INSTALL = yes
+#KQOAUTH_INCLUDE = kqoauth
+#KQOAUTH_LIBS = kqoauth/libkqoauth.a
 
 # If you want 3D plotting, you need to install qwtplot3d
 #     http://qwtplot3d.sourceforge.net/
@@ -86,9 +90,12 @@
 # QWT3D_LIBS    = $${QWT3D_INSTALL}/lib/libqwtplot3d.a
 # You may override the INCLUDE and LIB files if you like.
 # You *must* define QWT3D_INSTALL to use this feature.
-#QWT3D_INSTALL = 
-#QWT3D_INCLUDE = 
-#QWT3D_LIBS    = 
+exists(/usr/lib/libqwtplot3d.a) {
+    QWT3D_INSTALL = yes
+    QWT3D_INCLUDE = /usr/include/qwtplot3d/
+    QWT3D_LIBS    = /usr/lib/libqwtplot3d.a 
+}
+
 
 # For TrainingPeaks.com upload/download you need to install the Qt Soap add-on
 #     http://qt.nokia.com/products/appdev/add-on-products/catalog/4/Utilities/qtsoap
@@ -106,13 +113,15 @@
 #
 # then set the following variable appropriately
 # to the root of the libs/include path
-#KML_INSTALL = /usr/local
-#KML_INCLUDE = 
-#KML_LIBS    = 
+exists(/usr/lib/libkmldom.so) {
+    KML_INSTALL = yes
+    KML_INCLUDE = /usr/include/
+    KML_LIBS    = /usr/lib/libkmldom.so /usr/lib/libkmlbase.so
+}
 # Since KML also requires BOOST you will need to install
 # that too and then set BOOST_INCLUDE to that location
 # If the files are in /usr/include/boost then set
-#BOOST_INCLUDE = /usr/include
+#BOOST_INCLUDE = /usr/include/
 #Additionally, on MAC the latest libs also need the following
 #QMAKE_CFLAGS_X86_64 += -mmacosx-version-min=10.7
 #QMAKE_CXXFLAGS_X86_64 = $$QMAKE_CFLAGS_X86_64
@@ -128,9 +137,11 @@
 # ICAL_LIBS    = $${ICAL_INSTALL}/lib/libical.a
 # You may override the INCLUDE and LIB files if you like.
 # You *must* define ICAL_INSTALL to use this feature.
-#ICAL_INSTALL = 
-#ICAL_INCLUDE = 
-#ICAL_LIBS    =
+packagesExist(libical) {
+    ICAL_INSTALL = yes
+    ICAL_INCLUDE = /usr/include/
+    ICAL_LIBS    = -lical -licalss -licalvcal -lpthread
+}
 
 # If you want support for using USB1 sticks in Train View on Windows
 # then install the SiLabs USBXpress Software Development Kit (SDK)
@@ -151,9 +162,11 @@
 #     http://sourceforge.net/projects/libusb-win32/files/libusb-win32-releases/0.1.12.2/
 # You may override the INCLUDE and LIB files if you like.
 # You *must* define LIBUSB_INSTALL to use this feature.
-#LIBUSB_INSTALL = /usr/local
-#LIBUSB_INCLUDE = 
-#LIBUSB_LIBS    = 
+packagesExist(libusb) {
+    LIBUSB_INSTALL = yes
+    LIBUSB_INCLUDE = /usr/include/
+    LIBUSB_LIBS    = -lusb
+}
 
 # if you want video playback on training mode then
 # download and install vlc (videolan) from
@@ -173,9 +186,11 @@
 # VLC_LIBS    = -lvlc -lvlccore
 # You may override the INCLUDE and LIB files if you like.
 # You *must* define VLC_INSTALL to use this feature.
-#VLC_INSTALL = 
-#VLC_INCLUDE = 
-#VLC_LIBS    = 
+packagesExist(libvlc) {
+    VLC_INSTALL = yes
+    VLC_INCLUDE = /usr/include/
+    VLC_LIBS    = -lvlc -lvlccore
+}
 
 # *** Mac users NOTE ***
 # On MAC you don't need libvlc since we use the
@@ -191,9 +206,14 @@
 # Only tested on Linux, cannot compile on Windows at present
 # Code is available at: http://www.mega-nerd.com/SRC/
 #
-#SAMPLERATE_INSTALL = /usr/local
-#SAMPLERATE_INCLUDE = /usr/local/include
-#SAMPLERATE_LIBS = /usr/local/lib/libsamplerate.a
+packagesExist(samplerate) {
+    SAMPLERATE_INSTALL = yes
+    SAMPLERATE_INCLUDE = /usr/include
+    SAMPLERATE_LIBS = -lsamplerate
+    DEFINES += GC_VIDEO_VLC   
+} else {
+    DEFINES += GC_VIDEO_NONE 
+}
 
 # If your system has PKG_CONFIG, QT can use this to get dependent libraries.
 # Add the names of libraries with PKG_CONFIG information.
@@ -250,7 +270,7 @@ macx {
 #DEFINES += GC_MAPQUESTAPI_KEY=\\\"xxxxxxxxxxxxxxxxxxxxxx\\\"
 
 # What video playback do you want?
-DEFINES += GC_VIDEO_NONE             # dont add any video playback support
+#DEFINES += GC_VIDEO_NONE             # dont add any video playback support
 #DEFINES += GC_VIDEO_QUICKTIME        # mac only and the default
 #DEFINES += GC_VIDEO_QT5              # use QT5 qvideowidget if QT > 5.2.1
 #DEFINES += GC_VIDEO_VLC               # use VideoLan library needs VLC_INSTALL defined above
