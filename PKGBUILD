@@ -2,7 +2,7 @@
 
 pkgname=visual-studio-code-oss
 pkgdesc='Visual Studio Code for Linux, Open Source version'
-pkgver=0.10.3
+pkgver=0.10.6
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://code.visualstudio.com/'
@@ -14,8 +14,8 @@ provides=('vscode-oss')
 
 source=("https://github.com/Microsoft/vscode/archive/${pkgver}.tar.gz"
         "${pkgname}.desktop")
-sha1sums=('3057799c2fe2beecbea874f52dbf62c79e144bc2'
-          'cd6694b63b96c597713f36754fb64f91410527be')
+sha1sums=('4b979c5da74a450972cbefb31a0a166891d6d4d7'
+          '9ba4659068dc5a71b2bb30eb106872e525660e3f')
 
 case "$CARCH" in
     i686)
@@ -33,7 +33,7 @@ esac
 build() {
     cd "${srcdir}/vscode-${pkgver}"
 
-    npm install
+    ./scripts/npm.sh install
     gulp vscode-linux-${_vscode_arch}
 }
 

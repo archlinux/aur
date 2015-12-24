@@ -1,7 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=Visual Studio Code (Open Source)
-Version=0.10.3
+Version=0.10.6
 Exec="/opt/VSCode-OSS/Code [OSS Build]" %F
 Icon=/opt/VSCode-OSS/resources/app/resources/linux/code.png
 Type=Application
