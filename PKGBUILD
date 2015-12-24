@@ -1,6 +1,6 @@
 # Maintainer: Mathias Bragagia <youremail@domain.com>
 pkgname=kana-p
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Middlewar meta-package"
 arch=('any')
@@ -12,15 +12,20 @@ depends=(
 
 	'networkmanager'
 	'openssh'
+	'alsa-firmeware'
+	'alsa-utils'
+	'alsa-plugins'
 	'pulseaudio'
 	'pulseaudio-alsa'
 	'pulseaudio-ctl'
 	'bluez'
 	'bluez-utils'
+	'udevil'
 
 	'net-tools'
 	'sudo'
 	'adduser'
+	'most'
 
 	'zsh'
 
@@ -56,7 +61,7 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-install=.INSTALL
+install=.install
 changelog=
 source=(https://github.com/bragagia/kana-p/archive/$pkgver.tar.gz)
 noextract=()
