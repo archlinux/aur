@@ -1,7 +1,7 @@
 # Maintainer: Amiad <amiadb at gmail dot com>
 
 pkgname=geany-git
-pkgver=1.26.0.6.g1a84bb6
+pkgver=1.26.0.14.gd1fcd9f
 pkgrel=1
 pkgdesc="Fast and lightweight IDE (git version)"
 arch=('x86_64' 'i686')
