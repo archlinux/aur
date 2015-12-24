@@ -7,9 +7,9 @@ pkgdesc="Tools to make searching and viewing easy."
 arch=('any')
 url="https://github.com/lilydjwg/search-and-view"
 license=('GPL3')
-depends=('bash' 'the_silver_searcher' 'python' 'python-easygui' 'vim')
+depends=('bash' 'the_silver_searcher' 'python' 'python-easygui')
 makedepends=('git')
-optdepends=('python-setproctitle: agv support')
+optdepends=('python-setproctitle: agv support' 'vim: vv support')
 source=('git+https://github.com/lilydjwg/search-and-view.git')
 md5sums=('SKIP')
 
