@@ -3,7 +3,7 @@
 pkgname=minetest-lott-git
 pkgver=1.0.0.r25.ga0936cc
 pkgrel=1
-pkgdesc="Lord of the Test is a Lord of the Rings-based game for the Minetest engine."
+pkgdesc="A Lord of the Rings-based game for the Minetest engine."
 arch=('any')
 url="http://minetest.ig42.org/"
 license=('LGPL')
