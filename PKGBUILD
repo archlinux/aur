@@ -2,7 +2,7 @@
 # Contributor: jmf <jmf at mesecons dot net>
 # Contributor: Pascal Groschwitz <p.groschwitz@googlemail.com>
 pkgname=flightgear-git
-pkgver=20151212
+pkgver=20151224
 pkgrel=1
 _gitname=flightgear
 pkgdesc="An open-source, multi-platform flight simulator"
@@ -24,6 +24,7 @@ pkgver() {
 build() {
   cd ${srcdir}/${_gitname}
   git checkout next
+#  patch -Np1 -i ../explicitely-link-with-libX11.patch
   cmake \
   -DCMAKE_INSTALL_PREFIX=/usr \
   -DENABLE_QT=1 \
