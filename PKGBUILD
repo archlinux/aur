@@ -2,25 +2,24 @@
 
 pkgname=bitcoinxt-git
 pkgver=20151207
-pkgrel=2
+pkgrel=3
 pkgdesc="BitcoinXT headless P2P node"
 arch=('i686' 'x86_64')
 url="https://github.com/bitcoinxt/bitcoinxt"
+depends=('boost'
+         'boost-libs'
+         'curl'
+         'miniupnpc'
+         'openssl')
 makedepends=('autoconf'
              'automake'
              'binutils'
-             'boost'
-             'boost-libs'
-             'curl'
              'expect'
              'gcc'
              'git'
              'libtool'
              'make'
-             'miniupnpc'
-             'openssl'
-             'pkg-config'
-             'yasm')
+             'pkg-config')
 license=('MIT')
 source=(git+https://github.com/bitcoinxt/bitcoinxt
         bitcoin.conf
