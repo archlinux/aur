@@ -2,10 +2,24 @@ post_install() {
     echo "put something like this at the end of your ~/.bashrc to get a random pokemon on every bash launch:"
     echo ""
     echo "cat /usr/share/pokeshell/\$((\$RANDOM % 151 + 1)).pokemon"
+    echo ""
+    echo "For fish shell you can add this function to your ~/.config/fish/functions/fish_prompt.fish:"
+    echo ""
+    echo "function fish_greeting"
+    echo "    set r (random)"
+    echo "    cat /usr/share/pokeshell/(math \"$r % 151 + 1\").pokemon"
+    echo "end"
 }
 
 post_upgrade() {
     echo "put something like this at the end of your ~/.bashrc to get a random pokemon on every bash launch:"
     echo ""
     echo "cat /usr/share/pokeshell/\$((\$RANDOM % 151 + 1)).pokemon"
+    echo ""
+    echo "For fish shell you can add this function to your ~/.config/fish/functions/fish_prompt.fish:"
+    echo ""
+    echo "function fish_greeting"
+    echo "    set r (random)"
+    echo "    cat /usr/share/pokeshell/(math \"$r % 151 + 1\").pokemon"
+    echo "end"
 }
