@@ -10,7 +10,7 @@ url="http://www.goldencheetah.org/"
 license=('GPL')
 makedepends=(bison flex 'gcc' 'make' 'qt5-tools' )
 depends=('qt5-base' 'qt5-svg' qt5-location qt5-declarative qt5-webchannel qt5-sensors qt5-serialport qt5-webkit qt5-multimedia)
-optdepends=('vlc' 'libqwtplot3d-svn' 'srmio' 'libftd2xx' 'libkml' 'libical' 'libusb' 'libsamplerate')
+optdepends=('vlc' 'qwtplot3d-svn' 'srmio' 'libftd2xx' 'libkml' 'libical' 'libusb' 'libsamplerate')
 options=('!strip' '!buildflags' 'staticlibs')
 source=('golden-cheetah::git+https://github.com/GoldenCheetah/GoldenCheetah.git'
 GoldenCheetah.desktop gc.png gcconfig.pri)
