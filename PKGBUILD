@@ -1,7 +1,7 @@
 # Maintainer: Mathias Bragagia <youremail@domain.com>
 pkgname=kana-p
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Middlewar meta-package"
 arch=('any')
 url="https://github.com/bragagia/kana-p"
@@ -12,7 +12,7 @@ depends=(
 
 	'networkmanager'
 	'openssh'
-	'alsa-firmeware'
+	'alsa-firmware'
 	'alsa-utils'
 	'alsa-plugins'
 	'pulseaudio'
