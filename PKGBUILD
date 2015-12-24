@@ -65,5 +65,6 @@ package_lib32-gtk3-nocsd() {
 	replaces=("${pkgname}" "${pkgname}-git<=${pkgver}")
 	depends=('gtk3-nocsd')
 	arch=('x86_64')
+	install -d "${pkgdir}"/usr/lib32/
 	install -Dm644 ${srcdir}/${pkgbase//-git/}/lib32/libgtk3-nocsd.so.0 "${pkgdir}"/usr/lib32/libgtk3-nocsd.so.0
 } 
