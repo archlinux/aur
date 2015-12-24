@@ -1,7 +1,7 @@
 # Maintainer: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=gns3-gui
-pkgver=1.3.10
+pkgver=1.3.13
 pkgrel=1
 pkgdesc='GNS3 network simulator. Graphical user interface package.'
 arch=('any')
@@ -9,7 +9,8 @@ url='https://github.com/GNS3/gns3-gui'
 license=('GPL3')
 groups=('gns3')
 makedepends=('python-setuptools')
-depends=('python-apache-libcloud' 'python-paramiko' 'python-requests' 'python-raven' 'python-sip' 'gns3-converter' 'python-pyqt4') 
+depends=('python-apache-libcloud' 'python-paramiko' 'python-requests' 'python-raven' 'gns3-converter' 'python-pyqt4') 
+# ? 'python-rsa'
 optdepends=('gns3-server: GNS3 backend. Manages emulators such as Dynamips, VirtualBox or Qemu/KVM.'
             'dynamips: Cisco router emulator.'
             'xterm: Default terminal emulator for CLI management of virtual instances.'
@@ -17,7 +18,7 @@ optdepends=('gns3-server: GNS3 backend. Manages emulators such as Dynamips, Virt
 conflicts=('gns3' 'gns3-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/GNS3/${pkgname}/archive/v${pkgver}.tar.gz"
         'gns3.desktop')
-md5sums=('02ee6b6c843475417f3e9fcc6e2aabd2'
+md5sums=('4d5c72aad1eab14f9a173fb198257aa4'
          'ac6ba60be0a1cb7fc965d1a105e431d5')
 
 package() {
