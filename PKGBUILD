@@ -1,11 +1,11 @@
 # Maintainer: Raphaël Doursenaud <rdoursenaud@free.fr>
 
 pkgname=frescobaldi-git
-pkgver=v2.18.1.r3.g6b4031a
+pkgver=v2.18.1.r52.g7da838f
 pkgrel=1
 pkgdesc="A LilyPond sheet music text editor."
 arch=('any')
-url="http://www.frescobaldi.org/" 
+url="http://www.frescobaldi.org/"
 license=('GPL')
 depends=(
   'hyphen'
@@ -34,7 +34,7 @@ optdepends=(
 )
 conflicts=('frescobaldi')
 provides=('frescobaldi')
-source=("$pkgname"::'git://github.com/wbsoft/frescobaldi.git')
+source=("${pkgname}"::'git://github.com/wbsoft/frescobaldi.git')
 install=frescobaldi-git.install
 md5sums=('SKIP')
 
@@ -42,21 +42,21 @@ _gitroot='https://github.com/wbsoft/frescobaldi.git'
 _gitname='frescobaldi'
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "${srcdir}/${pkgname}"
   git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/$pkgname"
+  cd "${srcdir}/${pkgname}"
   # Provided by tango-icon-theme
   rm -rf "frescobaldi_app/icons/Tango"
   # Provided by hyphen-*
-  rm -rf "frescobaldi_app/hyphdicts"
+  rm -f "frescobaldi_app/hyphdicts/hyph_*.dic"
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  cd "${srcdir}/${pkgname}"
+  python setup.py install --root="${pkgdir}/" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:
