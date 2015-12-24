@@ -7,7 +7,7 @@ post_install() {
     echo ""
     echo "function fish_greeting"
     echo "    set r (random)"
-    echo "    cat /usr/share/pokeshell/(math \"$r % 151 + 1\").pokemon"
+    echo "    cat /usr/share/pokeshell/(math \"\$r % 151 + 1\").pokemon"
     echo "end"
 }
 
@@ -20,6 +20,6 @@ post_upgrade() {
     echo ""
     echo "function fish_greeting"
     echo "    set r (random)"
-    echo "    cat /usr/share/pokeshell/(math \"$r % 151 + 1\").pokemon"
+    echo "    cat /usr/share/pokeshell/(math \"\$r % 151 + 1\").pokemon"
     echo "end"
 }
