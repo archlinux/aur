@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://qwtplot3d.sourceforge.net/"
 license=('zlib')
 makedepends=('gcc' 'make' 'qt5-tools' 'subversion')
-depends=('qt5-base' 'qt5-svg' qt5-location qt5-declarative qt5-webchannel qt5-sensors qt5-serialport qt5-webkit qt5-multimedia)
+depends=('qt5-base')
 options=('!strip' '!buildflags' 'staticlibs')
 source=('qwtplot3d::svn+http://svn.code.sf.net/p/qwtplot3d/code/branches/maintain_0_2_x/#revision=259')
 md5sums=('SKIP')
