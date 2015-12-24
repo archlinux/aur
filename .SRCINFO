@@ -1,0 +1,17 @@
+pkgbase = kodi-addon-xvdr-rbp-git
+	pkgdesc = PVR add-on for KODI to add VDR as a TV/PVR Backend to KODI
+	pkgver = 20141106
+	pkgrel = 1
+	url = https://github.com/pipelka/xbmc-addon-xvdr
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = kodi
+	provides = kodi-addon-xvdr
+	conflicts = kodi-addon-xvdr
+	source = git+https://github.com/pipelka/xbmc-addon-xvdr
+	md5sums = SKIP
+
+pkgname = kodi-addon-xvdr-rbp-git
+
