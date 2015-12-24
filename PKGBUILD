@@ -2,20 +2,20 @@
 
 pkgname=libbitcoin-blockchain
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Blockchain Implementation"
 arch=('i686' 'x86_64')
+depends=('boost'
+         'boost-libs'
+         'libbitcoin'
+         'libbitcoin-consensus'
+         'secp256k1-git')
 makedepends=('autoconf'
              'automake'
-             'boost'
-             'boost-libs'
              'gcc'
-             'libbitcoin'
-             'libbitcoin-consensus'
              'libtool'
              'make'
-             'pkg-config'
-             'secp256k1-git')
+             'pkg-config')
 groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin-blockchain"
 license=('AGPL3')
