@@ -1,7 +1,7 @@
 # Maintainer: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=gns3-converter
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc='GNS3 topology converter.'
 arch=('any')
@@ -11,7 +11,7 @@ groups=('gns3')
 makedepends=('python-setuptools')
 depends=('python-configobj' 'python-cx_freeze')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dlintott/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('ca83b0fbad203ab92533bacaf3596c20')
+md5sums=('9189904912a7eca035bc88fdc58cbd91')
 
 package() {
   cd ${srcdir}/${pkgname}-${pkgver}
