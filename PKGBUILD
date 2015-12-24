@@ -20,14 +20,23 @@ md5sums=('9885ff5d91bc215a0adb3be1185e9777')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
+
   cd "${srcdir}/GraphicsMagick-$pkgver/"
+
   for _arch in ${_architectures}; do
+
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure --enable-shared --without-x --with-quantum-depth=16 --with-modules --with-threads
+
+    ### NOTE ###
+    # if you manage to get libltdl installed, you can add the flag '--with-modules' for support of synamically loaded modules
+    ${_arch}-configure --enable-shared --without-x --with-quantum-depth=16 --with-threads
+
     sed -i "s/\/usr\/include/\/usr\/${_arch}\/include/g" Makefile
     sed -i "s/\/usr\/lib/\/usr\/${_arch}\/lib/g" Makefile
-    make
+
+    make -j4
     popd
+
   done
 }
 
