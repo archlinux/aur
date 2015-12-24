@@ -2,24 +2,23 @@
 
 pkgname=bitcoin-core-git
 pkgver=20151221
-pkgrel=1
+pkgrel=3
 pkgdesc="Bitcoin Core headless P2P node"
 arch=('i686' 'x86_64')
 url="https://github.com/bitcoin/bitcoin"
+depends=('boost'
+         'boost-libs'
+         'miniupnpc'
+         'openssl')
 makedepends=('autoconf'
              'automake'
              'binutils'
-             'boost'
-             'boost-libs'
              'expect'
              'gcc'
              'git'
              'libtool'
              'make'
-             'miniupnpc'
-             'openssl'
-             'pkg-config'
-             'yasm')
+             'pkg-config')
 license=('MIT')
 source=(git+https://github.com/bitcoin/bitcoin
         bitcoin.conf
