@@ -1,8 +1,8 @@
 # Maintainer: Thomas Bächler <thomas@archlinux.org>
 
 pkgname=openvpn
-pkgver=2.3.8
-pkgrel=2
+pkgver=2.3.9
+pkgrel=1
 pkgdesc="An easy-to-use, robust, and highly configurable VPN (Virtual Private Network)"
 arch=(i686 x86_64)
 url="http://openvpn.net/index.php/open-source.html"
@@ -12,17 +12,11 @@ license=('custom')
 install=openvpn.install
 source=(http://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.gz
         http://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.gz.asc
-		0001-Fix-systemd-errors-when-openvpn-is-started-when-ther.patch
         openvpn@.service)
-sha256sums=('532435eff61c14b44a583f27b72f93e7864e96c95fe51134ec0ad4b1b1107c51'
+sha256sums=('2c12fe9ea641ac1291e70322cc500641c84e5903dd4f40bf2eda7e9f209b2f9c'
             'SKIP'
-            'a03a22de7cb3bd9ece7ccb041283d4bd17eb898a9e3fe76d0fd1e20fb80a59f3'
             '860976d954bd1db95861b95f0ef42e4e80618aa23a9f2aed26d17ee3d09110df')
 validpgpkeys=('03300E11FED16F59715F9996C29D97ED198D22A3')  # Samuli Seppänen
-
-prepare() {
-	patch -p 1 -d $pkgname-$pkgver < 0001-Fix-systemd-errors-when-openvpn-is-started-when-ther.patch
-}
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
