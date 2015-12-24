@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=tarantool-git
-pkgver=1.6.7.r552.g34247cf
+pkgver=1.6.7.r557.gb8fdd95
 pkgrel=1
 pkgdesc='an in-memory database designed to store the most volatile and highly accessible web content'
 arch=(i686 x86_64)
@@ -14,7 +14,7 @@ source=(git://github.com/tarantool/tarantool.git
         git://github.com/tarantool/luajit.git
         git://github.com/tarantool/msgpuck.git
         git://github.com/rtsisyk/luafun.git
-        git://github.com/tarantool/sophia.git#branch=current
+        git://github.com/tarantool/sophia.git
         git://github.com/tarantool/test-run.git
         git://github.com/tarantool/small.git)
 sha1sums=('SKIP'
