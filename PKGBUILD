@@ -1,6 +1,6 @@
 # Maintainer: Ammann Max <maximilian.ammann@googlemail.com>
 pkgname=golden-cheetah-git
-pkgver=v3.3.DEV1.r319.2f91591
+pkgver=v3.3.DEV1.r319.512fc32
 pkgrel=1
 pkgdesc="Cycling Power Analysis Software. We believe that cyclists and triathletes should be able to download their power data to the
 computer of their choice, analyze it in whatever way they see fit, and share their methods of
@@ -12,9 +12,9 @@ makedepends=(bison flex 'gcc' 'make' 'qt5-tools' )
 depends=('qt5-base' 'qt5-svg' qt5-location qt5-declarative qt5-webchannel qt5-sensors qt5-serialport qt5-webkit qt5-multimedia)
 optdepends=('vlc' 'qwtplot3d-svn' 'srmio' 'libftd2xx' 'libkml' 'libical' 'libusb' 'libsamplerate')
 options=('!strip' '!buildflags' 'staticlibs')
-source=('golden-cheetah::git+https://github.com/GoldenCheetah/GoldenCheetah.git'
+source=('golden-cheetah::git+https://github.com/GoldenCheetah/GoldenCheetah.git#commit=512fc32'
 GoldenCheetah.desktop gc.png gcconfig.pri)
-md5sums=('SKIP' af5e5a4376ee82ccfb69aa455b35a2d9 e1fb382b4a7316da1ffd435e45e50c4a 'SKIP')
+md5sums=('SKIP' af5e5a4376ee82ccfb69aa455b35a2d9 e1fb382b4a7316da1ffd435e45e50c4a '3857988a67fdf94b999fc05753ac2494')
 
 pkgver() {
   cd "${srcdir}"
