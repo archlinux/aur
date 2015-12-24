@@ -8,12 +8,12 @@ analysis with others."
 arch=('i686' 'x86_64')
 url="http://www.goldencheetah.org/"
 license=('GPL')
-makedepends=(bison flex 'gcc' 'make' 'qt5-tools')
-depends=('qt5-base' 'qt5-svg' qt5-location qt5-declarative qt5-webchannel qt5-sensors qt5-serialport qt5-webkit)
+makedepends=(bison flex 'gcc' 'make' 'qt5-tools' )
+depends=('qt5-base' 'qt5-svg' qt5-location qt5-declarative qt5-webchannel qt5-sensors qt5-serialport qt5-webkit qt5-multimedia)
 options=('!strip' '!buildflags' 'staticlibs')
 source=('golden-cheetah::git+https://github.com/GoldenCheetah/GoldenCheetah.git'
-GoldenCheetah.desktop gc.png)
-md5sums=('SKIP' af5e5a4376ee82ccfb69aa455b35a2d9 e1fb382b4a7316da1ffd435e45e50c4a)
+GoldenCheetah.desktop gc.png gcconfig.pri)
+md5sums=('SKIP' af5e5a4376ee82ccfb69aa455b35a2d9 e1fb382b4a7316da1ffd435e45e50c4a 'SKIP')
 
 pkgver() {
   cd "${srcdir}"
@@ -33,7 +33,7 @@ build() {
   make -j8
 
   cd "../src/"
-  cp gcconfig.pri.in gcconfig.pri
+  cp $srcdir/gcconfig.pri gcconfig.pri
   qmake-qt5 QMAKE_LRELEASE=/usr/bin/lrelease-qt5
   make -j8
 }
