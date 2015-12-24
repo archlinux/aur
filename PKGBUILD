@@ -9,8 +9,8 @@
 
 _pack=tsa
 pkgname=octave-$_pack
-pkgver=4.3.2
-pkgrel=2
+pkgver=4.3.3
+pkgrel=1
 pkgdesc="Stochastic concepts and maximum entropy methods for time series analysis"
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
@@ -25,7 +25,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("http://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('8aaddde1714576c15872cb0997eefaa6')
+md5sums=('e5e01ab0914bfd3b932c6bba167cd664')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
