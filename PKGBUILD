@@ -2,7 +2,7 @@
 
 _plug=histogram
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v1.0.4.ge2b45ed
+pkgver=v1.0.6.g33dcce0
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -12,25 +12,27 @@ depends=('vapoursynth')
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-
 source=("${_plug}::git+https://github.com/dubhater/vapoursynth-${_plug}.git")
-md5sums=('SKIP')
-_gitname="${_plug}"
+sha1sums=('SKIP')
 
 pkgver() {
-  cd "${_gitname}"
+  cd "${_plug}"
   echo "$(git describe --long --tags | tr - .)"
 }
 
-build() {
-  cd "${_gitname}"
+prepare() {
+  cd "${_plug}"
   ./autogen.sh
-  ./configure --prefix=/usr --libdir=/usr/lib/vapoursynth
+}
+
+build() {
+  cd "${_plug}"
+  ./configure --libdir=/usr/lib/vapoursynth
   make
 }
 
 package(){
-  cd "${_gitname}"
+  cd "${_plug}"
   make DESTDIR="${pkgdir}" install
-  install -Dm644 README "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README"
+  install -Dm644 readme.rst "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme.rst"
 }
