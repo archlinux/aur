@@ -5,10 +5,10 @@ pkgrel=1
 pkgdesc="A game of lonely space adventure"
 arch=('i686' 'x86_64')
 url="https://github.com/pioneerspacesim/pioneer"
-license=('ISC')
+license=('GPL')
 provides=('pioneer')
 conflicts=('pioneer-bin') 
-depends=('curl' 'libsigc++' 'sdl2' 'sdl2_image' 'freetype2' 'libvorbis' 'libpng' 'assimp' 'mesa' 'hicolor-icon-theme')
+depends=('libsigc++' 'sdl2_image' 'freetype2' 'libvorbis' 'assimp' 'hicolor-icon-theme' 'xdg-utils')
 makedepends=('gcc' 'git' 'automake' 'pkg-config' 'naturaldocs')
 source=("$pkgname::git+https://github.com/pioneerspacesim/pioneer" 'pioneer.desktop')
 md5sums=('SKIP'
@@ -33,12 +33,26 @@ package() {
   export PIONEER_DATA_DIR=/usr/share/pioneer
   make DESTDIR="$pkgdir" install
   install -Dm644 "$srcdir/pioneer.desktop" "$pkgdir/usr/share/applications/pioneer.desktop"
-  for size in 16x16 22x22 24x24 32x32 40x40 48x48 64x64 128x128 256x256
+  for icon in application-icon/pngs/*
   do
-    install -Dm644 "application-icon/pngs/pioneer-$size.png" "$pkgdir/usr/share/icons/hicolor/$size/apps/pioneer.png"
+    if [[ $icon =~ pioneer-([0-9]+x[0-9]+).png ]]; then
+      install -Dm644 $icon "$pkgdir/usr/share/icons/hicolor/${BASH_REMATCH[1]}/apps/pioneer.png"
+    fi
   done
   install -Dm644 "application-icon/badge-enlarged-text.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/pioneer.svg"
   mkdir -p "$pkgdir/usr/share/doc/pioneer" 
   cp -R codedoc/* "$pkgdir/usr/share/doc/pioneer" 
+}
+
+post_install() {
+  xdg-icon-resource forceupdate
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  post_install $1
 }
 
