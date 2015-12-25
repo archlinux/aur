@@ -1,0 +1,6 @@
+post_install() {
+  echo '>> ---------------------------------------------------------------'
+  echo '>> Set your NNTP server either in $NNTPSERVER or /etc/news/server.'
+  echo '>> ---------------------------------------------------------------'
+}
+
