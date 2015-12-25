@@ -1,16 +1,20 @@
 # Just hardcoded path for everyday Arch use
 
---- directories.py.orig	2012-11-18 02:22:26.641212000 +0100
-+++ directories.py	2012-11-18 02:23:12.252390509 +0100
-@@ -76,6 +76,8 @@
- 
-     elif sys.platform == "darwin":
-         dataDir = os.getcwdu()
-+    elif sys.platform.startswith("linux"):
+--- directories.py.orig	2015-12-24 14:50:26.516671121 -0700
++++ directories.py	2015-12-24 14:50:43.963338308 -0700
+@@ -83,7 +83,10 @@
+     #     '''
+     #
+     # else:
+-    dataDir = os.getcwdu()
++    if sys.platform.startswith("linux"):
 +        dataDir = "/usr/share/mcedit"
-     else:
-         dataDir = os.getcwdu()
- 
++    else:
++        dataDir = os.getcwdu()
+     if len(path) > 0:
+         return os.path.join(dataDir, path)
+     return dataDir
+
 --- albow/resource.py.orig	2012-03-15 19:48:27.844000304 +0100
 +++ albow/resource.py	2012-03-15 19:52:56.671251316 +0100
 @@ -73,6 +73,8 @@
@@ -23,12 +27,71 @@
      font = font_cache.get(key)
      if not font:
 
---- mcedit.py.orig	2012-04-19 16:28:33.458451942 +0200
-+++ mcedit.py	2012-04-19 16:28:37.504926664 +0200
-@@ -29,4 +29,6 @@
-     elif sys.platform == "darwin":
-         logfile = os.path.expanduser("~/Library/Logs/" + logfile)
-+    elif sys.platform.startswith("linux"):
-+        logfile = os.path.expanduser('~/.mcedit/mcedit.log')
+--- mcedit.py.orig	2015-08-12 07:12:26.000000000 -0600
++++ mcedit.py	2015-12-24 16:06:54.623474504 -0700
+@@ -38,6 +38,8 @@
+ #
+ if sys.platform == "darwin":
+     logfile = os.path.expanduser("~/Library/Logs/mcedit.log")
++elif sys.platform.startswith("linux"):
++    logfile = os.path.expanduser('~/.mcedit/mcedit.log')
+ else:
+     logfile = os.path.join(os.getcwdu(), logfile)
  fh = logging.FileHandler(logfile, mode="w")
- fh.setLevel(logging.DEBUG)
+
+--- resource_packs.py.orig	2015-08-12 07:12:26.000000000 -0600
++++ resource_packs.py	2015-12-24 21:13:54.257356703 -0700
+@@ -537,7 +537,7 @@
+ 
+     def __init__(self):
+         self.__stop = False
+-        texture_path = os.path.join(directories.parentDir, "textures", self._pack_name)
++        texture_path = os.path.join(directories.getDocumentsFolder(), "textures", self._pack_name)
+         self.texture_path = texture_path
+         self._isEmpty = False
+         self._too_big = False
+@@ -727,7 +727,7 @@
+         self._pack_name = self._folder.replace(" ", "_")
+         IResourcePack.__init__(self)
+         self._full_path = os.path.join(directories.getMinecraftProfileDirectory(directories.getSelectedProfile()), "resourcepacks", self._folder)
+-        self.texture_path = os.path.join(directories.parentDir, "textures", self._pack_name)
++        self.texture_path = os.path.join(directories.getDocumentsFolder(), "textures", self._pack_name)
+         if not os.path.exists(self._terrain_path):
+             self.add_textures()
+ 
+@@ -837,7 +837,7 @@
+         if not os.path.exists(pack.terrain_path()):
+             del terrains[tex]
+     try:
+-        shutil.rmtree(os.path.join(directories.parentDir, "textures"))
++        shutil.rmtree(os.path.join(directories.getDocumentsFolder(), "textures"))
+     except:
+         print "Could not remove \"textures\" directory"
+         pass
+@@ -851,7 +851,7 @@
+ 
+     def __init__(self):
+         try:
+-            os.mkdir(os.path.join(directories.parentDir, "textures"))
++            os.mkdir(os.path.join(directories.getDocumentsFolder(), "textures"))
+         except OSError:
+             pass
+         self._resource_packs = setup_resource_packs()
+
+--- splash.py.orig	2015-12-24 20:53:55.930654329 -0700
++++ splash.py	2015-12-24 21:29:44.017385005 -0700
+@@ -21,12 +21,12 @@
+     # if os.path.exists(splash_name) and len(open(splash_name).read()) > 0:
+     #     splash = pygame.image.load(open(splash_name).read().strip())
+     # else:
+-    splash = pygame.image.load(open(os.path.join(cur_dir, "splash.png"), 'rb'))
++    splash = pygame.image.load(open(os.path.join("/usr/share/mcedit/", "splash.png"), 'rb'))
+     screen = pygame.display.set_mode(splash.get_size(), pygame.NOFRAME)
+     screen.blit(splash, (0, 0))
+ except IOError:
+     try:
+-        font = pygame.font.Font(open(os.path.join(cur_dir, 'fonts', 'DejaVuSans-Bold.ttf'), 'rb'), 48)
++        font = pygame.font.Font(open(os.path.join("/usr/share/fonts/TTF", 'DejaVuSans-Bold.ttf'), 'rb'), 48)
+         buf = font.render("MCEDit is loading...", True, (128, 128, 128))
+         screen = pygame.display.set_mode((buf.get_width() + 20, buf.get_height() + 20), pygame.NOFRAME)
+         screen.blit(buf, (10, 10))

@@ -2,4 +2,5 @@
 LIB=/usr/lib/mcedit
 DATA=$SHARE/MCEditData
 
+cd /usr/share/mcedit
 PYTHONPATH="$LIB:$PYTHONPATH" python2 -O $LIB/mcedit.py

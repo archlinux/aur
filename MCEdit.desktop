@@ -1,11 +1,12 @@
 [Desktop Entry]
-Version=stable21
-Type=Application
-Name=MCEdit
-Comment=Minecraft World Editor
-Exec=/usr/bin/MCEdit
-Encoding=UTF-8
-Icon=/usr/share/pixmaps/MCEdit.png
 Categories=Game;ArcadeGame;
-Terminal=false
+Comment=Minecraft World Editor
+Encoding=UTF-8
+Exec=/usr/bin/MCEdit
+Icon=/usr/share/pixmaps/MCEdit.png
+Name=MCEdit
+Path=/usr/share/mcedit/
 StartupNotify=false
+Terminal=false
+Type=Application
+Version=stable21
