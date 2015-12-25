@@ -13,8 +13,7 @@ makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("git+https://github.com/handaimaoh/${_plug}.git")
-sha1sums=('SKIP'
-          'bf3826d8944b135c0f32fbfc5e21de35718a2c33')
+sha1sums=('SKIP')
 
 _sites_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
 
@@ -28,7 +27,12 @@ prepare() {
   rm -fr "${_plug}/"{VapourSynth,VSHelper}.h
 
   echo "all:
-	  g++ -o lib${_plug}.so -std=gnu++11 ${CXXFLAGS} ${CPPFLAGS} ${LDFLAGS} $(pkg-config --cflags vapoursynth) ${_plug}/*.cpp -fPIC -shared -fpermissive -DVS_TARGET_CPU_X86=1" > Makefile
+	  g++ -c -std=gnu++11 -DVS_TARGET_CPU_X86=1 -fpermissive -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) ${_plug}/DupBlocks.cpp -o DupBlocks.o
+	  g++ -c -std=gnu++11 -DVS_TARGET_CPU_X86=1 -fpermissive -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) ${_plug}/RemoveDirt.cpp -o RemoveDirt.o
+	  g++ -c -std=gnu++11 -DVS_TARGET_CPU_X86=1 -fpermissive -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) ${_plug}/RestoreMotionBlocks.cpp -o RestoreMotionBlocks.o
+	  g++ -c -std=gnu++11 -DVS_TARGET_CPU_X86=1 -fpermissive -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) ${_plug}/SCSelect.cpp -o SCSelect.o
+	  g++ -c -std=gnu++11 -DVS_TARGET_CPU_X86=1 -fpermissive -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) ${_plug}/shared.cpp -o shared.o
+	  g++ -shared  -fPIC ${LDFLAGS} -o lib${_plug}.so DupBlocks.o RemoveDirt.o RestoreMotionBlocks.o SCSelect.o shared.o" > Makefile
 }
 
 build() {
