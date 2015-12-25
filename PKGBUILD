@@ -25,8 +25,8 @@ prepare() {
   rm -fr VapourSynth.h VSHelper.h
 
   echo "all:
-	  gcc -c -std=gnu++11 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o RGVS.o RGVS.cpp
-	  gcc -shared -fPIC ${LDFLAGS} -o lib${_plug}.so RGVS.o" > Makefile
+	  g++ -c -std=gnu++11 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o RGVS.o RGVS.cpp
+	  g++ -shared -fPIC ${LDFLAGS} -o lib${_plug}.so RGVS.o" > Makefile
 }
 
 build() {
