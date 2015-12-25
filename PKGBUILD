@@ -8,6 +8,7 @@ _gitname="fgdata"
 pkgdesc="Base data for the flightgear flight simulator."
 arch=('i686' 'x86_64')
 url="http://www.flightgear.org"
+options=(!strip)
 license=('GPL')
 depends=('')
 provides=('fgdata-git')
