@@ -1,0 +1,6 @@
+#!/bin/sh
+
+LIB_DIR='/usr/lib/futuro-cube-suite'
+export PYTHONPATH="${LIB_DIR}:${PYTHONPATH}"
+cd "${LIB_DIR}/futurocubesuite"
+python2 -OO run.pyo -l25

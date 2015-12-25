@@ -1,0 +1,10 @@
+
+post_install() {
+	echo '  WARNING:'
+	echo '    To be able to connect to the cube, you need to add yourself to the `uucp` group:'
+	echo '    usermod -a -G uucp <username>'
+}
+
+post_upgrade() {
+	post_install
+}
