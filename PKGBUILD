@@ -2,7 +2,7 @@
 
 _plug=mvtools
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v9.0.ga2609f1
+pkgver=v9.3.g4551f07
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -20,15 +20,19 @@ pkgver() {
   echo "$(git describe --long --tags | tr - .)"
 }
 
-build() {
+prepare() {
   cd "${_plug}"
   ./autogen.sh
-  ./configure --prefix=/usr --libdir=/usr/lib/vapoursynth
+}
+
+build() {
+  cd "${_plug}"
+  ./configure --libdir=/usr/lib/vapoursynth
   make
 }
 
 package(){
   cd "${_plug}"
   make DESTDIR="${pkgdir}" install
-  install -Dm644 readme.rst "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README"
+  install -Dm644 readme.rst "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.rst"
 }
