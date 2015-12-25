@@ -2,7 +2,7 @@
 
 _plug=eedi2
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r6.2.g9a61fe0
+pkgver=r6.4.ga7fcb5c
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ pkgver() {
 build() {
   cd "${_plug}"
   ./configure --install="${pkgdir}/usr/lib/vapoursynth" \
-              --extra-cxxflags="${CXXFLAGS}" \
+              --extra-cxxflags="${CXXFLAGS} ${CPPFLAGS}" \
               --extra-ldflags="${LDFLAGS}"
   make
 }
