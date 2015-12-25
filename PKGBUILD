@@ -3,7 +3,7 @@
 
 # Maintainer: Vincenzo Maffione <v.maffione@gmail.com>
 pkgname=netmap
-pkgver=r1310.6c8cd33
+pkgver=r1324.519c07f
 pkgrel=1
 pkgdesc="Netmap is a framework for high speed network packet I/O."
 arch=('any')
@@ -44,7 +44,7 @@ build() {
         return 1
     fi
     KMAJVER=$(echo "$KSVER" | sed 's|\.[0-9]\+$||g')
-    makepkg --nobuild --skippgpcheck
+    makepkg --nobuild --skippgpcheck SRCDEST=$srcdir/abs/core/linux
     msg "Kernel sources are ready"
 
     # Build the netmap kernel module and all modified drivers, using the
