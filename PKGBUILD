@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=ktorrent-frameworks-git
-pkgver=5.0.0.r2199.0d30e7a
+pkgver=5.0.0.r2202.faf83d2
 pkgrel=1
 pkgdesc="A powerful BitTorrent client. KF5 Frameworks branch. (GIT version)"
 arch=('i686' 'x86_64')
@@ -20,10 +20,12 @@ makedepends=('extra-cmake-modules'
              'taglib'
              'geoip'
              'plasma-workspace'
+             'kdnssd'
              )
 optdepends=('taglib: for mediaplayer plugin'
             'geoip: for infowidget plugin'
             'plasma-workspace: for shutdown plugin'
+            'kdnssd: for zeroconf plugin'
             )
 provides=('ktorrent')
 source=('git://anongit.kde.org/ktorrent.git#branch=frameworks')
