@@ -1,6 +1,6 @@
 pkgbase = easyrpg-tools-git
 	pkgdesc = EasyRPG tools to convert RPG Maker 2000/2003 files (development version)
-	pkgver = r64.694ca5c
+	pkgver = r70.4676147
 	pkgrel = 1
 	url = https://easy-rpg.org/
 	arch = i686

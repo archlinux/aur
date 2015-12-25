@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=easyrpg-tools-git
-pkgver=r64.694ca5c
+pkgver=r70.4676147
 pkgrel=1
 pkgdesc="EasyRPG tools to convert RPG Maker 2000/2003 files (development version)"
 arch=('i686' 'x86_64')
@@ -22,21 +22,16 @@ pkgver() {
 build () {
   cd ${pkgname#-*}
 
-  make -C lmu2png
-  make -C png2xyz
-  make -C xyz2png
-  # compile with our flags
-  g++ $CXXFLAGS lcf2xml/src/main.cpp $(pkg-config --cflags --libs liblcf) $LDFLAGS -o lcf2xml/lcf2xml
+  ./bootstrap
+  ./configure --prefix=/usr
+  make
 }
 
 package () {
   cd ${pkgname#-*}
 
-  # executables
-  install -Dm0755 lmu2png/lmu2png "$pkgdir"/usr/bin/lmu2png
-  install -Dm0755 png2xyz/png2xyz "$pkgdir"/usr/bin/png2xyz
-  install -Dm0755 xyz2png/xyz2png "$pkgdir"/usr/bin/xyz2png
-  install -Dm0755 lcf2xml/lcf2xml "$pkgdir"/usr/bin/lcf2xml
+  make DESTDIR="$pkgdir" install
+
   # licenses
   install -Dm0644 lmu2png/COPYING "$pkgdir"/usr/share/licenses/$pkgname/lmu2png-COPYING
   install -Dm0644 lcf2xml/COPYING "$pkgdir"/usr/share/licenses/$pkgname/lcf2xml-COPYING
