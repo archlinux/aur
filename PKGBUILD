@@ -1,34 +1,38 @@
 pkgname=pythia
 pkgver=8.2.12
+_pkgid=$pkgname`echo $pkgver | tr -d '.'`
 pkgrel=1
-arch=('i686' 'x86_64')
 pkgdesc="Generation of high-energy physics events."
+arch=('i686' 'x86_64')
 url="http://home.thep.lu.se/Pythia/"
 license=('GPL')
-depends=('zlib' 'boost')
-makedepends=('autoconf' 'automake' 'make' 'gcc')
-provides=('pkgname')
-source=("http://home.thep.lu.se/~torbjorn/pythia8/pythia8212.tgz")
-md5sums=('0886d1b2827d8f0cd2ae69b925045f40')
+optdepends=('root: extensions for event analysis with ROOT')
+makedepends=('autoconf' 'automake' 'make' 'gcc' 'rsync')
+provides=$pkgname
+source=("http://home.thep.lu.se/~torbjorn/pythia8/$_pkgid.tgz"
+	'pythia.sh')
+md5sums=('0886d1b2827d8f0cd2ae69b925045f40'
+	 '61cc2f3ede25c4baaf88c177501b78ee')
+_srcpath=$srcdir/$_pkgid
 
 build(){
-	cd $srcdir/$pkgname`echo $pkgver | tr -d '.'`
+	_ncores=$(($(lscpu -p=core | tail -n 1)+1))
+	cd $srcdir/$_pkgid
 	./configure --enable-shared \
 		    --enable-64bit \
 		    --with-root \
-		    --with-boost \
-		    --with-gzip \
 		    --prefix=/usr 
-	make -j`nproc`
+	make -j$_ncores
 }
 
 package() {
-	cd $srcdir/$pkgname`echo $pkgver | tr -d '.'`
-	make PREFIX_BIN="$pkgdir/usr/bin" \
-	     PREFIX_INCLUDE="$pkgdir/usr/include" \
-	     PREFIX_LIB="$pkgdir/usr/lib" \
-	     PREFIX_SHARE="$pkgdir/usr/share/Pythia8" install
-	chmod +x $pkgdir/usr/bin/pythia8-config
-	mkdir -p $pkgdir/etc/profile.d
-	cp ../../pythia.sh $pkgdir/etc/profile.d/pythia.sh
+	for _bin in `ls $srcdir/$_pkgid/bin`
+	do
+		install -D -m 755 $srcdir/$_pkgid/bin/$_bin $pkgdir/usr/bin/$_bin
+	done
+	install -D $srcdir/pythia.sh $pkgdir/etc/profile.d/pythia.sh
+	rsync -rlp $srcdir/$_pkgid/include/* $pkgdir/include/
+	rsync -rlp $srcdir/$_pkgid/lib/* $pkgdir/usr/lib/
+	rsync -rlp $srcdir/$_pkgid/share/* $pkgdir/usr/share/
+	rsync -rlp $srcdir/$_pkgid/examples $pkgdir/usr/share/Pythia8/
 }
