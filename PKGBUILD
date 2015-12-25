@@ -1,41 +1,36 @@
 # Maintainer: Davorin Učakar <davorin.ucakar@gmail.com>
 
 pkgname=lib32-libsquish
-pkgver=1.11
-pkgrel=2
-pkgdesc="DXT compression library"
+pkgver=1.13
+pkgrel=1
+pkgdesc='DXT compression library'
+depends=('lib32-gcc-libs' 'libsquish')
 arch=('x86_64')
-url="http://code.google.com/p/libsquish"
+url='http://sourceforge.net/projects/libsquish/'
 license=('MIT')
-options=(staticlibs)
-source=(http://libsquish.googlecode.com/files/squish-$pkgver.zip
-        gcc440.patch
-        config
-        LICENSE)
-sha1sums=('1fdff1ba72a002900c877baebcf0aeab9af4922b'
-          '51bcc11eafbf79d9cde24769397c7a42f886154a'
-          'fae932e5f8feed4054a5838e93d13e186c554f9b'
-          'e285c60d401f91f282de6ad6b6f549e9f5e9ff1d')
+source=("http://downloads.sourceforge.net/project/libsquish/libsquish-${pkgver}.tgz")
+md5sums=('ca4b9563953ad6ea9c43f7831a8c50c7')
 
-prepare() {
-  cd "$srcdir/squish-$pkgver"
-  cp $srcdir/config .
-  
-  patch -Np0 -i $srcdir/gcc440.patch
-}
-  
 build() {
-  cd "$srcdir/squish-$pkgver"
+  rm -rf "$srcdir/build" && mkdir -p "$srcdir/build" && cd "$srcdir/build"
 
-  make || return 1
+  cmake \
+    -D CMAKE_BUILD_TYPE=Release \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -D CMAKE_C_FLAGS="-march=i686 -m32 ${CFLAGS/-march=x86-64}" \
+    -D CMAKE_CXX_FLAGS="-march=i686 -m32 ${CXXFLAGS/-march=x86-64}" \
+    -D BUILD_SHARED_LIBS=ON \
+    ..
+
+  make
 }
 
 package() {
-  cd "$srcdir/squish-$pkgver"
+  cd "$srcdir/build"
 
-  install -Dm 644 libsquish.a $pkgdir/usr/lib32/libsquish.a
-  
-  install -Dm 644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  cmake -D CMAKE_INSTALL_PREFIX="$pkgdir/usr" -P cmake_install.cmake
+  mv "$pkgdir/usr/lib" "$pkgdir/usr/lib32"
+  rm -rf "$pkgdir/usr/include"
+
+  install -Dm 644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# vim:set ts=2 sw=2 et:
