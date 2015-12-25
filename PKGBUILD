@@ -2,7 +2,7 @@
 # Contributor: Giacomo <giacomogiorgianni at gmail dot com>
 
 pkgname=vokoscreen
-_pkgver=2.4.8-beta
+_pkgver=2.4.9-beta
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc='An easy to use screencast creator. Qt5 UI.'
@@ -25,7 +25,7 @@ source=(
 	'desktop_file.patch'
 )
 sha512sums=(
-	'fded9217e1ae83e9fb73206d1e4f07dd036f1d401945c74f19be157bda56bf18fc93f9ede22e156afdf0a0b6f97fbcc2bedb9b3ccb2d761104bd9391c3e4edc5'
+	'b11d9823cb9d4cbcf484259c928ef1d8e09f45885549e8b412db152b8b4d6699b4e66a792b2eb90689eceaef36f2089d301d7eb840ae9072bc1f3d3edc921d50'
 	'3ddc567f831b9f6e2672997a77a099cf8fdd5a6a1d79157738c1670c9106fd6c4e09d74287a770c19bac23dcb73a19ce69cc1ac893d4988f75c7ac35668f7a90'
 )
 
