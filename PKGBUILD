@@ -3,7 +3,7 @@
 pkgname='mcedit'
 reponame='MCEdit-Unified'
 pkgver='1.4.0.1'
-pkgrel=1
+pkgrel=2
 pkgdesc='Minecraft world editor'
 arch=('any')
 url='https://github.com/mcedit/mcedit'
@@ -12,6 +12,7 @@ license='BSD'
 makedepends=('cython2')
 depends=('python2' 'python2-opengl' 'python2-numpy' 'python2-pygame'
          'python2-yaml' 'python2-pillow' 'python2-ftputil')
+optdepends=('python2-leveldb_mcpe: for MCPE support')
 conflicts=('mcedit-git' 'pymclevel-git')
 
 source=(MCEdit MCEdit.desktop
@@ -50,7 +51,7 @@ package() {
 	# Pys
 	cp *.py "${pkgdir}/usr/lib/mcedit"
 	cp *.pyc "${pkgdir}/usr/lib/mcedit"
-	for i in albow editortools pymclevel utilities panels viewports; do
+	for i in albow editortools pymclevel utilities panels viewports leveldb_mcpe; do
 		cp -R $i "${pkgdir}/usr/lib/mcedit/$i"
 	done
 
