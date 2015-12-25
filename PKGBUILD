@@ -2,7 +2,7 @@
 # Contributor: FadeMind <fademind@gmail.com>
 
 pkgname=gnome-shell-theme-aurora
-pkgver=3.18.20151219
+pkgver=3.18.20151224
 pkgrel=1
 pkgdesc="Aurora GNOME Shell,GTK2,GTK3 theme"
 arch=('any')
@@ -10,7 +10,7 @@ url="http://opendesktop.org/content/show.php?content=170523"
 license=('GPL3')
 optdepends=("gtk-engine-murrine: for GTK2 themes")
 source=("${pkgname}.tar.gz::https://www.dropbox.com/s/4ik0pbbpsiqe4ci/Aurora-${pkgver%.*}.tar.gz?dl=1")
-sha256sums=('bae3d9c16ed37ad9e3a67a4d019d2e8bff70a7fadbf87a722c2a960d6fd56a4c')
+sha256sums=('aa4c409b6929050c4733876b52f9a1b026694d9f1898d46437e5aebeb4aeb6b4')
 
 pkgver() {
   dir="$(echo Aurora-*)"
