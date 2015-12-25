@@ -3,7 +3,7 @@
 _plug=scenechange
 pkgname=vapoursynth-plugin-${_plug}
 pkgver=0.2.0_2
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugin for Vapoursynth: ${_plug} (Include temporalsoften2 script)"
 arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=166769'
@@ -19,21 +19,23 @@ _sites_packages="$(python -c "from distutils.sysconfig import get_python_lib; pr
 
 prepare() {
   rm -fr src/Vapoursynth.h
+
+  echo "all:
+	  gcc -c -std=gnu99 -msse2 -mfpmath=sse -ffast-math -fomit-frame-pointer -fPIC ${CFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o scenechange.o src/scenechange.c
+	  gcc -c -std=gnu99 -msse2 -mfpmath=sse -ffast-math -fomit-frame-pointer -fPIC ${CFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o temporalsoften.o src/temporalsoften.c
+	  gcc -shared -fPIC ${LDFLAGS} -o lib${_plug}.so scenechange.o
+	  gcc -shared -fPIC ${LDFLAGS} -o libtemporalsoften2.so temporalsoften.o" > Makefile
 }
 
 build() {
-  cd src
-
-  CFLAGS+=" -fPIC -Wall -Wshadow -std=gnu99 -I. $(pkg-config --cflags vapoursynth) -msse2 -mfpmath=sse -ffast-math -fomit-frame-pointer"
-  LDFLAGS+=" -Wl,-s -shared -fPIC -L."
-  gcc -o lib${_plug}.so ${CFLAGS} ${LDFLAGS} scenechange.c
-  gcc -o libtemporalsoften2.so ${CFLAGS} ${LDFLAGS} temporalsoften.c
+  make
 }
 
 package(){
-  install -Dm755 "src/lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
-  install -Dm755 src/libtemporalsoften2.so "${pkgdir}/usr/lib/vapoursynth/libtemporalsoften2.so"
+  install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
+  install -Dm755 libtemporalsoften2.so "${pkgdir}/usr/lib/vapoursynth/libtemporalsoften2.so"
+  install -Dm644 temporalsoften2.py "${pkgdir}${_sites_packages}/temporalsoften2.py"
+
   install -Dm644 readme.txt "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.txt"
   install -Dm644 readme_temporalsoften.txt "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README_temporalsoften2.txt"
-  install -Dm644 temporalsoften2.py "${pkgdir}${_sites_packages}/temporalsoften2.py"
 }
