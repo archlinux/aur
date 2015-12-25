@@ -1,4 +1,5 @@
-# Maintainer: FadeMind <fademind@gmail.com>
+# Maintainer: XZS <d dot f dot fischer at web dot de>
+# Contributor: FadeMind <fademind@gmail.com>
 
 pkgname=gnome-shell-theme-aurora
 pkgver=3.18.20151219
