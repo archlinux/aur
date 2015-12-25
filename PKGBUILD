@@ -24,13 +24,13 @@ pkgver() {
 
 prepare() {
   cd "${_plug}"
-  
+
   rm -fr externalfilters/VSHelper.h externalfilters/VapourSynth.h
 
   echo "all:
-	  g++ -c -std=gnu++11 -I. -fPIC ${CXXFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth) -o IsCombedTIVTCport.o externalfilters/IsCombedTIVTCport.cpp
-	  g++ -c -std=gnu++11 -I. -fPIC ${CXXFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth) -o PlaneDifferenceFromPrevious.o externalfilters/PlaneDifferenceFromPrevious.cpp
-	  g++ -c -std=gnu++11 -I. -fPIC ${CXXFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth) -o PluginInit.o externalfilters/PluginInit.cpp
+	  g++ -c -std=gnu++11 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o IsCombedTIVTCport.o externalfilters/IsCombedTIVTCport.cpp
+	  g++ -c -std=gnu++11 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o PlaneDifferenceFromPrevious.o externalfilters/PlaneDifferenceFromPrevious.cpp
+	  g++ -c -std=gnu++11 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o PluginInit.o externalfilters/PluginInit.cpp
 	  g++ -shared -fPIC ${LDFLAGS} -o lib${_plug}.so *.o" > Makefile
 }
 
@@ -43,5 +43,5 @@ package(){
   cd "${_plug}"
   install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
   install -Dm644 VAutoDeint.py "${pkgdir}${_sites_packages}/VAutoDeint.py"
-  install -Dm644 README "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+  install -Dm644 README "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README"
 }
