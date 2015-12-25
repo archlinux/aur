@@ -4,7 +4,7 @@
 pkgname=gnome-shell-theme-aurora
 pkgver=3.18.20151224
 pkgrel=1
-pkgdesc="Aurora GNOME Shell,GTK2,GTK3 theme"
+pkgdesc="Easy On The Eyes GNOME Shell, GTK2, GTK3 and Cinnamon themes"
 arch=('any')
 url="http://opendesktop.org/content/show.php?content=170523"
 license=('GPL3')
