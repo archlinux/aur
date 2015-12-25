@@ -13,7 +13,7 @@ makedepends=('git' 'yasm')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/dubhater/vapoursynth-${_plug}.git")
-md5sums=('SKIP')
+sha1sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
