@@ -1,7 +1,7 @@
 pkgbase = topbeat
 	pkgdesc = An open source server monitoring agent that stores metrics in Elasticsearch
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://www.elastic.co/products/beats
 	arch = i686
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = topbeat
 	conflicts = topbeat
 	options = !strip
 	backup = etc/topbeat/topbeat.yml
-	source = https://github.com/elastic/topbeat/archive/v1.0.0.tar.gz
+	source = https://github.com/elastic/beats/archive/v1.0.1.tar.gz
 	source = topbeat.service
-	sha256sums = 4aa7c8b906badb7b527f061974821ef5a845193db204b903ede3abe29cd32ac3
+	sha256sums = 94467bcd75cfe6296a016dcdf45cf419e905de49e3f067f875c6ea557be8b707
 	sha256sums = 62f5b613d9464e4d8b1074c1a54b95cbd1c6615f0c788f1d9093becbdbc6c45d
 
 pkgname = topbeat
