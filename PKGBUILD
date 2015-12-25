@@ -23,7 +23,7 @@ pkgver() {
 build() {
   cd "${_plug}"
   ./configure --install="${pkgdir}/usr/lib/vapoursynth" \
-              --extra-cxxflags="${CXXFLAGS}" \
+              --extra-cxxflags="${CXXFLAGS} ${CPPFLAGS}" \
               --extra-ldflags="${LDFLAGS}"
   make
 }
