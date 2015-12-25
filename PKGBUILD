@@ -2,7 +2,7 @@
 
 _plug=fieldhint
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v2.0.g73d2dc5
+pkgver=v3.0.gf3bf82d
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ prepare() {
 
 build() {
   cd "${_plug}"
-  ./configure --prefix=/usr --libdir=/usr/lib/vapoursynth
+  ./configure --libdir=/usr/lib/vapoursynth
   make
 }
 
