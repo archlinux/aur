@@ -2,8 +2,8 @@
 _pkgname=pcgen
 pkgname=${_pkgname}-git
 provides=pcgen
-pkgrel=2
-pkgver=6.05.06.g0a2ebc1
+pkgrel=1
+pkgver=6.06.00RC1.g22d4737
 conflicts=pcgen
 pkgdesc="An RPG Character Generator."
 arch=(any)
@@ -15,14 +15,12 @@ source=("${pkgname}"::'git+http://github.com/PCGen/pcgen.git'
         ${_pkgname}.xml
         ${_pkgname}.desktop
         ${_pkgname}.sh
-        config.ini
-        specifyconfig.patch)
+        config.ini)
 sha256sums=('SKIP'
             'ddc882d843d9afa80ae82934619b7a54380e8b7b45b78d5236589e358ea82b62'
             'c0350cf4b92b8a417399ba27e072ffa27a729c391ee7260bd9e30db3daaedb21'
             '79604420bc3667555da1ed74f3e644b3f09d5c6b23d1d9f00230fef3e9436091'
-            '6c14727dcde94d2fe6bfc977d48e8e65a7efbb7ccc2741fd2c95ffff820a7075'
-            '3bc034fc427b20f53bbcc8ac617bff81bd851d1895d7aed385f0c0afc5f37f8a')
+            '6c14727dcde94d2fe6bfc977d48e8e65a7efbb7ccc2741fd2c95ffff820a7075')
 
 pkgver(){
     cd "${srcdir}/${pkgname}"
@@ -31,7 +29,6 @@ pkgver(){
 
 build(){
     cd "${srcdir}/${pkgname}"
-    patch -p1 < ../specifyconfig.patch
     ./gradlew
 }
 
