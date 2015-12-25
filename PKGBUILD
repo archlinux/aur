@@ -1,29 +1,31 @@
 pkgname=form-git
-pkgver=4.1
+_pkgnamebase=${pkgname%-git}
+pkgver=v4.1.20131025.r143.g258f42e
 pkgrel=1
-arch=('i686' 'x86_64')
 pkgdesc="Symbolic Manipulation System developed at Nikhef."
+arch=('i686' 'x86_64')
 url="https://www.nikhef.nl/~form/"
 license=('GPL')
 depends=('gmp>=4.2' 'zlib>=1.2')
 makedepends=('git' 'autoconf>=2.59' 'automake>=1.7' 'make' 'gcc')
-provides=("${pkgname%-git}")
+provides=$_pkgnamebase
 source=("git://github.com/vermaseren/form.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd ${pkgname%-git}
+	cd $_pkgnamebase
 	git describe --long --tag | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build(){
-	cd ${pkgname%-git}
+	_ncores=$(($(lscpu -p=core | tail -n 1)+1))
+	cd $_pkgnamebase
 	autoreconf -i
 	./configure --prefix=/usr
-	make
+	make -j$_ncores
 }
 
 package() {
-	cd ${pkgname%-git}
+	cd $_pkgnamebase
 	make DESTDIR="$pkgdir/" install
 }
