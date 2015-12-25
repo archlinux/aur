@@ -1,7 +1,7 @@
 # vim:set ts=2 sw=2 et:
 # Maintainer: 2GMon <t_2gmon@yahoo.co.jp>
 pkgname=mikutter
-pkgver=3.2.12
+pkgver=3.3.0_alpha2
 pkgrel=1
 pkgdesc="a moest twitter client"
 arch=('i686' 'x86_64')
@@ -10,7 +10,8 @@ license=('MIT')
 depends=('ruby-gtk2>=2.2.3' 'ruby-moneta' 'ruby-nokogiri' 'ruby-httpclient')
 optdepends=('libnotify: notify support')
 source=(
-http://mikutter.hachune.net/bin/$pkgname.$pkgver.tar.gz
+#http://mikutter.hachune.net/bin/$pkgname.$pkgver.tar.gz
+http://mikutter.hachune.net/bin/$pkgname.`echo "$pkgver" | tr "_" '-'`.tar.gz
 mikutter.desktop
 )
 # source=(http://mikutter.hachune.net/bin/$pkgname.`echo "$pkgver" | tr "_" '-'`.tar.gz)
@@ -31,5 +32,5 @@ EOF
   chmod +x $pkgdir/usr/share/applications/mikutter.desktop
 }
 
-md5sums=('5aa7b7bdea680ce192a0058135f9fe55'
+md5sums=('5ccdb808661d42511b7ac92c053a178d'
          '18e28a76097af88457462b08752382df')
