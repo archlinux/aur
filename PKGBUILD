@@ -18,7 +18,7 @@ _slowfscache_ver="1.10"
 _slowfscache_dirname="ngx_slowfscache"
 _echo_ver="v0.58"
 _echo_dirname="ngx_echo"
-_headersmore_ver="v0.27"
+_headersmore_ver="v0.29"
 _headersmore_dirname="ngx_headersmore"
 _uploadprogress_ver="v0.9.1"
 _uploadprogress_dirname="ngx_uploadprogress"
@@ -40,7 +40,7 @@ _accesskey_ver="2.0.3"
 _accesskey_dirname="ngx_accesskey"
 
 pkgname=nginx-custom-dev
-pkgver=1.9.8
+pkgver=1.9.9
 pkgrel=1
 pkgdesc="Development version of lightweight HTTP server and IMAP/POP3 proxy server with standard, additional and 3d party modules"
 arch=('i686' 'x86_64')
@@ -94,12 +94,12 @@ md5sums=('d56559ed5e8cc0b1c7adbe33f2300c4c'
          '845cab784b50f1666bbf89d7435ac7af'
          '79031b58828462dec53a9faed9ddb36a'
          '6696dc228a567506bca3096b5197c9db'
-         '1a6a725f52ea082f689003deb9da4ded'
+         '50fdfa08e93ead7a111cba5a5f5735af'
          '6d28dfd6cef1f130a1df97d61425798c'
          '3d4ec04bbc16c3b555fa20392c1119d1'
          '68a1af12d5c1218fb2b3e05ed7ff6f0c'
          'f7dee95dbe8ada5f4d8e9d59ca1f4797'
-         '9fe68166a6e93c99373157ca10eca016'
+         '838081f1398965fbf3037bc38d1c2208'
          '6fe61c5b44b2e338c66e1e33ff7e95ab'
          'ac5e7f485476af70e0ee1c52016cddaf'
          'a5c0fb3af7158297c1457739947b9b0c'
