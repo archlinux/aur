@@ -3,7 +3,7 @@
 
 pkgname=jwmtools-git
 pkgver=r75.4689c0b
-pkgrel=1
+pkgrel=2
 pkgdesc="Various tools for jwm window manager."
 epoch=1
 arch=('i686' 'x86_64')
@@ -11,6 +11,7 @@ url="https://github.com/kostelnik/jwmtools"
 license=('GPL')
 provides=('jwmtools')
 conflicts=('jwmtools')
+makedepends=('mdsplib')
 depends=('libglade' 'libxss')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/kostelnik/jwmtools.git"
