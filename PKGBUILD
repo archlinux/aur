@@ -1,7 +1,7 @@
 # Maintainer: XZS <d dot f dot fischer at web dot de>
 # Contributor: FadeMind <fademind@gmail.com>
 
-pkgname=gnome-shell-theme-aurora
+pkgname=aurora-themes
 pkgver=3.18.20151224
 pkgrel=1
 pkgdesc="Easy On The Eyes GNOME Shell, GTK2, GTK3 and Cinnamon themes"
