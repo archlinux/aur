@@ -1,4 +1,5 @@
-# Maintainer: Jens Adam (byte/jra) <j_adam@web.de>
+# Contributor: Jens Adam (byte/jra) <j_adam@web.de>
+# Maintainer: Steven Allen <steven@stebalien.com>
 
 pkgname=ndyndns
 pkgver=2.2
