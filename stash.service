@@ -1,0 +1,15 @@
+[Unit]
+Description=Bitbucket Server (Stash) by Atlassian
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/opt/atlassian-stash/bin/start-bitbucket.sh
+ExecStop=/opt/atlassian-stash/bin/stop-bitbucket.sh
+PIDFile=/opt/atlassian-stash/work/catalina.pid
+KillSignal=SIGINT
+LimitNOFILE=8196
+
+[Install]
+WantedBy=multi-user.target
+

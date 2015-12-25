@@ -1,0 +1,4 @@
+# systemd tmpfile settings for minidlna
+# See tmpfiles.d(5) for details
+
+d /var/lib/crucible 0700 stash stash -

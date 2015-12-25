@@ -1,0 +1,21 @@
+post_install() {
+  systemd-sysusers stash.conf
+  systemd-tmpfiles --create stash.conf
+  chown -R stash:stash /opt/atlassian-stash
+  chown -R stash:stash /etc/stash
+  chmod -R 750 /etc/stash
+  echo "==> "
+  echo "==> Bitbucket has finished installing."
+  echo "==> Visit https://confluence.atlassian.com/display/BitbucketServer/Install+Bitbucket+Server+from+an+archive+file for configuration instructions."
+  echo "==> "
+}
+
+post_upgrade() {
+  post_install
+  echo "Restart Bitbucket to complete upgrade."
+}
+
+pre_remove() {
+  getent passwd stash &>/dev/null && userdel stash &> /dev/null
+  getent group stash &>/dev/null && groupdel stash &> /dev/null
+}
