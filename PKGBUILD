@@ -44,7 +44,7 @@ build() {
         return 1
     fi
     KMAJVER=$(echo "$KSVER" | sed 's|\.[0-9]\+$||g')
-    makepkg --nobuild --skippgpcheck SRCDEST=$srcdir/abs/core/linux
+    makepkg --nobuild --skippgpcheck SRCDEST=$srcdir/abs/core/linux SRCPKGDEST=$srcdir/abs/core/linux
     msg "Kernel sources are ready"
 
     # Build the netmap kernel module and all modified drivers, using the
