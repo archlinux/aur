@@ -1,11 +1,11 @@
 pkgname=form-git
-pkgver=v4.1.20131025.r143.g258f42e
+pkgver=4.1
 pkgrel=1
 arch=('i686' 'x86_64')
-pkgdesc="FORM is a Symbolic Manipulation System."
+pkgdesc="Symbolic Manipulation System developed at Nikhef."
 url="https://www.nikhef.nl/~form/"
 license=('GPL')
-depends=('gmp>=4.2' 'zlib>=1.2' 'openmpi')
+depends=('gmp>=4.2' 'zlib>=1.2')
 makedepends=('git' 'autoconf>=2.59' 'automake>=1.7' 'make' 'gcc')
 provides=("${pkgname%-git}")
 source=("git://github.com/vermaseren/form.git")
@@ -19,7 +19,7 @@ pkgver() {
 build(){
 	cd ${pkgname%-git}
 	autoreconf -i
-	./configure --enable-parform --prefix=/usr
+	./configure --prefix=/usr
 	make
 }
 
