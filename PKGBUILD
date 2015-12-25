@@ -4,7 +4,7 @@
 
 pkgname=gnumeric-minimal
 _pkgname=gnumeric
-pkgver=1.12.24
+pkgver=1.12.25
 pkgrel=1
 pkgdesc="A GNOME-less spreadsheet program"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ provides=('gnumeric')
 options=('libtool')
 source=(http://ftp.gnome.org/pub/gnome/sources/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz nested_decl.patch)
 options=('!makeflags')
-md5sums=('03d65b774329d060ab6f5d758ceee8fb'
+md5sums=('2f8cc2a3067d47a79dc923ee20517aca'
          '4368ba37f04c0674ed3cba9a82881700')
 
 prepare() {
