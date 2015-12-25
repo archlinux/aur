@@ -12,8 +12,8 @@ depends=(
 
 source=("http://powerbot-dequeue.netdna-ssl.com/rsbot/releases/RSBot-7017.jar" "icon.png" "rsbot.desktop")
 md5sums=('3fe3eddc745d38940a97d8c14d5813ac'
-         '320e7f820ccf5b741ef707315ed704c3'
-         '4917cf5c0548bbbc6b16e192fd4e4a62')
+         '8cb7793ff1e3ab3057bb9e1218d71a87'
+         'e86b4f975c1ae3ad22d6b00eb0d3a987')
 
 package() {
   cd $srcdir
