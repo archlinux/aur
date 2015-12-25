@@ -1,9 +1,9 @@
 # Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=hqplayer
-_debpkgver=3.11.0-31_amd64
-pkgver=3.11.0
-pkgrel=1
+_debpkgver=3.12.0-36_amd64
+pkgver=3.12.0
+pkgrel=3
 pkgdesc="The high-end upsampling multichannel software HD-audio player"
 arch=('x86_64')
 url="http://www.signalyst.com/consumer.html"
