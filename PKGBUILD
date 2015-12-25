@@ -2,7 +2,7 @@
 
 _plug=tcanny
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r2.6.g312739d
+pkgver=r2.7.g2ee6ee9
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ pkgver() {
 build() {
   cd "${_plug}"
   ./configure --install="${pkgdir}/usr/lib/vapoursynth" \
-              --extra-cxxflags="${CXXFLAGS}" \
+              --extra-cxxflags="${CXXFLAGS} ${CPPFLAGS}" \
               --extra-ldflags="${LDFLAGS}"
   make
 }
