@@ -24,14 +24,14 @@ pkgver() {
 }
 
 prepare() {
-  rm -fr "${_plug}/"{VapourSynth,VSHelper}.h
+  rm -fr removedirtvs/{VapourSynth,VSHelper}.h
 
   echo "all:
-	  g++ -c -std=gnu++11 -DVS_TARGET_CPU_X86=1 -fpermissive -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) ${_plug}/DupBlocks.cpp -o DupBlocks.o
-	  g++ -c -std=gnu++11 -DVS_TARGET_CPU_X86=1 -fpermissive -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) ${_plug}/RemoveDirt.cpp -o RemoveDirt.o
-	  g++ -c -std=gnu++11 -DVS_TARGET_CPU_X86=1 -fpermissive -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) ${_plug}/RestoreMotionBlocks.cpp -o RestoreMotionBlocks.o
-	  g++ -c -std=gnu++11 -DVS_TARGET_CPU_X86=1 -fpermissive -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) ${_plug}/SCSelect.cpp -o SCSelect.o
-	  g++ -c -std=gnu++11 -DVS_TARGET_CPU_X86=1 -fpermissive -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) ${_plug}/shared.cpp -o shared.o
+	  g++ -c -std=gnu++11 -DVS_TARGET_CPU_X86=1 -fpermissive -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o DupBlocks.o removedirtvs/DupBlocks.cpp
+	  g++ -c -std=gnu++11 -DVS_TARGET_CPU_X86=1 -fpermissive -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o RemoveDirt.o removedirtvs/RemoveDirt.cpp
+	  g++ -c -std=gnu++11 -DVS_TARGET_CPU_X86=1 -fpermissive -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o RestoreMotionBlocks.o removedirtvs/RestoreMotionBlocks.cpp
+	  g++ -c -std=gnu++11 -DVS_TARGET_CPU_X86=1 -fpermissive -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o SCSelect.o removedirtvs/SCSelect.cpp
+	  g++ -c -std=gnu++11 -DVS_TARGET_CPU_X86=1 -fpermissive -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o shared.o removedirtvs/shared.cpp
 	  g++ -shared  -fPIC ${LDFLAGS} -o lib${_plug}.so DupBlocks.o RemoveDirt.o RestoreMotionBlocks.o SCSelect.o shared.o" > Makefile
 }
 
