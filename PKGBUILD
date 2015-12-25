@@ -1,18 +1,19 @@
-# Maintainer: Javier Tia <javier.tia@gmail.com>
+# Maintainer: Javier Tia <javier dot tia at gmail dot com>
 
 _pkgbase=fuse
 pkgname=lib32-${_pkgbase}
-pkgver=2.9.3
-pkgrel=2
-pkgdesc="A library that makes it possible to implement a filesystem in a userspace program. (32 bit)"
+pkgver=2.9.4
+_pkgver=2_9_4
+pkgrel=1
+pkgdesc="A library that makes it possible to implement a filesystem in a userspace program (32 bit)"
 arch=('x86_64')
-url="http://fuse.sourceforge.net/"
+url="https://github.com/libfuse/libfuse"
 license=('GPL2')
 depends=('lib32-glibc' "${_pkgbase}")
 makedepends=('gcc-multilib')
-source=(http://downloads.sourceforge.net/${_pkgbase}/${_pkgbase}-${pkgver}.tar.gz)
+source=("${url}/releases/download/${_pkgbase}_${_pkgver}/${_pkgbase}-${pkgver}.tar.gz")
 options=(!libtool)
-sha256sums=('0beb83eaf2c5e50730fc553406ef124d77bc02c64854631bdfc86bfd6437391c')
+sha256sums=('6be9c0bff6af8c677414935f31699ea5a7f8f5f791cfa5205be02ea186b97ce1')
 
 prepare() {
   cd ${_pkgbase}-${pkgver}
