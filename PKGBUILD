@@ -8,7 +8,7 @@ _gitver=4b96aa0c1d73947de7ccc0dcb89e2a2e3813f708
 pkgname=firmware_ath10k-qca6174
 pkgbase=${pkgname}
 pkgver=0.1
-pkgrel=4
+pkgrel=5
 pkgdesc='firmware for Atheros Qualcomm Killer N1525 Wireless-AC [168c:003e]'
 arch=('any')
 url="https://github.com/$_gituser/$_gitname"
@@ -22,7 +22,7 @@ package() {
   cd "$srcdir/"
   mkdir -p $pkgdir/etc/modprobe.d
   cp ath10k.conf $pkgdir/etc/modprobe.d/ath10k.conf
-  cd "$_gitname-$_gitver/ath10k"
+  cd "$_gitname-$_gitver"
   DESTDIR="$pkgdir/usr/lib/firmware/ath10k/"
   mkdir -p $DESTDIR
   cp -r QCA6174 "$DESTDIR"
