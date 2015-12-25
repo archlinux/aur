@@ -1,13 +1,13 @@
 pkgbase = aurora-themes
 	pkgdesc = Easy On The Eyes GNOME Shell, GTK2, GTK3 and Cinnamon themes
-	pkgver = 3.18.20160218
+	pkgver = 3.18.20160229
 	pkgrel = 1
 	url = http://opendesktop.org/content/show.php?content=170523
 	arch = any
 	license = GPL3
 	optdepends = gtk-engine-murrine: for GTK2 themes
 	source = aurora-themes.tar.gz::https://www.dropbox.com/s/4ik0pbbpsiqe4ci/Aurora-3.18.tar.gz?dl=1
-	sha256sums = c81e14f2421fbc6bb22d8d8a232b046e70f9aed9ef0a551c12574e25d683053a
+	sha256sums = 2bba0b992c276efbe592371ac646f76820a915ca68f15eff6ab8c0dce18937c5
 
 pkgname = aurora-themes
 

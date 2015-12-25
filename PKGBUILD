@@ -2,7 +2,7 @@
 # Contributor: FadeMind <fademind@gmail.com>
 
 pkgname=aurora-themes
-pkgver=3.18.20160218
+pkgver=3.18.20160229
 pkgrel=1
 pkgdesc="Easy On The Eyes GNOME Shell, GTK2, GTK3 and Cinnamon themes"
 arch=('any')
@@ -10,7 +10,7 @@ url="http://opendesktop.org/content/show.php?content=170523"
 license=('GPL3')
 optdepends=("gtk-engine-murrine: for GTK2 themes")
 source=("${pkgname}.tar.gz::https://www.dropbox.com/s/4ik0pbbpsiqe4ci/Aurora-${pkgver%.*}.tar.gz?dl=1")
-sha256sums=('c81e14f2421fbc6bb22d8d8a232b046e70f9aed9ef0a551c12574e25d683053a')
+sha256sums=('2bba0b992c276efbe592371ac646f76820a915ca68f15eff6ab8c0dce18937c5')
 
 # The archive downloaded from Dropbox seems to change its hash without any
 # evident content change. This could originate from the compression of these
