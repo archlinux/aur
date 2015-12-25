@@ -21,23 +21,26 @@ pkgver() {
 }
 
 prepare(){
+  cd "${_plug}"
   rm -fr VSHelper.h VapourSynth.h
 
   sed -e 's|vapoursynth.h|VapourSynth.h|g' \
       -e 's|vshelper.h|VSHelper.h|g' \
       -e 's|"VapourSynth.h"|<VapourSynth.h>|g' \
       -e 's|"VSHelper.h"|<VSHelper.h>|g' \
-      -i inpaint/*
+      -i *
 
   echo "all:
-	  g++ -c -std=gnu++11 -I. -fPIC ${CXXFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth) inpaint/Inpaint.cpp -o Inpaint.o
+	  g++ -c -std=gnu++11 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o Inpaint.o Inpaint.cpp
 	  g++ -shared -fPIC ${LDFLAGS} -o lib${_plug}.so Inpaint.o" > Makefile
 }
 
 build() {
+  cd "${_plug}"
   make
 }
 
 package() {
+  cd "${_plug}"
   install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
 }
