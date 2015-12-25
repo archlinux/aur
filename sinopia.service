@@ -1,0 +1,9 @@
+[Unit]
+Description=Private npm cache registry
+
+[Service]
+ExecStart=/usr/bin/sinopia
+
+[Install]
+WantedBy=default.target
+

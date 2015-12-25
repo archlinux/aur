@@ -1,0 +1,11 @@
+post_install() {
+   echo "Don't forget to run
+   npm set registry http://localhost:4873/
+in order to start using sinopia as default registry."
+}
+
+post_remove() {
+   echo "Don't forget to run
+   npm set registry http://registry.npm.org/
+in order to return using regular npm registry."
+}
