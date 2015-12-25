@@ -28,7 +28,7 @@ prepare() {
 
 build() {
   cd "${_plug}"
-  ./configure --extra-cflags="${CFLAGS} $(pkg-config --cflags vapoursynth)" \
+  ./configure --extra-cflags="${CFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth)" \
               --extra-ldflags="${LDFLAGS}"
   make
 }
