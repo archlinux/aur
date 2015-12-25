@@ -6,22 +6,20 @@ pkgdesc="Generation of high-energy physics events."
 arch=('i686' 'x86_64')
 url="http://home.thep.lu.se/Pythia/"
 license=('GPL')
-optdepends=('root: extensions for event analysis with ROOT')
 makedepends=('autoconf' 'automake' 'make' 'gcc' 'rsync')
 provides=$pkgname
 source=("http://home.thep.lu.se/~torbjorn/pythia8/$_pkgid.tgz"
-	'pythia.sh')
+'pythia.sh')
 md5sums=('0886d1b2827d8f0cd2ae69b925045f40'
-	 '61cc2f3ede25c4baaf88c177501b78ee')
+'1f3d11b927a9d7cc93b94843dbdbd928')
 _srcpath=$srcdir/$_pkgid
 
 build(){
 	_ncores=$(($(lscpu -p=core | tail -n 1)+1))
 	cd $srcdir/$_pkgid
 	./configure --enable-shared \
-		    --enable-64bit \
-		    --with-root \
-		    --prefix=/usr 
+		--enable-64bit \
+		--prefix=/usr 
 	make -j$_ncores
 }
 
