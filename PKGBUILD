@@ -6,7 +6,7 @@ pkgver=r39.22a40af
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
-url="https://github.com/VFR-maniac/VapourSynth-TNLMeans"
+url='https://github.com/VFR-maniac/VapourSynth-TNLMeans'
 license=('GPL')
 depends=('vapoursynth')
 makedepends=('git')
@@ -17,7 +17,8 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
-  echo "r$(git rev-list HEAD 2> /dev/null | wc -l | sed 's/ //g').$(git describe --always)"
+  #echo "$(git describe --long --tags)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -26,7 +27,9 @@ prepare() {
 
 build() {
   cd "${_plug}"
-  ./configure --prefix=/usr --extra-cxxflags="$(pkg-config --cflags vapoursynth)"
+  ./configure --prefix=/usr \
+              --extra-cxxflags="${CXXFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth)" \
+              --extra-ldflags="${LDFLAGS}"
   make
 }
 
