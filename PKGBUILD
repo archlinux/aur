@@ -14,7 +14,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://www.dropbox.com/s/4ik0pbbpsiqe4ci/
 sha256sums=('bae3d9c16ed37ad9e3a67a4d019d2e8bff70a7fadbf87a722c2a960d6fd56a4c')
 
 package() {
-    install -dm755 ${pkgdir}/usr/share/themes
+    install -d ${pkgdir}/usr/share/themes
     cp -rf ${srcdir}/Aurora-3.18/* ${pkgdir}/usr/share/themes
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
     find ${pkgdir}/usr -type d -exec chmod 755 {} \;
