@@ -25,7 +25,7 @@ prepare() {
   rm -fr VapourSynth.h VSHelper.h
 
   echo "all:
-	  gcc -c -Os -g0 -std=gnu++11 -I. -fPIC -Wextra -Wno-unused-parameter ${CXXFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth) -o FloatFilters.o FloatFilters.cpp
+	  gcc -c -std=gnu++11 -I. -fPIC -Wextra -Wno-unused-parameter ${CXXFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth) -o FloatFilters.o FloatFilters.cpp
 	  gcc -shared -fPIC ${LDFLAGS} -o lib${_plug}.so FloatFilters.o" > Makefile
 }
 
