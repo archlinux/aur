@@ -31,8 +31,7 @@ prepare() {
 
 build() {
   cd "${_plug}"
-  ./configure --prefix=/usr \
-              --libdir=/usr/lib/vapoursynth
+  ./configure --libdir=/usr/lib/vapoursynth
   make
 }
 
