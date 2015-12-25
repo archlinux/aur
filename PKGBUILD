@@ -6,7 +6,7 @@ pkgver=v1.0.1.gb47ef6a
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
-url="http://forum.doom9.org/showthread.php?t=171124"
+url='http://forum.doom9.org/showthread.php?t=171124'
 license=('GPL2')
 depends=('vapoursynth')
 makedepends=('git' 'yasm')
@@ -20,10 +20,14 @@ pkgver() {
   echo "$(git describe --long --tags | tr - .)"
 }
 
-build() {
+prepare() {
   cd "${_plug}"
   ./autogen.sh
-  ./configure --prefix=/usr --libdir=/usr/lib/vapoursynth
+}
+
+build() {
+  cd "${_plug}"
+  ./configure --libdir=/usr/lib/vapoursynth
   make
 }
 
