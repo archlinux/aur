@@ -8,15 +8,15 @@ _gitver=4b96aa0c1d73947de7ccc0dcb89e2a2e3813f708
 pkgname=firmware_ath10k-qca6174
 pkgbase=${pkgname}
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 pkgdesc='firmware for Atheros Qualcomm Killer N1525 Wireless-AC [168c:003e]'
 arch=('any')
 url="https://github.com/$_gituser/$_gitname"
 license=('GPL')
-source=("https://codeload.github.com/$_gituser/$_gitname/tar.gz/$_gitver"
+source=("https://github.com/$_gituser/$_gitname/archive/$_gitver.tar.gz"
 				"ath10k.conf")
-md5sums=('9508fef27520ce82b9f33b453f6344a8'
-				 '5396306797a46bf2138ed05e26c199be')
+md5sums=('5396306797a46bf2138ed05e26c199be'
+				 'fce5dbe873ca616de7d519cb55af8e68')
 
 package() {
   cd "$srcdir/"
