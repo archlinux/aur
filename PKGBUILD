@@ -2,7 +2,7 @@
 
 _plug=lsmashsource
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r822.3492099
+pkgver=r834.51771ab
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -33,7 +33,7 @@ prepare() {
 build() {
   cd "${_plug}/VapourSynth"
   ./configure --prefix=/usr \
-              --extra-cflags="${CFLAGS} $(pkg-config --cflags vapoursynth)" \
+              --extra-cflags="${CFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth)" \
               --extra-ldflags="${LDFLAGS}"
   make
 }
