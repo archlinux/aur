@@ -24,7 +24,9 @@ pkgver() {
 
 prepare() {
   echo "all:
-	  gcc -o lib${_plug}.so ${CFLAGS} ${LDFLAGS} $(pkg-config --cflags vapoursynth) -fPIC -shared ${_plug}/src/main.c ${_plug}/src/processplane.c" > Makefile
+	  gcc -c -fPIC  ${CFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o main.o ${_plug}/src/main.c
+	  gcc -c -fPIC  ${CFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o processplane.o ${_plug}/src/processplane.c
+	  gcc -shared -fPIC ${LDFLAGS} -o lib${_plug}.so main.o processplane.o" > Makefile
 }
 
 build() {
@@ -34,6 +36,6 @@ build() {
 package(){
   install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
   install -Dm644 "${_plug}/MCDenoise.py" "${pkgdir}${_sites_packages}/MCDenoise.py"
-  install -Dm644 "${_plug}/TempLinearApproximate-readme.txt" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README"
+  install -Dm644 "${_plug}/TempLinearApproximate-readme.txt" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme.txt"
   install -Dm644 "${_plug}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
