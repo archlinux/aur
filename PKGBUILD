@@ -1,27 +1,24 @@
-# Maintainer: Michael Herold <arch@michaeljherold.com>
+# Maintainer: Vlad M. <vlad@archlinux.net>
+# Contributor: Michael Herold <arch@michaeljherold.com>
 # Contributer: Eduard Bopp <eduard dot bopp at aepsil0n dot de>
 
-_npmname=elm
-_npmver=2.0.0
-pkgname=nodejs-elm # All lowercase
-pkgver=2.0.0
+pkgname=nodejs-elm
+_pkgname=elm
+pkgver=0.16.0
+epoch=1
 pkgrel=1
-pkgdesc="elm-platform wrapper that makes it seamlessly available as a local dependency"
+pkgdesc="Binaries for the Elm programming language"
 arch=(any)
-url="https://github.com/kevva/elm-bin"
-license=()
-depends=('nodejs' 'libtinfo')
-optdepends=()
-source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
-noextract=($_npmname-$_npmver.tgz)
-sha1sums=(04806807bd816861d500a6de87bbaa3e0d5d5a46)
+url="https://www.npmjs.com/package/elm"
+license=("BSD")
+depends=('nodejs' 'npm')
+source=(http://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz)
+noextract=($_pkgname-$pkgver.tgz)
+sha256sums=('db336fe67872c99d6779a5862029b196a5a19ffc31a414abf16fd0f4d8c9fbb0')
 
 package() {
-  cd $srcdir
   local _npmdir="$pkgdir/usr/lib/node_modules/"
   mkdir -p $_npmdir
   cd $_npmdir
-  npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
+  npm install -g --prefix "$pkgdir/usr" $_pkgname@$pkgver
 }
-
-# vim:set ts=2 sw=2 et:
