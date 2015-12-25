@@ -2,7 +2,7 @@
 
 _plug=deblock
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r4.1.gee7c2dd
+pkgver=r4.2.gc2b4035
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ pkgver() {
 build() {
   cd "${_plug}"
   ./configure --install="${pkgdir}/usr/lib/vapoursynth" \
-              --extra-cxxflags="${CXXFLAGS}" \
+              --extra-cxxflags="${CXXFLAGS} ${CPPFLAGS}" \
               --extra-ldflags="${LDFLAGS}"
   make
 }
