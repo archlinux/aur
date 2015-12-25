@@ -2,7 +2,7 @@
 
 _plug=videoscope
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v1.0.1.g511aeeb
+pkgver=v1.0.2.g527b9b0
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -13,26 +13,28 @@ makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/dubhater/vapoursynth-${_plug}.git"
-        'LICENSE::http://www.wtfpl.net/txt/copying/')
-md5sums=('SKIP'
-         '8365d07beeb5f39d87e846dca3ae7b64')
-_gitname="${_plug}"
+        'COPYING::http://www.wtfpl.net/txt/copying/')
+sha1sums=('SKIP'
+          '337ece375beddfdb7392699fd00eb9b3e823d03f')
 
 pkgver() {
-  cd "${_gitname}"
+  cd "${_plug}"
   echo "$(git describe --long --tags | tr - .)"
 }
 
-build() {
-  cd "${_gitname}"
+prepare() {
+  cd "${_plug}"
   ./autogen.sh
-  ./configure --prefix=/usr --libdir=/usr/lib/vapoursynth
+}
+
+build() {
+  cd "${_plug}"
+  ./configure --libdir=/usr/lib/vapoursynth
   make
 }
 
 package(){
-  cd "${_gitname}"
-  make DESTDIR="$pkgdir" install
-  install -Dm644 readme.rst "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README"
-  install -Dm644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  make -C "${_plug}" DESTDIR="${pkgdir}" install
+  install -Dm644 "${_plug}/readme.rst" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.rst"
+  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
