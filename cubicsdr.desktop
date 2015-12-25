@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=CubicSDR
+Comment=Cross-Platform Software-Defined Radio Application
+Path=/usr/bin
+Exec=cubicsdr
+Icon=cubicsdr.png 
+Terminal=false
+Categories=Sound & Video;SDR;
