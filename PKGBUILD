@@ -13,27 +13,28 @@ makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/dubhater/vapoursynth-${_plug}.git")
-md5sums=('SKIP')
-_gitname="${_plug}"
+sha1sums=('SKIP')
 
 pkgver() {
-  cd "${_gitname}"
+  cd "${_plug}"
   echo "$(git describe --long --tags | tr - .)"
 }
 
 prepare() {
-  cd "${_gitname}"
+  cd "${_plug}"
   echo "all:
-	  gcc -o lib${_plug}.so ${CFLAGS} -fPIC -shared -Wall -Wextra -Wno-unused-parameter src/wwxd.c src/detection.c $(pkg-config --cflags vapoursynth) " > Makefile
+	  gcc -c -fPIC -Wall -Wextra -Wno-unused-parameter ${CFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o wwxd.o src/wwxd.c
+	  gcc -c -fPIC -Wall -Wextra -Wno-unused-parameter ${CFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o detection.o src/detection.c
+	  gcc -shared -fPIC ${LDFLAGS} -o lib${_plug}.so wwxd.o detection.o" > Makefile
 }
 
 build() {
-  cd "${_gitname}"
+  cd "${_plug}"
   make
 }
 
 package(){
-  cd "${_gitname}"
+  cd "${_plug}"
   install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
   install -Dm644 readme "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme"
 }
