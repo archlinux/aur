@@ -24,21 +24,24 @@ pkgver() {
 }
 
 prepare() {
-  rm -fr removedirtvs/{VapourSynth,VSHelper}.h
+  cd "${_plug}"
+  rm -fr {VapourSynth,VSHelper}.h
 
   echo "all:
-	  g++ -c -std=gnu++11 -DVS_TARGET_CPU_X86=1 -fpermissive -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o DupBlocks.o removedirtvs/DupBlocks.cpp
-	  g++ -c -std=gnu++11 -DVS_TARGET_CPU_X86=1 -fpermissive -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o RemoveDirt.o removedirtvs/RemoveDirt.cpp
-	  g++ -c -std=gnu++11 -DVS_TARGET_CPU_X86=1 -fpermissive -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o RestoreMotionBlocks.o removedirtvs/RestoreMotionBlocks.cpp
-	  g++ -c -std=gnu++11 -DVS_TARGET_CPU_X86=1 -fpermissive -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o SCSelect.o removedirtvs/SCSelect.cpp
-	  g++ -c -std=gnu++11 -DVS_TARGET_CPU_X86=1 -fpermissive -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o shared.o removedirtvs/shared.cpp
+	  g++ -c -std=gnu++11 -DVS_TARGET_CPU_X86=1 -fpermissive -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o DupBlocks.o DupBlocks.cpp
+	  g++ -c -std=gnu++11 -DVS_TARGET_CPU_X86=1 -fpermissive -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o RemoveDirt.o RemoveDirt.cpp
+	  g++ -c -std=gnu++11 -DVS_TARGET_CPU_X86=1 -fpermissive -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o RestoreMotionBlocks.o RestoreMotionBlocks.cpp
+	  g++ -c -std=gnu++11 -DVS_TARGET_CPU_X86=1 -fpermissive -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o SCSelect.o SCSelect.cpp
+	  g++ -c -std=gnu++11 -DVS_TARGET_CPU_X86=1 -fpermissive -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o shared.o shared.cpp
 	  g++ -shared  -fPIC ${LDFLAGS} -o lib${_plug}.so DupBlocks.o RemoveDirt.o RestoreMotionBlocks.o SCSelect.o shared.o" > Makefile
 }
 
 build() {
+  cd "${_plug}"
   make
 }
 
 package() {
+  cd "${_plug}"
   install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
 }
