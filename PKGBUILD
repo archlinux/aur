@@ -2,7 +2,7 @@
 # Contributor: FadeMind <fademind@gmail.com>
 
 pkgname=aurora-themes
-pkgver=3.18.20151224
+pkgver=3.18.20160204
 pkgrel=1
 pkgdesc="Easy On The Eyes GNOME Shell, GTK2, GTK3 and Cinnamon themes"
 arch=('any')
@@ -10,7 +10,7 @@ url="http://opendesktop.org/content/show.php?content=170523"
 license=('GPL3')
 optdepends=("gtk-engine-murrine: for GTK2 themes")
 source=("${pkgname}.tar.gz::https://www.dropbox.com/s/4ik0pbbpsiqe4ci/Aurora-${pkgver%.*}.tar.gz?dl=1")
-sha256sums=('33f7db44b0c45236beabffdd2df082403c57bbe922e04fbb2298dcdeeba2e650')
+sha256sums=('28fc4b3ba2e70ee6e7fe6d1e4785be4e9f4064dae58440f02e077752c7a6e780')
 
 pkgver() {
   dir="$(echo Aurora-*)"
