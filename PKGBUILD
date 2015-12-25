@@ -23,7 +23,6 @@ build() {
 	mkdir -p build
 	cd build
 	cmake ../ -DCMAKE_BUILD_TYPE=Release
-	cd ..
 	make -j4
 
 #convert the icon to png
@@ -43,7 +42,7 @@ package() {
 
 #TODO: detect arch to make this work on x86
 #for now change this manually on 32 bit systems
-	cd "${srcdir}/cubicsdr-git/x64"
+	cd "${srcdir}/cubicsdr-git/build/x64"
         
 	install -Dm755 CubicSDR "${pkgdir}/usr/bin/cubicsdr"
 
