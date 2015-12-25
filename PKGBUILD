@@ -1,7 +1,7 @@
 # Maintainer: ulis <fer.obbee at gmail dot com>
 
 pkgname=otf-fira-code-git
-pkgver=0.6.r14.g3f41480
+pkgver=1.101.r2.g6dbf892
 pkgrel=1
 pkgdesc="Fira Code: monospaced font with programming ligatures."
 arch=('any')
@@ -24,7 +24,12 @@ pkgver() {
 package() {
 	cd "$srcdir/$_gitname"
 
-	local font='FiraCode-Regular.otf'
-	install -Dm644 "$font" "$pkgdir/usr/share/fonts/OTF/$font"
+	local weights=('Regular' 'Bold' 'Light' 'Medium' 'Retina')
+	local font='FiraCode'
+
+	for weight in ${weights[*]}; do
+		local name="${font}-${weight}.otf"
+		install -Dm644 "$name" "$pkgdir/usr/share/fonts/OTF/$name"
+	done
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
