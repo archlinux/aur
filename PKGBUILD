@@ -21,10 +21,8 @@ optdepends=('ffmpeg: for DTS conversion'
 makedepends=('qt5-tools')
 conflicts=('mkv-extractor-gui')
 replaces=('mkv-extractor-gui')
-source=("https://launchpad.net/~hizo/+archive/ubuntu/mkv-extractor-gui/+files/mkv-extractor-qt5_${pkgver}.orig.tar.gz"
-        'mkv-extractor-qt.sh')
-sha1sums=('57a08fc9ea9c1e45aea4d31490c74595fc769347'
-          '3b65e4f11279403f044e054a852ef706b59787ed')
+source=("https://launchpad.net/~hizo/+archive/ubuntu/mkv-extractor-gui/+files/mkv-extractor-qt5_${pkgver}.orig.tar.gz")
+sha1sums=('57a08fc9ea9c1e45aea4d31490c74595fc769347')
 install=mkv-extractor-qt.install
 
 prepare() {
@@ -40,15 +38,16 @@ build() {
 }
 
 package() {
-  install -Dm755 mkv-extractor-qt.sh "${pkgdir}/usr/bin/mkv-extractor-qt5"
+  install -d "${pkgdir}/usr/bin"
+  ln -s /usr/share/mkv-extractor-qt5/MKVExtractorQt.py "${pkgdir}/usr/bin/mkv-extract-qt5"
 
   cd mkv-extractor-qt5
 
-  install -Dm755 MKVExtractorQt.py "${pkgdir}/usr/share/mkv-extractor-qt/MKVExtractorQt.py"
-  install -Dm644 MKVRessources_rc.py "${pkgdir}/usr/share/mkv-extractor-qt/MKVRessources_rc.py"
-  install -Dm644 ui_MKVExtractorQt.py "${pkgdir}/usr/share/mkv-extractor-qt/ui_MKVExtractorQt.py"
-  install -Dm644 MKVExtractorQt_cs_CZ.qm "${pkgdir}/usr/share/mkv-extractor-qt/MKVExtractorQt_cs_CZ.qm"
-  install -Dm644 MKVExtractorQt_fr_FR.qm "${pkgdir}/usr/share/mkv-extractor-qt/MKVExtractorQt_fr_FR.qm"
+  install -Dm755 MKVExtractorQt.py "${pkgdir}/usr/share/mkv-extractor-qt5/MKVExtractorQt.py"
+  install -Dm644 MKVRessources_rc.py "${pkgdir}/usr/share/mkv-extractor-qt5/MKVRessources_rc.py"
+  install -Dm644 ui_MKVExtractorQt.py "${pkgdir}/usr/share/mkv-extractor-qt5/ui_MKVExtractorQt.py"
+  install -Dm644 MKVExtractorQt_cs_CZ.qm "${pkgdir}/usr/share/mkv-extractor-qt5/MKVExtractorQt_cs_CZ.qm"
+  install -Dm644 MKVExtractorQt_fr_FR.qm "${pkgdir}/usr/share/mkv-extractor-qt5/MKVExtractorQt_fr_FR.qm"
 
   install -Dm644 mkv-extractor-qt.desktop "${pkgdir}/usr/share/applications/mkv-extractor-qt.desktop"
 
