@@ -1,7 +1,7 @@
 # Maintainer: Nuno Araujo <nuno.araujo@russo79.com>
 pkgname=mutantfactions
-pkgver=1.08
-pkgrel=1
+pkgver=0.993
+pkgrel=2
 pkgdesc="Free multiplayer action game"
 arch=('i686' 'x86_64')
 url="http://mutantfactions.net"
@@ -16,7 +16,7 @@ optdepends=()
 conflicts=('subvein')
 replaces=('subvein')
 install=mutantfactions.install
-source=("http://mutantfactions.net/downloads/MutantFactions1080.tar.gz"
+source=("http://mutantfactions.net/downloads/MutantFactions0993.tar.gz"
         "mutantfactions"
         "mutantfactions-server"
         "mutantfactions.service"
@@ -27,7 +27,7 @@ source=("http://mutantfactions.net/downloads/MutantFactions1080.tar.gz"
         "mutantfactions-48x48.png"
         "mutantfactions-64x64.png"
         "mutantfactions.desktop")
-md5sums=('edba55c5c743649c64711ac182388970'
+md5sums=('f5f7a01990bdcc77d3f0327a738e5b2c'
          '415352df252c48df74e738735eed903f'
          '59164a2e1a8bb8005abcb1529ccd2e5d'
          '90647a6ec51f37085ab3a43842925c2b'
