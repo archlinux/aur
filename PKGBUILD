@@ -11,7 +11,7 @@ provides=$pkgname
 source=("http://home.thep.lu.se/~torbjorn/pythia8/$_pkgid.tgz"
 'pythia.sh')
 md5sums=('0886d1b2827d8f0cd2ae69b925045f40'
-'1f3d11b927a9d7cc93b94843dbdbd928')
+'0320534e1be7155cfb8ee19c7f8480cc')
 _srcpath=$srcdir/$_pkgid
 
 build(){
