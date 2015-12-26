@@ -7,7 +7,7 @@
 
 pkgname=mingw-w64-libssh
 pkgver=0.7.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Library for accessing ssh client services through C libraries (mingw-w64)"
 url="http://www.libssh.org/"
 license=('LGPL')
@@ -72,5 +72,8 @@ package(){
     cd "${srcdir}"/build-${_arch}
 
     make DESTDIR="${pkgdir}" install
+
+    ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
+    ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
   done
 }
