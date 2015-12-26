@@ -5,7 +5,7 @@
 
 pkgname=libbpg
 pkgver=0.9.6
-pkgrel=1
+pkgrel=2
 pkgdesc='BPG Image Encoder and Decoder'
 arch=('x86_64' 'i686')
 url='http://bellard.org/bpg/'
@@ -16,6 +16,7 @@ options=('staticlibs')
 
 prepare() {
   sed -i 's/$(CMAKE_OPTS)/$(CMAKE_OPTS) -DENABLE_LIBNUMA=OFF/' "$pkgname-$pkgver/Makefile"
+  sed -i 's/^CFLAGS+=-I.$/CFLAGS+=-I. -fPIC/' "$pkgname-$pkgver/Makefile"
 }
 
 build() {
