@@ -2,13 +2,13 @@
 
 pkgname=mumble-snapshot-tts
 pkgver=1.3.0_905_gda8a95e
-pkgrel=1
+pkgrel=2
 pkgdesc="A high quality voice chat program. (snapshot build + text to speech)"
 arch=('i686' 'x86_64')
 url="http://mumble.info/"
 license=('BSD')
 depends=('qt5-base' 'opus' 'speex' 'avahi' 'protobuf' 'speech-dispatcher')
-makedepends=('boost' 'qt5-tools')
+makedepends=('boost' 'qt5-tools' 'qt5-svg')
 optdepends=('espeak: speech synthesizer'
             'festival: speech synthesizer')
 provides=('mumble')
