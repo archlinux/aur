@@ -1,7 +1,8 @@
 # Maintainer:  <clu>
 
-pkgname=python2-pyds9  
-pkgver=1.7
+pkgname=python2-pyds9
+_pkgname=pyds9
+pkgver=1.8
 pkgrel=1
 pkgdesc="A Python Connection to DS9 via XPA"
 url="http://hea-www.harvard.edu/RD/ds9/"
@@ -13,8 +14,9 @@ optdepends=('ds9-bin: astronomical data visualization application')
 conflicts=()
 replaces=()
 backup=()
-source=(http://hea-www.harvard.edu/RD/download/pyds9/pyds9-$pkgver.tar.gz)
-sha1sums=('454cef329375f13a14eb0059565c0dc91dd1713d')
+source=(https://github.com/ericmandel/pyds9/archive/v${pkgver}.tar.gz)
+sha1sums=('59904d9623dd0f121b815a5cb9253cb94045978d')
+
 
 build() {
   cd $srcdir/pyds9-$pkgver
