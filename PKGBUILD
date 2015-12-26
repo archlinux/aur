@@ -2,7 +2,7 @@
 
 pkgname=libbitcoin-explorer-git
 pkgver=20151221
-pkgrel=2
+pkgrel=3
 pkgdesc="The Bitcoin Command Line Tool"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -25,8 +25,9 @@ makedepends=('autoconf'
 groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin-explorer"
 license=('AGPL3')
-source=(git+https://github.com/libbitcoin/libbitcoin-explorer#branch=version2)
-sha256sums=('SKIP')
+source=(git+https://github.com/libbitcoin/libbitcoin-explorer#branch=version2
+        git+https://github.com/libbitcoin/libbitcoin-explorer.wiki)
+sha256sums=('SKIP' 'SKIP')
 provides=('libbitcoin-explorer')
 conflicts=('libbitcoin-explorer')
 
@@ -61,6 +62,10 @@ package() {
 
   msg2 'Installing...'
   make DESTDIR="$pkgdir" install
+
+  msg2 'Installing documentation...'
+  cp -dpr --no-preserve=ownership "$srcdir/libbitcoin-explorer.wiki" \
+    "$pkgdir/usr/share/doc/libbitcoin-explorer/wiki"
 
   msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
