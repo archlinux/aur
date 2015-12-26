@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
 pkgname=urdfdom
 pkgver=0.3.0
-pkgrel=7
+pkgrel=8
 pkgdesc="The URDF (U-Robot Description Format) library provides core data structures and a simple XML parsers for populating the class data structures from an URDF file."
 arch=('any')
 url="https://github.com/ros/urdfdom"
