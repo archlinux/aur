@@ -12,6 +12,7 @@ url="https://github.com/whoozle/android-file-transfer-linux"
 license=(GPL3)
 depends=('qt5-base' 'fuse' 'hicolor-icon-theme' 'xdg-utils' 'libxkbcommon-x11' 'file')
 makedepends=('cmake' 'git' 'ninja' 'mesa')
+conflicts=('android-file-transfer')
 install=$pkgname.install
 source=("git://github.com/$_gitauthor/$_pkgname.git#branch=$_gitbranch")
 md5sums=('SKIP')
