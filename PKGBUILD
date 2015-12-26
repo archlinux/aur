@@ -3,14 +3,14 @@
 
 _pkgname=papyros-files
 pkgname=$_pkgname-git
-pkgver=0.0.4.r3.g433bcdf
+pkgver=0.0.4.r37.gafbd1fd
 pkgrel=1
 pkgdesc="The file manager for Papyros"
 arch=("i686" "x86_64")
 url="https://github.com/papyros/files-app"
 license=("LGPL")
-depends=("qt5-declarative" "qt5-graphicaleffects" "qml-material-git" "taglib" "qt5-tools")
-makedepends=("git" "cmake")
+depends=("qt5-declarative" "qt5-graphicaleffects" "qml-material-git" "taglib" "qt5-tools" "kdeclarative")
+makedepends=("git" "cmake" "intltool" "extra-cmake-modules")
 optdepends=('pulseaudio: audio support')
 provides=("$_pkgname" "$pkgname")
 conflicts=("$_pkgname")
