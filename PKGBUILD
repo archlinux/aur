@@ -1,9 +1,9 @@
 # Maintainer : Florent H. CARRÉ <colundrum@gmail.com>
 
 _npmname=generator-angular
-_npmver=0.14.0
+_npmver=0.15.1
 pkgname=nodejs-generator-angular
-pkgver=0.14.0
+pkgver=0.15.1
 pkgrel=1
 pkgdesc="Yeoman generator for AngularJS"
 arch=(any)
@@ -13,7 +13,7 @@ depends=('nodejs-yeoman' 'nodejs-generator-karma')
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(a5d91dacff08894623f80e16dd0e5df99fe56734)
+sha1sums=(c1b947da1a163eccdd1c0427818532972015036d)
 
 package() {
   cd "$srcdir"
