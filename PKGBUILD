@@ -5,7 +5,7 @@
 
 pkgname=copy-agent
 pkgver=3.2.01.0481
-pkgrel=3
+pkgrel=4
 pkgdesc="Copy.com sync agent"
 arch=("i686" "x86_64" "armv6h")
 url="http://www.copy.com"
@@ -47,8 +47,13 @@ package() {
 		*) cd copy/armv6h ;;
 	esac
 
-	for i in lib{AgentSync,Brt,CloudSync}.so Copy{Agent,Cmd,Console}; do
+	for i in lib{AgentSync,Brt,CloudSync}.so; do
 		install -Dm755 $i "$pkgdir/opt/copy/$i"
+	done
+
+	for i in Copy{Agent,Cmd,Console}; do
+		install -Dm755 $i "$pkgdir/opt/copy/$i"
+		install -Dm755 "$srcdir/launch.sh" "$pkgdir/usr/bin/$i"
 	done
 
 	if [[ $CARCH != armv6h ]]; then
@@ -59,7 +64,6 @@ package() {
 		install -Dm644 $i "$pkgdir/opt/copy/$i"
 	done
 
-	install -Dm755 "$srcdir/launch.sh" "$pkgdir/usr/bin/$i"
 	install -Dm644 "$srcdir/ld.so.conf" "$pkgdir/etc/ld.so.conf.d/$pkgname.conf"
 	install -Dm755 libnautilus-copy.so "$pkgdir/usr/lib/nautilus/extensions-3.0/libnautilus-copy.so"
 	install -Dm755 libcaja-copy.so "$pkgdir/usr/lib/caja/extensions-2.0/libcaja-copy.so"
