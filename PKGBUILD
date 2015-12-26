@@ -2,8 +2,8 @@
 
 pkgname=perl6-grammar-debugger
 pkgver=0.0.1
-pkgrel=3
-pkgdesc="Command-line debugger frontend for Rakudo"
+pkgrel=4
+pkgdesc="Simple tracing and debugging support for Perl 6 grammars"
 arch=('any')
 depends=('rakudo' 'perl6-terminal-ansicolor')
 checkdepends=('perl')
