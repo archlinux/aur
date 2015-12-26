@@ -12,7 +12,6 @@ source=("http://iweb.dl.sourceforge.net/project/tunesviewer/${pkgname}_${pkgver}
 sha1sums=('92f756ea12acce46f76008da88413edb8546ec50')
 
 depends=("python2" "pygtk" "python2-lxml" "pywebkitgtk")
-optdepends=("soundconverter" "vlc" "python2-notify" "python2-support")
 
 package() {
   tar xvfJ data.tar.xz
