@@ -4,7 +4,7 @@
 
 pkgname=libbitcoin-git
 pkgver=20151220
-pkgrel=2
+pkgrel=3
 pkgdesc="Bitcoin Cross-Platform C++ Development Toolkit"
 arch=('i686' 'x86_64')
 depends=('boost' 'boost-libs' 'icu' 'secp256k1-git')
@@ -12,8 +12,9 @@ makedepends=('autoconf' 'automake' 'gcc' 'git' 'libtool' 'make' 'pkg-config')
 groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin"
 license=('AGPL3')
-source=(git+https://github.com/libbitcoin/libbitcoin#branch=version2)
-sha256sums=('SKIP')
+source=(git+https://github.com/libbitcoin/libbitcoin#branch=version2
+        git+https://github.com/libbitcoin/libbitcoin.wiki)
+sha256sums=('SKIP' 'SKIP')
 provides=('libbitcoin')
 conflicts=('libbitcoin')
 
@@ -48,6 +49,10 @@ package() {
 
   msg2 'Installing...'
   make DESTDIR="$pkgdir" install
+
+  msg2 'Installing documentation...'
+  cp -dpr --no-preserve=ownership "$srcdir/libbitcoin.wiki" \
+    "$pkgdir/usr/share/doc/libbitcoin/wiki"
 
   msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
