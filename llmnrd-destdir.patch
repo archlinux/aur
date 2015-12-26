@@ -1,0 +1,27 @@
+--- llmnrd/Makefile.orig	2015-12-26 19:39:45.632362533 +0200
++++ llmnrd/Makefile	2015-12-26 19:42:19.714861130 +0200
+@@ -39,8 +39,7 @@
+ prefix	?= /usr/local
+ 
+ BINDIR	= $(prefix)/bin
+-SBINDIR	= $(prefix)/sbin
+-DESTDIR	=
++SBINDIR	= $(prefix)/bin
+ 
+ all: $(D_P) $(Q_P)
+ 
+@@ -59,12 +58,12 @@
+ install_$(D_P): $(D_P)
+ 	@echo "  INSTALL $(D_P)"
+ 	@$(INSTALL) -d -m 755 $(DESTDIR)$(SBINDIR)
+-	@$(INSTALL) -m 755 $(D_P) $(SBINDIR)/$(D_P)
++	@$(INSTALL) -m 755 $(D_P) $(DESTDIR)$(SBINDIR)/$(D_P)
+ 
+ install_$(Q_P): $(Q_P)
+ 	@echo "  INSTALL $(Q_P)"
+ 	@$(INSTALL) -d -m 755 $(DESTDIR)$(BINDIR)
+-	@$(INSTALL) -m 755 $(Q_P) $(BINDIR)/$(Q_P)
++	@$(INSTALL) -m 755 $(Q_P) $(DESTDIR)$(BINDIR)/$(Q_P)
+ 
+ install: install_$(D_P) install_$(Q_P)
+ 

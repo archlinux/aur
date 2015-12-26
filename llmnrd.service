@@ -1,0 +1,13 @@
+[Unit]
+Description=Link-Local Multicast Resolution Daemon
+Before=systemd-resolved.service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/llmnrd -6
+Restart=always
+RestartSec=0
+
+[Install]
+WantedBy=multi-user.target
