@@ -2,7 +2,7 @@
 
 pkgname=perl6-terminal-ansicolor
 pkgver=0.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Colorize terminal output"
 arch=('any')
 depends=('rakudo')
@@ -28,4 +28,7 @@ package() {
   mkdir -p "$pkgdir/usr/share/perl6/vendor/lib"
   find lib -mindepth 1 -maxdepth 1 -exec \
     cp -dpr --no-preserve=ownership '{}' "$pkgdir/usr/share/perl6/vendor/lib" \;
+
+  msg2 'Cleaning up precomp dir...'
+  rm -rf "$pkgdir/usr/share/perl6/vendor/lib/.precomp"
 }
