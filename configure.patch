@@ -9,30 +9,3 @@ diff -ruN libbluray-0.8.0/configure.ac patched/configure.ac
          ;;
      esac
      ;;
-diff -ruN libbluray-0.8.0/Makefile.am patched/Makefile.am
---- libbluray-0.8.0/Makefile.am	2015-03-20 11:50:37.000000000 +0100
-+++ patched/Makefile.am	2015-05-05 19:16:52.545809889 +0200
-@@ -149,7 +149,10 @@
- endif
- endif
- 
--libbluray_la_LDFLAGS= -version-info $(LT_VERSION_INFO) -export-symbols-regex "^bd_"
-+libbluray_la_LDFLAGS= -no-undefined -version-info $(LT_VERSION_INFO) -export-symbols-regex "^bd_"
-+#if HAVE_WIN32
-+#libbluray_la_LDFLAGS+=-no-undefined
-+#endif
- libbluray_la_LIBADD= $(LIBXML2_LIBS) $(FT2_LIBS) $(FONTCONFIG_LIBS)
- 
- noinst_HEADERS = \
-diff -ruN libbluray-0.8.0/Makefile.in patched/Makefile.in
---- libbluray-0.8.0/Makefile.in	2015-04-15 10:40:05.000000000 +0200
-+++ patched/Makefile.in	2015-05-05 19:16:51.462457547 +0200
-@@ -838,7 +838,7 @@
- 	src/util/strutl.h src/util/strutl.c src/util/time.h \
- 	src/util/time.c $(am__append_1) $(am__append_2) \
- 	$(am__append_3) $(am__append_4) $(am__append_5)
--libbluray_la_LDFLAGS = -version-info $(LT_VERSION_INFO) -export-symbols-regex "^bd_"
-+libbluray_la_LDFLAGS = -no-undefined -version-info $(LT_VERSION_INFO) -export-symbols-regex "^bd_"
- libbluray_la_LIBADD = $(LIBXML2_LIBS) $(FT2_LIBS) $(FONTCONFIG_LIBS)
- noinst_HEADERS = \
- 	jni/jni.h \
