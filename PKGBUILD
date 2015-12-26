@@ -5,7 +5,7 @@
 #PKGEXT=.pkg.tar
 
 pkgname=clion
-pkgver=1.2.3
+pkgver=1.2.4
 _pkgver=${pkgver}
 pkgrel=1
 pkgdesc="C/C++ IDE. Free 30-day trial."
@@ -23,7 +23,7 @@ optdepends=(
   'gtest: C++ testing'
 )
 source=("https://download.jetbrains.com/cpp/${pkgname}-${_pkgver}.tar.gz")
-sha256sums=('d16e2129384f0182d1614ad04bca3c91e8cba0c10a87ae60a7d4409e8b0146f6')
+sha256sums=('a2d6960afbfae77f59481c5ad30bc7c5afe9451bdf9d12cd9435f605b57b522b')
 noextract=("${pkgname}-${_pkgver}.tar.gz")
 
 package() {
