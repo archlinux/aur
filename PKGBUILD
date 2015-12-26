@@ -6,7 +6,7 @@
 
 pkgname=pcl-qt5
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A comprehensive open source library for n-D Point Clouds and 3D geometry processing (Qt5 version)"
 arch=('x86_64' 'i686')
 url='http://www.pointclouds.org'
