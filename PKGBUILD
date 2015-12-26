@@ -3,7 +3,7 @@
 
 pkgname=fair-coin
 pkgver=1.5.2
-pkgrel=3
+pkgrel=4
 pkgdesc="FairCoin Qt official client"
 arch=(i686 x86_64)
 url="https://fair-coin.org/"
