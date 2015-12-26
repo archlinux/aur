@@ -9,7 +9,7 @@ pkgdesc="The file manager for Papyros"
 arch=("i686" "x86_64")
 url="https://github.com/papyros/files-app"
 license=("LGPL")
-depends=("qt5-declarative" "qt5-graphicaleffects" "qml-material-git" "taglib" "qt5-tools" "kdeclarative")
+depends=("qt5-declarative" "qt5-graphicaleffects" "qml-material-git" "taglib" "qt5-tools" "taglib" "kdedeclarative")
 makedepends=("git" "cmake" "intltool" "extra-cmake-modules")
 optdepends=('pulseaudio: audio support')
 provides=("$_pkgname" "$pkgname")
@@ -39,10 +39,10 @@ package() {
 
 changelog() {
     cd "$pkgname"
-  	git log $1..HEAD --no-merges --format=" * %s"
+    git log $1..HEAD --no-merges --format=" * %s"
 }
 
 gitref() {
     cd "$pkgname"
-  	git rev-parse HEAD
+    git rev-parse HEAD
 }
