@@ -2,7 +2,7 @@
 
 _pkgname=nixnote2
 pkgname=$_pkgname-git
-pkgver=642.v2.0beta459g6aad8c8
+pkgver=v2.0.beta7.r0.gf960829
 pkgrel=1
 pkgdesc="Nixnote2 is a C++ rewrite of nixnote,which is a clone of Evernote designed to run on Linux.Nixnote is formerly called nevernote."
 arch=('x86_64' 'i686')
@@ -18,7 +18,7 @@ _gitname=$_pkgname
 
 pkgver() {
   cd "$_gitname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/\./g'
 }
 prepare() {
         rm -rf ${srcdir}/build
