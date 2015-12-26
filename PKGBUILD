@@ -2,7 +2,7 @@
 
 pkgname=openhrp3
 pkgver=3.1.8
-pkgrel=4
+pkgrel=5
 pkgdesc="Open Architecture Human-centered Robotics Platform"
 arch=('i686' 'x86_64')
 url="https://github.com/fkanehiro/openhrp3"
