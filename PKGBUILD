@@ -6,7 +6,8 @@ pkgdesc="Dynamic Animation and Robotics Toolkit"
 arch=('i686' 'x86_64')
 url="http://dartsim.github.io"
 license=('BSD')
-depends=('assimp' 'boost' 'eigen>=3' 'fcl' 'flann' 'glut' 'libccd' 'libgl')
+depends=('assimp' 'boost' 'eigen>=3' 'fcl' 'flann' 'glut' 'libccd' 'libgl'
+         'urdfdom' 'tinyxml' 'tinyxml2')
 optdepends=('bullet: Bullet support'
             'ipopt: Ipopt support'
             'nlopt: NLopt support')
