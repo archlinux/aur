@@ -1,4 +1,5 @@
-# Maintainer: Nuno Araujo <nuno.araujo@russo79.com>
+# Submitter: Nuno Araujo <nuno.araujo@russo79.com>
+# Maintainer: Eray Aydın <eray@labkod.com>
 pkgname=mutantfactions
 pkgver=0.993
 pkgrel=2
