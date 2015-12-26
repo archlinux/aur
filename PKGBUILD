@@ -34,7 +34,8 @@ build() {
     mkdir -p $srcdir/abs
     cd $srcdir/abs
     ABSROOT=. abs core/linux
-    cd $srcdir/abs/core/linux
+    NESTEDDIR="$srcdir/abs/core/linux"
+    cd $NESTEDDIR
     grep "pkgver[ ]*=" PKGBUILD > .ksver
     KSVER=$(sed 's|pkgver[ ]*=[ ]*||g' .ksver)
     rm .ksver
@@ -45,10 +46,15 @@ build() {
     fi
     KMAJVER=$(echo "$KSVER" | sed 's|\.[0-9]\+$||g')
 
-    # We force SRCDEST trying to ovverride yaourt default behaviour, which is
-    # to download sources in $srcdir/../linux instead of the place where
+    echo "SRCDEST=$SRCDEST"
+    echo "SRCPKGDEST=$SRCPKGDEST"
+    echo "PKGDEST=$PKGDEST"
+    echo "BUILDDIR=$BUILDDIR"
+    # We force some makepkg variables, trying to ovverride yaourt default behaviour,
+    # which is to download sources in $srcdir/../linux instead of the place where
     # makepkg is invoked
-    SRCDEST=$srcdir/abs/core/linux makepkg --nobuild --skippgpcheck
+    SRCDEST=$NESTEDDIR SRCPKGDEST=$NESTEDDIR PKGDEST=$NESTEDDIR BUILDDIR=$NESTEDDIR \
+                                        makepkg --nobuild --skippgpcheck
     msg "Kernel sources are ready"
 
     # Build the netmap kernel module and all modified drivers, using the
@@ -57,7 +63,7 @@ build() {
     # running kernel, and not against the downloaded sources.
     msg "Starting to build netmap"
     cd "$srcdir/netmap/LINUX"
-    ./configure --kernel-sources=$srcdir/abs/core/linux/src/linux-$KMAJVER
+    ./configure --kernel-sources=$NESTEDDIR/src/linux-$KMAJVER
     make || return 1
     # Build pkt-gen and vale-ctl
     cd "$srcdir/netmap/examples"
