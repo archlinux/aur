@@ -2,7 +2,7 @@
 
 pkgname=iscan-plugin-v330
 pkgver=0.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="iscan plugin for Epson Perfection Photo V330 scanners."
 arch=('i686' 'x86_64')
 url="http://www.epson.com"
@@ -12,18 +12,18 @@ makedepends=('rpmextract')
 install=iscan-plugin-v330.install
 
 if [ "$CARCH" = "i686" ] ; then
-  source=(http://download.ebz.epson.net/dsc/f/01/00/01/92/57/3e446b62d78d7c543b4247ef538a046279746f81/esci-interpreter-perfection-v330-${pkgver}-1.i386.rpm)
+    source=(https://download2.ebz.epson.net/iscan/plugin/perfection-v330/rpm/x86/iscan-perfection-v330-bundle-1.0.0.x86.rpm.tar.gz)
 	ARCH=i386
-	md5sums=('b138b5c9b01a3a2986c957d28d3c8441')
+    md5sums=('9413619edf508ca742d3bb00b19c620d')
 
 elif [ "$CARCH" = "x86_64" ] ; then
-	source=(http://download.ebz.epson.net/dsc/f/01/00/01/92/57/21985c1cf99b6addcc31e4567f45bd4590146793/esci-interpreter-perfection-v330-${pkgver}-1.x86_64.rpm)
+    source=(https://download2.ebz.epson.net/iscan/plugin/perfection-v330/rpm/x64/iscan-perfection-v330-bundle-1.0.0.x64.rpm.tar.gz)
 	ARCH=x86_64
-	md5sums=('4aef1dacc55f257f25f5c73cbdf6e3ed')
+    md5sums=('20edc35d1c957b36ccc3995452624b16')
 fi
 
 build() {
-	cd "$srcdir"
+	mv "$srcdir/iscan-perfection-v330-bundle-1.0.0.x64.rpm/plugins/esci-interpreter-perfection-v330-${pkgver}-1.$ARCH.rpm" "$srcdir/"
 	rpmextract.sh "esci-interpreter-perfection-v330-${pkgver}-1.$ARCH.rpm"
   
   if [ "$CARCH" = "x86_64" ] ; then
