@@ -5,18 +5,18 @@ pkgname=ndyndns
 pkgver=2.2
 pkgrel=1
 pkgdesc="Update client for the dynamic DNS services from DynDNS and Namecheap"
-url="http://code.google.com/p/ndyndns/"
+url="https://github.com/niklata/ndyndns"
 license=('GPL3')
 arch=('i686' 'x86_64' 'armv5h' 'armv6h' 'armv7h')
 depends=('curl')
 install="${pkgname}.install"
 backup=('etc/ndyndns.conf')
-source=("http://${pkgname}.googlecode.com/files/${pkgname}-${pkgver}.tar.bz2"
+source=("https://github.com/niklata/ndyndns/archive/v${pkgver}.tar.gz"
         'ndyndns.service'
         'ndyndns.sysusers'
         'ndyndns.conf'
         "${pkgname}.install")
-md5sums=('d3ea7e5242ea340b230df3f959cda305'
+md5sums=('065e5b9cfaeea9be7a93c42478fc3a56'
          '6a6efc0c5744c5c8cb16d72cd2509cc0'
          'b7bd3d2f0473fd78555ed874eee3dd1b'
          'f0c69eb41db16a228ebf62c1561c89d6'
