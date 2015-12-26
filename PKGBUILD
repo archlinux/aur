@@ -20,7 +20,7 @@ _replacesoldmodules=() # '%' gets replaced with _kernelname
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 rcnrel=armv7-x1
 arch=('i686' 'x86_64' 'armv7h')
 url="https://gnunet.org/knock"
@@ -49,6 +49,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
+        '0001-disabling-primary-plane-in-the-noatomic-case.patch'
         '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch'
         '0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
         # armv7h patches
@@ -61,7 +62,8 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0005-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch'
         '0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch'
         '0007-set-default-cubietruck-led-triggers.patch'
-        '0008-USB-armory-support.patch')
+        '0008-USB-armory-support.patch'
+        '0009-ARM-dts-dove-add-Dove-divider-clocks.patch')
 sha256sums=('1d280ae2730eb6c9b8c7e920cac2e8111c8db02c498db0c142860a84106cc169'
             'SKIP'
             '4e5d062db675a304a1b7bb99a9d2eb1ff617fd31fac9b28df059444b5a98b1d5'
@@ -76,21 +78,23 @@ sha256sums=('1d280ae2730eb6c9b8c7e920cac2e8111c8db02c498db0c142860a84106cc169'
             'SKIP'
             '9ffafb50e8b6161a08ffaa8ac074e60f7df15e9cc20f8b63f93914638161f9b0'
             'bccd089a58f5180991db01fe1a4782355b987fc788766619cff973d33a0e4fcf'
-            '8787384a2eea0e71c64278e9e3e9ec29df61bfcee60afad6d5f9f43e97964746'
+            '8fc56fddc4f1218fcd3cec584fb09eb06e30983d309d5ace00881fe94665caff'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            'abdd04bd6beecb7c961130a68d71e6332bd260462eeaa2f4f8e634de813dcc4d'
             '61370b766e0c60b407c29d2c44b3f55fc352e9049c448bc8fcddb0efc53e42fc'
             '3d3266bd082321dccf429cc2200d1a4d870d2031546f9f591b6dfbb698294808'
             '74cdff6bfa54fe96f7d443524881041ba04516944e9132fd0c3e7bad88945596'
             'SKIP'
-            '2654680bc8f677f647bca6e2b367693bf73ffb2edc21e3757a329375355a335d'
-            '842e4f483fa36c0e7dbe18ad46d78223008989cce097e5bef1e14450280f5dfe'
-            '810697eec07faa60acb59b97df291e5f2e9428e86ae54e5ef90a6e4b2d0844ab'
-            'c743e41975260aab3176b6f473707c8d8371cb89575e1c128bddb3bd74030b8b'
-            'abc9593a479b9bb677112fa1d6502c8165d27d0854a712e1662374e4bafb96a0'
-            'd068215561ce769439901da0118e251c624de58fe414cc2166fbf972f76dd1a7'
-            'ac0fb2180560652f94bebb3c09baef3c34785b539cae541df175ebec6989d79c'
-            'c23c3bf29fd557fe2e9ca72e65cd0f1e790b771b4568d0732388d7d420cefd6a')
+            'a851312b26800a7e189b34547d5d4b2b62a18874f07335ac6f426c32b47c3817'
+            '486976f36e1919eac5ee984cb9a8d23a972f23f22f8344eda47b487ea91047f4'
+            '6dadc17ea56d93ec0f1d0c3c98c25a7863e9ba3c4af50dc411d630a1bcc98f08'
+            '9c5d6d035c9a7103f19804c2284291d461d4b848cccd3ec07272bde68ba29513'
+            '6644705cd73c55056b5fed91cfb3199c1114b088d96dbd3c29358cd49863aeba'
+            '08d0aa76393ea2d1a853d0ea9b02aa616224ac915473ab057bb98285212bc994'
+            '1cb502674bf7a1ea79b359d1613fe891ba37f6aa64f5f5eca309d46ba01ab417'
+            '05bf1d8f94feab06bdd9fd958bc9bde4d1249a0cdeb8d3d3e16e6fac6dc5baed'
+            '5e1b8b1e9b3243a5ab315481c39b1b88f28923148659dcc0ac7ed78d9ba4f072')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
@@ -129,6 +133,7 @@ prepare() {
     patch -p1 -i "${srcdir}/0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch"
     patch -p1 -i "${srcdir}/0007-set-default-cubietruck-led-triggers.patch"
     patch -p1 -i "${srcdir}/0008-USB-armory-support.patch"
+    patch -p1 -i "${srcdir}/0009-ARM-dts-dove-add-Dove-divider-clocks.patch"
   fi
 
   # add freedo as boot logo
@@ -142,6 +147,10 @@ prepare() {
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
+
+  # fix #46968
+  # hangs on older intel hardware
+  patch -Np1 -i "${srcdir}/0001-disabling-primary-plane-in-the-noatomic-case.patch"
 
   # make the radeon driver load without the firmwares
   # http://www.fsfla.org/pipermail/linux-libre/2015-August/003098.html

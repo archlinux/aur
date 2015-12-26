@@ -1,0 +1,56 @@
+From 634b3a4a476e96816d5d6cd5bb9f8900a53f56ba Mon Sep 17 00:00:00 2001
+From: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+Date: Mon, 23 Nov 2015 10:25:28 +0100
+Subject: drm/i915: Do a better job at disabling primary plane in the noatomic
+ case.
+
+When disable_noatomic is called plane_mask is not correct yet, and
+plane_state->visible = true is left as true after disabling the primary
+plane.
+
+Other planes are already disabled as part of crtc sanitization, only the
+primary is left active. But the plane_mask is not updated here. It gets
+updated during fb takeover in modeset_gem_init, or set to the new value
+on resume.
+
+This means that to disable the primary plane 1 << drm_plane_index(primary)
+needs to be used.
+
+Afterwards because the crtc is no longer active it's forbidden to keep
+plane_state->visible set, or a WARN_ON in
+intel_plane_atomic_calc_changes triggers. There are other code points
+that rely on accurate plane_state->visible too, so make sure the bool is
+cleared.
+
+The other planes are already disabled in intel_sanitize_crtc, so they
+don't have to be handled here.
+
+Cc: stable@vger.kernel.org #v4.3, v4.2?
+Bugzilla: https://bugs.freedesktop.org/show_bug.cgi?id=92655
+Tested-by: Tomas Mezzadra <tmezzadra@gmail.com>
+Signed-off-by: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+Reviewed-by: Daniel Vetter <daniel.vetter@ffwll.ch>
+Link: http://patchwork.freedesktop.org/patch/msgid/5652DB88.9070208@linux.intel.com
+(cherry picked from commit 54a4196188eab82e6f0a5f05716626e9f18b8fb6)
+Signed-off-by: Jani Nikula <jani.nikula@intel.com>
+
+diff --git a/drivers/gpu/drm/i915/intel_display.c b/drivers/gpu/drm/i915/intel_display.c
+index 22e86d2..62211ab 100644
+--- a/drivers/gpu/drm/i915/intel_display.c
++++ b/drivers/gpu/drm/i915/intel_display.c
+@@ -6309,9 +6309,11 @@ static void intel_crtc_disable_noatomic(struct drm_crtc *crtc)
+ 	if (to_intel_plane_state(crtc->primary->state)->visible) {
+ 		intel_crtc_wait_for_pending_flips(crtc);
+ 		intel_pre_disable_primary(crtc);
++
++		intel_crtc_disable_planes(crtc, 1 << drm_plane_index(crtc->primary));
++		to_intel_plane_state(crtc->primary->state)->visible = false;
+ 	}
+ 
+-	intel_crtc_disable_planes(crtc, crtc->state->plane_mask);
+ 	dev_priv->display.crtc_disable(crtc);
+ 	intel_crtc->active = false;
+ 	intel_update_watermarks(crtc);
+-- 
+cgit v0.10.2
+
