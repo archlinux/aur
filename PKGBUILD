@@ -2,7 +2,7 @@
 
 pkgname=libbitcoin-explorer
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The Bitcoin Command Line Tool"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -18,14 +18,17 @@ depends=('boost'
 makedepends=('autoconf'
              'automake'
              'gcc'
+             'git'
              'libtool'
              'make'
              'pkg-config')
 groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin-explorer"
 license=('AGPL3')
-source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/libbitcoin/$pkgname/tar.gz/v$pkgver)
-sha256sums=('77bb3597ceb384447fc37256004018949682d1e41dccefdaf560f67cf81e2200')
+source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/libbitcoin/$pkgname/tar.gz/v$pkgver
+        git+https://github.com/libbitcoin/libbitcoin-explorer.wiki)
+sha256sums=('77bb3597ceb384447fc37256004018949682d1e41dccefdaf560f67cf81e2200'
+            'SKIP')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -53,4 +56,8 @@ package() {
 
   msg2 'Installing...'
   make DESTDIR="$pkgdir" install
+
+  msg2 'Installing documentation...'
+  cp -dpr --no-preserve=ownership "$srcdir/libbitcoin-explorer.wiki" \
+    "$pkgdir/usr/share/doc/libbitcoin-explorer/wiki"
 }
