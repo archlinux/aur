@@ -5,10 +5,10 @@
 
 # Maintainer: Jeffrey E. Bedard <jefbed@gmail.com>
 pkgname=jbwm
-pkgver=1.35
+pkgver=1.38
 pkgrel=1
 epoch=
-pkgdesc="Simple X window manager"
+pkgdesc="minimalist X11 window manager, based on evilwm"
 arch=('x86_64' 'x86')
 url="https://github.com/jefbed/jbwm"
 license=('MIT')
