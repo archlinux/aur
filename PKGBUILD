@@ -19,7 +19,7 @@ optdepends=('libreoffice-fresh: display impress presentations'
             'mupdf: display pdfs')
 install=openlp.install
 source=(https://get.openlp.org/$pkgver/OpenLP-$pkgver.tar.gz openlp.sh)
-sha256sums=('1b6008bc97a0cdd5e5fa931abb0711205ae865179dd9a146390ab59b23888c64'
+sha256sums=('ea3b1d4167121eb15dbbf5cbecd5dec021e14bead54eea3ef37aaf027b516ba6'
             '19c2f3c622585bf308efc259013fb5518feaf8cf14b51613e1e71778fcc2e8cf')
 
 package() {
