@@ -2,7 +2,7 @@
 
 pkgname=perl6-json-fast
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A naive, fast json parser and serializer"
 arch=('any')
 depends=('rakudo')
@@ -34,4 +34,7 @@ package() {
   mkdir -p "$pkgdir/usr/share/perl6/vendor/lib"
   find lib -mindepth 1 -maxdepth 1 -exec \
     cp -dpr --no-preserve=ownership '{}' "$pkgdir/usr/share/perl6/vendor/lib" \;
+
+  msg2 'Cleaning up precomp dir...'
+  rm -rf "$pkgdir/usr/share/perl6/vendor/lib/.precomp"
 }
