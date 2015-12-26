@@ -2,7 +2,7 @@
 
 pkgname=libbitcoin-server-git
 pkgver=20151221
-pkgrel=3
+pkgrel=4
 pkgdesc="Bitcoin Full Node and Query Server"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -37,6 +37,8 @@ sha256sums=('SKIP'
             '09ea3d2bf7cb87a0760c2a73893d62d1868d232c9e925cabf6140b1b031efee3'
             '564112d0860f1523049bd89779e1b1bfc189a3d143d2cc808441981ed793658a'
             '2bcf3615cd8e5ba6d4c78429b018b9bf756d5fad6ab879963a13f19e47315c7d')
+backup=('etc/bs/bs.cfg'
+        'etc/logrotate.d/bs')
 provides=('libbitcoin-server')
 conflicts=('libbitcoin-server')
 install=bs.install
@@ -51,10 +53,12 @@ prepare() {
 
   msg2 'Configuring...'
   cp -dpr --no-preserve=ownership data/bs.cfg data/bs.cfg.in
-  sed -i 's@^database_path.*@database_path = /srv/bs/blockchain@' data/bs.cfg.in
-  sed -i 's@^debug_file.*@debug_file = /var/log/bs/debug.log@' data/bs.cfg.in
-  sed -i 's@^error_file.*@error_file = /var/log/bs/error.log@' data/bs.cfg.in
-  sed -i 's@^hosts_file.*@hosts_file = /etc/bs/hosts.cache@' data/bs.cfg.in
+  sed -i \
+    -e 's@^database_path.*@database_path = /srv/blockchain/db@' \
+    -e 's@^debug_file.*@debug_file = /var/log/bs/debug.log@' \
+    -e 's@^error_file.*@error_file = /var/log/bs/error.log@' \
+    -e 's@^hosts_file.*@hosts_file = /etc/bs/hosts.cache@' \
+    data/bs.cfg.in
 }
 
 build() {
@@ -82,7 +86,7 @@ package() {
 
   msg2 'Installing...'
   install -dm 700 "$pkgdir/etc/bs"
-  install -dm 700 "$pkgdir/srv/bs"
+  install -dm 755 "$pkgdir/srv/blockchain"
   make DESTDIR="$pkgdir" install
 
   msg2 'Installing documentation...'
@@ -93,13 +97,11 @@ package() {
   install -Dm 600 data/bs.cfg.in "$pkgdir/etc/bs/bs.cfg"
 
   msg2 'Installing systemd service files...'
-  install -Dm 644 "$srcdir/bs.service" \
-    "$pkgdir/usr/lib/systemd/system/bs.service"
-  install -Dm 644 "$srcdir/bsinit.service" \
-    "$pkgdir/usr/lib/systemd/system/bsinit.service"
+  install -Dm 644 "$srcdir/bsinit.service" -t "$pkgdir/usr/lib/systemd/system"
+  install -Dm 644 "$srcdir/bs.service" -t "$pkgdir/usr/lib/systemd/system"
 
   msg2 'Installing logrotate conf...'
-  install -dm 700 "$pkgdir/var/log/bs"
+  install -dm 755 "$pkgdir/var/log/bs"
   install -Dm 644 "$srcdir/bs.logrotate" "$pkgdir/etc/logrotate.d/bs"
 
   msg2 'Cleaning up pkgdir...'
