@@ -1,0 +1,14 @@
+#!/bin/bash
+
+export WINEARCH=win64 WINEPREFIX="$HOME/.evernote/wine" WINEDEBUG=-all
+
+evernote_wine="${HOME}/.evernote/wine"
+mkdir -p "${evernote_wine}" || exit 1
+
+evernote_path="${evernote_wine}/drive_c/Program Files (x86)/Evernote/Evernote/Evernote.exe"
+if [ ! -f "${evernote_path}" ] ; then
+	wine /usr/share/evernote/Setup.exe /quiet || exit 1
+	echo '5.8.13.8152 is the latest stable and fully usable Evernote version under wine. To prevent update prompts, uncheck "Automatically ckeck for updates" under Tools > Options'
+fi
+
+wine "${evernote_path}"
