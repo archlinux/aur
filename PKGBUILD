@@ -2,7 +2,7 @@
 
 pkgname=perl6-digest
 pkgver=0.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Pure perl6 implementation of SHA-256 and RIPEMD-160 digests"
 arch=('any')
 depends=('rakudo')
@@ -34,4 +34,7 @@ package() {
   mkdir -p "$pkgdir/usr/share/perl6/vendor/lib"
   find lib -mindepth 1 -maxdepth 1 -exec \
     cp -dpr --no-preserve=ownership '{}' "$pkgdir/usr/share/perl6/vendor/lib" \;
+
+  msg2 'Cleaning up precomp dir...'
+  rm -rf "$pkgdir/usr/share/perl6/vendor/lib/.precomp"
 }
