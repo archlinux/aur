@@ -11,7 +11,7 @@ depends=("qt5-base" "qt5-x11extras")
 makedepends=("git" "qt5-tools")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+https://github.com/xiangzhai//$_pkgname.git")
+source=("git+https://github.com/xiangzhai/$_pkgname.git")
 sha256sums=("SKIP")
 
 
