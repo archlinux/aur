@@ -1,13 +1,13 @@
 # Maintainer: Tarn Burton <twburton at gmail dot com>
 pkgname='pioneer-git'
 pkgver=20151221.r23.g6318514
-pkgrel=1
+pkgrel=2
 pkgdesc="A game of lonely space adventure"
 arch=('i686' 'x86_64')
 url="https://github.com/pioneerspacesim/pioneer"
 license=('GPL')
 provides=('pioneer')
-conflicts=('pioneer-bin') 
+conflicts=('pioneer-bin' 'pioneer')
 depends=('libsigc++' 'sdl2_image' 'freetype2' 'libvorbis' 'assimp' 'hicolor-icon-theme' 'xdg-utils')
 makedepends=('gcc' 'git' 'automake' 'pkg-config' 'naturaldocs')
 source=("$pkgname::git+https://github.com/pioneerspacesim/pioneer" 'pioneer.desktop')
@@ -40,8 +40,8 @@ package() {
     fi
   done
   install -Dm644 "application-icon/badge-enlarged-text.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/pioneer.svg"
-  mkdir -p "$pkgdir/usr/share/doc/pioneer" 
-  cp -R codedoc/* "$pkgdir/usr/share/doc/pioneer" 
+  mkdir -p "$pkgdir/usr/share/doc/pioneer"
+  cp -R codedoc/* "$pkgdir/usr/share/doc/pioneer"
 }
 
 post_install() {
@@ -55,4 +55,3 @@ post_upgrade() {
 post_remove() {
   post_install $1
 }
-
