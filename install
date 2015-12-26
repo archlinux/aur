@@ -71,9 +71,9 @@ post_install() {
 
 }
 
-post_upgrade() {
+#post_upgrade() {
 #  post_install $1
-}
+#}
 
 pre_remove() {
   userdel zarafa &> /dev/null
