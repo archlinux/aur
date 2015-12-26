@@ -1,7 +1,7 @@
 # Contributor: Médéric Boquien <mboquien@free.fr>
 # Maintainer: Médéric Boquien <mboquien@free.fr>
 pkgname=python2-astropy
-pkgver=1.0.6
+pkgver=1.1
 pkgrel=1
 pkgdesc="A community python library for astronomy"
 arch=('i686' 'x86_64')
@@ -11,11 +11,11 @@ depends=('python2>=2.6' 'python2-numpy>=1.6' 'python2-scipy' 'python2-h5py' 'cfi
 conflicts=('python2-pyfits' 'python-pywcs' 'python2-vo')
 makedepends=('cython2')
 source=("http://pypi.python.org/packages/source/a/astropy/astropy-${pkgver}.tar.gz")
-md5sums=('9012885c35a05573d2fa61f5df220c8d')
+md5sums=('358122aa42a5ae1e7d6c955cf3ed2f35')
 
 build() {
   cd ${srcdir}/astropy-${pkgver}
-  python2 setup.py build --offline
+  python2 setup.py build --use-system-libraries --offline
 }
 
 package() {
@@ -28,6 +28,7 @@ package() {
   mv ${pkgdir}/usr/bin/fitscheck ${pkgdir}/usr/bin/fitscheck2
   mv ${pkgdir}/usr/bin/fitsdiff ${pkgdir}/usr/bin/fitsdiff2
   mv ${pkgdir}/usr/bin/fitsheader ${pkgdir}/usr/bin/fitsheader2
+  mv ${pkgdir}/usr/bin/fitsinfo ${pkgdir}/usr/bin/fitsinfo2
   mv ${pkgdir}/usr/bin/samp_hub ${pkgdir}/usr/bin/samp_hub2
   mv ${pkgdir}/usr/bin/volint ${pkgdir}/usr/bin/volint2
   mv ${pkgdir}/usr/bin/wcslint ${pkgdir}/usr/bin/wcslint2
