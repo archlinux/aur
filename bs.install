@@ -4,22 +4,22 @@ _bs_group=bs
 post_install() {
   _mkuser
   # disable Copy-On-Write (btrfs directories only)
-  for _dir in /srv/bs /var/log/bs; do
+  for _dir in /srv/blockchain /var/log/bs; do
     _is_btrfs "$_dir" && _disable_cow "$_dir"
   done
-  chown -R $_bs_user:$_bs_group /etc/bs /srv/bs /var/log/bs
-  printf "%b\n" "$xx"
+  chown -R $_bs_user:$_bs_group /etc/bs /srv/blockchain /var/log/bs
+  printf "%b\n" "$obelisk"
 }
 
 post_upgrade() {
   _mkuser
-  chown -R $_bs_user:$_bs_group /etc/bs /srv/bs /var/log/bs
-  printf "%b\n" "$xx"
+  chown -R $_bs_user:$_bs_group /etc/bs /srv/blockchain /var/log/bs
+  printf "%b\n" "$obelisk"
 }
 
 post_remove() {
   _rmuser
-  rm -rf /etc/bs /srv/bs /var/log/bs
+  rm -rf /etc/bs /srv/blockchain /var/log/bs
 }
 
 
@@ -86,21 +86,28 @@ _chattrify() {
 }
 
 _disable_cow() {
-  _chattrify "$1" "700" "$_bs_user" "$_bs_group"
+  _chattrify "$1" "755" "$_bs_user" "$_bs_group"
 }
 
 
-read -d '' xx <<'EOF'
-libbitcoin-server
-=================
-
-To run normally:
-
-    $ bs --initchain /path/to/bs/config/file
-    $ bs /path/to/bs/config/file
-
-To run as a service:
-
-    $ sudo systemctl start bsinit # wait several mins for blockchain dir to init
-    $ sudo systemctl start bs
+read -d '' obelisk <<'EOF'
+########################################################################
+########################################################################
+##                                                                    ##
+##  Libbitcoin Server                                                 ##
+##  _________________                                                 ##
+##                                                                    ##
+##  To run:                                                           ##
+##                                                                    ##
+##      systemctl start bsinit # first run only                       ##
+##      systemctl start bs                                            ##
+##                                                                    ##
+##                                                                    ##
+##  Config:        /etc/bs/bs.cfg                                     ##
+##  Blockchain:    /srv/blockchain                                    ##
+##  Documentation: /usr/share/doc/libbitcoin-server                   ##
+##  Logs:          /var/log/bs                                        ##
+##                                                                    ##
+########################################################################
+########################################################################
 EOF
