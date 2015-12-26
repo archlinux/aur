@@ -4,7 +4,7 @@
 pkgname=yum-utils
 pkgver=1.1.31
 _fedora=f23
-pkgrel=4
+pkgrel=5
 pkgdesc="A collection of utilities and plugins extending and supplementing yum in different ways"
 arch=('any')
 license=('GPLv2')
@@ -22,7 +22,7 @@ prepare() {
 	# Patch up to Fedora current
 	patch -p1 < "$srcdir/$pkgname-HEAD.patch?h=$_fedora"
 
-	find -type f | xargs sed -e 's|#! */usr/bin/python|&2|'
+	find -type f | xargs sed -i 's|#! */usr/bin/python|&2|'
 	sed -e 's|/usr/sbin/|/usr/bin/|g' -i Makefile
 }
 
