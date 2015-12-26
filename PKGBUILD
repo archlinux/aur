@@ -1,7 +1,7 @@
 # Maintainer : Karl-Felix Glatzer <karl.glatzer@gmx.de>
 
 pkgname=mingw-w64-ffmpeg
-pkgver=2.8.1
+pkgver=2.8.4
 pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
@@ -17,18 +17,18 @@ depends=(
 )
 options=(!strip !buildflags staticlibs)
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'yasm')
-source=(http://ffmpeg.org/releases/ffmpeg-$pkgver.tar.bz2{,.asc})
-validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # ffmpeg-devel
-md5sums=('63b2cfeea930e942ff7579fd0064c5be'
-         'SKIP')
+source=(http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.bz2{,.asc})
+validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
+sha256sums=('83cc8136a7845546062a43cda9ae3cf0a02f43ef5e434d2f997f055231a75f8e'
+            'SKIP')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   for _arch in ${_architectures}; do
     mkdir -p "${srcdir}"/build-${_arch} && cd "${srcdir}"/build-${_arch}
 
-    "${srcdir}"/ffmpeg-$pkgver/configure \
-      --prefix=/usr/${_arch} \
+    "${srcdir}"/ffmpeg-${pkgver}/configure \
+      --prefix="/usr/${_arch}" \
       --enable-cross-compile \
       --cross-prefix="${_arch}-" \
       --target-os=mingw32 \
