@@ -2,9 +2,9 @@
 
 _modname='clevo-xsm-wmi'
 pkgname="${_modname}-dkms"
-pkgver='0.6'
-_pkgtag='291801cb8d85'
-pkgrel=2
+pkgver='0.7'
+_pkgtag='61253d26e784'
+pkgrel=1
 pkgdesc='A reverse engineering driver for the Clevo SM series backlight keyboard (DKMS version)'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -15,7 +15,7 @@ options=(!emptydirs)
 conflicts=("$_modname" 'tuxedo-wmi' 'tuxedo-wmi-dkms')
 provides=("$_modname")
 depends=('dkms' 'linux-headers')
-md5sums=('cd3341fd759964e2e48ccc6a3c8bb515'
+md5sums=('14e98bba1441d99eeeee5b09785df100'
          '2ba847baebeee1b60a900d09b0e426da')
 install='clevo-xsm-wmi-dkms.install'
 
