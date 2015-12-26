@@ -11,7 +11,7 @@
 pkgbase=linux-libre-pck
 _pkgbasever=4.3-gnu
 _pkgver=4.3.3-gnu
-_pckpatchver=pck1
+_pckpatchver=pck2
 
 _replacesarchkernel=('linux-zen')
 _replacesoldkernels=()
@@ -57,12 +57,13 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0005-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch'
         '0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch'
         '0007-set-default-cubietruck-led-triggers.patch'
-        '0008-USB-armory-support.patch')
+        '0008-USB-armory-support.patch'
+        '0009-ARM-dts-dove-add-Dove-divider-clocks.patch')
 sha256sums=('1d280ae2730eb6c9b8c7e920cac2e8111c8db02c498db0c142860a84106cc169'
             'SKIP'
             '4e5d062db675a304a1b7bb99a9d2eb1ff617fd31fac9b28df059444b5a98b1d5'
             'SKIP'
-            '98c6967404d993cfe26c4f8afd8d82fc48ac8121892551eb7b921b6ddec655c0'
+            'f34d9f6f851f2fd0ae5f577fa80fb7463424e851e2cff5cbafd22c8628fb2b7c'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -70,21 +71,22 @@ sha256sums=('1d280ae2730eb6c9b8c7e920cac2e8111c8db02c498db0c142860a84106cc169'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '8977381dcffa1e26ac5682d2859ecd447a54811f347ba951c6229744b886b95c'
-            'cae6bc8e021b3d59eb87b7b6651ffce8ceb5022c12478ace1548a3c632081f76'
-            'efa5e244c99ceca9ec5832bc4e135d311c2c6b678dc0e1ace9e296f5f9539fcf'
+            '6896de00951a51f771a6fe0581889e90705e25a23ce479574b67b47009a2a3de'
+            '766e995b525c690f609a0cf72b99baa021d31e1ba3a411442de4fb6b62bbeb56'
+            '1fe992ae174402fa3cc63cf4ac7e2d420a5c87f5706f639f90359b03bef017c5'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '1e90df4fb94c40c4255352f58214620e3411ae9475c205e2f5f9a57d7c170c83'
             'SKIP'
-            '2654680bc8f677f647bca6e2b367693bf73ffb2edc21e3757a329375355a335d'
-            '842e4f483fa36c0e7dbe18ad46d78223008989cce097e5bef1e14450280f5dfe'
-            '810697eec07faa60acb59b97df291e5f2e9428e86ae54e5ef90a6e4b2d0844ab'
-            'c743e41975260aab3176b6f473707c8d8371cb89575e1c128bddb3bd74030b8b'
-            'abc9593a479b9bb677112fa1d6502c8165d27d0854a712e1662374e4bafb96a0'
-            'd068215561ce769439901da0118e251c624de58fe414cc2166fbf972f76dd1a7'
-            'ac0fb2180560652f94bebb3c09baef3c34785b539cae541df175ebec6989d79c'
-            'c23c3bf29fd557fe2e9ca72e65cd0f1e790b771b4568d0732388d7d420cefd6a')
+            'a851312b26800a7e189b34547d5d4b2b62a18874f07335ac6f426c32b47c3817'
+            '486976f36e1919eac5ee984cb9a8d23a972f23f22f8344eda47b487ea91047f4'
+            '6dadc17ea56d93ec0f1d0c3c98c25a7863e9ba3c4af50dc411d630a1bcc98f08'
+            '9c5d6d035c9a7103f19804c2284291d461d4b848cccd3ec07272bde68ba29513'
+            '6644705cd73c55056b5fed91cfb3199c1114b088d96dbd3c29358cd49863aeba'
+            '08d0aa76393ea2d1a853d0ea9b02aa616224ac915473ab057bb98285212bc994'
+            '1cb502674bf7a1ea79b359d1613fe891ba37f6aa64f5f5eca309d46ba01ab417'
+            '05bf1d8f94feab06bdd9fd958bc9bde4d1249a0cdeb8d3d3e16e6fac6dc5baed'
+            '5e1b8b1e9b3243a5ab315481c39b1b88f28923148659dcc0ac7ed78d9ba4f072')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
@@ -122,6 +124,7 @@ prepare() {
     patch -p1 -i "${srcdir}/0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch"
     patch -p1 -i "${srcdir}/0007-set-default-cubietruck-led-triggers.patch"
     patch -p1 -i "${srcdir}/0008-USB-armory-support.patch"
+    patch -p1 -i "${srcdir}/0009-ARM-dts-dove-add-Dove-divider-clocks.patch"
   fi
 
   # add freedo as boot logo
