@@ -10,12 +10,16 @@ _libvirt_setup() {
 
 post_install() {
   _libvirt_setup || return 1
-  echo ">>> Be sure to see optdepends as you may find some of them helpfull."
+  echo ">>> Be sure to see optdepends as you may find some of them helpful."
   echo ">>>  Especially: bridge-utils, dnsmasq, and hal."
   echo ""
-  echo ">>> To start libvirtd run: '/etc/rc.d/libvirtd start' as root."
-  echo ">>> Add 'libvirtd' to daemons in /etc/rc.conf if you want it to load upon"
-  echo ">>>  booting."
+  echo ">>> To start libvirt as a daemon (service) run"
+  echo " for systemd: 'systemctl start libvirtd'"
+  echo " for initscripts: '/etc/rc.d/libvirtd start'"
+  echo ""
+  echo ">>> To start libvirt as a daemon (service) on boot:"
+  echo " for systemd: 'systemctl enable libvirtd'"
+  echo " for initscripts: Add 'libvirtd' to daemons in /etc/rc.conf"
   echo ""
 }
 
