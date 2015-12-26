@@ -10,8 +10,8 @@
 # needs too.
 
 pkgname=ffmpeg-full
-pkgver=2.8.3
-pkgrel=2
+pkgver=2.8.4
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (with all options)'
 arch=('i686' 'x86_64')
@@ -40,19 +40,11 @@ provides=(
       'ffmpeg'
       )
 source=(http://ffmpeg.org/releases/ffmpeg-$pkgver.tar.bz2{,.asc}
-        UNREDISTRIBUTABLE.txt
-        ffmpeg-2.8.1-libvpxenc-remove-some-unused-ctrl-id-mappings.patch)
+        UNREDISTRIBUTABLE.txt)
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # ffmpeg-devel
-sha256sums=('1bcf993a71839bb4a37eaa0c51daf315932b6dad6089f672294545cc51a5caf6'
+sha256sums=('83cc8136a7845546062a43cda9ae3cf0a02f43ef5e434d2f997f055231a75f8e'
             'SKIP'
-            'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4'
-            '277994aca5a6e40c1a90750859828817e0646bfb28142fdb34d5f9d3196c3f7a')
-
-prepare() {
-  cd ${pkgname%-full}-$pkgver
-
-  patch -p1 -i ../ffmpeg-2.8.1-libvpxenc-remove-some-unused-ctrl-id-mappings.patch
-}
+            'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4')
 
 build() {
   cd ${pkgname%-full}-$pkgver
