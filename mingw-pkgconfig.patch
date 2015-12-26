@@ -1,15 +1,26 @@
 diff -ru libssh-0.7.2/CMakeLists.txt patched/CMakeLists.txt
 --- libssh-0.7.2/CMakeLists.txt	2015-09-16 08:44:35.000000000 +0200
-+++ patched/CMakeLists.txt	2015-11-12 16:00:58.999198281 +0100
-@@ -84,7 +84,7 @@
++++ patched/CMakeLists.txt	2015-12-26 16:06:48.989612824 +0100
+@@ -84,8 +84,8 @@
  add_subdirectory(src)
  
  # pkg-config file
 -if (UNIX)
+-configure_file(libssh.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/libssh.pc)
 +if (UNIX OR MINGW)
- configure_file(libssh.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/libssh.pc)
++configure_file(libssh.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/libssh.pc @ONLY)
  install(
    FILES
+     ${CMAKE_CURRENT_BINARY_DIR}/libssh.pc
+@@ -97,7 +97,7 @@
+ )
+ 
+     if (LIBSSH_THREADS)
+-        configure_file(libssh_threads.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/libssh_threads.pc)
++        configure_file(libssh_threads.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/libssh_threads.pc @ONLY)
+         install(
+           FILES
+             ${CMAKE_CURRENT_BINARY_DIR}/libssh.pc
 @@ -108,7 +108,7 @@
              pkgconfig
          )

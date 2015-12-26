@@ -1,0 +1,8 @@
+--- libssh-0.7.2/ConfigureChecks.cmake	2015-12-26 00:41:50.000000000 +0100
++++ patched/ConfigureChecks.cmake	2015-12-26 00:49:18.862060811 +0100
+@@ -1,4 +1,5 @@
+ include(CheckIncludeFile)
++include(CheckIncludeFiles)
+ include(CheckSymbolExists)
+ include(CheckFunctionExists)
+ include(CheckLibraryExists)
