@@ -10,7 +10,7 @@ url="http://ffmpeg.org/"
 license=('GPL3')
 depends=(
 'mingw-w64-crt' 'mingw-w64-bzip2' 'mingw-w64-fontconfig' 'mingw-w64-fribidi' 'mingw-w64-gnutls'
-'mingw-w64-gsm' 'mingw-w64-lame' 'mingw-w64-libass' 'mingw-w64-libbluray' 'mingw-w64-libmodplug'
+'mingw-w64-gsm' 'mingw-w64-lame' 'mingw-w64-libass' 'mingw-w64-dcadec' 'mingw-w64-libbluray' 'mingw-w64-libmodplug'
 'mingw-w64-libsoxr' 'mingw-w64-libtheora' 'mingw-w64-vid.stab' 'mingw-w64-libwebp' 'mingw-w64-libvorbis' 'mingw-w64-libvpx'
 'mingw-w64-opencore-amr' 'mingw-w64-openjpeg' 'mingw-w64-opus' 'mingw-w64-libssh' 'mingw-w64-schroedinger'
 'mingw-w64-sdl' 'mingw-w64-speex' 'mingw-w64-x264' 'mingw-w64-xvidcore' 'mingw-w64-zlib' 'mingw-w64-x265'
@@ -43,6 +43,7 @@ build() {
       --enable-gpl \
       --enable-libass \
       --enable-libbluray \
+      --enable-libdcadec \
       --enable-libfreetype \
       --enable-libfribidi \
       --enable-libgsm \
