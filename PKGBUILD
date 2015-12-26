@@ -3,7 +3,7 @@
 
 _pkgname=qml-material
 pkgname=$_pkgname-git
-pkgver=0.1.r72.g1070c6e
+pkgver=0.1.r76.gb154c19
 pkgrel=1
 pkgdesc="A UI framework for QtQuick implementing Material Design"
 arch=("i686" "x86_64")
@@ -22,6 +22,7 @@ pkgver() {
     # cutting off 'foo-' prefix that presents in the git tag
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
+
 prepare() {
 	mkdir -p build
 	cd build
