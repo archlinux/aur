@@ -3,7 +3,7 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=r77433.c0f67e1
+pkgver=r77492.f16e4a0
 pkgrel=1
 pkgdesc="Complete solution to record, convert and stream audio and video (git version)"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ depends=(
       'libva' 'libvdpau' 'libwebp' 'opencore-amr' 'openjpeg' 'opus'
       'schroedinger' 'sdl' 'speex' 'v4l-utils' 'xvidcore' 'zlib'
       'libdcadec.so' 'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so'
-      'libvpx.so' 'libx264.so' 'libx265.so')
+      'libvpx.so' 'libx264.so' 'libx265.so' 'libfdk-aac')
 makedepends=('hardening-wrapper' 'ladspa' 'libvdpau' 'yasm')
 optdepends=('ladspa: LADSPA filters')
 provides=(
@@ -48,6 +48,7 @@ build() {
     --enable-libass \
     --enable-libbluray \
     --enable-libdcadec \
+	--enable-libfdk-aac \
     --enable-libfreetype \
     --enable-libfribidi \
     --enable-libgsm \
