@@ -44,7 +44,11 @@ build() {
         return 1
     fi
     KMAJVER=$(echo "$KSVER" | sed 's|\.[0-9]\+$||g')
-    makepkg --nobuild --skippgpcheck SRCDEST=$srcdir/abs/core/linux SRCPKGDEST=$srcdir/abs/core/linux
+
+    # We force SRCDEST trying to ovverride yaourt default behaviour, which is
+    # to download sources in $srcdir/../linux instead of the place where
+    # makepkg is invoked
+    SRCDEST=$srcdir/abs/core/linux makepkg --nobuild --skippgpcheck
     msg "Kernel sources are ready"
 
     # Build the netmap kernel module and all modified drivers, using the
