@@ -3,7 +3,7 @@
 # Contributor: Sebastian Voecking <voeck@web.de>
 
 pkgname=root
-pkgver=6.05.02
+pkgver=6.06.00
 pkgrel=1
 pkgdesc='C++ data analysis framework and interpreter from CERN.'
 arch=('i686' 'x86_64')
@@ -36,7 +36,7 @@ source=("ftp://root.cern.ch/root/root_v${pkgver}.source.tar.gz"
 'root.xml'
 'python3.diff'
 'param.diff')
-md5sums=('9ef8056f7873903b9084747e1b31b528'
+md5sums=('65675a1dbaa4810df0479dbcf62f0ba0'
          '0e883ad44f99da9bc7c23bc102800b62'
          'efd06bfa230cc2194b38e0c8939e72af'
          'e2cf69b204192b5889ceb5b4dedc66f7'
