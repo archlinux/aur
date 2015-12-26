@@ -20,7 +20,7 @@ options=()
 install="netmap.install"
 source=("netmap.install" "git+https://github.com/luigirizzo/netmap")
 noextract=()
-md5sums=("047aa5adec4c52ddbf86d12dbf300f71" "SKIP")
+md5sums=("9f936e9fdd86c8a18babdc5848812f92" "SKIP")
 
 pkgver() {
         cd "$srcdir/${pkgname%-git}"
