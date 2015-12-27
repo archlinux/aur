@@ -17,11 +17,12 @@ makedepends=(
     'mercurial'
     'patch'
 )
+optdepends=('geoip-citydata: GeoIpDecoder')
 provides=("${pkgname[0]%-git}")
 conflicts=("${pkgname[0]%-git}")
 
 source=(
-    "${srcname}::git+https://github.com/mozilla-services/${srcname}.git#tag=v${pkgver}"
+    "${srcname}::git+https://github.com/mozilla-services/${srcname}.git"
     "cmake.patch"
 )
 sha512sums=(
@@ -56,8 +57,9 @@ build() {
     mkdir --parents "${BUILD_DIR}"
     cd "${BUILD_DIR}"
     cmake \
-        -DCMAKE_BUILD_TYPE='release' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
+        -DCMAKE_BUILD_TYPE='release' \
+        -DHEKA_PATH='/usr/share/heka' \
         ..
     make
 }
@@ -72,4 +74,7 @@ package() {
 
     cd "${BUILD_DIR}"
     make DESTDIR="${pkgdir}" install
+
+    install -D --directory "${pkgdir}/var/cache/hekad"
+    install -D --directory "${pkgdir}/etc/heka/conf.d"
 }
