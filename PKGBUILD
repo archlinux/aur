@@ -2,7 +2,7 @@
 
 _name=flatman
 pkgname=${_name}-git
-pkgver=v1.0.1.r4.gdab3361
+pkgver=v1.0.2.r0.gf670c77
 pkgrel=1
 pkgdesc="Tiling window manager written in D"
 arch=('i686' 'x86_64')
