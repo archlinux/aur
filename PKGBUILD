@@ -1,7 +1,7 @@
 # Maintainer: CyrIng <xfreq[at]cyring[dot]fr>
 # Contributor: CyrIng <xfreq[at]cyring[dot]fr>
 pkgname=xfreq-git
-pkgver=2.1.63
+pkgver=2.1.64
 pkgrel=1
 pkgdesc="Processor Monitoring w/ Turbo Boost, Temps, C-States, Features, Tasks scheduling"
 arch=('x86_64')
