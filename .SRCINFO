@@ -19,6 +19,7 @@ pkgbase = vocal-bzr
 	depends = sqlite3
 	depends = clutter-gtk
 	depends = icu
+	depends = dee
 	provides = vocal
 	conflicts = vocal
 	source = bzr+lp:vocal
