@@ -1,0 +1,15 @@
+pkgbase = gitter-irc-bot-git
+	pkgdesc = Bot that synchronises messages from gitter and irc
+	pkgver = v1.1.1.31.ga02e1c9
+	pkgrel = 1
+	url = https://github.com/finnp/gitter-irc-bot
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	depends = nodejs
+	source = git+https://github.com/finnp/gitter-irc-bot
+	sha256sums = SKIP
+
+pkgname = gitter-irc-bot-git
+
