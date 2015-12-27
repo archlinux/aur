@@ -2,13 +2,13 @@
 # Contributor: Nathan Dyer <https://launchpad.net/~nathandyer>
 
 pkgname=vocal-bzr
-pkgver=r286
+pkgver=r296
 pkgrel=1
 pkgdesc='Vocal Podcast Manager. Simple Podcast Client for the Modern Desktop.'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/vocal'
 license=('GPL3')
-depends=('libnotify' 'libunity-bzr' 'libxml2' 'granite' 'gtk3' 'gstreamer' 'sqlite3' 'clutter-gtk' 'icu')
+depends=('libnotify' 'libunity' 'libxml2' 'granite' 'gtk3' 'gstreamer' 'sqlite3' 'clutter-gtk' 'icu')
 makedepends=('bzr' 'vala' 'cmake')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
