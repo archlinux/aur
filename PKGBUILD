@@ -4,8 +4,8 @@
 # Author: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 # Maintainer: Julian Xhokaxhiu <info@julianxhokaxhiu.com>
 pkgname=oscam-git
-pkgver=11201
-_gitrev=c905e3e3562644a0679730514f066c815988607e
+pkgver=11202
+_gitrev=d2bdd47ebe31ef8ca56cd34d62e8ee1c828804cc
 pkgrel=1
 pkgdesc="Open Source Conditional Access Module software"
 url="http://www.streamboard.tv/oscam"
@@ -17,11 +17,9 @@ optdepends=('pcsclite: for use with PC/SC readers'
             'ccid: PC/SC reader generic driver')
 install='oscam.install'
 source=("git+http://www.oscam.cc/git/oscam-mirror#commit=$_gitrev"
-        'enable-357-mhz.diff'
         'oscam.service'
         'oscam.sysuser')
 md5sums=('SKIP'
-         'eb7c974bfac602eb6ee9d0b5a8de16d4'
          '596b902e3f4a66d39e7f993437feec74'
          'be0d9d7a5fdd8cf4918c4ea91cebd989')
 
@@ -32,8 +30,6 @@ pkgver() {
 
 build() {
   cd "$srcdir/oscam-mirror"
-
-  patch -p1 -i "$srcdir/../enable-357-mhz.diff"
 
   make CONF_DIR=/var/lib/oscam \
        USE_SSL=1 \
