@@ -2,7 +2,7 @@
 
 pkgname=arena-tracker
 pkgver=3.26
-pkgrel=1
+pkgrel=2
 #epoch=
 pkgdesc="Tracks your Hearthstone Arena matches and cards"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/supertriodo/Arena-Tracker/"
 license=('GPL')
 #groups=()
 depends=('qt5-base')
-makedepends=('opencv')
+makedepends=('opencv' 'git')
 #checkdepends=()
 #optdepends=()
 provides=(arena-tracker)
