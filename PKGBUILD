@@ -3,14 +3,14 @@
 
 pkgname=cudahashcat-git
 pkgver=v0.4.0.0.r78.g484fce0
-pkgrel=2
+pkgrel=3
 pkgdesc="World's fastest and most advanced GPGPU-based password recovery utility"
 arch=('any')
 url="https://hashcat.net/oclhashcat"
-license=('MIpT')
+license=('MIT')
 makedepends=('cuda' 'nvidia-gdk')
-conflicts=('oclhashcat')
-provides=('oclhashcat')
+conflicts=('cudahashcat')
+provides=('cudahashcat')
 source=("git+https://github.com/hashcat/oclHashcat.git")
 sha512sums=('SKIP')
 
@@ -23,6 +23,7 @@ prepare() {
   cd "${srcdir}/oclHashcat"
   echo "Matching Makefile ..."
   sed -i 's/deps\/cuda-7\.5/\/opt\/cuda/' src/Makefile
+  sed -i 's/deps\/nvidia-gdk//' src/Makefile
 }
 
 build() {

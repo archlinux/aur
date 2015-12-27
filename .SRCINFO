@@ -1,14 +1,14 @@
 pkgbase = cudahashcat-git
 	pkgdesc = World's fastest and most advanced GPGPU-based password recovery utility
 	pkgver = v0.4.0.0.r78.g484fce0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://hashcat.net/oclhashcat
 	arch = any
-	license = MIpT
+	license = MIT
 	makedepends = cuda
 	makedepends = nvidia-gdk
-	provides = oclhashcat
-	conflicts = oclhashcat
+	provides = cudahashcat
+	conflicts = cudahashcat
 	source = git+https://github.com/hashcat/oclHashcat.git
 	sha512sums = SKIP
 
