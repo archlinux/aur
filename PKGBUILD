@@ -1,7 +1,7 @@
 pkgname=lios-git
 pkgver=7eeed0be
 pkgrel=2
-pkgdesc="Linux Intelligent OCR Solution is an easy to use ORC suite for tesseract and cuneiform"
+pkgdesc="Linux Intelligent OCR Solution is an easy to use OCR suite for tesseract and cuneiform"
 arch=(any)
 license=('GPL3')
 url=('https://gitlab.com/groups/Nalin-x-Linux')
