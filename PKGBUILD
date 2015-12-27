@@ -2,7 +2,7 @@
 
 _pkgname=polib
 pkgname=python-$_pkgname
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="A library to manipulate, create and modify gettext files"
 url="https://bitbucket.org/izi/polib/"
@@ -10,8 +10,7 @@ arch=("any")
 license=("MIT")
 depends=("python")
 source=("https://pypi.python.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-md5sums=("2369620208823811a89a2da73ed606c9")
-sha256sums=("20d2a0d589a692c11df549bd7cda83c665eef2a83e017b843fecdf956edbad74")
+sha256sums=("43ce60d05ffa442ba9d3c5722193aadb93c38174b9fb471c8ea7ccbf8349bbca")
 
 
 build() {
