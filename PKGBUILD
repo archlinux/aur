@@ -1,16 +1,22 @@
 # Maintainer: M0Rf30
 pkgname=iortcw-git
-pkgver=418
+pkgver=499
 pkgrel=1
 pkgdesc="Merge of ioquake3 features and fixes into Return to Castle Wolfenstein"
 arch=('i686' 'x86_64')
 url="https://github.com/iortcw/iortcw"
 license=('GPL')
-depends=('wolf-data' 'sdl2' 'openal' 'opus' 'opusfile' 'libogg' 'zlib')
+depends=('iortcw-data' 'freetype2' 'sdl2' 'openal' 'opus' 'opusfile' 'libogg' 'zlib')
 conflicts=('iortcw-svn')
 replaces=('iortcw-svn')
-makedepends=('cmake' 'git' 'subversion')
-install='iortcw-svn.install'
+makedepends=('cmake' 'git')
+optdepends=(
+"iortcw-de: Deutsch Language"
+"iortcw-es: Espanol  Language"
+"iortcw-fr: Francais Language"
+"iortcw-it: Italian Language"
+)
+install='iortcw-git.install'
 source=("git+https://github.com/iortcw/iortcw.git"
 	'iortcwsp.launcher'
 	'iortcwmp.launcher'
@@ -25,9 +31,9 @@ pkgver() {
 }
 
 build() {
-  if [ ! -f /opt/wolf-data/pak0.pk3 ]; then
+  if [ ! -f /opt/iortcw-data/pak0.pk3 ]; then
    echo "pak0.pk3 doesn't exist. This process will be terminated"
-   echo "Follow the wolf-data package instructions!"
+   echo "Follow the iortcw-data package instructions!"
    exit 1
   fi
 }
@@ -45,26 +51,27 @@ package() {
   make COPYDIR=$pkgdir/opt/iortcw/ copyfiles
 
     
-  ln -s -r /opt/wolf-data/mp_bin.pk3	$pkgdir/opt/iortcw/main
-  ln -s -r /opt/wolf-data/mp_pak0.pk3   $pkgdir/opt/iortcw/main
-  ln -s -r /opt/wolf-data/mp_pak1.pk3	$pkgdir/opt/iortcw/main
-  ln -s -r /opt/wolf-data/mp_pak2.pk3	$pkgdir/opt/iortcw/main  
-  ln -s -r /opt/wolf-data/mp_pak3.pk3	$pkgdir/opt/iortcw/main
-  ln -s -r /opt/wolf-data/mp_pak4.pk3	$pkgdir/opt/iortcw/main
-  ln -s -r /opt/wolf-data/mp_pak5.pk3	$pkgdir/opt/iortcw/main
-  ln -s -r /opt/wolf-data/mp_pakmaps0.pk3	$pkgdir/opt/iortcw/main  
-  ln -s -r /opt/wolf-data/mp_pakmaps1.pk3	$pkgdir/opt/iortcw/main
-  ln -s -r /opt/wolf-data/mp_pakmaps2.pk3	$pkgdir/opt/iortcw/main  
-  ln -s -r /opt/wolf-data/mp_pakmaps3.pk3	$pkgdir/opt/iortcw/main
-  ln -s -r /opt/wolf-data/mp_pakmaps4.pk3	$pkgdir/opt/iortcw/main  
-  ln -s -r /opt/wolf-data/mp_pakmaps5.pk3	$pkgdir/opt/iortcw/main
-  ln -s -r /opt/wolf-data/mp_pakmaps6.pk3	$pkgdir/opt/iortcw/main  
-  ln -s -r /opt/wolf-data/scripts	$pkgdir/opt/iortcw/main 
-  ln -s -r /opt/wolf-data/pak0.pk3	$pkgdir/opt/iortcw/main
-  ln -s -r /opt/wolf-data/sp_pak1.pk3	$pkgdir/opt/iortcw/main
-  ln -s -r /opt/wolf-data/sp_pak2.pk3	$pkgdir/opt/iortcw/main
-  ln -s -r /opt/wolf-data/sp_pak3.pk3	$pkgdir/opt/iortcw/main
-  ln -s -r /opt/wolf-data/rotate.cfg	$pkgdir/opt/iortcw/main       
+  ln -s -r /opt/iortcw-data/mp_bin.pk3	$pkgdir/opt/iortcw/main
+  ln -s -r /opt/iortcw-data/mp_pak0.pk3   $pkgdir/opt/iortcw/main
+  ln -s -r /opt/iortcw-data/mp_pak1.pk3	$pkgdir/opt/iortcw/main
+  ln -s -r /opt/iortcw-data/mp_pak2.pk3	$pkgdir/opt/iortcw/main  
+  ln -s -r /opt/iortcw-data/mp_pak3.pk3	$pkgdir/opt/iortcw/main
+  ln -s -r /opt/iortcw-data/mp_pak4.pk3	$pkgdir/opt/iortcw/main
+  ln -s -r /opt/iortcw-data/mp_pak5.pk3	$pkgdir/opt/iortcw/main
+  ln -s -r /opt/iortcw-data/mp_pakmaps0.pk3	$pkgdir/opt/iortcw/main  
+  ln -s -r /opt/iortcw-data/mp_pakmaps1.pk3	$pkgdir/opt/iortcw/main
+  ln -s -r /opt/iortcw-data/mp_pakmaps2.pk3	$pkgdir/opt/iortcw/main  
+  ln -s -r /opt/iortcw-data/mp_pakmaps3.pk3	$pkgdir/opt/iortcw/main
+  ln -s -r /opt/iortcw-data/mp_pakmaps4.pk3	$pkgdir/opt/iortcw/main  
+  ln -s -r /opt/iortcw-data/mp_pakmaps5.pk3	$pkgdir/opt/iortcw/main
+  ln -s -r /opt/iortcw-data/mp_pakmaps6.pk3	$pkgdir/opt/iortcw/main  
+  ln -s -r /opt/iortcw-data/scripts	$pkgdir/opt/iortcw/main 
+  ln -s -r /opt/iortcw-data/pak0.pk3	$pkgdir/opt/iortcw/main
+  ln -s -r /opt/iortcw-data/sp_pak1.pk3	$pkgdir/opt/iortcw/main
+  ln -s -r /opt/iortcw-data/sp_pak2.pk3	$pkgdir/opt/iortcw/main
+  ln -s -r /opt/iortcw-data/sp_pak3.pk3	$pkgdir/opt/iortcw/main
+  ln -s -r /opt/iortcw-data/sp_pak4.pk3	$pkgdir/opt/iortcw/main
+  ln -s -r /opt/iortcw-data/rotate.cfg	$pkgdir/opt/iortcw/main       
   
 # Modify Launcher Scripts
     if [ "$CARCH" = "x86_64" ]; then
@@ -109,9 +116,9 @@ package() {
 }
 
 md5sums=('SKIP'
-         'e400094c42766cb2b130d4d95bbe1caf'
-         'bbc343567fa9a2f0101bdbd07cc9d32a'
+         'adea2fbf4a63d89306d2c209b441704d'
+         '1406929a04621267f4aa02fb661b154a'
          '1cb1d7fda29d223a57003d097a1a4a31'
          '30c95f4d2b130703d36345ebd259d738'
          'bf26dc4c10d4bbfbd0c7a052a00c3cdf'
-         '8fbd50c6b07bd89bc40b1c61d61c9431')
+         '4e725ae8584aa6cffe05d75e5dbb9730')
