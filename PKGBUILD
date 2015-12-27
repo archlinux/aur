@@ -9,7 +9,7 @@
 pkgname=stumpwm-git
 _pkgname=stumpwm
 pkgver=0.9.9.r107.g1af3363
-pkgrel=2
+pkgrel=3
 pkgdesc="A tiling, keyboard-driven window manager written in common lisp"
 arch=('i686' 'x86_64')
 url="https://stumpwm.github.io"
@@ -59,18 +59,25 @@ package() {
 
   make destdir="$pkgdir/" install
 
-  install -Dm 644 sample-stumpwmrc.lisp ${pkgdir}/usr/share/${_pkgname}/stumpwmrc.sample
+  install -Dm 644 sample-stumpwmrc.lisp \
+	  ${pkgdir}/usr/share/${_pkgname}/stumpwmrc.sample
 
   # contrib modules
   install -d ${pkgdir}${_contribdest}
-  cp -dr --no-preserve=ownership ${srcdir}/${_pkgname}-contrib/* ${pkgdir}${_contribdest}
+  cp -dr --no-preserve=ownership ${srcdir}/${_pkgname}-contrib/* \
+     ${pkgdir}${_contribdest}
 
   # stumpish
-  install -d ${pkgdir}/usr/bin
-  mv ${pkgdir}${_contribdest}/util/stumpish/stumpish ${pkgdir}/usr/bin
-  rmdir ${pkgdir}${_contribdest}/util/stumpish
+  install -Dm755 ${pkgdir}${_contribdest}/util/stumpish/stumpish \
+	  ${pkgdir}/usr/bin/stumpish
+
+  rm -rf ${pkgdir}${_contribdest}/util/stumpish
 
   # emacs mode
+  cd ${pkgdir}/${_contribdest}/util/swm-emacs
   install -d ${pkgdir}/usr/share/emacs/site-lisp/
-  mv ${pkgdir}${_contribdest}/util/swm-emacs/*.el ${pkgdir}/usr/share/emacs/site-lisp/
+  for _i in *.el 
+  do
+    install -Dm644 ${_i} ${pkgdir}/usr/share/emacs/site-lisp/${_i}
+  done
 }
