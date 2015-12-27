@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=screenfetch-git
 _pkgname=screenfetch
-pkgver=3.6.5.r141.ge73c7af
+pkgver=3.7.0.r44.g22e5bee
 pkgrel=1
 epoch=1
 pkgdesc="CLI Bash script to show system/theme info in screenshots"
