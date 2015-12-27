@@ -40,10 +40,6 @@ pkgver() {
 }
 
 md5sums=('SKIP'
-         'c37b5470c959e826be8eb40c8f1ece93'
-         'b145e41e22806bd4ca4f4064ec4721a2'
-         '862be388708f2b1bd5f727715ec7508d')
-md5sums=('SKIP'
          '7125bfdcbb5050c5fbf7531861dc82fa'
          'b145e41e22806bd4ca4f4064ec4721a2'
          '862be388708f2b1bd5f727715ec7508d')
