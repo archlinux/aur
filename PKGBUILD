@@ -28,5 +28,5 @@ build() {
 
 package() {
   cd cli-visualizer || exit
-  make PREFIX="${pkgdir}/" install
+  make install
 }
