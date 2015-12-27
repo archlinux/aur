@@ -2,7 +2,7 @@
 
 pkgname=cargo-script
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Run Rust "scripts""
 url="https://github.com/DanielKeep/cargo-script"
 depends=('cargo')
@@ -19,5 +19,6 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 target/release/run-cargo-script "$pkgdir/usr/bin/run-cargo-script"
+  install -Dm755 target/release/cargo-script "$pkgdir/usr/bin/cargo-script"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
