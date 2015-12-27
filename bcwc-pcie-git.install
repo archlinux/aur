@@ -1,7 +1,4 @@
 post_install() {
-  echo "Load this driver manually in order to use the webcam:"
-  echo "# modprobe facetimehd"
-
   KERNEL_VERSION=$(uname -r | cut -d '.' -f 1,2)
   depmod $(cat /usr/lib/modules/extramodules-${KERNEL_VERSION}-ARCH/version)
 }

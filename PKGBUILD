@@ -12,9 +12,11 @@ makedepends=('linux' 'linux-headers' 'git')
 install="$pkgname.install"
 
 source=("$pkgname::git+https://github.com/patjak/bcwc_pcie.git"
-        "bcwc-pcie.modprobe.conf")
+        "bcwc-pcie.modprobe.conf"
+        "bcwc-pcie.modules-load.conf")
 md5sums=('SKIP'
-         '7531f220d5c3dd0ab5c31c445d526d7f')
+         '7531f220d5c3dd0ab5c31c445d526d7f'
+         'd8dc0e4e125b7887b226bda0c28f30be')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -36,4 +38,6 @@ package() {
     "$pkgdir/usr/lib/modules/extramodules-${KERNEL_VERSION}-ARCH/facetimehd.ko.gz"
   install -Dm 644 "$srcdir/bcwc-pcie.modprobe.conf" \
     "$pkgdir/etc/modprobe.d/bcwc-pcie.conf"
+  install -Dm 644 "$srcdir/bcwc-pcie.modules-load.conf" \
+    "${pkgdir}/etc/modules-load.d/bcwc-pcie.conf"
 }
