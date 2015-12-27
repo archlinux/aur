@@ -3,7 +3,7 @@
 
 _pkg=pjproject
 pkgname=python2-$_pkg
-pkgver=2.2.1
+pkgver=2.4.5
 pkgrel=1
 pkgdesc="Open source SIP stack and media stack (also known as pjsip)"
 arch=('i686' 'x86_64')
@@ -28,4 +28,4 @@ package() {
   python2 setup.py install --root="$pkgdir"
 }
 
-md5sums=('6ed4bb7750c827dc1d881e209a3b62db')
+md5sums=('f58b3485977b3a700256203a554b3869')
