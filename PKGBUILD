@@ -2,7 +2,7 @@
 
 pkgbase=moc_notify-git
 pkgname=$pkgbase
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="Notifier for 'Music On Console' using libnotify."
 arch=('i686' 'x86_64')
@@ -34,5 +34,5 @@ build() {
 package() {
   install -Dm755 "$srcdir/$_gitname/moc_notify" "$pkgdir/usr/bin/moc_notify"
   install -m755 -d "$pkgdir/usr/share/moc_notify"
-  install -Dm755  "$srcdir/$_gitname/onsongchange.sh" "$pkgdir/usr/share/moc_notify/"
+  install -Dm755  "$srcdir/$_gitname/scripts/onsongchange.sh" "$pkgdir/usr/share/moc_notify/"
 }
