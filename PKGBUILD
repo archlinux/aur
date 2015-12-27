@@ -1,6 +1,6 @@
 # Maintainer: Florent Thiéry <fthiery@gmail.com>
 pkgname="gst-gtklaunch-1.0"
-pkgver=2015.12.9
+pkgver=2015.12.27
 pkgrel=1
 pkgdesc="A utility for testing and controlling live GStreamer 1.0 pipelines. It
 will inspect the specified pipeline to create the GTK GUI automagically using
