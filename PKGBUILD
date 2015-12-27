@@ -4,8 +4,8 @@
 # Maintainer: Raphaël Doursenaud <rdoursenaud@free.fr>
 
 pkgname=frescobaldi
-pkgver=2.18.1
-pkgrel=3
+pkgver=2.18.2
+pkgrel=1
 pkgdesc="A LilyPond sheet music text editor."
 arch=('any')
 url="http://www.frescobaldi.org/"
@@ -37,14 +37,15 @@ optdepends=(
 )
 source=(https://github.com/wbsoft/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
 install=${pkgname}.install
-md5sums=('3cf2aae0d74717d5a7aff089fe46bc8c')
+md5sums=('cdd8bc65323195a683efbef278e552e7')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   # Provided by tango-icon-theme
   rm -rf "frescobaldi_app/icons/Tango"
   # Provided by hyphen-*
-  rm -f "frescobaldi_app/hyphdicts/hyph_*.dic"
+  rm -f frescobaldi_app/hyphdicts/hyph_*.dic
+  rm -f frescobaldi_app/hyphdicts/README*
 }
 
 package() {
