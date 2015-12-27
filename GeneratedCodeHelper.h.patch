@@ -1,0 +1,11 @@
+--- GeneratedCodeHelper.h~	2015-08-24 21:47:32.000000000 +0100
++++ GeneratedCodeHelper.h	2015-12-27 20:36:06.330000000 +0000
+@@ -921,7 +921,7 @@
+ void process_pmap(
+     Processor* proc,
+     const typename GeneratedAsyncProcessor::ProcessMap<
+-        typename GeneratedAsyncProcessor::ProcessFunc<
++        GeneratedAsyncProcessor::ProcessFunc<
+             Processor, ProtocolReader>>& pmap,
+     std::unique_ptr<ResponseChannel::Request> req,
+     std::unique_ptr<folly::IOBuf> buf,
