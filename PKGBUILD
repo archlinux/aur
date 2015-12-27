@@ -1,6 +1,6 @@
 #Maintainer: MattD <1289367510 [at] qq.com>
 
-pkgname=wine-qqintl
+pkgname=deepinwine-qq2012
 pkgver=0.0.1
 pkgrel=1
 pkgdesc='Wine QQ International 2012 by Deepin.'
