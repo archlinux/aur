@@ -4,11 +4,12 @@
 # Contributor: Andrew Antle <andrew dot antle at gmail dot com>
 # Contributor: joyfulgirl <joyfulgirl (at) archlinux.us>
 # Contributor: Jonathan Friedman <jonf@gojon.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=stumpwm-git
 _pkgname=stumpwm
 pkgver=0.9.9.r107.g1af3363
-pkgrel=1
+pkgrel=2
 pkgdesc="A tiling, keyboard-driven window manager written in common lisp"
 arch=('i686' 'x86_64')
 url="https://stumpwm.github.io"
@@ -16,10 +17,11 @@ license=('GPL2')
 provides=('stumpwm')
 makedepends=('autoconf')
 install=stumpwm.install
-md5sums=('SKIP' 'SKIP')
 
 source=(${_pkgname}::git+https://github.com/stumpwm/stumpwm
         ${_pkgname}-contrib::git+https://github.com/stumpwm/stumpwm-contrib)
+md5sums=('SKIP'
+         'SKIP')
 
 depends=('common-lisp' 'cl-asdf' 'clx-git' 'cl-ppcre')
 optdepends=('xorg-xprop: for stumpish (StumpWM Interactive Shell)'
@@ -72,5 +74,3 @@ package() {
   install -d ${pkgdir}/usr/share/emacs/site-lisp/
   mv ${pkgdir}${_contribdest}/util/swm-emacs/*.el ${pkgdir}/usr/share/emacs/site-lisp/
 }
-
-# vim:sw=2 ts=2 et si:
