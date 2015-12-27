@@ -11,8 +11,10 @@ depends=('kmod' 'bcwc-pcie-firmware')
 makedepends=('linux' 'linux-headers' 'git')
 install="$pkgname.install"
 
-source=("$pkgname::git+https://github.com/patjak/bcwc_pcie.git")
-md5sums=('SKIP')
+source=("$pkgname::git+https://github.com/patjak/bcwc_pcie.git"
+        "bcwc-pcie.modprobe.conf")
+md5sums=('SKIP'
+         '7531f220d5c3dd0ab5c31c445d526d7f')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -32,4 +34,6 @@ package() {
   KERNEL_VERSION=$(uname -r | cut -d '.' -f 1,2)
   install -Dm 644 facetimehd.ko.gz \
     "$pkgdir/usr/lib/modules/extramodules-${KERNEL_VERSION}-ARCH/facetimehd.ko.gz"
+  install -Dm 644 "$srcdir/bcwc-pcie.modprobe.conf" \
+    "$pkgdir/etc/modprobe.d/bcwc-pcie.conf"
 }
