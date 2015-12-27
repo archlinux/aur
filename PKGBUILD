@@ -3,7 +3,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=gegl-git
-pkgver=0.3.4.23.g9e1b613
+pkgver=0.3.4.54.g026bfb8
 pkgrel=1
 pkgdesc="Graph based image processing framework"
 arch=('i686' 'x86_64')
@@ -48,7 +48,6 @@ build() {
 package() {
   cd "$srcdir/$_gitname"
   make DESTDIR="$pkgdir/" install
-  mv $pkgdir/usr/bin/gegl $pkgdir/usr/bin/gegl-0.3
 }
 
 pkgver() {
