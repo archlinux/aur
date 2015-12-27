@@ -1,0 +1,18 @@
+pkgbase = owncloud-app-mail-git
+	pkgdesc = An email app for ownCloud
+	pkgver = v0.2.0.r279.g4afbfbe
+	pkgrel = 1
+	url = https://github.com/owncloud/mail
+	arch = any
+	license = AGPL
+	depends = owncloud
+	provides = owncloud-app-mail
+	conflicts = owncloud-app-mail
+	options = !strip
+	source = git+https://github.com/owncloud/mail.git
+	source = autoload.php
+	sha512sums = SKIP
+	sha512sums = 78f210d657042a9249e7297d871348d035a03e833dda617d4a04b15fe26782d9876f462a61d28272c2f15f088e750eab3d1d1992606967207f0eb980db70e2fa
+
+pkgname = owncloud-app-mail-git
+
