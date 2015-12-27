@@ -1,7 +1,7 @@
-diff -U 3 -H -d -r -N -- neo4j-community-2.2.0-orig/bin/neo4j neo4j-community-2.2.0-mod/bin/neo4j
---- neo4j-community-2.2.0-orig/bin/neo4j	2015-03-24 09:59:49.000000000 -0300
-+++ neo4j-community-2.2.0-mod/bin/neo4j	2015-03-31 10:50:57.546565829 -0300
-@@ -33,23 +33,12 @@
+diff -U 3 -H -d -r -N -- neo4j-community-2.3.1-orig/bin/neo4j neo4j-community-2.3.1-mod/bin/neo4j
+--- neo4j-community-2.3.1-orig/bin/neo4j	2015-11-10 10:15:38.000000000 -0200
++++ neo4j-community-2.3.1-mod/bin/neo4j	2015-12-26 21:48:05.787841796 -0200
+@@ -33,24 +33,13 @@
  LAUNCHD_NAME="org.neo4j.server"
  
  function findBaseDirAndCdThere {
@@ -20,18 +20,20 @@ diff -U 3 -H -d -r -N -- neo4j-community-2.2.0-orig/bin/neo4j neo4j-community-2.
 -  done
 -  NEO4J_HOME=`cd $( dirname "$SCRIPT" )/.. && dirs -l +0`
 -  NEO4J_INSTANCE=$NEO4J_HOME
--  NEO4J_CONFIG=$NEO4J_INSTANCE/conf
--  NEO4J_LOG=$NEO4J_INSTANCE/data/log
+-  [ -n "$NEO4J_CONFIG" ] || NEO4J_CONFIG=$NEO4J_HOME/conf
+-  [ -n "$NEO4J_LOG" ] || NEO4J_LOG=$NEO4J_HOME/data/log
+-  [ -n "$NEO4J_PIDFILE" ] || NEO4J_PIDFILE=$NEO4J_HOME/data/neo4j-service.pid
 +  NEO4J_HOME=/usr/share/java/neo4j
-+  NEO4J_INSTANCE=/var/lib/neo4j
-+  NEO4J_CONFIG=/etc/neo4j
-+  NEO4J_LOG=/var/log/neo4j
 +  NEO4J_SHARE=/usr/share/neo4j
++  NEO4J_CONFIG=/etc/neo4j
++  NEO4J_INSTANCE=/var/lib/neo4j
++  NEO4J_LOG=/var/log/neo4j
 +  NEO4J_RUNDIR=/run/neo4j
++  NEO4J_PIDFILE=${NEO4J_RUNDIR}/neo4j-service.pid
  
    cd "$NEO4J_HOME"
  }
-@@ -67,14 +56,14 @@
+@@ -68,7 +57,7 @@
  }
  
  findBaseDirAndCdThere
@@ -40,15 +42,7 @@ diff -U 3 -H -d -r -N -- neo4j-community-2.2.0-orig/bin/neo4j neo4j-community-2.
  parseConfig
  
  JAVA_OPTS="-server -XX:+DisableExplicitGC ${wrapper_java_additional}"
- [ -z "${wrapper_java_initmemory}" ] || JAVA_OPTS="$JAVA_OPTS -Xms${wrapper_java_initmemory}m"
- [ -z "${wrapper_java_maxmemory}" ] || JAVA_OPTS="$JAVA_OPTS -Xmx${wrapper_java_maxmemory}m"
- 
--#NEO4J_SERVER_PORT=`( egrep "^org.neo4j.server.webserver.port" $NEO4J_INSTANCE/conf/neo4j-server.properties || echo 7474 ) | sed -e 's/.*=//'`
-+#NEO4J_SERVER_PORT=`( egrep "^org.neo4j.server.webserver.port" $NEO4J_CONFIG/neo4j-server.properties || echo 7474 ) | sed -e 's/.*=//'`
- NEO4J_SERVER_PORT=${org_neo4j_server_webserver_port:=7474}
- 
- LAUNCHD_NAME="${LAUNCHD_NAME}.${NEO4J_SERVER_PORT}"
-@@ -90,16 +79,16 @@
+@@ -91,7 +80,7 @@
  # Username to propose for neo4j user, can be overridden by -u USERNAME option
  DEFAULT_USER='neo4j'
  
@@ -57,10 +51,8 @@ diff -U 3 -H -d -r -N -- neo4j-community-2.2.0-orig/bin/neo4j neo4j-community-2.
  SERVICE_NAME=${wrapper_ntservice_name:=neo4j-service}
  LAUNCHD_DIR=~/Library/LaunchAgents/
  
- TIMEOUT=120
- 
--PID_FILE=${NEO4J_INSTANCE}/data/neo4j-service.pid
-+PID_FILE=${NEO4J_RUNDIR}/neo4j-service.pid
+@@ -100,7 +89,7 @@
+ PID_FILE=${NEO4J_PIDFILE}
  buildclasspath() {
    # confirm library jars
 -  LIBDIR="$NEO4J_HOME"/lib
@@ -68,87 +60,69 @@ diff -U 3 -H -d -r -N -- neo4j-community-2.2.0-orig/bin/neo4j neo4j-community-2.
    if [ ! -e "$LIBDIR" ] ; then
      echo "Error: missing Neo4j Library, expected at $LIBDIR"
      exit 1
-@@ -134,7 +123,7 @@
-   CLASSPATH=${ALL_JARS}
+diff -U 3 -H -d -r -N -- neo4j-community-2.3.1-orig/bin/neo4j-import neo4j-community-2.3.1-mod/bin/neo4j-import
+--- neo4j-community-2.3.1-orig/bin/neo4j-import	2015-11-10 10:15:38.000000000 -0200
++++ neo4j-community-2.3.1-mod/bin/neo4j-import	2015-12-26 20:25:21.546530977 -0200
+@@ -21,19 +21,7 @@
+ #Remember where we started from so that working dir is set correctly
+ RUN_FROM=`pwd`
  
-   # add useful conf stuff to classpath - always a good idea
--  CLASSPATH="$CLASSPATH":"$NEO4J_HOME"/conf/
-+  CLASSPATH="$CLASSPATH":"$NEO4J_CONFIG"
- }
+-SCRIPT_LOCATION="$0"
+-
+-cd "`dirname "$SCRIPT_LOCATION"`"
+-SCRIPT_LOCATION=`basename "$SCRIPT_LOCATION"`
+-
+-while [ -L "$SCRIPT_LOCATION" ]
+-do
+-  SCRIPT_LOCATION=$( readlink $SCRIPT_LOCATION )
+-  cd "`dirname "$SCRIPT_LOCATION"`"
+-  SCRIPT_LOCATION="`basename "$SCRIPT_LOCATION"`"
+-done
+-
+-BASEDIR=`cd "$( dirname $SCRIPT_LOCATION )"/.. && dirs -l +0`
++BASEDIR=/usr/share/java/neo4j
  
- detectrunning() {
-@@ -144,7 +133,7 @@
-   else
-       ## This could be achieved with filtering using -sTCP:LISTEN but this option is not available
-       ## on lsof v4.78 which is the one bundled with some distros. So we have to do this grep below
--      newpid=$(lsof -i :$NEO4J_SERVER_PORT -F T -Ts | grep -i "TST=LISTEN" -B1 | head -n1)
-+      newpid=$(lsof -i :$NEO4J_SERVER_PORT -F p | grep "p")
-       newpid=${newpid:1}
-   fi
- }
-@@ -287,16 +276,16 @@
- # pass in "true" for created to mark that the user was created (instead than pre-existing)
- modify_user_config() {
-   created=${2:-"false"}
--  if `grep -q "wrapper\.user=" "$NEO4J_INSTANCE/conf/neo4j-wrapper.conf"` ; then
--    sed -i -e "s/^.*wrapper\.user=.*$/wrapper\.user=$1/" "$NEO4J_INSTANCE/conf/neo4j-wrapper.conf"
-+  if `grep -q "wrapper\.user=" "$NEO4J_CONFIG/neo4j-wrapper.conf"` ; then
-+    sed -i -e "s/^.*wrapper\.user=.*$/wrapper\.user=$1/" "$NEO4J_CONFIG/neo4j-wrapper.conf"
-   else
--    echo "wrapper.user=$1" >> "$NEO4J_INSTANCE/conf/neo4j-wrapper.conf"
-+    echo "wrapper.user=$1" >> "$NEO4J_CONFIG/neo4j-wrapper.conf"
-   fi
- 
--  if `grep -q "wrapper\.user\.created=" "$NEO4J_INSTANCE/conf/neo4j-wrapper.conf"` ; then
--    sed -i -e "s/^.*wrapper\.user\.created=.*$/wrapper\.user\.created=${created}/" "$NEO4J_INSTANCE/conf/neo4j-wrapper.conf"
-+  if `grep -q "wrapper\.user\.created=" "$NEO4J_CONFIG/neo4j-wrapper.conf"` ; then
-+    sed -i -e "s/^.*wrapper\.user\.created=.*$/wrapper\.user\.created=${created}/" "$NEO4J_CONFIG/neo4j-wrapper.conf"
-   else
--    echo "wrapper.user.created=${created}" >> "$NEO4J_INSTANCE/conf/neo4j-wrapper.conf"
-+    echo "wrapper.user.created=${created}" >> "$NEO4J_CONFIG/neo4j-wrapper.conf"
-   fi
- }
- 
-diff -U 3 -H -d -r -N -- neo4j-community-2.2.0-orig/bin/neo4j-import neo4j-community-2.2.0-mod/bin/neo4j-import
---- neo4j-community-2.2.0-orig/bin/neo4j-import	2015-03-24 09:59:49.000000000 -0300
-+++ neo4j-community-2.2.0-mod/bin/neo4j-import	2015-03-31 10:51:08.903232004 -0300
-@@ -86,7 +86,7 @@
+ # OS specific support.  $var _must_ be set to either true or false.
+ cygwin=false;
+@@ -86,7 +74,7 @@
  
  if [ -z "$REPO" ]
  then
 -  REPO="$BASEDIR"/lib
-+  REPO=/usr/share/java/neo4j
++  REPO="$BASEDIR"
  fi
  
  LIBRARY_JARS=""
-diff -U 3 -H -d -r -N -- neo4j-community-2.2.0-orig/bin/neo4j-shell neo4j-community-2.2.0-mod/bin/neo4j-shell
---- neo4j-community-2.2.0-orig/bin/neo4j-shell	2015-03-24 09:59:49.000000000 -0300
-+++ neo4j-community-2.2.0-mod/bin/neo4j-shell	2015-03-31 10:51:20.503231501 -0300
-@@ -86,7 +86,7 @@
+diff -U 3 -H -d -r -N -- neo4j-community-2.3.1-orig/bin/neo4j-shell neo4j-community-2.3.1-mod/bin/neo4j-shell
+--- neo4j-community-2.3.1-orig/bin/neo4j-shell	2015-11-10 10:15:38.000000000 -0200
++++ neo4j-community-2.3.1-mod/bin/neo4j-shell	2015-12-26 20:27:40.619567323 -0200
+@@ -21,19 +21,7 @@
+ #Remember where we started from so that working dir is set correctly
+ RUN_FROM=`pwd`
+ 
+-SHELL_SCRIPT="$0"
+-
+-cd "`dirname "$SHELL_SCRIPT"`"
+-SHELL_SCRIPT=`basename "$SHELL_SCRIPT"`
+-
+-while [ -L "$SHELL_SCRIPT" ]
+-do
+-  SHELL_SCRIPT=$( readlink $SHELL_SCRIPT )
+-  cd "`dirname "$SHELL_SCRIPT"`"
+-  SHELL_SCRIPT="`basename "$SHELL_SCRIPT"`"
+-done
+-
+-BASEDIR=`cd "$( dirname $SHELL_SCRIPT )"/.. && dirs -l +0`
++BASEDIR=/usr/share/java/neo4j
+ 
+ # OS specific support.  $var _must_ be set to either true or false.
+ cygwin=false;
+@@ -86,7 +74,7 @@
  
  if [ -z "$REPO" ]
  then
 -  REPO="$BASEDIR"/lib
-+  REPO=/usr/share/java/neo4j
++  REPO="$BASEDIR"
  fi
  
  LIBRARY_JARS=""
-diff -U 3 -H -d -r -N -- neo4j-community-2.2.0-orig/bin/utils neo4j-community-2.2.0-mod/bin/utils
---- neo4j-community-2.2.0-orig/bin/utils	2015-03-24 09:59:49.000000000 -0300
-+++ neo4j-community-2.2.0-mod/bin/utils	2015-03-31 10:55:24.576554252 -0300
-@@ -324,11 +324,11 @@
- # in place.
- checkandrepairenv() {
-     # Create data/log if missing, change owner if created.
--    if [ ! -d "$NEO4J_HOME"/data/log ]; then
--      echo "${NEO4J_HOME}/data/log was missing, recreating..."
--      mkdir "$NEO4J_HOME"/data/log
-+    if [ ! -d "$NEO4J_LOG" ]; then
-+      echo "${NEO4J_LOG} was missing, recreating..."
-+      mkdir "$NEO4J_LOG"
-       if [ $UID == 0 ] ; then
--        chown $NEO4J_USER "$NEO4J_HOME"/data/log
-+        chown $NEO4J_USER "$NEO4J_LOG"
-       fi
-     fi
- }

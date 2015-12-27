@@ -1,6 +1,6 @@
 # Maintainer: Marcel Campello Ferreira <marcel@prafrentex.com.br>
 pkgname=neo4j
-pkgver=2.2.1
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="A fully transactional graph database implemented in Java"
 arch=(any)
@@ -8,9 +8,7 @@ url="http://neo4j.org/"
 license=(GPL)
 makedepends=(patch)
 depends=(bash lsof java-runtime-headless)
-backup=(etc/neo4j/custom-logback.xml
-        etc/neo4j/logging.properties
-        etc/neo4j/neo4j-http-logging.xml
+backup=(etc/neo4j/neo4j-http-logging.xml
         etc/neo4j/neo4j-server.properties
         etc/neo4j/neo4j-wrapper.conf
         etc/neo4j/neo4j.properties)
@@ -22,9 +20,9 @@ source=(http://dist.neo4j.org/neo4j-community-$pkgver-unix.tar.gz
         neo4j.install
         neo4j.service
         neo4j-tmpfile.conf)
-sha256sums=('a5116c47a2fb2a209ba6a381e57b580fe6e912e8835edb32dbf66d9b16b3d367'
-            'd161c1b0397843a78c16cf06f3087ca52f01efb300749874d52013fde87d26f8'
-            'bb9ea8ae8a684e9981a24ca7bb242a4c2aaa8fdacb820abf8da7f56f413d1e5f'
+sha256sums=('7b2f30d73af107eacd9a3a619475ef448a08eecb2cdb42ab1f8a38d091c70ecb'
+            '14d7f2046f0333b99c6b689c8aaa2f67d89d4a5fcfed34cb1c72ecf5e074aa6d'
+            '8182f2717a1fb887413fad592e4ba298e7a0a5ec31092220ca68af22b2a5c4bd'
             '3c4f3daea1623a5bc4c56d87ff4d76ff4737722eb730e2f9b65a0980bf3633a3'
             'ee451a5b4ac3f733ab725bb3babeefc4d852115fe24ee29a3060922716212ad7'
             'e9ecbf86072ca92129ab1889b5f91e2494b86e84248bd15a37681a3997892d7d')
@@ -33,8 +31,8 @@ prepare() {
 
   cd $srcdir/neo4j-community-$pkgver
 
-  rm conf/windows-wrapper-logging.properties
   rm bin/neo4j-installer
+  rm -rf bin/Neo4j-Management
   rm -rf system/resources
 
   # Adjust configuration to match new directory structure
@@ -44,32 +42,46 @@ prepare() {
 
 package() {
 
+  NEO4J_HOME=usr/share/java/neo4j
+  NEO4J_INSTANCE=var/lib/neo4j
+  NEO4J_CONFIG=etc/neo4j
+  NEO4J_LOG=var/log/neo4j
+  NEO4J_SHARE=usr/share/neo4j
+  NEO4J_RUNDIR=run/neo4j
+  NEO4J_PIDFILE=${NEO4J_RUNDIR}/neo4j-service.pid
+
   cd $srcdir/neo4j-community-$pkgver
 
   # Config files
-  install -dm755 $pkgdir/etc/neo4j
-  cp -r conf/* $pkgdir/etc/neo4j
+  install -dm755 $pkgdir/$NEO4J_CONFIG
+  cp -r conf/* $pkgdir/$NEO4J_CONFIG
 
   # Copy JARs in lib, system and plugins
-  install -dm755 $pkgdir/usr/share/java/neo4j
-  cp -r lib/* $pkgdir/usr/share/java/neo4j
-  install -dm755 $pkgdir/usr/share/java/neo4j/system
-  cp -r system/* $pkgdir/usr/share/java/neo4j/system
-  install -dm755 $pkgdir/usr/share/java/neo4j/plugins
-  cp -r plugins/* $pkgdir/usr/share/java/neo4j/plugins
+  install -dm755 $pkgdir/$NEO4J_HOME
+  cp -r lib/* $pkgdir/$NEO4J_HOME
+
+  install -dm755 $pkgdir/$NEO4J_HOME/system
+  cp -r system/* $pkgdir/$NEO4J_HOME/system
+  
+  install -dm755 $pkgdir/$NEO4J_HOME/plugins
+  cp -r plugins/* $pkgdir/$NEO4J_HOME/plugins
 
   # Executable files
-  install -dm755 $pkgdir/usr/share/neo4j/bin
-  cp -r bin/* $pkgdir/usr/share/neo4j/bin
+  install -dm755 $pkgdir/$NEO4J_SHARE/bin
+  cp -r bin/* $pkgdir/$NEO4J_SHARE/bin
 
   install -dm755 $pkgdir/usr/bin
-  ln -s /usr/share/neo4j/bin/neo4j $pkgdir/usr/bin/neo4j
-  ln -s /usr/share/neo4j/bin/neo4j-shell $pkgdir/usr/bin/neo4j-shell
-  ln -s /usr/share/neo4j/bin/neo4j-import $pkgdir/usr/bin/neo4j-import
+  ln -s /$NEO4J_SHARE/bin/neo4j $pkgdir/usr/bin/neo4j
+  ln -s /$NEO4J_SHARE/bin/neo4j-import $pkgdir/usr/bin/neo4j-import
+  ln -s /$NEO4J_SHARE/bin/neo4j-shell $pkgdir/usr/bin/neo4j-shell
 
   # Data and log files
-  install -dm755 $pkgdir/var/lib/neo4j/data
-  install -dm755 $pkgdir/var/log/neo4j
+  install -dm755 $pkgdir/$NEO4J_LOG
+  cp -r data/log/* $pkgdir/$NEO4J_LOG
+  
+  install -dm755 $pkgdir/$NEO4J_INSTANCE/data
+  rm -rf data/log
+  cp -r data/* $pkgdir/$NEO4J_INSTANCE/data
 
   # Documentation
   install -dm755 $pkgdir/usr/share/doc/neo4j

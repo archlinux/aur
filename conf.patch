@@ -1,18 +1,6 @@
-diff -U 3 -H -d -r -N -- neo4j-community-2.2.0-orig/conf/logging.properties neo4j-community-2.2.0-mod/conf/logging.properties
---- neo4j-community-2.2.0-orig/conf/logging.properties	2015-03-24 09:59:49.000000000 -0300
-+++ neo4j-community-2.2.0-mod/conf/logging.properties	2015-03-31 11:05:19.973195104 -0300
-@@ -51,7 +51,7 @@
- #    "%g" the generation number to distinguish rotated logs
- #    "%u" a unique number to resolve conflicts
- #    "%%" translates to a single percent sign "%"
--java.util.logging.FileHandler.pattern=data/log/neo4j.%u.%g.log
-+java.util.logging.FileHandler.pattern=/var/log/neo4j/neo4j.%u.%g.log
- 
- # Specifies whether the FileHandler should append onto any existing files
- # (defaults to false):
-diff -U 3 -H -d -r -N -- neo4j-community-2.2.0-orig/conf/neo4j-http-logging.xml neo4j-community-2.2.0-mod/conf/neo4j-http-logging.xml
---- neo4j-community-2.2.0-orig/conf/neo4j-http-logging.xml	2015-03-24 09:59:49.000000000 -0300
-+++ neo4j-community-2.2.0-mod/conf/neo4j-http-logging.xml	2015-03-31 11:06:24.753192294 -0300
+diff -U 3 -H -d -r -N -- neo4j-community-2.3.1-orig/conf/neo4j-http-logging.xml neo4j-community-2.3.1-mod/conf/neo4j-http-logging.xml
+--- neo4j-community-2.3.1-orig/conf/neo4j-http-logging.xml	2015-11-10 10:15:38.000000000 -0200
++++ neo4j-community-2.3.1-mod/conf/neo4j-http-logging.xml	2015-12-26 21:16:12.078406814 -0200
 @@ -21,9 +21,9 @@
  -->
  <configuration>
@@ -25,9 +13,23 @@ diff -U 3 -H -d -r -N -- neo4j-community-2.2.0-orig/conf/neo4j-http-logging.xml 
        <maxHistory>7</maxHistory>
      </rollingPolicy>
  
-diff -U 3 -H -d -r -N -- neo4j-community-2.2.0-orig/conf/neo4j-server.properties neo4j-community-2.2.0-mod/conf/neo4j-server.properties
---- neo4j-community-2.2.0-orig/conf/neo4j-server.properties	2015-03-24 09:59:49.000000000 -0300
-+++ neo4j-community-2.2.0-mod/conf/neo4j-server.properties	2015-04-15 09:52:34.556610762 -0300
+diff -U 3 -H -d -r -N -- neo4j-community-2.3.1-orig/conf/neo4j.properties neo4j-community-2.3.1-mod/conf/neo4j.properties
+--- neo4j-community-2.3.1-orig/conf/neo4j.properties	2015-11-10 10:15:38.000000000 -0200
++++ neo4j-community-2.3.1-mod/conf/neo4j.properties	2015-12-26 21:35:25.395504168 -0200
+@@ -24,8 +24,8 @@
+ # Set the root directory for use with file URLs (`file:///`) in LOAD CSV.
+ # If enabled, file URLs will refer to locations inside the `data/import`
+ # directory. I.e. `file:///movies/actors.csv` will load from the file
+-# `data/import/movies/actors.csv`.
+-#dbms.security.load_csv_file_url_root=data/import
++# `/var/lib/neo4j/data/import/movies/actors.csv`.
++#dbms.security.load_csv_file_url_root=/var/lib/neo4j/data/import
+ 
+ # Keep logical logs, helps debugging but uses more disk space, enabled for
+ # legacy reasons To limit space needed to store historical logs use values such
+diff -U 3 -H -d -r -N -- neo4j-community-2.3.1-orig/conf/neo4j-server.properties neo4j-community-2.3.1-mod/conf/neo4j-server.properties
+--- neo4j-community-2.3.1-orig/conf/neo4j-server.properties	2015-11-10 10:15:38.000000000 -0200
++++ neo4j-community-2.3.1-mod/conf/neo4j-server.properties	2015-12-26 21:31:19.899361740 -0200
 @@ -10,10 +10,10 @@
  #***************************************************************
  
@@ -55,12 +57,12 @@ diff -U 3 -H -d -r -N -- neo4j-community-2.2.0-orig/conf/neo4j-server.properties
  org.neo4j.server.webserver.https.port=7473
  
  # Certificate location (auto generated if the file does not exist)
--org.neo4j.server.webserver.https.cert.location=conf/ssl/snakeoil.cert
-+org.neo4j.server.webserver.https.cert.location=/etc/neo4j/ssl/snakeoil.cert
+-dbms.security.tls_certificate_file=conf/ssl/snakeoil.cert
++dbms.security.tls_certificate_file=/etc/neo4j/ssl/snakeoil.cert
  
  # Private key location (auto generated if the file does not exist)
--org.neo4j.server.webserver.https.key.location=conf/ssl/snakeoil.key
-+org.neo4j.server.webserver.https.key.location=/etc/neo4j/ssl/snakeoil.key
+-dbms.security.tls_key_file=conf/ssl/snakeoil.key
++dbms.security.tls_key_file=/etc/neo4j/ssl/snakeoil.key
  
  # Internally generated keystore (don't try to put your own
  # keystore there, it will get deleted when the server starts)
@@ -78,48 +80,37 @@ diff -U 3 -H -d -r -N -- neo4j-community-2.2.0-orig/conf/neo4j-server.properties
  
  
  #*****************************************************************
-@@ -82,4 +85,4 @@
+@@ -82,5 +85,5 @@
  # - absolute path like /var/rrd
  # - path relative to the server working directory like data/rrd
  # - commented out, will default to the database data directory.
 -org.neo4j.server.webadmin.rrdb.location=data/rrd
 +org.neo4j.server.webadmin.rrdb.location=/var/lib/neo4j/data/rrd
-diff -U 3 -H -d -r -N -- neo4j-community-2.2.0-orig/conf/neo4j-wrapper.conf neo4j-community-2.2.0-mod/conf/neo4j-wrapper.conf
---- neo4j-community-2.2.0-orig/conf/neo4j-wrapper.conf	2015-03-24 09:59:49.000000000 -0300
-+++ neo4j-community-2.2.0-mod/conf/neo4j-wrapper.conf	2015-03-31 12:28:30.216312067 -0300
-@@ -2,9 +2,9 @@
+ 
+diff -U 3 -H -d -r -N -- neo4j-community-2.3.1-orig/conf/neo4j-wrapper.conf neo4j-community-2.3.1-mod/conf/neo4j-wrapper.conf
+--- neo4j-community-2.3.1-orig/conf/neo4j-wrapper.conf	2015-11-10 10:15:38.000000000 -0200
++++ neo4j-community-2.3.1-mod/conf/neo4j-wrapper.conf	2015-12-26 21:33:58.755689184 -0200
+@@ -2,8 +2,8 @@
  # Property file references
  #********************************************************************
  
 -wrapper.java.additional=-Dorg.neo4j.server.properties=conf/neo4j-server.properties
--wrapper.java.additional=-Djava.util.logging.config.file=conf/logging.properties
 -wrapper.java.additional=-Dlog4j.configuration=file:conf/log4j.properties
 +wrapper.java.additional=-Dorg.neo4j.server.properties=/etc/neo4j/neo4j-server.properties
-+wrapper.java.additional=-Djava.util.logging.config.file=/etc/neo4j/logging.properties
 +wrapper.java.additional=-Dlog4j.configuration=file:/etc/neo4j/log4j.properties
  
  #********************************************************************
  # JVM Parameters
-@@ -16,7 +16,7 @@
- wrapper.java.additional=-XX:hashCode=5
- 
- # Uncomment the following lines to enable garbage collection logging
--#wrapper.java.additional=-Xloggc:data/log/neo4j-gc.log
-+#wrapper.java.additional=-Xloggc:/var/log/neo4j/neo4j-gc.log
- #wrapper.java.additional=-XX:+PrintGCDetails
- #wrapper.java.additional=-XX:+PrintGCDateStamps
- #wrapper.java.additional=-XX:+PrintGCApplicationStoppedTime
-@@ -33,8 +33,7 @@
- #********************************************************************
+@@ -32,7 +32,7 @@
  # Wrapper settings
  #********************************************************************
--# path is relative to the bin dir
+ # path is relative to the bin dir
 -wrapper.pidfile=../data/neo4j-server.pid
 +wrapper.pidfile=/run/neo4j/neo4j-server.pid
  
  #********************************************************************
  # Wrapper Windows NT/2000/XP Service Properties
-@@ -49,7 +48,7 @@
+@@ -47,7 +47,7 @@
  
  # User account to be used for linux installs. Will default to current
  # user if not set.
