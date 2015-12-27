@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 324165e..812979f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -71,7 +71,7 @@ SELECTED_FLAGS = AD AE AF AG AI AL AM AO AR AS AT AU AW AX AZ \
+        ZA ZM ZW
+ ALL_FLAGS = $(basename $(notdir $(wildcard $(FLAGS_SRC_DIR)/*.png)))
+ 
+-FLAGS = $(SELECTED_FLAGS)
++FLAGS = $(ALL_FLAGS)
+ 
+ FLAG_NAMES = $(FLAGS:%=%.png)
+ FLAG_FILES = $(addprefix $(FLAGS_DIR)/, $(FLAG_NAMES))
