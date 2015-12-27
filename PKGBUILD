@@ -4,12 +4,12 @@
 
 pkgname=lib32-cunit
 pkgver=2.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight system for writing, administering, and running unit tests in C"
 arch=(x86_64)
 url="http://cunit.sourceforge.net/"
 license=('LGPL2.1')
-depends=('lib32-glibc')
+depends=('lib32-glibc' 'cunit')
 options=('!libtool')
 source=('https://downloads.sourceforge.net/project/cunit/CUnit/2.1-3/CUnit-2.1-3.tar.bz2')
 
@@ -33,7 +33,7 @@ build() {
 package() {
   cd "${srcdir}/CUnit-2.1-3"
   make DESTDIR="${pkgdir}" install
-  mv $pkgdir/usr/doc $pkgdir/usr/share/doc
+  rm -rf "${pkgdir}"/usr/{doc,share,include}
 }
 
 
