@@ -1,7 +1,7 @@
 # Maintainer: Raphaël Doursenaud <rdoursenaud@free.fr>
 
 pkgname=frescobaldi-git
-pkgver=v2.18.1.r52.g7da838f
+pkgver=VERSION
 pkgrel=1
 pkgdesc="A LilyPond sheet music text editor."
 arch=('any')
@@ -51,7 +51,8 @@ prepare() {
   # Provided by tango-icon-theme
   rm -rf "frescobaldi_app/icons/Tango"
   # Provided by hyphen-*
-  rm -f "frescobaldi_app/hyphdicts/hyph_*.dic"
+  rm -f frescobaldi_app/hyphdicts/hyph_*.dic
+  rm -f frescobaldi_app/hyphdicts/README*
 }
 
 package() {
