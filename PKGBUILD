@@ -3,7 +3,7 @@
 # Contributer: rtfreedman  <rob<d0t>til<d0t>freedman< T>googlemail<d0t>com>
 
 pkgname=virtualbox-extension-pack
-pkgver=5.0.10
+pkgver=5.0.12
 pkgrel=1
 pkgdesc='Oracle VM VirtualBox Extension Pack - Support for USB 2.0 devices, VirtualBox RDP and PXE boot for Intel cards'
 arch=('i686' 'x86_64')
@@ -36,4 +36,4 @@ package() {
 		"${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
 }
 
-sha256sums=('c846fa26fec8587e57180c85c408cad377c48ad26830b0dc839ebf9025e3d29c')
+sha256sums=('ac1bc8452b7fdf183325272149e9f18b9810cc07adf18e48755385a9cd1b236d')
