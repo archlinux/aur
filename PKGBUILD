@@ -3,7 +3,7 @@
 # Contributor: Josh Klar <j@iv597.com>
 
 pkgname=budgie-desktop
-pkgver=10
+pkgver=10.1
 pkgrel=1
 pkgdesc="Simple GTK3 desktop experience from Solus Project"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ makedepends=('git' 'python2' 'vala' 'gobject-introspection')
 install=budgie-desktop.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/solus-project/budgie-desktop/archive/v${pkgver}.tar.gz"
         'git+https://git.gnome.org/browse/libgnome-volume-control#commit=7e5504d')
-sha256sums=('082dd6ed92832aa4993511fe7c2a22bd9c686c40bdc938307f6c8c1aca859f6b'
+sha256sums=('27cfae3c253c5546d5cf31a63cc519cd60c94466be5a2d6f8130f412013b61c4'
             'SKIP')
 
 prepare() {
