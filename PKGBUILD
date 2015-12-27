@@ -1,7 +1,7 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=wangle
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A full featured, high performance C++ futures implementation"
 arch=('i686' 'x86_64')
 url="https://github.com/facebook/wangle"
@@ -11,16 +11,20 @@ makedepends=('cmake' 'gflags' 'gtest' 'google-glog')
 options=('!emptydirs' 'staticlibs')
 source=("https://github.com/facebook/$pkgname/archive/v${pkgver}.tar.gz"
 CMakeLists.txt.patch
-ServiceTest.cpp.patch)
+ServiceTest.cpp.patch
+ConnectionManager.h.patch)
 md5sums=('f6d34eaaf1342384f9f7327c6640e55e'
          'd5086d808c774339062e8a37e22b5921'
-         '36ff005a5706ca9c5153e610ea157f37')
+         '36ff005a5706ca9c5153e610ea157f37'
+         'f60c21e5c9689c7c360aedcb15832874')
 
 prepare() {
   cd "$pkgname-$pkgver/$pkgname"
   patch --verbose -p0 -i $srcdir/CMakeLists.txt.patch
   cd service
   patch --verbose -p0 -i $srcdir/ServiceTest.cpp.patch
+  cd ../acceptor
+  patch --verbose -p0 -i $srcdir/ConnectionManager.h.patch
 }
 
 build() {
