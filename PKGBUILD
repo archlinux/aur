@@ -1,7 +1,7 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 pkgname=sway-git
 _pkgname=sway
-pkgver=r896.155f5d2
+pkgver=r1138.82aca85
 pkgrel=1
 license=('MIT')
 pkgdesc='i3 compatible window manager for Wayland'
@@ -13,10 +13,11 @@ depends=(
 	"wayland" "gdk-pixbuf2"
 )
 optdepends=(
-	"rxvt-unicode: default terminal emulator"
-	"dmenu: default for launching applications"
-	"imagemagick: for taking screenshots"
-	"ffmpeg: for recording screencasts"
+	"rxvt-unicode: Default terminal emulator."
+	"dmenu: Default for launching applications."
+	"imagemagick: For taking screenshots."
+	"ffmpeg: For recording screencasts."
+	"i3status: To display system information with a bar."
 )
 arch=("i686" "x86_64")
 url='https://github.com/SirCmpwn/sway'
@@ -31,7 +32,7 @@ pkgver() {
 build() {
 	cd "${srcdir}/${_pkgname}"
 
-	cmake . -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+	cmake . -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_SYSCONFDIR=/etc -DCMAKE_INSTALL_PREFIX=/usr
 	make
 }
 
