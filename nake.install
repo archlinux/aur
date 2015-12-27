@@ -1,0 +1,6 @@
+post_install() {
+  # Friendly message for new users
+  echo
+  echo 'Add following line to etc/nim.cfg to make nake working:'
+  echo 'path="$lib/nake"'
+}

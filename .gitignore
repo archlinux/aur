@@ -2,4 +2,5 @@
 !PKGBUILD
 !.SRCINFO
 !.gitignore
+!nake.install
 

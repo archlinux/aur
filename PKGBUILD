@@ -12,6 +12,9 @@ makedepends=('nimble')
 source=("https://github.com/fowlmouth/nake/archive/v$pkgver.tar.gz")
 md5sums=('SKIP')
 
+
+install="$pkgname.install"
+
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   nimble build
@@ -20,6 +23,9 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   install -Dm755 "nake" "$pkgdir/usr/bin/nake"
+  install -Dm644 "nake.nim" "$pkgdir/usr/lib/nim/nake/nake.nim"
+  install -Dm644 "nakefile.nim" "$pkgdir/usr/lib/nim/nake/nakefile.nim"
+  install -Dm644 "nakelib.nim" "$pkgdir/usr/lib/nim/nake/nakelib.nim"
   install -Dm644 "LICENSE.rst" "$pkgdir/usr/share/licenses/nake/LICENSE.rst"
 }
 
