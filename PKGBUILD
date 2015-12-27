@@ -5,7 +5,7 @@
 
 pkgname=brutalchess
 pkgver=0.5.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Chess game inspired by 'Battle Chess'. Features full 3D graphics."
 url="http://sourceforge.net/projects/$pkgname"
 license=('GPL2')
@@ -19,7 +19,7 @@ prepare() {
   sed '/<time.h>/ a\#include <limits.h>' -i brutalplayer.cpp
   sed 's/GLvoid/void/g'                  -i {md3view,objview}.cpp
   sed '/<string>/ a\#include <unistd.h>' -i {xboardplayer,faileplayer}.cpp
-  sed 's~#include\ <freetype/~#include\ <freetype2/~g' -i fontloader.h
+  sed 's~#include\ <freetype/~#include\ <freetype2/freetype/~g' -i fontloader.h
 }
 
 build() {
