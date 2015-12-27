@@ -1,0 +1,39 @@
+diff a/tools/build/Makefile-JVM.in b/tools/build/Makefile-JVM.in
+--- a/tools/build/Makefile-JVM.in
++++ b/tools/build/Makefile-JVM.in
+@@ -391,7 +391,7 @@ j-install: j-all tools/build/create-jvm-runner.pl tools/build/install-core-dist.
+ 	$(MKPATH) $(DESTDIR)$(PERL6_LANG_DIR)/site/resources
+ 	$(MKPATH) $(DESTDIR)$(PERL6_LANG_DIR)/site/bin
+ 	$(MKPATH) $(DESTDIR)$(PERL6_LANG_DIR)/site/short
+-	.@slash@$(J_RUNNER) tools/build/install-core-dist.pl
++	.@slash@$(J_RUNNER) tools/build/install-core-dist.pl $(DESTDIR)$(PERL6_LANG_DIR)
+ 	$(PERL) tools/build/create-jvm-runner.pl install "$(DESTDIR)" $(PREFIX) $(NQP_PREFIX) $(NQP_JARS)
+ 	$(PERL) tools/build/create-jvm-runner.pl install-debug "$(DESTDIR)" $(PREFIX) $(NQP_PREFIX) $(NQP_JARS)
+ 
+diff --git a/tools/build/Makefile-Moar.in b/tools/build/Makefile-Moar.in
+index 1e586d9..670b89c 100644
+--- a/tools/build/Makefile-Moar.in
++++ b/tools/build/Makefile-Moar.in
+@@ -246,7 +246,7 @@ m-install: m-all tools/build/create-moar-runner.pl tools/build/install-core-dist
+ 	$(MKPATH) $(DESTDIR)$(PERL6_LANG_DIR)/site/resources
+ 	$(MKPATH) $(DESTDIR)$(PERL6_LANG_DIR)/site/bin
+ 	$(MKPATH) $(DESTDIR)$(PERL6_LANG_DIR)/site/short
+-	.@slash@$(M_RUNNER) tools/build/install-core-dist.pl
++	.@slash@$(M_RUNNER) tools/build/install-core-dist.pl $(DESTDIR)$(PERL6_LANG_DIR)
+ 	$(PERL) tools/build/create-moar-runner.pl "$(MOAR)" perl6.moarvm $(DESTDIR)$(PREFIX)/bin/perl6-m "$(PERL6_LANG_DIR)/runtime" "" "$(M_LIBPATH)" "$(PERL6_LANG_DIR)/lib" "$(PERL6_LANG_DIR)/runtime"
+ 	$(PERL) tools/build/create-moar-runner.pl "$(MOAR)" perl6-debug.moarvm $(DESTDIR)$(PREFIX)/bin/perl6-debug-m "$(PERL6_LANG_DIR)/runtime" "" "$(M_LIBPATH)" "$(PERL6_LANG_DIR)/lib" "$(PERL6_LANG_DIR)/runtime"
+ 	$(CHMOD) 755 $(DESTDIR)$(PREFIX)/bin/perl6-m$(M_BAT)
+diff --git a/tools/build/install-core-dist.pl b/tools/build/install-core-dist.pl
+index 0990b26..ba14b20 100644
+--- a/tools/build/install-core-dist.pl
++++ b/tools/build/install-core-dist.pl
+@@ -9,7 +9,8 @@ my %provides =
+     "experimental"               => "lib/experimental.pm6",
+ ;
+ 
+-CompUnit::RepositoryRegistry.repository-for-name('perl').install(
++PROCESS::<$REPO> := CompUnit::RepositoryRegistry.repository-for-spec("inst#@*ARGS[0]");
++$*REPO.install(
+     Distribution.new(
+         name     => "CORE",
+         auth     => "perl",
