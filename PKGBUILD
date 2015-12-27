@@ -28,5 +28,5 @@ build() {
 
 package() {
   cd cli-visualizer || exit
-  make PREFIX="/bin/" install
+  install -Dm755 build/vis "$pkgdir/usr/bin/vis"
 }
