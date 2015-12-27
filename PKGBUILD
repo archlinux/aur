@@ -1,7 +1,7 @@
 # Maintainer: Stefano <stefanomilani92@gmail.com>
 pkgname="brother-mfc-l2700dw"
 pkgver="3.2.0"
-pkgrel=2
+pkgrel=1
 pkgdesc="LPR and CUPS driver for the Brother MFC-L2700DW"
 arch=('i686' 'x86_64')
 url="http://solutions.brother.com/linux/en_us/"
