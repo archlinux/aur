@@ -1,6 +1,6 @@
 # Maintainer: Alexander Keller <git@nycroth.com>
 pkgname=bdrss
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="Brain Dead RSS"
 arch=(any)
@@ -12,10 +12,12 @@ source=('git+https://github.com/Nycroth/bdrss.git')
 md5sums=('SKIP')
 
 package() {
-    cd "${srcdir}/bdrss"
+	cd "${srcdir}/bdrss"
 
 	install -d "${pkgdir}/usr/bin/"
 	install -m 755 "bdrss" "${pkgdir}/usr/bin/${pkgname}"
-    install -m 755  -d "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -m 644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -m 755  -d "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -m 644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -m 755 -d "${pkgdir}/usr/share/man/man1/"
+	install -m 644 "bdrss.1" "${pkgdir}/usr/share/man/man1/bdrss.1"
 }
