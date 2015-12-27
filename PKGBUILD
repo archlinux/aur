@@ -1,13 +1,13 @@
 # Maintainer: M0Rf30
+
 pkgname=bzzwolfsp
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Return to Castle Wolfenstein Single Player engine mod to make Cooperative play possible (aka RTCW Coop)"
 arch=('i686' 'x86_64')
 url="http://www.rtcwcoop.com/"
 license=('GPL')
-depends=('lib32-sdl' 'lib32-mesa' 'wolf-data')
-depends=('sdl' 'mesa' 'wolf-data')
+depends=('wolf-data' 'sdl2' 'openal' 'opus' 'opusfile' 'libogg' 'speex' 'zip' 'zlib')
 conflicts=('bzzwolfsp-svn')
 install='bzzwolfsp.install'
 source=("https://github.com/rtcwcoop/rtcwcoop/archive/${pkgver}.tar.gz"
