@@ -3,7 +3,7 @@
 
 pkgname=cudahashcat-git
 pkgver=v0.4.0.0.r78.g484fce0
-pkgrel=3
+pkgrel=4
 pkgdesc="World's fastest and most advanced GPGPU-based password recovery utility"
 arch=('any')
 url="https://hashcat.net/oclhashcat"
@@ -13,6 +13,7 @@ conflicts=('cudahashcat')
 provides=('cudahashcat')
 source=("git+https://github.com/hashcat/oclHashcat.git")
 sha512sums=('SKIP')
+options=('!strip')
 
 pkgver() {
   cd oclHashcat
@@ -39,11 +40,11 @@ build() {
 package() {
   cd "${srcdir}/oclHashcat"
 
-  install -D "${pkgdir}/usr/share/oclHashcat/charsets"
-  install -D "${pkgdir}/usr/share/oclHashcat/kernels"
-  install -D "${pkgdir}/usr/share/oclHashcat/masks"
-  install -D "${pkgdir}/usr/share/oclHashcat/rules"
-  install -D "${pkgdir}/usr/share/doc/oclHashcat"
+  install -d "${pkgdir}/usr/share/oclHashcat/charsets"
+  install -d "${pkgdir}/usr/share/oclHashcat/kernels"
+  install -d "${pkgdir}/usr/share/oclHashcat/masks"
+  install -d "${pkgdir}/usr/share/oclHashcat/rules"
+  install -d "${pkgdir}/usr/share/doc/oclHashcat/extra"
 
   cp -ar charsets/* "${pkgdir}/usr/share/oclHashcat/charsets/"
   cp -ar kernels/* "${pkgdir}/usr/share/oclHashcat/kernels/"
