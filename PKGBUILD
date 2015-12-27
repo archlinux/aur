@@ -8,12 +8,12 @@
 
 pkgname=prosody-hg
 pkgrel=1
-pkgver=0.10.r7013.f387fae9fb31
+pkgver=0.10.r7036.f26debcae34e
 pkgver() {
   cd "$srcdir/$pkgname"
   printf "0.10.r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
-pkgdesc="Lightweight and extensible Jabber/XMPP server written in Lua (nightly builds)"
+pkgdesc="Lightweight and extensible Jabber/XMPP server written in Lua"
 arch=('i686' 'x86_64')
 url="http://prosody.im/"
 license=('MIT')
