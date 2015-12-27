@@ -1,0 +1,16 @@
+post_install() {
+
+	cat <<EOF
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>
+
+ enable and start avahi for discover
+	sudo systemctl enable --now avahi-daemon.service
+OR	
+ disable bonjour in config file
+	~/.config/linconnect-server/conf.ini
+ is created after first run
+ 
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>
+EOF
+
+}

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Hidden=false
+Terminal=false
+Icon=phone
+Name=LinConnect
+Exec=linconnect-server
