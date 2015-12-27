@@ -1,7 +1,7 @@
 post_install() {
   echo ""
   echo ":: Example configuration files can be found in"
-  echo ":: /usr/share/doc/vis"
+  echo ":: ~/.vis/config"
 }
 
 post_upgrade() {
