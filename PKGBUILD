@@ -71,7 +71,6 @@ package() {
     install -d "$pkgdir"/usr/share/licenses/java${_major}-${_pkgname}32
 
     msg2 "Removing redundancies..."
-    rm    db/bin/*.bat
     rm -r lib/desktop/icons/HighContrast
     rm -r lib/desktop/icons/HighContrastInverse
     rm -r lib/desktop/icons/LowContrast
