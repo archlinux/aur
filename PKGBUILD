@@ -1,12 +1,13 @@
 # Maintainer: Stefano <stefanomilani92@gmail.com>
 pkgname="brother-mfc-l2700dw"
 pkgver="3.2.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="LPR and CUPS driver for the Brother MFC-L2700DW"
 arch=('i686' 'x86_64')
 url="http://solutions.brother.com/linux/en_us/"
 license=('custom:brother commercial license')
 depends=('cups')
+depends_x86_64=('lib32-glibc')
 install="$pkgname.install"
 source=(
 	"http://download.brother.com/welcome/dlf101789/mfcl2700dwlpr-$pkgver-$pkgrel.i386.rpm"
@@ -56,3 +57,4 @@ package() {
 	install -m 644 -D cupswrapper-license.txt $pkgdir/usr/share/licenses/${pkgname}/cupswrapper-licence.txt
 	install -m 644 -D lpr-license.txt $pkgdir/usr/share/licenses/${pkgname}/lpr-licence.txt
 }
+
