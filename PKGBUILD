@@ -59,7 +59,7 @@ build() {
         -DCMAKE_BUILD_TYPE='release' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         ..
-    make -j 1
+    make
 }
 
 package() {
