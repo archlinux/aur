@@ -3,8 +3,8 @@
 pkgname=mopidy-mopify
 _pypiname=Mopidy-Mopify
 pkgver=1.5.12
-pkgrel=1
-pkgdesc="A mopidy webclient based on the Spotify webbased interface"
+pkgrel=2
+pkgdesc='A web client that uses external web services to provide additional features and a more complete music experience.'
 arch=('any')
 url="https://github.com/dirkgroenen/mopidy-mopify"
 license=('APACHE')

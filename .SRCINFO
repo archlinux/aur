@@ -1,7 +1,7 @@
 pkgbase = mopidy-mopify
-	pkgdesc = A mopidy webclient based on the Spotify webbased interface
+	pkgdesc = A web client that uses external web services to provide additional features and a more complete music experience.
 	pkgver = 1.5.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dirkgroenen/mopidy-mopify
 	arch = any
 	license = APACHE
