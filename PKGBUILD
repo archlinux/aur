@@ -3,13 +3,13 @@
 
 pkgname=abiword-minimal
 pkgver=3.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A fully-featured word processor"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.abisource.com"
 makedepends=('boost')
-depends=('fribidi' 'wv' 'librsvg' 'enchant' 'desktop-file-utils' 'goffice' 'hicolor-icon-theme')
+depends=('fribidi' 'wv' 'enchant' 'desktop-file-utils' 'goffice')
 conflicts=('abiword' 'abiword-plugins')
 provides=('abiword')
 install=abiword-minimal.install
