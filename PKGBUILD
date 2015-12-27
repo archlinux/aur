@@ -2,7 +2,7 @@
 
 _name=flatman
 pkgname=${_name}-git
-pkgver=v1.0.0.r22.gf4fdbab
+pkgver=v1.0.1.r4.gdab3361
 pkgrel=1
 pkgdesc="Tiling window manager written in D"
 arch=('i686' 'x86_64')
@@ -34,10 +34,6 @@ build() {
 	dub build --build=release
 }
 
-check() {
-	cd "$pkgname"
-}
-
 package() {
 	cd "$pkgname"
 	install -D -m655 flatman ${pkgdir}/usr/bin/flatman
@@ -45,6 +41,7 @@ package() {
 	install -D -m655 dock/flatman-dock ${pkgdir}/usr/bin/flatman-dock
 	install -D -m655 menu/flatman-menu ${pkgdir}/usr/bin/flatman-menu
 	install -D -m655 volume-icon/flatman-volume-icon ${pkgdir}/usr/bin/flatman-volume-icon
+	install -D -m644 res/config.ws ${pkgdir}/etc/flatman/config.ws
 	install -D -m644 res/flatman.desktop ${pkgdir}/usr/share/xsessions/flatman.desktop
 }
 
