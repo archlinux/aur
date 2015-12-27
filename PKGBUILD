@@ -2,7 +2,7 @@
 
 _pkgname=bna
 pkgname=python-$_pkgname
-pkgver=4.0.1
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Command-line Battle.net authenticator and Python library"
 arch=("any")
@@ -11,11 +11,11 @@ url="https://github.com/jleclanche/python-bna"
 depends=("python")
 source=(
 	"https://pypi.python.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz"
-	"https://pypi.python.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz.asc"
+#	"https://pypi.python.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz.asc"
 )
 sha256sums=(
-	"92404ac5856242a75df8dff69c0d122f6cb5c59cd7e545fba1a58e44fbd4831e"
-	"SKIP"
+	"922047f6b00dc88ce55d4be4d7bd1a56a6496ede4fa91b439bef14c938d8c9b2"
+#	"SKIP"
 )
 
 
