@@ -1,59 +1,65 @@
-# Contributors:
+# Original contributors:
 #   Tobias Powalowski <tpowa@archlinux.org>
 #   Thomas Baechler <thomas@archlinux.org>
 
-_localmodcfg=
-_disable_NUMA=y
-_use_1_kHz_ticks=y
-_enable_BFQ=
+_enable_BFQ=n
+_enable_NUMA=n
 
 pkgname=(linux-lts314-ck linux-lts314-ck-headers)
 pkgver=3.14.58
-pkgrel=1
-arch=("i686" "x86_64")
+pkgrel=2
+arch=(i686 x86_64)
 url="https://www.kernel.org/"
-license=('GPL2')
-makedepends=('kmod' 'inetutils' 'bc')
-options=('!strip')
-source=("https://www.kernel.org/pub/linux/kernel/v3.x/linux-${pkgver}.tar.xz"
-        "https://www.kernel.org/pub/linux/kernel/v3.x/linux-${pkgver}.tar.sign"
-        "http://ck.kolivas.org/patches/3.0/3.14/3.14-ck1/patch-3.14-ck1.bz2"
-        "http://repo-ck.com/source/gcc_patch/enable_additional_cpu_optimizations_for_gcc_v4.9+.patch.gz"
-        "bfs447-454.patch"
-        "linux-lts314-ck.preset"
-        "change-default-console-loglevel.patch"
-        "0001-Bluetooth-allocate-static-minor-for-vhci.patch"
-        "0002-module-allow-multiple-calls-to-MODULE_DEVICE_TABLE-p.patch"
-        "0003-module-remove-MODULE_GENERIC_TABLE.patch"
-        "0006-genksyms-fix-typeof-handling.patch"
-        "config"
-        "config.x86_64"
-        "http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.14.0-v7r8/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r8-3.14.patch"
-        "http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.14.0-v7r8/0002-block-introduce-the-BFQ-v7r8-I-O-sched-for-3.14.patch"
-        "http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.14.0-v7r8/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-3.14.0.patch"
-        "should_resched-offsets.patch")
+license=(GPL2)
+makedepends=(kmod inetutils bc)
+options=(!strip)
+source=(
+    "https://www.kernel.org/pub/linux/kernel/v3.x/linux-${pkgver}.tar.xz"
+    "https://www.kernel.org/pub/linux/kernel/v3.x/linux-${pkgver}.tar.sign"
+    "http://ck.kolivas.org/patches/3.0/3.14/3.14-ck1/patch-3.14-ck1.bz2"
+    "http://ck.kolivas.org/patches/3.0/3.18/3.18-ck1/patches/hz-default_1000.patch"
+    "http://ck.kolivas.org/patches/3.0/3.18/3.18-ck1/patches/hz-no_default_250.patch"
+    "http://repo-ck.com/source/gcc_patch/enable_additional_cpu_optimizations_for_gcc_v4.9+.patch.gz"
+    "bfs447-454.patch"
+    "linux-lts314-ck.preset"
+    "change-default-console-loglevel.patch"
+    "0001-Bluetooth-allocate-static-minor-for-vhci.patch"
+    "0002-module-allow-multiple-calls-to-MODULE_DEVICE_TABLE-p.patch"
+    "0003-module-remove-MODULE_GENERIC_TABLE.patch"
+    "0006-genksyms-fix-typeof-handling.patch"
+    "config"
+    "config.x86_64"
+    "http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.14.0-v7r8/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r8-3.14.patch"
+    "http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.14.0-v7r8/0002-block-introduce-the-BFQ-v7r8-I-O-sched-for-3.14.patch"
+    "http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.14.0-v7r8/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-3.14.0.patch"
+    "should_resched-offsets.patch"
+)
 
-sha512sums=("ba0eea0b59be3fce5fe82283c9fb4186af991d24c5a6ea50f21bda79aa66c06d11aa03296d55ad3d2e7b4883bd66c539143acfddee75dadf4331dd9fdeb92ecc"
-            "SKIP"
-            "d745370376e660245e0a5cc4512f0c584a4c782ddb0747637d6ec60021d95afa09d5728f44756c48843b398ba3072823bea99b1713c0833c941a522da0b6f305"
-            "1b8ac77604b891aac57257bc3d9578596f38f2f75a625310a7d36e7f59612a616da6ef12d028622cb855a065e4fadc739cb67d12370c49bb52708744ad312957"
-            "1a112daacec768b588af4549a6e90fa24a251b4632bd14dd1ccbb818838a009df25f9df369ad71e3ef9a6900f4e8ff37f8132bd8450c1653c1a6eb7bdffb0ad5"
-            "57545d604cdb14b3c1b6dc99267216cb21f11451d2abd2d18fb1243a3dc891e5df8dd14a52c3c07b2c28efaf1ccd23ea6c08a2fa1fdaed746614e2346e1e484a"
-            "502192b5ce94c8254205f5ddb85bf50c5f1e78c768817b10dca3a7716a8c59d5e093842631acb51e3805cbf85522e0a9200942656f11bbb4ea1b7d61e24ddd78"
-            "f26306c173e3fc35ae6df4c43e9ddbac33845dcc1fb0def612fe370c2d7b8f904b4c70d267eb52717ade879d1e289695b9e971dfcb1c963dac4c6e2fb5230453"
-            "da69065f317212c7937f5c3110afdef6006da7756b0a2a98c4bff94db12eb503dc89040aa3cd7a1655ba1b0641f47dda4e60933309e231eaecbe9bd79cb06ebd"
-            "4b9fa6afdd1f4f4f6a3a439380cff3376ef33e782aac0ae92421f4b7c40140d57a04d7bc57dfd9fb59fdefb3a0a55fe7e7d6022314b11ef454a1cae4b75cf264"
-            "fdb67e9956d9af1518d0198b86b13150b28f43dd28eb52222a9c43699f7304cd1a56d7f421a0690fa4c0d2c266fd5504da9d6217f83a42d05f35b713fd85e2dd"
-            "47fe0cefb2fb446587c4d1cd36fa0a210745da39dc5fbc36bb4061f16591f7f53d994f469f1f582082315347fb57015f8d0c066aa9a0673852e8f3bbd0393ed1"
-            "8a9726cf4b33d30b8413ce8cd69a1cae6367dc697dfd4a4f0ee8251514a0b900b0e8996353f90d32c2a2e072c50af768f76cbf40fbbd32da5d49dbc7eb981d9f"
-            "edf73585f1363011ba4235919b4265713d3943e3a93996822408ee4c99403a52c81d7cbf23d261aabeefeb41d2bb9b5ad26c4c1a0c6af7e27a4e092654c8e967"
-            "91340f269b2aefb4df0e9999dc3664ded7d1758a7257da1268f95ced5f549a1883127b7260657a2ee0782922e7848fb3fac4ae05d822c793ecc9f2c1be9d4b5f"
-            "9b8f4c92e9e0265e77ec9ad469092d0a1f5d657ec2d6a91c4aed344bc56909acc6e115a21eb9f225fa452432bc4f69c0584e7fc38d4f72a6c711631c0a8105cd"
-            "4f8613760db9ec310f125a8431e127b6edf87e384b16e840e051fe61847bde044915e8e7b19e03123a6ed3de47d15f58ceff890dd4ae739a0bfe06b3d064d361")
+sha512sums=(
+    "ba0eea0b59be3fce5fe82283c9fb4186af991d24c5a6ea50f21bda79aa66c06d11aa03296d55ad3d2e7b4883bd66c539143acfddee75dadf4331dd9fdeb92ecc"
+    "SKIP"
+    "d745370376e660245e0a5cc4512f0c584a4c782ddb0747637d6ec60021d95afa09d5728f44756c48843b398ba3072823bea99b1713c0833c941a522da0b6f305"
+    "fafb74bf01d28fb8fc5f8e54f480e9ddddba04dcf09cb5f774cb7e61da41c5f946897d700410d90f20afa426918beec299313b72caf49e9bc595eb7e4e2cbb9e"
+    "2854937353af5a09f1b1a230603dbbd6ed341acadc4a649b9072d98a6b41681fdf688fc0aa310ca170cab2b7e98d36c141222e44c6a49a8a7005c7107a01cbf6"
+    "1b8ac77604b891aac57257bc3d9578596f38f2f75a625310a7d36e7f59612a616da6ef12d028622cb855a065e4fadc739cb67d12370c49bb52708744ad312957"
+    "1a112daacec768b588af4549a6e90fa24a251b4632bd14dd1ccbb818838a009df25f9df369ad71e3ef9a6900f4e8ff37f8132bd8450c1653c1a6eb7bdffb0ad5"
+    "57545d604cdb14b3c1b6dc99267216cb21f11451d2abd2d18fb1243a3dc891e5df8dd14a52c3c07b2c28efaf1ccd23ea6c08a2fa1fdaed746614e2346e1e484a"
+    "502192b5ce94c8254205f5ddb85bf50c5f1e78c768817b10dca3a7716a8c59d5e093842631acb51e3805cbf85522e0a9200942656f11bbb4ea1b7d61e24ddd78"
+    "f26306c173e3fc35ae6df4c43e9ddbac33845dcc1fb0def612fe370c2d7b8f904b4c70d267eb52717ade879d1e289695b9e971dfcb1c963dac4c6e2fb5230453"
+    "da69065f317212c7937f5c3110afdef6006da7756b0a2a98c4bff94db12eb503dc89040aa3cd7a1655ba1b0641f47dda4e60933309e231eaecbe9bd79cb06ebd"
+    "4b9fa6afdd1f4f4f6a3a439380cff3376ef33e782aac0ae92421f4b7c40140d57a04d7bc57dfd9fb59fdefb3a0a55fe7e7d6022314b11ef454a1cae4b75cf264"
+    "fdb67e9956d9af1518d0198b86b13150b28f43dd28eb52222a9c43699f7304cd1a56d7f421a0690fa4c0d2c266fd5504da9d6217f83a42d05f35b713fd85e2dd"
+    "47fe0cefb2fb446587c4d1cd36fa0a210745da39dc5fbc36bb4061f16591f7f53d994f469f1f582082315347fb57015f8d0c066aa9a0673852e8f3bbd0393ed1"
+    "8a9726cf4b33d30b8413ce8cd69a1cae6367dc697dfd4a4f0ee8251514a0b900b0e8996353f90d32c2a2e072c50af768f76cbf40fbbd32da5d49dbc7eb981d9f"
+    "edf73585f1363011ba4235919b4265713d3943e3a93996822408ee4c99403a52c81d7cbf23d261aabeefeb41d2bb9b5ad26c4c1a0c6af7e27a4e092654c8e967"
+    "91340f269b2aefb4df0e9999dc3664ded7d1758a7257da1268f95ced5f549a1883127b7260657a2ee0782922e7848fb3fac4ae05d822c793ecc9f2c1be9d4b5f"
+    "9b8f4c92e9e0265e77ec9ad469092d0a1f5d657ec2d6a91c4aed344bc56909acc6e115a21eb9f225fa452432bc4f69c0584e7fc38d4f72a6c711631c0a8105cd"
+    "4f8613760db9ec310f125a8431e127b6edf87e384b16e840e051fe61847bde044915e8e7b19e03123a6ed3de47d15f58ceff890dd4ae739a0bfe06b3d064d361"
+)
 validpgpkeys=(
-              "ABAF11C65A2970B130ABE3C479BE3E4300411886" # Linux Torvalds
-              "647F28654894E3BD457199BE38DBBDC86092693E" # Greg Kroah-Hartman
-             )
+    "ABAF11C65A2970B130ABE3C479BE3E4300411886" # Linux Torvalds
+    "647F28654894E3BD457199BE38DBBDC86092693E" # Greg Kroah-Hartman
+)
 
 prepare() {
     cd "${srcdir}/linux-${pkgver}"
@@ -85,16 +91,14 @@ prepare() {
         cat "${srcdir}/config" > ./.config
     fi
 
-    if [ -n "$_use_1_kHz_ticks" ]; then
-        sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
-            -i -e 's/^# CONFIG_HZ_1000 is not set/CONFIG_HZ_1000=y/' \
-            -i -e 's/^CONFIG_HZ=300/CONFIG_HZ=1000/' .config
-    fi
+    sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
+        -i -e 's/^# CONFIG_HZ_1000 is not set/CONFIG_HZ_1000=y/' \
+        -i -e 's/^CONFIG_HZ=300/CONFIG_HZ=1000/' .config
 
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"-lts314-ck\"|g" ./.config
     sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
 
-    if [ -n "$_disable_NUMA" ]; then
+    if [ "$_enable_NUMA" = "n" ]; then
         if [ "${CARCH}" = "x86_64" ]; then
             sed -i -e "s/CONFIG_NUMA=y/# CONFIG_NUMA is not set/" \
                 -i -e "/CONFIG_AMD_NUMA=y/d" \
@@ -109,24 +113,19 @@ prepare() {
         fi
     fi
 
-    if [ -n "$_enable_BFQ" ]; then
+    if [ "$_enable_BFQ" = "y" ]; then
         sed -i -e "/CONFIG_DEFAULT_IOSCHED/ s,cfq,bfq," \
             -i -e s"/CONFIG_DEFAULT_CFQ=y/# CONFIG_DEFAULT_CFQ is not set\nCONFIG_DEFAULT_BFQ=y/" ./.config
     fi
 
     sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
 
-    sed -i '2iexit 0' scripts/depmod.sh
+    sed -i "2iexit 0" scripts/depmod.sh
 
     make prepare
 
-    if [ -n "$_localmodcfg" ]; then
-        if [ -e /usr/bin/modprobed_db ]; then
-            [[ ! -x /usr/bin/sudo ]] && echo "The sudo executable is missing. Install the relevant package and try again." && exit 1
-            sudo /usr/bin/modprobed_db recall
-        fi
-        make localmodconfig
-    fi
+    #sudo /usr/bin/modprobed_db recall
+    #make localmodconfig
 
     #make nconfig
     #make menuconfig
@@ -137,14 +136,14 @@ prepare() {
 build() {
     cd "${srcdir}/linux-${pkgver}"
 
-    make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+    make LOCALVERSION= bzImage modules
 }
 
 package_linux-lts314-ck() {
     pkgdesc="Linux 3.14 with Brain Fuck Scheduler"
-    depends=("coreutils" "linux-firmware" "kmod" "mkinitcpio>=0.7")
+    depends=(coreutils linux-firmware kmod "mkinitcpio>=0.7")
     optdepends=("crda: to set the correct wireless channels for your country")
-    backup=("etc/mkinitcpio.d/linux-lts314-ck.preset")
+    backup=(etc/mkinitcpio.d/linux-lts314-ck.preset)
     install=linux-lts314-ck.install
 
     cd "${srcdir}/linux-${pkgver}"
@@ -170,9 +169,11 @@ package_linux-lts314-ck() {
         -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-linux-lts314-ck-fallback.img\"|" \
         -i "${pkgdir}/etc/mkinitcpio.d/linux-lts314-ck.preset"
 
-    rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
+    rm -f "${pkgdir}/lib/modules/${_kernver}/"{source,build}
     rm -rf "${pkgdir}/lib/firmware"
+
     find "${pkgdir}" -name '*.ko' -exec gzip -9 {} \;
+
     ln -s "../extramodules-3.14-lts314-ck" "${pkgdir}/lib/modules/${_kernver}/extramodules"
     mkdir -p "${pkgdir}/lib/modules/extramodules-3.14-lts314-ck"
     echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-3.14-lts314-ck/version"
@@ -271,14 +272,14 @@ package_linux-lts314-ck-headers() {
 
     find "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts" -type f -perm -u+w 2>/dev/null | while read binary ; do
         case "$(file -bi "${binary}")" in
-            *application/x-sharedlib*) # Libraries (.so)
+            *application/x-sharedlib*)
                 /usr/bin/strip ${STRIP_SHARED} "${binary}";;
-            *application/x-archive*) # Libraries (.a)
+            *application/x-archive*)
                 /usr/bin/strip ${STRIP_STATIC} "${binary}";;
-            *application/x-executable*) # Binaries
+            *application/x-executable*)
                 /usr/bin/strip ${STRIP_BINARIES} "${binary}";;
         esac
     done
 
-    rm -rf "${pkgdir}"/usr/src/linux-${_kernver}/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
+    rm -rf "${pkgdir}/usr/src/linux-${_kernver}/arch/"{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
 }
