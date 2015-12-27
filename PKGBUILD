@@ -29,4 +29,11 @@ build() {
 package() {
   cd cli-visualizer || exit
   install -Dm755 build/vis "$pkgdir/usr/bin/vis"
+
+  #create .vis directory
+  mkdir -p ~/.vis/colors
+
+  #copy over example files
+  cp examples/config ~/.vis/
+  cp examples/rainbow ~/.vis/colors/rainbow
 }
