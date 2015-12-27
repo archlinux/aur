@@ -1,11 +1,11 @@
 # Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=bitcoin-gui-git
-pkgver=v0.11.1.r1.g09a00a1
+pkgver=v0.11.2.r4.g5f09cda
 pkgrel=1
 pkgdesc='Bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt, most recent stable branch, w/GUI and wallet'
 arch=('i686' 'x86_64')
-url="https://bitcoinxt.software/"
+url="https://bitcoin.org/en/download"
 license=('MIT')
 depends=('boost-libs' 'openssl' 'miniupnpc' 'protobuf' 'qrencode' 'qt4')
 makedepends=('boost' 'automoc4' 'qrencode' 'miniupnpc' 'protobuf')
