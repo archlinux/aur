@@ -1,41 +1,38 @@
-# Maintainer: Dan Johansen <strit83@gmail.com>
+# Maintainer: Dan Johansen <strit83 at gmail dot com>
 
 pkgname=arena-tracker
-pkgver=3.23
-pkgrel=2
+pkgver=3.26
+pkgrel=1
 #epoch=
 pkgdesc="Tracks your Hearthstone Arena matches and cards"
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://github.com/supertriodo/Arena-Tracker/"
 license=('GPL')
 #groups=()
-#depends=()
-#makedepends=()
+depends=('qt5-base')
+makedepends=('opencv')
 #checkdepends=()
 #optdepends=()
 provides=(arena-tracker)
-conflicts=(arena-tracker)
+conflicts=('arena-tracker' 'arena-tracker-git')
 #replaces=()
 #backup=()
 #options=()
 #install=
 #changelog=
-source=("http://www.strits.dk/files/$pkgname-$pkgver.tar.gz")
+source=("arena-tracker.desktop")
 #noextract=()
 #validpgpkeys=()
 
-#prepare() {
-#	cd "$pkgname-$pkgver"
-#	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-#}
+prepare() {
+	git clone https://github.com/supertriodo/Arena-Tracker.git
+}
 
-#build() {
-#	mkdir -pm777 $pkgdir/opt/$pkgname/
-#	mkdir -p $pkgdir/opt/HSCards/
-#	cd "$pkgname-$pkgver"
-#	./configure --prefix=/usr
-#	make
-#}
+build() {
+	cd "Arena-Tracker"
+	qmake ArenaTracker.pro
+	make
+}
 
 #check() {
 #	cd "$pkgname-$pkgver"
@@ -43,13 +40,17 @@ source=("http://www.strits.dk/files/$pkgname-$pkgver.tar.gz")
 #}
 
 package() {
-	install -dm755 $pkgdir/opt/$pkgname/
-	install -dm755 $pkgdir/usr/share/applications/
+	install -dm755 $pkgdir/opt/$pkgname
+	install -dm755 $pkgdir/usr/share/applications
+	install -dm755 $pkgdir/usr/share/icons/
+#	mkdir -p $pkgdir/opt/$pkgname/
+#	mkdir -p $pkgdir/usr/share/applocations/
 	install -d $pkgdir/usr/bin/
-	install -m755 $srcdir/$pkgname $pkgdir/opt/$pkgname/$pkgname
+	install -m755 $srcdir/Arena-Tracker/ArenaTracker $pkgdir/opt/$pkgname/$pkgname
+	install -m755 $srcdir/Arena-Tracker/ArenaTracker.ico $pkgdir/usr/share/icons/$pkgname.ico
 	install -m755 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
-	cp -R $srcdir/HSCards $pkgdir/opt/$pkgname/HSCards
+	cp -R $srcdir/Arena-Tracker/HSCards $pkgdir/opt/$pkgname/HSCards
 	ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 	ln -s "/opt/$pkgname/HSCards/" "$pkgdir/usr/bin/"
 }
-md5sums=('8f88284f035849823c802cd5ffb6525c')
+md5sums=('d93e9cce645e5ed3d7067565b1163870')
