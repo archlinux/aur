@@ -28,7 +28,7 @@ package() {
 }
 
 pkgver() {
-  cd "$srcdir/$libmypaint"
+  cd "$srcdir/libmypaint"
 
   ver=1.1 # use the brushlib_version in SConscript
   count=$(git rev-list --count HEAD)
