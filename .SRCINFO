@@ -1,13 +1,13 @@
 pkgbase = python2-q
 	pkgdesc = Quick-and-dirty debugging output for tired programmers
-	pkgver = 2.5
+	pkgver = 2.6
 	pkgrel = 1
 	url = https://github.com/zestyping/q
 	arch = any
 	license = APACHE
 	depends = python
-	source = http://pypi.python.org/packages/source/q/q/q-2.5.tar.gz
-	sha256sums = d115f95058f18250faec0b7fe8a86a926939e5df215dcdbf8729906d9a34b657
+	source = http://pypi.python.org/packages/source/q/q/q-2.6.tar.gz
+	sha256sums = de0fcf5a439754975dd8022c3bf26374b882d0fe4265aab8813f4e87e057eed5
 
 pkgname = python2-q
 
