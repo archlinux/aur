@@ -2,7 +2,7 @@
 
 pkgname=nake
 pkgver=1.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Describe your Nim builds as tasks'
 arch=('x86_64' 'i686')
 url="https://github.com/fowlmouth/nake"
