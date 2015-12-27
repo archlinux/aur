@@ -18,6 +18,6 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 target/release/cargo-script "$pkgdir/usr/bin/cargo-script"
+  install -Dm755 target/release/run-cargo-script "$pkgdir/usr/bin/run-cargo-script"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
