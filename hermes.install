@@ -1,0 +1,6 @@
+post_install() {
+    groupadd hermes || true
+    mkdir -p /etc/hermes
+    chown root:root /etc/hermes
+    chmod 500 /etc/hermes
+}

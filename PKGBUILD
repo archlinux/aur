@@ -9,7 +9,7 @@ license=('MIT')
 depends=(pam)
 makedepends=(sbcl wget buildapp libfixposix pam)
 options=(!strip)
-install=
+install=hermes.install
 source=("https://github.com/ralt/$pkgname/archive/$pkgver.tar.gz")
 md5sums=('9d3029dfb700ea51ab1f304971835f78')
 
