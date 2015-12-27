@@ -3,7 +3,7 @@
 pkgname=llnextgen
 pkgver=0.5.5
 pkgrel=1
-pkgdesc="The spirtual successor of Jacob Grune's parser generator."
+pkgdesc="The spirtual successor of Jacobs and Grune's parser generator."
 arch=('i686' 'x86_64')
 url="os.ghalkes.nl/LLnextgen/download.html"
 license=('GPL3')
