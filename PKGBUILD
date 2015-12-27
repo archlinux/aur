@@ -1,6 +1,6 @@
 # Maintainer: Mathias Bragagia <youremail@domain.com>
 pkgname=kana-p
-pkgver=0.2.3
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="Lite desktop manager - use lightdm, awesome and compton"
 arch=('any')
@@ -28,6 +28,7 @@ depends=(
 	'sudo'
 	'adduser'
 	'util-linux'
+	'accountsservice'
 
 	'zsh'
 
@@ -54,6 +55,12 @@ depends=(
 	'dex'
 	'feh'
 	'most'
+
+	'gtk2'
+	'gtk3'
+	'qt4'
+	'qt5-base'
+	'gtk-theme-arc'
 
 	'rxvt-unicode'
 	'git'
