@@ -221,7 +221,7 @@ else
 	echo "\"Applications\"  f.title" >> $USERTMPFS/twm-xfreq.rc
 	echo "\"\"              f.nop" >> $USERTMPFS/twm-xfreq.rc
 	echo "\"Run...\"        f.function \"run-app\"" >> $USERTMPFS/twm-xfreq.rc
-	echo "\"XFreq\"         f.exec \"xfreq-gui -b $XFREQBACKGROUND -f $XFREQFOREGROUND &\"" >> $USERTMPFS/twm-xfreq.rc
+	echo "\"XFreq\"         f.exec \"xfreq-gui -b $XFREQBACKGROUND -f $XFREQFOREGROUND -S $USERTMPFS &\"" >> $USERTMPFS/twm-xfreq.rc
 	echo "\"Clock\"         f.exec \"xclock -digital -twentyfour -update 1 -strftime '$CLOCKFORMAT' -bg '$WMCLOCKBG' -fg '$WMCLOCKFG' -geometry 175x26-0+0 -fa '$WMCLOCKFACE' -name Clock &\"" >> $USERTMPFS/twm-xfreq.rc
 	echo "\"Terminal\"      f.menu \"termops\"" >> $USERTMPFS/twm-xfreq.rc
 	WEBBROWSER="$(grep -w 'Exec' /usr/share/applications/$(xdg-settings get default-web-browser)|cut -d '=' -f 2)"
