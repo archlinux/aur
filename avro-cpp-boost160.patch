@@ -1,0 +1,126 @@
+diff -uNr -p1 src/avro-cpp-1.7.7/test/buffertest.cc src-bak/avro-cpp-1.7.7/test/buffertest.cc
+--- src/avro-cpp-1.7.7/test/buffertest.cc	2014-07-18 20:20:04.000000000 +0100
++++ src-bak/avro-cpp-1.7.7/test/buffertest.cc	2015-12-28 17:53:53.487075354 +0000
+@@ -66,3 +66,3 @@ void TestReserve()
+ {
+-    BOOST_MESSAGE( "TestReserve");
++    BOOST_TEST_MESSAGE( "TestReserve");
+     {
+@@ -113,3 +113,3 @@ void TestGrow()
+ {
+-    BOOST_MESSAGE( "TestGrow");
++    BOOST_TEST_MESSAGE( "TestGrow");
+     { 
+@@ -153,3 +153,3 @@ void TestDiscard()
+ {
+-    BOOST_MESSAGE( "TestDiscard");
++    BOOST_TEST_MESSAGE( "TestDiscard");
+     {
+@@ -259,3 +259,3 @@ void TestConvertToInput()
+ {
+-    BOOST_MESSAGE( "TestConvertToInput");
++    BOOST_TEST_MESSAGE( "TestConvertToInput");
+     {
+@@ -279,3 +279,3 @@ void TestExtractToInput()
+ {
+-    BOOST_MESSAGE( "TestExtractToInput");
++    BOOST_TEST_MESSAGE( "TestExtractToInput");
+     {
+@@ -378,3 +378,3 @@ void TestAppend()
+ {
+-    BOOST_MESSAGE( "TestAppend");
++    BOOST_TEST_MESSAGE( "TestAppend");
+     {
+@@ -407,3 +407,3 @@ void TestBufferStream()
+ {
+-    BOOST_MESSAGE( "TestBufferStream");
++    BOOST_TEST_MESSAGE( "TestBufferStream");
+ 
+@@ -458,3 +458,3 @@ void TestBufferStreamEof()
+ {
+-    BOOST_MESSAGE( "TestBufferStreamEof");
++    BOOST_TEST_MESSAGE( "TestBufferStreamEof");
+ 
+@@ -471,3 +471,3 @@ void TestSeekAndTell()
+ {
+-    BOOST_MESSAGE( "TestSeekAndTell");
++    BOOST_TEST_MESSAGE( "TestSeekAndTell");
+ 
+@@ -503,3 +503,3 @@ void TestReadSome()
+ {
+-    BOOST_MESSAGE( "TestReadSome");
++    BOOST_TEST_MESSAGE( "TestReadSome");
+     {
+@@ -533,3 +533,3 @@ void TestSeek()
+ {
+-    BOOST_MESSAGE( "TestSeek");
++    BOOST_TEST_MESSAGE( "TestSeek");
+     {
+@@ -594,3 +594,3 @@ void TestIterator()
+ {
+-    BOOST_MESSAGE( "TestIterator");
++    BOOST_TEST_MESSAGE( "TestIterator");
+     {
+@@ -676,3 +676,3 @@ void TestAsioBuffer()
+     using boost::asio::ip::tcp;
+-    BOOST_MESSAGE( "TestAsioBuffer");
++    BOOST_TEST_MESSAGE( "TestAsioBuffer");
+     {
+@@ -748,3 +748,3 @@ void TestSplit()
+ {
+-    BOOST_MESSAGE( "TestSplit");
++    BOOST_TEST_MESSAGE( "TestSplit");
+     {
+@@ -775,3 +775,3 @@ void TestSplitOnBorder()
+ {
+-    BOOST_MESSAGE( "TestSplitOnBorder");
++    BOOST_TEST_MESSAGE( "TestSplitOnBorder");
+     {
+@@ -814,3 +814,3 @@ void TestSplitTwice()
+ {
+-    BOOST_MESSAGE( "TestSplitTwice");
++    BOOST_TEST_MESSAGE( "TestSplitTwice");
+     {
+@@ -844,3 +844,3 @@ void TestCopy()
+ {
+-    BOOST_MESSAGE( "TestCopy");
++    BOOST_TEST_MESSAGE( "TestCopy");
+ 
+@@ -1000,3 +1000,3 @@ void TestBug()
+ {
+-    BOOST_MESSAGE( "TestBug");
++    BOOST_TEST_MESSAGE( "TestBug");
+     {
+@@ -1040,3 +1040,3 @@ void TestForeign ()
+ {
+-    BOOST_MESSAGE( "TestForeign");
++    BOOST_TEST_MESSAGE( "TestForeign");
+     {
+@@ -1067,3 +1067,3 @@ void TestForeignDiscard ()
+ {
+-    BOOST_MESSAGE( "TestForeign");
++    BOOST_TEST_MESSAGE( "TestForeign");
+     {
+@@ -1106,3 +1106,3 @@ void TestPrinter()
+ {
+-    BOOST_MESSAGE( "TestPrinter");
++    BOOST_TEST_MESSAGE( "TestPrinter");
+     {
+diff -uNr -p1 src/avro-cpp-1.7.7/test/SchemaTests.cc src-bak/avro-cpp-1.7.7/test/SchemaTests.cc
+--- src/avro-cpp-1.7.7/test/SchemaTests.cc	2014-07-18 20:20:04.000000000 +0100
++++ src-bak/avro-cpp-1.7.7/test/SchemaTests.cc	2015-12-28 16:10:38.783416399 +0000
+@@ -140,3 +140,3 @@ static void testBasic(const char* schema
+ {
+-    BOOST_CHECKPOINT(schema);
++    BOOST_TEST_CHECKPOINT(schema);
+     compileJsonSchemaFromString(schema);
+@@ -146,3 +146,3 @@ static void testBasic_fail(const char* s
+ {
+-    BOOST_CHECKPOINT(schema);
++    BOOST_TEST_CHECKPOINT(schema);
+     BOOST_CHECK_THROW(compileJsonSchemaFromString(schema), Exception);
+@@ -152,3 +152,3 @@ static void testCompile(const char* sche
+ {
+-    BOOST_CHECKPOINT(schema);
++    BOOST_TEST_CHECKPOINT(schema);
+     compileJsonSchemaFromString(std::string(schema));
