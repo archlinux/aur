@@ -15,14 +15,15 @@ pkgbase = budgie-desktop
 	depends = gnome-menus
 	depends = gnome-settings-daemon
 	depends = libpeas
-	depends = mutter>=3.14
+	depends = mutter>=3.18
 	depends = desktop-file-utils
 	depends = libgee
 	depends = gnome-themes-standard
-	depends = gtk3>=3.14
+	depends = gtk3>=3.18
 	depends = libpulse
 	depends = upower
 	depends = intltool
+	depends = gnome-session>=3.18
 	source = budgie-desktop-10.1.tar.gz::https://github.com/solus-project/budgie-desktop/archive/v10.1.tar.gz
 	source = git+https://git.gnome.org/browse/libgnome-volume-control#commit=7e5504d
 	sha256sums = 27cfae3c253c5546d5cf31a63cc519cd60c94466be5a2d6f8130f412013b61c4

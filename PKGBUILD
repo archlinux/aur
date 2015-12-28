@@ -11,8 +11,8 @@ url="http://solus-project.com/"
 license=('GPL2')
 
 depends=('libwnck3' 'gnome-menus' 'gnome-settings-daemon' 'libpeas'
-		 'mutter>=3.14' 'desktop-file-utils' 'libgee' 'gnome-themes-standard'
-		 'gtk3>=3.14' 'libpulse' 'upower' 'intltool')
+		 'mutter>=3.18' 'desktop-file-utils' 'libgee' 'gnome-themes-standard'
+		 'gtk3>=3.18' 'libpulse' 'upower' 'intltool' 'gnome-session>=3.18')
 
 makedepends=('git' 'python2' 'vala' 'gobject-introspection')
 
