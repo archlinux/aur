@@ -2,12 +2,11 @@
 #   Tobias Powalowski <tpowa@archlinux.org>
 #   Thomas Baechler <thomas@archlinux.org>
 
-_enable_BFQ=n
 _enable_NUMA=n
 
 pkgname=(linux-lts314-ck linux-lts314-ck-headers)
 pkgver=3.14.58
-pkgrel=4
+pkgrel=5
 arch=(i686 x86_64)
 url="https://www.kernel.org/"
 license=(GPL2)
@@ -45,8 +44,8 @@ sha512sums=(
     "da69065f317212c7937f5c3110afdef6006da7756b0a2a98c4bff94db12eb503dc89040aa3cd7a1655ba1b0641f47dda4e60933309e231eaecbe9bd79cb06ebd"
     "4b9fa6afdd1f4f4f6a3a439380cff3376ef33e782aac0ae92421f4b7c40140d57a04d7bc57dfd9fb59fdefb3a0a55fe7e7d6022314b11ef454a1cae4b75cf264"
     "fdb67e9956d9af1518d0198b86b13150b28f43dd28eb52222a9c43699f7304cd1a56d7f421a0690fa4c0d2c266fd5504da9d6217f83a42d05f35b713fd85e2dd"
-    "bbb7d543d929345b86b618b3dd6476e5085687e6c8bf9dff020700c59ba6cc91f65372c6112ecacd5676c86c354bdeb10bde16103cbfd53536ea5c0c356fbec8"
-    "2f534566d040089fb6206d200346758f3f4f9199809fc9750c58d7102c3048db731a0bf78650a0c6f5a15c3cb7edb8ecf182a53c104c2d76e7d141d71589fde4"
+    "790dd15062af80356c3a8d1fb0d75f3fa8a23c3ce4854e359de59086f1e008b6f02b3b3d3352ad6aa3daf952bc7f6b3c1a1d4f752bd681bd5537a82def5d4a7d"
+    "72ba7c5b0e214111f12ed9c533267ff12720f2f3047b4d956524e38c12999976aa0ad8511d7e6056bbf353e4d9353c2366c8690e356f8ea4ee54be2ae7074480"
     "edf73585f1363011ba4235919b4265713d3943e3a93996822408ee4c99403a52c81d7cbf23d261aabeefeb41d2bb9b5ad26c4c1a0c6af7e27a4e092654c8e967"
     "91340f269b2aefb4df0e9999dc3664ded7d1758a7257da1268f95ced5f549a1883127b7260657a2ee0782922e7848fb3fac4ae05d822c793ecc9f2c1be9d4b5f"
     "9b8f4c92e9e0265e77ec9ad469092d0a1f5d657ec2d6a91c4aed344bc56909acc6e115a21eb9f225fa452432bc4f69c0584e7fc38d4f72a6c711631c0a8105cd"
@@ -82,13 +81,10 @@ prepare() {
     patch -p0 -i "${srcdir}/should_resched-offsets.patch" # Offsets for should_resched are required as of commit fe32d3cd5e8eb0f82e459763374aa80797023403
 
     if [ "${CARCH}" = "x86_64" ]; then
-        cat "${srcdir}/config.x86_64" > ./.config
+        cat "${srcdir}/config.x86_64" > .config
     else
-        cat "${srcdir}/config" > ./.config
+        cat "${srcdir}/config" > .config
     fi
-
-    sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"-lts314-ck\"|g" ./.config
-    sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
 
     if [ "$_enable_NUMA" = "n" ]; then
         if [ "${CARCH}" = "x86_64" ]; then
@@ -101,13 +97,9 @@ prepare() {
                 -i -e "/CONFIG_NEED_MULTIPLE_NODES=y/d" \
                 -i -e "/# CONFIG_MOVABLE_NODE is not set/d" \
                 -i -e "/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d" \
-                -i -e "/CONFIG_ACPI_NUMA=y/d" ./.config
+                -i -e "/CONFIG_ACPI_NUMA=y/d" \
+                .config
         fi
-    fi
-
-    if [ "$_enable_BFQ" = "y" ]; then
-        sed -i -e "/CONFIG_DEFAULT_IOSCHED/ s,cfq,bfq," \
-            -i -e s"/CONFIG_DEFAULT_CFQ=y/# CONFIG_DEFAULT_CFQ is not set\nCONFIG_DEFAULT_BFQ=y/" ./.config
     fi
 
     sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
@@ -132,7 +124,7 @@ build() {
 }
 
 package_linux-lts314-ck() {
-    pkgdesc="Linux 3.14 with Brain Fuck Scheduler"
+    pkgdesc="Linux 3.14-lts with Brain Fuck Scheduler v0.454"
     depends=(coreutils linux-firmware kmod "mkinitcpio>=0.7")
     optdepends=("crda: to set the correct wireless channels for your country")
     backup=(etc/mkinitcpio.d/linux-lts314-ck.preset)
@@ -148,18 +140,10 @@ package_linux-lts314-ck() {
     make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
     cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-linux-lts314-ck"
 
-    cp -f "${startdir}/${install}" "${startdir}/${install}.pkg"
-    true && install=${install}.pkg
-    sed -e  "s/KERNEL_NAME=.*/KERNEL_NAME=-lts314-ck/g" \
-        -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/g" \
+    sed -e "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
         -i "${startdir}/${install}"
 
     install -D -m644 "${srcdir}/linux-lts314-ck.preset" "${pkgdir}/etc/mkinitcpio.d/linux-lts314-ck.preset"
-    sed -e "1s|'linux.*'|'linux-lts314-ck'|" \
-        -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-linux-lts314-ck\"|" \
-        -e "s|default_image=.*|default_image=\"/boot/initramfs-linux-lts314-ck.img\"|" \
-        -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-linux-lts314-ck-fallback.img\"|" \
-        -i "${pkgdir}/etc/mkinitcpio.d/linux-lts314-ck.preset"
 
     rm -f "${pkgdir}/lib/modules/${_kernver}/"{source,build}
     rm -rf "${pkgdir}/lib/firmware"
