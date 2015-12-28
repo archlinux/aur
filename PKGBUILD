@@ -10,7 +10,7 @@ url="https://github.com/emkay443/sshmultitool"
 license=('GPL v3')
 depends=('openssh' 'sshfs' 'knockd' 'dialog' 'wget')
 makedepends=('git' 'make')
-optdepends=('openvpn: OpenVPN support' 'vim: text editor' 'nano: text editor' 'emacs-nox: text editor')
+optdepends=('openvpn: OpenVPN support' 'unsion: Unison synchronisation support' 'vim: text editor' 'nano: text editor' 'emacs-nox: text editor')
 source=('git+https://github.com/emkay443/sshmultitool.git')
 md5sums=('SKIP')
 
