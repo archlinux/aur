@@ -19,8 +19,8 @@ build() {
 	mkdir -p build
 	cd build
 	cmake "$srcdir/$pkgname-$pkgver" \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-        -DUSE_QT5=true
+            -DCMAKE_INSTALL_PREFIX=/usr \
+            -DUSE_QT5=true
 	make
 }
 
