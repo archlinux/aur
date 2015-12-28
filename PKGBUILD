@@ -1,6 +1,6 @@
 # Maintainer: L. Bradley LaBoon <me@bradleylaboon.com>
 pkgname=splunkforwarder
-pkgver=6.3.1_f3e41e4b37b2
+pkgver=6.3.2_aaff59bb082c
 pkgrel=1
 pkgdesc="Splunk Universal Forwarder"
 url="http://www.splunk.com/"
@@ -9,11 +9,11 @@ license=('custom')
 conflicts=('splunk')
 install="$pkgname.install"
 source=(
-	"http://download.splunk.com/products/splunk/releases/6.3.1/universalforwarder/linux/$pkgname-${pkgver//_/-}-Linux-$CARCH.tgz"
+	"http://download.splunk.com/products/splunk/releases/6.3.2/universalforwarder/linux/$pkgname-${pkgver//_/-}-Linux-$CARCH.tgz"
 	"$pkgname.service"
 )
 sha256sums=(
-	'2fcc095b44cdf47855f7c89bbe57b035e53341855a493f7e9f7fc20df004b761'
+	'cec2892f5501103203370c65f63953014a7618072e4ff34d053b526879642473'
 	'8bd6b2bcf9e9d89d3ab2160c409687313bbee00b7e44b3df3266b44d15a5c152'
 )
 
