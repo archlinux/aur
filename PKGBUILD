@@ -15,20 +15,16 @@ optdepends=('csoundqt: Qt frontend'
             'vim-csound: Syntax Highlighting and Bindings for Vim'
             'java-environment: Java Wrapper'
             'csound-doc: The Canonical Csound Reference Manual')
-source=("http://sourceforge.net/projects/csound/files/csound6/Csound6.06/Csound6.06.tar.gz/download"
+source=("https://github.com/csound/csound/archive/${pkgver}.tar.gz"
         "Custom.cmake"
         "boost-1.60-name-clash.patch"
         "csound.sh")
-sha256sums=('03e6542d60eaffc9b4c5e81f36243e8872dedbe94c036adaa8e07c27938feb11'
+sha256sums=('0be4d845729f9219d59f3e87b91bc2672e26838178fb0fc4a7753211984d3ef2'
             '81c9473ad3142c658afe2e509f3ae597b5349bba07f95d4ba03f420188786e57'
             '65a205a8d617b6243a892cea9d2c6ed8ab0ace42a9992615c6274d0adb9187bd'
             '23db5bda78f13d5f16eceea085bba660d7b7012a89518e477d12dfef82dbadeb')
 
 prepare() {
-  # Temporarily using SourceForge's copy until Github's version is released.
-  #   Moving the folder is easier than editing the PKGBUILD back and forth to rename.
-  mv Csound6.06 "csound-$pkgver"
-
   cp "$srcdir"/Custom.cmake "csound-${pkgver}"
 
   # Fixes https://github.com/csound/csound/issues/570 until they release officially.
