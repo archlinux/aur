@@ -9,6 +9,11 @@ depends=('git' 'sed' 'grep' 'bash' )
 source=('git+https://github.com/Cube777/dotgit.git')
 md5sums=('SKIP')
 
+pkgver() {
+	cd "$pkgname"
+	git show -s --format="%ci" HEAD | sed -e 's/-//g' -e 's/ .*//'
+}
+
 package() {
 	install -Dm755 "$srcdir/$pkgname/dotgit" "$pkgdir/usr/bin/dotgit"
 }
