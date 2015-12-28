@@ -1,18 +1,18 @@
 # Maintainer : Ainola
-# Contributor: speps <speps at aur dot archlinux dot org>
-# Contributor: Bernardo Barros <bernardobarros@gmail.com>
-# Contributor: Lars Boettcher lars@newyew.de>
+# Contributor: speps
+# Contributor: Bernardo Barros
+# Contributor: Lars Boettcher
 
 pkgname=csound-doc
-pkgver=6.05
+pkgver=6.06
 pkgrel=1
 pkgdesc="The Canonical Csound Reference Manual"
 url="http://csound.github.io"
 arch=('any')
 license=('LGPL' 'GPL')
 depends=('csound')
-source=("http://downloads.sourceforge.net/csound/Csound${pkgver}_manual_html.zip")
-sha256sums=('4d9a71a4dc2cee28b7a5d879c3e8d39d98711f813f7b797b9bb6a7c3635235bd')
+source=("https://github.com/csound/csound/releases/download/6.06.0/Csound${pkgver}_manual_html.zip")
+sha256sums=('c5dd68d5506837f152d672c96e45ab6c1a5141448a543dd656ad2b6b421959b8')
 
 package() {
   # docs
