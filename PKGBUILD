@@ -1,8 +1,8 @@
 # Maintainer: Sebastian Morr <sebastian@morr.cc>
 
 pkgname=nordlicht
-pkgver=0.3.5
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Creates colorful moviebarcodes from video files, comes with a shared C library"
 arch=('i686' 'x86_64')
 url="http://github.com/nordlicht/nordlicht"
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('ffmpeg' 'libpng' 'popt')
 makedepends=('git' 'cmake' 'help2man')
 source=(https://github.com/nordlicht/$pkgname/archive/v$pkgver.tar.gz)
-md5sums=('0d9da375be20b0722f7ae15f3974c37a')
+md5sums=('9c49d2b9dfcddfeda574519a1da9cac8')
 
 build() {
   cd "$pkgname-$pkgver"
