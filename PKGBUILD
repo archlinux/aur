@@ -10,8 +10,8 @@ pkgdesc="Static code analysis tool for improving quality and reducing defects"
 arch=('i686' 'x86_64')
 url="http://oclint.org/"
 license=('BSD')
-dependencies=('clang' 'clang-analyzer' 'llvm' 'llvm-libs')
-makedepends=('cmake' 'subversion' 'python2' 'libxml2' 'git' 'python')
+dependencies=('python2' 'zlib' 'ncurses')
+makedepends=('cmake' 'git' 'llvm' 'python' 'clang')
 provides=('oclint')
 conflicts=('oclint')
 source=("git+http://github.com/oclint/oclint.git"
@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname/oclint-scripts"
-  ./build -llvm-root=/usr -release
+  ./build -llvm-root=/usr -use-system-compiler -release
 }
 
 package() {
