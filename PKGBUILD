@@ -6,7 +6,7 @@
 
 pkgname=kdevplatform-git
 pkgver=4.90.90.r12962.d0596e4
-pkgrel=1
+pkgrel=2
 pkgdesc="A C/C++ development platform for KDE. (GIT Version)"
 arch=('i686' 'x86_64')
 url='http://www.kdevelop.org'
@@ -21,6 +21,7 @@ depends=('qt5-quick1'
          'grantlee-qt5'
          'libkomparediff2'
          'hicolor-icon-theme'
+         'llvm'
          )
 optdepends=('kompare-git: difference checking'
             'subversion: Subversion plugin')
