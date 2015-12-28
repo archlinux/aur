@@ -2,8 +2,8 @@
 
 pkgname=shinonome-git
 pkgver=HEAD
-pkgrel=3
-pkgdesc='A Linux console-based BMS player using ncurses.'
+pkgrel=4
+pkgdesc='A console-based BMS player using ncurses.'
 arch=(i686 x86_64)
 url='https://github.com/kuroclef/shinonome'
 license=(GPL3)
