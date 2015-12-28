@@ -1,7 +1,7 @@
 # Maintainer: Konstantin Stepanov <me@kstep.me>
 pkgname=systemd-cron-next
-pkgver=1.0.0.rc4
-_gitver=1.0.0-rc4
+pkgver=1.0.0.rc5
+_gitver=1.0.0-rc5
 pkgrel=1
 pkgdesc="systemd generator to generate timers/services from crontab and anacrontab files"
 url="https://github.com/systemd-cron/systemd-cron-next"
@@ -14,7 +14,7 @@ provides=('cron' 'anacron')
 conflicts=('cron' 'anacron')
 replaces=('cron' 'anacron')
 source=("https://github.com/systemd-cron/systemd-crontab-generator/archive/v${_gitver}.zip")
-md5sums=('93d55c05cb2127091cb2544d0a944f57')
+md5sums=('fb295dda88949294fd668d66c6a9b062')
 
 build() {
     cd "${srcdir}/${pkgname}-${_gitver}"
