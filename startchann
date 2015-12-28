@@ -1,0 +1,3 @@
+#!/bin/bash
+cd /etc/chann
+chann --load /etc/chann/chann.conf
