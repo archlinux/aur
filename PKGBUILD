@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="http://www.tuxemon.org"
 license=('GPL3')
 groups=('games')
-depends=('python' 'python-pygame' 'python-pytmx' 'python-yapsy' 'python-netifaces' 'python-neteria')
+depends=('python' 'python-pygame-hg' 'python-pytmx' 'python-yapsy' 'python-netifaces' 'python-neteria')
 makedepends=('git')
 optdepends=('libShake: rumble library for Linux.')
 provides=("${pkgname%-git}")
@@ -25,5 +25,5 @@ pkgver() {
 
 package() {
     install -d ${pkgdir}/usr/share/
-    mv ${srcdir}/${_gitname}/tuxemon/ ${pkgdir}/usr/share/${_gitname}
+    mv ${srcdir}/${_gitname}/tuxemon/ ${pkgdir}/usr/share/tuxemon
 }
