@@ -1,0 +1,35 @@
+--- Makefile	2009-10-20 16:34:06.000000000 -0200
++++ Makefile.patch	2015-12-28 13:35:09.767019569 -0200
+@@ -3,11 +3,12 @@
+ BINDIR		= $(PREFIX)/bin
+ INCLUDEDIR	= $(PREFIX)/include
+ LIBDIR		= $(PREFIX)/lib
+-MANDIR		= $(PREFIX)/man
++MANDIR		= $(PREFIX)/share/man
+ INSTALL_PROGRAM	= install -m 0755
+ INSTALL_DATA	= install -m 0444
+ INSTALL_LIB	= install -m 0644
+ INSTALL_MAN	= $(INSTALL_DATA)
++DESTDIR	= /
+
+ VERSION	   = 1.9.9
+ VDATE	   = 21 October 2009
+@@ -99,12 +100,12 @@
+ 	install -m 0444 mdocml-$(VERSION).md5 $(PREFIX)/snapshots/mdocml.md5
+
+ install:
+-	mkdir -p $(BINDIR)
+-	mkdir -p $(MANDIR)/man1
+-	mkdir -p $(MANDIR)/man7
+-	$(INSTALL_PROGRAM) mandoc $(BINDIR)
+-	$(INSTALL_MAN) mandoc.1 $(MANDIR)/man1
+-	$(INSTALL_MAN) mdoc.7 $(MANDIR)/man7
++	mkdir -p $(DESTDIR)$(BINDIR)
++	mkdir -p $(DESTDIR)$(MANDIR)/man1
++	#mkdir -p $(DESTDIR)$(MANDIR)/man7
++	$(INSTALL_PROGRAM) mandoc $(DESTDIR)$(BINDIR)
++	$(INSTALL_MAN) mandoc.1 $(DESTDIR)$(MANDIR)/man1
++	#$(INSTALL_MAN) mdoc.7 $(DESTDIR)$(MANDIR)/man7
+
+ uninstall:
+ 	rm -f $(BINDIR)/mandoc
