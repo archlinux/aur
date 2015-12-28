@@ -1,7 +1,7 @@
 # Maintainer: Mikuro Kagamine <mikurok@forgecrushing.com>
 
 pkgname=sickrage
-pkgver=4.1.0.2
+pkgver=4.2.5
 pkgrel=1
 pkgdesc="A PVR application that downloads and manages your TV shows. Echel0n fork of sickbeard, with tvrage, torrents and anime support."
 arch=('any')
@@ -21,11 +21,11 @@ conflicts=('sickbeard' 'sickbeard-piratebay-git' 'sickbeard-tvrage-git' 'sickrag
 replaces=('sickbeard-tvrage-git')
 options=('!strip')
 install='sickrage.install'
-source=("https://github.com/SiCKRAGETV/SickRage/archive/v${pkgver}.tar.gz"
+source=("https://github.com/SiCKRAGETV/SickRage/archive/${pkgver}.tar.gz"
 		'sickrage-system.service'
 		'sickrage-user.service'
 		'sickrage.tmpfile')
-sha256sums=('aa2105a9091980c34c6fc6208e923d95b197a7d8342bad8e71544eccda908ad9'
+sha256sums=('b65dd043c48a83e070d3c870888e36dc3e694c130b9b8e3938f16735aa6b5568'
 			'1c972f6b27b7095d241580f1992682cd08d640f5692c201f2bd57823635da9dd'
 			'98f3df9ef1c85fb110286c3a1a7d8c9fb20ef587b11d739428b75626d4e03000'
 			'7fbf425e4ef14345e9a91c098c6f1a9cb6ddaed2617b04160a47d35747083565')
