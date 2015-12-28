@@ -1,0 +1,4 @@
+anki-drive-sdk-git/
+pkg/
+src/
+*.pkg.tar.xz
