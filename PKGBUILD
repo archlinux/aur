@@ -12,7 +12,7 @@ pkgname=('eiskaltdcpp-core-git'
          'eiskaltdcpp-web-git'
          'eiskaltdcpp-data-git')
 
-pkgver=2.3.0.4901.31355fd
+pkgver=2.3.0.4927.126f287
 pkgrel=1
 pkgdesc="EiskaltDC++: DC and ADC client based on dcpp core. (GIT Version)"
 license=('GPL3')
@@ -34,6 +34,7 @@ makedepends=('cmake'
              'qtscriptgenerator'
              'qt5-quick1'
              'qt5-multimedia'
+             'qt5-tools'
              'gtk2'
              'gtk3'
              'libnotify'
