@@ -1,0 +1,15 @@
+--- Csound6.05/Opcodes/chua/ChuaOscillator.cpp  2015-04-25 14:06:22.995646234 -0500
++++ Csound6.05/Opcodes/chua/ChuaOscillator.cpp  2015-12-21 10:31:58.182362640 -0600
+@@ -117,11 +117,12 @@
+ //     d = sys_variables(12);
+ //     gnor = a*(x.^3) + b*(x.^2) + c*x + d;
+
+-#include <OpcodeBase.hpp>
+ #include <boost/numeric/ublas/vector.hpp>
+ using namespace boost::numeric;
+ #include <cmath>
+
++#include <OpcodeBase.hpp>
++
+ #undef CS_KSMPS
+ #define CS_KSMPS     (opds.insdshead->ksmps)

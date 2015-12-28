@@ -3,8 +3,8 @@
 # Contributor: Bernardo Barros
 
 pkgname=csound
-pkgver=6.05.0
-pkgrel=3
+pkgver=6.06.0
+pkgrel=1
 pkgdesc="A programming language for sound rendering and signal processing."
 arch=('i686' 'x86_64')
 url="http://csound.github.io"
@@ -15,19 +15,24 @@ optdepends=('csoundqt: Qt frontend'
             'vim-csound: Syntax Highlighting and Bindings for Vim'
             'java-environment: Java Wrapper'
             'csound-doc: The Canonical Csound Reference Manual')
-source=("https://github.com/csound/csound/archive/${pkgver}.tar.gz"
+source=("http://sourceforge.net/projects/csound/files/csound6/Csound6.06/Csound6.06.tar.gz/download"
         "Custom.cmake"
-        "libm.patch"
+        "boost-1.60-name-clash.patch"
         "csound.sh")
-sha256sums=('2384cbc82fe37b70192c87977b52c55b336731ecbfd3be1d8d30c7223815d7b9'
+sha256sums=('03e6542d60eaffc9b4c5e81f36243e8872dedbe94c036adaa8e07c27938feb11'
             '81c9473ad3142c658afe2e509f3ae597b5349bba07f95d4ba03f420188786e57'
-            'e5f4ac9885225013b6e1f08b85205cb5b32ced518be39004f398be8c9fe69ab9'
+            '65a205a8d617b6243a892cea9d2c6ed8ab0ace42a9992615c6274d0adb9187bd'
             '23db5bda78f13d5f16eceea085bba660d7b7012a89518e477d12dfef82dbadeb')
 
 prepare() {
+  # Temporarily using SourceForge's copy until Github's version is released.
+  #   Moving the folder is easier than editing the PKGBUILD back and forth to rename.
+  mv Csound6.06 "csound-$pkgver"
+
   cp "$srcdir"/Custom.cmake "csound-${pkgver}"
-  patch -p0 < libm.patch
-  cd "csound-${pkgver}"
+
+  # Fixes https://github.com/csound/csound/issues/570 until they release officially.
+  patch -d "$srcdir/csound-$pkgver" -p1 < boost-1.60-name-clash.patch
 }
 
 build() {
