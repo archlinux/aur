@@ -3,12 +3,13 @@
 
 pkgname=puppetserver
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Server automation framework and application"
 arch=('any')
 url="https://docs.puppetlabs.com/puppetserver/latest/services_master_puppetserver.html"
 license=("APACHE")
-depends=("ruby" "puppet>=4" "java-environment" "logrotate" "jruby" "facter2")
+depends=("ruby" "puppet>=4" "java-environment" "logrotate" "jruby"
+         "facter>=3.1.3-4" "net-tools")
 backup=('etc/default/puppetserver'
         'etc/logrotate.d/puppetserver'
         'etc/puppetlabs/puppetserver/bootstrap.cfg'
@@ -27,8 +28,9 @@ prepare() {
   cd $pkgname-$pkgver
 
   sed -i 's:sysconfig:default:' ext/redhat/puppetserver.service
-  sed -i "s:/opt/puppetlabs/puppet/lib/ruby/vendor_ruby:$( ruby -e \
-    'puts RbConfig::CONFIG["vendorlibdir"]' ):" ext/config/conf.d/$pkgname.conf
+  sed -i "s:\[/opt/puppetlabs/puppet/lib/ruby/vendor_ruby\]:\[$( ruby -e \
+    'puts RbConfig::CONFIG["vendorlibdir"]' ),$( ruby -e \
+    'puts RbConfig::CONFIG["vendordir"]' )\]:" ext/config/conf.d/$pkgname.conf
 }
 
 package() {
