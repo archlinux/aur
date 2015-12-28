@@ -5,7 +5,7 @@
 
 pkgbase=linux-drm-intel-nightly
 _srcname=drm-intel
-pkgver=20150612
+pkgver=20151228
 pkgdesc="The \"stable\" testing branch for the Intel graphics driver (i915)"
 
 pkgrel=1
@@ -225,12 +225,6 @@ _package-headers() {
   # add xfs and shmem for aufs building
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/fs/xfs"
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/mm"
-
-  # copy in Kconfig files
-  for i in $(find . -name "Kconfig*"); do
-    mkdir -p "${pkgdir}"/usr/lib/modules/${_kernver}/build/`echo ${i} | sed 's|/Kconfig.*||'`
-    cp ${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/${i}"
-  done
 
   chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
   find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
