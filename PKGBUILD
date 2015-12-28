@@ -53,7 +53,7 @@ pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _kernelname=-bfq
 _srcname=linux-4.3
 pkgver=4.3.3
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
@@ -74,7 +74,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         'linux-bfq.preset'
         'change-default-console-loglevel.patch'
-        'config' 'config.x86_64')
+        'config' 'config.x86_64'
+        '0004-disabling-primary-plane-in-the-noatomic-case.patch')
         
 prepare() {
     cd ${_srcname}
@@ -88,6 +89,11 @@ prepare() {
     # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
         msg "Patching set DEFAULT_CONSOLE_LOGLEVEL to 4"
         patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
+        
+    ### Fix #46968
+    # hangs on older intel hardware
+        msg "Fix hangs on older intel hardware"
+        patch -Np1 -i "${srcdir}/0004-disabling-primary-plane-in-the-noatomic-case.patch"
 
     ### Patch source with BFQ
         msg "Patching source with BFQ patches"
@@ -441,7 +447,8 @@ sha512sums=('d25812043850530fdcfdb48523523ee980747f3c2c1266149330844dae2cba0d056
             '607c0fa70375bff2f51387c4984e6f2da18c786a58281ab5c28f6b49c6da22578832afa96503f26a18575ffed677b2f9522a822b5db856b76c4144dd5b59ff6b'
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
             '2a55cf35899b4b6b9f4a4a6d3d39d0f7843954a3b1a57fd28d999e0dcc963cbf411884dfcfd49c671714202745e9c53db9df12f8eab9e98be0b5fade9503c644'
-            '07cccbb594033de456ab24c7e8259f35a198a6a1af3fb9467eef5ae78626750a86ee71ef42a1560825f6f5ef2ecd6a9223c3cd8431d8744c6f1d67e25eb7c35c')
+            '07cccbb594033de456ab24c7e8259f35a198a6a1af3fb9467eef5ae78626750a86ee71ef42a1560825f6f5ef2ecd6a9223c3cd8431d8744c6f1d67e25eb7c35c'
+            '9e5d95f695bcb5858f8ace8f2f2bf2981b22f46cdbc06453b643ee26c38fdaaf8d487b65249e73a8cbcfc2360c65fd970601aec2358e91f14614d227cf33de1a')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
