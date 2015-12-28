@@ -1,6 +1,6 @@
 pkgname=mingw-w64-lcms2
 pkgver=2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Small-footprint color management engine, version 2 (mingw-w64)"
 arch=(any)
 url="http://www.littlecms.com"
