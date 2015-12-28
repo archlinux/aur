@@ -33,7 +33,7 @@ package() {
   install -D -m644 "${srcdir}/chann.service" "${pkgdir}/usr/lib/systemd/system/chann.service"
   install -D -m644 "${srcdir}/chann/chann_test.conf" "${pkgdir}/etc/chann/chann.conf"
   install -D -m755 "${srcdir}/chann/chann" "${pkgdir}/usr/bin/chann"
-  install -D -m755 "${srcdir}/chann/startchann" "${pkgdir}/usr/bin/startchann"
+  install -D -m755 "${srcdir}/startchann" "${pkgdir}/usr/bin/startchann"
   install -D -m755 -d "${srcdir}/chann/assets" "${pkgdir}/etc/chann/assets"
   install -D -m755 -d "${srcdir}/chann/templates" "${pkgdir}/etc/chann/templates"
 }
