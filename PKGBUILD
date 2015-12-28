@@ -6,13 +6,13 @@
 
 pkgname=prelink
 pkgver=20130503
-pkgrel=6
+pkgrel=7
 pkgdesc='ELF prelinking utility to speed up dynamic linking'
 arch=('x86_64' 'i686')
 url='http://people.redhat.com/jakub/prelink/'
 license=('GPL')
 depends=('elfutils')
-makedepends=('elfutils' 'libtool')
+makedepends=('elfutils' 'libelf' 'libtool')
 backup=('etc/prelink.conf')
 source=("http://people.redhat.com/jakub/$pkgname/$pkgname-$pkgver.tar.bz2"
         'prelink.conf'
