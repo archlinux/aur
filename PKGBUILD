@@ -2,16 +2,16 @@
 
 pkgname=include-what-you-use
 epoch=1
-pkgver=0.4
-pkgrel=2
+pkgver=0.5
+pkgrel=1
 pkgdesc="A tool for use with clang to analyze #includes in C and C++ source files"
 url="http://include-what-you-use.org"
 license=('LLVM Release License')
 source=(http://include-what-you-use.org/downloads/include-what-you-use-$pkgver.src.tar.gz)
-sha1sums=('c1cff21519e201a03141421953efcbe027f4e52c')
+sha1sums=('6d4e3040ecb2906f93d72ba14e61381f0a8c2509')
 arch=('i686' 'x86_64')
-depends=('clang>=3.6' 'clang<=3.7')
-makedepends=('clang>=3.6' 'clang<=3.7' 'llvm>=3.6' 'llvm<=3.7')
+depends=('clang>=3.7' 'clang<=3.8')
+makedepends=('clang>=3.7' 'clang<=3.8' 'llvm>=3.7' 'llvm<=3.8')
 optdepends=('python2')
 
 build() {
