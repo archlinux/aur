@@ -5,8 +5,8 @@
 # Contributor: Tatsuyuki Ishi <ishitatsuyuki at gmail dot com>
 
 pkgname=eclipse-pdt
-_pkgver=3.4.0
-_reltag=201502171754
+_pkgver=3.6.0
+_reltag=201509151953
 pkgver=${_pkgver}_${_reltag}
 pkgrel=1
 pkgdesc="PHP Development Tools for Eclipse"
@@ -21,7 +21,7 @@ _mirror="http://www.eclipse.org/downloads/download.php?r=1&file="
 source=("$_mirror/tools/pdt/downloads/pdt-Update-${_pkgver}.${_reltag}.zip")
 noextract=("pdt-Update-${_pkgver}.${_reltag}.zip")
 
-sha256sums=('fc5c7d9f9ffafdd3e00a2a520e7c23c51bcebe8cb2da0a661ca9c071313a1b1e')
+sha256sums=('f9ada9f7b9a70ad36508817ff93042de3839cfc1c45427b0b9493eaaf6fdfd29')
 
 prepare() {
     unzip pdt-Update-${_pkgver}.${_reltag}.zip || true
@@ -31,10 +31,8 @@ build() {
 }
 
 package() {
-    # temporary workaround
-    _pkgver="3.4"
     _installdir="$pkgdir/usr/share/eclipse/dropins/pdt"
-    cd "$srcdir/$_pkgver"
+    cd "$srcdir"
     install -d "$_installdir/eclipse"
     cp -a features "$_installdir/eclipse"
     cp -a plugins "$_installdir/eclipse"
