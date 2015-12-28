@@ -4,8 +4,8 @@
 # Contributor: Partha Chowdhury <kira.laucas@gmail.com>
 
 pkgname=conky-git
-pkgver=v1.10.1.r18.g2fab2d3
-pkgrel=2
+pkgver=1.10.1.r18.g2fab2d3
+pkgrel=3
 pkgdesc='Lightweight system monitor for X'
 url='http://conky.sourceforge.net/'
 license=('BSD' 'GPL')
@@ -21,7 +21,7 @@ options=('!strip' 'debug')
 
 pkgver() {
   cd conky
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
