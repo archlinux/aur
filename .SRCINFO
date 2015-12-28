@@ -1,7 +1,7 @@
 pkgbase = mopidy-mopify
 	pkgdesc = A web client that uses external web services to provide additional features and a more complete music experience.
 	pkgver = 1.5.12
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/dirkgroenen/mopidy-mopify
 	arch = any
 	license = APACHE
