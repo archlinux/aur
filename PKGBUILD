@@ -4,7 +4,7 @@
 #Maintainer: Andrea Tarocchi <valdar@email.it>
 
 pkgname=wesnoth-devel
-pkgver=1.13.1
+pkgver=1.13.2
 pkgrel=1
 pkgdesc="development version of a turn-based strategy game on a fantasy world"
 arch=('i686' 'x86_64')
@@ -19,15 +19,19 @@ source=("http://downloads.sourceforge.net/sourceforge/wesnoth/wesnoth-$pkgver.ta
     "wesnoth-devel-icon.xpm"
     "wesnoth-devel_editor-icon.xpm"
     "wesnothd-devel.tmpfiles.conf"
-    "wesnothd-devel.service")
+    "wesnothd-devel.service"
+    "boost1_60.patch"
+    "boost1_600tests.patch")
  
-md5sums=('e3c50d2afbe80e8f16f38e96dc43e298'
+md5sums=('7c03d65838b52eaad1baf3902824ee11'
 'a906eae5d541a51de77038469b1f794b'
 'b9de9e7ee16f757aa406466657c274a9'
 'b73f4fdefd3e7daa158cce278f11be64'
 '931e7443fe37b2862ca59f65ded74a0b'
 'ffc4b6c06dcd187855710ed96a55fc8f'
-'959aea3af36e7b2a1be6bf4537ec54b7')
+'959aea3af36e7b2a1be6bf4537ec54b7'
+'1049f1455e829f723e65069c3260277c'
+'b22e2b85f90a4c85226f6e92db1fce78')
 
 prepare() {
   cd "${srcdir}/wesnoth-$pkgver"
@@ -35,9 +39,10 @@ prepare() {
   #How to manually create a patch 
   #diff -rupN src/ src_new/ > patch_name.patch
 
-  #Patching due to boost 1.56 changes
-  #[https://gna.org/bugs/?22643]
-  #atch -p1 < ../0001-multiplayer_connect_engine.cpp-dereference-pointer.patch
+  #Patching due to boost 1.60
+  #[https://gna.org/bugs/?24227]
+  patch -p1 < ../boost1_60.patch
+  patch -p1 < ../boost1_600tests.patch
 }
 
 build() {
