@@ -1,7 +1,7 @@
 # Maintainer: CyrIng <xfreq[at]cyring[dot]fr>
 # Contributor: CyrIng <xfreq[at]cyring[dot]fr>
 pkgname=twm-xfreq
-pkgver=0.05
+pkgver=0.06
 pkgrel=1
 pkgdesc="A customized Twm for XFreq"
 arch=(any)
