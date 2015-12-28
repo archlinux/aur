@@ -4,11 +4,10 @@
 #   graysky <graysky@archlinux.us>
 
 _enable_NUMA=n
-_enable_BFQ=n
 
 pkgname=(linux-lts318-ck linux-lts318-ck-headers)
 pkgver=3.18.25
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 url="https://www.kernel.org/"
 license=(GPL2)
@@ -35,8 +34,8 @@ sha512sums=(
     "62fdd5c0a060a051b64093d71fbb028781061ccb7a28c5b06739a0b24dac0945740d9b73ff170784f60005a589774bcc14f56523ec51557eb3a677f726ec34cf"
     "5877f717c7a6eb9add32fd877394d7e6dd5b9238e4407a9ede18c3dc39be3fa0307c17fbd2bf3cc42dabe0756bf870934399c4150b20c9082f77749ef3ef49c3"
     "d9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8"
-    "44aff3f7e908da700854e9ad6c114c3e023d9eaffd2f3678779ba5177cfce17cb3cbfbd8dff030441ff8d04330615e5c8d378a848aca8752c5fa4c0895b4b872"
-    "553b06047b673c27749b2ac804c57dcffe2ad7a6b457db4b61ac2d2d62599572f7957b87ed01bf2e64f495f327322c0f20ba754777f3b03c4297acbba6369bc1"
+    "92efb571fe4fd74eba923e03e6794263f242ce0e0c894ad60187d52cd25a2af1030c07b2a570c07aac8020a91ec018f2009663c83387902d550aa0ceff7ccbe6"
+    "9e80ae4f8be552b76517e383a266f53194c15e944034c4d2cc8c2db5abbf3f2bbf25a65cd5c9354c3523b4c244939b2bcd002a84ba8efe6733c5ed3c44d019b1"
     "d3178ffbe2fc35b1b2bfccef587a658d5bd148a691bc9d6e3a0adfa7b6729f755278f638cd1e615fbfb96a1b847c660b24418df38710e3aee86ddaa378ad0c82"
     "29123cad496e9df7a6babb0afbc77af9990b22b08d8e8867139586fdf1be2b198c1400b05761d68cf1264df57f567ae745cf6024d1f4a744a21cae664e8bc4e1"
     "54aa608ec24289b219a1dc4290f0e77a8cd92213ff2b08292239a9ca839b613868519ed270c27c59b4d0b85c6cc1d088e6785ac40defbcf2188266ac12314c3f"
@@ -68,14 +67,6 @@ prepare() {
         cat "${srcdir}/config" > ./.config
     fi
 
-    sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
-        -i -e 's/^# CONFIG_HZ_1000 is not set/CONFIG_HZ_1000=y/' \
-        -i -e 's/^CONFIG_HZ=300/CONFIG_HZ=1000/' .config
-
-
-    sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"-lts318-ck\"|g" ./.config
-    sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
-
     if [ "$_enable_NUMA" = "n" ]; then
         if [ "$CARCH" = "x86_64" ]; then
             sed -i -e "s/CONFIG_NUMA=y/# CONFIG_NUMA is not set/" \
@@ -89,11 +80,6 @@ prepare() {
                 -i -e "/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d" \
                 -i -e "/CONFIG_ACPI_NUMA=y/d" ./.config
         fi
-    fi
-
-    if [ "$_enable_BFQ" = "y" ]; then
-        sed -i -e "/CONFIG_DEFAULT_IOSCHED/ s,cfq,bfq," \
-            -i -e s"/CONFIG_DEFAULT_CFQ=y/# CONFIG_DEFAULT_CFQ is not set\nCONFIG_DEFAULT_BFQ=y/" ./.config
     fi
 
     sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
@@ -134,23 +120,16 @@ package_linux-lts318-ck() {
     make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
     cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-linux-lts318-ck"
 
-    cp -f "${startdir}/${install}" "${startdir}/${install}.pkg"
-    true && install=${install}.pkg
-    sed -e  "s/KERNEL_NAME=.*/KERNEL_NAME=-lts318-ck/g" \
-        -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/g" \
+    sed -e "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/g" \
         -i "${startdir}/${install}"
 
     install -D -m644 "${srcdir}/linux-lts318-ck.preset" "${pkgdir}/etc/mkinitcpio.d/linux-lts318-ck.preset"
-    sed -e "1s|'linux.*'|'linux-lts318-ck'|" \
-        -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-linux-lts318-ck\"|" \
-        -e "s|default_image=.*|default_image=\"/boot/initramfs-linux-lts318-ck.img\"|" \
-        -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-linux-lts318-ck-fallback.img\"|" \
-        -i "${pkgdir}/etc/mkinitcpio.d/linux-lts318-ck.preset"
 
     rm -f "${pkgdir}/lib/modules/${_kernver}/"{source,build}
     rm -rf "${pkgdir}/lib/firmware"
 
     find "${pkgdir}" -name "*.ko" -exec gzip -9 {} \;
+
     ln -s "../extramodules-3.18-lts318-ck" "${pkgdir}/lib/modules/${_kernver}/extramodules"
     mkdir -p "${pkgdir}/lib/modules/extramodules-3.18-lts318-ck"
     echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-3.18-lts318-ck/version"
