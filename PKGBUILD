@@ -7,14 +7,20 @@ arch=('any')
 url='https://github.com/PaulAvery/archci'
 license=('BSD')
 depends=('bash' 'nodejs' 'pacman' 'pacaur' 'coreutils' 'rkt' 'gnupg' 'arch-install-scripts' 'sudo' 'actool-git')
-makedepends=('npm')
-source=('archci.sh' 'LICENSE')
+makedepends=('npm' 'ronn')
+source=('archci.sh' 'LICENSE' 'README.md')
 sha256sums=('8a7bd6e2f056f76b4a978bd26f76a7f9e1354742a576864d6ddf32299cd75894'
-            'fc49871717e45fb5a32e71dc6e8893b57efe8ace80ee6ab176920ee91482b1bd')
+            'fc49871717e45fb5a32e71dc6e8893b57efe8ace80ee6ab176920ee91482b1bd'
+            '875ecd84679ab43c8af877fa7e18ca1d8558bccc959271764859179a090d080d')
 
 package() {
 	install -Dm 755 archci.sh "$pkgdir/usr/bin/archci"
 	install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/archci/BSD-3-Clause"
+
+    # Create manpage
+    cp README.md archci.1.md
+    ronn -r --manual=archci --organization="Florian Albertz" archci.1.md
+    install -Dm 644 archci.1 "$pkgdir/usr/share/man/man1/archci.1"
 
 	# Install sjx dependency
 	mkdir -p "$pkgdir/usr/lib/archci/node_modules"

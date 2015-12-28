@@ -6,6 +6,7 @@ pkgbase = archci
 	arch = any
 	license = BSD
 	makedepends = npm
+	makedepends = ronn
 	depends = bash
 	depends = nodejs
 	depends = pacman
@@ -18,7 +19,9 @@ pkgbase = archci
 	depends = actool-git
 	source = archci.sh
 	source = LICENSE
+	source = README.md
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 875ecd84679ab43c8af877fa7e18ca1d8558bccc959271764859179a090d080d
 
 pkgname = archci
