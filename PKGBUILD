@@ -8,7 +8,7 @@ pkgdesc='A web client that uses external web services to provide additional feat
 arch=('any')
 url="https://github.com/dirkgroenen/mopidy-mopify"
 license=('APACHE')
-depends=('python2' 'mopidy>=0.19' 'mopidy-spotify')
+depends=('python2' 'mopidy>=0.19' 'mopidy-spotify' 'python2-configobj')
 makedepends=('python2' 'python2-setuptools')
 source=("https://pypi.python.org/packages/source/M/${_pypiname}/${_pypiname}-${pkgver}.tar.gz")
 md5sums=('1fe72e85e22ae23a9f29855439306455')

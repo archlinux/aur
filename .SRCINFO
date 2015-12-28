@@ -10,6 +10,7 @@ pkgbase = mopidy-mopify
 	depends = python2
 	depends = mopidy>=0.19
 	depends = mopidy-spotify
+	depends = python2-configobj
 	source = https://pypi.python.org/packages/source/M/Mopidy-Mopify/Mopidy-Mopify-1.5.12.tar.gz
 	md5sums = 1fe72e85e22ae23a9f29855439306455
 
