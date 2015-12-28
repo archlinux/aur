@@ -2,11 +2,11 @@
 
 pkgname="svgcleaner"
 pkgver=0.6.2
-pkgrel=3
+pkgrel=4
 pkgdesc="An application that cleans svg images from unnecessary data in batch mode."
 provides=("svg-cleaner")
 arch=("i686" "x86_64")
-url="https://launchpad.net/svg-cleaner"
+url="https://github.com/RazrFalcon/SVGCleaner"
 license=("GPL3")
 makedepends=("qt4")
 depends=("p7zip" "qt4")
