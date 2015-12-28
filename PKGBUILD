@@ -1,8 +1,8 @@
 # Maintainer: Sean Baggaley <coffeescripter at gmail dot com>
 pkgname=doomseeker-hg
 _dsver=1.1
-pkgver=1.1.r1510091830
-pkgrel=3
+pkgver=1.1.r1512221226
+pkgrel=1
 pkgdesc="A cross-platform Doom server browser"
 arch=(i686 x86_64)
 url="http://doomseeker.drdteam.org/"
@@ -12,7 +12,7 @@ makedepends=('gcc' 'cmake' 'make' 'mercurial' 'qt5-tools')
 optdepends=('zandronum2: GZDoom fork supporting client/server multiplayer'
 	    'odamex: Classic client/server multiplayer fork'
 	    'chocolate-doom: Doom source port accurately reproducing the original DOS versions of Doom')
-source=("doomseeker::hg+https://bitbucket.org/Blzut3/doomseeker"
+source=("doomseeker::hg+https://bitbucket.org/Doomseeker/doomseeker"
         "doomseeker.desktop"
         "doomseeker-launch-script.sh")
 sha256sums=('SKIP'
