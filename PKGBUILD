@@ -8,10 +8,18 @@ license=("MIT")
 makedepends=(mingw-w64-configure)
 depends=(mingw-w64-crt mingw-w64-libtiff)
 options=(staticlibs !strip !buildflags)
-source=("http://downloads.sourceforge.net/sourceforge/lcms/lcms2-${pkgver}.tar.gz")
-md5sums=('06c1626f625424a811fb4b5eb070839d')
+source=("http://downloads.sourceforge.net/sourceforge/lcms/lcms2-${pkgver}.tar.gz"
+"0002-need-jconfig-before-jmoreconfig.mingw.patch")
+md5sums=('06c1626f625424a811fb4b5eb070839d'
+         '4017f8307298d6f65e1cb5bce9684fa5')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+prepare() {
+	cd lcms2-$pkgver
+	patch -p1 -i ${srcdir}/0002-need-jconfig-before-jmoreconfig.mingw.patch
+	autoreconf -fi
+}
 
 build() {
   cd "${srcdir}"/${pkgname#mingw-w64-}-${pkgver}
@@ -27,9 +35,9 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/${pkgname#mingw-w64-}-${pkgver}/build-${_arch}"
     make DESTDIR="$pkgdir" install
-    rm "$pkgdir"/usr/${_arch}/bin/*.exe
+    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec rm {} \;
+    find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
+    find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
     rm -r "$pkgdir/usr/${_arch}/share"
-    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
-    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a 
   done
 }
