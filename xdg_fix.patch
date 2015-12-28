@@ -1,0 +1,61 @@
+diff -Naur ./cardapio.old/src/Cardapio.py ./cardapio/src/Cardapio.py
+--- ./cardapio.old/src/Cardapio.py	2015-12-27 23:12:03.443879297 -0500
++++ ./cardapio/src/Cardapio.py	2015-12-27 23:12:29.254221586 -0500
+@@ -41,6 +41,7 @@
+ 	import gio
+ 	import glib
+ 	import json
++	import xdg
+ 
+ 	import urllib2
+ 	import gettext
+@@ -53,6 +54,7 @@
+ 
+ 	from time import time
+ 	from xdg import DesktopEntry
++	from xdg import BaseDirectory
+ 	from pango import ELLIPSIZE_END
+ 	from threading import Lock, Thread
+ 	from locale import setlocale, LC_ALL
+@@ -453,7 +455,7 @@
+ 		self._plugin_database['pinned'] = {'class' : plugin_class, 'instances' : []}
+ 
+ 		plugin_dirs = [
+-			os.path.join(DesktopEntry.xdg_config_home, 'Cardapio', 'plugins'),
++			os.path.join(BaseDirectory.xdg_config_home, 'Cardapio', 'plugins'),
+ 			os.path.join(self.cardapio_path, 'plugins'),
+ 			]
+ 
+@@ -631,7 +633,7 @@
+ 		~/.cache/Cardapio)
+ 		"""
+ 
+-		self._config_folder_path = os.path.join(DesktopEntry.xdg_config_home, 'Cardapio')
++		self._config_folder_path = os.path.join(BaseDirectory.xdg_config_home, 'Cardapio')
+ 
+ 		if not os.path.exists(self._config_folder_path):
+ 			os.mkdir(self._config_folder_path)
+@@ -640,7 +642,7 @@
+ 			fatal_error('Error creating config folder!', 'Cannot create folder "%s" because a file with that name already exists!' % self._config_folder_path)
+ 			self._quit()
+ 
+-		self._cache_folder_path = os.path.join(DesktopEntry.xdg_cache_home, 'Cardapio')
++		self._cache_folder_path = os.path.join(BaseDirectory.xdg_cache_home, 'Cardapio')
+ 
+ 		if not os.path.exists(self._cache_folder_path):
+ 			os.mkdir(self._cache_folder_path)
+@@ -1931,7 +1933,7 @@
+ 
+ 		self._add_app_button(_('Home'), 'user-home', section, 'xdg', self._home_folder_path, _('Open your personal folder'), self._app_list)
+ 
+-		xdg_folders_file_path = os.path.join(DesktopEntry.xdg_config_home, 'user-dirs.dirs')
++		xdg_folders_file_path = os.path.join(BaseDirectory.xdg_config_home, 'user-dirs.dirs') #***
+ 		xdg_folders_file = file(xdg_folders_file_path, 'r')
+ 		# TODO: xdg_folders_file = codecs.open(xdg_folders_file_path, mode='r', encoding='utf-8')
+ 
+@@ -3303,5 +3305,3 @@
+ __builtin__.get_output  = get_output
+ __builtin__.fatal_error = fatal_error
+ __builtin__.which       = which
+-
+-
