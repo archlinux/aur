@@ -1,7 +1,7 @@
 # Maintainer: Raimar Bühmann <raimar _at_ buehmann _dot_ de>
 
 pkgname=anki-drive-sdk-git
-pkgver=0.2.0.r20.20140303
+pkgver=0.2.0.r23.20141113
 pkgrel=1
 pkgdesc="C implementation of message protocols and data parsing to communicate with Anki Drive vehicles"
 arch=('i686' 'x86_64')
