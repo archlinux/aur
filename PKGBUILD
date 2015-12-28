@@ -4,7 +4,7 @@
 # Contributor: Thermionix <thermionix@gmail.com>
 
 pkgname=octoprint
-pkgver=1.2.7
+pkgver=1.2.8
 pkgrel=1
 pkgdesc="OctoPrint provides a responsive web interface for controlling a 3D printer (RepRap, Ultimaker, ...)"
 arch=('i686' 'x86_64' 'armv6' 'armv6h')
@@ -59,9 +59,9 @@ md5sums=('SKIP'
 
 pkgver_git() {
     cd "${srcdir}/${pkgname}"
-    local ver="$(git show | grep commit | awk '{print $2}' )"
+    #local ver="$(git show | grep commit | awk '{print $2}' )"
     #printf "r%s" "${ver//[[:alpha:]]}"
-    echo ${ver:0:7}
+    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 pkgver_svn() {
