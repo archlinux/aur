@@ -1,5 +1,5 @@
 pkgname='dwt-git'
-pkgver=0.5.1.r27.g01db773
+pkgver=0.5.1.r55.g172eb45
 pkgrel=1
 pkgdesc='Simple no-frills terminal emulator based on VTE - Git build'
 license='MIT'
@@ -27,5 +27,4 @@ build () {
 package () {
 	cd "${srcdir}/${pkgname}"
 	make PREFIX=/usr DESTDIR="${pkgdir}/" install
-	chmod 2755 "${pkgdir}/usr/man" "${pkgdir}/usr/man/man1"
 }
