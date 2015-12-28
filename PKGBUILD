@@ -1,8 +1,8 @@
  # Maintainer: Elrondo46 <elrond94@hotmail.com> 
 pkgname=doomsday2-unstable
 pkgver=2.0.0
-pkgrel=2
-_build=1805
+pkgrel=3
+_build=1821
 pkgdesc="The advanced Doom engine in version 2x that supports DOOM, Heretic and Hexen but not finalized."
 url="http://dengine.net/"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('doom1-wad: Doom shareware',
             'heretic1-wad: Heretic shareware', 
             'hexen1-wad: Hexen shareware')
 source=("http://netcologne.dl.sourceforge.net/project/deng/Doomsday Engine/Builds/doomsday_${pkgver}-build${_build}_amd64.deb")
-md5sums=('a8837c8a7dfb1bbb2b20c3aee8548b54')
+md5sums=('79d419cdb27b9cb3330ab80ceabe98d6')
 
 package() {
 	cd "$srcdir"
