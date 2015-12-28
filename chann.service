@@ -1,0 +1,9 @@
+[Unit]
+Description=CHANN Anonymous Imageboard 
+
+[Service] 
+ExecStart=/usr/bin/chann --load /etc/chann.conf
+Restart=always 
+
+[Install] 
+WantedBy=multi-user.target
