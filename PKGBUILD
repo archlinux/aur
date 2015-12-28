@@ -6,15 +6,17 @@
 
 pkgname=collectl
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for viewing and gethering system performance metrics."
 arch=('any')
 url="http://collectl.sourceforge.net/"
 license=('GPL2' 'custom:artistic')
 depends=('perl')
 backup=('etc/collectl.conf')
-source=("http://sourceforge.net/projects/collectl/files/collectl/${pkgname}-${pkgver}/${pkgname}-${pkgver}.src.tar.gz")
-md5sums=('8502fbb30539e6f9ac962b8577a863b4')
+source=("http://sourceforge.net/projects/collectl/files/collectl/${pkgname}-${pkgver}/${pkgname}-${pkgver}.src.tar.gz"
+        "collectl.service")
+md5sums=('8502fbb30539e6f9ac962b8577a863b4'
+         '5a8892732fb5a7d64c7071394024eff8')
 
 package() {
 	cd "${pkgname}-${pkgver}"
@@ -29,4 +31,5 @@ package() {
     # match with any of the common ones in Arch Linux, we'll copy the
     # artistic license here as custom.
     install -D -m644 ARTISTIC "${pkgdir}/usr/share/licenses/${pkgname}/ARTISTIC"
+    install -D -m644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 }

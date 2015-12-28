@@ -1,0 +1,10 @@
+[Unit]
+Description=collectl metric collection
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/collectl -D
+ExecReload=/bin/kill -USR1 $MAINPID
+
+[Install]
+WantedBy=multi-user.target
