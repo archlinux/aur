@@ -1,7 +1,8 @@
+# Maintainer: Aaron DeVore <aaron.devore@gmail.com>
 pkgbase=python-ftputil
 pkgname=('python-ftputil' 'python2-ftputil')
 pkgver=3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="High-level FTP client library"
 arch=('any')
 url="http://ftputil.sschwarzer.net/"
@@ -14,7 +15,7 @@ package_python-ftputil() {
 
    cd "${srcdir}/ftputil-${pkgver}"
    python setup.py install --root="${pkgdir}" --optimize=1
-   install -D -m755 "${pkgdir}/usr/doc/ftputil" "${pkgdir}/usr/share/doc/python-ftputil"
+   mv ${pkgdir}/usr/doc/{ftputil,${pkgname}}
 }
 
 package_python2-ftputil() {
@@ -22,5 +23,5 @@ package_python2-ftputil() {
 
    cd "${srcdir}/ftputil-${pkgver}"
    python2 setup.py install --root="${pkgdir}" --optimize=1
-   install -D -m755 "${pkgdir}/usr/doc/ftputil" "${pkgdir}/usr/share/doc/python2-ftputil"
+   mv ${pkgdir}/usr/doc/{ftputil,${pkgname}}
 }
