@@ -16,12 +16,11 @@ _gitname=twister-core
 
 build() {
   cd "$srcdir/$_gitname"
-  ./bootstrap.sh
-  #if test "$CARCH" == armv6h; then
-  #  ./configure --enable-logging --enable-debug --enable-dht --enable-sse2=no
-  #else
-  #  ./configure --enable-logging --enable-debug --enable-dht
-  #fi
+  if test "$CARCH" == armv6h; then
+    ./bootstrap.sh --enable-logging --enable-dht --enable-sse2=no
+  else
+    ./bootstrap.sh --enable-logging --enable-dht
+  fi
   make
 }
 
