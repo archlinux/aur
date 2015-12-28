@@ -11,7 +11,7 @@ license=('MIT')
 depends=('alsa-lib' 'desktop-file-utils' 'gconf' 'gtk2' 'libgnome-keyring' 'libnotify' 'libxtst' 'nodejs' 'nss' 'python2')
 optdepends=('gvfs: file deletion support')
 makedepends=('git' 'npm')
-conflicts=('atom-editor-bin' 'atom-editor-git')
+conflicts=('atom-editor-bin' 'atom-editor-git' 'atom-editor-beta-bin' 'atom-editor')
 install=atom.install
 source=("https://github.com/atom/atom/archive/v${pkgver}-${_pkgrel}.tar.gz"
         'atom-python.patch')
