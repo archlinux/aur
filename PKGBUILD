@@ -2,14 +2,14 @@
 # Maintainer: Andrew Reed <reed.996@osu.edu>
 pkgname=python2-lz4
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="LZ4 Bindings for Python"
 arch=('any')
 url="https://github.com/steeve/python-lz4"
 license=('BSD')
 makedepends=('python2-distribute')
 depends=('python2')
-source=(http://pypi.python.org/packages/source/l/lz4/lz4-$pkgver.tar.gz)
+source=(https://pypi.python.org/packages/source/l/lz4/lz4-$pkgver.tar.gz)
 md5sums=('e32842a49d5254f6918567197a704492')
 
 package() {
