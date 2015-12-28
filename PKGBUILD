@@ -3,16 +3,16 @@
 # Contributor: mosra <mosra@centrum.cz>
 
 pkgname=mypaint-git
-pkgver=1.1.0.r3986.5246883
-pkgrel=1
+pkgver=1.1.0.r4202.e0faa7f
+pkgrel=2
 pkgdesc="A fast and easy painting application for digital painters, with brush dynamics"
 arch=('i686' 'x86_64')
 url="http://mypaint.intilinux.com/"
 license=('GPL')
-depends=('desktop-file-utils' 'gtk3' 'json-c' 'python2-cairo' 'python2-gobject' 'python2-numpy')
+depends=('desktop-file-utils' 'gtk3' 'gegl' 'babl' 'json-c' 'python2-cairo' 'python2-gobject' 'python2-numpy')
 makedepends=('git' 'scons' 'swig')
-provides=('mypaint')
-conflicts=('mypaint')
+provides=('mypaint' 'libmypaint-git')
+conflicts=('mypaint' 'libmypaint-git')
 install=mypaint-git.install
 source=('git+https://github.com/mypaint/mypaint.git'
         'git+https://github.com/mypaint/libmypaint.git'
@@ -39,10 +39,13 @@ prepare() {
 
 build() {
 	cd "$srcdir/mypaint"
-	scons prefix="/usr"
+	scons prefix="/usr" enable_gegl=true use_sharedlib=yes
 }
 
 package() {
 	cd "$srcdir/mypaint"
-	scons prefix="/usr" --install-sandbox="$pkgdir" "$pkgdir"
+	scons prefix="/usr" enable_gegl=true use_sharedlib=yes --install-sandbox="$pkgdir" "$pkgdir"
+
+	#mypaint fails to start if this isn't installed, report upstream later
+	cp brushlib/libmypaint-tests.so "$pkgdir/usr/lib/"
 }
