@@ -27,7 +27,7 @@ _bldtype=Release
 # http://zipcloud.ibsnet.co.jp/
 #*************************************************************
 
-_zipcoderel=201511
+_zipcoderel=201512
 _mozcrev=95de40fa884d693172605e7283ec82233a908b29
 
 pkgbase=mozc
@@ -46,8 +46,8 @@ source=(
   http://downloads.sourceforge.net/project/pnsft-aur/mozc/jigyosyo-${_zipcoderel}.zip
 )
 sha1sums=('SKIP'
-          '04e3f03d4933b20d865c887f7fa1d9dcc8a2bf1d'
-          '584df54e2a1419bec85ca5c70f2e0e585ee314b0')
+          'b07c667a82fd31c752a973c8bee06dab8178c3f0'
+          '11636b6256f3382d11ac4df41db243acd33a44b3')
 
 
 if [[ "$_emacs_mozc" == "yes" ]]; then
@@ -86,6 +86,10 @@ prepare() {
       >> ${pkgbase}/src/data/dictionary_oss/dictionary09.txt
     msg "Done."
   fi
+
+  # Extract liccense part of mozc
+  head -n 29 server/mozc_server.cc > LICENSE
+
 }
 
 
@@ -110,8 +114,9 @@ build() {
 
   msg "Starting make..."
 
-  _targets="server/server.gyp:mozc_server gui/gui.gyp:mozc_tool unix/ibus/ibus.gyp:ibus_mozc renderer/renderer.gyp:mozc_renderer "
+  _targets="server/server.gyp:mozc_server gui/gui.gyp:mozc_tool "
   [[ "$_emacs_mozc" == "yes" ]] && _targets+="unix/emacs/emacs.gyp:mozc_emacs_helper "
+  [[ "$_ibus_mozc" == "yes" ]] && _targets+="unix/ibus/ibus.gyp:ibus_mozc renderer/renderer.gyp:mozc_renderer "
 
   unset CC CC_host CC_target CXX CXX_host CXX_target LINK AR AR_host AR_target \
         NM NM_host NM_target READELF READELF_host READELF_target
@@ -119,11 +124,11 @@ build() {
     python2 build_mozc.py gyp
   python2 build_mozc.py build -c $_bldtype $_targets
 
-  sed -i 's|/usr/libexec/|/usr/lib/ibus-mozc/|g' \
-         out_linux/${_bldtype}/gen/unix/ibus/mozc.xml
+  if [[ "$_ibus_mozc" == "yes" ]]; then
+      sed -i 's|/usr/libexec/|/usr/lib/ibus-mozc/|g' \
+          out_linux/${_bldtype}/gen/unix/ibus/mozc.xml
+  fi
 
-  # Extract liccense part of mozc
-  head -n 29 server/mozc_server.cc > LICENSE
 }
 
 package_mozc() {
