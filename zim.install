@@ -1,0 +1,28 @@
+#!/bin/bash
+
+post_install() {
+	compile_scripts
+	echo
+	echo "Zim is enabled for all users by default."
+	echo "To change that, edit /etc/zsh/zshrc file."
+	echo "Global settings reside in the /etc/zsh/ directory."
+	echo "To personalize Zsh and zim, edit your local ~/.zshrc and ~/.zimrc files."
+	echo "A user can also have a custom, overriding Prezto installation in ~/.zim/"
+	echo
+}
+
+post_upgrade() {
+	compile_scripts
+}
+
+post_remove() {
+	remove_compiled_scripts
+}
+
+compile_scripts() {
+	zsh /etc/zsh/zlogin
+}
+
+remove_compiled_scripts() {
+	find /usr/lib/zim -name "*.zwc" | xargs rm -f
+}
