@@ -3,7 +3,7 @@
 pkgname=mopidy-mopify
 _pypiname=Mopidy-Mopify
 pkgver=1.5.12
-pkgrel=3
+pkgrel=4
 pkgdesc='A web client that uses external web services to provide additional features and a more complete music experience.'
 arch=('any')
 url="https://github.com/dirkgroenen/mopidy-mopify"
