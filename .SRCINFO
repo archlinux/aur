@@ -1,16 +1,16 @@
 pkgbase = perl-data-compare
 	pkgdesc = compare perl data structures
-	pkgver = 1.24
+	pkgver = 1.25
 	pkgrel = 1
-	url = http://search.mcpan.org/dist/Data-Compare
+	url = https://metacpan.org/release/Data-Compare
 	arch = any
 	license = PerlArtistic
 	license = GPL
 	depends = perl-file-find-rule>=0.1
 	options = !emptydirs
-	source = http://search.mcpan.org/CPAN/authors/id/D/DC/DCANTRELL/Data-Compare-1.24.tar.gz
-	md5sums = 45d56aa548581d7e4406f665c417d31e
-	sha512sums = 3005dadba1c292770db363fcc951f4158bf1956a994a65afd1b4d631a505854188eefeb3f360afc719977b522014c66a749c7e898c85283de03ef76bec65a44c
+	source = http://search.cpan.org/CPAN/authors/id/D/DC/DCANTRELL/Data-Compare-1.25.tar.gz
+	md5sums = 6a397ab5833237f3ca05ed7277b19a7a
+	sha512sums = 6db1235672030aa1afe52de1de9fac1f8a2af9eed99a3143d6c5b30669908125f584638fe06b8b33208f6d7fb734ccec7381c9411408a3f4fde1998707f748c9
 
 pkgname = perl-data-compare
 

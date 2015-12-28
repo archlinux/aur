@@ -1,8 +1,8 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.28
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-data-compare'
-pkgver='1.24'
+pkgver='1.25'
 pkgrel='1'
 pkgdesc="compare perl data structures"
 arch=('any')
@@ -10,11 +10,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-file-find-rule>=0.1')
 makedepends=()
-url='http://search.mcpan.org/dist/Data-Compare'
-source=('http://search.mcpan.org/CPAN/authors/id/D/DC/DCANTRELL/Data-Compare-1.24.tar.gz')
-md5sums=('45d56aa548581d7e4406f665c417d31e')
-sha512sums=('3005dadba1c292770db363fcc951f4158bf1956a994a65afd1b4d631a505854188eefeb3f360afc719977b522014c66a749c7e898c85283de03ef76bec65a44c')
-_distdir="Data-Compare-1.24"
+url='https://metacpan.org/release/Data-Compare'
+source=('http://search.cpan.org/CPAN/authors/id/D/DC/DCANTRELL/Data-Compare-1.25.tar.gz')
+md5sums=('6a397ab5833237f3ca05ed7277b19a7a')
+sha512sums=('6db1235672030aa1afe52de1de9fac1f8a2af9eed99a3143d6c5b30669908125f584638fe06b8b33208f6d7fb734ccec7381c9411408a3f4fde1998707f748c9')
+_distdir="Data-Compare-1.25"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
