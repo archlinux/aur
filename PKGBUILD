@@ -1,5 +1,5 @@
 pkgname='holo'
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Minimalistic configuration management'
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ backup=(
     'etc/holorc'
 )
 source=("https://github.com/holocm/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('770b09a36b2ef2f2eb708b6532ce77ac')
+md5sums=('1a29a0cc93576d6dd037b4b55ea881d4')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
