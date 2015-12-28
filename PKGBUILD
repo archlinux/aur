@@ -1,14 +1,14 @@
 # Mantainer: Franco Tortoriello
 
 pkgname=dosbox-x-git
-pkgver=1523.23bea0d
-pkgrel=2
+pkgver=1553.d29853c
+pkgrel=3
 pkgdesc="x86 emulator with builtin DOS, with patches with more features"
 arch=(i686 x86_64)
 url="http://dosbox.sourceforge.net"
 license=(GPL)
 depends=(sdl_net sdl_sound libpng mesa)
-makedepends=(subversion glu openglide-cvs munt)
+makedepends=(git glu openglide-cvs munt)
 provides=(dosbox dosbox-svn dosbox-svn-patched dosbox-debug bin32-dosbox bin32-dosbox-svn bin32-dosbox-svn-patched)
 conflicts=(dosbox dosbox-svn dosbox-svn-patched dosbox-debug bin32-dosbox bin32-dosbox-svn bin32-dosbox-svn-patched)
 source=(dosbox::git://github.com/joncampbell123/dosbox-x.git
