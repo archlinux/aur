@@ -11,6 +11,7 @@ Group=gitlab
 WorkingDirectory=<DATADIR>
 Environment=RAILS_ENV=production PATH=/opt/ruby2.1/bin:/usr/bin
 SyslogIdentifier=gitlab-sidekiq
+PIDFile=<HOMEDIR>/pids/sidekiq.pid
 
 CapabilityBoundingSet=
 PrivateTmp=true
@@ -22,7 +23,8 @@ ProtectHome=true
 # instead you can safely enable this security feature.
 #NoNewPrivileges=true
 
-ExecStart=/usr/bin/bundle-2.1 exec "sidekiq -q post_receive -q mailer -q system_hook -q incoming_email -q project_web_hook -q gitlab_shell -q common -q default -q archive_repo -e production -L <LOGDIR>/sidekiq.log >> <LOGDIR>/sidekiq.log 2>&1"
+ExecStart=/usr/bin/bundle-2.1 exec "sidekiq -q post_receive -q mailers -q system_hook -q incoming_email -q project_web_hook -q gitlab_shell -q common -q default -q archive_repo -e production -L <LOGDIR>/sidekiq.log >> <LOGDIR>/sidekiq.log 2>&1"
+ExecStop=/usr/bin/bundle-2.1 exec "sidekiqctl stop <HOMEDIR>/pids/sidekiq.pid >> <LOGDIR>/sidekiq.log 2>&1"
 
 [Install]
 WantedBy=multi-user.target
