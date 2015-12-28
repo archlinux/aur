@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-net-ssh2'
-pkgver='0.53'
+pkgver='0.58'
 pkgrel='1'
 pkgdesc="Support for the SSH 2 protocol via libssh2."
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('libssh2>=1.4.3' 'openssl>=1.0.1.j' 'perl' 'zlib>=1.2.8')
+depends=('libssh2>=1.6.0' 'openssl>=1.0.2.d' 'openssl>=1.0.2.d' 'perl>=5.6.0' 'zlib>=1.2.8')
 makedepends=()
-url='http://search.mcpan.org/dist/Net-SSH2'
-source=('http://search.mcpan.org/CPAN/authors/id/R/RK/RKITOVER/Net-SSH2-0.53.tar.gz')
-md5sums=('f8a2c3ebb3bd191635e00a68a3d5f015')
-sha512sums=('c3aaa97f2c5fe987c5f28fca2d6687b6ff759d6ab70f6136e581f439cd06af70de5410628187c94168db43464e0713eeed9f50185f7bf0305fd01e0ac7ee5817')
-_distdir="Net-SSH2-0.53"
+url='https://metacpan.org/release/Net-SSH2'
+source=('http://search.cpan.org/CPAN/authors/id/S/SA/SALVA/Net-SSH2-0.58.tar.gz')
+md5sums=('f16173b65f682819256e63f406a73c64')
+sha512sums=('753e5037d08405f9c401631cd77f1df57e7ee14db44033df8ce0b82f02377bdf7fdecd32bb6f9e1cd80f3fed88adb37e3abdb0b1dbfa50d115ee9e31fd735380')
+_distdir="Net-SSH2-0.58"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
