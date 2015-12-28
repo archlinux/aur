@@ -1,6 +1,32 @@
 post_install() {
+    # <Group>
     groupadd hermes || true
+
+    # <Folder>
     mkdir -p /etc/hermes
     chown root:root /etc/hermes
     chmod 500 /etc/hermes
+
+    # <Systemd>
+    systemctl enable hermes.service
+
+    # <PAM>
+    sed -i '2i\auth sufficient pam_hermes.so\
+' /etc/pam.d/system-auth
+}
+
+pre_remove() {
+    # </Systemd>
+    systemctl disable hermes.service
+}
+
+post_remove() {
+    # </Group>
+    groupdel hermes || true
+
+    # </Folder>
+    rm -rf /etc/hermes
+
+    # </PAM>
+    sed 's/^.*pam_hermes.*$//' /etc/pam.d/system-auth
 }
