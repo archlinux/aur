@@ -20,8 +20,8 @@ pkgbase = archci
 	source = archci.sh
 	source = LICENSE
 	source = README.md
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 8a7bd6e2f056f76b4a978bd26f76a7f9e1354742a576864d6ddf32299cd75894
+	sha256sums = fc49871717e45fb5a32e71dc6e8893b57efe8ace80ee6ab176920ee91482b1bd
 	sha256sums = 875ecd84679ab43c8af877fa7e18ca1d8558bccc959271764859179a090d080d
 
 pkgname = archci
