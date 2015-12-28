@@ -1,12 +1,12 @@
 pkgbase = dosbox-x-git
 	pkgdesc = x86 emulator with builtin DOS, with patches with more features
-	pkgver = 1523.23bea0d
-	pkgrel = 2
+	pkgver = 1553.d29853c
+	pkgrel = 3
 	url = http://dosbox.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = subversion
+	makedepends = git
 	makedepends = glu
 	makedepends = openglide-cvs
 	makedepends = munt
