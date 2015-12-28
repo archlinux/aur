@@ -15,7 +15,7 @@ source=("Bridge_Designer_2015_Installation_Image.dmg::http://sourceforge.net/pro
         bridgedesigner.desktop
         bridgedesigner.png)
 sha1sums=('7c1815f3c21185031c0ec7b6316d3b8283095794'
-          '8a419d1b2ba8bda4a39b2df4341b5392ae71f5c1'
+          'a6774d80fbe56704aaa96ac7b929c4580419f64a'
           'eddb921bf479f81fe25e9fa4b0ac76895969df06'
           '6d5f09d9b5991e82a534561f918ca489b3c7744c')
 noextract=("Bridge_Designer_2015_Installation_Image.dmg")
@@ -35,7 +35,6 @@ package() {
   install -m644 "Bridge Designer 2015/Bridge Designer 2015.app/Contents/Java"/beansbinding-1.2.1.jar $pkgdir/usr/share/java/bridgedesigner/
   install -m644 "Bridge Designer 2015/Bridge Designer 2015.app/Contents/Java"/bsaf-1.9.1.jar $pkgdir/usr/share/java/bridgedesigner/
   install -m644 "Bridge Designer 2015/Bridge Designer 2015.app/Contents/Java"/jh.jar $pkgdir/usr/share/java/bridgedesigner/
-  install -m644 "Bridge Designer 2015/Bridge Designer 2015.app/Contents/Java"/quaqua-filechooser-only.jar $pkgdir/usr/share/java/bridgedesigner/
   install -m644 "Bridge Designer 2015/Bridge Designer 2015.app/Contents/Java"/swing-layout-1.0.4.jar $pkgdir/usr/share/java/bridgedesigner/
   install -m644 "Bridge Designer 2015/Bridge Designer 2015.app/Contents/Java"/WPBD.jar $pkgdir/usr/share/java/bridgedesigner/
 }
