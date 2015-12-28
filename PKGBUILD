@@ -3,7 +3,7 @@
 
 pkgname=vim-twig-git
 pkgver=20151228
-pkgrel=1
+pkgrel=2
 pkgdesc="Supports Twig templates for vim"
 url="https://github.com/evidens/vim-twig"
 license=('unknow')
@@ -31,7 +31,7 @@ build() {
 
 package() {
   cd "${srcdir}/${_gitname}"
-  for i in ftdetect ftplugin snippets syntax
+  for i in ftplugin snippets syntax
   do
     install -dm 755 "${pkgdir}/usr/share/vim/vimfiles/$i"
     install -m 755 "${srcdir}"/"${_gitname}"/$i/* "${pkgdir}"/usr/share/vim/vimfiles/$i
