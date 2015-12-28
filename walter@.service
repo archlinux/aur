@@ -1,0 +1,23 @@
+[Unit]
+Description=A Tiny Deployment Pipeline
+After=network.target
+
+[Service]
+User=walter-cd
+EnvironmentFile=/etc/conf.d/walter
+Type=simple
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=walter
+# walter can run both in an continuous service mode or a one-shot local mode
+ExecStart=/usr/bin/walter -c /etc/walter/%i.yml -mode service
+LimitCPU=infinity
+LimitFSIZE=infinity
+LimitDATA=infinity
+LimitCORE=0
+LimitAS=infinity
+LimitLOCKS=infinity
+
+[Install]
+WantedBy=multi-user.target
+

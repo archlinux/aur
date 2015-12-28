@@ -1,0 +1,5 @@
+post_install() {
+  getent passwd walter-cd >/dev/null ||
+      useradd -rmU -d /var/lib/walter -c 'walter service user' walter-cd
+  install -o walter-cd -g walter-cd -dm0700 /etc/walter
+}
