@@ -3,7 +3,7 @@
 pkgbase = i686-doomsday2-unstable
 	pkgdesc = The advanced Doom engine in version 2x that supports DOOM, Heretic and Hexen but not finalized.
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://dengine.net/
 	arch = i686
 	license = GPL2
@@ -20,8 +20,8 @@ pkgbase = i686-doomsday2-unstable
 	optdepends = hexen1-wad: Hexen shareware
 	conflicts = doomsday2-unstable
 	conflicts = doomsday
-	source = http://netcologne.dl.sourceforge.net/project/deng/Doomsday Engine/Builds/doomsday_2.0.0-build1805_i386.deb
-	md5sums = 66f414962b1782fb5598bbd9fc3850c4
+	source = http://netcologne.dl.sourceforge.net/project/deng/Doomsday Engine/Builds/doomsday_2.0.0-build1821_i386.deb
+	md5sums = 8b8c9800ea20e0d5d1d681d0069643c9
 
 pkgname = i686-doomsday2-unstable
 
