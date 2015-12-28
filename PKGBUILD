@@ -1,7 +1,7 @@
 # Maintainer: Daniel Landau <daniel.landau@iki.fi>
 pkgname=shrinkpdf
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Tiny shell script to shrink an image pdf"
 arch=('any')
 url="http://www.alfredklomp.com/programming/shrinkpdf/"
@@ -10,7 +10,7 @@ depends=('ghostscript')
 source=(
 http://www.alfredklomp.com/programming/shrinkpdf/shrinkpdf.sh
 )
-sha256sums=('24da8a094964a502fb5999ddedad99fba46e52339900d49be9a8d389a43c339e')
+sha256sums=('d68561bd674847d6b73961af571adf5720c9b525720afc399c3f7324d7af638f')
 
 package() {
 	cd "$srcdir/"
