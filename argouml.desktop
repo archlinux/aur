@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=ArgoUML
+Type=Application
+Exec=argouml
+Comment=UML 1.4 modeller
+Categories=Education;Engineering;Development;Programming;Science;
+Icon=/opt/argouml/icon/ArgoIcon256x256.png

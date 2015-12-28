@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Launch the program
+/opt/argouml/argouml.sh
