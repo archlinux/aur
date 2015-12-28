@@ -1,16 +1,16 @@
 pkgbase = perl-uri-encode
 	pkgdesc = Simple percent Encoding/Decoding
-	pkgver = 0.09
+	pkgver = 1.0.1
 	pkgrel = 1
-	url = http://search.cpan.org/dist/URI-Encode
+	url = https://metacpan.org/release/URI-Encode
 	arch = any
 	license = PerlArtistic
 	license = GPL
 	depends = perl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/MI/MITHUN/URI-Encode-0.09.tar.gz
-	md5sums = 369d5dd49215f3f591a1e5975609df27
-	sha512sums = feea17dffa82c5c89b427cdad7805794e9fc483a01f473fe1680a0559e2bc08393ba5427c7734860dc21b7d125f724f864112cf15e3db11238046147ab01aaec
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MITHUN/URI-Encode-v1.0.1.tar.gz
+	md5sums = 2248e3dc1dec341247b16ddf9ead085e
+	sha512sums = dab379ec6fd8e7f3571a02cad172577d1ed4d085401583f12bf4e4df7557dc822ed66f7d63659b10acc7137b4c874a2f833d2f6554995574f35a2e539b31c444
 
 pkgname = perl-uri-encode
 
