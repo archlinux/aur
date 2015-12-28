@@ -1,7 +1,7 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=apt
-pkgver=1.0.10.2
-pkgrel=2
+pkgver=1.1.9
+pkgrel=1
 pkgdesc="commandline package manager"
 arch=('i686' 'x86_64')
 url="http://packages.debian.org/sid/apt"
@@ -18,7 +18,7 @@ options=()
 install=
 changelog=
 source=(http://ftp.debian.org/debian/pool/main/a/$pkgname/${pkgname}_$pkgver.tar.xz)
-sha256sums=('f48da7f8107a3a4b814c95a20cc2623f9fea30cf26bd23264cfa7a8cef62bf1b')
+sha256sums=('38ba8c654209016c7c824ae9297751ba748a0be7255efadbf4ee80052ccc41b9')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -56,13 +56,13 @@ package() {
   mkdir -p $pkgdir/usr/lib
   libdir=$pkgdir/usr/lib
   # libapt-inst
-  install bin/libapt-inst.so.1.7.0 $libdir/
-  ln -s -r $libdir/libapt-inst.so.1.7.0 $libdir/libapt-inst.so.1.7
-  ln -s -r $libdir/libapt-inst.so.1.7.0 $libdir/libapt-inst.so
+  install bin/libapt-inst.so.2.0 $libdir/
+  ln -s -r $libdir/libapt-inst.so.2.0 $libdir/libapt-inst.so.2.0.0
+  ln -s -r $libdir/libapt-inst.so.2.0 $libdir/libapt-inst.so
   # libapt-pkg
-  install bin/libapt-pkg.so.4.16.0 $libdir/
-  ln -s -r $libdir/libapt-pkg.so.4.16.0 $libdir/libapt-pkg.so.4.16
-  ln -s -r $libdir/libapt-pkg.so.4.16.0 $libdir/libapt-pkg.so
+  install bin/libapt-pkg.so.5.0 $libdir/
+  ln -s -r $libdir/libapt-pkg.so.5.0 $libdir/libapt-pkg.so.5.0.0
+  ln -s -r $libdir/libapt-pkg.so.5.0 $libdir/libapt-pkg.so
   # libapt-private
   install bin/libapt-private.so.0.0.0 $libdir/
   ln -s -r $libdir/libapt-private.so.0.0.0 $libdir/libapt-private.so.0.0
