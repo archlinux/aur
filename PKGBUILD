@@ -2,7 +2,7 @@
 # Contributor: Sebastian Lehne <s.lehne@owl-soft.de>
 
 pkgname=sshmultitool
-pkgver=2015.12.22
+pkgver=2015.12.28
 pkgrel=1
 pkgdesc="A multi tool for SSH, SCP and SFTP, supporting port knocking and openvpn (German version)"
 arch=('any')
