@@ -30,6 +30,7 @@ conflicts=(
   ttf-dejavusansmono-powerline-git
   ttf-droid-sans-mono-dotted-powerline-git
   ttf-droid-sans-mono-slashed-powerline-git
+  ttf-hack
   ttf-hack-powerline-git
   ttf-inconsolata-dz-powerline
   ttf-liberation-mono-powerline-git
