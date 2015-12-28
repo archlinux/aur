@@ -29,6 +29,6 @@ build() {
 package() {
   cd "${srcdir}/chann"
   install -D -m644 "${srcdir}/chann.service" "${pkgdir}/usr/lib/systemd/system/chann.service"
-  install -D -m644 "${srcdir}/chann/chann_test.conf" "${pkgdir}/etc/chann.conf"
+  install -D -m644 "${srcdir}/chann/chann_test.conf" "${pkgdir}/etc/chann/chann.conf"
   install -D -m755 "${srcdir}/chann/chann" "${pkgdir}/usr/bin/chann"
 }

@@ -2,7 +2,7 @@
 Description=CHANN Anonymous Imageboard 
 
 [Service] 
-ExecStart=/usr/bin/chann --load /etc/chann.conf
+ExecStart=/usr/bin/chann --load /etc/chann/chann.conf
 Restart=always 
 
 [Install] 
