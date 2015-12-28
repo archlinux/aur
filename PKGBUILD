@@ -10,6 +10,7 @@ license=('GPL3')
 depends=('glibc' 'curl')
 makedepends=('git')
 conflicts=('chann')
+backup=(etc/chann/chann.conf)
 source=('git+https://github.com/coyove/chann.git'
 	"chann.service"
 )
