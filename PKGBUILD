@@ -5,14 +5,14 @@ _pkgname=rigsofrods
 _gitname=rigs-of-rods
 
 pkgname=$_pkgname-git
-pkgver=LATEST
-pkgrel=4
+pkgver=0.4.5.1.r90.g9cdb194
+pkgrel=1
 pkgdesc="An open source vehicle simulator based on soft-body physics"
 arch=('i686' 'x86_64')
 url="http://rigsofrods.com"
 license=('GPL')
 depends=('angelscript-2.22.1' 'openal' 'wxgtk' 'ogre' 'caelum-git' 'mygui' 'ogre-pagedgeometry-git' 'socketw')
-makedepends=('boost' 'cmake' 'git')
+makedepends=('cmake' 'git')
 replaces=('rigsofrods-hg')
 conflicts=('rigsofrods' 'rigsofrods-hg')
 provides=('rigsofrods')
@@ -27,6 +27,11 @@ sha512sums=('SKIP'
             '40a000061d72245265d53d7c2ce0c4acc81eb3dddb6f6beda4b693a154e34922b8eb5c8400062b58c5f43a74be6cdaab938c1cd6427aebfc691d1fa52517fe2d'
             'b0c04df93fa622d27ba485df1253ee786ebe42acb2c7b2f5d9657f22623503ee995845905f782c7b550625a4db0dbfdd924e4757b2daf21f84bb9cb3f6d683af'
 )
+
+pkgver() {
+  cd "$srcdir/$_gitname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   cd "$srcdir/$_gitname"
