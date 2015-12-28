@@ -5,8 +5,7 @@
 
 pkgname=nvidia-352
 pkgver=352.63
-_extramodules=extramodules-4.2-ARCH
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA drivers for linux"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -32,6 +31,8 @@ prepare() {
 }
 
 build() {
+    _major=$(pacman -Q linux | grep -Po "\d+\.\d+")
+    _extramodules=extramodules-$_major-ARCH
     _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
     cd "${_pkg}"/kernel
     IGNORE_CC_MISMATCH=1 make SYSSRC=/usr/lib/modules/"${_kernver}/build" module
@@ -43,6 +44,9 @@ build() {
 }
 
 package() {
+    _major=$(pacman -Q linux | grep -Po "\d+\.\d+")
+    _extramodules=extramodules-$_major-ARCH
+
     install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia.ko" \
         "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia.ko"
 
