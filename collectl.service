@@ -3,6 +3,7 @@ Description=collectl metric collection
 
 [Service]
 Type=forking
+PIDFile=/var/run/collectl.pid
 ExecStart=/usr/bin/collectl -D
 ExecReload=/bin/kill -USR1 $MAINPID
 

@@ -6,7 +6,7 @@
 
 pkgname=collectl
 pkgver=4.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool for viewing and gethering system performance metrics."
 arch=('any')
 url="http://collectl.sourceforge.net/"
@@ -16,7 +16,7 @@ backup=('etc/collectl.conf')
 source=("http://sourceforge.net/projects/collectl/files/collectl/${pkgname}-${pkgver}/${pkgname}-${pkgver}.src.tar.gz"
         "collectl.service")
 md5sums=('8502fbb30539e6f9ac962b8577a863b4'
-         '5a8892732fb5a7d64c7071394024eff8')
+         '1a840bf752b462164d9192a5d51816d3')
 
 package() {
 	cd "${pkgname}-${pkgver}"
