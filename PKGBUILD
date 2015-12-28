@@ -3,10 +3,10 @@
 
 pkgname=oclint-git
 _pkgname=oclint
-pkgver=0.10.1.r747.1148765
-_pkgver=0.10.1
+pkgver=0.10.2.r782.0b68641
+_pkgver=0.10.2
 pkgrel=1
-pkgdesc="static code analysis tool for improving quality and reducing defects"
+pkgdesc="Static code analysis tool for improving quality and reducing defects"
 arch=('i686' 'x86_64')
 url="http://oclint.org/"
 license=('BSD')
