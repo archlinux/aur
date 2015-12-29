@@ -1,4 +1,4 @@
 /spl
 /src
 /pkg
-*.xz
+*.pkg*
