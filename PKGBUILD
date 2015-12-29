@@ -2,34 +2,35 @@
 # Maintainer: Steven Allen <steven@stebalien.com>
 
 pkgname=ndyndns
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc="Update client for the dynamic DNS services from DynDNS and Namecheap"
-url="http://code.google.com/p/ndyndns/"
+url="https://github.com/niklata/ndyndns"
 license=('GPL3')
 arch=('i686' 'x86_64' 'armv5h' 'armv6h' 'armv7h')
 depends=('curl')
 install="${pkgname}.install"
 backup=('etc/ndyndns.conf')
-source=("http://${pkgname}.googlecode.com/files/${pkgname}-${pkgver}.tar.bz2"
+source=("https://github.com/niklata/ndyndns/archive/v${pkgver}.tar.gz"
         'ndyndns.service'
         'ndyndns.sysusers'
         'ndyndns.conf'
         "${pkgname}.install")
-md5sums=('d3ea7e5242ea340b230df3f959cda305'
-         '6a6efc0c5744c5c8cb16d72cd2509cc0'
-         'b7bd3d2f0473fd78555ed874eee3dd1b'
-         'f0c69eb41db16a228ebf62c1561c89d6'
-         '6665bdcd680e5e8c3dd4599d38ed8fb9')
+sha256sums=('555960f18895153daeeafcea60eb374f2fa483685c7d326a1d699b10e03711b6'
+            'f59f189536536f4ee55f8c38a5df537bbc9ce5f9fb52d15ea3ecc6ae9c610221'
+            '47b3b368a43a42fb9ca7cad4c6a3d95f5eae978b8654d55e5b82a6859c5fc7cf'
+            'c71c313a08cdd9261a331f1dace91d423d63c506582f69dac6f52d4b73d25ed7'
+            'b31c99abc68fa4bbda9c5334f97fdecef293c5c0790176a27a2af4c1d6b5d7a4')
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  autoconf
   ./configure --prefix="${pkgdir}/usr" --sbindir="${pkgdir}/usr/bin"
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   install -dm755 "${pkgdir}/usr/bin/"
   install -dm755 "${pkgdir}/usr/share/man/"{man1,man5}
   install -dm700 "${pkgdir}/var/lib/ndyndns/var/"
