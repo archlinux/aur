@@ -5,14 +5,13 @@
 
 pkgbase="zfs-dkms-git"
 pkgname=("zfs-dkms-git" "zfs-utils-dkms-git")
-pkgver=0.6.5.3_r0_g9aaf60b
-pkgrel=5
-_splver=0.6.5.3_r0_g7e85f6b
+pkgver=0.6.5_r80_gf5f087e
+pkgrel=1
 license=('CDDL')
-makedepends=("git" "tar" "spl-dkms-git=${_splver}")
+makedepends=("git" "spl-dkms-git")
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/zfs.git#tag=zfs-0.6.5.3"
+source=("git+https://github.com/zfsonlinux/zfs.git"
         "zfs-utils.bash-completion-r1"
         "zfs-utils.initcpio.install"
         "zfs-utils.initcpio.hook")
@@ -45,7 +44,7 @@ build() {
 
 package_zfs-dkms-git() {
     pkgdesc="Kernel modules for the Zettabyte File System."
-    depends=("spl-dkms-git=${_splver}" "zfs-utils-dkms-git=${pkgver}-${pkgrel}" "dkms")
+    depends=("spl-dkms-git" "zfs-utils-dkms-git=${pkgver}-${pkgrel}" "dkms")
     conflicts=("zfs-git" "zfs-lts" "zfs-dkms")
     install=zfs.install
 
@@ -63,7 +62,6 @@ package_zfs-dkms-git() {
 
 package_zfs-utils-dkms-git() {
     pkgdesc="Kernel module support files for the Zettabyte File System."
-    depends=("spl-dkms-git=${_splver}")
     conflicts=("zfs-utils-git" "zfs-utils-lts" "zfs-utils")
 
     cd "${srcdir}/zfs"
