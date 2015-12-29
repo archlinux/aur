@@ -2,15 +2,15 @@
 
 _name='Ciliora-Secunda'
 pkgname=cinnamon-theme-${_name,,}
-pkgver=20151227
+pkgver=20151229
 pkgrel=1
 pkgdesc="${_name} theme for Cinnamon 2.8"
 arch=('any')
 url="http://cinnamon-spices.linuxmint.com/themes/view/411"
 license=('GPL')
 depends=('cinnamon>=2.8.0' 'cinnamon<2.9.0')
-source=("http://cinnamon-spices.linuxmint.com/uploads/themes/BUFD-NAW8-6J0Q.zip")
-sha256sums=('bf2e09ccfc52f8bb7e19a09705801f7cb058fd07dbb7a702fa6440c7480928be')
+source=("http://cinnamon-spices.linuxmint.com/uploads/themes/8OI1-U2XJ-7NXV.zip")
+sha256sums=('f8edd5f73871225b39ac82e113e7fd008234ce546f9e7bbce67d5abffc9b866b')
 
 package() {
   find ${_name} -type f -not -name *~ -not -name *.sh -exec install -Dm644 '{}' "$pkgdir/usr/share/themes/{}" \;
