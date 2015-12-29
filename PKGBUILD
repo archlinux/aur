@@ -7,8 +7,9 @@ pkgbase="zfs-dkms-git"
 pkgname=("zfs-dkms-git" "zfs-utils-dkms-git")
 pkgver=0.6.5.3_r0_g9aaf60b
 pkgrel=5
+_splver=0.6.5.3_r0_g7e85f6b
 license=('CDDL')
-makedepends=("git" "tar")
+makedepends=("git" "tar" "spl-dkms-git=${_splver}")
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/zfs.git#tag=zfs-0.6.5.3"
@@ -19,8 +20,6 @@ md5sums=('SKIP'
          '9ddb0c8a94861f929d0fa741fdc49950'
          '9ef4841abb85dee611828cc7e6f5c6fe'
          '62ba32c6853c315ff231c396cf8bfdbb')
-
-_splver=0.6.5.3_r0_g7e85f6b
 
 pkgver() {
     cd "${srcdir}/zfs"
