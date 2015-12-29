@@ -1,6 +1,6 @@
 pkgname=pgroonga
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast fulltext search on PostgreSQL."
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/pgroonga/pgroonga"
@@ -26,7 +26,7 @@ package() {
 	echo "-------------------------------------------------------------"
 	echo "*************************************************************"
 	echo "You need to upgrade EXTENSION pgroonga CASCADE, "
-	echo "In more detail, please refer to the PGroonga site's ""upgrading instructions:"
+	echo "In more detail, please refer to the PGroonga site's upgrading instructions:"
 	echo "http://pgroonga.github.io/upgrade/"
 
 }
