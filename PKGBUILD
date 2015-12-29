@@ -1,18 +1,19 @@
 pkgname=smtube-svn
-pkgver=15.5.17.r6953
+pkgver=15.11.0.r7300
 pkgrel=1
 pkgdesc="Search, download and play videos from YouTube. SVN build."
 arch=('i686' 'x86_64')
-url="http://smtube.sourceforge.net"
+url="http://www.smtube.org"
 license=('GPL')
-depends=('qt5-script' 'qt5-webkit' 'hicolor-icon-theme' 'libxkbcommon-x11')
+depends=('qt5-script' 'qt5-webkit' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('subversion' 'qt5-tools')
 optdepends=('smplayer: play videos with SMPlayer'
             'mpv: play videos with mpv'
             'gnome-mplayer: play videos with GNOME MPlayer'
             'kdemultimedia-dragonplayer: play videos with Dragon Player'
             'totem: play videos with Totem'
-            'vlc: play videos with VLC')
+            'vlc: play videos with VLC'
+            'youtube-dl: download videos')
 provides=('smtube')
 conflicts=('smtube')
 install="$pkgname.install"
