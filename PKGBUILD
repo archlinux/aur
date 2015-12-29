@@ -1,7 +1,7 @@
 # Maintainer: Tom van der Lee <t0m.vd.l33@gmail.com>
 pkgname=acts
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Another Calendar-based Tarsnap Script"
 arch=("any")
 url="https://github.com/alexjurkiewicz/acts"
@@ -10,6 +10,7 @@ conflicts=("acts-git")
 depends=("tarsnap"
 	 "coreutils"
 	 "util-linux")
+backup=("usr/lib/systemd/system/acts.timer")
 install=$pkgname.install
 source=(https://github.com/alexjurkiewicz/acts/archive/$pkgver.tar.gz)
 md5sums=('708aedfc7d37212a4bf825192e6494c7')
