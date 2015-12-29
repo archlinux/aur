@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=emacs-ess-git
 pkgver=15.09.125.g837454b
-pkgrel=1
+pkgrel=2
 pkgdesc="Emacs Speaks Statistics: A Universal Interface for \
  Statistical Analysis - git-version"
 arch=('any')
@@ -20,6 +20,10 @@ _gitname="emacs-ess"
 pkgver() {
   cd "$srcdir/$_gitname"
   git describe --tags | tr '-' '.' |cut -c2-
+}
+prepare() {
+  cd "$srcdir/$_gitname/doc"
+  [ -h texinfo.tex ] || ln -s /usr/share/automake-1.15/texinfo.tex texinfo.tex
 }
 
 build() {
