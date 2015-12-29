@@ -4,7 +4,7 @@
 _gemname=pango
 pkgname=ruby-$_gemname
 pkgver=2.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Ruby/Pango is a Ruby binding of pango-1.x.'
 arch=(i686 x86_64)
 url='http://ruby-gnome2.sourceforge.jp/'
