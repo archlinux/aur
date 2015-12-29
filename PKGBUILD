@@ -3,7 +3,7 @@
 pkgname=notepadqq-git
 _pkgname=notepadqq
 pkgver=0.50.6.r0.g82ee840
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linux clone of Notepad++"
 arch=('i686' 'x86_64')
 url="http://notepadqq.altervista.org/wp/"
@@ -37,5 +37,8 @@ package() {
 	cd "${srcdir}/${_pkgname}/src/ui"
 	make DESTDIR="${pkgdir}/usr" install
 	
+	# fixes missing in the desktop application menu (especially for LXqt)
+	sed -i 's/\(Cateories=.*\)/\1Accessories;/' "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+
 	install -Dm644 "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg" "${pkgdir}/usr/share/pixmaps/${_pkgname}.svg"
 }
