@@ -3,18 +3,19 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
-pkgname=('mesa-nosystemd' 'opencl-mesa-nosystemd' 'libva-mesa-driver-nosystemd' 'mesa-vdpau-nosystemd' 'mesa-libgl-nosystemd')
-pkgver=11.0.7
-pkgrel=1
+pkgbase=('mesa-nosystemd')
+pkgname=('opencl-mesa-nosystemd' 'libva-mesa-driver-nosystemd' 'mesa-vdpau-nosystemd' 'mesa-nosystemd' 'mesa-libgl-nosystemd')
+pkgver=11.1.0
+pkgrel=2
 arch=('i686' 'x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
              'libxshmfence' 'libxxf86vm' 'libxdamage' 'libvdpau' 'libva' 'wayland' 'elfutils' 'llvm'
-             'libomxil-bellagio' 'libclc' 'clang')
+             'libomxil-bellagio' 'libgcrypt' 'libclc' 'clang')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=(ftp://ftp.freedesktop.org/pub/mesa/${pkgver}/mesa-${pkgver}.tar.xz{,.sig}
         LICENSE)
-sha256sums=('e7e90a332ede6c8fd08eff90786a3fd1605a4e62ebf3a9b514047838194538cb'
+sha256sums=('9befe03b04223eb1ede177fa8cac001e2850292c8c12a3ec9929106afad9cf1f'
             'SKIP'
             '7fdc119cf53c8ca65396ea73f6d10af641ba41ea1dd2bd44a824726e01c8b3f2')
 validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D') # Emil Velikov <emil.l.velikov@gmail.com>
@@ -37,6 +38,7 @@ build() {
     --with-gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast \
     --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
     --with-egl-platforms=x11,drm,wayland \
+    --with-sha1=libgcrypt \
     --enable-llvm-shared-libs \
     --enable-egl \
     --enable-gbm \
@@ -113,7 +115,7 @@ package_mesa-vdpau-nosystemd() {
 package_mesa-nosystemd() {
   pkgdesc="an open-source implementation of the OpenGL specification"
   depends=('libdrm' 'wayland' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'elfutils' 
-           'libomxil-bellagio' 'expat' 'libtxc_dxtn' 'llvm-libs')
+           'libomxil-bellagio' 'expat' 'libgcrypt' 'libtxc_dxtn' 'llvm-libs')
   optdepends=('opengl-man-pages: for the OpenGL API man pages'
               'mesa-vdpau-nosystemd: for accelerated video playback'
               'libva-mesa-driver-nosystemd: for accelerated video playback')
