@@ -2,12 +2,12 @@
 # Contributor: Florian Richter <Florian_Richter@gmx.de>
 pkgname=pythonmagick
 pkgver=0.9.12
-pkgrel=2
+pkgrel=3
 pkgdesc="Object-oriented Python bindings for the ImageMagick library"
 arch=('i686' 'x86_64')
 url="http://www.imagemagick.org/"
 license=('custom')
-depends=('boost' 'python' 'imagemagick')
+depends=('boost<1.60.0' 'python' 'imagemagick')
 makedepends=('perl' 'automake')
 options=('!libtool')
 source=("http://www.imagemagick.org/download/python/PythonMagick-$pkgver.tar.gz")
