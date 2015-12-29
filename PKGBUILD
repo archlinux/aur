@@ -4,7 +4,7 @@
 
 pkgname=python2-graph-tool
 pkgver=2.12
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python module for manipulation and statistical analysis of graphs'
 arch=('i686' 'x86_64')
 url='http://projects.skewed.de/graph-tool/'
@@ -21,9 +21,11 @@ sha256sums=('ac5fdd65cdedb568302d302b453fe142b875f23e3500fe814a73c88db49993a9')
 
 prepare() {
   cd "$srcdir/graph-tool-$pkgver"
-  ./configure --enable-openmp --prefix=/usr --docdir="/usr/share/doc/$pkgname" PYTHON=python2
+  find -type f -print0 | xargs -0 sed -i 's/ placeholders:/ std::placeholders:/g'
   # Remove information about the source directory, which is temporary.
-  sed -i 's|#define PACKAGE_SOURCE_DIR ".*"|/* removed since the source directory is temporary */|' config.h
+  sed -i '/AC_DEFINE_UNQUOTED(\[PACKAGE_SOURCE_DIR\].*)/d' configure.ac
+  autoconf
+  ./configure --enable-openmp --prefix=/usr --docdir="/usr/share/doc/$pkgname" PYTHON=python2
 }
 
 build() {

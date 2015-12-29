@@ -1,4 +1,4 @@
 graph-tool-*.tar.bz2
-python2-graph-tool-*.pkg.tar
+python2-graph-tool-*.pkg.tar*
 pkg/*
 src/*
