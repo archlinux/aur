@@ -1,7 +1,7 @@
 # Maintainer: Alex Talker <alextalker at openmailbox dot org>
 # Original maintainer: Simonas Racinas <racinas at icloud.com>
 pkgname=visual-paradigm-community
-pkgver=20151201
+pkgver=20151202
 pkgrel=1
 pkgdesc="UML design application"
 url='http://www.visual-paradigm.com/download/community.jsp'
@@ -10,14 +10,14 @@ depends=('java-environment-common')
 install=visual-paradigm-community.install
 _baseurl="http://www.visual-paradigm.com/downloads/vpce"
 license=('custom')
-source=("${pkgname}.tar.gz::$_baseurl/Visual_Paradigm_CE_Linux64_InstallFree.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::$_baseurl/Visual_Paradigm_CE_Linux64_InstallFree.tar.gz"
 	'visual-paradigm-community.install'
 	'visual-paradigm.desktop'
 	'Visual_Paradigm_Fixed'
 	'visual-paradigm.png'
 	'LICENSE.txt'
 	'x-visual-paradigm.xml')
-sha256sums=('a17e711a906e7c94c65bf5d5b035281b35300f9783a4d1a24f93d4f46125fe81'
+sha256sums=('e3eb42c5af322e753e6ff0d7205e9124feb57346fd6a80031c43e5b9c09b9a53'
 	'61b4974588ec66e6d037aee0870cea97cf735586e5ea8e8e7b13091fe57c58ae'
 	'c2cf0bd2fdc2879b2ae4814e1be5b6cbd7e5aa4c1247f5d4bc8e677eb6a94952'
 	'c861d708eb446f94abbebb4028a2f15f7bc6840aa5df1ee81f7301aac0fd00a9'
