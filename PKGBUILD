@@ -2,7 +2,7 @@
 
 pkgname=bridgedesigner
 pkgver=1.15.125
-pkgrel=1
+pkgrel=2
 pkgdesc="Bridge Design Contest is an Internet-based competition that provides middle school and high school students with a realistic, engaging introduction to engineering"
 arch=('any')
 url="https://bridgecontest.org/"
@@ -16,7 +16,7 @@ source=("Bridge_Designer_2015_Installation_Image.dmg::http://sourceforge.net/pro
         bridgedesigner.png)
 sha1sums=('7c1815f3c21185031c0ec7b6316d3b8283095794'
           'a6774d80fbe56704aaa96ac7b929c4580419f64a'
-          'eddb921bf479f81fe25e9fa4b0ac76895969df06'
+          'f728b5084d5e1b91787f936068214c5818ac1d30'
           '6d5f09d9b5991e82a534561f918ca489b3c7744c')
 noextract=("Bridge_Designer_2015_Installation_Image.dmg")
 

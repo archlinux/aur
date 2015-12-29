@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
 Encoding=UTF-8
-Name=Bridge Design Contest
-Comment=Internet-based competition that provides middle school and high school students with a realistic, engaging introduction to engineering.
+Name=Bridge Designer 2015
+Comment=The Bridge Design Contest is an Internet-based competition that provides middle school and high school students with a realistic, engaging introduction to engineering.
 Exec=bridgedesigner
 Icon=bridgedesigner
 Terminal=false
