@@ -1,7 +1,7 @@
 #Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgdesc="Icons for the X Desktop Environment (XDE)"
 pkgname=xde-icons
-pkgver=1.1.35
+pkgver=1.1.38
 pkgrel=1
 arch=(any)
 license=(CCPL:by-sa)
@@ -34,6 +34,7 @@ package() {
   make DESTDIR="$pkgdir" install
   rm -f "$pkgdir/usr/share/icons/hicolor/32x32/apps/arch-logo.png"
   rm -f "$pkgdir/usr/share/icons/hicolor/scalable/apps/arch-logo.svg"
+  rm -f "$pkgdir/usr/share/pixmaps/arch-logo.svg"
 }
 
 # vim: et sw=2:
