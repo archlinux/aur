@@ -2,12 +2,12 @@
 
 pkgname=i2pd
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simplified C++ implementation of I2P client"
 arch=('i686' 'x86_64')
 url="https://github.com/PurpleI2P/i2pd"
 license=('GPL2')
-depends=('boost-libs' 'libupnp' 'openssl' 'zlib')
+depends=('boost-libs' 'miniupnpc' 'openssl' 'zlib')
 makedepends=(boost cmake)
 conflicts=(i2pd-git)
 install=i2pd.install
