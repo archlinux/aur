@@ -16,7 +16,6 @@ install=$pkgname.install
 _gitname=QTodoTxt
 source=("git+https://github.com/mNantern/$_gitname")
 md5sums=('SKIP')
-replaces=('qtodotxt-hg')
 
 pkgver() {
   cd "$srcdir/$_gitname"
