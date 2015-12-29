@@ -8,7 +8,7 @@
     connect(m_aboutPb, SIGNAL(clicked()), this, SLOT(showAboutMsg()));
     connect(m_quitPb, SIGNAL(clicked()), this, SLOT(close()));
  
-@@ -593,6 +594,15 @@
+@@ -597,6 +598,15 @@
      }
  }
  
@@ -24,7 +24,7 @@
  void QCPPDialogImpl::killSz()
  {
     if (m_sz==0)
-@@ -1004,6 +1014,7 @@
+@@ -1008,6 +1018,7 @@
     m_protoPb->setEnabled(true);
     m_closePb->setEnabled(true);
     m_sendBreakPb->setEnabled(true);
@@ -32,7 +32,7 @@
  
     m_cmdLe->setFocus();
  
-@@ -1059,6 +1070,7 @@
+@@ -1063,6 +1074,7 @@
     m_protoPb->setEnabled(false);
     m_closePb->setEnabled(false);
     m_sendBreakPb->setEnabled(false);

@@ -16,7 +16,7 @@
 -Terminal=0
 -X-KDE-StartupNotify=false
 +Terminal=false
-+Categories=Network;
++Categories=System;TerminalEmulator;
 +StartupNotify=true
 --- cutecom-0.22.0/cutecommdlg.ui
 +++ cutecom-0.22.0/cutecommdlg.ui
@@ -905,17 +905,12 @@
  
     int historyCount=m_oldCmdsLb->count();
     if (historyCount>50)
-@@ -346,12 +330,36 @@
+@@ -346,13 +330,41 @@
     {
        resize(x,y);
     }
 +   /* scan for modem devices */
- 
--   bool entryFound = settings.contains("/cutecom/AllDevices");
--   QStringList devices=settings.value("/cutecom/AllDevices").toStringList();
--   if (!entryFound)
--   {
--      devices<<"/dev/ttyS0"<<"/dev/ttyS1"<<"/dev/ttyS2"<<"/dev/ttyS3";
++
 +   int n;
 +
 +   QDir dir("/dev");
@@ -940,14 +935,23 @@
 +
 +   QFileInfoList list = dir.entryInfoList();
 +   QStringList devices;
-+
+ 
+    bool entryFound = settings.contains("/cutecom/AllDevices");
+-   QStringList devices=settings.value("/cutecom/AllDevices").toStringList();
+-   if (!entryFound)
+-   {
+-      devices<<"/dev/ttyS0"<<"/dev/ttyS1"<<"/dev/ttyS2"<<"/dev/ttyS3";
++   devices=settings.value("/cutecom/AllDevices").toStringList();
 +   for (n = 0; n != list.size(); n++) {
-+	QFileInfo fileInfo = list.at(n);
-+	devices << (QString("/dev/") + fileInfo.fileName());
++     QFileInfo fileInfo = list.at(n);
++     devices << (QString("/dev/") + fileInfo.fileName());
     }
++   devices.removeDuplicates();
++   devices.sort();
  
     m_deviceCb->insertItems(0, devices);
-@@ -381,6 +389,13 @@
+ 
+@@ -381,6 +393,13 @@
  
  void QCPPDialogImpl::sendFile()
  {
@@ -961,7 +965,7 @@
     if (m_fileDlg==0)
     {
        m_fileDlg=new QFileDialog();
-@@ -401,17 +416,17 @@
+@@ -401,17 +420,17 @@
     }
     else
     {
@@ -982,7 +986,7 @@
        }
  
        QTextStream stream(&file);
-@@ -427,7 +442,7 @@
+@@ -427,7 +446,7 @@
           if (!sendString(nextLine))
           {
              QMessageBox::information(this, tr("Comm error"), tr("Sending failed"));
@@ -991,7 +995,7 @@
           }
           millisleep(charDelay*3);
        }
-@@ -438,7 +453,7 @@
+@@ -438,7 +457,7 @@
        if (!file.open(QIODevice::ReadOnly))
        {
           QMessageBox::information(this, tr("Opening file failed"), tr("Could not open file %1").arg(filename));
@@ -1000,7 +1004,7 @@
        }
        QByteArray data=file.readAll();
        delete m_progress;
-@@ -523,7 +538,7 @@
+@@ -523,7 +542,7 @@
           delete m_sz;
           m_sz=0;
           connectTTY();
@@ -1009,7 +1013,7 @@
        }
        m_progress=new QProgressDialog(tr("Sending file via xmodem..."), tr("Cancel"), 0, 100, this);
        connect(m_progress, SIGNAL(cancelled()), this, SLOT(killSz()));
-@@ -553,6 +568,29 @@
+@@ -553,6 +572,29 @@
     {
        QMessageBox::information(this, tr("Opening file failed"), tr("Protocol %1 not supported yet").arg(m_protoPb->currentText()));
     }
@@ -1039,7 +1043,7 @@
  }
  
  void QCPPDialogImpl::killSz()
-@@ -965,6 +1003,7 @@
+@@ -965,6 +1007,7 @@
     m_sendPb->setEnabled(true);
     m_protoPb->setEnabled(true);
     m_closePb->setEnabled(true);
@@ -1047,7 +1051,7 @@
  
     m_cmdLe->setFocus();
  
-@@ -1019,12 +1058,15 @@
+@@ -1019,12 +1062,15 @@
     m_sendPb->setEnabled(false);
     m_protoPb->setEnabled(false);
     m_closePb->setEnabled(false);
@@ -1063,7 +1067,7 @@
  }
  
  
-@@ -1250,6 +1292,9 @@
+@@ -1250,6 +1296,9 @@
  
     if (bytesRead<0)
     {
@@ -1073,7 +1077,7 @@
        std::cerr<<"read result: "<<bytesRead<<std::endl;
        perror("read: \n");
        return;
-@@ -1362,13 +1407,23 @@
+@@ -1362,13 +1411,23 @@
  
  void QCPPDialogImpl::doOutput()
  {
