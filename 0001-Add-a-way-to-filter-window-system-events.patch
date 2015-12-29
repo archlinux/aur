@@ -1,0 +1,117 @@
+From 28e39706a1a922d5c1054ad3243bac8b2708dc56 Mon Sep 17 00:00:00 2001
+From: Giulio Camuffo <giulio.camuffo@jollamobile.com>
+Date: Wed, 22 Apr 2015 13:39:39 +0300
+Subject: [PATCH] Add a way to filter window system events
+
+This change introduces the class QWindowSystemEventHandler
+which can be used to hook into QWindowSystemInterfacePrivate to
+filter and dispatch window system events.
+One use case is to intercept key events from the underlying system
+in QtCompositor and feed them into the xkbcommon state, and to modify
+the events based on the resulting state.
+
+Change-Id: I829eb7d960420135990fb0f6db54c14eea3e8e48
+Reviewed-by: Laszlo Agocs <laszlo.agocs@theqtcompany.com>
+Reviewed-by: Gunnar Sletta <gunnar@sletta.org>
+---
+ src/gui/kernel/qwindowsysteminterface.cpp | 34 +++++++++++++++++++++++++++++--
+ src/gui/kernel/qwindowsysteminterface_p.h | 13 ++++++++++++
+ 2 files changed, 45 insertions(+), 2 deletions(-)
+
+diff --git a/src/gui/kernel/qwindowsysteminterface.cpp b/src/gui/kernel/qwindowsysteminterface.cpp
+index 850b69d..2ea1ccd 100644
+--- a/src/gui/kernel/qwindowsysteminterface.cpp
++++ b/src/gui/kernel/qwindowsysteminterface.cpp
+@@ -48,6 +48,7 @@ QElapsedTimer QWindowSystemInterfacePrivate::eventTime;
+ bool QWindowSystemInterfacePrivate::synchronousWindowsSystemEvents = false;
+ QWaitCondition QWindowSystemInterfacePrivate::eventsFlushed;
+ QMutex QWindowSystemInterfacePrivate::flushEventMutex;
++QWindowSystemEventHandler *QWindowSystemInterfacePrivate::eventHandler;
+ 
+ //------------------------------------------------------------
+ //
+@@ -621,14 +622,32 @@ bool QWindowSystemInterface::sendWindowSystemEvents(QEventLoop::ProcessEventsFla
+                 QWindowSystemInterfacePrivate::getWindowSystemEvent();
+         if (!event)
+             break;
+-        nevents++;
+-        QGuiApplicationPrivate::processWindowSystemEvent(event);
++
++        if (QWindowSystemInterfacePrivate::eventHandler) {
++            if (QWindowSystemInterfacePrivate::eventHandler->sendEvent(event))
++                nevents++;
++        } else {
++            nevents++;
++            QGuiApplicationPrivate::processWindowSystemEvent(event);
++        }
+         delete event;
+     }
+ 
+     return (nevents > 0);
+ }
+ 
++void QWindowSystemInterfacePrivate::installWindowSystemEventHandler(QWindowSystemEventHandler *handler)
++{
++    if (!eventHandler)
++        eventHandler = handler;
++}
++
++void QWindowSystemInterfacePrivate::removeWindowSystemEventhandler(QWindowSystemEventHandler *handler)
++{
++    if (eventHandler == handler)
++        eventHandler = 0;
++}
++
+ void QWindowSystemInterface::setSynchronousWindowsSystemEvents(bool enable)
+ {
+     QWindowSystemInterfacePrivate::synchronousWindowsSystemEvents = enable;
+@@ -852,4 +871,15 @@ Q_GUI_EXPORT  void qt_handleTouchEvent(QWindow *w, QTouchDevice *device,
+     QWindowSystemInterface::handleTouchEvent(w, device, touchPointList(points), mods);
+ }
+ 
++QWindowSystemEventHandler::~QWindowSystemEventHandler()
++{
++    QWindowSystemInterfacePrivate::removeWindowSystemEventhandler(this);
++}
++
++bool QWindowSystemEventHandler::sendEvent(QWindowSystemInterfacePrivate::WindowSystemEvent *e)
++{
++    QGuiApplicationPrivate::processWindowSystemEvent(e);
++    return true;
++}
++
+ QT_END_NAMESPACE
+diff --git a/src/gui/kernel/qwindowsysteminterface_p.h b/src/gui/kernel/qwindowsysteminterface_p.h
+index 2ec402a..f51c726 100644
+--- a/src/gui/kernel/qwindowsysteminterface_p.h
++++ b/src/gui/kernel/qwindowsysteminterface_p.h
+@@ -54,6 +54,8 @@
+ 
+ QT_BEGIN_NAMESPACE
+ 
++class QWindowSystemEventHandler;
++
+ class Q_GUI_EXPORT QWindowSystemInterfacePrivate {
+ public:
+     enum EventType {
+@@ -487,6 +489,17 @@ public:
+     static QMutex flushEventMutex;
+ 
+     static QList<QTouchEvent::TouchPoint> convertTouchPoints(const QList<QWindowSystemInterface::TouchPoint> &points, QEvent::Type *type);
++
++    static void installWindowSystemEventHandler(QWindowSystemEventHandler *handler);
++    static void removeWindowSystemEventhandler(QWindowSystemEventHandler *handler);
++    static QWindowSystemEventHandler *eventHandler;
++};
++
++class Q_GUI_EXPORT QWindowSystemEventHandler
++{
++public:
++    virtual ~QWindowSystemEventHandler();
++    virtual bool sendEvent(QWindowSystemInterfacePrivate::WindowSystemEvent *event);
+ };
+ 
+ QT_END_NAMESPACE
+-- 
+2.6.4
+

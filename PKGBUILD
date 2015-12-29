@@ -62,7 +62,8 @@ build() {
 		-optimized-qmake \
 		-dbus-linked \
 		-reduce-relocations \
-		-opengl es2 \
+    -egl \
+    -eglfs \
 		-libinput
 	make
 }
