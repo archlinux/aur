@@ -1,8 +1,8 @@
 # Maintainer: Mathias Bragagia <youremail@domain.com>
 pkgname=kana-p
-pkgver=0.2.5
+pkgver=0.3
 pkgrel=1
-pkgdesc="Lite desktop manager - use lightdm, awesome and compton"
+pkgdesc="Lite desktop manager - use lightdm, awesome and compton - BETA"
 arch=('any')
 url="https://github.com/bragagia/kana-p"
 license=('GPL')
@@ -21,6 +21,10 @@ depends=(
 	'bluez'
 	'bluez-utils'
 	'udevil'
+	'ntfs-3g'
+	'gptfdisk'
+	'dosfstools'
+
 	'ntp'
 	'networkmanager-dispatcher-ntpd'
 
@@ -35,6 +39,7 @@ depends=(
 	'xorg-server'
 	'xorg-server-utils'
 	'light'
+	'srandrd'
 
 	'lightdm'
 	'lightdm-webkit-greeter'
@@ -51,7 +56,7 @@ depends=(
 	'network-manager-applet'
 
 	'xdg-utils'
-	'xdg-user-dirs-gtk'
+	'xdg-user-dirs'
 	'dex'
 	'feh'
 	'most'
@@ -63,8 +68,7 @@ depends=(
 	'gtk-theme-arc'
 
 	'rxvt-unicode'
-	'git'
-	'vim'
+	'rxvt-unicode-terminfo'
 )
 makedepends=()
 optdepends=()
