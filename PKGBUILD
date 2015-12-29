@@ -2,8 +2,8 @@
 
 _pkgname=easygui
 pkgname=python-easygui-git
-pkgver=r101.12f7c9b
-pkgrel=3
+pkgver=r102.2b95965
+pkgrel=1
 pkgdesc='A module for very simple, very easy GUI programming in Python'
 url='https://github.com/robertlugg/easygui'
 license=('CCPL')
