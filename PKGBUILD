@@ -2,7 +2,7 @@
 
 _pkgname=screencloud
 pkgname=${_pkgname}-git
-pkgver=1.2.0.51.g5855d96
+pkgver=1.2.0.56.g8ee8792
 pkgrel=2
 pkgdesc='An easy to use screenshot sharing tool. Experimental Qt5 UI. Development version.'
 arch=('i686' 'x86_64')
@@ -21,11 +21,9 @@ install=${pkgname}.install
 
 source=(
 	"git+https://github.com/olav-st/${_pkgname}.git"
-	'desktop_entry.patch'
 )
 sha512sums=(
 	'SKIP'
-	'0095fe81bd585ff2c683657c87a5c1a5c116a313dd747286d10963b0561b2249d9cf7ee4f4e0d9ab1162d9d2f42d371706ddd6ceccfd935310652daaeaba6fee'
 )
 
 pkgver() {
@@ -35,10 +33,6 @@ pkgver() {
 }
 
 prepare() {
-	# Fix desktop entry
-	cd ${srcdir}/${_pkgname}
-	patch -p1 < ../desktop_entry.patch
-	
 	# Create build directory
 	mkdir -p ${srcdir}/build
 }
