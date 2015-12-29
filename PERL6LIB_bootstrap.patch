@@ -1,0 +1,10 @@
+--- bootstrap.pl	2015-12-29 11:04:58.910370054 -0500
++++ bootstrap.pl.new	2015-12-29 11:06:14.360370739 -0500
+@@ -58,6 +58,7 @@
+       "file#$CWD/ext/Shell__Command/lib",
+       "file#$CWD/ext/JSON__Fast/lib",
+       "file#$CWD/lib",
++      "inst#/usr/share/perl6",
+       $repo,
+     );
+ 
