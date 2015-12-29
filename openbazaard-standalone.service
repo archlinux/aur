@@ -1,0 +1,13 @@
+[Unit]
+Description=Openbazaar Marketplace Server
+
+[Service]
+Type=forking
+User=openbazaar
+WorkingDirectory=/var/lib/openbazaard-standalone/
+ExecStart=/usr/bin/openbazaard-standalone start
+ExecStop=/usr/bin/openbazaard-standalone stop
+PIDFile=/tmp/openbazaard-standalone.pid
+
+[Install]
+WantedBy=multi-user.target
