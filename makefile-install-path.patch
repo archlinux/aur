@@ -1,0 +1,45 @@
+--- Makefile.old	2014-12-30 10:55:53.000000000 +0100
++++ Makefile	2015-10-15 13:15:59.382996691 +0200
+@@ -144,8 +144,7 @@
+ 	./therion --print-init-file > therion.ini
+ 
+ install: all
+-	tclsh makeinstall.tcl $(THPLATFORM)
+-
++	tclsh makeinstall.tcl $(THPLATFORM) $(DESTDIR)
+ 
+ minor-release:
+ 	perl makerelease.pl
+--- makeinstall.tcl.old	2015-10-15 13:48:43.099676241 +0200
++++ makeinstall.tcl	2015-10-15 13:49:56.933010051 +0200
+@@ -2,6 +2,7 @@
+ set instdir /usr/local
+ if {$argc > 0} {
+   set platform [lindex $argv 0]
++  set instdir [lindex $argv 1]
+ } else {
+   if {[string equal $tcl_platform(platform) windows]} {
+     set platform WIN32
+@@ -10,6 +11,9 @@
+ 
+ proc copyfile {force src dst} {
+   if {$force} {
++    set dirname [file dirname $dst]
++    file mkdir $dirname
++    
+     if {[catch { 
+       file copy -force -- $src $dst
+     }]} {
+@@ -50,9 +54,9 @@
+   copyfile 0 xtherion/xtherion.ini /etc/xtherion.ini
+   file attributes /etc/xtherion.ini -permissions 0644
+ } else {
+-  copyfile 1 therion $instdir/bin/therion
+-  copyfile 1 xtherion/xtherion $instdir/bin/xtherion
+-  copyfile 1 loch/loch $instdir/bin/loch
++  copyfile 1 therion $instdir/usr/bin/therion
++  copyfile 1 xtherion/xtherion $instdir/usr/bin/xtherion
++  copyfile 1 loch/loch $instdir/usr/bin/loch
+   copyfile 1 therion.ini $instdir/etc/therion.ini.new
+   copyfile 1 xtherion/xtherion.ini $instdir/etc/xtherion.ini.new
+   copyfile 0 therion.ini $instdir/etc/therion.ini
