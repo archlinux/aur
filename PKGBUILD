@@ -1,7 +1,7 @@
 
 pkgname=kaku-bin
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.6.1
+pkgrel=1
 pkgdesc="The next generation music client"
 # TODO: add 32 bit
 arch=('x86_64')
@@ -9,10 +9,11 @@ url="http://kaku.rocks"
 repo="git://github.com/EragonJ/Kaku.git"
 license=('MIT')
 options=(!strip)
-depends=('gconf' 'gtk2' 'libnotify' 'libxtst' 'nss' 'python2' 'gvfs' 'xdg-utils' 'desktop-file-utils')
+depends=('gconf' 'gtk2' 'libnotify' 'nss' 'alsa-lib' 'libxtst')
+optdepends=('gvfs' 'python2' 'xdg-utils' 'desktop-file-utils')
 conflicts=('kaku')
 
-md5sums=('5423d95c6096e6bbc59765bdaeb4d9eb'
+md5sums=('2c8133c984200218ec127c76e65eaee0'
          '4da31bb76a5352d2310a332d7972be4a'
          'abbb6affbdd10243d96892edc5dd68ac')
 source=(
