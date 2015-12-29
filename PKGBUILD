@@ -1,6 +1,6 @@
 # Maintainer: Tom van der Lee <t0m.vd.l33@gmail.com>
 pkgname=acts-git
-pkgver=r79.2d707f3
+pkgver=r82.cfed765
 pkgrel=1
 pkgdesc="Another Calendar-based Tarsnap Script: master branch"
 arch=("any")
@@ -11,6 +11,7 @@ depends=("tarsnap"
 	 "coreutils"
 	 "util-linux")
 makedepends=("git")
+backup=("usr/lib/systemd/system/acts.timer")
 install=$pkgname.install
 source=("$pkgname::git+https://github.com/alexjurkiewicz/acts.git")
 md5sums=('SKIP')
