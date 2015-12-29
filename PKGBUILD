@@ -1,5 +1,6 @@
 # Maintainer: Kuba Serafinowski <zizzfizzix(at)gmail(dot)com>
 # https://github.com/zizzfizzix/pkgbuilds
+# Maintainer:  Solomon Choina <shlomochoina(at)gmail(dot)com>
 
 ##############################################################
 #### The section below can be adjusted to suit your needs ####
@@ -13,7 +14,7 @@ _buildtype='RelWithDebInfo'
 ##############################################################
 
 pkgname=tomahawk-git
-pkgver=0.8.0rc1.1035.g73a1160
+pkgver=0.8.0rc1.1089.g8fbd3b9
 pkgrel=1
 epoch=1
 pkgdesc='A Music Player App written in C++/Qt - development version'
@@ -24,7 +25,7 @@ depends=('qt5-svg' 'qt5-tools' 'qt5-xmlpatterns' 'qt5-x11extras' 'qca-qt5'
           'taglib' 'lucene++' 'libechonest-qt5' 'jreen'
           'quazip-qt5' 'attica-qt5' 'qt5-webkit' 'liblastfm-qt5'
           'qtkeychain-qt5' 'vlc')
-makedepends=('git' 'cmake' 'automoc4' 'sparsehash' 'boost' 'websocketpp')
+makedepends=('git' 'cmake' 'extra-cmake-modules' 'automoc4' 'sparsehash' 'boost' 'websocketpp')
 optdepends=('kdelibs: integration with Plasma Desktop' 'telepathy-qt5: integration with Telepathy')
 provides=('tomahawk')
 conflicts=('tomahawk')
