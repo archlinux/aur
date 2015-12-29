@@ -2,10 +2,10 @@
 
 pkgname=python2-luigi
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Workflow mgmgt + task scheduling + dependency resolution"
 arch=('any')
-depends=('python2' 'python2-python-daemon' 'python2-tornado')
+depends=('python2' 'python2-daemon' 'python2-tornado')
 makedepends=('python2-setuptools')
 optdepends=('python2-mechanize: for debugging Hadoop jobs more easily')
 url="https://github.com/spotify/luigi"
