@@ -1,5 +1,5 @@
 pkgname=mingw-w64-libwebp
-pkgver=0.4.4
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="WebP library (mingw-w64)"
 arch=(any)
@@ -9,7 +9,7 @@ makedepends=(mingw-w64-configure)
 depends=(mingw-w64-libjpeg-turbo mingw-w64-libpng mingw-w64-libtiff mingw-w64-freeglut mingw-w64-giflib)
 options=(staticlibs !strip !buildflags)
 source=("http://downloads.webmproject.org/releases/webp/libwebp-$pkgver.tar.gz")
-sha256sums=('c65d34edb57338e331ba4d622227a2b3179444cfca17d02c34f1ead63f603e86')
+sha256sums=('5cd3bb7b623aff1f4e70bd611dc8dbabbf7688fd5eb225b32e02e09e37dfb274')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -21,9 +21,7 @@ build() {
     ${_arch}-configure \
       --enable-swap-16bit-csp \
       --enable-experimental \
-      --enable-libwebpmux \
-      --enable-libwebpdemux \
-      --enable-libwebpdecoder
+      --enable-libwebp{mux,demux,decoder,extras}
     make
     popd
   done
