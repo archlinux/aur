@@ -2,18 +2,18 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=emby-server-git
-pkgver=3.0.5724.4.r89.fd6f675
+pkgver=3.0.5782.0.r524.36eed0d
 pkgrel=1
 pkgdesc='Bring together your videos, music, photos, and live television'
-arch=('any')
+arch=('i686' 'x86_64' 'armv6h')
 url='http://emby.media'
 license=('GPL2')
-depends=('ffmpeg' 'imagemagick' 'libmediainfo' 'mono' 'sqlite')
+depends=('ffmpeg' 'imagemagick' 'mono' 'sqlite')
 makedepends=('git')
 provides=('emby-server')
 conflicts=('emby-server')
 install='emby-server.install'
-source=("git+https://github.com/MediaBrowser/Emby.git#branch=dev"
+source=('git+https://github.com/MediaBrowser/Emby.git#branch=dev'
         'emby-server'
         'emby-migrate-database'
         'emby-server.conf'
@@ -45,11 +45,13 @@ build(){
     /p:Platform='Any CPU' \
     /p:OutputPath="${srcdir}/build" \
     /t:build MediaBrowser.Mono.sln
+  mono --aot='full' -O='all' ../build/MediaBrowser.Server.Mono.exe
 }
 
 package() {
   install -dm 755 "${pkgdir}"/{etc/conf.d,usr/{bin,lib/systemd/system}}
   cp -dr --no-preserve='ownership' build "${pkgdir}"/usr/lib/emby-server
+  find "${pkgdir}" -type f -name *.dylib -delete
   install -m 755 emby-server "${pkgdir}"/usr/bin/
   install -m 755 emby-migrate-database "${pkgdir}"/usr/bin/
   install -m 644 emby-server.service "${pkgdir}"/usr/lib/systemd/system/
