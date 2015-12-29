@@ -14,7 +14,7 @@ makedepends=('git' 'gtk2' 'npapi-sdk')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('!libtool')
-source=("git://git.videolan.org/$_pkgname.git")
+source=("git://code.videolan.org/videolan/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
