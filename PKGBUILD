@@ -1,12 +1,13 @@
 pkgname=perl-datetime-format-pg
 pkgver="0.16011"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="'Parse and format PostgreSQL dates and times'"
 arch=(i686 x86_64)
 license=('perl')
 url="http://search.cpan.org/~dmaki/DateTime-Format-Pg"
 options=(!emptydirs)
 depends=('perl-datetime-format-builder>=0.72' 'perl-datetime-timezone>=0.05' 'perl-datetime>=0.10')
+makedepends=('perl-module-build')
 source=("https://cpan.metacpan.org/authors/id/D/DM/DMAKI/DateTime-Format-Pg-${pkgver}.tar.gz")
 md5sums=('8e462e583bd4b51b30255f522e887932')
 sha512sums=('6f5d6c6c8160b38dec2fc5edcb8113c1747f8a7caacc385b55da9e71e7ce083a48177c7f64fd20cc6f2e9878dda9069517ba3f71ef889d691d14d5fd6bf8637f')
