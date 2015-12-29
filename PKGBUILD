@@ -1,8 +1,8 @@
 # Mantainer:  David Fabijan <mclenin.at.gmail.com>
 
 pkgname=latexdraw
-pkgver=3.3.1
-pkgrel=2
+pkgver=3.3.2
+pkgrel=1
 pkgdesc='Create svg graphics and/or pstricks code usable in latex documents.'
 arch=('any')
 url="http://latexdraw.sourceforge.net"
@@ -13,7 +13,7 @@ optdepends=('texlive-pstricks: use generated code in LaTeX documents'
 source=(http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/LaTeXDraw-${pkgver}-bin.zip
         latexdraw.sh)
 install=latexdraw.install
-md5sums=('0d823f07c4b820cb439df46f5b08cd2f'
+md5sums=('73f7cbaf733f78c2c37aea3b261f6651'
          '8f7e3de38675797b824c5a8878e4c694')
 
 package() {
@@ -22,8 +22,8 @@ package() {
     install -Dm755 LaTeXDraw.jar ${pkgdir}/usr/share/java/${pkgname}/LaTeXDraw.jar
     install -Dm755 lib/malai.swing-1.3.jar ${pkgdir}/usr/share/java/${pkgname}/lib/malai.swing-1.3.jar
     install -Dm755 lib/malai.core-1.3.jar ${pkgdir}/usr/share/java/${pkgname}/lib/malai.core-1.3.jar
-    install -Dm755 lib/scala-library-2.11.2.jar ${pkgdir}/usr/share/java/${pkgname}/lib/scala-library-2.11.2.jar
-    install -Dm755 lib/scala-parser-combinators_2.11-1.0.2.jar ${pkgdir}/usr/share/java/${pkgname}/lib/scala-parser-combinators_2.11-1.0.2.jar
+    install -Dm755 lib/scala-library-2.11.7.jar ${pkgdir}/usr/share/java/${pkgname}/lib/scala-library-2.11.7.jar
+    install -Dm755 lib/scala-parser-combinators_2.11-1.0.4.jar ${pkgdir}/usr/share/java/${pkgname}/lib/scala-parser-combinators_2.11-1.0.4.jar
     install -Dm755 lib/pdf-renderer-1.0.5.jar ${pkgdir}/usr/share/java/${pkgname}/lib/pdf-renderer-1.0.5.jar
     install -Dm755 lib/jlibeps-0.1.jar ${pkgdir}/usr/share/java/${pkgname}/lib/jlibeps-0.1.jar
 
