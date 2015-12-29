@@ -6,8 +6,8 @@
 # Contributor: Muhammad 'MJ' Jassim <UnbreakableMJ@gmail.com> 
 
 pkgname=icecat
-pkgver=38.5.0
-_pkgver=38.5.0-gnu1
+pkgver=38.5.2
+_pkgver=38.5.2-gnu1
 _pkgverbase=${pkgver%%.*}
 pkgrel=1
 pkgdesc="GNU version of the Firefox browser."
@@ -35,7 +35,7 @@ source=(https://ftp.gnu.org/gnu/gnuzilla/${pkgver}/${pkgname}-${_pkgver}.tar.bz2
         icecat-safe.desktop
         vendor.js)
 
-sha256sums=('462a27cce5153d36a03e7b46ad38d860b84498835058d580d292a0be6f05c2ad'
+sha256sums=('8f99b9cb966404665085f87f1d532a22f3b0d422bfb49eb8f202b40c96ef2854'
             'SKIP'
             '4602066304f0bb10bdaea75405570d500dae3199b77b04a45167d423fdf9bf6f'
             'c44eab35f71dd3028a74632463710d674b2e8a0682e5e887535e3233a3b7bbb3'
