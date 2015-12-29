@@ -1,0 +1,18 @@
+--- a/bootstrap.py	2015-12-29 16:40:35.908591916 +0100
++++ b/bootstrap.py	2015-12-29 16:42:08.966789982 +0100
+@@ -17,12 +17,12 @@
+             os.system('/usr/local/bin/python openbazaard.py start')
+ 
+     else:
+-        subprocess.call(['pip', 'install', '-r', '%s%srequirements.txt' % (script_dir, os.pathsep)])
++        #subprocess.call(['pip', 'install', '-r', '%s%srequirements.txt' % (script_dir, os.pathsep)])
+         os.chdir(script_dir)
+         if testnet:
+-            os.system('python sopenbazaard.py start --testnet')
++            os.system('openbazaard start --testnet')
+         else:
+-            os.system('python openbazaard.py start')
++            os.system('openbazaard start')
+ 
+ 
+ if __name__ == '__main__':

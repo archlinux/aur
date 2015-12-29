@@ -31,6 +31,7 @@ makedepends=(git)
 source=("${_pkgname}::git+https://github.com/OpenBazaar/OpenBazaar-Server.git"
 	 ${_pkgname}.service
 	 ${_pkgname}.sh
+	patch
 )
 install=${_pkgname}.install
 options=('!strip')
@@ -38,7 +39,10 @@ provides=(${_pkgname})
 replaces=(${_pkgname})
 
 package(){
-  cd $srcdir
+  cd $srcdir/${_pkgname}
+  
+  patch -Np1 -i ../patch
+  cd ..
 
   msg2 "Install systemd service"
   install -Dm644 $srcdir/${_pkgname}.service $pkgdir/usr/lib/systemd/system/${_pkgname}.service
@@ -65,3 +69,7 @@ pkgver() {
 md5sums=('SKIP'
          '1bdae51331031c43d8ea6c4a8cb107d9'
          'b8da6d4af4821e3d0d011ce9e884cc5f')
+md5sums=('SKIP'
+         '1bdae51331031c43d8ea6c4a8cb107d9'
+         'b8da6d4af4821e3d0d011ce9e884cc5f'
+         'e7a3fc77ea5af1a8acb3520cba7d3a55')
