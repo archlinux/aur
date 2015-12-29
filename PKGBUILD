@@ -12,7 +12,7 @@ depends=('tk' 'bwidget' 'texlive-core' 'imagemagick' 'wxgtk' 'glu'
   'vtk' 'webkitgtk2')
 
 optdepends=('libjpeg-turbo' 'libpng' 'zlib')
-source=("{$url}/download/${pkgname}-${pkgver}.tar.gz"
+source=("${url}/downloads/${pkgname}-${pkgver}.tar.gz"
 	"loch-makefile-vtk-6.1.patch"
 	"makefile-install-path.patch")
 
