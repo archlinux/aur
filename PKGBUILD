@@ -1,7 +1,7 @@
 # Maintainer: Sven Karsten Greiner <sven@sammyshp.de>
 
 pkgname=atlas-maps-beta-bin
-pkgver=1.2.25
+pkgver=1.2.26
 pkgrel=1
 pkgdesc="Map and navigation application using offline vector maps (beta version)"
 arch=('any')
@@ -12,7 +12,7 @@ provides=('atlas-maps')
 conflicts=('atlas-maps')
 source=("http://www.talent.gr/public/atlas/atlas-beta-${pkgver}.zip"
         "atlas-maps.sh")
-md5sums=('23588474a1859954e252534bd6939689'
+md5sums=('ff33147b1c35e11d5cfed8f715d75a9d'
          '509caab1fb6ad3990e87890a5dfb7d81')
 
 package() {
