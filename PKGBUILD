@@ -1,8 +1,4 @@
 # Contributor: Yauheni Kirylau <yawghen-gmail-dot-com>
-# Contributor: Ronald van Haren <ronald.archlinux.org>
-# Contributor: Vesa Kaihlavirta
-# URL: https://github.com/trollixx/aur-packages
-# Upstream: https://projects.archlinux.org/svntogit/community.git/tree/trunk?h=packages/awesome
 
 _pkgname=libui
 pkgname=${_pkgname}-git
