@@ -1,6 +1,6 @@
 pkgname=pgroonga
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast fulltext search on PostgreSQL."
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/pgroonga/pgroonga"
@@ -24,6 +24,10 @@ package() {
 	echo "sudo -u postgres -H psql --command 'CREATE DATABASE pgroonga_test'"
 	echo "sudo -u postgres -H psql -d pgroonga_test --command 'CREATE EXTENSION pgroonga'"
 	echo "-------------------------------------------------------------"
+	echo "*************************************************************"
+	echo "You need to upgrade EXTENSION pgroonga CASCADE, "
+	echo "In more detail, please refer to the PGroonga site's ""upgrading instructions:"
+	echo "http://pgroonga.github.io/upgrade/"
 
 }
 sha1sums=('568bb21e9b468baa2e40b19048ce64e7847d2438')
