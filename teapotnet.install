@@ -1,0 +1,31 @@
+post_install() {
+	TPROOT="/var/lib/teapotnet"
+	
+	if [ ! $(egrep '^teapotnet:' /etc/group) ]; then
+		groupadd teapotnet
+	fi
+	if [ ! $(egrep '^teapotnet:' /etc/passwd) ]; then
+		useradd -g teapotnet -d $TPROOT -s /bin/bash teapotnet
+	fi
+	
+	chown -R teapotnet.teapotnet $TPROOT
+	chmod 750 $TPROOT
+	
+	echo "Run \"systemctl start teapotnet.service\" to start the daemon and go to http://localhost:8480/"
+	echo "Run \"systemctl enable teapotnet.service\" to start it at each boot"
+}
+
+post_remove() {
+	if [ ! $(egrep '^teapotnet:' /etc/group) ]; then
+		groupdel teapotnet
+	fi
+	if [ ! $(egrep '^teapotnet:' /etc/passwd) ]; then
+		userdel teapotnet
+	fi
+}
+
+post_upgrade() {
+	systemctl --system daemon-reload
+}
+
+# vim:set ts=2 sw=2 et:
