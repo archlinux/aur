@@ -6,7 +6,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/goetzc/qtResistors"
 #url="http://qt-apps.org/content/show.php/qtResistors?content=118297"
 license=('GPL')
-depends=('qt5-base' 'libxkbcommon-x11')
+depends=('qt5-base')
 install='qtResistors.install'
 source=("https://github.com/goetzc/qtResistors/archive/$pkgver.tar.gz")
 sha256sums=('806982cd62f7ac29f71141e318acbd79791aa279697d04226cfb8109647e838d')
