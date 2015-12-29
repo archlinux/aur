@@ -2,18 +2,19 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=emby-server-devel
-pkgver=3.0.5768.0
+pkgver=3.0.5800.2
 pkgrel=1
 pkgdesc='Bring together your videos, music, photos, and live television'
 arch=('i686' 'x86_64' 'armv6h')
 url='http://emby.media'
 license=('GPL2')
-depends=('ffmpeg' 'imagemagick' 'libmediainfo' 'mono' 'sqlite')
+depends=('ffmpeg' 'imagemagick' 'mono' 'sqlite')
 makedepends=('git')
 provides=('emby-server')
 conflicts=('emby-server')
 install='emby-server.install'
-source=("git+https://github.com/MediaBrowser/Emby.git#tag=${pkgver}"
+_commit='df9eaf1bef5677658c534362e05c9d187c34200a'
+source=("git+https://github.com/MediaBrowser/Emby.git#commit=${_commit}"
         'emby-server'
         'emby-migrate-database'
         'emby-server.conf'
@@ -24,12 +25,6 @@ sha256sums=('SKIP'
             'b25bf83a0ab371aff3b13b82f7af71b51bfe6d7e51eb8a8a3dd8f0774ffce6a5'
             'c9ad78f3e2f0ffcb4ee66bb3e99249fcd283dc9fee17895b9265dc733288b953'
             '8a91ea49a1699c820c4a180710072cba1d6d5c10e45df97477ff6a898f4e1d70')
-
-pkgver() {
-  cd Emby
-
-  git describe --tags | sed 's/-/.r/; s/-g/./'
-}
 
 prepare() {
   cd Emby
@@ -45,11 +40,13 @@ build(){
     /p:Platform='Any CPU' \
     /p:OutputPath="${srcdir}/build" \
     /t:build MediaBrowser.Mono.sln
+  mono --aot='full' -O='all' ../build/MediaBrowser.Server.Mono.exe
 }
 
 package() {
   install -dm 755 "${pkgdir}"/{etc/conf.d,usr/{bin,lib/systemd/system}}
   cp -dr --no-preserve='ownership' build "${pkgdir}"/usr/lib/emby-server
+  find "${pkgdir}" -type f -name *.dylib -delete
   install -m 755 emby-server "${pkgdir}"/usr/bin/
   install -m 755 emby-migrate-database "${pkgdir}"/usr/bin/
   install -m 644 emby-server.service "${pkgdir}"/usr/lib/systemd/system/
