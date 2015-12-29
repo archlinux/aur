@@ -6,7 +6,7 @@
 
 _pkgname=libui
 pkgname=${_pkgname}-git
-pkgver=999
+pkgver=r1878.6a5997c
 pkgrel=1
 pkgdesc='A portable GUI library for C'
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git rev-parse HEAD | head -c 6
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
