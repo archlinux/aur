@@ -1,14 +1,14 @@
 # Maintainer: M0Rf30
 
 pkgname=torrentv-git
-pkgver=r47.3aab1c5
+pkgver=r61.0804fa8
 pkgrel=1
 pkgdesc="Stream Torrents to your AppleTV/Roku/Chromecast"
 arch=('i686' 'x86_64')
 url="http://torrentv.github.io/"
 license=('GPL3')
 depends=('nodejs')
-makedepends=('git' 'nodejs-grunt-cli' 'nodejs-bower')
+makedepends=('git' 'bower')
 conflicts=('torrentv')
 provides=("torrentv")
 options=('!strip')
@@ -33,23 +33,17 @@ prepare() {
 
   # Get dependencies
   npm install
+  npm install grunt
+  npm install chromecast-js
   npm install subtitles-server
-: << 'COMMENT'
-  # Copy local node-webkit (will be used if grunt wants the same version)
-  if [ -d /usr/lib/node-webkit/ ]
-  then
-    _nwver=$(pacman -Q node-webkit | cut -d" " -f 2 | cut -d- -f1)
-    install -d "${srcdir}/${_gitname}/build/cache/${_platform}/${_nwver}"
-    install /usr/lib/node-webkit/* "${srcdir}/${_gitname}/build/cache/${_platform}/${_nwver}"
-  fi
-COMMENT
 }
 
 build() {
   cd "${srcdir}/${_gitname}"
 
   # Build
-  grunt build
+  sed -i 's/get.popcorntime.io\/nw/dl.nwjs.io/g' Gruntfile.js
+  grunt build --force
 }
 
 package() {
@@ -62,6 +56,8 @@ package() {
   install -m644 "nw.pak" "${pkgdir}${_DEST}"
   install -m644 "libffmpegsumo.so" "${pkgdir}${_DEST}"
 
+  msg2 "Patching program to fix libudev.so.0 problem"
+  sed -i 's/\x75\x64\x65\x76\x2E\x73\x6F\x2E\x30/\x75\x64\x65\x76\x2E\x73\x6F\x2E\x31/g' "${pkgdir}${_DEST}/TorrenTV"
   # Link to program
   msg2 "Symlink /usr/bin/${provides[0]} -> ${_DEST}/TorrenTV"
   install -dm755 "${pkgdir}/usr/bin"
