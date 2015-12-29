@@ -2,13 +2,13 @@
 
 pkgname=fwupd
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple daemon to allow session software to update firmware'
 arch=('i686' 'x86_64')
 url='https://github.com/hughsie/fwupd'
 license=('GPL2')
-depends=('appstream-glib>=0.5.2' 'fwupdate' 'libsoup')
-makedepends=('docbook-utils' 'intltool' 'perl-xml-sax-expat' 'gtk-doc')
+depends=('appstream-glib>=0.5.2' 'fwupdate')
+makedepends=('docbook-utils' 'intltool' 'perl-xml-sax-expat' 'gtk-doc' 'docbook-sgml')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('73d66497e3802283e23ffe7aeacca030831925322624a3b862fefe77fd0e2264')
 
