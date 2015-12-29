@@ -7,14 +7,14 @@ pkgver=2.2.1.95.r1444.gd5accd8
 pkgrel=1
 pkgdesc="The modern VLC Mozilla (NPAPI) plugin - Git version"
 arch=('i686' 'x86_64')
-url="https://code.videolan.org/videolan/npapi-vlc"
+url="https://code.videolan.org/videolan/$_pkgname"
 license=('GPL2+')
 depends=('vlc')
 makedepends=('git' 'gtk2' 'npapi-sdk')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('!libtool')
-source=("git+${url}.git")
+source=("git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
