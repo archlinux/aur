@@ -2,12 +2,7 @@
 # Previous Maintainer: 2bluesc <2bluesc gmail.com>
 # Maintainer: Vadzim Dambrouski <pftbest gmail.com>
 pkgname=gcc-arm-none-eabi-bin
-pkgver=4.9_2015_q3_update
-_pkgname=gcc-arm-none-eabi
-_pkgver=${pkgver//_/-}
-_pkgvershort=${_pkgver%-*}
-_pkgvershort=${_pkgvershort/-q/q}
-_pkgdate=20150921
+pkgver=5_2015_q4_major
 pkgrel=1
 pkgdesc="GNU Tools ARM Embedded Processors (binary distribution, includes newlib, does NOT include GDB)"
 arch=('i686' 'x86_64')
@@ -30,15 +25,15 @@ conflicts=('gcc-arm-none-eabi'
 	  'arm-none-eabi-newlib'
     )
 url="https://launchpad.net/gcc-arm-embedded"
-source="https://launchpad.net/gcc-arm-embedded/${pkgver%%_*}/${_pkgver}/+download/${_pkgname}-${_pkgvershort/./_}-${_pkgdate}-linux.tar.bz2"
+source="https://launchpad.net/gcc-arm-embedded/5.0/5-2015-q4-major/+download/gcc-arm-none-eabi-5_2-2015q4-20151219-linux.tar.bz2"
 license=('custom')
 options=(!strip staticlibs)
-sha256sums=('c50078bfbd29e6c15615900e746f4d0acde917338e55860b0f145f57387c12ab')
+sha256sums=('1e94f8e287d100f0d36702ca23be7cfb7c9dabdb7e4fce9f81872f1e13e5ab8a')
 
 package() {
   mkdir -p $pkgdir/usr
   cd $srcdir/gcc-*
   cp -a * $pkgdir/usr
-  rm -f $pkgdir/usr/bin/arm-none-eabi-gdb
-  rm -f $pkgdir/usr/bin/arm-none-eabi-gdb-py
+  rm -f $pkgdir/usr/bin/arm-none-eabi-gdb*
+  rm -f $pkgdir/usr/lib/libcc1.so*
 }
