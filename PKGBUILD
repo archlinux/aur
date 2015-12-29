@@ -29,7 +29,8 @@ pkgver=9.0.32150
 #pkgver=10.0.41499
 #pkgver=10.0.46203 # Patched to work in user (standalone) mode. Does not work with teamviewerd.service.
 #pkgver=11.0.50678
-pkgrel=2
+#pkgver=11.0.52520
+pkgrel=1
 _pkgver_major="${pkgver%%.*}"
 
 if [ "${pkgname%-quicksupport}" != "${pkgname}" ]; then
