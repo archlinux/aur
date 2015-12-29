@@ -1,11 +1,4 @@
 post_install() {
-  # for icon in /usr/share/icons/hicolor/*/apps/pioneer.png
-  # do
-  #   if [[ $icon =~ /([0-9]+)x[0-9]+/ ]]; then
-  #     xdg-icon-resource install --novender --size ${BASH_REMATCH[1]} $icon
-  #   fi
-  # done
-
   xdg-icon-resource forceupdate
 }
 
@@ -16,4 +9,3 @@ post_upgrade() {
 post_remove() {
   post_install $1
 }
-s
