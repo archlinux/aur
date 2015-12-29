@@ -1,12 +1,12 @@
 #
 # Maintainer: bjin <bjin1990 at gmail dot com>
-# Contributor: isiachi <isiachi@rhyeworld.it>
+# Maintainer: Iacopo Isimbaldi <isiachi@rhye.it>
 #
 
 pkgbase="spl-dkms-git"
 pkgname=("spl-dkms-git" "spl-utils-dkms-git")
 pkgver=0.6.5.3_r0_g7e85f6b
-pkgrel=3
+pkgrel=4
 license=('GPL')
 makedepends=("git" "tar")
 arch=("i686" "x86_64")
@@ -40,7 +40,6 @@ build() {
 package_spl-dkms-git() {
     pkgdesc="Solaris Porting Layer kernel modules."
     depends=("dkms" "spl-utils-dkms-git=${pkgver}-${pkgrel}")
-    provides=("spl-dkms=${pkgver%%_*}")
     conflicts=("spl-git" "spl-lts" "spl-dkms")
     install=spl.install
 
@@ -58,7 +57,6 @@ package_spl-dkms-git() {
 
 package_spl-utils-dkms-git() {
     pkgdesc="Solaris Porting Layer kernel module support files."
-    provides=("spl-utils")
     conflicts=("spl-utils-git" "spl-utils-lts" "spl-utils")
 
     cd "${srcdir}/spl"
