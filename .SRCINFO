@@ -1,0 +1,15 @@
+pkgbase = rocaloid-ruce-git
+	pkgdesc = A free vocal synthesis system --- UTAU Compatible Engine
+	pkgver = 204.f4b9400
+	pkgrel = 1
+	url = http://rocaloid.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	source = git+https://github.com/Rocaloid/RUCE.git#branch=nanodesu
+	md5sums = SKIP
+
+pkgname = rocaloid-ruce-git
+
