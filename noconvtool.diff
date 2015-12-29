@@ -1,0 +1,24 @@
+diff --git a/tools/mksprite/Makefile b/tools/mksprite/Makefile
+index ab3cb88..f8e80ec 100644
+--- a/tools/mksprite/Makefile
++++ b/tools/mksprite/Makefile
+@@ -1,17 +1,14 @@
+ INSTALLDIR = $(N64_INST)
+ CFLAGS = -std=gnu99 -O2 -Wall -Werror -I../../include -lpng
+ 
+-all: mksprite convtool
++all: mksprite
+ 
+ mksprite: mksprite.c
+-convtool: convtool.c
+ 
+-install: mksprite convtool
++install: mksprite
+ 	install -m 0755 mksprite $(INSTALLDIR)/bin
+-	install -m 0755 convtool $(INSTALLDIR)/bin
+ 
+ .PHONY: clean install
+ 
+ clean:
+ 	rm -rf mksprite
+-	rm -rf convtool
