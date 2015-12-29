@@ -1,8 +1,8 @@
 # Maintainer: Julian Hornich <vivaeltopo@googlemail.com>
 
 pkgname=gnome-shell-theme-viva-git
-_pkgver=3.18.1
-pkgver=3.18.1.112.f4fc574
+_pkgver=3.18.3
+pkgver=3.18.3.132.d2127f5
 pkgrel=1
 pkgdesc="A custom gnome-shell theme named viva (blue and orange version)"
 arch=('any')
@@ -27,6 +27,10 @@ package() {
   cp -r gnome-shell ${pkgdir}/usr/share/themes/viva-orange/
   chmod -R 755 ${pkgdir}/usr/share/themes/viva-orange
 
+  # cleanup
+  cd ${pkgdir}/usr/share/themes/viva-orange/gnome-shell/
+  rm -rf gnome-classic.css *.scss styles
+
   # blue version
   cd $srcdir/gnome-shell-theme-viva
   make blue
@@ -34,4 +38,8 @@ package() {
   mkdir -p ${pkgdir}/usr/share/themes/viva-blue
   cp -r gnome-shell ${pkgdir}/usr/share/themes/viva-blue/
   chmod -R 755 ${pkgdir}/usr/share/themes/viva-blue
+
+  # cleanup
+  cd ${pkgdir}/usr/share/themes/viva-blue/gnome-shell/
+  rm -rf gnome-classic.css *.scss styles
 }
