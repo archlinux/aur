@@ -1,4 +1,4 @@
 /zfs
 /src
 /pkg
-*.xz
+*.pkg*
