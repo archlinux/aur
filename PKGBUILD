@@ -1,13 +1,13 @@
 #Maintainer: M0Rf30
 
 pkgname=i2pd-git
-pkgver=2126.196d7e8
+pkgver=2135.2cc3dfc
 pkgrel=1
 pkgdesc="Simplified C++ implementation of I2P client"
 arch=('i686' 'x86_64')
 url="https://github.com/PurpleI2P/i2pd"
 license=('GPL2')
-depends=('boost-libs' 'libupnp' 'openssl' 'zlib')
+depends=('boost-libs' 'miniupnpc' 'openssl' 'zlib')
 makedepends=('git' 'boost' 'cmake')
 source=('i2pd::git+https://github.com/PurpleI2P/i2pd.git'
 	i2pd.service
