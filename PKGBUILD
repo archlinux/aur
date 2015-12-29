@@ -1,7 +1,7 @@
 # Maintainer: Sean Baggaley <coffeescripter@gmail.com>
 pkgname=doomseeker
 pkgver=1.0
-pkgrel=7
+pkgrel=8
 pkgdesc="A cross-platform Doom server browser"
 arch=(i686 x86_64)
 url="http://doomseeker.drdteam.org/"
@@ -18,7 +18,7 @@ sha256sums=('9d24db4d7f788ea584e8c2ede088a3fb7db33408f01c4c9f80c8c009240e8d0d'
             'a66e2ecca5cd32a0480776f6adfd8420d18fa56de1ca574aae61bbea95bd3c2c'
             '96fca72228a50d80b019adf3c82b8800a9d7f03994252e544513537541d011a4')
 
-_bbdir=Blzut3-doomseeker-b1cb0d67f9b9
+_bbdir=Doomseeker-doomseeker-b1cb0d67f9b9
 
 build() {
     cd $srcdir/$_bbdir
