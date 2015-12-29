@@ -1,4 +1,4 @@
-Tunnel-configurer version 1.7
+Tunnel-configurer version 1.7.1
  Client-server IP tunnel configuration via the same IP tunnel.
 
 -- vtund.conf --
@@ -99,7 +99,7 @@ noroutes|-r         : server - Don't send any routes from config
                     : client - Don't get IPv4 routes from server
 no6routes|-R        : Don't get IPv6 routes from server (client only)
  timeout|-t <sec>   : default=10, 0=endless
-   abort|-k         : Abort connection after timeout (server only)
+   abort|-k         : Abort connection after timeout
     keep|-K         : ... or don't do it
   nofork|-B  | nobg | nobackground
 

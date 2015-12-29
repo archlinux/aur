@@ -28,7 +28,7 @@ ABORT=
 
 usage() {
  [[ -n "$1" ]] && return 0
- echo "Tunnel-configurer version 1.7
+ echo "Tunnel-configurer version 1.7.1
  Client-server IP tunnel configuration via the same IP tunnel.
 
 -- vtund.conf --
@@ -129,7 +129,7 @@ noroutes|-r         : server - Don't send any routes from config
                     : client - Don't get IPv4 routes from server
 no6routes|-R        : Don't get IPv6 routes from server (client only)
  timeout|-t <sec>   : default=10, 0=endless
-   abort|-k         : Abort connection after timeout (server only)
+   abort|-k         : Abort connection after timeout
     keep|-K         : ... or don't do it
   nofork|-B  | nobg | nobackground
 
@@ -237,6 +237,15 @@ addsend() {
  SEND[$((i++))]="$send"
 }
 
+ifabort() {
+ [[ -n "$1" ]] && log "$@"
+ if [[ -n "$PARENT" && -d "/proc/$PARENT" ]] ; then
+  log "Aborting connection..."
+  kill "$PARENT"
+ fi
+ exit 6
+}
+
 main() {
  case "$ROLE" in
  send)
@@ -274,11 +283,7 @@ main() {
    "$CMD" send "$ifc" "$PORT" "${SEND[@]}" || exit 4
    "$ping" -q -c1 -W1 -I "$ifc" "$P" &> /dev/null && break
    sec_up SEC
-   if ((TIMEOUT!=0)) && ((SEC > START+TIMEOUT)) ; then
-    log "Time is out."
-    [[ -n "$PARENT" && -d "/proc/$PARENT" ]] && kill "$PARENT"
-    exit 6
-   fi
+   ((TIMEOUT!=0)) && ((SEC > START+TIMEOUT)) && ifabort "Time is out."
   done
   log "Confirmed, $P is UP."
   ;;
@@ -319,6 +324,7 @@ main() {
    fi
    FIRST=0
   done
+  ((FIRST==0)) || ifabort "Failed."
   log "Completed."
   ;;
  esac
@@ -475,8 +481,8 @@ if [[ -z "$NO6ADDR" ]] ; then
  ip -6 route flush dev "$ifc"
 fi
 
-if [[ "$ROLE" = send && -n "$ABORT" && "$ABORT" != 'no' ]] ; then
- read PARENT g < <( ps h -o pid,cmd -C vtund | grep -E " vtund\[s\]: .+ tun $ifc[ ]*\$" )
+if [[ -n "$ABORT" && "$ABORT" != 'no' ]] ; then
+ read PARENT g < <( ps h -o pid,cmd -C vtund | grep -E " vtund\[[sc]\]: .+ tun $ifc[ ]*\$" )
 fi
 
 if [[ -n "$NOBG" ]] ; then
