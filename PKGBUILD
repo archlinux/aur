@@ -2,72 +2,47 @@
 
 _pkgname=openbazaar
 pkgname=${_pkgname}-git
-pkgver=4079.c77f9ae
+pkgver=1158.0412ce6
 pkgrel=1
-pkgdesc="A decentralized marketplace proof of concept. It is based off of the POC code by the darkmarket team and protected by the GPL"
+pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon"
 arch=(any)
 url="http://openbazaar.org"
 license=('MIT')
-depends=(   curl
-	    #gnupg1
-	    jquery
-            python2-bitcoin
-            python2-dnschain
-            python2-gnupg-hg
-            python2-ipy
-            python2-miniupnpc
-            python2-obelisk
-            python2-pillow
-            python2-psutil
-            python2-pycountry
-            python2-pyee
-            python2-pyelliptic
-            python2-pystun
-            python2-qrcode
-            python2-requests
-            python2-rfc3986
-            python2-tornado
-)
+depends=(electron)
+makedepends=(git npm)
+source=(
+	"${_pkgname}::git+https://github.com/OpenBazaar/OpenBazaar-Client.git"
+	"${_pkgname}.sh"
+        "${_pkgname}.desktop"
+        "${_pkgname}.png"
 
-makedepends=(git)
-source=("${_pkgname}::git+https://github.com/OpenBazaar/OpenBazaar.git#branch=develop"
-	 ${_pkgname}.service
-	 ${_pkgname}.sh
-	 ${_pkgname}.conf
-#	 gnupg1.patch
 )
-backup=('etc/openbazaar.conf')
 install=${_pkgname}.install
 options=('!strip')
 provides=(${_pkgname})
 replaces=(${_pkgname})
 
-package(){
+build(){
   cd $srcdir/${_pkgname}
+  npm install
+}
 
-  msg2 "Install systemd service"
-  install -Dm644 $srcdir/${_pkgname}.service $pkgdir/usr/lib/systemd/system/${_pkgname}.service
+package(){
 
-  msg2 "Install ${_pkgname} sample conf in /etc/${_pkgname}.conf"
-  install -Dm644 $srcdir/${_pkgname}.conf $pkgdir/etc/${_pkgname}.conf
-
-  msg2 "Install ${_pkgname} scripts"
+msg2 "Installing Openbazaar data"
+  install -dm755 $pkgdir/opt/
+  cp -r $srcdir/${_pkgname} $pkgdir/opt/
+  
+ 
+msg2 "Installing execution script"
   install -Dm755 $srcdir/${_pkgname}.sh $pkgdir/usr/bin/${_pkgname}
+  
 
-  msg2 "Create folder for user ${_pkgname}"
-  cd installers/ubuntu
-  cat build | head -n -2 > create_folders
-  python2 create_folders
-	install -dm755 $pkgdir/var/lib/
+  rm -rf $pkgdir/opt/${_pkgname}/.git
 
-  cp -r output/usr/share/${_pkgname} $pkgdir/var/lib/
-  cp -r $srcdir/${_pkgname}/rudp $pkgdir/var/lib/${_pkgname}
-
-  msg2 "Jquery symlink"
-  ln -s -r /usr/share/jquery/jquery.min.js $pkgdir/var/lib/${_pkgname}/html/vendors
-
-  msg2 "Python2 bytecode generation"
-  cd $pkgdir/var/lib/${_pkgname}/ && python2 -m compileall .
+msg2 "Installing icons and desktop menu entry"
+  install -Dm644 $srcdir/${_pkgname}.png "$pkgdir"/usr/share/icons/hicolor/128x128/apps/openbazaar.png
+  install -Dm644 $srcdir/${_pkgname}.desktop "$pkgdir"/usr/share/applications/openbazaar.desktop
 }
 
 pkgver() {
@@ -76,6 +51,6 @@ pkgver() {
 }
 
 md5sums=('SKIP'
-         '1d1e3933c4fd26f565e47f475eede2b4'
-         '87ad334f35bce82931151fa94c06bab1'
-         '0741fc4c68e499b10cbf272f27efd3a0')
+         '2f915aa854435ce7cd1dfca4eccd0112'
+         'b96363637323c19b075c68543a65f808'
+         '71fc6ef0cc128dc1d00eff33c12c66cb')
