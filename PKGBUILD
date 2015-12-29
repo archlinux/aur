@@ -5,15 +5,15 @@
 
 _pkgname=kbibtex
 pkgname=kbibtex-git
-pkgver=20150815_bdaefdf
+pkgver=20151227_7fdc0cd
 pkgrel=1
 pkgdesc="A BibTeX editor for KDE"
 arch=('i686' 'x86_64')
 url='http://home.gna.org/kbibtex/'
 license=('GPL2')
-depends=('kdebase-runtime' 'poppler-qt5')
+depends=('kdelibs4support' 'poppler-qt5' 'qca-qt5')
 optdepends=('kdegraphics-okular: Document preview')
-makedepends=('git' 'extra-cmake-modules' 'kdoctools')
+makedepends=('git' 'extra-cmake-modules' 'kdoctools' 'plasma-framework')
 install=$pkgname.install
 provides=('kbibtex')
 conflicts=('kbibtex')
@@ -27,14 +27,26 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build
-}
+# Fix compilation error
+cp /usr/include/KF5/KDELibs4Support/klocale.h $srcdir/$_pkgname/src/data/
+cp /usr/include/KF5/KDELibs4Support/kdelibs4support_export_internal.h $srcdir/$_pkgname/src/data/
+cp /usr/include/KF5/KDELibs4Support/kdelibs4support_export.h $srcdir/$_pkgname/src/data/
+
+mkdir -p build
+  }
 
 build() { 
   cd build
-  cmake ../$_pkgname -DCMAKE_INSTALL_PREFIX=/usr -DLIB_INSTALL_DIR=lib -DCMAKE_BUILD_TYPE=Release -DKDE_INSTALL_USE_QT_SYS_PATHS=ON     
+  cmake ../$_pkgname  \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DSYSCONF_INSTALL_DIR=/etc \
+    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+    -DBUILD_TESTING=OFF
   make
 }
+
 
 package() {
   cd build
