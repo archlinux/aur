@@ -2,7 +2,7 @@
 
 pkgname=nodejs-grasp
 _npmname=grasp
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="JavaScript structural search, replace, and refactor"
 arch=('any')
