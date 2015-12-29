@@ -1,0 +1,18 @@
+--- therion.ini.old	2011-06-18 10:31:38.000000000 +0200
++++ therion.ini	2015-12-29 02:18:42.993104037 +0100
+@@ -1,5 +1,5 @@
+ ### Output character encodings ###
+-# encoding-default  ASCII
++encoding-default  UTF-8
+ # encoding-sql  ASCII
+ 
+ ### Default regional settings ###
+@@ -23,7 +23,7 @@
+ ### Tex initialization ###
+ # tex-env off
+ # tex-fonts <encoding> <roman> <italic> <bold> <sansserif> <sansserifoblique>
+-# tex-fonts raw cmr10 cmti10 cmbx10 cmss10 cmssi10
++tex-fonts raw cmr10 cmti10 cmbx10 cmss10 cmssi10
+ # tex-fonts xl2 csr10 csti10 csbx10 csss10 csssi10
+ 
+ ### PDF fonts initialization
