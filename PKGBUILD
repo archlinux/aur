@@ -1,5 +1,5 @@
 pkgname=capstone-git
-pkgver=20150622.2353.a5540d8
+pkgver=20151229.2531.f9f0c80
 pkgrel=1
 pkgdesc="A lightweight multi-platform, multi-architecture disassembly framework."
 arch=('i686' 'x86_64')
@@ -49,7 +49,7 @@ check() {
 package() {
   cd ${srcdir}/${pkgname}
   sed -i 's#includedir=/usr/include#includedir=/usr/include/capstone#g' capstone.pc
-  make DESTDIR="${pkgdir}" LIBDIR="${pkgdir}/usr/lib" install
+  make DESTDIR="${pkgdir}" install
   install -d -m755 ${pkgdir}/usr/share/licenses/capstone-git
   install LICENSE.TXT ${pkgdir}/usr/share/licenses/capstone-git/LICENSE.TXT
 
