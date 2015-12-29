@@ -1,7 +1,7 @@
 # Maintainer: Einar Lielmanis <einar@spicausis.lv>
 
 pkgname=sylpheed-beta
-pkgver=3.5.0rc
+pkgver=3.5.0rc2
 pkgrel=1
 pkgdesc="Lightweight and user-friendly e-mail client. Latest official beta version."
 arch=('i686' 'x86_64')
@@ -29,5 +29,5 @@ package() {
 
 validpgpkeys=('8CF3A5AC417ADE72B0AA4A835024337CC00C2E26')
 
-md5sums=('77a04e4b6b26608e1a8ccd2346e2d4dd'
+md5sums=('c8e5e9b2412f6a1a7733ec95ca13df29'
          'SKIP')
