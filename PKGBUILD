@@ -6,7 +6,7 @@ pkgdesc='VHDL simulator'
 url='http://sourceforge.net/projects/ghdl-updates/'
 license=('GPLv2')
 
-makedepends=('gcc-ada' 'mercurial')
+makedepends=('gcc-ada' 'git')
 install=ghdl.install
 options=(!emptydirs staticlibs)
 
