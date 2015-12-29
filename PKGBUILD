@@ -1,4 +1,4 @@
-# Maintainer: Maarten de Vries
+# Maintainer: Maarten de Vries <maarten@de-vri.es>
 # Contributor: Nathan Ringo <tikiking1@gmail.com>
 
 pkgname=libfreenect2
