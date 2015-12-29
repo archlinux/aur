@@ -3,7 +3,7 @@
 
 pkgname=libindi_3rdparty
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="3rd party drivers for INDI, a distributed control protocol designed to operate astronomical instrumentation"
 url="http://www.indilib.org/index.php?title=Main_Page"
 license=(LGPL2.1)
@@ -43,7 +43,8 @@ build() {
 }
 
 package() {
-  mv -R /tmp/${pkgname}_${pkgver}/* $pkgdir
+  cp -R /tmp/${pkgname}_${pkgver}/* $pkgdir
   cd build
   make DESTDIR="$pkgdir" install
+  rm -rf /tmp/${pkgname}_${pkgver}
 }
