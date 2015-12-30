@@ -5,11 +5,11 @@
 
 pkgname=('houdini' 'houdini-maya-engine' 'hqueue-server' 'hqueue-client')
 pkgbase=houdini
-_pkgver_major=14
+_pkgver_major=15
 _pkgver_minor=0
-_pkgver_build=201.13
+_pkgver_build=313
 pkgver=${_pkgver_major}.${_pkgver_minor}.${_pkgver_build}
-pkgrel=2
+pkgrel=1
 pkgdesc="High-end 3D animation package"
 arch=('x86_64')
 url="http://www.sidefx.com/"
@@ -21,14 +21,12 @@ install=(houdini.install)
 
 _gccver=$(gcc -dumpversion)
 _gccver=${_gccver%.[0-9]*}
-_validgccs=(4.4 4.6 4.8)
+_validgccs=(4.8)
 # Use the latest gcc version available if there isn't a known version installed
 [[ ${_validgccs[@]} =~ $_gccver ]] || _gccver=${_validgccs[@]:(-1)}
 
-source=(file://${pkgname}-${pkgver}-linux_x86_64_gcc${_gccver}.tar.gz)
-[[ "$_gccver" == 4.8 ]] && sha1sums=('af8caa68e169b694c1b3d17f4a0df4604446ebf1')
-[[ "$_gccver" == 4.6 ]] && sha1sums=('93d7d204be771d474cf0d4d98aa90b1460f4f536')
-[[ "$_gccver" == 4.4 ]] && sha1sums=('d1504e00377426f046956f90ef02139d6da43094')
+source=(${pkgname}-${pkgver}-linux_x86_64_gcc${_gccver}.tar.gz)
+[[ "$_gccver" == 4.8 ]] && sha1sums=('7ba7e43cad39019d7b9cdaa125c5849514200fe2')
 
 source+=('LICENSE' 'sesinetd.service')
 sha1sums+=('3b639ee438fdb390b8b302000987d80df100a3c9' 'b6eca8f67aeedb9c5b7a5863c3d24edaf2b93cf3')
@@ -109,7 +107,6 @@ package_houdini-maya-engine() {
 # If you use easy_install then it may be easier to install
 # ${srcdir}/houdini-${pkgver}-linux_x86_64_gcc${_gccver}/hqueue/hqserver-${pkgver}-py2.7.egg
 package_hqueue-server() {
-	pkgver=14.0.201.13
 	depends=('mysql' 'python2>=2.7' 'python2-webtest' 'python2-nose' 'python2-virtualenv' 'python2-weberror' 'python2-paramiko' 'python2-pylons' 'python2-rpyc' 'python2-paste' 'python2-paste-deploy' 'python2-sqlalchemy' 'python2-pygments' 'python2-routes' 'python2-webhelpers' 'python2-simplejson' 'python2-tempita' 'python2-beaker' 'python2-wsgiref' 'python2-mako' 'python2-decorator' 'python2-paste-script' 'python2-webob' 'python2-crypto' 'python2-formencode')
 	makedepends=('python2-setuptools')
 
@@ -133,7 +130,6 @@ package_hqueue-server() {
 # If you use easy_install then it may be easier to install
 # ${srcdir}/houdini-${pkgver}-linux_x86_64_gcc${_gccver}/hqueue/hqclient-${pkgver}-py2.7.egg
 package_hqueue-client() {
-	pkgver=14.0.201.13
 	makedepends=(unzip)
 
 	cd ${srcdir}/houdini-${pkgver}-linux_x86_64_gcc${_gccver}
