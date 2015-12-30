@@ -1,5 +1,5 @@
-# Maintainer: Marcel Campello Ferreira <marcel@prafrentex.com.br>
-pkgname=neo4j
+# Maintainer: Marcel Campello Ferreira <marcel.campello.ferreira@gmail.com>
+pkgname=neo4j-community
 pkgver=2.3.1
 pkgrel=1
 pkgdesc="A fully transactional graph database implemented in Java"
@@ -8,6 +8,7 @@ url="http://neo4j.org/"
 license=(GPL)
 makedepends=(patch)
 depends=(bash lsof java-runtime-headless)
+conflicts=(neo4j-enterprise)
 backup=(etc/neo4j/neo4j-http-logging.xml
         etc/neo4j/neo4j-server.properties
         etc/neo4j/neo4j-wrapper.conf
@@ -43,10 +44,10 @@ prepare() {
 package() {
 
   NEO4J_HOME=usr/share/java/neo4j
-  NEO4J_INSTANCE=var/lib/neo4j
-  NEO4J_CONFIG=etc/neo4j
-  NEO4J_LOG=var/log/neo4j
   NEO4J_SHARE=usr/share/neo4j
+  NEO4J_CONFIG=etc/neo4j
+  NEO4J_INSTANCE=var/lib/neo4j
+  NEO4J_LOG=var/log/neo4j
   NEO4J_RUNDIR=run/neo4j
   NEO4J_PIDFILE=${NEO4J_RUNDIR}/neo4j-service.pid
 
