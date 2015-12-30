@@ -6,7 +6,7 @@ pkgname=openblas-lapack
 _PkgName=OpenBLAS
 _pkgname=openblas
 pkgver=0.2.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas)"
 arch=('i686' 'x86_64')
 url="http://xianyi.github.com/OpenBLAS/"
@@ -52,5 +52,7 @@ package(){
   ln -sf libopenblas.so liblapack.so
   ln -sf libopenblas.so liblapack.so.3
   ln -sf libopenblas.so liblapack.so.3.5.0
+  # LAPACKE
+  ln -sf libopenblas.so liblapacke.so
 }
 # vim:set ts=2 sw=2 et:
