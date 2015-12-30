@@ -2,12 +2,12 @@
 
 pkgname=kronometer
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple chronometer application."
 arch=('i686' 'x86_64')
 url="http://aelog.org/kronometer"
 license=('GPL2')
-depends=('kconfig' 'kxmlgui' 'kwidgetsaddons')
+depends=('kxmlgui' 'hicolor-icon-theme')
 makedepends=('extra-cmake-modules' 'kdoctools' 'python')
 conflicts=('kronometer-git')
 install=$pkgname.install
