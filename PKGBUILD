@@ -1,7 +1,7 @@
 # Maintainer: wenLiangcan <boxeed at gmail dot com>
 
 pkgname=gg-git
-pkgver=20150818
+pkgver=20151219
 pkgrel=1
 pkgdesc="Git Goodies: At-A-Glance, Efficient, and Aesthetically Pleasing Git Shortcuts"
 arch=("any")
