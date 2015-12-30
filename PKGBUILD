@@ -29,7 +29,7 @@ sha256sums_i686=('807f2d058b5f511129dfd35d22ed874d1cc6fef81a14979e9aef4922bddb4a
 
 # Generic checksums.
 sha256sums=('aaae33882ab1e2334b4a33b4235cbdd4beb1379b08f5fa3a0a270f716ea43fa7'
-'c43f90483feeac4fddefc05d535099ea7213f19d890a71f9ad145b7d5c4a9bab')
+'ce386ef34305923a3d10567be4e90963f0186852f8d5fe99f324dbfc487a2e6f')
 
 package() {
         install -d -m 755 ${pkgdir}/opt/
