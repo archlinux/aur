@@ -2,7 +2,7 @@
 
 _name=glbinding
 pkgname=${_name}-git
-pkgver=1.1.0.r88.g3738d58
+pkgver=1.1.0.r115.gc90891b
 pkgrel=1
 pkgdesc="A generated C++ binding for the OpenGL API, generated using the gl.xml specification"
 arch=('i686' 'x86_64')
@@ -30,6 +30,7 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DOPTION_BUILD_TESTS=0 \
+		-DOPTION_BUILD_TOOLS=0 \
 		-Wno-dev \
 		..
 
