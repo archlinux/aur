@@ -1,8 +1,8 @@
 # Maintainer: Mirco Tischler <mt-ml at gmx dot de>
 
 pkgname=pesign
-pkgver=0.110
-pkgrel=2
+pkgver=0.111
+pkgrel=1
 pkgdesc='Tools for manipulating signed PE-COFF binaries'
 arch=('i686' 'x86_64')
 url='https://github.com/rhinstaller/pesign'
@@ -10,16 +10,19 @@ license=('GPL2')
 depends=('efivar' 'nss' 'libutil-linux')
 install='PKGBUILD'
 source=("${url}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2"
-        "http://pkgs.fedoraproject.org/lookaside/pkgs/pesign/rh-test-certs.tar.bz2/328db7cb27847cb610b7cf8f9c470455/rh-test-certs.tar.bz2"
-        "efivar-const-correct.patch")
-sha256sums=('a03499ffa181fea6086e1966476eccc05e3e014761ac300de1da27a44dba2281'
+	"http://pkgs.fedoraproject.org/lookaside/pkgs/pesign/rh-test-certs.tar.bz2/328db7cb27847cb610b7cf8f9c470455/rh-test-certs.tar.bz2"
+	"pthread-flags.patch"
+	"fix-double-prefix-when-installing-to-docdir.patch")
+sha256sums=('c6d52cbf1d8551be94497a96380d3b0497be331f9eb0af6250a854c0bc2225b9'
             '8932ff61a95a25def2551e5774b0fc16c126ed9ae3198ad5468e5a4d1b4f03b0'
-            'c57523fbab55140ff629b320947f60319fb6f0083cc5ceba2712f61034c97c76')
+            'ca76e60405fe8d382dc867da018f3d8ec6f2faef014e503b9329bff642debcbb'
+            'a34c8bac179b9e742db6854d8e86da36e314317290dfabbf44ad8850addd1008')
 
 prepare() {
-  cd "${srcdir}"
-  
-  patch -p0 < ${source[2]}
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  patch -p1 < ${srcdir}/${source[2]}
+  patch -p1 < ${srcdir}/${source[3]}
 }
 
 build() {
@@ -31,7 +34,7 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  make LIBDIR=/usr/lib DESTDIR="${pkgdir}" install install_systemd
+  make libdir=/usr/lib libexecdir=/usr/lib DESTDIR="${pkgdir}" install install_systemd
   rm -rf ${pkgdir}/var
   rm -rf ${pkgdir}/etc/rpm
 
