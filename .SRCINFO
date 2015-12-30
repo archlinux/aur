@@ -1,7 +1,7 @@
 pkgbase = lenovo-s20-30
 	pkgdesc = Configuration to support netbook Lenovo S20-30
 	pkgver = 0.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bitbucket.org/raimar/lenovo-s20-30
 	install = install
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = lenovo-s20-30
 	source = lenovo_s20-30_blacklist.conf
 	source = lenovo_s20-30_load.conf
 	sha256sums = 3451688ddadac8699546e68f41607a7436dd8e25f1c6e0fc5989561b07b526b5
-	sha256sums = 9639303ddce1ced0d42291cbd83ab546f02259dab8002a28d89ba98fc267eae6
+	sha256sums = 0176afe92b990be5ca9145f14504ee8d1ae8349a9f3cd9d7f0ddaade6ebe59e5
 
 pkgname = lenovo-s20-30
 
