@@ -9,7 +9,7 @@
 pkgbase=lib32-networkmanager
 pkgname=(lib32-networkmanager lib32-libnm-glib)
 _pkgname=NetworkManager
-pkgver=1.0.8
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="Network Management daemon, 32bit libraries"
 arch=(i686 x86_64)
@@ -22,25 +22,25 @@ makedepends=(intltool dhclient iptables gobject-introspection gtk-doc
 checkdepends=(libx11 python2-dbus)
 source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgname/${pkgver:0:3}/$_pkgname-$pkgver.tar.xz
         disable_set_hostname.patch)
-sha256sums=('8bb128950f8a79ff881afadb46dd55e16f952390cf7cb4e06063431e5144937f'
+sha256sums=('1bcfce8441dfd9f432a100d06b54f3831a2275cccc3b74b1b4c09a011e179fbc'
             '25056837ea92e559f09563ed817e3e0cd9333be861b8914e45f62ceaae2e0460')
 
 prepare() {
-	mkdir path
-	ln -s /usr/bin/python2 path/python
+  mkdir path
+  ln -s /usr/bin/python2 path/python
 
-	cd NetworkManager-$pkgver
+  cd NetworkManager-$pkgver
   patch -Np1 -i ../disable_set_hostname.patch
   NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-	export PATH="$srcdir/path:$PATH"
+  export PATH="$srcdir/path:$PATH"
 
-	export CC='gcc -m32'
-	export CXX='g++ -m32'
-	export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
-	export LIBRARY_PATH="/usr/lib32:$LIBRARY_PATH"
+  export CC='gcc -m32'
+  export CXX='g++ -m32'
+  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  export LIBRARY_PATH="/usr/lib32:$LIBRARY_PATH"
 
   cd $_pkgname-$pkgver
   ./configure \
@@ -75,7 +75,7 @@ build() {
 }
 
 check() {
-	export PATH="$srcdir/path:$PATH"
+  export PATH="$srcdir/path:$PATH"
   cd NetworkManager-$pkgver
   make -k check
 }
