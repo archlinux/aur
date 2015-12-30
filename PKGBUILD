@@ -2,7 +2,7 @@
 
 pkgname=nodejs-n
 _npmname=n
-pkgver=2.0.2
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Node version manager"
 arch=('any')
