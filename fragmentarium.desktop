@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Fragmentarium
+Exec=/usr/bin/fragmentarium
+Icon=/usr/share/fragmentarium/Misc/icon.jpg
+Path=/usr/share/fragmentarium
