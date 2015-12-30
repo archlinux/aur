@@ -12,7 +12,7 @@ options=('!emptydirs')
 depends=('perl-html-tree')
 checkdepends=('perl-test-requiresinternet')
 makedepends=('perl-extutils-makemaker')
-url="http://search.cpan.org/dist/${_pkgname}/"
+url="https://metacpan.org/release/${_pkgname}"
 source=(https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
 sha256sums=('8db481d9bf7e01c64a9f8acab7e531206a7decfa639a1b713f74c9ef3021f720')
 
