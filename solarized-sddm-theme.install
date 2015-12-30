@@ -3,4 +3,14 @@ post_install() {
   echo
   echo "[Theme]"
   echo "Current=solarized-sddm-theme"
+  echo
+  echo "To change the font used in this theme, add the following"
+  echo "lines to /usr/share/sddm/themes/solarized-sddm-theme/theme.conf:"
+  echo
+  echo "[General]"
+  echo "displayFont='YourFont'"
+}
+
+post_upgrade() {
+  post_install
 }

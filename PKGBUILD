@@ -2,7 +2,7 @@
 
 _gitname=solarized_sddm_theme
 pkgname=solarized-sddm-theme
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A solarized SDDM theme"
 arch=('any')
@@ -14,7 +14,8 @@ makedepends=('git')
 optdepends=('otf-raleway: raleway font support'
             'ttf-impallari-raleway-family: raleway font support'
             'otf-font-awesome: Fontawesome support'
-            'ttf-font-awesome: Fontawesome support')
+            'ttf-font-awesome: Fontawesome support'
+            'ttf-google-fonts-git: Open fonts from google, included raleway')
 provides=("${pkgname}=${pkgver}")
 install=${pkgname}.install
 
