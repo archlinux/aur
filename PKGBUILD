@@ -3,7 +3,7 @@
 pkgbase=django-contact-form10
 pkgname=('python-django-contact-form10' 'python2-django-contact-form10')
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic contact-form application for Django (Version 1.0)"
 arch=('any')
 license=('BSD')
@@ -14,6 +14,8 @@ md5sums=('878856c5de059bfeebe8788fd298ed0e')
 
 package_python-django-contact-form10() {
   depends=('python')
+  provides=("python-django-contact-form=${pkgver}")
+  conflicts=('python-django-contact-form')
 
   cd "${srcdir}/django-contact-form-${pkgver}"
 
@@ -23,6 +25,8 @@ package_python-django-contact-form10() {
 
 package_python2-django-contact-form10() {
   depends=('python2')
+  provides=("python2-django-contact-form=${pkgver}")
+  conflicts=('python2-django-contact-form')
 
   cd "${srcdir}/django-contact-form-${pkgver}"
 
