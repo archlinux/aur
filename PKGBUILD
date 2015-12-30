@@ -4,13 +4,13 @@
 pkgname=pear-net-url2
 _pkgname=Net_URL2
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Class for parsing and handling URL'
 arch=('any')
 url="http://pear.php.net/package/${_pkgname}"
 license=('BSD')
-depends=('php>=5.0')
-makedepends=('php-pear>=1.4.0b1')
+depends=('php>=5.0' 'php-pear>=1.4.0b1')
+makedepends=()
 options=('!strip')
 noextract=(${_pkgname}-${pkgver}.tgz)
 source=(http://download.pear.php.net/package/${_pkgname}-${pkgver}.tgz)
