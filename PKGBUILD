@@ -1,6 +1,6 @@
 #
 # Maintainer: bjin <bjin1990 at gmail dot com>
-# Maintainer: isiachi <isiachi@rhyeworld.it>
+# Maintainer: Iacopo Isimbaldi <isiachi@rhye.it>
 #
 
 pkgbase="zfs-dkms-git"
@@ -8,7 +8,7 @@ pkgname=("zfs-dkms-git" "zfs-utils-dkms-git")
 pkgver=0.6.5.3_r25_g0bf3772
 pkgrel=1
 license=('CDDL')
-makedepends=("git" "tar")
+makedepends=("git")
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/zfs.git#branch=zfs-0.6.5-release"
@@ -63,7 +63,6 @@ package_zfs-dkms-git() {
 
 package_zfs-utils-dkms-git() {
     pkgdesc="Kernel module support files for the Zettabyte File System."
-    depends=("spl-dkms-git")
     conflicts=("zfs-utils-git" "zfs-utils-lts" "zfs-utils")
 
     cd "${srcdir}/zfs"
