@@ -2,7 +2,7 @@
 
 pkgname=nodejs-superstatic
 _npmname=superstatic
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="A static file server for fancy apps"
 arch=('any')
