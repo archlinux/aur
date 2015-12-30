@@ -35,7 +35,6 @@ prepare()
 build()
 {
 	cd "$pkgname-$pkgver"
-	autoconf
 	./configure --with-prefsdir=/etc --with-scoresdir="$_scoresdir"
 	make
 	touch sweeptimes
