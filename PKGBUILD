@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Chrétien <chretien at lirmm dot fr>
 _name=tensorflow
 pkgname=python2-tensorflow
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Open source software library for numerical computation using data flow graphs"
 url="http://tensorflow.org"
@@ -14,7 +14,7 @@ _filename="tensorflow-${pkgver}-cp27-none-linux_${CARCH}.whl"
 source=("https://storage.googleapis.com/tensorflow/linux/cpu/${_filename}")
 noextract=("${_filename}")
 if test "$CARCH" == x86_64 ; then
-  sha256sums=('d0ba3a7c5ea728b1463d36c88ef09e60fd082e14190989e2df769220260f91ba')
+  sha256sums=('dcc9e5b44dcd0457400db988bce5b95eb29e9179b1cd412cd31d1c17cefecb0d')
 fi
 
 # TODO: add CUDA support
