@@ -42,7 +42,7 @@ build() {
   ./configure
   bazel build --jobs 2 -c opt //tensorflow/tools/pip_package:build_pip_package
 
-  sed -i 's/python/python2/g' bazel-bin/tensorflow/tools/pip_package/build_pip_package
+  sed -i 's/python$/python2/g' tools/python_bin_path.sh
   bazel-bin/tensorflow/tools/pip_package/build_pip_package $srcdir/tmp
 }
 
