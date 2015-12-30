@@ -3,7 +3,7 @@
 pkgbase=python-diff-match-patch
 pkgname=('python-diff-match-patch' 'python2-diff-match-patch')
 pkgver=20121119
-pkgrel=1
+pkgrel=2
 pkgdesc="Robust algorithms to perform the operations required for synchronizing plain text"
 arch=('any')
 license=('Apache')
@@ -33,4 +33,5 @@ package_python2-diff-match-patch() {
 
   rm -rf build # Installs python3 version otherwise
   python2 setup.py install --root="${pkgdir}" -O1
+  chmod 644 "${pkgdir}/usr/lib/python2.7/site-packages/diff_match_patch-20121119-py2.7.egg-info/"*
 }
