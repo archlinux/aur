@@ -1,7 +1,7 @@
 pkgname=('kea')
 srcname='kea'
-pkgver='0.9.2'
-pkgrel='3'
+pkgver='1.0.0'
+pkgrel='1'
 pkgdesc='DHCPv4/DHCPv6 server'
 arch=('i686' 'x86_64')
 url='http://kea.isc.org'
@@ -40,13 +40,11 @@ makedepends=(
 provides=('kea')
 conflicts=('kea')
 
-source=("${srcname}::git+git://git.kea.isc.org/kea.git#branch=kea-${pkgver}-release")
+source=("${srcname}::git+https://github.com/isc-projects/kea.git#branch=v${pkgver//./_}")
 sha512sums=('SKIP')
 
 prepare() {
     cd "${srcdir}/${srcname}"
-
-    git cherry-pick --no-commit 47f2e13646dc91c7c6fa8a248e81a2d324fe2278
 
     # /var/kea -> /var/lib/kea
     find . -path './.git' -prune -or -type f -exec sed --in-place  \
