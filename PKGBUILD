@@ -1,7 +1,7 @@
 # Maintainer: Tom Wadley <tom@tomwadley.net>
 
 pkgname=nvm-git
-pkgver=0.30.0.r0.g8ec056f
+pkgver=0.30.1.r0.g0aa3118
 pkgrel=1
 pkgdesc="Node Version Manager - Simple bash script to manage multiple active node.js versions (git sources)"
 url="https://github.com/creationix/nvm"
@@ -19,7 +19,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "$pkgname"
-  git describe --long | sed 's/^v//;s/-/.r/;s/-/./'
+  git describe --tags --long | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 package() {
