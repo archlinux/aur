@@ -7,7 +7,7 @@ _tmpdir=/var/lib/openresty
 pkgname=openresty
 _pkgname=ngx_openresty
 pkgver=1.9.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="a powerful web app server by extending nginx"
 arch=('i686' 'x86_64')
 url="http://openresty.org/"
@@ -51,6 +51,7 @@ build() {
     --with-ipv6 \
     --with-luajit \
     --with-pcre-jit \
+    --with-http_v2_module \
     # --without-http_echo_module         \ # disable ngx_http_echo_module
     # --without-http_xss_module          \ # disable ngx_http_xss_module
     # --without-http_coolkit_module      \ # disable ngx_http_coolkit_module
