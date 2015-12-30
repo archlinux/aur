@@ -6,7 +6,7 @@
 pkgbase="zfs-dkms"
 pkgname=("zfs-dkms" "zfs-utils")
 pkgver=0.6.5.3
-pkgrel=1
+pkgrel=2
 license=('CDDL')
 makedepends=("git" "spl-dkms=${pkgver}")
 arch=("i686" "x86_64")
@@ -40,6 +40,7 @@ build() {
 package_zfs-dkms() {
     pkgdesc="Kernel modules for the Zettabyte File System."
     depends=("spl-dkms=${pkgver}" "zfs-utils=${pkgver}-${pkgrel}" "dkms")
+    optdepends=("mkinitcpio-dkms: Generate initramfs with zfs modules automatically")
     provides=("zfs")
     conflicts=("zfs-git" "zfs-lts")
     install=zfs.install
