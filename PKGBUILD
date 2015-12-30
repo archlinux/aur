@@ -14,7 +14,7 @@ depends=('glibc')
 makedepends=('git' 'libtool' 'autoconf')
 conflicts=('libcpuid')
 provides=('libcpuid')
-source=("git://github.com/anrieff/$_pkgname.git")
+source=("git+https://github.com/anrieff/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
