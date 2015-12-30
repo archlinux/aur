@@ -7,7 +7,7 @@
 _name=tomb
 pkgbase="${_name}-git"
 pkgname=("${_name}-git" "${_name}-kdf-git")
-pkgver=2.1.1.r18.ga0997cb
+pkgver=2.2.r0.g017aee0
 pkgrel=1
 pkgdesc="simple tool to manage encrypted storage"
 arch=('any')
@@ -34,7 +34,7 @@ build() {
 }
 
 package_tomb-git() {
-    depends=('bc' 'cryptsetup' 'gnupg' 'sudo' 'zsh' 'e2fsprogs')
+    depends=('cryptsetup' 'gnupg' 'sudo' 'zsh' 'e2fsprogs')
     optdepends=('steghide: steganography'
         'dcfldd: show nice progress during massive I/O'
         'wipe: secure file deletion'
