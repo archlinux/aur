@@ -2,12 +2,12 @@
 
 pkgname=fotoxx
 pkgver=15.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A program for improving image files made with a digital camera"
-url="http://www.kornelix.com/fotoxx"
+url="http://www.kornelix.net/fotoxx/fotoxx.html"
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('dcraw' 'gtk3' 'gimp-ufraw' 'perl-image-exiftool>=0.8.6')
+depends=('dcraw' 'gtk3' 'perl-image-exiftool>=0.8.6')
 makedepends=('xdg-utils')
 optdepends=('mashup: for composing pages to print from within fotoxx' 
   'brasero: for burning')
