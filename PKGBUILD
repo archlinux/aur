@@ -1,7 +1,8 @@
+# Maintainer: Mike Sampson <mike@sambodata.com>
 # Contributor: Michal Soltys <soltys@ziu.info>
 
 pkgname=nuttcp
-pkgver=6.1.2
+pkgver=7.3.3
 pkgrel=1
 pkgdesc="TCP/UDP network testing tool - simple, easy to use, with interesting feature set."
 arch=(i686 x86_64)
@@ -9,14 +10,15 @@ url="http://www.lcp.nrl.navy.mil/nuttcp/"
 license=('GPL')
 depends=('glibc')
 install=nuttcp.install
-source=(
-	ftp://ftp.lcp.nrl.navy.mil/pub/nuttcp/$pkgname-$pkgver.tar.bz2
-)
+source=(http://nuttcp.net/nuttcp/nuttcp-${pkgver}/nuttcp.c)
+sha256sum=('dfbff3c38fb0cbdc474ca6d13539d425')
+md5sums=('dfbff3c38fb0cbdc474ca6d13539d425')
+
 build() {
-  cd "$startdir/src/$pkgname-$pkgver"
-  make || return 1;
-  gzip -c $pkgname.8 >$pkgname.8.gz
-  install -D -m0644 -o0 -g0 $pkgname.8.gz $startdir/pkg/usr/share/man/man8/$pkgname.8.gz
-  install -D -m0755 -o0 -g0 $pkgname-$pkgver $startdir/pkg/usr/sbin/$pkgname
+  cd $srcdir
+  cc nuttcp.c -o nuttcp
 }
-md5sums=('a16d4d6d5def02cea980e57feaf30500')
+
+package() {
+  install -D -m0755 -o0 -g0 nuttcp $pkgdir/usr/bin/nuttcp
+}

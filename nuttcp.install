@@ -1,8 +1,8 @@
 post_install() {
   cat <<EOF
-Note, that manpage included can have a little outdated information.
-The same goes for nuttcp -h output.
-Please review top of the nuttcp-6.1.2.c file for detailed changelog.
+Note, that there is no manpage included anymore.
+The output of nuttcp -h may be out of date.
+Please review top of the nuttcp.c file for detailed changelog.
 EOF
 
 }
