@@ -14,3 +14,7 @@ post_install() {
 	echo "-------------------------------------------------------------------------------"
 
 }
+
+post_upgrade() {
+  php /usr/share/webapps/filebin/index.php tools update_database  
+}

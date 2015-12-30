@@ -1,12 +1,12 @@
 # Maintainer: Simon Hanna<simon DOT Hanna AT serve-me DOT info>
 pkgname=filebin
-pkgver=0.9.2
+pkgver=0.9.8
 pkgrel=1
 pkgdesc="A pastebin service written in PHP"
 arch=('any')
 url="https://wiki.server-speed.net/projects/filebin"
 license=('AGPL')
-
+makedepends=('nodejs')
 depends=('php'
          'pygmentize'        
          'perl-text-markdown'
@@ -25,19 +25,22 @@ options=('!strip' 'emptydirs')
 source=("https://github.com/Bluewind/filebin/archive/${pkgver}.tar.gz"
         'filebin-nginx.conf'
 )
-sha256sums=('bbb0f339922145e166951a737378b68a4fb2fc3ccf2ba2ed5c14421936f6dc31'
+sha256sums=('df60f6dd49d5d01a82bff037bde80e9db681482eb851c06a735bf0637ddf6044'
             '5500d423d798478bf4f7bb0a147fe8a42b00e843513dd70665ec81f304a6c729')
 
 package() {
   mkdir -p ${pkgdir}/usr/share/webapps
   mkdir -p ${pkgdir}/etc/webapps/filebin
-  cp -ra ${srcdir}/filebin/ ${pkgdir}/usr/share/webapps/filebin/
+  cp -ra ${srcdir}/filebin-$pkgver/ ${pkgdir}/usr/share/webapps/filebin/
   cp filebin-nginx.conf ${pkgdir}/usr/share/webapps/filebin
   cd ${pkgdir}/usr/share/webapps/filebin
   cp application/config/example/{config-local,database,memcached}.php ${pkgdir}/etc/webapps/filebin
   ln -s /etc/webapps/filebin/{config-local,database,memcached}.php application/config
   cp data/local/examples/contact-info.php ${pkgdir}/etc/webapps/filebin
   ln -s /etc/webapps/filebin/contact-info.php data/local
+
+  # optimizie javascript
+  sh scripts/optimize_js.sh
 
   # removing unnecessary data for a production environment
 	rm -rf .git
