@@ -1,0 +1,22 @@
+From 336400efc8114b584b7363a59b51ee935b414e28 Mon Sep 17 00:00:00 2001
+From: Benjamin Frank <ben+github@pipsfrank.de>
+Date: Tue, 7 Jul 2015 20:53:09 +0200
+Subject: [PATCH] Try to fix cmake.
+
+Make paths relative so cmake works with CMAKE_INSTALL_PREFIX.
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e4c9a29..2b63bbc 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -28,5 +28,5 @@ include_directories(${SQLITE3_INCLUDE_DIR})
+ # Link the executable
+ target_link_libraries(muttvcardsearch ${CURL_LIBRARY} ${SQLITE3_LIBRARIES})
+ 
+-install (TARGETS muttvcardsearch DESTINATION "/usr/bin")
+-
++install (TARGETS muttvcardsearch DESTINATION "bin/")
++install (FILES manual/muttvcardsearch.man DESTINATION "share/man/man8/" RENAME muttvcardsearch.8)
