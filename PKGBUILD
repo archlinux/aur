@@ -13,7 +13,7 @@ makedepends=('cmake' 'nasm')
 provides=('cpu-x')
 conflicts=('cpu-x')
 options=('debug')
-source=("git://github.com/X0rg/CPU-X.git")
+source=("git+https://github.com/X0rg/CPU-X.git")
 md5sums=('SKIP')
 
 pkgver() {
