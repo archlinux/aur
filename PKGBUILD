@@ -1,12 +1,12 @@
 # Maintainer: Sebastian Bøe <sebastianbooe@gmail.com>
 pkgname=icestorm-git
-pkgver=r115.da99818
-pkgrel=2
+pkgver=r130.745d81d
+pkgrel=1
 pkgdesc="Lattice iCE40 FPGAs Bitstream Documentation (Reverse Engineered)"
 arch=('x86_64')
 url="http://www.clifford.at/icestorm/"
 license=('custom:ISC')
-depends=('python' 'libftdi')
+depends=('python' 'libftdi-compat')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -20,9 +20,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-    make \
-        CFLAGS="-MD -O0 -ggdb -Wall -std=c99 -I/usr/include/libftdi1/" \
-        LDLIBS="-lftdi1 -lm"
+    make
 }
 
 package() {
