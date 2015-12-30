@@ -6,11 +6,13 @@
 
 pkgname=xhtml-docs
 pkgver=1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Set of HTML documentation for XHTML 1.0 & 1.1"
 arch=('any')
 url="http://www.w3.org/"
 license=('GPL')
+
+makedepends=('rsync')
 
 options=('docs')
 
