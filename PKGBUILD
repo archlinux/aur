@@ -17,7 +17,7 @@ optdepends=('dmg2dir-git: extract OS X application from .dmg file')
 backup=(etc/darling/dylib.conf)
 conflitcs=('darling-multilib-git')
 replaces=('darling-multilib-git')
-source=('git://github.com/LubosD/darling.git'
+source=('git+https://github.com/LubosD/darling.git'
 	'dyld')
 md5sums=('SKIP'
          '9313524c87a422c9405ece68bd4ff4f2')
