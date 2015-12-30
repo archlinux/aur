@@ -1,6 +1,6 @@
 #
 # Maintainer: bjin <bjin1990 at gmail dot com>
-# Maintainer: isiachi <isiachi@rhyeworld.it>
+# Maintainer: Iacopo Isimbaldi <isiachi@rhye.it>
 #
 
 pkgbase="spl-dkms-git"
@@ -8,7 +8,7 @@ pkgname=("spl-dkms-git" "spl-utils-dkms-git")
 pkgver=0.6.5.3_r8_gce00a20
 pkgrel=1
 license=('GPL')
-makedepends=("git" "tar")
+makedepends=("git")
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/spl.git#branch=spl-0.6.5-release"
