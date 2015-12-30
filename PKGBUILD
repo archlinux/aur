@@ -14,7 +14,7 @@ depends=('ncurses')
 makedepends=('git')
 provides=('radeontop')
 conflicts=('radeontop')
-source=('git://github.com/clbr/radeontop.git')
+source=('git+https://github.com/clbr/radeontop.git')
 sha256sums=('SKIP')
 
 pkgver() {
