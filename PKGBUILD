@@ -1,7 +1,7 @@
 # Maintainer: 10sr <8slashes+arch [at] gmail [dot] com>
 
 pkgname=saku
-pkgver=4.5.1
+pkgver=4.7.1
 pkgrel=1
 pkgdesc="A clone of P2P anonymous BBS shinGETsu"
 arch=('any')
@@ -19,7 +19,7 @@ source=(
     "$pkgname.service"
     "defaultpath.patch"
 )
-md5sums=('1b9710bbadaeda6f06b28aa481aec833'
+md5sums=('387ccd160b2c049a7002f53dbe660a12'
          '405694a84e66e6043bb61188d5e766ac'
          'ec52d30651c50038e1b9ca2800b9e363')
 
