@@ -1,12 +1,12 @@
 #
 # Maintainer: bjin <bjin1990 at gmail dot com>
-# Maintainer: Iacopo Isimbaldi <isiachi@rhye.it>
+# Contributor: isiachi <isiachi@rhyeworld.it>
 #
 
 pkgbase="zfs-dkms-git"
 pkgname=("zfs-dkms-git" "zfs-utils-dkms-git")
 pkgver=0.6.5.3_r0_g9aaf60b
-pkgrel=5
+pkgrel=4
 license=('CDDL')
 makedepends=("git" "tar")
 arch=("i686" "x86_64")
@@ -19,8 +19,6 @@ md5sums=('SKIP'
          '9ddb0c8a94861f929d0fa741fdc49950'
          '9ef4841abb85dee611828cc7e6f5c6fe'
          '62ba32c6853c315ff231c396cf8bfdbb')
-
-_splver=0.6.5.3_r0_g7e85f6b
 
 pkgver() {
     cd "${srcdir}/zfs"
@@ -46,7 +44,9 @@ build() {
 
 package_zfs-dkms-git() {
     pkgdesc="Kernel modules for the Zettabyte File System."
-    depends=("spl-dkms-git=${_splver}" "zfs-utils-dkms-git=${pkgver}-${pkgrel}" "dkms")
+    depends=("spl-dkms=${pkgver%%_*}" "zfs-utils-dkms-git=${pkgver}-${pkgrel}" "dkms")
+    optdepends=("mkinitcpio-dkms: Generate initramfs with zfs modules automatically")
+    provides=("zfs-dkms=${pkgver%%_*}")
     conflicts=("zfs-git" "zfs-lts" "zfs-dkms")
     install=zfs.install
 
@@ -64,7 +64,8 @@ package_zfs-dkms-git() {
 
 package_zfs-utils-dkms-git() {
     pkgdesc="Kernel module support files for the Zettabyte File System."
-    depends=("spl-dkms-git=${_splver}")
+    depends=("spl-dkms-git")
+    provides=("zfs-utils")
     conflicts=("zfs-utils-git" "zfs-utils-lts" "zfs-utils")
 
     cd "${srcdir}/zfs"
