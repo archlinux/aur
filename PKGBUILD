@@ -1,10 +1,10 @@
-# Maintainer: Michael Tiebesl <email@tiebesl.com>
+# Maintainer: Michael Tiebesl <meinalmere@gmail.com>
 
 _gitname=Plat
 _pkgname=Plat
 pkgname=('plat-icon-theme')
-pkgver=3.4
-pkgrel=4
+pkgver=3.5
+pkgrel=1
 pkgdesc="Plat is a flat icon theme. It has material design colors and comes with a long shadow."
 arch=('any')
 makedepends=('git')
