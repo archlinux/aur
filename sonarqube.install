@@ -17,6 +17,8 @@ post_install() {
 
   cd /usr/share/sonarqube
 
+  ln -s /var/log/sonarqube /usr/share/sonarqube/logs
+
   chown -R sonar:sonar *
   chown -R sonar:sonar /etc/sonarqube
   chown -R sonar:sonar /var/run/sonarqube

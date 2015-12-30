@@ -4,6 +4,7 @@ After=network.target
 
 [Service]
 User=sonar
+Grup=sonar
 Type=forking
 StandardOutput=syslog
 StandardError=syslog
