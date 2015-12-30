@@ -2,13 +2,13 @@
 
 pkgname=pear-net-ldap3
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Object oriented interface for searching and manipulating LDAP-entries'
 url='http://www.kolab.org'
 arch=('any')
 license=('PHP')
-depends=('php-ldap' 'pear-net-ldap2')
-makedepends=('php-pear')
+depends=('php-ldap' 'pear-net-ldap2' 'php-pear')
+makedepends=()
 source=("http://mirror.kolabsys.com/pub/releases/pear-Net-LDAP3-${pkgver}.tar.gz")
 sha256sums=('bc8ae49a38836021a275ff1293ac58e02d505716d54963b584816575351d260d')
 
