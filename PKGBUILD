@@ -4,7 +4,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-esr
-pkgver=38.5.0
+pkgver=38.5.2
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ options=('!emptydirs' '!makeflags')
 source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.bz2
         mozconfig firefox.desktop firefox-install-dir.patch vendor.js
         firefox-fixed-loading-icon.png)
-sha256sums=('2a1f90cfe390ab20be88fed38cb9f61a18281cfbee47505c67e0254d339cdb20'
+sha256sums=('15a4f21f2347ca644f561f189f91d61a303bb71e49130dd3fcef0aede3cd1177'
             'ffcb2a0ba2ed08f74931a11043717391ef380234cadccc6f0c13f1186ad80e8b'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
