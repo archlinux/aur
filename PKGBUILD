@@ -2,7 +2,7 @@
 
 pkgname=lenovo-s20-30
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Configuration to support netbook Lenovo S20-30'
 url='https://bitbucket.org/raimar/lenovo-s20-30'
 arch=(any)
