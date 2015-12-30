@@ -1,19 +1,19 @@
-# $Id$
-# Maintainer: Dan McGee <dan@archlinux.org>
+# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Contributor: Dan McGee <dan@archlinux.org>
 # Contributor: Shahar Weiss <sweiss4@gmx.net>
 
-pkgbase=django
-pkgname=('python-django' 'python2-django')
-pkgver=1.7.7
+pkgbase=django17
+pkgname=('python-django17' 'python2-django17')
+pkgver=1.7.11
 pkgrel=1
-pkgdesc="A high-level Python Web framework that encourages rapid development and clean design"
+pkgdesc="A high-level Python Web framework that encourages rapid development and clean design (Version 1.7)"
 arch=('any')
 license=('BSD')
 url="http://www.djangoproject.com/"
 makedepends=('python2' 'python2-setuptools' 'python' 'python-setuptools')
 source=("https://www.djangoproject.com/m/releases/${pkgver:0:3}/Django-$pkgver.tar.gz")
-md5sums=('a62d6598966947d150525ad2ab20fb0c')
-sha256sums=('4816f892063569ca9a77584fa23cb4995c1b3b954ef875102a8219229cbd2e33')
+md5sums=('030b2f9c99a6e4e0418eadf7dba9e235')
+sha256sums=('2039144fce8f1b603d03fa5a5643578df1ad007c4ed41a617f02a3943f7059a1')
 
 prepare() {
   cp -a "$srcdir/Django-$pkgver" "$srcdir/Django-$pkgver-python2"
@@ -30,9 +30,11 @@ build() {
   python2 setup.py build
 }
 
-package_python-django() {
+package_python-django17() {
   depends=('python' 'python-setuptools')
   optdepends=('python-psycopg2: for PostgreSQL backend')
+  provides=("python-django=$pkgver")
+  conflicts=('python-django')
   cd "$srcdir/Django-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1
 
@@ -48,12 +50,12 @@ package_python-django() {
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
-package_python2-django() {
+package_python2-django17() {
   depends=('python2' 'python2-setuptools')
   optdepends=('mysql-python: for MySQL backend'
               'python2-psycopg2: for PostgreSQL backend')
-  replaces=('django')
-  conflicts=('django')
+  provides=("python2-django=$pkgver")
+  conflicts=('django' 'python2-django')
   cd "$srcdir/Django-$pkgver-python2"
   python2 setup.py install --root="$pkgdir" --optimize=1
 
