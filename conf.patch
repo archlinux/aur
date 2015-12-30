@@ -1,0 +1,164 @@
+diff -U 3 -H -d -r -N -- neo4j-enterprise-2.3.1-orig/conf/arbiter-wrapper.conf neo4j-enterprise-2.3.1-mod/conf/arbiter-wrapper.conf
+--- neo4j-enterprise-2.3.1-orig/conf/arbiter-wrapper.conf	2015-11-10 10:15:38.000000000 -0200
++++ neo4j-enterprise-2.3.1-mod/conf/arbiter-wrapper.conf	2015-12-27 11:53:27.784077715 -0200
+@@ -1,7 +1,7 @@
+ # Java Additional Parameters
+-wrapper.java.additional.1=-Dorg.neo4j.server.properties=conf/neo4j-server.properties
+-wrapper.java.additional.2=-Dneo4j.home=..
+-wrapper.java.additional.3=-Dorg.neo4j.cluster.logdirectory=../data/log
++wrapper.java.additional.1=-Dorg.neo4j.server.properties=/etc/neo4j/neo4j-server.properties
++wrapper.java.additional.2=-Dneo4j.home=/usr/share/java/neo4j
++wrapper.java.additional.3=-Dorg.neo4j.cluster.logdirectory=/var/log/neo4j
+ 
+ # Java Heap Size: by default the Java heap size is dynamically
+ # calculated based on available system resources.
+@@ -11,7 +11,7 @@
+ #wrapper.java.maxmemory=512
+ 
+ # path is relative to the bin dir
+-wrapper.pidfile=../data/neo4j-server.pid
++wrapper.pidfile=/run/neo4j/neo4j-server.pid
+ 
+ #********************************************************************
+ # Wrapper Windows NT/2000/XP Service Properties
+diff -U 3 -H -d -r -N -- neo4j-enterprise-2.3.1-orig/conf/neo4j-http-logging.xml neo4j-enterprise-2.3.1-mod/conf/neo4j-http-logging.xml
+--- neo4j-enterprise-2.3.1-orig/conf/neo4j-http-logging.xml	2015-11-10 10:15:38.000000000 -0200
++++ neo4j-enterprise-2.3.1-mod/conf/neo4j-http-logging.xml	2015-12-27 12:05:46.836858328 -0200
+@@ -21,9 +21,9 @@
+ -->
+ <configuration>
+   <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+-    <file>data/log/http.log</file>
++    <file>/var/log/neo4j/http.log</file>
+     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+-      <fileNamePattern>data/log/http.%d{yyyy-MM-dd}.log</fileNamePattern>
++      <fileNamePattern>/var/log/neo4j/http.%d{yyyy-MM-dd}.log</fileNamePattern>
+       <maxHistory>7</maxHistory>
+     </rollingPolicy>
+ 
+diff -U 3 -H -d -r -N -- neo4j-enterprise-2.3.1-orig/conf/neo4j.properties neo4j-enterprise-2.3.1-mod/conf/neo4j.properties
+--- neo4j-enterprise-2.3.1-orig/conf/neo4j.properties	2015-11-10 10:15:38.000000000 -0200
++++ neo4j-enterprise-2.3.1-mod/conf/neo4j.properties	2015-12-27 12:10:59.577364525 -0200
+@@ -24,8 +24,8 @@
+ # Set the root directory for use with file URLs (`file:///`) in LOAD CSV.
+ # If enabled, file URLs will refer to locations inside the `data/import`
+ # directory. I.e. `file:///movies/actors.csv` will load from the file
+-# `data/import/movies/actors.csv`.
+-#dbms.security.load_csv_file_url_root=data/import
++# `/var/lib/neo4j/data/import/movies/actors.csv`.
++#dbms.security.load_csv_file_url_root=/var/lib/neo4j/data/import
+ 
+ # Keep logical logs, helps debugging but uses more disk space, enabled for
+ # legacy reasons To limit space needed to store historical logs use values such
+diff -U 3 -H -d -r -N -- neo4j-enterprise-2.3.1-orig/conf/neo4j-server.properties neo4j-enterprise-2.3.1-mod/conf/neo4j-server.properties
+--- neo4j-enterprise-2.3.1-orig/conf/neo4j-server.properties	2015-11-10 10:15:38.000000000 -0200
++++ neo4j-enterprise-2.3.1-mod/conf/neo4j-server.properties	2015-12-30 02:36:27.019073628 -0200
+@@ -10,10 +10,10 @@
+ #***************************************************************
+ 
+ # location of the database directory
+-org.neo4j.server.database.location=data/graph.db
++org.neo4j.server.database.location=/var/lib/neo4j/data/graph.db
+ 
+ # Low-level graph engine tuning file
+-org.neo4j.server.db.tuning.properties=conf/neo4j.properties
++org.neo4j.server.db.tuning.properties=/etc/neo4j/neo4j.properties
+ 
+ # Database mode
+ # Allowed values:
+@@ -30,6 +30,9 @@
+ # Require (or disable the requirement of) auth to access Neo4j
+ dbms.security.auth_enabled=true
+ 
++# User auth data directory
++dbms.security.auth_store.location=/var/lib/neo4j/data/dbms/auth
++
+ #
+ # HTTP Connector
+ #
+@@ -48,14 +51,14 @@
+ org.neo4j.server.webserver.https.port=7473
+ 
+ # Certificate location (auto generated if the file does not exist)
+-dbms.security.tls_certificate_file=conf/ssl/snakeoil.cert
++dbms.security.tls_certificate_file=/etc/neo4j/ssl/snakeoil.cert
+ 
+ # Private key location (auto generated if the file does not exist)
+-dbms.security.tls_key_file=conf/ssl/snakeoil.key
++dbms.security.tls_key_file=/etc/neo4j/ssl/snakeoil.key
+ 
+ # Internally generated keystore (don't try to put your own
+ # keystore there, it will get deleted when the server starts)
+-org.neo4j.server.webserver.https.keystore.location=data/keystore
++org.neo4j.server.webserver.https.keystore.location=/var/lib/neo4j/data/keystore
+ 
+ # Comma separated list of JAX-RS packages containing JAX-RS resources, one
+ # package name for each mountpoint. The listed package names will be loaded
+@@ -78,7 +81,7 @@
+ # archived. Note: changing the rollover and retention policy is sensible, but
+ # changing the output format is less so, since it is configured to use the
+ # ubiquitous common log format
+-org.neo4j.server.http.log.config=conf/neo4j-http-logging.xml
++org.neo4j.server.http.log.config=/etc/neo4j/neo4j-http-logging.xml
+ 
+ #*****************************************************************
+ # Administration client configuration
+@@ -88,7 +91,7 @@
+ # - absolute path like /var/rrd
+ # - path relative to the server working directory like data/rrd
+ # - commented out, will default to the database data directory.
+-org.neo4j.server.webadmin.rrdb.location=data/rrd
++org.neo4j.server.webadmin.rrdb.location=/var/lib/neo4j/data/rrd
+ 
+ 
+ #*****************************************************************
+diff -U 3 -H -d -r -N -- neo4j-enterprise-2.3.1-orig/conf/neo4j-wrapper.conf neo4j-enterprise-2.3.1-mod/conf/neo4j-wrapper.conf
+--- neo4j-enterprise-2.3.1-orig/conf/neo4j-wrapper.conf	2015-11-10 10:15:38.000000000 -0200
++++ neo4j-enterprise-2.3.1-mod/conf/neo4j-wrapper.conf	2015-12-27 12:10:14.388152642 -0200
+@@ -2,8 +2,8 @@
+ # Property file references
+ #********************************************************************
+ 
+-wrapper.java.additional=-Dorg.neo4j.server.properties=conf/neo4j-server.properties
+-wrapper.java.additional=-Dlog4j.configuration=file:conf/log4j.properties
++wrapper.java.additional=-Dorg.neo4j.server.properties=/etc/neo4j/neo4j-server.properties
++wrapper.java.additional=-Dlog4j.configuration=file:/etc/neo4j/log4j.properties
+ 
+ #********************************************************************
+ # JVM Parameters
+@@ -24,14 +24,14 @@
+ #wrapper.java.additional=-Dcom.sun.management.jmxremote.port=3637
+ #wrapper.java.additional=-Dcom.sun.management.jmxremote.authenticate=true
+ #wrapper.java.additional=-Dcom.sun.management.jmxremote.ssl=false
+-#wrapper.java.additional=-Dcom.sun.management.jmxremote.password.file=conf/jmx.password
+-#wrapper.java.additional=-Dcom.sun.management.jmxremote.access.file=conf/jmx.access
++#wrapper.java.additional=-Dcom.sun.management.jmxremote.password.file=/etc/neo4j/jmx.password
++#wrapper.java.additional=-Dcom.sun.management.jmxremote.access.file=/etc/neo4j/jmx.access
+ 
+ # Some systems cannot discover host name automatically, and need this line configured:
+ #wrapper.java.additional=-Djava.rmi.server.hostname=$THE_NEO4J_SERVER_HOSTNAME
+ 
+ # Uncomment the following lines to enable garbage collection logging
+-#wrapper.java.additional=-Xloggc:data/log/neo4j-gc.log
++#wrapper.java.additional=-Xloggc:/var/log/neo4j/neo4j-gc.log
+ #wrapper.java.additional=-XX:+PrintGCDetails
+ #wrapper.java.additional=-XX:+PrintGCDateStamps
+ #wrapper.java.additional=-XX:+PrintGCApplicationStoppedTime
+@@ -49,7 +49,7 @@
+ # Wrapper settings
+ #********************************************************************
+ # path is relative to the bin dir
+-wrapper.pidfile=../data/neo4j-server.pid
++wrapper.pidfile=/run/neo4j/neo4j-server.pid
+ 
+ #********************************************************************
+ # Wrapper Windows NT/2000/XP Service Properties
+@@ -64,7 +64,7 @@
+ 
+ # User account to be used for linux installs. Will default to current
+ # user if not set.
+-wrapper.user=
++wrapper.user=neo4j
+ 
+ #********************************************************************
+ # Other Neo4j system properties

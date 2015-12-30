@@ -1,0 +1,13 @@
+[Unit]
+Description=Neo4j Arbiter
+
+[Service]
+User=neo4j
+Type=forking
+ExecStart=/usr/bin/neo4j-arbiter start
+ExecStop=/usr/bin/neo4j-arbiter stop
+PIDFile=/run/neo4j/neo4j-service.pid
+LimitNOFILE=40000
+
+[Install]
+WantedBy=multi-user.target

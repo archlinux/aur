@@ -1,0 +1,263 @@
+diff -U 3 -H -d -r -N -- neo4j-enterprise-2.3.1-orig/bin/neo4j neo4j-enterprise-2.3.1-mod/bin/neo4j
+--- neo4j-enterprise-2.3.1-orig/bin/neo4j	2015-11-10 10:15:38.000000000 -0200
++++ neo4j-enterprise-2.3.1-mod/bin/neo4j	2015-12-26 23:24:48.091651298 -0200
+@@ -33,24 +33,13 @@
+ LAUNCHD_NAME="org.neo4j.server"
+ 
+ function findBaseDirAndCdThere {
+-# This seems to not be safe to run at any time. If that
+-# is the case, it should be fixed to be so, if possible.
+-  SCRIPT=$0
+-
+-  cd "`dirname "$SCRIPT"`"
+-  SCRIPT=`basename "$SCRIPT"`
+-
+-  while [ -L "$SCRIPT" ]
+-  do
+-    SCRIPT=$( readlink "$SCRIPT" )
+-    cd "$(dirname "$SCRIPT")"
+-    SCRIPT=`basename "$SCRIPT"`
+-  done
+-  NEO4J_HOME=`cd $( dirname "$SCRIPT" )/.. && dirs -l +0`
+-  NEO4J_INSTANCE=$NEO4J_HOME
+-  [ -n "$NEO4J_CONFIG" ] || NEO4J_CONFIG=$NEO4J_HOME/conf
+-  [ -n "$NEO4J_LOG" ] || NEO4J_LOG=$NEO4J_HOME/data/log
+-  [ -n "$NEO4J_PIDFILE" ] || NEO4J_PIDFILE=$NEO4J_HOME/data/neo4j-service.pid
++  NEO4J_HOME=/usr/share/java/neo4j
++  NEO4J_SHARE=/usr/share/neo4j
++  NEO4J_CONFIG=/etc/neo4j
++  NEO4J_INSTANCE=/var/lib/neo4j
++  NEO4J_LOG=/var/log/neo4j
++  NEO4J_RUNDIR=/run/neo4j
++  NEO4J_PIDFILE=${NEO4J_RUNDIR}/neo4j-service.pid
+ 
+   cd "$NEO4J_HOME"
+ }
+@@ -68,7 +57,7 @@
+ }
+ 
+ findBaseDirAndCdThere
+-source bin/utils
++source ${NEO4J_SHARE}/bin/utils
+ parseConfig
+ 
+ JAVA_OPTS="-server -XX:+DisableExplicitGC ${wrapper_java_additional}"
+@@ -91,7 +80,7 @@
+ # Username to propose for neo4j user, can be overridden by -u USERNAME option
+ DEFAULT_USER='neo4j'
+ 
+-SCRIPT_NAME="${NEO4J_HOME}/bin/neo4j"
++SCRIPT_NAME="${NEO4J_SHARE}/bin/neo4j"
+ SERVICE_NAME=${wrapper_ntservice_name:=neo4j-service}
+ LAUNCHD_DIR=~/Library/LaunchAgents/
+ 
+@@ -100,7 +89,7 @@
+ PID_FILE=${NEO4J_PIDFILE}
+ buildclasspath() {
+   # confirm library jars
+-  LIBDIR="$NEO4J_HOME"/lib
++  LIBDIR="$NEO4J_HOME"
+   if [ ! -e "$LIBDIR" ] ; then
+     echo "Error: missing Neo4j Library, expected at $LIBDIR"
+     exit 1
+diff -U 3 -H -d -r -N -- neo4j-enterprise-2.3.1-orig/bin/neo4j-arbiter neo4j-enterprise-2.3.1-mod/bin/neo4j-arbiter
+--- neo4j-enterprise-2.3.1-orig/bin/neo4j-arbiter	2015-11-10 10:15:38.000000000 -0200
++++ neo4j-enterprise-2.3.1-mod/bin/neo4j-arbiter	2015-12-27 11:47:10.059939013 -0200
+@@ -33,22 +33,13 @@
+ LAUNCHD_NAME="org.neo4j.arbiter"
+ 
+ function findBaseDirAndCdThere {
+-  SCRIPT=$0
+-
+-  cd "`dirname "$SCRIPT"`"
+-  SCRIPT=`basename "$SCRIPT"`
+-
+-  while [ -L "$SCRIPT" ]
+-  do
+-    SCRIPT=$( readlink "$SCRIPT" )
+-    cd "$(dirname "$SCRIPT")"
+-    SCRIPT=`basename "$SCRIPT"`
+-  done
+-  NEO4J_HOME=`cd $( dirname "$SCRIPT" )/.. && dirs -l +0`
+-  NEO4J_INSTANCE=$NEO4J_HOME
+-  [ -n "$NEO4J_CONFIG" ] || NEO4J_CONFIG=$NEO4J_HOME/conf
+-  [ -n "$NEO4J_LOG" ] || NEO4J_LOG=$NEO4J_HOME/data/log
+-  [ -n "$NEO4J_PIDFILE" ] || NEO4J_PIDFILE=$NEO4J_HOME/data/neo4j-arbiter.pid
++  NEO4J_HOME=/usr/share/java/neo4j
++  NEO4J_SHARE=/usr/share/neo4j
++  NEO4J_CONFIG=/etc/neo4j
++  NEO4J_INSTANCE=/var/lib/neo4j
++  NEO4J_LOG=/var/log/neo4j
++  NEO4J_RUNDIR=/run/neo4j
++  NEO4J_PIDFILE=${NEO4J_RUNDIR}/neo4j-arbiter.pid
+ 
+   cd "$NEO4J_HOME"
+ }
+@@ -64,7 +55,7 @@
+ }
+ 
+ findBaseDirAndCdThere
+-source bin/utils
++source ${NEO4J_SHARE}/bin/utils
+ parseConfig
+ 
+ JAVA_OPTS="-server ${wrapper_java_additional}"
+@@ -76,7 +67,7 @@
+   NEO4J_USER=${wrapper_user}
+ fi
+ 
+-SCRIPT_NAME="${NEO4J_HOME}/bin/neo4j-arbiter"
++SCRIPT_NAME="${NEO4J_SHARE}/bin/neo4j-arbiter"
+ SERVICE_NAME=${wrapper_ntservice_name:=neo4j-arbiter}
+ LAUNCHD_DIR=~/Library/LaunchAgents/
+ 
+@@ -85,7 +76,7 @@
+ PID_FILE=${NEO4J_PIDFILE}
+ 
+ buildclasspath() {
+-  CLASSPATH="$NEO4J_HOME/lib/*:$NEO4J_HOME/system/lib/*:$NEO4J_CONFIG"
++  CLASSPATH="$NEO4J_HOME/*:$NEO4J_HOME/system/lib/*:$NEO4J_CONFIG"
+ }
+ 
+ 
+@@ -116,18 +107,18 @@
+ 
+     if [ $UID == 0 ] ; then
+       su $NEO4J_USER -c "$JAVACMD -cp '$CLASSPATH' $JAVA_OPTS \
+-	  -DconfigFile=conf/arbiter-wrapper.conf \
+-      -Dorg.neo4j.server.properties="${NEO4J_CONFIG}/neo4j-server.properties" \
+-	  -Dorg.neo4j.cluster.logdirectory="${NEO4J_LOG}" \
+-      -Dneo4j.home=\"${NEO4J_HOME}\" -Dneo4j.instance=\"${NEO4J_INSTANCE}\" \
++      -DconfigFile=${NEO4J_CONFIG}/arbiter-wrapper.conf \
++      -Dorg.neo4j.server.properties=${NEO4J_CONFIG}/neo4j-server.properties \
++      -Dorg.neo4j.cluster.logdirectory=${NEO4J_LOG} \
++      -Dneo4j.home=${NEO4J_HOME} -Dneo4j.instance=${NEO4J_INSTANCE} \
+       org.neo4j.server.enterprise.StandaloneClusterClient >> "$NEO4J_LOG/arbiter-console.log" 2>&1 & echo \$! > \"$PID_FILE\" "
+-          else
++    else
+       checkwriteaccess
+       echo "WARNING: not changing user"
+       $JAVACMD -cp ${CLASSPATH} $JAVA_OPTS \
+-	    -DconfigFile=conf/arbiter-wrapper.conf \
++      -DconfigFile="${NEO4J_CONFIG}/arbiter-wrapper.conf" \
+       -Dorg.neo4j.server.properties="${NEO4J_CONFIG}/neo4j-server.properties" \
+-	    -Dorg.neo4j.cluster.logdirectory="${NEO4J_LOG}" \
++      -Dorg.neo4j.cluster.logdirectory="${NEO4J_LOG}" \
+       -Dneo4j.home="${NEO4J_HOME}" \
+       -Dneo4j.instance="${NEO4J_INSTANCE}" org.neo4j.server.enterprise.StandaloneClusterClient  >> "$NEO4J_LOG/arbiter-console.log" 2>&1 & echo $! > "${PID_FILE}"
+     fi
+@@ -162,11 +153,11 @@
+     checkwriteaccess
+     checkandrepairenv
+ 
+-    $JAVACMD -cp "${CLASSPATH}" $JAVA_OPTS -DconfigFile=conf/arbiter-wrapper.conf \
+-	  -DconfigFile=conf/arbiter-wrapper.conf \
++    $JAVACMD -cp "${CLASSPATH}" $JAVA_OPTS -DconfigFile="${NEO4J_CONFIG}/arbiter-wrapper.conf" \
++      -DconfigFile="${NEO4J_CONFIG}/arbiter-wrapper.conf" \
+       -Dorg.neo4j.server.properties="${NEO4J_CONFIG}/neo4j-server.properties" \
+-	  -Dorg.neo4j.cluster.logdirectory="${NEO4J_LOG}" \
+-      -Dneo4j.home=\"${NEO4J_HOME}\" -Dneo4j.instance=\"${NEO4J_INSTANCE}\" \
++      -Dorg.neo4j.cluster.logdirectory="${NEO4J_LOG}" \
++      -Dneo4j.home="${NEO4J_HOME}" -Dneo4j.instance="${NEO4J_INSTANCE}" \
+       org.neo4j.server.enterprise.StandaloneClusterClient
+ 
+   else
+diff -U 3 -H -d -r -N -- neo4j-enterprise-2.3.1-orig/bin/neo4j-backup neo4j-enterprise-2.3.1-mod/bin/neo4j-backup
+--- neo4j-enterprise-2.3.1-orig/bin/neo4j-backup	2015-11-10 10:15:38.000000000 -0200
++++ neo4j-enterprise-2.3.1-mod/bin/neo4j-backup	2015-12-26 23:45:30.542081252 -0200
+@@ -21,19 +21,7 @@
+ #Remember where we started from so that working dir is set correctly
+ RUN_FROM=`pwd`
+ 
+-BACKUP_SCRIPT="$0"
+-
+-cd "`dirname "$BACKUP_SCRIPT"`"
+-BACKUP_SCRIPT=`basename "$BACKUP_SCRIPT"`
+-
+-while [ -L "$BACKUP_SCRIPT" ]
+-do
+-  BACKUP_SCRIPT=$( readlink $BACKUP_SCRIPT )
+-  cd "`dirname "$BACKUP_SCRIPT"`"
+-  BACKUP_SCRIPT="`basename "$BACKUP_SCRIPT"`"
+-done
+-
+-BASEDIR=`cd "$( dirname $BACKUP_SCRIPT )"/.. && dirs -l +0`
++BASEDIR=/usr/share/java/neo4j
+ 
+ # OS specific support.  $var _must_ be set to either true or false.
+ cygwin=false;
+@@ -86,7 +74,7 @@
+ 
+ if [ -z "$REPO" ]
+ then
+-  REPO="$BASEDIR"/lib
++  REPO="$BASEDIR"
+ fi
+ 
+ LIBRARY_JARS=""
+diff -U 3 -H -d -r -N -- neo4j-enterprise-2.3.1-orig/bin/neo4j-import neo4j-enterprise-2.3.1-mod/bin/neo4j-import
+--- neo4j-enterprise-2.3.1-orig/bin/neo4j-import	2015-11-10 10:15:38.000000000 -0200
++++ neo4j-enterprise-2.3.1-mod/bin/neo4j-import	2015-12-26 23:47:28.601807337 -0200
+@@ -21,19 +21,7 @@
+ #Remember where we started from so that working dir is set correctly
+ RUN_FROM=`pwd`
+ 
+-SCRIPT_LOCATION="$0"
+-
+-cd "`dirname "$SCRIPT_LOCATION"`"
+-SCRIPT_LOCATION=`basename "$SCRIPT_LOCATION"`
+-
+-while [ -L "$SCRIPT_LOCATION" ]
+-do
+-  SCRIPT_LOCATION=$( readlink $SCRIPT_LOCATION )
+-  cd "`dirname "$SCRIPT_LOCATION"`"
+-  SCRIPT_LOCATION="`basename "$SCRIPT_LOCATION"`"
+-done
+-
+-BASEDIR=`cd "$( dirname $SCRIPT_LOCATION )"/.. && dirs -l +0`
++BASEDIR=/usr/share/java/neo4j
+ 
+ # OS specific support.  $var _must_ be set to either true or false.
+ cygwin=false;
+@@ -86,7 +74,7 @@
+ 
+ if [ -z "$REPO" ]
+ then
+-  REPO="$BASEDIR"/lib
++  REPO="$BASEDIR"
+ fi
+ 
+ LIBRARY_JARS=""
+diff -U 3 -H -d -r -N -- neo4j-enterprise-2.3.1-orig/bin/neo4j-shell neo4j-enterprise-2.3.1-mod/bin/neo4j-shell
+--- neo4j-enterprise-2.3.1-orig/bin/neo4j-shell	2015-11-10 10:15:38.000000000 -0200
++++ neo4j-enterprise-2.3.1-mod/bin/neo4j-shell	2015-12-26 23:48:56.444936928 -0200
+@@ -21,19 +21,7 @@
+ #Remember where we started from so that working dir is set correctly
+ RUN_FROM=`pwd`
+ 
+-SHELL_SCRIPT="$0"
+-
+-cd "`dirname "$SHELL_SCRIPT"`"
+-SHELL_SCRIPT=`basename "$SHELL_SCRIPT"`
+-
+-while [ -L "$SHELL_SCRIPT" ]
+-do
+-  SHELL_SCRIPT=$( readlink $SHELL_SCRIPT )
+-  cd "`dirname "$SHELL_SCRIPT"`"
+-  SHELL_SCRIPT="`basename "$SHELL_SCRIPT"`"
+-done
+-
+-BASEDIR=`cd "$( dirname $SHELL_SCRIPT )"/.. && dirs -l +0`
++BASEDIR=/usr/share/java/neo4j
+ 
+ # OS specific support.  $var _must_ be set to either true or false.
+ cygwin=false;
+@@ -86,7 +74,7 @@
+ 
+ if [ -z "$REPO" ]
+ then
+-  REPO="$BASEDIR"/lib
++  REPO="$BASEDIR"
+ fi
+ 
+ LIBRARY_JARS=""
