@@ -1,0 +1,112 @@
+// Window properties
+
+width = 800;
+height = 600;
+swap_interval = 0;
+window_mode = window;
+fsaa_samples = 2;
+polygon_mode = fill;
+
+// Resource directory
+
+resource_dir = "/usr/share/pink-pony/resources/";
+
+// Particles
+
+pony_explosion_particles = 5000;
+heart_explosion_particles = 1000;
+pony_particle_rate = 10;
+use_particles = true;
+
+// Level properties
+
+levels_file = "levels.xml";
+selected_level = 2;
+heightmap_file = "levels/heart.png";
+level_size = (1500 90 1500);
+water_level = 45;
+heightmap_specular = (1 1 1 1);
+heightmap_diffuse = (0 0 0 0);
+heightmap_shininess = 50;
+heightmap_velvet_coeff = 1.5;
+sand_texture = "textures/sand.png";
+grass_texture = "textures/grass.png";
+noise_texture = "textures/noise.png";
+sky_texture = "textures/sky.png";
+
+// Light properties
+
+light_specular = (1 1 1 1);
+light_diffuse = (1 1 1 1);
+light_ambient = (0.05 0.05 0.05 1);
+light_dir = (0.742781 0.371391 -0.107086);
+hemilight_pole = (0 1 0);
+hemilight_sky = (0.75 0.75 0.75 1);
+hemilight_ground = (0.25 0.25 0.25 1);
+
+// Camera properties
+
+camera_fov = 45;
+camera_near = 5;
+camera_far = 6000;
+camera_distance = 15;
+camera_height = 6;
+pony_height = 3;
+
+// Game properties
+
+ai_count = 4;
+player_count = 4;
+heart_count = 3;
+pony_start_speed = 15;
+pony_min_speed = 5;
+pony_max_speed = 50;
+pony_acceleration = 25;
+pony_turn_speed = 1.25;
+water_tolerance = 1;
+show_minimap = true;
+pony_up[0] = 283;
+pony_down[0] = 284;
+pony_left[0] = 285;
+pony_right[0] = 286;
+pony_up[1] = 87;
+pony_down[1] = 83;
+pony_left[1] = 65;
+pony_right[1] = 68;
+pony_up[2] = 310;
+pony_down[2] = 307;
+pony_left[2] = 306;
+pony_right[2] = 308;
+pony_up[3] = 73;
+pony_down[3] = 75;
+pony_left[3] = 74;
+pony_right[3] = 76;
+pony_slope_acceleration = 0;
+permute_start_positions = false;
+randomize_start_positions = true;
+min_start_distance = 200;
+
+// General appearance
+
+digit_one = "textures/one.png";
+digit_two = "textures/two.png";
+digit_three = "textures/three.png";
+digit_four = "textures/four.png";
+heart_mesh = "models/Heart.pmesh";
+use_water_fallback = "true";
+
+// Pony appearance
+
+pony_shader = "GLSL/pony";
+pony_velvet_coeff = 2;
+pony_texture = "textures/pony.png";
+pony_mesh = "models/Pony-animated.pmesh";
+pony_color[0] = (1 0.75 0.792968 1);
+pony_color[1] = (0.25 0.875 0.8125 1);
+pony_color[2] = (1 0.839844 0 1);
+pony_color[3] = (0.484375 0.984375 0 1);
+
+// Sounds
+
+background_music = "music/To be happy.mp3";
+music_volume = 63;
