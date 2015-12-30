@@ -3,7 +3,7 @@
 pkgbase=django-rq
 pkgname=('python-django-rq' 'python2-django-rq')
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple app that provides django integration for RQ (Redis Queue)"
 arch=('any')
 license=('MIT')
@@ -23,7 +23,7 @@ package_python-django-rq() {
 }
 
 package_python2-django-rq() {
-  depends=('python2' 'python2-redis' 'python2-rq')
+  depends=('python2' 'python2-django' 'python2-rq')
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
 
