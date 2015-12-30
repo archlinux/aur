@@ -15,6 +15,14 @@ conflicts=('log4cplus')
 source=("${srcname}::git+https://github.com/log4cplus/log4cplus.git")
 sha512sums=('SKIP')
 
+pkgver() {
+    cd "${srcdir}/${srcname}"
+
+    printf 'r%s.%s\n' \
+        "$( git rev-list HEAD | wc --lines )" \
+        "$( git describe --always | sed 's/-/./g' )"
+}
+
 prepare() {
     cd "${srcdir}/${srcname}"
 
