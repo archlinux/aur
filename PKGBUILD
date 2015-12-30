@@ -21,7 +21,7 @@ provides=("palemoon=$pkgver")
 conflicts=('palemoon')
 install=palemoon.install
 options=('!strip')
-source=("http://linux.palemoon.org/files/atom/$pkgver/palemoon-$pkgver-atom.en-US.linux-$CARCH.tar.bz2"
+source=("http://linux.palemoon.org/files/atom/$pkgver/palemoon-$pkgver-atom.en-US.linux-i686.tar.bz2"
         "palemoon.desktop")
 sha1sums=('3a67bd8bf2cc9e5bd85c2ebffa61c6d1025e24ca'
           '83ff22ff7a034efac31f1dd5f27ad0115a778743')
