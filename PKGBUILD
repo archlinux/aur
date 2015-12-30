@@ -2,7 +2,7 @@
 
 pkgname=khard-git
 _gitname=khard
-pkgver=0.6.2.r0.g5c23725
+pkgver=0.6.3.r4.g527e1ba
 pkgrel=1
 pkgdesc="Console CardDAV client"
 license=("GPL3")
@@ -31,7 +31,8 @@ build(){
 package() {
   cd "$srcdir/${_gitname}/"
   python2 setup.py install --root=$pkgdir
-  install -Dm 644 misc/khard.conf.example "${pkgdir}/usr/share/doc/khard/khard.conf.example"
+  install -Dm 644 misc/khard/khard.conf.example "${pkgdir}/usr/share/doc/khard/khard.conf.example"
+  install -Dm 644 misc/khard/template_for_contact_creation.yaml "${pkgdir}/usr/share/doc/khard/template_for_contact_creation.yaml"
   install -Dm 644 misc/zsh/_khard "${pkgdir}/usr/share/zsh/site-functions/_khard"
   install -Dm 644 AUTHORS "${pkgdir}/usr/share/doc/khard/AUTHORS"
   install -Dm 644 CHANGES "${pkgdir}/usr/share/doc/khard/CHANGES"

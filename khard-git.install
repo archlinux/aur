@@ -1,10 +1,12 @@
 post_install() {
   echo 'A sample and self explanatory configuration file has been put in /usr/share/doc/khard/khard.conf.example.'
   echo 'Copy it to ~/.config/khard/khard.conf and edit it as needed.'
+  echo 'If you want to change the templates for contact creation take a look at /usr/share/doc/khard/template_for_contact_creation.yaml for reference.'
+  echo 'Then define the path to your own template file in your khard configuration file.'
 }
 
 post_upgrade() {
-  local v up=0 confupgrades=(0.3.1 0.5.0 0.6.0 0.6.0.r1)
+  local v up=0 confupgrades=(0.3.1 0.5.0 0.6.0 0.6.0.r1 0.6.3)
   for v in "${confupgrades[@]}"; do
     if [ $(vercmp "$v" "$2") -eq 0 -o $(vercmp "$v" "$2") -eq -1  ]; then
       up=1
