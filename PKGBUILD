@@ -24,8 +24,8 @@ install=$pkgname.install
 source=('googleearth'
         "$pkgname.desktop"
         "$pkgname.menu")
-source_i686=("http://packages.linuxmint.com/pool/import/g/googleearth/googleearth_$pkgver-r0_i386.deb")
-source_x86_64=("http://packages.linuxmint.com/pool/import/g/googleearth/googleearth_$pkgver-r0_amd64.deb")
+source_i686=("http://ftp.kspu.ru/mint/packages/pool/import/g/googleearth/googleearth_$pkgver-r0_i386.deb")
+source_x86_64=("http://ftp.kspu.ru/mint/packages/pool/import/g/googleearth/googleearth_$pkgver-r0_amd64.deb")
 md5sums=('e5f591e3bd44743539722e019611b773'  # googleearth
          'bfacc99dae6bc5ded73cd9b3bd2c9087'  # google-earth6.desktop
          '3e87399f2051321102a59227e6d6ded7') # google-earth6.menu
