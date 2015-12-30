@@ -1,9 +1,9 @@
 # Maintainer: Ashley Whetter <(firstname) at awhetter couk>
 
-# Note: sesinet is installed to /opt/houdini/houdini/sbin
+# Note: You will need to start the sesinetd service before running houdini
 # Note: You may want to add /opt/houdini/bin to your PATH
 
-pkgname=('houdini' 'houdini-maya-engine' 'hqueue-server' 'hqueue-client')
+pkgname=('houdini' 'houdini-maya-engine' 'python2-hqueue')
 pkgbase=houdini
 _pkgver_major=15
 _pkgver_minor=0
@@ -25,7 +25,8 @@ _validgccs=(4.8)
 # Use the latest gcc version available if there isn't a known version installed
 [[ ${_validgccs[@]} =~ $_gccver ]] || _gccver=${_validgccs[@]:(-1)}
 
-source=(${pkgname}-${pkgver}-linux_x86_64_gcc${_gccver}.tar.gz)
+# The file needs to be downloaded manually
+source=(file://${pkgname}-${pkgver}-linux_x86_64_gcc${_gccver}.tar.gz)
 [[ "$_gccver" == 4.8 ]] && sha1sums=('7ba7e43cad39019d7b9cdaa125c5849514200fe2')
 
 source+=('LICENSE' 'sesinetd.service')
@@ -42,6 +43,8 @@ package_houdini() {
 	'alembic>=1.5.2: Data exchange'
 	'openexr>=2.2.0: Data exchange'
 	'opensubdiv'
+	'python2-flask: In application documentation browser'
+	'python2-pygments: In application documentation browser'
 	)
 #Collada: Data exchange
 #openvdb: Data exchange
@@ -70,13 +73,6 @@ package_houdini() {
 		install -Dm644 "mime/application-x-${i}.xml" "${pkgdir}/usr/share/mime/packages/application-x-${i}.xml"
 	done
 
-	# installing profile files
-	install -Dm755 ${pkgdir}/opt/houdini/houdini_setup_bash ${pkgdir}/etc/profile.d/houdini.sh
-	install -Dm755 ${pkgdir}/opt/houdini/houdini_setup_csh ${pkgdir}/etc/profile.d/houdini.csh
-
-	sed -i '1icd /opt/houdini' ${pkgdir}/etc/profile.d/houdini.sh
-	sed -i '1icd /opt/houdini' ${pkgdir}/etc/profile.d/houdini.csh
-
 	# installing license
 	install -Dm644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/$pkgname/LICENSE
 
@@ -95,7 +91,7 @@ package_houdini-maya-engine() {
 	sed -i -e 's|REPLACE_WITH_HFS|/opt/houdini|' \
 		$(find "${pkgdir}/opt/houdini/engine/maya" -mindepth 2 -maxdepth 2 -type f -name "houdiniEngine-*")
 
-	for year in {2012,2013,2013.5,2014}
+	for year in {2012,2013,2013.5,2014,2015,2016}
 	do
 		install -d ${pkgdir}/usr/autodesk/maya${year}-x64/modules
 		cp ${pkgdir}/opt/houdini/engine/maya/maya${year}/houdiniEngine-maya${year} ${pkgdir}/usr/autodesk/maya${year}-x64/modules
@@ -104,39 +100,22 @@ package_houdini-maya-engine() {
 	install -Dm644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
 
-# If you use easy_install then it may be easier to install
-# ${srcdir}/houdini-${pkgver}-linux_x86_64_gcc${_gccver}/hqueue/hqserver-${pkgver}-py2.7.egg
-package_hqueue-server() {
-	depends=('mysql' 'python2>=2.7' 'python2-webtest' 'python2-nose' 'python2-virtualenv' 'python2-weberror' 'python2-paramiko' 'python2-pylons' 'python2-rpyc' 'python2-paste' 'python2-paste-deploy' 'python2-sqlalchemy' 'python2-pygments' 'python2-routes' 'python2-webhelpers' 'python2-simplejson' 'python2-tempita' 'python2-beaker' 'python2-wsgiref' 'python2-mako' 'python2-decorator' 'python2-paste-script' 'python2-webob' 'python2-crypto' 'python2-formencode')
-	makedepends=('python2-setuptools')
+package_python2-hqueue() {
+	depends=('mysql' 'python2>=2.7' 'python2-beaker' 'python2-decorator' 'python2-formencode' 'python2-mako' 'python2-nose' 'python2-paramiko' 'python2-paste' 'python2-paste-deploy' 'python2-paste-script' 'python2-crypto' 'python2-pycurl' 'python2-pygments' 'python2-pylons' 'python2-routes' 'python2-rpyc' 'python2-setuptools' 'python2-simplejson' 'python2-sqlalchemy' 'python2-tempita' 'python2-virtualenv' 'python2-weberror' 'python2-webhelpers' 'python2-webob' 'python2-webtest' 'python2-wsgiref')
 
 	cd ${srcdir}/houdini-${pkgver}-linux_x86_64_gcc${_gccver}
 	tar xzf hqueue.tar.gz
 
 	for file in {hqserverd,create_shared_drive.sh,hserver}
 	do
-		install -Dm755 hqueue/scripts/$file ${pkgdir}/opt/hqueue-server/scripts/$file
+		install -Dm755 hqueue/scripts/$file ${pkgdir}/opt/hqueue/scripts/$file
 	done
 
-	sed -i -e 's|%%INSTALL_DIR%%|/opt/hqueue-server|' ${pkgdir}/opt/hqueue-server/scripts/hqserverd
+	sed -i -e 's|%%INSTALL_DIR%%|/opt/hqueue|' ${pkgdir}/opt/hqueue/scripts/hqserverd
 
 	# TODO: hqueue/deps/indep/*
-	install -d ${pkgdir}/opt/hqueue-server
-	cd hqueue
-	unzip -o hqserver-${pkgver}-py2.7.egg
-	cp -a hqserver/* ${pkgdir}/opt/hqueue-server
-}
-
-# If you use easy_install then it may be easier to install
-# ${srcdir}/houdini-${pkgver}-linux_x86_64_gcc${_gccver}/hqueue/hqclient-${pkgver}-py2.7.egg
-package_hqueue-client() {
-	makedepends=(unzip)
-
-	cd ${srcdir}/houdini-${pkgver}-linux_x86_64_gcc${_gccver}
-	tar xzf hqueue.tar.gz
-
-	install -d ${pkgdir}/opt/hqueue-client
-	cd hqueue
-	unzip -o hqserver-${pkgver}-py2.7.egg
-	cp -a hqserver/client/* ${pkgdir}/opt/hqueue-client
+	# TODO: Convert hqueue/scripts/hqserverd to systemd unit
+	install -d ${pkgdir}/usr/lib/python2.7/site-packages
+	install -Dm644 hqueue/hqserver-${pkgver}-py2.7.egg ${pkgdir}/usr/lib/python2.7/site-packages
+	echo ./hqserver-${pkgver}-py2.7.egg >> ${pkgdir}/usr/lib/python2.7/site-packages/hqserver.pth
 }
