@@ -1,7 +1,7 @@
 # Maintainer: Raimar Buehmann <raimar _at_ buehmann _dot_ de>
 
 pkgname=lenovo-s20-30
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Configuration to support netbook Lenovo S20-30'
 url='https://bitbucket.org/raimar/lenovo-s20-30'
