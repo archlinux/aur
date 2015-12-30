@@ -7,7 +7,7 @@
 pkgname=clion-eap
 _pkgname=clion
 _archname=CLion
-pkgver=144.2151.8
+pkgver=144.2608.6
 _pkgver=${pkgver}
 pkgrel=1
 pkgdesc="C/C++ IDE. 30-day evaluation."
@@ -26,7 +26,7 @@ optdepends=(
   'swift-bin: Swift programming language support (Also requires the plugin)'
 )
 source=("https://download.jetbrains.com/cpp/${_archname}-${_pkgver}.tar.gz")
-sha512sums=('990d84ec3db7982d130e5c96f01448741d890c3197b26d5390e25cad368041d211bbca5c7311ef41b52c3a346fcef1dc302b5bc8aac49cb1f6217b073ce7e880')
+sha512sums=('7e002279f4d061f46250a223648818a62f10efaf3b55aec20a64e355f16eccd623c4940d3c939a668ff6ca2d158ac6ebd2b0cff6129670efc4d1a3495ab33d67')
 noextract=("${_archname}-${_pkgver}.tar.gz")
 
 package() {
@@ -62,14 +62,14 @@ Categories=Development;IDE;
 StartupNotify=true
 StartupWMClass=jetbrains-${_pkgname}
 EOF
-) > ${startdir}/${pkgname}.desktop
+) > ${startdir}/jetbrains-${pkgname}.desktop
 
   mkdir -p "${pkgdir}/usr/bin/"
   mkdir -p "${pkgdir}/usr/share/applications/"
   mkdir -p "${pkgdir}/usr/share/pixmaps/"
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
 
-  install -m 644 "${startdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
+  install -m 644 "${startdir}/jetbrains-${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
 
   ln -s "/opt/${pkgname}/bin/${_pkgname}.svg"                     "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
   ln -s "/opt/${pkgname}/license/CLion_Preview_License.txt" "${pkgdir}/usr/share/licenses/${pkgname}"
