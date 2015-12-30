@@ -1,0 +1,9 @@
+post_install() {
+	echo 'A sample and self explanatory configuration file has been put in /usr/share/doc/khard/khard.conf.example.'
+	echo 'Copy it to ~/.config/khard/khard.conf and edit it as needed.'
+}
+
+post_upgrade() {
+	echo 'The configuration might have changed.'
+	echo 'Please compare your own version in ~/.config/khard/khard.conf with the new one in /usr/share/doc/khard/khard.conf.example.'
+}
