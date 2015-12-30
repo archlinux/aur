@@ -1,12 +1,12 @@
 # Maintainer: 2ion <dev@2ion.de>
 pkgname=forecast-git
 pkgver=0.5.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Query weather forecasts from forecast.io"
 arch=('i686' 'x86_64')
 url="https://github.com/2ion/forecast"
 license=('GPL3')
-depends=('json-c' 'curl' 'libconfig' 'ncurses' 'openssl' 'lz4' 'bash-completion' 'talloc')
+depends=('json-c' 'curl' 'libconfig' 'ncurses' 'openssl' 'lz4' 'bash-completion' 'talloc' 'fuse')
 makedepends=('autoconf' 'automake' 'make' 'pkg-config')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
