@@ -22,7 +22,8 @@ post_upgrade() {
 	php upgrade.php $old $new > /dev/null
 	echo 'upgrade2.php' $old $new
 	php upgrade2.php $old $new > /dev/null
+	php step5.php $old $new > /dev/null
 	cd /
-	#touch var/lib/dolibarr/install.lock
-	#chmod 444 var/lib/dolibarr/install.lock
+	touch var/lib/dolibarr/install.lock
+	chmod 444 var/lib/dolibarr/install.lock
 }
