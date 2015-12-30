@@ -3,11 +3,11 @@
 pkgname=khard-git
 _gitname=khard
 pkgver=0.6.3.r4.g527e1ba
-pkgrel=1
+pkgrel=2
 pkgdesc="Console CardDAV client"
 license=("GPL3")
 url="https://github.com/scheibler/khard/"
-depends=('python2-configobj' 'python2-vobject' )
+depends=('python2-configobj' 'python2-vobject' 'python2-yaml')
 makedepends=('git')
 optdepends=('vdirsyncer: Synchronization of address books with a DAV server.'
   'python2-caldavclientlibrary-svn: Create and remove address books on the DAV server using davcontroller utility.')
