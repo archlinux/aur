@@ -1,16 +1,16 @@
 # Maintainer: Christophe LAVIE <christophe.lavie@laposte.net>
-# Contributor: Christophe LAVIE <christophe.lavie@laposte.net>
+# Contributor: Christophe LAVIE <christophe.lavie@laposte.net> 
 
 
 pkgname=devolo-dlan-cockpit
 pkgver=4.3.1
-pkgrel=1
+pkgrel=2
 install=${pkgname}.install
 pkgdesc="Display and configure settings of your devolo device"
 arch=('i686' 'x86_64')
 url="http://www.devolo.com/consumer/dlan-cockpit-most-simple-configuration-software-for-your-dlan-network.html?l=en"
 license=('nonfree')
-depends=( 'adobe-air>=2.6' 'libgnome-keyring' )
+depends=( 'adobe-air-sdk>=2.6' 'libgnome-keyring' )
 
 if [ "${CARCH}" = "x86_64" ]; then
   _arch="amd64"
