@@ -3,18 +3,18 @@
 pkgname=perl-www-offliberty
 _lastauthor=M/MG/MGV
 _pkgname=WWW-Offliberty
-pkgver=0.002
+pkgver=1.000002
 pkgrel=1
 pkgdesc="a simple interface to the offliberty.com download service"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-html-tree' 'perl-libwww')
-checkdepends=('perl-lwp-online')
+depends=('perl-html-tree')
+checkdepends=('perl-test-requiresinternet')
 makedepends=('perl-extutils-makemaker')
 url="http://search.cpan.org/dist/${_pkgname}/"
-source=(http://search.cpan.org/CPAN/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
-sha256sums=('c5fb22b8aca24c9fc1f42bfbe86f0afb7ee06aa3d08e46cd97761382c09be172')
+source=(https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
+sha256sums=('8db481d9bf7e01c64a9f8acab7e531206a7decfa639a1b713f74c9ef3021f720')
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
