@@ -3,7 +3,7 @@
 pkgbase=python-hgapi
 pkgname=('python-hgapi'
 	 'python2-hgapi')
-pkgdesc="Python API to Mercurial using the command-line interface."
+pkgdesc="Python API to Mercurial using the command-line interface"
 pkgver=1.7.3
 pkgrel=1
 url="https://bitbucket.org/haard/hgapi"
