@@ -1,0 +1,11 @@
+post_install() {
+    holo apply
+}
+post_upgrade() {
+    holo apply
+}
+post_remove() {
+    mkdir /usr/share/holo/ssh-keys
+    holo apply
+    rmdir /usr/share/holo/ssh-keys
+}
