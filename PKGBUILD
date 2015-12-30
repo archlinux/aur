@@ -5,14 +5,14 @@
 
 pkgname=haxe2
 pkgver=2.10
-pkgrel=3
+pkgrel=4
 pkgdesc="A multiplatform open source programming language"
 arch=('i686' 'x86_64')
 url='http://haxe.org/'
 license=('GPL2' 'MIT')
 groups=('devel')
 depends=('neko>=1.8.2')
-makedepends=('subversion' 'ocaml>=4.00.0' 'zlib' 'neko>=1.8.2')
+makedepends=('subversion' 'ocaml>=4.00.0' 'zlib' 'neko>=1.8.2' 'camlp4')
 provides=('haxe')
 options=('!strip' 'emptydirs' '!makeflags')
 install=haxe.install
