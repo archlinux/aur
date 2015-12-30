@@ -1,5 +1,4 @@
 # Maintainer: Ari Mizrahi <codemunchies at debugsecurity dot com>
-# Contributor: ArchAssault Project <https://www.archassault.org>
 
 pkgname=artillery
 pkgver=git
@@ -10,7 +9,7 @@ url=('https://www.trustedsec.com/downloads/artillery/')
 license=('BSD')
 makedepends=('git')
 depends=('python2')
-source=('git+https://github.com/trustedsec/artillery/')
+source=('git+https://github.com/BinaryDefense/artillery/')
 md5sums=('SKIP')
 
 prepare() {
