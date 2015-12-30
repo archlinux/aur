@@ -1,13 +1,13 @@
 pkgname=openvisualtraceroute
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.6.2
+pkgrel=1
 pkgdesc="Open source cross-platform Java Visual Traceroute"
 arch=('i686' 'x86_64')
 license=('LGPLv3')
 url="http://sourceforge.net/projects/openvisualtrace"
 depends=('java-runtime' 'traceroute')
 source=("http://downloads.sourceforge.net/project/openvisualtrace/${pkgver}/OpenVisualTraceRoute${pkgver}.zip")
-sha1sums=('3c0197228174f47e0acfe11414dd3661ab9f87ba')
+sha256sums=('afcbaf65adba5839d9f8b5fd1626dafd1dbe94dffa525df533b9385f343dc0d2')
 
 if [ "$CARCH" = "i686" ]; then
   _arch="x86"
