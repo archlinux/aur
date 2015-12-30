@@ -40,8 +40,16 @@ makedepends=(
 provides=('kea')
 conflicts=('kea')
 
-source=("${srcname}::git+git://git.kea.isc.org/kea.git")
+source=("${srcname}::git+https://github.com/isc-projects/kea.git")
 sha512sums=('SKIP')
+
+pkgver() {
+    cd "${srcdir}/${srcname}"
+
+    printf 'r%s.%s\n' \
+        "$( git rev-list HEAD | wc --lines )" \
+        "$( git describe --always | sed 's/-/./g' )"
+}
 
 prepare() {
     cd "${srcdir}/${srcname}"
