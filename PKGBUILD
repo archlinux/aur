@@ -10,7 +10,7 @@ pkgrel=2
 arch=('i686' 'x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
              'libxshmfence' 'libxxf86vm' 'libxdamage' 'libvdpau' 'libva' 'wayland' 'elfutils' 'llvm'
-             'libomxil-bellagio' 'libgcrypt' 'libclc' 'clang')
+             'udev' 'libomxil-bellagio' 'libgcrypt' 'libclc' 'clang')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=(ftp://ftp.freedesktop.org/pub/mesa/${pkgver}/mesa-${pkgver}.tar.xz{,.sig}
@@ -114,7 +114,7 @@ package_mesa-vdpau-nosystemd() {
 
 package_mesa-nosystemd() {
   pkgdesc="an open-source implementation of the OpenGL specification"
-  depends=('libdrm' 'wayland' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'elfutils' 
+  depends=('libdrm' 'wayland' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'udev' 'elfutils' 
            'libomxil-bellagio' 'expat' 'libgcrypt' 'libtxc_dxtn' 'llvm-libs')
   optdepends=('opengl-man-pages: for the OpenGL API man pages'
               'mesa-vdpau-nosystemd: for accelerated video playback'
