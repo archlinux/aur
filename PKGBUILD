@@ -1,22 +1,19 @@
-# Maintainer: imp0 <jan at siteworld dot be>
-pkgname=apt-dater
-pkgver=1.0.2
-pkgrel=2
-pkgdesc="Terminal-based remote package update manager"
+pkgname=apt-dater-legacy
+_pkgname=apt-dater
+pkgver=0.9.0
+pkgrel=1
+pkgdesc="Terminal-based remote package update manager, legacy version with original text based configuration"
 arch=('i686' 'x86_64')
 url="https://www.ibh.de/apt-dater"
 license=('GPL')
+conflicts=('apt-dater')
 depends=('glib2' 'libxml2' 'lockfile-progs' 'ncurses' 'openssh' 'perl' 'popt' 'tcl' 'tmux' 'util-linux')
 makedepends=('pkg-config' 'vim')
-backup=('etc/apt-dater/apt-dater.xml' 'etc/apt-dater/hosts.xml')
-source=("https://github.com/DE-IBH/${pkgname}/archive/v${pkgver}.tar.gz"
-'apt-dater.install')
-sha256sums=('4d01e734f4dac32ff2eb279e6493a1019f2c2fce0e35cea48df027a593df0355'
-'6f06dbc545d8a42b7ea0bb67f5c90514bbe9b793a3a36a3c3544072691ce0dc9')
-install=apt-dater.install
+source=("https://github.com/DE-IBH/${_pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('1c361dd686d66473b27db4af8d241d520535c5d5a33f42a35943bf4e16c13f47')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   ./configure \
     --prefix=/usr \
 	--disable-rpath \
@@ -31,13 +28,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
-
-  # Fix permissions
-  _aptd_etc="${pkgdir}/etc/apt-dater"
-  chmod 644 $_aptd_etc/apt-dater.xml $_aptd_etc/hosts.xml
-  for _d in post-con.d post-ins.d post-ref.d post-upd.d pre-con.d pre-ins.d pre-ref.d pre-upd.d; do
-    chmod 755 $_aptd_etc/$_d
-  done
 }
