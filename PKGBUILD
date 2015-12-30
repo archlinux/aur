@@ -1,9 +1,9 @@
 # Maintainer: 3ED <krzysztof1987@gmail.com>
 
 pkgname=daydreamer-editor
-pkgver=8.2
+pkgver=8.4
 pkgrel=1
-_app_editor=("0Byn3Yo_yFz45RTlWcnA2YUlINWM" "8.2" "DayDreamerEditor8.2.jar")
+_app_editor=("0Byn3Yo_yFz45M2d3cUNtUDI5Vlk" "8.4" "DayDreamerEditor8.4.jar")
 pkgdesc="Editor for Day Dreamer interactive fiction games"
 arch=('any')
 url="https://drive.google.com/folderview?id=0Byn3Yo_yFz45ak11MXl6U05mYVE&usp=sharing"
@@ -16,7 +16,7 @@ source=("${pkgname}-${_app_editor[1]}.zip::https://drive.google.com/uc?export=do
         "launcher.sh"
         "daydreamer-editor.desktop"
         "daydreamer-editor.svg")
-sha512sums=('74e93009e972223765e6427fd068744428e0e7ddda582c60cdb36f08323f110835c87e912d3a7f8aa77a65fb29157707dcc5e30b13d9b12e6c4469f5cce30b16'
+sha512sums=('459468f59cf141bc5b2be63883d9f50f18397af5ff842de72b0891648552cdbbe49915b1c9c223993ed2ac0177dec8eef0348f46910272efbb815c49240e4cff'
             'b02deb777a20e5adba60829a4916b3f13f22a9334d06068d4c73cd72a3863201eba2d6917171479f293cfe87b608538386a335a277876dc47c73604d09598759'
             '5b840f61cb91c48bb75d4519a29226681aee4d275051af8ae7579f07714dcb0c408f4b5e7b102ded9d8d884789edcce53e5af7565334eea6405e923af755399c'
             'dc79faf74a9114859d593b2625f4aecafaaaea794145b44dc0419101ac2731537d69db8bd5377767ef9539751b920f2a93358118fa35ed609f1fd4822932255e')
