@@ -1,8 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=vis
-_commit='0e4a0b6'
-pkgver=0.r759.g0e4a0b6
+pkgver=0.1
 pkgrel=1
 pkgdesc='suckless vim like editor'
 arch=('i686' 'x86_64')
@@ -11,23 +10,8 @@ depends=('ncurses' 'libtermkey' 'lua')
 optdepends=('lua-lpeg: for syntax highlighting')
 makedepends=('git' 'markdown')
 license=('custom:ISC')
-source=("git://repo.or.cz/vis.git#commit=${_commit}")
+source=("git://repo.or.cz/vis.git#tag=v${pkgver}")
 sha256sums=('SKIP')
-
-pkgver() {
-	cd vis/
-
-	if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
-		printf '%s.r%s.g%s' \
-			"$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
-			"$(git rev-list --count ${GITTAG}..)" \
-			"$(git log -1 --format='%h')"
-	else
-		printf '0.r%s.g%s' \
-			"$(git rev-list --count master)" \
-			"$(git log -1 --format='%h')"
-	fi
-}
 
 prepare() {
 	cd vis/
