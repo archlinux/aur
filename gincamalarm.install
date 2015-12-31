@@ -1,0 +1,38 @@
+post_install() {
+    pkgname=gincamalarm
+
+    # Fixing membership
+    chown root: /var/log/$pkgname
+    chown -R root: /etc/$pkgname
+
+    # Reload systemctl
+    systemctl daemon-reload
+
+    echo "Adding gincamalarm in systemctl:"
+    echo "  systemctl enable gincamalarm"
+    echo "  systemctl start gincamalarm"
+
+    true
+}
+
+post_upgrade() {
+    # Reload systemctl
+    systemctl daemon-reload
+
+    echo "You should restart gincamalarm"
+    echo "  systemctl restart gincamalarm"
+
+    true
+}
+
+pre_remove() {
+    pkgname=gincamalarm
+    # Remove symlink in systemd
+    systemctl disable $pkgname
+    # Stop server
+    systemctl stop $pkgname
+    # Reload systemctl
+    systemctl daemon-reload
+
+    true
+}
