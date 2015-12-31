@@ -25,5 +25,5 @@ package() {
     cd "$srcdir/cornas"
     install -d "$pkgdir"/usr/share/licenses/"$pkgname"
     install -m 644 COPYING "$pkgdir"/usr/share/licenses/"$pkgname"
-	make PREFIX=/usr DESTDIR="$pkgdir" install
+    make PREFIX=/usr DESTDIR="$pkgdir" install
 }
