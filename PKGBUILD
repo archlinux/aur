@@ -2,10 +2,11 @@
 
 pkgname=alacryd
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Expedient Perl 6 module installation"
 arch=('any')
 depends=('rakudo')
+groups=('perl6')
 url="https://github.com/atweiden/alacryd"
 license=('UNLICENSE')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/atweiden/$pkgname/tar.gz/$pkgver)
