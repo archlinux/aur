@@ -1,7 +1,7 @@
 # Maintainer: Niklas Hedlund <nojan1989@gmail.com>
 
 pkgname=motioneye
-pkgver=0.29
+pkgver=0.30
 pkgrel=1
 pkgdesc="web-based user interface for motion"
 arch=(any)
@@ -16,14 +16,15 @@ depends=('motion'
          'python2-tornado'
          'python2-jinja'
          'python2-pycurl'
-         'python2-pillow')
+         'python2-pillow'
+	 'mime-types')
 
 makedepends=('python2-distribute' )
 options=(emptydirs)
 install=motioneye.install
 backup=('etc/motioneye/motioneye.conf')
 source=("https://pypi.python.org/packages/source/m/motioneye/motioneye-$pkgver.tar.gz")
-md5sums=('1aada558a0f2aa0c6bff32efffd95137')
+md5sums=('d076f14b61fe6e980533ab92f58dfd76')
 
 build() {
     cd $srcdir/motioneye-$pkgver
