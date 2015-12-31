@@ -2,7 +2,7 @@
 pkgname=ssr-git
 _pkgname=ssr
 pkgver=0.4.2.r44.g54b5a56
-pkgrel=1
+pkgrel=2
 pkgdesc="The SoundScape Renderer (SSR) is a tool for real-time spatial audio reproduction providing a variety of rendering algorithms, e.g. Wave Field Synthesis, Higher-Order Ambisonics and binaural techniques."
 arch=('i686' 'x86_64')
 url="http://spatialaudio.net/ssr/"
@@ -10,8 +10,8 @@ conflicts=('ssr')
 replaces=('ssr')
 provides=('ssr')
 license="GPL3"
-depends=('jack' 'libsndfile' 'fftw' 'libxml2' 'ecasound' 'qt4')
-makedepends=('git' 'boost-libs>=1.35' 'help2man')
+depends=('glu' 'jack' 'libsndfile' 'fftw' 'libxml2' 'ecasound' 'qt4')
+makedepends=('git' 'boost>=1.35' 'help2man')
 source=("${_pkgname}-${pkgver}::git+https://github.com/SoundScapeRenderer/${_pkgname}")
 md5sums=('SKIP')
 
