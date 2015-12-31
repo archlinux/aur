@@ -1,12 +1,12 @@
 # Maintainer: Ryan Medeiros <giganitris at gmail dot com>
 pkgname=corrupt
-pkgver=B.0.2.0
+pkgver=A.0.2.1
 pkgrel=1
 pkgdesc="Linux ROM corruptor."
 url="https://sourceforge.net/projects/corrupter-for-linux/"
 arch=('any')
 source=("http://downloads.sourceforge.net/project/corrupter-for-linux/src/main.cpp")
-md5sums=("4d90363ae280bdbef4be487b575c26c2")
+md5sums=("fae1c779d63e59bedf75f62e73466a7e")
 
 build() {
 g++ main.cpp -o corrupt
