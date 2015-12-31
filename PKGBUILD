@@ -10,6 +10,7 @@ url="https://github.com/vivaeltopo/gnome-shell-theme-viva"
 groups=('gnome-shell-extensions')
 license=('GPL3')
 depends=('gnome-shell>=3.18' 'ttf-opensans' 'ttf-impallari-raleway-family')
+makedepends=('ruby-sass')
 source=('git+https://github.com/vivaeltopo/gnome-shell-theme-viva.git')
 md5sums=('SKIP')
 
