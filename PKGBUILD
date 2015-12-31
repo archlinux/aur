@@ -1,6 +1,6 @@
 # Maintainer: Simon Doppler (dopsi) <dop.simon@gmail.com>
 pkgname=console-tdm-git
-pkgver=1.0
+pkgver=r2.1a7788c
 pkgrel=1
 pkgdesc='Console display manager based on CDM'
 arch=('any')
@@ -15,8 +15,9 @@ sha1sums=('SKIP')
 
 _gitname=console-tdm
 
-build() {
-    echo "No build required"
+pkgver() {
+    cd $_gitname
+    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
