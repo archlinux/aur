@@ -134,7 +134,7 @@ function copyManifest() {
 	fi
 
 	# Copy and patch the manifest with the version
-	if [ -z $MVERSION ]; then
+	if [ ! -z $MVERSION ]; then
 		sx -jxpi "$MANIFEST" -o "$BUILDDIR/manifest" "x.labels.push({'name':'version', 'value':'$MVERSION'}); x"
 	else
 		cp "$MANIFEST" "$BUILDDIR/manifest"
