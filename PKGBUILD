@@ -1,7 +1,7 @@
 # Maintainer: v01d <phreakuencies@gmail.com>
 pkgname=python2-catkin-tools
 _pkgname=catkin_tools
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Command line tools for working with catkin"
 arch=(any)
@@ -17,4 +17,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('21e9b0b80157d853296abcb2c791c64e')
+md5sums=('f6bd4af44c29c940df6b32797352dc75')
