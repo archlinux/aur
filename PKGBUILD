@@ -1,8 +1,8 @@
 # Maintainer: Florian Dejonckheere <florian@floriandejonckheere.be>
 
 pkgname=lightfirefox
-pkgver=42.0
-_pkgver=42
+pkgver=43.0
+_pkgver=43
 pkgrel=1
 pkgdesc="A light Firefox edition"
 url="http://sourceforge.net/projects/lightfirefox"
@@ -13,10 +13,10 @@ optdepends=('gtk3: GTK+3 support')
 install=${pkgname}.install
 arch=('i686' 'x86_64')
 source_x86_64=("http://downloads.sourceforge.net/project/${pkgname}/${_pkgver}/${pkgname/firefox}-${pkgver}.en-US.linux-x86_64.rpm")
-md5sums_x86_64=('7ef6a53af0473f6f2f61f2750b25fe53')
+md5sums_x86_64=('0a5e6ba425b5ba7bd3869e7d550288e1')
 
 source_i686=("http://downloads.sourceforge.net/project/${pkgname}/${_pkgver}/${pkgname/firefox}-${pkgver}.en-US.linux-i686.rpm")
-md5sums_i686=('12616880597e1bcb5f3973376bd35d19')
+md5sums_i686=('bbd45d83a677af2b9d60f19f192722bf')
 
 build()
 {
