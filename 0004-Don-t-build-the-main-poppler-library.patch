@@ -1,4 +1,4 @@
-From 76eef70b66b641da0c85c443e0e4ac6db08dd3ad Mon Sep 17 00:00:00 2001
+From efb9c47f00b2b8b9bb237fa631e8f35f9ed1c631 Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Tue, 20 Oct 2009 18:32:35 +0100
 Subject: [PATCH 4/4] Don't build the main poppler library.
@@ -8,7 +8,7 @@ Subject: [PATCH 4/4] Don't build the main poppler library.
  1 file changed, 12 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index ff81531..b528492 100644
+index a1412d8..201a4e5 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -471,18 +471,6 @@ if(HAVE_PTHREAD)
@@ -22,7 +22,7 @@ index ff81531..b528492 100644
 -else(MSVC)
 -add_library(poppler SHARED ${poppler_SRCS})
 -endif(MSVC)
--set_target_properties(poppler PROPERTIES VERSION 56.0.0 SOVERSION 56)
+-set_target_properties(poppler PROPERTIES VERSION 58.0.0 SOVERSION 58)
 -target_link_libraries(poppler ${poppler_LIBS})
 -target_link_libraries(poppler LINK_INTERFACE_LIBRARIES "")
 -install(TARGETS poppler RUNTIME DESTINATION bin LIBRARY DESTINATION lib${LIB_SUFFIX} ARCHIVE DESTINATION lib${LIB_SUFFIX})
@@ -31,5 +31,5 @@ index ff81531..b528492 100644
    install(FILES
      poppler/Annot.h
 -- 
-2.6.2
+2.6.4
 
