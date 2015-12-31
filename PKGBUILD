@@ -4,7 +4,7 @@ _install_cron_file=
 
 pkgname=clamav-unofficial-sigs
 pkgver=4.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc='ClamAV Unofficial Signatures Updater maintained by eXtremeSHOK.com'
 arch=('any')
 url='https://github.com/extremeshok/clamav-unofficial-sigs'
@@ -29,7 +29,7 @@ prepare() {
 package() {
 	cd "$pkgname-$pkgver"
 
-	install -Dm644 clamav-unofficial-sigs.sh ${pkgdir}/usr/bin/clamav-unofficial-sigs.sh
+	install -Dm755 clamav-unofficial-sigs.sh ${pkgdir}/usr/bin/clamav-unofficial-sigs.sh
 	install -Dm644 clamav-unofficial-sigs.conf ${pkgdir}/etc/clamav-unofficial-sigs.conf
 	install -Dm644 clamav-unofficial-sigs.8 ${pkgdir}/usr/share/man/man8/clamav-unofficial-sigs.8
 	install -Dm644 clamav-unofficial-sigs-logrotate ${pkgdir}/etc/logrotate.d/clamav-unofficial-sigs-logrotate
