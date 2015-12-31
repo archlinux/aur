@@ -3,7 +3,7 @@
 
 _pkgname=papyros-shell
 pkgname=$_pkgname-git
-pkgver=0.0.5.r152.gc39d395
+pkgver=0.0.5.r163.g79667a3
 pkgrel=1
 pkgdesc="Wayland and QtQuick based desktop shell for Papyros"
 arch=("i686" "x86_64")
@@ -47,10 +47,10 @@ package() {
 
 changelog() {
     cd "$pkgname"
-  	git log $1..HEAD --no-merges --format=" * %s"
+    git log $1..HEAD --no-merges --format=" * %s"
 }
 
 gitref() {
     cd "$pkgname"
-  	git rev-parse HEAD
+    git rev-parse HEAD
 }
