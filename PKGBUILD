@@ -11,7 +11,7 @@ makedepends=('git')
 optdepends=('texinfo: for using texinfo scheme sources')
 provides=('guile')
 depends=('gc' 'libtool' 'libffi' 'libunistring' 'gmp')
-conflicts=('guile' 'guile-devel')
+provides=('guile')
 options=('!strip' '!makeflags' 'libtool')
 source=("git://git.sv.gnu.org/$_gitname.git")
 url="http://www.gnu.org/software/guile/"
@@ -26,11 +26,19 @@ pkgver() {
 build() {
   cd $_gitname
   ./autogen.sh
-  CFLAGS="" ./configure --prefix=/usr --disable-error-on-warning
+  CFLAGS="" ./configure --prefix=/usr --disable-error-on-warning \
+	--program-suffix=-2.2
   make LDFLAGS+="-lpthread"
 }
 
 package() {
   cd $_gitname
   make DESTDIR="$pkgdir/" install
+  cd $pkgdir/usr/share/info
+  for i in guile*
+  do
+    mv $i guile-2.2${i#guile}
+  done
+  mv r5rs.info r5rs-2.2.info
+  mv $pkgdir/usr/share/aclocal/guile.m4 $pkgdir/usr/share/aclocal/guile-2.2.m4
 }
