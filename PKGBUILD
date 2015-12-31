@@ -1,7 +1,7 @@
 pkgname=('heka')
 srcname='heka'
 pkgdesc='Data collection and processing made easy'
-pkgver='0.10.0b2'
+pkgver='0.10.0'
 pkgrel='1'
 arch=('i686' 'x86_64')
 url="https://github.com/mozilla-services/${srcname}"
