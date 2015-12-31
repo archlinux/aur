@@ -1,19 +1,19 @@
 # Maintainer: Jesse Juhani Jaara <jesse@Euler>
 
 pkgname=mingw-w64-ki18n
-_basever=5.16
+_basever=5.17
 pkgver=${_basever}.0
 pkgrel=1
 pkgdesc="Advanced internationalization framework (mingw-w64)"
 arch=('any')
 url="https://projects.kde.org/projects/frameworks/ki18n"
 license=('LGPL')
-depends=('mingw-w64-qt5-script')
+depends=('mingw-w64-qt5-script' 'mingw-w64-qt5-declarative')
 makedepends=("mingw-w64-extra-cmake-modules>=${_basever}" 'python')
 optdepends=('python: To compile Transcript property maps from text to binary format.')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/ki18n-${pkgver}.tar.xz")
-md5sums=('d26f14f17a4b3435f3d9db21592fad90')
+md5sums=('91f35b3fba203c887c697fce42cdffbe')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
