@@ -1,0 +1,324 @@
+From d3270ef730ab41da416f4971ec88a9b1a3a6bcfb Mon Sep 17 00:00:00 2001
+From: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+Date: Sun, 11 Jan 2015 11:14:58 +0100
+Subject: [PATCH] Update wayland.xml to 1.6
+
+Change-Id: I89b1dd4f6b6f03f54a9126dd5f67b0cdc9a006ad
+---
+ README                                            |   2 +-
+ src/3rdparty/protocol/wayland.xml                 | 124 +++++++++++++++++-----
+ src/client/qwaylandinputdevice.cpp                |   4 +-
+ src/compositor/wayland_wrapper/qwlinputdevice.cpp |   2 +-
+ src/compositor/wayland_wrapper/qwlkeyboard.cpp    |   3 +
+ 5 files changed, 103 insertions(+), 32 deletions(-)
+
+diff --git a/README b/README
+index f260897..2e8a1d3 100644
+--- a/README
++++ b/README
+@@ -20,7 +20,7 @@ doubt, run git clean -f -d -x.
+ 
+ To build the QtWayland module you need the external dependencies:
+ xkbcommon 0.2.0 - http://xkbcommon.org/
+-wayland 1.2.0 - http://wayland.freedesktop.org/
++wayland 1.6.0 - http://wayland.freedesktop.org/
+ 
+ QtCompositor supports loading client buffer integrations that don't use the
+ wayland-egl interfaces. These client buffer integrations are picked up by
+diff --git a/src/3rdparty/protocol/wayland.xml b/src/3rdparty/protocol/wayland.xml
+index bf6acd1..bb457bc 100644
+--- a/src/3rdparty/protocol/wayland.xml
++++ b/src/3rdparty/protocol/wayland.xml
+@@ -246,7 +246,8 @@
+       <description summary="change the size of the pool mapping">
+ 	This request will cause the server to remap the backing memory
+ 	for the pool from the file descriptor passed when the pool was
+-	created, but using the new size.
++	created, but using the new size.  This request can only be
++	used to make the pool bigger.
+       </description>
+ 
+       <arg name="size" type="int"/>
+@@ -549,8 +550,8 @@
+ 	The current and pending input regions of the icon wl_surface are
+ 	cleared, and wl_surface.set_input_region is ignored until the
+ 	wl_surface is no longer used as the icon surface. When the use
+-	as an icon ends, the the current and pending input regions
+-	become undefined, and the wl_surface is unmapped.
++	as an icon ends, the current and pending input regions become
++	undefined, and the wl_surface is unmapped.
+       </description>
+       <arg name="source" type="object" interface="wl_data_source" allow-null="true"/>
+       <arg name="origin" type="object" interface="wl_surface"/>
+@@ -976,6 +977,14 @@
+       cursor images for pointers, drag icons, etc.
+     </description>
+ 
++    <enum name="error">
++      <description summary="wl_surface error values">
++        These errors can be emitted in response to wl_surface requests.
++      </description>
++      <entry name="invalid_scale" value="0" summary="buffer scale value is invalid"/>
++      <entry name="invalid_transform" value="1" summary="buffer transform value is invalid"/>
++    </enum>
++
+     <request name="destroy" type="destructor">
+       <description summary="delete surface">
+ 	Deletes the surface and invalidates its object ID.
+@@ -1059,28 +1068,39 @@
+     </request>
+ 
+     <request name="frame">
+-      <description summary="request repaint feedback">
+-	Request notification when the next frame is displayed. Useful
+-	for throttling redrawing operations, and driving animations.
++      <description summary="request a frame throttling hint">
++	Request a notification when it is a good time start drawing a new
++	frame, by creating a frame callback. This is useful for throttling
++	redrawing operations, and driving animations.
++
++	When a client is animating on a wl_surface, it can use the 'frame'
++	request to get notified when it is a good time to draw and commit the
++	next frame of animation. If the client commits an update earlier than
++	that, it is likely that some updates will not make it to the display,
++	and the client is wasting resources by drawing too often.
++
+ 	The frame request will take effect on the next wl_surface.commit.
+ 	The notification will only be posted for one frame unless
+-	requested again.
++	requested again. For a wl_surface, the notifications are posted in
++	the order the frame requests were committed.
++
++	The server must send the notifications so that a client
++	will not send excessive updates, while still allowing
++	the highest possible update rate for clients that wait for the reply
++	before drawing again. The server should give some time for the client
++	to draw and commit after sending the frame callback events to let them
++	hit the next output refresh.
+ 
+ 	A server should avoid signalling the frame callbacks if the
+ 	surface is not visible in any way, e.g. the surface is off-screen,
+ 	or completely obscured by other opaque surfaces.
+ 
+-	A client can request a frame callback even without an attach,
+-	damage, or any other state changes. wl_surface.commit triggers a
+-	display update, so the callback event will arrive after the next
+-	output refresh where the surface is visible.
+-
+ 	The object returned by this request will be destroyed by the
+ 	compositor after the callback is fired and as such the client must not
+ 	attempt to use it after that point.
+ 
+ 	The callback_data passed in the callback is the current time, in
+-	milliseconds.
++	milliseconds, with an undefined base.
+       </description>
+ 
+       <arg name="callback" type="new_id" interface="wl_callback"/>
+@@ -1201,6 +1221,11 @@
+ 
+ 	A newly created surface has its buffer transformation set to normal.
+ 
++	wl_surface.set_buffer_transform changes the pending buffer
++	transformation. wl_surface.commit copies the pending buffer
++	transformation to the current one. Otherwise, the pending and current
++	values are never changed.
++
+ 	The purpose of this request is to allow clients to render content
+ 	according to the output transform, thus permiting the compositor to
+ 	use certain optimizations even if the display is rotated. Using
+@@ -1212,6 +1237,10 @@
+ 	Note that if the transform value includes 90 or 270 degree rotation,
+ 	the width of the buffer will become the surface height and the height
+ 	of the buffer will become the surface width.
++
++	If transform is not one of the values from the
++	wl_output.transform enum the invalid_transform protocol error
++	is raised.
+       </description>
+       <arg name="transform" type="int"/>
+     </request>
+@@ -1227,6 +1256,10 @@
+ 
+ 	A newly created surface has its buffer scale set to 1.
+ 
++	wl_surface.set_buffer_scale changes the pending buffer scale.
++	wl_surface.commit copies the pending buffer scale to the current one.
++	Otherwise, the pending and current values are never changed.
++
+ 	The purpose of this request is to allow clients to supply higher
+ 	resolution buffer data for use on high resolution outputs. Its
+ 	intended that you pick the same	buffer scale as the scale of the
+@@ -1236,12 +1269,15 @@
+ 	Note that if the scale is larger than 1, then you have to attach
+ 	a buffer that is larger (by a factor of scale in each dimension)
+ 	than the desired surface size.
++
++	If scale is not positive the invalid_scale protocol error is
++	raised.
+       </description>
+       <arg name="scale" type="int"/>
+     </request>
+    </interface>
+ 
+-  <interface name="wl_seat" version="3">
++  <interface name="wl_seat" version="4">
+     <description summary="group of input devices">
+       A seat is a group of keyboards, pointer and touch devices. This
+       object is published as a global during start up, or when such a
+@@ -1363,10 +1399,6 @@
+       <arg name="hotspot_y" type="int" summary="y coordinate in surface-relative coordinates"/>
+     </request>
+ 
+-    <request name="release" type="destructor" since="3">
+-      <description summary="release the pointer object"/>
+-    </request>
+-
+     <event name="enter">
+       <description summary="enter event">
+ 	Notification that this seat's pointer is focused on a certain
+@@ -1464,18 +1496,21 @@
+       <arg name="axis" type="uint"/>
+       <arg name="value" type="fixed"/>
+     </event>
++
++    <!-- Version 3 additions -->
++
++    <request name="release" type="destructor" since="3">
++      <description summary="release the pointer object"/>
++    </request>
++
+   </interface>
+ 
+-  <interface name="wl_keyboard" version="3">
++  <interface name="wl_keyboard" version="4">
+     <description summary="keyboard input device">
+       The wl_keyboard interface represents one or more keyboards
+       associated with a seat.
+     </description>
+ 
+-    <request name="release" type="destructor" since="3">
+-      <description summary="release the keyboard object"/>
+-    </request>
+-
+     <enum name="keymap_format">
+       <description summary="keyboard mapping format">
+ 	This specifies the format of the keymap provided to the
+@@ -1483,7 +1518,8 @@
+       </description>
+       <entry name="no_keymap" value="0"
+ 	     summary="no keymap; client must understand how to interpret the raw keycode"/>
+-      <entry name="xkb_v1" value="1" summary="libxkbcommon compatible"/>
++      <entry name="xkb_v1" value="1"
++             summary="libxkbcommon compatible; to determine the xkb keycode, clients must add 8 to the key event keycode"/>
+     </enum>
+ 
+     <event name="keymap">
+@@ -1551,6 +1587,36 @@
+       <arg name="mods_locked" type="uint"/>
+       <arg name="group" type="uint"/>
+     </event>
++
++    <!-- Version 3 additions -->
++
++    <request name="release" type="destructor" since="3">
++      <description summary="release the keyboard object"/>
++    </request>
++
++    <!-- Version 4 additions -->
++
++    <event name="repeat_info" since="4">
++      <description summary="repeat rate and delay">
++        Informs the client about the keyboard's repeat rate and delay.
++
++        This event is sent as soon as the wl_keyboard object has been created,
++        and is guaranteed to be received by the client before any key press
++        event.
++
++        Negative values for either rate or delay are illegal. A rate of zero
++        will disable any repeating (regardless of the value of delay).
++
++        This event can be sent later on as well with a new value if necessary,
++        so clients should continue listening for the event past the creation
++        of wl_keyboard.
++      </description>
++
++      <arg name="rate" type="int"
++           summary="the rate of repeating keys in characters per second"/>
++      <arg name="delay" type="int"
++           summary="delay in milliseconds since key down until repeating starts"/>
++    </event>
+   </interface>
+ 
+   <interface name="wl_touch" version="3">
+@@ -1565,10 +1631,6 @@
+       contact point can be identified by the ID of the sequence.
+     </description>
+ 
+-    <request name="release" type="destructor" since="3">
+-      <description summary="release the touch object"/>
+-    </request>
+-
+     <event name="down">
+       <description summary="touch down event and beginning of a touch sequence">
+ 	A new touch point has appeared on the surface. This touch point is
+@@ -1621,6 +1683,12 @@
+ 	this surface may re-use the touch point ID.
+       </description>
+     </event>
++
++    <!-- Version 3 additions -->
++
++    <request name="release" type="destructor" since="3">
++      <description summary="release the touch object"/>
++    </request>
+   </interface>
+ 
+   <interface name="wl_output" version="2">
+diff --git a/src/client/qwaylandinputdevice.cpp b/src/client/qwaylandinputdevice.cpp
+index 3b5e834..b866b86 100644
+--- a/src/client/qwaylandinputdevice.cpp
++++ b/src/client/qwaylandinputdevice.cpp
+@@ -162,10 +162,10 @@ QWaylandInputDevice::Touch::~Touch()
+ 
+ QWaylandInputDevice::QWaylandInputDevice(QWaylandDisplay *display, int version, uint32_t id)
+     : QObject()
+-    , QtWayland::wl_seat(display->wl_registry(), id, qMin(version, 3))
++    , QtWayland::wl_seat(display->wl_registry(), id, qMin(version, 4))
+     , mQDisplay(display)
+     , mDisplay(display->wl_display())
+-    , mVersion(qMin(version, 3))
++    , mVersion(qMin(version, 4))
+     , mCaps(0)
+     , mDataDevice(0)
+     , mKeyboard(0)
+diff --git a/src/compositor/wayland_wrapper/qwlinputdevice.cpp b/src/compositor/wayland_wrapper/qwlinputdevice.cpp
+index cb27ab4..c91580a 100644
+--- a/src/compositor/wayland_wrapper/qwlinputdevice.cpp
++++ b/src/compositor/wayland_wrapper/qwlinputdevice.cpp
+@@ -60,7 +60,7 @@ QT_BEGIN_NAMESPACE
+ namespace QtWayland {
+ 
+ InputDevice::InputDevice(QWaylandInputDevice *handle, Compositor *compositor, QWaylandInputDevice::CapabilityFlags caps)
+-    : QtWaylandServer::wl_seat(compositor->wl_display(), 3)
++    : QtWaylandServer::wl_seat(compositor->wl_display(), 4)
+     , m_handle(handle)
+     , m_dragHandle(new QWaylandDrag(this))
+     , m_compositor(compositor)
+diff --git a/src/compositor/wayland_wrapper/qwlkeyboard.cpp b/src/compositor/wayland_wrapper/qwlkeyboard.cpp
+index a7889fd..550611a 100644
+--- a/src/compositor/wayland_wrapper/qwlkeyboard.cpp
++++ b/src/compositor/wayland_wrapper/qwlkeyboard.cpp
+@@ -184,6 +184,9 @@ QtWaylandServer::wl_keyboard::Resource *Keyboard::focusResource() const
+ 
+ void Keyboard::keyboard_bind_resource(wl_keyboard::Resource *resource)
+ {
++    // Send repeat information
++    send_repeat_info(resource->handle, 40, 400);
++
+ #ifndef QT_NO_WAYLAND_XKB
+     if (m_context) {
+         send_keymap(resource->handle, WL_KEYBOARD_KEYMAP_FORMAT_XKB_V1,
+-- 
+2.4.4
+

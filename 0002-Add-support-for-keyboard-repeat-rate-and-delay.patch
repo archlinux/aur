@@ -1,0 +1,160 @@
+From 632e0b94ac336f1e56c1250fb5da959991b78b99 Mon Sep 17 00:00:00 2001
+From: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+Date: Tue, 12 May 2015 08:29:41 +0200
+Subject: [PATCH] Add support for keyboard repeat rate and delay
+
+Add an API to set keyboard rate and delay and implement send_repeat_info
+introduced with wl_seat 4.
+
+Change-Id: I95bab22bf4eea6549d2f8a762341c6485a24665c
+---
+ src/compositor/compositor_api/qwaylandinput.cpp | 26 ++++++++++++++++++
+ src/compositor/compositor_api/qwaylandinput.h   |  6 +++++
+ src/compositor/wayland_wrapper/qwlkeyboard.cpp  | 36 ++++++++++++++++++++++++-
+ src/compositor/wayland_wrapper/qwlkeyboard_p.h  |  9 +++++++
+ 4 files changed, 76 insertions(+), 1 deletion(-)
+
+diff --git a/src/compositor/compositor_api/qwaylandinput.cpp b/src/compositor/compositor_api/qwaylandinput.cpp
+index 4e106f5..f8eca4f 100644
+--- a/src/compositor/compositor_api/qwaylandinput.cpp
++++ b/src/compositor/compositor_api/qwaylandinput.cpp
+@@ -138,6 +138,32 @@ void QWaylandInputDevice::sendFullKeyEvent(QWaylandSurface *surface, QKeyEvent *
+     d->sendFullKeyEvent(surface->handle(), event);
+ }
+
++quint32 QWaylandInputDevice::keyboardRepeatRate() const
++{
++    if (handle()->keyboardDevice())
++        return handle()->keyboardDevice()->repeatRate();
++    return 40;
++}
++
++void QWaylandInputDevice::setKeyboardRepeatRate(quint32 rate)
++{
++    if (handle()->keyboardDevice())
++        handle()->keyboardDevice()->setRepeatRate(rate);
++}
++
++quint32 QWaylandInputDevice::keyboardRepeatDelay() const
++{
++    if (handle()->keyboardDevice())
++        return handle()->keyboardDevice()->repeatDelay();
++    return 400;
++}
++
++void QWaylandInputDevice::setKeyboardRepeatDelay(quint32 delay)
++{
++    if (handle()->keyboardDevice())
++        handle()->keyboardDevice()->setRepeatDelay(delay);
++}
++
+ QWaylandSurface *QWaylandInputDevice::keyboardFocus() const
+ {
+     QtWayland::Surface *wlsurface = d->keyboardFocus();
+diff --git a/src/compositor/compositor_api/qwaylandinput.h b/src/compositor/compositor_api/qwaylandinput.h
+index ba28bbd..937884d 100644
+--- a/src/compositor/compositor_api/qwaylandinput.h
++++ b/src/compositor/compositor_api/qwaylandinput.h
+@@ -114,6 +114,12 @@ public:
+
+     void sendFullTouchEvent(QTouchEvent *event);
+
++    quint32 keyboardRepeatRate() const;
++    void setKeyboardRepeatRate(quint32 rate);
++
++    quint32 keyboardRepeatDelay() const;
++    void setKeyboardRepeatDelay(quint32 delay);
++
+     QWaylandSurface *keyboardFocus() const;
+     bool setKeyboardFocus(QWaylandSurface *surface);
+     void setKeymap(const QWaylandKeymap &keymap);
+diff --git a/src/compositor/wayland_wrapper/qwlkeyboard.cpp b/src/compositor/wayland_wrapper/qwlkeyboard.cpp
+index 550611a..7860db8 100644
+--- a/src/compositor/wayland_wrapper/qwlkeyboard.cpp
++++ b/src/compositor/wayland_wrapper/qwlkeyboard.cpp
+@@ -74,6 +74,8 @@ Keyboard::Keyboard(Compositor *compositor, InputDevice *seat)
+     , m_keymap_fd(-1)
+     , m_state(0)
+ #endif
++    , m_repeatRate(40)
++    , m_repeatDelay(400)
+ {
+ #ifndef QT_NO_WAYLAND_XKB
+     initXKB();
+@@ -148,6 +150,38 @@ void Keyboard::setKeymap(const QWaylandKeymap &keymap)
+     m_pendingKeymap = true;
+ }
+
++quint32 Keyboard::repeatRate() const
++{
++    return m_repeatRate;
++}
++
++void Keyboard::setRepeatRate(quint32 rate)
++{
++    if (m_repeatRate == rate)
++        return;
++
++    m_repeatRate = rate;
++
++    Q_FOREACH (Resource *resource, resourceMap())
++        send_repeat_info(resource->handle, m_repeatRate, m_repeatDelay);
++}
++
++quint32 Keyboard::repeatDelay() const
++{
++    return m_repeatDelay;
++}
++
++void Keyboard::setRepeatDelay(quint32 delay)
++{
++    if (m_repeatDelay == delay)
++        return;
++
++    m_repeatDelay = delay;
++
++    Q_FOREACH (Resource *resource, resourceMap())
++        send_repeat_info(resource->handle, m_repeatRate, m_repeatDelay);
++}
++
+ void Keyboard::focusDestroyed(void *data)
+ {
+     Q_UNUSED(data)
+@@ -185,7 +219,7 @@ QtWaylandServer::wl_keyboard::Resource *Keyboard::focusResource() const
+ void Keyboard::keyboard_bind_resource(wl_keyboard::Resource *resource)
+ {
+     // Send repeat information
+-    send_repeat_info(resource->handle, 40, 400);
++    send_repeat_info(resource->handle, m_repeatRate, m_repeatDelay);
+
+ #ifndef QT_NO_WAYLAND_XKB
+     if (m_context) {
+diff --git a/src/compositor/wayland_wrapper/qwlkeyboard_p.h b/src/compositor/wayland_wrapper/qwlkeyboard_p.h
+index 4450311..943e222 100644
+--- a/src/compositor/wayland_wrapper/qwlkeyboard_p.h
++++ b/src/compositor/wayland_wrapper/qwlkeyboard_p.h
+@@ -87,6 +87,12 @@ public:
+     void setFocus(Surface *surface);
+     void setKeymap(const QWaylandKeymap &keymap);
+
++    quint32 repeatRate() const;
++    void setRepeatRate(quint32 rate);
++
++    quint32 repeatDelay() const;
++    void setRepeatDelay(quint32 delay);
++
+     void sendKeyModifiers(Resource *resource, uint32_t serial);
+     void sendKeyPressEvent(uint code);
+     void sendKeyReleaseEvent(uint code);
+@@ -146,6 +152,9 @@ private:
+     struct xkb_context *m_context;
+     struct xkb_state *m_state;
+ #endif
++
++    quint32 m_repeatRate;
++    quint32 m_repeatDelay;
+ };
+
+ } // namespace QtWayland
+--
+2.5.1
