@@ -5,20 +5,20 @@ pkgrel=3
 pkgdesc="Powerful packages downgrader for Archlinux. Works with libalpm, ARM and pacman logs"
 arch=('i686' 'x86_64')
 license=("GPL")
+_gitname=downgrader
 
 url="https://github.com/DimaSmirnov/Archlinux-downgrader"
-source=($pkgname-$pkgver::"http://www.igus.lv/downgrader/downgrader.tar.xz")
-optdepends=('sudo: for installation via sudo')
+source=("git://github.com/DimaSmirnov/Archlinux-downgrader.git")
   
 # install=$pkgname.install
 
 build() {
-  cd "$srcdir"
- make
+  cd $_gitname
+  make
 }
 
 package() {
-  cd "$srcdir"
+  cd $_gitname
   install -D -m755 downgrader "$pkgdir/usr/bin/downgrader"
 }
-md5sums=('3249298e9efd2918efe86c5431f54bcd')
+md5sums=('SKIP')
