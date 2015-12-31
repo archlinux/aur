@@ -4,7 +4,7 @@
 pkgname=pear-http-request2
 _pkgname=HTTP_Request2
 pkgver=2.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Provides an easy way to perform HTTP requests.'
 arch=('any')
 url="http://pear.php.net/package/${_pkgname}"
@@ -16,7 +16,7 @@ install="${pkgname}.install"
 noextract=(${_pkgname}-${pkgver}.tgz)
 source=(http://download.pear.php.net/package/${_pkgname}-${pkgver}.tgz
         pear-http-request2.install)
-md5sums=('36c8406b0d95bbdec54ad0fdafa73d00'
+md5sums=('3549103543209ebbbd065f49e62d9eca'
          'bd7b8d4499b021db6d181faf3893c76b')
 
 package() {
