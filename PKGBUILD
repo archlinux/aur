@@ -1,14 +1,13 @@
 # Maintainer: demian <mikar ατ gmx δοτ de>
 pkgname=blockify
-pkgver=3.0.2
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Mutes Spotify advertisements."
 arch=("any")
 url="https://github.com/mikar/${pkgname}"
 license=("MIT")
-depends=("spotify" "pulseaudio" "alsa-utils" "wmctrl" "libwnck3" "pygtk"
-         "gst-python" "python-dbus" "python-setuptools")
-optdepends=("python-docopt")
+depends=("spotify" "pulseaudio" "alsa-utils" "pygtk"
+         "gst-python" "python-dbus" "python-setuptools" "python-docopt")
 source=("https://github.com/mikar/${pkgname}/archive/v${pkgver}.tar.gz")
 
 package() {
@@ -16,4 +15,4 @@ package() {
 
     python setup.py install --root="${pkgdir}"
 }
-sha256sums=('78624514320481a6dd07c0202dfd79f057156b2f4adba2d7d7a4273db44d793a')
+sha256sums=('b1dd512d71b92820279e70ea0de4bfd88f21ae7a4e4be5961d37e232548de4e1')
