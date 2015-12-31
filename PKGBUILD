@@ -3,7 +3,7 @@
 pkgname=gnome-shell-theme-viva-git
 _pkgver=3.18.3
 pkgver=3.18.3.132.d2127f5
-pkgrel=1
+pkgrel=2
 pkgdesc="A custom gnome-shell theme named viva (blue and orange version)"
 arch=('any')
 url="https://github.com/vivaeltopo/gnome-shell-theme-viva"
