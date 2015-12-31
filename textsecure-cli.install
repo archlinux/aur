@@ -1,0 +1,13 @@
+#!/bin/sh
+post_common() {
+	systemd-sysusers
+	systemd-tmpfiles --create textsecure-cli.conf
+}
+
+post_install() {
+	post_common "$@"
+}
+
+post_upgrade() {
+	post_common "$@"
+}
