@@ -1,0 +1,11 @@
+post_install() {
+  cat <<MSG
+  In Firefox 43+, you may have to set 'xpinstall.signatures.required' = 'false'
+  in about:config. See: https://github.com/EFForg/https-everywhere/issues/2051
+  and: https://bugs.archlinux.org/task/47395
+MSG
+}
+
+post_upgrade() {
+  post_install
+}
