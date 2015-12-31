@@ -7,18 +7,13 @@ pkgrel=1
 pkgdesc="Firmware for Broadcom B43 wireless networking chips - trusted release"
 arch=("any")
 url="https://wireless.wiki.kernel.org/en/users/Drivers/b43"
-license=("GPL")
+license=("unknown")
 depends=("linux>=3.2")
 makedepends=("b43-fwcutter>=015")
 conflicts=(${_basename_})
+install=${pkgname}.install
 options=(!emptydirs)
 source=(http://www.lwfinger.com/${_basename_}/broadcom-wl-${pkgver}.tar.bz2)
-
-build() {
-	# Messages
-	warning "If you encounter problems with v5.100, try the '${_basename_}' package (v6.30) instead."
-	read -p "==> PROMPT: Press any key to continue building this package ... " -n 1
-}
 
 package() {
 	cd "${srcdir}"/broadcom-wl-${pkgver}

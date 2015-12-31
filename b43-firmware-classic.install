@@ -1,0 +1,7 @@
+post_upgrade() {
+	echo "==> If you encounter problems with v5.100, try the 'b43-firmware' package (v6.30) instead."
+}
+
+post_install() {
+  post_upgrade
+}
