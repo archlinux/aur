@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=CEmu
+Comment=An open-source third-party TI-84 Plus CE / TI-83 Premium CE calculator emulator
+Exec=cemu
+Icon=cemu
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Education;Science;Math;System;Emulator;
