@@ -8,19 +8,19 @@ arch=('i686' 'x86_64')
 url='http://repo.or.cz/vis.git'
 depends=('ncurses' 'libtermkey' 'lua')
 optdepends=('lua-lpeg: for syntax highlighting')
-makedepends=('git' 'markdown')
+makedepends=('markdown')
 license=('custom:ISC')
-source=("git://repo.or.cz/vis.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+source=("http://www.brain-dump.org/projects/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('c695b095f85f4360590865b0b7007aa019463b24c1026c0e624a78b31f3ac54b')
 
 prepare() {
-	cd vis/
+	cd "${pkgname}-${pkgver}/"
 
 	sed -i '/^\(C\|LD\)FLAGS_LUA =/s/lua5.1/lua/' config.mk
 }
 
 build() {
-	cd vis/
+	cd "${pkgname}-${pkgver}/"
 
 	make
 
@@ -28,7 +28,7 @@ build() {
 }
 
 package() {
-	cd vis/
+	cd "${pkgname}-${pkgver}/"
 
 	make DESTDIR="${pkgdir}" PREFIX='/usr/' install
 
