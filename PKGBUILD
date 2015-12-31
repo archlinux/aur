@@ -7,7 +7,12 @@ arch=('i686' 'x86_64')
 url='https://github.com/OpenRCT2/OpenRCT2'
 license=('GPL3')
 depends=('gtk-update-icon-cache' 'desktop-file-utils')
+depends_i686=('sdl2' 'sdl2_ttf' 'curl' 'jansson' 'speexdsp' 'fontconfig'
+              'libpng')
+depends_x86_64=('lib32-sdl2' 'lib32-sdl2_ttf' 'lib32-curl' 'lib32-jansson'
+                'lib32-speexdsp' 'lib32-fontconfig' 'lib32-libpng')
 makedepends=('git' 'cmake')
+makedepends_x86_64=('gcc-multilib')
 conflicts=('openrct2')
 provides=('openrct2')
 options=('!buildflags')
@@ -18,14 +23,6 @@ source=("$pkgname"::'git+https://github.com/OpenRCT2/OpenRCT2.git#branch=develop
 sha256sums=('SKIP'
             '0a7b5ea46e9cb4b19000b69690eae0b75929752f7db192c78bd7ffb61d696835'
             'b916d4a9f56af82693ba21f43e09ababe9f132fd7c3b78efa1b4387ee1bc3a4d')
-
-if [ "$CARCH" = "i686" ]; then
-  depends+=('sdl2' 'sdl2_ttf' 'curl' 'jansson' 'speexdsp' 'fontconfig' 'libpng')
-else
-  depends+=('lib32-sdl2' 'lib32-sdl2_ttf' 'lib32-curl' 'lib32-jansson'
-            'lib32-speexdsp' 'lib32-fontconfig' 'lib32-libpng')
-  makedepends+=('gcc-multilib')
-fi
 
 pkgver() {
   cd "$srcdir/$pkgname"
