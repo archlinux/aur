@@ -1,16 +1,16 @@
 # Maintainer: Tomoaki Hashizaki <thashisaki@yahoo.com>
 
 pkgname=cafeobj-sbcl
-pkgver=1.5.4
+pkgver=1.5.5
 pkgrel=1
 pkgdesc="New generation algebraic specification and programming language (built by SBCL)"
 arch=("i686" "x86_64")
 url="https://cafeobj.org/"
 license=('BSD')
-source_i686=("https://cafeobj.org/files/1.5.4/cafeobj-1.5.4-sbcl-x32Linux.tar.gz")
-source_x86_64=("https://cafeobj.org/files/1.5.4/cafeobj-1.5.4-sbcl-x64Linux.tar.gz")
-sha256sums_i686=('0c82b7456398a8e6f9db543c539fecf61279bf6733a47f93f51f661629093289')
-sha256sums_x86_64=('2322ad4f47f57eec7879093cd661a9545260ab4351a3b423813ce95a416926f6')
+source_i686=("https://cafeobj.org/files/1.5.5/cafeobj-1.5.5-sbcl-x32Linux.tar.gz")
+source_x86_64=("https://cafeobj.org/files/1.5.5/cafeobj-1.5.5-sbcl-x64Linux.tar.gz")
+sha256sums_i686=('93d8d558eeddf258f8f4361c8f6c78f067f6543544ce6c07d4e0358bd8845ee9')
+sha256sums_x86_64=('8b4f6e873b17d7cbb1ee1929b0829492e4fbe4ca17eb23d1f96f51962bf44e17')
 options=(!strip)
 
 package() {
@@ -33,4 +33,7 @@ package() {
 
   #share man
   install -Dm755 {${srcdir}/share/,${pkgdir}/usr/local}/man/man1/cafeobj.1
+
+  #share emacs
+  install -Dm755 {${srcdir},${pkgdir}/usr}/share/emacs/site-lisp/cafeobj-mode.el
 }
