@@ -8,7 +8,7 @@
 
 pkgname=swi-prolog-devel
 pkgver=7.3.14
-pkgrel=1
+pkgrel=2
 pkgdesc='Prolog environment (development version)'
 arch=('x86_64' 'i686')
 url='http://www.swi-prolog.org/'
@@ -16,6 +16,7 @@ license=('GPL' 'LGPL')
 depends=('gmp' 'readline' 'openssl' 'libarchive')
 makedepends=('libxft' 'libjpeg' 'unixodbc' 'libxpm' 'libxinerama')
 optdepends=('unixodbc: for using the odbc4pl library'
+            'uuid: for using the uuid library'
             'libjpeg: for using the pl2xpce library'
             'libxpm: for using the pl2xpce library'
             'libxinerama: for using the pl2xpce library'
@@ -32,7 +33,7 @@ build() {
 
   ./configure --prefix=/usr --with-world
   cd src
-  ./configure --enable-readline --prefix=/usr
+  ./configure --enable-shared --enable-readline --prefix=/usr
 
   make -C ..
 }
