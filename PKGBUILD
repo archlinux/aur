@@ -5,15 +5,14 @@
 
 pkgbase=etlegacy32-git
 pkgname=('etlegacy32-git' 'etlegacy32-mod-git')
-pkgver=2.74.241.g3ba998b
+pkgver=2.74.506.g13147cf
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.etlegacy.com/"
 license=('GPL3')
 makedepends=('git' 'cmake' 'zip')
-makedepends_i686=('alsa-lib' 'curl' 'freetype2' 'glew' 'libjpeg-turbo' 'libtheora' 'libvorbis' 'lua' 'sdl2')
-makedepends_x86_64=('lib32-alsa-lib' 'lib32-curl' 'lib32-freetype2' 'lib32-glew' 'lib32-libjpeg-turbo' 'lib32-libtheora' 'lib32-libvorbis' 'lib32-lua' 
-'lib32-sdl2')
+makedepends_i686=('alsa-lib' 'curl' 'freetype2' 'glew' 'libjpeg-turbo' 'libtheora' 'libvorbis' 'lua' 'minizip' 'openal' 'sdl2' 'sqlite')
+makedepends_x86_64=('lib32-alsa-lib' 'lib32-curl' 'lib32-freetype2' 'lib32-glew' 'lib32-libjpeg-turbo' 'lib32-libtheora' 'lib32-libvorbis' 'lib32-lua' 'lib32-minizip' 'lib32-openal' 'lib32-sdl2' 'lib32-sqlite')
 options=(!strip)
 source=('git://github.com/etlegacy/etlegacy.git')
 md5sums=('SKIP')
@@ -86,7 +85,8 @@ build() {
     cmakeopts+=(
         "-D FEATURE_CURL=1"
         "-D FEATURE_OGG_VORBIS=1"
-        "-D FEATURE_OPENAL=0"
+        "-D FEATURE_THEORA=1"
+        "-D FEATURE_OPENAL=1"
         "-D FEATURE_FREETYPE=1"
         "-D FEATURE_TRACKER=0"
         "-D FEATURE_LUA=1"
@@ -104,6 +104,7 @@ build() {
         "-D FEATURE_JANSSON=0"
         "-D FEATURE_SERVERMDX=1"
         "-D FEATURE_LIVEAUTH=1"
+        "-D FEATURE_DBMS=1"
     )
     # omnibot
     cmakeopts+=(
@@ -118,10 +119,8 @@ build() {
 package_etlegacy32-git() {
     pkgdesc="Wolfenstein: Enemy Territory 2.60b compatible client/server (etlegacy engine, 32 bit)"
     depends=('etlegacy32-mod-git')
-    depends_i686=('alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libtheora' 'libvorbis' 'lua' 'sdl2')
-    depends_x86_64=('lib32-alsa-lib' 'lib32-curl' 'lib32-freetype2' 'lib32-gcc-libs' 'lib32-glew' 'lib32-libjpeg-turbo' 'lib32-libtheora' 'lib32-libvorbis' 
-'lib32-lua' 
-'lib32-sdl2')
+    depends_i686=('etlegacy32-mod-git' 'alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libtheora' 'libvorbis' 'lua' 'minizip' 'openal' 'sdl2' 'sqlite')
+    depends_x86_64=('etlegacy32-mod-git' 'lib32-alsa-lib' 'lib32-curl' 'lib32-freetype2' 'lib32-gcc-libs' 'lib32-glew' 'lib32-libjpeg-turbo' 'lib32-libtheora' 'lib32-libvorbis' 'lib32-lua' 'lib32-minizip' 'lib32-openal' 'lib32-sdl2' 'lib32-sqlite')
     provides=('etlegacy32' 'etlegacy')
     conflicts=('etlegacy32' 'etlegacy')
     backup=('etc/xdg/etlegacy/etmain/etl_server.cfg'
