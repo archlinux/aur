@@ -1,0 +1,38 @@
+# Maintainer: johnguant <rhys @t johnguant dot com>
+
+pkgname=android-sdk-build-tools-23.0.2
+pkgver=r23.0.2
+_ver=23.0.2
+pkgrel=1
+pkgdesc='Build-Tools for Google Android SDK (aapt, aidl, dexdump, dx, llvm-rs-cc)'
+arch=('i686' 'x86_64')
+url="http://developer.android.com/sdk/index.html"
+license=('custom')
+depends=('gcc-libs' 'zlib')
+optdepends=()
+provides=("android-sdk-build-tools=$pkgver")
+
+if [[ $CARCH = x86_64 ]]; then
+  depends=('lib32-gcc-libs' 'lib32-zlib')
+fi
+
+_sdk=android-sdk
+
+source=("https://dl-ssl.google.com/android/repository/build-tools_${pkgver}-linux.zip")
+sha1sums=('8a9f2b37f6fcf7a9fa784dc21aeaeb41bbb9f2c3')
+_android=android-6.0
+options=('!strip')
+
+package() {
+  
+  cd "$pkgdir"
+  install -Dm644 "${srcdir}/$_android/NOTICE.txt" usr/share/licenses/$pkgname/NOTICE.txt
+  # mkdir -p opt etc/profile.d
+  # echo 'export PATH=$PATH:/opt/android-sdk/build-tools/'"$_ver/" > etc/profile.d/${pkgname}.sh
+  # echo 'setenv PATH ${PATH}:/opt/android-sdk/build-tools/'"$_ver/" > etc/profile.d/${pkgname}.csh
+  # chmod 755 etc/profile.d/${pkgname}.{csh,sh}
+  
+  mkdir -p opt/$_sdk/build-tools/$_ver
+  cp -r "$srcdir/$_android/"* "$pkgdir/opt/$_sdk/build-tools/$_ver"
+  chmod +Xr -R "$pkgdir/opt/$_sdk/build-tools/$_ver"
+}
