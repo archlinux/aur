@@ -2,27 +2,62 @@
 
 pkgname=php-memcache
 pkgver=3.0.8
-pkgrel=3
+pkgrel=4
+_commit=fdbd46bbc6f53ed6e024521895e142cbfc9b3340
 pkgdesc="Memcache module for PHP"
 arch=('i686' 'x86_64')
 url="http://pecl.php.net/package/memcache"
 license=('PHP')
 depends=('php')
+makedepends=('git')
+checkdepends=('memcached')
 backup=('etc/php/conf.d/memcache.ini')
 install=php-memcache.install
-source=(http://pecl.php.net/get/memcache-$pkgver.tgz)
-sha256sums=('2cae5b423ffbfd33a259829849f6000d4db018debe3e29ecf3056f06642e8311')
+#source=(https://pecl.php.net/get/memcache-$pkgver.tgz)
+source=("git+https://github.com/websupport-sk/pecl-memcache.git#commit=$_commit")
+sha256sums=('SKIP')
+
+prepare() {
+  cd "$srcdir/pecl-memcache"
+
+  # Disable UDP tests
+  sed -i "s|^\(\$udpPort2\? =\) .*|\1 0;|" tests/connect.inc
+
+  # Remove flaky tests
+  #   [tests/040.phpt] memcache->increment()/decrement() with multiple keys
+  #   [tests/042.phpt] memcache->set() with multiple values
+  rm tests/{040,042}.phpt
+}
 
 build() {
-  cd "$srcdir/memcache-$pkgver"
+  cd "$srcdir/pecl-memcache"
 
   phpize
   ./configure --prefix=/usr
   make
 }
 
+check() {
+  cd "$srcdir/pecl-memcache"
+
+  sed -i "s|^\(\$domainsocket =\) .*|\1 'unix://$PWD/memcached.sock';|" \
+    tests/connect.inc
+
+  memcached_pids=()
+  memcached -p 11211 -U 11211 >/dev/null        & memcached_pids+=($!)
+  memcached -p 11212 -U 11212 >/dev/null        & memcached_pids+=($!)
+  memcached -s "$PWD/memcached.sock" >/dev/null & memcached_pids+=($!)
+
+  local ret=0
+  make test NO_INTERACTION=1 REPORT_EXIT_STATUS=1 || ret=1
+
+  kill ${memcached_pids[@]}
+
+  return $ret
+}
+
 package() {
-  cd "$srcdir/memcache-$pkgver"
+  cd "$srcdir/pecl-memcache"
 
   make INSTALL_ROOT="$pkgdir" install
   echo ';extension=memcache.so' >memcache.ini
