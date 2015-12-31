@@ -2,10 +2,11 @@
 
 pkgname=alacryd-git
 pkgver=20151231
-pkgrel=1
+pkgrel=2
 pkgdesc="Expedient Perl 6 module installation"
 arch=('any')
 depends=('rakudo')
+groups=('perl6')
 url="https://github.com/atweiden/alacryd"
 license=('UNLICENSE')
 source=(git+https://github.com/atweiden/alacryd)
