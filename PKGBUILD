@@ -1,6 +1,6 @@
 # Maintainer:  dacoit <dacoit at tuta.io>
 pkgname=tutanota
-pkgver=2.5.1
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='Tutanota end-to-end encrypted email client webapp'
 url='https://tutanota.de'
@@ -8,7 +8,7 @@ arch=('any')
 license=('GPL3')
 makedepends=('npm' 'gulp')
 source=("https://github.com/tutao/tutanota/archive/tutanota-release-$pkgver.tar.gz")
-md5sums=('ec18ce32e3222775526cb42df22c27ea')
+md5sums=('e8397f4430ea79f5102769adfd93c9bd')
 
 # Set to any value to install a symlink 
 # from the document root to the webapp
