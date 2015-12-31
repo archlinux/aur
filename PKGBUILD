@@ -1,7 +1,7 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 pkgname=ssr-git
 _pkgname=ssr
-pkgver=0.4.2.r37.g3c4138d
+pkgver=0.4.2.r44.g54b5a56
 pkgrel=1
 pkgdesc="The SoundScape Renderer (SSR) is a tool for real-time spatial audio reproduction providing a variety of rendering algorithms, e.g. Wave Field Synthesis, Higher-Order Ambisonics and binaural techniques."
 arch=('i686' 'x86_64')
@@ -18,6 +18,11 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/${_pkgname}-${pkgver}/"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
+}
+
+prepare() {
+  cd "$srcdir/${_pkgname}-${pkgver}/"
+  git checkout c++11-threads
 }
 
 build() {
