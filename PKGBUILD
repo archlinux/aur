@@ -20,5 +20,4 @@ build() {
 package() {
   cd "$srcdir"
   install -D -m755 downgrader "$pkgdir/usr/bin/downgrader"
-} 
-md5sums=('3249298e9efd2918efe86c5431f54bcd')
+}
