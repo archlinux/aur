@@ -19,7 +19,7 @@ build() {
 
 	cd ${_pkgname}-${_pkgver}
 
-	make "unix-${pkgver}.jar" "libunix-java.so"
+	JAVA_HOME="/usr/lib/jvm/default" make "unix-${pkgver}.jar" "libunix-java.so"
 }
 
 package() {
