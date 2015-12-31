@@ -2,7 +2,7 @@
 
 pkgname=linthesia
 pkgver=0.4.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A game of playing music. A fork of Synthesia"
 arch=('i686' 'x86_64')
 url="http://linthesia.sourceforge.net/"
@@ -14,7 +14,8 @@ sha256sums=('SKIP')
 
 build() {
     cd "$srcdir/code/src"
-    make GRAPHDIR="/usr/share/linthesia/graphics" CXX="g++ -std=gnu++11 -O"
+    sed -i Makefile -e "s/^CXXFLAGS =  -I . -I libmidi -ggdb -Wall -ansi$/CXXFLAGS =  -I . -I libmidi -ggdb -Wall -ansi -std=gnu++11 -std=c++11/g"
+    make GRAPHDIR="/usr/share/linthesia/graphics"
     cd "$srcdir/code/extra"
     sed "s/Exec=linthesia/Exec=\/usr\/games\/linthesia/g" linthesia.desktop > linthesia.desktop.new
 }
