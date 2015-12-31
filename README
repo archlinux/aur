@@ -1,4 +1,5 @@
-Powerful program for Arch Linux distribution, powered by libalpm. Helps to downgrade packages, if last installed version is unstable. Works with Cache, ARM and pacman logs.
+Powerful program for Arch Linux distribution, powered by libalpm. 
+Helps to downgrade packages, if last installed version is unstable. Works with Cache, ARM and pacman logs.
 
 AUR package: https://aur.archlinux.org/packages/downgrader/
 
