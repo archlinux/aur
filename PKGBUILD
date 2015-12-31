@@ -18,7 +18,7 @@ _srcname="ImageMagick"
 _srcver="6.9.2-10"
 pkgname=imagemagick-full
 pkgver="$(echo ${_srcver} | tr '-' '_')"
-pkgrel=2
+pkgrel=3
 pkgdesc="An image viewing/manipulation program (Q32 HDRI with all libs and features)"
 arch=('i686' 'x86_64')
 url="http://www.imagemagick.org/"
@@ -43,7 +43,7 @@ backup=("etc/ImageMagick-${pkgver%%.*}/coder.xml"
         "etc/ImageMagick-${pkgver%%.*}/type-dejavu.xml"
         "etc/ImageMagick-${pkgver%%.*}/type-ghostscript.xml"
         "etc/ImageMagick-${pkgver%%.*}/type-windows.xml")
-options=('!docs' '!emptydirs')
+options=('!docs' 'libtool' '!emptydirs')
 source=("http://www.imagemagick.org/download/${_srcname}-${_srcver}.tar.xz")
 sha256sums=('da2f6fba43d69f20ddb11783f13f77782b0b57783dde9cda39c9e5e733c2013c')
 
