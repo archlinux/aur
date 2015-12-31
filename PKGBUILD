@@ -3,7 +3,7 @@
 pkgname=ttf-kazesawa-git
 _gitname=kazesawa
 pkgver=alpha.v1.r15.g3789e6d
-pkgrel=1
+pkgrel=2
 pkgdesc="Japanese TrueType font obtained by mixing M+ and Source Sans Pro"
 arch=('any')
 url="http://kazesawa.github.io/"
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 install=ttf.install
 
 pkgver() {
-  cd "$_gitroot"
+  cd "${srcdir}/${_gitname}"
   git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
