@@ -15,7 +15,7 @@ conflicts=('qjoypad')
 _gitroot=https://github.com/panzi/qjoypad.git
 _gitname=qjoypad
 
-build() {
+prepare() {
   cd "$srcdir"
   msg "Connecting to GIT server...."
 
@@ -26,7 +26,13 @@ build() {
     git clone "$_gitroot"
   fi
 
+  pkgver=pkgver
+
   msg "GIT checkout done or server timeout"
+}
+
+build() {
+  cd "$srcdir"
   msg "Starting build..."
 
   rm -rf "$srcdir/$_gitname-build"
