@@ -1,10 +1,5 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
-# NOTE:
-# Change font directories bellow to match yours.
-# DeJaVu and GhostScript font directories provided bellow are the default ones.
-# Windows font directory provided bellow is set according to the example in Arch Linux Wiki.
-
 _srcname="ImageMagick"
 _srcver="6.9.2-10"
 pkgname=imagemagick-full-doc
