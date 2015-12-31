@@ -12,6 +12,9 @@ post_install() {
     echo "  systemctl enable gincamalarm"
     echo "  systemctl start gincamalarm"
 
+    echo "Adding this rule in iptables:"
+    echo "  iptables -t filter -A INPUT -p tcp --dport 8090 -j ACCEPT"
+
     true
 }
 
