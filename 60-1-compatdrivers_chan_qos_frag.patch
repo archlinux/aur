@@ -1,9 +1,10 @@
  *original patch by Mathy Vanhoef
  *http://www.mathyvanhoef.com/2012/09/compat-wireless-injection-patch-for.html
  *fixed in offset by Devil_D, t3kk3n
-diff -r 6b71629b673d drivers/net/wireless/rtl818x/rtl8187/dev.c
---- a/drivers/net/wireless/rtl818x/rtl8187/dev.c	Tue May 28 16:57:23 2013 -0400
-+++ b/drivers/net/wireless/rtl818x/rtl8187/dev.c	Tue May 28 17:16:15 2013 -0400
+ *updated for 4.4(rc2)
+diff -r 6b71629b673d drivers/net/wireless/realtek/rtl818x/rtl8187/dev.c
+--- a/drivers/net/wireless/realtek/rtl818x/rtl8187/dev.c	Tue May 28 16:57:23 2013 -0400
++++ b/drivers/net/wireless/realtek/rtl818x/rtl8187/dev.c	Tue May 28 17:16:15 2013 -0400
 @@ -252,8 +252,13 @@
  
  	flags |= ieee80211_get_tx_rate(dev, info)->hw_value << 24;
