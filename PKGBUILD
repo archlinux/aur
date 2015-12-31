@@ -8,9 +8,10 @@ pkgdesc="Wayland and QtQuick based desktop shell for Papyros"
 arch=("i686" "x86_64")
 url="https://github.com/papyros/papyros-shell"
 license=("GPL")
-depends=("qt5-base" "qt5-declarative" "qt5-quickcontrols" "qt5-graphicaleffects"
+depends=("qt5-base-git" "qt5-declarative" "qt5-quickcontrols" "qt5-graphicaleffects"
 "greenisland" "qml-material" "kdeclarative" "pam"
-"libpulse" "libqtxdg" "solid" "kconfig" "plasma-nm" "qt5-tools")
+"libpulse" "libqtxdg" "solid" "kconfig" "plasma-nm" "qt5-tools"
+"qt5-wayland-dev-git")
 optdepends=('pulseaudio: audio support' 'sddm: login screen theme')
 makedepends=("git" "python" "extra-cmake-modules")
 provides=("$pkgname")
