@@ -2,16 +2,16 @@
 # Maintainer: Eray Aydın <eray@labkod.com>
 pkgname=mutantfactions
 pkgver=0.993
-pkgrel=2
+pkgrel=3
 pkgdesc="Free multiplayer action game"
 arch=('i686' 'x86_64')
 url="http://mutantfactions.net"
 license=('custom')
 depends=('unionfs-fuse' 'hicolor-icon-theme' 'xdg-utils')
 if [[ "$CARCH" == "x86_64" ]]; then
-  depends+=('lib32-glu' 'lib32-libxrandr' 'lib32-freealut')
+  depends+=('lib32-glu' 'lib32-libxrandr' 'lib32-freealut', 'lib32-libxxf86vm', 'lib32-libxinerama', 'gcc-multilib')
 else
-  depends+=('glu' 'libxrandr' 'freealut')
+  depends+=('glu' 'libxrandr' 'freealut' 'gcc')
 fi
 optdepends=()
 conflicts=('subvein')
