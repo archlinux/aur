@@ -1,7 +1,8 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 # FFmpeg compiled from Git repository with all possible libraries.
-# At the current moment the following libraries are not included:
+# At the current moment the following hardware related libraries
+# are not included:
 #    libstagefright-h264
 #    mmal
 #    libmfx
@@ -13,7 +14,7 @@
 # flite-fpic blackmagic-decklink-sdk nvidia-sdk
 
 pkgname=ffmpeg-full-git
-pkgver=N.77553.g8de5b0d
+pkgver=N.77558.g15e1fd9
 pkgrel=1
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
@@ -29,8 +30,7 @@ depends=(
     'snappy' 'libsoxr' 'speex' 'libssh' 'tesseract' 'libtheora' 'twolame' 'libutvideo-asm-git'
     'v4l-utils' 'vid.stab' 'vo-aacenc' 'vo-amrwbenc' 'libvorbis' 'libvpx' 'wavpack' 'libwebp'
     'libx264.so' 'x265' 'libxcb' 'xvidcore' 'zimg' 'zeromq' 'zvbi' 'openal' 'libva'
-    'opencl-headers' 'ocl-icd' 'libvdpau' 'mesa' 'openssl' 'libilbc' 'xavs' 'libaacplus'
-    'libbs2b' 'flite' 'openh264' 'shine' 'vo-aacenc' 'vo-amrwbenc' 'nvidia-sdk'
+    'opencl-headers' 'ocl-icd' 'libvdpau' 'mesa' 'openssl' 'xavs' 'nvidia-sdk'
     'blackmagic-decklink-sdk'
 )
 makedepends=('git' 'yasm')
