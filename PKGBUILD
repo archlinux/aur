@@ -2,7 +2,7 @@
 # Contributor: Thomas Bächler <thomas@archlinux.org>
 
 pkgname=openvpn-pkcs11
-pkgver=2.3.8
+pkgver=2.3.9
 pkgrel=0
 pkgdesc="An easy-to-use, robust, and highly configurable VPN (Virtual Private Network) with smartcard support"
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ depends=('openssl' 'lzo' 'iproute2' 'pkcs11-helper')
 license=('custom')
 install=openvpn.install
 source=(http://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.gz)
-sha256sums=('532435eff61c14b44a583f27b72f93e7864e96c95fe51134ec0ad4b1b1107c51')
+sha256sums=('2c12fe9ea641ac1291e70322cc500641c84e5903dd4f40bf2eda7e9f209b2f9c')
 
 build() {
   cd "${srcdir}"/openvpn-$pkgver
