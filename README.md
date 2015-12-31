@@ -9,7 +9,7 @@ archci SRCDIR TRGDIR
 This Script allows you to build [AppContainer](https://coreos.com/rkt/docs/0.5.6/app-container.html) images. It takes advantage of the existing Arch Linux ecosystem, and allows you to install either repository packages or packages from the AUR.
 You call the script with a source folder and a target directory. The source folder contains all the neccessary configuration for your appcontainer Image.
 
-### Source Folder Structure
+### SRCDIR STRUCTURE
 A set of files can be placed inside the source directory to instruct this application on how to build the ACI.
 The files with the `.deps` extension declare the archlinux packages to be installed. A single packagename should be provide on each line.
 The containers rootfs is initialized by installing the `filesystem` package via `pacstrap -cdGM`.
@@ -57,7 +57,7 @@ The Script will use `gpg` to sign your generated images. It will use the current
 All the work will be done in temporary directories (make sure your tmp folder has enough space available). Once done, the images will be created inside your specified output folder.
 The files are named to be easily used by the [aci-discovery](https://github.com/coreos/aci-discovery) server. So basically `builddir/linux/amd64/1.0.0-name.aci`. The arch, os and name will be extracted from the manifest.
 
-## Installation
+## INSTALLATION
 The script depends on the [sx](https://www.npmjs.com/package/sx) npm package. It should be either installed globally or into `/usr/lib/archci/node_modules`.
 
 In addition we need `bash`, `pacstrap`, `arch-chroot`, `pacaur`, `actool`, `sudo` and `gpg` installed.
