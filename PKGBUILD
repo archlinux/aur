@@ -1,8 +1,8 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-variant-zshaped
 pkgver=1.6.0
-pkgrel=1
-pkgdesc='A slender monospace typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
+pkgrel=2
+pkgdesc='A slender monospace typeface inspired by Pragmata Pro, M+ and PF DIN Mono. Variant: Iosevka with Z-shaped l and i.'
 arch=('any')
 url='https://be5invis.github.io/Iosevka/'
 license=('custom:OFL')
