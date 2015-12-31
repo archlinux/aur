@@ -4,9 +4,9 @@
 
 _pkgname=calf
 pkgname="${_pkgname}-git"
-pkgver=0.0.60.r2236.f1f85c0
+pkgver=0.0.60.r2353.6cbdc54
 pkgrel=1
-pkgdesc="LV2/JACK audio plug-ins for musicians"
+pkgdesc="LV2/JACK audio plug-ins for musicians (git version)"
 arch=('i686' 'x86_64')
 url="http://calf.sourceforge.net/"
 license=('GPL' 'LGPL')
@@ -16,7 +16,7 @@ makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 install="$pkgname.install"
-source=("${_pkgname}::git+git://repo.or.cz/calf.git")
+source=("${_pkgname}::git+https://github.com/calf-studio-gear/calf")
 md5sums=('SKIP')
 
 pkgver() {
