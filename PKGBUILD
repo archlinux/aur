@@ -2,6 +2,7 @@
 pkgname=console-tdm-git
 pkgver=r2.1a7788c
 pkgrel=1
+epoch=1
 pkgdesc='Console display manager based on CDM'
 arch=('any')
 url='http://github.com/dopsi/console-tdm'
