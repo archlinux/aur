@@ -1,6 +1,6 @@
 #!/bin/sh
 post_common() {
-	systemd-sysusers
+	systemd-sysusers textsecure-cli.conf
 	systemd-tmpfiles --create textsecure-cli.conf
 }
 

@@ -2,11 +2,11 @@
 
 pkgname=textsecure-cli
 pkgver=0.2.1
-pkgrel=1
-pkgdesc="textsecure-cli provides a commandline and dbus interface for secure Signal/TextSecure messaging."
-arch=('i686' 'x86_64' 'armv6h' 'armv7')
+pkgrel=2
+pkgdesc="Provides a commandline and dbus interface for secure Signal/TextSecure messaging."
+arch=('any')
 url="https://github.com/AsamK/textsecure-cli"
-license=('GPLv3')
+license=('GPL3')
 depends=('java-runtime' 'libmatthew-unix-java')
 makedepends=('java-environment' 'gradle')
 source=("https://github.com/AsamK/${pkgname}/archive/v${pkgver}.tar.gz"
