@@ -41,4 +41,5 @@ package() {
   done
   mv r5rs.info r5rs-2.2.info
   mv $pkgdir/usr/share/aclocal/guile.m4 $pkgdir/usr/share/aclocal/guile-2.2.m4
+  rm "$pkgdir"/usr/lib/libguile-2.2.so.0.0.0-gdb.scm
 }
