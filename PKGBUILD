@@ -12,7 +12,7 @@ depends=('open-xchange-core')
 makedepends=()
 conflicts=()
 provides=('open-xchange-admin')
-source=('https://software.open-xchange.com/products/appsuite/stable/debs/DebianJessie/all/open-xchange-admin_7.8.0-6_all.deb')
+source=('https://software.open-xchange.com/products/appsuite/stable/backend/DebianJessie/all/open-xchange-admin_7.8.0-6_all.deb')
 sha256sums=('adf8844f67e7e0970a37bd34ff06eab65fa796868a4c9dbaa3a115513bfb5d7d')
 
 package() {
