@@ -2,8 +2,8 @@
 pkgname=calcengine
 pkgver=1.4.993
 pkgrel=1
-pkgdesc='Needed for OX Spreadsheet functionality'
-groups=('open-xchange')
+pkgdesc='OX Appsuite  CalcEngine'
+groups=('open-xchange-minimal' 'open-xchange' 'open-xchange-all')
 install='calcengine.install'
 arch=('any')
 url='http://www.ox.io/'
