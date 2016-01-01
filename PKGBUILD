@@ -6,7 +6,7 @@
 _pkgname=xdg-utils
 pkgname=$_pkgname-mimeo
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tools that assist applications with a variety of desktop integration tasks; patched to use mimeo"
 arch=('any')
 url="https://wiki.freedesktop.org/www/Software/xdg-utils/"

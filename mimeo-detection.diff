@@ -1,4 +1,4 @@
-commit 850c7f4ba510b74ac963bde430b4c32d16249f63
+commit 4e5075542e5247c14c329821d011a711982479b2
 Author: Narrat
 Date:   Thu Oct 8 02:45:32 2015 +0200
 
@@ -103,8 +103,21 @@ index 0fbd63d..1ed4385 100644
      generic)
      open_generic "$url"
      ;;
+diff --git a/scripts/xdg-screensaver.in b/scripts/xdg-screensaver.in
+index 1dd7bf7..96c1e3d 100644
+--- a/scripts/xdg-screensaver.in
++++ b/scripts/xdg-screensaver.in
+@@ -114,7 +114,7 @@ perform_action()
+       [ -n "$DISPLAY" ] && screensaver_xserver "$1"
+       ;;
+ 
+-    ''|generic)
++    ''|generic|mimeo)
+       [ -n "$DISPLAY" ] && screensaver_xserver "$1"
+       ;;
+   esac
 diff --git a/scripts/xdg-settings.in b/scripts/xdg-settings.in
-index 3d03507..784ae6e 100644
+index 3d03507..7585d1c 100644
 --- a/scripts/xdg-settings.in
 +++ b/scripts/xdg-settings.in
 @@ -463,6 +463,42 @@ set_browser_xfce()
@@ -115,7 +128,7 @@ index 3d03507..784ae6e 100644
 +
 +get_browser_mimeo()
 +{
-+    DEBUG 1 "Running mimeo -c 'http:'"
++    DEBUG 1 "Running mimeo -d 'http:'"
 +    mimeo -d http: | sed -rn '2s/  ([^ ]+) +.*/\1/p'
 +    if [ $? -eq 0 ]; then
 +        exit_success
