@@ -2,12 +2,12 @@
 
 pkgname=opentracker
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A free and open torrent tracker"
 arch=('x86_64' 'i686' 'armv7h' 'armv7l')
 url="http://erdgeist.org/arts/software/opentracker/"
 license=('GPL')
-depends=('git' 'cvs')
+makedepends=('git' 'cvs')
 provides=(opentracker)
 conflicts=(opentracker)
 
