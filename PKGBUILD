@@ -2,7 +2,7 @@
 # Contributor: Gilles Hamel <hamelg at laposte dot net>
 _pkgname=grafana
 pkgname=${_pkgname}-git
-pkgver=v2.5.0.r23.g59fc72d
+pkgver=v2.6.0.r179.gc0cf0cb
 pkgrel=1
 pkgdesc="A general purpose dashboard and graph composer. It supports graphite, influxdb or opentsdb"
 url="http://grafana.org"
@@ -18,7 +18,7 @@ source=("git+https://github.com/${_pkgname}/${_pkgname}"
         "config.patch"
         "grafana.service")
 md5sums=('SKIP'
-         'f676cfe7bdd2463e2600ff8fce75a2d6'
+         '6e514b0d3aea075d5349be463ff6daeb'
          '05508c9c21f4c93ad86944a52d37e925')
 
 pkgver() {

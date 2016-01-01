@@ -1,8 +1,8 @@
 diff --git a/conf/defaults.ini b/conf/defaults.ini
-index 258a019..6a7bd6b 100644
+index 0693044..da59457 100644
 --- a/conf/defaults.ini
 +++ b/conf/defaults.ini
-@@ -9,11 +9,11 @@ app_mode = production
+@@ -10,15 +10,15 @@ app_mode = production
  [paths]
  # Path to where grafana can store temp files, sessions, and the sqlite3 db (if that is used)
  #
@@ -13,10 +13,15 @@ index 258a019..6a7bd6b 100644
  #
 -logs = data/log
 +logs = /var/log/grafana
+ #
+ # Directory where grafana will automatically scan and look for plugins
+ #
+-plugins = data/plugins
++plugins = /var/lib/grafana/plugins
  
  #################################### Server ####################################
  [server]
-@@ -40,7 +40,7 @@ root_url = %(protocol)s://%(domain)s:%(http_port)s/
+@@ -45,7 +45,7 @@ root_url = %(protocol)s://%(domain)s:%(http_port)s/
  router_logging = false
  
  # the path relative working path
@@ -25,7 +30,7 @@ index 258a019..6a7bd6b 100644
  
  # enable gzip
  enable_gzip = false
-@@ -62,7 +62,7 @@ password =
+@@ -67,7 +67,7 @@ password =
  ssl_mode = disable
  
  # For "sqlite3" only, path relative to data_path setting
@@ -35,7 +40,7 @@ index 258a019..6a7bd6b 100644
  #################################### Session ####################################
  [session]
 diff --git a/pkg/components/renderer/renderer.go b/pkg/components/renderer/renderer.go
-index 9d5ddd0..aa0aa9e 100644
+index ec11a9a..01862ee 100644
 --- a/pkg/components/renderer/renderer.go
 +++ b/pkg/components/renderer/renderer.go
 @@ -21,7 +21,7 @@ type RenderOpts struct {
