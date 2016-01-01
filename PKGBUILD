@@ -12,7 +12,7 @@ depends=()
 makedepends=()
 conflicts=()
 provides=('calcengine')
-source=('https://software.open-xchange.com/products/appsuite/stable/debs/DebianJessie/all/calcengine-1.4.993-Linux.deb')
+source=('https://software.open-xchange.com/products/appsuite/stable/calcengine/DebianJessie/all/calcengine-1.4.993-Linux.deb')
 sha256sums=('406389fe920b6f8039aa2b98d10eaf4e30773d98f34ac509b3546aac3fc5ca16')
 
 package() {
