@@ -2,9 +2,9 @@
 pkgname=python-iptceditor-gtk3
 pkgver=0.1
 pkgrel=1
-pkgdesc="A Python based GTK wrapper for exiv2, to read and edit IPTC image tags"
+pkgdesc="NOTE: THIS IS BETA. USE AT YOUR OWN RISK. This is a python3 GTK3 wrapper for the EXIV2 application, which is used to read and edit IPTC (and other forms) of image metadata. It can handle bulk operations on directories of image files."
 arch=('any')
-url="https://www.zaziork.com"
+url="https://github.com/ZWS2014/python-iptceditor-gtk3"
 license=('GPL3')
 #groups=()
 depends=('exiv2' 'python>=3.0.0', 'desktop-file-utils')
@@ -20,10 +20,9 @@ depends=('exiv2' 'python>=3.0.0', 'desktop-file-utils')
 #source=($pkgname-$pkgver.tar.gz)
 source=("IptcEditor-0.1.tar.gz")
 #noextract=()
-md5sums=('bec0645ce86d5b3cb14b711396bad1e6')
+md5sums=('4ef13fd7e235091b332f1eb14b74594e')
 package() {
-  #cd "$srcdir/$pkgname-$pkgver"
-   cd "$srcdir/IptcEditor-$pkgver"
+  cd "$srcdir/IptcEditor-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
   install -Dm644 "$srcdir/IptcEditor-$pkgver/resources/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm644 "$srcdir/IptcEditor-$pkgver/resources/iptc_editor-256x256.png" "$pkgdir/usr/share/pixmaps/iptc_editor-256x256.png"
