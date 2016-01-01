@@ -29,7 +29,7 @@ sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
             'SKIP'
             'abdd04bd6beecb7c961130a68d71e6332bd260462eeaa2f4f8e634de813dcc4d'
             '56a56f6b0d8edaa6f58342ab9d54392503dfa6ca884a0b936cbf0206604758d2'
-            'a071aaa327d2b3577fa4709b47ed5fe81c7914d168607f3db905fdbf226247e7'
+            'fbf6307ffa9bb87c1bd54c8e5565911eef24b153ba9240385fcbe699feee949d'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
@@ -80,9 +80,9 @@ prepare() {
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
   #make menuconfig # CLI menu for configuration
-  #make nconfig # new CLI menu for configuration
+  make nconfig # new CLI menu for configuration
   #make xconfig # X-based configuration
-  make oldconfig # using old config from previous kernel version
+  #make oldconfig # using old config from previous kernel version
   # ... or manually edit .config
 
   # rewrite configuration
