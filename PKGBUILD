@@ -23,7 +23,7 @@ _pgo=false
 
 # We're getting this from Debian Experimental
 _debname=iceweasel
-_debver=43.0.1
+_debver=43.0.2
 _debrel=1
 _debrepo=http://ftp.debian.org/debian/pool/main/i/
 
@@ -58,8 +58,8 @@ source=("${_debrepo}/${_debname}/${_debname}_${_debver}.orig.tar.xz"
         'iceweasel-install-dir.patch'
         'vendor.js'
 	'iceweasel-20.0.1-fixed-loading-icon.png')
-md5sums=('96284dc13bca15fdc7d7499a23d3e0ca'
-         '92d718e0b12ac716fa97b30af778d55d'
+md5sums=('d0c30614fcaf6d5391c9967b14a18212'
+         'eb769034630cd141cf7f41224afc043d'
          '6027291b9963817e46f816d28b64681d'
          '7b9e5996dd9fe0b186a43a297db1c6b5'
          '1c42509891cf6843660a5f3c69896e80'
