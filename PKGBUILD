@@ -5,13 +5,13 @@
 
 _pkgname=kbibtex
 pkgname=kbibtex-git
-pkgver=20151227_7fdc0cd
+pkgver=20151231_728bcdf
 pkgrel=1
 pkgdesc="A BibTeX editor for KDE"
 arch=('i686' 'x86_64')
 url='http://home.gna.org/kbibtex/'
 license=('GPL2')
-depends=('kdelibs4support' 'poppler-qt5' 'qca-qt5')
+depends=('plasma-framework' 'poppler-qt5' 'qca-qt5')
 optdepends=('kdegraphics-okular: Document preview')
 makedepends=('git' 'extra-cmake-modules' 'kdoctools')
 install=$pkgname.install
@@ -27,11 +27,6 @@ pkgver() {
 }
 
 prepare() {
-# Fix compilation error
-cp /usr/include/KF5/KDELibs4Support/klocale.h $srcdir/$_pkgname/src/data/
-cp /usr/include/KF5/KDELibs4Support/kdelibs4support_export_internal.h $srcdir/$_pkgname/src/data/
-cp /usr/include/KF5/KDELibs4Support/kdelibs4support_export.h $srcdir/$_pkgname/src/data/
-
 mkdir -p build
   }
 
