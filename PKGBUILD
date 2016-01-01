@@ -1,21 +1,21 @@
-# Maintainer: Parazyd <parazyd AT dyne DOT org>
+# Maintainer: parazyd <parazyd@dyne.org>
 pkgname=jaromail
-pkgver=4.0
-pkgrel=2
+pkgver=4.1
+pkgrel=1
 pkgdesc="A commandline tool to easily and privately handle your e-mail"
 arch=('x86_64' 'i686')
-url="http://dyne.org/software/jaro-mail"
+url="https://www.dyne.org/software/jaro-mail/"
 license=('GPL3')
-depends=('zsh' 'mutt' 'fetchmail' 'vim' 'msmtp' 'notmuch' 'abook' 'elinks' 'pinentry' 'wipe' 'alot')
-makedepends=('gcc' 'libgnome-keyring' 'glib2')
+depends=('zsh' 'mutt' 'fetchmail' 'vim' 'msmtp' 'notmuch' 'abook' 'elinks' 'pinentry' 'wipe' 'alot' 'libgnome-keyring')
+makedepends=('gcc' 'glib2')
 source=("https://files.dyne.org/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=("706468fc339ebc90901d050cf2c4ea76c0bc58943184ac6792970fddd8a2052f")
+sha256sums=("1ace90a24c3f73ceeff7b7e34470a2d7d01894ac63fdec9e16f333f09d94573f")
+# Jaromil https://jaromil.dyne.org/contact
+validpgpkeys=('6113D89CA825C5CEDD02C87273B35DA54ACB7D10')
 
 build() {
-
 	cd "$pkgname-$pkgver"
     make
-
 }
 
 package() {
@@ -60,7 +60,7 @@ package() {
 
     zsh -c "zmodload zsh/pcre"
 
-    echo -e "export JAROMAILDIR=${PREFIX}" >> $prefix/bin/jaro
+    echo -e "export JAROMAILDIR=${HOME}/Mail" >> $prefix/bin/jaro
     echo "${JARO_SHARE}/bin/jaro \${=@}" >> $prefix/bin/jaro
     
     chmod +x $prefix/bin/jaro
