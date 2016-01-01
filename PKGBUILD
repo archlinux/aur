@@ -28,9 +28,13 @@ build() {
     fi
 
     # Getting some libs
+    echo "Install go-logging"
     go get github.com/op/go-logging
+    echo "Install gin"
     go get github.com/gin-gonic/gin
+    echo "Install viper"
     go get github.com/spf13/viper
+    echo "Install gin-cors"
     go get github.com/itsjamie/gin-cors
 
     cd "$_builddir"
@@ -62,4 +66,4 @@ package() {
         "$pkgdir"/usr/bin/$pkgname || return 1
 }
 
-sha512sums=('63b4198f1a8afbd139f02854cdeef846d68bfd1c3f49161ae4493b6d7da8d95928bdef64ab9940e09d3c8b54faed8c6985baf7e066fa92b9b2b78000d8ea2054')
+sha512sums=('33ad8a0702af7ff9fc60610fedd9d83af990f721d9a07b1d886d538fb553d70d9c52a4e0ddee050f8f3a73382e733a307dbafb98af05275226347ef3e2d0d8ae')
