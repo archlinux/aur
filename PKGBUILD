@@ -1,7 +1,7 @@
 # Maintainer: Justin Dray <justin@dray.be>
 # Maintainer: Daniel Egeberg <daniel.egeberg@gmail.com>
 pkgname="sonarr-develop"
-pkgver=2.0.0.3368
+pkgver=2.0.0.3695
 pkgrel=1
 pkgdesc="PVR for newsgroup users. Formerly known as NZBDrone, with added torrent support."
 arch=(any)
@@ -17,7 +17,7 @@ provides=('nzbdrone' 'nzbdrone-torrents' 'sonarr')
 conflicts=('nzbdrone' 'nzbdrone-torrents' 'sonarr')
 replaces=('nzbdrone' 'nzbdrone-torrents')
 changelog=
-source=("http://update.sonarr.tv/v2/develop/mono/NzbDrone.develop.tar.gz"
+source=("http://download.sonarr.tv/v2/develop/mono/NzbDrone.develop.tar.gz"
         "sonarr.sh"
         "sonarr.service"
         "sonarr.install")
@@ -28,7 +28,7 @@ md5sums=(SKIP
          '6413a3db424de8d85a320c9e60ecac14')
 
 pkgver() {
-	curl -Ss http://update.sonarr.tv/v2/develop/mono/ | awk 'match($0, "NzbDrone.develop.(2.[0-9.]*)\\.mono", ary) {print ary[1]}' | tail -n1
+	curl -Ss http://download.sonarr.tv/v2/develop/mono/ | awk 'match($0, "NzbDrone.develop.(2.[0-9.]*)\\.mono", ary) {print ary[1]}' | tail -n1
 }
 
 package() {
