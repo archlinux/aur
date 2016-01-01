@@ -1,7 +1,7 @@
 # Maintainer: grimsock <lord.grimsock at gmail dot com>
 
 pkgname=fitnesse-standalone
-pkgver=20150814
+pkgver=20151230
 pkgrel=1
 pkgdesc="The fully integrated standalone wiki and acceptance testing framework"
 arch=('any')
@@ -10,7 +10,7 @@ license=('CPL')
 depends=('java-runtime-common')
 source=("http://www.fitnesse.org/${pkgname}.jar?responder=releaseDownload&release=${pkgver}"
         "fitnesse-standalone")
-sha256sums=('69e807e3c100f51d7fb4002207a5e0ada68c08803aed5de3db0a906307a16691'
+sha256sums=('0d554161d964397cbfbfdeffc9815e45431e24ee3b04365b0e939105ed254425'
             '330273cec48faaa726768c42ed837aca0ad91776d4a004f70b703bf4d59e3658')
 
 package() {
