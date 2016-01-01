@@ -27,7 +27,7 @@ source=(http://portland.freedesktop.org/download/$_pkgname-$pkgver.tar.gz{,.asc}
         mimeo-detection.diff)
 md5sums=('2d0aec6037769a5f138ff404b1bb4b15'
          'SKIP'
-         '1cedb9e77167a5f1e2ae12506b214883')
+         '0783dbeb478b91bbfc467be167a7145d')
 validpgpkeys=('8B75CA7811367175D05F3B03C43570F80CC295E6') # "Per Olofsson <pelle@pqz.se>"
 
 
