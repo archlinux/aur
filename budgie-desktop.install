@@ -1,6 +1,7 @@
 post_install() {
   glib-compile-schemas usr/share/glib-2.0/schemas
   update-desktop-database -q
+  gtk-update-icon-cache /usr/share/icons/hicolor
 }
 
 post_upgrade() {

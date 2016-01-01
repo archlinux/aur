@@ -1,7 +1,7 @@
 pkgbase = budgie-desktop
 	pkgdesc = Simple GTK3 desktop experience from Solus Project
-	pkgver = 10.1
-	pkgrel = 2
+	pkgver = 10.2.1
+	pkgrel = 1
 	url = http://solus-project.com/
 	install = budgie-desktop.install
 	arch = i686
@@ -27,10 +27,8 @@ pkgbase = budgie-desktop
 	depends = gnome-terminal
 	depends = gnome-control-center
 	depends = nautilus
-	source = budgie-desktop-10.1.tar.gz::https://github.com/solus-project/budgie-desktop/archive/v10.1.tar.gz
-	source = git+https://git.gnome.org/browse/libgnome-volume-control#commit=7e5504d
-	sha256sums = 27cfae3c253c5546d5cf31a63cc519cd60c94466be5a2d6f8130f412013b61c4
-	sha256sums = SKIP
+	source = budgie-desktop-10.2.1.tar.gz::https://github.com/solus-project/budgie-desktop/releases/download/v10.2.1/budgie-desktop-10.2.1.tar.xz
+	sha256sums = 693210996d5286f4d623900b3bdf6e1882ad237c18cffba95a4d0dce68960b81
 
 pkgname = budgie-desktop
 
