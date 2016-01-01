@@ -11,7 +11,7 @@ license=('GPLv2')
 depends=('open-xchange-core')
 makedepends=()
 conflicts=()
-provides=('open-xchange-authorization-standard')
+provides=('open-xchange-authorization')
 source=('https://software.open-xchange.com/products/appsuite/stable/backend/DebianJessie/all/open-xchange-authorization-standard_7.8.0-6_all.deb')
 sha256sums=('1d74895ac9dcbae38844292e8aa532913addab1f97cb056d19bf6015eb1f627e')
 
