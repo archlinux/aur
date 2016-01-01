@@ -1,22 +1,20 @@
-# Maintainer: Parazyd <parazyd AT dyne DOT org>
-_name=jaromail
+# Maintainer: Parazyd <parazyd@dyne.org>
+_name=JaroMail
 pkgname=jaromail-git
-pkgver=4.0
+pkgver=4.1
 pkgrel=1
 pkgdesc="A commandline tool to easily and privately handle your e-mail, git version"
 arch=('x86_64' 'i686')
-url="http://dyne.org/software/jaro-mail"
+url="https://www.dyne.org/software/jaro-mail"
 license=('GPL3')
-depends=('zsh' 'mutt' 'fetchmail' 'vim' 'msmtp' 'notmuch' 'abook' 'elinks' 'pinentry' 'wipe' 'alot')
-makedepends=('gcc' 'libgnome-keyring' 'glib2')
+depends=('zsh' 'mutt' 'libgnome-keyring' 'fetchmail' 'vim' 'msmtp' 'notmuch' 'abook' 'elinks' 'pinentry' 'wipe' 'alot')
+makedepends=('gcc' 'glib2')
 source=("git://github.com/dyne/JaroMail")
 sha256sums=("SKIP")
 
 build() {
-
 	cd "$_name"
     make
-
 }
 
 package() {
@@ -61,7 +59,7 @@ package() {
 
     zsh -c "zmodload zsh/pcre"
 
-    echo -e "export JAROMAILDIR=${PREFIX}" >> $prefix/bin/jaro
+    echo -e "export JAROMAILDIR=${HOME}/Mail" >> $prefix/bin/jaro
     echo "${JARO_SHARE}/bin/jaro \${=@}" >> $prefix/bin/jaro
     
     chmod +x $prefix/bin/jaro
