@@ -13,7 +13,6 @@ sha512sums=('18f20c1a5f9fe2c305e89f960b42b21107d03775a86ba1a50f02a7bf0217dd9793f
             'e07258362f04d250c6f00c4ca3c6e92fc2b014c63a9ad8b36d813591053c64118283724a594fbae3a4517cba112a952bcc7ab4557cd1e14ab711076fd70bcc7e')
 arch=('x86_64') # arch=('i686' 'x86_64')
 depends=('java-runtime')
-makedepends=('java-environment')
 
 package() {
   cd "${srcdir}/"
