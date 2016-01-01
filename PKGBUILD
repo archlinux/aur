@@ -1,7 +1,7 @@
 # Maintainer: Michael Lojkovic <mikelojkovic@gmail.com>
 
 pkgname=gtk-theme-windows10-dark
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="GTK 3.x Theme made to emulate a Windows 10 environment on Linux machines."
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('gtk-engines' 'gtk-engine-murrine')
 optdepends=('gnome-themes-standard')
 changelog=(${pkgname}.changelog)
-source=("https://github.com/Elbullazul/Windows-10/releases/download/v0.8.2/Windows.10.dark.v0.8.2.zip")
+source=("https://github.com/Elbullazul/Windows-10/releases/download/v0.8.3/Windows.10.dark.v0.8.3.zip")
 sha1sums=('e14a32bf144b58596ba94b7f407f27b434d326f3')
 
 package() {
