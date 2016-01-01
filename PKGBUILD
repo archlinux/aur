@@ -1,7 +1,7 @@
 #Maintainer wicast <wicastchen at hotmail>
 
 pkgname=glide-git
-pkgver=0.6.1.r0.g40cc7e5
+pkgver=0.8.3.r0.g4662222
 pkgrel=1
 pkgdesc="Simplified Go project management, dependency management, and vendoring."
 arch=('any')
@@ -30,5 +30,5 @@ package() {
     ln -s $srcdir/$pkgname $srcdir/src/github.com/Masterminds/glide
     cd $srcdir/src/github.com/Masterminds/glide
     make DESTDIR="$pkgdir/" install
-    install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
