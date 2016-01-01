@@ -2,7 +2,7 @@
 
 _gitname=pynbody
 _gitbranch=master
-pkgbase=pynbody
+pkgbase=python-pynbody-git
 pkgname=('python-pynbody-git'
 	 'python2-pynbody-git')	 
 pkgdesc='Pynbody is a light-weight, portable, format-transparent analysis framework for N-body and hydrodynamic astrophysical simulations'
@@ -27,7 +27,7 @@ package_python-pynbody-git() {
   depends=('python>=3.3'
            'python-numpy'
            'python-scipy')	 
-  cd "${srcdir}/${pkgbase}"
+  cd "${srcdir}/${_gitname}"
   python setup.py install --root="${pkgdir}" --optimize=1
 }
 
@@ -36,6 +36,6 @@ package_python2-pynbody-git() {
            'python2-numpy'
            'python2-scipy')	 
   PYTHONPATH="/usr/lib/python2.7/site-packages"
-  cd "${srcdir}/${pkgbase}"
+  cd "${srcdir}/${_gitname}"
   python2 setup.py install --root="${pkgdir}" --optimize=1
 }
