@@ -2,7 +2,7 @@
 pkgname=calcengine
 pkgver=1.4.993
 pkgrel=1
-pkgdesc='Open-Xchange'
+pkgdesc='Needed for OX Spreadsheet functionality'
 groups=('open-xchange')
 install='calcengine.install'
 arch=('any')
