@@ -31,6 +31,7 @@ build() {
     go get github.com/op/go-logging
     go get github.com/gin-gonic/gin
     go get github.com/spf13/viper
+    go get github.com/itsjamie/gin-cors
 
     cd "$_builddir"
 
