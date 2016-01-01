@@ -12,7 +12,7 @@ license=('GPL')
 makedepends=('python' 'python2')
 optdepends=("tar: extracting TAR files"
     "unrar: extracting RAR files"
-    "7z: extracting ZIP and 7z files")
+    "p7zip: extracting ZIP and 7z files")
 source=("https://pypi.python.org/packages/source/p/$pkgbase/$pkgbase-$pkgver.tar.gz")
 sha256sums=('4fbcc11c5008be6f4023c1f2bda34b34c9a1b535cda7782a5fefa1c5af5eff32')
 
