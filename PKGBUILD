@@ -1,8 +1,9 @@
 # Maintainer: Megameneer (Dennis Holierhoek) <dennis.hh@hotmail.com>
 pkgname=esrpatch
 pkgver=02
-pkgrel=1
-pkgdesc="A tool to patch Sony PlayStation 2 DVD disc images to make them burnable and working with ESR, a homebrew app for the Sony PlayStation 2 made to play those burned discs"
+pkgrel=2
+# This line is way over 80 characters, but a clear description for this rather specific tool is hard to make any shorter than this.
+pkgdesc="A tool to patch DVD disc images for the Sony PlayStation 2 game console to make them burnable and working with ESR, an app for the PlayStation 2 made to play those burned games without swapping"
 arch=('any')
 url=http://psx-scene.com/forums/f164/esr-public-beta-58441/
 license=('GPL')
