@@ -6,7 +6,7 @@
 
 set -u
 pkgname='checkbashisms'
-pkgver='20150727'
+pkgver='20151219'
 # To get the date of the last commit for this file
 # Be in the tree for the .pl file
 # https://anonscm.debian.org/cgit/collab-maint/devscripts.git/tree/scripts/checkbashisms.pl
@@ -23,7 +23,7 @@ source=('https://anonscm.debian.org/cgit/collab-maint/devscripts.git/plain/scrip
         'https://anonscm.debian.org/cgit/collab-maint/devscripts.git/plain/scripts/checkbashisms.pl'
 )
 sha256sums=('c74d1ed33fee4cf2ccca0d7690d404d551a4edcbde0ddc602104d9198359cefb'
-            'fc596cfd5c14cd89c4a283ceb98b72da8fc01e21650adcbff6f796070538f7de')
+            '2e22e42f4a685dab824243ad79105918daa2f13398fb2445bf9247caf126d943')
 
 # Version checking devscripts won't help us. We need to watch for changes to this file.
 _vercheck() { :; }
