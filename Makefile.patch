@@ -1,0 +1,18 @@
+diff --git a/Makefile b/Makefile
+index 2400c7ae..1a175cba 100644
+--- a/Makefile
++++ b/Makefile
+@@ -5,11 +5,11 @@ HFILES = sipAPIoqapy_iproc.h
+ CC = gcc
+ CXX = g++
+ LINK = g++
+-CPPFLAGS = -DNDEBUG -I. -I/usr/include/python2.7
++CPPFLAGS = -DNDEBUG -I. -I/usr/include/python2.7 -I../src
+ CFLAGS = -march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong --param=ssp-buffer-size=4 -fPIC -O2 -Wall -W
+ CXXFLAGS = -pipe -fPIC -O2 -Wall -W
+ LFLAGS = -Wl,-O1,--sort-common,--as-needed,-z,relro -shared -Wl,-rpath,/usr/lib -Wl,-rpath,/usr/lib/x86_64-linux-gnu/ -Wl,--version-script=oqapy_iproc.exp
+-LIBS = -L/usr/lib -L/usr/lib/x86_64-linux-gnu/ -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_legacy -lopencv_contrib -lopencv_features2d -lopencv_ml -lopencv_gpu -loqapy-iproc
++LIBS = -L/usr/lib -L/usr/lib/x86_64-linux-gnu/ -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_legacy -lopencv_contrib -lopencv_features2d -lopencv_ml -lopencv_gpu -loqapy-iproc -L../src
+ .SUFFIXES: .c .o .cpp .cc .cxx .C
+ 
+ 
