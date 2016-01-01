@@ -3,13 +3,13 @@
 
 _pkgname=papyros-settings
 pkgname=$_pkgname-git
-pkgver=0.0.1.r3.g56fa0a4
+pkgver=0.0.1.r5.gb69d96d
 pkgrel=1
 pkgdesc="The file settings for Papyros"
 arch=("i686" "x86_64")
 url="https://github.com/papyros/settings-app"
 license=("GPL")
-depends=("qt5-declarative" "qml-material-git" "papyros-shell-git")
+depends=("qt5-base-dev-git" "qt5-declarative" "qml-material-git" "papyros-shell-git")
 makedepends=("git" "cmake" "extra-cmake-modules")
 provides=("$pkgname")
 conflicts=("$_pkgname")
@@ -38,10 +38,10 @@ package() {
 
 changelog() {
     cd "$pkgname"
-  	git log $1..HEAD --no-merges --format=" * %s"
+    git log $1..HEAD --no-merges --format=" * %s"
 }
 
 gitref() {
     cd "$pkgname"
-  	git rev-parse HEAD
+    git rev-parse HEAD
 }
