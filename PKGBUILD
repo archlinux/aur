@@ -1,27 +1,27 @@
-# Maintainer: Rich Li <rich at dranek com>
+# Maintainer: parazyd <parazyd@dyne.org>
 # Contributor: nignux <nignux@freaknet.org>
 # Contributor: fauno <fauno@parabola.nu>
 # Contributor: BoySka
 
 pkgbase=tomb
 pkgname=(tomb tomb-kdf)
-pkgver=2.1.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="Crypto Undertaker, a simple tool to manage encrypted storage"
 arch=('i686' 'x86_64')
-url="http://www.dyne.org/software/tomb/"
+url="https://www.dyne.org/software/tomb/"
 license=('GPL3')
 install=${pkgname}.install
 
 source=(
-        https://releases.dyne.org/tomb/Tomb-${pkgver}.tar.gz
-        https://releases.dyne.org/tomb/Tomb-${pkgver}.tar.gz.sha
-        https://releases.dyne.org/tomb/Tomb-${pkgver}.tar.gz.asc
+        https://files.dyne.org/${pkgname}/${pkgname}-${pkgver}.tar.gz
+        https://files.dyne.org/${pkgname}/${pkgname}-${pkgver}.tar.gz.sha
+        https://files.dyne.org/${pkgname}/${pkgname}-${pkgver}.tar.gz.asc
         )
 
 # The first hash comes from the .sha file
-sha256sums=('39b5e37d55e30adbd2e7cfec3aebfde7ef13d8b10b21323597cb270416e99553'
-            'SKIP'
+sha256sums=('c0172ef8273c4be9322a52b6e503c8bf442ce74028605e198ed5d7e6d090ba86'
+            '9ccf20b02f273ba2780ce5f322295d56ddf672b405520024c7c6d6e7720b86f6'
             'SKIP')
 
 # The public key is found at http://jaromil.dyne.org/contact
@@ -29,13 +29,13 @@ sha256sums=('39b5e37d55e30adbd2e7cfec3aebfde7ef13d8b10b21323597cb270416e99553'
 validpgpkeys=('6113D89CA825C5CEDD02C87273B35DA54ACB7D10')
 
 build() {
-  cd ${srcdir}/Tomb-${pkgver}/extras/kdf-keys
+  cd ${srcdir}/${pkgname}-${pkgver}/extras/kdf-keys
   make
 }
 
 # The checks require root access
 #check() {
-#  cd ${srcdir}/Tomb-${pkgver}
+#  cd ${srcdir}/${pkgname}-${pkgver}
 #  make test
 #}
 
@@ -47,10 +47,11 @@ package_tomb() {
   'wipe: secure file deletion'
   'qrencode: for paper backups of keys'
   'swish-e: file content indexer'
+  'gtomb: minimal zenity GUI'
   )
   arch=('any')
 
-  cd "${srcdir}/Tomb-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" PREFIX=/usr install
 }
 
@@ -58,6 +59,6 @@ package_tomb-kdf() {
   pkgdesc="Crypto Undertaker extensions to improve password security"
   depends=('libgcrypt')
 
-  cd "${srcdir}/Tomb-${pkgver}/extras/kdf-keys"
+  cd "${srcdir}/tomb-${pkgver}/extras/kdf-keys"
   make DESTDIR="${pkgdir}" PREFIX=/usr install
 }
