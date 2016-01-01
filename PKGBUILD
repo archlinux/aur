@@ -3,18 +3,20 @@
 
 _pkgname=papyros-shell
 pkgname=$_pkgname-git
-pkgver=0.0.5.r163.g79667a3
+pkgver=0.0.5.r166.gd3eed7d
 pkgrel=1
 pkgdesc="Wayland and QtQuick based desktop shell for Papyros"
 arch=("i686" "x86_64")
 url="https://github.com/papyros/papyros-shell"
 license=("GPL")
-depends=("qt5-base" "qt5-declarative" "qt5-quickcontrols" "qt5-graphicaleffects"
-         "greenisland-git" "qml-material-git" "kdeclarative" "pam"
-         "libpulse" "libqtxdg" "solid" "kconfig" "networkmanager-qt"
-         "qt5-wayland-dev-git")
-optdepends=('pulseaudio: audio support' 'sddm: login screen theme'
-        'paper-icon-theme: default icon theme')
+depends=("qt5-base-dev-git" "qt5-declarative" "qt5-quickcontrols"
+         "qt5-wayland-dev-git" "qt5-graphicaleffects" "greenisland-git"
+         "qml-material-git" "kdeclarative" "pam" "libpulse" "libqtxdg" "solid"
+         "kconfig" "networkmanager-qt" "ttf-dejavu" "ttf-droid")
+optdepends=('pulseaudio: audio support'
+            'sddm: login screen theme'
+            'paper-icon-theme: default icon theme'
+            'networkmanager: networking support')
 makedepends=("git" "python" "extra-cmake-modules")
 provides=("$pkgname")
 conflicts=("$_pkgname")
