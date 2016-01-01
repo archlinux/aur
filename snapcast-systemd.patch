@@ -1,0 +1,22 @@
+diff -aur snapcast-0.4.0/init.scripts/systemd/snapclient.service snapcast-0.4.0.new/init.scripts/systemd/snapclient.service
+--- snapcast-0.4.0/init.scripts/systemd/snapclient.service	2015-12-28 13:58:35.000000000 +0100
++++ snapcast-0.4.0.new/init.scripts/systemd/snapclient.service	2016-01-01 21:42:38.169018147 +0100
+@@ -1,6 +1,7 @@
+ [Unit]
+ Description=Snapcast client
+ After=network.target
++Requires=avahi-daemon.service
+ 
+ [Service]
+ Type=forking
+diff -aur snapcast-0.4.0/init.scripts/systemd/snapserver.service snapcast-0.4.0.new/init.scripts/systemd/snapserver.service
+--- snapcast-0.4.0/init.scripts/systemd/snapserver.service	2015-12-28 13:58:35.000000000 +0100
++++ snapcast-0.4.0.new/init.scripts/systemd/snapserver.service	2016-01-01 21:42:48.855684354 +0100
+@@ -1,6 +1,7 @@
+ [Unit]
+ Description=Snapcast server
+ After=network.target
++Requires=avahi-daemon.service
+ 
+ [Service]
+ Type=forking
