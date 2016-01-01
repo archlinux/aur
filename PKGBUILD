@@ -6,7 +6,7 @@
 pkgbase=linux-pf-lts
 _major=3
 _minor=14
-_patchlevel=53
+_patchlevel=58
 _pfpatchlevel=33
 #_subversion=1
 _basekernel=${_major}.${_minor}
@@ -54,12 +54,13 @@ source=(https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.{xz,sign}
         '0003-module-remove-MODULE_GENERIC_TABLE.patch'
         '0006-genksyms-fix-typeof-handling.patch'
         'gcc5_buildfixes.diff'
-	'logo_linux_clut224.ppm.bz2'		#\
-	'logo_linux_mono.pbm.bz2'		#-> the Arch Linux boot logos
-	'logo_linux_vga16.ppm.bz2'		#/
-	"${_pfpatchhome}${_pfpatchname}.xz"	# the -pf patchset
-	${_incr[@]}				# the incremental kernel patches
-	)
+        'logo_linux_clut224.ppm.bz2'		#\
+        'logo_linux_mono.pbm.bz2'		#-> the Arch Linux boot logos
+        'logo_linux_vga16.ppm.bz2'		#/
+        "${_pfpatchhome}${_pfpatchname}.xz"	# the -pf patchset
+        ${_incr[@]}				# the incremental kernel patches
+        'bfs-sched.patch'
+)
 
 _aufs3git="http://git.code.sf.net/p/aufs/aufs3-standalone"
 _aufs3name=aufs3-standalone
@@ -149,6 +150,9 @@ prepare() {
     msg "Patching ${_incrpatch} -- Makefile fails are harmless"
     patch -Np1 -i "${_incrpatch}" || true
   done
+
+  # Fix "too few arguments to function 'should_resched'" in bfs.c
+  patch -p0 -i "${srcdir}/bfs-sched.patch"
 
   # added gcc 4.7.1 support for Kconfig and menuconfig
   #zcat "${srcdir}/kernel-39-gcc48-1.patch.gz" | patch -Np1
@@ -783,4 +787,10 @@ sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
             '5f3f624d3a845a94e378f7027a6b43d2a66ed0e542929deb6036b11f2e21e40a'
             '52d0cb16fb2583425cee4cf5cbd7caad6d0fd8f4231e1bc88cf572f014ee3ec7'
             '0413914be2412b48e54c67d2c97edb8e5d08dbed139fb161c3270552ca5e89f4'
-            '10f00463928d4c3e985c12e4297ca442db4303e402a0915df58db5356a69fc47')
+            '10f00463928d4c3e985c12e4297ca442db4303e402a0915df58db5356a69fc47'
+            'aec5ece89c5ea49fa6d4c4458040f4ef3c780d64d8faf3d70e03f745fed1b14b'
+            'ead51735d1a2543a3e9854692385744a734eb3ef720bd64a24a65f63983a06c5'
+            '1a37ea7c547d5277a09901404e81e5e601d6b0dc71d1ec4f3dd2a8cd3adb3882'
+            'e5aa4f29255aa59955d8acaa794bc159e80f421bbf4520269ce4ac67ea59e47a'
+            'c392558a1f111905b392f293f36f0bdf0a3632f124a9ab9c37403526822f548d'
+            'a2789e82f980cb886ccea88d2d94e622ecde47b4eb006b94ceb6b944ed4c7833')

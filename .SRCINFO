@@ -1,5 +1,5 @@
 pkgbase = linux-pf-lts
-	pkgver = 3.14.53
+	pkgver = 3.14.58
 	pkgrel = 1
 	url = http://pf.natalenko.name/
 	arch = i686
@@ -47,6 +47,12 @@ pkgbase = linux-pf-lts
 	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.50-51.xz
 	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.51-52.xz
 	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.52-53.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.53-54.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.54-55.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.55-56.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.56-57.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.57-58.xz
+	source = bfs-sched.patch
 	sha256sums = 61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa
 	sha256sums = SKIP
 	sha256sums = fd4769f86fbe34bf95d26abd6a61ce06ffea9982a782612e60fffdb830927b39
@@ -82,6 +88,12 @@ pkgbase = linux-pf-lts
 	sha256sums = 52d0cb16fb2583425cee4cf5cbd7caad6d0fd8f4231e1bc88cf572f014ee3ec7
 	sha256sums = 0413914be2412b48e54c67d2c97edb8e5d08dbed139fb161c3270552ca5e89f4
 	sha256sums = 10f00463928d4c3e985c12e4297ca442db4303e402a0915df58db5356a69fc47
+	sha256sums = aec5ece89c5ea49fa6d4c4458040f4ef3c780d64d8faf3d70e03f745fed1b14b
+	sha256sums = ead51735d1a2543a3e9854692385744a734eb3ef720bd64a24a65f63983a06c5
+	sha256sums = 1a37ea7c547d5277a09901404e81e5e601d6b0dc71d1ec4f3dd2a8cd3adb3882
+	sha256sums = e5aa4f29255aa59955d8acaa794bc159e80f421bbf4520269ce4ac67ea59e47a
+	sha256sums = c392558a1f111905b392f293f36f0bdf0a3632f124a9ab9c37403526822f548d
+	sha256sums = a2789e82f980cb886ccea88d2d94e622ecde47b4eb006b94ceb6b944ed4c7833
 
 pkgname = linux-pf-lts
 	pkgdesc = Linux kernel and modules with the pf-kernel patchset [-ck patch (BFS included), TuxOnIce, BFQ, UKSM] and aufs3. Long-term support.
@@ -99,7 +111,7 @@ pkgname = linux-pf-lts
 	optdepends = nvidia-beta-all: NVIDIA drivers for all installed kernels
 	optdepends = modprobed_db: Keeps track of EVERY kernel module that has ever been probed. Useful for make localmodconfig.
 	provides = linux-pf-lts=3.14
-	provides = linux=3.14.53
+	provides = linux=3.14.58
 	provides = aufs3
 	conflicts = linux-pf-lts
 	replaces = aufs3
@@ -108,6 +120,6 @@ pkgname = linux-pf-lts
 pkgname = linux-pf-lts-headers
 	pkgdesc = Header files and scripts for building modules for linux-pf-lts kernel.
 	provides = linux-pf-lts-headers
-	provides = linux-headers=3.14.53
+	provides = linux-headers=3.14.58
 	conflicts = linux-pf-lts-headers
 
