@@ -1,0 +1,16 @@
+2011-12-24 Julien Nicoulaud <julien.nicoulaud@gmail.com>
+
+	* 2.3-3 :
+	Inline scripts creations.
+	Update desktop database after installation.
+
+2011-10-13 Julien Nicoulaud <julien.nicoulaud@gmail.com>
+
+	* 2.3-2 :
+	Add desktop application entry.
+
+2011-10-13 Julien Nicoulaud <julien.nicoulaud@gmail.com>
+
+	* 2.3-1 :
+	Initial release of the package.
+
