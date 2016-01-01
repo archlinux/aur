@@ -1,6 +1,6 @@
 # Maintainer: Lukasz Pozarlik <lpozarlik@gmail.com>
 
-pkgbase=python-airspeed
+pkgbase=python2-airspeed
 pkgname=('python2-airspeed')
 	 #'python-airspeed')
 pkgdesc="Airspeed is a powerful and easy-to-use templating engine for Python that aims for a high level of compatibility with the popular Velocity library for Java."
