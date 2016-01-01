@@ -22,4 +22,3 @@ package() {
   install -D -m755 downgrader "$pkgdir/usr/bin/downgrader"
 }
 md5sums=('SKIP')
-md5sums=('SKIP')
