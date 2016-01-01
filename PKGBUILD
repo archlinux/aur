@@ -1,4 +1,4 @@
-# Mainta# Maintainer:  Donato Junior <donato.jun gmail com>
+# Maintainer:  Donato Junior <donato.jun gmail com>
 # Contributor: Rafael Vega <contacto rafaelvega co>
 
 pkgname=iscan-plugin-perfection-v550
