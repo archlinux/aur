@@ -10,7 +10,7 @@ license=('MPL')
 depends=('gtk3' 'dconf' 'gsettings-desktop-schemas' 'vte3')
 install=terminix.install
 source_x86_64=(https://github.com/gnunn1/terminix/releases/download/$pkgver/terminix.zip)
-md5sums_x86_64=('a0abba232236efe570d50e6221a695a0')
+md5sums_x86_64=('8608dd9b89709d70c498ae38c381ed43')
 
 package() {
   mkdir -p "$pkgdir/usr/bin"
