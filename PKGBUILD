@@ -6,12 +6,12 @@
 
 pkgname=vim-noruby
 pkgver=7.4.944
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('custom:vim')
 url="http://www.vim.org"
 pkgdesc="Like 'vim' package, but -ruby"
-depends=("vim-runtime=${pkgver}-1" 'gpm' 'lua' 'python2' 'acl')
+depends=("vim-runtime=${pkgver}-${pkgrel}" 'gpm' 'lua' 'python2' 'acl')
 conflicts=('vim-minimal' 'vim-python3' 'gvim' 'gvim-python3' 'vim')
 provides=("vim" "xxd")
 makedepends=('gpm' 'python2' 'python' 'libxt' 'desktop-file-utils' 'lua')
