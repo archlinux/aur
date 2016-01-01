@@ -1,11 +1,10 @@
-# Maintainer: CTech <ctech.exe@gmail.com>
-# Contributor: vlad <vlad@archlinux.net>
+# Maintainer: Vlad M. <vlad@archlinux.net>
 # Contributor: kevku <kevku@gmx.com>
 
 pkgname=reaver-wps-fork-t6x-git
 _pkgname=reaver-wps-fork-t6x
-pkgver=1.5.2-4032b98
-pkgrel=1
+pkgver=1.5.2.r4.g941d383
+pkgrel=3
 pkgdesc="Brute force attack against Wifi Protected Setup mod with Pixie Dust Attack"
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/t6x/reaver-wps-fork-t6x"
@@ -16,7 +15,7 @@ backup=('etc/reaver/reaver.db')
 replaces=('reaver' 'reaver-svn' 'reaver-git' 'reaver-wps-fork-t6x')
 conflicts=('reaver' 'reaver-svn' 'reaver-git' 'reaver-wps-fork-t6x')
 provides=('reaver')
-source=("git+https://github.com/t6x/$_pkgname.git")
+source=("$pkgname::git+https://github.com/t6x/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -25,13 +24,13 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_pkgname/src"
+  cd "$pkgname/src"
   ./configure --prefix=/usr --sysconfdir=/etc
   make
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$pkgname"
   install -Dm755 src/reaver "$pkgdir/usr/bin/reaver"
   install -Dm755 src/wash "$pkgdir/usr/bin/wash"
   install -Dm644 src/reaver.db "$pkgdir/etc/reaver/reaver.db"
