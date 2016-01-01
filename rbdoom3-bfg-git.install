@@ -1,0 +1,6 @@
+post_install() {
+    echo ">> RBDoom 3 BFG requires the game data files to play."
+    echo ">> Either install the optional doom3-bfg-data package"
+    echo ">> or copy the \"base\" directory of any Doom 3 BFG install"
+    echo ">> to either ~/.rbdoom3bfg or /usr/share/games/doom3bfg."
+}

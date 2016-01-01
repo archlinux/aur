@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=RBDoom 3 BFG
+GenericName=Doom 3 BFG
+Comment=Doom 3 BFG Edition with soft shadows, cleaned up source, Linux and 64 bit Support
+Exec=/usr/bin/rbdoom3bfg "$@"
+Icon=/usr/share/pixmaps/doom3bfg.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game
