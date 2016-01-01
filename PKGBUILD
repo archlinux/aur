@@ -1,8 +1,8 @@
 # Maintainer: Moritz Lipp <mlq@pwmt.org>
 pkgname=radicale
 _pkgname=Radicale
-pkgver=1.0.1
-pkgrel=4
+pkgver=1.1
+pkgrel=1
 pkgdesc="A Simple Calendar Server"
 arch=any
 url="http://www.radicale.org/"
@@ -17,7 +17,7 @@ source=(
 	radicale.service
   radicale.install
 )
-md5sums=('e29e51df14bc8ca5a580998d5d592285'
+md5sums=('2e3f11d05d7a21ee412dfd7bd5c38961'
          '7d6a8ecdcb02f43780d106d8946338b3'
          '62af2e07ad32a0fcece32fae68e92daf'
          '5613eec93efc5ef2ef68abd124fb6b61')
