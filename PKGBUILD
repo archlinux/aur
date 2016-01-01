@@ -1,34 +1,34 @@
 # Maintainer: Vinson Chuong <vinsonchuong@gmail.com>
-pkgname="gitaur"
-pkgver="0.1.4"
-pkgrel="1"
-pkgdesc="A\ set\ of\ command-line\ scripts\ that\ automate\ common\ tasks\ in\ maintaining\ AUR\ packages\ on\ GitHub"
-arch=("any")
-url="https://github.com/vinsonchuong/gitaur"
-license=("MIT")
+pkgname=gitaur
+pkgver=0.1.5
+pkgrel=1
+pkgdesc=A\ set\ of\ command-line\ scripts\ that\ automate\ common\ tasks\ in\ maintaining\ AUR\ packages\ on\ GitHub
+arch=(any)
+url=https://github.com/vinsonchuong/gitaur
+license=(MIT)
 depends=(
-	"aura"
-	"bash-common-parse-options"
-	"hub"
-	"jq"
-	"namcap"
-	"ninka"
-	"pkgbuild-introspection"
+	aura
+	bash-common-parse-options
+	hub
+	jq
+	namcap
+	ninka
+	pkgbuild-introspection
 )
-makedepends=("clidoc")
-source=("https://github.com/vinsonchuong/gitaur/archive/v0.1.4-1.tar.gz")
-md5sums=('cc99b4537f189b4725a00ad1872ad14f')
+makedepends=(clidoc)
+source=(https://github.com/vinsonchuong/gitaur/archive/v0.1.5-1.tar.gz)
+md5sums=('156631e2ba428f71aa51ed55ad360531')
 build () 
 { 
     cd "${srcdir}/${pkgname}-${pkgver}-${pkgrel}";
-    if [ -d 'doc' ]; then
+    if [[ -d 'doc' ]]; then
         clidoc doc/*.md;
     fi
 }
 check () 
 { 
     cd "${srcdir}/${pkgname}-${pkgver}-${pkgrel}";
-    if [ -d 'spec' ]; then
+    if [[ -d 'spec' ]]; then
         bats spec;
     fi
 }
