@@ -3,7 +3,7 @@
 
 pkgbase=patool
 pkgname=('patool' 'patool-py2')
-pkgver=1.8
+pkgver=1.10
 pkgrel=1
 pkgdesc="portable command line archive file manager"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=("tar: extracting TAR files"
     "unrar: extracting RAR files"
     "7z: extracting ZIP and 7z files")
 source=("https://pypi.python.org/packages/source/p/$pkgbase/$pkgbase-$pkgver.tar.gz")
-sha256sums=('7c17472e360eb9aa409384b7f0aca41284e95cdbbff6f90e3e87fcb7d80a82a9')
+sha256sums=('4fbcc11c5008be6f4023c1f2bda34b34c9a1b535cda7782a5fefa1c5af5eff32')
 
 
 package_patool() {
