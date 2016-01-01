@@ -1,14 +1,15 @@
 # Maintainer: George Eleftheriou <eleftg>
+# Contributor: Lex Black <autumn-wind at web dot de>
 # Contributor: Jed Brown <jed@59A2.org>
 
 pkgname=sowing
 pkgver=1.1.18
-pkgrel=2
+pkgrel=3
 pkgdesc="Tools for documenting and improving portability"
 arch=('any')
 url="http://www.cs.uiuc.edu/~wgropp/projects/software/sowing"
 license=('GPL')
-source=('http://ftp.mcs.anl.gov/pub/sowing/sowing.tar.gz')
+source=($pkgname-$pkgver.tar.gz::http://ftp.mcs.anl.gov/pub/sowing/sowing.tar.gz)
 sha256sums=('b63cec263c413b18d283d8885ff38fe0c2267d8fc6b2246b8df922411cab1e13')
 
 build() {
