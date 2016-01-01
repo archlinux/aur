@@ -4,7 +4,7 @@
 pkgname=spotify
 pkgver=1.0.19.106
 _anotherpkgver=.gb8a7150f
-pkgrel=1
+pkgrel=2
 pkgdesc="A proprietary music streaming service"
 arch=('x86_64' 'i686')
 license=('custom:"Copyright (c) 2006-2010 Spotify Ltd"')
@@ -37,6 +37,8 @@ package() {
 	install -d "${pkgdir}"/usr/share/pixmaps
 	install "${pkgdir}"/usr/share/spotify/spotify.desktop "${pkgdir}"/usr/share/applications/spotify.desktop
 	install "${pkgdir}"/usr/share/spotify/icons/spotify-linux-512.png "${pkgdir}"/usr/share/pixmaps/spotify-client.png
+
+	chmod -R o-w "${pkgdir}"/usr/share/spotify
 
 	# Bin Script
 	rm "${pkgdir}"/usr/bin/spotify
