@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=sat
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="A simple alternative to at"
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ depends=('linux>=2.6.39' glibc)
 makedepends=(glibc make coreutils gcc 'texinfo>=4.11')
 install=$pkgname.install
 source=($url/archive/$pkgver.tar.gz)
-sha256sums=(9efef3a182a1649665641473cd219c9968bec07d19693082d05342a3a52c1669)
+sha256sums=(a0453ffcc376a5a13bc4687927e0c2c972a6f776783687e946435b76b417b07b)
 
 
 build() {
