@@ -3,7 +3,7 @@
 pkgbase=bcc
 pkgname=('bcc' 'bcc-tools' 'python-bcc' 'python2-bcc')
 pkgver=0.1.7
-pkgrel=2
+pkgrel=3
 pkgdesc="BPF Compiler Collection"
 arch=('x86_64')
 url="https://github.com/iovisor/bcc"
@@ -36,7 +36,7 @@ build() {
   cmake .. -DREVISION=${pkgver} \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib
-  make -j$(grep -c ^process /proc/cpuinfo)
+  make
 }
 
 package_bcc() {
@@ -81,7 +81,7 @@ package_python-bcc() {
   cmake .. -DREVISION=${pkgver} -DPYTHON_CMD="python" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib
-  make -j$(grep -c ^process /proc/cpuinfo)
+  make
 
   # now install just those bindings
   cd "${srcdir}/${pkgbase}-${pkgver}/build/src/python"
@@ -98,7 +98,7 @@ package_python2-bcc() {
   cmake .. -DREVISION=${pkgver} -DPYTHON_CMD="python2" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib
-  make -j$(grep -c ^process /proc/cpuinfo)
+  make
 
   # now install just those bindings
   cd "${srcdir}/${pkgbase}-${pkgver}/build/src/python"
