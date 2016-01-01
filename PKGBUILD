@@ -1,4 +1,9 @@
 # Maintainer: Maarten de Vries <maarten@de-vri.es>
+# Contributor: Yuxin Wu <ppwwyyxxc@gmail.com>
+# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Contributor: hauptmech
+# Contributor: figo.zhang
+# Contributor: lubosz
 
 pkgname=pcl-git
 pkgver=r9837.e97b664
