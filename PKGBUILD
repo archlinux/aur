@@ -3,12 +3,14 @@
 pkgbase=bcc
 pkgname=('bcc' 'bcc-tools' 'python-bcc' 'python2-bcc')
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="BPF Compiler Collection"
 arch=('x86_64')
 url="https://github.com/iovisor/bcc"
 license=('Apache')
 conflicts=('bcc-git')
+makedepends=('cmake' 'clang>=3.7.0' 'llvm>=3.7.0' 'flex' 'bison' 'python'
+             'python2')
 source=("https://github.com/iovisor/${pkgname}/archive/v${pkgver}.tar.gz"
         "cmake_version-cmake.patch"
         "src_python_CMakeLists-txt.patch")
