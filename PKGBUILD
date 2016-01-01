@@ -8,41 +8,19 @@ license=('MPL')
 
 pkgname=firefox-extension-$_plugin_name
 pkgver=$_plugin_version
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://code.google.com/p/nagioschecker/'
 depends=('firefox>=3.0')
 optdepends=('firefox-extension-addonbar')
-source=('https://addons.mozilla.org/firefox/downloads/latest/3607/addon-3607-latest.xpi'
-        'tooltip_header_color.patch'
-        'limit_0.patch'
-        'menupopup.patch')
-md5sums=('40a4a797369bf16a4374b1c00ca4b912'
-         'fa6176f083d02d2a282041d0375abb55'
-         'a9d606cdec9b939e4ceb1e180939e988'
-         '167f82037fab0b9e1ee10125499dd41f')
-
-prepare() {
-  # Fix the color bug in recent version of firefox
-  patch -uN ${srcdir}/chrome/nagioschecker/skin/classic/nagioschecker/nagioschecker.css < ${srcdir}/tooltip_header_color.patch
-  patch -uN ${srcdir}/chrome/nagioschecker/content/utils.js < ${srcdir}/limit_0.patch
-  patch -uN ${srcdir}/chrome/nagioschecker/content/nagioschecker-options.xul < ${srcdir}/menupopup.patch
-
-  # Increase max version (reported on https://addons.mozilla.org/en-US/firefox/addon/nagios-checker/)
-  sed -i 's/<em:maxVersion>\(.*\)<\/em:maxVersion>/<em:maxVersion>99\.*\.\*<\/em:maxVersion>/' ${srcdir}/install.rdf
-}
+source=('https://addons.mozilla.org/firefox/downloads/latest/3607/addon-3607-latest.xpi')
+sha256sums=('5533542586f58b4b7f9996272afeb3d9eef6415debc7cc50a144dec4c75b7215')
 
 package() {
   cd $srcdir
-  emid=$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' install.rdf) || return 1
-
-  local dstdir=$pkgdir/usr/lib/firefox/browser/extensions/${emid}
-  install -d $dstdir
-
-  cp -dpr --no-preserve=ownership * $dstdir
-
-  rm $dstdir/addon-3607-latest.xpi
-  rm $dstdir/*.patch
-
-  chmod -R 755 $dstdir
+  local _emid=$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' install.rdf) || return 1
+  test ! -z "${_emid}"
+  local _file=(*.xpi)
+  test "${#_file[@]}" -eq 1
+  install -Dpm644 "${_file}" "${pkgdir}/usr/lib/firefox/browser/extensions/${_emid}.xpi"
 }
