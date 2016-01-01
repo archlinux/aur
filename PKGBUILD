@@ -1,7 +1,7 @@
 # Maintainer: Dan Bright <productions at zaziork dot com>
 pkgname=python-iptceditor-gtk3
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="NOTE: THIS IS BETA. USE AT YOUR OWN RISK. This is a python3 GTK3 wrapper for the EXIV2 application, which is used to read and edit IPTC (and other forms) of image metadata. It can handle bulk operations on directories of image files."
 arch=('any')
 url="https://github.com/ZWS2014/python-iptceditor-gtk3"
