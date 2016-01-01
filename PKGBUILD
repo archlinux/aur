@@ -5,7 +5,7 @@
 pkgname=pstate-frequency-git
 _gitname=pstate-frequency
 pkgdesc="Easily control Intel p-state driver (git version)"
-pkgver=2.0.2.r540.049e7c1
+pkgver=2.0.3.r542.a358062
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('git')
@@ -39,7 +39,13 @@ pkgver() {
 prepare() {
   cd "$srcdir/$_gitname"
   make DESTDIR="${pkgdir}" PREFIX="/usr" clean
-  make DESTDIR="${pkgdir}" PREFIX="/usr" edit
+
+  # Disabled by default to conform to AUR packaging
+  # best practices. It is highly recommended that you
+  # enable the line to allow for editing the config.mk file
+  #
+  # make DESTDIR="${pkgdir}" PREFIX="/usr" edit
+
   make DESTDIR="${pkgdir}" PREFIX="/usr" options
 }
 
