@@ -9,7 +9,7 @@ pkgdesc="A proprietary music streaming service"
 arch=('x86_64' 'i686')
 license=('custom:"Copyright (c) 2006-2010 Spotify Ltd"')
 url="http://www.spotify.com"
-options=('!strip')
+options=('!strip' '!upx')
 
 source=('spotify'
 'spotify.protocol')
