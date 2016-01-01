@@ -1,15 +1,15 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=gzdoom-git
-pkgver=1.9pre.r2136.ga59824c
+pkgver=2.1.pre.r1486.g86797b4
 pkgrel=1
 pkgdesc="Doom source port based on ZDoom with an OpenGL renderer (git version)."
 arch=('i686' 'x86_64')
-url="http://www.osnanet.de/c.oelckers/gzdoom/"
+url="http://forum.drdteam.org/viewforum.php?f=22"
 license=('custom')
 depends=('fluidsynth' 'fmodex4.26.36' 'glew' 'gtk2' 'gxmessage' 'sdl2')
 makedepends=('nasm' 'cmake' 'git' 'imagemagick' 'mesa')
-optdepends=('blasphemer: Blasphemer (free Heretic) game data'
+optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'chexquest3-wad: Chex Quest 3 game data'
             'doom1-wad: Doom shareware game data'
             'freedoom: FreeDoom game data'
@@ -37,7 +37,7 @@ _sharedir=/usr/share/games/gzdoom
 pkgver() {
   cd gzdoom
 
-  git describe --long --tags --match 'G*' | sed -r 's/^G//;s/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long --tags --match '[Gg]*' | sed -r 's/^[Gg]//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
