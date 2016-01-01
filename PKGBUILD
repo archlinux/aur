@@ -2,8 +2,8 @@
 # Contributor: Gilles Hamel <hamelg at laposte dot net>
 
 pkgname=grafana
-pkgver=2.5.0
-pkgrel=6
+pkgver=2.6.0
+pkgrel=1
 pkgdesc="A general purpose dashboard and graph composer. It supports graphite, influxdb or opentsdb"
 url="http://grafana.org"
 arch=('x86_64' 'i686')
@@ -15,7 +15,7 @@ backup=("etc/${pkgname}/${pkgname}.ini")
 source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
         "config.patch"
         "grafana.service")
-md5sums=('831debf7f50f35c91b68e65e17c89c6a'
+md5sums=('f143f0e1b4d49d3472057370fc7d90d8'
          'f676cfe7bdd2463e2600ff8fce75a2d6'
          '05508c9c21f4c93ad86944a52d37e925')
 
