@@ -1,0 +1,16 @@
+pkgbase = gnudos
+	pkgdesc = Library designed to help new users of the GNU system, who are coming from a DOS background, fit into the picture and start using the GNU system with ease
+	pkgver = 1.8
+	pkgrel = 1
+	url = https://www.gnu.org/software/gnudos/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = automake
+	makedepends = autoconf
+	depends = glibc
+	source = https://ftp.gnu.org/gnu/gnudos/gnudos-1.8.tar.gz
+	sha256sums = 67e0eaa41f774ce30d23c24f5f987f67c009911aae78ff89afdf8934a35c650a
+
+pkgname = gnudos
+
