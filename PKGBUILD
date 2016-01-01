@@ -1,8 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=alacryd-git
-pkgver=20151231
-pkgrel=2
+pkgver=20160101
+pkgrel=1
 pkgdesc="Expedient Perl 6 module installation"
 arch=('any')
 depends=('rakudo')
