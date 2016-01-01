@@ -3,12 +3,13 @@
 _pkgname=libnotify
 pkgname=lib32-${_pkgname}-gtk2
 pkgver=0.7.6
-pkgrel=1
-pkgdesc="Desktop notification library 32bit"
-arch=('i686' 'x86_64')
-url="http://library.gnome.org/devel/notification-spec/"
+pkgrel=2
+pkgdesc="Library for sending desktop notifications (32bit)"
+arch=('x86_64')
+url="https://developer.gnome.org/notification-spec/"
 license=('LGPL')
-depends=('libnotify-gtk2' 'lib32-gdk-pixbuf2' 'lib32-gtk2' )
+depends=('libnotify-gtk2' 'lib32-gdk-pixbuf2')
+makedepends=('lib32-gtk2' 'gobject-introspection')
 conflicts=('lib32-libnotify' 'lib32-libnotify-git' 'lib32-libnotify-id' 'lib32-libnotify-id-git')
 provides=("lib32-libnotify=$pkgver")
 replaces=('lib32-libnotify')
