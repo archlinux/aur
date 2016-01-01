@@ -12,7 +12,7 @@ depends=('open-xchange-authentication' 'open-xchange-authorization' 'open-xchang
 makedepends=()
 conflicts=()
 provides=('open-xchange')
-source=('https://software.open-xchange.com/products/appsuite/stable/debs/DebianJessie/all/open-xchange_7.8.0-6_all.deb')
+source=('https://software.open-xchange.com/products/appsuite/stable/backend/DebianJessie/all/open-xchange_7.8.0-6_all.deb')
 sha256sums=('7ce5a3cc8f312177ea2471b82c1b83defeb3f83a14ac070eed1adbeef7c52e8b')
 
 package() {
