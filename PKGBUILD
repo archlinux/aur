@@ -1,13 +1,14 @@
 # Maintainer: Gustavo alvarez <sl1pkn07@gmail.com>
 
 pkgname=kwave-git
-pkgver=0.9.0.r3210.3085f54
+pkgver=0.9.0.r3217.d5adabe
 pkgrel=1
 pkgdesc="A sound editor for KDE. (GIT version)"
 arch=('i686' 'x86_64')
 url='http://kwave.sourceforge.net'
 license=('GPL')
-depends=('kio'
+depends=('qt5-multimedia'
+         'kio'
          'audiofile'
          'libsamplerate'
          'hicolor-icon-theme'
