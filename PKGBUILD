@@ -1,17 +1,17 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=arb
-pkgver=2.7.0
-pkgrel=3
+pkgver=2.8.0
+pkgrel=1
 pkgdesc="C library for arbitrary-precision floating-point ball arithmetic"
 arch=(i686 x86_64)
 url="http://fredrikj.net/arb/"
 license=(GPL)
 depends=(flint)
 source=("https://github.com/fredrik-johansson/arb/archive/$pkgver.tar.gz"
-	fix-flint-includes.patch::"http://git.sagemath.org/sage.git/plain/build/pkgs/arb/patches/flint_includes.patch?h=develop")
-md5sums=('f56a1d5d748f51da8ac47653bca9e2dc'
-         'a70af061f2a3921568cb949dd06956ec')
+	fix-flint-includes.patch::"http://git.sagemath.org/sage.git/plain/build/pkgs/arb/patches/flint_includes.patch?id=d0379c")
+md5sums=('13ad8d7051e5d943456e4bfeee183066'
+         '666fff29e723bad787f4935b4417b3a8')
 
 prepare() {
   cd $pkgname-$pkgver
