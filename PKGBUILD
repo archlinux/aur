@@ -1,12 +1,12 @@
 # Maintainer: parazyd <parazyd@dyne.org>
 pkgname=gtomb-git
 pkgver=0.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="GUI wrapper for Tomb, the crypto undertaker"
 arch=('any')
 url="https://github.com/parazyd/gtomb"
 license=('GPL3')
-depends=('zenity' 'tomb' 'tomb-kdf' 'tomb-git' 'tomb-kdf-git')
+depends=('zenity' 'tomb-git')
 makedepends=('git')
 source=('git://github.com/parazyd/gtomb')
 sha1sums=('SKIP')
