@@ -1,5 +1,5 @@
 infodir=/usr/share/info
-files=(guile.info r5rs.info)
+files=(guile-2.2.info r5rs-2.2.info)
 
 post_install() {
   [ -x usr/bin/install-info ] || return 0
