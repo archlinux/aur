@@ -22,11 +22,11 @@ md5sums_x86_64=('bf32c2e053099789bdd9246fd8cd828c')
 source_i686=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${pkgver}${_anotherpkgver}_i386.deb")
 md5sums_i686=('fff46b31c56fd283c654166afb232728')
 
-depends=("alsa-lib>=1.0.14" "gconf" "gtk2" "glib2" "nss" "libsystemd" "libxtst" "libx11" "libxss" "libcurl-compat")
-optdepends=('desktop-file-utils: Adds URI support to compatible desktop environments'
-            'ffmpeg-compat: Adds support for playback of local files'
+depends=("alsa-lib>=1.0.14" "gconf" "gtk2" "glib2" "nss" "libsystemd" "libxtst" "libx11" "libxss" "libcurl-compat" "desktop-file-utils")
+optdepends=('ffmpeg-compat: Adds support for playback of local files'
             'zenity: Adds support for importing local files'
 						)
+install=spotify.install
 
 package() {
   cd "${srcdir}"
