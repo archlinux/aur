@@ -2,12 +2,13 @@
 
 pkgname=libnotify-gtk2
 pkgver=0.7.6
-pkgrel=1
-pkgdesc="Desktop notification library"
-arch=('x86_64')
-url="http://library.gnome.org/devel/notification-spec/"
+pkgrel=2
+pkgdesc="Library for sending desktop notifications"
+arch=('x86_64' 'i686')
+url="https://developer.gnome.org/notification-spec/"
 license=('LGPL')
-depends=('gdk-pixbuf2' 'gtk2')
+depends=('gdk-pixbuf2')
+makedepends=('gtk2' 'gobject-introspection' 'gtk-doc')
 conflicts=('libnotify' 'libnotify-git' 'libnotify-id' 'libnotify-id-git')
 provides=("libnotify=$pkgver")
 replaces=('libnotify')
@@ -24,7 +25,7 @@ build() {
   export AUTOMAKE=automake
   export CC="gcc -m64"
   export PKG_CONFIG_PATH="/usr/lib/pkgconfig"
-  ./configure --prefix=/usr --libdir=/usr/lib
+  ./configure --prefix=/usr --enable-gtk-doc
   make
 }
 
