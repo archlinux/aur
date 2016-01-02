@@ -5,7 +5,7 @@
 
 pkgname=binwalk-git
 _gitname=binwalk
-pkgver=2.1.0.748.e3d1a55
+pkgver=2.1.1.783.95447d6
 pkgrel=1
 pkgdesc="A tool for searching a given binary image for embedded files"
 url="http://binwalk.org"
@@ -30,6 +30,7 @@ optdepends=(
   'xz: XZ decompression support'
   'firmware-mod-kit: cramfs support'
   'lhasa: LHA support'
+  'sleuthkit: forensic analysis support'
 )
 makedepends=('git')
 provides=('binwalk')
