@@ -4,7 +4,7 @@ _name="os-client-config"
 _module="${_name}"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="1.12.0"
+pkgver="1.13.1"
 pkgrel="1"
 pkgdesc="OpenStack Client Configuation Library"
 arch=("any")
@@ -12,7 +12,7 @@ url="https://github.com/openstack/${_name}"
 license=("Apache")
 makedepends=("python-pbr" "python2-pbr")
 source=("https://tarballs.openstack.org/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('8e06cb4239dff1fcc4be64950841e286d82e2af6fc59b3f1ad96eb7b8c3956ee')
+sha256sums=('ae74499108187ea9136467576d3cbe4f2e42ba05f93528102644195dd91e4c54')
 
 prepare() {
     cp -a "${srcdir}/${_name}-${pkgver}" "${srcdir}/${_name}-${pkgver}-python2"
@@ -29,7 +29,7 @@ package_python-os-client-config() {
     depends=(
         "python-yaml>=3.1.0"
         "python-appdirs>=1.3.0"
-        "python-keystoneauth1>=1.0.0"
+        "python-keystoneauth1>=2.1.0"
         "python-requestsexceptions>=1.1.1"
     )
     cd "${srcdir}/${_name}-${pkgver}"
