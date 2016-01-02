@@ -10,7 +10,7 @@
 
 pkgname=icecream
 pkgver=1.1rc1
-pkgrel=3
+pkgrel=4
 pkgdesc="takes compile jobs from your build and distributes it to remote machines allowing a parallel build on several machines."
 url="http://en.opensuse.org/Icecream"
 license=('GPL2')
@@ -34,7 +34,7 @@ sha256sums=('95bdb66228cc8f5d97a829f1ee4e3f2d32caf064e9614919e8af0f708a13c654'
             '4c1b993761600955a2be53e945a698638ef861a513258956d8aac0e0f8df3dfe'
             '3bd9286e2a4ef29a41fe414caf3ffb56ae24e2287272dc0d60d62599d20d8cf9'
             '9b756a140ac3983efa4cddf6590af72d3681834b95ef1f879f34da775dd418cd'
-            '8dae3370e28b9d8957be5f4636dfe4ea71c297abf60c7c2d201613d2220fe21e'
+            'cdb7794bf53486eb46716e57172c58cd4cb97b7649cd98178f0eefe03444a88a'
             'c6807f49ac0e191136047d22d01639b04fad9b009d829528dafe02665712eb0f'
             '2221f16c3293dfd86e4d0442745b104380a4a1623ca3c9eb6bfe5771552fac65')
 build() {
