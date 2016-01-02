@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Chusovitin <dchusovitin@gmail.com>
 
 pkgname=docker-machine
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 epoch=2
 pkgdesc='Machine management for a container-centric world'
@@ -13,17 +13,32 @@ depends=()
 provides=('docker-machine')
 conflicts=('docker-machine-bin')
 
-source=('https://raw.githubusercontent.com/docker/machine/master/LICENSE')
-sha256sums=('SKIP')
+source=(
+    "https://github.com/docker/machine/archive/v${pkgver//_/-}.tar.gz"
+    "https://raw.githubusercontent.com/docker/machine/master/LICENSE"
+)
+sha256sums=('SKIP' 'SKIP')
 
-source_x86_64=("docker-machine::https://github.com/docker/machine/releases/download/v${pkgver//_/-}/docker-machine_linux-amd64")
-source_i686=("docker-machine::https://github.com/docker/machine/releases/download/v${pkgver//_/-}/docker-machine_linux-386")
+prepare() {
+    cd $srcdir
 
-sha256sums_x86_64=('8b03120266c5c3837425dcf5095048cf5a25163de2d87ed0c8ef4f4aa6e2e85e')
-sha256sums_i686=('376ba1da4afa079e3bb1ee2958ed679c0bf65da32c9a8505ae68e89dbe227c56')
+    mkdir -p src/github.com/docker
+    rm -rf src/github.com/docker/machine
+    mv machine-${pkgver} src/github.com/docker/machine
+		        
+    cd src/github.com/docker/machine
+    GOPATH=$srcdir godep restore || return 0
+    return 0
+}
+
+build() {
+    cd $srcdir/src/github.com/docker/machine
+    GOPATH=$srcdir USE_CONTAINER=false make build
+}
 
 package() {
-    install -Dm755 ${srcdir}/docker-machine ${pkgdir}/usr/bin/docker-machine
-    install -Dm644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/docker-machine/LICENSE
+    cd $srcdir/src/github.com/docker/machine
+    install -Dm755 bin/docker-machine $pkgdir/usr/bin/docker-machine
+    install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/docker-machine/LICENSE
 }
 
