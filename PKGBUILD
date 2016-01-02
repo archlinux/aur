@@ -4,7 +4,7 @@
 # PKGBUILD based on extra\deluge's PKGBUILD, adapted for -git version by Berseker
 
 pkgname=deluge-git
-pkgver=2.0.0.dev451
+pkgver=2.0.0.dev556
 pkgrel=1
 pkgdesc="A bittorrent client written with python and pygtk - Git Version"
 arch=('any')
@@ -38,8 +38,7 @@ optdepends=('python2-pillow'
             'python2-notify: libnotify notifications'
             'geoip: display peer locations')
 
-_branch=develop
-source=("git://deluge-torrent.org/deluge.git#branch=$_branch"
+source=("git+https://github.com/deluge-torrent/deluge.git#branch=develop"
         'deluged.service' 'deluge-web.service')
 
 md5sums=('SKIP'

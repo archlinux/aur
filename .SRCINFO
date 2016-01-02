@@ -1,6 +1,6 @@
 pkgbase = deluge-git
 	pkgdesc = A bittorrent client written with python and pygtk - Git Version
-	pkgver = 2.0.0.dev451
+	pkgver = 2.0.0.dev556
 	pkgrel = 1
 	url = http://deluge-torrent.org
 	install = deluge.install
@@ -30,7 +30,7 @@ pkgbase = deluge-git
 	provides = deluge
 	conflicts = deluge
 	conflicts = deluge-stable-git
-	source = git://deluge-torrent.org/deluge.git#branch=develop
+	source = git+https://github.com/deluge-torrent/deluge.git#branch=develop
 	source = deluged.service
 	source = deluge-web.service
 	md5sums = SKIP
