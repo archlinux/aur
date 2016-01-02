@@ -4,13 +4,13 @@
 
 pkgname=airpwn
 pkgver=1.4
-pkgrel=6
+pkgrel=7
 pkgdesc="A generic packet injection tool for 802.11 networks."
 arch=('i686' 'x86_64')
 url="http://airpwn.sourceforge.net"
 license=('GPL')
 depends=('pcre' 'libpcap' 'openssl' 'libnet' 'python2' 'libnl1')
-makedepends=('sed')
+makedepends=('sed' 'automake' 'autoconf')
 optdepends=('net-tools: to put wireless interfaces into monitor mode'
             'iw: for mac80211 monitor-mode support'
             'madwifi-utils: for madwifi monitor-mode support')
@@ -39,9 +39,7 @@ build() {
             --enable-static=no
 
         make
-        make install DESTDIR="$pkgdir"
-        # Don't conflict with lorcon package man page
-        mv "$pkgdir"/usr/share/man/man3/lorcon.3 "$pkgdir"/usr/share/man/man3/lorcon-old.3
+        make install DESTDIR="$PWD"
     cd ..
 
     # Fix airpwn files so we can use it with a Python version other than 2.4.
@@ -51,8 +49,8 @@ build() {
     autoreconf -ivf
 
     CFLAGS="${CFLAGS}" \
-    CPPFLAGS="-I${pkgdir}/usr/include" \
-    LDFLAGS="-L${pkgdir}/usr/lib" \
+    CPPFLAGS="-Ilorcon/usr/include" \
+    LDFLAGS="-Llorcon/usr/lib" \
     LIBS="-lcrypto" \
     ./configure \
         --prefix=/usr \
@@ -63,6 +61,11 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
+
+    # Install lorcon.
+    make -C lorcon install DESTDIR="$pkgdir"
+    # Don't conflict with lorcon package man page
+    mv "$pkgdir"/usr/share/man/man3/lorcon.3 "$pkgdir"/usr/share/man/man3/lorcon-old.3
 
     make install DESTDIR="$pkgdir"
 
