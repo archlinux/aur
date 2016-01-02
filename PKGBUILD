@@ -1,12 +1,18 @@
 # Maintainer: Donald Carr <sirspudd@gmail.com>
 
-# Set up the pi for Qt compilation. On Arch I just install chromium which pulls in all the deps
-# Mount/copy this prepped rasp rootfs somewhere and set this path as the sysroot below
+# Documentation
 
+# Set up the pi for Qt compilation. On Arch I just install chromium which pulls in all the deps
+
+# Remove 2 (mesa) pkgconfig files we allow screw our mkspec
+# rm /usr/lib/pkgconfig/glesv2.pc
+# rm /usr/lib/pkgconfig/egl.pc
+
+# Mount/copy this prepped rasp rootfs somewhere and set this path as the sysroot below
 # I use NFS personally: sudo mount qpii.local:/ /mnt/pi
 
 # comment this turkey out in any circumstance when you need to regenate .SRCINFO
-echo "Set your sysroot" && exit 1
+echo "Set your sysroot prior to build" && exit 1
 _sysroot=/mnt/pi
 
 pkgname=qpii
