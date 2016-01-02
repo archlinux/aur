@@ -7,11 +7,12 @@ arch=('any')
 url='https://aur.archlinux.org/packages/dkms-autoremove'
 license=('MIT')
 depends=('dkms')
-source=("$pkgname.tar.gz")
-md5sums=('44dfac3ac1ec36eae6def0bb551e47e2')
+source=($pkgname{,.service})
+md5sums=('966b3ea060cba8d6365931fbe50bcd75'
+         'd8e77f151e20861378f4c0b5f835b6ea')
 
 package() {
-    cd "$pkgname"
-    install -Dm 755 dkms-autoremove "${pkgdir}/usr/bin/dkms-autoremove"
-    install -Dm 644 dkms-autoremove.service "${pkgdir}/usr/lib/systemd/system/dkms-autoremove.service"
+    cd "$srcdir"
+    install -Dm 755 dkms-autoremove "$pkgdir/usr/bin/dkms-autoremove"
+    install -Dm 644 dkms-autoremove.service "$pkgdir/usr/lib/systemd/system/dkms-autoremove.service"
 }
