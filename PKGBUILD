@@ -47,7 +47,7 @@ build() {
   cd ${_bindir}
 
   # skipping because of errors: qtwayland
-  # skipping on principle: qtscript
+  # skipping on principle: qtscript, xcb
   # skipping because of the target in question: widgets qtwebengine qtwebchannel
 
   ${_srcdir}/configure \
@@ -60,6 +60,7 @@ build() {
     \
     -no-widgets \
     -make libs \
+    -no-xcb \
     \
     -skip qtscript \
     -skip qtwebengine \
