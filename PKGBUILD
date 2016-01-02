@@ -2,7 +2,7 @@
 # Contributors: Giuseppe Calà, Jan Alexander Steffens, Alexander Rødseth, Jon Nordby
 
 pkgname=lib32-libwebp
-pkgver=0.4.4
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="WebP library (32 bit)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('BSD')
 depends=("${pkgname#*-}" 'lib32-glibc')
 makedepends=('gcc-multilib')
 source=("http://downloads.webmproject.org/releases/webp/${pkgname#*-}-$pkgver.tar.gz"{,.asc})
-sha256sums=('c65d34edb57338e331ba4d622227a2b3179444cfca17d02c34f1ead63f603e86'
+sha256sums=('5cd3bb7b623aff1f4e70bd611dc8dbabbf7688fd5eb225b32e02e09e37dfb274'
             'SKIP')
 validpgpkeys=("6B0E6B70976DE303EDF2F601F9C3D6BDB8232B5D") # WebP release signing key
 
@@ -24,7 +24,7 @@ build() {
 
   ./configure --prefix=/usr --libdir=/usr/lib32 --disable-static \
     --enable-swap-16bit-csp --enable-experimental \
-    --enable-libwebpmux --enable-libwebpdemux --enable-libwebpdecoder
+    --enable-libwebp{mux,demux,decoder,extras}
   make -C src # only build libraries
 }
 
