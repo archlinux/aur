@@ -1,6 +1,6 @@
 # Maintainer: Brandon Mulcahy <brandon@jangler.info>
 pkgname=modplay
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A command-line IT/XM/S3M/MOD player"
 arch=('any')
@@ -8,7 +8,7 @@ url="http://jangler.info/code/modplay"
 license=('MIT')
 depends=('dumb' 'portaudio')
 source=("https://github.com/jangler/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('6f00192cebffa86e7ae1437537d3e158fe6f04e5ee61e722c5983227e8c21099')
+sha256sums=('7a49bf35dddec3bea662bf9b98c88b922a3a631ed43395c1ae0b6d00959c1ca3')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
