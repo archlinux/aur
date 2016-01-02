@@ -17,7 +17,7 @@ md5sums=('SKIP'
          'SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "${srcdir}/pvr.hts"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -45,7 +45,7 @@ build() {
         -DCMAKE_INSTALL_LIBDIR=/usr/lib/kodi \
         -Dkodiplatform_DIR="$srcdir/build-platform" \
         -DCMAKE_BUILD_TYPE=Release \
-        ../pvr.vdr.vnsi
+        ../pvr.hts
 
   make
 }
