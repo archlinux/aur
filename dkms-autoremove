@@ -12,5 +12,5 @@ do
     kernel=`echo $output | cut -d/ -f3`
     
     dkms remove "$module/$modver" -k "$kernel"
-    rm -r "${install_tree:='/usr/lib/modules'}/$kernel"
+    rm -r "${install_tree:=/usr/lib/modules}/$kernel"
 done
