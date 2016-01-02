@@ -9,7 +9,7 @@ depends=('glibc' 'dbus' 'xdotool')
 
 package() {
 	cd "$srcdir"
-	rm -r "$pkgname"
+	rm -rf "$pkgname"
 	git clone "$url" "$pkgname"
 	cd "$pkgname"
 	make install PREFIX="${pkgdir}/usr"
