@@ -1,7 +1,7 @@
 # Maintainer: emersion
 
 pkgname="bups"
-pkgver=0.7.2
+pkgver=0.8.0
 pkgrel=2
 pkgdesc="Simple GUI for Bup, a very efficient backup system."
 arch=("any")
