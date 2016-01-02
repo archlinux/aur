@@ -5,7 +5,7 @@ _name="oslo.utils"
 _module="${_name/./-}"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="3.2.0"
+pkgver="3.3.0"
 pkgrel="1"
 pkgdesc="Oslo Utility library"
 arch=("any")
@@ -13,10 +13,12 @@ url="https://github.com/openstack/${_name}"
 license=("Apache")
 makedepends=("python-pbr>=1.8" "python2-pbr>=1.8")
 source=("https://tarballs.openstack.org/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('c3d73a2c4556d88acd4b3b25786dbab83ee31aaea68c4c98cd4d1bfb9965f281')
+sha256sums=('484f1025132756c065b5843ceb420b113a4fd262071887e85e5a2695f71bcabc')
 
 prepare() {
     cp -a "${srcdir}/${_name}-${pkgver}" "${srcdir}/${_name}-${pkgver}-python2"
+    cd "${srcdir}/${_name}-${pkgver}"
+    sed -i '/funcsigs/d' requirements.txt
 }
 
 build() {
@@ -46,6 +48,7 @@ package_python2-oslo-utils() {
     depends=(
         "python2-pbr>=1.6"
         "python2-six>=1.9.0"
+        "python2-funcsigs>=0.4"
         "python2-iso8601>=0.1.9"
         "python2-oslo-i18n>=1.5.0"
         "python2-monotonic>=0.3"
