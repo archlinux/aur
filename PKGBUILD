@@ -1,10 +1,10 @@
 pkgname=lexicon-dictionary
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lexicon is an instant dictionary for Linux."
 arch=('any')
 url="http://insomniacprogrammer.net16.net"
-depends=('yad' 'xbindkeys')
+depends=('yad' 'xbindkeys' 'xsel')
 source=("http://downloads.sourceforge.net/project/lexicon-dictionary/lexicon-dictionary-2.0.tar.xz")
 md5sums=('bc88a123c42bf4cc0bde2ab5a1787736')
 
