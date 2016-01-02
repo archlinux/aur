@@ -14,7 +14,7 @@
 # flite-fpic blackmagic-decklink-sdk nvidia-sdk
 
 pkgname=ffmpeg-full-git
-pkgver=N.77558.g15e1fd9
+pkgver=N.77668.g7812997
 pkgrel=1
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
@@ -42,7 +42,7 @@ provides=(
 conflicts=(
     'ffmpeg' 'ffmpeg-git' 'ffmpeg-full' 'ffmpeg-full-extra' 'ffmpeg-full-nvenc'
     'ffmpeg-libfdk_aac')
-source=("$pkgname"::'git+http://source.ffmpeg.org/git/ffmpeg.git'
+source=("$pkgname"::'git://source.ffmpeg.org/ffmpeg.git'
         'UNREDISTRIBUTABLE.txt')
 sha256sums=('SKIP'
             'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4')
