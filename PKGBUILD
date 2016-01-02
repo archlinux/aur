@@ -8,7 +8,7 @@ url='https://aur.archlinux.org/packages/dkms-autoremove'
 license=('MIT')
 depends=('dkms')
 source=($pkgname{,.service})
-md5sums=('966b3ea060cba8d6365931fbe50bcd75'
+md5sums=('627215f90f18b8c2f29128130f6d85f0'
          'd8e77f151e20861378f4c0b5f835b6ea')
 
 package() {
