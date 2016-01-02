@@ -4,20 +4,20 @@
 
 _pkgname=enki-editor
 pkgname=$_pkgname-git
-pkgver=15.05.0.r51.g36975c8
+pkgver=15.11.0.r58.gd4894dd
 pkgrel=1
 pkgdesc="Text editor for programmers. Live preview in Markdown, reStructuredText and HTML"
 arch=('any')
 url="http://enki-editor.org/"
 license=('GPL')
-makedepends=('git' 'python2')
-depends=('python2-pyparsing' 
+makedepends=('git' 'python')
+depends=('python-pyparsing' 
          'qutepart-git')
-#            'python2-pygments: Scheme preview'
+#            'python-pygments: Scheme preview'
 optdepends=('ctags: navigation in file'
-            'python2-code-chat: source code to HTML translation (literate programming)'
-            'python2-docutils: reStructuredText preview'
-            'python2-markdown: Markdown preview'
+            'python-code-chat: source code to HTML translation (literate programming)'
+            'python-docutils: reStructuredText preview'
+            'python-markdown: Markdown preview'
             'tre: preview synchronization')
 provides=($_pkgname)
 conflicts=($_pkgname)
@@ -32,6 +32,6 @@ pkgver() {
 
 package() {
   cd $pkgname
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  python setup.py install --root="$pkgdir/" --optimize=1
 }
 
