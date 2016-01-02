@@ -1,6 +1,6 @@
 # Maintainer: Laurent Treguier <laurent@treguier.org>
 pkgname=dkms-autoremove
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Script and service to remove unused kernel modules built using DKMS'
 arch=('any')
@@ -8,7 +8,7 @@ url='https://aur.archlinux.org/packages/dkms-autoremove'
 license=('MIT')
 depends=('dkms')
 source=($pkgname{,.service})
-md5sums=('627215f90f18b8c2f29128130f6d85f0'
+md5sums=('810309004a21e84e6bd8d860b04534a6'
          'd8e77f151e20861378f4c0b5f835b6ea')
 
 package() {
