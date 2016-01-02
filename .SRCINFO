@@ -1,6 +1,6 @@
 pkgbase = librabbitmq-c
 	pkgdesc = A RabbitMQ(amqp) library written in C-language
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 2
 	url = https://github.com/alanxz/rabbitmq-c
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = librabbitmq-c
 	depends = popt
 	depends = openssl
 	options = !libtool
-	source = librabbitmq-c-0.7.0.zip::https://github.com/alanxz/rabbitmq-c/archive/v0.7.0.zip
-	md5sums = 32fd027ac01c2271615bee3e66afa00e
+	source = librabbitmq-c-0.7.1.zip::https://github.com/alanxz/rabbitmq-c/archive/v0.7.1.zip
+	md5sums = 4e312edbfc1b20b8fc3e14bc32deb2bc
 
 pkgname = librabbitmq-c
 

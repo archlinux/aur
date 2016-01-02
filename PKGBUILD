@@ -2,7 +2,7 @@
 # Contributor: aleiphoenix <aleiphoenix@gmail.com>
 
 pkgname=librabbitmq-c
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=2
 pkgdesc="A RabbitMQ(amqp) library written in C-language"
 arch=('i686' 'x86_64' 'armv7h')
@@ -11,7 +11,7 @@ depends=('popt' 'openssl')
 makedepends=('cmake' 'docbook-xsl' 'doxygen' 'xmlto')
 url=https://github.com/alanxz/rabbitmq-c
 source=("${pkgname}-${pkgver}.zip::https://github.com/alanxz/rabbitmq-c/archive/v${pkgver}.zip")
-md5sums=('32fd027ac01c2271615bee3e66afa00e')
+md5sums=('4e312edbfc1b20b8fc3e14bc32deb2bc')
 options=(!libtool)
 
 build() {
