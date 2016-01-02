@@ -1,0 +1,13 @@
+#!/bin/sh
+
+P9BASE=${P9BASE:-/opt/9base}
+export P9BASE
+
+case "$PATH" in
+    $P9BASE/bin:*) ;;
+    *) export PATH=$P9BASE/bin:$PATH ;;
+esac
+
+if [ $# -gt 0 ]; then
+    exec "$@"
+fi
