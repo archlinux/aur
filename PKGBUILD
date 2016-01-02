@@ -1,7 +1,7 @@
 # Maintainer: Ashwin <ashuwish+arch@gmail.com>
 
 pkgname=python2-fluidsim-hg
-pkgver=0.0.2a
+pkgver=0.0.3a
 pkgrel=1
 pkgdesc="FluidDyn project | FluidSim | Simulation package for CFD."
 _hgproj=fluiddyn
@@ -9,12 +9,13 @@ _hgrepo=fluidsim
 arch=('any')
 url="https://bitbucket.org/${_hgproj}/${_hgrepo}"
 license=('custom:"CeCILL-B"')
-depends=('python2 >= 2.7.3' 'python2-numpy' 'python2-psutil' 'python2-h5py'
+depends=('python2>=2.7.3' 'python2-numpy' 'python2-psutil' 'python2-h5py'
 	 'python2-matplotlib' 'python2-ptyprocess' 'python2-fluiddyn-hg' 'fftw')
 makedepends=('cython2' 'mercurial' 'python2-setuptools')
 optdepends=('fftw-mpich: parallelized solvers'
             'mpich: parallelized solvers'
-            'python2-mpi4py == 1.3.1: parallelized solvers')
+            'python2-mpi4py=1.3.1: parallelized solvers')
+provides=('fluidsim')
 
 source=("hg+${url}")
 sha256sums=('SKIP')
@@ -37,5 +38,5 @@ build() {
 package() {
   cd "${srcdir}/${_hgrepo}"
   python2 setup.py install --root=$pkgdir
-  install -D -m644 LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt
+  install -D -m644 LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
