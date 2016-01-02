@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=ffmpeg-full-git-doc
-pkgver=N.77505.g3215342
+pkgver=N.77668.g7812997
 pkgrel=1
 pkgdesc="FFmpeg documentation from Git repository"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('git')
 conflicts=(
     'ffmpeg' 'ffmpeg-git' 'ffmpeg-full' 'ffmpeg-full-extra' 'ffmpeg-full-nvenc'
     'ffmpeg-libfdk_aac')
-source=("$pkgname"::'git+http://source.ffmpeg.org/git/ffmpeg.git')
+source=("$pkgname"::'git://source.ffmpeg.org/ffmpeg.git')
 sha256sums=('SKIP')
 
 pkgver() {
