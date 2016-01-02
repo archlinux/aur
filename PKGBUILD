@@ -4,8 +4,8 @@
 
 _pkgname=libphutil
 pkgname=$_pkgname-git
-pkgver=5.r793.g20d4310
-pkgrel=1
+pkgver=5.r937.gadb8a9c
+pkgrel=2
 pkgdesc='Library system which organizes PHP classes and functions into modules'
 arch=('any')
 url="http://phabricator.com"
@@ -28,8 +28,7 @@ prepare() {
 }
 
 package() {
-  install -d "$pkgdir/usr/share/php/$_pkgname" "$pkgdir/etc/php/conf.d/"
+  install -d "$pkgdir/usr/share/php/$_pkgname"
 # do not copy hidden directories
   cp -a $_pkgname/* "$pkgdir/usr/share/php/$_pkgname/"
-  echo 'open_basedir = "${open_basedir}:/usr/share/php/"' > "$pkgdir/etc/php/conf.d/libphutil.ini"
 }
