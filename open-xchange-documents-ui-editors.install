@@ -1,0 +1,14 @@
+# This is a default template for a post-install scriptlet.
+# Uncomment only required functions and remove any functions
+# you don't need (and this header).
+
+pre_install() {
+	if ! id -u "open-xchange" >/dev/null 2>&1; then
+        echo "user open-xchange does not exist. Creating it now"
+        useradd -U -s /usr/bin/false -d /opt/open-xchange open-xchange
+    fi
+}
+
+post_install() {
+	chown -R open-xchange:open-xchange /opt/open-xchange
+}
