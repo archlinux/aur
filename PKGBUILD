@@ -12,7 +12,7 @@ depends=('open-xchange-core')
 makedepends=()
 conflicts=()
 provides=('open-xchange-mailstore')
-source=('https://software.open-xchange.com/products/appsuite/stable/debs/DebianJessie/all/open-xchange-imap_7.8.0-6_all.deb')
+source=('https://software.open-xchange.com/products/appsuite/stable/backend/DebianJessie/all/open-xchange-imap_7.8.0-6_all.deb')
 sha256sums=('9c54241337c5b0ba0e48ae6d6d1bbb3cf5d8f9a56a102a7245b8d7ca08c24bef')
 
 package() {
