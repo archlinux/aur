@@ -2,18 +2,18 @@
 # Maintainer: Florent Thiéry <fthiery@gmail.com>
 _pkgname=gst-plugins-bad
 pkgname=$_pkgname-rpi-nox
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework Bad Plugins with compilation options optimized for RaspberryPi so that glimagesink works without Xorg"
 arch=('armv6h')
 license=('LGPL')
-url="http://gstreamer.freedesktop.org/"
+url="http://gstreamer.freedesktop.org"
 depends=('mjpegtools' 'gst-plugins-base-libs' 'curl' 'chromaprint' 'libmms' 'faad2' 'mpg123' 'faac' 'celt' 'libdca' 'soundtouch' 'spandsp' 'libdvdnav' 'libmodplug' 'libgme' 'opus' 'wayland' 'neon' 'libofa' 'fluidsynth' 'openjpeg' 'libwebp' 'libsrtp' 'gnutls' 'wildmidi' 'glu' 'sbc' 'rtmpdump' 'libgudev' 'raspberrypi-firmware-tools')
 makedepends=('schroedinger' 'libexif' 'libdvdread' 'libvdpau' 'libmpeg2' 'python' 'wildmidi' 'librsvg' 'gobject-introspection' 'gtk-doc' 'libtiger' 'ladspa' 'libusb' 'raspberrypi-firmware-tools')
 conflicts=('gst-plugins-bad')
 options=(!emptydirs)
 source=(${url}/src/$_pkgname/$_pkgname-$pkgver.tar.xz)
-sha256sums=('e176a9af125f6874b3d6724aa7566a198fa225d3ece0a7ac2f2b51c57e525466')
+sha256sums=('650855e39ff56a8bb6cb0c192109c5926ce12f536d06e19ebf829de71ef396fe')
 
 prepare() {
   cd $_pkgname-$pkgver
