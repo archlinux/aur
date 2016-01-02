@@ -9,6 +9,6 @@ do
     modver=`echo $output | cut -d/ -f2`
     kernel=`echo $output | cut -d/ -f3`
     
-    dkms remove $module/$modver -k $kernel
-    rm -r /usr/lib/modules/$kernel
+    dkms remove "$module/$modver" -k "$kernel"
+    rm -r "/usr/lib/modules/$kernel"
 done
