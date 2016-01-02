@@ -5,7 +5,7 @@ pkgdesc="Lexicon is an instant dictionary for Linux."
 arch=('any')
 url="http://insomniacprogrammer.net16.net"
 depends=('yad')
-source=("wget http://downloads.sourceforge.net/project/lexicon-dictionary/lexicon-dictionary-2.0.tar.xz")
+source=("http://downloads.sourceforge.net/project/lexicon-dictionary/lexicon-dictionary-2.0.tar.xz")
 md5sums=('bc88a123c42bf4cc0bde2ab5a1787736')
 
 package()  {
