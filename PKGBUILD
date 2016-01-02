@@ -1,0 +1,65 @@
+# Maintainer: catskillmarina <catskillmarina at gmail.com>
+
+pkgname=xroach
+pkgver=1
+pkgrel=4.4
+pkgdesc="Cockroaches hide under your windows"
+arch=('i686' 'x86_64')
+url="ftp://ftp.netbsd.org/pub/pkgsrc/distfiles/xroach-4.4/xroach.tar"
+license=('Unknown')
+depends=('libx11')
+makedepends=('')
+source=("ftp://ftp.netbsd.org/pub/pkgsrc/distfiles/$pkgname-$pkgrel/$pkgname.tar")
+# 'patch-aa'
+# 'patch-ab'
+md5sums=('06f3887f12ab623642b446f7b330ae80')
+# 'zfzxcvzxcv -some md5sum'
+# 'another md5sum')
+
+prepare() {
+#  cd "$pkgname-$pkgver"
+  cd "$pkgname"
+#  patch -p1 -i "$srcdir/patch-aa" 
+#  patch -p1 -i "$srcdir/patch-ab"
+  pwd
+  chmod -R +w $srcdir/
+  cp "$srcdir/xroach/bitmaps/roach000.xbm" "$srcdir/$pkgname"
+  cp "$srcdir/xroach/bitmaps/roach015.xbm" "$srcdir/$pkgname"
+  cp "$srcdir/xroach/bitmaps/roach030.xbm" "$srcdir/$pkgname"
+  cp "$srcdir/xroach/bitmaps/roach045.xbm" "$srcdir/$pkgname"
+  cp "$srcdir/xroach/bitmaps/roach060.xbm" "$srcdir/$pkgname"
+  cp "$srcdir/xroach/bitmaps/roach075.xbm" "$srcdir/$pkgname"
+  cp "$srcdir/xroach/bitmaps/roach090.xbm" "$srcdir/$pkgname"
+  cp "$srcdir/xroach/bitmaps/roach105.xbm" "$srcdir/$pkgname"
+  cp "$srcdir/xroach/bitmaps/roach120.xbm" "$srcdir/$pkgname"
+  cp "$srcdir/xroach/bitmaps/roach135.xbm" "$srcdir/$pkgname"
+  cp "$srcdir/xroach/bitmaps/roach150.xbm" "$srcdir/$pkgname"
+  cp "$srcdir/xroach/bitmaps/roach165.xbm" "$srcdir/$pkgname"
+  cp "$srcdir/xroach/bitmaps/roach180.xbm" "$srcdir/$pkgname"
+  cp "$srcdir/xroach/bitmaps/roach195.xbm" "$srcdir/$pkgname"
+  cp "$srcdir/xroach/bitmaps/roach210.xbm" "$srcdir/$pkgname"
+  cp "$srcdir/xroach/bitmaps/roach225.xbm" "$srcdir/$pkgname"
+  cp "$srcdir/xroach/bitmaps/roach240.xbm" "$srcdir/$pkgname"
+  cp "$srcdir/xroach/bitmaps/roach255.xbm" "$srcdir/$pkgname"
+  cp "$srcdir/xroach/bitmaps/roach270.xbm" "$srcdir/$pkgname"
+  cp "$srcdir/xroach/bitmaps/roach285.xbm" "$srcdir/$pkgname"
+  cp "$srcdir/xroach/bitmaps/roach300.xbm" "$srcdir/$pkgname"
+  cp "$srcdir/xroach/bitmaps/roach315.xbm" "$srcdir/$pkgname"
+  cp "$srcdir/xroach/bitmaps/roach330.xbm" "$srcdir/$pkgname"
+  cp "$srcdir/xroach/bitmaps/roach345.xbm" "$srcdir/$pkgname"
+}
+
+build() {
+  #cd "$pkgname-$pkgver"
+  cd "$pkgname"
+  pwd
+  gcc -lm -lX11 -o xroach xroach.c
+}
+
+package() {
+  cd "$pkgname"
+  pwd
+  install -Dm755 xroach "$pkgdir/usr/bin/xroach"
+  install -Dm644 xroach.6 "$pkgdir/usr/share/man/man6/xroach.6"
+}
+
