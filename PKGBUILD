@@ -2,7 +2,7 @@
 
 _pkg=cakephp
 pkgname=cakephp2
-pkgver=2.7.5
+pkgver=2.7.8
 pkgrel=1
 pkgdesc='The Rapid Development Framework for PHP'
 arch=('any')
@@ -30,6 +30,6 @@ package() {
     mv $pkgdir/$webapps/cakephp2/app/Config/database.php.default $pkgdir/$webapps/cakephp2/app/Config/database.php
 }
 
-md5sums=('c503adfeeb65958f49c47e354055dae3'
+md5sums=('7e411a9ca0757c2f083d4e1914e6a4fe'
          'd0bd278b4ad99ff5ffa69161de14da29'
          '5f3cad61b94b911e697f45a00ac8b0e6')
