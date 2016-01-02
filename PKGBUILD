@@ -56,6 +56,7 @@ build() {
     -opensource \
     -prefix /opt/qt-${_pkgver}-${_piver} \
     -opengl es2 \
+    -egl \
     \
     -no-widgets \
     -make libs \
