@@ -2,9 +2,9 @@
 
 pkgname=sendanywhere
 pkgver=1.12.18
-pkgrel=0
+pkgrel=1
 pkgdesc="Send Anywhere, a peer-to-peer file sharing service"
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://send-anywhere.com"
 license=('custom:sendanywhere_eula')
 provides=('sendanywhere')
@@ -13,15 +13,12 @@ makedepends=('dpkg')
 install=$pkgname.install
 
 if [[ $CARCH = i686 ]];then
-  _arch=i386
-  sha256sums=('ffdac92b5cce6e48af1c6cde2d2917ac6432089e7c327ccb2be1f7800609a974')
+    sha256sums_i686=('ffdac92b5cce6e48af1c6cde2d2917ac6432089e7c327ccb2be1f7800609a974')
+    source_i686=("https://update.send-anywhere.com/linux_downloads/sendanywhere_latest_i386.deb")
 else
-  _arch=amd64
-  sha256sums=('ad0168f85fbc2f3051a630dbd1621d5c48b2f2d32cfd76c961da391b57a10122')
+    sha256sums_x86_64=('ad0168f85fbc2f3051a630dbd1621d5c48b2f2d32cfd76c961da391b57a10122')
+    source_x86_64=("https://update.send-anywhere.com/linux_downloads/sendanywhere_latest_amd64.deb")
 fi
-
-_filename="sendanywhere_latest_${_arch}.deb"
-source=("https://update.send-anywhere.com/linux_downloads/$_filename")
 
 package() {
    echo '==> Extracting with dpkg.'
