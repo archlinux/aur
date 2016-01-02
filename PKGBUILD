@@ -6,8 +6,8 @@ pkgdesc="A KDE program for users of AVMs Fritz!Box to get call signaling and oth
 arch=(i686 x86_64)
 url="https://github.com/jowi24/kfritz"
 license=('GPL2')
-depends=('kdelibs>=4.3' 'commoncpp2')
-makedepends=('automoc4' 'cmake')
+depends=('kdebase-runtime' 'boost-libs')
+makedepends=('automoc4' 'cmake' 'commoncpp2')
 source=("https://github.com/jowi24/kfritz/releases/download/${pkgver}/kfritz_${pkgver}.orig.tar.gz")
 md5sums=('4f38bb545e5b1469215d261ad41e90e2')
 
@@ -16,7 +16,7 @@ build() {
     cd $srcdir/kfritz
 
     #run cmake manually to set the correct CMAKE_INSTALL_PREFIX
-    mkdir build
+    mkdir -p build
     cd build
     cmake -DCMAKE_INSTALL_PREFIX=/usr ..
     cd ..
