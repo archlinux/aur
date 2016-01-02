@@ -2,7 +2,7 @@
 
 _pkgname=screencloud
 pkgname=${_pkgname}-git
-pkgver=1.2.0.56.g8ee8792
+pkgver=1.2.0.77.gf608629
 pkgrel=2
 pkgdesc='An easy to use screenshot sharing tool. Experimental Qt5 UI. Development version.'
 arch=('i686' 'x86_64')
@@ -44,7 +44,7 @@ build() {
 	
 	# Building package
 	cd ${srcdir}/build
-	cmake ../${_pkgname}/${_pkgname} \
+	cmake ../${_pkgname} \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DQT_QMAKE_EXECUTABLE=/usr/bin/qmake-qt5 \
 		-DCONSUMER_KEY_SCREENCLOUD=${_consumer_key} \
