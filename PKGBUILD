@@ -2,7 +2,7 @@
 # Contributor: Christopher Arndt <chris@chrisarndt.de>
 
 pkgname=tracktion-6
-pkgver=6.2.3
+pkgver=6.3.0
 pkgrel=1
 pkgdesc="Commercial Proprietary Music Production Software"
 arch=('x86_64')
@@ -15,12 +15,12 @@ optdepends=(
 	)
 conflicts=()
 source=(
-	"${url}downloads/tracktion6-64/TracktionInstall_${pkgver//\./_}_Linux_64Bit.deb"
+	"https://s3-us-west-2.amazonaws.com/tracktion-marketplace-public/TracktionInstall_6_Linux_64Bit_latest.deb"
 	'license' 
 	'Tracktion6.desktop'
 	)
 install="tracktion.install"
-md5sums=('2aecaad58cb84644e2c1b7ebbf5780d3'
+md5sums=('bdbc41e8e849460f799e5328ec3799d6'
          'd7bac73a1a52d26b337761a1d7ec561d'
          '5f3f8df1af8260db42a1ab4cc313d75a')
 
