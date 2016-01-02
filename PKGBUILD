@@ -5,7 +5,7 @@
 _pkgname=noto-fonts-emoji
 pkgname=$_pkgname-git
 pkgver=r81.9417128
-pkgrel=2
+pkgrel=3
 pkgdesc="Google Noto emoji fonts"
 arch=(any)
 url="https://www.google.com/get/noto/"
@@ -13,7 +13,7 @@ license=(Apache)
 provides=($_pkgname)
 conflicts=($_pkgname)
 depends=(fontconfig)
-makedepends=(cairo git optipng python2-fonttools python2-setuputils nototools zopflipng-git)
+makedepends=(cairo git optipng python2-fonttools python2-setuptools nototools zopflipng-git)
 install=$_pkgname.install
 source=("$_pkgname::git+https://github.com/googlei18n/noto-emoji.git"
         "$_pkgname.patch")

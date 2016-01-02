@@ -3,7 +3,7 @@
 pkgbase = noto-fonts-emoji-git
 	pkgdesc = Google Noto emoji fonts
 	pkgver = r81.9417128
-	pkgrel = 1
+	pkgrel = 3
 	url = https://www.google.com/get/noto/
 	install = noto-fonts-emoji.install
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = noto-fonts-emoji-git
 	makedepends = git
 	makedepends = optipng
 	makedepends = python2-fonttools
-	makedepends = python2-setuputils
+	makedepends = python2-setuptools
 	makedepends = nototools
 	makedepends = zopflipng-git
 	depends = fontconfig
