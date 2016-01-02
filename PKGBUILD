@@ -1,0 +1,34 @@
+# Maintainer: surefire <surefire@cryptomile.net>
+
+pkgname='cinnamon-applet-windowlistgroup-git'
+pkgver=r190.2b708b8
+pkgrel=1
+pkgdesc='Cinnamon applet. Configurable window list with app grouping and pinning.'
+arch=('any')
+url='https://github.com/jake-phy/WindowIconList'
+license=('GPL')
+depends=('cinnamon')
+makedepends=('git')
+provides=('cinnamon-applet-windowlistgroup')
+conflicts=('cinnamon-applet-windowlistgroup')
+source=("${pkgname}::git+https://github.com/jake-phy/WindowIconList.git#branch=develop")
+md5sums=(SKIP)
+_appletname='WindowListGroup@jake.phy@gmail.com'
+_appletdir="usr/share/cinnamon/applets/${_appletname}"
+
+pkgver() {
+  cd "${pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd "${pkgname}"
+  install -dm0755 "${pkgdir}/${_appletdir}"
+  find "${_appletname}" -maxdepth 1 -type f -exec install -m0644 '{}' "${pkgdir}/${_appletdir}" \;
+    
+  for mo in "${_appletname}/locale/mo/"*.mo; do
+    local lang=$(basename "$mo" .mo)
+    install -dm0755 "${pkgdir}/usr/share/locale/${lang}/LC_MESSAGES"
+    install -m0644 "$mo" "${pkgdir}/usr/share/locale/${lang}/LC_MESSAGES/${_appletname}.mo"
+  done
+}
