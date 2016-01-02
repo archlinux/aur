@@ -3,9 +3,9 @@
 
 pkgname=atril-xfce
 _pkgname=atril
-pkgver=1.12.1
+pkgver=1.12.2
 _pkgver=1.12
-pkgrel=2
+pkgrel=1
 pkgdesc="MATE document viewer slimmed down for Xfce (GTK2 version)"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ conflicts=('atril' 'atril-gtk3')
 replaces=('atril')
 source=("http://pub.mate-desktop.org/releases/${_pkgver}/${_pkgname}-${pkgver}.tar.xz"
         "${pkgname}.desktop")
-sha1sums=('06787a4ff05ce7698a99849850fafa66206b5e4d'
+sha1sums=('c8d9ecf779f398439d67899e31722dd15d8b3b85'
           'eb7bc2b54bcfff8df68f2a6a10e7aa16c85d3b59')
 install=atril.install
 
