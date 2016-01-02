@@ -13,7 +13,8 @@ provides=('kodi-addon-pvr-hts')
 conflicts=('kodi-addon-pvr-hts' 'kodi-pvr-addons')
 source=("git+https://github.com/kodi-pvr/pvr.hts.git"
         "git+https://github.com/xbmc/kodi-platform.git")
-md5sums=('SKIP')
+md5sums=('SKIP'
+         'SKIP')
 
 pkgver() {
   cd "$pkgname"
