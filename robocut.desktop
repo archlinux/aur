@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Robocut
+GenericName=controller program for cutting plotters
+Comment=allow you to cut graphics with a Graphtec plotters
+Exec=robocut
+Icon=robocut
+Terminal=false
+Type=Application
+Categories=Graphics;
+StartupNotify=false

@@ -1,0 +1,3 @@
+post_install() {
+  echo "Add yourself to the lp group (gpasswd -a USERNAME lp)"
+}
