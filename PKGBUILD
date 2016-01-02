@@ -5,7 +5,7 @@
 
 pkgname=noip
 pkgver=2.1.9
-pkgrel=6
+pkgrel=7
 pkgdesc='Dynamic DNS Client Updater for no-ip.com services'
 arch=('x86_64' 'i686' 'armv7h' 'armv6h')
 url='http://www.no-ip.com/downloads.php?page=linux'
@@ -15,7 +15,7 @@ depends=('glibc')
 source=('http://www.no-ip.com/client/linux/noip-duc-linux.tar.gz'
         'noip.service')
 sha256sums=('82b9bafab96a0c53b21aaef688bf70b3572e26217b5e2072bdb09da3c4a6f593'
-            '624553d92d69bb76cb457a056a7722dc051b5bbd17ea0e622b5cc08909019ea5')
+            'ab092b323eb6f86682ed18796d0b467acff8587206cc53a3cc90564608026389')
 
 
 prepare() {

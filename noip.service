@@ -1,6 +1,7 @@
 [Unit]
 Description=No-IP Dynamic DNS Update Client
-After=network.target
+Requires=systemd-resolved.service
+After=systemd-resolved.service
 
 [Service]
 Type=forking
