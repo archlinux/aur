@@ -1,3 +1,4 @@
 src
 pkg
-dkms-autoremove*
+dkms-autoremove
+dkms-autoremove-*.pkg.tar.xz
