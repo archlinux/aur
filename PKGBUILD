@@ -5,8 +5,8 @@
 
 _pkgname=qt5-base
 pkgname=$_pkgname-dev-git
-pkgver=v5.5.1.106.gc8c4ad0
-pkgrel=2
+pkgver=5.5.1.r106.gc8c4ad0
+pkgrel=1
 pkgdesc="A cross-platform application and UI framework"
 arch=("i686" "x86_64")
 url="https://qt-project.org/"
@@ -33,7 +33,8 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
-	git describe --always | sed "s/-/./g"
+    # cutting off 'foo-' prefix that presents in the git tag
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
