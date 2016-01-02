@@ -1,0 +1,8 @@
+post_install() {
+  echo "Don't forget to set your home directory in /etc/conf.d/dimdaemon.conf and enable dimdaemon to start at boot by issuing systemd enable dimdaemon.service."
+  echo "If you sill use rc.d instead you can add dimdaemond to the DAEMONS array in your rc.conf."
+}
+post_upgrade() {
+  echo "If you want dimdaemon to start at boot, enable it by issuing systemctl enable dimdaemon.service."
+  echo "If you sill use rc.d instead you can add dimdaemond to the DAEMONS array in your rc.conf."
+}
