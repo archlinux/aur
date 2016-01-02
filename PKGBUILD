@@ -3,7 +3,7 @@
 pkgname=8188eu-dkms
 _pkgname=${pkgname%-*}
 pkgver=v4.3.0.8_13968
-pkgrel=2
+pkgrel=3
 pkgdesc="Driver for Realtek RTL8188EUS (RTL8188EUS, RTL8188ETV) WLAN"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="http://www.realtek.com.tw/"
@@ -17,6 +17,7 @@ source=("https://dl.dropboxusercontent.com/u/27457926/${_pkgname}-${pkgver}.tar.
         'led.patch'
         'linux-4.0.patch'
         'linux-4.2.patch'
+        'linux-4.3.patch'
         'no_debug.patch')
 sha256sums=('c5604632f88ab6c68074635c73403a3f612f9f69b52af8fe9b96cf851db7a832'
             'edaeafe28410017fabb742d6ccdf060a945150fb56e41084adb7b9dd66739e2b'
@@ -25,6 +26,7 @@ sha256sums=('c5604632f88ab6c68074635c73403a3f612f9f69b52af8fe9b96cf851db7a832'
             '5e03c59412f5d7a85e61493681927afc1bac899a7357a99b88e984f1ecb1a512'
             'b4614962e50f86690cdb30ccde013bb480f29b13b157e8feb05a799b5776369d'
             'a8621280e07d95f6aa7ae1db8a285ba512990e0af3f8f43d54bfb4d0231d2551'
+            '146a8d3b931861538ee36908e28d8ad774d5de0916e01511f48d84827c59cd99'
             '9b8453c15e39cf68ccc1a0d7dfb093439f89e3b2e7c40dd0fa8d0b8aa9956cdd')
 
 prepare() {
@@ -33,6 +35,7 @@ prepare() {
   patch -p1 -i "${srcdir}/led.patch"
   patch -p1 -i "${srcdir}/linux-4.0.patch"
   patch -p1 -i "${srcdir}/linux-4.2.patch"
+  patch -p1 -i "${srcdir}/linux-4.3.patch"
   patch -p1 -i "${srcdir}/no_debug.patch"
 
   # Disable power saving
