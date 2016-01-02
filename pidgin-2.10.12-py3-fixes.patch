@@ -1,0 +1,81 @@
+diff -uprb pidgin-2.10.12.orig/libpurple/purple-remote pidgin-2.10.12/libpurple/purple-remote
+--- pidgin-2.10.12.orig/libpurple/purple-remote	2016-01-01 01:19:41.000000000 +0200
++++ pidgin-2.10.12/libpurple/purple-remote	2016-01-02 06:23:14.082831498 +0200
+@@ -3,13 +3,20 @@
+ import codecs
+ import dbus
+ import re
+-import urllib
+ import sys
++try:
++    from urllib.parse import unquote
++except ImportError:
++    from urllib import unquote
+ 
+ import xml.dom.minidom 
+ 
+-sys.stdin = codecs.getwriter('utf-8')(sys.stdin);
+-sys.stdout = codecs.getwriter('utf-8')(sys.stdout);
++if sys.version_info[0] >= 3:
++    sys.stdin = codecs.getwriter('utf-8')(sys.stdin.buffer)
++    sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer)
++else:
++    sys.stdin = codecs.getwriter('utf-8')(sys.stdin)
++    sys.stdout = codecs.getwriter('utf-8')(sys.stdout)
+ 
+ xml.dom.minidom.Element.all   = xml.dom.minidom.Element.getElementsByTagName
+ 
+@@ -41,7 +48,7 @@ class CheckedAttribute:
+         return result
+             
+ def show_help(requested=False):
+-    print """This program uses D-Bus to communicate with purple.
++    print("""This program uses D-Bus to communicate with purple.
+ 
+ Usage:
+ 
+@@ -72,7 +79,7 @@ Examples of commands:
+ 
+     PurpleAccountsFindConnected?name=&protocol=prpl-jabber
+     PurpleAccountsFindConnected(,prpl-jabber)
+-""" % sys.argv[0]
++""" % sys.argv[0])
+     if (requested):
+         sys.exit(0)
+     else:
+@@ -120,7 +127,7 @@ def execute(uri):
+     if paramstring is not None:
+         for param in paramstring.split("&"):
+             key, value = extendlist(param.split("=",1), 2, "")
+-            params[key] = urllib.unquote(value)
++            params[key] = unquote(value)
+ 
+     accountname = params.get("account", "")
+ 
+@@ -233,12 +240,11 @@ if len(sys.argv) == 1:
+ elif (sys.argv[1] == "--help" or sys.argv[1] == "-h"):
+     show_help(True)
+ elif (obj == None):
+-    print "No existing libpurple instance detected."
++    print("No existing libpurple instance detected.")
+     sys.exit(1);
+     
+ for arg in sys.argv[1:]:
+     output = execute(arg)
+ 
+     if (output != None):
+-        print output
+-
++        print(output)
+diff -uprb pidgin-2.10.12.orig/libpurple/purple-url-handler pidgin-2.10.12/libpurple/purple-url-handler
+--- pidgin-2.10.12.orig/libpurple/purple-url-handler	2016-01-01 01:19:41.000000000 +0200
++++ pidgin-2.10.12/libpurple/purple-url-handler	2016-01-02 05:39:43.084532314 +0200
+@@ -249,7 +249,7 @@ def msnim(uri):
+ 
+ def myim(uri):
+         protocol = "prpl-myspace"
+-        print "TODO: send uri: ", uri
++        print("TODO: send uri: %s" % uri)
+         assert False, "Not implemented"
+ 
+ def sip(uri):

@@ -5,38 +5,30 @@
 # Contributor: Lucien Immink <l.immink@student.fnt.hvu.nl>
 
 pkgname=('pidgin' 'libpurple' 'finch')
-pkgver=2.10.11
-pkgrel=6
-_rev=cbc4db14444c91f4f4b03aa1b228c2d51dacea6b
+pkgver=2.10.12
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
 makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'libsm'
-             'libidn' 'libgadu' 'python2' 'hicolor-icon-theme' 'farstream'
-             'avahi' 'tk' 'ca-certificates' 'intltool' 'networkmanager'
-             'mercurial')
-source=(pidgin::hg+https://bitbucket.org/pidgin/main#revision=$_rev)
-sha256sums=('SKIP')
+             'libidn' 'libgadu' 'python' 'hicolor-icon-theme' 'farstream'
+             'avahi' 'tk' 'ca-certificates' 'intltool' 'networkmanager')
+source=(https://downloads.sourceforge.net/project/$pkgname/Pidgin/$pkgver/$pkgname-$pkgver.tar.bz2{,.asc}
+        pidgin-2.10.12-py3-fixes.patch)
+sha256sums=('2c7523f0fefe89749c03b2b738ab9f7bd186da435be4762f1487eee31e77ffdd'
+            'SKIP'
+            'e38bd61e0dcfcc2e5761078ea709b92c5bf8d025d5eb1288aa8a550715babb7e')
+validpgpkeys=('364E2EB38EA6A8D61FB963AD75FE259AA8AC8032')
 
 prepare() {
-  cd $pkgbase
-
-  # Revert change that breaks rejoining multi-user chats
-  # https://developer.pidgin.im/ticket/16724
-  {
-    hg diff -c 136a5e95a1ad
-    hg diff -c 187b51ce9922
-  } | patch -Rp1
-
-  # Use Python 2
-  sed -i 's/env python$/&2/' */plugins/*.py \
-    libpurple/purple-{remote,notifications-example,url-handler}
+  cd $pkgbase-$pkgver
+  patch -Np1 -i ../pidgin-2.10.12-py3-fixes.patch
 }
 
 build() {
-  cd $pkgbase
+  cd $pkgbase-$pkgver
 
-  ./autogen.sh \
+  ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
     --disable-schemas-install \
@@ -45,7 +37,6 @@ build() {
     --enable-cyrus-sasl \
     --disable-doxygen \
     --enable-nm \
-    --with-python=/usr/bin/python2 \
     --with-system-ssl-certs=/etc/ssl/certs
     make
 }
@@ -57,7 +48,7 @@ package_pidgin(){
   optdepends=('aspell: for spelling correction')
   install=pidgin.install
 
-  cd $pkgbase
+  cd $pkgbase-$pkgver
 
   # For linking
   make -C libpurple DESTDIR="$pkgdir" install-libLTLIBRARIES
@@ -76,10 +67,10 @@ package_libpurple(){
   depends=('farstream' 'libsasl' 'libidn' 'libgadu' 'dbus-glib' 'nss')
   optdepends=('avahi: Bonjour protocol support'
               'ca-certificates: SSL CA certificates'
-              'python2-dbus: for purple-remote and purple-url-handler'
+              'python-dbus: for purple-remote and purple-url-handler'
               'tk: Tcl/Tk scripting support')
 
-  cd $pkgbase
+  cd $pkgbase-$pkgver
 
   for _dir in libpurple share/sounds share/ca-certs m4macros po; do
     make -C "$_dir" DESTDIR="$pkgdir" install
@@ -88,9 +79,9 @@ package_libpurple(){
 
 package_finch(){
   pkgdesc="A ncurses-based messaging client"
-  depends=('libpurple' 'libx11' 'python2')
+  depends=('libpurple' 'libx11' 'python')
 
-  cd $pkgbase
+  cd $pkgbase-$pkgver
 
   # For linking
   make -C libpurple DESTDIR="$pkgdir" install-libLTLIBRARIES
