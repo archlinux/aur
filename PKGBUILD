@@ -3,7 +3,7 @@
 
 pkgname=genymotion
 pkgver=2.6.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Complete set of tools that provides a virtual environment for Android."
 arch=('i686' 'x86_64')
 license="UNKNOWN"
@@ -28,8 +28,6 @@ package(){
 
   install -d $pkgdir/opt
   yes | bash ./$pkgname-${pkgver}-linux_$_ARCH.bin -d $pkgdir/opt
-  rm $pkgdir/opt/genymotion/libQt*
-  rm $pkgdir/opt/genymotion/sqldrivers/libqsqlite.so
 
   install -d $pkgdir/usr/bin
   ln -s /opt/genymotion/genymotion $pkgdir/usr/bin/genymotion
