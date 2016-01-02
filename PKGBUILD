@@ -5,7 +5,7 @@
 pkgname=pstate-frequency-git
 _gitname=pstate-frequency
 pkgdesc="Easily control Intel p-state driver (git version)"
-pkgver=2.0.3.r542.a358062
+pkgver=2.0.3.r553.d7583a2
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('git')
@@ -23,13 +23,6 @@ url="https://github.com/pyamsoft/pstate-frequency.git"
 sha256sums=('SKIP')
 source=("${_gitname}::git+${url}#branch=dev")
 
-###############################################################################
-
-##
-# Please read config.mk for an explanation
-# of the variable options in this file
-##
-
 pkgver() {
   cd "$srcdir/$_gitname"
   printf "%s.r%s.%s" "$(awk -F '=' '{if (/^VERSION:=/) {print $2}}' 'config.mk')" \
@@ -38,7 +31,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_gitname"
-  make DESTDIR="${pkgdir}" PREFIX="/usr" clean
 
   # Disabled by default to conform to AUR packaging
   # best practices. It is highly recommended that you
@@ -51,6 +43,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$_gitname"
+  make DESTDIR="${pkgdir}" PREFIX="/usr" clean
   make DESTDIR="${pkgdir}" PREFIX="/usr" bin
 }
 
