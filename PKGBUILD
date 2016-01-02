@@ -4,7 +4,7 @@
 _pkgname=mailcatcher
 pkgname=ruby-$_pkgname
 pkgver=0.6.1
-pkgrel=5
+pkgrel=6
 pkgdesc='Catches mail and serves it through a dream.'
 arch=('any')
 url="http://$_pkgname.me"
@@ -34,13 +34,13 @@ noextract=("$_pkgname-$pkgver.gem")
 package() {
   # _gemdir is defined inside package() because if ruby[gems] is not installed on
   # the system, makepkg will exit with an error when sourcing the PKGBUILD.
-  local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
+  local _gemdir="$pkgdir$(ruby -rubygems -e'puts Gem.default_dir')"
 
-  gem install --no-document --no-user-install --ignore-dependencies --install-dir "$pkgdir$_gemdir" --bindir "$pkgdir/usr/bin" "$_pkgname-$pkgver.gem"
+  gem install --no-document --no-user-install --ignore-dependencies --install-dir "$_gemdir" --bindir "$pkgdir/usr/bin" "$_pkgname-$pkgver.gem"
 
   # Loosen version-specific dependencies
-  sed -i '/dependency(%q<eventmachine>/{s/"<= 1.0.5", //}' "$pkgdir/usr/lib/ruby/gems/2.2.0/specifications/$_pkgname-$pkgver.gemspec"
-  sed -i '/dependency(%q<thin>/{s/"~> 1.5.0"/"~> 1"/}' "$pkgdir/usr/lib/ruby/gems/2.2.0/specifications/$_pkgname-$pkgver.gemspec"
+  sed -i '/dependency(%q<eventmachine>/{s/"<= 1.0.5", //}' "$_gemdir/specifications/$_pkgname-$pkgver.gemspec"
+  sed -i '/dependency(%q<thin>/{s/"~> 1.5.0"/"~> 1"/}' "$_gemdir/specifications/$_pkgname-$pkgver.gemspec"
 
   # Install systemd units
   for file in "$_pkgname"{.service,{-http,-smtp}{@.service,.socket}}; do
