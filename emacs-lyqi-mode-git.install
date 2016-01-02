@@ -1,9 +1,10 @@
 post_install() {
-  echo "==> Change your .emacs to make use of lyqi: "
-  echo "      ;; load lyqi                          "
-  echo "      (load "/path/to/lyqi") ;; path to lyqi.elc file, without .elc extension"
-  echo "      ;; automatically use lyqi mode when editing .ly and .ily files"
-  echo "      (add-to-list 'auto-mode-alist '("\\.ly$" . lyqi-mode))"
-  echo "      (add-to-list 'auto-mode-alist '("\\.ily$" . lyqi-mode))"
+cat <<EOF
+==> Change your .emacs to make use of lyqi:
+      ;; load lyqi
+      (require 'lyqi)
+      ;; automatically use lyqi mode when editing .ly and .ily files
+      (add-to-list 'auto-mode-alist '("\\\\.ly$" . lyqi-mode))
+      (add-to-list 'auto-mode-alist '("\\\\.ily$" . lyqi-mode))
+EOF
 }
-

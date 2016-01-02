@@ -1,7 +1,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=emacs-lyqi-mode-git
-pkgver=r76.ea126ae
-pkgrel=2
+pkgver=r78.4876a0f
+pkgrel=1
 epoch=
 pkgdesc="Emacs mode for LilyPond editing."
 arch=('any')
