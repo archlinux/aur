@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+kerver=`uname --kernel-release | cut -d- -f-2`
+kerrel=`uname --kernel-release | cut -d- -f3`
+
+for output in `dkms status | grep $kerrel | grep -v $kerver | tr -d ',' | tr ' ' '/'`
+do
+    module=`echo $output | cut -d/ -f1`
+    modver=`echo $output | cut -d/ -f2`
+    kernel=`echo $output | cut -d/ -f3`
+    
+    dkms remove $module/$modver -k $kernel
+    rm -r /usr/lib/modules/$kernel
+done

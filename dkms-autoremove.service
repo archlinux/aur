@@ -1,0 +1,10 @@
+[Unit]
+Description=Dynamic Kernel Modules System automatic module removal
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/dkms-autoremove
+
+[Install]
+WantedBy=multi-user.target
