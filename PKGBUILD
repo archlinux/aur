@@ -4,7 +4,7 @@
 _pkgname=mailcatcher
 pkgname=ruby-$_pkgname
 pkgver=0.6.1
-pkgrel=6
+pkgrel=7
 pkgdesc='Catches mail and serves it through a dream.'
 arch=('any')
 url="http://$_pkgname.me"
@@ -37,6 +37,7 @@ package() {
   local _gemdir="$pkgdir$(ruby -rubygems -e'puts Gem.default_dir')"
 
   gem install --no-document --no-user-install --ignore-dependencies --install-dir "$_gemdir" --bindir "$pkgdir/usr/bin" "$_pkgname-$pkgver.gem"
+  rm "$_gemdir/cache/$_pkgname-$pkgver.gem"
 
   # Loosen version-specific dependencies
   sed -i '/dependency(%q<eventmachine>/{s/"<= 1.0.5", //}' "$_gemdir/specifications/$_pkgname-$pkgver.gemspec"
