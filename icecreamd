@@ -7,7 +7,7 @@ fi
 logfile=""
 if test -n "${ICECREAM_LOG_FILE}"; then
     touch ${ICECREAM_LOG_FILE}
-    chown icecc:icecc ${ICECREAM_LOG_FILE}
+    chown icecream:icecream ${ICECREAM_LOG_FILE}
     logfile="-l ${ICECREAM_LOG_FILE}"
 fi
 nice=""
