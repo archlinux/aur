@@ -1,7 +1,7 @@
 # Maintainer: Henrik Hodne <henrik@hodne.io>
 
 pkgname=ruby-install
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Installs Ruby, JRuby, Rubinius, MagLev or MRuby."
 arch=(any)
@@ -11,7 +11,7 @@ depends=('bash')
 optdepends=('zsh')
 makedepends=('gnupg')
 source=(https://github.com/postmodern/${pkgname}/archive/v${pkgver}.tar.gz)
-sha256sums=('aa4448c2c356510cc7c2505961961a17bd3f3435842831e04c8516eb703afd19')
+sha256sums=('3cc90846ca972d88b601789af2ad9ed0a496447a13cb986a3d74a4de062af37d')
 
 prepare() {
     if gpg --fingerprint 0xB9515E77 >/dev/null 2>&1; then
