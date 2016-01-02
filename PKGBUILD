@@ -22,8 +22,7 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p "$pkgname/build-platform"
-  mkdir -p "$pkgname/build-addon"
+  mkdir -p build-addon build-platform
 
   cd "${srcdir}/pvr.hts"
 
