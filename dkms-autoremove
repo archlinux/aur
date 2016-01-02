@@ -3,6 +3,8 @@
 kerver=`uname --kernel-release | cut -d- -f-2`
 kerrel=`uname --kernel-release | cut -d- -f3`
 
+source /etc/dkms/framework.conf
+
 for output in `dkms status | grep $kerrel | grep -v $kerver | tr -d ',' | tr ' ' '/'`
 do
     module=`echo $output | cut -d/ -f1`
@@ -10,5 +12,5 @@ do
     kernel=`echo $output | cut -d/ -f3`
     
     dkms remove "$module/$modver" -k "$kernel"
-    rm -r "/usr/lib/modules/$kernel"
+    rm -r "${install_tree:='/usr/lib/modules'}/$kernel"
 done
