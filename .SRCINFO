@@ -1,6 +1,6 @@
 pkgbase = lilo
 	pkgdesc = A bootloader for Linux
-	pkgver = 24.1
+	pkgver = 24.2
 	pkgrel = 1
 	url = https://alioth.debian.org/projects/lilo/
 	install = lilo.install
@@ -14,9 +14,9 @@ pkgbase = lilo
 	optdepends = perl: to use keytab-lilo
 	options = !makeflags
 	backup = etc/lilo.conf
-	source = http://lilo.alioth.debian.org/ftp/sources/lilo-24.1.tar.gz
+	source = http://lilo.alioth.debian.org/ftp/sources/lilo-24.2.tar.gz
 	source = lilo.conf
-	md5sums = 66573ba8629209da694131efbe20c5de
+	md5sums = fe5e8c9754cee342b958b5fcbbb6eb51
 	md5sums = ca2d8cd9b63f11444861939b42df29c1
 
 pkgname = lilo

@@ -3,7 +3,7 @@
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname=lilo
-pkgver=24.1
+pkgver=24.2
 pkgrel=1
 pkgdesc="A bootloader for Linux"
 arch=('i686' 'x86_64')
@@ -48,5 +48,5 @@ package() {
   rm -rf "${pkgdir}"/etc/kernel
 }
 
-md5sums=('66573ba8629209da694131efbe20c5de'
+md5sums=('fe5e8c9754cee342b958b5fcbbb6eb51'
          'ca2d8cd9b63f11444861939b42df29c1')
