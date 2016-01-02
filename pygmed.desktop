@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Pygmed
+Comment=Edit .desktop files
+Exec=pygmed
+Terminal=false
+Type=Application
+Icon=package_editors
+Categories=Utility;Development;
+StartupNotify=true

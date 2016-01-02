@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
+<head>
+<title>aur-mirror.git - Git clone of the Arch User Repository.
+</title>
+<meta name='generator' content='cgit v0.9.0.2-50-gaa25'/>
+<meta name='robots' content='index, nofollow'/>
+<link rel='stylesheet' type='text/css' href='/git/cgit.css'/>
+<link rel='alternate' title='Atom feed' href='http://pkgbuild.com/git/aur-mirror.git/atom/pygmed/pygmed.install?h=master' type='application/atom+xml'/>
+</head>
+<body>
+<div id='cgit'><table id='header'>
+<tr>
+<td class='logo' rowspan='2'><a href='/git/'><img src='http://pkgbuild.com/git/logo.png' alt='cgit logo'/></a></td>
+<td class='main'><a href='/git/'>index</a> : <a title='aur-mirror.git' href='/git/aur-mirror.git/'>aur-mirror.git</a></td><td class='form'><form method='get' action=''>
+<select name='h' onchange='this.form.submit();'>
+<option value='master' selected='selected'>master</option>
+</select> <input type='submit' name='' value='switch'/></form></td></tr>
+<tr><td class='sub'>Git clone of the Arch User Repository.
+</td><td class='sub right'></td></tr></table>
+<table class='tabs'><tr><td>
+<a href='/git/aur-mirror.git/'>summary</a><a href='/git/aur-mirror.git/refs/'>refs</a><a class='active' href='/git/aur-mirror.git/log/pygmed/pygmed.install'>log</a><a href='/git/aur-mirror.git/tree/pygmed/pygmed.install'>tree</a><a href='/git/aur-mirror.git/commit/pygmed/pygmed.install'>commit</a><a href='/git/aur-mirror.git/diff/pygmed/pygmed.install'>diff</a><a href='/git/aur-mirror.git/stats/pygmed/pygmed.install'>stats</a></td><td class='form'><form class='right' method='get' action='/git/aur-mirror.git/log/pygmed/pygmed.install'>
+<select name='qt'>
+<option value='grep'>log msg</option>
+<option value='author'>author</option>
+<option value='committer'>committer</option>
+<option value='range'>range</option>
+</select>
+<input class='txt' type='text' size='10' name='q' value=''/>
+<input type='submit' value='search'/>
+</form>
+</td></tr></table>
+<div class='path'>path: <a href='/git/aur-mirror.git/log/'>root</a>/<a href='/git/aur-mirror.git/log/pygmed'>pygmed</a>/<a href='/git/aur-mirror.git/log/pygmed/pygmed.install'>pygmed.install</a></div><div class='content'><table class='list nowrap'><tr class='nohover'><th class='left'>Age</th><th class='left'>Commit message (<a href='/git/aur-mirror.git/log/pygmed/pygmed.install?showmsg=1'>Expand</a>)</th><th class='left'>Author</th><th class='left'>Files</th><th class='left'>Lines</th></tr>
+<tr><td>2012-02-04</td><td><a href='/git/aur-mirror.git/commit/pygmed/pygmed.install?id=594fc0ca898543cc967031019dd7d5409fc41661'>updated on Sat Feb  4 05:45:09 UTC 2012</a></td><td>Thomas Dziedzic</td><td>1</td><td>-0/+11</td></tr>
+<tr><td>2012-02-04</td><td><a href='/git/aur-mirror.git/commit/pygmed/pygmed.install?id=ebfd97e85fd9ba9b9040750dabfe3991854f204b'>updated on Sat Feb  4 05:16:31 UTC 2012</a></td><td>Thomas Dziedzic</td><td>1</td><td>-11/+0</td></tr>
+<tr><td>2011-08-27</td><td><a href='/git/aur-mirror.git/commit/pygmed/pygmed.install?id=9492610eb5d7288b648b5fabce65276f0f8f1189'>updated on Sat Aug 27 15:27:23 UTC 2011</a></td><td>Thomas Dziedzic</td><td>1</td><td>-0/+11</td></tr>
+<tr><td>2011-08-20</td><td><a href='/git/aur-mirror.git/commit/pygmed/pygmed.install?id=9dd075da580cffba3375a3dca282c590de07499b'>updated on Sat Aug 20 18:01:30 UTC 2011</a></td><td>Thomas Dziedzic</td><td>1</td><td>-11/+0</td></tr>
+<tr><td>2011-04-12</td><td><a href='/git/aur-mirror.git/commit/pygmed/pygmed.install?id=3a37cbe34014ea2f2014f4185b54072d0451d6e2'>updated on Tue Apr 12 03:01:19 PDT 2011</a></td><td>Thomas Dziedzic</td><td>1</td><td>-0/+11</td></tr>
+</table><div class='pager'></div></div> <!-- class=content -->
+<div class='footer'>generated  by cgit v0.9.0.2-50-gaa25 at 2016-01-02 17:35:46 (UTC)</div>
+</div> <!-- id=cgit -->
+</body>
+</html>
