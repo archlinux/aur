@@ -1,0 +1,144 @@
+# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
+# Contributor: Jamie <dyscoria@googlemail.com>
+
+pkgname=nethack-x11
+pkgver=3.6.0
+pkgrel=1
+pkgdesc='Single-player roguelike dungeon exploration game'
+arch=('x86_64' 'i686')
+url='http://nethack.org/'
+license=('custom')
+depends=('libxaw')
+makedepends=('setconf' 'gendesk' 'addinclude') #xorg-server-devel
+conflicts=('nethack')
+backup=('etc/nethackrc')
+source=("http://downloads.sourceforge.net/nethack/nethack-${pkgver//./}-src.tgz"
+        'nethack-x11.png::http://bugs.gentoo.org/attachment.cgi?id=86458')
+sha256sums=('1ade698d8458b8d87a4721444cb73f178c74ed1b6fde537c12000f8edf2cb18a'
+            'e1e0b059c617af04ee88bed4b03b73c02f022663e001c5485fe9900ca2d76295')
+
+prepare() {
+  cd "nethack-$pkgver"
+
+  gendesk -n -f --pkgname "$pkgname" --pkgdesc "$pkgdesc" --exec nethack \
+    --name 'Nethack (X11)' --genericname Nethack
+
+  sh sys/unix/setup.sh
+
+  echo '' > Makefile.top
+  #echo 'GAMEUID=root' > Makefile.top
+  #echo 'GAMEGRP=root' >> Makefile.top
+  echo 'GAMEDIR=$(PREFIX)/share/$(GAME)' >> Makefile.top
+  echo 'SHELLDIR=$(PREFIX)/bin' >> Makefile.top
+  echo 'VARDIR=$(PREFIX)/var/games/nethack' >> Makefile.top
+  cat Makefile >> Makefile.top
+  mv -f Makefile.top Makefile
+
+  sed 's/# VARDATND =/VARDATND =/' -i Makefile
+  setconf Makefile VARDATND "x11tiles NetHack.ad pet_mark.xbm" # pilemark.xpm rip.xpm
+
+  cd include
+  sed 's:/* #define X11_GRAPHICS:#define X11_GRAPHICS:' -i unixconf.h
+  sed 's:bin/compress:bin/gzip:' -i unixconf.h
+  sed 's:".Z":".gz":' -i unixconf.h
+  sed 's:/* #define DLB:#define DLB:' -i unixconf.h
+  sed 's:games/lib/nethackdir:/share/nethack:' -i unixconf.h
+  sed 's:/* #define LINUX:#define LINUX:' -i unixconf.h
+  sed 's:/* #define TIMED_DELAY:#define TIMED_DELAY:' -i unixconf.h
+
+  sed 's#if !defined(NOTTYGRAPHICS)#ifdef UNIX#' -i config.h
+  sed 's#define TTY_GRAPHICS#define X11_GRAPHICS#' -i config.h
+  #sed 's#DEFAULT_WINDOW_SYS "tty"#DEFAULT_WINDOW_SYS "X11"#g' -i config.h
+  sed 's|#define X11_GRAPHICS||' -i config.h
+
+  #addinclude -n global.h '#define DEFAULT_WINDOW_SYS "X11"'
+
+  cd ..
+
+  #setconf Makefile WINSRC '$(WINTTYSRC) $(WINX11SRC)'
+  #setconf Makefile WINOBJ '$(WINTTYOBJ) $(WINX11OBJ)'
+  #setconf Makefile WINTTYLIB '-lncurses'
+  #setconf Makefile WINLIB '$(WINTTYLIB) $(WINX11LIB)'
+
+  setconf Makefile WINSRC '$(WINX11SRC)'
+  setconf Makefile WINOBJ '$(WINX11OBJ)'
+  setconf Makefile WINLIB '$(WINX11LIB)'
+
+  setconf src/Makefile WINSRC '$(WINX11SRC)'
+  setconf src/Makefile WINOBJ '$(WINX11OBJ)'
+
+  # Bison and Flex > Yacc and Lex
+  setconf -a Makefile YACC 'bison -y'
+  setconf -a Makefile LEX 'flex'
+
+  # Create /etc/nethackrc with OPTIONS=windowtype:X11
+  setconf -a nethackrc OPTIONS 'windowtype:X11'
+
+  # Add two new lines to nethack.sh
+  sed -i \
+    's|export HACKDIR|NETHACKOPTIONS=\nexport NETHACKOPTIONS\nexport HACKDIR|' \
+    sys/unix/nethack.sh
+
+  # Set HACKDIR
+  setconf sys/unix/nethack.sh HACKDIR '/usr/share/nethack'
+
+  # Set NETHACKOPTIONS
+  setconf sys/unix/nethack.sh NETHACKOPTIONS '@/etc/nethackrc'
+
+  # Change Nethack.ad settings
+  sed 's/variable/fixed/' -i win/X11/NetHack.ad
+  sed 's/nh10/fixed/' -i win/X11/NetHack.ad
+  sed 's/!NetHack.tile_file/NetHack.tile_file/' -i win/X11/NetHack.ad
+
+  # Fix tty color detection
+  #echo '#undef TEXTCOLOR' > sys/share/unixtty.new
+  #cat sys/share/unixtty.c >> sys/share/unixtty.new
+  #mv -f sys/share/unixtty.new sys/share/unixtty.c
+
+  # Fix tty color detection
+  #echo '#undef COMPRESS' > src/files.new
+  #echo '#undef ZLIB_COMP' >> src/files.new
+  #echo '#undef TTY_GRAPHICS' >> src/files.new
+  #cat src/files.c >> src/files.new
+  #mv -f src/files.new src/files.c
+  #addinclude src/files.c stdio
+  #echo 'int more() { printf("NOT IMPLEMENTED: more()\n"); return 0; }' >> src/files.c
+}
+
+build() {
+  cd "nethack-$pkgver/src"
+
+  export CC="gcc"
+  export CFLAGS='-I../include -O2 -fomit-frame-pointer -DDEFAULT_WINDOW_SYS=\"X11\" -DX11_GRAPHICS'
+  export LFLAGS="-L/usr/lib -L/usr/lib/X11 -Xlinker -soname=_APP_"
+  export LINK="gcc"
+
+  # MAXIMUM HACK-FORCE, ENGAGED!
+  sh -c "make -k || true" || true
+  sh -c "gcc -o nethack $CFLAGS -Wl,--unresolved-symbols=ignore-all *.o || true"
+  cd ..
+  sh -c "make -k || true" || true
+  cd src
+  sh -c "gcc -o nethack $CFLAGS -Wl,--unresolved-symbols=ignore-all *.o || true"
+}
+
+package() {
+  cd "nethack-$pkgver"
+
+  mkdir -p "$pkgdir/var/games/nethack"
+  echo -e "install:\n\ttrue" > src/Makefile
+  export CFLAGS="-I../include -O2 -fomit-frame-pointer"
+  setconf Makefile VARDIR "$pkgdir/var/games/nethack"
+  make -k PREFIX=$pkgdir/usr install
+  install -Dm644 nethackrc "$pkgdir/etc/nethackrc"
+  install -Dm644 dat/license \
+    "$pkgdir/usr/share/licenses/$pkgname/license"
+  install -Dm644 win/X11/nethack.rc \
+    "$pkgdir/usr/share/doc/$pkgname/nethackrc"
+  install -Dm644 "$pkgname.desktop" \
+    "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 "../$pkgname.png" \
+    "$pkgdir/usr/share/pixmaps/$pkgname.png"
+}
+
+# vim:set ts=2 sw=2 et:
