@@ -1,6 +1,6 @@
 pkgbase = icestorm-git
 	pkgdesc = Lattice iCE40 FPGAs Bitstream Documentation (Reverse Engineered)
-	pkgver = r130.745d81d
+	pkgver = r144.75421c0
 	pkgrel = 1
 	url = http://www.clifford.at/icestorm/
 	arch = x86_64

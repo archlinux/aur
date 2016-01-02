@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Bøe <sebastianbooe@gmail.com>
 pkgname=icestorm-git
-pkgver=r130.745d81d
+pkgver=r144.75421c0
 pkgrel=1
 pkgdesc="Lattice iCE40 FPGAs Bitstream Documentation (Reverse Engineered)"
 arch=('x86_64')
@@ -20,7 +20,12 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-    make
+
+    # Icestorm defaults to clang. We prefer to use gcc because it is
+    # more widespread on Arch (gcc is in base-devel).
+    CXX=gcc
+
+    make CXX=$CXX
 }
 
 package() {
@@ -31,5 +36,8 @@ package() {
 	install -m 644 README "$pkgdir/usr/share/licenses/$pkgname"
 
 	# Install the package
-	make DESTDIR="$pkgdir/usr" install
+	make \
+      DESTDIR="$pkgdir" \
+      PREFIX="/usr" \
+      install
 }
