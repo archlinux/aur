@@ -1,13 +1,14 @@
 # Maintainer: Florian Pritz <flo@xssn.at>
-# $Id: PKGBUILD 71572 2012-05-29 20:53:33Z bluewind $
+# $Id: PKGBUILD 136290 2015-07-02 17:31:50Z bluewind $
 # Contributor: Angel Velasquez <angvp@archlinux.org> 
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: ice-man <icemanf@gmail.com>
+# x32 Maintainer: Fantix King <fantix.king at gmail.com>
 
 _pkgbasename=libssh2
 pkgname=libx32-$_pkgbasename
-pkgver=1.4.2
+pkgver=1.6.0
 pkgrel=1.1
 pkgdesc="A library implementing the SSH2 protocol as defined by Internet Drafts (x32 ABI)"
 url="http://www.libssh2.org/"
@@ -18,7 +19,7 @@ provides=('libssh2.so')
 makedepends=('libx32-zlib' "gcc-multilib-x32")
 options=('!libtool')
 source=("http://www.libssh2.org/download/${_pkgbasename}-${pkgver}.tar.gz")
-md5sums=('42e2b3796ac07fc1dbafc7abcc002cd3')
+md5sums=('00aabd6e714a5f42a4fb82ace20db1dd')
 
 build() {
   export CC="gcc -mx32"
