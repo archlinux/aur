@@ -1,6 +1,6 @@
 pkgbase = tmux-git
 	pkgdesc = A terminal multiplexer
-	pkgver = 2.0.r156.g83a7017
+	pkgver = 2.1.r275.gea9873e
 	pkgrel = 1
 	url = http://tmux.github.io
 	arch = i686

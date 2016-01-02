@@ -6,7 +6,7 @@
 
 pkgname=tmux-git
 _gitname=tmux
-pkgver=2.0.r156.g83a7017
+pkgver=2.1.r275.gea9873e
 pkgrel=1
 pkgdesc="A terminal multiplexer"
 url="http://tmux.github.io"
@@ -43,7 +43,6 @@ package() {
   cd $_gitname
 
   make DESTDIR="$pkgdir" install
-  install -Dm644 examples/tmux.vim "$pkgdir/usr/share/vim/vimfiles/syntax/tmux.vim"
   install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/tmux/LICENSE"
   install -dm755 "$pkgdir/usr/share/tmux/"
   install -m644 examples/* "$pkgdir/usr/share/tmux/"
