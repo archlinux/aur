@@ -5,10 +5,13 @@
 
 pkgname=tkcvs
 pkgver=8.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Tcl/Tk-based graphical interface to the CVS and Subversion"
 license=('GPL')
-depends=('subversion' 'cvs' 'tk' 'diffutils')
+depends=('tk' 'diffutils')
+optdepends=('subversion: svn support'
+            'cvs: cvs support'
+            'git: git support')
 arch=('i686' 'x86_64')
 source=(http://www.twobarleycorns.net/tkcvs-${pkgver}.tar.gz)
 url="http://www.twobarleycorns.net/tkcvs.html"
