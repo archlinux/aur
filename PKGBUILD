@@ -2,15 +2,15 @@
 # Please report issues at https://github.com/jojosch/pkgbuilds
 
 pkgname=php-mailparse
-pkgver=2.1.6
-pkgrel=3
+pkgver=3.0.0
+pkgrel=1
 pkgdesc="Extension for parsing and working with email messages (RFC822 and RFC2045)"
 arch=('i686' 'x86_64')
 url="http://pecl.php.net/package/mailparse"
 license=('PHP')
-depends=('php')
+depends=('php>=7.0.0')
 source=("http://pecl.php.net/get/mailparse-${pkgver}.tgz")
-sha256sums=('73705197d2b2ee782efa5477eb2a21432f592c2cb05a72c3a037bbe39e02b5cc')
+sha256sums=('92a80f7d2cda597ca75186531006b802fa278f33d1b3b854420f48832e5bc7da')
 
 build() {
   cd "${srcdir}/mailparse-${pkgver}/"
