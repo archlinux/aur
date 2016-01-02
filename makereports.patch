@@ -1,0 +1,8 @@
+--- makereports	2016-01-02 16:30:43.749659349 +0100
++++ makereports.patched	2016-01-02 16:34:34.943984164 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/contrib/bin/perl
++#!/usr/bin/perl
+ # This takes output from dnswalk and makes a "rep.orts" directory
+ # with one file per contact.  Great for sending mail to all the admins.
+ 
