@@ -32,7 +32,8 @@ sha256sums=("SKIP")
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
-	git describe --always | sed "s/-/./g"
+    # cutting off 'foo-' prefix that presents in the git tag
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
