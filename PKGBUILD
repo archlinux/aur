@@ -2,7 +2,7 @@
 
 _pkgname=easygui
 pkgname=python-easygui-git
-pkgver=r172.cbd30b0
+pkgver=r178.7ffd8d4
 pkgrel=1
 pkgdesc='A module for very simple, very easy GUI programming in Python'
 url='https://github.com/robertlugg/easygui'
