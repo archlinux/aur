@@ -1,13 +1,13 @@
 # Maintainer: Henrik Hodne <henrik@hodne.io>
 
 pkgname=otf-fira-code
-pkgver=1.101
+pkgver=1.102
 pkgrel=1
 pkgdesc="monospaced font with programming ligatures"
 arch=(any)
 depends=(fontconfig xorg-font-utils)
 source=(https://github.com/tonsky/FiraCode/archive/${pkgver}.tar.gz)
-sha256sums=('a89579ce2dd24123f560fd02992031f65f85067fa9d9044edd16c36cab84e8e3')
+sha256sums=('1f131945c5a71572a6442a252e457711425b660edb26a950efdc24dee1e7f94a')
 install=${pkgname}.install
 license=("custom: SIL Open Font License")
 
