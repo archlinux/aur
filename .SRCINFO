@@ -12,6 +12,7 @@ pkgbase = noto-fonts-emoji-git
 	makedepends = git
 	makedepends = optipng
 	makedepends = python2-fonttools
+	makedepends = python2-setuputils
 	makedepends = nototools
 	makedepends = zopflipng-git
 	depends = fontconfig
