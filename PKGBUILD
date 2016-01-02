@@ -1,15 +1,15 @@
 # Maintainer: Vinson Chuong <vinsonchuong@gmail.com>
 pkgname=bash-common-parse-options
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc=An\ easier\ way\ to\ parse\ CLI\ options\ for\ Bash\ scripts
 arch=(any)
 url=https://github.com/vinsonchuong/bash-common-parse-options
 license=(MIT)
 makedepends=(clidoc)
 checkdepends=(bats-git)
-source=(https://github.com/vinsonchuong/bash-common-parse-options/archive/v0.0.3-1.tar.gz)
-md5sums=('0fb2d6ee36044113ecddd36fb47af1b5')
+source=(https://github.com/vinsonchuong/bash-common-parse-options/archive/v0.0.3-2.tar.gz)
+md5sums=("SKIP")
 build () 
 { 
     cd "${srcdir}/${pkgname}-${pkgver}-${pkgrel}";
