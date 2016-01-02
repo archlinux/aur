@@ -14,12 +14,24 @@ source=()
 prepare() {
 	# A dirty hack to download the package; using W3m to dump the data at the download URL instead of using the usual PKGBUILD way due to 403 (forbidden) errors when done so.
 	cd "$srcdir"
-	w3m -dump_source http://psx-scene.com/forums/attachments/f164/14193d1214904456-esr-public-beta-esrpatch-02.tar.gz > esrpatch-"$pkgver".tar.gz
+	echo "Downloading esrpatch-$pkgver.tar.gz and validating it using md5sum..."
+	w3m -dump_source http://psx-scene.com/forums/attachments/f164/14193d1214904456-esr-public-beta-esrpatch-02.tar.gz > esrpatch-"$pkgver".tar.gz || (echo "Downloading esrpatch-$pkgver.tar.gz failed" >&2 ; exit 1)
 	if [ $(md5sum esrpatch-02.tar.gz | head -c 32) = "bc6ec554c5cbe33cab6502b50c404a58" ];
-		then if [ $(sha256sum esrpatch-02.tar.gz | head -c 64) = "9cddd307b2a0ca5f048797c94309700d1dcbf3cfc570e5fab60e5ae6c798ad9f" ];
-			then tar xzvf esrpatch-"$pkgver".tar.gz;
-		fi;
-	fi
+		then {
+			echo "Downloaded esrpatch-$pkgver.tar.gz and successfully validated it using md5sum"
+			echo "Validating esrpatch-$pkgver.tar.gz using sha256sum...";
+			if [ $(sha256sum esrpatch-02.tar.gz | head -c 64) = "9cddd307b2a0ca5f048797c94309700d1dcbf3cfc570e5fab60e5ae6c798ad9f" ];
+				then {
+					echo "Suddessfully validated esrpatch-$pkgver.tar.gz using sha256sum"
+					echo "Unpacking esrpatch-$pkgver.tar.gz...";
+					tar xzvf esrpatch-"$pkgver".tar.gz || (echo "Unpacking esrpatch-$pkgver.tar.gz failed" >&2 ; exit 1);
+					echo "Unpacked esrpatch-$pkgver.tar.gz"
+				};
+				else echo "Validating esrpatch-$pkgver.tar.gz using sha256sum failed" && exit 1;
+			fi;
+		};
+		else echo "Downloading esrpatch-$pkgver.tar.gz or validating it using md5sum failed" && exit 1;
+	fi;
 }
 
 build() {
