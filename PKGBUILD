@@ -1,6 +1,6 @@
 # Maintainer: M0Rf30
 pkgname=cakephp
-pkgver=1.3.20
+pkgver=1.3.21
 pkgrel=1
 pkgdesc='The Rapid Development Framework for PHP'
 arch=('any')
@@ -21,6 +21,6 @@ package() {
     mkdir -p $pkgdir/var/log/httpd/cakephp
 }
 
-md5sums=('1ab70095945ddfe8cb2579141206ef72'
+md5sums=('157f6cc687c796762217e42859ccfaa1'
          'a3a711e2e32fe03976ed7737c22e0c56'
          'd206d584570dc1b740f0c9c252982f6c')
