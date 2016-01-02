@@ -1,3 +1,126 @@
+manpages-fr-extra (20151231) unstable; urgency=medium
+
+  [ David Prévot ]
+  * bash: Sync with 4.3-14
+  * coreutil: Sync with 8.23-4
+  * cron: Sync with 3.0pl1-128
+  * diffutils: Sync with 1:3.3-2
+  * dosfstools: Sync with 3.0.28-2
+  * e2fsprogs: Sync with 1.42.13-1
+  * findutils: Sync with 4.4.2-10
+  * glibc: Sync with 2.21-6
+  * grep: Sync with 2.20-4.1
+  * openssl:
+    - Sync with 1.0.2c-1
+    - New pages:
+      + ASN1_TIME_set.3ssl
+      + d2i_CMS_ContentInfo.3ssl
+      + d2i_ECPKParameters.3ssl
+      + d2i_ECPrivateKey.3ssl
+      + OPENSSL_instrument_bus.3ssl
+      + SSL_CTX_add1_chain_cert.3ssl
+      + SSL_CTX_set1_curves.3ssl
+      + SSL_CTX_set1_verify_cert_store.3ssl
+      + SSL_CTX_set_cert_cb.3ssl
+      + SSL_CTX_set_custom_cli_ext.3ssl
+      + SSL_CTX_set_read_ahead.3ssl
+      + SSL_CTX_use_serverinfo.3ssl
+      + SSLeay_version.3ssl
+      + X509_check_host.3ssl
+    - New upstream pages not yet translated:
+      + ec.3ssl
+      + EC_GFp_simple_method.3ssl
+      + EC_GROUP_copy.3ssl
+      + EC_GROUP_new.3ssl
+      + EC_KEY_new.3ssl
+      + EC_POINT_add.3ssl
+      + EC_POINT_new.3ssl
+      + SSL_CONF_cmd_argv.3ssl
+      + SSL_CONF_cmd.3ssl
+      + SSL_CONF_CTX_new.3ssl
+      + SSL_CONF_CTX_set1_prefix.3ssl
+      + SSL_CONF_CTX_set_flags.3ssl
+      + SSL_CONF_CTX_set_ssl_ctx.3ssl
+    - Update asn1
+    - Update ciphers
+    - Update d2i
+    - Update dh
+    - Update dsa
+    - Update openssl
+    - Update pkey
+    - Update smime
+  * procps: Sync with 2:3.3.9-9
+  * reiser4progs: Sync with 1.1.0-1.1
+  * reiserfsprogs: Sync with 1:3.6.24-3.1
+  * sysvinit: Sync with 2.88dsf-59.2
+  * util-linux:
+    - Sync with 2.26.2-7
+    - Update translation
+  * util-linux: Sync with 2.25.2-6
+  * x11-xserver-utils: Sync with 7.7+5
+  * Move pages from syslinux to util-linux (Closes: #786461)
+    - last.1
+    - mesg.1
+    - mountpoint.1
+    - sulogin.8
+  * Force new po4a (tbl handling changed)
+
+  [ Jean-Pierre Giraud ]
+  * openssl:
+    - Complete SSL_CTX translation
+    - New translation of some pages:
+      + SSL_CTX_add_session.3ssl
+      + SSL_CTX_load_verify_locations.3ssl
+      + SSL_CTX_new.3ssl
+      + SSL_CTX_sess_number.3ssl
+      + SSL_CTX_sess_set_get_cb.3ssl
+      + SSL_CTX_use_certificate.3ssl
+    - Complete evp translation
+    - New translation of some pages:
+      + EVP_DigestInit.3ssl
+      + EVP_DigestSignInit.3ssl
+      + EVP_DigestVerifyInit.3ssl
+      + EVP_EncryptInit.3ssl
+      + EVP_SealInit.3ssl
+      + EVP_SignInit.3ssl
+      + EVP_VerifyInit.3ssl
+    - Update crypto
+    - Proofread asn1
+
+  [ Baptiste Jammet ]
+  * openssl:
+    - Update x509
+    - Proofread apps
+    - Proofread asn1
+    - Proofread openssl
+
+  [ Jean-Paul Guillonneau ]
+  * openssl:
+    - Proofread asn1
+    - Proofread ciphers
+    - Proofread d2i
+    - Proofread openssl
+    - Proofread x509
+  * util-linux: Proofread
+
+  [ JP Guillonneau ]
+  * openssl: 
+    - Update evp
+    - Update SSL_CTX_set
+
+  [ Thomas Blein ]
+  * openssl : Update pkcs
+
+  [ Jean-Paul Guilloneau ]
+  * openssl:
+    - Update apps
+    - Proofread bn
+
+  [ Vincent Danjean ]
+  * coreutils: tfix join.1 (Closes: #798897)
+
+ -- David Prévot <taffit@debian.org>  Thu, 31 Dec 2015 12:57:37 -0400
+
 manpages-fr-extra (20150130) unstable; urgency=medium
 
   [ David Prévot ]

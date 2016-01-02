@@ -1,8 +1,8 @@
 # Maintainer: X0rg
 
 pkgname=manpages-fr-extra
-pkgver=20150130
-pkgrel=2
+pkgver=20151231
+pkgrel=1
 pkgdesc="Pages de manuel Linux francophones complementaires de 'Debian-l10n-French'"
 arch=('any')
 url="http://www.debian.org/international/french/"
@@ -13,7 +13,7 @@ provides=('man-pages-fr-extra')
 options=(docs)
 changelog=changelog
 source=(http://ftp.fr.debian.org/debian/pool/main/m/"$pkgname"/"$pkgname"_"$pkgver"_all.deb)
-md5sums=('6dd00d17f09973970fb60b40a4600bf2')
+md5sums=('a57b402486cd4f2b2970245e963e89c3')
 
 prepare() {
 	cd "$srcdir"
