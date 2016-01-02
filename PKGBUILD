@@ -2,7 +2,7 @@
 
 _pkgbase=ctrulib
 pkgname="$_pkgbase-git"
-pkgver=r804.b9e5ddb
+pkgver=r1029.cf0a0dc
 pkgrel=1
 pkgdesc="C library for writing user mode arm11 code for the 3DS (CTR)"
 arch=('i686' 'x86_64')
@@ -41,11 +41,7 @@ package() {
   export _DEVKITPRO="$DEVKITPRO"
   export DEVKITPRO="$pkgdir/$_DEVKITPRO"
 
-  cd "$srcdir/$_pkgbase"
-  install -dm755 "$DEVKITPRO/examples"
-  cp -r examples "$DEVKITPRO/examples/3ds"
-
-  cd libctru
+  cd "$srcdir/$_pkgbase/libctru"
   make DESTDIR="$pkgdir/" install
 
   # Don’t fail when doxygen isn’t present.
