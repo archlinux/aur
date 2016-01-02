@@ -1,7 +1,7 @@
 # Maintainer: PitBall
 
 pkgname=ryzom-client
-pkgver=0.12.0.r6710
+pkgver=0.12.0.r6790
 pkgrel=1
 pkgdesc="Ryzom is a Free to Play MMORPG .This version is for playing on an official server"
 arch=('i686' 'x86_64')
