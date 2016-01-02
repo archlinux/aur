@@ -41,6 +41,10 @@ build() {
     sed 's/nelmisc/nelmisc ${LIBXML2_LIBRARIES}/' -i \
          ../code/nel/src/$dir/CMakeLists.txt; done
 
+    # error with gcc-5.3.0
+    sed '/<climits>/a#include <limits>' -i \
+         ../code/nel/include/nel/misc/types_nl.h
+
    cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release \
     -DWITH_RYZOM_SERVER=OFF -DWITH_RYZOM_CLIENT=ON \
     -DWITH_NEL_TOOLS=OFF -DWITH_NEL_TESTS=OFF -DWITH_PCH=OFF \
@@ -49,6 +53,7 @@ build() {
     -DRYZOM_ETC_PREFIX=/etc/ryzom -DRYZOM_SHARE_PREFIX=/usr/share/ryzom \
     -DRYZOM_BIN_PREFIX=/usr/bin -DRYZOM_GAMES_PREFIX=/usr/bin \
     -DLUA_INCLUDE_DIR=/usr/include/lua5.2 ../code
+
    make
 
 }
