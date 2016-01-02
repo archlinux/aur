@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=kolourpaint-frameworks-git
-pkgver=r2012.6a841ab
+pkgver=r2013.821c5c4
 pkgrel=1
 pkgdesc="Paint Program. KF5 Frameworks branch. (GIT version)"
 url='http://kde.org/applications/graphics/kolourpaint'
@@ -9,7 +9,6 @@ arch=('x86_64')
 license=('GPL' 'LGPL' 'FDL')
 depends=('kdelibs4support'
          'qimageblitz-qt5-svn'
-         'libkexiv2'
          'libksane'
          'hicolor-icon-theme'
          )
@@ -33,6 +32,8 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+
+  sed 's|<KSane>|<KSaneWidget>|g' -i kolourpaint/scan/sanedialog.h
 }
 
 build() {
