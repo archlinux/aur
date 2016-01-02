@@ -6,7 +6,7 @@
 
 pkgname=libunicap
 pkgver=0.9.12
-pkgrel=2
+pkgrel=3
 pkgdesc="Provides a uniform API for all kinds of video capture devices"
 arch=('i686' 'x86_64')
 conflicts=('unicap')
@@ -15,22 +15,22 @@ url="http://unicap-imaging.org"
 options=('!libtool')
 license=('GPL')
 depends=('libraw1394')
-makedepends=('pkgconfig intltool')
+makedepends=('intltool')
 source=("http://unicap-imaging.org/downloads/$pkgname-$pkgver.tar.gz" 'libunicap-0.9.12.patch')
 md5sums=('353657b4da519251d4cc6dee5a232391' '7295cf7c8e8604c46f3b187d46c6920b')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
-  patch -p1 < $startdir/$pkgname-$pkgver.patch
+  patch -p1 < ../$pkgname-$pkgver.patch
 }
 
 build() {
   cd $srcdir/$pkgname-$pkgver
-  ./configure --prefix=/usr --enable-vid21394-visca || return 1 
-  make || return 1
+  ./configure --prefix=/usr --enable-vid21394-visca
+  make
 }
 
 package() {
   cd $srcdir/$pkgname-$pkgver
-  make DESTDIR=$pkgdir install || return 1
+  make DESTDIR=$pkgdir install
 }
