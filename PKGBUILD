@@ -2,6 +2,8 @@
 
 # Set up the pi for Qt compilation. On Arch I just install chromium which pulls in all the deps
 # Mount/copy this prepped rasp rootfs somewhere and set this path as the sysroot below
+
+# comment this turkey out in any circumstance when you need to regenate .SRCINFO
 echo "Set your sysroot" && exit 1
 _sysroot=/mnt/pi
 
