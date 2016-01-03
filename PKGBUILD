@@ -2,13 +2,13 @@
 
 pkgname=texstudio-qt5
 _srcname=texstudio
-pkgver=2.9.4
+pkgver=2.10.4
 pkgrel=1
 pkgdesc="Fork of the LaTeX IDE TexMaker. Gives you an environment where you can easily create and manage LaTeX documents. Built with Phonon."
 arch=('i686' 'x86_64')
 url="http://texstudio.sourceforge.net/"
 license=('GPLv2')
-depends=('poppler-qt5' 'phonon-qt5' 'qt5-svg' 'qt5-script')
+depends=('poppler-qt5' 'phonon-qt5' 'qt5-svg' 'qt5-script' 'texlive-core')
 makedepends=('sed' 'qt5-tools')
 optdepends=('evince: pdf reader', 'okular: alternate pdf reader')
 replaces=('texmakerx' 'texstudio')
@@ -16,7 +16,7 @@ provides=('texstudio')
 install=$pkgname.install
 source=("http://downloads.sourceforge.net/${_srcname}/${_srcname}-${pkgver}.tar.gz"
         'archlinux-phonon.patch')
-md5sums=('398baea51cf9f9f15ab961da09efb263'
+md5sums=('96b34746e5a2b7b41111cc7ac83d7a92'
          '2b4bd3232e9f92271856f7daa318e6c7')
 
 build() {
