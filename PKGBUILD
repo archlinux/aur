@@ -2,8 +2,8 @@
 
 pkgname=python-mahotas
 shrtname=mahotas
-pkgver=1.4.0
-pkgrel=3
+pkgver=1.4.1
+pkgrel=1
 pkgdesc="A fast computer vision algorithms (all implemented in C++) operating over numpy arrays"
 url="http://luispedro.org/software/mahotas"
 depends=('python' 'python-numpy')
@@ -11,17 +11,9 @@ makedepends=('python' 'python-matplotlib' 'gcc' )
 checkdepends=('python-scipy' 'python-imread' 'python-nose' 'python-pillow')
 license=('MIT')
 arch=('i686' 'x86_64')
-source=(https://pypi.python.org/packages/source/m/mahotas/$shrtname-$pkgver.tar.gz
-               fix-np.float128.patch)
-sha256sums=('73c2f13da9eddf959594cacd3e3f7d42bc933a6ae75048cb0360576668f21fc2'
-                        'e68cf938431f88e1044e39d1b7468dd7c2d9e5e8d4be64ff5e35f4f6fe136fa5')
+source=(https://pypi.python.org/packages/source/m/mahotas/$shrtname-$pkgver.tar.gz)
+sha256sums=('40b2ee831b66247541706b28db0d4b187d051d5fda926a0c43912d27b3be50c0')
 
-prepare() {
-    cd $srcdir/$shrtname-$pkgver
-    # Fixed upstream in development version
-    patch -p1 -i $srcdir/fix-np.float128.patch
-}
-                        
 build() {
     cd $srcdir/$shrtname-$pkgver
     python setup.py build
