@@ -1,0 +1,28 @@
+From e3ffad2c3555efc9883c89f67d141cc4a3f151ed Mon Sep 17 00:00:00 2001
+From: Maxime Gauduin <alucryd@archlinux.org>
+Date: Sun, 3 Jan 2016 15:33:36 +0100
+Subject: [PATCH] Fix man path
+
+---
+ Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index f79b254..1f39158 100644
+--- a/Makefile
++++ b/Makefile
+@@ -100,9 +100,9 @@ install-rdw: all
+ install-man:
+ 	# manpages
+ 	install -d -m 755 $(_MAN)/man1
+-	install -m 644 {bluetooth,run-on-ac,run-on-bat,wifi,wwan}.1 $(_MAN)/man1/
++	install -m 644 man/{bluetooth,run-on-ac,run-on-bat,wifi,wwan}.1 $(_MAN)/man1/
+ 	install -d -m 755 $(_MAN)/man8
+-	install -m 644 {tlp,tlp-stat}.8 $(_MAN)/man8/
++	install -m 644 man/{tlp,tlp-stat}.8 $(_MAN)/man8/
+ 
+ install: install-tlp install-rdw
+ 
+-- 
+2.6.4
+

@@ -3,29 +3,29 @@
 
 pkgbase=tlp-git
 pkgname=('tlp-git' 'tlp-rdw-git')
-pkgver=0.8.r0.6f7bca9
+pkgver=0.8.r34.788c4df
 pkgrel=1
 arch=('any')
 url='http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html'
 license=('GPL2' 'GPL3')
 makedepends=('git')
-source=('tlp::git+https://github.com/linrunner/TLP.git#branch=devel'
-        'tlp-arch.patch')
+source=('tlp::git+https://github.com/linrunner/TLP.git'
+        '0001-Fix-man-path.patch')
 sha256sums=('SKIP'
-            '836a07ebb222d7d696ac33d8596a9b129debb70793bb4dbb6283ce8311ea303c')
+            'f5a6e1d417fff03ca37a12e6203c2a53d0b266ceedc5ad21e51e57e686d601bf')
 
 pkgver() {
   cd tlp
 
   tag='0.8'
 
-  echo "${tag}.r$(git rev-list --count ${tag}..HEAD).$(git rev-parse --short HEAD)"
+  echo "$(git describe --tags | sed 's/-/.r/; s/-g/./')"
 }
 
 prepare() {
   cd tlp
 
-  patch -Np1 -i ../tlp-arch.patch
+  patch -Np1 -i ../0001-Fix-man-path.patch
 }
 
 package_tlp-git() {
@@ -50,11 +50,7 @@ package_tlp-git() {
   export TLP_NO_PMUTILS='1'
   export TLP_WITH_SYSTEMD='1'
 
-  make DESTDIR="${pkgdir}" install-tlp
-
-  install -dm 755 "${pkgdir}"/usr/share/man/man{1,8}
-  install -m 644 man/*.1 "${pkgdir}"/usr/share/man/man1/
-  install -m 644 man/*.8 "${pkgdir}"/usr/share/man/man8/
+  make DESTDIR="${pkgdir}" install-tlp install-man
 }
 
 package_tlp-rdw-git() {
