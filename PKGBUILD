@@ -18,7 +18,7 @@ prepare() {
 
 build(){
   cd "$pkgname-$pkgver"
-  make
+  cc -lcurses -o grdc grdc.c
   pwd
 }
   
