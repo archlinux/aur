@@ -1,11 +1,12 @@
 pkgbase = python2-pyaudio
 	pkgdesc = Python bindings for PortAudio, the cross-platform audio I/O library
 	pkgver = 0.2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://people.csail.mit.edu/hubert/pyaudio
 	arch = i686
 	arch = x86_64
 	arch = armv6h
+	arch = armv7h
 	license = MIT
 	depends = portaudio
 	depends = python2-setuptools

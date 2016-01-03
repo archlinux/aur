@@ -1,9 +1,9 @@
 # Maintainer: David Scholl <djscholl at gmail dot com>
 pkgname=python2-pyaudio
 pkgver=0.2.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for PortAudio, the cross-platform audio I/O library"
-arch=('i686' 'x86_64' 'armv6h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://people.csail.mit.edu/hubert/pyaudio"
 license=('MIT')
 depends=('portaudio' 'python2-setuptools')
