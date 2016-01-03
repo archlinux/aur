@@ -2,7 +2,7 @@
 
 pkgname='handbrake-gtk2'
 pkgver=0.9.9
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://handbrake.fr/"
 license=('GPL')
@@ -20,7 +20,7 @@ conflicts=('handbrake-cli' 'handbrake')
 
 install=$pkgname.install
 
-source=(http://downloads.sourceforge.net/project/handbrake/$pkgver/HandBrake-$pkgver.tar.bz2)
+source=("http://download.handbrake.fr/releases/$pkgver/HandBrake-$pkgver.tar.bz2")
 sha256sums=('a71dd774104cda00cfb51a813550351d638253791f2f419d04a66f3158a835b3')
 
 prepare() {
