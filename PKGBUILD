@@ -1,34 +1,58 @@
-# Contributor: josephgbr <rafael.f.f1@gmail.com>
 # Maintainer: GordonGR <ntheo1979@gmail.com>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: xduugu
+# Contributor: Elis Hughes <elishughes@googlemail.com>
 
+pkgname=lib32-rtmpdump
 _pkgname=rtmpdump
-pkgname=lib32-${_pkgname}
-pkgver=20140918
+pkgver=2.4.r96.fa8646d
 pkgrel=1
-pkgdesc="A tool to download rtmp streams (32 bit)"
+epoch=1
+pkgdesc='Tool to download rtmp streams (lib32)'
 arch=('x86_64')
-url="http://rtmpdump.mplayerhq.hu/"
+url='http://rtmpdump.mplayerhq.hu/'
 license=('GPL2' 'LGPL2.1')
-depends=('lib32-openssl' "${_pkgname}")
+depends=('lib32-glibc' 'lib32-openssl' 'lib32-zlib' "${_pkgname}")
 makedepends=('git')
+provides=('librtmp.so')
 options=('!makeflags')
-source=(git://git.ffmpeg.org/rtmpdump#commit=a1900c3)
-md5sums=('SKIP')
-options=(!makeflags)
+_commit='fa8646d'
+source=("git://git.ffmpeg.org/rtmpdump#commit=${_commit}")
+sha256sums=('SKIP')
+
+pkgver() {
+cd rtmpdump
+_ver_name='2.4'
+_ver_commit='c28f1bab7822de97353849e7787b59e50bbb1428'
+
+echo "${_ver_name}.r$(git rev-list --count ${_ver_commit}..HEAD).${_commit}"
+}
 
 prepare() {
-cd ${_pkgname}
+cd rtmpdump
 sed -i -e 's:gcc:gcc -m32:' Makefile librtmp/Makefile
+sed -i -e 's/host_cpu\=\"\${host\%\%-\*}\"/host_cpu\="i386"/' Makefile librtmp/Makefile
+sed -i -e 's/march\=\"\${march\%\%-\*}\"/march\="i386"/' Makefile librtmp/Makefile
 }
 
 build() {
-cd ${_pkgname}
-make OPT="$CFLAGS" XLDFLAGS="$LDFLAGS"
+cd rtmpdump
+make \
+  OPT="$CFLAGS" \
+  XLDFLAGS="$LDFLAGS"
 }
 
 package() {
-cd ${_pkgname}
-install -dm755 "${pkgdir}/usr/lib32"
-make prefix=/usr mandir=/usr/share/man libdir=/usr/lib32 DESTDIR="${pkgdir}" install
+cd rtmpdump
+make \
+  prefix='/usr' \
+  sbindir='/usr/bin' \
+  mandir='/usr/share/man' \
+  DESTDIR="${pkgdir}" \
+  libdir='/usr/lib32' \
+  install
+
 rm -rf "${pkgdir}/usr"/{bin,include,sbin,share}
+
 }
