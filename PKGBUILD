@@ -11,6 +11,7 @@ arch=('any')
 url="http://enki-editor.org/"
 license=('GPL')
 makedepends=('git' 'python')
+#         'qutepart')
 depends=('python-pyparsing' 
          'qutepart-git')
 #            'python-pygments: Scheme preview'
