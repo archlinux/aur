@@ -52,6 +52,7 @@ build() {
   # skipping because of the target in question: widgets qtwebengine qtwebchannel
 
   ${_srcdir}/configure \
+    -silent \
     -release \
     -confirm-license \
     -opensource \
