@@ -4,7 +4,7 @@ pkgname=oclhashcat-git
 _VER=
 #pkgname=oclhashcat
 #_VER=-2.01
-pkgver=r147.d008a45
+pkgver=r148.5f7c47b
 pkgrel=1
 pkgdesc='GPGPU-based password recovery utility'
 arch=( 'i686' 'x86_64' 'arm' )
@@ -19,9 +19,9 @@ makedepends=(
     'nvidia-cuda-gdk' # 'nvidia-gdk'
     )
 optdepends=(
-    #'opencl-nvidia: OpenCL implemention for NVIDIA'
+    'opencl-nvidia: OpenCL implemention for NVIDIA'
     'opencl-catalyst: AMD/ATI drivers. OpenCL implemention for AMD Catalyst'
-    #'opencl-mesa: OpenCL support for AMD/ATI Radeon mesa drivers'
+    'opencl-mesa: OpenCL support for AMD/ATI Radeon mesa drivers'
     )
 conflicts=('oclhashcat')
 provides=('oclhashcat')
@@ -44,9 +44,10 @@ pkgver() {
     pkgver_git
 }
 
-#prepare() {
-#    mv ${srcdir}/oclHashcat-* "${srcdir}/${pkgname}${_VER}"
-#}
+prepare() {
+    #mv ${srcdir}/oclHashcat-* "${srcdir}/${pkgname}${_VER}"
+    sed -e 's|^typedef int bool;|//typedef int bool;|' -i ${srcdir}/${pkgname}${_VER}/include/shared.h
+}
 
 build()
 {
@@ -54,7 +55,7 @@ build()
     if [[ "$CARCH" = "x86_64" ]]; then
         make CFLAGS="-I/usr/include/ADL -I/usr/include/nvidia/gdk/ -Iinclude" oclHashcat64.bin
     else
-        make oclHashcat32.bin
+        make CFLAGS="-I/usr/include/ADL -I/usr/include/nvidia/gdk/ -Iinclude" oclHashcat32.bin
     fi
 }
 
@@ -81,4 +82,3 @@ package()
         install -Dm755 oclHashcat32.bin "${pkgdir}/usr/bin/oclhashcat"
     fi
 }
-
