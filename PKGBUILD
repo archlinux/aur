@@ -2,7 +2,7 @@
 
 pkgname=pesign
 pkgver=0.111
-pkgrel=2
+pkgrel=3
 pkgdesc='Tools for manipulating signed PE-COFF binaries'
 arch=('i686' 'x86_64')
 url='https://github.com/rhinstaller/pesign'
