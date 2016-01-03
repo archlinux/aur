@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol dot pomozov at gmail>
 
 pkgname=meson
-pkgver=0.27.0
+pkgver=0.28.0
 pkgrel=1
 pkgdesc='SCons-like build system that use python as a front-end language and Ninja as a building backend'
 url='http://mesonbuild.com/'
@@ -9,7 +9,7 @@ arch=(any)
 depends=(python ninja)
 license=(Apache)
 source=(meson-$pkgver.zip::https://github.com/jpakkane/meson/archive/$pkgver.zip)
-sha1sums=('f862c28b60dae1ff2be0d33a6260540f03336aa9')
+sha1sums=('97e200ecfd94d69920759d7673c39b90cb9d7107')
 
 package() {
   cd meson-$pkgver
