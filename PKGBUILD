@@ -1,29 +1,29 @@
 # Maintainer : catskillmarina <catskillmarina @ gmail.com>
 
-pkgname=grdc-20031019
-pkgver=1.0
+pkgname=grdc
+pkgver=20031019
 pkgrel=1
 pkgdesc='Great Digital Clock'
 arch=('i686' 'x86_64')
 url="ftp://ftp.netbsd.org//pub/pkgsrc/distfiles/grdc-20031019.tar.gz"
 license=('unknown')
 depends=('ncurses' 'gzip')
-source=("ftp://ftp.netbsd.org//pub/pkgsrc/distfiles/$pkgname.tar.gz")
+source=("ftp://ftp.netbsd.org//pub/pkgsrc/distfiles/$pkgname-$pkgver.tar.gz")
 md5sums=('409cdcf13edd6931c42878bd8cc9aaf2')
 
 prepare() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
   pwd
 }
 
 build(){
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
   make
   pwd
 }
   
 package() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
   pwd
   install -Dm755 grdc "$pkgdir/usr/bin/grdc"
   install -Dm644 grdc.6 "$pkgdir/usr/share/man/man6/grdc.6"
