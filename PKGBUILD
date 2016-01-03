@@ -21,7 +21,7 @@
 
 _pgo=false
 
-# We're getting this from Debian Experimental
+# We're getting this from Debian Sid
 _debname=iceweasel
 _debver=43.0.2
 _debrel=1
@@ -29,7 +29,7 @@ _debrepo=http://ftp.debian.org/debian/pool/main/i/
 
 pkgname=iceweasel
 pkgver=$_debver.deb$_debrel
-pkgrel=1
+pkgrel=2
 pkgdesc="Debian Browser based on Mozilla Firefox"
 arch=('i686' 'x86_64')
 license=('GPL' 'MPL' 'LGPL')
@@ -45,22 +45,22 @@ fi
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'gst-plugins-good: h.264 video'
             'gst-libav: h.264 video'
-	    'upower: Battery API'
+			'upower: Battery API'
             'iceweasel-extension-archsearch: Iceweasel Arch search engines'
             'iceweasel-extension-archforumsearch-it: Iceweasel search engines for Arch Linux Italian forum')
-url="https://packages.debian.org/source/experimental/iceweasel"
+url="https://packages.debian.org/source/sid/iceweasel"
 install=iceweasel.install
 provides=("$_debname"="$_debver")
 source=("${_debrepo}/${_debname}/${_debname}_${_debver}.orig.tar.xz"
-	"${_debrepo}/${_debname}/${_debname}_${_debver}-${_debrel}.debian.tar.xz"
+		"${_debrepo}/${_debname}/${_debname}_${_debver}-${_debrel}.debian.tar.xz"
         'mozconfig'
         'iceweasel.desktop'
         'iceweasel-install-dir.patch'
         'vendor.js'
-	'iceweasel-20.0.1-fixed-loading-icon.png')
+		'iceweasel-20.0.1-fixed-loading-icon.png')
 md5sums=('d0c30614fcaf6d5391c9967b14a18212'
          'eb769034630cd141cf7f41224afc043d'
-         '6027291b9963817e46f816d28b64681d'
+         '329ae0844819b6baac61d9a5749a6005'
          '7b9e5996dd9fe0b186a43a297db1c6b5'
          '1c42509891cf6843660a5f3c69896e80'
          'ced8f3b950fb819e784415e61ec91bb1'
