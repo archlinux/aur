@@ -9,8 +9,7 @@ arch=('x86_64')
 url="http://www.literatureandlatte.com/scrivener.php"
 license=('custom')
 depends=('gstreamer0.10-base-plugins' 'libxrender' 'fontconfig' 'libpng12')
-optdepends=('aspell:       needed for spell checking - also need dictionary'
-            'lib32-aspell: needed for spell check on 64-bit system'
+optdepends=('aspell:       needed for spell checking (also needs dictionaries)'
             'multimarkdown: needed for export to latex')
 source=("http://www.literatureandlatte.com/scrivenerforlinux/scrivener-${pkgver}-amd64.tar.gz"
         "scrivener.png" "scrivener.desktop")
