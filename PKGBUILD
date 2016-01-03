@@ -2,15 +2,15 @@
 # Contributor: Rafał Michalski <plum.michalski at gmail dot com>
 pkgname="burp-backup-dev"
 _pkgname="burp"
-pkgver=2.0.28
+pkgver=2.0.30
 pkgrel=1
 pkgdesc="A next generation experimental version of the burp backup and restore program."
 arch=('i686' 'x86_64')
 license=("AGPL3")
-depends=('librsync' 'acl' 'openssl')
+depends=('acl' 'librsync' 'openssl')
 makedepends=('uthash')
-conflicts=('burp-backup' 'burp-backup-git' 'burp-backup14')
-install=$_pkgname.install
+conflicts=('burp-backup' 'burp-backup-git')
+install="$_pkgname.install"
 url='http://burp.grke.org/burp2.html'
 
 source=(
@@ -24,13 +24,13 @@ source=(
 )
 
 sha256sums=(
-  726899a442855390bc41dec5d6f5e7305e9dfaac2669039c86677b499f9222db # burp-${pkgver}.tar.bz2
+  7eaaa20ab4d5aff75e13d24a219bd8332453a21b9c67d39caea6c26092b4ba09 # burp-2.0.30.tar.bz2
   1d2c97471494dd5924bd0676e817ebfac54465c4ec0e23b49ad1c3c91d36460f # burp.install
   94e1b5f8cf61c44f84675f685279e0d3376abd61ac1e6e4f5da0dd6b922c481f # burp-server.service
   7908970e23cfb08554cbf53da1f8f3193a6b6ee076584f797644efab8431bfe3 # burp-client.service
   0310a26e9a0af76f847130019cb865dfa09a5e8f9899bfd6526c69e82d160bf4 # burp-client.timer
-  781fcd11df9d8bf928eb08982cc5ed21c93a0661dacb4e184d01e246277ab877 # runpath_fix.patch change /var/run to /run
-  e3e633f09d03efa3f2c1e769a2e31f514466ebd97cf6bb5f1ef0761e17abec67 # arch linux specific instructions
+  080cfc133b01eb9869ee53723597124acd0c75a60da7f5d11196636a20af6ce9 # 01-runpath_fix.patch
+  e3e633f09d03efa3f2c1e769a2e31f514466ebd97cf6bb5f1ef0761e17abec67 # readme-archlinux.txt
 )
 
 backup=(
@@ -40,45 +40,53 @@ backup=(
   "etc/logrotate.d/burp"
 )
 
+
 prepare() {
-  cd $_pkgname-$pkgver
-  patch -Np1 -i ../01-runpath_fix.patch
+  cd "$_pkgname-$pkgver"
+  patch -Np1 -i "$srcdir/01-runpath_fix.patch"
 }
 
 build() {
-  cd $srcdir/$_pkgname-$pkgver
-  ./configure --sbindir=/usr/bin
+  cd "$_pkgname-$pkgver"
+  autoreconf -vif
+  # In the 2.70 version of autotools the ability exists to define "runstatedir"
+  # which will eliminate the need for the patch file. Archlinux is currently at v2.69.
+  # I.E. use "--runstatedir=/run" when 2.70 is released.
+  ./configure --prefix=/usr \
+              --sbindir=/usr/bin \
+              --localstatedir=/var \
+              --sysconfdir=/etc/burp
   make
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
   make DESTDIR="$pkgdir/" install
 
   # Setup logrotate
-  mkdir -p $pkgdir/etc/logrotate.d
-  cp debian/logrotate $pkgdir/etc/logrotate.d/burp
+  mkdir -p "$pkgdir/etc/logrotate.d"
+  cp debian/logrotate "$pkgdir/etc/logrotate.d/burp"
 
   # Copy useful user setup files
-  mkdir -p $pkgdir/usr/share/burp/
-  cp debian/burp.cron.d $pkgdir/usr/share/burp/
-  mkdir -p $pkgdir/usr/lib/systemd/system/
-  cp $srcdir/burp-server.service $pkgdir/usr/lib/systemd/system/
-  cp $srcdir/burp-client.service $pkgdir/usr/lib/systemd/system/
-  cp $srcdir/burp-client.timer $pkgdir/usr/lib/systemd/system/
+  mkdir -p "$pkgdir/usr/share/burp/"
+  cp debian/burp.cron.d "$pkgdir/usr/share/burp/"
+  mkdir -p "$pkgdir/usr/lib/systemd/system/"
+  cp "$srcdir/burp-server.service" "$pkgdir/usr/lib/systemd/system/"
+  cp "$srcdir/burp-client.service" "$pkgdir/usr/lib/systemd/system/"
+  cp "$srcdir/burp-client.timer" "$pkgdir/usr/lib/systemd/system/"
 
   # Copy archlinux specific documentation 
-  mkdir -p $pkgdir/usr/share/doc/burp/
-  cp $srcdir/readme-archlinux.txt $pkgdir/usr/share/doc/burp/readme-archlinux.txt
+  mkdir -p "$pkgdir/usr/share/doc/burp/"
+  cp "$srcdir/readme-archlinux.txt" "$pkgdir/usr/share/doc/burp/readme-archlinux.txt"
 
   # Fix permissions
-  mkdir -p $pkgdir/var/spool/burp
-  chmod 0755 $pkgdir/var/spool
-  chmod 0700 $pkgdir/var/spool/burp
-  chmod -R go-rwx $pkgdir/etc/burp
+  mkdir -p "$pkgdir/var/spool/burp"
+  chmod 0755 "$pkgdir/var/spool"
+  chmod 0700 "$pkgdir/var/spool/burp"
+  chmod -R go-rwx "$pkgdir/etc/burp"
 
   # Move "testclient" example to subfolder so it doesn't automatically get added to backup
-  mv $pkgdir/etc/burp/clientconfdir/testclient $pkgdir/etc/burp/clientconfdir/incexc
+  mv "$pkgdir/etc/burp/clientconfdir/testclient" "$pkgdir/etc/burp/clientconfdir/incexc"
 }
 
 # Helpful packaging references:
