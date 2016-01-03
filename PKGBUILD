@@ -5,7 +5,7 @@
 # Contributor: Axper Jan <483ken at gmail dot com>
 
 pkgname=sdl2-hg
-pkgver=2.0.3.r1337.8da3e4d25202
+pkgver=2.0.4.r3.d91a2c45825e
 pkgrel=1
 pkgdesc="A library for portable low-level access to video, audio and input (Version 2, development version)"
 arch=('i686' 'x86_64')
