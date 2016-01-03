@@ -1,7 +1,7 @@
 pkgbase = budgie-desktop
 	pkgdesc = Simple GTK3 desktop experience from Solus Project
 	pkgver = 10.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://solus-project.com/
 	install = budgie-desktop.install
 	arch = i686

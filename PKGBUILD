@@ -4,7 +4,7 @@
 
 pkgname=budgie-desktop
 pkgver=10.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple GTK3 desktop experience from Solus Project"
 arch=('i686' 'x86_64')
 url="http://solus-project.com/"
@@ -26,7 +26,7 @@ build() {
 	cd "$srcdir"/$pkgname-$pkgver
 	intltoolize --force
 	autoreconf --force --install
-	./configure --prefix=/usr
+	./configure --prefix=/usr --sysconfdir=/etc
 	make
 }
 
