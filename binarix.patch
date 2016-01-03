@@ -1,0 +1,48 @@
+--- ../binarix/binarix.c	2003-12-03 21:15:52.000000000 +0100
++++ ../binarix-patched/binarix.c	2015-12-05 11:22:53.787984664 +0100
+@@ -55,7 +55,7 @@
+ void changefield();
+ void printhelp(int);
+ void getpassword();
+-void comparepasswords();
++void comparepasswords(char);
+ void push_snake(int, int);
+ char *crypt();
+ WINDOW *win;
+@@ -134,7 +134,7 @@
+ 		win = dialog(DIALOG_PASS_HEIGHT, DIALOG_PASS_WIDTH,\
+ 			    (y-DIALOG_PASS_HEIGHT)/2, (x-DIALOG_PASS_WIDTH)/2,\
+ 			    DIALOG_PASS_TEXT);
+-		comparepasswords();
++		comparepasswords(ch);
+ 	} else {
+ 		refresh();
+ 	}
+@@ -196,9 +196,8 @@
+ 	strcpy(userpass, pw->sp_pwdp);
+ }
+ 
+-void comparepasswords()
++void comparepasswords(char ch)
+ {
+-	char ch;
+ 	char pass[127];
+ 	int count;
+ 
+@@ -205,8 +205,15 @@
+ 	count=0;
+ 	nodelay(stdscr, 0);
+ 
++  	if (ch != '\n') pass[count++] = ch;
++	if (ch==127 || ch ==8) count--;
++
+ 	while((ch = getch()) != '\n')
+-		pass[count++] = ch;
++	{
++	  	if (count<0) count=0;
++		if (ch==127 || ch ==8) count--;
++	  	else pass[count++] = ch;
++	}
+ 
+ 	nodelay(stdscr, 1);
+ 
