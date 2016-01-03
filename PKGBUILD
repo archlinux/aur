@@ -4,9 +4,9 @@
 # SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgbase=linux-selinux
-_srcname=linux-4.2
-pkgver=4.2.5
-pkgrel=1
+_srcname=linux-4.3
+pkgver=4.3.3
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -17,18 +17,20 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+        "0001-disabling-primary-plane-in-the-noatomic-case.patch"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux-selinux.preset'
         'change-default-console-loglevel.patch')
 
-sha256sums=('cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb'
+sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
             'SKIP'
-            'b631eb4e8b4911b31111b0838e00f7c4a1b7689abcd2233609831b638493f4fb'
+            '95cd81fcbb87953f672150d60950548edc04a88474c42de713b91811557fefa5'
             'SKIP'
-            'b300287456688eab7aca00778d9def4d19beb7289d04de20cfc063b981f63cd0'
-            '7a49868f20656928cce0a0b855bd1c5c13c0f5e978d31e3c7cc5d7ba755ecb3d'
+            'abdd04bd6beecb7c961130a68d71e6332bd260462eeaa2f4f8e634de813dcc4d'
+            '68e9919a798ebf6242f0f88a3404a1fcc65b889c4855f0a7414f81066d93d9aa'
+            '93bd8ee71705de4697178d5930557b7d977ac32757a9f8be331a3292b7078b7e'
             '375da3b030f17581cbf5be9140b79029ca85eebc70197f419a4de77e00fa84e9'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
@@ -51,6 +53,10 @@ prepare() {
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
+
+  # fix #46968
+  # hangs on older intel hardware
+  patch -Np1 -i "${srcdir}/0001-disabling-primary-plane-in-the-noatomic-case.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
