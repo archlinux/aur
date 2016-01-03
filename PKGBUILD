@@ -8,6 +8,10 @@ arch=('x86_64' 'i686')
 source=('git+https://github.com/Cube777/dchain.git')
 md5sums=('SKIP')
 
+prepare() {
+	cd $pkgname
+	git --work-tree . checkout -q tags/$pkgver
+}
 build() {
 	cd $srcdir/$pkgname
 	cmake ./ -DCMAKE_INSTALL_PREFIX=/usr
