@@ -2,24 +2,25 @@
 # Contributor: Boohbah <boohbah at gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
+# Contributor: Jonathan Chan <jyc@fastmail.fm>
 
 pkgbase=linux-garret-git
 _srcname=linux
-pkgver=4.3rc4.r16.g83263bc
+pkgver=4.3rc4.r1002.g3f2106f
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git')
 options=('!strip')
-source=('git+https://github.com/mjg59/linux.git'
+source=('git+http://github.com/mjg59/linux#branch=overlayfs_selinux_lower'
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset")
 sha256sums=('SKIP'
-            'e6f6f804f98ad321ce3e4395924993b51decb89699fde369391ccbb4bae928b2'
-            'db4d602900f21772a06fd55d8210cb743d8180a7a82728c06a46759172c20d33'
+            'f4084c6d43abc40819f4535f827d3d8e643d25e67fedf0bab46346ead8c08b84'
+            '98caa62b4759f6ae180660cc1be4aeda7198e50fb7cf51aee4e677ae6ee2d19e'
             '9f0eadcf64beba6308cda5df233b6630357dbcba0d11033e5a1c7c9eb17a68e8')
 
 _kernelname=${pkgbase#linux}
