@@ -4,12 +4,12 @@
 pkgname=vim-pydyn-xclip
 pkgver=7.4.944
 _versiondir=74
-pkgrel=2
+pkgrel=3
 pkgdesc='Vi Improved with dynamic python (python/dyn, python3/dyn) and clipboard support'
 arch=(i686 x86_64)
 url='http://www.vim.org'
 license=('custom:vim')
-depends=("vim-runtime=${pkgver}-${pkgrel}" 'gpm' 'ruby' 'lua' 'python' 'python2' 'acl')
+depends=("vim-runtime" 'gpm' 'ruby' 'lua' 'python' 'python2' 'acl')
 makedepends=(gpm python2 python ruby libxt lua)
 provides=("vim" "vim-python3" "xxd")
 conflicts=('vim-minimal' 'vim' 'vim-python3' 'gvim' 'gvim-python3')
