@@ -1,15 +1,15 @@
-# Maintainer: Georg Pfahler <georgpfahler@wachenzell.org>
+# Maintainer: Peter Mattern <pmattern at arcor dot de>
 # Contributor: Jerome Leclanche <jerome@leclan.ch>
 # Contributor: Matthew Stobbs <matthew@stobbstechnical.com>
 
 _pkgname=lxqt-admin
 pkgname=$_pkgname-git
 pkgver=0.9.0.14.gdce4b16
-pkgrel=1
+pkgrel=2
 pkgdesc="LXQt system administration"
 arch=("i686" "x86_64" "armv6h")
 url="http://lxqt.org"
-license=("GPL2")
+license=("LGPL")
 depends=("liblxqt-git" "liboobs")
 makedepends=("git" "cmake" "qt5-tools")
 provides=("$_pkgname")
