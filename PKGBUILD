@@ -1,6 +1,6 @@
 pkgname=btfs-git
 pkgver=v2.3.r0.gafcb3e5
-pkgrel=1
+pkgrel=2
 pkgdesc="bittorrent filesystem"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/johang/btfs"
