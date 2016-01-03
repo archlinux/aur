@@ -1,7 +1,7 @@
 # Maintainer: Kevin MacMartin <prurigro@gmail.com>
 
 pkgname=qtpass
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc='A multi-platform GUI for pass'
 url='http://qtpass.org'
@@ -10,7 +10,7 @@ arch=('armv6h' 'armv7h' 'arm' 'i686' 'x86_64')
 depends=('qt5-base' 'pass' 'libxkbcommon-x11')
 makedepends=('qt5-tools')
 source=("https://github.com/IJHack/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('e1b63f1058dc9c194f06376d52acbbb8594d429f4d7fe4ba27baed2cafe10b1c36137b3e33626c1bf33c7f3e1444e6fbe48fc66a83e0f7cd82f5b47f0193d178')
+sha512sums=('d6cf746749abf9dc7d3ac043ef13c40e7005d84e7faefe7d07bb092843fbabcfb74ca83eb8f534ba191a82a27ed2407937ee2db43be044a157d5b361cb00b21c')
 
 prepare() {
   sed -i 's|qtpass-icon|qtpass|' $pkgname-$pkgver/$pkgname.desktop
