@@ -7,7 +7,10 @@ pkgdesc="OpenGL powered animated wallpapers with configuration utility, autostar
 arch=(any)
 url="https://launchpad.net/livewallpaper"
 license=('GPL3')
-depends=('libgl' 'gtk3' 'libpeas' 'libx11' 'python' 'python-numpy' 'python-cairo' 'python2-opengl')
+depends=('libgl' 'libpeas' 'libx11'
+        'python' 'python-numpy' 'python-cairo' 'python2-opengl'
+        'gtk3' 'gobject-introspection' 'libappindicator-gtk3')
+
 makedepends=('intltool' 'xcftools')
 provides=('livewallpaper' 'livewallpaper-indicator' 'livewallpaper-config')
 source=(https://launchpad.net/livewallpaper/0.4/0.4.1/+download/livewallpaper-0.4.1.tar.gz)
