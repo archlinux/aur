@@ -1,10 +1,11 @@
 # Maintainer: Thomas Hebb <tommyhebb@gmail.com>
+# Contributor: Johnny Santisteban <xplode53@gmail.com>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname=gutenprint-cvs
 _docname=gutenprint
-pkgver=20130611
-_docver='5.2.9'
+pkgver=20160102
+_docver='5.2.10'
 pkgrel=1
 pkgdesc="Top quality printer drivers for POSIX systems (cvs version)"
 arch=('i686' 'x86_64')
@@ -24,7 +25,7 @@ conflicts=('gutenprint')
 replaces=('gimp-print')
 options=('!libtool' '!emptydirs')
 noextract=("${_docname}-${_docver}.tar.bz2")
-sha256sums=('4b27e4f06f32d30271df89ecb6089bb11bcf2caec5f60b0909e083095354bca0'
+sha256sums=('431f352b412dfb9809d126a85a37a1fcd1c1826275ace8cdcd4fd9a6ee360e59'
             '041690da1d414e82297fc9bb8a1395cf133e198123c73572c69d932173343768'
             'a232a39e30986426dc34c39092a4c15ede5bac653765801ccf76b2532136171a')
 
