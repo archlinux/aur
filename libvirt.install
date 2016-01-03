@@ -14,21 +14,18 @@ post_install() {
   echo ">>>  Especially: bridge-utils, dnsmasq, and hal."
   echo ""
   echo ">>> To start libvirt as a daemon (service) run"
-  echo " for systemd: 'systemctl start libvirtd'"
-  echo " for initscripts: '/etc/rc.d/libvirtd start'"
+  echo " 'systemctl start libvirtd'"
   echo ""
   echo ">>> To start libvirt as a daemon (service) on boot:"
-  echo " for systemd: 'systemctl enable libvirtd'"
-  echo " for initscripts: Add 'libvirtd' to daemons in /etc/rc.conf"
+  echo " 'systemctl enable libvirtd'"
   echo ""
 }
 
 post_upgrade() {
   _libvirt_setup || return 1
   echo ">>> To finish the upgrade, restart libvirtd by:"
-  echo ">>>  'systemctl restart libvirtd' as root (systemd) or"
-  echo ">>>  '/etc/rc.d/libvirtd restart' as root (initscripts) or"
-  echo ">>>  rebooting."
+  echo ">>>  'systemctl restart libvirtd' as root (systemd)"
+  echo ">>>  or reboot."
   echo ">>> You may also need to run 'rm -rf ~/.libvirt'"
   echo ""
 }
