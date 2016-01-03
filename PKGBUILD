@@ -2,7 +2,7 @@
 
 pkgname=audiolinux
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="AudioLinux audiophile linux configuration files, scripts and shortcuts"
 arch=('x86_64')
 url="http://www.audio-linux.com"
@@ -29,7 +29,7 @@ optdepends=('linux-rt: The Linux-rt kernel and modules'
             'squeezelite-git: Lightweight headless squeezebox emulator'
             'logitechmediaserver-git: Streaming audio server')
 source=('http://www.tophifi.it/ftp/packages/audiolinux.tar.gz')
-sha256sums=('79686d7b1e7b05076c2f0a99d88d63815142da3c151edda73c8918e1d7afe9cf')
+sha256sums=('89421e6ae73257969bc18f30dad438eb4246dee9d853bd97c1cacd2b779770a4')
 
 package() {
   install -d "$pkgdir/opt/$pkgname"
