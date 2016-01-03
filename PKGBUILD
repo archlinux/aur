@@ -2,6 +2,7 @@
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=php-pear
+epoch=1
 pkgver=1.10.1
 pkgrel=1
 arch=('any')
