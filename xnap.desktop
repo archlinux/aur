@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=XNap
+GenericName=P2P Application
+Exec=java -jar /usr/bin/xnap.jar
+Icon=xnap.png
+Type=Application
+Terminal=false
+Categories=Application;Network;
+
