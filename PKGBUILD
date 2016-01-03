@@ -13,8 +13,7 @@ optdepends=(
 	'ladspa-plugins: a set of ladspa plugins'
 	)
 conflicts=()
-source=(
-	"${url}downloads/tracktion-legacy-latest/TracktionInstall_64bit_Linux_${pkgver//\./_}.deb"
+source=('https://s3-us-west-2.amazonaws.com/tracktion-marketplace-public/TracktionInstall_4_64bit_Linux_latest.deb'
 	license
 	Tracktion-4-Free.desktop
 	)
