@@ -4,7 +4,7 @@
 # Contributor: uastasi <uastasi at archlinux dot us>
 
 pkgname=frogr
-pkgver=0.11
+pkgver=1.0
 pkgrel=1
 pkgdesc="A flickr remote organizer for GNOME"
 url="https://wiki.gnome.org/Apps/Frogr"
@@ -17,7 +17,7 @@ install="${pkgname}.install"
 conflicts=("${pkgname}-git")
 provides=("${pkgname}")
 source=("http://download.gnome.org/sources/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('1a9d258ccaa3ebce31811af5263828808ccd8fc913e4d3fac5fe17e95e8235e9')
+sha256sums=('1e35552d3e04e79fa513c29426988a64b6040f7a06f95eaa18d4615fe124aeae')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
@@ -29,3 +29,5 @@ package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	make DESTDIR="${pkgdir}" install
 }
+
+# vim:set ts=4 sw=2 ft=sh et
