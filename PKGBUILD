@@ -2,7 +2,7 @@
 # Contributor: mdsitton <matthewsitton@gmail.com>
 pkgname='python2-fretwork-git'
 _gitname='fretwork'
-pkgver=0.1.1.r2.7d1bb80
+pkgver=0.2.0.r1.8d110d7
 pkgrel=1
 pkgdesc=" Shared code for FoFiX and FoF:R"
 arch=('any')
