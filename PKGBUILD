@@ -2,12 +2,12 @@
 pkgname=qownnotes
 _pkgname=QOwnNotes
 pkgver=0.68
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source notepad for that works together with the notes application of OwnCloud."
 url="http://www.qownnotes.org/"
 arch=('x86_64' 'i686')
 license=('GPL3')
-depends=('gcc' 'qt5-base')
+depends=('gcc' 'qt5-base' 'qt5-svg')
 makedepends=('git')
 #install=$pkgname.install
 source=(git+"https://github.com/pbek/QOwnNotes.git"
