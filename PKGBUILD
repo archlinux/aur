@@ -16,18 +16,20 @@ makedepends=('cvs' 'gimp' 'gtk2' 'cups' 'foomatic-db-engine' 'ghostscript')
 optdepends=('cups:		to use cups printer spooler(recommended)'
             'foomatic-db-engine:	to use foomatic spooler'
             'ghostscript:	adds postscript support for ijsgutenprint'
-            'gimp:		adds gutenprint plugin to gimp')
+            'gimp:		adds gutenprint plugin to gimp'
+            'libusb:  required for drivers that depend on gutenprint52usb backend')
 source=("http://downloads.sourceforge.net/gimp-print/${_docname}-${_docver}.tar.bz2"
-        'configure_ac.patch' 'usr_sbin.patch')
+        'configure_ac.patch' 'usr_sbin.patch' 'm4extra.patch')
 url='http://gimp-print.sourceforge.net/'
 provides=('gutenprint')
 conflicts=('gutenprint')
 replaces=('gimp-print')
-options=('!libtool' '!emptydirs')
+options=('!emptydirs')
 noextract=("${_docname}-${_docver}.tar.bz2")
 sha256sums=('431f352b412dfb9809d126a85a37a1fcd1c1826275ace8cdcd4fd9a6ee360e59'
             '041690da1d414e82297fc9bb8a1395cf133e198123c73572c69d932173343768'
-            'a232a39e30986426dc34c39092a4c15ede5bac653765801ccf76b2532136171a')
+            '05e551713e2a0853535bee30dce71e384ece26ae69faffc61859089192cbddf2'
+            '0761ab979e0e352cd2702db36af4cbb19dc0553031023874c13f37c6d0ea82c0')
 
 _cvsroot=':pserver:anonymous:@gimp-print.cvs.sourceforge.net:/cvsroot/gimp-print'
 _cvsmod='gimp-print'
@@ -53,6 +55,8 @@ prepare() {
 
   patch -Np1 -i "${srcdir}/configure_ac.patch"
   patch -Np1 -i "${srcdir}/usr_sbin.patch"
+  patch -Np1 -i "${srcdir}/m4extra.patch"
+
   # We extract the precompiled documentation from the latest release because there is currently no easy way to run db2html on Arch.
   tar -xjf "${srcdir}/${_docname}-${_docver}.tar.bz2" --strip-components 1 "${_docname}-${_docver}/doc/developer"
 }

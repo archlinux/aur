@@ -1,0 +1,11 @@
+--- gimp-print.old/Makefile.am	2016-01-02 21:53:29.059194071 -0500
++++ gimp-print.new/Makefile.am	2016-01-02 21:49:17.889471286 -0500
+@@ -20,7 +20,7 @@
+ 
+ @SET_MAKE@
+ 
+-ACLOCAL_AMFLAGS = -I m4 -I m4local
++ACLOCAL_AMFLAGS = -I m4 -I m4extra
+ 
+ include $(top_srcdir)/scripts/global.mk
+ 
