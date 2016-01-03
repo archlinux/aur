@@ -1,13 +1,13 @@
 # Maintainer: Ricardo Vieira <ricardo.vieira@tecnico.ulisboa.pt>
 
 pkgname=budgie-desktop-git
-pkgver=v8.2.r17.ga92612e
+pkgver=v10.2.1.r36.g9636f28
 pkgrel=1
 pkgdesc="Simple GTK3 desktop experience"
 arch=('i686' 'x86_64')
 url="https://solus-project.com/budgie"
 license=('GPLv2')
-depends=('gtk3' 'upower' 'libwnck3' 'gnome-menus' 'gnome-settings-daemon' 'libpeas' 'mutter' 'desktop-file-utils' 'libpulse' 'vala' 'libgee' 'gnome-themes-standard' 'gnome-control-center')
+depends=('gtk3' 'upower' 'libwnck3' 'gnome-menus' 'gnome-settings-daemon' 'libpeas' 'mutter' 'desktop-file-utils' 'libpulse' 'vala' 'libgee' 'gnome-themes-standard' 'gnome-control-center' 'gnome-session')
 makedepends=('autoconf' 'git' 'python2' 'gobject-introspection' 'intltool')
 provides=('budgie-desktop')
 conflicts=('budgie-desktop')
@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$pkgname"
-	./autogen.sh --prefix=/usr
+        ./autogen.sh --prefix=/usr
 	make
 }
 
