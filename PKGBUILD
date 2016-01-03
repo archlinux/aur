@@ -1,7 +1,7 @@
 # Maintainer: Alex "grevus" Lobtsov <alex@lobtsov.com>
 pkgname=php-gearman
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="PHP wrapper to libgearman"
 url="http://pecl.php.net/package/gearman"
 arch=('x86_64' 'i686')
