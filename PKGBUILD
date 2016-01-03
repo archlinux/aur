@@ -2,7 +2,7 @@
 
 pkgname=docker-machine
 pkgver=0.5.5
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc='Machine management for a container-centric world'
 arch=('i686' 'x86_64')
@@ -12,12 +12,10 @@ license=('Apache')
 depends=()
 provides=('docker-machine')
 conflicts=('docker-machine-bin')
+makedepends=('go' 'godep')
 
-source=(
-    "https://github.com/docker/machine/archive/v${pkgver//_/-}.tar.gz"
-    "https://raw.githubusercontent.com/docker/machine/master/LICENSE"
-)
-sha256sums=('SKIP' 'SKIP')
+source=("https://github.com/docker/machine/archive/v${pkgver//_/-}.tar.gz")
+sha256sums=('106a804491120bfc9da8a2229b4ce33b4d99210ada0b4ad4f6e1590f81eef8d8')
 
 prepare() {
     cd $srcdir
