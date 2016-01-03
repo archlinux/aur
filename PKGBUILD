@@ -13,7 +13,7 @@ optdepends=(
 	    'ladspa-plugins: a set of ladspa plugins'
 	    )
 conflicts=()
-source=("http://www.tracktion.com/downloads/tracktion64/Tracktioninstall_${pkgver//\./_}_Linux_64Bit.deb" 'license')
+source=('https://s3-us-west-2.amazonaws.com/tracktion-marketplace-public/TracktionInstall_5_Linux_64Bit_latest.deb' 'license')
 md5sums=('49712f3c6a87ac160ac523021eb30bd9'
          'd7bac73a1a52d26b337761a1d7ec561d')
 
