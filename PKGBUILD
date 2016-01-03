@@ -3,7 +3,7 @@
 pkgname=python-mahotas
 shrtname=mahotas
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast computer vision algorithms (all implemented in C++) operating over numpy arrays"
 url="http://luispedro.org/software/mahotas"
 depends=('python' 'python-numpy')
