@@ -13,7 +13,7 @@ makedepends=('git')
 source=(git+"https://github.com/pbek/QOwnNotes.git"
 	qownnotes.desktop)
 md5sums=('SKIP'
-	'8ca2a35c8414687048b612bf66f0cf7a')
+	'dd75c043efe26395e0a12be809806f70')
 
 build() {
   cd "${srcdir}/${_pkgname}"
