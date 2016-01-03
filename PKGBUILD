@@ -1,17 +1,17 @@
 pkgname=sdl2pp-git
 _pkgname=sdl2pp
 __pkgbuildname=libSDL2pp
-pkgver=0.8.0.r14.425.g6752baa
+pkgver=0.11.0.r15.560.g05325e1
 pkgrel=1
 pkgdesc="SDL2 wrapper for C++11"
 arch=('i686' 'x86_64')
 url="https://github.com/AMDmi3/libSDL2pp"
 license=('zlib')
-depends=('sdl2' 'sdl2_image' 'sdl2_ttf')
+depends=('sdl2' 'sdl2_image' 'sdl2_ttf' 'sdl2_mixer')
 makedepends=('cmake' 'git')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-source=("git+https://github.com/AMDmi3/libSDL2pp.git")
+source=("git+https://github.com/libSDL2pp/libSDL2pp.git")
 md5sums=('SKIP')
 
 pkgver() {
