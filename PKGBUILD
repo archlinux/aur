@@ -7,11 +7,11 @@ pkgdesc="OpenNap Client."
 arch=('i686' 'x86_64')
 url="http://xnap.sourceforge.net/"
 license=('GPL')
-depends=('jre')
+depends=('java-runtime')
 source=(http://downloads.sourceforge.net/project/xnap/XNap/$pkgver/$pkgname-$pkgver.tar.gz)
 md5sums=('51362d73c5802cef6b981ea95b3225fc')
 
-build() {
+package() {
   cd $startdir
 
 # Desktop icon
