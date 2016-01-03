@@ -1,8 +1,8 @@
 # Maintainer: yesuu zhang <yesuu79@qq.com>
 
 pkgname=youdao-dict
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='YouDao Dictionary'
 arch=('i686' 'x86_64')
 url='http://cidian.youdao.com/index-linux.html'
@@ -24,10 +24,10 @@ depends=(
 	'qt5-webkit'
 )
 install=youdao-dict.install
-source_i686=('http://codown.youdao.com/cidian/linux/youdao-dict_1.0.2~binary_i386.tar.gz')
-source_x86_64=('http://codown.youdao.com/cidian/linux/youdao-dict_1.0.2~binary_amd64.tar.gz')
-sha256sums_i686=('ecab295766c3d54e71ca48820b56a92c61810c77715dac1fb3883be1ede51130')
-sha256sums_x86_64=('084eb6aa64de0b6c018d6081b59d10714fcf302c10cf2d7ce988b1eceaafb275')
+source_i686=('http://codown.youdao.com/cidian/linux/youdao-dict_1.1.0-0~i386.tar.gz')
+source_x86_64=('http://codown.youdao.com/cidian/linux/youdao-dict_1.1.0-0~amd64.tar.gz')
+sha256sums_i686=('d1ff404f1e465d6a196b566294ddfea1a1bfe4568226201b65d74236407152fc')
+sha256sums_x86_64=('5c3a5ed105238e2fad181704fd99815c4275bf546136f99e817614188794dc07')
 
 package() {
 	cd "${srcdir}"
