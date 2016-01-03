@@ -81,18 +81,11 @@ build() {
   export LDFLAGS=-lX11
   export RADVD=/usr/bin/radvd
   NOCONFIGURE=1 ./autogen.sh 
-  #./configure --prefix=/usr --libexec=/usr/lib/"$pkgname" --sbindir=/usr/bin \
-  #./configure --prefix=/usr --libexec=/usr/lib/"${pkgname/-git/}" --sbindir=/usr/bin \
-	#--with-storage-lvm --without-xen --with-udev --without-hal --disable-static \
-	#--with-init-script=systemd --with-audit \
-	#--with-qemu-user=nobody --with-qemu-group=nobody \
-	#--without-netcf --with-interface --with-lxc
   ./configure --prefix=/usr --libexec=/usr/lib/"${pkgname/-git/}" --sbindir=/usr/bin --with-init-script=systemd
   make
 
   sed -i 's|/etc/sysconfig/|/etc/conf.d/|' daemon/libvirtd.service tools/libvirt-guests.service
   sed -i 's|@sbindir@|/usr/bin|g' src/virtlockd.service
-  # sed -i 's|#group =.*|group="kvm"|' src/qemu/qemu.conf
 }
 
 package() {
@@ -101,9 +94,13 @@ package() {
 
   install -D -m644 "$srcdir"/libvirtd.conf.d "$pkgdir"/etc/conf.d/libvirtd
   install -D -m644 "$srcdir"/libvirtd-guests.conf.d "$pkgdir"/etc/conf.d/libvirt-guests
-
-  # systemd stuff
   install -D -m644 "$srcdir"/libvirt.tmpfiles.d "$pkgdir"/usr/lib/tmpfiles.d/libvirt.conf
+
+  chown -R 0:78 "$pkgdir"/var/lib/libvirt/qemu
+  chmod 0770 "$pkgdir"/var/lib/libvirt/qemu
+
+  chown 0:102 "$pkgdir"/usr/share/polkit-1/rules.d
+  chmod 0750 "$pkgdir"/usr/share/polkit-1/rules.d
 
   rm -rf \
 	"$pkgdir"/var/run \
