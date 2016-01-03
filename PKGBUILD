@@ -2,17 +2,16 @@
 
 pkgname=ruby-httpclient
 _gemname=httpclient
-pkgver=2.6.0.1
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="Gives something like the functionality of libwww-perl (LWP) in Ruby."
 arch=('any')
 url="http://github.com/nahi/httpclient"
 license=('Ruby')
 depends=('ruby')
-makedepends=('rubygems')
 source=(http://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('f6a18094e9d1154a9c90df90aa2c8518f3837863')
+sha1sums=('5d0a605e42a7f591734c05c494b9b58aba162a5c')
 
 package() {
   cd "$srcdir"
