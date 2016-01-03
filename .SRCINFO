@@ -1,6 +1,6 @@
 pkgbase = tbs-dvb-drivers
 	pkgdesc = TBS proprietary DVB drivers + firmware
-	pkgver = v151105_4.2.5_1_ARCH
+	pkgver = v151229_4.2.5_1_ARCH
 	pkgrel = 1
 	url = http://www.tbsdtv.com
 	install = tbs-dvb-drivers.install
@@ -17,9 +17,9 @@ pkgbase = tbs-dvb-drivers
 	conflicts = ffdecsawrapper
 	conflicts = tbs-linux-drivers
 	conflicts = tbs-dvb-drivers
-	source = http://www.tbsdtv.com/download/document/common/tbs-linux-drivers_v151105.zip
+	source = http://www.tbsdtv.com/download/document/common/tbs-linux-drivers_v151229.zip
 	source = tbs-dvb-drivers.install
-	sha256sums = 0d97cb24de706891bda7baeda354d8a7a78d5a65007a91f778b83b7d66de99d4
+	sha256sums = 8f4a6ee1df6d0e5536b3c470741ea40153649d3f5185ed840445ff6a281e3156
 	sha256sums = 3fdfa6f14af91b3301f0f29c2a2386a7f84504688c766e714287ad8d450e2a57
 
 pkgname = tbs-dvb-drivers
