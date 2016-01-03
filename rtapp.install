@@ -92,11 +92,7 @@ post_upgrade() {
 
 New!
 
-RTMONITORIRQ
-Now supports whatever number of processor cores
-RTAPP
-added manualdec option
-manualdec: same as manual but the priority will decrease by one step from the first to the last application
+Some fixes in rtstatus 
 
 "
 }

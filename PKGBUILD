@@ -2,7 +2,7 @@
 
 pkgname=rtapp
 pkgver=0.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Realtime application thread priority tuning"
 arch=('any')
 url=("http://www.audio-linux.com")
