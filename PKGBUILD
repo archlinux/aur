@@ -12,7 +12,7 @@ pkgbase=linux-libre-grsec
 _pkgbasever=4.3-gnu
 _pkgver=4.3.3-gnu
 _grsecver=3.1
-_timestamp=201512162141
+_timestamp=201512282134
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -48,7 +48,6 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        'btrfs-overflow.patch'
         '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch'
         '0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
         # armv7h patches
@@ -66,7 +65,7 @@ sha256sums=('1d280ae2730eb6c9b8c7e920cac2e8111c8db02c498db0c142860a84106cc169'
             'SKIP'
             '4e5d062db675a304a1b7bb99a9d2eb1ff617fd31fac9b28df059444b5a98b1d5'
             'SKIP'
-            '13d78800d39cd1a38669d68a8b3861417d8caf8344781253cf3e5de749cdae76'
+            'ead097ba47033acf76f8d894f2af1d1445276507df9e259efaefbf20fff253f5'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -79,7 +78,6 @@ sha256sums=('1d280ae2730eb6c9b8c7e920cac2e8111c8db02c498db0c142860a84106cc169'
             '0e1ccaf0db006291273d3095bbd190eefe9807520e44645b3d76c79fa3644050'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '82efb1d533b579e8ea6103456e76ace1f749c9f055b0eaf95b980dc9ae544e5f'
             '61370b766e0c60b407c29d2c44b3f55fc352e9049c448bc8fcddb0efc53e42fc'
             '3d3266bd082321dccf429cc2200d1a4d870d2031546f9f591b6dfbb698294808'
             '7f58bf48fd6b0c93b448ced408ef5b6cb41da392f58378475f8d5f5c09f2a98f'
@@ -146,8 +144,6 @@ prepare() {
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
-
-  patch -p1 -i "$srcdir/btrfs-overflow.patch"
 
   # make the radeon driver load without the firmwares
   # http://www.fsfla.org/pipermail/linux-libre/2015-August/003098.html
