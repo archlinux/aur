@@ -1,0 +1,3 @@
+Build files for the Arch Linux [ports collection](https://wiki.archlinux.org/index.php/Arch_User_Repository).
+
+The package is named [`forecast-git`](https://aur.archlinux.org/packages/?O=0&K=forecast-git).
