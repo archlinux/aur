@@ -29,6 +29,7 @@ package() {
 
   msg2 'Installing...'
   install -dm 755 "$pkgdir/usr/share/perl6/vendor"
+  export RAKUDO_LOG_PRECOMP=1
   export PERL6LIB="inst#$pkgdir/usr/share/perl6/vendor"
   alacryd install
 
