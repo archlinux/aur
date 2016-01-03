@@ -1,4 +1,5 @@
-# Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+# Maintainer: fzerorubigd <fzero@rubi.gd>
+# Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 _pkgbase='openage'
 pkgname="$_pkgbase-git"
