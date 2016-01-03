@@ -16,7 +16,7 @@ optdepends=("cifs-utils: samba filesystems support"
 makedepends=()
 source=(
   "https://github.com/emersion/bups/archive/v$pkgver.tar.gz")
-sha256sums=('f74bf561dcea85e3dcb8860ac6f07005011173438a4b52be4ebf5b33ba4862ff')
+sha256sums=('f14a9e63121a3b060a9de102577f69a37abb1333c67fd3b9c669df3a875fa291')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
