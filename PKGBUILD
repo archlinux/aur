@@ -1,26 +1,27 @@
 # Maintainer: Ivan Agarkov <ivan.agarkov@gmail.com>
+# Contributor: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
+
 pkgname=mt7610u_wifi_sta
+pkgver=4606187
 pkgrel=1
-pkgver=('4606187')
-pkgdesc="Modified usb wifi driver for TP-Link TL-WDN5200 AC600 T2U and Cisco Linksys AE6000 / AC580 on Linux"
-arch=('i686' 'x86_64')
+# To get an overview of witch WiFi dongle has this chipset refer to https://wikidevi.com/wiki/MediaTek_MT7610U
+pkgdesc="Kernel module for MediaTek MT7610U chipset featured in TP-Link Archer T2U and T2UH, TP-Link TL-WDN5200, ASUS USB-AC50, ASUS USB-AC51, Comcast Xfinity KXW02AAA, D-Link DWA-171 rev B1 and more"
+arch=('any')
+license=('GPL2')
 url="https://github.com/Myria-de/mt7610u_wifi_sta_v3002_dpo_20130916"
-license=('GPL')
 depends=('linux')
-makedepends=('git' 'gcc' 'linux-headers' 'make' 'sed' 'grep')
-source=('mt7610u_wifi_sta::git+https://github.com/Myria-de/mt7610u_wifi_sta_v3002_dpo_20130916.git')
+makedepends=('git' 'linux-headers')
+install="depmod.install"
+source=("mt7610u_wifi_sta"::"git+https://github.com/Myria-de/mt7610u_wifi_sta_v3002_dpo_20130916.git")
 md5sums=('SKIP')
-install=('depmod.install')
 
 build() {
-	cd "$pkgname"
-	make
+	make -C "${srcdir}/${pkgname}"
 }
 
 package() {
-	cd "$pkgname"
-        install -d "$pkgdir/etc/Wireless/RT2870STA/"
-        install -m 644 -c RT2870STA.dat "$pkgdir/etc/Wireless/RT2870STA/RT2870STA.dat"
-        install -d "$pkgdir/usr/lib/modules/$(uname -r)/kernel/drivers/net/wireless/"
-        install -m 644 -c os/linux/mt7650u_sta.ko "$pkgdir/usr/lib/modules/$(uname -r)/kernel/drivers/net/wireless/"
+	cd "${srcdir}/${pkgname}"
+
+	install -D -m 644 RT2870STA.dat "${pkgdir}/etc/Wireless/RT2870STA/RT2870STA.dat"
+	install -D -m 644 os/linux/mt7650u_sta.ko "${pkgdir}/usr/lib/modules/$(uname -r)/kernel/drivers/net/wireless/os/linux/mt7650u_sta.ko"
 }
