@@ -2,7 +2,7 @@
 
 pkgname=grdc
 pkgver=20031019
-pkgrel=1
+pkgrel=1.1
 pkgdesc='Great Digital Clock'
 arch=('i686' 'x86_64')
 url="ftp://ftp.netbsd.org//pub/pkgsrc/distfiles/grdc-20031019.tar.gz"
