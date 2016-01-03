@@ -21,7 +21,7 @@ makedepends=("git" "cmake")
 optdepends=()
 #provides=()
 #conflicts=()
-backup=('/etc/mongoose-server/mongoose-server.conf')
+backup=('etc/mongoose-server/mongoose-server.conf')
 #options=()
 #install=
 
