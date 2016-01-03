@@ -25,14 +25,14 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        'yoga-900_i2c.patch')
+        'yoga900-touchpad_4.4rc7.patch')
 sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
             '263c181c3d3a53e9bcd501dbc8f8afc6ed8b81f695bc5a670271530f1e671104'
             '78fe47335606087ba2b98da64ca42f011fa3c5aec56a0880a4435a95c2f9a800'
             '333c14024cc8948f0f205f4eceac30060494d1ef0a785127500f5f568d36d38a'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'fc7443efe83343013ab24d4cccd1db35ad5cda2aa9305bd6b18254132cbfec9d')
+            'd479f2c806c42befab5492dc208625eb5382ae96756346530b6b4c403d59c0e5')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -68,8 +68,8 @@ prepare() {
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
     sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
   fi
-  # Patch i2c for Yoga 900
-  patch -Np1 -i ${srcdir}/yoga-900_i2c.patch
+  # Patch for yoga900 touchpad via Thomas Meyer
+  patch -Np1 -i ${srcdir}/yoga900-touchpad_4.4rc7.patch
   # set extraversion to pkgrel
   #sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
 

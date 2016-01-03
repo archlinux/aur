@@ -1,0 +1,1253 @@
+diff -aur linux-4.4-rc7/drivers/acpi/property.c linux-4.4-rc7_patch/drivers/acpi/property.c
+--- linux-4.4-rc7/drivers/acpi/property.c	2015-12-28 03:17:37.000000000 +0100
++++ linux-4.4-rc7_patch/drivers/acpi/property.c	2016-01-03 15:55:40.081018443 +0100
+@@ -346,7 +346,7 @@
+  *
+  * Return: %0 if property with @name has been found (success),
+  *         %-EINVAL if the arguments are invalid,
+- *         %-ENODATA if the property doesn't exist,
++ *         %-EINVAL if the property doesn't exist,
+  *         %-EPROTO if the property value type doesn't match @type.
+  */
+ static int acpi_data_get_property(struct acpi_device_data *data,
+@@ -360,7 +360,7 @@
+ 		return -EINVAL;
+ 
+ 	if (!data->pointer || !data->properties)
+-		return -ENODATA;
++		return -EINVAL;
+ 
+ 	properties = data->properties;
+ 	for (i = 0; i < properties->package.count; i++) {
+@@ -375,13 +375,13 @@
+ 		if (!strcmp(name, propname->string.pointer)) {
+ 			if (type != ACPI_TYPE_ANY && propvalue->type != type)
+ 				return -EPROTO;
+-			else if (obj)
++			if (obj)
+ 				*obj = propvalue;
+ 
+ 			return 0;
+ 		}
+ 	}
+-	return -ENODATA;
++	return -EINVAL;
+ }
+ 
+ /**
+@@ -439,7 +439,7 @@
+  *
+  * Return: %0 if array property (package) with @name has been found (success),
+  *         %-EINVAL if the arguments are invalid,
+- *         %-ENODATA if the property doesn't exist,
++ *         %-EINVAL if the property doesn't exist,
+  *         %-EPROTO if the property is not a package or the type of its elements
+  *           doesn't match @type.
+  */
+diff -aur linux-4.4-rc7/drivers/base/core.c linux-4.4-rc7_patch/drivers/base/core.c
+--- linux-4.4-rc7/drivers/base/core.c	2015-12-28 03:17:37.000000000 +0100
++++ linux-4.4-rc7_patch/drivers/base/core.c	2016-01-03 15:55:40.087685110 +0100
+@@ -2261,7 +2261,10 @@
+ 		if (fwnode_is_primary(fn))
+ 			fn = fn->secondary;
+ 
+-		fwnode->secondary = fn;
++		if (fn) {
++			WARN_ON(fwnode->secondary);
++			fwnode->secondary = fn;
++		}
+ 		dev->fwnode = fwnode;
+ 	} else {
+ 		dev->fwnode = fwnode_is_primary(dev->fwnode) ?
+diff -aur linux-4.4-rc7/drivers/base/platform.c linux-4.4-rc7_patch/drivers/base/platform.c
+--- linux-4.4-rc7/drivers/base/platform.c	2015-12-28 03:17:37.000000000 +0100
++++ linux-4.4-rc7_patch/drivers/base/platform.c	2016-01-03 15:55:40.087685110 +0100
+@@ -26,6 +26,7 @@
+ #include <linux/acpi.h>
+ #include <linux/clk/clk-conf.h>
+ #include <linux/limits.h>
++#include <linux/property.h>
+ 
+ #include "base.h"
+ #include "power/power.h"
+@@ -299,6 +300,22 @@
+ EXPORT_SYMBOL_GPL(platform_device_add_data);
+ 
+ /**
++ * platform_device_add_properties - add built-in properties to a platform device
++ * @pdev: platform device to add properties to
++ * @pset: properties to add
++ *
++ * The function will take deep copy of the properties in @pset and attach
++ * the copy to the platform device. The memory associated with properties
++ * will be freed when the platform device is released.
++ */
++int platform_device_add_properties(struct platform_device *pdev,
++				   const struct property_set *pset)
++{
++	return device_add_property_set(&pdev->dev, pset);
++}
++EXPORT_SYMBOL_GPL(platform_device_add_properties);
++
++/**
+  * platform_device_add - add a platform device to device hierarchy
+  * @pdev: platform device we're adding
+  *
+@@ -409,6 +426,8 @@
+ 			if (r->parent)
+ 				release_resource(r);
+ 		}
++
++		device_remove_property_set(&pdev->dev);
+ 	}
+ }
+ EXPORT_SYMBOL_GPL(platform_device_del);
+@@ -487,6 +506,12 @@
+ 	if (ret)
+ 		goto err;
+ 
++	if (pdevinfo->pset) {
++		ret = platform_device_add_properties(pdev, pdevinfo->pset);
++		if (ret)
++			goto err;
++	}
++
+ 	ret = platform_device_add(pdev);
+ 	if (ret) {
+ err:
+diff -aur linux-4.4-rc7/drivers/base/property.c linux-4.4-rc7_patch/drivers/base/property.c
+--- linux-4.4-rc7/drivers/base/property.c	2015-12-28 03:17:37.000000000 +0100
++++ linux-4.4-rc7_patch/drivers/base/property.c	2016-01-03 15:55:40.084351777 +0100
+@@ -19,32 +19,14 @@
+ #include <linux/etherdevice.h>
+ #include <linux/phy.h>
+ 
+-/**
+- * device_add_property_set - Add a collection of properties to a device object.
+- * @dev: Device to add properties to.
+- * @pset: Collection of properties to add.
+- *
+- * Associate a collection of device properties represented by @pset with @dev
+- * as its secondary firmware node.
+- */
+-void device_add_property_set(struct device *dev, struct property_set *pset)
+-{
+-	if (!pset)
+-		return;
+-
+-	pset->fwnode.type = FWNODE_PDATA;
+-	set_secondary_fwnode(dev, &pset->fwnode);
+-}
+-EXPORT_SYMBOL_GPL(device_add_property_set);
+-
+-static inline bool is_pset(struct fwnode_handle *fwnode)
++static inline bool is_pset_node(struct fwnode_handle *fwnode)
+ {
+ 	return fwnode && fwnode->type == FWNODE_PDATA;
+ }
+ 
+-static inline struct property_set *to_pset(struct fwnode_handle *fwnode)
++static inline struct property_set *to_pset_node(struct fwnode_handle *fwnode)
+ {
+-	return is_pset(fwnode) ?
++	return is_pset_node(fwnode) ?
+ 		container_of(fwnode, struct property_set, fwnode) : NULL;
+ }
+ 
+@@ -63,45 +45,135 @@
+ 	return NULL;
+ }
+ 
+-static int pset_prop_read_array(struct property_set *pset, const char *name,
+-				enum dev_prop_type type, void *val, size_t nval)
++static void *pset_prop_find(struct property_set *pset, const char *propname,
++			    size_t length)
+ {
+ 	struct property_entry *prop;
+-	unsigned int item_size;
++	void *pointer;
+ 
+-	prop = pset_prop_get(pset, name);
++	prop = pset_prop_get(pset, propname);
+ 	if (!prop)
+-		return -ENODATA;
++		return ERR_PTR(-EINVAL);
++	if (prop->is_array)
++		pointer = prop->pointer.raw_data;
++	else
++		pointer = &prop->value.raw_data;
++	if (!pointer)
++		return ERR_PTR(-ENODATA);
++	if (length > prop->length)
++		return ERR_PTR(-EOVERFLOW);
++	return pointer;
++}
++
++static int pset_prop_read_u8_array(struct property_set *pset,
++				   const char *propname,
++				   u8 *values, size_t nval)
++{
++	void *pointer;
++	size_t length = nval * sizeof(*values);
++
++	pointer = pset_prop_find(pset, propname, length);
++	if (IS_ERR(pointer))
++		return PTR_ERR(pointer);
++
++	memcpy(values, pointer, length);
++	return 0;
++}
++
++static int pset_prop_read_u16_array(struct property_set *pset,
++				    const char *propname,
++				    u16 *values, size_t nval)
++{
++	void *pointer;
++	size_t length = nval * sizeof(*values);
++
++	pointer = pset_prop_find(pset, propname, length);
++	if (IS_ERR(pointer))
++		return PTR_ERR(pointer);
++
++	memcpy(values, pointer, length);
++	return 0;
++}
+ 
+-	if (prop->type != type)
+-		return -EPROTO;
++static int pset_prop_read_u32_array(struct property_set *pset,
++				    const char *propname,
++				    u32 *values, size_t nval)
++{
++	void *pointer;
++	size_t length = nval * sizeof(*values);
++
++	pointer = pset_prop_find(pset, propname, length);
++	if (IS_ERR(pointer))
++		return PTR_ERR(pointer);
++
++	memcpy(values, pointer, length);
++	return 0;
++}
++
++static int pset_prop_read_u64_array(struct property_set *pset,
++				    const char *propname,
++				    u64 *values, size_t nval)
++{
++	void *pointer;
++	size_t length = nval * sizeof(*values);
++
++	pointer = pset_prop_find(pset, propname, length);
++	if (IS_ERR(pointer))
++		return PTR_ERR(pointer);
++
++	memcpy(values, pointer, length);
++	return 0;
++}
++
++static int pset_prop_count_elems_of_size(struct property_set *pset,
++					 const char *propname, size_t length)
++{
++	struct property_entry *prop;
++
++	prop = pset_prop_get(pset, propname);
++	if (!prop)
++		return -EINVAL;
++
++	return prop->length / length;
++}
++
++static int pset_prop_read_string_array(struct property_set *pset,
++				       const char *propname,
++				       const char **strings, size_t nval)
++{
++	void *pointer;
++	size_t length = nval * sizeof(*strings);
++
++	pointer = pset_prop_find(pset, propname, length);
++	if (IS_ERR(pointer))
++		return PTR_ERR(pointer);
++
++	memcpy(strings, pointer, length);
++	return 0;
++}
+ 
+-	if (!val)
+-		return prop->nval;
++static int pset_prop_read_string(struct property_set *pset,
++				 const char *propname, const char **strings)
++{
++	struct property_entry *prop;
++	const char **pointer;
+ 
+-	if (prop->nval < nval)
+-		return -EOVERFLOW;
+-
+-	switch (type) {
+-	case DEV_PROP_U8:
+-		item_size = sizeof(u8);
+-		break;
+-	case DEV_PROP_U16:
+-		item_size = sizeof(u16);
+-		break;
+-	case DEV_PROP_U32:
+-		item_size = sizeof(u32);
+-		break;
+-	case DEV_PROP_U64:
+-		item_size = sizeof(u64);
+-		break;
+-	case DEV_PROP_STRING:
+-		item_size = sizeof(const char *);
+-		break;
+-	default:
++	prop = pset_prop_get(pset, propname);
++	if (!prop)
+ 		return -EINVAL;
++	if (!prop->is_string)
++		return -EILSEQ;
++	if (prop->is_array) {
++		pointer = prop->pointer.str;
++		if (!pointer)
++			return -ENODATA;
++	} else {
++		pointer = &prop->value.str;
++		if (*pointer && strnlen(*pointer, prop->length) >= prop->length)
++			return -EILSEQ;
+ 	}
+-	memcpy(val, prop->value.raw_data, nval * item_size);
++
++	*strings = *pointer;
+ 	return 0;
+ }
+ 
+@@ -124,6 +196,18 @@
+ }
+ EXPORT_SYMBOL_GPL(device_property_present);
+ 
++static bool __fwnode_property_present(struct fwnode_handle *fwnode,
++				      const char *propname)
++{
++	if (is_of_node(fwnode))
++		return of_property_read_bool(to_of_node(fwnode), propname);
++	else if (is_acpi_node(fwnode))
++		return !acpi_node_prop_get(fwnode, propname, NULL);
++	else if (is_pset_node(fwnode))
++		return !!pset_prop_get(to_pset_node(fwnode), propname);
++	return false;
++}
++
+ /**
+  * fwnode_property_present - check if a property of a firmware node is present
+  * @fwnode: Firmware node whose property to check
+@@ -131,12 +215,12 @@
+  */
+ bool fwnode_property_present(struct fwnode_handle *fwnode, const char *propname)
+ {
+-	if (is_of_node(fwnode))
+-		return of_property_read_bool(to_of_node(fwnode), propname);
+-	else if (is_acpi_node(fwnode))
+-		return !acpi_node_prop_get(fwnode, propname, NULL);
++	bool ret;
+ 
+-	return !!pset_prop_get(to_pset(fwnode), propname);
++	ret = __fwnode_property_present(fwnode, propname);
++	if (ret == false && fwnode->secondary)
++		ret = __fwnode_property_present(fwnode->secondary, propname);
++	return ret;
+ }
+ EXPORT_SYMBOL_GPL(fwnode_property_present);
+ 
+@@ -309,25 +393,40 @@
+ }
+ EXPORT_SYMBOL_GPL(device_property_match_string);
+ 
+-#define OF_DEV_PROP_READ_ARRAY(node, propname, type, val, nval) \
+-	(val) ? of_property_read_##type##_array((node), (propname), (val), (nval)) \
++#define OF_DEV_PROP_READ_ARRAY(node, propname, type, val, nval)				\
++	(val) ? of_property_read_##type##_array((node), (propname), (val), (nval))	\
+ 	      : of_property_count_elems_of_size((node), (propname), sizeof(type))
+ 
+-#define FWNODE_PROP_READ_ARRAY(_fwnode_, _propname_, _type_, _proptype_, _val_, _nval_) \
+-({ \
+-	int _ret_; \
+-	if (is_of_node(_fwnode_)) \
+-		_ret_ = OF_DEV_PROP_READ_ARRAY(to_of_node(_fwnode_), _propname_, \
+-					       _type_, _val_, _nval_); \
+-	else if (is_acpi_node(_fwnode_)) \
+-		_ret_ = acpi_node_prop_read(_fwnode_, _propname_, _proptype_, \
+-					    _val_, _nval_); \
+-	else if (is_pset(_fwnode_)) \
+-		_ret_ = pset_prop_read_array(to_pset(_fwnode_), _propname_, \
+-					     _proptype_, _val_, _nval_); \
+-	else \
+-		_ret_ = -ENXIO; \
+-	_ret_; \
++#define PSET_PROP_READ_ARRAY(node, propname, type, val, nval)				\
++	(val) ? pset_prop_read_##type##_array((node), (propname), (val), (nval))	\
++	      : pset_prop_count_elems_of_size((node), (propname), sizeof(type))
++
++#define FWNODE_PROP_READ(_fwnode_, _propname_, _type_, _proptype_, _val_, _nval_)	\
++({											\
++	int _ret_;									\
++	if (is_of_node(_fwnode_))							\
++		_ret_ = OF_DEV_PROP_READ_ARRAY(to_of_node(_fwnode_), _propname_,	\
++					       _type_, _val_, _nval_);			\
++	else if (is_acpi_node(_fwnode_))						\
++		_ret_ = acpi_node_prop_read(_fwnode_, _propname_, _proptype_,		\
++					    _val_, _nval_);				\
++	else if (is_pset_node(_fwnode_)) 						\
++		_ret_ = PSET_PROP_READ_ARRAY(to_pset_node(_fwnode_), _propname_,	\
++					     _type_, _val_, _nval_);			\
++	else										\
++		_ret_ = -ENXIO;								\
++	_ret_;										\
++})
++
++#define FWNODE_PROP_READ_ARRAY(_fwnode_, _propname_, _type_, _proptype_, _val_, _nval_)	\
++({											\
++	int _ret_;									\
++	_ret_ = FWNODE_PROP_READ(_fwnode_, _propname_, _type_, _proptype_,		\
++				 _val_, _nval_);					\
++	if (_ret_ == -EINVAL && _fwnode_->secondary)					\
++		_ret_ = FWNODE_PROP_READ(_fwnode_->secondary, _propname_, _type_,	\
++				_proptype_, _val_, _nval_);				\
++	_ret_;										\
+ })
+ 
+ /**
+@@ -434,6 +533,41 @@
+ }
+ EXPORT_SYMBOL_GPL(fwnode_property_read_u64_array);
+ 
++static int __fwnode_property_read_string_array(struct fwnode_handle *fwnode,
++					       const char *propname,
++					       const char **val, size_t nval)
++{
++	if (is_of_node(fwnode))
++		return val ?
++			of_property_read_string_array(to_of_node(fwnode),
++						      propname, val, nval) :
++			of_property_count_strings(to_of_node(fwnode), propname);
++	else if (is_acpi_node(fwnode))
++		return acpi_node_prop_read(fwnode, propname, DEV_PROP_STRING,
++					   val, nval);
++	else if (is_pset_node(fwnode))
++		return val ?
++			pset_prop_read_string_array(to_pset_node(fwnode),
++						    propname, val, nval) :
++			pset_prop_count_elems_of_size(to_pset_node(fwnode),
++						      propname,
++						      sizeof(const char *));
++	return -ENXIO;
++}
++
++static int __fwnode_property_read_string(struct fwnode_handle *fwnode,
++					 const char *propname, const char **val)
++{
++	if (is_of_node(fwnode))
++		return of_property_read_string(to_of_node(fwnode), propname, val);
++	else if (is_acpi_node(fwnode))
++		return acpi_node_prop_read(fwnode, propname, DEV_PROP_STRING,
++					   val, 1);
++	else if (is_pset_node(fwnode))
++		return pset_prop_read_string(to_pset_node(fwnode), propname, val);
++	return -ENXIO;
++}
++
+ /**
+  * fwnode_property_read_string_array - return string array property of a node
+  * @fwnode: Firmware node to get the property of
+@@ -456,18 +590,13 @@
+ 				      const char *propname, const char **val,
+ 				      size_t nval)
+ {
+-	if (is_of_node(fwnode))
+-		return val ?
+-			of_property_read_string_array(to_of_node(fwnode),
+-						      propname, val, nval) :
+-			of_property_count_strings(to_of_node(fwnode), propname);
+-	else if (is_acpi_node(fwnode))
+-		return acpi_node_prop_read(fwnode, propname, DEV_PROP_STRING,
+-					   val, nval);
+-	else if (is_pset(fwnode))
+-		return pset_prop_read_array(to_pset(fwnode), propname,
+-					    DEV_PROP_STRING, val, nval);
+-	return -ENXIO;
++	int ret;
++
++	ret = __fwnode_property_read_string_array(fwnode, propname, val, nval);
++	if (ret == -EINVAL && fwnode->secondary)
++		ret = __fwnode_property_read_string_array(fwnode->secondary,
++							  propname, val, nval);
++	return ret;
+ }
+ EXPORT_SYMBOL_GPL(fwnode_property_read_string_array);
+ 
+@@ -489,14 +618,13 @@
+ int fwnode_property_read_string(struct fwnode_handle *fwnode,
+ 				const char *propname, const char **val)
+ {
+-	if (is_of_node(fwnode))
+-		return of_property_read_string(to_of_node(fwnode), propname, val);
+-	else if (is_acpi_node(fwnode))
+-		return acpi_node_prop_read(fwnode, propname, DEV_PROP_STRING,
+-					   val, 1);
++	int ret;
+ 
+-	return pset_prop_read_array(to_pset(fwnode), propname,
+-				    DEV_PROP_STRING, val, 1);
++	ret = __fwnode_property_read_string(fwnode, propname, val);
++	if (ret == -EINVAL && fwnode->secondary)
++		ret = __fwnode_property_read_string(fwnode->secondary,
++						    propname, val);
++	return ret;
+ }
+ EXPORT_SYMBOL_GPL(fwnode_property_read_string);
+ 
+@@ -547,6 +675,179 @@
+ EXPORT_SYMBOL_GPL(fwnode_property_match_string);
+ 
+ /**
++ * pset_free_set - releases memory allocated for copied property set
++ * @pset: Property set to release
++ *
++ * Function takes previously copied property set and releases all the
++ * memory allocated to it.
++ */
++static void pset_free_set(struct property_set *pset)
++{
++	const struct property_entry *prop;
++	size_t i, nval;
++
++	if (!pset)
++		return;
++
++	for (prop = pset->properties; prop->name; prop++) {
++		if (prop->is_array) {
++			if (prop->is_string && prop->pointer.str) {
++				nval = prop->length / sizeof(const char *);
++				for (i = 0; i < nval; i++)
++					kfree(prop->pointer.str[i]);
++			}
++			kfree(prop->pointer.raw_data);
++		} else if (prop->is_string) {
++			kfree(prop->value.str);
++		}
++		kfree(prop->name);
++	}
++
++	kfree(pset->properties);
++	kfree(pset);
++}
++
++static int pset_copy_entry(struct property_entry *dst,
++			   const struct property_entry *src)
++{
++	const char **d, **s;
++	size_t i, nval;
++
++	dst->name = kstrdup(src->name, GFP_KERNEL);
++	if (!dst->name)
++		return -ENOMEM;
++
++	if (src->is_array) {
++		if (src->is_string) {
++			nval = src->length / sizeof(const char *);
++			dst->pointer.str = kcalloc(nval, sizeof(const char *),
++						   GFP_KERNEL);
++			if (!dst->pointer.str)
++				return -ENOMEM;
++
++			d = dst->pointer.str;
++			s = src->pointer.str;
++			for (i = 0; i < nval; i++) {
++				d[i] = kstrdup(s[i], GFP_KERNEL);
++				if (!d[i] && s[i])
++					return -ENOMEM;
++			}
++		} else {
++			dst->pointer.raw_data = kmemdup(src->pointer.raw_data,
++							src->length, GFP_KERNEL);
++			if (!dst->pointer.raw_data)
++				return -ENOMEM;
++		}
++	} else if (src->is_string) {
++		dst->value.str = kstrdup(src->value.str, GFP_KERNEL);
++		if (!dst->value.str && src->value.str)
++			return -ENOMEM;
++	} else {
++		dst->value.raw_data = src->value.raw_data;
++	}
++
++	dst->length = src->length;
++	dst->is_array = src->is_array;
++	dst->is_string = src->is_string;
++
++	return 0;
++}
++
++/**
++ * pset_copy_set - copies property set
++ * @pset: Property set to copy
++ *
++ * This function takes a deep copy of the given property set and returns
++ * pointer to the copy. Call device_free_property_set() to free resources
++ * allocated in this function.
++ *
++ * Return: Pointer to the new property set or error pointer.
++ */
++static struct property_set *pset_copy_set(const struct property_set *pset)
++{
++	const struct property_entry *entry;
++	struct property_set *p;
++	size_t i, n = 0;
++
++	p = kzalloc(sizeof(*p), GFP_KERNEL);
++	if (!p)
++		return ERR_PTR(-ENOMEM);
++
++	while (pset->properties[n].name)
++		n++;
++
++	p->properties = kcalloc(n + 1, sizeof(*entry), GFP_KERNEL);
++	if (!p->properties) {
++		kfree(p);
++		return ERR_PTR(-ENOMEM);
++	}
++
++	for (i = 0; i < n; i++) {
++		int ret = pset_copy_entry(&p->properties[i],
++					  &pset->properties[i]);
++		if (ret) {
++			pset_free_set(p);
++			return ERR_PTR(ret);
++		}
++	}
++
++	return p;
++}
++
++/**
++ * device_remove_property_set - Remove properties from a device object.
++ * @dev: Device whose properties to remove.
++ *
++ * The function removes properties previously associated to the device
++ * secondary firmware node with device_add_property_set(). Memory allocated
++ * to the properties will also be released.
++ */
++void device_remove_property_set(struct device *dev)
++{
++	struct fwnode_handle *fwnode;
++
++	fwnode = dev_fwnode(dev);
++	if (!fwnode)
++		return;
++	/*
++	 * Pick either primary or secondary node depending which one holds
++	 * the pset. If there is no real firmware node (ACPI/DT) primary
++	 * will hold the pset.
++	 */
++	if (!is_pset_node(fwnode))
++		fwnode = fwnode->secondary;
++	if (!IS_ERR(fwnode) && is_pset_node(fwnode))
++		pset_free_set(to_pset_node(fwnode));
++	set_secondary_fwnode(dev, NULL);
++}
++EXPORT_SYMBOL_GPL(device_remove_property_set);
++
++/**
++ * device_add_property_set - Add a collection of properties to a device object.
++ * @dev: Device to add properties to.
++ * @pset: Collection of properties to add.
++ *
++ * Associate a collection of device properties represented by @pset with @dev
++ * as its secondary firmware node. The function takes a copy of @pset.
++ */
++int device_add_property_set(struct device *dev, const struct property_set *pset)
++{
++	struct property_set *p;
++
++	if (!pset)
++		return -EINVAL;
++
++	p = pset_copy_set(pset);
++	if (IS_ERR(p))
++		return PTR_ERR(p);
++
++	p->fwnode.type = FWNODE_PDATA;
++	set_secondary_fwnode(dev, &p->fwnode);
++	return 0;
++}
++EXPORT_SYMBOL_GPL(device_add_property_set);
++
++/**
+  * device_get_next_child_node - Return the next child node handle for a device
+  * @dev: Device to find the next child node for.
+  * @child: Handle to one of the device's child nodes or a null handle.
+diff -aur linux-4.4-rc7/drivers/hid/i2c-hid/i2c-hid.c linux-4.4-rc7_patch/drivers/hid/i2c-hid/i2c-hid.c
+--- linux-4.4-rc7/drivers/hid/i2c-hid/i2c-hid.c	2015-12-28 03:17:37.000000000 +0100
++++ linux-4.4-rc7_patch/drivers/hid/i2c-hid/i2c-hid.c	2016-01-03 16:02:22.981020198 +0100
+@@ -151,6 +151,7 @@
+ 	struct i2c_hid_platform_data pdata;
+ 
+ 	bool			irq_wake_enabled;
++	struct mutex		reset_lock;
+ };
+ 
+ static int __i2c_hid_command(struct i2c_client *client,
+@@ -356,9 +357,16 @@
+ 
+ 	i2c_hid_dbg(ihid, "%s\n", __func__);
+ 
++	/*
++	 * This prevents sending feature reports while the device is
++	 * being reset. Otherwise we may lose the reset complete
++	 * interrupt.
++	 */
++	mutex_lock(&ihid->reset_lock);
++
+ 	ret = i2c_hid_set_power(client, I2C_HID_PWR_ON);
+ 	if (ret)
+-		return ret;
++		goto out_unlock;
+ 
+ 	i2c_hid_dbg(ihid, "resetting...\n");
+ 
+@@ -366,10 +374,11 @@
+ 	if (ret) {
+ 		dev_err(&client->dev, "failed to reset device.\n");
+ 		i2c_hid_set_power(client, I2C_HID_PWR_SLEEP);
+-		return ret;
+ 	}
+ 
+-	return 0;
++out_unlock:
++	mutex_unlock(&ihid->reset_lock);
++	return ret;
+ }
+ 
+ static void i2c_hid_get_input(struct i2c_hid *ihid)
+@@ -587,12 +596,15 @@
+ 		size_t count, unsigned char report_type, bool use_data)
+ {
+ 	struct i2c_client *client = hid->driver_data;
++	struct i2c_hid *ihid = i2c_get_clientdata(client);
+ 	int report_id = buf[0];
+ 	int ret;
+ 
+ 	if (report_type == HID_INPUT_REPORT)
+ 		return -EINVAL;
+ 
++	mutex_lock(&ihid->reset_lock);
++
+ 	if (report_id) {
+ 		buf++;
+ 		count--;
+@@ -605,6 +617,8 @@
+ 	if (report_id && ret >= 0)
+ 		ret++; /* add report_id to the number of transfered bytes */
+ 
++	mutex_unlock(&ihid->reset_lock);
++
+ 	return ret;
+ }
+ 
+@@ -990,6 +1004,7 @@
+ 	ihid->wHIDDescRegister = cpu_to_le16(hidRegister);
+ 
+ 	init_waitqueue_head(&ihid->wait);
++	mutex_init(&ihid->reset_lock);
+ 
+ 	/* we need to allocate the command buffer without knowing the maximum
+ 	 * size of the reports. Let's use HID_MIN_BUFFER_SIZE, then we do the
+diff -aur linux-4.4-rc7/drivers/i2c/busses/i2c-designware-platdrv.c linux-4.4-rc7_patch/drivers/i2c/busses/i2c-designware-platdrv.c
+--- linux-4.4-rc7/drivers/i2c/busses/i2c-designware-platdrv.c	2015-12-28 03:17:37.000000000 +0100
++++ linux-4.4-rc7_patch/drivers/i2c/busses/i2c-designware-platdrv.c	2016-01-03 15:55:40.097685110 +0100
+@@ -36,6 +36,7 @@
+ #include <linux/platform_device.h>
+ #include <linux/pm.h>
+ #include <linux/pm_runtime.h>
++#include <linux/property.h>
+ #include <linux/io.h>
+ #include <linux/slab.h>
+ #include <linux/acpi.h>
+@@ -134,10 +135,10 @@
+ 
+ static int dw_i2c_plat_probe(struct platform_device *pdev)
+ {
++	struct dw_i2c_platform_data *pdata = dev_get_platdata(&pdev->dev);
+ 	struct dw_i2c_dev *dev;
+ 	struct i2c_adapter *adap;
+ 	struct resource *mem;
+-	struct dw_i2c_platform_data *pdata;
+ 	int irq, r;
+ 	u32 clk_freq, ht = 0;
+ 
+@@ -161,33 +162,28 @@
+ 	/* fast mode by default because of legacy reasons */
+ 	clk_freq = 400000;
+ 
+-	if (has_acpi_companion(&pdev->dev)) {
+-		dw_i2c_acpi_configure(pdev);
+-	} else if (pdev->dev.of_node) {
+-		of_property_read_u32(pdev->dev.of_node,
+-					"i2c-sda-hold-time-ns", &ht);
+-
+-		of_property_read_u32(pdev->dev.of_node,
+-				     "i2c-sda-falling-time-ns",
+-				     &dev->sda_falling_time);
+-		of_property_read_u32(pdev->dev.of_node,
+-				     "i2c-scl-falling-time-ns",
+-				     &dev->scl_falling_time);
+-
+-		of_property_read_u32(pdev->dev.of_node, "clock-frequency",
+-				     &clk_freq);
+-
+-		/* Only standard mode at 100kHz and fast mode at 400kHz
+-		 * are supported.
+-		 */
+-		if (clk_freq != 100000 && clk_freq != 400000) {
+-			dev_err(&pdev->dev, "Only 100kHz and 400kHz supported");
+-			return -EINVAL;
+-		}
++	if (pdata) {
++		clk_freq = pdata->i2c_scl_freq;
+ 	} else {
+-		pdata = dev_get_platdata(&pdev->dev);
+-		if (pdata)
+-			clk_freq = pdata->i2c_scl_freq;
++		device_property_read_u32(&pdev->dev, "i2c-sda-hold-time-ns",
++					 &ht);
++		device_property_read_u32(&pdev->dev, "i2c-sda-falling-time-ns",
++					 &dev->sda_falling_time);
++		device_property_read_u32(&pdev->dev, "i2c-scl-falling-time-ns",
++					 &dev->scl_falling_time);
++		device_property_read_u32(&pdev->dev, "clock-frequency",
++					 &clk_freq);
++	}
++
++	if (has_acpi_companion(&pdev->dev))
++		dw_i2c_acpi_configure(pdev);
++
++	/*
++	 * Only standard mode at 100kHz and fast mode at 400kHz are supported.
++	 */
++	if (clk_freq != 100000 && clk_freq != 400000) {
++		dev_err(&pdev->dev, "Only 100kHz and 400kHz supported");
++		return -EINVAL;
+ 	}
+ 
+ 	r = i2c_dw_eval_lock_support(dev);
+Only in linux-4.4-rc7_patch/drivers/i2c/busses: i2c-designware-platdrv.c.orig
+diff -aur linux-4.4-rc7/drivers/mfd/intel-lpss-acpi.c linux-4.4-rc7_patch/drivers/mfd/intel-lpss-acpi.c
+--- linux-4.4-rc7/drivers/mfd/intel-lpss-acpi.c	2015-12-28 03:17:37.000000000 +0100
++++ linux-4.4-rc7_patch/drivers/mfd/intel-lpss-acpi.c	2016-01-03 15:55:40.094351777 +0100
+@@ -18,6 +18,7 @@
+ #include <linux/pm.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/platform_device.h>
++#include <linux/property.h>
+ 
+ #include "intel-lpss.h"
+ 
+@@ -25,6 +26,20 @@
+ 	.clk_rate = 120000000,
+ };
+ 
++static struct property_entry spt_i2c_properties[] = {
++	PROPERTY_ENTRY_U32("i2c-sda-hold-time-ns", 230),
++	{ },
++};
++
++static struct property_set spt_i2c_pset = {
++	.properties = spt_i2c_properties,
++};
++
++static const struct intel_lpss_platform_info spt_i2c_info = {
++	.clk_rate = 120000000,
++	.pset = &spt_i2c_pset,
++};
++
+ static const struct intel_lpss_platform_info bxt_info = {
+ 	.clk_rate = 100000000,
+ };
+@@ -35,8 +50,8 @@
+ 
+ static const struct acpi_device_id intel_lpss_acpi_ids[] = {
+ 	/* SPT */
+-	{ "INT3446", (kernel_ulong_t)&spt_info },
+-	{ "INT3447", (kernel_ulong_t)&spt_info },
++	{ "INT3446", (kernel_ulong_t)&spt_i2c_info },
++	{ "INT3447", (kernel_ulong_t)&spt_i2c_info },
+ 	/* BXT */
+ 	{ "80860AAC", (kernel_ulong_t)&bxt_i2c_info },
+ 	{ "80860ABC", (kernel_ulong_t)&bxt_info },
+diff -aur linux-4.4-rc7/drivers/mfd/intel-lpss.c linux-4.4-rc7_patch/drivers/mfd/intel-lpss.c
+--- linux-4.4-rc7/drivers/mfd/intel-lpss.c	2015-12-28 03:17:37.000000000 +0100
++++ linux-4.4-rc7_patch/drivers/mfd/intel-lpss.c	2016-01-03 15:55:40.091018443 +0100
+@@ -24,6 +24,7 @@
+ #include <linux/mfd/core.h>
+ #include <linux/pm_qos.h>
+ #include <linux/pm_runtime.h>
++#include <linux/property.h>
+ #include <linux/seq_file.h>
+ #include <linux/io-64-nonatomic-lo-hi.h>
+ 
+@@ -72,7 +73,7 @@
+ 	enum intel_lpss_dev_type type;
+ 	struct clk *clk;
+ 	struct clk_lookup *clock;
+-	const struct mfd_cell *cell;
++	struct mfd_cell *cell;
+ 	struct device *dev;
+ 	void __iomem *priv;
+ 	int devid;
+@@ -217,6 +218,7 @@
+ 
+ static int intel_lpss_assign_devs(struct intel_lpss *lpss)
+ {
++	const struct mfd_cell *cell;
+ 	unsigned int type;
+ 
+ 	type = lpss->caps & LPSS_PRIV_CAPS_TYPE_MASK;
+@@ -224,18 +226,22 @@
+ 
+ 	switch (type) {
+ 	case LPSS_DEV_I2C:
+-		lpss->cell = &intel_lpss_i2c_cell;
++		cell = &intel_lpss_i2c_cell;
+ 		break;
+ 	case LPSS_DEV_UART:
+-		lpss->cell = &intel_lpss_uart_cell;
++		cell = &intel_lpss_uart_cell;
+ 		break;
+ 	case LPSS_DEV_SPI:
+-		lpss->cell = &intel_lpss_spi_cell;
++		cell = &intel_lpss_spi_cell;
+ 		break;
+ 	default:
+ 		return -ENODEV;
+ 	}
+ 
++	lpss->cell = devm_kmemdup(lpss->dev, cell, sizeof(*cell), GFP_KERNEL);
++	if (!lpss->cell)
++		return -ENOMEM;
++
+ 	lpss->type = type;
+ 
+ 	return 0;
+@@ -401,6 +407,8 @@
+ 	if (ret)
+ 		return ret;
+ 
++	lpss->cell->pset = info->pset;
++
+ 	intel_lpss_init_dev(lpss);
+ 
+ 	lpss->devid = ida_simple_get(&intel_lpss_devid_ida, 0, 0, GFP_KERNEL);
+diff -aur linux-4.4-rc7/drivers/mfd/intel-lpss.h linux-4.4-rc7_patch/drivers/mfd/intel-lpss.h
+--- linux-4.4-rc7/drivers/mfd/intel-lpss.h	2015-12-28 03:17:37.000000000 +0100
++++ linux-4.4-rc7_patch/drivers/mfd/intel-lpss.h	2016-01-03 15:55:40.091018443 +0100
+@@ -16,12 +16,14 @@
+ 
+ struct device;
+ struct resource;
++struct property_set;
+ 
+ struct intel_lpss_platform_info {
+ 	struct resource *mem;
+ 	int irq;
+ 	unsigned long clk_rate;
+ 	const char *clk_con_id;
++	struct property_set *pset;
+ };
+ 
+ int intel_lpss_probe(struct device *dev,
+diff -aur linux-4.4-rc7/drivers/mfd/intel-lpss-pci.c linux-4.4-rc7_patch/drivers/mfd/intel-lpss-pci.c
+--- linux-4.4-rc7/drivers/mfd/intel-lpss-pci.c	2015-12-28 03:17:37.000000000 +0100
++++ linux-4.4-rc7_patch/drivers/mfd/intel-lpss-pci.c	2016-01-03 15:55:40.094351777 +0100
+@@ -17,6 +17,7 @@
+ #include <linux/pci.h>
+ #include <linux/pm.h>
+ #include <linux/pm_runtime.h>
++#include <linux/property.h>
+ 
+ #include "intel-lpss.h"
+ 
+@@ -65,9 +66,35 @@
+ 	.clk_rate = 120000000,
+ };
+ 
++static struct property_entry spt_i2c_properties[] = {
++	PROPERTY_ENTRY_U32("i2c-sda-hold-time-ns", 230),
++	{ },
++};
++
++static struct property_set spt_i2c_pset = {
++	.properties = spt_i2c_properties,
++};
++
++static const struct intel_lpss_platform_info spt_i2c_info = {
++	.clk_rate = 120000000,
++	.pset = &spt_i2c_pset,
++};
++
++static struct property_entry uart_properties[] = {
++	PROPERTY_ENTRY_U32("reg-io-width", 4),
++	PROPERTY_ENTRY_U32("reg-shift", 2),
++	PROPERTY_ENTRY_BOOL("snps,uart-16550-compatible"),
++	{ },
++};
++
++static struct property_set uart_pset = {
++	.properties = uart_properties,
++};
++
+ static const struct intel_lpss_platform_info spt_uart_info = {
+ 	.clk_rate = 120000000,
+ 	.clk_con_id = "baudclk",
++	.pset = &uart_pset,
+ };
+ 
+ static const struct intel_lpss_platform_info bxt_info = {
+@@ -77,6 +104,7 @@
+ static const struct intel_lpss_platform_info bxt_uart_info = {
+ 	.clk_rate = 100000000,
+ 	.clk_con_id = "baudclk",
++	.pset = &uart_pset,
+ };
+ 
+ static const struct intel_lpss_platform_info bxt_i2c_info = {
+@@ -121,20 +149,20 @@
+ 	{ PCI_VDEVICE(INTEL, 0x9d28), (kernel_ulong_t)&spt_uart_info },
+ 	{ PCI_VDEVICE(INTEL, 0x9d29), (kernel_ulong_t)&spt_info },
+ 	{ PCI_VDEVICE(INTEL, 0x9d2a), (kernel_ulong_t)&spt_info },
+-	{ PCI_VDEVICE(INTEL, 0x9d60), (kernel_ulong_t)&spt_info },
+-	{ PCI_VDEVICE(INTEL, 0x9d61), (kernel_ulong_t)&spt_info },
+-	{ PCI_VDEVICE(INTEL, 0x9d62), (kernel_ulong_t)&spt_info },
+-	{ PCI_VDEVICE(INTEL, 0x9d63), (kernel_ulong_t)&spt_info },
+-	{ PCI_VDEVICE(INTEL, 0x9d64), (kernel_ulong_t)&spt_info },
+-	{ PCI_VDEVICE(INTEL, 0x9d65), (kernel_ulong_t)&spt_info },
++	{ PCI_VDEVICE(INTEL, 0x9d60), (kernel_ulong_t)&spt_i2c_info },
++	{ PCI_VDEVICE(INTEL, 0x9d61), (kernel_ulong_t)&spt_i2c_info },
++	{ PCI_VDEVICE(INTEL, 0x9d62), (kernel_ulong_t)&spt_i2c_info },
++	{ PCI_VDEVICE(INTEL, 0x9d63), (kernel_ulong_t)&spt_i2c_info },
++	{ PCI_VDEVICE(INTEL, 0x9d64), (kernel_ulong_t)&spt_i2c_info },
++	{ PCI_VDEVICE(INTEL, 0x9d65), (kernel_ulong_t)&spt_i2c_info },
+ 	{ PCI_VDEVICE(INTEL, 0x9d66), (kernel_ulong_t)&spt_uart_info },
+ 	/* SPT-H */
+ 	{ PCI_VDEVICE(INTEL, 0xa127), (kernel_ulong_t)&spt_uart_info },
+ 	{ PCI_VDEVICE(INTEL, 0xa128), (kernel_ulong_t)&spt_uart_info },
+ 	{ PCI_VDEVICE(INTEL, 0xa129), (kernel_ulong_t)&spt_info },
+ 	{ PCI_VDEVICE(INTEL, 0xa12a), (kernel_ulong_t)&spt_info },
+-	{ PCI_VDEVICE(INTEL, 0xa160), (kernel_ulong_t)&spt_info },
+-	{ PCI_VDEVICE(INTEL, 0xa161), (kernel_ulong_t)&spt_info },
++	{ PCI_VDEVICE(INTEL, 0xa160), (kernel_ulong_t)&spt_i2c_info },
++	{ PCI_VDEVICE(INTEL, 0xa161), (kernel_ulong_t)&spt_i2c_info },
+ 	{ PCI_VDEVICE(INTEL, 0xa166), (kernel_ulong_t)&spt_uart_info },
+ 	{ }
+ };
+diff -aur linux-4.4-rc7/drivers/mfd/mfd-core.c linux-4.4-rc7_patch/drivers/mfd/mfd-core.c
+--- linux-4.4-rc7/drivers/mfd/mfd-core.c	2015-12-28 03:17:37.000000000 +0100
++++ linux-4.4-rc7_patch/drivers/mfd/mfd-core.c	2016-01-03 15:55:40.091018443 +0100
+@@ -14,6 +14,7 @@
+ #include <linux/kernel.h>
+ #include <linux/platform_device.h>
+ #include <linux/acpi.h>
++#include <linux/property.h>
+ #include <linux/mfd/core.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/slab.h>
+@@ -191,6 +192,12 @@
+ 		if (ret)
+ 			goto fail_alias;
+ 	}
++
++	if (cell->pset) {
++		ret = platform_device_add_properties(pdev, cell->pset);
++		if (ret)
++			goto fail_alias;
++	}
+ 
+ 	ret = mfd_platform_add_cell(pdev, cell, usage_count);
+ 	if (ret)
+diff -aur linux-4.4-rc7/include/linux/mfd/core.h linux-4.4-rc7_patch/include/linux/mfd/core.h
+--- linux-4.4-rc7/include/linux/mfd/core.h	2015-12-28 03:17:37.000000000 +0100
++++ linux-4.4-rc7_patch/include/linux/mfd/core.h	2016-01-03 15:55:40.091018443 +0100
+@@ -17,6 +17,7 @@
+ #include <linux/platform_device.h>
+ 
+ struct irq_domain;
++struct property_set;
+ 
+ /* Matches ACPI PNP id, either _HID or _CID, or ACPI _ADR */
+ struct mfd_cell_acpi_match {
+@@ -44,6 +45,10 @@
+ 	/* platform data passed to the sub devices drivers */
+ 	void			*platform_data;
+ 	size_t			pdata_size;
++
++	/* device properties passed to the sub devices drivers */
++	const struct property_set *pset;
++
+ 	/*
+ 	 * Device Tree compatible string
+ 	 * See: Documentation/devicetree/usage-model.txt Chapter 2.2 for details
+diff -aur linux-4.4-rc7/include/linux/platform_device.h linux-4.4-rc7_patch/include/linux/platform_device.h
+--- linux-4.4-rc7/include/linux/platform_device.h	2015-12-28 03:17:37.000000000 +0100
++++ linux-4.4-rc7_patch/include/linux/platform_device.h	2016-01-03 15:55:40.087685110 +0100
+@@ -18,6 +18,7 @@
+ #define PLATFORM_DEVID_AUTO	(-2)
+ 
+ struct mfd_cell;
++struct property_set;
+ 
+ struct platform_device {
+ 	const char	*name;
+@@ -70,6 +71,8 @@
+ 		const void *data;
+ 		size_t size_data;
+ 		u64 dma_mask;
++
++		const struct property_set *pset;
+ };
+ extern struct platform_device *platform_device_register_full(
+ 		const struct platform_device_info *pdevinfo);
+@@ -167,6 +170,8 @@
+ 					 unsigned int num);
+ extern int platform_device_add_data(struct platform_device *pdev,
+ 				    const void *data, size_t size);
++extern int platform_device_add_properties(struct platform_device *pdev,
++					  const struct property_set *pset);
+ extern int platform_device_add(struct platform_device *pdev);
+ extern void platform_device_del(struct platform_device *pdev);
+ extern void platform_device_put(struct platform_device *pdev);
+diff -aur linux-4.4-rc7/include/linux/property.h linux-4.4-rc7_patch/include/linux/property.h
+--- linux-4.4-rc7/include/linux/property.h	2015-12-28 03:17:37.000000000 +0100
++++ linux-4.4-rc7_patch/include/linux/property.h	2016-01-03 15:55:40.084351777 +0100
+@@ -73,8 +73,8 @@
+ struct fwnode_handle *device_get_next_child_node(struct device *dev,
+ 						 struct fwnode_handle *child);
+ 
+-#define device_for_each_child_node(dev, child) \
+-	for (child = device_get_next_child_node(dev, NULL); child; \
++#define device_for_each_child_node(dev, child)				\
++	for (child = device_get_next_child_node(dev, NULL); child;	\
+ 	     child = device_get_next_child_node(dev, child))
+ 
+ void fwnode_handle_put(struct fwnode_handle *fwnode);
+@@ -144,24 +144,92 @@
+ /**
+  * struct property_entry - "Built-in" device property representation.
+  * @name: Name of the property.
+- * @type: Type of the property.
+- * @nval: Number of items of type @type making up the value.
+- * @value: Value of the property (an array of @nval items of type @type).
++ * @length: Length of data making up the value.
++ * @is_array: True when the property is an array.
++ * @is_string: True when property is a string.
++ * @pointer: Pointer to the property (an array of items of the given type).
++ * @value: Value of the property (when it is a single item of the given type).
+  */
+ struct property_entry {
+ 	const char *name;
+-	enum dev_prop_type type;
+-	size_t nval;
++	size_t length;
++	bool is_array;
++	bool is_string;
+ 	union {
+-		void *raw_data;
+-		u8 *u8_data;
+-		u16 *u16_data;
+-		u32 *u32_data;
+-		u64 *u64_data;
+-		const char **str;
+-	} value;
++		union {
++			void *raw_data;
++			u8 *u8_data;
++			u16 *u16_data;
++			u32 *u32_data;
++			u64 *u64_data;
++			const char **str;
++		} pointer;
++		union {
++			unsigned long long raw_data;
++			u8 u8_data;
++			u16 u16_data;
++			u32 u32_data;
++			u64 u64_data;
++			const char *str;
++		} value;
++	};
+ };
+ 
++#define PROPERTY_ENTRY_INTEGER_ARRAY(_name_, _type_, _val_)	\
++{								\
++	.name = _name_,						\
++	.length = ARRAY_SIZE(_val_) * sizeof(_type_),		\
++	.is_array = true,					\
++	.pointer._type_##_data = _val_,				\
++}
++
++#define PROPERTY_ENTRY_U8_ARRAY(_name_, _val_)			\
++	PROPERTY_ENTRY_INTEGER_ARRAY(_name_, u8, _val_)
++#define PROPERTY_ENTRY_U16_ARRAY(_name_, _val_)			\
++	PROPERTY_ENTRY_INTEGER_ARRAY(_name_, u16, _val_)
++#define PROPERTY_ENTRY_U32_ARRAY(_name_, _val_)			\
++	PROPERTY_ENTRY_INTEGER_ARRAY(_name_, u32, _val_)
++#define PROPERTY_ENTRY_U64_ARRAY(_name_, _val_)			\
++	PROPERTY_ENTRY_INTEGER_ARRAY(_name_, u64, _val_)
++
++#define PROPERTY_ENTRY_STRING_ARRAY(_name_, _val_)		\
++{								\
++	.name = _name_,						\
++	.length = ARRAY_SIZE(_val_) * sizeof(const char *),	\
++	.is_array = true,					\
++	.is_string = true,					\
++	.pointer.str = _val_,					\
++}
++
++#define PROPERTY_ENTRY_INTEGER(_name_, _type_, _val_)	\
++{							\
++	.name = _name_,					\
++	.length = sizeof(_type_),			\
++	.value._type_##_data = _val_,			\
++}
++
++#define PROPERTY_ENTRY_U8(_name_, _val_)		\
++	PROPERTY_ENTRY_INTEGER(_name_, u8, _val_)
++#define PROPERTY_ENTRY_U16(_name_, _val_)		\
++	PROPERTY_ENTRY_INTEGER(_name_, u16, _val_)
++#define PROPERTY_ENTRY_U32(_name_, _val_)		\
++	PROPERTY_ENTRY_INTEGER(_name_, u32, _val_)
++#define PROPERTY_ENTRY_U64(_name_, _val_)		\
++	PROPERTY_ENTRY_INTEGER(_name_, u64, _val_)
++
++#define PROPERTY_ENTRY_STRING(_name_, _val_)		\
++{							\
++	.name = _name_,					\
++	.length = sizeof(_val_),			\
++	.is_string = true,				\
++	.value.str = _val_,				\
++}
++
++#define PROPERTY_ENTRY_BOOL(_name_)		\
++{						\
++	.name = _name_,				\
++}
++
+ /**
+  * struct property_set - Collection of "built-in" device properties.
+  * @fwnode: Handle to be pointed to by the fwnode field of struct device.
+@@ -172,7 +240,8 @@
+ 	struct property_entry *properties;
+ };
+ 
+-void device_add_property_set(struct device *dev, struct property_set *pset);
++int device_add_property_set(struct device *dev, const struct property_set *pset);
++void device_remove_property_set(struct device *dev);
+ 
+ bool device_dma_supported(struct device *dev);
+ 
