@@ -212,7 +212,7 @@ else
 	echo "{" >> $USERTMPFS/twm-xfreq.rc
 	echo "\"\"              f.nop" >> $USERTMPFS/twm-xfreq.rc
 	echo "\"96x30-18px\"    f.exec \"exec xterm -bg '$WMTERMBG' -fg '$WMTERMFG' -geometry 96x30 -fn '$WMTERMBIGFONT' -name Terminal &\"" >> $USERTMPFS/twm-xfreq.rc
-	echo "\"96x30-15px\"    f.exec \"exec xterm -bg '$WMTERMBG' -fg '$WMTERMFG' -geometry 96x30 -fn '$WMTERMMEDFONT' -name Terminal &\"" >> $USERTMPFS/twm-xfreq.rc
+	echo "\"96x36-15px\"    f.exec \"exec xterm -bg '$WMTERMBG' -fg '$WMTERMFG' -geometry 96x36 -fn '$WMTERMMEDFONT' -name Terminal &\"" >> $USERTMPFS/twm-xfreq.rc
 	echo "\"80x25-12px\"    f.exec \"exec xterm -bg '$WMTERMBG' -fg '$WMTERMFG' -geometry 80x25 -fn '$WMTERMSMLFONT' -name Terminal &\"" >> $USERTMPFS/twm-xfreq.rc
 	echo "\"\"              f.nop" >> $USERTMPFS/twm-xfreq.rc
 	echo "}" >> $USERTMPFS/twm-xfreq.rc
