@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=GMidiMonitor Alsa
+Comment=Shows Alsa MIDI events
+Exec=gmidimonitor --alsa
+Icon=gmidimonitor
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;AudioVideo;Audio;Multimedia;

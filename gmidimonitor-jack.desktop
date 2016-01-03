@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=GMidiMonitor Jack
+Comment=Shows Jack MIDI events
+Exec=gmidimonitor --jack
+Icon=gmidimonitor
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;AudioVideo;Audio;Multimedia;
