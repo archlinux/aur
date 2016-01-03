@@ -25,7 +25,7 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
   autoreconf -i
-  ./configure
+  ./configure --prefix=/usr
   make
 }
 
