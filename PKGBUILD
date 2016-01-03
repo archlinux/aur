@@ -6,9 +6,8 @@ pkgver=20150407.80dcb7e
 pkgrel=1
 pkgdesc="Linux Port of AviSynth. (Git version)"
 arch=('i686' 'x86_64')
-url="http://www.avxsynth.org"
+url='http://www.avxsynth.org'
 license=('GPL2')
-depends=()
 makedepends=('git'
              'yasm'
              'subversion'
@@ -41,7 +40,7 @@ build() {
 }
 
 package_avxsynth-git() {
-pkgdesc="Linux Port of AviSynth. (Git version)"
+  pkgdesc="Linux Port of AviSynth. (Git version)"
   depends=('ffms2'
            'ffmpeg'
            'log4cpp'
