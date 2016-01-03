@@ -1,10 +1,10 @@
 pkgname=gog-heroes-of-might-and-magic-3-complete-edition
 pkgver=2.0.1.17
-pkgrel=2
+pkgrel=3
 _gamename=${pkgname#gog-}
 _gamename_=${_gamename//-/_}
 _unpatchedver=2.0.0.16
-_gamehdpatchname="HoMM3 HD 4.0 RC33.exe"
+_gamehdpatchname="HoMM3%20HD%20Latest.exe"
 
 pkgdesc="Heroes of Might & Magic III and its expansions: Armageddon's Blade and The Shadow of Death (with HD patch)"
 arch=("i686" "x86_64")
@@ -14,14 +14,14 @@ groups=("games")
 
 source=("setup_homm3_complete_${_unpatchedver}.exe::gogdownloader://${_gamename_}/en1installer1"
         "patch_${_gamename_%_edition}_${pkgver}.exe::gogdownloader://${_gamename_}/en1patch1"
-        "https://sites.google.com/site/heroes3hd/update/HoMM3%20HD%20Latest.zip"
+        "http://h3hota.com/HD/HoMM3%20HD%20Latest.exe"
         "${_gamename}"
         "${_gamename}-map-editor"
         "${_gamename}-campaign-editor"
         "${pkgname}.install")
 sha256sums=('d90bed0fd7e5338045f5f9983fdc7390297025ac1accdbc2f9bbec217a066468'
             '9c6ca90dacc621f0bb333a3f5fb6df8b06af2afee571beea14782c989177ff5a'
-            '08795685ff93b379bb295ecb588ebd03b79818cff3815849101c6e1f6facd0ed'
+            '23d31b77ab4741400e976281a2a93ac3bfe19dba2b225763061b32c6782c05a6'
             '79d941eec1f590cd416b568b1b619ad7ed40230d3ddaf1cc7de1cb97ea9f1f4d'
             'bc5f57dd8fe1c4cb9bc4f144eea686a61ccc19e5020e446796f8f4c79014c8be'
             'f7b58168872ce04bfad2ef151632762d29735f3e165bc5c4cf887df68de62ed2'
