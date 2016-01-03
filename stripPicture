@@ -1,28 +1,24 @@
 #!/bin/sh
-# Usage: stripPicture fileaname
+# Usage: stripPicture fullname mime exportPicture
 
 fullname="$1"
-filename=$(basename "$1")
-extension="${filename##*.}"
+mime="$2"
+exportPicture="$3"
 
-mkdir -p $HOME/.config/keneric
-exportPicture=$HOME/.config/keneric/UseThisPicture.png
+# thumbnail options by mime type
+case "$mime" in
 
-# thumbnail options by extension type
-case "$extension" in
-
-
-      kra|Kra|KRA)
+      application/x-krita)
       unzip -p "$fullname" preview.png > "$exportPicture"
       exit
       ;;
       
-      ora|Ora|ORA)
+      image/openraster)
       unzip -p "$fullname" Thumbnails/thumbnail.png > "$exportPicture"
       exit
       ;;
       
-      blend|Blend|BLEND)
+      application/x-blender)
       blender-thumbnailer.py "$fullname" "$exportPicture"
       exit
       ;;

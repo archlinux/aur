@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=keneric
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc='A generic thumbnailer for KDE'
 arch=(i686 x86_64)
@@ -10,8 +10,8 @@ license=(GPL)
 depends=(kio)
 makedepends=(extra-cmake-modules)
 source=("http://kde-apps.org/CONTENT/content-files/174485-$pkgname-$pkgver.tar.gz" stripPicture kenerickrita.desktop kenericblend.desktop)
-md5sums=('96a74b4321816ad5851bcbe7601ed79f'
-         '0380500677769af4abe2826b01793a1d'
+md5sums=('29cc6c23fef1c766c409b35d51628dce'
+         'c9f4461d011bdcaea3807a2ca4d73ed5'
          '52eb5908aa2414c490853312b6f71a81'
          '723f0d5769a5e35019ba5892ce72f265')
 
