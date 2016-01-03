@@ -1,0 +1,11 @@
+#!/bin/sh
+source /etc/xdm-xfreq/xdm-xfreq.rc
+
+if [[ -v XDM_SYNERGYS_STATE ]]; then
+	killall $XDM_SYNERGYS_BIN > /dev/null 2>&1
+fi
+
+chmod 622 /dev/console
+chown root /dev/console
+
+/usr/bin/sessreg -d -w /var/log/wtmp -u /var/run/utmp 	-x /etc/X11/xdm/Xservers -l $DISPLAY -h "" $USER

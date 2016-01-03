@@ -75,6 +75,14 @@ XDM_XFREQ_SLEEP_CMD="systemctl suspend"
 # Rescue level
 XDM_XFREQ_RESCUE_CMD="systemctl rescue"
 
+# Synergy server (Uncomment the following State variable to enable Synergy)
+# XDM_SYNERGYS_STATE="Enable"
+XDM_SYNERGYS_AUTH="xhost +local:"
+XDM_SYNERGYS_BIN="synergys"
+XDM_SYNERGYS_PRE="sudo -u"
+XDM_SYNERGYS_ARGS="-d WARNING --daemon"
+XDM_SYNERGYS_PID=/var/run/xdm-synergys.pid
+
 # Users settings
 USERTMPFS="/var/run/user/$(id --user)"
 if [ -d $USERTMPFS ]; then

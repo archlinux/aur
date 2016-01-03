@@ -15,6 +15,18 @@ if [ -r $XDM_XFREQ_CLOCK_PID ]; then
 	rm $XDM_XFREQ_CLOCK_PID
 fi
 
+if [[ -v XDM_SYNERGYS_STATE ]]; then
+	pidof $XDM_SYNERGYS_BIN > $XDM_SYNERGYS_PID
+	declare -i STATE=$?
+	if (( $STATE == 1 )); then
+		${XDM_SYNERGYS_AUTH}${USER} > /dev/null 2>&1
+		declare -i RC=$?
+		if (( $RC == 0 )); then
+			$XDM_SYNERGYS_PRE $USER $XDM_SYNERGYS_BIN $XDM_SYNERGYS_ARGS
+		fi
+	fi
+fi
+
 chown $USER /dev/console
 exec /usr/bin/sessreg  -a -w "/var/log/wtmp" -u "/run/utmp" \
         -x "/etc/X11/xdm/Xservers" -l $DISPLAY -h "" $USER
