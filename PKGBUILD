@@ -6,13 +6,13 @@
 
 pkgname=mingw-w64-vid.stab
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Video stabilization library (mingw-w64)'
 arch=('any')
 url='http://public.hronopik.de/vid.stab'
 license=('GPL')
 depends=('mingw-w64-crt')
-makedepends=('mingw-w64-gcc' 'cmake' 'git')
+makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'git')
 options=(!strip !buildflags staticlibs)
 _hash='2d82492533bf5004bc2c4f8213a1b622c45f6a44'
 source=("vid.stab-${pkgver}::git+https://github.com/georgmartius/vid.stab.git#commit=${_hash}")
