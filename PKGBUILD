@@ -93,4 +93,4 @@ package() {
     install -m 644 pixmaps/multisystem-vbox.png ${pkgdir}/usr/local/share/pixmaps
 }
 
-# vim:set ts=4 sw=2 ft=sh et
+# vim:set ts=4 sw=2 ft=sh et:
