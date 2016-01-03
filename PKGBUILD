@@ -8,11 +8,15 @@ arch=('x86_64')
 url="https://github.com/patjak/bcwc_pcie"
 license=('unknown')
 
-# firmware.bin needs to be extracted from OS X manually.
-source=("firmware.bin::https://github.com/patjak/bcwc_pcie/wiki/Get-Started")
-md5sums=('4e1d11e205e5c55d128efa0029b268fe')
+source=("$pkgname::git+https://github.com/patjak/bcwc_pcie.git")
+md5sums=('SKIP')
+
+prepare() {
+  cd "$srcdir/$pkgname/firmware"
+  make
+}
 
 package() {
-  install -Dm 644 "$srcdir"/firmware.bin \
+  install -Dm 644 "$srcdir/$pkgname/firmware/firmware.bin" \
     "$pkgdir/usr/lib/firmware/facetimehd/firmware.bin"
 }
