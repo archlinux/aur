@@ -1,13 +1,24 @@
 # Maintainer: Donald Carr <sirspudd@gmail.com>
 
+# Documentation
+
 # Set up the pi for Qt compilation. On Arch I just install chromium which pulls in all the deps
+
+# Remove 2 (mesa) pkgconfig files we allow screw our mkspec
+# rm /usr/lib/pkgconfig/glesv2.pc
+# rm /usr/lib/pkgconfig/egl.pc
+
 # Mount/copy this prepped rasp rootfs somewhere and set this path as the sysroot below
-echo "Set your sysroot" && exit 1
+# I use NFS personally: sudo mount qpii.local:/ /mnt/pi
+
+# comment this turkey out in any circumstance when you need to regenate .SRCINFO
+echo "Set your sysroot prior to build" && exit 1
 _sysroot=/mnt/pi
 
-_piver=pi
-_mkspec="linux-r${_piver}-g++"
 pkgname=qpi
+_piver=pi
+
+_mkspec="linux-r${_piver}-g++"
 pkgver=5.6.0
 _pkgver=${pkgver}-beta
 _pipkgname=qt-everywhere-opensource-src-${_pkgver}
@@ -37,7 +48,7 @@ build() {
   cd ${_bindir}
 
   # skipping because of errors: qtwayland
-  # skipping on principle: qtscript
+  # skipping on principle: qtscript, xcb
   # skipping because of the target in question: widgets qtwebengine qtwebchannel
 
   ${_srcdir}/configure \
@@ -46,9 +57,11 @@ build() {
     -opensource \
     -prefix /opt/qt-${_pkgver}-${_piver} \
     -opengl es2 \
+    -egl \
     \
     -no-widgets \
     -make libs \
+    -no-xcb \
     \
     -skip qtscript \
     -skip qtwebengine \
