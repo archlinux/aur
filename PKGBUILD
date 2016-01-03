@@ -2,15 +2,22 @@
 # Contributor: Andrew Panchenko <panchenkoac at gmail>
 
 pkgname=qmmp-plugin-pack-svn
-pkgver=1.1.0.svn.r5646
+pkgver=1.1.0.svn.r5969
 pkgrel=1
 pkgdesc="Qmmp Plugin Pack. (SVN Version)"
 arch=('i686' 'x86_64')
-url="http://qmmp.ylsoftware.com"
+url='http://qmmp.ylsoftware.com'
 license=('GPL')
 depends=('qmmp-svn')
-makedepends=('subversion' 'cmake' 'yasm' 'mpg123')
-optdepends=('mpg123: alternative Mpeg-1-2-3 support')
+makedepends=('subversion'
+             'cmake'
+             'yasm'
+             'mpg123'
+             'libxmp'
+             )
+optdepends=('mpg123: alternative Mpeg-1-2-3 support'
+            'libxmp: support for chiptune formats (Amiga, Atari, ..)'
+            )
 provides=('qmmp-plugin-pack')
 conflicts=('qmmp-plugin-pack')
 source=('qmmp-plugin-pack::svn+svn://svn.code.sf.net/p/qmmp-dev/code/branches/qmmp-plugin-pack-1.1')
