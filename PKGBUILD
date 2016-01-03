@@ -3,7 +3,7 @@
 pkgname="bcwc-pcie-firmware"
 pkgver=1.43.0
 pkgrel=1
-pkgdesc="Reverse engineered Linux driver for the Broadcom 1570 PCIe webcam."
+pkgdesc="Firmware for the Broadcom 1570 PCIe webcam."
 arch=('x86_64')
 url="https://github.com/patjak/bcwc_pcie"
 license=('unknown')
