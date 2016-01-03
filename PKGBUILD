@@ -3,7 +3,7 @@
 pkgname=mixxx-git
 pkgver=release.1.12.0.beta1.r747.gab53f56
 pkgrel=1
-pkgdesc="Digital DJ mixing software. Development branch from git with cpu optimization enabled"
+pkgdesc="Digital DJ mixing software. Development branch from git with cpu optimization enabled. Note: git branch for 2.0 is still called 1.12"
 arch=('i686' 'x86_64')
 url="http://www.mixxx.org/"
 license=('GPL2')
