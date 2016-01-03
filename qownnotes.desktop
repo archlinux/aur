@@ -1,9 +1,10 @@
 [Desktop Entry]
-Encoding=UTF-8
 Name=QOwnNotes
-Comment=OwnNotes
+Comment=Plain text notepad and todo list manager with markdown support that works together with ownCloud
 Exec=/usr/bin/qownnotes
-Terminal=false
-Type=Application
 Icon=qownnotes
+Type=Application
+Terminal=false
+StartupNotify=true
+Encoding=UTF-8
 Categories=Office;Internet;
