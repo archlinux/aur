@@ -1,0 +1,11 @@
+[Unit]
+Description=Mongoose HTTP Daemon
+
+[Service]
+ExecStart=/usr/bin/mongoose-server /etc/mongoose-server/mongoose-server.conf
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=default.target
