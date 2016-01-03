@@ -2,7 +2,7 @@
 # Maintainer: AdrianoML <adriano.lols@gmail.com>
 
 pkgname=jstest-gtk-git
-pkgver=0.1.0.r65.g9773e2b
+pkgver=0.1.0.r69.ge89ae8f
 pkgrel=1
 pkgdesc="A simple GTK2-based joystick tester and calibrator"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ build() {
   cd "$srcdir/$_gitname"
 
   msg "Patching..."
-  patch -p2 < "$srcdir/fix_asset_path.patch"
+  patch -p0 < "$srcdir/fix_asset_path.patch"
 
   if [[ ! -e 'build' ]]; then
       mkdir build
@@ -46,3 +46,12 @@ package() {
   cp -r "${srcdir}/jstest-gtk/data" "${pkgdir}/usr/share/jstest-gtk/"
 }
 
+sha1sums=('SKIP'
+          '4a8a3f5ac41b509fdfc0aec7cf017447e58ec973'
+          'a278a643b2b9e12b6ca152cfb954e0b8f46e1388')
+sha1sums=('SKIP'
+          '4a8a3f5ac41b509fdfc0aec7cf017447e58ec973'
+          'c05ac388689f47338635fbf55a1620a8e9e0eacc')
+sha1sums=('SKIP'
+          '4a8a3f5ac41b509fdfc0aec7cf017447e58ec973'
+          '5db189b830755a5cf5424210ac08c0aaf9709a8b')
