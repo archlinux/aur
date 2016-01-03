@@ -1,8 +1,11 @@
-# Maintainer: sekret
+# Maintainer: Gimmeapill <gimmeapill at gmail dot com>
+# Contributor: sekret
 # Contributor: Army
+# Contributor: Funkmuscle
+
 _pkgname=guitarix
 pkgname=$_pkgname-git
-pkgver=0.33.0.r40.ge0a4ce1
+pkgver=0.34.0.r76.g8d2a959
 pkgrel=1
 pkgdesc="a virtual guitar amplifier for Linux"
 arch=('i686' 'x86_64')
