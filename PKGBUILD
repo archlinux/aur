@@ -7,10 +7,10 @@ pkgdesc="Digital DJ mixing software. Development branch from git with cpu optimi
 arch=('i686' 'x86_64')
 url="http://www.mixxx.org/"
 license=('GPL2')
-depends=('libid3tag' 'libmad' 'portaudio' 'qt4' 'libshout' 'taglib' 'portmidi' 'protobuf' 'fftw' 'libusbx' 'chromaprint' 'rubberband')
+depends=('libid3tag' 'libmad' 'portaudio' 'qt4' 'libshout' 'taglib' 'portmidi' 'protobuf' 'libusbx' 'chromaprint' 'rubberband' 'vamp-plugin-sdk' 'sqlite' 'opus' 'opusfile')
 makedepends=('git' 'scons' 'pkgconfig' 'glu')
 provides=(mixxx)
-conflicts=(mixxx mixxx-bzr mixxx1.10-bzr mixxx1.11-bzr mixxx-beta mixxx1.11-git mixxx1.12-git mixxxold mixxx-aac)
+conflicts=(mixxx mixxx1.11-git mixxx1.12-git mixxx_stable-git)
 
 _gitroot=https://github.com/mixxxdj
 _gitname=mixxx
@@ -38,7 +38,7 @@ build() {
   git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
   
   cd "$srcdir/$_gitname-build"  
-  scons qtdir=/usr/lib/qt4 prefix=/usr install_root="$pkgdir/usr" tuned=1
+  scons qtdir=/usr/lib/qt4 prefix=/usr install_root="$pkgdir/usr" -j2 virtualize=0 localecompare=1 qt_sqlite_plugin=0 opus=1 optimize=native build=release
 }
 
 package() {
