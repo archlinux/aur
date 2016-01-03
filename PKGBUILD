@@ -34,6 +34,10 @@ sha256sums=('431f352b412dfb9809d126a85a37a1fcd1c1826275ace8cdcd4fd9a6ee360e59'
 _cvsroot=':pserver:anonymous:@gimp-print.cvs.sourceforge.net:/cvsroot/gimp-print'
 _cvsmod='gimp-print'
 
+pkgver() {
+  date +%Y%m%d
+}
+
 prepare() {
   cd "$srcdir"
   msg "Connecting to $_cvsmod.sourceforge.net CVS server...."
