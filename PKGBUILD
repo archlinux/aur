@@ -7,7 +7,7 @@
 
 _pkgname=dmenu
 pkgname=$_pkgname-git
-pkgver=4.6.0.g32f2564
+pkgver=4.6.2.gbf3deb6
 pkgrel=1
 pkgdesc="A generic menu for X"
 url="http://tools.suckless.org/dmenu/"
@@ -18,11 +18,19 @@ makedepends=('git')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=(git://git.suckless.org/$_pkgname)
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
   git describe --tags --long | sed 's/-/./g'
+}
+
+prepare() {
+  cd $_pkgname
+  # to use a custom config.h, place it in the package directory
+  if [[ -f ${SRCDEST}/config.h ]]; then
+      cp "${SRCDEST}/config.h" .
+  fi
 }
 
 build(){
