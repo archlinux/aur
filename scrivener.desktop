@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Scrivener
+GenericName=Writing Tool
+Comment=A powerful content-generation tool for writers.
+Exec=/usr/bin/scrivener
+Icon=/usr/share/pixmaps/scrivener/scrivener.png
+Terminal=false
+Type=Application
+Categories=Office;
+StartupNotify=false
