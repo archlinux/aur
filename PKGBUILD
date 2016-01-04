@@ -1,7 +1,7 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-variant-hooky
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.6.1
+pkgrel=1
 pkgdesc='A slender monospace typeface inspired by Pragmata Pro, M+ and PF DIN Mono. Variant: Iosevka with hooky l and i.'
 arch=('any')
 url='https://be5invis.github.io/Iosevka/'
@@ -11,7 +11,7 @@ conflicts=('ttf-iosevka' 'ttf-iosevka-variant-zshaped' 'ttf-iosevka-withfw')
 install=${pkgname}.install
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/variant-hooky-iosevka-${pkgver}.zip"
         'https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE')
-sha256sums=('4266a07d490a6013c83916293b60baa979ecf2ae41592c8b17f2f6e7a441eebd'
+sha256sums=('69b6fde3d87302fd182d848cb7c8800ea5a5774e5d3d6d17c6b31a0ccac26821'
             '79e60eb609efc006ca2a552d998efb1675262d4cae848244a3e2e61df0894b0c')
 
 package() {
