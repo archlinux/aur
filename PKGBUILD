@@ -1,6 +1,6 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 pkgname=roger-router
-pkgver=1.8.13
+pkgver=1.8.14
 pkgrel=1
 pkgdesc="Roger Router"
 arch=('i686' 'x86_64')
@@ -16,8 +16,8 @@ optdepends=(
 provides=(roger)
 conflicts=(roger)
 install=roger-router.install
-source=(http://de.tabos.org/download/$pkgname-$pkgver.tar.xz)
-sha1sums=('f0dd9c96c3456c740ad33cd9721419622d337f7e')
+source=(http://www.tabos.org/downloads/$pkgname-$pkgver.tar.xz)
+sha1sums=('2bbaaaf840ee6944c93530d89786630ac09b2439')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -25,6 +25,7 @@ build() {
 	# Configuring without cups, as this will enable the experimentell CUPS backend
 	# which is not functional yet.
 	# See http://de.tabos.org/forum/viewtopic.php?f=6&t=3708&sid=9c3a58c9f53ce0aac0cd5d9ad8c8e351&p=5673#p5673
+	#
 	# To build without evolution: --with-ebook=no
 	# To build with kwallet support: --with-kwallet=yes
 	./configure --prefix=/usr --disable-werror \
