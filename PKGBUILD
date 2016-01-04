@@ -2,7 +2,7 @@
 
 pkgname=python-stomp.py
 _libname=${pkgname/python-/}
-pkgver=4.1.5
+pkgver=4.1.7
 pkgrel=1
 pkgdesc="Python STOMP client, supporting versions 1.0, 1.1 and 1.2 of the protocol"
 arch=(any)
@@ -22,4 +22,4 @@ package() {
 	install -Dm0644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
-sha256sums=('50aa45b377f87209e45d284cd256ce0feddb8fe12e8d45eafdd08d711d5d6a7f')
+sha256sums=('b15925b7a4b71f453da247c13a5c941131b3cd97284ab9b3360e76c85c6dd3ce')
