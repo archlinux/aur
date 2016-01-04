@@ -2,17 +2,18 @@
 # Contributor: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=lib32-sdl2_image
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="A simple library to load images of various formats as SDL surfaces (Version 2, 32 bit)"
 arch=('x86_64')
-url="http://www.libsdl.org/projects/SDL_image"
+url="https://www.libsdl.org/projects/SDL_image/"
 license=('MIT')
-depends=('lib32-sdl2' 'lib32-libpng' 'lib32-libtiff' 'lib32-libjpeg' 'lib32-libwebp')
+depends=("${pkgname#*-}>=$pkgver" 'lib32-sdl2' 'lib32-libpng' 'lib32-libtiff'
+         'lib32-libjpeg' 'lib32-libwebp')
 makedepends=('cmake')
 conflicts=('lib32-sdl2-image') # to replace broken package with wrong name
-source=("$url/release/SDL2_image-$pkgver.tar.gz")
-sha256sums=('b29815c73b17633baca9f07113e8ac476ae66412dec0d29a5045825c27a47234')
+source=("${url}release/SDL2_image-$pkgver.tar.gz")
+sha256sums=('3a3eafbceea5125c04be585373bfd8b3a18f259bd7eae3efc4e6d8e60e0d7f64')
 
 build() {
   cd SDL2_image-$pkgver
