@@ -1,17 +1,17 @@
 pkgbase = otf-fura-mono-powerline-git
 	pkgdesc = FuraMono for Powerline
-	pkgver = r98.6ac4c01
+	pkgver = r100.a44abd0
 	pkgrel = 1
 	url = https://github.com/powerline/fonts
 	install = otf-fura-mono-powerline-git.install
 	arch = any
-	license = custom:Apache License, Version 2.0
+	license = custom:SIL Open Font License, Version 1.1
 	makedepends = git
 	depends = fontconfig
 	depends = xorg-font-utils
 	conflicts = powerline-fonts
 	conflicts = powerline-fonts-git
-	source = git://github.com/powerline/fonts.git
+	source = git+https://github.com/powerline/fonts.git
 	md5sums = SKIP
 
 pkgname = otf-fura-mono-powerline-git
