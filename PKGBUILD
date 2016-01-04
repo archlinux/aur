@@ -5,13 +5,13 @@ pkgver=20130823
 pkgrel=1
 pkgdesc="Peer-to-Peer VPN."
 arch=(i686 x86_64)
-url="https://github.com/lukablurr/n2n_v2_fork"
+url="https://github.com/meyerd/n2n_v2_fork"
 license=('GPL3')
 depends=('openssl' 'net-tools') #iproute2?
 makedepends=('git')
 provides=n2n
 conflicts=n2n
-source=('git+https://github.com/lukablurr/n2n_v2_fork.git'
+source=('git+https://github.com/meyerd/n2n_v2_fork.git'
         'edge.conf.example'
         'edge.sh'
         'n2n-edge@.service'
