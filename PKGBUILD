@@ -3,11 +3,12 @@
 
 pkgname=discord
 pkgver=0.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Discord linux App'
 arch=('i686' 'x86_64')
 url='https://github.com/XNBlank/discord-linux'
 license=('MIT')
+depends=('gtk2')
 
 source=('Discord.desktop')
 sha256sums=('6b0faff2ddd149a8c9b9b5ca66d9117a6388c3a2e720d3d3f971ae97b2670bee')
