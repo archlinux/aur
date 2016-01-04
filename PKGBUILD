@@ -1,7 +1,7 @@
 # Maintainer: Mathias Bragagia <youremail@domain.com>
 pkgname=kana-p
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Lite desktop manager - use lightdm, awesome and compton - BETA"
 arch=('any')
 url="https://github.com/bragagia/kana-p"
@@ -36,6 +36,10 @@ depends=(
 
 	'ttf-dejavu'
 	'ttf-bitstream-vera'
+	'ttf-opensans'
+	'ttf-droid'
+	'ttf-inconsolata'
+	'ttf-liberation'
 	'otf-sauce-code-powerline-git'
 	'ohsnap'
 
