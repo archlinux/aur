@@ -1,6 +1,6 @@
 --- src/event/ngx_event_openssl.c	2015-12-05 09:33:39.819749000 +0800
 +++ src/event/ngx_event_openssl.c.mod	2015-12-05 09:34:30.399748978 +0800
-@@ -1912,7 +1912,6 @@
+@@ -1909,7 +1909,6 @@
  
              /* handshake failures */
          if (n == SSL_R_BAD_CHANGE_CIPHER_SPEC                        /*  103 */

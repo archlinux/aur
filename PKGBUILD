@@ -13,7 +13,7 @@ _log_path="/var/log/${_pkgname}"
 
 
 pkgname=nginx-mainline-boringssl
-pkgver=1.9.9
+pkgver=1.9.7
 pkgrel=2
 pkgdesc="lightweight HTTP server, statically linked against BoringSSL."
 arch=('i686' 'x86_64')
