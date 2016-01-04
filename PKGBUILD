@@ -3,7 +3,7 @@
 pkgname=php7-imagick-git
 _extname=imagick
 pkgver=3.3.0RC2.r150.g623a3ac
-pkgrel=1
+pkgrel=2
 pkgdesc="PHP extension for IMagick"
 arch=('i686' 'x86_64')
 url="http://pecl.php.net/package/${_extname}"
@@ -13,6 +13,8 @@ backup=("etc/php/conf.d/${_extname}.ini")
 install="${pkgname}.install"
 source=("${pkgname}::git+https://github.com/mkoppanen/imagick.git#branch=phpseven")
 md5sums=('SKIP')
+conflicts=('php-imagick')
+provides=('php-imagick=3.3.0')
 
 build() {
   cd "${srcdir}/${pkgname}"
