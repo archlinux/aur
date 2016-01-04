@@ -1,7 +1,6 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=perl6-json-class
-_p6name=JSON-Class
 pkgver=0.0.2
 pkgrel=3
 pkgdesc="Role to provide simple serialisation/deserialisation of objects to/from JSON"
