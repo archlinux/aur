@@ -1,13 +1,14 @@
 # Maintainer: Jesse Spangenberger <azulephoenix@gmail.com>
 pkgname=private-internet-access-vpn
 pkgver=2.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Installs VPN profiles for Private Internet Access Service"
 arch=('any')
 url="https://www.privateinternetaccess.com/"
 license=('GPL')
 depends=('python' 'python-setuptools')
-optdepends=('networkmanager: Enables PIA for Network Manager'
+conflicts=('networkmanager>1.0.8' 'networkmanager-openvpn>1.0.8')
+optdepends=('networkmanager<=1.0.8: Enables PIA for Network Manager'
             'connman: Enables PIA for Connman'
             'openvpn: Allows running configurations from command-line')
 sha256sums=('1d382383717dea6ccc60a2542bbbc253c1bf3a3529f15065cc52c2bbf0e87488'
