@@ -19,7 +19,7 @@ backup=()
 options=()
 install=.INSTALL
 changelog=
-source=("https://github.com/communi/$pkgname/archive/v$pkgver.tar.gz"
+source=("communi-desktop.tar.gz::https://github.com/communi/$pkgname/archive/v$pkgver.tar.gz"
         "shared.tar.gz::https://github.com/communi/communi-shared/archive/v$pkgver.tar.gz")
 noextract=()
 md5sums=("8f05ceb73232a763b4821e53fd6d7317"
