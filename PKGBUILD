@@ -1,7 +1,7 @@
 # Maintainer: Chrys <mail@chrys.de>
 pkgname=ocrdesktop
 pkgver=0.9.98
-pkgrel=2
+pkgrel=1
 pkgdesc="OCR the current window or desktop and make it browsable for the user"
 arch=('any')
 url="http://www.crivatec.de"
