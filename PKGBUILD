@@ -5,7 +5,7 @@
 # namcap warns that ruby-cri is an unnecessary dependency. This is untrue.
 
 pkgname=nanoc
-pkgver=4.1.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc='A simple, flexible static site generator written in Ruby.'
 arch=(any)
@@ -26,7 +26,7 @@ conflicts=(ruby-nanoc3 ruby-nanoc)
 options=(!emptydirs)
 source=("https://github.com/nanoc/nanoc/archive/${pkgver}.tar.gz")
 noextract=("${pkgname}-${pkgver}.gem")
-sha256sums=('9412875d85a539592fab359b754065e1bd85d43b5547b12738612ba649b68c8c')
+sha256sums=('6107f320c50efe7ce9420c7f4195ae1cb6b27d8e7498197c95d57e70bb600fe3')
 
 build() {
   # create gem
