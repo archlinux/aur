@@ -7,7 +7,6 @@ url="http://www.phpmetrics.org/"
 arch=("any")
 license=("MIT")
 depends=("php")
-install="${pkgname}.install"
 source=("https://github.com/Halleck45/PhpMetrics/raw/v${pkgver}/build/${pkgname}.phar"
         "https://raw.githubusercontent.com/Halleck45/PhpMetrics/v${pkgver}/LICENSE")
 sha512sums=('330594c4ffee43e17272d73a52e56662aff2fd036bb7552814e2ebad1441920fffc14381d240f0bbdce9f663270214bc0a61a5a9b9729c4696cb44cc37750a2b'
