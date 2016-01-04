@@ -1,22 +1,21 @@
 # Maintainer: tjbp (archlinux@tjbp.net)
 
 pkgname='php-lua'
-pkgver='1.1.0'
-pkgrel='3'
+pkgver='2.0.0'
+pkgrel='1'
 pkgdesc='PHP PECL extension for an embedded Lua interpreter'
 arch=('i686' 'x86_64')
-url='http://pecl.php.net/package/lua'
+url='https://pecl.php.net/package/lua'
 license=('PHP')
-depends=('php>=5.1.0' 'lua')
+depends=('php>=7.0.0' 'lua')
 source=(
     "http://pecl.php.net/get/lua-$pkgver.tgz"
     'liblua.so.patch'
 )
 sha256sums=(
-    'f063fb8e8ba5cfe5e120d179b84db77ea3344ce08288b48864ccb883a9826554'
+    '774ef6c27c778f5f40b9c701eebd7d554ed2a0d4809bf6849aed83664f3df58f'
     'e193551d17c20fb6e053cfd2637a782e0f958c4c7500b6c77f5a427e7b10f400'
 )
-backup=('etc/php/conf.d/lua.ini')
 
 prepare() {
     patch -p0 -i liblua.so.patch
