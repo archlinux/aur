@@ -15,7 +15,7 @@ source=("https://github.com/theseer/${pkgname}/releases/download/${pkgver}/${pkg
         "${pkgname}.install")
 sha512sums=('9355bafa1006c72ec97b8e8f2f0e5191604b5d43b583e80b08d72efc47b537cce0cb95e2b33180948072c55e8097974ffd3a4da6c21849a62194c700f8718d2b'
             '61e052222ec37de300fe3013c1f58ac8c877df58f529f87eca99e516b8d207d0a588376746e3f14262bfa853ac9e53dc937de3456372cb6159274cfb729cde7c'
-            'e36a606204dadf88b03356bb30d45b1019c875af2f2cee6af38207f2c87ceae790a86efa5e2873d174ae7658c488023b36e513a775bfafc5177f24ee0da7f1ea')
+            'a47a6cad4e6cf2bf4576d2798231d42976ad24b6201838d0b261adfac93a31681c09d2a0e46f5ea471e6abf7efed70d4268b024a64fd8f3f33578b4fcd9910b1')
 package() {
   cd "${srcdir}"
 

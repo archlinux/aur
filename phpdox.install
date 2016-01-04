@@ -1,5 +1,14 @@
-post_install()
-{
-  echo
-  echo "Please activate the extensions 'iconv', 'phar' and 'xsl' in your php.ini."
+post_install() {
+  if ! php -i | grep 'iconv support => enabled' >/dev/null 2>&1; then
+      echo -e "Warning: bz2.so must be loaded in your php.ini"
+      echo -e "You may use  \"sed -i 's/;extension=bz2.so/extension=bz2.so/g' /etc/php/php.ini\" to change your configuration"
+  fi
+  if ! php -i | grep 'libxslt Version =>' >/dev/null 2>&1; then
+      echo -e "Warning: xsl.so must be loaded in your php.ini"
+      echo -e "You may use \"sed -i 's/;extension=xsl.so/extension=xsl.so/g' /etc/php/php.ini\" to change your configuration"
+  fi
+}
+
+post_upgrade() {
+  post_install
 }
