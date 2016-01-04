@@ -2,7 +2,7 @@
 
 _pkgname=juffed
 pkgname=${_pkgname}-qt5-git
-pkgver=0.10.r75.g42e14f5
+pkgver=0.10.77.g54b9cb4
 pkgrel=1
 pkgdesc='A lightweight cross-platform text editor. Qt5 UI. Development version.'
 arch=('i686' 'x86_64')
@@ -28,11 +28,7 @@ sha512sums=(
 pkgver() {
 	# Updating package version
 	cd ${srcdir}/${_pkgname}
-	(
-		set -o pipefail
-		git describe --long --tags 2>/dev/null | sed -r 's/^juffed-//;s/([^-]*-g)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+	git describe --long --tags 2>/dev/null | sed -r 's/^juffed-//;s/-/./g'
 }
 
 prepare() {
