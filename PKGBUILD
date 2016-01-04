@@ -7,7 +7,7 @@ pkgdesc="Toolkit for safe and simple cryptography for python2"
 url="http://www.keyczar.org/"
 arch=('i686' 'x86_64')
 license=("APACHE")
-depends=("python2")
+depends=("python2", "python2-pyasn1")
 source=("https://pypi.python.org/packages/source/p/python-keyczar/python-keyczar-${pkgver}.tar.gz")
 md5sums=('bdb47448f622fdfea7851327a5f20476')
 
