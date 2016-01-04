@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Gnome Wave Cleaner
+GenericName=Sound Editor
+Comment=Digital audio editor to denoise, dehiss and amplify audio files
+Exec=/usr/bin/gwc
+Icon=gwc
+Categories=Audio;AudioVideo;
+StartupNotify=true
+Terminal=false
+Type=Application
