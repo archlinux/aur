@@ -1,4 +1,4 @@
-# Maintainer: Tetsumi <tetsumi@vmail.me>
+# Maintainer: gryffyn
 
 pkgbase=python-pygame
 pkgname=python-pygame
@@ -13,7 +13,7 @@ provides=('python-pygame')
 
 source=(https://bitbucket.org/pygame/pygame/get/fsencoding-ascii.tar.gz)
 
-sha1sums=('6e6aeaed13bf8acf59786b389f3a8638d2bb2e53')
+sha1sums=('bee829579e5c08703351a7792b2648726a7798d7')
 
 package() 
 {
