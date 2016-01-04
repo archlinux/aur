@@ -11,7 +11,7 @@ source=("https://github.com/chrys87/ocrdesktop.git")
 install='ocrdesktop.install'
 provides=('ocrdesktop')
 conflicts=('ocrdesktop')
-md5sums=("skip")
+md5sums=("SKIP")
 
 package() {
  cd "${srcdir}/"
