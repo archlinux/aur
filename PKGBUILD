@@ -13,7 +13,7 @@ depends=('gcc-libs-multilib')
 install=libsane-dsseries.install
 
 # liste des url des fichiers à télécharger et liste des noms de fichiers locaux
-source=("http://download.brother.com/welcome/dlf100974/$pkgname-${pkgver/_/-}.$CARCH.rpm"
+source=("http://download.brother.com/welcome/dlf100974/$pkgname-${pkgver/_/-}.x86_64.rpm"
 		"http://www.brother.com/agreement/English_sane/agree.html")
 md5sums=('905610438d279cacf50de973a5f270cf'
 		 'ccffb9a6f6d436b21be25b0241068981')
