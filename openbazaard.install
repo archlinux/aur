@@ -1,6 +1,5 @@
 usr=openbazaar
 home=/var/lib/openbazaard
-dbdata=obdata
 
 post_install() {
   _mkuser
@@ -22,7 +21,7 @@ post_remove() {
 }
 
 _chown() {
-  chown -R $usr:$usr $home $log $home/$dbdata
+  chown -R $usr:$usr $home $log
 }
 
 _mkuser() {
