@@ -1,5 +1,5 @@
 diff --git a/configure b/configure
-index f52c979..ce20dab 100755
+index ad84e74..7c257c0 100755
 --- a/configure
 +++ b/configure
 @@ -681,6 +681,8 @@ XSLT_LIBS
@@ -28,7 +28,7 @@ index f52c979..ce20dab 100755
  with_osmesa
  with_oss
  with_pcap
-@@ -1006,6 +1011,7 @@ enable_d3d10core
+@@ -1008,6 +1013,7 @@ enable_d3d10core
  enable_d3d11
  enable_d3d8
  enable_d3d9
@@ -36,7 +36,7 @@ index f52c979..ce20dab 100755
  enable_d3dcompiler_33
  enable_d3dcompiler_34
  enable_d3dcompiler_35
-@@ -2218,6 +2224,9 @@ Optional Packages:
+@@ -2220,6 +2226,9 @@ Optional Packages:
    --without-openal        do not use OpenAL
    --without-opencl        do not use OpenCL
    --without-opengl        do not use OpenGL
@@ -46,7 +46,7 @@ index f52c979..ce20dab 100755
    --without-osmesa        do not use the OSMesa library
    --without-oss           do not use the OSS sound support
    --without-pcap          do not use the Packet Capture library
-@@ -3458,6 +3467,18 @@ if test "${with_opengl+set}" = set; then :
+@@ -3460,6 +3469,18 @@ if test "${with_opengl+set}" = set; then :
  fi
 
 
@@ -65,7 +65,7 @@ index f52c979..ce20dab 100755
  # Check whether --with-osmesa was given.
  if test "${with_osmesa+set}" = set; then :
    withval=$with_osmesa;
-@@ -6237,6 +6258,9 @@ fi
+@@ -6239,6 +6260,9 @@ fi
  OPENGL_LIBS=""
 
 
@@ -75,7 +75,7 @@ index f52c979..ce20dab 100755
 
  # Check whether --enable-largefile was given.
  if test "${enable_largefile+set}" = set; then :
-@@ -11076,6 +11100,632 @@ This is an error since --with-va was requested." "$LINENO" 5 ;;
+@@ -11078,6 +11102,632 @@ This is an error since --with-va was requested." "$LINENO" 5 ;;
  esac
  fi
 
@@ -708,7 +708,7 @@ index f52c979..ce20dab 100755
      CPPFLAGS="$ac_save_CPPFLAGS"
  else
      X_CFLAGS=""
-@@ -17721,6 +18371,7 @@ ac_config_commands="$ac_config_commands include/stamp-h"
+@@ -17723,6 +18373,7 @@ ac_config_commands="$ac_config_commands include/stamp-h"
  $as_echo_n "creating Makefile rules..." >&6
 
  ALL_VARS_RULES="OPENGL_LIBS = $OPENGL_LIBS
@@ -716,7 +716,7 @@ index f52c979..ce20dab 100755
  SOCKET_LIBS = $SOCKET_LIBS
  COREFOUNDATION_LIBS = $COREFOUNDATION_LIBS
  IOKIT_LIBS = $IOKIT_LIBS
-@@ -17740,6 +18391,8 @@ X_CFLAGS = $X_CFLAGS
+@@ -17742,6 +18393,8 @@ X_CFLAGS = $X_CFLAGS
  X_PRE_LIBS = $X_PRE_LIBS
  X_LIBS = $X_LIBS
  X_EXTRA_LIBS = $X_EXTRA_LIBS
@@ -725,7 +725,7 @@ index f52c979..ce20dab 100755
  XML2_CFLAGS = $XML2_CFLAGS
  XML2_LIBS = $XML2_LIBS
  XSLT_CFLAGS = $XSLT_CFLAGS
-@@ -18007,6 +18660,7 @@ wine_fn_config_dll d3d8 enable_d3d8 implib
+@@ -18011,6 +18664,7 @@ wine_fn_config_dll d3d8 enable_d3d8 implib
  wine_fn_config_test dlls/d3d8/tests d3d8_test
  wine_fn_config_dll d3d9 enable_d3d9 implib
  wine_fn_config_test dlls/d3d9/tests d3d9_test
@@ -734,7 +734,7 @@ index f52c979..ce20dab 100755
  wine_fn_config_dll d3dcompiler_34 enable_d3dcompiler_34
  wine_fn_config_dll d3dcompiler_35 enable_d3dcompiler_35
 diff --git a/configure.ac b/configure.ac
-index aa829be..5b18b0a 100644
+index e999818..9893d33 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -67,6 +67,8 @@ AC_ARG_WITH(openal,    AS_HELP_STRING([--without-openal],[do not use OpenAL]),
@@ -801,7 +801,7 @@ index aa829be..5b18b0a 100644
      CPPFLAGS="$ac_save_CPPFLAGS"
  else
      X_CFLAGS=""
-@@ -2834,6 +2877,7 @@ WINE_CONFIG_DLL(d3d8,,[implib])
+@@ -2836,6 +2879,7 @@ WINE_CONFIG_DLL(d3d8,,[implib])
  WINE_CONFIG_TEST(dlls/d3d8/tests)
  WINE_CONFIG_DLL(d3d9,,[implib])
  WINE_CONFIG_TEST(dlls/d3d9/tests)
@@ -3399,10 +3399,10 @@ index 0000000..795c3c7
 +#endif /* __WINE_DRI3_H */
 diff --git a/dlls/d3d9-nine/present.c b/dlls/d3d9-nine/present.c
 new file mode 100644
-index 0000000..931c784
+index 0000000..2f8e4d2
 --- /dev/null
 +++ b/dlls/d3d9-nine/present.c
-@@ -0,0 +1,1333 @@
+@@ -0,0 +1,1335 @@
 +/*
 + * Wine ID3DAdapter9 support functions
 + *
@@ -3756,8 +3756,10 @@ index 0000000..931c784
 +    /* the pixmap is managed by the PRESENT backend.
 +     * But if it can delete it right away, we may have
 +     * better performance */
-+    PRESENTTryFreePixmap(This->gdi_display, buffer->present_pixmap_priv);
-+    HeapFree(GetProcessHeap(), 0, buffer);
++    if (buffer) {
++        PRESENTTryFreePixmap(This->gdi_display, buffer->present_pixmap_priv);
++        HeapFree(GetProcessHeap(), 0, buffer);
++    }
 +    return D3D_OK;
 +}
 +
@@ -4904,23 +4906,28 @@ index efb82fc..0acbf38 100644
  #undef SONAME_LIBXCOMPOSITE
 
 diff --git a/programs/winecfg/resource.h b/programs/winecfg/resource.h
-index bf3b884..3ad5128 100644
+index bf3b884..60f1d47 100644
 --- a/programs/winecfg/resource.h
 +++ b/programs/winecfg/resource.h
 @@ -218,6 +218,7 @@
  #define IDC_ENABLE_EAX                  9003
  #define IDC_ENABLE_HIDEWINE             9004
  #define IDC_ENABLE_GTK3                 9005
-+#define IDC_ENABLE_NATIVE_D3D9		9006
++#define IDC_ENABLE_NATIVE_D3D9          9006
 
  /* About tab */
  #define IDC_ABT_OWNER                8432
+@@ -227,3 +228,4 @@
+ #define IDC_ABT_TITLE_TEXT           8436
+ #define IDC_ABT_WEB_LINK             8437
+ #define IDC_ABT_LICENSE_TEXT         8438
++
 diff --git a/programs/winecfg/staging.c b/programs/winecfg/staging.c
-index 81a4e24..96bc9a4 100644
+index 81a4e24..9b27163 100644
 --- a/programs/winecfg/staging.c
 +++ b/programs/winecfg/staging.c
-@@ -34,6 +34,24 @@
- WINE_DEFAULT_DEBUG_CHANNEL(winecfg);
+@@ -50,6 +50,23 @@ static void csmt_set(BOOL status)
+ }
 
  /*
 + * Gallium nine
@@ -4939,44 +4946,52 @@ index 81a4e24..96bc9a4 100644
 +    set_reg_key(config_key, keypath("DllRedirects"), "d3d9", status ? "d3d9-nine.dll" : NULL);
 +}
 +
-+
 +/*
-  * Command stream multithreading
+  * DXVA2
   */
- static BOOL csmt_get(void)
-@@ -132,7 +150,11 @@ static void load_staging_settings(HWND dialog)
+ static BOOL vaapi_get(void)
+@@ -132,6 +149,7 @@ static void load_staging_settings(HWND dialog)
      CheckDlgButton(dialog, IDC_ENABLE_EAX, eax_get() ? BST_CHECKED : BST_UNCHECKED);
      CheckDlgButton(dialog, IDC_ENABLE_HIDEWINE, hidewine_get() ? BST_CHECKED : BST_UNCHECKED);
      CheckDlgButton(dialog, IDC_ENABLE_GTK3, gtk3_get() ? BST_CHECKED : BST_UNCHECKED);
 +    CheckDlgButton(dialog, IDC_ENABLE_NATIVE_D3D9, nine_get() ? BST_CHECKED : BST_UNCHECKED);
 
+ #ifndef HAVE_VAAPI
+     disable(IDC_ENABLE_VAAPI);
+@@ -139,6 +157,9 @@ static void load_staging_settings(HWND dialog)
+ #ifndef HAVE_GTK3
+     disable(IDC_ENABLE_GTK3);
+ #endif
 +#if !defined(SONAME_D3DADAPTER9)
 +    disable(IDC_ENABLE_NATIVE_D3D9);
 +#endif
- #ifndef HAVE_VAAPI
-     disable(IDC_ENABLE_VAAPI);
- #endif
-@@ -184,6 +206,10 @@ INT_PTR CALLBACK StagingDlgProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lPar
+ }
+
+ INT_PTR CALLBACK StagingDlgProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
+@@ -184,6 +205,10 @@ INT_PTR CALLBACK StagingDlgProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lPar
              gtk3_set(IsDlgButtonChecked(hDlg, IDC_ENABLE_GTK3) == BST_CHECKED);
              SendMessageW(GetParent(hDlg), PSM_CHANGED, 0, 0);
              return TRUE;
-+       case IDC_ENABLE_NATIVE_D3D9:
-+           nine_set(IsDlgButtonChecked(hDlg, IDC_ENABLE_NATIVE_D3D9) == BST_CHECKED);
-+           SendMessageW(GetParent(hDlg), PSM_CHANGED, 0, 0);
-+           return TRUE;
++        case IDC_ENABLE_NATIVE_D3D9:
++            nine_set(IsDlgButtonChecked(hDlg, IDC_ENABLE_NATIVE_D3D9) == BST_CHECKED);
++            SendMessageW(GetParent(hDlg), PSM_CHANGED, 0, 0);
++            return TRUE;
          }
          break;
      }
 diff --git a/programs/winecfg/winecfg.rc b/programs/winecfg/winecfg.rc
-index e2b35a2..7b444d0 100644
+index e2b35a2..e9741df 100644
 --- a/programs/winecfg/winecfg.rc
 +++ b/programs/winecfg/winecfg.rc
-@@ -320,6 +320,8 @@ BEGIN
+@@ -320,8 +320,11 @@ BEGIN
      CONTROL     "Enable Environmental Audio E&xtensions (EAX)",IDC_ENABLE_EAX,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,70,230,8
      CONTROL     "&Hide Wine version from applications",IDC_ENABLE_HIDEWINE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,85,230,8
      CONTROL     "Enable &GTK3 Theming",IDC_ENABLE_GTK3,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,100,230,8
 +    CONTROL     "Enable &Gallium Nine for better D3D9 graphic performance.",IDC_ENABLE_NATIVE_D3D9,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,115,230,8
-+    LTEXT	"Gallium Nine requires MESA graphic drivers and AMD/Nvidia GPU",IDC_STATIC,16,130,230,16
++    LTEXT       "Gallium Nine requires MESA graphic drivers and AMD/Nvidia GPU",IDC_STATIC,16,130,230,16
  END
 
++
  LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+
+ /* @makedep: winecfg.ico */

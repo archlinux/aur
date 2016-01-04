@@ -10,7 +10,7 @@
 # -HD7700M support (not referenced in Wine)
 
 pkgname=wine-gaming-nine
-pkgver=1.8
+pkgver=1.9.0
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
@@ -22,17 +22,17 @@ source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbas
         heap_perf.patch
         keybindings.patch
         mipmap.patch
-        nine-1.8.patch
+        nine-1.9.0.patch
         steam.patch
         wbemprox_query_v2.patch
         )
-sha1sums=('6aea600b850ac2ac4fed608d96c688c8d470222f'
+sha1sums=('1f05e9732d5b28f1ac46bd69e0a5d20439cf63d4'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
           '8fa4b03f68f18b4de80f10c7a43c0e99a5cb017c'
           '0f4ac455436d5714a2cf0b537ed25f4fa5c1a7fd'
           'f3febb8836f38320742a546c667106608d4c4395'
           'c3096fccbac23e520d03f592db7f23350cbbc0bc'
-          'a5832a96432979b6fc18019f931f80e4d3ecc240'
+          'ad066e931f4c752406e8a4f079c7138533220bdc'
           'a7da16c5fac7d74c665e7a76bddbcd6c8333830b'
           'e26d369e9964657b481ac4b7b18c575786ec9c8c'
           )
@@ -132,7 +132,7 @@ prepare()
 {
     cd wine-patched-staging-$_pkgbasever
 
-    patch -p1 < ../nine-1.8.patch
+    patch -p1 < ../nine-1.9.0.patch
     patch -p1 < ../steam.patch
     patch -p1 < ../mipmap.patch
     patch -p1 < ../heap_perf.patch
