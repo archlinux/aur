@@ -1,6 +1,8 @@
 post_install() {
-  echo
-  echo "Warning: phar.so and bz2.so must be enabled in your php.ini"
+  if php -i | grep 'bzip2 compression => disabled' >/dev/null 2>&1; then
+    echo -e "Warning: bz2.so must be loaded in your php.ini to use ${pkgname}"
+    echo -e "You may use  \"sed -i 's/;extension=bz2.so/extension=bz2.so/g' /etc/php/php.ini\" to change your configuration"
+  fi
 }
 
 post_upgrade() {
