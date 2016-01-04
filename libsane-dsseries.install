@@ -1,0 +1,13 @@
+post_install() {
+	echo "Check the current user is in the scanner group"
+	echo "groups | grep scanner"
+	echo "if it is not the case run the following command"
+	echo "gpasswd -a $USER scanner"
+	echo ""
+	echo "Check also the sg module is loaded"
+	echo "lsmod | grep sg"
+	echo "if it is not the case run the following command"
+	echo "sudo modprobe sg"
+	echo "To load the sg module at startup, create a file named « /etc/modules-load.d/sg.conf » and add the following content inside"
+	echo "sg"
+}
