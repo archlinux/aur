@@ -1,6 +1,6 @@
 # Maintainer: Julian Xhokaxhiu < info at julianxhokaxhiu dot com >
 pkgname=kodi-addon-pvr-vdr-vnsi-rbp-git
-pkgver=1.11.11
+pkgver=1.11.12
 pkgrel=1
 url="https://github.com/kodi-pvr/pvr.vdr.vnsi"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
