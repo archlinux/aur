@@ -3,7 +3,7 @@
 # Contributor: Attila Bukor <r1pp3rj4ck [at] w4it [dot] eu>
 pkgname=phpunit
 pkgver=5.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="PHPUnit is a programmer-oriented testing framework for PHP."
 url="https://phpunit.de"
 arch=("any")
