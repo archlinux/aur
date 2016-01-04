@@ -1,12 +1,13 @@
 pkgname=system-config-nfs
 pkgdesc="A tool that lets you change the NFS server settings as well as manage the directories you want to share per NFS from your computer."
-pkgver=1.4.3-1
+pkgver=1.4.3
 pkgrel=2
 fedoraversion=23
+fedorarelease=1
 arch=('i686' 'x86_64')
 url="https://fedoraproject.org/wiki/SystemConfig/nfs"
 license=('GPL')
-source=("http://dl.fedoraproject.org/pub/fedora/linux/development/${fedoraversion}/i386/os/Packages/s/system-config-nfs-${pkgver}.fc${fedoraversion}.noarch.rpm"
+source=("http://dl.fedoraproject.org/pub/fedora/linux/development/${fedoraversion}/i386/os/Packages/s/system-config-nfs-${pkgver}-${fedorarelease}.fc${fedoraversion}.noarch.rpm"
 	"system-config-nfs")
 md5sums=('8117766558a723f077c395a1e0a016cc'
 	'10cebcb296f60d885f596db5dcbe6104')
