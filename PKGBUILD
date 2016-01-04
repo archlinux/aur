@@ -1,12 +1,11 @@
 # Maintainer: Chrys <mail@chrys.de>
 pkgname=ocrdesktop
 pkgver=0.9.98
-pkgrel=2
+pkgrel=1
 pkgdesc="OCR the current window or desktop and make it browsable for the user"
 arch=('any')
 url="http://www.crivatec.de"
 license=('GPL')
-groups=()
 depends=('libwnck3' 'python-atspi' 'python-pillow' 'python-tesserwrap' 'tesseract-data-eng')
 source=("http://crivatec.de/page/uploads/Downloads/Accessible%20Tools/$pkgname-$pkgver.tar.xz")
 install='ocrdesktop.install'
