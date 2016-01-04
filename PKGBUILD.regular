@@ -1,0 +1,79 @@
+# $Id$
+# Maintainer : schuay <jakob.gruber@gmail.com>
+# Contributor : kevin <kevin@archlinux.org>
+# Contributor : Christian Schmidt <mucknert@gmx.net>
+# Contributor : Markus Meissner <markus@meissna.de>
+# Contributor : Nick Erdmann <erdmann@date.upb.de>
+
+pkgname=nethack
+pkgver=3.6.0
+pkgrel=1
+pkgdesc='Single-player roguelike dungeon exploration game'
+arch=('x86_64' 'i686')
+url='http://nethack.org/'
+license=('custom')
+depends=('ncurses' 'gzip' 'libxaw')
+makedepends=('gendesk') #'setconf' 'addinclude' 'xorg-server-devel'
+install=nethack.install
+conflicts=('nethack')
+source=("http://downloads.sourceforge.net/nethack/nethack-${pkgver//.}-src.tgz"
+        'nethack-x11.png::http://bugs.gentoo.org/attachment.cgi?id=86458')
+sha256sums=('1ade698d8458b8d87a4721444cb73f178c74ed1b6fde537c12000f8edf2cb18a'
+            'e1e0b059c617af04ee88bed4b03b73c02f022663e001c5485fe9900ca2d76295')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+
+  gendesk -n -f --pkgname "$pkgname" --pkgdesc "$pkgdesc" --exec nethack \
+    --name 'Nethack (X11)' --genericname Nethack
+
+  sed -e 's|^/\* \(#define LINUX\) \*/|\1|' \
+      -e 's|^/\* \(#define TIMED_DELAY\) \*/|\1|' -i include/unixconf.h
+
+  # we are setting up for setgid games, so modify all necessary permissions
+  # to allow full access for groups
+
+  sed -e '/^HACKDIR/ s|/games/lib/\$(GAME)dir|/var/games/nethack/|' \
+      -e '/^SHELLDIR/ s|/games|/usr/bin|' \
+      -e '/^VARDIRPERM/ s|0755|0775|' \
+      -e '/^VARFILEPERM/ s|0600|0664|' \
+      -e '/^GAMEPERM/ s|0755|02755|' \
+      -e 's|\(DSYSCF_FILE=\)\\"[^"]*\\"|\1\\"/var/games/nethack/sysconf\\"|' \
+      -e 's|\(DHACKDIR=\)\\"[^"]*\\"|\1\\"/var/games/nethack/\\"|' -i sys/unix/hints/linux
+
+  sed -e 's|^#GAMEUID.*|GAMEUID = root|' \
+      -e 's|^#GAMEGRP.*|GAMEGRP = games|' \
+      -e '/^FILEPERM\s*=/ s|0644|0664|' \
+      -e '/^DIRPERM\s*=/ s|0755|0775|' -i sys/unix/Makefile.top
+
+  sed -e "/^MANDIR\s*=/s|/usr/man/man6|$pkgdir/usr/share/man/man6|" -i sys/unix/Makefile.doc
+
+}
+
+build(){
+  cd "$pkgname-$pkgver/sys/unix"
+  sh setup.sh hints/linux
+  make -C "$srcdir/$pkgname-$pkgver"
+}
+  
+package() {
+  cd "$pkgname-$pkgver"
+
+  install -dm755 $pkgdir/usr/share/{man/man6,doc/nethack}
+  install -dm775 $pkgdir/var/games/
+  make PREFIX=$pkgdir -j1 install manpages # Multi-threaded builds fail.
+  sed -e "s|HACKDIR=$pkgdir/|HACKDIR=/|" \
+      -e 's|HACK=$HACKDIR|HACK=/usr/lib/nethack|' \
+      -i $pkgdir/usr/bin/nethack
+
+  install -dm755 $pkgdir/usr/lib/nethack
+  mv $pkgdir/var/games/nethack/{nethack,recover} $pkgdir/usr/lib/nethack/
+
+  # FS#43414: /var/games should be owned by root:games.
+  chown -R root:games $pkgdir/var/games/
+  chown root:games $pkgdir/usr/lib/nethack/nethack
+  #chmod 02755 $pkgdir/usr/lib/nethack/nethack
+
+  install -Dm644 doc/Guidebook.txt $pkgdir/usr/share/doc/nethack/Guidebook.txt
+  install -Dm644 dat/license $pkgdir/usr/share/licenses/$pkgname/LICENSE
+}
