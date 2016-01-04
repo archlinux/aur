@@ -24,7 +24,7 @@
 
 pkgname=catalyst-total-hd234k
 pkgver=13.1
-pkgrel=32
+pkgrel=32.1
 pkgdesc="AMD/ATI legacy drivers. catalyst-hook + catalyst-utils + lib32-catalyst-utils"
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
@@ -302,7 +302,7 @@ package() {
       patch -Np1 -i ../4.2-ubuntu_buildfix_kernel_4.2-modified.patch
       patch -Np1 -i ../4.2-fglrx-has_fpu.patch
       patch -Np1 -i ../4.2-kolasa-fpu_save_init.patch
-      patch -Np1 -i ../4.3-kolasa-seq_printf.patch
+#       patch -Np1 -i ../4.3-kolasa-seq_printf.patch            #not compiling, undeclared m
       patch -Np1 -i ../4.3-gentoo-mtrr.patch
 
     # Prepare modules source files
