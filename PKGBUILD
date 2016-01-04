@@ -1,14 +1,14 @@
 # Maintainer: CyrIng <xfreq[at]cyring[dot]fr>
 # Contributor: CyrIng <xfreq[at]cyring[dot]fr>
 pkgname=twm-xfreq
-pkgver=0.07
+pkgver=0.08
 pkgrel=1
 pkgdesc="A customized Twm for XFreq"
 arch=(any)
 license=('GPL')
 url="http://github.com/cyring/xdm-xfreq"
 depends=('xdm-xfreq' 'xorg-twm')
-optdepends=()
+optdepends=('xscreensaver')
 backup=()
 source=(twm-xfreq.desktop
 	start-twm-xfreq)
