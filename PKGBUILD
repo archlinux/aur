@@ -1,5 +1,5 @@
 # $Id$
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Yichao Zhou <broken.zhou@gmail.com>
 
 _pkgbase=poppler
 pkgbase=poppler-lcdfilter
