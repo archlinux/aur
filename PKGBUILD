@@ -9,7 +9,7 @@ url="https://fedoraproject.org/wiki/SystemConfig/nfs"
 license=('GPL')
 source=("http://dl.fedoraproject.org/pub/fedora/linux/development/${fedoraversion}/i386/os/Packages/s/system-config-nfs-${pkgver}-${fedorarelease}.fc${fedoraversion}.noarch.rpm"
 	"system-config-nfs")
-md5sums=('8117766558a723f077c395a1e0a016cc'
+md5sums=('0bd2ca1fe887c5c42040b5704504b9ef'
 	'10cebcb296f60d885f596db5dcbe6104')
 depends=('python2')
 
