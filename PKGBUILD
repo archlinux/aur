@@ -12,7 +12,7 @@
 _pkgname=zoneminder
 pkgname=zoneminder-git
 pkgver=1.29.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Capture, analyse, record and monitor video security cameras'
 arch=( i686 x86_64 mips64el arm armv7h )
 backup=( etc/zm.conf )
@@ -55,7 +55,7 @@ sha256sums=('SKIP'
 pkgver() {
     cd "$_pkgname"
     # See https://wiki.archlinux.org/index.php/VCS_package_guidelines#The_pkgver.28.29_function
-    git describe --long --tags | sed 's/^v-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare () {
