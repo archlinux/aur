@@ -7,6 +7,7 @@ fedorarelease=1
 arch=('i686' 'x86_64')
 url="https://fedoraproject.org/wiki/SystemConfig/nfs"
 license=('GPL')
+# Get latest binary from http://pkgs.org/search/system-config-nfs
 source=("http://dl.fedoraproject.org/pub/fedora/linux/development/${fedoraversion}/i386/os/Packages/s/system-config-nfs-${pkgver}-${fedorarelease}.fc${fedoraversion}.noarch.rpm"
 	"system-config-nfs")
 md5sums=('0bd2ca1fe887c5c42040b5704504b9ef'
