@@ -2,7 +2,7 @@
 
 pkgname=vis
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='suckless vim like editor'
 arch=('i686' 'x86_64')
 url='http://repo.or.cz/vis.git'
@@ -16,7 +16,7 @@ sha256sums=('c695b095f85f4360590865b0b7007aa019463b24c1026c0e624a78b31f3ac54b')
 prepare() {
 	cd "${pkgname}-${pkgver}/"
 
-	sed -i '/^\(C\|LD\)FLAGS_LUA =/s/lua5.1/lua/' config.mk
+	sed -i '/^\s\(C\|LD\)FLAGS_LUA =/s/lua5.2/lua/g' config.mk
 }
 
 build() {
