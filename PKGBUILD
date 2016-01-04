@@ -7,7 +7,7 @@
 #   Fabiano Furtado <fusca14 at gmail dot com>
 
 pkgname=fwknop
-pkgver=2.6.7
+pkgver=2.6.8
 pkgrel=1
 pkgdesc='FireWall KNock OPerator: Single Packet Authorization and Port Knocking'
 arch=(i686 x86_64)
@@ -36,5 +36,5 @@ package() {
   install -D -m 755 "$srcdir/fwknopd.service" "$pkgdir/usr/lib/systemd/system/fwknopd.service"
 }
 
-sha256sums=('c25be69285956284174a3955c839767260cdcfae1ed4dd83d2319496db0563dd'
+sha256sums=('1d2e21aa21d875759ccd248045ad5703bc6c37b7093ed6c24dfc9175996264d5'
             '68bd1f59be36be5666d563f7ec561a8213c7de14ff92b77d6e38de9062331969')
