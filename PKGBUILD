@@ -1,7 +1,7 @@
 # Maintainer: Javier Tia <javier dot tia at gmail dot com>
 
 pkgname=sift
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A fast and powerful open source alternative to grep"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ conflicts=('sift-bin')
 replaces=('sift-bin')
 provides=("sift=${pkgver}")
 source=("https://github.com/svent/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('64451f67c2450a913f9ddbe1bb4726d3da225fe6fd11ebe79c71af259d1e5c9d')
+sha256sums=('a47a771047cb54f8374111d26e2bcb65a9f551613bd2bb4d56272361033e9bfc')
 _gourl="github.com/svent/${pkgname}"
 
 build() {
