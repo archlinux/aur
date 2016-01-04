@@ -1,0 +1,11 @@
+[Unit]
+Description=TAYGA NAT64
+After=network.target
+
+[Service]
+ExecStartPre=/usr/bin/tayga --mktun --config /etc/tayga.conf
+ExecStart=/usr/bin/tayga --nodetach --config /etc/tayga.conf
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
