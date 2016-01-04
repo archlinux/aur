@@ -2,25 +2,23 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=emby-server-devel
-pkgver=3.0.5800.2
+pkgver=3.0.5846.38743
 pkgrel=1
 pkgdesc='Bring together your videos, music, photos, and live television'
 arch=('i686' 'x86_64' 'armv6h')
 url='http://emby.media'
 license=('GPL2')
 depends=('ffmpeg' 'imagemagick' 'mono' 'sqlite')
-makedepends=('git')
 provides=('emby-server')
 conflicts=('emby-server')
 install='emby-server.install'
-_commit='df9eaf1bef5677658c534362e05c9d187c34200a'
-source=("git+https://github.com/MediaBrowser/Emby.git#commit=${_commit}"
+source=("emby-server-${pkgver}.tar.gz::https://github.com/MediaBrowser/Emby/archive/${pkgver}.tar.gz"
         'emby-server'
         'emby-migrate-database'
         'emby-server.conf'
         'emby-server.service')
 backup=('etc/conf.d/emby-server')
-sha256sums=('SKIP'
+sha256sums=('9beb2c062a4c9213e8e654c34bf9ddbd237a4eeae7c0072ae66466e0bbcad24f'
             '7b1974f7bba8ac4b76e51ef7fe1257d165c7c4abbd0915e192391336048a3d74'
             'b25bf83a0ab371aff3b13b82f7af71b51bfe6d7e51eb8a8a3dd8f0774ffce6a5'
             'c9ad78f3e2f0ffcb4ee66bb3e99249fcd283dc9fee17895b9265dc733288b953'
