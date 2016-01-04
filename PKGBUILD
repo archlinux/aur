@@ -14,5 +14,5 @@ sha256sums=('81ee3a6401d4f4d1af1975913438a32fa453b4220bd2e509b7b5af4cbc29a4f4')
 
 package() {
   cd "$srcdir/python-irclib-$pkgver"
-  python setup.py install --root=$pkgdir --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1
 }
