@@ -1,7 +1,7 @@
 # Maintainer: Javier Tia <javier dot tia at gmail dot com>
 _name=sift
 pkgname=${_name}-bin
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A fast and powerful open source alternative to grep - Static binary"
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ replaces=('sift')
 provides=("sift=${pkgver}")
 source_i686=("${url}/downloads/${_name}/${_name}_${pkgver}_linux_386.tar.gz")
 source_x86_64=("${url}/downloads/${_name}/${_name}_${pkgver}_linux_amd64.tar.gz")
-sha256sums_i686=('df47e268607accc92b0c9b3cdd40ffe91a8fe72112cf0999f35cb75689b50842')
-sha256sums_x86_64=('cd35cdc4b325b2d628ce34f0a4af4006266bd20f595ec258b64d7788a9c0b2e9')
+sha256sums_i686=('edbde5bc1e1bbc92cd283da6ec1e2e3ae9f364fa5e46f51a299efd6f701592e7')
+sha256sums_x86_64=('ca4b6281a9c49607008d57b4274b79dccfbd023e98ca5ac15701e9f71fa6ec59')
 
 [[ "$CARCH" = "i686" ]] && _arch='386'
 [[ "$CARCH" = "x86_64" ]] && _arch='amd64'
