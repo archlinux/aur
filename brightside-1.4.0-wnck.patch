@@ -1,0 +1,20 @@
+--- brightside-1.4.0/src/brightside.c	2005/03/14 09:36:41	1.1
++++ brightside-1.4.0/src/brightside.c	2005/03/14 09:37:50
+@@ -1253,7 +1253,7 @@ applet_scroll (GtkWidget *pager, GdkEven
+ 
+ 	new_workspace = wnck_screen_get_workspace (brightside->screen, new_index);
+ 	if (new_workspace) {
+-		wnck_workspace_activate (new_workspace);
++		wnck_workspace_activate (new_workspace, gtk_get_current_event_time ());
+ 		pager_show (brightside, new_workspace, n_rows, TRUE);
+ 	}
+ 	
+@@ -1540,7 +1540,7 @@ do_edge_flip (Brightside *brightside, gi
+ 
+ 	new_workspace = wnck_screen_get_workspace (
+ 			brightside->screen, new_space);
+-	wnck_workspace_activate (new_workspace);
++	wnck_workspace_activate (new_workspace, gtk_get_current_event_time ());
+ 
+ 	pager_show (brightside, new_workspace, rows, FALSE);
+ 	
