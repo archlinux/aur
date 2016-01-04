@@ -1,6 +1,8 @@
 post_install() {
-  echo
-  echo "Warning: phar.so must be enabled and date.timezone set in your php.ini"
+  if php -i | grep 'date.timezone => no value => no value' >/dev/null 2>&1; then
+    echo -e "Warning: The date.timezone setting must be set in your php.ini"
+    echo -e "You may use \"sed -i 's/;date.timezone =/date.timezone = Europe\/Berlin/g' /etc/php/php.ini\" to change your configuration"
+  fi
 }
 
 post_upgrade() {
