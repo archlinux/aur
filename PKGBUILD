@@ -1,13 +1,13 @@
 # Maintener Théophane Hufschmitt <theophane.hufschmitt@gmx.fr>
 pkgname=topydo-git
 _gitname=topydo
-pkgver=0.2.r0.g503d876
+pkgver=0.9.r4.g19b5623
 pkgrel=1
-pkgdesc="A couple of tools (actions, filters, sorting) for todo.txt files"
+pkgdesc="topydo is a todo list application using the todo.txt format. It is heavily inspired by the todo.txt CLI by Gina Trapani."
 arch=("any")
 url="https://github.com/bram85/topydo"
 license=('GPLv3')
-depends=("python2" "python2-setuptools" "python2-six")
+depends=("python" "python-setuptools" "python-six" "python-arrow")
 provides=("topydo")
 source=("git+https://github.com/bram85/topydo.git")
 md5sums=("SKIP")
@@ -19,6 +19,6 @@ pkgver() {
 
 package() {
   cd $srcdir/$_gitname
-  python2 setup.py build
-  python2 setup.py install --root=$pkgdir
+  python setup.py build
+  python setup.py install --root=$pkgdir
 }
