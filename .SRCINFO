@@ -1,16 +1,16 @@
 pkgbase = lib32-sdl2_ttf
 	pkgdesc = A library that allows you to use TrueType fonts in your SDL applications (Version 2, 32 bit)
-	pkgver = 2.0.12
+	pkgver = 2.0.13
 	pkgrel = 1
-	url = http://www.libsdl.org/projects/SDL_ttf
+	url = https://www.libsdl.org/projects/SDL_ttf/
 	arch = x86_64
 	license = MIT
 	makedepends = gcc-multilib
-	depends = sdl2_ttf=2.0.12
+	depends = sdl2_ttf>=2.0.13
 	depends = lib32-sdl2
 	depends = lib32-freetype2
-	source = http://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-2.0.12.tar.gz
-	sha256sums = 8728605443ea1cca5cad501dc34dc0cb15135d1e575551da6d151d213d356f6e
+	source = https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-2.0.13.tar.gz
+	sha256sums = 25ddad0302e7d74ce16a770974930cefbdcf67499ca7d40ce7a6bd7de6022fdf
 
 pkgname = lib32-sdl2_ttf
 
