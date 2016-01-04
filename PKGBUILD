@@ -1,7 +1,7 @@
 # Maintainer: Georg Nagel <g.schlmm at gmail dot com>
 
 pkgname=ola-git
-pkgver=0.9.7.r193.g4801ba0
+pkgver=0.9.8.r571.g3028d51
 pkgrel=1
 pkgdesc="The Open Lighting Architecture (OLA) provides a plugin framework for distributing DMX512 control signals on Mac and Linux"
 arch=('i686' 'x86_64')
@@ -10,11 +10,11 @@ license=('LGPL2.1' 'GPL2')
 provides=('ola')
 makedepends=('git')
 depends=('libmicrohttpd' 'cppunit' 'protobuf' 'python2-protobuf' 'python2')
-optdepends=('liblo' 'avahi' 'libusb' 'libusb-compat' 'libftdi-compat' 'openslp')
+optdepends=('liblo' 'avahi' 'libusb' 'libusb-compat' 'libftdi-compat' 'openslp' 'flex' 'bison')
 conflicts=('ola')
 source=("git+https://github.com/OpenLightingProject/ola.git")
-# uncomment for 0.9.7
-#source=("git+https://github.com/OpenLightingProject/ola.git#tag=0.9.7")
+# uncomment for 0.10.0
+#source=("git+https://github.com/OpenLightingProject/ola.git#tag=0.10.0")
 sha256sums=('SKIP')
 
 _gitname="ola"
