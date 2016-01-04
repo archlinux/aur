@@ -9,12 +9,12 @@
 pkgname=p7zip-gui
 _srcname=p7zip
 pkgver=9.38.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Graphic user interface (alpha quality) for the 7zip file archiver'
 url='http://p7zip.sourceforge.net/'
 license=('GPL' 'custom')
 arch=('i686' 'x86_64')
-depends=('p7zip' 'gcc-libs' 'sh' 'wxgtk')
+depends=('p7zip' 'gcc-libs' 'wxgtk')
 optdepends=('desktop-file-utils: desktop entries')
 makedepends=('webkitgtk2')
 makedepends_i686=('nasm')
