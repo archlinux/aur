@@ -11,6 +11,7 @@ source=("http://crivatec.de/page/uploads/Downloads/Accessible%20Tools/$pkgname-$
 install='ocrdesktop.install'
 provides=('ocrdesktop')
 conflicts=('ocrdesktop-git')
+md5sums=("fdad271ff8a440f96f9985d90f9d3379")
 
 package() {
  cd "${srcdir}/"
