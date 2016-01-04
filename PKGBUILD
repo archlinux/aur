@@ -2,13 +2,12 @@
 pkgname=phpunit-skeleton-generator
 _pkgname=phpunit-skelgen
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool that can generate skeleton test classes from production code classes and vice versa."
 url="https://github.com/sebastianbergmann/phpunit-skeleton-generator"
 arch=("any")
 license=("BSD")
 depends=("php")
-install="${pkgname}.install"
 source=("https://phar.phpunit.de/${_pkgname}-${pkgver}.phar"
         "https://raw.githubusercontent.com/sebastianbergmann/${pkgname}/${pkgver}/LICENSE")
 sha512sums=('7b15ffafb4083f416fcde3c486a7333ac0d8b14c20e7478d6f9222754fed9680a1db56bd4d198481fc769b87e335510b69ada4f98f5c47a4eb6528cf0dc35e4c'
