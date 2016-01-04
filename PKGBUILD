@@ -25,17 +25,21 @@ pkgname=("${pkgbase}"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
 pkgver=5.6.16
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('PHP')
-url='http://www.php.net'
+url='http://php.net'
 makedepends=('apache' 'c-client' 'postgresql-libs' 'libldap' 'postfix'
              'sqlite' 'unixodbc' 'net-snmp' 'libzip' 'enchant' 'file' 'freetds'
              'libmcrypt' 'tidyhtml' 'aspell' 'libltdl' 'gd' 'icu'
              'curl' 'libxslt' 'openssl' 'db' 'gmp' 'systemd')
+
+_conflicts=("${pkgname[@]/$pkgbase/$_pkgbase}")
+_conflicts=("${_conflicts[@]/%/>=7}")
+
 #checkdepends=('procps-ng')
-source=("http://www.php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"
-        "http://www.php.net/distributions/${_pkgbase}-${pkgver}.tar.xz.asc"
+source=("http://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"
+        "http://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz.asc"
         'php.ini.patch' 'apache.conf' 'php-fpm.conf.in.patch'
         'logrotate.d.php-fpm' 'php-fpm.service' 'php-fpm.tmpfiles')
 md5sums=('3f1d999ed1f9cb5713c9a0161c557f2f'
@@ -239,6 +243,8 @@ package_php56() {
 	pkgdesc='An HTML-embedded scripting language'
 	depends=('pcre' 'libxml2' 'curl' 'libzip')
 	backup=('etc/php/php.ini')
+	conflicts=("${_conflicts[@]}")
+	provides=('php')
 
 	cd ${srcdir}/build-php
 	make -j1 INSTALL_ROOT=${pkgdir} install
@@ -261,7 +267,7 @@ package_php56-cgi() {
 	pkgdesc='CGI and FCGI SAPI for PHP'
 	depends=("${pkgbase}")
 	provides=('php-cgi')
-	conflicts=('php-cgi')
+	conflicts=('php>=7' 'php-cgi')
 
 	install -D -m755 ${srcdir}/build-cgi/sapi/cgi/php-cgi ${pkgdir}/usr/bin/php-cgi
 }
@@ -270,7 +276,7 @@ package_php56-apache() {
 	pkgdesc='Apache SAPI for PHP'
 	depends=("${pkgbase}" 'apache')
 	provides=('php-apache')
-	conflicts=('php-apache')
+	conflicts=('php>=7' 'php-apache')
 	backup=('etc/httpd/conf/extra/php5_module.conf')
 
 	install -D -m755 ${srcdir}/build-apache/libs/libphp5.so ${pkgdir}/usr/lib/httpd/modules/libphp5.so
@@ -281,7 +287,7 @@ package_php56-fpm() {
 	pkgdesc='FastCGI Process Manager for PHP'
 	depends=("${pkgbase}" 'systemd')
 	provides=('php-fpm')
-	conflicts=('php-fpm')
+	conflicts=('php>=7' 'php-fpm')
 	backup=('etc/php/php-fpm.conf')
 	install='php-fpm.install'
 
@@ -298,7 +304,7 @@ package_php56-embed() {
 	pkgdesc='Embedded PHP SAPI library'
 	depends=("${pkgbase}")
 	provides=('php-embed')
-	conflicts=('php-embed')
+	conflicts=('php>=7' 'php-embed')
 
 	install -D -m755 ${srcdir}/build-embed/libs/libphp5.so ${pkgdir}/usr/lib/libphp5.so
 	install -D -m644 ${srcdir}/${_pkgbase}-${pkgver}/sapi/embed/php_embed.h ${pkgdir}/usr/include/php/sapi/embed/php_embed.h
@@ -308,7 +314,7 @@ package_php56-phpdbg() {
 	pkgdesc='Interactive PHP debugger'
 	depends=("${pkgbase}")
 	provides=('php-phpdbg')
-	conflicts=('php-phpdbg')
+	conflicts=('php>=7' 'php-phpdbg')
 
 	install -D -m755 ${srcdir}/build-phpdbg/sapi/phpdbg/phpdbg ${pkgdir}/usr/bin/phpdbg
 }
@@ -317,7 +323,7 @@ package_php56-pear() {
 	pkgdesc='PHP Extension and Application Repository'
 	depends=("${pkgbase}")
 	provides=('php-pear')
-	conflicts=('php-pear')
+	conflicts=('php>=7' 'php-pear')
 	backup=('etc/php/pear.conf')
 
 	cd ${srcdir}/build-pear
@@ -329,7 +335,7 @@ package_php56-enchant() {
 	pkgdesc='enchant module for PHP'
 	depends=("${pkgbase}" 'enchant')
 	provides=('php-enchant')
-	conflicts=('php-enchant')
+	conflicts=('php>=7' 'php-enchant')
 
 	install -D -m755 ${srcdir}/build-php/modules/enchant.so ${pkgdir}/usr/lib/php/modules/enchant.so
 }
@@ -338,7 +344,7 @@ package_php56-gd() {
 	pkgdesc='gd module for PHP'
 	depends=("${pkgbase}" 'gd')
 	provides=('php-gd')
-	conflicts=('php-gd')
+	conflicts=('php>=7' 'php-gd')
 
 	install -D -m755 ${srcdir}/build-php/modules/gd.so ${pkgdir}/usr/lib/php/modules/gd.so
 }
@@ -347,7 +353,7 @@ package_php56-imap() {
 	pkgdesc='imap module for PHP'
 	depends=("${pkgbase}" 'c-client')
 	provides=('php-imap')
-	conflicts=('php-imap')
+	conflicts=('php>=7' 'php-imap')
 
 	install -D -m755 ${srcdir}/build-php/modules/imap.so ${pkgdir}/usr/lib/php/modules/imap.so
 }
@@ -356,7 +362,7 @@ package_php56-intl() {
 	pkgdesc='intl module for PHP'
 	depends=("${pkgbase}" 'icu')
 	provides=('php-intl')
-	conflicts=('php-intl')
+	conflicts=('php>=7' 'php-intl')
 
 	install -D -m755 ${srcdir}/build-php/modules/intl.so ${pkgdir}/usr/lib/php/modules/intl.so
 }
@@ -365,7 +371,7 @@ package_php56-ldap() {
 	pkgdesc='ldap module for PHP'
 	depends=("${pkgbase}" 'libldap')
 	provides=('php-ldap')
-	conflicts=('php-ldap')
+	conflicts=('php>=7' 'php-ldap')
 
 	install -D -m755 ${srcdir}/build-php/modules/ldap.so ${pkgdir}/usr/lib/php/modules/ldap.so
 }
@@ -374,7 +380,7 @@ package_php56-mcrypt() {
 	pkgdesc='mcrypt module for PHP'
 	depends=("${pkgbase}" 'libmcrypt' 'libltdl')
 	provides=('php-mcrypt')
-	conflicts=('php-mcrypt')
+	conflicts=('php>=7' 'php-mcrypt')
 
 	install -D -m755 ${srcdir}/build-php/modules/mcrypt.so ${pkgdir}/usr/lib/php/modules/mcrypt.so
 }
@@ -383,7 +389,7 @@ package_php56-mssql() {
 	pkgdesc='mssql module for PHP'
 	depends=("${pkgbase}" 'freetds')
 	provides=('php-mssql')
-	conflicts=('php-mssql')
+	conflicts=('php>=7' 'php-mssql')
 
 	install -D -m755 ${srcdir}/build-php/modules/mssql.so ${pkgdir}/usr/lib/php/modules/mssql.so
 }
@@ -392,7 +398,7 @@ package_php56-odbc() {
 	pkgdesc='ODBC modules for PHP'
 	depends=("${pkgbase}" 'unixodbc')
 	provides=('php-odbc')
-	conflicts=('php-odbc')
+	conflicts=('php>=7' 'php-odbc')
 
 	install -D -m755 ${srcdir}/build-php/modules/odbc.so ${pkgdir}/usr/lib/php/modules/odbc.so
 	install -D -m755 ${srcdir}/build-php/modules/pdo_odbc.so ${pkgdir}/usr/lib/php/modules/pdo_odbc.so
@@ -402,7 +408,7 @@ package_php56-pgsql() {
 	pkgdesc='PostgreSQL modules for PHP'
 	depends=("${pkgbase}" 'postgresql-libs')
 	provides=('php-pgsql')
-	conflicts=('php-pgsql')
+	conflicts=('php>=7' 'php-pgsql')
 
 	install -D -m755 ${srcdir}/build-php/modules/pgsql.so ${pkgdir}/usr/lib/php/modules/pgsql.so
 	install -D -m755 ${srcdir}/build-php/modules/pdo_pgsql.so ${pkgdir}/usr/lib/php/modules/pdo_pgsql.so
@@ -412,7 +418,7 @@ package_php56-pspell() {
 	pkgdesc='pspell module for PHP'
 	depends=("${pkgbase}" 'aspell')
 	provides=('php-pspell')
-	conflicts=('php-pspell')
+	conflicts=('php>=7' 'php-pspell')
 
 	install -D -m755 ${srcdir}/build-php/modules/pspell.so ${pkgdir}/usr/lib/php/modules/pspell.so
 }
@@ -421,7 +427,7 @@ package_php56-snmp() {
 	pkgdesc='snmp module for PHP'
 	depends=("${pkgbase}" 'net-snmp')
 	provides=('php-snmp')
-	conflicts=('php-snmp')
+	conflicts=('php>=7' 'php-snmp')
 
 	install -D -m755 ${srcdir}/build-php/modules/snmp.so ${pkgdir}/usr/lib/php/modules/snmp.so
 }
@@ -430,7 +436,7 @@ package_php56-sqlite() {
 	pkgdesc='sqlite module for PHP'
 	depends=("${pkgbase}" 'sqlite')
 	provides=('php-sqlite')
-	conflicts=('php-sqlite')
+	conflicts=('php>=7' 'php-sqlite')
 
 	install -D -m755 ${srcdir}/build-php/modules/sqlite3.so ${pkgdir}/usr/lib/php/modules/sqlite3.so
 	install -D -m755 ${srcdir}/build-php/modules/pdo_sqlite.so ${pkgdir}/usr/lib/php/modules/pdo_sqlite.so
@@ -440,7 +446,7 @@ package_php56-tidy() {
 	pkgdesc='tidy module for PHP'
 	depends=("${pkgbase}" 'tidyhtml')
 	provides=('php-tidy')
-	conflicts=('php-tidy')
+	conflicts=('php>=7' 'php-tidy')
 
 	install -D -m755 ${srcdir}/build-php/modules/tidy.so ${pkgdir}/usr/lib/php/modules/tidy.so
 }
@@ -449,7 +455,7 @@ package_php56-xsl() {
 	pkgdesc='xsl module for PHP'
 	depends=("${pkgbase}" 'libxslt')
 	provides=('php-xsl')
-	conflicts=('php-xsl')
+	conflicts=('php>=7' 'php-xsl')
 
 	install -D -m755 ${srcdir}/build-php/modules/xsl.so ${pkgdir}/usr/lib/php/modules/xsl.so
 }
