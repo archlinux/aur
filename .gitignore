@@ -1,0 +1,5 @@
+nss-*.tar.gz
+nss-upwork-*.src.tar.gz
+nss-upwork-*.pkg.tar.xz
+src/
+pkg/
