@@ -14,7 +14,7 @@ conflicts=('ocrdesktop')
 md5sums=("SKIP")
 
 package() {
- cd "${srcdir}/"
+ cd "${srcdir}/ocrdesktop"
   install -Dm755 ocrdesktop "$pkgdir/usr/bin/ocrdesktop"
   install -Dm644 ocrdesktop.1.gz "${pkgdir}/usr/share/man/man1/ocrdesktop.1.gz"
 }
