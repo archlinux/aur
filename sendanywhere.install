@@ -1,6 +1,8 @@
 post_install()
 {
     xdg-icon-resource forceupdate --theme hicolor
+    update-mime-database /usr/share/mime &> /dev/null 2> /dev/null
+    update-desktop-database > /dev/null 2>&1 
 }
 
 post_upgrade()
@@ -11,4 +13,6 @@ post_upgrade()
 post_remove()
 {
     post_install
+    rm -rf "$HOME/.local/share/Estmob"
+    rm -rf "$HOME/.config/autostart/sendanywhere.desktop"
 }
