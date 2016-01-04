@@ -3,8 +3,8 @@
 pkgname=gwc
 _ver=0.21
 _release=19
-pkgver=${_ver}_${_release}
-pkgrel=1
+pkgver=${_ver}.${_release}
+pkgrel=2
 pkgdesc="Gnome Wave Cleaner is a digital audio editor to denoise, dehiss and amplify audio files"
 arch=("i686" "x86_64")
 url="http://gwc.sourceforge.net/"
@@ -39,7 +39,7 @@ package() {
     # make DESTDIR="$pkgdir/" install
     install -Dm 755 gwc $pkgdir/usr/bin/gwc
     install -Dm 644 gwc-logo.png $pkgdir/usr/share/pixmaps/gwc.png
-    install -Dm 644 gwc.desktop $pkgdir/usr/share/applications/gwc.desktop
+    install -Dm 644 $srcdir/gwc.desktop $pkgdir/usr/share/applications/gwc.desktop
     install -dm 644 $pkgdir/usr/share/doc/gwc
     for file in gwc_qs.html gwc.html; do install -D doc/C/$file $pkgdir/usr/share/doc/gwc/$file; done
 }
