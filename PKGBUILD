@@ -2,10 +2,10 @@
 
 pkgname=butter
 pkgver=7
-pkgrel=1
+pkgrel=2
 pkgdesc="butter is a btrfs snapshot manager"
 arch=('any')
-license=('WTFPL')
+license=('custom:WTFPL')
 url="https://github.com/moviuro/butter"
 depends=('bash' 'btrfs-progs')
 optdepends=('systemd: human-friendly escaped names')
@@ -21,8 +21,9 @@ package() {
   install -m  0444 "${srcdir}/${pkgname}-${pkgver}/lib-btr/"* \
                    "${pkgdir}/usr/lib/butter"
 
-  install -dm 0755 "${pkgdir}/usr/share/man/man8"
+  install -Dm 0444 "${srcdir}/${pkgname}-${pkgver}/butter.8" \
+                   "${pkgdir}/usr/share/man/man8/butter.8"
 
-  install -m  0444 "${srcdir}/${pkgname}-${pkgver}/butter.8" \
-                   "${pkgdir}/usr/share/man/man8"
+  install -Dm 0444 "${srcdir}/${pkgname}-${pkgver}/LICENSE" \
+                   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
