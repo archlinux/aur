@@ -1,7 +1,6 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=perl6-json-marshal
-_p6name=JSON-Marshal
 pkgver=0.0.3
 pkgrel=2
 pkgdesc="Simple serialisation of objects to JSON"
