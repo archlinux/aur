@@ -4,7 +4,7 @@
 
 _pkgname=compton-conf
 pkgname=${_pkgname}-git
-pkgver=0.1.0.r30.ga1640ea
+pkgver=0.1.0.32.gfc667eb
 pkgrel=2
 pkgdesc='A graphical configuration tool for Compton X composite manager. Qt5 UI. Development version.'
 arch=('i686' 'x86_64')
@@ -28,11 +28,7 @@ sha512sums=(
 pkgver() {
 	# Updating package version
 	cd ${srcdir}/${_pkgname}
-	(
-		set -o pipefail
-		git describe --long --tags 2>/dev/null | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+	git describe --long --tags 2>/dev/null | sed -r 's/-/./g'
 }
 
 prepare() {
