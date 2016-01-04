@@ -1,7 +1,6 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=perl6-json-unmarshal
-_p6name=JSON-Unmarshal
 pkgver=0.03
 pkgrel=2
 pkgdesc="Turn JSON into objects"
