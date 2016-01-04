@@ -43,7 +43,7 @@ conflicts=(
   ttf-ubuntu-mono-powerline-git
 )
 install=$pkgname.install
-source=('git://github.com/powerline/fonts.git')
+source=('git+https://github.com/powerline/fonts.git')
 md5sums=('SKIP')
 
 pkgver() {
