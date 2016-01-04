@@ -18,7 +18,7 @@ sha1sums=('cabf3bf78457ce17057ae39fe3b0009a4aa446c4')
 
 case "$CARCH" in
 	arm*) _pkgarch="arm"
-		sha1sums+=('e6b11cb282199178a6d6d002c90196c3f8b2eb18')
+		sha1sums+=('33957ad511eb69c5ae84eb5860f2debc4602d3c0')
 		;;
 	i686) _pkgarch="386"
 		sha1sums+=('3826d6787206bbf14f6797f99b71eeaa5cc3d24f')
