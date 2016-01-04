@@ -3,7 +3,7 @@
 _gitname=wget
 pkgname=$_gitname-git
 pkgver=1.17.1.r11.gb30500f
-pkgrel=1
+pkgrel=2
 pkgdesc="A network utility to retrieve files from the Web"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/wget/wget.html"
