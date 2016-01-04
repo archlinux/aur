@@ -4,7 +4,7 @@
 
 _pkgname=vokoscreen
 pkgname=${_pkgname}-git
-pkgver=2.4.8.beta.r1.g84cc01a
+pkgver=2.4.9.beta.14.ga0a2ec8
 pkgrel=2
 pkgdesc='An easy to use screencast creator. Qt5 UI. Development version.'
 arch=('i686' 'x86_64')
@@ -33,11 +33,7 @@ sha512sums=(
 pkgver() {
 	# Updating package version
 	cd ${srcdir}/${_pkgname}
-	(
-		set -o pipefail
-		git describe --long --tags 2>/dev/null | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+	git describe --long --tags 2>/dev/null | sed -r 's/-/./g'
 }
 
 prepare() {
