@@ -3,7 +3,7 @@
 
 _pkgname=pmus
 pkgname=$_pkgname-git
-pkgver=0.42.r298.gd5a51ca
+pkgver=0.42.r351.g786cbfd
 pkgrel=1
 pkgdesc="Practical Music Search is a highly configurable, ncurses-based client for MPD"
 arch=('i686' 'x86_64')
@@ -14,6 +14,7 @@ license=('GPL')
 #makedepends=('boost')
 #depends=('boost-libs' 'intltool' 'libmpdclient' 'ncurses')
 
+makedepends=('git' 'pandoc')
 depends=('intltool' 'libmpdclient' 'ncurses')
 provides=($_pkgname)
 conflicts=($_pkgname)
@@ -22,7 +23,7 @@ md5sums=(SKIP)
 
 pkgver() {
   cd $pkgname
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --match "[0-9]*" | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -36,6 +37,12 @@ prepare() {
 
 build() {
   cd $pkgname
+
+  # A fix for "undefined reference" errors: remove -D_FORTIFY_SOURCE=2 and -O2 from build flags
+  CPPFLAGS="$(echo $CPPFLAGS | sed "s|-D_FORTIFY_SOURCE=\w||g")"                   
+  CFLAGS="$(echo $CFLAGS | sed "s|-O\w||g")"
+  CXXFLAGS="$(echo $CXXFLAGS | sed "s|-O\w||g")"
+
   ./rebuild.sh
 }
 
