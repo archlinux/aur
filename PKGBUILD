@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=otter-browser-git
-pkgver=0.9.04.r201.gf3722fd
+pkgver=0.9.09.r6.g59e3deb
 pkgrel=1
 pkgdesc='Otter Browser, project aiming to recreate classic Opera (12.x) UI using Qt5 - git checkout'
 arch=('x86_64' 'i686')
@@ -9,7 +9,7 @@ url='http://otter-browser.org/'
 license=('GPL3')
 provides=('otter-browser')
 conflicts=('otter-browser')
-depends=('qt5-script' 'qt5-webkit' 'qt5-multimedia' 'libxcb')
+depends=('qt5-script' 'qt5-webkit' 'qt5-multimedia' 'libxcb' 'sonnet')
 makedepends=('cmake' 'git')
 source=('git://github.com/OtterBrowser/otter-browser.git')
 sha256sums=('SKIP')
