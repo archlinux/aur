@@ -3,19 +3,19 @@
 # Contributors: Ner0, Sevenseven
 
 pkgname=qbittorrent-git
-pkgver=3.2.5.r0.gc0ccf28
+pkgver=3.3.1.r0.gd753988
 pkgrel=1
-pkgdesc="A bittorrent client written in C++ / Qt4 using the good libtorrent library (development version)"
+pkgdesc="A bittorrent client powered by C++, Qt5 and the good libtorrent library (development version)"
 arch=('i686' 'x86_64')
 url="http://www.qbittorrent.org/"
 license=('custom' 'GPL')
-depends=('qt4' 'libtorrent-rasterbar' 'qjson')
-makedepends=('boost' 'git')
+depends=('libtorrent-rasterbar' 'qt5-base' 'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils')
+makedepends=('boost' 'git' 'qt5-tools')
 optdepends=('python: needed for torrent search tab')
-conflicts=('qbittorrent' 'qbittorrent-qt5')
-provides=('qbittorrent' 'qbittorrent-qt4')
+conflicts=('qbittorrent' 'qbittorrent-qt4')
+provides=('qbittorrent' 'qbittorrent-qt5')
 install=qbittorrent.install
-source=(${pkgname%-*}::"git+https://github.com/qbittorrent/qBittorrent.git#branch=v3_2_x")
+source=(${pkgname%-*}::"git+https://github.com/qbittorrent/qBittorrent.git#branch=v3_3_x")
 md5sums=('SKIP')
 
 pkgver() {
@@ -27,7 +27,7 @@ pkgver() {
 build() {
   cd ${pkgname%-*}
 
-  ./configure --prefix=/usr --with-qjson=system
+  ./configure --prefix=/usr
   make
 }
 
