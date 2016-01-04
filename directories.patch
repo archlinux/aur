@@ -78,15 +78,9 @@
              pass
          self._resource_packs = setup_resource_packs()
 
---- splash.py.orig	2015-12-24 20:53:55.930654329 -0700
-+++ splash.py	2015-12-24 21:29:44.017385005 -0700
-@@ -21,12 +21,12 @@
-     # if os.path.exists(splash_name) and len(open(splash_name).read()) > 0:
-     #     splash = pygame.image.load(open(splash_name).read().strip())
-     # else:
--    splash = pygame.image.load(open(os.path.join(cur_dir, "splash.png"), 'rb'))
-+    splash = pygame.image.load(open(os.path.join("/usr/share/mcedit/", "splash.png"), 'rb'))
-     screen = pygame.display.set_mode(splash.get_size(), pygame.NOFRAME)
+--- splash.py.orig	2016-01-03 17:30:26.530655811 -0600
++++ splash.py	2016-01-03 17:32:52.887326839 -0600
+@@ -26,7 +26,7 @@
      screen.blit(splash, (0, 0))
  except IOError:
      try:

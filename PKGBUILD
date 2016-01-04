@@ -2,8 +2,8 @@
 
 pkgname='mcedit'
 reponame='MCEdit-Unified'
-pkgver='1.4.0.1'
-pkgrel=2
+pkgver='1.5.0.0'
+pkgrel=1
 pkgdesc='Minecraft world editor'
 arch=('any')
 url='https://github.com/mcedit/mcedit'
@@ -17,7 +17,6 @@ conflicts=('mcedit-git' 'pymclevel-git')
 
 source=(MCEdit MCEdit.desktop
 	directories.patch
-	numpy1.7-compatibility.patch
 	https://github.com/Khroki/${reponame}/archive/${pkgver}.tar.gz
 	)
 
@@ -28,8 +27,6 @@ prepare() {
 	grep -rlZ DejaVuSans\-Regular\.ttf * | while IFS= read -r -d '' filename; do sed -i 's/DejaVuSans\-Regular\.ttf/DejaVuSans\.ttf/g' "$filename"; done
 	msg directories.patch
 	patch -Np0 -i ../directories.patch || return 1
-	msg numpy1.7-compatibility.patch
-	patch -Np0 -i ../numpy1.7-compatibility.patch || return 1
 }
 
 
@@ -56,7 +53,8 @@ package() {
 	done
 
 	# Images and stuff
-	echo "/usr/share/mcedit/splashes/splash1.png" > splash
+	rm -f splash
+	touch splash
 	cp *.png "${pkgdir}/usr/share/mcedit"
 	for i in stock-schematics toolicons stock-filters stock-brushes lang\
 	item-textures Items splashes splash bo3.def RELEASE-VERSION.json\
@@ -72,6 +70,5 @@ package() {
 
 md5sums=('b08f609c8923067b13a9bd462999a6f4'
          '53fe3c41d58fd1f6429f90ba0b1831ac'
-         '657f128f31d8818c2fda7e2c02a69149'
-         '2a168455d07a33134b58e44bedeb6e52'
-         'f89ddd094dc7819d54090d659d091e5b')
+         '329f0dbdedd309e4dc121ad3d728e608'
+         'a2f3f43ac68a53aa0ffa48f3ba6b69fe')
