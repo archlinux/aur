@@ -1,7 +1,7 @@
 pkgbase = ruby-compass
 	pkgdesc = A Real Stylesheet Framework
 	pkgver = 1.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://compass-style.org
 	arch = i686
 	arch = x86_64
