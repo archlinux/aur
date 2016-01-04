@@ -22,7 +22,7 @@
  QMAKE_LFLAGS_DEBUG      =
  QMAKE_LFLAGS_CONSOLE    = -Wl,-subsystem,console
  QMAKE_LFLAGS_WINDOWS    = -Wl,-subsystem,windows
-@@ -84,21 +84,25 @@
+@@ -84,21 +84,26 @@
  QMAKE_EXTENSION_STATICLIB = a
  
  QMAKE_LIBS              =
@@ -46,6 +46,7 @@
  QMAKE_LIB               = $${CROSS_COMPILE}ar -ru
  QMAKE_RC                = $${CROSS_COMPILE}windres
 +QMAKE_DLLTOOL           = $${CROSS_COMPILE}dlltool
++QMAKE_LRELEASE          = $${CROSS_COMPILE}lrelease-qt5
  
  QMAKE_STRIP             = $${CROSS_COMPILE}strip
  QMAKE_STRIPFLAGS_LIB   += --strip-unneeded

@@ -2,8 +2,8 @@
 # Contributor: Filip Brcic <brcha@gna.org>
 # Contributor: jellysheep <max.mail@dameweb.de>
 pkgname=mingw-w64-qt5-base-static
-pkgver=5.5.0
-pkgrel=2
+pkgver=5.5.1
+pkgrel=1
 pkgdesc="A cross-platform application and UI framework (mingw-w64)"
 arch=(i686 x86_64)
 url="http://qt-project.org"
@@ -51,8 +51,10 @@ source=("http://download.qt-project.org/official_releases/qt/5.5/${pkgver}/submo
         "qt5-use-system-zlib-in-host-libs.patch"
         "fix-opengl-to-many-sections.patch"
         "fix-static-psql-mysql.patch"
-        "qt5-disable-angle-opengl-testcode.patch")
-md5sums=('252613b5a180c94d7196d10467a4f08b'
+        "qt5-disable-angle-opengl-testcode.patch"
+        "qt5-fix-QSemaphore-problem.patch"
+        "a91c40868bbdc1b2d2dd3b5f8b47aae9e8589a81.diff")
+md5sums=('687e2b122fa2c3390b5e20a166d38038'
          'f51eb2b176b10af943831d33925c1251'
          'bab00ccc19d888997f323c80354a7c3f'
          'ec25d1ff4033383cd5d2414d8189c228'
@@ -66,11 +68,13 @@ md5sums=('252613b5a180c94d7196d10467a4f08b'
          'e793479e0b86b39ddafd328140f1a24c'
          '40de3aaf7d713034e06f4eece665b1ba'
          '4149c27286f110e37893d1764d4c8a68'
-         '6aea7182982098de045721f51bf20fc2'
+         '39cdea1b39a1d993df6d01a576e8116f'
          'a265dea62755caf38187114143999224'
          '612a4dfb9f1a3898a1920c28bb999159'
          'd0eb81aef1a21c65813fe4ddabbc4206'
-         '0076233a43e7edaaaf8c2abca2ada8df')
+         '0076233a43e7edaaaf8c2abca2ada8df'
+         '87cbd116c75ced1b075bf266f2455d50'
+         '1bc70e7e3ea6a0178891d984f0451b3c')
 _architectures="x86_64-w64-mingw32 i686-w64-mingw32"
 
 # Helper functions for the split builds
@@ -172,6 +176,11 @@ prepare() {
   # /home/erik/fedora/mingw-qt5-qtbase/qtbase-opensource-src-5.5.0/src/plugins/platforms/windows/qwindowseglcontext.cpp:376:53: error: 'EGL_PLATFORM_ANGLE_DEVICE_TYPE_WARP_ANGLE' was not declared in this scope
   #                EGL_PLATFORM_ANGLE_DEVICE_TYPE_ANGLE, EGL_PLATFORM_ANGLE_DEVICE_TYPE_WARP_ANGLE, EGL_NONE }
   patch -p1 -b -i ../qt5-disable-angle-opengl-testcode.patch
+
+  patch configure ../qt5-fix-QSemaphore-problem.patch
+
+  # QTBUG-49174 Prevent warning output when QWebView loads QNetworkRequest
+  patch -p1 -b -i ../a91c40868bbdc1b2d2dd3b5f8b47aae9e8589a81.diff
 
   isStatic && patch -p0 -i ../fix-static-psql-mysql.patch
 
@@ -287,6 +296,10 @@ package() {
       rm -f "${pkgdir}/usr/${_arch}/lib/libQt5Bootstrap"*
       rm -f "${pkgdir}/usr/${_arch}/lib/libQt5OpenGLExtensions"*
       rm -f "${pkgdir}/usr/${_arch}/lib/libQt5PlatformSupport"*
+
+      # Also keep various Qt5 plugins to be used in static builds
+      # https://bugzilla.redhat.com/show_bug.cgi?id=1257630
+      mv "${pkgdir}/usr/${_arch}/lib/qt/plugins/"*/*.a "${pkgdir}/usr/${_arch}/lib/"
 
       # we want to keep a couple pri files not found in base
       mv "${pkgdir}/usr/${_arch}/lib/qt/mkspecs/modules/qt_plugin_"*.pri "${pkgdir}/usr/${_arch}"
