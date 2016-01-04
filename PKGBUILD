@@ -2,7 +2,7 @@
 # Contributor: CyrIng <xfreq[at]cyring[dot]fr>
 pkgname=twm-xfreq
 pkgver=0.08
-pkgrel=2
+pkgrel=3
 pkgdesc="A customized Twm for XFreq"
 arch=(any)
 license=('GPL')

@@ -156,10 +156,11 @@ else
 	echo "}" >> $USERTMPFS/twm-xfreq.rc
 	echo "menu \"screensaver\"" >> $USERTMPFS/twm-xfreq.rc
 	echo "{" >> $USERTMPFS/twm-xfreq.rc
-	echo "\"\"              f.nop" >> $USERTMPFS/twm-xfreq.rc
 	if [[ -v XDM_XFREQ_SCREENSAVER_CMD ]]; then
-	echo "\"    Config...\"    f.exec \"$XDM_XFREQ_SCREENSAVER_CMD $XDM_XFREQ_SCREENSAVER_PREF &\"" >> $USERTMPFS/twm-xfreq.rc
-	fi
+	echo "\"Modes...\"      f.exec \"$XDM_XFREQ_SCREENSAVER_CMD $XDM_XFREQ_SCREENSAVER_MODE &\"" >> $USERTMPFS/twm-xfreq.rc
+	echo "\"Config...\"     f.exec \"$XDM_XFREQ_SCREENSAVER_CMD $XDM_XFREQ_SCREENSAVER_PREF &\"" >> $USERTMPFS/twm-xfreq.rc
+	else
+	echo "\"\"              f.nop" >> $USERTMPFS/twm-xfreq.rc
 	echo "\"    Disable  \"    f.exec \"xset s default ; xset dpms 0 0 0\"" >> $USERTMPFS/twm-xfreq.rc
 	echo "\"  5 minutes  \"    f.exec \"xset s 300 300 ; xset dpms 300 300 300\"" >> $USERTMPFS/twm-xfreq.rc
 	echo "\"  7 minutes  \"    f.exec \"xset s 420 420 ; xset dpms 420 420 420\"" >> $USERTMPFS/twm-xfreq.rc
@@ -168,6 +169,7 @@ else
 	echo "\" 15 minutes  \"    f.exec \"xset s 900 900 ; xset dpms 900 900 900\"" >> $USERTMPFS/twm-xfreq.rc
 	echo "\" 20 minutes  \"    f.exec \"xset s 1500 1500 ; xset dpms 1500 1500 1500\"" >> $USERTMPFS/twm-xfreq.rc
 	echo "\"\"              f.nop" >> $USERTMPFS/twm-xfreq.rc
+	fi
 	echo "}" >> $USERTMPFS/twm-xfreq.rc
 	echo "menu \"iconmgr\"" >> $USERTMPFS/twm-xfreq.rc
 	echo "{" >> $USERTMPFS/twm-xfreq.rc
