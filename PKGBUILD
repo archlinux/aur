@@ -1,7 +1,7 @@
 # Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
 pkgname=phpmetrics
 pkgver=1.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A static analysis tool for PHP"
 url="http://www.phpmetrics.org/"
 arch=("any")
