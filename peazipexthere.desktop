@@ -1,0 +1,18 @@
+[Desktop Action peazipexthere]
+Exec=peazip -ext2here %F
+Icon=peazip
+Name=Extract here (PeaZip)
+
+[Desktop Entry]
+Type=Service
+Actions=peazipexthere;
+Encoding=UTF-8
+Icon=peazip
+Name=peazipexthere
+Name[en_US]=peazipexthere
+ServiceTypes=application/x-gzip,application/x-lha,application/x-tar,application/x-tgz,application/x-tbz,application/x-tbz2,application/x-zip,application/x-bzip,application/x-tzo,application/x-lzop,application/x-rar,application/x-rar-compressed,application/x-zoo,application/x-tarz,application/x-archive,application/x-bzip2,application/x-jar,application/x-deb,application/x-ace,application/x-7z,application/x-arc,application/x-arj,application/x-compress,application/x-cpio,application/x-pak;application/x-tar;application/x-compressed-tar;application/x-bzip-compressed-tar;application/x-tarz;application/x-xz-compressed-tar;application/x-lzma-compressed-tar;application/x-deb;application/x-cd-image;application/x-bcpio;application/x-cpio;application/x-cpio-compressed;application/x-sv4cpio;application/x-sv4crc;application/x-rpm;application/x-source-rpm;application/vnd.ms-cab-compressed;application/x-rar;application/x-7z-compressed;application/zip;application/x-java-archive;application/x-lzma;application/x-xz;
+MimeType=application/x-gzip,application/x-lha,application/x-tar,application/x-tgz,application/x-tbz,application/x-tbz2,application/x-zip,application/x-bzip,application/x-tzo,application/x-lzop,application/x-rar,application/x-rar-compressed,application/x-zoo,application/x-tarz,application/x-archive,application/x-bzip2,application/x-jar,application/x-deb,application/x-ace,application/x-7z,application/x-arc,application/x-arj,application/x-compress,application/x-cpio,application/x-pak;application/x-tar;application/x-compressed-tar;application/x-bzip-compressed-tar;application/x-tarz;application/x-xz-compressed-tar;application/x-lzma-compressed-tar;application/x-deb;application/x-cd-image;application/x-bcpio;application/x-cpio;application/x-cpio-compressed;application/x-sv4cpio;application/x-sv4crc;application/x-rpm;application/x-source-rpm;application/vnd.ms-cab-compressed;application/x-rar;application/x-7z-compressed;application/zip;application/x-java-archive;application/x-lzma;application/x-xz;
+X-KDE-ServiceTypes=KonqPopupMenu/Plugin
+X-KDE-Priority=TopLevel
+X-KDE-Submenu=PeaZip
+X-KDE-Icon=peazip
