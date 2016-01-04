@@ -3,24 +3,25 @@
 # Contributor: Jeff Mickey <jeff@archlinux.org>
 
 pkgname=icmake
-pkgver=7.22.01
+pkgver=8.00.05
 pkgrel=1
-pkgdesc='Intelligent C-like MAKE-r.'
+pkgdesc='A program maintenance (make) utility using a C-like grammar'
 arch=('i686' 'x86_64')
-url='http://icmake.sourceforge.net/'
+url='http://fbb-git.github.io/icmake/'
 license=('GPL3')
-source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}_${pkgver}.orig.tar.gz")
-sha256sums=('b522e7937e9d4f0bec738dfce371673e3c4a8bc9f4d209a51631e5ed59ba66c7')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/fbb-git/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('24b8839a0c87ab411beb68867a8eabb592f5b861434af364519bf89eb7e26109')
 
 build() {
-	cd ${srcdir}/${pkgname}-${pkgver}
+	cd "${srcdir}/${pkgname}-${pkgver}/${pkgname}"
 
+	./icm_prepare /
 	./icm_bootstrap /
 }
 
 package() {
-	cd ${srcdir}/${pkgname}-${pkgver}
+	cd "${srcdir}/${pkgname}-${pkgver}/${pkgname}"
 
-	./icm_install all ${pkgdir}
+	./icm_install all "${pkgdir}"
 }
 
