@@ -2,14 +2,15 @@
 
 pkgname='vimiv-git'
 pkgrel=1
-pkgver=r46.720b6c4
+pkgver=r57.a2640bd
 pkgdesc="An image viewer with vim-like keybindings"
 arch=('any')
 url="https://github.com/karlch/vimiv"
 license=('MIT')
 depends=('python3' 'python-gobject' 'gtk3' 'python-pillow')
 makedepends=('git')
-optdepends=('imagemagick: for the optimization of images')
+optdepends=('imagemagick: for the optimization of images'
+            'jhead: for much better autorotation depending on EXIF data')
 backup=('etc/vimiv/vimivrc.py')
 source=("$pkgname::git+${url}.git")
 md5sums=('SKIP')
