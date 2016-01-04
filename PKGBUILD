@@ -1,7 +1,7 @@
 # Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
 # Contributor: Alex "grevus" Lobtsov <alex@lobtsov.com>
 pkgname=php-redis-git
-pkgver=2.2.7
+pkgver=2.2.7.r364.g3c048f1
 pkgrel=1
 pkgdesc="PHP extension for interfacing with Redis (PHP7 branch)"
 url="http://pecl.php.net/package/redis"
