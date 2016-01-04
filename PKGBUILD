@@ -6,13 +6,13 @@
 
 pkgname=swig-git
 pkgrel=1
-pkgver=rel.3.0.3.r4.gaa4d034
+pkgver=rel.3.0.8.r3.ga8cf1ed
 pkgdesc="Generate scripting interfaces to C/C++ code"
 arch=("i686" "x86_64")
 url="http://www.swig.org/"
 license=("custom")
 depends=("zlib" "pcre")
-makedepends=("git" "yodl")
+makedepends=("git")
 conflicts=("swig")
 provides=("swig")
 
@@ -29,30 +29,14 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "${_gitname}" ]]; then
-    cd "${_gitname}" && git pull origin master
-    msg "The local files are updated."
-  else
-    git clone "${_gitroot}" "${_gitname}"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "${srcdir}/${_gitname}-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
+  cd "${srcdir}/${_gitname}"
   ./autogen.sh
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${srcdir}/${_gitname}-build"
+  cd "${srcdir}/${_gitname}"
   make DESTDIR="${pkgdir}" install
   install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
   install -D -m644 LICENSE-UNIVERSITIES "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE-UNIVERSITIES
