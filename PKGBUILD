@@ -1,7 +1,7 @@
 # Maintainer: Gabe Conradi <gabe.conradi+aur@gmail.com>
 
 pkgname='tumblrtv-xscreensaver'
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 epoch=
 pkgdesc="Tumblr TV screensaver"
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://github.com/byxorna/$pkgname/archive/v$pkgver.tar.gz")
 noextract=()
-sha1sums=('58a515b5ab4f86a0cb93cd551f56d05980b0d5a6')
+sha1sums=('fd0152cea7a4ecc69ef72af61bb3d9dabf162294')
 validpgpkeys=()
 
 prepare() {
