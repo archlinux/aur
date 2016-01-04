@@ -2,7 +2,7 @@
 # Contributor: Benjamin van der Burgh <benjaminvdb@gmail.com>
 
 pkgname=octave-hg
-pkgver=4.1.0+21026+.5a340d8458d6+
+pkgver=4.1.0+21028+.4a7d9c335402+
 pkgrel=1
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
@@ -39,11 +39,6 @@ pkgver() {
   _appver=$(awk -F", " '/bugs/ {print $2}' configure.ac|tr -d [])
   echo ${_appver}$(hg identify -n).$(hg identify -i)
 }
-
-#prepare() {
-#  cd $srcdir
-#  patch -p0 < $srcdir/java-slackware.patch
-#}
 
 build() {
   cd $srcdir
