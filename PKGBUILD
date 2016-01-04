@@ -1,6 +1,6 @@
 # Maintainer: Mathias Bragagia <youremail@domain.com>
 pkgname=kana-p
-pkgver=0.3
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Lite desktop manager - use lightdm, awesome and compton - BETA"
 arch=('any')
@@ -34,7 +34,10 @@ depends=(
 	'util-linux'
 	'accountsservice'
 
-	'zsh'
+	'ttf-dejavu'
+	'ttf-bitstream-vera'
+	'otf-sauce-code-powerline-git'
+	'ohsnap'
 
 	'xorg-server'
 	'xorg-server-utils'
@@ -50,10 +53,9 @@ depends=(
 	'awesome'
 	'lain-git'
 	'eminent-git'
-	'ohsnap'
-	'otf-sauce-code-powerline-git'
 	'rofi'
 	'network-manager-applet'
+	'gnome-keyring'
 
 	'xdg-utils'
 	'xdg-user-dirs'
