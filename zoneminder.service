@@ -1,5 +1,3 @@
-# ZoneMinder systemd unit file for Arch Linux
-
 [Unit]
 Description=ZoneMinder CCTV recording and security system
 After=network.target mysqld.service httpd.service
@@ -11,7 +9,7 @@ Type=forking
 ExecStart=/usr/bin/zmpkg.pl start
 ExecReload=/usr/bin/zmpkg.pl restart
 ExecStop=/usr/bin/zmpkg.pl stop
-PIDFile="/srv/zoneminder/zm.pid"
+PIDFile=/run/zoneminder/zm.pid
 
 [Install]
 WantedBy=multi-user.target

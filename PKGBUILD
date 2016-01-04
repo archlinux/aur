@@ -1,5 +1,4 @@
 # Maintainer: Troy Will <troydwill at gmail dot com>
-# Contributor: Charles Spence IV         <cspence@unomaha.edu>
 # Contributor: /dev/rs0                  </dev/rs0@secretco.de.com>
 # Contributor: Jacek Burghardt           <jacek@hebe.us>
 # Contributor: Vojtech Aschenbrenner     <v@asch.cz>
@@ -7,11 +6,13 @@
 # Contributor: Ross melin                <rdmelin@gmail.com>
 # Contributor (Parabola): Márcio Silva   <coadde@lavabit.com>
 # Contributor (Parabola): André Silva    <emulatorman@lavabit.com>
+# Contributor: Charles Spence IV         <cspence@unomaha.edu>
+# Contributor: Joe Julian                <me@joejulian.name>     
 # Orginally based on a Debian Squeeze package
 _pkgname=zoneminder
 pkgname=zoneminder-git
-pkgver=1.28.100
-pkgrel=4
+pkgver=1.29.0
+pkgrel=1
 pkgdesc='Capture, analyse, record and monitor video security cameras'
 arch=( i686 x86_64 mips64el arm armv7h )
 backup=( etc/zm.conf )
@@ -46,14 +47,20 @@ source=(
 )
 # Because the source is not static, skip Git checksum:
 sha256sums=('SKIP'
-            'c2ca71ec57e53da040de61ff212ac063574e5ddfb4c333b70be060d5ec26c62c'
-            '7eb2f26246e240e23502da44854d5ed14485aa11bc448ad73e9b57fee13f00a3'
+            'ff7382b38ac07dadead0ad4d583e3dbcf8da4aaa06b76d048ee334f69f95db67'
+            '043d77a995553c533d62f48db4b719d29cf6c7074f215d866130e97be57ed646'
             'cc8af737c3c07750fc71317c81999376e4bbb39da883780164a8747b3d7c95a7'
            )
      
 pkgver() {
     cd "$_pkgname"
-    printf "%s.r%s.%s.%s" "$pkgver" "$(git rev-list --count HEAD)" "$pkgrel" "$(git rev-parse --short HEAD)"
+    # See https://wiki.archlinux.org/index.php/VCS_package_guidelines#The_pkgver.28.29_function
+    git describe --long --tags | sed 's/^v-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare () {
+    cd $srcdir/$_pkgname
+    git submodule update --init --recursive
 }
 
 build() {
@@ -70,8 +77,8 @@ build() {
           -DZM_CONTENTDIR=/var/cache/zoneminder \
           -DZM_LOGDIR=/var/log/zoneminder \
           -DZM_RUNDIR=/run/zoneminder \
-          -DZM_TMPDIR=/srv/zoneminder/tmp \
-          -DZM_SOCKDIR=/srv/zoneminder/socks .
+          -DZM_TMPDIR=/var/lib/zoneminder/temp \
+          -DZM_SOCKDIR=/var/lib/zoneminder/sock .
      
     make V=0
 }
@@ -90,13 +97,13 @@ package() {
     mkdir -pv           $pkgdir/var/{cache/zoneminder,log/zoneminder}
     chown -Rv http.http $pkgdir/var/{cache/zoneminder,log/zoneminder}
     
-    mkdir -v           $pkgdir/srv/zoneminder
-    chown -v http.http $pkgdir/srv/zoneminder
-    mkdir -v           $pkgdir/srv/zoneminder/socks
-    chown -v http.http $pkgdir/srv/zoneminder/socks
+    # corresponds to -DZM_SOCKDIR=/var/lib/zoneminder/sock
+    mkdir -pv          $pkgdir/var/lib/zoneminder/sock
+    chown -v http.http $pkgdir/var/lib/zoneminder/sock
     
-    mkdir -pv          $pkgdir/srv/zoneminder/tmp
-    chown -v http.http $pkgdir/srv/zoneminder/tmp
+    # corresponds to -DZM_TMPDIR=/var/lib/zoneminder/temp
+    mkdir -pv          $pkgdir/var/lib/zoneminder/temp
+    chown -v http.http $pkgdir/var/lib/zoneminder/temp
     
     chown -v  http.http $pkgdir/etc/zm.conf 
     chmod 0700          $pkgdir/etc/zm.conf
