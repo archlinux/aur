@@ -1,0 +1,3 @@
+#!/bin/sh
+
+python2 /usr/share/system-config-nfs/system-config-nfs.py
