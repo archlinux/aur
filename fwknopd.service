@@ -1,0 +1,10 @@
+[Unit]
+Description=Firewall Knock Operator Daemon
+After=network.target network-online.target iptables.service ip6tables.service
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/fwknopd
+
+[Install]
+WantedBy=multi-user.target
