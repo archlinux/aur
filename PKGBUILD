@@ -51,8 +51,8 @@ source=( "nginx.conf"
 sha256sums=('8d8e314da10411b29157066ea313fc080a145d2075df0c99a1d500ffc7e8b7d1'
             'adcf6507abb2d4edbc50bd92f498ba297927eed0460d71633df94f79637aa786'
             '225228970d779e1403ba4314e3cd8d0d7d16f8c6d48d7a22f8384db040eb0bdf'
-            'de66bb2b11c82533aa5cb5ccc27cbce736ab87c9f2c761e5237cda0b00068d73'
-            'dc89dacc930bf54f371d016219f3d404df9ad5a18a7d58f9144aeb5259206df5')
+            '794bd217affdfce1c6263d9199c3961f387a2df9d57dcb42876faaf41c1748d5'
+            '49b0e58fe5212bf058a416682fd958e586fa57987f6af3395c40b7a483a6d849')
 
 build() {
 	local _src_dir="${srcdir}/${_pkgname}-${pkgver}"
