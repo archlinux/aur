@@ -2,10 +2,10 @@
 
 pkgname=perl6-readline
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Perl 6 interface to GNU Readline"
 arch=('any')
-depends=('rakudo')
+depends=('rakudo' 'readline')
 checkdepends=('perl')
 makedepends=('alacryd' 'git')
 groups=('perl6')
