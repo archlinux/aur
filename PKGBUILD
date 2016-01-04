@@ -3,7 +3,7 @@
 _pkgname=juffed
 pkgname=${_pkgname}-qt5-git
 pkgver=0.10.77.g54b9cb4
-pkgrel=1
+pkgrel=2
 pkgdesc='A lightweight cross-platform text editor. Qt5 UI. Development version.'
 arch=('i686' 'x86_64')
 url='http://juffed.com/'
