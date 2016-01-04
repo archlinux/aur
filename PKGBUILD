@@ -9,7 +9,7 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=2.8.4
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
@@ -117,7 +117,7 @@ build() {
     --enable-nonfree \
     --enable-nvenc \
     --enable-openal \
-    --enable-opencl \
+#   --enable-opencl \
     --enable-opengl \
     --enable-openssl \
     --enable-postproc\
