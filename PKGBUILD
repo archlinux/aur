@@ -2,7 +2,7 @@
 
 _pkgname=truecraft
 pkgname=truecraft-git
-pkgver=20151130
+pkgver=20160103
 pkgrel=1
 pkgdesc="A completely clean-room implementation of Minecraft beta 1.7.3 (circa September 2011)."
 arch=('i686' 'x86_64')
@@ -48,9 +48,9 @@ EOF
     git reset --hard
     git submodule update --init --recursive || return 1
     nuget restore
-    xbuild
+    xbuild /p:Configuration=Release
 
-    cd 'TrueCraft.Launcher/bin/Debug/'
+    cd 'TrueCraft.Launcher/bin/Release/'
     rm -f truecraft MonoGame.Framework.MacOS.dll MonoGame.Framework.Windows.dll
 }
 
@@ -58,7 +58,7 @@ package() {
     cd ${srcdir}/${_pkgname}
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
-    cd 'TrueCraft.Launcher/bin/Debug/'
+    cd 'TrueCraft.Launcher/bin/Release/'
 
     find . -type f -exec install -Dm644 {} \
         "${pkgdir}/usr/share/${_pkgname}/{}" \;
