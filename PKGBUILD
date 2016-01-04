@@ -1,17 +1,17 @@
 # Maintainer: maz-1 <ohmygod19993 at gmail dot com>
 pkgname=n2n-git
-_gitname=n2n_v2_fork
-pkgver=20130823
+_gitname=n2n
+pkgver=20151130
 pkgrel=1
 pkgdesc="Peer-to-Peer VPN."
 arch=(i686 x86_64)
-url="https://github.com/meyerd/n2n_v2_fork"
+url="https://github.com/meyerd/n2n"
 license=('GPL3')
 depends=('openssl' 'net-tools') #iproute2?
 makedepends=('git')
 provides=n2n
 conflicts=n2n
-source=('git+https://github.com/meyerd/n2n_v2_fork.git'
+source=('git+https://github.com/meyerd/n2n.git'
         'edge.conf.example'
         'edge.sh'
         'n2n-edge@.service'
@@ -32,14 +32,23 @@ pkgver() {
   git log -1 --format="%cd" --date=short | sed 's|-||g'
 }
 
-build() {
-  cd "$srcdir/$_gitname"
-  make
+prepare() {
+  rm -rf "$srcdir/build"
+  mkdir -p "$srcdir/build"
+}
 
+build() {
+  cd "$srcdir/build"
+  cmake ../$_gitname/n2n_v2 \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DLIB_INSTALL_DIR=lib 
+    
+  make
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd "$srcdir/build"
   install -dm755 "$pkgdir/etc/n2n/edge"
   install -dm755 "$pkgdir/usr/share/n2n"
   install -Dm755 "$srcdir/edge.conf.example" "$pkgdir/etc/n2n/edge/edge.conf.example"
