@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Brother SANE drivers for DSmobile 620"
 
 arch=('x86_64')
-url="http://support.brother.com/g/b/downloadend.aspx?c=fr&lang=fr&prod=ds620_all&os=128&dlid=dlf100976_000&flang=4&type3=566"
+url="http://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=ds620_all"
 license=('GPL' 'custom:Brother')
 
 depends=('gcc-libs-multilib')
