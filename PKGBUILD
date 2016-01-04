@@ -117,7 +117,6 @@ build() {
     --enable-nonfree \
     --enable-nvenc \
     --enable-openal \
-#   --enable-opencl \
     --enable-opengl \
     --enable-openssl \
     --enable-postproc\
