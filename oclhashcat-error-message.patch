@@ -1,0 +1,339 @@
+diff --git a/src/ext_OpenCL.c b/src/ext_OpenCL.c
+index dae654e..3fcbc99 100644
+--- a/src/ext_OpenCL.c
++++ b/src/ext_OpenCL.c
+@@ -5,6 +5,25 @@
+ 
+ #include <ext_OpenCL.h>
+ 
++const char *
++val2cstr_cl (cl_int CL_err)
++{
++#define CLERR(a) case a: return #a
++    switch (CL_err) {
++    CLERR(CL_INVALID_PROGRAM);
++    CLERR(CL_INVALID_VALUE);
++    CLERR(CL_INVALID_DEVICE);
++    CLERR(CL_INVALID_BINARY);
++    CLERR(CL_INVALID_BUILD_OPTIONS);
++    CLERR(CL_INVALID_OPERATION);
++    CLERR(CL_COMPILER_NOT_AVAILABLE);
++    CLERR(CL_BUILD_PROGRAM_FAILURE);
++    CLERR(CL_OUT_OF_RESOURCES);
++    CLERR(CL_OUT_OF_HOST_MEMORY);
++    }
++    return "(unknown CL error)";
++}
++
+ void hc_clEnqueueNDRangeKernel (cl_command_queue command_queue, cl_kernel kernel, cl_uint work_dim, const size_t *global_work_offset, const size_t *global_work_size, const size_t *local_work_size, cl_uint num_events_in_wait_list, const cl_event *event_wait_list, cl_event *event)
+ {
+   cl_int CL_err = clEnqueueNDRangeKernel (command_queue, kernel, work_dim, global_work_offset, global_work_size, local_work_size, num_events_in_wait_list, event_wait_list, event);
+@@ -254,7 +273,7 @@ void hc_clBuildProgram (cl_program program, cl_uint num_devices, const cl_device
+ 
+   if (CL_err != CL_SUCCESS)
+   {
+-    log_error ("ERROR: %s %d\n", "clBuildProgram()", CL_err);
++    log_error ("ERROR: %s (%d)%s\n", "clBuildProgram()", CL_err, val2cstr_cl(CL_err));
+ 
+     // If we exit here we can't see the error message
+     // exit (-1);
+diff --git a/src/oclHashcat.c b/src/oclHashcat.c
+index cbf144c..861e818 100644
+--- a/src/oclHashcat.c
++++ b/src/oclHashcat.c
+@@ -6115,7 +6120,7 @@ int main (int argc, char **argv)
+           }
+           else
+           {
+-            log_error ("ERROR: %s: %s", induction_directory, strerror (errno));
++            log_error ("ERROR: (induction_directory) %s: %s", induction_directory, strerror (errno));
+ 
+             return (-1);
+           }
+@@ -6123,7 +6128,7 @@ int main (int argc, char **argv)
+ 
+         if (mkdir (induction_directory, 0700) == -1)
+         {
+-          log_error ("ERROR: %s: %s", induction_directory, strerror (errno));
++          log_error ("ERROR: (induction_directory) %s: %s", induction_directory, strerror (errno));
+ 
+           return (-1);
+         }
+@@ -6183,7 +6188,7 @@ int main (int argc, char **argv)
+     {
+       if (mkdir (outfile_check_directory, 0700) == -1)
+       {
+-        log_error ("ERROR: %s: %s", outfile_check_directory, strerror (errno));
++        log_error ("ERROR: (outfile_check_directory) %s: %s", outfile_check_directory, strerror (errno));
+ 
+         return (-1);
+       }
+@@ -10014,7 +10020,7 @@ int main (int argc, char **argv)
+ 
+       if (pot_fp == NULL)
+       {
+-        log_error ("ERROR: %s: %s", potfile, strerror (errno));
++        log_error ("ERROR: (potfile 1) %s: %s", potfile, strerror (errno));
+ 
+         return (-1);
+       }
+@@ -10023,7 +10029,7 @@ int main (int argc, char **argv)
+       {
+         if ((out_fp = fopen (outfile, "ab")) == NULL)
+         {
+-          log_error ("ERROR: %s: %s", outfile, strerror (errno));
++          log_error ("ERROR: (outfile) %s: %s", outfile, strerror (errno));
+ 
+           fclose (pot_fp);
+ 
+@@ -10043,7 +10049,7 @@ int main (int argc, char **argv)
+ 
+         if (pot_fp == NULL)
+         {
+-          log_error ("ERROR: %s: %s", potfile, strerror (errno));
++          log_error ("ERROR: (potfile 2) %s: %s", potfile, strerror (errno));
+ 
+           return (-1);
+         }
+@@ -10359,7 +10365,7 @@ int main (int argc, char **argv)
+ 
+           if (stat (data.hashfile, &st) == -1)
+           {
+-            log_error ("ERROR: %s: %s", data.hashfile, strerror (errno));
++            log_error ("ERROR: (data.hashfile) %s: %s", data.hashfile, strerror (errno));
+ 
+             return (-1);
+           }
+@@ -10383,7 +10389,7 @@ int main (int argc, char **argv)
+ 
+         if ((fp = fopen (hashfile, "rb")) == NULL)
+         {
+-          log_error ("ERROR: %s: %s", hashfile, strerror (errno));
++          log_error ("ERROR: (hashfile) %s: %s", hashfile, strerror (errno));
+ 
+           return (-1);
+         }
+@@ -10561,7 +10567,7 @@ int main (int argc, char **argv)
+ 
+             if (fp == NULL)
+             {
+-              log_error ("ERROR: %s: %s", hash_buf, strerror (errno));
++              log_error ("ERROR: (hash_buf) %s: %s", hash_buf, strerror (errno));
+ 
+               return (-1);
+             }
+@@ -10733,7 +10739,7 @@ int main (int argc, char **argv)
+ 
+         if ((fp = fopen (hashfile, "rb")) == NULL)
+         {
+-          log_error ("ERROR: %s: %s", hashfile, strerror (errno));
++          log_error ("ERROR: (hashfile) %s: %s", hashfile, strerror (errno));
+ 
+           return (-1);
+         }
+@@ -12121,7 +12127,7 @@ int main (int argc, char **argv)
+ 
+       if ((fp = fopen (rp_file, "rb")) == NULL)
+       {
+-        log_error ("ERROR: %s: %s", rp_file, strerror (errno));
++        log_error ("ERROR: (rp_file) %s: %s", rp_file, strerror (errno));
+ 
+         return (-1);
+       }
+@@ -13236,7 +13242,7 @@ int main (int argc, char **argv)
+ 
+         if (stat (source_file, &sst) == -1)
+         {
+-          log_error ("ERROR: %s: %s", source_file, strerror (errno));
++          log_error ("ERROR: (source_file 1) %s: %s", source_file, strerror (errno));
+ 
+           return -1;
+         }
+@@ -13367,7 +13373,7 @@ int main (int argc, char **argv)
+ 
+         if (stat (source_file, &sst) == -1)
+         {
+-          log_error ("ERROR: %s: %s", source_file, strerror (errno));
++          log_error ("ERROR: (source_file 2) %s: %s", source_file, strerror (errno));
+ 
+           return -1;
+         }
+@@ -13480,7 +13486,7 @@ int main (int argc, char **argv)
+ 
+         if (stat (source_file, &sst) == -1)
+         {
+-          log_error ("ERROR: %s: %s", source_file, strerror (errno));
++          log_error ("ERROR: (source_file 3) %s: %s", source_file, strerror (errno));
+ 
+           return -1;
+         }
+@@ -14240,7 +14246,7 @@ int main (int argc, char **argv)
+ 
+           if (stat (l0_filename, &l0_stat) == -1)
+           {
+-            log_error ("ERROR: %s: %s", l0_filename, strerror (errno));
++            log_error ("ERROR: (l0_filename) %s: %s", l0_filename, strerror (errno));
+ 
+             return (-1);
+           }
+@@ -14282,7 +14288,7 @@ int main (int argc, char **argv)
+ 
+                 if (stat (l1_filename, &l1_stat) == -1)
+                 {
+-                  log_error ("ERROR: %s: %s", l1_filename, strerror (errno));
++                  log_error ("ERROR: (l1_filename) %s: %s", l1_filename, strerror (errno));
+ 
+                   return (-1);
+                 }
+@@ -14330,14 +14336,14 @@ int main (int argc, char **argv)
+ 
+       if ((fp1 = fopen (dictfile1, "rb")) == NULL)
+       {
+-        log_error ("ERROR: %s: %s", dictfile1, strerror (errno));
++        log_error ("ERROR: (dictfile1) %s: %s", dictfile1, strerror (errno));
+ 
+         return (-1);
+       }
+ 
+       if (stat (dictfile1, &tmp_stat) == -1)
+       {
+-        log_error ("ERROR: %s: %s", dictfile1, strerror (errno));
++        log_error ("ERROR: (dictfile1) %s: %s", dictfile1, strerror (errno));
+ 
+         fclose (fp1);
+ 
+@@ -14355,7 +14361,7 @@ int main (int argc, char **argv)
+ 
+       if ((fp2 = fopen (dictfile2, "rb")) == NULL)
+       {
+-        log_error ("ERROR: %s: %s", dictfile2, strerror (errno));
++        log_error ("ERROR: (dictfile2) %s: %s", dictfile2, strerror (errno));
+ 
+         fclose (fp1);
+ 
+@@ -14364,7 +14370,7 @@ int main (int argc, char **argv)
+ 
+       if (stat (dictfile2, &tmp_stat) == -1)
+       {
+-        log_error ("ERROR: %s: %s", dictfile2, strerror (errno));
++        log_error ("ERROR: (dictfile2) %s: %s", dictfile2, strerror (errno));
+ 
+         fclose (fp1);
+         fclose (fp2);
+@@ -14491,7 +14497,7 @@ int main (int argc, char **argv)
+ 
+                 if (stat (mask, &file_stat) == -1)
+                 {
+-                  log_error ("ERROR: %s: %s", mask, strerror (errno));
++                  log_error ("ERROR: (mask) %s: %s", mask, strerror (errno));
+ 
+                   return (-1);
+                 }
+@@ -14505,7 +14511,7 @@ int main (int argc, char **argv)
+ 
+                 if ((mask_fp = fopen (mask, "r")) == NULL)
+                 {
+-                  log_error ("ERROR: %s: %s", mask, strerror (errno));
++                  log_error ("ERROR: (mask) %s: %s", mask, strerror (errno));
+ 
+                   return (-1);
+                 }
+@@ -14538,7 +14544,7 @@ int main (int argc, char **argv)
+               }
+               else
+               {
+-                log_error ("ERROR: %s: unsupported file-type", mask);
++                log_error ("ERROR: (mask) %s: unsupported file-type", mask);
+ 
+                 return (-1);
+               }
+@@ -14644,7 +14650,7 @@ int main (int argc, char **argv)
+ 
+           if ((mask_fp = fopen (mask, "r")) == NULL)
+           {
+-            log_error ("ERROR: %s: %s", mask, strerror (errno));
++            log_error ("ERROR: (mask) %s: %s", mask, strerror (errno));
+ 
+             return (-1);
+           }
+@@ -14741,7 +14747,7 @@ int main (int argc, char **argv)
+ 
+               if (stat (l1_filename, &l1_stat) == -1)
+               {
+-                log_error ("ERROR: %s: %s", l1_filename, strerror (errno));
++                log_error ("ERROR: (l1_filename 2) %s: %s", l1_filename, strerror (errno));
+ 
+                 return (-1);
+               }
+@@ -14821,7 +14827,7 @@ int main (int argc, char **argv)
+ 
+           if ((mask_fp = fopen (mask, "r")) == NULL)
+           {
+-            log_error ("ERROR: %s: %s", mask, strerror (errno));
++            log_error ("ERROR: (mask) %s: %s", mask, strerror (errno));
+ 
+             return (-1);
+           }
+@@ -14918,7 +14924,7 @@ int main (int argc, char **argv)
+ 
+               if (stat (l1_filename, &l1_stat) == -1)
+               {
+-                log_error ("ERROR: %s: %s", l1_filename, strerror (errno));
++                log_error ("ERROR: (l1_filename 3) %s: %s", l1_filename, strerror (errno));
+ 
+                 return (-1);
+               }
+@@ -15412,7 +15418,7 @@ int main (int argc, char **argv)
+ 
+             if (fd2 == NULL)
+             {
+-              log_error ("ERROR: %s: %s", dictfile, strerror (errno));
++              log_error ("ERROR: (dictfile) %s: %s", dictfile, strerror (errno));
+ 
+               return (-1);
+             }
+@@ -15446,7 +15452,7 @@ int main (int argc, char **argv)
+ 
+             if (fd2 == NULL)
+             {
+-              log_error ("ERROR: %s: %s", dictfile, strerror (errno));
++              log_error ("ERROR: (dictfile) %s: %s", dictfile, strerror (errno));
+ 
+               return (-1);
+             }
+@@ -15461,7 +15467,7 @@ int main (int argc, char **argv)
+ 
+             if (fd2 == NULL)
+             {
+-              log_error ("ERROR: %s: %s", dictfile2, strerror (errno));
++              log_error ("ERROR: (dictfile2) %s: %s", dictfile2, strerror (errno));
+ 
+               return (-1);
+             }
+@@ -15505,7 +15511,7 @@ int main (int argc, char **argv)
+ 
+           if (fd2 == NULL)
+           {
+-            log_error ("ERROR: %s: %s", dictfile, strerror (errno));
++            log_error ("ERROR: (dictfile) %s: %s", dictfile, strerror (errno));
+ 
+             return (-1);
+           }
+@@ -16438,7 +16444,7 @@ int main (int argc, char **argv)
+         }
+         else
+         {
+-          log_error ("ERROR: %s: %s", induction_directory, strerror (errno));
++          log_error ("ERROR: (induction_directory) %s: %s", induction_directory, strerror (errno));
+ 
+           return (-1);
+         }
+@@ -16464,7 +16470,7 @@ int main (int argc, char **argv)
+       }
+       else
+       {
+-        log_error ("ERROR: %s: %s", outfile_check_directory, strerror (errno));
++        log_error ("ERROR: (outfile_check_directory) %s: %s", outfile_check_directory, strerror (errno));
+ 
+         return (-1);
+       }

@@ -4,7 +4,7 @@ pkgname=oclhashcat-git
 _VER=
 #pkgname=oclhashcat
 #_VER=-2.01
-pkgver=r148.5f7c47b
+pkgver=r189.f6d8da5
 pkgrel=1
 pkgdesc='GPGPU-based password recovery utility'
 arch=( 'i686' 'x86_64' 'arm' )
@@ -29,9 +29,12 @@ provides=('oclhashcat')
 source=(
     "${pkgname}::git+https://github.com/hashcat/oclHashcat.git"
     #"${pkgname}${_VER}.tar.gz::https://github.com/hashcat/oclHashcat/archive/v${pkgver}.tar.gz"
+    "oclhashcat-bool.patch"
+    "oclhashcat-error-message.patch"
+    "oclhashcat-session.patch"
     )
-md5sums=('SKIP')
-sha1sums=('SKIP')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' )
+sha1sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' )
 
 pkgver_git() {
     cd "${srcdir}/${pkgname}${_VER}"
@@ -46,7 +49,15 @@ pkgver() {
 
 prepare() {
     #mv ${srcdir}/oclHashcat-* "${srcdir}/${pkgname}${_VER}"
-    sed -e 's|^typedef int bool;|//typedef int bool;|' -i ${srcdir}/${pkgname}${_VER}/include/shared.h
+
+    cd "${srcdir}/${pkgname}${_VER}"
+    patch -Np1 -i "${srcdir}/oclhashcat-bool.patch"
+    patch -Np1 -i "${srcdir}/oclhashcat-error-message.patch"
+    patch -Np1 -i "${srcdir}/oclhashcat-session.patch"
+    #patch -Np1 -i "${srcdir}/oclhashcat-all.patch"
+
+    #sed -e 's|^typedef int bool;|//typedef int bool;|' -i ${srcdir}/${pkgname}${_VER}/include/shared.h
+    sed -e 's|session_dir = arg_session_dir;|session_dir = arg_session_dir;shared_dir="/usr/share/oclHashcat/";|' -i ${srcdir}/${pkgname}${_VER}/src/oclHashcat.c
 }
 
 build()
@@ -62,20 +73,10 @@ build()
 package()
 {
     cd "${srcdir}/${pkgname}${_VER}"
+    install -d "${pkgdir}/usr/share/oclHashcat/"
 
-    install -d "${pkgdir}/usr/share/oclHashcat/charsets"
-    install -d "${pkgdir}/usr/share/oclHashcat/kernels"
-    install -d "${pkgdir}/usr/share/oclHashcat/masks"
-    install -d "${pkgdir}/usr/share/oclHashcat/rules"
-    install -d "${pkgdir}/usr/share/doc/oclHashcat/extra"
-
-    cp -ar charsets/* "${pkgdir}/usr/share/oclHashcat/charsets/"
-    cp -ar kernels/* "${pkgdir}/usr/share/oclHashcat/kernels/"
-    cp -ar masks/* "${pkgdir}/usr/share/oclHashcat/masks/"
-    cp -ar rules/* "${pkgdir}/usr/share/oclHashcat/rules/"
-    cp -a hashcat.hcstat "${pkgdir}/usr/share/oclHashcat/"
-    cp -ar docs/* "${pkgdir}/usr/share/doc/oclHashcat/"
-    cp -ar extra/* "${pkgdir}/usr/share/doc/oclHashcat/extra/"
+    cp -ar charsets OpenCL include masks rules hashcat.hcstat docs extra \
+        "${pkgdir}/usr/share/oclHashcat/"
     if [[ "$CARCH" = "x86_64" ]]; then
         install -Dm755 oclHashcat64.bin "${pkgdir}/usr/bin/oclhashcat"
     else
