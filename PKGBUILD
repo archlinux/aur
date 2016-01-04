@@ -3,7 +3,7 @@
 # Based on gtk3 trunk: https://projects.archlinux.org/svntogit/packages.git/tree/trunk?h=packages/gtk3
 
 pkgbase=gtk3-ubuntu-multilib
-pkgname=({lib32-,}gtk3-ubuntu)
+pkgname=({lib32-,}gtk3-ubuntu-multilib)
 pkgver=3.18.6
 _debrel=1ubuntu1
 pkgrel=2
@@ -75,7 +75,7 @@ build() {
   popd
 }
 
-package_gtk3-ubuntu() {
+package_gtk3-ubuntu-multilib() {
   depends+=(atk cairo glib2 pango colord at-spi2-atk wayland 
 lib{cups,x{cursor,inerama,randr,i,composite,damage,kbcommon,11,ext}})
   makedepends=(gobject-introspection python2)
@@ -87,13 +87,13 @@ lib{cups,x{cursor,inerama,randr,i,composite,damage,kbcommon,11,ext}})
   install -Dm644 ../../settings.ini "$pkgdir/usr/share/gtk-3.0/settings.ini"
 }
 
-package_lib32-gtk3-ubuntu() {
+package_lib32-gtk3-ubuntu-multilib() {
   pkgdesc+=" (32bit)"
   
 depends+=(lib32-{glib2,atk,cairo,pango,colord,at-spi2-atk,wayland,lib{cups,xcursor,xinerama,xrandr,xi,xcomposite,xdamage,xkbcommon,x11,xext}})
   makedepends=(lib32-{gobject-introspection,python2} 'gcc-multilib')
   provides=(lib32-gtk{3{,-ubuntu},-update-icon-cache}=${pkgver})
-  conflicts=('lib32-gtk3')
+  conflicts=('lib32-gtk{3{,-ubuntu},-update-icon-cache}')
   install=lib32-gtk3-ubuntu.install
   cd "gtk+-$pkgver/build-i686"
   make DESTDIR="$pkgdir" install
