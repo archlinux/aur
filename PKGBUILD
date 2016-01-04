@@ -13,6 +13,6 @@ depends=('python2')
 
 package() {
 	rm $srcdir/usr/bin/system-config-nfs
-	mv system-config-nfs $srcdir/usr/bin/
+	cp system-config-nfs $srcdir/usr/bin/
 	cp -r $srcdir/* ${pkgdir}
 }
