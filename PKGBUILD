@@ -3,19 +3,19 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 
 pkgname=lib32-sdl2_mixer
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="A simple multi-channel audio mixer (Version 2, 32 bit)"
 arch=('x86_64')
-url="http://www.libsdl.org/projects/SDL_mixer"
+url="https://www.libsdl.org/projects/SDL_mixer/"
 license=('MIT')
-depends=("${pkgname#*-}=$pkgver" 'lib32-sdl2' 'lib32-libvorbis' 'lib32-libmodplug'
+depends=("${pkgname#*-}>=$pkgver" 'lib32-sdl2' 'lib32-libvorbis' 'lib32-libmodplug'
          'lib32-smpeg2' 'lib32-flac')
 makedepends=('lib32-fluidsynth' 'gcc-multilib')
 optdepends=('lib32-fluidsynth: MIDI software synth, replaces built-in timidity')
 conflicts=('lib32-sdl2-mixer') # to replace broken package with wrong name
 source=("$url/release/SDL2_mixer-$pkgver.tar.gz")
-sha256sums=('a8ce0e161793791adeff258ca6214267fdd41b3c073d2581cd5265c8646f725b')
+sha256sums=('5a24f62a610249d744cbd8d28ee399d8905db7222bf3bdbc8a8b4a76e597695f')
 
 prepare() {
   cd SDL2_mixer-$pkgver
