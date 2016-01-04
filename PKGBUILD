@@ -4,8 +4,8 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname='python-yowsup-git'
-pkgver=2.4.r0.gead1923
-pkgrel=2
+pkgver=2.4.48.r0.ga59ac41
+pkgrel=1
 pkgdesc="The open source cross platform Whatsapp library powering Wazapp"
 url="https://github.com/tgalal/yowsup"
 arch=('any')
