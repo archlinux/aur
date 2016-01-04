@@ -47,13 +47,14 @@ XDM_XFREQ_NOTIFY_ARGS="-geometry $NOTIFYGEOMETRY -timeout $NOTIFYTIMEOUT -button
 XDM_XFREQ_SCREENSHOT_PATH=scrot
 XDM_XFREQ_SCREENSHOT_ARGS="-d 6 /tmp/%Y%m%d-%H%M%S-\$wx\$h.png"
 
-# Screen saver
+# Screen saver (Comment the following variables to disable xscreensaver & enable xset)
 XDM_XFREQ_SCREENSAVER_PATH=xscreensaver
 XDM_XFREQ_SCREENSAVER_ARGS="-no-splash -no-capture-stderr"
 XDM_XFREQ_SCREENSAVER_CMD=xscreensaver-command
 XDM_XFREQ_SCREENSAVER_LOCK="-lock"
+XDM_XFREQ_SCREENSAVER_MODE="-demo"
 XDM_XFREQ_SCREENSAVER_PREF="-prefs"
-# Timeout values
+# xset timeout values
 XDM_XFREQ_SCREENSAVER[0]=300
 XDM_XFREQ_SCREENSAVER[1]=420
 XDM_XFREQ_SCREENSAVER[2]=600

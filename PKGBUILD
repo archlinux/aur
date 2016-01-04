@@ -2,7 +2,7 @@
 # Contributor: CyrIng <xfreq[at]cyring[dot]fr>
 pkgname=xdm-xfreq
 pkgver=0.18
-pkgrel=1
+pkgrel=2
 pkgdesc="A customized XDM for XFreq"
 arch=(any)
 license=('GPL')
