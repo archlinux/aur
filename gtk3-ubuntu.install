@@ -1,0 +1,27 @@
+_update() {
+  glib-compile-schemas /usr/share/glib-2.0/schemas
+  gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+}
+
+post_install() {
+  gtk-query-immodules-3.0 --update-cache
+  _update
+  echo "To use global menus outside of Unity, put"
+  echo "the following in ~/.config/gtk-3.0/settings.ini:"
+  echo
+  echo "********************************"
+  echo "[Settings]"
+  echo "gtk-shell-shows-menubar = 1"
+  echo "********************************"
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  rm -f /usr/lib/gtk-3.0/3.0.0/immodules.cache
+}
+post_remove() {
+  _update
+}
