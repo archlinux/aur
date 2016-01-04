@@ -4,7 +4,7 @@
 pkgname=php-cs-fixer
 _pkgname=PHP-CS-Fixer
 pkgver=1.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Analyzes some PHP source code and tries to fix coding standards issues (PSR-1 and PSR-2 compatible)."
 url="http://cs.sensiolabs.org/"
 license="MIT"
