@@ -14,7 +14,7 @@ depends=("${pkgname#*-}>=$pkgver" 'lib32-sdl2' 'lib32-libvorbis' 'lib32-libmodpl
 makedepends=('lib32-fluidsynth' 'gcc-multilib')
 optdepends=('lib32-fluidsynth: MIDI software synth, replaces built-in timidity')
 conflicts=('lib32-sdl2-mixer') # to replace broken package with wrong name
-source=("$url/release/SDL2_mixer-$pkgver.tar.gz")
+source=("${url}release/SDL2_mixer-$pkgver.tar.gz")
 sha256sums=('5a24f62a610249d744cbd8d28ee399d8905db7222bf3bdbc8a8b4a76e597695f')
 
 prepare() {
