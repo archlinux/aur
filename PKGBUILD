@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=vis-git
-pkgver=0.1.r0.g890dc58
+pkgver=0.1.r1.gc1bf005
 pkgrel=1
 pkgdesc='suckless vim like editor - git checkout'
 arch=('i686' 'x86_64')
@@ -33,7 +33,7 @@ pkgver() {
 prepare() {
 	cd vis/
 
-	sed -i '/^\(C\|LD\)FLAGS_LUA =/s/lua5.1/lua/' config.mk
+	sed -i '/^\s\(C\|LD\)FLAGS_LUA =/s/lua5.2/lua/g' config.mk
 }
 
 build() {
