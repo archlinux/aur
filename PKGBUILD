@@ -1,17 +1,24 @@
-# Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
+# Contributor: Samuel Tardieu <sam@rfc1149.net>
 
 pkgname=tnt
-pkgver=126
+pkgver=3.0.12
 pkgrel=1
+epoch=1
 pkgdesc="The Template Numerical Toolkit is an interface for scientific computing in C++."
-arch=('i686' 'x86_64')
+arch=(any)
 url="http://math.nist.gov/tnt"
-license=('unknown')
-source=(http://math.nist.gov/${pkgname}/${pkgname}${pkgver}.zip)
-md5sums=('e87a913a44c0fe3694914b0f42c61fb1')
+license=('custom')
+source=(http://math.nist.gov/${pkgname}/${pkgname}_${pkgver/./_}.zip license.txt)
+md5sums=('f96c7500523cf780a802820086c10e70'
+         '4c3fa4245a5cf2cb3d0c98d82dd78d04')
 
-build() {
+package() {
 	cd ${srcdir}
-	install -d ${pkgdir}/usr/include/${pkgname}
+    pwd
+    install -d ${pkgdir}/usr/share/licenses/${pkgname}/
+    install -m 644 license.txt ${pkgdir}/usr/share/licenses/${pkgname}/
+    install -d ${pkgdir}/usr/include/${pkgname}
+    cd tnt
 	install -m644 *.h ${pkgdir}/usr/include/${pkgname}	
 }
+
