@@ -1,7 +1,7 @@
 # Maintainer: kang <kang@insecure.ws>
 pkgname=mig-git
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="MIG is Mozilla InvestiGator - a tool for remote system investigation at scale."
 arch=('x86_64')
 url="https://mig.ninja"
