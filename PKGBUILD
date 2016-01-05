@@ -1,4 +1,4 @@
-# Maintainer: Daniel Müllner <daniel@danifold.net>
+# Maintainer: Tiago de Paula Peixoto <tiago@skewed.de>
 
 # Remove the --enable-openmp flag below if you do not want parallelization.
 
