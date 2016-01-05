@@ -1,11 +1,12 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# JVM build disabled 2016-01-04 'gen/jvm/stage1/NQPHLL.jar' failed
 
 pkgname=nqp-git
 pkgver=20160104
-pkgrel=1
-pkgdesc="Lightweight Perl 6-like environment for virtual machines, with MoarVM and JVM support"
+pkgrel=2
+pkgdesc="Lightweight Perl 6-like environment for virtual machines, with MoarVM support"
 arch=('i686' 'x86_64')
-depends=('java-runtime' 'moarvm')
+depends=('moarvm')
 makedepends=('git' 'make')
 groups=('perl6')
 url="https://github.com/perl6/nqp"
@@ -24,7 +25,7 @@ build() {
   cd ${pkgname%-git}
 
   msg2 'Building...'
-  perl Configure.pl --prefix=/usr --backends=moar,jvm
+  perl Configure.pl --prefix=/usr --backends=moar
   make
 }
 
