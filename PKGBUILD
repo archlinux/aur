@@ -6,8 +6,8 @@
 # Modified by: Martin Ortbauer <mortbauer@gmail.com>
      
 pkgname=med
-pkgver=3.0.8
-pkgrel=4
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="MED stands for Modelisation et Echanges de Donnees, i.e. Data Modelization and Exchanges - MED is code-aster exchange module linked to hdf5"
 url="http://www.code-aster.org/outils/med/"
 license=('LGPL')
@@ -20,7 +20,7 @@ replaces=('med_fichier')
 backup=()
 arch=('i686' 'x86_64')
 source=("http://files.salome-platform.org/Salome/other/${pkgname}-${pkgver}.tar.gz")
-md5sums=('8adb41767474d262abca1ce031d08f47')
+md5sums=('a1e1eb068f20634f5ea797914241eb51')
  
 build() {
   if [ "$CARCH" = "x86_64" ]; then
@@ -38,7 +38,7 @@ build() {
   
   export PYTHON="$(which python2)"
 
-  cd ${srcdir}/${pkgname}-${pkgver} || return 1
+  cd ${srcdir}/${pkgname}-${pkgver}_SRC || return 1
  
   # patch H5public_extract.h.in
   sed -i -e '/^#typedef/ s/#/\/\//' ./include/H5public_extract.h.in
@@ -48,7 +48,7 @@ build() {
 }
  
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver} || return 1
+  cd ${srcdir}/${pkgname}-${pkgver}_SRC || return 1
  
   make DESTDIR=${pkgdir} install || return 1
   # now move the testprograms to share, we don't want all the stuff in the bindir
