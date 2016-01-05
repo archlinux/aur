@@ -4,8 +4,8 @@
 # Contributor: tty0 <vt.tty0[d0t]gmail.com>
 
 pkgname=teensyduino
-pkgver=1.27beta2
-_pkgver=1.27-beta2
+pkgver=1.27
+_pkgver=1.27
 _arduino=1.6.7
 pkgrel=1
 pkgdesc="Arduino SDK with Teensyduino"
@@ -38,9 +38,9 @@ sha256sums=('ee29f80cc63cf3a21e844372721686372c2ca4b36e35430350d72e0b788a0ae2'
             'fa7eff0e0f1e8230941c3b016c40617887f52f1991db655a498309824291ca54'
             '25980feb5927b8bea8b8e999f5002e110825b1bc3d546fa902c2db5c824d33f3')
 sha256sums_i686=('f210501a25285c85051dbaa0bf1b4381bab25c24ba0c5d60fa9b7e83404d576e'
-                 'ca57c732ab56a652734a037f0729ead6febf8353b91b366b73fa68fb5d6d5d0f')
+                 '17a8457e9cfcc8019b762afeff440c0311bf9e613c22aae0489517c01ae8001e')
 sha256sums_x86_64=('d8667da7299807ae76c4957d7c9501c437b768c88af710744d3759e95bf658d7'
-                   '1e05126b318c1019d56aca0fe82e2ddf4a5e476f31829f7993d3d62337aef979')
+                   '4304abe4802ecfefea648a9faa1dd420f0064ec6f2357aea0858bc1ce8e61197')
 
 if [ "$CARCH" == 'x86_64' ]; then
   _bits=64
