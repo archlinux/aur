@@ -1,6 +1,6 @@
 post_install() {
     /usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas/
-    instructions_install
+    instructions
 }
 
 post_upgrade() {
@@ -14,8 +14,4 @@ post_remove() {
 
 instructions() {
     echo "Restart GNOME Shell ([Alt]+[F2], r)."
-}
-
-instructions_install() {
-    echo "Dconf blablabla"
 }
