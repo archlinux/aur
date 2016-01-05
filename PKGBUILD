@@ -1,7 +1,7 @@
 # Maintainer: kang <kang@insecure.ws>
 pkgname=mig-git
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="MIG is Mozilla InvestiGator - a tool for remote system investigation at scale."
 arch=('x86_64')
 url="https://mig.ninja"
@@ -48,9 +48,9 @@ package() {
   install -D -m0755 bin/linux/amd64/mig-action-generator $_d/bin/mig-action-generator
   install -D -m0755 bin/linux/amd64/runner-compliance $_d/bin/runner-compliance
   install -D -m0755 bin/linux/amd64/mig-action-verifier $_d/bin/mig-action-verifier
-  install -D -m0755 bin/linux/amd64/mig-worker-agent-intel $_d/sbin/mig-worker-agent-intel
-  install -D -m0755 bin/linux/amd64/mig-scheduler $_d/sbin/mig-scheduler
-  install -D -m0755 bin/linux/amd64/mig-agent-latest $_d/sbin/mig-agent
+  install -D -m0755 bin/linux/amd64/mig-worker-agent-intel $_d/bin/mig-worker-agent-intel
+  install -D -m0755 bin/linux/amd64/mig-scheduler $_d/bin/mig-scheduler
+  install -D -m0755 bin/linux/amd64/mig-agent-latest $_d/bin/mig-agent
 
   mkdir -p $_d/share/doc/$_gitname/
   cp -r doc/*.rst $_d/share/doc/$_gitname/
