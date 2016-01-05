@@ -3,12 +3,12 @@
 pkgname=lib32-libcurl-compat
 _pkgname=curl
 pkgver=7.46.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An URL retrieval library (32bit version)"
 arch=('x86_64')
 url="http://curl.haxx.se"
 license=('MIT')
-depends=('ca-certificates' 'lib32-gnutls' 'lib32-openssl' 'lib32-zlib')
+depends=('ca-certificates' 'lib32-rtmpdump' 'lib32-libssh2' 'lib32-krb5' 'lib32-libidn' 'lib32-gnutls' 'lib32-openssl')
 makedepends=('gcc-multilib')
 provides=('lib32-curl' 'lib32-libcurl' 'lib32-libcurl-gnutls' 'lib32-curl-gnutls')
 replaces=('lib32-curl' 'lib32-libcurl' 'lib32-libcurl-gnutls' 'lib32-curl-gnutls')
@@ -28,9 +28,9 @@ build() {
       --disable-manual \
       --disable-versioned-symbols \
       --enable-threaded-resolver \
-      --without-gssapi \
-      --without-libidn \
-      --without-libssh2 \
+      --with-gssapi \
+      --with-libidn \
+      --with-libssh2 \
       --with-random=/dev/urandom \
       --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt"
 
