@@ -1,14 +1,22 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
-pkgbase=flacon-git
-pkgname=('flacon-qt4-git' 'flacon-qt5-git')
-pkgver=v1.0.1.3.ga605b17
+pkgname=flacon-git
+pkgver=v1.2.0.36.g09d0af4
 pkgrel=1
 pkgdesc="Extracts individual tracks from one big audio file containing the entire album of music and saves them as separate audio files. (Git Version)"
 arch=('x86_64' 'i686')
 url="http://flacon.github.io/"
 license=('LGPL2.1')
-makedepends=('cmake' 'git' 'qt4' 'qt5-tools' 'qt5-base' 'uchardet' 'shntool')
+depends=('qt5-base'
+         'uchardet'
+         'shntool'
+         'hicolor-icon-theme'
+         'desktop-file-utils'
+         )
+makedepends=('git'
+             'cmake'
+             'qt5-tools'
+             )
 optdepends=('faac: For AAC support'
             'flac: For FLAC support'
             'lame: For MP3 support'
@@ -17,9 +25,13 @@ optdepends=('faac: For AAC support'
             'vorbis-tools: For OGG support'
             'ttaenc: For TrueAudio support'
             'vorbisgain: For OGG Replay Gain support'
-            'wavpack: For WavPack support')
+            'wavpack: For WavPack support'
+            )
+conflicts=('flacon')
+provides=('flacon')
 source=('git+https://github.com/flacon/flacon.git')
 sha1sums=('SKIP')
+install=flacon-git.install
 
 pkgver() {
   cd flacon
@@ -27,19 +39,11 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build-qt{4,5}
+  mkdir -p build
 }
 
 build() {
-  msg2 'Build with Qt4'
-  cd build-qt4
-  cmake ../flacon \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DUSE_QT4=ON
-  make
-  msg2 'Build with Qt5'
-  cd ../build-qt5
+  cd build
   cmake ../flacon \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -47,22 +51,6 @@ build() {
   make
 }
 
-package_flacon-qt4-git() {
-  pkgdesc="Extracts individual tracks from one big audio file containing the entire album of music and saves them as separate audio files. Qt4 build (Git Version)"
-  depends=('qt4' 'uchardet' 'shntool')
-  conflicts=('flacon' 'flacon-qt5')
-  provides=('flacon' 'flacon-qt4')
-  install=flacon-git.install
-
-  make -C build-qt4 DESTDIR="${pkgdir}" install
-}
-
-package_flacon-qt5-git() {
-  pkgdesc="Extracts individual tracks from one big audio file containing the entire album of music and saves them as separate audio files. Qt5 build (Git Version)"
-  depends=('qt5-base' 'uchardet' 'shntool' 'hicolor-icon-theme' 'desktop-file-utils')
-  conflicts=('flacon' 'flacon-qt4')
-  provides=('flacon' 'flacon-qt5')
-  install=flacon-git.install
-
-  make -C build-qt5 DESTDIR="${pkgdir}" install
+package() {
+  make -C build DESTDIR="${pkgdir}" install
 }
