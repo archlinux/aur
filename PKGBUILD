@@ -1,16 +1,46 @@
 
-pkgbase=oyranos-git
-pkgname=('oyranos-qt4-git' 'oyranos-qt5-git')
-pkgver=0.9.5.675.g57e027a
+pkgname=oyranos-git
+pkgver=0.9.5.681.gf48ba00
 pkgrel=1
 pkgdesc="A Colour Management System (CMS) on operating system level. (GIT version)"
 arch=('i686' 'x86_64')
 url='http://www.oyranos.org/kolormanager'
 license=('BSD')
-makedepends=('qt4' 'qt5-base' 'git' 'cmake' 'exiv2' 'elektra-git' 'libxcm-git' 'libraw' 'fltk' 'xcalib' 'cairo' 'libcups' 'libxrandr')
+
+depends=('libxcm-git'
+         'libxrandr'
+         'elektra-git'
+         'fltk'
+         'cairo'
+         )
+makedepends+=('git'
+             'cmake'
+             'qt5-tools'
+             'doxygen'
+             'graphviz'
+             'sane'
+             'libraw'
+             'exiv2'
+             'libcups'
+             'lcms'
+             'lcms2'
+             'qt5-x11extras'
+             )
+optdepends=('xcalib'
+            'openicc'
+            'sane: sane module'
+            'libraw: lraw module'
+            'lcms: lcms module'
+            'lcms2: lcms2 module'
+            'exiv2: lraw & oyRE module'
+            'libcups: CUPS module'
+            'qt5-x11extras: qcmsevents'
+            )
 conflicts=('oyranos')
+provides=('oyranos')
 source=('git+https://github.com/oyranos-cms/oyranos.git')
 sha1sums=('SKIP')
+install=oyranos-git.install
 
 pkgver() {
   cd oyranos
@@ -18,18 +48,11 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build-qt{4,5}
+  mkdir -p build
 }
 
 build() {
-  cd "${srcdir}/build-qt4"
-  cmake ../oyranos \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DUSE_Qt4=ON
-  make
-
-  cd "${srcdir}/build-qt5"
+  cd build
   cmake ../oyranos \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
@@ -37,30 +60,8 @@ build() {
   make
 }
 
-package_oyranos-qt4-git() {
-  pkgdesc="A Colour Management System (CMS) on operating system level. build with Qt4 tools (GIT version)"
-  conflicts=('oyranos-qt5-git')
-  provides=('oyranos' 'oyranos-qt4' 'oyranos-git')
-  depends=('qt4' 'exiv2' 'elektra-git' 'libxcm-git' 'libraw' 'fltk' 'xcalib' 'cairo' 'libcups')
-  install=oyranos-git.install
-
-  make -C build-qt4 DESTDIR="${pkgdir}" install
-  install -Dm644 oyranos/COPYING.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  # Fix references to SRCDIR
-  for i in $(find ${pkgdir}/usr/share/doc -type f); do sed 's|&#45;git|-git|g' -i ${i} ;done
-  for i in $(find ${pkgdir}/usr/share/doc -type f); do sed "s|${srcdir}|/usr/share/doc|g" -i ${i} ;done
-  sed -e "s|${srcdir}/build|\"\"|g" -e "s|${srcdir}/oyranos|\"\"|g" -i "${pkgdir}/usr/bin/oyranos-config"
-}
-
-package_oyranos-qt5-git() {
-  pkgdesc="A Colour Management System (CMS) on operating system level. build with Qt5 tools (GIT version)"
-  conflicts=('oyranos-qt4-git')
-  provides=('oyranos' 'oyranos-qt5' 'oyranos-git')
-  depends=('qt5-x11extras' 'exiv2' 'elektra-git' 'libxcm-git' 'libraw' 'fltk' 'xcalib' 'cairo' 'libcups' 'libxrandr')
-  install=oyranos-git.install
-
-  make -C build-qt5 DESTDIR="${pkgdir}" install
+package() {
+  make -C build DESTDIR="${pkgdir}" install
   install -Dm644 oyranos/COPYING.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # Fix references to SRCDIR
