@@ -1,13 +1,12 @@
 # Maintainer: Nicolas F. <aur@fratti.ch>
 pkgname=("zopfli-git" "libzopfli-git" "zopflipng-git" "libzopflipng-git")
-pkgver=1.0.0.r40.g89cf773
-pkgrel=1
+pkgver=1.0.0.r47.g720b20e
+pkgrel=2
 arch=('i686' 'x86_64' 'ARM')
 url="https://github.com/google/zopfli"
 license=('Apache')
 makedepends=('git')
 depends=('glibc')
-provides=('zopflipng' 'zopfli' 'libzopfli' 'libzopflipng')
 source=('git+https://github.com/google/zopfli.git')
 md5sums=('SKIP')
 
@@ -30,6 +29,7 @@ build() {
 package_zopflipng-git() {
     pkgdesc="PNG optimisation tool using Google's zopfli library, git version."
     depends=('gcc-libs')
+    provides=('zopflipng')
     cd "$srcdir/zopfli"
     install -Dm755 zopflipng "${pkgdir}/usr/bin/zopflipng"
 }
@@ -37,6 +37,7 @@ package_zopflipng-git() {
 package_libzopflipng-git() {
     pkgdesc="PNG optimisation library using Google's zopfli library, git version."
     depends=('gcc-libs')
+    provides=('libzopflipng')
     cd "$srcdir/zopfli"
     _libname=$(find * -type f -name "libzopflipng.so.*" -print)
     install -D $_libname "${pkgdir}/usr/lib/$_libname"
@@ -47,6 +48,7 @@ package_libzopflipng-git() {
 
 package_libzopfli-git() {
     pkgdesc="Compression library by Google, git version."
+    provides=('libzopfli')
     cd "$srcdir/zopfli"
     _libname=$(find * -type f -name "libzopfli.so.*" -print)
     install -D $_libname "${pkgdir}/usr/lib/$_libname"
@@ -57,6 +59,7 @@ package_libzopfli-git() {
 
 package_zopfli-git() {
     pkgdesc="Compression utility by Google, git version."
+    provides=('zopfli')
     cd "$srcdir/zopfli"
     install -Dm755 zopfli "${pkgdir}/usr/bin/zopfli"
 }
