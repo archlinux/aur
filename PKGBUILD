@@ -2,8 +2,8 @@
 # vim: set ts=2 sw=2 et ft=sh:
 
 pkgname=qutebrowser
-pkgver=0.4.1
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit"
 arch=(any)
 url="http://www.qutebrowser.org/"
@@ -19,11 +19,12 @@ optdepends=(
   'gst-plugins-good: media playback'
   'gst-plugins-bad: media playback'
   'gst-plugins-ugly: media playback'
+  'pdfjs: Displaying PDF in-browser'
 )
 options=(!emptydirs)
 source=("http://qutebrowser.org/releases/v$pkgver/qutebrowser-${pkgver}.tar.gz"
         'qutebrowser.install')
-sha256sums=('6e1022e4b349fd09bd8efa643d2411badb8305fee911d266db5dce66290a3ed7'
+sha256sums=('470ae0b4e3be80f3c67cd996a1458c8f2fa1429df6f16eb29ee961f324e09e99'
             '4a88871e91f894890ce96feb620e4174c686db12e4fa91b5a7306454dc96bf67')
 install=qutebrowser.install
 
