@@ -22,15 +22,10 @@ sha1sums=('2bbaaaf840ee6944c93530d89786630ac09b2439')
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
 	./autogen.sh
-	# Configuring without cups, as this will enable the experimentell CUPS backend
-	# which is not functional yet.
-	# See http://de.tabos.org/forum/viewtopic.php?f=6&t=3708&sid=9c3a58c9f53ce0aac0cd5d9ad8c8e351&p=5673#p5673
-	#
 	# To build without evolution: --with-ebook=no
 	# To build with kwallet support: --with-kwallet=yes
 	./configure --prefix=/usr --disable-werror \
 		--with-secret=yes \
-		--with-cups=no \
 		--with-appindicator3=no \
 		--with-portaudio=no
 	make
