@@ -4,7 +4,7 @@
 pkgname=gnash
 pkgdesc="A GNU Flash movie player"
 pkgver=0.8.12
-pkgrel=2
+pkgrel=3
 arch=(i686 x86_64)
 url="http://www.gnu.org/software/gnash/"
 license=(GPL3)
@@ -28,6 +28,7 @@ build() {
   cd gnash
   sed -i '27371s/--cxxflags/--cflags/' configure
   sed -i '27371s%"$% -I/usr/include/jemalloc"%' configure
+  sed -i '36s/.*/ bool adjacent_tokens_only() const { return false; }/' libbase/accumulator.h
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
