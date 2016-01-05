@@ -2,7 +2,7 @@
 
 pkgname=perl6-rpi
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An interface to the Raspberry Pi's GPIO and other peripherals"
 arch=('any')
 depends=('perl6' 'perl6-posix')
@@ -42,6 +42,9 @@ package() {
   for _pc in "${_precomp[@]}"; do
     [[ -f "$pkgdir/$_pc" ]] && rm -f "$pkgdir/$_pc"
   done
+
+  msg2 'Removing test bin examples...'
+  rm -rf "$pkgdir/usr/share/perl6/vendor/bin"
 
   msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type f -name "*.lock" -exec rm '{}' \;
