@@ -176,7 +176,7 @@ package_elektra-glib-git() {
 package_java-elektra-git() {
   pkgdesc="Java bindings for Elektra. (GIT version)"
   depends=('elektra-git'
-           'java-runtime=8'
+           'java-environment=8'
            'jna'
            )
   provides=('java-elektra')
