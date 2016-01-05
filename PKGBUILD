@@ -3,7 +3,7 @@
 
 pkgname=apache-spark
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="fast and general engine for large-scale data processing"
 arch=('any')
 url="http://spark.apache.org"
@@ -33,9 +33,9 @@ build() {
 
         export MAVEN_OPTS="-Xmx2g -XX:MaxPermSize=512M -XX:ReservedCodeCacheSize=512m"
 
-        dev/change-version-to-2.11.sh
+        dev/change-scala-version.sh 2.11
 
-        JAVA_HOME=/usr/lib/jvm/default-runtime ./make-distribution.sh -Dscala-2.11 -DskipTests -Dmaven.repo.local=/tmp
+        JAVA_HOME=/usr/lib/jvm/default-runtime ./make-distribution.sh -Pscala-2.11  -DskipTests -Dmaven.repo.local=/tmp -DautoVersionSubmodules=true -U -Djline.version=2.13 -Djline.groupid=jline
 }
 
 package() {
