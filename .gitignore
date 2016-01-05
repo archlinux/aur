@@ -6,7 +6,8 @@
 !*.install
 !*.service
 !*.sh
-!*.conf
 !.gitignore
 !copy-agent.png
+!copy-agent.svg
 !TERMS
+
