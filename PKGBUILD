@@ -1,13 +1,13 @@
-# Maintainer: nandub <dev+arch@nandub.info>
+# Maintainer: nandub <nandub+arch@nandub.info>
 pkgname=primesieve
-pkgver=5.5.0
+pkgver=5.6.0
 pkgrel=1
 pkgdesc="C++ library that generates prime numbers and prime k-tuplets"
 url="http://primesieve.org/"
 license=("BSD")
 depends=(gcc-libs)
 source=(http://dl.bintray.com/kimwalisch/primesieve/$pkgname-$pkgver.tar.gz)
-sha1sums=('76b15755c38002d9f60161159cd7c5feb37931e1')
+sha1sums=('86d0fb98c7e1d6bc47e1923138de3d0c0eb4904c')
 arch=('i686' 'x86_64')
 
 build() {
