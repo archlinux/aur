@@ -1,7 +1,7 @@
 # Maintainer: Auguste Pop <auguste [at] gmail [dot] com>
 
 pkgname=crafty
-pkgver=24.1
+pkgver=25.0
 pkgrel=1
 pkgdesc="A computer chess program"
 arch=('i686' 'x86_64')
@@ -11,14 +11,14 @@ source=(http://www.cis.uab.edu/hyatt/crafty/source/$pkgname-$pkgver.zip
         http://www.cis.uab.edu/hyatt/crafty/book/book.bin
         http://www.cis.uab.edu/hyatt/crafty/book/books.bin
         copyright)
-md5sums=('6a3d5498aa867e97221c7458251ef87b'
+md5sums=('df72f7497795aa6626d2ab85b0762612'
          '6d527840579904bf0e0b0a456a580a9b'
          '966a852a2ccd3c32e9167061592928d3'
          '438cec9f32fb79f58822f97cf64e7afb')
 
 prepare()
 {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir"
     sed -i -e 's:./runprof:sh ./runprof:' -e \
         "s:'-DTEST:'-DBOOKDIR=\"\\\\\"/usr/share/crafty\\\\\"\" -DTEST:" \
         Makefile
@@ -28,14 +28,14 @@ prepare()
 
 build()
 {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir"
     unset LDFLAGS
-    make profile
+    make unix-gcc-profile
 }
 
 package()
 {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir"
     install -Dm755 crafty "$pkgdir/usr/bin/crafty"
     install -Dm644 crafty.hlp "$pkgdir/usr/share/crafty/crafty.hlp"
 
