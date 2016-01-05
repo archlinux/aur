@@ -1,0 +1,25 @@
+pkgbase = openvas-script
+	pkgdesc = openvas-setup/openvas-start/openvas-stop script
+	pkgver = 1.0
+	pkgrel = 0
+	url = http://www.openvas.org/
+	arch = any
+	license = unknown
+	depends = openvas-scanner
+	depends = openvas-manager
+	depends = openvas-cli
+	source = greenbone-security-assistant.service
+	source = openvas-manager.service
+	source = openvassd.conf
+	source = openvas-setup
+	source = openvas-start
+	source = openvas-stop
+	sha1sums = 365f23d6a2c090b5e34a20767ef5d7e86d54de6b
+	sha1sums = 77beaf32e2670cfed7e4372146205a1694dd4daa
+	sha1sums = 1b58f461da39cc54d201813d64ef8b598b656da4
+	sha1sums = adec95aebf7e090685a63e2dab9f090b42795d2b
+	sha1sums = 719f18f4a9d33884b7938276f450082d2184fb94
+	sha1sums = 36faa124fb08a24dbae6d9a8d2a387b48467a294
+
+pkgname = openvas-script
+

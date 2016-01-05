@@ -1,0 +1,6 @@
+#!/bin/bash
+echo "Stopping OpenVas Services"
+systemctl stop greenbone-security-assistant
+systemctl stop openvas-scanner
+systemctl stop openvas-manager
+

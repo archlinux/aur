@@ -1,0 +1,12 @@
+[Unit]
+Description=Greenbone Security Assistant
+Documentation=man:gsad(8) http://www.openvas.org/
+Wants=openvas-manager.service
+
+[Service]
+Type=simple
+PIDFile=/var/run/gsad.pid
+ExecStart=/usr/sbin/gsad --foreground --listen=127.0.0.1 --port=9392 --mlisten=127.0.0.1 --mport=9390
+
+[Install]
+WantedBy=multi-user.target

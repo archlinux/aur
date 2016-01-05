@@ -1,0 +1,41 @@
+#!/bin/bash
+if ! grep -q "^unixsocket /var/lib/redis/redis.sock" /etc/redis.conf ; then
+    sed -i -e 's/^\(#.\)\?port.*$/port 0/' /etc/redis.conf
+    sed -i -e 's/^\(#.\)\?unixsocket \/.*$/unixsocket \/var\/lib\/redis\/redis.sock/' /etc/redis.conf
+    sed -i -e 's/^\(#.\)\?unixsocketperm.*$/unixsocketperm 700/' /etc/redis.conf
+fi
+
+test -e /var/lib/openvas/CA/cacert.pem || openvas-mkcert -q
+if (openssl verify -CAfile /var/lib/openvas/CA/cacert.pem \
+    /var/lib/openvas/CA/servercert.pem |grep -q ^error); then
+    openvas-mkcert -q -f
+fi
+openvas-nvt-sync
+openvas-scapdata-sync
+openvas-certdata-sync
+if ! test -e /var/lib/openvas/CA/clientcert.pem || \
+    ! test -e /var/lib/openvas/private/CA/clientkey.pem; then
+    openvas-mkcert-client -n -i
+fi
+if (openssl verify -CAfile /var/lib/openvas/CA/cacert.pem \
+    /var/lib/openvas/CA/clientcert.pem |grep -q ^error); then
+    openvas-mkcert-client -n -i
+fi
+
+systemctl stop openvas-manager
+systemctl stop openvas-scanner
+
+openvassd
+openvasmd --migrate
+openvasmd --progress --rebuild
+
+killall --wait openvassd
+sleep 5
+
+systemctl start openvas-scanner
+systemctl start openvas-manager
+systemctl start greenbone-security-assistant
+
+if ! openvasmd --get-users | grep -q ^admin$ ; then
+    openvasmd --create-user=admin
+fi

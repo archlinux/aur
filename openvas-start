@@ -1,0 +1,6 @@
+#!/bin/bash
+echo "Starting OpenVas Services"
+systemctl start greenbone-security-assistant
+systemctl start openvas-scanner
+systemctl start openvas-manager
+
