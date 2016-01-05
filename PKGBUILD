@@ -3,9 +3,9 @@
 # Contributor: J0k3r <moebius282@gmail.com>
 
 pkgname=lib32-sdl2
-pkgver=2.0.3
-pkgrel=3
-pkgdesc='A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2)'
+pkgver=2.0.4
+pkgrel=1
+pkgdesc='Simple DirectMedia Layer'
 arch=('x86_64')
 url='http://www.libsdl.org'
 license=('MIT')
@@ -17,7 +17,7 @@ makedepends=('gcc-multilib' 'lib32-alsa-lib' 'lib32-mesa' 'lib32-libpulse'
 optdepends=('lib32-alsa-lib: ALSA audio driver'
             'lib32-libpulse: PulseAudio audio driver')
 source=("http://www.libsdl.org/release/SDL2-${pkgver}.tar.gz")
-sha256sums=('a5a69a6abf80bcce713fa873607735fe712f44276a7f048d60a61bb2f6b3c90c')
+sha256sums=('da55e540bf6331824153805d58b590a29c39d2d506c6d02fa409aedeab21174b')
 
 build() {
   cd SDL2-${pkgver}
