@@ -4,7 +4,7 @@
 
 pkgname=copay
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Copay Bitcoin Wallet"
 #arch=('i686' 'x86_64')
 arch=('x86_64')
@@ -15,11 +15,16 @@ depends=('')
 # For some reason, stripping the massive copay binary breaks the app
 options=('!strip')
 
-source_x86_64=("https://github.com/bitpay/copay/releases/download/v${pkgver}/copay-linux.zip")
+source_x86_64=("https://github.com/bitpay/copay/releases/download/v${pkgver}/Copay-linux.zip"
+               "https://github.com/bitpay/copay/releases/download/v${pkgver}/Copay-linux.zip.sig"
+              )
 
-md5sums_x86_64=('ce9942be9cba6f28681d36b9fc22a6fb')
+md5sums_x86_64=('59707b1c0d74460d1d038fd9378ea251'
+                'SKIP')
 
-# TODO: add signature files
+# gpg --recv-keys 9D17E656BB3B6163AE9D71725CD600A61112CFA1
+validpgpkeys=('9D17E656BB3B6163AE9D71725CD600A61112CFA1')
+
 # TODO: test 32 bit build (maybe)
 
 package() {

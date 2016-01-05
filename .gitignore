@@ -1,5 +1,6 @@
 *.xz
 *.sign
 *.zip
+*.zip.sig
 /src
 /pkg
