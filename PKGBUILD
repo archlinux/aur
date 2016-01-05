@@ -4,7 +4,7 @@
 # Contributor: Dan Anderson <dan-anderson at cox dptnet>
 
 pkgname=mosquitto
-pkgver=1.4.5
+pkgver=1.4.7
 pkgrel=1
 pkgdesc="An Open Source MQTT v3.1 Broker"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -16,7 +16,7 @@ provides=('mosquitto')
 license=('BSD')
 source=(http://mosquitto.org/files/source/$pkgname-$pkgver.tar.gz{,.asc} "$pkgname.service" "$pkgname.install" "usr_move.patch")
 install=$pkgname.install
-sha256sums=('b432e19fee0c549f4a0fb0e866d1b6a897b38dbf1ddfda92bb43e2a24f01df66'
+sha256sums=('71a1cb37893403e00b7db85c5db4af50b40d055ce61e5d21092c2594f2023b8b'
          'SKIP'
          'b09c9852b5b438bad8dd54b3ac665bb0d05d1a9e4daf8c920956457c83622b64'
          '09b8a17fc59f36f40ead4644fffc95458a9255c32d4848f39ceca05925dcc95b'
