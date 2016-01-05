@@ -1,8 +1,8 @@
 # $Id: pkgbuild-mode.el,v 1.23 2007/10/20 16:02:14 juergen Exp $
 # Maintainer: Alexandre BIQUE <bique.alexandre@gmail.com>
 pkgname=libreswan
-pkgver=3.15
-pkgrel=2
+pkgver=3.16
+pkgrel=1
 pkgdesc="IPsec implementation with IKEv1 and IKEv2 keying protocols"
 arch=('i686' 'x86_64')
 url="https://libreswan.org/"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=(https://download.libreswan.org/${pkgname}-${pkgver}.tar.gz
         tmpfiles.conf)
-md5sums=('719f41125bed347a38298dac232ec477'
+md5sums=('22c2d8d5b637e20fe222ebcf99b4a917'
          '77399a739ee99f8bc54837684d7c39d5')
 
 prepare() {
