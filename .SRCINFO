@@ -11,6 +11,7 @@ pkgbase = tldr-git
 	makedepends = make
 	makedepends = clang
 	makedepends = curl
+	depends = curl
 	source = https://github.com/tldr-pages/tldr-cpp-client
 	md5sums = SKIP
 
