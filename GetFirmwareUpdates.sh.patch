@@ -1,0 +1,12 @@
+diff -rup Homegear-0.5.25/Miscellaneous/firmwareDir/GetFirmwareUpdates.sh ../src/Homegear-0.5.25/Miscellaneous/firmwareDir/GetFirmwareUpdates.sh
+--- Homegear-0.5.25/Miscellaneous/firmwareDir/GetFirmwareUpdates.sh	2015-06-10 12:49:17.000000000 +0200
++++ ../src/Homegear-0.5.25/Miscellaneous/firmwareDir/GetFirmwareUpdates.sh	2016-01-05 17:33:54.016666637 +0100
+@@ -20,7 +20,7 @@ if test ! -d $FIRMWAREDIR; then
+ 	tar -zxf /tmp/HomegearTemp/v2_ui.tar.gz -C /tmp/HomegearTemp
+ 	[ $? -ne 0 ] && exit 1
+ 	
+-	/tmp/HomegearTemp/ubi_reader-2_ui/extract_files.py -o /tmp/HomegearTemp/rootfs /tmp/HomegearTemp/rootfs.ubi
++	python2 /tmp/HomegearTemp/ubi_reader-2_ui/extract_files.py -o /tmp/HomegearTemp/rootfs /tmp/HomegearTemp/rootfs.ubi
+ 	[ $? -ne 0 ] && exit 1
+ fi
+ 

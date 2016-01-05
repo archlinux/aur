@@ -1,0 +1,14 @@
+diff -rup Homegear-0.5.25/Modules/Base/HelperFunctions/HelperFunctions.cpp ../src/Homegear-0.5.25/Modules/Base/HelperFunctions/HelperFunctions.cpp
+--- Homegear-0.5.25/Modules/Base/HelperFunctions/HelperFunctions.cpp	2015-06-10 12:49:17.000000000 +0200
++++ ../src/Homegear-0.5.25/Modules/Base/HelperFunctions/HelperFunctions.cpp	2016-01-03 22:52:48.237300951 +0100
+@@ -93,7 +93,7 @@ HelperFunctions::~HelperFunctions()
+ bool HelperFunctions::fileExists(std::string filename)
+ {
+ 	std::ifstream in(filename.c_str());
+-	return in;
++	return (bool)in;
+ }
+ 
+ int32_t HelperFunctions::isDirectory(std::string path, bool& result)
+Only in ../src/Homegear-0.5.25/: lib
+Only in ../src/Homegear-0.5.25/: obj

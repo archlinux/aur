@@ -1,0 +1,13 @@
+[Unit]
+Description=Homegear server
+After=network.target 
+
+[Service]
+Type=forking
+User=homegear
+Group=homegear
+PIDFile=/var/run/homegear/pid
+ExecStart=/usr/bin/homegear -p /var/run/homegear/pid -d
+
+[Install]
+WantedBy=multi-user.target

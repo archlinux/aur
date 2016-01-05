@@ -1,0 +1,12 @@
+diff -rup Homegear-0.5.25/Miscellaneous/GetDeviceFiles.sh ../src/Homegear-0.5.25/Miscellaneous/GetDeviceFiles.sh
+--- Homegear-0.5.25/Miscellaneous/GetDeviceFiles.sh	2015-06-10 12:49:17.000000000 +0200
++++ ../src/Homegear-0.5.25/Miscellaneous/GetDeviceFiles.sh	2016-01-05 12:45:20.456666658 +0100
+@@ -29,7 +29,7 @@ wget -P /tmp/HomegearTemp/ https://githu
+ tar -zxf /tmp/HomegearTemp/v2_ui.tar.gz -C /tmp/HomegearTemp
+ [ $? -ne 0 ] && exit 1
+ 
+-/tmp/HomegearTemp/ubi_reader-2_ui/extract_files.py -o /tmp/HomegearTemp/rootfs /tmp/HomegearTemp/rootfs.ubi
++python2 /tmp/HomegearTemp/ubi_reader-2_ui/extract_files.py -o /tmp/HomegearTemp/rootfs /tmp/HomegearTemp/rootfs.ubi
+ [ $? -ne 0 ] && exit 1
+ 
+ rm -f $FIRMWAREDIR/rftypes/rf_cmm.xml

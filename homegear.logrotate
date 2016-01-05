@@ -1,0 +1,13 @@
+/var/log/homegear/*.log /var/log/homegear/*.err {
+        missingok
+        rotate 30
+        compress
+        delaycompress
+        notifempty
+        size 10M
+        create 640 homegear homegear
+        sharedscripts
+        postrotate
+                systemctl restart homegear
+        endscript
+}
