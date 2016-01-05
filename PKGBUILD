@@ -2,7 +2,7 @@
 
 _pkgname=libui
 pkgname=${_pkgname}-git
-pkgver=r1878.6a5997c
+pkgver=r1914.84b392d
 pkgrel=1
 pkgdesc='A portable GUI library for C'
 arch=('i686' 'x86_64')
@@ -26,8 +26,7 @@ build() {
 }
 
 package() {
-  install -Dm644 "$srcdir"/$pkgname/ui.h \
-    "$pkgdir/usr/include/ui.h"
-  install -Dm644 "$srcdir"/$pkgname/out/libui.so \
-    "$pkgdir/usr/lib/libui.so"
+  cd $pkgname
+  mkdir -p $pkgdir/usr/{lib,include}
+  make DESTDIR="$pkgdir/" install
 }
