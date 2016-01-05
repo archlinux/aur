@@ -15,12 +15,12 @@ md5sums=('0886d1b2827d8f0cd2ae69b925045f40'
 _srcpath=$srcdir/$_pkgid
 
 build(){
-	_ncores=$(($(lscpu -p=core | tail -n 1)+1))
 	cd $srcdir/$_pkgid
 	./configure --enable-shared \
 		--enable-64bit \
-		--prefix=/usr 
-	make -j$_ncores
+		--prefix=/usr \
+		--cxx-common="-D_GLIBCXX_USE_CXX11_ABI=0 -march=native -mtune=native -Ofast -fPIC" 
+	make ${MAKEFLAGS}
 }
 
 package() {
