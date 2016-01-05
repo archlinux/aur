@@ -1,15 +1,15 @@
 pkgbase = php-oci8
 	pkgdesc = PHP extension for OCI8
-	pkgver = 2.0.8
-	pkgrel = 5
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = http://pecl.php.net/package/oci8
 	arch = x86_64
 	license = PHP
 	depends = php>=5.1.3
 	depends = oracle-instantclient-sdk
 	backup = etc/php/conf.d/oci8.ini
-	source = http://pecl.php.net/get/oci8-2.0.8.tgz
-	md5sums = 9de75c4649bb047c6192f13092f9751d
+	source = http://pecl.php.net/get/oci8-2.1.0.tgz
+	md5sums = 3532122b3291e214f3b25a6061b036ae
 
 pkgname = php-oci8
 
