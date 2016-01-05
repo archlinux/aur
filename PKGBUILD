@@ -1,6 +1,6 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=teamocil
-pkgver=1.3.1
+pkgver=1.4
 pkgrel=1
 pkgdesc="Teamocil helps you set up window and splits layouts for tmux using YAML configuration files."
 arch=(any)
@@ -10,7 +10,7 @@ depends=(ruby tmux)
 makedepends=(rubygems)
 source=(http://rubygems.org/downloads/$pkgname-$pkgver.gem)
 noextract=($pkgname-$pkgver.gem)
-md5sums=('eb1a8b4b401b12f4646d94707f1edf99')
+md5sums=('56e89d660768cedcfc45ecadbe6b7089')
 
 package() {
   cd $srcdir
