@@ -1,0 +1,18 @@
+pkgbase = tldr-git
+	pkgdesc = C++ command line client for tldr
+	pkgver = r39.fb7be27
+	pkgrel = 1
+	url = https://github.com/tldr-pages/tldr-cpp-client
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = clang
+	makedepends = curl
+	source = https://github.com/tldr-pages/tldr-cpp-client
+	md5sums = SKIP
+
+pkgname = tldr-git
+
