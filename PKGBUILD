@@ -9,13 +9,17 @@ url="https://fedoraproject.org/wiki/SystemConfig/nfs"
 license=('GPL')
 # Get latest binary from http://pkgs.org/search/system-config-nfs
 source=("http://dl.fedoraproject.org/pub/fedora/linux/development/${fedoraversion}/i386/os/Packages/s/system-config-nfs-${pkgver}-${fedorarelease}.fc${fedoraversion}.noarch.rpm"
-	"system-config-nfs")
+	"system-config-nfs"
+	"system-config-nfs.desktop")
 md5sums=('0bd2ca1fe887c5c42040b5704504b9ef'
-	'10cebcb296f60d885f596db5dcbe6104')
+	'10cebcb296f60d885f596db5dcbe6104'
+	'87c8cf8da6f5944924ec4a2732cb3979')
 depends=('python2')
 
 package() {
 	rm $srcdir/usr/bin/system-config-nfs
 	cp system-config-nfs $srcdir/usr/bin/
+	rm $srcdir/usr/share/applications/system-config-nfs.desktop
+	cp system-config-nfs.desktop $srcdir/usr/share/applications/
 	cp -r $srcdir/* $pkgdir
 }
