@@ -6,7 +6,7 @@ pkgdesc='LibreNMS is an autodiscovering PHP/MySQL-based network monitoring syste
 arch=('any')
 url='http://www.librenms.org/'
 license=('GPLv3')
-depends=('php' 'php-intl' 'php-gd' 'php-pear' 'net-snmp' 'graphviz' 'php-snmp' 'php-mcrypt' 'fping' 'imagemagick' 'whois' 'nmap' 'rrdtool' 'git')
+depends=('php' 'php-intl' 'php-gd' 'php-pear' 'net-snmp' 'graphviz' 'php-snmp' 'php-mcrypt' 'fping' 'imagemagick' 'whois' 'nmap' 'rrdtool' 'git' 'mysql-python')
 backup=("etc/webapps/${pkgname}/config.php")
 source=("https://github.com/librenms/${pkgname}/archive/${pkgver}.tar.gz"
         "apache.example.conf"
