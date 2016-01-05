@@ -1,8 +1,8 @@
 # Maintainer: catskillmarina <catskillmarina at gmail.com>
 
 pkgname=xroach
-pkgver=1
-pkgrel=4.4
+pkgver=4.4
+pkgrel=1
 pkgdesc="Cockroaches hide under your windows"
 arch=('i686' 'x86_64')
 url="ftp://ftp.netbsd.org/pub/pkgsrc/distfiles/xroach-4.4/xroach.tar"
