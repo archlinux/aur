@@ -22,3 +22,25 @@ package() {
   cd "bbdb-$pkgver"
   make DESTDIR="$pkgdir/" install
 }
+
+INFO_DIR=usr/share/info
+INFO_FILES=(bbdb)
+
+post_install() {
+  [[ -x usr/bin/install-info ]] || return 0
+  for f in ${INFO_FILES[@]}; do
+    install-info ${INFO_DIR}/$f.info.gz ${INFO_DIR}/dir 2> /dev/null
+  done
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+pre_remove() {
+  [[ -x usr/bin/install-info ]] || return 0
+  for f in ${INFO_FILES[@]}; do
+    install-info --delete ${INFO_DIR}/$f.info.gz ${INFO_DIR}/dir 2> /dev/null
+  done
+}
+
