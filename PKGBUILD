@@ -6,7 +6,7 @@
 
 pkgname=vlmc-git
 epoch=1
-pkgver=0.3594.6b0c72b
+pkgver=0.3596.e389c34
 pkgrel=1
 pkgdesc="VideoLAN Movie Creator, a simple and user-friendly video editor"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ license=('GPL')
 depends=('vlc' 'frei0r-plugins')
 makedepends=('git' 'cmake' 'qt5-tools')
 source=(
-  'git+git://git.videolan.org/vlmc.git'
+  'git+https://code.videolan.org/videolan/vlmc.git'
 )
 
 sha256sums=(
