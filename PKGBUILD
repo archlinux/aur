@@ -4,7 +4,7 @@
 pkgname=newlisp-devel
 _pkgname=newlisp
 pkgver=10.6.5
-pkgrel=6
+pkgrel=8
 pkgdesc="A LISP like, general purpose scripting language. Ongoing development version."
 url="http://www.newlisp.org"
 license=('GPL3')
@@ -15,7 +15,7 @@ provides=('newlisp')
 conflicts=('newlisp')
 options=('docs' '!makeflags')
 source=("http://www.newlisp.org/downloads/development/inprogress/${_pkgname}-$pkgver.tgz")
-md5sums=('cc4ec91e0d9abb8b400d683e59dea0f8')
+md5sums=('3328cf06af07e2491059b82b55e6d052')
 
 prepare() {
   cd $srcdir/$_pkgname-$pkgver
@@ -23,6 +23,7 @@ prepare() {
       makefile_linux_utf8_ffi
   sed -i 's+/libffi-3.0.13+/libffi-3.2.1+' makefile_linuxLP64_utf8_ffi \
       makefile_linux_utf8_ffi
+  sed -i '127ifi' configure
  }
 
 build() {
