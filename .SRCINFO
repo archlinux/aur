@@ -1,0 +1,12 @@
+pkgbase = mig-git
+	pkgdesc = MIG is Mozilla InvestiGator - a tool for remote system investigation at scale.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://mig.ninja
+	arch = x86_64
+	license = MPL
+	makedepends = git
+	makedepends = go
+
+pkgname = mig-git
+
