@@ -1,13 +1,15 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 pkgname=roger-router
 pkgver=1.8.14
-pkgrel=2
+pkgrel=3
 pkgdesc="Roger Router"
 arch=('i686' 'x86_64')
 url="http://en.tabos.org/roger-router/"
 license=('GPL2')
 depends=(curl dbus glib2 libsndfile spandsp speex libxml2 gtk3 isdn4k-utils libpeas libsoup gupnp)
-makedepends=(intltool libnotify libpulse libsecret gobject-introspection evolution)
+makedepends=(intltool gobject-introspection)
+# To build all plugins use those dependencies:
+#makedepends=(intltool gobject-introspection libnotify libpulse libsecret evolution g)
 optdepends=(
 	'evolution: Address book integration'
 	'libpulse: Pulse Audio support'
@@ -27,8 +29,7 @@ build() {
 	./configure --prefix=/usr \
 		--with-secret=yes \
 		--with-pulseaudio=yes \
-		--with-portaudio=check \
-		--with-kwallet=check
+		--with-portaudio=check
 	make
 }
 
