@@ -8,7 +8,7 @@
 #
 
 pkgname=electrum-git
-pkgver=20151214
+pkgver=20160105
 pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
@@ -43,8 +43,10 @@ optdepends=('desktop-file-utils: update desktop icon'
             'zbar: QR code reading support')
 url="https://github.com/spesmilo/electrum"
 license=('GPL3')
-source=(git+https://github.com/spesmilo/electrum)
-sha256sums=('SKIP')
+source=(git+https://github.com/spesmilo/electrum
+        setup.py.patch)
+sha256sums=('SKIP'
+            'ff3583bbaf13de6e4284aa0e6651a21f4f99d7039c237c5be965cf656402974f')
 provides=('electrum')
 conflicts=('electrum')
 install=electrum.install
@@ -56,6 +58,9 @@ pkgver() {
 
 prepare() {
   cd ${pkgname%-git}
+
+  msg2 'Fixing setup.py...'
+  git apply "$srcdir/setup.py.patch"
 
   msg2 'Fixing app.fil...'
   # plugins/labels.py → plugins/labels/labels.py
