@@ -329,8 +329,8 @@ EOF
   rm  ${pkgdir}/usr/share/man/man3/__gnu_internal.3
   rm  ${pkgdir}/usr/share/man/man3/__gnu_parallel.3
   rm  ${pkgdir}/usr/share/man/man3/__gnu_pbds.3
-  rm  ${pkgdir}/usr/share/man/man3/random.3
-  rm  ${pkgdir}/usr/share/man/man3/regex.3
+#  rm  ${pkgdir}/usr/share/man/man3/random.3
+#  rm  ${pkgdir}/usr/share/man/man3/regex.3
   rm  ${pkgdir}/usr/share/man/man7/fsf-funding.7
   rm  ${pkgdir}/usr/share/man/man7/gfdl.7
   rm  ${pkgdir}/usr/share/man/man7/gpl.7
