@@ -1,7 +1,7 @@
 # Maintainer: Eric Pfeiffer <computerfreak@computerfr33k.com>
 pkgname=paycoin-qt-bin
 pkgver=0.3.3.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="PayCoin is a global currency that lets you send money to anyone, anywhere, anytime. Sending and accepting money is virtually free, lightning fast and insanely easy."
 arch=('i386' 'x86_64')
@@ -27,8 +27,8 @@ source_i386=("https://github.com/PaycoinFoundation/paycoin/releases/download/v${
 source_x86_64=("https://github.com/PaycoinFoundation/paycoin/releases/download/v${pkgver}/linux64.zip")
 
 sha256sums=('711d5c86aab6e324aef38ab52dc5426b24a18b2daab63cc0bbfcb490a6216a0b')
-sha256sums_i386=('315fef82b7ced7c86ea46bc0c54e3fb677e7aa7aeb14a08c46f8a8688c7d56e0')
-sha256sums_x86_64=('a3bf33b4e737f10a80700439b612bf1e0aa901ae589c7b38068e08d79aadcc76')
+sha256sums_i386=('101eccff7cbb2a4f1e4306d9292a95d4e66bf4e5c6b9da9d2e7873dc09ad4014')
+sha256sums_x86_64=('6c698bc453e3de5869460cf85c9473b474913d1a2926b82de453bf753ec1a0e5')
 
 package() {
 	if [ "$CARCH" = "x86_64" ]; then
