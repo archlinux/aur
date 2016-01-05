@@ -1,18 +1,20 @@
+#Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libxcm-git
-pkgver=0.5.3.32.g7afcecb
+pkgver=0.5.3.34.gbb28687
 pkgrel=1
 pkgdesc="A library containing the a reference implementation of the net-color specs. (GIT version)"
 arch=('i686' 'x86_64')
 url="http://www.oyranos.org/libxcm/"
 license=('BSD')
-depends=('libxfixes' 'libxmu')
+depends=('libxfixes'
+         'libxmu'
+         )
 makedepends=('git')
 conflicts=('libxcm')
 provides=('libxcm')
 source=("git+https://github.com/oyranos-cms/libxcm.git")
 md5sums=('SKIP')
-_gitname="libxcm"
 
 pkgver() {
   cd libxcm
@@ -27,7 +29,8 @@ prepare() {
 
 build() {
   cd libxcm
-  LDFLAGS+=" -lm" ./configure --prefix=/usr
+  LDFLAGS+=" -lm" ./configure \
+    --prefix=/usr
   make
 }
 
