@@ -1,7 +1,7 @@
 # Maintainer: Kyle <kyle@gmx.ca>
 
 pkgname=f3
-pkgver=5.0
+pkgver=6.0
 pkgrel=1
 pkgdesc="Utilities to detect and repair counterfeit flash storage, i.e. thumb drives and memory cards with less flash than advertised"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('parted')
 conflicts=
 provides=
 source=(https://github.com/AltraMayor/${pkgname}/archive/v${pkgver}.zip)
-md5sums=('15859fe7af53330985821b8c91a19fef')
+md5sums=('b38abfb1c35996e4d193d3be694b4448')
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}
