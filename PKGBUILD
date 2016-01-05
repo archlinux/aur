@@ -1,14 +1,15 @@
 pkgname=ydcv-rs-git
 _gitname="ydcv-rs"
 pkgdesc="A Rust version of ydcv."
-pkgver=0.3.1.52
+pkgver=0.3.1.55
 pkgrel=1
 arch=('i686' 'x86_64')
 conflicts=("ydcv")
 provides=("ydcv")
 url="https://github.com/farseerfc/ydcv-rs"
 license=('MIT' 'GPLv2')
-depends=()
+depends=("readline")
+optdepends=("xsel: for X selection" "libdbus: for desktop notify")
 makedepends=('git' 'cargo' 'python-pytoml')
 source=('git://github.com/farseerfc/ydcv-rs.git')
 sha256sums=('SKIP')
