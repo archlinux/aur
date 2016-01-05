@@ -41,16 +41,16 @@ package() {
 
   _d="$DESTDIR/$PREFIX"
   mkdir -p $DESTDIR/var/lib/$_gitname
-  install -D -m0755 bin/linux/amd64/mig $_d/usr/bin/mig
-  install -D -m0755 bin/linux/amd64/mig-runner $_d/usr/bin/mig-runner
-  install -D -m0755 bin/linux/amd64/mig-console $_d/usr/bin/mig-console
-  install -D -m0755 bin/linux/amd64/mig-api $_d/usr/bin/mig-api
-  install -D -m0755 bin/linux/amd64/mig-action-generator $_d/usr/bin/mig-action-generator
-  install -D -m0755 bin/linux/amd64/runner-compliance $_d/usr/bin/runner-compliance
-  install -D -m0755 bin/linux/amd64/mig-action-verifier $_d/usr/bin/mig-action-verifier
-  install -D -m0755 bin/linux/amd64/mig-worker-agent-intel $_d/usr/sbin/mig-worker-agent-intel
-  install -D -m0755 bin/linux/amd64/mig-scheduler $_d/usr/sbin/mig-scheduler
-  install -D -m0755 bin/linux/amd64/mig-agent-latest $_d/usr/sbin/mig-agent
+  install -D -m0755 bin/linux/amd64/mig $_d/bin/mig
+  install -D -m0755 bin/linux/amd64/mig-runner $_d/bin/mig-runner
+  install -D -m0755 bin/linux/amd64/mig-console $_d/bin/mig-console
+  install -D -m0755 bin/linux/amd64/mig-api $_d/bin/mig-api
+  install -D -m0755 bin/linux/amd64/mig-action-generator $_d/bin/mig-action-generator
+  install -D -m0755 bin/linux/amd64/runner-compliance $_d/bin/runner-compliance
+  install -D -m0755 bin/linux/amd64/mig-action-verifier $_d/bin/mig-action-verifier
+  install -D -m0755 bin/linux/amd64/mig-worker-agent-intel $_d/sbin/mig-worker-agent-intel
+  install -D -m0755 bin/linux/amd64/mig-scheduler $_d/sbin/mig-scheduler
+  install -D -m0755 bin/linux/amd64/mig-agent-latest $_d/sbin/mig-agent
 
   mkdir -p $_d/share/doc/$_gitname/
   cp -r doc/*.rst $_d/share/doc/$_gitname/
