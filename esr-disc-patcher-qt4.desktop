@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=ESR Disc Patcher
+Comment=Patch PlayStation 2 ISOs!
+Exec=/usr/bin/esr-disc-patcher-qt4
+Icon=esr-disc-patcher
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Game;
+Encoding=UTF-8
