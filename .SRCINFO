@@ -1,6 +1,6 @@
 pkgbase = encuentro
 	pkgdesc = Busque, descargue, y vea el maravilloso contenido ofrecido por el Canal Encuentro. Search, download and see the wonderful content ofered by Encuentro (Argentine TV channel)
-	pkgver = 3.1
+	pkgver = 4.0
 	pkgrel = 1
 	url = http://launchpad.net/encuentro
 	arch = any
@@ -12,9 +12,10 @@ pkgbase = encuentro
 	depends = python2-requests
 	depends = python2-beautifulsoup4
 	depends = python2-xdg
+	depends = youtube-dl
 	optdepends = python2-notify: provides notifications
-	source = http://launchpad.net/encuentro/trunk/3.1/+download/encuentro-3.1.tar.gz
-	md5sums = 46228b9abbcc588ff01d00f180d1358b
+	source = http://launchpad.net/encuentro/trunk/encuentro-4.0/+download/encuentro-4.0.tar.gz
+	md5sums = df7a1d1c12be7ad651420ac78e928e3d
 
 pkgname = encuentro
 
