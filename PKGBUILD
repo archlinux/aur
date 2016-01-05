@@ -3,6 +3,7 @@
 # Documentation
 
 # Set up the pi for Qt compilation. On Arch I just install chromium which pulls in all the deps
+# Removed xcomposite as code path breaks
 
 # Remove 2 (mesa) pkgconfig files we allow screw our mkspec
 # rm /usr/lib/pkgconfig/glesv2.pc
@@ -12,7 +13,6 @@
 # I use NFS personally: sudo mount qpii.local:/ /mnt/pi
 
 # comment this turkey out in any circumstance when you need to regenate .SRCINFO
-echo "Set your sysroot prior to build" && exit 1
 _sysroot=/mnt/pi
 
 pkgname=qpii
@@ -26,7 +26,7 @@ pkgdesc="Qt for the ${_piver}, coz this shouldnt be obtuse"
 arch=("x86_64" "i686")
 url="http://www.qt.io"
 license=("LGPL3")
-makedepends=("git" "pkgconfig" "gcc" "arm-bcm2708-linux-gnueabi")
+makedepends=("git" "pkgconfig" "gcc" "qpi-toolchain")
 source=("git://github.com/sirspudd/mkspecs.git" "https://download.qt.io/development_releases/qt/5.6/${_pkgver}/single/${_pipkgname}.tar.gz")
 sha256sums=("SKIP" "d69103ec34b3775edfa47581b14ee9a20789d4b0d7d26220fb92f2cd32eb06f9")
 #sha256sums=("SKIP" "eb7c430f9f73d8f9d1a0d328e8a77549ffcf3b9915bee0c3dd6ae9ceffb86ef9")
@@ -46,13 +46,17 @@ build() {
   mkdir -p ${_bindir}
   cd ${_bindir}
 
-  # skipping because of errors: qtwayland
   # skipping on principle: qtscript, xcb
-  # skipping because of the target in question: widgets qtwebengine qtwebchannel
+  # skipping because of the target in question: widgets qtwebchannel
+  # TODO: qtwebengine, a little bulky but useful
+
+  # Too bleeding big
+  # -developer-build \
+  # -separate-debug-info \
 
   ${_srcdir}/configure \
-    -silent \
     -release \
+    -silent \
     -confirm-license \
     -opensource \
     -prefix /opt/qt-${_pkgver}-${_piver} \
@@ -70,8 +74,16 @@ build() {
     \
     -sysroot ${_sysroot} \
     -device ${_mkspec} \
-    -device-option CROSS_COMPILE=/opt/arm-bcm2708hardfp-linux-gnueabi/bin/arm-bcm2708hardfp-linux-gnueabi-
+    -device-option CROSS_COMPILE=/opt/arm-sirspuddarch-linux-gnueabihf/bin/arm-sirspuddarch-linux-gnueabihf-
 
+  make
+
+  # regrettably required, as qtwayland barfs on shadow builds
+  # as private header paths not included: no clue how to fix, bypassing
+
+  cp -r ${_srcdir}/qtwayland .
+  cd qtwayland
+  ../qtbase/bin/qmake CONFIG+=wayland-compositor
   make
 }
 
@@ -79,6 +91,11 @@ package() {
   local _srcdir="${srcdir}/${_pipkgname}"
   local _bindir="${_srcdir}-build"
 
+  # FIXME: installs both host/target bin/libs to pi path
   cd "${_bindir}"
+  INSTALL_ROOT="$pkgdir" make install
+
+  # regrettably required
+  cd "${_bindir}"/qtwayland
   INSTALL_ROOT="$pkgdir" make install
 }
