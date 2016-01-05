@@ -3,8 +3,8 @@
 # Contributor: Justin Blanchard <UncombedCoconut at gmail dot com>
 
 pkgname=stockfish
-pkgver=6
-pkgrel=2
+pkgver=7
+pkgrel=1
 epoch=1
 pkgdesc="A strong chess engine written by Tord Romstad, Marco Costalba, Joona Kiiski"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('GPL3')
 install=${pkgname}.install
 _pkgfilename=${pkgname}-${pkgver}-src
 source=("http://stockfish.s3.amazonaws.com/${_pkgfilename}.zip")
-md5sums=('85441b396d0c5d650f6afe5608c3a4b2')
+md5sums=('41f1410820192466d15166712181ae03')
 
 build()
 {
