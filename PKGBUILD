@@ -8,8 +8,11 @@ arch=(i686 x86_64)
 url='http://www.tarantool.org'
 license=(BSD)
 depends=(readline ncurses zlib)
+conflicts=(tarantool)
+provides=(tarantool)
+replaces=(tarantool)
 makedepends=(git cmake)
-checkdepends=(python2-daemon python2-yaml python2-msgpack python2-tarantool python2-gevent)
+checkdepends=(python2-daemon python2-tarantool python2-gevent)
 source=(git://github.com/tarantool/tarantool.git
         git://github.com/tarantool/luajit.git
         git://github.com/tarantool/msgpuck.git
