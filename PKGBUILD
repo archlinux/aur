@@ -4,7 +4,7 @@ pkgbase=marble-git
 pkgname=('marble-git'
          'libastro-git'
          'marble-data-git')
-pkgver=1.12.20.r11049.8417b5d
+pkgver=1.12.20.r11089.486b1dc
 pkgrel=1
 pkgdesc="Desktop Globe. (GIT version)"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ makedepends=('cmake'
              'gpsd'
              'quazip-qt5'
              'shapelib'
-             'qextserialport-qt5'
+             'qextserialport'
              'libwlocate'
              'phonon-qt5'
              'extra-cmake-modules'
@@ -90,7 +90,7 @@ package_marble-git() {
            )
   optdepends=('gpsd: position information via gpsd'
               'shapelib: reading and displaying .shp files'
-              'qextserialport-qt5: reading from serial port in APRS plugin'
+              'qextserialport: reading from serial port in APRS plugin'
               'libwlocate: Position information based on neighboring WLAN networks'
               'krunner: Krunner plugin for marble'
               )
