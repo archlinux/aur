@@ -1,8 +1,8 @@
 # Maintainer: ntruessel <ntruessel@njsm.de>
 pkgname=eiffelstudio-bin
 _major=15
-_minor=08
-_build=97862
+_minor=12
+_build=98308
 pkgver=${_major}.${_minor}.${_build}
 pkgrel=1
 pkgdesc="IDE for the Eiffel programming language (opensource edition)"
@@ -16,9 +16,9 @@ options=("staticlibs")
 source=("estudio.profile")
 md5sums=("babf4e2957285cad811ae51e03e5cbd9")
 source_x86_64=("http://downloads.sourceforge.net/project/eiffelstudio/EiffelStudio%20${_major}.${_minor}/Build_${_build}/Eiffel_${_major}.${_minor}_gpl_${_build}-linux-x86-64.tar.bz2")
-md5sums_x86_64=("aa943dd8836d55826efe4ff4729e0c88")
+md5sums_x86_64=("d338aff0a5dde3faba621d188b44bb6e")
 source_i686=("http://downloads.sourceforge.net/project/eiffelstudio/EiffelStudio%20${_major}.${_minor}/Build_${_build}/Eiffel_${_major}.${_minor}_gpl_${_build}-linux-x86.tar.bz2")
-md5sums_i686=("7e1971ca94f312886880d2f8aa24066d")
+md5sums_i686=("b8785f96f737a4be46d6e0b14760f717")
 
 prepare() {
 	# remove windows files and folders
