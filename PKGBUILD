@@ -3,8 +3,8 @@
 # Contributor: TuxSpirit <tuxspirit@archlinux.fr>
 
 pkgname=peazip-qt
-pkgver=5.9.0
-pkgrel=3
+pkgver=5.9.1
+pkgrel=1
 pkgdesc="QT archiver utility"
 arch=(i686 x86_64)
 url=http://www.peazip.org/peazip-linux.html
@@ -19,10 +19,10 @@ source=("$pkgname-$pkgver.tgz"::"https://github.com/giorgiotani/PeaZip/releases/
         "http://www.peazip.org/downloads/additional/peazip_optional_formats_plugin-1.LINUX.INST.tar.gz"
         "${pkgname%-*}.desktop")
 noextract=($pkgname-$pkgver.tgz)
-sha256sums=('f01030edd20d20c19c5e80ab343b4bc5b3b1bdf556d99f2bc1f1c95c1ca68b39'
+sha256sums=('4c508608887f32ac2776d289bfff7c68dfdb8fb1c17ad9bd3c92395dbcb99feb'
             '7f3fc1ea200d482500360eadda9298c4d5900ca822d21b5a0e11ff9de4d499ff'
             '4d876c6a61f25a7e2f3dfa69b1c80e61fdda9220bbf8e23a407e34eae377091b')
-sha512sums=('5d6cd0e350f3040e2fb63207628fcaa277f7927b2e369916dc4685281186da57707ed66eea73da2db08b86238aa86b65ba7e506add94c82e9eaed62a3e2b9c40'
+sha512sums=('16ac602b7772125a7f5c476f1d3041bfbc00ee8ca4bc19e3d1cf13a84a06c69053726da1a870c6f1521cd7737acb6efb267df70a8ea66f5ae17baaaecff6953e'
             '8b308510a2c81ad2704cef19ed3fb2baf1dde0e123cf3e4c96e5e42a330e23002f3443c9fce009120492afc82b0ab063344c8029fe6fe851a4bea4814bacdaa8'
             'bc86d42b33285c2709081ddca7c06fe789cc2d42c69c4cbed595c077a776d91e5526eb799dcdc404375a3bfb212927165a02d3d79301f53adb8a89039bf7bb5f')
 
