@@ -8,7 +8,7 @@ url='http://kde.org/applications/graphics/kolourpaint'
 arch=('x86_64')
 license=('GPL' 'LGPL' 'FDL')
 depends=('kdelibs4support'
-         'qimageblitz-qt5-svn'
+         'qimageblitz-svn'
          'libksane'
          'hicolor-icon-theme'
          )
