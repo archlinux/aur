@@ -1,7 +1,7 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 pkgname=roger-router
 pkgver=1.8.14
-pkgrel=3
+pkgrel=4
 pkgdesc="Roger Router"
 arch=('i686' 'x86_64')
 url="http://en.tabos.org/roger-router/"
@@ -9,12 +9,15 @@ license=('GPL2')
 depends=(curl dbus glib2 libsndfile spandsp speex libxml2 gtk3 isdn4k-utils libpeas libsoup gupnp)
 makedepends=(intltool gobject-introspection)
 # To build all plugins use those dependencies:
-#makedepends=(intltool gobject-introspection libnotify libpulse libsecret evolution g)
+#makedepends=(intltool gobject-introspection evolution gstreamer libnotify libpulse libsecret portaudio libappindicator-gtk3)
 optdepends=(
 	'evolution: Address book integration'
+	'gstreamer: GStreamer support (recommended)'
 	'libpulse: Pulse Audio support'
+	'portaudio: PortAudio support'
 	'libsecret: Store passwords in keyring'
-	'libnotify: Desktop notifications')
+	'libnotify: Desktop notifications'
+	'libappindicator-gtk3: App indicator support')
 provides=(roger)
 conflicts=(roger)
 install=roger-router.install
@@ -27,8 +30,8 @@ build() {
 	# To build without evolution: --with-ebook=no
 	# To build with kwallet support: --with-kwallet=yes
 	./configure --prefix=/usr \
-		--with-secret=yes \
-		--with-pulseaudio=yes \
+		--with-secret=check \
+		--with-pulseaudio=check \
 		--with-portaudio=check
 	make
 }
