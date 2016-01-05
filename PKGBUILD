@@ -26,6 +26,7 @@ build() {
 	# To build with kwallet support: --with-kwallet=yes
 	./configure --prefix=/usr --disable-werror \
 		--with-secret=yes \
+		--with-pulseaudio=yes \
 		--with-appindicator3=no \
 		--with-portaudio=no
 	make
