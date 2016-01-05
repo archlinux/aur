@@ -6,9 +6,9 @@
 
 
 pkgname=('gvim-python3-noconflict')
-pkgver=7.4.884
+pkgver=7.4.944
 _versiondir=74
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('custom:vim')
 url="http://www.vim.org"
@@ -16,7 +16,7 @@ makedepends=('gpm' 'python2' 'python' 'ruby' 'libxt' 'desktop-file-utils' 'gtk2'
 source=(vim-$pkgver.tar.gz::http://github.com/vim/vim/archive/v$pkgver.tar.gz
         'launch-python-vim.sh'
         'launch-python-gvim.sh')
-sha1sums=('SKIP'
+sha1sums=('a670bd0a8417363d757341e1435474b42dd3ca75'
           '386e86891915cc97d1acc5b08197fe5088e439b3'
           'af7d241e19235bcaa6ee7ee571c6b575236b3a45')
 
