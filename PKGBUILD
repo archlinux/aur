@@ -6,7 +6,7 @@ pkgdesc="Roger Router"
 arch=('i686' 'x86_64')
 url="http://en.tabos.org/roger-router/"
 license=('GPL2')
-depends=(curl dbus glib2 libsndfile spandsp speex libxml2 gtk3 isdn4k-utils libpeas libsoup)
+depends=(curl dbus glib2 libsndfile spandsp speex libxml2 gtk3 isdn4k-utils libpeas libsoup gupnp)
 makedepends=(intltool libnotify libpulse libsecret gobject-introspection evolution)
 optdepends=(
 	'evolution: Address book integration'
