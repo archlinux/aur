@@ -7,7 +7,7 @@ pkgbase = lib32-nvidia-utils-beta
 	makedepends = pacman>=4.2.0
 	options = !strip
 	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86/361.16/NVIDIA-Linux-x86-361.16.run
-	md5sums_x86_64 = File
+	md5sums_x86_64 = cbb48d10306d6ca49423ed80e786598e
 
 pkgname = lib32-nvidia-utils-beta
 	pkgdesc = NVIDIA driver utilities and libraries (beta version) (32-bit)

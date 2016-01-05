@@ -12,7 +12,7 @@ makedepends=('pacman>=4.2.0')
 options=('!strip')
 _pkg="NVIDIA-Linux-x86-$pkgver"
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/$_pkg.run")
-md5sums_x86_64=('File')
+md5sums_x86_64=('cbb48d10306d6ca49423ed80e786598e')
 
 _create_links() {
   # create missing soname links
