@@ -1,6 +1,6 @@
 
 pkgname=mingw-w64-libsvm
-pkgver=3.20
+pkgver=3.21
 pkgrel=1
 pkgdesc="A library for Support Vector Machines classification (mingw-w64)"
 arch=(any)
@@ -10,7 +10,8 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("http://www.csie.ntu.edu.tw/~cjlin/libsvm/libsvm-${pkgver}.tar.gz")
-md5sums=('5f088e5f89da1c65b642300c9c5ea772')
+md5sums=('30d2a0a8043e0f66cb7903b3ce45b3bf')
+
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"      
 
