@@ -3,10 +3,10 @@
 # SET pkgver & sha256sums
 pkgname=('sisu')
 pkgdesc="documents - structuring, publishing in multiple formats & search"
-pkgver=7.1.6
+pkgver=7.1.7
 pkgrel=1
 source=("http://www.sisudoc.org/sisu/archive/pool/main/s/sisu/${pkgname}_${pkgver}.orig.tar.xz")
-sha256sums=('6673cc927845a03f731f9f9c60ce79f58e8aaac66845ed070108957d3fb6b554')
+sha256sums=('a8a1abd1d8eca77a3bc300aa147b568d1322496999412be26e1586f8adec1a1e')
 arch=('any')
 url="http://sisudoc.org"
 license=('GPL3')
