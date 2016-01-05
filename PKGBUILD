@@ -1,24 +1,23 @@
 # Contributor: Dmitriy Morozov <archlinux@foxcub.org>
 
 pkgname=ipe
-_dirver=7.1
-pkgver=7.1.9
-pkgrel=3
+_dirver=7.2
+pkgver=7.2.1
+pkgrel=2
 pkgdesc="The extensible drawing editor"
 url="http://tclab.kaist.ac.kr/ipe/"
 depends=('lua52' 'qt5-base' 'freetype2' 'zlib' 'poppler' 'python2')
 arch=('i686' 'x86_64')
 license=("GPL")
 conflicts=('ipe')
-ipepresenter_version_=5c5b7b225081
-
-source=("https://dl.bintray.com/otfried/generic/$pkgname/$_dirver/$pkgname-$pkgver-src.tar.gz"
+ipepresenter_version_=b714decd7d5b
+source=("http://dl.bintray.com/otfried/generic/$pkgname/$_dirver/$pkgname-$pkgver-src.tar.gz"
         "http://hg.mrzv.org/IpePresenter/archive/$ipepresenter_version_.tar.gz"
         "ipe.bash-completion"
         "config.patch"
         )
-md5sums=('8553f8e9fc38c93185514a53a4ea7fb5'
-         'ce409e1a01a408d54776ae77bef228f9'
+md5sums=('e1ad8facb3d56d9eaf5a6a925063c3bf'
+         '95158c047f0a9b0916b688af1faed779'
          '694f0d5402655901be385647e5d8d6e3'
          '56c6de89f3def116fac7828f78834d37')
 
