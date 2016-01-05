@@ -2,13 +2,13 @@
 
 pkgrealname=webcamoid
 pkgname=webcamoid-git
-pkgver=6.2.0.r13.ge3172f3
+pkgver=6.2.0.r58.g5785c72
 pkgrel=1
 pkgdesc="Webcamoid is a full featured webcam capture application."
 url='https://github.com/hipersayanX/webcamoid'
 license=('GPL')
 arch=('i686' 'x86_64' 'armv6h')
-depends=('qt5-quickcontrols' 'qt5-svg' 'ffmpeg')
+depends=('qt5-quickcontrols' 'qt5-svg' 'ffmpeg' 'libpulse')
 makedepends=('git' 'qt5-tools')
 provides=('webcamoid')
 conflicts=('kdeplasma-applets-webcamoid' 'webcamoid')
