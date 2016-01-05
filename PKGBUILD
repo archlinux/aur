@@ -6,7 +6,7 @@
 pkgbase=linux-next-git
 pkgname=("${pkgbase}")
 _srcname=linux-next
-pkgver=20151229
+pkgver=20160105
 pkgrel=1
 arch=('any')
 url="http://www.kernel.org/"
