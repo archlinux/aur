@@ -1,7 +1,7 @@
 # Maintainer: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
 
 pkgname=blast+
-pkgver=2.2.31
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="finds regions of similarity between biological sequences"
 arch=('i686' 'x86_64')
@@ -12,19 +12,8 @@ makedepends=('cpio')
 conflicts=('blast' 'blast+-bin' 'ncbi-blast' 'ncbi-blast+' 'cddlib' 'proj')
 provides=('blast' 'blast+-bin' 'ncbi-blast' 'ncbi-blast+')
 replaces=('ncbi-blast')
-source=("ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/$pkgver/ncbi-blast-$pkgver+-src.tar.gz"
-        'typeinfo.patch')
-md5sums=('f32bd2d2c66205c53c6981f94e1a0d54'
-         '9c257a762ce4e7418e95a48723832a86')
-
-prepare() {
-  cd $srcdir/ncbi-blast-$pkgver+-src/c++
-
-  patch -p1 -i $srcdir/typeinfo.patch
-
-  sed -e '/if test "$with_mt" != "no" ; then/i compiler=GCC' \
-      -i src/build-system/configure
-}
+source=("ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/$pkgver/ncbi-blast-$pkgver+-src.tar.gz")
+md5sums=('0f252f0edf6c92e18012622fc93083b0')
 
 build() {
   cd $srcdir/ncbi-blast-$pkgver+-src/c++
