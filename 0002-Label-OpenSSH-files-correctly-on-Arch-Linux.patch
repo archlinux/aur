@@ -1,0 +1,48 @@
+From 8390c8ec40ce676e089ab58a5ad02237fd7f3088 Mon Sep 17 00:00:00 2001
+From: Nicolas Iooss <nicolas.iooss@m4x.org>
+Date: Tue, 5 Jan 2016 17:56:14 +0100
+Subject: [PATCH] Label OpenSSH files correctly on Arch Linux
+
+On Arch Linux, OpenSSH installs these binary files in /usr/lib/ssh:
+
+* sftp-server (labeled with ssh_keysign_exec_t type in refpolicy)
+* ssh-askpass (symlink to x11-ssh-askpass)
+* ssh-keysign
+* ssh-pkcs11-helper
+* x11-ssh-askpass (from x11-ssh-askpass package)
+
+Label all these files but sftp-server as bin_t.
+---
+ policy/modules/kernel/corecommands.fc | 1 +
+ policy/modules/services/ssh.fc        | 3 ++-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/policy/modules/kernel/corecommands.fc b/policy/modules/kernel/corecommands.fc
+index 77d6a180285a..fed2613768ba 100644
+--- a/policy/modules/kernel/corecommands.fc
++++ b/policy/modules/kernel/corecommands.fc
+@@ -234,6 +234,7 @@ ifdef(`distro_gentoo',`
+ /usr/lib/rpm/rpmq		-- 	gen_context(system_u:object_r:bin_t,s0)
+ /usr/lib/rpm/rpmv		-- 	gen_context(system_u:object_r:bin_t,s0)
+ /usr/lib/sftp-server		--	gen_context(system_u:object_r:bin_t,s0)
++/usr/lib/ssh(/.*)?			gen_context(system_u:object_r:bin_t,s0)
+ /usr/lib/sudo/sesh		--	gen_context(system_u:object_r:shell_exec_t,s0)
+ /usr/lib/systemd/system-generators(/.*)? gen_context(system_u:object_r:bin_t,s0)
+ /usr/lib/systemd/user-generators(/.*)?	gen_context(system_u:object_r:bin_t,s0)
+diff --git a/policy/modules/services/ssh.fc b/policy/modules/services/ssh.fc
+index 8168244583d0..fd6c2184a0c1 100644
+--- a/policy/modules/services/ssh.fc
++++ b/policy/modules/services/ssh.fc
+@@ -7,7 +7,8 @@ HOME_DIR/\.ssh(/.*)?			gen_context(system_u:object_r:ssh_home_t,s0)
+ /usr/bin/ssh-agent		--	gen_context(system_u:object_r:ssh_agent_exec_t,s0)
+ /usr/bin/ssh-keygen		--	gen_context(system_u:object_r:ssh_keygen_exec_t,s0)
+ 
+-/usr/lib/openssh/ssh-keysign	 --	gen_context(system_u:object_r:ssh_keysign_exec_t,s0)
++/usr/lib/openssh/ssh-keysign	--	gen_context(system_u:object_r:ssh_keysign_exec_t,s0)
++/usr/lib/ssh/ssh-keysign	--	gen_context(system_u:object_r:ssh_keysign_exec_t,s0)
+ 
+ /usr/libexec/openssh/ssh-keysign --	gen_context(system_u:object_r:ssh_keysign_exec_t,s0)
+ 
+-- 
+2.6.4
+

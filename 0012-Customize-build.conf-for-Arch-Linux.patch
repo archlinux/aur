@@ -1,0 +1,52 @@
+From b5ec846a5f193a4a3dc194e346fea32fd0e9c005 Mon Sep 17 00:00:00 2001
+From: Nicolas Iooss <nicolas.iooss@m4x.org>
+Date: Tue, 5 Jan 2016 17:58:47 +0100
+Subject: [PATCH] Customize build.conf for Arch Linux
+
+---
+ build.conf | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/build.conf b/build.conf
+index 087d952a4b76..afa3ebc6171b 100644
+--- a/build.conf
++++ b/build.conf
+@@ -18,7 +18,7 @@ TYPE = standard
+ # If set, this will be used as the policy
+ # name.  Otherwise the policy type will be
+ # used for the name.
+-NAME = refpolicy
++NAME = refpolicy-arch
+ 
+ # Distribution
+ # Some distributions have portions of policy
+@@ -27,7 +27,7 @@ NAME = refpolicy
+ # for the distribution.
+ # redhat, gentoo, debian, suse, and rhel4 are current options.
+ # Fedora users should enable redhat.
+-#DISTRO = redhat
++DISTRO = arch
+ 
+ # Unknown Permissions Handling
+ # The behavior for handling permissions defined in the
+@@ -46,7 +46,7 @@ DIRECT_INITRC = n
+ 
+ # Systemd
+ # Setting this will configure systemd as the init system.
+-SYSTEMD = n
++SYSTEMD = y
+ 
+ # Build monolithic policy.  Putting y here
+ # will build a monolithic policy.
+@@ -54,7 +54,7 @@ MONOLITHIC = n
+ 
+ # User-based access control (UBAC)
+ # Enable UBAC for role separations.
+-UBAC = y
++UBAC = n
+ 
+ # Custom build options.  This field enables custom
+ # build options.  Putting foo here will enable
+-- 
+2.6.4
+

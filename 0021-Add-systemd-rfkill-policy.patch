@@ -1,0 +1,62 @@
+From 304aee298451e661d73c999154771cdeaf85c024 Mon Sep 17 00:00:00 2001
+From: Nicolas Iooss <nicolas.iooss@m4x.org>
+Date: Tue, 5 Jan 2016 18:03:57 +0100
+Subject: [PATCH] Add systemd-rfkill policy
+
+---
+ policy/modules/system/systemd.fc |  1 +
+ policy/modules/system/systemd.te | 19 +++++++++++++++++++
+ 2 files changed, 20 insertions(+)
+
+diff --git a/policy/modules/system/systemd.fc b/policy/modules/system/systemd.fc
+index 30cc741fe0df..e5006e2b4f10 100644
+--- a/policy/modules/system/systemd.fc
++++ b/policy/modules/system/systemd.fc
+@@ -28,6 +28,7 @@
+ /usr/lib/systemd/systemd-logind		--	gen_context(system_u:object_r:systemd_logind_exec_t,s0)
+ /usr/lib/systemd/systemd-machined	--	gen_context(system_u:object_r:systemd_machined_exec_t,s0)
+ /usr/lib/systemd/systemd-modules-load	--	gen_context(system_u:object_r:systemd_modules_load_exec_t,s0)
++/usr/lib/systemd/systemd-rfkill		--	gen_context(system_u:object_r:systemd_rfkill_exec_t,s0)
+ /usr/lib/systemd/systemd-timedated	--	gen_context(system_u:object_r:systemd_timedated_exec_t,s0)
+ /usr/lib/systemd/systemd-timesyncd	--	gen_context(system_u:object_r:systemd_timesyncd_exec_t,s0)
+ 
+diff --git a/policy/modules/system/systemd.te b/policy/modules/system/systemd.te
+index af3eb5972d31..2acf552ac55c 100644
+--- a/policy/modules/system/systemd.te
++++ b/policy/modules/system/systemd.te
+@@ -85,6 +85,10 @@ type systemd_nspawn_t;
+ type systemd_nspawn_exec_t;
+ init_system_domain(systemd_nspawn_t, systemd_nspawn_exec_t)
+ 
++type systemd_rfkill_t;
++type systemd_rfkill_exec_t;
++init_system_domain(systemd_rfkill_t, systemd_rfkill_exec_t)
++
+ type systemd_run_t;
+ type systemd_run_exec_t;
+ init_daemon_domain(systemd_run_t, systemd_run_exec_t)
+@@ -276,6 +280,21 @@ kernel_load_module(systemd_modules_load_t)
+ modutils_read_module_config(systemd_modules_load_t)
+ modutils_read_module_deps(systemd_modules_load_t)
+ 
++#######################################
++#
++# Rfkill local policy
++#
++
++systemd_parse_log_environment(systemd_rfkill_t)
++
++dev_read_sysfs(systemd_rfkill_t)
++dev_rw_wireless(systemd_rfkill_t)
++
++# Allow reading /etc/udev/udev.conf
++files_read_etc_files(systemd_rfkill_t)
++# Allow reading /run/udev/data/+rfkill:rfkill0
++udev_read_pid_files(systemd_rfkill_t)
++
+ #########################################
+ #
+ # Sessions local policy
+-- 
+2.6.4
+

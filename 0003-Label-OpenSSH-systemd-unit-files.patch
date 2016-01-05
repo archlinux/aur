@@ -1,0 +1,64 @@
+From d6444195e677f35c2c7d27150d85b148f5ee596c Mon Sep 17 00:00:00 2001
+From: Nicolas Iooss <nicolas.iooss@m4x.org>
+Date: Tue, 5 Jan 2016 17:56:15 +0100
+Subject: [PATCH] Label OpenSSH systemd unit files
+
+On Arch Linux, OpenSSH unit files are:
+    /usr/lib/systemd/system/sshdgenkeys.service
+    /usr/lib/systemd/system/sshd.service
+    /usr/lib/systemd/system/sshd@.service
+    /usr/lib/systemd/system/sshd.socket
+
+On Debian jessie, the unit files are:
+    /lib/systemd/system/ssh.service
+    /lib/systemd/system/ssh@.service
+    /lib/systemd/system/ssh.socket
+
+On Fedora 22, the unit files are:
+    /usr/lib/systemd/system/sshd-keygen.service
+    /usr/lib/systemd/system/sshd.service
+    /usr/lib/systemd/system/sshd@.service
+    /usr/lib/systemd/system/sshd.socket
+
+Use a pattern which matches every sshd unit and introduce an other type
+for ssh-keygen units.
+---
+ policy/modules/services/ssh.fc | 4 ++++
+ policy/modules/services/ssh.te | 6 ++++++
+ 2 files changed, 10 insertions(+)
+
+diff --git a/policy/modules/services/ssh.fc b/policy/modules/services/ssh.fc
+index fd6c2184a0c1..027c8a87a902 100644
+--- a/policy/modules/services/ssh.fc
++++ b/policy/modules/services/ssh.fc
+@@ -10,6 +10,10 @@ HOME_DIR/\.ssh(/.*)?			gen_context(system_u:object_r:ssh_home_t,s0)
+ /usr/lib/openssh/ssh-keysign	--	gen_context(system_u:object_r:ssh_keysign_exec_t,s0)
+ /usr/lib/ssh/ssh-keysign	--	gen_context(system_u:object_r:ssh_keysign_exec_t,s0)
+ 
++/usr/lib/systemd/system/ssh.*		--	gen_context(system_u:object_r:sshd_unit_t,s0)
++/usr/lib/systemd/system/sshdgenkeys.*	--	gen_context(system_u:object_r:sshd_keygen_unit_t,s0)
++/usr/lib/systemd/system/sshd-keygen.*	--	gen_context(system_u:object_r:sshd_keygen_unit_t,s0)
++
+ /usr/libexec/openssh/ssh-keysign --	gen_context(system_u:object_r:ssh_keysign_exec_t,s0)
+ 
+ /usr/sbin/sshd			--	gen_context(system_u:object_r:sshd_exec_t,s0)
+diff --git a/policy/modules/services/ssh.te b/policy/modules/services/ssh.te
+index 06fe64fde790..1c683b73a3ff 100644
+--- a/policy/modules/services/ssh.te
++++ b/policy/modules/services/ssh.te
+@@ -47,6 +47,12 @@ type sshd_tmp_t;
+ files_tmp_file(sshd_tmp_t)
+ files_poly_parent(sshd_tmp_t)
+ 
++type sshd_keygen_unit_t;
++init_unit_file(sshd_keygen_unit_t)
++
++type sshd_unit_t;
++init_unit_file(sshd_unit_t)
++
+ ifdef(`enable_mcs',`
+ 	init_ranged_daemon_domain(sshd_t, sshd_exec_t, s0 - mcs_systemhigh)
+ ')
+-- 
+2.6.4
+

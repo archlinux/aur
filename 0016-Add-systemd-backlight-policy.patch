@@ -1,0 +1,64 @@
+From 14d747bd11bd874a3ea2d3587dba71dfc722ca01 Mon Sep 17 00:00:00 2001
+From: Nicolas Iooss <nicolas.iooss@m4x.org>
+Date: Tue, 5 Jan 2016 18:01:18 +0100
+Subject: [PATCH] Add systemd-backlight policy
+
+---
+ policy/modules/system/systemd.fc |  1 +
+ policy/modules/system/systemd.te | 21 +++++++++++++++++++++
+ 2 files changed, 22 insertions(+)
+
+diff --git a/policy/modules/system/systemd.fc b/policy/modules/system/systemd.fc
+index b71bab68a29b..8c6b9d0c2d21 100644
+--- a/policy/modules/system/systemd.fc
++++ b/policy/modules/system/systemd.fc
+@@ -37,6 +37,7 @@
+ /usr/lib/systemd/system/[^/]*sleep.*	--	gen_context(system_u:object_r:power_unit_t,s0)
+ /usr/lib/systemd/system/[^/]*suspend.*	--	gen_context(system_u:object_r:power_unit_t,s0)
+ 
++/var/lib/systemd/backlight(/.*)?	gen_context(system_u:object_r:systemd_backlight_var_lib_t,s0)
+ /var/lib/systemd/linger(/.*)?	gen_context(system_u:object_r:systemd_logind_var_lib_t,s0)
+ 
+ /var/run/\.nologin[^/]*	--	gen_context(system_u:object_r:systemd_sessions_var_run_t,s0)
+diff --git a/policy/modules/system/systemd.te b/policy/modules/system/systemd.te
+index 87e678d4baec..9f42929c3a9e 100644
+--- a/policy/modules/system/systemd.te
++++ b/policy/modules/system/systemd.te
+@@ -24,6 +24,9 @@ type systemd_backlight_t;
+ type systemd_backlight_exec_t;
+ init_system_domain(systemd_backlight_t, systemd_backlight_exec_t)
+ 
++type systemd_backlight_var_lib_t;
++files_type(systemd_backlight_var_lib_t)
++
+ type systemd_binfmt_t;
+ type systemd_binfmt_exec_t;
+ init_system_domain(systemd_binfmt_t, systemd_binfmt_exec_t)
+@@ -111,6 +114,24 @@ init_daemon_domain(systemd_tmpfiles_t, systemd_tmpfiles_exec_t)
+ type power_unit_t;
+ init_unit_file(power_unit_t)
+ 
++#######################################
++#
++# Backlight local policy
++#
++
++allow systemd_backlight_t systemd_backlight_var_lib_t:dir manage_dir_perms;
++init_var_lib_filetrans(systemd_backlight_t, systemd_backlight_var_lib_t, dir)
++manage_files_pattern(systemd_backlight_t, systemd_backlight_var_lib_t, systemd_backlight_var_lib_t)
++
++systemd_parse_log_environment(systemd_backlight_t)
++
++# Allow systemd-backlight to write to /sys/class/backlight/*/brightness
++dev_rw_sysfs(systemd_backlight_t)
++
++files_read_etc_files(systemd_backlight_t)
++
++udev_read_pid_files(systemd_backlight_t)
++
+ ######################################
+ #
+ # Cgroups local policy
+-- 
+2.6.4
+

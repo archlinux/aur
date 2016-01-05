@@ -1,0 +1,92 @@
+From a5ff89662ba53f5f9c57f3ee352117b544d41fd8 Mon Sep 17 00:00:00 2001
+From: Nicolas Iooss <nicolas.iooss@m4x.org>
+Date: Tue, 5 Jan 2016 18:02:36 +0100
+Subject: [PATCH] systemd-timedated and systemd-timesyncd policies
+
+---
+ policy/modules/system/systemd.fc |  2 ++
+ policy/modules/system/systemd.te | 48 ++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 50 insertions(+)
+
+diff --git a/policy/modules/system/systemd.fc b/policy/modules/system/systemd.fc
+index 8c6b9d0c2d21..da5a5860fd7a 100644
+--- a/policy/modules/system/systemd.fc
++++ b/policy/modules/system/systemd.fc
+@@ -27,6 +27,8 @@
+ /usr/lib/systemd/systemd-localed	--	gen_context(system_u:object_r:systemd_locale_exec_t,s0)
+ /usr/lib/systemd/systemd-logind		--	gen_context(system_u:object_r:systemd_logind_exec_t,s0)
+ /usr/lib/systemd/systemd-machined	--	gen_context(system_u:object_r:systemd_machined_exec_t,s0)
++/usr/lib/systemd/systemd-timedated	--	gen_context(system_u:object_r:systemd_timedated_exec_t,s0)
++/usr/lib/systemd/systemd-timesyncd	--	gen_context(system_u:object_r:systemd_timesyncd_exec_t,s0)
+ 
+ # Systemd unit files
+ /usr/lib/systemd/system/[^/]*halt.*	--	gen_context(system_u:object_r:power_unit_t,s0)
+diff --git a/policy/modules/system/systemd.te b/policy/modules/system/systemd.te
+index f53557835c37..5ad343308d07 100644
+--- a/policy/modules/system/systemd.te
++++ b/policy/modules/system/systemd.te
+@@ -101,6 +101,14 @@ type systemd_sessions_var_run_t;
+ files_pid_file(systemd_sessions_var_run_t)
+ init_daemon_pid_file(systemd_sessions_var_run_t, dir, "systemd_sessions")
+ 
++type systemd_timedated_t;
++type systemd_timedated_exec_t;
++init_daemon_domain(systemd_timedated_t, systemd_timedated_exec_t)
++
++type systemd_timesyncd_t;
++type systemd_timesyncd_exec_t;
++init_daemon_domain(systemd_timesyncd_t, systemd_timesyncd_exec_t)
++
+ type systemd_tmpfiles_t;
+ type systemd_tmpfiles_exec_t;
+ type systemd_kmod_conf_t;
+@@ -263,6 +271,46 @@ logging_send_syslog_msg(systemd_sessions_t)
+ 
+ #########################################
+ #
++# Timedated local policy
++#
++
++systemd_parse_log_environment(systemd_timedated_t)
++
++clock_read_adjtime(systemd_timedated_t)
++dev_read_realtime_clock(systemd_timedated_t)
++
++dbus_system_bus_client(systemd_timedated_t)
++init_dbus_chat(systemd_timedated_t)
++miscfiles_read_localization(systemd_timedated_t)
++
++# Read /proc/sys/kernel/random/boot_id
++kernel_read_kernel_sysctls(systemd_timedated_t)
++
++#########################################
++#
++# Timesyncd local policy
++#
++
++allow systemd_timesyncd_t self:capability { setgid setpcap setuid sys_time };
++allow systemd_timesyncd_t self:process { getcap setcap };
++
++systemd_parse_log_environment(systemd_timesyncd_t)
++
++clock_read_adjtime(systemd_timesyncd_t)
++kernel_read_kernel_sysctls(systemd_timesyncd_t)
++sysnet_read_config(systemd_timesyncd_t)
++
++corenet_udp_sendrecv_ntp_port(systemd_timesyncd_t)
++corenet_udp_bind_generic_node(systemd_timesyncd_t)
++#sysnet_dns_name_resolve(systemd_timesyncd_t)
++auth_use_nsswitch(systemd_timesyncd_t)
++
++# Allow opening /var/lib/systemd/clock read-write
++allow systemd_timesyncd_t self:capability { chown dac_override fowner };
++init_manage_var_lib_files(systemd_timesyncd_t)
++
++#########################################
++#
+ # Tmpfiles local policy
+ #
+ 
+-- 
+2.6.4
+

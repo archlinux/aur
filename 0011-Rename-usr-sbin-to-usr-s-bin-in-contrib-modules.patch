@@ -1,0 +1,3354 @@
+From caa1f48ba9ef7d8a3ae5dc228100e3db86c4dbb6 Mon Sep 17 00:00:00 2001
+From: Nicolas Iooss <nicolas.iooss@m4x.org>
+Date: Tue, 5 Jan 2016 17:58:31 +0100
+Subject: [PATCH] Rename /usr/sbin to /usr/s?bin in contrib modules
+
+On Archlinux, /bin, /sbin and /usr/sbin are symlinks to /usr/bin.
+Therefore the files in these directories need to have the same context,
+defined by /usr/s?bin.
+
+This commit applies this in contrib modules.
+---
+ policy/modules/contrib/abrt.fc           |  6 +++---
+ policy/modules/contrib/acct.fc           |  2 +-
+ policy/modules/contrib/afs.fc            |  4 ++--
+ policy/modules/contrib/aiccu.fc          |  2 +-
+ policy/modules/contrib/aisexec.fc        |  2 +-
+ policy/modules/contrib/alsa.fc           |  4 ++--
+ policy/modules/contrib/amanda.fc         |  4 ++--
+ policy/modules/contrib/amavis.fc         |  4 ++--
+ policy/modules/contrib/apache.fc         | 24 ++++++++++++------------
+ policy/modules/contrib/apcupsd.fc        |  2 +-
+ policy/modules/contrib/apm.fc            |  6 +++---
+ policy/modules/contrib/apt.fc            |  2 +-
+ policy/modules/contrib/arpwatch.fc       |  2 +-
+ policy/modules/contrib/asterisk.fc       |  2 +-
+ policy/modules/contrib/automount.fc      |  2 +-
+ policy/modules/contrib/avahi.fc          |  6 +++---
+ policy/modules/contrib/bacula.fc         |  6 +++---
+ policy/modules/contrib/bcfg2.fc          |  2 +-
+ policy/modules/contrib/bind.fc           | 10 +++++-----
+ policy/modules/contrib/bird.fc           |  2 +-
+ policy/modules/contrib/bitlbee.fc        |  2 +-
+ policy/modules/contrib/bluetooth.fc      | 10 +++++-----
+ policy/modules/contrib/brctl.fc          |  2 +-
+ policy/modules/contrib/cachefilesd.fc    |  2 +-
+ policy/modules/contrib/callweaver.fc     |  2 +-
+ policy/modules/contrib/canna.fc          |  4 ++--
+ policy/modules/contrib/ccs.fc            |  2 +-
+ policy/modules/contrib/certmonger.fc     |  2 +-
+ policy/modules/contrib/cfengine.fc       |  6 +++---
+ policy/modules/contrib/cgroup.fc         |  6 +++---
+ policy/modules/contrib/chronyd.fc        |  2 +-
+ policy/modules/contrib/cipe.fc           |  2 +-
+ policy/modules/contrib/clamav.fc         |  4 ++--
+ policy/modules/contrib/clogd.fc          |  2 +-
+ policy/modules/contrib/cmirrord.fc       |  2 +-
+ policy/modules/contrib/collectd.fc       |  2 +-
+ policy/modules/contrib/comsat.fc         |  2 +-
+ policy/modules/contrib/condor.fc         | 14 +++++++-------
+ policy/modules/contrib/consolekit.fc     |  2 +-
+ policy/modules/contrib/corosync.fc       |  4 ++--
+ policy/modules/contrib/courier.fc        | 12 ++++++------
+ policy/modules/contrib/cpucontrol.fc     |  8 ++++----
+ policy/modules/contrib/cron.fc           | 10 +++++-----
+ policy/modules/contrib/ctdb.fc           |  2 +-
+ policy/modules/contrib/cups.fc           | 16 ++++++++--------
+ policy/modules/contrib/dante.fc          |  4 ++--
+ policy/modules/contrib/dbskk.fc          |  2 +-
+ policy/modules/contrib/dbus.fc           |  2 +-
+ policy/modules/contrib/dcc.fc            |  8 ++++----
+ policy/modules/contrib/ddclient.fc       |  4 ++--
+ policy/modules/contrib/ddcprobe.fc       |  2 +-
+ policy/modules/contrib/dhcp.fc           |  2 +-
+ policy/modules/contrib/dictd.fc          |  2 +-
+ policy/modules/contrib/dkim.fc           |  4 ++--
+ policy/modules/contrib/dmidecode.fc      |  8 ++++----
+ policy/modules/contrib/dnsmasq.fc        |  2 +-
+ policy/modules/contrib/dnssectrigger.fc  |  2 +-
+ policy/modules/contrib/dovecot.fc        |  2 +-
+ policy/modules/contrib/dpkg.fc           |  4 ++--
+ policy/modules/contrib/drbd.fc           |  4 ++--
+ policy/modules/contrib/entropyd.fc       |  4 ++--
+ policy/modules/contrib/exim.fc           |  4 ++--
+ policy/modules/contrib/fcoe.fc           |  2 +-
+ policy/modules/contrib/finger.fc         |  4 ++--
+ policy/modules/contrib/firewalld.fc      |  2 +-
+ policy/modules/contrib/firstboot.fc      |  2 +-
+ policy/modules/contrib/ftp.fc            | 10 +++++-----
+ policy/modules/contrib/gatekeeper.fc     |  4 ++--
+ policy/modules/contrib/glusterfs.fc      |  4 ++--
+ policy/modules/contrib/gpm.fc            |  2 +-
+ policy/modules/contrib/gpsd.fc           |  2 +-
+ policy/modules/contrib/hal.fc            |  4 ++--
+ policy/modules/contrib/hddtemp.fc        |  2 +-
+ policy/modules/contrib/hypervkvp.fc      |  2 +-
+ policy/modules/contrib/i18n_input.fc     |  4 ++--
+ policy/modules/contrib/ifplugd.fc        |  2 +-
+ policy/modules/contrib/inetd.fc          |  8 ++++----
+ policy/modules/contrib/inn.fc            |  4 ++--
+ policy/modules/contrib/iodine.fc         |  2 +-
+ policy/modules/contrib/ircd.fc           |  4 ++--
+ policy/modules/contrib/irqbalance.fc     |  2 +-
+ policy/modules/contrib/iscsi.fc          |  6 +++---
+ policy/modules/contrib/isns.fc           |  2 +-
+ policy/modules/contrib/jabber.fc         |  6 +++---
+ policy/modules/contrib/kdump.fc          |  4 ++--
+ policy/modules/contrib/kerberos.fc       |  4 ++--
+ policy/modules/contrib/kerneloops.fc     |  2 +-
+ policy/modules/contrib/ksmtuned.fc       |  2 +-
+ policy/modules/contrib/ktalk.fc          |  6 +++---
+ policy/modules/contrib/kudzu.fc          |  4 ++--
+ policy/modules/contrib/l2tp.fc           |  2 +-
+ policy/modules/contrib/ldap.fc           |  2 +-
+ policy/modules/contrib/likewise.fc       | 16 ++++++++--------
+ policy/modules/contrib/lircd.fc          |  2 +-
+ policy/modules/contrib/lldpad.fc         |  2 +-
+ policy/modules/contrib/lockdev.fc        |  2 +-
+ policy/modules/contrib/logrotate.fc      |  2 +-
+ policy/modules/contrib/logwatch.fc       |  6 +++---
+ policy/modules/contrib/lpd.fc            | 14 +++++++-------
+ policy/modules/contrib/mailscanner.fc    |  2 +-
+ policy/modules/contrib/mcelog.fc         |  2 +-
+ policy/modules/contrib/milter.fc         |  8 ++++----
+ policy/modules/contrib/minidlna.fc       |  2 +-
+ policy/modules/contrib/modemmanager.fc   |  4 ++--
+ policy/modules/contrib/monop.fc          |  2 +-
+ policy/modules/contrib/mta.fc            |  8 ++++----
+ policy/modules/contrib/munin.fc          |  2 +-
+ policy/modules/contrib/mysql.fc          |  6 +++---
+ policy/modules/contrib/nessus.fc         |  2 +-
+ policy/modules/contrib/networkmanager.fc | 12 ++++++------
+ policy/modules/contrib/nis.fc            |  8 ++++----
+ policy/modules/contrib/nscd.fc           |  2 +-
+ policy/modules/contrib/nsd.fc            |  8 ++++----
+ policy/modules/contrib/nslcd.fc          |  2 +-
+ policy/modules/contrib/ntop.fc           |  2 +-
+ policy/modules/contrib/ntp.fc            |  6 +++---
+ policy/modules/contrib/nut.fc            |  6 +++---
+ policy/modules/contrib/oav.fc            |  4 ++--
+ policy/modules/contrib/oddjob.fc         |  4 ++--
+ policy/modules/contrib/oident.fc         |  2 +-
+ policy/modules/contrib/openct.fc         |  4 ++--
+ policy/modules/contrib/openhpi.fc        |  2 +-
+ policy/modules/contrib/openvpn.fc        |  2 +-
+ policy/modules/contrib/pacemaker.fc      |  2 +-
+ policy/modules/contrib/pcmcia.fc         |  4 ++--
+ policy/modules/contrib/pcscd.fc          |  2 +-
+ policy/modules/contrib/pegasus.fc        |  4 ++--
+ policy/modules/contrib/perdition.fc      |  2 +-
+ policy/modules/contrib/pingd.fc          |  2 +-
+ policy/modules/contrib/pkcs.fc           |  2 +-
+ policy/modules/contrib/plymouthd.fc      |  2 +-
+ policy/modules/contrib/portmap.fc        |  6 +++---
+ policy/modules/contrib/portreserve.fc    |  2 +-
+ policy/modules/contrib/portslave.fc      |  4 ++--
+ policy/modules/contrib/postfix.fc        | 20 ++++++++++----------
+ policy/modules/contrib/postfixpolicyd.fc |  2 +-
+ policy/modules/contrib/postgrey.fc       |  2 +-
+ policy/modules/contrib/ppp.fc            | 10 +++++-----
+ policy/modules/contrib/prelink.fc        |  2 +-
+ policy/modules/contrib/prelude.fc        |  2 +-
+ policy/modules/contrib/privoxy.fc        |  2 +-
+ policy/modules/contrib/psad.fc           |  2 +-
+ policy/modules/contrib/pxe.fc            |  2 +-
+ policy/modules/contrib/qmail.fc          | 24 ++++++++++++------------
+ policy/modules/contrib/qpid.fc           |  2 +-
+ policy/modules/contrib/quota.fc          |  6 +++---
+ policy/modules/contrib/radius.fc         |  4 ++--
+ policy/modules/contrib/radvd.fc          |  2 +-
+ policy/modules/contrib/raid.fc           | 13 +++++++------
+ policy/modules/contrib/rdisc.fc          |  2 +-
+ policy/modules/contrib/readahead.fc      |  2 +-
+ policy/modules/contrib/redis.fc          |  2 +-
+ policy/modules/contrib/resmgr.fc         |  2 +-
+ policy/modules/contrib/rgmanager.fc      |  6 +++---
+ policy/modules/contrib/rhcs.fc           | 16 ++++++++--------
+ policy/modules/contrib/ricci.fc          |  4 ++--
+ policy/modules/contrib/rlogin.fc         |  2 +-
+ policy/modules/contrib/rngd.fc           |  2 +-
+ policy/modules/contrib/rpc.fc            | 16 ++++++++--------
+ policy/modules/contrib/rpcbind.fc        |  2 +-
+ policy/modules/contrib/rpm.fc            | 23 ++++++++++++-----------
+ policy/modules/contrib/rshd.fc           |  4 ++--
+ policy/modules/contrib/rwho.fc           |  2 +-
+ policy/modules/contrib/samba.fc          |  8 ++++----
+ policy/modules/contrib/samhain.fc        |  4 ++--
+ policy/modules/contrib/sanlock.fc        |  2 +-
+ policy/modules/contrib/sasl.fc           |  2 +-
+ policy/modules/contrib/sblim.fc          |  4 ++--
+ policy/modules/contrib/sensord.fc        |  2 +-
+ policy/modules/contrib/setroubleshoot.fc |  2 +-
+ policy/modules/contrib/shorewall.fc      |  4 ++--
+ policy/modules/contrib/shutdown.fc       |  2 +-
+ policy/modules/contrib/slpd.fc           |  2 +-
+ policy/modules/contrib/smartmon.fc       |  2 +-
+ policy/modules/contrib/smokeping.fc      |  2 +-
+ policy/modules/contrib/smstools.fc       |  2 +-
+ policy/modules/contrib/snmp.fc           |  6 +++---
+ policy/modules/contrib/snort.fc          |  2 +-
+ policy/modules/contrib/sosreport.fc      |  2 +-
+ policy/modules/contrib/soundserver.fc    |  2 +-
+ policy/modules/contrib/spamassassin.fc   |  4 ++--
+ policy/modules/contrib/speedtouch.fc     |  2 +-
+ policy/modules/contrib/squid.fc          |  2 +-
+ policy/modules/contrib/sssd.fc           |  2 +-
+ policy/modules/contrib/stunnel.fc        |  2 +-
+ policy/modules/contrib/sxid.fc           |  2 +-
+ policy/modules/contrib/tcpd.fc           |  2 +-
+ policy/modules/contrib/tcsd.fc           |  2 +-
+ policy/modules/contrib/telnet.fc         |  2 +-
+ policy/modules/contrib/tftp.fc           |  4 ++--
+ policy/modules/contrib/tgtd.fc           |  2 +-
+ policy/modules/contrib/tmpreaper.fc      |  4 ++--
+ policy/modules/contrib/tor.fc            |  2 +-
+ policy/modules/contrib/transproxy.fc     |  2 +-
+ policy/modules/contrib/tripwire.fc       |  8 ++++----
+ policy/modules/contrib/tuned.fc          |  2 +-
+ policy/modules/contrib/tzdata.fc         |  2 +-
+ policy/modules/contrib/ulogd.fc          |  2 +-
+ policy/modules/contrib/updfstab.fc       |  4 ++--
+ policy/modules/contrib/uptime.fc         |  2 +-
+ policy/modules/contrib/usbmodules.fc     |  2 +-
+ policy/modules/contrib/usbmuxd.fc        |  2 +-
+ policy/modules/contrib/userhelper.fc     |  2 +-
+ policy/modules/contrib/usernetctl.fc     |  2 +-
+ policy/modules/contrib/uucp.fc           |  2 +-
+ policy/modules/contrib/uuidd.fc          |  2 +-
+ policy/modules/contrib/uwimap.fc         |  2 +-
+ policy/modules/contrib/varnishd.fc       |  2 +-
+ policy/modules/contrib/vbetool.fc        |  2 +-
+ policy/modules/contrib/vdagent.fc        |  2 +-
+ policy/modules/contrib/vhostmd.fc        |  2 +-
+ policy/modules/contrib/virt.fc           | 10 +++++-----
+ policy/modules/contrib/vlock.fc          |  2 +-
+ policy/modules/contrib/vmware.fc         |  4 ++--
+ policy/modules/contrib/vnstatd.fc        |  2 +-
+ policy/modules/contrib/vpn.fc            |  2 +-
+ policy/modules/contrib/watchdog.fc       |  2 +-
+ policy/modules/contrib/wdmd.fc           |  2 +-
+ policy/modules/contrib/xen.fc            | 16 ++++++++--------
+ policy/modules/contrib/zebra.fc          |  8 ++++----
+ policy/modules/contrib/zosremote.fc      |  2 +-
+ 221 files changed, 459 insertions(+), 457 deletions(-)
+
+diff --git a/policy/modules/contrib/abrt.fc b/policy/modules/contrib/abrt.fc
+index 1a93dc5781c4..a41b29deb0d4 100644
+--- a/policy/modules/contrib/abrt.fc
++++ b/policy/modules/contrib/abrt.fc
+@@ -10,9 +10,9 @@
+ /usr/libexec/abrt-handle-event	--	gen_context(system_u:object_r:abrt_handle_event_exec_t,s0)
+ /usr/libexec/abrt-hook-python	--	gen_context(system_u:object_r:abrt_helper_exec_t,s0)
+ 
+-/usr/sbin/abrtd	--	gen_context(system_u:object_r:abrt_exec_t,s0)
+-/usr/sbin/abrt-dbus	--	gen_context(system_u:object_r:abrt_exec_t,s0)
+-/usr/sbin/abrt-upload-watch	--	gen_context(system_u:object_r:abrt_upload_watch_exec_t,s0)
++/usr/s?bin/abrtd	--	gen_context(system_u:object_r:abrt_exec_t,s0)
++/usr/s?bin/abrt-dbus	--	gen_context(system_u:object_r:abrt_exec_t,s0)
++/usr/s?bin/abrt-upload-watch	--	gen_context(system_u:object_r:abrt_upload_watch_exec_t,s0)
+ 
+ /var/cache/abrt(/.*)?	gen_context(system_u:object_r:abrt_var_cache_t,s0)
+ /var/cache/abrt-di(/.*)?	gen_context(system_u:object_r:abrt_var_cache_t,s0)
+diff --git a/policy/modules/contrib/acct.fc b/policy/modules/contrib/acct.fc
+index c6d17a2ff1fb..5b6fce2b08bf 100644
+--- a/policy/modules/contrib/acct.fc
++++ b/policy/modules/contrib/acct.fc
+@@ -4,7 +4,7 @@
+ 
+ /sbin/accton	--	gen_context(system_u:object_r:acct_exec_t,s0)
+ 
+-/usr/sbin/accton	--	gen_context(system_u:object_r:acct_exec_t,s0)
++/usr/s?bin/accton	--	gen_context(system_u:object_r:acct_exec_t,s0)
+ 
+ /var/account(/.*)?	gen_context(system_u:object_r:acct_data_t,s0)
+ 
+diff --git a/policy/modules/contrib/afs.fc b/policy/modules/contrib/afs.fc
+index c40fe9ae436d..d58010c9c160 100644
+--- a/policy/modules/contrib/afs.fc
++++ b/policy/modules/contrib/afs.fc
+@@ -38,8 +38,8 @@
+ /usr/libexec/openafs/volserver	--	gen_context(system_u:object_r:afs_fsserver_exec_t,s0)
+ /usr/libexec/openafs/vlserver	--	gen_context(system_u:object_r:afs_vlserver_exec_t,s0)
+ 
+-/usr/sbin/afsd	--	gen_context(system_u:object_r:afs_exec_t,s0)
+-/usr/sbin/bosserver	--	gen_context(system_u:object_r:afs_bosserver_exec_t,s0)
++/usr/s?bin/afsd	--	gen_context(system_u:object_r:afs_exec_t,s0)
++/usr/s?bin/bosserver	--	gen_context(system_u:object_r:afs_bosserver_exec_t,s0)
+ 
+ /usr/vice/cache(/.*)?	gen_context(system_u:object_r:afs_cache_t,s0)
+ /usr/vice/etc/afsd	--	gen_context(system_u:object_r:afs_exec_t,s0)
+diff --git a/policy/modules/contrib/aiccu.fc b/policy/modules/contrib/aiccu.fc
+index 822d5e18bbd6..beb99c0db487 100644
+--- a/policy/modules/contrib/aiccu.fc
++++ b/policy/modules/contrib/aiccu.fc
+@@ -2,6 +2,6 @@
+ 
+ /etc/rc\.d/init\.d/aiccu	--	gen_context(system_u:object_r:aiccu_initrc_exec_t,s0)
+ 
+-/usr/sbin/aiccu	--	gen_context(system_u:object_r:aiccu_exec_t,s0)
++/usr/s?bin/aiccu	--	gen_context(system_u:object_r:aiccu_exec_t,s0)
+ 
+ /var/run/aiccu\.pid	--	gen_context(system_u:object_r:aiccu_var_run_t,s0)
+diff --git a/policy/modules/contrib/aisexec.fc b/policy/modules/contrib/aisexec.fc
+index e882bed7b689..0c9311f04471 100644
+--- a/policy/modules/contrib/aisexec.fc
++++ b/policy/modules/contrib/aisexec.fc
+@@ -1,6 +1,6 @@
+ /etc/rc\.d/init\.d/openais	--	gen_context(system_u:object_r:aisexec_initrc_exec_t,s0)
+ 
+-/usr/sbin/aisexec	--	gen_context(system_u:object_r:aisexec_exec_t,s0)
++/usr/s?bin/aisexec	--	gen_context(system_u:object_r:aisexec_exec_t,s0)
+ 
+ /var/lib/openais(/.*)?	gen_context(system_u:object_r:aisexec_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/alsa.fc b/policy/modules/contrib/alsa.fc
+index a8c8a64088df..ad8698a5bc66 100644
+--- a/policy/modules/contrib/alsa.fc
++++ b/policy/modules/contrib/alsa.fc
+@@ -22,8 +22,8 @@ ifdef(`distro_debian',`
+ /usr/bin/ainit	--	gen_context(system_u:object_r:alsa_exec_t,s0)
+ /usr/bin/alsaunmute	--	gen_context(system_u:object_r:alsa_exec_t,s0)
+ 
+-/usr/sbin/alsactl	--	gen_context(system_u:object_r:alsa_exec_t,s0)
+-/usr/sbin/salsa	--	gen_context(system_u:object_r:alsa_exec_t,s0)
++/usr/s?bin/alsactl	--	gen_context(system_u:object_r:alsa_exec_t,s0)
++/usr/s?bin/salsa	--	gen_context(system_u:object_r:alsa_exec_t,s0)
+ 
+ /usr/share/alsa/alsa\.conf	gen_context(system_u:object_r:alsa_etc_rw_t,s0)
+ /usr/share/alsa/pcm(/.*)?	gen_context(system_u:object_r:alsa_etc_rw_t,s0)
+diff --git a/policy/modules/contrib/amanda.fc b/policy/modules/contrib/amanda.fc
+index 7f4dfbca3c8b..ebcbcae59aa8 100644
+--- a/policy/modules/contrib/amanda.fc
++++ b/policy/modules/contrib/amanda.fc
+@@ -13,8 +13,8 @@
+ /usr/lib/amanda/amidxtaped	--	gen_context(system_u:object_r:amanda_inetd_exec_t,s0)
+ /usr/lib/amanda/amindexd	--	gen_context(system_u:object_r:amanda_inetd_exec_t,s0)
+ 
+-/usr/sbin/amandad	--	gen_context(system_u:object_r:amanda_inetd_exec_t,s0)
+-/usr/sbin/amrecover	--	gen_context(system_u:object_r:amanda_recover_exec_t,s0)
++/usr/s?bin/amandad	--	gen_context(system_u:object_r:amanda_inetd_exec_t,s0)
++/usr/s?bin/amrecover	--	gen_context(system_u:object_r:amanda_recover_exec_t,s0)
+ 
+ /var/lib/amanda	-d	gen_context(system_u:object_r:amanda_var_lib_t,s0)
+ /var/lib/amanda/[^/]+(/.*)?	gen_context(system_u:object_r:amanda_data_t,s0)
+diff --git a/policy/modules/contrib/amavis.fc b/policy/modules/contrib/amavis.fc
+index 17689a70712d..693d8f98ac98 100644
+--- a/policy/modules/contrib/amavis.fc
++++ b/policy/modules/contrib/amavis.fc
+@@ -6,10 +6,10 @@
+ 
+ /usr/lib/AntiVir/antivir	--	gen_context(system_u:object_r:amavis_exec_t,s0)
+ 
+-/usr/sbin/amavisd.*	--	gen_context(system_u:object_r:amavis_exec_t,s0)
++/usr/s?bin/amavisd.*	--	gen_context(system_u:object_r:amavis_exec_t,s0)
+ 
+ ifdef(`distro_debian',`
+-/usr/sbin/amavisd-new-cronjob	--	gen_context(system_u:object_r:amavis_exec_t,s0)
++/usr/s?bin/amavisd-new-cronjob	--	gen_context(system_u:object_r:amavis_exec_t,s0)
+ ')
+ 
+ /var/opt/f-secure(/.*)?	gen_context(system_u:object_r:amavis_var_lib_t,s0)
+diff --git a/policy/modules/contrib/apache.fc b/policy/modules/contrib/apache.fc
+index b0c1392a7fab..caa2b1e7e682 100644
+--- a/policy/modules/contrib/apache.fc
++++ b/policy/modules/contrib/apache.fc
+@@ -53,20 +53,20 @@ HOME_DIR/((www)|(web)|(public_html))(/.*)?/logs(/.*)?	gen_context(system_u:objec
+ 
+ /usr/libexec/httpd-ssl-pass-dialog	--	gen_context(system_u:object_r:httpd_passwd_exec_t,s0)
+ 
+-/usr/sbin/apache(2)?	--	gen_context(system_u:object_r:httpd_exec_t,s0)
+-/usr/sbin/apache-ssl(2)?	--	gen_context(system_u:object_r:httpd_exec_t,s0)
+-/usr/sbin/cgi-wrapper	--	gen_context(system_u:object_r:httpd_exec_t,s0)
+-/usr/sbin/cherokee	--	gen_context(system_u:object_r:httpd_exec_t,s0)
+-/usr/sbin/hiawatha	--	gen_context(system_u:object_r:httpd_exec_t,s0)
+-/usr/sbin/httpd\.event	--	gen_context(system_u:object_r:httpd_exec_t,s0)
+-/usr/sbin/httpd(\.worker)?	--	gen_context(system_u:object_r:httpd_exec_t,s0)
+-/usr/sbin/lighttpd	--	gen_context(system_u:object_r:httpd_exec_t,s0)
+-/usr/sbin/rotatelogs	--	gen_context(system_u:object_r:httpd_rotatelogs_exec_t,s0)
+-/usr/sbin/suexec	--	gen_context(system_u:object_r:httpd_suexec_exec_t,s0)
+-/usr/sbin/wigwam	--	gen_context(system_u:object_r:httpd_exec_t,s0)
++/usr/s?bin/apache(2)?	--	gen_context(system_u:object_r:httpd_exec_t,s0)
++/usr/s?bin/apache-ssl(2)?	--	gen_context(system_u:object_r:httpd_exec_t,s0)
++/usr/s?bin/cgi-wrapper	--	gen_context(system_u:object_r:httpd_exec_t,s0)
++/usr/s?bin/cherokee	--	gen_context(system_u:object_r:httpd_exec_t,s0)
++/usr/s?bin/hiawatha	--	gen_context(system_u:object_r:httpd_exec_t,s0)
++/usr/s?bin/httpd\.event	--	gen_context(system_u:object_r:httpd_exec_t,s0)
++/usr/s?bin/httpd(\.worker)?	--	gen_context(system_u:object_r:httpd_exec_t,s0)
++/usr/s?bin/lighttpd	--	gen_context(system_u:object_r:httpd_exec_t,s0)
++/usr/s?bin/rotatelogs	--	gen_context(system_u:object_r:httpd_rotatelogs_exec_t,s0)
++/usr/s?bin/suexec	--	gen_context(system_u:object_r:httpd_suexec_exec_t,s0)
++/usr/s?bin/wigwam	--	gen_context(system_u:object_r:httpd_exec_t,s0)
+ 
+ ifdef(`distro_suse',`
+-/usr/sbin/httpd2-.*	--	gen_context(system_u:object_r:httpd_exec_t,s0)
++/usr/s?bin/httpd2-.*	--	gen_context(system_u:object_r:httpd_exec_t,s0)
+ ')
+ 
+ /usr/share/dirsrv(/.*)?	gen_context(system_u:object_r:httpd_sys_content_t,s0)
+diff --git a/policy/modules/contrib/apcupsd.fc b/policy/modules/contrib/apcupsd.fc
+index 5ec0e13c8792..21e641e6b960 100644
+--- a/policy/modules/contrib/apcupsd.fc
++++ b/policy/modules/contrib/apcupsd.fc
+@@ -2,7 +2,7 @@
+ 
+ /sbin/apcupsd	--	gen_context(system_u:object_r:apcupsd_exec_t,s0)
+ 
+-/usr/sbin/apcupsd	--	gen_context(system_u:object_r:apcupsd_exec_t,s0)
++/usr/s?bin/apcupsd	--	gen_context(system_u:object_r:apcupsd_exec_t,s0)
+ 
+ /var/lock/subsys/apcupsd	--	gen_context(system_u:object_r:apcupsd_lock_t,s0)
+ 
+diff --git a/policy/modules/contrib/apm.fc b/policy/modules/contrib/apm.fc
+index ce27d2fb3333..c35143aa46f6 100644
+--- a/policy/modules/contrib/apm.fc
++++ b/policy/modules/contrib/apm.fc
+@@ -2,9 +2,9 @@
+ 
+ /usr/bin/apm	--	gen_context(system_u:object_r:apm_exec_t,s0)
+ 
+-/usr/sbin/acpid	--	gen_context(system_u:object_r:apmd_exec_t,s0)
+-/usr/sbin/apmd	--	gen_context(system_u:object_r:apmd_exec_t,s0)
+-/usr/sbin/powersaved	--	gen_context(system_u:object_r:apmd_exec_t,s0)
++/usr/s?bin/acpid	--	gen_context(system_u:object_r:apmd_exec_t,s0)
++/usr/s?bin/apmd	--	gen_context(system_u:object_r:apmd_exec_t,s0)
++/usr/s?bin/powersaved	--	gen_context(system_u:object_r:apmd_exec_t,s0)
+ 
+ /var/lock/subsys/acpid	--	gen_context(system_u:object_r:apmd_lock_t,s0)
+ 
+diff --git a/policy/modules/contrib/apt.fc b/policy/modules/contrib/apt.fc
+index 7b2080169d07..6cb5384700cc 100644
+--- a/policy/modules/contrib/apt.fc
++++ b/policy/modules/contrib/apt.fc
+@@ -4,7 +4,7 @@ ifndef(`distro_redhat',`
+ /usr/bin/apt-get	--	gen_context(system_u:object_r:apt_exec_t,s0)
+ /usr/bin/apt-shell	--	gen_context(system_u:object_r:apt_exec_t,s0)
+ /usr/bin/aptitude	--	gen_context(system_u:object_r:apt_exec_t,s0)
+-/usr/sbin/synaptic	--	gen_context(system_u:object_r:apt_exec_t,s0)
++/usr/s?bin/synaptic	--	gen_context(system_u:object_r:apt_exec_t,s0)
+ /usr/lib/packagekit/packagekitd	--	gen_context(system_u:object_r:apt_exec_t,s0)
+ /var/cache/PackageKit(/.*)?	gen_context(system_u:object_r:apt_var_cache_t,s0)
+ /var/lib/PackageKit(/.*)?	gen_context(system_u:object_r:apt_var_lib_t,s0)
+diff --git a/policy/modules/contrib/arpwatch.fc b/policy/modules/contrib/arpwatch.fc
+index 9ca0d0fb8c45..af12072997b3 100644
+--- a/policy/modules/contrib/arpwatch.fc
++++ b/policy/modules/contrib/arpwatch.fc
+@@ -1,6 +1,6 @@
+ /etc/rc\.d/init\.d/arpwatch	--	gen_context(system_u:object_r:arpwatch_initrc_exec_t,s0)
+ 
+-/usr/sbin/arpwatch	--	gen_context(system_u:object_r:arpwatch_exec_t,s0)
++/usr/s?bin/arpwatch	--	gen_context(system_u:object_r:arpwatch_exec_t,s0)
+ 
+ /var/arpwatch(/.*)?	gen_context(system_u:object_r:arpwatch_data_t,s0)
+ 
+diff --git a/policy/modules/contrib/asterisk.fc b/policy/modules/contrib/asterisk.fc
+index e300b1a0ac77..c6e716f8a0aa 100644
+--- a/policy/modules/contrib/asterisk.fc
++++ b/policy/modules/contrib/asterisk.fc
+@@ -2,7 +2,7 @@
+ 
+ /etc/rc\.d/init\.d/asterisk	--	gen_context(system_u:object_r:asterisk_initrc_exec_t,s0)
+ 
+-/usr/sbin/asterisk	--	gen_context(system_u:object_r:asterisk_exec_t,s0)
++/usr/s?bin/asterisk	--	gen_context(system_u:object_r:asterisk_exec_t,s0)
+ 
+ /var/lib/asterisk(/.*)?	gen_context(system_u:object_r:asterisk_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/automount.fc b/policy/modules/contrib/automount.fc
+index 92adb37e151e..4a731d2b69b5 100644
+--- a/policy/modules/contrib/automount.fc
++++ b/policy/modules/contrib/automount.fc
+@@ -1,7 +1,7 @@
+ /etc/apm/event\.d/autofs	--	gen_context(system_u:object_r:automount_exec_t,s0)
+ /etc/rc\.d/init\.d/autofs	--	gen_context(system_u:object_r:automount_initrc_exec_t,s0)
+ 
+-/usr/sbin/automount	--	gen_context(system_u:object_r:automount_exec_t,s0)
++/usr/s?bin/automount	--	gen_context(system_u:object_r:automount_exec_t,s0)
+ 
+ /var/lock/subsys/autofs	--	gen_context(system_u:object_r:automount_lock_t,s0)
+ 
+diff --git a/policy/modules/contrib/avahi.fc b/policy/modules/contrib/avahi.fc
+index e9fe2cac150f..fc7c5eaf5ea9 100644
+--- a/policy/modules/contrib/avahi.fc
++++ b/policy/modules/contrib/avahi.fc
+@@ -1,8 +1,8 @@
+ /etc/rc\.d/init\.d/avahi.*	--	gen_context(system_u:object_r:avahi_initrc_exec_t,s0)
+ 
+-/usr/sbin/avahi-daemon	--	gen_context(system_u:object_r:avahi_exec_t,s0)
+-/usr/sbin/avahi-dnsconfd	--	gen_context(system_u:object_r:avahi_exec_t,s0)
+-/usr/sbin/avahi-autoipd	--	gen_context(system_u:object_r:avahi_exec_t,s0)
++/usr/s?bin/avahi-daemon	--	gen_context(system_u:object_r:avahi_exec_t,s0)
++/usr/s?bin/avahi-dnsconfd	--	gen_context(system_u:object_r:avahi_exec_t,s0)
++/usr/s?bin/avahi-autoipd	--	gen_context(system_u:object_r:avahi_exec_t,s0)
+ 
+ /var/run/avahi-daemon(/.*)?	gen_context(system_u:object_r:avahi_var_run_t,s0)
+ 
+diff --git a/policy/modules/contrib/bacula.fc b/policy/modules/contrib/bacula.fc
+index 27ec3d51938a..217f8779ae48 100644
+--- a/policy/modules/contrib/bacula.fc
++++ b/policy/modules/contrib/bacula.fc
+@@ -4,9 +4,9 @@
+ 
+ /etc/rc\.d/init\.d/bacula.*	--	gen_context(system_u:object_r:bacula_initrc_exec_t,s0)
+ 
+-/usr/sbin/bacula.*	--	gen_context(system_u:object_r:bacula_exec_t,s0)
+-/usr/sbin/bat	--	gen_context(system_u:object_r:bacula_admin_exec_t,s0)
+-/usr/sbin/bconsole	--	gen_context(system_u:object_r:bacula_admin_exec_t,s0)
++/usr/s?bin/bacula.*	--	gen_context(system_u:object_r:bacula_exec_t,s0)
++/usr/s?bin/bat	--	gen_context(system_u:object_r:bacula_admin_exec_t,s0)
++/usr/s?bin/bconsole	--	gen_context(system_u:object_r:bacula_admin_exec_t,s0)
+ 
+ /var/lib/bacula.*	gen_context(system_u:object_r:bacula_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/bcfg2.fc b/policy/modules/contrib/bcfg2.fc
+index fb42e352b398..985518fb3a28 100644
+--- a/policy/modules/contrib/bcfg2.fc
++++ b/policy/modules/contrib/bcfg2.fc
+@@ -1,6 +1,6 @@
+ /etc/rc\.d/init\.d/bcfg2-server	--	gen_context(system_u:object_r:bcfg2_initrc_exec_t,s0)
+ 
+-/usr/sbin/bcfg2-server	--	gen_context(system_u:object_r:bcfg2_exec_t,s0)
++/usr/s?bin/bcfg2-server	--	gen_context(system_u:object_r:bcfg2_exec_t,s0)
+ 
+ /var/lib/bcfg2(/.*)?	gen_context(system_u:object_r:bcfg2_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/bind.fc b/policy/modules/contrib/bind.fc
+index 2b9a3a10d463..ca6c477d4695 100644
+--- a/policy/modules/contrib/bind.fc
++++ b/policy/modules/contrib/bind.fc
+@@ -14,11 +14,11 @@
+ /etc/unbound(/.*)?	gen_context(system_u:object_r:named_conf_t,s0)
+ /etc/unbound/.*\.key	--	gen_context(system_u:object_r:dnssec_t,s0)
+ 
+-/usr/sbin/lwresd	--	gen_context(system_u:object_r:named_exec_t,s0)
+-/usr/sbin/named	--	gen_context(system_u:object_r:named_exec_t,s0)
+-/usr/sbin/named-checkconf	--	gen_context(system_u:object_r:named_checkconf_exec_t,s0)
+-/usr/sbin/r?ndc	--	gen_context(system_u:object_r:ndc_exec_t,s0)
+-/usr/sbin/unbound	--	gen_context(system_u:object_r:named_exec_t,s0)
++/usr/s?bin/lwresd	--	gen_context(system_u:object_r:named_exec_t,s0)
++/usr/s?bin/named	--	gen_context(system_u:object_r:named_exec_t,s0)
++/usr/s?bin/named-checkconf	--	gen_context(system_u:object_r:named_checkconf_exec_t,s0)
++/usr/s?bin/r?ndc	--	gen_context(system_u:object_r:ndc_exec_t,s0)
++/usr/s?bin/unbound	--	gen_context(system_u:object_r:named_exec_t,s0)
+ 
+ /var/bind(/.*)?	gen_context(system_u:object_r:named_cache_t,s0)
+ /var/bind/pri(/.*)?	gen_context(system_u:object_r:named_zone_t,s0)
+diff --git a/policy/modules/contrib/bird.fc b/policy/modules/contrib/bird.fc
+index 7b63b8e11add..ba1a0155a39c 100644
+--- a/policy/modules/contrib/bird.fc
++++ b/policy/modules/contrib/bird.fc
+@@ -4,7 +4,7 @@
+ 
+ /etc/rc\.d/init\.d/bird	--	gen_context(system_u:object_r:bird_initrc_exec_t,s0)
+ 
+-/usr/sbin/bird	--	gen_context(system_u:object_r:bird_exec_t,s0)
++/usr/s?bin/bird	--	gen_context(system_u:object_r:bird_exec_t,s0)
+ 
+ /var/log/bird\.log.*	--	gen_context(system_u:object_r:bird_log_t,s0)
+ 
+diff --git a/policy/modules/contrib/bitlbee.fc b/policy/modules/contrib/bitlbee.fc
+index e9708d6cc534..c64d72386472 100644
+--- a/policy/modules/contrib/bitlbee.fc
++++ b/policy/modules/contrib/bitlbee.fc
+@@ -3,7 +3,7 @@
+ /etc/rc\.d/init\.d/bitlbee	--	gen_context(system_u:object_r:bitlbee_initrc_exec_t,s0)
+ 
+ /usr/bin/bip	--	gen_context(system_u:object_r:bitlbee_exec_t,s0)
+-/usr/sbin/bitlbee	--	gen_context(system_u:object_r:bitlbee_exec_t,s0)
++/usr/s?bin/bitlbee	--	gen_context(system_u:object_r:bitlbee_exec_t,s0)
+ 
+ /var/lib/bitlbee(/.*)?	gen_context(system_u:object_r:bitlbee_var_t,s0)
+ 
+diff --git a/policy/modules/contrib/bluetooth.fc b/policy/modules/contrib/bluetooth.fc
+index 4bc49adcdfcb..8fa0bae25021 100644
+--- a/policy/modules/contrib/bluetooth.fc
++++ b/policy/modules/contrib/bluetooth.fc
+@@ -13,11 +13,11 @@
+ # Systemd unit file
+ /usr/lib/systemd/system/[^/]*bluetooth.* -- gen_context(system_u:object_r:bluetooth_unit_t,s0)
+ 
+-/usr/sbin/bluetoothd	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
+-/usr/sbin/hciattach	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
+-/usr/sbin/hcid	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
+-/usr/sbin/hid2hci	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
+-/usr/sbin/sdpd	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
++/usr/s?bin/bluetoothd	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
++/usr/s?bin/hciattach	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
++/usr/s?bin/hcid	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
++/usr/s?bin/hid2hci	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
++/usr/s?bin/sdpd	--	gen_context(system_u:object_r:bluetooth_exec_t,s0)
+ 
+ /var/lib/bluetooth(/.*)?	gen_context(system_u:object_r:bluetooth_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/brctl.fc b/policy/modules/contrib/brctl.fc
+index 32f8ee972f15..1cd583ebf0f4 100644
+--- a/policy/modules/contrib/brctl.fc
++++ b/policy/modules/contrib/brctl.fc
+@@ -1 +1 @@
+-/usr/sbin/brctl	--	gen_context(system_u:object_r:brctl_exec_t,s0)
++/usr/s?bin/brctl	--	gen_context(system_u:object_r:brctl_exec_t,s0)
+diff --git a/policy/modules/contrib/cachefilesd.fc b/policy/modules/contrib/cachefilesd.fc
+index 648c7902bbec..5cbc7ab6d316 100644
+--- a/policy/modules/contrib/cachefilesd.fc
++++ b/policy/modules/contrib/cachefilesd.fc
+@@ -2,7 +2,7 @@
+ 
+ /sbin/cachefilesd	--	gen_context(system_u:object_r:cachefilesd_exec_t,s0)
+ 
+-/usr/sbin/cachefilesd	--	gen_context(system_u:object_r:cachefilesd_exec_t,s0)
++/usr/s?bin/cachefilesd	--	gen_context(system_u:object_r:cachefilesd_exec_t,s0)
+ 
+ /var/cache/fscache(/.*)?	gen_context(system_u:object_r:cachefilesd_cache_t,s0)
+ 
+diff --git a/policy/modules/contrib/callweaver.fc b/policy/modules/contrib/callweaver.fc
+index 70397fb7363d..c84322a2d0d1 100644
+--- a/policy/modules/contrib/callweaver.fc
++++ b/policy/modules/contrib/callweaver.fc
+@@ -1,6 +1,6 @@
+ /etc/rc\.d/init\.d/callweaver	--	gen_context(system_u:object_r:callweaver_initrc_exec_t,s0)
+ 
+-/usr/sbin/callweaver	--	gen_context(system_u:object_r:callweaver_exec_t,s0)
++/usr/s?bin/callweaver	--	gen_context(system_u:object_r:callweaver_exec_t,s0)
+ 
+ /var/lib/callweaver(/.*)?	gen_context(system_u:object_r:callweaver_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/canna.fc b/policy/modules/contrib/canna.fc
+index ef746fd6b194..a2d7578b0200 100644
+--- a/policy/modules/contrib/canna.fc
++++ b/policy/modules/contrib/canna.fc
+@@ -3,8 +3,8 @@
+ /usr/bin/cannaping	--	gen_context(system_u:object_r:canna_exec_t,s0)
+ /usr/bin/catdic	--	gen_context(system_u:object_r:canna_exec_t,s0)
+ 
+-/usr/sbin/cannaserver	--	gen_context(system_u:object_r:canna_exec_t,s0)
+-/usr/sbin/jserver	--	gen_context(system_u:object_r:canna_exec_t,s0)
++/usr/s?bin/cannaserver	--	gen_context(system_u:object_r:canna_exec_t,s0)
++/usr/s?bin/jserver	--	gen_context(system_u:object_r:canna_exec_t,s0)
+ 
+ /var/lib/canna/dic(/.*)?	gen_context(system_u:object_r:canna_var_lib_t,s0)
+ /var/lib/wnn/dic(/.*)?	gen_context(system_u:object_r:canna_var_lib_t,s0)
+diff --git a/policy/modules/contrib/ccs.fc b/policy/modules/contrib/ccs.fc
+index 401280102752..335e82ad8913 100644
+--- a/policy/modules/contrib/ccs.fc
++++ b/policy/modules/contrib/ccs.fc
+@@ -4,7 +4,7 @@
+ 
+ /sbin/ccsd	--	gen_context(system_u:object_r:ccs_exec_t,s0)
+ 
+-/usr/sbin/ccsd	--	gen_context(system_u:object_r:ccs_exec_t,s0)
++/usr/s?bin/ccsd	--	gen_context(system_u:object_r:ccs_exec_t,s0)
+ 
+ /var/lib/cluster/((ccs)|(ccsd)).*	gen_context(system_u:object_r:ccs_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/certmonger.fc b/policy/modules/contrib/certmonger.fc
+index ed298d8b6680..9110e6e3a68a 100644
+--- a/policy/modules/contrib/certmonger.fc
++++ b/policy/modules/contrib/certmonger.fc
+@@ -1,6 +1,6 @@
+ /etc/rc\.d/init\.d/certmonger	--	gen_context(system_u:object_r:certmonger_initrc_exec_t,s0)
+ 
+-/usr/sbin/certmonger	--	gen_context(system_u:object_r:certmonger_exec_t,s0)
++/usr/s?bin/certmonger	--	gen_context(system_u:object_r:certmonger_exec_t,s0)
+ 
+ /var/lib/certmonger(/.*)?	gen_context(system_u:object_r:certmonger_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/cfengine.fc b/policy/modules/contrib/cfengine.fc
+index 5b605d6b5ff0..b9f3a9db2e94 100644
+--- a/policy/modules/contrib/cfengine.fc
++++ b/policy/modules/contrib/cfengine.fc
+@@ -1,8 +1,8 @@
+ /etc/rc\.d/init\.d/((cf-serverd)|(cf-monitord)|(cf-execd))	--	gen_context(system_u:object_r:cfengine_initrc_exec_t,s0)
+ 
+-/usr/sbin/cf-serverd	--	gen_context(system_u:object_r:cfengine_serverd_exec_t,s0)
+-/usr/sbin/cf-execd	--	gen_context(system_u:object_r:cfengine_execd_exec_t,s0)
+-/usr/sbin/cf-monitord	--	gen_context(system_u:object_r:cfengine_monitord_exec_t,s0)
++/usr/s?bin/cf-serverd	--	gen_context(system_u:object_r:cfengine_serverd_exec_t,s0)
++/usr/s?bin/cf-execd	--	gen_context(system_u:object_r:cfengine_execd_exec_t,s0)
++/usr/s?bin/cf-monitord	--	gen_context(system_u:object_r:cfengine_monitord_exec_t,s0)
+ 
+ /var/cfengine(/.*)?	gen_context(system_u:object_r:cfengine_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/cgroup.fc b/policy/modules/contrib/cgroup.fc
+index 0d250af8ad49..0351088a8473 100644
+--- a/policy/modules/contrib/cgroup.fc
++++ b/policy/modules/contrib/cgroup.fc
+@@ -11,9 +11,9 @@
+ /sbin/cgrulesengd	--	gen_context(system_u:object_r:cgred_exec_t,s0)
+ /sbin/cgclear	--	gen_context(system_u:object_r:cgclear_exec_t,s0)
+ 
+-/usr/sbin/cgconfigparser	--	gen_context(system_u:object_r:cgconfig_exec_t,s0)
+-/usr/sbin/cgrulesengd	--	gen_context(system_u:object_r:cgred_exec_t,s0)
+-/usr/sbin/cgclear	--	gen_context(system_u:object_r:cgclear_exec_t,s0)
++/usr/s?bin/cgconfigparser	--	gen_context(system_u:object_r:cgconfig_exec_t,s0)
++/usr/s?bin/cgrulesengd	--	gen_context(system_u:object_r:cgred_exec_t,s0)
++/usr/s?bin/cgclear	--	gen_context(system_u:object_r:cgclear_exec_t,s0)
+ 
+ /var/log/cgrulesengd\.log.*	--	gen_context(system_u:object_r:cgred_log_t,s0)
+ /var/run/cgred.*	gen_context(system_u:object_r:cgred_var_run_t,s0)
+diff --git a/policy/modules/contrib/chronyd.fc b/policy/modules/contrib/chronyd.fc
+index b80afd24f5f2..0ba378c53801 100644
+--- a/policy/modules/contrib/chronyd.fc
++++ b/policy/modules/contrib/chronyd.fc
+@@ -7,7 +7,7 @@
+ /usr/lib/systemd/system/[^/]*chronyd.*	--	gen_context(system_u:object_r:chronyd_unit_t,s0)
+ 
+ 
+-/usr/sbin/chronyd	--	gen_context(system_u:object_r:chronyd_exec_t,s0)
++/usr/s?bin/chronyd	--	gen_context(system_u:object_r:chronyd_exec_t,s0)
+ 
+ /var/lib/chrony(/.*)?	gen_context(system_u:object_r:chronyd_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/cipe.fc b/policy/modules/contrib/cipe.fc
+index c75352260710..4682192b8a26 100644
+--- a/policy/modules/contrib/cipe.fc
++++ b/policy/modules/contrib/cipe.fc
+@@ -1,3 +1,3 @@
+ /etc/rc\.d/init\.d/ciped.*	--	gen_context(system_u:object_r:ciped_initrc_exec_t,s0)
+ 
+-/usr/sbin/ciped.*	--	gen_context(system_u:object_r:ciped_exec_t,s0)
++/usr/s?bin/ciped.*	--	gen_context(system_u:object_r:ciped_exec_t,s0)
+diff --git a/policy/modules/contrib/clamav.fc b/policy/modules/contrib/clamav.fc
+index d72afcc3147f..e1791f2604e2 100644
+--- a/policy/modules/contrib/clamav.fc
++++ b/policy/modules/contrib/clamav.fc
+@@ -6,8 +6,8 @@
+ /usr/bin/clamdscan	--	gen_context(system_u:object_r:clamscan_exec_t,s0)
+ /usr/bin/freshclam	--	gen_context(system_u:object_r:freshclam_exec_t,s0)
+ 
+-/usr/sbin/clamd	--	gen_context(system_u:object_r:clamd_exec_t,s0)
+-/usr/sbin/clamav-milter	--	gen_context(system_u:object_r:clamd_exec_t,s0)
++/usr/s?bin/clamd	--	gen_context(system_u:object_r:clamd_exec_t,s0)
++/usr/s?bin/clamav-milter	--	gen_context(system_u:object_r:clamd_exec_t,s0)
+ 
+ /var/clamav(/.*)?	gen_context(system_u:object_r:clamd_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/clogd.fc b/policy/modules/contrib/clogd.fc
+index 514a203bb036..0995c80a3f85 100644
+--- a/policy/modules/contrib/clogd.fc
++++ b/policy/modules/contrib/clogd.fc
+@@ -1,3 +1,3 @@
+-/usr/sbin/clogd	--	gen_context(system_u:object_r:clogd_exec_t,s0)
++/usr/s?bin/clogd	--	gen_context(system_u:object_r:clogd_exec_t,s0)
+ 
+ /var/run/clogd\.pid	--	gen_context(system_u:object_r:clogd_var_run_t,s0)
+diff --git a/policy/modules/contrib/cmirrord.fc b/policy/modules/contrib/cmirrord.fc
+index 4d5ab0dfaba6..4d5c264a643a 100644
+--- a/policy/modules/contrib/cmirrord.fc
++++ b/policy/modules/contrib/cmirrord.fc
+@@ -1,5 +1,5 @@
+ /etc/rc\.d/init\.d/cmirrord	--	gen_context(system_u:object_r:cmirrord_initrc_exec_t,s0)
+ 
+-/usr/sbin/cmirrord	--	gen_context(system_u:object_r:cmirrord_exec_t,s0)
++/usr/s?bin/cmirrord	--	gen_context(system_u:object_r:cmirrord_exec_t,s0)
+ 
+ /var/run/cmirrord\.pid	--	gen_context(system_u:object_r:cmirrord_var_run_t,s0)
+diff --git a/policy/modules/contrib/collectd.fc b/policy/modules/contrib/collectd.fc
+index 79a3abe3ab7b..672c3109e24f 100644
+--- a/policy/modules/contrib/collectd.fc
++++ b/policy/modules/contrib/collectd.fc
+@@ -1,6 +1,6 @@
+ /etc/rc\.d/init\.d/collectd	--	gen_context(system_u:object_r:collectd_initrc_exec_t,s0)
+ 
+-/usr/sbin/collectd	--	gen_context(system_u:object_r:collectd_exec_t,s0)
++/usr/s?bin/collectd	--	gen_context(system_u:object_r:collectd_exec_t,s0)
+ 
+ /var/lib/collectd(/.*)?	gen_context(system_u:object_r:collectd_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/comsat.fc b/policy/modules/contrib/comsat.fc
+index 90461f93a2a5..ca441de6f36d 100644
+--- a/policy/modules/contrib/comsat.fc
++++ b/policy/modules/contrib/comsat.fc
+@@ -1 +1 @@
+-/usr/sbin/in\.comsat	--	gen_context(system_u:object_r:comsat_exec_t,s0)
++/usr/s?bin/in\.comsat	--	gen_context(system_u:object_r:comsat_exec_t,s0)
+diff --git a/policy/modules/contrib/condor.fc b/policy/modules/contrib/condor.fc
+index ad2b69606a82..bb175d50a6e9 100644
+--- a/policy/modules/contrib/condor.fc
++++ b/policy/modules/contrib/condor.fc
+@@ -2,13 +2,13 @@
+ 
+ /etc/rc\.d/init\.d/condor	--	gen_context(system_u:object_r:condor_initrc_exec_t,s0)
+ 
+-/usr/sbin/condor_collector	--	gen_context(system_u:object_r:condor_collector_exec_t,s0)
+-/usr/sbin/condor_master	--	gen_context(system_u:object_r:condor_master_exec_t,s0)
+-/usr/sbin/condor_negotiator	--	gen_context(system_u:object_r:condor_negotiator_exec_t,s0)
+-/usr/sbin/condor_procd	--	gen_context(system_u:object_r:condor_procd_exec_t,s0)
+-/usr/sbin/condor_schedd	--	gen_context(system_u:object_r:condor_schedd_exec_t,s0)
+-/usr/sbin/condor_startd	--	gen_context(system_u:object_r:condor_startd_exec_t,s0)
+-/usr/sbin/condor_starter	--	gen_context(system_u:object_r:condor_startd_exec_t,s0)
++/usr/s?bin/condor_collector	--	gen_context(system_u:object_r:condor_collector_exec_t,s0)
++/usr/s?bin/condor_master	--	gen_context(system_u:object_r:condor_master_exec_t,s0)
++/usr/s?bin/condor_negotiator	--	gen_context(system_u:object_r:condor_negotiator_exec_t,s0)
++/usr/s?bin/condor_procd	--	gen_context(system_u:object_r:condor_procd_exec_t,s0)
++/usr/s?bin/condor_schedd	--	gen_context(system_u:object_r:condor_schedd_exec_t,s0)
++/usr/s?bin/condor_startd	--	gen_context(system_u:object_r:condor_startd_exec_t,s0)
++/usr/s?bin/condor_starter	--	gen_context(system_u:object_r:condor_startd_exec_t,s0)
+ 
+ /var/lib/condor(/.*)?	gen_context(system_u:object_r:condor_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/consolekit.fc b/policy/modules/contrib/consolekit.fc
+index 23c95582fae5..0dbb0ab52ed4 100644
+--- a/policy/modules/contrib/consolekit.fc
++++ b/policy/modules/contrib/consolekit.fc
+@@ -1,4 +1,4 @@
+-/usr/sbin/console-kit-daemon	--	gen_context(system_u:object_r:consolekit_exec_t,s0)
++/usr/s?bin/console-kit-daemon	--	gen_context(system_u:object_r:consolekit_exec_t,s0)
+ 
+ /var/log/ConsoleKit(/.*)?	gen_context(system_u:object_r:consolekit_log_t,s0)
+ 
+diff --git a/policy/modules/contrib/corosync.fc b/policy/modules/contrib/corosync.fc
+index da39f0fccc00..d272a6a7105b 100644
+--- a/policy/modules/contrib/corosync.fc
++++ b/policy/modules/contrib/corosync.fc
+@@ -1,7 +1,7 @@
+ /etc/rc\.d/init\.d/corosync	--	gen_context(system_u:object_r:corosync_initrc_exec_t,s0)
+ 
+-/usr/sbin/corosync	--	gen_context(system_u:object_r:corosync_exec_t,s0)
+-/usr/sbin/corosync-notifyd	--	gen_context(system_u:object_r:corosync_exec_t,s0)
++/usr/s?bin/corosync	--	gen_context(system_u:object_r:corosync_exec_t,s0)
++/usr/s?bin/corosync-notifyd	--	gen_context(system_u:object_r:corosync_exec_t,s0)
+ 
+ /var/lib/corosync(/.*)?	gen_context(system_u:object_r:corosync_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/courier.fc b/policy/modules/contrib/courier.fc
+index 2f017a076b6f..afbc9e094eb8 100644
+--- a/policy/modules/contrib/courier.fc
++++ b/policy/modules/contrib/courier.fc
+@@ -3,12 +3,12 @@
+ 
+ /usr/bin/imapd	--	gen_context(system_u:object_r:courier_pop_exec_t,s0)
+ 
+-/usr/sbin/authdaemond	--	gen_context(system_u:object_r:courier_authdaemon_exec_t,s0)
+-/usr/sbin/courier-imapd	--	gen_context(system_u:object_r:courier_pop_exec_t,s0)
+-/usr/sbin/courierlogger	--	gen_context(system_u:object_r:courier_exec_t,s0)
+-/usr/sbin/courierldapaliasd	--	gen_context(system_u:object_r:courier_exec_t,s0)
+-/usr/sbin/couriertcpd	--	gen_context(system_u:object_r:courier_tcpd_exec_t,s0)
+-/usr/sbin/imaplogin	--	gen_context(system_u:object_r:courier_pop_exec_t,s0)
++/usr/s?bin/authdaemond	--	gen_context(system_u:object_r:courier_authdaemon_exec_t,s0)
++/usr/s?bin/courier-imapd	--	gen_context(system_u:object_r:courier_pop_exec_t,s0)
++/usr/s?bin/courierlogger	--	gen_context(system_u:object_r:courier_exec_t,s0)
++/usr/s?bin/courierldapaliasd	--	gen_context(system_u:object_r:courier_exec_t,s0)
++/usr/s?bin/couriertcpd	--	gen_context(system_u:object_r:courier_tcpd_exec_t,s0)
++/usr/s?bin/imaplogin	--	gen_context(system_u:object_r:courier_pop_exec_t,s0)
+ 
+ /usr/lib/courier/authlib/.*	--	gen_context(system_u:object_r:courier_authdaemon_exec_t,s0)
+ /usr/lib/courier/courier-authlib/.*	--	gen_context(system_u:object_r:courier_authdaemon_exec_t,s0)
+diff --git a/policy/modules/contrib/cpucontrol.fc b/policy/modules/contrib/cpucontrol.fc
+index 3ffda4c37a1c..13243f4e7e8b 100644
+--- a/policy/modules/contrib/cpucontrol.fc
++++ b/policy/modules/contrib/cpucontrol.fc
+@@ -2,9 +2,9 @@
+ 
+ /sbin/microcode_ctl	--	gen_context(system_u:object_r:cpucontrol_exec_t,s0)
+ 
+-/usr/sbin/cpufreqd	--	gen_context(system_u:object_r:cpuspeed_exec_t,s0)
+-/usr/sbin/cpuspeed	--	gen_context(system_u:object_r:cpuspeed_exec_t,s0)
+-/usr/sbin/microcode_ctl	--	gen_context(system_u:object_r:cpucontrol_exec_t,s0)
+-/usr/sbin/powernowd	--	gen_context(system_u:object_r:cpuspeed_exec_t,s0)
++/usr/s?bin/cpufreqd	--	gen_context(system_u:object_r:cpuspeed_exec_t,s0)
++/usr/s?bin/cpuspeed	--	gen_context(system_u:object_r:cpuspeed_exec_t,s0)
++/usr/s?bin/microcode_ctl	--	gen_context(system_u:object_r:cpucontrol_exec_t,s0)
++/usr/s?bin/powernowd	--	gen_context(system_u:object_r:cpuspeed_exec_t,s0)
+ 
+ /var/run/cpufreqd\.pid	--	gen_context(system_u:object_r:cpuspeed_var_run_t,s0)
+diff --git a/policy/modules/contrib/cron.fc b/policy/modules/contrib/cron.fc
+index ad0bae948baa..76b3b8f9136f 100644
+--- a/policy/modules/contrib/cron.fc
++++ b/policy/modules/contrib/cron.fc
+@@ -9,11 +9,11 @@
+ /usr/libexec/fcron	--	gen_context(system_u:object_r:crond_exec_t,s0)
+ /usr/libexec/fcronsighup	--	gen_context(system_u:object_r:crontab_exec_t,s0)
+ 
+-/usr/sbin/anacron	--	gen_context(system_u:object_r:anacron_exec_t,s0)
+-/usr/sbin/atd	--	gen_context(system_u:object_r:crond_exec_t,s0)
+-/usr/sbin/cron(d)?	--	gen_context(system_u:object_r:crond_exec_t,s0)
+-/usr/sbin/fcron	--	gen_context(system_u:object_r:crond_exec_t,s0)
+-/usr/sbin/fcronsighup	--	gen_context(system_u:object_r:crontab_exec_t,s0)
++/usr/s?bin/anacron	--	gen_context(system_u:object_r:anacron_exec_t,s0)
++/usr/s?bin/atd	--	gen_context(system_u:object_r:crond_exec_t,s0)
++/usr/s?bin/cron(d)?	--	gen_context(system_u:object_r:crond_exec_t,s0)
++/usr/s?bin/fcron	--	gen_context(system_u:object_r:crond_exec_t,s0)
++/usr/s?bin/fcronsighup	--	gen_context(system_u:object_r:crontab_exec_t,s0)
+ 
+ /var/lib/glpi/files(/.*)?	gen_context(system_u:object_r:cron_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/ctdb.fc b/policy/modules/contrib/ctdb.fc
+index 8401fe6f3bb6..f377ba2fed41 100644
+--- a/policy/modules/contrib/ctdb.fc
++++ b/policy/modules/contrib/ctdb.fc
+@@ -1,6 +1,6 @@
+ /etc/rc\.d/init\.d/ctdb	--	gen_context(system_u:object_r:ctdbd_initrc_exec_t,s0)
+ 
+-/usr/sbin/ctdbd	--	gen_context(system_u:object_r:ctdbd_exec_t,s0)
++/usr/s?bin/ctdbd	--	gen_context(system_u:object_r:ctdbd_exec_t,s0)
+ 
+ /var/lib/ctdbd(/.*)?	gen_context(system_u:object_r:ctdbd_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/cups.fc b/policy/modules/contrib/cups.fc
+index 949011ec868c..206dea4128eb 100644
+--- a/policy/modules/contrib/cups.fc
++++ b/policy/modules/contrib/cups.fc
+@@ -41,14 +41,14 @@
+ 
+ /usr/local/linuxprinter/ppd(/.*)?	gen_context(system_u:object_r:cupsd_rw_etc_t,s0)
+ 
+-/usr/sbin/hp-[^/]+	--	gen_context(system_u:object_r:hplip_exec_t,s0)
+-/usr/sbin/cupsd	--	gen_context(system_u:object_r:cupsd_exec_t,s0)
+-/usr/sbin/hal_lpadmin	--	gen_context(system_u:object_r:cupsd_config_exec_t,s0)
+-/usr/sbin/hpiod	--	gen_context(system_u:object_r:hplip_exec_t,s0)
+-/usr/sbin/printconf-backend	--	gen_context(system_u:object_r:cupsd_config_exec_t,s0)
+-/usr/sbin/ptal-printd	--	gen_context(system_u:object_r:ptal_exec_t,s0)
+-/usr/sbin/ptal-mlcd	--	gen_context(system_u:object_r:ptal_exec_t,s0)
+-/usr/sbin/ptal-photod	--	gen_context(system_u:object_r:ptal_exec_t,s0)
++/usr/s?bin/hp-[^/]+	--	gen_context(system_u:object_r:hplip_exec_t,s0)
++/usr/s?bin/cupsd	--	gen_context(system_u:object_r:cupsd_exec_t,s0)
++/usr/s?bin/hal_lpadmin	--	gen_context(system_u:object_r:cupsd_config_exec_t,s0)
++/usr/s?bin/hpiod	--	gen_context(system_u:object_r:hplip_exec_t,s0)
++/usr/s?bin/printconf-backend	--	gen_context(system_u:object_r:cupsd_config_exec_t,s0)
++/usr/s?bin/ptal-printd	--	gen_context(system_u:object_r:ptal_exec_t,s0)
++/usr/s?bin/ptal-mlcd	--	gen_context(system_u:object_r:ptal_exec_t,s0)
++/usr/s?bin/ptal-photod	--	gen_context(system_u:object_r:ptal_exec_t,s0)
+ 
+ /usr/share/cups(/.*)?	gen_context(system_u:object_r:cupsd_etc_t,s0)
+ /usr/share/foomatic/db/oldprinterids	--	gen_context(system_u:object_r:cupsd_rw_etc_t,s0)
+diff --git a/policy/modules/contrib/dante.fc b/policy/modules/contrib/dante.fc
+index 89021858908a..7e401643cdbd 100644
+--- a/policy/modules/contrib/dante.fc
++++ b/policy/modules/contrib/dante.fc
+@@ -3,8 +3,8 @@
+ /etc/danted\.conf	--	gen_context(system_u:object_r:dante_conf_t,s0)
+ /etc/socks(/.*)?	gen_context(system_u:object_r:dante_conf_t,s0)
+ 
+-/usr/sbin/danted	--	gen_context(system_u:object_r:dante_exec_t,s0)
+-/usr/sbin/sockd	--	gen_context(system_u:object_r:dante_exec_t,s0)
++/usr/s?bin/danted	--	gen_context(system_u:object_r:dante_exec_t,s0)
++/usr/s?bin/sockd	--	gen_context(system_u:object_r:dante_exec_t,s0)
+ 
+ /var/run/danted\.pid	--	gen_context(system_u:object_r:dante_var_run_t,s0)
+ /var/run/sockd\.pid	--	gen_context(system_u:object_r:dante_var_run_t,s0)
+diff --git a/policy/modules/contrib/dbskk.fc b/policy/modules/contrib/dbskk.fc
+index 6fb8fead6db8..16ca67bd5e72 100644
+--- a/policy/modules/contrib/dbskk.fc
++++ b/policy/modules/contrib/dbskk.fc
+@@ -1 +1 @@
+-/usr/sbin/dbskkd-cdb	--	gen_context(system_u:object_r:dbskkd_exec_t,s0)
++/usr/s?bin/dbskkd-cdb	--	gen_context(system_u:object_r:dbskkd_exec_t,s0)
+diff --git a/policy/modules/contrib/dbus.fc b/policy/modules/contrib/dbus.fc
+index 309a462e2d42..91567ecbae25 100644
+--- a/policy/modules/contrib/dbus.fc
++++ b/policy/modules/contrib/dbus.fc
+@@ -2,7 +2,7 @@ HOME_DIR/\.dbus(/.*)?	gen_context(system_u:object_r:session_dbusd_home_t,s0)
+ 
+ /etc/dbus-.*(/.*)?	gen_context(system_u:object_r:dbusd_etc_t,s0)
+ 
+-/bin/dbus-daemon	--	gen_context(system_u:object_r:dbusd_exec_t,s0)
++/bin/dbus-daemon(-1)?	--	gen_context(system_u:object_r:dbusd_exec_t,s0)
+ 
+ /lib/dbus-.*/dbus-daemon-launch-helper -- gen_context(system_u:object_r:dbusd_exec_t,s0)
+ 
+diff --git a/policy/modules/contrib/dcc.fc b/policy/modules/contrib/dcc.fc
+index 62d3c4e666b6..349cf3ad6ae9 100644
+--- a/policy/modules/contrib/dcc.fc
++++ b/policy/modules/contrib/dcc.fc
+@@ -10,10 +10,10 @@
+ /usr/libexec/dcc/dccifd	--	gen_context(system_u:object_r:dccifd_exec_t,s0)
+ /usr/libexec/dcc/dccm	--	gen_context(system_u:object_r:dccm_exec_t,s0)
+ 
+-/usr/sbin/dbclean	--	gen_context(system_u:object_r:dcc_dbclean_exec_t,s0)
+-/usr/sbin/dccd	--	gen_context(system_u:object_r:dccd_exec_t,s0)
+-/usr/sbin/dccifd	--	gen_context(system_u:object_r:dccifd_exec_t,s0)
+-/usr/sbin/dccm	--	gen_context(system_u:object_r:dccm_exec_t,s0)
++/usr/s?bin/dbclean	--	gen_context(system_u:object_r:dcc_dbclean_exec_t,s0)
++/usr/s?bin/dccd	--	gen_context(system_u:object_r:dccd_exec_t,s0)
++/usr/s?bin/dccifd	--	gen_context(system_u:object_r:dccifd_exec_t,s0)
++/usr/s?bin/dccm	--	gen_context(system_u:object_r:dccm_exec_t,s0)
+ 
+ /var/dcc(/.*)?	gen_context(system_u:object_r:dcc_var_t,s0)
+ /var/dcc/map	--	gen_context(system_u:object_r:dcc_client_map_t,s0)
+diff --git a/policy/modules/contrib/ddclient.fc b/policy/modules/contrib/ddclient.fc
+index 13c0c4a1a286..d312ea24fece 100644
+--- a/policy/modules/contrib/ddclient.fc
++++ b/policy/modules/contrib/ddclient.fc
+@@ -3,8 +3,8 @@
+ 
+ /etc/rc\.d/init\.d/ddclient	--	gen_context(system_u:object_r:ddclient_initrc_exec_t,s0)
+ 
+-/usr/sbin/ddclient	--	gen_context(system_u:object_r:ddclient_exec_t,s0)
+-/usr/sbin/ddtcd	--	gen_context(system_u:object_r:ddclient_exec_t,s0)
++/usr/s?bin/ddclient	--	gen_context(system_u:object_r:ddclient_exec_t,s0)
++/usr/s?bin/ddtcd	--	gen_context(system_u:object_r:ddclient_exec_t,s0)
+ 
+ /var/cache/ddclient(/.*)?	gen_context(system_u:object_r:ddclient_var_t,s0)
+ 
+diff --git a/policy/modules/contrib/ddcprobe.fc b/policy/modules/contrib/ddcprobe.fc
+index 9f2a27f55fac..2514231efbff 100644
+--- a/policy/modules/contrib/ddcprobe.fc
++++ b/policy/modules/contrib/ddcprobe.fc
+@@ -1 +1 @@
+-/usr/sbin/ddcprobe	--	gen_context(system_u:object_r:ddcprobe_exec_t,s0)
++/usr/s?bin/ddcprobe	--	gen_context(system_u:object_r:ddcprobe_exec_t,s0)
+diff --git a/policy/modules/contrib/dhcp.fc b/policy/modules/contrib/dhcp.fc
+index 8182c4806c1d..d00dc796493d 100644
+--- a/policy/modules/contrib/dhcp.fc
++++ b/policy/modules/contrib/dhcp.fc
+@@ -1,6 +1,6 @@
+ /etc/rc\.d/init\.d/dhcpd(6)?	--	gen_context(system_u:object_r:dhcpd_initrc_exec_t,s0)
+ 
+-/usr/sbin/dhcpd.*	--	gen_context(system_u:object_r:dhcpd_exec_t,s0)
++/usr/s?bin/dhcpd.*	--	gen_context(system_u:object_r:dhcpd_exec_t,s0)
+ 
+ /var/lib/dhcpd(/.*)?	gen_context(system_u:object_r:dhcpd_state_t,s0)
+ /var/lib/dhcp(3)?/dhcpd\.leases.*	--	gen_context(system_u:object_r:dhcpd_state_t,s0)
+diff --git a/policy/modules/contrib/dictd.fc b/policy/modules/contrib/dictd.fc
+index 8a5f2351d449..5aa2bdd8557e 100644
+--- a/policy/modules/contrib/dictd.fc
++++ b/policy/modules/contrib/dictd.fc
+@@ -2,7 +2,7 @@
+ 
+ /etc/dictd\.conf	--	gen_context(system_u:object_r:dictd_etc_t,s0)
+ 
+-/usr/sbin/dictd	--	gen_context(system_u:object_r:dictd_exec_t,s0)
++/usr/s?bin/dictd	--	gen_context(system_u:object_r:dictd_exec_t,s0)
+ 
+ /var/lib/dictd(/.*)?	gen_context(system_u:object_r:dictd_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/dkim.fc b/policy/modules/contrib/dkim.fc
+index 5818418af7ad..305e9d281181 100644
+--- a/policy/modules/contrib/dkim.fc
++++ b/policy/modules/contrib/dkim.fc
+@@ -2,8 +2,8 @@
+ 
+ /etc/rc\.d/init\.d/((opendkim)|(dkim-milter))	--	gen_context(system_u:object_r:dkim_milter_initrc_exec_t,s0)
+ 
+-/usr/sbin/dkim-filter	--	gen_context(system_u:object_r:dkim_milter_exec_t,s0)
+-/usr/sbin/opendkim	--	gen_context(system_u:object_r:dkim_milter_exec_t,s0)
++/usr/s?bin/dkim-filter	--	gen_context(system_u:object_r:dkim_milter_exec_t,s0)
++/usr/s?bin/opendkim	--	gen_context(system_u:object_r:dkim_milter_exec_t,s0)
+ 
+ /var/db/dkim(/.*)?	gen_context(system_u:object_r:dkim_milter_private_key_t,s0)
+ 
+diff --git a/policy/modules/contrib/dmidecode.fc b/policy/modules/contrib/dmidecode.fc
+index c394e45d356e..49f3496779a3 100644
+--- a/policy/modules/contrib/dmidecode.fc
++++ b/policy/modules/contrib/dmidecode.fc
+@@ -1,4 +1,4 @@
+-/usr/sbin/biosdecode	--	gen_context(system_u:object_r:dmidecode_exec_t,s0)
+-/usr/sbin/dmidecode	--	gen_context(system_u:object_r:dmidecode_exec_t,s0)
+-/usr/sbin/ownership	--	gen_context(system_u:object_r:dmidecode_exec_t,s0)
+-/usr/sbin/vpddecode	--	gen_context(system_u:object_r:dmidecode_exec_t,s0)
++/usr/s?bin/biosdecode	--	gen_context(system_u:object_r:dmidecode_exec_t,s0)
++/usr/s?bin/dmidecode	--	gen_context(system_u:object_r:dmidecode_exec_t,s0)
++/usr/s?bin/ownership	--	gen_context(system_u:object_r:dmidecode_exec_t,s0)
++/usr/s?bin/vpddecode	--	gen_context(system_u:object_r:dmidecode_exec_t,s0)
+diff --git a/policy/modules/contrib/dnsmasq.fc b/policy/modules/contrib/dnsmasq.fc
+index 50fa17d8d335..63b71bd72d25 100644
+--- a/policy/modules/contrib/dnsmasq.fc
++++ b/policy/modules/contrib/dnsmasq.fc
+@@ -6,7 +6,7 @@
+ # Systemd unit file
+ /usr/lib/systemd/system/[^/]*dnsmasq.*	--	gen_context(system_u:object_r:dnsmasq_unit_t,s0)
+ 
+-/usr/sbin/dnsmasq	--	gen_context(system_u:object_r:dnsmasq_exec_t,s0)
++/usr/s?bin/dnsmasq	--	gen_context(system_u:object_r:dnsmasq_exec_t,s0)
+ 
+ /var/lib/misc/dnsmasq\.leases	--	gen_context(system_u:object_r:dnsmasq_lease_t,s0)
+ /var/lib/dnsmasq(/.*)?	gen_context(system_u:object_r:dnsmasq_lease_t,s0)
+diff --git a/policy/modules/contrib/dnssectrigger.fc b/policy/modules/contrib/dnssectrigger.fc
+index c459b4acac70..4c5639464871 100644
+--- a/policy/modules/contrib/dnssectrigger.fc
++++ b/policy/modules/contrib/dnssectrigger.fc
+@@ -2,7 +2,7 @@
+ 
+ /etc/rc\.d/init\.d/dnssec-triggerd	--	gen_context(system_u:object_r:dnssec_triggerd_initrc_exec_t,s0)
+ 
+-/usr/sbin/dnssec-triggerd	--	gen_context(system_u:object_r:dnssec_triggerd_exec_t,s0)
++/usr/s?bin/dnssec-triggerd	--	gen_context(system_u:object_r:dnssec_triggerd_exec_t,s0)
+ 
+ /var/log/dnssec-trigger\.log.*	--	gen_context(system_u:object_r:dnssec_trigger_log_t,s0)
+ 
+diff --git a/policy/modules/contrib/dovecot.fc b/policy/modules/contrib/dovecot.fc
+index c88007004141..7c292118bc48 100644
+--- a/policy/modules/contrib/dovecot.fc
++++ b/policy/modules/contrib/dovecot.fc
+@@ -8,7 +8,7 @@
+ 
+ /etc/rc\.d/init\.d/dovecot	--	gen_context(system_u:object_r:dovecot_initrc_exec_t,s0)
+ 
+-/usr/sbin/dovecot	--	gen_context(system_u:object_r:dovecot_exec_t,s0)
++/usr/s?bin/dovecot	--	gen_context(system_u:object_r:dovecot_exec_t,s0)
+ 
+ /usr/share/ssl/certs/dovecot\.pem	--	gen_context(system_u:object_r:dovecot_cert_t,s0)
+ /usr/share/ssl/private/dovecot\.pem	--	gen_context(system_u:object_r:dovecot_cert_t,s0)
+diff --git a/policy/modules/contrib/dpkg.fc b/policy/modules/contrib/dpkg.fc
+index eec3c4874c5c..6179533ffa78 100644
+--- a/policy/modules/contrib/dpkg.fc
++++ b/policy/modules/contrib/dpkg.fc
+@@ -7,5 +7,5 @@
+ /var/lib/dpkg(/.*)?	gen_context(system_u:object_r:dpkg_var_lib_t,s0)
+ /var/lib/dpkg/(meth)?lock	--	gen_context(system_u:object_r:dpkg_lock_t,s0)
+ 
+-/usr/sbin/dpkg-preconfigure	--	gen_context(system_u:object_r:dpkg_exec_t,s0)
+-/usr/sbin/dpkg-reconfigure	--	gen_context(system_u:object_r:dpkg_exec_t,s0)
++/usr/s?bin/dpkg-preconfigure	--	gen_context(system_u:object_r:dpkg_exec_t,s0)
++/usr/s?bin/dpkg-reconfigure	--	gen_context(system_u:object_r:dpkg_exec_t,s0)
+diff --git a/policy/modules/contrib/drbd.fc b/policy/modules/contrib/drbd.fc
+index 671a3fb6f440..4e6993757fb1 100644
+--- a/policy/modules/contrib/drbd.fc
++++ b/policy/modules/contrib/drbd.fc
+@@ -5,8 +5,8 @@
+ 
+ /usr/lib/ocf/resource.\d/linbit/drbd	--	gen_context(system_u:object_r:drbd_exec_t,s0)
+ 
+-/usr/sbin/drbdadm	--	gen_context(system_u:object_r:drbd_exec_t,s0)
+-/usr/sbin/drbdsetup	--	gen_context(system_u:object_r:drbd_exec_t,s0)
++/usr/s?bin/drbdadm	--	gen_context(system_u:object_r:drbd_exec_t,s0)
++/usr/s?bin/drbdsetup	--	gen_context(system_u:object_r:drbd_exec_t,s0)
+ 
+ /var/lib/drbd(/.*)?	gen_context(system_u:object_r:drbd_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/entropyd.fc b/policy/modules/contrib/entropyd.fc
+index ee38542ab861..8cd1804746d9 100644
+--- a/policy/modules/contrib/entropyd.fc
++++ b/policy/modules/contrib/entropyd.fc
+@@ -1,7 +1,7 @@
+ /etc/rc\.d/init\.d/((audio-entropyd)|(haveged))	--	gen_context(system_u:object_r:entropyd_initrc_exec_t,s0)
+ 
+-/usr/sbin/audio-entropyd	--	gen_context(system_u:object_r:entropyd_exec_t,s0)
+-/usr/sbin/haveged	--	gen_context(system_u:object_r:entropyd_exec_t,s0)
++/usr/s?bin/audio-entropyd	--	gen_context(system_u:object_r:entropyd_exec_t,s0)
++/usr/s?bin/haveged	--	gen_context(system_u:object_r:entropyd_exec_t,s0)
+ 
+ /var/run/audio-entropyd\.pid	--	gen_context(system_u:object_r:entropyd_var_run_t,s0)
+ /var/run/haveged\.pid	--	gen_context(system_u:object_r:entropyd_var_run_t,s0)
+diff --git a/policy/modules/contrib/exim.fc b/policy/modules/contrib/exim.fc
+index 48abe9558049..3c9232e34864 100644
+--- a/policy/modules/contrib/exim.fc
++++ b/policy/modules/contrib/exim.fc
+@@ -1,7 +1,7 @@
+ /etc/rc\.d/init\.d/exim[0-9]?	--	gen_context(system_u:object_r:exim_initrc_exec_t,s0)
+ 
+-/usr/sbin/exim[0-9]?	--	gen_context(system_u:object_r:exim_exec_t,s0)
+-/usr/sbin/exim_tidydb	--	gen_context(system_u:object_r:exim_exec_t,s0)
++/usr/s?bin/exim[0-9]?	--	gen_context(system_u:object_r:exim_exec_t,s0)
++/usr/s?bin/exim_tidydb	--	gen_context(system_u:object_r:exim_exec_t,s0)
+ 
+ /var/lib/exim[0-9]?(/.*)?	gen_context(system_u:object_r:exim_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/fcoe.fc b/policy/modules/contrib/fcoe.fc
+index d485e4538b9e..adf361b5af74 100644
+--- a/policy/modules/contrib/fcoe.fc
++++ b/policy/modules/contrib/fcoe.fc
+@@ -1,6 +1,6 @@
+ /etc/rc\.d/init\.d/fcoe	--	gen_context(system_u:object_r:fcoemon_initrc_exec_t,s0)
+ 
+-/usr/sbin/fcoemon	--	gen_context(system_u:object_r:fcoemon_exec_t,s0)
++/usr/s?bin/fcoemon	--	gen_context(system_u:object_r:fcoemon_exec_t,s0)
+ 
+ /var/run/fcm(/.*)?	gen_context(system_u:object_r:fcoemon_var_run_t,s0)
+ /var/run/fcoemon\.pid	--	gen_context(system_u:object_r:fcoemon_var_run_t,s0)
+diff --git a/policy/modules/contrib/finger.fc b/policy/modules/contrib/finger.fc
+index 623421d09e45..1c42333394f9 100644
+--- a/policy/modules/contrib/finger.fc
++++ b/policy/modules/contrib/finger.fc
+@@ -2,8 +2,8 @@
+ 
+ /etc/cron\.weekly/(c)?fingerd	--	gen_context(system_u:object_r:fingerd_exec_t,s0)
+ 
+-/usr/sbin/in\.(x)?fingerd	--	gen_context(system_u:object_r:fingerd_exec_t,s0)
+-/usr/sbin/[cef]fingerd	--	gen_context(system_u:object_r:fingerd_exec_t,s0)
++/usr/s?bin/in\.(x)?fingerd	--	gen_context(system_u:object_r:fingerd_exec_t,s0)
++/usr/s?bin/[cef]fingerd	--	gen_context(system_u:object_r:fingerd_exec_t,s0)
+ 
+ /var/log/cfingerd\.log.*	--	gen_context(system_u:object_r:fingerd_log_t,s0)
+ 
+diff --git a/policy/modules/contrib/firewalld.fc b/policy/modules/contrib/firewalld.fc
+index 21d7b844224a..5a35413ae6a6 100644
+--- a/policy/modules/contrib/firewalld.fc
++++ b/policy/modules/contrib/firewalld.fc
+@@ -2,7 +2,7 @@
+ 
+ /etc/firewalld(/.*)?	gen_context(system_u:object_r:firewalld_etc_rw_t,s0)
+ 
+-/usr/sbin/firewalld	--	gen_context(system_u:object_r:firewalld_exec_t,s0)
++/usr/s?bin/firewalld	--	gen_context(system_u:object_r:firewalld_exec_t,s0)
+ 
+ /var/log/firewalld.*	--	gen_context(system_u:object_r:firewalld_var_log_t,s0)
+ 
+diff --git a/policy/modules/contrib/firstboot.fc b/policy/modules/contrib/firstboot.fc
+index 12c782c891ff..6453c36c6bf0 100644
+--- a/policy/modules/contrib/firstboot.fc
++++ b/policy/modules/contrib/firstboot.fc
+@@ -1,5 +1,5 @@
+ /etc/rc\.d/init\.d/firstboot.*	--	gen_context(system_u:object_r:firstboot_initrc_exec_t,s0)
+ 
+-/usr/sbin/firstboot	--	gen_context(system_u:object_r:firstboot_exec_t,s0)
++/usr/s?bin/firstboot	--	gen_context(system_u:object_r:firstboot_exec_t,s0)
+ 
+ /usr/share/firstboot/firstboot\.py	--	gen_context(system_u:object_r:firstboot_exec_t,s0)
+diff --git a/policy/modules/contrib/ftp.fc b/policy/modules/contrib/ftp.fc
+index fa132af02006..974f6282a4cb 100644
+--- a/policy/modules/contrib/ftp.fc
++++ b/policy/modules/contrib/ftp.fc
+@@ -9,11 +9,11 @@
+ 
+ /usr/kerberos/sbin/ftpd	--	gen_context(system_u:object_r:ftpd_exec_t,s0)
+ 
+-/usr/sbin/ftpwho	--	gen_context(system_u:object_r:ftpd_exec_t,s0)
+-/usr/sbin/in\.ftpd	--	gen_context(system_u:object_r:ftpd_exec_t,s0)
+-/usr/sbin/muddleftpd	--	gen_context(system_u:object_r:ftpd_exec_t,s0)
+-/usr/sbin/proftpd	--	gen_context(system_u:object_r:ftpd_exec_t,s0)
+-/usr/sbin/vsftpd	--	gen_context(system_u:object_r:ftpd_exec_t,s0)
++/usr/s?bin/ftpwho	--	gen_context(system_u:object_r:ftpd_exec_t,s0)
++/usr/s?bin/in\.ftpd	--	gen_context(system_u:object_r:ftpd_exec_t,s0)
++/usr/s?bin/muddleftpd	--	gen_context(system_u:object_r:ftpd_exec_t,s0)
++/usr/s?bin/proftpd	--	gen_context(system_u:object_r:ftpd_exec_t,s0)
++/usr/s?bin/vsftpd	--	gen_context(system_u:object_r:ftpd_exec_t,s0)
+ 
+ /var/run/proftpd.*	gen_context(system_u:object_r:ftpd_var_run_t,s0)
+ 
+diff --git a/policy/modules/contrib/gatekeeper.fc b/policy/modules/contrib/gatekeeper.fc
+index 9f44fb646d04..2d97a49da996 100644
+--- a/policy/modules/contrib/gatekeeper.fc
++++ b/policy/modules/contrib/gatekeeper.fc
+@@ -2,8 +2,8 @@
+ 
+ /etc/rc\.d/init\.d/gnugk	--	gen_context(system_u:object_r:gatekeeper_initrc_exec_t,s0)
+ 
+-/usr/sbin/gk	--	gen_context(system_u:object_r:gatekeeper_exec_t,s0)
+-/usr/sbin/gnugk	--	gen_context(system_u:object_r:gatekeeper_exec_t,s0)
++/usr/s?bin/gk	--	gen_context(system_u:object_r:gatekeeper_exec_t,s0)
++/usr/s?bin/gnugk	--	gen_context(system_u:object_r:gatekeeper_exec_t,s0)
+ 
+ /var/log/gnugk(/.*)?	gen_context(system_u:object_r:gatekeeper_log_t,s0)
+ 
+diff --git a/policy/modules/contrib/glusterfs.fc b/policy/modules/contrib/glusterfs.fc
+index 4bd6ade465b3..0839f1b34d1a 100644
+--- a/policy/modules/contrib/glusterfs.fc
++++ b/policy/modules/contrib/glusterfs.fc
+@@ -3,8 +3,8 @@
+ /etc/glusterfs(/.*)?	gen_context(system_u:object_r:glusterd_conf_t,s0)
+ /etc/glusterd(/.*)?	gen_context(system_u:object_r:glusterd_conf_t,s0)
+ 
+-/usr/sbin/glusterd	--	gen_context(system_u:object_r:glusterd_initrc_exec_t,s0)
+-/usr/sbin/glusterfsd	--	gen_context(system_u:object_r:glusterd_exec_t,s0)
++/usr/s?bin/glusterd	--	gen_context(system_u:object_r:glusterd_initrc_exec_t,s0)
++/usr/s?bin/glusterfsd	--	gen_context(system_u:object_r:glusterd_exec_t,s0)
+ 
+ /opt/glusterfs/[^/]+/sbin/glusterfsd	--	gen_context(system_u:object_r:glusterd_exec_t,s0)
+ 
+diff --git a/policy/modules/contrib/gpm.fc b/policy/modules/contrib/gpm.fc
+index 184680b1ac3a..deff204acbdd 100644
+--- a/policy/modules/contrib/gpm.fc
++++ b/policy/modules/contrib/gpm.fc
+@@ -6,6 +6,6 @@
+ 
+ /etc/rc\.d/init\.d/gpm	--	gen_context(system_u:object_r:gpm_initrc_exec_t,s0)
+ 
+-/usr/sbin/gpm	--	gen_context(system_u:object_r:gpm_exec_t,s0)
++/usr/s?bin/gpm	--	gen_context(system_u:object_r:gpm_exec_t,s0)
+ 
+ /var/run/gpm\.pid	--	gen_context(system_u:object_r:gpm_var_run_t,s0)
+diff --git a/policy/modules/contrib/gpsd.fc b/policy/modules/contrib/gpsd.fc
+index 21be63d6dcc9..84d7b12ad405 100644
+--- a/policy/modules/contrib/gpsd.fc
++++ b/policy/modules/contrib/gpsd.fc
+@@ -1,6 +1,6 @@
+ /etc/rc\.d/init\.d/gpsd	--	gen_context(system_u:object_r:gpsd_initrc_exec_t,s0)
+ 
+-/usr/sbin/gpsd	--	gen_context(system_u:object_r:gpsd_exec_t,s0)
++/usr/s?bin/gpsd	--	gen_context(system_u:object_r:gpsd_exec_t,s0)
+ 
+ /var/run/gpsd\.pid	--	gen_context(system_u:object_r:gpsd_var_run_t,s0)
+ /var/run/gpsd\.sock	-s	gen_context(system_u:object_r:gpsd_var_run_t,s0)
+diff --git a/policy/modules/contrib/hal.fc b/policy/modules/contrib/hal.fc
+index c9f452092a7c..9fcf9d9c7c52 100644
+--- a/policy/modules/contrib/hal.fc
++++ b/policy/modules/contrib/hal.fc
+@@ -10,8 +10,8 @@
+ /usr/libexec/hald-addon-macbookpro-backlight	--	gen_context(system_u:object_r:hald_mac_exec_t,s0)
+ /usr/libexec/hald-addon-macbook-backlight	--	gen_context(system_u:object_r:hald_mac_exec_t,s0)
+ 
+-/usr/sbin/hald	--	gen_context(system_u:object_r:hald_exec_t,s0)
+-/usr/sbin/radeontool	--	gen_context(system_u:object_r:hald_mac_exec_t,s0)
++/usr/s?bin/hald	--	gen_context(system_u:object_r:hald_exec_t,s0)
++/usr/s?bin/radeontool	--	gen_context(system_u:object_r:hald_mac_exec_t,s0)
+ 
+ /var/cache/hald(/.*)?	gen_context(system_u:object_r:hald_cache_t,s0)
+ 
+diff --git a/policy/modules/contrib/hddtemp.fc b/policy/modules/contrib/hddtemp.fc
+index 993b14ac00b3..8f0948d24efd 100644
+--- a/policy/modules/contrib/hddtemp.fc
++++ b/policy/modules/contrib/hddtemp.fc
+@@ -2,4 +2,4 @@
+ 
+ /etc/sysconfig/hddtemp	--	gen_context(system_u:object_r:hddtemp_etc_t,s0)
+ 
+-/usr/sbin/hddtemp	--	gen_context(system_u:object_r:hddtemp_exec_t,s0)
++/usr/s?bin/hddtemp	--	gen_context(system_u:object_r:hddtemp_exec_t,s0)
+diff --git a/policy/modules/contrib/hypervkvp.fc b/policy/modules/contrib/hypervkvp.fc
+index b46130ef50b6..558e46b08cf3 100644
+--- a/policy/modules/contrib/hypervkvp.fc
++++ b/policy/modules/contrib/hypervkvp.fc
+@@ -1,3 +1,3 @@
+ /etc/rc\.d/init\.d/hypervkvpd	--	gen_context(system_u:object_r:hypervkvpd_initrc_exec_t,s0)
+ 
+-/usr/sbin/hv_kvp_daemon	--	gen_context(system_u:object_r:hypervkvpd_exec_t,s0)
++/usr/s?bin/hv_kvp_daemon	--	gen_context(system_u:object_r:hypervkvpd_exec_t,s0)
+diff --git a/policy/modules/contrib/i18n_input.fc b/policy/modules/contrib/i18n_input.fc
+index 3ddc58f612c8..67d405f4ced2 100644
+--- a/policy/modules/contrib/i18n_input.fc
++++ b/policy/modules/contrib/i18n_input.fc
+@@ -8,8 +8,8 @@
+ 
+ /usr/lib/iiim/iiim-xbe	--	gen_context(system_u:object_r:i18n_input_exec_t,s0)
+ 
+-/usr/sbin/htt	--	gen_context(system_u:object_r:i18n_input_exec_t,s0)
+-/usr/sbin/htt_server	--	gen_context(system_u:object_r:i18n_input_exec_t,s0)
++/usr/s?bin/htt	--	gen_context(system_u:object_r:i18n_input_exec_t,s0)
++/usr/s?bin/htt_server	--	gen_context(system_u:object_r:i18n_input_exec_t,s0)
+ 
+ /var/log/iiim(/.*)?	gen_context(system_u:object_r:i18n_input_log_t,s0)
+ 
+diff --git a/policy/modules/contrib/ifplugd.fc b/policy/modules/contrib/ifplugd.fc
+index 0c95c98e5386..f7177e495945 100644
+--- a/policy/modules/contrib/ifplugd.fc
++++ b/policy/modules/contrib/ifplugd.fc
+@@ -2,6 +2,6 @@
+ 
+ /etc/rc\.d/init\.d/ifplugd	--	gen_context(system_u:object_r:ifplugd_initrc_exec_t,s0)
+ 
+-/usr/sbin/ifplugd	--	gen_context(system_u:object_r:ifplugd_exec_t,s0)
++/usr/s?bin/ifplugd	--	gen_context(system_u:object_r:ifplugd_exec_t,s0)
+ 
+ /var/run/ifplugd.*	gen_context(system_u:object_r:ifplugd_var_run_t,s0)
+diff --git a/policy/modules/contrib/inetd.fc b/policy/modules/contrib/inetd.fc
+index 03745090601e..83e1fbd6f389 100644
+--- a/policy/modules/contrib/inetd.fc
++++ b/policy/modules/contrib/inetd.fc
+@@ -2,11 +2,11 @@
+ 
+ /usr/local/lib/pysieved/pysieved.*\.py	--	gen_context(system_u:object_r:inetd_child_exec_t,s0)
+ 
+-/usr/sbin/identd	--	gen_context(system_u:object_r:inetd_child_exec_t,s0)
+-/usr/sbin/in\..*d	--	gen_context(system_u:object_r:inetd_child_exec_t,s0)
++/usr/s?bin/identd	--	gen_context(system_u:object_r:inetd_child_exec_t,s0)
++/usr/s?bin/in\..*d	--	gen_context(system_u:object_r:inetd_child_exec_t,s0)
+ 
+-/usr/sbin/rlinetd	--	gen_context(system_u:object_r:inetd_exec_t,s0)
+-/usr/sbin/(x)?inetd	--	gen_context(system_u:object_r:inetd_exec_t,s0)
++/usr/s?bin/rlinetd	--	gen_context(system_u:object_r:inetd_exec_t,s0)
++/usr/s?bin/(x)?inetd	--	gen_context(system_u:object_r:inetd_exec_t,s0)
+ 
+ /var/log/(x)?inetd\.log.*	--	gen_context(system_u:object_r:inetd_log_t,s0)
+ 
+diff --git a/policy/modules/contrib/inn.fc b/policy/modules/contrib/inn.fc
+index 8c0a48b1d1a8..9e8852f6a93d 100644
+--- a/policy/modules/contrib/inn.fc
++++ b/policy/modules/contrib/inn.fc
+@@ -8,8 +8,8 @@
+ /usr/bin/rpost	--	gen_context(system_u:object_r:innd_exec_t,s0)
+ /usr/bin/suck	--	gen_context(system_u:object_r:innd_exec_t,s0)
+ 
+-/usr/sbin/in\.nnrpd	--	gen_context(system_u:object_r:innd_exec_t,s0)
+-/usr/sbin/innd.*	--	gen_context(system_u:object_r:innd_exec_t,s0)
++/usr/s?bin/in\.nnrpd	--	gen_context(system_u:object_r:innd_exec_t,s0)
++/usr/s?bin/innd.*	--	gen_context(system_u:object_r:innd_exec_t,s0)
+ 
+ /var/lib/news(/.*)?	gen_context(system_u:object_r:innd_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/iodine.fc b/policy/modules/contrib/iodine.fc
+index ca07a8744e02..8fb8ead5a0f8 100644
+--- a/policy/modules/contrib/iodine.fc
++++ b/policy/modules/contrib/iodine.fc
+@@ -1,3 +1,3 @@
+ /etc/rc\.d/init\.d/((iodined)|(iodine-server))	--	gen_context(system_u:object_r:iodined_initrc_exec_t,s0)
+ 
+-/usr/sbin/iodined	--	gen_context(system_u:object_r:iodined_exec_t,s0)
++/usr/s?bin/iodined	--	gen_context(system_u:object_r:iodined_exec_t,s0)
+diff --git a/policy/modules/contrib/ircd.fc b/policy/modules/contrib/ircd.fc
+index f37eed8d8cb2..5c529f2f4b1f 100644
+--- a/policy/modules/contrib/ircd.fc
++++ b/policy/modules/contrib/ircd.fc
+@@ -7,9 +7,9 @@
+ 
+ /usr/bin/ircd	--	gen_context(system_u:object_r:ircd_exec_t,s0)
+ 
+-/usr/sbin/dancer-ircd	--	gen_context(system_u:object_r:ircd_exec_t,s0)
++/usr/s?bin/dancer-ircd	--	gen_context(system_u:object_r:ircd_exec_t,s0)
+ /usr/sbin/ircd	--	gen_context(system_u:object_r:ircd_exec_t,s0)
+-/usr/sbin/ngircd	--	gen_context(system_u:object_r:ircd_exec_t,s0)
++/usr/s?bin/ngircd	--	gen_context(system_u:object_r:ircd_exec_t,s0)
+ 
+ /var/lib/dancer-ircd(/.*)?	gen_context(system_u:object_r:ircd_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/irqbalance.fc b/policy/modules/contrib/irqbalance.fc
+index e45f99162017..ec9e0144abbb 100644
+--- a/policy/modules/contrib/irqbalance.fc
++++ b/policy/modules/contrib/irqbalance.fc
+@@ -1,5 +1,5 @@
+ /etc/rc\.d/init\.d/irqbalance	--	gen_context(system_u:object_r:irqbalance_initrc_exec_t,s0)
+ 
+-/usr/sbin/irqbalance	--	gen_context(system_u:object_r:irqbalance_exec_t,s0)
++/usr/s?bin/irqbalance	--	gen_context(system_u:object_r:irqbalance_exec_t,s0)
+ 
+ /var/run/irqbalance\.pid	--	gen_context(system_u:object_r:irqbalance_var_run_t,s0)
+diff --git a/policy/modules/contrib/iscsi.fc b/policy/modules/contrib/iscsi.fc
+index 08b75604792a..f55c5813a329 100644
+--- a/policy/modules/contrib/iscsi.fc
++++ b/policy/modules/contrib/iscsi.fc
+@@ -4,9 +4,9 @@
+ /sbin/brcm_iscsiuio	--	gen_context(system_u:object_r:iscsid_exec_t,s0)
+ /sbin/iscsiuio	--	gen_context(system_u:object_r:iscsid_exec_t,s0)
+ 
+-/usr/sbin/iscsid	--	gen_context(system_u:object_r:iscsid_exec_t,s0)
+-/usr/sbin/brcm_iscsiuio	--	gen_context(system_u:object_r:iscsid_exec_t,s0)
+-/usr/sbin/iscsiuio	--	gen_context(system_u:object_r:iscsid_exec_t,s0)
++/usr/s?bin/iscsid	--	gen_context(system_u:object_r:iscsid_exec_t,s0)
++/usr/s?bin/brcm_iscsiuio	--	gen_context(system_u:object_r:iscsid_exec_t,s0)
++/usr/s?bin/iscsiuio	--	gen_context(system_u:object_r:iscsid_exec_t,s0)
+ 
+ /var/lib/iscsi(/.*)?	gen_context(system_u:object_r:iscsi_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/isns.fc b/policy/modules/contrib/isns.fc
+index a0852ec3a230..1ddd1e36f2ff 100644
+--- a/policy/modules/contrib/isns.fc
++++ b/policy/modules/contrib/isns.fc
+@@ -1,6 +1,6 @@
+ /etc/rc\.d/init\.d/isnsd	--	gen_context(system_u:object_r:isnsd_initrc_exec_t,s0)
+ 
+-/usr/sbin/isnsd	--	gen_context(system_u:object_r:isnsd_exec_t,s0)
++/usr/s?bin/isnsd	--	gen_context(system_u:object_r:isnsd_exec_t,s0)
+ 
+ /var/lib/isns(/.*)?	gen_context(system_u:object_r:isnsd_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/jabber.fc b/policy/modules/contrib/jabber.fc
+index 59ad3b3c4d6f..a943b1c1127f 100644
+--- a/policy/modules/contrib/jabber.fc
++++ b/policy/modules/contrib/jabber.fc
+@@ -5,9 +5,9 @@
+ /usr/bin/s2s	--	gen_context(system_u:object_r:jabberd_exec_t,s0)
+ /usr/bin/sm	--	gen_context(system_u:object_r:jabberd_exec_t,s0)
+ 
+-/usr/sbin/ejabberd	--	gen_context(system_u:object_r:jabberd_exec_t,s0)
+-/usr/sbin/ejabberdctl	--	gen_context(system_u:object_r:jabberd_exec_t,s0)
+-/usr/sbin/jabberd	--	gen_context(system_u:object_r:jabberd_exec_t,s0)
++/usr/s?bin/ejabberd	--	gen_context(system_u:object_r:jabberd_exec_t,s0)
++/usr/s?bin/ejabberdctl	--	gen_context(system_u:object_r:jabberd_exec_t,s0)
++/usr/s?bin/jabberd	--	gen_context(system_u:object_r:jabberd_exec_t,s0)
+ 
+ /var/lock/ejabberdctl(/.*)	gen_context(system_u:object_r:jabberd_lock_t,s0)
+ 
+diff --git a/policy/modules/contrib/kdump.fc b/policy/modules/contrib/kdump.fc
+index a49ae4e918d7..b1fe716855f9 100644
+--- a/policy/modules/contrib/kdump.fc
++++ b/policy/modules/contrib/kdump.fc
+@@ -9,5 +9,5 @@
+ /sbin/kdump	--	gen_context(system_u:object_r:kdump_exec_t,s0)
+ /sbin/kexec	--	gen_context(system_u:object_r:kdump_exec_t,s0)
+ 
+-/usr/sbin/kdump	--	gen_context(system_u:object_r:kdump_exec_t,s0)
+-/usr/sbin/kexec	--	gen_context(system_u:object_r:kdump_exec_t,s0)
++/usr/s?bin/kdump	--	gen_context(system_u:object_r:kdump_exec_t,s0)
++/usr/s?bin/kexec	--	gen_context(system_u:object_r:kdump_exec_t,s0)
+diff --git a/policy/modules/contrib/kerberos.fc b/policy/modules/contrib/kerberos.fc
+index 4fe75fd63ef0..84584ae9fc0e 100644
+--- a/policy/modules/contrib/kerberos.fc
++++ b/policy/modules/contrib/kerberos.fc
+@@ -21,8 +21,8 @@ HOME_DIR/\.k5login	--	gen_context(system_u:object_r:krb5_home_t,s0)
+ /usr/local/kerberos/sbin/krb5kdc	--	gen_context(system_u:object_r:krb5kdc_exec_t,s0)
+ /usr/local/kerberos/sbin/kadmind	--	gen_context(system_u:object_r:kadmind_exec_t,s0)
+ 
+-/usr/sbin/krb5kdc	--	gen_context(system_u:object_r:krb5kdc_exec_t,s0)
+-/usr/sbin/kadmind	--	gen_context(system_u:object_r:kadmind_exec_t,s0)
++/usr/s?bin/krb5kdc	--	gen_context(system_u:object_r:krb5kdc_exec_t,s0)
++/usr/s?bin/kadmind	--	gen_context(system_u:object_r:kadmind_exec_t,s0)
+ 
+ /usr/local/var/krb5kdc(/.*)?	gen_context(system_u:object_r:krb5kdc_conf_t,s0)
+ /usr/local/var/krb5kdc/principal.*	gen_context(system_u:object_r:krb5kdc_principal_t,s0)
+diff --git a/policy/modules/contrib/kerneloops.fc b/policy/modules/contrib/kerneloops.fc
+index 5ef261a38824..4a803aefae08 100644
+--- a/policy/modules/contrib/kerneloops.fc
++++ b/policy/modules/contrib/kerneloops.fc
+@@ -1,3 +1,3 @@
+ /etc/rc\.d/init\.d/kerneloops	--	gen_context(system_u:object_r:kerneloops_initrc_exec_t,s0)
+ 
+-/usr/sbin/kerneloops	--	gen_context(system_u:object_r:kerneloops_exec_t,s0)
++/usr/s?bin/kerneloops	--	gen_context(system_u:object_r:kerneloops_exec_t,s0)
+diff --git a/policy/modules/contrib/ksmtuned.fc b/policy/modules/contrib/ksmtuned.fc
+index e736c450c085..4e0206a8c830 100644
+--- a/policy/modules/contrib/ksmtuned.fc
++++ b/policy/modules/contrib/ksmtuned.fc
+@@ -1,6 +1,6 @@
+ /etc/rc\.d/init\.d/ksmtuned	--	gen_context(system_u:object_r:ksmtuned_initrc_exec_t,s0)
+ 
+-/usr/sbin/ksmtuned	--	gen_context(system_u:object_r:ksmtuned_exec_t,s0)
++/usr/s?bin/ksmtuned	--	gen_context(system_u:object_r:ksmtuned_exec_t,s0)
+ 
+ /var/log/ksmtuned.*	gen_context(system_u:object_r:ksmtuned_log_t,s0)
+ 
+diff --git a/policy/modules/contrib/ktalk.fc b/policy/modules/contrib/ktalk.fc
+index 38ecb07d1598..4ff21d41e704 100644
+--- a/policy/modules/contrib/ktalk.fc
++++ b/policy/modules/contrib/ktalk.fc
+@@ -1,7 +1,7 @@
+ /usr/bin/ktalkd	--	gen_context(system_u:object_r:ktalkd_exec_t,s0)
+ 
+-/usr/sbin/in\.talkd	--	gen_context(system_u:object_r:ktalkd_exec_t,s0)
+-/usr/sbin/in\.ntalkd	--	gen_context(system_u:object_r:ktalkd_exec_t,s0)
+-/usr/sbin/ktalkd	--	gen_context(system_u:object_r:ktalkd_exec_t,s0)
++/usr/s?bin/in\.talkd	--	gen_context(system_u:object_r:ktalkd_exec_t,s0)
++/usr/s?bin/in\.ntalkd	--	gen_context(system_u:object_r:ktalkd_exec_t,s0)
++/usr/s?bin/ktalkd	--	gen_context(system_u:object_r:ktalkd_exec_t,s0)
+ 
+ /var/log/talkd.*	--	gen_context(system_u:object_r:ktalkd_log_t,s0)
+diff --git a/policy/modules/contrib/kudzu.fc b/policy/modules/contrib/kudzu.fc
+index 7a2e5beb9bb9..fc2c3e9198f3 100644
+--- a/policy/modules/contrib/kudzu.fc
++++ b/policy/modules/contrib/kudzu.fc
+@@ -3,7 +3,7 @@
+ /sbin/kmodule	--	gen_context(system_u:object_r:kudzu_exec_t,s0)
+ /sbin/kudzu	--	gen_context(system_u:object_r:kudzu_exec_t,s0)
+ 
+-/usr/sbin/kmodule	--	gen_context(system_u:object_r:kudzu_exec_t,s0)
+-/usr/sbin/kudzu	--	gen_context(system_u:object_r:kudzu_exec_t,s0)
++/usr/s?bin/kmodule	--	gen_context(system_u:object_r:kudzu_exec_t,s0)
++/usr/s?bin/kudzu	--	gen_context(system_u:object_r:kudzu_exec_t,s0)
+ 
+ /var/run/kudzu(/.*)?	gen_context(system_u:object_r:kudzu_var_run_t,s0)
+diff --git a/policy/modules/contrib/l2tp.fc b/policy/modules/contrib/l2tp.fc
+index d5d1572b1caa..74d370055290 100644
+--- a/policy/modules/contrib/l2tp.fc
++++ b/policy/modules/contrib/l2tp.fc
+@@ -4,7 +4,7 @@
+ 
+ /etc/sysconfig/.*l2tpd	--	gen_context(system_u:object_r:l2tp_conf_t,s0)
+ 
+-/usr/sbin/.*l2tpd	--	gen_context(system_u:object_r:l2tpd_exec_t,s0)
++/usr/s?bin/.*l2tpd	--	gen_context(system_u:object_r:l2tpd_exec_t,s0)
+ 
+ /var/run/.*l2tpd(/.*)?	gen_context(system_u:object_r:l2tpd_var_run_t,s0)
+ /var/run/prol2tpd\.ctl	-s	gen_context(system_u:object_r:l2tpd_var_run_t,s0)
+diff --git a/policy/modules/contrib/ldap.fc b/policy/modules/contrib/ldap.fc
+index b7e567916741..23b0e9a58902 100644
+--- a/policy/modules/contrib/ldap.fc
++++ b/policy/modules/contrib/ldap.fc
+@@ -4,7 +4,7 @@
+ 
+ /etc/rc\.d/init\.d/ldap	--	gen_context(system_u:object_r:slapd_initrc_exec_t,s0)
+ 
+-/usr/sbin/slapd	--	gen_context(system_u:object_r:slapd_exec_t,s0)
++/usr/s?bin/slapd	--	gen_context(system_u:object_r:slapd_exec_t,s0)
+ 
+ /usr/lib/openldap/slapd	--	gen_context(system_u:object_r:slapd_exec_t,s0)
+ /usr/lib/slapd	--	gen_context(system_u:object_r:slapd_exec_t,s0)
+diff --git a/policy/modules/contrib/likewise.fc b/policy/modules/contrib/likewise.fc
+index 5758403f5780..dd7e47df8aca 100644
+--- a/policy/modules/contrib/likewise.fc
++++ b/policy/modules/contrib/likewise.fc
+@@ -21,14 +21,14 @@
+ /opt/likewise/sbin/netlogond	--	gen_context(system_u:object_r:netlogond_exec_t,s0)
+ /opt/likewise/sbin/srvsvcd	--	gen_context(system_u:object_r:srvsvcd_exec_t,s0)
+ 
+-/usr/sbin/dcerpcd	--	gen_context(system_u:object_r:dcerpcd_exec_t,s0)
+-/usr/sbin/eventlogd	--	gen_context(system_u:object_r:eventlogd_exec_t,s0)
+-/usr/sbin/lsassd	--	gen_context(system_u:object_r:lsassd_exec_t,s0)
+-/usr/sbin/lwiod	--	gen_context(system_u:object_r:lwiod_exec_t,s0)
+-/usr/sbin/lwregd	--	gen_context(system_u:object_r:lwregd_exec_t,s0)
+-/usr/sbin/lwsmd	--	gen_context(system_u:object_r:lwsmd_exec_t,s0)
+-/usr/sbin/netlogond	--	gen_context(system_u:object_r:netlogond_exec_t,s0)
+-/usr/sbin/srvsvcd	--	gen_context(system_u:object_r:srvsvcd_exec_t,s0)
++/usr/s?bin/dcerpcd	--	gen_context(system_u:object_r:dcerpcd_exec_t,s0)
++/usr/s?bin/eventlogd	--	gen_context(system_u:object_r:eventlogd_exec_t,s0)
++/usr/s?bin/lsassd	--	gen_context(system_u:object_r:lsassd_exec_t,s0)
++/usr/s?bin/lwiod	--	gen_context(system_u:object_r:lwiod_exec_t,s0)
++/usr/s?bin/lwregd	--	gen_context(system_u:object_r:lwregd_exec_t,s0)
++/usr/s?bin/lwsmd	--	gen_context(system_u:object_r:lwsmd_exec_t,s0)
++/usr/s?bin/netlogond	--	gen_context(system_u:object_r:netlogond_exec_t,s0)
++/usr/s?bin/srvsvcd	--	gen_context(system_u:object_r:srvsvcd_exec_t,s0)
+ 
+ /var/lib/likewise(/.*)?	gen_context(system_u:object_r:likewise_var_lib_t,s0)
+ /var/lib/likewise/\.eventlog	-s	gen_context(system_u:object_r:eventlogd_var_socket_t,s0)
+diff --git a/policy/modules/contrib/lircd.fc b/policy/modules/contrib/lircd.fc
+index 76e497ec8b52..b2347325fd20 100644
+--- a/policy/modules/contrib/lircd.fc
++++ b/policy/modules/contrib/lircd.fc
+@@ -8,7 +8,7 @@
+ # Systemd unit file
+ /usr/lib/systemd/system/[^/]*lircd.*	--	gen_context(system_u:object_r:lircd_unit_t,s0)
+ 
+-/usr/sbin/lircd	--	gen_context(system_u:object_r:lircd_exec_t,s0)
++/usr/s?bin/lircd	--	gen_context(system_u:object_r:lircd_exec_t,s0)
+ 
+ /var/run/lirc(/.*)?	gen_context(system_u:object_r:lircd_var_run_t,s0)
+ /var/run/lircd(/.*)?	gen_context(system_u:object_r:lircd_var_run_t,s0)
+diff --git a/policy/modules/contrib/lldpad.fc b/policy/modules/contrib/lldpad.fc
+index 8031a78eb8ce..58d51c212d4e 100644
+--- a/policy/modules/contrib/lldpad.fc
++++ b/policy/modules/contrib/lldpad.fc
+@@ -1,6 +1,6 @@
+ /etc/rc\.d/init\.d/lldpad	--	gen_context(system_u:object_r:lldpad_initrc_exec_t,s0)
+ 
+-/usr/sbin/lldpad	--	gen_context(system_u:object_r:lldpad_exec_t,s0)
++/usr/s?bin/lldpad	--	gen_context(system_u:object_r:lldpad_exec_t,s0)
+ 
+ /var/lib/lldpad(/.*)?	gen_context(system_u:object_r:lldpad_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/lockdev.fc b/policy/modules/contrib/lockdev.fc
+index 4fd0fda9d728..b92ffad3cded 100644
+--- a/policy/modules/contrib/lockdev.fc
++++ b/policy/modules/contrib/lockdev.fc
+@@ -1,3 +1,3 @@
+-/usr/sbin/lockdev	--	gen_context(system_u:object_r:lockdev_exec_t,s0)
++/usr/s?bin/lockdev	--	gen_context(system_u:object_r:lockdev_exec_t,s0)
+ 
+ /var/lock/lockdev(/.*)?	gen_context(system_u:object_r:lockdev_lock_t,s0)
+diff --git a/policy/modules/contrib/logrotate.fc b/policy/modules/contrib/logrotate.fc
+index ad2159626bc2..415f2bdaab17 100644
+--- a/policy/modules/contrib/logrotate.fc
++++ b/policy/modules/contrib/logrotate.fc
+@@ -4,7 +4,7 @@
+ # Systemd unit file
+ /usr/lib/systemd/system/[^/]*logrotate.*	--	gen_context(system_u:object_r:logrotate_unit_t,s0)
+ 
+-/usr/sbin/logrotate	--	gen_context(system_u:object_r:logrotate_exec_t,s0)
++/usr/s?bin/logrotate	--	gen_context(system_u:object_r:logrotate_exec_t,s0)
+ 
+ /var/lib/logrotate(/.*)?	gen_context(system_u:object_r:logrotate_var_lib_t,s0)
+ /var/lib/logrotate\.status	--	gen_context(system_u:object_r:logrotate_var_lib_t,s0)
+diff --git a/policy/modules/contrib/logwatch.fc b/policy/modules/contrib/logwatch.fc
+index 935147d8c86e..890ac1fefece 100644
+--- a/policy/modules/contrib/logwatch.fc
++++ b/policy/modules/contrib/logwatch.fc
+@@ -1,6 +1,6 @@
+-/usr/sbin/epylog	--	gen_context(system_u:object_r:logwatch_exec_t,s0)
+-/usr/sbin/logcheck	--	gen_context(system_u:object_r:logwatch_exec_t,s0)
+-/usr/sbin/logwatch\.pl	--	gen_context(system_u:object_r:logwatch_exec_t,s0)
++/usr/s?bin/epylog	--	gen_context(system_u:object_r:logwatch_exec_t,s0)
++/usr/s?bin/logcheck	--	gen_context(system_u:object_r:logwatch_exec_t,s0)
++/usr/s?bin/logwatch\.pl	--	gen_context(system_u:object_r:logwatch_exec_t,s0)
+ 
+ /usr/share/logwatch/scripts/logwatch\.pl	--	gen_context(system_u:object_r:logwatch_exec_t, s0)
+ 
+diff --git a/policy/modules/contrib/lpd.fc b/policy/modules/contrib/lpd.fc
+index 2fb9b2ec289b..db51dc9bde72 100644
+--- a/policy/modules/contrib/lpd.fc
++++ b/policy/modules/contrib/lpd.fc
+@@ -11,13 +11,13 @@
+ /usr/bin/lprm(\.cups)?	--	gen_context(system_u:object_r:lpr_exec_t,s0)
+ /usr/bin/lpstat(\.cups)?	--	gen_context(system_u:object_r:lpr_exec_t,s0)
+ 
+-/usr/sbin/accept	--	gen_context(system_u:object_r:lpr_exec_t,s0)
+-/usr/sbin/checkpc	--	gen_context(system_u:object_r:checkpc_exec_t,s0)
+-/usr/sbin/lpd	--	gen_context(system_u:object_r:lpd_exec_t,s0)
+-/usr/sbin/lpadmin	--	gen_context(system_u:object_r:lpr_exec_t,s0)
+-/usr/sbin/lpc(\.cups)?	--	gen_context(system_u:object_r:lpr_exec_t,s0)
+-/usr/sbin/lpinfo	--	gen_context(system_u:object_r:lpr_exec_t,s0)
+-/usr/sbin/lpmove	--	gen_context(system_u:object_r:lpr_exec_t,s0)
++/usr/s?bin/accept	--	gen_context(system_u:object_r:lpr_exec_t,s0)
++/usr/s?bin/checkpc	--	gen_context(system_u:object_r:checkpc_exec_t,s0)
++/usr/s?bin/lpd	--	gen_context(system_u:object_r:lpd_exec_t,s0)
++/usr/s?bin/lpadmin	--	gen_context(system_u:object_r:lpr_exec_t,s0)
++/usr/s?bin/lpc(\.cups)?	--	gen_context(system_u:object_r:lpr_exec_t,s0)
++/usr/s?bin/lpinfo	--	gen_context(system_u:object_r:lpr_exec_t,s0)
++/usr/s?bin/lpmove	--	gen_context(system_u:object_r:lpr_exec_t,s0)
+ 
+ /usr/local/linuxprinter/bin/l?lpr	--	gen_context(system_u:object_r:lpr_exec_t,s0)
+ 
+diff --git a/policy/modules/contrib/mailscanner.fc b/policy/modules/contrib/mailscanner.fc
+index 3698276b48a7..e4b2539c4c01 100644
+--- a/policy/modules/contrib/mailscanner.fc
++++ b/policy/modules/contrib/mailscanner.fc
+@@ -6,7 +6,7 @@
+ 
+ /etc/sysconfig/update_spamassassin	--	gen_context(system_u:object_r:mscan_etc_t,s0)
+ 
+-/usr/sbin/MailScanner	--	gen_context(system_u:object_r:mscan_exec_t,s0)
++/usr/s?bin/MailScanner	--	gen_context(system_u:object_r:mscan_exec_t,s0)
+ 
+ /var/run/MailScanner\.pid	--	gen_context(system_u:object_r:mscan_var_run_t,s0)
+ 
+diff --git a/policy/modules/contrib/mcelog.fc b/policy/modules/contrib/mcelog.fc
+index c16f59287dec..c499b64fb8ea 100644
+--- a/policy/modules/contrib/mcelog.fc
++++ b/policy/modules/contrib/mcelog.fc
+@@ -2,7 +2,7 @@
+ 
+ /etc/rc\.d/init\.d/mcelog	--	gen_context(system_u:object_r:mcelog_initrc_exec_t,s0)
+ 
+-/usr/sbin/mcelog	--	gen_context(system_u:object_r:mcelog_exec_t,s0)
++/usr/s?bin/mcelog	--	gen_context(system_u:object_r:mcelog_exec_t,s0)
+ 
+ /var/log/mcelog.*	--	gen_context(system_u:object_r:mcelog_log_t,s0)
+ 
+diff --git a/policy/modules/contrib/milter.fc b/policy/modules/contrib/milter.fc
+index 89409ebbc793..0124dc0f1ec9 100644
+--- a/policy/modules/contrib/milter.fc
++++ b/policy/modules/contrib/milter.fc
+@@ -1,7 +1,7 @@
+-/usr/sbin/milter-greylist	--	gen_context(system_u:object_r:greylist_milter_exec_t,s0)
+-/usr/sbin/sqlgrey	--	gen_context(system_u:object_r:greylist_milter_exec_t,s0)
+-/usr/sbin/milter-regex	--	gen_context(system_u:object_r:regex_milter_exec_t,s0)
+-/usr/sbin/spamass-milter	--	gen_context(system_u:object_r:spamass_milter_exec_t,s0)
++/usr/s?bin/milter-greylist	--	gen_context(system_u:object_r:greylist_milter_exec_t,s0)
++/usr/s?bin/sqlgrey	--	gen_context(system_u:object_r:greylist_milter_exec_t,s0)
++/usr/s?bin/milter-regex	--	gen_context(system_u:object_r:regex_milter_exec_t,s0)
++/usr/s?bin/spamass-milter	--	gen_context(system_u:object_r:spamass_milter_exec_t,s0)
+ 
+ /var/lib/milter-greylist(/.*)?	gen_context(system_u:object_r:greylist_milter_data_t,s0)
+ /var/lib/sqlgrey(/.*)?	gen_context(system_u:object_r:greylist_milter_data_t,s0)
+diff --git a/policy/modules/contrib/minidlna.fc b/policy/modules/contrib/minidlna.fc
+index 02c1b505f22d..ee862c44bccf 100644
+--- a/policy/modules/contrib/minidlna.fc
++++ b/policy/modules/contrib/minidlna.fc
+@@ -2,7 +2,7 @@
+ 
+ /etc/minidlna\.conf	--	gen_context(system_u:object_r:minidlna_conf_t,s0)
+ 
+-/usr/sbin/minidlna	--	gen_context(system_u:object_r:minidlna_exec_t,s0)
++/usr/s?bin/minidlna	--	gen_context(system_u:object_r:minidlna_exec_t,s0)
+ 
+ /var/cache/minidlna(/.*)?	gen_context(system_u:object_r:minidlna_db_t,s0)
+ 
+diff --git a/policy/modules/contrib/modemmanager.fc b/policy/modules/contrib/modemmanager.fc
+index c43901e67583..411b8e399800 100644
+--- a/policy/modules/contrib/modemmanager.fc
++++ b/policy/modules/contrib/modemmanager.fc
+@@ -1,2 +1,2 @@
+-/usr/sbin/ModemManager	--	gen_context(system_u:object_r:modemmanager_exec_t,s0)
+-/usr/sbin/modem-manager	--	gen_context(system_u:object_r:modemmanager_exec_t,s0)
++/usr/s?bin/ModemManager	--	gen_context(system_u:object_r:modemmanager_exec_t,s0)
++/usr/s?bin/modem-manager	--	gen_context(system_u:object_r:modemmanager_exec_t,s0)
+diff --git a/policy/modules/contrib/monop.fc b/policy/modules/contrib/monop.fc
+index a2b2a26e4667..645c2c46b789 100644
+--- a/policy/modules/contrib/monop.fc
++++ b/policy/modules/contrib/monop.fc
+@@ -2,7 +2,7 @@
+ 
+ /etc/monopd\.conf	--	gen_context(system_u:object_r:monopd_etc_t,s0)
+ 
+-/usr/sbin/monopd	--	gen_context(system_u:object_r:monopd_exec_t,s0)
++/usr/s?bin/monopd	--	gen_context(system_u:object_r:monopd_exec_t,s0)
+ 
+ /usr/share/monopd/games(/.*)?	gen_context(system_u:object_r:monopd_share_t,s0)
+ 
+diff --git a/policy/modules/contrib/mta.fc b/policy/modules/contrib/mta.fc
+index f42896cbf928..45a09b4266bc 100644
+--- a/policy/modules/contrib/mta.fc
++++ b/policy/modules/contrib/mta.fc
+@@ -19,10 +19,10 @@ HOME_DIR/\.maildir(/.*)?	gen_context(system_u:object_r:mail_home_rw_t,s0)
+ /usr/lib/sendmail	--	gen_context(system_u:object_r:sendmail_exec_t,s0)
+ /usr/lib/courier/bin/sendmail	--	gen_context(system_u:object_r:sendmail_exec_t,s0)
+ 
+-/usr/sbin/rmail	--	gen_context(system_u:object_r:sendmail_exec_t,s0)
+-/usr/sbin/sendmail\.postfix	--	gen_context(system_u:object_r:sendmail_exec_t,s0)
+-/usr/sbin/sendmail(\.sendmail)?	--	gen_context(system_u:object_r:sendmail_exec_t,s0)
+-/usr/sbin/ssmtp	--	gen_context(system_u:object_r:sendmail_exec_t,s0)
++/usr/s?bin/rmail	--	gen_context(system_u:object_r:sendmail_exec_t,s0)
++/usr/s?bin/sendmail\.postfix	--	gen_context(system_u:object_r:sendmail_exec_t,s0)
++/usr/s?bin/sendmail(\.sendmail)?	--	gen_context(system_u:object_r:sendmail_exec_t,s0)
++/usr/s?bin/ssmtp	--	gen_context(system_u:object_r:sendmail_exec_t,s0)
+ 
+ /var/mail(/.*)?	gen_context(system_u:object_r:mail_spool_t,s0)
+ 
+diff --git a/policy/modules/contrib/munin.fc b/policy/modules/contrib/munin.fc
+index eb4b72a92ae9..c2f4b102c811 100644
+--- a/policy/modules/contrib/munin.fc
++++ b/policy/modules/contrib/munin.fc
+@@ -4,7 +4,7 @@
+ 
+ /usr/bin/munin-.*	--	gen_context(system_u:object_r:munin_exec_t,s0)
+ 
+-/usr/sbin/munin-.*	--	gen_context(system_u:object_r:munin_exec_t,s0)
++/usr/s?bin/munin-.*	--	gen_context(system_u:object_r:munin_exec_t,s0)
+ 
+ /usr/share/munin/munin-.*	--	gen_context(system_u:object_r:munin_exec_t,s0)
+ 
+diff --git a/policy/modules/contrib/mysql.fc b/policy/modules/contrib/mysql.fc
+index 06f8666df65d..3898bc8243fc 100644
+--- a/policy/modules/contrib/mysql.fc
++++ b/policy/modules/contrib/mysql.fc
+@@ -12,9 +12,9 @@ HOME_DIR/\.my\.cnf	--	gen_context(system_u:object_r:mysqld_home_t,s0)
+ 
+ /usr/libexec/mysqld	--	gen_context(system_u:object_r:mysqld_exec_t,s0)
+ 
+-/usr/sbin/mysqld(-max)?	--	gen_context(system_u:object_r:mysqld_exec_t,s0)
+-/usr/sbin/mysqlmanager	--	gen_context(system_u:object_r:mysqlmanagerd_exec_t,s0)
+-/usr/sbin/ndbd	--	gen_context(system_u:object_r:mysqld_exec_t,s0)
++/usr/s?bin/mysqld(-max)?	--	gen_context(system_u:object_r:mysqld_exec_t,s0)
++/usr/s?bin/mysqlmanager	--	gen_context(system_u:object_r:mysqlmanagerd_exec_t,s0)
++/usr/s?bin/ndbd	--	gen_context(system_u:object_r:mysqld_exec_t,s0)
+ 
+ /var/lib/mysql(/.*)?	gen_context(system_u:object_r:mysqld_db_t,s0)
+ /var/lib/mysql/mysql.*	-s	gen_context(system_u:object_r:mysqld_var_run_t,s0)
+diff --git a/policy/modules/contrib/nessus.fc b/policy/modules/contrib/nessus.fc
+index bb89a1dcb936..79ca121e4b4e 100644
+--- a/policy/modules/contrib/nessus.fc
++++ b/policy/modules/contrib/nessus.fc
+@@ -4,7 +4,7 @@
+ 
+ /usr/lib/nessus/plugins/.*	--	gen_context(system_u:object_r:nessusd_exec_t,s0)
+ 
+-/usr/sbin/nessusd	--	gen_context(system_u:object_r:nessusd_exec_t,s0)
++/usr/s?bin/nessusd	--	gen_context(system_u:object_r:nessusd_exec_t,s0)
+ 
+ /var/lib/nessus(/.*)?	gen_context(system_u:object_r:nessusd_db_t,s0)
+ 
+diff --git a/policy/modules/contrib/networkmanager.fc b/policy/modules/contrib/networkmanager.fc
+index ac930d7afc92..dc8dd2514082 100644
+--- a/policy/modules/contrib/networkmanager.fc
++++ b/policy/modules/contrib/networkmanager.fc
+@@ -28,12 +28,12 @@
+ /usr/bin/wpa_cli	--	gen_context(system_u:object_r:wpa_cli_exec_t,s0)
+ /usr/bin/wpa_supplicant	--	gen_context(system_u:object_r:NetworkManager_exec_t,s0)
+ 
+-/usr/sbin/NetworkManager	--	gen_context(system_u:object_r:NetworkManager_exec_t,s0)
+-/usr/sbin/NetworkManagerDispatcher	--	gen_context(system_u:object_r:NetworkManager_exec_t,s0)
+-/usr/sbin/nm-system-settings	--	gen_context(system_u:object_r:NetworkManager_exec_t,s0)
+-/usr/sbin/wicd	--	gen_context(system_u:object_r:NetworkManager_exec_t,s0)
+-/usr/sbin/wpa_cli	--	gen_context(system_u:object_r:wpa_cli_exec_t,s0)
+-/usr/sbin/wpa_supplicant	--	gen_context(system_u:object_r:NetworkManager_exec_t,s0)
++/usr/s?bin/NetworkManager	--	gen_context(system_u:object_r:NetworkManager_exec_t,s0)
++/usr/s?bin/NetworkManagerDispatcher	--	gen_context(system_u:object_r:NetworkManager_exec_t,s0)
++/usr/s?bin/nm-system-settings	--	gen_context(system_u:object_r:NetworkManager_exec_t,s0)
++/usr/s?bin/wicd	--	gen_context(system_u:object_r:NetworkManager_exec_t,s0)
++/usr/s?bin/wpa_cli	--	gen_context(system_u:object_r:wpa_cli_exec_t,s0)
++/usr/s?bin/wpa_supplicant	--	gen_context(system_u:object_r:NetworkManager_exec_t,s0)
+ 
+ /var/lib/wicd(/.*)?	gen_context(system_u:object_r:NetworkManager_var_lib_t,s0)
+ /var/lib/NetworkManager(/.*)?	gen_context(system_u:object_r:NetworkManager_var_lib_t,s0)
+diff --git a/policy/modules/contrib/nis.fc b/policy/modules/contrib/nis.fc
+index 8aa1bfa28ef3..09c298396cd2 100644
+--- a/policy/modules/contrib/nis.fc
++++ b/policy/modules/contrib/nis.fc
+@@ -9,10 +9,10 @@
+ 
+ /usr/lib/yp/ypxfr	--	gen_context(system_u:object_r:ypxfr_exec_t,s0)
+ 
+-/usr/sbin/rpc\.yppasswdd	--	gen_context(system_u:object_r:yppasswdd_exec_t,s0)
+-/usr/sbin/rpc\.ypxfrd	--	gen_context(system_u:object_r:ypxfr_exec_t,s0)
+-/usr/sbin/ypbind	--	gen_context(system_u:object_r:ypbind_exec_t,s0)
+-/usr/sbin/ypserv	--	gen_context(system_u:object_r:ypserv_exec_t,s0)
++/usr/s?bin/rpc\.yppasswdd	--	gen_context(system_u:object_r:yppasswdd_exec_t,s0)
++/usr/s?bin/rpc\.ypxfrd	--	gen_context(system_u:object_r:ypxfr_exec_t,s0)
++/usr/s?bin/ypbind	--	gen_context(system_u:object_r:ypbind_exec_t,s0)
++/usr/s?bin/ypserv	--	gen_context(system_u:object_r:ypserv_exec_t,s0)
+ 
+ /var/yp(/.*)?	gen_context(system_u:object_r:var_yp_t,s0)
+ 
+diff --git a/policy/modules/contrib/nscd.fc b/policy/modules/contrib/nscd.fc
+index ba6448507474..a39d96c4e825 100644
+--- a/policy/modules/contrib/nscd.fc
++++ b/policy/modules/contrib/nscd.fc
+@@ -1,6 +1,6 @@
+ /etc/rc\.d/init\.d/nscd	--	gen_context(system_u:object_r:nscd_initrc_exec_t,s0)
+ 
+-/usr/sbin/nscd	--	gen_context(system_u:object_r:nscd_exec_t,s0)
++/usr/s?bin/nscd	--	gen_context(system_u:object_r:nscd_exec_t,s0)
+ 
+ /var/cache/nscd(/.*)?	gen_context(system_u:object_r:nscd_var_run_t,s0)
+ 
+diff --git a/policy/modules/contrib/nsd.fc b/policy/modules/contrib/nsd.fc
+index 4f2b1b663c5e..f8e62a5b5136 100644
+--- a/policy/modules/contrib/nsd.fc
++++ b/policy/modules/contrib/nsd.fc
+@@ -5,10 +5,10 @@
+ /etc/nsd/primary(/.*)?	gen_context(system_u:object_r:nsd_zone_t,s0)
+ /etc/nsd/secondary(/.*)?	gen_context(system_u:object_r:nsd_zone_t,s0)
+ 
+-/usr/sbin/nsd	--	gen_context(system_u:object_r:nsd_exec_t,s0)
+-/usr/sbin/nsdc	--	gen_context(system_u:object_r:nsd_exec_t,s0)
+-/usr/sbin/nsd-notify	--	gen_context(system_u:object_r:nsd_exec_t,s0)
+-/usr/sbin/zonec	--	gen_context(system_u:object_r:nsd_exec_t,s0)
++/usr/s?bin/nsd	--	gen_context(system_u:object_r:nsd_exec_t,s0)
++/usr/s?bin/nsdc	--	gen_context(system_u:object_r:nsd_exec_t,s0)
++/usr/s?bin/nsd-notify	--	gen_context(system_u:object_r:nsd_exec_t,s0)
++/usr/s?bin/zonec	--	gen_context(system_u:object_r:nsd_exec_t,s0)
+ 
+ /var/lib/nsd(/.*)?	gen_context(system_u:object_r:nsd_zone_t,s0)
+ /var/lib/nsd/nsd\.db	--	gen_context(system_u:object_r:nsd_db_t,s0)
+diff --git a/policy/modules/contrib/nslcd.fc b/policy/modules/contrib/nslcd.fc
+index 402100e40ff4..c5106f786b5c 100644
+--- a/policy/modules/contrib/nslcd.fc
++++ b/policy/modules/contrib/nslcd.fc
+@@ -2,6 +2,6 @@
+ 
+ /etc/rc\.d/init\.d/nslcd	--	gen_context(system_u:object_r:nslcd_initrc_exec_t,s0)
+ 
+-/usr/sbin/nslcd	--	gen_context(system_u:object_r:nslcd_exec_t,s0)
++/usr/s?bin/nslcd	--	gen_context(system_u:object_r:nslcd_exec_t,s0)
+ 
+ /var/run/nslcd(/.*)?	gen_context(system_u:object_r:nslcd_var_run_t,s0)
+diff --git a/policy/modules/contrib/ntop.fc b/policy/modules/contrib/ntop.fc
+index 52e27ef18878..ee349646aec2 100644
+--- a/policy/modules/contrib/ntop.fc
++++ b/policy/modules/contrib/ntop.fc
+@@ -2,7 +2,7 @@
+ 
+ /etc/rc\.d/init\.d/ntop	--	gen_context(system_u:object_r:ntop_initrc_exec_t,s0)
+ 
+-/usr/sbin/ntop	--	gen_context(system_u:object_r:ntop_exec_t,s0)
++/usr/s?bin/ntop	--	gen_context(system_u:object_r:ntop_exec_t,s0)
+ 
+ /var/lib/ntop(/.*)?	gen_context(system_u:object_r:ntop_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/ntp.fc b/policy/modules/contrib/ntp.fc
+index 830ab324f744..4aee20d75082 100644
+--- a/policy/modules/contrib/ntp.fc
++++ b/policy/modules/contrib/ntp.fc
+@@ -14,9 +14,9 @@
+ # Systemd unit file
+ /usr/lib/systemd/ntp-units\.d/.*  --   gen_context(system_u:object_r:ntpd_unit_t,s0)
+ 
+-/usr/sbin/ntpd		--	gen_context(system_u:object_r:ntpd_exec_t,s0)
+-/usr/sbin/ntpdate	--	gen_context(system_u:object_r:ntpdate_exec_t,s0)
+-/usr/sbin/sntp		--	gen_context(system_u:object_r:ntpdate_exec_t,s0)
++/usr/s?bin/ntpd		--	gen_context(system_u:object_r:ntpd_exec_t,s0)
++/usr/s?bin/ntpdate	--	gen_context(system_u:object_r:ntpdate_exec_t,s0)
++/usr/s?bin/sntp		--	gen_context(system_u:object_r:ntpdate_exec_t,s0)
+ 
+ /var/lib/ntp(/.*)?		gen_context(system_u:object_r:ntp_drift_t,s0)
+ /var/lib/sntp-kod(/.*)?		gen_context(system_u:object_r:ntp_drift_t,s0)
+diff --git a/policy/modules/contrib/nut.fc b/policy/modules/contrib/nut.fc
+index 379af962cb35..b75be315a121 100644
+--- a/policy/modules/contrib/nut.fc
++++ b/policy/modules/contrib/nut.fc
+@@ -12,9 +12,9 @@
+ /usr/lib/cgi-bin/nut/upsset\.cgi	--	gen_context(system_u:object_r:httpd_nutups_cgi_script_exec_t,s0)
+ /usr/lib/cgi-bin/nut/upsstats\.cgi	--	gen_context(system_u:object_r:httpd_nutups_cgi_script_exec_t,s0)
+ 
+-/usr/sbin/upsd	--	gen_context(system_u:object_r:nut_upsd_exec_t,s0)
+-/usr/sbin/upsdrvctl	--	gen_context(system_u:object_r:nut_upsdrvctl_exec_t,s0)
+-/usr/sbin/upsmon	--	gen_context(system_u:object_r:nut_upsmon_exec_t,s0)
++/usr/s?bin/upsd	--	gen_context(system_u:object_r:nut_upsd_exec_t,s0)
++/usr/s?bin/upsdrvctl	--	gen_context(system_u:object_r:nut_upsdrvctl_exec_t,s0)
++/usr/s?bin/upsmon	--	gen_context(system_u:object_r:nut_upsmon_exec_t,s0)
+ 
+ /var/run/nut(/.*)?	gen_context(system_u:object_r:nut_var_run_t,s0)
+ 
+diff --git a/policy/modules/contrib/oav.fc b/policy/modules/contrib/oav.fc
+index 2448426ee345..2de9c774b219 100644
+--- a/policy/modules/contrib/oav.fc
++++ b/policy/modules/contrib/oav.fc
+@@ -1,8 +1,8 @@
+ /etc/oav-update(/.*)?	gen_context(system_u:object_r:oav_update_etc_t,s0)
+ /etc/scannerdaemon/scannerdaemon\.conf	--	gen_context(system_u:object_r:scannerdaemon_etc_t,s0)
+ 
+-/usr/sbin/oav-update	--	gen_context(system_u:object_r:oav_update_exec_t,s0)
+-/usr/sbin/scannerdaemon	--	gen_context(system_u:object_r:scannerdaemon_exec_t,s0)
++/usr/s?bin/oav-update	--	gen_context(system_u:object_r:oav_update_exec_t,s0)
++/usr/s?bin/scannerdaemon	--	gen_context(system_u:object_r:scannerdaemon_exec_t,s0)
+ 
+ /var/lib/oav-virussignatures	--	gen_context(system_u:object_r:oav_update_var_lib_t,s0)
+ /var/lib/oav-update(/.*)?	gen_context(system_u:object_r:oav_update_var_lib_t,s0)
+diff --git a/policy/modules/contrib/oddjob.fc b/policy/modules/contrib/oddjob.fc
+index dd1d9ef5a386..33595bff487b 100644
+--- a/policy/modules/contrib/oddjob.fc
++++ b/policy/modules/contrib/oddjob.fc
+@@ -4,7 +4,7 @@
+ 
+ /usr/libexec/oddjob/mkhomedir	--	gen_context(system_u:object_r:oddjob_mkhomedir_exec_t,s0)
+ 
+-/usr/sbin/oddjobd	--	gen_context(system_u:object_r:oddjob_exec_t,s0)
+-/usr/sbin/mkhomedir_helper	--	gen_context(system_u:object_r:oddjob_mkhomedir_exec_t,s0)
++/usr/s?bin/oddjobd	--	gen_context(system_u:object_r:oddjob_exec_t,s0)
++/usr/s?bin/mkhomedir_helper	--	gen_context(system_u:object_r:oddjob_mkhomedir_exec_t,s0)
+ 
+ /var/run/oddjobd\.pid	gen_context(system_u:object_r:oddjob_var_run_t,s0)
+diff --git a/policy/modules/contrib/oident.fc b/policy/modules/contrib/oident.fc
+index df3b97587ab0..530afa1617c1 100644
+--- a/policy/modules/contrib/oident.fc
++++ b/policy/modules/contrib/oident.fc
+@@ -5,4 +5,4 @@ HOME_DIR/\.oidentd\.conf	--	gen_context(system_u:object_r:oidentd_home_t,s0)
+ 
+ /etc/rc\.d/init\.d/oidentd	--	gen_context(system_u:object_r:oidentd_initrc_exec_t,s0)
+ 
+-/usr/sbin/oidentd	--	gen_context(system_u:object_r:oidentd_exec_t,s0)
++/usr/s?bin/oidentd	--	gen_context(system_u:object_r:oidentd_exec_t,s0)
+diff --git a/policy/modules/contrib/openct.fc b/policy/modules/contrib/openct.fc
+index 9af56197e91f..7c088141eeed 100644
+--- a/policy/modules/contrib/openct.fc
++++ b/policy/modules/contrib/openct.fc
+@@ -1,6 +1,6 @@
+ /etc/rc\.d/init\.d/openct	--	gen_context(system_u:object_r:openct_initrc_exec_t,s0)
+ 
+-/usr/sbin/ifdhandler	--	gen_context(system_u:object_r:openct_exec_t,s0)
+-/usr/sbin/openct-control	--	gen_context(system_u:object_r:openct_exec_t,s0)
++/usr/s?bin/ifdhandler	--	gen_context(system_u:object_r:openct_exec_t,s0)
++/usr/s?bin/openct-control	--	gen_context(system_u:object_r:openct_exec_t,s0)
+ 
+ /var/run/openct(/.*)?	gen_context(system_u:object_r:openct_var_run_t,s0)
+diff --git a/policy/modules/contrib/openhpi.fc b/policy/modules/contrib/openhpi.fc
+index 727b47e772ce..132cb3c4c511 100644
+--- a/policy/modules/contrib/openhpi.fc
++++ b/policy/modules/contrib/openhpi.fc
+@@ -1,6 +1,6 @@
+ /etc/rc\.d/init\.d/openhpid	--	gen_context(system_u:object_r:openhpid_initrc_exec_t,s0)
+ 
+-/usr/sbin/openhpid	--	gen_context(system_u:object_r:openhpid_exec_t,s0)
++/usr/s?bin/openhpid	--	gen_context(system_u:object_r:openhpid_exec_t,s0)
+ 
+ /var/lib/openhpi(/.*)?	gen_context(system_u:object_r:openhpid_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/openvpn.fc b/policy/modules/contrib/openvpn.fc
+index 300213f83447..928a8af9df07 100644
+--- a/policy/modules/contrib/openvpn.fc
++++ b/policy/modules/contrib/openvpn.fc
+@@ -3,7 +3,7 @@
+ 
+ /etc/rc\.d/init\.d/openvpn	--	gen_context(system_u:object_r:openvpn_initrc_exec_t,s0)
+ 
+-/usr/sbin/openvpn	--	gen_context(system_u:object_r:openvpn_exec_t,s0)
++/usr/s?bin/openvpn	--	gen_context(system_u:object_r:openvpn_exec_t,s0)
+ 
+ /var/log/openvpn-status\.log.*	--	gen_context(system_u:object_r:openvpn_status_t,s0)
+ /var/log/openvpn.*	gen_context(system_u:object_r:openvpn_var_log_t,s0)
+diff --git a/policy/modules/contrib/pacemaker.fc b/policy/modules/contrib/pacemaker.fc
+index 2f0ad56d67cb..4aca479ae030 100644
+--- a/policy/modules/contrib/pacemaker.fc
++++ b/policy/modules/contrib/pacemaker.fc
+@@ -1,6 +1,6 @@
+ /etc/rc\.d/init\.d/pacemaker	--	gen_context(system_u:object_r:pacemaker_initrc_exec_t,s0)
+ 
+-/usr/sbin/pacemakerd	--	gen_context(system_u:object_r:pacemaker_exec_t,s0)
++/usr/s?bin/pacemakerd	--	gen_context(system_u:object_r:pacemaker_exec_t,s0)
+ 
+ /var/lib/heartbeat/crm(/.*)?	gen_context(system_u:object_r:pacemaker_var_lib_t,s0)
+ /var/lib/pacemaker(/.*)?	gen_context(system_u:object_r:pacemaker_var_lib_t,s0)
+diff --git a/policy/modules/contrib/pcmcia.fc b/policy/modules/contrib/pcmcia.fc
+index b1d66a96192c..b65a6b15b7ae 100644
+--- a/policy/modules/contrib/pcmcia.fc
++++ b/policy/modules/contrib/pcmcia.fc
+@@ -3,8 +3,8 @@
+ /sbin/cardctl	--	gen_context(system_u:object_r:cardctl_exec_t,s0)
+ /sbin/cardmgr	--	gen_context(system_u:object_r:cardmgr_exec_t,s0)
+ 
+-/usr/sbin/cardctl	--	gen_context(system_u:object_r:cardctl_exec_t,s0)
+-/usr/sbin/cardmgr	--	gen_context(system_u:object_r:cardmgr_exec_t,s0)
++/usr/s?bin/cardctl	--	gen_context(system_u:object_r:cardctl_exec_t,s0)
++/usr/s?bin/cardmgr	--	gen_context(system_u:object_r:cardmgr_exec_t,s0)
+ 
+ /var/lib/pcmcia(/.*)?	gen_context(system_u:object_r:cardmgr_var_run_t,s0)
+ 
+diff --git a/policy/modules/contrib/pcscd.fc b/policy/modules/contrib/pcscd.fc
+index 5d1bebafd252..e05dcda16c61 100644
+--- a/policy/modules/contrib/pcscd.fc
++++ b/policy/modules/contrib/pcscd.fc
+@@ -1,6 +1,6 @@
+ /etc/rc\.d/init\.d/pcscd	--	gen_context(system_u:object_r:pcscd_initrc_exec_t,s0)
+ 
+-/usr/sbin/pcscd	--	gen_context(system_u:object_r:pcscd_exec_t,s0)
++/usr/s?bin/pcscd	--	gen_context(system_u:object_r:pcscd_exec_t,s0)
+ 
+ # Systemd unit file
+ /usr/lib/systemd/system/[^/]*pcscd.*	--	gen_context(system_u:object_r:pcscd_unit_t,s0)
+diff --git a/policy/modules/contrib/pegasus.fc b/policy/modules/contrib/pegasus.fc
+index dfd46e41266e..572e16a3c222 100644
+--- a/policy/modules/contrib/pegasus.fc
++++ b/policy/modules/contrib/pegasus.fc
+@@ -3,8 +3,8 @@
+ 
+ /etc/rc\.d/init\.d/tog-pegasus	--	gen_context(system_u:object_r:pegasus_initrc_exec_t,s0)
+ 
+-/usr/sbin/cimserver	--	gen_context(system_u:object_r:pegasus_exec_t,s0)
+-/usr/sbin/init_repository	--	gen_context(system_u:object_r:pegasus_exec_t,s0)
++/usr/s?bin/cimserver	--	gen_context(system_u:object_r:pegasus_exec_t,s0)
++/usr/s?bin/init_repository	--	gen_context(system_u:object_r:pegasus_exec_t,s0)
+ 
+ /var/cache/Pegasus(/.*)?	gen_context(system_u:object_r:pegasus_cache_t,s0)
+ 
+diff --git a/policy/modules/contrib/perdition.fc b/policy/modules/contrib/perdition.fc
+index ad0cf85cf261..507419d5f824 100644
+--- a/policy/modules/contrib/perdition.fc
++++ b/policy/modules/contrib/perdition.fc
+@@ -2,6 +2,6 @@
+ 
+ /etc/perdition(/.*)?	gen_context(system_u:object_r:perdition_etc_t,s0)
+ 
+-/usr/sbin/perdition	--	gen_context(system_u:object_r:perdition_exec_t,s0)
++/usr/s?bin/perdition	--	gen_context(system_u:object_r:perdition_exec_t,s0)
+ 
+ /var/run/perdition\.pid	--	gen_context(system_u:object_r:perdition_var_run_t,s0)
+diff --git a/policy/modules/contrib/pingd.fc b/policy/modules/contrib/pingd.fc
+index 494a24cc925c..fb3bda47d463 100644
+--- a/policy/modules/contrib/pingd.fc
++++ b/policy/modules/contrib/pingd.fc
+@@ -4,4 +4,4 @@
+ 
+ /usr/lib/pingd(/.*)?	gen_context(system_u:object_r:pingd_modules_t,s0)
+ 
+-/usr/sbin/pingd	--	gen_context(system_u:object_r:pingd_exec_t,s0)
++/usr/s?bin/pingd	--	gen_context(system_u:object_r:pingd_exec_t,s0)
+diff --git a/policy/modules/contrib/pkcs.fc b/policy/modules/contrib/pkcs.fc
+index 9a72226e3893..49bf21b1120f 100644
+--- a/policy/modules/contrib/pkcs.fc
++++ b/policy/modules/contrib/pkcs.fc
+@@ -1,6 +1,6 @@
+ /etc/rc\.d/init\.d/pkcsslotd	--	gen_context(system_u:object_r:pkcs_slotd_initrc_exec_t,s0)
+ 
+-/usr/sbin/pkcsslotd	--	gen_context(system_u:object_r:pkcs_slotd_exec_t,s0)
++/usr/s?bin/pkcsslotd	--	gen_context(system_u:object_r:pkcs_slotd_exec_t,s0)
+ 
+ /var/lib/opencryptoki(/.*)?	gen_context(system_u:object_r:pkcs_slotd_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/plymouthd.fc b/policy/modules/contrib/plymouthd.fc
+index 2d9b956f93e5..b548a11d675e 100644
+--- a/policy/modules/contrib/plymouthd.fc
++++ b/policy/modules/contrib/plymouthd.fc
+@@ -7,7 +7,7 @@
+ # Systemd unit file
+ /usr/lib/systemd/system/[^/]*plymouth-.* --	gen_context(system_u:object_r:plymouthd_unit_t,s0)
+ 
+-/usr/sbin/plymouthd	--	gen_context(system_u:object_r:plymouthd_exec_t,s0)
++/usr/s?bin/plymouthd	--	gen_context(system_u:object_r:plymouthd_exec_t,s0)
+ 
+ /var/lib/plymouth(/.*)?	gen_context(system_u:object_r:plymouthd_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/portmap.fc b/policy/modules/contrib/portmap.fc
+index cd45831ca8e0..d3a8f98592f1 100644
+--- a/policy/modules/contrib/portmap.fc
++++ b/policy/modules/contrib/portmap.fc
+@@ -4,9 +4,9 @@
+ /sbin/pmap_set	--	gen_context(system_u:object_r:portmap_helper_exec_t,s0)
+ /sbin/portmap	--	gen_context(system_u:object_r:portmap_exec_t,s0)
+ 
+-/usr/sbin/pmap_dump	--	gen_context(system_u:object_r:portmap_helper_exec_t,s0)
+-/usr/sbin/pmap_set	--	gen_context(system_u:object_r:portmap_helper_exec_t,s0)
+-/usr/sbin/portmap	--	gen_context(system_u:object_r:portmap_exec_t,s0)
++/usr/s?bin/pmap_dump	--	gen_context(system_u:object_r:portmap_helper_exec_t,s0)
++/usr/s?bin/pmap_set	--	gen_context(system_u:object_r:portmap_helper_exec_t,s0)
++/usr/s?bin/portmap	--	gen_context(system_u:object_r:portmap_exec_t,s0)
+ 
+ /var/run/portmap\.upgrade-state	--	gen_context(system_u:object_r:portmap_var_run_t,s0)
+ /var/run/portmap_mapping	--	gen_context(system_u:object_r:portmap_var_run_t,s0)
+diff --git a/policy/modules/contrib/portreserve.fc b/policy/modules/contrib/portreserve.fc
+index 1b2b4f908fe7..15a7f9da9f8b 100644
+--- a/policy/modules/contrib/portreserve.fc
++++ b/policy/modules/contrib/portreserve.fc
+@@ -4,6 +4,6 @@
+ 
+ /sbin/portreserve	--	gen_context(system_u:object_r:portreserve_exec_t,s0)
+ 
+-/usr/sbin/portreserve	--	gen_context(system_u:object_r:portreserve_exec_t,s0)
++/usr/s?bin/portreserve	--	gen_context(system_u:object_r:portreserve_exec_t,s0)
+ 
+ /var/run/portreserve(/.*)?	gen_context(system_u:object_r:portreserve_var_run_t,s0)
+diff --git a/policy/modules/contrib/portslave.fc b/policy/modules/contrib/portslave.fc
+index 22ca4a50b506..c78f35ffa144 100644
+--- a/policy/modules/contrib/portslave.fc
++++ b/policy/modules/contrib/portslave.fc
+@@ -1,6 +1,6 @@
+ /etc/portslave(/.*)?	gen_context(system_u:object_r:portslave_etc_t,s0)
+ 
+-/usr/sbin/ctlportslave	--	gen_context(system_u:object_r:portslave_exec_t,s0)
+-/usr/sbin/portslave	--	gen_context(system_u:object_r:portslave_exec_t,s0)
++/usr/s?bin/ctlportslave	--	gen_context(system_u:object_r:portslave_exec_t,s0)
++/usr/s?bin/portslave	--	gen_context(system_u:object_r:portslave_exec_t,s0)
+ 
+ /var/lock/subsys/portslave	--	gen_context(system_u:object_r:portslave_lock_t,s0)
+diff --git a/policy/modules/contrib/postfix.fc b/policy/modules/contrib/postfix.fc
+index da1791b9909d..51376dcb6ba2 100644
+--- a/policy/modules/contrib/postfix.fc
++++ b/policy/modules/contrib/postfix.fc
+@@ -34,16 +34,16 @@
+ /usr/libexec/postfix/pipe	--	gen_context(system_u:object_r:postfix_pipe_exec_t,s0)
+ /usr/libexec/postfix/virtual	--	gen_context(system_u:object_r:postfix_virtual_exec_t,s0)
+ 
+-/usr/sbin/postalias	--	gen_context(system_u:object_r:postfix_master_exec_t,s0)
+-/usr/sbin/postcat	--	gen_context(system_u:object_r:postfix_master_exec_t,s0)
+-/usr/sbin/postdrop	--	gen_context(system_u:object_r:postfix_postdrop_exec_t,s0)
+-/usr/sbin/postfix	--	gen_context(system_u:object_r:postfix_master_exec_t,s0)
+-/usr/sbin/postkick	--	gen_context(system_u:object_r:postfix_master_exec_t,s0)
+-/usr/sbin/postlock	--	gen_context(system_u:object_r:postfix_master_exec_t,s0)
+-/usr/sbin/postlog	--	gen_context(system_u:object_r:postfix_master_exec_t,s0)
+-/usr/sbin/postmap	--	gen_context(system_u:object_r:postfix_map_exec_t,s0)
+-/usr/sbin/postqueue	--	gen_context(system_u:object_r:postfix_postqueue_exec_t,s0)
+-/usr/sbin/postsuper	--	gen_context(system_u:object_r:postfix_master_exec_t,s0)
++/usr/s?bin/postalias	--	gen_context(system_u:object_r:postfix_master_exec_t,s0)
++/usr/s?bin/postcat	--	gen_context(system_u:object_r:postfix_master_exec_t,s0)
++/usr/s?bin/postdrop	--	gen_context(system_u:object_r:postfix_postdrop_exec_t,s0)
++/usr/s?bin/postfix	--	gen_context(system_u:object_r:postfix_master_exec_t,s0)
++/usr/s?bin/postkick	--	gen_context(system_u:object_r:postfix_master_exec_t,s0)
++/usr/s?bin/postlock	--	gen_context(system_u:object_r:postfix_master_exec_t,s0)
++/usr/s?bin/postlog	--	gen_context(system_u:object_r:postfix_master_exec_t,s0)
++/usr/s?bin/postmap	--	gen_context(system_u:object_r:postfix_map_exec_t,s0)
++/usr/s?bin/postqueue	--	gen_context(system_u:object_r:postfix_postqueue_exec_t,s0)
++/usr/s?bin/postsuper	--	gen_context(system_u:object_r:postfix_master_exec_t,s0)
+ 
+ /var/lib/postfix.*	gen_context(system_u:object_r:postfix_data_t,s0)
+ 
+diff --git a/policy/modules/contrib/postfixpolicyd.fc b/policy/modules/contrib/postfixpolicyd.fc
+index 2b58a688343f..89b08b8a26b6 100644
+--- a/policy/modules/contrib/postfixpolicyd.fc
++++ b/policy/modules/contrib/postfixpolicyd.fc
+@@ -2,6 +2,6 @@
+ 
+ /etc/rc\.d/init\.d/postfixpolicyd	--	gen_context(system_u:object_r:postfix_policyd_initrc_exec_t,s0)
+ 
+-/usr/sbin/policyd	--	gen_context(system_u:object_r:postfix_policyd_exec_t,s0)
++/usr/s?bin/policyd	--	gen_context(system_u:object_r:postfix_policyd_exec_t,s0)
+ 
+ /var/run/policyd\.pid	--	gen_context(system_u:object_r:postfix_policyd_var_run_t,s0)
+diff --git a/policy/modules/contrib/postgrey.fc b/policy/modules/contrib/postgrey.fc
+index ed6eda5bc68c..c3bb7273e0cc 100644
+--- a/policy/modules/contrib/postgrey.fc
++++ b/policy/modules/contrib/postgrey.fc
+@@ -2,7 +2,7 @@
+ 
+ /etc/rc\.d/init\.d/postgrey	--	gen_context(system_u:object_r:postgrey_initrc_exec_t,s0)
+ 
+-/usr/sbin/postgrey	--	gen_context(system_u:object_r:postgrey_exec_t,s0)
++/usr/s?bin/postgrey	--	gen_context(system_u:object_r:postgrey_exec_t,s0)
+ 
+ /var/lib/postgrey(/.*)?	gen_context(system_u:object_r:postgrey_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/ppp.fc b/policy/modules/contrib/ppp.fc
+index efcb6532d3f6..fae90d342d1e 100644
+--- a/policy/modules/contrib/ppp.fc
++++ b/policy/modules/contrib/ppp.fc
+@@ -12,11 +12,11 @@ HOME_DIR/\.ppprc	--	gen_context(system_u:object_r:ppp_home_t,s0)
+ /sbin/ppp-watch	--	gen_context(system_u:object_r:pppd_exec_t,s0)
+ /sbin/pppoe-server	--	gen_context(system_u:object_r:pppd_exec_t,s0)
+ 
+-/usr/sbin/ipppd	--	gen_context(system_u:object_r:pppd_exec_t,s0)
+-/usr/sbin/ppp-watch	--	gen_context(system_u:object_r:pppd_exec_t,s0)
+-/usr/sbin/pppd	--	gen_context(system_u:object_r:pppd_exec_t,s0)
+-/usr/sbin/pppoe-server	--	gen_context(system_u:object_r:pppd_exec_t,s0)
+-/usr/sbin/pptp	--	gen_context(system_u:object_r:pptp_exec_t,s0)
++/usr/s?bin/ipppd	--	gen_context(system_u:object_r:pppd_exec_t,s0)
++/usr/s?bin/ppp-watch	--	gen_context(system_u:object_r:pppd_exec_t,s0)
++/usr/s?bin/pppd	--	gen_context(system_u:object_r:pppd_exec_t,s0)
++/usr/s?bin/pppoe-server	--	gen_context(system_u:object_r:pppd_exec_t,s0)
++/usr/s?bin/pptp	--	gen_context(system_u:object_r:pptp_exec_t,s0)
+ 
+ /var/lock/ppp(/.*)?	gen_context(system_u:object_r:pppd_lock_t,s0)
+ 
+diff --git a/policy/modules/contrib/prelink.fc b/policy/modules/contrib/prelink.fc
+index a90d6231f5f8..6a34ebe91cd2 100644
+--- a/policy/modules/contrib/prelink.fc
++++ b/policy/modules/contrib/prelink.fc
+@@ -2,7 +2,7 @@
+ 
+ /etc/prelink\.cache	--	gen_context(system_u:object_r:prelink_cache_t,s0)
+ 
+-/usr/sbin/prelink(\.bin)?	--	gen_context(system_u:object_r:prelink_exec_t,s0)
++/usr/s?bin/prelink(\.bin)?	--	gen_context(system_u:object_r:prelink_exec_t,s0)
+ 
+ /var/log/prelink\.log.*	--	gen_context(system_u:object_r:prelink_log_t,s0)
+ /var/log/prelink(/.*)?	gen_context(system_u:object_r:prelink_log_t,s0)
+diff --git a/policy/modules/contrib/prelude.fc b/policy/modules/contrib/prelude.fc
+index 8dbc76372487..2a670162a8f1 100644
+--- a/policy/modules/contrib/prelude.fc
++++ b/policy/modules/contrib/prelude.fc
+@@ -10,7 +10,7 @@
+ /usr/bin/prelude-lml	--	gen_context(system_u:object_r:prelude_lml_exec_t,s0)
+ /usr/bin/prelude-manager	--	gen_context(system_u:object_r:prelude_exec_t,s0)
+ 
+-/usr/sbin/audisp-prelude	--	gen_context(system_u:object_r:prelude_audisp_exec_t,s0)
++/usr/s?bin/audisp-prelude	--	gen_context(system_u:object_r:prelude_audisp_exec_t,s0)
+ 
+ /usr/share/prewikka/cgi-bin(/.*)?	gen_context(system_u:object_r:httpd_prewikka_script_exec_t,s0)
+ 
+diff --git a/policy/modules/contrib/privoxy.fc b/policy/modules/contrib/privoxy.fc
+index 78197972f029..87883d1833a3 100644
+--- a/policy/modules/contrib/privoxy.fc
++++ b/policy/modules/contrib/privoxy.fc
+@@ -2,7 +2,7 @@
+ 
+ /etc/rc\.d/init\.d/privoxy	--	gen_context(system_u:object_r:privoxy_initrc_exec_t,s0)
+ 
+-/usr/sbin/privoxy	--	gen_context(system_u:object_r:privoxy_exec_t,s0)
++/usr/s?bin/privoxy	--	gen_context(system_u:object_r:privoxy_exec_t,s0)
+ 
+ /var/log/privoxy(/.*)?	gen_context(system_u:object_r:privoxy_log_t,s0)
+ 
+diff --git a/policy/modules/contrib/psad.fc b/policy/modules/contrib/psad.fc
+index 50528e97b7ab..918a7001f0cf 100644
+--- a/policy/modules/contrib/psad.fc
++++ b/policy/modules/contrib/psad.fc
+@@ -2,7 +2,7 @@
+ 
+ /etc/rc\.d/init\.d/psad	--	gen_context(system_u:object_r:psad_initrc_exec_t,s0)
+ 
+-/usr/sbin/psad	--	gen_context(system_u:object_r:psad_exec_t,s0)
++/usr/s?bin/psad	--	gen_context(system_u:object_r:psad_exec_t,s0)
+ 
+ /var/lib/psad(/.*)?	gen_context(system_u:object_r:psad_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/pxe.fc b/policy/modules/contrib/pxe.fc
+index 132ad02c7af3..762b91b8b831 100644
+--- a/policy/modules/contrib/pxe.fc
++++ b/policy/modules/contrib/pxe.fc
+@@ -1,6 +1,6 @@
+ /etc/rc\.d/init\.d/pxe	--	gen_context(system_u:object_r:pxe_initrc_exec_t,s0)
+ 
+-/usr/sbin/pxe	--	gen_context(system_u:object_r:pxe_exec_t,s0)
++/usr/s?bin/pxe	--	gen_context(system_u:object_r:pxe_exec_t,s0)
+ 
+ /var/log/pxe\.log.*	--	gen_context(system_u:object_r:pxe_log_t,s0)
+ 
+diff --git a/policy/modules/contrib/qmail.fc b/policy/modules/contrib/qmail.fc
+index e53fe5a97533..1b91a8cf1a24 100644
+--- a/policy/modules/contrib/qmail.fc
++++ b/policy/modules/contrib/qmail.fc
+@@ -2,18 +2,18 @@
+ 
+ /usr/bin/tcp-env	--	gen_context(system_u:object_r:qmail_tcp_env_exec_t,s0)
+ 
+-/usr/sbin/qmail-clean	--	gen_context(system_u:object_r:qmail_clean_exec_t,s0)
+-/usr/sbin/qmail-getpw	--	gen_context(system_u:object_r:qmail_exec_t,s0)
+-/usr/sbin/qmail-inject	--	gen_context(system_u:object_r:qmail_inject_exec_t,s0)
+-/usr/sbin/qmail-local	--	gen_context(system_u:object_r:qmail_local_exec_t,s0)
+-/usr/sbin/qmail-lspawn	--	gen_context(system_u:object_r:qmail_lspawn_exec_t,s0)
+-/usr/sbin/qmail-queue	--	gen_context(system_u:object_r:qmail_queue_exec_t,s0)
+-/usr/sbin/qmail-remote	--	gen_context(system_u:object_r:qmail_remote_exec_t,s0)
+-/usr/sbin/qmail-rspawn	--	gen_context(system_u:object_r:qmail_rspawn_exec_t,s0)
+-/usr/sbin/qmail-send	--	gen_context(system_u:object_r:qmail_send_exec_t,s0)
+-/usr/sbin/qmail-smtpd	--	gen_context(system_u:object_r:qmail_smtpd_exec_t,s0)
+-/usr/sbin/qmail-start	--	gen_context(system_u:object_r:qmail_start_exec_t,s0)
+-/usr/sbin/splogger	--	gen_context(system_u:object_r:qmail_splogger_exec_t,s0)
++/usr/s?bin/qmail-clean	--	gen_context(system_u:object_r:qmail_clean_exec_t,s0)
++/usr/s?bin/qmail-getpw	--	gen_context(system_u:object_r:qmail_exec_t,s0)
++/usr/s?bin/qmail-inject	--	gen_context(system_u:object_r:qmail_inject_exec_t,s0)
++/usr/s?bin/qmail-local	--	gen_context(system_u:object_r:qmail_local_exec_t,s0)
++/usr/s?bin/qmail-lspawn	--	gen_context(system_u:object_r:qmail_lspawn_exec_t,s0)
++/usr/s?bin/qmail-queue	--	gen_context(system_u:object_r:qmail_queue_exec_t,s0)
++/usr/s?bin/qmail-remote	--	gen_context(system_u:object_r:qmail_remote_exec_t,s0)
++/usr/s?bin/qmail-rspawn	--	gen_context(system_u:object_r:qmail_rspawn_exec_t,s0)
++/usr/s?bin/qmail-send	--	gen_context(system_u:object_r:qmail_send_exec_t,s0)
++/usr/s?bin/qmail-smtpd	--	gen_context(system_u:object_r:qmail_smtpd_exec_t,s0)
++/usr/s?bin/qmail-start	--	gen_context(system_u:object_r:qmail_start_exec_t,s0)
++/usr/s?bin/splogger	--	gen_context(system_u:object_r:qmail_splogger_exec_t,s0)
+ 
+ /var/qmail/alias	-d	gen_context(system_u:object_r:qmail_alias_home_t,s0)
+ /var/qmail/alias(/.*)?	gen_context(system_u:object_r:qmail_alias_home_t,s0)
+diff --git a/policy/modules/contrib/qpid.fc b/policy/modules/contrib/qpid.fc
+index 432870332d9e..fc32eb076377 100644
+--- a/policy/modules/contrib/qpid.fc
++++ b/policy/modules/contrib/qpid.fc
+@@ -1,6 +1,6 @@
+ /etc/rc\.d/init\.d/qpidd	--	gen_context(system_u:object_r:qpidd_initrc_exec_t,s0)
+ 
+-/usr/sbin/qpidd	--	gen_context(system_u:object_r:qpidd_exec_t,s0)
++/usr/s?bin/qpidd	--	gen_context(system_u:object_r:qpidd_exec_t,s0)
+ 
+ /var/lib/qpidd(/.*)?	gen_context(system_u:object_r:qpidd_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/quota.fc b/policy/modules/contrib/quota.fc
+index cadabe3605fd..9855426fbccc 100644
+--- a/policy/modules/contrib/quota.fc
++++ b/policy/modules/contrib/quota.fc
+@@ -13,9 +13,9 @@ HOME_DIR/a?quota\.(user|group)	--	gen_context(system_u:object_r:quota_db_t,s0)
+ /sbin/convertquota	--	gen_context(system_u:object_r:quota_exec_t,s0)
+ /sbin/quota(check|on)	--	gen_context(system_u:object_r:quota_exec_t,s0)
+ 
+-/usr/sbin/convertquota	--	gen_context(system_u:object_r:quota_exec_t,s0)
+-/usr/sbin/quota(check|on)	--	gen_context(system_u:object_r:quota_exec_t,s0)
+-/usr/sbin/quota_nld	--	gen_context(system_u:object_r:quota_nld_exec_t,s0)
++/usr/s?bin/convertquota	--	gen_context(system_u:object_r:quota_exec_t,s0)
++/usr/s?bin/quota(check|on)	--	gen_context(system_u:object_r:quota_exec_t,s0)
++/usr/s?bin/quota_nld	--	gen_context(system_u:object_r:quota_nld_exec_t,s0)
+ 
+ /var/a?quota\.(user|group)	--	gen_context(system_u:object_r:quota_db_t,s0)
+ 
+diff --git a/policy/modules/contrib/radius.fc b/policy/modules/contrib/radius.fc
+index 021438bbcdcd..2fcaf0965b0e 100644
+--- a/policy/modules/contrib/radius.fc
++++ b/policy/modules/contrib/radius.fc
+@@ -6,8 +6,8 @@
+ /etc/raddb(/.*)?	gen_context(system_u:object_r:radiusd_etc_t,s0)
+ /etc/raddb/db\.daily	--	gen_context(system_u:object_r:radiusd_etc_rw_t,s0)
+ 
+-/usr/sbin/radiusd	--	gen_context(system_u:object_r:radiusd_exec_t,s0)
+-/usr/sbin/freeradius	--	gen_context(system_u:object_r:radiusd_exec_t,s0)
++/usr/s?bin/radiusd	--	gen_context(system_u:object_r:radiusd_exec_t,s0)
++/usr/s?bin/freeradius	--	gen_context(system_u:object_r:radiusd_exec_t,s0)
+ 
+ /var/lib/radiusd(/.*)?	gen_context(system_u:object_r:radiusd_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/radvd.fc b/policy/modules/contrib/radvd.fc
+index dda06cc2a372..7fd16633c50a 100644
+--- a/policy/modules/contrib/radvd.fc
++++ b/policy/modules/contrib/radvd.fc
+@@ -2,7 +2,7 @@
+ 
+ /etc/rc\.d/init\.d/radvd	--	gen_context(system_u:object_r:radvd_initrc_exec_t,s0)
+ 
+-/usr/sbin/radvd	--	gen_context(system_u:object_r:radvd_exec_t,s0)
++/usr/s?bin/radvd	--	gen_context(system_u:object_r:radvd_exec_t,s0)
+ 
+ /var/run/radvd(/.*)?	gen_context(system_u:object_r:radvd_var_run_t,s0)
+ /var/run/radvd\.pid	--	gen_context(system_u:object_r:radvd_var_run_t,s0)
+diff --git a/policy/modules/contrib/raid.fc b/policy/modules/contrib/raid.fc
+index 2ea08896f3a8..f3facfd6fea4 100644
+--- a/policy/modules/contrib/raid.fc
++++ b/policy/modules/contrib/raid.fc
+@@ -15,11 +15,12 @@
+ /usr/lib/systemd/system/[^/]*mdadm-.*	--	gen_context(system_u:object_r:mdadm_unit_t,s0)
+ /usr/lib/systemd/system/[^/]*mdmon.*	--	gen_context(system_u:object_r:mdadm_unit_t,s0)
+ 
+-/usr/sbin/iprdump	--	gen_context(system_u:object_r:mdadm_exec_t,s0)
+-/usr/sbin/iprinit	--	gen_context(system_u:object_r:mdadm_exec_t,s0)
+-/usr/sbin/iprupdate	--	gen_context(system_u:object_r:mdadm_exec_t,s0)
+-/usr/sbin/mdadm	--	gen_context(system_u:object_r:mdadm_exec_t,s0)
+-/usr/sbin/mdmpd	--	gen_context(system_u:object_r:mdadm_exec_t,s0)
+-/usr/sbin/raid-check	--	gen_context(system_u:object_r:mdadm_exec_t,s0)
++/usr/s?bin/iprdump	--	gen_context(system_u:object_r:mdadm_exec_t,s0)
++/usr/s?bin/iprinit	--	gen_context(system_u:object_r:mdadm_exec_t,s0)
++/usr/s?bin/iprupdate	--	gen_context(system_u:object_r:mdadm_exec_t,s0)
++/usr/s?bin/mdadm	--	gen_context(system_u:object_r:mdadm_exec_t,s0)
++/usr/s?bin/mdmon	--	gen_context(system_u:object_r:mdadm_exec_t,s0)
++/usr/s?bin/mdmpd	--	gen_context(system_u:object_r:mdadm_exec_t,s0)
++/usr/s?bin/raid-check	--	gen_context(system_u:object_r:mdadm_exec_t,s0)
+ 
+ /var/run/mdadm(/.*)?	gen_context(system_u:object_r:mdadm_var_run_t,s0)
+diff --git a/policy/modules/contrib/rdisc.fc b/policy/modules/contrib/rdisc.fc
+index e9765c0f229a..c7ab40d2c319 100644
+--- a/policy/modules/contrib/rdisc.fc
++++ b/policy/modules/contrib/rdisc.fc
+@@ -1,3 +1,3 @@
+ /sbin/rdisc	--	gen_context(system_u:object_r:rdisc_exec_t,s0)
+ 
+-/usr/sbin/rdisc	--	gen_context(system_u:object_r:rdisc_exec_t,s0)
++/usr/s?bin/rdisc	--	gen_context(system_u:object_r:rdisc_exec_t,s0)
+diff --git a/policy/modules/contrib/readahead.fc b/policy/modules/contrib/readahead.fc
+index f01b32fe2084..0873d9e15d26 100644
+--- a/policy/modules/contrib/readahead.fc
++++ b/policy/modules/contrib/readahead.fc
+@@ -1,6 +1,6 @@
+ /sbin/readahead.*	--	gen_context(system_u:object_r:readahead_exec_t,s0)
+ 
+-/usr/sbin/readahead.*	--	gen_context(system_u:object_r:readahead_exec_t,s0)
++/usr/s?bin/readahead.*	--	gen_context(system_u:object_r:readahead_exec_t,s0)
+ 
+ /var/lib/readahead(/.*)?	gen_context(system_u:object_r:readahead_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/redis.fc b/policy/modules/contrib/redis.fc
+index e240ac99cc60..9cd1e4586d70 100644
+--- a/policy/modules/contrib/redis.fc
++++ b/policy/modules/contrib/redis.fc
+@@ -1,6 +1,6 @@
+ /etc/rc\.d/init\.d/redis	--	gen_context(system_u:object_r:redis_initrc_exec_t,s0)
+ 
+-/usr/sbin/redis-server	--	gen_context(system_u:object_r:redis_exec_t,s0)
++/usr/s?bin/redis-server	--	gen_context(system_u:object_r:redis_exec_t,s0)
+ 
+ /var/lib/redis(/.*)?	gen_context(system_u:object_r:redis_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/resmgr.fc b/policy/modules/contrib/resmgr.fc
+index e5bcdf5c7cef..3d54e1c3d72a 100644
+--- a/policy/modules/contrib/resmgr.fc
++++ b/policy/modules/contrib/resmgr.fc
+@@ -4,7 +4,7 @@
+ 
+ /sbin/resmgrd	--	gen_context(system_u:object_r:resmgrd_exec_t,s0)
+ 
+-/usr/sbin/resmgrd	--	gen_context(system_u:object_r:resmgrd_exec_t,s0)
++/usr/s?bin/resmgrd	--	gen_context(system_u:object_r:resmgrd_exec_t,s0)
+ 
+ /var/run/\.resmgr_socket	-s	gen_context(system_u:object_r:resmgrd_var_run_t,s0)
+ /var/run/resmgr\.pid	--	gen_context(system_u:object_r:resmgrd_var_run_t,s0)
+diff --git a/policy/modules/contrib/rgmanager.fc b/policy/modules/contrib/rgmanager.fc
+index 5421af0b6815..87c9bd09dc1d 100644
+--- a/policy/modules/contrib/rgmanager.fc
++++ b/policy/modules/contrib/rgmanager.fc
+@@ -1,9 +1,9 @@
+ /etc/rc\.d/init\.d/rgmanager	--	gen_context(system_u:object_r:rgmanager_initrc_exec_t,s0)
+ 
+-/usr/sbin/rgmanager	--	gen_context(system_u:object_r:rgmanager_exec_t,s0)
++/usr/s?bin/rgmanager	--	gen_context(system_u:object_r:rgmanager_exec_t,s0)
+ 
+-/usr/sbin/ccs_tool	--	gen_context(system_u:object_r:rgmanager_exec_t,s0)
+-/usr/sbin/cman_tool	--	gen_context(system_u:object_r:rgmanager_exec_t,s0)
++/usr/s?bin/ccs_tool	--	gen_context(system_u:object_r:rgmanager_exec_t,s0)
++/usr/s?bin/cman_tool	--	gen_context(system_u:object_r:rgmanager_exec_t,s0)
+ 
+ /var/log/cluster/rgmanager\.log.*	--	gen_context(system_u:object_r:rgmanager_var_log_t,s0)
+ 
+diff --git a/policy/modules/contrib/rhcs.fc b/policy/modules/contrib/rhcs.fc
+index c6195024f2b1..ec1175d308a8 100644
+--- a/policy/modules/contrib/rhcs.fc
++++ b/policy/modules/contrib/rhcs.fc
+@@ -1,14 +1,14 @@
+ /etc/rc\.d/init\.d/dlm	--	gen_context(system_u:object_r:dlm_controld_initrc_exec_t,s0)
+ /etc/rc\.d/init\.d/foghorn	--	gen_context(system_u:object_r:foghorn_initrc_exec_t,s0)
+ 
+-/usr/sbin/dlm_controld	--	gen_context(system_u:object_r:dlm_controld_exec_t,s0)
+-/usr/sbin/fenced	--	gen_context(system_u:object_r:fenced_exec_t,s0)
+-/usr/sbin/fence_node	--	gen_context(system_u:object_r:fenced_exec_t,s0)
+-/usr/sbin/fence_tool	--	gen_context(system_u:object_r:fenced_exec_t,s0)
+-/usr/sbin/foghorn	--	gen_context(system_u:object_r:foghorn_exec_t,s0)
+-/usr/sbin/gfs_controld	--	gen_context(system_u:object_r:gfs_controld_exec_t,s0)
+-/usr/sbin/groupd	--	gen_context(system_u:object_r:groupd_exec_t,s0)
+-/usr/sbin/qdiskd	--	gen_context(system_u:object_r:qdiskd_exec_t,s0)
++/usr/s?bin/dlm_controld	--	gen_context(system_u:object_r:dlm_controld_exec_t,s0)
++/usr/s?bin/fenced	--	gen_context(system_u:object_r:fenced_exec_t,s0)
++/usr/s?bin/fence_node	--	gen_context(system_u:object_r:fenced_exec_t,s0)
++/usr/s?bin/fence_tool	--	gen_context(system_u:object_r:fenced_exec_t,s0)
++/usr/s?bin/foghorn	--	gen_context(system_u:object_r:foghorn_exec_t,s0)
++/usr/s?bin/gfs_controld	--	gen_context(system_u:object_r:gfs_controld_exec_t,s0)
++/usr/s?bin/groupd	--	gen_context(system_u:object_r:groupd_exec_t,s0)
++/usr/s?bin/qdiskd	--	gen_context(system_u:object_r:qdiskd_exec_t,s0)
+ 
+ /var/lock/fence_manual\.lock	--	gen_context(system_u:object_r:fenced_lock_t,s0)
+ 
+diff --git a/policy/modules/contrib/ricci.fc b/policy/modules/contrib/ricci.fc
+index 7cf119e37cd3..cb6be1d0b561 100644
+--- a/policy/modules/contrib/ricci.fc
++++ b/policy/modules/contrib/ricci.fc
+@@ -6,8 +6,8 @@
+ /usr/libexec/ricci-modservice	--	gen_context(system_u:object_r:ricci_modservice_exec_t,s0)
+ /usr/libexec/ricci-modstorage	--	gen_context(system_u:object_r:ricci_modstorage_exec_t,s0)
+ 
+-/usr/sbin/modclusterd	--	gen_context(system_u:object_r:ricci_modclusterd_exec_t,s0)
+-/usr/sbin/ricci	--	gen_context(system_u:object_r:ricci_exec_t,s0)
++/usr/s?bin/modclusterd	--	gen_context(system_u:object_r:ricci_modclusterd_exec_t,s0)
++/usr/s?bin/ricci	--	gen_context(system_u:object_r:ricci_exec_t,s0)
+ 
+ /var/lib/ricci(/.*)?	gen_context(system_u:object_r:ricci_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/rlogin.fc b/policy/modules/contrib/rlogin.fc
+index f1118772093e..e732c63ecc4c 100644
+--- a/policy/modules/contrib/rlogin.fc
++++ b/policy/modules/contrib/rlogin.fc
+@@ -5,4 +5,4 @@ HOME_DIR/\.rlogin	--	gen_context(system_u:object_r:rlogind_home_t,s0)
+ 
+ /usr/lib/telnetlogin	--	gen_context(system_u:object_r:rlogind_exec_t,s0)
+ 
+-/usr/sbin/in\.rlogind	--	gen_context(system_u:object_r:rlogind_exec_t,s0)
++/usr/s?bin/in\.rlogind	--	gen_context(system_u:object_r:rlogind_exec_t,s0)
+diff --git a/policy/modules/contrib/rngd.fc b/policy/modules/contrib/rngd.fc
+index fa19aa8ded06..dd9893da5004 100644
+--- a/policy/modules/contrib/rngd.fc
++++ b/policy/modules/contrib/rngd.fc
+@@ -1,5 +1,5 @@
+ /etc/rc\.d/init\.d/rngd	--	gen_context(system_u:object_r:rngd_initrc_exec_t,s0)
+ 
+-/usr/sbin/rngd	--	gen_context(system_u:object_r:rngd_exec_t,s0)
++/usr/s?bin/rngd	--	gen_context(system_u:object_r:rngd_exec_t,s0)
+ 
+ /var/run/rngd\.pid	--	gen_context(system_u:object_r:rngd_var_run_t,s0)
+diff --git a/policy/modules/contrib/rpc.fc b/policy/modules/contrib/rpc.fc
+index a6fb30cb3a60..0344d07f86b9 100644
+--- a/policy/modules/contrib/rpc.fc
++++ b/policy/modules/contrib/rpc.fc
+@@ -7,14 +7,14 @@
+ /sbin/rpc\..*	--	gen_context(system_u:object_r:rpcd_exec_t,s0)
+ /sbin/sm-notify	--	gen_context(system_u:object_r:rpcd_exec_t,s0)
+ 
+-/usr/sbin/rpc\..*	--	gen_context(system_u:object_r:rpcd_exec_t,s0)
+-/usr/sbin/rpc\.idmapd	--	gen_context(system_u:object_r:rpcd_exec_t,s0)
+-/usr/sbin/rpc\.gssd	--	gen_context(system_u:object_r:gssd_exec_t,s0)
+-/usr/sbin/rpc\.mountd	--	gen_context(system_u:object_r:nfsd_exec_t,s0)
+-/usr/sbin/rpc\.nfsd	--	gen_context(system_u:object_r:nfsd_exec_t,s0)
+-/usr/sbin/rpc\.rquotad	--	gen_context(system_u:object_r:rpcd_exec_t,s0)
+-/usr/sbin/rpc\.svcgssd	--	gen_context(system_u:object_r:gssd_exec_t,s0)
+-/usr/sbin/sm-notify	--	gen_context(system_u:object_r:rpcd_exec_t,s0)
++/usr/s?bin/rpc\..*	--	gen_context(system_u:object_r:rpcd_exec_t,s0)
++/usr/s?bin/rpc\.idmapd	--	gen_context(system_u:object_r:rpcd_exec_t,s0)
++/usr/s?bin/rpc\.gssd	--	gen_context(system_u:object_r:gssd_exec_t,s0)
++/usr/s?bin/rpc\.mountd	--	gen_context(system_u:object_r:nfsd_exec_t,s0)
++/usr/s?bin/rpc\.nfsd	--	gen_context(system_u:object_r:nfsd_exec_t,s0)
++/usr/s?bin/rpc\.rquotad	--	gen_context(system_u:object_r:rpcd_exec_t,s0)
++/usr/s?bin/rpc\.svcgssd	--	gen_context(system_u:object_r:gssd_exec_t,s0)
++/usr/s?bin/sm-notify	--	gen_context(system_u:object_r:rpcd_exec_t,s0)
+ 
+ /var/lib/nfs(/.*)?	gen_context(system_u:object_r:var_lib_nfs_t,s0)
+ 
+diff --git a/policy/modules/contrib/rpcbind.fc b/policy/modules/contrib/rpcbind.fc
+index d31220e08f9a..ae4fe1932dc2 100644
+--- a/policy/modules/contrib/rpcbind.fc
++++ b/policy/modules/contrib/rpcbind.fc
+@@ -2,7 +2,7 @@
+ 
+ /sbin/rpcbind	--	gen_context(system_u:object_r:rpcbind_exec_t,s0)
+ 
+-/usr/sbin/rpcbind	--	gen_context(system_u:object_r:rpcbind_exec_t,s0)
++/usr/s?bin/rpcbind	--	gen_context(system_u:object_r:rpcbind_exec_t,s0)
+ 
+ /var/cache/rpcbind(/.*)?	gen_context(system_u:object_r:rpcbind_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/rpm.fc b/policy/modules/contrib/rpm.fc
+index 1ebd4a16978a..730819c5aa29 100644
+--- a/policy/modules/contrib/rpm.fc
++++ b/policy/modules/contrib/rpm.fc
+@@ -20,21 +20,22 @@
+ /usr/libexec/packagekitd	--	gen_context(system_u:object_r:rpm_exec_t,s0)
+ /usr/libexec/yumDBUSBackend.py	--	gen_context(system_u:object_r:rpm_exec_t,s0)
+ 
+-/usr/sbin/bcfg2	--	gen_context(system_u:object_r:rpm_exec_t,s0)
+-/usr/sbin/pirut	--	gen_context(system_u:object_r:rpm_exec_t,s0)
+-/usr/sbin/pup	--	gen_context(system_u:object_r:rpm_exec_t,s0)
+-/usr/sbin/rhn_check	--	gen_context(system_u:object_r:rpm_exec_t,s0)
+-/usr/sbin/up2date	--	gen_context(system_u:object_r:rpm_exec_t,s0)
+-/usr/sbin/yum-complete-transaction	--	gen_context(system_u:object_r:rpm_exec_t,s0)
+-/usr/sbin/system-install-packages	--	gen_context(system_u:object_r:rpm_exec_t,s0)
+-/usr/sbin/yum-updatesd	--	gen_context(system_u:object_r:rpm_exec_t,s0)
+-/usr/sbin/packagekitd	--	gen_context(system_u:object_r:rpm_exec_t,s0)
++/usr/s?bin/bcfg2	--	gen_context(system_u:object_r:rpm_exec_t,s0)
++/usr/s?bin/pirut	--	gen_context(system_u:object_r:rpm_exec_t,s0)
++/usr/s?bin/pup	--	gen_context(system_u:object_r:rpm_exec_t,s0)
++/usr/s?bin/rhn_check	--	gen_context(system_u:object_r:rpm_exec_t,s0)
++/usr/s?bin/up2date	--	gen_context(system_u:object_r:rpm_exec_t,s0)
++/usr/s?bin/yum-complete-transaction	--	gen_context(system_u:object_r:rpm_exec_t,s0)
++/usr/s?bin/system-install-packages	--	gen_context(system_u:object_r:rpm_exec_t,s0)
++/usr/s?bin/yum-updatesd	--	gen_context(system_u:object_r:rpm_exec_t,s0)
++/usr/s?bin/packagekitd	--	gen_context(system_u:object_r:rpm_exec_t,s0)
++/usr/s?bin/yast2	--	gen_context(system_u:object_r:rpm_exec_t,s0)
+ 
+ ifdef(`distro_redhat',`
+ /usr/bin/apt-get	--	gen_context(system_u:object_r:rpm_exec_t,s0)
+ /usr/bin/apt-shell	--	gen_context(system_u:object_r:rpm_exec_t,s0)
+ /usr/bin/aptitude	--	gen_context(system_u:object_r:rpm_exec_t,s0)
+-/usr/sbin/synaptic	--	gen_context(system_u:object_r:rpm_exec_t,s0)
++/usr/s?bin/synaptic	--	gen_context(system_u:object_r:rpm_exec_t,s0)
+ /var/cache/PackageKit(/.*)?	gen_context(system_u:object_r:rpm_var_cache_t,s0)
+ /var/lib/PackageKit(/.*)?	gen_context(system_u:object_r:rpm_var_lib_t,s0)
+ ')
+@@ -61,5 +62,5 @@ ifdef(`distro_redhat',`
+ /var/run/PackageKit(/.*)?	gen_context(system_u:object_r:rpm_var_run_t,s0)
+ 
+ ifdef(`enable_mls',`
+-/usr/sbin/cpio	--	gen_context(system_u:object_r:rpm_exec_t,s0)
++/usr/s?bin/cpio	--	gen_context(system_u:object_r:rpm_exec_t,s0)
+ ')
+diff --git a/policy/modules/contrib/rshd.fc b/policy/modules/contrib/rshd.fc
+index 9ad0d58dcf4b..1c9fd9d04fbd 100644
+--- a/policy/modules/contrib/rshd.fc
++++ b/policy/modules/contrib/rshd.fc
+@@ -1,4 +1,4 @@
+ /usr/kerberos/sbin/kshd	--	gen_context(system_u:object_r:rshd_exec_t,s0)
+ 
+-/usr/sbin/in\.rexecd	--	gen_context(system_u:object_r:rshd_exec_t,s0)
+-/usr/sbin/in\.rshd	--	gen_context(system_u:object_r:rshd_exec_t,s0)
++/usr/s?bin/in\.rexecd	--	gen_context(system_u:object_r:rshd_exec_t,s0)
++/usr/s?bin/in\.rshd	--	gen_context(system_u:object_r:rshd_exec_t,s0)
+diff --git a/policy/modules/contrib/rwho.fc b/policy/modules/contrib/rwho.fc
+index 5a630a99abc3..9d254b95ec69 100644
+--- a/policy/modules/contrib/rwho.fc
++++ b/policy/modules/contrib/rwho.fc
+@@ -1,6 +1,6 @@
+ /etc/rc\.d/init\.d/rwhod	--	gen_context(system_u:object_r:rwho_initrc_exec_t,s0)
+ 
+-/usr/sbin/rwhod	--	gen_context(system_u:object_r:rwho_exec_t,s0)
++/usr/s?bin/rwhod	--	gen_context(system_u:object_r:rwho_exec_t,s0)
+ 
+ /var/spool/rwho(/.*)?	gen_context(system_u:object_r:rwho_spool_t,s0)
+ 
+diff --git a/policy/modules/contrib/samba.fc b/policy/modules/contrib/samba.fc
+index b8b66ff4d076..9155792b84f9 100644
+--- a/policy/modules/contrib/samba.fc
++++ b/policy/modules/contrib/samba.fc
+@@ -14,10 +14,10 @@
+ /usr/bin/smbmount	--	gen_context(system_u:object_r:smbmount_exec_t,s0)
+ /usr/bin/smbmnt	--	gen_context(system_u:object_r:smbmount_exec_t,s0)
+ 
+-/usr/sbin/swat	--	gen_context(system_u:object_r:swat_exec_t,s0)
+-/usr/sbin/nmbd	--	gen_context(system_u:object_r:nmbd_exec_t,s0)
+-/usr/sbin/smbd	--	gen_context(system_u:object_r:smbd_exec_t,s0)
+-/usr/sbin/winbindd	--	gen_context(system_u:object_r:winbind_exec_t,s0)
++/usr/s?bin/swat	--	gen_context(system_u:object_r:swat_exec_t,s0)
++/usr/s?bin/nmbd	--	gen_context(system_u:object_r:nmbd_exec_t,s0)
++/usr/s?bin/smbd	--	gen_context(system_u:object_r:smbd_exec_t,s0)
++/usr/s?bin/winbindd	--	gen_context(system_u:object_r:winbind_exec_t,s0)
+ 
+ /var/cache/samba(/.*)?	gen_context(system_u:object_r:samba_var_t,s0)
+ /var/cache/samba/winbindd_privileged(/.*)?	gen_context(system_u:object_r:winbind_var_run_t,s0)
+diff --git a/policy/modules/contrib/samhain.fc b/policy/modules/contrib/samhain.fc
+index 0e179837080b..4294f4c93f1f 100644
+--- a/policy/modules/contrib/samhain.fc
++++ b/policy/modules/contrib/samhain.fc
+@@ -2,8 +2,8 @@
+ 
+ /etc/samhainrc	--	gen_context(system_u:object_r:samhain_etc_t,mls_systemhigh)
+ 
+-/usr/sbin/samhain	--	gen_context(system_u:object_r:samhain_exec_t,s0)
+-/usr/sbin/samhain_setpwd	--	gen_context(system_u:object_r:samhain_exec_t,s0)
++/usr/s?bin/samhain	--	gen_context(system_u:object_r:samhain_exec_t,s0)
++/usr/s?bin/samhain_setpwd	--	gen_context(system_u:object_r:samhain_exec_t,s0)
+ 
+ /var/lib/samhain(/.*)?	gen_context(system_u:object_r:samhain_db_t,mls_systemhigh)
+ 
+diff --git a/policy/modules/contrib/sanlock.fc b/policy/modules/contrib/sanlock.fc
+index 3df2a0f14eed..6a225df370e0 100644
+--- a/policy/modules/contrib/sanlock.fc
++++ b/policy/modules/contrib/sanlock.fc
+@@ -1,6 +1,6 @@
+ /etc/rc\.d/init\.d/sanlock	--	gen_context(system_u:object_r:sanlock_initrc_exec_t,s0)
+ 
+-/usr/sbin/sanlock	--	gen_context(system_u:object_r:sanlock_exec_t,s0)
++/usr/s?bin/sanlock	--	gen_context(system_u:object_r:sanlock_exec_t,s0)
+ 
+ /var/run/sanlock(/.*)?	gen_context(system_u:object_r:sanlock_var_run_t,s0)
+ 
+diff --git a/policy/modules/contrib/sasl.fc b/policy/modules/contrib/sasl.fc
+index 54f41c2b75a7..cb1db0d51f7b 100644
+--- a/policy/modules/contrib/sasl.fc
++++ b/policy/modules/contrib/sasl.fc
+@@ -1,6 +1,6 @@
+ /etc/rc\.d/init\.d/sasl	--	gen_context(system_u:object_r:saslauthd_initrc_exec_t,s0)
+ 
+-/usr/sbin/saslauthd	--	gen_context(system_u:object_r:saslauthd_exec_t,s0)
++/usr/s?bin/saslauthd	--	gen_context(system_u:object_r:saslauthd_exec_t,s0)
+ 
+ /var/lib/sasl2(/.*)?	gen_context(system_u:object_r:saslauthd_var_run_t,s0)
+ 
+diff --git a/policy/modules/contrib/sblim.fc b/policy/modules/contrib/sblim.fc
+index 68a550d54b62..1ba68fb50edf 100644
+--- a/policy/modules/contrib/sblim.fc
++++ b/policy/modules/contrib/sblim.fc
+@@ -1,6 +1,6 @@
+ /etc/rc\.d/init\.d/gatherer	--	gen_context(system_u:object_r:sblim_initrc_exec_t,s0)
+ 
+-/usr/sbin/gatherd	--	gen_context(system_u:object_r:sblim_gatherd_exec_t,s0)
+-/usr/sbin/reposd	--	gen_context(system_u:object_r:sblim_reposd_exec_t,s0)
++/usr/s?bin/gatherd	--	gen_context(system_u:object_r:sblim_gatherd_exec_t,s0)
++/usr/s?bin/reposd	--	gen_context(system_u:object_r:sblim_reposd_exec_t,s0)
+ 
+ /var/run/gather(/.*)?	gen_context(system_u:object_r:sblim_var_run_t,s0)
+diff --git a/policy/modules/contrib/sensord.fc b/policy/modules/contrib/sensord.fc
+index 8185d5a6beac..61a8b53f0e11 100644
+--- a/policy/modules/contrib/sensord.fc
++++ b/policy/modules/contrib/sensord.fc
+@@ -1,5 +1,5 @@
+ /etc/rc\.d/init\.d/sensord	--	gen_context(system_u:object_r:sensord_initrc_exec_t,s0)
+ 
+-/usr/sbin/sensord	--	gen_context(system_u:object_r:sensord_exec_t,s0)
++/usr/s?bin/sensord	--	gen_context(system_u:object_r:sensord_exec_t,s0)
+ 
+ /var/run/sensord\.pid	--	gen_context(system_u:object_r:sensord_var_run_t,s0)
+diff --git a/policy/modules/contrib/setroubleshoot.fc b/policy/modules/contrib/setroubleshoot.fc
+index e89c06fd63da..62ed7d009643 100644
+--- a/policy/modules/contrib/setroubleshoot.fc
++++ b/policy/modules/contrib/setroubleshoot.fc
+@@ -1,4 +1,4 @@
+-/usr/sbin/setroubleshootd	--	gen_context(system_u:object_r:setroubleshootd_exec_t,s0)
++/usr/s?bin/setroubleshootd	--	gen_context(system_u:object_r:setroubleshootd_exec_t,s0)
+ 
+ /usr/share/setroubleshoot/SetroubleshootFixit\.py	--	gen_context(system_u:object_r:setroubleshoot_fixit_exec_t,s0)
+ 
+diff --git a/policy/modules/contrib/shorewall.fc b/policy/modules/contrib/shorewall.fc
+index f1a0c2eba424..ae65e74c265e 100644
+--- a/policy/modules/contrib/shorewall.fc
++++ b/policy/modules/contrib/shorewall.fc
+@@ -6,8 +6,8 @@
+ /sbin/shorewall6?	--	gen_context(system_u:object_r:shorewall_exec_t,s0)
+ /sbin/shorewall-lite	--	gen_context(system_u:object_r:shorewall_exec_t,s0)
+ 
+-/usr/sbin/shorewall6?	--	gen_context(system_u:object_r:shorewall_exec_t,s0)
+-/usr/sbin/shorewall-lite	--	gen_context(system_u:object_r:shorewall_exec_t,s0)
++/usr/s?bin/shorewall6?	--	gen_context(system_u:object_r:shorewall_exec_t,s0)
++/usr/s?bin/shorewall-lite	--	gen_context(system_u:object_r:shorewall_exec_t,s0)
+ 
+ /var/lib/shorewall(/.*)?	gen_context(system_u:object_r:shorewall_var_lib_t,s0)
+ /var/lib/shorewall6(/.*)?	gen_context(system_u:object_r:shorewall_var_lib_t,s0)
+diff --git a/policy/modules/contrib/shutdown.fc b/policy/modules/contrib/shutdown.fc
+index a91f33b0ff1e..65b64069dc52 100644
+--- a/policy/modules/contrib/shutdown.fc
++++ b/policy/modules/contrib/shutdown.fc
+@@ -6,6 +6,6 @@
+ 
+ /usr/lib/upstart/shutdown	--	gen_context(system_u:object_r:shutdown_exec_t,s0)
+ 
+-/usr/sbin/shutdown	--	gen_context(system_u:object_r:shutdown_exec_t,s0)
++/usr/s?bin/shutdown	--	gen_context(system_u:object_r:shutdown_exec_t,s0)
+ 
+ /var/run/shutdown\.pid	--	gen_context(system_u:object_r:shutdown_var_run_t,s0)
+diff --git a/policy/modules/contrib/slpd.fc b/policy/modules/contrib/slpd.fc
+index 5d4a71cb1434..669b4dedb3ac 100644
+--- a/policy/modules/contrib/slpd.fc
++++ b/policy/modules/contrib/slpd.fc
+@@ -1,6 +1,6 @@
+ /etc/rc\.d/init\.d/slpd	--	gen_context(system_u:object_r:slpd_initrc_exec_t,s0)
+ 
+-/usr/sbin/slpd	--	gen_context(system_u:object_r:slpd_exec_t,s0)
++/usr/s?bin/slpd	--	gen_context(system_u:object_r:slpd_exec_t,s0)
+ 
+ /var/log/slpd\.log.*	--	gen_context(system_u:object_r:slpd_log_t,s0)
+ 
+diff --git a/policy/modules/contrib/smartmon.fc b/policy/modules/contrib/smartmon.fc
+index 36e908f6a1d1..1ba4f927e4cc 100644
+--- a/policy/modules/contrib/smartmon.fc
++++ b/policy/modules/contrib/smartmon.fc
+@@ -1,6 +1,6 @@
+ /etc/rc\.d/init\.d/(smartd|smartmontools)	--	gen_context(system_u:object_r:fsdaemon_initrc_exec_t,s0)
+ 
+-/usr/sbin/smartd	--	gen_context(system_u:object_r:fsdaemon_exec_t,s0)
++/usr/s?bin/smartd	--	gen_context(system_u:object_r:fsdaemon_exec_t,s0)
+ 
+ /var/run/smartd\.pid	--	gen_context(system_u:object_r:fsdaemon_var_run_t,s0)
+ 
+diff --git a/policy/modules/contrib/smokeping.fc b/policy/modules/contrib/smokeping.fc
+index 335981945eec..4f5faca90619 100644
+--- a/policy/modules/contrib/smokeping.fc
++++ b/policy/modules/contrib/smokeping.fc
+@@ -1,6 +1,6 @@
+ /etc/rc\.d/init\.d/smokeping	--	gen_context(system_u:object_r:smokeping_initrc_exec_t,s0)
+ 
+-/usr/sbin/smokeping	--	gen_context(system_u:object_r:smokeping_exec_t,s0)
++/usr/s?bin/smokeping	--	gen_context(system_u:object_r:smokeping_exec_t,s0)
+ 
+ /usr/share/smokeping/cgi(/.*)?	gen_context(system_u:object_r:httpd_smokeping_cgi_script_exec_t,s0)
+ 
+diff --git a/policy/modules/contrib/smstools.fc b/policy/modules/contrib/smstools.fc
+index 4afc690c2996..0c31207f986e 100644
+--- a/policy/modules/contrib/smstools.fc
++++ b/policy/modules/contrib/smstools.fc
+@@ -2,7 +2,7 @@
+ 
+ /etc/rc\.d/init\.d/(smsd|smstools)	--	gen_context(system_u:object_r:smsd_initrc_exec_t,s0)
+ 
+-/usr/sbin/smsd	--	gen_context(system_u:object_r:smsd_exec_t,s0)
++/usr/s?bin/smsd	--	gen_context(system_u:object_r:smsd_exec_t,s0)
+ 
+ /var/lib/smstools(/.*)?	gen_context(system_u:object_r:smsd_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/snmp.fc b/policy/modules/contrib/snmp.fc
+index d3db67a1e023..afdf987ae9ad 100644
+--- a/policy/modules/contrib/snmp.fc
++++ b/policy/modules/contrib/snmp.fc
+@@ -1,8 +1,8 @@
+ /etc/rc\.d/init\.d/(snmpd|snmptrapd)	--	gen_context(system_u:object_r:snmpd_initrc_exec_t,s0)
+ 
+-/usr/sbin/snmpd	--	gen_context(system_u:object_r:snmpd_exec_t,s0)
+-/usr/sbin/snmptrap	--	gen_context(system_u:object_r:snmpd_exec_t,s0)
+-/usr/sbin/snmptrapd	--	gen_context(system_u:object_r:snmpd_exec_t,s0)
++/usr/s?bin/snmpd	--	gen_context(system_u:object_r:snmpd_exec_t,s0)
++/usr/s?bin/snmptrap	--	gen_context(system_u:object_r:snmpd_exec_t,s0)
++/usr/s?bin/snmptrapd	--	gen_context(system_u:object_r:snmpd_exec_t,s0)
+ 
+ /usr/share/snmp/mibs/\.index	--	gen_context(system_u:object_r:snmpd_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/snort.fc b/policy/modules/contrib/snort.fc
+index 2b1ea6b13225..57914aa59762 100644
+--- a/policy/modules/contrib/snort.fc
++++ b/policy/modules/contrib/snort.fc
+@@ -5,7 +5,7 @@
+ /usr/bin/snort	--	gen_context(system_u:object_r:snort_exec_t,s0)
+ /usr/sbin/snort	--	gen_context(system_u:object_r:snort_exec_t,s0)
+ 
+-/usr/sbin/snort-plain	--	gen_context(system_u:object_r:snort_exec_t,s0)
++/usr/s?bin/snort-plain	--	gen_context(system_u:object_r:snort_exec_t,s0)
+ 
+ /var/log/snort(/.*)?	gen_context(system_u:object_r:snort_log_t,s0)
+ 
+diff --git a/policy/modules/contrib/sosreport.fc b/policy/modules/contrib/sosreport.fc
+index 704e2dab5481..64557890d29a 100644
+--- a/policy/modules/contrib/sosreport.fc
++++ b/policy/modules/contrib/sosreport.fc
+@@ -1,3 +1,3 @@
+-/usr/sbin/sosreport	--	gen_context(system_u:object_r:sosreport_exec_t,s0)
++/usr/s?bin/sosreport	--	gen_context(system_u:object_r:sosreport_exec_t,s0)
+ 
+ /\.ismount-test-file	--	gen_context(system_u:object_r:sosreport_tmp_t,s0)
+diff --git a/policy/modules/contrib/soundserver.fc b/policy/modules/contrib/soundserver.fc
+index 02c23b334a85..a01f1513da26 100644
+--- a/policy/modules/contrib/soundserver.fc
++++ b/policy/modules/contrib/soundserver.fc
+@@ -6,7 +6,7 @@
+ /usr/bin/nasd	--	gen_context(system_u:object_r:soundd_exec_t,s0)
+ /usr/bin/gpe-soundserver	--	gen_context(system_u:object_r:soundd_exec_t,s0)
+ 
+-/usr/sbin/yiff	--	gen_context(system_u:object_r:soundd_exec_t,s0)
++/usr/s?bin/yiff	--	gen_context(system_u:object_r:soundd_exec_t,s0)
+ 
+ /var/run/nasd(/.*)?	gen_context(system_u:object_r:soundd_var_run_t,s0)
+ /var/run/yiff-[0-9]+\.pid	--	gen_context(system_u:object_r:soundd_var_run_t,s0)
+diff --git a/policy/modules/contrib/spamassassin.fc b/policy/modules/contrib/spamassassin.fc
+index e9bd097b79b8..2c5bee5f9d30 100644
+--- a/policy/modules/contrib/spamassassin.fc
++++ b/policy/modules/contrib/spamassassin.fc
+@@ -11,8 +11,8 @@ HOME_DIR/\.spamd(/.*)?	gen_context(system_u:object_r:spamd_home_t,s0)
+ /usr/bin/spamd	--	gen_context(system_u:object_r:spamd_exec_t,s0)
+ /usr/bin/sa-update	--	gen_context(system_u:object_r:spamd_update_exec_t,s0)
+ 
+-/usr/sbin/spamd	--	gen_context(system_u:object_r:spamd_exec_t,s0)
+-/usr/sbin/spampd	--	gen_context(system_u:object_r:spamd_exec_t,s0)
++/usr/s?bin/spamd	--	gen_context(system_u:object_r:spamd_exec_t,s0)
++/usr/s?bin/spampd	--	gen_context(system_u:object_r:spamd_exec_t,s0)
+ /usr/bin/mimedefang	--	gen_context(system_u:object_r:spamd_exec_t,s0)
+ /usr/bin/mimedefang-multiplexor	--	gen_context(system_u:object_r:spamd_exec_t,s0)
+ 
+diff --git a/policy/modules/contrib/speedtouch.fc b/policy/modules/contrib/speedtouch.fc
+index 57539d02dddc..7c8eca915256 100644
+--- a/policy/modules/contrib/speedtouch.fc
++++ b/policy/modules/contrib/speedtouch.fc
+@@ -1,3 +1,3 @@
+-/usr/sbin/speedmgmt	--	gen_context(system_u:object_r:speedmgmt_exec_t,s0)
++/usr/s?bin/speedmgmt	--	gen_context(system_u:object_r:speedmgmt_exec_t,s0)
+ 
+ /var/run/speedmgmt\.pid	--	gen_context(system_u:object_r:speedmgmt_var_run_t,s0)
+diff --git a/policy/modules/contrib/squid.fc b/policy/modules/contrib/squid.fc
+index 0a8b0f7c0278..a173e3bec599 100644
+--- a/policy/modules/contrib/squid.fc
++++ b/policy/modules/contrib/squid.fc
+@@ -4,7 +4,7 @@
+ 
+ /usr/lib/squid/cachemgr\.cgi	--	gen_context(system_u:object_r:httpd_squid_script_exec_t,s0)
+ 
+-/usr/sbin/squid	--	gen_context(system_u:object_r:squid_exec_t,s0)
++/usr/s?bin/squid	--	gen_context(system_u:object_r:squid_exec_t,s0)
+ 
+ /usr/share/squid(/.*)?	gen_context(system_u:object_r:squid_conf_t,s0)
+ 
+diff --git a/policy/modules/contrib/sssd.fc b/policy/modules/contrib/sssd.fc
+index dbb005acab88..10e9311068fe 100644
+--- a/policy/modules/contrib/sssd.fc
++++ b/policy/modules/contrib/sssd.fc
+@@ -2,7 +2,7 @@
+ 
+ /etc/sssd(/.*)?	gen_context(system_u:object_r:sssd_conf_t,s0)
+ 
+-/usr/sbin/sssd	--	gen_context(system_u:object_r:sssd_exec_t,s0)
++/usr/s?bin/sssd	--	gen_context(system_u:object_r:sssd_exec_t,s0)
+ 
+ /var/lib/sss(/.*)?	gen_context(system_u:object_r:sssd_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/stunnel.fc b/policy/modules/contrib/stunnel.fc
+index 49dd63ca10e2..b0b2abff1021 100644
+--- a/policy/modules/contrib/stunnel.fc
++++ b/policy/modules/contrib/stunnel.fc
+@@ -2,6 +2,6 @@
+ 
+ /usr/bin/stunnel	--	gen_context(system_u:object_r:stunnel_exec_t,s0)
+ 
+-/usr/sbin/stunnel	--	gen_context(system_u:object_r:stunnel_exec_t,s0)
++/usr/s?bin/stunnel	--	gen_context(system_u:object_r:stunnel_exec_t,s0)
+ 
+ /var/run/stunnel(/.*)?	gen_context(system_u:object_r:stunnel_var_run_t,s0)
+diff --git a/policy/modules/contrib/sxid.fc b/policy/modules/contrib/sxid.fc
+index 952994871ae6..3c34fe4ebcbe 100644
+--- a/policy/modules/contrib/sxid.fc
++++ b/policy/modules/contrib/sxid.fc
+@@ -1,6 +1,6 @@
+ /usr/bin/sxid	--	gen_context(system_u:object_r:sxid_exec_t,s0)
+ 
+-/usr/sbin/checksecurity\.se	--	gen_context(system_u:object_r:sxid_exec_t,s0)
++/usr/s?bin/checksecurity\.se	--	gen_context(system_u:object_r:sxid_exec_t,s0)
+ 
+ /var/log/setuid.*	--	gen_context(system_u:object_r:sxid_log_t,s0)
+ /var/log/setuid\.today.*	--	gen_context(system_u:object_r:sxid_log_t,s0)
+diff --git a/policy/modules/contrib/tcpd.fc b/policy/modules/contrib/tcpd.fc
+index 034ec7f67e21..0c82bc411df0 100644
+--- a/policy/modules/contrib/tcpd.fc
++++ b/policy/modules/contrib/tcpd.fc
+@@ -1 +1 @@
+-/usr/sbin/tcpd	--	gen_context(system_u:object_r:tcpd_exec_t,s0)
++/usr/s?bin/tcpd	--	gen_context(system_u:object_r:tcpd_exec_t,s0)
+diff --git a/policy/modules/contrib/tcsd.fc b/policy/modules/contrib/tcsd.fc
+index 0e086e7148df..6f9f46660faa 100644
+--- a/policy/modules/contrib/tcsd.fc
++++ b/policy/modules/contrib/tcsd.fc
+@@ -3,6 +3,6 @@
+ # Systemd unit file
+ /usr/lib/systemd/system/[^/]*tcsd.*	--	gen_context(system_u:object_r:tcsd_unit_t,s0)
+ 
+-/usr/sbin/tcsd	--	gen_context(system_u:object_r:tcsd_exec_t,s0)
++/usr/s?bin/tcsd	--	gen_context(system_u:object_r:tcsd_exec_t,s0)
+ 
+ /var/lib/tpm(/.*)?	gen_context(system_u:object_r:tcsd_var_lib_t,s0)
+diff --git a/policy/modules/contrib/telnet.fc b/policy/modules/contrib/telnet.fc
+index 3d7d07aa08ab..f02ae04d25a6 100644
+--- a/policy/modules/contrib/telnet.fc
++++ b/policy/modules/contrib/telnet.fc
+@@ -1,3 +1,3 @@
+-/usr/sbin/in\.telnetd	--	gen_context(system_u:object_r:telnetd_exec_t,s0)
++/usr/s?bin/in\.telnetd	--	gen_context(system_u:object_r:telnetd_exec_t,s0)
+ 
+ /usr/kerberos/sbin/telnetd	--	gen_context(system_u:object_r:telnetd_exec_t,s0)
+diff --git a/policy/modules/contrib/tftp.fc b/policy/modules/contrib/tftp.fc
+index fb0b982d7772..d8c6686113f9 100644
+--- a/policy/modules/contrib/tftp.fc
++++ b/policy/modules/contrib/tftp.fc
+@@ -2,8 +2,8 @@
+ 
+ /usr/bin/tftpd		--	gen_context(system_u:object_r:tftpd_exec_t,s0)
+ 
+-/usr/sbin/atftpd	--	gen_context(system_u:object_r:tftpd_exec_t,s0)
+-/usr/sbin/in\.tftpd	--	gen_context(system_u:object_r:tftpd_exec_t,s0)
++/usr/s?bin/atftpd	--	gen_context(system_u:object_r:tftpd_exec_t,s0)
++/usr/s?bin/in\.tftpd	--	gen_context(system_u:object_r:tftpd_exec_t,s0)
+ 
+ /tftpboot	-d	gen_context(system_u:object_r:tftpdir_t,s0)
+ /tftpboot/.*	gen_context(system_u:object_r:tftpdir_t,s0)
+diff --git a/policy/modules/contrib/tgtd.fc b/policy/modules/contrib/tgtd.fc
+index 38389e675465..f6b386d32b76 100644
+--- a/policy/modules/contrib/tgtd.fc
++++ b/policy/modules/contrib/tgtd.fc
+@@ -1,6 +1,6 @@
+ /etc/rc\.d/init\.d/tgtd	--	gen_context(system_u:object_r:tgtd_initrc_exec_t,s0)
+ 
+-/usr/sbin/tgtd	--	gen_context(system_u:object_r:tgtd_exec_t,s0)
++/usr/s?bin/tgtd	--	gen_context(system_u:object_r:tgtd_exec_t,s0)
+ 
+ /var/lib/tgtd(/.*)?	gen_context(system_u:object_r:tgtd_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/tmpreaper.fc b/policy/modules/contrib/tmpreaper.fc
+index d19a6cf04656..f2ff5042f87d 100644
+--- a/policy/modules/contrib/tmpreaper.fc
++++ b/policy/modules/contrib/tmpreaper.fc
+@@ -1,5 +1,5 @@
+ /etc/rc\.d/init\.d/mountall-bootclean\.sh	--	gen_context(system_u:object_r:tmpreaper_exec_t,s0)
+ /etc/rc\.d/init\.d/mountnfs-bootclean\.sh	--	gen_context(system_u:object_r:tmpreaper_exec_t,s0)
+ 
+-/usr/sbin/tmpreaper	--	gen_context(system_u:object_r:tmpreaper_exec_t,s0)
+-/usr/sbin/tmpwatch	--	gen_context(system_u:object_r:tmpreaper_exec_t,s0)
++/usr/s?bin/tmpreaper	--	gen_context(system_u:object_r:tmpreaper_exec_t,s0)
++/usr/s?bin/tmpwatch	--	gen_context(system_u:object_r:tmpreaper_exec_t,s0)
+diff --git a/policy/modules/contrib/tor.fc b/policy/modules/contrib/tor.fc
+index dce42ecc55cc..c92677765d33 100644
+--- a/policy/modules/contrib/tor.fc
++++ b/policy/modules/contrib/tor.fc
+@@ -3,7 +3,7 @@
+ /etc/rc\.d/init\.d/tor	--	gen_context(system_u:object_r:tor_initrc_exec_t,s0)
+ 
+ /usr/bin/tor	--	gen_context(system_u:object_r:tor_exec_t,s0)
+-/usr/sbin/tor	--	gen_context(system_u:object_r:tor_exec_t,s0)
++/usr/s?bin/tor	--	gen_context(system_u:object_r:tor_exec_t,s0)
+ 
+ /var/lib/tor(/.*)?	gen_context(system_u:object_r:tor_var_lib_t,s0)
+ /var/lib/tor-data(/.*)?	gen_context(system_u:object_r:tor_var_lib_t,s0)
+diff --git a/policy/modules/contrib/transproxy.fc b/policy/modules/contrib/transproxy.fc
+index 14fdae361561..fd7c5c63ce67 100644
+--- a/policy/modules/contrib/transproxy.fc
++++ b/policy/modules/contrib/transproxy.fc
+@@ -1,5 +1,5 @@
+ /etc/rc\.d/init\.d/transproxy	--	gen_context(system_u:object_r:transproxy_initrc_exec_t,s0)
+ 
+-/usr/sbin/tproxy	--	gen_context(system_u:object_r:transproxy_exec_t,s0)
++/usr/s?bin/tproxy	--	gen_context(system_u:object_r:transproxy_exec_t,s0)
+ 
+ /var/run/tproxy\.pid	--	gen_context(system_u:object_r:transproxy_var_run_t,s0)
+diff --git a/policy/modules/contrib/tripwire.fc b/policy/modules/contrib/tripwire.fc
+index a27298bee77d..cc9ed2a4e201 100644
+--- a/policy/modules/contrib/tripwire.fc
++++ b/policy/modules/contrib/tripwire.fc
+@@ -1,9 +1,9 @@
+ /etc/tripwire(/.*)?	gen_context(system_u:object_r:tripwire_etc_t,s0)
+ 
+-/usr/sbin/siggen	--	gen_context(system_u:object_r:siggen_exec_t,s0)
+-/usr/sbin/tripwire	--	gen_context(system_u:object_r:tripwire_exec_t,s0)
+-/usr/sbin/twadmin	--	gen_context(system_u:object_r:twadmin_exec_t,s0)
+-/usr/sbin/twprint	--	gen_context(system_u:object_r:twprint_exec_t,s0)
++/usr/s?bin/siggen	--	gen_context(system_u:object_r:siggen_exec_t,s0)
++/usr/s?bin/tripwire	--	gen_context(system_u:object_r:tripwire_exec_t,s0)
++/usr/s?bin/twadmin	--	gen_context(system_u:object_r:twadmin_exec_t,s0)
++/usr/s?bin/twprint	--	gen_context(system_u:object_r:twprint_exec_t,s0)
+ 
+ /var/lib/tripwire(/.*)?	gen_context(system_u:object_r:tripwire_var_lib_t,s0)
+ /var/lib/tripwire/report(/.*)?	gen_context(system_u:object_r:tripwire_report_t,s0)
+diff --git a/policy/modules/contrib/tuned.fc b/policy/modules/contrib/tuned.fc
+index 956587a9bc02..2985b2886d4e 100644
+--- a/policy/modules/contrib/tuned.fc
++++ b/policy/modules/contrib/tuned.fc
+@@ -3,7 +3,7 @@
+ /etc/tuned(/.*)?	gen_context(system_u:object_r:tuned_etc_t,s0)
+ /etc/tuned/active_profile	--	gen_context(system_u:object_r:tuned_rw_etc_t,s0)
+ 
+-/usr/sbin/tuned	--	gen_context(system_u:object_r:tuned_exec_t,s0)
++/usr/s?bin/tuned	--	gen_context(system_u:object_r:tuned_exec_t,s0)
+ 
+ /var/log/tuned(/.*)?	gen_context(system_u:object_r:tuned_log_t,s0)
+ /var/log/tuned\.log.*	--	gen_context(system_u:object_r:tuned_log_t,s0)
+diff --git a/policy/modules/contrib/tzdata.fc b/policy/modules/contrib/tzdata.fc
+index 04b854883d4f..15cba7b2c942 100644
+--- a/policy/modules/contrib/tzdata.fc
++++ b/policy/modules/contrib/tzdata.fc
+@@ -1 +1 @@
+-/usr/sbin/tzdata-update	--	gen_context(system_u:object_r:tzdata_exec_t,s0)
++/usr/s?bin/tzdata-update	--	gen_context(system_u:object_r:tzdata_exec_t,s0)
+diff --git a/policy/modules/contrib/ulogd.fc b/policy/modules/contrib/ulogd.fc
+index d5f8ac0bae8d..e046006ee199 100644
+--- a/policy/modules/contrib/ulogd.fc
++++ b/policy/modules/contrib/ulogd.fc
+@@ -4,6 +4,6 @@
+ 
+ /usr/lib/ulogd(/.*)?	gen_context(system_u:object_r:ulogd_modules_t,s0)
+ 
+-/usr/sbin/ulogd	--	gen_context(system_u:object_r:ulogd_exec_t,s0)
++/usr/s?bin/ulogd	--	gen_context(system_u:object_r:ulogd_exec_t,s0)
+ 
+ /var/log/ulogd(/.*)?	gen_context(system_u:object_r:ulogd_var_log_t,s0)
+diff --git a/policy/modules/contrib/updfstab.fc b/policy/modules/contrib/updfstab.fc
+index b62ab19ef1de..7c9d7180c5a7 100644
+--- a/policy/modules/contrib/updfstab.fc
++++ b/policy/modules/contrib/updfstab.fc
+@@ -1,2 +1,2 @@
+-/usr/sbin/fstab-sync	--	gen_context(system_u:object_r:updfstab_exec_t,s0)
+-/usr/sbin/updfstab	--	gen_context(system_u:object_r:updfstab_exec_t,s0)
++/usr/s?bin/fstab-sync	--	gen_context(system_u:object_r:updfstab_exec_t,s0)
++/usr/s?bin/updfstab	--	gen_context(system_u:object_r:updfstab_exec_t,s0)
+diff --git a/policy/modules/contrib/uptime.fc b/policy/modules/contrib/uptime.fc
+index a72670a48aa6..9dd4a8b63634 100644
+--- a/policy/modules/contrib/uptime.fc
++++ b/policy/modules/contrib/uptime.fc
+@@ -2,7 +2,7 @@
+ 
+ /etc/rc\.d/init\.d/uptimed	--	gen_context(system_u:object_r:uptimed_initrc_exec_t,s0)
+ 
+-/usr/sbin/uptimed	--	gen_context(system_u:object_r:uptimed_exec_t,s0)
++/usr/s?bin/uptimed	--	gen_context(system_u:object_r:uptimed_exec_t,s0)
+ 
+ /var/run/uptimed\.pid	--	gen_context(system_u:object_r:uptimed_var_run_t,s0)
+ 
+diff --git a/policy/modules/contrib/usbmodules.fc b/policy/modules/contrib/usbmodules.fc
+index 02d725317cb6..e0d392d648d2 100644
+--- a/policy/modules/contrib/usbmodules.fc
++++ b/policy/modules/contrib/usbmodules.fc
+@@ -1,3 +1,3 @@
+ /sbin/usbmodules	--	gen_context(system_u:object_r:usbmodules_exec_t,s0)
+ 
+-/usr/sbin/usbmodules	--	gen_context(system_u:object_r:usbmodules_exec_t,s0)
++/usr/s?bin/usbmodules	--	gen_context(system_u:object_r:usbmodules_exec_t,s0)
+diff --git a/policy/modules/contrib/usbmuxd.fc b/policy/modules/contrib/usbmuxd.fc
+index 220f6add145b..8b815945a692 100644
+--- a/policy/modules/contrib/usbmuxd.fc
++++ b/policy/modules/contrib/usbmuxd.fc
+@@ -1,3 +1,3 @@
+-/usr/sbin/usbmuxd	--	gen_context(system_u:object_r:usbmuxd_exec_t,s0)
++/usr/s?bin/usbmuxd	--	gen_context(system_u:object_r:usbmuxd_exec_t,s0)
+ 
+ /var/run/usbmuxd.*	gen_context(system_u:object_r:usbmuxd_var_run_t,s0)
+diff --git a/policy/modules/contrib/userhelper.fc b/policy/modules/contrib/userhelper.fc
+index 9fe12582a415..4d531b277f2a 100644
+--- a/policy/modules/contrib/userhelper.fc
++++ b/policy/modules/contrib/userhelper.fc
+@@ -2,4 +2,4 @@
+ 
+ /usr/bin/consolehelper	--	gen_context(system_u:object_r:consolehelper_exec_t,s0)
+ 
+-/usr/sbin/userhelper	--	gen_context(system_u:object_r:userhelper_exec_t,s0)
++/usr/s?bin/userhelper	--	gen_context(system_u:object_r:userhelper_exec_t,s0)
+diff --git a/policy/modules/contrib/usernetctl.fc b/policy/modules/contrib/usernetctl.fc
+index ddaf787d49b2..e2d2bb9a6427 100644
+--- a/policy/modules/contrib/usernetctl.fc
++++ b/policy/modules/contrib/usernetctl.fc
+@@ -1 +1 @@
+-/usr/sbin/usernetctl	--	gen_context(system_u:object_r:usernetctl_exec_t,s0)
++/usr/s?bin/usernetctl	--	gen_context(system_u:object_r:usernetctl_exec_t,s0)
+diff --git a/policy/modules/contrib/uucp.fc b/policy/modules/contrib/uucp.fc
+index ec159fe5dd34..4557b036df72 100644
+--- a/policy/modules/contrib/uucp.fc
++++ b/policy/modules/contrib/uucp.fc
+@@ -2,7 +2,7 @@
+ 
+ /usr/bin/uux	--	gen_context(system_u:object_r:uux_exec_t,s0)
+ 
+-/usr/sbin/uucico	--	gen_context(system_u:object_r:uucpd_exec_t,s0)
++/usr/s?bin/uucico	--	gen_context(system_u:object_r:uucpd_exec_t,s0)
+ 
+ /var/spool/uucp(/.*)?	gen_context(system_u:object_r:uucpd_spool_t,s0)
+ /var/spool/uucppublic(/.*)?	gen_context(system_u:object_r:uucpd_spool_t,s0)
+diff --git a/policy/modules/contrib/uuidd.fc b/policy/modules/contrib/uuidd.fc
+index ef3c47d510eb..999312959ef2 100644
+--- a/policy/modules/contrib/uuidd.fc
++++ b/policy/modules/contrib/uuidd.fc
+@@ -1,6 +1,6 @@
+ /etc/rc\.d/init\.d/uuidd	--	gen_context(system_u:object_r:uuidd_initrc_exec_t,s0)
+ 
+-/usr/sbin/uuidd	--	gen_context(system_u:object_r:uuidd_exec_t,s0)
++/usr/s?bin/uuidd	--	gen_context(system_u:object_r:uuidd_exec_t,s0)
+ 
+ /var/lib/libuuid(/.*)?	gen_context(system_u:object_r:uuidd_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/uwimap.fc b/policy/modules/contrib/uwimap.fc
+index e85c4ae0813e..eb4c0746b1af 100644
+--- a/policy/modules/contrib/uwimap.fc
++++ b/policy/modules/contrib/uwimap.fc
+@@ -1,3 +1,3 @@
+-/usr/sbin/imapd	--	gen_context(system_u:object_r:imapd_exec_t,s0)
++/usr/s?bin/imapd	--	gen_context(system_u:object_r:imapd_exec_t,s0)
+ 
+ /var/run/imapd\.pid	--	gen_context(system_u:object_r:imapd_var_run_t,s0)
+diff --git a/policy/modules/contrib/varnishd.fc b/policy/modules/contrib/varnishd.fc
+index 19bdce3703dd..15383aaab623 100644
+--- a/policy/modules/contrib/varnishd.fc
++++ b/policy/modules/contrib/varnishd.fc
+@@ -7,7 +7,7 @@
+ /usr/bin/varnishlog	--	gen_context(system_u:object_r:varnishlog_exec_t,s0)
+ /usr/bin/varnisncsa	--	gen_context(system_u:object_r:varnishlog_exec_t,s0)
+ 
+-/usr/sbin/varnishd	--	gen_context(system_u:object_r:varnishd_exec_t,s0)
++/usr/s?bin/varnishd	--	gen_context(system_u:object_r:varnishd_exec_t,s0)
+ 
+ /var/lib/varnish(/.*)?	gen_context(system_u:object_r:varnishd_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/vbetool.fc b/policy/modules/contrib/vbetool.fc
+index d00970f1351d..3b322aab3895 100644
+--- a/policy/modules/contrib/vbetool.fc
++++ b/policy/modules/contrib/vbetool.fc
+@@ -1 +1 @@
+-/usr/sbin/vbetool	--	gen_context(system_u:object_r:vbetool_exec_t,s0)
++/usr/s?bin/vbetool	--	gen_context(system_u:object_r:vbetool_exec_t,s0)
+diff --git a/policy/modules/contrib/vdagent.fc b/policy/modules/contrib/vdagent.fc
+index 45b6dded07a0..30058d32288f 100644
+--- a/policy/modules/contrib/vdagent.fc
++++ b/policy/modules/contrib/vdagent.fc
+@@ -1,6 +1,6 @@
+ /etc/rc\.d/init\.d/spice-vdagentd	--	gen_context(system_u:object_r:vdagentd_initrc_exec_t,s0)
+ 
+-/usr/sbin/spice-vdagentd	--	gen_context(system_u:object_r:vdagent_exec_t,s0)
++/usr/s?bin/spice-vdagentd	--	gen_context(system_u:object_r:vdagent_exec_t,s0)
+ 
+ /var/log/spice-vdagentd(/.*)?	gen_context(system_u:object_r:vdagent_log_t,s0)
+ /var/log/spice-vdagentd\.log.*	--	gen_context(system_u:object_r:vdagent_log_t,s0)
+diff --git a/policy/modules/contrib/vhostmd.fc b/policy/modules/contrib/vhostmd.fc
+index 6a96da3ce699..ab3cdfe655e2 100644
+--- a/policy/modules/contrib/vhostmd.fc
++++ b/policy/modules/contrib/vhostmd.fc
+@@ -1,5 +1,5 @@
+ /etc/rc\.d/init\.d/vhostmd	--	gen_context(system_u:object_r:vhostmd_initrc_exec_t,s0)
+ 
+-/usr/sbin/vhostmd	--	gen_context(system_u:object_r:vhostmd_exec_t,s0)
++/usr/s?bin/vhostmd	--	gen_context(system_u:object_r:vhostmd_exec_t,s0)
+ 
+ /var/run/vhostmd.*	gen_context(system_u:object_r:vhostmd_var_run_t,s0)
+diff --git a/policy/modules/contrib/virt.fc b/policy/modules/contrib/virt.fc
+index ea197d0e59f8..7515640b6425 100644
+--- a/policy/modules/contrib/virt.fc
++++ b/policy/modules/contrib/virt.fc
+@@ -23,11 +23,11 @@ HOME_DIR/VirtualMachines/isos(/.*)?	gen_context(system_u:object_r:virt_content_t
+ /usr/bin/virsh	--	gen_context(system_u:object_r:virsh_exec_t,s0)
+ /usr/bin/virt-sandbox-service.*	--	gen_context(system_u:object_r:virsh_exec_t,s0)
+ 
+-/usr/sbin/condor_vm-gahp	--	gen_context(system_u:object_r:virtd_exec_t,s0)
+-/usr/sbin/fence_virtd	--	gen_context(system_u:object_r:virsh_exec_t,s0)
+-/usr/sbin/libvirt-qmf	--	gen_context(system_u:object_r:virt_qmf_exec_t,s0)
+-/usr/sbin/libvirtd	--	gen_context(system_u:object_r:virtd_exec_t,s0)
+-/usr/sbin/virtlockd	--	gen_context(system_u:object_r:virtlockd_exec_t,s0)
++/usr/s?bin/condor_vm-gahp	--	gen_context(system_u:object_r:virtd_exec_t,s0)
++/usr/s?bin/fence_virtd	--	gen_context(system_u:object_r:virsh_exec_t,s0)
++/usr/s?bin/libvirt-qmf	--	gen_context(system_u:object_r:virt_qmf_exec_t,s0)
++/usr/s?bin/libvirtd	--	gen_context(system_u:object_r:virtd_exec_t,s0)
++/usr/s?bin/virtlockd	--	gen_context(system_u:object_r:virtlockd_exec_t,s0)
+ 
+ /var/cache/libvirt(/.*)?	gen_context(system_u:object_r:virt_cache_t,s0-mls_systemhigh)
+ 
+diff --git a/policy/modules/contrib/vlock.fc b/policy/modules/contrib/vlock.fc
+index f84b61a56222..5e9bf1fef723 100644
+--- a/policy/modules/contrib/vlock.fc
++++ b/policy/modules/contrib/vlock.fc
+@@ -1,3 +1,3 @@
+ /usr/bin/vlock	--	gen_context(system_u:object_r:vlock_exec_t,s0)
+ 
+-/usr/sbin/vlock-main	--	gen_context(system_u:object_r:vlock_exec_t,s0)
++/usr/s?bin/vlock-main	--	gen_context(system_u:object_r:vlock_exec_t,s0)
+diff --git a/policy/modules/contrib/vmware.fc b/policy/modules/contrib/vmware.fc
+index 7273b9c077ff..05ccd11c2513 100644
+--- a/policy/modules/contrib/vmware.fc
++++ b/policy/modules/contrib/vmware.fc
+@@ -28,8 +28,8 @@ HOME_DIR/vmware(/.*)?	gen_context(system_u:object_r:vmware_file_t,s0)
+ /usr/lib/vmware-tools/sbin32/vmware.*	--	gen_context(system_u:object_r:vmware_host_exec_t,s0)
+ /usr/lib/vmware-tools/sbin64/vmware.*	--	gen_context(system_u:object_r:vmware_host_exec_t,s0)
+ 
+-/usr/sbin/vmware-guest.*	--	gen_context(system_u:object_r:vmware_host_exec_t,s0)
+-/usr/sbin/vmware-serverd	--	gen_context(system_u:object_r:vmware_exec_t,s0)
++/usr/s?bin/vmware-guest.*	--	gen_context(system_u:object_r:vmware_host_exec_t,s0)
++/usr/s?bin/vmware-serverd	--	gen_context(system_u:object_r:vmware_exec_t,s0)
+ 
+ /opt/vmware/(workstation|player)/bin/vmnet-bridge	--	gen_context(system_u:object_r:vmware_host_exec_t,s0)
+ /opt/vmware/(workstation|player)/bin/vmnet-dhcpd	--	gen_context(system_u:object_r:vmware_host_exec_t,s0)
+diff --git a/policy/modules/contrib/vnstatd.fc b/policy/modules/contrib/vnstatd.fc
+index 24228b6c0a3c..615b1994fda4 100644
+--- a/policy/modules/contrib/vnstatd.fc
++++ b/policy/modules/contrib/vnstatd.fc
+@@ -2,7 +2,7 @@
+ 
+ /usr/bin/vnstat	--	gen_context(system_u:object_r:vnstat_exec_t,s0)
+ 
+-/usr/sbin/vnstatd	--	gen_context(system_u:object_r:vnstatd_exec_t,s0)
++/usr/s?bin/vnstatd	--	gen_context(system_u:object_r:vnstatd_exec_t,s0)
+ 
+ /var/lib/vnstat(/.*)?	gen_context(system_u:object_r:vnstatd_var_lib_t,s0)
+ 
+diff --git a/policy/modules/contrib/vpn.fc b/policy/modules/contrib/vpn.fc
+index 524ac2f76d2f..14b9a120d764 100644
+--- a/policy/modules/contrib/vpn.fc
++++ b/policy/modules/contrib/vpn.fc
+@@ -2,6 +2,6 @@
+ 
+ /usr/bin/openconnect	--	gen_context(system_u:object_r:vpnc_exec_t,s0)
+ 
+-/usr/sbin/vpnc	--	gen_context(system_u:object_r:vpnc_exec_t,s0)
++/usr/s?bin/vpnc	--	gen_context(system_u:object_r:vpnc_exec_t,s0)
+ 
+ /var/run/vpnc(/.*)?	gen_context(system_u:object_r:vpnc_var_run_t,s0)
+diff --git a/policy/modules/contrib/watchdog.fc b/policy/modules/contrib/watchdog.fc
+index eecd0e03b3e9..2ed45802b8a7 100644
+--- a/policy/modules/contrib/watchdog.fc
++++ b/policy/modules/contrib/watchdog.fc
+@@ -1,6 +1,6 @@
+ /etc/rc\.d/init\.d/watchdog	--	gen_context(system_u:object_r:watchdog_initrc_exec_t,s0)
+ 
+-/usr/sbin/watchdog	--	gen_context(system_u:object_r:watchdog_exec_t,s0)
++/usr/s?bin/watchdog	--	gen_context(system_u:object_r:watchdog_exec_t,s0)
+ 
+ /var/log/watchdog.*	gen_context(system_u:object_r:watchdog_log_t,s0)
+ 
+diff --git a/policy/modules/contrib/wdmd.fc b/policy/modules/contrib/wdmd.fc
+index 66f11f724748..e7e31a28adba 100644
+--- a/policy/modules/contrib/wdmd.fc
++++ b/policy/modules/contrib/wdmd.fc
+@@ -1,5 +1,5 @@
+ /etc/rc\.d/init\.d/wdmd	--	gen_context(system_u:object_r:wdmd_initrc_exec_t,s0)
+ 
+-/usr/sbin/wdmd	--	gen_context(system_u:object_r:wdmd_exec_t,s0)
++/usr/s?bin/wdmd	--	gen_context(system_u:object_r:wdmd_exec_t,s0)
+ 
+ /var/run/wdmd(/.*)?	gen_context(system_u:object_r:wdmd_var_run_t,s0)
+diff --git a/policy/modules/contrib/xen.fc b/policy/modules/contrib/xen.fc
+index 42d83b02fc70..a87b5eb08fff 100644
+--- a/policy/modules/contrib/xen.fc
++++ b/policy/modules/contrib/xen.fc
+@@ -6,14 +6,14 @@
+ /usr/lib/xen-[^/]*/bin/xl	--	gen_context(system_u:object_r:xm_exec_t,s0)
+ /usr/lib/xen-[^/]*/bin/xm	--	gen_context(system_u:object_r:xm_exec_t,s0)
+ 
+-/usr/sbin/blktapctrl	--	gen_context(system_u:object_r:blktap_exec_t,s0)
+-/usr/sbin/evtchnd	--	gen_context(system_u:object_r:evtchnd_exec_t,s0)
+-/usr/sbin/tapdisk	--	gen_context(system_u:object_r:blktap_exec_t,s0)
+-/usr/sbin/xenconsoled	--	gen_context(system_u:object_r:xenconsoled_exec_t,s0)
+-/usr/sbin/xend	--	gen_context(system_u:object_r:xend_exec_t,s0)
+-/usr/sbin/xenstored	--	gen_context(system_u:object_r:xenstored_exec_t,s0)
+-/usr/sbin/xl	--	gen_context(system_u:object_r:xm_exec_t,s0)
+-/usr/sbin/xm	--	gen_context(system_u:object_r:xm_exec_t,s0)
++/usr/s?bin/blktapctrl	--	gen_context(system_u:object_r:blktap_exec_t,s0)
++/usr/s?bin/evtchnd	--	gen_context(system_u:object_r:evtchnd_exec_t,s0)
++/usr/s?bin/tapdisk	--	gen_context(system_u:object_r:blktap_exec_t,s0)
++/usr/s?bin/xenconsoled	--	gen_context(system_u:object_r:xenconsoled_exec_t,s0)
++/usr/s?bin/xend	--	gen_context(system_u:object_r:xend_exec_t,s0)
++/usr/s?bin/xenstored	--	gen_context(system_u:object_r:xenstored_exec_t,s0)
++/usr/s?bin/xl	--	gen_context(system_u:object_r:xm_exec_t,s0)
++/usr/s?bin/xm	--	gen_context(system_u:object_r:xm_exec_t,s0)
+ 
+ /var/lib/xen(/.*)?	gen_context(system_u:object_r:xend_var_lib_t,s0)
+ /var/lib/xen/images(/.*)?	gen_context(system_u:object_r:xen_image_t,s0)
+diff --git a/policy/modules/contrib/zebra.fc b/policy/modules/contrib/zebra.fc
+index 28ee4cac93fd..475a9b80f0f6 100644
+--- a/policy/modules/contrib/zebra.fc
++++ b/policy/modules/contrib/zebra.fc
+@@ -8,10 +8,10 @@
+ /etc/rc\.d/init\.d/ripngd	--	gen_context(system_u:object_r:zebra_initrc_exec_t,s0)
+ /etc/rc\.d/init\.d/zebra	--	gen_context(system_u:object_r:zebra_initrc_exec_t,s0)
+ 
+-/usr/sbin/bgpd	--	gen_context(system_u:object_r:zebra_exec_t,s0)
+-/usr/sbin/ospf.*	--	gen_context(system_u:object_r:zebra_exec_t,s0)
+-/usr/sbin/rip.*	--	gen_context(system_u:object_r:zebra_exec_t,s0)
+-/usr/sbin/zebra	--	gen_context(system_u:object_r:zebra_exec_t,s0)
++/usr/s?bin/bgpd	--	gen_context(system_u:object_r:zebra_exec_t,s0)
++/usr/s?bin/ospf.*	--	gen_context(system_u:object_r:zebra_exec_t,s0)
++/usr/s?bin/rip.*	--	gen_context(system_u:object_r:zebra_exec_t,s0)
++/usr/s?bin/zebra	--	gen_context(system_u:object_r:zebra_exec_t,s0)
+ 
+ /var/log/quagga(/.*)?	gen_context(system_u:object_r:zebra_log_t,s0)
+ /var/log/zebra(/.*)?	gen_context(system_u:object_r:zebra_log_t,s0)
+diff --git a/policy/modules/contrib/zosremote.fc b/policy/modules/contrib/zosremote.fc
+index 7a7fc614d8ce..6f159825287d 100644
+--- a/policy/modules/contrib/zosremote.fc
++++ b/policy/modules/contrib/zosremote.fc
+@@ -1,3 +1,3 @@
+ /sbin/audispd-zos-remote	--	gen_context(system_u:object_r:zos_remote_exec_t,s0)
+ 
+-/usr/sbin/audispd-zos-remote	--	gen_context(system_u:object_r:zos_remote_exec_t,s0)
++/usr/s?bin/audispd-zos-remote	--	gen_context(system_u:object_r:zos_remote_exec_t,s0)
+-- 
+2.6.4
+

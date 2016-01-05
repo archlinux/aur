@@ -1,0 +1,31 @@
+From 7038cca1998172db84b93b7da786cfb4dbd9dd88 Mon Sep 17 00:00:00 2001
+From: Nicolas Iooss <nicolas.iooss@m4x.org>
+Date: Tue, 5 Jan 2016 17:58:09 +0100
+Subject: [PATCH] Add file context substitutions for systemd
+
+---
+ config/file_contexts.subs_dist | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/config/file_contexts.subs_dist b/config/file_contexts.subs_dist
+index d392decfedc8..8589fd4749f7 100644
+--- a/config/file_contexts.subs_dist
++++ b/config/file_contexts.subs_dist
+@@ -9,6 +9,8 @@
+ # example, but aliasing.
+ # 
+ /etc/init.d /etc/rc.d/init.d
++/etc/systemd/system /usr/lib/systemd/system
++/lib/systemd /usr/lib/systemd
+ /lib32 /lib
+ /lib64 /lib
+ /run /var/run
+@@ -19,3 +21,5 @@
+ /usr/local/lib64 /usr/lib
+ /usr/local/lib /usr/lib
+ /var/run/lock /var/lock
++/var/run/systemd/system /usr/lib/systemd/system
++/var/run/systemd/generator /usr/lib/systemd/system
+-- 
+2.6.4
+

@@ -1,0 +1,99 @@
+From 11b2f2af503b54850730dbda672a167bb7f0ac38 Mon Sep 17 00:00:00 2001
+From: Nicolas Iooss <nicolas.iooss@m4x.org>
+Date: Tue, 5 Jan 2016 18:00:59 +0100
+Subject: [PATCH] Add an interface for systemd daemons to configure logging
+
+Many systemd daemons use log_parse_environment() and log_open() to
+configure the way they log messages.  These internal systemd functions
+requires a bunch of permissions like reading /proc/cmdline and
+/proc/1/environ to run.  Create an interface to ease allowing these
+accesses.
+---
+ policy/modules/system/systemd.if | 42 ++++++++++++++++++++++++++++++++++++++++
+ policy/modules/system/systemd.te |  6 ++++--
+ 2 files changed, 46 insertions(+), 2 deletions(-)
+
+diff --git a/policy/modules/system/systemd.if b/policy/modules/system/systemd.if
+index 3cd667000098..d24f9cec82f1 100644
+--- a/policy/modules/system/systemd.if
++++ b/policy/modules/system/systemd.if
+@@ -171,3 +171,45 @@ interface(`systemd_start_power_units',`
+ 
+ 	allow $1 power_unit_t:service start;
+ ')
++
++########################################
++## <summary>
++##	Allow specified domain to parse environment to set up logging.
++## </summary>
++## <desc>
++##	<p>
++##	Many systemd daemons set-up their logging by calling
++##	functions log_parse_environment and log_open, which
++##	source code is available on
++##	https://github.com/systemd/systemd/blob/v227/src/basic/log.c
++##	</p>
++##	<p>
++##	Function log_parse_environment calls parse_proc_cmdline,
++##	which reads /proc/cmdline and calls detect_container,
++##	which reads /proc/1/environ.
++##	</p>
++##	<p>
++##	Function log_open may call log_open_syslog, which calls
++##	create_log_socket, which calls fd_inc_sndbuf, which does
++##	setsockopt(fd, SOL_SOCKET, SO_SNDBUFFORCE, ...), which
++##	requires CAP_NET_ADMIN.  Nevertheless if CAP_NET_ADMIN
++##	access is denied, fd_inc_sndbuf falls back to using
++##	SO_SNDBUF option, which does not require any capability.
++##	</p>
++## </desc>
++## <param name="domain">
++##	<summary>
++##	Domain allowed access.
++##	</summary>
++## </param>
++#
++interface(`systemd_parse_log_environment',`
++	# Allow to read /proc/1/environ
++	init_read_state($1)
++	# Allow to read /proc/cmdline
++	kernel_read_system_state($1)
++	# Do not audit setsockopt(fd, SOL_SOCKET, SO_SNDBUFFORCE, ...) failure
++	dontaudit $1 self:capability net_admin;
++
++	logging_send_syslog_msg($1)
++')
+diff --git a/policy/modules/system/systemd.te b/policy/modules/system/systemd.te
+index fdb9fefc2ec2..87e678d4baec 100644
+--- a/policy/modules/system/systemd.te
++++ b/policy/modules/system/systemd.te
+@@ -120,7 +120,7 @@ kernel_domtrans_to(systemd_cgroups_t, systemd_cgroups_exec_t)
+ 
+ init_stream_connect(systemd_cgroups_t)
+ 
+-logging_send_syslog_msg(systemd_cgroups_t)
++systemd_parse_log_environment(systemd_cgroups_t)
+ 
+ kernel_dgram_send(systemd_cgroups_t)
+ 
+@@ -147,7 +147,7 @@ optional_policy(`
+ 
+ files_read_etc_files(systemd_hostnamed_t)
+ 
+-logging_send_syslog_msg(systemd_hostnamed_t)
++systemd_parse_log_environment(systemd_hostnamed_t)
+ 
+ seutil_read_file_contexts(systemd_hostnamed_t)
+ 
+@@ -254,6 +254,8 @@ logging_send_syslog_msg(systemd_tmpfiles_t)
+ 
+ seutil_read_file_contexts(systemd_tmpfiles_t)
+ 
++systemd_parse_log_environment(systemd_tmpfiles_t)
++
+ tunable_policy(`systemd_tmpfiles_manage_all',`
+ 	# systemd-tmpfiles can be configured to manage anything.
+ 	# have a last-resort option for users to do this.
+-- 
+2.6.4
+

@@ -1,0 +1,57 @@
+From 59fbc8ea167e5d8797f8f850f1f5106025f7fe65 Mon Sep 17 00:00:00 2001
+From: Nicolas Iooss <nicolas.iooss@m4x.org>
+Date: Tue, 5 Jan 2016 18:01:48 +0100
+Subject: [PATCH] Make fs_register_binary_executable_type interface allow
+ searching /proc/sys/fs
+
+---
+ policy/modules/kernel/filesystem.if |  2 ++
+ policy/modules/kernel/kernel.if     | 19 +++++++++++++++++++
+ 2 files changed, 21 insertions(+)
+
+diff --git a/policy/modules/kernel/filesystem.if b/policy/modules/kernel/filesystem.if
+index 1d1676561b4a..2a3cc90b8595 100644
+--- a/policy/modules/kernel/filesystem.if
++++ b/policy/modules/kernel/filesystem.if
+@@ -612,6 +612,8 @@ interface(`fs_register_binary_executable_type',`
+ 		type binfmt_misc_fs_t;
+ 	')
+ 
++	# binfmt_misc filesystem is usually mounted on /proc/sys/fs/binfmt_misc
++	kernel_search_fs_sysctls($1)
+ 	rw_files_pattern($1, binfmt_misc_fs_t, binfmt_misc_fs_t)
+ ')
+ 
+diff --git a/policy/modules/kernel/kernel.if b/policy/modules/kernel/kernel.if
+index f1130d1a521d..132496ceab5d 100644
+--- a/policy/modules/kernel/kernel.if
++++ b/policy/modules/kernel/kernel.if
+@@ -1987,6 +1987,25 @@ interface(`kernel_rw_kernel_sysctl',`
+ 
+ ########################################
+ ## <summary>
++##	Search filesystem sysctl directories.
++## </summary>
++## <param name="domain">
++##	<summary>
++##	Domain allowed access.
++##	</summary>
++## </param>
++## <rolecap/>
++#
++interface(`kernel_search_fs_sysctls',`
++	gen_require(`
++		type proc_t, sysctl_t, sysctl_fs_t;
++	')
++
++	search_dirs_pattern($1, { proc_t sysctl_t sysctl_fs_t }, sysctl_fs_t)
++')
++
++########################################
++## <summary>
+ ##	Read filesystem sysctls.
+ ## </summary>
+ ## <param name="domain">
+-- 
+2.6.4
+

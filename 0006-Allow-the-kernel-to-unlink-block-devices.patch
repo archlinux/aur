@@ -1,0 +1,34 @@
+From 112adf71202a66cca2a4095b4468bd2b89e02700 Mon Sep 17 00:00:00 2001
+From: Nicolas Iooss <nicolas.iooss@m4x.org>
+Date: Tue, 5 Jan 2016 17:56:21 +0100
+Subject: [PATCH] Allow the kernel to unlink block devices
+
+When a device gets removed, for example with "cryptsetup close",
+kdevtmpfs removes its entry from the devtmpfs:
+
+    AVC avc:  denied  { unlink } for  pid=48 comm="kdevtmpfs"
+    name="dm-4" dev="devtmpfs" ino=144111
+    scontext=system_u:system_r:kernel_t
+    tcontext=system_u:object_r:fixed_disk_device_t tclass=blk_file
+
+Allow this access on systems using systemd.
+---
+ policy/modules/kernel/kernel.te | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/policy/modules/kernel/kernel.te b/policy/modules/kernel/kernel.te
+index 309f3e08bc3f..5eb010e3a944 100644
+--- a/policy/modules/kernel/kernel.te
++++ b/policy/modules/kernel/kernel.te
+@@ -312,7 +312,7 @@ ifdef(`init_systemd',`
+ 	optional_policy(`
+ 		storage_dev_filetrans_fixed_disk(kernel_t)
+ 		storage_setattr_fixed_disk_dev(kernel_t)
+-		storage_create_fixed_disk_dev(kernel_t)
++		storage_manage_fixed_disk(kernel_t)
+ 	')
+ ')
+ 
+-- 
+2.6.4
+

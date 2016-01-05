@@ -1,0 +1,50 @@
+From 563c0d548ec56284a3b3987f1d693fbee45ecf50 Mon Sep 17 00:00:00 2001
+From: Nicolas Iooss <nicolas.iooss@m4x.org>
+Date: Tue, 5 Jan 2016 17:56:20 +0100
+Subject: [PATCH] Allow umount to atomically write /run/mount/utab
+
+On Arch Linux umount (from util-linux 2.27.1) updates /run/mount/utab by
+creating a temporary file /run/mount/utab.XXXXX and renaming it, which
+is currently denied:
+
+    AVC avc:  denied  { setattr } for  pid=23459 comm="umount"
+    name="utab.iH7bLl" dev="tmpfs" ino=860914
+    scontext=sysadm_u:sysadm_r:mount_t
+    tcontext=sysadm_u:object_r:mount_var_run_t tclass=file permissive=1
+
+    AVC avc:  denied  { remove_name } for  pid=23459 comm="umount"
+    name="utab.iH7bLl" dev="tmpfs" ino=860914
+    scontext=sysadm_u:sysadm_r:mount_t
+    tcontext=system_u:object_r:mount_var_run_t tclass=dir permissive=1
+
+    AVC avc:  denied  { rename } for  pid=23459 comm="umount"
+    name="utab.iH7bLl" dev="tmpfs" ino=860914
+    scontext=sysadm_u:sysadm_r:mount_t
+    tcontext=sysadm_u:object_r:mount_var_run_t tclass=file permissive=1
+
+    AVC avc:  denied  { unlink } for  pid=23459 comm="umount"
+    name="utab" dev="tmpfs" ino=145069
+    scontext=sysadm_u:sysadm_r:mount_t
+    tcontext=sysadm_u:object_r:mount_var_run_t tclass=file permissive=1
+
+Allow mount_t to manage files in /run/mount/.
+---
+ policy/modules/system/mount.te | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/policy/modules/system/mount.te b/policy/modules/system/mount.te
+index 1c2fc338bdaa..7e66ae740a32 100644
+--- a/policy/modules/system/mount.te
++++ b/policy/modules/system/mount.te
+@@ -53,7 +53,7 @@ can_exec(mount_t, mount_exec_t)
+ files_tmp_filetrans(mount_t, mount_tmp_t, { file dir })
+ 
+ create_dirs_pattern(mount_t, mount_var_run_t, mount_var_run_t)
+-create_files_pattern(mount_t, mount_var_run_t, mount_var_run_t)
++manage_files_pattern(mount_t, mount_var_run_t, mount_var_run_t)
+ rw_files_pattern(mount_t, mount_var_run_t, mount_var_run_t)
+ files_pid_filetrans(mount_t, mount_var_run_t, dir, "mount")
+ 
+-- 
+2.6.4
+

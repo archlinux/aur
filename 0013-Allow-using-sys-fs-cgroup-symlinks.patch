@@ -1,0 +1,71 @@
+From 1d43a34c536a0fc1887a1e6bef21b25e82e52f09 Mon Sep 17 00:00:00 2001
+From: Nicolas Iooss <nicolas.iooss@m4x.org>
+Date: Tue, 5 Jan 2016 17:59:04 +0100
+Subject: [PATCH] Allow using /sys/fs/cgroup symlinks
+
+On ArchLinux, /sys/fs/cgroup contains 2 symbolic links:
+
+* cpu -> cpu,cpuacct
+* cpuacct -> cpu,cpuacct
+
+As programs use these links like normal directory, allow them to follow
+them when allowing search access to cgroup_t directories.
+---
+ policy/modules/kernel/filesystem.if | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/policy/modules/kernel/filesystem.if b/policy/modules/kernel/filesystem.if
+index 99ad71f926b4..1d1676561b4a 100644
+--- a/policy/modules/kernel/filesystem.if
++++ b/policy/modules/kernel/filesystem.if
+@@ -724,6 +724,7 @@ interface(`fs_list_cgroup_dirs', `
+ 
+ 	list_dirs_pattern($1, cgroup_t, cgroup_t)
+ 	dev_search_sysfs($1)
++	allow $1 cgroup_t:lnk_file read_lnk_file_perms;
+ ')
+ 
+ ########################################
+@@ -763,6 +764,7 @@ interface(`fs_manage_cgroup_dirs',`
+ 
+ 	manage_dirs_pattern($1, cgroup_t, cgroup_t)
+ 	dev_search_sysfs($1)
++	allow $1 cgroup_t:lnk_file read_lnk_file_perms;
+ ')
+ 
+ ########################################
+@@ -802,6 +804,7 @@ interface(`fs_read_cgroup_files',`
+ 	read_files_pattern($1, cgroup_t, cgroup_t)
+ 	read_lnk_files_pattern($1, cgroup_t, cgroup_t)
+ 	dev_search_sysfs($1)
++	allow $1 cgroup_t:lnk_file read_lnk_file_perms;
+ ')
+ 
+ ########################################
+@@ -821,6 +824,7 @@ interface(`fs_write_cgroup_files', `
+ 
+ 	write_files_pattern($1, cgroup_t, cgroup_t)
+ 	dev_search_sysfs($1)
++	allow $1 cgroup_t:lnk_file read_lnk_file_perms;
+ ')
+ 
+ ########################################
+@@ -841,6 +845,7 @@ interface(`fs_rw_cgroup_files',`
+ 
+ 	rw_files_pattern($1, cgroup_t, cgroup_t)
+ 	dev_search_sysfs($1)
++	allow $1 cgroup_t:lnk_file read_lnk_file_perms;
+ ')
+ 
+ ########################################
+@@ -881,6 +886,7 @@ interface(`fs_manage_cgroup_files',`
+ 
+ 	manage_files_pattern($1, cgroup_t, cgroup_t)
+ 	dev_search_sysfs($1)
++	allow $1 cgroup_t:lnk_file manage_lnk_file_perms;
+ ')
+ 
+ ########################################
+-- 
+2.6.4
+

@@ -1,0 +1,35 @@
+From 607e3b49362d016cadbe7cfe4816f0a6ee10dd19 Mon Sep 17 00:00:00 2001
+From: Nicolas Iooss <nicolas.iooss@m4x.org>
+Date: Tue, 5 Jan 2016 18:01:32 +0100
+Subject: [PATCH] Add systemd-binfmt policy
+
+---
+ policy/modules/system/systemd.te | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/policy/modules/system/systemd.te b/policy/modules/system/systemd.te
+index 9f42929c3a9e..f53557835c37 100644
+--- a/policy/modules/system/systemd.te
++++ b/policy/modules/system/systemd.te
+@@ -132,6 +132,18 @@ files_read_etc_files(systemd_backlight_t)
+ 
+ udev_read_pid_files(systemd_backlight_t)
+ 
++#######################################
++#
++# Binfmt local policy
++#
++
++systemd_parse_log_environment(systemd_binfmt_t)
++
++fs_register_binary_executable_type(systemd_binfmt_t)
++
++# Allow to read /etc/binfmt.d/ files
++files_read_etc_files(systemd_binfmt_t)
++
+ ######################################
+ #
+ # Cgroups local policy
+-- 
+2.6.4
+

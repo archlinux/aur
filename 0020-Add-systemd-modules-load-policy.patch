@@ -1,0 +1,87 @@
+From 0a1ea3aa8b6e4a326d404f5df383df160846b4db Mon Sep 17 00:00:00 2001
+From: Nicolas Iooss <nicolas.iooss@m4x.org>
+Date: Tue, 5 Jan 2016 18:03:27 +0100
+Subject: [PATCH] Add systemd-modules-load policy
+
+---
+ policy/modules/system/modutils.fc |  4 ++++
+ policy/modules/system/systemd.fc  |  1 +
+ policy/modules/system/systemd.te  | 17 +++++++++++++++++
+ 3 files changed, 22 insertions(+)
+
+diff --git a/policy/modules/system/modutils.fc b/policy/modules/system/modutils.fc
+index c3f88b443585..4b2a5135af98 100644
+--- a/policy/modules/system/modutils.fc
++++ b/policy/modules/system/modutils.fc
+@@ -1,6 +1,7 @@
+ /bin/kmod		--	gen_context(system_u:object_r:insmod_exec_t,s0)
+ 
+ /etc/modules\.conf.*	--	gen_context(system_u:object_r:modules_conf_t,s0)
++/etc/modules-load.d(/.*)?	--	gen_context(system_u:object_r:modules_conf_t,s0)
+ /etc/modprobe\.conf.*	--	gen_context(system_u:object_r:modules_conf_t,s0)
+ /etc/modprobe\.d(/.*)?		gen_context(system_u:object_r:modules_conf_t,s0)
+ 
+@@ -34,6 +35,7 @@ ifdef(`distro_gentoo',`
+ 
+ /usr/lib/modules/[^/]+/modules\..+ -- gen_context(system_u:object_r:modules_dep_t,s0)
+ /usr/lib/modules/modprobe\.conf -- gen_context(system_u:object_r:modules_conf_t,s0)
++/usr/lib/modules-load.d(/.*)?	--	gen_context(system_u:object_r:modules_conf_t,s0)
+ 
+ /usr/sbin/depmod.*		--	gen_context(system_u:object_r:depmod_exec_t,s0)
+ /usr/sbin/generate-modprobe\.conf -- gen_context(system_u:object_r:update_modules_exec_t,s0)
+@@ -42,3 +44,5 @@ ifdef(`distro_gentoo',`
+ /usr/sbin/modules-update	--	gen_context(system_u:object_r:update_modules_exec_t,s0)
+ /usr/sbin/rmmod.*		--	gen_context(system_u:object_r:insmod_exec_t,s0)
+ /usr/sbin/update-modules	--	gen_context(system_u:object_r:update_modules_exec_t,s0)
++
++/var/run/modules-load.d(/.*)?	--	gen_context(system_u:object_r:modules_conf_t,s0)
+diff --git a/policy/modules/system/systemd.fc b/policy/modules/system/systemd.fc
+index da5a5860fd7a..30cc741fe0df 100644
+--- a/policy/modules/system/systemd.fc
++++ b/policy/modules/system/systemd.fc
+@@ -27,6 +27,7 @@
+ /usr/lib/systemd/systemd-localed	--	gen_context(system_u:object_r:systemd_locale_exec_t,s0)
+ /usr/lib/systemd/systemd-logind		--	gen_context(system_u:object_r:systemd_logind_exec_t,s0)
+ /usr/lib/systemd/systemd-machined	--	gen_context(system_u:object_r:systemd_machined_exec_t,s0)
++/usr/lib/systemd/systemd-modules-load	--	gen_context(system_u:object_r:systemd_modules_load_exec_t,s0)
+ /usr/lib/systemd/systemd-timedated	--	gen_context(system_u:object_r:systemd_timedated_exec_t,s0)
+ /usr/lib/systemd/systemd-timesyncd	--	gen_context(system_u:object_r:systemd_timesyncd_exec_t,s0)
+ 
+diff --git a/policy/modules/system/systemd.te b/policy/modules/system/systemd.te
+index 5ad343308d07..af3eb5972d31 100644
+--- a/policy/modules/system/systemd.te
++++ b/policy/modules/system/systemd.te
+@@ -77,6 +77,10 @@ type systemd_machined_t;
+ type systemd_machined_exec_t;
+ init_daemon_domain(systemd_machined_t, systemd_machined_exec_t)
+ 
++type systemd_modules_load_t;
++type systemd_modules_load_exec_t;
++init_daemon_domain(systemd_modules_load_t, systemd_modules_load_exec_t)
++
+ type systemd_nspawn_t;
+ type systemd_nspawn_exec_t;
+ init_system_domain(systemd_nspawn_t, systemd_nspawn_exec_t)
+@@ -259,6 +263,19 @@ optional_policy(`
+ 	dbus_connect_system_bus(systemd_logind_t)
+ ')
+ 
++#######################################
++#
++# Modules-load local policy
++#
++
++# Read parameters with log_parse_environment/proc_cmdline/detect_container
++systemd_parse_log_environment(systemd_modules_load_t)
++
++files_read_kernel_modules(systemd_modules_load_t)
++kernel_load_module(systemd_modules_load_t)
++modutils_read_module_config(systemd_modules_load_t)
++modutils_read_module_deps(systemd_modules_load_t)
++
+ #########################################
+ #
+ # Sessions local policy
+-- 
+2.6.4
+

@@ -1,0 +1,57 @@
+From 13765c7f553a7b11b1de02f0cb958fc99c72845a Mon Sep 17 00:00:00 2001
+From: Nicolas Iooss <nicolas.iooss@m4x.org>
+Date: Tue, 5 Jan 2016 17:56:11 +0100
+Subject: [PATCH] Label Xorg server binary correctly on Arch Linux
+
+On Arch Linux, /usr/bin/Xorg is only a shell script which executes
+/usr/lib/xorg-server/Xorg.wrap, which is a SUID binary wrapper around
+/usr/lib/xorg-server/Xorg.
+
+Even though Xorg.wrap is not a full X server, it reads X11 configuration
+files, uses the DRM interface to detect KMS, etc. (cf.
+http://cgit.freedesktop.org/xorg/xserver/tree/hw/xfree86/xorg-wrapper.c?id=xorg-server-1.18.0
+for more details).  Therefore label it as xserver_exec_t.
+
+This makes the following AVC appear:
+
+    denied  { execute_no_trans } for  pid=927 comm="X"
+    path="/usr/lib/xorg-server/Xorg.wrap" dev="dm-0" ino=3152592
+    scontext=system_u:system_r:xserver_t
+    tcontext=system_u:object_r:xserver_exec_t tclass=file
+
+Allow /usr/bin/Xorg to execute Xorg.wrap with a can_exec statement.
+---
+ policy/modules/services/xserver.fc | 2 ++
+ policy/modules/services/xserver.te | 3 +++
+ 2 files changed, 5 insertions(+)
+
+diff --git a/policy/modules/services/xserver.fc b/policy/modules/services/xserver.fc
+index 71b307c2fbea..397993fb4944 100644
+--- a/policy/modules/services/xserver.fc
++++ b/policy/modules/services/xserver.fc
+@@ -70,6 +70,8 @@ HOME_DIR/\.Xauthority.*	--	gen_context(system_u:object_r:xauth_home_t,s0)
+ /usr/bin/Xorg		--	gen_context(system_u:object_r:xserver_exec_t,s0)
+ 
+ /usr/lib/qt-.*/etc/settings(/.*)? gen_context(system_u:object_r:xdm_var_run_t,s0)
++/usr/lib/xorg-server/Xorg	--	gen_context(system_u:object_r:xserver_exec_t,s0)
++/usr/lib/xorg-server/Xorg\.wrap	--	gen_context(system_u:object_r:xserver_exec_t,s0)
+ 
+ /usr/sbin/lightdm	--	gen_context(system_u:object_r:xdm_exec_t,s0)
+ 
+diff --git a/policy/modules/services/xserver.te b/policy/modules/services/xserver.te
+index 2ba7a7415e2a..8dc7c83e491c 100644
+--- a/policy/modules/services/xserver.te
++++ b/policy/modules/services/xserver.te
+@@ -827,6 +827,9 @@ manage_sock_files_pattern(xserver_t, xdm_tmp_t, xdm_tmp_t)
+ allow xserver_t xkb_var_lib_t:lnk_file read;
+ can_exec(xserver_t, xkb_var_lib_t)
+ 
++# Run Xorg.wrap
++can_exec(xserver_t, xserver_exec_t)
++
+ # VNC v4 module in X server
+ corenet_tcp_bind_vnc_port(xserver_t)
+ 
+-- 
+2.6.4
+
