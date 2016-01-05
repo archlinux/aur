@@ -1,7 +1,7 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 pkgname=roger-router
 pkgver=1.8.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Roger Router"
 arch=('i686' 'x86_64')
 url="http://en.tabos.org/roger-router/"
