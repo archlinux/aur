@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-dist-zilla'
-pkgver='5.041'
+pkgver='5.043'
 pkgrel='1'
 pkgdesc="distribution builder; installer not included!"
 arch=('any')
@@ -12,10 +12,10 @@ depends=('perl-app-cmd' 'perl-cpan-meta-check>=0.011' 'perl-cpan-uploader>=0.103
 makedepends=()
 checkdepends=('perl-test-deep' 'perl-test-failwarnings' 'perl-test-fatal' 'perl-test-file-sharedir')
 url='https://metacpan.org/release/Dist-Zilla'
-source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Dist-Zilla-5.041.tar.gz')
-md5sums=('aea738c4485fd95a2a990f54e1dcd566')
-sha512sums=('f10c8e294e4f072a5f47dbf1283882b055317279547ad0f9373c74c9ab97365fbb8ff433c420230b34aedfc7c1c9c54adaa74b6b462bee8dcde3a509c9862635')
-_distdir="Dist-Zilla-5.041"
+source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Dist-Zilla-5.043.tar.gz')
+md5sums=('877d1efd11089b4da5049320117da9d1')
+sha512sums=('5c0f7506cf5a15d6e47c7f6fd8a5f24af108ae4e3220ec73e7d0845676613916500a9fbfd308fd17449414a3b2566fe64b75bb63b90e0d7db871bb29a72fae25')
+_distdir="Dist-Zilla-5.043"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
