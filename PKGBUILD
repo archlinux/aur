@@ -13,7 +13,6 @@ url='http://gcc.gnu.org'
 license=('GPL' 'LGPL' 'custom')
 depends=('glibc' 'binutils' 'gmp' 'mpfr' 'libmpc' 'ppl' 'isl' 'cloog' 'elfutils')
 makedepends=('flex' 'bison' 'setconf' 'gcc49') # gcc48 also works if you change -4.9 below
-provides=("gcc=${pkgver}")
 conflicts=('gcc45-multilib')
 options=('!libtool' '!buildflags' 'staticlibs')
 source=("http://www.mirrorservice.org/sites/sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2"
