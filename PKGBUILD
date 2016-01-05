@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=uefi-firmware-parser
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc='Parse BIOS/Intel ME/UEFI firmware related structures: Volumes, FileSystems, Files, etc'
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ url='https://github.com/theopolis/uefi-firmware-parser'
 depends=(python2)
 makedepends=(python2-setuptools)
 source=(uefi-firmware-parser-$pkgver.zip::https://github.com/theopolis/uefi-firmware-parser/archive/v$pkgver.zip)
-sha1sums=('cc2adfc72deeb392b426babca79ee27e6d61fef3')
+sha1sums=('63892fb329a4f518e54f68ea66b478981802f4ed')
 
 prepare() {
   cd uefi-firmware-parser-$pkgver
