@@ -2,8 +2,8 @@
 # Contributor: ValdikSS <iam@valdikss.org.ru>
 
 pkgname=osu
-pkgver=20151201
-pkgrel=2
+pkgver=20160105
+pkgrel=1
 
 source=("http://m1.ppy.sh/r/osu!install.exe"
 	"directsound-latency.reg"
@@ -26,7 +26,7 @@ license=(custom)
 install=osu.install
 
 depends=(wine xterm winetricks)
-depends_x86_64=(lib32-alsa-lib)
+depends_x86_64=(lib32-alsa-lib lib32-gnutls)
 
 package() {
     cd "$srcdir"
