@@ -6,6 +6,7 @@ pkgdesc="An easy to use CLI password manager utilizing the dchain encryption lib
 url="http://github.com/Cube777/bassoon"
 arch=('x86_64' 'i686')
 source=('git+https://github.com/Cube777/bassoon.git')
+depends=('dchain' 'nihdb')
 md5sums=('SKIP')
 
 prepare() {
