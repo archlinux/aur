@@ -22,8 +22,8 @@ source=('20-nvidia.conf')
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/NVIDIA-Linux-x86_64-$pkgver-no-compat32.run")
 md5sums=('2640eac092c220073f0668a7aaff61f7')
-md5sums_i686=('5dfe11ca13548ca4813b10f3223d6014')
-md5sums_x86_64=('efb1e649c0e0d62e92774bbf2c124488')
+md5sums_i686=('File')
+md5sums_x86_64=('File')
 
 _create_links() {
   # create missing soname links
