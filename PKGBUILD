@@ -12,7 +12,7 @@ set -u
 pkgname='sdlmame-0137'
 pkgver='0.137u2'
 pkgrel='1'
-pkgdesc='A port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support. Last version to play Dr Mario'
+pkgdesc='A port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support.'
 arch=('i686' 'x86_64')
 url='http://mamedev.org/'
 license=('custom:MAME License')
