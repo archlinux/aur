@@ -2,19 +2,19 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-net-github'
-pkgver='0.79'
+pkgver='0.81'
 pkgrel='1'
 pkgdesc="Perl Interface for github.com"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-http-message' 'perl-json-maybexs' 'perl-lwp-protocol-https' 'perl-moo' 'perl-type-tiny' 'perl-uri' 'perl-libwww')
+depends=('perl-cache-lru' 'perl-http-message' 'perl-json-maybexs' 'perl-lwp-protocol-https' 'perl-moo' 'perl-type-tiny' 'perl-uri' 'perl-libwww')
 makedepends=()
 url='https://metacpan.org/release/Net-GitHub'
-source=('http://search.cpan.org/CPAN/authors/id/F/FA/FAYLAND/Net-GitHub-0.79.tar.gz')
-md5sums=('ecfe5cd746a074197250d65f1cb8aba0')
-sha512sums=('f5a2bd2b74ef48738bd5a60850f34d62154b3fadfc8661f8562830ffd4e3a84a0b8b2c631969352fa74f43855a6ce6252ce50144280bb8b7a274483eea4e4514')
-_distdir="Net-GitHub-0.79"
+source=('http://search.cpan.org/CPAN/authors/id/F/FA/FAYLAND/Net-GitHub-0.81.tar.gz')
+md5sums=('247caeaaa3a20a1ca160b4e93f60feac')
+sha512sums=('786f0022b1196dafdc680ad0b57220887cb2abb1dc8c565dd80bb0631da28f2463d8a0cb7289057ed671c69e82eeb83d972e618b79089e23be90873a078ddd48')
+_distdir="Net-GitHub-0.81"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
