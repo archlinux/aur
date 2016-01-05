@@ -2,8 +2,8 @@
 # Maintainer: Eduard Kracmar <info[at]adaptiware[dot]com>
 
 pkgname=mmonit
-pkgver=3.5
-pkgrel=2
+pkgver=3.5.1
+pkgrel=1
 pkgdesc="Easy, proactive monitoring of Unix systems, network and cloud services. Conduct automatic maintenance and recovery and execute meaningful causal actions in error situations."
 arch=('x86_64')
 url="http://mmonit.com/"
@@ -18,7 +18,5 @@ package() {
   install -D -m644 ${srcdir}/$pkgname.service ${pkgdir}/usr/lib/systemd/system/$pkgname.service
 }
 
-sha256sums=('c872bd09811804ff4f41319507b77626926f3a028b56e2f320d470f07e032c7b'
+sha256sums=('01371b3ed8f5f0bc9d8ce90382e8121dff9fd2d151584c72e786643982cc69f3'
             '9a4edf62ef3da3af1e3dcfebd7b3bb3f96e81c5a9767021f0e4ed775f2dbb469')
-
-
