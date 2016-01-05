@@ -1,10 +1,11 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
+
 pkgname=jna
 pkgver=4.2.1
 pkgrel=1
 pkgdesc="Access native libraries with pure Java code."
 arch=('any')
-url="https://github.com/java-native-access/jna"
+url='https://github.com/java-native-access/jna'
 license=('LGPL' 'custom:ASL')
 depends=('java-runtime')
 source=("https://maven.java.net/content/repositories/releases/net/java/dev/jna/jna/${pkgver}/jna-${pkgver}.jar"
