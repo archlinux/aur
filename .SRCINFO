@@ -17,9 +17,9 @@ pkgbase = nvidia-beta-all
 	conflicts = nvidia
 	options = !strip
 	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/361.16/NVIDIA-Linux-x86-361.16.run
-	md5sums_i686 = File
+	md5sums_i686 = cbb48d10306d6ca49423ed80e786598e
 	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/361.16/NVIDIA-Linux-x86_64-361.16-no-compat32.run
-	md5sums_x86_64 = File
+	md5sums_x86_64 = 13df10e88eb550b8d7f2e276bb5cfb57
 
 pkgname = nvidia-beta-all
 
