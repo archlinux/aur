@@ -1,15 +1,15 @@
 # Contributor: Lorenzo Tomei <tomeil@tiscali.it>
 
 pkgname=j8-git
-pkgver=1.4.7
+pkgver=1.4.9
 pkgrel=1
 pkgdesc='J is a modern, high-level, general-purpose, high-performance programming language'
 arch=('i686' 'x86_64')
 url='http://www.jsoftware.com'
 license=('GPL3'  'LGPL')
 depends=('ncurses' 'qt5-tools' 'qt5-websockets' 'qt5-webengine' 'wget' 'pcre')
-source=('http://www.jsoftware.com/gitlist/qtide.git/zipball/master' 'http://www.databaserossoverde.it/jsoftware/j804_env_20151219.tar.gz')
-md5sums=('SKIP' '887d0f4b4a746dd1d70d885044f9b6f6')
+source=('http://www.jsoftware.com/gitlist/qtide.git/zipball/master' 'http://www.databaserossoverde.it/jsoftware/j804_env_20160104.tar.gz')
+md5sums=('SKIP' '11533fc6defe5550f44d01989afec4a4')
 if [ "${CARCH}" = x86_64 ]; then
 _xarch=x86_64
 _noarch=i686
@@ -39,4 +39,5 @@ rm -r "${pkgdir}"/usr/lib/j8/bin/"${_noarch}"
 cp -a bin/linux-"${_xarch}"/release/*  "${pkgdir}"/usr/lib/j8/bin/
 echo "${pkgname}-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.xz (Arch Linux package)" > ${pkgdir}/usr/lib/j8/bin/installer.txt
 chown -R nobody:nobody "${pkgdir}"/srv/j8
-} 
+}
+
