@@ -1,7 +1,7 @@
 # Maintainer: Dan Printzell <me@vild.io>
 
 pkgname=('workspace-d')
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Wraps dcd, dfmt and dscanner to one unified environment managed by dub"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ provides=('workspace-d')
 conflicts=('workspace-d')
 
 source=(
-	"git+https://github.com/Pure-D/workspace-d#tag=v1.1.0"
+	"git+https://github.com/Pure-D/workspace-d#tag=v1.2.0"
 )
 sha256sums=(
 	'SKIP'
