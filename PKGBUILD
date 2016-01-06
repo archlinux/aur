@@ -9,11 +9,12 @@ license=('Apache')
 depends=('glibc')
 makedepends=('clang' 'wget' 'scons' )
 conflicts=(${pkgname}-git)
-source=("https://github.com/azukiapp/libnss-resolver/archive/v0.3.0.tar.gz")
+pkgcommit=00b56693dd20d9c4e60c56216a92b8a00c0aa955
+source=("https://github.com/azukiapp/libnss-resolver/archive/$pkgcommit.zip")
 md5sums=('SKIP')
 install=${pkgname}.install
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-$pkgcommit"
     scons prefix="$pkgdir/usr/lib" local-install
 }
