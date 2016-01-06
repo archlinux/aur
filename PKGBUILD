@@ -7,7 +7,7 @@ pkgver() {
 	cd ${_pkgname}
 	git describe --tags |sed 's/-/./g'
 }
-pkgrel=1
+pkgrel=2
 pkgdesc="conversion tools for the suckless image format"
 url="http://suckless.org"
 arch=('i686' 'x86_64')
@@ -30,7 +30,7 @@ prepare() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
+	make
 }
 
 package() {
