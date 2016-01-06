@@ -1,37 +1,29 @@
 #Maintainer: Iwan Timmer <irtimmer@gmail.com>
 
-pkgname=runc-git
-pkgver=r1432.8ad8d40
+pkgname=runc
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="Container CLI tools"
 depends=('glibc')
-makedepends=('godep', 'go')
+makedepends=('godep' 'go')
 arch=('x86_64' 'i686')
-source=("git+https://github.com/opencontainers/runc.git")
+source=("https://github.com/opencontainers/runc/archive/v$pkgver.tar.gz")
 url="http://runc.io/"
 license="APACHE"
-sha256sums=('SKIP')
+sha256sums=('d2dcc3975ef952a540299afa42075ccfbab2eb8944c4953baca4b41fef138b16')
 
 prepare() {
-    cd $srcdir/runc
+    cd $srcdir/runc-$pkgver
     mkdir -p Godeps/_workspace/src/github.com/opencontainers
     ln -sfT ../../../../../ Godeps/_workspace/src/github.com/opencontainers/runc
 }
 
 build() {
-    cd $srcdir/runc
+    cd $srcdir/runc-$pkgver
     godep go build -o runc .
 }
 
 package() {
-    cd $srcdir/runc
+    cd $srcdir/runc-$pkgver
     install -Dm755 runc $pkgdir/usr/bin/runc
-}
-
-pkgver() {
-    cd $srcdir/$pkgname
-    ( set -o pipefail
-        git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
 }
