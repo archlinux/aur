@@ -23,6 +23,7 @@ package() {
 	chmod -R a+X "$srcdir/exploit-database-master"
 	install -dm 755 "$pkgdir/usr/share"
 	cp -dr --no-preserve=ownership "$srcdir/exploit-database-master" "$pkgdir/usr/share/exploit-db"
+    #symlink for searchsploit
     ln -s "/usr/share/exploit-db" "${pkgdir}/usr/share/exploitdb"
 }
 
