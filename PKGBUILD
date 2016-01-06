@@ -1,32 +1,32 @@
 # Maintainer: mrxx <mrxx at cyberhome dot at>
 # Contributor: bender02 at gmx dot com
+
 pkgname=mini_httpd
-pkgver=1.22
+pkgver=1.23
 pkgrel=1
 pkgdesc="A small and simple forking http server. CGI, SSL, auth, vhosts, ipv6."
 url="http://www.acme.com/software/mini_httpd/"
 arch=('i686' 'x86_64')
 license=('custom')
 depends=('openssl')
-backup=('etc/mini_httpd.conf')
+backup=('etc/mini_httpd/mini_httpd.conf'
+	'etc/mini_httpd/mini_httpd_ssl.conf')
 source=("http://www.acme.com/software/${pkgname}/${pkgname}-${pkgver}.tar.gz"
 	'mini_httpd.service'
 	'mini_httpd_ssl.service'
 	'mini_httpd.logrotate'
 	'mini_httpd.conf'
 	'mini_httpd_ssl.conf'
-	'mini_httpd.pem'
 	'sample.cgi'
 	'sample_perl.cgi'
 	'LICENSE')
 
-md5sums=('fc93510610943c97532bce4b298a1b45'
+sha1sums=('0701ca607f8b8a0c8e0409084d0ac8720beb87f2'
         'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-	'SKIP'
         'SKIP'
 	'SKIP'
         'SKIP')
@@ -54,7 +54,6 @@ package() {
 	cd "$pkgname-$pkgver"
 	install -Dm644 -t "${pkgdir}/etc/${pkgname}/" "${srcdir}/${pkgname}.conf" "${srcdir}/${pkgname}_ssl.conf"
 	install -Dm644 -t "${pkgdir}/usr/lib/systemd/system/" "${srcdir}/${pkgname}.service" "${srcdir}/${pkgname}_ssl.service"
-	install -Dm640 -t "${pkgdir}/etc/ssl/private/" "${srcdir}/${pkgname}.pem"
 	install -Dm755 -t "${pkgdir}/srv/http/" "${srcdir}/sample.cgi" "${srcdir}/sample_perl.cgi"
 	install -Dm644 "${srcdir}/${pkgname}.logrotate" "${pkgdir}/etc/logrotate.d/${pkgname}"
 	install -D "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"

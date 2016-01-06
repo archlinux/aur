@@ -1,12 +1,26 @@
 post_install() {
 	[ ! -f /srv/http/index.html ] && echo "<html><body><h2>Server online.</h2></body></html>" >/srv/http/index.html
-	[ ! -f /srv/http/index.php ] && echo "<?php phpinfo(); ?>" >/srv/http/index.php
+	if [ ! -f /etc/ssl/private/mini_httpd.pem ]; then
+		echo
+		openssl req -x509 -nodes -newkey rsa:2048 -sha256 -keyout /etc/ssl/private/mini_httpd.pem -out /etc/ssl/private/mini_httpd.pem -days 3650 -subj "/C=US/ST=California/L=Berkeley/O=ACME Laboratories/CN=$(hostname -f)"
+		chmod 600 /etc/ssl/private/mini_httpd.pem
+		echo
+		echo "A self-signed TLS certificate has been generated for your machine '$(hostname -f)'."
+		echo
+		echo "You can generate a new one with the following commands (as root):"
+		echo "openssl req -x509 -nodes -newkey rsa:2048 -sha256 -keyout /etc/ssl/private/mini_httpd.pem -out /etc/ssl/private/mini_httpd.pem -days 365"
+		echo "chmod 600 /etc/ssl/private/mini_httpd.pem"
+		echo
+		echo "Note: The Common Name (CN) should be exactly the FQDN of the server."
+		echo "The validity can be extended by increasing the '-days' parameter value."
+	fi
 	echo
 	echo "*** USAGE ***"
 	echo
 	echo "'systemctl start mini_httpd.service' starts the web server."
 	echo "'systemctl start mini_httpd_ssl.service' starts the web server in SSL mode."
 	echo "Web server root is /srv/http."
+	echo "CGI samples are included."
 	echo "Configuration files are in /etc/mini_httpd/ (man mini_httpd for options)"
 	echo "For directory protection, use mini_htpasswd ."
 	echo
