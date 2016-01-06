@@ -2,14 +2,15 @@
 # Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
 
 pkgname=pantheon-terminal-bzr
-pkgver=r733
+pkgver=r803
 pkgrel=1
 pkgdesc='The Pantheon Terminal Emulator'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/pantheon-terminal'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('desktop-file-utils' 'granite-bzr' 'libnotify' 'vte290')
+depends=('desktop-file-utils' 'glib2' 'glibc' 'gtk3' 'libnotify' 'pango' 'vte3'
+         'libgranite.so')
 makedepends=('bzr' 'cmake' 'vala')
 provides=('pantheon-terminal')
 conflicts=('pantheon-terminal')
