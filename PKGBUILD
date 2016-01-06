@@ -19,14 +19,15 @@ build() {
   cd caprice32
   make RELEASE=true
   sed -i 's,rom_path=.*,rom_path=/usr/share/caprice32/rom/,' cap32.cfg
+  sed -i 's,resources_path=.*,resources_path=/usr/share/caprice32/resources/,' cap32.cfg
 }
 
 package() {
   cd caprice32
   mkdir -p $pkgdir/usr/share/caprice32/rom
   cp rom/* $pkgdir/usr/share/caprice32/rom/
-  #mkdir -p $pkgdir/usr/share/caprice32/resource
-  #cp resource/* $pkgdir/usr/share/caprice32/rom/
+  mkdir -p $pkgdir/usr/share/caprice32/resources
+  cp resources/* $pkgdir/usr/share/caprice32/resources
   install -Dm755 cap32.cfg "$pkgdir/etc/cap32.cfg"
   install -Dm755 cap32 "$pkgdir/usr/bin/cap32"
 }
