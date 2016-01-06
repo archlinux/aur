@@ -1,7 +1,7 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=arm-frc-linux-gnueabi-wpilib-git
-pkgver=1248.8b0f19a
+pkgver=1324.3cd1253
 pkgrel=1
 pkgdesc="The WPI FIRST Robotics Competition C/C++ library for the arm-frc-linux-gnueabi toolchain"
 arch=(i686 x86_64)
@@ -31,6 +31,6 @@ package() {
 
   yes A | unzip -d $pkgdir/usr/arm-frc-linux-gnueabi wpilibc.zip
 
-  install -Dm644 ../../wpilibj/BSD_License_for_WPILib_code.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 ../../BSD_License_for_WPILib_code.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 # vim:set ts=2 sw=2 et:
