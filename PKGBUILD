@@ -3,7 +3,7 @@
 
 pkgname=iscan-plugin-gt-s600
 pkgver=2.1.2_1
-pkgrel=5
+pkgrel=6
 _bundlever=1.0.0
 pkgdesc="iscan plugin for Epson Perfection V10."
 arch=('i686' 'x86_64')
@@ -21,12 +21,14 @@ package() {
 	if [ "$CARCH" = "i686" ]
 	then
 		_arch=x86
+		_arch_inner=i386
 	else
 		_arch=x64
+		_arch_inner=x86_64
 	fi
 
 	cd "$srcdir"
-	rpmextract.sh "iscan-gt-s600-bundle-$_bundlever.$_arch.rpm/plugins/$pkgname-${pkgver//_/-}.$CARCH.rpm"
+	rpmextract.sh "iscan-gt-s600-bundle-$_bundlever.$_arch.rpm/plugins/$pkgname-${pkgver//_/-}.$_arch_inner.rpm"
 	mv usr "$pkgdir"
 
 	if [ "$CARCH" = "x86_64" ]
