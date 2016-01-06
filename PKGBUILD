@@ -15,7 +15,8 @@
 pkgname=mpv-legacy-af-git
 _gitname=mpv
 pkgver="0.14.0+5"
-pkgrel=1
+_gitchangerange=492e3de..3e90a5f
+pkgrel=2
 epoch=1
 pkgdesc='Video player based on MPlayer/mplayer2 (git version) including legacy audio filters'
 arch=('i686' 'x86_64')
@@ -53,6 +54,12 @@ build() {
         --enable-gpl3 # vo_opengl: enable nnedi
 
   ./waf build
+}
+
+check() {
+  cd "$srcdir/$_gitname"
+  printf "Displaying changes relative to the previous package release...\n"
+  git shortlog "$_gitchangerange" || true
 }
 
 package() {
