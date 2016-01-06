@@ -3,12 +3,12 @@
 
 pkgname=apache-spark
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="fast and general engine for large-scale data processing"
 arch=('any')
 url="http://spark.apache.org"
 license=('APACHE')
-depends=('maven>=3.3.3' 'java-environment>=6' 'scala' 'python2>=2.7')
+depends=('maven>=3.3.3' 'java-environment>=6' 'scala' 'python2>=2.7' 'hadoop>=2.6')
 optdepends=('python: PYSPARK_PYTHON=python3 pyspark'
             'ipython: PYSPARK_DRIVER_PYTHON=ipython pyspark; IPYTHON=1 pyspark')
 install=apache-spark.install
@@ -35,7 +35,7 @@ build() {
 
         dev/change-scala-version.sh 2.11
 
-        JAVA_HOME=/usr/lib/jvm/default-runtime ./make-distribution.sh -Pscala-2.11  -DskipTests -Dmaven.repo.local=/tmp -DautoVersionSubmodules=true -U -Djline.version=2.13 -Djline.groupid=jline
+        JAVA_HOME=/usr/lib/jvm/default-runtime ./make-distribution.sh -Pscala-2.11  -DskipTests -Dmaven.repo.local=/tmp -DautoVersionSubmodules=true -U -Djline.version=2.13 -Djline.groupid=jline -Pyarn -Phadoop-2.6
 }
 
 package() {
