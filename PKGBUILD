@@ -9,7 +9,7 @@ arch=(i686 x86_64)
 url="https://code.launchpad.net/~diwic/+junk/hda-jack-retask"
 license=(GPL2)
 depends=(gtk3 desktop-file-utils)
-makedepends=(bzr)
+makedepends=(bzr gcc)
 install=${pkgname}.install
 
 _bzrtrunk="https://code.launchpad.net/~diwic/+junk/hda-jack-retask"
