@@ -6,7 +6,7 @@
 #pkgname=(nss ca-certificates-mozilla)
 pkgname=nss-upwork
 pkgver=3.20.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Mozilla Network Security Services"
 arch=(i686 x86_64)
 url="http://www.mozilla.org/projects/security/pki/nss/"
@@ -101,9 +101,9 @@ package() {
   #install -t "$pkgdir/usr/bin" *util shlibsign signtool signver ssltap
 
   cd ../lib
-  install -D libnss3.so "${pkgdir}/usr/lib/libnss3.so.upwork"
-  install -D libsoftokn3.so "${pkgdir}/usr/lib/libsoftokn3.so.upwork"
-  install -D libssl3.so "${pkgdir}/usr/lib/libssl3.so.upwork"
+  install -D libnss3.so "${pkgdir}/usr/lib/libnss3-upwork.so"
+  install -D libsoftokn3.so "${pkgdir}/usr/lib/libsoftokn3-upwork.so"
+  install -D libssl3.so "${pkgdir}/usr/lib/libssl3-upwork.so"
   #install -t "$pkgdir/usr/lib" *.so
   #install -t "$pkgdir/usr/lib" -m644 libcrmf.a *.chk
 
