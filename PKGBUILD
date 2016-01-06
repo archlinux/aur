@@ -2,7 +2,7 @@
 
 pkgname=haka-git
 _pkgname=haka
-pkgver=0.3.0.2192.47374d2
+pkgver=0.3.0.2205.64202a8
 pkgrel=1
 pkgdesc="Collection of tools that allows capturing TCP/IP packets and filtering them based on Lua policy files"
 url="http://haka-security.org/"
@@ -14,10 +14,8 @@ options=('!emptydirs')
 backup=('etc/haka/haka.conf')
 provides=('haka')
 conflicts=('haka')
-source=(${pkgname}::git+https://github.com/haka-security/haka
-        fix-32bit-build.patch)
-sha512sums=('SKIP'
-            'd4b5db5fb3d04a4c2bb6d4c5833d34a21b3aac8f81eafa8305a0ca57a8bd24578a7baab05e485cb855d3ff0c48b3baa1627ed1db3553fda8c4b7de420d61a857')
+source=(${pkgname}::git+https://github.com/haka-security/haka)
+sha512sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
@@ -28,13 +26,11 @@ pkgver() {
 prepare() {
   cd ${pkgname}
 
-  patch -p1 < "${srcdir}/fix-32bit-build.patch"
   sed 's|sbin|bin|g' -i \
     CMakeLists.txt \
     src/hakactl/CMakeLists.txt \
     src/haka/CMakeLists.txt \
     external/luajit/luajit.cmake
-  sed 's|-Wall -Werror|-Wall|g' -i CMakeLists.txt
   sed 's|sphinx-build|sphinx-build2|g' -i build/FindSphinx.cmake
   # temporary html docs via doxygen as sphinx generator is broken
   sed -r 's|(GENERATE_XML[ ]+=) YES|\1 NO|g' -i doc/Doxyfile.in
