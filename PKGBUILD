@@ -2,7 +2,7 @@
 
 pkgname=samsung-printers
 pkgver=1.00.36
-pkgrel=1
+pkgrel=2
 pkgdesc="CUPS drivers for a variety of Samsung printers"
 arch=('i686' 'x86_64')
 url="http://www.samsung.com"
