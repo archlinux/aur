@@ -1,0 +1,21 @@
+From: Andrew Starr-Bochicchio <asb@debian.org>
+Subject: Update for changes in ConfigParser api.
+Bug: https://bugs.launchpad.net/kazam/+bug/1500083
+
+Index: kazam/kazam/backend/config.py
+===================================================================
+--- kazam.orig/kazam/backend/config.py	2013-03-13 20:25:20.917993000 -0400
++++ kazam/kazam/backend/config.py	2015-10-12 21:25:30.355157111 -0400
+@@ -98,9 +98,10 @@
+                     if d_key == key:
+                         return d_section["keys"][key]
+ 
+-    def get(self, section, key):
++    def get(self, section, key, raw=True, fallback=None):
+         try:
+-            return ConfigParser.get(self, section, key)
++            return super(KazamConfig, self).get(section,
++                         key, raw=True, fallback=fallback)
+         except NoSectionError:
+             default = self.find_default(section, key)
+             self.set(section, key, default)
