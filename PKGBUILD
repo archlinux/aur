@@ -7,7 +7,7 @@ set -u
 pkgname='mysqlconvertertool-git'
 pkgver=r7.0fc9af5
 pkgrel=1
-pkgdesc='A fork of the MySQL Converter Tool'
+pkgdesc='A fork of the MySQL Converter Tool (mysql to mysqli)'
 arch=('any')
 url='https://github.com/philip/MySQLConverterTool'
 license=('PHP')
