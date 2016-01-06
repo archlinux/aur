@@ -29,7 +29,7 @@ prepare() {
   gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" \
     --name 'Teeworlds' --categories 'Game;ArcadeGame'
   
-  # Unzip latest collection of the Skin Database from DDNet site (~ 1.5 MB)
+  # Unzip latest collection of the Skin Database from DDNet site (~ 5 MB)
   # See: http://ddnet.tw/skins/
   rm -fR database.dir
   unzip -q database.zip
