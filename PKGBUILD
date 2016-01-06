@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://www.send-anywhere.com"
 license=('custom:sendanywhere_eula')
 provides=('sendanywhere')
-makedepends=('binutils' 'tar')
+makedepends=('binutils' 'tar' 'xdg-utils' 'desktop-file-utils')
 install=$pkgname.install
 depends_i686=('lib32-gtk2' 'lib32-libsm')
 depends_x86_64=('gcc-libs>=4.6.3' 'glibc>=2.15' 'postgresql-libs' 'qt5-svg' 'gtk2')
@@ -30,7 +30,7 @@ _dpkg_x_alternative() {
    ar xv "$_filename"
    tar xJf data.tar.xz
    tar xzf control.tar.gz
-   mv usr opt md5sums "$pkgdir"
+   mv usr opt "$pkgdir"
 }
 
 package() {
@@ -39,17 +39,11 @@ package() {
 
    echo '==> Verify MD5 checksums'
    cd ${pkgdir}
-   md5sum -c md5sums
+   md5sum -c ${srcdir}/md5sums
 
    echo '==> Copying license.'
    install -Dm644 "$pkgdir/usr/share/doc/sendanywhere/copyright"\
        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-   echo '==> Symlinking icons.'
-   for size in 16 22 24 32 48 64 128 256;do
-       install -dm755 "$pkgdir"/usr/share/icons/hicolor/${size}x${size}/apps
-       ln -s /opt/estmob/"$pkgname"/"$pkgname"_icon_${size}.png \
-          "$pkgdir"/usr/share/icons/hicolor/${size}x${size}/apps/estmob-$pkgname.png
-   done
 }
 
