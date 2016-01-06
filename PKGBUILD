@@ -14,6 +14,7 @@ conflicts=('simpleorcapluginsystem')
 md5sums=('SKIP')
     
 package() {
- cd "${srcdir}/simple-orca-plugin-system"
-  install -d SOPS "$pkgdir/usr/share/SOPS"
+  cd "${srcdir}/simple-orca-plugin-system"
+  mkdir -p "$pkgdir/usr/share/"
+  cp -r SOPS "$pkgdir/usr/share/"
 }
