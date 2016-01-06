@@ -1,0 +1,17 @@
+pkgbase = farbfeld
+	pkgdesc = conversion tools for the suckless image format
+	pkgver = 1
+	pkgrel = 1
+	epoch = 1
+	url = http://suckless.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libjpeg-turbo
+	depends = libpng
+	conflicts = farbfeld-git
+	source = http://git.suckless.org/farbfeld/snapshot/farbfeld-1.tar.bz2
+	sha512sums = 9f39a1503b6e531b0f2dafa40c56fb3e7906cbca988319aac8435b1dc48ca7f1dbcf4e1c3386ac76b0fed6b5100e453aa42c16e69bd71e1d70f58cee4a9cab41
+
+pkgname = farbfeld
+
