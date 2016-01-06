@@ -1,7 +1,7 @@
 # Maintainer: Viech <viech unvanquished net>
 
 pkgname=unvanquished-data
-pkgver=0.46.0
+pkgver=0.47.0
 pkgrel=1
 
 _gitver="archlinux/${pkgver}-${pkgrel}"
