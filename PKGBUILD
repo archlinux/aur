@@ -17,7 +17,7 @@ md5sums=('e183919c73814bbf83beb944e17c5ec2')
 install="$pkgname.install"
 package() {
 	cd "$srcdir"
-	tar xvzf ut99436.tar.gz -C $pkgdir
+	tar xvzf ut99451.tar.gz -C $pkgdir
 	install -d 775 $pkgdir/opt/
 	install -d 755 $pkgdir/usr/
 }
