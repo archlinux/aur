@@ -3,7 +3,7 @@
 # Based on nvidia-beta: https://aur.archlinux.org/packages/nvidia-beta/
 
 pkgname=nvidia-beta-all
-pkgver=358.16
+pkgver=361.16
 pkgrel=1
 pkgdesc="NVIDIA drivers for all kernels on the system (beta)"
 arch=('i686' 'x86_64')
@@ -25,8 +25,8 @@ esac
 # Source
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/NVIDIA-Linux-x86_64-$pkgver-no-compat32.run")
-md5sums_i686=('5dfe11ca13548ca4813b10f3223d6014')
-md5sums_x86_64=('efb1e649c0e0d62e92774bbf2c124488')
+md5sums_i686=('cbb48d10306d6ca49423ed80e786598e')
+md5sums_x86_64=('13df10e88eb550b8d7f2e276bb5cfb57')
 
 # Auto-detect patches (e.g. nvidia-linux-4.1.patch)
 for _patch in $(ls "$startdir"/*.patch 2>/dev/null); do
@@ -96,7 +96,7 @@ package() {
                "$pkgdir"/$_path/nvidia-uvm.ko
     fi
 
-    # Install Nvidia Modeset module:
+    # Install Modeset module:
     #
     # "nvidia-modeset.ko does not provide any new user-visible functionality or interfaces to third party applications.
     #  However, in a later release, nvidia-modeset.ko will be used as a basis for the modesetting interface provided by
