@@ -1,0 +1,9 @@
+post_install() {
+  sed -i -re 's/^(hosts: .*files)(.*)$/\1 resolver\2/' /etc/nsswitch.conf
+  mkdir -p /etc/resolver
+}
+
+post_remove() {
+  rm -Rf /etc/resolver
+  sed -i -re 's/^(hosts: .*files)\ resolver(.*)$/\1\2/' /etc/nsswitch.conf
+}
