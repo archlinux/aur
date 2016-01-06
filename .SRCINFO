@@ -1,6 +1,6 @@
 pkgbase = sent-git
 	pkgdesc = Simple plain-text presentation tool
-	pkgver = r74.95af430
+	pkgver = r84.11f2c64
 	pkgrel = 1
 	url = http://tools.suckless.org/sent
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = sent-git
 	makedepends = git
 	depends = fontconfig
 	depends = libxft
-	depends = libpng
+	optdepends = farbfeld: PNG and JPEG support
 	conflicts = sent
 	source = sent-git::git://git.suckless.org/sent
 	sha256sums = SKIP
