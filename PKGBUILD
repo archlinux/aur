@@ -19,7 +19,7 @@ guzzle_sphinx_theme>=0.7.10,<0.8
 tox==1.4
 python-dateutil>=2.1,<3.0.0
 nose==1.3.0
-mock==1.0.1
+mock==1.3.0
 wheel==0.24.0
 docutils>=0.10
 behave==1.2.5
@@ -42,7 +42,7 @@ set -u
 _pyver="python"
 _pybase='botocore'
 pkgname="${_pyver}-${_pybase}-git"
-pkgver=1.3.15.r2499.g80fda09
+pkgver=1.3.16.r2509.g34cce58
 pkgrel=1
 pkgdesc='A low-level interface to a number of Amazon Web Services. This is the foundation for the AWS CLI as well as boto3'
 arch=('any')
@@ -55,7 +55,7 @@ _pydepends=( # See setup.py, README.rst, and requirements.txt for version depend
   "${_pyver}-tox>=1.4"        # COM == is possible because this is from a repository. Unfortunatley Arch isn"t the primary dev environment for botocore/aws so our packages are likely to be newer.
   "${_pyver}-dateutil"{">=2.1","<3.0.0"} # COM
   "${_pyver}-nose>=1.3.0"     # COM ==
-  "${_pyver}-mock>=1.0.1"     # COM ==
+  "${_pyver}-mock>=1.3.0"     # COM ==
   "${_pyver}-docutils>=0.10"  # COM
   "${_pyver}-six>=1.1.0"      # COM This is in the sources but I'm not sure where the version comes from.
   # requirements-docs.txt
@@ -67,7 +67,7 @@ depends=("${_pyver}" "${_pydepends[@]}")
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 options=('!strip')
 source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('640e1c7f6601f289def81c032983ba71b042a6224c16f4ceb9a51d05cd3dc375')
+sha256sums=('dff5bc01bbfee431515eb22fd51fef6af824aea4dca595a8e8fe6f196f994a08')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pybase}"
