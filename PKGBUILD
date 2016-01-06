@@ -9,6 +9,12 @@
 # rm /usr/lib/pkgconfig/glesv2.pc
 # rm /usr/lib/pkgconfig/egl.pc
 
+# You are gonna want to export the following vars in /etc/profile.d
+# if you intend to primarily use Wayland
+
+#export QT_QPA_PLATFORM=wayland
+#export QT_WAYLAND_CLIENT_BUFFER_INTEGRATION=brcm
+
 # Mount/copy this prepped rasp rootfs somewhere and set this path as the sysroot below
 # I use NFS personally: sudo mount qpii.local:/ /mnt/pi
 
