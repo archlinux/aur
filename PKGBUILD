@@ -2,9 +2,9 @@
 
 pkgname=rapidjson
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Rapidjson is an attempt to create the fastest JSON parser and generator."
-arch=('any')
+arch=(x86_64 i686)
 url="https://github.com/miloyip/rapidjson.git"
 license=(GPL)
 depends=()
