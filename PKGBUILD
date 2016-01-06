@@ -18,6 +18,7 @@ pkgver() {
 build() {
   cd caprice32
   make RELEASE=true
+  sed -i 's,rompath=.*,rompath=/usr/share/caprice32/rom/,' cap32.cfg
 }
 
 package() {
