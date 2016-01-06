@@ -9,6 +9,7 @@ arch=(any)
 url="https://rubygems.org/gems/rmail-sup"
 license=('unknown')
 depends=(ruby)
+conflicts=(ruby-rmail)
 source=(http://gems.rubyforge.org/gems/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
 md5sums=('6ff1575a8e84d68c7e589d03a39adf75')
