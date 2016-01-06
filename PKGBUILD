@@ -15,8 +15,6 @@ if [[ "$CARCH" == "i686" ]]; then
 package() {
   pushd "$srcdir/linux/cmdline"
   install -Dm755 "arcconf" "$pkgdir/usr/bin/arcconf"
-  install -Dm644 "License.txt" "$pkgdir/usr/share/doc/$pkgname/LICENSE"
-  install -Dm644 "README.TXT" "$pkgdir/usr/share/doc/$pkgname/README"
   popd
 }
 fi
@@ -25,8 +23,6 @@ if [[ "$CARCH" == "x86_64" ]]; then
 package() {
   pushd "$srcdir/linux_x64/cmdline"
   install -Dm755 "arcconf" "$pkgdir/usr/bin/arcconf"
-  install -Dm644 "License.txt" "$pkgdir/usr/share/doc/$pkgname/LICENSE"
-  install -Dm644 "README.TXT" "$pkgdir/usr/share/doc/$pkgname/README"
   popd
 }
 fi
