@@ -3,7 +3,7 @@
 # Contributor: erm67 <erm67@yahoo.it>
 
 pkgname=cairo-dock-git
-pkgver=3.4.1.r1.9e74374
+pkgver=3.4.1.r3.600b2ef
 pkgrel=1
 pkgdesc='Light eye-candy fully themable animated dock'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url='http://glx-dock.org/'
 license=('GPL')
 depends=('curl' 'dbus-glib' 'glu' 'gtk3' 'librsvg')
 makedepends=('cmake' 'git')
-optdepends=('cairo-dock-plugins-git: Plugins for Cairo-Dock')
+optdepends=('cairo-dock-plug-ins-git: Plugins for Cairo-Dock')
 provides=('cairo-dock')
 conflicts=('cairo-dock')
 source=("cairo-dock::git+https://github.com/Cairo-Dock/cairo-dock-core.git")
