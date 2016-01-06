@@ -5,7 +5,7 @@ _pkgbase=poppler
 pkgbase=poppler-lcdfilter
 pkgname=('poppler-lcdfilter' 'poppler-glib-lcdfilter')
 pkgver=0.39.0
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 license=('GPL')
 makedepends=('libjpeg' 'gcc-libs' 'cairo' 'fontconfig' 'openjpeg' 'gtk2' 'qt4' 'pkgconfig' 'lcms2' 'gobject-introspection' 'icu' 'qt5-base' 'git' 'python2')
@@ -13,14 +13,14 @@ options=('!emptydirs')
 url="http://poppler.freedesktop.org/"
 source=(http://poppler.freedesktop.org/${_pkgbase}-${pkgver}.tar.xz
         git://anongit.freedesktop.org/poppler/test
-        subpixel.patch)
+        poppler-subpixel.patch)
 md5sums=('5100960c61b932430b5d74068d71f530'
          'SKIP'
-         '643f0ea557725dba8119897d493e36b2')
+         '561dffc866d4e3ff437a1efcdc6e600e')
 
 build() {
   cd ${_pkgbase}-${pkgver}
-  patch -Np1 -i ../subpixel.patch
+  patch -Np1 -i ../poppler-subpixel.patch
   ./configure --prefix=/usr --sysconfdir=/etc \
       --localstatedir=/var --disable-static \
       --enable-cairo-output \

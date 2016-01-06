@@ -106,15 +106,14 @@ index 1d611b5..f4ffb08 100644
    if (cairo_font_face_set_user_data (l->font_face,
  				     &_ft_cairo_key,
 diff --git a/poppler/Gfx.cc b/poppler/Gfx.cc
-index 577c482..be2f11a 100644
+index 577c482..7d66588 100644
 --- a/poppler/Gfx.cc
 +++ b/poppler/Gfx.cc
-@@ -4684,6 +4684,62 @@ void Gfx::doImage(Object *ref, Stream *str, GBool inlineImg) {
+@@ -4684,6 +4684,60 @@ void Gfx::doImage(Object *ref, Stream *str, GBool inlineImg) {
    error(errSyntaxError, getPos(), "Bad image parameters");
  }
  
 +GBool Gfx::checkNormalBlendModeOnly(Object *str) {
-+  printf("check blender mode start\n");
 +  char *cmd;
 +  Object obj;
 +  Object args[maxArgs];
@@ -136,7 +135,6 @@ index 577c482..be2f11a 100644
 +        if (res->lookupGState(args[0].getName(), &obj1)) {
 +          if (!obj1.dictLookup("BM", &obj2)->isNull()) {
 +            if (state->parseBlendMode(&obj2, &mode)) {
-+              printf("check blend mode: %d\n", mode);
 +              onlyNormalBlendMode &= (mode == gfxBlendNormal);
 +            }
 +          }
