@@ -1,0 +1,11 @@
+post_install() {
+
+echo "To change language to English, Spanish or French"
+echo "use the special script langut in /opt/games/ut/"
+echo "Then... Enjoy your game :)"
+}
+
+post_upgrade() {
+echo "Have a nice game"
+}
+
