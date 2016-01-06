@@ -2,10 +2,10 @@
 # Contributor: Grey Christoforo <grey@christoforo.net>
 pkgname=lib32-tclkit
 pkgver=8.6.4
-_tcl_tag=potential_incompatibility
+_tcl_tag=core_8_6_4
 _tk_tag=core_8_6_4
 _kit_commit=c21eeb1e379bd5acb5b304f0784877b8e8dd31ca
-pkgrel=3
+pkgrel=4
 pkgdesc="single-file executable that provides a complete Tcl and Tk runtime (32 bits version)"
 arch=('x86_64')
 url="https://github.com/patthoyts/kitgen"
@@ -21,8 +21,8 @@ source=("tclkit.tar.gz::https://github.com/patthoyts/kitgen/archive/${_kit_commi
 	"tcl.tar.gz::https://github.com/tcltk/tcl/archive/${_tcl_tag}.tar.gz"
 	"kitgen-cflags-quoting.patch")
 md5sums=('2053997a397309fa10d0b62a3df114ae'
-         '25c2e90900e44ea851f891cbb232ca2c'
-         'd442eacfbf4932a0a956ecab5c362af1'
+         '217158b34ce82baf8f9aaf5f9e584ad2'
+         '7bb7ccb67c3d3e37b3799cefd5289598'
          '36c54854ce1992944eed7671f8742bad')
 
 prepare() {
