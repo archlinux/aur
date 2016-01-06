@@ -2,11 +2,6 @@
 _user=det            # User
 _home=/home/$_user/  # $HOME
 
-# ## Install for Google Chromes/Chromiums
-# _chrome() {
-#     bsdtar -xf /usr/share/lastpass/lpchrome_linux_*.crx -C 
-# }
-
 ## Install for Mozilla Firefoxes
 _firefox() {
     echo -e "\nInstalling Mozilla Firefox leftovers..."
@@ -20,7 +15,8 @@ _firefox() {
             bsdtar -xf /usr/share/lastpass/lp_linux_*.xpi -C $_ff_profile/extensions/support@lastpass.com/
 
             # Enable auto-installation through 'extensions.autoDisableScopes'
-            echo "user_pref(\"extensions.autoDisableScopes\", 10);" >> $_ff_profile/prefs.js
+            echo 'user_pref("extensions.autoDisableScopes", 10);' >> $_ff_profile/prefs.js
+            echo 'user_pref("xpinstall.signatures.required", false);' >> $_ff_profile/prefs.js
 
             # Set the correct ownerships
             chown $_user $_ff_profile/extensions/
@@ -38,6 +34,8 @@ _firefox() {
         # Enable the auto-installation
         echo "user_pref(\"extensions.autoDisableScopes\", 10);" >> \
               $_home/.mozilla/firefox/lastpass.default/prefs.js
+        echo 'user_pref("xpinstall.signatures.required", false);' >> \
+              $_home/.mozilla/firefox/lastpass.default/prefs.js
 
         # Set the correct ownerships
         chown $_user -R $_home/.mozilla/
@@ -45,8 +43,6 @@ _firefox() {
 }
 
 post_install() {
-#     _chrome
-
     _firefox
 
     # Create the settings dir

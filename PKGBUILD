@@ -1,16 +1,16 @@
 # Maintainer: Det <nimetonmaili g-mail>
 
 pkgname=lastpass
-pkgver=3.2.16
-_universal=$pkgver-4   # Version of the universal installer: https://lastpass.com/misc_download2.php
-_chromver=3.2.41-1     # The actual extensions' versions
-_ffver=3.2.40-1
-pkgrel=10
+pkgver=4.0.0
+_universal=$pkgver-1  # Version of the universal installer: https://lastpass.com/misc_download2.php
+_chromver=4.0.0-1     # The actual extensions' versions
+_ffver=3.2.42-1
+pkgrel=1
 pkgdesc="The Universal LastPass installer for Firefox, Chrome, and Opera"
 arch=('i686' 'x86_64')
 url="https://lastpass.com"
 license=('custom')
-depends=('libxcb')
+depends=('libx11' 'libxau' 'libxcb' 'libxdmcp')
 optdepends=('chromium: for Chromium'
             'chromium-dev: for Chromium (Dev Channel) (AUR)'
             'firefox: for Mozilla Firefox'
@@ -32,11 +32,11 @@ source=(# Chrome
         "lp_linux_$_ffver.xpi::$url/lp_linux.xpi"
         'profiles.ini')
 noextract=("lp_linux_$_ffver.xpi")
-md5sums=('6c27517e202e62251e5b9c118f4ba53f'
+md5sums=('0fab4037becea4f1482b42a15182cddd'
          '009f2d1a3ac25eb7a3a18f5ad0fc4f53'
          '151251e415bccdffc1dc0df592d1d7e1'
          '9af777d2eea8e67ad332235718a7653d'
-         'c5e84c0ccf671ed685eae258ee9617cf'
+         '632703e30bc26865f15f87690e516105'
          'd0f555a644484baccf649f7969794ece')
 
 # 64-bit?
