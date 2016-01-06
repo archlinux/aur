@@ -4,12 +4,12 @@
 
 _pkgname=fdroidserver
 pkgname=${_pkgname}-git
-pkgver=r3183.a8d2c0a
+pkgver=r3497.bd29fce
 pkgrel=1
 pkgdesc="F-Droid repository management tools"
 url="https://gitlab.com/fdroid/$_pkgname"
 license=('GPL3')
-depends=('python2' 'python2-pyasn1' 'python2-pyasn1-modules' 'python2-magic' 'python2-requests')
+depends=('python2' 'python2-pyasn1' 'python2-pyasn1-modules' 'python2-magic' 'python2-requests' 'python2-yaml')
 makedepends=('git' 'python2-setuptools' 'python2-pillow' 'python2-paramiko' 'java-environment')
 optdepends=(
      'android-sdk: Build apps from source'
