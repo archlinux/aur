@@ -4,7 +4,7 @@ pkgname=upwork
 pkgver=4.0.109.0
 _rawver=${pkgver//./_}
 _hashver="5dd4be27f24afbda38b590"
-pkgrel=2
+pkgrel=3
 pkgdesc="Team App (ex. oDesk)"
 arch=('i686' 'x86_64')
 url="https://www.upwork.com/downloads/new-team-application"
@@ -32,7 +32,7 @@ package() {
     ln -s /usr/lib/libcrypto.so "${pkgdir}/usr/share/upwork/libcrypto.so.6"
     ln -s /usr/lib/libudev.so "${pkgdir}/usr/share/upwork/libudev.so.0"
 
-    ln -s /usr/lib/libnss3.so.upwork "${pkgdir}/usr/share/upwork/libnss3.so"
-    ln -s /usr/lib/libsoftokn3.so.upwork "${pkgdir}/usr/share/upwork/libsoftokn3.so"
-    ln -s /usr/lib/libssl3.so.upwork "${pkgdir}/usr/share/upwork/libssl.so.6"
+    ln -s /usr/lib/libnss3-upwork.so "${pkgdir}/usr/share/upwork/libnss3.so"
+    ln -s /usr/lib/libsoftokn3-upwork.so "${pkgdir}/usr/share/upwork/libsoftokn3.so"
+    ln -s /usr/lib/libssl3-upwork.so "${pkgdir}/usr/share/upwork/libssl.so.6"
 }
