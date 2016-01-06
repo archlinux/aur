@@ -7,8 +7,8 @@
 # https://www.blackmagicdesign.com/support
 
 pkgname=blackmagic-decklink-sdk
-pkgver=10.5.3
-_cintelsdkver="$pkgver"a6
+pkgver=10.5.4
+_cintelsdkver="$pkgver"a4
 pkgrel=1
 pkgdesc="BlackMagic's DeckLink SDK"
 arch=('any')
@@ -18,7 +18,7 @@ provides=('decklink-sdk')
 conflicts=('decklink-sdk')
 source=("file://Blackmagic_DeckLink_SDK_${pkgver}.zip"
         "LICENSE")
-sha256sums=('49875e0b0b82a18c3b54ee144546c0df9d9dff6d36ec6d2a0d73cecbbe252984'
+sha256sums=('d734024c16593f335c3a6d7caa442b27c554425ce9d407a6fbfd9cc6badd75f8'
             'cc90e53ac2ef2442d2d0adfe9214119baa31ec080e75c3b087365efdbccc23df')
 
 package() {
