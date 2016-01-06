@@ -1,0 +1,1203 @@
+From cccb20479d97e0853fb7eec14c46b492568e6075 Mon Sep 17 00:00:00 2001
+From: stevijo <stevijo.mayer@googlemail.com>
+Date: Sun, 3 Jan 2016 16:16:33 +0100
+Subject: [PATCH 1/1] arch changes
+
+---
+ config/Makefile                         |   4 +-
+ core/adapter.c                          |   2 +-
+ core/calibration.c                      |   6 +-
+ core/config.c                           |  10 +-
+ core/display.c                          |   2 +-
+ core/include/adapter.h                  |   2 +-
+ core/include/bluetooth/mgmt.h           | 772 ++++++++++++++++++++++++++++++++
+ core/include/calibration.h              |   6 +-
+ core/include/config.h                   |  10 +-
+ fpsconfig/Makefile                      |   4 +-
+ launcher/Makefile                       |   8 +-
+ shared/configupdater/configupdater.cpp  |  15 +-
+ shared/controller/include/controller2.h |  10 +-
+ shared/controller/src/controller.c      |  10 +-
+ shared/event/src/linux/timer.c          |   2 +-
+ utils/Makefile                          |   5 +-
+ 16 files changed, 821 insertions(+), 47 deletions(-)
+ create mode 100644 core/include/bluetooth/mgmt.h
+
+diff --git a/config/Makefile b/config/Makefile
+index 6f8c759..2aa9506 100644
+--- a/config/Makefile
++++ b/config/Makefile
+@@ -8,11 +8,11 @@ endif
+ NAME=$(shell basename $(shell pwd))
+ 
+ CPPFLAGS += -I../shared/configeditor/include -I../shared/controller/include
+-CPPFLAGS += -Wno-unused-local-typedefs `wx-config --cflags` -Winvalid-pch -include wx_pch.h -DWX_PRECOMP `curl-config --cflags`
++CPPFLAGS += -Wno-unused-local-typedefs `wx-config-2.8 --cflags` -Winvalid-pch -include wx_pch.h -DWX_PRECOMP `curl-config --cflags`
+ LDLIBS := ../shared/configeditor/configeditor.a \
+       $(LDLIBS) \
+       ../shared/updater/updater.a \
+-      `wx-config --libs` \
++      `wx-config-2.8 --libs` \
+       `curl-config --libs` \
+       -lxml2 \
+       -lstdc++ \
+diff --git a/core/adapter.c b/core/adapter.c
+index e16daef..7a0fd9b 100644
+--- a/core/adapter.c
++++ b/core/adapter.c
+@@ -119,7 +119,7 @@ int adapter_set_port(unsigned char index, char* portname)
+   return 0;
+ }
+ 
+-inline s_adapter* adapter_get(unsigned char index)
++s_adapter* adapter_get(unsigned char index)
+ {
+   if(index < MAX_CONTROLLERS)
+   {
+diff --git a/core/calibration.c b/core/calibration.c
+index fcf7d80..08cb5d0 100644
+--- a/core/calibration.c
++++ b/core/calibration.c
+@@ -44,7 +44,7 @@ s_mouse_cal mouse_cal[MAX_DEVICES][MAX_CONFIGURATIONS] = {};
+ 
+ int mouse_controller[MAX_DEVICES];
+ 
+-inline int cal_get_controller(int mouse)
++int cal_get_controller(int mouse)
+ {
+   return mouse_controller[mouse];
+ }
+@@ -59,12 +59,12 @@ void cal_init()
+   memset(mouse_cal, 0x00, sizeof(mouse_cal));
+ }
+ 
+-inline s_mouse_cal* cal_get_mouse(int mouse, int conf)
++s_mouse_cal* cal_get_mouse(int mouse, int conf)
+ {
+   return &(mouse_cal[mouse][conf]);
+ }
+ 
+-inline void cal_set_mouse(s_config_entry* entry)
++void cal_set_mouse(s_config_entry* entry)
+ {
+   mouse_cal[entry->device.id][entry->config_id].options = entry->params.mouse_options;
+ }
+diff --git a/core/config.c b/core/config.c
+index bf3cde3..568c4bb 100644
+--- a/core/config.c
++++ b/core/config.c
+@@ -139,7 +139,7 @@ inline s_mapper_table* cfg_get_keyboard_buttons(int device, int controller, int
+   return &(keyboard_buttons[device][controller][config]);
+ }
+ 
+-inline void cfg_set_trigger(s_config_entry* entry)
++void cfg_set_trigger(s_config_entry* entry)
+ {
+   cfg_controllers[entry->controller_id].profiles[entry->config_id].trigger.event.button = entry->event.id;
+   cfg_controllers[entry->controller_id].profiles[entry->config_id].trigger.event.device_id = entry->device.id;
+@@ -148,12 +148,12 @@ inline void cfg_set_trigger(s_config_entry* entry)
+   cfg_controllers[entry->controller_id].profiles[entry->config_id].trigger.delay = entry->params.trigger.delay;
+ }
+ 
+-inline void cfg_set_controller_dpi(int controller, unsigned int dpi)
++void cfg_set_controller_dpi(int controller, unsigned int dpi)
+ {
+   controller_dpi[controller] = dpi;
+ }
+ 
+-inline void cfg_set_axis_intensity(s_config_entry* entry, int axis, s_intensity* intensity)
++void cfg_set_axis_intensity(s_config_entry* entry, int axis, s_intensity* intensity)
+ {
+   s_intensity * target = axis_intensity[entry->controller_id][entry->config_id] + axis;
+ 
+@@ -293,7 +293,7 @@ static struct
+   int elapsed; //the time elapsed since the last GE_JoystickSetRumble() call
+ } joystick_rumble[MAX_DEVICES] = {};
+ 
+-inline void cfg_process_rumble_event(GE_Event* event)
++void cfg_process_rumble_event(GE_Event* event)
+ {
+   joystick_rumble[event->jrumble.which].weak = event->jrumble.weak;
+   joystick_rumble[event->jrumble.which].strong = event->jrumble.strong;
+@@ -346,7 +346,7 @@ int cfg_is_joystick_used(int id)
+   return used;
+ }
+ 
+-inline s_mouse_control* cfg_get_mouse_control(int id)
++s_mouse_control* cfg_get_mouse_control(int id)
+ {
+   if(id >= 0)
+   {
+diff --git a/core/display.c b/core/display.c
+index 387f558..e3993b5 100644
+--- a/core/display.c
++++ b/core/display.c
+@@ -8,7 +8,7 @@
+ #ifdef WIN32
+ #include <cursesw.h>
+ #else
+-#include <ncursesw/ncurses.h>
++#include <ncurses.h>
+ #endif
+ 
+ #include "display.h"
+diff --git a/core/include/adapter.h b/core/include/adapter.h
+index 6b797a1..2271821 100644
+--- a/core/include/adapter.h
++++ b/core/include/adapter.h
+@@ -73,7 +73,7 @@ int adapter_start();
+ int adapter_send();
+ void adapter_clean();
+ 
+-inline s_adapter* adapter_get(unsigned char index);
++s_adapter* adapter_get(unsigned char index);
+ int adapter_set_port(unsigned char index, char* portname);
+ 
+ void adapter_set_device(int controller, e_device_type device_type, int device_id);
+diff --git a/core/include/bluetooth/mgmt.h b/core/include/bluetooth/mgmt.h
+new file mode 100644
+index 0000000..46766a9
+--- /dev/null
++++ b/core/include/bluetooth/mgmt.h
+@@ -0,0 +1,772 @@
++/*
++ *  BlueZ - Bluetooth protocol stack for Linux
++ *
++ *  Copyright (C) 2010  Nokia Corporation
++ *  Copyright (C) 2010  Marcel Holtmann <marcel@holtmann.org>
++ *
++ *
++ *  This program is free software; you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation; either version 2 of the License, or
++ *  (at your option) any later version.
++ *
++ *  This program is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with this program; if not, write to the Free Software
++ *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
++ *
++ */
++
++#ifndef __packed
++#define __packed __attribute__((packed))
++#endif
++
++#define MGMT_INDEX_NONE			0xFFFF
++
++#define MGMT_STATUS_SUCCESS		0x00
++#define MGMT_STATUS_UNKNOWN_COMMAND	0x01
++#define MGMT_STATUS_NOT_CONNECTED	0x02
++#define MGMT_STATUS_FAILED		0x03
++#define MGMT_STATUS_CONNECT_FAILED	0x04
++#define MGMT_STATUS_AUTH_FAILED		0x05
++#define MGMT_STATUS_NOT_PAIRED		0x06
++#define MGMT_STATUS_NO_RESOURCES	0x07
++#define MGMT_STATUS_TIMEOUT		0x08
++#define MGMT_STATUS_ALREADY_CONNECTED	0x09
++#define MGMT_STATUS_BUSY		0x0a
++#define MGMT_STATUS_REJECTED		0x0b
++#define MGMT_STATUS_NOT_SUPPORTED	0x0c
++#define MGMT_STATUS_INVALID_PARAMS	0x0d
++#define MGMT_STATUS_DISCONNECTED	0x0e
++#define MGMT_STATUS_NOT_POWERED		0x0f
++#define MGMT_STATUS_CANCELLED		0x10
++#define MGMT_STATUS_INVALID_INDEX	0x11
++#define MGMT_STATUS_RFKILLED		0x12
++
++struct mgmt_hdr {
++	uint16_t opcode;
++	uint16_t index;
++	uint16_t len;
++} __packed;
++#define MGMT_HDR_SIZE	6
++
++struct mgmt_addr_info {
++	bdaddr_t bdaddr;
++	uint8_t type;
++} __packed;
++
++#define MGMT_OP_READ_VERSION		0x0001
++struct mgmt_rp_read_version {
++	uint8_t version;
++	uint16_t revision;
++} __packed;
++
++#define MGMT_OP_READ_COMMANDS		0x0002
++struct mgmt_rp_read_commands {
++	uint16_t num_commands;
++	uint16_t num_events;
++	uint16_t opcodes[0];
++} __packed;
++
++#define MGMT_OP_READ_INDEX_LIST		0x0003
++struct mgmt_rp_read_index_list {
++	uint16_t num_controllers;
++	uint16_t index[0];
++} __packed;
++
++/* Reserve one extra byte for names in management messages so that they
++ * are always guaranteed to be nul-terminated */
++#define MGMT_MAX_NAME_LENGTH		(248 + 1)
++#define MGMT_MAX_SHORT_NAME_LENGTH	(10 + 1)
++
++#define MGMT_SETTING_POWERED		0x00000001
++#define MGMT_SETTING_CONNECTABLE	0x00000002
++#define MGMT_SETTING_FAST_CONNECTABLE	0x00000004
++#define MGMT_SETTING_DISCOVERABLE	0x00000008
++#define MGMT_SETTING_BONDABLE		0x00000010
++#define MGMT_SETTING_LINK_SECURITY	0x00000020
++#define MGMT_SETTING_SSP		0x00000040
++#define MGMT_SETTING_BREDR		0x00000080
++#define MGMT_SETTING_HS			0x00000100
++#define MGMT_SETTING_LE			0x00000200
++#define MGMT_SETTING_ADVERTISING	0x00000400
++#define MGMT_SETTING_SECURE_CONN	0x00000800
++#define MGMT_SETTING_DEBUG_KEYS		0x00001000
++#define MGMT_SETTING_PRIVACY		0x00002000
++#define MGMT_SETTING_CONFIGURATION	0x00004000
++
++#define MGMT_OP_READ_INFO		0x0004
++struct mgmt_rp_read_info {
++	bdaddr_t bdaddr;
++	uint8_t version;
++	uint16_t manufacturer;
++	uint32_t supported_settings;
++	uint32_t current_settings;
++	uint8_t dev_class[3];
++	uint8_t name[MGMT_MAX_NAME_LENGTH];
++	uint8_t short_name[MGMT_MAX_SHORT_NAME_LENGTH];
++} __packed;
++
++struct mgmt_mode {
++	uint8_t val;
++} __packed;
++
++struct mgmt_cod {
++	uint8_t val[3];
++} __packed;
++
++#define MGMT_OP_SET_POWERED		0x0005
++
++#define MGMT_OP_SET_DISCOVERABLE	0x0006
++struct mgmt_cp_set_discoverable {
++	uint8_t val;
++	uint16_t timeout;
++} __packed;
++
++#define MGMT_OP_SET_CONNECTABLE		0x0007
++
++#define MGMT_OP_SET_FAST_CONNECTABLE	0x0008
++
++#define MGMT_OP_SET_BONDABLE		0x0009
++
++#define MGMT_OP_SET_LINK_SECURITY	0x000A
++
++#define MGMT_OP_SET_SSP			0x000B
++
++#define MGMT_OP_SET_HS			0x000C
++
++#define MGMT_OP_SET_LE			0x000D
++
++#define MGMT_OP_SET_DEV_CLASS		0x000E
++struct mgmt_cp_set_dev_class {
++	uint8_t major;
++	uint8_t minor;
++} __packed;
++
++#define MGMT_OP_SET_LOCAL_NAME		0x000F
++struct mgmt_cp_set_local_name {
++	uint8_t name[MGMT_MAX_NAME_LENGTH];
++	uint8_t short_name[MGMT_MAX_SHORT_NAME_LENGTH];
++} __packed;
++
++#define MGMT_OP_ADD_UUID		0x0010
++struct mgmt_cp_add_uuid {
++	uint8_t uuid[16];
++	uint8_t svc_hint;
++} __packed;
++
++#define MGMT_OP_REMOVE_UUID		0x0011
++struct mgmt_cp_remove_uuid {
++	uint8_t uuid[16];
++} __packed;
++
++struct mgmt_link_key_info {
++	struct mgmt_addr_info addr;
++	uint8_t type;
++	uint8_t val[16];
++	uint8_t pin_len;
++} __packed;
++
++#define MGMT_OP_LOAD_LINK_KEYS		0x0012
++struct mgmt_cp_load_link_keys {
++	uint8_t debug_keys;
++	uint16_t key_count;
++	struct mgmt_link_key_info keys[0];
++} __packed;
++
++struct mgmt_ltk_info {
++	struct mgmt_addr_info addr;
++	uint8_t type;
++	uint8_t master;
++	uint8_t enc_size;
++	uint16_t ediv;
++	uint64_t rand;
++	uint8_t val[16];
++} __packed;
++
++#define MGMT_OP_LOAD_LONG_TERM_KEYS	0x0013
++struct mgmt_cp_load_long_term_keys {
++	uint16_t key_count;
++	struct mgmt_ltk_info keys[0];
++} __packed;
++
++#define MGMT_OP_DISCONNECT		0x0014
++struct mgmt_cp_disconnect {
++	struct mgmt_addr_info addr;
++} __packed;
++struct mgmt_rp_disconnect {
++	struct mgmt_addr_info addr;
++} __packed;
++
++#define MGMT_OP_GET_CONNECTIONS		0x0015
++struct mgmt_rp_get_connections {
++	uint16_t conn_count;
++	struct mgmt_addr_info addr[0];
++} __packed;
++
++#define MGMT_OP_PIN_CODE_REPLY		0x0016
++struct mgmt_cp_pin_code_reply {
++	struct mgmt_addr_info addr;
++	uint8_t pin_len;
++	uint8_t pin_code[16];
++} __packed;
++
++#define MGMT_OP_PIN_CODE_NEG_REPLY	0x0017
++struct mgmt_cp_pin_code_neg_reply {
++	struct mgmt_addr_info addr;
++} __packed;
++
++#define MGMT_OP_SET_IO_CAPABILITY	0x0018
++struct mgmt_cp_set_io_capability {
++	uint8_t io_capability;
++} __packed;
++
++#define MGMT_OP_PAIR_DEVICE		0x0019
++struct mgmt_cp_pair_device {
++	struct mgmt_addr_info addr;
++	uint8_t io_cap;
++} __packed;
++struct mgmt_rp_pair_device {
++	struct mgmt_addr_info addr;
++} __packed;
++
++#define MGMT_OP_CANCEL_PAIR_DEVICE	0x001A
++
++#define MGMT_OP_UNPAIR_DEVICE		0x001B
++struct mgmt_cp_unpair_device {
++	struct mgmt_addr_info addr;
++	uint8_t disconnect;
++} __packed;
++struct mgmt_rp_unpair_device {
++	struct mgmt_addr_info addr;
++} __packed;
++
++#define MGMT_OP_USER_CONFIRM_REPLY	0x001C
++struct mgmt_cp_user_confirm_reply {
++	struct mgmt_addr_info addr;
++} __packed;
++struct mgmt_rp_user_confirm_reply {
++	struct mgmt_addr_info addr;
++} __packed;
++
++#define MGMT_OP_USER_CONFIRM_NEG_REPLY	0x001D
++
++#define MGMT_OP_USER_PASSKEY_REPLY	0x001E
++struct mgmt_cp_user_passkey_reply {
++	struct mgmt_addr_info addr;
++	uint32_t passkey;
++} __packed;
++struct mgmt_rp_user_passkey_reply {
++	struct mgmt_addr_info addr;
++} __packed;
++
++#define MGMT_OP_USER_PASSKEY_NEG_REPLY	0x001F
++struct mgmt_cp_user_passkey_neg_reply {
++	struct mgmt_addr_info addr;
++} __packed;
++
++#define MGMT_OP_READ_LOCAL_OOB_DATA	0x0020
++struct mgmt_rp_read_local_oob_data {
++	uint8_t hash[16];
++	uint8_t randomizer[16];
++} __packed;
++struct mgmt_rp_read_local_oob_ext_data {
++	uint8_t hash192[16];
++	uint8_t randomizer192[16];
++	uint8_t hash256[16];
++	uint8_t randomizer256[16];
++} __packed;
++
++#define MGMT_OP_ADD_REMOTE_OOB_DATA	0x0021
++struct mgmt_cp_add_remote_oob_data {
++	struct mgmt_addr_info addr;
++	uint8_t hash[16];
++	uint8_t randomizer[16];
++} __packed;
++
++#define MGMT_OP_REMOVE_REMOTE_OOB_DATA	0x0022
++struct mgmt_cp_remove_remote_oob_data {
++	struct mgmt_addr_info addr;
++} __packed;
++
++#define MGMT_OP_START_DISCOVERY		0x0023
++struct mgmt_cp_start_discovery {
++	uint8_t type;
++} __packed;
++
++#define MGMT_OP_STOP_DISCOVERY		0x0024
++struct mgmt_cp_stop_discovery {
++	uint8_t type;
++} __packed;
++
++#define MGMT_OP_CONFIRM_NAME		0x0025
++struct mgmt_cp_confirm_name {
++	struct mgmt_addr_info addr;
++	uint8_t name_known;
++} __packed;
++struct mgmt_rp_confirm_name {
++	struct mgmt_addr_info addr;
++} __packed;
++
++#define MGMT_OP_BLOCK_DEVICE		0x0026
++struct mgmt_cp_block_device {
++	struct mgmt_addr_info addr;
++} __packed;
++
++#define MGMT_OP_UNBLOCK_DEVICE		0x0027
++struct mgmt_cp_unblock_device {
++	struct mgmt_addr_info addr;
++} __packed;
++
++#define MGMT_OP_SET_DEVICE_ID		0x0028
++struct mgmt_cp_set_device_id {
++	uint16_t source;
++	uint16_t vendor;
++	uint16_t product;
++	uint16_t version;
++} __packed;
++
++#define MGMT_OP_SET_ADVERTISING		0x0029
++
++#define MGMT_OP_SET_BREDR		0x002A
++
++#define MGMT_OP_SET_STATIC_ADDRESS	0x002B
++struct mgmt_cp_set_static_address {
++	bdaddr_t bdaddr;
++} __packed;
++
++#define MGMT_OP_SET_SCAN_PARAMS		0x002C
++struct mgmt_cp_set_scan_params {
++	uint16_t interval;
++	uint16_t window;
++} __packed;
++
++#define MGMT_OP_SET_SECURE_CONN		0x002D
++
++#define MGMT_OP_SET_DEBUG_KEYS		0x002E
++
++struct mgmt_irk_info {
++	struct mgmt_addr_info addr;
++	uint8_t val[16];
++} __packed;
++
++#define MGMT_OP_SET_PRIVACY		0x002F
++struct mgmt_cp_set_privacy {
++	uint8_t privacy;
++	uint8_t irk[16];
++} __packed;
++
++#define MGMT_OP_LOAD_IRKS		0x0030
++struct mgmt_cp_load_irks {
++	uint16_t irk_count;
++	struct mgmt_irk_info irks[0];
++} __packed;
++
++#define MGMT_OP_GET_CONN_INFO		0x0031
++struct mgmt_cp_get_conn_info {
++	struct mgmt_addr_info addr;
++} __packed;
++struct mgmt_rp_get_conn_info {
++	struct mgmt_addr_info addr;
++	int8_t rssi;
++	int8_t tx_power;
++	int8_t max_tx_power;
++} __packed;
++
++#define MGMT_OP_GET_CLOCK_INFO		0x0032
++struct mgmt_cp_get_clock_info {
++	struct mgmt_addr_info addr;
++} __packed;
++struct mgmt_rp_get_clock_info {
++	struct mgmt_addr_info addr;
++	uint32_t  local_clock;
++	uint32_t  piconet_clock;
++	uint16_t  accuracy;
++} __packed;
++
++#define MGMT_OP_ADD_DEVICE		0x0033
++struct mgmt_cp_add_device {
++	struct mgmt_addr_info addr;
++	uint8_t action;
++} __packed;
++struct mgmt_rp_add_device {
++	struct mgmt_addr_info addr;
++} __packed;
++
++#define MGMT_OP_REMOVE_DEVICE		0x0034
++struct mgmt_cp_remove_device {
++	struct mgmt_addr_info addr;
++} __packed;
++struct mgmt_rp_remove_device {
++	struct mgmt_addr_info addr;
++} __packed;
++
++struct mgmt_conn_param {
++	struct mgmt_addr_info addr;
++	uint16_t min_interval;
++	uint16_t max_interval;
++	uint16_t latency;
++	uint16_t timeout;
++} __packed;
++
++#define MGMT_OP_LOAD_CONN_PARAM		0x0035
++struct mgmt_cp_load_conn_param {
++	uint16_t param_count;
++	struct mgmt_conn_param params[0];
++} __packed;
++
++#define MGMT_OP_READ_UNCONF_INDEX_LIST	0x0036
++struct mgmt_rp_read_unconf_index_list {
++	uint16_t num_controllers;
++	uint16_t index[0];
++} __packed;
++
++#define MGMT_OPTION_EXTERNAL_CONFIG	0x00000001
++#define MGMT_OPTION_PUBLIC_ADDRESS	0x00000002
++
++#define MGMT_OP_READ_CONFIG_INFO	0x0037
++struct mgmt_rp_read_config_info {
++	uint16_t manufacturer;
++	uint32_t supported_options;
++	uint32_t missing_options;
++} __packed;
++
++#define MGMT_OP_SET_EXTERNAL_CONFIG	0x0038
++struct mgmt_cp_set_external_config {
++	uint8_t config;
++} __packed;
++
++#define MGMT_OP_SET_PUBLIC_ADDRESS	0x0039
++struct mgmt_cp_set_public_address {
++	bdaddr_t bdaddr;
++} __packed;
++
++#define MGMT_EV_CMD_COMPLETE		0x0001
++struct mgmt_ev_cmd_complete {
++	uint16_t opcode;
++	uint8_t status;
++	uint8_t data[0];
++} __packed;
++
++#define MGMT_EV_CMD_STATUS		0x0002
++struct mgmt_ev_cmd_status {
++	uint16_t opcode;
++	uint8_t status;
++} __packed;
++
++#define MGMT_EV_CONTROLLER_ERROR	0x0003
++struct mgmt_ev_controller_error {
++	uint8_t error_code;
++} __packed;
++
++#define MGMT_EV_INDEX_ADDED		0x0004
++
++#define MGMT_EV_INDEX_REMOVED		0x0005
++
++#define MGMT_EV_NEW_SETTINGS		0x0006
++
++#define MGMT_EV_CLASS_OF_DEV_CHANGED	0x0007
++struct mgmt_ev_class_of_dev_changed {
++	uint8_t class_of_dev[3];
++} __packed;
++
++#define MGMT_EV_LOCAL_NAME_CHANGED	0x0008
++struct mgmt_ev_local_name_changed {
++	uint8_t name[MGMT_MAX_NAME_LENGTH];
++	uint8_t short_name[MGMT_MAX_SHORT_NAME_LENGTH];
++} __packed;
++
++#define MGMT_EV_NEW_LINK_KEY		0x0009
++struct mgmt_ev_new_link_key {
++	uint8_t store_hint;
++	struct mgmt_link_key_info key;
++} __packed;
++
++#define MGMT_EV_NEW_LONG_TERM_KEY	0x000A
++struct mgmt_ev_new_long_term_key {
++	uint8_t store_hint;
++	struct mgmt_ltk_info key;
++} __packed;
++
++#define MGMT_EV_DEVICE_CONNECTED	0x000B
++struct mgmt_ev_device_connected {
++	struct mgmt_addr_info addr;
++	uint32_t flags;
++	uint16_t eir_len;
++	uint8_t eir[0];
++} __packed;
++
++#define MGMT_DEV_DISCONN_UNKNOWN	0x00
++#define MGMT_DEV_DISCONN_TIMEOUT	0x01
++#define MGMT_DEV_DISCONN_LOCAL_HOST	0x02
++#define MGMT_DEV_DISCONN_REMOTE		0x03
++
++#define MGMT_EV_DEVICE_DISCONNECTED	0x000C
++struct mgmt_ev_device_disconnected {
++	struct mgmt_addr_info addr;
++	uint8_t reason;
++} __packed;
++
++#define MGMT_EV_CONNECT_FAILED		0x000D
++struct mgmt_ev_connect_failed {
++	struct mgmt_addr_info addr;
++	uint8_t status;
++} __packed;
++
++#define MGMT_EV_PIN_CODE_REQUEST	0x000E
++struct mgmt_ev_pin_code_request {
++	struct mgmt_addr_info addr;
++	uint8_t secure;
++} __packed;
++
++#define MGMT_EV_USER_CONFIRM_REQUEST	0x000F
++struct mgmt_ev_user_confirm_request {
++	struct mgmt_addr_info addr;
++	uint8_t confirm_hint;
++	uint32_t value;
++} __packed;
++
++#define MGMT_EV_USER_PASSKEY_REQUEST	0x0010
++struct mgmt_ev_user_passkey_request {
++	struct mgmt_addr_info addr;
++} __packed;
++
++#define MGMT_EV_AUTH_FAILED		0x0011
++struct mgmt_ev_auth_failed {
++	struct mgmt_addr_info addr;
++	uint8_t status;
++} __packed;
++
++#define MGMT_DEV_FOUND_CONFIRM_NAME	0x01
++#define MGMT_DEV_FOUND_LEGACY_PAIRING	0x02
++#define MGMT_DEV_FOUND_NOT_CONNECTABLE	0x04
++
++#define MGMT_EV_DEVICE_FOUND		0x0012
++struct mgmt_ev_device_found {
++	struct mgmt_addr_info addr;
++	int8_t rssi;
++	uint32_t flags;
++	uint16_t eir_len;
++	uint8_t eir[0];
++} __packed;
++
++#define MGMT_EV_DISCOVERING		0x0013
++struct mgmt_ev_discovering {
++	uint8_t type;
++	uint8_t discovering;
++} __packed;
++
++#define MGMT_EV_DEVICE_BLOCKED		0x0014
++struct mgmt_ev_device_blocked {
++	struct mgmt_addr_info addr;
++} __packed;
++
++#define MGMT_EV_DEVICE_UNBLOCKED	0x0015
++struct mgmt_ev_device_unblocked {
++	struct mgmt_addr_info addr;
++} __packed;
++
++#define MGMT_EV_DEVICE_UNPAIRED		0x0016
++struct mgmt_ev_device_unpaired {
++	struct mgmt_addr_info addr;
++} __packed;
++
++#define MGMT_EV_PASSKEY_NOTIFY		0x0017
++struct mgmt_ev_passkey_notify {
++	struct mgmt_addr_info addr;
++	uint32_t passkey;
++	uint8_t entered;
++} __packed;
++
++#define MGMT_EV_NEW_IRK			0x0018
++struct mgmt_ev_new_irk {
++	uint8_t  store_hint;
++	bdaddr_t rpa;
++	struct mgmt_irk_info key;
++} __packed;
++
++struct mgmt_csrk_info {
++	struct mgmt_addr_info addr;
++	uint8_t master;
++	uint8_t val[16];
++} __packed;
++
++#define MGMT_EV_NEW_CSRK		0x0019
++struct mgmt_ev_new_csrk {
++	uint8_t store_hint;
++	struct mgmt_csrk_info key;
++} __packed;
++
++#define MGMT_EV_DEVICE_ADDED		0x001a
++struct mgmt_ev_device_added {
++	struct mgmt_addr_info addr;
++	uint8_t action;
++} __packed;
++
++#define MGMT_EV_DEVICE_REMOVED		0x001b
++struct mgmt_ev_device_removed {
++	struct mgmt_addr_info addr;
++} __packed;
++
++#define MGMT_EV_NEW_CONN_PARAM		0x001c
++struct mgmt_ev_new_conn_param {
++	struct mgmt_addr_info addr;
++	uint8_t store_hint;
++	uint16_t min_interval;
++	uint16_t max_interval;
++	uint16_t latency;
++	uint16_t timeout;
++} __packed;
++
++#define MGMT_EV_UNCONF_INDEX_ADDED	0x001d
++
++#define MGMT_EV_UNCONF_INDEX_REMOVED	0x001e
++
++#define MGMT_EV_NEW_CONFIG_OPTIONS	0x001f
++
++static const char *mgmt_op[] = {
++	"<0x0000>",
++	"Read Version",
++	"Read Commands",
++	"Read Index List",
++	"Read Controller Info",
++	"Set Powered",
++	"Set Discoverable",
++	"Set Connectable",
++	"Set Fast Connectable",		/* 0x0008 */
++	"Set Bondable",
++	"Set Link Security",
++	"Set Secure Simple Pairing",
++	"Set High Speed",
++	"Set Low Energy",
++	"Set Dev Class",
++	"Set Local Name",
++	"Add UUID",			/* 0x0010 */
++	"Remove UUID",
++	"Load Link Keys",
++	"Load Long Term Keys",
++	"Disconnect",
++	"Get Connections",
++	"PIN Code Reply",
++	"PIN Code Neg Reply",
++	"Set IO Capability",		/* 0x0018 */
++	"Pair Device",
++	"Cancel Pair Device",
++	"Unpair Device",
++	"User Confirm Reply",
++	"User Confirm Neg Reply",
++	"User Passkey Reply",
++	"User Passkey Neg Reply",
++	"Read Local OOB Data",		/* 0x0020 */
++	"Add Remote OOB Data",
++	"Remove Remove OOB Data",
++	"Start Discovery",
++	"Stop Discovery",
++	"Confirm Name",
++	"Block Device",
++	"Unblock Device",
++	"Set Device ID",
++	"Set Advertising",
++	"Set BR/EDR",
++	"Set Static Address",
++	"Set Scan Parameters",
++	"Set Secure Connections",
++	"Set Debug Keys",
++	"Set Privacy",
++	"Load Identity Resolving Keys",
++	"Get Connection Information",
++	"Get Clock Information",
++	"Add Device",
++	"Remove Device",
++	"Load Connection Parameters",
++	"Read Unconfigured Index List",
++	"Read Controller Configuration Information",
++	"Set External Configuration",
++	"Set Public Address",
++};
++
++static const char *mgmt_ev[] = {
++	"<0x0000>",
++	"Command Complete",
++	"Command Status",
++	"Controller Error",
++	"Index Added",
++	"Index Removed",
++	"New Settings",
++	"Class of Device Changed",
++	"Local Name Changed",		/* 0x0008 */
++	"New Link Key",
++	"New Long Term Key",
++	"Device Connected",
++	"Device Disconnected",
++	"Connect Failed",
++	"PIN Code Request",
++	"User Confirm Request",
++	"User Passkey Request",		/* 0x0010 */
++	"Authentication Failed",
++	"Device Found",
++	"Discovering",
++	"Device Blocked",
++	"Device Unblocked",
++	"Device Unpaired",
++	"Passkey Notify",
++	"New Identity Resolving Key",
++	"New Signature Resolving Key",
++	"Device Added",
++	"Device Removed",
++	"New Connection Parameter",
++	"Unconfigured Index Added",
++	"Unconfigured Index Removed",
++	"New Configuration Options",
++};
++
++static const char *mgmt_status[] = {
++	"Success",
++	"Unknown Command",
++	"Not Connected",
++	"Failed",
++	"Connect Failed",
++	"Authentication Failed",
++	"Not Paired",
++	"No Resources",
++	"Timeout",
++	"Already Connected",
++	"Busy",
++	"Rejected",
++	"Not Supported",
++	"Invalid Parameters",
++	"Disconnected",
++	"Not Powered",
++	"Cancelled",
++	"Invalid Index",
++	"Blocked through rfkill",
++};
++
++#ifndef NELEM
++#define NELEM(x) (sizeof(x) / sizeof((x)[0]))
++#endif
++
++static inline const char *mgmt_opstr(uint16_t op)
++{
++	if (op >= NELEM(mgmt_op))
++		return "<unknown opcode>";
++	return mgmt_op[op];
++}
++
++static inline const char *mgmt_evstr(uint16_t ev)
++{
++	if (ev >= NELEM(mgmt_ev))
++		return "<unknown event>";
++	return mgmt_ev[ev];
++}
++
++static inline const char *mgmt_errstr(uint8_t status)
++{
++	if (status >= NELEM(mgmt_status))
++		return "<unknown status>";
++	return mgmt_status[status];
++}
+diff --git a/core/include/calibration.h b/core/include/calibration.h
+index a3e977b..cf97d82 100644
+--- a/core/include/calibration.h
++++ b/core/include/calibration.h
+@@ -31,11 +31,11 @@ extern e_current_cal current_cal;
+ 
+ void cal_button(int, int);
+ void cal_key(int, int, int);
+-inline s_mouse_cal* cal_get_mouse(int mouse, int conf);
+-inline void cal_set_mouse(s_config_entry* entry);
++s_mouse_cal* cal_get_mouse(int mouse, int conf);
++void cal_set_mouse(s_config_entry* entry);
+ int cal_skip_event(GE_Event*);
+ void cal_init();
+-inline int cal_get_controller(int);
++int cal_get_controller(int);
+ inline void cal_set_controller(int, int);
+ void calibration_test();
+ 
+diff --git a/core/include/config.h b/core/include/config.h
+index 200c670..415ca2c 100644
+--- a/core/include/config.h
++++ b/core/include/config.h
+@@ -175,15 +175,15 @@ void cfg_trigger_lookup(GE_Event*);
+ void cfg_config_activation();
+ void cfg_intensity_lookup(GE_Event*);
+ void cfg_process_event(GE_Event*);
+-inline s_mouse_control* cfg_get_mouse_control(int);
+-inline void cfg_process_rumble_event(GE_Event* event);
++s_mouse_control* cfg_get_mouse_control(int);
++void cfg_process_rumble_event(GE_Event* event);
+ void cfg_process_rumble();
+ int cfg_is_joystick_used(int);
+ void cfg_process_motion_event(GE_Event*);
+ void cfg_process_motion();
+-inline void cfg_set_trigger(s_config_entry* entry);
+-inline void cfg_set_controller_dpi(int controller, unsigned int dpi);
+-inline void cfg_set_axis_intensity(s_config_entry* entry, int axis, s_intensity* intensity);
++void cfg_set_trigger(s_config_entry* entry);
++void cfg_set_controller_dpi(int controller, unsigned int dpi);
++void cfg_set_axis_intensity(s_config_entry* entry, int axis, s_intensity* intensity);
+ void cfg_intensity_init();
+ int cfg_add_binding(s_config_entry* entry);
+ inline s_mapper_table* cfg_get_mouse_axes(int, int, int);
+diff --git a/fpsconfig/Makefile b/fpsconfig/Makefile
+index 6f8c759..2aa9506 100644
+--- a/fpsconfig/Makefile
++++ b/fpsconfig/Makefile
+@@ -8,11 +8,11 @@ endif
+ NAME=$(shell basename $(shell pwd))
+ 
+ CPPFLAGS += -I../shared/configeditor/include -I../shared/controller/include
+-CPPFLAGS += -Wno-unused-local-typedefs `wx-config --cflags` -Winvalid-pch -include wx_pch.h -DWX_PRECOMP `curl-config --cflags`
++CPPFLAGS += -Wno-unused-local-typedefs `wx-config-2.8 --cflags` -Winvalid-pch -include wx_pch.h -DWX_PRECOMP `curl-config --cflags`
+ LDLIBS := ../shared/configeditor/configeditor.a \
+       $(LDLIBS) \
+       ../shared/updater/updater.a \
+-      `wx-config --libs` \
++      `wx-config-2.8 --libs` \
+       `curl-config --libs` \
+       -lxml2 \
+       -lstdc++ \
+diff --git a/launcher/Makefile b/launcher/Makefile
+index 17d5f93..8cbbb4b 100644
+--- a/launcher/Makefile
++++ b/launcher/Makefile
+@@ -10,16 +10,18 @@ NAME=$(shell basename $(shell pwd))
+ CPPFLAGS += -I../shared/configeditor/include \
+       -I../shared/controller/include \
+       -I../shared/async/include
+-CPPFLAGS += -Wno-unused-local-typedefs `wx-config --cflags` -Winvalid-pch -include wx_pch.h -DWX_PRECOMP `curl-config --cflags`
++CPPFLAGS += -Wno-unused-local-typedefs `wx-config-2.8 --cflags` -Winvalid-pch -include wx_pch.h -DWX_PRECOMP `curl-config --cflags`
+ LDLIBS := ../shared/configeditor/configeditor.a \
+       $(LDLIBS) \
+       ../shared/updater/updater.a \
+       ../shared/configupdater/configupdater.a \
+-      `wx-config --libs` \
++      `wx-config-2.8 --libs` \
+       `curl-config --libs` \
+       -lxml2 \
+       -lstdc++ \
+-      -lm
++      -lm \
++      -lcrypto \
++      -lssl
+ ifeq ($(OS),Windows_NT)
+ LDLIBS += -lSDL2 -lintl -liconv
+ endif
+diff --git a/shared/configupdater/configupdater.cpp b/shared/configupdater/configupdater.cpp
+index 0d90bb4..a0964e5 100644
+--- a/shared/configupdater/configupdater.cpp
++++ b/shared/configupdater/configupdater.cpp
+@@ -11,6 +11,7 @@
+ #include <curl/curl.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <openssl/ssl.h>
+ 
+ #ifdef WIN32
+ #include <windows.h>
+@@ -38,6 +39,7 @@ const char * configupdater::configs_file = "configs";
+ 
+ configupdater::configupdater()
+ {
++  SSL_library_init();
+   curl_global_init(CURL_INIT_FLAGS);
+ }
+ 
+@@ -86,6 +88,7 @@ int configupdater::getconfiglist(const char * url)
+         curl_easy_setopt(curl_handle, CURLOPT_HTTPHEADER, headers);
+         curl_easy_setopt(curl_handle, CURLOPT_URL, url);
+         curl_easy_setopt(curl_handle, CURLOPT_FOLLOWLOCATION, 1L);
++        curl_easy_setopt(curl_handle, CURLOPT_VERBOSE, 1L);
+         curl_easy_setopt(curl_handle, CURLOPT_WRITEFUNCTION, write_data);
+         curl_easy_setopt(curl_handle, CURLOPT_FILE, outfile);
+         curl_easy_setopt(curl_handle, CURLOPT_USERAGENT, "libcurl-agent/1.0");
+@@ -142,26 +145,26 @@ int configupdater::getconfiglist(const char * url)
+ list<string>* configupdater::getconfiglist()
+ {
+   configlist.clear();
+-  
++
+   int ret = getconfiglist(configs_url);
+-  
++
+   return (ret != -1) ? &configlist : NULL;
+ }
+ 
+ int configupdater::getconfigs(list<string>* cl)
+ {
+   int ret = -1;
+-  
++
+   if(configs_dir.empty())
+   {
+     return -1;
+   }
+-  
++
+   for(list<string>::iterator it = cl->begin(); it != cl->end(); ++it)
+   {
+     string config = configs_download_url + *it;
+     string output = configs_dir + *it;
+-    
++
+     FILE* outfile = fopen(output.c_str(), "wb");
+     if(outfile)
+     {
+@@ -200,6 +203,6 @@ int configupdater::getconfigs(list<string>* cl)
+     }
+ #endif
+   }
+-  
++
+   return ret;
+ }
+diff --git a/shared/controller/include/controller2.h b/shared/controller/include/controller2.h
+index a717486..f7e5703 100644
+--- a/shared/controller/include/controller2.h
++++ b/shared/controller/include/controller2.h
+@@ -58,7 +58,7 @@ typedef struct
+   void (*fp_init_report)(s_report * report);
+ } s_controller;
+ 
+-inline int clamp(int min, int val, int max);
++int clamp(int min, int val, int max);
+ 
+ const char* controller_get_name(e_controller_type type);
+ e_controller_type controller_get_type(const char* name);
+@@ -68,10 +68,10 @@ void controller_register(e_controller_type type, s_controller * controller);
+ int controller_get_min_refresh_period(e_controller_type type);
+ int controller_get_default_refresh_period(e_controller_type type);
+ 
+-inline int controller_get_max_signed(e_controller_type, int);
+-inline int controller_get_max_unsigned(e_controller_type, int);
+-inline int controller_get_mean_unsigned(e_controller_type, int);
+-inline double controller_get_axis_scale(e_controller_type, int);
++int controller_get_max_signed(e_controller_type, int);
++int controller_get_max_unsigned(e_controller_type, int);
++int controller_get_mean_unsigned(e_controller_type, int);
++double controller_get_axis_scale(e_controller_type, int);
+ 
+ s_axis_props controller_get_axis_index_from_name(const char*);
+ 
+diff --git a/shared/controller/src/controller.c b/shared/controller/src/controller.c
+index eb4291c..3e50a45 100644
+--- a/shared/controller/src/controller.c
++++ b/shared/controller/src/controller.c
+@@ -11,7 +11,7 @@
+ 
+ s_controller * controllers[C_TYPE_MAX] = {};
+ 
+-inline int clamp(int min, int val, int max)
++int clamp(int min, int val, int max)
+ {
+   if (val < min)
+     return min;
+@@ -82,7 +82,7 @@ int controller_get_default_refresh_period(e_controller_type type)
+   return DEFAULT_REFRESH_PERIOD;
+ }
+ 
+-inline int controller_get_max_unsigned(e_controller_type type, int axis)
++int controller_get_max_unsigned(e_controller_type type, int axis)
+ {
+   if(type < C_TYPE_MAX && axis < AXIS_MAX)
+   {
+@@ -91,7 +91,7 @@ inline int controller_get_max_unsigned(e_controller_type type, int axis)
+   return DEFAULT_MAX_AXIS_VALUE;
+ }
+ 
+-inline int controller_get_max_signed(e_controller_type type, int axis)
++int controller_get_max_signed(e_controller_type type, int axis)
+ {
+   if(axis < abs_axis_0)
+   {
+@@ -109,12 +109,12 @@ inline int controller_get_max_signed(e_controller_type type, int axis)
+   }
+ }
+ 
+-inline int controller_get_mean_unsigned(e_controller_type type, int axis)
++int controller_get_mean_unsigned(e_controller_type type, int axis)
+ {
+   return controller_get_max_unsigned(type, axis) / 2 + 1;
+ }
+ 
+-inline double controller_get_axis_scale(e_controller_type type, int axis)
++double controller_get_axis_scale(e_controller_type type, int axis)
+ {
+   return (double) controller_get_max_unsigned(type, axis) / DEFAULT_MAX_AXIS_VALUE;
+ }
+diff --git a/shared/event/src/linux/timer.c b/shared/event/src/linux/timer.c
+index 0722dea..01d5c4b 100644
+--- a/shared/event/src/linux/timer.c
++++ b/shared/event/src/linux/timer.c
+@@ -10,7 +10,7 @@
+ 
+ static int tfd = -1;
+ 
+-inline int timer_get()
++int timer_get()
+ {
+   return tfd;
+ }
+diff --git a/utils/Makefile b/utils/Makefile
+index 148caa9..1ac32bf 100644
+--- a/utils/Makefile
++++ b/utils/Makefile
+@@ -7,7 +7,7 @@ endif
+ 
+ BINS=ds4tool sixaddr
+ ifneq ($(OS),Windows_NT)
+-BINS+= bdaddr hcirevision
++BINS+=hcirevision
+ OUT=$(BINS)
+ else
+ OUT=
+@@ -37,9 +37,6 @@ sixaddr: sixaddr.o
+ ds4tool: ds4tool.o
+ 
+ ifneq ($(OS),Windows_NT)
+-bdaddr: linux/bdaddr.o linux/oui.o
+-	$(CC) $^ -o $@ -lbluetooth
+-
+ hcirevision: linux/hcirevision.o
+ 	$(CC) $^ -o $@ -lbluetooth
+ endif
+-- 
+2.6.4
+
