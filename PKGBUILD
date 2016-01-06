@@ -10,6 +10,7 @@ license=('GPL')
 provides=('diorite')
 depends=('python' 'vala' 'glib2' 'gtk3')
 source=(https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz)
+conflicts=('diorite-git')
 sha256sums=('f4517f148b8296f6c72146769f8537c1348ee9e87eb0171e0213858a0d0aae8d')
 
 build() {
