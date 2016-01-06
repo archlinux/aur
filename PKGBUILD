@@ -9,8 +9,8 @@ url="https://github.com/azukiapp/libnss-resolver"
 license=('Apache')
 depends=('glibc')
 makedepends=('git' 'clang' 'wget' 'scons' )
-provides=(${_pkgname%-*}=$pkgver)
-conflicts=(${_pkgname%-*})
+provides=(${_pkgname%-git}=$pkgver)
+conflicts=(${_pkgname%-git})
 source=("git+https://github.com/azukiapp/libnss-resolver.git")
 md5sums=('SKIP')
 install=${pkgname}.install
