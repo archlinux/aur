@@ -12,17 +12,15 @@ source=("http://downloadcenter.samsung.com/content/DR/201510/20151028111741150/u
 md5sums=('ba1d213aa726efaf20c1b31f4da9fcdc')
 
 package() {
-	cd $srcdir
+  cd $srcdir
+  mkdir -p ${pkgdir}/usr/share/cups/model
+  cp ${srcdir}/uld/noarch/share/ppd/Samsung* ${pkgdir}/usr/share/cups/model/
 
-	mkdir -p ${pkgdir}/usr/share/cups/model
-	cp ${srcdir}/uld/noarch/share/ppd/Samsung* ${pkgdir}/usr/share/cups/model/
-	if [ "$CARCH" = "x86_64" ]; then
-		install -m 755 -D \
-			${srcdir}/uld/x86_64/rastertospl \
-			${pkgdir}/usr/lib/cups/filter/rastertospl
-	else
-		install -m 755 -D \
-			${srcdir}/uld/i386/rastertospl \
-			${pkgdir}/usr/lib/cups/filter/rastertospl
-	fi
+  if [ "$CARCH" = "x86_64" ]; then
+    install -m 755 -D ${srcdir}/uld/x86_64/rastertospl ${pkgdir}/usr/lib/cups/filter/rastertospl
+    install -m 755 -D ${srcdir}/uld/x86_64/libscmssc.so ${pkgdir}/usr/lib/libscmssc.so
+  else
+    install -m 755 -D ${srcdir}/uld/i386/rastertospl ${pkgdir}/usr/lib/cups/filter/rastertospl
+    install -m 755 -D ${srcdir}/uld/i386/libscmssc.so ${pkgdir}/usr/lib/libscmssc.so
+  fi
 }
