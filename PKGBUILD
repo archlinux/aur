@@ -2,7 +2,7 @@
 
 pkgname=artillery
 pkgver=git
-pkgrel=4
+pkgrel=3
 pkgdesc="A combination of a honeypot, file-system monitoring, system hardening, and overall health of a server to create a comprehensive way to secure a system"
 arch=('any')
 url=('https://www.trustedsec.com/downloads/artillery/')
