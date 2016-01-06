@@ -18,9 +18,8 @@ post_upgrade()
 }
 
 
-pre_remove() {
-    # killall /usr/bin/sendanywhere
-
+pre_remove()
+{
     echo '==> Uninstalling icons.'
     for icon in "/opt/estmob/sendanywhere/sendanywhere_icon_"*.png; do
         size="${icon##*_}"

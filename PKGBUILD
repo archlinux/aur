@@ -15,13 +15,14 @@ depends_x86_64=('gcc-libs>=4.6.3' 'glibc>=2.15' 'postgresql-libs' 'qt5-svg' 'gtk
 
 if [[ $CARCH = i686 ]];then
     _filename="sendanywhere_latest_i386.deb"
-    source_i686=("https://update.send-anywhere.com/linux_downloads/${_filename}")
-    sha256sums_i686=('ffdac92b5cce6e48af1c6cde2d2917ac6432089e7c327ccb2be1f7800609a974')
 else
     _filename="sendanywhere_latest_amd64.deb"
-    source_x86_64=("https://update.send-anywhere.com/linux_downloads/${_filename}")
-    sha256sums_x86_64=('ad0168f85fbc2f3051a630dbd1621d5c48b2f2d32cfd76c961da391b57a10122')
 fi
+
+source_i686=("https://update.send-anywhere.com/linux_downloads/${_filename}")
+sha256sums_i686=('ffdac92b5cce6e48af1c6cde2d2917ac6432089e7c327ccb2be1f7800609a974')
+source_x86_64=("https://update.send-anywhere.com/linux_downloads/${_filename}")
+sha256sums_x86_64=('ad0168f85fbc2f3051a630dbd1621d5c48b2f2d32cfd76c961da391b57a10122')
 
 _dpkg_x_alternative() {
    # Instead of 
@@ -44,6 +45,4 @@ package() {
    echo '==> Copying license.'
    install -Dm644 "$pkgdir/usr/share/doc/sendanywhere/copyright"\
        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
 }
-
