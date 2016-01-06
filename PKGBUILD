@@ -6,11 +6,11 @@
 
 pkgname=qpi-toolchain
 pkgver=5.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="cross-tool-ng compiled gcc 5.3 hf toolchain for the pi"
 arch=("x86_64")
 license=("GPL")
-makedepends=("gcc")
+makedepends=("git")
 
 _toolchainreponame=crosstool-ng-toolchains
 _toolchainname=arm-sirspuddarch-linux-gnueabihf
