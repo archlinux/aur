@@ -1,13 +1,15 @@
 pkgbase = farbfeld-git
 	pkgdesc = conversion tools for the suckless image format
-	pkgver = 1
-	pkgrel = 2
+	pkgver = r75.7cf7ba9
+	pkgrel = 1
 	epoch = 1
 	url = http://suckless.org
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	depends = libjpeg-turbo
+	depends = libpng
 	provides = farbfeld
 	conflicts = farbfeld
 	source = farbfeld::git+http://git.suckless.org/farbfeld
