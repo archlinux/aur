@@ -2,7 +2,7 @@
 pkgname='libnss-resolver'
 pkgver=0.3.0
 pkgrel=1
-pkgdesc=" A Linux extension that adds support to the /etc/resolver/[suffix]."
+pkgdesc="A Linux extension that adds support to the /etc/resolver/[suffix]."
 arch=('x86_64')
 url="https://github.com/azukiapp/libnss-resolver"
 license=('Apache')
