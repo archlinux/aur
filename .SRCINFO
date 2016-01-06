@@ -1,7 +1,7 @@
 pkgbase = teeworlds-ddnet
 	pkgdesc = A customized version by DDRaceNetwork of this 2D shooting game
-	pkgver = 9.0.2
-	pkgrel = 2
+	pkgver = 9.1
+	pkgrel = 1
 	url = http://ddnet.tw
 	arch = i686
 	arch = x86_64
@@ -13,17 +13,16 @@ pkgbase = teeworlds-ddnet
 	depends = sdl
 	depends = freetype2
 	depends = openssl098
-	optdepends = teeworlds-ddnet-skins: extra skins
 	provides = teeworlds
-	provides = teeworlds-ddnet-skins
 	conflicts = teeworlds
-	conflicts = teeworlds-ddnet-skins
 	source = teeworlds-ddnet.png
 	md5sums = 41465eb3a4ecf2e7f7afe5a5f0c84386
-	source_i686 = http://ddnet.tw/downloads/DDNet-9.0.2-linux_x86.tar.gz
-	md5sums_i686 = 2c1d4934d9f8dbf56370a090ad291f95
-	source_x86_64 = http://ddnet.tw/downloads/DDNet-9.0.2-linux_x86_64.tar.gz
-	md5sums_x86_64 = c07dda0f99bd57bc6b1f6683143b18b4
+	source = http://ddnet.tw/skins/zip/database.zip
+	md5sums = SKIP
+	source_i686 = http://ddnet.tw/downloads/DDNet-9.1-linux_x86.tar.gz
+	md5sums_i686 = 83f94cb8622ebf7c90cc58318a45fae7
+	source_x86_64 = http://ddnet.tw/downloads/DDNet-9.1-linux_x86_64.tar.gz
+	md5sums_x86_64 = 01cc3930abd203d970b5abaa64c6b558
 
 pkgname = teeworlds-ddnet
 
