@@ -1,12 +1,12 @@
 diff --git a/backend/pdf/ev-poppler.cc b/backend/pdf/ev-poppler.cc
-index f3a6510..747d7fd 100644
+index f3a6510..4ab249a 100644
 --- a/backend/pdf/ev-poppler.cc
 +++ b/backend/pdf/ev-poppler.cc
-@@ -393,11 +393,31 @@ pdf_page_render (PopplerPage     *page,
+@@ -393,11 +393,28 @@ pdf_page_render (PopplerPage     *page,
  	cairo_t *cr;
  	double page_width, page_height;
  	double xscale, yscale;
-+	gboolean     subpixel_rendering;
++	gboolean subpixel_rendering;
 +	cairo_font_options_t *fo;
  
  	surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32,
@@ -18,9 +18,6 @@ index f3a6510..747d7fd 100644
 +	cairo_font_options_set_hint_style (fo, CAIRO_HINT_STYLE_SLIGHT);
 +
 +	subpixel_rendering = poppler_page_support_subpixel_rendering (page);
-+	printf("subpixel_rendering: %d\n", subpixel_rendering);
-+	printf("subpixel_rendering: %d\n", subpixel_rendering);
-+	printf("subpixel_rendering: %d\n", subpixel_rendering);
 +	if (subpixel_rendering) {
 +		cairo_set_source_rgb (cr, 1., 1., 1.);
 +		cairo_paint (cr);
@@ -34,7 +31,7 @@ index f3a6510..747d7fd 100644
  	switch (rc->rotation) {
  	        case 90:
  			cairo_translate (cr, width, 0);
-@@ -420,9 +440,11 @@ pdf_page_render (PopplerPage     *page,
+@@ -420,9 +437,11 @@ pdf_page_render (PopplerPage     *page,
  	cairo_rotate (cr, rc->rotation * G_PI / 180.0);
  	poppler_page_render (page, cr);
  

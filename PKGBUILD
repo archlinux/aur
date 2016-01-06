@@ -3,7 +3,7 @@
 _pkgname=evince
 pkgname=evince-lcdfilter
 pkgver=3.18.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Document viewer (PDF, Postscript, djvu, tiff, dvi, XPS, SyncTex support with gedit, comics books (cbr,cbz,cb7 and cbt))"
 url="https://wiki.gnome.org/Apps/Evince"
 arch=(i686 x86_64)
@@ -20,7 +20,7 @@ options=('!emptydirs')
 source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgname/${pkgver:0:4}/$_pkgname-$pkgver.tar.xz
         evince-poppler-subpixel.patch)
 sha256sums=('42ad6c7354d881a9ecab136ea84ff867acb942605bcfac48b6c12e1c2d8ecb17'
-            '4e5494e4a8d8b8a1656224df2e8989f2c6458a484d3b0cf500ba2f748c90e90f')
+            '582d6e7125713d1b64be3f7dc73af2fa0777d7fed39bfcad0b28c35d1401d975')
 
 build() {
   cd $_pkgname-$pkgver
