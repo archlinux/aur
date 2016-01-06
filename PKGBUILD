@@ -1,7 +1,7 @@
 # Maintainer: bastikr <basti.kr@gmail.com>
 
 pkgname=blitz-cppqed-hg
-pkgrel=1
+pkgrel=2
 pkgver=0.10.r1924.b28e85ab238e
 pkgdesc="C++ Class library for scientific computing. This version contains backward compatible patches needed for C++QED"
 arch=('i686' 'x86_64')
