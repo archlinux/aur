@@ -1,7 +1,8 @@
-pkgname=smplayer-qt4
-pkgver=14.9.0.6994
+_pkgname=smplayer
+pkgname=$_pkgname-qt4
+pkgver=15.11.0
 pkgrel=1
-pkgdesc="Complete front-end for MPlayer/MPV"
+pkgdesc="Complete front-end for MPlayer/MPV (Qt4)"
 arch=('i686' 'x86_64')
 url="http://smplayer.sourceforge.net/"
 license=('GPL')
@@ -13,8 +14,9 @@ optdepends=('smplayer-themes: icon themes collection'
 provides=('smplayer')
 conflicts=('smplayer')
 install=smplayer.install
-source=("http://downloads.sourceforge.net/sourceforge/smplayer/smplayer-$pkgver.tar.bz2")
-sha256sums=('4993f4d753f2982667e088d0f06fccd36535d8e65eff5acbef82d4cde132b301')
+source=(https://downloads.sourceforge.net/$_pkgname/$_pkgname-$pkgver.tar.bz2)
+md5sums=('e6f459f640908df2403381a39a27cdba')
+export all_proxy=192.168.56.30:80
 
 build() {
   cd "smplayer-$pkgver"
