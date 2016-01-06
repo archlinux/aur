@@ -2,7 +2,7 @@
 
 pkgname='cpy'
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A replacement for [c]at with automatic syntax highlighting"
 arch=('any')
 url="https://github.com/rumpelsepp/c.py"
@@ -11,6 +11,11 @@ depends=('python' 'python-pygments')
 makedepends=('git' 'asciidoc')
 source=("$pkgname::git+https://github.com/rumpelsepp/c.py.git#tag=v${pkgver}")
 sha256sums=('SKIP')
+
+prepare() {
+    cd "${srcdir}/${pkgname}"
+    git cherry-pick "5d0959a3ae264b9aba57f751aa036f0fee7697f7"
+}
 
 build() {
     cd "${srcdir}/${pkgname}"
