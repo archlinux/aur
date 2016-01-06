@@ -6,7 +6,7 @@
 
 pkgname=qpi-toolchain
 pkgver=5.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="cross-tool-ng compiled gcc 5.3 hf toolchain for the pi"
 arch=("x86_64")
 license=("GPL")
@@ -17,6 +17,7 @@ _toolchainname=arm-sirspuddarch-linux-gnueabihf
 url="https://github.com/sirspudd/${_toolchainreponame}"
 source=("git://github.com/sirspudd/${_toolchainreponame}.git")
 sha256sums=("SKIP")
+options=('!strip')
 
 package() {
   local destdir="${pkgdir}/opt"
