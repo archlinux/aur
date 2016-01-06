@@ -2,7 +2,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=nmh
 pkgver=1.6
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Powerful electronic mail handling system, based on a set of command-line utilities."
 arch=('i686' 'x86_64')
@@ -55,7 +55,7 @@ build() {
     cd "$srcdir/$pkgname-$pkgver"
 
     ./configure --prefix=/usr                  \
-                --sysconfdir=/etc              \
+                --sysconfdir=/etc/$pkgname     \
                 --libdir=/usr/lib/$pkgname     \
                 --libexecdir=/usr/lib/$pkgname \
                 --with-cyrus-sasl              \
