@@ -31,10 +31,10 @@ package() {
   install -Dm755 build/vis "$pkgdir/usr/bin/vis"
   install -Dm755 bin/safe_fifo "$pkgdir/usr/bin/safe_fifo"
 
-  #create .vis directory
-  mkdir -p ~/.vis/colors
+  #create config directory
+  mkdir -p ~/.config/vis/colors
 
   #copy over example files
-  cp examples/config ~/.vis/
-  cp examples/rainbow ~/.vis/colors/rainbow
+  cp examples/config ~/.config/vis/
+  cp examples/rainbow ~/.config/vis/colors/rainbow
 }
