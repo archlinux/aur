@@ -14,6 +14,6 @@ md5sums=('SKIP')
 install=${pkgname}.install
 
 package() {
-    cd "$pkgname"
+    cd "$srcdir/$pkgname-$pkgver"
     scons prefix="$pkgdir/usr/lib" local-install
 }
