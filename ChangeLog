@@ -1,6 +1,19 @@
 QNapi ChangeLog:
 ================
 
+2016-01-06 v0.2.1:
+ * problem z nazwami sciezek zawierajacymi znaki specjalne poprawiony rowniez
+   gdy otwarta jest inna instancja aplikacji (Windows) - #28
+ * poprawki w detekcji kodowania UTF-8 dla jezykow innych niz polski - #37
+ * rozszerzenie pliku nie jest zmieniane, gdy przetwarzanie napisow jest nieaktywne - #38
+ * pokazywanie informacje o wersji Qt
+ * pobieranie napisow w zapasowym jezyku w trybie cichym - #42
+ * uzycie libmediainfo zamiast ffprobe do pobierania informacji o pliku filmowym
+ * opcja wyszukiwania wszystkich napisow od razu, takze w jezyku zapasowym - #45
+ * poprawne przerywanie wyszukiwania tylko, jesli znaleziono napisy - #46
+ * poprawki bledow w silniku Napisy24 - #47
+
+
 2015-11-22 v0.2.0:
  * możliwość wyboru cichego trybu wsadowego - #13
  * poprawki bledow w silniku Napisy24 - #23
