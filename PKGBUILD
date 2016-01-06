@@ -3,14 +3,13 @@
 # Ported from the package by AlexanderR <alexander r at gmx com>
 
 pkgname=fdroidserver
-pkgver=0.4.0
-_hash=bad611ce5a3b4d1c2cd72a300da56979e1605d90
+pkgver=0.5.0
 epoch=2
 pkgrel=1
 pkgdesc="F-Droid repository management tools"
 url="https://gitlab.com/fdroid/$pkgname"
 license=('GPL3')
-depends=('python2' 'python2-pyasn1' 'python2-pyasn1-modules' 'python2-magic' 'python2-requests')
+depends=('python2' 'python2-pyasn1' 'python2-pyasn1-modules' 'python2-magic' 'python2-requests' 'python2-yaml')
 makedepends=('python2-setuptools' 'python2-pillow' 'python2-paramiko' 'java-environment')
 optdepends=(
      'android-sdk: Build apps from source'
@@ -35,10 +34,10 @@ optdepends=(
 arch=('any')
 options=(!emptydirs)
 source=("https://gitlab.com/fdroid/${pkgname}/repository/archive.tar.gz?ref=${pkgver}")
-sha256sums=('64d6ec15f2947104a08840f10f53b2e5150cc84cdb5caf742fdf6e264a9c82b1')
+sha256sums=('3a4a2cab9b22d135dae6b4c9d0a2a8ac1c5af0b544d9f8bb145f3b09d3f10921')
 
 package() {
-    cd "$srcdir/${pkgname}-${pkgver}-${_hash}"
+    cd "${srcdir}/${pkgname}-${pkgver}-"*
 
     python2 setup.py install --root="$pkgdir/" --optimize=1 --install-data="/tmp" || true
     rm -rf "$pkgdir/tmp"
