@@ -3,7 +3,7 @@
 # Based on [extra]'s nvidia-utils: https://www.archlinux.org/packages/extra/x86_64/nvidia-utils/
 
 pkgname=('nvidia-utils-beta' 'nvidia-libgl-beta' 'opencl-nvidia-beta')
-pkgver=358.16
+pkgver=361.16
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -22,8 +22,8 @@ source=('20-nvidia.conf')
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/NVIDIA-Linux-x86_64-$pkgver-no-compat32.run")
 md5sums=('2640eac092c220073f0668a7aaff61f7')
-md5sums_i686=('5dfe11ca13548ca4813b10f3223d6014')
-md5sums_x86_64=('efb1e649c0e0d62e92774bbf2c124488')
+md5sums_i686=('cbb48d10306d6ca49423ed80e786598e')
+md5sums_x86_64=('13df10e88eb550b8d7f2e276bb5cfb57')
 
 _create_links() {
   # create missing soname links
@@ -87,9 +87,15 @@ package_nvidia-libgl-beta() {
   ln -s libglx.so.$pkgver "$pkgdir"/usr/lib/xorg/modules/extensions/libglx.so
 
   # OpenGL (link)
-  ln -s /usr/lib/nvidia/libGL.so.$pkgver "$pkgdir"/usr/lib/libGL.so.$pkgver
-  ln -s libGL.so.$pkgver "$pkgdir"/usr/lib/libGL.so.1
-  ln -s libGL.so.$pkgver "$pkgdir"/usr/lib/libGL.so
+  ln -s /usr/lib/nvidia/libGL.so.1 "$pkgdir"/usr/lib/libGL.so.1
+  ln -s libGL.so.1 "$pkgdir"/usr/lib/libGL.so.$pkgver
+  ln -s libGL.so.1 "$pkgdir"/usr/lib/libGL.so
+
+  # GLX (link)
+  ln -s /usr/lib/nvidia/libGLX.so.0 "$pkgdir"/usr/lib/libGLX.so.0
+  ln -s libGLX.so.0 "$pkgdir"/usr/lib/libGLX.so.$pkgver
+  ln -s libGLX.so.0 "$pkgdir"/usr/lib/libGLX.so
+  ln -s libGLX_nvidia.so.$pkgver "$pkgdir"/usr/lib/libGLX_indirect.so.0
 
   # EGL (link)
   ln -s /usr/lib/nvidia/libEGL.so.1 "$pkgdir"/usr/lib/libEGL.so.1
@@ -97,14 +103,14 @@ package_nvidia-libgl-beta() {
   ln -s libEGL.so.1 "$pkgdir"/usr/lib/libEGL.so
 
   # OpenGL ES 1 (link)
-  ln -s /usr/lib/nvidia/libGLESv1_CM.so.$pkgver "$pkgdir"/usr/lib/libGLESv1_CM.so.$pkgver
-  ln -s libGLESv1_CM.so.$pkgver "$pkgdir"/usr/lib/libGLESv1_CM.so.1
-  ln -s libGLESv1_CM.so.$pkgver "$pkgdir"/usr/lib/libGLESv1_CM.so
+  ln -s /usr/lib/nvidia/libGLESv1_CM.so.1 "$pkgdir"/usr/lib/libGLESv1_CM.so.1
+  ln -s libGLESv1_CM.so.1 "$pkgdir"/usr/lib/libGLESv1_CM.so.$pkgver
+  ln -s libGLESv1_CM.so.1 "$pkgdir"/usr/lib/libGLESv1_CM.so
 
   # OpenGL ES 2 (link)
-  ln -s /usr/lib/nvidia/libGLESv2.so.$pkgver "$pkgdir"/usr/lib/libGLESv2.so.$pkgver
-  ln -s libGLESv2.so.$pkgver "$pkgdir"/usr/lib/libGLESv2.so.2
-  ln -s libGLESv2.so.$pkgver "$pkgdir"/usr/lib/libGLESv2.so
+  ln -s /usr/lib/nvidia/libGLESv2.so.2 "$pkgdir"/usr/lib/libGLESv2.so.2
+  ln -s libGLESv2.so.2 "$pkgdir"/usr/lib/libGLESv2.so.$pkgver
+  ln -s libGLESv2.so.2 "$pkgdir"/usr/lib/libGLESv2.so
 
   # License (link)
   install -d "$pkgdir"/usr/share/licenses/
@@ -132,19 +138,25 @@ package_nvidia-utils-beta() {
   ln -s libglx.so.$pkgver "$pkgdir"/usr/lib/nvidia/xorg/modules/extensions/libglx.so
 
   # OpenGL
-  install -Dm755 libGL.so.$pkgver "$pkgdir"/usr/lib/nvidia/libGL.so.$pkgver
+  install -Dm755 libGL.so.1 "$pkgdir"/usr/lib/nvidia/libGL.so.1
   install -Dm755 libnvidia-glcore.so.$pkgver "$pkgdir"/usr/lib/libnvidia-glcore.so.$pkgver
   install -Dm755 libGLdispatch.so.0 "$pkgdir"/usr/lib/libGLdispatch.so.0
   install -Dm755 libOpenGL.so.0 "$pkgdir"/usr/lib/libOpenGL.so.0
 
+  # GLX
+  install -Dm755 libGLX.so.0 "$pkgdir"/usr/lib/nvidia/libGLX.so.0
+  install -Dm755 libGLX_nvidia.so.$pkgver "$pkgdir"/usr/lib/libGLX_nvidia.so.$pkgver
+
   # EGL
   install -Dm755 libEGL.so.1 "$pkgdir"/usr/lib/nvidia/libEGL.so.1
-  install -Dm755 libEGL_nvidia.so.0 "$pkgdir"/usr/lib/libEGL_nvidia.so.0
+  install -Dm755 libEGL_nvidia.so.$pkgver "$pkgdir"/usr/lib/libEGL_nvidia.so.$pkgver
   install -Dm755 libnvidia-eglcore.so.$pkgver "$pkgdir"/usr/lib/libnvidia-eglcore.so.$pkgver
 
   # OpenGL ES
-  install -Dm755 libGLESv1_CM.so.$pkgver "$pkgdir"/usr/lib/nvidia/libGLESv1_CM.so.$pkgver
-  install -Dm755 libGLESv2.so.$pkgver "$pkgdir"/usr/lib/nvidia/libGLESv2.so.$pkgver
+  install -Dm755 libGLESv1_CM.so.1 "$pkgdir"/usr/lib/nvidia/libGLESv1_CM.so.1
+  install -Dm755 libGLESv1_CM_nvidia.so.$pkgver "$pkgdir"/usr/lib/libGLESv1_CM_nvidia.so.$pkgver
+  install -Dm755 libGLESv2.so.2 "$pkgdir"/usr/lib/nvidia/libGLESv2.so.2
+  install -Dm755 libGLESv2_nvidia.so.$pkgver "$pkgdir"/usr/lib/libGLESv2_nvidia.so.$pkgver
   install -Dm755 libnvidia-glsi.so.$pkgver "$pkgdir"/usr/lib/libnvidia-glsi.so.$pkgver
 
   # VDPAU (Video Decode and Presentation API for Unix)
@@ -160,6 +172,12 @@ package_nvidia-utils-beta() {
   # CUDA (Compute Unified Device Architecture)
   install -Dm755 libcuda.so.$pkgver "$pkgdir"/usr/lib/libcuda.so.$pkgver
   install -Dm755 libnvcuvid.so.$pkgver "$pkgdir"/usr/lib/libnvcuvid.so.$pkgver
+
+  # PTX JIT Compiler (Parallel Thread Execution (PTX) is a pseudo-assembly language for CUDA)
+  install -Dm755 libnvidia-ptxjitcompiler.so.$pkgver "$pkgdir"/usr/lib/libnvidia-ptxjitcompiler.so.$pkgver
+  
+  # Fat (multiarchitecture) binary loader
+  install -Dm755 libnvidia-fatbinaryloader.so.$pkgver "$pkgdir"/usr/lib/libnvidia-fatbinaryloader.so.$pkgver
 
   # TLS (Thread local storage) support for OpenGL libs
   install -Dm755 tls/libnvidia-tls.so.$pkgver "$pkgdir"/usr/lib/libnvidia-tls.so.$pkgver
@@ -180,6 +198,9 @@ package_nvidia-utils-beta() {
   install -Dm755 nvidia-cuda-mps-control "$pkgdir"/usr/bin/nvidia-cuda-mps-control
   install -Dm644 nvidia-cuda-mps-control.1.gz "$pkgdir"/usr/share/man/man1/nvidia-cuda-mps-control.1.gz
   install -Dm755 nvidia-cuda-mps-server "$pkgdir"/usr/bin/nvidia-cuda-mps-server
+ 
+  # nvidia-gridd
+  install -Dm644 nvidia-gridd.1.gz "$pkgdir"/usr/share/man/man1/nvidia-gridd.1.gz
  
   # nvidia-modprobe
   install -Dm4755 nvidia-modprobe "$pkgdir"/usr/bin/nvidia-modprobe
