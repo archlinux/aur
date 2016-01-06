@@ -1,14 +1,14 @@
 # Maintainer: Maxime Vincent <maxime.vince@gmail.com>
 
 pkgname=wolfssl
-pkgver=3.7.0
+pkgver=3.8.0
 pkgrel=2
 pkgdesc='Embedded SSL Library for Applications, Devices, IoT, and the Cloud'
 arch=(i686 x86_64)
 license=(GPL)
 url='https://www.wolfssl.com/'
 source=(https://github.com/wolfSSL/wolfssl/archive/v$pkgver.tar.gz)
-sha1sums=('2674ab52099a01ff95ef9a4f392058f96730e254')
+sha1sums=('f4559680b2d18fd6364dee4f744f4e0ac515bb9a')
 
 build() {
   cd $pkgname-$pkgver
