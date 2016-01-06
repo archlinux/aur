@@ -1,6 +1,6 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
-_srcver="1.3.1-4"
+_srcver="1.3.1-6"
 pkgname=libfpx
 pkgver="$(echo "$_srcver" | tr '-' '_')"
 pkgrel=1
@@ -11,7 +11,7 @@ license=('custom')
 depends=('gcc-libs')
 provides=('libfpx.so')
 source=("http://www.imagemagick.org/download/delegates/${pkgname}-${_srcver}.tar.bz2")
-sha256sums=('bd40fb7259059c06b4b8908f2a57f0fd2a6af83d0bd17ffd0651ffafe69fccb0')
+sha256sums=('84e663bb23619e19195777a7c5d348046756f28cffda3d0ea2160ed0b55a698a')
 
 build() {
 	cd "$pkgname"-"$_srcver"
