@@ -44,7 +44,7 @@ package() {
   # building documentation causes trouble in some cases
   # make DESTDIR=$pkgdir install-html || return 1
   rm -rf "$srcdir/tempbin"
-  rm -rf $pkgdir/usr/lib/pkgconfig
+  # rm -rf $pkgdir/usr/lib/pkgconfig
   # rmdir $pkgdir/usr/share/doc/blitz-*/doxygen
 }
 
