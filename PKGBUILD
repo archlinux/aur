@@ -1,4 +1,5 @@
 # Maintainer: Kenny Rasschaert <kenny@kennyrasschaert.com>
+# Contributor: Jan Collijs <aur@visibilityspots.com>
 pkgname=pipecat-bin
 pkgver=0.2
 pkgrel=1
