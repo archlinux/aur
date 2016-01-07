@@ -6,7 +6,7 @@ pkgbase=cndrvcups-common-lb
 pkgname=cndrvcups-common-lb
 # used this name to avoid conflict with the existing cndrvcups-common (no longer in aur) which was wrong version for cndrvcups-lb
 _pkgname=cndrvcups-common
-pkgver=3.10
+pkgver=3.40
 pkgrel=1
 pkgdesc="Common printer driver modules for cndrvcups-lb package, built from source"
 arch=('i686' 'x86_64')
@@ -16,16 +16,15 @@ depends_i686=('libglade' 'gcc-libs')
 depends_x86_64=('libglade' 'lib32-gcc-libs')
 makedepends=('automake' 'autoconf')
 conflicts=('cndrvcups-lb-bin')
-#source=(Linux_UFRII_PrinterDriver_V300_uk_EN.tar.gz::'http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwMjcwODEy&cmp=ABS&lang=EN')
-source=(Linux_UFRII_PrinterDriver_V300_uk_EN.tar.gz::'http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwMjcwODEy&cmp=ABS&lang=EN')
+source=(Linux_UFRII_PrinterDriver_V310_uk_EN.tar.gz::'http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwMjcwODEz&cmp=ABS&lang=EN')
 options=('!emptydirs' '!strip' 'staticlibs')
-sha512sums=('08139f53b841a1b1bc32b15c6699cea21484c3d8a92a12e196446570ebd1a6f8e2a8ae6984bd3841055edd66399960c438f61c36159f423a8e5510ed3c2d046f')
+sha512sums=('fbfd31630d942cbec015a30df5a435f5d5a4915d09ea5657b80f54f098abf30066dc77117929a439a5f08358806cfd723409fc381d61ee949a2e7b7ad63e1dc9')
 
 # build instructions are adapted from upstream cndrvcups-common.spec file
 
 prepare() {
-    cd "${srcdir}"/Linux_UFRII_PrinterDriver_V300_uk_EN/Sources
-    tar xf "${_pkgname}"-"${pkgver}"-1.tar.gz -C "${srcdir}"
+    cd "${srcdir}"/Linux_UFRII_PrinterDriver_V310_uk_EN/Sources
+    bsdtar xf "${_pkgname}"-"${pkgver}"-1.tar.gz -C "${srcdir}"
 }
 
 build() {
@@ -83,6 +82,7 @@ package()
 
 
     install -m 644 data/*.ICC  "${pkgdir}"/usr/share/caepcm
+    install -m 644 data/*.PRF  "${pkgdir}"/usr/share/caepcm
 
     install -s -m 755 libs/c3pldrv     "${pkgdir}"/usr/bin
 
