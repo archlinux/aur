@@ -3,7 +3,7 @@
 
 pkgname=('linux-gpib')
 pkgver=4.0.2
-pkgrel=4
+pkgrel=5
 pkgdesc='A support package for GPIB (IEEE 488) hardware.'
 arch=('i686' 'x86_64')
 url='http://linux-gpib.sourceforge.net/'
