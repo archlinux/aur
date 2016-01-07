@@ -1,6 +1,6 @@
 pkgname=smartscope-beta
-pkgver=2015.1203.20.25
-pkgrel=2
+pkgver=2016.0106.20.09
+pkgrel=1
 pkgdesc="SmartScope App (Beta version)"
 arch=('x86_64' 'i686')
 url="https://www.lab-nation.com/"
