@@ -2,7 +2,7 @@
 
 pkgname=perl6-path-iterator
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Iterative, recursive file finder for Perl 6"
 arch=('any')
 depends=('perl6')
@@ -13,13 +13,6 @@ url="https://github.com/Leont/path-iterator"
 license=('PerlArtistic')
 source=($pkgname-$pkgver::git+https://github.com/Leont/path-iterator)
 sha256sums=('SKIP')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  msg2 'Fixing META.info...'
-  sed -i 's/pm6/pm/' META.info
-}
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
