@@ -4,7 +4,7 @@
 
 pkgname=jumpnbump
 pkgver=1.60
-pkgrel=3
+pkgrel=4
 pkgdesc="You, as a bunny, have to jump on your opponents to make them explode. It's a true multiplayer game which can't be played alone. It has network support. This program is a Unix port of the old DOS game by brainchilddesign. SDL2 port."
 arch=('i686' 'x86_64')
 url="https://github.com/MCMic/jumpnbump"
@@ -23,7 +23,7 @@ build() {
      patch -p1 < ${srcdir}/$i
   done
   
-  make
+  make PREFIX=/usr
 }
 
 package() {
