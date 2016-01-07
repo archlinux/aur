@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=re2-git
-pkgver=2015.06.01.r0.g7884045
+pkgver=2015.11.01.r23.g1fbcda1
 pkgrel=1
 epoch=
 pkgdesc="A fast, safe, thread-friendly alternative to backtracking regular expression engines, a C++ library."
@@ -13,7 +13,7 @@ makedepends=('git')
 optdepends=()
 checkdepends=()
 provides=('re2')
-conflicts=()
+conflicts=('re2')
 replaces=()
 backup=()
 options=()
