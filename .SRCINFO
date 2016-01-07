@@ -5,8 +5,13 @@ pkgbase = mingw-w64-asio
 	url = http://asio.sourceforge.net/
 	arch = any
 	license = custom
+	makedepends = mingw-w64-gcc
 	makedepends = mingw-w64-configure
 	depends = mingw-w64-boost
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
 	source = http://downloads.sourceforge.net/asio/asio-1.10.6.tar.bz2
 	md5sums = 85d014a356a6e004cd30ccd4c9b6a5c2
 
