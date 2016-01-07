@@ -1,3 +1,8 @@
+2016-01-07 Pierre Choffet <peuc@wanadoo.fr>
+	* 2.0.0.r138.g18ff797-2 :
+	Fix upstream which is broken after libringclient update. Add 5 backported
+	patches.
+
 2015-12-16 Pierre Choffet <peuc@wanadoo.fr>
-	* 2.0.0.r138.g18ff797 :
+	* 2.0.0.r138.g18ff797-1 :
 	Initial PKGBUILD.

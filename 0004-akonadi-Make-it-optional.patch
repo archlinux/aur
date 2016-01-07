@@ -1,0 +1,234 @@
+From db0bdfdc7473d60a694a14813512acca48066613 Mon Sep 17 00:00:00 2001
+From: Emmanuel Lepage Vallee <elv1313@gmail.com>
+Date: Sat, 19 Dec 2015 23:08:50 -0500
+Subject: [PATCH 4/6] akonadi: Make it optional
+
+Not all distributions ship with a KF5 version of Akonadi yet.
+---
+ CMakeLists.txt                      | 16 ++++++++++----
+ src/CMakeLists.txt                  |  4 ----
+ src/klib/CMakeLists.txt             | 44 ++++++++++++++++++++++++++++---------
+ src/klib/itemmodelserialization.cpp | 11 +++++++++-
+ src/mainwindow.cpp                  | 16 +++++++++-----
+ 5 files changed, 67 insertions(+), 24 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8372310..23eb4bd 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -15,8 +15,9 @@ ENDIF(POLICY CMP0028)
+ SET(PROJECT_VERSION "2.2.0")
+ PROJECT(ring-kde)
+ 
+-SET(QT_MIN_VERSION  "5.2.0")
+-SET(KF5_DEP_VERSION "5.6.0")
++SET(QT_MIN_VERSION  "5.2.0" )
++SET(KF5_DEP_VERSION "5.6.0" )
++SET(AKO_DEP_VERSION "4.89.0")
+ 
+ SET(LOCAL_CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/" )
+ SET(CMAKE_MODULE_PATH       "${CMAKE_MODULE_PATH} ${LOCAL_CMAKE_MODULE_PATH}" )
+@@ -69,8 +70,15 @@ FIND_PACKAGE(KF5 "${KF5_DEP_VERSION}" REQUIRED COMPONENTS
+   Crash
+ )
+ 
+-# SET(AKONADI_MIN_VERSION 1.0)
+-# FIND_PACKAGE(Akonadi QUIET NO_MODULE ${AKONADI_MIN_VERSION})
++FIND_PACKAGE(KF5 "${AKO_DEP_VERSION}" COMPONENTS
++  Akonadi
++  AkonadiContact
++  Contacts
++)
++
++IF ( KF5_AKONADI_FOUND AND  KF5_AKONADICONTACT_FOUND AND  KF5_CONTACTS_FOUND)
++   ADD_DEFINITIONS("-DENABLE_AKONADI=1")
++ENDIF()
+ 
+ # INCLUDE ( KDE4Defaults )
+ 
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index b49dcd0..67c4e2b 100755
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -375,10 +375,6 @@ TARGET_LINK_LIBRARIES(ring-kde
+   KF5::Crash
+   KF5::NotifyConfig
+   KF5::GlobalAccel
+-#    ${KDEPIMLIBS_AKONADI_KMIME_LIBS}
+-#    ${KDEPIMLIBS_AKONADI_LIBS}
+-#    ${KDEPIMLIBS_AKONADI_CONTACT_LIBS}
+-#    ${X11_LIBRARIES}
+ )
+ 
+ IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+diff --git a/src/klib/CMakeLists.txt b/src/klib/CMakeLists.txt
+index be24937..03c07b6 100644
+--- a/src/klib/CMakeLists.txt
++++ b/src/klib/CMakeLists.txt
+@@ -4,6 +4,18 @@ ADD_DEFINITIONS("-std=c++0x")
+ 
+ PROJECT(libkring)
+ 
++IF(POLICY CMP0048)
++   CMAKE_POLICY(SET CMP0048 NEW)
++ENDIF(POLICY CMP0048)
++
++IF(POLICY CMP0017)
++   CMAKE_POLICY(SET CMP0017 NEW)
++ENDIF(POLICY CMP0017)
++
++IF(POLICY CMP0028)
++   CMAKE_POLICY(SET CMP0028 NEW)
++ENDIF(POLICY CMP0028)
++
+ FIND_PACKAGE(ECM 1.1.0 REQUIRED NO_MODULE)
+ SET (CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
+ 
+@@ -34,6 +46,11 @@ FIND_PACKAGE(KF5 COMPONENTS
+   Contacts
+ )
+ 
++IF ( KF5_AKONADI_FOUND AND  KF5_AKONADICONTACT_FOUND AND  KF5_CONTACTS_FOUND)
++   SET(AKONADI_FOUND 1)
++ENDIF()
++
++
+ INCLUDE_DIRECTORIES(${Qt5Widgets_INCLUDES} ${Qt5Core_INCLUDES} ${LIB_RING_CLIENT_INCLUDE_DIR})
+ 
+ ADD_DEFINITIONS(${Qt5Core_DEFINITIONS})
+@@ -45,16 +62,17 @@ SET(GENERIC_LIB_VERSION "2.0.0")
+ #File to compile
+ SET( libkring_LIB_SRCS
+    helperfunctions.cpp
+-#    akonadibackend.cpp
+-#    akonadicontactcollectionmodel.cpp
+    kdeprofilepersistor.cpp
+    itemmodelserialization.cpp
+ )
+ 
+-SET(libkring_LIB_SRCS
+-    ${libkring_LIB_SRCS}
+-    akonadibackend.cpp
+-)
++
++IF ( ${AKONADI_FOUND} )
++   SET(libkring_LIB_SRCS
++      ${libkring_LIB_SRCS}
++      akonadibackend.cpp
++   )
++ENDIF()
+ 
+ KCONFIG_ADD_KCFG_FILES (libkring_LIB_SRCS kcfg_settings.kcfgc)
+ 
+@@ -69,13 +87,19 @@ target_link_libraries( libkring
+   KF5::WidgetsAddons
+   KF5::ConfigCore
+   KF5::ConfigGui
+-  KF5::AkonadiCore
+-  KF5::AkonadiContact
+-  KF5::Contacts
+ )
+ 
++# Akonadi support is optional
++IF ( ${AKONADI_FOUND} )
++   target_link_libraries( libkring
++      KF5::AkonadiCore
++      KF5::AkonadiContact
++      KF5::Contacts
++   )
++ENDIF()
++
+ SET( libkring_LIB_HDRS
+-#   akonadibackend.h
++  akonadibackend.h
+   helperfunctions.h
+   itemmodelserialization.h
+ )
+diff --git a/src/klib/itemmodelserialization.cpp b/src/klib/itemmodelserialization.cpp
+index 6da8cc1..8152d12 100644
+--- a/src/klib/itemmodelserialization.cpp
++++ b/src/klib/itemmodelserialization.cpp
+@@ -19,7 +19,10 @@
+ 
+ #include <personmodel.h>
+ 
+-#include "akonadibackend.h"
++
++#ifdef ENABLE_AKONADI
++ #include "akonadibackend.h"
++#endif
+ 
+ #include "collectioninterface.h"
+ #include "kcfg_settings.h"
+@@ -67,12 +70,18 @@ bool ItemModelStateSerialization::setChecked(const CollectionInterface* backend,
+ CollectionInterface* ItemModelStateSerialization::preferredCollection(CollectionManagerInterfaceBase* manager, FlagPack<CollectionInterface::SupportedFeatures> features, FlagPack<Interfaces::ItemModelStateSerializerI::Hints> hints )
+ {
+    Q_UNUSED(hints)
++
++#ifdef ENABLE_AKONADI
+    if (manager == &PersonModel::instance()) {
+       foreach(CollectionInterface* i, PersonModel::instance().collections(features)) {
+          if (dynamic_cast<AkonadiBackend*>(i)) //TODO use something better
+             return i;
+       }
+    }
++#else
++   Q_UNUSED(manager )
++   Q_UNUSED(features)
++#endif
+ 
+    return nullptr;
+ }
+diff --git a/src/mainwindow.cpp b/src/mainwindow.cpp
+index 1d0553d..c8cf752 100755
+--- a/src/mainwindow.cpp
++++ b/src/mainwindow.cpp
+@@ -86,9 +86,13 @@
+ #include <video/renderer.h>
+ #include "ringapplication.h"
+ #include "widgets/dockbase.h"
+-#include "klib/akonadibackend.h"
++
++#ifdef ENABLE_AKONADI
++ #include "klib/akonadibackend.h"
++#endif
++
+ #ifdef ENABLE_VIDEO
+-#include "widgets/videodock.h"
++ #include "widgets/videodock.h"
+ #endif
+ 
+ MainWindow* MainWindow::m_sApp = nullptr;
+@@ -177,9 +181,9 @@ MainWindow::MainWindow(QWidget* parent)
+       GlobalInstances::setInterface<ItemModelStateSerialization>();
+       GlobalInstances::itemModelStateSerializer().load();
+ 
++#ifdef ENABLE_AKONADI
+       AkonadiBackend::initCollections();
+-//       PersonModel::instance().backendModel()->load();
+-//       AccountModel::instance().setDefaultAccount(AccountModel::instance().getAccountById(ConfigurationSkeleton::defaultAccountId()));
++#endif
+ 
+       init = true;
+ 
+@@ -223,7 +227,6 @@ MainWindow::MainWindow(QWidget* parent)
+    m_pCentralDW->setTitleBarWidget(new QWidget());
+    m_pCentralDW->setContentsMargins(0,0,0,0);
+    m_pView->setContentsMargins     (0,0,0,0);
+-   addDockWidget( Qt::BottomDockWidgetArea, m_pCentralDW  );
+    m_pCentralDW->setObjectName( "callDock" );
+    m_pCentralDW->show();
+ 
+@@ -233,6 +236,9 @@ MainWindow::MainWindow(QWidget* parent)
+    m_pTrayIcon        = new SysTray ( this->windowIcon(), this );
+ 
+    m_pDock = new Dock(this);
++
++   addDockWidget( Qt::BottomDockWidgetArea, m_pCentralDW  );
++
+    connect(m_pCentralDW ,SIGNAL(visibilityChanged(bool)),m_pDock,SLOT(updateTabIcons()));
+ 
+    selectCallTab();
+-- 
+2.7.0
+

@@ -1,0 +1,461 @@
+From 962788b7c0956953c688170cbe5c234e0a6c1876 Mon Sep 17 00:00:00 2001
+From: Emmanuel Lepage Vallee <elv1313@gmail.com>
+Date: Sat, 5 Dec 2015 21:20:59 -0500
+Subject: [PATCH 6/6] contact: Add new (basic) contact selection dialog
+
+This will be expanded in further commits to improve assigning contacts
+to unassigned contact methods.
+---
+ src/widgets/contactmethodselector.cpp   |  40 ++++++++++
+ src/widgets/contactmethodselector.h     |  42 +++++++++++
+ src/widgets/personselector.cpp          |  47 ++++++++++++
+ src/widgets/personselector.h            |  42 +++++++++++
+ src/widgets/ui/contactmethodselector.ui | 126 ++++++++++++++++++++++++++++++++
+ src/widgets/ui/personselector.ui        | 100 +++++++++++++++++++++++++
+ 6 files changed, 397 insertions(+)
+ create mode 100644 src/widgets/contactmethodselector.cpp
+ create mode 100644 src/widgets/contactmethodselector.h
+ create mode 100644 src/widgets/personselector.cpp
+ create mode 100644 src/widgets/personselector.h
+ create mode 100644 src/widgets/ui/contactmethodselector.ui
+ create mode 100644 src/widgets/ui/personselector.ui
+
+diff --git a/src/widgets/contactmethodselector.cpp b/src/widgets/contactmethodselector.cpp
+new file mode 100644
+index 0000000..d2a0728
+--- /dev/null
++++ b/src/widgets/contactmethodselector.cpp
+@@ -0,0 +1,40 @@
++/***************************************************************************
++ *   Copyright (C) 2015 by Emmanuel Lepage Vallee                          *
++ *   Author : Emmanuel Lepage Vallee <emmanuel.lepage@savoirfairelinux.com>*
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or modify  *
++ *   it under the terms of the GNU General Public License as published by  *
++ *   the Free Software Foundation; either version 3 of the License, or     *
++ *   (at your option) any later version.                                   *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
++ **************************************************************************/
++#include "contactmethodselector.h"
++
++// Qt
++#include <QtCore/QSortFilterProxyModel>
++
++#include <phonedirectorymodel.h>
++#include <contactmethod.h>
++
++ContactMethodSelector::ContactMethodSelector(QWidget* parent) : QDialog(parent)
++{
++   setupUi(this);
++
++   m_pSortedContacts = new QSortFilterProxyModel(this);
++   m_pSortedContacts->setSourceModel          ( &PhoneDirectoryModel::instance() );
++   m_pSortedContacts->setSortRole             ( Qt::DisplayRole                  );
++   m_pSortedContacts->setFilterCaseSensitivity( Qt::CaseInsensitive              );
++   m_pSortedContacts->setSortCaseSensitivity  ( Qt::CaseInsensitive              );
++
++
++   connect(m_pFilterLE ,SIGNAL(filterStringChanged(QString)), m_pSortedContacts, SLOT(setFilterRegExp(QString))   );
++
++   listView->setModel(m_pSortedContacts);
++}
+diff --git a/src/widgets/contactmethodselector.h b/src/widgets/contactmethodselector.h
+new file mode 100644
+index 0000000..7819856
+--- /dev/null
++++ b/src/widgets/contactmethodselector.h
+@@ -0,0 +1,42 @@
++/***************************************************************************
++ *   Copyright (C) 2015 by Emmanuel Lepage Vallee                          *
++ *   Author : Emmanuel Lepage Vallee <emmanuel.lepage@savoirfairelinux.com>*
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or modify  *
++ *   it under the terms of the GNU General Public License as published by  *
++ *   the Free Software Foundation; either version 3 of the License, or     *
++ *   (at your option) any later version.                                   *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
++ **************************************************************************/
++#ifndef CONTACTMETHODSELECTOR_H
++#define CONTACTMETHODSELECTOR_H
++
++#include "ui_contactmethodselector.h"
++
++#include <QtWidgets/QDialog>
++
++class QSortFilterProxyModel;
++
++class ContactMethod;
++
++class ContactMethodSelector : public QDialog, public Ui_ContactMethodSelector
++{
++   Q_OBJECT
++public:
++   explicit ContactMethodSelector(QWidget* parent = nullptr);
++   virtual ~ContactMethodSelector() = default;
++
++private:
++   QSortFilterProxyModel* m_pSortedContacts;
++   QSortFilterProxyModel* m_pNearMatchContact;
++
++};
++
++#endif
+\ No newline at end of file
+diff --git a/src/widgets/personselector.cpp b/src/widgets/personselector.cpp
+new file mode 100644
+index 0000000..97e8af9
+--- /dev/null
++++ b/src/widgets/personselector.cpp
+@@ -0,0 +1,47 @@
++/***************************************************************************
++ *   Copyright (C) 2015 by Emmanuel Lepage Vallee                          *
++ *   Author : Emmanuel Lepage Vallee <emmanuel.lepage@savoirfairelinux.com>*
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or modify  *
++ *   it under the terms of the GNU General Public License as published by  *
++ *   the Free Software Foundation; either version 3 of the License, or     *
++ *   (at your option) any later version.                                   *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
++ **************************************************************************/
++#include "personselector.h"
++
++// Qt
++#include <QtCore/QSortFilterProxyModel>
++
++#include <personmodel.h>
++#include <contactmethod.h>
++
++PersonSelector::PersonSelector(QWidget* parent, const ContactMethod* cm) : QDialog(parent)
++{
++   setupUi(this);
++
++   m_pSortedContacts = new QSortFilterProxyModel(this);
++   m_pSortedContacts->setSourceModel          ( &PersonModel::instance()  );
++   m_pSortedContacts->setSortRole             ( Qt::DisplayRole           );
++   m_pSortedContacts->setFilterCaseSensitivity( Qt::CaseInsensitive       );
++   m_pSortedContacts->setSortCaseSensitivity  ( Qt::CaseInsensitive       );
++
++   if (cm) {
++      m_pNearMatchContact = new QSortFilterProxyModel(this);
++      m_pNearMatchContact->setSourceModel      ( &PersonModel::instance() );
++      m_pNearMatchContact->setFilterFixedString( cm->primaryName()        );
++   }
++
++   nearMatch->setVisible(cm != nullptr && m_pNearMatchContact->rowCount());
++
++   connect(m_pFilterLE ,SIGNAL(filterStringChanged(QString)), m_pSortedContacts, SLOT(setFilterRegExp(QString))   );
++
++   listView->setModel(m_pSortedContacts);
++}
+\ No newline at end of file
+diff --git a/src/widgets/personselector.h b/src/widgets/personselector.h
+new file mode 100644
+index 0000000..09b6332
+--- /dev/null
++++ b/src/widgets/personselector.h
+@@ -0,0 +1,42 @@
++/***************************************************************************
++ *   Copyright (C) 2015 by Emmanuel Lepage Vallee                          *
++ *   Author : Emmanuel Lepage Vallee <emmanuel.lepage@savoirfairelinux.com>*
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or modify  *
++ *   it under the terms of the GNU General Public License as published by  *
++ *   the Free Software Foundation; either version 3 of the License, or     *
++ *   (at your option) any later version.                                   *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
++ **************************************************************************/
++#ifndef PERSONSELECTOR_H
++#define PERSONSELECTOR_H
++
++#include "ui_personselector.h"
++
++#include <QtWidgets/QDialog>
++
++class QSortFilterProxyModel;
++
++class ContactMethod;
++
++class PersonSelector : public QDialog, public Ui_PersonSelector
++{
++   Q_OBJECT
++public:
++   explicit PersonSelector(QWidget* parent = nullptr, const ContactMethod* cm = nullptr);
++   virtual ~PersonSelector() = default;
++
++private:
++   QSortFilterProxyModel* m_pSortedContacts;
++   QSortFilterProxyModel* m_pNearMatchContact;
++
++};
++
++#endif
+\ No newline at end of file
+diff --git a/src/widgets/ui/contactmethodselector.ui b/src/widgets/ui/contactmethodselector.ui
+new file mode 100644
+index 0000000..dd69b93
+--- /dev/null
++++ b/src/widgets/ui/contactmethodselector.ui
+@@ -0,0 +1,126 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<ui version="4.0">
++ <class>ContactMethodSelector</class>
++ <widget class="QDialog" name="ContactMethodSelector">
++  <property name="geometry">
++   <rect>
++    <x>0</x>
++    <y>0</y>
++    <width>400</width>
++    <height>300</height>
++   </rect>
++  </property>
++  <property name="windowTitle">
++   <string>Dialog</string>
++  </property>
++  <layout class="QVBoxLayout" name="verticalLayout_2">
++   <item>
++    <widget class="QGroupBox" name="groupBox">
++     <property name="title">
++      <string>Existing</string>
++     </property>
++     <layout class="QVBoxLayout" name="verticalLayout">
++      <item>
++       <widget class="QListView" name="listView"/>
++      </item>
++      <item>
++       <widget class="FilterLineEdit" name="m_pFilterLE">
++        <property name="placeholderText">
++         <string>Search</string>
++        </property>
++       </widget>
++      </item>
++     </layout>
++    </widget>
++   </item>
++   <item>
++    <widget class="QGroupBox" name="groupBox_2">
++     <property name="title">
++      <string>New</string>
++     </property>
++     <layout class="QFormLayout" name="formLayout_2">
++      <item row="0" column="0">
++       <widget class="QLabel" name="label_2">
++        <property name="text">
++         <string>Phone number</string>
++        </property>
++       </widget>
++      </item>
++      <item row="0" column="1">
++       <widget class="QLineEdit" name="lineEdit"/>
++      </item>
++      <item row="1" column="0">
++       <widget class="QLabel" name="label">
++        <property name="text">
++         <string>Account</string>
++        </property>
++       </widget>
++      </item>
++      <item row="1" column="1">
++       <widget class="QComboBox" name="comboBox"/>
++      </item>
++     </layout>
++    </widget>
++   </item>
++   <item>
++    <widget class="QDialogButtonBox" name="buttonBox">
++     <property name="orientation">
++      <enum>Qt::Horizontal</enum>
++     </property>
++     <property name="standardButtons">
++      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
++     </property>
++    </widget>
++   </item>
++  </layout>
++ </widget>
++ <customwidgets>
++  <customwidget>
++   <class>FilterLineEdit</class>
++   <extends>QLineEdit</extends>
++   <header>widgets/filterlineedit.h</header>
++  </customwidget>
++ </customwidgets>
++ <tabstops>
++  <tabstop>m_pFilterLE</tabstop>
++  <tabstop>listView</tabstop>
++  <tabstop>lineEdit</tabstop>
++  <tabstop>comboBox</tabstop>
++  <tabstop>buttonBox</tabstop>
++ </tabstops>
++ <resources/>
++ <connections>
++  <connection>
++   <sender>buttonBox</sender>
++   <signal>accepted()</signal>
++   <receiver>ContactMethodSelector</receiver>
++   <slot>accept()</slot>
++   <hints>
++    <hint type="sourcelabel">
++     <x>248</x>
++     <y>254</y>
++    </hint>
++    <hint type="destinationlabel">
++     <x>157</x>
++     <y>274</y>
++    </hint>
++   </hints>
++  </connection>
++  <connection>
++   <sender>buttonBox</sender>
++   <signal>rejected()</signal>
++   <receiver>ContactMethodSelector</receiver>
++   <slot>reject()</slot>
++   <hints>
++    <hint type="sourcelabel">
++     <x>316</x>
++     <y>260</y>
++    </hint>
++    <hint type="destinationlabel">
++     <x>286</x>
++     <y>274</y>
++    </hint>
++   </hints>
++  </connection>
++ </connections>
++</ui>
+diff --git a/src/widgets/ui/personselector.ui b/src/widgets/ui/personselector.ui
+new file mode 100644
+index 0000000..c415c37
+--- /dev/null
++++ b/src/widgets/ui/personselector.ui
+@@ -0,0 +1,100 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<ui version="4.0">
++ <class>PersonSelector</class>
++ <widget class="QDialog" name="PersonSelector">
++  <property name="geometry">
++   <rect>
++    <x>0</x>
++    <y>0</y>
++    <width>400</width>
++    <height>300</height>
++   </rect>
++  </property>
++  <property name="windowTitle">
++   <string>Dialog</string>
++  </property>
++  <layout class="QVBoxLayout" name="verticalLayout">
++   <item>
++    <widget class="QSplitter" name="splitter">
++     <property name="orientation">
++      <enum>Qt::Vertical</enum>
++     </property>
++     <widget class="QListView" name="nearMatch">
++      <property name="sizePolicy">
++       <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
++        <horstretch>0</horstretch>
++        <verstretch>0</verstretch>
++       </sizepolicy>
++      </property>
++     </widget>
++     <widget class="QListView" name="listView"/>
++    </widget>
++   </item>
++   <item>
++    <widget class="FilterLineEdit" name="m_pFilterLE">
++     <property name="placeholderText">
++      <string>Search</string>
++     </property>
++    </widget>
++   </item>
++   <item>
++    <widget class="QDialogButtonBox" name="buttonBox">
++     <property name="orientation">
++      <enum>Qt::Horizontal</enum>
++     </property>
++     <property name="standardButtons">
++      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
++     </property>
++    </widget>
++   </item>
++  </layout>
++ </widget>
++ <customwidgets>
++  <customwidget>
++   <class>FilterLineEdit</class>
++   <extends>QLineEdit</extends>
++   <header>widgets/filterlineedit.h</header>
++  </customwidget>
++ </customwidgets>
++ <tabstops>
++  <tabstop>m_pFilterLE</tabstop>
++  <tabstop>listView</tabstop>
++  <tabstop>nearMatch</tabstop>
++  <tabstop>buttonBox</tabstop>
++ </tabstops>
++ <resources/>
++ <connections>
++  <connection>
++   <sender>buttonBox</sender>
++   <signal>accepted()</signal>
++   <receiver>PersonSelector</receiver>
++   <slot>accept()</slot>
++   <hints>
++    <hint type="sourcelabel">
++     <x>248</x>
++     <y>254</y>
++    </hint>
++    <hint type="destinationlabel">
++     <x>157</x>
++     <y>274</y>
++    </hint>
++   </hints>
++  </connection>
++  <connection>
++   <sender>buttonBox</sender>
++   <signal>rejected()</signal>
++   <receiver>PersonSelector</receiver>
++   <slot>reject()</slot>
++   <hints>
++    <hint type="sourcelabel">
++     <x>316</x>
++     <y>260</y>
++    </hint>
++    <hint type="destinationlabel">
++     <x>286</x>
++     <y>274</y>
++    </hint>
++   </hints>
++  </connection>
++ </connections>
++</ui>
+-- 
+2.7.0
+

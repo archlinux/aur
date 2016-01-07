@@ -1,0 +1,685 @@
+From f2a5aaa2b668ab5d87284dec9dddeb3b805b5ec4 Mon Sep 17 00:00:00 2001
+From: Emmanuel Lepage Vallee <elv1313@gmail.com>
+Date: Wed, 9 Dec 2015 08:49:10 -0500
+Subject: [PATCH 3/6] history: De-duplicate identical calls
+
+Add a new generic proxy model that can be used to
+filter out duplicate items from a model.
+---
+ src/CMakeLists.txt                |  41 +++----
+ src/dock.cpp                      | 100 ++---------------
+ src/proxies/deduplicateproxy.cpp  | 219 ++++++++++++++++++++++++++++++++++++++
+ src/proxies/deduplicateproxy.h    |  97 +++++++++++++++++
+ src/proxies/simplerotateproxy.cpp |   9 +-
+ src/proxies/simplerotateproxy.h   |   9 ++
+ 6 files changed, 365 insertions(+), 110 deletions(-)
+ create mode 100644 src/proxies/deduplicateproxy.cpp
+ create mode 100644 src/proxies/deduplicateproxy.h
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 201f107..b49dcd0 100755
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -6,6 +6,10 @@ IF(POLICY CMP0022)
+    CMAKE_POLICY(SET CMP0022 NEW)
+ ENDIF(POLICY CMP0022)
+ 
++IF(POLICY CMP0063)
++   CMAKE_POLICY(SET CMP0063 NEW)
++ENDIF(POLICY CMP0063)
++
+ # set(CMAKE_AUTOMOC ON)
+ 
+ SET(KF5_DEP_VERSION "5.6.0")
+@@ -146,8 +150,6 @@ INCLUDE_DIRECTORIES(SYSTEM
+ #Build KDE specific files
+ ADD_SUBDIRECTORY( klib )
+ 
+-MESSAGE("CMAKE_BUILD_TYPE = ${CMAKE_BUILD_TYPE}")
+-
+ IF(${CMAKE_BUILD_TYPE} MATCHES Release)
+    MESSAGE("NO DEBUG OUTPUT")
+    ADD_DEFINITIONS( -DQT_NO_DEBUG_OUTPUT)
+@@ -173,7 +175,7 @@ SET(
+    delegates/toolbardelegate.cpp
+    delegates/kdepixmapmanipulation.cpp
+    proxies/simplerotateproxy.cpp
+-   #proxies/valuefilterproxy.cpp
++   proxies/deduplicateproxy.cpp
+ )
+ 
+ # Configuration pages
+@@ -195,6 +197,8 @@ SET(
+ # Widgets
+ SET(
+    ring_kde_WIDGETS
++   widgets/personselector.cpp
++   widgets/contactmethodselector.cpp
+    widgets/systray.cpp
+    widgets/dialpad.cpp
+    widgets/dockbase.cpp
+@@ -223,14 +227,6 @@ SET(
+    widgets/wizard.cpp
+ )
+ 
+-# Asset contextual menus
+-SET(
+-   ring_kde_MENUS
+-   menu/person.cpp
+-   menu/call.cpp
+-   menu/contactmethod.cpp
+-)
+-
+ # Video Widgets
+ IF(NOT (${ENABLE_VIDEO} MATCHES false))
+    SET(
+@@ -252,6 +248,8 @@ SET(
+    mainwindow.cpp
+    cmd.cpp
+    dock.cpp
++   notification.cpp
++   notification.cpp
+    ringapplication.cpp
+    errormessage.cpp
+    kspeechinterfacesingleton.cpp
+@@ -264,7 +262,6 @@ SET(
+    ${ring_kde_CONF}
+    ${ring_kde_WIDGETS}
+    ${ring_kde_VIDEO}
+-   ${ring_kde_MENUS}
+ )
+ 
+ # generate rules for building source files from the resources
+@@ -287,6 +284,8 @@ SET(
+    conf/dlgaudiorecording.ui
+    conf/dlgpresence.ui
+    conf/dlgfallbackperson.ui
++   widgets/ui/personselector.ui
++   widgets/ui/contactmethodselector.ui
+    widgets/ui/player.ui
+    widgets/ui/playeroverlay.ui
+    widgets/ui/contactdock.ui
+@@ -302,7 +301,6 @@ SET(
+ # add_subdirectory( test   ) #Enable again some day, it cause compile problems for some users
+ 
+ IF(NOT (${ENABLE_VIDEO} MATCHES false))
+-   MESSAGE("VIDEO enabled")
+    SET(ENABLE_VIDEO 1 CACHE BOOLEAN "Enable video")
+    ADD_DEFINITIONS( -DENABLE_VIDEO=true )
+    SET (
+@@ -355,12 +353,15 @@ TARGET_LINK_LIBRARIES(ring-kde
+   ${LIB_RING_CLIENT_LIBRARY}
+   ${OPENGL_link}
+ 
+-  ${Qt5Widgets_LIBRARIES}
+-  ${Qt5Core_LIBRARIES}
+-  ${Qt5Gui_LIBRARIES}
+-  ${Qt5Svg_LIBRARIES}
+-  ${Qt5OpenGL_LIBRARIES}
+-  ${Qt5PrintSupport_LIBRARIES}
++  # Qt5
++  Qt5::Widgets
++  Qt5::Core
++  Qt5::Gui
++  Qt5::Svg
++  Qt5::OpenGL
++  Qt5::PrintSupport
++
++  # KF5
+   KF5::I18n
+   KF5::WidgetsAddons
+   KF5::ConfigCore
+@@ -372,6 +373,8 @@ TARGET_LINK_LIBRARIES(ring-kde
+   KF5::KIOWidgets
+   KF5::Completion
+   KF5::Crash
++  KF5::NotifyConfig
++  KF5::GlobalAccel
+ #    ${KDEPIMLIBS_AKONADI_KMIME_LIBS}
+ #    ${KDEPIMLIBS_AKONADI_LIBS}
+ #    ${KDEPIMLIBS_AKONADI_CONTACT_LIBS}
+diff --git a/src/dock.cpp b/src/dock.cpp
+index 4b1f88e..1d41470 100644
+--- a/src/dock.cpp
++++ b/src/dock.cpp
+@@ -23,9 +23,6 @@
+ #include <QtCore/QSortFilterProxyModel>
+ #include <QtCore/QTimer>
+ 
+-//KDE
+-#include <KColorScheme>
+-
+ //Delegates
+ #include <conf/account/delegates/categorizeddelegate.h>
+ #include "delegates/contactdelegate.h"
+@@ -42,11 +39,9 @@
+ 
+ //Ring
+ #include "mainwindow.h"
+-#include "view.h"
+ #include "actioncollection.h"
+ #include "klib/kcfg_settings.h"
+ #include <proxies/deduplicateproxy.h>
+-#include <proxies/roletransformationproxy.h>
+ 
+ class BookmarkSortFilterProxyModel : public QSortFilterProxyModel
+ {
+@@ -92,9 +87,9 @@ Dock::Dock(QMainWindow* w) : QObject(w)
+ 
+    // Load later to speed up the process (avoid showing while inserting items)
+    QTimer::singleShot(10, [this]() {
+-      CategorizedContactModel::instance().setUnreachableHidden(ConfigurationSkeleton::hideUnreachable());
++      CategorizedContactModel::instance().setUnreachableHidden(ConfigurationSkeleton::hidePersonWithoutPhone());
+       auto proxy = CategorizedContactModel::SortedProxy::instance().model();
+-      m_pContactCD->setProxyModel(proxy, proxy);
++      m_pContactCD->setProxyModel(proxy);
+       m_pContactCD->setSortingModel(
+          CategorizedContactModel::SortedProxy::instance().categoryModel(),
+          CategorizedContactModel::SortedProxy::instance().categorySelectionModel()
+@@ -122,54 +117,13 @@ Dock::Dock(QMainWindow* w) : QObject(w)
+ 
+ 
+    QTimer::singleShot(1000, [this]() {
+-      // De-duplicate by name and date
+       auto proxy = CategorizedHistoryModel::SortedProxy::instance().model();
+-      RoleTransformationProxy* highlight = nullptr;
+-      auto dedup =  ConfigurationSkeleton::mergeSameDayPeer() ? new DeduplicateProxy(proxy) : nullptr;
+-
+-      if (dedup)
+-         dedup->addFilterRole(static_cast<int>(Call::Role::DateOnly));
+-
+-      // Highlight missed calls
+-      static const bool highlightMissedIn  = ConfigurationSkeleton::highlightMissedIncomingCalls();
+-      static const bool highlightMissedOut = ConfigurationSkeleton::highlightMissedOutgoingCalls();
+-
+-      if (highlightMissedOut || highlightMissedIn) {
+-         static QColor awayBrush = KStatefulBrush( KColorScheme::Window, KColorScheme::NegativeText ).brush(QPalette::Normal).color();
+-         awayBrush.setAlpha(30);
+-         static QVariant missedBg(awayBrush);
+-
+-         highlight = new RoleTransformationProxy(dedup ? dedup : proxy);
+-
+-         highlight->setRole(Qt::BackgroundRole, [](const QModelIndex& idx) {
+-            if (idx.data((int)Call::Role::Missed).toBool()) {
+-               const Call::Direction d = qvariant_cast<Call::Direction>(
+-                  idx.data((int)Call::Role::Direction)
+-               );
+-
+-               if ((highlightMissedIn && d == Call::Direction::INCOMING)
+-                 || (highlightMissedOut && d == Call::Direction::OUTGOING))
+-                  return missedBg;
+-            }
+-
+-            return QVariant();
+-         });
+-
+-         highlight->setSourceModel(proxy);
+-
+-         if (dedup)
+-            dedup->setSourceModel(highlight);
+-      }
+-      else if (dedup)
+-         dedup->setSourceModel(proxy);
+-
+-      if (dedup)
+-         m_pHistoryDW->setProxyModel(dedup    , proxy );
+-      else if (highlight)
+-         m_pHistoryDW->setProxyModel(highlight, proxy );
+-      else
+-         m_pHistoryDW->setProxyModel(proxy    , proxy );
++      auto dedup =  new DeduplicateProxy(proxy);
++      // De-duplicate by name and date
++      dedup->addFilterRole(static_cast<int>(Call::Role::DateOnly));
++      dedup->setSourceModel(proxy);
+ 
++      m_pHistoryDW->setProxyModel(dedup);
+       m_pHistoryDW->setSortingModel(
+          CategorizedHistoryModel::SortedProxy::instance().categoryModel         (),
+          CategorizedHistoryModel::SortedProxy::instance().categorySelectionModel()
+@@ -194,8 +148,7 @@ Dock::Dock(QMainWindow* w) : QObject(w)
+    CategorizedDelegate* delegate2 = new CategorizedDelegate(m_pBookmarkDW->view());
+    delegate2->setChildDelegate(new HistoryDelegate(m_pHistoryDW->view()));
+    m_pBookmarkDW->setDelegate(delegate2);
+-   auto m = new BookmarkSortFilterProxyModel(this);
+-   m_pBookmarkDW->setProxyModel(m, m);
++   m_pBookmarkDW->setProxyModel(new BookmarkSortFilterProxyModel(this));
+ 
+ 
+    //GUI
+@@ -227,10 +180,6 @@ Dock::Dock(QMainWindow* w) : QObject(w)
+    connect(ActionCollection::instance()->showHistoryDockAction(), SIGNAL(toggled(bool)),m_pHistoryDW, SLOT(setVisible(bool)));
+    connect(ActionCollection::instance()->showBookmarkDockAction(),SIGNAL(toggled(bool)),m_pBookmarkDW,SLOT(setVisible(bool)));
+ 
+-   connect( ActionCollection::instance()->focusHistory (), &QAction::triggered, this, &Dock::focusHistory  );
+-   connect( ActionCollection::instance()->focusContact (), &QAction::triggered, this, &Dock::focusContact  );
+-   connect( ActionCollection::instance()->focusCall    (), &QAction::triggered, this, &Dock::focusCall     );
+-   connect( ActionCollection::instance()->focusBookmark(), &QAction::triggered, this, &Dock::focusBookmark );
+ }
+ 
+ Dock::~Dock()
+@@ -239,9 +188,9 @@ Dock::~Dock()
+    m_pHistoryDW ->setDelegate  (nullptr);
+    m_pBookmarkDW->setDelegate  (nullptr);
+ 
+-   m_pContactCD ->setProxyModel(nullptr, nullptr);
+-   m_pHistoryDW ->setProxyModel(nullptr, nullptr);
+-   m_pBookmarkDW->setProxyModel(nullptr, nullptr);
++   m_pContactCD ->setProxyModel(nullptr);
++   m_pHistoryDW ->setProxyModel(nullptr);
++   m_pBookmarkDW->setProxyModel(nullptr);
+ 
+    m_pContactCD ->deleteLater();
+    m_pHistoryDW ->deleteLater();
+@@ -298,31 +247,4 @@ void Dock::updateTabIcons()
+    }
+ } //updateTabIcons
+ 
+-void Dock::focusHistory()
+-{
+-   m_pHistoryDW->raise();
+-   ActionCollection::instance()->raiseClient(false);
+-   m_pHistoryDW->m_pFilterLE->setFocus(Qt::OtherFocusReason);
+-}
+-
+-void Dock::focusContact()
+-{
+-   m_pContactCD->raise();
+-   ActionCollection::instance()->raiseClient(false);
+-   m_pContactCD->m_pFilterLE->setFocus(Qt::OtherFocusReason);
+-}
+-
+-void Dock::focusCall()
+-{
+-   MainWindow::view()->raise();
+-   ActionCollection::instance()->raiseClient(true);
+-}
+-
+-void Dock::focusBookmark()
+-{
+-   m_pBookmarkDW->raise();
+-   ActionCollection::instance()->raiseClient(false);
+-   m_pBookmarkDW->m_pFilterLE->setFocus(Qt::OtherFocusReason);
+-}
+-
+ #include <dock.moc>
+diff --git a/src/proxies/deduplicateproxy.cpp b/src/proxies/deduplicateproxy.cpp
+new file mode 100644
+index 0000000..ccde71a
+--- /dev/null
++++ b/src/proxies/deduplicateproxy.cpp
+@@ -0,0 +1,219 @@
++/****************************************************************************
++ *   Copyright (C) 2015 by Emmanuel Lepage Vallee                           *
++ *   Author : Emmanuel Lepage Vallee <emmanuel.lepage@savoirfairelinux.com> *
++ *                                                                          *
++ *   This library is free software; you can redistribute it and/or          *
++ *   modify it under the terms of the GNU Lesser General Public             *
++ *   License as published by the Free Software Foundation; either           *
++ *   version 2.1 of the License, or (at your option) any later version.     *
++ *                                                                          *
++ *   This library is distributed in the hope that it will be useful,        *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of         *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU      *
++ *   Lesser General Public License for more details.                        *
++ *                                                                          *
++ *   You should have received a copy of the GNU General Public License      *
++ *   along with this program.  If not, see <http://www.gnu.org/licenses/>.  *
++ ***************************************************************************/
++#include "deduplicateproxy.h"
++
++#include <QtCore/QDebug>
++
++typedef std::function<bool(const QModelIndex&, const QModelIndex&)> Comparator;
++
++class DeduplicateProxyPrivate final
++{
++public:
++   // Attributes
++   bool                   m_AddChildren    { false                         };
++   Comparator             m_fCompare       {                               };
++   DeduplicateProxy::Mode m_Mode           { DeduplicateProxy::Mode::ROLE  };
++   bool                   m_isSrcProxy     { false                         };
++   QVector<int>           m_lOtherRoles    {                               };
++   int                    m_HiddenRoleId   { -1                            };
++   bool                   m_isHiddenRoleSet{ false                         };
++   QString                m_HiddenRoleName {                               };
++};
++
++DeduplicateProxy::DeduplicateProxy(QObject* parent) : QSortFilterProxyModel(parent),
++d_ptr(new DeduplicateProxyPrivate())
++{
++}
++
++void DeduplicateProxy::setComparator(const Comparator& f)
++{
++   d_ptr->m_Mode = DeduplicateProxy::Mode::FUNCTION;
++   d_ptr->m_fCompare = f;
++
++   invalidateFilter();
++}
++
++/**
++ * Useful when there is a main filter role, but some items need to be kept.
++ *
++ * If any role added to this list is different, the index wont be hidden
++ *
++ * For example using this proxy to create instant messaging thread if they
++ * come from the same person, but also create different threads if the date
++ * differ.
++ */
++void DeduplicateProxy::addFilterRole(int role)
++{
++   d_ptr->m_lOtherRoles << role;
++
++   invalidateFilter();
++}
++
++QVector<int> DeduplicateProxy::filterRoles() const
++{
++   return d_ptr->m_lOtherRoles;// + filterRole();
++}
++
++/**
++   * Add rejected items as children of the non-rejected matching item
++   *
++   * @warning This is ignored for indexes that already have children
++   */
++void DeduplicateProxy::setAddChildren(bool add)
++{
++   d_ptr->m_AddChildren = add;
++}
++
++bool DeduplicateProxy::areChildrenAdded()
++{
++   return d_ptr->m_AddChildren;
++}
++
++Comparator DeduplicateProxy::comparator()
++{
++   return d_ptr->m_fCompare;
++}
++
++/**
++ * Check if the source_row index is identical to the previous index
++ */
++bool DeduplicateProxy::filterAcceptsRow(int source_row, const QModelIndex& source_parent) const
++{
++   // Get both source QModelIndex and compare them
++   if (source_row > 0) {
++      const QModelIndex idx = sourceModel()->index(source_row, filterKeyColumn(), source_parent);
++
++      // It is correct to assume sourceModelIndex - 1 will be part of the same group
++      if (idx.row() > 0) {
++         const QModelIndex sibling = sourceModel()->index(idx.row() - 1, idx.column(), idx.parent());
++
++         bool accept = false;
++
++         // Allow to filter with more than one role, apply only if they exist
++         foreach(const int r, d_ptr->m_lOtherRoles) {
++            const QVariant v1 = idx.data    (r);
++            const QVariant v2 = sibling.data(r);
++
++            // Yes, this is an "=", not "=="
++            if ((accept = !(v1.isValid() && v2.isValid() && (v1 == v2))))
++               break;
++         }
++
++         return accept || idx.data(filterRole()) != sibling.data(filterRole());
++      }
++   }
++
++   return true;
++}
++
++//TODO support for columns too
++
++///Return the number of hidden siblings of idx
++int DeduplicateProxy::hiddenSiblingCount(const QModelIndex& idx) const
++{
++   if ((!sourceModel()) || (!idx.isValid()) || idx.model() != this)
++      return 0;
++
++   const QModelIndex nextIdx = index(idx.row()+1, idx.column(), idx.parent());
++
++   const QModelIndex srcIdx  = mapToSource(idx);
++
++   if (!nextIdx.isValid())
++      return sourceModel()->rowCount(srcIdx.parent()) - srcIdx.row();
++
++   const QModelIndex srcNextIdx = mapToSource(nextIdx);
++
++   return srcNextIdx.row() - srcIdx.row();
++}
++
++/**
++ * Return the list of source model QModelIndex that have been hidden
++ */
++QList<QModelIndex> DeduplicateProxy::hiddenSiblings(const QModelIndex& idx) const
++{
++   const int count = hiddenSiblingCount(idx);
++
++   if (!count)
++      return {};
++
++   QList<QModelIndex> ret;
++
++   const int         parentRow    = mapToSource(idx).row();
++   const QModelIndex srcParentIdx = mapToSource(idx).parent();
++
++   for (int i = 0; i < count; i++)
++      ret << sourceModel()->index(parentRow + count, idx.column(), srcParentIdx);
++
++   return ret;
++}
++
++/**
++ * Add a model data role to report the number of hidden siblings
++ */
++void DeduplicateProxy::setHiddenCountRole(int role, const QString& name)
++{
++   d_ptr->m_isHiddenRoleSet = true;
++   d_ptr->m_HiddenRoleId    = role;
++   d_ptr->m_HiddenRoleName  = name;
++}
++
++///This proxy doesn't sort anything
++void DeduplicateProxy::sort ( int column, Qt::SortOrder order)
++{
++   sourceModel()->sort(column, order);
++}
++
++void DeduplicateProxy::setSourceModel ( QAbstractItemModel * sourceModel )
++{
++   QSortFilterProxyModel::setSourceModel(sourceModel);
++
++   d_ptr->m_isSrcProxy = sourceModel && qobject_cast<QAbstractProxyModel*>(sourceModel);
++
++   //TODO find a way to catch setFilterString to forward it as this proxy
++   // is likely in front of another QSortFilterProxyModel re-implement ::invalidateFilter?
++}
++
++int DeduplicateProxy::rowCount(const QModelIndex& parent) const
++{
++   if (!d_ptr->m_AddChildren)
++      return QSortFilterProxyModel::rowCount(parent);
++
++
++   //TODO ::index, ::mapToSource and ::mapFromSource still need to be implemented
++   /*int hidden = 0;
++   // Handle when the rejected items need to be added as children
++   if (d_ptr->m_AddChildren && (hidden = hiddenSiblingCount(parent))) {
++      const QModelIndex src = mapToSource(parent);
++
++      // Only add the children if there is none
++      int parentRowCount = sourceModel()->rowCount(src);
++
++      if (!parentRowCount)
++         return hidden;
++   }*/
++
++   return QSortFilterProxyModel::rowCount(parent); //TODO
++}
++
++QVariant DeduplicateProxy::data( const QModelIndex& index, int role ) const
++{
++   if (d_ptr->m_isHiddenRoleSet && role == d_ptr->m_HiddenRoleId)
++      return hiddenSiblingCount(index);
++
++   return QSortFilterProxyModel::data(index, role);
++}
+diff --git a/src/proxies/deduplicateproxy.h b/src/proxies/deduplicateproxy.h
+new file mode 100644
+index 0000000..d2cee28
+--- /dev/null
++++ b/src/proxies/deduplicateproxy.h
+@@ -0,0 +1,97 @@
++/****************************************************************************
++ *   Copyright (C) 2015 by Emmanuel Lepage Vallee                           *
++ *   Author : Emmanuel Lepage Vallee <emmanuel.lepage@savoirfairelinux.com> *
++ *                                                                          *
++ *   This library is free software; you can redistribute it and/or          *
++ *   modify it under the terms of the GNU Lesser General Public             *
++ *   License as published by the Free Software Foundation; either           *
++ *   version 2.1 of the License, or (at your option) any later version.     *
++ *                                                                          *
++ *   This library is distributed in the hope that it will be useful,        *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of         *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU      *
++ *   Lesser General Public License for more details.                        *
++ *                                                                          *
++ *   You should have received a copy of the GNU General Public License      *
++ *   along with this program.  If not, see <http://www.gnu.org/licenses/>.  *
++ ***************************************************************************/
++#ifndef DEDUPLICATEPROXY_H
++#define DEDUPLICATEPROXY_H
++
++#include <functional>
++
++#include <QtCore/QSortFilterProxyModel>
++
++class DeduplicateProxyPrivate;
++
++/**
++ * This proxy take a role and remove additional rows matching the operator==
++ * of the role. It only deduplication indexes without child.
++ *
++ * Further QIdentityProxyModels can be created to extract the number of
++ *
++ * Example:
++ *                         ==Without addChildren==   ==With addChildren==
++ * Foo                          Foo                    Foo
++ *   |->  Bar                     |->  Bar               |->  Bar
++ *   |->  Bar                     |->  Baz                 |->  Bar
++ *   |->  Bar                     |->  Bar                 |->  Bar
++ *   |->  Baz                   Bar                      |->  Baz
++ *   |->  Bar                     |->  Foo               |->  Bar
++ * Bar             ====== >       |->  Baz             Bar
++ *   |->  Foo                   Bar                      |->  Foo
++ *   |->  Baz                     |->  Foo               |->  Baz
++ * Bar                                                 Bar
++ *   |->  Foo                                            |->  Foo
++ *   |->  Foo                                              |->  Foo
++ *
++ * @warning The default role comparaison only work for QVariant basic types \
++ * for custom types, it is better to use the function comparaison
++ *
++ * @note The filter string and sort role will be forwarded down the proxy chain\
++ * so this model can be used as a drop in replacment in existing code TODO
++ */
++class DeduplicateProxy : public QSortFilterProxyModel
++{
++   Q_OBJECT
++
++public:
++   enum class Mode {
++      ROLE,
++      FUNCTION //TODO
++   };
++
++   explicit DeduplicateProxy(QObject* parent = nullptr);
++
++   void addFilterRole(int role);
++
++   QVector<int> filterRoles() const;
++
++   void setComparator(const std::function<bool(const QModelIndex&, const QModelIndex&)>& f); //TODO
++
++   void setHiddenCountRole(int role, const QString& name = QString());
++
++   QList<QModelIndex> hiddenSiblings(const QModelIndex& idx) const;
++
++   void setAddChildren(bool add); //TODO
++
++   int hiddenSiblingCount(const QModelIndex& idx) const;
++
++   bool areChildrenAdded(); //TODO
++   std::function<bool(const QModelIndex&, const QModelIndex&)> comparator(); //TODO
++
++   // Model override
++   virtual bool filterAcceptsRow(int source_row, const QModelIndex& source_parent) const override;
++   virtual void sort ( int column, Qt::SortOrder order) override;
++   virtual void setSourceModel ( QAbstractItemModel * sourceModel ) override;
++   virtual int  rowCount(const QModelIndex& parent) const override;
++   virtual QVariant data( const QModelIndex& index, int role ) const override;
++
++
++
++private:
++   DeduplicateProxyPrivate* d_ptr;
++   Q_DECLARE_PRIVATE(DeduplicateProxy)
++};
++
++#endif
+\ No newline at end of file
+diff --git a/src/proxies/simplerotateproxy.cpp b/src/proxies/simplerotateproxy.cpp
+index ab3fe47..03a9fb1 100644
+--- a/src/proxies/simplerotateproxy.cpp
++++ b/src/proxies/simplerotateproxy.cpp
+@@ -19,6 +19,7 @@
+ 
+ SimpleRotateProxy::SimpleRotateProxy(QObject * parent) : QAbstractProxyModel(parent)
+ {
++   //TODO implement it correctly, this is the lazy way
+    connect(this, &SimpleRotateProxy::sourceModelChanged, [this]() {
+       connect(this->sourceModel(),&QAbstractItemModel::dataChanged,[this](const QModelIndex&, const QModelIndex&) {
+          emit this->layoutChanged();
+@@ -77,10 +78,14 @@ QModelIndex SimpleRotateProxy::parent(const QModelIndex& ) const
+ 
+ int SimpleRotateProxy::rowCount(const QModelIndex& idx) const
+ {
+-   return sourceModel()->columnCount(idx);
++   return idx.parent().isValid() ?
++      sourceModel()->rowCount   (idx) :
++      sourceModel()->columnCount(idx);
+ }
+ 
+ int SimpleRotateProxy::columnCount(const QModelIndex& idx) const
+ {
+-   return sourceModel()->rowCount(idx);
++   return idx.parent().isValid() ?
++      sourceModel()->columnCount(idx) :
++      sourceModel()->rowCount   (idx);
+ }
+diff --git a/src/proxies/simplerotateproxy.h b/src/proxies/simplerotateproxy.h
+index 255ba1c..ce61a03 100644
+--- a/src/proxies/simplerotateproxy.h
++++ b/src/proxies/simplerotateproxy.h
+@@ -36,6 +36,15 @@
+  * displaying them horizontally create a better visual separation.
+  *
+  * 3) The source model is external and display data in inverted order
++ *
++ * Example:
++ *
++ * |-> Foo
++ * |-> Bar                    -----------------
++ * |-> Baz          ====>      |    |    |
++ *   |-> Foobar               Foo  Bar  Baz
++ *   |-> Foobaz                          |-> Foobar
++ *                                       |-> Foobaz
+  */
+ class SimpleRotateProxy : public QAbstractProxyModel
+ {
+-- 
+2.7.0
+

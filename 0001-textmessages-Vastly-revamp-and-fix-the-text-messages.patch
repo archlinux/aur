@@ -1,0 +1,886 @@
+From 8f430e63c139efbd6df69f846963db925ecf1699 Mon Sep 17 00:00:00 2001
+From: Emmanuel Lepage Vallee <elv1313@gmail.com>
+Date: Sun, 13 Dec 2015 06:49:01 -0500
+Subject: [PATCH 1/6] textmessages: Vastly revamp and fix the text messages
+
+They are always neglected because nobody (I know of) use them, but
+many of the issues and regressions have been fixed. A short sumary:
+
+ * New notification for text messages
+ * Show only "readable" text messages
+ * Show the history when selecting the entry widget
+ * Show the entry box when relevant
+ * Set a red color for missed messages tabs
+ * Scroll down to the end automatically
+---
+ src/CMakeLists.txt           |   1 +
+ src/delegates/imdelegate.cpp |  23 +++-
+ src/delegates/imdelegate.h   |   5 +-
+ src/eventmanager.cpp         |  23 ++--
+ src/eventmanager.h           |  11 +-
+ src/mainwindow.cpp           |   3 -
+ src/notification.cpp         | 261 +++++++++++++++++++++++++++++++++++++++++++
+ src/notification.h           |  56 ++++++++++
+ src/view.cpp                 |  64 ++++++++++-
+ src/view.h                   |   2 +
+ src/widgets/immanager.cpp    | 129 +++++++++++++++++++--
+ src/widgets/immanager.h      |  15 ++-
+ 12 files changed, 562 insertions(+), 31 deletions(-)
+ create mode 100644 src/notification.cpp
+ create mode 100644 src/notification.h
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 1b461f9..201f107 100755
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -173,6 +173,7 @@ SET(
+    delegates/toolbardelegate.cpp
+    delegates/kdepixmapmanipulation.cpp
+    proxies/simplerotateproxy.cpp
++   #proxies/valuefilterproxy.cpp
+ )
+ 
+ # Configuration pages
+diff --git a/src/delegates/imdelegate.cpp b/src/delegates/imdelegate.cpp
+index 6467676..bb4a40b 100644
+--- a/src/delegates/imdelegate.cpp
++++ b/src/delegates/imdelegate.cpp
+@@ -20,8 +20,10 @@
+ #include "call.h"
+ #include <media/textrecording.h>
+ #include <QtGui/QPainter>
+-#include <QIcon>
++#include <QtGui/QIcon>
++#include <QtCore/QTimer>
+ #include <QtGui/QFont>
++#include <QtWidgets/QScrollBar>
+ 
+ ///Delegate contructor
+ ImDelegates::ImDelegates(IMTab* parent) : QStyledItemDelegate(parent),m_pParent(parent)
+@@ -70,7 +72,7 @@ void ImDelegates::paint(QPainter* painter, const QStyleOptionViewItem& option, c
+ }
+ 
+ ///Constructor
+-IMTab::IMTab(QAbstractListModel* model,QWidget* parent) : QListView(parent)
++IMTab::IMTab(QAbstractItemModel* model,QWidget* parent) : QListView(parent)
+ {
+    setModel(model);
+    setAlternatingRowColors(true);
+@@ -78,7 +80,14 @@ IMTab::IMTab(QAbstractListModel* model,QWidget* parent) : QListView(parent)
+    setUniformItemSizes(false);
+    setItemDelegate(new ImDelegates(this));
+    setVerticalScrollMode(ScrollPerPixel);
++
++   scrollTo(model->index(model->rowCount()-1,0));
++
++   if (verticalScrollBar())
++      verticalScrollBar()->setValue(verticalScrollBar()->maximum());
++
+    connect(model,SIGNAL(dataChanged(QModelIndex,QModelIndex)),this,SLOT(scrollBottom()));
++   connect(model, &QAbstractItemModel::rowsInserted, this, &IMTab::updateScrollBar);
+ }
+ 
+ ///Scroll to last message
+@@ -86,3 +95,13 @@ void IMTab::scrollBottom()
+ {
+    scrollTo(model()->index(model()->rowCount()-1,0));
+ }
++
++void IMTab::updateScrollBar()
++{
++   if (verticalScrollBar() && verticalScrollBar()->value()
++     == verticalScrollBar()->maximum()) {
++      QTimer::singleShot(0,[this]() {
++         verticalScrollBar()->setValue(verticalScrollBar()->maximum());
++      });
++   }
++}
+diff --git a/src/delegates/imdelegate.h b/src/delegates/imdelegate.h
+index d809e67..4692de8 100644
+--- a/src/delegates/imdelegate.h
++++ b/src/delegates/imdelegate.h
+@@ -22,7 +22,7 @@
+ #include <QtWidgets/QListView>
+ #include <QtWidgets/QStyledItemDelegate>
+ 
+-class QAbstractListModel;
++class QAbstractItemModel;
+ class IMTab;
+ 
+ class ImDelegates : public QStyledItemDelegate
+@@ -41,9 +41,10 @@ class IMTab : public QListView
+ {
+    Q_OBJECT
+ public:
+-   explicit IMTab(QAbstractListModel* model,QWidget* parent = nullptr);
++   explicit IMTab(QAbstractItemModel* model,QWidget* parent = nullptr);
+ private Q_SLOTS:
+    void scrollBottom();
++   void updateScrollBar();
+ };
+ 
+ #endif // IM_MANAGER
+diff --git a/src/eventmanager.cpp b/src/eventmanager.cpp
+index 39bb3be..7e22c4d 100644
+--- a/src/eventmanager.cpp
++++ b/src/eventmanager.cpp
+@@ -47,6 +47,8 @@
+ #include "widgets/callviewoverlay.h"
+ #include "widgets/autocompletion.h"
+ 
++bool EventManager::m_HasFocus = false;
++
+ //This code detect if the window is active, innactive or minimzed
+ class MainWindowEvent : public QObject {
+    Q_OBJECT
+@@ -57,13 +59,7 @@ public:
+ protected:
+    virtual bool eventFilter(QObject *obj, QEvent *event)  override {
+       Q_UNUSED(obj)
+-      if (event->type() == QEvent::FocusIn || event->type() == QEvent::FocusOut) {
+-         QFocusEvent* e = static_cast<QFocusEvent*>(event);
+-         if (e->reason() == Qt::ActiveWindowFocusReason) {
+-            qDebug() << "ACTIVE WINDOW EVENT";
+-         }
+-      }
+-      else if (event->type() == QEvent::WindowStateChange) {
++      if (event->type() == QEvent::WindowStateChange) {
+          QWindowStateChangeEvent* e = static_cast<QWindowStateChangeEvent*>(event);
+          switch (MainWindow::app()->windowState()) {
+             case Qt::WindowMinimized:
+@@ -81,6 +77,12 @@ protected:
+       else if (event->type() == QEvent::KeyPress) {
+          m_pParent->viewKeyEvent(static_cast<QKeyEvent*>(event));
+       }
++      else if (event->type() == QEvent::WindowDeactivate) {
++         m_pParent->m_HasFocus = false;
++      }
++      else if (event->type() == QEvent::WindowActivate) {
++         m_pParent->m_HasFocus = true;
++      }
+       return false;
+    }
+ 
+@@ -495,7 +497,7 @@ void EventManager::enter()
+ ///Macros needs to be executed at high level so the animations kicks in
+ void EventManager::addDTMF(const QString& sequence)
+ {
+-   if (sequence == "\n")
++   if (sequence == QLatin1String("\n"))
+       enter();
+    else
+       typeString(sequence);
+@@ -613,4 +615,9 @@ void EventManager::slotNetworkDown()
+    m_pParent->m_pCanvasManager->newEvent(CanvasObjectManager::CanvasEvent::NETWORK_ERROR);
+ }
+ 
++bool EventManager::mayHaveFocus()
++{
++   return m_HasFocus;
++}
++
+ #include "eventmanager.moc"
+diff --git a/src/eventmanager.h b/src/eventmanager.h
+index 3d8febd..22e9202 100644
+--- a/src/eventmanager.h
++++ b/src/eventmanager.h
+@@ -56,14 +56,21 @@ public:
+    //Implement macro key listener
+    virtual void addDTMF(const QString& sequence) override;
+ 
++   /**
++    * An unreliable way to track the application focus
++    *
++    * It is better than nothing
++    */
++   static bool mayHaveFocus();
+ 
+ protected:
+    virtual bool eventFilter(QObject *obj, QEvent *event) override;
+ 
+ private:
+    //Attributes
+-   View*        m_pParent       ;
+-   MainWindowEvent*     m_pMainWindowEv ;
++   View*            m_pParent        ;
++   MainWindowEvent* m_pMainWindowEv  ;
++   static bool      m_HasFocus       ;
+ 
+    //Methods
+    bool viewKeyEvent      ( QKeyEvent*       e);
+diff --git a/src/mainwindow.cpp b/src/mainwindow.cpp
+index 0f430fb..d8f3993 100755
+--- a/src/mainwindow.cpp
++++ b/src/mainwindow.cpp
+@@ -94,9 +94,6 @@ MainWindow* MainWindow::m_sApp = nullptr;
+ 
+ static void loadNumberCategories()
+ {
+-//    QList<int> list = ConfigurationSkeleton::phoneTypeList();
+-//    const bool isEmpty = !list.size();
+-// #define IS_ENABLED(name) (list.indexOf(name) != -1) || isEmpty
+    auto& model = NumberCategoryModel::instance();
+ #define ICN(name) QPixmap(QString(":/mini/icons/miniicons/%1.png").arg(name))
+    model.addCategory(i18n("Home")     ,ICN("home")     , 1 /*KABC::PhoneNumber::Home */);
+diff --git a/src/notification.cpp b/src/notification.cpp
+new file mode 100644
+index 0000000..5e4e2f4
+--- /dev/null
++++ b/src/notification.cpp
+@@ -0,0 +1,261 @@
++/***************************************************************************
++ *   Copyright (C) 2015 by Emmanuel Lepage Vallee                          *
++ *   Author : Emmanuel Lepage Vallee <emmanuel.lepage@savoirfairelinux.com>*
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or modify  *
++ *   it under the terms of the GNU General Public License as published by  *
++ *   the Free Software Foundation; either version 3 of the License, or     *
++ *   (at your option) any later version.                                   *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
++ **************************************************************************/
++#include "notification.h"
++
++
++// Qt
++#include <QtWidgets/QApplication>
++
++// KDE
++#include <KNotification>
++#include <KLocalizedString>
++
++// LRC
++#include <callmodel.h>
++#include <accountmodel.h>
++#include <call.h>
++#include <person.h>
++#include <contactmethod.h>
++#include <numbercategory.h>
++#include <useractionmodel.h>
++#include <media/textrecording.h>
++#include <media/recordingmodel.h>
++
++// Ring-KDE
++#include <mainwindow.h>
++#include <view.h>
++#include <eventmanager.h>
++
++#define REGISTER_ACTION(list, var, name)  list << name;var = list.size();
++
++
++/*
++ * IncomingCallNotification
++ */
++
++class IncomingCallNotification : public KNotification
++{
++   Q_OBJECT
++
++public:
++   explicit IncomingCallNotification(Call* c);
++
++private:
++   uint m_Answer      {99};
++   uint m_AnswerVideo {99};
++   uint m_HangUp      {99};
++
++   Call* m_pCall;
++
++private Q_SLOTS:
++   void stateChanged(Call::LifeCycleState newState, Call::LifeCycleState previousState);
++   void actionPerformed(uint actionId);
++};
++
++IncomingCallNotification::IncomingCallNotification(Call* call) : KNotification(
++   QStringLiteral("incomingCall"), MainWindow::view(), NotificationFlag::Persistent  ),
++   m_pCall(call)
++{
++
++   const Person* contact = call->peerContactMethod()->contact();
++   if (contact) {
++
++      const QPixmap px = (contact->photo()).type() == QVariant::Pixmap ? (contact->photo()).value<QPixmap>():QPixmap();
++      setPixmap(px);
++   }
++
++   setTitle(i18n("New incoming call"));
++
++   setText(i18n("New call from <b>%1</b>\n<i>(%2)</i>"
++      ,call->formattedName()
++      ,call->peerContactMethod()->uri()
++   ));
++
++   QStringList actions;
++
++   REGISTER_ACTION(actions, m_Answer, i18n( "Answer"  ))
++   REGISTER_ACTION(actions, m_HangUp, i18n( "Hang up" ))
++
++   //TODO support answer without video
++
++   setActions(actions);
++
++   addContext(QStringLiteral("contact"), call->peerContactMethod()->category()->name());
++
++   connect(call, &Call::lifeCycleStateChanged, this, &IncomingCallNotification::stateChanged);
++
++   connect(this, SIGNAL(activated(uint)), this , SLOT(actionPerformed(uint)));
++}
++
++void IncomingCallNotification::stateChanged(Call::LifeCycleState newState, Call::LifeCycleState previousState)
++{
++   Q_UNUSED(previousState)
++
++   if (newState != Call::LifeCycleState::INITIALIZATION) {
++
++      close();
++
++      deleteLater();
++   }
++}
++
++void IncomingCallNotification::actionPerformed(uint actionId)
++{
++   if (actionId == m_Answer) {
++      m_pCall << Call::Action::ACCEPT;
++   }
++   else if (actionId == m_HangUp) {
++      m_pCall << Call::Action::REFUSE;
++   }
++}
++
++
++/*
++ * Text message notification
++ */
++class IncomingTextNotification : public KNotification
++{
++   Q_OBJECT
++public:
++   explicit IncomingTextNotification(ContactMethod* cm, Media::TextRecording* t);
++   void actionPerformed(uint actionId);
++};
++
++IncomingTextNotification::IncomingTextNotification(ContactMethod* cm, Media::TextRecording* t) : KNotification(
++   QStringLiteral("incomingText"), MainWindow::view())
++{
++   setTitle(i18n("Message from %1", cm->primaryName()));
++
++   if (auto contact = cm->contact()) {
++
++      const QPixmap px = (contact->photo()).type() == QVariant::Pixmap ? (contact->photo()).value<QPixmap>():QPixmap();
++      setPixmap(px);
++   }
++
++   setText(t->instantTextMessagingModel()->index(
++      t->instantTextMessagingModel()->rowCount()-1, 0
++   ).data().toString());
++}
++
++void IncomingTextNotification::actionPerformed(uint actionId)
++{
++   Q_UNUSED(actionId)
++}
++
++/*
++ * CreateContactNotification
++ */
++
++class CreateContactNotification : public KNotification
++{
++   Q_OBJECT
++
++public:
++   explicit CreateContactNotification(ContactMethod* cm);
++
++private:
++   uint m_Yes   {99};
++   uint m_No    {99};
++   uint m_Never {99};
++
++private Q_SLOTS:
++   void actionPerformed(uint actionId);
++};
++
++CreateContactNotification::CreateContactNotification(ContactMethod* cm) :KNotification(
++   QStringLiteral("incomingCall"), MainWindow::view())
++{
++   setTitle(i18n("Add %1 to contacts?", cm->uri()));
++
++   setText(i18n("Do you wish to add %1 to your addressbook?", cm->primaryName()));
++
++   QStringList actions;
++
++   REGISTER_ACTION(actions, m_Yes  , i18n( "Yes"              ))
++   REGISTER_ACTION(actions, m_No   , i18n( "No"               ))
++   REGISTER_ACTION(actions, m_Never, i18n( "Do not ask again" ))
++
++   setActions(actions);
++
++   connect(this, SIGNAL(activated(uint)), this , SLOT(actionPerformed(uint)));
++}
++
++void CreateContactNotification::actionPerformed(uint actionId)
++{
++   if (actionId == m_Yes) {
++      //TODO do something
++   }
++   else if (actionId == m_No) {
++      //Nothing to do
++   }
++   else if (actionId == m_Never) {
++      //TODO edit the config to disable this notification
++   }
++
++   deleteLater();
++}
++
++
++
++
++Notification::Notification(QObject* parent) : QObject(parent)
++{
++   connect(&CallModel::instance(), &CallModel::incomingCall, this, &Notification::incomingCall);
++   connect(&AccountModel::instance(), &AccountModel::accountStateChanged, this, &Notification::accountStatus);
++   connect(&Media::RecordingModel::instance(), &Media::RecordingModel::newTextMessage, this, &Notification::incomingText);
++}
++
++Notification* Notification::instance()
++{
++   static auto i = new Notification(QApplication::instance());
++
++   return i;
++}
++
++void Notification::contactOnline()
++{
++   //TODO fix the presence model
++}
++
++void Notification::accountStatus(Account* a, const Account::RegistrationState state)
++{
++   Q_UNUSED(a)
++   Q_UNUSED(state)
++   //TODO
++}
++
++void Notification::incomingCall(Call* call)
++{
++   if (call)
++      (new IncomingCallNotification(call))->sendEvent();
++}
++
++void Notification::incomingText(Media::TextRecording* t, ContactMethod* cm)
++{
++   if (t && !EventManager::mayHaveFocus())
++      (new IncomingTextNotification(cm, t))->sendEvent();
++}
++
++void Notification::createContact()
++{
++   //TODO
++}
++
++#undef REGISTER_ACTION
++
++#include <notification.moc>
+diff --git a/src/notification.h b/src/notification.h
+new file mode 100644
+index 0000000..73d2d34
+--- /dev/null
++++ b/src/notification.h
+@@ -0,0 +1,56 @@
++/***************************************************************************
++ *   Copyright (C) 2015 by Emmanuel Lepage Vallee                          *
++ *   Author : Emmanuel Lepage Vallee <emmanuel.lepage@savoirfairelinux.com>*
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or modify  *
++ *   it under the terms of the GNU General Public License as published by  *
++ *   the Free Software Foundation; either version 3 of the License, or     *
++ *   (at your option) any later version.                                   *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
++ **************************************************************************/
++#ifndef NOTIFICATION_H
++#define NOTIFICATION_H
++
++#include <QtCore/QObject>
++
++#include <account.h>
++class Call;
++class ContactMethod;
++namespace Media {
++   class TextRecording;
++}
++
++/**
++ * This singleton class watch and reatch on events to provide system
++ * notifications.
++ */
++class Notification : public QObject
++{
++   Q_OBJECT
++
++public:
++   explicit Notification(QObject* parent = nullptr);
++
++   void contactOnline();
++
++   void accountStatus(Account* a, const Account::RegistrationState state);
++
++
++   void incomingText(Media::TextRecording* t, ContactMethod* cm);
++
++   void createContact();
++
++   static Notification* instance();
++
++private Q_SLOTS:
++   void incomingCall(Call* c);
++};
++
++#endif
+\ No newline at end of file
+diff --git a/src/view.cpp b/src/view.cpp
+index 1188887..31ab04d 100644
+--- a/src/view.cpp
++++ b/src/view.cpp
+@@ -58,6 +58,30 @@
+ #include <tip/tipmanager.h>
+ #include "implementation.h"
+ 
++class FocusWatcher : public QObject
++{
++   Q_OBJECT
++public:
++   explicit FocusWatcher(QObject* parent = nullptr) : QObject(parent)
++   {
++      if (parent)
++         parent->installEventFilter(this);
++   }
++   virtual bool eventFilter(QObject *obj, QEvent *event) override
++   {
++      Q_UNUSED(obj)
++      if (event->type() == QEvent::FocusIn)
++         emit focusChanged(true);
++      else if (event->type() == QEvent::FocusOut)
++         emit focusChanged(false);
++
++      return false;
++   }
++
++Q_SIGNALS:
++   void focusChanged(bool in);
++};
++
+ ///Constructor
+ View::View(QWidget *parent)
+    : QWidget(parent),m_pTransferOverlay(nullptr),m_pAutoCompletion(nullptr)
+@@ -80,7 +104,9 @@ View::View(QWidget *parent)
+ 
+    //Create a call already, the app is useless without one anyway
+    m_pView->selectionModel()->setCurrentIndex(
+-      CallModel::instance().getIndex(CallModel::instance().dialingCall()),
++      CallModel::instance().rowCount() ?
++         CallModel::instance().index(0, 0)
++         : CallModel::instance().getIndex(CallModel::instance().dialingCall()),
+       QItemSelectionModel::SelectCurrent
+    );
+ 
+@@ -107,7 +133,13 @@ View::View(QWidget *parent)
+ 
+    GlobalInstances::setInterface<ColorDelegate>(pal);
+ 
+-   m_pMessageBoxW->setVisible(false);
++   const QModelIndex currentIndex = CallModel::instance().selectionModel()->currentIndex();
++
++   m_pMessageBoxW->setVisible(
++      qvariant_cast<Call::LifeCycleState>(currentIndex.data((int)Call::Role::LifeCycleState))
++         == Call::LifeCycleState::PROGRESS
++   );
++   connect(new FocusWatcher(m_pSendMessageLE), &FocusWatcher::focusChanged, this, &View::displayHistory);
+ 
+    //Setup volume
+    toolButton_recVol->setDefaultAction(ActionCollection::instance()->muteCaptureAction ());
+@@ -125,6 +157,8 @@ View::View(QWidget *parent)
+    /**/connect(widget_dialpad               , &Dialpad::typed                               , m_pEventManager, &EventManager::typeString              );
+    /*                                                                                                                                                 */
+ 
++   connect(m_pView->selectionModel(), &QItemSelectionModel::currentChanged, this, &View::updateTextBoxStatus);
++
+    //Auto completion
+    loadAutoCompletion();
+ 
+@@ -137,7 +171,6 @@ View::View(QWidget *parent)
+ 
+    setFocus(Qt::OtherFocusReason);
+ 
+-   loadAutoCompletion    ();
+    widget_dialpad->setVisible(ConfigurationSkeleton::displayDialpad());
+    Audio::Settings::instance().setEnableRoomTone(ConfigurationSkeleton::enableRoomTone());
+ }
+@@ -278,4 +311,29 @@ void View::slotAutoCompleteClicked(ContactMethod* n) //TODO use the new LRC API
+    }
+ }
+ 
++void View::updateTextBoxStatus()
++{
++   static bool display = ConfigurationSkeleton::displayMessageBox();
++   if (display) {
++      Call* call = CallModel::instance().selectedCall();
++      m_pMessageBoxW->setVisible(call
++         && (call->lifeCycleState() == Call::LifeCycleState::PROGRESS)
++      );
++   }
++}
++
++void View::displayHistory(bool in)
++{
++   if (!in)
++      return;
++
++   Call* call = CallModel::instance().selectedCall();
++
++   if (call->lifeCycleState() == Call::LifeCycleState::PROGRESS) {
++      m_pMessageTabBox->showConversation(call->peerContactMethod());
++   }
++
++   m_pMessageTabBox->clearColor();
++
++}
+ #include "view.moc"
+diff --git a/src/view.h b/src/view.h
+index d67f63b..f61c3fa 100644
+--- a/src/view.h
++++ b/src/view.h
+@@ -77,6 +77,8 @@ private Q_SLOTS:
+    void sendMessage          ();
+    void slotAutoCompleteClicked(ContactMethod* n);
+    void loadAutoCompletion   ();
++   void updateTextBoxStatus  ();
++   void displayHistory       (bool);
+ 
+ public Q_SLOTS:
+    void updateVolumeControls ();
+diff --git a/src/widgets/immanager.cpp b/src/widgets/immanager.cpp
+index 4afd45a..d486fbd 100644
+--- a/src/widgets/immanager.cpp
++++ b/src/widgets/immanager.cpp
+@@ -19,37 +19,139 @@
+ #include "call.h"
+ #include "callmodel.h"
+ #include "contactmethod.h"
++#include "person.h"
+ #include <media/text.h>
+ #include <media/textrecording.h>
++#include <media/recordingmodel.h>
+ #include "../delegates/imdelegate.h"
++#include <eventmanager.h>
++
++//KDE
++#include <KColorScheme>
+ #include <klocalizedstring.h>
+ 
++// Qt
++#include <QtWidgets/QScrollBar>
++#include <QtGui/QPixmap>
++#include <QtCore/QTimer>
++
+ ///Constructor
+ IMManager::IMManager(QWidget* parent) : QTabWidget(parent)
+ {
+    setVisible(false);
+    setTabsClosable(true);
+ 
+-   connect(&CallModel::instance(), &CallModel::mediaAdded,[this](Call* c, Media::Media* m) {
+-      if (m->type() == Media::Media::Type::TEXT) {
++   connect(&CallModel::instance(), &CallModel::mediaAdded, this, &IMManager::addMedia);
+ 
+-         Media::Text* media = static_cast<Media::Text*>(m);
++   connect(this,SIGNAL(tabCloseRequested(int)),this,SLOT(closeRequest(int)));
+ 
+-         newConversation(c->peerContactMethod(),media->recording()->instantMessagingModel());
+-      }
+-   });
++   connect(&Media::RecordingModel::instance(), &Media::RecordingModel::newTextMessage, this, &IMManager::newMessageInserted);
++
++   foreach(Call* c, CallModel::instance().getActiveCalls()) {
++      if (c->hasMedia(Media::Media::Type::TEXT, Media::Media::Direction::IN))
++         addMedia(c, c->firstMedia<Media::Text>(Media::Media::Direction::IN));
++      else if (c->hasMedia(Media::Media::Type::TEXT, Media::Media::Direction::OUT))
++         addMedia(c, c->firstMedia<Media::Text>(Media::Media::Direction::OUT));
++   }
++
++   connect(this, &IMManager::currentChanged, this, &IMManager::clearColor);
++}
++
++void IMManager::newMessageInserted(Media::TextRecording* r, ContactMethod* cm)
++{
++   if (!r->instantMessagingModel()->index(
++         r->instantMessagingModel()->rowCount()-1, 0
++      ).data((int)Media::TextRecording::Role::HasText).toBool()
++   )
++      return;
++
++   IMTab* tab = nullptr;
++
++   if (!(tab  = m_lTabs[cm]))
++      tab = newConversation(cm, r->instantTextMessagingModel());
++
++   if (currentWidget() != tab
++     || (!EventManager::mayHaveFocus())
++     || tab->verticalScrollBar()->value() != tab->verticalScrollBar()->maximum()) {
++      static QColor awayBrush = KStatefulBrush( KColorScheme::Window, KColorScheme::NegativeText ).brush(QPalette::Normal).color();
++
++      tabBar()->setTabTextColor(indexOf(tab), awayBrush);
++   }
+ 
+-   connect(this,SIGNAL(tabCloseRequested(int)),this,SLOT(closeRequest(int)));
++}
++
++void IMManager::addMedia(Call* c, Media::Media* m)
++{
++   if (m->type() == Media::Media::Type::TEXT) {
++
++      Media::Text* media = static_cast<Media::Text*>(m);
++
++      bool isRelevant = media->hasMimeType(QStringLiteral("text/plain"))
++         || media->hasMimeType(QStringLiteral("text/html"));
++
++      auto cm = c->peerContactMethod();
++
++      if (!isRelevant) {
++         connect(media, &Media::Text::mimeTypesChanged, [this, media, cm]() {
++            bool isRelevant = media->hasMimeType(QStringLiteral("text/plain"))
++               || media->hasMimeType(QStringLiteral("text/html"));
++
++            if (isRelevant)
++               newConversation(cm, media->recording()->instantTextMessagingModel());
++
++         });
++      }
++   }
+ }
+ 
+ ///Destructor
+-void IMManager::newConversation(ContactMethod* cm, QAbstractListModel* model)
++IMTab* IMManager::newConversation(ContactMethod* cm, QAbstractItemModel* model)
+ {
++   if (auto tab = m_lTabs[cm]) {
++      setCurrentWidget(m_lTabs[cm]);
++      setVisible(true);
++      return tab;
++   }
++
+    IMTab* newTab = new IMTab(model,this);
+    m_lTabs[cm] = newTab;
+    setVisible(true);
+    const QString name = cm->primaryName();
+-   addTab(newTab,name);
++
++   if (cm->contact())
++      setCurrentIndex(addTab(newTab,qvariant_cast<QPixmap>(cm->contact()->photo()), name));
++   else
++      setCurrentIndex(addTab(newTab,name));
++
++
++   // If the IMManager widget is not in the view yet, the scrollbar will be wrong
++   QTimer::singleShot(0,[this, model, newTab] {
++      newTab->scrollTo(model->index(model->rowCount()-1,0));
++
++      if (newTab->verticalScrollBar())
++         newTab->verticalScrollBar()->setValue(newTab->verticalScrollBar()->maximum());
++   });
++
++   return newTab;
++}
++
++///Display a conversation from history
++bool IMManager::showConversation(ContactMethod* cm)
++{
++   if (!cm)
++      return false;
++
++   auto textRec = cm->textRecording();
++
++   if (!textRec)
++      return false;
++
++   QAbstractItemModel* model = textRec->instantTextMessagingModel();
++
++   if (model->rowCount())
++      newConversation(cm, model);
++
++   return true;
+ }
+ 
+ ///Close a tab
+@@ -64,3 +166,12 @@ void IMManager::closeRequest(int index)
+          setVisible(false);
+    }
+ }
++
++void IMManager::clearColor(int idx)
++{
++   if (idx == -1)
++      for(int i =0; i < count(); i++)
++         clearColor(i);
++   else
++      tabBar()->setTabTextColor(idx, QColor());
++}
+diff --git a/src/widgets/immanager.h b/src/widgets/immanager.h
+index 37e7c7a..21476df 100644
+--- a/src/widgets/immanager.h
++++ b/src/widgets/immanager.h
+@@ -20,7 +20,7 @@
+ 
+ //Qt
+ #include <QtCore/QHash>
+-class QAbstractListModel;
++class QAbstractItemModel;
+ 
+ //KDE
+ #include <QtWidgets/QTabWidget>
+@@ -28,6 +28,11 @@ class QAbstractListModel;
+ //Ring
+ class IMTab;
+ class ContactMethod;
++class Call;
++namespace Media {
++   class Media;
++   class TextRecording;
++}
+ 
+ class IMManager : public QTabWidget
+ {
+@@ -40,9 +45,15 @@ private:
+    //Attrubutes
+    QHash<ContactMethod*,IMTab*> m_lTabs;
+ 
++public Q_SLOTS:
++   void clearColor(int idx = -1);
++	 bool showConversation(ContactMethod* cm);
++
+ private Q_SLOTS:
+-   void newConversation(ContactMethod* cm, QAbstractListModel* model);
++   IMTab* newConversation(ContactMethod* cm, QAbstractItemModel* model);
+    void closeRequest(int index);
++   void addMedia(Call* c, Media::Media* m);
++   void newMessageInserted(Media::TextRecording* r, ContactMethod* cm);
+ };
+ 
+ #endif // IM_MANAGER
+-- 
+2.7.0
+
