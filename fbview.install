@@ -1,0 +1,6 @@
+post_install(){
+  echo "==> fbview in ONLY intended to be used in a framebuffer from the TTY"
+  echo "    and will NOT be working anywhere else. if you don't know what this"
+  echo "    means, you should probably be using a different viewer."
+  echo ""
+}
