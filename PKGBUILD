@@ -12,7 +12,7 @@ optdepends=('gnome-themes-standard')
 changelog=(${pkgname}.changelog)
 source=("https://github.com/Elbullazul/Windows-10/releases/download/v0.8.4/Windows.10.dark.v0.8.4.zip"
 		"https://github.com/Elbullazul/Windows-10/releases/download/v0.8.4/tint2rc")
-sha1sums=('e14a32bf144b58596ba94b7f407f27b434d326f3'
+sha1sums=('332186e1cb8889194970b1a1629796573921ee1b'
 			'039e19b79d169cee6617936879b8ee638b8bebf7')
 
 package() {
