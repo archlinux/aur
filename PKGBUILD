@@ -32,7 +32,6 @@ build() {
     build/resources/linux/nylas.desktop.in > build/resources/linux/Nylas.desktop
 
   export PYTHON=python2
-  script/bootstrap
   script/build --build-dir "$srcdir/nylas-build"
 }
 
