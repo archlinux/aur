@@ -2,7 +2,7 @@
 
 pkgname=gtk-theme-windows10
 pkgver=0.8.4
-pkgrel=4
+pkgrel=5
 pkgdesc="GTK 3.x Theme made to emulate a Windows 10 environment on Linux machines."
 arch=('any')
 url="https://github.com/Elbullazul/Windows-10"
@@ -26,7 +26,10 @@ package() {
     	install -D -m 644 '{}' "$pkgdir/usr/share/themes/Windows10/{}" \;
 
 	if [ $(pacman -Q openbox | sed 's/ .*//') == "openbox" ]; then
-		install -d -m 644 'tint2rc'  "$pkgdir/~/.config/tint2";
-	fi
+    cd ..
+    install -d -m 700 "$pkgdir/$HOME"
+    install -d -m 744 "$pkgdir/$HOME/.config/tint2"
+    install -D -m 744 'tint2rc' "$HOME/.config/tint2/tint2rc";
+  fi
 }
 
