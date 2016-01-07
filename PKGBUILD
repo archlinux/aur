@@ -2,7 +2,7 @@
 
 pkgname=butter
 pkgver=9
-pkgrel=1
+pkgrel=2
 pkgdesc="butter is a btrfs snapshot manager"
 arch=('any')
 license=('custom:WTFPL')
@@ -11,7 +11,7 @@ depends=('bash' 'btrfs-progs')
 optdepends=('systemd: human-friendly escaped names')
 backup=('etc/butterrc')
 source=("https://github.com/moviuro/butter/archive/${pkgver}.tar.gz")
-sha256sums=('aa59ee7c96d600dfff5270ed1287402a9c9a1650155149060fdb0f29b9995829')
+sha256sums=('1b850ffd989426dd2a2e2af3f66dab74f99bb9c1b37e0cad3f776cbac641d085')
 
 package() {
   install -Dm 0555 "${srcdir}/${pkgname}-${pkgver}/butter" \
