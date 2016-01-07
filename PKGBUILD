@@ -2,7 +2,7 @@
 
 _pkgname='volnoti'
 pkgname="${_pkgname}-hcchu-git"
-pkgver=20151022.c5a94af
+pkgver=latest
 pkgrel=3
 pkgdesc="Lightweight volume notification - hcchu's fork (custom icon)"
 url="https://github.com/hcchu/volnoti"
