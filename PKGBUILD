@@ -1,5 +1,5 @@
 pkgname=telegram-desktop
-pkgver=0.9.17
+pkgver=0.9.18
 pkgrel=1
 _qtver=5.5.1
 pkgdesc='Official desktop version of Telegram messaging app.'
@@ -10,7 +10,7 @@ depends=('ffmpeg' 'icu' 'jasper' 'libexif' 'libmng' 'libwebp' 'libxkbcommon-x11'
 	 'libinput' 'libproxy' 'mtdev' 'openal' 'libva' 'desktop-file-utils'
 	 'gtk-update-icon-cache')
 makedepends=('git' 'patch' 'libunity' 'libappindicator-gtk2')
-source=("tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#commit=b82adc761019bf3e143bb331b4a9cf84abed21f8"
+source=("tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v$pkgver"
 	"http://download.qt-project.org/official_releases/qt/${_qtver%.*}/$_qtver/single/qt-everywhere-opensource-src-$_qtver.tar.xz"
 	"telegramdesktop.desktop"
 	"tg.protocol")
