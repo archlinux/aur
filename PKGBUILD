@@ -5,7 +5,7 @@
 
 _gemname=mini_portile2
 pkgname=ruby-$_gemname
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Simplistic port-like solution for developers. Version 2.x, which is incompatible with v0.6/v0.7.'
 arch=(any)
@@ -15,7 +15,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('147d9f63e3dceb4da9e2036a93b9a6d45b12668c55abe0696f70925aeccacd14')
+sha256sums=('0b0e83fe0fc190640a93c48cef0c8e1f1f40f77840d82c160fefc1b07a5345f8')
 
 
 package() {
