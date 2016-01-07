@@ -5,7 +5,7 @@ arch=('any')
 pkgver=0
 pkgrel=1
 license=('MIT')
-depends=('wireshark-cli=2.0.0')
+depends=('wireshark-cli=2.0.1')
 makedepends=('git')
 source=('zmtp-wireshark::git+https://github.com/whitequark/zmtp-wireshark.git#branch=master')
 md5sums=('SKIP')
@@ -16,7 +16,7 @@ pkgver() {
 }
 
 package() {
-	dir=$pkgdir/usr/lib/wireshark/plugins/2.0.0
+	dir=$pkgdir/usr/lib/wireshark/plugins/2.0.1
 	mkdir -p $dir
 	cp $srcdir/zmtp-wireshark/zmtp-dissector.lua $dir/
 }
