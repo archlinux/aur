@@ -1,8 +1,8 @@
 # Maintainer: Christoph Wiechert <wio@psitrax.de>
 pkgname=purple-facebook
-pkgver=20
+pkgver=21
 pkgrel=1
-VERSION=1852eb9052a0
+VERSION=ad2ee74b913a
 pkgdesc="Facebook Messenger protocol into pidgin, finch, and libpurple"
 url="https://github.com/jgeboski/purple-facebook"
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ depends=('libpurple' 'json-glib')
 
 makedepends=('make')
 source=("https://github.com/jgeboski/purple-facebook/releases/download/${VERSION}/purple-facebook-${VERSION}.tar.gz")
-md5sums=("98503edbd8ab604a93feeaf838a302ed")
+md5sums=("e39bef27bb9f6843ce70bb6f3719939f")
 
 build() {
   cd "${srcdir}/purple-facebook-${VERSION}"
