@@ -2,21 +2,21 @@
 # Maintainer: Lari Tikkanen
 
 pkgname=lightdm-webkit-greeter
-pkgver=0.1.2
-pkgrel=6
+pkgver=1.0
+pkgrel=1
 pkgdesc="A lightweight display manager"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/lightdm-webkit-greeter"
 license=('GPL3' 'LGPL3')
 source=("http://launchpad.net/lightdm-webkit-greeter/trunk/$pkgver/+download/$pkgname-$pkgver.tar.gz")
-depends=('lightdm' 'webkitgtk2' 'gtk-engines')
+depends=('lightdm' 'webkitgtk' 'webkitgtk2' 'gtk-engines')
 options=(!libtool)
 makedepends=('gnome-doc-utils' 'gobject-introspection' 'intltool')
-md5sums=('ff8247d5bbf3026140531061fbf1f51e')
+md5sums=('1df5d78cd7d0ee268ca83a678d1544ca')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
-     LIBS+="-ljavascriptcoregtk-1.0" ./configure --prefix=/usr \
+     LIBS+="-ljavascriptcoregtk-3.0" ./configure --prefix=/usr \
      --sysconfdir=/etc --libexecdir=/usr/lib/lightdm
    make
    
