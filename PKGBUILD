@@ -13,7 +13,7 @@
 
 pkgname=amanda
 pkgver=3.3.7p1
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced Maryland Automatic Network Disk Archiver"
 url="http://www.amanda.org"
 arch=('i686' 'x86_64')
