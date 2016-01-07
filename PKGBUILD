@@ -4,7 +4,7 @@
 
 pkgname=tomahawk
 pkgver=0.8.4
-pkgrel=3
+pkgrel=4
 pkgdesc='A Music Player App written in C++/Qt'
 arch=('i686' 'x86_64')
 url='http://tomahawk-player.org/'
@@ -18,13 +18,18 @@ optdepends=('kdelibs: integration with Plasma Desktop'
             'jreen: Jabber support (required at build time)'
             'snorenotify: Notification support (required at build time)')
 
-source=("http://download.tomahawk-player.org/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('0fb04bc6b7009e17186b3d384057939727c6f289d22f7f9a5ed2c9c9cd800449')
+source=("http://download.tomahawk-player.org/${pkgname}-${pkgver}.tar.bz2"
+        "libechonest-ver.patch")
+sha256sums=('0fb04bc6b7009e17186b3d384057939727c6f289d22f7f9a5ed2c9c9cd800449'
+            '424699b92eb8ea4bff654a425bddc6ecee0ba49176d088e362b545e97957fcf3')
 install=tomahawk.install
 
 prepare() {
   rm -rf "build-qt4"
   mkdir -p "build-qt4"
+
+  # fix libechonest version
+  patch -p0 -i "libechonest-ver.patch"
 }
 
 build() {

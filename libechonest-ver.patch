@@ -1,0 +1,12 @@
+diff -ruN tomahawk-0.8.4.orig/CMakeLists.txt tomahawk-0.8.4/CMakeLists.txt
+--- tomahawk-0.8.4.orig/CMakeLists.txt	2016-01-07 17:39:27.910702980 +0300
++++ tomahawk-0.8.4/CMakeLists.txt	2016-01-07 17:39:49.746567997 +0300
+@@ -263,7 +263,7 @@
+         "Used compiler neither provides std::function nor std::tr1::function")
+ endif()
+ 
+-macro_optional_find_package(Echonest 2.2.0)
++macro_optional_find_package(Echonest)
+ macro_log_feature(ECHONEST_FOUND "Echonest" "Qt library for communicating with The Echo Nest" "http://projects.kde.org/libechonest" TRUE "" "libechonest 2.2.0 is needed for dynamic playlists and the infosystem")
+ 
+ find_package(Boost REQUIRED COMPONENTS filesystem system)
