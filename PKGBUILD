@@ -5,9 +5,9 @@
 # Contributor: Ace <a.mad.coder at gmail dot com>
 
 pkgname=unity-editor
-_version=5.3.0
-_build=f4
-_buildtag=20151218
+_version=5.3.1
+_build=f1
+_buildtag=20160106
 pkgver=${_version}${_build}+${_buildtag}
 pkgrel=3
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
@@ -35,13 +35,13 @@ optdepends=('ffmpeg: for WebGL exporting'
 conflicts=('unity3d')
 replaces=('unity3d')
 install="${pkgname}.install"
-source=("http://download.unity3d.com/download_unity/linux/unity-editor-installer-5.3.0f4+20151218.sh"
+source=("http://download.unity3d.com/download_unity/linux/unity-editor-installer-${pkgver}.sh"
         'EULA'
         'unity-editor'
         'monodevelop-unity'
         'unity-monodevelop.png')
 noextract=("unity-editor-installer-${pkgver}.sh")
-sha256sums=('c27117d7e73d28c12eddf741bf6626007a031959c6d4a89c595692908d8cbd46'
+sha256sums=('34fb654f89060413d30db168b7181102cb1832d05656bee5b6cd69f9c44fd056'
             'aca6e932a624acd98f634428af0b33a36587b6c41887969477db944975d4d8b4'
             'b54b2823b2973729d04b0ca01619f489657ff60908f4367c55c5efffc20df42f'
             '7309ac206fbb6eb5f1a073bf22e2571e1a574410ab410138a19fb66c3eee21e3'
