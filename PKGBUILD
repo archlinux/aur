@@ -1,8 +1,8 @@
 # Maintainer: John D Jones III jnbek1972 __AT__ $mailservice_by_google __DOT__ com
 _npmname=tern
-_npmver=0.16.0
+_npmver=0.17.0
 pkgname=nodejs-tern # All lowercase
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="A JavaScript code analyzer for deep, cross-editor language support"
 arch=(any)
@@ -12,7 +12,7 @@ depends=('nodejs' 'npm')
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=('c695b4092a724b95d09b75cffb50780876452a16')
+sha1sums=('f643a16eb494151f03c3ba553590fd3bd669bb87')
 
 package() {
   cd "$srcdir"
