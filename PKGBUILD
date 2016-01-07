@@ -1,3 +1,4 @@
+# Maintainer: Ivan Puntiy <ivan.puntiy-at-gmail>
 pkgname=mingw-w64-asio
 pkgver=1.10.6
 pkgrel=1
