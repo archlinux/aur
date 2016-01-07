@@ -2,7 +2,7 @@
 # Contributor: Tobias Hunger <tobias DOT hunger AT gmail DOT com>
 
 pkgname=discourse
-pkgver=1.3.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="A simple, flat forum, where replies flow down the page in a line"
 arch=('i686' 'x86_64')
