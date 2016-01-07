@@ -1,7 +1,7 @@
 # $Id$
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 pkgname=webmin
-pkgver=1.770
+pkgver=1.780
 pkgrel=1
 pkgdesc="a web-based interface for system administration"
 arch=(i686 x86_64)
@@ -212,7 +212,7 @@ package() {
 }
 
 
-md5sums=('2b5c9a7e5f82db923971021d2b47aa40'
+md5sums=('d5de2ef2b47de718c7f1addbf0bc2e5c'
          'b0b3e3fb231a12e60165b6b4d604dcfa'
          'bfebb75bb94029b48c46b7f1ba1aa811'
          'fc29ecb6a5cd8c278abe054e60381095')
