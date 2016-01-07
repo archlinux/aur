@@ -11,7 +11,7 @@ makedepends=(git)
 conflicts=(pfds-guile)
 provides=()
 source=()
-md5sums=(SKIP)
+
 _gitname=pfds
 _gitroot="git://github.com/ijp"
 
