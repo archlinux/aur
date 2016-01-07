@@ -1,0 +1,4 @@
+post_install() {
+	echo "for use the themepack insert the following in your definition file or run it directly in powwow"
+	echo "#exe </opt/avwow/main.pow"
+}
