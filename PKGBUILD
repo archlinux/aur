@@ -11,7 +11,7 @@ license=('APACHE')
 depends=('python2' 'mopidy>=0.19' 'mopidy-spotify')
 makedepends=('python2' 'python2-setuptools')
 source=("https://pypi.python.org/packages/source/M/${_pypiname}/${_pypiname}-${pkgver}.tar.gz")
-md5sums=('7ecd48460edc61ee27b644c6fc363ac6')
+md5sums=('f36528005112479f2808617d04288fe2')
 
 package() {
   cd "${srcdir}/${_pypiname}-${pkgver}"
