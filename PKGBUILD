@@ -3,27 +3,27 @@
 # Contributor: vbPadre <vbPadre@gmail.com>
 pkgbase=cndrvcups-lb
 pkgname=cndrvcups-lb
-pkgver=3.00
+pkgver=3.10
 pkgrel=1
 pkgdesc="Canon UFR II /LIPSLX Printer Driver build from source for LBP, iR & MF printers"
 arch=('i686' 'x86_64')
 url="http://support-au.canon.com.au/contents/AU/EN/0100270808.html"
 license=('custom')
 install=${pkgname}.install
-depends_i686=('cndrvcups-common-lb=3.10' 'libxml2')
-depends_x86_64=('cndrvcups-common-lb=3.10' 'lib32-libxml2')
+depends_i686=('cndrvcups-common-lb=3.40' 'libxml2')
+depends_x86_64=('cndrvcups-common-lb=3.40' 'lib32-libxml2')
 makedepends=('autoconf' 'automake')
 conflicts=('cndrvcups-lb-bin' 'cndrvcups-lb-cpca')
-source=(Linux_UFRII_PrinterDriver_V300_uk_EN.tar.gz::'http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwMjcwODEy&cmp=ABS&lang=EN'
+source=(Linux_UFRII_PrinterDriver_V310_uk_EN.tar.gz::'http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwMjcwODEz&cmp=ABS&lang=EN'
        'how-to.txt')
 options=('!emptydirs' '!strip' '!libtool')
-sha512sums=('08139f53b841a1b1bc32b15c6699cea21484c3d8a92a12e196446570ebd1a6f8e2a8ae6984bd3841055edd66399960c438f61c36159f423a8e5510ed3c2d046f'
+sha512sums=('fbfd31630d942cbec015a30df5a435f5d5a4915d09ea5657b80f54f098abf30066dc77117929a439a5f08358806cfd723409fc381d61ee949a2e7b7ad63e1dc9'
             '736e1785c443c4d129c8801a127410012889f46691259e8a7f6a54106a0647beb5b6267aabb78b3ed0a1c7a9d8ce216e159515d3aad425812e5be52c8b58e4ee')
          
 # build instructions are adapted from upstream cndrvcups-lb.spec file
 prepare() {
-    cd "${srcdir}"/Linux_UFRII_PrinterDriver_V300_uk_EN/Sources
-    tar xf "${pkgbase}"-"${pkgver}"-1.tar.gz -C "${srcdir}"
+    cd "${srcdir}"/Linux_UFRII_PrinterDriver_V310_uk_EN/Sources
+    bsdtar xf "${pkgbase}"-"${pkgver}"-1.tar.gz -C "${srcdir}"
 }
 
 build() {
@@ -109,5 +109,5 @@ package() {
     install -m644 LICENSE-*.txt "${pkgdir}"/usr/share/licenses/"${pkgname}/"
     install -m755 -d "${pkgdir}"/usr/share/doc/"${pkgname}"
     install -m644 README* "${pkgdir}"/usr/share/doc/"${pkgname}"
-    install -m644 "${srcdir}"/Linux_UFRII_PrinterDriver_V300_uk_EN/Documents/guide-ufr2-3.0xUK.tar.gz "${pkgdir}"/usr/share/doc/"${pkgname}"/guide-ufr2-3.0xUK.tar.gz
+    install -m644 "${srcdir}"/Linux_UFRII_PrinterDriver_V310_uk_EN/Documents/guide-ufr2-3.1xUK.tar.gz "${pkgdir}"/usr/share/doc/"${pkgname}"
 }
