@@ -1,22 +1,63 @@
-# Maintainer: Gicu GORODENCO <cyclopsihus 'at' gmail 'dot' com>
-
-# The full build fails because of some 32-bit libraries dependency which is difficult to track
-# So KISS - Keep It Simple, Stupid - just take the already compiled binaries from repository ;-)
+# Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
 
 pkgname=lib32-avahi
-pkgver=0.6.31
-pkgrel32=15
-pkgrel=13
-pkgdesc="A multicast/unicast DNS-SD framework"
+pkgver=0.6.32rc
+pkgrel=1
+_commit=bc4e85846991d0efca89add631c7cd16033f0bef
+pkgdesc='Multicast DNS-SD / Zeroconf Suite (32-bit)'
 arch=('x86_64')
-url="http://www.avahi.org/"
-depends=('expat' 'lib32-libdaemon' 'lib32-glib2' 'lib32-dbus-core' 'lib32-libcap' 'lib32-gdbm' 'avahi')
+url='http://git.0pointer.net/avahi.git'
 license=('LGPL')
-groups=lib32
-source=(http://mirrors.kernel.org/archlinux/extra/os/i686/${pkgname/lib32-/}-${pkgver}-${pkgrel32}-i686.pkg.tar.xz)
-sha256sums=('f3ec6c522a881d5151c02ed922b614a064ef33cdfe174e28e0912f8ac8427175')
+depends=('expat' 'lib32-libdaemon' 'lib32-glib2' 'lib32-libdbus' 'lib32-libcap' 'lib32-gdbm' 'avahi')
+makedepends=(git lib32-qt4 pygtk mono intltool python2-dbus gtk-sharp-2 gobject-introspection lib32-gtk3
+             xmltoman python-dbus)
+optdepends=('lib32-gtk3: avahi-discover-standalone, bshell, bssh, bvnc'
+            'lib32-gtk2: gtk2 bindings'
+            'lib32-qt4: qt4 bindings')
+options=(!emptydirs)
+source=("git+https://github.com/heftig/avahi#commit=$_commit")
+sha256sums=('SKIP')
+
+
+prepare() {
+  cd ${pkgname#lib32-}
+  export CC='gcc -m32'
+  export CXX='g++ -m32'
+  export LDFLAGS='-m32'
+  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  NOCONFIGURE=1 ./autogen.sh
+}
+
+build() {
+  cd ${pkgname#lib32-}
+  export MOC_QT4=/usr/bin/moc-qt4 PYTHON=/usr/bin/python2
+
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --sbindir=/usr/bin \
+    --libdir=/usr/lib32 \
+    --disable-monodoc \
+    --disable-qt3 \
+    --enable-compat-libdns_sd \
+    --enable-compat-howl \
+    --with-distro=archlinux \
+    --with-avahi-priv-access-group=network \
+    --with-autoipd-user=avahi \
+    --with-autoipd-group=avahi \
+    --with-systemdsystemunitdir=/usr/lib/systemd/system
+
+  make
+}
 
 package() {
-	mkdir -p ${pkgdir}/usr/lib32
-	cp -rPf ${srcdir}/usr/lib/*.so* ${pkgdir}/usr/lib32
+  cd ${pkgname#lib32-}
+  make DESTDIR="${pkgdir}" install
+
+  # howl compat
+  ln -s avahi-compat-howl.pc "$pkgdir/usr/lib32/pkgconfig/howl.pc"
+
+  # Remove conflicting files.
+  rm -rf "${pkgdir}"/{etc,usr/{share,lib,include,bin,lib32/mono}}
 }
