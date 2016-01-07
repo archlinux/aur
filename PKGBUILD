@@ -2,7 +2,7 @@
 
 pkgname=perl6-json-infer
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Infer Perl 6 Classes from JSON input"
 arch=('any')
 depends=('perl6'
@@ -17,13 +17,6 @@ url="https://github.com/jonathanstowe/JSON-Infer"
 license=('PerlArtistic')
 source=($pkgname-$pkgver::git+https://github.com/jonathanstowe/JSON-Infer)
 sha256sums=('SKIP')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  msg2 'Fixing tests...'
-  sed -i 's/JSON::Fast/JSON::Tiny/' t/020-attribute.t
-}
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
