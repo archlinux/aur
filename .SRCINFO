@@ -1,11 +1,11 @@
 pkgbase = dnscrypt-wrapper
 	pkgdesc = This is dnscrypt wrapper (server-side dnscrypt proxy), which helps to add dnscrypt support to any name resolver.
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dnscrypt.org/
 	arch = x86_64
 	arch = i686
-	license = GPL3
+	license = GPL2
 	depends = libsodium
 	depends = libevent
 	source = https://github.com/Cofyc/dnscrypt-wrapper/archive/v0.2.tar.gz
