@@ -5,13 +5,13 @@
 
 pkgname=wesnoth-devel
 pkgver=1.13.2
-pkgrel=1
+pkgrel=2
 pkgdesc="development version of a turn-based strategy game on a fantasy world"
 arch=('i686' 'x86_64')
 url="http://www.wesnoth.org/"
 license=('GPL')
 depends=('pango>=1.14.8' 'sdl_ttf>=2.0.8' 'sdl_net>=1.2.7' 'sdl_mixer>=1.2.7' 'sdl_image>=1.2.7' 'fribidi>=0.10.9' 'dbus-core' 'python2' 'boost-libs' 'lua' 'desktop-file-utils')
-makedepends=('boost>=1.56.0' 'scons>=0.98.3')
+makedepends=('boost>=1.60.0' 'scons>=0.98.3')
 install=${pkgname}.install
 source=("http://downloads.sourceforge.net/sourceforge/wesnoth/wesnoth-$pkgver.tar.bz2"
     "${pkgname}.desktop"
