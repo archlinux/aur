@@ -1,7 +1,7 @@
 # Maintainer: Lauri Niskanen <ape@ape3000.com>
 
 pkgname=samsungctl
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Remote control Samsung televisions via TCP/IP connection"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python-setuptools')
 makedepends=()
 source=("https://github.com/Ape/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('6f204c0b1361bc763f7a21bb46801da251a1a6c5460ff14f58c1b31c613369fe')
+sha256sums=('958b063fb15b4b92d8b009ba7088277de1927096a080cf7784c459227947c3be')
 
 package() { 
 	cd "$srcdir/$pkgname-$pkgver"
