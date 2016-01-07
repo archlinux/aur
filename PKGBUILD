@@ -2,7 +2,7 @@
 
 pkgname=windows8-cursor
 pkgver=1.01
-pkgrel=1
+pkgrel=2
 pkgdesc="Cursors similliar to Windows 8 cursor"
 arch=('any')
 url="http://gnome-look.org/content/show.php/?content=155025"
@@ -16,6 +16,6 @@ package()
 
 	install -d -m 755 "$pkgdir/usr/share/icons/Windows8-cursor"
 
-	find . -type f -exec \
-		install -D -m 644 '{}' "$pkgdir/usr/share/icons/Windows8-cursor/{}" \;
+	cp -a cursosrs/a "$pkgdir/usr/share/icons/Windows8-cursor/cursors" 
+	install -D -m 644 "index.theme" "$pkgdir/usr/share/icons/Windows8-cursor/index.theme" \;
 }
