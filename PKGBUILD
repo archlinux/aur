@@ -1,9 +1,10 @@
-# Maintainer: Eduardo Leggiero <https://www.leggiero.uk/>
+# Maintainer: Mario Finelli <mario dot finelli at yahoo dot com>
+# Contributor: Eduardo Leggiero <https://www.leggiero.uk/>
 # Contributor: Josh 'jheretic' King <josh at chambana dot net>
 # Contributor: James An <james@jamesan.ca>
 
 pkgname=drush
-pkgver=8.0.0
+pkgver=8.0.1
 pkgrel=1
 pkgdesc="Drush is a command line shell and Unix scripting interface for Drupal"
 arch=('any')
@@ -15,8 +16,8 @@ source=(
     "http://github.com/drush-ops/$pkgname/archive/$pkgver.tar.gz"
     'http://download.pear.php.net/package/Console_Table-1.2.1.tgz'
 )
-md5sums=('133970474ac88ed86e1619f40ec35283'
-         '87e0447d69f396eb755c3a8629a9d8d9')
+md5sums=('cde5243544a6ac076c9ade447f4367e9'
+         '027b5bce93e53111e55b14111118de98')
 
 package() {
     cd "${pkgname}-${pkgver}"
