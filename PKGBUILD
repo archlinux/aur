@@ -7,7 +7,7 @@ url="http://www.splashtop.com/linux#download-client"
 license=('commercial')
 source=(http://d17kmd0va0f0mp.cloudfront.net/linuxclient/splashtop-client_1204_2.4.0.1-1_i386.deb)
 md5sums=('SKIP')
-depends=('apr' 'apr-util' 'bash-completion' 'gcc-libs' 'glibc' 'libavcodec53' 'libavcodec-extra-53' 'libavformat53' 'libavformat-extra-53' 'libavutil51' 'libavutil-extra-51' 'libswscale2' 'libswscale-extra-2' 'openssl' 'python' 'python-crypto' 'sdl')
+depends=('apr' 'apr-util' 'bash-completion' 'gcc-libs' 'glibc' 'openssl' 'python' 'python-crypto' 'sdl')
 # I got the above dependencies from debtap
 
 package() {
@@ -15,3 +15,5 @@ package() {
 	tar xf data.tar.xz --directory data/
 	cp -r data/* ${pkgdir}
 }
+
+# missing deps: 'libavcodec53' 'libavcodec-extra-53' 'libavformat53' 'libavformat-extra-53' 'libavutil51' 'libavutil-extra-51' 'libswscale2' 'libswscale-extra-2'
