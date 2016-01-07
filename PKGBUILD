@@ -1,8 +1,8 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=zoom
-pkgver=1.1.33228.1124
-pkgrel=2
+pkgver=1.1.37479.0107
+pkgrel=1
 pkgdesc="Video Conferencing and Web Conferencing Service"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -13,8 +13,10 @@ depends=('desktop-file-utils' 'lib32-libxml2' 'lib32-libsm' 'lib32-sqlite' 'lib3
 # The dependencies were reconstructed in order to fit the ones from debian
 options=(!strip)
 install=${pkgname}.install
-source=("https://zoom.us/client/latest/ZoomInstaller_i386.deb")
-md5sums=('efbe00aade9b2f14ddd6b7425bc4da39')
+source_x86_64=("https://zoom.us/client/latest/zoom_${pkgver}_amd64.deb")
+source_i686=("https://zoom.us/client/latest/zoom_${pkgver}_i386.deb")
+md5sums_i686=('ec7bb2220765334181bae35247a08fa4')
+md5sums_x86_64=('32233200a1f1892526931b6de25a7957')
 
 package() {
 	bsdtar xf data.tar.xz

@@ -1,7 +1,7 @@
 pkgbase = zoom
 	pkgdesc = Video Conferencing and Web Conferencing Service
-	pkgver = 1.1.33228.1124
-	pkgrel = 2
+	pkgver = 1.1.37479.0107
+	pkgrel = 1
 	url = https://zoom.us/
 	install = zoom.install
 	arch = i686
@@ -23,8 +23,10 @@ pkgbase = zoom
 	depends = gst-plugins-base-libs
 	depends = lib32-libxcb
 	options = !strip
-	source = https://zoom.us/client/latest/ZoomInstaller_i386.deb
-	md5sums = efbe00aade9b2f14ddd6b7425bc4da39
+	source_i686 = https://zoom.us/client/latest/zoom_1.1.37479.0107_i386.deb
+	md5sums_i686 = ec7bb2220765334181bae35247a08fa4
+	source_x86_64 = https://zoom.us/client/latest/zoom_1.1.37479.0107_amd64.deb
+	md5sums_x86_64 = 32233200a1f1892526931b6de25a7957
 
 pkgname = zoom
 
