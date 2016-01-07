@@ -4,17 +4,16 @@
 
 pkgname=libressl
 pkgver=2.3.1
-pkgrel=1
-pkgdesc="FREE version of the SSL/TLS protocol forked from OpenSSL - HIGHLY EXPRIMENTAL ONLY"
-url="http://www.libressl.org/"
+pkgrel=2
+pkgdesc='FREE version of the SSL/TLS protocol forked from OpenSSL - EXPRIMENTAL ONLY'
+url='http://www.libressl.org/'
 arch=('i686' 'x86_64')
 license=('custom:Openssl')
 depends=('glibc')
 optdepends=('ca-certificates')
 backup=('etc/ssl/openssl.cnf')
-# Uncomment this if you know what you are doing - libressl is not yet a replacement of openssl
-#provides=('openssl')
-#conflicts=('openssl')
+provides=('openssl')
+conflicts=('openssl')
 source=(http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/${pkgname}-${pkgver}.tar.gz{,.asc}
         libressl-dummy-rand-egd.patch)
 sha512sums=('ac70d2f09035d63765bb980422c6c6b55ef07f6af4a93fce54748ff3621cf08ef87acfd438797d562dc21ab9b4862992876792deef9310aafdb927e20e27d453'
@@ -24,7 +23,8 @@ validpgpkeys=('A1EB079B8D3EB92B4EBD3139663AF51BD5E4D8D5') # Brent Cook <bcook@op
 
 prepare() {
   cd ${pkgname}-${pkgver}
-  # Dummy RAND_egd() function - Can help to compile some stuff - See https://blog.hboeck.de/archives/851-LibreSSL-on-Gentoo.html
+  # Dummy RAND_egd() function - Can help to compile some stuff
+  # https://blog.hboeck.de/archives/851-LibreSSL-on-Gentoo.html
   patch -p1 < ../libressl-dummy-rand-egd.patch
   # fix manpage symlink locations
   sed -ri 's|(ln -sf )(.+) (.+)|\1\2.gz \3.gz|g' man/Makefile.in
