@@ -2,7 +2,7 @@
 
 _pkgname='vol'
 pkgname="${_pkgname}-git"
-pkgver=20141030.0c16674
+pkgver=latest
 pkgrel=1
 pkgdesc="Volument control and notification (PulseAudio, pamixer and volnoti) - klassiker's fork"
 url="https://github.com/klassiker/vol.sh"
