@@ -2,7 +2,7 @@
 # Contributor: magedon <magedon.zt@gmail.com>
 
 pkgname=bin32-firefox-i18n
-pkgver=42.0
+pkgver=43.0.1
 pkgrel=1
 pkgdesc="Universal i18n for bin32-firefox - xpi version"
 arch=('x86_64')
