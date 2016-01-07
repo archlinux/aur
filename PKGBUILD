@@ -1,7 +1,7 @@
 pkgname=purple-skypeweb
 _pkgname=skypeweb
 _parentname=skype4pidgin
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 arch=('any')
 license=('GPLv3')
@@ -10,8 +10,8 @@ url="https://github.com/EionRobb/skype4pidgin/tree/master/skypeweb"
 depends=('libpurple' 'json-glib')
 makedepends=('pkg-config')
 
-source=("$pkgname"::"https://github.com/EionRobb/$_parentname/archive/v$pkgver.tar.gz")
-sha512sums=('324d1832b3dcb7c7ff3039bd455da8ea0128b30b1778d98bb6fb90ea7b9aaf4f59711c8ed5480f96fd2c75dc7ca1c3033d9b957438289d5815a09881723ff761')
+source=("$pkgname"::"https://github.com/EionRobb/$_parentname/archive/$pkgver.tar.gz")
+sha512sums=('bf293ddfac8839c720e6a1e3c594d764d9a2ec876ed201dfcaf62c3f6eba4d6260dcd0bd06e8af60e2c61942396cad9ff76c7be3f5586927ae6ebcd2971d7280')
 
 build() {
     cd "$srcdir/$_parentname-$pkgver/$_pkgname"
