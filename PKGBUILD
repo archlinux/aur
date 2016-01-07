@@ -6,13 +6,13 @@
 _use_zeroc_ice="0"
 
 pkgname=murmur-git
-pkgver=1.2.5.606.g2c0d37f
+pkgver=1.2.5.937.gc22393e
 pkgrel=1
 pkgdesc="The voice chat application server for Mumble (git version)"
 arch=('i686' 'x86_64')
 url="http://mumble.sourceforge.net"
 license=('BSD')
-depends=('avahi' 'lsb-release' 'protobuf' 'qt4' 'icu')
+depends=('avahi' 'lsb-release' 'protobuf' 'qt5-base')
 
 if [[ ${_use_zeroc_ice} == "1" ]]; then
     depends=( "${depends[@]}" zeroc-ice )
@@ -43,9 +43,9 @@ build() {
     # build
 
     if [[ $_use_zeroc_ice == "1" ]]; then
-        qmake-qt4 main.pro CONFIG+="no-client"
+        qmake-qt5 main.pro CONFIG+="no-client"
     else
-        qmake-qt4 main.pro CONFIG+="no-client no-ice"
+        qmake-qt5 main.pro CONFIG+="no-client no-ice"
     fi
 
     make release
