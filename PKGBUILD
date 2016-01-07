@@ -18,7 +18,8 @@ optdepends=('bin32-firefox-i18n: i18n support'
             'bin32-acroread: adobe reader plugin'
             'bin32-icedtea-web: java plugin'
             'lib32-librsvg: svg_loader.so library'
-            'lib32-gtk-engines: libclearlooks.so library')
+            'lib32-gtk-engines: libclearlooks.so library'
+            'lib32-ffmpeg: extra codec support (x264)')
 source=("https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/linux-$_arch/en-US/firefox-$pkgver.tar.bz2"
         'firefox32.desktop' 'firefox32-safe.desktop' 'mozplugin.patch')
 md5sums=('f8a5ceb0b738d0ae3e9c0a41fca51162'
