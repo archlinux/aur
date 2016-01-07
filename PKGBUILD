@@ -6,7 +6,7 @@ arch=('i686' 'x86_64')
 url="http://www.splashtop.com/linux#download-client"
 license=('commercial')
 source=(http://d17kmd0va0f0mp.cloudfront.net/linuxclient/splashtop-client_1204_2.4.0.1-1_i386.deb)
-md5sums=('SKIP')
+md5sums=('e775988a7897b70724b5c3a7a188148b')
 depends=('apr' 'apr-util' 'bash-completion' 'gcc-libs' 'glibc' 'openssl' 'python' 'python-crypto' 'sdl')
 # I got the above dependencies from debtap
 
