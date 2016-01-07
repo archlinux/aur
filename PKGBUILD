@@ -2,7 +2,7 @@
 
 pkgname=mopidy-spotmop
 _pypiname=Mopidy-Spotmop
-pkgver=2.4.12
+pkgver=2.5.1
 pkgrel=1
 pkgdesc='A Mopidy Web client that utilizes the Spotify and EchoNest frameworks.'
 arch=('any')
