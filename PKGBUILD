@@ -2,12 +2,13 @@
 
 pkgname=yegonesh
 pkgver=20151102
-pkgrel=1
+pkgrel=2
 pkgdesc="Yeganesh-like dmenu wrapper written in Go"
 arch=('x86_64' 'i686')
 url="http://github.com/klowner/yegonesh"
 license=('MIT')
-depends=('go' 'dmenu')
+makedepends=('go')
+depends=('dmenu')
 options=('!strip' '!emptydirs')
 source=(
   'https://raw.githubusercontent.com/Klowner/yegonesh/master/main.go'
