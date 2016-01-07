@@ -11,7 +11,7 @@
 # Contributor: Michael DeHaan <michael@ansible.com>
 
 pkgname=ansible-git
-pkgver=2.1.17263.9b81c35
+pkgver=2.1.0.17615.d26d76e
 pkgrel=1
 pkgdesc='Radically simple IT automation platform'
 arch=('any')
@@ -28,7 +28,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  printf "%s.%s.%s" "$(cat VERSION | cut -d ' ' -f1)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.%s.%s" "$(cat VERSION)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
