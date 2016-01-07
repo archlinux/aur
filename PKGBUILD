@@ -6,7 +6,7 @@
 pkgname=libqglviewer-qt4
 _pkgname=libQGLViewer
 pkgver=2.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc="C++ library based on Qt that eases the creation of OpenGL 3D viewers"
 url="http://www.libqglviewer.com/"
 depends=('qt4' 'glu' 'mesa')
@@ -23,7 +23,7 @@ build()
 {
   cd ${_pkgname}-${pkgver}
   patch -p1 < ../qglviewer.patch
-  qmake-qt4 PREFIX=/usr/local -o Makefile ${_pkgname}-${pkgver}.pro || return 1
+  qmake-qt4 PREFIX=/usr -o Makefile ${_pkgname}-${pkgver}.pro || return 1
 
   make \
     CFLAGS="-pipe ${CFLAGS} -D_REENTRANT -Wall -W -fPIC \$(DEFINES)" \
