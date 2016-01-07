@@ -1,6 +1,6 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-withfw
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc='A slender monospace typeface inspired by Pragmata Pro, M+ and PF DIN Mono. Variant: Iosevka plus full-width characters.'
 arch=('any')
@@ -11,7 +11,7 @@ conflicts=('ttf-iosevka' 'ttf-iosevka-variant-hooky' 'ttf-iosevka-variant-zshape
 install=${pkgname}.install
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/withfw-iosevka-${pkgver}.zip"
         'https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE')
-sha256sums=('308b49c9bd0a605181eda218d05f4ab4a7d5c3fd3fc236d0360e3e3de10152d4'
+sha256sums=('af9c129339138a967967fcd026b8ec2347884ed6ef74b490576afb8e447a745f'
             '79e60eb609efc006ca2a552d998efb1675262d4cae848244a3e2e61df0894b0c')
 
 package() {
