@@ -1,7 +1,7 @@
 # Maintainer: Ivan Puntiy <ivan.puntiy-at-gmail>
 pkgname=mingw-w64-asio
 pkgver=1.10.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform C++ library for ASynchronous network I/O (mingw-w64)"
 arch=(any)
 url="http://asio.sourceforge.net/"
