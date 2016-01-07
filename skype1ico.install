@@ -1,0 +1,24 @@
+## arg 1:  the new package version
+post_install() {
+  update-desktop-database
+  echo 'Theme name is set up in priority:'
+  echo '* SKYPE1ICO_THEME variable'
+  echo '* system icon theme name'
+  echo '* default'
+  echo ''
+  echo 'Themes are checked in following directories:'
+  echo '* ~/.local/share/skype1ico/'
+  echo '* /usr/share/skype1ico/'
+  echo '* /usr/local/share/skype1ico'
+  echo ''
+  echo 'If no theme can be accessed, skype will fall back to default icons.'
+}
+
+post_upgrade() {
+  post_install
+}
+
+
+post_remove() {
+  post_install
+}

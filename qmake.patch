@@ -1,0 +1,15 @@
+--- a/skype1ico.pro
++++ b/skype1ico.pro
+@@ -23,7 +23,11 @@ unix {
+         PREFIX = /usr
+     }
+ 
+-    target.path = $$PREFIX/lib
++    equals(QMAKE_HOST.arch, "x86_64") {
++        target.path = $$PREFIX/lib32
++    } else {
++        target.path = $$PREFIX/lib
++    }
+ 
+     THEMES = $$PREFIX/share/skype1ico
+     themes.path = $$THEMES
