@@ -2,17 +2,17 @@
 
 _pkgname=qtermwidget
 pkgname=$_pkgname-git
-pkgver=0.6.0.33.gda6838d
+pkgver=0.6.0.48.g10e1796
 pkgrel=1
 pkgdesc="A terminal widget for Qt"
 arch=("i686" "x86_64")
-url="https://github.com/qterminal/qtermwidget"
+url="https://github.com/lxde/qtermwidget"
 license=("GPL2")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 depends=("qt5-base")
 makedepends=("git" "cmake")
-source=("git+https://github.com/qterminal/$_pkgname.git")
+source=("git+https://github.com/lxde/$_pkgname.git")
 sha256sums=("SKIP")
 
 
@@ -27,9 +27,7 @@ build() {
 	cmake "$srcdir/$_pkgname" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DBUILD_DESIGNER_PLUGIN=0 \
-		-DUSE_QT5=true
+		-DCMAKE_BUILD_TYPE=Release
 	make
 }
 
