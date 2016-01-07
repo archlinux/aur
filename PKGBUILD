@@ -3,7 +3,7 @@
 pkgname=pyautobrightness
 _pypiname=pyautobrightness
 pkgver=0.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Pyautobrightness is a very simple "Calise like" program, wrote in python 3, designed to change the screen brightness using the webcam as "light sensor".'
 arch=('any')
 url="https://github.com/evertonstz/py-auto-brightness"
