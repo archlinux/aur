@@ -1,14 +1,14 @@
 #Contributor:Andrea Tarocchi <valdar@email.it> 
 pkgname=cwiid-git
 #pkgver=`date +%Y%m%d`
-pkgver=20130619
-pkgrel=2
+pkgver=20160107
+pkgrel=1
 pkgdesc="Cwiid-git is the bleeding edge version of a wiimote's driver and utility tools"
 arch=(i686 x86_64)
 url="http://github.com/abstrakraft/cwiid"
 license=('GPL')
 
-depends=('bluez4' 'gtk2' 'python2')
+depends=('bluez-libs' 'gtk2' 'python2')
 makedepends=('git' 'make')
 conflicts=('cwiid' 'cwiid-svn')
 provides=('cwiid' 'cwiid-svn')
