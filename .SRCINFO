@@ -1,8 +1,8 @@
 pkgbase = qterminal-git
 	pkgdesc = Lightweight Qt-based terminal emulator
-	pkgver = 0.6.0.89.gee32e84
+	pkgver = 0.6.0.98.g7f83f86
 	pkgrel = 1
-	url = https://github.com/qterminal/qterminal
+	url = https://github.com/lxde/qterminal
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -12,7 +12,7 @@ pkgbase = qterminal-git
 	depends = qtermwidget
 	provides = qterminal
 	conflicts = qterminal
-	source = git+https://github.com/qterminal/qterminal.git
+	source = git+https://github.com/lxde/qterminal.git
 	sha256sums = SKIP
 
 pkgname = qterminal-git
