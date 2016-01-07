@@ -8,13 +8,13 @@
 set -u
 pkgname='joomla'
 pkgver='3.4.8'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='a php Content Management System (CMS) which enables you to build websites and powerful online applications.'
 arch=('any')
 url='http://www.joomla.org/'
 #_watch=('http://www.joomla.org/download.html',' ([\d.]*) Full Package')
 license=('GPL')
-depends=('php')
+depends=('php<=5.9.9')
 options=('!strip')
 install="${pkgname}.install"
 #_verwatch=("http://joomlacode.org/gf/project/${pkgname}/frs/" "Joomla_\(.*\)-Stable-Full_Package\.tar\.bz2" 't')
