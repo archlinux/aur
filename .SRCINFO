@@ -3,7 +3,7 @@
 pkgbase = nvidia-352-git
 	pkgdesc = NVIDIA drivers for linux-git
 	pkgver = 352.63
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.nvidia.com/
 	install = nvidia-352-git.install
 	arch = i686
@@ -11,7 +11,6 @@ pkgbase = nvidia-352-git
 	license = custom
 	makedepends = linux-headers>=4.2
 	makedepends = linux-git-headers<4.5
-	makedepends = nvidia-libgl-352
 	depends = linux-git>=4.2
 	depends = linux-git<4.5
 	depends = nvidia-utils-352=352.63
