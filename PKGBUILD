@@ -6,15 +6,15 @@ _module="${_name#python-}"
 _cmd="${_module%client}"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="3.1.0"
+pkgver="3.2.0"
 pkgrel="1"
 pkgdesc="Client library for OpenStack Compute API"
 arch=("any")
 url="https://github.com/openstack/${_name}"
 license=("Apache")
 makedepends=("python-pbr>=1.8" "python2-pbr>=1.8")
-source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('d4104a72f85ca5a76b8d6cddb46f37870314cb140146b6fb287493020610ca60')
+source=("https://tarballs.openstack.org/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('b00a70ba72b068adb6aaca19b14ed4bde9c950ef4f24234d095f9f9985073179')
 
 prepare() {
     sed -ri '/argparse/d' "${srcdir}/${_name}-${pkgver}"/requirements.txt
