@@ -2,7 +2,7 @@
 
 pkgname=perl6-grammar-highlighter
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fully automatic syntax highlighting for any grammar"
 arch=('any')
 depends=('perl6' 'perl6-terminal-ansicolor')
@@ -13,13 +13,6 @@ url="https://github.com/niner/Grammar-Highlighter"
 license=('PerlArtistic')
 source=($pkgname-$pkgver::git+https://github.com/niner/Grammar-Highlighter)
 sha256sums=('SKIP')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  msg2 'Fixing module import statement...'
-  sed -i 's/Term::/Terminal::/g' lib/Grammar/Highlighter/HTML.pm
-}
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
