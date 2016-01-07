@@ -4,15 +4,17 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=castawesome
-pkgver=0.15.1
-pkgrel=4
+pkgver=0.16.0
+pkgrel=1
 arch=('any')
 pkgdesc='A GUI frontend for ffmpeg livestreaming'
 url='https://github.com/TheSamsai/Castawesome'
 license=('GPL3')
-depends=('ffmpeg' 'gtk3' 'python2' 'python2-gobject')
-source=(https://github.com/TheSamsai/Castawesome/releases/download/$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('65466f03a9981976bb7cbfc8f8c66384b12b2a2aaef7024a3356b43d9d7f33ca')
+depends=('ffmpeg' 'gtk3' 'python' 'python-gobject')
+source=("https://github.com/TheSamsai/Castawesome/releases/download/$pkgver/$pkgname-$pkgver.tar.gz"
+        "Makefile.patch")
+sha256sums=('d2cc2a705d8143dafabdc43a4e169b2c15e7856512da9c823c700ec60a03cd57'
+            'cddaf5eba8a8569d3bb82a5ce2c9c99517c23e3d3550ac03b6b03533f48c9301')
 
 prepare() {
   cd $pkgname
@@ -21,6 +23,8 @@ prepare() {
   sed -i 's#/usr/local#$(DESTDIR)/usr#g' Makefile
   sed -i 's#/usr/local#/usr#' castawesome.py
   sed -i 's#/usr/local#/usr#' uninstall_castawesome.sh
+
+  patch -p1 -i $srcdir/Makefile.patch
 }
 
 build() {

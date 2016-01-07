@@ -1,0 +1,28 @@
+diff -aur castawesome.pristine/Makefile castawesome.new/Makefile
+--- castawesome.pristine/Makefile	2016-01-07 11:25:55.813075142 -0500
++++ castawesome.new/Makefile	2016-01-07 11:31:53.454691562 -0500
+@@ -21,12 +21,13 @@
+ 	mkdir -p $(DESTDIR)/usr/share/castawesome/ui
+ 	mkdir -p $(DESTDIR)/usr/share/castawesome/doc
+ 	mkdir -p $(DESTDIR)/usr/share/applications/
++	mkdir -p $(DESTDIR)/usr/share/pixmaps
+ 	cp *.ui $(DESTDIR)/usr/share/castawesome/ui
+ 	cp *.png $(DESTDIR)/usr/share/castawesome/ui
+ 	cp README AUTHORS NEWS COPYING $(DESTDIR)/usr/share/castawesome/doc
+ 	install -Dm 755 castawesome.py $(DESTDIR)/usr/bin/castawesome
+ 	cp uninstall_castawesome.sh $(DESTDIR)/usr/bin/uninstall_castawesome
+-	cp IconCA.png /usr/share/pixmaps/castawesome.png
++	cp IconCA.png $(DESTDIR)/usr/share/pixmaps/castawesome.png
+ 	cp Castawesome.desktop $(DESTDIR)/usr/share/applications/
+ 	chmod +x $(DESTDIR)/usr/bin/castawesome $(DESTDIR)/usr/bin/uninstall_castawesome
+ 	chmod +r $(DESTDIR)/usr/share/castawesome/ui/*.png
+@@ -34,7 +35,7 @@
+ uninstall:
+ 	rm -rf $(DESTDIR)/usr/share/castawesome
+ 	rm -f $(DESTDIR)/usr/bin/castawesome $(DESTDIR)/usr/bin/uninstall_castawesome
+-	rm -f /usr/share/pixmaps/castawesome
++	rm -f $(DESTDIR)/usr/share/pixmaps/castawesome
+ 	rm -f $(DESTDIR)/usr/share/applications/Castawesome.desktop
+ 
+ use_avconv:
+Only in castawesome.new: Makefile~
