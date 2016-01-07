@@ -1,7 +1,7 @@
 # Maintainer: sulhan <ms at kilabit.info>
 _pkgname=rescached
 pkgname=rescached-git
-pkgver=r121.b0c87cc
+pkgver=r123.94e4d7a
 pkgrel=1
 pkgdesc="Resolver/DNS cache daemon"
 arch=('i686' 'x86_64')
@@ -53,6 +53,10 @@ package() {
 	make DESTDIR="$pkgdir/" install
 
   install -D -m644 $srcdir/$_pkgname/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+post_install() {
+  [[ -f /etc/rescached/hosts.ads ]] && rm -f /etc/rescached/hosts.ads
 }
 
 # vim:set ts=2 sw=2 et:
