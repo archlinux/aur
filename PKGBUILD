@@ -11,17 +11,16 @@ source=("git+https://github.com/projectchrono/chrono.git#tag=${pkgver}")
 sha1sums=('SKIP')
 
 build() {
-  cd chrono
+  cd chrono/src
   mkdir -p build && pushd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        -DBUILD_DEMOS=OFF \
-        -DBUILD_ADDITIONAL_TESTS=OFF \
+        -DCMAKE_SKIP_INSTALL_RPATH=ON \
         ..
   make
 }
 
 package() {
-  cd chrono/build
+  cd chrono/src/build
   make DESTDIR="$pkgdir" install
 }
 
