@@ -2,8 +2,8 @@
 # Contributor: Košava <kosava at archlinux dot us>
 
 pkgname=yarock-qt5
-pkgver=1.1.4
-pkgrel=2
+pkgver=1.1.5
+pkgrel=1
 pkgdesc="Qt Modern Music Player with collection browse based on cover art"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/yarock"
@@ -38,5 +38,5 @@ package() {
   make DESTDIR="${pkgdir}" install
 }
 
-md5sums=('794020bf0a571a24df6a6505d530f7c2'
-         'b8e68d1d1aa08a6963af8b1de3baee76')
+md5sums=('ec0d30272716e6e52915699d088e5fcc'
+         'e2c307c790020f501c45e6c82229bf71')

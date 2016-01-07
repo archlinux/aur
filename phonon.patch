@@ -1,6 +1,6 @@
-diff -ruN Yarock_1.1.4_source-orig/src/core/player/phonon/CMakeLists.txt Yarock_1.1.4_source/src/core/player/phonon/CMakeLists.txt
---- Yarock_1.1.4_source-orig/src/core/player/phonon/CMakeLists.txt	2015-05-21 00:42:46.627611703 +0300
-+++ Yarock_1.1.4_source/src/core/player/phonon/CMakeLists.txt	2015-05-21 00:43:25.852867232 +0300
+diff -ruN Yarock_1.1.5_source-orig/src/core/player/phonon/CMakeLists.txt Yarock_1.1.5_source/src/core/player/phonon/CMakeLists.txt
+--- Yarock_1.1.5_source-orig/src/core/player/phonon/CMakeLists.txt	2015-05-21 00:42:46.627611703 +0300
++++ Yarock_1.1.5_source/src/core/player/phonon/CMakeLists.txt	2015-05-21 00:43:25.852867232 +0300
 @@ -34,7 +34,7 @@
  
  
