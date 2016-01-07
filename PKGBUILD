@@ -7,6 +7,7 @@ arch=('x86_64')
 url="https://github.com/azukiapp/azk"
 license=('Apache')
 depends=('libnss-resolver' 'docker' 'rsync')
+makedepends=('git')
 conflicts=(${pkgname}-git)
 source=("https://github.com/azukiapp/${pkgname}/archive/v${pkgver}.tar.gz")
 md5sums=('a728f935a270a425ff11db36347211d2')
