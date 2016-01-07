@@ -3,8 +3,8 @@
 # Contributor: mosra <mosra@centrum.cz>
 
 pkgname=mypaint-git
-pkgver=1.1.0.r4202.e0faa7f
-pkgrel=2
+pkgver=1.2.0.beta.4.r15.g50b8f1a
+pkgrel=1
 pkgdesc="A fast and easy painting application for digital painters, with brush dynamics"
 arch=('i686' 'x86_64')
 url="http://mypaint.intilinux.com/"
@@ -23,10 +23,7 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "$srcdir/mypaint"
-	ver=$(git describe --abbrev=0 | sed -e 's/[^.0-9]//g')
-	count=$(git rev-list --count HEAD)
-	commit=$(git rev-parse --short HEAD)
-	echo $ver.r$count.$commit
+	git describe --long --tags|sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
