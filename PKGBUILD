@@ -2,8 +2,8 @@
 
 pkgname=alacryd
 pkgver=0.0.2
-pkgrel=2
-pkgdesc="Expedient Perl 6 module installation"
+pkgrel=3
+pkgdesc="Expedient Perl6 module installation"
 arch=('any')
 depends=('perl6')
 groups=('perl6')
