@@ -1,7 +1,7 @@
 pkgbase = rdkit
 	pkgdesc = RDKit - A collection of cheminformatics and machine-learning software written in C++ and Python.
 	pkgver = 2015_09_2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://rdkit.org/
 	arch = i686
 	arch = x86_64
@@ -15,8 +15,9 @@ pkgbase = rdkit
 	depends = python2-numpy
 	depends = sqlite3
 	provides = rdkit
-	source = https://github.com/rdkit/rdkit/archive/Release_2015_03_1.tar.gz
+	source = https://github.com/rdkit/rdkit/archive/Release_2015_09_2.tar.gz
 	md5sums = 889fc8bda9d59ce3b72bf6252c630287
+    md5sums = 8447bf108af12fe66eecba41bbc89918
 
 pkgname = rdkit
 
