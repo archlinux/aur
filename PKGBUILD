@@ -5,12 +5,12 @@
 pkgname=libcurl-compat
 _pkgname=curl
 pkgver=7.46.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An URL retrieval library (old version)"
 arch=('i686' 'x86_64')
 url="http://curl.haxx.se"
 license=('MIT')
-depends=('ca-certificates' 'gnutls' 'openssl' 'zlib')
+depends=('ca-certificates' 'gnutls' 'openssl' 'zlib' 'libidn' 'libssh2' 'krb5')
 options=('strip')
 conflicts=('libcurl-gnutls')
 source=("http://curl.haxx.se/download/${_pkgname}-$pkgver.tar.gz")
@@ -26,16 +26,15 @@ build() {
       --disable-manual \
       --disable-versioned-symbols \
       --enable-threaded-resolver \
-      --without-gssapi \
-      --without-libidn \
-      --without-libssh2 \
+      --with-gssapi \
+      --with-libidn \
       --with-random=/dev/urandom \
       --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt"
 
   cp -a ${_pkgname}-$pkgver{,-gnutls}
 
   cd "${_pkgname}-$pkgver-gnutls"
-  $config --without-ssl --with-gnutls
+  $config --with-ssl --with-gnutls
   make -C lib
 
   cd "../${_pkgname}-$pkgver"
