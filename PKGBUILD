@@ -1,8 +1,11 @@
 # Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens at gmail dot com>
+# Contributor: Gaetan Bisson <bisson at archlinux dot org>
+# Contributor: Douglas Soares de Andrade <douglas at archlinux dot org>
 
 pkgname=lib32-avahi
 pkgver=0.6.32rc
-pkgrel=2
+pkgrel=3
 _commit=bc4e85846991d0efca89add631c7cd16033f0bef
 pkgdesc='Multicast DNS-SD / Zeroconf Suite (32-bit)'
 arch=('x86_64')
