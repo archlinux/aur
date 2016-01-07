@@ -2,8 +2,8 @@
 # Based on PMS PKGBUILD
 
 pkgname=umsjava7
-pkgver=5.4.0
-pkgrel=2
+pkgver=5.5.0
+pkgrel=1
 pkgdesc="Universal Media Server: a DLNA-compliant UPnP Media Server. Build based on Java 7."
 arch=('any')
 url="http://www.universalmediaserver.com/"
@@ -22,7 +22,7 @@ source=("http://downloads.sourceforge.net/project/unimediaserver/Official%20Rele
         "$pkgname.service"
         "$pkgname.install"
         'ums')
-sha512sums=('2418b908e47fd5df76d4d6c8ccdc108fc35cdf893a7166e7e81a914b9d6809afe44d361b875312f2f6531ae218ffa5ec2a9329054ec47f7c846c1c5fcda4306f'
+sha512sums=('0f92099607c8ada212fb32b637a764d00029a22efe60488f2fa5eb3f245770603b846e844f82dab13ab7d24759af68d282c90b6f15e65a2acfe91ad52ddcc018'
             '580080b4d8b831803f2c2dfe46bb69996374fb3659b0cd495563ac09b5fdd09634cf20767fe0caa08d5dfbb70767683e00222a2a829b558cc17ea806c8ef6090'
             '00e57bd860b34068f76a8deb10676e58e935f325b136c89979e108f60f0ed0f1cea0c04925bb57af47db7a5bbc69b13c9568c62b0add99ffbb1654e93aa48233'
             'f995d6fbebf08e88bf2e1675c626e7be88c27f615891f0b4108375b2c8a57881c238b7109f2c0d48ec22105670f33c408ce48ecb9a17cc8db326ffd1a3419803'
