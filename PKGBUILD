@@ -2,7 +2,7 @@
 pkgname=rdkit-git-python3
 _pkgname=RDKit
 gitname=rdkit
-pkgver=20150928
+pkgver=20160107
 pkgrel=1
 pkgdesc="RDKit - A collection of cheminformatics and machine-learning software written in C++ and Python."
 arch=("i686" "x86_64")
@@ -10,8 +10,8 @@ url="http://rdkit.org/"
 license=('New BSD License')
 depends=( 'bison' 'boost' 'boost-libs' 'cmake' 'flex' 'python' 'sqlite3' 'python-numpy')
 makedepends=('git')
-source=()
-md5sums=()
+source=("http://www.inchi-trust.org/download/104/INCHI-1-API.zip")
+md5sums=('8447bf108af12fe66eecba41bbc89918')
 provides=('rdkit')
 _gitroot="https://github.com/rdkit/rdkit.git" 
 _gitname="rdkit"
@@ -22,7 +22,8 @@ build() {
   mkdir build
   cd build
   git clone $_gitroot
-  cmake ../build/${gitname} \
+  cp ../INCHI-1-API/INCHI_API/inchi_dll/* ${gitname}/External/INCHI-API/
+  cmake ${gitname} \
     -DCMAKE_BUILD_TYPE=Release \
     -DRDK_INSTALL_INTREE=0 \
     -DRDK_BUILD_THREADSAFE_SSS=ON \
