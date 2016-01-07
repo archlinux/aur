@@ -4,13 +4,15 @@
 # like /tmp (bare in mind that most AUR helpers do so). The extracted content of the files
 # is about 3 GB in size.
 
+# Watch new releases at http://forum.unity3d.com/threads/unity-on-linux-release-notes-and-known-issues.350256/
+
 # Prevent compression of the final package since it would take too long (sereausly!)
 PKGEXT='.pkg.tar'
 
 pkgname=unity-editor-bin
-_version=5.3.0
-_build=f4
-_buildtag=20151218
+_version=5.3.1
+_build=f1
+_buildtag=20160106
 pkgver=${_version}${_build}+${_buildtag}
 pkgrel=1
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
@@ -30,7 +32,7 @@ conflicts=('unity-editor')
 options=(!strip)
 install=${pkgname}.install
 source=("http://download.unity3d.com/download_unity/linux/unity-editor-${pkgver}_amd64.deb")
-md5sums=('33c43de91ddcf71bdf105f10096b2ddf')
+md5sums=('ebee68a0a303a776c4d557e7df33a1df')
 
 package() {
 	bsdtar xf data.tar.gz

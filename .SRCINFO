@@ -1,6 +1,6 @@
 pkgbase = unity-editor-bin
 	pkgdesc = The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences.
-	pkgver = 5.3.0f4+20151218
+	pkgver = 5.3.1f1+20160106
 	pkgrel = 1
 	url = https://unity3d.com/
 	install = unity-editor-bin.install
@@ -26,8 +26,8 @@ pkgbase = unity-editor-bin
 	provides = unity-editor
 	conflicts = unity-editor
 	options = !strip
-	source = http://download.unity3d.com/download_unity/linux/unity-editor-5.3.0f4+20151218_amd64.deb
-	md5sums = 33c43de91ddcf71bdf105f10096b2ddf
+	source = http://download.unity3d.com/download_unity/linux/unity-editor-5.3.1f1+20160106_amd64.deb
+	md5sums = ebee68a0a303a776c4d557e7df33a1df
 
 pkgname = unity-editor-bin
 
