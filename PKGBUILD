@@ -12,7 +12,7 @@ depends=('apr' 'apr-util' 'bash-completion' 'gcc-libs' 'glibc' 'openssl' 'python
 
 package() {
 	mkdir data
-	tar xf data.tar.xz --directory data/
+	tar xf data.tar.gz --directory data/
 	cp -r data/* ${pkgdir}
 }
 
