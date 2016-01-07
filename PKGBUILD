@@ -1,7 +1,7 @@
 # Maintainer: Moviuro <moviuro+archlinux@gmail.com>
 
 pkgname=butter
-pkgver=8
+pkgver=9
 pkgrel=1
 pkgdesc="butter is a btrfs snapshot manager"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('bash' 'btrfs-progs')
 optdepends=('systemd: human-friendly escaped names')
 backup=('etc/butterrc')
 source=("https://github.com/moviuro/butter/archive/${pkgver}.tar.gz")
-sha256sums=('eb0bb61998ea91407911b2b08d4146c7e5f1263c44e9f33ed0ec9f69adef453b')
+sha256sums=('aa59ee7c96d600dfff5270ed1287402a9c9a1650155149060fdb0f29b9995829')
 
 package() {
   install -Dm 0555 "${srcdir}/${pkgname}-${pkgver}/butter" \
