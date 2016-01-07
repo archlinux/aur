@@ -3,7 +3,7 @@
 
 _pkgname='N1'
 pkgname='n1-git'
-pkgver=0.3.36.r5.gbeb38c8
+pkgver=0.3.36.r11.g3e3e2ca
 pkgrel=1
 pkgdesc="A new mail client, built on the modern web and designed to be extended."
 arch=('any')
@@ -33,9 +33,7 @@ build() {
 
   export PYTHON=python2
   script/bootstrap
-  script/grunt build --build-dir "$srcdir/nylas-build"
-  script/grunt set-version --build-dir "$srcdir/nylas-build"
-  script/grunt generate-asar --build-dir "$srcdir/nylas-build"
+  script/build --build-dir "$srcdir/nylas-build"
 }
 
 package() {
