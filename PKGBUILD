@@ -2,7 +2,7 @@
 # Contributor: s1gma <s1gma@mindslicer.com>
 
 pkgname=medusa-git
-pkgver=2.2_rc2.8.29a7899
+pkgver=2.2.17.5a7b76e
 pkgrel=1
 pkgdesc="Speedy, massively parallel and modular login brute-forcer for network "
 url="http://www.foofus.net/jmk/medusa/medusa.html"
@@ -27,9 +27,13 @@ pkgver() {
     "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
+prepare() {
   cd ${pkgname}
   autoreconf --force --install
+}
+
+build() {
+  cd ${pkgname}
   ./configure --prefix=/usr
   make
 }
@@ -38,7 +42,7 @@ package() {
   cd ${pkgname}
   make DESTDIR="${pkgdir}" install
   install -Dm 644 misc/zsh/_medusa "${pkgdir}/usr/share/zsh/site-functions/_medusa"
-  install -Dm 644 doc/*.html README NEWS -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 doc/*.html README NEWS ChangeLog -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
