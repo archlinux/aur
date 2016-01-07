@@ -1,0 +1,39 @@
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+
+pkgbase=python-setuptools-markdown
+pkgname=(python-setuptools-markdown python2-setuptools-markdown)
+pkgver=0.2
+pkgrel=1
+pkgdesc="Use Markdown for your project description"
+arch=('any')
+url="https://github.com/msabramo/setuptools-markdown"
+license=('MIT')
+makedepends=('python-setuptools' 'python2-setuptools' 'python-pypandoc' 'python2-pypandoc' 'git')
+source=("git+https://github.com/msabramo/setuptools-markdown.git#commit=$_commit")
+md5sums=('SKIP')
+
+prepare() {
+  cp -a setuptools-markdown{,-py2}
+}
+
+build() {
+  cd "${srcdir}/setuptools-markdown"
+  python setup.py build
+
+  cd "${srcdir}/setuptools-markdown-py2"
+  python2 setup.py build
+}
+
+package_python-setuptools-markdown() {
+  depends=('python-setuptools' 'python-pypandoc')
+
+  cd "${srcdir}/setuptools-markdown"
+  python setup.py install --root "$pkgdir"
+}
+
+package_python2-setuptools-markdown() {
+  depends=('python2-setuptools' 'python2-pypandoc')
+
+  cd "${srcdir}/setuptools-markdown-py2"
+  python2 setup.py install --root "$pkgdir"
+}
