@@ -61,6 +61,7 @@ build() {
   cd "$srcdir"/$pkgname-$pkgver
 
 	./configure --prefix=/usr \
+    --sbindir=/usr/bin \
     --with-configdir=/etc/amanda \
     --with-gnutar-listdir=/var/amanda/gnutar-lists \
     --mandir=/usr/share/man \
