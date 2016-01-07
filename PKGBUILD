@@ -1,13 +1,13 @@
 # Maintainer: oi_wtf <brainpower at mailbox dot org>
 
 pkgname=sfml-git
-pkgver=2.3.r0.g80214d1
+pkgver=2.3.2.r38.g1217699
 pkgrel=1
 pkgdesc="A simple, fast, cross-platform, and object-oriented multimedia API"
 arch=('i686' 'x86_64')
 url="http://www.sfml-dev.org/"
 license=('zlib')
-depends=('libsndfile' 'libxrandr' 'libjpeg' 'openal' 'glew' 'freetype2')
+depends=('libsndfile' 'libxrandr' 'libjpeg' 'openal' 'glew' 'freetype2' 'xcb-util-image')
 makedepends=('mesa' 'cmake' 'doxygen' 'git')
 provides=('sfml')
 conflicts=('sfml')
