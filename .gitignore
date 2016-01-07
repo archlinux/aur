@@ -3,5 +3,4 @@
 !.SRCINFO
 !PKGBUILD
 !k3b-frameworks-git.install
-!fix_install_knotify_kxmlgui_files.txt
-
+!fix_install_knotify_kxmlgui_files.patch

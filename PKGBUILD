@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=k3b-frameworks-git
-pkgver=2.9.90.r5938.f81dde8
+pkgver=2.9.90.r5949.046a102
 pkgrel=1
 pkgdesc="Feature-rich and easy to handle CD burning application. KF5 Frameworks branch. (Git version)"
 arch=('i686' 'x86_64')
@@ -31,18 +31,14 @@ optdepends=('cdrdao: for CD DAO mode burning support'
 provides=('k3b')
 conflicts=('k3b')
 source=('git://anongit.kde.org/k3b.git#branch=kf5'
-        'fix_install_knotify_kxmlgui_files.txt'
-        'k3b-fixbuild.diff::https://git.reviewboard.kde.org/r/126370/diff/raw/'
-        'k3b-fix-mp3decoder.diff::https://git.reviewboard.kde.org/r/126371/diff/raw/')
+        'fix_install_knotify_kxmlgui_files.patch')
 sha1sums=('SKIP'
-          '9ff1dfbf14d9fecbc41a5ee5eadeaef10327a2c2'
-          'ade1b3a4fc7a21a3eb9b0268bbc5f1b0fe058127'
-          'c18a305f96b4bd39ea7eb68d0744a2b7c95688d1')
+          '9ff1dfbf14d9fecbc41a5ee5eadeaef10327a2c2')
 install=k3b-frameworks-git.install
 
 pkgver() {
   cd k3b
-  _ver="$(cat CMakeLists.txt | grep -m3 -e _VERSION_MAJOR -e _VERSION_MINOR -e _VERSION_RELEASE | sed 's|K3B|KEB|' | grep -o "[[:digit:]]*" | paste -sd'.')"
+  _ver="$(cat CMakeLists.txt | grep -m3 -e 'K3B_VERSION_MAJOR' -e 'K3B_VERSION_MINOR' -e 'K3B_VERSION_RELEASE' | sed 's|K3B|KEB|' | grep -o "[[:digit:]]*" | paste -sd'.')"
   echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
@@ -50,9 +46,7 @@ prepare() {
   mkdir -p build
 
   cd k3b
-  patch -p0 -i "${srcdir}/fix_install_knotify_kxmlgui_files.txt"
-  patch -p1 -i "${srcdir}/k3b-fixbuild.diff"
-  patch -p1 -i "${srcdir}/k3b-fix-mp3decoder.diff"
+  patch -p0 -i "${srcdir}/fix_install_knotify_kxmlgui_files.patch"
 }
 
 build() {
