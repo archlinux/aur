@@ -20,11 +20,13 @@ license=('GPL')
 depends=('perl')
 conflicts=('devscripts')
 _srcfile="checkbashisms.pl.${pkgver}"
-source=('https://anonscm.debian.org/cgit/collab-maint/devscripts.git/plain/scripts/checkbashisms.1'
-        "${_srcfile}::https://anonscm.debian.org/cgit/collab-maint/devscripts.git/plain/scripts/checkbashisms.pl"
+source=("${_srcfile}::https://anonscm.debian.org/cgit/collab-maint/devscripts.git/plain/scripts/checkbashisms.pl"
+        'https://anonscm.debian.org/cgit/collab-maint/devscripts.git/plain/scripts/checkbashisms.1'
+        'https://anonscm.debian.org/cgit/collab-maint/devscripts.git/plain/scripts/checkbashisms.bash_completion'
 )
-sha256sums=('c74d1ed33fee4cf2ccca0d7690d404d551a4edcbde0ddc602104d9198359cefb'
-            '20dd6184747e8d5452b412a86602c029ac9c3d3094dc12b99f5b038e626df33b')
+sha256sums=('20dd6184747e8d5452b412a86602c029ac9c3d3094dc12b99f5b038e626df33b'
+            'c74d1ed33fee4cf2ccca0d7690d404d551a4edcbde0ddc602104d9198359cefb'
+            'b8107f79c88e88cb90ad5c802d3b243675f9d2af6c00fe7e822a58033e51d3b0')
 
 # Version checking devscripts won't help us. We need to watch for changes to this file.
 _vercheck() { :; }
@@ -53,6 +55,7 @@ package() {
   install -Dpm755 "${srcdir}/${_srcfile}" 'usr/bin/checkbashisms'
   sed -i -e "s,###VERSION###,${pkgver},g" 'usr/bin/checkbashisms'
   install -Dpm644 "${srcdir}/checkbashisms.1" 'usr/share/man/man1/checkbashisms.1'
+  install -Dpm644 "${srcdir}/checkbashisms.bash_completion" 'usr/share/bash-completion/completions/checkbashisms'
   set +u
 }
 set +u
