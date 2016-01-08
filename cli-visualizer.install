@@ -1,8 +1,4 @@
 post_install() {
-  mkdir -p ~/.config/vis/colors
-  cp /usr/share/doc/cli-visualizer/examples/config ~/.config/vis/
-  cp /usr/share/doc/cli-visualizer/examples/rainbow ~/.config/vis/colors/rainbow
-
   echo ":: A default configuration has been created in"
   echo ":: ~/.config/vis"
   echo ":: More example configuration files can be found in"
