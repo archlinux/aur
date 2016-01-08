@@ -1,6 +1,6 @@
 pkgname=ggoban
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A gtk go game interface to play and edit game records"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/ggoban"
@@ -13,6 +13,10 @@ license=('GPL')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
+
+  # gtkmm doesn't work without C++11 anymore
+  export CXXFLAGS="$CXXFLAGS -std=c++11"
+
   ./configure --prefix=/usr 
   make
 }
