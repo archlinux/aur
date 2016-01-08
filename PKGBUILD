@@ -1,7 +1,7 @@
 # Maintainer: Javier Tia <javier dot tia at gmail dot com>
 
 pkgname=git-appraise
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="Distributed code review system for Git repositories"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('go' 'git')
 options=('!strip' '!emptydirs')
 provides=("${pkgname}=${pkgver}")
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('779bd4518747fb3907a00d030209e291bd43c6ea1ab064e870e25e9cc79ecfe2')
+sha256sums=('7ddeb56d55681025666c1823eb8ad688aad07ab6ccff40630d8ab6edc038ea17')
 
 # Go URLs
 _github_gourl='github.com/google'
