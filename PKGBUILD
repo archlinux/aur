@@ -1,7 +1,7 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=nodejs-jslint
-pkgver=0.9.5
+pkgver=0.9.6
 pkgrel=1
 pkgdesc='The JavaScript Code Quality Tool'
 arch=('any')
