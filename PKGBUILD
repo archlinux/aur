@@ -2,7 +2,7 @@
 
 _pkgname=openbazaard
 pkgname=${_pkgname}-git
-pkgver=550.35d88d8
+pkgver=575.c92c3e1
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
 arch=(any)
@@ -58,7 +58,7 @@ package(){
   cd $pkgdir/var/lib/${_pkgname}/ && python2 -m compileall .
 
   msg2 "Remove git folder"
-  rm -rf $pkgdir/var/lib/${_pkgname}/.git
+  rm -rf $pkgdir/var/lib/${_pkgname}/{.git*,.eslint*,.travis*}
 }
 
 pkgver() {
@@ -66,9 +66,6 @@ pkgver() {
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
-md5sums=('SKIP'
-         '1bdae51331031c43d8ea6c4a8cb107d9'
-         'b8da6d4af4821e3d0d011ce9e884cc5f')
 md5sums=('SKIP'
          '1bdae51331031c43d8ea6c4a8cb107d9'
          'b8da6d4af4821e3d0d011ce9e884cc5f'
