@@ -57,8 +57,8 @@ build() {
   mkdir -p ${_bindir}
   cd ${_bindir}
 
-  # skipping on principle: qtscript, xcb
-  # skipping because of the target in question: widgets qtwebchannel
+  # skipping on principle: qtscript xcb qtquickcontrols
+  # skipping because of the target in question: widgets qtwebchannel qtquickcontrols2
   # TODO: qtwebengine, a little bulky but useful
 
   # Too bleeding big
@@ -84,6 +84,8 @@ build() {
     -skip qtwebengine \
     -skip qtwebchannel \
     -skip qtwayland \
+    -skip qtquickcontrols \
+    -skip qtquickcontrols2 \
     \
     -sysroot ${_sysroot} \
     -device ${_mkspec} \
