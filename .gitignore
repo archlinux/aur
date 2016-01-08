@@ -1,0 +1,6 @@
+pkg
+src
+*.gz
+*.tar.xz
+*.tar.bz2
+LICENSE
