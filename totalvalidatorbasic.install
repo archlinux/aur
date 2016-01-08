@@ -1,5 +1,5 @@
 post_install() {
-echo "You must have Java 6.0 or later installed in order to run"
+echo "You must have Java 7.0 or later installed in order to run"
 echo "Total Validator."
 echo ""
 echo "In order to automatically display the results in a browser"

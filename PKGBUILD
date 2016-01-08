@@ -3,12 +3,12 @@
 
 pkgname=totalvalidatorbasic
 pkgver=10.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="(X)HTML validator, an accessibility validator, a spell checker, and a broken links checker"
 arch=('any')
 url='https://www.totalvalidator.com'
 license=('custom')
-depends=('java-environment' 'bash')
+depends=('java-environment>=7' 'bash')
 install='totalvalidatorbasic.install'
 source=("https://www.totalvalidator.com/downloads/${pkgname}.tar.gz")
 md5sums=('57d491c2a1201c7aed7ec909e62be271')
