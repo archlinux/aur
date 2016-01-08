@@ -1,15 +1,15 @@
 pkgbase = ctodo
 	pkgdesc = A simple ncurses-based task manager.
-	pkgver = 1.1
-	pkgrel = 4
+	pkgver = 1.2
+	pkgrel = 1
 	url = http://ctodo.apakoh.dk
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = cmake
 	depends = ncurses
-	source = https://github.com/downloads/nielssp/ctodo/ctodo-1.1.tar.gz
-	md5sums = 1896cdce31984d82f985ca7a4036cd12
+	source = https://github.com/nielssp/ctodo/archive/v1.2.tar.gz
+	md5sums = 475f62b95bb025d3a954fcebdd986f65
 
 pkgname = ctodo
 
