@@ -55,7 +55,7 @@ temp_local_mirrorlist="$(mktemp)"
 trap 'rm -f "$temp_local_mirrorlist"' EXIT
 
 echo "Downloading new mirrorlist from $remote_mirrorlist to $local_mirrorlist."
-curl -fLC - --retry 3 --retry-delay 3 "$remote_mirrorlist" -o "$temp_local_mirrorlist"
+curl -fLC - --retry 9 "$remote_mirrorlist" -o "$temp_local_mirrorlist"
 
 if grep -Eqv '^(#|\s+#|$|Server = )' "$temp_local_mirrorlist"; then
 	echo 'The downloaded mirrorlist file contains an uncommented non-Server directive, so it might be invalid.' >&2
