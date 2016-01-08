@@ -2,7 +2,7 @@
 
 _pkgname=openbazaar
 pkgname=${_pkgname}-git
-pkgver=1158.0412ce6
+pkgver=1262.158aae0
 pkgrel=1
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon"
 arch=(any)
@@ -41,7 +41,7 @@ msg2 "Installing execution script"
   install -Dm755 $srcdir/${_pkgname}.sh $pkgdir/usr/bin/${_pkgname}
   
 
-  rm -rf $pkgdir/opt/${_pkgname}/.git
+  rm -rf $pkgdir/opt/${_pkgname}/{.git*,.eslint*,.travis*}
 
 msg2 "Installing icons and desktop menu entry"
   install -Dm644 $srcdir/${_pkgname}.png "$pkgdir"/usr/share/icons/hicolor/128x128/apps/openbazaar.png
