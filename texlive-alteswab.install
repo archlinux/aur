@@ -1,0 +1,13 @@
+post_install() {
+  mktexlsr
+  updmap-sys --quiet --enable Map ftas.map
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  mktexlsr
+  updmap-sys --quiet --syncwithtrees
+}
