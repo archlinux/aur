@@ -2,10 +2,10 @@
 
 pkgname=domoticz-git
 _gitname="domoticz"
-pkgver=r3868
+pkgver=r4032
 pkgrel=1
 pkgdesc="Web based home automation"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="http://www.domoticz.com"
 license=('GPL')
 depends=('openzwave-git' 'libusb-compat' 'curl' 'sqlite' 'boost-libs')
