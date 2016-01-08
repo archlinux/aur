@@ -2,7 +2,7 @@
 pkgname='minisatip'
 pkgdesc="SAT>IP server, tested with DVB-S, DVB-S2, DVB-T, DVB-T2, DVB-C, DVB-C2, ATSC and ISDB-T cards"
 pkgver=0.4.1
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/catalinii/minisatip"
 license=('GPL2')
@@ -30,13 +30,13 @@ pkgver() {
 prepare() {
 	cd ${srcdir}/minisatip
 	git cherry-pick bf082f655936d37cfa94a1a28e689b8d6ef1b7de
+	git cherry-pick 43482f469e9efd9d9b2026d9346b9b1331a90d32
 }
 
 build() {
 	cd ${srcdir}/minisatip
-	export CFLAGS="${CFLAGS} -ggdb -fPIC"
-	export LDFLAGS="${LDFLAGS} -lpthread -lrt"
-	make DVBCA=yes
+	sed -i 's/FLAGS?/FLAGS/g' Makefile
+	make DVBCA=yes EXTRA_CFLAGS="${CFLAGS}" EXTRA_LDFLAGS="${LDFLAGS}"
 }
 
 package() {
