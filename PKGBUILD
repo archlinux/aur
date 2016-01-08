@@ -37,12 +37,13 @@ requires = ['jmespath>=0.7.1,<1.0.0',
 if sys.version_info[:2] == (2, 6):
 "
 }
+unset -f _fn_foobar
 
 set -u
 _pyver="python"
 _pybase='botocore'
 pkgname="${_pyver}-${_pybase}"
-pkgver=1.3.16
+pkgver=1.3.17
 pkgrel=1
 pkgdesc='A low-level interface to a number of Amazon Web Services. This is the foundation for the AWS CLI as well as boto3'
 arch=('any')
@@ -67,7 +68,7 @@ depends=("${_pyver}" "${_pydepends[@]}")
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 options=('!strip')
 source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('dff5bc01bbfee431515eb22fd51fef6af824aea4dca595a8e8fe6f196f994a08')
+sha256sums=('17bde260bd1de5c181e6bf847efdd7d8c74b226eb0660dbc1dcaf46a011fb838')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pybase}"
