@@ -2,7 +2,7 @@
 
 pkgname=perl6-inline-ruby
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Use Ruby code and libraries in a Perl 6 program"
 arch=('i686' 'x86_64')
 depends=('perl6' 'ruby')
@@ -13,13 +13,6 @@ url="https://github.com/awwaiid/p6-Inline-Ruby"
 license=('PerlArtistic')
 source=($pkgname-$pkgver::git+https://github.com/awwaiid/p6-Inline-Ruby)
 sha256sums=('SKIP')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  msg2 'Fixing Makefile...'
-  sed -i 's/ruby-2.2/ruby-2.3/' Makefile.in
-}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
