@@ -4,7 +4,7 @@
 
 pkgname=mupdf-git
 _pkgname=mupdf
-pkgver=20150605.c22548d
+pkgver=20160106.1db0393
 pkgrel=1
 pkgdesc='Lightweight PDF, XPS and CBZ viewer'
 arch=('i686' 'x86_64' 'armv7h')
@@ -48,7 +48,6 @@ build() {
 package() {
 	cd "${srcdir}/${_pkgname}"
 	make build=release prefix="${pkgdir}"/usr install
-	install -Dm644 build/release/libmujs.a "${pkgdir}"/usr/lib
 	install -Dm644 ../desktop "${pkgdir}"/usr/share/applications/mupdf.desktop
 	find "${pkgdir}"/usr/{include,lib,share} -type f | xargs chmod 644
 	ln -s mupdf-x11 "${pkgdir}"/usr/bin/mupdf
