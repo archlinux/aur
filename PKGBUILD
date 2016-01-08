@@ -66,6 +66,7 @@ build() {
   # -separate-debug-info \
 
   ${_srcdir}/configure \
+    -qreal float \
     -release \
     -silent \
     -confirm-license \
