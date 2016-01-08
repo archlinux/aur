@@ -3,8 +3,8 @@
 _pkgname=skype1ico
 pkgname="$_pkgname-git"
 pkgver=1.0.0.r5.g7f05c5e
-pkgrel=1
-pkgdesc="Skype icon wrapper for linux"
+pkgrel=2
+pkgdesc="Makes Skype systray icon monochrome"
 arch=(x86_64 i686)
 url="https://github.com/derlaft/skype1ico"
 license=('GPL')
