@@ -4,7 +4,7 @@
 
 pkgname=('lib32-nvidia-utils-beta' 'lib32-nvidia-libgl-beta' 'lib32-opencl-nvidia-beta')
 pkgver=361.16
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
@@ -132,6 +132,9 @@ package_lib32-nvidia-utils-beta() {
 
   # GPU-accelerated video encoding
   install -Dm755 libnvidia-encode.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-encode.so.$pkgver
+
+  # Software rendering for GeForce 8 series GPUs through X
+  install -Dm755 libnvidia-wfb.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-wfb.so.$pkgver
 
   # CUDA (Compute Unified Device Architecture)
   install -Dm755 libcuda.so.$pkgver "$pkgdir"/usr/lib32/libcuda.so.$pkgver
