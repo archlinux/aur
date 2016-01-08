@@ -1,15 +1,15 @@
 pkgbase = nodejs-pulp
 	pkgdesc = A build system and package manager for PureScript projects.
-	pkgver = 4.4.0
+	pkgver = 7.0.0
 	pkgrel = 1
 	url = https://github.com/bodil/pulp
 	arch = any
 	license = LGPL3
 	depends = npm
 	depends = nodejs
-	noextract = pulp-4.4.0.tgz
-	source = http://registry.npmjs.org/pulp/-/pulp-4.4.0.tgz
-	md5sums = 15450ae6048ca23ff2e01524bb0c3eca
+	noextract = pulp-7.0.0.tgz
+	source = http://registry.npmjs.org/pulp/-/pulp-7.0.0.tgz
+	md5sums = d1c629451f2b07777f7b2738adcd4ab5
 
 pkgname = nodejs-pulp
 

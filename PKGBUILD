@@ -2,7 +2,7 @@
 
 _npmname=pulp
 pkgname=nodejs-$_npmname
-pkgver=4.4.0
+pkgver=7.0.0
 pkgrel=1
 pkgdesc='A build system and package manager for PureScript projects.'
 arch=('any')
@@ -11,7 +11,7 @@ license=('LGPL3')
 depends=('npm' 'nodejs')
 source=("http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
 noextract=($_npmname-$pkgver.tgz)
-md5sums=('15450ae6048ca23ff2e01524bb0c3eca')
+md5sums=('d1c629451f2b07777f7b2738adcd4ab5')
 
 package() {
   local _npmdir="$pkgdir/usr/lib/node_modules/"
