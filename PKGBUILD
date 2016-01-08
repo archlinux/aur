@@ -23,13 +23,13 @@ _pgo=false
 
 # We're getting this from Debian Sid
 _debname=iceweasel
-_debver=43.0.2
+_debver=43.0.4
 _debrel=1
 _debrepo=http://ftp.debian.org/debian/pool/main/i/
 
 pkgname=iceweasel
 pkgver=$_debver.deb$_debrel
-pkgrel=2
+pkgrel=1
 pkgdesc="Debian Browser based on Mozilla Firefox"
 arch=('i686' 'x86_64')
 license=('GPL' 'MPL' 'LGPL')
@@ -58,8 +58,8 @@ source=("${_debrepo}/${_debname}/${_debname}_${_debver}.orig.tar.xz"
         'iceweasel-install-dir.patch'
         'vendor.js'
 		'iceweasel-20.0.1-fixed-loading-icon.png')
-md5sums=('d0c30614fcaf6d5391c9967b14a18212'
-         'eb769034630cd141cf7f41224afc043d'
+md5sums=('8e39af63adc496dc3c6f1acd0f69fa0f'
+         '7c098a67f9f20d763381c28afb626cea'
          '329ae0844819b6baac61d9a5749a6005'
          '7b9e5996dd9fe0b186a43a297db1c6b5'
          '1c42509891cf6843660a5f3c69896e80'
