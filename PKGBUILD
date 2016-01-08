@@ -4,7 +4,7 @@ pkgname='mygui-gl-git'
 pkgver=3.2.3.git20151206
 pkgrel=1
 
-pkgdesc="A library for creating Graphical User Interfaces for games and 3D applications"
+pkgdesc="MyGUI - OpenGL backend"
 arch=('i686' 'x86_64')
 url="http://mygui.info/"
 license=('LGPL')
