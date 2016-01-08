@@ -4,7 +4,7 @@ Requirement:
 
 - [Yaourt](https://wiki.archlinux.org/index.php/Yaourt)
 
-To install [azk](http://github.com/azukiapp/azk) on Arch Linux, just run:
+To install [azk](https://github.com/azukiapp/azk) on Arch Linux, just run:
 
 ```
 $ yaourt -S azk
