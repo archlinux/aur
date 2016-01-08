@@ -6,11 +6,11 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=mozilla-extension-gnome-keyring-git
-pkgver=0.10.r36.378d9f3
-pkgrel=2
+pkgver=0.11
+pkgrel=1
 pkgdesc="Mozilla extension to store passwords and form logins in gnome-keyring."
 arch=(any)
-url='https://github.com/plroman/mozilla-gnome-keyring'
+url='https://github.com/swick/moz-gnome-keyring-integration'
 license=(GPLv3)
 depends=(libgnome-keyring)
 optdepends=(firefox thunderbird)
