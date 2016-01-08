@@ -1,6 +1,6 @@
 pkgbase = firefox-beta-bin
 	pkgdesc = Standalone web browser from mozilla.org - Beta
-	pkgver = 44.0b6
+	pkgver = 44.0b7
 	pkgrel = 1
 	url = https://www.mozilla.org/en-US/firefox/channel/#beta
 	install = firefox-beta-bin.install
@@ -26,15 +26,15 @@ pkgbase = firefox-beta-bin
 	optdepends = ffmpeg: additional video and audio decoders
 	optdepends = libpulse: PulseAudio driver
 	optdepends = networkmanager: Location detection via available WiFi networks
-	provides = firefox=44.0b6
+	provides = firefox=44.0b7
 	source = firefox-beta-bin.desktop
 	source = firefox-beta-bin-safe.desktop
 	sha512sums = 33a52a79f7db0f6b9c54018b59edb6e89b8b503cd84c872ac3273c548033b6f33254e90018267e722f61c61858d764c838732b9cea43012526f8251c96acd57c
 	sha512sums = 01063521f3f49da8baa080b6d69f3d7ce1ed29705617d1a101c7c8863bbb5ec155b4e25bbadf3c824ea78c8dfe000a1436e61856f190c28c3cf599f38e6101a6
-	source_i686 = https://ftp.mozilla.org/pub/firefox/releases/44.0b6/linux-i686/en-US/firefox-44.0b6.tar.bz2
-	sha512sums_i686 = 1e504a06fa56a42e681e5bade576ef8c88ec406952edf625fd9a751b5c660d31fa4e026127bb2982672fd2a875db5c6b3cc71d3bff6e83740bd86f947388b045
-	source_x86_64 = https://ftp.mozilla.org/pub/firefox/releases/44.0b6/linux-x86_64/en-US/firefox-44.0b6.tar.bz2
-	sha512sums_x86_64 = e2ea82d210d55626f142c74602a045ce77385de71f147889f5515c9a20c346a48d97e2cef5670386306d2dd32d23153ef0e93505e4092c75beeb4e9fb60774c6
+	source_i686 = https://ftp.mozilla.org/pub/firefox/releases/44.0b7/linux-i686/en-US/firefox-44.0b7.tar.bz2
+	sha512sums_i686 = 69be2b8cbd0337d9063d2bd2e45bc3b5309a521cb1b63e6a6c0eaff1ecb4d7a1c68a465296b67e728cf002b1318fb07a629f59713168fc5414b09a86d605edbc
+	source_x86_64 = https://ftp.mozilla.org/pub/firefox/releases/44.0b7/linux-x86_64/en-US/firefox-44.0b7.tar.bz2
+	sha512sums_x86_64 = 6e2af3d691f49783673fbe02d62474ed36f04c494b9d17274001ff33d614cb2cf88099ce7fbbc5ee49c678a9a8b7e0770ec7d56e43dd12d42f2f35f1384ac790
 
 pkgname = firefox-beta-bin
 
