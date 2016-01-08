@@ -1,10 +1,10 @@
 #Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 pkgname=tclkit
 pkgver=8.6.4
-_tcl_tag=potential_incompatibility
+_tcl_tag=tip_412
 _tk_tag=core_8_6_4
 _kit_commit=c21eeb1e379bd5acb5b304f0784877b8e8dd31ca
-pkgrel=4
+pkgrel=5
 pkgdesc="single-file executable that provides a complete Tcl and Tk runtime"
 arch=('i686' 'x86_64')
 url="https://github.com/patthoyts/kitgen"
@@ -16,7 +16,7 @@ source=("tclkit.tar.gz::https://github.com/patthoyts/kitgen/archive/${_kit_commi
 	"tcl.tar.gz::https://github.com/tcltk/tcl/archive/${_tcl_tag}.tar.gz")
 md5sums=('2053997a397309fa10d0b62a3df114ae'
          '217158b34ce82baf8f9aaf5f9e584ad2'
-         'a6485fca8f4ca5314a9dcb1c8c8eaca0')
+         '07c57414ca366d84b06cc709400e91a6')
 
 build() {
   mv "kitgen-$_kit_commit" kitgen
