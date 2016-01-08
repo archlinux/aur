@@ -5,7 +5,7 @@
 
 pkgname=emacs-org-mode
 _srcname=org
-pkgver=8.3.2
+pkgver=8.3.3
 pkgrel=1
 pkgdesc="Emacs Org Mode"
 arch=('any')
@@ -13,17 +13,17 @@ url="http://orgmode.org/"
 depends=('emacs')
 license=('GPL')
 install=emacs-org-mode.install
-source=("http://orgmode.org/${_srcname}-${pkgver}.tar.gz")
-sha256sums=('8ae811d19546f73306710f70eed8ee1a1ec9981e78b98af077fa224d5e8875b8')
+source=("http://orgmode.org/$_srcname-$pkgver.tar.gz")
+sha256sums=('c560064ab9a52ac682ce452c62fee90113e67e9950b67e0ab1eaec405aad1eee')
 
 build() {
-  cd "${_srcname}-${pkgver}"
+  cd "$_srcname-$pkgver"
   make compile
 }
 
 package() {
-  cd "${_srcname}-${pkgver}"
-  make prefix="${pkgdir}/usr/share" install
+  cd "$_srcname-$pkgver"
+  make prefix="$pkgdir/usr/share" install
 
   ## by default now we install also the contrib directory
   install -d -m755 $pkgdir/usr/share/emacs/site-lisp/org_contrib
