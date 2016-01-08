@@ -7,8 +7,6 @@
 #  aws-cli & aws-cli-git
 #  python-botocore & python-botocore-git
 
-# TODO: When will we be able to move to the new rsa?
-
 # Use mcdiff to watch for changes
 _fn_foobar() {
 local _foobar="
@@ -31,12 +29,13 @@ wheel==0.24.0
 import awscli
 
 
-requires = ['botocore==1.3.16',
+requires = ['botocore==1.3.17',
             'colorama>=0.2.5,<=0.3.3',
             'docutils>=0.10',
             'rsa>=3.1.2,<=3.3.0']
 "
 }
+unset -f _fn_foobar
 
 set -u
 _pyver="python"
@@ -48,7 +47,7 @@ else
 pkgname="${_pyver}-${_pybase}-git"
 _pyverother='python'
 fi
-pkgver=1.9.16.r3182.ga07ba04
+pkgver=1.9.17.r3185.g6f7dc9a
 # Generally when this version changes, the version of botocore also changes
 pkgrel=1
 pkgdesc='Universal Command Line Interface for Amazon Web Services awscli'
@@ -57,7 +56,7 @@ url="https://github.com/aws/${_pybase}"
 license=('Apache') # Apache License 2.0
 _pydepends=( # See setup.py, README.rst, and requirements.txt for version dependencies
   "${_pyver}-bcdoc"           # AUR
-  "${_pyver}-botocore>=1.3.16" # AUR == would make upgrades from AUR impossible. See below.
+  "${_pyver}-botocore>=1.3.17" # AUR == would make upgrades from AUR impossible. See below.
   "${_pyver}-colorama"{">=0.2.5","<=0.3.3"}   # COM
   #"${_pyver}-rsa-3.1.2"{">=3.1.2","<=3.3.0"} # AUR
   "${_pyver}-rsa"{">=3.2","<=3.3.0"}        # COM
@@ -79,7 +78,7 @@ depends=("${_pyver}" "${_pydepends[@]}")
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 options=('!emptydirs' '!strip')
 source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('772f6d958d919246e09d0d4e5b66a356e9a3f9978e10cba870891564252743b1')
+sha256sums=('5593b19c2edc46d9750e9e8e71d73014f58ead318f7d76ebe0f9f54f7f595a3f')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pybase}"
