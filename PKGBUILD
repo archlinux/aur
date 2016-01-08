@@ -3,7 +3,7 @@
 pkgname=multivalent-pdf-tools
 _arcname=Multivalent
 pkgver=20060102
-pkgrel=1
+pkgrel=2
 pkgdesc="PDF tools to compress, impose, decrypt/encrypt, split/merge from Multivalent"
 arch=(any)
 url="http://sourceforge.net/projects/multivalent"
