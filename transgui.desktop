@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Transmission Remote GUI
+Comment=A cross platform front-end for the Transmission Bit-Torrent client
+Comment[ru]=Кросс-платформенный удалённый интерфейс для Bit-Torrent клиента Transmission
+Exec=/usr/bin/transgui
+Icon=/usr/share/icons/transgui.png
+Terminal=false
+Type=Application
+Categories=Network
