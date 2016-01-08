@@ -1,9 +1,9 @@
 # Maintainer: Donald Carr <sirspudd@gmail.com>
 
-pkgname=qpii-libs
+pkgname=libspackagename
 pkgver=6.6.6
 pkgrel=1
-pkgdesc="Qt ${pkgver} libs for the ${_piver}"
+pkgdesc="Qt ${pkgver} libs cross compiled for the Raspberry Pi libspiversion"
 # I don't know how to set this correct for cross architecture builds
 arch=("any")
 url="http://www.qt.io"

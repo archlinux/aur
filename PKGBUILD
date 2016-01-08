@@ -32,14 +32,14 @@ _pkgver=${pkgver}-beta
 _baseprefix=/opt
 _installprefix=${_baseprefix}/qt-${_pkgver}-rpi${_piver}
 _pipkgname=qt-everywhere-opensource-src-${_pkgver}
-pkgrel=4
+pkgrel=5
 pkgdesc="Cross compile Qt for the Raspberry Pi${_piver}"
 arch=("x86_64")
 url="http://www.qt.io"
 license=("LGPL3")
 makedepends=("git" "pkgconfig" "gcc" "qpi-toolchain")
-source=("git://github.com/sirspudd/mkspecs.git" "https://download.qt.io/development_releases/qt/5.6/${_pkgver}/single/${_pipkgname}.tar.gz")
-sha256sums=("SKIP" "d69103ec34b3775edfa47581b14ee9a20789d4b0d7d26220fb92f2cd32eb06f9")
+source=("git://github.com/qtproject/qtquickcontrols2.git" "git://github.com/sirspudd/mkspecs.git" "https://download.qt.io/development_releases/qt/5.6/${_pkgver}/single/${_pipkgname}.tar.gz")
+sha256sums=("SKIP" "SKIP" "d69103ec34b3775edfa47581b14ee9a20789d4b0d7d26220fb92f2cd32eb06f9")
 options=('!strip')
 
 build() {
@@ -82,8 +82,6 @@ build() {
     -no-xcb \
     \
     -skip qtscript \
-    -skip qtwebengine \
-    -skip qtwebchannel \
     -skip qtwayland \
     -skip qtquickcontrols2 \
     \
@@ -96,9 +94,15 @@ build() {
   # regrettably required, as qtwayland barfs on shadow builds
   # as private header paths not included: no clue how to fix, bypassing
 
-  cp -r ${_srcdir}/qtwayland .
-  cd qtwayland
-  ../qtbase/bin/qmake CONFIG+=wayland-compositor
+  cp -r "${_srcdir}/qtwayland" "${_bindir}"
+  cd "${_bindir}/qtwayland"
+  ${_bindir}/qtbase/bin/qmake CONFIG+=wayland-compositor
+  make
+
+  # temp hack
+  cp -r "${srcdir}/qtquickcontrols2" "${_bindir}"
+  cd "${_bindir}/qtquickcontrols2"
+  ${_bindir}/qtbase/bin/qmake
   make
 }
 
@@ -115,7 +119,11 @@ package() {
   INSTALL_ROOT="$pkgdir" make install
 
   # regrettably required
-  cd "${_bindir}"/qtwayland
+  cd "${_bindir}/qtwayland"
+  INSTALL_ROOT="$pkgdir" make install
+
+  # temp hack
+  cd "${_bindir}/qtquickcontrols2"
   INSTALL_ROOT="$pkgdir" make install
 
   # Qt is now installed to $pkgdir/$sysroot/$prefix
@@ -127,9 +135,12 @@ package() {
   rm -Rf ${_libspkgdir}
   mkdir -p ${_libspkgdir}
 
-  cp ${startdir}/${_libspkgname}-PKGBUILD ${_libspkgbuild}
+  cp ${startdir}/PKGBUILD.libs ${_libspkgbuild}
   mv "${pkgdir}/${_sysroot}/${_baseprefix}" ${_libspkgdir}
   # set correct libs version
+  sed -i "s/libspackagename/${_libspkgname}/" ${_libspkgbuild}
+  sed -i "s/libspiversion/${_piver}/" ${_libspkgbuild}
+
   sed -i "s/6.6.6/${pkgver}/" ${_libspkgbuild}
 
   mkdir -p ${_pkgprofiled}
