@@ -2,7 +2,7 @@
 
 PN=Cyberfox
 pkgname=cyberfox
-pkgver=43.0.2
+pkgver=43.0.4
 pkgrel=1
 pkgdesc="Fast and privacy oriented for of Mozilla Firefox"
 arch=('x86_64')
@@ -12,8 +12,7 @@ depends=('gtk2' 'libxt' 'dbus-glib' 'alsa-lib' 'hicolor-icon-theme' 'nss>=3.14.1
 source=("${pkgname}.desktop"
         "http://downloads.sourceforge.net/project/cyberfox/Zipped%20Format/${PN}-$pkgver.en-US.linux-${arch}.tar.bz2")
 md5sums=('9bfb5aaced348dd7db8c2c62cbc2150d'
-         'cbdbe5d0a1c3f03f0ccfeccff6710d32')
-
+         '79fe1e27628ad5548c8a3e5ad09525f2')
 package() {
     install -d "$pkgdir"/{usr/bin,opt}
     mv "${PN}" "${pkgdir}/opt/${pkgname}"
