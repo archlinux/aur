@@ -12,6 +12,6 @@ $ yaourt -S azk
 
 Dependencies:
 
-- [libnss-resolver](https://aur.archlinux.org/packages/libnss-reolver/)
+- [libnss-resolver](https://aur.archlinux.org/packages/libnss-resolver/)
 - [docker](https://www.archlinux.org/packages/community/x86_64/docker/)
 - [rsync](https://www.archlinux.org/packages/extra/x86_64/rsync/)
