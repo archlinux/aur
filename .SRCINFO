@@ -72,7 +72,7 @@ pkgname = lib32-nvidia-libgl-full-beta
 	conflicts = lib32-nvidia-libgl
 	conflicts = lib32-mesa<10.1.0-2
 
-pkgname = lib32-opencl-nvidia-full-beta-all
+pkgname = lib32-opencl-nvidia-full-beta
 	pkgdesc = NVIDIA's OpenCL implemention for 'lib32-nvidia-utils-full-beta'
 	depends = lib32-libcl
 	depends = lib32-zlib
