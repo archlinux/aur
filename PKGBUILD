@@ -4,7 +4,7 @@ pkgdesc="High performance software library for parallel computing with an easy-t
 url='http://arrayfire.com'
 pkgver=3.2.2
 arch=('i686' 'x86_64')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 makedepends=('cmake' 'doxygen' 'git')
 depends=('cblas' 'fftw' 'lapack' 'freeimage' 'glfw' 'glew')
@@ -29,6 +29,8 @@ build() {
   mkdir build && cd build
 
   #Autodetects available backends
+  CFLAGS="-D__STRICT_ANSI__"\
+  CXXFLAGS="-D__STRICT_ANSI__"\
   cmake .. \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DBUILD_TEST=OFF\
