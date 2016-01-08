@@ -1,28 +1,29 @@
 # Maintainer: Moritz Lipp <mlq@pwmt.org>
 pkgname=relic
-pkgver=0.3.5
+_pkgname=relic-toolkit
+pkgver=0.4.0
 pkgrel=1
 epoch=
 pkgdesc="RELIC is an Efficient Library for Cryptography"
 arch=('x86_64' 'i686')
-url="https://code.google.com/p/relic-toolkit/"
+url="https://github.com/relic-toolkit/relic"
 license=('GPL')
 makedepends=("cmake")
-source=("https://relic-toolkit.googlecode.com/files/$pkgname-$pkgver.tar.gz")
-md5sums=('f3dd5d7ad1683e5f4d5503b18ff18d5c')
+source=("https://github.com/relic-toolkit/relic/archive/${_pkgname}-${pkgver}.tar.gz")
+md5sums=('6056cbc87c6f5bcefffcf3025ba290d7')
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname-$_pkgname-$pkgver"
   cmake -DCMAKE_INSTALL_PREFIX=/usr .
 	make
 }
 
 check() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname-$_pkgname-$pkgver"
   ctest
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname-$_pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
 }
