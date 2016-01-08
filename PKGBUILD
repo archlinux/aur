@@ -2,13 +2,13 @@
 _pkgname=dock-applet
 pkgname=mate-applet-dock-git
 pkgver=0.62.r3.gf4af0cd
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="An application dock applet for the MATE panel"
 arch=('any')
 url="https://github.com/robint99/dock-applet"
 license=('GPLv3')
-depends=("mate-panel" "python" "python-xdg" "python-cairo" "python-gobject")
+depends=("mate-panel" "python" "python-xdg" "python-cairo" "python-gobject" "python-pillow" "python-scipy")
 makedepends=("git")
 install="mate-applet-dock.install"
 source=("git+http://github.com/robint99/dock-applet")
