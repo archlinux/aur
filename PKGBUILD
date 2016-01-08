@@ -8,7 +8,7 @@ arch=(i686 x86_64)
 url='https://projects.kde.org/projects/kde/kde-workspace'
 license=(LGPL)
 depends=(libxkbfile libcanberra systemsettings-git ksysguard-git 
-powerdevil-git kmenuedit-git kinfocenter-git polkit-kde-agent-git kpeople-git)
+powerdevil-git kmenuedit-git kinfocenter-git polkit-kde-agent-git kpeople-git qt5-graphicaleffects)
 makedepends=(xorg-server-devel xf86-input-synaptics extra-cmake-modules git kdoctools scim libibus)
 optdepends=('plasma-nm-git: Network manager applet' 'scim: SCIM backend for kimpanel'
 	'fcitx: FCITX backend for kimpanel' 'libibus: IBUS backend for kimpanel')
@@ -17,6 +17,7 @@ provides=(plasma-desktop)
 replaces=(kcm-touchpad-git)
 install=$pkgname.install
 source=('git://anongit.kde.org/plasma-desktop.git')
+groups=('plasma')
 md5sums=('SKIP')
 
 pkgver() {
