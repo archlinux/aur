@@ -3,7 +3,7 @@
 # Contributor: rememberthemer <rememberthemer@_GMAIL_DOT_COM_>
 
 pkgname=python-netcdf4
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="A python3 library for reading, manpiulating and creating netcdf files"
 arch=('x86_64' 'i686')
@@ -15,7 +15,7 @@ depends=('python' 'python-numpy' 'netcdf>=4.1.2' 'hdf5'
 makedepends=('cython')
 optdepends=('python2-netcdf4: python 2 version, includes docs and examples')
 source=(https://github.com/Unidata/netcdf4-python/archive/v${pkgver}rel.tar.gz)
-md5sums=('b8704bde1039a6388d18b063c2f16319')
+md5sums=('c3e2d276f1b45fa28635a0d35d0f36ee')
 
 build() {
     cd "$srcdir"/netcdf4-python-${pkgver}rel
