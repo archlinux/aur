@@ -2,7 +2,7 @@
 pkgname=qownnotes
 _pkgname=QOwnNotes
 _tag="linux-b743-155748"
-pkgver=0.72
+pkgver=0.74
 pkgrel=1
 pkgdesc="Open source notepad for that works together with the notes application of OwnCloud."
 url="http://www.qownnotes.org/"
