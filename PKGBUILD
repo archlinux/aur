@@ -5,7 +5,7 @@
 
 pkgname=drush
 pkgver=8.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Drush is a command line shell and Unix scripting interface for Drupal."
 arch=('any')
 url="https://github.com/drush-ops/drush/"
@@ -23,7 +23,7 @@ prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     cp box.json.dist box.json
     sed -i '/"git-version":/d' box.json
-    sed -i '/"git-commut":/d' box.json
+    sed -i '/"git-commit":/d' box.json
     composer install --no-dev
 }
 
