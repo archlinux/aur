@@ -1,3 +1,4 @@
+# Maintainer: netcrusher < tobias AT miglix DOT eu >
 # Contributor: tze <tze@datalove.me>
 
 pkgname=ttf-unifraktur
