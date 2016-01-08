@@ -3,7 +3,7 @@
 pkgname=gptrixie
 pkgver=0.0.1
 pkgrel=1
-pkgdesc="Generate NativeCall code from C headers file"
+pkgdesc="Generate Perl6 NativeCall code from C headers file"
 arch=('any')
 depends=('gccxml' 'perl6' 'perl6-xml')
 checkdepends=('perl')
