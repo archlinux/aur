@@ -1,7 +1,7 @@
 # Contributor : Jinho Jeong <jjinho0203@gmail.com>
 
 pkgname=ttf-d2coding
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="D2Coding Fixed Width TrueType fonts"
 arch=('any')
@@ -10,8 +10,8 @@ license=('OFL')
 depends=('fontconfig' 'xorg-font-utils')
 provides=('ttf-font')
 install=ttf.install
-source=('http://dev.naver.com/frs/download.php/11300/D2Coding-Ver1.0-TTC-20150911.zip')
-md5sums=('5fc42a9b9396395c6bd312ca818f038c')
+source=('http://dev.naver.com/frs/download.php/11568/D2Coding-Ver1.1-TTC-20151103.zip')
+md5sums=('04b24a880d24a0203edd32ced3f0097d')
 
 package() {
     install -dm 755 ${pkgdir}/usr/share/fonts/TTF
