@@ -1,23 +1,32 @@
 # Maintainer: Lukasz Pozarlik <lpozarlik@gmail.com>
+# Contributor: Duy Truong <jimreynold2nd@yahoo.com>
 
 pkgbase=python-jira
 pkgname=('python-jira')
 	 #'python2-jira')
 pkgdesc="Python library for interacting with JIRA via REST APIs"
 pkgver=1.0.3
-pkgrel=3
+pkgrel=4
 url="https://pypi.python.org/pypi/jira"
 license=('BSD')
 arch=('any')
-source="https://pypi.python.org/packages/2.7/j/jira/jira-${pkgver}-py2.py3-none-any.whl"
-md5sums=('a4eb7a250cd8fc2adb00e2245a68a528')
+source=("https://pypi.python.org/packages/2.7/j/jira/jira-${pkgver}-py2.py3-none-any.whl"
+	'client.patch')
+md5sums=('a4eb7a250cd8fc2adb00e2245a68a528'
+	 'cad99b6b79027699605b3a626e49f085')
+
+prepare(){
+        patch -p1 -i "${srcdir}/client.patch"
+	cd "${srcdir}"
+	zip jira-${pkgver}-py2.py3-none-any.whl jira/* jira-${pkgver}.dist-info/*
+}
 
 package_python-jira(){
 	makedepends=('python-pip')
 	depends=('python'
 	         'python-requests'
 	         'python-six'
-		 'python-tlslite'
+		 #'python-tlslite'
 		 'python-requests-toolbelt'
 		 'python-requests-oauthlib'
 		 'python-oauthlib')
