@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Treesheets
-GenericName=Spreadsheet Organizer
-Comment=Free Form Hierarchical Information Organizer
-Exec=treesheets
-Icon=/usr/share/treesheets/images/icon32.png
-Categories=Office;Spreadsheet:
-Terminal=false

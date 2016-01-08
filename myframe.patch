@@ -1,8 +1,8 @@
 diff --git a/src/myframe.h b/src/myframe.h
-index bba070d..f7e8441 100755
+index 6673c0e..89591fc 100755
 --- a/src/myframe.h
 +++ b/src/myframe.h
-@@ -56,7 +56,7 @@ struct MyFrame : wxFrame
+@@ -79,7 +79,7 @@ struct MyFrame : wxFrame
  
          sys->frame = this;
  
