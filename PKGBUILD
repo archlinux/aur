@@ -3,8 +3,8 @@
 
 _gemname=taglib-ruby
 pkgname=ruby-$_gemname
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.7.1
+pkgrel=1
 pkgdesc='Ruby interface for the taglib C++ library'
 arch=(i686 x86_64)
 url='http://robinst.github.io/taglib-ruby/'
@@ -13,7 +13,7 @@ depends=(ruby taglib)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('bbaa0c769f25d207af3d3c8e8339c462da5714e1')
+sha256sums=('b19fa1f4e3841d3cfc7bdb845e93cde0d8c0f203560200da20c23066db3f0f65')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
