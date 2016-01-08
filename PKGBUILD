@@ -1,6 +1,7 @@
 # Maintainer: Midov <midov at midov dot pl>
 pkgname=qownnotes
 _pkgname=QOwnNotes
+_tag="linux-b743-155748"
 pkgver=0.72
 pkgrel=1
 pkgdesc="Open source notepad for that works together with the notes application of OwnCloud."
@@ -10,14 +11,13 @@ license=('GPL3')
 depends=('gcc' 'qt5-base' 'qt5-svg')
 makedepends=('git')
 #install=$pkgname.install
-source=(git+"https://github.com/pbek/QOwnNotes.git"
+source=("git://github.com/pbek/QOwnNotes.git#tag=$_tag"
 	qownnotes.desktop)
 md5sums=('SKIP'
 	'dd75c043efe26395e0a12be809806f70')
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  git checkout develop
   cd "${srcdir}/${_pkgname}/src"
   qmake QOwnNotes.pro -r
   make
