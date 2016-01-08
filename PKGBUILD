@@ -1,7 +1,7 @@
 # Maintainer: Ecmel B. CANLIER <ecbercnlmc(at)gmail.com>
 pkgname=webdz-git
 pkgver=1.0DEV
-pkgrel=1
+pkgrel=2
 pkgdesc="Cleans up unminified, unneeded etc. files from your website project and creates a zip archive."
 url="https://github.com/Admicos/webdz"
 arch=('any')
