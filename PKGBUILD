@@ -1,11 +1,12 @@
 # Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
 
 pkgname=nuvola-app-google-play-git
-pkgver=r24.ebe1744
+pkgver=5.11.r0.g2bdd8d6
 pkgrel=1
 pkgdesc="Google Play Music integration for Nuvola Player."
 arch=("any")
 url="https://github.com/tiliado/nuvola-app-google-play"
+provides=('nuvola-app-google-play')
 license=('custom:BSD')
 depends=('nuvolaplayer-git')
 makedepends=('git')
@@ -14,10 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$pkgname"
-	( set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
