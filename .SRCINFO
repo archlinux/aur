@@ -1,11 +1,11 @@
 pkgbase = arm-frc-linux-gnueabi-gcc
 	pkgdesc = The GNU Compiler Collection (arm-frc-linux-gnueabi)
 	pkgver = 4.9.3
-	pkgrel = 1
+	pkgrel = 3
 	url = http://gcc.gnu.org
 	arch = i686
 	arch = x86_64
-	groups = frc-2015
+	groups = frc-2016
 	license = GPL
 	license = LGPL
 	depends = arm-frc-linux-gnueabi-binutils
@@ -22,7 +22,7 @@ pkgbase = arm-frc-linux-gnueabi-gcc
 	source = ftp://gcc.gnu.org/pub/gcc/releases/gcc-4.9.3/gcc-4.9.3.tar.bz2
 	source = minorSOname.patch
 	source = no-nested-deprecated-warnings.patch
-	md5sums = fddf71348546af523353bd43d34919c1
+	md5sums = 6f831b4d251872736e8e9cc09746f327
 	md5sums = eac80070a6324fc67ed5b3ac85551789
 	md5sums = 507f0b6c95ad5ff8e436697ae093a10d
 

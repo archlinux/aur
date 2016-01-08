@@ -3,12 +3,12 @@
 _target="arm-frc-linux-gnueabi"
 pkgname=${_target}-gcc
 pkgver=4.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc="The GNU Compiler Collection (${_target})"
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
 url="http://gcc.gnu.org"
-groups=('frc-2015')
+groups=('frc-2016')
 depends=("${_target}-binutils" "${_target}-eglibc" 'libmpc' 'elfutils')
 options=('!buildflags' '!libtool' '!emptydirs' 'zipman' 'docs'
   '!strip' 'staticlibs')
