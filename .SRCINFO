@@ -1,7 +1,7 @@
 pkgbase = ynab4
 	pkgdesc = You Need A Budget, installs with wine
-	pkgver = 4.3.729
-	pkgrel = 4
+	pkgver = 4.3.820
+	pkgrel = 1
 	url = http://youneedabudget.com/
 	arch = x86_64
 	license = unknown
@@ -18,9 +18,9 @@ pkgbase = ynab4
 	optdepends = dropbox
 	noextract = Setup.exe
 	source = ynab4
-	source = Setup.exe::http://www.youneedabudget.com/CDNOrigin/download/ynab4/liveCaptive/Win/YNAB%204_4.3.729_Setup.exe
+	source = Setup.exe::http://s3.amazonaws.com/cf.download/${pkgname}/YNAB%204_${pkgver}_Setup.exe
 	md5sums = 764cd9a8cec68ebcad04427110045267
-	md5sums = 0a5df8a115193fe68c4fb5e1cae55326
+	md5sums = 7b9fc27fb90761085b404cffc07c9de2
 
 pkgname = ynab4
 
