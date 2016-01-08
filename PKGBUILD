@@ -1,4 +1,5 @@
-# Maintainer: Edgar Kalkowski <eMail@edgar-kalkowski.de>
+# Maintainer: netcrusher < tobias AT miglix DOT eu >
+# Contributor: Edgar Kalkowski <eMail@edgar-kalkowski.de>
 pkgname=texlive-frakturx
 pkgver=20070103
 pkgrel=1
