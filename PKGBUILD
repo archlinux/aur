@@ -2,17 +2,17 @@
 
 pkgname=seriesmarker
 _pkgname=SeriesMarker
-pkgver=0.0.3
-pkgrel=2
+pkgver=0.1.0
+pkgrel=1
 pkgdesc='A TV series browser and tracker application.'
 arch=(any)
-url="http://toroettg.github.io/SeriesMarker/"
+url="https://toroettg.github.io/SeriesMarker/"
 license=('GPL3')
 depends=('python' 'python-pytvdbapi' 'python-pyside' 'python-appdirs' 'python-sqlalchemy')
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=(https://pypi.python.org/packages/source/S/SeriesMarker/SeriesMarker-$pkgver.tar.gz)
-md5sums=('fc546636a48bda938988fea11bcd266b')
+md5sums=('229f96724ea2540bcab611c609a05698')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
