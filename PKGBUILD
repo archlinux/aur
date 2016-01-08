@@ -2,7 +2,7 @@
 # Contributor: Keerthan Jaic <jckeerthan at gmail dot com>
 
 pkgname=diorite-git
-pkgver=2015.05.06.c9a04c6
+pkgver=0.2.0.r3.gb24e5fe
 pkgrel=1
 pkgdesc="Utility and widget library based on Glib and GTK3."
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git log -1 --format="%cd.%h" --date=short | sed 's:-:.:g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
