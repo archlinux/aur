@@ -7,8 +7,8 @@
 
 pkgname=lib32-pam
 pkgver=1.2.1
-pkgrel=1
-pkgdesc='PAM (Pluggable Authentication Modules)'
+pkgrel=2
+pkgdesc='Pluggable Authentication Modules'
 arch=('x86_64')
 url='http://linux-pam.org'
 license=('GPL2')
