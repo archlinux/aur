@@ -7,6 +7,7 @@ pkgdesc="Firmware for the Broadcom 1570 PCIe webcam."
 arch=('x86_64')
 url="https://github.com/patjak/bcwc_pcie"
 license=('unknown')
+makedepends=('cpio')
 
 source=("$pkgname::git+https://github.com/patjak/bcwc_pcie.git")
 md5sums=('SKIP')
