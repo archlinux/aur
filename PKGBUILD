@@ -9,7 +9,8 @@ arch=('any')
 url='https://lutris.net/'
 license=('GPL3')
 depends=('desktop-file-utils' 'hicolor-icon-theme' 'polkit' 'xorg-xrandr'
-         'python2-dbus' 'python2-gobject' 'python2-xdg' 'python2-yaml')
+         'python2-dbus' 'python2-gobject' 'python2-xdg' 'python2-yaml'
+         'xdg-user-dirs')
 makedepends=('python2-setuptools')
 install='lutris.install'
 source=("https://lutris.net/releases/lutris_${pkgver}.tar.gz")
