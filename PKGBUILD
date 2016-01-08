@@ -2,14 +2,13 @@
 
 pkgname=openttd-ttdwin
 pkgver=1
-pkgrel=3
+pkgrel=4
 pkgdesc="Non-free TTD Windows data set for OpenTTD"
 arch=('any')
 url="http://www.chrissawyergames.com/"
 license=("unknown")
 
-# The TTD data files are protected by copyright
-# and not included in source package.
+# The TTD data files are protected by copyright and not included.
 # Please obtain them legally: http://www.transporttycoon.net/where
 source=(gm_tt00.gm gm_tt01.gm gm_tt02.gm gm_tt03.gm gm_tt04.gm
         gm_tt05.gm gm_tt06.gm gm_tt07.gm gm_tt08.gm gm_tt09.gm
@@ -17,29 +16,37 @@ source=(gm_tt00.gm gm_tt01.gm gm_tt02.gm gm_tt03.gm gm_tt04.gm
         gm_tt15.gm gm_tt16.gm gm_tt17.gm gm_tt18.gm gm_tt19.gm
         gm_tt20.gm gm_tt21.gm sample.cat trg1r.grf trgcr.grf
         trghr.grf trgir.grf trgtr.grf)
-md5sums=('45cfec1b9d8c7a0ad45e755833cbf221' 'ab14ed3392d848abd2a2e90a9d75d121'
-         'dd4f696e4be5987ce738257b08b50171' 'a1bfde23343df9e4063419bf29c166b8'
-         '4e6943aa0c455203d76c79389054747d' 'cee281cb85a2e2343552d97640545a47'
-         '26d1de5efa8675f94065784e9d539e49' '6f2691e17558f552ec4c565e4ab7139c'
-         'a42bf2cb3340a822f1a69646fc7a487d' 'eb35761a58a8df3c59ed8929cce13916'
-         '42fecd686720a785d20a78590c466a82' '50ef1ef02e49d2112786dd45e69dc3ee'
-         '4ce707a0e0e72419f0681dd9bd95271b' 'e765753be29d889ec818f38009103619'
-         '270e2d63bd32b95a4d007ce15a6ce45f' '89e116a1c0c69f1845cc903a9bfbe460'
-         'f824e2371b3bedfe61aad4b9c62dd6be' '1b23eebb0796c1ab99cd97fa7082cf7b'
-         '15650de3bad645d0e88c4f5c7a2df92a' '7aec079e15bd09588660b85545ac4dfc'
-         '1509097889dee617aa1e9a1738a5a930' 'a8d0aaad02e1a762d8d54cf81da56bab'
-         '9212e81e72badd4bbe1eaeae66458e10' 'b04ce593d8c5016e07473a743d7d3358'
-         '3668f410c761a050b5e7095a2b14879b' '06bf2b7a31766f048baac2ebe43457b1'
-         '0c2484ff6be49fc63a83be6ab5c38f32' 'de53650517fe661ceaa3138c6edb0eb8')
+sha256sums=('18dd353059d43b2dc7f2afbf5b69b49eccf3ffdeccb6ae06074ae465aa76874e'
+            'e240d73af1c8aaa3355015d798fcd36d22b42daf57622008b3dd92b98b52d17e'
+            '5e56fa053591335a377e4e537c91c0136a487f2ca243771d28d16138ff5ce3f4'
+            '21449a31adf846236e86f974521db9e67bd57274eccefe86b5f9e44b8dcc335a'
+            '53bb20f1c9dad09fe708e1706eeeff2acedf0011a83efe96f4cd3944dbc131fb'
+            '0a89aa923f11dc1481dae416f288e971f4e603d19e04fe03ed6c732e68cecc67'
+            '42ab62031c64ef1128fb2dde507cbc4e1a5230ba6b89106569cf58e516adca67'
+            '283d4089a3248a8edd94845e6bc85345b858e3df6cf87790b89989fc34bffd80'
+            '0ef175f157deb696624ba1e8e7ad5a0a5545ce1f6d157147a6d8f9cddeb40995'
+            '9c67957126d4a3f14d2f77a00c659b674d8cd9e2f272788083bf48354757f67e'
+            'e61a917846b9e348c080dde1eb987ec51c92bd6846e6a6bc85fbd7f0dbcec3a3'
+            'eb28b683d5dd48eb10023537b89b6f0fb8ab48d6926c19ac962bd0b2dc303c20'
+            '45cd9abe01eef34008f97af2b6cec1e648b7a6ef07b3416f9456f477bee8850a'
+            'a203fe0062e7245a7a830d498531014aa3d616c613e596fb36bafdffdd1f7da6'
+            '440c8399d2373a0ca849f3bd7f6aef668b9b6e93b1e73f2071f59d5b1044a4e9'
+            '2c42364813d2ed79c47ec46eb8ea6a7bca8b0f3a2500cb653d598e18bae0dd16'
+            '2ce51aa7a402c8c9b5809a62e2e83386e362e3a5ccbc989a4d86de0e80ef6ef7'
+            '9086a9bc881aa3219efc5b65fb0494f409996d9b37419222c3ffa8ec347fccee'
+            'b01e1d01896895c1f871e23a032aaaeff4c93f823459403c825f2c7c632f8b9d'
+            'e6514e5fd573b6ea4e683286b0244b084bcd8bc6f4cc335fc4d1960b3f2b086d'
+            '6841606bc7528aa095767e830c8596d0e9284c49d00e411b7cd3d830713edeb4'
+            '8ee052b0a7d47097f30e6e70163c7dc114757237813fe9cecebd629f7a94eb9c'
+            '7135cb3055321e38eba496e7efccb17bcd99d3c2ab85d84d7e3de70f8b38a394'
+            '508cea9a82de92db3193521b3506e034deb850ff52a4c9dc0fb9111b76e3176b'
+            'adca1af22b2e9b77c6724f84670e670e5ebb573e6df9b7ae251f910b9df485e7'
+            '6b60226f8a1a71cda816665495d7d1fe618cce471681d9344974805909c4b75e'
+            '5a3540c517373cddb1ab4729aba0956144845e1c5cecb715cfddb7c56357fed7'
+            'd03eb142ee2ccae50bb8e337959da1ac68f32cbbac1ebde858104baf63f121fd')
 
-build() {
-    cd "$srcdir"
-
-    mkdir -p "$pkgdir/usr/share/openttd/data"
-    install -m644 trg{1,c,h,i,t}r.grf sample.cat \
-      "$pkgdir/usr/share/openttd/data/" || return 1
-
-    mkdir -p "$pkgdir/usr/share/openttd/gm"
-    install -m644 gm_tt{00..21}.gm \
-      "$pkgdir/usr/share/openttd/gm/" || return 1
+package() {
+    mkdir -p "$pkgdir"/usr/share/openttd/{data,gm}
+    install -m644 trg{1,c,h,i,t}r.grf sample.cat "$pkgdir/usr/share/openttd/data/"
+    install -m644 gm_tt{00..21}.gm "$pkgdir/usr/share/openttd/gm/"
 }
