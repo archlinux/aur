@@ -29,7 +29,6 @@ build() {
 package() {
   cd cli-visualizer || exit
   install -Dm755 build/vis "$pkgdir/usr/bin/vis"
-  install -Dm755 bin/safe_fifo "$pkgdir/usr/bin/safe_fifo"
 
   mkdir -p ~/.config/vis/colors
   cp examples/config ~/.config/vis/
