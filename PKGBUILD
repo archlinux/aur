@@ -1,8 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=alacryd-git
-pkgver=20160101
-pkgrel=3
+pkgver=20160108
+pkgrel=1
 pkgdesc="Expedient Perl6 module installation"
 arch=('any')
 depends=('perl6')
@@ -26,7 +26,7 @@ package() {
   install -Dm 644 UNLICENSE -t "$pkgdir/usr/share/licenses/alacryd"
 
   msg2 'Installing documentation...'
-  install -Dm 644 README.pod -t "$pkgdir/usr/share/doc/alacryd"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/alacryd"
 
   msg2 'Installing...'
   install -Dm 755 alacryd -t "$pkgdir/usr/bin"
