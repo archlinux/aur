@@ -1,5 +1,5 @@
-/pkg/
-/src/
-/*.gz
-/*.pkg.tar.xz
-/*.tgz
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!drush.install
