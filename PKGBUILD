@@ -4,7 +4,7 @@
 
 pkgname=('nvidia-utils-beta' 'nvidia-libgl-beta' 'opencl-nvidia-beta')
 pkgver=361.16
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
@@ -165,11 +165,17 @@ package_nvidia-utils-beta() {
   # GPU-accelerated video encoding
   install -Dm755 libnvidia-encode.so.$pkgver "$pkgdir"/usr/lib/libnvidia-encode.so.$pkgver
 
+  # Software rendering for GeForce 8 series GPUs through X
+  install -Dm755 libnvidia-wfb.so.$pkgver "$pkgdir"/usr/lib/libnvidia-wfb.so.$pkgver
+
   # GTK+ for nvidia-settings
   install -Dm755 libnvidia-gtk2.so.$pkgver "$pkgdir"/usr/lib/libnvidia-gtk2.so.$pkgver
   install -Dm755 libnvidia-gtk3.so.$pkgver "$pkgdir"/usr/lib/libnvidia-gtk3.so.$pkgver
 
-  # CUDA (Compute Unified Device Architecture)
+  # Component of nvidia-xconfig
+  install -Dm755 libnvidia-cfg.so.$pkgver "$pkgdir"/usr/lib/libnvidia-cfg.so.$pkgver
+
+  # CUDA (Compute Unified Device Architecture) (perform traditional CPU calculations with the GPU)
   install -Dm755 libcuda.so.$pkgver "$pkgdir"/usr/lib/libcuda.so.$pkgver
   install -Dm755 libnvcuvid.so.$pkgver "$pkgdir"/usr/lib/libnvcuvid.so.$pkgver
 
@@ -182,10 +188,8 @@ package_nvidia-utils-beta() {
   # TLS (Thread local storage) support for OpenGL libs
   install -Dm755 tls/libnvidia-tls.so.$pkgver "$pkgdir"/usr/lib/libnvidia-tls.so.$pkgver
 
-  # GPU monitoring and management
+  # GPU monitoring and management (1/2)
   install -Dm755 libnvidia-ml.so.$pkgver "$pkgdir"/usr/lib/libnvidia-ml.so.$pkgver
-  install -Dm755 nvidia-smi "$pkgdir"/usr/bin/nvidia-smi
-  install -Dm644 nvidia-smi.1.gz "$pkgdir"/usr/share/man/man1/nvidia-smi.1.gz
 
   # Helper libs for approved partners' GRID remote apps
   install -Dm755 libnvidia-ifr.so.$pkgver "$pkgdir"/usr/lib/libnvidia-ifr.so.$pkgver
@@ -194,26 +198,28 @@ package_nvidia-utils-beta() {
   # create missing soname links
   _create_links
 
+##### BINARIES AND MANPAGES #####
+  
   # CUDA MPS (Multi Process Service)
   install -Dm755 nvidia-cuda-mps-control "$pkgdir"/usr/bin/nvidia-cuda-mps-control
   install -Dm644 nvidia-cuda-mps-control.1.gz "$pkgdir"/usr/share/man/man1/nvidia-cuda-mps-control.1.gz
   install -Dm755 nvidia-cuda-mps-server "$pkgdir"/usr/bin/nvidia-cuda-mps-server
- 
-  # nvidia-gridd
+
+  # NVIDIA GRID licensing daemon (for sharing virtual GPU (vGPU) hardware acceleration between multiple users)
   install -Dm644 nvidia-gridd.1.gz "$pkgdir"/usr/share/man/man1/nvidia-gridd.1.gz
  
-  # nvidia-modprobe
+  # For loading the kernel module and creating the character device files
   install -Dm4755 nvidia-modprobe "$pkgdir"/usr/bin/nvidia-modprobe
   install -Dm644 nvidia-modprobe.1.gz "$pkgdir"/usr/share/man/man1/nvidia-modprobe.1.gz
 
-  # nvidia-persistenced
+  # Daemon for maintaining persistent software state in the driver
   install -Dm755 nvidia-persistenced "$pkgdir"/usr/bin/nvidia-persistenced
   install -Dm644 nvidia-persistenced.1.gz "$pkgdir"/usr/share/man/man1/nvidia-persistenced.1.gz
   install -Dm644 nvidia-persistenced-init/systemd/nvidia-persistenced.service.template \
                  "$pkgdir"/usr/lib/systemd/system/nvidia-persistenced.service
   sed -i 's/__USER__/nvidia-persistenced/' "$pkgdir"/usr/lib/systemd/system/nvidia-persistenced.service
 
-  # nvidia-settings
+  # GUI for configuring the driver
   install -Dm755 nvidia-settings "$pkgdir"/usr/bin/nvidia-settings
   install -Dm644 nvidia-settings.1.gz "$pkgdir"/usr/share/man/man1/nvidia-settings.1.gz
   install -Dm644 nvidia-settings.png "$pkgdir"/usr/share/pixmaps/nvidia-settings.png
@@ -222,17 +228,19 @@ package_nvidia-utils-beta() {
       -e 's:__PIXMAP_PATH__:/usr/share/pixmaps:' \
       -i "$pkgdir"/usr/share/applications/nvidia-settings.desktop
 
-  # nvidia-xconfig
+  # GPU monitoring and management (2/2)
+  install -Dm755 nvidia-smi "$pkgdir"/usr/bin/nvidia-smi
+  install -Dm644 nvidia-smi.1.gz "$pkgdir"/usr/share/man/man1/nvidia-smi.1.gz
+
+  # Basic control over configuration options in the driver
   install -Dm755 nvidia-xconfig "$pkgdir"/usr/bin/nvidia-xconfig
   install -Dm644 nvidia-xconfig.1.gz "$pkgdir"/usr/share/man/man1/nvidia-xconfig.1.gz
-  install -Dm755 libnvidia-cfg.so.$pkgver "$pkgdir"/usr/lib/libnvidia-cfg.so.$pkgver
 
-  # Debug
+  # Debugging and bug reporting
   install -Dm755 nvidia-bug-report.sh "$pkgdir"/usr/bin/nvidia-bug-report.sh
   install -Dm755 nvidia-debugdump "$pkgdir"/usr/bin/nvidia-debugdump
 
-  # Disable logo splash
-  install -Dm644 "$srcdir"/20-nvidia.conf "$pkgdir"/etc/X11/xorg.conf.d/20-nvidia.conf
+##### MISCELLANEOUS #####
 
   # Vendor profiles
   install -Dm644 nvidia-application-profiles-$pkgver-rc \
@@ -249,4 +257,10 @@ package_nvidia-utils-beta() {
   # Licenses
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/nvidia/LICENSE
   ln -s nvidia/ "$pkgdir"/usr/share/licenses/nvidia-utils
+
+  # Disable logo splash
+  install -Dm644 "$srcdir"/20-nvidia.conf "$pkgdir"/etc/X11/xorg.conf.d/20-nvidia.conf
+
+  # Distro-specific files must be installed in /usr/share/X11/xorg.conf.d
+  install -Dm644 nvidia-drm-outputclass.conf "$pkgdir"/usr/share/X11/xorg.conf.d/nvidia-drm-outputclass.conf
 }
