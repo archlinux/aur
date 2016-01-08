@@ -12,7 +12,8 @@ license=("GPL")
 depends=("qt5-base-dev-git" "qt5-declarative" "qt5-quickcontrols"
          "qt5-wayland-dev-git" "qt5-graphicaleffects" "greenisland-git"
          "qml-material-git" "kdeclarative" "pam" "libpulse" "libqtxdg" "solid"
-         "kconfig" "networkmanager-qt" "ttf-dejavu" "ttf-droid")
+         "kconfig" "networkmanager-qt" "ttf-dejavu" "ttf-droid"
+         "libpapyros-git")
 optdepends=('pulseaudio: audio support'
             'sddm: login screen theme'
             'paper-icon-theme: default icon theme'
