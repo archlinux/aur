@@ -2,18 +2,18 @@
 # Maintainer: Walter Dworak <preparationh67 at gmail dot com>
 # see http://wiki.archlinux.org/index.php/Java_Package_Guidelines
 pkgname=jgoodies-common
-pkgver=1.8.1
+pkgver=1.7.0
 pkgrel=1
-_pkgdate="20140629"
+_pkgver="1_7_0"
 pkgdesc="A Java Swing common library required by other JGoodies libraries"
 arch=('any')
 url="http://www.jgoodies.com/"
 license=('BSD')
 groups=('jgoodies')
 optdepends=('java-runtime>=6')
-source=("http://www.jgoodies.com/download/libraries/common/$pkgname-${pkgver//./_}-$_pkgdate.zip")
+source=("http://www.jgoodies.com/download/libraries/common/$pkgname-$_pkgver.zip")
 
-md5sums=('24cc6aafe0bfe6b72d893caab6b38201')
+md5sums=('07380827ee9e345b35861bc3eed7d9b0')
 
 package() {
   _src="$srcdir/$pkgname-$pkgver"
