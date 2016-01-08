@@ -5,44 +5,37 @@
 
 pkgname=drush
 pkgver=8.0.1
-pkgrel=1
-pkgdesc="Drush is a command line shell and Unix scripting interface for Drupal"
+pkgrel=2
+pkgdesc="Drush is a command line shell and Unix scripting interface for Drupal."
 arch=('any')
 url="https://github.com/drush-ops/drush/"
 license=('GPL')
-depends=('php' 'php-composer')
+depends=('php')
+makedepends=('php-composer' 'php-box')
 install=${pkgname}.install
 source=(
-    "http://github.com/drush-ops/$pkgname/archive/$pkgver.tar.gz"
-    'http://download.pear.php.net/package/Console_Table-1.2.1.tgz'
-)
-md5sums=('cde5243544a6ac076c9ade447f4367e9'
-         '027b5bce93e53111e55b14111118de98')
+    "drush.install"
+    "https://github.com/drush-ops/${pkgname}/archive/$pkgver.tar.gz")
+sha256sums=('e800601699e4b1ea0a0057fc91827b31fc8c5070f5014df2777396aabc7680ec'
+            '10b327403ad2fc929a79a8133197183d8a72c4606c58212b3a8008c3a23fc990')
+
+prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    cp box.json.dist box.json
+    composer install --no-dev
+}
+
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    php-box build
+}
 
 package() {
-    cd "${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
 
-    composer update
+    install -Dm755 drush.phar "${pkgdir}/usr/bin/drush"
 
-    # create dir structure
-    install -d "${pkgdir}/etc/${pkgname}"
-    install -d "${pkgdir}/usr/bin"
-    install -d "${pkgdir}/usr/share/webapps/${pkgname}"
-    install -d "${pkgdir}/usr/share/doc/${pkgname}"
-    # add empty directory for drush extensions
-    install -d "${pkgdir}/usr/share/webapps/${pkgname}/commands"
-
-    # install main files
-    cp -r commands lib includes vendor "${pkgdir}/usr/share/webapps/${pkgname}"
-    cp -r examples "${pkgdir}/usr/share/doc/${pkgname}"
-
-    install -m644 examples/example.{{aliases.,}drushrc.php,drush.ini} "${pkgdir}/etc/${pkgname}"
-    install -m644 drush_logo-black.png     "${pkgdir}/usr/share/doc/${pkgname}"
-    install -m644 drush.info drush.api.php "${pkgdir}/usr/share/webapps/${pkgname}"
-    install -m644 drush.php                "${pkgdir}/usr/share/webapps/${pkgname}"
-    install -m755 drush                    "${pkgdir}/usr/share/webapps/${pkgname}"
-    ln -s "/usr/share/webapps/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-
-    # install Console_Table library too
-    install -Dm644 ../Console_Table-1.2.1/Table.php "${pkgdir}/usr/share/webapps/${pkgname}/includes/table.inc"
+    install -Dm644 examples/example.drush.ini "${pkgdir}/etc/drush/drush.ini"
+    install -Dm644 examples/example.aliases.drushrc.php "${pkgdir}/etc/drush/aliases.drushrc.php"
+    install -Dm644 examples/example.drushrc.php "${pkgdir}/etc/drush/drushrc.php"
 }
