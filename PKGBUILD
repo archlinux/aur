@@ -5,7 +5,7 @@ pkgdesc=('Interface HomeMatic BidCoS and others with home automation software')
 pkgbase=('homegear')
 pkgname=('homegear')
 pkgver=0.5.25
-pkgrel=1
+pkgrel=2
 arch=('armv7h' 'x86_64' 'i686')
 license=('GPL')
 url="https://github.com/Homegear/Homegear"
@@ -17,11 +17,11 @@ source=("https://github.com/Homegear/Homegear/archive/${pkgver}.tar.gz"
 	'homegear.service'
 	'homegear.logrotate')
 md5sums=('cd8335a45f8c9fb3e1fe2fd6328f8373'
-	 '3f84c8c96fc6b7d197762e61af97a086'
-	 'b1a820bb631c45f3b0f266f552e24891'
-	 'ba39981e2b7a1f3cb1428fb839a1786a'
-	 '8dc90bcf3f521c1bbf80c0ba5e51a3e8'
-	 '57e41d66f3f80d9e8e3caa665dd5e788')
+         '3f84c8c96fc6b7d197762e61af97a086'
+         'b1a820bb631c45f3b0f266f552e24891'
+         'ba39981e2b7a1f3cb1428fb839a1786a'
+         'e208eff7459ed6ac965c9f3ed64a4619'
+         '57e41d66f3f80d9e8e3caa665dd5e788')
 
 prepare() {
 	cd "${srcdir}/Homegear-${pkgver}"
@@ -40,7 +40,7 @@ build() {
 package_homegear() {
 	pkgdesc='Interface your HomeMatic BidCoS, HomeMatic Wired, MAX!, INSTEON or Philips hue devices with your home automation software or your own control scripts.'
 	depends=('gcc-libs' 'gnutls>=3.3.0' 'libgpg-error>=1.14' 'readline>=6.2' 'sqlite>=3.7.13' 'libxml2>=2.8.0' 'lzo>=2.0.6' 'unzip' 'wget' 'libxml2' 'python2' 'python2-pip' 'openssl')
-	install='homegear.install'
+	install='.install'
 	backup=('etc/homegear/main.conf'
 		'etc/homegear/physicalinterfaces.conf'
 		'etc/homegear/rpcclients.conf'
