@@ -6,7 +6,7 @@ replaces=('zarafa-server-arm')
 pkgver=7.2.1
 _pkgmajver=7.2
 _pkgrev=${pkgver}-51847
-pkgrel=7
+pkgrel=8
 pkgdesc="Open Source Groupware Solution"
 arch=('arm'
       'armv7h'
@@ -30,7 +30,7 @@ depends=("zarafa-libical>=7.2.0"
 	 'openssl'
 	 'libtool'
          'libxml2'
-	 'php'
+	 'php<7'
 	 'libidn'
          'python'
 	 'python2'
