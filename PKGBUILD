@@ -22,10 +22,10 @@
 echo "Set your sysroot prior to build" && exit 1
 _sysroot=/mnt/pi
 
-_packaginguser=$(whoami)
-pkgname=qpi
-_libspkgname="${pkgname}-libs"
 _piver=1
+pkgname=qpi${_piver}
+_packaginguser=$(whoami)
+_libspkgname="${pkgname}-libs"
 _mkspec="linux-rpi${_piver}-g++"
 pkgver=5.6.0
 _pkgver=${pkgver}-beta
@@ -57,8 +57,9 @@ build() {
   mkdir -p ${_bindir}
   cd ${_bindir}
 
-  # skipping on principle: qtscript xcb qtquickcontrols
-  # skipping because of the target in question: widgets qtwebchannel qtquickcontrols2
+  # skipping due to build issues: qtquickcontrols2
+  # skipping on principle: qtscript xcb
+  # skipping because of the target in question: widgets qtwebchannel
   # TODO: qtwebengine, a little bulky but useful
 
   # Too bleeding big
@@ -84,7 +85,6 @@ build() {
     -skip qtwebengine \
     -skip qtwebchannel \
     -skip qtwayland \
-    -skip qtquickcontrols \
     -skip qtquickcontrols2 \
     \
     -sysroot ${_sysroot} \
@@ -123,15 +123,18 @@ package() {
   local _libsdir="${startdir}/${_libspkgname}"
   local _libspkgdir="${_libsdir}/topkg"
   local _libspkgbuild="${_libsdir}/PKGBUILD"
-
+  local _pkgprofiled=${_libspkgdir}/etc/profile.d
   rm -Rf ${_libspkgdir}
   mkdir -p ${_libspkgdir}
 
   cp ${startdir}/${_libspkgname}-PKGBUILD ${_libspkgbuild}
   mv "${pkgdir}/${_sysroot}/${_baseprefix}" ${_libspkgdir}
-
   # set correct libs version
   sed -i "s/6.6.6/${pkgver}/" ${_libspkgbuild}
+
+  mkdir -p ${_pkgprofiled}
+  cp ${startdir}/qpi.sh ${_pkgprofiled}
+  sed -i "s,localpiprefix,${_installprefix}," ${_pkgprofiled}/qpi.sh
 
   cd ${_libsdir}
   runuser -l ${_packaginguser} -c 'makepkg -f'
