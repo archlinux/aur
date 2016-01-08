@@ -2,7 +2,7 @@
 
 pkgname=perl6-terminal-wcwidth
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Returns what the character width should be on the terminal"
 arch=('any')
 depends=('perl6')
@@ -13,16 +13,6 @@ url="https://github.com/bluebear94/Terminal-WCWidth"
 license=('MIT')
 source=($pkgname-$pkgver::git+https://github.com/bluebear94/Terminal-WCWidth)
 sha256sums=('SKIP')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  msg2 'Fixing META.info...'
-  sed -i \
-    -e 's@"lib/Terminal/WCWidth.pm6"@"lib/Terminal/WCWidth.pm6",@' \
-    -e '/"Terminal::WCWidth" :/a \ \ \ \ \ \ \ \ "Terminal::WCWidth::Tables" : "lib/Terminal/WCWidth/Tables.pm6"' \
-    META.info
-}
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
