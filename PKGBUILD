@@ -4,7 +4,7 @@
 # Submitter: BxS <bxsbxs at gmail dot com>
 
 pkgname=microchip-mplabx-bin
-pkgver=3.15
+pkgver=3.20
 pkgrel=1
 pkgdesc="IDE for Microchip PIC and dsPIC development"
 arch=(i686 x86_64)
@@ -28,7 +28,7 @@ install="${pkgname}.install"
 _mplabx_dir="/opt/microchip/mplabx/v${pkgver}"
 _mplabx_installer="MPLABX-v${pkgver}-linux-installer"
 
-_mplabcomm_version=3.16.00
+_mplabcomm_version=3.16.02
 _mplabcomm_installer="MPLABCOMM-v${_mplabcomm_version}-linux-installer"
 _mplabcomm_dir="/opt/microchip/mplabcomm/v${_mplabcomm_version}"
 
@@ -36,11 +36,11 @@ source=("http://ww1.microchip.com/downloads/en/DeviceDoc/${_mplabx_installer}.ta
         "LICENSE")
 source_x86_64=("fakechroot-i686.pkg.tar.xz::http://www.archlinux.org/packages/extra/i686/fakechroot/download/")
 
-md5sums=('9391c04f5650cb180f4c908c573096c7'
+md5sums=('adf7da90435f52e4b0920b2e5c10132f'
          'a34a85b2600a26f1c558bcd14c2444bd')
 md5sums_x86_64=('92b9a1dc8fa0534048790731a7bf2fc5')
 
-backup=("${_mplabx_dir:1}/mplab_ide/etc/mplab_ide.conf")
+backup=("etc/mplab_ide.conf")
 
 PKGEXT='.pkg.tar'
 
@@ -79,7 +79,7 @@ EOF
   sed -i 's/^default_options="/default_options="-J-Dawt.useSystemAAFontSettings=on /' "${pkgdir}${_mplabx_dir}/mplab_ide/etc/mplab_ide.conf"
 
   # Fix broken udev rules
-  sed -i '1c \ACTION!="add", SUBSYSTEM!="usb_device", GOTO="jlink_rules_end"\r' "${pkgdir}/etc/udev/rules.d/99-jlink.rules"
+  sed -i '/^BUS!="usb"/c \ACTION!="add", SUBSYSTEM!="usb_device", GOTO="jlink_rules_end"\r' "${pkgdir}/etc/udev/rules.d/99-jlink.rules"
 
   # Patch jdkhome to use system JRE
   local conf
@@ -87,6 +87,11 @@ EOF
     sed -i '/^jdkhome=/c \jdkhome=/usr/lib/jvm/default-runtime/' "${pkgdir}${_mplabx_dir}/${conf}"
   done
   sed -i '/^"$jdkhome"bin\/java/c\ java -jar '${_mplabx_dir}'/mplab_ipe/ipe.jar' "${pkgdir}${_mplabx_dir}/mplab_ipe/mplab_ipe"
+
+  # Move config file to /etc (and add a symlink into the old location)
+  mv "${pkgdir}${_mplabx_dir}/mplab_ide/etc/mplab_ide.conf" "${pkgdir}/etc/"
+
+  ln -sf /etc/mplab_ide.conf "${pkgdir}${_mplabx_dir}/mplab_ide/etc/"
 
   # Remove bundled JRE
   rm -rf "${pkgdir}${_mplabx_dir}/sys/java"
