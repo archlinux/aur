@@ -1,4 +1,5 @@
-# Maintainer: Edgar Kalkowski <eMail@edgar-kalkowski.de>
+# Maintainer: netcrusher < tobias AT miglix DOT eu >
+# Contributor: Edgar Kalkowski <eMail@edgar-kalkowski.de>
 pkgname=texlive-alteswab
 pkgver=20060901
 pkgrel=1
