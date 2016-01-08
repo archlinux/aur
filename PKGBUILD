@@ -1,51 +1,36 @@
 # Maintainer: Gimmeapill <gimmeapill at gmail dot com>
+# Maintainer: Daniel Appelt <daniel.appelt@gmail.com>
 
-pkgname=sequencer64-git
-pkgver=r233.c14ba05
+_pkgbasename=sequencer64
+pkgname=${_pkgbasename}-git
+pkgver=r1.b23e622
 pkgrel=1
 pkgdesc="Minimal loop based midi sequencer. A more object-oriented successor to Sequencer24/Seq24, with many additional features, and more planned."
 arch=('i686' 'x86_64')
 url="https://github.com/ahlstromcj/sequencer64"
 license=('GPL')
-depends=('gtkmm' 'libsigc++' 'jack' 'atk')
+depends=('gtkmm' 'jack')
 makedepends=('git' 'doxygen' 'texlive-bin')
-provides=(sequencer64)
-conflicts=()
+provides=("${_pkgbasename}")
+conflicts=("${_pkgbasename}")
 
-_gitroot=https://github.com/ahlstromcj
-_gitname=sequencer64
+source=("${_pkgbasename}::git://github.com/ahlstromcj/sequencer64.git")
+sha256sums=('SKIP')
 
 pkgver() {
-#  cd "$pkgname"
   cd "$srcdir/$_gitname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot"/"$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  
-  cd "$srcdir/$_gitname-build"  
-  ./bootstrap
-  ./configure --prefix=/usr
-  make 
+    cd "${srcdir}/${_pkgbasename}"
+    ./bootstrap
+    ./configure --prefix=/usr --disable-lash
+    make
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
-  make install prefix="$pkgdir/usr"
-  }
+    cd "${srcdir}/${_pkgbasename}"
+    make DESTDIR="${pkgdir}" install
+}
 
