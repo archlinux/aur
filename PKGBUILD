@@ -1,5 +1,5 @@
 pkgname=wp-cli
-pkgver=0.21.1
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="A command-line tool for managing WordPress"
 url="http://wp-cli.org/"
@@ -12,11 +12,9 @@ conflicts=()
 replaces=()
 backup=()
 source=("https://github.com/wp-cli/wp-cli/archive/v${pkgver}.tar.gz"
-        "https://raw.githubusercontent.com/wp-cli/wp-cli/v${pkgver}/utils/wp-completion.bash"
-        "https://raw.githubusercontent.com/wp-cli/wp-cli/a249578ae2053b88c3174b15378266c9c65a9dfe/composer.json")
-md5sums=('aab4f251b9ab79e73f9ea17fb6fb8db9'
-         'f8acb424f1460428796451679631be86'
-         '7359993f535213af66c2148ea27369b3')
+        "https://raw.githubusercontent.com/wp-cli/wp-cli/v${pkgver}/utils/wp-completion.bash")
+md5sums=('035a6009bc2d10a4e285742eb65498a0'
+         'f8acb424f1460428796451679631be86')
 
 prepare() {
   if [[ -n $(php -r '$phar = new Phar("test.phar", 0,"wp-cli.phar");' 2>&1 | grep "Class 'Phar' not found") ]]; then
@@ -38,8 +36,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  cp ../composer.json .
-  composer update --no-interaction --prefer-dist
+  composer install --no-interaction --prefer-dist
   php -dphar.readonly=0 utils/make-phar.php wp-cli.phar --quiet
 }
 
