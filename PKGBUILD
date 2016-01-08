@@ -22,10 +22,10 @@
 echo "Set your sysroot prior to build" && exit 1
 _sysroot=/mnt/pi
 
-_packaginguser=$(whoami)
-pkgname=qpii
-_libspkgname="${pkgname}-libs"
 _piver=2
+pkgname=qpi${_piver}
+_packaginguser=$(whoami)
+_libspkgname="${pkgname}-libs"
 _mkspec="linux-rpi${_piver}-g++"
 pkgver=5.6.0
 _pkgver=${pkgver}-beta
