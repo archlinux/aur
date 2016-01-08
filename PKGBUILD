@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=plasma-desktop-git
-pkgver=r2502.a029fb5
+pkgver=r3364.01fce13
 pkgrel=1
 pkgdesc='KDE Plasma Desktop'
 arch=(i686 x86_64)
@@ -9,8 +9,9 @@ url='https://projects.kde.org/projects/kde/kde-workspace'
 license=(LGPL)
 depends=(libxkbfile libcanberra systemsettings-git ksysguard-git 
 powerdevil-git kmenuedit-git kinfocenter-git polkit-kde-agent-git kpeople-git)
-makedepends=(xorg-server-devel xf86-input-synaptics extra-cmake-modules git kdoctools)
-optdepends=('plasma-nm-git: Network manager applet')
+makedepends=(xorg-server-devel xf86-input-synaptics extra-cmake-modules git kdoctools scim libibus)
+optdepends=('plasma-nm-git: Network manager applet' 'scim: SCIM backend for kimpanel'
+	'fcitx: FCITX backend for kimpanel' 'libibus: IBUS backend for kimpanel')
 conflicts=(plasma-desktop kdebase-workspace kdebase-kdepasswd kcm-touchpad-frameworks)
 provides=(plasma-desktop)
 replaces=(kcm-touchpad-git)
