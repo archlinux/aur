@@ -24,8 +24,8 @@ pkgname=("${pkgbase}"
          "${pkgbase}-sqlite"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
-pkgver=5.6.16
-pkgrel=3
+pkgver=5.6.17
+pkgrel=1
 arch=('i686' 'x86_64')
 license=('PHP')
 url='http://php.net'
@@ -42,7 +42,7 @@ source=("http://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"
         "http://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz.asc"
         'php.ini.patch' 'apache.conf' 'php-fpm.conf.in.patch'
         'logrotate.d.php-fpm' 'php-fpm.service' 'php-fpm.tmpfiles')
-md5sums=('3f1d999ed1f9cb5713c9a0161c557f2f'
+md5sums=('5e080e4b7df5db24f1b64313f8114bd8'
          'SKIP'
          '39eff6cc99dae4ec3b52125e6229de7e'
          'dec2cbaad64e3abf4f0ec70e1de4e8e9'
