@@ -2,7 +2,7 @@
 
 pkgname=fotoxx
 pkgver=16.01.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A program for improving image files made with a digital camera"
 url="http://www.kornelix.net/fotoxx/fotoxx.html"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('xdg-utils')
 optdepends=('mashup: for composing pages to print from within fotoxx' 
   'brasero: for burning')
 source=("http://www.kornelix.net/downloads/tarballs/$pkgname-$pkgver.tar.gz")
-md5sums=('fbb450850c702e4b235ad47cafcec6f2')
+md5sums=('b818c87c14a9f8047016096274f27981')
 install=fotoxx.install
 
 prepare() {
