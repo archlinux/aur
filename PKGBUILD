@@ -57,7 +57,8 @@ build() {
   mkdir -p ${_bindir}
   cd ${_bindir}
 
-  # skipping on principle: qtscript, xcb
+  # skipping due to build issues: qtquickcontrols2
+  # skipping on principle: qtscript xcb
   # skipping because of the target in question: widgets qtwebchannel
   # TODO: qtwebengine, a little bulky but useful
 
@@ -66,6 +67,7 @@ build() {
   # -separate-debug-info \
 
   ${_srcdir}/configure \
+    -qreal float \
     -release \
     -silent \
     -confirm-license \
@@ -83,6 +85,7 @@ build() {
     -skip qtwebengine \
     -skip qtwebchannel \
     -skip qtwayland \
+    -skip qtquickcontrols2 \
     \
     -sysroot ${_sysroot} \
     -device ${_mkspec} \
@@ -120,15 +123,18 @@ package() {
   local _libsdir="${startdir}/${_libspkgname}"
   local _libspkgdir="${_libsdir}/topkg"
   local _libspkgbuild="${_libsdir}/PKGBUILD"
-
+  local _pkgprofiled=${_libspkgdir}/etc/profile.d
   rm -Rf ${_libspkgdir}
   mkdir -p ${_libspkgdir}
 
   cp ${startdir}/${_libspkgname}-PKGBUILD ${_libspkgbuild}
   mv "${pkgdir}/${_sysroot}/${_baseprefix}" ${_libspkgdir}
-
   # set correct libs version
   sed -i "s/6.6.6/${pkgver}/" ${_libspkgbuild}
+
+  mkdir -p ${_pkgprofiled}
+  cp ${startdir}/qpi.sh ${_pkgprofiled}
+  sed -i "s,localpiprefix,${_installprefix}," ${_pkgprofiled}/qpi.sh
 
   cd ${_libsdir}
   runuser -l ${_packaginguser} -c 'makepkg -f'
