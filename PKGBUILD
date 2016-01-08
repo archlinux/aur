@@ -25,16 +25,16 @@ _sysroot=/mnt/pi
 _packaginguser=$(whoami)
 pkgname=qpii
 _libspkgname="${pkgname}-libs"
-_piver=pi2
-_mkspec="linux-r${_piver}-g++"
+_piver=2
+_mkspec="linux-rpi${_piver}-g++"
 pkgver=5.6.0
 _pkgver=${pkgver}-beta
 _baseprefix=/opt
-_installprefix=${_baseprefix}/qt-${_pkgver}-${_piver}
+_installprefix=${_baseprefix}/qt-${_pkgver}-rpi${_piver}
 _pipkgname=qt-everywhere-opensource-src-${_pkgver}
-pkgrel=3
-pkgdesc="Qt for the ${_piver}, coz this shouldnt be obtuse"
-arch=("x86_64" "i686")
+pkgrel=4
+pkgdesc="Cross compile Qt for the Raspberry Pi${_piver}"
+arch=("x86_64")
 url="http://www.qt.io"
 license=("LGPL3")
 makedepends=("git" "pkgconfig" "gcc" "qpi-toolchain")
@@ -133,7 +133,7 @@ package() {
   cd ${_libsdir}
   runuser -l ${_packaginguser} -c 'makepkg -f'
 
-  echo "the libs package for the ${_piver} is in the ${_packaginguser} home directory awaiting deployment"
+  echo "the libs package for the Raspberry Pi${_piver} is in the ${_packaginguser} home directory awaiting deployment"
 
   mv ${_libsdir}/${_libspkgname}-${pkgver}-1-any.pkg.tar.xz ${HOME}
 }
