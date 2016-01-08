@@ -19,6 +19,7 @@
 # I use NFS personally: sudo mount qpii.local:/ /mnt/pi
 
 # comment this turkey out in any circumstance when you need to regenate .SRCINFO
+echo "Set your sysroot prior to build" && exit 1
 _sysroot=/mnt/pi
 
 _packaginguser=$(whoami)
@@ -31,7 +32,7 @@ _pkgver=${pkgver}-beta
 _baseprefix=/opt
 _installprefix=${_baseprefix}/qt-${_pkgver}-${_piver}
 _pipkgname=qt-everywhere-opensource-src-${_pkgver}
-pkgrel=2
+pkgrel=3
 pkgdesc="Qt for the ${_piver}, coz this shouldnt be obtuse"
 arch=("x86_64" "i686")
 url="http://www.qt.io"
