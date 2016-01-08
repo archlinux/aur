@@ -2,7 +2,7 @@
 
 pkgname=perl6-avro
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Perl6 Avro Data Serialization"
 arch=('any')
 depends=('perl6' 'perl6-compress-zlib' 'perl6-json-tiny')
@@ -13,16 +13,6 @@ url="https://github.com/sylvarant/Avro"
 license=('PerlArtistic')
 source=($pkgname-$pkgver::git+https://github.com/sylvarant/Avro)
 sha256sums=('SKIP')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  msg2 'Fixing META.info...'
-  sed -i \
-    -e 's/Datafile/DataFile/g' \
-    -e 's/pm6/pm/' \
-    META.info
-}
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
