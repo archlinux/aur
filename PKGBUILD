@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/azukiapp/libnss-resolver"
 license=('Apache')
 depends=('glibc')
-makedepends=('fakeroot' 'git' 'clang' 'wget' 'scons')
+makedepends=('make' 'fakeroot' 'git' 'clang' 'wget' 'scons')
 provides=(${_pkgname%-git}=$pkgver)
 conflicts=(${_pkgname%-git})
 source=("git+https://github.com/azukiapp/libnss-resolver.git")
