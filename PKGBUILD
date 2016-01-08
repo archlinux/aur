@@ -205,9 +205,6 @@ package_nvidia-utils-full-beta() {
   # GPU-accelerated video encoding
   install -Dm755 libnvidia-encode.so.$pkgver "$pkgdir"/usr/lib/libnvidia-encode.so.$pkgver
 
-  # Software rendering for GeForce 8 series GPUs through X
-  install -Dm755 libnvidia-wfb.so.$pkgver "$pkgdir"/usr/lib/libnvidia-wfb.so.$pkgver
-
   # GTK+ for nvidia-settings
   install -Dm755 libnvidia-gtk2.so.$pkgver "$pkgdir"/usr/lib/libnvidia-gtk2.so.$pkgver
   install -Dm755 libnvidia-gtk3.so.$pkgver "$pkgdir"/usr/lib/libnvidia-gtk3.so.$pkgver
@@ -234,6 +231,9 @@ package_nvidia-utils-full-beta() {
   # Helper libs for approved partners' GRID remote apps
   install -Dm755 libnvidia-ifr.so.$pkgver "$pkgdir"/usr/lib/libnvidia-ifr.so.$pkgver
   install -Dm755 libnvidia-fbc.so.$pkgver "$pkgdir"/usr/lib/libnvidia-fbc.so.$pkgver
+
+  # Not required (https://bugs.archlinux.org/task/38604):
+  # - libnvidia-wfb.so.$pkgver (provided by xorg-server: https://www.archlinux.org/packages/extra/x86_64/xorg-server/)
 
   # create missing soname links
   _create_links
@@ -436,9 +436,6 @@ package_lib32-nvidia-utils-full-beta() {
   # GPU-accelerated video encoding
   install -Dm755 32/libnvidia-encode.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-encode.so.$pkgver
 
-  # Software rendering for GeForce 8 series GPUs through X
-  install -Dm755 32/libnvidia-wfb.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-wfb.so.$pkgver
-
   # CUDA (Compute Unified Device Architecture)
   install -Dm755 32/libcuda.so.$pkgver "$pkgdir"/usr/lib32/libcuda.so.$pkgver
   install -Dm755 32/libnvcuvid.so.$pkgver "$pkgdir"/usr/lib32/libnvcuvid.so.$pkgver
@@ -458,6 +455,9 @@ package_lib32-nvidia-utils-full-beta() {
   # Helper libs for approved partners' GRID remote apps
   install -Dm755 32/libnvidia-ifr.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-ifr.so.$pkgver
   install -Dm755 32/libnvidia-fbc.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-fbc.so.$pkgver
+
+  # Not required (https://bugs.archlinux.org/task/38604):
+  # - libnvidia-wfb.so.$pkgver (provided by xorg-server: https://www.archlinux.org/packages/extra/x86_64/xorg-server/)
 
   # create missing soname links
   _create_links
