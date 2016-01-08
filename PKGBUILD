@@ -6,7 +6,7 @@
 
 set -u
 pkgname='checkbashisms'
-pkgver='20151219'
+pkgver='20160107'
 # To get the date of the last commit for this file
 # Be in the tree for the .pl file
 # https://anonscm.debian.org/cgit/collab-maint/devscripts.git/tree/scripts/checkbashisms.pl
@@ -19,11 +19,12 @@ url='http://packages.qa.debian.org/d/devscripts.html'
 license=('GPL')
 depends=('perl')
 conflicts=('devscripts')
+_srcfile="checkbashisms.pl.${pkgver}"
 source=('https://anonscm.debian.org/cgit/collab-maint/devscripts.git/plain/scripts/checkbashisms.1'
-        'https://anonscm.debian.org/cgit/collab-maint/devscripts.git/plain/scripts/checkbashisms.pl'
+        "${_srcfile}::https://anonscm.debian.org/cgit/collab-maint/devscripts.git/plain/scripts/checkbashisms.pl"
 )
 sha256sums=('c74d1ed33fee4cf2ccca0d7690d404d551a4edcbde0ddc602104d9198359cefb'
-            '2e22e42f4a685dab824243ad79105918daa2f13398fb2445bf9247caf126d943')
+            '20dd6184747e8d5452b412a86602c029ac9c3d3094dc12b99f5b038e626df33b')
 
 # Version checking devscripts won't help us. We need to watch for changes to this file.
 _vercheck() { :; }
@@ -49,9 +50,9 @@ _verscan() {
 package() {
   set -u
   cd "${pkgdir}"
-  install -Dm755 "${srcdir}/checkbashisms.pl" 'usr/bin/checkbashisms'
+  install -Dpm755 "${srcdir}/${_srcfile}" 'usr/bin/checkbashisms'
   sed -i -e "s,###VERSION###,${pkgver},g" 'usr/bin/checkbashisms'
-  install -Dm644 "${srcdir}/checkbashisms.1" 'usr/share/man/man1/checkbashisms.1'
+  install -Dpm644 "${srcdir}/checkbashisms.1" 'usr/share/man/man1/checkbashisms.1'
   set +u
 }
 set +u
