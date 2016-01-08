@@ -1,4 +1,5 @@
-pkgname=swift
+pkgbase=swift-language
+pkgname=(swift swift-lldb)
 _swiftver=2.2-SNAPSHOT-2016-01-06-a
 pkgver=${_swiftver//-/.}
 pkgrel=1
@@ -7,10 +8,8 @@ arch=('i686' 'x86_64')
 url="http://swift.org/"
 license=('apache')
 depends=('python2' 'libutil-linux' 'icu' 'libbsd' 'libedit' 'libxml2'
-         'sqlite' 'ncurses' 'python2-six')
-makedepends=('git' 'cmake' 'ninja' 'swig' 'clang>=3.6')
-provides=('lldb' 'swift-language')
-conflicts=('lldb' 'swift-language-git' 'swift-git')
+         'sqlite' 'ncurses')
+makedepends=('git' 'cmake' 'ninja' 'swig' 'clang>=3.6' 'python2-six')
 source=(
     "swift-${_swiftver}.tar.gz::https://github.com/apple/swift/archive/swift-${_swiftver}.tar.gz"
     "swift-llvm-${_swiftver}.tar.gz::https://github.com/apple/swift-llvm/archive/swift-${_swiftver}.tar.gz"
@@ -80,14 +79,15 @@ check() {
     utils/build-script -R -t
 }
 
-package() {
+package_swift() {
+    pkgdesc='The Swift programming language compiler and tools'
+    provides=('swift-language')
+    conflicts=('swift-language-git' 'swift-git')
+
     cd "$srcdir/build/Ninja-ReleaseAssert"
 
-    # Install swift-capable lldb
-    (
-        cd lldb-linux-$CARCH
-        DESTDIR="$pkgdir" ninja install
-    )
+    install -dm755 "$pkgdir/usr/bin"
+    install -dm755 "$pkgdir/usr/lib/swift"
 
     # Swift's components don't provide an install target :(
     # These are based on what's included in the binary release packages
@@ -102,7 +102,6 @@ package() {
         gzip "$pkgdir/usr/share/man/man1/swift.1"
 
         umask 0022
-        install -dm755 "$pkgdir/usr/lib/swift"
         cp -rL lib/swift/{clang,glibc,linux,shims} "$pkgdir/usr/lib/swift/"
     )
     (
@@ -136,6 +135,21 @@ package() {
     # License file
     install -dm755 "$pkgdir/usr/share/licenses/swift"
     install -m644 "$srcdir/swift/LICENSE.txt" "$pkgdir/usr/share/licenses/swift"
+}
+
+package_swift-lldb() {
+    pkgdesc='The Swift programming language debugger (LLDB)'
+    depends=('swift' 'python2-six')
+    provides=('lldb')
+    conflicts=('lldb')
+
+    cd "$srcdir/build/Ninja-ReleaseAssert"
+
+    # Install swift-capable lldb
+    (
+        cd lldb-linux-$CARCH
+        DESTDIR="$pkgdir" ninja install
+    )
 
     # This should be provided from python2-six
     rm "$pkgdir/usr/lib/python2.7/site-packages/six.py"
