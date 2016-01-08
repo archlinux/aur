@@ -4,9 +4,8 @@
 # Contributor: Tom Burdick <thomas dot burdick at gmail dot com>
 # see http://wiki.archlinux.org/index.php/Java_Package_Guidelines
 pkgname=jgoodies-forms
-pkgver=1.9.0
+pkgver=1.7.2
 pkgrel=1
-_pkgdate="20150202"
 pkgdesc="A Java Swing form layout library"
 arch=('any')
 url="http://www.jgoodies.com/"
@@ -14,9 +13,9 @@ license=('BSD')
 groups=('jgoodies')
 depends=('jgoodies-common>=1.6.0')
 optdepends=('java-runtime>=6')
-source=("http://www.jgoodies.com/download/libraries/forms/$pkgname-${pkgver//./_}-$_pkgdate.zip")
+source=("http://www.jgoodies.com/download/libraries/forms/$pkgname-${pkgver//./_}.zip")
 
-md5sums=('958e721df514a629d2e3d06430bcefd7')
+md5sums=('048ed39eaa5f80dd2592a7b7993f93ae')
 package() {
   _src="$srcdir/$pkgname-$pkgver"
   _pkg="$pkgdir/usr/share/java"
