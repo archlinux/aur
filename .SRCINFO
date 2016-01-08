@@ -1,6 +1,6 @@
 pkgbase = arrayfire-git
 	pkgdesc = High performance software library for parallel computing with an easy-to-use API.
-	pkgver = 3.0.1
+	pkgver = 3.2.2
 	pkgrel = 1
 	url = https://github.com/arrayfire/arrayfire
 	arch = i686
@@ -22,4 +22,3 @@ pkgbase = arrayfire-git
 	md5sums = SKIP
 
 pkgname = arrayfire-git
-
