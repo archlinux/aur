@@ -31,10 +31,9 @@ package() {
   install -Dm755 build/vis "$pkgdir/usr/bin/vis"
   install -Dm755 bin/safe_fifo "$pkgdir/usr/bin/safe_fifo"
 
-  #create config directory
-  mkdir -p ~/.config/vis/colors
+  #create doc directory
+  mkdir -p "$pkgbuild/usr/share/doc/cli-visualizer"
 
-  #copy over example files
-  cp examples/config ~/.config/vis/
-  cp examples/rainbow ~/.config/vis/colors/rainbow
+  #copy over example files to doc dir
+  cp -r examples "$pkgbuild/usr/share/doc/cli-visualizer/"
 }
