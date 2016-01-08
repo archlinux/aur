@@ -1,7 +1,7 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 pkgname=peek
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Peek - animated GIF recorder"
 arch=('i686' 'x86_64')
 url="https://github.com/phw/peek"
@@ -15,7 +15,7 @@ sha1sums=('SKIP')
 build() {
 	cd "${srcdir}/peek"
 	cmake -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr \
-		-DBUILD_TESTS \
+		-DBUILD_TESTS=ON \
 		-DGSETTINGS_COMPILE=OFF .
 	make
 }
