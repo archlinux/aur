@@ -2,17 +2,17 @@
 
 _target="arm-frc-linux-gnueabi"
 pkgname=${_target}-binutils
-pkgver=2.24
-pkgrel=2
+pkgver=2.25.1
+pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files (${_target})"
 arch=(i686 x86_64)
 license=(GPL)
 options=(!libtool !buildflags !emptydirs)
 url="http://sources.redhat.com/binutils"
-groups=('frc-2015')
+groups=('frc-2016')
 depends=('glibc')
 source=(ftp://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.bz2)
-md5sums=('e0f71a7b2ddab0f8612336ac81d9636b')
+md5sums=('ac493a78de4fee895961d025b7905be4')
 
 build() {
   cd "$srcdir/binutils-${pkgver}"
@@ -28,6 +28,9 @@ build() {
     --disable-nls \
     --enable-lto \
     --disable-libiberty-install \
+    --enable-ld \
+    --enable-gold=default \
+    --enable-plugins \
     --disable-werror
     
   make configure-host
