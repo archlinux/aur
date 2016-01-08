@@ -5,7 +5,7 @@
 
 pkgname=drush
 pkgver=8.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Drush is a command line shell and Unix scripting interface for Drupal."
 arch=('any')
 url="https://github.com/drush-ops/drush/"
@@ -22,6 +22,8 @@ sha256sums=('e800601699e4b1ea0a0057fc91827b31fc8c5070f5014df2777396aabc7680ec'
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     cp box.json.dist box.json
+    sed -i '/"git-version":/d' box.json
+    sed -i '/"git-commut":/d' box.json
     composer install --no-dev
 }
 
