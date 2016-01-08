@@ -24,6 +24,8 @@ package() {
 
     # we don't have sysv init in arch
     rm -rf ${pkgdir}/etc/init.d
+
+    # uninstall script is not needed since we're using a package manager :)
     rm -rf ${pkgdir}/usr/share/${pkgname}/UNINSTALL
 
     # collectl is licensed under the GPL2 and some version of the ARTISTIC
