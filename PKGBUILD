@@ -1,7 +1,7 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-covolunablu-gaming       # Build kernel with a different name
-_srcname=linux-4.2
-pkgver=4.2.5
+_srcname=linux-4.3
+pkgver=4.3.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -13,28 +13,32 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+        "0001-disabling-primary-plane-in-the-noatomic-case.patch"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        "http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.2.0-v7r9/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r9-4.2.patch"
-        "http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.2.0-v7r9/0002-block-introduce-the-BFQ-v7r9-I-O-sched-for-4.2.patch"
-        "http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.2.0-v7r9/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r9-for-4.2.0.patch"
-        "https://raw.githubusercontent.com/ValveSoftware/steamos_kernel/1046cf2298d8ebd6a25a80bcb69cd641d2dd8313/drivers/input/joystick/xpad.c")
+        "http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.3.0-v7r8/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r8-4.3.patch"
+        "http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.3.0-v7r8/0002-block-introduce-the-BFQ-v7r8-I-O-sched-for-4.3.patch"
+        "http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.3.0-v7r8/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.3.0.patch"
+        "https://raw.githubusercontent.com/ValveSoftware/steamos_kernel/96053cb77390d18cc76cebead210481ea173bee5/drivers/input/joystick/xpad.c")
 
-sha256sums=('cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb'
+sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
             'SKIP'
-            'b631eb4e8b4911b31111b0838e00f7c4a1b7689abcd2233609831b638493f4fb'
+            '95cd81fcbb87953f672150d60950548edc04a88474c42de713b91811557fefa5'
             'SKIP'
-            'e4ca3dc0f994d6dcc0f2698ee74b74184e9d3bdf867801c85de07a46749372a3'
-            '6a395216993e88c1e8ca6fc6492316b590d6ca38ba5caee8fd629a3d228de52e'
+            'abdd04bd6beecb7c961130a68d71e6332bd260462eeaa2f4f8e634de813dcc4d'
+            '5e3805dfc92c0a48436a565e87bd2452cacc60c92cd0a55bfdee8ea73337f8af'
+            '576b7785b58a41b53dcf03d04a652e50520e3f3fe28576e9101a28cc77784f25'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '7379bb700a121c8790c1690646b1a8dfdf0199254a4bc660e76c0bf90a7828a5'
-            '743ecc34ab048581e9998c53b1eb81c1c31d3ac9ee72d04e1e00b2bafeedbddc'
-            '8d9cc296721fc4d6273ee9c7609b7d815e4061c360231eb68d060b4b7e7b7f81'
+            'ebeb62206999b2749ac43bb287a6a2a5db4f6b1b688a90cefa1ceb5db94aa490'
+            '91b7cb42b8337b768e5329da205a6b61211628ec99b1e308e0e9d5283b2c86eb'
+            '77430c7154670dd288b6d5bd45896222bf955f02029ee5d0cfe97cc5d9bc1a9d'
             '8f38b93d00789a83f3ec7da7761e6ead63e37a7ae3a7790788021eae5161db09')
+
+
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -57,10 +61,14 @@ prepare() {
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
+  # fix #469668
+  # hangs on older intel hardware
+  patch -Np1 -i "${srcdir}/0001-disabling-primary-plane-in-the-noatomic-case.patch"
+
   # add BFQ
-  patch -p1 -i "${srcdir}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r9-4.2.patch"
-  patch -p1 -i "${srcdir}/0002-block-introduce-the-BFQ-v7r9-I-O-sched-for-4.2.patch"
-  patch -p1 -i "${srcdir}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r9-for-4.2.0.patch"
+  patch -p1 -i "${srcdir}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r8-4.3.patch"
+  patch -p1 -i "${srcdir}/0002-block-introduce-the-BFQ-v7r8-I-O-sched-for-4.3.patch"
+  patch -p1 -i "${srcdir}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.3.0.patch"
 
   # use steamos version of xpad
   cp "${srcdir}/xpad.c" ./drivers/input/joystick/xpad.c
