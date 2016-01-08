@@ -14,7 +14,7 @@ url="https://micheleg.github.io/dash-to-dock/"
 _giturl="git+https://github.com/micheleg/dash-to-dock/"
 license=('GPL')
 depends=('dconf')
-makedepends=('intltool' 'imagemagick')
+makedepends=('intltool')
 
 makedepends+=('git')
 source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")
@@ -26,15 +26,6 @@ pkgver() {
   git describe --long --tags 2>/dev/null | sed 's/[^[:digit:]]*\(.\+\)-\([[:digit:]]\+\)-g\([[:xdigit:]]\{7\}\)/\1.r\2.g\3/;t;q1'
   [ ${PIPESTATUS[0]} -ne 0 ] && \
 printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$_gitname"
-  grep -lZr logo.svg | while IFS= read -rd $'\0' file
-  do
-    sed -i 's/\(logo\.\)svg/\1png/' "$file"
-  done
-  convert media/logo.{svg,png}
 }
 
 build() {
