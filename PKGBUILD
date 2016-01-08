@@ -47,7 +47,7 @@ package() {
 
   msg2 'Packaging auxiliary files...'
   cd "$_pkgname"
-  install -Dm 644 misc/completion/ipfs-completion.bash "${pkgdir}/etc/bash_completion.d/ipfs"
+  install -Dm 644 misc/completion/ipfs-completion.bash "${pkgdir}/usr/share/bash-completions/completions/ipfs"
   install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
   install -Dm 644 -t "${pkgdir}/usr/share/doc/${pkgname}" \
     README.md \
