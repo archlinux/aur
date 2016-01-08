@@ -1,6 +1,6 @@
  #Maintainer: Kobus van Schoor <pbscube at gmail dot com>
 pkgname=bassoon
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="An easy to use CLI password manager utilizing the dchain encryption library"
 url="http://github.com/Cube777/bassoon"
