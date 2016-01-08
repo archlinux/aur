@@ -1,16 +1,16 @@
 post_upgrade() {
-    setcap CAP_NET_BIND_SERVICE=+eip /usr/bin/minisatip
-    systemd-sysusers
-    echo "The git sources got switch to master branch to test experimental features."
-    echo "If You wish to use stable version feel free to install 'minisatip' package."
+	setcap CAP_NET_BIND_SERVICE=+eip /usr/bin/minisatip
+	systemd-sysusers
+	echo "The git sources got switch to master branch to test experimental features."
+	echo "If You wish to use stable version feel free to install 'minisatip' package."
 }
 
 post_install() {
-    post_upgrade
+	post_upgrade
 }
 
 post_remove() {
-    getent passwd minisatip &>/dev/null && userdel minisatip >/dev/null
-    getent group minisatip &>/dev/null && groupdel minisatip >/dev/null
-    return 0
+	getent passwd minisatip &>/dev/null && userdel minisatip >/dev/null
+	getent group minisatip &>/dev/null && groupdel minisatip >/dev/null
+	return 0
 }
