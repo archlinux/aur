@@ -2,27 +2,27 @@
 
 _target="arm-frc-linux-gnueabi"
 pkgname=${_target}-eglibc
-pkgver=2.17
-_basever=2.17-r4
-pkgrel=2
+pkgver=2.20
+_basever=2.20-r0.56
+pkgrel=1
 pkgdesc="Embedded GNU C Library (${_target})"
 arch=(any)
 url="http://www.eglibc.org"
 curl="http://www.eglibc.org"
 license=('GPL')
-groups=('frc-2015')
+groups=('frc-2016')
 depends=("${_target}-linux-api-headers")
 options=(!strip 'staticlibs' '!emptydirs')
-source=("http://download.ni.com/ni-linux-rt/feeds/2014/arm/armv7a-vfp-neon/libc6_${_basever}_armv7a-vfp-neon.ipk"
-        "http://download.ni.com/ni-linux-rt/feeds/2014/arm/armv7a-vfp-neon/libc6-dev_${_basever}_armv7a-vfp-neon.ipk"
-	"http://download.ni.com/ni-linux-rt/feeds/2014/arm/armv7a-vfp-neon/libcidn1_${_basever}_armv7a-vfp-neon.ipk"
-	"http://download.ni.com/ni-linux-rt/feeds/2014/arm/armv7a-vfp-neon/libthread-db1_${_basever}_armv7a-vfp-neon.ipk"
-	"http://download.ni.com/ni-linux-rt/feeds/2014/arm/armv7a-vfp-neon/eglibc-extra-nss_${_basever}_armv7a-vfp-neon.ipk")
-md5sums=('8c02625eb360fdf5b4de64265d5be5ce'
-         '1b1af5fa61c80d08a85efb59db550795'
-         '530e52baa9ead19ee03ef4c1eea10508'
-         '7443d9118a024f1955cfc9fa60322f22'
-         'f3a6a47aacbbe69667b3b20a3a69593f')
+source=("http://download.ni.com/ni-linux-rt/feeds/2015/arm/ipk/cortexa9-vfpv3/libc6_${_basever}_cortexa9-vfpv3.ipk"
+        "http://download.ni.com/ni-linux-rt/feeds/2015/arm/ipk/cortexa9-vfpv3/libc6-dev_${_basever}_cortexa9-vfpv3.ipk"
+        "http://download.ni.com/ni-linux-rt/feeds/2015/arm/ipk/cortexa9-vfpv3/libcidn1_${_basever}_cortexa9-vfpv3.ipk"
+        "http://download.ni.com/ni-linux-rt/feeds/2015/arm/ipk/cortexa9-vfpv3/libc6-thread-db_${_basever}_cortexa9-vfpv3.ipk"
+        "http://download.ni.com/ni-linux-rt/feeds/2015/arm/ipk/cortexa9-vfpv3/libc6-extra-nss_${_basever}_cortexa9-vfpv3.ipk")
+md5sums=('31f62c897cc648578ba1f09f974610d7'
+         'd801797dbf2f80e4fc3c60dcc18898e4'
+         '07bfe266a001c3b4487865310487d470'
+         '9025cc8694f526989d9031e26094fa85'
+         '42d9a0a5d8d519aab51bbb956199548d')
 
 package() {
   cd "${srcdir}"
