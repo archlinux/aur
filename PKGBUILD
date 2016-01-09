@@ -1,6 +1,7 @@
+# Contributor: Aetf <aetf at unlimitedcodeworks dot xyz>
 # Maintainer: Feodor Alexeev aka moskupols <feodor.alexeev@gmail.com>
 pkgname=hayai-git
-pkgver=r128.680064a
+pkgver=r132.e534276
 pkgrel=1
 pkgdesc="Benchmarking framework for c++ inspired by googletest"
 arch=('any')
@@ -38,21 +39,23 @@ pkgver() {
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
 	# patch -p1 -i "$srcdir/${pkgname%-git}.patch"
+    mkdir build && cd build
+
+	cmake -D CMAKE_INSTALL_PREFIX=/usr -D INSTALL_CMAKE_DIR:STRING=lib/cmake/hayai ..
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	cmake -D CMAKE_INSTALL_PREFIX=/usr .
+	cd "$srcdir/${pkgname%-git}/build"
 	make
 }
 
 check() {
-    cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}/build"
     make -k check
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/${pkgname%-git}/build"
 	make DESTDIR="$pkgdir/" install
 }
 
