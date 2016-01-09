@@ -2,8 +2,8 @@
 # Maintainer: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=scifig
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.2
+pkgrel=1
 pkgdesc="A build tool for (non?)-scientific figures"
 arch=('any')
 url="https://scifig.readthedocs.org/"
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('python')
 makedepends=('python-setuptools')
 source=(https://pypi.python.org/packages/source/s/scifig/scifig-${pkgver}.tar.gz)
-sha256sums=('cdca338247f6f2c9ddd9ccd3b522615f5b1684504839e1743546bc3031c3b14e')
+sha256sums=('0eb138a9c87036494c0f8160ddbd83bc122ad354d3f38ca8924dcc9088ebd959')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
