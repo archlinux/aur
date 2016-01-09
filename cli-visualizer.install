@@ -1,7 +1,5 @@
 post_install() {
-  echo ":: A default configuration has been created in"
-  echo ":: ~/.config/vis"
-  echo ":: More example configuration files can be found in"
+  echo ":: Example configuration files can be found in"
   echo ":: /usr/share/doc/cli-visualizer/examples"
 }
 
