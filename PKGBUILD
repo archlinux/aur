@@ -2,14 +2,14 @@
 # Contributor: Jakub Luzny <limoto94@gmail.com>
 pkgname=openscenegraph-2.8
 pkgver=2.8.5
-pkgrel=3
+pkgrel=4
 pkgdesc="An Open Source, high performance real-time graphics toolkit"
 arch=('i686' 'x86_64')
 license=('custom:OSGPL')
 url="http://www.openscenegraph.org"
 depends=('giflib4' 'jasper' 'librsvg' 'xine-lib' 'curl' 'pth')
 makedepends=('cmake' 'libvncserver')
-optdepends=('libvncserver' 'gdal' 'openexr' 'poppler-glib')
+optdepends=('libvncserver' 'gdal1' 'openexr' 'poppler-glib')
 conflicts=('openthreads' 'openscenegraph')
 provides=('openthreads' "openscenegraph=$pkgver")
 source=(http://www.openscenegraph.org/downloads/stable_releases/OpenSceneGraph-$pkgver/source/OpenSceneGraph-$pkgver.zip
