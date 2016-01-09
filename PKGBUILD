@@ -2,7 +2,7 @@
 
 pkgname=perl6-system-passwd
 pkgver=0.04
-pkgrel=1
+pkgrel=2
 pkgdesc="Easily search for system users"
 arch=('any')
 depends=('perl6')
@@ -11,6 +11,7 @@ makedepends=('alacryd' 'git')
 groups=('perl6')
 url="https://github.com/dnmfarrell/System-Passwd"
 license=('BSD')
+options=('!purge')
 source=($pkgname-$pkgver::git+https://github.com/dnmfarrell/System-Passwd)
 sha256sums=('SKIP')
 
