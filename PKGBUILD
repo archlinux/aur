@@ -1,4 +1,5 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Maintainer: Jonas Frei freijon <freijon@gmail.com>
+# Contributor: : carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=haguichi-bzr
 pkgver=1.3.1
@@ -15,7 +16,7 @@ install=$pkgname.install
 
 prepare() {
   cd $srcdir
-  bzr branch https://code.launchpad.net/~ztefn/haguichi/trunk bzr
+  bzr branch https://code.launchpad.net/~ztefn/haguichi/1.3 bzr
   cd bzr
 
   rm -rf build
