@@ -2,12 +2,13 @@
 
 pkgname=wanderer-git
 pkgver=20160106.4
-pkgrel=1
+pkgrel=1.1
 pkgdesc='Wanderer is a game like Boulderdash, Repton, XOR in git for active development. (wanderer)'
 arch=('i686' 'x86_64')
 url="http://e271.net/~marina/wanderer"
 license=('GPL')
 depends=('ncurses')
+makedepends=('git')
 source=("$pkgname::git+https://github.com/catskillmarina/wanderer-dev.git")
 md5sums=('SKIP')
 
