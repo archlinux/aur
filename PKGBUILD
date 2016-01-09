@@ -83,6 +83,7 @@ package_swift() {
     pkgdesc='The Swift programming language compiler and tools'
     provides=('swift-language')
     conflicts=('swift-language-git' 'swift-git' 'swift-bin')
+    optdepends=('swift-lldb: Swift REPL and debugger')
 
     cd "$srcdir/build/Ninja-ReleaseAssert"
 
