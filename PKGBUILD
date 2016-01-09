@@ -1,16 +1,17 @@
 # Maintainer: MartiMcFly martimcfly@autorisation.de
 
 pkgname=sabre-zarafa
+groups=('zarafa')
 pkgver=0.23
-pkgrel=4
+pkgrel=5
 pkgdesc="provide a full CardDav backend for SabreDAV to connect with Zarafa groupware"
 arch=('any')
 url="https://github.com/1afa/sabre-zarafa"
 license=('AGPL3')
-depends=('php')
+depends=('php<7'
+	 'php-fpm<7')
 makedepends=('php-composer')
-optdepends=('php-fpm'
-	    'nginx'
+optdepends=('nginx'
 	    'zarafa-server')
 install=('install')
 backup=('etc/webapps/sabre-zarafa/nginx-location.conf'
