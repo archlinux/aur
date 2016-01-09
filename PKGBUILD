@@ -2,7 +2,7 @@
 
 pkgname=perl6-dbiish
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Database connectivity for Perl 6"
 arch=('any')
 depends=('perl6')
@@ -11,6 +11,7 @@ makedepends=('alacryd' 'git')
 groups=('perl6')
 url="https://github.com/perl6/DBIish"
 license=('BSD')
+options=('!purge')
 source=($pkgname-$pkgver::git+https://github.com/perl6/DBIish)
 sha256sums=('SKIP')
 
