@@ -1,8 +1,8 @@
 # Maintainer: Ivan Zenin <i.zenin@gmx.com>
 
 pkgname=amule-daemon-git
-pkgver=head
-pkgrel=2
+pkgver=latest
+pkgrel=3
 pkgdesc='An eMule-like client for the eD2k and Kademlia p2p networks (daemon only, development version)'
 url='http://www.amule.org'
 arch=('i686' 'x86_64')
@@ -21,12 +21,12 @@ md5sums=('SKIP'
 install="amule-daemon-git.install"
 
 pkgver() {
-  cd "${SRCDEST}/amule"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd amule
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/amule"
+  cd amule
   ./configure \
       --prefix=/usr \
       --mandir=/usr/share/man \
@@ -58,7 +58,7 @@ build() {
 } 
 
 package() {
-  cd "${srcdir}/amule"
+  cd amule
   make DESTDIR="${pkgdir}" install
   find "${pkgdir}" -type d -name .git -exec rm -r '{}' +
   install -Dm644 "${srcdir}/amuled.service" "${pkgdir}/usr/lib/systemd/system/amuled.service"
