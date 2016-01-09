@@ -2,7 +2,7 @@
 
 pkgname=amule-daemon-git
 pkgver=latest
-pkgrel=3
+pkgrel=4
 pkgdesc='An eMule-like client for the eD2k and Kademlia p2p networks (daemon only, development version)'
 url='http://www.amule.org'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('crypto++' 'wxbase>=2.8')
 makedepends=('git')
 conflicts=('amule')
-source=('git+git://repo.or.cz/amule.git'
+source=('git+git://github.com/amule-project/amule.git'
         'amuled.service'
         'amuled@.service'
         'amuled.tmpfile')
@@ -21,13 +21,16 @@ md5sums=('SKIP'
 install="amule-daemon-git.install"
 
 pkgver() {
-  cd amule
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd ${srcdir}/amule
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
-  cd amule
-  ./configure \
+  cd ${srcdir}/amule
+  ./autogen.sh && ./configure \
       --prefix=/usr \
       --mandir=/usr/share/man \
       --disable-monolithic \
