@@ -3,15 +3,16 @@
 # Contributer: Jörg Thalheim <joerg@higgsboson.tk>
 
 pkgname=z-push
-pkgver=2.2.5
-pkgrel=6
+groups=('zarafa')
+pkgver=2.2.7
+pkgrel=1
 pkgdesc="open-source implementation of the ActiveSync protocol"
 arch=('any')
 url="http://z-push.sf.net/"
 license=('AGPL3')
-depends=('php>=5.1')
-optdepends=('php-fpm'
-	    'nginx'
+depends=('php<7'
+	 'php-fpm<7')
+optdepends=('nginx'
 	    'apache'
 	    'zarafa-server')
 install=('install')
@@ -30,7 +31,7 @@ source=("${pkgname}-${pkgver}.tar.gz::http://download.z-push.org/final/2.2/${pkg
 	"z-push-admin"
 	"z-push-top")
 
-md5sums=('4a89b1a827ab7019d41e42179fc83094'
+md5sums=('218b838a908ebf63f13d080fd57fbf73'
          '32a459bd61135b6c5e99e82e3a6b0007'
          '1091aa1ba272ef05bf628f73b05c527a'
          'fee38ae6ba98ae7afcb49b1edbc31d8e'
