@@ -1,3 +1,4 @@
 /src
 /pkg
 *.pkg*
+spl-*.tar.gz
