@@ -2,10 +2,10 @@
 # Contributor: Piotr Rogoza <piotr dot r dot public at gmail dot com>
 
 pkgname=perl-wx
-pkgver=0.9927
+pkgver=0.9928
 _author=M/MD/MDOOTSON
 _perlmod=Wx
-pkgrel=3
+pkgrel=1
 pkgdesc="Wx - interface to the wxWidgets GUI toolkit"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/dist/Wx"
@@ -78,7 +78,7 @@ perl-build-wx-xsp-virtual
 )
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-sha256sums=('a174bd1b6a5558174697775be0ede2fb8260258d60bb6e116dfe6f56ac1d22bb')
+sha256sums=('58e06c094c07817617b1e69fa0501f2cee80cd4700ac7a62c516179f7aa85b42')
 
 build(){
   cd "$srcdir"/$_perlmod-$pkgver
