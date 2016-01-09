@@ -2,8 +2,8 @@
 
 _plug=havsfunc
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=r20
-pkgrel=4
+pkgver=r21
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('any')
 url='http://forum.doom9.org/showthread.php?t=166582'
@@ -30,7 +30,7 @@ optdepends=('vapoursynth-plugin-genericfilters-git: for HQDering function'
             'vapoursynth-plugin-temporalsoften-git: for TemporalSoften function'
             )
 source=("https://dl.dropbox.com/u/6596386/vapoursynth-plugins/${_plug}-${pkgver}.7z")
-sha1sums=('db82d7a159ba128219ab796193ca3c8c14daba76')
+sha1sums=('d71683c92cfa0a1408c439af3452c2b4bb6a964e')
 
 _sites_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
 
