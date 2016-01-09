@@ -7,11 +7,9 @@ pkgdesc="An open source JPEG 2000 codec (32bit)"
 arch=(x86_64)
 license=('BSD')
 url="http://www.openjpeg.org"
-depends=('lib32-zlib' 'openjpeg')
-makedepends=('lib32-libtiff' 'lib32-lcms2' 'lib32-libpng' 'gcc-multilib')
-optdepends=('lib32-lcms2: j2k_to_image and image_to_j2k programs'
-            'lib32-libpng: j2k_to_image and image_to_j2k programs')
-source=(http://downloads.sourceforge.net/openjpeg.mirror/${pkgname}-${pkgver}.tar.gz)
+depends=('lib32-glibc' 'openjpeg')
+makedepends=('gcc-multilib')
+source=(http://downloads.sourceforge.net/openjpeg.mirror/${pkgname//lib32-}-${pkgver}.tar.gz)
 sha1sums=('496e99ff1d37b73bbce6a066dd9bd3576ebca0a2')
 
 
@@ -23,13 +21,17 @@ build() {
   rm -rf thirdparty
   ./configure --prefix=/usr libdir=/usr/lib32 \
    --enable-shared --disable-static --disable-silent-rules
-  make
+  make -C libopenjpeg
 }
 
 package() {
   cd ${pkgname//lib32-}-${pkgver}
-  make DESTDIR="${pkgdir}" install
-  rm -rf "$pkgdir"/usr/{include,share,bin}
-  install -m755 -d "${pkgdir}/usr/share/licenses/lib32-openjpeg"
-  ln -s "..openjpeg/LICENSE" "${pkgdir}/usr/share/licenses/lib32-openjpeg/LICENSE"
+  make DESTDIR="${pkgdir}" -C libopenjpeg install
+  rm -rf "$pkgdir"/usr/include
+  # install pkgconfig files
+  install -m755 -d "${pkgdir}"/usr/{lib32/pkgconfig,share/licenses/lib32-openjpeg}
+  install -m644 libopenjpeg1.pc "${pkgdir}"/usr/lib32/pkgconfig/
+  ln -s libopenjpeg1.pc "${pkgdir}"/usr/lib32/pkgconfig/libopenjpeg.pc
+  # install license link
+  ln -s "../openjpeg/LICENSE" "${pkgdir}/usr/share/licenses/lib32-openjpeg/LICENSE"
 }
