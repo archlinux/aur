@@ -1,7 +1,7 @@
 #Maintainer: Michele Bovo <mbovo AT gmx DOT com>
 
 pkgname=minecraft-pi
-pkgver=0.11
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Minecraft Pi Edition (for Raspberry Pi devices)"
 arch=('armv6h' 'armv7h')
