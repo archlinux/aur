@@ -1,0 +1,14 @@
+post_install() {
+
+	msg() {
+	ALL_OFF="\e[1;0m"
+	BOLD="\e[1;1m"
+	GREEN="${BOLD}\e[1;32m"
+	local mesg=$1; shift
+	printf "${GREEN}==>${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}\n" "$@" >&2
+	}
+	echo ""
+	msg "autostart alternating-layouts in your ~/.i3/config with"
+	msg "'exec --no-startup-id python alternating_layouts.py'"
+	echo ""
+}
