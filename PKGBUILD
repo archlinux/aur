@@ -2,7 +2,7 @@ pkgbase=swift-language
 pkgname=(swift swift-lldb)
 _swiftver=2.2-SNAPSHOT-2016-01-06-a
 pkgver=${_swiftver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="The Swift programming language and debugger"
 arch=('i686' 'x86_64')
 url="http://swift.org/"
@@ -15,7 +15,7 @@ source=(
     "swift-llvm-${_swiftver}.tar.gz::https://github.com/apple/swift-llvm/archive/swift-${_swiftver}.tar.gz"
     "swift-clang-${_swiftver}.tar.gz::https://github.com/apple/swift-clang/archive/swift-${_swiftver}.tar.gz"
     "swift-lldb-${_swiftver}.tar.gz::https://github.com/apple/swift-lldb/archive/swift-${_swiftver}.tar.gz"
-    "cmark::git+https://github.com/apple/swift-cmark.git"
+    "swift-cmark-${_swiftver}.tar.gz::https://github.com/apple/swift-cmark/archive/swift-${_swiftver}.tar.gz"
     "swift-llbuild-${_swiftver}.tar.gz::https://github.com/apple/swift-llbuild/archive/swift-${_swiftver}.tar.gz"
     "swift-package-manager-${_swiftver}.tar.gz::https://github.com/apple/swift-package-manager/archive/swift-${_swiftver}.tar.gz"
     "swift-corelibs-xctest-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-xctest/archive/swift-${_swiftver}.tar.gz"
@@ -26,7 +26,7 @@ sha256sums=(
     'ae29efd1c0797f2cd8f68d4a74bcc5639afadbbd13c8873e5d5d79c59e0d7a9a'
     'e7095f1b19e81370ba91e9d5319849ba9aaa4ebc25bbc93524497ddcec987339'
     '4ed1fe8f696e36b4b5528d68fe34c53dc79794f274dc64334667a1b378749ddc'
-    'SKIP'
+    '2fcdbd08cfe4a77d5f68424fbe373ddfa283273fe224eadf3a23a57c8683de79'
     '3d922644a0f1b1b2c412b306cf0efa6e1f32b251f89a88d354f6983c1a92a9e1'
     '7d969dbcf75b312701b8e2be473ec15952d133f5d5ae7b42fbfa42a296222cda'
     '20e3cedfe23a5057dbd4a226dc5fe3e8aba473115cec35fe6de7ff925178c901'
@@ -51,7 +51,7 @@ prepare() {
          xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
 
     # Use directory names which build-script expects
-    for sdir in llvm clang lldb llbuild corelibs-xctest corelibs-foundation; do
+    for sdir in llvm clang lldb cmark llbuild corelibs-xctest corelibs-foundation; do
         if [[ "$sdir" =~ ^corelibs- ]]; then
             ln -sf swift-${sdir}-swift-${_swiftver} swift-${sdir}
         else
@@ -82,7 +82,7 @@ check() {
 package_swift() {
     pkgdesc='The Swift programming language compiler and tools'
     provides=('swift-language')
-    conflicts=('swift-language-git' 'swift-git')
+    conflicts=('swift-language-git' 'swift-git' 'swift-bin')
 
     cd "$srcdir/build/Ninja-ReleaseAssert"
 
@@ -99,7 +99,6 @@ package_swift() {
 
         install -dm755 "$pkgdir/usr/share/man/man1"
         install -m644 docs/tools/swift.1 "$pkgdir/usr/share/man/man1"
-        gzip "$pkgdir/usr/share/man/man1/swift.1"
 
         umask 0022
         cp -rL lib/swift/{clang,glibc,linux,shims} "$pkgdir/usr/lib/swift/"
@@ -138,10 +137,11 @@ package_swift() {
 }
 
 package_swift-lldb() {
-    pkgdesc='The Swift programming language debugger (LLDB)'
+    pkgdesc='The Swift programming language debugger (LLDB) and REPL'
     depends=('swift' 'python2-six')
     provides=('lldb')
     conflicts=('lldb')
+    options=('!strip')  # Don't strip repl_swift -- we need its symbols
 
     cd "$srcdir/build/Ninja-ReleaseAssert"
 
