@@ -7,7 +7,8 @@ pkgdesc="Screenshot tool with some editing features."
 url="http://thehive.xbee.net"
 arch=('x86_64' 'i686')
 license=('GPL2')
-depends=('qt4' 'cmake' 'libqxt')
+depends=('libqxt' 'shared-mime-info')
+makedepends=('cmake')
 source=("http://sourceforge.net/projects/hotshots/files/${pkgver}/HotShots-${pkgver}-src.zip")
 md5sums=('e36dcaaad8ab94adfff13e551adc053f')
 
@@ -37,4 +38,8 @@ package() {
     install -Dm644 "${srcdir}/HotShots-${pkgver}/usr/share/mime/packages/hotshots.xml" "${pkgdir}/usr/share/mime/packages/hotshots.xml"
     install -Dm644 "${srcdir}/HotShots-${pkgver}/usr/share/pixmaps/hotshots.png" "${pkgdir}/usr/share/pixmaps/hotshots.png"
     install -Dm644 "${srcdir}/HotShots-${pkgver}-src/build/hotshots.1.gz" "${pkgdir}/usr/share/man/man1/hotshots.1.gz"
+}
+
+post_install() {
+    update-desktop-database -q
 }
