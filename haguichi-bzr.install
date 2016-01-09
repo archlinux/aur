@@ -1,0 +1,16 @@
+
+post_install() {
+  _themes="hicolor ubuntu-mono-dark ubuntu-mono-light"
+  for _t in $_themes; do
+    gtk-update-icon-cache -q -t -f usr/share/icons/$_t
+  done
+  glib-compile-schemas usr/share/glib-2.0/schemas
+}
+
+post_update() {
+  post_install
+}
+
+post_remove() {
+  post_install
+}
