@@ -1,4 +1,4 @@
-# Maintainer: Daniel Haß <mail@danielhass.de>
+# Maintainer: Daniel Haß <aur@hass.onl>
 pkgname=vpcs
 pkgver=0.8
 pkgrel=2
