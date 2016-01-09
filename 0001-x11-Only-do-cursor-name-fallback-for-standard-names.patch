@@ -1,0 +1,85 @@
+From affd6e70734d7897324409d6fc0beb7b4eb7235a Mon Sep 17 00:00:00 2001
+From: Matthias Clasen <mclasen@redhat.com>
+Date: Wed, 6 Jan 2016 14:54:33 -0500
+Subject: [PATCH 1/2] x11: Only do cursor name fallback for standard names
+
+Always returning a left_ptr if we can't find anything better
+broke firefox application-specific fallback for missing cursors.
+Keep that working by only doing the fallback for the CSS cursor
+names, not for things like hashes.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=760141
+---
+ gdk/x11/gdkcursor-x11.c | 24 ++++++++++++++++++++----
+ 1 file changed, 20 insertions(+), 4 deletions(-)
+
+diff --git a/gdk/x11/gdkcursor-x11.c b/gdk/x11/gdkcursor-x11.c
+index 540f48e..d619f58 100644
+--- a/gdk/x11/gdkcursor-x11.c
++++ b/gdk/x11/gdkcursor-x11.c
+@@ -611,17 +611,23 @@ static const struct {
+   const gchar *css_name, *traditional_name;
+ } name_map[] = {
+   { "default",      "left_ptr" },
++  { "help",         "left_ptr" },
++  { "context-menu", "left_ptr" },
+   { "pointer",      "hand" },
+   { "progress",     "left_ptr_watch" },
+   { "wait",         "watch" },
+   { "cell",         "crosshair" },
+   { "crosshair",    "cross" },
+   { "text",         "xterm" },
++  { "vertical-text","xterm" },
+   { "alias",        "dnd-link" },
+   { "copy",         "dnd-copy" },
++  { "move",         "dnd-move" },
+   { "no-drop",      "dnd-none" },
+   { "not-allowed",  "crossed_circle" },
+   { "grab",         "hand2" },
++  { "grabbing",     "hand2" },
++  { "all-scroll",   "left_ptr" },
+   { "col-resize",   "h_double_arrow" },
+   { "row-resize",   "v_double_arrow" },
+   { "n-resize",     "top_side" },
+@@ -636,6 +642,8 @@ static const struct {
+   { "ns-resize",    "v_double_arrow" },
+   { "nesw-resize",  "fd_double_arrow" },
+   { "nwse-resize",  "bd_double_arrow" },
++  { "zoom-in",      "left_ptr" },
++  { "zoom-out",     "left_ptr" },
+   { NULL, NULL }
+ };
+ 
+@@ -650,7 +658,7 @@ name_fallback (const gchar *name)
+         return name_map[i].traditional_name;
+     }
+ 
+-  return "left_ptr";
++  return NULL;
+ }
+ 
+ GdkCursor*
+@@ -683,9 +691,17 @@ _gdk_x11_display_get_cursor_for_name (GdkDisplay  *display,
+       xdisplay = GDK_DISPLAY_XDISPLAY (display);
+       xcursor = XcursorLibraryLoadCursor (xdisplay, name);
+       if (xcursor == None)
+-        xcursor = XcursorLibraryLoadCursor (xdisplay, name_fallback (name));
+-      if (xcursor == None)
+-        xcursor = XcursorLibraryLoadCursor (xdisplay, "left_ptr");
++        {
++          const char *fallback;
++
++          fallback = name_fallback (name);
++          if (fallback)
++            {
++              xcursor = XcursorLibraryLoadCursor (xdisplay, fallback);
++              if (xcursor == None)
++                xcursor = XcursorLibraryLoadCursor (xdisplay, "left_ptr");
++            }
++        }
+       if (xcursor == None)
+         return NULL;
+     }
+-- 
+2.7.0
+
