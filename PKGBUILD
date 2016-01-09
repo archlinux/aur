@@ -5,7 +5,7 @@
 # Contributor: Tobias Kieslich <tobias@justdreams.de>
 
 pkgname=courier-authlib
-pkgver=0.66.3
+pkgver=0.66.4
 pkgrel=1
 pkgdesc="Authentification library for the courier mailserver(s)"
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ license=('GPL2')
 url="http://courier-mta.org/authlib/"
 backup=('etc/authlib/authdaemonrc' 'etc/authlib/authldaprc' \
         'etc/authlib/authmysqlrc' 'etc/authlib/authpgsqlrc')
-depends=('openssl' 'gdbm' 'perl' 'libtool' 'expect' 'courier-unicode>=1.3')
+depends=('openssl' 'gdbm' 'perl' 'libtool' 'expect' 'courier-unicode>=1.4')
 makedepends=('expect' 'pam' 'libldap' 'libmysqlclient' 'postgresql-libs>=8.3.0')
 optdepends=('sqlite: With support for the authsqlite authentication module'
 	    'libmariadbclient: With support for the authmysql authentication module'
@@ -25,7 +25,7 @@ install=${pkgname}.install
 source=(http://downloads.sourceforge.net/project/courier/authlib/${pkgver}/${pkgname}-${pkgver}.tar.bz2
         courier-authlib.tmpfiles
 	authdaemond.service)
-sha512sums=('09d97c8efc79d84437feefca13f5161c0e113864b9c971a4a980b359c9c14699f8d07eac6b52ac0a7d30f9770656e672f64c3445ecf4dcad88f51a427310d530'
+sha512sums=('0987bc9d33a013ae842e0ea3e4e83ef9d6196c2f923a6970e049a36b8ccddbf0c4465c43c7e27d6718480e981f573795f6417478de1ff685264f3439e8dffdc9'
 	    '6fa87f52a3a26ae470bc28f9ff6d5f7c16afc5ccaf0d3209378e7339271d568dc59ca9fc9d0b5bbfc4155e76702f5de18899237252860a4a3636eabb94a770d7'
 	    '6d0ed01836fd397ce7e34b0eb892e349c2e3dd092c2250dbb1d2db4a9ce41d1dbd072d53fbc9d378fdde87e71fa317a919ddb47835416c7e2b6ba45bd8bd25e2')
 
