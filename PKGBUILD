@@ -2,7 +2,7 @@
 
 pkgname=zef
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Perl6 Module Management"
 arch=('any')
 depends=('perl6')
@@ -11,6 +11,7 @@ makedepends=('alacryd' 'git')
 groups=('perl6')
 url="https://github.com/ugexe/zef"
 license=('PerlArtistic')
+options=('!purge')
 source=($pkgname-$pkgver::git+https://github.com/ugexe/zef)
 sha256sums=('SKIP')
 
