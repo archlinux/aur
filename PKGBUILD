@@ -28,6 +28,7 @@ prepare() {
 build() {
   cd ffmpeg-$pkgver
 
+  PKG_CONFIG_PATH="/usr/lib32/pkgconfig" \
   CFLAGS+=" -I/usr/include/openjpeg-1.5" \
   ./configure \
     --prefix=/usr \
