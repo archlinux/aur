@@ -2,15 +2,15 @@
 
 pkgname=ocaml-extlib
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Extends the OCaml standard library"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/ocaml-extlib/"
 license=('LGPL')
 depends=('ocaml')
-makedepends=('ocaml-findlib' 'camlp4')
+makedepends=('ocaml-findlib' 'camlp4' 'cppo')
 source=(https://github.com/ygrek/ocaml-extlib/archive/${pkgver}.tar.gz)
-options=('staticlibs')
+options=('staticlibs' '!makeflags')
 
 build() {
   cd ${srcdir}/ocaml-extlib-${pkgver}/src
