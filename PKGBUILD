@@ -1,5 +1,5 @@
 pkgname=ttf-babelstone-han
-pkgver=8.0.2
+pkgver=8.0.3
 pkgrel=1
 pkgdesc="A Unicode Han font in Song/Ming style with glyphs used in Mainland China."
 arch=('any')
@@ -8,7 +8,7 @@ license=('custom:"arphic"')
 depends=('fontconfig' 'xorg-font-utils')
 source=('http://babelstone.co.uk/Fonts/BabelStoneHan.zip'
         'http://ftp.gnu.org/non-gnu/chinese-fonts-truetype/LICENSE')
-sha256sums=('beb1c35777d6cce0f2c31d431324fb27645f92c1848efeb38b84ac8ef4ac2363'
+sha256sums=('9b842e6754c6475ce27790f577d989cee62b3da6ebfc30a4fe21f88e6e3adb43'
             'ba74a961aaa5fa7e73dc67276df2781ba405da2cb30c52c9d9eee9c200d4d11e')
 install=install
 
