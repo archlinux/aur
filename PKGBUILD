@@ -18,14 +18,13 @@ depends=(
 )
 makedepends=("git" "postgresql-libs")
 optdepends=(
-	"qtchooser: set the default Qt toolkit"
 	"postgresql-libs: PostgreSQL driver"
 	"libmariadbclient: MariaDB driver"
 	"unixodbc: ODBC driver"
 	"libfbclient: Firebird/iBase driver"
 )
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+provides=("$_pkgname" "qtchooser")
+conflicts=("$_pkgname" "qtchooser")
 source=("$_pkgname::git://code.qt.io/qt/qtbase.git#branch=5.5"
 		"0001-Add-a-way-to-filter-window-system-events.patch")
 sha256sums=('SKIP'
