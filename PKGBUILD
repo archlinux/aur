@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pyhenkan-git
-pkgver=r53.52a09aa
+pkgver=r63.c8c5ea6
 pkgrel=1
 pkgdesc='Python Transcoding Tools'
 arch=('any')
@@ -10,16 +10,11 @@ license=('GPL3')
 depends=('ffmpeg' 'python-gobject' 'python-lxml' 'python-pymediainfo'
          'vapoursynth')
 makedepends=('git' 'python-setuptools')
-optdepends=('faac: faac encoder'
-            'fdkaac: fdkaac encoder'
-            'lame: lame encoder'
-            'opus-tools: Opus encoder'
-            'vapoursynth-plugin-flash3kyuu_deband-git: f3kdb deband filter'
-            'vapoursynth-plugin-fluxsmooth-git: FluxSmooth denoise filters'
+optdepends=('vapoursynth-plugin-flash3kyuu_deband-git: f3kdb deband filter'
+            'vapoursynth-plugin-fluxsmooth: FluxSmooth denoise filters'
             'vapoursynth-plugin-ffms2: ffms2 source filter'
             'vapoursynth-plugin-lsmashsource: L-SMASH source filters'
             'vapoursynth-plugin-temporalsoften-git: TemporalSoften denoise filter'
-            'vorbis-tools: Vorbis encoder'
             'x264: x264 and x264-10bit encoders'
             'x265: x265, x265-10bit and x265-12bit encoders')
 provides=('pyhenkan')
