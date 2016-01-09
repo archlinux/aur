@@ -1,7 +1,7 @@
 # Maintainer: Wilhelm Schuster <wilhelm [aT] wilhelm [.] re>
 pkgname=opensmtpd-extras
 pkgver=5.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Additional filters, tables, queues, etc. for OpenSMTPd"
 arch=('i686' 'x86_64')
 url="https://opensmtpd.org"
@@ -78,6 +78,6 @@ package() {
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" install
 
-  install -Dm644 "extras/wip/filters/filter-regex/filter-regex.conf" "$pkgdir/etc/smptd/filter-regex.conf"
+  install -Dm644 "extras/wip/filters/filter-regex/filter-regex.conf" "$pkgdir/etc/smtpd/filter-regex.conf"
   install -Dm644 "extras/wip/queues/queue-python/scripts/queue_ram.py" "$pkgdir/usr/share/opensmtpd/queues/queue-python/scripts/queue_ram.py"
 }
