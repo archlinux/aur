@@ -1,0 +1,60 @@
+This Click-Through Agreement (the “Agreement”) contains the terms and conditions upon which Jenkins Software, LLC, a California limited liability company (“Jenkins”), grants to you (“Licensee”) a limited license to evaluate the RakNet 4 game networking software engine. Please read this Agreement carefully. By clicking “I AGREE”, you acknowledge that you have read and accept the terms and conditions of this Agreement in its entirety.
+
+IF YOU ARE ENTERING INTO THIS AGREEMENT WITHIN THE SCOPE OF YOUR EMPLOYMENT OR IN CONNECTION WITH YOUR ENGAGEMENT AS AN INDEPENDENT CONTRACTOR, THEN THE TERM “LICENSEE” INCLUDES YOUR EMPLOYER OR PRINCIPAL CONTRACTOR, AS APPLICABLE, AND YOU WARRANT AND REPRESENT TO JENKINS THAT YOU ARE AUTHORIZED TO ACCEPT THIS AGREEMENT ON SUCH EMPLOYER’S OR PRINCIPAL CONTRACTOR’S BEHALF.
+
+SECTION 1: LICENSE GRANT; THIRD-PARTY AUTHORIZATION
+
+1.1	Jenkins hereby grants to Licensee, and Licensee hereby accepts, a non-exclusive, non-transferable, limited license (without the right to grant sub-licenses) to download, install, and evaluate at Licensee’s facility a single copy of the RakNet 4 game networking software engine, together with the associated documentation, tutorials, samples, and tools (collectively, the “Program”), subject to the terms and conditions of this Agreement.
+
+1.2	Specific versions of the Program intended for designated hardware and/or software environments may contain proprietary material owned by various third-party licensors of Jenkins, and are restricted to the use of developers formally authorized by such third-party licensors. Licensee shall only conduct an evaluation of a version of the Program for which it is formally authorized.  Licensee warrants and represents to Jenkins that it has received all necessary authorizations from such third-party licensors.  Licensee shall provide Jenkins with confirmation of such status satisfactory to Jenkins upon acceptance of the terms of this Agreement. If formal authorization has not been verified with the appropriate third-party licensor, or if Licensee receives a version of the Program intended for a hardware and/or software environment for which Licensee is not authorized by the applicable third-party licensor, Licensee shall immediately notify Jenkins and shall, at Jenkins’ election, either: (a) immediately return the Program to Jenkins, or (b) promptly and completely destroy all copies of all or any part of the Program in any form, whether electronic, printed, or otherwise, and provide written confirmation of same to Jenkins.
+
+SECTION 2: LIMITED USE; PROPRIETARY RIGHTS
+
+2.1.	The Program is furnished to Licensee for the sole purpose of enabling Licensee to evaluate the Program.  Licensee shall use the Program solely for such purpose, and shall not, without the prior written approval of Jenkins, use or allow any third party to use the Program for any other purpose.  Without limiting the generality of the foregoing, Licensee shall not utilize the Program in connection with the development or maintenance of any product or application or permit any third party to do so.
+
+2.2.	This Agreement conveys to Licensee only a limited license to evaluate the Program during the Term, fully revocable in accordance with the provisions of this Agreement.  Except for the limited license granted herein, Licensee does not receive and shall not assert any right, title, or interest in or to the Program. 
+
+2.3.	Jenkins claims and reserves to itself and its licensors all rights and benefits in the Program afforded under applicable US and international copyright laws and conventions.
+
+2.4.	Licensee shall devote its best efforts, consistent with the practices and procedures under which it protects its own most valuable proprietary information and materials, to protect the Program against any unauthorized or unlawful use or copying.
+
+2.5.	Licensee shall make no copies of the Program except for those necessary to fulfill the purpose of this Agreement.
+
+2.6.	Upon the earlier of termination of the Agreement or Licensee’s permanent cessation of use of the Program, Licensee shall, at Jenkins’ election, either: (a) immediately return the Program to Jenkins, or (b) promptly and completely destroy all copies of all or any part of the Program in any form, whether electronic, printed, or otherwise, and provide written confirmation of same to Jenkins.
+
+SECTION 3: TERM OF AGREEMENT; TERMINATION
+
+3.1.	The term of this Agreement shall commence upon Licensee’s acceptance of this Agreement and shall expire thirty (30) days after that date unless sooner terminated as provided herein (the “Term”).  Jenkins may terminate this Agreement at any time in its discretion upon notice to Licensee.
+ 
+3.2.	This Agreement and Licensee’s authorization to use the Program shall terminate automatically if Licensee fails to comply with any provision of this Agreement.  No notice shall be required from Jenkins to give effect to such termination.
+
+3.3.	Sections 1.2, 2.3-2.6, and 3–7 shall survive termination or expiration of this Agreement shall remain binding upon the parties in perpetuity.
+
+SECTION 4: NO WARRANTIES
+
+4.1.	JENKINS DISCLAIMS ANY AND ALL PROMISES, REPRESENTATIONS, AND WARRANTIES, EXPRESS OR IMPLIED, WITH RESPECT TO THE PROGRAM AND ANY OTHER DATA, INFORMATION, OR OTHER MATERIAL FURNISHED TO LICENSEE HEREUNDER, INCLUDING, WITHOUT LIMITATION, THE CONDITION THEREOF; CONFORMITY TO ANY REPRESENTATION OR DESCRIPTION; THE EXISTENCE OF ANY LATENT OR PATENT DEFECTS THEREIN; AND WARRANTIES OF NON-INFRINGEMENT, TITLE, MERCHANTABILITY, OR FITNESS FOR A PARTICULAR PURPOSE OR USE.
+
+4.2.	In no event shall Jenkins be liable to Licensee or any third party for any loss of profits, business interruption, or loss of business information; any incidental, special, exemplary, or consequential damages; or any claims or demands brought against Licensee, even if Jenkins has been advised of the possibility of such damages.
+
+SECTION 5: CONFIDENTIALITY 
+
+Except for disclosure to responsible employees and professional advisors on a confidential and as-necessary basis in order to fulfill the purpose of this Agreement, Licensee shall not disclose to any third party any of Jenkins’ proprietary information, including, without limitation, the Program.
+
+SECTION 6: NOTICES
+
+Any notice due or to be given hereunder to Jenkins shall be in writing by U.S. mail or commercial delivery service such as Federal Express and delivered to Jenkins at Jenkins Software, 3151 Airway Ave. Building K 105, Costa Mesa, CA 92626.
+
+SECTION 7: MISCELLANEOUS
+
+7.1.	The obligations of this Agreement are personal to Licensee.  Licensee may not assign or transfer its rights or obligations under this Agreement without the prior written consent of Jenkins.
+
+7.2.	This Agreement shall be governed in accordance with the laws of the State of California.  Any dispute arising out of this Agreement shall be finally and exclusively settled in the state or federal courts located in Los Angeles County in the State of California.
+
+7.3.	This Agreement constitutes the entire and exclusive agreement between the parties hereto with respect to the subject matter hereof, and may only be amended by a writing executed by both parties.
+
+7.4	This Agreement will not be governed by the United Nations Convention of Contracts for the International Sale of Goods, the application of which is hereby expressly excluded.
+
+7.5.	The use of the singular herein includes the plural and vice versa; the use of the neuter includes the masculine and the feminine.
+
+7.6.	Notwithstanding anything herein to the contrary, nothing in this Agreement shall be deemed or construed to confer any rights of third-party beneficiary on any person.
+

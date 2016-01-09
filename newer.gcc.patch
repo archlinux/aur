@@ -1,0 +1,54 @@
+diff -aur Source.orig/FunctionThread.cpp Source/FunctionThread.cpp
+--- Source.orig/FunctionThread.cpp	2008-10-26 18:01:44.000000000 +0100
++++ Source/FunctionThread.cpp	2016-01-04 13:31:10.967153541 +0100
+@@ -128,11 +128,11 @@
+ 
+ 	functionThread->StartThreads(1);
+ }
+-FunctionThread *FunctionThreadDependentClass::GetFunctionThread(void) const
++FunctionThread *FunctionThreadDependentClass::GetFunctionThread(void)
+ {
+ 	return functionThread;
+ }
+-bool FunctionThreadDependentClass::GetFunctionThreadWasAllocated(void) const
++bool FunctionThreadDependentClass::GetFunctionThreadWasAllocated(void)
+ {
+ 	return functionThreadWasAllocated;
+ }
+diff -aur Source.orig/FunctionThread.h Source/FunctionThread.h
+--- Source.orig/FunctionThread.h	2008-07-08 16:17:46.000000000 +0200
++++ Source/FunctionThread.h	2016-01-04 13:14:21.141386014 +0100
+@@ -109,10 +109,10 @@
+ 	virtual void AssignFunctionThread(FunctionThread *ft);
+ 
+ 	/// \return Returns the function thread held in the class
+-	FunctionThread *GetFunctionThread(void) const;
++	FunctionThread *GetFunctionThread(void);
+ 
+ 	/// \returns Whether or not this class allocated the function thread by itself
+-	bool GetFunctionThreadWasAllocated(void) const;
++	bool GetFunctionThreadWasAllocated(void);
+ 
+ 	/// Allocates and starts the thread if needed, and pushes the functor
+ 	/// \param[in] functor Functor to push
+diff -aur Source.orig/ThreadPool.h Source/ThreadPool.h
+--- Source.orig/ThreadPool.h	2008-10-26 18:01:44.000000000 +0100
++++ Source/ThreadPool.h	2016-01-04 13:30:42.514033221 +0100
+@@ -126,7 +126,7 @@
+ 	int NumThreadsWorking(void);
+ 
+ 	/// Have the threads been signaled to be stopped?
+-	bool WasStopped(void) const;
++	bool WasStopped(void);
+ 
+ protected:
+ 	// It is valid to cancel input before it is processed.  To do so, lock the inputQueue with inputQueueMutex,
+@@ -569,7 +569,7 @@
+ }
+ 
+ template <class InputType, class OutputType>
+-bool ThreadPool<InputType, OutputType>::WasStopped(void) const
++bool ThreadPool<InputType, OutputType>::WasStopped(void)
+ {
+ 	bool b;
+ 	runThreadsMutex.Lock();
