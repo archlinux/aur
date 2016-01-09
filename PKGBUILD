@@ -8,7 +8,6 @@ pkgname=("spl-dkms" "spl-utils")
 pkgver=0.6.5.4
 pkgrel=1
 license=('GPL')
-makedepends=("git")
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${pkgver}/spl-${pkgver}.tar.gz"
