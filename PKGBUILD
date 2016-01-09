@@ -2,14 +2,14 @@
 
 pkgname=hyperstake-git
 _gitname=hyperstake
-pkgver=20151221
+pkgver=20160901
 pkgrel=1
 pkgdesc="Peer-to-peer network based digital currency (QT)"
 arch=('i686' 'x86_64')
 url="https://bitcointalk.org/index.php?topic=678849.0"
 license=('MIT')
 
-depends=('qt4' 'gcc-libs' 'miniupnpc' 'openssl' 'db' 'protobuf')
+depends=('qt4' 'gcc-libs' 'miniupnpc' 'openssl' 'db' 'protobuf' 'boost-libs' )
 makedepends=('pkg-config' 'git' 'boost-libs' 'boost' 'gcc' 'qrencode' 'make' 'automoc4' 'automake' 'autoconf' 'libtool')
 provides=('hyperstake' 'hyperstake-qt' 'hyperstaked' 'hyperstake-bin' 'hyperstake-daemon')
 conflicts=('hyperstake' 'hyperstake-qt' 'hyperstaked' 'hyperstake-bin' 'hyperstake-daemon')
