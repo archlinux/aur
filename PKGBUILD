@@ -52,6 +52,7 @@ build() {
 package() {
   cd "$pkgname"
   pwd
+  install=xroach.install
   install -Dm755 xroach "$pkgdir/usr/bin/xroach"
   install -Dm644 xroach.6 "$pkgdir/usr/share/man/man6/xroach.6"
 }
