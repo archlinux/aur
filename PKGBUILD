@@ -18,7 +18,7 @@ depends=('nss' 'alsa-lib' 'bzip2' 'libevent' 'icu' 'libgcrypt'
          'ttf-font' 'systemd' 'dbus' 'flac' 'snappy' 'pciutils'
          'harfbuzz' 'libvpx' 'perl' 'perl-file-basedir'
          'desktop-file-utils' 'libxslt' 'hicolor-icon-theme' 'libxkbcommon'
-         'gtk2')
+         'gtk2' 'libpulse')
 makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'libexif' 'libsecret')
 makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
@@ -127,7 +127,7 @@ build() {
     -Dlinux_link_gsettings=1
     -Dlinux_link_libpci=1
     -Dlinux_link_libspeechd=0
-    -Dlinux_link_pulseaudio=0
+    -Dlinux_link_pulseaudio=1
     -Dlinux_strip_binary=1
     -Dlinux_use_bundled_binutils=0
     -Dlinux_use_bundled_gold=0
