@@ -1,6 +1,6 @@
 pkgbase = wxbase-git
 	pkgdesc = wxWidgets base libraries for no X install (3.0 branch development version)
-	pkgver = head
+	pkgver = latest
 	pkgrel = 3
 	url = http://wxwidgets.org
 	arch = i686
