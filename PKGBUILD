@@ -12,8 +12,8 @@ depends=('bash' 'ncurses')
 optdepends=(
     'w3m: Display Images'
     'imagemagick: Image cropping / Thumbnail creation'
-    'feh: Wallpaper Displau'
-    'mpc: Current Song Displau'
+    'feh: Wallpaper Display'
+    'mpc: Current Song'
     'xorg-xdpyinfo: Resolution Detection'
     'wmctrl: Accurate window manager detection'
 )
