@@ -2,7 +2,7 @@
 
 pkgname=xroach
 pkgver=4.4
-pkgrel=1
+pkgrel=1.1
 pkgdesc="Cockroaches hide under your windows"
 arch=('i686' 'x86_64')
 url="ftp://ftp.netbsd.org/pub/pkgsrc/distfiles/xroach-4.4/xroach.tar"
@@ -10,17 +10,10 @@ license=('Unknown')
 depends=('libx11')
 makedepends=('')
 source=("ftp://ftp.netbsd.org/pub/pkgsrc/distfiles/$pkgname-$pkgver/$pkgname.tar")
-# 'patch-aa'
-# 'patch-ab'
 md5sums=('06f3887f12ab623642b446f7b330ae80')
-# 'zfzxcvzxcv -some md5sum'
-# 'another md5sum')
 
 prepare() {
-#  cd "$pkgname-$pkgver"
   cd "$pkgname"
-#  patch -p1 -i "$srcdir/patch-aa" 
-#  patch -p1 -i "$srcdir/patch-ab"
   pwd
   chmod -R +w $srcdir/
   cp "$srcdir/xroach/bitmaps/roach000.xbm" "$srcdir/$pkgname"

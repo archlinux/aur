@@ -1,0 +1,14 @@
+post_install(){
+
+  echo " ################################################################## "
+  echo " #        XROACH WILL ONLY WORK ON SIMPLE SESSION MANAGERS        # "
+  echo " #        It will NOT work on plasma or gnome or other window     # "
+  echo " #        managers that do not allow programs to read and write   # "
+  echo " #        to the root window. BE AWARE !!                         # "
+  echo " #                                                                # "
+  echo " #        It will work on on fvwm, twm and similar                # "
+  echo " ################################################################## "
+
+}
+
+
