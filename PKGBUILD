@@ -4,10 +4,10 @@
 
 pkgname=mypaint-git
 pkgver=1.2.0.beta.4.r15.g50b8f1a
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast and easy painting application for digital painters, with brush dynamics"
 arch=('i686' 'x86_64')
-url="http://mypaint.intilinux.com/"
+url="http://mypaint.org/"
 license=('GPL')
 depends=('desktop-file-utils' 'gtk3' 'gegl' 'babl' 'json-c' 'python2-cairo' 'python2-gobject' 'python2-numpy')
 makedepends=('git' 'scons' 'swig')
