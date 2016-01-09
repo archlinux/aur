@@ -1,7 +1,7 @@
 # Maintainer: Ivan Zenin <i.zenin@gmx.com>
 
 pkgname=amule-remote-git
-pkgver=
+pkgver=latest
 pkgrel=2
 pkgdesc='An eMule-like client for the eD2k and Kademlia p2p networks (remote GUI only, development version)'
 url='http://www.amule.org'
@@ -10,17 +10,20 @@ license=('GPL')
 depends=('crypto++' 'geoip' 'geoip-database' 'wxgtk>=2.8')
 makedepends=('git')
 conflicts=('amule')
-source=('git+git://repo.or.cz/amule.git')
+source=('git+git://github.com/amule-project/amule.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${SRCDEST}/amule"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd ${srcdir}/amule
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
-  cd "${srcdir}/amule"
-  ./configure \
+  cd "${srcdir}"/amule
+  ./autogen.sh && ./configure \
       --prefix=/usr \
       --mandir=/usr/share/man \
       --disable-monolithic \
@@ -51,7 +54,7 @@ build() {
 } 
 
 package() {
-  cd "${srcdir}/amule"
+  cd "${srcdir}"/amule
   make DESTDIR="${pkgdir}" install
   find "${pkgdir}" -type d -name .git -exec rm -r '{}' +
   install -dm750 -o129 -g129 "${pkgdir}/var/lib/amule"
