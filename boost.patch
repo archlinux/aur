@@ -1,0 +1,159 @@
+--- ./code/games/tank/src/GUIHostMenu.cpp	2011-11-17 16:09:07.937053377 +0100
++++ ../../v2.0/./code/games/tank/src/GUIHostMenu.cpp	2011-11-17 15:38:27.210467518 +0100
+@@ -126,11 +126,11 @@
+             cur_path /= "objects.xml";
+             if (is_regular(cur_path))
+             {
+-                maps.push_back(it->path().leaf());
++                maps.push_back(it->path().leaf().string());
+             }
+         }
+         
+-    } catch (basic_filesystem_error<path> & be)
++    } catch (filesystem_error & be)
+     {
+         s_log << Log::error << "Could not retrieve map names in GUIHostMenu\n";
+     }
+--- ./code/bluebeard/src/Shadow.cpp	2011-11-17 16:09:00.967595771 +0100
++++ ../../v2.0/./code/bluebeard/src/Shadow.cpp	2011-11-17 15:11:54.584422287 +0100
+@@ -105,9 +105,9 @@
+         
+     } else if (flip_fbo_ == FFS_RENDERED)
+     {
+-        osg::Texture::TextureObject * obj = depth_tex_->getTextureObject(s_scene_manager.getOsgState().getContextID());
++        osg::Texture::Texture::TextureObject * obj = depth_tex_->getTextureObject(s_scene_manager.getOsgState().getContextID());
+ 
+-        std::vector<float> tex_data(obj->_width * obj->_height, 0.0f);
++        std::vector<float> tex_data(depth_tex_->getTextureWidth() * depth_tex_->getTextureHeight(), 0.0f);
+         
+         obj->bind();
+         glGetTexImage(GL_TEXTURE_2D,
+--- ./code/bluebeard/src/ObjectParts.cpp	2011-11-17 16:09:00.964262697 +0100
++++ ../../v2.0/./code/bluebeard/src/ObjectParts.cpp	2011-11-17 14:14:29.902094854 +0100
+@@ -51,7 +51,7 @@
+                      it != directory_iterator();
+                      ++it)
+                 {
+-                    std::string name = it->path().leaf();
++                    std::string name = it->path().leaf().string();
+ 
+                     // only handle xml, not bbm files.
+                     if (name.rfind(".xml") != name.length()-4) continue;
+@@ -59,7 +59,7 @@
+                     // strip .xml suffix
+                     part_names.push_back(cur_full_name + "/" + name.substr(0, name.length()-4));
+                 }
+-            } catch (basic_filesystem_error<path> & e)
++            } catch (filesystem_error & e)
+             {
+                 // directory listing cannot be done, assume single file object
+                 if (!existsFile((MODEL_PATH + "/" + cur_full_name + ".xml").c_str())) continue;
+@@ -80,7 +80,7 @@
+              it != directory_iterator();
+              ++it)
+         {
+-            std::string name = it->path().leaf();
++            std::string name = it->path().leaf().string();
+             if (name.rfind(".xml") == name.length()-4)
+             {
+                 name = name.substr(0,name.length()-4);
+@@ -111,7 +111,7 @@
+             }
+             cur_name = cur_name.substr(0, sep_pos);  
+         }
+-    } catch (basic_filesystem_error<path> & e)
++    } catch (filesystem_error & e)
+     {
+         s_log << Log::warning
+               << "GameLogicServer::getObjectPartNames("
+--- ./code/bluebeard/src/Paths.cpp	2011-11-17 16:09:00.964262697 +0100
++++ ../../v2.0/./code/bluebeard/src/Paths.cpp	2011-11-17 15:22:09.679903707 +0100
+@@ -82,7 +82,7 @@
+     {
+         data_dir = base_dir / USER_DATA_SUBDIR;
+         create_directories(data_dir);
+-    } catch (basic_filesystem_error<path> & )
++    } catch (filesystem_error & )
+     {
+         Exception e("Could not create user data directory \"");
+         e << data_dir
+--- ./code/bluebeard/src/UserPreferences.cpp	2011-11-17 16:09:00.957596549 +0100
++++ ../../v2.0/./code/bluebeard/src/UserPreferences.cpp	2011-11-17 15:25:34.370634715 +0100
+@@ -61,7 +61,7 @@
+         try
+         {
+             copy_file(path(CONFIG_PATH) / USER_CONFIG_TEMPLATE_FILE, user_config_filepath);
+-        } catch(basic_filesystem_error<path> & be) {}
++        } catch(filesystem_error & be) {}
+ #else
+         remove(user_config_filepath);
+         copy_file(path(CONFIG_PATH) / USER_CONFIG_TEMPLATE_FILE, user_config_filepath);
+@@ -74,7 +74,7 @@
+ 
+         return user_config_filepath.string();
+         
+-    } catch (basic_filesystem_error<path> & be)
++    } catch (filesystem_error & be)
+     {
+         Exception e("Unable to save user preferences in ");
+         e << user_config_filepath << ".";
+@@ -100,7 +100,7 @@
+          user_config_filepath = path(getOrCreateUserDataDir()) / USER_CONFIG_FILE;
+ 
+          if (!exists(user_config_filepath)) throw Exception("Could not find user settings.");
+-    } catch (basic_filesystem_error<path> & be)
++    } catch (filesystem_error & be)
+     {
+         throw Exception("Could not find user settings.");
+     }
+--- ./code/bluebeard/src/PuppetMasterServer.cpp	2011-11-17 16:09:00.944264253 +0100
++++ ../../v2.0/./code/bluebeard/src/PuppetMasterServer.cpp	2011-11-17 14:59:07.510738210 +0100
+@@ -1052,7 +1052,7 @@
+              it != directory_iterator();
+              ++it)
+         {
+-            std::string name = it->path().leaf();        
++            std::string name = it->path().leaf().string();        
+             ret.push_back(name);
+         }
+ 
+@@ -1060,7 +1060,7 @@
+     
+         return ret;
+         
+-    } catch (basic_filesystem_error<path> & be)
++    } catch (filesystem_error & be)
+     {
+         return ret;
+     }
+--- ./code/tools/particleviewer/src/ParticleViewer.cpp	2011-11-17 16:08:51.781643995 +0100
++++ ../../v2.0/./code/tools/particleviewer/src/ParticleViewer.cpp	2011-11-17 15:47:01.487018110 +0100
+@@ -271,7 +271,7 @@
+          it != directory_iterator();
+          ++it)
+     {
+-        std::string name = it->path().leaf();
++        std::string name = it->path().leaf().string();
+         std::size_t p = name.rfind(".xml");
+         if (p != name.length()-4) continue;
+         
+--- ./code/tools/modelviewer/src/ModelViewer.cpp	2011-11-17 16:08:51.671652557 +0100
++++ ../../v2.0/./code/tools/modelviewer/src/ModelViewer.cpp	2011-11-17 15:49:55.670107212 +0100
+@@ -487,7 +487,7 @@
+     // strip model name to plain file name
+     boost::filesystem::path full_model_name;
+     full_model_name = args[0];
+-    current_model_name_ = full_model_name.leaf();
++    current_model_name_ = full_model_name.leaf().string();
+     current_model_name_ = current_model_name_.substr(0, current_model_name_.rfind(".bbm"));
+ 
+     current_model_ = ReaderWriterBbm::loadModel(current_model_name_);
+@@ -532,7 +532,7 @@
+          it != directory_iterator();
+          ++it)
+     {
+-        std::string name = it->path().leaf();
++        std::string name = it->path().leaf().string();
+         std::size_t p = name.rfind(".bbm");
+         if (p != name.length()-4) continue;
+         

@@ -1,0 +1,129 @@
+Only in src.orig/zero-ballistics-build/code/bluebeard: CMakeFiles
+Only in src.orig/zero-ballistics-build/code/bluebeard: cmake_install.cmake
+Only in src.orig/zero-ballistics-build/code/bluebeard: libbluebeard.a
+Only in src.orig/zero-ballistics-build/code/bluebeard: Makefile
+Only in src.orig/zero-ballistics-build/code: CMakeCache.txt
+Only in src.orig/zero-ballistics-build/code: CMakeFiles
+Only in src.orig/zero-ballistics-build/code: cmake_install.cmake
+diff -aur -x '*.o' -x '*.db' src/zero-ballistics-build/code/CMakeLists.txt src.orig/zero-ballistics-build/code/CMakeLists.txt
+--- src/zero-ballistics-build/code/CMakeLists.txt	2016-01-04 22:24:45.053655107 +0100
++++ src.orig/zero-ballistics-build/code/CMakeLists.txt	2016-01-04 15:54:16.132015890 +0100
+@@ -5,6 +5,7 @@
+ 
+ 
+ 
++set (CMAKE_CXX_FLAGS   "-fpermissive")
+ option(ENABLE_GCC_PROFILING   "Enable -pg profiling(release only)" OFF)
+ option(ENABLE_DEV_FEATURES    "Enable development features" ON)
+ option(NO_ZLIB                "zlib / gzstream dependence" OFF)
+Only in src.orig/zero-ballistics-build/code/games/tank: CMakeFiles
+Only in src.orig/zero-ballistics-build/code/games/tank: cmake_install.cmake
+diff -aur -x '*.o' -x '*.db' src/zero-ballistics-build/code/games/tank/CMakeLists.txt src.orig/zero-ballistics-build/code/games/tank/CMakeLists.txt
+--- src/zero-ballistics-build/code/games/tank/CMakeLists.txt	2016-01-04 22:24:45.050321797 +0100
++++ src.orig/zero-ballistics-build/code/games/tank/CMakeLists.txt	2016-01-04 22:07:28.937186596 +0100
+@@ -14,6 +14,12 @@
+ CEGUIBase CEGUIOpenGLRenderer
+ 
+ boost_filesystem
++
++boost_system
++
++pcre
++
++OpenThreads
+ )
+ 
+ 
+@@ -38,6 +44,8 @@
+ 
+ boost_filesystem
+ 
++boost_system
++
+ pcre
+ )
+ 
+Only in src.orig/zero-ballistics-build/code/games/tank: Makefile
+Only in src.orig/zero-ballistics-build/code/games/tank: server_ded
+Only in src.orig/zero-ballistics-build/code/games/tank: tank
+Only in src.orig/zero-ballistics-build/code/libs/bbmloader: CMakeFiles
+Only in src.orig/zero-ballistics-build/code/libs/bbmloader: cmake_install.cmake
+Only in src.orig/zero-ballistics-build/code/libs/bbmloader: libbbmloader.a
+Only in src.orig/zero-ballistics-build/code/libs/bbmloader: Makefile
+Only in src.orig/zero-ballistics-build/code/libs/gzstream: CMakeFiles
+Only in src.orig/zero-ballistics-build/code/libs/gzstream: cmake_install.cmake
+Only in src.orig/zero-ballistics-build/code/libs/gzstream: libgzstream.a
+Only in src.orig/zero-ballistics-build/code/libs/gzstream: Makefile
+Only in src.orig/zero-ballistics-build/code/libs/master: CMakeFiles
+Only in src.orig/zero-ballistics-build/code/libs/master: cmake_install.cmake
+Only in src.orig/zero-ballistics-build/code/libs/master: libmaster.a
+Only in src.orig/zero-ballistics-build/code/libs/master: Makefile
+Only in src.orig/zero-ballistics-build/code/libs/network: CMakeFiles
+Only in src.orig/zero-ballistics-build/code/libs/network: cmake_install.cmake
+Only in src.orig/zero-ballistics-build/code/libs/network: libnetwork.a
+Only in src.orig/zero-ballistics-build/code/libs/network: Makefile
+Only in src.orig/zero-ballistics-build/code/libs/ranking: CMakeFiles
+Only in src.orig/zero-ballistics-build/code/libs/ranking: cmake_install.cmake
+Only in src.orig/zero-ballistics-build/code/libs/ranking: libranking.a
+Only in src.orig/zero-ballistics-build/code/libs/ranking: Makefile
+Only in src.orig/zero-ballistics-build/code/libs/toolbox: CMakeFiles
+Only in src.orig/zero-ballistics-build/code/libs/toolbox: cmake_install.cmake
+Only in src.orig/zero-ballistics-build/code/libs/toolbox: libtoolbox.a
+Only in src.orig/zero-ballistics-build/code/libs/toolbox: Makefile
+diff -aur -x '*.o' -x '*.db' src/zero-ballistics-build/code/libs/toolbox/src/utility_Math.cpp src.orig/zero-ballistics-build/code/libs/toolbox/src/utility_Math.cpp
+--- src/zero-ballistics-build/code/libs/toolbox/src/utility_Math.cpp	2016-01-04 22:24:44.676990995 +0100
++++ src.orig/zero-ballistics-build/code/libs/toolbox/src/utility_Math.cpp	2016-01-04 15:57:11.643235754 +0100
+@@ -5,6 +5,7 @@
+ 
+ #include <iostream>
+ #include <fcntl.h>
++#include <unistd.h>
+ 
+ 
+ #include "Exception.h"
+Only in src.orig/zero-ballistics-build/code: Makefile
+Only in src.orig/zero-ballistics-build/code/tools/autopatcher_client: CMakeFiles
+Only in src.orig/zero-ballistics-build/code/tools/autopatcher_client: cmake_install.cmake
+Only in src.orig/zero-ballistics-build/code/tools/autopatcher_client: Makefile
+Only in src.orig/zero-ballistics-build/code/tools/autopatcher_server: CMakeFiles
+Only in src.orig/zero-ballistics-build/code/tools/autopatcher_server: cmake_install.cmake
+Only in src.orig/zero-ballistics-build/code/tools/autopatcher_server: Makefile
+Only in src.orig/zero-ballistics-build/code/tools/master_server: CMakeFiles
+Only in src.orig/zero-ballistics-build/code/tools/master_server: cmake_install.cmake
+Only in src.orig/zero-ballistics-build/code/tools/master_server: Makefile
+Only in src.orig/zero-ballistics-build/code/tools/modelviewer: CMakeFiles
+Only in src.orig/zero-ballistics-build/code/tools/modelviewer: cmake_install.cmake
+diff -aur -x '*.o' -x '*.db' src/zero-ballistics-build/code/tools/modelviewer/CMakeLists.txt src.orig/zero-ballistics-build/code/tools/modelviewer/CMakeLists.txt
+--- src/zero-ballistics-build/code/tools/modelviewer/CMakeLists.txt	2016-01-04 22:24:45.030321932 +0100
++++ src.orig/zero-ballistics-build/code/tools/modelviewer/CMakeLists.txt	2016-01-04 22:10:10.749453784 +0100
+@@ -11,6 +11,10 @@
+ CEGUIBase CEGUIOpenGLRenderer
+ 
+ boost_filesystem
++
++boost_system
++
++OpenThreads
+ )
+ 
+ if    (ENABLE_DEV_FEATURES)
+Only in src.orig/zero-ballistics-build/code/tools/modelviewer: Makefile
+Only in src.orig/zero-ballistics-build/code/tools/modelviewer: model_viewer
+Only in src.orig/zero-ballistics-build/code/tools/particleviewer: CMakeFiles
+Only in src.orig/zero-ballistics-build/code/tools/particleviewer: cmake_install.cmake
+diff -aur -x '*.o' -x '*.db' src/zero-ballistics-build/code/tools/particleviewer/CMakeLists.txt src.orig/zero-ballistics-build/code/tools/particleviewer/CMakeLists.txt
+--- src/zero-ballistics-build/code/tools/particleviewer/CMakeLists.txt	2016-01-04 22:24:45.043655175 +0100
++++ src.orig/zero-ballistics-build/code/tools/particleviewer/CMakeLists.txt	2016-01-04 22:10:56.019155572 +0100
+@@ -11,6 +11,10 @@
+ CEGUIBase CEGUIOpenGLRenderer
+ 
+ boost_filesystem
++
++boost_system
++
++OpenThreads
+ )
+ 
+ if    (ENABLE_DEV_FEATURES)
+Only in src.orig/zero-ballistics-build/code/tools/particleviewer: Makefile
+Only in src.orig/zero-ballistics-build/code/tools/particleviewer: particle_viewer

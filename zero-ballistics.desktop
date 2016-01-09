@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Exec=/usr/bin/zero-ballistics
+Icon=/opt/zero-ballistics/data/window_icon.bmp
+Type=Application
+Categories=Game;ActionGame;
+Name=Zero Ballistics
+Comment=First person shooter and tank combat game
+StartupNotify=true
+Terminal=false 
