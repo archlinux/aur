@@ -1,6 +1,6 @@
 pkgbase = rss2email-git
 	pkgdesc = A tool for delivering news from RSS feeds to your email program (development version)
-	pkgver = master
+	pkgver = latest
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/rss2email
 	arch = i686
