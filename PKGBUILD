@@ -2,7 +2,7 @@
 # Maintainer: Roberto Calabrese <robertocalabrese75@gmail.com>
 pkgname=hotshots
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Screenshot tool with some editing features."
 url="http://thehive.xbee.net"
 arch=('x86_64' 'i686')
