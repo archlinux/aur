@@ -1,0 +1,7 @@
+post_install() {
+    if [ $(systemctl is-active acpid) == "active" ]; then
+        echo ""
+        echo "[Note] acpid.service will need to be restarted for changes to take effect."
+        echo ""
+    fi
+}
