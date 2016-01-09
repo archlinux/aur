@@ -9,7 +9,7 @@
 pkgname=fwknop-git
 _pkgname=${pkgname/-git}
 pkgver=2.6.8.2341.29411de
-pkgrel=1
+pkgrel=2
 pkgdesc='FireWall KNock OPerator: Single Packet Authorization and Port Knocking'
 url='https://www.cipherdyne.org/fwknop'
 arch=('i686' 'x86_64')
@@ -43,7 +43,7 @@ build() {
 package() {
   cd ${pkgname}
   make DESTDIR="${pkgdir}" install
-  install -Dm 755 "${srcdir}/fwknopd.service" "${pkgdir}/usr/lib/systemd/system/fwknopd.service"
+  install -Dm 644 "${srcdir}/fwknopd.service" "${pkgdir}/usr/lib/systemd/system/fwknopd.service"
 }
 
 # vim: ts=2 sw=2 et:
