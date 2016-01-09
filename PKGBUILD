@@ -1,6 +1,6 @@
 # Maintainer: Nomorsad <nomorsad.poubelle@gmail.com>
 pkgname=ltwheelconf-git
-pkgver="1.2"
+pkgver="0.2.7"
 pkgrel=1
 pkgdesc="Setup your Logitech wheel under Linux"
 arch=('x86_64' 'i686')
