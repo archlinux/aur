@@ -2,7 +2,7 @@
 # Based on /var/abs/community/mythtv/PKGBUILD version 0.27.4
 
 pkgname=mythtv-git
-pkgver=v0.28.pre.r3051.gd03d51d
+pkgver=v0.28.pre.r3405.g362170e
 pkgrel=1
 pkgdesc='Free Open Source software digital video recorder (DVR) project'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('avahi' 'fftw' 'lame' 'libass' 'libavc1394' 'libcdio' 'libiec61883' 'li
          'libpulse' 'libva' 'libvpx' 'libxinerama' 'lirc-utils' 'mariadb-clients'
          'mysql-python' 'perl-dbd-mysql' 'perl-io-socket-inet6' 'perl-libwww'
          'perl-net-upnp' 'python2-lxml' 'qt5-webkit' 'qt5-script' 'taglib' 'urlgrabber' 'libx264'
-	 'exiv2')
+	 'exiv2' 'sdl' 'xvidcore')
 makedepends=('glew' 'libcec' 'libxml2' 'openssl' 'mesa' 'mesa-libgl' 'yasm' 'x264' 'gdb')
 optdepends=('glew: for GPU commercial flagging'
             'libcec: for consumer electronics control capabilities'
@@ -26,13 +26,14 @@ conflicts=('mythtv')
 replaces=('mythtv')
 
 install='mythtv.install'
+#source=('git+ssh://e5550/home/martyg/Git/mythtv#branch=master'
 source=('git://github.com/MythTV/mythtv.git#branch=master'
 	'mythbackend.service')
 sha256sums=('SKIP'
             'ecfde779ded8332cc62c86fac6b432b09cbf5d254135798287ada688af9a1302')
 
 pkgver() {
-  cd "$srcdir/mythtv"
+  cd "$srcdir/mythtv/mythtv"
   git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
@@ -41,13 +42,13 @@ prepare() {
   # Ref. https://wiki.archlinux.org/index.php/Python
 
   cd "$srcdir/mythtv/mythtv"
-  find bindings/python contrib -type f | xargs sed -i 's@^#!.*python$@#!/usr/bin/python2@'
+  find bindings/python programs/scripts contrib -type f | xargs sed -i 's@^#!.*python$@#!/usr/bin/python2@'
 }
 
 build() {
   cd "$srcdir/mythtv/mythtv"
   ./configure --compile-type=debug --prefix=/usr --disable-distcc \
-              --enable-libmp3lame --enable-libx264 --enable-libvpx --enable-libxvid --enable-sdl \
+              --enable-libmp3lame --enable-libx264 --enable-libxvid --enable-sdl \
               --python=python2 --perl-config-opts=INSTALLDIRS=vendor
   make
 }
