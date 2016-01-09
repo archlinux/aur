@@ -1,6 +1,6 @@
 pkgbase = qownnotes
 	pkgdesc = Open source notepad for that works together with the notes application of OwnCloud.
-	pkgver = 0.74
+	pkgver = 0.76
 	pkgrel = 1
 	url = http://www.qownnotes.org/
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = qownnotes
 	depends = gcc
 	depends = qt5-base
 	depends = qt5-svg
+	depends = qt5-script
 	source = https://github.com/pbek/QOwnNotes.git
 	source = qownnotes.desktop
 
