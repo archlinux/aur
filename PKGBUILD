@@ -5,8 +5,8 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=('opencv-contrib' 'opencv-samples-contrib')
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="Open Source Computer Vision Library including additional 'contrib' modules"
 arch=('i686' 'x86_64')
 license=('BSD')
@@ -20,8 +20,8 @@ optdepends=('eigen2'
 source=("${pkgname%-contrib}-$pkgver::https://github.com/Itseez/opencv/archive/$pkgver.zip"
         "${pkgname%-contrib}-$pkgver-contrib::https://github.com/Itseez/opencv_contrib/archive/$pkgver.zip")
 
-md5sums=('09004c275d8092cbdf5b61675cecd399'
-         'ad5fc005890f1bda8a2ac899b4209ab9')
+md5sums=('6082ee2124d4066581a7386972bfd52a'
+         '0d0bfeabe539542791b465ec1c7c90e6')
 
 _cmakeopts=('-D WITH_OPENCL=ON'
             '-D WITH_OPENGL=ON'
@@ -36,7 +36,10 @@ _cmakeopts=('-D WITH_OPENCL=ON'
             '-D INSTALL_PYTHON_EXAMPLES=ON'
             '-D CMAKE_BUILD_TYPE=Release'
             '-D CMAKE_INSTALL_PREFIX=/usr'
-            '-D CMAKE_SKIP_RPATH=ON')
+            '-D CMAKE_SKIP_RPATH=ON'
+# Settings for neural network module'
+            '-D BUILD_opencv_dnn=ON'
+            '-D BUILD_LIBPROTOBUF_FROM_SOURCES=ON')
 
 
 # SSE only available from Pentium 3 onwards (i686 is way older)
