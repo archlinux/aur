@@ -1,0 +1,42 @@
+--- FindFFmpeg.cmake.orig	2010-03-19 16:56:12.000000000 +0100
++++ FindFFmpeg.cmake	2016-01-03 13:51:28.000000000 +0100
+@@ -29,6 +29,7 @@
+ 
+     FIND_PATH(FFMPEG_${varname}_INCLUDE_DIRS lib${shortname}/${headername}
+         PATHS
++	/usr/include/ffmpeg-compat
+         ${FFMPEG_ROOT}/include
+         $ENV{FFMPEG_DIR}/include
+         ~/Library/Frameworks
+@@ -40,12 +41,13 @@
+         /opt/csw/include # Blastwave
+         /opt/include
+         /usr/freeware/include
+-        PATH_SUFFIXES ffmpeg
++        PATH_SUFFIXES ffmpeg-compat
+         DOC "Location of FFMPEG Headers"
+     )
+ 
+     FIND_PATH(FFMPEG_${varname}_INCLUDE_DIRS ${headername}
+         PATHS
++	/usr/include/ffmpeg-compat
+         ${FFMPEG_ROOT}/include
+         $ENV{FFMPEG_DIR}/include
+         ~/Library/Frameworks
+@@ -57,13 +59,15 @@
+         /opt/csw/include # Blastwave
+         /opt/include
+         /usr/freeware/include
+-        PATH_SUFFIXES ffmpeg
++        PATH_SUFFIXES ffmpeg-compat
+         DOC "Location of FFMPEG Headers"
+     )
+ 
+     FIND_LIBRARY(FFMPEG_${varname}_LIBRARIES
+         NAMES ${shortname}
++	NO_DEFAULT_PATH
+         PATHS
++	/usr/lib/ffmpeg-compat
+         ${FFMPEG_ROOT}/lib
+         $ENV{FFMPEG_DIR}/lib
+         ~/Library/Frameworks

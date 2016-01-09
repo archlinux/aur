@@ -1,0 +1,39 @@
+--- OpenSceneGraph-2.8.5/src/osgPlugins/ffmpeg/FFmpegDecoder.cpp	2010-03-19 16:56:12.000000000 +0100
++++ OpenSceneGraph-2.8.5-new/src/osgPlugins/ffmpeg/FFmpegDecoder.cpp	2011-11-22 18:01:13.000000000 +0100
+@@ -84,13 +84,12 @@
+                 switch (error)
+                 {
+                     //case AVERROR_UNKNOWN: error_str = "AVERROR_UNKNOWN"; break;   // same value as AVERROR_INVALIDDATA
+-                    case AVERROR_IO: error_str = "AVERROR_IO"; break;
+-                    case AVERROR_NUMEXPECTED: error_str = "AVERROR_NUMEXPECTED"; break;
++                    case AVERROR(EIO): error_str = "AVERROR_IO"; break;
++                    case AVERROR(EINVAL): error_str = "AVERROR_NUMEXPECTED"; break;
+                     case AVERROR_INVALIDDATA: error_str = "AVERROR_INVALIDDATA"; break;
+-                    case AVERROR_NOMEM: error_str = "AVERROR_NOMEM"; break;
+-                    case AVERROR_NOFMT: error_str = "AVERROR_NOFMT"; break;
+-                    case AVERROR_NOTSUPP: error_str = "AVERROR_NOTSUPP"; break;
+-                    case AVERROR_NOENT: error_str = "AVERROR_NOENT"; break;
++                    case AVERROR(ENOMEM): error_str = "AVERROR_NOMEM"; break;
++                    case AVERROR(ENOSYS): error_str = "AVERROR_NOTSUPP"; break;
++                    case AVERROR(ENOENT): error_str = "AVERROR_NOENT"; break;
+                     case AVERROR_PATCHWELCOME: error_str = "AVERROR_PATCHWELCOME"; break;
+                     default: error_str = "Unknown error"; break;
+                 }
+@@ -217,7 +216,7 @@
+ {
+     for (unsigned int i = 0; i < m_format_context->nb_streams; ++i)
+     {
+-        if (m_format_context->streams[i]->codec->codec_type == CODEC_TYPE_AUDIO)
++        if (m_format_context->streams[i]->codec->codec_type == AVMEDIA_TYPE_AUDIO)
+         {
+             m_audio_stream = m_format_context->streams[i];
+             m_audio_index = i;
+@@ -235,7 +234,7 @@
+ {
+     for (unsigned int i = 0; i < m_format_context->nb_streams; ++i)
+     {
+-        if (m_format_context->streams[i]->codec->codec_type == CODEC_TYPE_VIDEO)
++        if (m_format_context->streams[i]->codec->codec_type == AVMEDIA_TYPE_VIDEO)
+         {
+             m_video_stream = m_format_context->streams[i];
+             m_video_index = i;

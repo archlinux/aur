@@ -1,0 +1,25 @@
+--- FindGIFLIB.cmake.orig	2008-01-04 21:00:18.000000000 +0100
++++ FindGIFLIB.cmake	2016-01-02 23:49:16.000000000 +0100
+@@ -17,12 +17,14 @@
+ 
+ FIND_PATH(GIFLIB_INCLUDE_DIR gif_lib.h
+   PATHS ${CMAKE_PREFIX_PATH} # Unofficial: We are proposing this.
++  /usr/include/giflib4
+   NO_DEFAULT_PATH
+   PATH_SUFFIXES include
+ )
+ 
+ FIND_PATH(GIFLIB_INCLUDE_DIR gif_lib.h
+   PATHS
++  /usr/include/giflib4
+   ~/Library/Frameworks
+   /Library/Frameworks
+   /usr/local/include
+@@ -38,6 +40,7 @@
+ FIND_LIBRARY(GIFLIB_LIBRARY 
+   NAMES gif ungif libgif libungif
+   PATHS
++  /usr/lib/giflib4
+   $ENV{GIFLIB_DIR}
+   NO_DEFAULT_PATH
+   PATH_SUFFIXES lib64 lib

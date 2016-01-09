@@ -1,0 +1,25 @@
+--- FindGDAL.cmake.orig	2008-11-26 13:07:03.000000000 +0100
++++ FindGDAL.cmake	2016-01-03 12:33:31.000000000 +0100
+@@ -28,6 +28,7 @@
+ 
+ FIND_PATH(GDAL_INCLUDE_DIR gdal.h
+     PATHS ${CMAKE_PREFIX_PATH} # Unofficial: We are proposing this.
++    /usr/include/gdal1
+     NO_DEFAULT_PATH
+     PATH_SUFFIXES include
+ )
+@@ -66,12 +67,14 @@
+ FIND_LIBRARY(GDAL_LIBRARY 
+   NAMES gdal gdal_i gdal1.5.0 gdal1.4.0 gdal1.3.2 GDAL
+   PATHS ${CMAKE_PREFIX_PATH} # Unofficial: We are proposing this.
++  /usr/lib/gdal1
+     NO_DEFAULT_PATH
+     PATH_SUFFIXES lib64 lib
+ )
+ FIND_LIBRARY(GDAL_LIBRARY 
+   NAMES gdal gdal_i gdal1.5.0 gdal1.4.0 gdal1.3.2 GDAL
+   PATHS
++    /usr/lib/gdal1
+     ~/Library/Frameworks
+     /Library/Frameworks
+     /usr/local
