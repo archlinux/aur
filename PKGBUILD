@@ -2,7 +2,7 @@
 
 pkgname=perl6-uri-encode
 pkgver=0.05
-pkgrel=1
+pkgrel=2
 pkgdesc="Encode and decode URIs according to RFC 3986"
 arch=('any')
 depends=('perl6')
@@ -11,6 +11,7 @@ makedepends=('alacryd' 'git')
 groups=('perl6')
 url="https://github.com/dnmfarrell/URI-Encode"
 license=('BSD')
+options=('!purge')
 source=($pkgname-$pkgver::git+https://github.com/dnmfarrell/URI-Encode)
 sha256sums=('SKIP')
 
