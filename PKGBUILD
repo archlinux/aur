@@ -3,15 +3,17 @@
 
 pkgname=('zarafa-webapp'
 	 'zarafa-webapp-plugins')
+groups=('zarafa')
 pkgver=2.1.1
 _pkgrel=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc=('WebApp for Zarafa')
 arch=('any')
 url=('http://www.zarafa.com/')
 license=('AGPL3')
 install=('install')
-depends=('php')
+depends=('php<7'
+	 'php-fpm<7')
 makedepends=('apache-ant'
 	     'gettext')
 	
