@@ -2,7 +2,7 @@
 
 pkgname=perl6-color
 pkgver=1.001001
-pkgrel=1
+pkgrel=2
 pkgdesc="Format conversion, manipulation, and math operations on colours"
 arch=('any')
 depends=('perl6')
@@ -11,6 +11,7 @@ makedepends=('alacryd' 'git')
 groups=('perl6')
 url="https://github.com/zoffixznet/perl6-Color"
 license=('PerlArtistic')
+options=('!purge')
 source=($pkgname-$pkgver::git+https://github.com/zoffixznet/perl6-Color)
 sha256sums=('SKIP')
 
