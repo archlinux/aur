@@ -1,9 +1,10 @@
 # Maintainer: MartiMcFly martimcfly@autorisation.de
 
 pkgname=('zarafa-webaccess-mdm')
+groups=('zarafa')
 _pkgname=('mdm')
 pkgver=2.1
-pkgrel=2
+pkgrel=3
 pkgdesc=('Mobile Device Management plugin for Zarafa Webaccess')
 arch=('any')
 url=('https://community.zarafa.com/mod/community_plugins/download.php?release_guid=9498')
@@ -13,7 +14,8 @@ source=('mdm2.zip::https://community.zarafa.com/mod/community_plugins/download.p
 license=('AGPL3')
 depends=('zarafa-webaccess'
 	 'z-push'
-	 'php')
+	 'php<7'
+	 'php-fpm<7')
 md5sums=('1de30b0292198e25f07c4ea9159901bf'
          'de837fc5ad2e8f2d70df5037f2a0a107'
          '88b10c74bc6e7194c52e282a336e1ac7')
