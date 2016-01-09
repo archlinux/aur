@@ -1,0 +1,18 @@
+pkgbase = python-pyds9
+	pkgdesc = A Python Connection to DS9 via XPA
+	pkgver = 1.8
+	pkgrel = 1
+	url = http://hea-www.harvard.edu/RD/ds9/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = python
+	makedepends = python-distribute
+	makedepends = libxt
+	depends = python
+	optdepends = ds9-bin: astronomical data visualization application
+	source = https://github.com/ericmandel/pyds9/archive/v1.8.tar.gz
+	sha1sums = 59904d9623dd0f121b815a5cb9253cb94045978d
+
+pkgname = python-pyds9
+
