@@ -1,0 +1,18 @@
+post_install() {
+    xdg-icon-resource install --context mimetypes --size 48 /usr/share/fidocadj/fidocadj-file.png x-application-fidocadj
+	xdg-mime install /usr/share/fidocadj/fidocadj-mime.xml
+	update-mime-database /usr/share/mime &> /dev/null
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    xdg-mime uninstall /usr/share/fidocadj/fidocadj-mime.xml
+    xdg-icon-resource uninstall --context mimetypes --size 48 /usr/share/fidocadj/fidocadj-file.png x-application-fidocadj
+    update-mime-database /usr/share/mime &> /dev/null
+}
+
+
+
