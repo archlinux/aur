@@ -19,7 +19,7 @@
 pkgbase=linux-w110er
 _srcname=linux-4.3
 pkgver=4.3.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -35,7 +35,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'config.w110er'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch')
+        'change-default-console-loglevel.patch'
+        "0001-disabling-primary-plane-in-the-noatomic-case.patch")
 
 md5sums=('58b35794eee3b6d52ce7be39357801e7'
          'SKIP'
@@ -44,7 +45,8 @@ md5sums=('58b35794eee3b6d52ce7be39357801e7'
          '2bb07837febe3baaced4c1c0afb0507c'
          'c320955ab7d7a76f509cb24b1b55229d'
          'eb14dcfd80c00852ef81ded6e826826a'
-         'df7fceae6ee5d7e7be7b60ecd7f6bb35')
+         'df7fceae6ee5d7e7be7b60ecd7f6bb35'
+         'e4c5760bfd6da1f1052acd3f468917e8')
 
 
 validpgpkeys=(
@@ -68,6 +70,10 @@ prepare() {
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
+
+  # fix #46968
+  # hangs on older intel hardware
+  patch -Np1 -i "${srcdir}/0001-disabling-primary-plane-in-the-noatomic-case.patch"
 
   #CPU OPTIMIZATIONS
   patch -Np1 -i "${srcdir}/enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
