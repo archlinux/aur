@@ -2,10 +2,10 @@
 # Contributor: Johannes Dewender   arch at JonnyJD dot net
 _pkgname=isrcsubmit
 pkgname=$_pkgname-git
-pkgver=2.0.0.beta.5.42.g30437eb
+pkgver=2.0.1.r6.g0feb421
 pkgver(){
   cd "$srcdir/$pkgname"
-  git describe --tags --long | sed 's/-/./g;s/^v//'
+  git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 pkgrel=1
 pkgdesc="submit ISRCs from disc to MusicBrainz"
