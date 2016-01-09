@@ -15,10 +15,10 @@ source=("git+https://github.com/zfsonlinux/zfs.git#branch=zfs-0.6.5-release"
         "zfs-utils.bash-completion-r1"
         "zfs-utils.initcpio.install"
         "zfs-utils.initcpio.hook")
-md5sums=('SKIP'
-         '9ddb0c8a94861f929d0fa741fdc49950'
-         '9ef4841abb85dee611828cc7e6f5c6fe'
-         '62ba32c6853c315ff231c396cf8bfdbb')
+sha256sums=('SKIP'
+            'b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540'
+            '1e20071fa61a33874505dae0f2d71bb560f43e7faaea735cbde770ea10c133df'
+            '250f1232c464a81cc9c8b8ee05f21d752ebeebbc8614fae1c6d0bc600e816ac1')
 
 pkgver() {
     cd "${srcdir}/zfs"
