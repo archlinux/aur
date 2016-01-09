@@ -1,0 +1,20 @@
+pkgbase = rss2email-git
+	pkgdesc = A tool for delivering news from RSS feeds to your email program (development version)
+	pkgver = master
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/rss2email
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = python
+	depends = python-html2text
+	depends = python-feedparser
+	provides = rss2email
+	conflicts = rss2email
+	conflicts = rss2email-wking
+	source = git+git://github.com/wking/rss2email.git
+	md5sums = SKIP
+
+pkgname = rss2email-git
+
