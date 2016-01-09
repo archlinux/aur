@@ -2,7 +2,7 @@
 
 pkgname=perl6-net-irc-bot
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="An IRC bot framework"
 arch=('any')
 depends=('perl6')
@@ -11,6 +11,7 @@ makedepends=('alacryd' 'git')
 groups=('perl6')
 url="https://github.com/TiMBuS/Net--IRC"
 license=('MIT')
+options=('!purge')
 source=($pkgname-$pkgver::git+https://github.com/TiMBuS/Net--IRC)
 sha256sums=('SKIP')
 
