@@ -3,13 +3,13 @@
 pkgname=python2-pyds9
 _pkgname=pyds9
 pkgver=1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python Connection to DS9 via XPA"
 url="http://hea-www.harvard.edu/RD/ds9/"
 arch=('i686' 'x86_64')
 license=('GPL2')
 depends=('python2')
-makedepends=('python2' 'python2-distribute')
+makedepends=('python2' 'python2-distribute' 'libxt')
 optdepends=('ds9-bin: astronomical data visualization application')
 conflicts=()
 replaces=()
