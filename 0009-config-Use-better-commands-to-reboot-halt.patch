@@ -1,7 +1,7 @@
 From aacb57c775088b29f2331dba835c7d5ea2ec3343 Mon Sep 17 00:00:00 2001
 From: Olivier Brunel <jjk@jjacky.com>
 Date: Wed, 14 Oct 2015 18:49:11 +0200
-Subject: [PATCH 09/10] config: Use "better" commands to reboot/halt
+Subject: [PATCH 09/11] config: Use "better" commands to reboot/halt
 
 Those make more sense, also allows easier use with other init system
 that provides those commands. (I especially don't like `shutdown -h` to
@@ -28,5 +28,5 @@ index 9e00c4a..301f09f 100644
  #define XLSH_DATEFMT   "%Y-%m-%d"
  #define XLSH_TIMEFMT   "%H:%M"
 -- 
-2.6.1
+2.7.0
 

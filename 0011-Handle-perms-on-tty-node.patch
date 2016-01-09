@@ -1,0 +1,199 @@
+From 961e835bda6caebf70ee3835b2c166aeab10a258 Mon Sep 17 00:00:00 2001
+From: Olivier Brunel <jjk@jjacky.com>
+Date: Sat, 9 Jan 2016 17:47:57 +0100
+Subject: [PATCH 11/11] Handle perms on tty node
+
+Upon login we take note of current user/group/perms, to restore it on session
+close. Then, we set the user owner, and TTY_GROUP ("tty") as group. If the
+group doesn't exist we chmod 0600, else 0620.
+
+Signed-off-by: Olivier Brunel <jjk@jjacky.com>
+---
+ include/config.h |  2 ++
+ include/xlsh.h   |  4 +--
+ src/xlsh.c       | 74 +++++++++++++++++++++++++++++++++++++++++++-------------
+ 3 files changed, 61 insertions(+), 19 deletions(-)
+
+diff --git a/include/config.h b/include/config.h
+index 1844bd3..89aabc7 100644
+--- a/include/config.h
++++ b/include/config.h
+@@ -23,6 +23,8 @@
+ #define XLSH_TIMEFMT   "%H:%M"
+ #define XLSH_PAM_TTY   "login"
+ 
++#define TTY_GROUP       "tty"
++
+ #define XLSH_COMPLETION_LOGIN    0
+ #define XLSH_COMPLETION_SHOWROOT 1
+ #define XLSH_COMPLETION_MINUID   1000
+diff --git a/include/xlsh.h b/include/xlsh.h
+index 0a131db..9108db9 100644
+--- a/include/xlsh.h
++++ b/include/xlsh.h
+@@ -38,10 +38,10 @@ typedef struct xlsh_system_s {
+   struct utsname un;
+   char date[100];
+   char time[100];
+-  char ttyname[256];
+-  char ttypath[256];
+   char hostname[256];
+   char domainname[256];
++  char *ttyname;
++  char *ttypath;
+ } xlsh_system_t;
+ 
+ void xlsh_config_init(char* exec_arg);
+diff --git a/src/xlsh.c b/src/xlsh.c
+index 7a3ceb9..b97897c 100644
+--- a/src/xlsh.c
++++ b/src/xlsh.c
+@@ -18,6 +18,7 @@
+ #include <sys/types.h>
+ #include <sys/wait.h>
+ #include <sys/utsname.h>
++#include <sys/stat.h>
+ 
+ #include <readline/readline.h>
+ #include <readline/history.h>
+@@ -27,6 +28,8 @@
+ #include <libxlsh.h>
+ #include <xlsh.h>
+ 
++static char tty_name[PATH_MAX];
++
+ // Static data
+ static xlsh_config_item_t xlsh_config[] = {
+   { "XLSH_EXEC", XLSH_EXEC, NULL },
+@@ -237,7 +240,7 @@ int xlsh_session_open(const char* service, const char* user,
+ 
+   if(pam_start(service, user, &conv, &pam_handle) != PAM_SUCCESS)
+     return XLSH_ERROR;
+-  pam_set_item(pam_handle, PAM_TTY, ttyname(0));
++  pam_set_item(pam_handle, PAM_TTY, tty_name);
+ 
+   if(pam_authenticate(pam_handle, 0) != PAM_SUCCESS) {
+     pam_end(pam_handle, 0);
+@@ -341,8 +344,13 @@ int xlsh_session_exec(pam_handle_t* handle, const char* session, const char* arg
+ 
+ int xlsh_session_tty(const char* user, const char* shell)
+ {
++  int r = XLSH_EDONE;
+   pam_handle_t* pam_handle;
+   struct passwd* pwinfo;
++  struct group* gr;
++  struct stat st;
++  gid_t gid;
++  mode_t mode;
+   int waitflag;
+   
+   char user_shell[PATH_MAX];
+@@ -368,18 +376,52 @@ int xlsh_session_tty(const char* user, const char* shell)
+     return XLSH_ERROR;
+   }
+ 
++  if(stat(tty_name, &st) < 0) {
++      st.st_uid = 0;
++      st.st_gid = 0;
++      st.st_mode = S_IRUSR | S_IWUSR;
++  }
++
++  gr = getgrnam(TTY_GROUP);
++  if(gr) {
++      gid = gr->gr_gid;
++      mode = S_IRUSR | S_IWUSR | S_IWGRP;
++  } else {
++      gid = pwinfo->pw_gid;
++      mode = S_IRUSR | S_IWUSR;
++  }
++
++  if(chown(tty_name, pwinfo->pw_uid, gid) < 0) {
++    fprintf(stderr, "Unable to chown '%s': %s\n", tty_name, strerror(errno));
++    xlsh_session_close(pam_handle);
++    return XLSH_ERROR;
++  }
++  if(chmod(tty_name, mode) < 0) {
++    fprintf(stderr, "Unable to chmod '%s': %s\n", tty_name, strerror(errno));
++    r = XLSH_ERROR;
++    goto done;
++  }
++
+   sprintf(user_shell_name, "-%s", user_shell);
+   if(xlsh_session_exec(pam_handle, user_shell, user_shell_name) != XLSH_EOK) {
+     fprintf(stderr, "Cannot execute shell process: %s\n", user_shell);
+-    xlsh_session_close(pam_handle);
+-    return XLSH_ERROR;
++    r = XLSH_ERROR;
++    goto done;
+   }
+ 
+   waitflag = 0;
+   wait(&waitflag);
+-  
++
++done:
++  if(chown(tty_name, st.st_uid, st.st_gid) < 0)
++      fprintf(stderr, "Warning: Failed to restore chown '%s': %s\n",
++              tty_name, strerror(errno));
++  if(chmod(tty_name, st.st_mode) < 0)
++      fprintf(stderr, "Warning: Failed to restore chmod '%s': %s\n",
++              tty_name, strerror(errno));
++
+   xlsh_session_close(pam_handle);
+-  return XLSH_EDONE;
++  return r;
+ }
+ 
+ 
+@@ -552,23 +594,16 @@ int xlsh_sys_getinfo(xlsh_system_t* sysinfo)
+ {
+   struct tm *tminfo;
+   time_t timeval;
+-  
+-  char *tty_name;
+-  char  tty_path[PATH_MAX];
+-  
++
+   memset(sysinfo, 0, sizeof(xlsh_system_t));
+   uname(&sysinfo->un);
+   if(gethostname(sysinfo->hostname, sizeof(sysinfo->hostname)) != 0)
+     strcpy(sysinfo->hostname, "localhost");
+   if(getdomainname(sysinfo->domainname, sizeof(sysinfo->domainname)) != 0)
+     strcpy(sysinfo->domainname, "localdomain");
+-  if(ttyname_r(0, tty_path, sizeof(tty_path)) != 0)
+-    strcpy(tty_path, XLSH_XTTY);
+-  strncpy(sysinfo->ttypath, tty_path + 5, sizeof(sysinfo->ttypath));
+-  
+-  tty_name = tty_path + 5;
+-  strncpy(sysinfo->ttyname, tty_name, sizeof(sysinfo->ttyname));
+-  
++  sysinfo->ttypath = tty_name;
++  sysinfo->ttyname = tty_name + 5;
++
+   timeval = time(NULL);
+   tminfo  = localtime(&timeval);
+   if(tminfo) {
+@@ -614,7 +649,7 @@ int xlsh_sys_issue(const char* issuefile)
+       case 'v': value = sysinfo.un.version; break;
+       case 't': value = sysinfo.time; break;
+       case 'd': value = sysinfo.date; break;
+-      case 'l': value = sysinfo.ttypath; break;
++      case 'l': value = sysinfo.ttyname; break;
+       case 'n': value = sysinfo.hostname; break;
+       case 'o': value = sysinfo.domainname; break;
+       default:  value = NULL;
+@@ -649,6 +684,11 @@ int main(int argc, char** argv)
+     return EXIT_FAILURE;
+   }
+ 
++  if(ttyname_r(fileno(stdin), tty_name, sizeof(tty_name)) != 0) {
++    fprintf(stderr, "%s: Unable to get tty name\n", argv[0]);
++    return EXIT_FAILURE;
++  }
++
+   xlsh_config_init(opt_exec);
+   xlsh_sys_issue(xlsh_config[XLSH_ID_ISSUE].value);
+   
+-- 
+2.7.0
+

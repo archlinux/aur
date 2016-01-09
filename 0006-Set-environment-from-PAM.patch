@@ -1,7 +1,7 @@
 From bdfd5079433180aac28b68be796d52c5bfbd7c8c Mon Sep 17 00:00:00 2001
 From: Olivier Brunel <jjk@jjacky.com>
 Date: Sun, 16 Nov 2014 18:13:27 +0100
-Subject: [PATCH 06/10] Set environment from PAM
+Subject: [PATCH 06/11] Set environment from PAM
 
 Signed-off-by: Olivier Brunel <jjk@jjacky.com>
 ---
@@ -88,5 +88,5 @@ index e4fbf7c..3fc1711 100644
    }
    else if(proc_shell == -1)
 -- 
-2.6.1
+2.7.0
 

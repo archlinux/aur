@@ -1,7 +1,7 @@
 From b3f9bdb405acef29cefd4b3f3d02a1903ba80d09 Mon Sep 17 00:00:00 2001
 From: Olivier Brunel <jjk@jjacky.com>
 Date: Sun, 16 Nov 2014 18:09:28 +0100
-Subject: [PATCH 05/10] Don't block signals, as it caused issues
+Subject: [PATCH 05/11] Don't block signals, as it caused issues
 
 Blocking signals doesn't seem to be required (xlsh will be restarted
 automatically anyways, just as when using command exit (login doesn't
@@ -92,5 +92,5 @@ index ab20703..e4fbf7c 100644
    xlsh_config_init(opt_exec);
    xlsh_sys_issue(xlsh_config[XLSH_ID_ISSUE].value);
 -- 
-2.6.1
+2.7.0
 

@@ -1,7 +1,7 @@
 From 46d3104ffba1ffc66e085597c25475cd0ff0cb9c Mon Sep 17 00:00:00 2001
 From: Olivier Brunel <jjk@jjacky.com>
 Date: Sun, 16 Nov 2014 18:02:26 +0100
-Subject: [PATCH 03/10] config.h: Tweak prompt
+Subject: [PATCH 03/11] config.h: Tweak prompt
 
 Signed-off-by: Olivier Brunel <jjk@jjacky.com>
 ---
@@ -22,5 +22,5 @@ index ec20fc5..9e00c4a 100644
  #define XLSH_SHELLS    "/etc/shells"
  #define XLSH_ISSUE     "/etc/issue"
 -- 
-2.6.1
+2.7.0
 

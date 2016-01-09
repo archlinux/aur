@@ -1,7 +1,7 @@
 From fd7c3159988cb56e2cb703be23e8a4302331f338 Mon Sep 17 00:00:00 2001
 From: Olivier Brunel <jjk@jjacky.com>
 Date: Sat, 17 Oct 2015 12:53:10 +0200
-Subject: [PATCH 10/10] Replace command "shutdown" with "halt" & "poweroff"
+Subject: [PATCH 10/11] Replace command "shutdown" with "halt" & "poweroff"
 
 Signed-off-by: Olivier Brunel <jjk@jjacky.com>
 ---
@@ -105,5 +105,5 @@ index 3fc1711..7a3ceb9 100644
    xlsh_config_set(&xlsh_config[XLSH_ID_TIMEFMT], NULL);
    xlsh_config_set(&xlsh_config[XLSH_ID_DATEFMT], NULL);
 -- 
-2.6.1
+2.7.0
 
