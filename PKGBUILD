@@ -35,6 +35,9 @@ check() {
 }
 
 package() {
+  # https://github.com/JonnyJD/musicbrainz-isrcsubmit/issues/108 workaround
+  unset DISPLAY
+
   cd "$srcdir/$pkgname"
   python setup.py install --root="$pkgdir/" --optimize=1
   install -d "$pkgdir/usr/share/doc/$_pkgname"
