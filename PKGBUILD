@@ -3,7 +3,7 @@
 pkgname=sabre-zarafa
 groups=('zarafa')
 pkgver=0.23
-pkgrel=5
+pkgrel=6
 pkgdesc="provide a full CardDav backend for SabreDAV to connect with Zarafa groupware"
 arch=('any')
 url="https://github.com/1afa/sabre-zarafa"
@@ -70,7 +70,9 @@ package() {
     cd ${pkgdir}/usr/share/webapps/${pkgname}/
     cat ${srcdir}/${pkgname}.ini > /tmp/composer.ini
     echo >> /tmp/composer.ini
-    cat /usr/share/php-composer/php.ini >> /tmp/composer.ini
+    
+    echo "extension=phar.so" >> /tmp/composer.ini
+    echo "open_basedir=$(which composer):$(pwd):$(realpath ~/.composer)" >> /tmp/composer.ini
     $(which php) -nc/tmp/composer.ini  $(which composer) install
     rm /tmp/composer.ini
     
