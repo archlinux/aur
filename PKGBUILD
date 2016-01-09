@@ -11,7 +11,7 @@ _release=R6
 _sdkver=16.4.2.1
 pkgname=intel-media-sdk
 pkgver="$_year"."$_release"
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel Media SDK"
 arch=('x86_64')
 url="https://software.intel.com/en-us/intel-media-server-studio"
@@ -40,7 +40,8 @@ package() {
 	install -D -m644 include/* "${pkgdir}"/opt/intel/mediasdk/include
 	install -D -m777 lib/lin_x64/* "${pkgdir}"/opt/intel/mediasdk/lib/lin_x64
 	install -D -m777 lib64/* "${pkgdir}"/opt/intel/mediasdk/lib64
-	install -D -m777 plugins/* "${pkgdir}"/opt/intel/mediasdk/plugins
+	install -D -m777 plugins/*.so "${pkgdir}"/opt/intel/mediasdk/plugins
+	install -D -m644 plugins/plugins.cfg "${pkgdir}"/opt/intel/mediasdk/plugins/plugins.cfg
 	cp --recursive --force tools/* "${pkgdir}"/opt/intel/mediasdk/tools
 	
 	cd "${srcdir}/MediaServerStudioEssentials${_year}${_release}"
