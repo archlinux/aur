@@ -5,7 +5,7 @@
 
 pkgbase="spl-dkms-git"
 pkgname=("spl-dkms-git" "spl-utils-dkms-git")
-pkgver=0.6.5.3_r8_gce00a20
+pkgver=0.6.5.4_r0_g6e5e068
 pkgrel=1
 license=('GPL')
 makedepends=("git")
