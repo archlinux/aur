@@ -13,8 +13,8 @@ arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/spl.git#branch=spl-0.6.5-release"
         "spl-utils.hostid")
-md5sums=('SKIP'
-         'a54f0041a9e15b050f25c463f1db7449')
+sha256sums=('SKIP'
+            'ad95131bc0b799c0b1af477fb14fcf26a6a9f76079e48bf090acb7e8367bfd0e')
 
 pkgver() {
     cd "${srcdir}/spl"
