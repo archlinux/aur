@@ -107,7 +107,7 @@ build() {
   ${_bindir}/qtbase/bin/qmake CONFIG+=wayland-compositor
   make
 
-  # temp hack
+  # temp hack for Qt 5.6.0-beta
   cp -r "${srcdir}/qtquickcontrols2" "${_bindir}"
   cd "${_bindir}/qtquickcontrols2"
   ${_bindir}/qtbase/bin/qmake
@@ -122,7 +122,6 @@ package() {
   rm -Rf ${pkgdir}
   mkdir -p ${pkgdir}
 
-  # FIXME: installs both host/target bin/libs to pi path
   cd "${_bindir}"
   INSTALL_ROOT="$pkgdir" make install
 
@@ -130,7 +129,7 @@ package() {
   cd "${_bindir}/qtwayland"
   INSTALL_ROOT="$pkgdir" make install
 
-  # temp hack
+  # temp hack for Qt 5.6.0-beta
   cd "${_bindir}/qtquickcontrols2"
   INSTALL_ROOT="$pkgdir" make install
 
