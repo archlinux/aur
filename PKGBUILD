@@ -2,7 +2,7 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Carl George < arch at cgtx dot us >
 
-pkgbase=python-click
+pkgbase=python-click-5.1
 pkgname=("python-click-5.1" "python2-click-5.1")
 _realname=click
 pkgver=5.1
