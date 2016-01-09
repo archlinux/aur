@@ -1,0 +1,19 @@
+pkgbase = ktools-git
+	pkgdesc = Tools for modding of the game Don't Starve, by Klei Entertainment
+	pkgver = 97.8f31242
+	pkgrel = 1
+	url = https://github.com/nsimplex/ktools
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = imagemagick
+	optdepends = libzip: for zip support
+	provides = ktools
+	conflicts = ktools
+	source = git+https://github.com/nsimplex/ktools.git
+	sha256sums = SKIP
+
+pkgname = ktools-git
+
