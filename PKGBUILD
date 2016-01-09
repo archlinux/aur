@@ -2,7 +2,7 @@
 
 pkgname=zef
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Perl6 Module Management"
 arch=('any')
 depends=('perl6')
@@ -13,13 +13,6 @@ url="https://github.com/ugexe/zef"
 license=('PerlArtistic')
 source=($pkgname-$pkgver::git+https://github.com/ugexe/zef)
 sha256sums=('SKIP')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  msg2 'Fixing resources...'
-  sed -i 's,resources/config.json,config.json,' META6.json lib/Zef/Config.pm6
-}
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
