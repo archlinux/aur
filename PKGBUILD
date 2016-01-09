@@ -2,7 +2,7 @@
 
 pkgname=cw
 pkgver=1.0.16
-pkgrel=3
+pkgrel=4
 pkgdesc='A non-intrusive real-time ANSI color wrapper for common unix-based commands'
 url='http://cwrapper.sourceforge.net'
 arch=('i686' 'x86_64')
@@ -18,8 +18,8 @@ package() {
     mkdir -p "${pkgdir}/"{/usr/bin,/usr/lib/cw/etc,/usr/share/man/man1}
     make install
     for f in $(find "${pkgdir}"/usr/lib/cw -type f);do sed -i "s_${pkgdir}__" "$f";done
-    # use of cw with gcc is fundamentally broken
-    rm "${pkgdir}"/usr/lib/cw/gcc
+    # use of cw with gcc/g++ is fundamentally broken
+    rm "${pkgdir}"{/usr/lib/cw/gcc,/usr/lib/cw/g++}
 }
 
 # vim:set ts=2 sw=2
