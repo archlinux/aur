@@ -4,8 +4,8 @@
 # https://github.com/michaellass/AUR
 
 pkgname=kodi-platform-git
-pkgver=r36.33b6390
-pkgrel=2
+pkgver=r40.45d6ad1
+pkgrel=1
 pkgdesc='Kodi platform support library'
 arch=('armv7h' 'i686' 'x86_64')
 url="https://github.com/xbmc/kodi-platform"
@@ -14,7 +14,7 @@ makedepends=('cmake' 'git')
 depends=('kodi' 'libplatform')
 provides=('kodi-platform')
 conflicts=('kodi-platform')
-source=("${pkgname}::git+https://github.com/xbmc/kodi-platform.git")
+source=("${pkgname}::git+https://github.com/xbmc/kodi-platform.git#commit=45d6ad1")
 md5sums=('SKIP')
 
 pkgver() {
