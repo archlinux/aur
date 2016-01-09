@@ -12,12 +12,23 @@ conflicts=('fbterm')
 provides=('fbterm')
 optdepends=('libx86: accelerator with VESA compatible video card' 'gpm: mouse selection support')
 install="${pkgname}.install"
-source=('git+https://github.com/izmntuk/fbterm')
-sha1sums=(SKIP)
+source=(
+	'git+https://github.com/izmntuk/fbterm'
+	'fbterm-insertmode.patch'
+)
+sha1sums=(
+	'SKIP'
+	'11b95e4a90519156bc02dc0fa3b086f37820431b'
+)
 
 pkgver() {
 	cd "${srcdir}/fbterm"
 	git log -1 --format="%cd" --date=short | sed 's|-||g'
+}
+
+prepare() {
+	cd "${srcdir}/fbterm"
+	patch -Np1 -i "${srcdir}/fbterm-insertmode.patch"
 }
 
 build() {
