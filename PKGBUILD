@@ -66,6 +66,11 @@ build() {
   # -developer-build \
   # -separate-debug-info \
 
+  # patch
+  local _webenginefileoverride="${_srcdir}/qtwebengine/tools/qmake/mkspecs/features/functions.prf"
+  sed -i "s/linux-clang/linux*/" ${_webenginefileoverride}
+  # end patch
+
   ${_srcdir}/configure \
     -qreal float \
     -release \
