@@ -4,7 +4,7 @@ _pkgname2=spyder
 _pkgname3=spyder3
 pkgbase=$_pkgname2-git
 pkgname=($_pkgname2-git $_pkgname3-git)
-pkgver=3.0.0b1.r593.g50f5f28
+pkgver=3.0.0b2.r82.g66b92f8
 pkgrel=1
 arch=('any')
 url="https://github.com/spyder-ide/spyder"
@@ -43,7 +43,7 @@ package_spyder-git() {
            'python2-sphinx'
            'python2-pygments'
            'python2-pylint'
-           'python2-pep8 '
+           'python2-pep8'
            'python2-psutil'
            'python2-qtawesome'
 
