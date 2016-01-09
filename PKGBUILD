@@ -1,15 +1,17 @@
 # Maintainer: MartiMcFly martimcfly@autorisation.de
 
 pkgname=('zarafa-webaccess')
+groups=('zarafa')
 pkgver=7.2.1
 _pkgmajver=7.2
 _pkgrev=${pkgver}-51847
-pkgrel=2
+pkgrel=4
 pkgdesc="Open Source Groupware Solution"
 arch=('any')
 url="http://www.zarafa.com/"
 license=('AGPL3')
-depends=('php')
+depends=('php<7'
+	 'php-fpm<7')
 makedepends=('gettext')
 install=("install")
 source=("zarafa-${pkgver}.tar.gz::http://download.zarafa.com/community/final/${_pkgmajver}/${pkgver}-51838/sourcecode/zarafa-${_pkgrev}.tar.gz"
