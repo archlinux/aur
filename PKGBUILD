@@ -35,6 +35,11 @@ prepare() {
   #sed -i '1s/python/python2/' sedsed.py
 }
 
+check() {
+  cd "$srcdir/$pkgname"
+  ./test/run
+}
+
 package() {
   cd "$srcdir/$pkgname"
   mkdir -p $pkgdir/usr/{bin,share/{doc/$pkgname,licenses/$pkgname}}
