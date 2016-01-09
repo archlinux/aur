@@ -66,6 +66,9 @@ build() {
   # -developer-build \
   # -separate-debug-info \
 
+  # Chromium requires python2 to be the system python on your build host
+  # I literally symlink /usr/bin/python to /usr/bin/python2 on arch
+
   # patch
   local _webenginefileoverride="${_srcdir}/qtwebengine/tools/qmake/mkspecs/features/functions.prf"
   sed -i "s/linux-clang/linux*/" ${_webenginefileoverride}
