@@ -1,16 +1,18 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=panda
-pkgver=2015.12
+pkgver=0.1
 pkgrel=1
 pkgdesc="Perl6 module installer"
 arch=('any')
-depends=('perl6'
+depends=('curl'
+         'perl6'
          'perl6-file-find'
          'perl6-json-fast'
          'perl6-shell-command')
 checkdepends=('perl')
 makedepends=('alacryd' 'git')
+optdepends=('wget: download metadata files with wget')
 groups=('perl6')
 url="https://github.com/tadzik/panda"
 license=('MIT')
