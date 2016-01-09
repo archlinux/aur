@@ -2,19 +2,20 @@
 # Contributor: FzerorubigD <Fzerorubigd {AT} GMail {DOT} com>
 
 pkgname=gpaste-git
-pkgver=3.16.2.1+11+g7b41300
+pkgver=3.18.2+3+g233f664
 pkgrel=1
-pkgdesc="Clipboard management system with a GNOME Shell extension"
-url="https://github.com/Keruspe/GPaste"
-arch=(i686 x86_64)
+pkgdesc="Clipboard management system"
+url="http://www.imagination-land.org/tags/GPaste.html"
 license=(GPL3)
-depends=(gnome-shell)
-makedepends=(git intltool vala appdata-tools)
-install=gpaste-git.install
+arch=(i686 x86_64)
+depends=(gtk3)
+makedepends=(git intltool vala appstream-glib gobject-introspection gnome-shell gnome-control-center)
+optdepends=("wgetpaste: Upload clipboard contents")
 provides=("gpaste=$pkgver")
-
-source=("git://github.com/Keruspe/GPaste.git#branch=gpaste-3.16")
-md5sums=('SKIP')
+options=('!emptydirs')
+install=gpaste.install
+source=("git+https://github.com/Keruspe/GPaste#branch=gpaste-3.18")
+sha256sums=('SKIP')
 
 pkgver() {
   cd GPaste
@@ -28,8 +29,10 @@ prepare() {
 
 build() {
   cd GPaste
-  ./configure --prefix=/usr --libexecdir=/usr/lib --sysconfdir=/etc \
-    --enable-gnome-shell-extension --enable-systemd
+  ./configure --prefix=/usr \
+    --libexecdir=/usr/lib \
+    --sysconfdir=/etc \
+    --enable-vala
   make
 }
 
@@ -42,7 +45,8 @@ package() {
   cd GPaste
   make DESTDIR="$pkgdir" install
 
-  cd data/completions
-  install -Dm644 gpaste "$pkgdir/usr/share/bash-completion/completions/gpaste"
-  install -Dm644 _gpaste "$pkgdir/usr/share/zsh/site-functions/_gpaste"
+  install -Dm644 data/completions/gpaste-client \
+    "$pkgdir/usr/share/bash-completion/completions/gpaste-client"
+  install -Dm644 data/completions/_gpaste-client \
+    "$pkgdir/usr/share/zsh/site-functions/_gpaste-client"
 }
