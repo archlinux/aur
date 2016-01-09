@@ -1,0 +1,15 @@
+pkgbase = xpa
+	pkgdesc = A messaging system provides seamless communication between many kinds of Unix programs
+	pkgver = 2.1.17
+	pkgrel = 1
+	url = http://hea-www.harvard.edu/RD/xpa/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = libxt
+	depends = tcl
+	source = https://github.com/ericmandel/xpa/archive/v2.1.17.tar.gz
+	sha1sums = 9296bb5eae891f75b4fd7105f9142157cb99e238
+
+pkgname = xpa
+
