@@ -5,7 +5,7 @@
 
 _pkgbasename=ffmpeg
 pkgname=lib32-$_pkgbasename
-pkgver=2.8.3
+pkgver=2.8.4
 pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
@@ -31,16 +31,18 @@ provides=(
       'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
       'libswscale.so'
 )
-source=(http://ffmpeg.org/releases/$_pkgbasename-$pkgver.tar.bz2)
-sha256sums=('1bcf993a71839bb4a37eaa0c51daf315932b6dad6089f672294545cc51a5caf6')
+source=(http://ffmpeg.org/releases/$_pkgbasename-$pkgver.tar.bz2{,.asc})
+validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
+sha256sums=('83cc8136a7845546062a43cda9ae3cf0a02f43ef5e434d2f997f055231a75f8e'
+            'SKIP')
 
 build() {
-  cd $_pkgbasename-$pkgver
+  cd ${_pkgbasename}-${pkgver}
 
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
   ./configure \
-    --prefix=/usr \
+    --prefix='/usr' \
     --libdir=/usr/lib32 \
     --shlibdir=/usr/lib32 \
     --cc="gcc -m32" \
@@ -87,8 +89,9 @@ build() {
 }
 
 package() {
-  cd $_pkgbasename-$pkgver
-  make DESTDIR="$pkgdir" install
+  cd ${_pkgbasename}-${pkgver}
+
+  make DESTDIR="${pkgdir}" install
   rm -rf "$pkgdir"/usr/{include,share,bin}
 }
 
