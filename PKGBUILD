@@ -3,7 +3,7 @@
 
 pkgname=puppetserver
 pkgver=2.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Server automation framework and application"
 arch=('any')
 url="https://docs.puppetlabs.com/puppetserver/latest/services_master_puppetserver.html"
@@ -87,7 +87,7 @@ _defaultsdir=/etc/default
     install -d -m 0755 "${pkgdir}${_defaultsdir}"
     install -m 0644 ext/default "${pkgdir}${_defaultsdir}/puppetserver"
     install -d -m 0755 "${pkgdir}${_unitdir}"
-    install -m 0755 ext/redhat/puppetserver.service "${pkgdir}${_unitdir}/puppetserver.service"
+    install -m 0644 ext/redhat/puppetserver.service "${pkgdir}${_unitdir}/puppetserver.service"
     install -d "$pkgdir"/opt/puppetlabs/server/data/puppetserver/jruby-gems
     install -d -m 0755 "${pkgdir}${_confdir}/logrotate.d"
     install ext/puppetserver.logrotate.conf "${pkgdir}${_confdir}/logrotate.d/puppetserver"
