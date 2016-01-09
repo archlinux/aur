@@ -1,0 +1,43 @@
+--- src/command.C
++++ src/command.C
+@@ -3966,7 +3966,7 @@
+           case 38: // set fg color, ISO 8613-6
+             if (nargs > i + 2 && arg[i + 1] == 5)
+               {
+-                scr_color ((unsigned int) (minCOLOR + arg[i + 2]), Color_fg);
++                scr_color ((unsigned int) (((arg[i + 2] < 8) ? TOTAL_COLORS + 1 : minCOLOR) + arg[i + 2]), Color_fg);
+                 i += 2;
+               }
+             break;
+@@ -3987,7 +3987,7 @@
+           case 48: // set bg color, ISO 8613-6
+             if (nargs > i + 2 && arg[i + 1] == 5)
+               {
+-                scr_color ((unsigned int) (minCOLOR + arg[i + 2]), Color_bg);
++                scr_color ((unsigned int) (((arg[i + 2] < 8) ? TOTAL_COLORS + 1 : minCOLOR) + arg[i + 2]), Color_bg);
+                 i += 2;
+               }
+             break;
+--- src/rxvt.h
++++ src/rxvt.h
+@@ -1450,6 +1450,8 @@
+         && IN_RANGE_EXC (base, minCOLOR, minBrightCOLOR))
+       base += minBrightCOLOR - minCOLOR;
+ #endif
++    if (base > TOTAL_COLORS)
++      base -= TOTAL_COLORS + 1 - minCOLOR;
+     return base;
+   }
+ 
+--- src/screen.C
++++ src/screen.C
+@@ -616,7 +616,7 @@
+ void
+ rxvt_term::scr_color (unsigned int color, int fgbg) NOTHROW
+ {
+-  if (!IN_RANGE_INC (color, minCOLOR, maxTermCOLOR))
++  if (!IN_RANGE_INC (color, minCOLOR, maxTermCOLOR) && color <= TOTAL_COLORS)
+     color = fgbg;
+ 
+   if (fgbg == Color_fg)
+
