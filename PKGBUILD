@@ -1,7 +1,7 @@
 # Maintainer: FrozenCow <frozencow@gmail.com>
 
 pkgname=itch
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="The best way to play itch.io games."
 
@@ -15,7 +15,7 @@ options=('!strip')
 install="itch.install"
 
 source=("https://github.com/itchio/itch/archive/v${pkgver}.tar.gz")
-sha256sums=('3fc2b3fde5aae413ea33242ccf3b864832555579607fd17db93c7fa76380ad53')
+sha256sums=('95def5b7a23209c0a5695f40aeaa3e0b208a0a6009131c2f3995c5cf9613553e')
 
 [ "$CARCH" = "i686" ]   && _ELECTRON_ARCH=ia32
 [ "$CARCH" = "x86_64" ] && _ELECTRON_ARCH=x64
@@ -32,6 +32,7 @@ prepare() {
 build() {
   cd "$srcdir/itch-${pkgver}"
   release/prepare.sh
+  release/generate-itch-desktop.sh
 
   grunt -v "electron:linux-${_ELECTRON_ARCH}"
 }
