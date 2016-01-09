@@ -2,7 +2,7 @@
 # Contributor: David Manouchehri <manouchehri@riseup.net>
 
 pkgname=pam_u2f
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Universal 2nd Factor (U2F) PAM authentication module from Yubico"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('libu2f-host' 'libu2f-server')
 makedepends=('asciidoc')
 source=("https://developers.yubico.com/${pkgname/_/-}/Releases/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('fed38c26c2bec86d49dbe9046d5a34906396e97799ebb1f64f5354d7f0490b37')
+sha256sums=('71542e4568e6d2acaa50810a93c67297ba402f960da1ebb621413bd31f0732a1')
 
 build() {
 	cd ${pkgname}-${pkgver}/
