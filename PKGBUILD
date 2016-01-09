@@ -17,7 +17,7 @@ source=(stencyl
         stencyl.png
         LICENSE)
 md5sums=('e97ff31637ae4f223062269bfce3f8ab'
-         '3018ce0b02399aea78b9417bcc065f6e'
+         'fc7e89167715c5a6d4d520c405deec16'
          'c99ae55db267e86c0936e01662ee12ea'
          '986e231db4a39dd7fa59c93a7e06b7c2')
 
