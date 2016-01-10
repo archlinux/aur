@@ -1,0 +1,12 @@
+--- a/src/Platform/X11/PlatformMiscUtils.cpp	2007-07-03 15:30:16.000000000 +0200
++++ b/src/Platform/X11/PlatformMiscUtils.cpp	2016-01-10 19:28:13.647222781 +0100
+@@ -1237,7 +1237,8 @@
+ char *
+ br_dirname (const char *path)
+ {
+-	char *end, *result;
++	const char *end;
++	char *result;
+ 
+ 	if (path == (const char *) NULL)
+ 		return (char *) NULL;

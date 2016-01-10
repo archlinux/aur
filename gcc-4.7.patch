@@ -1,0 +1,11 @@
+--- a/src/Mushcore/MushcoreSingleton.h	2016-01-10 19:03:45.514348553 +0100
++++ b/src/Mushcore/MushcoreSingleton.h	2016-01-10 19:03:37.481127086 +0100
+@@ -83,7 +83,7 @@
+ inline void
+ MushcoreSingleton<SingletonType>::SingletonUncheckedNew(void)
+ {
+-    SingletonPtrSet(new SingletonType);
++    MushcoreSingleton::SingletonPtrSet(new SingletonType);
+ 
+ #ifdef MUSHCORE_SINGLETON_TESTING
+     cerr << "Created " << typeid(SingletonType).name() << " singleton " << endl;
