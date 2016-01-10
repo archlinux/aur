@@ -3,21 +3,19 @@
 
 pkgname=('backintime' 'backintime-cli')
 _pkgname="backintime"
-pkgver=1.1.8
-pkgrel=4
+pkgver=1.1.10
+pkgrel=1
 arch=('any')
 url="https://github.com/bit-team/backintime"
 license=('GPL')
 makedepends=('python')
-source=("https://github.com/bit-team/$_pkgname/archive/v$pkgver.tar.gz"
-"Fix_bug_473-AttributeError.patch")
-sha256sums=('d5475eddcbe9612eb8814cb811bee394ad140a560d28c4d20258f3a6078648ff'
-            '281b75fa6726e621b8ecabe8310b7e9e126848eb2215082df38fdf2cbdc52786')
+source=("https://github.com/bit-team/$_pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('e3aa1cdae80b076d404977589741e612053a86aaa2fc36927e231ec184bd523b')
 
-prepare() {
-	cd "$_pkgname-$pkgver/common"
-	patch -i "$srcdir/Fix_bug_473-AttributeError.patch"
-}
+#prepare() {
+#	cd "$_pkgname-$pkgver/common"
+#	patch -i "$srcdir/Fix_bug_473-AttributeError.patch"
+#}
 
 build() {
 	cd "$_pkgname-$pkgver/common"
@@ -27,6 +25,11 @@ build() {
 	cd "$srcdir/$_pkgname-$pkgver/qt4"
 	./configure --python
 	make
+}
+
+test() {
+	cd "$_pkgname-$pkgver/common"
+	make test
 }
 
 package_backintime-cli() {
