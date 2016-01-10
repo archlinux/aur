@@ -1,6 +1,6 @@
 # Maintainer: jjacky
 pkgname=anopa
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="init system/service manager built around s6 supervision suite"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('GPL3+')
 depends=('execline' 's6')
 makedepends=('skalibs')
 source=(http://jjacky.com/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('1f1891c063b5f4fc3a0c42d1e61411c2f6d6bfb64d3b84c4295acc78af85a72a')
+sha256sums=('02987f834b77c1b9c3f06ec2e9ed9b705c219d549c016231c65eaca18639ef5a')
 
 build() {
   cd "$pkgname-$pkgver"
