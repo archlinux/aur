@@ -7,7 +7,7 @@
 # vercheck-ubuntu: name=${pkgname}, repo=wily
 # vercheck-launchpad: name=${pkgname}
 
-pkgbase=libindicator
+pkgbase=libindicator3
 pkgname=(libindicator libindicator3)
 _actual_ver=12.10.2
 _extra_ver=+14.10.20140922
