@@ -3,7 +3,7 @@
 # Contributor: Jon Gjengset <jon@tsp.io>
 
 pkgname=gnuplot-git
-pkgver=5.1r20160107.5fc2bde
+pkgver=5.1r20160110.481a4cf
 pkgrel=1
 pkgdesc="A command-line driven interactive function and data plotting utility -- inofficial github fork"
 arch=('i686' 'x86_64')
