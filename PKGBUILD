@@ -13,7 +13,11 @@ md5sums=('8432c31df1cdf5042df022bb4e9c7a8b')
 
 package() {
   # install
-  mkdir -p "$pkgdir/opt/REW" "$pkgdir/usr/bin" "$pkgdir/usr/share/licenses/$pkgname" "$pkgdir/usr/share/doc/$pkgname" "$pkgdir/usr/share/applications/$pkgname"
+  mkdir -p "$pkgdir/opt/REW" \
+           "$pkgdir/usr/bin" \
+           "$pkgdir/usr/share/licenses/$pkgname" \
+           "$pkgdir/usr/share/doc/$pkgname" \
+           "$pkgdir/usr/share/applications/$pkgname"
   sh REW_linux_$_pkgver.sh -q -dir "$pkgdir/opt/REW"
   mv "$pkgdir/opt/REW/EULA.html" "$pkgdir/usr/share/licenses/$pkgname/EULA.html"
   mv "$pkgdir/opt/REW/readme.txt" "$pkgdir/usr/share/doc/$pkgname/readme"
