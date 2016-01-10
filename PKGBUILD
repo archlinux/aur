@@ -3,10 +3,10 @@ pkgbase=lyluatex-git
 pkgname=$pkgbase
 pkgver=r43.5dcb34b
 pkgrel=1
-pkgdesc="Command-line tool to typeset Gregorian chant"
-url=http://gregorio-project.github.io
-arch=("i686" "x86_64")
-license=("GPL")
+pkgdesc="Include lilypond scores in LuaLaTeX files."
+url=https://github.com/jperon/lyluatex
+arch=("all")
+license=("MIT")
 makedepends=("git")
 depends=("texlive-core" "texlive-fontsextra" "texlive-bin" "texlive-formatsextra" "texlive-latexextra" "lilypond")
 install=lyluatex.install
@@ -24,4 +24,5 @@ package() {
   mkdir -p $pkgdir/usr/share/texmf-dist/tex/luatex/lyluatex || return 1
   cp lyluatex.sty $pkgdir/usr/share/texmf-dist/tex/luatex/lyluatex || return 1
   cp lyluatex.lua $pkgdir/usr/share/texmf-dist/tex/luatex/lyluatex || return 1
+  cp LICENSE /usr/share/licenses/lyluatex-git || return 1
 }
