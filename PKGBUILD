@@ -3,13 +3,15 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=hop-git
-pkgver=3.0.0_rc9
+pkgver=3.0.0r1.37a5802
 _pkgver=${pkgver//_/-}
 pkgrel=1
 pkgdesc="Software Development Kit for the Web"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
 depends=('bigloo-devel')
+conflicts=('hop')
+provides=('hop')
 install=hop.install
 url='http://hop.inria.fr'
 source=("git+https://github.com/manuel-serrano/hop.git")
@@ -17,8 +19,8 @@ md5sums=('SKIP')
 options=('!makeflags')
 
 pkgver() {
-  cd "$_gitname"
-  echo $(git log -1 --format="%cd" --date=short | sed 's|-||g')
+  cd "$srcdir"/$_gitname
+  printf "%sr%s.%s" "3.0.0" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
