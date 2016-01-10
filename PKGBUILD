@@ -31,6 +31,7 @@ build() {
 package() {
   _ghcver=`pacman -Q ghc | cut -f2 -d\  | cut -f1 -d-`
   depends=("ghc=${_ghcver}")
+  depends=("ghc" "haskell-random" "haskell-split" "haskell-storable-complex" "haskell-vector" "lapack" "blas")
 
   cd ${srcdir}/hmatrix-${pkgver}
   install -Dm744 register.sh   ${pkgdir}/usr/share/haskell/${pkgname}/register.sh
