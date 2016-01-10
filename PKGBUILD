@@ -10,6 +10,7 @@ url="https://github.com/mzgnr/$_repo"
 license=('GPL-3.0+')
 arch=('any')
 depends=('gtk-engine-murrine')
+conflicts=('gtk-theme-numix-solarized')
 source="$pkgname-$pkgver.tar.gz::$url/archive/$_snapshot.tar.gz"
 md5sums=('ff5de064fcfe8f894afe4bc71f77523a')
 
