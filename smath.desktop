@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Exec=smath
+Comment=A mathematical program with many features and paper-like interface
+Terminal=false
+Name=SMath Studio
+Icon=/usr/share/pixmaps/smath.png
+Categories=Science;Education;
