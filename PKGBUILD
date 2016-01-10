@@ -1,12 +1,12 @@
 # Maintainer: corbie
 pkgname=twitch-curses
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal-based twitch.tv browser / livestreamer frontend"
 arch=('any')
 url="https://gitlab.com/corbie/twitch-curses"
 license=('WTFPL')
-depends=('python' 'python-pycurl' 'livestreamer')
+depends=('python' 'python-pycurl' 'python-urllib3' 'livestreamer')
 source=('https://gitlab.com/corbie/twitch-curses/raw/master/twitch-curses.py')
 sha256sums=('SKIP')
 
