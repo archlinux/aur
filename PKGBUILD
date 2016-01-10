@@ -5,7 +5,7 @@ pkgver=r43.5dcb34b
 pkgrel=1
 pkgdesc="Include lilypond scores in LuaLaTeX files."
 url=https://github.com/jperon/lyluatex
-arch=("all")
+arch=("any")
 license=("MIT")
 makedepends=("git")
 depends=("texlive-core" "texlive-fontsextra" "texlive-bin" "texlive-formatsextra" "texlive-latexextra" "lilypond")
@@ -24,5 +24,6 @@ package() {
   mkdir -p $pkgdir/usr/share/texmf-dist/tex/luatex/lyluatex || return 1
   cp lyluatex.sty $pkgdir/usr/share/texmf-dist/tex/luatex/lyluatex || return 1
   cp lyluatex.lua $pkgdir/usr/share/texmf-dist/tex/luatex/lyluatex || return 1
-  cp LICENSE /usr/share/licenses/lyluatex-git || return 1
+  mkdir -p $pkgdir/usr/share/licenses/lyluatex-git || return 1
+  cp LICENSE $pkgdir/usr/share/licenses/lyluatex-git || return 1
 }
