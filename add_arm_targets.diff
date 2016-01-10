@@ -1,0 +1,131 @@
+diff '--exclude=.hg' -uprN vtuner.apps/build/arm/Makefile vtuner.apps.arm/build/arm/Makefile
+--- vtuner.apps/build/arm/Makefile	2014-11-03 13:01:25.904147000 +0100
++++ vtuner.apps.arm/build/arm/Makefile	2014-11-03 12:58:28.079147000 +0100
+@@ -8,8 +8,9 @@ LDFLAGS=-lpthread -lrt
+ DRIVER=vtuner-dvb-3
+ STRIP=$(STRIP-$(ARCH))
+ 
+-all: ../../dist/$(ARCH)/vtunerd.$(ARCH) 
++all: ../../dist/$(ARCH)/vtunerd.$(ARCH) ../../dist/$(ARCH)/vtunerc.$(ARCH)
+ 	$(STRIP) ../../dist/$(ARCH)/vtunerd.$(ARCH) 
++	$(STRIP) ../../dist/$(ARCH)/vtunerc.$(ARCH) 
+ 	
+ -include ../../Make.rules
+ 	
+diff '--exclude=.hg' -uprN vtuner.apps/build/armv6h/Makefile vtuner.apps.arm/build/armv6h/Makefile
+--- vtuner.apps/build/armv6h/Makefile	1970-01-01 01:00:00.000000000 +0100
++++ vtuner.apps.arm/build/armv6h/Makefile	2014-11-03 21:27:25.164147000 +0100
+@@ -0,0 +1,19 @@
++ARCH=armv6h
++-include ../../Make.config
++
++CC=$(CC-$(ARCH))
++CXX=$(CXX-$(ARCH))
++CFLAGS=-fpic -DHAVE_DVB_API_VERSION=5
++LDFLAGS=-lpthread -lrt
++DRIVER=vtuner-dvb-3
++STRIP=$(STRIP-$(ARCH))
++
++all: ../../dist/$(ARCH)/vtunerd.$(ARCH) ../../dist/$(ARCH)/vtunerc.$(ARCH)
++	$(STRIP) ../../dist/$(ARCH)/vtunerd.$(ARCH) 
++	$(STRIP) ../../dist/$(ARCH)/vtunerc.$(ARCH) 
++	
++-include ../../Make.rules
++	
++vtuner-dvb-3.o: ../../vtuner-dvb-3.c ../../vtuner-dvb-3.h 
++	$(CC) $(CFLAGS) -c -o vtuner-dvb-3.o ../../vtuner-dvb-3.c
++
+diff '--exclude=.hg' -uprN vtuner.apps/build/armv7h/Makefile vtuner.apps.arm/build/armv7h/Makefile
+--- vtuner.apps/build/armv7h/Makefile	1970-01-01 01:00:00.000000000 +0100
++++ vtuner.apps.arm/build/armv7h/Makefile	2014-11-03 21:27:41.744147000 +0100
+@@ -0,0 +1,19 @@
++ARCH=armv7h
++-include ../../Make.config
++
++CC=$(CC-$(ARCH))
++CXX=$(CXX-$(ARCH))
++CFLAGS=-fpic -DHAVE_DVB_API_VERSION=5
++LDFLAGS=-lpthread -lrt
++DRIVER=vtuner-dvb-3
++STRIP=$(STRIP-$(ARCH))
++
++all: ../../dist/$(ARCH)/vtunerd.$(ARCH) ../../dist/$(ARCH)/vtunerc.$(ARCH)
++	$(STRIP) ../../dist/$(ARCH)/vtunerd.$(ARCH) 
++	$(STRIP) ../../dist/$(ARCH)/vtunerc.$(ARCH) 
++	
++-include ../../Make.rules
++	
++vtuner-dvb-3.o: ../../vtuner-dvb-3.c ../../vtuner-dvb-3.h 
++	$(CC) $(CFLAGS) -c -o vtuner-dvb-3.o ../../vtuner-dvb-3.c
++
+diff '--exclude=.hg' -uprN vtuner.apps/Make.config vtuner.apps.arm/Make.config
+--- vtuner.apps/Make.config	1970-01-01 01:00:00.000000000 +0100
++++ vtuner.apps.arm/Make.config	2014-11-09 23:49:00.096577193 +0100
+@@ -0,0 +1,20 @@
++# define the CC for target i686
++CC-i686=gcc
++INCLUDE-i686=
++
++# define the CC for target x86_64
++CC-x86_64=gcc
++INCLUDE-x86_64=
++
++# define the CC for target arm
++CC-arm=gcc
++STRIP-arm=strip
++INCLUDE-arm=
++
++CC-armv6h=gcc
++STRIP-armv6h=strip
++INCLUDE-armv6h=
++
++CC-armv7h=gcc
++STRIP-armv7h=strip
++INCLUDE-armv7h=
+diff '--exclude=.hg' -uprN vtuner.apps/Make.config.sample vtuner.apps.arm/Make.config.sample
+--- vtuner.apps/Make.config.sample	2014-11-03 13:01:25.899147000 +0100
++++ vtuner.apps.arm/Make.config.sample	2014-11-09 23:48:07.225347164 +0100
+@@ -28,3 +28,11 @@ CC-sh4=/opt/STM/STLinux-2.3/devkit/sh4/b
+ CC-arm=arm-none-linux-gnueabi-gcc
+ STRIP-arm=arm-none-linux-gnueabi-strip
+ INCLUDE-arm=-I/home/hop/nessie/2.6.22/include
++
++CC-armv6h=arm-none-linux-gnueabi-gcc
++STRIP-armv6h=arm-none-linux-gnueabi-strip
++INCLUDE-armv6h=
++
++CC-armv7h=arm-none-linux-gnueabi-gcc
++STRIP-armv7h=arm-none-linux-gnueabi-strip
++INCLUDE-armv7h=
+diff '--exclude=.hg' -uprN vtuner.apps/Makefile vtuner.apps.arm/Makefile
+--- vtuner.apps/Makefile	2014-11-03 13:01:25.904147000 +0100
++++ vtuner.apps.arm/Makefile	2014-11-03 21:29:43.024147000 +0100
+@@ -1,6 +1,6 @@
+ -include ../../Make.config
+ 
+-all: i686 x86_64 mipsel ppc db2 sh4 mipsel15 ipkg
++all: i686 x86_64 mipsel ppc db2 sh4 mipsel15 ipkg arm armv6h armv7h
+ 
+ i686:
+ 	$(MAKE) -C build/i686 all
+@@ -27,7 +27,13 @@ ipkg:   mipsel
+ 	$(MAKE) -C pkgs ipkg
+     	
+ arm:         
+-	$(MAKE) -C build/arm
++	$(MAKE) -C build/arm all
++
++armv6h:
++	$(MAKE) -C build/armv6h all
++
++armv7h:
++	$(MAKE) -C build/armv7h all
+ 
+ 	
+ clean:
+@@ -40,3 +46,5 @@ clean:
+ 	$(MAKE) -C build/mipsel15 clean
+ 	$(MAKE) -C pkgs clean
+ 	$(MAKE) -C build/arm clean
++	$(MAKE) -C build/armv6h clean
++	$(MAKE) -C build/armv7h clean

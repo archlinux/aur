@@ -1,0 +1,11 @@
+[Unit]
+Description=vtuner server
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/conf.d/vtunerd
+ExecStart=/usr/bin/vtunerd $SERVER_ARGS
+
+[Install]
+WantedBy=multi-user.target

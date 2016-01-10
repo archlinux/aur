@@ -1,0 +1,17 @@
+[Unit]
+Description=vtuner client
+After=network.target
+After=vtunerd.service
+After=oscam.service
+Before=vdr.service
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/conf.d/vtunerc%i
+ExecStartPre=/usr/lib/systemd/scripts/vtunerc-driver_kmod load
+ExecStart=/usr/bin/vtunerc -d/dev/vtunerc%i $CLIENT_ARGS
+ExecStopPost=/usr/bin/rm /run/vtunerc%i.pid
+ExecStopPost=/usr/lib/systemd/scripts/vtunerc-driver_kmod unload
+
+[Install]
+WantedBy=multi-user.target
