@@ -1,0 +1,14 @@
+pkgbase = python2-pylirc
+	pkgdesc = Python module to interact with remote controls via lirc.
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = http://sourceforge.net/projects/pylirc/
+	arch = any
+	license = LGPLv2
+	depends = python2
+	depends = lirc
+	source = http://downloads.sourceforge.net/project/pylirc/pylirc/0.0.5/pylirc-0.0.5.tar.gz
+	sha256sums = a78315e1ddf5af61cf91000a4b2f8e2df0841edd97b2596b2e0c5505bf8330a2
+
+pkgname = python2-pylirc
+
