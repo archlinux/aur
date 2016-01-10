@@ -9,15 +9,6 @@
                  i += 2;
                }
              break;
-@@ -3987,7 +3987,7 @@
-           case 48: // set bg color, ISO 8613-6
-             if (nargs > i + 2 && arg[i + 1] == 5)
-               {
--                scr_color ((unsigned int) (minCOLOR + arg[i + 2]), Color_bg);
-+                scr_color ((unsigned int) (((arg[i + 2] < 8) ? TOTAL_COLORS + 1 : minCOLOR) + arg[i + 2]), Color_bg);
-                 i += 2;
-               }
-             break;
 --- src/rxvt.h
 +++ src/rxvt.h
 @@ -1450,6 +1450,8 @@

@@ -3,7 +3,7 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-intensityfix
 pkgver=9.21
-pkgrel=1
+pkgrel=2
 pkgdesc='A unicode enabled rxvt-clone terminal emulator (urxvt), patched to avoid intense colors on 256 color escape codes'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -23,7 +23,7 @@ md5sums=('a9a06c608258c5fd247c3725d8f44582'
          'fec94dc986fa37ec380079d81de3e0b2'
          'fac55f0a8404c86dad3e702146762332'
          '8a5599197568c63720e282b9722a7990'
-         '9e10a3a8b2caebb9d9ff21a5610bb2bb')
+         '9e2ccfa07aafa6aeaf1dbdd005437af7')
 
 build() {
   cd $_pkgname-$pkgver
