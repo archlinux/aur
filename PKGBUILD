@@ -2,7 +2,7 @@
 
 pkgname=rstudio-desktop-git
 _gitname=rstudio
-pkgver=0.99.717
+pkgver=0.99.842
 _gwtver=2.7.0
 _ginver=1.5
 pkgrel=1
