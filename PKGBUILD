@@ -1,23 +1,26 @@
 # Maintainer: Pedro Gabriel (pedrogabriel@dcc.ufmg.br)
 # Special Thanks: FadeMind (fademind@gmail.com)
 
-pkgname=aic94xx-firmware
+_fwname=aic94xx
+pkgname=${_fwname}-firmware
 pkgver=30
-pkgrel=8
-_pkgrel=6
+pkgrel=9
 pkgdesc="Adaptec SAS 44300, 48300, 58300 Sequencer Firmware for AIC94xx driver"
-url="http://pkgs.org/centos-7/centos-x86_64/aic94xx-firmware-30-6.el7.noarch.rpm.html"
+url="https://www.adaptec.com/en-us/speed/scsi/linux/${_fwname}-seq-${pkgver}-1_tar_gz.php"
 license=('custom')
 arch=('any')
-source=("${pkgname}-${pkgver}.rpm::ftp://ftp.pbone.net/mirror/ftp.centos.org/7.1.1503/os/x86_64/Packages/${pkgname}-${pkgver}-${_pkgrel}.el7.noarch.rpm")
-sha256sums=('1db12b5979cf561cb030c9d695969e5c4d76e55c0e1f8dd4795b86eddb3d3669')
+source=("${_fwname}-seq-${pkgver}-1.tar.gz::http://download.adaptec.com/scsi/linux/${_fwname}-seq-${pkgver}-1.tar.gz"
+        "LICENSE.${_fwname}")
+sha256sums=('0608a919b95e65e8fe3c0cbc15f7e559716bda39a6efca863417a65f75e15478'
+            '6e0dd2831a66437e87659ed31384f11bdc7720bc539d2efa063fbb7f4ac0e46c')
 
 build() {
-  bsdtar xvf "${pkgname}-${pkgver}.rpm"
+    bsdtar xvf "${_fwname}_seq-${pkgver}-1.noarch.rpm"
+    chmod 644  "${srcdir}/lib/firmware/${_fwname}-seq.fw"
 }
 
 package() {
-  install -Dm644 ${srcdir}/lib/firmware/aic94xx-seq.fw ${pkgdir}/usr/lib/firmware/aic94xx-seq.fw
-  install -Dm644 ${srcdir}/usr/share/doc/${pkgname}-${pkgver}/LICENSE.aic94xx ${pkgdir}/usr/share/doc/${pkgname}/LICENSE.aic94xx
-  install -Dm644 ${srcdir}/usr/share/doc/${pkgname}-${pkgver}/README-94xx.pdf ${pkgdir}/usr/share/doc/${pkgname}/README-94xx.pdf
+    install -Dm644 ${srcdir}/lib/firmware/${_fwname}-seq.fw ${pkgdir}/usr/lib/firmware/${_fwname}-seq.fw
+    install -Dm644 ${srcdir}/LICENSE.${_fwname}             ${pkgdir}/usr/share/doc/${pkgname}/LICENSE.${_fwname}
+    install -Dm644 ${srcdir}/README-94xx.pdf                ${pkgdir}/usr/share/doc/${pkgname}/README-94xx.pdf
 }
