@@ -14,8 +14,8 @@
 
 pkgname=mpv-legacy-af-git
 _gitname=mpv
-pkgver="0.14.0+5"
-_gitchangerange=492e3de..3e90a5f
+pkgver="0.14.0+6"
+_gitchangerange=3e90a5f..459b40c
 pkgrel=2
 epoch=1
 pkgdesc='Video player based on MPlayer/mplayer2 (git version) including legacy audio filters'
