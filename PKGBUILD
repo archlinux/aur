@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=hop-git
-pkgver=3.0.0r1.37a5802
+pkgver=3.0.0r2.1ce954d
 _pkgver=${pkgver//_/-}
 pkgrel=1
 pkgdesc="Software Development Kit for the Web"
