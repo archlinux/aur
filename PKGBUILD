@@ -2,8 +2,8 @@
 
 pkgname=osslsigncode
 pkgver=1.7.1
-pkgrel=1
-pkgdesc="iftop does for network usage what top(1) does for CPU usage - pre-1.0 release"
+pkgrel=2
+pkgdesc="Platform-independent tool for Authenticode signing of PE/CAB/MSI files"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/osslsigncode/"
 license=('GPL')
