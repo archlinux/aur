@@ -21,6 +21,5 @@ build() {
 
 package() {
   cd "$_pkgname-$pkgver/src"
-  make install
-  install -Dm755 binary/QSyncThingTray "$pkgdir/usr/bin/$_pkgname"
+  install -Dm755 QSyncThingTray "$pkgdir/usr/bin/$_pkgname"
 }
