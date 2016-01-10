@@ -13,7 +13,7 @@ _log_path="/var/log/${_pkgname}"
 
 
 pkgname=nginx-mainline-boringssl
-pkgver=1.9.7
+pkgver=1.9.9
 pkgrel=2
 pkgdesc="lightweight HTTP server, statically linked against BoringSSL."
 arch=('i686' 'x86_64')
@@ -46,19 +46,20 @@ source=( "nginx.conf"
 		"nginx.service"
 		"http://nginx.org/download/nginx-$pkgver.tar.gz"
 		"openssl.patch"
+		"git+https://boringssl.googlesource.com/boringssl"
 )
 
 sha256sums=('8d8e314da10411b29157066ea313fc080a145d2075df0c99a1d500ffc7e8b7d1'
             'adcf6507abb2d4edbc50bd92f498ba297927eed0460d71633df94f79637aa786'
             '225228970d779e1403ba4314e3cd8d0d7d16f8c6d48d7a22f8384db040eb0bdf'
-            '794bd217affdfce1c6263d9199c3961f387a2df9d57dcb42876faaf41c1748d5'
-            '49b0e58fe5212bf058a416682fd958e586fa57987f6af3395c40b7a483a6d849')
+            'de66bb2b11c82533aa5cb5ccc27cbce736ab87c9f2c761e5237cda0b00068d73'
+            'SKIP'
+            'SKIP')
 
 build() {
 	local _src_dir="${srcdir}/${_pkgname}-${pkgver}"
 
-	export CFLAGS="-Wno-error"
-	git clone https://boringssl.googlesource.com/boringssl
+	export CFLAGS="-Wno-error -fPIC"
 	cd ${srcdir}/boringssl
 	mkdir build && cd build && cmake ../ && make && cd ${srcdir}/boringssl
 	mkdir -p .openssl/lib && cd .openssl && ln -s ../include . && cd ../
