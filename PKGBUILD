@@ -5,7 +5,7 @@
 # Maintainer: Marco Pompili <marcs.pompili@gmail.com>
 
 pkgname=v8
-pkgver=4.9.170
+pkgver=4.9.330
 pkgrel=1
 pkgdesc="Fast and modern Javascript engine used in Google Chrome."
 arch=("i686" "x86_64")
