@@ -1,6 +1,5 @@
 #Maintainer: Bhoppi Chaw <bhoppi#outlook,com>
 
-pkgbase=noto-fonts
 pkgname=noto-fonts-unhinted
 pkgver=20151224
 _commit=3f1dc1
