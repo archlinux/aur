@@ -3,7 +3,7 @@
 # Contributor: sonic414 <kevinjf at live dot in>
 		
 pkgname=delaycut-qt5-git
-pkgver=v1.4.3.7.19.g6a6ea9f
+pkgver=v1.4.3.7.1.0.g521bf6d
 pkgrel=1
 pkgdesc="Delaycut corrects delay and is also able to cut audio files coded ac3, dts, mpa and wav. It's also able to fix CRC errors in ac3 and mpa files. (GIT Version)"
 arch=('i686' 'x86_64')
