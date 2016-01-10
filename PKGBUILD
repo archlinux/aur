@@ -2,26 +2,24 @@
 # Contributor: Markus Heuser <markus.heuser@web.de>
 
 pkgname=samtools
-pkgver=1.2
-pkgrel=2
+pkgver=1.3
+pkgrel=1
 pkgdesc="tools for manipulating next-generation sequencing data"
 arch=('i686' 'x86_64')
 url="http://www.htslib.org/"
 license=('custom')
-depends=('perl' 'htslib')
+depends=('htslib' 'perl')
 optdepends=('luajit: needed for r2plot.lua vcfutils.lua'
             'python2: needed for varfilter.py')
 options=('staticlibs')
-source=($pkgname-$pkgver.tar.gz::https://github.com/samtools/samtools/archive/$pkgver.tar.gz
-        makefile-system-htslib.patch)
-md5sums=('2748356ef392c0694ca1142de37cf2aa'
-         '00f3b0b730f37cd7c8ff12376a9a0c6a')
+source=(https://github.com/samtools/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2)
+md5sums=('7ab98b5c988e254d9bb5d796bf9337c9')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
 
-  # patch Makefile to make it work with a system-provided htslib
-  patch -Np1 -i $srcdir/makefile-system-htslib.patch
+  # prevent shipped htslib to be used
+  rm -rf htslib-1.3
 
   sed -e 's|#!/usr/bin/env python|#!/usr/bin/env python2|' \
       -i misc/varfilter.py
@@ -30,19 +28,23 @@ prepare() {
 build() {
   cd $srcdir/$pkgname-$pkgver
 
-  make HTSDIR=/usr/include HTSLIB= BGZIP= LDLIBS=-lhts
+  ./configure \
+    --prefix=/usr \
+    --with-htslib=system
+
+  make
 }
 
 check() {
   cd $srcdir/$pkgname-$pkgver
 
-  make HTSDIR=/usr/include HTSLIB= BGZIP= LDLIBS=-lhts check
+  make check
 }
 
 package() {
   cd $srcdir/$pkgname-$pkgver
 
-  make HTSDIR=/usr/include HTSLIB= BGZIP= LDLIBS=-lhts DESTDIR=$pkgdir prefix=/usr install
+  make DESTDIR=$pkgdir install
 
   for file in misc/*.lua ; do
     install -Dm755 $file $pkgdir/usr/bin/$(basename $file)
