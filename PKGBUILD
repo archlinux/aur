@@ -1,5 +1,5 @@
 #
-# Maintainer: bjin <bjin1990 at gmail dot com>
+# Maintainer: bjin <bjin at ctrl-d dot org>
 # Maintainer: Iacopo Isimbaldi <isiachi@rhye.it>
 #
 
@@ -17,7 +17,6 @@ sha256sums=('a49ff1dd255215da18ea60bf76dc5b764ddc1aa40d86f4e842b63185357b1504'
 
 build() {
     cd "${srcdir}/spl-${pkgver}"
-    ./autogen.sh
 
     _at_enable=""
     [ "${CARCH}" == "i686"  ] && _at_enable="--enable-atomic-spinlocks"
@@ -45,7 +44,6 @@ package_spl-dkms() {
     tar -xzf "spl-${pkgver}.tar.gz" -C "${dkmsdir}" --strip-components 1
 
     cd "${dkmsdir}"
-    ./autogen.sh
     scripts/dkms.mkconf -v ${pkgver} -f dkms.conf -n spl
     chmod g-w,o-w -R .
 }
