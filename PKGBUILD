@@ -1,5 +1,5 @@
 pkgname=osvr-core-git
-pkgver=v0.6.r618.g95e0038
+pkgver=v0.6.r740.g0195020
 pkgrel=1
 pkgdesc="The core libraries, applications, and plugins of the OSVR software platform."
 arch=(i686 x86_64)
@@ -39,6 +39,8 @@ prepare() {
    cp "$srcdir/FindJsonCpp.cmake" "$srcdir/osvr-core/cmake/Findjsoncpp.cmake"
    sed -i '1 i\list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")' "$srcdir/osvr-core/CMakeLists.txt" #TODO CMAKE_MODULE_PATH
 
+#temporary fix for boost incompatibility
+sed -i "s/105900/106000/g" src/osvr/Common/IPCRingBuffer.cpp
 }
 
 build() {
