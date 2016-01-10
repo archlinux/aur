@@ -38,14 +38,14 @@ build() {
 
   export CFLAGS+=" -Wno-error=deprecated-declarations"
 
-  cd "${pkgbase}-${_actual_ver}${_extra_ver}"
+  cd "${pkgbase/3/}-${_actual_ver}${_extra_ver}"
 
   autoreconf -vfi
  
   [[ -d build-gtk2 ]] || mkdir build-gtk2
   pushd build-gtk2
 
-  ../configure --prefix=/usr --libexecdir=/usr/lib/${pkgbase} --with-gtk=2 --disable-static
+  ../configure --prefix=/usr --libexecdir=/usr/lib/${pkgbase/3/} --with-gtk=2 --disable-static
   make -j1
   popd
 
@@ -65,7 +65,7 @@ package_libindicator() {
   pkgdesc+=" (GTK+ 2 library)"
   depends=(cairo gtk2 glib2)
 
-  cd "${pkgbase}-${_actual_ver}${_extra_ver}/build-gtk2"
+  cd "${pkgbase/3/}-${_actual_ver}${_extra_ver}/build-gtk2"
 
   make -j1 DESTDIR="${pkgdir}/" install
 }
@@ -75,7 +75,7 @@ package_libindicator3() {
   depends=(gtk3 glib2 ido)
   options+=(!emptydirs)
 
-  cd "${pkgbase}-${_actual_ver}${_extra_ver}/build-gtk3"
+  cd "${pkgbase/3/}-${_actual_ver}${_extra_ver}/build-gtk3"
 
   make -j1 -C libindicator DESTDIR="${pkgdir}/" install
   make -j1 -C tools DESTDIR="${pkgdir}/" install
