@@ -1,5 +1,5 @@
-keepassx-git-*.src.tar.gz
-keepassx-git-*.pkg.tar.xz
+keepassx-http-*.src.tar.gz
+keepassx-http-*.pkg.tar.xz
 keepassx/
 src/
 pkg/
