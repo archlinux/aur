@@ -1,0 +1,18 @@
+# Maintainer: Anthony VanBerkum <anthonyvbop AT gmail DOT com>
+
+post_install() {
+  _tex_update
+}
+
+post_upgrade() {
+  _tex_update
+}
+
+post_remove() {
+  _tex_update
+}
+
+_tex_update() {
+  echo "Updating TeX database..."
+  mktexlsr
+}
