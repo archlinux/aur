@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Heretic 2
+GenericName=Action Adventure Game
+Comment=Developed by Raven Software
+Version=1.06c
+Exec=heretic2
+Icon=heretic2
+Terminal=false
+Type=Application
+Categories=Game;ActionGame;

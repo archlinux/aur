@@ -1,0 +1,4 @@
+post_install() {
+    echo ">> The manual, readmes, and soundtrack"
+    echo ">> (if available) are found on the CD."
+}
