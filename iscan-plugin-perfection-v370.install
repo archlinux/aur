@@ -1,0 +1,13 @@
+post_install() {
+  echo "Running iscan-registry to register V370 plugins and firmware with iscan"
+  iscan-registry --add interpreter usb 0x04b8 0x014a \
+    /usr/lib64/iscan/libiscan-plugin-perfection-v370 \
+    /usr/share/iscan/esfwdd.bin 
+}
+
+pre_remove() {
+  echo "Unregistering V370 plugins/firmware"
+  iscan-registry --remove interpreter usb 0x04b8 0x014a \
+    /usr/lib64/iscan/libiscan-plugin-perfection-v370 \
+    /usr/share/iscan/esfwdd.bin 
+}
