@@ -15,7 +15,7 @@ url="https://launchpad.net/unity-settings-daemon"
 license=(GPL)
 groups=(unity)
 depends=(gnome-settings-daemon-ubuntu gsettings-desktop-schemas-ubuntu fcitx
-         gperf hicolor-icon-theme ibus libappindicator3 libcanberra-pulse
+         gperf hicolor-icon-theme ibus libappindicator-gtk3 libcanberra-pulse
          libnotify librsvg libsystemd libwacom libxkbfile mesa pulseaudio
          pulseaudio-alsa upower)
 makedepends=(intltool xf86-input-wacom libxslt docbook-xsl python2)
