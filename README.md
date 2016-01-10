@@ -1,3 +1,8 @@
 # vim-aur
 
-PKGBUILD to construct vim fork from https://github.com/albfan/vim on arch linux
+aur package to provide backtrace debug feature to vim
+
+## Link
+
+- vim fork: https://github.com/albfan/vim
+- aur package: https://aur.archlinux.org/packages/vim-git2/
