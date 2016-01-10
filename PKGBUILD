@@ -4,7 +4,7 @@
 
 pkgname=libsnappy
 pkgver=1.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast compression/decompression library"
 arch=('i686' 'x86_64')
 makedepends=('autoconf' 'automake' 'git' 'libtool' 'm4' 'make' 'pkg-config')
@@ -50,5 +50,6 @@ package() {
 
   msg2 'Installing...'
   make DESTDIR="$pkgdir" install
-  ln -s "$pkgdir/usr/lib/pkgconfig/snappy.pc" "$pkgdir/usr/lib/pkgconfig/libsnappy.pc"
+  cp -dpr --no-preserve=ownership "$pkgdir/usr/lib/pkgconfig/snappy.pc" \
+    "$pkgdir/usr/lib/pkgconfig/libsnappy.pc"
 }
