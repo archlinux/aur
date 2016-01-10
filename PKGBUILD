@@ -1,15 +1,16 @@
-# Contributor: Tilo Brueckner  blueperil at gmx de
+# Maintainer: Nikita Sivakov <cryptomaniac.512@gmail.com>
+# Contributor: Nikita Sivakov <cryptomaniac.512@gmail.com>
 
 pkgname=kodi-addon-pvr-iptvsimple-git
 _gitname=pvr.iptvsimple
 pkgver=r74.23defeb
-pkgrel=1
+pkgrel=2
 pkgdesc='IPTV Simple PVR client addon for Kodi'
 arch=('i686' 'x86_64')
 url="https://github.com/kodi-pvr/${_gitname}"
 license=('GPL')
 groups=('kodi')
-makedepends=('cmake' 'git' 'kodi-platform')
+makedepends=('cmake' 'git' 'kodi-platform-git')
 provides=('kodi-addon-pvr-iptvsimple');
 conflicts=('kodi-addon-pvr-iptvsimple');
 depends=('kodi')
