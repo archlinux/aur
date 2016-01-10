@@ -1,8 +1,8 @@
 # Maintainer: Midov <midov at midov dot pl>
 pkgname=qownnotes
 _pkgname=QOwnNotes
-_tag="linux-b750-121623"
-pkgver=0.76
+_tag="linux-b753-085145"
+pkgver=0.77
 pkgrel=1
 pkgdesc="Open source notepad for that works together with the notes application of OwnCloud."
 url="http://www.qownnotes.org/"
