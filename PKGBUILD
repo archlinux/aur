@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=20151202.344d446
+pkgver=20160109.bd5a02d
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('i686' 'x86_64' )
@@ -43,7 +43,7 @@ depends=('desktop-file-utils'
          'libvdpau'
          # 'vapoursynth'
          )
-license=('GPL2')
+license=('GPL2' 'GPL3')
 url='http://mpv.io'
 makedepends=('git'
              'python-docutils'
@@ -102,7 +102,8 @@ prepare() {
         --enable-libmpv-shared \
         --enable-zsh-comp \
         --enable-libarchive \
-        --lua=52arch" > mpv_options
+        --lua=52arch \
+        --enable-gpl3" > mpv_options
 
   cd mpv
 
