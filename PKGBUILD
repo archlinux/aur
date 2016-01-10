@@ -5,24 +5,14 @@
 
 # Maintainer: Jeffrey E. Bedard <jefbed@gmail.com>
 pkgname=jbwm
-pkgver=1.38
+pkgver=1.39
 pkgrel=1
-epoch=
 pkgdesc="minimalist X11 window manager, based on evilwm"
 arch=('x86_64' 'x86')
 url="https://github.com/jefbed/jbwm"
 license=('MIT')
-groups=()
-depends=('libxau' 'libx11')
-makedepends=()
-checkdepends=()
-optdepends=()
-options=()
-install=
-changelog=
+depends=('libxau' 'libx11' 'pkg-config' 'libxft' 'libxext')
 source=( "https://github.com/jefbed/jbwm/archive/$pkgver.tar.gz" )
-noextract=()
-validpgpkeys=()
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -36,4 +26,4 @@ package() {
 	mkdir -p $pkgdir/usr/bin
 	make DESTDIR="$pkgdir" install
 }
-md5sums=('b69a6b01a59420f120373e2f5b0e0a67')
+md5sums=('bed70db731b04c33dc7b0e8c2ee689a1')
