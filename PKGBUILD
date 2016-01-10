@@ -1,6 +1,6 @@
 # Maintainer: Graham Edgecombe <graham@grahamedgecombe.com>
 pkgname=openrct2-git
-pkgver=r5593.015c760
+pkgver=r5868.8997f2a
 pkgrel=1
 pkgdesc='Open source clone of RollerCoaster Tycoon 2'
 arch=('i686' 'x86_64')
@@ -18,24 +18,13 @@ provides=('openrct2')
 options=('!buildflags')
 install=openrct2.install
 source=("$pkgname"::'git+https://github.com/OpenRCT2/OpenRCT2.git#branch=develop'
-        'https://openrct.net/launcher/libs/orctlibs.zip'
         'openrct2.desktop')
 sha256sums=('SKIP'
-            '0a7b5ea46e9cb4b19000b69690eae0b75929752f7db192c78bd7ffb61d696835'
             'b916d4a9f56af82693ba21f43e09ababe9f132fd7c3b78efa1b4387ee1bc3a4d')
 
 pkgver() {
   cd "$srcdir/$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$srcdir/$pkgname"
-
-  # Copy local libraries into lib.
-  if [ ! -d lib ]; then
-    cp -r "$srcdir/local" lib
-  fi
 }
 
 build() {
