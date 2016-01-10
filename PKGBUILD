@@ -12,7 +12,7 @@
 _pkgname=zoneminder
 pkgname=zoneminder-git
 pkgver=1.29.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Capture, analyse, record and monitor video security cameras'
 arch=( i686 x86_64 mips64el arm armv7h )
 backup=( etc/zm.conf )
@@ -41,12 +41,14 @@ install=$_pkgname.install
      
 source=(
     git://github.com/$_pkgname/$_pkgname.git
+    git://github.com/FriendsOfCake/crud.git
     httpd-zoneminder.conf
     zoneminder.service
     zoneminder-tmpfile.conf
 )
 # Because the source is not static, skip Git checksum:
 sha256sums=('SKIP'
+            'SKIP'
             'ff7382b38ac07dadead0ad4d583e3dbcf8da4aaa06b76d048ee334f69f95db67'
             '043d77a995553c533d62f48db4b719d29cf6c7074f215d866130e97be57ed646'
             'cc8af737c3c07750fc71317c81999376e4bbb39da883780164a8747b3d7c95a7'
@@ -60,7 +62,10 @@ pkgver() {
 
 prepare () {
     cd $srcdir/$_pkgname
-    git submodule update --init --recursive
+    git submodule init
+    git config submodule.web/api/app/Plugin/Crud.url $srcdir/crud
+    git config submodule.web/api/app/Plugin/Crud.branch 3.0
+    git submodule update
 }
 
 build() {
