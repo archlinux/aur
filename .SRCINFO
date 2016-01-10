@@ -16,5 +16,5 @@ pkgbase = haskell-storable-complex
 	md5sums = d18a04e10647672c69b479604d97f17d
 
 pkgname = haskell-storable-complex
-	depends = ghc=
+	depends = ghc
 
