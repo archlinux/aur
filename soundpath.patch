@@ -1,0 +1,21 @@
+diff -Naur textroom-0.8.2.orig/application/src/textroom.cpp textroom-0.8.2.new/application/src/textroom.cpp
+--- textroom-0.8.2.orig/application/src/textroom.cpp	2016-01-10 12:58:37.105095175 +0100
++++ textroom-0.8.2.new/application/src/textroom.cpp	2016-01-10 13:01:16.240838473 +0100
+@@ -117,7 +117,7 @@
+ 	tmp.append("/sounds/keyenter.wav");
+ 	soundenter = Mix_LoadWAV(tmp.toAscii());
+ #else
+-	soundenter = Mix_LoadWAV("/usr/share/sounds/keyenter.wav");
++	soundenter = Mix_LoadWAV("/usr/share/sounds/textroom/keyenter.wav");
+ #endif
+ 	if(soundenter == NULL) {
+ 		printf("Unable to load WAV file: %s\n", Mix_GetError());
+@@ -130,7 +130,7 @@
+ 	tmp.append("/sounds/keyany.wav");
+ 	soundany = Mix_LoadWAV(tmp.toAscii());
+ #else
+-	soundany = Mix_LoadWAV("/usr/share/sounds/keyany.wav");
++	soundany = Mix_LoadWAV("/usr/share/sounds/textroom/keyany.wav");
+ #endif
+ 	if(soundany == NULL) {
+ 		printf("Unable to load WAV file: %s\n", Mix_GetError());

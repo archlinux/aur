@@ -1,0 +1,45 @@
+diff -Naur textroom-0.8.2.orig/application/Makefile textroom-0.8.2.new/application/Makefile
+--- textroom-0.8.2.orig/application/Makefile	2016-01-10 13:16:23.278892137 +0100
++++ textroom-0.8.2.new/application/Makefile	2016-01-10 13:21:07.900564053 +0100
+@@ -12,7 +12,7 @@
+ CXX           = g++
+ DEFINES       = -DQT_NO_DEBUG -DQT_SVG_LIB -DQT_XML_LIB -DQT_OPENGL_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_SHARED
+ CFLAGS        = -pipe -march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong -Wall -W -D_REENTRANT $(DEFINES)
+-CXXFLAGS      = -pipe -march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong -Wall -W -D_REENTRANT $(DEFINES)
++CXXFLAGS      = -std=c++11 -pipe -march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong -Wall -W -D_REENTRANT $(DEFINES)
+ INCPATH       = -I/usr/share/qt4/mkspecs/linux-g++ -I. -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtGui -I/usr/include/qt4/QtOpenGL -I/usr/include/qt4/QtXml -I/usr/include/qt4/QtSvg -I/usr/include/qt4 -I../library -I../library/qmodeladaptor -I../library/qdomutils -I../library/extra/creole -I../library/sxfile -Isrc/include -Isrc -I/home/haawda/paketierung/meine_Pakete/textroom/src/textroom-0.8.2/application/usr/include -I/home/haawda/paketierung/meine_Pakete/textroom/src/textroom-0.8.2/application/usr/include/hunspell -I/home/haawda/paketierung/meine_Pakete/textroom/src/textroom-0.8.2/application/usr/include/SDL -I. -Isrc -Isrc/include -I/usr/include -I/usr/include/hunspell -I/usr/include/libxml++-2.6 -I/usr/include/glibmm-2.4 -I/usr/lib/glibmm-2.4/include -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/lib/libxml++-2.6/include -I/usr/include/SDL -I/usr/X11R6/include -I../moc -I../uic
+ LINK          = g++
+ LFLAGS        = -Wl,-O1,--sort-common,--as-needed,-z,relro -Wl,-O1
+diff -Naur textroom-0.8.2.orig/application/application.pro textroom-0.8.2.new/application/application.pro
+--- textroom-0.8.2.orig/application/application.pro	2016-01-10 13:16:23.278892137 +0100
++++ textroom-0.8.2.new/application/application.pro	2016-01-10 13:23:09.196522133 +0100
+@@ -85,7 +85,7 @@
+     src/asciireporter.cpp
+ RESOURCES += resource/textroom.qrc \
+ 	resource/images/icons-app.qrc 
+-linux-g++ {
++unix {
+     CONFIG += release \
+         build_all
+     INSTALLS += data \
+@@ -98,7 +98,7 @@
+         icon
+     LIBS = -lSDL_mixer \
+ 	-lSDL \
+-        -lhunspell \
++        -lhunspell-1.3 \
+ 	-lglibmm-2.4 \
+ 	-lcurl \
+ 	-lxml++-2.6 \
+diff -Naur textroom-0.8.2.orig/library/Makefile textroom-0.8.2.new/library/Makefile
+--- textroom-0.8.2.orig/library/Makefile	2016-01-10 13:16:23.292225393 +0100
++++ textroom-0.8.2.new/library/Makefile	2016-01-10 13:21:34.353742878 +0100
+@@ -12,7 +12,7 @@
+ CXX           = g++
+ DEFINES       = -DWITH_GETUSER -DQT_NO_DEBUG -DQT_SVG_LIB -DQT_XML_LIB -DQT_OPENGL_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_SHARED
+ CFLAGS        = -pipe -march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong -fPIC -Wall -W -D_REENTRANT $(DEFINES)
+-CXXFLAGS      = -pipe -march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong -fPIC -Wall -W -D_REENTRANT $(DEFINES)
++CXXFLAGS      = -std=c++11 -pipe -march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong -fPIC -Wall -W -D_REENTRANT $(DEFINES)
+ INCPATH       = -I/usr/share/qt4/mkspecs/linux-g++ -I. -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtGui -I/usr/include/qt4/QtOpenGL -I/usr/include/qt4/QtXml -I/usr/include/qt4/QtSvg -I/usr/include/qt4 -I. -Iqmodeladaptor -Iqdomutils -Iextra/creole -Isxfile -I../application/src/include -I../application/src -I/home/haawda/paketierung/meine_Pakete/textroom/src/textroom-0.8.2/application/usr/include -I/home/haawda/paketierung/meine_Pakete/textroom/src/textroom-0.8.2/application/usr/include/hunspell -I/home/haawda/paketierung/meine_Pakete/textroom/src/textroom-0.8.2/application/usr/include/SDL -Isxfile -Iqdomutils -Iqmodeladaptor -I/usr/X11R6/include -I../moc -I../uic
+ AR            = ar cqs
+ RANLIB        = 

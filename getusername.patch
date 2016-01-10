@@ -1,0 +1,11 @@
+diff -Naur textroom-0.8.2.orig/library/sxfile/getusername.cpp textroom-0.8.2.new/library/sxfile/getusername.cpp
+--- textroom-0.8.2.orig/library/sxfile/getusername.cpp	2011-01-15 19:50:03.000000000 +0100
++++ textroom-0.8.2.new/library/sxfile/getusername.cpp	2016-01-10 13:06:54.888870334 +0100
+@@ -17,6 +17,7 @@
+ */
+ 
+ #include "getusername.h"
++#include <unistd.h>
+ 
+ #ifdef Q_OS_UNIX
+ #include <sys/types.h>
