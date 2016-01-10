@@ -2,6 +2,7 @@ pkgbase = hangups-git
 	pkgdesc = The first third-party instant messaging client for Google Hangouts
 	pkgver = 0.3.3.r3.g99a9f24
 	pkgrel = 1
+	epoch = 1
 	url = http://github.com/tdryer/hangups
 	arch = any
 	license = MIT
