@@ -30,6 +30,6 @@ package() {
   cd cli-visualizer || exit
   install -Dm755 build/vis "$pkgdir/usr/bin/vis"
 
-  sudo mkdir -p /usr/share/doc/cli-visualizer/
-  sudo cp examples/* /usr/share/doc/cli-visualizer/examples/config
+  mkdir -p "$pkgbuild/usr/share/doc/cli-visualizer/"
+  cp examples/* "$pkgbuild/usr/share/doc/cli-visualizer/examples/"
 }
