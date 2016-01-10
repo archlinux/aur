@@ -1,0 +1,8 @@
+post_install() {
+  echo "You probably want to create a symlink for /usr/bin/xterm to your favourite terminal."
+  echo "Example: 'ln -s /usr/bin/roxterm /usr/bin/xterm'"
+}
+
+post_remove() {
+  echo "Don't forget to remove the symlink to /usr/bin/xterm (if you created one)."
+}
