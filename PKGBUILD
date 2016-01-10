@@ -2,11 +2,13 @@
 
 pkgname=avro-c
 pkgver=1.8.0.rc2
-pkgrel=1
+pkgrel=2
 pkgdesc="C bindings for Avro data serialization framework"
 arch=('i686' 'x86_64')
 depends=('snappy' 'xz' 'zlib')
 makedepends=('cmake' 'git' 'make' 'pkg-config')
+optdepends=('asciidoc: build with documentation'
+            'source-highlight: add syntax highlighting to documentation')
 url="https://github.com/apache/avro"
 license=('Apache')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/apache/avro/tar.gz/release-1.8.0-rc2)
