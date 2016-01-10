@@ -1,0 +1,20 @@
+diff --git a/META.info b/META.info
+index 45fac85..99d79eb 100644
+--- a/META.info
++++ b/META.info
+@@ -12,7 +12,7 @@
+ 	"support"       : {
+ 		"source"  : "git://github.com/drforr/perl6-readline.git"
+ 	},
+-	"source-url"    : "git://github.com/drforr/perl6-readline.git"
++	"source-url"    : "git://github.com/drforr/perl6-readline.git",
+ 	"perl"          : "v6",
+ 	"build-depends" : [
+ 		"LibraryCheck",
+@@ -27,5 +27,5 @@
+ 	],
+ 	"description"   : "Perl 6 interface to GNU Readline, the CLI-based line reading libary",
+ 
+-	"version"       : "v0.0.2",
++	"version"       : "v0.0.2"
+ }

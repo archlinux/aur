@@ -2,7 +2,7 @@
 
 pkgname=perl6-readline
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Perl 6 interface to GNU Readline"
 arch=('any')
 depends=('perl6' 'readline')
@@ -11,8 +11,17 @@ makedepends=('alacryd' 'git')
 groups=('perl6')
 url="https://github.com/drforr/perl6-readline"
 license=('PerlArtistic')
-source=($pkgname-$pkgver::git+https://github.com/drforr/perl6-readline)
-sha256sums=('SKIP')
+source=($pkgname-$pkgver::git+https://github.com/drforr/perl6-readline
+        META.info.diff)
+sha256sums=('SKIP'
+            '2b56036382a3dc5e445a855cc1ee4fa1110556317ab41dc10c8586f912830130')
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  msg2 'Fixing META.info...'
+  git apply "$srcdir/META.info.diff"
+}
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
