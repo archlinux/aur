@@ -39,9 +39,8 @@ else
     source+=("https://launchpad.net/ubuntu/+archive/primary/+files/gnome-settings-daemon_${_ubuntu_ver:-${pkgver}}-${_ubuntu_rel}.debian.tar.xz")
 fi
 
-sha512sums=('53d6f57330c453d94ae643023209f9524681a129b88e9077fab305c57a707e2118e9d7a0a5f5ffe76b1349deecd26ea96e232b04298f9306c3e437c4dffc286f'
-            '72b1416a5daacb3e46193ed90a51adbc0f3edd11fa927f5f69794aab8a8dcca58c3bed102bb925017aedcbd10bd548ec6fc6168a56bd3f0622aa6a6d760c2dc4')
-
+sha512sums=('82aa939c485d4fa90ee135d4f987a13c6b1629546f41a1399b2badd166c0cc4e298096d860fafefa1236d3af87484bd8903fb6e39fe971660e553e28768775fc'
+            '285d4ceecbf15c3097e14c08b84ca256a14778740e04812a412ad16b85bff7d84fe34025dd86fedb1bd7a936247259572a9055afadc84cad4ce74afe40500546')
 prepare() {
   cd "${pkgname%-*}-${pkgver}"
 
