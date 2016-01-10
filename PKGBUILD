@@ -3,12 +3,12 @@
 _pkgname=libpapyros
 pkgname=${_pkgname}-git
 pkgver=r1.19d82b1
-pkgrel=1
+pkgrel=2
 pkgdesc="Library of common classes for Papyros"
 arch=("i686" "x86_64")
 url="https://github.com/papyros/libpapyros"
 license=("GPL")
-depends=("qt5-base-git" "qt5-declarative" "kconfig")
+depends=("qt5-base-dev-git" "qt5-declarative" "kconfig")
 makedepends=("git" "python" "extra-cmake-modules")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
