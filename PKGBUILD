@@ -2,14 +2,14 @@
 #Contributor: Martin Villagra <mvillagra0@gmail.com>
 
 pkgname=qbittorrent-nogui-git
-pkgver=.5793
+pkgver=.6515
 pkgrel=1
 pkgdesc="Bittorrent client based on libtorrent-rasterbar (without X support)"
 arch=('i686' 'x86_64')
 url="http://www.qbittorrent.org/"
 license=('GPL')
 depends=('libtorrent-rasterbar' 'qt5-base')
-makedepends=('boost')
+makedepends=('boost' 'qt5-tools')
 conflicts=('qbittorrent-nogui')
 source=("git://github.com/qbittorrent/qBittorrent.git"
         "qbittorrent.service")
@@ -31,7 +31,7 @@ if [[ -d ${srcdir}/build ]]; then
 
 build() {
   cd ${srcdir}/build
-  ./configure --prefix=/usr --disable-gui  --with-qt5
+  ./configure --prefix=/usr --disable-gui
   make
 }
 
