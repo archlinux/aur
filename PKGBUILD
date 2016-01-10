@@ -6,8 +6,8 @@ pkgdesc='A set of common support code for medical imaging, surgical navigation, 
 pkgver=r5007.0f14f50
 arch=('i686' 'x86_64')
 url='http://commontk.org'
-depends=('qt4')
-makedepends=('git' 'cmake' 'subversion')
+depends=('qt4' 'pythonqt')
+makedepends=('git' 'cmake')
 optdepends=('python2: For scripting support')
 license=('Apache')
 source=("git://github.com/commontk/CTK.git")
@@ -30,6 +30,13 @@ build() {
     -DCMAKE_INSTALL_PREFIX:PATH=/usr \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     -DCTK_LIB_Widgets:BOOL=ON \
+    -DCTK_ENABLE_Python_Wrapping:BOOL=ON \
+    -DPYTHON_INCLUDE_DIR:PATH=/usr/include/python2.7 \
+    -DPYTHON_LIBRARY:PATH=/usr/lib64/libpython2.7.so \
+    -DPYTHON_EXECUTABLE:PATH=/usr/bin/python2.7 \
+    -DPYTHONQT_INCLUDE_DIR:PATH=/usr/include/PythonQt \
+    -DPYTHONQT_INSTALL_DIR:PATH=/usr \
+    -DPYTHONQT_LIBRARY_RELEASE:FILEPATH=/usr/lib64/libPythonQt.so \
     ../CTK
 
   make
