@@ -1,5 +1,5 @@
 pkgname=sxemacs-git
-pkgver=22.1.15.265.g910698c
+pkgver=22.1.15.273.gddf559a
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgrel=1
 pkgdesc="A derivation of xemacs - git checkout"
