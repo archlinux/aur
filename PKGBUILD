@@ -20,7 +20,7 @@ url="https://launchpad.net/libindicator"
 license=(GPL)
 makedepends=(gtk2 gtk3 glib2 ido)
 groups=(unity)
-source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgbase}_${_actual_ver}${_extra_ver}.orig.tar.gz")
+source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgbase/3/}_${_actual_ver}${_extra_ver}.orig.tar.gz")
 sha512sums=('b624b229755ae73f74b2197d4fb6d49f5d0b8b3fdc6686d6140a0b087e0b6a53dcd663fa2195c61d3bc61a11249867a45c1b8b7476e0d00b89a92f849f66eda2')
 
 prepare() {
