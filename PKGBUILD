@@ -1,15 +1,16 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-xwidget-git
-pkgver=25.1.50.r123600
+pkgver=25.1.50.r124184
 pkgrel=1
 pkgdesc="The famous editor from xwidget_mvp branch"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
 license=('GPL3')
 depends=('alsa-lib' 'gpm' 'desktop-file-utils' 'hicolor-icon-theme'
-	 'giflib' 'm17n-lib' 'imagemagick' 'librsvg' 'gconf'
-	 'webkitgtk' 'gobject-introspection-runtime')
+	 'libxinerama' 'm17n-lib' 'imagemagick' 'librsvg' 'gconf'
+	 'webkitgtk' 'gobject-introspection-runtime' 'libxrandr'
+	 'atk' 'libxcomposite')
 makedepends=('git' 'texinfo' 'glproto')
 options=('docs' '!emptydirs' '!makeflags')
 provides=('emacs')
