@@ -4,8 +4,8 @@
 
 pkgname=libsnappy
 pkgver=1.1.3
-pkgrel=1
-pkgdesc="A fast compressor/decompressor"
+pkgrel=2
+pkgdesc="A fast compression/decompression library"
 arch=('i686' 'x86_64')
 makedepends=('autoconf' 'automake' 'git' 'libtool' 'm4' 'make' 'pkg-config')
 url="https://google.github.io/snappy/"
@@ -50,4 +50,5 @@ package() {
 
   msg2 'Installing...'
   make DESTDIR="$pkgdir" install
+  ln -s "$pkgdir/usr/lib/pkgconfig/snappy.pc" "$pkgdir/usr/lib/pkgconfig/libsnappy.pc"
 }
