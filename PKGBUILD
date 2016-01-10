@@ -9,8 +9,8 @@ license=("BSD")
 makedepends=(mingw-w64-gcc mingw-w64-pkg-config)
 depends=(mingw-w64-crt mingw-w64-opus mingw-w64-libogg mingw-w64-openssl)
 options=(staticlibs !strip !buildflags)
-source=("http://downloads.xiph.org/releases/opus/opusfile-0.6.tar.gz")
-sha256sums=("2428717b356e139f18ed2fdb5ad990b5654a238907a0058200b39c46a7d03ea6")
+source=("http://downloads.xiph.org/releases/opus/opusfile-0.7.tar.gz")
+sha256sums=("9e2bed13bc729058591a0f1cab2505e8cfd8e7ac460bf10a78bcc3b125e7c301")
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
