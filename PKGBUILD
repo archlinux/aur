@@ -2,8 +2,8 @@
 # Maintainer: dpayne <darby.payne@gmail.com>
 
 pkgname="cli-visualizer"
-pkgver=0.1
-pkgrel=1
+pkgver=0.2
+pkgrel=1.2
 epoch=1
 pkgdesc="A cli visualizer for mpd"
 arch=('i686' 'x86_64')
