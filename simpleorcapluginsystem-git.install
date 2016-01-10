@@ -1,5 +1,4 @@
 post_install() {
 	echo "for activate the pluginsystem for the current user run the following as normal user"
-	echo "cd /usr/share/SOPS"
-	echo "./install-for-current-user.sh"
+	echo "/usr/share/SOPS/install-for-current-user.sh"
 }
