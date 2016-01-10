@@ -1,7 +1,7 @@
 # Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
 pkgname=phpcov
 pkgver=3.0.0
-pkgrel=2
+pkgrel=1
 pkgdesc="A command-line frontend for the PHP_CodeCoverage library."
 url="https://github.com/sebastianbergmann/phpcov"
 arch=("any")
