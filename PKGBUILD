@@ -185,7 +185,7 @@ check() {
 }
 
 package_vim-minimal-bt() {
-  pkgdesc='Vi Improved, a highly configurable, improved version of the vi text editor (with a minimal set of dependencies)'
+  pkgdesc='Vi Improved with backtrace debug commands'
   depends=("vim-runtime=${pkgver}-${pkgrel}" 'gpm' 'acl')
   conflicts=('vim' 'vim-python3' 'gvim' 'gvim-python3')
   provides=("vim=${pkgver}-${pkgrel}" "xxd")
@@ -241,7 +241,7 @@ package_vim-bt() {
 }
 
 package_vim-python3-bt() {
-  pkgdesc='Vi Improved, a highly configurable, improved version of the vi text editor (with support for additional scripting languages)'
+  pkgdesc='Vi Improved with backtrace debug commands)'
   depends=("vim-runtime=${pkgver}-${pkgrel}" 'gpm' 'ruby' 'lua' 'python' 'acl')
   conflicts=('vim-minimal' 'vim' 'gvim' 'gvim-python3')
   provides=("vim=${pkgver}-${pkgrel}" "xxd")
