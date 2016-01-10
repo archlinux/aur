@@ -25,10 +25,6 @@ source=("$pkgname::git+https://github.com/JonnyJD/musicbrainz-isrcsubmit.git")
 md5sums=('SKIP')
 
 build() {
-  # https://github.com/JonnyJD/musicbrainz-isrcsubmit/issues/108 workaround
-  unset DISPLAY
-  unset DBUS_SESSION_BUS_ADDRESS
-
   cd "$pkgname"
   python setup.py build
 }
