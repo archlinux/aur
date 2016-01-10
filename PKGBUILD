@@ -20,11 +20,6 @@ md5sums=('59399e07a6c90da1a36da9f848909da5')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-
-  # https://github.com/JonnyJD/musicbrainz-isrcsubmit/issues/108 AccessDenied
-  unset DISPLAY
-  unset DBUS_SESSION_BUS_ADDRESS
-
   $_python setup.py build
 }
 
@@ -35,10 +30,6 @@ check() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-
-  # https://github.com/JonnyJD/musicbrainz-isrcsubmit/issues/108 NoReply
-  unset DISPLAY
-
   $_python setup.py install --skip-build --root="$pkgdir/" --optimize=1
 }
 
