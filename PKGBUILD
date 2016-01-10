@@ -12,10 +12,10 @@
 pkgname=gnome-settings-daemon-ubuntu
 _use_ppa=true
 _ppa_rel=0ubuntu1~wily1
-#_ppa_ver=3.18.1
+#_ppa_ver=3.18.2
 #_ubuntu_rel=0ubuntu1
 #_ubuntu_ver=3.16.3
-pkgver=3.18.1
+pkgver=3.18.2
 pkgrel=1
 pkgdesc="The GNOME Settings daemon with Ubuntu's patches"
 arch=(i686 x86_64)
