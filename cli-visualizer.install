@@ -1,6 +1,6 @@
 post_install() {
   echo ":: Example configuration files can be found in"
-  echo ":: /usr/share/doc/cli-visualizer/examples"
+  echo ":: /usr/share/doc/cli-visualizer/"
 }
 
 post_upgrade() {
