@@ -4,7 +4,7 @@
 # Contributor: Malte Rabenseifner <malte@zearan.de> 
 
 pkgname=murmur-ice
-pkgver=1.2.10
+pkgver=1.2.13
 pkgrel=1
 pkgdesc="The voice chat application server for Mumble"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ conflicts=('murmur' 'murmur-git')
 source=(https://github.com/mumble-voip/mumble/releases/download/${pkgver}/mumble-${pkgver}.tar.gz
         "murmur.dbus.conf"
         "murmur.service")
-md5sums=('14ab2e9174b7ca87623e63aa56dd6d5b'
+md5sums=('578862b5457f645d7c6e901f9447db92'
          'eddea4cdbd0bde4b960a67e16b5d5478'
          'd27a9adcd7561859e7b033046729bc0e')
 
