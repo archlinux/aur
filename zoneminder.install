@@ -23,11 +23,11 @@ post_install() {
     # Zoneminder needs Apache configured to permit CGI execution
     \|^\t#LoadModule cgi_module modules/mod_cgi.so$| s|\t#|\t|;
     
-    # libphp5
-    \|^LoadModule php5_module modules/libphp5.so$|d;
-    s|^#*LoadModule rewrite_module modules/mod_rewrite.so$|&\nLoadModule php5_module modules/libphp5.so|;
-    \|^Include /etc/httpd/conf/extra/php5_module.conf|d;
-    s|^Include conf/extra/httpd-default.conf$|&\nInclude /etc/httpd/conf/extra/php5_module.conf|;
+    # libphp7
+    \|^LoadModule php7_module modules/libphp7.so$|d;
+    s|^#*LoadModule rewrite_module modules/mod_rewrite.so$|&\nLoadModule php7_module modules/libphp7.so|;
+    \|^Include /etc/httpd/conf/extra/php7_module.conf|d;
+    s|^Include conf/extra/httpd-default.conf$|&\nInclude /etc/httpd/conf/extra/php7_module.conf|;
     
     # Include httpd-zoneminder.conf
     \|^Include /etc/httpd/conf/extra/httpd-zoneminder.conf$|d;
@@ -66,9 +66,9 @@ post_install() {
   Apache configuration
   --------------------
   Edit /etc/httpd/conf/httpd.conf and add the line:
-    "LoadModule php5_module modules/libphp5.so"
+    "LoadModule php7_module modules/libphp7.so"
   and:
-    "Include /etc/httpd/conf/extra/php5_module.conf"
+    "Include /etc/httpd/conf/extra/php7_module.conf"
     "Include /etc/httpd/conf/extra/httpd-zoneminder.conf"
 
 EOF
@@ -105,8 +105,8 @@ Note:
 
 ==> Disable http with php if it isn't needed with others servers, 
 ==> comment or remove that lines in /etc/httpd/conf/httpd.conf:
-==> "LoadModule php5_module modules/libphp5.so"
-==> "Include /etc/httpd/conf/extra/php5_module.conf"
+==> "LoadModule php7_module modules/libphp7.so"
+==> "Include /etc/httpd/conf/extra/php7_module.conf"
 
 ==> Remove line in /etc/httpd/conf/httpd.conf:
 ==> "Include /etc/httpd/conf/extra/httpd-zoneminder.conf"
