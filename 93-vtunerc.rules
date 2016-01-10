@@ -1,0 +1,1 @@
+ACTION=="add", KERNEL=="vtunerc*", SUBSYSTEMS=="dvb", MODE="0660", GROUP="video"
