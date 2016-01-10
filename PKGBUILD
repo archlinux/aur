@@ -213,7 +213,7 @@ package_vim-minimal-bt() {
 }
 
 package_vim-bt() {
-  pkgdesc='Vi Improved, a highly configurable, improved version of the vi text editor (with support for additional scripting languages)'
+  pkgdesc='Vi Improved with backtrace debug commands'
   depends=("vim-runtime=${pkgver}-${pkgrel}" 'gpm' 'ruby' 'lua' 'python2' 'acl')
   conflicts=('vim-minimal' 'vim-python3' 'gvim' 'gvim-python3')
   provides=("xxd")
@@ -269,7 +269,7 @@ package_vim-python3-bt() {
 }
 
 package_gvim-bt() {
-  pkgdesc='Vi Improved, a highly configurable, improved version of the vi text editor (with advanced features, such as a GUI)'
+  pkgdesc='Vi Improved with backtrace debug commands'
   depends=("vim-runtime=${pkgver}-${pkgrel}" 'gpm' 'ruby' 'libxt'
            'desktop-file-utils' 'gtk2' 'lua' 'python2')
   provides=("vim=${pkgver}-${pkgrel}" "xxd")
@@ -303,7 +303,7 @@ package_gvim-bt() {
 }
 
 package_gvim-python3-bt() {
-  pkgdesc='Vi Improved, a highly configurable, improved version of the vi text editor (with advanced features, such as a GUI) with python 3 support'
+  pkgdesc='Vi Improved with backtrace debug commands'
   depends=("vim-runtime=${pkgver}-${pkgrel}" 'gpm' 'ruby' 'libxt'
            'desktop-file-utils' 'gtk2' 'lua' 'python')
   provides=("vim=${pkgver}-${pkgrel}" "gvim=${pkgver}-${pkgrel}" "xxd")
