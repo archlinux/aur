@@ -3,7 +3,7 @@
 
 _pkgname=rcm
 pkgname=${_pkgname}-git
-pkgver=r184.fbb301d
+pkgver=v1.3.0.r9.gfbb301d
 pkgrel=1
 pkgdesc="rc file (dotfiles) management"
 arch=("any")
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
