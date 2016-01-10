@@ -1,6 +1,6 @@
 pkgname=osvr-libfunctionality-git
 pkgver=v0.1.r17.g315e786
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimal library for dynamically-loaded or statically-linked functionality modules."
 arch=(i686 x86_64)
 url="https://github.com/OSVR/libfunctionality"
