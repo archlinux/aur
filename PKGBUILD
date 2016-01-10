@@ -1,7 +1,7 @@
 # Maintainer: Stunts <f.pinamartins@gmail.com>
 _pkgname=hangups
 pkgname=${_pkgname}-git
-pkgver=20150929
+pkgver=0.3.3.r3.g99a9f24
 pkgrel=1
 
 pkgdesc="The first third-party instant messaging client for Google Hangouts"
@@ -12,9 +12,15 @@ depends=('python' 'python-purplex' 'python-requests' 'python-urwid' 'python-appd
 source=('git+https://github.com/tdryer/hangups.git')
 md5sums=('SKIP')
 
+#pkgver() {
+#  cd ${srcdir}/${_pkgname}
+#  echo $(git log -1 --format='%cd' --date=short | tr -d '-')
+#}
+
 pkgver() {
   cd ${srcdir}/${_pkgname}
-  echo $(git log -1 --format='%cd' --date=short | tr -d '-')
+  # cutting off 'v' prefix that presents in the git tag
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
