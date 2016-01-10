@@ -1,14 +1,14 @@
 #Maintainer: MattD <1289367510 [at] qq.com>
 
 pkgname=wine-qqintl
-pkgver=0.0.1
-pkgrel=1
-pkgdesc='Wine QQ International 2012 by Deepin.'
+pkgver=0.1.3
+pkgrel=2
+pkgdesc='Wine QQ International by Deepin.'
 arch=('i686' 'x86_64')
 url='http://www.imqq.com/'
 license=('Other')
-source=("deepinwine-qq2012_0.0.1_i386.deb::http://packages.linuxdeepin.com/deepin/pool/main/d/deepinwine-qq2012/deepinwine-qq2012_0.0.1_i386.deb")
-md5sums=('39aab69629d97cad6dbf98bb3acb9918')
+source=("wine-qqintl_0.1.3-2_i386.deb::http://packages.deepin.com/deepin/pool/non-free/d/deepinwine-qqintl/wine-qqintl_0.1.3-2_i386.deb")
+md5sums=('d0f3340da494a6b20c768b0bd51a999d')
 
 if [ "$CARCH" = "i686" ]; then
   depends=('gtk2' 'lcms' 'ncurses' 'alsa-plugins' 'libsm' 'libpng12')
