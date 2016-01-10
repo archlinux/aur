@@ -4,12 +4,11 @@
 
 pkgname=hop-git
 pkgver=3.0.0r2.1ce954d
-_pkgver=${pkgver//_/-}
 pkgrel=1
 pkgdesc="Software Development Kit for the Web"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
-depends=('bigloo-devel')
+depends=('bigloo-devel' 'libuv')
 conflicts=('hop')
 provides=('hop')
 install=hop.install
@@ -38,5 +37,5 @@ check() {
 package() {
   cd ${srcdir}/${pkgname%-git}
   make DESTDIR=${pkgdir} install
-  cd ${pkgdir}/usr/bin; rm hop; ln -s hop-$pkgver hop
+  cd ${pkgdir}/usr/bin; rm hop; ln -s hop-3.0.0 hop
 }
