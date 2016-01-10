@@ -1,0 +1,10 @@
+--- package/src/PythonQt3.0/CMakeLists.txt	2014-09-18 16:42:28.000000000 -0400
++++ PythonQt3.0/CMakeLists.txt	2016-01-10 16:40:47.779956229 -0500
+@@ -141,6 +141,7 @@
+     src/PythonQtStdIn.h
+     src/PythonQtStdOut.h
+     src/PythonQtSystem.h
++    src/PythonQtUtils.h
+     src/PythonQtVariants.h
+     src/PythonQtPythonInclude.h
+     generated_cpp${generated_cpp_suffix}/PythonQt_QtBindings.h

@@ -9,11 +9,16 @@ pkgdesc='A dynamic Python binding for the Qt framework to embed Python code into
 arch=('i686' 'x86_64')
 url='http://pythonqt.sourceforge.net/'
 makedepends=('cmake')
-depends=('qt4' 'python')
+depends=('qt4' 'python2')
 optdepends=('qtwebkit')
 license=('LGPL')
 source=("http://sourceforge.net/projects/pythonqt/files/pythonqt/PythonQt-3.0/PythonQt3.0.zip")
 sha512sums=('8e2a964fcf4f73ddea46f7dc2bf67de97d2e161a2ab7d5c30d9db4b36fdc2295276845649d7bc99b085bc9c71d1fc9bb934833a2f0b1e5b0ef793cb8b4aa95b3')
+
+prepare() {
+ cd "${srcdir}"/PythonQt"${pkgver}"
+ patch -Np1 -i ../../fix-missing-include.patch
+}
 
 build() {
   cd "$srcdir"
@@ -24,6 +29,8 @@ build() {
   cmake \
     -DCMAKE_INSTALL_PREFIX:PATH=/usr \
     -DBUILD_SHARED_LIBS:BOOL=ON \
+    -DPYTHON_INCLUDE_DIR:PATH=/usr/include/python2.7 \
+    -DPYTHON_LIBRARY:PATH=/usr/lib64/libpython2.7.so \
     -DPythonQt_DEBUG:BOOL=OFF \
     -DPythonQt_Wrap_QtAll:BOOL=ON \
     -DPythonQt_Wrap_Qtcore:BOOL=ON \
