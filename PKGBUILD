@@ -8,8 +8,8 @@ arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
 license=('GPL3')
 depends=('alsa-lib' 'gpm' 'desktop-file-utils' 'hicolor-icon-theme'
-	 'libxinerama' 'm17n-lib' 'imagemagick' 'librsvg' 'gconf'
 	 'webkitgtk' 'gobject-introspection-runtime' 'libxrandr'
+	 'libxinerama' 'm17n-lib' 'imagemagick' 'librsvg' 'gconf'
 	 'atk' 'libxcomposite')
 makedepends=('git' 'texinfo' 'glproto')
 options=('docs' '!emptydirs' '!makeflags')
