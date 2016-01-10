@@ -29,7 +29,9 @@ build() {
 package() {
   cd cli-visualizer || exit
   install -Dm755 build/vis "$pkgdir/usr/bin/vis"
-
-  mkdir -p "$pkgbuild/usr/share/doc/cli-visualizer/"
-  cp examples/* "$pkgbuild/usr/share/doc/cli-visualizer/examples/"
+  install -Dm644 examples/blue "$pkgdir"/usr/share/doc/"$pkgname"/blue
+  install -Dm644 examples/config "$pkgdir"/usr/share/doc/"$pkgname"/config
+  install -Dm644 examples/rainbow "$pkgdir"/usr/share/doc/"$pkgname"/rainbow
+  install -Dm644 examples/basic_colors "$pkgdir"/usr/share/doc/"$pkgname"/basic_colors
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
