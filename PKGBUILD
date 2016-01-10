@@ -6,6 +6,7 @@
 # Contributor: xduugu <xduugu@gmx.com>
 # Contributor: Evangelos Foutras <foutrelis@gmail.com>
 # Contributor: David Fuhr <david.fuhr@web.de>
+# what the heck
 
 pkgname=oracle-sqldeveloper
 pkgver=4.1.3.20.78
