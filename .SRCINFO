@@ -1,13 +1,13 @@
 pkgbase = firefox-download-youtube-videos-as-mp4
 	pkgdesc = Extension for firefox which download video
-	pkgver = 1.8.4
-	pkgrel = 2
+	pkgver = 1.8.5
+	pkgrel = 1
 	url = https://addons.mozilla.org/es/firefox/addon/download-youtube
 	arch = any
 	license = GPL2
 	depends = firefox
-	source = https://addons.mozilla.org/firefox/downloads/file/296174/download_youtube_videos_as_mp4-1.8.4-sm+fx.xpi
-	md5sums = ae14a7b9aac83d390062480358652156
+	source = https://addons.mozilla.org/firefox/downloads/latest/11869/addon-11869-latest.xpi
+	md5sums = 9a19cb4bbcb6e5cdb5e1106334ac6b96
 
 pkgname = firefox-download-youtube-videos-as-mp4
 
