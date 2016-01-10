@@ -1,7 +1,7 @@
 # Maintainer: Bernhard Landauer <oberon@manjaro.org>
 
 pkgname=alternating-layouts-git
-pkgver=r20.179edd6
+pkgver=r24.da6584a
 pkgrel=1
 pkgdesc="Alternating split directions for the i3-wm"
 _repo=i3-alternating-layout

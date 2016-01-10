@@ -9,6 +9,6 @@ post_install() {
 	}
 	echo ""
 	msg "autostart alternating-layouts in your ~/.i3/config with"
-	msg "'exec --no-startup-id python alternating_layouts.py'"
+	msg "'exec --no-startup-id alternating_layouts.py'"
 	echo ""
 }
