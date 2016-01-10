@@ -5,7 +5,7 @@ pkgname=perl-wx
 pkgver=0.9928
 _author=M/MD/MDOOTSON
 _perlmod=Wx
-pkgrel=1
+pkgrel=2
 pkgdesc="Wx - interface to the wxWidgets GUI toolkit"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/dist/Wx"
@@ -82,12 +82,8 @@ sha256sums=('58e06c094c07817617b1e69fa0501f2cee80cd4700ac7a62c516179f7aa85b42')
 
 build(){
   cd "$srcdir"/$_perlmod-$pkgver
-  # Setting these env variables overwrites any command-line-options we don't want...
-  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps \
-    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
-    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-    MODULEBUILDRC=/dev/null
-
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
   /usr/bin/perl Makefile.PL
   make
 }
@@ -102,7 +98,6 @@ check(){
 }
 package(){
   cd "$srcdir"/$_perlmod-$pkgver
-  make install
-  # remove perllocal.pod and .packlist
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
