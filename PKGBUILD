@@ -2,7 +2,7 @@
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=python2-radicale
-pkgver=1.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A Simple Calendar Server. Python 2 version."
 arch=any
@@ -14,7 +14,7 @@ install='radicale.install'
 source=(http://pypi.python.org/packages/source/R/Radicale/Radicale-$pkgver.tar.gz
         radicale.service
         radicale.install)
-md5sums=('2e3f11d05d7a21ee412dfd7bd5c38961'
+md5sums=('a29dd538377ea24cec83237a636122ae'
          '62af2e07ad32a0fcece32fae68e92daf'
          '5613eec93efc5ef2ef68abd124fb6b61')
 optdepends=('python2-pam: For PAM authentication' 
