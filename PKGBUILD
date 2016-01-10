@@ -2,14 +2,15 @@
 # Based on kipi-plugins-svn PKGBUILD
 
 pkgname=kipi-plugins-git
-pkgver=r11412.b921a22
+pkgver=r11423.19e32a9
 pkgrel=1
 pkgdesc='A collection of plugins extending the KDE graphics and image applications as digiKam'
 license=('GPL' 'LGPL' 'FDL')
 arch=('i686' 'x86_64')
 url="http://www.kipi-plugins.org/"
 depends=('libkipi-git' 'libkexiv2-git' 'libkdcraw-git')
-makedepends=('git' 'extra-cmake-modules-git' 'kcalcore' 'libkgeomap-git' 'libksane-git' 'libmediawiki-git' 'libkvkontakte-git' 'threadweaver' 'karchive' 'kqoauth-qt5-git' 'kdoctools')
+makedepends=('git' 'extra-cmake-modules-git' 'kcalcore' 'libkgeomap-git' 'libksane-git' 'libmediawiki-git' \
+             'libkvkontakte-git' 'threadweaver' 'karchive' 'kqoauth-git' 'kdoctools')
 optdepends=('hugin: for expoblending plugin'
 	    'kcalcore: Calendar plugin'
 	    'libkgeomap-git: A tool to geolocalize pictures'
@@ -17,7 +18,7 @@ optdepends=('hugin: for expoblending plugin'
 	    'libkvkontakte-git: A tool to export images to VKontakte web service'
 	    'threadweaver: for Panorama'
 	    'karchive: for FlashExport'
-	    'kqoauth-qt5-git: For Imgur Auhtenticated API')
+	    'kqoauth-git: For Imgur Auhtenticated API')
 conflicts=('kipi-plugins')
 provides=('kipi-plugins')
 install=kipi-plugins-git.install
