@@ -1,0 +1,6 @@
+post_install() {
+  cat << EOF
+To activate vaulty, add the following line to your ~/.zshrc:
+    source /usr/share/zsh/plugins/vaulty/vaulty
+EOF
+}
