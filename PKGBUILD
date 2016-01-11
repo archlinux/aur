@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="LSI Logic MegaRAID Storage Manager Suite"
 arch=('i686' 'x86_64')
 url='http://www.avagotech.com/products/server-storage'
-license=('custom:LSI' 'Custom:TOG')
+license=('custom:LSI' 'custom:TOG')
 depends=('libxtst'
          'alsa-lib'
          'libnet'
