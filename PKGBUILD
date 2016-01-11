@@ -2,7 +2,7 @@
 #Contributor: Kristof Jozsa <kjozsa@fsdev.hu>
 
 pkgname=eclipse-scala-ide
-pkgver=4.2.0
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="Scala IDE for Eclipse"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('eclipse>=4.4')
 source=($pkgname-$pkgver.zip::"http://download.scala-ide.org/sdk/lithium/e44/scala211/stable/update-site.zip"
 	"LICENSE" "scala-ide.desktop" "product.png"
 )
-md5sums=('174e9f47971450d1fc1bf6f3c2fc383b'
+md5sums=('94c0fe73c84bd51c095cd66d652fe16a'
          '58b225f304aaf42c8b8738894a10cb96'
          '205ac79eeebb9cc43f9a0c836e60cf82'
          'c95b1920928f10d2c982afd7f5827a2c')
