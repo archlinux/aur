@@ -3,14 +3,14 @@
 
 pkgname=sst
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 license=('GPL')
 pkgdesc="The Classic Super Star Trek Game"
 url="http://www.almy.us/sst.html"
 depends=('glibc')
 source=(http://www.almy.us/files/sstsrc.zip)
-md5sums=('8d62e45290bed437eb38c98a11741d46')
+md5sums=('23f3ba0f3f0d4e9613893691d3040bac')
 
 build() {
   cd "$srcdir/sstsrc"
