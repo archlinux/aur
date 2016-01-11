@@ -6,8 +6,9 @@
 pkgbase="zfs-dkms"
 pkgname=("zfs-dkms" "zfs-utils")
 pkgver=0.6.5.4
-pkgrel=1
+pkgrel=2
 license=('CDDL')
+makedepends=("spl-dkms=${pkgver}")
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${pkgver}/zfs-${pkgver}.tar.gz"
