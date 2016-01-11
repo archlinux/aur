@@ -1,6 +1,5 @@
 # Maintainer: Pierre Neidhardt <ambrevar@gmail.com>
 
-_gourl="bitbucket.org/ambrevar/$pkgname"
 pkgname=demlo
 pkgver=2.0
 pkgrel=1
@@ -11,6 +10,7 @@ license=("MIT")
 depends=("ffmpeg" "lua51" "taglib")
 makedepends=("go")
 optdepends=("chromaprint: Internet tagging")
+_gourl="bitbucket.org/ambrevar/$pkgname"
 
 build() {
 	GOPATH="$srcdir" go get -fix -v -x "$_gourl"
