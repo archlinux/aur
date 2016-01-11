@@ -6,8 +6,8 @@
 # Contributor in Chakra: totoloco <totoloco@gmx.com>
 
 pkgname=cutegram-git
-pkgver=2.7.0.stable.r1.g7ce2a17
-pkgrel=1
+pkgver=2.7.0.stable.r19.g7e05390
+pkgrel=2
 pkgdesc="Telegram client by Aseman Land"
 arch=('i686' 'x86_64')
 url="http://aseman.co/cutegram"
@@ -18,8 +18,9 @@ depends=('qt5-base' 'qt5-declarative' 'qt5-multimedia' 'qt5-quick1'
 optdepends=('gst-plugins-good: for audio and notification support'
             'gst-plugins-bad: for audio support')
 makedepends=('git')
-source=("${pkgname}"::"git+https://github.com/Aseman-Land/Cutegram.git")
-md5sums=('SKIP')
+source=("${pkgname}"::"git+https://github.com/Aseman-Land/Cutegram.git"
+        "asemantools"::"git+https://github.com/Aseman-Land/aseman-qt-tools.git")
+md5sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -31,6 +32,9 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${pkgname}"
+  git submodule init
+  git config submodule.asemantools.url $srcdir/asemantools
+  git submodule update
   mkdir -p build 
 }
 
