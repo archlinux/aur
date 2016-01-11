@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-srdfdom
 	pkgdesc = ROS - Parser for Semantic Robot Description Format (SRDF).
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ros.org/wiki/srdf
 	arch = any
 	license = BSD
@@ -10,6 +10,7 @@ pkgbase = ros-indigo-srdfdom
 	makedepends = ros-build-tools
 	makedepends = ros-indigo-cmake-modules
 	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-rostest
 	makedepends = ros-indigo-urdfdom-py
 	makedepends = pkg-config
 	makedepends = boost
