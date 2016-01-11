@@ -15,6 +15,7 @@ source=("https://pypi.python.org/packages/source/t/${_pkgsrcname}/txrudp-$pkgver
 package() {
   cd $srcdir/${_pkgsrcname}-$pkgver
   python2 setup.py install --root $pkgdir
+  rm -rf $pkgdir/usr/lib/python2.7/site-packages/tests/
 }
 
 md5sums=('a5ea5e2777fbfe2419158041400b80c8')
