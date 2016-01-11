@@ -9,7 +9,7 @@ _pkgname=clion
 _archname=CLion
 pkgver=144.2608.6
 _pkgver=${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="C/C++ IDE. 30-day evaluation."
 arch=('x86_64')
 options=(!strip)
@@ -23,7 +23,7 @@ optdepends=(
   'clang: LLVM compiler'
   'biicode: C/C++ dependency manager'
   'gtest: C++ testing'
-  'swift-bin: Swift programming language support (Also requires the plugin)'
+  'swift-language: Swift programming language support (Also requires the plugin)'
 )
 source=("https://download.jetbrains.com/cpp/${_archname}-${_pkgver}.tar.gz")
 sha512sums=('7e002279f4d061f46250a223648818a62f10efaf3b55aec20a64e355f16eccd623c4940d3c939a668ff6ca2d158ac6ebd2b0cff6129670efc4d1a3495ab33d67')
