@@ -2,10 +2,10 @@
 pkgname=python-kademlia
 _pkgname=${pkgname/python-/}
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Distributed hash table for decentralized peer-to-peer computer networks"
 url="http://github.com/bmuller/kademlia"
-depends=('python' 'python-twisted')
+depends=('python' 'python-twisted' 'python-rpcudp')
 optdepends=()
 license=('MIT')
 arch=('any')
