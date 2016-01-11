@@ -2,8 +2,8 @@
 # Contributor: Dominik Heidler <dheidler@gmail.com>
 
 pkgname=gqrx
-pkgver=2.4
-pkgrel=3
+pkgver=2.5
+pkgrel=1
 pkgdesc="Interactive SDR receiver waterfall for many devices."
 arch=('i686' 'x86_64')
 url="http://gqrx.dk/"
@@ -11,11 +11,9 @@ license=('GPL')
 depends=('qt5-svg' 'libpulse' 'gnuradio-osmosdr' 'libxkbcommon-x11')
 makedepends=('boost')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/csete/gqrx/archive/v$pkgver.tar.gz"
-        "$pkgname.png"
         "$pkgname.desktop")
-md5sums=('a9f14dfa153ddf2b370d98ee8f0e7c9d'
-         'f7032a8883c89bd80e0d0fd36f861c59'
-         '810f89195231c18f32af92522aade721')
+md5sums=('100f320db7f4dcd9a9a6cb84cffab735'
+         '91bc8634f843a1ef05c9c56251d8a3f0')
 
 prepare() {
   cd "$srcdir"
@@ -42,7 +40,9 @@ build() {
 package() {
   cd "$srcdir"
   install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+
+  cd "$srcdir/$pkgname-$pkgver"
+  install -Dm644 "resources/icons/gqrx.svg" "$pkgdir/usr/share/pixmaps/gqrx.svg"
 
   cd "$srcdir/$pkgname-$pkgver/build"
   make install INSTALL_ROOT="$pkgdir"
