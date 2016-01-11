@@ -7,7 +7,7 @@ pkgname='ros-indigo-moveit-ros-planning'
 pkgver='0.6.5'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-indigo-angles
@@ -18,7 +18,7 @@ ros_makedepends=(ros-indigo-angles
   ros-indigo-moveit-ros-perception
   ros-indigo-dynamic-reconfigure
   ros-indigo-pluginlib)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'git' 'ros-build-tools' 'qt4'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-angles
