@@ -4,11 +4,11 @@
 # Contributor: Christian Storm <Christian.Storm@gmx.de>
 
 pkgname=jabref
-pkgver=3.1
+pkgver=3.2
 pkgrel=1
 pkgdesc="GUI frontend for BibTeX, written in Java"
 arch=('any')
-url="http://jabref.sourceforge.net/"
+url="http://www.jabref.org/"
 license=('GPL')
 depends=('java-runtime>=8')
 optdepends=(
@@ -17,7 +17,7 @@ optdepends=(
 source=(http://downloads.sourceforge.net/$pkgname/JabRef-${pkgver}.jar
         jabref.sh
         jabref.desktop)
-sha256sums=('81adaa1b672535e7b64814b6ad8f6a00e8bcf0a82b0849ba4523e36cd440425d'
+sha256sums=('5f3d18052019dd10475de6e8e1d3c900300cd7195d6e1e6262fab104d06abadb'
             '05b4ff3d9323a16d5e10b9d5266466573ee9a56e985c1e0896a68ea177e0c1d0'
             'f958793f6e408bab7db84973169b30ed61077112d3f552dbcc9f068847317602')
 
