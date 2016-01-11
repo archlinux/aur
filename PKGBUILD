@@ -33,7 +33,6 @@ package() {
   cd $_gitname
   make DESTDIR="$pkgdir/" install
   cd $pkgdir/usr/bin
-  ln -s espeak-ng espeak
   cd ../lib
     for f in libespeak-ng.so*; do
     ln -s "$f" $(echo $f|sed 's|-ng||')
