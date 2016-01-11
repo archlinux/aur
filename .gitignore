@@ -1,4 +1,5 @@
 createrepo_c-*.tar.xz
+*.tar.gz
 *.pkg.tar.xz
 pkg/
 src/
