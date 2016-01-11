@@ -2,8 +2,8 @@
 
 pkgname=transgui
 pkgver=5.0.1
-pkgrel=2
-pkgdesc="Transmission Remote GUI is a feature rich cross platform front-end to remotely control a Transmission Bit-Torrent client daemon via its RPC protocol. Transmission Remote GUI is faster and has more functionality than the built-in Transmission web interface"
+pkgrel=3
+pkgdesc="Feature rich cross platform front-end to remotely control a Transmission Bit-Torrent client daemon via its RPC protocol. Transmission Remote GUI is faster and has more functionality than the built-in Transmission web interface."
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/transgui"
 license=('GPL2')
@@ -21,7 +21,7 @@ source=(http://sourceforge.net/projects/${pkgname}/files/${pkgver}/${pkgname}-${
     ${pkgname}.desktop)
 noextract=()
 md5sums=('471ed1f3f75a0ebcc9d3a0cb72f2a61c'
-         '6f8b216d7859ba581c525af0ed064c40') #generate with 'makepkg -g'
+         '3c94c959db98c86878c57e1ab5019810') #generate with 'makepkg -g'
 
 build() {
   cd "$srcdir/TransGUI"
@@ -34,6 +34,8 @@ package()
   install -D ${pkgname} "${pkgdir}/usr/bin/${pkgname}"
   install -d lang "${pkgdir}/usr/share/${pkgname}/lang"
   install -D -m644 lang/* "${pkgdir}/usr/share/${pkgname}/lang/"
-  install -D -m644 transgui.png "${pkgdir}/usr/share/icons/${pkgname}.png"
+  install -D -m644 transgui.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   install -D -m644 ../${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -d -m 755 ${pkgdir}/usr/share/doc/${pkgname}
+  install -D -m 644 readme.txt history.txt LICENSE.txt ${pkgdir}/usr/share/doc/${pkgname}
 }
