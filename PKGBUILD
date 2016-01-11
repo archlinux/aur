@@ -4,7 +4,7 @@
 _number_of_bits=32
 pkgname=microchip-mplabxc${_number_of_bits}-bin
 pkgver=1.40
-pkgrel=3
+pkgrel=4
 pkgdesc="Microchip's MPLAB XC${_number_of_bits} C compiler toolchain for all of their 32bit microcontrollers"
 arch=(i686 x86_64)
 url=http://www.microchip.com/xc${_number_of_bits}
@@ -16,7 +16,7 @@ makedepends_x86_64=(lib32-tclkit)
 makedepends_i686=(tclkit)
 
 options=(!strip docs libtool emptydirs !zipman staticlibs !upx)
-source=("installerBlobFromMicrochip::http://ww1.microchip.com/downloads/en/DeviceDoc/xc${_number_of_bits}-v$pkgver-full-install-linux-installer.run"
+source=("http://ww1.microchip.com/downloads/en/DeviceDoc/xc${_number_of_bits}-v$pkgver-full-install-linux-installer.run"
         "bitrock-unpacker.tcl")
 
 md5sums=('06f3f019001cee7d8792561dc8a8da80'
@@ -27,14 +27,19 @@ instdir="/opt/microchip/xc${_number_of_bits}/v${pkgver}"
 
 build() {
   msg2 "Unpacking files from installer"
-  ./bitrock-unpacker.tcl ./installerBlobFromMicrochip ./unpacked.vfs
+  ./bitrock-unpacker.tcl ./xc${_number_of_bits}-v$pkgver-full-install-linux-installer.run ./unpacked.vfs
 }
 
 package() {
   mkdir -p "${pkgdir}${instdir}"
   mv unpacked.vfs/compiler/programfiles*/* "${pkgdir}${instdir}"
-  mv unpacked.vfs/licensecomponent "${pkgdir}${instdir}"
-  mv "${pkgdir}${instdir}"/*License.txt "${pkgdir}${instdir}/docs" 2>/dev/null || true
+  mv unpacked.vfs/licensecomponent/xclmallBin/bin/{roam.lic,xclm} "${pkgdir}${instdir}/bin"
+  sed -i "s/<xclm>/<xclm>\n\t<xclm:LicenseDirectory xclm:path=\"\/opt\/microchip\/xclm\/license\/\" \/>/" \
+  unpacked.vfs/licensecomponent/xclmallBin/etc/xclm.conf
+  mv unpacked.vfs/licensecomponent/xclmallBin/etc "${pkgdir}${instdir}"
+  mv unpacked.vfs/licensecomponent/xclmallDocs "${pkgdir}${instdir}/docs/xclm"
+  cp "${pkgdir}${instdir}"/*License.txt "${pkgdir}${instdir}/docs" 2>/dev/null || true
+  mv "${pkgdir}${instdir}"/*License.txt "${pkgdir}${instdir}" 2>/dev/null || true
 
   mkdir -p "$pkgdir/etc/profile.d"
   echo "export PATH=\"\$PATH\":'${instdir}/bin'" > "${pkgdir}/etc/profile.d/${pkgname}.sh"
