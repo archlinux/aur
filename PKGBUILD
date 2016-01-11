@@ -10,12 +10,12 @@ url="https://extensions.gnome.org/extension/495/topicons/"
 license=('GPL')
 depends=('gnome-shell')
 groups=('gnome-shell-extensions')
-source=("http://adel-dev.abaton.at/repo/topicons/snapshot/topicons-${pkgver}.tar.gz")
-sha256sums=('569760b6f62a8b9e40ac3a1b6fa44572bd86416008fff1f0ef8b54215e2ec8a6')
+#source=("http://adel-dev.abaton.at/repo/topicons/snapshot/topicons-${pkgver}.tar.gz")
+source=("https://extensions.gnome.org/download-extension/topIcons@adel.gadllah@gmail.com.shell-extension.zip?version_tag=5335")
+sha256sums=('7d8743b1d9a57b8127b7a83af70f6ea54aa31716311aafa8564dc628cfd41b6d')
 
 package() {
   uuid='topIcons@adel.gadllah@gmail.com'
-  cd "${srcdir}/topicons-${pkgver}"
 
   install -Dm644 "metadata.json" \
     "${pkgdir}/usr/share/gnome-shell/extensions/${uuid}/metadata.json"
