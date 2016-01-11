@@ -1,7 +1,7 @@
 From c71a3700ac264cd62ac2e58cbab1a422d292f0a6 Mon Sep 17 00:00:00 2001
 From: Kyle Manna <kyle@kylemanna.com>
 Date: Mon, 11 Jan 2016 08:23:16 -0800
-Subject: [PATCH 2/2] storage: Python 3 fix for imap
+Subject: [PATCH 2/3] storage: Python 3 fix for imap
 
 * Work with both.
 ---

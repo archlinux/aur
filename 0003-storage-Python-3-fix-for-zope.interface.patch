@@ -1,0 +1,37 @@
+From e531f28468255d5559898e3c353dd514773aebfd Mon Sep 17 00:00:00 2001
+From: Kyle Manna <kyle@kylemanna.com>
+Date: Mon, 11 Jan 2016 08:23:16 -0800
+Subject: [PATCH 3/3] storage: Python 3 fix for zope.interface
+
+* Work with both.
+---
+ kademlia/storage.py | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/kademlia/storage.py b/kademlia/storage.py
+index 41610da..edfd0cf 100644
+--- a/kademlia/storage.py
++++ b/kademlia/storage.py
+@@ -13,7 +13,7 @@ from itertools import takewhile
+ import operator
+ from collections import OrderedDict
+ 
+-from zope.interface import implements
++from zope.interface import implementer
+ from zope.interface import Interface
+ 
+ 
+@@ -47,9 +47,8 @@ class IStorage(Interface):
+         Get the iterator for this storage, should yield tuple of (key, value)
+         """
+ 
+-
++@implementer(IStorage)
+ class ForgetfulStorage(object):
+-    implements(IStorage)
+ 
+     def __init__(self, ttl=604800):
+         """
+-- 
+2.7.0
+
