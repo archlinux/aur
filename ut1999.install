@@ -1,5 +1,7 @@
 post_install() {
-
+echo "****ADV****ADV****ADV****ADV****ADV****ADV"
+echo "THIS IS THE COMPLETE VERSION OF UT1999, YOU NEED TO HAVE THE ORIGINAL GAME TO USE THIS PACKAGE, IF YOU DON'T BUY IT PLEASE REMOVE IT"
+echo "****ADV****ADV***ADV****ADV****ADV****ADV"
 echo "To change language to English, Spanish or French"
 echo "use the special script langut in /opt/games/ut/"
 echo "Then... Enjoy your game :)"
