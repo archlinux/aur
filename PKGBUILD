@@ -1,11 +1,11 @@
 # Maintainer: GreenRaccoon23 <GreenRaccoon a t gmail d o t com>
 
 pkgname=snappy-git
-pkgver=r93.d803429
-pkgrel=1
+pkgver=1.1.3.r1.gd803429
+pkgrel=2
 pkgdesc='A fast compressor/decompressor library'
 arch=('any')
-url="http://code.google.com/p/snappy/"
+url="https://google.github.io/snappy/"
 license=('BSD')
 depends=('glibc' 'gcc-libs')
 replaces=("${pkgname%-*}")
