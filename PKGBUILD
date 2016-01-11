@@ -2,9 +2,9 @@
 
 pkgname=xroach
 pkgver=4.4
-pkgrel=1.1
+pkgrel=1.2
 pkgdesc="Cockroaches hide under your windows"
-arch=('i686' 'x86_64')
+arch=('any')
 url="ftp://ftp.netbsd.org/pub/pkgsrc/distfiles/xroach-4.4/xroach.tar"
 license=('Unknown')
 depends=('libx11')
