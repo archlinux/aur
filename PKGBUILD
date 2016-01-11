@@ -2,7 +2,7 @@
 
 pkgname=transgui
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross platform front-end for the Transmission Bit-Torrent client"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/transgui"
@@ -21,7 +21,7 @@ source=(http://sourceforge.net/projects/${pkgname}/files/${pkgver}/${pkgname}-${
     ${pkgname}.desktop)
 noextract=()
 md5sums=('471ed1f3f75a0ebcc9d3a0cb72f2a61c'
-         '1220f32805a5afa6b41cc1a3894ede65') #generate with 'makepkg -g'
+         '6f8b216d7859ba581c525af0ed064c40') #generate with 'makepkg -g'
 
 build() {
   cd "$srcdir/TransGUI"
