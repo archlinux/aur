@@ -21,9 +21,9 @@ for a in "$@"; do
 done
 
 # Now link (with the .os in the current directory)
-find /usr/lib/sgx/ -type f -iname '*.a' -print0 \
+find /usr/lib/sgx/ -type f \( -iname '*.a' -o -iname '*.o' \) -print0 \
 	| xargs -0 \
 	cc \
 	-g -Wall -pedantic -Wno-unused-function -std=gnu11 \
 	-fno-stack-protector -static -fPIC -fvisibility=hidden \
-	-static -nostdlib "-Wl,-T,/usr/lib/sgx/sgx.lds" "${args[@]}"
+	-static -nostdlib -nostartfiles "-Wl,-T,/usr/lib/sgx/sgx.lds" "${args[@]}"

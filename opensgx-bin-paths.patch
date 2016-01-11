@@ -1,53 +1,18 @@
 diff --git a/opensgx b/opensgx
-index b90ff87..b28d02d 100755
+index 404c2a8..a6b6b7d 100755
 --- a/opensgx
 +++ b/opensgx
-@@ -1,13 +1,7 @@
+@@ -1,9 +1,9 @@
  #! /bin/bash
--ROOT=$(dirname "$0")
+ ROOT=$(dirname "$0")
 -SGXTOOL=$ROOT/user/sgx-tool
 -SGX=$ROOT/sgx
 -DEVICEKEY=$ROOT/user/conf/device.key
 -SGXRUNTIME=$ROOT/user/sgx-runtime
--
++SGXTOOL=sgx-tool
++SGX=sgx
++DEVICEKEY=/etc/sgx/device.key
++SGXRUNTIME=/usr/bin/sgx-runtime
+ GDBPORT=-1
+ 
  key_gen() {
-   FILENAME=sign.key
--  $SGXTOOL -k 3072 > $FILENAME
-+  sgx-tool -k 3072 > $FILENAME
- }
- 
- compile_code() {
-@@ -21,15 +15,15 @@ compile_code() {
- }
- 
- run_enclave() {
--  $SGX $SGXRUNTIME $1 $2
-+  sgx "$(which sgx-runtime)" $1 $2
- }
- 
- run_enclave_with_icount() {
--  $SGX -i $SGXRUNTIME $1 $2
-+  sgx -i "$(which sgx-runtime)" $1 $2
- }
- 
- measure() {
--  $SGXTOOL -m $1
-+  sgx-tool -m $1
- }
- 
- sign() {
-@@ -44,10 +38,10 @@ sign() {
-   touch $CONF
-   measure $1 > $MEASURE
- 
--  $SGXTOOL -S $MEASURE > $SIG
--  $SGXTOOL -s $SIG --key=$2 > $CONF
--  $SGXTOOL -E $CONF > $TOKEN
--  $SGXTOOL -M $TOKEN --key=$DEVICEKEY >> $CONF
-+  sgx-tool -S $MEASURE > $SIG
-+  sgx-tool -s $SIG --key=$2 > $CONF
-+  sgx-tool -E $CONF > $TOKEN
-+  sgx-tool -M $TOKEN --key=conf/device.key >> $CONF
- 
-   rm $MEASURE $SIG $TOKEN
- }
