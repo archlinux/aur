@@ -2,8 +2,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=meh-git
-pkgver=0.3.26.gce484db
-pkgrel=2
+pkgver=0.3.27.g426bd3d
+pkgrel=1
 pkgdesc="A minimal image viewer using raw XLib."
 arch=('i686' 'x86_64')
 url="http://www.johnhawthorn.com/meh/"
