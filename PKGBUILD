@@ -2,10 +2,10 @@
 pkgname=python-storjnode
 _pkgname=${pkgname/python-/}
 pkgver=0.0.21
-pkgrel=2
-pkgdesc="Storj core library"
-url="https://github.com/Storj/storjcore"
-depends=('python' 'python-pip' 'python-crypto' 'python-btctxstore')
+pkgrel=3
+pkgdesc="Low level storj protocol reference implementation"
+url="https://github.com/Storj/storjnode"
+depends=('python' 'python-pip' 'python-crypto' 'python-btctxstore' 'python-umsgpack' 'python-kademlia')
 optdepends=()
 license=('MIT')
 arch=('any')
@@ -20,6 +20,6 @@ build() {
 package() {
     cd "$srcdir/$_pkgname-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1 
-    rm -rf ${pkgdir}/usr/lib/python3*/site-packages/tests/
+    rm -rf ${pkgdir}/usr/lib/python*/site-packages/tests/
 }
 
