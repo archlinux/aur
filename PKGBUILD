@@ -6,7 +6,7 @@
 pkgbase="spl-dkms"
 pkgname=("spl-dkms" "spl-utils")
 pkgver=0.6.5.4
-pkgrel=1
+pkgrel=2
 license=('GPL')
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
