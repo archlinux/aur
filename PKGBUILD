@@ -1,8 +1,8 @@
 # Maintainer: Yardena Cohen <yardenack at gmail dot com>
 
 pkgname=('ascii-fluid-dynamics-git')
-pkgver=12.9befe51
-pkgrel=7
+pkgver=15.222420e
+pkgrel=1
 pkgdesc="Ascii Fluid Dynamics (21st IOCCC honorable mention)"
 arch=('any')
 url="http://www.ioccc.org/2012/endoh1/hint.html"
