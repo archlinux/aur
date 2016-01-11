@@ -12,7 +12,7 @@ pkgbase=linux-libre-grsec-knock
 _pkgbasever=4.3-gnu
 _pkgver=4.3.3-gnu
 _grsecver=3.1
-_timestamp=201512282134
+_timestamp=201601051958
 _knockpatchver=4.2_2
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
@@ -70,7 +70,7 @@ sha256sums=('1d280ae2730eb6c9b8c7e920cac2e8111c8db02c498db0c142860a84106cc169'
             'SKIP'
             '4e5d062db675a304a1b7bb99a9d2eb1ff617fd31fac9b28df059444b5a98b1d5'
             'SKIP'
-            'ead097ba47033acf76f8d894f2af1d1445276507df9e259efaefbf20fff253f5'
+            '04e8c238223cfceae445a23996857efb89110db732254f50f5e382cd01024d06'
             'SKIP'
             'c7c4ab580f00dca4114c185812a963e73217e6bf86406c240d669026dc3f98a4'
             'SKIP'
