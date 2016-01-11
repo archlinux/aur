@@ -2,7 +2,7 @@
 
 pkgname=letsencrypt-git
 _pkgname=letsencrypt
-pkgver=4268.ce14851
+pkgver=4743.355563e
 pkgrel=1
 pkgdesc="A tool to automatically receive and install X.509 certificates to enable TLS on servers. The client will interoperate with the Let’s Encrypt CA which will be issuing browser-trusted certificates for free."
 arch=('any')
@@ -23,7 +23,7 @@ build() {
 	cd "${srcdir}/${_pkgname}"
 
 	virtualenv -p python2 venv
-	./venv/bin/pip install -r py26reqs.txt acme/ . letsencrypt-apache/ letsencrypt-nginx/ letshelp-letsencrypt/
+	./venv/bin/pip install acme/ . letsencrypt-apache/ letsencrypt-nginx/ letshelp-letsencrypt/
 	virtualenv -p python2 --relocatable venv
 }
 
