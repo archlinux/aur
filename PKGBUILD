@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=prboom-plus-svn
-pkgver=4403
+pkgver=4459
 pkgrel=1
 pkgdesc="An enhanced version of the PrBoom Doom engine port"
 arch=('i686' 'x86_64')
