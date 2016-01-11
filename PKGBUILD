@@ -2,7 +2,7 @@
 
 pkgname=argouml
 pkgver=0.34
-pkgrel=1
+pkgrel=2
 pkgdesc="UML 1.4 modeller"
 arch=('any')
 url="http://argouml.tigris.org/"
@@ -24,11 +24,11 @@ package() {
     mkdir -p ${pkgdir}/usr/share/applications/
 
     msg2 "Copying source files..."
-    cp -ar ${srcdir}/${pkgname}-${pkgver}/* ${pkgdir}/opt/${pkgname}/
+    cp -pR ${srcdir}/${pkgname}-${pkgver}/* ${pkgdir}/opt/${pkgname}/
 
     msg2 "Creating executable file..."
-    cp -a ${srcdir}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
+    cp -p ${srcdir}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
 
     msg2 "Creating desktop entry..."
-    cp -a ${srcdir}/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
+    cp -p ${srcdir}/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
 }
