@@ -2,7 +2,7 @@
 pkgname=python-storjnode
 _pkgname=${pkgname/python-/}
 pkgver=0.0.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Storj core library"
 url="https://github.com/Storj/storjcore"
 depends=('python' 'python-pip' 'python-crypto' 'python-btctxstore')
@@ -20,6 +20,6 @@ build() {
 package() {
     cd "$srcdir/$_pkgname-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1 
-    rm -rf ${pkgdir}/usr/lib/python3.4/site-packages/tests/
+    rm -rf ${pkgdir}/usr/lib/python3*/site-packages/tests/
 }
 
