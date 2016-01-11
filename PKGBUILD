@@ -14,7 +14,6 @@ depends=('python2' 'obs-build' 'git')
 optdepends=('subversion: svn repo support.'
 			'mercurial: hg repo support.'
 			'bzr: bzr repo support.')
-install=${pkgname}.install
 backup=("etc/obs/services/tar_scm")
 md5sums=('SKIP')
 
