@@ -1,0 +1,59 @@
+diff -Naur castor-2.1.15-20_orig/cmake/Findpython.cmake castor-2.1.15-20_corr/cmake/Findpython.cmake
+--- castor-2.1.15-20_orig/cmake/Findpython.cmake	2015-10-26 01:34:39.000000000 +0100
++++ castor-2.1.15-20_corr/cmake/Findpython.cmake	2016-01-11 17:03:43.281425360 +0100
+@@ -32,24 +32,24 @@
+   set(PYTHON_FIND_QUIETLY TRUE)
+ endif (CASTOR_PYTHON_LIBS)
+ 
+-execute_process (COMMAND python ${CMAKE_SOURCE_DIR}/config/pycompile.py --libs
++execute_process (COMMAND python2 ${CMAKE_SOURCE_DIR}/config/pycompile.py --libs
+   OUTPUT_VARIABLE CASTOR_PYTHON_LIBS)
+ string (REGEX REPLACE "\n" "" CASTOR_PYTHON_LIBS ${CASTOR_PYTHON_LIBS})
+ message (STATUS "CASTOR_PYTHON_LIBS = ${CASTOR_PYTHON_LIBS}")
+ 
+-execute_process (COMMAND python ${CMAKE_SOURCE_DIR}/config/pycompile.py --inc
++execute_process (COMMAND python2 ${CMAKE_SOURCE_DIR}/config/pycompile.py --inc
+   OUTPUT_VARIABLE CASTOR_PYTHON_INC)
+ string (REGEX REPLACE "\n" "" CASTOR_PYTHON_INC ${CASTOR_PYTHON_INC})
+ message (STATUS "CASTOR_PYTHON_INC = ${CASTOR_PYTHON_INC}")
+ 
+-execute_process ( COMMAND python -c "from distutils import sysconfig; print sysconfig.get_python_lib()"
++execute_process ( COMMAND python2 -c "from distutils import sysconfig; print sysconfig.get_python_lib()"
+   OUTPUT_VARIABLE CASTOR_DEST_PYTHON_LIBDIR)
+ string (REGEX REPLACE "\n" "" CASTOR_DEST_PYTHON_LIBDIR
+   ${CASTOR_DEST_PYTHON_LIBDIR})
+ message (STATUS "CASTOR_DEST_PYTHON_LIBDIR = ${CASTOR_DEST_PYTHON_LIBDIR}")
+ 
+ include (FindPackageHandleStandardArgs)
+-find_package_handle_standard_args (python DEFAULT_MSG 
++find_package_handle_standard_args (python2 DEFAULT_MSG 
+   CASTOR_PYTHON_LIBS
+   CASTOR_PYTHON_INC
+   CASTOR_DEST_PYTHON_LIBDIR)
+diff -Naur castor-2.1.15-20_orig/config/globuscompile.py castor-2.1.15-20_corr/config/globuscompile.py
+--- castor-2.1.15-20_orig/config/globuscompile.py	2015-10-26 01:34:39.000000000 +0100
++++ castor-2.1.15-20_corr/config/globuscompile.py	2016-01-11 17:04:07.398212551 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #******************************************************************************
+ #                      config/globuscompile.py
+diff -Naur castor-2.1.15-20_orig/config/oracompile.py castor-2.1.15-20_corr/config/oracompile.py
+--- castor-2.1.15-20_orig/config/oracompile.py	2015-10-26 01:34:39.000000000 +0100
++++ castor-2.1.15-20_corr/config/oracompile.py	2016-01-11 17:04:07.414879301 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #******************************************************************************
+ #                      config/oracompile.py
+diff -Naur castor-2.1.15-20_orig/config/pycompile.py castor-2.1.15-20_corr/config/pycompile.py
+--- castor-2.1.15-20_orig/config/pycompile.py	2015-10-26 01:34:39.000000000 +0100
++++ castor-2.1.15-20_corr/config/pycompile.py	2016-01-11 17:04:07.424879350 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #******************************************************************************
+ #                      config/pycompile.py
