@@ -15,5 +15,6 @@ pkgbase = terminix
 	source_x86_64 = https://github.com/gnunn1/terminix/releases/download/0.20/terminix.zip
 	md5sums_x86_64 = a0abba232236efe570d50e6221a695a0
 
+
 pkgname = terminix
 
