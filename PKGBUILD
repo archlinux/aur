@@ -7,7 +7,7 @@ pkgdesc="eplot (\"easy gnuplot\") is a ruby script which allows to pipe data eas
 arch=("any")
 url="http://liris.cnrs.fr/christian.wolf/software/eplot/"
 license=("GPL2")
-depends=("ruby")
+depends=("ruby" "gnuplot>=4")
 
 source=(
   "http://liris.cnrs.fr/christian.wolf/software/eplot/download/eplot"
