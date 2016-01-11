@@ -2,9 +2,9 @@
 # Contributor: Samuel Mesa <samuelmesa@linuxmail.org>
 
 pkgname=orfeo-toolbox
-pkgver=5.0
+pkgver=5.2
 minorver=0
-pkgrel=3
+pkgrel=1
 pkgdesc="ORFEO Toolbox (OTB) is an open source library of image processing algorithms"
 arch=(x86_64 i686)
 url="http://www.orfeo-toolbox.org/otb/"
@@ -21,10 +21,13 @@ backup=()
 options=()
 install=
 changelog=
-source=(http://freefr.dl.sourceforge.net/project/orfeo-toolbox/OTB/OTB-$pkgver.$minorver/OTB-$pkgver.$minorver.tgz
+
+source=(https://www.orfeo-toolbox.org/packages/OTB-$pkgver.$minorver.tar.gz
 		git://github.com/jmichel-otb/GKSVM.git)
 noextract=()
-md5sums=('414d838e59c0b762ec19023c5935a441' 'SKIP')
+md5sums=('08ac6145e6e159acfd7de209de26e999'
+         'SKIP')
+
 _gitname="GKSVM"
 
 prepare() {
@@ -38,10 +41,10 @@ build() {
   msg "Extracting archive..." 
   msg "starting make..."
   
-  if  [ -d "$srcdir/build/" ]; then
-    rm -rf $srcdir/build/
-   fi
-  mkdir $srcdir/build/
+#  if  [ -d "$srcdir/build/" ]; then
+#    rm -rf $srcdir/build/
+#   fi
+#  mkdir $srcdir/build/
 
 cd $srcdir/build
 
