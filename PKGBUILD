@@ -2,7 +2,7 @@
 
 pkgname=docker-machine
 pkgver=0.5.5
-pkgrel=2
+pkgrel=1
 epoch=2
 pkgdesc='Machine management for a container-centric world'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ conflicts=('docker-machine-bin')
 makedepends=('go' 'godep')
 
 source=("https://github.com/docker/machine/archive/v${pkgver//_/-}.tar.gz")
-sha256sums=('106a804491120bfc9da8a2229b4ce33b4d99210ada0b4ad4f6e1590f81eef8d8')
+sha256sums=('b6dee30f6e8eb1d3f130cbd9545018e0abb514a968bcd1acd6006ae343f8f402')
 
 prepare() {
     cd $srcdir
