@@ -6,7 +6,7 @@
 # Contributor: Flu
 
 pkgname=llpp-git
-pkgver=22
+pkgver=22.r71.g2bf99be
 pkgrel=1
 pkgdesc='Fast, featureful PDF viewer based on MuPDF.'
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ url="http://repo.or.cz/w/llpp.git"
 license=('custom')
 provides=('llpp')
 conflicts=('llpp')
-depends=('desktop-file-utils' 'jbig2dec' 'openjpeg2'
-         'libgl' 'libjpeg-turbo' 'glu')
+depends=('mupdf' 'freetype2' 'jbig2dec' 'openjpeg2'
+         'libgl' 'libjpeg-turbo' 'glu' 'desktop-file-utils')
 makedepends=('git' 'mupdf>=1.7' 'ocaml>=4.02')
 source=('git://repo.or.cz/llpp.git')
 sha256sums=('SKIP')
@@ -44,7 +44,7 @@ pkgver() {
 build() {
   cd llpp
   sed -i -e 's+-I \$srcdir/mupdf/include -I \$srcdir/mupdf/thirdparty/freetype/include+-I /usr/include/freetype2+' build.sh
-  sed -i -e 's+-lopenjpeg+-lopenjp2+' build.sh
+  sed -i -e 's+-lmupdfthird+-lmupdfthird -lz -lfreetype -ljpeg -ljbig2dec+' build.sh
   sed -i -e 's+-L\$srcdir/mupdf/build/native ++' build.sh
   sh build.sh build/
 }
