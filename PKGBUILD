@@ -2,13 +2,13 @@
 
 pkgname=createrepo_c
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A C implementation of createrepo, a tool to create yum repositories"
 arch=('i686' 'x86_64')
 license=('GPL')
 url='https://fedorahosted.org/createrepo_c/'
 depends=('rpm-org' 'libxml2' 'curl' 'glib2' 'python2')
-makedepends=('cmake' 'doxygen' 'python2-sphinx' 'sqlite' 'zlib')
+makedepends=('cmake' 'doxygen' 'python2-nose' 'python2-sphinx' 'sqlite' 'zlib')
 source=("https://github.com/rpm-software-management/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('510d1006294c2cfc7e6e01a5ffa243ac8b8e8cdb045efadfebb5c03f0251adaa')
 
@@ -30,6 +30,12 @@ build() {
 
   make
   make doc
+}
+
+check() {
+  cd ${pkgname}-${pkgver}
+  make tests
+  make test
 }
 
 package() {
