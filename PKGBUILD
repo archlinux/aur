@@ -14,12 +14,12 @@ source=("git://github.com/commontk/CTK.git")
 md5sums=("SKIP")
 
 pkgver() {
-  cd $srcdir/CTK
+  cd "$srcdir"/CTK
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd $srcdir
+  cd "$srcdir"
   rm -rf build
   mkdir build
   cd build
@@ -43,6 +43,6 @@ build() {
 }
 
 package() {
-  cd $srcdir/build
-  make DESTDIR=${pkgdir} install
+  cd "$srcdir"/build
+  make DESTDIR="${pkgdir}" install
 }
