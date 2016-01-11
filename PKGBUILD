@@ -11,12 +11,12 @@ license=('CDDL')
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${pkgver}/zfs-${pkgver}.tar.gz"
-        "zfs-utils.bash-completion-r1"
-        "zfs-utils.initcpio.install"
-        "zfs-utils.initcpio.hook")
+        "zfs.bash-completion-r1"
+        "zfs.initcpio.install"
+        "zfs.initcpio.hook")
 sha256sums=('780862ec2301ccace412a324787e9df762cff6046e73e2ac0ebdce9e2bd59b0f'
             'b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540'
-            '1e20071fa61a33874505dae0f2d71bb560f43e7faaea735cbde770ea10c133df'
+            '70930eee5b0f55ba587220b9530170d91ef1eea98a37de9ae38f963dee410b3a'
             '250f1232c464a81cc9c8b8ee05f21d752ebeebbc8614fae1c6d0bc600e816ac1')
 
 build() {
@@ -39,7 +39,6 @@ build() {
 package_zfs-dkms() {
     pkgdesc="Kernel modules for the Zettabyte File System."
     depends=("spl-dkms=${pkgver}" "zfs-utils=${pkgver}-${pkgrel}" "dkms")
-    optdepends=("mkinitcpio-dkms: Generate initramfs with zfs modules automatically")
     provides=("zfs")
     conflicts=("zfs-git" "zfs-lts")
     install=zfs.install
@@ -71,7 +70,10 @@ package_zfs-utils() {
     cp -r "${pkgdir}"/{lib,usr}
     rm -r "${pkgdir}"/lib
 
-    install -D -m644 "${srcdir}"/zfs-utils.initcpio.hook "${pkgdir}"/usr/lib/initcpio/hooks/zfs
-    install -D -m644 "${srcdir}"/zfs-utils.initcpio.install "${pkgdir}"/usr/lib/initcpio/install/zfs
-    install -D -m644 "${srcdir}"/zfs-utils.bash-completion-r1 "${pkgdir}"/usr/share/bash-completion/completions/zfs
+    install -D -m644 "${srcdir}"/zfs.initcpio.hook "${pkgdir}"/usr/lib/initcpio/hooks/zfs
+    install -D -m644 "${srcdir}"/zfs.bash-completion-r1 "${pkgdir}"/usr/share/bash-completion/completions/zfs
+
+    mkdir -p "${pkgdir}"/usr/lib/initcpio/install
+    sed -e "s|##VERMARKER##|${pkgver}|" "${srcdir}"/zfs.initcpio.install > "${pkgdir}"/usr/lib/initcpio/install/zfs
+    chmod 644 "${pkgdir}"/usr/lib/initcpio/install/zfs
 }
