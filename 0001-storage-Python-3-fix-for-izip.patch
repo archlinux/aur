@@ -1,0 +1,31 @@
+From 2b8bc2209ef356feabf6cd60ab7abbc54a99018b Mon Sep 17 00:00:00 2001
+From: Kyle Manna <kyle@kylemanna.com>
+Date: Mon, 11 Jan 2016 08:23:16 -0800
+Subject: [PATCH 1/2] storage: Python 3 fix for izip
+
+* Work with both.
+---
+ kademlia/storage.py | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/kademlia/storage.py b/kademlia/storage.py
+index 3cc5e5e..1116a9c 100644
+--- a/kademlia/storage.py
++++ b/kademlia/storage.py
+@@ -1,5 +1,12 @@
+ import time
+-from itertools import izip
++
++try:
++    # Python 2
++    from itertools import izip
++except ImportError:
++    # Python 3
++    izip = zip
++
+ from itertools import imap
+ from itertools import takewhile
+ import operator
+-- 
+2.7.0
+

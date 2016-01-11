@@ -1,0 +1,31 @@
+From c71a3700ac264cd62ac2e58cbab1a422d292f0a6 Mon Sep 17 00:00:00 2001
+From: Kyle Manna <kyle@kylemanna.com>
+Date: Mon, 11 Jan 2016 08:23:16 -0800
+Subject: [PATCH 2/2] storage: Python 3 fix for imap
+
+* Work with both.
+---
+ kademlia/storage.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/kademlia/storage.py b/kademlia/storage.py
+index 1116a9c..41610da 100644
+--- a/kademlia/storage.py
++++ b/kademlia/storage.py
+@@ -3,11 +3,12 @@ import time
+ try:
+     # Python 2
+     from itertools import izip
++    from itertools import imap
+ except ImportError:
+     # Python 3
+     izip = zip
++    imap = map
+ 
+-from itertools import imap
+ from itertools import takewhile
+ import operator
+ from collections import OrderedDict
+-- 
+2.7.0
+
