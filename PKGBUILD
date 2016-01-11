@@ -1,7 +1,7 @@
 # Maintainer: Gerald Nunn <gerald dot b dot nunn at gmail dot com>
 
 pkgname=terminix
-pkgver=0.21
+pkgver=0.30
 pkgrel=1
 pkgdesc="A tiling terminal emulator based on GTK+ 3"
 arch=('x86_64')
@@ -19,7 +19,7 @@ package() {
   mkdir -p "$pkgdir/usr/share/terminix/resources"
 
   install -Dm755 usr/bin/terminix "$pkgdir/usr/bin/terminix"
-  install -Dm755 usr/share/applications/terminix.desktop "$pkgdir/usr/share/applications/terminix.desktop"
+  install -Dm755 usr/share/applications/com.gexperts.Terminix.desktop "$pkgdir/usr/share/applications/com.gexperts.Terminix.desktop"
   install -Dm755 usr/share/terminix/schemes/* "$pkgdir/usr/share/terminix/schemes/"
   install -Dm755 usr/share/terminix/resources/* "$pkgdir/usr/share/terminix/resources/"
   install -Dm755 usr/share/glib-2.0/schemas/com.gexperts.Terminix.gschema.xml "$pkgdir/usr/share/glib-2.0/schemas/com.gexperts.Terminix.gschema.xml"
