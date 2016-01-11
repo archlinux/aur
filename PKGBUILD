@@ -1,8 +1,9 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=lsi-msm
-pkgver=15.05.01.00
-pkgrel=2
+pkgver=15.11.00.13
+_pkgver="$(echo "${pkgver}" | sed 's/\./-/3')"
+pkgrel=1
 pkgdesc="LSI Logic MegaRAID Storage Manager Suite"
 arch=('i686' 'x86_64')
 url='http://www.avagotech.com/products/server-storage'
@@ -10,6 +11,7 @@ license=('custom:LSI' 'Custom:TOG')
 depends=('libxtst'
          'alsa-lib'
          'libnet'
+         'libxslt'
          'unixodbc'
          'net-snmp'
          'perl-net-snmp'
@@ -21,13 +23,15 @@ depends_i686=('libxi'
               'libpng12'
               'libxinerama'
               'libjpeg6-turbo'
-              ) # 'xerces-c'
+              # 'xerces-c'
+              )
 depends_x86_64=('lib32-libxi'
                 'lib32-libxft'
                 'lib32-libpng12'
                 'lib32-libxinerama'
                 'lib32-libjpeg6-turbo'
-                ) # 'lib32-xerces-c'
+                # 'lib32-xerces-c'
+                )
 makedepends=('icu'
              'openslp'
              'sqlite'
@@ -48,8 +52,8 @@ source=('https://collaboration.opengroup.org/pegasus/documents/32572/pegasus-2.1
         'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.13.0-gcc5-build.patch'
         'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.14.1-build-fixes.patch'
         'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.14.1-ssl-include.patch')
-source_i686=("${pkgver}_Linux-x86_MSM.tar.gz::http://www.avagotech.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/MSM_linux_installer-${pkgver//./-}-tar.gz")
-source_x86_64=("${pkgver}_Linux-x64_MSM.tar.gz::http://www.avagotech.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/MSM_linux_x64_installer-${pkgver//./-}-tar.gz")
+source_i686=("${pkgver}_Linux-x86_MSM.tar.gz::http://docs.avagotech.com/docs-and-downloads/https:/avagodocs.s3.amazonaws.com:443/docs-and-downloads/https:/avagodocs.s3.amazonaws.com:443/docs-and-downloads/raid-controllers/raid-controllers-common-files/MSM_linux_x86_installer-${_pkgver}.tar.gz")
+source_x86_64=("${pkgver}_Linux-x64_MSM.tar.gz::http://docs.avagotech.com/docs-and-downloads/https:/avagodocs.s3.amazonaws.com:443/docs-and-downloads/https:/avagodocs.s3.amazonaws.com:443/docs-and-downloads/raid-controllers/raid-controllers-common-files/MSM_linux_x64_installer-${_pkgver}.tar.gz")
 sha1sums=('c832eaf240f6dfba843c4937f7a935382d48b9be'
           '0e5d7b71435760e3ef7c1e132ba05145ccbd1268'
           '79fbe24898030db50295a6254e7c4627e2b51b7c'
@@ -62,8 +66,8 @@ sha1sums=('c832eaf240f6dfba843c4937f7a935382d48b9be'
           'e8c0cea2589daebcd94ec2baf726391d4cd516cd'
           'a4d642b7be3c3400539dac5014f66463dc567221'
           '1eadb4d032cb7e7367317e61fee6a6e1f9f68868')
-sha1sums_i686=('caac4ba06e9e9e3d519f51eef4d33d9dbb0d501c')
-sha1sums_x86_64=('ca53ea0c32ae6d041c03dab6d5d99e1f3cca088d')
+sha1sums_i686=('74b03ef3ca8c9ceb8ae3a60adc3d22303d239798')
+sha1sums_x86_64=('7c687b8a18955053580849c68512d0bef4b5dba1')
 install=lsi-msm.install
 backup=('etc/lsi_mrdsnmp/LSI_StorSNMP.ini'
         'etc/lsi_mrdsnmp/sas/sas_TrapDestination.conf'
@@ -140,11 +144,11 @@ package() {
   # Fix permisions
   find . -type d -not \( -path */jre/* -prune \) -print0 2>/dev/null | xargs -0r chmod 755
   find . -type f -not \( -path */jre/* -prune \) -print0 2>/dev/null | xargs -0r chmod 644
-  for i in $(find . -type f -not \( -path */jre/* -prune \) -name '*.sh' -o -name 'popup_bin' -o -name 'popup' -o -name "add_entry" -o -name 'storcli64' -o -name 'mrmonitor' -o -name '*.so*'); do chmod +x ${i}; done
+  for i in $(find . -type f -not \( -path */jre/* -prune \) -name '*.sh' -o -name 'popup_bin' -o -name 'popup' -o -name "add_entry" -o -name 'storcli*' -o -name 'mrmonitor' -o -name '*.so*'); do chmod +x ${i}; done
   chmod +x etc/lsi_mrdsnmp/lsi_mrdsnmp{agent,main}
 
   # Make symlinks
-  mkdir -p usr/bin
+  install -d usr/bin
   ln -sf /etc/lsi_mrdsnmp/lsi_mrdsnmpagent usr/bin/lsi_mrdsnmpagent
   ln -sf /etc/lsi_mrdsnmp/lsi_mrdsnmpmain usr/bin/lsi_mrdsnmpmain
 
