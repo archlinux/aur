@@ -3,7 +3,7 @@
 pkgname=phonetisaurus-g014b2b
 _cmudist=g014b2b
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Precompiled train/test distribution for the unaccented CMUdict g014b2b distribution. Performance on this is %75.5 using the basic decoder."
 arch=('any')
 url="http://phonetisaurus.googlecode.com"
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('phonetisaurus')
 makedepends=('openfst')
 provides=('phonetisaurus-g014b2b')
-source=("http://phonetisaurus.googlecode.com/files/${_cmudist}.tgz")
+source=("https://www.dropbox.com/s/kfht75czdwucni1/${_cmudist}.tgz")
 sha1sums=('d91c09a0266736e42486ec36c1bd71c431dc7d04')
 
 build() {
