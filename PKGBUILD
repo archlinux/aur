@@ -3,7 +3,7 @@
 # Contributor: Marq Schneider <queueRAM@gmail.com>
 
 pkgname=kicad-git
-pkgver=r6360.274e88d
+pkgver=r6445.9525226
 pkgrel=1
 pkgdesc="Electronic schematic and printed circuit board (PCB) design tools - git clone of bzr repo (faster download)"
 arch=('i686' 'x86_64')
@@ -28,12 +28,10 @@ build() {
   cd "${srcdir}/${pkgname}"
   mkdir -p build/Release
   cd build/Release
-  # -DKICAD_SKIP_BOOST=ON ?
   # -DKICAD_SCRIPTING=ON -DKICAD_SCRIPTING_MODULES=ON ?
   # -DKICAD_SCRIPTING_WXPYTHON=ON ?
   cmake ../.. -DCMAKE_BUILD_TYPE=Release \
               -DCMAKE_INSTALL_PREFIX=/usr \
-              -DKICAD_SKIP_BOOST=ON \
               -DBUILD_GITHUB_PLUGIN=ON
   make #-j1
 }
