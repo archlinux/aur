@@ -1,0 +1,27 @@
+From 70cbcb2a6bbed46feba4850afca6aefb6909b6d5 Mon Sep 17 00:00:00 2001
+From: Kyle Manna <kyle@kylemanna.com>
+Date: Mon, 11 Jan 2016 08:23:16 -0800
+Subject: [PATCH 4/4] node: Python 3 fix for long()
+
+* Work with both.
+* https://docs.python.org/3/whatsnew/3.0.html#integers
+---
+ kademlia/node.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/kademlia/node.py b/kademlia/node.py
+index d1b25f7..90b3bb2 100644
+--- a/kademlia/node.py
++++ b/kademlia/node.py
+@@ -7,7 +7,7 @@ class Node:
+         self.id = id
+         self.ip = ip
+         self.port = port
+-        self.long_id = long(id.encode('hex'), 16)
++        self.long_id = int(id.encode('hex'), 16)
+ 
+     def sameHomeAs(self, node):
+         return self.ip == node.ip and self.port == node.port
+-- 
+2.7.0
+

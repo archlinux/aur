@@ -17,6 +17,7 @@ build() {
     patch -p1 < "$srcdir/../0001-storage-Python-3-fix-for-izip.patch"
     patch -p1 < "$srcdir/../0002-storage-Python-3-fix-for-imap.patch"
     patch -p1 < "$srcdir/../0003-storage-Python-3-fix-for-zope.interface.patch"
+    patch -p1 < "$srcdir/../0004-node-Python-3-fix-for-long.patch"
     python setup.py build
 }
 

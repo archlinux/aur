@@ -1,7 +1,7 @@
 From e531f28468255d5559898e3c353dd514773aebfd Mon Sep 17 00:00:00 2001
 From: Kyle Manna <kyle@kylemanna.com>
 Date: Mon, 11 Jan 2016 08:23:16 -0800
-Subject: [PATCH 3/3] storage: Python 3 fix for zope.interface
+Subject: [PATCH 3/4] storage: Python 3 fix for zope.interface
 
 * Work with both.
 ---
