@@ -1,5 +1,5 @@
 #
-# Maintainer: bjin <bjin at ctrl-d dot org>
+# Maintainer: bjin <bjin1990 at gmail dot com>
 # Maintainer: Iacopo Isimbaldi <isiachi@rhye.it>
 #
 
@@ -22,6 +22,7 @@ sha256sums=('780862ec2301ccace412a324787e9df762cff6046e73e2ac0ebdce9e2bd59b0f'
 
 build() {
     cd "${srcdir}/zfs-${pkgver}"
+    ./autogen.sh
 
     ./configure --prefix=/usr \
                 --sysconfdir=/etc \
@@ -51,6 +52,7 @@ package_zfs-dkms() {
     tar -xzf "zfs-${pkgver}.tar.gz" -C "${dkmsdir}" --strip-components 1
 
     cd "${dkmsdir}"
+    ./autogen.sh
     scripts/dkms.mkconf -v ${pkgver} -f dkms.conf -n zfs
     chmod g-w,o-w -R .
 }
