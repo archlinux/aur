@@ -1,0 +1,9 @@
+post_install() {
+  cat << 'EOM'
+
+	Before you can use avocode you will need an account.
+
+	http://avocode.com/pricing/monthly/
+
+EOM
+}
