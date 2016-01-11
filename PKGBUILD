@@ -2,9 +2,9 @@
 pkgname=tldr-rs-git
 _name=tldr-rs
 pkgver=r36.534fe17
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast TLDR client written in Rust."
-arch=('any')
+arch=('x86_64' 'i686')
 url="https://github.com/dbrgn/tldr-rs"
 license=('MIT', 'Apache')
 depends=('')
