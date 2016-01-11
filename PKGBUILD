@@ -3,7 +3,7 @@
 pkgname=python-irc3
 _pkgname=irc3
 pkgver=0.8.6
-pkgrel=1
+pkgrel=2
 pkgdesc="plugable irc client library based on asyncio"
 arch=(any)
 url="https://github.com/gawel/irc3"
