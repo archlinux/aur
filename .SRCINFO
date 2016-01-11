@@ -1,6 +1,6 @@
 pkgbase = smplayer-themes-svn
 	pkgdesc = Themes for SMPlayer
-	pkgver = 15.7.0.r7133
+	pkgver = 15.12.0.r7318
 	pkgrel = 1
 	url = http://smplayer.sourceforge.net/
 	arch = any
