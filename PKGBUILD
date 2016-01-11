@@ -2,7 +2,7 @@
 
 pkgname=rstudio-desktop-git
 _gitname=rstudio
-pkgver=0.99.842
+pkgver=0.99.849
 _gwtver=2.7.0
 _ginver=1.5
 pkgrel=1
@@ -45,10 +45,6 @@ prepare() {
 
     msg "Downloading and installing R packages"
     ./install-packages
-
-    # Temporary fix for the Qt 5.5
-    cd "${srcdir}/${_gitname}/src/cpp/desktop/3rdparty/qtsingleapplication"
-    sed -i 's|#include <QTime>|#include <QDataStream>\n#include <QTime>|' qtlocalpeer.cpp
 }
 
 build() {
@@ -67,9 +63,10 @@ package() {
     make DESTDIR="${pkgdir}" install
     # Install the license
     install -Dm 644 ../COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+    # Remove unnecessary directories
+    rm -rf "${pkgdir}/usr/lib/rstudio/resources/"{dictionaries,mathjax-23,libclang}
     # Creaate symlinks
     install -d "${pkgdir}/usr/bin"
-    rm -rf "${pkgdir}/usr/lib/rstudio/resources/"{dictionaries,mathjax-23,libclang}
     ln -sf /usr/lib/rstudio/bin/rstudio "${pkgdir}/usr/bin/rstudio"
     ln -sf /usr/share/myspell/dicts "${pkgdir}/usr/lib/rstudio/resources/dictionaries"
     ln -sf /usr/share/mathjax "${pkgdir}/usr/lib/rstudio/resources/mathjax-23"
