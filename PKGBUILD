@@ -3,7 +3,7 @@
 pkgname=transgui
 pkgver=5.0.1
 pkgrel=2
-pkgdesc="A cross platform front-end for the Transmission Bit-Torrent client"
+pkgdesc="Transmission Remote GUI is a feature rich cross platform front-end to remotely control a Transmission Bit-Torrent client daemon via its RPC protocol. Transmission Remote GUI is faster and has more functionality than the built-in Transmission web interface"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/transgui"
 license=('GPL2')
