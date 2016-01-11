@@ -2,7 +2,7 @@
 
 pkgname=django-storages-hg
 _pkgname=django-storages
-pkgver=1.1.8.r296
+pkgver=1.1.8.r329
 pkgrel=1
 pkgdesc="Collection of custom storage backends for Django"
 arch=('any')
