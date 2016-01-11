@@ -3,7 +3,7 @@
 
 pkgname=gnome-shell-extension-topicons
 pkgver=28
-pkgrel=1
+pkgrel=2
 pkgdesc="Shows legacy tray icons on top."
 arch=('any')
 url="https://extensions.gnome.org/extension/495/topicons/"
