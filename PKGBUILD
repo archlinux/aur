@@ -2,9 +2,9 @@
 
 pkgname=wanderer
 pkgver=3.2
-pkgrel=1
+pkgrel=1.1
 pkgdesc='Wanderer is a game like Boulderdash, Repton, XOR. (wanderer)'
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://e271.net/~marina/wanderer"
 license=('GPL')
 depends=('ncurses' 'gzip')
