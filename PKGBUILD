@@ -45,7 +45,6 @@ package_spl-dkms() {
     tar -xzf "spl-${pkgver}.tar.gz" -C "${dkmsdir}" --strip-components 1
 
     cd "${dkmsdir}"
-    ./autogen.sh
     scripts/dkms.mkconf -v ${pkgver} -f dkms.conf -n spl
     chmod g-w,o-w -R .
 }
