@@ -2,7 +2,7 @@
 
 pkgname=argouml
 pkgver=0.34
-pkgrel=2
+pkgrel=3
 pkgdesc="UML 1.4 modeller"
 arch=('any')
 url="http://argouml.tigris.org/"
@@ -14,7 +14,7 @@ source=("${pkgname}-${pkgver}.tar.gz::http://argouml-downloads.tigris.org/nonav/
 noextract=()
 md5sums=("440efea6096a00b8c19daab1ecddaf7c"
          "c9febf6fcf3230e1a1538ef9502d2d2c"
-         "1fb534f8d951e4de781216bcf44fa03c")
+         "137bff550da020b3e87d7ab4a6d1f6e5")
 validpgpkeys=()
 
 package() {

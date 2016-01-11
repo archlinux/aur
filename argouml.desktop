@@ -3,5 +3,5 @@ Name=ArgoUML
 Type=Application
 Exec=argouml
 Comment=UML 1.4 modeller
-Categories=Education;Engineering;Development;Programming;Science;
+Categories=Education;Engineering;Development;Programming;Science;Graphics;
 Icon=/opt/argouml/icon/ArgoIcon256x256.png
