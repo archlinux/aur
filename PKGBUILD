@@ -3,7 +3,7 @@
 
 _pkgname=dislocker
 pkgname=$_pkgname-git
-pkgver=0.5.1.r0.gbaa97ca
+pkgver=0.5.1.r2.gef39348
 pkgrel=1
 pkgdesc="FUSE driver to read/write Windows' BitLocker-ed volumes"
 arch=('i686' 'x86_64')
@@ -32,9 +32,6 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
   make DESTDIR="${pkgdir}/" install
-
-  ln -s /usr/bin/dislocker-fuse ${pkgdir}/usr/bin/dislocker
-  ln -s /usr/share/man/man1/dislocker-fuse.1.gz ${pkgdir}/usr/share/man/man1/dislocker.1.gz
 
   install -Dm644 README.md ${pkgdir}/usr/share/doc/${_pkgname}/README
   install -Dm644 CHANGELOG.md ${pkgdir}/usr/share/doc/${_pkgname}/CHANGELOG
