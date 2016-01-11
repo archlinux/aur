@@ -2,10 +2,10 @@
 pkgname=python-pyp2p
 _pkgname=${pkgname/python-/}
 pkgver=0.6.9
-pkgrel=1
+pkgrel=2
 pkgdesc="PyP2P is a simplified networking library for building peer-to-peer networks in Python"
 url="https://github.com/Storj/pyp2p"
-depends=('python' 'python-twisted')
+depends=('python' 'python-twisted' 'python-netifaces' 'python-ntplib' 'python-pyroute2')
 optdepends=()
 license=('MIT')
 arch=('any')
