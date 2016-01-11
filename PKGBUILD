@@ -23,4 +23,5 @@ package() {
   install -Dm755 usr/share/terminix/schemes/* "$pkgdir/usr/share/terminix/schemes/"
   install -Dm755 usr/share/terminix/resources/* "$pkgdir/usr/share/terminix/resources/"
   install -Dm755 usr/share/glib-2.0/schemas/com.gexperts.Terminix.gschema.xml "$pkgdir/usr/share/glib-2.0/schemas/com.gexperts.Terminix.gschema.xml"
+
 }
