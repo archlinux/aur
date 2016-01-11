@@ -5,7 +5,7 @@
 pkgbase=xorg-server-bug865
 pkgname=xorg-server-bug865
 pkgver=1.18.0
-pkgrel=3 # build first with 0.1 and then rebuild it after xf86-input-evdev rebuild
+pkgrel=4 # build first with 0.1 and then rebuild it after xf86-input-evdev rebuild
 arch=('i686' 'x86_64')
 license=('custom')
 groups=('xorg')
@@ -22,6 +22,7 @@ source=(${url}/releases/individual/xserver/xorg-server-${pkgver}.tar.bz2{,.sig}
         xvfb-run.1
         0001-systemd-logind-do-not-rely-on-directed-signals.patch
         v2-Xorg.wrap-activate-libdrm-based-detection-for-KMS-drivers.patch
+        xserver-glamor-Disable-debugging-messages-other-than-GL-API-errors.patch
         freedesktop-bug-865.patch)
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'C383B778255613DFDB409D91DB221A6900000011'
@@ -32,6 +33,7 @@ sha256sums=('195670819695d9cedd8dde95fbe069be0d0f488a77797a2d409f9f702daf312e'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
             '3d7edab3a54d647e7d924b29d29f91b50212f308fcb1853a5aacd3181f58276c'
             'c8addd0dc6d91797e82c51b539317efa271cd7997609e026c7c8e3884c5f601c'
+            '1fe0c2c13bc3643a9a236bc45910e1e68d7b9cbe128204bcc1821752ed266e95'
             'dad4bbadda03db2fe7046c43d838afd5e41f98c821fdac0908f0f20493caa660')
 
 prepare() {
@@ -42,6 +44,9 @@ prepare() {
 
   # fix xorg only working with root FS#47061
   patch -Np1 -i ../v2-Xorg.wrap-activate-libdrm-based-detection-for-KMS-drivers.patch
+
+  # disable debugging glamor messages in xorg log file
+  patch -Np1 -i ../xserver-glamor-Disable-debugging-messages-other-than-GL-API-errors.patch
 
   # The patch for freedesktop bug 865
   patch -Np1 -i "${srcdir}/freedesktop-bug-865.patch"
