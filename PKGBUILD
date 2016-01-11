@@ -2,8 +2,8 @@
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 
 pkgname=bazel
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.1.3
+pkgrel=1
 pkgdesc="Correct, reproducible, and fast builds for everyone"
 arch=('i686' 'x86_64')
 url="http://bazel.io/"
@@ -13,18 +13,12 @@ makedepends=('git' 'protobuf')
 install=bazel.install
 options=('!strip')
 source=("https://github.com/bazelbuild/bazel/archive/${pkgver}.tar.gz")
-sha256sums=('e527db85d788e1ada244b2e530ce77a2b25784b361377b5e2ea679b5d341bd3a')
+sha256sums=('5ba3e69b0867e00c3c765b499a5e836db791e3f2f5112f5684782eef5bab0218')
 
 build() {
   cd ${pkgname}-${pkgver}
   HOME=$srcdir
-  if (pacman -Q bazel &> /dev/null); then
-    echo "bazel found - compiling with installed bazel"
-    ./compile.sh build /usr/bin/bazel
-  else
-    echo "no installed bazel found - compiling from scratch"
-    ./compile.sh
-  fi
+  ./compile.sh
   ./output/bazel build scripts:bazel-complete.bash
 }
 
