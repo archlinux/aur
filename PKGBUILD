@@ -6,7 +6,7 @@
 pkgbase="zfs-dkms"
 pkgname=("zfs-dkms" "zfs-utils")
 pkgver=0.6.5.4
-pkgrel=1
+pkgrel=3
 license=('CDDL')
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
@@ -50,7 +50,6 @@ package_zfs-dkms() {
     tar -xzf "zfs-${pkgver}.tar.gz" -C "${dkmsdir}" --strip-components 1
 
     cd "${dkmsdir}"
-    ./autogen.sh
     scripts/dkms.mkconf -v ${pkgver} -f dkms.conf -n zfs
     chmod g-w,o-w -R .
 }
@@ -65,6 +64,7 @@ package_zfs-utils() {
     # Remove uneeded files
     rm -r "${pkgdir}"/etc/init.d
     rm -r "${pkgdir}"/usr/lib/dracut
+    rm -r "${pkgdir}"/usr/share/initramfs-tools
 
     # move module tree /lib -> /usr/lib
     cp -r "${pkgdir}"/{lib,usr}
