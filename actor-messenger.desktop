@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Actor Messenger
+Version=0.1.1
+Comment=Actor Messenger
+Exec=actor
+Icon=/opt/actor-messenger/icon.png
+Type=Application
+Categories=Network;
