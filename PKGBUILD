@@ -5,8 +5,8 @@
 # Contributor: Alexander <chronischzuspaet at gmail dot com> Kempen
 
 pkgname=scidavis
-pkgver=1.D8
-pkgrel=3
+pkgver=1.D9
+pkgrel=1
 pkgdesc="Application for Scientific Data Analysis and Visualization, fork of QtiPlot"
 arch=('i686' 'x86_64')
 url="http://scidavis.sourceforge.net/"
@@ -19,11 +19,10 @@ source=(http://prdownloads.sourceforge.net/sourceforge/scidavis/${pkgname}.${pkg
         scidavis-qtassistant.patch
         scidavis-qwt5.patch)
 install=${pkgname}.install
-md5sums=('c421b6a38f5183780bdf6c5960d92df5'
-         '0fefd6afe2fbc69b5faadd1112e79d7f'
-         'b35c4fcbc22ca981a1679ae571ab3bed'
-         '749297643799f48527178bdb43ad94e7')
-
+md5sums=('fccb771fea021a61055d554db6230b51'
+         'bf3725530f5d66c7234232ba5500b308'
+         '14199d381631fa2db8450a66ea5ca1cc'
+         'f9b3979ee4e255b0dc2d26f1b5ff82c2')
 prepare() {
   cd "${srcdir}"
   # python patch
@@ -44,10 +43,7 @@ package() {
   cd "${srcdir}/${pkgname}.${pkgver}"
   make INSTALL_ROOT="${pkgdir}" DESTDIR="${pkgdir}" install
 
-  _pydir=$(python2 -c "from distutils import sysconfig; print sysconfig.get_python_lib()")
-  python2 $(dirname ${_pydir})/py_compile.py "${pkgdir}/etc/scidavisrc.py"
-  python2 $(dirname ${_pydir})/py_compile.py "${pkgdir}/usr/share/scidavis/scidavisUtil.py"
-
   # remove liborigin files since it uses static library
   rm -rf "${pkgdir}/usr/local"
 }
+

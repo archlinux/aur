@@ -1,6 +1,6 @@
-diff -ruN scidavis.1.D8.orig/scidavis/src/ApplicationWindow.cpp scidavis.1.D8/scidavis/src/ApplicationWindow.cpp
---- scidavis.1.D8.orig/scidavis/src/ApplicationWindow.cpp	2014-07-22 12:01:44.000000000 +0400
-+++ scidavis.1.D8/scidavis/src/ApplicationWindow.cpp	2014-07-23 09:18:28.882046613 +0400
+diff -ruN scidavis.1.D9.orig/libscidavis/src/ApplicationWindow.cpp scidavis.1.D9/libscidavis/src/ApplicationWindow.cpp
+--- scidavis.1.D9.orig/libscidavis/src/ApplicationWindow.cpp	2015-11-24 08:07:15.000000000 +0300
++++ scidavis.1.D9/libscidavis/src/ApplicationWindow.cpp	2016-01-11 21:48:49.123929437 +0300
 @@ -143,7 +143,7 @@
  #include <QList>
  #include <QUrl>

@@ -1,23 +1,24 @@
-diff -ruN scidavis.1.D8.orig/scidavis/python-includepath.py scidavis.1.D8/scidavis/python-includepath.py
---- scidavis.1.D8.orig/scidavis/python-includepath.py	2014-07-22 12:01:44.000000000 +0400
-+++ scidavis.1.D8/scidavis/python-includepath.py	2014-07-23 11:29:57.651838033 +0400
+diff -ruN scidavis.1.D9.orig/scidavis/python-includepath.py scidavis.1.D9/scidavis/python-includepath.py
+--- scidavis.1.D9.orig/scidavis/python-includepath.py	2016-01-11 21:28:27.808718321 +0300
++++ scidavis.1.D9/scidavis/python-includepath.py	2016-01-11 21:30:45.280849080 +0300
 @@ -1,4 +1,4 @@
 -#!/usr/bin/python
 +#!/usr/bin/python2
  
  ############################################################################
  #                                                                          #
-@@ -28,6 +28,4 @@
+@@ -27,7 +27,4 @@
+ #                                                                          #
  ############################################################################
  
- from distutils import sysconfig
+-from distutils import sysconfig
 -from PyQt4 import pyqtconfig
 -config = pyqtconfig.Configuration()
 -print " ".join([sysconfig.get_python_inc(), config.sip_inc_dir])
 +print sysconfig.get_python_inc()
-diff -ruN scidavis.1.D8.orig/scidavis/python-sipcmd.py scidavis.1.D8/scidavis/python-sipcmd.py
---- scidavis.1.D8.orig/scidavis/python-sipcmd.py	2014-07-22 12:01:44.000000000 +0400
-+++ scidavis.1.D8/scidavis/python-sipcmd.py	2014-07-23 11:39:18.501823204 +0400
+diff -ruN scidavis.1.D9.orig/scidavis/python-sipcmd.py scidavis.1.D9/scidavis/python-sipcmd.py
+--- scidavis.1.D9.orig/scidavis/python-sipcmd.py	2016-01-11 21:28:27.808718321 +0300
++++ scidavis.1.D9/scidavis/python-sipcmd.py	2016-01-11 21:32:15.821088729 +0300
 @@ -27,10 +27,6 @@
  #                                                                          #
  ############################################################################
@@ -31,16 +32,16 @@ diff -ruN scidavis.1.D8.orig/scidavis/python-sipcmd.py scidavis.1.D8/scidavis/py
 -print " ".join([config.sip_bin, "-I", config.pyqt_sip_dir, config.pyqt_sip_flags] + flags)
 +flags.append("-o")
 +print " ".join(["/usr/bin/sip", "-I", "/usr/share/sip/PyQt4", "-x VendorID -t WS_X11 -t Qt_4_8_6 -x Py_v3"] + flags)
-diff -ruN scidavis.1.D8.orig/scidavis/python.pri scidavis.1.D8/scidavis/python.pri
---- scidavis.1.D8.orig/scidavis/python.pri	2014-07-22 12:01:44.000000000 +0400
-+++ scidavis.1.D8/scidavis/python.pri	2014-07-23 11:23:28.455181657 +0400
-@@ -16,19 +16,19 @@
-   SOURCES += ../scidavis/src/PythonScript.cpp ../scidavis/src/PythonScripting.cpp
+diff -ruN scidavis.1.D9.orig/scidavis/python.pri scidavis.1.D9/scidavis/python.pri
+--- scidavis.1.D9.orig/scidavis/python.pri	2016-01-11 21:28:27.808718321 +0300
++++ scidavis.1.D9/scidavis/python.pri	2016-01-11 21:34:17.050282684 +0300
+@@ -24,14 +24,14 @@
  
+   message("Making PyQt bindings via SIP")
    unix {
--    INCLUDEPATH += $$system(python python-includepath.py)
-+    INCLUDEPATH += $$system(python2 python-includepath.py)
-     contains(PRESET,mac_dist) {
+-    INCLUDEPATH += $$system(python ../python-includepath.py)
++    INCLUDEPATH += $$system(python2 ../python-includepath.py)
+     osx_dist {
        DEFINES += PYTHONHOME=/Applications/scidavis.app/Contents/Resources
      } else {
        macx {
@@ -51,18 +52,3 @@ diff -ruN scidavis.1.D8.orig/scidavis/python.pri scidavis.1.D8/scidavis/python.p
        }
      }     
      LIBS        += -lm
-     system(mkdir -p $${SIP_DIR})
--    system($$system(python python-sipcmd.py) -c $${SIP_DIR} ../scidavis/src/scidavis.sip)
-+    system($$system(python2 python-sipcmd.py) -c $${SIP_DIR} ../scidavis/src/scidavis.sip)
-   }
- 
-   win32 {
-@@ -36,7 +36,7 @@
-      DEFINES += SIP_STATIC_MODULE
- #    QMAKE_LIBPATH += "$$(HOME)/usr/mxe/PyQt4/"
-     LIBS += -L"$$(HOME)/usr/mxe/PyQt4/" -lPyQtCore -lPyQtGui -lqpygui -lqpycore -lsip -lpython27
--    system($$system(python python-sipcmd.py) -c $${SIP_DIR} src/scidavis.sip)
-+    system($$system(python2 python-sipcmd.py) -c $${SIP_DIR} src/scidavis.sip)
-   } else {
-     INCLUDEPATH += $$system(call python-includepath.py)
-     LIBS        += $$system(call python-libs-win.py)
