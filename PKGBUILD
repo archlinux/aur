@@ -2,7 +2,7 @@
 
 pkgname=stackedit
 pkgver=4.3.11
-pkgrel=2
+pkgrel=3
 pkgdesc='In-browser markdown editor'
 arch=('any')
 url='https://stackedit.io/'
@@ -22,6 +22,7 @@ build(){
   cd $pkgname-$pkgver
   npm install
   bower install
+  npm install bower
   gulp
 }
 
