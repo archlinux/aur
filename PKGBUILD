@@ -1,7 +1,7 @@
 pkgbase=python-restructuredtext_lint
 pkgname=(python-restructuredtext_lint python2-restructuredtext_lint)
 _pyname=restructuredtext_lint
-pkgver=0.12.4
+pkgver=0.14.0
 pkgrel=1
 arch=(any)
 pkgdesc="reStructuredText linter"
@@ -34,4 +34,4 @@ package_python2-restructuredtext_lint() {
   install -Dm644 UNLICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
-sha256sums=('add99af23fbd2d41e7ceb06ff9aaeaa6b96c60a4faa00f49c9dfbaf28bdf7ede')
+sha256sums=('fb938ee83956e738e597a41e30652ca01028bbd39d8836b16a764d72b71f9c54')
