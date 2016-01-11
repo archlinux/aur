@@ -9,8 +9,8 @@
 
 pkgname=paraview-qt5
 _PkgName=ParaView
-pkgver=4.4.0
-pkgrel=3
+pkgver=5.0.0
+pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK'
 arch=('i686' 'x86_64')
 url='http://www.paraview.org'
@@ -23,7 +23,7 @@ optdepends=('python2-matplotlib: Needed to support equation rendering using Math
             'python2-numpy: Needed for using some filters such as "Python Calculator"')
 source=("http://paraview.org/files/v${pkgver:0:3}/${_PkgName}-v${pkgver}-source.tar.gz"
         '0001-find_hdf5.patch')
-sha256sums=('c2dc334a89df24ce5233b81b74740fc9f10bc181cd604109fd13f6ad2381fc73'
+sha256sums=('b0ecfc8f590a696a4374752961abcf663acfc367ced8101ae4419cfbc6c60534'
             '93fabb0b1f57322cd0bfb1fd13724c8250a40528714cd9d994a7bd5a84bc7bd8')
 provides=('paraview')
 conflicts=('paraview')
