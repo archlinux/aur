@@ -5,7 +5,7 @@
 
 pkgname=arachnophilia
 _pkgname=Arachnophilia
-pkgver=5.5.2902
+pkgver=5.5.2914
 pkgrel=1
 pkgdesc="A web page development workshop and general programming tool"
 arch=('any')
@@ -26,10 +26,6 @@ md5sums=('655fa3322d93900ca2cf7e78e90968af'
          '27010dd0f2b690ca78392dffcc25f210')
 DLAGENTS=('http::/usr/bin/curl -A "Mozilla/4.0" -fLC - --retry 3 --retry-delay 3 -o %o %u')
 noextract=("$_pkgname.jar")
-
-pkgver() {
-  echo $(awk '/Current/ {print $4 $6}' $srcdir/index.php|tr , .)
-}
 
 package() {
   cd "${srcdir}"
