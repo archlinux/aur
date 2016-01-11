@@ -41,10 +41,10 @@ build() {
   msg "Extracting archive..." 
   msg "starting make..."
   
-#  if  [ -d "$srcdir/build/" ]; then
-#    rm -rf $srcdir/build/
-#   fi
-#  mkdir $srcdir/build/
+  if  [ -d "$srcdir/build/" ]; then
+    rm -rf $srcdir/build/
+   fi
+  mkdir $srcdir/build/
 
 cd $srcdir/build
 
