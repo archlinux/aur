@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Chusovitin <dchusovitin@gmail.com>
 
 pkgname=docker-machine
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 epoch=2
 pkgdesc='Machine management for a container-centric world'
