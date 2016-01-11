@@ -3,13 +3,14 @@
 
 pkgname=lightdm-webkit-greeter
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight display manager"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/lightdm-webkit-greeter"
 license=('GPL3' 'LGPL3')
 source=("http://launchpad.net/lightdm-webkit-greeter/trunk/$pkgver/+download/$pkgname-$pkgver.tar.gz")
 depends=('lightdm' 'webkitgtk')
+backup=('etc/lightdm/lightdm-webkit-greeter.conf')
 options=(!libtool)
 makedepends=('gnome-doc-utils' 'gobject-introspection' 'intltool')
 md5sums=('1df5d78cd7d0ee268ca83a678d1544ca')
