@@ -3,7 +3,7 @@
 
 pkgname=python2-pyvisa
 _orig_name=PyVISA
-pkgver=1.7
+pkgver=1.8
 pkgrel=1
 pkgdesc="A Python package with bindings to the 'Virtual Instrument Software Architecture' library"
 depends=('python2')
@@ -12,7 +12,7 @@ arch=('any')
 url="http://pyvisa.sourceforge.net/"
 license=('MIT')
 source=("https://pypi.python.org/packages/source/P/PyVISA/PyVISA-${pkgver}.tar.gz")
-md5sums=('11700c24a49ab1035000d7499b590a24')
+md5sums=('207fdb09eba84295988f61c9ec5ee30a')
 
 prepare() {
   cd "$srcdir"/PyVISA-${pkgver}
