@@ -9,7 +9,7 @@ pkgver() {
 }
 pkgrel=1
 pkgdesc="conversion tools for the suckless image format"
-url="http://suckless.org"
+url="http://tools.suckless.org/farbfeld/"
 arch=('i686' 'x86_64')
 license=('ISC')
 depends=('libjpeg-turbo' 'libpng')
