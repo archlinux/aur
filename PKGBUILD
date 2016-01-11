@@ -1,9 +1,10 @@
 # Maintainer: Thiago Perrotta <perrotta dot thiago at poli dot ufrj dot br>
+# Maintainer: Matthew Ellison <matt+aur@arroyonetworks.com>
 
 # Purpose of this package: to automate some steps covered in the ArchWiki.
 
 pkgname=vmware-systemd-services
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="A collection of systemd services to interface with VMWare /etc/init.d scripts."
 arch=('any')
@@ -12,9 +13,11 @@ license=('ISC')
 groups=('vmware')
 depends=('systemd')
 source=('vmware.service'
-		'vmware-USBArbitrator.service')
-md5sums=('0f540eca927f18646646eb32c3c23951'
-         '876c623915264a82420737a50a76919f')
+		'vmware-usbarbitrator.service'
+    'vmware-workstation-server.service')
+sha256sums=('883a0757f5178bd11829e05a10f41e749c06c9a53accb8a4696fe24468972945'
+         '9d4482421df702f9ed8bc272b7c0dfea27fb99aa98830a4be139fdf339a89bf7'
+         '89a16bd8cabed700b94fd242e85d7b40d46a76f3e5ae85274cf457d470ca34de')
 
 package() {
 	cd "$srcdir"
