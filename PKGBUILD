@@ -7,7 +7,7 @@ pkgname=('xorg-server-nosystemd' 'xorg-server-xephyr-nosystemd' 'xorg-server-xdm
 		 'xorg-server-xnest-nosystemd' 'xorg-server-xwayland-nosystemd' 'xorg-server-common-nosystemd' 'xorg-server-devel-nosystemd')
 _pkgbase=xorg-server
 pkgver=1.18.0
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://xorg.freedesktop.org"
@@ -21,7 +21,8 @@ makedepends=('pixman' 'libx11' 'mesa-nosystemd' 'mesa-libgl-nosystemd' 'xf86drip
 source=(${url}/releases/individual/xserver/${_pkgbase}-${pkgver}.tar.bz2{,.sig}
         xvfb-run
         xvfb-run.1
-        v2-Xorg.wrap-activate-libdrm-based-detection-for-KMS-drivers.patch)
+        v2-Xorg.wrap-activate-libdrm-based-detection-for-KMS-drivers.patch
+        xserver-glamor-Disable-debugging-messages-other-than-GL-API-errors.patch)
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'C383B778255613DFDB409D91DB221A6900000011'
               'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3')
@@ -29,11 +30,15 @@ sha256sums=('195670819695d9cedd8dde95fbe069be0d0f488a77797a2d409f9f702daf312e'
             'SKIP'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
-            'c8addd0dc6d91797e82c51b539317efa271cd7997609e026c7c8e3884c5f601c')
+            'c8addd0dc6d91797e82c51b539317efa271cd7997609e026c7c8e3884c5f601c'
+            '1fe0c2c13bc3643a9a236bc45910e1e68d7b9cbe128204bcc1821752ed266e95')
 
 prepare() {
+  cd "${_pkgbase}-${pkgver}"
   # fix xorg only working with root FS#47061
   patch -Np1 -i ../v2-Xorg.wrap-activate-libdrm-based-detection-for-KMS-drivers.patch
+  # disable debugging glamor messages in xorg log file
+  patch -Np1 -i ../xserver-glamor-Disable-debugging-messages-other-than-GL-API-errors.patch
 
   autoreconf -fvi
 }
