@@ -4,15 +4,14 @@
 
 pkgname=kicad-git
 pkgver=r6445.9525226
-pkgrel=1
+pkgrel=2
 pkgdesc="Electronic schematic and printed circuit board (PCB) design tools - git clone of bzr repo (faster download)"
 arch=('i686' 'x86_64')
 url="http://iut-tice.ujf-grenoble.fr/kicad/"
 license=('GPL')
 depends=('glew' 'wxgtk' 'desktop-file-utils' 'boost-libs' 'python' 'glm')
 makedepends=('cmake' 'git' 'zlib' 'mesa' 'boost')
-optdepends=('kicad-docs-bzr: for documentation'
-            'kicad-library-bzr: for footprints')
+optdepends=('kicad-library: for footprints')
 conflicts=('kicad' 'kicad-bzr')
 provides=('kicad')
 install=kicad.install
