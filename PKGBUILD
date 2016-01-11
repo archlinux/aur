@@ -27,6 +27,10 @@ md5sums=('655fa3322d93900ca2cf7e78e90968af'
 DLAGENTS=('http::/usr/bin/curl -A "Mozilla/4.0" -fLC - --retry 3 --retry-delay 3 -o %o %u')
 noextract=("$_pkgname.jar")
 
+pkgver() {
+  echo $(awk '/Current/ {print $4 $6}' $srcdir/index.php|tr , .)
+}
+
 package() {
   cd "${srcdir}"
 
