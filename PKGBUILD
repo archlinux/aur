@@ -2,7 +2,7 @@
 
 pkgname=python-irc3
 _pkgname=irc3
-pkgver=0.8.1
+pkgver=0.8.6
 pkgrel=1
 pkgdesc="plugable irc client library based on asyncio"
 arch=(any)
