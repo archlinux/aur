@@ -1,13 +1,13 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 pkgname=comodo-modules
-pkgver=20150307_4.2.2_1
+pkgver=20150307_4.3.3_2
 pkgrel=1
 pkgdesc="Modules for Comodo Antivirus for providing realtime protection"
 arch=('i686' 'x86_64')
 url="http://www.bondoffamily-net.com/~kinta-chan"
 license=('GPL3')
-depends=('linux>=4.2' 'linux<4.3' 'comodo')
-makedepends=('linux-headers>=4.2' 'linux-headers<4.3')
+depends=('linux>=4.3' 'linux<4.4' 'comodo')
+makedepends=('linux-headers>=4.3' 'linux-headers<4.4')
 install=comodo-modules.install
 _date=20150307
 source=("driver-${_date}.tar::${url}/techknow/DownLoad/redirfs/beta/driver.tar")
@@ -37,5 +37,7 @@ package() {
   ROOT_PATH="$srcdir/driver" make INSTALL_MOD_PATH="$pkgdir/usr" install
 
   # fix .install file
+  _ver=$(pacman -Q linux | cut -d " " -f 2)
+  _kernel=$_ver-ARCH
   sed -i "s:KERNEL=.*:KERNEL=${_kernel}:" "${startdir}/comodo-modules.install"
 }
