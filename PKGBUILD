@@ -44,7 +44,7 @@ pkgver() {
 build() {
   cd llpp
   sed -i -e 's+-I \$srcdir/mupdf/include -I \$srcdir/mupdf/thirdparty/freetype/include+-I /usr/include/freetype2+' build.sh
-  sed -i -e 's+-lmupdfthird+-lmupdfthird -lz -lfreetype -ljpeg -ljbig2dec+' build.sh
+  sed -i -e 's+-lmupdfthird+-lmupdfthird -lz -lfreetype -ljpeg -ljbig2dec -lopenjp2+' build.sh
   sed -i -e 's+-L\$srcdir/mupdf/build/native ++' build.sh
   sh build.sh build/
 }
