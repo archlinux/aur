@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=k3b-frameworks-git
-pkgver=2.9.90.r5949.046a102
+pkgver=2.9.90.r5954.52b299a
 pkgrel=1
 pkgdesc="Feature-rich and easy to handle CD burning application. KF5 Frameworks branch. (Git version)"
 arch=('i686' 'x86_64')
@@ -33,7 +33,7 @@ conflicts=('k3b')
 source=('git://anongit.kde.org/k3b.git#branch=kf5'
         'fix_install_knotify_kxmlgui_files.patch')
 sha1sums=('SKIP'
-          '9ff1dfbf14d9fecbc41a5ee5eadeaef10327a2c2')
+          '1a797024b07492d281fc7ffdaaaa933ffb83d52d')
 install=k3b-frameworks-git.install
 
 pkgver() {
