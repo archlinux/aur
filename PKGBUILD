@@ -1,5 +1,5 @@
 pkgname=fortune-mod-warehouse13
-pkgver=1510301659
+pkgver=1601061550
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Warehouse 13"
