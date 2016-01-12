@@ -1,6 +1,6 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="5.5.315.0"
+pkgver="5.5.316.0"
 pkgrel="1"
 pkgdesc="Perform simple editing of PDF files"
 license=('Custom')
@@ -15,10 +15,10 @@ _x64file="PDFXVE5.x64.msi"
 _installdir="/usr/lib"
 
  source_x86_64+=($_downloadsource/$_x64file)
- md5sums_x86_64+=(4dacec9df39420ba9a331bafa04ddd60)
+ md5sums_x86_64+=(878f7b53dbf26a9650dced777934cb36)
 
  source_i686+=($_downloadsource/$_x86file)
- md5sums_i686+=(727451b980123624fcbe26869210849a)
+ md5sums_i686+=(7689640c4bb2a4ce4a1cc4bc5bcf7871)
 
 prepare()
 {
@@ -73,7 +73,6 @@ package()
           --mimetypes="application/pdf" \
           --custom="StartupWMClass=PDFXEdit.exe"
 
-
  sed -i "s/Exec=${pkgname}/Exec=${pkgname} \%f/" "$srcdir/$pkgname.desktop"
 
  install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
@@ -89,7 +88,11 @@ package()
  echo 'if [ ! -d "$HOME/.$program/wine" ] ; then' >> "$pkgdir/usr/bin/$pkgname"
  echo '   mkdir -p "$HOME/.$program/wine"' >> "$pkgdir/usr/bin/$pkgname"
  echo 'fi' >> "$pkgdir/usr/bin/$pkgname"
- echo 'document=$(WINEPREFIX="$HOME/.$program/wine" /usr/bin/winepath -w "$1")' >> "$pkgdir/usr/bin/$pkgname"
+ echo  'if [ ! -z "$1" ] ; then' >> "$pkgdir/usr/bin/$pkgname"
+ echo '   document=$(WINEPREFIX="$HOME/.$program/wine" /usr/bin/winepath -w "$1")' >> "$pkgdir/usr/bin/$pkgname"
+ echo 'else' >> "$pkgdir/usr/bin/$pkgname"
+ echo '   unset document' >> "$pkgdir/usr/bin/$pkgname"
+ echo 'fi' >> "$pkgdir/usr/bin/$pkgname"
  echo 'WINEPREFIX="$HOME/.$program/wine" /usr/bin/wine '\"${_installdir}'/$program/PDFXEdit.exe" "$document"' >> "$pkgdir/usr/bin/$pkgname"
 
  chmod 0755 "$pkgdir/usr/bin/$pkgname"
