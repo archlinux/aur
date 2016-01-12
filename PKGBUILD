@@ -5,7 +5,7 @@
 pkgname=pstate-frequency-git
 _gitname=pstate-frequency
 pkgdesc="Easily control Intel p-state driver (git version)"
-pkgver=2.0.3.r555.a1d140f
+pkgver=2.0.3.r560.15741aa
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('git')
@@ -44,7 +44,7 @@ prepare() {
   # best practices. It is highly recommended that you
   # enable the line to allow for editing the config.mk file
   #
-  make DESTDIR="${pkgdir}" edit
+  # make DESTDIR="${pkgdir}" edit
 
   make DESTDIR="${pkgdir}" options
 }
