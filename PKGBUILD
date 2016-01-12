@@ -1,5 +1,5 @@
 pkgname=caelum-git
-pkgver=r3.e776a80
+pkgver=r20.b33ce46
 pkgrel=1
 pkgdesc="Library for OGRE targeted at helping to create nice-looking atmospheric effects."
 arch=('i686' 'x86_64')
@@ -9,16 +9,16 @@ makedepends=('cmake' 'git')
 provides=('caelum')
 conflicts=('caelum')
 license=('LGPL')
-source=("git+https://github.com/RigsOfRods/caelum")
+source=("git+https://github.com/RigsOfRods/ogre-caelum")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd ${srcdir}/caelum
+  cd ${srcdir}/ogre-caelum
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd ${srcdir}/caelum
+  cd ${srcdir}/ogre-caelum
 
   # get a clean build dir
   # [[ -d build ]] && rm -rf build
@@ -31,6 +31,6 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/caelum
+  cd ${srcdir}/ogre-caelum
   make DESTDIR=${pkgdir} install
 }
