@@ -3,7 +3,7 @@
 
 pkgname=oqapy
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An application intended to sort files of the image type in graphic mode."
 arch=(i686 x86_64)
 url="http://www.oqapy.eu/"
@@ -11,13 +11,17 @@ license=('GPL')
 depends=(
 python2-pyqt
 python2-exiv2
+python2-numpy
 pyexiv2
 gphoto2
 dcraw
 python2-imaging
 opencv
 )
-source=(http://www.oqapy.eu/releases/$pkgname-$pkgver.tar.gz Makefile.patch)
+source=(
+http://www.oqapy.eu/releases/$pkgname-$pkgver.tar.gz
+Makefile.patch
+)
 sha256sums=('6c978f21c02cbd24a53bd38bbf21179c5ee4e5c946accda32f2ae3f9bc4b74f7'
             '5faffa555c37b8c991434b5fc8ece0a99805ae2783101da15e62a37fba75cd22')
 
