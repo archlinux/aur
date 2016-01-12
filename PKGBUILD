@@ -7,11 +7,11 @@ url="http://code.google.com/p/ogre-paged"
 license=('MIT')
 makedepends=('ogre' 'boost' 'cmake' 'git')
 provides=('ogre-pagedgeometry')
-source=(git+https://github.com/RigsOfRods/PagedGeometry.git)
+source=(git+https://github.com/RigsOfRods/ogre-pagedgeometry)
 sha512sums=('SKIP')
 
 build() {
-  cd $srcdir/PagedGeometry
+  cd $srcdir/ogre-pagedgeometry
 
   # get a clean build dir
   [[ -d build ]] && rm -rf build
@@ -26,7 +26,7 @@ build() {
 }
 
 package() {
-  install -Dm644 $srcdir/lib/libPagedGeometry.a $pkgdir/usr/lib/libPagedGeometry.a
+  install -Dm644 $srcdir/ogre-pagedgeometry/lib/libPagedGeometry.a $pkgdir/usr/lib/libPagedGeometry.a
   mkdir $pkgdir/usr/include
-  cp -r $srcdir/PagedGeometry/include $pkgdir/usr/include/PagedGeometry
+  cp -r $srcdir/ogre-pagedgeometry/include $pkgdir/usr/include/PagedGeometry
 }
