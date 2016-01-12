@@ -1,15 +1,25 @@
 diff -Naur KindleUnpack-0.80/KindleUnpack.pyw KindleUnpack/KindleUnpack.pyw
 --- KindleUnpack-0.80/KindleUnpack.pyw	2015-05-02 10:49:42.000000000 -0400
 +++ KindleUnpack/KindleUnpack.pyw	2015-07-08 14:42:12.697805918 -0400
-@@ -6,6 +6,8 @@
+@@ -4,7 +4,9 @@
 
- import sys
+ from __future__ import unicode_literals, division, absolute_import, print_function
 
-+sys.path.insert(0, '.')
+-import sys
++import sys, os
 +
++sys.path.insert(0, os.path.dirname(__file__))
+
  from lib.compatibility_utils import PY2, text_type, unicode_str
  from lib.compatibility_utils import unicode_argv, add_cp65001_codec
+@@ -12,7 +14,6 @@
+ import lib.unipath as unipath
+ from lib.unipath import pathof
 
+-import os
+ import traceback
+
+ import codecs
 diff -Naur KindleUnpack-0.80/setup.py KindleUnpack/setup.py
 --- KindleUnpack-0.80/setup.py	1969-12-31 19:00:00.000000000 -0500
 +++ KindleUnpack/setup.py	2015-07-08 14:42:12.697805918 -0400

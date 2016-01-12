@@ -12,7 +12,7 @@ depends=('python')
 source=("https://github.com/kevinhendricks/${_pkgname}/archive/v${pkgver}.tar.gz"
         "Installing-with-setuptools.diff")
 sha256sums=('567d22d7f48c050a896e64c3ac1a77c83ad0beda8767bae9e2f9f10607839b51'
-            '4eb7f6b6021efffe7b7baf5497e8cba21f9bfab9bf2e0c9cc6df06e1e8247204')
+            '30dc56333aefa24bd2f9ffaa22113021669bd4d235564db56dfe6a09ea3f5b68')
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     patch -p1 <../Installing-with-setuptools.diff
@@ -20,10 +20,10 @@ prepare() {
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    python2 setup.py build
+    python setup.py build
 }
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    python2 setup.py install --root="${pkgdir}" --optimize=1
+    python setup.py install --root="${pkgdir}" --optimize=1
 }
