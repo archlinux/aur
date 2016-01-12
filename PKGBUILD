@@ -2,13 +2,13 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emscripten-git
-pkgver=1.35.17.48.gbaac644
-pkgrel=1
+pkgver=1.35.17.53.ge15deee
+pkgrel=2
 pkgdesc="LLVM-to-JavaScript compiler"
 arch=('i686' 'x86_64')
 url="http://emscripten.org"
 license=('custom')
-depends=('nodejs' 'python2')
+depends=('nodejs' 'python2' 'python')
 makedepends=('git' 'cmake' 'clang' 'libxml2')
 optdepends=('java-environment: for using clojure'
 	    'gcc-go: for using llvm-go, go may also work')
@@ -43,8 +43,8 @@ prepare() {
       -i tools/settings_template_readonly.py
   
   # python2 shebang fixes
-  sed '1s|python$|python2|' -i $(find third_party tools -name \*.py) emrun emcc{,.py} em++{,.py} emconfigure emmake emcmake emar
-  sed '1s|python$|python2|' -i $srcdir/emscripten-fastcomp-clang/tools/scan-view/bin/scan-view
+  sed '1s|python$|python2|' -i $(find third_party tools -name \*.py) emrun emcc{,.py} em++{,.py} emconfigure emmake emcmake emar emranlib
+  sed '1s|python$|python2|' -i $srcdir/emscripten-fastcomp-clang/tools/scan-view/bin/scan-view 
   cd $srcdir/emscripten-fastcomp
   
   # put clang source into the right place (http://git.io/i1GBkg)
