@@ -31,5 +31,4 @@ package() {
   install -Dm644 LICENSE.US.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE.US.txt
   install -Dm644 LICENSE.GPL.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE.GPL.txt
   install -Dm644 LICENSE.LGPL.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE.LGPL.txt
-  install -Dm644 FindKDReports.cmake $pkgdir/usr/share/cmake/Modules/FindKDReports.cmake
 }
