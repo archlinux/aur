@@ -4,8 +4,8 @@
 
 _pkgname=xf86-video-qxl
 pkgname=$_pkgname-git
-pkgver=0.1.4.7.ge765cc5
-pkgrel=5
+pkgver=0.1.4.31.g91ee004
+pkgrel=1
 pkgdesc='X Window System QXL driver including Xspice server'
 arch=('i686' 'x86_64')
 url='http://www.spice-space.org'
@@ -16,10 +16,8 @@ optdepends=('python2: Xspice server')
 makedepends=('git' 'xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=20' 'spice-protocol')
 provides=('xf86-video-qxl')
 conflicts=('xf86-video-qxl' 'X-ABI-VIDEODRV_VERSION<20' 'X-ABI-VIDEODRV_VERSION>=21')
-source=('git://anongit.freedesktop.org/xorg/driver/xf86-video-qxl'
-        'fix-cast.patch')
-sha256sums=('SKIP'
-            '575243334f763c21282eccd7bd4eb713b90e96fdd46a882370925fa20d4acb70')
+source=('git://anongit.freedesktop.org/xorg/driver/xf86-video-qxl')
+sha256sums=('SKIP')
 
 pkgver() {
     cd $_pkgname
@@ -28,7 +26,6 @@ pkgver() {
 
 prepare() {
     cd $_pkgname
-    patch -p1 < ${srcdir}/fix-cast.patch
     sed -i '1c #!/usr/bin/python2' scripts/Xspice
 }
 
