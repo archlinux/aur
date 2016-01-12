@@ -1,7 +1,7 @@
 # Maintainer: GreenRaccoon23 <GreenRaccoon a t gmail d o t com>
 
 pkgname=snappy-git
-pkgver=1.1.3.r1.gd803429
+pkgver=1.1.3.r7.g0800b1e
 pkgrel=2
 pkgdesc='A fast compressor/decompressor library'
 arch=('any')
