@@ -4,7 +4,7 @@
 
 _pkgname=keychain
 pkgname="${_pkgname}-git"
-pkgver=2.7.2_beta1.25.g5f5a3c9
+pkgver=2.8.2.1.gc93da4b
 pkgrel=1
 pkgdesc="A front-end to ssh-agent, allowing one long-running ssh-agent process per system, rather than per login"
 arch=('any')
