@@ -1,8 +1,8 @@
 pkgbase=swift-language
 pkgname=(swift swift-lldb)
-_swiftver=2.2-SNAPSHOT-2016-01-06-a
+_swiftver=2.2-SNAPSHOT-2016-01-11-a
 pkgver=${_swiftver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="The Swift programming language and debugger"
 arch=('i686' 'x86_64')
 url="http://swift.org/"
@@ -21,17 +21,15 @@ source=(
     "swift-corelibs-xctest-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-xctest/archive/swift-${_swiftver}.tar.gz"
     "swift-corelibs-foundation-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-foundation/archive/swift-${_swiftver}.tar.gz"
 )
-sha256sums=(
-    '929d5dda152ebfb31afe6c27cf9c641a3d033a8b54cf459090403cc655c59e76'
-    'ae29efd1c0797f2cd8f68d4a74bcc5639afadbbd13c8873e5d5d79c59e0d7a9a'
-    'e7095f1b19e81370ba91e9d5319849ba9aaa4ebc25bbc93524497ddcec987339'
-    '4ed1fe8f696e36b4b5528d68fe34c53dc79794f274dc64334667a1b378749ddc'
-    '2fcdbd08cfe4a77d5f68424fbe373ddfa283273fe224eadf3a23a57c8683de79'
-    '3d922644a0f1b1b2c412b306cf0efa6e1f32b251f89a88d354f6983c1a92a9e1'
-    '7d969dbcf75b312701b8e2be473ec15952d133f5d5ae7b42fbfa42a296222cda'
-    '20e3cedfe23a5057dbd4a226dc5fe3e8aba473115cec35fe6de7ff925178c901'
-    '4d29ae29261699fe6a3c039be71ee17a5fc77c04f01fe68cf87070b20ad17818'
-)
+sha256sums=('6fdf3e053422f1e77d307ff381486b31a7161ff99ecfbb631ee936b2cafcac74'
+            'a4c567c010eea1e76ae6ba05b874dfd5b0e19d8f3b72649d9ed431df443ad787'
+            '934ce9fb6742b79d013ba4257a0e249530ba1be00bb1155bbb698fe0cdd6f042'
+            '415c3c627c8d1bcb7b6759d015b23a68131105c89badaec5d0d7a2378acf2d42'
+            'fc1053cf91050da55064c5cd703ebae0aacc181955245963ac405a3a0c7e6d8b'
+            'c5e92b71daecbeeb8fe043fe58bc85c7deacaadc21caa38357d569ae4093a023'
+            '60b11af87b565d68dd5e6d13af5052f359923e3146a6ffc8336c86d68b5c4fa6'
+            '5fde35c76b688ec37d8e25f0bc3cc1738548d8bd03a709bcfb3cb2744b221a9e'
+            '66bf0fb21c37bb2792b113b770e225c90bca548b2246f86054e14c6cc79f0517')
 
 prepare() {
     # Use python2 where appropriate
