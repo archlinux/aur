@@ -1,7 +1,7 @@
 # Maintainer: Pierre Neidhardt <ambrevar@gmail.com>
 
 pkgname=demlo
-pkgver=2.0
+pkgver=2
 pkgrel=1
 pkgdesc="A dynamic and extensible music library organizer"
 arch=("i686" "x86_64")
