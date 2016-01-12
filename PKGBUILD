@@ -1,7 +1,7 @@
 # Maintainer: GreenRaccoon23 <GreenRaccoon a t gmail d o t com>
 
 pkgname=liteide-git
-pkgver=x27.2.1.r0.gf5de5dc
+pkgver=x28.r12.ga92ef33
 pkgrel=1
 pkgdesc="IDE for editing and building projects written in the Go programming 
     language - git variant."
