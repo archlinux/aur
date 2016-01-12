@@ -3,11 +3,11 @@
 
 pkgname=compton-conf
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A graphical configuration tool for Compton X composite manager. Qt4 UI.'
 arch=('i686' 'x86_64')
 url="https://github.com/lxde/compton-conf"
-license=('GPL2' 'LGPL2.1')
+license=('LGPL2.1')
 
 depends=('qt4' 'libconfig')
 makedepends=('cmake')
