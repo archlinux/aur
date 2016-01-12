@@ -1,5 +1,5 @@
 pkgname=syzkaller-git
-pkgver=r125.bd75706
+pkgver=r195.15128d4
 pkgrel=1
 pkgdesc='a distributed, unsupervised, coverage-guided Linux syscall fuzzer'
 arch=(x86_64 i686)
