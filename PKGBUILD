@@ -1,7 +1,7 @@
 # Maintainer: Albert Graef <aggraef at gmail dot com>
 
 pkgname=faust-vst-git
-pkgver=38.32865ee
+pkgver=39.2cb1896
 pkgrel=1
 pkgdesc="VST plugin architecture for Faust"
 arch=("i686" "x86_64")
