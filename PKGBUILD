@@ -9,7 +9,7 @@ license=('GPL')
 depends=('emacs' 'avfs' 'fuse')
 optdepends=('zip: support for zip files' 'unzip: support for zip files')
 source=(http://www.emacswiki.org/emacs/download/sunrise-commander.el)
-md5sums=('d41d8cd98f00b204e9800998ecf8427e')
+md5sums=('d6c7232a1757f43b407222ec9901c9a8')
 
 prepare() {
   printf "%s" $(awk '/RCS/ {print $5}' $pkgname.el)
