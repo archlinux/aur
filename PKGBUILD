@@ -2,8 +2,8 @@
 # Contributor: Duy Truong <jimreynold2nd@yahoo.com>
 
 pkgbase=python-jira
-pkgname=('python-jira')
-	 #'python2-jira')
+pkgname=('python-jira'
+	 'python2-jira')
 pkgdesc="Python library for interacting with JIRA via REST APIs"
 pkgver=1.0.3
 pkgrel=4
@@ -34,15 +34,15 @@ package_python-jira(){
 }
 
 
-#package_python2-jira(){
-#        makedepends=('python2-pip')
-#        depends=('python2'
-#                 'python2-requests'
-#                 'python2-six'
-#                 'python2-tlslite'
-#                 'python2-requests-toolbelt'
-#                 'python2-requests-oauthlib'
-#                 'python2-oauthlib')
-#        pip2 install --no-deps --target "${pkgdir}/usr/lib/python2.7/site-packages" "jira-${pkgver}-py2.py3-none-any.whl"
-#}
+package_python2-jira(){
+        makedepends=('python2-pip')
+        depends=('python2'
+                 'python2-requests'
+                 'python2-six'
+                 'python2-tlslite'
+                 'python2-requests-toolbelt'
+                 'python2-requests-oauthlib'
+                 'python2-oauthlib')
+        pip2 install --no-deps --target "${pkgdir}/usr/lib/python2.7/site-packages" "jira-${pkgver}-py2.py3-none-any.whl"
+}
 
