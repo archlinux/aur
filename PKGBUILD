@@ -2,7 +2,7 @@
 # Contributer: Vincent Demeester <vincent@sbr.io>
 # Contributer: Alex Ogier <alex.ogier@gmail.com>
 pkgname=ruby-build
-pkgver=20151226
+pkgver=20160111
 pkgrel=1
 _file="${pkgname}-v${pkgver}.tar.gz"
 pkgdesc="Compile and install Ruby"
@@ -11,7 +11,7 @@ url="${_file}::https://github.com/sstephenson/ruby-build"
 license=('MIT')
 optdepends=('git: install ruby from git')
 source=($url/tarball/v$pkgver)
-sha1sums=('3f774da783ad3dfad5545665d27f48f12083e3f4')
+sha1sums=('3e00d67ee7e82cba8553b5f067a5f1885fb59a9f')
 
 build() {
   cd $srcdir
