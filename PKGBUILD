@@ -2,7 +2,7 @@
 
 pkgname=sc3-plugins-git
 _name="sc3-plugins"
-pkgver=3.7.0.alpha1.r7.g9367339
+pkgver=3.7.0.beta.r14.gf978dc2
 pkgrel=1
 pkgdesc="Plugins for SuperCollider (Git version)"
 url="http://supercollider.sourceforge.net/"
@@ -15,9 +15,23 @@ provides=('supercollider-with-extras-git')
 source=("${_name}::git+https://github.com/supercollider/sc3-plugins")
 md5sums=('SKIP')
 
+_sc_source="https://github.com/supercollider/supercollider"
+_sc_name="supercollider"
+
 pkgver() {
   cd "$_name"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/Version.//g'
+}
+
+prepare() {
+  cd $srcdir/$_name
+
+  if [ -d $_sc_name ] ; then
+    (cd $_sc_name && git pull origin)
+    msg "The local files are updated."
+  else
+    git clone --depth=1 $_sc_source
+  fi
 }
 
 build() {
@@ -28,7 +42,7 @@ build() {
 
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
-        -DSC_PATH=$HOME/src/supercollider \
+        -DSC_PATH=../supercollider \
         -DSUPERNOVA=1\
         -DAY=1
   make
