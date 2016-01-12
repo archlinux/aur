@@ -1,11 +1,11 @@
 pkgname=cen64-git
-pkgver=20150923
+pkgver=20160112
 pkgrel=1
 pkgdesc="Cycle-accurate Nintendo 64 simulator"
 arch=('i686' 'x86_64')
 url="http://www.cen64.com/"
 license=('BSD')
-depends=('mesa')
+depends=('mesa' 'openal')
 makedepends=('cmake')
 
 _gitroot='git://git.cen64.com/cen64.git'
