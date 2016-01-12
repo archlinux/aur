@@ -15,7 +15,7 @@ options=('!strip')
 install="itch.install"
 
 source=("https://github.com/itchio/itch/archive/v${pkgver}.tar.gz")
-sha256sums=('ce64b75af82460c4ada305b06e9f007fa16ea364aaa1b011f8945f60928bc2b2')
+sha256sums=('9db457f0788d1b112565e50a483df6b4868cb14527dbdc5a1ef0125e91ffd891')
 
 [ "$CARCH" = "i686" ]   && _ELECTRON_ARCH=ia32
 [ "$CARCH" = "x86_64" ] && _ELECTRON_ARCH=x64
