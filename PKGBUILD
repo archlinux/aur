@@ -6,8 +6,8 @@
 
 pkgbase=python-sphinx
 pkgname=('python-sphinx' 'python2-sphinx')
-pkgver=1.3.3
-pkgrel=3
+pkgver=1.3.4
+pkgrel=1
 
 arch=('any')
 url='http://sphinx.pocoo.org/'
@@ -36,7 +36,7 @@ checkdepends=(
 )
 
 source=("http://pypi.python.org/packages/source/S/Sphinx/Sphinx-$pkgver.tar.gz")
-md5sums=('3800ffa038a1eedb5139f9c247e7ee2f')
+md5sums=('a0aa2e92d749d52c678873994dff9e10')
 
 prepare() {
   # souce duplication is required because makefile modify source code
