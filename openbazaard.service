@@ -5,6 +5,7 @@ Description=Openbazaar Marketplace Server
 Type=forking
 User=openbazaar
 WorkingDirectory=/var/lib/openbazaard/
+TimeoutSec=0
 ExecStart=/usr/bin/openbazaard start
 ExecStop=/usr/bin/openbazaard stop
 PIDFile=/tmp/openbazaard.pid
