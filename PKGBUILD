@@ -1,5 +1,5 @@
 pkgname=fortune-mod-3rfts
-pkgver=1505122318
+pkgver=1601081550
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from 3rd Rock from the Sun"
