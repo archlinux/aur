@@ -1,6 +1,6 @@
 # Maintainer: Dimitri Merejkowsky <d.merej@gmail.com>
 pkgname=qibuild
-pkgver='3.10.1'
+pkgver='3.11'
 pkgrel='6'
 pkgdesc='The meta build framework'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
 makedepends=('python2' 'python2-docutils')
 
 source=("https://pypi.python.org/packages/source/q/qibuild/qibuild-${pkgver}.tar.gz")
-md5sums=('9c7d42d12e56c3d3cc1f3fa86874795e')
+md5sums=('07eaeaf8203d7211992f302058a13471')
 
 
 build() {
