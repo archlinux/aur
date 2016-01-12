@@ -1,0 +1,17 @@
+[Unit]
+Description=Web Front-End for BitMeter-OS
+Requires=network.target
+ConditionPathExists=/var/lib/bitmeter/bitmeter.db
+After=syslog.target network.target
+
+[Service]
+ExecStart=/usr/bin/bmws
+Type=simple
+StandardError=syslog
+StandardOutput=syslog
+User=root
+Group=root
+
+
+[Install]
+WantedBy=multi-user.target

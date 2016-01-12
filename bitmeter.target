@@ -1,0 +1,8 @@
+[Unit]
+Description=Web Front-End for BitMeter-OS
+Requires=network.target bitmeter-web.service bitmeter.service
+ConditionPathExists=/var/lib/run/bitmeter/bitmeter.db
+After=syslog.target network.target
+
+[Install]
+WantedBy=multi-user.target

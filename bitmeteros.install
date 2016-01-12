@@ -1,0 +1,22 @@
+post_install() {
+	ln -s /usr/lib/libpcap.so /usr/lib/libpcap.so.0.8
+	DB_FILE=/var/lib/bitmeter/bitmeter.db
+	if [ -f $DB_FILE ]; then
+		rm $DB_FILE.new
+		bmdb upgrade 8 
+	else
+		mv $DB_FILE.new $DB_FILE   
+	fi
+	echo 'To start the BitMeter OS Web Service, run "systemctl start bitmeter" and "systemctl start bitmeter-web"'
+	echo 'To access the web server go to http://localhost:2605 in your internet browser'
+}
+
+pre_remove() {
+	systemctl stop bitmeter
+	systemctl stop bitmeter-web
+}
+
+post_remove() {
+	rm /var/lib/bitmeter/bitmeter.db
+	rm -f /var/log/bitmeter/error.log
+}
