@@ -1,21 +1,17 @@
 # Maintainer: Can Celasun <dcelasun[at]gmail[dot]com>
 pkgname=writerscafe
-pkgver=2.37
-pkgrel=4
+pkgver=2.39
+pkgrel=1
 pkgdesc="A set of power tools for all fiction writers, whether experienced or just starting out"
 url="http://writerscafe.co.uk/"
 license="custom"
-arch=(i686 x86_64)
+arch=('i686' 'x86_64')
 depends=('libpng12')
 install=writerscafe.install
-
-source=(http://writerscafe.co.uk/WritersCafe-${pkgver}-x86_64.tar.gz)
-md5sums=('e6104ea968706aae14f2a2886b28e43f')
-
-if [ "${CARCH}" = "i686" ]; then
-source=(http://writerscafe.co.uk/WritersCafe-${pkgver}-i386.tar.gz)
-md5sums=('1d0ab1da5c1ac9eb7595405e9d9f1e87')
-fi
+source_x86_64=(http://writerscafe.co.uk/WritersCafe-${pkgver}-x86_64.tar.gz)
+source_i686=(http://writerscafe.co.uk/WritersCafe-${pkgver}-i386.tar.gz)
+md5sums_i686=('86c3ea90c51a78f381ff346f6db795d2')
+md5sums_x86_64=('c075b3a95da870307dbd102676b20416')
 
 package() {
 
