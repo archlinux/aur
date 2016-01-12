@@ -4,14 +4,14 @@
 pkgname=secure-delete
 pkgver=3.1
 pkgfile="secure_delete-$pkgver"
-pkgrel=5
+pkgrel=6
 pkgdesc="Secure file, disk, swap, memory erasure utilities"
 url="http://www.thc.org/"
 depends=('glibc' 'sh')
 conflicts=('srm')
 license=('GPL')
 arch=('i686' 'x86_64')
-source=(https://mirrors.thesqrtminus1.com/repos/arch/secure_delete-${pkgver}.tar.gz)
+source=(https://zerocount.net/hosted/secure_delete-${pkgver}.tar.gz)
 sha256sums=('a9d846d1dce3f1bdf13bbb306e8596bc1f263198a086f6beecd90ccf7bddf8d5')
 
 build()
