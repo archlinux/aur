@@ -1,6 +1,6 @@
 pkgbase = xtbackup
 	pkgdesc = PHP backup script/library with special drivers for MySQL, Amazon RDS and Amazon S3.
-	pkgver = 0.8.6
+	pkgver = 0.8.7
 	pkgrel = 1
 	url = http://k2s.github.io/xtbackup/
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = xtbackup
 	license = Apache
 	depends = php
 	depends = php-sqlite
-	source = https://github.com/k2s/xtbackup/archive/v0.8.6.tar.gz
+	source = https://github.com/k2s/xtbackup/archive/v0.8.7.tar.gz
 	source = https://github.com/amazonwebservices/aws-sdk-for-php/archive/1.6.3.tar.gz
-	md5sums = 08cb6382a2d627da4abad2eec3c1b49d
+	md5sums = bbad2de54867184e8d20866792296922
 	md5sums = 6c6b4d4b3d181f8ef29ee7772836d9e1
 
 pkgname = xtbackup
