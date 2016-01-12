@@ -5,7 +5,7 @@ pkgname=('vmware-horizon-client' 'vmware-horizon-pcoip' 'vmware-horizon-rtav' 'v
 pkgver=3.5.0
 _build=2999900
 _cart='CART15Q3'
-pkgrel=2
+pkgrel=3
 pkgdesc='VMware Horizon Client connect to VMware Horizon virtual desktop'
 arch=('i686' 'x86_64')
 url='https://my.vmware.com/web/vmware/info/slug/desktop_end_user_computing/vmware_horizon_clients/3_0'
@@ -82,11 +82,11 @@ package_vmware-horizon-client() {
 	depends=('gnome-icon-theme' 'openssl' 'libpng12' 'gtk2' 'libxml2' 'libxss')
 	optdepends=('freerdp: RDP remote desktop connections'
 		'rdesktop: RDP remote desktop connections'
-		'vmware-horizon-pcoip: PCoIP remote desktop connections'
-		'vmware-horizon-rtav: Real-Time Audio-Video'
-		'vmware-horizon-smartcard: Authenticate via Samrtcard'
-		'vmware-horizon-usb: Redirect USB devices'
-		'vmware-horizon-virtual-printing: Redirect local printers')
+		'vmware-horizon-pcoip: PCoIP and BLAST remote desktop connections'
+		'vmware-horizon-rtav: Real-Time Audio-Video (webcam and audio-in)'
+		'vmware-horizon-smartcard: smartcard authentication'
+		'vmware-horizon-usb: USB device redirection'
+		'vmware-horizon-virtual-printing: virtual printing')
 	install=vmware-horizon-client.install
 
 	cd "${srcdir}/extract/vmware-horizon-client/"
@@ -104,7 +104,7 @@ package_vmware-horizon-client() {
 }
 
 package_vmware-horizon-pcoip() {
-	pkgdesc='VMware Horizon Client connect to VMware Horizon virtual desktop - PCoIP connection'
+	pkgdesc='VMware Horizon Client connect to VMware Horizon virtual desktop - PCoIP and BLAST remote desktop connections'
 	depends=('vmware-horizon-client' 'libxtst')
 	optdepends=('alsa-lib: audio support via alsa'
 		'libpulse: audio support via pulse sound server')
@@ -120,8 +120,8 @@ package_vmware-horizon-pcoip() {
 }
 
 package_vmware-horizon-rtav() {
-	pkgdesc='VMware Horizon Client connect to VMware Horizon virtual desktop - real-time audio-video (webcam and audio-in)'
-	depends=('vmware-horizon-client')
+	pkgdesc='VMware Horizon Client connect to VMware Horizon virtual desktop - Real-Time Audio-Video (webcam and audio-in)'
+	depends=('vmware-horizon-pcoip')
 	cd "${srcdir}/extract/vmware-horizon-rtav/"
 
 	mkdir -p "${pkgdir}/usr/"
@@ -130,7 +130,7 @@ package_vmware-horizon-rtav() {
 
 package_vmware-horizon-smartcard() {
 	pkgdesc='VMware Horizon Client connect to VMware Horizon virtual desktop - smartcard authentication'
-	depends=('vmware-horizon-client' 'pcsclite')
+	depends=('vmware-horizon-pcoip' 'pcsclite')
 
 	cd "${srcdir}/extract/vmware-horizon-smartcard/"
 
@@ -139,8 +139,8 @@ package_vmware-horizon-smartcard() {
 }
 
 package_vmware-horizon-usb() {
-	pkgdesc='VMware Horizon Client connect to VMware Horizon virtual desktop - USB redirection'
-	depends=('vmware-horizon-client')
+	pkgdesc='VMware Horizon Client connect to VMware Horizon virtual desktop - USB device redirection'
+	depends=('vmware-horizon-pcoip')
 	install=vmware-horizon-usb.install
 
 	cd "${srcdir}/extract/vmware-horizon-usb/"
@@ -155,7 +155,7 @@ package_vmware-horizon-usb() {
 
 package_vmware-horizon-virtual-printing() {
 	pkgdesc='VMware Horizon Client connect to VMware Horizon virtual desktop - virtual printing'
-	depends=('vmware-horizon-client' 'openssl098' 'libcups')
+	depends=('vmware-horizon-pcoip' 'openssl098' 'libcups')
 	install=vmware-horizon-virtual-printing.install
 
 	cd "${srcdir}/extract/vmware-horizon-virtual-printing/"
