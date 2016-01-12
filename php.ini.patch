@@ -5,7 +5,7 @@
  ; or per-virtualhost web server configuration file.
  ; http://php.net/open-basedir
 -;open_basedir =
-+open_basedir = /srv/http/:/home/:/tmp/:/usr/share/pear/:/usr/share/webapps/
++open_basedir = /srv/http/:/home/:/tmp/:/opt/php56/share/pear/:/usr/share/webapps/
  
  ; This directive allows you to disable certain functions for security reasons.
  ; It receives a comma-delimited list of function names.
@@ -14,7 +14,7 @@
  
  ; UNIX: "/path1:/path2"
 -;include_path = ".:/php/includes"
-+include_path = ".:/usr/share/pear"
++include_path = ".:/opt/php56/share/pear"
  ;
  ; Windows: "\path1;\path2"
  ;include_path = ".;c:\php\includes"
@@ -23,7 +23,7 @@
  ; Directory in which the loadable extensions (modules) reside.
  ; http://php.net/extension-dir
 -; extension_dir = "./"
-+extension_dir = "/usr/lib/php/modules/"
++extension_dir = "/opt/php56/lib/php/modules/"
  ; On windows:
  ; extension_dir = "ext"
  
