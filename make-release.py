@@ -18,17 +18,36 @@ def clean():
 
 
 def set_version(version):
+    version_changed = False
     pkgbuild = os.path.join(THIS_DIR, "PKGBUILD")
     with open(pkgbuild, "r") as fp:
         lines = fp.readlines()
     new_lines = list()
     for line in lines:
         if line.startswith("pkgver"):
+            previous_version = line.split("=")[1]
+            if previous_version != version:
+                version_changed = True
             new_line = "pkgver='%s'\n" % version
             new_lines.append(new_line)
         else:
             new_lines.append(line)
 
+    with open(pkgbuild, "w") as fp:
+        fp.writelines(new_lines)
+    return version_changed
+
+def reset_pkgrel():
+    pkgbuild = os.path.join(THIS_DIR, "PKGBUILD")
+    with open(pkgbuild, "r") as fp:
+        lines = fp.readlines()
+    new_lines = list()
+    for line in lines:
+        if line.startswith("pkgrel"):
+            new_line = "pkgrel='1'\n"
+            new_lines.append(new_line)
+        else:
+            new_lines.append(line)
     with open(pkgbuild, "w") as fp:
         fp.writelines(new_lines)
 
@@ -61,7 +80,9 @@ def push():
 
 def make_release(version):
     clean()
-    set_version(version)
+    version_changed = set_version(version)
+    if version_changed:
+        reset_pkgrel()
     set_checksums()
     run_makepkg()
     update_srcinfo()
