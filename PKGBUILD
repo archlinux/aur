@@ -15,7 +15,7 @@ license=('custom:Oracle BSD')
 optdepends=("java-runtime>=$_major: Run the examples"
             "java-environment>=$_major: Compile and run the examples")
 options=('!strip')
-source=("http://download.java.net/jdk$_major/archive/$_build/binaries/jdk-$_pkgver_doc-all.zip"
+source=("http://download.java.net/jdk$_major/archive/$_build/binaries/jdk-${_pkgver}_doc-all.zip"
         "http://download.java.net/jdk$_major/archive/$_build/binaries/javafx-${_pkgver}_doc.zip"
         'LICENSE')
 md5sums=('278c46ff1394000700744ddf49c450e7'
