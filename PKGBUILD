@@ -3,7 +3,7 @@
 
 _npmname=requirejs
 pkgname=nodejs-requirejs
-pkgver=2.1.20
+pkgver=2.1.22
 pkgrel=1
 pkgdesc="Node.js adapter for RequireJS"
 arch=(any)
@@ -12,7 +12,7 @@ license=('BSD' 'MIT')
 depends=('nodejs' 'npm')
 optdepends=()
 source=("http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
-md5sums=('eb865548683a44422594629206ddf04b')
+md5sums=('3c9bfd048a227c945a74a0cd6ef44d6a')
 noextract=($_npmname-$pkgver.tgz)
 
 package() {
