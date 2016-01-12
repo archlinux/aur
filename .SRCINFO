@@ -3,7 +3,7 @@
 pkgbase = itch
 	pkgdesc = The best way to play itch.io games.
 	pkgver = 0.12.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/itchio/itch
 	install = itch.install
 	arch = i686
