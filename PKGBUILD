@@ -7,7 +7,7 @@
 # vercheck-ubuntu: name=${pkgbase}, repo=wily
 # vercheck-launchpad: name=${pkgbase}
 
-pkgbase=libappindicator
+pkgbase=libappindicator3
 pkgname=(libappindicator libappindicator3)
 _actual_ver=12.10.1
 _extra_ver=+15.04.20141110
@@ -32,7 +32,7 @@ sha512sums=('328378d86fe81b6e154327ab53fb0d9ead4c2d7eae17f689966c381e65014bdaa91
             '22e15f875a636bbbf8b1e80867a219b4b47b334d1bfe759f4ce79bf3665fc63af36b57fddb6c92aa7db148b5ea9ed789e510a9b23d87324b1b48695ad1ca9bc7')
 
 prepare() {
-  cd "${pkgbase}-${_actual_ver}${_extra_ver}"
+  cd "${pkgbase/3/}-${_actual_ver}${_extra_ver}"
 
   patch -p1 -i ../0001-Glib.Timeout-fix.patch
   patch -p1 -i ../0002-Fix-mono-nunit-pkgconfig-name.patch
@@ -40,7 +40,7 @@ prepare() {
 }
 
 build() {
-  cd "${pkgbase}-${_actual_ver}${_extra_ver}"
+  cd "${pkgbase/3/}-${_actual_ver}${_extra_ver}"
 
   export CFLAGS+=" -Wno-error=deprecated-declarations"
 
@@ -68,7 +68,7 @@ package_libappindicator() {
   pkgdesc+=" (GTK+ 2 library)"
   depends=(libindicator libdbusmenu-gtk2)
 
-  cd "${pkgbase}-${_actual_ver}${_extra_ver}/build-gtk2"
+  cd "${pkgbase/3/}-${_actual_ver}${_extra_ver}/build-gtk2"
 
   make -j1 DESTDIR="${pkgdir}/" install
 }
@@ -77,7 +77,7 @@ package_libappindicator3() {
   pkgdesc+=" (GTK+ 3 library)"
   depends=(libindicator3 libdbusmenu-gtk3)
 
-  cd "${pkgbase}-${_actual_ver}${_extra_ver}/build-gtk3"
+  cd "${pkgbase/3/}-${_actual_ver}${_extra_ver}/build-gtk3"
 
   make -C src DESTDIR="${pkgdir}/" install
   make -C bindings/vala DESTDIR="${pkgdir}/" install
