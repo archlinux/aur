@@ -3,6 +3,9 @@ import os
 import sys
 import subprocess
 
+if sys.version_info.major < 3:
+    sys.exit("Python3 required")
+
 THIS_DIR = os.path.abspath(os.path.dirname(__file__))
 
 def check_not_in_venv():
