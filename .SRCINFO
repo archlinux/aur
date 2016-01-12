@@ -7,7 +7,7 @@ pkgbase = jdk-devel-docs
 	optdepends = java-runtime>=9: Run the examples
 	optdepends = java-environment>=9: Compile and run the examples
 	options = !strip
-	source = http://download.java.net/jdk9/archive/100/binaries/jdk-9-doc-all.zip
+	source = http://download.java.net/jdk9/archive/100/binaries/jdk--all.zip
 	source = http://download.java.net/jdk9/archive/100/binaries/javafx-9_doc.zip
 	source = LICENSE
 	md5sums = 278c46ff1394000700744ddf49c450e7
