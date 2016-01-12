@@ -1,5 +1,5 @@
 pkgname=fortune-mod-sherlock
-pkgver=1505230427
+pkgver=1601041532
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Sherlock"
