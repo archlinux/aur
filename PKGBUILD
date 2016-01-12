@@ -2,13 +2,12 @@
 
 pkgname=wasteland2 #-gog ???
 pkgver=2.2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The Director's Cut of the sequel to an adventure in post-nuclear America"
-arch=("i686" "x86_64")
+arch=("x86_64")
 url="https://wasteland.inxile-entertainment.com/store"
 license=("custom:commercial")
-depends_x86_64=('lib32-gcc-libs' 'lib32-glibc' 'lib32-glu' 'lib32-libx11' 'lib32-libxau' 'lib32-libxcb' 'lib32-libxcursor' 'lib32-libxdmcp' 'lib32-libxext' 'lib32-libxfixes' 'lib32-libxrandr' 'lib32-libxrender' 'lib32-libgl')
-depends_i686=('glibc' 'glu' 'libx11' 'libxau' 'libxcb' 'libxcursor' 'libxdmcp' 'libxext' 'libxfixes' 'libxrandr' 'libxrender' 'libgl')
+depends=('glibc' 'glu' 'libx11' 'libxau' 'libxcb' 'libxcursor' 'libxdmcp' 'libxext' 'libxfixes' 'libxrandr' 'libxrender' 'libgl')
 source=("${pkgname}.desktop"
         "gog_wasteland_2_director_s_cut_${pkgver}.sh::file://gog_wasteland_2_director_s_cut${pkgver}.sh")
 # bsdtar doesn't seem to like this .sh
