@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Daniel Wallace <daniel.wallace@gatech.edu>
 
-pkgname=plex-home-theater
+pkgname=openpht
 pkgver=1.5.0.502
 _pkghash=7563ca94
 pkgrel=1
