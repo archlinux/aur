@@ -6,12 +6,12 @@
 pkgname=guile1.8-gtk
 _pkgname=guile-gtk
 pkgver=2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Guile (Scheme) bindings for GTK+"
 arch=('i686' 'x86_64')
 url="http://www.nongnu.org/guile-gtk/"
 license=('GPL')
-depends=('guile>=1.8.1' 'gtk2' 'gtkglarea')
+depends=('guile1.8>=1.8.1' 'gtk2' 'gtkglarea')
 options=('!makeflags')
 source=(ftp://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}.tar.gz deprecated.patch
         brokentest.patch
