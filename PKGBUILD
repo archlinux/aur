@@ -5,7 +5,7 @@
 _pkgname=xorg-server
 pkgname=xorg-server-hwcursor-gamma
 pkgver=1.18.0
-pkgrel=2 # 3 in xorg-server
+pkgrel=3 # 4 in xorg-server
 pkgdesc="Xorg X server with patch to apply gamma ramps on hardware cursors"
 depends=(libepoxy libxdmcp libxfont libpciaccess libdrm pixman libgcrypt libxau xorg-server-common libxshmfence libgl xf86-input-evdev)
 provides=("xorg-server=${pkgver}" 'X-ABI-VIDEODRV_VERSION=20' 'X-ABI-XINPUT_VERSION=22.1' 'X-ABI-EXTENSION_VERSION=9.0' 'x-server')
@@ -25,6 +25,7 @@ source=(${url}/releases/individual/xserver/${_pkgname}-${pkgver}.tar.bz2
         xvfb-run
         xvfb-run.1
 	v2-Xorg.wrap-activate-libdrm-based-detection-for-KMS-drivers.patch
+	xserver-glamor-Disable-debugging-messages-other-than-GL-API-errors.patch
 	0001-When-an-cursor-is-set-it-is-adjusted-to-use-the.patch
 	0002-Fix-for-full-and-semi-transparency-under-negative-im.patch
 	0003-Use-Harms-s-suggest-do-not-use-inline-if.-And-fix-si.patch)
@@ -32,6 +33,7 @@ sha256sums=('195670819695d9cedd8dde95fbe069be0d0f488a77797a2d409f9f702daf312e'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
 	    'c8addd0dc6d91797e82c51b539317efa271cd7997609e026c7c8e3884c5f601c'
+	    '1fe0c2c13bc3643a9a236bc45910e1e68d7b9cbe128204bcc1821752ed266e95'
 	    'bea348631dedd66475d84ac2cfe0840f22a80a642b4680d73fead4749e47f055'
 	    'be9169b937b5d0b44f7f05d7c08aaa5f0c1092e128ce261d9cb350f09dfe1fb0'
 	    '0a643ae83e03faee0f4db669a33c5b3c99edbba5c86cde2c83962ae536d31081')
@@ -46,6 +48,9 @@ prepare() {
 
   msg2 'Fix xorg only working with root FS#47061'
   patch -Np1 -i ../v2-Xorg.wrap-activate-libdrm-based-detection-for-KMS-drivers.patch
+
+  msg2 'Disable debugging glamor messages in xorg log file'
+  patch -Np1 -i ../xserver-glamor-Disable-debugging-messages-other-than-GL-API-errors.patch
 
   autoreconf -fvi
 }
@@ -64,7 +69,7 @@ build() {
       --enable-xorg \
       --enable-xephyr \
       --enable-glamor \
-      --enable-xwayland \
+      --disable-xwayland \
       --enable-kdrive \
       --enable-kdrive-kbd \
       --enable-kdrive-mouse \
