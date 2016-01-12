@@ -1,5 +1,5 @@
 pkgname=fortune-mod-quantumleap
-pkgver=1510292320
+pkgver=1512292037
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Quantum Leap"
