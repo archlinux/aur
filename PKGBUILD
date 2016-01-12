@@ -8,7 +8,7 @@
 # The build script generates and updates the pkgver and _kernel* variables.
 #
 pkgname="spl-git"
-pkgver=0.6.5.3_r0_g7e85f6b_4.3.3_2
+pkgver=0.6.5.4_r0_g6e5e068_4.3.3_2
 pkgrel=1
 license=('GPL')
 
@@ -33,7 +33,7 @@ depends=("spl-utils-git" "linux=${_kernel_version}")
 makedepends=("git" "linux-headers=${_kernel_version}")
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/spl.git#commit=7e85f6bf")
+source=("git+https://github.com/zfsonlinux/spl.git#commit=6e5e068f")
 groups=("archzfs-git")
 md5sums=('SKIP')
 replaces=("spl")
