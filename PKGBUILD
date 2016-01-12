@@ -1,11 +1,11 @@
 pkgname=cen64-qt-git
-pkgver=20150926
+pkgver=20160112
 pkgrel=1
 pkgdesc="A basic frontend for CEN64"
 arch=('i686' 'x86_64')
 url="https://github.com/dh4/cen64-qt"
 license=('BSD')
-depends=('qt5-base' 'quazip-qt5' 'cen64-git')
+depends=('quazip-qt5' 'cen64-git' 'hicolor-icon-theme')
 install=cen64-qt-git.install
 
 _gitroot='https://github.com/dh4/cen64-qt.git'
@@ -19,7 +19,7 @@ prepare() {
 build() {
     cd "$srcdir/$_gitname"
 
-    sed -i 's#include <quazip/#include <quazip5/#g' src/common.h
+    sed -i 's#include <quazip/#include <quazip5/#g' src/common.cpp src/emulatorhandler.cpp
 
     ./build-scripts/revision.sh
     qmake-qt5
