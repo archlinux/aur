@@ -1,0 +1,4 @@
+pkg
+src
+bash_completion.bash
+*.pkg.tar
