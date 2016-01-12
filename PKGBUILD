@@ -28,18 +28,20 @@ pkgver() {
 build() {
     mkdir -pv "$srcdir/co2mon/build"
     cd "$srcdir/co2mon/build"
-    cmake ..
+    cmake \
+        -DCMAKE_INSTALL_PREFIX:PATH="$pkgdir/usr" \
+        -DCMAKE_INSTALL_LIBDIR:PATH=lib \
+        ..
     make
 }
 
 package() {
-    cd "$srcdir/co2mon" || exit 1
+    cd "$srcdir/co2mon/build" || exit 1
+    make install
 
-    install -Dvm755 -t "$pkgdir/usr/bin/" "$srcdir/co2mon/build/co2mond/co2mond"
     install -Dvm644 -t "$pkgdir/usr/lib/udev/rules.d" "$srcdir/99-co2mon.rules"
     install -Dvm644 -t "$pkgdir/usr/lib/systemd/system/" "$srcdir/co2mon.service"
     install -Dvm644 "$srcdir/co2mon-git.tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/co2mon-git.conf"
 
     install -Dvm755 -t "$pkgdir/usr/lib/munin/plugins" "$srcdir/co2mon/graph/munin/"*
-
 }
