@@ -2,14 +2,14 @@
 # Old maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rhythmbox-plugin-alternative-toolbar-git
-pkgver=0.r251.1427c62
+pkgver=0.r267.f2440cd
 pkgrel=1
 pkgdesc='Replace the Rhythmbox large toolbar with a Client-Side Decorated or Compact Toolbar which can be hidden'
 url='https://github.com/fossfreedom/alternative-toolbar'
 arch=('any')
 license=('GPL3')
 depends=('python-gobject' 'python-lxml' 'rhythmbox')
-makedepends=('git' 'gettext')
+makedepends=('git' 'gettext' 'intltool')
 provides=('rhythmbox-plugin-alternative-toolbar')
 conflicts=('rhythmbox-plugin-alternative-toolbar')
 install='rhythmbox-plugin-alternative-toolbar.install'
