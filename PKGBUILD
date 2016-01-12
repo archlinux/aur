@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov
 
 pkgname=coreboot-utils-git
-pkgver=4.2.r531.g359737d
+pkgver=4.2.r707.gee352cd
 pkgrel=1
 pkgdesc='Tools and utilities to work with Coreboot firmware'
 url='http://www.coreboot.org/'
