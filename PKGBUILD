@@ -5,11 +5,11 @@
 _pkgname=compton-conf
 pkgname=${_pkgname}-git
 pkgver=0.1.0.32.gfc667eb
-pkgrel=2
+pkgrel=3
 pkgdesc='A graphical configuration tool for Compton X composite manager. Qt5 UI. Development version.'
 arch=('i686' 'x86_64')
 url='https://github.com/lxde/compton-conf'
-license=('GPL2' 'LGPL2.1')
+license=('LGPL2.1')
 
 depends=('qt5-base' 'libconfig')
 makedepends=('cmake' 'git' 'qt5-tools')
