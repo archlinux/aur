@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=tarantool-git
-pkgver=1.6.7.r562.g3dbc9ff
+pkgver=1.6.7.r564.gd7c6efb
 pkgrel=1
 pkgdesc='an in-memory database designed to store the most volatile and highly accessible web content'
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ conflicts=(tarantool)
 provides=(tarantool)
 replaces=(tarantool)
 makedepends=(git cmake)
-checkdepends=(python2-daemon python2-tarantool python2-gevent)
+checkdepends=(python2-daemon python2-tarantool python2-gevent python2-yaml)
 source=(git://github.com/tarantool/tarantool.git
         git://github.com/tarantool/luajit.git
         git://github.com/tarantool/msgpuck.git
