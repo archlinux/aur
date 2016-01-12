@@ -1,0 +1,29 @@
+diff -rupN plex-home-theater.orig/plex/CMakeModules/FindFFmpeg.cmake plex-home-theater/plex/CMakeModules/FindFFmpeg.cmake
+--- plex-home-theater.orig/plex/CMakeModules/FindFFmpeg.cmake	2014-09-15 11:46:21.751638700 +0200
++++ plex-home-theater/plex/CMakeModules/FindFFmpeg.cmake	2014-09-15 11:43:25.678039000 +0200
+@@ -41,7 +41,7 @@ MACRO(FFMPEG_FIND varname shortname head
+         /opt/csw/include # Blastwave
+         /opt/include
+         /usr/freeware/include
+-        PATH_SUFFIXES ffmpeg
++        PATH_SUFFIXES ffmpeg-compat
+         DOC "Location of FFMPEG Headers"
+     )
+ 
+@@ -62,7 +62,7 @@ MACRO(FFMPEG_FIND varname shortname head
+             /opt/csw/include # Blastwave
+             /opt/include
+             /usr/freeware/include
+-            PATH_SUFFIXES ffmpeg
++            PATH_SUFFIXES ffmpeg-compat
+             DOC "Location of FFMPEG Headers"
+         )
+     ENDIF(NOT FFMPEG_${varname}_INCLUDE_DIRS)
+@@ -85,6 +85,7 @@ MACRO(FFMPEG_FIND varname shortname head
+         /opt/csw/lib
+         /opt/lib
+         /usr/freeware/lib64
++        PATH_SUFFIXES ffmpeg-compat
+         DOC "Location of FFMPEG Libraries"
+     )
+ 
