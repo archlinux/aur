@@ -1,0 +1,17 @@
+--- macros/with-python.m4.orig	2013-08-17 11:46:15.000000000 +0200
++++ macros/with-python.m4	2013-09-10 11:45:57.205754025 +0200
+@@ -41,12 +41,12 @@
+    # be $PYTHON:
+    #
+    if test x$PYTHON = x ; then
+-      PYTHON=python
++      PYTHON=python2
+    fi
+    # Similar for python-config
+    #
+    if test x$PYTHON_CONFIG = x ; then
+-      PYTHON_CONFIG=python-config
++      PYTHON_CONFIG=python2-config
+    fi
+ 
+    # Check to see if python exists:
