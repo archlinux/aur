@@ -1,0 +1,53 @@
+diff -aur b/acinclude.m4 a/acinclude.m4
+--- b/acinclude.m4	2001-03-09 14:44:13.000000000 +0100
++++ a/acinclude.m4	2016-01-12 02:48:06.720838376 +0100
+@@ -2,11 +2,11 @@
+ 
+ AC_DEFUN([GUILE_INST],[
+   AC_MSG_CHECKING(for Guile installation directory)
+-  guile-config link > /dev/null || {
++  guile-config1.8 link > /dev/null || {
+     echo "configure: cannot find guile-config; is Guile installed?" 1>&2
+     exit 1
+   }
+-  GUILE_PATH="`which guile`"
++  GUILE_PATH="`which guile1.8`"
+   AC_SUBST(GUILE_PATH)
+   AC_MSG_RESULT(yes)
+ ])
+diff -aur b/aclocal.m4 a/aclocal.m4
+--- b/aclocal.m4	2010-09-16 22:39:01.000000000 +0200
++++ a/aclocal.m4	2016-01-12 02:47:06.283920230 +0100
+@@ -35,17 +35,17 @@
+ # The variables are marked for substitution, as by @code{AC_SUBST}.
+ #
+ AC_DEFUN([GUILE_PROGS],
+- [AC_PATH_PROG(GUILE,guile)
++ [AC_PATH_PROG(GUILE,guile1.8)
+   if test "$GUILE" = "" ; then
+       AC_MSG_ERROR([guile required but not found])
+   fi
+   AC_SUBST(GUILE)
+-  AC_PATH_PROG(GUILE_CONFIG,guile-config)
++  AC_PATH_PROG(GUILE_CONFIG,guile-config1.8)
+   if test "$GUILE_CONFIG" = "" ; then
+       AC_MSG_ERROR([guile-config required but not found])
+   fi
+   AC_SUBST(GUILE_CONFIG)
+-  AC_PATH_PROG(GUILE_TOOLS,guile-tools)
++  AC_PATH_PROG(GUILE_TOOLS,guile-tools1.8)
+   AC_SUBST(GUILE_TOOLS)
+  ])
+ 
+diff -aur b/configure.in a/configure.in
+--- b/configure.in	2010-09-16 22:36:04.000000000 +0200
++++ a/configure.in	2016-01-12 02:45:50.626938692 +0100
+@@ -5,7 +5,7 @@
+ 
+ GUILE_FLAGS
+ GUILE_INST
+-if test "`guile -c '(display (string>=? (version) "1.4.1"))'`" != "#t"; then
++if test "`guile1.8 -c '(display (string>=? (version) "1.4.1"))'`" != "#t"; then
+   AC_MSG_ERROR([Your Guile is too old.  You need CVS Guile March 2001 or later.])
+ fi
+ 
