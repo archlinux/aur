@@ -1,18 +1,25 @@
-# Maintainer: Andrzej Giniewicz <gginiu@gmail.com>
+# Maintainer: Chris <christopher.r.mullins g-mail>
+# Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: joel schaerer <joel.schaerer@laposte.net>
 
 pkgname=insight-toolkit
-pkgver=4.8.0
-pkgrel=1
-pkgdesc='Insight Segmentation and Registration Toolkit (ITK).'
+pkgver=4.8.2
+pkgrel=2
+pkgdesc='Cross-platform system that provides developers with an extensive suite of software tools for image analysis'
 arch=('i686' 'x86_64')
 url='http://www.itk.org/'
 license=('APACHE')
 depends=('fftw' 'libjpeg-turbo' 'libpng' 'zlib' 'libtiff' 'gdcm' 'expat' 'hdf5-cpp-fortran')
+optdepends=('python2: build python wrapping'
+            'ruby'
+            'tcl: build tcl wrapping (currently not supported)'
+            'perl: build perl wrapping (currently not supported)'
+            'java-runtime: build java wrapping (currently not supported)'
+            'swig: generate python wrappers')
 makedepends=('cmake')
 source=("http://downloads.sourceforge.net/project/itk/itk/${pkgver:0:3}/InsightToolkit-${pkgver}.tar.xz")
-sha512sums=('2a16d0b8959be4e06a7fb2fb76b02712642c1fc7fa0f807775b5c3088277c7d386d8ff8cc7315915d5f93d49a441e2473646009c27d109d0211e043b8fac0574')
+sha512sums=('f08d922cdf059171caef4a91d13b0ab43d9817655f7e54a0d6c03369b0a502f268918480cf6db3c2ed532fb4895aca982330bd0cf1b1baffec857c6e905b1114')
 
 build() {
   cd "$srcdir"
@@ -33,7 +40,7 @@ build() {
     -DITK_USE_SYSTEM_TIFF:BOOL=ON \
     -DITK_USE_SYSTEM_GDCM:BOOL=ON \
     -ITK_LEGACY_SILENT:BOOL=ON \
-    -ITK_WRAP_PYTHON:BOOL=ON \
+    -ITK_WRAP_PYTHON:BOOL=OFF \
     -DITK_USE_SYSTEM_EXPAT:BOOL=ON \
     -DITK_USE_SYSTEM_FFTW:BOOL=ON \
     -DITK_USE_SYSTEM_HDF5:BOOL=ON \
