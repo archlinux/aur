@@ -5,7 +5,7 @@
 pkgname=pstate-frequency-git
 _gitname=pstate-frequency
 pkgdesc="Easily control Intel p-state driver (git version)"
-pkgver=2.0.3.r555.a1d140f
+pkgver=2.0.3.r558.98318a7
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('git')
@@ -46,18 +46,18 @@ prepare() {
   #
   # make DESTDIR="${pkgdir}" PREFIX="/usr" edit
 
-  make DESTDIR="${pkgdir}" PREFIX="/usr" options
+  make DESTDIR="${pkgdir}" options
 }
 
 build() {
   cd "${srcdir}/${_gitname}"
 
-  make DESTDIR="${pkgdir}" PREFIX="/usr" clean
-  make DESTDIR="${pkgdir}" PREFIX="/usr" bin
+  make DESTDIR="${pkgdir}" clean
+  make DESTDIR="${pkgdir}" bin
 }
 
 package() {
   cd "${srcdir}/${_gitname}"
 
-  make DESTDIR="${pkgdir}" PREFIX="/usr" install
+  make DESTDIR="${pkgdir}" install
 }
