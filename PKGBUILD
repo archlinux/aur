@@ -4,13 +4,14 @@
 
 pkgname=global
 pkgver=6.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A source code tag system"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/global/"
 license=('GPL')
 depends=('libltdl' 'bash' 'perl')
 optdepends=('idutils' 'ctags' 'python2-pygments')
+makedepends=('python2')
 options=(!emptydirs !libtool)
 install=global.install
 source=(http://tamacom.com/global/${pkgname}-${pkgver}.tar.gz)
