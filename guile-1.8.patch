@@ -1,0 +1,23 @@
+--- m4/guile.m4.orig	2011-06-08 10:36:08.000000000 +0200
++++ m4/guile.m4	2013-09-10 12:36:28.942768978 +0200
+@@ -49,17 +49,17 @@
+ # The variables are marked for substitution, as by @code{AC_SUBST}.
+ #
+ AC_DEFUN([GUILE_PROGS],
+- [AC_PATH_PROG(GUILE,guile)
++ [AC_PATH_PROG(GUILE,guile1.8)
+   if test "$GUILE" = "" ; then
+       AC_MSG_ERROR([guile required but not found])
+   fi
+   AC_SUBST(GUILE)
+-  AC_PATH_PROG(GUILE_CONFIG,guile-config)
++  AC_PATH_PROG(GUILE_CONFIG,guile-config1.8)
+   if test "$GUILE_CONFIG" = "" ; then
+       AC_MSG_ERROR([guile-config required but not found])
+   fi
+   AC_SUBST(GUILE_CONFIG)
+-  AC_PATH_PROG(GUILE_TOOLS,guile-tools)
++  AC_PATH_PROG(GUILE_TOOLS,guile-tools1.8)
+   AC_SUBST(GUILE_TOOLS)
+  ])
+ 
