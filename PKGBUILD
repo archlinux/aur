@@ -18,7 +18,7 @@ source=('git+https://github.com/dmage/co2mon.git'
 md5sums=('SKIP'
          'e96495d7ed56756af234aa2c4959177b'
          'bef542a1a14f1b5def074c8181ebac0e'
-         'f56b35a4420383659798bfa2b31790d5')
+         'ad1ef6873b453a9f09447c70d74921ff')
 
 pkgver() {
     cd "$srcdir/co2mon"
