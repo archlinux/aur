@@ -10,3 +10,4 @@ Exec=firefox-aurora -safe-mode %u
 Terminal=false
 MultipleArgs=false
 StartupNotify=false
+StartupWMClass=Firefox
