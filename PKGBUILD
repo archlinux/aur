@@ -15,7 +15,7 @@ source=('http://quoteunquoteapps.com/downloads/courier-prime.zip'
         'http://quoteunquoteapps.com/downloads/courier-code.zip')
 sha256sums=('d5d4faf1bee0d1f52bab1103cbfdfb354976331c86f999c110c22a098cb12d73'
             '754b3937340f5522ccf96be7832efbd809ef93f373d51b12919adbd9c0a468d7'
-            '4485257345c3a7ccc172f89b229db0f8c7dd787cdf4943c825a45f9bf834fd91')
+            'c400b6addeddef7c26a9943f847a8584c83d8bb775cd35da2dcd41c6ad98d827')
 
 package() {
   cd "$srcdir"
