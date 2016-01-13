@@ -1,8 +1,8 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-graph'
-pkgver='0.96'
+pkgver='0.9704'
 pkgrel='1'
 pkgdesc="graph data structures and algorithms"
 arch=('any')
@@ -10,11 +10,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
-url='http://search.cpan.org/dist/Graph'
-source=('http://search.cpan.org/CPAN/authors/id/J/JH/JHI/Graph-0.96.tar.gz')
-md5sums=('24734ad5a6a20023f3950681f8e9b029')
-sha512sums=('afcaa154473696e51310a9b0e1b1a48c29ce60fa3462d25c9fba1a5080a8205e2a734a6870a2d1770e3df88ffd5cde144861ea7ab794313df8c2a715e1540c67')
-_distdir="Graph-0.96"
+url='https://metacpan.org/release/Graph'
+source=('http://search.cpan.org/CPAN/authors/id/J/JH/JHI/Graph-0.9704.tar.gz')
+md5sums=('1ab4e49420e56eeb1bc81d842aa8f3af')
+sha512sums=('1eed5049577112cc2e41a83f6b3b6a22a08170597b5cb89e2eab6cc68386bfd989d3953d7ceab85bcfbd7d097a6925bd8eb43f48eed1ac07469ea4b2432149da')
+_distdir="Graph-0.9704"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
