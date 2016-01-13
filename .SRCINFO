@@ -1,12 +1,14 @@
 pkgbase = nuvola-app-yandex-music-git
 	pkgdesc = Yandex Music integration for Nuvola Player.
 	pkgver = r3.62a66ee
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tiliado/nuvola-app-yandex-music
 	arch = any
 	license = custom:BSD
 	makedepends = git
-	depends = nuvolaplayer-git
+	depends = nuvolaplayer
+	provides = nuvola-app-yandex-music
+	conflicts = nuvola-app-yandex-music
 	source = nuvola-app-yandex-music-git::git+https://github.com/tiliado/nuvola-app-yandex-music.git
 	sha256sums = SKIP
 
