@@ -27,13 +27,13 @@
 
 pkgname=openxcom-tftd-data-steam
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="X-COM data files (from steam) for openxcom (Terror From The Deep)"
 arch=(any)
 url="http://steamcommunity.com/app/7650"
 license=('custom')
-depends=('openxcom')
-provides=('openxcom-data')
+depends=('openxcom-git')
+provides=('openxcom-tftd-data')
 DLAGENTS+=('localfile::/usr/bin/echo "Could not find %u. Use the copier.sh script to copy them into this directory"')
 source=(
   "filelist"
