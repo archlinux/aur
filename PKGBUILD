@@ -2,8 +2,8 @@
 # Contributors: Pio, carstene1ns
 
 pkgname=mrrescue
-pkgver=1.02c
-pkgrel=3
+pkgver=1.02d
+pkgrel=1
 pkgdesc="An arcade styled 2d action game centered around evacuating civilians from burning buildings."
 arch=('any')
 url="http://tangramgames.dk/games/mrrescue/"
@@ -11,7 +11,7 @@ license=('CCPL:by-sa' 'zlib')
 depends=('love')
 makedepends=('gendesk')
 source=("https://github.com/SimonLarsen/mrrescue/releases/download/v$pkgver/$pkgname-$pkgver.love")
-md5sums=('85897f04f2e9c3aaded74bf178aeab4c')
+md5sums=('a83b1ac56e6e546b3c3a003a87f8c994')
 
 prepare() {
 	cd $srcdir
