@@ -1,0 +1,16 @@
+[Unit]
+Description=OpenACS/Naviserver
+After=network.target postgresql.service
+Wants=postgresql.service
+
+[Service]
+Type=forking
+PIDFile=/usr/lib/openacs/log/nsd.pid
+Environment="LANG=en_US.UTF-8"
+ExecStartPre=/bin/rm -f /usr/lib/openacs/log/nsd.pid
+
+# standard startup (non-privileged port, like 8000)
+ExecStart=/usr/bin/nsd -u nsadmin -g nsadmin -t /etc/naviserver/config-oacs-5.9.0.tcl
+
+Restart=on-abnormal
+KillMode=process

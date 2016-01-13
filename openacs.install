@@ -1,0 +1,50 @@
+post_install() {
+    oacs_service=oacs-5-9
+    oacs_dir=/usr/lib/openacs
+    db_name=${oacs_service}
+    ns_install_dir=/usr/lib/naviserver
+    #if postgres is not running, start it
+    if pgrep "postgres" > /dev/null 
+    then
+        echo "Postgres is running"
+    else
+        echo "Postgres is not running and will be started"
+        /usr/bin/systemctl start postgresql
+    fi
+    
+    #create user and group, we should have them from naviserver installation
+    oacs_user=nsadmin
+    oacs_group=nsadmin
+    group_listcmd="grep ${oacs_group} /etc/group"
+    group=$(eval ${group_listcmd})
+    group_addcmd="groupadd ${oacs_group}"
+    oacs_user_addcmd="useradd -g ${oacs_group} ${oacs_user}"
+    if [ "x$group" = "x" ] ; then
+        eval ${group_addcmd}
+    fi
+
+    if ! id -u $oacs_user > /dev/null 2>&1; then
+        eval ${oacs_user_addcmd}
+    fi
+    chown -R ${oacs_user}:${oacs_group} ${oacs_dir} &> /dev/null
+
+    #setup database (we create a user and a db)
+    /usr/bin/createuser -U postgres -a -d ${oacs_user}
+    /usr/bin/createdb -U postgres -E UNICODE ${db_name}
+    /usr/bin/psql -U postgres -d ${db_name} -tAc "create extension hstore"
+
+echo "
+Congratulations, you have installed OpenACS with NaviServer on your machine.
+You might start the server manually with
+
+    sudo /usr/bin/nsd -t /etc/naviserver/config-oacs-5.9.0.tcl -u ${oacs_user} -g ${oacs_group}"
+
+echo "
+To use OpenACS, point your browser to http://localhost:8000/
+The configuration file is /etc/naviserver/config-oacs-5.9.0.tcl
+and might be tailored to your needs. The access.log and error.log of
+this instance are in ${oacs_dir}/log
+
+"
+
+}
