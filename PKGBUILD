@@ -7,6 +7,8 @@ arch=('any')
 url="http://fusiondirectory.org/"
 license=('LGPL')
 
+depends=("schema2ldif")
+
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-${pkgver}.tar.gz"
         'fixes-openldap-path.patch')
 
