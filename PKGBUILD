@@ -2,7 +2,7 @@
 
 pkgname='telegraf'
 pkgver='0.10.0'
-pkgrel='1'
+pkgrel='2'
 epoch=
 pkgdesc='Server-level metric gathering agent for InfluxDB'
 arch=('i686' 'x86_64')
