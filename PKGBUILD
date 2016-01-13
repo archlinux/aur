@@ -4,13 +4,13 @@
 pkgbase=openxcom-git
 pkgname=('openxcom-git' 'openxcom-docs-git')
 _gitname=OpenXcom
-pkgver=1.0_1037_g894263b
+pkgver=1.0_1928_g4f40084
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://openxcom.org/"
 license=('GPL3')
 makedepends=('git' 'xmlto' 'docbook-xml' 'docbook-xsl' 'doxygen' 'sdl_mixer'
-             'sdl_gfx' 'sdl_image' 'sdl' 'yaml-cpp51' 'libgl' 'gcc-libs' 'glibc'
+             'sdl_gfx' 'sdl_image' 'sdl' 'yaml-cpp' 'libgl' 'gcc-libs' 'glibc'
              'boost' 'glu' 'cmake' 'hicolor-icon-theme')
 source=(git+"https://github.com/SupSuper/${_gitname}.git"
         "openxcom.sh")
@@ -31,7 +31,7 @@ pkgver() {
 
 build() {
   cd $_gitname
-  cmake -DCMAKE_INSTALL_PREFIX="/usr" -DYAMLCPP_LIBRARY="/opt/yaml-cpp51/lib/libyaml-cpp.so.0.5.1" -DYAMLCPP_INCLUDE_DIR="/opt/yaml-cpp51/include"
+  cmake -DCMAKE_INSTALL_PREFIX="/usr"
   make
 
   # Make documentation
@@ -41,7 +41,7 @@ build() {
 
 package_openxcom-git() {
   pkgdesc="An open-source reimplementation of the famous X-COM game (git-version)"
-  depends=('sdl_mixer' 'sdl_gfx' 'sdl_image' 'sdl' 'yaml-cpp51' 'libgl' 'gcc-libs'
+  depends=('sdl_mixer' 'sdl_gfx' 'sdl_image' 'sdl' 'yaml-cpp' 'libgl' 'gcc-libs'
            'glibc' 'hicolor-icon-theme')
   optdepends=('openxcom-data-steam: pacman-tracked X-COM data files from Steam')
   provides=('openxcom')
