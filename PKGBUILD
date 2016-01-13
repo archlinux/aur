@@ -1,4 +1,5 @@
-# Maintainer: Leonard de Ruijter <leonard@aur.archlinux.org>
+# Maintainer: Leonard de Ruijter <alderuijter@gmail.com>
+
 pkgname=mod_musicindex
 pkgver=1.4.1
 pkgrel=1
@@ -9,7 +10,7 @@ options=('!strip')
 license=('LGPL2.1')
 depends=('apache' 'flac' 'libarchive' 'libid3tag' 'libmad' 'libmariadbclient' 'libmp4v2' 'libvorbis')
 source=(http://hacks.slashdirt.org/musicindex/$pkgname-$pkgver.tar.gz)
-md5sums=('cf758050b689fe16c5ff8f8c5da5cfa4')
+sha256sums=('0fb052ebb8fa511467fd21696d798dee35b2e611955572cf746e9712e531a596')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
