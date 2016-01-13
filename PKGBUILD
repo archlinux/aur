@@ -19,7 +19,7 @@
 	# Src info -- As the master branch is used for releases, this is considered 'stable'.
 	url="https://github.com/sri-arjuna/vhs"
 	source=(https://github.com/sri-arjuna/vhs/archive/master.zip)
-md5sums=('0c4659c752381f780b0960707c21c7e2')
+md5sums=('17563c056fb4176f72a03c5e17ce5db0')
 	
 	# Bld info
 	provides=('vhs')
