@@ -211,10 +211,14 @@ cd ppolicy/
       done   
     fi
   fi
-  
 
-	# Docs
-	mkdir -p ${pkgdir}/usr/share/doc/fusiondirectory-plugin-ppolicy/
-	cp ../../fusiondirectory-${pkgver}/{AUTHORS,Changelog,COPYING} ${pkgdir}/usr/share/doc/fusiondirectory-plugin-ppolicy/ 
+
+  # Docs
+  mkdir -p ${pkgdir}/usr/share/doc/fusiondirectory-plugin-ppolicy/
+  cp ../../fusiondirectory-${pkgver}/{AUTHORS,Changelog,COPYING} ${pkgdir}/usr/share/doc/fusiondirectory-plugin-ppolicy/ 
  
+    # Openldap section
+  if [ -d ./contrib/openldap ] ; then
+    cp -a ./contrib/openldap/*.ldif ${pkgdir}/usr/share/doc/fusiondirectory-plugin-ppolicy/
+  fi
 }
