@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="http://homepage.mac.com/letaris/"
 license=('LGPL')
 source=(http://launchpad.net/ubuntu/+archive/primary/+files/syslog-ocaml_$pkgver.orig.tar.gz)
-md5sums=('3042185e6f511aea9956cd8f172b1a84')
+sha256sums=('2d885a36e2acd32085fffe5396840b0f78704ebc4fdecd1efc6ed86e6809eda8')
 makedepends=('ocaml-findlib')
 options=('!strip' '!makeflags' 'staticlibs')
 
