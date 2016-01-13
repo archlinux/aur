@@ -42,6 +42,7 @@ makedepends=("git" "pkgconfig" "gcc")
 source=("git://github.com/qtproject/qtquickcontrols2.git" "git://github.com/sirspudd/mkspecs.git" "https://download.qt.io/development_releases/qt/5.6/${_pkgver}/single/${_pipkgname}.tar.gz")
 sha256sums=("SKIP" "SKIP" "d69103ec34b3775edfa47581b14ee9a20789d4b0d7d26220fb92f2cd32eb06f9")
 options=('!strip')
+install=qpi.install
 
 build() {
   local _srcdir="${srcdir}/${_pipkgname}"

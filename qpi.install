@@ -1,0 +1,89 @@
+_sdktool="/usr/libexec/qtcreator/sdktool"
+
+## arg 1:  the new package version
+#pre_install() {
+	# do something here
+#}
+
+## arg 1:  the new package version
+post_install() {
+${_sdktool} addTC \
+    --id "ProjectExplorer.ToolChain.Gcc:raspberrypi" \
+    --name "Raspberry Pi toolchain" \
+    --path /opt/arm-sirspuddarch-linux-gnueabihf/bin/arm-sirspuddarch-linux-gnueabihf-gcc \
+    --abi arm-linux-generic-elf-32bit \
+    --supportedAbis arm-linux-generic-elf-32bit
+
+${_sdktool} addDebugger \
+    --id "raspberrypi_gdb" \
+    --name "Raspberry Pi gdb" \
+    --binary /opt/arm-sirspuddarch-linux-gnueabihf/bin/arm-sirspuddarch-linux-gnueabihf-gdb \
+    --abis arm-linux-generic-elf-32bit \
+    --engine 1
+
+${_sdktool} addDev \
+    --id "raspberrypi2_device" \
+    --name "Raspberry Pi 2" \
+    --host "qpii.local" \
+    --uname "root" \
+    --password "root" \
+    --osType "GenericLinuxOsType" \
+    --type 0 \
+    --sshPort 22 \
+    --freePorts "10000-10100"
+
+${_sdktool} addQt \
+    --id "raspberrypi2_qt" \
+    --name "Raspberry Pi 2 Qt" \
+    --qmake /opt/qt-5.6.0-beta-rpi2/bin/qmake \
+    --type RemoteLinux.EmbeddedLinuxQt
+
+${_sdktool} addKit \
+    --id "raspberrypi2_kit" \
+    --name "Raspberry Pi 2 Kit" \
+    --debugger "raspberrypi_gdb" \
+    --devicetype GenericLinuxOsType \
+    --device "raspberrypi2_device" \
+    --sysroot /mnt/pi \
+    --toolchain "ProjectExplorer.ToolChain.Gcc:raspberrypi" \
+    --qt "raspberrypi2_qt" \
+    --mkspec "devices/linux-rpi2-g++"
+}
+#post_install
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+#pre_upgrade() {
+	# do something here
+#}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+#post_upgrade() {
+	# do something here
+#}
+
+## arg 1:  the old package version
+pre_remove() {
+#TODO: Don't remove if the other pi package is present
+${_sdktool} rmTC \
+    --id "ProjectExplorer.ToolChain.Gcc:raspberrypi"
+
+${_sdktool} rmDebugger \
+    --id "raspberrypi_gdb"
+
+${_sdktool} rmQt \
+    --id "raspberrypi2_qt"
+
+${_sdktool} rmKit \
+    --id "raspberrypi2_kit"
+
+${_sdktool} rmDev \
+    --id "raspberrypi2_device"
+}
+#pre_remove
+
+## arg 1:  the old package version
+#post_remove() {
+	# do something here
+#}
