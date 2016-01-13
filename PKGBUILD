@@ -1,6 +1,6 @@
 # Maintainer: Cobra <cobra [at] go-linux [dot] info>
 pkgname=portfolio
-pkgver=0.20.3
+pkgver=0.21.2
 pkgrel=1
 pkgdesc="Track your portfolio performance (finance)"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ _DEST="/usr/share/portfolio"
 [ "$CARCH" = "x86_64" ] && _platform="x86_64"
 
 source=("https://github.com/buchen/portfolio/archive/$pkgver.tar.gz")
-sha1sums=("f4ced544e9e1fc85bca37084f8703fe887f8c40c")
+sha1sums=("8f0c47e4c825cd0f151fc0289f394f7b1e744f74")
 
 build() {
     export MAVEN_OPTS="-Xmx1g"
@@ -26,7 +26,7 @@ build() {
 }
 
 package() {
-    cd $pkgname-$pkgver/portfolio-product/target/products/name.abuchen.portfolio.product/linux/gtk/$_platform/portfolio/
+    cd $pkgname-$pkgver/portfolio-product/target/products/name.abuchen.portfolio.product/linux/g tk/$_platform/portfolio/
 
     install -dm755 ${pkgdir}${_DEST}
     cp -r * ${pkgdir}${_DEST}
