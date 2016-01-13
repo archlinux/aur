@@ -3,8 +3,8 @@
 # Based on [multilib]'s lib32-nvidia-utils: https://www.archlinux.org/packages/multilib/x86_64/lib32-nvidia-utils/
 
 pkgname=('lib32-nvidia-utils-beta' 'lib32-nvidia-libgl-beta' 'lib32-opencl-nvidia-beta')
-pkgver=361.16
-pkgrel=2
+pkgver=361.18
+pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
@@ -12,7 +12,7 @@ makedepends=('pacman>=4.2.0')
 options=('!strip')
 _pkg="NVIDIA-Linux-x86-$pkgver"
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/$_pkg.run")
-md5sums_x86_64=('cbb48d10306d6ca49423ed80e786598e')
+md5sums_x86_64=('ade4f7d0a5631ff492088671bc303a0a')
 
 _create_links() {
   # create missing soname links
