@@ -1,16 +1,18 @@
 # $Id: PKGBUILD 231243 2015-02-10 21:19:58Z lcarlier $
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Sandor Nagy <sandor.nagy@kdemail.net>
+# Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=xf86-video-sisimedia
 pkgver=0.9.1
-pkgrel=10
+pkgrel=11
 pkgdesc="X.org SiS 671 video driver"
-arch=(i686 x86_64)
+arch=('i686' 'x86_64')
 url="http://www.linuxconsulting.ro/xorg-drivers/"
 license=('custom')
 depends=('glibc')
-makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=19' 'xf86dgaproto')
-conflicts=('xorg-server<1.16' 'X-ABI-VIDEODRV_VERSION<19' 'X-ABI-VIDEODRV_VERSION>=20')
+makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=20' 'xf86dgaproto')
+conflicts=('xorg-server<1.18' 'X-ABI-VIDEODRV_VERSION<20' 'X-ABI-VIDEODRV_VERSION>=21')
+install="${pkgname}.install"
 source=(https://sources.archlinux.org/other/xf86-video-sisimedia/xf86-video-sisimedia-0.9.1_20091203.tar.bz2
         xf86-video-sis-0.9.1-20102701.patch
         0002-Remove-XFree86-Misc-PassMessage-support.patch
@@ -36,10 +38,13 @@ source=(https://sources.archlinux.org/other/xf86-video-sisimedia/xf86-video-sisi
         fix-xv-crash.patch
         sisimedia-no-xaa.patch
         sisimedia-xorg-1.13.patch
+        remove_mibstore.h.patch
         deprecated-sym2.patch
         disable-UploadToScreen-DownloadFromScreen.patch
-        remove_mibstore.h.patch
-        COPYING)
+        remove-ImplicitPointerConversions.patch
+        xserver117.patch
+        COPYING
+        "${pkgname}.conf")
 sha1sums=('22e6616df49ec82755daae08043a29aaf92fa430'
           '61715bb86180decde55a56fad9a12d841c89fbb2'
           '33fdea57187a2758802bcb9572d3a864aaab4d59'
@@ -65,10 +70,13 @@ sha1sums=('22e6616df49ec82755daae08043a29aaf92fa430'
           '1fdd74a2aef9455ac5c37d1fe0146d81aa905d2d'
           '370af234867df98206a98c8cd0a6c89323593f6b'
           '4ea333d659abe2b78f07511467c5356f39bf8695'
+          'e130b4b4cafa0d54426a9b9c4735ad4bf46686f5'
           '9bef0b61c0505cc64464073d73684e6933d3f84c'
           'ff95fd41be43560245caa40adc6b481f2dafca7d'
-          'e130b4b4cafa0d54426a9b9c4735ad4bf46686f5'
-          'a64e244f274bcb155f892d0488a1a4b1b2f7d70d')
+          '511564f7422ea78e903d8287c5f282586ab7420e'
+          'fa1b4bb9b6962f7f3216cd5ac6f1336644390aa5'
+          'a64e244f274bcb155f892d0488a1a4b1b2f7d70d'
+          '189b32b78109d3387fa9dac30ed58872ce5c9f66')
 
 prepare() {
   cd "${srcdir}/xf86-video-sis-${pkgver}"
@@ -107,6 +115,9 @@ prepare() {
 
   sed -i -e 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/' configure.ac
 
+  patch -Np1 -i "${srcdir}/remove-ImplicitPointerConversions.patch"
+  patch -Np1 -i "${srcdir}/xserver117.patch"
+
   autoreconf -fi
 }
 
@@ -125,4 +136,9 @@ package() {
 
   install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m644 "${srcdir}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/"
+
+  if [ ! -f "/etc/X11/xorg.conf.d/${pkgname}.conf" ]; then
+    install -m755 -d "${pkgdir}/etc/X11/xorg.conf.d/"
+    install -m644 "${srcdir}/${pkgname}.conf" "${pkgdir}/etc/X11/xorg.conf.d/"
+  fi
 }
