@@ -2,8 +2,8 @@
 # Maintainer:  max.bra <max dot bra at alice dot it>
 
 pkgname=ipscan
-pkgver=3.4
-_pkgintver=3.4
+pkgver=3.4.1
+_pkgintver=3.4.1
 pkgrel=1
 pkgdesc='Angry IP Scanner (or simply ipscan) is an open-source and cross-platform network scanner designed to be fast and simple to use. It scans IP addresses and ports as well as has many other features.'
 arch=('i686' 'x86_64')
@@ -23,8 +23,8 @@ source_x86_64+=(http://downloads.sourceforge.net/project/ipscan/ipscan3-binary/$
 md5sums=('59de9b8055fe037c77bf8339eee31b85'
          '5b1c941c32a444803677a2061aa55a70'
          '6a8f7a0fb70cf2c801ff5422870609f9')
-md5sums_i686=('7c2bad1551a544d4e111788846c8018b')
-md5sums_x86_64=('06f5ddb34c62f257b41553bb8df81015')
+md5sums_i686=('bb712a695d22117ca7402fb7e61fd675')
+md5sums_x86_64=('93c6ac9787514489e03b580e153b2c42')
 
 noextract=($(for i in ${source[@]}; do basename $i; done) ipscan-linux-$_pkgintver.jar ipscan-linux64-$_pkgintver.jar)
 
