@@ -1,0 +1,11 @@
+#add the dictd-group
+
+post_install() {
+ getent group dictd &>/dev/null || groupadd dictd >/dev/null
+ true
+}
+
+pre_remove() {
+ getent group dictd &>/dev/null && groupdel dictd >/dev/null
+ true
+}
