@@ -37,5 +37,5 @@ package() {
   msg2 "Starting make install..."
   make DESTDIR="$pkgdir" install
 
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$_pkgname/COPYING"
+  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$_pkgname/COPYING
 }
