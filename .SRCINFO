@@ -1,7 +1,7 @@
 pkgbase = microchip-pic32-legacy-plib
 	pkgdesc = Microchip's PIC32 peripheral support libraries.
 	pkgver = 1.00
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.microchip.com/pagehandler/en-us/devtools/mplabxc/home.html?tab=t2
 	arch = any
 	license = custom

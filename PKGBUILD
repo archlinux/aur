@@ -15,7 +15,7 @@ makedepends_x86_64=(lib32-tclkit)
 makedepends_i686=(tclkit)
 
 options=(!strip docs libtool emptydirs !zipman staticlibs !upx)
-source=("http://ww1.microchip.com/downloads/en/DeviceDoc/PIC32 Legacy Peripheral Libraries Linux.tar"
+source=("http://ww1.microchip.com/downloads/en/DeviceDoc/PIC32%20Legacy%20Peripheral%20Libraries%20Linux.tar"
         "bitrock-unpacker.tcl")
 
 sha256sums=('644edc09b5164dbfe80c4f42c12fe506b58481bd71e4d0228b62ec7c305d027f'
