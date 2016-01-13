@@ -2,8 +2,8 @@
 # Maintainer: Edvinas Valatka <edacval@gmail.com>
 _pkgname=seafile-client
 pkgname=${_pkgname}-qt5
-pkgver=5.0.1
-pkgrel=2
+pkgver=5.0.3
+pkgrel=1
 pkgdesc="This is seafile client for synchronizing your local files with seafile server. Qt5 version."
 arch=('i686' 'x86_64')
 url="https://github.com/haiwen/seafile-client/"
@@ -25,4 +25,4 @@ package () {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     make DESTDIR="${pkgdir}" install
 }
-sha256sums=('672640dc6bb9775847dfab3761aa4fb952fc1c93363b8f11b1461872ab0799e4')
+sha256sums=('0e968bec3d01fc2f17a32ac4ea89542a85b85dc88579beb9b91977f3b9cdb354')
