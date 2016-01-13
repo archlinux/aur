@@ -13,5 +13,5 @@ sha1sums=('ec31a5cdbe9eb061e4158162552f9678c5c083af')
 
 package() {
 	cd ${srcdir}
-	install -m 0644 -D "${srcdir}"/bash_completion.bash "${pkgdir}"/usr/share/bash-completion/completions/maven
+	install -m 0644 -D "${srcdir}"/bash_completion.bash "${pkgdir}"/usr/share/bash-completion/completions/mvn
 }
