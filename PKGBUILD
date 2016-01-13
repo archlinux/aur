@@ -116,7 +116,7 @@ cd dhcp/
 
       elif [ "${cur_plugin}" = "dhcp" ] ; then
         mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/
-        cp -a ./html/themes %{buildroot}%{_datadir}/fusiondirectory/html/
+        cp -a ./html/themes/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/
 
       else
         # Directories
