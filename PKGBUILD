@@ -6,12 +6,12 @@ pkgname=toxic-newgroupchat-git
 pkgdesc='CLI Frontend in ncurses for Tox'
 license=('GPL3')
 pkgver=0.7.0.r17.g88e7422
-pkgrel=2
+pkgrel=3
 depends=(
   'desktop-file-utils'
   'freealut'
   'libnotify'
-  'toxcore'
+  'toxcore-newgroupchat'
   'curl'
   'qrencode'
 )
