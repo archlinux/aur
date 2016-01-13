@@ -2,7 +2,7 @@
 # Contributor: Joris Steyn <jorissteyn@gmail.com>
 # Contributor: Curtis McEnroe <programble@gmail.com>
 pkgname=git-extras-git
-pkgver=3.0.0.r30.g392a2d6
+pkgver=4.0.0.r10.ge7083de
 pkgrel=1
 pkgdesc="GIT utilities -- repo summary, repl, changelog population, author commit percentages and more"
 arch=('any')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
