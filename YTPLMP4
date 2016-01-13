@@ -11,16 +11,16 @@
 # no copyright, just copyleft for my work
 #
 #set -x
-ytplver=8.1
+ytplver=8.2
 confver=1
 
 ### TODO ChangeLog ###
-chngvar=('Changelog YTPLMP3 - 20150611<br>')
+chngvar=('Changelog YTPLMP3 - 20160113<br>')
 chngvar+=('YTPLMP3 Version: '\"$ytplver\"'<br>')
 chngvar+=('----------------------------------<br>')
 #chngvar+=('Youtube: webm format is now being supported<br>')
 #chngvar+=('Soundcloud: Playlist from to is working for Sets<br>')
-chngvar+=('Fixes: Bugfixes Downloadlst<br>')
+chngvar+=('Fixes: Bugfixes Downloadlist<br>')
 chngvar+=('Design: Show names instead of links<br>')
 #chngvar+=('Drag & Drop for addtional links<br>')
 #chngvar+=('various other fixes<br>')
@@ -455,9 +455,9 @@ function newid3tags() {
 	--text="File:$i3info\nGenre: $id3gen\nDuration: $durcomp       Bitrate: $mp3bitr" \
 	--separator="%" \
 	--field="Artist" \
-	--field="Titel" \
+	--field="Title" \
 	--field="Album" \
-	--field="Kommentar" \
+	--field="Comment" \
 	--field="Genre:CBE" \
 	--field="Rename File using ID3-Tag?:CHK" \
 	"$id3art" "$id3tit" "$id3alb" "$comurl" "$dispgen" "TRUE" "" 2>/dev/null )"

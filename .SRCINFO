@@ -2,7 +2,7 @@
 # Mon Oct 19 23:51:08 UTC 2015
 pkgbase = ytplmp4
 	pkgdesc = YTPLMP4 - YouTube Playlist to MP3. Download single songs or playlists from Youtube and Soundcloud.
-	pkgver = 8.1
+	pkgver = 8.2
 	pkgrel = 1
 	url = http://youtube.com/
 	install = ytplmp4.install
@@ -21,10 +21,10 @@ pkgbase = ytplmp4
 	depends = lame
 	depends = sox
 	options = !strip
-	source = https://dl.dropboxusercontent.com/u/9839330/ytplmp4/YTPLMP4-8.1.tar.gz
+	source = https://dl.dropboxusercontent.com/u/9839330/ytplmp4/YTPLMP4-8.2.tar.gz
 	source = ytplmp4.install
 	source = ytplmp4.desktop
-	md5sums = 7fd9704d02f5451e2cc909cb4603b3b7
+	md5sums = 3a7ac549244de4d89bac4738f979d69d
 	md5sums = 9347b695d57d40c8756fcb593f28158c
 	md5sums = ceae8591b64a369118d4928042cfb403
 
