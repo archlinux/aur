@@ -1,7 +1,7 @@
 # Maintainer: J0k3r <moebius282 at gmail dot com>
 
 pkgname=darkplaces-rm-git
-pkgver=r8985.0b519b1
+pkgver=r9084.6089aee
 pkgrel=1
 pkgdesc="DarkplacesRM is a fork of the DarkPlaces engine compatible with the RocketMinsta project"
 url="http://rocketminsta.net/"
@@ -19,6 +19,7 @@ makedepends=('git' 'mesa')
 changelog="${pkgname}.changelog"
 conflicts=('darkplaces_rm-git')
 replaces=('darkplaces_rm-git')
+options=('!makeflags')
 _local_repo="${pkgname}"
 _binary_basename="darkplaces-rm"
 source=("${_local_repo}::git+https://github.com/nexAkari/DarkPlacesRM.git"
