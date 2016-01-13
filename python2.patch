@@ -1,6 +1,6 @@
-diff -aur opensesame-3.0.2.orig/dev-scripts/architecture.py opensesame-3.0.2/dev-scripts/architecture.py
---- opensesame-3.0.2.orig/dev-scripts/architecture.py	2015-11-17 22:24:48.416242619 +0000
-+++ opensesame-3.0.2/dev-scripts/architecture.py	2015-11-17 22:26:02.278515110 +0000
+diff -aur opensesame-3.0.5.orig/dev-scripts/architecture.py opensesame-3.0.5/dev-scripts/architecture.py
+--- opensesame-3.0.5.orig/dev-scripts/architecture.py	2016-01-13 11:36:11.426931055 +0000
++++ opensesame-3.0.5/dev-scripts/architecture.py	2016-01-13 11:38:04.016150382 +0000
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
@@ -16,182 +16,198 @@ diff -aur opensesame-3.0.2.orig/dev-scripts/architecture.py opensesame-3.0.2/dev
  #-*- coding:utf-8 -*-
  
  """
-diff -aur opensesame-3.0.2.orig/dev-scripts/check_ts.py opensesame-3.0.2/dev-scripts/check_ts.py
---- opensesame-3.0.2.orig/dev-scripts/check_ts.py	2015-11-17 22:24:48.416242619 +0000
-+++ opensesame-3.0.2/dev-scripts/check_ts.py	2015-11-17 22:26:02.278515110 +0000
+diff -aur opensesame-3.0.5.orig/dev-scripts/check_ts.py opensesame-3.0.5/dev-scripts/check_ts.py
+--- opensesame-3.0.5.orig/dev-scripts/check_ts.py	2016-01-13 11:36:11.450264226 +0000
++++ opensesame-3.0.5/dev-scripts/check_ts.py	2016-01-13 11:38:04.019483692 +0000
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  #-*- coding:utf-8 -*-
  
  """
-diff -aur opensesame-3.0.2.orig/dev-scripts/docstruct.py opensesame-3.0.2/dev-scripts/docstruct.py
---- opensesame-3.0.2.orig/dev-scripts/docstruct.py	2015-11-17 22:24:48.416242619 +0000
-+++ opensesame-3.0.2/dev-scripts/docstruct.py	2015-11-17 22:26:02.285181681 +0000
+diff -aur opensesame-3.0.5.orig/dev-scripts/docstruct.py opensesame-3.0.5/dev-scripts/docstruct.py
+--- opensesame-3.0.5.orig/dev-scripts/docstruct.py	2016-01-13 11:36:11.636929595 +0000
++++ opensesame-3.0.5/dev-scripts/docstruct.py	2016-01-13 11:38:04.022817002 +0000
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  #-*- coding:utf-8 -*-
  
  """
-diff -aur opensesame-3.0.2.orig/dev-scripts/extract_translatables.py opensesame-3.0.2/dev-scripts/extract_translatables.py
---- opensesame-3.0.2.orig/dev-scripts/extract_translatables.py	2015-11-17 22:24:48.416242619 +0000
-+++ opensesame-3.0.2/dev-scripts/extract_translatables.py	2015-11-17 22:26:02.288514966 +0000
+diff -aur opensesame-3.0.5.orig/dev-scripts/extract_translatables.py opensesame-3.0.5/dev-scripts/extract_translatables.py
+--- opensesame-3.0.5.orig/dev-scripts/extract_translatables.py	2016-01-13 11:36:11.680262627 +0000
++++ opensesame-3.0.5/dev-scripts/extract_translatables.py	2016-01-13 11:38:04.026150312 +0000
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  #-*- coding:utf-8 -*-
  
  """
-diff -aur opensesame-3.0.2.orig/dev-scripts/item-help.py opensesame-3.0.2/dev-scripts/item-help.py
---- opensesame-3.0.2.orig/dev-scripts/item-help.py	2015-11-17 22:24:48.416242619 +0000
-+++ opensesame-3.0.2/dev-scripts/item-help.py	2015-11-17 22:26:02.291848253 +0000
+diff -aur opensesame-3.0.5.orig/dev-scripts/item-help.py opensesame-3.0.5/dev-scripts/item-help.py
+--- opensesame-3.0.5.orig/dev-scripts/item-help.py	2016-01-13 11:36:11.680262627 +0000
++++ opensesame-3.0.5/dev-scripts/item-help.py	2016-01-13 11:38:04.029483623 +0000
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  #-*- coding:utf-8 -*-
  
  """
-diff -aur opensesame-3.0.2.orig/dev-scripts/update-hidden.py opensesame-3.0.2/dev-scripts/update-hidden.py
---- opensesame-3.0.2.orig/dev-scripts/update-hidden.py	2015-11-17 22:24:48.416242619 +0000
-+++ opensesame-3.0.2/dev-scripts/update-hidden.py	2015-11-17 22:26:02.295181538 +0000
+diff -aur opensesame-3.0.5.orig/dev-scripts/update-hidden.py opensesame-3.0.5/dev-scripts/update-hidden.py
+--- opensesame-3.0.5.orig/dev-scripts/update-hidden.py	2016-01-13 11:36:11.683595938 +0000
++++ opensesame-3.0.5/dev-scripts/update-hidden.py	2016-01-13 11:38:04.029483623 +0000
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  #-*- coding:utf-8 -*-
  
  """
-Only in opensesame-3.0.2/.git/objects/pack: pack-accdeab19262a93dd8ffbdfd0c24b93997424e99.idx.bak
-Only in opensesame-3.0.2/.git/objects/pack: pack-accdeab19262a93dd8ffbdfd0c24b93997424e99.pack.bak
-diff -aur opensesame-3.0.2.orig/opensesame opensesame-3.0.2/opensesame
---- opensesame-3.0.2.orig/opensesame	2015-11-17 22:24:48.442908900 +0000
-+++ opensesame-3.0.2/opensesame	2015-11-17 22:26:03.221834971 +0000
+diff -aur opensesame-3.0.5.orig/opensesame opensesame-3.0.5/opensesame
+--- opensesame-3.0.5.orig/opensesame	2016-01-13 11:36:11.853594756 +0000
++++ opensesame-3.0.5/opensesame	2016-01-13 11:38:04.706145607 +0000
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  #-*- coding:utf-8 -*-
  
  """
-diff -aur opensesame-3.0.2.orig/opensesameandroid.py opensesame-3.0.2/opensesameandroid.py
---- opensesame-3.0.2.orig/opensesameandroid.py	2015-11-17 22:24:48.446242185 +0000
-+++ opensesame-3.0.2/opensesameandroid.py	2015-11-17 22:26:03.245167971 +0000
+diff -aur opensesame-3.0.5.orig/opensesameandroid.py opensesame-3.0.5/opensesameandroid.py
+--- opensesame-3.0.5.orig/opensesameandroid.py	2016-01-13 11:36:11.873594618 +0000
++++ opensesame-3.0.5/opensesameandroid.py	2016-01-13 11:38:04.739478709 +0000
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  #-*- coding:utf-8 -*-
  
  """
-diff -aur opensesame-3.0.2.orig/opensesamerun opensesame-3.0.2/opensesamerun
---- opensesame-3.0.2.orig/opensesamerun	2015-11-17 22:24:48.446242185 +0000
-+++ opensesame-3.0.2/opensesamerun	2015-11-17 22:26:03.245167971 +0000
+diff -aur opensesame-3.0.5.orig/opensesamerun opensesame-3.0.5/opensesamerun
+--- opensesame-3.0.5.orig/opensesamerun	2016-01-13 11:36:11.880261237 +0000
++++ opensesame-3.0.5/opensesamerun	2016-01-13 11:38:04.742812020 +0000
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  #-*- coding:utf-8 -*-
  
  """
-diff -aur opensesame-3.0.2.orig/opensesame_unittest/backends.py opensesame-3.0.2/opensesame_unittest/backends.py
---- opensesame-3.0.2.orig/opensesame_unittest/backends.py	2015-11-17 22:24:48.446242185 +0000
-+++ opensesame-3.0.2/opensesame_unittest/backends.py	2015-11-17 22:26:03.228501543 +0000
+diff -aur opensesame-3.0.5.orig/opensesame_unittest/backends.py opensesame-3.0.5/opensesame_unittest/backends.py
+--- opensesame-3.0.5.orig/opensesame_unittest/backends.py	2016-01-13 11:36:11.853594756 +0000
++++ opensesame-3.0.5/opensesame_unittest/backends.py	2016-01-13 11:38:04.709478917 +0000
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  #-*- coding:utf-8 -*-
  
  """
-diff -aur opensesame-3.0.2.orig/opensesame_unittest/color.py opensesame-3.0.2/opensesame_unittest/color.py
---- opensesame-3.0.2.orig/opensesame_unittest/color.py	2015-11-17 22:24:48.446242185 +0000
-+++ opensesame-3.0.2/opensesame_unittest/color.py	2015-11-17 22:26:03.231834828 +0000
+diff -aur opensesame-3.0.5.orig/opensesame_unittest/color.py opensesame-3.0.5/opensesame_unittest/color.py
+--- opensesame-3.0.5.orig/opensesame_unittest/color.py	2016-01-13 11:36:11.853594756 +0000
++++ opensesame-3.0.5/opensesame_unittest/color.py	2016-01-13 11:38:04.712812227 +0000
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  #-*- coding:utf-8 -*-
  
  """
-diff -aur opensesame-3.0.2.orig/opensesame_unittest/compilable.py opensesame-3.0.2/opensesame_unittest/compilable.py
---- opensesame-3.0.2.orig/opensesame_unittest/compilable.py	2015-11-17 22:24:48.446242185 +0000
-+++ opensesame-3.0.2/opensesame_unittest/compilable.py	2015-11-17 22:26:03.235168114 +0000
+diff -aur opensesame-3.0.5.orig/opensesame_unittest/compilable.py opensesame-3.0.5/opensesame_unittest/compilable.py
+--- opensesame-3.0.5.orig/opensesame_unittest/compilable.py	2016-01-13 11:36:11.853594756 +0000
++++ opensesame-3.0.5/opensesame_unittest/compilable.py	2016-01-13 11:38:04.716145538 +0000
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  #-*- coding:utf-8 -*-
  
  """
-diff -aur opensesame-3.0.2.orig/opensesame_unittest/response.py opensesame-3.0.2/opensesame_unittest/response.py
---- opensesame-3.0.2.orig/opensesame_unittest/response.py	2015-11-17 22:24:48.446242185 +0000
-+++ opensesame-3.0.2/opensesame_unittest/response.py	2015-11-17 22:26:03.238501400 +0000
+@@ -51,7 +51,7 @@
+ 		compile(src, u'<string>', u'exec')
+ 		self.assertTrue(
+ 			usrc.startswith(
+-				u'#!/usr/bin/env python\n#-*- coding:utf-8 -*-\n') or \
++				u'#!/usr/bin/env python2\n#-*- coding:utf-8 -*-\n') or \
+ 			usrc.startswith(
+ 				u'#-*- coding:utf-8 -*-\n'))
+ 		if not path.endswith(u'py3compat.py'):
+diff -aur opensesame-3.0.5.orig/opensesame_unittest/headless.py opensesame-3.0.5/opensesame_unittest/headless.py
+--- opensesame-3.0.5.orig/opensesame_unittest/headless.py	2016-01-13 11:36:11.873594618 +0000
++++ opensesame-3.0.5/opensesame_unittest/headless.py	2016-01-13 11:38:04.732812089 +0000
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  #-*- coding:utf-8 -*-
  
  """
-diff -aur opensesame-3.0.2.orig/opensesame_unittest/syntax.py opensesame-3.0.2/opensesame_unittest/syntax.py
---- opensesame-3.0.2.orig/opensesame_unittest/syntax.py	2015-11-17 22:24:48.446242185 +0000
-+++ opensesame-3.0.2/opensesame_unittest/syntax.py	2015-11-17 22:26:03.241834686 +0000
+diff -aur opensesame-3.0.5.orig/opensesame_unittest/response.py opensesame-3.0.5/opensesame_unittest/response.py
+--- opensesame-3.0.5.orig/opensesame_unittest/response.py	2016-01-13 11:36:11.873594618 +0000
++++ opensesame-3.0.5/opensesame_unittest/response.py	2016-01-13 11:38:04.736145399 +0000
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  #-*- coding:utf-8 -*-
  
  """
-diff -aur opensesame-3.0.2.orig/plugins/pp_io/parallelppdev.py opensesame-3.0.2/plugins/pp_io/parallelppdev.py
---- opensesame-3.0.2.orig/plugins/pp_io/parallelppdev.py	2015-11-17 22:24:48.449575470 +0000
-+++ opensesame-3.0.2/plugins/pp_io/parallelppdev.py	2015-11-17 22:26:03.438498544 +0000
+diff -aur opensesame-3.0.5.orig/opensesame_unittest/syntax.py opensesame-3.0.5/opensesame_unittest/syntax.py
+--- opensesame-3.0.5.orig/opensesame_unittest/syntax.py	2016-01-13 11:36:11.873594618 +0000
++++ opensesame-3.0.5/opensesame_unittest/syntax.py	2016-01-13 11:38:04.739478709 +0000
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
+ #-*- coding:utf-8 -*-
+ 
+ """
+diff -aur opensesame-3.0.5.orig/plugins/pp_io/parallelppdev.py opensesame-3.0.5/plugins/pp_io/parallelppdev.py
+--- opensesame-3.0.5.orig/plugins/pp_io/parallelppdev.py	2016-01-13 11:36:11.893594478 +0000
++++ opensesame-3.0.5/plugins/pp_io/parallelppdev.py	2016-01-13 11:38:04.892810981 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ #-*- coding:utf-8 -*-
+ # NO UNITTEST
  # parallel port access using the ppdev driver
- 
- import sys
-diff -aur opensesame-3.0.2.orig/run_unittests.py opensesame-3.0.2/run_unittests.py
---- opensesame-3.0.2.orig/run_unittests.py	2015-11-17 22:24:48.579573590 +0000
-+++ opensesame-3.0.2/run_unittests.py	2015-11-17 22:26:04.538482838 +0000
+diff -aur opensesame-3.0.5.orig/run_unittests.py opensesame-3.0.5/run_unittests.py
+--- opensesame-3.0.5.orig/run_unittests.py	2016-01-13 11:36:12.656922507 +0000
++++ opensesame-3.0.5/run_unittests.py	2016-01-13 11:38:05.849471028 +0000
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  #-*- coding:utf-8 -*-
  
  """
-diff -aur opensesame-3.0.2.orig/setup-android.py opensesame-3.0.2/setup-android.py
---- opensesame-3.0.2.orig/setup-android.py	2015-11-17 22:24:48.579573590 +0000
-+++ opensesame-3.0.2/setup-android.py	2015-11-17 22:26:04.541816123 +0000
+diff -aur opensesame-3.0.5.orig/setup-android.py opensesame-3.0.5/setup-android.py
+--- opensesame-3.0.5.orig/setup-android.py	2016-01-13 11:36:12.660255817 +0000
++++ opensesame-3.0.5/setup-android.py	2016-01-13 11:38:05.852804338 +0000
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  #-*- coding:utf-8 -*-
  
  """
-diff -aur opensesame-3.0.2.orig/setup-mac.py opensesame-3.0.2/setup-mac.py
---- opensesame-3.0.2.orig/setup-mac.py	2015-11-17 22:24:48.579573590 +0000
-+++ opensesame-3.0.2/setup-mac.py	2015-11-17 22:26:04.545149409 +0000
+diff -aur opensesame-3.0.5.orig/setup-mac.py opensesame-3.0.5/setup-mac.py
+--- opensesame-3.0.5.orig/setup-mac.py	2016-01-13 11:36:12.660255817 +0000
++++ opensesame-3.0.5/setup-mac.py	2016-01-13 11:38:05.856137648 +0000
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  #-*- coding:utf-8 -*-
  
  """
-diff -aur opensesame-3.0.2.orig/setup.py opensesame-3.0.2/setup.py
---- opensesame-3.0.2.orig/setup.py	2015-11-17 22:24:48.579573590 +0000
-+++ opensesame-3.0.2/setup.py	2015-11-17 22:26:04.551815981 +0000
+diff -aur opensesame-3.0.5.orig/setup.py opensesame-3.0.5/setup.py
+--- opensesame-3.0.5.orig/setup.py	2016-01-13 11:36:12.676922369 +0000
++++ opensesame-3.0.5/setup.py	2016-01-13 11:38:05.862804269 +0000
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  #-*- coding:utf-8 -*-
  
  """
-diff -aur opensesame-3.0.2.orig/setup_shared.py opensesame-3.0.2/setup_shared.py
---- opensesame-3.0.2.orig/setup_shared.py	2015-11-17 22:24:48.579573590 +0000
-+++ opensesame-3.0.2/setup_shared.py	2015-11-17 22:26:04.555149266 +0000
+diff -aur opensesame-3.0.5.orig/setup_shared.py opensesame-3.0.5/setup_shared.py
+--- opensesame-3.0.5.orig/setup_shared.py	2016-01-13 11:36:12.676922369 +0000
++++ opensesame-3.0.5/setup_shared.py	2016-01-13 11:38:05.862804269 +0000
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  #-*- coding:utf-8 -*-
  
  """
-diff -aur opensesame-3.0.2.orig/setup-win32.py opensesame-3.0.2/setup-win32.py
---- opensesame-3.0.2.orig/setup-win32.py	2015-11-17 22:24:48.579573590 +0000
-+++ opensesame-3.0.2/setup-win32.py	2015-11-17 22:26:04.548482695 +0000
+diff -aur opensesame-3.0.5.orig/setup-win32.py opensesame-3.0.5/setup-win32.py
+--- opensesame-3.0.5.orig/setup-win32.py	2016-01-13 11:36:12.670255748 +0000
++++ opensesame-3.0.5/setup-win32.py	2016-01-13 11:38:05.859470959 +0000
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
