@@ -2,7 +2,7 @@
 # Contributor: Alexander Baldeck <alexander@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 pkgname=xorg-xdm-git
-pkgver=1.1.11.32.gd0e3262
+pkgver=1.1.11.43.g994d32a
 pkgrel=1
 pkgdesc="X Display Manager"
 arch=(i686 x86_64)
@@ -15,16 +15,10 @@ makedepends=('git' 'pkgconfig' 'xorg-util-macros' 'xtrans')
 backup=(etc/X11/xdm/Xaccess etc/X11/xdm/Xresources etc/X11/xdm/Xservers etc/X11/xdm/xdm-config etc/pam.d/xdm etc/X11/xdm/Xsetup_0 etc/X11/xdm/Xsession)
 options=('!libtool')
 source=("$pkgname::git://anongit.freedesktop.org/git/xorg/app/xdm"
-        Xsession-loginshell.patch
-        Xsession-xsm.patch
-        xdm-1.0.5-sessreg-utmp-fix-bug177890.patch
-	build-fixes.patch
+	fixes.patch
         xdm.pam)
 sha256sums=('SKIP'
-            'fd3e7c20837b42a8ab111369fd6dc9612f9edb91c1f6904cca1d6a1fa3cfa0ff'
-            '77a1ce9bdf363591b72798db08b4df3589bd4e64737fd32cf9028f9245450edb'
-            '5f380a2d6f77feb910d77f7f6843fce9b00ff7610c159fc029ee44cc6c23a48a'
-            '5da6ed875db3cc07dc1d87d96c92a62f638e1735b22bb365be4b15409af871f7'
+            '0aba5f8e58dead488544962376531e1067e7a55a441f62c601645cd31762caf9'
             '7d6818a1c1a44e9bd38774c035e03b0b831f6646681bc2bf556761aec7baf418')
 
 pkgver() {
@@ -34,10 +28,7 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  patch -Np0 -i "${srcdir}/Xsession-loginshell.patch"
-  patch -Np1 -i "${srcdir}/Xsession-xsm.patch"
-  patch -Np0 -i "${srcdir}/xdm-1.0.5-sessreg-utmp-fix-bug177890.patch"
-  patch -Np2 -i "${srcdir}/build-fixes.patch"
+  patch -Np2 -b -z .orig -i ../fixes.patch
   autoreconf -fi
 }
 

@@ -1,0 +1,80 @@
+diff -up src/xorg-xdm-git/config/GiveConsole.orig src/xorg-xdm-git/config/GiveConsole
+--- src/xorg-xdm-git/config/GiveConsole.orig	2016-01-12 18:28:15.000000000 -0700
++++ src/xorg-xdm-git/config/GiveConsole	2016-01-12 18:28:31.000000000 -0700
+@@ -7,3 +7,5 @@
+ # causing serious grief.
+ #
+ chown $USER /dev/console
++exec /usr/bin/sessreg  -a -w "/var/log/wtmp" -u "/run/utmp" \
++	-x "/etc/X11/xdm/Xservers" -l $DISPLAY -h "" $USER
+diff -up src/xorg-xdm-git/config/Xsession.cpp.orig src/xorg-xdm-git/config/Xsession.cpp
+--- src/xorg-xdm-git/config/Xsession.cpp.orig	2016-01-12 18:24:23.000000000 -0700
++++ src/xorg-xdm-git/config/Xsession.cpp	2016-01-12 18:27:35.000000000 -0700
+@@ -51,16 +51,17 @@ XCOMM The startup script is not intended
+ 
+ startup=$HOME/.xsession
+ resources=$HOME/.Xresources
++xinitrc=$HOME/.xinitrc
+ 
+ if [ -s "$startup" ]; then
+-	if [ -x "$startup" ]; then
+-		exec "$startup"
+-	else
+-		exec /bin/sh "$startup"
+-	fi
++	exec /bin/sh -ls -c "$startup"
+ else
+ 	if [ -r "$resources" ]; then
+ 		BINDIR/xrdb -load "$resources"
+ 	fi
+-	exec BINDIR/xsm
++	if [ -r "$xinitrc" ]; then
++		exec /bin/sh -ls -c "$xinitrc"
++	else
++		exec /bin/sh -l /etc/X11/xinit/xinitrc
++	fi
+ fi
+diff -up src/xorg-xdm-git/xdm/choose.c.orig src/xorg-xdm-git/xdm/choose.c
+--- src/xorg-xdm-git/xdm/choose.c.orig	2016-01-12 18:34:02.000000000 -0700
++++ src/xorg-xdm-git/xdm/choose.c	2016-01-12 18:34:32.000000000 -0700
+@@ -51,6 +51,11 @@ in this Software without prior written a
+ # include <time.h>
+ # define Time_t time_t
+ 
++# ifdef HAVE_SETPROCTITLE
++#  include <sys/types.h>
++#  include <bsd/unistd.h>
++# endif
++
+ static int
+ FormatBytes (
+     unsigned char *data,
+diff -up src/xorg-xdm-git/xdm/genauth.c.orig src/xorg-xdm-git/xdm/genauth.c
+--- src/xorg-xdm-git/xdm/genauth.c.orig	2016-01-12 18:35:06.000000000 -0700
++++ src/xorg-xdm-git/xdm/genauth.c	2016-01-12 18:35:19.000000000 -0700
+@@ -43,6 +43,10 @@ from The Open Group.
+ #include <time.h>
+ #define Time_t time_t
+ 
++#ifdef HAVE_ARC4RANDOM
++#include <bsd/stdlib.h>
++#endif
++
+ #ifdef HASXDMAUTH
+ static unsigned char	key[8];
+ #endif
+diff -up src/xorg-xdm-git/xdm/session.c.orig src/xorg-xdm-git/xdm/session.c
+--- src/xorg-xdm-git/xdm/session.c.orig	2016-01-12 18:36:15.000000000 -0700
++++ src/xorg-xdm-git/xdm/session.c	2016-01-12 18:36:21.000000000 -0700
+@@ -78,6 +78,11 @@ extern int key_setnet(struct key_netstar
+ #include <systemd/sd-daemon.h>
+ #endif
+ 
++#ifdef HAVE_SETPROCTITLE
++# include <sys/types.h>
++# include <bsd/unistd.h>
++#endif
++
+ #ifdef USE_SELINUX
+ /* This should be run just before we exec the user session. */
+ static int
