@@ -114,6 +114,10 @@ cd ppolicy/
         mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/
         cp -a ./html/themes/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/
 
+      elif [ "ppolicy" = "ppolicy" ] ; then
+        mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/
+        cp -a ./html/themes/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/
+
       else
         # Directories
         for cur_html in $(find ./html -mindepth 1 -maxdepth 1 -type d) ; do
