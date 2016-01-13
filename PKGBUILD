@@ -1,14 +1,12 @@
 pkgname=kazam
 pkgver=1.4.5
-pkgrel=4
+pkgrel=5
 pkgdesc="A screencasting program with design in mind"
 arch=('any')
 url="https://launchpad.net/kazam"
 license=('GPL')
 groups=()
-depends=('python' 'python-cairo' 'python-xdg' 'python-dbus' 'python-distutils-extra'
-    'python-gobject' 'gobject-introspection' 'gstreamer' 'gtk3' 'pango' 'gdk-pixbuf2'
-    'libwnck3' 'ffmpeg' 'libmatroska' 'libtheora' 'gnome-desktop')
+depends=('python' 'python-cairo' 'python-xdg' 'python-dbus' 'python-distutils-extra' 'python-gobject' 'gobject-introspection' 'gstreamer' 'gst-plugins-base' 'gtk3' 'pango' 'gdk-pixbuf2' 'libwnck3' 'ffmpeg' 'libmatroska' 'libtheora' 'gnome-desktop')
 optdepends=('libkeybinder3: hotkeys support' 'libappindicator3: indicator on Unity panel support')
 conflicts=('kazam-bzr' 'kazam-stable-bzr')
 install=kazam.install
