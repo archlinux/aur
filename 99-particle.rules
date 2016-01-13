@@ -1,0 +1,5 @@
+# Spark Core
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="1d50", ATTRS{idProduct}=="607[df]", GROUP="users", MODE="0666"
+
+# Particle Photon / P1 / Electron
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="2b04", ATTRS{idProduct}=="[cd]00?", GROUP="users", MODE="0666"
