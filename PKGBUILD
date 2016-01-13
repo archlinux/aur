@@ -13,7 +13,7 @@
 	
 	# Pkg info
 	arch=('any')
-	pkgver=2.7.1
+	pkgver=2.7.6
 	pkgrel=0
 	
 	# Src info -- As the master branch is used for releases, this is considered 'stable'.
@@ -24,7 +24,7 @@ md5sums=('0c4659c752381f780b0960707c21c7e2')
 	# Bld info
 	provides=('vhs')
 	depends=( 'ffmpeg' )
-	# Is there a way to install ffmpeg-full from AUR?
+	# Is there a way to install 'ffmpeg-full' and 'tui' from AUR?
 #
 #	Functions
 #
