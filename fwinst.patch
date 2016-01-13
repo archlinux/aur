@@ -1,6 +1,6 @@
-diff -aur sixfireusb-0.6.1/fwinst.sh sixfireusb-0.6.1/fwinst.sh
---- sixfireusb-0.6.1/fwinst.sh	2015-10-16 17:15:26.986916637 +0200
-+++ sixfireusb-0.6.1/fwinst.sh	2015-10-18 10:48:10.764352290 +0200
+diff -aur sixfireusb-0.6.2/fwinst.sh sixfireusb-0.6.2/fwinst.sh
+--- sixfireusb-0.6.2/fwinst.sh	2016-01-13 12:32:46.658997492 +0100
++++ sixfireusb-0.6.2/fwinst.sh	2016-01-13 12:59:59.438633828 +0100
 @@ -19,7 +19,7 @@
  # (at your option) any later version.
  #
@@ -10,16 +10,18 @@ diff -aur sixfireusb-0.6.1/fwinst.sh sixfireusb-0.6.1/fwinst.sh
  export FW_6FIRE_PATH=$FW_PATH/6fire
  cleanup() {
    rm -Rf /tmp/dmx
-@@ -58,7 +58,7 @@
- step_success
-
- step_begin "Downloading windows driver"
--if ! wget "http://ftp.terratec.de/Audio/DMX_6fire_USB/Updates/DMX_6fire_USB_Setup_1.23.0.02_XP_Vista_7.exe" -q -O /tmp/dmx.exe ; then
-+if ! wget "http://terratec.ultron.info/Audio/DMX_6fire_USB/Updates/History/Windows/DMX_6fire_USB_Setup_1.23.0.02_XP_Vista_7.exe" -q -O /tmp/dmx.exe ; then
-   step_error "Internet connection alive? Perhaps a new driver version is available.\nIf that is the case, please redownload this script."
+@@ -63,8 +63,8 @@
  fi
  step_success
-@@ -80,15 +80,15 @@
+
+-step_begin "Checking MD-5 checksum of windows driver"
+-if ! echo "86049155f9326a77329d87f7b027a8b9  /tmp/dmx.exe" | md5sum -c >/dev/null 2>&1 ; then
++step_begin "Checking SHA512 checksum of windows driver"
++if ! echo "4a71d2cbf092b0c13afc4ec475e9b6eca48f68e3ca47cff96ffb71bc51dea09c0b19a0e90150ac40cbcf231bc3570e187dc9cb447c2a309472c1e237d501c5b1  /tmp/dmx.exe" | sha512sum -c >/dev/null 2>&1 ; then
+   step_error "Downloaded windows driver has wrong MD-5 checksum."
+ fi
+ step_success
+@@ -80,35 +80,35 @@
  step_success
 
  step_begin "Extracting firmware files"
@@ -38,7 +40,23 @@ diff -aur sixfireusb-0.6.1/fwinst.sh sixfireusb-0.6.1/fwinst.sh
    step_error "Extraction of file 'dmx6firel2.ihx' failed."
  fi
  step_success
-@@ -108,7 +108,7 @@
+
+-step_begin "Checking MD-5 checksums of firmware files"
+-if ! echo "fa80973cb8c02097712933bd1d1c23b2  /tmp/dmx6firel2.ihx" | md5sum -c >/dev/null 2>&1 ; then
++step_begin "Checking SHA512 checksums of firmware files"
++if ! echo "6c90f63df6b6a536d5895ac30fcf58ef613ad731d9652f2269f74bae36741527d1ef275d2e50711b0782dfd5e64b0fafcb6c50dcaf5d4910c4200c77ef41ca78  /tmp/dmx6firel2.ihx" | sha512sum -c >/dev/null 2>&1 ; then
+   step_error "File 'dmx6firel2.ihx' has wrong MD-5 checksum."
+ fi
+
+-if ! echo "7497b6b80d43e68f13b6929934ab60f4  /tmp/dmx6fireap.ihx" | md5sum -c >/dev/null 2>&1; then
++if ! echo "2b10c9348cf7ad4296141dd16db0e1b6298020ee5467cc80836f597d5f8d6b01a8276c44a446462de554cf562a11b98de63ae4852dd7ca04408dca5f5cc227c5  /tmp/dmx6fireap.ihx" | sha512sum -c >/dev/null 2>&1; then
+   step_error "File 'dmx6fireap.ihx' has wrong MD-5 checksum."
+ fi
+
+-if ! echo "a65eecc11adc87af7307f5266ad31d65  /tmp/dmx6firecf.bin" | md5sum -c >/dev/null 2>&1 ; then
++if ! echo "ddef0fbeff9e15e0bdcbfff8767c49adb3a0f08b68c0bcf1e38e666b03a2bafef672a2bec0918a75780ebaa477627ef639443d0adeaeacea3d56af1b66acb85f  /tmp/dmx6firecf.bin" | sha512sum -c >/dev/null 2>&1 ; then
+   step_error "File 'dmx6firecf.bin' has wrong MD-5 checksum."
+ fi
  step_success
 
  step_begin "Installing firmware files"
