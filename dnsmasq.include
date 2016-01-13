@@ -1,0 +1,3 @@
+addn-hosts=/etc/pihole/gravity.list
+cache-size=10000
+

@@ -1,0 +1,56 @@
+Pi-hole Archlinux configuration instructions
+Standalone version
+rev. 0.1
+
+Instructions below assume ArchLinux default system config files are untouched
+
+
+1) edit your /etc/resolvconf.conf and uncomment name_servers line (last line), update resolvconf:
+
+# sed -i 's|#name_servers=127.0.0.1|name_servers=127.0.0.1|' /etc/resolvconf.conf
+# resolvconf -u
+
+
+
+*** if you already use dnsmasq and it's functional
+
+2) copy pi-hole include config lines in right place
+
+# mkdir /etc/dnsmasq.d
+# cp /etc/pihole/configs/dnsmasq.include /etc/dnsmasq.d/pihole.conf
+
+3) edit your /etc/dnsmasq.conf to uncomment last line (including new pi-hole config lines)
+
+# sed -i 's|#conf-dir=/etc/dnsmasq.d/,\*.conf|conf-dir=/etc/dnsmasq.d/,\*.conf|' /etc/dnsmasq.conf
+
+*** end if
+
+
+
+*** if you installed dnsmasq with this package for the first time
+
+4) backup original dnsmasq config file and copy pi-hole one
+
+# cp /etc/dnsmasq.conf /etc/dnsmasq.orig
+# cp /etc/pihole/configs/dnsmasq.complete /etc/dnsmasq.conf
+
+*** end if
+
+
+
+5) enable and start dnsmasq service
+
+# systemctl enable dnsmasq.service
+# systemctl restart dnsmasq.service
+
+
+
+UNINSTALL steps
+
+# systemctl stop dnsmasq.service
+# systemctl disable dnsmasq.service
+# sed -i 's|name_servers=127.0.0.1|#name_servers=127.0.0.1|' /etc/resolvconf.conf
+# resolvconf -u
+# [ -f /etc/dnsmasq.d/pihole.conf ] && rm /etc/dnsmasq.d/pihole.conf
+# [ -f /etc/dnsmasq.orig ] && cp /etc/dnsmasq.orig /etc/dnsmasq.conf
+
