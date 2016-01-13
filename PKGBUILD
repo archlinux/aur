@@ -6,7 +6,7 @@ _build_gnome_help="no" # yes|no
 
 pkgname=easytag-git
 _gitname=easytag
-pkgver=2.4.0.r20.gd3d4107
+pkgver=2.4.0.r37.g75cc59a
 pkgrel=1
 pkgdesc="Utility for viewing and editing tags for most audio formats - git version"
 arch=('i686' 'x86_64')
@@ -28,8 +28,6 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_gitname"
-  #echo "2.4.r$(git rev-list --count master).g$(git log -1 --format="%h")"
-  #git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
   git describe --long | sed 's/^easytag-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -51,8 +49,6 @@ prepare() {
 
 build() {
   cd "$_gitname"
-  ## avoid breaking the build
-  #CFLAGS="$CFLAGS -Wno-error=deprecated-declarations"
   CXXFLAGS="$CXXFLAGS -Wno-error=deprecated-declarations"
   
   ./configure --prefix=/usr 
