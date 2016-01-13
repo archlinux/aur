@@ -6,7 +6,7 @@ pkgname=toxic-newgroupchat-git
 pkgdesc='CLI Frontend in ncurses for Tox'
 license=('GPL3')
 pkgver=0.7.0.r17.g88e7422
-pkgrel=1
+pkgrel=2
 depends=(
   'desktop-file-utils'
   'freealut'
@@ -17,7 +17,7 @@ depends=(
 )
 makedepends=('git')
 conflicts=($_pkgname)
-provides=($_pkgname)
+provides=("$_pkgname-newgroupchat")
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url=('https://tox.chat')
 source=("${pkgname}::git+https://github.com/JFreegman/toxic.git")
