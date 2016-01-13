@@ -12,7 +12,8 @@ depends=('glibc')
 makedepends=('ocaml-findlib')
 url='http://mjambon.com/cppo.html'
 source=("http://mjambon.com/releases/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('f1a551639c0c667ee8840d95ea5b2ab7')
+sha256sums=('975e0cb5e2751a604715eb042a059ef4965aff0318cf4c0553f215ed0964dfdd')
+
 build() {
   cd $srcdir/$pkgname-$pkgver
   make
