@@ -1,7 +1,7 @@
 # Maintainer: Gerald Nunn <gerald dot b dot nunn at gmail dot com>
 
 pkgname=terminix
-pkgver=0.31-1-1
+pkgver=0.31.1
 pkgrel=1
 pkgdesc="A tiling terminal emulator based on GTK+ 3"
 arch=('x86_64')
