@@ -10,7 +10,7 @@ url="https://github.com/haiwen/seafile/"
 license=('GPL3')
 makedepends=("vala" "intltool"
              "python2" "sqlite" "fuse"
-             "ccnet=${pkgver}" "libevhtp-seafile=1.2.9")
+             "ccnet>=${pkgver}" "libevhtp-seafile=1.2.9")
 source=("seafile-server-${pkgver}.tar.gz::https://github.com/haiwen/seafile/archive/v${pkgver}-server.tar.gz"
         "seafile-admin_virtualenv.patch"
         "seafile-server@.service"
@@ -56,7 +56,8 @@ build() {
 }
 
 package_seafile-client-cli() {
-  depends=("seafile-shared=${pkgver}" 'libevent')
+  depends=("seafile-shared" "ibevent")
+  conflicts=("seafile-shared<${pkgver}")
   pkgdesc="Seafile cli client"
 
   cd "${srcdir}/seafile-${pkgver}-server"
@@ -66,7 +67,8 @@ package_seafile-client-cli() {
 }
 
 package_seafile-shared() {
-  depends=("ccnet=${pkgver}" "fuse")
+  depends=("ccnet" "fuse")
+  conflicts=("ccnet<${pkgver}")
   pkgdesc="Shared components of Seafile (seafile-daemon, libseafile, python bindings, manuals)"
 
   cd "${srcdir}/seafile-${pkgver}-server"
@@ -86,10 +88,11 @@ package_seafile-shared() {
 }
 
 package_seafile-server() {
-  depends=("seafile-shared=${pkgver}"
+  depends=("seafile-shared"
            "python2-mako" "python2-dateutil" "python2-webpy" "python2-pip"
            "python2-virtualenv" "python2-flup" "python2-six"
-           "libevhtp-seafile=1.2.9" "git")
+           "libevhtp-seafile" "git")
+  conflicts=("seafile-shared<${pkgver}")
   options=('!libtool' '!emptydirs')
   install=seafile-server.install
   pkgdesc="Seafile server components, without seahub"
