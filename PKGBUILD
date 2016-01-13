@@ -3,8 +3,8 @@
 # Based on [extra]'s nvidia-utils: https://www.archlinux.org/packages/extra/x86_64/nvidia-utils/
 
 pkgname=('nvidia-utils-beta' 'nvidia-libgl-beta' 'opencl-nvidia-beta')
-pkgver=361.16
-pkgrel=2
+pkgver=361.18
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
@@ -22,8 +22,8 @@ source=('20-nvidia.conf')
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/NVIDIA-Linux-x86_64-$pkgver-no-compat32.run")
 md5sums=('2640eac092c220073f0668a7aaff61f7')
-md5sums_i686=('cbb48d10306d6ca49423ed80e786598e')
-md5sums_x86_64=('13df10e88eb550b8d7f2e276bb5cfb57')
+md5sums_i686=('ade4f7d0a5631ff492088671bc303a0a')
+md5sums_x86_64=('29a88f1538d622cebf751593396053e4')
 
 _create_links() {
   # create missing soname links
