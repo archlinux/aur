@@ -1,3 +1,6 @@
 *.zip
 *.tar.gz
+*.tar.xz
 *.tar.bz2
+pkg
+src
