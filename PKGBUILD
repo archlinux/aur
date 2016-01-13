@@ -1,6 +1,6 @@
 #Maintainer: Dean Galvin <deangalvin3@gmail.com>
 pkgname=dynamodb
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Amazon DynamoDB Local instance. Amazon DynamoDB is a fast and flexible NoSQL database service for all applications that need consistent, single-digit millisecond latency at any scale."
 arch=('any')
