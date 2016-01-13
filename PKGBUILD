@@ -12,13 +12,17 @@ depends=('gcc' 'qt5-base' 'qt5-svg' 'qt5-script')
 makedepends=('git')
 #install=$pkgname.install
 source=("git://github.com/pbek/QOwnNotes.git#tag=$_tag"
+	git://github.com/pbek/qmarkdowntextedit
 	qownnotes.desktop)
 md5sums=('SKIP'
+	 'SKIP'
 	'dd75c043efe26395e0a12be809806f70')
 
 build() {
   cd "${srcdir}/${_pkgname}"
   cd "${srcdir}/${_pkgname}/src"
+  rm -r libraries/qmarkdowntextedit
+  ln -s "${srcdir}/qmarkdowntextedit" "${srcdir}/${_pkgname}/src/libraries/"
   qmake QOwnNotes.pro -r
   make
 }
