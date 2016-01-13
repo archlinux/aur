@@ -60,6 +60,7 @@ package()
 
   # configuration file
   mkdir -p "$pkgdir/etc/telegraf"
+  mkdir -p "$pkgdir/etc/telegraf.d"
   $GOPATH/src/github.com/influxdb/telegraf/telegraf -sample-config > "$pkgdir/etc/telegraf/telegraf.conf"
 
   # license
