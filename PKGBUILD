@@ -1,41 +1,37 @@
 pkgname=mingw-w64-opus
-pkgver=1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Codec designed for interactive speech and audio transmission over the Internet (mingw-w64)"
 arch=(any)
 url="http://www.opus-codec.org"
 license=("BSD")
-makedepends=(mingw-w64-gcc mingw-w64-pkg-config)
-depends=(mingw-w64-crt)
-options=(staticlibs !strip !buildflags)
+makedepends=('mingw-w64-configure')
+depends=('mingw-w64-crt')
+options=('staticlibs' '!strip' '!buildflags')
 source=("http://downloads.us.xiph.org/releases/opus/opus-$pkgver.tar.gz")
-md5sums=('c5a8cf7c0b066759542bc4ca46817ac6')
+md5sums=('1f08a661bc72930187893a07f3741a91')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
+  cd "${srcdir}/opus-${pkgver}"
   for _arch in ${_architectures}; do
-    unset LDFLAGS
-    mkdir -p "${srcdir}/${pkgname}-${pkgver}-build-${_arch}"
-    cd "${srcdir}/${pkgname}-${pkgver}-build-${_arch}"
-    "${srcdir}"/${pkgname#mingw-w64-}-${pkgver}/configure \
-      --prefix=/usr/${_arch} \
-      --build=$CHOST \
-      --host=${_arch} \
+    mkdir -p build-${_arch} && pushd build-${_arch}
+    ${_arch}-configure \
       --enable-custom-modes \
       --disable-doc \
       --disable-extra-programs
     make
+    popd
   done
 }
 
 package() {
   for _arch in ${_architectures}; do
-    cd "${srcdir}/${pkgname}-${pkgver}-build-${_arch}"
+    cd "${srcdir}/opus-${pkgver}/build-${_arch}"
     make DESTDIR="$pkgdir" install
-    find "$pkgdir/usr/${_arch}" -name '*.exe' | xargs -rtl1 rm
-    find "$pkgdir/usr/${_arch}" -name '*.dll' | xargs -rtl1 ${_arch}-strip --strip-unneeded
-    find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs -rtl1 ${_arch}-strip -g
     rm -r "$pkgdir/usr/${_arch}/share"
+    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
 }
