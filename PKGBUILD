@@ -68,5 +68,5 @@ md5sums=('a1777f8665e68b2f5d835b51d30b4859')
 		cd ${srcdir}/${_hkgname} #-${pkgver}
 		#msg2 "Installing..."
 		./make-install-all
-		msg2 Done
+		#msg2 Done
 	}
