@@ -3,28 +3,26 @@
 # Contributor: Asa Marco <marcoasa90[at]gmail[.]com>
 
 pkgname=openshot-bzr
-pkgver=741
+pkgver=2.0.r521
 pkgrel=1
+epoch=1
 pkgdesc="an open-source, non-linear video editor for Linux based on MLT framework"
 arch=('any')
 url="http://www.openshotvideo.com/"
 license=('GPL')
 conflicts=(openshot)
-depends=('mlt-python-bindings' 'pygoocanvas' 'sdl' 'librsvg' 'mplayer'
-	 'pyxdg' 'pygtk' 'python2-httplib2' 'python-imaging')
+depends=('python' 'python-pyqt5' 'desktop-file-utils' 'shared-mime-info')
 makedepends=('bzr')
-optdepends=('dvgrab: for IEEE digital sources'
-	    'libquicktime' 'libavc1394' 'faac' 'jack' 'jack-rack' 'ladspa')
 install=openshot.install
-source=(bzr+lp:openshot)
+source=(bzr+lp:openshot/2.0)
 md5sums=('SKIP')
 
 pkgver() {
-    cd openshot
-    bzr revno
+    cd $srcdir/2.0
+    printf "2.0.r%s" "$(bzr revno)"
 }
 
 package() {
-  cd $srcdir/openshot
-  python2 setup.py install --root=$pkgdir/ --optimize=1
+  cd $srcdir/2.0
+  python setup.py install --root=$pkgdir/ --optimize=1
 }
