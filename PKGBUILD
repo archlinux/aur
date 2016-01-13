@@ -1,8 +1,8 @@
 # Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
 # Contributor: Joris Steyn <jorissteyn@gmail.com>
 pkgname=phploc
-pkgver=2.1.5
-pkgrel=2
+pkgver=3.0.0
+pkgrel=1
 pkgdesc="A tool for quickly measuring the size of a PHP project"
 url="https://github.com/sebastianbergmann/phploc"
 arch=("any")
@@ -10,8 +10,8 @@ license=("BSD")
 depends=("php")
 source=("https://phar.phpunit.de/${pkgname}-${pkgver}.phar"
         "https://raw.githubusercontent.com/sebastianbergmann/${pkgname}/${pkgver}/LICENSE")
-sha512sums=('99f5fe35a78b6a333fda0d38779ece0d3cb83fa9e3f858869d8c1047beb076042cbe246b52d8c46978ab24027fbe585bb1d60a8b07fae555939108f03ac30123'
-            '380f398cc2c10a9e76d39a8f1ce60e367e39a1b3ac4bedab2d6aae7d964d11554cf40fcad3362f80fa4f43aa255f3fb990eece094d016e0167ebd75ae6d0d277')
+sha512sums=('1df340f1c22ce3720c4ad6023d62f72c24134bde8d0ccc12f40eaca4c321e5afd938807151caec05af571b4d647b5b06d5a79bb975e9cce517d13c84a92fee41'
+            'd5d9e23d15533e1989eda7fa0c942717631e8ce18b929dfb0d7824060edbe6eaae76fbb0150b81a334ba46dfd5d2865e6f771e84cbd1d3db0faee5d16e4dc992')
 
 package() {
   install -D -m 644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
