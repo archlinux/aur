@@ -1,0 +1,1 @@
+f /run/log/pihole.log 0644 dnsmasq root - -

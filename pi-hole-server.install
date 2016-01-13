@@ -1,0 +1,20 @@
+post_install() {
+  cat <<- EOF
+    ==> please read configuration instructions at /usr/share/doc/pihole/configuration
+    ==> first install/update run...
+EOF
+  chown -R http.http /srv/http/pihole
+  touch /run/log/pihole.log
+  chmod 644 /run/log/pihole.log
+  chown dnsmasq.root /run/log/pihole.log
+  /usr/bin/gravity.sh > /dev/null
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  rm -R /etc/pihole/
+  rm /run/log/pihole.log
+}

@@ -1,0 +1,65 @@
+Pi-hole Archlinux configuration instructions
+Server version
+rev. 0.1
+
+Pi-Hole Web server admin page: http://<server-ip>/admin
+
+
+Instructions below assume ArchLinux default system config files are untouched or modified only by removing comments (#)
+
+
+
+*** if you already use dnsmasq and it's functional
+
+1) copy pi-hole include config lines in right place
+
+# mkdir /etc/dnsmasq.d
+# cp /etc/pihole/configs/dnsmasq.include /etc/dnsmasq.d/pihole.conf
+
+2) edit your /etc/dnsmasq.conf to uncomment last line (including new pi-hole config lines)
+
+# sed -i 's|#conf-dir=/etc/dnsmasq.d/,\*.conf|conf-dir=/etc/dnsmasq.d/,\*.conf|' /etc/dnsmasq.conf
+
+*** end if
+
+
+
+*** if you installed dnsmasq with this package for the first time
+
+3) backup original dnsmasq config file and copy pi-hole one
+
+# cp /etc/dnsmasq.conf /etc/dnsmasq.orig
+# cp /etc/pihole/configs/dnsmasq.complete /etc/dnsmasq.conf
+
+*** end if
+
+
+
+4) lighttpd need port 80 to be free. backup original config file and copy pi-hole one
+
+# cp /etc/lighttpd/lighttpd.conf /etc/lighttpd/lighttpd.orig
+# cp /etc/pihole/configs/lighttpd.conf /etc/lighttpd/lighttpd.conf
+
+5) enable and start dnsmasq service
+
+# systemctl reenable dnsmasq.service
+# systemctl restart dnsmasq.service
+
+6) enable and start lighttpd service
+
+# systemctl enable lighttpd.service
+# systemctl start lighttpd.service
+
+7) FUNDAMENTAL: point dns resolution of your lan clients to this machine
+
+
+UNINSTALL steps
+
+# systemctl stop dnsmasq.service
+# systemctl disable dnsmasq.service
+# systemctl stop lighttpd.service
+# systemctl disable lighttpd.service
+# [ -f /etc/dnsmasq.d/pihole.conf ] && rm /etc/dnsmasq.d/pihole.conf
+# [ -f /etc/dnsmasq.orig ] && cp /etc/dnsmasq.orig /etc/dnsmasq.conf
+# [ -f /etc/lighttpd/lighttpd.orig ] && cp /etc/lighttpd/lighttpd.orig /etc/lighttpd/lighttpd.conf
+
