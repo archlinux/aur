@@ -1,0 +1,122 @@
+*** ploticus242/src/Makefile.242.orig	Fri Jun  7 13:05:43 2013
+--- ploticus242/src/Makefile	Wed Jan 13 16:38:29 2016
+***************
+*** 25,45 ****
+  
+  
+  ############ Option 1: build the pl executable (unix), no X11 ....
+! NOX11 = -DNOX11
+  
+  
+  
+  ############ Option 2: build the pl executable (unix), with X11 enabled .... 
+! # NOX11 = 
+! # XOBJ = x11.o interact.o
+  
+  ############ ...AND... activate the lines below for your platform... (X11 libs & header files)
+  #### linux
+  # XLIBS = -L/usr/X11R6/lib -lX11
+  # XINCLUDEDIR = -I/usr/X11R6/include
+  #### alt linux
+! # XLIBS = -lX11
+! # XINCLUDEDIR = -I/usr/include/X11
+  #### 64bit linux
+  # XLIBS = -L/usr/X11R6/lib64 -lX11
+  #### solaris
+--- 25,45 ----
+  
+  
+  ############ Option 1: build the pl executable (unix), no X11 ....
+! #NOX11 = -DNOX11
+  
+  
+  
+  ############ Option 2: build the pl executable (unix), with X11 enabled .... 
+! NOX11 = 
+! XOBJ = x11.o interact.o
+  
+  ############ ...AND... activate the lines below for your platform... (X11 libs & header files)
+  #### linux
+  # XLIBS = -L/usr/X11R6/lib -lX11
+  # XINCLUDEDIR = -I/usr/X11R6/include
+  #### alt linux
+! XLIBS = -lX11
+! XINCLUDEDIR = -I/usr/include/X11
+  #### 64bit linux
+  # XLIBS = -L/usr/X11R6/lib64 -lX11
+  #### solaris
+***************
+*** 91,100 ****
+  
+  
+  ########### Option 1: use bundled GD16 (PNG only).  Requires libpng and zlib.
+! exetarget: plpng 
+! GD16LIBS = -lpng -lz
+! GD16H =  -I/usr/local/include
+! ZFLAG = -DWZ
+  ### These should remain commented unless your libs are not in usual places, then alter to suit...
+  ### GD16LIBS = /home/scg/lib/libpng.a /home/scg/lib/libz.a
+  ### GD16H = -I/home/scg/lib
+--- 91,100 ----
+  
+  
+  ########### Option 1: use bundled GD16 (PNG only).  Requires libpng and zlib.
+! #exetarget: plpng 
+! #GD16LIBS = -lpng -lz
+! #GD16H =  -I/usr/local/include
+! #ZFLAG = -DWZ
+  ### These should remain commented unless your libs are not in usual places, then alter to suit...
+  ### GD16LIBS = /home/scg/lib/libpng.a /home/scg/lib/libz.a
+  ### GD16H = -I/home/scg/lib
+***************
+*** 111,121 ****
+  
+  ########### Option 4: use your own GD resource with FreeType2 (ttf) fonts enabled.  
+  ###########           Requires GD 1.84+, libpng, zlib, libjpeg and libfreetype
+! # exetarget: plgd18 
+! # GD18LIBS = -lgd -lpng -lz -ljpeg -lfreetype
+! # GD18H = 
+! # GDFREETYPE = -DGDFREETYPE
+! # ZFLAG = -DWZ
+  
+  ########### Option 5: don't use GD at all.
+  # exetarget: plnogd 
+--- 111,121 ----
+  
+  ########### Option 4: use your own GD resource with FreeType2 (ttf) fonts enabled.  
+  ###########           Requires GD 1.84+, libpng, zlib, libjpeg and libfreetype
+! exetarget: plgd18 
+! GD18LIBS = -lgd -lpng -lz -ljpeg -lfreetype
+! GD18H = 
+! GDFREETYPE = -DGDFREETYPE
+! ZFLAG = -DWZ
+  
+  ########### Option 5: don't use GD at all.
+  # exetarget: plnogd 
+***************
+*** 140,151 ****
+  
+  
+  #### If you do a "make install", where do you want the executable(s) to be moved to?
+! INSTALLBIN = /usr/local/bin
+  
+  
+  #### For LOCALE support (non-roman alphabets & collation), uncomment the following..
+! # LOCALEOBJ = localef.o
+! # LOCALE_FLAG = -DLOCALE
+  
+  #### SVG output is always available by default.
+  #### If you want compressed SVG (.svgz), and you selected GD13 or no GD above, 
+--- 140,151 ----
+  
+  
+  #### If you do a "make install", where do you want the executable(s) to be moved to?
+! INSTALLBIN = /usr/bin
+  
+  
+  #### For LOCALE support (non-roman alphabets & collation), uncomment the following..
+! LOCALEOBJ = localef.o
+! LOCALE_FLAG = -DLOCALE
+  
+  #### SVG output is always available by default.
+  #### If you want compressed SVG (.svgz), and you selected GD13 or no GD above, 
