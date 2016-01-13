@@ -2,7 +2,7 @@
 
 pkgname=erlang-gproc
 _pkgname=${pkgname/erlang-//}
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="Extended process registry for Erlang"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('erlang-nox')
 makedepends=('rebar')
 source=("https://github.com/uwiger/gproc/archive/$pkgver.tar.gz")
-md5sums=('db34591d9eb2446c0e7f575dd6e3c47e')
+md5sums=('9bf4d95c09197efd82ffeb9b00b04356')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
