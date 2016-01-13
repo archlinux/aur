@@ -3,13 +3,13 @@
 
 _pkgname='N1'
 pkgname='n1-git'
-pkgver=0.3.36.r11.g3e3e2ca
+pkgver=0.3.43.r4.g4f5aea0
 pkgrel=1
 pkgdesc="A new mail client, built on the modern web and designed to be extended."
 arch=('any')
 url="https://github.com/nylas/N1"
 license=('GPL3')
-depends=('gconf' 'nodejs' 'libgnome-keyring' 'nss' 'python2')
+depends=('alsa-lib' 'desktop-file-utils' 'gtk2' 'gconf' 'nodejs' 'libgnome-keyring' 'libnotify' 'libxtst' 'nss' 'python2')
 makedepends=('git' 'npm')
 provides=('n1')
 conflicts=('n1')
