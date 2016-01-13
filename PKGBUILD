@@ -8,7 +8,6 @@
 
 pkgbase=php56
 _pkgbase=${pkgbase%56}
-_buildprefix="/opt/${pkgbase}"
 pkgname=("${pkgbase}"
          "${pkgbase}-cgi"
          "${pkgbase}-apache"
@@ -36,7 +35,7 @@ pkgdesc="A general-purpose scripting language that is especially suited to web d
 arch=('i686' 'x86_64')
 license=('PHP')
 url='http://php.net'
-makedepends=('apache' 'c-client' 'postgresql-libs' 'libldap' 'msmtp-mta'
+makedepends=('apache' 'c-client' 'postgresql-libs' 'libldap' 'smtp-forwarder'
              'sqlite' 'unixodbc' 'net-snmp' 'libzip' 'enchant' 'file' 'freetds'
              'libmcrypt' 'tidyhtml' 'aspell' 'libltdl' 'gd' 'icu'
              'curl' 'libxslt' 'openssl' 'db' 'gmp' 'systemd')
@@ -47,10 +46,10 @@ source=("http://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"
         'logrotate.d.php-fpm' 'php-fpm.service' 'php-fpm.tmpfiles')
 md5sums=('5e080e4b7df5db24f1b64313f8114bd8'
          'SKIP'
-         'f66d04cc5a54241747ae2ca5f15e1bad'
+         'c893cdf2599f68a7844cd4c91e66a18b'
          'dec2cbaad64e3abf4f0ec70e1de4e8e9'
          '2d0e98c423a9dc57e923f31d63117106'
-         '25bc67ad828e8147a817410b68d8016c'
+         'bc1006ba3308c0b641726944874da315'
          'c1cc15d2123931f883f75f231ae44f60'
          '12392414f768281ae96f292d0aa9669c')
 validpgpkeys=('6E4F6AB321FDC07F2C332E3AC2BF0BC433CFC8B3'
@@ -69,15 +68,16 @@ prepare() {
 build() {
 	local _phpconfig="--srcdir=../${_pkgbase}-${pkgver} \
 		--config-cache \
-		--prefix=${_buildprefix} \
-		--sbindir=${_buildprefix}/bin \
-		--sysconfdir=${_buildprefix}/etc/php \
+		--prefix=/usr \
+		--sysconfdir=/etc/${pkgbase} \
 		--localstatedir=/var \
+		--libdir=/usr/lib/${pkgbase} \
+		--datarootdir=/usr/share/${pkgbase} \
+		--datadir=/usr/share/${pkgbase} \
 		--with-layout=GNU \
-		--with-config-file-path=${_buildprefix}/etc/php \
-		--with-config-file-scan-dir=${_buildprefix}/etc/php/conf.d \
+		--with-config-file-path=/etc/${pkgbase} \
+		--with-config-file-scan-dir=/etc/${pkgbase}/conf.d \
 		--disable-rpath \
-		--mandir=${_buildprefix}/share/man \
 		--without-pear \
 		"
 
@@ -144,17 +144,15 @@ build() {
 		--with-zlib \
 		"
 
-	EXTENSION_DIR=${_buildprefix}/lib/php/modules
-	export EXTENSION_DIR
-	PEAR_INSTALLDIR=${_buildprefix}/share/pear
-	export PEAR_INSTALLDIR
+	export EXTENSION_DIR=/usr/lib/${pkgbase}/modules
+	export PEAR_INSTALLDIR=/usr/share/${pkgbase}/pear
 
 	cd ${srcdir}/${_pkgbase}-${pkgver}
 
 	# php
-	mkdir ${srcdir}/build-php
+	mkdir -p ${srcdir}/build-php
 	cd ${srcdir}/build-php
-	ln -s ../${_pkgbase}-${pkgver}/configure
+	ln -sf ../${_pkgbase}-${pkgver}/configure
 	./configure ${_phpconfig} \
 		--disable-cgi \
 		--with-readline \
@@ -164,7 +162,7 @@ build() {
 
 	# cgi and fcgi
 	# reuse the previous run; this will save us a lot of time
-	cp -a ${srcdir}/build-php ${srcdir}/build-cgi
+	cp -Ta ${srcdir}/build-php ${srcdir}/build-cgi
 	cd ${srcdir}/build-cgi
 	./configure ${_phpconfig} \
 		--disable-cli \
@@ -173,7 +171,7 @@ build() {
 	make
 
 	# apache
-	cp -a ${srcdir}/build-php ${srcdir}/build-apache
+	cp -Ta ${srcdir}/build-php ${srcdir}/build-apache
 	cd ${srcdir}/build-apache
 	./configure ${_phpconfig} \
 		--disable-cli \
@@ -182,7 +180,7 @@ build() {
 	make
 
 	# fpm
-	cp -a ${srcdir}/build-php ${srcdir}/build-fpm
+	cp -Ta ${srcdir}/build-php ${srcdir}/build-fpm
 	cd ${srcdir}/build-fpm
 	./configure ${_phpconfig} \
 		--disable-cli \
@@ -193,7 +191,7 @@ build() {
 	make
 
 	# embed
-	cp -a ${srcdir}/build-php ${srcdir}/build-embed
+	cp -Ta ${srcdir}/build-php ${srcdir}/build-embed
 	cd ${srcdir}/build-embed
 	./configure ${_phpconfig} \
 		--disable-cli \
@@ -202,7 +200,7 @@ build() {
 	make
 
 	# phpdbg
-	cp -a ${srcdir}/build-php ${srcdir}/build-phpdbg
+	cp -Ta ${srcdir}/build-php ${srcdir}/build-phpdbg
 	cd ${srcdir}/build-phpdbg
 	./configure ${_phpconfig} \
 		--disable-cli \
@@ -213,7 +211,7 @@ build() {
 	make
 
 	# pear
-	cp -a ${srcdir}/build-php ${srcdir}/build-pear
+	cp -Ta ${srcdir}/build-php ${srcdir}/build-pear
 	cd ${srcdir}/build-pear
 	./configure ${_phpconfig} \
 		--disable-cgi \
@@ -224,61 +222,46 @@ build() {
 	make
 }
 
-#check() {
-#	cd ${srcdir}/${_pkgbase}-${pkgver}
-#
-#	# tests on i686 fail
-#	[[ $CARCH == 'i686' ]] && return
-#	# a couple of tests fail in btrfs-backed chroots
-#	[[ $(stat -f -c %T .) == btrfs ]] && return
-#
-#	export REPORT_EXIT_STATUS=1
-#	export NO_INTERACTION=1
-#	export SKIP_ONLINE_TESTS=1
-#	export SKIP_SLOW_TESTS=1
-#
-#	${srcdir}/build-php/sapi/cli/php -n \
-#		run-tests.php -n -P \
-#		{tests,Zend,ext/{spl,standard},sapi/cli}
-#}
-
 package_php56() {
 	pkgdesc='An HTML-embedded scripting language'
 	depends=('pcre' 'libxml2' 'curl' 'libzip')
-	backup=("${_buildprefix#/}/etc/php/php.ini")
+	backup=("etc/${pkgbase}/php.ini")
 	provides=("${_pkgbase}=$pkgver")
 
 	cd ${srcdir}/build-php
 	make -j1 INSTALL_ROOT=${pkgdir} install
 
-	install -d -m755 ${pkgdir}/${_buildprefix#/}/share/pear
 	# install php.ini
-	install -D -m644 ${srcdir}/${_pkgbase}-${pkgver}/php.ini-production ${pkgdir}/${_buildprefix#/}/etc/php/php.ini
-	install -d -m755 ${pkgdir}/${_buildprefix#/}/etc/php/conf.d/
+	install -D -m644 ${srcdir}/${_pkgbase}-${pkgver}/php.ini-production ${pkgdir}/etc/${pkgbase}/php.ini
+	install -d -m755 ${pkgdir}/etc/${pkgbase}/conf.d/
 
 	# remove static modules
-	rm -f ${pkgdir}/${_buildprefix#/}/lib/php/modules/*.a
+	rm -f ${pkgdir}/usr/lib/${pkgbase}/modules/*.a
 	# remove modules provided by sub packages
-	rm -f ${pkgdir}/${_buildprefix#/}/lib/php/modules/{enchant,gd,imap,intl,ldap,mcrypt,mssql,odbc,pdo_odbc,pgsql,pdo_pgsql,pspell,snmp,sqlite3,pdo_sqlite,tidy,xsl}.so
+	rm -f ${pkgdir}/usr/lib/${pkgbase}/modules/{enchant,gd,imap,intl,ldap,mcrypt,mssql,odbc,pdo_odbc,pgsql,pdo_pgsql,pspell,snmp,sqlite3,pdo_sqlite,tidy,xsl}.so
+
 	# remove empty directory
-	rmdir ${pkgdir}/${_buildprefix#/}/include/php/include
+	rmdir ${pkgdir}/usr/include/php/include
 
-	# set symlinks
-	mkdir -p ${pkgdir}/etc;
-	ln -sf ${_buildprefix}/etc/php ${pkgdir}/etc/${pkgbase}
+	# move include directory
+	mv ${pkgdir}/usr/include/php ${pkgdir}/usr/include/${pkgbase}
 
-	mkdir -p ${pkgdir}/usr/bin;
-	ln -sf ${_buildprefix}/bin/phar.phar ${pkgdir}/usr/bin/phar56
-	ln -sf ${_buildprefix}/bin/php ${pkgdir}/usr/bin/${pkgbase}
-	ln -sf ${_buildprefix}/bin/php-config ${pkgdir}/usr/bin/${pkgbase}-config
-	ln -sf ${_buildprefix}/bin/phpize ${pkgdir}/usr/bin/${pkgbase}ize
+	# fix phar symlink
+	rm ${pkgdir}/usr/bin/phar
+	ln -sf phar.${pkgbase/php/phar} ${pkgdir}/usr/bin/${pkgbase/php/phar}
 
-	mkdir -p ${pkgdir}/usr/share/man/man1;
-	ln -sf ${_buildprefix}/share/man/man1/phar.1 ${pkgdir}/usr/share/man/man1/phar56.1
-	ln -sf ${_buildprefix}/share/man/man1/php-config.1 ${pkgdir}/usr/share/man/man1/${pkgbase}-config.1
-	ln -sf ${_buildprefix}/share/man/man1/php.1 ${pkgdir}/usr/share/man/man1/${pkgbase}.1
-	ln -sf ${_buildprefix}/share/man/man1/phar.phar.1 ${pkgdir}/usr/share/man/man1/phar56.phar.1
-	ln -sf ${_buildprefix}/share/man/man1/phpize.1 ${pkgdir}/usr/share/man/man1/${pkgbase}ize.1
+	# rename executables
+	mv ${pkgdir}/usr/bin/{php,${pkgbase}}
+	mv ${pkgdir}/usr/bin/phar.{phar,${pkgbase/php/phar}}
+	mv ${pkgdir}/usr/bin/{php-config,${pkgbase}-config}
+	mv ${pkgdir}/usr/bin/{phpize,${pkgbase/php/phpize}}
+
+	# rename man pages
+	mv ${pkgdir}/usr/share/man/man1/{phar,${pkgbase/php/phar}}.1
+	mv ${pkgdir}/usr/share/man/man1/{php,${pkgbase}}-config.1
+	mv ${pkgdir}/usr/share/man/man1/{php,${pkgbase}}.1
+	mv ${pkgdir}/usr/share/man/man1/phar.{phar,${pkgbase/php/phar}}.1
+	mv ${pkgdir}/usr/share/man/man1/{phpize,${pkgbase/php/phpize}}.1
 }
 
 package_php56-cgi() {
@@ -286,10 +269,7 @@ package_php56-cgi() {
 	depends=("${pkgbase}")
 	provides=("${_pkgbase}-cgi=$pkgver")
 
-	install -D -m755 ${srcdir}/build-cgi/sapi/cgi/php-cgi ${pkgdir}/${_buildprefix#/}/bin/php-cgi
-
-	mkdir -p ${pkgdir}/usr/bin;
-	ln -sf ${_buildprefix}/bin/php-cgi ${pkgdir}/usr/bin/${pkgbase}-cgi
+	install -D -m755 ${srcdir}/build-cgi/sapi/cgi/php-cgi ${pkgdir}/usr/bin/${pkgbase}-cgi
 }
 
 package_php56-apache() {
@@ -306,25 +286,21 @@ package_php56-fpm() {
 	pkgdesc='FastCGI Process Manager for PHP'
 	depends=("${pkgbase}" 'systemd')
 	provides=("${_pkgbase}-fpm=$pkgver")
-	backup=("${_buildprefix#/}/etc/php/php-fpm.conf")
+	backup=("etc/${pkgbase}/php-fpm.conf")
 	install='php-fpm.install'
 
-	install -d -m755 ${pkgdir}/${_buildprefix#/}/bin
-	install -d -m755 ${pkgdir}/${_buildprefix#/}/etc
-	install -d -m755 ${pkgdir}/${_buildprefix#/}/etc/logrotate.d
+	install -d -m755 ${pkgdir}/usr/bin
+	install -D -m755 ${srcdir}/build-fpm/sapi/fpm/php-fpm ${pkgdir}/usr/bin/${pkgbase}-fpm
 
-	install -D -m755 ${srcdir}/build-fpm/sapi/fpm/php-fpm ${pkgdir}/${_buildprefix#/}/bin/php-fpm
 	install -D -m644 ${srcdir}/build-fpm/sapi/fpm/php-fpm.8 ${pkgdir}/usr/share/man/man8/${pkgbase}-fpm.8
-	install -D -m644 ${srcdir}/build-fpm/sapi/fpm/php-fpm.conf ${pkgdir}/${_buildprefix#/}/etc/php/php-fpm.conf
-	install -d -m755 ${pkgdir}/${_buildprefix#/}/etc/php/fpm.d
+	install -D -m644 ${srcdir}/build-fpm/sapi/fpm/php-fpm.conf ${pkgdir}/etc/${pkgbase}/php-fpm.conf
+
+	install -d -m755 ${pkgdir}/etc/${pkgbase}/fpm.d
 	install -D -m644 ${srcdir}/php-fpm.tmpfiles ${pkgdir}/usr/lib/tmpfiles.d/${pkgbase}-fpm.conf
 	install -D -m644 ${srcdir}/php-fpm.service ${pkgdir}/usr/lib/systemd/system/${pkgbase}-fpm.service
 
-	mkdir -p ${pkgdir}/etc/logrotate.d
+	install -d -m755 ${pkgdir}/etc/logrotate.d
 	install -D -m644 ${srcdir}/logrotate.d.php-fpm ${pkgdir}/etc/logrotate.d/${pkgbase}-fpm
-
-	mkdir -p ${pkgdir}/usr/bin
-	ln -sf ${_buildprefix}/bin/php-fpm ${pkgdir}/usr/bin/${pkgbase}-fpm
 }
 
 package_php56-embed() {
@@ -332,8 +308,8 @@ package_php56-embed() {
 	depends=("${pkgbase}")
 	provides=("${_pkgbase}-embed=$pkgver")
 
-	install -D -m755 ${srcdir}/build-embed/libs/libphp5.so ${pkgdir}/${_buildprefix#/}/lib/libphp5.so
-	install -D -m644 ${srcdir}/${_pkgbase}-${pkgver}/sapi/embed/php_embed.h ${pkgdir}/${_buildprefix#/}/include/php/sapi/embed/php_embed.h
+	install -D -m755 ${srcdir}/build-embed/libs/libphp5.so ${pkgdir}/usr/lib/libphp5.so
+	install -D -m644 ${srcdir}/${_pkgbase}-${pkgver}/sapi/embed/php_embed.h ${pkgdir}/usr/include/${pkgbase}/sapi/embed/php_embed.h
 }
 
 package_php56-phpdbg() {
@@ -341,26 +317,23 @@ package_php56-phpdbg() {
 	depends=("${pkgbase}")
 	provides=("${_pkgbase}-phpdbg=$pkgver")
 
-	install -D -m755 ${srcdir}/build-phpdbg/sapi/phpdbg/phpdbg ${pkgdir}/${_buildprefix#/}/bin/phpdbg
-
-	mkdir -p ${pkgdir}/usr/bin;
-	ln -sf ${_buildprefix}/bin/phpdbg ${pkgdir}/usr/bin/${pkgbase}dbg
+	install -d -m755 ${pkgdir}/usr/bin
+	install -D -m755 ${srcdir}/build-phpdbg/sapi/phpdbg/phpdbg ${pkgdir}/usr/bin/${pkgbase}dbg
 }
 
 package_php56-pear() {
 	pkgdesc='PHP Extension and Application Repository'
 	depends=("${pkgbase}")
 	provides=("${_pkgbase}-pear=$pkgver")
-	backup=("${_buildprefix#/}/etc/php/pear.conf")
+	backup=("etc/${pkgbase}/pear.conf")
 
 	cd ${srcdir}/build-pear
 	make install-pear INSTALL_ROOT=${pkgdir}
-	rm -rf ${pkgdir}/${_buildprefix#/}/share/pear/.{channels,depdb,depdblock,filemap,lock,registry}
+	rm -rf ${pkgdir}/usr/share/${pkgbase}/pear/.{channels,depdb,depdblock,filemap,lock,registry}
 
-	mkdir -p ${pkgdir}/usr/bin;
-	ln -sf ${_buildprefix}/bin/pear ${pkgdir}/usr/bin/pear56
-	ln -sf ${_buildprefix}/bin/peardev ${pkgdir}/usr/bin/pear56dev
-	ln -sf ${_buildprefix}/bin/pecl ${pkgdir}/usr/bin/pecl56
+	mv ${pkgdir}/usr/bin/{pear,${pkgbase/php/pear}}
+	mv ${pkgdir}/usr/bin/{peardev,${pkgbase/php/peardev}}
+	mv ${pkgdir}/usr/bin/{pecl,${pkgbase/php/pecl}}
 }
 
 package_php56-enchant() {
@@ -368,7 +341,7 @@ package_php56-enchant() {
 	depends=("${pkgbase}" 'enchant')
 	provides=("${_pkgbase}-enchant=$pkgver")
 
-	install -D -m755 ${srcdir}/build-php/modules/enchant.so ${pkgdir}/${_buildprefix#/}/lib/php/modules/enchant.so
+	install -D -m755 ${srcdir}/build-php/modules/enchant.so ${pkgdir}/usr/lib/${pkgbase}/modules/enchant.so
 }
 
 package_php56-gd() {
@@ -376,7 +349,7 @@ package_php56-gd() {
 	depends=("${pkgbase}" 'gd')
 	provides=("${_pkgbase}-gd=$pkgver")
 
-	install -D -m755 ${srcdir}/build-php/modules/gd.so ${pkgdir}/${_buildprefix#/}/lib/php/modules/gd.so
+	install -D -m755 ${srcdir}/build-php/modules/gd.so ${pkgdir}/usr/lib/${pkgbase}/modules/gd.so
 }
 
 package_php56-imap() {
@@ -384,7 +357,7 @@ package_php56-imap() {
 	depends=("${pkgbase}" 'c-client')
 	provides=("${_pkgbase}-imap=$pkgver")
 
-	install -D -m755 ${srcdir}/build-php/modules/imap.so ${pkgdir}/${_buildprefix#/}/lib/php/modules/imap.so
+	install -D -m755 ${srcdir}/build-php/modules/imap.so ${pkgdir}/usr/lib/${pkgbase}/modules/imap.so
 }
 
 package_php56-intl() {
@@ -392,7 +365,7 @@ package_php56-intl() {
 	depends=("${pkgbase}" 'icu')
 	provides=("${_pkgbase}-intl=$pkgver")
 
-	install -D -m755 ${srcdir}/build-php/modules/intl.so ${pkgdir}/${_buildprefix#/}/lib/php/modules/intl.so
+	install -D -m755 ${srcdir}/build-php/modules/intl.so ${pkgdir}/usr/lib/${pkgbase}/modules/intl.so
 }
 
 package_php56-ldap() {
@@ -400,7 +373,7 @@ package_php56-ldap() {
 	depends=("${pkgbase}" 'libldap')
 	provides=("${pkgbase}-ldap=$pkgver")
 
-	install -D -m755 ${srcdir}/build-php/modules/ldap.so ${pkgdir}/${_buildprefix#/}/lib/php/modules/ldap.so
+	install -D -m755 ${srcdir}/build-php/modules/ldap.so ${pkgdir}/usr/lib/${pkgbase}/modules/ldap.so
 }
 
 package_php56-mcrypt() {
@@ -408,7 +381,7 @@ package_php56-mcrypt() {
 	depends=("${pkgbase}" 'libmcrypt' 'libltdl')
 	provides=("${_pkgbase}-mcrypt=$pkgver")
 
-	install -D -m755 ${srcdir}/build-php/modules/mcrypt.so ${pkgdir}/${_buildprefix#/}/lib/php/modules/mcrypt.so
+	install -D -m755 ${srcdir}/build-php/modules/mcrypt.so ${pkgdir}/usr/lib/${pkgbase}/modules/mcrypt.so
 }
 
 package_php56-mssql() {
@@ -416,7 +389,7 @@ package_php56-mssql() {
 	depends=("${pkgbase}" 'freetds')
 	provides=("${_pkgbase}-mssql=$pkgver")
 
-	install -D -m755 ${srcdir}/build-php/modules/mssql.so ${pkgdir}/${_buildprefix#/}/lib/php/modules/mssql.so
+	install -D -m755 ${srcdir}/build-php/modules/mssql.so ${pkgdir}/usr/lib/${pkgbase}/modules/mssql.so
 }
 
 package_php56-odbc() {
@@ -424,8 +397,8 @@ package_php56-odbc() {
 	depends=("${pkgbase}" 'unixodbc')
 	provides=("${_pkgbase}-odbc=$pkgver")
 
-	install -D -m755 ${srcdir}/build-php/modules/odbc.so ${pkgdir}/${_buildprefix#/}/lib/php/modules/odbc.so
-	install -D -m755 ${srcdir}/build-php/modules/pdo_odbc.so ${pkgdir}/${_buildprefix#/}/lib/php/modules/pdo_odbc.so
+	install -D -m755 ${srcdir}/build-php/modules/odbc.so ${pkgdir}/usr/lib/${pkgbase}/modules/odbc.so
+	install -D -m755 ${srcdir}/build-php/modules/pdo_odbc.so ${pkgdir}/usr/lib/${pkgbase}/modules/pdo_odbc.so
 }
 
 package_php56-pgsql() {
@@ -433,8 +406,8 @@ package_php56-pgsql() {
 	depends=("${pkgbase}" 'postgresql-libs')
 	provides=("${_pkgbase}-pgsql=$pkgver")
 
-	install -D -m755 ${srcdir}/build-php/modules/pgsql.so ${pkgdir}/${_buildprefix#/}/lib/php/modules/pgsql.so
-	install -D -m755 ${srcdir}/build-php/modules/pdo_pgsql.so ${pkgdir}/${_buildprefix#/}/lib/php/modules/pdo_pgsql.so
+	install -D -m755 ${srcdir}/build-php/modules/pgsql.so ${pkgdir}/usr/lib/${pkgbase}/modules/pgsql.so
+	install -D -m755 ${srcdir}/build-php/modules/pdo_pgsql.so ${pkgdir}/usr/lib/${pkgbase}/modules/pdo_pgsql.so
 }
 
 package_php56-pspell() {
@@ -442,7 +415,7 @@ package_php56-pspell() {
 	depends=("${pkgbase}" 'aspell')
 	provides=("${_pkgbase}-pspell=$pkgver")
 
-	install -D -m755 ${srcdir}/build-php/modules/pspell.so ${pkgdir}/${_buildprefix#/}/lib/php/modules/pspell.so
+	install -D -m755 ${srcdir}/build-php/modules/pspell.so ${pkgdir}/usr/lib/${pkgbase}/modules/pspell.so
 }
 
 package_php56-snmp() {
@@ -450,7 +423,7 @@ package_php56-snmp() {
 	depends=("${pkgbase}" 'net-snmp')
 	provides=("${_pkgbase}-snmp=$pkgver")
 
-	install -D -m755 ${srcdir}/build-php/modules/snmp.so ${pkgdir}/${_buildprefix#/}/lib/php/modules/snmp.so
+	install -D -m755 ${srcdir}/build-php/modules/snmp.so ${pkgdir}/usr/lib/${pkgbase}/modules/snmp.so
 }
 
 package_php56-sqlite() {
@@ -458,8 +431,8 @@ package_php56-sqlite() {
 	depends=("${pkgbase}" 'sqlite')
 	provides=("${_pkgbase}-sqlite=$pkgver")
 
-	install -D -m755 ${srcdir}/build-php/modules/sqlite3.so ${pkgdir}/${_buildprefix#/}/lib/php/modules/sqlite3.so
-	install -D -m755 ${srcdir}/build-php/modules/pdo_sqlite.so ${pkgdir}/${_buildprefix#/}/lib/php/modules/pdo_sqlite.so
+	install -D -m755 ${srcdir}/build-php/modules/sqlite3.so ${pkgdir}/usr/lib/${pkgbase}/modules/sqlite3.so
+	install -D -m755 ${srcdir}/build-php/modules/pdo_sqlite.so ${pkgdir}/usr/lib/${pkgbase}/modules/pdo_sqlite.so
 }
 
 package_php56-tidy() {
@@ -467,7 +440,7 @@ package_php56-tidy() {
 	depends=("${pkgbase}" 'tidyhtml')
 	provides=("${_pkgbase}-tidy=$pkgver")
 
-	install -D -m755 ${srcdir}/build-php/modules/tidy.so ${pkgdir}/${_buildprefix#/}/lib/php/modules/tidy.so
+	install -D -m755 ${srcdir}/build-php/modules/tidy.so ${pkgdir}/usr/lib/${pkgbase}/modules/tidy.so
 }
 
 package_php56-xsl() {
@@ -475,5 +448,5 @@ package_php56-xsl() {
 	depends=("${pkgbase}" 'libxslt')
 	provides=("${_pkgbase}-xsl=$pkgver")
 
-	install -D -m755 ${srcdir}/build-php/modules/xsl.so ${pkgdir}/${_buildprefix#/}/lib/php/modules/xsl.so
+	install -D -m755 ${srcdir}/build-php/modules/xsl.so ${pkgdir}/usr/lib/${pkgbase}/modules/xsl.so
 }
