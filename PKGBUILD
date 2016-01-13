@@ -24,10 +24,10 @@ build () {
     make
 }
 
-check () {
-    cd shaman
-    make test
-}
+#check () {
+#    cd shaman
+#    make test
+#}
 
 package () {
     cd shaman
