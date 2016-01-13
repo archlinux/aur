@@ -28,7 +28,7 @@ source_armv7h=("http://us.download.nvidia.com/XFree86/Linux-x86-ARM/${pkgver}/NV
 # http://us.download.nvidia.com/XFree86/Linux-x86-ARM/${pkgver}/NVIDIA-Linux-armv7l-gnueabihf-${pkgver}.run.md5
 md5sums_i686=('ade4f7d0a5631ff492088671bc303a0a')
 md5sums_x86_64=('29a88f1538d622cebf751593396053e4')
-md5sums_armv7h=('3e68c4d4cd48109ef9bfc81a3fb709f7')
+md5sums_armv7h=('a8d546570a785f9324706ee40bffae9c')
 
 [[ $CARCH == i686 ]] && _pkg=NVIDIA-Linux-x86-${pkgver}
 [[ $CARCH == x86_64 ]] && _pkg=NVIDIA-Linux-x86_64-${pkgver}-no-compat32

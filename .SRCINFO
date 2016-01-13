@@ -25,7 +25,7 @@ pkgbase = nvidia-beta-dkms
 	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/361.18/NVIDIA-Linux-x86_64-361.18-no-compat32.run
 	md5sums_x86_64 = 29a88f1538d622cebf751593396053e4
 	source_armv7h = http://us.download.nvidia.com/XFree86/Linux-x86-ARM/361.18/NVIDIA-Linux-armv7l-gnueabihf-361.18.run
-	md5sums_armv7h = 3e68c4d4cd48109ef9bfc81a3fb709f7
+	md5sums_armv7h = a8d546570a785f9324706ee40bffae9c
 
 pkgname = nvidia-beta-dkms
 
