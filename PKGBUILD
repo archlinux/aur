@@ -2,8 +2,8 @@
 # Co-Maintainer: Marc Straube <email@marcstraube.de>
 # Contributor: Attila Bukor <r1pp3rj4ck [at] w4it [dot] eu>
 pkgname=phpunit
-pkgver=5.1.3
-pkgrel=2
+pkgver=5.1.4
+pkgrel=1
 pkgdesc="PHPUnit is a programmer-oriented testing framework for PHP."
 url="https://phpunit.de"
 arch=("any")
@@ -12,7 +12,7 @@ depends=("php")
 install="${pkgname}.install"
 source=("https://phar.phpunit.de/${pkgname}-${pkgver}.phar"
         "https://raw.githubusercontent.com/sebastianbergmann/${pkgname}/${pkgver}/LICENSE")
-sha512sums=('34bc75314fa1c1d5cf7605cf8101c271f7a8d2c4a6164da42b9dfb953792df5996925a64d47efc75338a2bc498c446c2d723cdd22b100d044b8b0c51f5606668'
+sha512sums=('6157c95b36e496d9bb38640f1b634d3746efc953cce50e6509f817910a0dddf627d78cb33eae85cbf0a57826af4b0716d8a7b28f49746aef279f3fd076668c8c'
             '8cd4a84df128f54ef6cf657d2d6e4307b2f4fe92f60b94f6639c16c2ebcffcb20923fcfee3cf7becddf0e138c5affacb887ac43d356c7ef220f73e6d75bd9fef')
 
 package() {
