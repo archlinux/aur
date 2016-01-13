@@ -2,7 +2,7 @@
 
 pkgname=letsencrypt.sh-git
 pkgver=r211.2a7b488
-pkgrel=1
+pkgrel=2
 pkgdesc="A Let's Encrypt (ACME) client implemented in bash"
 arch=(any)
 url="https://github.com/lukas2511/letsencrypt.sh"
@@ -22,7 +22,7 @@ pkgver() {
 
 package() {
 	cd "$pkgname"
-	install -Dm644 letsencrypt.sh "$pkgdir/usr/bin/letsencrypt.sh"
+	install -Dm755 letsencrypt.sh "$pkgdir/usr/bin/letsencrypt.sh"
 
 	install -Dm644 config.sh.example "$pkgdir/etc/letsencrypt.sh/config.sh.example"
 	install -Dm644 domains.txt.example "$pkgdir/etc/letsencrypt.sh/domains.txt.example"
