@@ -1,26 +1,26 @@
 # Maintainer: Leonard de Ruijter <alderuijter@gmail.com>
 
 pkgname=liquidsoap
-pkgver=1.1.1
-pkgrel=4
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="a swiss-army knife for multimedia streaming, notably used for netradios and webtvs"
 arch=('i686' 'x86_64')
 url="http://savonet.sourceforge.net/"
 license=('GPL')
 depends=('faad2' 'ffmpeg' 'gavl' 'gd' 'giflib' 'gst-plugins-base-libs' 'libao' 'libfdk-aac' 'liblo' 'libmad' 'libxpm' 
 'ocaml-camomile' 'portaudio' 'sdl_image' 'sdl_ttf' 'soundtouch' 'taglib')
-makedepends=('dssi' 'frei0r-plugins' 'ladspa' 'libxml-perl' 'ocaml-gd4o' 'ocaml-includepatch' 'ocaml-ocamlsdl' 'ocaml-pcre' 'ocaml-xmlm' 'ocaml-yojson' 'perl-xml-dom')
-source=(http://sourceforge.net/projects/savonet/files/$pkgname/$pkgver/$pkgname-$pkgver-full.tar.gz
+makedepends=('dssi' 'frei0r-plugins' 'ladspa' 'libxml-perl' 'ocaml-gd4o' 'ocaml-ocamlsdl' 'ocaml-pcre' 'ocaml-xmlm' 'ocaml-yojson' 'perl-xml-dom')
+source=(https://github.com/savonet/$pkgname/releases/download/$pkgver/$pkgname-$pkgver-full.tar.bz2
 PACKAGES
 $pkgname.service
 $pkgname.tmpfilesd)
 install=$pkgname.install
 options=(!makeflags)
 conflicts=('liquidsoap-git' 'liquidsoap-full')
-md5sums=('db65ddb099526423cc19fb7283db8821'
-         '21d7e17ac7114edfd0a944c7773aa5af'
-         '762d6607ff0889e34b8c874970b38bc9'
-         'f9106e5c42cabc21c4c8464d9b1ad63e')
+sha256sums=('a20601a893da0716c186619afbfd848a92fbc88bca91a40665e06c7a97a92787'
+            '7aada825a04a63566b57df3258525edc7d2f797300d5725c47f6920ef03a07b2'
+            'df6d2cec1be47a57a02ed04a1f527c0349221fad39d8d152aca13734d3808661'
+            '9f286958af0c751c2a43d74614cdd1c4629c0583d619875385c09417a5383675')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver-full
