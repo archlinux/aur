@@ -7,8 +7,8 @@ else
 _arch="x86"
 fi
 
-_major="9.3.1"
-_minor=16424
+_major="9.3.2"
+_minor=16460
 
 pkgname="komodo-edit"
 _bigname="Komodo-Edit"
@@ -29,8 +29,8 @@ source_x86_64=("http://downloads.activestate.com/Komodo/releases/${_major}/${_bi
 
 sha256sums=('98177ee92e13036baa0a4f61ef398c0e23ab5d250cf7aa1b1c5a557efaaec3a8'
             'c68d7e94955e0f7b32cf3863136891d6441d9dd3a6346481b911d2c250cf32e9')
-sha256sums_i686=('e334fcc8546e6ecfba2a09b1c24f10545acb952082578cf618b95e916a6c7450')
-sha256sums_x86_64=('a1bc6d4870a7b0940d072b54cbffe95484b9818777af98b255133a5977bbb071')
+sha256sums_i686=('ca72f165bde23711d427241dcf25367dff3154883a7d9e87d3b38df6277948ee')
+sha256sums_x86_64=('bb1b99928901823995281da91108f9478789bc8c6385ed62bdee5542012b4398')
 
 prepare() {
   cd ${srcdir}/${_bigname}-${_major}-${_minor}-linux-${_arch}
