@@ -3,9 +3,9 @@
 
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcname=linux-4.3
-pkgver=4.3.3
-pkgrel=2
+_srcname=linux-4.4
+pkgver=4.4
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -13,8 +13,8 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         "0001-disabling-primary-plane-in-the-noatomic-case.patch"
         # the main kernel config files
         'config' 'config.x86_64'
@@ -22,9 +22,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         'change-default-console-loglevel.patch')
 
-sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
-            'SKIP'
-            '95cd81fcbb87953f672150d60950548edc04a88474c42de713b91811557fefa5'
+sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
             'abdd04bd6beecb7c961130a68d71e6332bd260462eeaa2f4f8e634de813dcc4d'
             'f4084c6d43abc40819f4535f827d3d8e643d25e67fedf0bab46346ead8c08b84'
@@ -42,7 +40,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  #patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
