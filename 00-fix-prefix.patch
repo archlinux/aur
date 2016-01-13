@@ -1,0 +1,17 @@
+diff --git a/config.mk b/config.mk
+index 1e32cc7..9e505c9 100644
+--- a/config.mk
++++ b/config.mk
+@@ -13,9 +13,11 @@ VERSION:=2.0.3
+ # expect to be installed into the /usr directory, and may not work if they
+ # are installed anywhere other than the /usr directory.
+ #
++# Set to /usr for ArchLinux packaging guidelines
++#
+ # [/usr/local] | /usr | other
+ ##
+-PREFIX?=/usr/local
++PREFIX?=/usr
+ 
+ ##
+ # Preset power plan values

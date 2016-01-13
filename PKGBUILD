@@ -4,7 +4,7 @@
 
 pkgname=pstate-frequency
 pkgdesc="Easily control Intel p-state driver"
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('git')
@@ -14,29 +14,38 @@ provides=('pstate-frequency')
 conflicts=('pstate-frequency')
 license=('GPLv2')
 url="https://github.com/pyamsoft/pstate-frequency/archive/${pkgver}.tar.gz"
-source=("${url}")
-sha256sums=('f2f976ff79711ef9d75a9f2da20999ee8c39b3fd051429a21c29a9d50fa9bf6d')
+source=(
+        "${url}"
+        "00-fix-prefix.patch")
+sha256sums=(
+        '44d372769da1e7c28ca1222d3f56b167311246f30fb9640fb8c5ad771c57430c'
+        'e5423df20c03ef19448a78a1ae39e630d90f63c6c4e0962296ad292665575f0d')
 
 prepare() {
-  cd "$srcdir/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  # Apply patches
+  patch -p1 -i "${srcdir}/00-fix-prefix.patch"
 
   # Disabled by default to conform to AUR packaging
   # best practices. It is highly recommended that you
   # enable the line to allow for editing the config.mk file
   #
-  # make DESTDIR="${pkgdir}" PREFIX="/usr" edit
+  # make DESTDIR="${pkgdir}" edit
 
-  make DESTDIR="${pkgdir}" PREFIX="/usr" options
+  make DESTDIR="${pkgdir}" options
 }
 
 build() {
-  cd "$srcdir/${pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" PREFIX="/usr" clean
-  make DESTDIR="${pkgdir}" PREFIX="/usr" bin
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  make DESTDIR="${pkgdir}" clean
+  make DESTDIR="${pkgdir}" bin
 }
 
 package() {
-  cd "$srcdir/${pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" PREFIX="/usr" install
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  make DESTDIR="${pkgdir}" install
 }
 
