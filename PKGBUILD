@@ -3,7 +3,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=folly-git
-pkgver=0.57.0.r245.g750d49c
+pkgver=0.57.0.r288.gc79d034
 pkgrel=1
 pkgdesc='Folly is an open-source C++ library developed and used at Facebook'
 arch=(i686 x86_64)
