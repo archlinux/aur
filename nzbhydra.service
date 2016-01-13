@@ -1,0 +1,13 @@
+[Unit]
+Description=NZB Hydra Service
+After=network.target
+
+[Service]
+User=nzbhydra
+Group=nzbhydra
+ExecStart=/usr/bin/nzbhydra --nobrowser --daemon --config /etc/nzbhydra/settings.cfg --database /var/lib/nzbhydra/nzbhydra.db
+Type=forking
+TimeoutStopSec=20
+
+[Install]
+WantedBy=multi-user.target
