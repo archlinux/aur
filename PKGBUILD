@@ -16,16 +16,13 @@ depends+=('alsa-lib' 'libxpm' 'libxxf86vm')
 optdepends=('libircclient: for irc support')
 ## mesa for GL/glx.h
 makedepends=('git' 'mesa')
-changelog="${pkgname}.changelog"
 conflicts=('darkplaces_rm-git')
 replaces=('darkplaces_rm-git')
 options=('!makeflags')
 _local_repo="${pkgname}"
 _binary_basename="darkplaces-rm"
-source=("${_local_repo}::git+https://github.com/nexAkari/DarkPlacesRM.git"
-        "${pkgname}.changelog")
-sha256sums=("SKIP"
-            "SKIP")
+source=("${_local_repo}::git+https://github.com/nexAkari/DarkPlacesRM.git")
+sha256sums=("SKIP")
 
 function pkgver
 {
