@@ -1,6 +1,6 @@
 pkgbase = copperspice-git
 	pkgdesc = C++ library derived from the existing Qt 4.8 framework
-	pkgver = 1.2.0.03c219e
+	pkgver = 1.2.1.03c219e
 	pkgrel = 1
 	url = http://www.copperspice.com/
 	arch = i686
@@ -39,7 +39,7 @@ pkgbase = copperspice-git
 	optdepends = libmariadbclient: MariaDB driver
 	conflicts = copperspice
 	options = debug
-	source = git+https://github.com/fluxer/copperspice.git#branch=cs-1.2
+	source = git+https://github.com/copperspice/copperspice.git#branch=cs-1.2
 	sha1sums = SKIP
 
 pkgname = copperspice-git
