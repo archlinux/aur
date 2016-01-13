@@ -1,0 +1,135 @@
+--- maude-2.6.orig/src/Mixfix/top.yy
++++ maude-2.6/src/Mixfix/top.yy
+@@ -24,6 +24,8 @@
+ //	Parser for Maude surface syntax.
+ //
+ 
++%parse-param {void* YYPARSE_PARAM}
++
+ %{
+ #include <string>
+ #include <stack>
+@@ -91,7 +93,7 @@ SyntaxContainer* oldSyntaxContainer = 0;
+ Int64 number;
+ Int64 number2;
+ 
+-static void yyerror(char *s);
++static void yyerror(void *, char *s);
+ 
+ void cleanUpModuleExpression();
+ void cleanUpParser();
+--- maude-2.6.orig/src/Mixfix/bottom.yy
++++ maude-2.6/src/Mixfix/bottom.yy
+@@ -23,7 +23,7 @@
+ %%
+ 
+ static void
+-yyerror(char *s)
++yyerror(void *, char *s)
+ {
+   if (!(UserLevelRewritingContext::interrupted()))
+     IssueWarning(LineNumber(lineNumber) << ": " << s);
+
+--- maude-2.6.orig/src/IO_Stuff/IO_Manager.cc
++++ maude-2.6/src/IO_Stuff/IO_Manager.cc
+@@ -85,8 +85,8 @@ IO_Manager::setAutoWrap()
+   (void) cerr.rdbuf(wrapErr);
+ }
+ 
+-int
+-IO_Manager::getInput(char* buf, int maxSize, FILE* stream)
++size_t
++IO_Manager::getInput(char* buf, size_t maxSize, FILE* stream)
+ {
+   if (stream != stdin)
+     {
+@@ -118,7 +118,7 @@ IO_Manager::getInput(char* buf, int maxS
+ 	    return 0;
+ 	}
+       
+-      int n;
++      size_t n;
+       for (n = 0;; n++)
+ 	{
+ 	  char c = *line;
+--- maude-2.6.orig/src/Mixfix/lexerAux.cc
++++ maude-2.6/src/Mixfix/lexerAux.cc
+@@ -23,6 +23,9 @@
+ //
+ //	Auxiliary functions and data needed by lexical analyzer.
+ //
++
++#include <stddef.h>
++
+ #define MAX_IN_DEPTH	10
+ 
+ int inStackPtr = 0;
+@@ -35,14 +38,14 @@ bool fakeNewline = false;  // fake \n fo
+ bool fakeNewlineStack[MAX_IN_DEPTH];
+ 
+ void
+-getInput(char* buf, int& result, int max_size)
++getInput(char* buf, size_t& result, size_t max_size)
+ {
+   result = YY_NULL;
+   if (UserLevelRewritingContext::interrupted())
+     fakeNewline = false;
+   else
+     {
+-      int n = ioManager.getInput(buf, max_size, yyin);
++      size_t n = ioManager.getInput(buf, max_size, yyin);
+       if (UserLevelRewritingContext::interrupted())
+ 	fakeNewline = false;
+       else
+--- maude-2.6.orig/src/Mixfix/lexerAux.hh
++++ maude-2.6/src/Mixfix/lexerAux.hh
+@@ -27,7 +27,7 @@
+ //extern int inStackPtr;
+ //extern YY_BUFFER_STATE inStack[];
+ 
+-void getInput(char* buf, int& result, int max_size);
++void getInput(char* buf, size_t& result, size_t max_size);
+ void lexerIdMode();
+ void lexerTokenTreeMode(int terminatingTokens);
+ void lexerCmdMode();
+--- maude-2.6.orig/src/IO_Stuff/IO_Manager.hh
++++ maude-2.6/src/IO_Stuff/IO_Manager.hh
+@@ -49,7 +49,7 @@ public:
+   void setPrompt(const string& newPrompt);
+   void setContPrompt(const string& newContPrompt);
+   void startCommand();
+-  int getInput(char* buf, int maxSize, FILE* stream);
++  size_t getInput(char* buf, size_t maxSize, FILE* stream);
+ 
+ private:
+   GetLine* gl;
+
+--- maude-2.6.orig/src/Mixfix/commands.yy
++++ maude-2.6/src/Mixfix/commands.yy
+@@ -23,12 +23,12 @@
+ /*
+  *	Commands.
+  */
+-command		:	KW_SELECT		{ lexBubble(END_COMMAND, 1) }
++command		:	KW_SELECT		{ lexBubble(END_COMMAND, 1); }
+ 			endBubble
+ 			{
+ 			  interpreter.setCurrentModule(lexerBubble);
+ 			}
+-		|	KW_DUMP			{ lexBubble(END_COMMAND, 1) }
++		|	KW_DUMP			{ lexBubble(END_COMMAND, 1); }
+ 			endBubble
+ 			{
+ 			  if (interpreter.setCurrentModule(lexerBubble))
+--- maude-2.6.orig/src/Mixfix/modules.yy
++++ maude-2.6/src/Mixfix/modules.yy
+@@ -247,7 +247,7 @@ viewEndOpMap	:	':'
+ 			  //	press on.
+ 			  //
+ 			  opDescription = lexerBubble;
+-			  lexBubble(END_STATEMENT, 1)
++			  lexBubble(END_STATEMENT, 1);
+ 			}
+ 			endBubble
+ 			{
+

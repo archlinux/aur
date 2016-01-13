@@ -1,0 +1,8 @@
+ ## arg 1:  the new package version
+post_install() {
+    echo
+    echo ">>> Copy maude.sh from /usr/share/maude/"
+    echo ">>> to /etc/profile.d/ to have"
+    echo ">>> MAUDE_LIB environment variable set at startup"
+    echo
+}
