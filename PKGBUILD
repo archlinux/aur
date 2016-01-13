@@ -3,7 +3,7 @@
 # Contributor: Matej Horváth <matej.horvath@gmail.com>
 
 pkgname=gscreenshot
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 epoch=
 pkgdesc="A GUI front-end for scrot"
@@ -31,7 +31,7 @@ install=
 changelog=
 source=("https://github.com/thenaterhood/gscreenshot/archive/v$pkgver.zip")
 noextract=("v$pkgver.zip")
-sha256sums=('8ac7ead95fc7c42d5c40f15c884c2d35bd1ae1a14ce031510ea7873aa97c155e')
+sha256sums=('20694f1736480c942b76f5ed88ba017d28be64ad16c34909fa121d5d33e14d52')
 validpgpkeys=()
 
 prepare() {
