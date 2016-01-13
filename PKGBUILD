@@ -2,8 +2,8 @@
 # Contributer: Philip Abernethy <chais.z3r0@gmail.com>
 
 pkgname=minecraft-server
-pkgver=1.8.8
-pkgrel=2
+pkgver=1.8.9
+pkgrel=1
 pkgdesc="Minecraft server unit files, script, and jar"
 arch=('any')
 url="http://minecraft.net/"
@@ -21,7 +21,7 @@ source=("https://s3.amazonaws.com/Minecraft.Download/versions/${pkgver}/minecraf
 	"minecraftd.conf"
 	"minecraftd.sh")
 noextract=("minecraft_server.${pkgver}.jar")
-md5sums=('a0671390aa0691e70a950155aab06ffb'
+md5sums=('3acbaef956308c805e8e2d0a03a737e9'
          '2cf6cdf65e0ed6aa6d452943b1e84357'
          'c644abdf293c2f98033a64d732a4945c'
          '5ed78e366146e47f8498347e93ad5423'
