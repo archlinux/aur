@@ -1,7 +1,7 @@
 # Maintainer: Sam Stuewe <halosghost at archlinux dot info>
 
 pkgname=pbpst-git
-pkgver=0.9.0.r12.gd251568
+pkgver=0.9.0.r56.g20b6912
 pkgrel=1
 
 pkgdesc='A small tool to interact with pb instances'
@@ -22,7 +22,7 @@ pkgver () {
 
 build () {
     cd pbpst
-    tup upd
+    make
 }
 
 package () {
