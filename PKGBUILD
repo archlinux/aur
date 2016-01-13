@@ -10,14 +10,17 @@ pkgdesc='Extend git with the Gitflow branching model.'
 arch=('any')
 url='https://github.com/nvie/gitflow'
 license=('BSD')
-depends=('git' 'shflags')
-source=("https://github.com/nvie/gitflow/archive/${pkgver}.zip")
-md5sums=('125f0732c11a6a07d2f90a6792c4afdc')
+depends=('git')
+source=("$pkgname.git::git://github.com/nvie/gitflow.git#tag=$pkgver")
+md5sums=('SKIP')
+
+prepare() {
+  cd $srcdir/${pkgname}.git
+  git submodule init
+  git submodule update
+}
 
 package() {
-  cd $srcdir/${pkgname}-${pkgver}
-  sed -i "s:\$GITFLOW_DIR/gitflow-shFlags:/usr/share/lib/shflags/shflags.sh:" git-flow
-  install -d -m 0755 $pkgdir/usr/bin
-  install -m 0755 git-flow $pkgdir/usr/bin
-  install -m 0644 git-flow-feature git-flow-hotfix git-flow-release git-flow-support git-flow-version git-flow-init gitflow-common $pkgdir/usr/bin
+  cd $srcdir/${pkgname}.git
+  make install prefix=$pkgdir/usr
 }
