@@ -1,0 +1,45 @@
+From 59ea80738d22c69a2850fd7ff89bd75330cc310b Mon Sep 17 00:00:00 2001
+From: Peter Hutterer <peter.hutterer@who-t.net>
+Date: Thu, 16 Jul 2009 01:55:25 +0000
+Subject: Update to xextproto 7.1 support.
+
+DPMS header was split into dpms.h (client) and dpmsconst.h (server). Drivers
+need to include dpmsconst.h if xextproto 7.1 is available.
+
+Signed-off-by: Peter Hutterer <peter.hutterer@who-t.net>
+---
+diff --git a/configure.ac b/configure.ac
+index 089c5fa..f19c1b7 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -62,6 +62,10 @@ XORG_DRIVER_CHECK_EXT(DPMSExtension, xextproto)
+ 
+ # Checks for pkg-config packages
+ PKG_CHECK_MODULES(XORG, [xorg-server >= 1.0.99.901 xproto fontsproto xf86dgaproto $REQUIRED_MODULES])
++PKG_CHECK_MODULES(XEXT, [xextproto >= 7.0.99.1],
++                  HAVE_XEXTPROTO_71="yes"; AC_DEFINE(HAVE_XEXTPROTO_71, 1, [xextproto 7.1 available]),
++                  HAVE_XEXTPROTO_71="no")
++AM_CONDITIONAL(HAVE_XEXTPROTO_71, [ test "$HAVE_XEXTPROTO_71" = "yes" ])
+ sdkdir=$(pkg-config --variable=sdkdir xorg-server)
+ 
+ # Checks for libraries.
+diff --git a/src/sis_driver.c b/src/sis_driver.c
+index ef7b522..a1ced97 100644
+--- a/src/sis_driver.c
++++ b/src/sis_driver.c
+@@ -78,8 +78,13 @@
+ 
+ #include "globals.h"
+ 
++#ifdef HAVE_XEXTPROTO_71
++#include <X11/extensions/dpmsconst.h>
++#else
+ #define DPMS_SERVER
+ #include <X11/extensions/dpms.h>
++#endif
++
+ 
+ #ifdef XF86DRI
+ #include "dri.h"
+--
+cgit v0.8.3-6-g21f6

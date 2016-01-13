@@ -1,0 +1,64 @@
+diff -ruN xf86-video-sis-0.9.1.orig/src/sis300_accel.c xf86-video-sis-0.9.1/src/sis300_accel.c
+--- xf86-video-sis-0.9.1.orig/src/sis300_accel.c	2012-11-26 12:27:14.151119857 +0100
++++ xf86-video-sis-0.9.1/src/sis300_accel.c	2012-11-26 12:36:19.227926454 +0100
+@@ -1284,8 +1284,8 @@
+ 		 /* Composite not supported */
+ 
+ 		 /* Upload, download to/from Screen */
+-		 pSiS->EXADriverPtr->accel.UploadToScreen = SiSUploadToScreen;
+-		 pSiS->EXADriverPtr->accel.DownloadFromScreen = SiSDownloadFromScreen;
++		 //pSiS->EXADriverPtr->accel.UploadToScreen = SiSUploadToScreen;
++		 //pSiS->EXADriverPtr->accel.DownloadFromScreen = SiSDownloadFromScreen;
+ 	   }
+ #else  /*xorg>7.0*/
+ 	   
+@@ -1332,8 +1332,8 @@
+ 		 /* Composite not supported */
+ 
+ 		 /* Upload, download to/from Screen */
+-		 pSiS->EXADriverPtr->UploadToScreen = SiSUploadToScreen;
+-		 pSiS->EXADriverPtr->DownloadFromScreen = SiSDownloadFromScreen;
++		 //pSiS->EXADriverPtr->UploadToScreen = SiSUploadToScreen;
++		 //pSiS->EXADriverPtr->DownloadFromScreen = SiSDownloadFromScreen;
+ 
+ 	      } 
+ #endif
+diff -ruN xf86-video-sis-0.9.1.orig/src/sis310_accel.c xf86-video-sis-0.9.1/src/sis310_accel.c
+--- xf86-video-sis-0.9.1.orig/src/sis310_accel.c	2012-11-26 12:27:14.151119857 +0100
++++ xf86-video-sis-0.9.1/src/sis310_accel.c	2012-11-26 12:35:58.597921440 +0100
+@@ -1819,8 +1819,8 @@
+ #endif
+ 
+ 	      /* Upload, download to/from Screen */
+-	      pSiS->EXADriverPtr->accel.UploadToScreen = SiSUploadToScreen;
+-	      pSiS->EXADriverPtr->accel.DownloadFromScreen = SiSDownloadFromScreen;
++	      //pSiS->EXADriverPtr->accel.UploadToScreen = SiSUploadToScreen;
++	      //pSiS->EXADriverPtr->accel.DownloadFromScreen = SiSDownloadFromScreen;
+ 
+ #else /*Xorg>= 7.0*/
+ 
+@@ -1869,8 +1869,8 @@
+ #endif
+ 
+ 	      /* Upload, download to/from Screen */
+-	      pSiS->EXADriverPtr->UploadToScreen = SiSUploadToScreen;
+-	      pSiS->EXADriverPtr->DownloadFromScreen = SiSDownloadFromScreen;
++	      //pSiS->EXADriverPtr->UploadToScreen = SiSUploadToScreen;
++	      //pSiS->EXADriverPtr->DownloadFromScreen = SiSDownloadFromScreen;
+ #endif /*end of Xorg>=7.0*/ 
+ 	   
+ 	   }
+diff -ruN xf86-video-sis-0.9.1.orig/src/sis_accel.c xf86-video-sis-0.9.1/src/sis_accel.c
+--- xf86-video-sis-0.9.1.orig/src/sis_accel.c	2012-11-26 12:27:14.154453191 +0100
++++ xf86-video-sis-0.9.1/src/sis_accel.c	2012-11-26 12:36:44.464598873 +0100
+@@ -862,8 +862,8 @@
+ 	  /* Composite not supported */
+ 
+ 	  /* Upload, download to/from Screen */
+-	  pSiS->EXADriverPtr->UploadToScreen = SiSUploadToScreen;
+-	  pSiS->EXADriverPtr->DownloadFromScreen = SiSDownloadFromScreen;
++	  //pSiS->EXADriverPtr->UploadToScreen = SiSUploadToScreen;
++	  //pSiS->EXADriverPtr->DownloadFromScreen = SiSDownloadFromScreen;
+ 
+ #endif  /*end of Xorg>=7.0 EXA Setting*/       
+        }

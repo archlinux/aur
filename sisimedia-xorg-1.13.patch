@@ -1,0 +1,654 @@
+diff -ur xf86-video-sis-0.9.1/src/sis_config.h xf86-video-sis-0.9.1-bero/src/sis_config.h
+--- xf86-video-sis-0.9.1/src/sis_config.h	2007-05-30 04:12:02.000000000 +0200
++++ xf86-video-sis-0.9.1-bero/src/sis_config.h	2012-10-19 23:27:16.178901583 +0200
+@@ -67,7 +67,7 @@
+ #endif
+ 
+ #if 1
+-#define SIS_USE_XAA		/* Include support for XAA */
++#undef SIS_USE_XAA		/* Don't include support for XAA, current xorg servers don't support it */
+ #endif
+ 
+ #ifdef SISVRAMQ
+diff -ur xf86-video-sis-0.9.1/src/sis_dga.c xf86-video-sis-0.9.1-bero/src/sis_dga.c
+--- xf86-video-sis-0.9.1/src/sis_dga.c	2012-10-20 00:10:10.325720321 +0200
++++ xf86-video-sis-0.9.1-bero/src/sis_dga.c	2012-10-19 23:34:00.514846689 +0200
+@@ -421,8 +421,8 @@
+ 	pScrn->currentMode = pSiS->CurrentLayout.mode;
+ 	pSiS->DGAactive = FALSE;
+ 
+-	(*pScrn->SwitchMode)(index, pScrn->currentMode, 0);
+-	(*pScrn->AdjustFrame)(index, pScrn->frameX0, pScrn->frameY0, 0);
++	(*pScrn->SwitchMode)(pScrn, pScrn->currentMode);
++	(*pScrn->AdjustFrame)(pScrn, pScrn->frameX0, pScrn->frameY0);
+ 
+     } else {	/* set new mode */
+ 
+@@ -444,10 +444,10 @@
+ 	pSiS->CurrentLayout.displayWidth  = pMode->bytesPerScanline / (pMode->bitsPerPixel >> 3);
+ 	pSiS->CurrentLayout.displayHeight = pMode->imageHeight;
+ 
+-	(*pScrn->SwitchMode)(index, pMode->mode, 0);
++	(*pScrn->SwitchMode)(pScrn, pMode->mode);
+ 	/* Adjust viewport to 0/0 after mode switch */
+ 	/* This fixes the vmware-in-dualhead problems */
+-	(*pScrn->AdjustFrame)(index, 0, 0, 0);
++	(*pScrn->AdjustFrame)(pScrn, 0, 0);
+ 	pSiS->CurrentLayout.DGAViewportX = pSiS->CurrentLayout.DGAViewportY = 0;
+     }
+ 
+@@ -471,7 +471,7 @@
+ ){
+     SISPtr pSiS = SISPTR(pScrn);
+ 
+-    (*pScrn->AdjustFrame)(pScrn->pScreen->myNum, x, y, flags);
++    (*pScrn->AdjustFrame)(pScrn, x, y);
+     pSiS->DGAViewportStatus = 0;  /* There are never pending Adjusts */
+     pSiS->CurrentLayout.DGAViewportX = x;
+     pSiS->CurrentLayout.DGAViewportY = y;
+diff -ur xf86-video-sis-0.9.1/src/sis_driver.c xf86-video-sis-0.9.1-bero/src/sis_driver.c
+--- xf86-video-sis-0.9.1/src/sis_driver.c	2012-10-20 00:10:10.379719645 +0200
++++ xf86-video-sis-0.9.1-bero/src/sis_driver.c	2012-10-20 00:06:35.196409807 +0200
+@@ -8546,9 +8546,9 @@
+ 	        /* No need to go through pScrn->AdjustFrame; the coords
+ 	         * didn't change
+ 	         */
+-		SISAdjustFrame(pSiSEnt->pScrn_2->scrnIndex,
++		SISAdjustFrame(pSiSEnt->pScrn_2,
+ 			       pSiSEnt->pScrn_2->frameX0,
+-			       pSiSEnt->pScrn_2->frameY0, 0);
++			       pSiSEnt->pScrn_2->frameY0);
+ 	     }
+ 	  } else {
+ 	     /* Head 2 (slave) is always CRT1 */
+@@ -8565,9 +8565,9 @@
+ 	        /* No need to go through pScrn->AdjustFrame; the coords
+ 	         * didn't change
+ 	         */
+-		SISAdjustFrame(pSiSEnt->pScrn_1->scrnIndex,
++		SISAdjustFrame(pSiSEnt->pScrn_1,
+ 			       pSiSEnt->pScrn_1->frameX0,
+-			       pSiSEnt->pScrn_1->frameY0, 0);
++			       pSiSEnt->pScrn_1->frameY0);
+ 	     }
+ 	  }
+ 
+@@ -8613,7 +8613,7 @@
+ 
+ 		SiS_SiSLVDSBackLight(pSiS, TRUE);
+ 
+-		(*pScrn->AdjustFrame)(pScrn->scrnIndex, pScrn->frameX0, pScrn->frameY0, 0);
++		(*pScrn->AdjustFrame)(pScrn, pScrn->frameX0, pScrn->frameY0);
+ 
+ 	     } else {
+ #endif
+@@ -8723,14 +8723,13 @@
+ /*******************************************************/
+ 
+ static void
+-SISBlockHandler(int i, pointer blockData, pointer pTimeout, pointer pReadmask)
++SISBlockHandler(ScreenPtr pScreen, pointer pTimeout, pointer pReadmask)
+ {
+-    ScreenPtr pScreen = screenInfo.screens[i];
+-    ScrnInfoPtr pScrn = xf86Screens[i];
++    ScrnInfoPtr pScrn = xf86ScreenToScrn(pScreen);
+     SISPtr pSiS = SISPTR(pScrn);
+ 
+     pScreen->BlockHandler = pSiS->BlockHandler;
+-    (*pScreen->BlockHandler) (i, blockData, pTimeout, pReadmask);
++    (*pScreen->BlockHandler) (pScreen, pTimeout, pReadmask);
+     pScreen->BlockHandler = SISBlockHandler;
+ 
+ #ifdef SISDUALHEAD
+@@ -8747,7 +8746,7 @@
+ #endif
+ 
+     if(pSiS->AdjustFramePending && pSiS->AdjustFrame) {
+-       (*pSiS->AdjustFrame)(i, pSiS->AdjustFrameX, pSiS->AdjustFrameY, pSiS->AdjustFrameFlags);
++       (*pSiS->AdjustFrame)(pScrn, pSiS->AdjustFrameX, pSiS->AdjustFrameY);
+        /* Reset it since Xv insists on installing its own every time. */
+        pScrn->AdjustFrame = SISNewAdjustFrame;
+        pSiS->AdjustFramePending = FALSE;
+@@ -9230,7 +9229,7 @@
+  * depth, bitsPerPixel)
+  */
+ static Bool
+-SISScreenInit(int scrnIndex, ScreenPtr pScreen, int argc, char **argv)
++SISScreenInit(ScreenPtr pScreen, int argc, char **argv)
+ {
+     ScrnInfoPtr pScrn = xf86Screens[pScreen->myNum];
+     SISPtr pSiS = SISPTR(pScrn);
+@@ -9409,7 +9408,7 @@
+ 	  pScrn->frameY1 = pScrn->frameY0 + pScrn->currentMode->VDisplay - 1;
+        }
+     }
+-    SISAdjustFrame(scrnIndex, pScrn->frameX0, pScrn->frameY0, 0);
++    SISAdjustFrame(pScrn, pScrn->frameX0, pScrn->frameY0);
+ 
+     /* Reset visual list. */
+     miClearVisualTypes();
+@@ -9841,7 +9840,7 @@
+ 	     pSiS->SiS_SD_Flags |= SiS_SD_PSEUDOXINERAMA;
+ 	     if(pSiS->HaveNonRect) {
+ 		/* Reset the viewport (now eventually non-recangular) */
+-		SISAdjustFrame(scrnIndex, pScrn->frameX0, pScrn->frameY0, 0);
++		SISAdjustFrame(pScrn, pScrn->frameX0, pScrn->frameY0);
+ 	     }
+ 	  }
+        } else {
+@@ -10177,9 +10176,8 @@
+ }
+ 
+ static ModeStatus
+-SISValidMode(int scrnIndex, DisplayModePtr mode, Bool verbose, int flags)
++SISValidMode(ScrnInfoPtr pScrn, DisplayModePtr mode, Bool verbose, int flags)
+ {
+-    ScrnInfoPtr pScrn = xf86Screens[scrnIndex];
+     SISPtr pSiS = SISPTR(pScrn);
+ 
+     if(pSiS->UseVESA) {
+@@ -10335,9 +10333,8 @@
+ #endif
+ 
+ Bool
+-SISSwitchMode(int scrnIndex, DisplayModePtr mode, int flags)
++SISSwitchMode(ScrnInfoPtr pScrn, DisplayModePtr mode)
+ {
+-    ScrnInfoPtr pScrn = xf86Screens[scrnIndex];
+     SISPtr pSiS = SISPTR(pScrn);
+    /* This is part 2 of the ugly hack in sis_shadow.c:
+     * There we set pScrn->currentMode to something
+@@ -10353,7 +10350,7 @@
+     */
+ 
+     if(!pSiS->skipswitchcheck) {
+-       if(SISValidMode(scrnIndex, mode, TRUE, flags) != MODE_OK) {
++       if(SISValidMode(pScrn, mode, TRUE, 0) != MODE_OK) {
+           return FALSE;
+        }
+     }
+@@ -10368,7 +10365,7 @@
+ 
+     (*pSiS->SyncAccel)(pScrn);
+ 
+-    if(!(SISModeInit(xf86Screens[scrnIndex], mode)))
++    if(!(SISModeInit(pScrn, mode)))
+        return FALSE;
+ 
+     /* Since RandR (indirectly) uses SwitchMode(), we need to
+@@ -10485,21 +10482,18 @@
+ }
+ 
+ static void
+-SISNewAdjustFrame(int scrnIndex, int x, int y, int flags)
++SISNewAdjustFrame(ScrnInfoPtr pScrn, int x, int y)
+ {
+-    ScrnInfoPtr pScrn = xf86Screens[scrnIndex];
+     SISPtr      pSiS = SISPTR(pScrn);
+ 
+     pSiS->AdjustFramePending = TRUE;
+     pSiS->AdjustFrameX = x;
+     pSiS->AdjustFrameY = y;
+-    pSiS->AdjustFrameFlags = flags;
+ }
+ 
+ void
+-SISAdjustFrame(int scrnIndex, int x, int y, int flags)
++SISAdjustFrame(ScrnInfoPtr pScrn, int x, int y)
+ {
+-    ScrnInfoPtr pScrn = xf86Screens[scrnIndex];
+     SISPtr      pSiS = SISPTR(pScrn);
+     UChar       temp, cr11backup;
+     ULong       base;
+@@ -10511,7 +10505,7 @@
+ 
+ #ifdef SISMERGED
+     if(pSiS->MergedFB) {
+-	SISMFBAdjustFrame(scrnIndex, x, y, flags);
++	SISMFBAdjustFrame(pScrn, x, y);
+ 	return;
+     }
+ #endif
+@@ -10578,9 +10572,8 @@
+ 
+ 
+ static Bool
+-SISEnterVT(int scrnIndex, int flags)
++SISEnterVT(ScrnInfoPtr pScrn)
+ {
+-    ScrnInfoPtr pScrn = xf86Screens[scrnIndex];
+     SISPtr pSiS = SISPTR(pScrn);
+     SiS_SiSFB_Lock(pScrn, TRUE);
+ 
+@@ -10596,7 +10589,7 @@
+     /* No need to go through pScrn->AdjustFrame; Xv's
+      * EnterVT handles the overlay(s) anyway.
+      */
+-    SISAdjustFrame(scrnIndex, pScrn->frameX0, pScrn->frameY0, 0);
++    SISAdjustFrame(pScrn, pScrn->frameX0, pScrn->frameY0);
+ 
+ 
+ /* Mark for 3D full-screen bug */
+@@ -10625,15 +10618,14 @@
+ 
+ 
+ static void
+-SISLeaveVT(int scrnIndex, int flags)
++SISLeaveVT(ScrnInfoPtr pScrn)
+ {
+-    ScrnInfoPtr pScrn = xf86Screens[scrnIndex];
+     SISPtr pSiS = SISPTR(pScrn);
+ #ifdef SISDRI
+     ScreenPtr pScreen;
+ 
+     if(pSiS->directRenderingEnabled) {
+-       pScreen = screenInfo.screens[scrnIndex];
++       pScreen = xf86ScreenToScrn(pScrn);
+ /* Mark for 3D full-screen bug */
+ /*   DRILock(pScreen, 0); */
+     }
+@@ -10702,9 +10694,9 @@
+ 
+ 
+ static Bool
+-SISCloseScreen(int scrnIndex, ScreenPtr pScreen)
++SISCloseScreen(ScreenPtr pScreen)
+ {
+-    ScrnInfoPtr pScrn = xf86Screens[scrnIndex];
++    ScrnInfoPtr pScrn = xf86ScreenToScrn(pScreen);
+     SISPtr pSiS = SISPTR(pScrn);
+ #ifdef SISDUALHEAD
+     SISEntPtr pSiSEnt = pSiS->entityPrivate;
+@@ -10872,7 +10864,7 @@
+ 
+     pScreen->CloseScreen = pSiS->CloseScreen;
+ 
+-    return(*pScreen->CloseScreen)(scrnIndex, pScreen);
++    return(*pScreen->CloseScreen)(pScreen);
+ }
+ 
+ 
+@@ -10883,10 +10875,9 @@
+ /* Free up any per-generation data structures */
+ 
+ static void
+-SISFreeScreen(int scrnIndex, int flags)
++SISFreeScreen(ScrnInfoPtr pScrn)
+ {
+ #ifdef SIS_NEED_MAP_IOP
+-    ScrnInfoPtr pScrn = xf86Screens[scrnIndex];
+     SISPtr pSiS = SISPTR(pScrn);
+ 
+     if(pSiS) {
+@@ -10900,7 +10891,7 @@
+     }
+ #endif
+ 
+-    SISFreeRec(xf86Screens[scrnIndex]);
++    SISFreeRec(pScrn);
+ }
+ 
+ 
+@@ -11134,7 +11125,7 @@
+    pSiS->VBFlags3 = pSiS->VBFlags_backup3 = newvbflags3;  
+  
+    pSiS->skipswitchcheck = TRUE;
+-   if(!((*pScrn->SwitchMode)(pScrn->scrnIndex,pScrn->currentMode,0)))
++   if(!((*pScrn->SwitchMode)(pScrn,pScrn->currentMode)))
+    {
+           pSiS->skipswitchcheck = FALSE;
+ 	  return FALSE;
+@@ -11143,7 +11134,7 @@
+ 
+    /*xf86DrvMsg(0,X_INFO,"frameX0=%d, frameY0=%d.\n",pScrn->frameX0,pScrn->frameY0);*/
+ 
+-   SISAdjustFrame(pScrn->scrnIndex, pScrn->frameX0, pScrn->frameY0,0);
++   SISAdjustFrame(pScrn, pScrn->frameX0, pScrn->frameY0);
+ 
+    return TRUE;
+ 
+@@ -11204,14 +11195,14 @@
+  (*pSiS->SyncAccel)(pScrn); 
+   
+  pSiS->skipswitchcheck = TRUE;
+- if(!((*pScrn->SwitchMode)(pScrn->scrnIndex,pScrn->currentMode,0)))
++ if(!((*pScrn->SwitchMode)(pScrn,pScrn->currentMode)))
+  {
+        pSiS->skipswitchcheck = FALSE;
+        return FALSE;
+  }
+  pSiS->skipswitchcheck = FALSE;
+ 
+- SISAdjustFrame(pScrn->scrnIndex, pScrn->frameX0, pScrn->frameY0,0);
++ SISAdjustFrame(pScrn, pScrn->frameX0, pScrn->frameY0);
+  
+  return TRUE;
+ }
+@@ -11259,7 +11250,7 @@
+    
+                xf86ZoomViewport(pScreen,1);
+ 
+-	       SISAdjustFrame(pScrn->scrnIndex,0,0,0);
++	       SISAdjustFrame(pScrn,0,0);
+ 
+    
+    return TRUE;
+@@ -11268,9 +11259,8 @@
+ 
+ /**************************************************************************/
+ static Bool
+-SISPMEvent(int scrnIndex, pmEvent event, Bool undo)
++SISPMEvent(ScrnInfoPtr pScrn, pmEvent event, Bool undo)
+ {
+-  ScrnInfoPtr pScrn = xf86Screens[scrnIndex];
+   SISPtr pSiS = SISPTR(pScrn);
+   unsigned char hotkeyflag = 0;/*check BIOS flag.*/
+   unsigned char checkflag = 0;/*just for test using.*/
+@@ -11287,13 +11277,13 @@
+          {        
+               xf86DrvMsg(0,X_INFO,"PM_EVENT:event=%d,undo=%d.\n",event,undo);		 
+ 		 if (!undo && !pSiS->suspended) {
+-	               pScrn->LeaveVT(scrnIndex, 0);
++	               pScrn->LeaveVT(pScrn);
+ 	               pSiS->suspended = TRUE;
+ 	               sleep(0);
+                    } 
+ 		     else if (undo && pSiS->suspended) {
+ 	            sleep(0);
+-	            pScrn->EnterVT(scrnIndex, 0);
++	            pScrn->EnterVT(pScrn);
+ 	            pSiS->suspended = FALSE;
+                   }
+ 	   }
+@@ -11305,7 +11295,7 @@
+       {
+ 	  	  if (pSiS->suspended) {
+ 	        sleep(0);
+-	        pScrn->EnterVT(scrnIndex, 0);
++	        pScrn->EnterVT(pScrn);
+ 	        pSiS->suspended = FALSE;
+ 	        SaveScreens(SCREEN_SAVER_FORCER, ScreenSaverReset);
+                }
+diff -ur xf86-video-sis-0.9.1/src/sis_driver.h xf86-video-sis-0.9.1-bero/src/sis_driver.h
+--- xf86-video-sis-0.9.1/src/sis_driver.h	2012-10-20 00:10:10.296720683 +0200
++++ xf86-video-sis-0.9.1-bero/src/sis_driver.h	2012-10-20 00:04:47.586755113 +0200
+@@ -770,14 +770,14 @@
+ static void SISIdentify(int flags);
+ static Bool SISProbe(DriverPtr drv, int flags);
+ static Bool SISPreInit(ScrnInfoPtr pScrn, int flags);
+-static Bool SISScreenInit(int Index, ScreenPtr pScreen, int argc, char **argv);
+-static Bool SISEnterVT(int scrnIndex, int flags);
+-static void SISLeaveVT(int scrnIndex, int flags);
+-static Bool SISCloseScreen(int scrnIndex, ScreenPtr pScreen);
++static Bool SISScreenInit(ScreenPtr pScreen, int argc, char **argv);
++static Bool SISEnterVT(ScrnInfoPtr pScrn);
++static void SISLeaveVT(ScrnInfoPtr pScrn);
++static Bool SISCloseScreen(ScreenPtr pScreen);
+ static Bool SISSaveScreen(ScreenPtr pScreen, int mode);
+-static Bool SISSwitchMode(int scrnIndex, DisplayModePtr mode, int flags);
+-static void SISNewAdjustFrame(int scrnIndex, int x, int y, int flags);
+-static Bool SISPMEvent(int scrnIndex, pmEvent event, Bool undo);/*APM-ACPI, adding by Ivans.*/
++static Bool SISSwitchMode(ScrnInfoPtr pScrn, DisplayModePtr mode);
++static void SISNewAdjustFrame(ScrnInfoPtr pScrn, int x, int y);
++static Bool SISPMEvent(ScrnInfoPtr pScrn, pmEvent event, Bool undo);/*APM-ACPI, adding by Ivans.*/
+ 
+ #if XSERVER_LIBPCIACCESS
+ static Bool SIS_pci_probe(DriverPtr driver, int entity_num, struct pci_device *device, intptr_t match_data);
+@@ -791,8 +791,8 @@
+ #ifdef SISDUALHEAD
+ static Bool	SISSaveScreenDH(ScreenPtr pScreen, int mode);
+ #endif
+-static void     SISFreeScreen(int scrnIndex, int flags);
+-static ModeStatus SISValidMode(int scrnIndex, DisplayModePtr mode,
++static void     SISFreeScreen(ScrnInfoPtr pScrn);
++static ModeStatus SISValidMode(ScrnInfoPtr pScrn, DisplayModePtr mode,
+ 				Bool verbose, int flags);
+ #ifdef SIS_HAVE_RR_FUNC
+ #ifdef SIS_HAVE_DRIVER_FUNC
+@@ -811,7 +811,7 @@
+ static Bool	SISMapIOPMem(ScrnInfoPtr pScrn);
+ static Bool	SISUnmapIOPMem(ScrnInfoPtr pScrn);
+ #endif
+-void		SISAdjustFrame(int scrnIndex, int x, int y, int flags);
++void		SISAdjustFrame(ScrnInfoPtr pScrn, int x, int y);
+ UChar		SISSearchCRT1Rate(ScrnInfoPtr pScrn, DisplayModePtr mode);
+ UShort		SiS_CheckModeCRT1(ScrnInfoPtr pScrn, DisplayModePtr mode,
+ 				 unsigned int VBFlags, unsigned int VBFlags3, Bool hcm);
+@@ -858,7 +858,7 @@
+ extern Bool 	SiSVGASaveScreen(ScreenPtr pScreen, int mode);
+ 
+ /* shadow, randr, randr-rotation */
+-extern void 	SISPointerMoved(int index, int x, int y);
++extern void 	SISPointerMoved(ScrnInfoPtr pScrn, int x, int y);
+ extern void 	SISRefreshArea(ScrnInfoPtr pScrn, int num, BoxPtr pbox);
+ extern void 	SISRefreshAreaReflect(ScrnInfoPtr pScrn, int num, BoxPtr pbox);
+ extern void 	SISRefreshArea8(ScrnInfoPtr pScrn, int num, BoxPtr pbox);
+@@ -922,8 +922,8 @@
+ extern Bool		SiSMFBRebuildModelist(ScrnInfoPtr pScrn, ClockRangePtr clockRanges);
+ extern Bool		SiSMFBRevalidateModelist(ScrnInfoPtr pScrn, ClockRangePtr clockRanges);
+ extern void		SiSMFBSetDpi(ScrnInfoPtr pScrn1, ScrnInfoPtr pScrn2, SiSScrn2Rel srel);
+-extern void		SISMFBPointerMoved(int scrnIndex, int x, int y);
+-extern void		SISMFBAdjustFrame(int scrnIndex, int x, int y, int flags);
++extern void		SISMFBPointerMoved(ScrnInfoPtr pScrn, int x, int y);
++extern void		SISMFBAdjustFrame(ScrnInfoPtr pScrn, int x, int y);
+ #ifdef SISXINERAMA
+ extern void		SiSXineramaExtensionInit(ScrnInfoPtr pScrn);
+ extern Bool 		SiSnoPanoramiXExtension;
+diff -ur xf86-video-sis-0.9.1/src/sis.h xf86-video-sis-0.9.1-bero/src/sis.h
+--- xf86-video-sis-0.9.1/src/sis.h	2012-10-20 00:10:10.361719870 +0200
++++ xf86-video-sis-0.9.1-bero/src/sis.h	2012-10-19 23:56:46.635767827 +0200
+@@ -73,6 +73,7 @@
+ #include "xf86Cursor.h"
+ #include "xf86cmap.h"
+ #include "vbe.h"
++#include "xf86fbman.h"
+ 
+ /*I.L. modified*/
+ #include "sispcirename.h" 
+@@ -241,7 +242,7 @@
+ #define SIS_MAX_SUBPICTURES 2
+ 
+ #if !defined(SIS_USE_XAA) && !defined(SIS_USE_EXA)
+-#define SIS_USE_XAA
++#define SIS_USE_EXA
+ #endif
+ 
+ #ifdef SIS_USE_XAA
+@@ -1319,8 +1320,8 @@
+ #ifdef SIS_USE_XAA
+     void		(*RenderCallback)(ScrnInfoPtr);
+     Time		RenderTime;
+-    FBLinearPtr		AccelLinearScratch;
+ #endif
++    FBLinearPtr		AccelLinearScratch;
+ #ifdef SIS_USE_EXA
+     void		(*ExaRenderCallback)(ScrnInfoPtr);
+     Time		ExaRenderTime;
+@@ -1342,7 +1343,7 @@
+     int			SiSDPIVX, SiSDPIVY;
+     int			virtualX, virtualY;
+     int			Rotate, Reflect;
+-    void		(*PointerMoved)(int index, int x, int y);
++    void		(*PointerMoved)(ScrnInfoPtr pScrn, int x, int y);
+ 
+     /* ShadowFB support */
+     Bool		ShadowFB;
+@@ -1420,7 +1421,6 @@
+     Bool		AdjustFramePending;
+     int			AdjustFrameX;
+     int			AdjustFrameY;
+-    int			AdjustFrameFlags;
+ 
+     /* DGA */
+     DGAModePtr		DGAModes;
+diff -ur xf86-video-sis-0.9.1/src/sis_hwmc.c xf86-video-sis-0.9.1-bero/src/sis_hwmc.c
+--- xf86-video-sis-0.9.1/src/sis_hwmc.c	2012-10-20 00:10:10.348720033 +0200
++++ xf86-video-sis-0.9.1-bero/src/sis_hwmc.c	2012-10-19 23:38:25.482534137 +0200
+@@ -58,8 +58,10 @@
+ #include "xf86xvmc.h"
+ #include <X11/extensions/Xv.h>
+ #include <X11/extensions/XvMC.h>
++#ifdef SIS_USE_XAA
+ #include "xaa.h"
+ #include "xaalocal.h"
++#endif
+ #include "dixstruct.h"
+ #include "fourcc.h"
+ #include "sis_common.h"
+diff -ur xf86-video-sis-0.9.1/src/sis_mergedfb.c xf86-video-sis-0.9.1-bero/src/sis_mergedfb.c
+--- xf86-video-sis-0.9.1/src/sis_mergedfb.c	2012-10-20 00:10:10.351719996 +0200
++++ xf86-video-sis-0.9.1-bero/src/sis_mergedfb.c	2012-10-20 00:07:08.475993754 +0200
+@@ -1706,7 +1706,7 @@
+        /* Need to go the official way to avoid hw access and
+         * to update Xv's overlays
+         */
+-       (pScrn1->AdjustFrame)(scrnIndex, pScrn1->frameX0, pScrn1->frameY0, 0);
++       (pScrn1->AdjustFrame)(pScrn1, pScrn1->frameX0, pScrn1->frameY0);
+     }
+ }
+ 
+diff -ur xf86-video-sis-0.9.1/src/sis_shadow.c xf86-video-sis-0.9.1-bero/src/sis_shadow.c
+--- xf86-video-sis-0.9.1/src/sis_shadow.c	2007-05-30 04:12:02.000000000 +0200
++++ xf86-video-sis-0.9.1-bero/src/sis_shadow.c	2012-10-20 00:08:12.018199367 +0200
+@@ -81,11 +81,11 @@
+        }
+ 
+        if(framechanged && pScrn->AdjustFrame)
+-	  pScrn->AdjustFrame(pScrn->scrnIndex, pScrn->frameX0, pScrn->frameY0, 0);
++	  pScrn->AdjustFrame(pScrn, pScrn->frameX0, pScrn->frameY0);
+ 
+     } else {
+ 
+-       (*pSiS->PointerMoved)(index, x, y);
++       (*pSiS->PointerMoved)(pScrn, x, y);
+ 
+     }
+ }
+diff -ur xf86-video-sis-0.9.1/src/sis_utility.c xf86-video-sis-0.9.1-bero/src/sis_utility.c
+--- xf86-video-sis-0.9.1/src/sis_utility.c	2012-10-20 00:10:10.352719983 +0200
++++ xf86-video-sis-0.9.1-bero/src/sis_utility.c	2012-10-20 00:09:45.884025883 +0200
+@@ -273,7 +273,7 @@
+ 				 unsigned int VBFlags, unsigned int VBFlags3, Bool hcm);
+ extern UShort	SiS_CheckModeCRT2(ScrnInfoPtr pScrn, DisplayModePtr mode,
+ 				 unsigned int VBFlags, unsigned int VBFlags3, Bool hcm);
+-extern void	SISAdjustFrame(int scrnIndex, int x, int y, int flags);
++extern void	SISAdjustFrame(ScrnInfoPtr pScrn, int x, int y);
+ extern float	SiSCalcVRate(DisplayModePtr mode);
+ extern void	SiS_UpdateGammaCRT2(ScrnInfoPtr pScrn);
+ #ifdef SISGAMMARAMP
+@@ -427,7 +427,7 @@
+     (*pSiS->SyncAccel)(pScrn);
+ 
+     pSiS->skipswitchcheck = TRUE;
+-    if(!((*pScrn->SwitchMode)(pScrn->scrnIndex, pScrn->currentMode, 0))) {
++    if(!((*pScrn->SwitchMode)(pScrn, pScrn->currentMode))) {
+        pSiS->skipswitchcheck = FALSE;
+        return FALSE;
+     }
+@@ -436,7 +436,7 @@
+     /* No need to go through pScrn->AdjustFrame; the coords
+      * didn't change
+      */
+-    SISAdjustFrame(pScrn->scrnIndex, pScrn->frameX0, pScrn->frameY0, 0);
++    SISAdjustFrame(pScrn, pScrn->frameX0, pScrn->frameY0);
+ 
+     return TRUE;
+ }
+@@ -480,7 +480,7 @@
+        /* Sync the accelerators */
+        (*pSiS->SyncAccel)(pScrn);
+        pSiS->skipswitchcheck = TRUE;
+-       if(!((*pScrn->SwitchMode)(pScrn->scrnIndex, pScrn->currentMode, 0))) {
++       if(!((*pScrn->SwitchMode)(pScrn, pScrn->currentMode))) {
+           pSiS->skipswitchcheck = FALSE;
+           return FALSE;
+        }
+@@ -489,7 +489,7 @@
+        /* No need to go through pScrn->AdjustFrame; the coords
+ 	* didn't change
+ 	*/
+-       SISAdjustFrame(pScrn->scrnIndex, pScrn->frameX0, pScrn->frameY0, 0);
++       SISAdjustFrame(pScrn, pScrn->frameX0, pScrn->frameY0);
+     }
+ 
+     return TRUE;
+@@ -624,7 +624,7 @@
+     pSiS->VBFlags3 = pSiS->VBFlags_backup3 = newvbflags3;
+ 
+     pSiS->skipswitchcheck = TRUE;
+-    if(!(pScrn->SwitchMode(pScrn->scrnIndex, pScrn->currentMode, 0))) {
++    if(!(pScrn->SwitchMode(pScrn, pScrn->currentMode))) {
+        pSiS->skipswitchcheck = FALSE;
+        return FALSE;
+     }
+@@ -633,7 +633,7 @@
+     /* No need to go through pScrn->AdjustFrame; the coords
+      * didn't change
+      */
+-    SISAdjustFrame(pScrn->scrnIndex, pScrn->frameX0, pScrn->frameY0, 0);
++    SISAdjustFrame(pScrn, pScrn->frameX0, pScrn->frameY0);
+ 
+     return TRUE;
+ }
+--- xf86-video-sis-0.9.1/src/sis6326_video.c.bero	2012-10-20 00:13:59.712852587 +0200
++++ xf86-video-sis-0.9.1/src/sis6326_video.c	2012-10-20 00:15:51.035460862 +0200
+@@ -72,7 +72,7 @@ static void 	SIS6326QueryBestSize(ScrnIn
+ 			short, unsigned int *,unsigned int *, pointer);
+ static int 	SIS6326PutImage( ScrnInfoPtr,
+ 			short, short, short, short, short, short, short, short,
+-			int, unsigned char*, short, short, Bool, RegionPtr, pointer);
++			int, unsigned char*, short, short, Bool, RegionPtr, pointer, DrawablePtr);
+ static int 	SIS6326QueryImageAttributes(ScrnInfoPtr,
+ 			int, unsigned short *, unsigned short *, int *, int *);
+ static void 	SIS6326VideoTimerCallback(ScrnInfoPtr pScrn, Time now);
+@@ -1231,7 +1231,7 @@ SIS6326PutImage(
+   int id, unsigned char* buf,
+   short width, short height,
+   Bool sync,
+-  RegionPtr clipBoxes, pointer data
++  RegionPtr clipBoxes, pointer data, DrawablePtr pDraw
+ ){
+    SISPtr pSiS = SISPTR(pScrn);
+    SISPortPrivPtr pPriv = (SISPortPrivPtr)data;
+--- xf86-video-sis-0.9.1/src/sis_video.c.bero	2012-10-20 00:16:13.212183614 +0200
++++ xf86-video-sis-0.9.1/src/sis_video.c	2012-10-20 00:20:38.099872064 +0200
+@@ -3948,7 +3948,7 @@ SISPutImage(
+   int id, UChar *buf,
+   short width, short height,
+   Bool sync,
+-  RegionPtr clipBoxes, pointer data
++  RegionPtr clipBoxes, pointer data, DrawablePtr pDraw
+ ){
+    SISPtr pSiS = SISPTR(pScrn);
+    SISPortPrivPtr pPriv = (SISPortPrivPtr)data;
+@@ -4089,8 +4089,11 @@ SISPutImage(
+ static int
+ SISReputImage(
+   ScrnInfoPtr pScrn,
++  short src_x, short src_y,
+   short drw_x, short drw_y,
+-  RegionPtr clipBoxes, pointer data
++  short src_w, short src_h,
++  short drw_w, short drw_h,
++  RegionPtr clipBoxes, pointer data, DrawablePtr pDraw
+ ){
+    SISPtr pSiS = SISPTR(pScrn);
+    SISPortPrivPtr pPriv = (SISPortPrivPtr)data;
+--- xf86-video-sis-0.9.1/src/sis_video.h.bero	2012-10-20 00:16:58.076622733 +0200
++++ xf86-video-sis-0.9.1/src/sis_video.h	2012-10-20 00:20:18.443117807 +0200
+@@ -107,10 +107,13 @@ static void 	SISQueryBestSize(ScrnInfoPt
+ 			short, unsigned int *,unsigned int *, pointer);
+ static int 	SISPutImage(ScrnInfoPtr,
+ 			short, short, short, short, short, short, short, short,
+-			int, UChar *, short, short, Bool, RegionPtr, pointer);
++			int, UChar *, short, short, Bool, RegionPtr, pointer, DrawablePtr);
+ static int	SISReputImage(ScrnInfoPtr pScrn,
++			short src_x, short src_y,
+ 			short drw_x, short drw_y,
+-			RegionPtr clipBoxes, pointer data);
++			short src_w, short src_h,
++			short drw_w, short drw_h,
++			RegionPtr clipBoxes, pointer data, DrawablePtr pDraw);
+ static int 	SISQueryImageAttributes(ScrnInfoPtr,
+ 			int, UShort *, UShort *, int *, int *);
+ static void 	SISVideoTimerCallback(ScrnInfoPtr pScrn, Time now);

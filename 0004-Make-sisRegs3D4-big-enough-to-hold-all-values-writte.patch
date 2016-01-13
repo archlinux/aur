@@ -1,0 +1,32 @@
+From 49c641b638ac36d2a559555c04a3bd2777c8d071 Mon Sep 17 00:00:00 2001
+From: Alan Coopersmith <alan.coopersmith@sun.com>
+Date: Fri, 1 May 2009 16:52:10 -0700
+Subject: [PATCH 04/10] Make sisRegs3D4 big enough to hold all values written to it
+
+Increase size from 0xff to 0x100 since SiS315Save (sis_dac.c line 752)
+writes values into sisRegs3D4[0x00..0xff] if ChipType >= XGI_20
+
+[This bug was found by the Parfait bug checking tool.
+ For more information see http://research.sun.com/projects/parfait ]
+
+Signed-off-by: Alan Coopersmith <alan.coopersmith@sun.com>
+---
+ src/sis.h |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/src/sis.h b/src/sis.h
+index 9bafd4b..773f709 100644
+--- a/src/sis.h
++++ b/src/sis.h
+@@ -747,7 +747,7 @@ typedef struct {
+     UChar  sisRegsGR[10];
+     UChar  sisDAC[768];
+     UChar  sisRegs3C4[0x80];
+-    UChar  sisRegs3D4[0xff];
++    UChar  sisRegs3D4[0x100];
+     UChar  sisRegs3C2;
+     UChar  sisCapt[0x60];
+     UChar  sisVid[0x50];
+-- 
+1.6.5.4
+

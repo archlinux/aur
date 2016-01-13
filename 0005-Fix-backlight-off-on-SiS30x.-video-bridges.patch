@@ -1,0 +1,25 @@
+From 910073e0ab3a7bf9e5c9d97437a879d97edc2714 Mon Sep 17 00:00:00 2001
+From: root <root@greentea.conectiva>
+Date: Wed, 1 Jul 2009 09:59:39 -0400
+Subject: [PATCH] Fix backlight off on SiS30x. video bridges.
+
+---
+ src/init301.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/src/init301.c b/src/init301.c
+index c179ae8..70a6aab 100644
+--- a/src/init301.c
++++ b/src/init301.c
+@@ -9261,7 +9261,7 @@ void
+ SiS_SiS30xBLOff(struct SiS_Private *SiS_Pr)
+ {
+   /* Switch off LCD backlight on SiS30xLV */
+-  SiS_SetRegAND(SiS_Pr->SiS_Part4Port,0x26,0xFE);
++  SiS_SetRegAND(SiS_Pr->SiS_Part4Port,0x26,0xFC);
+   SiS_DDC2Delay(SiS_Pr,0xff00);
+ }
+ 
+-- 
+1.5.4.3
+

@@ -1,0 +1,18 @@
+--- xf86-video-sis-0.9.1/src/sis_driver.c	2013-03-10 13:02:25.000000000 +0100
++++ xf86-video-sis-0.9.1/src/sis_driver.c.new	2013-03-10 13:04:24.349309791 +0100
+@@ -86,7 +86,6 @@
+ #include "fb.h"
+ #include "micmap.h"
+ #include "mipointer.h"
+-#include "mibstore.h"
+ #include "edid.h"
+ 
+ #define SIS_NEED_inSISREG
+@@ -9637,7 +9636,6 @@
+     }
+     pSiS->SiSFastVidCopyDone = TRUE;
+ 
+-    miInitializeBackingStore(pScreen);
+     xf86SetBackingStore(pScreen);
+     xf86SetSilkenMouse(pScreen);
+ 

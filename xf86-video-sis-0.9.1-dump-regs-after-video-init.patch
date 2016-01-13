@@ -1,0 +1,89 @@
+--- xf86-video-sis-0.9.1/src/sis_driver.c.orig	2010-01-18 13:17:56.000000000 -0500
++++ xf86-video-sis-0.9.1/src/sis_driver.c	2010-01-25 16:35:40.000000000 -0500
+@@ -11677,7 +11677,64 @@ SISPMEvent(int scrnIndex, pmEvent event,
+   return 1;/*TRUE*/
+ }
+ 
++void
++sis_print_registers(SISPtr pSiS)
++{
++#define print(...)	xf86ErrorFVerb(1, __VA_ARGS__)
++    auto void print_range(char *name, int base, int first, int last) {
++	int		i, j;
++	unsigned char	c;
++	char		buffer[9];
++	print("%s:\n", name);
++	buffer[8] = 0;
++	for (i = first; i <= last; i++) {
++	    inSISIDXREG(base, i, c);
++	    for (j = 0; j < 8; j++)
++		buffer[7 - j] = c & (1 << j) ? '1' : '0';
++	    print("\t%02x: %02x:%s\n", i, c, buffer);
++	}
++    }
+ 
++    auto void print_range_int(char *name, int base, int first, int last) {
++	int		i, j;
++	unsigned int	l;
++	char		buffer[33];
++	print("%s:\n", name);
++	buffer[32] = 0;
++	for (i = first; i <= last; i += 4) {
++	    l = inSISREGL(base + i);
++	    for (j = 0; j < 32; j++)
++		buffer[31 - j] = l & (1 << j) ? '1' : '0';
++	    print("\t%02x: %08x:%s\n", i, l, buffer);
++	}
++    }
+ 
+-
+-
++    print_range_int	("PCI: CNF00 - CNF1B", pSiS->RelIO, 0x00, 0x1b);
++    print_range_int	("PCI: CNF2C - CNF47", pSiS->RelIO, 0x2C, 0x47);
++    print_range_int	("AGP: CNF50 - CNF5B", pSiS->RelIO, 0x50, 0x5B);
++    print_range		("CRT1: SR05 - SR12", SISSR, 0x05, 0x12);
++    print_range		("CRT1: SR13 - SR16 (reserved)", SISSR, 0x13, 0x16);
++    print		("CRT1: SR19 - SR1A (reserved)\n");
++    print_range		("CRT1: SR1B - SR3A", SISSR, 0x1b, 0x3a);
++    print		("CRT1: SR3B (reserved)\n");
++    print_range		("CRT1: SR3C - SR3F", SISSR, 0x3c, 0x3f);
++    print_range		("CRT1: CR19 - CR1A", SISCR, 0x19, 0x1a);
++    print		("CRT1: CR1B - CR27 (undocumented?)\n");
++    print_range		("CRT1: CR28 - CR2E", SISCR, 0x28, 0x2e);
++    print		("CRT1: CR2F (reserved)\n");
++    print_range		("VGA BIOS: CR30 - CR3F", SISCR, 0x30, 0x3f);
++    print_range		("CRT1: CR40 - CR43", SISCR, 0x40, 0x43);
++    print		("CRT1: CR44 - CR45 (reserved)\n");
++    print_range		("CRT1: CR46 - CR67", SISCR, 0x46, 0x67);
++    print		("CRT1: CR68 - CR6F (DRAM registers reserved for backward compatibility with 760)\n");
++    print		("CRT1: CR70 - CR77 (undocumented?)\n");
++    print_range		("SMA BIOS: CR78 - CR7F", SISCR, 0x78, 0x7f);
++    print_range_int	("CRT1: CR80 - CR9B", SISCR, 0x80, 0xb3);
++    print_range_int	("CRT1: CRC0 - CRF3", SISCR, 0xc0, 0xf3);
++    print_range		("CRT2: SIGNAL REGISTERS, PART1 00 - 45", SISPART1, 0x00, 0x45);
++    print_range		("CRT2: TV SIGNAL REGISTERS, PART2 00 - 4d", SISPART2, 0x00, 0x4d);
++    print_range		("CRT2: TV COPY PROTECTION, PART3 00 - 40", SISPART3, 0x00, 0x40);
++    print_range		("CRT2: SIGNAL REGISTERS, PART4 00 - 3A", SISPART4, 0x00, 0x3a);
++    print_range		("CRT2: PALETTE SIGNAL REGISTERS, PART5 00 - 00 (?)", SISPART5, 0x00, 0x00);
++#undef print
++}
+--- xf86-video-sis-0.9.1/src/sis_video.c.orig	2010-01-18 13:17:56.000000000 -0500
++++ xf86-video-sis-0.9.1/src/sis_video.c	2010-01-26 13:38:13.000000000 -0500
+@@ -129,6 +129,8 @@
+ 
+ #include "sis_video.h"
+ 
++extern void sis_print_registers(SISPtr pSiS);
++
+ void SiSInitMC(ScreenPtr pScreen);
+ 
+ /*********************************
+@@ -712,6 +714,8 @@ SISResetVideo(ScrnInfoPtr pScrn)
+ #ifdef SISMERGED
+     pPriv->mustresettap2 = TRUE;
+ #endif
++
++    sis_print_registers(pSiS);
+ }
+ 
+ 

@@ -1,0 +1,30 @@
+Index: xf86-video-sis-0.9.1/src/sis_driver.c
+===================================================================
+--- xf86-video-sis-0.9.1.orig/src/sis_driver.c
++++ xf86-video-sis-0.9.1/src/sis_driver.c
+@@ -85,7 +85,6 @@
+ #include "shadowfb.h"
+ #include "fb.h"
+ #include "micmap.h"
+-#include "mibank.h"
+ #include "mipointer.h"
+ #include "mibstore.h"
+ #include "edid.h"
+Index: xf86-video-sis-0.9.1/src/sis_mergedfb.c
+===================================================================
+--- xf86-video-sis-0.9.1.orig/src/sis_mergedfb.c
++++ xf86-video-sis-0.9.1/src/sis_mergedfb.c
+@@ -2948,11 +2948,11 @@ SiSXineramaExtensionInit(ScrnInfoPtr pSc
+ 
+        while(SiSXineramaGeneration != serverGeneration) {
+ 
+-	  ClientType = CreateNewResourceType(SiSXineramaFreeClient);
++	  ClientType = CreateNewResourceType(SiSXineramaFreeClient, "XineramaClient");
+ 	  if(!ClientType)
+ 	     break;
+ 
+-	  EventType = CreateNewResourceType(SiSXineramaFreeEvents);
++	  EventType = CreateNewResourceType(SiSXineramaFreeEvents, "XineramaEvents");
+ 	  if(!EventType)
+ 	     break;
+ 

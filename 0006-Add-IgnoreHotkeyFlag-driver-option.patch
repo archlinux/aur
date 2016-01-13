@@ -1,0 +1,89 @@
+From 072af02d180c1965f30246ea269d208292ed6f05 Mon Sep 17 00:00:00 2001
+From: root <root@greentea.conectiva>
+Date: Wed, 1 Jul 2009 14:13:52 -0400
+Subject: [PATCH] Add IgnoreHotkeyFlag driver option.
+
+Some BIOSes do not set the hotkey flag correctly. Without this option
+set, the driver won't change the mirroring state of LCD and VGA
+connections if the BIOS did not set this flag.
+---
+ src/sis.h        |    3 +++
+ src/sis_driver.c |    2 +-
+ src/sis_opt.c    |   13 ++++++++++++-
+ 3 files changed, 16 insertions(+), 2 deletions(-)
+
+diff --git a/src/sis.h b/src/sis.h
+index c50690b..c82c302 100644
+--- a/src/sis.h
++++ b/src/sis.h
+@@ -1565,6 +1565,9 @@ typedef struct {
+ 
+   /* Enable special 1366x768x60hz mode of LVDS panel. Ivans@090109 */
+     Bool  EnablePanel_1366x768;
++
++    /* Ignore hotkey flag on capability changed APM events */
++    Bool IgnoreHotkeyFlag;
+ 	
+ } SISRec, *SISPtr;
+ 
+diff --git a/src/sis_driver.c b/src/sis_driver.c
+index c935c11..2a5001c 100644
+--- a/src/sis_driver.c
++++ b/src/sis_driver.c
+@@ -11370,7 +11370,7 @@ SISPMEvent(int scrnIndex, pmEvent event, Bool undo)
+ 	                inSISIDXREG(SISCR,0x3d,hotkeyflag);/*check device switch flag from BIOS CR 0x3d bit[2].*/
+                         
+ 			
+-			if(hotkeyflag & 0x04)
++			if(pSiS->IgnoreHotkeyFlag || (hotkeyflag & 0x04))
+ 			{	
+ 						
+ 			SISCRT1PreInit(pScrn); /*redetecting CRT1, pSiS->CRT1detected will update.*/
+diff --git a/src/sis_opt.c b/src/sis_opt.c
+index 4b79f7f..7f726ea 100644
+--- a/src/sis_opt.c
++++ b/src/sis_opt.c
+@@ -159,7 +159,8 @@ typedef enum {
+     OPTION_PSEUDO,
+     OPTION_FUTRO_TIMING, /*chaoyu's modified: for Fuji-Siemans specail timing*/
+     OPTION_TRACEVGAMISCW,
+-    OPTION_USETIMING1366  /*option of enable 1366x768 timing for LVDS panel. Ivans@090109*/
++    OPTION_USETIMING1366,  /*option of enable 1366x768 timing for LVDS panel. Ivans@090109*/
++    OPTION_IGNOREHOTKEYFLAG
+ } SISOpts;
+ 
+ static const OptionInfoRec SISOptions[] = {
+@@ -305,6 +306,7 @@ static const OptionInfoRec SISOptions[] = {
+     { OPTION_FUTRO_TIMING,		"FutroTiming",			OPTV_BOOLEAN,   {0}, FALSE },/*chaoyu's modified: for Fuji-seimans special timing*/
+     { OPTION_TRACEVGAMISCW,             "TraceVgaMISCW",                OPTV_BOOLEAN,   {0}, FALSE },/*Ivans added for helping detected CRT1 using BIOS setting.*/
+     { OPTION_USETIMING1366,              "UseTiming1366",                  OPTV_BOOLEAN,   {0}, FALSE },/*enable 1366 timing on LVDS, Ivans@090109*/
++    { OPTION_IGNOREHOTKEYFLAG,		"IgnoreHotkeyFlag",		OPTV_BOOLEAN,	{0}, FALSE },
+     { -1,				NULL,				OPTV_NONE,	{0}, FALSE }
+ };
+ 
+@@ -624,6 +626,7 @@ SiSOptions(ScrnInfoPtr pScrn)
+     pSiS->CRT2IsScrn0 = FALSE;
+ #endif
+ #endif
++    pSiS->IgnoreHotkeyFlag = FALSE;
+   
+     /* Chipset dependent defaults */
+ 
+@@ -2419,6 +2422,14 @@ SiSOptions(ScrnInfoPtr pScrn)
+                 pSiS->EnablePanel_1366x768 = TRUE;		
+         }
+     }
++    /* Ignore hotkey flag for video switch, switch on every
++     * XF86_APM_CAPABILITY_CHANGED event */ 
++    if(xf86GetOptValBool(pSiS->Options, OPTION_IGNOREHOTKEYFLAG, &val)){
++        if(val){
++                xf86DrvMsg(pScrn->scrnIndex, X_INFO,"Ignoring hotkey flag\n");
++                pSiS->IgnoreHotkeyFlag = TRUE;		
++        }
++    }
+ 
+ }
+ 
+-- 
+1.5.4.3
+

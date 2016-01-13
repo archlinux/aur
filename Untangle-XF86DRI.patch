@@ -1,0 +1,186 @@
+diff -aur xf86-video-sis-0.9.1.pristine/configure.ac xf86-video-sis-0.9.1.new/configure.ac
+--- xf86-video-sis-0.9.1.pristine/configure.ac	2012-03-17 04:52:35.410417514 +1100
++++ xf86-video-sis-0.9.1.new/configure.ac	2012-03-17 04:55:05.949412228 +1100
+@@ -97,8 +97,8 @@
+ AM_CONDITIONAL(DRI, test x$DRI = xyes)
+ if test "$DRI" = yes; then
+         PKG_CHECK_MODULES(DRI, [libdrm >= 2.0 xf86driproto])
+-        AC_DEFINE(XF86DRI,1,[Enable DRI driver support])
+-        AC_DEFINE(XF86DRI_DEVEL,1,[Enable developmental DRI driver support])
++        AC_DEFINE(SISDRI,1,[Enable DRI driver support])
++        AC_DEFINE(SISDRI_DEVEL,1,[Enable developmental DRI driver support])
+ fi
+ 
+ # technically this should be a configure flag.  meh.
+diff -aur xf86-video-sis-0.9.1.pristine/src/sis_driver.c xf86-video-sis-0.9.1.new/src/sis_driver.c
+--- xf86-video-sis-0.9.1.pristine/src/sis_driver.c	2012-03-17 04:52:35.380417061 +1100
++++ xf86-video-sis-0.9.1.new/src/sis_driver.c	2012-03-17 04:57:54.118679619 +1100
+@@ -115,7 +115,7 @@
+ #endif
+ 
+ 
+-#ifdef XF86DRI
++#ifdef SISDRI
+ #include "dri.h"
+ #endif
+ 
+@@ -5779,7 +5779,7 @@
+     }
+ 
+     /* Load the dri and glx modules if requested. */
+-#ifdef XF86DRI
++#ifdef SISDRI
+     if(pSiS->loadDRI) {
+        if(!xf86LoaderCheckSymbol("DRIScreenInit")) {
+ 	  if(xf86LoadSubModule(pScrn, "dri")) {
+@@ -9469,7 +9469,7 @@
+ 
+     pSiS->cmdQueueLen = 0; /* Force an EngineIdle() at start */
+ 
+-#ifdef XF86DRI
++#ifdef SISDRI
+     if(pSiS->loadDRI) {
+ #ifdef SISDUALHEAD
+        /* No DRI in dual head mode */
+@@ -9802,7 +9802,7 @@
+ #endif
+ 
+    /* Finish DRI initialisation */
+-#ifdef XF86DRI
++#ifdef SISDRI
+     if(pSiS->loadDRI) {
+        if(pSiS->directRenderingEnabled) {
+           /* Now that mi, drm and others have done their thing,
+@@ -10359,7 +10359,7 @@
+     }
+ /* Mark for 3D full-screen bug */
+ /*
+-#ifdef XF86DRI    
++#ifdef SISDRI    
+     if(pSiS->directRenderingEnabled) {       
+ 	DRILock(screenInfo.screens[scrnIndex], DRM_LOCK_QUIESCENT);
+     }
+@@ -10388,7 +10388,7 @@
+ #endif
+ /* Mark for 3D full-screen bug */
+ /*
+-#ifdef XF86DRI
++#ifdef SISDRI
+     if(pSiS->directRenderingEnabled) {
+        DRIUnlock(screenInfo.screens[scrnIndex]);
+     }
+@@ -10601,7 +10601,7 @@
+ 
+ /* Mark for 3D full-screen bug */
+ /*
+-#ifdef XF86DRI
++#ifdef SISDRI
+     if(pSiS->directRenderingEnabled) {
+        DRIUnlock(screenInfo.screens[scrnIndex]);
+     }
+@@ -10629,7 +10629,7 @@
+ {
+     ScrnInfoPtr pScrn = xf86Screens[scrnIndex];
+     SISPtr pSiS = SISPTR(pScrn);
+-#ifdef XF86DRI
++#ifdef SISDRI
+     ScreenPtr pScreen;
+ 
+     if(pSiS->directRenderingEnabled) {
+@@ -10715,7 +10715,7 @@
+        SiSCtrlExtUnregister(pSiS, pScrn->scrnIndex);
+     }
+ 
+-#ifdef XF86DRI
++#ifdef SISDRI
+     if(pSiS->directRenderingEnabled) {
+        SISDRICloseScreen(pScreen);
+        pSiS->directRenderingEnabled = FALSE;
+diff -aur xf86-video-sis-0.9.1.pristine/src/sis.h xf86-video-sis-0.9.1.new/src/sis.h
+--- xf86-video-sis-0.9.1.pristine/src/sis.h	2012-03-17 04:52:35.357083354 +1100
++++ xf86-video-sis-0.9.1.new/src/sis.h	2012-03-17 04:56:36.814150836 +1100
+@@ -215,7 +215,13 @@
+ 
+ #undef SISHAVEDRMWRITE
+ #undef SISNEWDRI
+-#ifdef XF86DRI
++
++/* if the server was built without DRI support, force-disable DRI */
++#ifndef XF86DRI
++#undef SISDRI
++#endif
++
++#ifdef SISDRI
+ #if XF86_VERSION_CURRENT >= XF86_VERSION_NUMERIC(4,2,99,3,0)
+ #define SISHAVEDRMWRITE
+ #endif
+@@ -229,7 +235,7 @@
+ #include "dri.h"
+ #include "GL/glxint.h"
+ #include "sis_dri.h"
+-#endif /* XF86DRI */
++#endif /* SISDRI */
+ 
+ #include "sis_config.h"
+ 
+@@ -884,7 +890,7 @@
+     ScrnInfoPtr		pScrn_2;
+     UChar		*BIOS;
+     struct SiS_Private	*SiS_Pr;
+-#ifdef XF86DRI
++#ifdef SISDRI
+     SISAGPHTYPE		agpHandle;
+     ULong		agpAddr;
+     UChar		*agpBase;
+@@ -1291,7 +1297,7 @@
+     unsigned int	cmdQueueSize_div2;
+     unsigned int	cmdQueueSize_div4;
+     unsigned int	cmdQueueSize_4_3;
+-#ifdef XF86DRI
++#ifdef SISDRI
+     SISAGPHTYPE		agpHandle;
+     ULong		agpAddr;
+     UChar 		*agpBase;
+@@ -1351,7 +1357,7 @@
+     /* DRI */
+     Bool		loadDRI;
+     Bool		DRIEnabled;
+-#ifdef XF86DRI
++#ifdef SISDRI
+     Bool		directRenderingEnabled;
+     DRIInfoPtr 		pDRIInfo;
+     int			drmSubFD;
+diff -aur xf86-video-sis-0.9.1.pristine/src/sis_hwmc.c xf86-video-sis-0.9.1.new/src/sis_hwmc.c
+--- xf86-video-sis-0.9.1.pristine/src/sis_hwmc.c        2012-03-17 04:52:35.330416274 +1100
++++ xf86-video-sis-0.9.1.new/src/sis_hwmc.c     2012-03-17 05:22:17.014636372 +1100
+@@ -53,7 +53,9 @@
+ #include "regionstr.h"
+ 
+ #include "sis.h"
++#ifdef SISDRI
+ #include "sis_dri.h"
++#endif
+ 
+ #include "xf86xv.h"
+ #include "xf86xvmc.h"
+diff -aur xf86-video-sis-0.9.1/src/sis_opt.c xf86-video-sis-0.9.1.new/src/sis_opt.c
+--- xf86-video-sis-0.9.1/src/sis_opt.c	2012-03-17 07:36:12.285566154 +1100
++++ xf86-video-sis-0.9.1.new/src/sis_opt.c	2012-03-17 07:34:59.451106475 +1100
+@@ -494,7 +494,7 @@
+     pSiS->ShadowFB = FALSE;
+     pSiS->loadDRI = FALSE;
+     pSiS->DRIEnabled = FALSE;
+-#ifdef XF86DRI
++#ifdef SISDRI
+     pSiS->agpWantedPages = AGP_PAGES;
+ #endif
+     pSiS->VESA = -1;
+@@ -2160,7 +2160,7 @@
+     }
+ 
+ 
+-#ifdef XF86DRI
++#ifdef SISDRI
+     /* DRI */
+     from = X_DEFAULT;
+     if(xf86GetOptValBool(pSiS->Options, OPTION_DRI, &pSiS->loadDRI)) {

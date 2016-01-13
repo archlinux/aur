@@ -1,0 +1,38 @@
+From 933dd8f860883c613acb5bcdf6b66100dbdfa952 Mon Sep 17 00:00:00 2001
+From: Alan Coopersmith <alan.coopersmith@sun.com>
+Date: Fri, 1 May 2009 16:57:22 -0700
+Subject: [PATCH 05/10] Correct bounds check of blitClip array access
+
+Array is defined as blitClip[NUM_BLIT_PORTS], so invalid indexes
+are >= NUM_BLIT_PORTS, not just > NUM_BLIT_PORTS
+
+[This bug was found by the Parfait bug checking tool.
+ For more information see http://research.sun.com/projects/parfait ]
+
+Signed-off-by: Alan Coopersmith <alan.coopersmith@sun.com>
+---
+ src/sis_video.c |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+Index: xf86-video-sis-0.9.1/src/sis_video.c
+===================================================================
+--- xf86-video-sis-0.9.1.orig/src/sis_video.c
++++ xf86-video-sis-0.9.1/src/sis_video.c
+@@ -4656,7 +4656,7 @@ SISStopVideoBlit(ScrnInfoPtr pScrn, ULon
+     * adapt->flags but we provide it anyway.
+     */
+ 
+-   if(index > NUM_BLIT_PORTS) return;
++   if(index >= NUM_BLIT_PORTS) return;
+ 
+    REGION_EMPTY(pScrn->pScreen, &pPriv->blitClip[index]);
+ 
+@@ -4698,7 +4698,7 @@ SISPutImageBlit_671(
+    int	  xoffset = 0, yoffset = 0;
+    Bool   first;
+ 
+-   if(index > NUM_BLIT_PORTS)
++   if(index >= NUM_BLIT_PORTS)
+       return BadMatch;
+ 
+    if(!height || !width)

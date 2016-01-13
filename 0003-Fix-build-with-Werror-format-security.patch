@@ -1,0 +1,65 @@
+From 9b010b7db7f0c6730c1a1b3cd473d49b01ed5b5f Mon Sep 17 00:00:00 2001
+From: Ander Conselvan de Oliveira <ander@mandriva.com.br>
+Date: Mon, 22 Jun 2009 16:07:26 -0400
+Subject: [PATCH] Fix build with -Werror=format-security
+
+---
+ src/sis_driver.c   |    4 ++--
+ src/sis_mergedfb.c |    6 +++---
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/sis_driver.c b/src/sis_driver.c
+index 5b91004..0a154db 100644
+--- a/src/sis_driver.c
++++ b/src/sis_driver.c
+@@ -831,14 +831,14 @@ SISErrorLog(ScrnInfoPtr pScrn, const char *format, ...)
+     static const char *str = "**************************************************\n";
+ 
+     va_start(ap, format);
+-    xf86DrvMsg(pScrn->scrnIndex, X_ERROR, str);
++    xf86DrvMsg(pScrn->scrnIndex, X_ERROR, "%s", str);
+     xf86DrvMsg(pScrn->scrnIndex, X_ERROR,
+ 	"                      ERROR:\n");
+     xf86VDrvMsgVerb(pScrn->scrnIndex, X_ERROR, 1, format, ap);
+     va_end(ap);
+     xf86DrvMsg(pScrn->scrnIndex, X_ERROR,
+ 	"                  END OF MESSAGE\n");
+-    xf86DrvMsg(pScrn->scrnIndex, X_ERROR, str);
++    xf86DrvMsg(pScrn->scrnIndex, X_ERROR, "%s", str);
+ }
+ 
+ static void
+diff --git a/src/sis_mergedfb.c b/src/sis_mergedfb.c
+index 61b4255..feca024 100644
+--- a/src/sis_mergedfb.c
++++ b/src/sis_mergedfb.c
+@@ -357,7 +357,7 @@ SiSCopyModeNLink(ScrnInfoPtr pScrn, DisplayModePtr dest,
+ 
+        strcat(printbuffer, namebuf1);
+ 
+-       xf86DrvMsg(pScrn->scrnIndex, X_INFO, printbuffer);
++       xf86DrvMsg(pScrn->scrnIndex, X_INFO, "%s", printbuffer);
+     }
+ 
+     mode->next = mode;
+@@ -2137,7 +2137,7 @@ SiSUpdateXineramaScreenInfo(ScrnInfoPtr pScrn1)
+        if(infochanged && !usenonrect) {
+ 	  xf86DrvMsgVerb(pScrn1->scrnIndex, X_INFO, pSiS->XineVerb,
+ 			"Current screen size does not match maximum display modes...\n");
+-	  xf86DrvMsgVerb(pScrn1->scrnIndex, X_INFO, pSiS->XineVerb, rectxine);
++	  xf86DrvMsgVerb(pScrn1->scrnIndex, X_INFO, pSiS->XineVerb, "%s", rectxine);
+        }
+ 
+     } else if(infochanged && usenonrect) {
+@@ -2145,7 +2145,7 @@ SiSUpdateXineramaScreenInfo(ScrnInfoPtr pScrn1)
+        usenonrect = FALSE;
+        xf86DrvMsgVerb(pScrn1->scrnIndex, X_INFO, pSiS->XineVerb,
+ 		"Only clone modes available for this screen size...\n");
+-       xf86DrvMsgVerb(pScrn1->scrnIndex, X_INFO, pSiS->XineVerb, rectxine);
++       xf86DrvMsgVerb(pScrn1->scrnIndex, X_INFO, pSiS->XineVerb, "%s", rectxine);
+ 
+     }
+ 
+-- 
+1.6.2.4
+

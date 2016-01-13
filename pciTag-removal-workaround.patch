@@ -1,0 +1,39 @@
+diff -aur xf86-video-sis-0.9.1.pristine/src/sispcirename.h xf86-video-sis-0.9.1.new/src/sispcirename.h
+--- xf86-video-sis-0.9.1.pristine/src/sispcirename.h	2012-03-17 04:45:58.280942665 +1100
++++ xf86-video-sis-0.9.1.new/src/sispcirename.h	2012-03-17 04:48:28.539933065 +1100
+@@ -29,11 +29,35 @@
+ #ifndef SISPCIRENAME_H
+ #define SISPCIRENAME_H
+ 
++#include <stdint.h>
++
+ enum region_type {
+     REGION_MEM,
+     REGION_IO 
+ };
+ 
++#if (defined(__alpha__) || defined(__ia64__)) && defined (linux)
++#define PCI_DOM_MASK 0x01fful
++#else
++#define PCI_DOM_MASK 0x0ffu
++#endif
++
++#ifndef PCI_DOM_MASK
++# define PCI_DOM_MASK 0x0ffu
++#endif
++#define PCI_DOMBUS_MASK (((PCI_DOM_MASK) << 8) | 0x0ffu)
++
++static inline uint32_t
++pciTag(int busnum, int devnum, int funcnum)
++{
++ uint32_t tag;
++ tag = (busnum & (PCI_DOMBUS_MASK)) << 16;
++ tag |= (devnum & 0x00001fu) << 11;
++ tag |= (funcnum & 0x000007u) << 8;
++
++ return tag;
++}
++
+ #ifndef XSERVER_LIBPCIACCESS
+ 
+ /* pciVideoPtr */

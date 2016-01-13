@@ -1,0 +1,205 @@
+diff -aur xf86-video-sis-0.9.1.pristine/configure.ac xf86-video-sis-0.9.1.new/configure.ac
+--- xf86-video-sis-0.9.1.pristine/configure.ac	2012-03-17 08:23:42.346308237 +1100
++++ xf86-video-sis-0.9.1.new/configure.ac	2012-03-17 08:40:04.821501949 +1100
+@@ -20,20 +20,26 @@
+ #
+ # Process this file with autoconf to produce a configure script
+ 
+-AC_PREREQ(2.57)
++# Initialize Autoconf
++AC_PREREQ(2.60)
+ AC_INIT([xf86-video-sis],
+         0.9.1,
+         [https://bugs.freedesktop.org/enter_bug.cgi?product=xorg],
+         xf86-video-sis)
+-
+ AC_CONFIG_SRCDIR([Makefile.am])
+ AM_CONFIG_HEADER([config.h])
+ AC_CONFIG_AUX_DIR(.)
+ 
++# Initialize Automake
+ AM_INIT_AUTOMAKE([dist-bzip2])
+-
+ AM_MAINTAINER_MODE
+ 
++# Require X.Org macros 1.8 or later for MAN_SUBSTS set by XORG_MANPAGE_SECTIONS
++m4_ifndef([XORG_MACROS_VERSION],
++          [m4_fatal([must install xorg-macros 1.8 or later before running autoconf/autogen])])
++XORG_MACROS_VERSION(1.8)
++XORG_DEFAULT_OPTIONS
++
+ # Checks for programs.
+ AC_DISABLE_STATIC
+ AC_PROG_LIBTOOL
+@@ -66,7 +72,7 @@
+                   HAVE_XEXTPROTO_71="yes"; AC_DEFINE(HAVE_XEXTPROTO_71, 1, [xextproto 7.1 available]),
+                   HAVE_XEXTPROTO_71="no")
+ AM_CONDITIONAL(HAVE_XEXTPROTO_71, [ test "$HAVE_XEXTPROTO_71" = "yes" ])
+-sdkdir=$(pkg-config --variable=sdkdir xorg-server)
++sdkdir=`$PKG_CONFIG --variable=sdkdir xorg-server`
+ 
+ # Checks for libraries.
+ 
+@@ -104,6 +110,19 @@
+ # technically this should be a configure flag.  meh.
+ AC_DEFINE(XF86EXA, 1, [Build support for Exa])
+ 
++SAVE_CPPFLAGS="$CPPFLAGS"
++CPPFLAGS="$CPPFLAGS $XORG_CFLAGS"
++AC_CHECK_DECL(XSERVER_LIBPCIACCESS,
++              [XSERVER_LIBPCIACCESS=yes],[XSERVER_LIBPCIACCESS=no],
++              [#include "xorg-server.h"])
++CPPFLAGS="$SAVE_CPPFLAGS"
++
++if test "x$XSERVER_LIBPCIACCESS" = xyes; then
++    PKG_CHECK_MODULES([PCIACCESS], [pciaccess >= 0.12.901])
++    XORG_CFLAGS="$XORG_CFLAGS $PCIACCESS_CFLAGS"
++fi
++AM_CONDITIONAL(XSERVER_LIBPCIACCESS, test "x$XSERVER_LIBPCIACCESS" = xyes)
++
+ AC_SUBST([DRI_CFLAGS])
+ AC_SUBST([XORG_CFLAGS])
+ AC_SUBST([moduledir])
+diff -aur xf86-video-sis-0.9.1.pristine/src/sis_vga.c xf86-video-sis-0.9.1.new/src/sis_vga.c
+--- xf86-video-sis-0.9.1.pristine/src/sis_vga.c	2012-03-17 08:23:42.329641291 +1100
++++ xf86-video-sis-0.9.1.new/src/sis_vga.c	2012-03-17 08:28:25.020679715 +1100
+@@ -1740,8 +1740,8 @@
+ 
+ #if XF86_VERSION_CURRENT >= XF86_VERSION_NUMERIC(4,3,0,0,0)
+ #if XSERVER_LIBPCIACCESS
+-    pSiS->VGAMemBase = xf86MapDomainMemory(pScrn->scrnIndex, VIDMEM_MMIO_32BIT,
+-			pSiS->PciInfo, pSiS->VGAMapPhys, pSiS->VGAMapSize);
++    (void) pci_device_map_legacy(pSiS->PciInfo, pSiS->VGAMapPhys, pSiS->VGAMapSize,
++                                 PCI_DEV_MAP_FLAG_WRITABLE, &pSiS->VGAMemBase);
+ #else
+     pSiS->VGAMemBase = xf86MapDomainMemory(pScrn->scrnIndex, VIDMEM_MMIO_32BIT,
+ 			pSiS->PciTag, pSiS->VGAMapPhys, pSiS->VGAMapSize);
+@@ -1761,7 +1761,12 @@
+ 
+     if(pSiS->VGAMemBase == NULL) return;
+ 
++#if XSERVER_LIBPCIACCESS
++    (void) pci_device_unmap_legacy(pSiS->PciInfo, pSiS->VGAMemBase, pSiS->VGAMapSize);
++#else
+     xf86UnMapVidMem(pScrn->scrnIndex, pSiS->VGAMemBase, pSiS->VGAMapSize);
++#endif
++
+     pSiS->VGAMemBase = NULL;
+ }
+ #endif
+diff -daur xf86-video-sis-0.9.1.pristine/src/sis_driver.c xf86-video-sis-0.9.1.new/src/sis_driver.c
+--- xf86-video-sis-0.9.1.pristine/src/sis_driver.c	2012-03-17 08:23:42.336308093 +1100
++++ xf86-video-sis-0.9.1.new/src/sis_driver.c	2012-03-17 09:35:33.766316476 +1100
+@@ -6014,7 +6014,11 @@
+         if(pSiSEnt->MapCountIOPBase) {
+ 	    pSiSEnt->MapCountIOPBase--;
+ 	    if((pSiSEnt->MapCountIOPBase == 0) || (pSiSEnt->forceUnmapIOPBase)) {
+-		xf86UnMapVidMem(pScrn->scrnIndex, (pointer)pSiSEnt->IOPBase, 2048);
++#if XSERVER_LIBPCIACCESS
++                (void) pci_device_unmap_legacy(pSiS->PciInfo, (pointer)pSiSEnt->IOPBase, 2048);
++#else
++                xf86UnMapVidMem(pScrn->scrnIndex, (pointer)pSiSEnt->IOPBase, 2048);
++#endif
+ 		pSiSEnt->IOPBase = NULL;
+ 		pSiSEnt->MapCountIOPBase = 0;
+ 		pSiSEnt->forceUnmapIOPBase = FALSE;
+@@ -6023,7 +6027,11 @@
+ 	}
+     } else {
+ #endif
++#if XSERVER_LIBPCIACCESS
++        (void) pci_device_unmap_legacy(pSiS->PciInfo, (pointer)pSiS->IOPBase, 2048);
++#else
+ 	xf86UnMapVidMem(pScrn->scrnIndex, (pointer)pSiS->IOPBase, 2048);
++#endif
+ 	pSiS->IOPBase = NULL;
+ #ifdef SISDUALHEAD
+     }
+@@ -6248,7 +6256,11 @@
+         if(pSiSEnt->MapCountIOBase) {
+ 	    pSiSEnt->MapCountIOBase--;
+ 	    if((pSiSEnt->MapCountIOBase == 0) || (pSiSEnt->forceUnmapIOBase)) {
++#if XSERVER_LIBPCIACCESS
++                (void) pci_device_unmap_legacy(pSiS->PciInfo, (pointer)pSiSEnt->IOBase, (pSiS->mmioSize * 1024));
++#else
+ 		xf86UnMapVidMem(pScrn->scrnIndex, (pointer)pSiSEnt->IOBase, (pSiS->mmioSize * 1024));
++#endif
+ 		pSiSEnt->IOBase = NULL;
+ 		pSiSEnt->MapCountIOBase = 0;
+ 		pSiSEnt->forceUnmapIOBase = FALSE;
+@@ -6259,7 +6271,11 @@
+ 	if(pSiSEnt->MapCountIOBaseDense) {
+ 	    pSiSEnt->MapCountIOBaseDense--;
+ 	    if((pSiSEnt->MapCountIOBaseDense == 0) || (pSiSEnt->forceUnmapIOBaseDense)) {
++#if XSERVER_LIBPCIACCESS
++                (void) pci_device_unmap_legacy(pSiS->PciInfo, (pointer)pSiSEnt->IOBaseDense, (pSiS->mmioSize * 1024));
++#else
+ 		xf86UnMapVidMem(pScrn->scrnIndex, (pointer)pSiSEnt->IOBaseDense, (pSiS->mmioSize * 1024));
++#endif
+ 		pSiSEnt->IOBaseDense = NULL;
+ 		pSiSEnt->MapCountIOBaseDense = 0;
+ 		pSiSEnt->forceUnmapIOBaseDense = FALSE;
+@@ -6270,7 +6286,11 @@
+ 	if(pSiSEnt->MapCountFbBase) {
+ 	    pSiSEnt->MapCountFbBase--;
+ 	    if((pSiSEnt->MapCountFbBase == 0) || (pSiSEnt->forceUnmapFbBase)) {
++#if XSERVER_LIBPCIACCESS
++                (void) pci_device_unmap_legacy(pSiS->PciInfo, (pointer)pSiSEnt->RealFbBase, pSiS->FbMapSize);
++#else
+ 		xf86UnMapVidMem(pScrn->scrnIndex, (pointer)pSiSEnt->RealFbBase, pSiS->FbMapSize);
++#endif
+ 		pSiSEnt->FbBase = pSiSEnt->RealFbBase = NULL;
+ 		pSiSEnt->MapCountFbBase = 0;
+ 		pSiSEnt->forceUnmapFbBase = FALSE;
+@@ -6280,13 +6300,25 @@
+ 	}
+     } else {
+ #endif
++#if XSERVER_LIBPCIACCESS
++        (void) pci_device_unmap_legacy(pSiS->PciInfo, (pointer)pSiS->IOBase, (pSiS->mmioSize * 1024));
++#else
+ 	xf86UnMapVidMem(pScrn->scrnIndex, (pointer)pSiS->IOBase, (pSiS->mmioSize * 1024));
++#endif
+ 	pSiS->IOBase = NULL;
+ #ifdef __alpha__
++#if XSERVER_LIBPCIACCESS
++        (void) pci_device_unmap_legacy(pSiS->PciInfo, (pointer)pSiS->IOBaseDense, (pSiS->mmioSize * 1024));
++#else
+ 	xf86UnMapVidMem(pScrn->scrnIndex, (pointer)pSiS->IOBaseDense, (pSiS->mmioSize * 1024));
++#endif
+ 	pSiS->IOBaseDense = NULL;
+ #endif
++#if XSERVER_LIBPCIACCESS
++        (void) pci_device_unmap_legacy(pSiS->PciInfo, (pointer)pSiS->RealFbBase, pSiS->FbMapSize);
++#else
+ 	xf86UnMapVidMem(pScrn->scrnIndex, (pointer)pSiS->RealFbBase, pSiS->FbMapSize);
++#endif
+ 	pSiS->FbBase = pSiS->RealFbBase = NULL;
+ #ifdef SISDUALHEAD
+     }
+@@ -10940,7 +10972,13 @@
+ 
+ #ifdef SIS_USE_BIOS_SCRATCH
+     if(SISPTR(pScrn)->Primary) {
++
++#if XSERVER_LIBPCIACCESS
++       (void) pci_device_map_legacy(SISPTR(pScrn)->PciInfo, 0, 0x2000, 1, &base); // HA HA HA MAGIC NUMBER
++#else
+        base = xf86MapVidMem(pScrn->scrnIndex, VIDMEM_MMIO, 0, 0x2000);
++#endif
++
+        if(!base) {
+           SISErrorLog(pScrn, "(Could not map BIOS scratch area)\n");
+           return ret;
+@@ -10953,7 +10991,11 @@
+           *(base + offset) = value;
+        }
+ 
++#if XSERVER_LIBPCIACCESS
++       (void) pci_device_unmap_legacy(SISPTR(pScrn)->PciInfo, base, 0x2000);
++#else
+        xf86UnMapVidMem(pScrn->scrnIndex, base, 0x2000);
++#endif
+     }
+ #endif
+     return ret;

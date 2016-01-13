@@ -1,0 +1,12 @@
+diff -aur xf86-video-sis-0.9.1.pristine/src/sis_driver.c xf86-video-sis-0.9.1.new/src/sis_driver.c
+--- xf86-video-sis-0.9.1.pristine/src/sis_driver.c      2012-03-17 03:06:21.148507957 +1100
++++ xf86-video-sis-0.9.1.new/src/sis_driver.c   2012-03-17 03:18:57.373535928 +1100
+@@ -3278,7 +3278,7 @@
+     pSiS->pInt = NULL;
+ 
+     /* Save PCI Domain Base */
+-#if XF86_VERSION_CURRENT < XF86_VERSION_NUMERIC(4,2,99,0,0)
++#if XF86_VERSION_CURRENT < XF86_VERSION_NUMERIC(4,2,99,0,0) || GET_ABI_MAJOR(ABI_VIDEODRV_VERSION) >= 12
+     pSiS->IODBase = 0;
+ #else
+     pSiS->IODBase = pScrn->domainIOBase;

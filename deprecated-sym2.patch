@@ -1,0 +1,1068 @@
+This patch for remove all depreceated / obselete symbol on compiling
+Contributor saa7_go < saa7.go@gmail.com > 
+
+diff -u xf86-video-sismedia-0.9.1/src/initextx.c xf86-video-sismedia-0.9.1-dep-clean/src/initextx.c
+--- xf86-video-sismedia-0.9.1/src/initextx.c	2011-03-06 11:27:56.368767584 +0700
++++ xf86-video-sismedia-0.9.1-dep-clean/src/initextx.c	2011-03-06 11:34:50.298266877 +0700
+@@ -284,10 +284,10 @@
+ 	}
+       }
+ 
+-      if(!(new = xalloc(sizeof(DisplayModeRec)))) return first;
++      if(!(new = malloc(sizeof(DisplayModeRec)))) return first;
+       memset(new, 0, sizeof(DisplayModeRec));
+-      if(!(new->name = xalloc(10))) {
+-	 xfree(new);
++      if(!(new->name = malloc(10))) {
++	 free(new);
+ 	 return first;
+       }
+       if(!first) first = new;
+@@ -436,11 +436,11 @@
+ 		     }
+ 		  }
+ 
+-		  if(!(new = xalloc(sizeof(DisplayModeRec)))) return first;
++		  if(!(new = malloc(sizeof(DisplayModeRec)))) return first;
+ 
+ 		  memset(new, 0, sizeof(DisplayModeRec));
+-		  if(!(new->name = xalloc(12))) {
+-		     xfree(new);
++		  if(!(new->name = malloc(12))) {
++		     free(new);
+ 		     return first;
+ 		  }
+ 		  if(!first) first = new;
+@@ -521,11 +521,11 @@
+ 
+ 	 if(pSiS->SiS_Pr->CP_DataValid[i]) {
+ 
+-	    if(!(new = xalloc(sizeof(DisplayModeRec)))) return first;
++	    if(!(new = malloc(sizeof(DisplayModeRec)))) return first;
+ 
+ 	    memset(new, 0, sizeof(DisplayModeRec));
+-	    if(!(new->name = xalloc(10))) {
+-	       xfree(new);
++	    if(!(new->name = malloc(10))) {
++	       free(new);
+ 	       return first;
+ 	    }
+ 	    if(!first) first = new;
+diff -u xf86-video-sismedia-0.9.1/src/sis6326_video.c xf86-video-sismedia-0.9.1-dep-clean/src/sis6326_video.c
+--- xf86-video-sismedia-0.9.1/src/sis6326_video.c	2011-03-06 11:27:56.376768671 +0700
++++ xf86-video-sismedia-0.9.1-dep-clean/src/sis6326_video.c	2011-03-06 12:24:06.324251591 +0700
+@@ -171,7 +171,7 @@
+ 		adaptors = &newAdaptor;
+ 	} else {
+ 		/* need to free this someplace */
+-		newAdaptors = xalloc((num_adaptors + 1) * sizeof(XF86VideoAdaptorPtr*));
++		newAdaptors = malloc((num_adaptors + 1) * sizeof(XF86VideoAdaptorPtr*));
+ 		if(newAdaptors) {
+ 			memcpy(newAdaptors, adaptors, num_adaptors *
+ 				sizeof(XF86VideoAdaptorPtr));
+@@ -186,7 +186,7 @@
+ 	xf86XVScreenInit(pScreen, adaptors, num_adaptors);
+ 
+     if(newAdaptors)
+-	xfree(newAdaptors);
++	free(newAdaptors);
+ }
+ 
+ /* client libraries expect an encoding */
+@@ -532,7 +532,7 @@
+        return NULL;
+ #endif
+ 
+-    if(!(adapt = xcalloc(1, sizeof(XF86VideoAdaptorRec) +
++    if(!(adapt = calloc(1, sizeof(XF86VideoAdaptorRec) +
+                             sizeof(SISPortPrivRec) +
+                             sizeof(DevUnion))))
+        return NULL;
+diff -u xf86-video-sismedia-0.9.1/src/sis_cursor.c xf86-video-sismedia-0.9.1-dep-clean/src/sis_cursor.c
+--- xf86-video-sismedia-0.9.1/src/sis_cursor.c	2011-03-06 11:27:56.376768671 +0700
++++ xf86-video-sismedia-0.9.1-dep-clean/src/sis_cursor.c	2011-03-06 12:24:06.400262694 +0700
+@@ -1253,11 +1253,11 @@
+     SISPtr pSiS = SISPTR(pScrn);
+     xf86CursorInfoPtr infoPtr;
+ 
+-    if(!(pSiS->CursorScratch = xcalloc(1, max(2048, pSiS->CursorSize))))
++    if(!(pSiS->CursorScratch = calloc(1, max(2048, pSiS->CursorSize))))
+        return FALSE;
+ 
+     if(!(infoPtr = xf86CreateCursorInfoRec())) {
+-       xfree(pSiS->CursorScratch);
++       free(pSiS->CursorScratch);
+        pSiS->CursorScratch = NULL;
+        return FALSE;
+     }
+diff -u xf86-video-sismedia-0.9.1/src/sis_dga.c xf86-video-sismedia-0.9.1-dep-clean/src/sis_dga.c
+--- xf86-video-sismedia-0.9.1/src/sis_dga.c	2011-03-06 11:27:56.380769214 +0700
++++ xf86-video-sismedia-0.9.1-dep-clean/src/sis_dga.c	2011-03-06 11:34:50.458289501 +0700
+@@ -156,18 +156,18 @@
+ 
+ 	if(pMode->HDisplay != otherPitch) {
+ 
+-	    newmodes = xrealloc(modes, (*num + 2) * sizeof(DGAModeRec));
++	    newmodes = realloc(modes, (*num + 2) * sizeof(DGAModeRec));
+ 	    oneMore  = TRUE;
+ 
+ 	} else {
+ 
+-	    newmodes = xrealloc(modes, (*num + 1) * sizeof(DGAModeRec));
++	    newmodes = realloc(modes, (*num + 1) * sizeof(DGAModeRec));
+ 	    oneMore  = FALSE;
+ 
+ 	}
+ 
+ 	if(!newmodes) {
+-	    xfree(modes);
++	    free(modes);
+ 	    return NULL;
+ 	}
+ 	modes = newmodes;
+@@ -353,12 +353,12 @@
+     newdgamodes = SISDGAMakeModes(pScrn, &newdgamodenum, TRUE);
+ 
+     if(DGAReInitModes(screenInfo.screens[pScrn->scrnIndex], newdgamodes, newdgamodenum)) {
+-       xfree(pSiS->DGAModes);
++       free(pSiS->DGAModes);
+        pSiS->DGAModes = newdgamodes;
+        pSiS->numDGAModes = newdgamodenum;
+        return TRUE;
+     } else {
+-       xfree(newdgamodes);
++       free(newdgamodes);
+        return FALSE;
+     }
+ #else
+diff -u xf86-video-sismedia-0.9.1/src/sis_dri.c xf86-video-sismedia-0.9.1-dep-clean/src/sis_dri.c
+--- xf86-video-sismedia-0.9.1/src/sis_dri.c	2011-03-06 11:27:56.380769214 +0700
++++ xf86-video-sismedia-0.9.1-dep-clean/src/sis_dri.c	2011-03-06 12:24:06.456270873 +0700
+@@ -156,19 +156,19 @@
+   case 32:
+     numConfigs = (useZ16) ? 8 : 16;
+ 
+-    if(!(pConfigs = (__GLXvisualConfig*)xcalloc(sizeof(__GLXvisualConfig),
++    if(!(pConfigs = (__GLXvisualConfig*)calloc(sizeof(__GLXvisualConfig),
+ 						   numConfigs))) {
+        return FALSE;
+     }
+-    if(!(pSISConfigs = (SISConfigPrivPtr)xcalloc(sizeof(SISConfigPrivRec),
++    if(!(pSISConfigs = (SISConfigPrivPtr)calloc(sizeof(SISConfigPrivRec),
+ 						    numConfigs))) {
+-       xfree(pConfigs);
++       free(pConfigs);
+        return FALSE;
+     }
+-    if(!(pSISConfigPtrs = (SISConfigPrivPtr*)xcalloc(sizeof(SISConfigPrivPtr),
++    if(!(pSISConfigPtrs = (SISConfigPrivPtr*)calloc(sizeof(SISConfigPrivPtr),
+ 							  numConfigs))) {
+-       xfree(pConfigs);
+-       xfree(pSISConfigs);
++       free(pConfigs);
++       free(pSISConfigs);
+        return FALSE;
+     }
+     for(i=0; i<numConfigs; i++) pSISConfigPtrs[i] = &pSISConfigs[i];
+@@ -330,7 +330,7 @@
+      pDRIInfo->busIdString = DRICreatePCIBusID(pSIS->PciInfo);
+   } else {
+ #endif
+-     pDRIInfo->busIdString = xalloc(64);
++     pDRIInfo->busIdString = malloc(64);
+      sprintf(pDRIInfo->busIdString, "PCI:%d:%d:%d",
+ 	     pSIS->PciBus, pSIS->PciDevice, pSIS->PciFunc);
+ #ifdef SISHAVECREATEBUSID
+@@ -389,7 +389,7 @@
+   pDRIInfo->SAREASize = SAREA_MAX;
+ #endif
+ 
+-  if(!(pSISDRI = (SISDRIPtr)xcalloc(sizeof(SISDRIRec), 1))) {
++  if(!(pSISDRI = (SISDRIPtr)calloc(sizeof(SISDRIRec), 1))) {
+      DRIDestroyInfoRec(pSIS->pDRIInfo);
+      pSIS->pDRIInfo = 0;
+      return FALSE;
+@@ -407,7 +407,7 @@
+ 
+   if(!DRIScreenInit(pScreen, pDRIInfo, &pSIS->drmSubFD)) {
+      xf86DrvMsg(pScreen->myNum, X_ERROR, "[dri] DRIScreenInit failed. Disabling the DRI.\n");
+-     xfree(pDRIInfo->devPrivate);
++     free(pDRIInfo->devPrivate);
+      pDRIInfo->devPrivate = 0;
+      DRIDestroyInfoRec(pSIS->pDRIInfo);
+      pSIS->pDRIInfo = 0;
+@@ -867,7 +867,7 @@
+ 
+   if(pSIS->pDRIInfo) {
+      if(pSIS->pDRIInfo->devPrivate) {
+-	xfree(pSIS->pDRIInfo->devPrivate);
++	free(pSIS->pDRIInfo->devPrivate);
+ 	pSIS->pDRIInfo->devPrivate = NULL;
+      }
+      DRIDestroyInfoRec(pSIS->pDRIInfo);
+@@ -875,12 +875,12 @@
+   }
+ 
+   if(pSIS->pVisualConfigs) {
+-     xfree(pSIS->pVisualConfigs);
++     free(pSIS->pVisualConfigs);
+      pSIS->pVisualConfigs = NULL;
+   }
+ 
+   if(pSIS->pVisualConfigsPriv) {
+-     xfree(pSIS->pVisualConfigsPriv);
++     free(pSIS->pVisualConfigsPriv);
+      pSIS->pVisualConfigsPriv = NULL;
+   }
+ 
+diff -u xf86-video-sismedia-0.9.1/src/sis_driver.c xf86-video-sismedia-0.9.1-dep-clean/src/sis_driver.c
+--- xf86-video-sismedia-0.9.1/src/sis_driver.c	2011-03-06 11:27:56.384769757 +0700
++++ xf86-video-sismedia-0.9.1-dep-clean/src/sis_driver.c	2011-03-06 12:24:06.512279052 +0700
+@@ -497,7 +497,7 @@
+ 			numDevSections, drv, &usedChipsXGI);
+ 
+     /* Free it since we don't need that list after this */
+-    xfree(devSections);
++    free(devSections);
+ 
+     numUsed = numUsedSiS + numUsedXGI;
+ xf86DrvMsg(0, X_INFO, "SISPRobe - test1\n");
+@@ -595,8 +595,8 @@
+ 
+     }
+ 
+-    if(usedChipsSiS) xfree(usedChipsSiS);
+-    if(usedChipsXGI) xfree(usedChipsXGI);
++    if(usedChipsSiS) free(usedChipsSiS);
++    if(usedChipsXGI) free(usedChipsXGI);
+ xf86DrvMsg(0, X_INFO, "SISProbe end\n");
+     return foundScreen;
+ }
+@@ -642,12 +642,12 @@
+ #endif
+ 
+     if(pSiS->pstate) {
+-       xfree(pSiS->pstate);
++       free(pSiS->pstate);
+        pSiS->pstate = NULL;
+     }
+ 
+     if(pSiS->fonts) {
+-       xfree(pSiS->fonts);
++       free(pSiS->fonts);
+        pSiS->fonts = NULL;
+     }
+ 
+@@ -660,15 +660,15 @@
+ 	   * head.
+ 	   */
+ 	  if(pSiSEnt->BIOS)
+-	     xfree(pSiSEnt->BIOS);
++	     free(pSiSEnt->BIOS);
+ 	  pSiSEnt->BIOS = pSiS->BIOS = NULL;
+ 
+ 	  if(pSiSEnt->SiS_Pr)
+-	     xfree(pSiSEnt->SiS_Pr);
++	     free(pSiSEnt->SiS_Pr);
+ 	  pSiSEnt->SiS_Pr = pSiS->SiS_Pr = NULL;
+ 
+ 	  if(pSiSEnt->RenderAccelArray)
+-	     xfree(pSiSEnt->RenderAccelArray);
++	     free(pSiSEnt->RenderAccelArray);
+ 	  pSiSEnt->RenderAccelArray = pSiS->RenderAccelArray = NULL;
+ 
+ 	  pSiSEnt->pScrn_1 = NULL;
+@@ -681,17 +681,17 @@
+     } else {
+ #endif
+        if(pSiS->BIOS) {
+-          xfree(pSiS->BIOS);
++          free(pSiS->BIOS);
+           pSiS->BIOS = NULL;
+        }
+ 
+        if(pSiS->SiS_Pr) {
+-          xfree(pSiS->SiS_Pr);
++          free(pSiS->SiS_Pr);
+           pSiS->SiS_Pr = NULL;
+        }
+ 
+        if(pSiS->RenderAccelArray) {
+-          xfree(pSiS->RenderAccelArray);
++          free(pSiS->RenderAccelArray);
+           pSiS->RenderAccelArray = NULL;
+        }
+ #ifdef SISDUALHEAD
+@@ -699,17 +699,17 @@
+ #endif
+ #ifdef SISMERGED
+     if(pSiS->CRT2HSync) {
+-       xfree(pSiS->CRT2HSync);
++       free(pSiS->CRT2HSync);
+        pSiS->CRT2HSync = NULL;
+     }
+ 
+     if(pSiS->CRT2VRefresh) {
+-       xfree(pSiS->CRT2VRefresh);
++       free(pSiS->CRT2VRefresh);
+        pSiS->CRT2VRefresh = NULL;
+     }
+ 
+     if(pSiS->MetaModes) {
+-       xfree(pSiS->MetaModes);
++       free(pSiS->MetaModes);
+        pSiS->MetaModes = NULL;
+     }
+ 
+@@ -721,9 +721,9 @@
+ 	  while(pSiS->CRT2pScrn->monitor->Modes) {
+ 	     xf86DeleteMode(&pSiS->CRT2pScrn->monitor->Modes, pSiS->CRT2pScrn->monitor->Modes);
+ 	  }
+-	  xfree(pSiS->CRT2pScrn->monitor);
++	  free(pSiS->CRT2pScrn->monitor);
+        }
+-       xfree(pSiS->CRT2pScrn);
++       free(pSiS->CRT2pScrn);
+        pSiS->CRT2pScrn = NULL;
+     }
+ 
+@@ -735,10 +735,10 @@
+ 	     do {
+ 	        DisplayModePtr p = pScrn->currentMode->next;
+ 	        if(pScrn->currentMode->Private)
+-	 	   xfree(pScrn->currentMode->Private);
++	 	   free(pScrn->currentMode->Private);
+ 	 	if(pScrn->currentMode->name)
+-	 	   xfree(pScrn->currentMode->name);
+-	        xfree(pScrn->currentMode);
++	 	   free(pScrn->currentMode->name);
++	        free(pScrn->currentMode);
+ 	        pScrn->currentMode = p;
+ 	     } while(pScrn->currentMode != pScrn->modes);
+ 	  }
+@@ -758,22 +758,22 @@
+     }
+ 
+     if(pSiS->currcrt1analogedid) {
+-       xfree(pSiS->currcrt1analogedid);
++       free(pSiS->currcrt1analogedid);
+        pSiS->currcrt1analogedid = NULL;
+     }
+ 
+     if(pSiS->currcrt1digitaledid) {
+-       xfree(pSiS->currcrt1digitaledid);
++       free(pSiS->currcrt1digitaledid);
+        pSiS->currcrt1digitaledid = NULL;
+     }
+ 
+     if(pSiS->currcrt2analogedid) {
+-       xfree(pSiS->currcrt2analogedid);
++       free(pSiS->currcrt2analogedid);
+        pSiS->currcrt2analogedid = NULL;
+     }
+ 
+     if(pSiS->currcrt2digitaledid) {
+-       xfree(pSiS->currcrt2digitaledid);
++       free(pSiS->currcrt2digitaledid);
+        pSiS->currcrt2digitaledid = NULL;
+     }
+ 
+@@ -784,7 +784,7 @@
+ 
+     while(pSiS->SISVESAModeList) {
+        sisModeInfoPtr mp = pSiS->SISVESAModeList->next;
+-       xfree(pSiS->SISVESAModeList);
++       free(pSiS->SISVESAModeList);
+        pSiS->SISVESAModeList = mp;
+     }
+ 
+@@ -801,7 +801,7 @@
+     if(pScrn->driverPrivate == NULL)
+         return;
+ 
+-    xfree(pScrn->driverPrivate);
++    free(pScrn->driverPrivate);
+     pScrn->driverPrivate = NULL;
+ }
+ 
+@@ -1017,22 +1017,22 @@
+ 	     Bool gotit = FALSE;
+ 
+  	     if(!ioctl(fd, SISFB_GET_INFO_SIZE, &sisfbinfosize)) {
+- 		if((mysisfbinfo = xalloc(sisfbinfosize))) {
++ 		if((mysisfbinfo = malloc(sisfbinfosize))) {
+  		   if(!ioctl(fd, (SISFB_GET_INFO | (sisfbinfosize << 16)), mysisfbinfo)) {
+  		      gotit = TRUE;
+  		   } else {
+- 		      xfree(mysisfbinfo);
++ 		      free(mysisfbinfo);
+  		      mysisfbinfo = NULL;
+  		   }
+  		}
+  	     } else {
+- 		if((mysisfbinfo = xalloc(sizeof(*mysisfbinfo) + 16))) {
++ 		if((mysisfbinfo = malloc(sizeof(*mysisfbinfo) + 16))) {
+  		   if(!ioctl(fd, SISFB_GET_INFO_OLD, mysisfbinfo)) {
+  		      gotit = TRUE;
+ 		      xf86DrvMsg(pScrn->scrnIndex, X_WARNING,
+ 				"Possibly old version of sisfb detected. Please update.\n");
+ 		   } else {
+-		      xfree(mysisfbinfo);
++		      free(mysisfbinfo);
+ 		      mysisfbinfo = NULL;
+ 		   }
+ 		}
+@@ -1171,7 +1171,7 @@
+ 		      }
+ 		   }
+ 	        }
+-		xfree(mysisfbinfo);
++		free(mysisfbinfo);
+ 		mysisfbinfo = NULL;
+ 	     }
+ 	     close (fd);
+@@ -1250,7 +1250,7 @@
+        }
+ #endif
+        if(!pSiS->BIOS) {
+-	  if(!(pSiS->BIOS = xcalloc(1, BIOS_SIZE))) {
++	  if(!(pSiS->BIOS = calloc(1, BIOS_SIZE))) {
+ 	     xf86DrvMsg(pScrn->scrnIndex, X_WARNING,
+ 		"Could not allocate memory for video BIOS image\n");
+ 	  } else {
+@@ -1352,7 +1352,7 @@
+ 	     } else {
+ 	        xf86DrvMsg(pScrn->scrnIndex, X_WARNING,
+ 			 "Could not find/read video BIOS\n");
+-		xfree(pSiS->BIOS);
++		free(pSiS->BIOS);
+ 		pSiS->BIOS = NULL;
+ 	     }
+           }
+@@ -1851,7 +1851,7 @@
+ {
+    if((*ptr)) {
+       memcpy((*ptr), pMonitor, sizeof(xf86Monitor));
+-      xfree(pMonitor);
++      free(pMonitor);
+    } else {
+       (*ptr) = pMonitor;
+    }
+@@ -1882,7 +1882,7 @@
+       }
+ #endif
+ 
+-      xfree((*ptr));
++      free((*ptr));
+       *ptr = NULL;
+ 
+    }
+@@ -2158,7 +2158,7 @@
+ 		xf86PrintEDID(pMonitor);
+ 		if(pMonitor->rawData) {
+ 		   /* Get rid of raw data */
+-		   xfree(pMonitor->rawData);
++		   free(pMonitor->rawData);
+ 		   pMonitor->rawData = NULL;
+ 		}
+ 		pScrn->monitor->DDC = pMonitor = SiSSetEDIDPtr(&pSiS->currcrt1analogedid, pMonitor);
+@@ -2821,12 +2821,12 @@
+     DisplayModePtr dest = NULL;
+ 
+     if(source) {
+-       if((dest = xalloc(sizeof(DisplayModeRec)))) {
++       if((dest = malloc(sizeof(DisplayModeRec)))) {
+ 	  memcpy(dest, source, sizeof(DisplayModeRec));
+ 	  dest->name = NULL;
+ 	  dest->next = dest->prev = NULL;
+-	  if(!(dest->name = xalloc(strlen(source->name) + 1))) {
+-	     xfree(dest);
++	  if(!(dest->name = malloc(strlen(source->name) + 1))) {
++	     free(dest);
+ 	     dest = NULL;
+ 	  } else {
+ 	     strcpy(dest->name, source->name);
+@@ -5256,7 +5256,7 @@
+     /* MergedFB: Create CRT2 pScrn and make it a copy of pScrn */
+ #ifdef SISMERGED
+     if(pSiS->MergedFB) {
+-       pSiS->CRT2pScrn = xalloc(sizeof(ScrnInfoRec));
++       pSiS->CRT2pScrn = malloc(sizeof(ScrnInfoRec));
+        if(!pSiS->CRT2pScrn) {
+           SISErrorLog(pScrn, "Failed to allocate memory for 2nd pScrn, %s\n", mergeddisstr);
+ 	  pSiS->MergedFB = FALSE;
+@@ -5292,7 +5292,7 @@
+ 	     } else {
+ 		SISErrorLog(pScrn, mergednocrt1, mergeddisstr);
+ 	     }
+-	     if(pSiS->CRT2pScrn) xfree(pSiS->CRT2pScrn);
++	     if(pSiS->CRT2pScrn) free(pSiS->CRT2pScrn);
+ 	     pSiS->CRT2pScrn = NULL;
+ 	     pSiS->MergedFB = FALSE;
+ 	  }
+@@ -5341,7 +5341,7 @@
+ 	   } else {
+ 	      SISErrorLog(pScrn, mergednocrt2, mergeddisstr);
+ 	   }
+-	   if(pSiS->CRT2pScrn) xfree(pSiS->CRT2pScrn);
++	   if(pSiS->CRT2pScrn) free(pSiS->CRT2pScrn);
+ 	   pSiS->CRT2pScrn = NULL;
+ 	   pSiS->MergedFB = FALSE;
+ 	}
+@@ -5711,7 +5711,7 @@
+ #endif
+ 
+     /* Don't need the clock ranges from here on */
+-    xfree(clockRanges);
++    free(clockRanges);
+ 
+     /* Set display resolution */
+ #ifdef SISMERGED
+@@ -6719,7 +6719,7 @@
+ 	     (function == MODE_SAVE)) {
+ 	     /* don't rely on the memory not being touched */
+ 	     if(!pSiS->pstate) {
+-		pSiS->pstate = xalloc(pSiS->stateSize);
++		pSiS->pstate = malloc(pSiS->stateSize);
+ 	     }
+ 	     memcpy(pSiS->pstate, pSiS->state, pSiS->stateSize);
+ 	  }
+@@ -9086,10 +9086,10 @@
+    if(!(nramp = xf86GetGammaRampSize(pScreen))) return;
+ 
+    for(i=0; i<3; i++) {
+-      ramp[i] = (UShort *)xalloc(nramp * sizeof(UShort));
++      ramp[i] = (UShort *)malloc(nramp * sizeof(UShort));
+       if(!ramp[i]) {
+-	 if(ramp[0]) { xfree(ramp[0]); ramp[0] = NULL; }
+-	 if(ramp[1]) { xfree(ramp[1]); ramp[1] = NULL; }
++	 if(ramp[0]) { free(ramp[0]); ramp[0] = NULL; }
++	 if(ramp[1]) { free(ramp[1]); ramp[1] = NULL; }
+ 	 return;
+       }
+    }
+@@ -9149,9 +9149,9 @@
+ 
+    xf86ChangeGammaRamp(pScreen, nramp, ramp[0], ramp[1], ramp[2]);
+ 
+-   xfree(ramp[0]);
+-   xfree(ramp[1]);
+-   xfree(ramp[2]);
++   free(ramp[0]);
++   free(ramp[1]);
++   free(ramp[2]);
+    ramp[0] = ramp[1] = ramp[2] = NULL;
+ }
+ #endif
+@@ -9442,7 +9442,7 @@
+ 
+     if(pSiS->ShadowFB) {
+        pSiS->ShadowPitch = BitmapBytePad(pScrn->bitsPerPixel * width);
+-       pSiS->ShadowPtr = xalloc(pSiS->ShadowPitch * height);
++       pSiS->ShadowPtr = malloc(pSiS->ShadowPitch * height);
+        displayWidth = pSiS->ShadowPitch / (pScrn->bitsPerPixel >> 3);
+        FBStart = pSiS->ShadowPtr;
+     } else {
+@@ -9626,14 +9626,14 @@
+ 
+ 	  pSiS->CRT2ColNum = 1 << pScrn->rgbBits;
+ 
+-	  if((pSiS->crt2gcolortable = xalloc(pSiS->CRT2ColNum * 2 * sizeof(LOCO)))) {
++	  if((pSiS->crt2gcolortable = malloc(pSiS->CRT2ColNum * 2 * sizeof(LOCO)))) {
+ 	     pSiS->crt2colors = &pSiS->crt2gcolortable[pSiS->CRT2ColNum];
+-	     if((pSiS->crt2cindices = xalloc(256 * sizeof(int)))) {
++	     if((pSiS->crt2cindices = malloc(256 * sizeof(int)))) {
+ 		int i = pSiS->CRT2ColNum;
+ 		SISCalculateGammaRampCRT2(pScrn);
+ 		while(i--) pSiS->crt2cindices[i] = i;
+ 	     } else {
+-		xfree(pSiS->crt2gcolortable);
++		free(pSiS->crt2gcolortable);
+ 		pSiS->crt2gcolortable = NULL;
+ 		pSiS->CRT2SepGamma = FALSE;
+ 	     }
+@@ -10810,7 +10810,7 @@
+     if(pSiS->useEXA) {
+        if(pSiS->EXADriverPtr) {
+           exaDriverFini(pScreen);
+-          xfree(pSiS->EXADriverPtr);
++          free(pSiS->EXADriverPtr);
+           pSiS->EXADriverPtr = NULL;
+           pSiS->exa_scratch = NULL;
+        }
+@@ -10823,38 +10823,38 @@
+     }
+ 
+     if(pSiS->CursorScratch) {
+-       xfree(pSiS->CursorScratch);
++       free(pSiS->CursorScratch);
+        pSiS->CursorScratch = NULL;
+     }
+ 
+     if(pSiS->ShadowPtr) {
+-       xfree(pSiS->ShadowPtr);
++       free(pSiS->ShadowPtr);
+        pSiS->ShadowPtr = NULL;
+     }
+ 
+     if(pSiS->DGAModes) {
+-       xfree(pSiS->DGAModes);
++       free(pSiS->DGAModes);
+        pSiS->DGAModes = NULL;
+     }
+ 
+     if(pSiS->adaptor) {
+-       xfree(pSiS->adaptor);
++       free(pSiS->adaptor);
+        pSiS->adaptor = NULL;
+        pSiS->ResetXv = pSiS->ResetXvGamma = pSiS->ResetXvDisplay = NULL;
+     }
+ 
+     if(pSiS->blitadaptor) {
+-       xfree(pSiS->blitadaptor);
++       free(pSiS->blitadaptor);
+        pSiS->blitadaptor = NULL;
+     }
+ 
+     if(pSiS->crt2gcolortable) {
+-       xfree(pSiS->crt2gcolortable);
++       free(pSiS->crt2gcolortable);
+        pSiS->crt2gcolortable = NULL;
+     }
+ 
+     if(pSiS->crt2cindices) {
+-       xfree(pSiS->crt2cindices);
++       free(pSiS->crt2cindices);
+        pSiS->crt2cindices = NULL;
+     }
+ 
+diff -u xf86-video-sismedia-0.9.1/src/sis_hwmc.c xf86-video-sismedia-0.9.1-dep-clean/src/sis_hwmc.c
+--- xf86-video-sismedia-0.9.1/src/sis_hwmc.c	2011-03-06 11:27:56.388770300 +0700
++++ xf86-video-sismedia-0.9.1-dep-clean/src/sis_hwmc.c	2011-03-06 12:24:06.612293658 +0700
+@@ -274,7 +274,7 @@
+  *  Set *num_priv to the number of 32bit words that make up the size of
+  *  of the data that priv will point to.
+  *
+- *  *priv = (long *) xcalloc (elements, sizeof(element))
++ *  *priv = (long *) calloc (elements, sizeof(element))
+  *  *num_priv = (elements * sizeof(element)) >> 2;
+  *
+  **************************************************************************/
+@@ -310,7 +310,7 @@
+     return BadAlloc;
+   }
+ 
+-  *priv = xcalloc(1,sizeof(SiSXvMCCreateContextRec));
++  *priv = calloc(1,sizeof(SiSXvMCCreateContextRec));
+   contextRec = (SiSXvMCCreateContextRec *)*priv;
+ 
+   if(!*priv) {
+@@ -322,7 +322,7 @@
+   if(drmCreateContext(pSiS->drmSubFD, &(contextRec->drmcontext) ) < 0) {
+     xf86DrvMsg(pScrn->scrnIndex, X_ERROR,
+         "[MC] SiSXvMCCreateContext: Unable to create DRMContext!\n");
+-    xfree(*priv);
++    free(*priv);
+     return BadAlloc;
+   }
+ 
+@@ -336,7 +336,7 @@
+   	DRM_FRAME_BUFFER, 0, &pSiS->fb_handle) < 0){
+   	
+ 		xf86DrvMsg(pScrn->scrnIndex, X_ERROR,"[MC] Frame buffer AddMap  failed!\n");
+-		xfree(*priv);
++		free(*priv);
+ 		*num_priv = 0;
+ 		return BadAlloc;
+   }
+@@ -357,7 +357,7 @@
+      break;
+   default:
+       xf86DrvMsg(pScrn->scrnIndex, X_ERROR," [MC] XvMC is not supposted on this chip! Stop.\n");
+-      xfree(*priv);
++      free(*priv);
+       *num_priv = 0;
+       return BadValue;
+   }
+@@ -408,7 +408,7 @@
+ #endif
+ 
+ 
+-  *priv = xcalloc(1,sizeof(SiSXvMCCreateSurfaceRec));
++  *priv = calloc(1,sizeof(SiSXvMCCreateSurfaceRec));
+   
+ 
+   if(!*priv) {
+@@ -435,7 +435,7 @@
+   }
+ 
+   
+-  xfree(*priv);
++  free(*priv);
+   return BadAlloc;
+ 
+ }
+@@ -454,7 +454,7 @@
+ 				  __FUNCTION__, __FILE__);
+ #endif
+ 
+-   *priv = (long *)xcalloc(1,sizeof(long));
++   *priv = (long *)calloc(1,sizeof(long));
+ 
+    if(!*priv) {
+       xf86DrvMsg(pScrn->scrnIndex, X_ERROR,
+diff -u xf86-video-sismedia-0.9.1/src/sis_memcpy.c xf86-video-sismedia-0.9.1-dep-clean/src/sis_memcpy.c
+--- xf86-video-sismedia-0.9.1/src/sis_memcpy.c	2011-03-06 11:27:56.388770300 +0700
++++ xf86-video-sismedia-0.9.1-dep-clean/src/sis_memcpy.c	2011-03-06 11:34:50.694322870 +0700
+@@ -637,13 +637,13 @@
+     (*buf1) = (UChar *)pSiS->FbBase + offset;
+     (*buf1) = (UChar *)(((ULong)(*buf1) + 31) & ~31);
+ 
+-    if(!((*buf2) = (UChar *)xalloc(BUFFERSIZE + 15))) {
++    if(!((*buf2) = (UChar *)malloc(BUFFERSIZE + 15))) {
+        SISFreeFBMemory(pScrn, &handle);
+        return NULL;
+     }
+ 
+-    if(!((*buf3) = (UChar *)xalloc(BUFFERSIZE + 15))) {
+-       xfree((*buf2));
++    if(!((*buf3) = (UChar *)malloc(BUFFERSIZE + 15))) {
++       free((*buf2));
+        SISFreeFBMemory(pScrn, &handle);
+        return NULL;
+     }
+@@ -1101,8 +1101,8 @@
+ 
+     /* Free buffers */
+     SISFreeFBMemory(pScrn, &fbhandle);
+-    xfree(buf2);
+-    xfree(buf3);
++    free(buf2);
++    free(buf3);
+ 
+     xf86DrvMsg(pScrn->scrnIndex, X_PROBED,
+ 	       "Using %s method for aligned data transfers %s video RAM\n",
+diff -u xf86-video-sismedia-0.9.1/src/sis_mergedfb.c xf86-video-sismedia-0.9.1-dep-clean/src/sis_mergedfb.c
+--- xf86-video-sismedia-0.9.1/src/sis_mergedfb.c	2011-03-06 11:27:56.388770300 +0700
++++ xf86-video-sismedia-0.9.1-dep-clean/src/sis_mergedfb.c	2011-03-06 22:18:01.785310903 +0700
+@@ -170,13 +170,13 @@
+     char namebuffer[32], namebuf1[64], namebuf2[64];
+     char printbuffer[256];
+ 
+-    if(!((mode = xalloc(sizeof(DisplayModeRec)))))
++    if(!((mode = malloc(sizeof(DisplayModeRec)))))
+        return dest;
+ 
+     memcpy(mode, i, sizeof(DisplayModeRec));
+ 
+-    if(!((mode->Private = xalloc(sizeof(SiSMergedDisplayModeRec))))) {
+-       xfree(mode);
++    if(!((mode->Private = malloc(sizeof(SiSMergedDisplayModeRec))))) {
++       free(mode);
+        return dest;
+     }
+ 
+@@ -265,8 +265,8 @@
+ 		"Skipped \"%s\" (%dx%d), not enough video RAM or beyond hardware specs\n",
+ 		mode->name, mode->HDisplay, mode->VDisplay);
+        }
+-       xfree(mode->Private);
+-       xfree(mode);
++       free(mode->Private);
++       free(mode);
+ 
+        return dest;
+     }
+@@ -306,7 +306,7 @@
+ 
+     /* Generate a mode name */
+     sprintf(namebuffer, "%dx%d", mode->HDisplay, mode->VDisplay);
+-    if((mode->name = xalloc(strlen(namebuffer) + 1))) {
++    if((mode->name = malloc(strlen(namebuffer) + 1))) {
+        strcpy(mode->name, namebuffer);
+     }
+ 
+@@ -849,7 +849,7 @@
+ 
+     if(pSiS->MergedFB) {
+ 
+-       pSiS->CRT2pScrn->monitor = xalloc(sizeof(MonRec));
++       pSiS->CRT2pScrn->monitor = malloc(sizeof(MonRec));
+ 
+        if(pSiS->CRT2pScrn->monitor) {
+ 
+@@ -889,7 +889,7 @@
+        } else {
+ 
+ 	  SISErrorLog(pScrn, "Failed to allocate memory for CRT2 monitor, MergedFB mode disabled.\n");
+-	  if(pSiS->CRT2pScrn) xfree(pSiS->CRT2pScrn);
++	  if(pSiS->CRT2pScrn) free(pSiS->CRT2pScrn);
+ 	  pSiS->CRT2pScrn = NULL;
+ 	  pSiS->MergedFB = FALSE;
+ 
+@@ -911,9 +911,9 @@
+ 		xf86DeleteMode(&pSiS->CRT2pScrn->monitor->Modes, pSiS->CRT2pScrn->monitor->Modes);
+ 	  }
+ 	  pSiS->CRT2pScrn->monitor->DDC = NULL;
+-	  xfree(pSiS->CRT2pScrn->monitor);
++	  free(pSiS->CRT2pScrn->monitor);
+        }
+-       xfree(pSiS->CRT2pScrn);
++       free(pSiS->CRT2pScrn);
+        pSiS->CRT2pScrn = NULL;
+     }
+ }
+@@ -1917,7 +1917,7 @@
+     ClientPtr				client;
+     xXineramaLayoutChangeNotifyEvent	se;
+ 
+-    pHead = (SiSXineramaEventPtr *)LookupIDByType(pWin->drawable.id, EventType);
++    dixLookupResourceByType((pointer) &pHead, pWin->drawable.id, EventType, NullClient, DixUnknownAccess);
+     if(!pHead) {
+        return WT_WALKCHILDREN;
+     }
+@@ -2628,6 +2628,7 @@
+     WindowPtr pWin;
+     SiSXineramaEventPtr pXineramaEvent, pNewXineramaEvent, *pHead;
+     XID clientResource;
++    int lookup_ret;
+ 
+     REQUEST_SIZE_MATCH(xXineramaSelectInputReq);
+     /*IvansLee define NEW_XORG_VERSION.*/
+@@ -2640,9 +2641,10 @@
+     if(!pWin)
+        return BadWindow;
+     #if NEW_XORG_VERSION == 1 /*New Xorg Version >= 1.4 */
+-     pHead = (SiSXineramaEventPtr *)SecurityLookupIDByType(client,
+-						 pWin->drawable.id, EventType,
+-						 DixWriteAccess);
++	 lookup_ret = dixLookupResourceByType((pointer) &pHead, 
++						 pWin->drawable.id, EventType, 
++						 client, DixWriteAccess);
++	 pHead = (lookup_ret == Success ? pHead : NULL);
+     #else
+       pHead = (SiSXineramaEventPtr *)SecurityLookupIDByType(client,
+                                                  pWin->drawable.id, EventType,
+@@ -2661,7 +2663,7 @@
+        }
+ 
+        /* Build a new entry */
+-       if(!(pNewXineramaEvent = (SiSXineramaEventPtr)xalloc(sizeof(SiSXineramaEventRec)))) {
++       if(!(pNewXineramaEvent = (SiSXineramaEventPtr)malloc(sizeof(SiSXineramaEventRec)))) {
+ 	  return BadAlloc;
+        }
+        pNewXineramaEvent->next = 0;
+@@ -2686,7 +2688,7 @@
+ 	* done through the resource database.
+ 	*/
+        if(!pHead) {
+-	  pHead = (SiSXineramaEventPtr *)xalloc(sizeof(SiSXineramaEventPtr));
++	  pHead = (SiSXineramaEventPtr *)malloc(sizeof(SiSXineramaEventPtr));
+ 	  if(!pHead || !AddResource(pWin->drawable.id, EventType, (pointer)pHead)) {
+ 	     FreeResource(clientResource, RT_NONE);
+ 	     return BadAlloc;
+@@ -2715,7 +2717,7 @@
+ 	     } else {
+ 		*pHead = pXineramaEvent->next;
+ 	     }
+-	     xfree(pXineramaEvent);
++	     free(pXineramaEvent);
+ 	     SiSXineramaClientsListening--;
+ 	  }
+        }
+@@ -2854,7 +2856,7 @@
+ {
+     /* Called by CloseDownExtensions() */
+     if(SiSXineramadataPtr) {
+-       Xfree(SiSXineramadataPtr);
++       free(SiSXineramadataPtr);
+        SiSXineramadataPtr = NULL;
+     }
+ }
+@@ -2866,7 +2868,7 @@
+     SiSXineramaEventPtr *pHead, pCur, pPrev;
+     WindowPtr pWin = pXineramaEvent->window;
+ 
+-    pHead = (SiSXineramaEventPtr *)LookupIDByType(pWin->drawable.id, EventType);
++    dixLookupResourceByType((pointer) &pHead, pWin->drawable.id, EventType, NullClient, DixUnknownAccess);
+     if(pHead) {
+        pPrev = NULL;
+        for(pCur = *pHead; pCur && pCur != pXineramaEvent; pCur = pCur->next) {
+@@ -2877,7 +2879,7 @@
+ 	  else      *pHead = pXineramaEvent->next;
+        }
+     }
+-    xfree((pointer)pXineramaEvent);
++    free((pointer)pXineramaEvent);
+     return 1;
+ }
+ 
+@@ -2890,9 +2892,9 @@
+     for(pCur = *pHead; pCur; pCur = pNext) {
+        pNext = pCur->next;
+        FreeResource(pCur->clientResource, ClientType);
+-       xfree((pointer)pCur);
++       free((pointer)pCur);
+     }
+-    xfree((pointer)pHead);
++    free((pointer)pHead);
+     return 1;
+ }
+ 
+@@ -2965,7 +2967,7 @@
+ 	  if(!pSiS->XineramaExtEntry) break;
+ 
+ 	  if(!(SiSXineramadataPtr = (SiSXineramaData *)
+-	        xcalloc(SiSXineramaNumScreens, sizeof(SiSXineramaData)))) break;
++	        calloc(SiSXineramaNumScreens, sizeof(SiSXineramaData)))) break;
+ 
+ 	  SiSXineramaEventbase = pSiS->XineramaExtEntry->eventBase;
+ 	  EventSwapVector[SiSXineramaEventbase + XineramaLayoutChangeNotify] =
+diff -u xf86-video-sismedia-0.9.1/src/sis_opt.c xf86-video-sismedia-0.9.1-dep-clean/src/sis_opt.c
+--- xf86-video-sismedia-0.9.1/src/sis_opt.c	2011-03-06 11:27:56.388770300 +0700
++++ xf86-video-sismedia-0.9.1-dep-clean/src/sis_opt.c	2011-03-06 11:34:50.818340404 +0700
+@@ -459,7 +459,7 @@
+     xf86CollectOptions(pScrn, NULL);
+ 
+     /* Process the options */
+-    if(!(pSiS->Options = xalloc(sizeof(SISOptions)))) return;
++    if(!(pSiS->Options = malloc(sizeof(SISOptions)))) return;
+ 
+     memcpy(pSiS->Options, SISOptions, sizeof(SISOptions));
+ 
+@@ -920,7 +920,7 @@
+ 	  if((strptr = (char *)xf86GetOptValString(pSiS->Options, OPTION_CRT2POS))) {
+ 	     int result;
+ 	     Bool valid = FALSE;
+-	     char *tempstr = xalloc(strlen(strptr) + 1);
++	     char *tempstr = malloc(strlen(strptr) + 1);
+ 	     result = sscanf(strptr, "%s %d", tempstr, &ival);
+ 	     if(result >= 1) {
+ 		if(!xf86NameCmp(tempstr,"LeftOf")) {
+@@ -978,18 +978,18 @@
+ 		xf86DrvMsg(pScrn->scrnIndex, X_INFO,
+ 		    "Except for \"Clone\", the parameter may be followed by an integer.\n");
+ 	     }
+-	     xfree(tempstr);
++	     free(tempstr);
+ 	  }
+ 	  if((strptr = (char *)xf86GetOptValString(pSiS->Options, OPTION_METAMODES))) {
+-	     pSiS->MetaModes = xalloc(strlen(strptr) + 1);
++	     pSiS->MetaModes = malloc(strlen(strptr) + 1);
+ 	     if(pSiS->MetaModes) memcpy(pSiS->MetaModes, strptr, strlen(strptr) + 1);
+ 	  }
+ 	  if((strptr = (char *)xf86GetOptValString(pSiS->Options, OPTION_CRT2HSYNC))) {
+-	     pSiS->CRT2HSync = xalloc(strlen(strptr) + 1);
++	     pSiS->CRT2HSync = malloc(strlen(strptr) + 1);
+ 	     if(pSiS->CRT2HSync) memcpy(pSiS->CRT2HSync, strptr, strlen(strptr) + 1);
+ 	  }
+ 	  if((strptr = (char *)xf86GetOptValString(pSiS->Options, OPTION_CRT2VREFRESH))) {
+-	     pSiS->CRT2VRefresh = xalloc(strlen(strptr) + 1);
++	     pSiS->CRT2VRefresh = malloc(strlen(strptr) + 1);
+ 	     if(pSiS->CRT2VRefresh) memcpy(pSiS->CRT2VRefresh, strptr, strlen(strptr) + 1);
+ 	  }
+ 	  if((strptr = (char *)xf86GetOptValString(pSiS->Options, OPTION_MERGEDDPI))) {
+@@ -1009,8 +1009,8 @@
+ 	     }
+ 	     if(pSiS->UseSiSXinerama) {
+ 	        if((strptr = (char *)xf86GetOptValString(pSiS->Options, OPTION_SCR0))) {
+-	           char *tempstr1 = xalloc(strlen(strptr) + 1);
+-	           char *tempstr2 = xalloc(strlen(strptr) + 1);
++	           char *tempstr1 = malloc(strlen(strptr) + 1);
++	           char *tempstr2 = malloc(strlen(strptr) + 1);
+ 	           char *tempstr;
+ 		   int i, result;
+ 		   pSiS->MFBScr0LR = pSiS->MFBScr0TB = -1;
+@@ -1037,8 +1037,8 @@
+ 			"Bad or incomplete argument(s) for Option \"%s\"\n",
+ 			pSiS->Options[SiS_FIFT(pSiS->Options, OPTION_SCR0)].name);
+ 		   }
+-		   xfree(tempstr1);
+-		   xfree(tempstr2);
++		   free(tempstr1);
++		   free(tempstr2);
+ 	        } else if(xf86GetOptValBool(pSiS->Options, OPTION_CRT2ISSCRN0, &val)) {
+ 		   xf86DrvMsg(pScrn->scrnIndex, X_WARNING,
+ 			"Option \"%s\" is deprecated, use \"%s\"\n",
+diff -u xf86-video-sismedia-0.9.1/src/sis_utility.c xf86-video-sismedia-0.9.1-dep-clean/src/sis_utility.c
+--- xf86-video-sismedia-0.9.1/src/sis_utility.c	2011-03-06 11:27:56.392770842 +0700
++++ xf86-video-sismedia-0.9.1-dep-clean/src/sis_utility.c	2011-03-06 12:24:06.740312353 +0700
+@@ -2185,7 +2185,7 @@
+      * in SiSCtrlExtUnregister())
+      */
+     if(extEntry->extPrivate) {
+-       xfree(extEntry->extPrivate);
++       free(extEntry->extPrivate);
+        extEntry->extPrivate = NULL;
+     }
+ }
+@@ -2206,7 +2206,7 @@
+ 
+    if(!(myext = CheckExtension(SISCTRL_PROTOCOL_NAME))) {
+ 
+-      if(!(myctrl = xcalloc(sizeof(xSiSCtrlScreenTable), 1)))
++      if(!(myctrl = calloc(sizeof(xSiSCtrlScreenTable), 1)))
+          return;
+ 
+       if(!(myext = AddExtension(SISCTRL_PROTOCOL_NAME, 0, 0,
+@@ -2216,7 +2216,7 @@
+ 				StandardMinorOpcode))) {
+          xf86DrvMsg(pScrn->scrnIndex, X_ERROR,
+ 	 		"Failed to add SISCTRL extension\n");
+-	 xfree(myctrl);
++	 free(myctrl);
+ 	 return;
+       }
+ 
+diff -u xf86-video-sismedia-0.9.1/src/sis_vga.c xf86-video-sismedia-0.9.1-dep-clean/src/sis_vga.c
+--- xf86-video-sismedia-0.9.1/src/sis_vga.c	2011-03-06 11:27:56.396771384 +0700
++++ xf86-video-sismedia-0.9.1-dep-clean/src/sis_vga.c	2011-03-06 11:34:51.038371506 +0700
+@@ -1450,7 +1450,7 @@
+     attr10 = SiS_ReadAttr(pSiS, 0x10);
+     if(attr10 & 0x01) return;
+ 
+-    if(!(pSiS->fonts = xalloc(SIS_FONTS_SIZE * 2))) {
++    if(!(pSiS->fonts = malloc(SIS_FONTS_SIZE * 2))) {
+        xf86DrvMsg(pScrn->scrnIndex, X_ERROR,
+ 		"Could not save console fonts, mem allocation failed\n");
+        return;
+diff -u xf86-video-sismedia-0.9.1/src/sis_video.c xf86-video-sismedia-0.9.1-dep-clean/src/sis_video.c
+--- xf86-video-sismedia-0.9.1/src/sis_video.c	2011-03-06 11:27:56.396771384 +0700
++++ xf86-video-sismedia-0.9.1-dep-clean/src/sis_video.c	2011-03-06 12:24:06.824324624 +0700
+@@ -349,7 +349,7 @@
+        if(newAdaptor)     size++;
+        if(newBlitAdaptor) size++;
+ 
+-       newAdaptors = xalloc(size * sizeof(XF86VideoAdaptorPtr*));
++       newAdaptors = malloc(size * sizeof(XF86VideoAdaptorPtr*));
+        if(newAdaptors) {
+           if(num_adaptors) {
+              memcpy(newAdaptors, adaptors, num_adaptors * sizeof(XF86VideoAdaptorPtr));
+@@ -379,7 +379,7 @@
+     }
+ 
+     if(newAdaptors) {
+-       xfree(newAdaptors);
++       free(newAdaptors);
+     }
+ 
+ #ifdef ENABLEXvMC
+@@ -1049,7 +1049,7 @@
+     }
+ #endif
+ 
+-    if(!(adapt = xcalloc(1, sizeof(XF86VideoAdaptorRec) +
++    if(!(adapt = calloc(1, sizeof(XF86VideoAdaptorRec) +
+                             sizeof(SISPortPrivRec) +
+                             sizeof(DevUnion)))) {
+        return NULL;
+@@ -4543,7 +4543,7 @@
+    }
+ #endif
+ 
+-   if(!(adapt = xcalloc(1, sizeof(XF86VideoAdaptorRec) +
++   if(!(adapt = calloc(1, sizeof(XF86VideoAdaptorRec) +
+     			   (sizeof(DevUnion) * NUM_BLIT_PORTS) +
+                            sizeof(SISBPortPrivRec)))) {
+       return NULL;
+Common subdirectories: xf86-video-sismedia-0.9.1/src/xvmc and xf86-video-sismedia-0.9.1-dep-clean/src/xvmc

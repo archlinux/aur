@@ -1,0 +1,25 @@
+From e4f6a2fcd5712d0f994d3719b9c6c13f5b02bc7c Mon Sep 17 00:00:00 2001
+From: Alan Coopersmith <alan.coopersmith@sun.com>
+Date: Fri, 9 Jan 2009 16:34:01 -0800
+Subject: [PATCH 01/10] Remove xorgconfig & xorgcfg from See Also list in man page
+
+---
+ man/sis.man |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/man/sis.man b/man/sis.man
+index d743fe6..c321808 100644
+--- a/man/sis.man
++++ b/man/sis.man
+@@ -429,7 +429,7 @@ The amount is to be specified in megabyte, the default is 8.
+ none.
+ .SH "SEE ALSO"
+ #ifdef __xservername__
+-__xservername__(__appmansuffix__), __xconfigfile__(__filemansuffix__), xorgconfig(__appmansuffix__), Xserver(__appmansuffix__), X(__miscmansuffix__)
++__xservername__(__appmansuffix__), __xconfigfile__(__filemansuffix__), Xserver(__appmansuffix__), X(__miscmansuffix__)
+ #else
+ XFree86(1), XF86Config(__filemansuffix__), xf86config(1), Xserver(1), X(__miscmansuffix__)
+ #endif
+-- 
+1.6.5.4
+

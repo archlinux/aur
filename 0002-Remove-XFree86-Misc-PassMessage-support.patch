@@ -1,0 +1,91 @@
+diff -p -up xf86-video-sis-0.9.1/configure.ac.orig xf86-video-sis-0.9.1/configure.ac
+--- xf86-video-sis-0.9.1/configure.ac.orig	2010-01-27 15:34:26.000000000 -0500
++++ xf86-video-sis-0.9.1/configure.ac	2010-01-27 15:34:43.000000000 -0500
+@@ -58,7 +58,6 @@ XORG_DRIVER_CHECK_EXT(XINERAMA, xinerama
+ XORG_DRIVER_CHECK_EXT(RANDR, randrproto)
+ XORG_DRIVER_CHECK_EXT(RENDER, renderproto)
+ XORG_DRIVER_CHECK_EXT(XV, videoproto)
+-XORG_DRIVER_CHECK_EXT(XF86MISC, xf86miscproto)
+ XORG_DRIVER_CHECK_EXT(DPMSExtension, xextproto)
+ 
+ # Checks for pkg-config packages
+diff -p -up xf86-video-sis-0.9.1/src/sis_driver.c.orig xf86-video-sis-0.9.1/src/sis_driver.c
+--- xf86-video-sis-0.9.1/src/sis_driver.c.orig	2010-01-27 15:35:05.000000000 -0500
++++ xf86-video-sis-0.9.1/src/sis_driver.c	2010-01-27 15:35:39.000000000 -0500
+@@ -86,8 +86,6 @@
+ #include "mibank.h"
+ #include "mipointer.h"
+ #include "mibstore.h"
+-#define _XF86MISC_SERVER_
+-#include <X11/extensions/xf86misc.h>
+ #include "edid.h"
+ 
+ #define SIS_NEED_inSISREG
+@@ -506,11 +504,6 @@ xf86DrvMsg(0, X_INFO, "                 
+ 	    pScrn->FreeScreen       = SISFreeScreen;
+ 	    pScrn->ValidMode        = SISValidMode;
+ 	    pScrn->PMEvent          = SISPMEvent; /*add PM function for ACPI hotkey,Ivans*/
+-#ifdef X_XF86MiscPassMessage
+-//   if(xf86GetVersion() >= XF86_VERSION_NUMERIC(4,3,99,2,0)) {
+-//	       pScrn->HandleMessage = SISHandleMessage;
+-//	    }
+-#endif
+ 	    foundScreen = TRUE;
+ 	}
+     #ifdef SISDUALHEAD
+diff -p -up xf86-video-sis-0.9.1/src/sis_driver.h.orig xf86-video-sis-0.9.1/src/sis_driver.h
+--- xf86-video-sis-0.9.1/src/sis_driver.h.orig	2010-01-27 15:35:49.000000000 -0500
++++ xf86-video-sis-0.9.1/src/sis_driver.h	2010-01-27 15:36:04.000000000 -0500
+@@ -791,10 +791,6 @@ static Bool SISHotkeySwitchMode(ScrnInfo
+ #ifdef SISDUALHEAD
+ static Bool	SISSaveScreenDH(ScreenPtr pScreen, int mode);
+ #endif
+-#ifdef X_XF86MiscPassMessage
+-extern int	SISHandleMessage(int scrnIndex, const char *msgtype,
+-				const char *msgval, char **retmsg);
+-#endif
+ static void     SISFreeScreen(int scrnIndex, int flags);
+ static ModeStatus SISValidMode(int scrnIndex, DisplayModePtr mode,
+ 				Bool verbose, int flags);
+diff -p -up xf86-video-sis-0.9.1/src/sis_utility.c.orig xf86-video-sis-0.9.1/src/sis_utility.c
+--- xf86-video-sis-0.9.1/src/sis_utility.c.orig	2010-01-27 15:36:23.000000000 -0500
++++ xf86-video-sis-0.9.1/src/sis_utility.c	2010-01-27 15:36:59.000000000 -0500
+@@ -40,8 +40,6 @@
+ #define NEED_EVENTS
+ #include <X11/X.h>
+ #include "dixstruct.h"
+-#define _XF86MISC_SERVER_
+-#include <X11/extensions/xf86misc.h>
+ 
+ #include "sis_videostr.h"
+ 
+@@ -262,9 +260,6 @@ typedef struct {
+     int		 (*HandleSiSDirectCommand[SISCTRL_MAX_SCREENS])(xSiSCtrlCommandReply *);
+ } xSiSCtrlScreenTable;
+ 
+-#ifdef X_XF86MiscPassMessage
+-int		SISHandleMessage(int scrnIndex, const char *msgtype, const char *msgval, char **retmsg);
+-#endif
+ void		SiSCtrlExtInit(ScrnInfoPtr pScrn);
+ void		SiSCtrlExtUnregister(SISPtr pSiS, int index);
+ 
+@@ -975,19 +970,6 @@ unsigned int SISVGADetected(ScrnInfoPtr 
+ }
+ 
+ /***********************************
+- *     MessageHandler interface    *
+- *   (unused now; use extension)   *
+- ***********************************/
+-
+-#ifdef X_XF86MiscPassMessage
+-int
+-SISHandleMessage(int scrnIndex, const char *msgtype, const char *msgval, char **retmsg)
+-{
+-    return BadMatch;
+-}
+-#endif
+-
+-/***********************************
+  *   SiSCtrl extension interface   *
+  ***********************************/
+ 
