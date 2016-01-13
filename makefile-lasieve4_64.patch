@@ -1,0 +1,12 @@
+diff -aur ggnfs-code/src/Makefile ggnfs-code-hack/src/Makefile
+--- ggnfs-code/src/Makefile	2016-01-10 22:14:26.198080653 +0200
++++ ggnfs-code-hack/src/Makefile	2016-01-11 10:49:12.901564767 +0200
+@@ -128,7 +128,7 @@
+ 	$(CC) $(INC) $(CFLAGS) $(LIBFLAGS) -o $@ polyselect.c $(OBJS) $(LIBS)
+ 
+ latsiever :
+-	$(MAKE) -C lasieve4
++#	$(MAKE) -C experimental/lasieve4_64
+ 
+ polsel :
+ 	$(MAKE) -C pol5

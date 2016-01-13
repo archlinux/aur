@@ -1,0 +1,210 @@
+diff -aur ggnfs-code/src/experimental/lasieve4_64/athlon64/Makefile ggnfs-code-hack/src/experimental/lasieve4_64/athlon64/Makefile
+--- ggnfs-code/src/experimental/lasieve4_64/athlon64/Makefile	2016-01-10 22:14:26.958067416 +0200
++++ ggnfs-code-hack/src/experimental/lasieve4_64/athlon64/Makefile	2016-01-11 10:45:40.485257844 +0200
+@@ -7,7 +7,10 @@
+ # Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+ # 02111-1307, USA.
+ 
+-CFLAGS= -O3 -march=k8 -mtune=k8 -I.
++#CFLAGS= -O3 -march=k8 -mtune=k8 -I.
++#CFLAGS= -O3 -march=native -mtune=native -I. -fPIC -fstack-protector-strong
++CFLAGS= -O3 -march=native -mtune=native -I. -fstack-protector-strong -static
++#LDFLAGS="-Wl,-O1,--sort-common,--as-needed,-z,relro" # -call_shared"
+ #CFLAGS= -g
+ 
+ CC=gcc
+@@ -144,3 +147,6 @@
+ 
+ bup:
+ 	echo $(SRCFILES)
++
++clean:
++	-rm -f *.o *.a
+diff -aur ggnfs-code/src/experimental/lasieve4_64/athlon64/mpqs_td.asm ggnfs-code-hack/src/experimental/lasieve4_64/athlon64/mpqs_td.asm
+--- ggnfs-code/src/experimental/lasieve4_64/athlon64/mpqs_td.asm	2016-01-10 22:14:26.958067416 +0200
++++ ggnfs-code-hack/src/experimental/lasieve4_64/athlon64/mpqs_td.asm	2016-01-11 10:45:40.485257844 +0200
+@@ -290,7 +290,7 @@
+ 	mull %ecx
+ 	testl %edx,%edx
+ 	jnz tdloop
+-	cmpw $27,nr
++	cmpw  $27,nrw  # KH
+ 	jnc gotonext
+ 	movl aux4d,%eax
+ 	movw aux5w,10(relptr,nr,2)
+@@ -321,10 +321,10 @@
+ 	mull %ecx
+ 	testl %edx,%edx
+ 	jnz tdloopk
+-	cmpw $27,nr
++	cmpw $27,nrw  # KH
+ 	jnc gotonext
+ 	movl aux4d,%eax
+-	movw nr1,10(relptr,nr,2)
++   	movw nr1w,10(relptr,nr,2) # KH
+ 	incq nr
+ 	movl aux4d,qxd
+ 	jmp divloopk
+@@ -354,7 +354,7 @@
+ 	testl %edx,%edx
+ 	jnz tdloopa
+ 	movl aux4d,%eax
+-	cmpw $27,nr
++	cmpw $27,nrw      # KH
+ 	jnc gotonext
+ 	addw nr1w,aux5w
+ 	movw aux5w,10(relptr,nr,2)
+diff -aur ggnfs-code/src/experimental/lasieve4_64/athlon64/tdslinie1.asm ggnfs-code-hack/src/experimental/lasieve4_64/athlon64/tdslinie1.asm
+--- ggnfs-code/src/experimental/lasieve4_64/athlon64/tdslinie1.asm	2016-01-10 22:14:26.958067416 +0200
++++ ggnfs-code-hack/src/experimental/lasieve4_64/athlon64/tdslinie1.asm	2016-01-11 10:45:40.485257844 +0200
+@@ -10,6 +10,7 @@
+ define(sieve_ptr,%r8)dnl
+ define(sieve_ptr_ub,%r9)dnl
+ define(root,%r10)dnl
++define(rootw,%r10w)dnl
+ define(prime,%r11)dnl
+ define(prime32,%r11d)dnl
+ define(sv0,%al)dnl
+@@ -58,7 +59,7 @@
+ 	jnz tdslinie1_suche
+ tdslinie1_nextfbi:
+ 	cmpq aux_ptr,aux_ptr_ub
+-	movw root,root_src
++	movw rootw,root_src # KH
+ 	leaq 8(aux_ptr),aux_ptr
+ 	ja tdslinie1_fbi_loop
+ tdslinie1_ende:
+diff -aur ggnfs-code/src/experimental/lasieve4_64/athlon64/tdslinie2.asm ggnfs-code-hack/src/experimental/lasieve4_64/athlon64/tdslinie2.asm
+--- ggnfs-code/src/experimental/lasieve4_64/athlon64/tdslinie2.asm	2016-01-10 22:14:26.958067416 +0200
++++ ggnfs-code-hack/src/experimental/lasieve4_64/athlon64/tdslinie2.asm	2016-01-11 10:45:40.485257844 +0200
+@@ -10,6 +10,7 @@
+ define(sieve_ptr,%r8)dnl
+ define(sieve_ptr_ub,%r9)dnl
+ define(root,%r10)dnl
++define(rootw,%r10w)dnl
+ define(prime,%r11)dnl
+ define(prime32,%r11d)dnl
+ define(sv0,%al)dnl
+@@ -57,7 +58,7 @@
+ 	jnz tdslinie2_suche
+ tdslinie2_next_fbi:
+ 	cmpq aux_ptr,aux_ptr_ub
+-	movw root,root_src
++	movw rootw,root_src # KH
+ 	leaq 8(aux_ptr),aux_ptr
+ 	ja tdslinie2_fbi_loop
+ tdslinie2_ende:
+diff -aur ggnfs-code/src/experimental/lasieve4_64/athlon64/tdslinie3.asm ggnfs-code-hack/src/experimental/lasieve4_64/athlon64/tdslinie3.asm
+--- ggnfs-code/src/experimental/lasieve4_64/athlon64/tdslinie3.asm	2016-01-10 22:14:26.958067416 +0200
++++ ggnfs-code-hack/src/experimental/lasieve4_64/athlon64/tdslinie3.asm	2016-01-11 10:45:40.485257844 +0200
+@@ -7,6 +7,7 @@
+ define(sieve_ptr,%r8)dnl
+ define(sieve_ptr_ub,%r9)dnl
+ define(root,%r10)dnl
++define(rootw,%r10w)dnl
+ define(prime,%r11)dnl
+ define(prime32,%r11d)dnl
+ define(sv0,%al)dnl
+@@ -73,7 +74,7 @@
+ tdslinie3_next_j`'i:
+ ')
+ 	cmpq aux_ptr,aux_ptr_ub
+-	movw root,root_src
++   	movw rootw,root_src # KH
+ 	leaq 8(aux_ptr),aux_ptr
+ 	ja tdslinie3_fbi_loop
+ tdslinie3_ende:
+diff -aur ggnfs-code/src/experimental/lasieve4_64/athlon64/tdslinie.asm ggnfs-code-hack/src/experimental/lasieve4_64/athlon64/tdslinie.asm
+--- ggnfs-code/src/experimental/lasieve4_64/athlon64/tdslinie.asm	2016-01-10 22:14:26.958067416 +0200
++++ ggnfs-code-hack/src/experimental/lasieve4_64/athlon64/tdslinie.asm	2016-01-11 10:45:40.485257844 +0200
+@@ -10,6 +10,7 @@
+ define(sieve_ptr,%r8)dnl
+ define(sieve_ptr_ub,%r9)dnl
+ define(root,%r10)dnl
++define(rootw,%r10w)dnl
+ define(prime,%r11)dnl
+ define(prime32,%r11d)dnl
+ define(sv0,%al)dnl
+@@ -115,7 +116,7 @@
+ tdslinie_next_j`'i:
+ ')
+ 	cmpq aux_ptr,aux_ptr_ub
+-	movw root,root_src
++	movw rootw,root_src   # KH
+ 	leaq 8(aux_ptr),aux_ptr
+ 	ja tdslinie_fbi_loop
+ tdslinie_ende:
+diff -aur ggnfs-code/src/experimental/lasieve4_64/Makefile ggnfs-code-hack/src/experimental/lasieve4_64/Makefile
+--- ggnfs-code/src/experimental/lasieve4_64/Makefile	2016-01-10 22:14:26.818069850 +0200
++++ ggnfs-code-hack/src/experimental/lasieve4_64/Makefile	2016-01-11 10:45:40.485257844 +0200
+@@ -8,11 +8,16 @@
+ # 02111-1307, USA.
+ #
+ # 6/13/04: Hacked up for use in GGNFS by Chris Monico.
++# 2016-01-11: Altered for native (static) binaries on i7. YMMW. K. Hampf <k.hampf@gmail.com>
+ 
+ INC=-I. -I./asm
+-LIBFLAGS=-L. 
++LIBFLAGS=-L.
+ #CFLAGS=-Os -march=amdfam10 -mtune=amdfam10 -funroll-loops
+-CFLAGS=-O3 -march=k8 -mtune=k8 -funroll-loops
++#CFLAGS=-O3 -march=k8 -mtune=k8 -funroll-loops
++#CFLAGS=-O3 -march=native -mtune=native -funroll-loops -fPIC -fstack-protector-strong
++CFLAGS=-O3 -march=native -mtune=native -funroll-loops -fstack-protector-strong -static
++LDFLAGS="-Wl,-O1,--sort-common,--as-needed,-z,relro"
++BINDIR=../../../bin
+ 
+ .SUFFIXES:
+ 
+@@ -29,10 +34,12 @@
+ 
+ LIBS=-lgmp-aux -lgmp -lm
+ 
++all : $(BINDIR)/gnfs-lasieve4I11e $(BINDIR)/gnfs-lasieve4I12e \
++      $(BINDIR)/gnfs-lasieve4I13e $(BINDIR)/gnfs-lasieve4I14e \
++      $(BINDIR)/gnfs-lasieve4I15e $(BINDIR)/gnfs-lasieve4I16e
+ 
+-all : gnfs-lasieve4I11e gnfs-lasieve4I12e gnfs-lasieve4I13e \
+-      gnfs-lasieve4I14e gnfs-lasieve4I15e gnfs-lasieve4I16e
+-
++asm/%: 
++	$(MAKE) -C asm $*
+ 
+ %.o: %.c asm/siever-config.h
+ 	$(CC) $(CFLAGS) $(INC) -c -o $@ $<
+@@ -46,23 +53,23 @@
+ gnfs-lasieve4eI%.o: gnfs-lasieve4e.c 
+ 	$(CC) $(CFLAGS) $(INC) -c -DI_bits=$* -o $@ $<
+ 
+-gnfs-lasieve4I11e: gnfs-lasieve4eI11.o $(OBJS) libgmp-aux.a \
+-                             liblasieve.a liblasieveI11.a 
++$(BINDIR)/gnfs-lasieve4I11e: gnfs-lasieve4eI11.o $(OBJS) libgmp-aux.a \
++                             asm/liblasieve.a asm/liblasieveI11.a 
+ 	$(CC) $(CFLAGS) $(INC) $(LIBFLAGS) -o $@ $^ $(LIBS) -static
+-gnfs-lasieve4I12e: gnfs-lasieve4eI12.o $(OBJS) libgmp-aux.a \
+-                             liblasieve.a liblasieveI12.a 
++$(BINDIR)/gnfs-lasieve4I12e: gnfs-lasieve4eI12.o $(OBJS) libgmp-aux.a \
++                             asm/liblasieve.a asm/liblasieveI12.a 
+ 	$(CC) $(CFLAGS) $(INC) $(LIBFLAGS) -o $@ $^ $(LIBS) -static
+-gnfs-lasieve4I13e: gnfs-lasieve4eI13.o $(OBJS) libgmp-aux.a \
+-                             liblasieve.a liblasieveI13.a 
++$(BINDIR)/gnfs-lasieve4I13e: gnfs-lasieve4eI13.o $(OBJS) libgmp-aux.a \
++                             asm/liblasieve.a asm/liblasieveI13.a 
+ 	$(CC) $(CFLAGS) $(INC) $(LIBFLAGS) -o $@ $^ $(LIBS) -static
+-gnfs-lasieve4I14e: gnfs-lasieve4eI14.o $(OBJS) libgmp-aux.a \
+-                             liblasieve.a liblasieveI14.a 
++$(BINDIR)/gnfs-lasieve4I14e: gnfs-lasieve4eI14.o $(OBJS) libgmp-aux.a \
++                             asm/liblasieve.a asm/liblasieveI14.a 
+ 	$(CC) $(CFLAGS) $(INC) $(LIBFLAGS) -o $@ $^ $(LIBS) -static
+-gnfs-lasieve4I15e: gnfs-lasieve4eI15.o $(OBJS) libgmp-aux.a \
+-                             liblasieve.a liblasieveI15.a 
++$(BINDIR)/gnfs-lasieve4I15e: gnfs-lasieve4eI15.o $(OBJS) libgmp-aux.a \
++                             asm/liblasieve.a asm/liblasieveI15.a 
+ 	$(CC) $(CFLAGS) $(INC) $(LIBFLAGS) -o $@ $^ $(LIBS) -static
+-gnfs-lasieve4I16e: gnfs-lasieve4eI16.o $(OBJS) libgmp-aux.a \
+-                             liblasieve.a liblasieveI16.a 
++$(BINDIR)/gnfs-lasieve4I16e: gnfs-lasieve4eI16.o $(OBJS) libgmp-aux.a \
++                             asm/liblasieve.a asm/liblasieveI16.a 
+ 	$(CC) $(CFLAGS) $(INC) $(LIBFLAGS) -o $@ $^ $(LIBS) -static
+ 
+ 
