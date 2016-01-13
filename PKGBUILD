@@ -8,7 +8,7 @@
 _pkgname=toxcore
 pkgname=toxcore-newgroupchat-git
 pkgver=4068
-pkgrel=2
+pkgrel=3
 pkgdesc='Secure, configuration-free, P2P Skype replacement backend'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url='https://tox.chat'
@@ -35,7 +35,6 @@ prepare() {
 
 build() {
   cd $_pkgname
-  git checkout TCP-fix
   autoreconf -if
   ./configure \
     --prefix=/usr \
