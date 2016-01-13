@@ -4,8 +4,8 @@
 _pkgbase=zsh
 pkgbase=zsh-git
 pkgname=('zsh-git' 'zsh-doc-git')
-pkgver=5.0.8.r162.g2fc05d5
-pkgrel=2
+pkgver=5.2.r72.ga8a00be
+pkgrel=1
 arch=('i686' 'x86_64')
 url='http://www.zsh.org/'
 license=('custom')
