@@ -25,8 +25,8 @@
 	# Prj info
 	_hkgname=tui-master
 	pkgname=tui
-	pkgdesc="GNU TUI, Text User Interface, framework for scripts"
-	license=('GPL-3')
+	pkgdesc="Text User Interface, framework for scripts"
+	license=('GPL3')
 	groups=()
 	
 	# Pkg info
