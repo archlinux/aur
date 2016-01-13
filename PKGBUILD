@@ -27,7 +27,7 @@
 	pkgname=tui
 	pkgdesc="GNU TUI, Text User Interface, framework for scripts"
 	license=('GPL-3')
-	groups=(core)
+	groups=()
 	
 	# Pkg info
 	arch=('any')
@@ -50,7 +50,7 @@ md5sums=('a1777f8665e68b2f5d835b51d30b4859')
 	makedepends=('texinfo' 'txt2man')
 	
 	# Run depends
-	depends=(bash,coreutils)
+	depends=( 'bash' 'coreutils')
 #
 #	Functions
 #
