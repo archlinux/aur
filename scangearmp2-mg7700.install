@@ -1,0 +1,18 @@
+post_install() {
+    if [ -x /usr/bin/udevadm ]; then
+        /usr/bin/udevadm control --reload-rules 2> /dev/null
+        /usr/bin/udevadm trigger --action=add --subsystem-match=usb 2> /dev/null
+    fi
+}
+
+post_upgrade() {
+    if [ -x /usr/bin/udevadm ]; then
+        /usr/bin/udevadm control --reload-rules 2> /dev/null
+        /usr/bin/udevadm trigger --action=add --subsystem-match=usb 2> /dev/null
+    fi
+}
+
+post_remove() {
+    # remove sgmp_setting files
+    rm -f /var/tmp/canon_sgmp2_setting*.*
+}
