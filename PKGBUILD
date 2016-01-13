@@ -18,7 +18,7 @@ sha256sums=(
 build() {
     cd "$srcdir/lua-$pkgver"
     phpize
-    ./configure \
+    /usr/bin/sh configure \
     --prefix=/usr \
     --with-lua=/usr
     make
