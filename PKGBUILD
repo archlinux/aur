@@ -94,7 +94,9 @@ prepare() {
         --enable-ladspa \
         --enable-libbs2b \
         --enable-libgme \
-        --enable-libsoxr" > ffmpeg_options
+        --enable-libsoxr \
+        --disable-demuxer=hls
+        --disable-protocol=concat,hls" > ffmpeg_options
   echo "--prefix=/usr \
         --confdir=/etc/mpv \
         --enable-openal \
