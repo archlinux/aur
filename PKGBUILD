@@ -5,7 +5,7 @@ _name=firefox
 _channel=aurora
 _milestone=45.0a2
 pkgname="${_name}-${_channel}"
-pkgver=45.0a2.20160111004014
+pkgver=45.0a2.20160113004011
 pkgrel=1
 pkgdesc="Firefox Aurora channel - Nightly build"
 url="http://www.mozilla.org/en-US/${_name}/${_channel}/"
@@ -23,8 +23,8 @@ source=("${pkgname}.desktop"
 	"${pkgname}-safe.desktop"
 	"${_baseurl}/${_filename}.tar.bz2")
 
-sha512sums=('1c0eef1129625ecfb70809dbb9ab764054d1680f05b7807f503145b5889bc42babb268cb4e2b7b102f90c50cc249114f773d91992e9ac41b5a6966e3b5c95675'
-            '749bc9bb180909c7319a1576e9df1e4cb06488b33b8dd61b8f1a63e4df9208cb9bb6d0c4ecef3fbe388f78368aef4562ae1dbfda1dbbfa649aa9d247c4903610'
+sha512sums=('c3ed6811fcc6b2b3697420acb258b1bb37a54b24d48914e40ef03b044f0e2a14b9501d2e788af6622704410b74720f4bc585fe2bc29d9d487c8347aa4d408529'
+            '06db4df1dd25c78d59f84831d1a48278a85d9ddbe7e2a494340dc0ef9e192f7c67eff57e2962eb084c55eda6bf9e5e3f09dd962dce56878e4ae3583c2f219389'
             "${_sha512sum}")
 pkgver() {
        cd "${_name}"
