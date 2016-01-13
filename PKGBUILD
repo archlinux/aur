@@ -6,7 +6,7 @@
 
 pkgbase=nvidia-mainline
 pkgname=(nvidia-mainline nvidia-mainline-dkms)
-pkgver=358.16
+pkgver=361.18
 _extramodules=extramodules-4.4-mainline
 pkgrel=1
 pkgdesc="NVIDIA drivers for linux-mainline"
