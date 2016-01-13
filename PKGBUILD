@@ -2,7 +2,7 @@
 # Contributor: Rolinh <robinDOThahlingATgw-computingDOTnet>
 
 pkgname=tagutil
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="scriptable music files tags tool and editor"
 arch=('i686' 'x86_64')
