@@ -26,7 +26,8 @@ pkgname="brother-${_brotherlnd}"
 # could invalidate a lot of cups settings and documents and make us different 
 # from other distros.
 pkgver='2.0.2'
-pkgrel='1'
+pkgrel='2'
+_cuppkgrel='1'
 _lprpkgver='2.0.2'
 _lprpkgrel='1'
 pkgdesc="LPR and CUPS driver for the Brother ${_brotheru} printer"
@@ -50,7 +51,7 @@ optdepends=('ttf-dejavu: printing text files from lpr')
 _brsource='brother-laser2-cups-driver-2.0.2-1'
 source=(
   "http://download.brother.com/welcome/dlf006677/${_brsource}.tar.gz"
-  "http://download.brother.com/welcome/dlf006230/cupswrapper${_brotherund}-${pkgver}-${pkgrel}.i386.rpm"
+  "http://download.brother.com/welcome/dlf006230/cupswrapper${_brotherund}-${pkgver}-${_cuppkgrel}.i386.rpm"
   "http://download.brother.com/welcome/dlf006228/br${_brotherlnd}lpr-${_lprpkgver}-${_lprpkgrel}.i386.rpm"
 )
 sha256sums=('d303e86b9143bd6d2ac27294a33cb9676efd9e968b57912e496dac6e97e90641'
@@ -103,6 +104,15 @@ build() {
   # for which we can't find an equal length replacement so we can't easily get
   # rid of that either.
   cd "${_makedir}"
+
+  # allow cooexist with AUR package brother-lpr-drivers-laser
+  sed -i -e 's:brprintconflsr2:brprint7340lsr2:g' 'brcups_commands.h' "${srcdir}/usr/bin/brprintconfiglpr2"
+  mv "${srcdir}/usr/bin/brprintconflsr2" "${srcdir}/usr/bin/brprint7340lsr2"
+  mv "${srcdir}/usr/bin/brprintconfiglpr2" "${srcdir}/usr/bin/brprint7340iglpr2"
+  # Editing a binary file requires the search and replace string to be the same size
+  sed -i -e 's:libbrcomplpr2.so:libbr7340lpr2.so:g' "${srcdir}/usr/share/brother/lpd/rawtobr2"
+  mv "${srcdir}/usr/lib/libbrcomplpr2.so" "${srcdir}/usr/lib/libbr7340lpr2.so"
+
   if [ -s 'Makefile' ]; then
     make -s
     cp -p 'brcupsconfpt1' "${_bindir}"
@@ -110,7 +120,7 @@ build() {
     # Not sure why it's called brcupsconfig3 some places and brcupsconfig4 in others.
     # The version in their binary matches the version in the source so it looks good to me.
     # gcc options are pulled from other Brother makefiles.
-    gcc -pipe -Wall -W -O2 -s -o "${_bindir}/brcupsconfig3" "brcupsconfig.c"
+    gcc -pipe -Wall -W -O2 -s -o "${_bindir}/brcupsconfig3" 'brcupsconfig.c'
   fi
 
   cd "${_bindir}"
@@ -124,7 +134,7 @@ build() {
   mkdir -p "${srcdir}/var/tmp"
 
   # Fix any sbin reference in the lpr driver. The cups driver uses bin.
-  sed -i -e 's:/sbin/:/bin/:g' $(find "${srcdir}/usr" -type f -name "psconvert2")
+  sed -i -e 's:/sbin/:/bin/:g' $(find "${srcdir}/usr" -type f -name 'psconvert2')
 
   # Fix page shifted off center that affects some printers
   # Letter prints off center shifted down and right with PaperType=A4
@@ -156,7 +166,7 @@ build() {
   sed -i -e '# Remove the ${_srcdir} variety' \
          -e 's:${_srcdir}::' \
          -e '# Remove the /home/... variety' \
-         -e "s:${srcdir}::" "${srcdir}/usr/lib/cups/filter/"*lpdwrapper*
+         -e "s:${srcdir}::" "${srcdir}/usr/lib/cups/filter"/*lpdwrapper*
 
   # We did everything in the installer so we can get rid of it.
   rm -f "${_wrapper_source}"
@@ -167,7 +177,7 @@ package() {
   set -u
   local _dir
   # /var/spool is not used anywhere in this package. Maybe it's needed for non cups lprng.
-  for _dir in usr opt; do # var
+  for _dir in 'usr' 'opt'; do # 'var'
     if [ -d "${srcdir}/${_dir}" ]; then
       cp -pR "${srcdir}/${_dir}" "${pkgdir}"
     fi
@@ -181,8 +191,8 @@ package() {
   test "$(find "${pkgdir}/usr/lib/cups/filter/" -type f)"
 
   # Ensure there are no forbidden paths
-  grep -alqr "/sbin" "${pkgdir}" && echo "${}"
-  grep -alqr "/usr/tmp" "${pkgdir}" && echo "${}"
+  ! grep -alqr "/sbin" "${pkgdir}" || echo "${}"
+  ! grep -alqr "/usr/tmp" "${pkgdir}" || echo "${}"
 
   #install -Dm644 'cupswrapper-license.txt' "${pkgdir}/usr/share/licenses/${pkgname}/cupswrapper-licence.txt"
   #install -Dm644 'lpr-license.txt' "${pkgdir}/usr/share/licenses/${pkgname}/lpr-licence.txt"
