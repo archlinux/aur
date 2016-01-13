@@ -1,0 +1,12 @@
+[Unit]
+Description=Naviserver
+After=network.target
+
+[Service]
+Type=forking
+Environment="LANG=en_US.UTF-8"
+
+ExecStart=/usr/bin/nsd -f -u nsadmin -g nsadmin -t /etc/naviserver/nsd-config.tcl
+
+Restart=on-abnormal
+KillMode=process

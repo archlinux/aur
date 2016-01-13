@@ -1,0 +1,37 @@
+post_install() {
+    ns_install_dir=/usr
+    ns_user=nsadmin
+    ns_group=nsadmin
+    ns_www=/usr/lib/naviserver
+        ns_config_dir=/etc/naviserver
+
+    #setup users
+    group_listcmd="grep ${ns_group} /etc/group"
+    group=$(eval ${group_listcmd})
+    group_addcmd="groupadd ${ns_group}"
+    ns_user_addcmd="useradd -g ${ns_group} ${ns_user}"
+
+        if [ "x$group" = "x" ] ; then
+            eval ${group_addcmd}
+        fi
+
+        if ! id -u $ns_user > /dev/null 2>&1; then
+            eval ${ns_user_addcmd}
+        fi
+
+  chown -R ${ns_user}:${ns_group} ${ns_www} &> /dev/null
+
+        echo "
+
+    Congratulations, you have installed NaviServer.
+
+    You can now run plain NaviServer by typing the following command:
+
+      sudo /usr/bin/nsd -f -u ${ns_user} -g ${ns_group} -t ${ns_config_dir}/nsd-config.tcl
+
+    As a next step, you need to configure the server according to your needs,
+    or you might want to use the server with OpenACS. Consult as a reference
+    the alternate configuration files in ${ns_config_dir}
+
+    "
+}
