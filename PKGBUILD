@@ -22,13 +22,6 @@ pkgver() {
   git describe --tags | sed -e 's:v::' -e 's:-:_:g'
 }
 
-# By default, openxcom builds with -Werror, which causes the build to fail if a compiler
-# warning is encountered. Uncomment the following prepare function to turn this off.
-#prepare() {
-#  cd $_gitname
-#  sed -i 's:werror=yes:werror=no:' configure.ac
-#}
-
 build() {
   cd $_gitname
   cmake -DCMAKE_INSTALL_PREFIX="/usr"
