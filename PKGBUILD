@@ -2,7 +2,7 @@
 _composer_from_trunk=1
 _pkgname=wp-cli
 pkgname=${_pkgname}-git
-pkgver=r4954.0c9480e
+pkgver=r4970.a2dc6e0
 pkgrel=1
 pkgdesc="A command-line tool for managing WordPress"
 url="http://wp-cli.org/"
@@ -19,7 +19,7 @@ conflicts=('wp-cli')
 replaces=()
 backup=()
 source=("git+https://github.com/wp-cli/${_pkgname}.git"
-        "https://raw.githubusercontent.com/wp-cli/wp-cli/v${pkgver}/utils/wp-completion.bash"
+        "https://raw.githubusercontent.com/wp-cli/wp-cli/master/utils/wp-completion.bash"
         "https://raw.githubusercontent.com/wp-cli/wp-cli/a249578ae2053b88c3174b15378266c9c65a9dfe/composer.json")
 md5sums=('SKIP'
          'f8acb424f1460428796451679631be86'
