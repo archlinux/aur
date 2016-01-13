@@ -33,7 +33,7 @@
 	arch=('any')
 	#pkgver=$(tmp=$(\gawk -F= '/TUI_VERSION/ {print $2}' ../../bin/tuirc);echo ${tmp/*=};tmp='')
 	pkgver=0.9.4
-	pkgrel=1
+	pkgrel=2
 	
 	# Src info
 	url="https://savannah.nongnu.org/projects/tui/"
