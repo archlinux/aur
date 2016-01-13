@@ -1,24 +1,6 @@
 # Maintainer: Simon Arjuna Erat (sea), erat.simon@gmail.com
 # Contributor: Simon Arjuna Erat (sea), erat.simon@gmail.com
-# -----------------------------------------------------------------------
-# Copyright (c) 2014-2016 Simon Arjuna Erat (sea)  <erat.simon@gmail.com>
-# All rights reserved.
-#
-# This program is free software: you can redistribute it and/or modify it
-# under the terms of the GNU General Public License as published
-# by the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANT ABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>
-#
-# -----------------------------------------------------------------------
-# This file represents the 'devel' package from 'master' tree.
+
 #
 #	Variables
 #
@@ -31,42 +13,23 @@
 	
 	# Pkg info
 	arch=('any')
-	#pkgver=$(tmp=$(\gawk -F= '/TUI_VERSION/ {print $2}' ../../bin/tuirc);echo ${tmp/*=};tmp='')
 	pkgver=0.9.4
-	pkgrel=2
+	pkgrel=3
 	
-	# Src info
+	# Src info -- As the master branch is used for releases, this is considered 'stable'.
 	url="https://savannah.nongnu.org/projects/tui/"
 	source=(http://git.savannah.gnu.org/cgit/${pkgname}.git/snapshot/${pkgname}-master.tar.gz)
-	#msg2 "Retrieve devel"
-	#not_secure="$(md5sum ${source##*/}|awk '{print $1}')"
-md5sums=('5e29a2a0d9d1041282eb156f0fc1b901')
+md5sums=('f18c1dfb94bd10d3e54b0829800be6cd')
 	
 	# Bld info
 	provides=('tui')
-	#msg2 "Checking for dependencies..."
-	depends=('bash' 'gawk' 'gettext' 'grep' 'sed')
-	#msg2 "Checking for build dependencies..."
+	depends=('bash' 'gawk' 'gettext' 'coreutils')
 	makedepends=('texinfo' 'txt2man')
-	
-	# Run depends
-	depends=( 'bash' 'coreutils')
 #
 #	Functions
 #
-	#prepare() {
-	#	cd src
-	#}
-	build() {
-		cd ${srcdir}/${_hkgname} #-${pkgver}
-		#msg2 "Building docs..."
-		./configure --prefix=/usr --chroot=$pkgdir
-	}
 	package() {
-		pwd
-		ls
-		cd ${srcdir}/${_hkgname} #-${pkgver}
-		#msg2 "Installing..."
+		cd ${srcdir}/${_hkgname}
+		./configure --prefix=/usr --chroot=$pkgdir
 		./make-install-all
-		#msg2 Done
 	}
