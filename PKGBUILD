@@ -8,7 +8,7 @@
 _pkgname=toxcore
 pkgname=toxcore-newgroupchat-git
 pkgver=4068
-pkgrel=1
+pkgrel=2
 pkgdesc='Secure, configuration-free, P2P Skype replacement backend'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url='https://tox.chat'
@@ -16,7 +16,7 @@ license=('GPL3')
 depends=('libconfig' 'libsodium' 'libvpx' 'opus')
 makedepends=('git' 'check')
 conflicts=("$_pkgname")
-provides=("$_pkgname")
+provides=("$_pkgname-newgroupchat")
 install=$pkgname.install
 source=("git+https://github.com/JFreegman/toxcore.git"
         'toxcore.conf')
