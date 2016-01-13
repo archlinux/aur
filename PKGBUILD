@@ -40,7 +40,7 @@
 	source=(http://git.savannah.gnu.org/cgit/${pkgname}.git/snapshot/${pkgname}-master.tar.gz)
 	#msg2 "Retrieve devel"
 	#not_secure="$(md5sum ${source##*/}|awk '{print $1}')"
-md5sums=('a1777f8665e68b2f5d835b51d30b4859')
+md5sums=('5e29a2a0d9d1041282eb156f0fc1b901')
 	
 	# Bld info
 	provides=('tui')
