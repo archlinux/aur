@@ -18,16 +18,16 @@ source=(https://github.com/karlheyes/$pkgname/archive/${pkgname/-*}-${pkgver//_/
         $pkgname.logrotate
         start-by-icecast.patch
         $pkgname.service)
-md5sums=('e15e39acb3c24f246c50b031b9777e75'
-         'c619028040f547621e62ebd6f644c233'
-         'a4a7a21a1c21ded249913edf45606068'
-         'a0ba8a1e301acf2945e498331d1fced0')
+sha256sums=('2feb6dabdf836b8ca249e1d25ad8f995a92c725344f3b83139f18c5222932dba'
+            '46f4d6942223a6d82f0b188e616a8a9cda3911663d59cc976c44b7a9822149f0'
+            'b09ac79daccf8347ead4088aca31d2214dcd27e211e9ee2e96ef1a44b65df84f'
+            '4b7f31aff45c6a572d54279531b7944567363d4c2bcd86d9c48887dc7da80a73')
 _srcpath=$pkgname-${pkgname/-*}-${pkgver//_/-}
 
 prepare() {
   cd "$srcdir/$_srcpath"
   patch -Np1 -i "${srcdir}/start-by-icecast.patch"
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --with-openssl=/usr/bin/openssl
 }
 
 build() {
