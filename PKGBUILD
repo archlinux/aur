@@ -2,7 +2,7 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=('seafile-server' 'seafile-client-cli' 'seafile-shared')
-pkgver=5.0.3
+pkgver=5.0.4
 pkgrel=1
 pkgdesc="Seafile is an online file storage and collaboration tool"
 arch=('any')
@@ -18,7 +18,7 @@ source=("seafile-server-${pkgver}.tar.gz::https://github.com/haiwen/seafile/arch
         "create-default-conf-dir.patch"
         "0001-Revert-server-put-pids-folder-out-of-seafile-data.patch"
         "libseafile.in.patch")
-sha256sums=('2fc448ee097c3be2eb38fb961f0768580607051fe230ae63ecd83f8fb6415f90'
+sha256sums=('486c4d8788dc26bd7558f1615ce99a79b54ca91c3d3cb4058fcbdf5cb9c59214'
             '876e67526fabf83bfeb5ff50f05b2f4725f3d9bf784025707b67022a1a311f20'
             'ae1ed38f94304d27e4ef1ca66e15d544f99681c1e743c510c54d4a112f050421'
             '2a1e079cbea3543f356e6e9571f3d7d2a4b0ab75131ee417115d738ea191c4fb'
