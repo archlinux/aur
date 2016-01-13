@@ -26,7 +26,7 @@ build() {
 }
 
 package() {
-    cd $pkgname-$pkgver/portfolio-product/target/products/name.abuchen.portfolio.product/linux/g tk/$_platform/portfolio/
+    cd $pkgname-$pkgver/portfolio-product/target/products/name.abuchen.portfolio.product/linux/gtk/$_platform/portfolio/
 
     install -dm755 ${pkgdir}${_DEST}
     cp -r * ${pkgdir}${_DEST}
