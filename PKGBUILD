@@ -1,8 +1,8 @@
 # Maintainer: Leonard de Ruijter <alderuijter@gmail.com>
 
 pkgname=liquidsoap-git
-pkgver=Full_GIT
-pkgrel=12
+pkgver=c31461b
+pkgrel=1
 pkgdesc="a swiss-army knife for multimedia streaming, notably used for netradios and webtvs"
 arch=('i686' 'x86_64')
 url="http://savonet.sourceforge.net/"
@@ -18,10 +18,11 @@ install=$pkgname.install
 options=(!makeflags)
 provides=('liquidsoap')
 conflicts=('liquidsoap' 'liquidsoap-full')
-md5sums=('SKIP'
-         '21d7e17ac7114edfd0a944c7773aa5af'
-         '762d6607ff0889e34b8c874970b38bc9'
-         'f9106e5c42cabc21c4c8464d9b1ad63e')
+sha256sums=('SKIP'
+            '7aada825a04a63566b57df3258525edc7d2f797300d5725c47f6920ef03a07b2'
+            'df6d2cec1be47a57a02ed04a1f527c0349221fad39d8d152aca13734d3808661'
+            '9f286958af0c751c2a43d74614cdd1c4629c0583d619875385c09417a5383675')
+
 pkgver() {
   cd $pkgname
   # Use the tag of the last commit
