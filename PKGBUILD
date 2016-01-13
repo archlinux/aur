@@ -2,7 +2,7 @@
 
 pkgname=mplayer2-build-git
 pkgver=2.0.728.g2c378c7
-pkgrel=6
+pkgrel=7
 pkgdesc="A movie player for linux (uses statically linked libav). (GIT version)"
 arch=('i686' 'x86_64')
 depends=('a52dec' 'desktop-file-utils' 'directfb' 'enca' 'faad2' 'fribidi' 'jack' 'lcms2' 'libbluray' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libdca' 'libgl' 'libmng'
@@ -97,12 +97,15 @@ prepare() {
   patch -p0 -i ../../patch-libmpdemux-demux_ogg.patch
 
   # Make Mplayer2 build flags
-  echo '--confdir=/etc/mplayer
+  echo "--confdir=/etc/mplayer
 --enable-translation
 --language=all
 --prefix=/usr
 --enable-joystick
---enable-gif' > ../mplayer_options
+--enable-gif" > ../mplayer_options
+  echo "--disable-demuxer=hls
+--disable-protocol=concat,hls"  > ../libav_options
+
 }
 
 build() {
