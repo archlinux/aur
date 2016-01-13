@@ -14,7 +14,7 @@
 
 pkgname=pan-git
 _gitname=pan2
-pkgver=139.169.g2a421d4
+pkgver=139.185.g9847fe5
 pkgrel=1
 pkgdesc="Pan is a Usenet newsreader that's good at both text and binaries. Development version."
 url="http://pan.rebelbase.com/"
@@ -30,7 +30,7 @@ md5sums=SKIP
 
 pkgver() {
     cd "$srcdir/$_gitname"
-    git describe |sed 's/PAN_0_//;s/-/./g'
+    git describe --long --tags |sed 's/PAN_0_//;s/-/./g'
 }
 
 build() {
