@@ -12,7 +12,6 @@ depends=('dkms')
 optdepends=('linux-headers: build modules against Arch kernel'
             'linux-lts-headers: build modules against LTS Arch kernel')
 conflicts=('broadcom-wl')
-backup=('etc/modprobe.d/broadcom-wl-dkms.conf')
 install=broadcom-wl-dkms.install
 source=('broadcom-wl-dkms.conf'
         'dkms.conf.in'
@@ -46,7 +45,7 @@ package() {
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
   ln -rs "${dest}/lib/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  install -D -m 644 broadcom-wl-dkms.conf "${pkgdir}/etc/modprobe.d/broadcom-wl-dkms.conf"
+  install -D -m 644 broadcom-wl-dkms.conf "${pkgdir}/usr/lib/modprobe.d/broadcom-wl-dkms.conf"
 }
 
 # vim:set ts=2 sw=2 et:
