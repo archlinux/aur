@@ -12,7 +12,7 @@ license=('MIT')
 depends=('ruby')
 makedepends=('rubygems')
 source=(http://rubygems.org/downloads/$_gemname-$pkgver.gem
-        https://raw.github.com/bluemonk/ipaddress/master/LICENSE)
+        https://raw.github.com/bluemonk/ipaddress/v$pkgver/LICENSE)
 noextract=($_gemname-$pkgver.gem)
 md5sums=('c1b274b056650390689360c9856f2180'
          '52f3a53aa4932dc3fbda4d659f7baa8c')
