@@ -1,7 +1,7 @@
 # Maintainer: Dario Ostuni <another.code.996@gmail.com>
 pkgname=mingw-w64-opusfile
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="The opusfile library provides seeking, decode, and playback of Opus streams in the Ogg container."
 arch=(any)
 url="http://www.opus-codec.org"
