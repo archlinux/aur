@@ -2,7 +2,7 @@
 # Contributor: Jérémie Astor <astor.jeremie@wanadoo.fr>
 
 pkgname=njconnect
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="Curses Jack connection manager, based on naconnect by Nedko Arnaudov"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('jack' 'ncurses')
 provides=('njconnect')
 source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname-$pkgver.tar.xz")
-md5sums=('c53b86546a3d6bc4833077147273e4ba')
+md5sums=('678bee67c28ac63c34c5e135d312064f')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
