@@ -2,9 +2,9 @@
 
 pkgname=gtk3-typeahead
 pkgver=3.18.6
-pkgrel=1
+pkgrel=2
 conflicts=(gtk3)
-provides=('gtk3=3.18.6')
+provides=("gtk3=$pkgver")
 pkgdesc="GTK+ 3 with typeahead feature enabled for the file chooser widget"
 arch=(i686 x86_64)
 url="http://www.gtk.org/"
