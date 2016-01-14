@@ -1,7 +1,7 @@
 # Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=bitcoin-gui-git
-pkgver=v0.11.2.r4.g5f09cda
+pkgver=v0.11.2.r7.g00aefcc
 pkgrel=1
 pkgdesc='Bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt, most recent stable branch, w/GUI and wallet'
 arch=('i686' 'x86_64')
@@ -28,10 +28,10 @@ build() {
   cd "$srcdir/bitcoin"
 
 	msg2 'Building...'
-  CXXFLAGS="$CXXFLAGS -DBOOST_VARIANT_USE_RELAXED_GET_BY_DEFAULT=1"
+  CXXFLAGS="$CXXFLAGS -DBOOST_VARIANT_USE_RELAXED_GET_BY_DEFAULT=1 -UUPNPDISCOVER_SUCCESS"
 	./autogen.sh
 	./configure --prefix=/usr --with-incompatible-bdb --with-gui=qt4
-  make
+  make -j$(nproc)
 }
 
 package() {
