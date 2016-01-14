@@ -16,9 +16,12 @@ license=('custom' 'GPL')
 depends=('libtorrent-rasterbar' 'qt5-base' 'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils')
 makedepends=('boost' 'git' 'qt5-tools')
 optdepends=('python: needed for torrent search tab')
+provides=('qbittorrent')
+conflicts=('qbittorrent')
 install=${pkgname%-*-*}.install
 source=("${pkgname%-*-*}"::"git+https://github.com/qbittorrent/qBittorrent.git#branch=v3_3_x")
 sha256sums=('SKIP')
+
 pkgver() {
   cd $srcdir/${pkgname%-*-*}
   git describe --long --tags | sed 's/^release-//;s/-/.r/;s/-/./'
