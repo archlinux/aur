@@ -9,7 +9,7 @@ license=("LGPL")
 depends=("apache" "smarty3" "smarty3-i18n" "prototype" "scriptaculous" "schema2ldif" "javascript-common"
 "perl-path-class" "perl-ldap" "perl-mime-base64" "perl-crypt-passwdmd5" "perl-term-readkey" "perl-crypt-rijndael"
 "perl-crypt-cbc" "perl-file-copy-recursive" "perl-xml-twig" "perl-archive-extract" "perl-extutils-makemaker"
-"php-imagick" "php-ldap" "php-pear" "php-gd" "php-imap" "php-apache" "php-mcrypt")
+"php-imagick" "php-ldap" "php-pear" "php-gd" "php-imap" "php-apache" "php-mcrypt" "php-cas")
 install=${pkgname}.install
 
 backup=('etc/fusiondirectory-apache.conf')
