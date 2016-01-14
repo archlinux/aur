@@ -9,7 +9,7 @@ pkgbase = telegram-purple
 	makedepends = git
 	depends = glib2
 	depends = libgcrypt
-	depends = libpurple
+	depends = libpurple>=1.6.0
 	depends = zlib
 	depends = libwebp
 	source = git+https://github.com/majn/telegram-purple.git
