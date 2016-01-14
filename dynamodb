@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ -a ./config.cfg ]; then
+if [ -e /etc/dynamodb/config.cfg ]; then
   source /etc/dynamodb/config.cfg
 else
   shared=true
