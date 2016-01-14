@@ -1,9 +1,9 @@
 # Maintainer: Matheus de Alcantara <matheus.de.alcantara@gmail.com>
 
 pkgname=atom-editor-beta
-_pkgrel=beta3
-_pkgver=1.4.0
-pkgver="1.4.0.${_pkgrel}"
+_pkgrel=beta0
+_pkgver=1.5.0
+pkgver="${_pkgver}.${_pkgrel}"
 pkgrel=1
 pkgdesc='Chrome-based text editor from Github (beta stream compiled from git)'
 arch=('x86_64' 'i686')
@@ -16,7 +16,7 @@ conflicts=('atom-editor-bin' 'atom-editor-git' 'atom-editor-beta-bin' 'atom-edit
 install=atom.install
 source=("https://github.com/atom/atom/archive/v${_pkgver}-${_pkgrel}.tar.gz"
         'atom-python.patch')
-sha256sums=('1385df2d885b5af6fb6d154bb2a5a5754ba3cd9bb11139c557803ec6038a958e'
+sha256sums=('f503d95ea21db12aa97bd1097f17d1e68478a25e9bc34e9a3366110dbe6126bc'
             'f3a1b7f032cd2d98cf56dc1d912d6a7791656a470514e316b0e6132eb5cf9dc0')
 
 prepare() {
