@@ -16,8 +16,8 @@ source=("https://www.python.org/ftp/python/${pkgver}/python-${pkgver}-embed-win3
         "https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tgz")
 noextract=("python-${pkgver}-embed-win32.zip"
            "python-${pkgver}-embed-amd64.zip")
-md5sums=('ff73508d29676f272c6e248d651480c5'
-         '78414a7111fbacadfb889437c88f0fc6'
+md5sums=('6e783d8fd44570315d488b9a9881ff10'
+         'b07d15f515882452684e0551decad242'
          'be78e48cdfc1a7ad90efff146dce6cfe')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
