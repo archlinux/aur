@@ -22,6 +22,7 @@ build() {
   php /usr/bin/composer install --prefer-dist --no-dev
   cp box.json.dist box.json
   sed -i '/git-commit/d' box.json
+  sed -i '/git-version/d' box.json
   php -d phar.readonly=Off /usr/bin/php-box build
 }
 
