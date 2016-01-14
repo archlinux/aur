@@ -7,3 +7,4 @@
 !chromium-dev.xml
 !chromium-dev.svg
 !enable_vaapi_on_linux-r3.diff
+!chromium-system-ffmpeg-r2.patch
