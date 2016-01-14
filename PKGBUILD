@@ -74,6 +74,7 @@ build() {
 		--libdir=/usr/lib/${pkgbase} \
 		--datarootdir=/usr/share/${pkgbase} \
 		--datadir=/usr/share/${pkgbase} \
+		--program-suffix=${pkgbase#php} \
 		--with-layout=GNU \
 		--with-config-file-path=/etc/${pkgbase} \
 		--with-config-file-scan-dir=/etc/${pkgbase}/conf.d \
@@ -251,17 +252,15 @@ package_php56() {
 	ln -sf phar.${pkgbase/php/phar} ${pkgdir}/usr/bin/${pkgbase/php/phar}
 
 	# rename executables
-	mv ${pkgdir}/usr/bin/{php,${pkgbase}}
 	mv ${pkgdir}/usr/bin/phar.{phar,${pkgbase/php/phar}}
-	mv ${pkgdir}/usr/bin/{php-config,${pkgbase}-config}
-	mv ${pkgdir}/usr/bin/{phpize,${pkgbase/php/phpize}}
 
 	# rename man pages
 	mv ${pkgdir}/usr/share/man/man1/{phar,${pkgbase/php/phar}}.1
-	mv ${pkgdir}/usr/share/man/man1/{php,${pkgbase}}-config.1
-	mv ${pkgdir}/usr/share/man/man1/{php,${pkgbase}}.1
 	mv ${pkgdir}/usr/share/man/man1/phar.{phar,${pkgbase/php/phar}}.1
-	mv ${pkgdir}/usr/share/man/man1/{phpize,${pkgbase/php/phpize}}.1
+
+	# fix paths in executables
+	sed -i "/^includedir=/c \includedir=/usr/include/${pkgbase}" ${pkgdir}/usr/bin/${pkgbase/php/phpize}
+	sed -i "/^include_dir=/c \include_dir=/usr/include/${pkgbase}" ${pkgdir}/usr/bin/${pkgbase/php/php-config}
 }
 
 package_php56-cgi() {
@@ -277,6 +276,7 @@ package_php56-apache() {
 	depends=("${pkgbase}" 'apache')
 	provides=("${_pkgbase}-apache=$pkgver")
 	backup=("etc/httpd/conf/extra/${pkgbase}_module.conf")
+	install='php-apache.install'
 
 	install -D -m755 ${srcdir}/build-apache/libs/libphp5.so ${pkgdir}/usr/lib/httpd/modules/lib${pkgbase}.so
 	install -D -m644 ${srcdir}/apache.conf ${pkgdir}/etc/httpd/conf/extra/${pkgbase}_module.conf
