@@ -3,7 +3,7 @@
 
 pkgname=dracut
 pkgver=044
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic, modular, cross-distribution initramfs generation tool"
 arch=("i686" "x86_64")
 url="https://dracut.wiki.kernel.org/"
@@ -45,6 +45,6 @@ package() {
 	bashcompletiondir=/usr/share/bash-completion/completions \
 	sysconfdir=/etc loginstall=/var/log/dracut install
 }
-
 #I use md5sum because is the default in "makepkg -g", blame Allan McRae
-md5sums=('85de75ddf00962e7bb0ae387f05794e5')
+
+md5sums=('fbb8b6aea24c2f7d328021bbf11788fd')
