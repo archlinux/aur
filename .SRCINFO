@@ -1,15 +1,15 @@
 pkgbase = phpstorm-eap
 	pkgdesc = Lightweight and Smart PHP IDE. 30-day free trial.
-	pkgver = 143.1480
+	pkgver = 144.3010
 	pkgrel = 1
 	url = http://www.jetbrains.com/phpstorm/
 	arch = i686
 	arch = x86_64
 	license = custom
-	depends = java-environment>=6
+	depends = java-environment>=8
 	options = !strip
-	source = http://download.jetbrains.com/webide/PhpStorm-EAP-143.1480.tar.gz
-	md5sums = d0c61d686df5be2a1277c73b8cf77178
+	source = http://download.jetbrains.com/webide/PhpStorm-EAP-144.3010-custom-jdk-linux.tar.gz
+	md5sums = 15d2e8a9c559afc131bbc241d574527c
 
 pkgname = phpstorm-eap
 
