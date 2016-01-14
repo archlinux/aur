@@ -3,7 +3,7 @@
 pkgname=jlink
 _pkgver="510g"
 pkgver="5.10g"
-pkgrel=1
+pkgrel=2
 pkgdesc="ARM Embedded debugger and flashing software from Segger"
 arch=('i686' 'x86_64')
 url="https://www.segger.com/jlink-software.html"
@@ -46,17 +46,27 @@ build() {
 
 package() {
     cd "${srcdir}"/JLink_Linux_V*
-    #documentation and licenses
-    install -d "${pkgdir}/usr/share/doc/${pkgname}" "${pkgdir}/usr/lib" "${pkgdir}/usr/bin" "${pkgdir}/etc/udev/rules.d"
-    install -Dm644 Doc/License.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 Doc/*_JLink.pdf "${pkgdir}/usr/share/doc/${pkgname}/"
-    cp -r Samples/JLink/*          "${pkgdir}/usr/share/doc/${pkgname}/"
 
-    #binaries
-    install -Dm755 JLink* "${pkgdir}/usr/bin/"
+    # Match package placement from their .deb, in /opt
+    install -dm755 "${pkgdir}/opt/SEGGER/JLink" \
+                    "${pkgdir}/usr/share/licenses/${pkgname}" \
+                    "${pkgdir}/usr/share/doc/${pkgname}" \
+                    "${pkgdir}/usr/bin" \
+                    "${pkgdir}/etc/udev/rules.d" \
+                    "${pkgdir}/usr/lib"
+    cp --preserve=mode -r "." "${pkgdir}/opt/SEGGER/JLink"
 
-    #libraries and udev rules
-    install -Dm644 99-jlink.rules                "${pkgdir}/etc/udev/rules.d/99-jlink.rules"
-    install -Dm755 libjlinkarm.so.*.*            "${pkgdir}/usr/lib/"
-    cd "${pkgdir}/usr/lib" && ln -s libjlinkarm.so.*.* libjlinkarm.so.5
+    
+
+    ln -s /opt/SEGGER/JLink/Doc/License.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    ln -s /opt/SEGGER/JLink/Doc "${pkgdir}/usr/share/doc/${pkgname}"
+    ln -s /opt/SEGGER/JLink/99-jlink.rules "${pkgdir}/etc/udev/rules.d/99-jlink.rules"
+
+    for f in JLink*; do
+        ln -s /opt/SEGGER/JLink/"$f" "${pkgdir}/usr/bin"
+    done
+
+    for f in libjlinkarm*; do
+        ln -s /opt/SEGGER/JLink/"$f" "${pkgdir}/usr/lib"
+    done
 }
