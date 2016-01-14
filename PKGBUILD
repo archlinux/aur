@@ -565,7 +565,7 @@ package() {
   ln -s /usr/lib/chromium-dev/chromedriver "${pkgdir}/usr/bin/chromedriver-dev"
 
   # Install libs
-  for i in libwidevinecdmadapter libclearkeycdm; do #widevinecdm
+  for i in libwidevinecdmadapter libclearkeycdm; do
     install -Dm755 "${i}.so" "${pkgdir}/usr/lib/chromium-dev/${i}.so"
   done
   install -Dm644 natives_blob.bin "${pkgdir}/usr/lib/chromium-dev/natives_blob.bin"
@@ -591,7 +591,7 @@ package() {
     install -Dm644 "${_branding}/product_logo_${_size}.png" "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/chromium-dev.png"
   done
 
-  # Install pNaCL/NaCL stuff is is detected
+  # Install pNaCL/NaCL stuff if is detected
   if [ "${_build_pnacl}" = "1" ]; then
     install -Dm755 nacl_helper "${pkgdir}/usr/lib/chromium-dev/nacl_helper"
     install -Dm755 nacl_helper_bootstrap "${pkgdir}/usr/lib/chromium-dev/nacl_helper_bootstrap"
