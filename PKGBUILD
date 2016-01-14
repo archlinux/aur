@@ -19,11 +19,11 @@ pkgver() {
 build() {
     cd $srcdir/mod_filter
     mkdir ebin
-    erlc -o ebin -I include -I /usr/lib/ejabberd/include/ -DNO_EXT_LIB mod_filter.erl
+    erlc -o ebin -I include -I /usr/lib/p1_xml-1.1.1/include/ -I /usr/lib/ejabberd-16.01/include -DNO_EXT_LIB mod_filter.erl
 }
 
 package() {
     cd $srcdir/mod_filter
-    install -d -m 0755 $pkgdir/usr/lib/ejabberd
-    cp -r ebin $pkgdir/usr/lib/ejabberd/ebin
+    install -d -m 0755 $pkgdir/usr/lib/ejabberd-16.01
+    cp -r ebin $pkgdir/usr/lib/ejabberd-16.01/ebin
 }
