@@ -1,7 +1,7 @@
 # Maintainer: Tim Kleinschmidt <tim.kleinschmidt@gmail.com>
 
 pkgname=avocode
-pkgrel=1
+pkgrel=2
 pkgver=2.4.5
 pkgdesc="The bridge between designers and developers"
 url="http://avocode.com/"
@@ -13,8 +13,11 @@ optdepends=('imagemagick: Preview generation')
 makedepends=()
 backup=()
 install=avocode.install
+source=("Avocode.desktop" "avocode-app-icon.png")
 source_i686=("https://media.avocode.com/download/avocode-app/${pkgver}/avocode-app-linux-ia32-${pkgver}.zip")
 source_x86_64=("https://media.avocode.com/download/avocode-app/${pkgver}/avocode-app-linux-${pkgver}.zip")
+md5sums=('e2c75eca26477c665c946beec421423a'
+         '96c2dd65a4a3ac5bcdba7426ade1960e')
 md5sums_i686=('638b3fec872a60e6b98dda154b0c5245')
 md5sums_x86_64=('3506e43cfe695ea34de48c74fcc17d20')
 package() {
