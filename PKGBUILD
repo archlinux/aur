@@ -13,8 +13,6 @@ source=("http://developer.jasig.org/cas-clients/php/$pkgver/CAS-$pkgver.tgz")
 md5sums=('58f93724ec52929658bb8f1be8fa2154')
 
 package() {
-  cd ./php-cas-$pkgver
-
   # Go in directory
   cd CAS-$pkgver/
 
