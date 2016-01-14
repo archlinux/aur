@@ -1,8 +1,8 @@
 # Maintainer: Dan Printzell <xwildn00bx@gmail.com>
 
 pkgname=('dscanner')
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Swiss-army knife for D source code"
 arch=('i686' 'x86_64')
 url="https://github.com/Hackerpilot/Dscanner"
@@ -15,7 +15,7 @@ conflicts=('dscanner')
 options=('!strip')
 
 source=(
-	"git+https://github.com/Hackerpilot/Dscanner#tag=v0.2.0"
+	"git+https://github.com/Hackerpilot/Dscanner#tag=v${pkgver}"
 )
 sha256sums=(
 	'SKIP'
