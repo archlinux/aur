@@ -2,7 +2,7 @@
 
 pkgname="track-o-bot-git"
 _pkgname="track-o-bot"
-pkgver=0.2.1.r138.gb3a6499
+pkgver=0.2.1.r266.g3f0e9e1
 pkgrel=1
 pkgdesc="Track-o-Bot is a small, easy-to-use app which automatically tracks your Hearthstone matches. No packet sniffing, just parsing HS logs."
 arch=('i686' 'x86_64')
