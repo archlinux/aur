@@ -4,7 +4,7 @@
 
 pkgname=aacskeys
 pkgver="0.4.0e"
-pkgrel=4
+pkgrel=5
 pkgdesc="A library and program to retrieve decryption keys for HD discs"
 arch=("i686" "x86_64")
 url="http://forum.doom9.org/showthread.php?t=123311"
@@ -16,7 +16,7 @@ source=("http://deb-multimedia.org/pool/main/a/aacskeys/${pkgname}_${pkgver}.ori
 sha1sums=('8790f0d4098d6bc83304ad2136cc9681374df83a'
 	  '325504f38a5ac1e9f7be740a602faa2c8d4b812c')
 
-build() {
+prepare() {
 
   cd "${srcdir}/${pkgname}-${pkgver}"
   patch -Np1 -i ../${pkgname}_$pkgver-dmo2.diff
@@ -36,6 +36,11 @@ build() {
   sed -i 's|/usr/local/ssl/lib|/usr/lib|' premake.lua
   sed -i "s|/usr/lib/jvm/java-6-sun/include|$JAVA_HOME/include|" premake.lua
 
+}
+
+build() {
+
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make 
 }
 
