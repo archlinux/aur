@@ -1,4 +1,9 @@
+_piver="2"
 _sdktool="/usr/libexec/qtcreator/sdktool"
+_devicefamily="raspberrypi"
+_devicename="${_devicefamily}${_piver}"
+_familytext="Raspberry Pi"
+_devicetext="${_familytext} ${_piver}"
 
 ## arg 1:  the new package version
 pre_install() {
@@ -8,22 +13,22 @@ pre_install() {
 ## arg 1:  the new package version
 post_install() {
 ${_sdktool} addTC \
-    --id "ProjectExplorer.ToolChain.Gcc:raspberrypi" \
-    --name "Raspberry Pi toolchain" \
+    --id "ProjectExplorer.ToolChain.Gcc:${_devicefamily}" \
+    --name "${_familytext} toolchain" \
     --path /opt/arm-sirspuddarch-linux-gnueabihf/bin/arm-sirspuddarch-linux-gnueabihf-gcc \
     --abi arm-linux-generic-elf-32bit \
     --supportedAbis arm-linux-generic-elf-32bit
 
 ${_sdktool} addDebugger \
-    --id "raspberrypi_gdb" \
-    --name "Raspberry Pi gdb" \
+    --id "${_devicefamily}_gdb" \
+    --name "${_familytext} gdb" \
     --binary /opt/arm-sirspuddarch-linux-gnueabihf/bin/arm-sirspuddarch-linux-gnueabihf-gdb \
     --abis arm-linux-generic-elf-32bit \
     --engine 1
 
 ${_sdktool} addDev \
-    --id "raspberrypi2_device" \
-    --name "Raspberry Pi 2" \
+    --id "${_devicename}_device" \
+    --name "${_devicetext}" \
     --host "qpii.local" \
     --uname "root" \
     --password "root" \
@@ -33,20 +38,20 @@ ${_sdktool} addDev \
     --freePorts "10000-10100"
 
 ${_sdktool} addQt \
-    --id "raspberrypi2_qt" \
-    --name "Raspberry Pi 2 Qt" \
+    --id "${_devicename}_qt" \
+    --name "${_devicetext} Qt" \
     --qmake /opt/qt-5.6.0-beta-rpi2/bin/qmake \
     --type RemoteLinux.EmbeddedLinuxQt
 
 ${_sdktool} addKit \
-    --id "raspberrypi2_kit" \
-    --name "Raspberry Pi 2 Kit" \
-    --debugger "raspberrypi_gdb" \
+    --id "${_devicename}_kit" \
+    --name "${_devicetext} Kit" \
+    --debugger "${_devicefamily}_gdb" \
     --devicetype GenericLinuxOsType \
-    --device "raspberrypi2_device" \
+    --device "${_devicename}_device" \
     --sysroot /mnt/pi \
-    --toolchain "ProjectExplorer.ToolChain.Gcc:raspberrypi" \
-    --qt "raspberrypi2_qt" \
+    --toolchain "ProjectExplorer.ToolChain.Gcc:${_devicefamily}" \
+    --qt "${_devicename}_qt" \
     --mkspec "devices/linux-rpi2-g++"
 }
 #post_install
@@ -66,20 +71,20 @@ post_upgrade() {
 ## arg 1:  the old package version
 pre_remove() {
 #TODO: Don't remove if the other pi package is present
-${_sdktool} rmTC \
-    --id "ProjectExplorer.ToolChain.Gcc:raspberrypi"
+#${_sdktool} rmTC \
+#    --id "ProjectExplorer.ToolChain.Gcc:${_devicefamily}"
 
-${_sdktool} rmDebugger \
-    --id "raspberrypi_gdb"
+#${_sdktool} rmDebugger \
+#    --id "${_devicefamily}_gdb"
 
 ${_sdktool} rmQt \
-    --id "raspberrypi2_qt"
+    --id "${_devicename}_qt"
 
 ${_sdktool} rmKit \
-    --id "raspberrypi2_kit"
+    --id "${_devicename}_kit"
 
 ${_sdktool} rmDev \
-    --id "raspberrypi2_device"
+    --id "${_devicename}_device"
 }
 #pre_remove
 
