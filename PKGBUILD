@@ -1,7 +1,7 @@
 # Maintainer: Pablo Lezaeta <prflr88@gmail.com>
 
 pkgname=yash
-pkgver=2.38
+pkgver=2.40
 pkgrel=1
 pkgdesc="Yet Another SHell is a POSIX-compliant command line shell"
 arch=("i686" "x86_64")
@@ -47,6 +47,6 @@ package() {
 		bindir=/usr/bin \
 		sbindir=/usr/bin
 }
-
 #Default to md5 as makepkg do, blame Allan McRae
+
 md5sums=('7cdebec758b8301622d0e33e99305be2')
