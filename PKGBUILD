@@ -30,7 +30,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
 pkgver=5.6.17
-pkgrel=2
+pkgrel=3
 pkgdesc="A general-purpose scripting language that is especially suited to web development"
 arch=('i686' 'x86_64')
 license=('PHP')
@@ -261,6 +261,9 @@ package_php56() {
 	# fix paths in executables
 	sed -i "/^includedir=/c \includedir=/usr/include/${pkgbase}" ${pkgdir}/usr/bin/${pkgbase/php/phpize}
 	sed -i "/^include_dir=/c \include_dir=/usr/include/${pkgbase}" ${pkgdir}/usr/bin/${pkgbase/php/php-config}
+
+	# make phpize use php-config56
+	sed -i "/^\[  --with-php-config=/c \[  --with-php-config=PATH  Path to php-config [${pkgbase/php/php-config}]], ${pkgbase/php/php-config}, no)" ${pkgdir}/usr/lib/${pkgbase}/build/phpize.m4
 }
 
 package_php56-cgi() {
