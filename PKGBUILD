@@ -6,7 +6,7 @@ pkgdesc="a toolkit for building scalable, community-oriented web applications."
 arch=('x86_64')
 url="http://www.openacs.org"
 license=('GPL')
-depends=('tcllib>=1.17' 'tcl>=8.5.18' 'postgresql>=9.4' 'tdom>=0.8.3' 'nsf>=2.0.0-1' 'naviserver>=4.99.8' 'naviserver-postgres-connector>=4.99.8' 'systemd')
+depends=('tcllib>=1.17' 'tcl>=8.5.18' 'postgresql>=9.4' 'tdom>=0.8.3' 'nsf>=2.0.0-1' 'naviserver>=4.99.8' 'naviserver-postgres-connector>=4.99.8' 'naviserver-tclthread>=2.7.2' 'systemd')
 source=("http://openacs.org/projects/openacs/download/download/${pkgname}-${pkgver}.tar.gz?revision_id=4869825"
 "openacs.service"
 "config-oacs-${pkgver}.tcl" )
