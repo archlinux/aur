@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Game Jolt
+Exec="game-jolt-client"
+Icon=game-jolt.png
+Terminal=false
+Type=Application
+Categories=Network;FileTransfer;Game;
