@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/majn/telegram-purple"
 license=("GPL")
 makedepends=("git")
-depends=('glib2' 'openssl' 'libpurple' 'zlib' 'libwebp')
+depends=('glib2' 'libgcrypt' 'libpurple' 'zlib' 'libwebp')
 source=("git+https://github.com/majn/telegram-purple.git")
 sha256sums=('SKIP')
 
