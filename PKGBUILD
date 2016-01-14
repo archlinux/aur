@@ -1,7 +1,7 @@
 # Maintainer: Dan Printzell <xwildn00bx@gmail.com>
 
 pkgname=('dfmt')
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Dfmt is a formatter for D source code "
 arch=('i686' 'x86_64')
