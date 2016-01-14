@@ -2,7 +2,7 @@
 # Contributor: dreieck
 
 pkgname="fiji-binary"
-pkgver="20141125"
+pkgver="20151222"
 pkgrel="1"
 pkgdesc="ImageJ distribution with a lot of plugins for scientific (especially biology related) image processing."
 arch=('i686' 'x86_64')
@@ -20,8 +20,8 @@ install=fiji.install
 source=("http://fiji.sc/downloads/Life-Line/fiji-nojre-${pkgver}.zip"
         "fiji.desktop"
         "fiji.install")
-sha256sums=('43e74e668a83e78d323bf7bcb71e8cc587f453164eedf6460d7aba3736c6d307'
-            'aabd26ddf25802e852f14000b19c714f8f1016c863ba1ceed28b840fee332b07'
+sha256sums=('cba4a3d91dbbb7ee8ae526c7d8c2554842fdc4c11da82924e3b03b358bbbc5d1'
+            '788a32dd0b24f482e78d5ec3209e9d5b3493a59e1da6edf82b1373e87c0320bc'
             '6dcc861af9328076282893ffcecc77a7fee448cec51fb7ccd51c5cece9740fa1')
 
 ## Latest (continuous) build
@@ -29,7 +29,7 @@ sha256sums=('43e74e668a83e78d323bf7bcb71e8cc587f453164eedf6460d7aba3736c6d307'
 #         "fiji.desktop"
 #         "fiji.install")
 # sha256sums=('SKIP'
-#             'aabd26ddf25802e852f14000b19c714f8f1016c863ba1ceed28b840fee332b07'
+#             '788a32dd0b24f482e78d5ec3209e9d5b3493a59e1da6edf82b1373e87c0320bc'
 #             '6dcc861af9328076282893ffcecc77a7fee448cec51fb7ccd51c5cece9740fa1')
 
 _userexecutable="fiji" # That name to be presented to the user.
@@ -88,4 +88,5 @@ package()
   # ln -sf "${_targetdir}/${_userexecutable}" "${_bindir}/${_userexecutable}" || exit 131 # We do NOT create a executable "fiji" in the PATH, since one may want to create a custum /usr/local/bin/fiji for setting JAVA_HOME to the SUN/Oracle java. Instead, we name the executable associated with the architecture, and have "fiji" in the /opt-dir.
   ln -sf "${_targetdirinrootfs}/${_executable}" "${_executable}" || exit 135
   install -Dm644 "${srcdir}/fiji.desktop" "${pkgdir}/usr/share/applications/fiji.desktop"
+  install -Dm644 "${_extractdir}/images/icon.png" "${pkgdir}/usr/share/pixmaps/fiji.png"
 }
