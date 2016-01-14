@@ -110,8 +110,10 @@ build() {
   make
 
   # temp hack for Qt 5.6.0-beta
-  cp -r "${srcdir}/qtquickcontrols2" "${_bindir}"
-  cd "${_bindir}/qtquickcontrols2"
+  local _controlspath="${_bindir}/qtquickcontrols2/"
+  cd "${srcdir}/qtquickcontrols2"
+  git checkout-index -a -f --prefix=${_controlspath}
+  cd ${_controlspath}
   ${_bindir}/qtbase/bin/qmake
   make
 }
