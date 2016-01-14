@@ -2,13 +2,13 @@
 
 pkgname=php-ast
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Extension exposing PHP 7 abstract syntax tree."
 url="https://github.com/nikic/php-ast"
 license="CUSTOM"
 arch=("any")
-depends=("php7")
-makedepends=("php7")
+depends=("php>=7")
+makedepends=("php>=7")
 backup=("etc/php/conf.d/ast.ini")
 source=("https://github.com/nikic/php-ast/archive/v${pkgver}.tar.gz" "ast.ini")
 sha512sums=('c007315e9bc674f80e99dc5b0b4405a3da8e523d038f0e08102de07a3a214cc0558927e426c766548d24f806e3ef6449181c80bebb22856ac824cb412b93625b'
