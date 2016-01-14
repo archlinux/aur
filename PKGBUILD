@@ -2,6 +2,7 @@
 # Contributor : Frederic Bezies <fredbezies at gmail dot com>
 # Contributor : baskerville <nihilhill at gmail dot com>
 # Contributor : Smola
+# Contributor : yan12125
 
 _name=youtube-dl
 _branch=master
