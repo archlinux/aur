@@ -2,8 +2,6 @@
 #   Tobias Powalowski <tpowa@archlinux.org>
 #   Thomas Baechler <thomas@archlinux.org>
 
-_enable_NUMA=n
-
 pkgname=(linux-lts314-ck linux-lts314-ck-headers)
 pkgver=3.14.58
 pkgrel=5
@@ -24,8 +22,10 @@ source=(
     "0002-module-allow-multiple-calls-to-MODULE_DEVICE_TABLE-p.patch"
     "0003-module-remove-MODULE_GENERIC_TABLE.patch"
     "0006-genksyms-fix-typeof-handling.patch"
+
     "config"
     "config.x86_64"
+
     "http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.14.0-v7r8/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r8-3.14.patch"
     "http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.14.0-v7r8/0002-block-introduce-the-BFQ-v7r8-I-O-sched-for-3.14.patch"
     "http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.14.0-v7r8/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-3.14.0.patch"
@@ -44,8 +44,10 @@ sha512sums=(
     "da69065f317212c7937f5c3110afdef6006da7756b0a2a98c4bff94db12eb503dc89040aa3cd7a1655ba1b0641f47dda4e60933309e231eaecbe9bd79cb06ebd"
     "4b9fa6afdd1f4f4f6a3a439380cff3376ef33e782aac0ae92421f4b7c40140d57a04d7bc57dfd9fb59fdefb3a0a55fe7e7d6022314b11ef454a1cae4b75cf264"
     "fdb67e9956d9af1518d0198b86b13150b28f43dd28eb52222a9c43699f7304cd1a56d7f421a0690fa4c0d2c266fd5504da9d6217f83a42d05f35b713fd85e2dd"
-    "790dd15062af80356c3a8d1fb0d75f3fa8a23c3ce4854e359de59086f1e008b6f02b3b3d3352ad6aa3daf952bc7f6b3c1a1d4f752bd681bd5537a82def5d4a7d"
-    "72ba7c5b0e214111f12ed9c533267ff12720f2f3047b4d956524e38c12999976aa0ad8511d7e6056bbf353e4d9353c2366c8690e356f8ea4ee54be2ae7074480"
+
+    "79a0208b5dcdfb9872442b3f77766568d6a712ba7145d728e000baac8fa736f1c1f8fd1f6148445efc6d3485c2d159a0de9416b5f9fb3aaed3425a213a4a9270"
+    "d45520fbb00810023174188d0e5676201c29fb3d1d2d3c3b80605f325b7c07ee43a8d5a8fa474f6b40ec2ee8f3d07186c306e381133020d8dcec23959a5b60ea"
+
     "edf73585f1363011ba4235919b4265713d3943e3a93996822408ee4c99403a52c81d7cbf23d261aabeefeb41d2bb9b5ad26c4c1a0c6af7e27a4e092654c8e967"
     "91340f269b2aefb4df0e9999dc3664ded7d1758a7257da1268f95ced5f549a1883127b7260657a2ee0782922e7848fb3fac4ae05d822c793ecc9f2c1be9d4b5f"
     "9b8f4c92e9e0265e77ec9ad469092d0a1f5d657ec2d6a91c4aed344bc56909acc6e115a21eb9f225fa452432bc4f69c0584e7fc38d4f72a6c711631c0a8105cd"
@@ -84,22 +86,6 @@ prepare() {
         cat "${srcdir}/config.x86_64" > .config
     else
         cat "${srcdir}/config" > .config
-    fi
-
-    if [ "$_enable_NUMA" = "n" ]; then
-        if [ "${CARCH}" = "x86_64" ]; then
-            sed -i -e "s/CONFIG_NUMA=y/# CONFIG_NUMA is not set/" \
-                -i -e "/CONFIG_AMD_NUMA=y/d" \
-                -i -e "/CONFIG_X86_64_ACPI_NUMA=y/d" \
-                -i -e "/CONFIG_NODES_SPAN_OTHER_NODES=y/d" \
-                -i -e "/# CONFIG_NUMA_EMU is not set/d" \
-                -i -e "/CONFIG_NODES_SHIFT=6/d" \
-                -i -e "/CONFIG_NEED_MULTIPLE_NODES=y/d" \
-                -i -e "/# CONFIG_MOVABLE_NODE is not set/d" \
-                -i -e "/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d" \
-                -i -e "/CONFIG_ACPI_NUMA=y/d" \
-                .config
-        fi
     fi
 
     sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
