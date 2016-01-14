@@ -4,7 +4,7 @@ pkgname=php56-apcu
 _pkgbase="${pkgname#php56-}"
 _phpbase="${pkgname/-apcu}"
 pkgver=4.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A userland caching module for php56"
 arch=('i686' 'x86_64')
 url="https://pecl.php.net/package/APCu"
@@ -12,6 +12,7 @@ license=('PHP')
 depends=('php56>=5.6.17-3')
 provides=("php-${_pkgbase}=${pkgver}-${pkgrel}")
 backup=("etc/php56/conf.d/apcu.ini")
+install=php56-apcu.install
 source=("https://pecl.php.net/get/${_pkgbase}-${pkgver}.tgz")
 md5sums=('e52d930a050066025095e2a448fd3cab')
 
@@ -33,3 +34,5 @@ package() {
 	install -D -m644 apc.php "${pkgdir}/usr/share/php56-apcu/apc.php"
 	install -D -m644 INSTALL "${pkgdir}/usr/share/doc/php56-apcu/install.txt"
 }
+
+# vim:set ts=2 sw=2 et:
