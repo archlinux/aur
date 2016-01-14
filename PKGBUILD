@@ -1,8 +1,8 @@
 # Maintainer: Geoffrey Frogeye <geoffrey+aur@frogeye.fr>
 
 pkgname=check-sieve
-pkgver=0.3
-_gitver=682d96738d26291b76a908b094d125877d30e1a2
+pkgver=0.4
+_gitver=4001ecd843992aad94b94afebc8ba32e6e7b4ac5
 pkgrel=1
 pkgdesc="Syntax checker for mail sieves."
 arch=('i686' 'x86_64')
