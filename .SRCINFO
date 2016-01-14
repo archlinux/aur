@@ -1,6 +1,6 @@
 pkgbase = openssh-selinux
 	pkgdesc = Free version of the SSH connectivity tools with SELinux support
-	pkgver = 7.1p1
+	pkgver = 7.1p2
 	pkgrel = 1
 	url = http://www.openssh.org/portable.html
 	install = install
@@ -16,22 +16,22 @@ pkgbase = openssh-selinux
 	depends = libselinux
 	optdepends = xorg-xauth: X11 forwarding
 	optdepends = x11-ssh-askpass: input passphrase in X
-	provides = openssh=7.1p1-1
-	provides = selinux-openssh=7.1p1-1
+	provides = openssh=7.1p2-1
+	provides = selinux-openssh=7.1p2-1
 	conflicts = openssh
 	conflicts = selinux-openssh
 	backup = etc/ssh/ssh_config
 	backup = etc/ssh/sshd_config
 	backup = etc/pam.d/sshd
-	source = ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-7.1p1.tar.gz
-	source = ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-7.1p1.tar.gz.asc
+	source = ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-7.1p2.tar.gz
+	source = ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-7.1p2.tar.gz.asc
 	source = sshdgenkeys.service
 	source = sshd@.service
 	source = sshd.service
 	source = sshd.socket
 	source = sshd.conf
 	source = sshd.pam
-	sha1sums = ed22af19f962262c493fcc6ed8c8826b2761d9b6
+	sha1sums = 9202f5a2a50c8a55ecfb830609df1e1fde97f758
 	sha1sums = SKIP
 	sha1sums = cc1ceec606c98c7407e7ac21ade23aed81e31405
 	sha1sums = 6a0ff3305692cf83aca96e10f3bb51e1c26fccda
