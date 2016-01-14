@@ -96,6 +96,4 @@ package() {
 
   # Create symbolic link for to /usr/share/javascript
   ln -s /usr/share/javascript $pkgdir/usr/share/webapps/${pkgname}/html/javascript
-
-  rm ${pkgdir}/usr/share/webapps/fusiondirectory/include/class_databaseManagement.inc
 }
