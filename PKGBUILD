@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=bios_extract-git
-pkgver=r115.196c28b
+pkgver=r117.a257643
 pkgrel=1
 pkgdesc='Tool for extracting individual modules from proprietary BIOS images'
 arch=(i686 x86_64)
