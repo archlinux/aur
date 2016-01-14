@@ -8,15 +8,12 @@
 _pkgname=ffmpeg
 pkgname=ffmpeg-headless
 pkgver=2.8.4
-pkgrel=1
+pkgrel=1.1
 epoch=1
 pkgdesc='The FFmpeg media toolkit optimised for server (headless) systems'
 arch=('i686' 'x86_64')
 url='http://ffmpeg.org/'
 license=('GPL3')
-provides=("ffmpeg=${pkgver}-${pkgrel}")
-conflicts=("ffmpeg")
-replaces=("ffmpeg")
 depends=('bzip2' 'fontconfig' 'fribidi' 'gnutls' 'gsm' 'lame' 'libass'
          'libbluray' 'libmodplug' 'libtheora' 'libwebp' 'opencore-amr'
          'openjpeg' 'opus' 'schroedinger' 'speex' 'v4l-utils' 'xvidcore' 'zlib'
@@ -25,7 +22,9 @@ depends=('bzip2' 'fontconfig' 'fribidi' 'gnutls' 'gsm' 'lame' 'libass'
 makedepends=('hardening-wrapper' 'yasm')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
-          'libswscale.so')
+          'libswscale.so' 'ffmpeg=${pkgver}-${pkgrel}')
+conflicts=('ffmpeg')
+replaces=('ffmpeg')
 source=(http://ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.bz2)
 sha256sums=('83cc8136a7845546062a43cda9ae3cf0a02f43ef5e434d2f997f055231a75f8e')
 
