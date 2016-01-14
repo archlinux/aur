@@ -1,6 +1,6 @@
 pkgname=fusiondirectory-plugin-freeradius-schema
-pkgver=1.0.9.1
-pkgver=1.0.9.1
+pkgver=1.0.9.2
+pkgver=1.0.9.2
 pkgrel=1
 pkgdesc="LDAP schema for FusionDirectory freeradius plugin"
 arch=("any")
@@ -11,7 +11,7 @@ depends=("fusiondirectory-schema>=$pkgver")
 
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
 "http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-${pkgver}.tar.gz")
-md5sums=('9343182b92e3e8a2a14654ec37a16117' '53720c4bef3494d549ac0986f05ccfb1')
+md5sums=('e6d29278191de3288efdb7d43dd25d98' '07ba5c23c6ea6d1aa15d24d828841acf')
 
 package() {
 cd ./fusiondirectory-plugins-${pkgver}
