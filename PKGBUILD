@@ -2,8 +2,8 @@
 
 pkgname=brutha
 pkgver=1.0.2
-pkgrel=1
-pkgdesc="Sync FLAC music files to Ogg Vorbis (or keep lossy as-is)"
+pkgrel=2
+pkgdesc="Batch synchronization of FLAC to Ogg Vorbis with optional down-sampling and straight copy of others"
 arch=('any')
 url="http://git.p.engu.in/laurentb/brutha/"
 license=('GPL')
