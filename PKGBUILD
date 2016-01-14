@@ -7,7 +7,7 @@ pkgbase=subliminal-git
 pkgname=('python-subliminal-git' 'python2-subliminal-git'
          'nautilus-subliminal-git'
          'python-subliminal-git-docs')
-pkgver=1.1.0.r761.d62a09b
+pkgver=1.1.1.r790.615185e
 pkgrel=1
 epoch=2
 pkgdesc="Python library and CLI tool for searching and downloading subtitles."
@@ -18,14 +18,14 @@ makedepends=('git' 'python-setuptools' 'python2-setuptools'
 	     'python-sphinx' 'gettext')
 #checkdepends=('python2-sympy' 'python-sympy' 'python2-pytest' 'python-pytest'
 #	      'python2-mock')
-source=("${_gitname}::git+${_gitroot}.git#branch=develop"
+source=("${_gitname}::git+${_gitroot}.git#branch=master"
         'sphinx-manpages.patch')
 md5sums=('SKIP'
          'd63a79b506a7d4adea15112fe46f321b')
 
 pkgver() {
   cd ${_gitname}
-  printf "1.1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "1.1.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
