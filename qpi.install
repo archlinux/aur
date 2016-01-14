@@ -1,9 +1,9 @@
 _sdktool="/usr/libexec/qtcreator/sdktool"
 
 ## arg 1:  the new package version
-#pre_install() {
-	# do something here
-#}
+pre_install() {
+    echo ""
+}
 
 ## arg 1:  the new package version
 post_install() {
@@ -53,15 +53,15 @@ ${_sdktool} addKit \
 
 ## arg 1:  the new package version
 ## arg 2:  the old package version
-#pre_upgrade() {
-	# do something here
-#}
+pre_upgrade() {
+    echo ""
+}
 
 ## arg 1:  the new package version
 ## arg 2:  the old package version
-#post_upgrade() {
-	# do something here
-#}
+post_upgrade() {
+    echo ""
+}
 
 ## arg 1:  the old package version
 pre_remove() {
@@ -84,6 +84,7 @@ ${_sdktool} rmDev \
 #pre_remove
 
 ## arg 1:  the old package version
-#post_remove() {
+post_remove() {
+    echo ""
 	# do something here
-#}
+}
