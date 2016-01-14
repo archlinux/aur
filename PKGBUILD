@@ -1,6 +1,6 @@
 # Maintainer: K1412 <jonathan@opensides.be>
 pkgname=fusiondirectory-schema
-pkgver=1.0.9.1
+pkgver=1.0.9.2
 pkgrel=1
 pkgdesc="LDAP core schemas and insert script."
 arch=('any')
@@ -12,7 +12,7 @@ depends=("schema2ldif")
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-${pkgver}.tar.gz"
         'fixes-openldap-path.patch')
 
-md5sums=('53720c4bef3494d549ac0986f05ccfb1'
+md5sums=('07ba5c23c6ea6d1aa15d24d828841acf'
          'd1126008d8486f24f4c081256ac2a7e4')
 
 prepare() {
