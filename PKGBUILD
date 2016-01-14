@@ -2,8 +2,8 @@
 # Maintainer: Pablo Lezaeta <prflr88@gmail.com_
 
 pkgname=dracut
-pkgver=043
-pkgrel=4
+pkgver=044
+pkgrel=1
 pkgdesc="Generic, modular, cross-distribution initramfs generation tool"
 arch=("i686" "x86_64")
 url="https://dracut.wiki.kernel.org/"
