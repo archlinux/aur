@@ -21,6 +21,7 @@ build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   php /usr/bin/composer install --prefer-dist --no-dev
   cp box.json.dist box.json
+  sed -i '/git-commit/d' box.json
   php -d phar.readonly=Off /usr/bin/php-box build
 }
 
