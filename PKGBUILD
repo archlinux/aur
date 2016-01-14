@@ -37,10 +37,17 @@ pkgdesc="Cross compile Qt for the Raspberry Pi${_piver}"
 arch=("x86_64")
 url="http://www.qt.io"
 license=("LGPL3")
-makedepends=("git" "pkgconfig" "gcc" "qpi-toolchain")
-source=("git://github.com/qtproject/qtquickcontrols2.git" "git://github.com/sirspudd/mkspecs.git" "https://download.qt.io/development_releases/qt/5.6/${_pkgver}/single/${_pipkgname}.tar.gz")
-sha256sums=("SKIP" "SKIP" "d69103ec34b3775edfa47581b14ee9a20789d4b0d7d26220fb92f2cd32eb06f9")
+depends=("qpi-toolchain" "qtcreator")
+makedepends=("git" "pkgconfig" "gcc")
+source=("git://github.com/sirspudd/mkspecs.git" "https://download.qt.io/development_releases/qt/5.6/${_pkgver}/single/${_pipkgname}.tar.gz")
+sha256sums=("SKIP" "d69103ec34b3775edfa47581b14ee9a20789d4b0d7d26220fb92f2cd32eb06f9")
 options=('!strip')
+install=qpi.install
+_device_configure_flags=""
+
+if [[ ${_piver} = "1" ]]; then
+  _device_configure_flags="-skip qtwebengine -no-icu"
+fi
 
 build() {
   local _srcdir="${srcdir}/${_pipkgname}"
@@ -66,12 +73,32 @@ build() {
   # -developer-build \
   # -separate-debug-info \
 
+  # Chromium requires python2 to be the system python on your build host
+  # I literally symlink /usr/bin/python to /usr/bin/python2 on arch
+
+  # patch
+  local _webenginefileoverride="${_srcdir}/qtwebengine/tools/qmake/mkspecs/features/functions.prf"
+  sed -i "s/linux-clang/linux*/" ${_webenginefileoverride}
+  local _reducerelocations="${_srcdir}/qtbase/config.tests/unix/bsymbolic_functions.test"
+  sed -i "s/error/warning/" ${_reducerelocations}
+
+  # end patch
+
+  # Breaks in qtwayland
+  # -qtnamespace Pi \
+
   ${_srcdir}/configure \
     -qreal float \
     -release \
     -silent \
     -confirm-license \
     -opensource \
+    -qtlibinfix Pi \
+    -reduce-exports \
+    -reduce-relocations \
+    -pch \
+    -ltcg \
+    -no-compile-examples \
     -hostprefix ${_installprefix} \
     -prefix ${_installprefix} \
     -opengl es2 \
@@ -87,7 +114,8 @@ build() {
     \
     -sysroot ${_sysroot} \
     -device ${_mkspec} \
-    -device-option CROSS_COMPILE=/opt/arm-sirspuddarch-linux-gnueabihf/bin/arm-sirspuddarch-linux-gnueabihf-
+    -device-option CROSS_COMPILE=/opt/arm-sirspuddarch-linux-gnueabihf/bin/arm-sirspuddarch-linux-gnueabihf- \
+    ${_device_configure_flags}
 
   make
 
@@ -97,12 +125,6 @@ build() {
   cp -r "${_srcdir}/qtwayland" "${_bindir}"
   cd "${_bindir}/qtwayland"
   ${_bindir}/qtbase/bin/qmake CONFIG+=wayland-compositor
-  make
-
-  # temp hack
-  cp -r "${srcdir}/qtquickcontrols2" "${_bindir}"
-  cd "${_bindir}/qtquickcontrols2"
-  ${_bindir}/qtbase/bin/qmake
   make
 }
 
@@ -114,16 +136,11 @@ package() {
   rm -Rf ${pkgdir}
   mkdir -p ${pkgdir}
 
-  # FIXME: installs both host/target bin/libs to pi path
   cd "${_bindir}"
   INSTALL_ROOT="$pkgdir" make install
 
   # regrettably required
   cd "${_bindir}/qtwayland"
-  INSTALL_ROOT="$pkgdir" make install
-
-  # temp hack
-  cd "${_bindir}/qtquickcontrols2"
   INSTALL_ROOT="$pkgdir" make install
 
   # Qt is now installed to $pkgdir/$sysroot/$prefix
