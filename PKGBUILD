@@ -1,35 +1,39 @@
-# $Id: PKGBUILD 228056 2014-12-26 11:57:24Z bpiotrowski $
-# Maintainer:  Ionut Biru <ibiru@archlinux.org>
-# Maintainer:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# $Id$
+# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # Contributor: Paul Mattal <paul@archlinux.org>
 
+_pkgname=ffmpeg
 pkgname=ffmpeg-headless
-pkgver=2.8.1
-pkgrel=1
+pkgver=2.8.4
+pkgrel=0.1
 epoch=1
 pkgdesc='The FFmpeg media toolkit optimised for server (headless) systems'
 arch=('i686' 'x86_64')
 url='http://ffmpeg.org/'
-license=('GPL')
-provides=("ffmpeg=$pkgver-$pkgrel")
+license=('GPL3')
+provides=("ffmpeg=${pkgver}-${pkgrel}")
 conflicts=("ffmpeg")
 replaces=("ffmpeg")
-depends=(
-      'bzip2' 'fontconfig' 'gnutls' 'gsm' 'lame' 'libass'
-      'libbluray' 'libmodplug' 'libtheora' 'libvorbis' 'libvpx'
-      'opencore-amr' 'openjpeg' 'opus' 'rtmpdump' 'schroedinger' 'speex'
-      'v4l-utils' 'libx264' 'xvidcore' 'zlib' 'x265>=1.7' 'fribidi' 'libfdk-aac'
-)
-makedepends=('yasm' 'hardening-wrapper')
-source=(http://ffmpeg.org/releases/ffmpeg-$pkgver.tar.bz2)
-md5sums=('63b2cfeea930e942ff7579fd0064c5be')
+depends=('bzip2' 'fontconfig' 'fribidi' 'gnutls' 'gsm' 'lame' 'libass'
+         'libbluray' 'libmodplug' 'libtheora' 'libwebp' 'opencore-amr'
+         'openjpeg' 'opus' 'schroedinger' 'speex' 'v4l-utils' 'xvidcore' 'zlib'
+         'libvorbis.so' 'libvorbisenc.so' 'libvpx.so' 'libx264.so' 'libx265.so'
+         'rtmpdump' 'libfdk-aac')
+makedepends=('hardening-wrapper' 'yasm')
+provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
+          'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
+          'libswscale.so')
+source=(http://ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.bz2)
+sha256sums=('83cc8136a7845546062a43cda9ae3cf0a02f43ef5e434d2f997f055231a75f8e')
 
 build() {
-  cd ffmpeg-$pkgver
+  cd ${_pkgname}-${pkgver}
 
   ./configure \
-    --prefix=/usr \
+    --prefix='/usr' \
     --disable-debug \
     --disable-static \
     --disable-stripping \
@@ -49,28 +53,30 @@ build() {
     --enable-libopencore_amrwb \
     --enable-libopenjpeg \
     --enable-libopus \
-    --enable-librtmp \
     --enable-libschroedinger \
     --enable-libspeex \
     --enable-libtheora \
     --enable-libv4l2 \
     --enable-libvorbis \
     --enable-libvpx \
+    --enable-libwebp \
     --enable-libx264 \
     --enable-libx265 \
     --enable-libxvid \
-    --enable-runtime-cpudetect \
     --enable-shared \
-    --enable-swresample \
     --enable-version3 \
     --enable-libfdk_aac \
-    --enable-nonfree
+    --enable-librtmp \
+    --enable-runtime-cpudetect \
+    --enable-swresample \
+    --enable-nonfree \
+    --disable-demuxer='hls' --disable-protocol='concat,hls' # FS#47738
 
   make
-  make doc/ff{mpeg,server}.1
+  make doc/ff{mpeg,play,server}.1
 }
 
 package() {
-  cd ffmpeg-$pkgver
-  make DESTDIR="$pkgdir" install install-man
+  cd ${_pkgname}-${pkgver}
+  make DESTDIR="${pkgdir}" install install-man
 }
