@@ -3,9 +3,9 @@
 # Contributor: 網軍總司令
 
 pkgname=librime
-pkgver=1.2.20151020
-_commit=4734375c32a790f469f432838e5d507129739ea4
-pkgrel=2
+pkgver=1.2.20151217
+_commit=d4015e5ba806e41a67c1b59628eeb63cf3531904
+pkgrel=1
 pkgdesc="Rime input method engine"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/rimeime/"
