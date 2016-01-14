@@ -1,30 +1,30 @@
-# Maintainer: Justin Dray <justin@dray.be>
+# Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
 # Contributor: Gilles Hamel <hamelg at laposte dot net>
 
 pkgname=grafana
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A general purpose dashboard and graph composer. It supports graphite, influxdb or opentsdb"
 url="http://grafana.org"
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'armv5h' 'armv6h' 'armv7h')
 license=('APACHE')
 depends=()
-makedepends=(git go godep nodejs-grunt-cli npm phantomjs)
+makedepends=("git" "go" "godep" "nodejs-grunt-cli" "npm" "phantomjs")
 install=${pkgname}.install
 backup=("etc/${pkgname}/${pkgname}.ini")
-source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
         "config.patch"
         "grafana.service")
-md5sums=('f143f0e1b4d49d3472057370fc7d90d8'
-         'f676cfe7bdd2463e2600ff8fce75a2d6'
-         '05508c9c21f4c93ad86944a52d37e925')
+sha512sums=('1690e690fceb3107fc9f88b9da732a6ebea43e404c94afa12fab5c186c06161f09bb3f93ca7f6dee15ac1129baca8c40fd822a090178b468cae2fa0e062ef267'
+            'e2359ecbc64ba6e54a261101f9fdf05f364a9df4fe60ba6658f3cf75ea86b80da7b159d4f9e7e3f8f8b64a5d89b36daa6024b82e3ca2097177670838868caedb'
+            '2fdb8eda4671a81cc7674f471a20f37cd2078123838a80c3906777da3b6a8602caf5bcb65a23038a67b70f556d43cd8db7982a8dc7f3ee317ce1634e4c7409f7')
 
- prepare () {
+prepare () {
 	 cd "${pkgname}-${pkgver}"
 	 patch -p1 -i "${srcdir}"/config.patch
- }
+}
 
- build() {
+build() {
 	 export GOPATH="${srcdir}"/${pkgname}-${pkgver}
 	 export PATH="$PATH:$GOPATH/bin"
 	 cd "$GOPATH"
@@ -47,9 +47,9 @@ md5sums=('f143f0e1b4d49d3472057370fc7d90d8'
 	 # no longer doing package build since this just kicks off rpm/deb builds at the end.
 	 #go run build.go build package
 	 go run build.go build
- }
+}
 
- package() {
+package() {
 	 install -Dm644 "${srcdir}/grafana.service" "$pkgdir/usr/lib/systemd/system/grafana.service"
 	 cd "${srcdir}/${pkgname}-${pkgver}"
 	 install -dm755 "${pkgdir}/var/lib/grafana"
@@ -59,4 +59,4 @@ md5sums=('f143f0e1b4d49d3472057370fc7d90d8'
 	 install -Dm644 conf/defaults.ini "$pkgdir/usr/share/grafana/conf/defaults.ini"
 	 cp -r vendor "$pkgdir/usr/share/grafana/"
 	 cp -r public_gen "$pkgdir/usr/share/grafana/public"
- }
+}
