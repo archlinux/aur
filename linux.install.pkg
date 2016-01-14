@@ -2,13 +2,13 @@
 # arg 2:  the old package version
 
 KERNEL_NAME=-bcm4350
-KERNEL_VERSION=4.3.0-rc7-bcm4350
+KERNEL_VERSION=4.4.0-bcm4350
 
 post_install () {
   # updating module dependencies
   echo ">>> Updating module dependencies. Please wait ..."
   depmod ${KERNEL_VERSION}
-  echo ">>> Generating initial ramdisk, using mkinitcpio.  Please wait..."
+  echo ">>> Generating initial ramdisk, using mkinitcpio. Please wait..."
   mkinitcpio -p linux${KERNEL_NAME}
 }
 
@@ -20,7 +20,7 @@ post_upgrade() {
   # updating module dependencies
   echo ">>> Updating module dependencies. Please wait ..."
   depmod ${KERNEL_VERSION}
-  echo ">>> Generating initial ramdisk, using mkinitcpio.  Please wait..."
+  echo ">>> Generating initial ramdisk, using mkinitcpio. Please wait..."
   mkinitcpio -p linux${KERNEL_NAME}
 
   if [ $(vercmp $2 3.13) -lt 0 ]; then

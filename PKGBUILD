@@ -18,8 +18,8 @@ _localmodcfg=
 
 pkgbase=linux-bcm4350               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcname=linux-4.3
-pkgver=4.3.3
+_srcname=linux-4.4
+pkgver=4.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -28,28 +28,21 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+#        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+#        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        '0001-bcm4350.patch'
-        '0002-Add-DC6-disabling-as-a-power-well.patch'
-        '0003-HID-multitouch-Do-not-fetch-initial-feature-reports-for-Win8-devices.patch')
+)
 
-sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
+sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            '95cd81fcbb87953f672150d60950548edc04a88474c42de713b91811557fefa5'
-            'SKIP'
-            'f4084c6d43abc40819f4535f827d3d8e643d25e67fedf0bab46346ead8c08b84'
-            '98caa62b4759f6ae180660cc1be4aeda7198e50fb7cf51aee4e677ae6ee2d19e'
+            'd402c67f5a7334ac9e242344055ef4ac63fe43a1d8f1cda82eddd59d7242a63e'
+            'ddeadf2910deb0803d4d4920c4dc7f07d3fb63bca564073aeb5f6181358f20d7'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '7a3763a7dcdfada7edda636860ee125e270a9542d70c496edf9850c02a25baad'
-            '7bf515ca1fc1c432999f7c5227d77d7c0429eaabbc48bc887383119bbeca2dd4'
-            '7bbd0fb7f0d82d982b0f8ff1299e67c9d40f43dcb8054bd8553396c0e8b2b2c5')
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -61,7 +54,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+#  patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -70,14 +63,6 @@ prepare() {
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
-
-  #add support for Broadcom 4350 wifi adapter
-  patch -p1 -i "${srcdir}/0001-bcm4350.patch"
-
-  # prevent intel graffics to fail on skylake
-  patch -p1 -i "${srcdir}/0002-Add-DC6-disabling-as-a-power-well.patch"
-
-  patch -p1 -i "${srcdir}/0003-HID-multitouch-Do-not-fetch-initial-feature-reports-for-Win8-devices.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
@@ -91,26 +76,29 @@ prepare() {
   fi
 
   # set extraversion to pkgrel
-  sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
+  #sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
 
-  # get kernel version
-  make prepare
+  make olddefconfig 
+ 
 
   ### Optionally load needed modules for the make localmodconfig
 	# See https://aur.archlinux.org/packages/modprobed-db
-	if [ -n "$_localmodcfg" ]; then
-		msg "If you have modprobed-db installed, running it in recall mode now"
-		if [ -e /usr/bin/modprobed-db ]; then
-			[[ ! -x /usr/bin/sudo ]] && echo "Cannot call modprobe with sudo.  Install via pacman -S sudo and configure to work with this user." && exit 1
-			sudo /usr/bin/modprobed-db recall
-		fi
-		msg "Running Steven Rostedt's make localmodconfig now"
-		make localmodconfig
-	fi
+  if [ -n "$_localmodcfg" ]; then
+    msg "If you have modprobed-db installed, running it in recall mode now"
+    if [ -e /usr/bin/modprobed-db ]; then
+      [[ ! -x /usr/bin/sudo ]] && echo "Cannot call modprobe with sudo.  Install via pacman -S sudo and configure to work with this user." && exit 1
+      sudo /usr/bin/modprobed-db recall
+    fi
+    msg "Running Steven Rostedt's make localmodconfig now"
+    make localmodconfig
+  fi
 
+  # get kernel version
+  make prepare
+ 
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
   #make menuconfig # CLI menu for configuration
