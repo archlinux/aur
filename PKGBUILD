@@ -2,7 +2,7 @@
 
 pkgname='vimiv-git'
 pkgrel=1
-pkgver=r57.a2640bd
+pkgver=r59.a5f091b
 pkgdesc="An image viewer with vim-like keybindings"
 arch=('any')
 url="https://github.com/karlch/vimiv"
