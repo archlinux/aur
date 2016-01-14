@@ -1,4 +1,4 @@
-# Maintainer: Thomas Baag <pkgbuild@spam.b2ag.de>
+# Maintainer: Thomas Baag <aur@spam.b2ag.de>
 pkgname=ballerburg
 pkgver=1.2.0
 pkgrel=1
@@ -7,8 +7,8 @@ arch=("x86_64")
 url="http://baller.tuxfamily.org/"
 license=('GPL')
 groups=()
-depends=('cmake')
-makedepends=()
+depends=('sdl')
+makedepends=('cmake')
 optdepends=()
 provides=()
 conflicts=()
