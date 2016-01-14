@@ -63,7 +63,7 @@ makedepends=('libexif'
              )
 makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
 optdepends=('chromium-pepper-flash-dev: PPAPI Flash Player (Dev Channel)'
-            'chromium-widevine-flash-dev: Widevine plugin (eg: Netflix) (Dev Channel)'
+            'chromium-widevine-dev: Widevine plugin (eg: Netflix) (Dev Channel)'
             #
             'kdebase-kdialog: Needed for file dialogs in KDE4'
             'kwalletmanager4: Needed for storing passwords in KWallet in KDE4'
