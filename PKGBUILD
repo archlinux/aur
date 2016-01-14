@@ -1,7 +1,7 @@
 # Maintainer: Kevin MacMartin <prurigro@gmail.com>
 
 pkgname=ircd-ratbox
-pkgver=3.0.9
+pkgver=3.0.10
 pkgrel=1
 pkgdesc='An advanced, stable and fast ircd'
 url='http://www.ratbox.org'
@@ -17,7 +17,7 @@ source=(
   "$pkgname.conf"
 )
 sha512sums=(
-  '83976ecfef971136ec98742c8e387e8aba9660935c75b1aa57e742402d13f8931cf9448f4e7c7d9ba47825fcce2090678bea1d0a74bd359ce662748468fa2c7d'
+  'c9a3980f0d5c0bf7ff3f3da90bfeba21b4436f5e026b4d6d3875b8e1f42e0ba40418908a39f43f1cfba7f563c4aa3853d965678a8afb61aa1b56298e3d85f710'
   '2d2875c4d591ccea3524b20e4f5f1a340916d9d939bcbadc71c49ec35694abfa3759b7d6eb549df6bcc2b1cfab17876e6de5b6f2692462e04fe18a114314ba7d'
   '31e3719eb994e269c6ff3f3cc437674b72c8f621004feb8557c7d62bfad7d1d6def5ae56413c3eda4f7f51ed50a4c54910c5c64fd7da96b091733ecd3db0bde8'
 )
