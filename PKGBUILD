@@ -39,8 +39,8 @@ url="http://www.qt.io"
 license=("LGPL3")
 depends=("qpi-toolchain" "qtcreator")
 makedepends=("git" "pkgconfig" "gcc")
-source=("git://github.com/qtproject/qtquickcontrols2.git" "git://github.com/sirspudd/mkspecs.git" "https://download.qt.io/development_releases/qt/5.6/${_pkgver}/single/${_pipkgname}.tar.gz")
-sha256sums=("SKIP" "SKIP" "d69103ec34b3775edfa47581b14ee9a20789d4b0d7d26220fb92f2cd32eb06f9")
+source=("git://github.com/sirspudd/mkspecs.git" "https://download.qt.io/development_releases/qt/5.6/${_pkgver}/single/${_pipkgname}.tar.gz")
+sha256sums=("SKIP" "d69103ec34b3775edfa47581b14ee9a20789d4b0d7d26220fb92f2cd32eb06f9")
 options=('!strip')
 install=qpi.install
 
@@ -108,14 +108,6 @@ build() {
   cd "${_bindir}/qtwayland"
   ${_bindir}/qtbase/bin/qmake CONFIG+=wayland-compositor
   make
-
-  # temp hack for Qt 5.6.0-beta
-  local _controlspath="${_bindir}/qtquickcontrols2/"
-  cd "${srcdir}/qtquickcontrols2"
-  git checkout-index -a -f --prefix=${_controlspath}
-  cd ${_controlspath}
-  ${_bindir}/qtbase/bin/qmake
-  make
 }
 
 package() {
@@ -131,10 +123,6 @@ package() {
 
   # regrettably required
   cd "${_bindir}/qtwayland"
-  INSTALL_ROOT="$pkgdir" make install
-
-  # temp hack for Qt 5.6.0-beta
-  cd "${_bindir}/qtquickcontrols2"
   INSTALL_ROOT="$pkgdir" make install
 
   # Qt is now installed to $pkgdir/$sysroot/$prefix
