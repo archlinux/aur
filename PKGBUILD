@@ -12,6 +12,8 @@ depends=("apache" "smarty3" "smarty3-i18n" "prototype" "scriptaculous" "schema2l
 "php-imagick" "php-ldap" "php-pear" "php-gd" "php-imap" "php-apache" "php-mcrypt")
 install=${pkgname}.install
 
+backup=('etc/fusiondirectory-apache.conf')
+
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-${pkgver}.tar.gz"
         "fixes-path.patch"
         "fixes-apache-path.patch"
