@@ -3,7 +3,7 @@
 
 pkgname=('seafile-server' 'seafile-client-cli' 'seafile-shared')
 pkgver=5.0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Seafile is an online file storage and collaboration tool"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="https://github.com/haiwen/seafile/"
