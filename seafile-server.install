@@ -27,25 +27,8 @@ post_install() {
 }
 
 pre_upgrade() {
-    virtualenv2 --system-site-packages /usr/lib/seafile/seafileenv
-    virtualenv2 --relocatable /usr/lib/seafile/seafileenv
-    source /usr/lib/seafile/seafileenv/bin/activate
-
-    pip install --upgrade chardet
-    pip install --upgrade simplejson
-    pip install --upgrade six
-    pip install --upgrade python-dateutil
-    pip install --upgrade django-pipeline
-    pip install --upgrade "Django>=1.5.8,<1.6"
-    pip install --upgrade http://effbot.org/media/downloads/PIL-1.1.7.tar.gz
-    pip install --upgrade "https://github.com/djblets/djblets/archive/release-0.6.14.zip#egg=Djblets"
-    pip install --upgrade  "Pillow>=2.6.1,<3.0.0"
-    pip install --upgrade gunicorn
-    pip install "django-compressor==1.4"
-    pip install "django-statici18n==1.1.2"
-    pip install --upgrade "git+git://github.com/haiwen/django-constance.git@bde7f7cdfd0ed1631a6817fd4cd76f37bf54fe35#egg=django-constance[database]"
-    pip install --upgrade "openpyxl==2.3.0"
-    deactivate
+    rm -rf /usr/lib/seafile/seafileenv
+    pre_install
 }
 
 post_upgrade() {
