@@ -29,7 +29,7 @@ sha256sums=('c0172ef8273c4be9322a52b6e503c8bf442ce74028605e198ed5d7e6d090ba86'
 validpgpkeys=('6113D89CA825C5CEDD02C87273B35DA54ACB7D10')
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}/extras/kdf-keys
+  cd ${srcdir}/${pkgbase}-${pkgver}/extras/kdf-keys
   make
 }
 
