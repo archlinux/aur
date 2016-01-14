@@ -67,7 +67,6 @@ build() {
     --enable-version3 \
     --enable-librtmp \
     --enable-runtime-cpudetect \
-    --enable-swresample \
     --disable-demuxer='hls' --disable-protocol='concat,hls' # FS#47738
 
   make
