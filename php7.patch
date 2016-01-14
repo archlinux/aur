@@ -1,0 +1,59 @@
+# Based on:
+# https://github.com/fruux/sabre-dav/commit/c9f3e7d2be11872eb36873c5410bac476d815871
+# https://github.com/netgusto/Baikal/issues/420#issuecomment-170257207
+--- vendor/sabre/dav/lib/Sabre/CalDAV/CalendarQueryValidator.php.orig	2014-11-17 11:57:29.000000000 +0100
++++ vendor/sabre/dav/lib/Sabre/CalDAV/CalendarQueryValidator.php	2016-01-14 16:09:17.019090596 +0100
+@@ -59,7 +59,7 @@
+ 
+         foreach($filters as $filter) {
+ 
+-            $isDefined = isset($parent->$filter['name']);
++            $isDefined = isset($parent->{$filter['name']});
+ 
+             if ($filter['is-not-defined']) {
+ 
+@@ -75,7 +75,7 @@
+             }
+ 
+             if ($filter['time-range']) {
+-                foreach($parent->$filter['name'] as $subComponent) {
++                foreach($parent->{$filter['name']} as $subComponent) {
+                     if ($this->validateTimeRange($subComponent, $filter['time-range']['start'], $filter['time-range']['end'])) {
+                         continue 2;
+                     }
+@@ -89,7 +89,7 @@
+ 
+             // If there are sub-filters, we need to find at least one component
+             // for which the subfilters hold true.
+-            foreach($parent->$filter['name'] as $subComponent) {
++            foreach($parent->{$filter['name']} as $subComponent) {
+ 
+                 if (
+                     $this->validateCompFilters($subComponent, $filter['comp-filters']) &&
+@@ -128,7 +128,7 @@
+ 
+         foreach($filters as $filter) {
+ 
+-            $isDefined = isset($parent->$filter['name']);
++            $isDefined = isset($parent->{$filter['name']});
+ 
+             if ($filter['is-not-defined']) {
+ 
+@@ -144,7 +144,7 @@
+             }
+ 
+             if ($filter['time-range']) {
+-                foreach($parent->$filter['name'] as $subComponent) {
++                foreach($parent->{$filter['name']} as $subComponent) {
+                     if ($this->validateTimeRange($subComponent, $filter['time-range']['start'], $filter['time-range']['end'])) {
+                         continue 2;
+                     }
+@@ -158,7 +158,7 @@
+ 
+             // If there are sub-filters, we need to find at least one property
+             // for which the subfilters hold true.
+-            foreach($parent->$filter['name'] as $subComponent) {
++            foreach($parent->{$filter['name']} as $subComponent) {
+ 
+                 if(
+                     $this->validateParamFilters($subComponent, $filter['param-filters']) &&
