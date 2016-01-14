@@ -1,0 +1,8 @@
+[Unit]
+Description=KMS Emulator Per-Connection
+
+[Service]
+User=nobody
+ExecStart=/usr/bin/vlmcsd
+StandardInput=socket
+StandardOutput=socket

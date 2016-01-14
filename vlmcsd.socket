@@ -1,0 +1,9 @@
+[Unit]
+Description=KMS
+
+[Socket]
+ListenStream=1688
+Accept=yes
+
+[Install]
+WantedBy=sockets.target

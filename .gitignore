@@ -1,0 +1,4 @@
+*.xz
+/vlmcsd
+/pkg
+/src
