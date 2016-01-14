@@ -46,7 +46,7 @@ install=qpi.install
 _device_configure_flags=""
 
 if [[ ${_piver} = "1" ]]; then
-  _device_configure_flags="-skip qtwebengine"
+  _device_configure_flags="-skip qtwebengine -no-icu"
 fi
 
 build() {
@@ -79,7 +79,13 @@ build() {
   # patch
   local _webenginefileoverride="${_srcdir}/qtwebengine/tools/qmake/mkspecs/features/functions.prf"
   sed -i "s/linux-clang/linux*/" ${_webenginefileoverride}
+  local _reducerelocations="${_srcdir}/qtbase/config.tests/unix/bsymbolic_functions.test"
+  sed -i "s/error/warning/" ${_reducerelocations}
+
   # end patch
+
+  # Breaks in qtwayland
+  # -qtnamespace Pi \
 
   ${_srcdir}/configure \
     -qreal float \
@@ -87,6 +93,12 @@ build() {
     -silent \
     -confirm-license \
     -opensource \
+    -qtlibinfix Pi \
+    -reduce-exports \
+    -reduce-relocations \
+    -pch \
+    -ltcg \
+    -no-compile-examples \
     -hostprefix ${_installprefix} \
     -prefix ${_installprefix} \
     -opengl es2 \
