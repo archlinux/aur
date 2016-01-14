@@ -1,7 +1,7 @@
 # Maintainer: Marcin Wieczorek <marcin@marcin.co>
 pkgname=minecraft-shiginima
 pkgver=3.000
-pkgrel=1
+pkgrel=2
 pkgdesc="ShiginimaSE Launcher - Sponge Edition"
 url="http://teamshiginima.com/"
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ depends=('java-runtime')
 source=("http://kosz.marcin.co/ShiginimaSE_v3000.zip" "icon.png" "shiginima.desktop")
 md5sums=('5a741eeb344b25519f928e2da6c10f08'
          '02fafe5e4429ca7aecac5610026f0f86'
-         'eb3c3b3aa91f39eb4c54ba0d6a8da180')
+         '2b6ce6a7ebd3a9a372089d73dd93a33e')
 
 package() {
   cd $srcdir
