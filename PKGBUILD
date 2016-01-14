@@ -7,7 +7,7 @@ arch=("any")
 url="http://fusiondirectory.org/"
 license=("LGPL")
 depends=("apache" "smarty3" "smarty3-i18n" "prototype" "scriptaculous" "schema2ldif" "javascript-common"
-"perl-path-class" "perl-ldap" "perl-mime-base64" "perl-crypt-passwdmd5" "perl-term-readkey" "perl-crypt-rijndael"
+"perl-path-class" "perl-ldap" "perl-mime-base64" "perl-digest-sha" "perl-term-readkey" "perl-crypt-rijndael"
 "perl-crypt-cbc" "perl-file-copy-recursive" "perl-xml-twig" "perl-archive-extract" "perl-extutils-makemaker"
 "php-imagick" "php-ldap" "php-pear" "php-gd" "php-imap" "php-apache" "php-mcrypt" "php-cas")
 install=${pkgname}.install
@@ -20,7 +20,7 @@ source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondire
         "fixes-pear-lib.patch"
         "fixes-headers.patch")
 
-md5sums=('53720c4bef3494d549ac0986f05ccfb1'
+md5sums=('07ba5c23c6ea6d1aa15d24d828841acf'
          "5f92d3e4378d0ea7fda7fa9c8b81d29e"
          "d2e3d7dedf5c436c6d7484dc049f3f7f"
          "0a78917932d864cbaefa0139f90c6ab0"
