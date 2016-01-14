@@ -56,7 +56,7 @@ build() {
 }
 
 package_seafile-client-cli() {
-  depends=("seafile-shared" "ibevent")
+  depends=("seafile-shared" "libevent")
   conflicts=("seafile-shared<${pkgver}")
   pkgdesc="Seafile cli client"
 
