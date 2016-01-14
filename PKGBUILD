@@ -20,7 +20,7 @@ pkgver() {
 }
 
 package() {
-  cd "$_pkgname"
+  cd "$srcdir/$_pkgname"
   make -e package_linux
-  cp -a "$srcdir/$pkgname-$pkgver/package/v$pkgver/." "$pkgdir/"
+  cp -a "$srcdir/$_pkgname/package/v$pkgver/." "$pkgdir/"
 }
