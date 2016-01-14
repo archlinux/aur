@@ -1,10 +1,10 @@
 # Maintainer: Bjarno Oeyen <aur _AT_ bjarno _DOT_ be>
 
 pkgname=game-jolt-client
-pkgrel=1
+pkgrel=2
 pkgver=0.2.0
 pkgdesc="Play games. Make games. Stay indie."
-url="http://game-jolt.com/client"
+url="http://gamejolt.com/client"
 provides=('game-jolt-client')
 arch=('x86_64')
 license=('mit')
