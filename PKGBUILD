@@ -21,7 +21,7 @@ depends=('bzip2' 'fontconfig' 'fribidi' 'gnutls' 'gsm' 'lame' 'libass'
          'libbluray' 'libmodplug' 'libtheora' 'libwebp' 'opencore-amr'
          'openjpeg' 'opus' 'schroedinger' 'speex' 'v4l-utils' 'xvidcore' 'zlib'
          'libvorbis.so' 'libvorbisenc.so' 'libvpx.so' 'libx264.so' 'libx265.so'
-         'rtmpdump' 'libfdk-aac')
+         'rtmpdump')
 makedepends=('hardening-wrapper' 'yasm')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
@@ -65,11 +65,9 @@ build() {
     --enable-libxvid \
     --enable-shared \
     --enable-version3 \
-    --enable-libfdk_aac \
     --enable-librtmp \
     --enable-runtime-cpudetect \
     --enable-swresample \
-    --enable-nonfree \
     --disable-demuxer='hls' --disable-protocol='concat,hls' # FS#47738
 
   make
