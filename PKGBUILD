@@ -1,6 +1,6 @@
 pkgname=otf-xits
 pkgver=1.108
-pkgrel=1
+pkgrel=2
 pkgdesc="An OpenType implementation of STIX fonts with math support"
 arch=('any')
 url="https://github.com/khaledhosny/xits-math"
