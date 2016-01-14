@@ -1,6 +1,6 @@
 pkgbase = track-o-bot-git
 	pkgdesc = Track-o-Bot is a small, easy-to-use app which automatically tracks your Hearthstone matches. No packet sniffing, just parsing HS logs.
-	pkgver = 0.2.1.r138.gb3a6499
+	pkgver = 0.2.1.r266.g3f0e9e1
 	pkgrel = 1
 	url = https://github.com/BOSSoNe0013/track-o-bot
 	install = track-o-bot.install
