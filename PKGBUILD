@@ -1,4 +1,4 @@
-# Maintainer: Sebastian Jug <sebastian.jug@gmail.com>
+# Maintainer: Sebastian Jug <seb@stianj.ug>
 # Contributor: John Reese <jreese@noswap.com>
 # Upstream URL: https://github.com/atom/atom
 #
@@ -7,7 +7,7 @@
 
 pkgname=atom-editor
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Chrome-based text editor from Github'
 arch=('x86_64' 'i686')
 url='https://github.com/atom/atom'
@@ -17,15 +17,11 @@ optdepends=('gvfs: file deletion support')
 makedepends=('git' 'npm')
 conflicts=('atom-editor-bin' 'atom-editor-git')
 install=atom.install
-source=("https://github.com/atom/atom/archive/v${pkgver}.tar.gz"
-        'atom-python.patch')
-sha256sums=('68e0dfca401d21ef69c0378c64def941deb7f6e9769fd0018c544ee544058c66'
-            'f3a1b7f032cd2d98cf56dc1d912d6a7791656a470514e316b0e6132eb5cf9dc0')
+source=("https://github.com/atom/atom/archive/v${pkgver}.tar.gz")
+sha256sums=('68e0dfca401d21ef69c0378c64def941deb7f6e9769fd0018c544ee544058c66')
 
 prepare() {
   cd "atom-$pkgver"
-
-  patch -Np0 -i "$srcdir/atom-python.patch"
 
   sed -i -e "/exception-reporting/d" \
       -e "/metrics/d" package.json
