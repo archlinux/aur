@@ -8,7 +8,7 @@
 _pkgname=ffmpeg
 pkgname=ffmpeg-headless
 pkgver=2.8.4
-pkgrel=0.1
+pkgrel=1
 epoch=1
 pkgdesc='The FFmpeg media toolkit optimised for server (headless) systems'
 arch=('i686' 'x86_64')
