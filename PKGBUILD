@@ -1,7 +1,7 @@
 # Maintainer: Jordan Klassen <forivall@gmail.com>
 # https://github.com/forivall/aur-packages/tree/master/aur/otto-bin
 pkgname=otto-bin
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=0
 epoch=
 pkgdesc="Development and Deployment Made Easy - The Successor to Vagrant"
@@ -21,13 +21,13 @@ options=()
 install=
 changelog=
 
-source_i686=("https://dl.bintray.com/mitchellh/otto/otto_${pkgver}_linux_386.zip")
-source_x86_64=("https://dl.bintray.com/mitchellh/otto/otto_${pkgver}_linux_amd64.zip")
-source_arm=("https://dl.bintray.com/mitchellh/otto/otto_${pkgver}_linux_arm.zip")
+source_i686=("https://releases.hashicorp.com/otto/${pkgver}/otto_${pkgver}_linux_386.zip")
+source_x86_64=("https://releases.hashicorp.com/otto/${pkgver}/otto_${pkgver}_linux_amd64.zip")
+source_arm=("https://releases.hashicorp.com/otto/${pkgver}/otto_${pkgver}_linux_arm.zip")
 
-sha256sums_i686=('f55988a9b25575303632c69ce0f49ac13e9885fb5ed1fa3af2767270736100b2')
-sha256sums_x86_64=('e09bc9ca8c978b589170ac16f3b5803966f699fb2578d58d65b0bfe1844e0404')
-sha256sums_arm=('7a97041405b6cc4dbd24742a771e1e730c49c708b2baa27b83085d78e7f6b079')
+sha256sums_i686=('ffd83f915f8c516a52ba298db1c0f31de927a136248a9d946ee0055caae67f0d')
+sha256sums_x86_64=('4877972a8b8bafdb2acd9958c77f31a983b8fa292f5c3509f12a2361cd4307cd')
+sha256sums_arm=('5fb183858713eb31f2e022f945a3055b992970ff9d2291cce9b965bbb15f3ca8')
 
 noextract=()
 
