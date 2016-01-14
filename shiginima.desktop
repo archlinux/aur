@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=3.000
+Type=Application
+Name=ShiginimaSE Launcher
+GenericName=ShiginimaSE Launcher
+Comment="ShiginimaSE Launcher"
+Icon=shiginima
+Exec=java -jar /opt/shiginima/shiginima.jar
+NoDisplay=false
+Categories=Game;
+StartupNotify=true
+Terminal=false
