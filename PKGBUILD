@@ -1,3 +1,4 @@
+# Maintainer: K1412 <jonathan@opensides.be>
 pkgname=fusiondirectory-webservice-shell
 pkgver=1.0.9
 pkgrel=1
