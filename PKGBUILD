@@ -9,7 +9,7 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=2.8.4
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
@@ -125,7 +125,8 @@ build() {
     --enable-vda \
     --enable-vdpau \
     --enable-version3 \
-    --enable-zlib
+    --enable-zlib \
+    --disable-demuxer='hls' --disable-protocol='concat,hls' # FS#47738
 
   msg "Starting make"
   make
