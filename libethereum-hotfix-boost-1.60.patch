@@ -1,0 +1,67 @@
+diff --git a/libethcore/Ethash.cpp b/libethcore/Ethash.cpp
+index 0427514..0b3cfbc 100644
+--- a/libethcore/Ethash.cpp
++++ b/libethcore/Ethash.cpp
+@@ -110,7 +110,12 @@ void Ethash::BlockHeaderRaw::verifyParent(BlockHeaderRaw const& _parent)
+ 	if (m_gasLimit < c_minGasLimit ||
+ 		m_gasLimit <= _parent.m_gasLimit - _parent.m_gasLimit / c_gasLimitBoundDivisor ||
+ 		m_gasLimit >= _parent.m_gasLimit + _parent.m_gasLimit / c_gasLimitBoundDivisor)
+-		BOOST_THROW_EXCEPTION(InvalidGasLimit() << errinfo_min((bigint)_parent.m_gasLimit - _parent.m_gasLimit / c_gasLimitBoundDivisor) << errinfo_got((bigint)m_gasLimit) << errinfo_max((bigint)_parent.m_gasLimit + _parent.m_gasLimit / c_gasLimitBoundDivisor));
++		BOOST_THROW_EXCEPTION(
++			InvalidGasLimit()
++			<< errinfo_min((bigint)((bigint)_parent.m_gasLimit - (bigint)(_parent.m_gasLimit / c_gasLimitBoundDivisor)))
++			<< errinfo_got((bigint)m_gasLimit)
++			<< errinfo_max((bigint)((bigint)_parent.m_gasLimit + _parent.m_gasLimit / c_gasLimitBoundDivisor))
++		);
+ }
+ 
+ void Ethash::BlockHeaderRaw::populateFromParent(BlockHeaderRaw const& _parent)
+diff --git a/test/boostTest.cpp b/test/boostTest.cpp
+index 7c2b068..2e8dbd9 100644
+--- a/test/boostTest.cpp
++++ b/test/boostTest.cpp
+@@ -57,7 +57,7 @@ test_suite* init_func(int argc, char* argv[])
+ 			//disable post output so the test json would be clean
+ 			std::cout.rdbuf(strCout.rdbuf());
+ 			std::cerr.rdbuf(strCout.rdbuf());
+-			throw framework::nothing_to_test();
++			exit(0);
+ 		}
+ 	}
+ 	return 0;
+@@ -78,10 +78,19 @@ int main( int argc, char* argv[] )
+ 	{
+ 		framework::init(init_func, argc, argv);
+ 
++#if BOOST_VERSION >= 106000
++			if (true)
++			{
++				test_case_counter filter;
++#elif BOOST_VERSION >= 105900
++		if(!runtime_config::test_to_run().empty())
++		{
++			test_case_counter filter;
++#else
+ 		if( !runtime_config::test_to_run().is_empty() )
+ 		{
+ 			test_case_filter filter(runtime_config::test_to_run());
+-
++#endif
+ 			traverse_test_tree(framework::master_test_suite().p_id, filter);
+ 		}
+ 
+@@ -89,9 +98,14 @@ int main( int argc, char* argv[] )
+ 
+ 		results_reporter::make_report();
+ 
++#if BOOST_VERSION >= 106000
++		return results_collector.results(framework::master_test_suite().p_id).result_code();
++#else
+ 		return runtime_config::no_result_code()
+ 					? boost::exit_success
+ 					: results_collector.results(framework::master_test_suite().p_id).result_code();
++#endif
++
+ 	}
+ 	catch (framework::nothing_to_test const&)
+ 	{

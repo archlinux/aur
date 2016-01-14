@@ -2,7 +2,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ethereum
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Ethereum decentralised consensus-based deterministic transaction resolution platform (C++ toolkit, full webthree-umbrella)"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ depends=('argtable'
          'jsoncpp'
          'leveldb'
          'libedit'
-         'libjson-rpc-cpp'
+         'libjson-rpc-cpp-git'
          'libmicrohttpd'
          'miniupnpc'
          'ncurses'
@@ -48,10 +48,10 @@ groups=('ethereum')
 url="https://github.com/ethereum/webthree-umbrella"
 license=('GPL')
 source=("${pkgname%-git}::git+https://github.com/ethereum/webthree-umbrella"
-        "libethereum-hotfix-boost-1.59.patch"
+        "libethereum-hotfix-boost-1.60.patch"
         "solidity-hotfix-boost-1.59.patch")
 sha256sums=('SKIP'
-            '6c89b82a5b674bb53401a3d87079c415d4d2c28accceb239beeedb940cf213a0'
+            'fa1edc2b886337b0907122bd4ed4883bf28cc7571e5e5d3dfc0bb6b7637d3848'
             '3d1e45a59c1f9c22564bb04d0aebacb74bffa3c7d72dc475429afb827c8be4f2')
 provides=('alethfive'
           'alethone'
@@ -91,9 +91,9 @@ build() {
   git checkout $pkgver
   git submodule update --init --recursive
 
-  # Fix libethereum compatibility with boost 1.59
+  # Fix libethereum compatibility with boost 1.59, 1.60
   pushd libethereum
-  git apply ${srcdir}/libethereum-hotfix-boost-1.59.patch
+  git apply ${srcdir}/libethereum-hotfix-boost-1.60.patch
   popd
 
   # Fix solidity compatibility with boost 1.59
@@ -103,7 +103,8 @@ build() {
 
   msg 'Building...'
   mkdir -p build && pushd build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
+  CXXFLAGS=-Wno-deprecated-declarations cmake .. \
+           -DCMAKE_INSTALL_PREFIX=/usr \
            -DCMAKE_BUILD_TYPE=Release
   make
   popd
