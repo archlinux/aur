@@ -1,3 +1,31 @@
+2016-01-14 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+	* 2.3.1-1:
+    Project Maintenance:
+      - Reorganize git repository at SourceForge.
+      - GPG sign all git tags and the release file, using my
+        moblock-deb maintainer GPG key
+        2048R/0xBAECD1F7D541FD544C2C37A1EAF9B4E3C0145138.
+      - Refactor copyright notice in every file.
+        Sum up in AUTHORS and debian/copyright.
+        pgl is licensed GPL-3+.
+    Documentation updates.
+    Drop build dependency on polkit (currently unneeded).
+    BUILD: Add init/pgl.gentoo to CLEANFILES.
+    pglcmd:
+      - Some code streamlining.
+      - iptables removal script emergency build: add test if file exists.
+      - old iptables removal script: improve logging.
+      - iptables removal script building: build script before inserting rule.
+        Closes: https://sourceforge.net/p/peerguardian/bugs/331/
+      - Drop old transition code and now obsolete files.
+      - Move the builtin LSB init-functions to a separate file.
+    pgld:
+      - dbus: Reformat and drop commented code.
+      - dbus: Drop extra policy at_console.
+    pglgui:
+      - Enhance desktop file.
+      - Use some unmodified Crystal Project Icons.
+
 2015-01-25 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 	* 2.3.0-2:
 	list all dependencies, including those from the base group.
