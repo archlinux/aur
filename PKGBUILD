@@ -360,17 +360,17 @@ fi
 # Set the bundled/external components
 # TODO
 # -Duse_system_hunspell=1    | Upstream changes needed
-# -Duse_system_libusb=1      | http://crbug.com/266149
+# -Duse_system_libusb=1      | https://crbug.com/266149
 # -Duse_system_opus=1        | https://code.google.com/p/webrtc/issues/detail?id=3077
 # -Duse_system_sqlite=1      | https://crbug.com/22208
 # -Duse_system_ssl=1         | https://crbug.com/58087
 # -Duse_system_libsrtp       | https://crbug.com/501318
 # -Duse_system_libvpx=0      | https://crbug.com/494939
 # -Duse_system_re2=1         | https://bugs.gentoo.org/show_bug.cgi?id=571156
+# -Duse_system_protobuf=0    | https://bugs.gentoo.org/show_bug.cgi?id=525560
 # NOTE
 # -Duse_system_openssl=1     | Use if use BoringSSL instead of SSL
 # -Duse_system_libevent=0    | Need older version (<2.x.x)
-# -Duse_system_protobuf=0    | https://bugs.gentoo.org/show_bug.cgi?id=525560
 # -Duse_system_v8=0          | Possible broken in API/ABI if use a differen version
 # -Duse_system_libxnvctrl=0  | Because not exist in Arch (and not all users use nvidia blob drivers)
 _use_system=('-Duse_system_expat=1'
