@@ -7,7 +7,7 @@ _name=youtube-dl
 _branch=master
 
 pkgname=$_name-git
-pkgver=2016.01.07.2e02ecb
+pkgver=2016.01.14.345f121
 pkgrel=1
 
 pkgdesc='A small command-line program to download videos from YouTube.com and a few more sites - git version'
@@ -16,7 +16,7 @@ arch=('any')
 license=('custom')
 
 depends=('python' 'python-setuptools')
-makedepends=('git')
+makedepends=('git' 'pandoc')
 optdepends=('ffmpeg: for video post-processing')
 
 provides=("$_name")
@@ -34,16 +34,17 @@ sha512sums=(SKIP)
 prepare() {
   cd $_name-$_branch
   sed -i 's|etc/bash_completion.d|share/bash-completion/completions|' setup.py
-  sed -i ':etc/fish/completions:d' setup.py
+  sed -i 's|etc/fish/completions|share/fish/vendor_completions.d|' setup.py
 }
 
 package() {
  cd $_name-$_branch
 
- python devscripts/bash-completion.py
+ LC_ALL=en_US.UTF-8 make bash-completion zsh-completion fish-completion README.txt youtube-dl.1
  python setup.py install --root="$pkgdir" --optimize=1
 
  mv "$pkgdir"/usr/share/bash-completion/completions/youtube-dl.bash-completion \
     "$pkgdir"/usr/share/bash-completion/completions/youtube-dl
+ install -D -m644 youtube-dl.zsh "$pkgdir"/usr/share/zsh/site-functions/_youtube-dl
  install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
