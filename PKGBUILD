@@ -12,13 +12,13 @@ _use_clang=1           # Use clang compiler (system). Results in faster build an
 _use_bundled_clang=1   # Use bundled clang compiler (needs build). NOTE: if use this option , '_use_clang' need set to 1
 _use_ccache=0          # Use ccache when build
 _use_pax=0             # Set 1 to change PaX permisions in executables NOTE: only use if use PaX environment
-_use_gtk3=1            # If set 1, then build with GTK3 support, if set 0, then build with GTK2
+_use_gtk3=0            # If set 1, then build with GTK3 support, if set 0, then build with GTK2 TODO: back to GTK3: https://code.google.com/p/chromium/issues/detail?id=575038
 
 ##############################################
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=49.0.2593.0
+pkgver=49.0.2618.8
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -36,7 +36,7 @@ depends=('desktop-file-utils'
          'perl-file-basedir'
          'nss'
          'pciutils'
-         're2'
+         #'re2'
          'snappy'
          'speech-dispatcher'
          'speex'
@@ -80,7 +80,8 @@ source=("https://commondatastorage.googleapis.com/chromium-browser-official/chro
         'chromium-dev.svg'
         # Patch form Gentoo
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-jinja-r7.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-ffmpeg-r1.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-ffmpeg-r2.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-snapshot-toolchain-r1.patch'
         # Misc Patches
         'enable_vaapi_on_linux-r3.diff'
         # Patch from crbug (chromium bugtracker)
@@ -93,7 +94,8 @@ sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?m
           '336976cb66bf8df71fc7f2e92aa723891b6efb53'
           # Patch form Gentoo
           'c24d14029714d2295f3220a7173a5a7362f578a2'
-          '6c25b8e8b6bd17d64606dd14353c43a7728daf03'
+          '450cd81653499eb50f0f7df1b0d4d1c1620365a5'
+          '7b9c1a7e0e581413dbebb0e894f68ce2f2ba0e6a'
           # Misc Patches
           'aab4fa1f9aad1a80fdb35545eb74739a240fe0ae'
           # Patch from crbug (chromium bugtracker)
@@ -183,6 +185,7 @@ fi
 _necesary=('base/third_party/dmg_fp'
            'base/third_party/dynamic_annotations'
            'base/third_party/icu'
+           'base/third_party/libevent'
            'base/third_party/nspr'
            'base/third_party/superfasthash'
            'base/third_party/symbolize'
@@ -229,7 +232,6 @@ _necesary=('base/third_party/dmg_fp'
            'third_party/khronos'
            'third_party/leveldatabase'
            'third_party/libaddressinput'
-           'third_party/libevent'
            'third_party/libjingle'
            'third_party/libphonenumber'
            'third_party/libsecret'
@@ -265,6 +267,7 @@ _necesary=('base/third_party/dmg_fp'
            'third_party/polymer'
            'third_party/protobuf'
            'third_party/qcms'
+           'third_party/re2'
            'third_party/sfntly'
            'third_party/skia'
            'third_party/smhasher'
@@ -298,6 +301,7 @@ _flags=("-Dclang=${_use_clang}"
         '-Denable_touch_ui=1'
         '-Denable_webrtc=1'
         '-Denable_widevine=1'
+        '-Denable_pepper_cdms=1'
         '-Denable_hotwording=0'
         '-Denable_hangout_services_extension=1'
         '-Dffmpeg_branding=ChromeOS'
@@ -358,16 +362,17 @@ fi
 # -Duse_system_hunspell=1    | Upstream changes needed
 # -Duse_system_libusb=1      | http://crbug.com/266149
 # -Duse_system_opus=1        | https://code.google.com/p/webrtc/issues/detail?id=3077
-# -Duse_system_sqlite=1      | http://crbug.com/22208
-# -Duse_system_ssl=1         | http://crbug.com/58087
+# -Duse_system_sqlite=1      | https://crbug.com/22208
+# -Duse_system_ssl=1         | https://crbug.com/58087
 # -Duse_system_libsrtp       | https://crbug.com/501318
-# -Duse_system_libvpx=0      | http://crbug.com/494939
+# -Duse_system_libvpx=0      | https://crbug.com/494939
+# -Duse_system_re2=1         | https://bugs.gentoo.org/show_bug.cgi?id=571156
 # NOTE
 # -Duse_system_openssl=1     | Use if use BoringSSL instead of SSL
 # -Duse_system_libevent=0    | Need older version (<2.x.x)
 # -Duse_system_protobuf=0    | https://bugs.gentoo.org/show_bug.cgi?id=525560
 # -Duse_system_v8=0          | Possible broken in API/ABI if use a differen version
-# -Duse_system_libxnvctrl=0  | Because not exist in Arch (and not all users use nvidia)
+# -Duse_system_libxnvctrl=0  | Because not exist in Arch (and not all users use nvidia blob drivers)
 _use_system=('-Duse_system_expat=1'
              '-Duse_system_ffmpeg=1'
              '-Duse_system_flac=1'
@@ -391,7 +396,7 @@ _use_system=('-Duse_system_expat=1'
              '-Duse_system_openssl=0'
              '-Duse_system_opus=0'
              '-Duse_system_protobuf=0'
-             '-Duse_system_re2=1'
+             '-Duse_system_re2=0'
              '-Duse_system_snappy=1'
              '-Duse_system_speex=1'
              '-Duse_system_sqlite=0'
@@ -401,7 +406,6 @@ _use_system=('-Duse_system_expat=1'
              '-Duse_system_xdg_utils=1'
              '-Duse_system_zlib=1'
              )
-
 
 ################################################
 
@@ -424,17 +428,27 @@ prepare() {
 
   msg2 "Patching the sources"
   # Patch sources from Gentoo
-  patch -p0 -i ../chromium-system-jinja-r7.patch
-  patch -p1 -i ../chromium-system-ffmpeg-r1.patch
+  patch -p0 -i "${srcdir}/chromium-system-jinja-r7.patch"
+  patch -p1 -i "${srcdir}/chromium-system-ffmpeg-r2.patch"
+  patch -p0 -i "${srcdir}/chromium-snapshot-toolchain-r1.patch"
 
   # Misc Patches:
-  patch -p1 -i ../enable_vaapi_on_linux-r3.diff
+  patch -p1 -i "${srcdir}/enable_vaapi_on_linux-r3.diff"
 
   # Patch from crbug (chromium bugtracker)
   # fix the missing define (if not, fail build) (need upstream fix) # https://crbug.com/473866
   sed '14i#define WIDEVINE_CDM_VERSION_STRING "The Cake Is a Lie"' -i "third_party/widevine/cdm/stub/widevine_cdm_version.h"
 
   ##
+
+  # Fix libpng errors
+  pushd chrome/app/theme &> /dev/null
+  for i in $(find . -name '*.png' -type f); do
+    convert -strip "${i}" "${i}.fixed"
+    rm "${i}"
+    mv "${i}.fixed" "${i}"
+  done
+  popd &> /dev/null
 
   # Make it possible to remove third_party/adobe
   echo > "${srcdir}/flapper_version.h"
@@ -551,8 +565,8 @@ package() {
   ln -s /usr/lib/chromium-dev/chromedriver "${pkgdir}/usr/bin/chromedriver-dev"
 
   # Install libs
-  for i in widevinecdm widevinecdmadapter clearkeycdm; do
-    install -Dm755 "lib${i}.so" "${pkgdir}/usr/lib/chromium-dev/lib${i}.so"
+  for i in libwidevinecdmadapter libclearkeycdm; do #widevinecdm
+    install -Dm755 "${i}.so" "${pkgdir}/usr/lib/chromium-dev/${i}.so"
   done
   install -Dm644 natives_blob.bin "${pkgdir}/usr/lib/chromium-dev/natives_blob.bin"
   install -Dm644 snapshot_blob.bin "${pkgdir}/usr/lib/chromium-dev/snapshot_blob.bin"
@@ -603,5 +617,5 @@ package() {
     strip $STRIP_BINARIES "${pkgdir}/usr/lib/chromium-dev/"nacl_helper{,_bootstrap,_nonsfi}
   fi
   strip $STRIP_BINARIES "${pkgdir}/usr/lib/chromium-dev/"{chromium-dev,chrome-sandbox,chromedriver}
-  strip $STRIP_SHARED "${pkgdir}/usr/lib/chromium-dev/"lib{widevinecdm{,adapter},clearkeycdm}.so
+  strip $STRIP_SHARED "${pkgdir}/usr/lib/chromium-dev/"lib{widevinecdmadapter,clearkeycdm}.so
 }
