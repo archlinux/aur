@@ -24,13 +24,13 @@ pkgver() {
 }
 
 build() {
-	cd "$_pkgname"
-	make
+    cd "$_pkgname"
+    make
     gzip -fk *.[0-9]
 }
 
 package() {
-	cd "$_pkgname"
+    cd "$_pkgname"
 
     for bin in vlmcs{d,}; do
         install -Dm755 $bin "$pkgdir"/usr/bin/$bin
@@ -45,3 +45,5 @@ package() {
         install -Dm644 $manpage.gz "$pkgdir"/usr/share/man/man$section/$manpage.gz
     done
 }
+
+# vim: set ts=4 sw=4 et :
