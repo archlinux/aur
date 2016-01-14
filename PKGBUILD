@@ -1,8 +1,8 @@
 # Maintainer: Dan Printzell <xwildn00bx@gmail.com>
 
 pkgname=('dfmt')
-pkgver=0.4.1
-pkgrel=2
+pkgver=0.4.2
+pkgrel=1
 pkgdesc="Dfmt is a formatter for D source code "
 arch=('i686' 'x86_64')
 url="https://github.com/Hackerpilot/dfmt"
@@ -15,7 +15,7 @@ conflicts=('dfmt')
 options=('!strip')
 
 source=(
-	"git+https://github.com/Hackerpilot/dfmt#tag=v0.4.1"
+	"git+https://github.com/Hackerpilot/dfmt#tag=v${pkgver}"
 )
 sha256sums=(
 	'SKIP'
