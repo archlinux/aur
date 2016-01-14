@@ -1,9 +1,5 @@
 # Maintainer: George Angelopoulos <george@usermod.net>
 
-# Upstream collectl provides an init script for running collectl as a service.
-# Since we have systemd instead, this needs to be fixed. Currently this package
-# doesn't provide a systemd unit for  collectl.
-
 pkgname=collectl
 pkgver=4.0.2
 pkgrel=3
