@@ -1,0 +1,12 @@
+[Unit]
+Description=WAN Proxy Daemon
+After=network.target
+
+[Service]
+EnvironmentFile=-/etc/conf.d/wanproxy
+Type=simple
+ExecStart=/usr/bin/wanproxy -c ${WANPROXY_CONF} ${WANPROXY_ARGS}
+
+[Install]
+WantedBy=multi-user.target
+
