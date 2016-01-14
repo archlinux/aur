@@ -1,6 +1,6 @@
 pkgname=otf-xits
 pkgver=1.108
-pkgrel=2
+pkgrel=3
 pkgdesc="An OpenType implementation of STIX fonts with math support"
 arch=('any')
 url="https://github.com/khaledhosny/xits-math"
@@ -17,5 +17,5 @@ package() {
   install -d "$pkgdir/usr/share/fonts/OTF"
   install -m644 *.otf "$pkgdir/usr/share/fonts/OTF/"
   install -Dm644 OFL.txt "$pkgdir/usr/share/licenses/$pkgname/OFL.txt"
-  install -Dm644 OFL.txt "$pkgdir/usr/share/licenses/$pkgname/OFL-FAQ.txt"
+  install -Dm644 OFL-FAQ.txt "$pkgdir/usr/share/licenses/$pkgname/OFL-FAQ.txt"
 }
