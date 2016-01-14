@@ -93,6 +93,11 @@ package() {
     rm "$pkgdir"/usr/${_arch}/bin/idle*
     rm "$pkgdir"/usr/${_arch}/bin/pydoc*
     rm "$pkgdir"/usr/${_arch}/bin/pyvenv*
+
+    # remove these, they clash with normal the python package
+    rm "$pkgdir"/usr/bin/pip*
+    rm "$pkgdir"/usr/bin/easy_install*
+
     ${_arch}-strip "$pkgdir"/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
