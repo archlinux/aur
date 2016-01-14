@@ -24,6 +24,9 @@ build() {
   sed -i '/git-commit/d' box.json
   sed -i '/git-version/d' box.json
   php -d phar.readonly=Off /usr/bin/php-box build
+
+  # TODO: Temporary fix to prevent a fatal error, remove for next release
+  sed -i '$ d' examples/example.drushrc.php
 }
 
 package() {
