@@ -7,7 +7,7 @@ pkgdesc="A monitoring tool for networked computers."
 arch=('i686' 'x86_64' 'armv7h' 'armv7l' 'arm')
 conflicts=('')
 license=('GPL')
-depends=('ncurses' 'boost')
+depends=('ncurses' 'boost' 'boost-libs')
 source=(http://www.ant.uni-bremen.de/whomes/rinas/sinfo/download/$pkgname-$pkgver.tar.gz sinfod.service)
 url="http://www.ant.uni-bremen.de/whomes/rinas/sinfo/"
 #
