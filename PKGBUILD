@@ -4,10 +4,10 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-ice       # Build kernel with a different name
-_srcname=linux-4.3
-pkgver=4.3.3
-pkgrel=2
-_toipatch=tuxonice-for-linux-4.3.3-2015-12-18.patch
+_srcname=linux-4.4
+pkgver=4.4
+pkgrel=1
+_toipatch=tuxonice-for-linux-head-4.4.0-rc7-2016-01-01.patch
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -15,9 +15,8 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-        "0001-disabling-primary-plane-in-the-noatomic-case.patch"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
@@ -27,17 +26,14 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "http://tuxonice.net/downloads/all/${_toipatch}.bz2"
 )
 
-sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
+sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            '95cd81fcbb87953f672150d60950548edc04a88474c42de713b91811557fefa5'
-            'SKIP'
-            'abdd04bd6beecb7c961130a68d71e6332bd260462eeaa2f4f8e634de813dcc4d'
-            '5d9d7aefa33b239279456fa8a8cd4de2d9ee4601f9f432b718c9bfdb7ce2925b'
-            '8c1ba876b2291c58269f7232b291e369daa925ba904b45636af4e80c0f73ced5'
+            '07bc47ccb7b4830c8a76d1a43097b4f860af485beab9951f3bf73784a3ba02ef'
+            'ec4ae405cd91c83b9ab41414957e8a4c9c4c23f839273d653ea55a7fc701e75c'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '8c270194a0ab5deea628880f42443dff0932d445f1aa6aec6a295924a18b7643'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '7b82218d17001ab54691552fd87f38482afa4a2923cfdab104381ca0efce8ae0')
+            'e68d737a78c9f73b2e5fd1b2ce4344a9085a6461415b6ed18217e6ebc25bd671')
 validpgpkeys=(
             'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
             '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -49,7 +45,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  #patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -61,10 +57,6 @@ prepare() {
 
   # tuxonice patch
   patch -p1 -i "${srcdir}/${_toipatch}"
-
-  # fix #46968
-  # hangs on older intel hardware
-  patch -Np1 -i "${srcdir}/0001-disabling-primary-plane-in-the-noatomic-case.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
@@ -96,7 +88,6 @@ prepare() {
   #make xconfig # X-based configuration
   #make oldconfig # using old config from previous kernel version
   # ... or manually edit .config
-
   # rewrite configuration
   yes "" | make config >/dev/null
 }
@@ -261,6 +252,7 @@ _package-headers() {
     mkdir -p "${pkgdir}"/usr/lib/modules/${_kernver}/build/`echo ${i} | sed 's|/Kconfig.*||'`
     cp ${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/${i}"
   done
+  rm -rf "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild"
   chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
   find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
   # strip scripts directory

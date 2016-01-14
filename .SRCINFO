@@ -1,7 +1,7 @@
 pkgbase = linux-ice
 	pkgdesc = The Linux-ice kernel and modules
-	pkgver = 4.3.3
-	pkgrel = 2
+	pkgver = 4.4
+	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
 	arch = x86_64
@@ -12,28 +12,22 @@ pkgbase = linux-ice
 	makedepends = inetutils
 	makedepends = bc
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.3.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.3.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.3.3.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.3.3.sign
-	source = 0001-disabling-primary-plane-in-the-noatomic-case.patch
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.4.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.4.tar.sign
 	source = config
 	source = config.x86_64
 	source = linux.preset
 	source = linux.install
 	source = change-default-console-loglevel.patch
-	source = http://tuxonice.net/downloads/all/tuxonice-for-linux-4.3.3-2015-12-18.patch.bz2
-	sha256sums = 4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae
+	source = http://tuxonice.net/downloads/all/tuxonice-for-linux-head-4.4.0-rc7-2016-01-01.patch.bz2
+	sha256sums = 401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2
 	sha256sums = SKIP
-	sha256sums = 95cd81fcbb87953f672150d60950548edc04a88474c42de713b91811557fefa5
-	sha256sums = SKIP
-	sha256sums = abdd04bd6beecb7c961130a68d71e6332bd260462eeaa2f4f8e634de813dcc4d
-	sha256sums = 5d9d7aefa33b239279456fa8a8cd4de2d9ee4601f9f432b718c9bfdb7ce2925b
-	sha256sums = 8c1ba876b2291c58269f7232b291e369daa925ba904b45636af4e80c0f73ced5
+	sha256sums = 07bc47ccb7b4830c8a76d1a43097b4f860af485beab9951f3bf73784a3ba02ef
+	sha256sums = ec4ae405cd91c83b9ab41414957e8a4c9c4c23f839273d653ea55a7fc701e75c
 	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
 	sha256sums = 8c270194a0ab5deea628880f42443dff0932d445f1aa6aec6a295924a18b7643
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
-	sha256sums = 7b82218d17001ab54691552fd87f38482afa4a2923cfdab104381ca0efce8ae0
+	sha256sums = e68d737a78c9f73b2e5fd1b2ce4344a9085a6461415b6ed18217e6ebc25bd671
 
 pkgname = linux-ice
 	pkgdesc = The Linux-ice kernel and modules
@@ -43,23 +37,23 @@ pkgname = linux-ice
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-ice=4.3.3
-	provides = linux=4.3.3
+	provides = kernel26-ice=4.4
+	provides = linux=4.4
 	conflicts = kernel26-ice
 	replaces = kernel26-ice
 	backup = etc/mkinitcpio.d/linux-ice.preset
 
 pkgname = linux-ice-headers
 	pkgdesc = Header files and scripts for building modules for Linux-ice kernel
-	provides = kernel26-ice-headers=4.3.3
-	provides = linux-headers=4.3.3
+	provides = kernel26-ice-headers=4.4
+	provides = linux-headers=4.4
 	conflicts = kernel26-ice-headers
 	replaces = kernel26-ice-headers
 
 pkgname = linux-ice-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-ice kernel
-	provides = kernel26-ice-docs=4.3.3
-	provides = linux-docs=4.3.3
+	provides = kernel26-ice-docs=4.4
+	provides = linux-docs=4.4
 	conflicts = kernel26-ice-docs
 	replaces = kernel26-ice-docs
 
