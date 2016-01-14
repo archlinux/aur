@@ -1,6 +1,6 @@
 #Maintainer: aksr <aksr at t-com dot me>
 pkgname=smatch-git
-pkgver=1.60.r186.g8d840ca
+pkgver=1.60.r324.gd68b1de
 pkgrel=1
 pkgdesc="A static analysis tool for C."
 arch=('i686' 'x86_64')
