@@ -2,7 +2,7 @@
 
 pkgname=php-oauth
 _extname=oauth
-pkgver=1.2.3
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="PHP extension to provide OAuth consumer and provider bindings."
 arch=("i686" "x86_64")
@@ -30,4 +30,4 @@ package() {
 	install -m0755 -D ".libs/$_extname.so" "$pkgdir$(php-config --extension-dir)/$_extname.so"
 }
 
-sha256sums=('86bb5ee37afe672d4532ad784c7f711855c79f0dabf0acacafd5344ab6cf0195')
+sha256sums=('f223a166e82ea51a241c229c5788e19dcafd8a1886ce2b7635cae29cb33c4f0e')
