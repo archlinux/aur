@@ -2,7 +2,7 @@
 pkgname=jpf-core-hg
 pkgver=r29.820b89dd6c97
 pkgrel=1
-pkgdesc=""
+pkgdesc="JPF is an explicit state software model checker for Java bytecode"
 arch=('any')
 url="http://babelfish.arc.nasa.gov/trac/jpf"
 license=('APACHE')
