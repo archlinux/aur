@@ -2,13 +2,13 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ethereum-git
-pkgver=1.0rc2.r97.ge550c51
+pkgver=1.0rc2.r106.gb315d82
 pkgrel=1
 pkgdesc="Ethereum decentralised consensus-based deterministic transaction resolution platform (C++ toolkit, full webthree-umbrella, latest unstable git version)"
 arch=('i686' 'x86_64')
 depends=('argtable'
-         'boost<=1.59'
-         'boost-libs<=1.59'
+         'boost'
+         'boost-libs'
          'curl'
          'crypto++'
          'gmp'
