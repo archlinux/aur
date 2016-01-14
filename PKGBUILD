@@ -43,6 +43,11 @@ source=("git://github.com/sirspudd/mkspecs.git" "https://download.qt.io/developm
 sha256sums=("SKIP" "d69103ec34b3775edfa47581b14ee9a20789d4b0d7d26220fb92f2cd32eb06f9")
 options=('!strip')
 install=qpi.install
+_device_configure_flags=""
+
+if [[ ${_piver} = "1" ]]; then
+  _device_configure_flags="-skip qtwebengine"
+fi
 
 build() {
   local _srcdir="${srcdir}/${_pipkgname}"
@@ -97,7 +102,8 @@ build() {
     \
     -sysroot ${_sysroot} \
     -device ${_mkspec} \
-    -device-option CROSS_COMPILE=/opt/arm-sirspuddarch-linux-gnueabihf/bin/arm-sirspuddarch-linux-gnueabihf-
+    -device-option CROSS_COMPILE=/opt/arm-sirspuddarch-linux-gnueabihf/bin/arm-sirspuddarch-linux-gnueabihf- \
+    ${_device_configure_flags}
 
   make
 
