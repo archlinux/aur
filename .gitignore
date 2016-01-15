@@ -1,4 +1,4 @@
 pkg
 src
-maven-bash-completion-git
+maven-bash-completion
 *.pkg.tar
