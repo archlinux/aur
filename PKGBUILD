@@ -1,8 +1,8 @@
 #Maintainer: Musikolo<musikolo {at} hotmail [dot] com>
 #Contributor: Martin špelina<shpelda [at]gmail[dot]com>
 pkgname=dbvis
-pkgver=9.2.13
-__pkgver_underscore=9_2_13
+pkgver=9.2.14
+__pkgver_underscore=9_2_14
 pkgrel=1
 pkgdesc="DbVisualizer free - The Universal Database Tool"
 url="http://www.dbvis.com/"
@@ -11,7 +11,7 @@ arch=('any')
 depends=('java-runtime')
 makedepends=(coreutils sed grep unzip)
 source=('http://www.dbvis.com/product_download/'$pkgname'-'$pkgver'/media/'$pkgname'_unix_'$__pkgver_underscore'.tar.gz')
-sha256sums=('5a1882eef5b7b367f38f4d6ed8e31d05e65de0b1bb994307751e6264be55c204')
+sha256sums=('1089fa65d279ac6e24605a9b234668615ca2b32688a8a53a0c731bcb3dd66e85')
 
 package() {
   __dbvis_lib=/usr/share/java/$pkgname
