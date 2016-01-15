@@ -2,7 +2,7 @@
 
 pkgname=lemonbar-sm-git
 _pkgname=lemonbar
-pkgver=v1.0.r150.gd854fa7
+pkgver=v1.0-157-gf1f885a
 pkgrel=1
 pkgdesc="Fork of lemonbar, with xft support and the ability to select monitor."
 arch=('i686' 'x86_64')
