@@ -3,7 +3,7 @@
 
 pkgname=xubuntu-artwork
 pkgver=15.12.2
-pkgrel=1
+pkgrel=2
 _uver=wily
 pkgdesc="Xubuntu themes and artwork"
 arch=("any")
@@ -19,13 +19,7 @@ optdepends=("plymouth: For plymouth theme to work"
         "xfce-theme-greybird: Official theming, git or stable version are ok"
 	"elementary-xfce-icons: For matching icon theme, or if you want use the git version"
 	"libreoffice: For the new elementary icon style")
-source=("http://security.ubuntu.com/ubuntu/pool/universe/x/${pkgname}/${pkgname}_${pkgver}.tar.xz"
-        "0001_Plymouth_dir.patch")
-
-prepare() {
-  cd "${srcdir}/xubuntu-artwork"
-  patch -p1 -i "${srcdir}/0001_Plymouth_dir.patch"
-}
+source=("http://security.ubuntu.com/ubuntu/pool/universe/x/${pkgname}/${pkgname}_${pkgver}.tar.xz")
 
 package() {
   cd "${srcdir}/xubuntu-artwork"
@@ -33,6 +27,12 @@ package() {
   make DESTDIR="${pkgdir}" prefix=/usr \
 	sbindir=/usr/bin bindir=/usr/bin \
 	libdir=/usr/lib libexecdir=/usr/lib
+
+  cd "${srcdir}/xubuntu-artwork/libreoffice-style-elementary"
+
+  make DESTDIR="${pkgdir}" prefix=/usr \
+        sbindir=/usr/bin bindir=/usr/bin \
+        libdir=/usr/lib libexecdir=/usr/lib
 }
 
 package() {
@@ -41,10 +41,6 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   install -dm755 "${pkgdir}/usr/"
-
-  msg2 "Install plymouth theme."
-  mkdir -p "${pkgdir}/usr/share/"
-  cp -av lib/plymouth/ "${pkgdir}/usr/share/"
 
   msg2 "Install the rest of the files."
   cp -av usr/share/ "${pkgdir}/usr/"
@@ -59,7 +55,6 @@ package() {
   msg2 "Remove redundant and empty files."
   rm -frv "${pkgdir}"/usr/share/xfce4/backdrops
 }
-# I use MD5 because is what "makepkg -g" give by default, blame Allan
 
-md5sums=('d408bd142b486999b4c377a539906692'
-         'c9a1b1997abf7d43dda91bf7991ed42c')
+# I use MD5 because is what "makepkg -g" give by default, blame Allan
+md5sums=('d408bd142b486999b4c377a539906692')
