@@ -1,8 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-protocol-git
-pkgver=20151220
-pkgrel=2
+pkgver=20160114
+pkgrel=1
 pkgdesc="Bitcoin Blockchain Query Privacy Protocol"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -19,6 +19,7 @@ makedepends=('autoconf'
              'gcc'
              'git'
              'libtool'
+             'm4'
              'make'
              'pkg-config')
 groups=('libbitcoin')
