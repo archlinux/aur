@@ -1,13 +1,13 @@
 pkgbase = terasology
 	pkgdesc = Yet another high resolution game with blocks like Minecraft!
 	pkgver = 62
-	pkgrel = 1
+	pkgrel = 2
 	url = http://terasology.org
 	arch = x86_64
 	arch = i686
 	license = Apache
 	makedepends = unzip
-	depends = jdk8-openjdk
+	depends = java-environment-openjdk=8
 	depends = xorg-server-utils
 	depends = openal
 	options = !strip
