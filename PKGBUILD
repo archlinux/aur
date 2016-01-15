@@ -10,11 +10,11 @@
 # Any suggestions welcome; please submit paches via Github:
 # https://github.com/alerque/aur/tree/master/git-annex-bin
 #
-# Warning: some builds not up-to-date: x86_64: 5.20151218, i686: 5.20151218, armv6h: 5.20151214
+# Warning: some builds not up-to-date: x86_64: 6.20160114, i686: 6.20160114, armv6h: 6.20160113
 
 
 pkgname=git-annex-bin
-pkgver=5.20151218
+pkgver=6.20160114
 pkgrel=1
 pkgdesc='Standalone precompiled version of git-annex with no Haskell dependencies, batteries included.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'arm')
@@ -40,21 +40,21 @@ _file_x86_64="git-annex-standalone-amd64-${pkgver}.tar.gz"
 _url_x86_64="https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-amd64.tar.gz"
 source_x86_64=("${_file_x86_64}::${_url_x86_64}"
                "${_file_x86_64}.sig::${_url_x86_64}.sig")
-sha256sums_x86_64=('7a21fa13759d9e145be730079cedf399153b95456c00eaf358d84d85c88ed0bc'
+sha256sums_x86_64=('7a5bfdb36ebafbe91efdbe906642dc5a08c808fe594de78342f3abaa882035e6'
                    'SKIP')
 
 _file_i686="git-annex-standalone-i386-${pkgver}.tar.gz"
 _url_i686="https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-i386.tar.gz"
 source_i686=("${_file_i686}::${_url_i686}"
              "${_file_i686}.sig::${_url_i686}.sig")
-sha256sums_i686=('a3a9f18d9d3f6b0aa694882b51c200bb63d25b054d8c57741ecdc51a591b36fe'
+sha256sums_i686=('069e6a8df67a6b0310ce67f6d92d250bbc9972d9e3e80f98de29afb2dac1f577'
                  'SKIP')
 
 _file_armv6h="git-annex-standalone-armel-${pkgver}.tar.gz"
 _url_armv6h="https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-armel.tar.gz"
 source_armv6h=("${_file_armv6h}::${_url_armv6h}"
                "${_file_armv6h}.sig::${_url_armv6h}.sig")
-sha256sums_armv6h=('006c998a3777be02c4ebaf7efb4f0779a59dc28de7d0b2e73bff5cd05fe6d0bf'
+sha256sums_armv6h=('4dea0ffa57c0a1989dd5758d5fa9d8343105cc565f7b10bbed1b53a0f3106669'
                    'SKIP')
 
 source_arm=(${source_armv6h[@]})
