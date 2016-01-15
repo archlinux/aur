@@ -5,7 +5,7 @@
 pkgbase=tomorrow-theme
 pkgname=("${pkgbase}-vim-git" "${pkgbase}-qtcreator-git")
 pkgver=429.0e0d35a
-pkgrel=2
+pkgrel=3
 arch=('any')
 license=('MIT')
 url='https://github.com/chriskempson/tomorrow-theme'
@@ -25,7 +25,7 @@ pkgver() {
 
 package_tomorrow-theme-vim-git() {
 	pkgdesc='Tomorrow Theme for Vim. Development version.'
-	groups=('vim-plugins')
+	groups=("${pkgbase}-git" 'vim-plugins')
 	optdepends=('vim: to use this color scheme')
 	conflicts=('vim-tomorrow-theme-git')
 	provides=("${pkgbase}-vim-git=${pkgver}")
@@ -37,6 +37,7 @@ package_tomorrow-theme-vim-git() {
 
 package_tomorrow-theme-qtcreator-git() {
 	pkgdesc='Tomorrow Theme for Qt Creator. Development version.'
+	groups=("${pkgbase}-git")
 	optdepends=('qtcreator: to use this style')
 	provides=("${pkgbase}-qtcreator-git=${pkgver}")
 	
