@@ -14,10 +14,10 @@ makedepends=()
 backup=()
 install=''
 source=(
-	"https://release.gitkraken.com/linux/gitkraken-amd64.tar.gz"
-	"GitKraken.desktop"
-	"gitkraken.png"
-	"eula.html"
+    "https://release.gitkraken.com/linux/gitkraken-amd64.tar.gz"
+    "GitKraken.desktop"
+    "gitkraken.png"
+    "eula.html"
 )
 md5sums=('b50cb1f43eb46aeb6f49df98cab3c032'
          '765148843d302e15d80ddd0041efc957'
@@ -25,17 +25,16 @@ md5sums=('b50cb1f43eb46aeb6f49df98cab3c032'
          'e9ba6663e5f1f92cae31beb0074e8c6c')
 
 package() {
-	install -d "$pkgdir"/opt
-	cp -R "$srcdir"/GitKraken "$pkgdir"/opt/gitkraken
+    install -d "$pkgdir"/opt
+    cp -R "$srcdir"/GitKraken "$pkgdir"/opt/gitkraken
 
-	find "$pkgdir"/opt/gitkraken/ -type f -exec chmod 644 {} \;
-	chmod 755 "$pkgdir"/opt/gitkraken/gitkraken
+    find "$pkgdir"/opt/gitkraken/ -type f -exec chmod 644 {} \;
+    chmod 755 "$pkgdir"/opt/gitkraken/gitkraken
 
-	install -d "$pkgdir"/usr/bin
-	ln -s ../../opt/gitkraken/gitkraken "$pkgdir"/usr/bin/gitkraken
+    install -d "$pkgdir"/usr/bin
+    ln -s ../../opt/gitkraken/gitkraken "$pkgdir"/usr/bin/gitkraken
 
-	install -Dm644 "../eula.html" "$pkgdir"/usr/share/licenses/$pkgname/eula.html
-
-	install -D -m644 "../GitKraken.desktop" "${pkgdir}/usr/share/applications/GitKraken.desktop"
-  	install -D -m644 "../gitkraken.png"     "${pkgdir}/usr/share/pixmaps/gitkraken.png"
+    install -D -m644 "../eula.html"             "${pkgdir}/usr/share/licenses/${pkgname}/eula.html"
+    install -D -m644 "../GitKraken.desktop"     "${pkgdir}/usr/share/applications/GitKraken.desktop"
+    install -D -m644 "../gitkraken.png"         "${pkgdir}/usr/share/pixmaps/gitkraken.png"
 }
