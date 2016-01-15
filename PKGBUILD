@@ -4,8 +4,8 @@
 # Contributor: James An <james@jamesan.ca>
 
 pkgname=drush
-pkgver=8.0.1
-pkgrel=4
+pkgver=8.0.2
+pkgrel=1
 pkgdesc="Drush is a command line shell and Unix scripting interface for Drupal."
 arch=('any')
 url="https://github.com/drush-ops/drush/"
@@ -17,7 +17,7 @@ source=(
     "drush.install"
     "https://github.com/drush-ops/${pkgname}/archive/$pkgver.tar.gz")
 sha256sums=('e800601699e4b1ea0a0057fc91827b31fc8c5070f5014df2777396aabc7680ec'
-            '10b327403ad2fc929a79a8133197183d8a72c4606c58212b3a8008c3a23fc990')
+            'ad796ad33189d897213c1d0a11b539f6a752f63a9c4f17e343af5fcc895f6bbd')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    php-box build
+    php -d phar.readonly=Off /usr/bin/php-box build
 }
 
 package() {
