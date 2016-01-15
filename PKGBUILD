@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=kpmcore-git
-pkgver=1.9.50.r64.9d77168
+pkgver=2.0.0.r68.f69254f
 pkgrel=1
 pkgdesc="Library for managing partitions. Common code for KDE Partition Manager and other projects. (GIT version)"
 arch=('i686' 'x86_64')
@@ -10,6 +10,12 @@ license=('GPL2')
 depends=('parted'
          'kio'
          )
+optdepends=('e2fsprogs: ext2/3/4 support'
+            'xfsprogs: XFS support'
+            'jfsutils: JFS support'
+            'reiserfsprogs: Reiser support'
+            'ntfsprogs: NTFS support'
+            'dosfstools: FAT32 support')
 conflicts=('kpmcore')
 provides=('kpmcore')
 makedepends=('extra-cmake-modules' 'git' 'python')
