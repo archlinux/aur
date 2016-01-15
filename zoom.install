@@ -4,6 +4,9 @@ _update() {
 
 	echo -e "\e[34;1m==>\e[39;1m Updating icon cache...\e[0m"
 	xdg-icon-resource forceupdate --theme hicolor &>/dev/null
+
+	echo -e "\e[34;1m==>\e[39;1m Updating mime database...\e[0m"
+	update-mime-database -n /usr/share/mime
 }
 
 post_install() {
