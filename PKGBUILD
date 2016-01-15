@@ -3,8 +3,8 @@
 
 pkgname=openerp
 pkgver=7.0
-_pkgsubver=20151216
-pkgrel=7
+_pkgsubver=20160113
+pkgrel=8
 pkgdesc="Advanced OpenSource ERP and CRM server"
 url=http://openerp.com/
 arch=('any')
@@ -78,7 +78,7 @@ package()
   #install -Dm 644  openerp-server.1.gz ${pkgdir}/usr/share/man/man1
   #install -Dm 644  openerp_serverrc.5.gz ${pkgdir}/usr/share/man/man5
 }
-md5sums=('3167de7e31737e08cd64427ce759b00d'
+md5sums=('0d1eb0088a51d1e198c90e96539abce6'
          'effb44e444602a0e59f8fe5b4ebc47b4'
          'a6b183fa1bb5c8e4224b81d6480cecbc'
          '3fd6f291a4ca289e3d1354e4e09a1d70')
