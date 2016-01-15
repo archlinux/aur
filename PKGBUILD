@@ -1,12 +1,21 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-consensus-git
-pkgver=20151220
-pkgrel=2
+pkgver=20160114
+pkgrel=1
 pkgdesc="Libbitcoin Consensus Library"
 arch=('i686' 'x86_64')
-depends=('boost' 'boost-libs' 'secp256k1-git')
-makedepends=('autoconf' 'automake' 'gcc' 'git' 'libtool' 'make' 'pkg-config')
+depends=('boost'
+         'boost-libs'
+         'secp256k1-git')
+makedepends=('autoconf'
+             'automake'
+             'gcc'
+             'git'
+             'libtool'
+             'm4'
+             'make'
+             'pkg-config')
 groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin-consensus"
 license=('AGPL3')
