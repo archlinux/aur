@@ -1,4 +1,4 @@
-_piver="1"
+_piver="2"
 _sdktool="/usr/libexec/qtcreator/sdktool"
 _devicefamily="raspberrypi"
 _devicename="${_devicefamily}${_piver}"
