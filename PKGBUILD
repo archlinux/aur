@@ -14,16 +14,20 @@ depends=('qt4' 'qwt')
 source=("http://sourceforge.net/projects/qwtpolar/files/$pkgname/$pkgver/$pkgname-$pkgver.tar.bz2")
 sha1sums=('38edf5220c971eef0e88fcc6db7c718e6198ccac')
 
-build() {
+prepare() {
   cd $pkgname-$pkgver
 
-  sed -i -e 's/$${QWT_POLAR_INSTALL_PREFIX}\/doc/\/usr\/share\/doc\/qwt\//' qwtpolarconfig.pri
-  sed -i -e 's/$${QWT_POLAR_INSTALL_PREFIX}\/include/\/usr\/include\/qwt\//' qwtpolarconfig.pri
-  sed -i -e 's/$${QWT_POLAR_INSTALL_PREFIX}\/lib/\/usr\/lib\//' qwtpolarconfig.pri
-  sed -i -e 's/$${QWT_POLAR_INSTALL_PREFIX}\/features/\/usr\/share\/qwt\/features\//' qwtpolarconfig.pri
-  sed -i -e 's/^.*QwtPolarDesigner//' qwtpolarconfig.pri
-  sed -i -e 's/^.*QwtPolarExamples//' qwtpolarconfig.pri
-  echo "INCLUDEPATH += /usr/include" >> qwtpolarbuild.pri
+  sed -e '/^\s*QWT_POLAR_INSTALL_PREFIX/ s|=.*|= /usr|' \
+      -e '/^QWT_POLAR_INSTALL_DOCS/ s|/doc|/share/doc/qwtpolar|' \
+      -e '/^QWT_POLAR_INSTALL_HEADERS/ s|/include|/include/qwt|' \
+      -e '/^QWT_POLAR_INSTALL_FEATURES/ s|/features|/share/qt4/mkspecs/features|' \
+      -e '/^QWT_POLAR_INSTALL_PLUGINS/ s|/plugins|/lib/qt4/plugins|' \
+      -e '/QwtPolarExamples/ s/^/# /' \
+      -i qwtpolarconfig.pri
+}
+
+build() {
+  cd $pkgname-$pkgver
 
   qmake-qt4 qwtpolar.pro
   make
@@ -35,4 +39,6 @@ package() {
   make INSTALL_ROOT="$pkgdir" install
 
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  mv "$pkgdir/usr/share/doc/qwtpolar/man/" "$pkgdir/usr/share/"
+  rm "$pkgdir/usr/share/man/man3/qwtlicense.3"
 }
