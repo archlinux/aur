@@ -1,7 +1,7 @@
 # Contributor: Alex Charrett arch at transposed dot org
 pkgname=cdpr
 pkgver=2.4
-pkgrel=4
+pkgrel=5
 pkgdesc="cdpr is used to decode a Cisco Disovery Protocol (CDP) packet"
 url="http://sourceforge.net/projects/cdpr"
 license="GPL"
