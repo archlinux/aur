@@ -13,7 +13,7 @@ _cur_kernel="$(uname -r)"
 
 pkgname=synaptics-led
 pkgver=$_kver
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 license=(GPL2)
 url="https://github.com/mmonaco/PKGBUILDs"
@@ -32,7 +32,7 @@ source=(
 )
 
 sha256sums=('448b8b052247a081fd99bd4500313cb1bf24687c42c7ac6c178681bbc5c64352'
-            'f97d04b4330c3ae45efef32d90e13355ff9157b5d739bf6dfb6a16712d21d2ae'
+            '7dca7e600cb0600b6f29a3e64c57bdcaff3eb98a3d32d76c61520ab3c9818c2c'
             'b46af61822e8ec8639faa1b60dd3b6b1a64e24854611902499b9f81d2691e22c'
             '4ce194fd0283affb0be2eef6d61aaeae134837af2d204ddd765008d081809e07'
             '790b80dc08e22e91fc315c5439cec5d65a1ee523f7d22aba509e39bb8abc7a6f'
