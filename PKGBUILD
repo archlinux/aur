@@ -5,13 +5,13 @@
 
 pkgbase="spl-dkms-git"
 pkgname=("spl-dkms-git" "spl-utils-dkms-git")
-pkgver=0.6.5.4_r0_g6e5e068
+pkgver=0.6.5_r35_ge843553
 pkgrel=1
 license=('GPL')
 makedepends=("git")
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/spl.git#branch=spl-0.6.5-release"
+source=("git+https://github.com/zfsonlinux/spl.git"
         "spl-utils.hostid")
 sha256sums=('SKIP'
             'ad95131bc0b799c0b1af477fb14fcf26a6a9f76079e48bf090acb7e8367bfd0e')
@@ -40,6 +40,7 @@ build() {
 package_spl-dkms-git() {
     pkgdesc="Solaris Porting Layer kernel modules."
     depends=("dkms" "spl-utils-dkms-git=${pkgver}-${pkgrel}")
+    provides=("spl")
     conflicts=("spl-git" "spl-lts" "spl-dkms")
     install=spl.install
 
@@ -50,13 +51,13 @@ package_spl-dkms-git() {
     git archive --format=tar HEAD | tar -x -C "${dkmsdir}"
 
     cd "${dkmsdir}"
-    ./autogen.sh
     scripts/dkms.mkconf -v ${pkgver%%_*} -f dkms.conf -n spl
     chmod g-w,o-w -R .
 }
 
 package_spl-utils-dkms-git() {
     pkgdesc="Solaris Porting Layer kernel module support files."
+    provides=("spl-utils")
     conflicts=("spl-utils-git" "spl-utils-lts" "spl-utils")
 
     cd "${srcdir}/spl"

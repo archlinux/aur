@@ -8,15 +8,19 @@ EOF
 }
 
 pre_upgrade() {
-    pre_remove "$2"
+    if [ "${1%%[-_]*}" != "${2%%[-_]*}"  ]; then
+        pre_remove "$2"
+    fi
 }
 
 post_upgrade() {
-    post_install "$1"
+    if [ "${1%%[-_]*}" != "${2%%[-_]*}"  ]; then
+        post_install "$1"
+    fi
 }
 
 pre_remove() {
-    [ -n "${1%%[_-]*}" ] && dkms remove spl/${1%%[_-]*} --all &> /dev/null || true
+    [ -n "${1%%[_-]*}" ] && dkms remove spl/${1%%[_-]*} --all -q || true
 }
 
 check_hostid() {
