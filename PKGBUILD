@@ -4,7 +4,7 @@
 # Contributor: TingPing <tingping@tingping.se>
 
 pkgname=grive
-pkgver=0.4.2
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="An open source Linux client for Google Drive with support for the new Drive REST API and partial sync"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ optdepends=("cppunit: unit tests"
 makedepends=('cmake' 'boost')
 conflicts=('grive-git')
 source=("https://github.com/vitalif/grive2/archive/v${pkgver}.tar.gz")
-md5sums=('b3a682a090d23489a0eb8c4ec5a1b12e')
+md5sums=('f291ffaef831abf3605417995082bcc3')
 
 build() {
 	cd "${srcdir}/${pkgname}2-${pkgver}"
