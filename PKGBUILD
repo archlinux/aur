@@ -1,9 +1,9 @@
 # Contributor: Stefan J. Betz <info@stefan-betz.net>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Aaron Schaefer <aaron@elasticdog.com>
-# Maintainer: N. Izumi - izmntuk
+# Maintainer: N. I. - izmntuk
 pkgname=dar
-pkgver=2.5.2
+pkgver=2.5.3
 pkgrel=1
 pkgdesc='A full featured command-line backup tool, short for Disk ARchive'
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ options=('!libtool')
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	## --enable-threadar: EXPERIMENTAL multithread support
-	./configure --prefix=/usr --sysconfdir=/etc --disable-dar-static --disable-static --disable-upx --disable-build-html ${EXTRA_OPTIONS}
+	./configure --prefix=/usr --sysconfdir=/etc --disable-dar-static --disable-static --disable-upx --disable-build-html
 	make
 }
 
@@ -31,4 +31,4 @@ package() {
 	rm -rf "${pkgdir}/usr/share/doc/dar/html/man"
 }
 
-sha512sums=('e904639149e156f2c7a52de77ec319fd809e9deaf5334c47c68584eab8167866a664d27187de58ab92aef053fcf8aae7e10059ca6f3a0e51a04b9d09daf60b5b')
+sha512sums=('d21a122c58ed50b080ec84775e9681ba38fbd33c4c102ba5098cb57b670376bcf706dcc0864c40b3c3ca2610f389291ffd50c10097d36d31f54c30c12c19e7cf')
