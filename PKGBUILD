@@ -4,6 +4,7 @@ pkgname=zukitwo-manjaro
 pkgver=1.1.2
 pkgrel=1
 pkgdesc="A simple green varient of the Zukitwo theme."
+arch=('x86_64' 'i686')
 url="https://github.com/THEGUSPROJECT/zukitwo-manjaro"
 license=('GPL3')
 depends=('gtk-engine-murrine' 'gtk-engines')
