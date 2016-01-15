@@ -4,7 +4,7 @@ pkgdesc="ROS - The dynamicEDT3D library implements an inrementally updatable Euc
 url='http://octomap.github.io'
 
 pkgname='ros-indigo-dynamic-edt-3d'
-pkgver='1.7.0'
+pkgver='1.6.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
