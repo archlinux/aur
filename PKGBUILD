@@ -1,4 +1,5 @@
 # Maintainer: drgn <ttemplate223 at gmail dot com>
+# Pretty much stolen from lemonbar-git
 
 pkgname=lemonbar-sm-git
 _pkgname=lemonbar
