@@ -5,19 +5,19 @@
 
 pkgbase="zfs-dkms-git"
 pkgname=("zfs-dkms-git" "zfs-utils-dkms-git")
-pkgver=0.6.5.4_r0_g1ffc4c1
-pkgrel=2
+pkgver=0.6.5_r118_gd21f279
+pkgrel=1
 license=('CDDL')
 makedepends=("git" "spl-dkms-git>=${pkgver%%_*}")
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/zfs.git#branch=zfs-0.6.5-release"
-        "zfs-utils.bash-completion-r1"
-        "zfs-utils.initcpio.install"
-        "zfs-utils.initcpio.hook")
+source=("git+https://github.com/zfsonlinux/zfs.git"
+        "zfs.bash-completion-r1"
+        "zfs.initcpio.install"
+        "zfs.initcpio.hook")
 sha256sums=('SKIP'
             'b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540'
-            '1e20071fa61a33874505dae0f2d71bb560f43e7faaea735cbde770ea10c133df'
+            '70930eee5b0f55ba587220b9530170d91ef1eea98a37de9ae38f963dee410b3a'
             '250f1232c464a81cc9c8b8ee05f21d752ebeebbc8614fae1c6d0bc600e816ac1')
 
 pkgver() {
@@ -43,9 +43,9 @@ build() {
 }
 
 package_zfs-dkms-git() {
-    pkgdesc="Kernel modules for the Zettabyte File System."
+    pkgdesc="Kernel modules for the Zettabyte File System. (Git version)"
     depends=("spl-dkms-git>=${pkgver%%_*}" "zfs-utils-dkms-git=${pkgver}-${pkgrel}" "dkms")
-    optdepends=("mkinitcpio-dkms: Generate initramfs with zfs modules automatically")
+    provides=("zfs")
     conflicts=("zfs-git" "zfs-lts" "zfs-dkms")
     install=zfs.install
 
@@ -56,13 +56,13 @@ package_zfs-dkms-git() {
     git archive --format=tar HEAD | tar -x -C "${dkmsdir}"
 
     cd "${dkmsdir}"
-    ./autogen.sh
     scripts/dkms.mkconf -v ${pkgver%%_*} -f dkms.conf -n zfs
     chmod g-w,o-w -R .
 }
 
 package_zfs-utils-dkms-git() {
-    pkgdesc="Kernel module support files for the Zettabyte File System."
+    pkgdesc="Kernel module support files for the Zettabyte File System. (Git version)"
+    provides=("zfs-utils")
     conflicts=("zfs-utils-git" "zfs-utils-lts" "zfs-utils")
 
     cd "${srcdir}/zfs"
@@ -71,12 +71,16 @@ package_zfs-utils-dkms-git() {
     # Remove uneeded files
     rm -r "${pkgdir}"/etc/init.d
     rm -r "${pkgdir}"/usr/lib/dracut
+    rm -r "${pkgdir}"/usr/share/initramfs-tools
 
     # move module tree /lib -> /usr/lib
     cp -r "${pkgdir}"/{lib,usr}
     rm -r "${pkgdir}"/lib
 
-    install -D -m644 "${srcdir}"/zfs-utils.initcpio.hook "${pkgdir}"/usr/lib/initcpio/hooks/zfs
-    install -D -m644 "${srcdir}"/zfs-utils.initcpio.install "${pkgdir}"/usr/lib/initcpio/install/zfs
-    install -D -m644 "${srcdir}"/zfs-utils.bash-completion-r1 "${pkgdir}"/usr/share/bash-completion/completions/zfs
+    install -D -m644 "${srcdir}"/zfs.initcpio.hook "${pkgdir}"/usr/lib/initcpio/hooks/zfs
+    install -D -m644 "${srcdir}"/zfs.bash-completion-r1 "${pkgdir}"/usr/share/bash-completion/completions/zfs
+
+    mkdir -p "${pkgdir}"/usr/lib/initcpio/install
+    sed -e "s|##VERMARKER##|${pkgver}|" "${srcdir}"/zfs.initcpio.install > "${pkgdir}"/usr/lib/initcpio/install/zfs
+    chmod 644 "${pkgdir}"/usr/lib/initcpio/install/zfs
 }

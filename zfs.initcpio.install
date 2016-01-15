@@ -1,6 +1,12 @@
 #!/bin/bash
 
 build() {
+    echo -en "Build spl module for ${KERNELVERSION} kernel... "
+    $(which dkms) install -m spl -v ##VERMARKER## -k ${KERNELVERSION} -q
+    echo -en "Done.\nBuild zfs module for ${KERNELVERSION} kernel... "
+    $(which dkms) install -m zfs -v ##VERMARKER## -k ${KERNELVERSION} -q
+    echo "Done."
+
     map add_module \
         zavl \
         znvpair \

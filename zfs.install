@@ -3,42 +3,76 @@ post_install() {
     cat << EOF
 ==> To build and install your modules run: dkms install zfs/${1%%[_-]*} -k [KERNEL]
 ==> To do this automatically at startup run: systemctl enable dkms.service
+
 EOF
-    check_initramfs "install"
+    check_hook
 }
 
 pre_upgrade() {
-    pre_remove "$2"
+    if [ "${1%%[-_]*}" != "${2%%[-_]*}" ]; then
+        pre_remove "$2"
+    fi
 }
 
 post_upgrade() {
-    post_install "$1"
+    if [ "${1%%[-_]*}" != "${2%%[-_]*}" ]; then
+        post_install "$1"
+    fi
 }
 
 pre_remove() {
-    [ -n "${1%%[-_]*}" ] && dkms remove zfs/${1%%[-_]*} --all &>/dev/null || true
+    [ -n "${1%%[-_]*}" ] && dkms remove zfs/${1%%[-_]*} --all -q || true
 }
 
 post_remove() {
-    check_initramfs "remove"
+    check_hook remove
 }
 
-check_initramfs() {
-    if grep -v '#' /etc/mkinitcpio.conf | grep zfs >/dev/null; then
-        if [[ $1 == 'remove' ]]; then
-            echo '==> The ZFS packages have been removed, but "zfs" remains in the "hooks"'
-            echo '==> list in mkinitcpio.conf! You will need to remove "zfs" from the '
-            echo '==> "hooks" list and then regenerate the initial ramdisk.'
-        elif grep -v '#' /etc/mkinitcpio.conf | grep dkms >/dev/null; then
-            echo '==> Generating initial ramdisk automatically (mkinitcpio-dkms found)'
-            for preset in /etc/mkinitcpio.d/*.preset; do
-                mkinitcpio -p "$(basename "$preset" .preset)"
-            done
-        else
-            echo '==> The ZFS packages are installed/updated, you need to (re)generate initial ramdisk yourself'
-            echo '==> After modules are built and installed, run: mkinitcpio -p [PRESET]'
-            echo '==> To do it automatically, you can also install mkinitcpio-dkms package'
-            echo '==> and add "dkms" to HOOKSs (before zfs)'
+check_hook() {
+    ZFSHOOKFILES=()
+
+    for preset in /etc/mkinitcpio.d/*.preset; do
+        source $preset
+        CONF_FILE=()
+
+        if [ -n "${ALL_config}" ]; then
+            CONF_FILE+=("${ALL_config}")
+            unset ALL_config
         fi
+
+        for prefix in ${PRESETS[@]}; do
+            varname="${prefix}_config"
+            if [ -n "$(eval echo \$$varname)" ]; then
+                eval CONF_FILE+=("$(eval echo \$$varname)")
+                unset $varname
+            fi
+        done
+
+        i=0
+        unset ZFSHOOKPRESENCE
+        while [ $i -lt ${#CONF_FILE[@]} ]; do
+            if [ -e "${CONF_FILE[$i]}" ] && [ $(grep -q "zfs" ${CONF_FILE[$i]} && echo -n "1") ]; then
+                ZFSHOOKPRESENCE=1
+                if [ "$1" == "remove" ] && [ $(echo -n "${ZFSHOOKFILES[@]}" | grep -q "${CONF_FILE[$i]}" || echo -n "1") ]; then
+                    ZFSHOOKFILES+=("${CONF_FILE[$i]}")
+                fi
+            fi
+            i+=1
+        done
+
+        if [ ${ZFSHOOKPRESENCE} ]; then
+            if [ "$1" != "remove" ]; then
+                echo "==> Generating initial ramdisk for $(basename "$preset" .preset), using mkinitcpio. Please wait..."
+                mkinitcpio -p $(basename "$preset" .preset)
+            fi
+        fi
+    done
+
+    if [ "$1" == "remove" ] && [ ${#ZFSHOOKFILES[@]} -gt 0 ]; then
+        echo "==> zfs-dkms package has been removed but \"zfs\" is still in the hooks list of:"
+        for file in ${ZFSHOOKFILES[@]}; do
+            echo "  -> ${file}"
+        done
+        echo "==> Remove \"zfs\" and generate a new initrd."
     fi
 }
