@@ -6,15 +6,18 @@ arch=('i686' 'x86_64' 'armv6l' 'armv7h')
 url="http://freecode.com/projects/parprouted"
 license=('GPL2')
 depends=('iproute')
+install=('parprouted.install')
 source=("http://www.hazard.maks.net/parprouted/parprouted-$pkgver.tar.gz"
 	"000-routecmd.diff"
 	"parprouted.conf"
-	"parprouted.service")
+	"parprouted.service"
+	"parprouted.install")
 
 md5sums=('570f5deaf09600df8f80f589de79ecdb'
          'c77e6b850b50a338cfc4f0c91f33b7f6'
 	 'a7b194a4a67468539ccc7f776c7b3184'
-	 '9d5dcdaa61630bb02c96ef32efacd766')
+	 '9d5dcdaa61630bb02c96ef32efacd766'
+	 'ad7edc8f66340a1f19b0ed1ab471edd7')
 
 build() {
 	cd parprouted-$pkgver
