@@ -2,14 +2,14 @@
 
 pkgname=lxqt-qt5ct
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="LXQt Qt5ct integration"
 url="https://github.com/Zatherz/lxqt-qt5ct"
 
 arch=('i686' 'x86_64')
 license=('LGPL2.1')
 
-depends=('lxqt-session')
+depends=('lxqt-session' "qt5ct")
 
 provides=('lxqt-qt5ct')
 conflicts=('startlxqt-qt5ct')
