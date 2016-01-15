@@ -1,6 +1,6 @@
 pkgname=php-pecl-oauth
-pkgver=1.2.3
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="PHP oauth consumer/provider extension"
 arch=('i686' 'x86_64')
 url="http://pecl.php.net/package/oauth"
@@ -9,7 +9,7 @@ depends=('php>=5.3.2')
 backup=('etc/php/conf.d/oauth.ini')
 install=php-pecl-oauth.install
 source=(http://pecl.php.net/get/oauth-$pkgver.tgz)
-md5sums=('99838d9a04b78058c7360dfd69c8593b')
+md5sums=('48d0cd5fcba4c6cf7d8ef346c50498c1')
 
 build() {
   cd "oauth-$pkgver"
