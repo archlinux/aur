@@ -1,0 +1,19 @@
+pkgbase = finja-git
+	pkgdesc = Index and find your stuff
+	pkgver = 0.r11.72eb134
+	pkgrel = 1
+	url = http://github.com/ganwell/finja
+	arch = any
+	license = AGPL
+	depends = python
+	depends = python-six
+	depends = python-binaryornot
+	provides = finja
+	provides = finja-git
+	source = finja-git::git://github.com/ganwell/finja.git
+	source = LICENSE::https://www.gnu.org/licenses/agpl.txt
+	sha256sums = SKIP
+	sha256sums = 57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6
+
+pkgname = finja-git
+
