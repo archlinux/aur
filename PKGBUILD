@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=20160112.dd973da
+pkgver=20160114.bc1dce5
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('i686' 'x86_64' )
@@ -94,9 +94,7 @@ prepare() {
         --enable-ladspa \
         --enable-libbs2b \
         --enable-libgme \
-        --enable-libsoxr \
-        --disable-demuxer=hls
-        --disable-protocol=concat,hls" > ffmpeg_options
+        --enable-libsoxr" > ffmpeg_options
   echo "--prefix=/usr \
         --confdir=/etc/mpv \
         --enable-openal \
