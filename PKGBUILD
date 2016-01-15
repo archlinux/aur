@@ -8,7 +8,6 @@ license=('Modified BSD/MIT/GPL')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc')
 options=('!strip' '!buildflags' 'staticlibs')
-provides=('mingw-w64-glew-lib32' 'mingw-w64-glew-pure64')
 source=("http://downloads.sourceforge.net/glew/glew-${pkgver}.tgz")
 md5sums=('7cbada3166d2aadfc4169c4283701066')
 
