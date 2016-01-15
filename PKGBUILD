@@ -1,7 +1,7 @@
 # Maintainer: fuyukaidesu <mirai@kuriyama.moe>
 pkgname=libmlx
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple X programming API in C, designed for students, suitable for beginners"
 arch=('i686' 'x86_64')
 license=('BSD')
@@ -21,6 +21,6 @@ package() {
   mkdir -p $pkgdir/usr/include/mlx
   mkdir -p $pkgdir/usr/lib/pkgconfig
   cp libmlx.a "$pkgdir/usr/lib"
-  cp ../mlx.pc "$pkgdir/usr/lib"
+  cp ../mlx.pc "$pkgdir/usr/lib/pkgconfig"
   cp mlx.h mlx_int.h "$pkgdir/usr/include/mlx"
 }
