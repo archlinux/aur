@@ -1,0 +1,19 @@
+*** configure_old	2010-10-12 10:54:27.000000000 -0400
+--- configure	2010-11-30 17:44:31.476894402 -0500
+***************
+*** 2215,2221 ****
+  
+  
+  # Extract the first word of "python", so it can be a program name with args.
+! set dummy python; ac_word=$2
+  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+  $as_echo_n "checking for $ac_word... " >&6; }
+  if test "${ac_cv_path_Python+set}" = set; then :
+--- 2215,2221 ----
+  
+  
+  # Extract the first word of "python", so it can be a program name with args.
+! set dummy python2; ac_word=$2
+  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+  $as_echo_n "checking for $ac_word... " >&6; }
+  if test "${ac_cv_path_Python+set}" = set; then :
