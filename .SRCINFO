@@ -1,7 +1,7 @@
 pkgbase = ttf-paratype
 	pkgdesc = Font family by ParaType: sans, serif, mono, extended cyrillic and latin, OFL license
 	pkgver = 20140730
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.paratype.com/public/
 	install = ttf-paratype.install
 	arch = any
@@ -17,9 +17,11 @@ pkgbase = ttf-paratype
 	source = PTSansOFL-20140730.zip::http://www.paratype.ru/uni/public/PTSansOFL.zip
 	source = PTSerifOFL-20140730.zip::http://www.paratype.ru/uni/public/PTSerifOFL.zip
 	source = PTMonoOFL-20140730.zip::http://www.paratype.ru/uni/public/PTMonoOFL.zip
+	source = ttf-paratype.conf
 	md5sums = e5b99133d3b72cd35400b5aa810ad0ee
 	md5sums = 4dd07baa86fd30977cdfabd82bf2ad1d
 	md5sums = 1c6d5c30fca24130b2888b9427a75134
+	md5sums = 1c02ad07bd1be3a9915d39bb864ad4dd
 
 pkgname = ttf-paratype
 
