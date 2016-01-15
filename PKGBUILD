@@ -2,7 +2,7 @@
 
 pkgname=concrete5
 _pkgname=concrete
-pkgver=5.7.5.3
+pkgver=5.7.5.4
 pkgrel=1
 pkgdesc="A PHP-based open source content management system"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('apache: Web server to run concrete5'
 install="$pkgname.install"
 options=('!strip')
 source=(http://www.concrete5.org/releases/$_pkgname$pkgver.zip)
-sha256sums=('9ec18628d03c66f94a27fe70b7d6b565570dd4fde7044301faa283517c48b24f')
+sha256sums=('ebec5fd26e0a4be879ef347b73873efb16f9ce90e3b3e73b7544847bb621069c')
 
 package() {
   _instdir=$pkgdir/usr/share/webapps/$pkgname
