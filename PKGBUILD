@@ -1,14 +1,15 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-server-git
-pkgver=20151221
-pkgrel=4
+pkgver=20160114
+pkgrel=1
 pkgdesc="Bitcoin Full Node and Query Server"
 arch=('i686' 'x86_64')
 depends=('boost'
          'boost-libs'
          'czmq-git'
          'czmqpp-git'
+         'icu'
          'libbitcoin'
          'libbitcoin-blockchain'
          'libbitcoin-consensus'
@@ -21,6 +22,7 @@ makedepends=('autoconf'
              'gcc'
              'git'
              'libtool'
+             'm4'
              'make'
              'pkg-config')
 optdepends=('libbitcoin-explorer: CurveZMQ client/server authentication')
