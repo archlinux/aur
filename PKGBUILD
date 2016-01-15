@@ -134,6 +134,10 @@ cd argonaut/
     
     # Include section
     if [ -d ./include ] ; then    
+      if [ ! -d "${pkgdir}/usr/share/webapps/fusiondirectory/include/" ] ; then
+        mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/include/
+      fi
+
       # Directories
       for cur_include in $(find ./include -mindepth 1 -maxdepth 1 -type d) ; do
         include_line="$(echo ${cur_include} | sed "s#./include/##")" 
