@@ -6,7 +6,7 @@
 pkgbase=tomb
 pkgname=(tomb tomb-kdf)
 pkgver=2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Crypto Undertaker, a simple tool to manage encrypted storage"
 arch=('i686' 'x86_64')
 url="https://www.dyne.org/software/tomb/"
