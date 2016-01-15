@@ -1,7 +1,7 @@
 # Maintainer: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=wego-git
-pkgver=r32.0a3ce5b
+pkgver=r59.f5baabc
 pkgrel=1
 pkgdesc="Weather app for your terminal."
 arch=('any')
@@ -20,6 +20,7 @@ pkgver() {
 prepare() {
     export GOPATH="$srcdir/$pkgname"
     go get github.com/mattn/go-colorable
+    go get github.com/mattn/go-runewidth
 }
 
 build() {
