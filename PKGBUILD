@@ -1,13 +1,13 @@
 pkgname=terasology-devbuild
 pkgver=1617
 _omega_ver=362
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet another high resolution game with blocks like Minecraft! (Last succesful development build)"
 arch=('x86_64' 'i686')
 license=('Apache')
 url="http://terasology.org"
 options=('!strip')
-depends=('jdk8-openjdk' 'xorg-server-utils' 'openal')
+depends=('java-environment-openjdk=8' 'xorg-server-utils' 'openal')
 makedepends=('unzip')
 source=(
     "$pkgname"
