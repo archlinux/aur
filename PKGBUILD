@@ -93,7 +93,7 @@ build() {
     -silent \
     -confirm-license \
     -opensource \
-    -qtlibinfix Pi \
+    -qtlibinfix "Pi${_piver}" \
     -reduce-exports \
     -reduce-relocations \
     -pch \
