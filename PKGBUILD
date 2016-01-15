@@ -19,6 +19,8 @@ build() {
 
 package() {
 	cd parprouted-$pkgver
-	install -Dm755 parprouted $pkgdir/usr/bin/parprouted
-	install -Dm644 parprouted.8 $pkgdir/usr/share/man/man8/parprouted.8
+	install -Dm0755 parprouted $pkgdir/usr/bin/parprouted
+	install -Dm0644 parprouted.8 $pkgdir/usr/share/man/man8/parprouted.8
+	install -Dm0644 ../../parprouted.service "$pkgdir"/usr/lib/systemd/system/parprouted.service
+	install -Dm0644 ../../parprouted.conf "$pkgdir"/etc/conf.d/parprouted
 }
