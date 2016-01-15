@@ -1,11 +1,12 @@
 #
 # Maintainer: Iacopo Isimbaldi <isiachi@rhye.it>
+# Contributor: bjin <bjin1990 at gmail dot com>
 #
 
 pkgbase="zfs-dkms"
 pkgname=("zfs-dkms" "zfs-utils")
 pkgver=0.6.5.4
-pkgrel=3
+pkgrel=4
 license=('CDDL')
 makedepends=("spl-dkms=${pkgver}")
 arch=("i686" "x86_64")
