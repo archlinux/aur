@@ -1,19 +1,19 @@
 # Maintainer: Raphael Simon <simon.raphael@gmail.com>
 
 pkgbase=linux-samus4
-pkgver=4.3
-pkgrel=2
+pkgver=4.4
+pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
-source=("https://github.com/raphael/linux-samus/archive/v4.3-2.tar.gz"
+source=("https://github.com/raphael/linux-samus/archive/v4.4-1.tar.gz"
         "config"
         "linux.preset"
         )
 _kernelname=${pkgbase#linux}
-_linuxsrc=linux-samus-4.3-2/build/linux/
+_linuxsrc=linux-samus-4.4-1/build/linux/
 
 # $srcdir is: /home/raphael/src/kernel-pkg/src
 prepare() {
@@ -32,7 +32,7 @@ build() {
   make bzImage modules
 }
 
-_package() {
+_package-kernel() {
   pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
@@ -231,13 +231,14 @@ _package-docs() {
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 }
 
-pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
+pkgname=("${pkgbase}-kernel" "${pkgbase}-headers" "${pkgbase}-docs")
 for _p in ${pkgname[@]}; do
   eval "package_${_p}() {
     $(declare -f "_package${_p#${pkgbase}}")
     _package${_p#${pkgbase}}
   }"
 done
-md5sums=('328d315b0a7f7d14df8706f11f6ffc80'
-         '6730ef4e3613e11a7fccceb26efed61e'
+
+md5sums=('f76ac0b7a6bb334a773e35737681f0a6'
+         'a431b7758b5a597c0f5789b98d520e53'
          '5aae464a8085b2f3adcdcaff29853d04')
