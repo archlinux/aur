@@ -2,7 +2,6 @@
 # Contributor: John D Jones III jnbek1972 __AT__ $mailservice_by_google __DOT__ com
 
 _npmname=tldr
-_npmver=1.2.1
 _pkgname=nodejs-tldr
 pkgname=nodejs-tldr-git
 pkgver=r1057.ebe6b98
@@ -30,5 +29,5 @@ package() {
     local _npmdir="${pkgdir}/usr/lib/node_modules/"
     mkdir -p ${_npmdir}
     cd ${_npmdir}
-    npm install -g --prefix "${pkgdir}/usr" ${_npmname}@${_npmver}
+    npm install -g --prefix "${pkgdir}/usr" ${_npmname}
 }
