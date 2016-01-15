@@ -1,12 +1,13 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-node-git
-pkgver=20151221
-pkgrel=2
+pkgver=20160114
+pkgrel=1
 pkgdesc="Bitcoin Full Node"
 arch=('i686' 'x86_64')
 depends=('boost'
          'boost-libs'
+         'icu'
          'libbitcoin'
          'libbitcoin-blockchain'
          'libbitcoin-consensus'
@@ -16,6 +17,7 @@ makedepends=('autoconf'
              'gcc'
              'git'
              'libtool'
+             'm4'
              'make'
              'pkg-config')
 groups=('libbitcoin')
