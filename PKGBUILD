@@ -4,7 +4,7 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=pybliographer
-pkgver=1.2.16
+pkgver=1.2.17
 pkgrel=1
 pkgdesc="A tool for managing bibliographic database"
 depends=('python-bibtex' 'gconf' 'rarian' 'gnome-doc-utils' 'desktop-file-utils')
@@ -13,8 +13,8 @@ arch=('any')
 license=('GPL')
 install=pybliographer.install
 url="http://www.pybliographer.org"
-source=(http://downloads.sourceforge.net/project/pybliographer/Sources%20-%201.2/1.2.16/pybliographer-1.2.16.tar.xz configure.patch)
-md5sums=('034b2d58dc75ca3f1389494e9f5ee9aa' 'ef198b2995d8c6842bbb839893fa798c')
+source=(http://sourceforge.net/projects/pybliographer/files/Sources%20-%201.2/1.2.17/pybliographer-1.2.17.tar.gz configure.patch)
+md5sums=('33fd7595197f3969448e8534dd00aae0' 'ef198b2995d8c6842bbb839893fa798c')
 
 package() {
   cd $srcdir/$pkgname-$pkgver
