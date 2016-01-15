@@ -2,7 +2,7 @@
 # Contributor: Mikkel Kroman <mk@maero.dk>
 
 pkgname=crystal-git
-pkgver=0.10.2.r28.g5d0bd6e
+pkgver=0.10.2.r35.g4f5b6e0
 _last_release="0.10.2-1"
 pkgrel=1
 pkgdesc="The Crystal Programming Language"
@@ -64,6 +64,7 @@ package() {
   cp -av doc     "$pkgdir/usr/share/doc/crystal/api"
   cp -av samples "$pkgdir/usr/share/doc/crystal/"
 
+  install -Dm644 etc/completion.bash "$pkgdir/usr/share/bash-completion/completions/crystal"
   install -Dm644 etc/completion.zsh "$pkgdir/usr/share/zsh/site-functions/_crystal"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
