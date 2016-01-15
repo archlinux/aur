@@ -3,15 +3,15 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=python-bibtex
-pkgver=1.2.5
-pkgrel=2
+pkgver=1.2.7
+pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL')
 pkgdesc="A Python extension to parse BibTeX files."
 depends=('recode-pybliographer' 'glib2' 'python2')
 url="http://www.pybliographer.org"
 source=(http://downloads.sourceforge.net/pybliographer/$pkgname-$pkgver.tar.gz)
-md5sums=('f65081935c731b916b0aeb10aeea45ff')
+md5sums=('27c225e7f414a6350ce0a31443008dff')
 
 package() {
   cd $startdir/src/$pkgname-$pkgver
