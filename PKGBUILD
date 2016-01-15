@@ -1,6 +1,6 @@
 # Maintainer: Gaute Hope <eg@gaute.vetsj.com>
 pkgname=astroid
-pkgver=v0.4.r7.gcb4ebcc
+pkgver=v0.4.r203.g916ce69
 pkgrel=1
 epoch=
 pkgdesc="a graphical threads-with-tags style, lightweight and fast, email client for notmuch, inspired by sup and others"
@@ -8,7 +8,7 @@ arch=('x86_64' 'i686')
 url="https://github.com/gauteh/astroid"
 license=('GPL')
 groups=()
-depends=('notmuch' 'boost' 'boost-libs' 'gmime' 'gtkmm3' 'webkitgtk' 'gvim')
+depends=('notmuch' 'boost' 'boost-libs' 'gmime' 'gtkmm3' 'webkitgtk' 'gvim' 'libsass')
 makedepends=('scons' 'git' 'pkg-config')
 checkdepends=('notmuch-runtime')
 optdepends=()
