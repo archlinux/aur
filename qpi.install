@@ -51,7 +51,7 @@ setup_kit() {
 ${_sdktool} addDev \
     --id "${_devicename}_device" \
     --name "${_devicetext}" \
-    --host "qp${_piver}.local" \
+    --host "qpi${_piver}.local" \
     --uname "root" \
     --password "root" \
     --osType "GenericLinuxOsType" \
