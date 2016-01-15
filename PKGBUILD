@@ -1,5 +1,4 @@
 #
-# Maintainer: bjin <bjin1990 at gmail dot com>
 # Maintainer: Iacopo Isimbaldi <isiachi@rhye.it>
 #
 
