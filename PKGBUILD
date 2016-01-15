@@ -1,9 +1,9 @@
 # Maintainer : Antonio Orefice <xt7player@gmail.com>
 
 pkgname=xt7-player-mpv
-pkgver=0.12.381
-hotfix=-hotfix
-pkgrel=2
+pkgver=0.14.384
+#hotfix=-hotfix
+pkgrel=1
 _realname=xt7-player-mpv
 pkgdesc="Aims to be an 'almost complete' but usable mpv gui"
 arch=('any')
@@ -64,5 +64,5 @@ package() {
 
 }
 
-md5sums=('b59185a0a8166ba9b7ce34ddd3dd1162'
+md5sums=('8d0aeec46d9cf5060fbd39c678c18869'
          'b6f1380e33b47d0ed95c7ba1b3f4ec73')
