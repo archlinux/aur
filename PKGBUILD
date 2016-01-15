@@ -2,7 +2,7 @@
 # Contributor: A Rojas < nqn1976 @ gmail.com >
 
 pkgname=partitionmanager-git
-pkgver=1.9.50.r944.de9f34a
+pkgver=2.0.0.r948.15b7fa3
 pkgrel=1
 pkgdesc="A KDE utility that allows you to manage disks, partitions, and file systems. (GIT version)"
 arch=('i686' 'x86_64')
@@ -12,12 +12,6 @@ depends=('kpmcore-git' 'hicolor-icon-theme')
 conflicts=('partitionmanager')
 provides=('partitionmanager')
 makedepends=('extra-cmake-modules' 'kdoctools' 'git' 'python')
-optdepends=('e2fsprogs: ext2/3/4 support'
-            'xfsprogs: XFS support'
-            'jfsutils: JFS support'
-            'reiserfsprogs: Reiser support'
-            'ntfsprogs: NTFS support'
-            'dosfstools: FAT32 support')
 source=('git://anongit.kde.org/partitionmanager')
 sha1sums=('SKIP')
 install=partitionmanager-git.install
