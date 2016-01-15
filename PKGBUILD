@@ -19,7 +19,7 @@
 # I use NFS personally: sudo mount qpii.local:/ /mnt/pi
 
 # comment this turkey out in any circumstance when you need to regenate .SRCINFO
-echo "Set your sysroot prior to build" && exit 1
+#echo "Set your sysroot prior to build" && exit 1
 _sysroot=/mnt/pi
 
 _piver=2
