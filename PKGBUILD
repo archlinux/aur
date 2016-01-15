@@ -19,6 +19,6 @@ build() {
 
 package() {
 	cd parprouted-$pkgver
-	install -Dm755 parprouted $pkgdir/usr/sbin/parprouted
+	install -Dm755 parprouted $pkgdir/usr/bin/parprouted
 	install -Dm644 parprouted.8 $pkgdir/usr/share/man/man8/parprouted.8
 }
