@@ -8,8 +8,8 @@ pkgbase = telegram-purple
 	license = GPL
 	makedepends = git
 	depends = glib2
-	depends = libgcrypt
-	depends = libpurple>=1.6.0
+	depends = libgcrypt>=1.6.0
+	depends = libpurple
 	depends = zlib
 	depends = libwebp
 	source = git+https://github.com/majn/telegram-purple.git
