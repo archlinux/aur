@@ -3,13 +3,12 @@
 # Based on the PKGBUILD for R
 
 pkgname=r-mkl
-pkgver=3.2.2
+pkgver=3.2.3
 pkgrel=1
 pkgdesc="Language and environment for statistical computing and graphics, set up to use Intel's MKL"
 arch=('i686' 'x86_64')
 license=('GPL')
 url=('http://www.r-project.org/')
-#provides=('r=3.1.2')
 provides=("r=${pkgver}","r-mkl=${pkgver}")
 conflicts=('r')
 depends=('intel-mkl' 'bzip2'  'libpng' 'libjpeg' 'libtiff'
@@ -28,11 +27,11 @@ source=("http://cran.r-project.org/src/base/R-${pkgver%%.*}/R-${pkgver}.tar.gz"
 	'r.png'
 	'R.conf')
 
-md5sums=('57cef5c2e210a5454da1979562a10e5b'
+md5sums=('1ba3dac113efab69e706902810cc2970'
          '44ca875140b148543148b7749c7d6f5e'
          '00659f39e90627fe87f1645df5d4e3a7'
          '1dfa62c812aed9642f6e4ac34999b9fe')
-sha512sums=('71ba470875262b9f00fb6970f209788df4dad30e0a28373b824b60d8bc6401afb7786e65387663c6490c7ddcd2bfd7f808a270a3e63238f3d7565d5f93607138'
+sha512sums=('9d7294af860204f4d84e25eb503111c9607beedbc42f01de073c915945a6342c3e24e25a9cc038a2e58442036bee931975d93dc327081ed02afe5ffa365170ea'
             '1a90aed5411d72dd3e7708db0cb92c518e656e1a510ece02ad934131e05b8e683b4a36da8d37198263dc19fb2f3f19656c19c01f9b67974f0d7755974076d0b7'
             '55ed6e819dcbb231d842d825134b84d1a24db177558d5dad9369d57fd21d0239d6433c4311531171a101ca3c7c0685493e9cc6c1fe9e4e0df59f2331cff150ba'
             'aae388c5b6c02d9fb857914032b0cd7d68a9f21e30c39ba11f5a29aaf1d742545482054b57ce18872eabb6605bbb359b2fc1e9be5ce6881443fdbdf6b67fab3b')
