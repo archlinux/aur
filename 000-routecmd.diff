@@ -1,0 +1,36 @@
+diff -ru parprouted-0.7.orig/parprouted.c parprouted-0.7/parprouted.c
+--- parprouted-0.7.orig/parprouted.c	2008-01-27 19:30:25.000000000 -0430
++++ parprouted-0.7/parprouted.c	2010-12-31 02:39:35.020000005 -0430
+@@ -106,7 +106,7 @@
+     int success = 1;
+     
+     if (snprintf(routecmd_str, ROUTE_CMD_LEN-1, 
+-	    "/sbin/ip route del %s/32 metric 50 dev %s scope link",
++	    ROUTE_CMD" route del %s/32 metric 50 dev %s scope link",
+ 	    inet_ntoa(cur_entry->ipaddr_ia), cur_entry->ifname) > ROUTE_CMD_LEN-1) 
+     {
+ 	syslog(LOG_INFO, "ip route command too large to fit in buffer!");
+@@ -136,7 +136,7 @@
+     int success = 1;
+ 
+     if (snprintf(routecmd_str, ROUTE_CMD_LEN-1, 
+-	    "/sbin/ip route add %s/32 metric 50 dev %s scope link",
++	    ROUTE_CMD" route add %s/32 metric 50 dev %s scope link",
+ 	    inet_ntoa(cur_entry->ipaddr_ia), cur_entry->ifname) > ROUTE_CMD_LEN-1) 
+     {
+ 	syslog(LOG_INFO, "ip route command too large to fit in buffer!");
+diff -ru parprouted-0.7.orig/parprouted.h parprouted-0.7/parprouted.h
+--- parprouted-0.7.orig/parprouted.h	2008-01-27 19:04:44.000000000 -0430
++++ parprouted-0.7/parprouted.h	2010-12-31 02:38:39.746666672 -0430
+@@ -21,6 +21,11 @@
+ #define ARP_LINE_LEN 255
+ #define ARP_TABLE_ENTRY_LEN 20
+ #define ARP_TABLE_ENTRY_TIMEOUT 60 /* seconds */
++
++#ifndef ROUTE_CMD
++#define ROUTE_CMD "/usr/bin/ip"
++#endif
++
+ #define ROUTE_CMD_LEN 255
+ #define SLEEPTIME 1000000 /* ms */
+ #define REFRESHTIME 50 /* seconds */
