@@ -1,7 +1,7 @@
 # Contributor: Bruno Galeotti <bgaleotti at gmail dot com>
 _npmname=uglifycss
 pkgname=nodejs-uglifycss
-pkgver=0.0.11
+pkgver=0.0.20
 pkgrel=1
 pkgdesc="Port of YUI CSS Compressor from Java to NodeJS."
 arch=('any')
@@ -17,5 +17,5 @@ package() {
   cd $_npmdir
   npm install -g --prefix "$pkgdir/usr" $_npmname@$pkgver
 }
-sha1sums=('78621ebf7544e1ad37ab3814e7318c1ae777922d')
+sha1sums=('0f953c3cf989f9ff7447cba24f9999687c9a5910')
 # vim:set ts=2 sw=2 et:
