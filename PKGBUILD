@@ -19,7 +19,7 @@
 	# Src info -- As the master branch is used for releases, this is considered 'stable'.
 	url="https://savannah.nongnu.org/projects/tui/"
 	source=(http://git.savannah.gnu.org/cgit/${pkgname}.git/snapshot/${pkgname}-master.tar.gz)
-md5sums=('a67ef0b4666e3d8969926c7cfb4dd78a')
+md5sums=('225965c4d04419de6351bae30bc0fd39')
 	
 	# Bld info
 	provides=('tui')
