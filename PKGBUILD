@@ -1,5 +1,5 @@
 pkgname=libkexiv2-git
-pkgver=r781.a731352
+pkgver=r782.6c196e4
 pkgrel=1
 pkgdesc='A library to manipulate pictures metadata'
 arch=('i686' 'x86_64')
