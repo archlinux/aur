@@ -18,7 +18,7 @@ pkgver() {
 	cd ${srcdir}/${pkgbase}
 	(
 		set -o pipefail
-		git describe --long --tags | sed -r 's/^v//;s/-/./g' ||
+		git describe --long --tags 2>/dev/null | sed -r 's/^v//;s/-/./g' ||
 		printf '%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 }
