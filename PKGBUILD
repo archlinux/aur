@@ -12,7 +12,7 @@
 # You will also need to install osgearth or fcgi, respectively, before building.
 
 pkgname=qgis
-pkgver=2.12.2
+pkgver=2.12.3
 pkgrel=1
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats'
 url='http://qgis.org/'
@@ -25,7 +25,7 @@ makedepends=('cmake' 'txt2tags' 'perl')
 optdepends=('gpsbabel: GPS Tool plugin')
 install="$pkgname.install"
 source=("http://qgis.org/downloads/$pkgname-$pkgver.tar.bz2")
-md5sums=('1d5d1d417d77f401b52a8437a63b299b')
+md5sums=('f57ad5f04451d30032dbdd1836e0cb22')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -58,14 +58,7 @@ build() {
     -DENABLE_TESTS=FALSE \
     -DCMAKE_SKIP_RPATH=TRUE \
     -DPYTHON_EXECUTABLE=/usr/bin/python2 \
-    -DWITH_INTERNAL_QWTPOLAR=FALSE \
-    -DWITH_INTERNAL_SIX=FALSE \
-    -DWITH_INTERNAL_DATEUTIL=FALSE \
-    -DWITH_INTERNAL_HTTPLIB2=FALSE \
-    -DWITH_INTERNAL_JINJA2=FALSE \
-    -DWITH_INTERNAL_MARKUPSAFE=FALSE \
-    -DWITH_INTERNAL_PYGMENTS=FALSE \
-    -DWITH_INTERNAL_PYTZ=FALSE \
+    -DWITH_INTERNAL_{QWTPOLAR,DATEUTIL,HTTPLIB2,JINJA2,MARKUPSAFE,PYGMENTS,PYTZ,SIX}=FALSE \
 #    -DWITH_SERVER=TRUE \
 #    -DWITH_GLOBE=TRUE
 
