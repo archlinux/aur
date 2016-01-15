@@ -32,7 +32,7 @@ build() {
     --sharedstatedir=/usr/share/secp256k1 \
     --localstatedir=/var/lib/secp256k1 \
     --enable-module-recovery \
-    --enable-tests=no \
+    --disable-tests \
     --with-gnu-ld
   make
 }
