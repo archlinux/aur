@@ -1,7 +1,7 @@
 # Maintainer: Roman Titov <titovroman@gmail.com>
 
 pkgname=pgmodeler
-pkgver=0.8.2_alpha1
+pkgver=0.8.2_beta
 pkgrel=1
 pkgdesc="PostgreSQL Database Modeler: an open source CASE tool for modeling PostgreSQL databases"
 
@@ -19,17 +19,20 @@ source=("https://github.com/$pkgname/$pkgname/archive/v${pkgver//_/-}.tar.gz"
         'pgmodeler-cli'
         'pgmodeler_logo.png'
         'pgmodeler_dbm.png'
-        'pgmodeler.desktop')
-sha1sums=('f3f365a57fed44073e2f33f6f5cfad342a04aebb'
+        'pgmodeler.desktop'
+	'patch_no_check_update.diff')
+sha1sums=('99305c6c6439f8b39b41b74dbfcbe1826196f4c0'
           'dcdc83e561355b5e456d693d7fe52c4e68ffae2a'
           '8d5edba1b839a61afdc78c4b10df2b92158f4215'
           'c5bb090a1cbb784cd2ec9e1449cac02af2ba6538'
           '4c4e4260f4b2d2d4c154a8fb5cd7060a6585c83a'
-          'b19e826b6fb64429df952780b8519100c65b8383')
+          'b19e826b6fb64429df952780b8519100c65b8383'
+          '0aca3b8fd45695dff111a8b17595bb49619fc191')
 install='pgmodeler.install'
 
 build() {
 	cd "$srcdir/$pkgname-${pkgver//_/-}"
+	patch -p1 < ../../patch_no_check_update.diff
 
         # release is needed to get the full dummy and xml2object plugins
 	#qmake CONFIG+=release pgmodeler.pro

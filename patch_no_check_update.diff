@@ -1,0 +1,41 @@
+diff -r -c pgmodeler-0.8.2-beta-orig/conf/defaults/pgmodeler.conf pgmodeler-0.8.2-beta/conf/defaults/pgmodeler.conf
+*** pgmodeler-0.8.2-beta-orig/conf/defaults/pgmodeler.conf      2016-01-12 12:35:18.000000000 +0100
+--- pgmodeler-0.8.2-beta/conf/defaults/pgmodeler.conf   2016-01-15 12:13:22.897592459 +0100
+***************
+*** 19,25 ****
+                 code-tab-width="4"
+                 canvas-corner-move="true"
+                 invert-panning-rangesel="false"
+!                check-update="true"
+                 save-last-position="true"
+                 show-main-menu="false"
+                 disable-smoothness="false"
+--- 19,25 ----
+                 code-tab-width="4"
+                 canvas-corner-move="true"
+                 invert-panning-rangesel="false"
+!                check-update="false"
+                 save-last-position="true"
+                 show-main-menu="false"
+                 disable-smoothness="false"
+diff -r -c pgmodeler-0.8.2-beta-orig/conf/pgmodeler.conf pgmodeler-0.8.2-beta/conf/pgmodeler.conf
+*** pgmodeler-0.8.2-beta-orig/conf/pgmodeler.conf       2016-01-12 12:35:18.000000000 +0100
+--- pgmodeler-0.8.2-beta/conf/pgmodeler.conf    2016-01-15 12:13:33.954103266 +0100
+***************
+*** 19,25 ****
+                 code-tab-width="4"
+                 canvas-corner-move="true"
+                 invert-panning-rangesel="false"
+!                check-update="true"
+                 save-last-position="true"
+                 show-main-menu="false"
+                 disable-smoothness="false"
+--- 19,25 ----
+                 code-tab-width="4"
+                 canvas-corner-move="true"
+                 invert-panning-rangesel="false"
+!                check-update="false"
+                 save-last-position="true"
+                 show-main-menu="false"
+                 disable-smoothness="false"
+
