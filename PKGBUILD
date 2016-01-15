@@ -6,7 +6,7 @@ pkgname=leap-motion-sdk
 _major=2.3.1
 _build=31549
 pkgver=${_major}
-pkgrel=1
+pkgrel=2
 pkgdesc="The Leap Motion Developer SDK"
 arch=('i686' 'x86_64')
 url="https://developer.leapmotion.com/downloads"
@@ -43,8 +43,8 @@ package() {
   cp LeapSDK/lib/LeapCSharp.NET{3.5,4.0}.dll ${pkgdir}/usr/lib/Leap
 
   ln -s "/usr/lib/Leap/libLeap.so" "${pkgdir}/usr/lib/libLeap.so"
-  install -D -m644 "/usr/lib/Leap/Leap.py" "${pkgdir}/usr/lib/python2.7/site-packages/Leap.py"
-  install -D -m644 "/usr/lib/Leap/LeapPython.so" "${pkgdir}/usr/lib/python2.7/site-packages/LeapPython.so"
+  install -D -m644 "${pkgdir}/usr/lib/Leap/Leap.py" "${pkgdir}/usr/lib/python2.7/site-packages/Leap.py"
+  install -D -m644 "${pkgdir}/usr/lib/Leap/LeapPython.so" "${pkgdir}/usr/lib/python2.7/site-packages/LeapPython.so"
 
   install -D -m644 "${srcdir}"/libleap.pc "${pkgdir}/usr/lib/pkgconfig/libleap.pc"
   # Copy license
