@@ -1,0 +1,11 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include/mlx
+
+Name: mlx
+Description: Simple X-Window (X11R6) programming API in C, designed for students, suitable for X-beginners
+Version: 1.0
+Requires: xext
+Libs: -L${libdir} -lmlx
+Cflags: -I${includedir}
