@@ -1,17 +1,13 @@
-_piver="2"
+_piver="1"
 _sdktool="/usr/libexec/qtcreator/sdktool"
 _devicefamily="raspberrypi"
 _devicename="${_devicefamily}${_piver}"
 _familytext="Raspberry Pi"
 _devicetext="${_familytext} ${_piver}"
+_qmakepath="/opt/qt-5.6.0-beta-rpi${_piver}/bin/qmake"
+_sysroot="/mnt/pi"
 
-## arg 1:  the new package version
-pre_install() {
-    echo ""
-}
-
-## arg 1:  the new package version
-post_install() {
+setup_toolchain() {
 ${_sdktool} addTC \
     --id "ProjectExplorer.ToolChain.Gcc:${_devicefamily}" \
     --name "${_familytext} toolchain" \
@@ -25,11 +21,37 @@ ${_sdktool} addDebugger \
     --binary /opt/arm-sirspuddarch-linux-gnueabihf/bin/arm-sirspuddarch-linux-gnueabihf-gdb \
     --abis arm-linux-generic-elf-32bit \
     --engine 1
+}
 
+remove_toolchain() {
+#TODO: Don't remove if the other pi package is present
+#Not used at present
+${_sdktool} rmTC \
+    --id "ProjectExplorer.ToolChain.Gcc:${_devicefamily}"
+
+${_sdktool} rmDebugger \
+    --id "${_devicefamily}_gdb"
+}
+
+remove_kit() {
+${_sdktool} rmQt \
+    --id "${_devicename}_qt"
+
+${_sdktool} rmKit \
+    --id "${_devicename}_kit"
+
+${_sdktool} rmDev \
+    --id "${_devicename}_device"
+}
+
+setup_kit() {
+  remove_kit
+  setup_toolchain
+ 
 ${_sdktool} addDev \
     --id "${_devicename}_device" \
     --name "${_devicetext}" \
-    --host "qpii.local" \
+    --host "qp${_piver}.local" \
     --uname "root" \
     --password "root" \
     --osType "GenericLinuxOsType" \
@@ -40,7 +62,7 @@ ${_sdktool} addDev \
 ${_sdktool} addQt \
     --id "${_devicename}_qt" \
     --name "${_devicetext} Qt" \
-    --qmake /opt/qt-5.6.0-beta-rpi2/bin/qmake \
+    --qmake ${_qmakepath} \
     --type RemoteLinux.EmbeddedLinuxQt
 
 ${_sdktool} addKit \
@@ -49,10 +71,20 @@ ${_sdktool} addKit \
     --debugger "${_devicefamily}_gdb" \
     --devicetype GenericLinuxOsType \
     --device "${_devicename}_device" \
-    --sysroot /mnt/pi \
+    --sysroot ${_sysroot} \
     --toolchain "ProjectExplorer.ToolChain.Gcc:${_devicefamily}" \
     --qt "${_devicename}_qt" \
-    --mkspec "devices/linux-rpi2-g++"
+    --mkspec "devices/linux-rpi${_piver}-g++" 
+}
+
+## arg 1:  the new package version
+pre_install() {
+    echo ""
+}
+
+## arg 1:  the new package version
+post_install() {
+  setup_kit
 }
 #post_install
 
@@ -65,31 +97,16 @@ pre_upgrade() {
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 post_upgrade() {
-    echo ""
+  setup_kit
 }
 
 ## arg 1:  the old package version
 pre_remove() {
-#TODO: Don't remove if the other pi package is present
-#${_sdktool} rmTC \
-#    --id "ProjectExplorer.ToolChain.Gcc:${_devicefamily}"
-
-#${_sdktool} rmDebugger \
-#    --id "${_devicefamily}_gdb"
-
-${_sdktool} rmQt \
-    --id "${_devicename}_qt"
-
-${_sdktool} rmKit \
-    --id "${_devicename}_kit"
-
-${_sdktool} rmDev \
-    --id "${_devicename}_device"
+    echo ""
 }
 #pre_remove
 
 ## arg 1:  the old package version
 post_remove() {
-    echo ""
-	# do something here
+  remove_kit
 }
