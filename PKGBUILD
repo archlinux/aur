@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc='Qwt library that contains classes for displaying values on a polar coordinate system'
 arch=('i686' 'x86_64')
 url='http://qwtpolar.sourceforge.net/'
-license=('custom:Qwt License, Version 1.0')
+license=('custom:qwt')
 depends=('qt4' 'qwt')
 source=("http://sourceforge.net/projects/qwtpolar/files/$pkgname/$pkgver/$pkgname-$pkgver.tar.bz2")
 sha1sums=('38edf5220c971eef0e88fcc6db7c718e6198ccac')
@@ -32,5 +32,7 @@ build() {
 package() {
   cd $pkgname-$pkgver
 
-  make INSTALL_ROOT="${pkgdir}"/ install
+  make INSTALL_ROOT="$pkgdir" install
+
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
