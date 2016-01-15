@@ -4,10 +4,10 @@ pkgdesc="ROS - octovis is visualization tool for the OctoMap library based on Qt
 url='http://octomap.github.io'
 
 pkgname='ros-indigo-octovis'
-pkgver='1.7.0'
+pkgver='1.6.9'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('GPLv2')
 
 ros_makedepends=(ros-indigo-octomap)
@@ -25,7 +25,7 @@ depends=(${ros_depends[@]}
 _tag=release/indigo/octovis/${pkgver}-${_pkgver_patch}
 _dir=octovis
 source=("${_dir}"::"git+https://github.com/ros-gbp/octomap-release.git"#tag=${_tag})
-sha256sums=('SKIP')
+md5sums=('SKIP')
 
 build() {
   # Use ROS environment variables
