@@ -6,11 +6,11 @@
 
 pkgname=mplayer2
 pkgver=20131009
-pkgrel=10
+pkgrel=11
 pkgdesc='Advanced general-purpose media player. A fork of the original MPlayer project'
 arch=('i686' 'x86_64')
 license=('GPL')
-url='http://www.mplayer2.org/'
+url='https://github.com/nezumisama/mplayer2'
 install=$pkgname.install
 depends=('a52dec' 'aalib' 'cdparanoia' 'desktop-file-utils' 'enca' 'faad2' 'ffmpeg'
          'fontconfig' 'freetype2' 'jack' 'ladspa' 'lame' 'libass' 'libbluray'
