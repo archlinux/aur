@@ -13,7 +13,7 @@ url="http://smc.org.in/fonts/"
 depends=(fontconfig xorg-font-utils)
 source=("http://smc.org.in/downloads/fonts/anjalioldlipi/AnjaliOldLipi.ttf"
         "https://gitlab.com/smc/anjalioldlipi/raw/master/67-smc-anjalioldlipi.conf")
-md5sums=('2b00102dd4afc0b2bbd7aad663eb584e'
+md5sums=('049762747764b0ac0ae291a48a616424'
          '9b343beb71398383af33988a9829bc05')
 install=ttf-malayalam-fonts.install
 
