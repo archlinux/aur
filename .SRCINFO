@@ -1,0 +1,18 @@
+pkgbase = wallpaper-reddit-git
+	pkgdesc = Downloads and sets wallpapers pulled from reddit.com
+	pkgver = 7c1d7b9
+	pkgrel = 1
+	url = https://github.com/markubiak/wallpaper-reddit
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pillow
+	provides = wallpaper-reddit
+	conflicts = wallpaper-reddit
+	source = git://github.com/markubiak/wallpaper-reddit#branch=dev
+	sha256sums = SKIP
+
+pkgname = wallpaper-reddit-git
+
