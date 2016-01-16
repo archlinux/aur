@@ -1,5 +1,4 @@
-# $Id: PKGBUILD 256078 2015-12-14 20:36:26Z heftig $
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Chris Kitching <chriskitching@linux.com>
 
 pkgname=lib32-gstreamer
 pkgver=1.6.2
