@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=vim-fzf
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 pkgdesc="Fuzzy finder for Vim, inspired by ctrlp.vim and the likes"
 arch=('any')
@@ -10,21 +10,21 @@ groups=('vim-plugins')
 url="https://github.com/junegunn/fzf"
 license=('MIT')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/junegunn/${pkgname##vim-}/tar.gz/$pkgver)
-sha256sums=('611cf1c2da6a7c0d5b582a203774c4d1145c55b601413eb1e7c03e9410bb6733')
+sha256sums=('5449c857e3c290069e748597182a6ab4536670dfceb4c70dfc8d73d395491ed5')
 install=vimdoc.install
 
 prepare() {
   cd "$srcdir/${pkgname##vim-}-$pkgver"
 
   msg2 'Setting fzf-tmux binary location to /usr/bin/fzf-tmux...'
-  sed -i "s@^let s:fzf_tmux = .*@let s:fzf_tmux = '/usr/bin/fzf-tmux'@" plugin/fzf.vim
+  sed -i "/^let s:fzf_tmux/s@expand.*@'/usr/bin/fzf-tmux'@" plugin/fzf.vim
 }
 
 package() {
   cd "$srcdir/${pkgname##vim-}-$pkgver"
 
   msg 'Installing docs...'
-  install -Dm 644 README.md "$pkgdir/usr/share/doc/vim-fzf/README.md"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/vim-fzf"
 
   msg 'Installing plugin...'
   install -dm 755 "$pkgdir/usr/share/vim/vimfiles"
