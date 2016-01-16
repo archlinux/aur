@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=bibtool
-pkgver=2.62
+pkgver=2.63
 pkgrel=1
 pkgdesc="Command line manipulation of BibTeX files."
 arch=('i686' 'x86_64')
@@ -11,14 +11,13 @@ license=('GPL')
 depends=('texlive-bin')
 makedepends=('tar')
 source=(http://www.gerd-neugebauer.de/software/TeX/BibTool/BibTool-$pkgver.tar.gz)
-md5sums=('e6ede7d0c2dde4faed46eda9207bcd8f')
+md5sums=('692d2d0c4c59cc6a22fd933ca4c72529')
 noextract=("BibTool-$pkgver.tar.gz")
 
 build() {
   cd "$srcdir/"
   tar -xf BibTool-$pkgver.tar.gz
   cd BibTool
-  sed -i '1,3d' include/bibtool/regex.h
   autoreconf
   ./configure --prefix=/usr
   make 
