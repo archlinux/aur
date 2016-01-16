@@ -4,7 +4,7 @@ pkgname=oclhashcat-git
 _VER=
 #pkgname=oclhashcat
 #_VER=-2.01
-pkgver=r189.f6d8da5
+pkgver=r261.9fb506f
 pkgrel=1
 pkgdesc='GPGPU-based password recovery utility'
 arch=( 'i686' 'x86_64' 'arm' )
@@ -29,12 +29,11 @@ provides=('oclhashcat')
 source=(
     "${pkgname}::git+https://github.com/hashcat/oclHashcat.git"
     #"${pkgname}${_VER}.tar.gz::https://github.com/hashcat/oclHashcat/archive/v${pkgver}.tar.gz"
-    "oclhashcat-bool.patch"
     "oclhashcat-error-message.patch"
     "oclhashcat-session.patch"
     )
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' )
-sha1sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' )
+md5sums=('SKIP' 'SKIP' 'SKIP' )
+sha1sums=('SKIP' 'SKIP' 'SKIP' )
 
 pkgver_git() {
     cd "${srcdir}/${pkgname}${_VER}"
@@ -51,7 +50,6 @@ prepare() {
     #mv ${srcdir}/oclHashcat-* "${srcdir}/${pkgname}${_VER}"
 
     cd "${srcdir}/${pkgname}${_VER}"
-    patch -Np1 -i "${srcdir}/oclhashcat-bool.patch"
     patch -Np1 -i "${srcdir}/oclhashcat-error-message.patch"
     patch -Np1 -i "${srcdir}/oclhashcat-session.patch"
     #patch -Np1 -i "${srcdir}/oclhashcat-all.patch"
