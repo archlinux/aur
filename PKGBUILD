@@ -1,13 +1,13 @@
 # Maintainer: Pavel Antonov <pvantonov@gmail.com>
 pkgname=energetik
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="KDE service to temporarily inhibit power management"
 arch=(i686 x86_64)
-url="https://github.com/pvantonov/energetiK"
+url="https://github.com/pvantonov/energetik"
 license=('MIT')
 groups=()
-depends=(qt5-base kconfig procps-ng)
+depends=(qt5-base kconfig kwindowsystem procps-ng)
 makedepends=(cmake git)
 optdepends=()
 provides=(energetik)
@@ -17,9 +17,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/pvantonov/energetiK/archive/0.1.2.tar.gz")
+source=("https://github.com/pvantonov/energetik/archive/0.2.0.tar.gz")
 noextract=()
-md5sums=(a74f408941dedcfa999590885727a28e)
+md5sums=(9dddcd7852dff8088533488b0303efd6)
 
 prepare() {
   mkdir -p build
@@ -27,7 +27,7 @@ prepare() {
 
 build() {
   cd build
-  cmake ../energetiK-$pkgver \
+  cmake ../energetik-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release
   make
