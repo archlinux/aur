@@ -7,7 +7,7 @@
 
 _pkgname=ffmpeg
 pkgname=ffmpeg-headless
-pkgver=2.8.4
+pkgver=2.8.5
 pkgrel=4
 epoch=1
 pkgdesc='The FFmpeg media toolkit optimised for server (headless) systems'
@@ -25,23 +25,8 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libswscale.so' 'ffmpeg=${pkgver}-${pkgrel}')
 conflicts=('ffmpeg')
 replaces=('ffmpeg')
-source=(http://ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.bz2
-        https://github.com/FFmpeg/FFmpeg/commit/7145e80b4f78cff5ed5fee04d4c4d53daaa0e077.patch
-        https://github.com/FFmpeg/FFmpeg/commit/6ba42b6482c725a59eb468391544dc0c75b8c6f0.patch
-        https://github.com/FFmpeg/FFmpeg/commit/cfda1bea4c18ec1edbc11ecc465f788b02851488.patch)
-sha256sums=('83cc8136a7845546062a43cda9ae3cf0a02f43ef5e434d2f997f055231a75f8e'
-            '402477e1cdea436bc322016d97f0a48433c7063ab8cb1100490d059b1663e92e'
-            'c5e5d2cba239f663004e65f86f87ab608348b5eedb11c0ac6d3403a0b8b49f42'
-            'cd285af37d91e04c26a112d6bcbab994e9acf7f49e9f9db06d7c9e8540bb25bd')
-
-prepare() {
-  cd ${_pkgname}-${pkgver}
-
-  # FS#47738
-  patch -Np1 -i ../7145e80b4f78cff5ed5fee04d4c4d53daaa0e077.patch
-  patch -Np1 -i ../6ba42b6482c725a59eb468391544dc0c75b8c6f0.patch
-  patch -Np1 -i ../cfda1bea4c18ec1edbc11ecc465f788b02851488.patch
-}
+source=(http://ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.bz2)
+sha256sums=('3b6d9951533323ee64a21d0aa7667a780b3470bfe4e0fb7c1b33307ce290615a')
 
 build() {
   cd ${_pkgname}-${pkgver}
