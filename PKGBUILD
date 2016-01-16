@@ -1,60 +1,59 @@
 # Maintainer: Riley Trautman <asonix.dev@gmail.com>
 
 _pkgname=liri-browser
-pkgname=$_pkgname-git
-pkgver=0.3.r226.g3dc9792
+pkgname=${_pkgname}-git
+pkgver=0.3.r239.gf11a68d
 pkgrel=1
 pkgdesc="A Web Browser using the QML Material framework from the Papyros Project"
 arch=("i686" "x86_64")
-url="https://github.com/liri-browser/liri-browser"
+url="https://github.com/liri-project/liri-browser"
 license=("GPLv3")
-depends=("qt5-base" "qt5-webengine" "qml-material" "qt5-multimedia"
-         "libvlc-qt-git")
+depends=("qt5-base" "qt5-webengine" "qt5-multimedia" "qml-material-git")
 makedepends=("git")
-provides=("$_pkgname" "$pkgname")
-conflicts=("$_pkgname")
-install=$pkgname.install
-source=("$pkgname::git+https://github.com/liri-project/liri-browser.git"
-        "liri-browser.sh" "liri-browser.desktop" "$pkgname.install")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+install=${_pkgname}.install
+source=("${_pkgname}::git+https://github.com/liri-project/liri-browser.git"
+"liri-browser.sh" "liri-browser.desktop" "liri-browser.install")
 sha256sums=("SKIP" "SKIP" "SKIP" "SKIP")
 
 pkgver() {
-    cd "$pkgname"
-    # cutting off 'foo-' prefix that presents in the git tag
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${_pkgname}"
+  # cutting off 'foo-' prefix that presents in the git tag
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$pkgname"
-	qmake liri-browser.pro
-	make
+  cd "${_pkgname}"
+  qmake "liri-browser.pro"
+  make
 }
 
 package() {
-	cd "$srcdir/$pkgname"
-	make INSTALL_ROOT="$pkgdir" install
+  cd "${_pkgname}"
+  make INSTALL_ROOT="$pkgdir" install
 
   mkdir -p "$pkgdir"/usr/bin
   mkdir -p "$pkgdir"/usr/share/applications
 
   for i in 16x16 22x22 32x32 48x48 64x64 128x128 256x256; do
-    install -Dm644 "$srcdir"/"$pkgname"/icons/liri-browser.png \
-                   "$pkgdir"/usr/share/icons/hicolor/$i/apps/liri-browser.png
+    install -Dm644 "$srcdir"/"${_pkgname}"/icons/liri-browser.png \
+      "$pkgdir"/usr/share/icons/hicolor/$i/apps/liri-browser.png
   done
-  install -m755 "$srcdir"/liri-browser.sh \
-                "$pkgdir"/usr/bin/liri-browser
-  install -m755 "$srcdir"/liri-browser.desktop \
-                "$pkgdir"/usr/share/applications/liri-browser.desktop
+  install -m755 ../liri-browser.sh \
+    "$pkgdir"/usr/bin/liri-browser
+  install -m755 ../liri-browser.desktop \
+    "$pkgdir"/usr/share/applications/liri-browser.desktop
 }
 
 # Additional functions to generate a changelog
 
 changelog() {
-    cd "$pkgname"
-    git log $1..HEAD --no-merges --format=" * %s"
+  cd "${_pkgname}"
+  git log $1..HEAD --no-merges --format=" * %s"
 }
 
 gitref() {
-    cd "$pkgname"
-    git rev-parse HEAD
+  cd "${_pkgname}"
+  git rev-parse HEAD
 }
