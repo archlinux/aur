@@ -1,8 +1,9 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=polyglot-winboard-git
-pkgver=1ed8a49
-pkgrel=3
+pkgver=d86ce4e
+pkgrel=1
+epoch=1
 pkgdesc="UCI/USI/UCCI to XBoard adapter (WinBoard fork)"
 arch=('i686' 'x86_64')
 url="http://hgm.nubati.net/cgi-bin/gitweb.cgi?p=polyglot.git;a=summary"
