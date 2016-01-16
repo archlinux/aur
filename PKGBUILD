@@ -50,7 +50,8 @@ build() {
     --sysconfdir=/etc \
     --localstatedir=/var \
     --docdir=/usr/share/doc/$pkgname \
-    --enable-ipv6
+    --enable-ipv6 \
+    --with-protocols="babel bfd bgp ospf pipe radv rip static"
   make
 }
 
