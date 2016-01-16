@@ -5,7 +5,7 @@ _repo=papirus-pack-kde
 pkgbase=papirus
 pkgname=( 'papirus' 'bomi-skin-papirus' 'libreoffice-style-papirus' 'papirus-color-scheme' 'papirus-kmail-theme' 'plasma-theme-papirus' 'papirus-gtk-theme' 'papirus-konsole-colorscheme' 'yakuake-skin-papirus' 'vlc-skin-papirus' 'papirus-aurorae-theme' 'papirus-icon-theme' 'papirus-plasma-theme' 'papirus-qtcurve-theme' )
 pkgver=20160116
-pkgrel=3
+pkgrel=4
 arch=('any')
 url="https://github.com/varlesh/${_repo}"
 license=('CCPL:by-sa')
@@ -168,7 +168,7 @@ package_papirus-qtcurve-theme() {
     optdepends=('lib32-qtcurve-gtk2' 'lib32-qtcurve-qt4' 'lib32-qtcurve-utils')
     makedepends=('git')
     conflicts=('papirus-qtcurve-theme-git')
-    install -Dm644 -t "${pkgdir}/usr/share/QtCurve/"   cp -r ${srcdir}/${_repo}-${_git}/QtCurve/*.qtcurve
+    install -Dm644 -t "${pkgdir}/usr/share/QtCurve/" ${srcdir}/${_repo}-${_git}/QtCurve/*.qtcurve
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
     find ${pkgdir}/usr -type d -exec chmod 755 {} \;
 }
