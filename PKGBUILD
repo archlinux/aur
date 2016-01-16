@@ -12,8 +12,6 @@ provides=('lttv')
 conflicts=('lttv')
 makedepends=('git')
 depends=('popt' 'babeltrace')
-optdepends=('lttng-modules: kernel tracing support' 'babeltrace: trace viewing')
-options=('!libtool')
 source=('git://git.lttng.org/lttv.git')
 sha1sums=('SKIP')
 
