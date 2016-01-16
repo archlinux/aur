@@ -3,9 +3,9 @@
 _git=0395ad251ff1d4134b4df50f77d0241997e0c0e7
 _repo=papirus-pack-kde
 pkgbase=papirus
-pkgname=( 'papirus' 'bomi-skin-papirus' 'libreoffice-style-papirus' 'papirus-color-scheme' 'papirus-kmail-theme' 'plasma-theme-papirus' 'papirus-gtk-theme' 'papirus-konsole-colorscheme' 'yakuake-skin-papirus' 'vlc-skin-papirus' 'papirus-aurorae-theme' 'papirus-icon-theme' 'papirus-plasma-theme' )
+pkgname=( 'papirus' 'bomi-skin-papirus' 'libreoffice-style-papirus' 'papirus-color-scheme' 'papirus-kmail-theme' 'plasma-theme-papirus' 'papirus-gtk-theme' 'papirus-konsole-colorscheme' 'yakuake-skin-papirus' 'vlc-skin-papirus' 'papirus-aurorae-theme' 'papirus-icon-theme' 'papirus-plasma-theme' 'papirus-qtcurve-theme' )
 pkgver=20160116
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://github.com/varlesh/${_repo}"
 license=('CCPL:by-sa')
@@ -17,7 +17,8 @@ sha256sums=('193ed7bc6d5b29fe693124f25ea2ee31228f81d379cd0e669ed74f67d2981257')
 package_papirus() {
     pkgdesc="Look-and-feel package for modified and adaptive Paper theme for KDE."
     depends=('plasma-theme-papirus' 'papirus-icon-theme' 'papirus-color-scheme' 'papirus-gtk-theme')
-    optdepends=('yakuake-skin-papirus: Modified and adaptive Paper skin for Yakuake'
+    optdepends=('papirus-qtcurve-theme: Modified and adaptive Paper decorations for QtCurve'
+                'yakuake-skin-papirus: Modified and adaptive Paper skin for Yakuake'
                 'papirus-konsole-colorscheme: Modified and adaptive Paper colorscheme for Konsole'
                 'papirus-kmail-theme: Modified and adaptive Paper theme for Kmail'
                 'bomi-skin-papirus: Papirus theme for Bomi'
@@ -154,7 +155,20 @@ package_vlc-skin-papirus(){
     options=('!strip')
     depends=('vlc')
     install -dm755 ${pkgdir}/usr/share/vlc/skins2
-    cp -r ${srcdir}/${_repo}-${_git}//vlc-skins/Papirus* ${pkgdir}/usr/share/vlc/skins2/
+    cp -r ${srcdir}/${_repo}-${_git}/vlc-skins/Papirus* ${pkgdir}/usr/share/vlc/skins2/
+    find ${pkgdir}/usr -type f -exec chmod 644 {} \;
+    find ${pkgdir}/usr -type d -exec chmod 755 {} \;
+}
+
+
+package_papirus-qtcurve-theme() {
+    pkgdesc="Modified and adaptive Paper decorations for QtCurve"
+    options=('!strip')
+    depends=('qtcurve-gtk2' 'qtcurve-qt4' 'qtcurve-qt5' 'qtcurve-utils')
+    optdepends=('lib32-qtcurve-gtk2' 'lib32-qtcurve-qt4' 'lib32-qtcurve-utils')
+    makedepends=('git')
+    conflicts=('papirus-qtcurve-theme-git')
+    install -Dm644 -t "${pkgdir}/usr/share/QtCurve/"   cp -r ${srcdir}/${_repo}-${_git}/QtCurve/*.qtcurve
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
     find ${pkgdir}/usr -type d -exec chmod 755 {} \;
 }
