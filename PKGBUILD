@@ -18,10 +18,8 @@ makedepends=('subversion'
 source=("libcuefile::svn+http://svn.musepack.net/libcuefile/trunk"
         "libreplaygain::svn+http://svn.musepack.net/libreplaygain"
         "libmpc::svn+http://svn.musepack.net/libmpc/trunk"
-        "mppenc::svn+http://svn.musepack.net/mppenc/trunk"
         )
 sha1sums=('SKIP'
-          'SKIP'
           'SKIP'
           'SKIP')
 
@@ -49,12 +47,6 @@ build() {
     -DREPLAY_GAIN_LIBRARY:FILEPATH="${srcdir}"/build-libreplaygain/src/libreplaygain.so \
     -DCUEFILE_LIBRARY:FILEPATH="${srcdir}"/build-libcuefile/src/libcuefile.so
   make
-
-  cd "${srcdir}/build-mppenc"
-  cmake  ../mppenc \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
-  make
 }
 
 package_libcuefile-svn() {
@@ -64,7 +56,7 @@ package_libcuefile-svn() {
   conflicts=('libcuefile')
 
   make -C build-libcuefile DESTDIR="${pkgdir}" install
-  for i in $(find libcuefile/include/cuetools -type f); do install -Dm644 "${i}" "${pkgdir}/usr/include/cuetools/${i}"; done
+  (cd libcuefile/include/cuetools; for i in $(find . -type f); do install -Dm644 "${i}" "${pkgdir}/usr/include/cuetools/${i}"; done)
 }
 
 package_libreplaygain-svn() {
@@ -74,7 +66,7 @@ package_libreplaygain-svn() {
   conflicts=('libreplaygain')
 
   make -C build-libreplaygain DESTDIR="${pkgdir}" install
-  for i in $(find libreplaygain/include/replaygain -type f); do install -Dm644 "${i}" "${pkgdir}/usr/include/replaygain/${i}"; done
+  (cd libreplaygain/include/replaygain; for i in $(find . -type f); do install -Dm644 "${i}" "${pkgdir}/usr/include/replaygain/${i}"; done)
 }
 
 package_musepack-tools-svn() {
@@ -86,7 +78,4 @@ package_musepack-tools-svn() {
               'libreplaygain-svn: for Musepack (MPC) ReplayGain calculator')
 
   make -C build-libmpc DESTDIR="${pkgdir}" install
-  for i in $(find libmpc/include/mpc -type f); do install -Dm644 "${i}" "${pkgdir}/usr/include/mpc/${i}"; done
-
-  make -C build-mppenc DESTDIR="${pkgdir}" install
 }
