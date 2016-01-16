@@ -30,9 +30,9 @@ build() {
 package() {
   cd "${_pkgname}"
 
-  install -m644 "examples/example.aliases.drushrc.php" "${pkgdir}/etc/${_pkgname}/aliases.drushrc.php"
-  install -m644 "examples/example.drush.ini" "${pkgdir}/etc/${_pkgname}/drush.ini"
-  install -m644 "examples/example.drushrc.php" "${pkgdir}/etc/${_pkgname}/drushrc.php"
+  install -m644 "examples/example.aliases.drushrc.php" "${pkgdir}/etc/drush/aliases.drushrc.php"
+  install -m644 "examples/example.drush.ini" "${pkgdir}/etc/drush/drush.ini"
+  install -m644 "examples/example.drushrc.php" "${pkgdir}/etc/drush/drushrc.php"
 
   install -D -m755 "${_pkgname}.phar" "${pkgdir}/usr/bin/${_pkgname}"
   ln -s "/usr/share/webapps/bin/${_pkgname}.phar" "${pkgdir}/usr/bin/${_pkgname}"
