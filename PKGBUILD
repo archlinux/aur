@@ -2,9 +2,9 @@
 
 pkgname=filebeat
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Collects, pre-processes, and forwards log files from remote sources'
-arch=('i686' 'x86_64' 'armv7h')
+arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url='https://www.elastic.co/products/beats'
 license=('APACHE')
 backup=("etc/$pkgname/$pkgname.yml")

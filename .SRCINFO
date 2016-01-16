@@ -1,12 +1,13 @@
 pkgbase = filebeat
 	pkgdesc = Collects, pre-processes, and forwards log files from remote sources
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.elastic.co/products/beats
 	install = filebeat.install
 	arch = i686
 	arch = x86_64
 	arch = armv7h
+	arch = armv6h
 	license = APACHE
 	makedepends = go>=1.5
 	makedepends = git
