@@ -10,7 +10,6 @@ license=('EPL')
 depends=('java-environment>=7' 'eclipse>=3.8')
 makedepends=('unzip')
 conflicts=('eclipse-aptana')
-optdepends=('eclipse-pydev-mylyn: Mylyn support for Pydev in Eclipse')
 source=("PyDev_${pkgver}.zip::http://downloads.sourceforge.net/project/pydev/pydev/PyDev%20${pkgver}/PyDev%20${pkgver}.zip")
 md5sums=('e8fafe2c8f0b893144950d4817aa457f')
 
