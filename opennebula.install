@@ -2,7 +2,7 @@ pre_install() {
 	# Prepare for a self-contained installation before build() runs
 	mkdir -p /srv/cloud/one
 	groupadd cloud
-	useradd -d /srv/cloud/one -g cloud -c "OpenNebula administrator account" oneadmin
+	useradd -d /srv/cloud/one -g cloud -c "OpenNebula administrator account" -s /usr/bin/bash oneadmin
 	mkdir -p /srv/cloud/one/.one/
 }
 
