@@ -41,7 +41,7 @@ prepare() {
 package() {
  cd $_name-$_branch
 
- LC_ALL=en_US.UTF-8 make bash-completion zsh-completion fish-completion README.txt youtube-dl.1
+ LC_ALL=C make bash-completion zsh-completion fish-completion README.txt youtube-dl.1
  python setup.py install --root="$pkgdir" --optimize=1
 
  mv "$pkgdir"/usr/share/bash-completion/completions/youtube-dl.bash-completion \
