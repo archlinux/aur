@@ -2,7 +2,7 @@
 # Previous maintainer: Felix Herbeck
 
 pkgname=openscada-lts
-pkgver=0.8.14
+pkgver=0.8.15
 pkgrel=1
 pkgdesc="OpenSCADA is a open supervisory control and data acquisition system"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ groups=('devel')
 depends=('gettext' 'zlib' 'pcre' 'gd' 'libmysqlclient' 'sqlite' 'postgresql-libs' 'libfbclient' 'openssl' 'bison' 'net-snmp' 'lm_sensors' 'glibc' 'portaudio' 'qt4' 'fftw' 'phonon')
 conflicts=('openscada')
 source=("ftp://ftp.oscada.org/OpenSCADA/0.8.0/openscada-$pkgver-1.src.rpm")
-sha512sums=('cb79d0d115f8e4d540d6033b69591f7235da20237b22b5481c487a2fd9d498cb152a7b7e27c38b8e87d501e278f0ad5565dd6552d27ec96ac3726d39c66d4da5')
+sha512sums=('3ec77677292f1f2d12d8f3767f0d0573841b9599878f9c49c17a7e13aae1f92fb76f668f55d7a77a818233a21abf0de97bfdd8252451a2ee37946bb96420264c')
 
 build() {
   msg "Preparing sources"
