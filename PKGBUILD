@@ -30,7 +30,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
 pkgver=5.6.17
-pkgrel=3
+pkgrel=4
 pkgdesc="A general-purpose scripting language that is especially suited to web development"
 arch=('i686' 'x86_64')
 license=('PHP')
@@ -311,7 +311,7 @@ package_php56-embed() {
 	depends=("${pkgbase}")
 	provides=("${_pkgbase}-embed=$pkgver")
 
-	install -D -m755 ${srcdir}/build-embed/libs/libphp5.so ${pkgdir}/usr/lib/libphp5.so
+	install -D -m755 ${srcdir}/build-embed/libs/libphp5.so ${pkgdir}/usr/lib/libphp56.so
 	install -D -m644 ${srcdir}/${_pkgbase}-${pkgver}/sapi/embed/php_embed.h ${pkgdir}/usr/include/${pkgbase}/sapi/embed/php_embed.h
 }
 
@@ -337,6 +337,11 @@ package_php56-pear() {
 	mv ${pkgdir}/usr/bin/{pear,${pkgbase/php/pear}}
 	mv ${pkgdir}/usr/bin/{peardev,${pkgbase/php/peardev}}
 	mv ${pkgdir}/usr/bin/{pecl,${pkgbase/php/pecl}}
+
+	# fix hardcoded php paths in pear
+	sed -i 's|/usr/bin/php|/usr/bin/php56|g' "${pkgdir}/usr/bin/pear56"
+	sed -i 's|PHP=php|PHP=php56|g' "${pkgdir}/usr/bin/pear56"
+	sed -i 's|s:7:"php_bin";s:12:"/usr/bin/php"|s:7:"php_bin";s:14:"/usr/bin/php56"|' "${pkgdir}/etc/${pkgbase}/pear.conf"
 }
 
 package_php56-enchant() {
