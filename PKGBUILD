@@ -2,20 +2,20 @@
 
 pkgname=qcma-kdenotifier
 _pkgname=qcma
-pkgver=0.3.9
+pkgver=0.3.10
 pkgrel=1
 pkgdesc="Content Manager Assistant for the PS Vita (KDE notifier)"
 arch=("i686" "x86_64")
 url="https://github.com/codestation/qcma"
 license=('GPL')
-depends=('qcma>=0.3.9' 'knotifications')
+depends=('qcma>=0.3.10' 'knotifications')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/codestation/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('46cdc03c9b1ad1ce7905dc194166291a917aee0deb38099f998914076e88c30d')
+sha256sums=('79c84d33eb9db7beaff46aa3811b85a55b6d15abde27cc6c0c7b2a22d0ad184e')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  qmake-qt5 qcma_kdenotifier.pro PREFIX="/usr" CONFIG+=ENABLE_KNOTIFICATIONS
+  qmake-qt5 kdenotifier/kdenotifier.pro PREFIX="/usr" CONFIG+=ENABLE_KNOTIFICATIONS
   make
 }
 
