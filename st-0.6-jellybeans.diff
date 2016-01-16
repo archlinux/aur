@@ -1,0 +1,63 @@
+--- a/config.def.h
++++ b/config.def.h
+@@ -61,30 +61,23 @@
+ 
+ /* Terminal colors (16 first used in escape sequence) */
+ static const char *colorname[] = {
+-	/* 8 normal colors */
+-	"black",
+-	"red3",
+-	"green3",
+-	"yellow3",
+-	"blue2",
+-	"magenta3",
+-	"cyan3",
+-	"gray90",
+-
+-	/* 8 bright colors */
+-	"gray50",
+-	"red",
+-	"green",
+-	"yellow",
+-	"#5c5cff",
+-	"magenta",
+-	"cyan",
+-	"white",
+-
+-	[255] = 0,
+-
+-	/* more colors can be added after 255 to use with DefaultXX */
+-	"#cccccc",
++	   /* jellybeans */
++   "#3b3b3b", /* 0  */
++   "#cf6a4c", /* 1  */
++   "#99ad6a", /* 0  */
++   "#d8ad4c", /* 3  */
++   "#597bc5", /* 4  */
++   "#a037b0", /* 5  */
++   "#71b9f8", /* 6  */
++   "#adadad", /* 7  */
++   "#636363", /* 8  */
++   "#f79274", /* 9  */
++   "#c1d592", /* 10 */
++   "#ffd574", /* 11 */
++   "#81a3ed", /* 12 */
++   "#c85fd8", /* 13 */
++   "#99e1ff", /* 14 */
++   "#d5d5d5", /* 15 */
+ };
+ 
+ 
+@@ -92,9 +85,9 @@
+  * Default colors (colorname index)
+  * foreground, background, cursor
+  */
+-static unsigned int defaultfg = 7;
+-static unsigned int defaultbg = 0;
+-static unsigned int defaultcs = 256;
++static unsigned int defaultfg = 7;
++static unsigned int defaultbg = 0;
++static unsigned int defaultcs = 13;
+ 
+ /*
+  * Colors used, when the specific fg == defaultfg. So in reverse mode this
