@@ -4,12 +4,12 @@
 pkgname=mikutter-git
 _gitroot=mikutter
 pkgver=3.3.3.r0.gf076d48
-pkgrel=1
+pkgrel=2
 pkgdesc="a moest twitter client (Upstream version)"
 arch=('i686' 'x86_64')
 url="http://mikutter.hachune.net/"
 license=('MIT')
-depends=('ruby-gtk2>=2.2.3' 'ruby-moneta' 'ruby-nokogiri' 'ruby-httpclient' 'ruby-memoize' 'ruby-memoist' 'ruby-delayer-deferred' 'ruby-typed-array' 'ruby-addressable' 'ruby-oauth' 'ruby-gettext' 'ruby-pluggaloid' 'ruby-twitter-text')
+depends=('ruby-gtk2>=2.2.3' 'ruby-moneta' 'ruby-nokogiri' 'ruby-mini_portile0.6' 'ruby-httpclient' 'ruby-memoize' 'ruby-memoist' 'ruby-delayer-deferred' 'ruby-typed-array' 'ruby-addressable' 'ruby-oauth' 'ruby-gettext' 'ruby-pluggaloid' 'ruby-twitter-text' 'ruby-totoridipjp')
 makedepends=('git')
 optdepends=('libnotify: notify support')
 conflicts=('mikutter')
