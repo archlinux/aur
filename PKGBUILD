@@ -4,7 +4,7 @@
 pkgname=openerp
 pkgver=7.0
 _pkgsubver=20160113
-pkgrel=8
+pkgrel=9
 pkgdesc="Advanced OpenSource ERP and CRM server"
 url=http://openerp.com/
 arch=('any')
@@ -14,33 +14,34 @@ depends=(
     'gzip'
     'postgresql'
     'python2'
+    'python2-babel'
     'python2-dateutil'
-    'python2-feedparser'
     'python2-docutils'
-    'python2-pillow'
+    'python2-egenix-mx-base'
     'python2-gdata'
+    'python2-feedparser'
+    'python2-jinja'
     'python2-ldap'
     'python2-lxml'
     'python2-mako'
-    'python2-jinja'
+    'python2-mock'
+    'python2-numpy'
     'python2-openid'
     'python2-psutil'
     'python2-psycopg2'
-    'python2-babel'
     'python2-pychart'
     'python2-pydot'
     'python2-pyparsing'
-    'python2-egenix-mx-base'
     'python2-reportlab'
-    'python2-simplejson'
+    'python2-pillow'
     'python2-pytz'
+    'python2-pywebdav'
+    'python2-simplejson'
+    'python2-unittest2'
     'python2-vatnumber'
     'python2-vobject'
-    'python2-pywebdav'
     'python2-werkzeug'
     'python2-xlwt'
-    'python2-mock'
-    'python2-unittest2'
     'python2-yaml'
     'python2-zsi'
 )
