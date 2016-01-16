@@ -1,6 +1,9 @@
 pkgname=xhtml-docs
 
 post_install() {
+  if [ ! -f etc/xml/catalog ]; then
+    xmlcatalog --noout --create etc/xml/catalog
+  fi
   xhtml1_dir="/usr/share/doc/xhtml/DTD"
   xmlcatalog --noout -add public '-//W3C//DTD XHTML 1.0 Strict//EN' "$xhtml1_dir/xhtml1-strict.dtd" /etc/xml/catalog
   xmlcatalog --noout -add public '-//W3C//DTD XHTML 1.0 Transitional//EN' "$xhtml1_dir/xhtml1-transitional.dtd" /etc/xml/catalog
