@@ -16,7 +16,7 @@ pkgname=mpv-legacy-af-git
 _gitname=mpv
 pkgver="0.14.0+7"
 _gitchangerange=459b40c..20991a9
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Video player based on MPlayer/mplayer2 (git version) including legacy audio filters'
 arch=('i686' 'x86_64')
@@ -65,12 +65,6 @@ check() {
 package() {
   cd "$srcdir/$_gitname"
   ./waf install --destdir="$pkgdir"
-
-  install -d "$pkgdir"/usr/share/doc/mpv/examples
-  install -m644 etc/{input,example}.conf \
-          "$pkgdir"/usr/share/doc/mpv/examples
-  install -m644 DOCS/{encoding.rst,tech-overview.txt} \
-          "$pkgdir"/usr/share/doc/mpv
 
   # Update dependencies automatically based on dynamic libraries
   _detected_depends=($("$srcdir"/find-deps.py "$pkgdir"/usr/{bin/mpv,lib/libmpv.so}))
