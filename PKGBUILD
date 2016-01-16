@@ -5,7 +5,7 @@
 
 pkgname=opennebula
 _unstable_pkg=opennebula-unstable
-pkgver=4.12.1
+pkgver=4.14.2
 pkgrel=1
 pkgdesc="Virtual management infrastructure as a service (IaaS) toolkit for cloud computing (NOTE: Read the PKGBUILD!)"
 arch=('i686' 'x86_64')
@@ -35,7 +35,7 @@ changelog=ChangeLog
 source=("http://downloads.opennebula.org/packages/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"
         'opennebula.service'
         'chown_fix.patch')
-sha512sums=('d1f88ba8ccc8a718f6c3ff0cab2d5c72ae06f4e7c9f0bfd66e2142e7face31b5d28f839e02a92d07a34564403d3e09cdcea8128496756d523fe1531c3530f94b'
+sha512sums=('ed572bf1a6e0a4eecb85c1f2beb1f686e6729f74a354f41dbb5113fd089af06013f63d022ee8c068234e5be64df818771a0ba0c452ffbf4fd096dd16cf878926'
             'ca1080d6a37add816a4b7b10338cff437046e8f3ae0e40ea6b1a9d01663ea00c0d47436a6962bdd755a1325e73c91833cff07a9bc05d95f4aad6d08250f50577'
             '8d6a311072da61ca49458aaf787daf4ef5c5969a9aa282f2276d679dc38e14e5fd1c23bc51b12a29d2d40b65aa45bd2c38d6741726b09d75a38565b7d4ad4677')
 
