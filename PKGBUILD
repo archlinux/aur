@@ -27,6 +27,7 @@ build() {
   php -d phar.readonly=Off /usr/bin/php-box build
 
   # TODO: Temporary fix to prevent a fatal error, remove for next release > 8.0.2
+  # see https://github.com/drush-ops/drush/issues/1913
   sed -i '$ d' examples/example.drushrc.php
 }
 
