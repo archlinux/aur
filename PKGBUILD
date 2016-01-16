@@ -35,5 +35,4 @@ package() {
   install -m644 "examples/example.drushrc.php" "${pkgdir}/etc/drush/drushrc.php"
 
   install -D -m755 "${_pkgname}.phar" "${pkgdir}/usr/bin/${_pkgname}"
-  ln -s "/usr/share/webapps/bin/${_pkgname}.phar" "${pkgdir}/usr/bin/${_pkgname}"
 }
