@@ -15,22 +15,37 @@ sha256sums=('e3c8753c159cf796d9826d84df73fe2fa3ea078eae26588b907bcebe101ae90b')
 
 build() {
     cd "$srcdir/$_filename"
-    latex $_filename.dtx
-    latex $_filename.dtx
-    bibtex $_filename
-    makeindex -s gglo.ist -o $_filename.gls $_filename.glo
-    makeindex -s gind.ist -o $_filename.ind $_filename.idx
-    latex $_filename.dtx
-    latex $_filename.dtx
+    latex xkeyval.dtx
+    latex xkeyval.dtx
+    bibtex xkeyval
+    makeindex -s gglo.ist -o xkeyval.gls xkeyval.glo
+    makeindex -s gind.ist -o xkeyval.ind xkeyval.idx
+    latex xkeyval.dtx
+    latex xkeyval.dtx
 }
 
 package() {
-    cd "$srcdir/$_filename"
-    install -d -m775    "$pkgdir/usr/share/texmf/doc/latex/${pkgname}"
-    install -d -m775    "$pkgdir/usr/share/texmf/tex/latex/${pkgname}"
-    cp  README \
-        xkeyval.pdf \
-        xkeyval.bib     "$pkgdir/usr/share/texmf/doc/latex/${pkgname}"
-    cp  *.sty \
-        *.tex           "$pkgdir/usr/share/texmf/tex/latex/${pkgname}"
+    cd                          "$srcdir/$_filename"
+    install -d -m775            "$pkgdir/usr/share/texmf/doc/latex/${pkgname}"
+    install -d -m775            "$pkgdir/usr/share/texmf/tex/latex/${pkgname}"
+    cp  README              \
+        xkeyval.pdf         \
+        xkeyval.bib         \
+        xkvex1.tex          \
+        xkvex2.tex          \
+        xkvex3.tex          \
+        xkveca.cls          \
+        xkvecb.cls          \
+        xkvesa.sty          \
+        xkvex4.tex          \
+        xkvesb.sty          \
+        xkvesc.sty              "$pkgdir/usr/share/texmf/doc/latex/${pkgname}"
+
+    cp  xkeyval.tex         \
+        xkeyval.sty         \
+        keyval.tex          \
+        xkvtxhdr.tex        \
+        xkvview.sty         \
+        pst-xkey.tex        \
+        pst-xkey.sty            "$pkgdir/usr/share/texmf/tex/latex/${pkgname}"
 }
