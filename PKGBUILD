@@ -2,8 +2,8 @@
 # % Trigger: 1440171640 %
 
 pkgname=libpstat-git
-pkgver=r34.a71fee8
-pkgrel=2
+pkgver=r38.291e660
+pkgrel=1
 pkgdesc='Library for getting information about running processes'
 url='https://github.com/jcnelson/libpstat'
 arch=( 'x86_64' 'i686' )
