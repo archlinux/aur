@@ -1,12 +1,12 @@
 # Maintainer: Elrond46 <elrond94 lol com>
-# Old Maintainer: Zohar Malamant <dotfloat gmail com>
+# Contributor: Zohar Malamant <dotfloat gmail com>
 # Contributor: Arkham <arkham at archlinux dot us>
 # Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
 # Contributor: Dmitry Shilov <stormblast@land.ru>
 
 pkgname=doomsday
-pkgver=1.15.6
-pkgrel=2
+pkgver=1.15.7
+pkgrel=1
 pkgdesc="An advanced Doom engine that supports DOOM, Heretic and Hexen."
 url="http://dengine.net/"
 arch=('i686' 'x86_64')
@@ -17,8 +17,8 @@ makedepends=('imagemagick')
 optdepends=('doom1-wad: Doom shareware', 
             'heretic1-wad: Heretic shareware', 
             'hexen1-wad: Hexen shareware')
-source=("http://netcologne.dl.sourceforge.net/project/deng/Doomsday Engine/1.15.6/doomsday-stable-${pkgver}.tar.gz")
-md5sums=('4d29064e940245cf407003e31867baba')
+source=("http://netcologne.dl.sourceforge.net/project/deng/Doomsday Engine/${pkgver}/doomsday-stable-${pkgver}.tar.gz")
+md5sums=('4650cfa3b843a61d13b1e46e9a449ac8')
 
 build() {
     # Fix annoying messages from libpng (thanks to jwm-art)
