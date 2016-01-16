@@ -2,7 +2,7 @@
 
 _pkgname=drush
 pkgname=${_pkgname}-git-alternative
-pkgver=8.0.2.r10.gb1bb013
+pkgver=8.0.2.r14.g30f88b2
 pkgrel=1
 pkgdesc="Drush is a command line shell and Unix scripting interface for Drupal"
 arch=('any')
