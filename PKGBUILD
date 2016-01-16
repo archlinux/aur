@@ -8,8 +8,8 @@
 
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
-pkgver=2.8.4
-pkgrel=4
+pkgver=2.8.5
+pkgrel=1
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
@@ -34,11 +34,26 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
           'libswscale.so' 'ffmpeg' 'qt-faststart')
 source=(http://ffmpeg.org/releases/$_pkgbasename-$pkgver.tar.bz2{,.asc}
+        https://github.com/FFmpeg/FFmpeg/commit/7145e80b4f78cff5ed5fee04d4c4d53daaa0e077.patch
+        https://github.com/FFmpeg/FFmpeg/commit/6ba42b6482c725a59eb468391544dc0c75b8c6f0.patch
+        https://github.com/FFmpeg/FFmpeg/commit/cfda1bea4c18ec1edbc11ecc465f788b02851488.patch
         'UNREDISTRIBUTABLE.txt')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-sha256sums=('83cc8136a7845546062a43cda9ae3cf0a02f43ef5e434d2f997f055231a75f8e'
+sha256sums=('3b6d9951533323ee64a21d0aa7667a780b3470bfe4e0fb7c1b33307ce290615a'
             'SKIP'
+            '402477e1cdea436bc322016d97f0a48433c7063ab8cb1100490d059b1663e92e'
+            'c5e5d2cba239f663004e65f86f87ab608348b5eedb11c0ac6d3403a0b8b49f42'
+            'cd285af37d91e04c26a112d6bcbab994e9acf7f49e9f9db06d7c9e8540bb25bd'
             'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4')
+
+prepare() {
+  cd $_pkgbasename-${pkgver}
+
+  # FS#47738
+  patch -Np1 -i ../7145e80b4f78cff5ed5fee04d4c4d53daaa0e077.patch
+  patch -Np1 -i ../6ba42b6482c725a59eb468391544dc0c75b8c6f0.patch
+  patch -Np1 -i ../cfda1bea4c18ec1edbc11ecc465f788b02851488.patch
+}
 
 build() {
   cd $_pkgbasename-$pkgver
@@ -125,9 +140,8 @@ build() {
     --enable-vda \
     --enable-vdpau \
     --enable-version3 \
-    --enable-zlib \
-    --disable-demuxer='hls' --disable-protocol='concat,hls' # FS#47738
-
+    --enable-zlib 
+    
   msg "Starting make"
   make
   make tools/qt-faststart
@@ -135,7 +149,7 @@ build() {
 }
 
 package() {
-  cd ffmpeg-$pkgver
+  cd $_pkgbasename-$pkgver
   make DESTDIR="$pkgdir" install install-man
   install -Dm 755 tools/qt-faststart "${pkgdir}"/usr/bin/
   install -Dm 644 "$srcdir"/UNREDISTRIBUTABLE.txt "$pkgdir/usr/share/licenses/$pkgname/UNREDISTRIBUTABLE.txt"
