@@ -1,6 +1,6 @@
 pkgbase = vrpn-oculus-git
 	pkgdesc = the Virtual Reality Peripheral Network lib and tools
-	pkgver = 07.30.1058.ge532091
+	pkgver = 07.30.1078.g8099627
 	pkgrel = 1
 	url = http://www.cs.unc.edu/Research/vrpn
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = vrpn-oculus-git
 	makedepends = git
 	depends = gpm
 	depends = libusbx
+	depends = oculus-rift-sdk-jherico-git
 	provides = vrpn
 	provides = vrpn-git
 	conflicts = vrpn

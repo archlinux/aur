@@ -2,13 +2,13 @@
 
 pkgname=vrpn-oculus-git
 _gitname=vrpn
-pkgver=07.30.1058.ge532091
+pkgver=07.30.1078.g8099627
 pkgrel=1
 pkgdesc='the Virtual Reality Peripheral Network lib and tools'
 arch=('i686' 'x86_64')
 url="http://www.cs.unc.edu/Research/vrpn"
 license=('GPL')
-depends=('gpm' 'libusbx')
+depends=('gpm' 'libusbx' 'oculus-rift-sdk-jherico-git')
 conflicts=("vrpn" "vrpn-git") #TODO
 provides=("vrpn" "vrpn-git")
 makedepends=('cmake' 'git')
