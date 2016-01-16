@@ -16,7 +16,7 @@ source=("${_pkgname}-${pkgver}"::"git+https://github.com/drush-ops/drush.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
+  cd "${_pkgname}-${pkgver}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
