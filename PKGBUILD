@@ -4,7 +4,7 @@
 
 pkgname=ttf-malayalam-fonts-meta
 pkgver=6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="This is a set of TrueType and OpenType fonts released under the 
 GNU General Public License for Malayalam Language."
 arch=(any)
