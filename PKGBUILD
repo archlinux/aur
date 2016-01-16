@@ -4,7 +4,7 @@
 pkgname=gtk-theme-arc
 _pkgname=arc-theme
 pkgver=20151214
-pkgrel=1
+pkgrel=2
 pkgdesc="A flat theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell. Official releases only."
 arch=('any')
 url="https://github.com/horst3180/${_pkgname}"
