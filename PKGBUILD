@@ -3,7 +3,7 @@
 
 pkgname=discord
 pkgver=0.1.3
-pkgrel=4
+pkgrel=5
 pkgdesc='Discord linux App'
 arch=('i686' 'x86_64')
 url='https://github.com/XNBlank/discord-linux'
@@ -39,6 +39,10 @@ package() {
   # Create symbolic link to the main binary
   install -d "${pkgdir}/usr/bin"
   ln -s "/opt/discord/discord" "${pkgdir}/usr/bin/discord"
+
+  # Create symbolic link to the icon
+  install -d "${pkgdir}/usr/share/pixmaps"
+  ln -s "/opt/discord/resources/app/icon.png" "${pkgdir}/usr/share/pixmaps/discord.png"
 
   # Install license file
   install -Dm644 "${pkgdir}/opt/discord/LICENSE" "${pkgdir}/usr/share/licenses/discord/LICENSE"
