@@ -5,6 +5,8 @@ pre_install() {
 	useradd -d /srv/cloud/one -g cloud -c "OpenNebula administrator account" -s /usr/bin/bash oneadmin
 	mkdir -p /srv/cloud/one/.one/
 	echo "ONE_LOCATION="/srv/cloud/one"; export ONE_LOCATION; export PATH=$PATH:/srv/cloud/one/bin" > /srv/cloud/one/.bashrc
+
+	mkdir -p /var/run/one
 }
 
 post_install() {
@@ -12,12 +14,13 @@ post_install() {
 	# that may already exist
 	echo 'oneadmin:0neadm1n' >> /srv/cloud/one/.one/one_auth
 	echo ">> You must edit the password in /srv/cloud/one/.one/one_auth"
-	chown oneadmin:cloud -R /srv/cloud/one
+	chown oneadmin:cloud -R /srv/cloud/one /var/run/one
 }
 
 pre_remove() {
 	userdel oneadmin && echo ">> User 'oneadmin' has been removed."
 	groupdel cloud && echo ">> Group 'cloud' has been removed."
+	rm -rf /var/run/one && echo ">> Removed /var/run/one"
 }
 
 post_remove() {
