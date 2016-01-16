@@ -12,10 +12,8 @@ depends=('php')
 makedepends=("php-box" "php-composer" "git")
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}"::"git+https://github.com/drush-ops/${_pkgname}.git"
-        "LICENSE"::"https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt")
-sha512sums=('SKIP'
-            'aee80b1f9f7f4a8a00dcf6e6ce6c41988dcaedc4de19d9d04460cbfb05d99829ffe8f9d038468eabbfba4d65b38e8dbef5ecf5eb8a1b891d9839cda6c48ee957')
+source=("${_pkgname}"::"git+https://github.com/drush-ops/${_pkgname}.git")
+sha512sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
