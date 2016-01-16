@@ -3,7 +3,7 @@
 
 pkgname=mkv-extractor-qt
 pkgver=5.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="GUI for extract files from .mkv"
 arch=('any')
 url='http://hizo.fr/linux/mkv_extractor_gui'
@@ -30,6 +30,10 @@ prepare() {
   sed -e 's|/usr/lib/x86_64-linux-gnu/qt5/bin/lrelease|/usr/bin/lrelease-qt5|g' \
       -e '/i386-linux-gnu/d' \
       -i build.sh
+  sed -e '/Encoding/d' \
+      -e 's|video/webm|video/webm;|g' \
+      -e 's|audio/x-matroska;audio/x-matroska|audio/x-matroska|g' \
+      -i mkv-extractor-qt.desktop
 }
 
 build() {
@@ -39,7 +43,7 @@ build() {
 
 package() {
   install -d "${pkgdir}/usr/bin"
-  ln -s /usr/share/mkv-extractor-qt5/MKVExtractorQt.py "${pkgdir}/usr/bin/mkv-extract-qt5"
+  ln -s /usr/share/mkv-extractor-qt5/MKVExtractorQt.py "${pkgdir}/usr/bin/mkv-extractor-qt5"
 
   cd mkv-extractor-qt5
 
