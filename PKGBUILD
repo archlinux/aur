@@ -3,7 +3,7 @@
 
 pkgbase=qcma-git
 pkgname=('qcma-git' 'qcma-kdenotifier-git')
-pkgver=v0.3.9.5.g7ed5bac
+pkgver=v0.3.10.0.g7886238
 pkgrel=1
 pkgdesc="Content Manager Assistant for the PS Vita. (GIT version)"
 arch=('i686' 'x86_64')
@@ -26,20 +26,14 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build-qcma
-  mkdir -p build-qcma-kdenotifier
+  mkdir -p build
 }
 
 build() {
-  pushd build-qcma &> /dev/null
-  lrelease-qt5 ../qcma/resources/translations/*.ts
-  qmake-qt5 ../qcma/qcma.pro PREFIX=/usr
+  cd build
+  lrelease-qt5 "${srcdir}/qcma/common/resources/translations/"*.ts
+  qmake-qt5 "${srcdir}/qcma/qcma.pro" PREFIX=/usr CONFIG+="ENABLE_KDENOTIFIER ENABLE_KNOTIFICATIONS"
   make
-  popd &> /dev/null
-  pushd build-qcma-kdenotifier &> /dev/null
-  lrelease-qt5 ../qcma/resources/translations/*.ts
-  qmake-qt5 ../qcma/qcma_kdenotifier.pro PREFIX="/usr" CONFIG+=ENABLE_KNOTIFICATIONS
-  popd &> /dev/null
 }
 
 package_qcma-git() {
@@ -54,7 +48,9 @@ package_qcma-git() {
   provides=('qcma')
   install=qcma-git.install
 
-  make -C build-qcma INSTALL_ROOT="${pkgdir}" install
+  make -C build/common INSTALL_ROOT="${pkgdir}" install
+  make -C build/cli INSTALL_ROOT="${pkgdir}" install
+  make -C build/gui INSTALL_ROOT="${pkgdir}" install
 }
 
 package_qcma-kdenotifier-git() {
@@ -65,5 +61,5 @@ package_qcma-kdenotifier-git() {
   conflicts=('qcma-kdenotifier')
   provides=('qcma-kdenotifier')
 
-  make -C build-qcma-kdenotifier INSTALL_ROOT="${pkgdir}" install
+  make -C build/kdenotifier INSTALL_ROOT="${pkgdir}" install
 }
