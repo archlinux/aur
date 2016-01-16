@@ -7,7 +7,7 @@ appname='st'
 conflicts=(${appname})
 provides=(${appname})
 pkgver=0.6
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple virtual terminal emulator for X. Patched for solarized colorscheme.'
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -24,14 +24,14 @@ md5sums=('1a926f450b4eacb7e2f5ac5b8ffea7c8'
          'cd75677133a2d6b3111fec5ae1b466bd')
 
 build() {
-  cd $srcdir/$appname-$pkgver
-  patch -i $srcdir/st-0.6-no-bold-colors.diff
-  patch -i $srcdir/st-0.6-solarized-dark.diff
+  cd "$srcdir/$appname-$pkgver"
+  patch -i "$srcdir/st-0.6-no-bold-colors.diff"
+  patch -i "$srcdir/st-0.6-solarized-dark.diff"
   make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
 package() {
-  cd $srcdir/$appname-$pkgver
+  cd "$srcdir/$appname-$pkgver"
   make PREFIX=/usr DESTDIR="$pkgdir" TERMINFO="$pkgdir/usr/share/terminfo" install
 
   # Avoid conflict with ncurses package
