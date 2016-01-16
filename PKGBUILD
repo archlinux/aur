@@ -2,9 +2,9 @@
 
 pkgname=topbeat
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source server monitoring agent that stores metrics in Elasticsearch'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url='https://www.elastic.co/products/beats'
 license=('APACHE')
 backup=("etc/$pkgname/$pkgname.yml")
