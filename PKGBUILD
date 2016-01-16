@@ -3,7 +3,7 @@
 
 pkgname=haguichi-bzr
 pkgver=1.3.1
-pkgrel=58
+pkgrel=65
 pkgdesc="Provides a user friendly GUI to control the Hamachi client on Linux. Development version."
 arch=('x86_64' 'i686' 'arm' 'armv7h')
 url="http://www.haguichi.net"
