@@ -1,6 +1,6 @@
 # Maintainer: Wyatt J. Brown <sushidudeteam@gmail.com>
 pkgname=all-repository-fonts
-pkgver=20151201
+pkgver=20160116
 pkgrel=1
 pkgdesc='Meta package for all fonts in the official repositories.'
 arch=('any')
@@ -40,6 +40,7 @@ depends=('adobe-source-code-pro-fonts'
          'ttf-baekmuk'
          'ttf-bitstream-vera'
          'ttf-cheapskate'
+         'ttf-croscore'
          'ttf-dejavu'
          'ttf-droid'
          'ttf-fira-mono'
