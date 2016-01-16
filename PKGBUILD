@@ -3,12 +3,13 @@
 
 _gitname=x2goclient
 pkgname=${_gitname}-git
-pkgver=4.0.5.0.r1.g1c299be
+pkgver=4.0.5.0.r7.g1d9c4ab9c6
 pkgrel=1
 pkgdesc="x2go qt4 client"
 arch=('i686' 'x86_64')
 url="http://www.x2go.org/"
 license=('GPL')
+makedepends=('git')
 depends=('qt4' 'libldap' 'libcups' 'nxproxy' 'libssh' 'libxpm' 'hicolor-icon-theme' 'xdg-utils')
 conflicts=('x2goclient')
 provides=('x2goclient')
