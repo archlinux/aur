@@ -4,14 +4,14 @@
 
 _gitname=gimp
 pkgname="$_gitname"-gtk3-git
-pkgver=20131118
+pkgver=2.9.2.r292.g359c00a
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program"
 arch=('i686' 'x86_64')
 url="http://www.gimp.org"
 license=('GPL' 'LGPL')
 depends=('babl-git' 'gegl-git' 'lcms' 'libxpm' 'libwmf' 'libxmu' 'librsvg' 'libmng'
-         'libexif' 'jasper' 'desktop-file-utils' 'libgexiv2' 'hicolor-icon-theme')
+         'libexif' 'jasper' 'desktop-file-utils' 'libgexiv2' 'hicolor-icon-theme' 'mypaint-git')
 makedepends=('git' 'intltool' 'poppler-glib' 'alsa-lib' 'iso-codes' 'gobject-introspection' 
 'curl' 'ghostscript' 'libxslt')
 optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cups print support'
@@ -33,12 +33,12 @@ md5sums=('SKIP' #generate with 'makepkg -g'
 
 pkgver() {
     cd $_gitname
-    git log -1 --format='%cd' --date=short | tr -d -- '-'
+    git describe --long | sed 's/GIMP_//;s/\([^-]*-g\)/r\1/;s/-/./g;s/_/\./g'
 }
 
 build() {
 
-	cd "$srcdir/$_gitname"
+	cd $_gitname
 	git checkout -b gtk3-port origin/gtk3-port
 
 	sed -i -e 's/automake-1.11/automake-1.14/g' \
@@ -53,7 +53,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$_gitname"
+	cd $_gitname
 	make DESTDIR="$pkgdir/" install
 	install -D -m644 "${srcdir}/linux.gpl" "${pkgdir}/usr/share/gimp/2.0/palettes/Linux.gpl"
 
