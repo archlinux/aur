@@ -2,14 +2,14 @@
 
 pkgname="robot-karol"
 pkgver="2.3"
-pkgrel="4"
+pkgrel="5"
 pkgdesc="A programming environment for introducing children to programming and algorithm design."
-url='https://www.mebis.bayern.de/medien/faecher/mint/informatik/robot-karol/'
+url='https://www.mebis.bayern.de/infoportal/faecher/mint/inf/robot-karol/'
 arch=('any')
 license=('custom')
 depends=('wine')
 makedepends=('innoextract' 'icoutils' 'imagemagick')
-source=('https://www.mebis.bayern.de/wp-content/uploads/2013/11/Robot_Karol_setup.zip')
+source=('https://www.mebis.bayern.de/wp-content/uploads/sites/2/2015/05/Robot_Karol_setup.zip')
 md5sums=('91149127108be600bd5dd084d67444b3')
 
 
