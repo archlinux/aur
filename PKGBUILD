@@ -12,7 +12,7 @@ url="http://smc.org.in/fonts/"
 depends=(fontconfig xorg-font-utils)
 source=("http://smc.org.in/downloads/fonts/chilanka/Chilanka.ttf"
         "https://gitlab.com/smc/chilanka/raw/master/67-smc-chilanka.conf")
-md5sums=('fafb5ca61bb936ce09cc0a4124578326'
+md5sums=('a1209e19894164633ee191f7c762e074'
          'f626730347f96e8f323e2bbd3df1a768')
 install=ttf-malayalam-fonts.install
 
