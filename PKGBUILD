@@ -5,7 +5,7 @@ _pkgname=papirus-pack-kde
 pkgbase=papirus-git
 pkgname=('papirus-git' 'papirus-plasma-theme-git' 'papirus-icon-theme-git' 'papirus-color-scheme-git' 'papirus-gtk-theme-git' 'papirus-aurorae-theme-git' 
          'papirus-konsole-colorscheme-git' 'papirus-yakuake-theme-git' 'bomi-skin-papirus-git' 'libreoffice-papirus-theme-git' 'papirus-kmail-theme-git' 'papirus-vlc-theme-git')
-pkgver=r406.854fe81
+pkgver=r411.da7fafe
 pkgrel=1
 pkgdesc="Look-and-feel package for modified and adaptive Paper theme for KDE"
 arch=('any')
@@ -15,6 +15,7 @@ options=('!strip')
 makedepends=('git')
 depends=('plasma-desktop')
 conflicts=('papirus')
+install=()
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
@@ -27,6 +28,7 @@ package_papirus-git() {
     depends=('papirus-plasma-theme-git' 'papirus-icon-theme-git' 'papirus-color-scheme-git' 'papirus-gtk-theme-git' 'papirus-aurorae-theme-git'
              'papirus-konsole-colorscheme-git' 'papirus-yakuake-theme-git' 'libreoffice-papirus-theme-git' 'papirus-vlc-theme-git')
     optdepends=('bomi-skin-papirus-git' 'papirus-kmail-theme-git')
+    install=()
     install -dm755 ${pkgdir}/usr/share/plasma/look-and-feel
     cp -r ${srcdir}/${_pkgname}/look-and-feel/* ${pkgdir}/usr/share/plasma/look-and-feel/
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
@@ -39,6 +41,7 @@ package_papirus-plasma-theme-git() {
     optdepends=()
     makedepends=('git')
     conflicts=('plasma-theme-papirus')
+    install=()
     install -dm755 ${pkgdir}/usr/share/plasma/desktoptheme
     cp -r ${srcdir}/${_pkgname}/plasma-themes/papirus* ${pkgdir}/usr/share/plasma/desktoptheme/
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
@@ -51,6 +54,7 @@ package_papirus-icon-theme-git() {
     optdepends=()
     makedepends=('git')
     conflicts=('papirus-icon-theme')
+    install=('INSTALL')
     install -dm755 ${pkgdir}/usr/share/{icons,apps/amarok/icons/papirus{,-black-panel,-dark}}
     cp -r ${srcdir}/${_pkgname}/icons/papirus*                                  ${pkgdir}/usr/share/icons/
     cp -r ${srcdir}/${_pkgname}/icons/papirus/extra-icons/amarok/*              ${pkgdir}/usr/share/apps/amarok/icons/papirus/
@@ -66,6 +70,7 @@ package_papirus-color-scheme-git() {
     optdepends=()
     makedepends=('git')
     conflicts=('papirus-color-scheme')
+    install=()
     install -Dm644 -t "${pkgdir}/usr/share/color-schemes/"   ${srcdir}/${_pkgname}/color-schemes/*.colors
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
     find ${pkgdir}/usr -type d -exec chmod 755 {} \;
@@ -78,6 +83,7 @@ package_papirus-gtk-theme-git() {
     optdepends=()
     makedepends=('git')
     conflicts=('papirus-gtk-theme')
+    install=()
     install -dm755 ${pkgdir}/usr/share/themes
     cp -r ${srcdir}/${_pkgname}/gtk-themes/papirus* ${pkgdir}/usr/share/themes/
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
@@ -91,6 +97,7 @@ package_papirus-aurorae-theme-git() {
     optdepends=()
     makedepends=('git')
     conflicts=('papirus-aurorae-theme')
+    install=()
     install -dm755 ${pkgdir}/usr/share/aurorae/themes
     cp -r ${srcdir}/${_pkgname}/aurorae-themes/Papirus* ${pkgdir}/usr/share/aurorae/themes/
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
@@ -104,6 +111,7 @@ package_papirus-konsole-colorscheme-git() {
     optdepends=()
     makedepends=('git')
     conflicts=('papirus-konsole-colorscheme')
+    install=()
     install -Dm644 -t "${pkgdir}/usr/share/apps/konsole/"   ${srcdir}/${_pkgname}/konsole-colorschemes/*.colorscheme
     install -Dm644 -t "${pkgdir}/usr/share/konsole/"        ${srcdir}/${_pkgname}/konsole-colorschemes/*.colorscheme
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
@@ -117,6 +125,7 @@ package_papirus-yakuake-theme-git() {
     optdepends=('yakuake' 'yakuake-frameworks-git')
     makedepends=('git')
     conflicts=('papirus-yakuake-theme' 'yakuake-skin-papirus' 'yakuake-skin-papirus-dark' 'yakuake-skin-papirus-dark-frameworks' 'yakuake-skin-papirus-frameworks')
+    install=()
     install -dm755 ${pkgdir}/usr/share/{apps/yakuake/skins,yakuake/skins}
     cp -r ${srcdir}/${_pkgname}/yakuake-skins/papirus* ${pkgdir}/usr/share/apps/yakuake/skins/
     cp -r ${srcdir}/${_pkgname}/yakuake-skins/papirus* ${pkgdir}/usr/share/yakuake/skins/
@@ -131,6 +140,7 @@ package_bomi-skin-papirus-git() {
     optdepends=()
     makedepends=('git')
     conflicts=('bomi-skin-papirus')
+    install=()
     install -dm755 ${pkgdir}/usr/share/bomi/skins
     cp -r ${srcdir}/${_pkgname}/bomi-skin/Papirus ${pkgdir}/usr/share/bomi/skins/
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
@@ -144,6 +154,7 @@ package_libreoffice-papirus-theme-git() {
     optdepends=('libreoffice' 'libreoffice-fresh-rpm')
     makedepends=('git')
     conflicts=('libreoffice-style-papirus' 'libreoffice-papirus-theme' 'libreoffice-fresh-rpm-papirus-theme')
+    install=()
     install -Dm644 -t "${pkgdir}/usr/lib/libreoffice/share/config/" ${srcdir}/${_pkgname}/libreoffice-icons/*.zip
     install -Dm644 -t "${pkgdir}/opt/libreoffice5.0/share/config/"  ${srcdir}/${_pkgname}/libreoffice-icons/*.zip
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
@@ -159,6 +170,7 @@ package_papirus-kmail-theme-git() {
     optdepends=()
     makedepends=('git')
     conflicts=('papirus-kmail-theme')
+    install=()
     install -dm755 ${pkgdir}/usr/share/messageviewer/themes
     cp -r ${srcdir}/${_pkgname}/kmail-theme/papirus* ${pkgdir}/usr/share/messageviewer/themes/
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
@@ -170,6 +182,7 @@ package_papirus-vlc-theme-git() {
     options=('!strip')
     depends=('vlc')
     makedepends=('git')
+    install=()
     install -Dm644 -t "${pkgdir}/usr/share/vlc/skins2/" ${srcdir}/${_pkgname}/vlc-skins/*.vlt
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
     find ${pkgdir}/usr -type d -exec chmod 755 {} \;
