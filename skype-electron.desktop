@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Skype-Electron
+Comment=Skype-Electron Internet Messaging
+Icon=skype-electron.png
+Exec=skype-electron %U
+NoDisplay=false
+Categories=Network;
+StartupNotify=false
+Terminal=false
