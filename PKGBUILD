@@ -7,7 +7,7 @@ pkgdesc="Bridge Design Contest is an Internet-based competition that provides mi
 arch=('any')
 url="https://bridgecontest.org/"
 license=('GPL')
-depends=('java-runtime' 'jogl')
+depends=('java-runtime' "jogl>=2.3.1")
 makedepends=('p7zip')
 options=(!strip)
 source=("Bridge_Designer_2016_Installation_Image.dmg::http://sourceforge.net/projects/wpbdc/files/Current%20Release/jre/Bridge%20Designer%202016%20Installation%20Image.dmg/download"
