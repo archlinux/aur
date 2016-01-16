@@ -1,0 +1,28 @@
+pre_install() {
+	# Prepare for a self-contained installation before build() runs
+	mkdir -p /srv/cloud/one
+	groupadd cloud
+	useradd -d /srv/cloud/one -g cloud -c "OpenNebula administrator account" oneadmin
+	mkdir -p /srv/cloud/one/.one/
+}
+
+post_install() {
+	# Append the oneadmin credentials to one_auth to avoid overwriting a file
+	# that may already exist
+	echo 'oneadmin:0neadm1n' >> /srv/cloud/one/.one/one_auth
+	echo ">> You must edit the password in /srv/cloud/one/.one/one_auth"
+	chown oneadmin:cloud -R /srv/cloud/one /var/log/one /var/lib/one /run/one /var/lock/one
+}
+
+pre_remove() {
+	userdel oneadmin && echo ">> User 'oneadmin' has been removed."
+	groupdel cloud && echo ">> Group 'cloud' has been removed."
+}
+
+post_remove() {
+	echo ">> You can uninstall the Ruby gems if no other packages require them."
+	echo ">> For example, 'gem uninstall sequel' would uninstall the 'sequel' Ruby gem."
+	echo ">> If you installed the Ruby gems via pacman, then uninstall the gems via pacman."
+	echo ">> "
+	echo ">> You may also want to remove the /srv/cloud/one directory."
+}

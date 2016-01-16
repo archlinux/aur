@@ -1,0 +1,10 @@
+[Unit]
+Description=OpenNebula management
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/su - oneadmin /usr/bin/one start
+ExecStop=/usr/bin/su - oneadmin /usr/bin/one stop
+TimeoutSec=0
+StandardInput=tty
+RemainAfterExit=yes

@@ -1,0 +1,188 @@
+2015-05-05 Jason St. John <jstjohn .. purdue . edu>
+
+	* 4.12.1-1:
+	New upstream release (4.12.1).
+
+2015-03-11 Jason St. John <jstjohn .. purdue . edu>
+
+	* 4.12.0-1:
+	New upstream release (4.12.0).
+
+2015-02-13 Jason St. John <jstjohn .. purdue . edu>
+
+	* 4.10.2-1:
+	New upstream release (4.10.2).
+
+2014-12-03 Jason St. John <jstjohn .. purdue . edu>
+
+	* 4.10.1-1:
+	New upstream release (4.10.1).
+
+2014-11-05 Jason St. John <jstjohn .. purdue . edu>
+
+	* 4.10.0-1:
+	New upstream release (4.10.0).
+
+2014-08-28 Jason St. John <jstjohn .. purdue . edu>
+
+	* 4.8.0-1:
+	New upstream release (4.8.0).
+
+2014-07-09 Jason St. John <jstjohn .. purdue . edu>
+
+	* 4.6.2-1:
+	New upstream release (4.6.2).
+
+2014-06-11 Jason St. John <jstjohn .. purdue . edu>
+
+	* 4.6.1-2:
+	Fix broken upstream URL link in PKGBUILD.
+
+2014-05-25 Jason St. John <jstjohn .. purdue . edu>
+
+	* 4.6.1-1:
+	New upstream release (4.6.1).
+
+2014-02-05 Jason St. John <jstjohn .. purdue . edu>
+
+	* 4.4.1-1:
+	New upstream release (4.4.1).
+	Added dependency 'ruby-opennebula'.
+	Removed message in post_install() about installing the 'sequel' Ruby gem.
+	Updated documentation links in the PKGBUILD.
+	Added message in post_remove() about uninstalling Ruby gems via pacman.
+
+2013-12-16 Jason St. John <jstjohn .. purdue . edu>
+
+	* 4.4.0-1:
+	New upstream release (4.4.0).
+	Require xmlrpc-c >= 1.31 and build with option "new_xmlrpc=yes".
+	Patch 'install.sh' script in prepare() instead of package().
+
+2013-05-22 Jason St. John <jstjohn .. purdue . edu>
+
+	* 4.0.1-1:
+	New upstream release (4.0.1).
+
+2013-05-13 Jason St. John <jstjohn .. purdue . edu>
+
+	* 4.0.0-1:
+	New upstream release (4.0.0).
+	Added dependency 'log4cpp'.
+
+2013-03-28 Jason St. John <jstjohn .. purdue . edu>
+
+	* 3.8.3-3:
+	Replaced dependencies on MySQL with their MariaDB counterparts per the
+	   Arch announcement.
+	Replaced dependency on 'xmlrpc-c-abyss' with 'xmlrpc-c', as the Arch
+	   package in [community] now enables abyss.
+
+2013-02-06 Jason St. John <jstjohn .. purdue . edu>
+
+	* 3.8.3-2:
+	Dropped package support for Arch's initscripts.
+	Removed the 'oned' rc.d script.
+
+2013-01-11 Jason St. John <jstjohn .. purdue . edu>
+
+	* 3.8.3-1:
+	New upstream release (3.8.3).
+	Removed unnecessary var_run.patch.
+
+2012-12-11 Jason St. John <jstjohn .. purdue . edu>
+
+	* 3.8.1-2:
+	Removed Vim modelines from PKGBUILD and other files.
+	Replaced the two-space indents with tabs.
+	Fixed a bug when creating a default .one/one_auth file.
+
+2012-10-30 Jason St. John <jstjohn .. purdue . edu>
+
+	* 3.8.1-1:
+	New upstream release (3.8.1).
+
+2012-10-22 Jason St. John <jstjohn .. purdue . edu>
+
+	* 3.8.0-1:
+	New upstream release (3.8.0).
+	Added a systemd service file.
+	Two harmless possible error messages when building the package are now
+	   sent to /dev/null.
+
+2012-07-11 Jason St. John <jstjohn .. purdue . edu>
+
+	* 3.6.0-1:
+	New upstream release (3.6.0).
+	Minor change in the pre_remove() messages added in version 3.4.0-1.
+
+2012-06-25 Jason St. John <jstjohn .. purdue . edu>
+
+	* 3.4.1-3:
+	Added minimum dependency versions to PKGBUILD.
+	Patched install.sh to use /run instead of /var/run.
+	Patched install.sh to not chown directories because the package otherwise
+	   fails to build on fresh installations.
+
+2012-05-14 Jason St. John <jstjohn .. purdue . edu>
+
+	* 3.4.1-2:
+	Fixed two variable expansion bugs in the PKGBUILD.
+	Slightly altered the messages in opennebula.install to be more visible.
+
+2012-05-11 Jason St. John <jstjohn .. purdue . edu>
+
+	* 3.4.1-1:
+	New upstream release (3.4.1).
+
+2012-04-11 Jason St. John <jstjohn .. purdue . edu>
+
+	* 3.4.0-1:
+	New upstream release (3.4.0).
+	Added messages to pre_remove() in opennebula.install that echo a message
+	   when oneadmin:cloud is removed from the system.
+
+2012-03-02 Jason St. John <jstjohn .. purdue . edu>
+
+	* 3.2.1-3:
+	Added 'cdrkit' as a dependency for contextualization.
+
+2012-02-25 Jason St. John <jstjohn .. purdue . edu>
+
+	* 3.2.1-2:
+	Added compatibility support for the 'opennebula-unstable' package.
+	Added 'xmlrpc-c-abyss' to the makedepends() array.
+
+2012-02-07 Jason St. John <jstjohn .. purdue . edu>
+
+	* 3.2.1-1:
+	Changed package version numbering scheme to use three digits instead of
+	   two.
+	New upstream release (3.2.1).
+	The OpenNebula Watch bug has been fixed; removed patching instructions
+	   from PKGBUILD.
+	The PKGBUILD now automatically detects whether to pass the '-k' switch to
+	   ./install.sh when installing/upgrading. This means that your OpenNebula
+	   config files won't get overwritten when upgrading anymore.
+	Removed a few commented installation steps because it is far better to
+	   just make the PKGBUILD do the 'vanilla' install and allow the user to
+	   tweak it as necessary.
+
+2012-01-03 Jason St. John <jstjohn .. purdue . edu>
+
+	* 3.0-2 (unreleased):
+	Fixed a bug with the `useradd` command in the .install script.
+	Fixed a bug in the oned rc.d script.
+
+2011-12-25 Jason St. John <jstjohn .. purdue . edu>
+
+	* 3.0-1 :
+	Added a ChangeLog (this file).
+	New upstream release (3.0.0).
+	Added many new dependencies to the PKGBUILD.
+	Set the minimum required version of Ruby to 1.8.7.
+	Added optional installation methods to build() (in the PKGBUILD).
+	Removed the oneuser.patch file from the PKGBUILD and tarball (the patch
+	   was for OpenNebula 2.0).
+	Significant improvements to /etc/rc.d/oned and the opennebula.install
+	   script.

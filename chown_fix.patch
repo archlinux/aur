@@ -1,0 +1,16 @@
+--- install.sh	2013-11-27 14:49:25.474802021 -0400
++++ install.sh.new	2015-03-10 21:28:10.505393378 -0400
+@@ -2078,11 +2078,12 @@
+
+ # --- Set ownership or remove OpenNebula directories ---
+
+ if [ "$UNINSTALL" = "no" ] ; then
+     for d in $CHOWN_DIRS; do
+-        chown -R $ONEADMIN_USER:$ONEADMIN_GROUP $DESTDIR$d
++        :
++#        chown -R $ONEADMIN_USER:$ONEADMIN_GROUP $DESTDIR$d
+     done
+ else
+     for d in `echo $DELETE_DIRS | awk '{for (i=NF;i>=1;i--) printf $i" "}'`; do
+         rmdir $d
+     done
