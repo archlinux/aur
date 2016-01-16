@@ -16,8 +16,9 @@ makedepends=('git')
 depends=('plasma-desktop')
 conflicts=('papirus')
 install=()
-source=("${_pkgname}::git+${url}.git")
-sha256sums=('SKIP')
+source=("${_pkgname}::git+${url}.git" 'INSTALL')
+sha256sums=('SKIP'
+            '48c7499dc181594778d3c4ef21cbbff9be7bee59bb2d553fd0a922c8cbbefe69')
 
 pkgver(){
     cd ${srcdir}/${_pkgname}
