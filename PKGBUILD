@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=bibtool-git
-pkgver=2.61.123.g066eaee
+pkgver=2.62
 pkgrel=1
 pkgdesc="Command line manipulation of BibTeX files - from git-repo"
 arch=('i686' 'x86_64')
@@ -22,6 +22,7 @@ pkgver() {
 
 build() {
   cd "$srcdir"/"$_gitname"
+  sed -i '1,3d' include/bibtool/regex.h
   autoreconf
   ./configure --prefix=/usr
   make
