@@ -12,4 +12,3 @@ replaces=()
 backup=()
 source=()
 md5sums=()
-install=girlfriend.install
