@@ -2,7 +2,7 @@
 
 _themename=google
 pkgname=lightdm-webkit-theme-${_themename}-git
-pkgver=latest
+pkgver=r11.d83ee55
 pkgrel=1
 pkgdesc="Google/ChromeOS style LightDM Webkit greeter theme"
 arch=('any')
@@ -14,12 +14,17 @@ source=("${pkgname}::git+https://github.com/omgmog/lightdm-webkit-google.git"
 md5sums=('SKIP'
          'e6f431dd1ad48a375db96aeb94d1916e')
 
+pkgver() {
+    cd "${srcdir}/${pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 build () {
-	cd ${srcdir}/${pkgname}
+	cd "${srcdir}/${pkgname}"
 }
 
 package () {
-	cd ${srcdir}/${pkgname}
+	cd "${srcdir}/${pkgname}"
 
     install -D -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
