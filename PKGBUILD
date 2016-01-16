@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Cross-platform D2V creator. (GIT version)"
 arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=173090'
-license=('GPL')
+license=('LGPL2.1' 'ISC')
 depends=('ffmpeg')
 makedepends=('git')
 provides=('d2vwitch')
