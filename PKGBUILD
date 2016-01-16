@@ -2,24 +2,21 @@
 
 pkgname=qcma-appindicator
 _pkgname=qcma
-pkgver=0.3.9
+pkgver=0.3.10
 pkgrel=1
 pkgdesc="Content Manager Assistant for the PS Vita (AppIndicator)"
 arch=("i686" "x86_64")
 url="https://github.com/codestation/qcma"
 license=('GPL')
-depends=('qcma>=0.3.9' 'libappindicator-gtk2')
+depends=('qcma>=0.3.10' 'libappindicator-gtk2')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/codestation/${_pkgname}/archive/v${pkgver}.tar.gz")
 install=qcma-appindicator.install
-sha256sums=('46cdc03c9b1ad1ce7905dc194166291a917aee0deb38099f998914076e88c30d')
+sha256sums=('79c84d33eb9db7beaff46aa3811b85a55b6d15abde27cc6c0c7b2a22d0ad184e')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  # temporal patch to install icons in the correct path
-  sed -i '/INCLUDEPATH/a DATADIR = $$PREFIX/share' qcma_appindicator.pro
-
-  qmake-qt5 qcma_appindicator.pro PREFIX="/usr"
+  qmake-qt5 appindicator/appindicator.pro PREFIX="/usr"
   make
 }
 
