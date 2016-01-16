@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  php /usr/bin/composer install --prefer-dist --no-dev
+  php /usr/bin/composer install --no-dev
   cp box.json.dist box.json
   php -d phar.readonly=Off /usr/bin/php-box build
 }
