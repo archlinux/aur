@@ -1,9 +1,6 @@
 # Contributor: Lex Black <autumn-wind at web dot de>
 # Contributor: Karro <karolina.lindqvist@kramnet.se>
 # Contributor: maoserr
-#
-# Maintainer: SneakySnake <radiantstatue@gmail.com>
-# Submit issues/pull requests at https://github.com/crumblingstatue/aur-iup
 
 pkgname=iup
 pkgver=3.15
