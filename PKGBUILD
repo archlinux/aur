@@ -2,9 +2,9 @@
 
 pkgname=libvitamtp
 _pkgname=vitamtp
-pkgver=2.5.6
-pkgrel=2
-_soname=4
+pkgver=2.5.7
+pkgrel=1
+_soname=5
 pkgdesc="Library to interact with Vita's USB MTP protocol"
 arch=("i686" "x86_64")
 url="https://github.com/codestation/vitamtp"
@@ -13,15 +13,11 @@ depends=('libusb' 'libxml2')
 conflicts=('vitamtp' 'vitamtpmod')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/codestation/${_pkgname}/archive/v${pkgver}.tar.gz" "libvitamtp.install")
 options=('!libtool')
-sha256sums=('1d7c0db20598bcedd8252b1563056e597b336b41d7c2c89786a4c133cc555a43' 'ed499fabb566b06af81f784b87ea2021b74d3945920ab70e8cbdb1b3a88bb9db')
+sha256sums=('2b4dcf32ee65281f99c7d2b994b7bfe92dce30c1562cb4191ebff3a9bef311c8' 'ed499fabb566b06af81f784b87ea2021b74d3945920ab70e8cbdb1b3a88bb9db')
 install=$pkgname.install
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-
-  # only allow users in the vitamtp group to access the Vita
-  sed -i 's/root/vitamtp/' debian/vitamtp${_soname}.udev
-  sed -i 's/666/660/' debian/vitamtp${_soname}.udev
 
   ./autogen.sh
   ./configure --prefix=/usr
@@ -31,5 +27,5 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
-  install -Dm644 debian/vitamtp${_soname}.udev "$pkgdir/usr/lib/udev/rules.d/80-psvita.rules"
+  install -Dm644 debian/libvitamtp${_soname}.udev "$pkgdir/usr/lib/udev/rules.d/80-psvita.rules"
 }
