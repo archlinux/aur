@@ -36,10 +36,12 @@ install=opennebula.install
 changelog=ChangeLog
 source=("http://downloads.opennebula.org/packages/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"
         'opennebula.service'
-        'chown_fix.patch')
+        'chown_fix.patch'
+        'set_locations.patch')
 sha512sums=('ed572bf1a6e0a4eecb85c1f2beb1f686e6729f74a354f41dbb5113fd089af06013f63d022ee8c068234e5be64df818771a0ba0c452ffbf4fd096dd16cf878926'
-            'aa03623853515afc0f0e25e76a4f55fc844570ec432c8398616e336402fad0f6eea5853fe2488f6a0069831dfb6528ee8cd38772ffe415e349b9394c851299f1'
-            '8d6a311072da61ca49458aaf787daf4ef5c5969a9aa282f2276d679dc38e14e5fd1c23bc51b12a29d2d40b65aa45bd2c38d6741726b09d75a38565b7d4ad4677')
+            'a142effd0037966a04a9bbb8416c12835f676108c53b1e42186cec9222cc09a60a01be1ddf24773914f2615238f501579e4d39abbf28c5f89b0fc7140855af20'
+            '8d6a311072da61ca49458aaf787daf4ef5c5969a9aa282f2276d679dc38e14e5fd1c23bc51b12a29d2d40b65aa45bd2c38d6741726b09d75a38565b7d4ad4677'
+            '1f20e688a0f6d36a6bc875392473e75c7de77b159b9cbdf262ac0f093b4d65555231ab15897156e2558d0df6ae631f8d79a3265073ea8c0546586937544e47c9')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
@@ -47,7 +49,8 @@ prepare() {
 	# Patch upstream install script to not attempt to chown the install
 	# directories because `makepkg` will otherwise fail on a fresh installation.
 	# We do our own chown in post_install().
-	patch < "${srcdir}/chown_fix.patch"
+  patch < "${srcdir}/chown_fix.patch"
+	patch < "${srcdir}/set_locations.patch"
 }
 
 build() {
@@ -80,62 +83,9 @@ package() {
 	if [[ ("$(pacman -Qq ${pkgname} 2>/dev/null)" == "${pkgname}") || ("$(pacman -Qq ${_unstable_pkg} 2>/dev/null)" == "${_unstable_pkg}") ]]; then
 		# Use -k when running ./install.sh to keep previous configuration files
 		# Note: It is highly recommended to not keep the oned.conf file.
-		DESTDIR="${pkgdir}" ./install.sh -k -u oneadmin -g cloud -d /srv/cloud/one
+		DESTDIR="${pkgdir}" ./install.sh -k -u oneadmin -g cloud
 	else
 		# Do not use -k when running ./install.sh for new installations
-		DESTDIR="${pkgdir}" ./install.sh -u oneadmin -g cloud -d /srv/cloud/one
+		DESTDIR="${pkgdir}" ./install.sh -u oneadmin -g cloud
 	fi
-
-  mkdir -p "${pkgdir}/usr/bin"
-  ln -s /srv/cloud/one/bin/econe-allocate-address "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/econe-associate-address "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/econe-attach-volume "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/econe-create-keypair "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/econe-create-volume "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/econe-delete-keypair "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/econe-delete-volume "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/econe-describe-addresses "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/econe-describe-images "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/econe-describe-instances "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/econe-describe-keypairs "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/econe-describe-volumes "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/econe-detach-volume "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/econe-disassociate-address "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/econe-reboot-instances "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/econe-register "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/econe-release-address "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/econe-run-instances "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/econe-server "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/econe-start-instances "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/econe-stop-instances "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/econe-terminate-instances "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/econe-upload "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/mm_sched "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/novnc-server "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/one "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/oneacct "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/oneacl "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/onecluster "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/oned "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/onedatastore "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/onedb "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/oneflow "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/oneflow-server "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/oneflow-template "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/onegate-server "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/onegroup "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/onehost "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/oneimage "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/onemarket "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/onesecgroup "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/oneshowback "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/onetemplate "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/oneuser "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/onevcenter "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/onevdc "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/onevm "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/onevnet "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/onezone "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/sunstone-server "${pkgdir}/usr/bin/"
-  ln -s /srv/cloud/one/bin/tty_expect "${pkgdir}/usr/bin/"
 }

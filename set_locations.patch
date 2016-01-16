@@ -1,0 +1,15 @@
+Index: opennebula-4.14.2/install.sh
+===================================================================
+--- opennebula-4.14.2.orig/install.sh
++++ opennebula-4.14.2/install.sh
+@@ -114,8 +114,8 @@ if [ -z "$ROOT" ] ; then
+     ONEFLOW_LOCATION="$LIB_LOCATION/oneflow"
+     SYSTEM_DS_LOCATION="$VAR_LOCATION/datastores/0"
+     DEFAULT_DS_LOCATION="$VAR_LOCATION/datastores/1"
+-    RUN_LOCATION="/var/run/one"
+-    LOCK_LOCATION="/var/lock/one"
++    RUN_LOCATION="/run/one"
++    LOCK_LOCATION="/run/lock/one"
+     INCLUDE_LOCATION="/usr/include"
+     SHARE_LOCATION="/usr/share/one"
+     MAN_LOCATION="/usr/share/man/man1"
