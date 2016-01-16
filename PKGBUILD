@@ -1,5 +1,5 @@
 pkgname=ca-certificates-dn42
-pkgver=20150513
+pkgver=20160116
 pkgrel=1
 pkgdesc="dn42 root certificates for *.dn42 and 172.22.0.0/15"
 arch=(any)
