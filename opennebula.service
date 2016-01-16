@@ -2,9 +2,10 @@
 Description=OpenNebula management
 
 [Service]
+User=oneadmin
 Type=oneshot
-ExecStart=/usr/bin/su - oneadmin /usr/bin/one start
-ExecStop=/usr/bin/su - oneadmin /usr/bin/one stop
+ExecStart=/srv/cloud/one/bin/one start
+ExecStop=/srv/cloud/one/bin/one stop
 TimeoutSec=0
 StandardInput=tty
 RemainAfterExit=yes
