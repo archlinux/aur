@@ -35,12 +35,15 @@ depends_x86_64=('lib32-libxi'
 makedepends=('icu'
              'openslp'
              'sqlite'
+             'lynx'
              )
 
-DLAGENTS=('https::/usr/bin/wget -c -t 3 --waitretry=3 -O %o %u'
+          # OpenPegasus site don't like wget/curl. :/
+DLAGENTS=('https::/usr/bin/lynx -accept_all_cookies -cmd_script=lynx_script_for_download_pegasus %u'
           'http::/usr/bin/curl -qb "" -fLC - --retry 3 --retry-delay 3 -o %o %u')
 
-source=('https://collaboration.opengroup.org/pegasus/documents/32572/pegasus-2.14.1.tar.gz'
+source=('lynx_script_for_download_pegasus' #IMPORTANT for download pegasus zip. please don't move to other place
+        'https://collaboration.opengroup.org/pegasus/documents/32572/pegasus-2.14.1.tar.gz'
         'msm_profile.sh'
         'LSI_StorSNMP.ini'
         'lsi_msm.service'
@@ -54,7 +57,8 @@ source=('https://collaboration.opengroup.org/pegasus/documents/32572/pegasus-2.1
         'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.14.1-ssl-include.patch')
 source_i686=("${pkgver}_Linux-x86_MSM.tar.gz::http://docs.avagotech.com/docs-and-downloads/https:/avagodocs.s3.amazonaws.com:443/docs-and-downloads/https:/avagodocs.s3.amazonaws.com:443/docs-and-downloads/raid-controllers/raid-controllers-common-files/MSM_linux_x86_installer-${_pkgver}.tar.gz")
 source_x86_64=("${pkgver}_Linux-x64_MSM.tar.gz::http://docs.avagotech.com/docs-and-downloads/https:/avagodocs.s3.amazonaws.com:443/docs-and-downloads/https:/avagodocs.s3.amazonaws.com:443/docs-and-downloads/raid-controllers/raid-controllers-common-files/MSM_linux_x64_installer-${_pkgver}.tar.gz")
-sha1sums=('c832eaf240f6dfba843c4937f7a935382d48b9be'
+sha1sums=('3e0e9a5b5bae72af361db01825242aefcfc3094a'
+          'c832eaf240f6dfba843c4937f7a935382d48b9be'
           '0e5d7b71435760e3ef7c1e132ba05145ccbd1268'
           '79fbe24898030db50295a6254e7c4627e2b51b7c'
           'e52a1be05599cd7e5ecf1085311c00c7e16e4b43'
