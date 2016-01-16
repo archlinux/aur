@@ -5,11 +5,12 @@
 # Contributor: koral <koral at mailoo dot org>
 
 pkgname=nix-git
-pkgver=1.11.20160108
+pkgver=1.11.20160112
 pkgrel=1
 pkgdesc="The Purely Functional Package Manager"
 arch=('i686' 'x86_64')
-depends=('curl'
+depends=('bzip2'
+         'curl'
          'dblatex'
          'gc'
          'graphviz'
@@ -28,7 +29,6 @@ depends=('curl'
 makedepends=('autoconf'
              'automake'
              'bison'
-             'bzip2'
              'flex'
              'git'
              'libtool'
