@@ -6,13 +6,13 @@ pkgver=8.0.2.r14.g30f88b2
 pkgrel=1
 pkgdesc="Drush is a command line shell and Unix scripting interface for Drupal"
 arch=('any')
-url="https://github.com/drush-ops/${_pkgname}"
+url="https://github.com/drush-ops/drush"
 license=('GPL')
 depends=('php')
 makedepends=("php-box" "php-composer" "git")
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}"::"git+https://github.com/drush-ops/${_pkgname}.git")
+source=("${_pkgname}"::"git+https://github.com/drush-ops/drush.git")
 sha512sums=('SKIP')
 
 pkgver() {
