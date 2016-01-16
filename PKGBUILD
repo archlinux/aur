@@ -3,12 +3,12 @@
 _pkgname=wxgtk
 pkgname=$_pkgname-git
 pkgver=46953a1
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-Platform GUI Library - GTK+ port'
 arch=("i686" "x86_64")
 url='https://www.wxwidgets.org'
 license=("custom: wxWindows Library Licence")
-depends=('gtk2' 'webkitgtk' 'libmspack' 'gstreamer0.10-base' 'libnotify')
+depends=('gtk2' 'webkitgtk2' 'libmspack' 'gstreamer0.10-base' 'libnotify')
 makedepends=('git' 'glu')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
