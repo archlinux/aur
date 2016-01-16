@@ -58,7 +58,7 @@ build() {
 }
 
 package_libcuefile-svn() {
-  pkgdesc="Parses so-called cue sheets and handles the parsed data. (SVN Version)"
+  pkgdesc="A library to work with CUE files. (SVN Version)"
   depends=('glibc')
   provides=('libcuefile' 'libcuefile.so')
   conflicts=('libcuefile')
