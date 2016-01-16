@@ -5,7 +5,7 @@
 pkgname=hop
 pkgver=3.0.0_rc9
 _pkgver=${pkgver//_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc="Software Development Kit for the Web"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
@@ -32,7 +32,12 @@ check() {
 package() {
   cd ${srcdir}/$pkgname-$_pkgver
   make DESTDIR=${pkgdir} install
+
+  install -Dm644 arch/archlinux/conf.d/hop.in $pkgdir/etc/conf.d/hop
+  install -Dm755 arch/archlinux/rc.d/hop.in $pkgdir/etc/rc.d/hop
+  install -Dm644 arch/archlinux/systemd/hop.service.in \
+	  $pkgdir/usr/lib/systemd/system/hop.service
+  install -Dm644 arch/archlinux/systemd/hop.socket.in \
+	  $pkgdir/usr/lib/systemd/system/hop.socket
   cd ${pkgdir}/usr/bin; rm hop; ln -s hop-$pkgver hop
-  install -Dm755 $srcdir/hop ${pkgdir}/etc/rc.d/hop
-  install -d ${pkgdir}/var/lib/hop
 }
