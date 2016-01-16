@@ -3,13 +3,14 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 
 pkgname=tcpcrypt-git
-pkgver=312.866994c
+pkgver=346.ec01927
 pkgrel=1
 pkgdesc="Transparent user space implementation for the tcpcrypt TCP extensions"
 arch=('i686' 'x86_64')
 url="http://tcpcrypt.org"
 license=('BSD')
-depends=('libnetfilter_queue' 'libnfnetlink' 'libcap' 'openssl' 'iptables')
+depends=('libnetfilter_queue' 'libnetfilter_conntrack' 'libnfnetlink'
+         'libcap' 'openssl' 'iptables')
 makedepends=('git')
 provides=('tcpcrypt')
 conflicts=('tcpcrypt')
