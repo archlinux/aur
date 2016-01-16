@@ -1,35 +1,38 @@
-# Maintainer: Riley Trautman <asonix.dev@gmail.com>
+# Maintainer: Michael Spencer <sonrisesoftware@gmail.com>
 
 _pkgname=liri-player
-pkgname=$_pkgname-git
-pkgver=git
+pkgname=${_pkgname}-git
+pkgver=r21.9f79ce9
 pkgrel=1
-pkgdesc="A Web player using the QML Material framework from the Papyros Project"
+pkgdesc="A Material Design VLC based media player"
 arch=("i686" "x86_64")
-url="https://github.com/pierremtb/liri-player"
+url="https://github.com/liri-project/liri-player"
 license=("GPLv3")
-depends=("qt5-base" "qml-material" "qt5-multimedia" "vlc")
+depends=("qt5-base" "qt5-declarative" "qt5-quickcontrols" "qt5-multimedia" "vlc"
+         "qml-material-git")
 makedepends=("git")
-provides=("$_pkgname" "$pkgname")
-conflicts=("$_pkgname")
-install=$pkgname.install
-source=("$pkgname::git+https://github.com/pierremtb/liri-player.git"
+provides=("${_pkgname}")
+conflicts=("${_pkgname}" "${_pkgname}-git")
+source=("${_pkgname}::git+https://github.com/liri-project/liri-player.git"
         "qmlvlc::git+https://github.com/RSATom/QmlVlc.git"
         "yalibvlcwrapper::git+https://github.com/RSATom/ya-libvlc-wrapper.git"
         "libvlcsdk::git+https://github.com/RSATom/libvlc-sdk.git"
-        "liri-player.desktop" "$pkgname.install")
-sha256sums=("SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP")
+        "liri-player.desktop")
+sha256sums=("SKIP" "SKIP" "SKIP" "SKIP" "SKIP")
 
 pkgver() {
-    cd "$pkgname"
-    # cutting off 'foo-' prefix that presents in the git tag
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/${_pkgname}"
+
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
   pushd $(pwd) >> /dev/null
 
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/${_pkgname}"
   git submodule init
   git config submodule.dependencies/QmlVlc.url "$srcdir/qmlvlc"
   git submodule update
@@ -46,41 +49,32 @@ build() {
 
   popd >> /dev/null
 
-	mkdir -p build
-	cd build
-	qmake "$srcdir/$pkgname"
-	make
+  mkdir -p build
+  cd build
+  qmake "$srcdir/${_pkgname}"
+  make
 }
 
 package() {
-	cd build
-	make INSTALL_ROOT="$pkgdir" install
+  cd build
 
   mkdir -p "$pkgdir"/usr/bin
   mkdir -p "$pkgdir"/usr/share/applications
 
-  # for i in 16x16 22x22 32x32 48x48 64x64 128x128 256x256; do
-  #   install -Dm644 "$srcdir"/"$pkgname"/icons/liri-player.png \
-  #                  "$pkgdir"/usr/share/icons/hicolor/$i/apps/liri-player.png
-  # done
-
-  # install -m755 ../liri-player.sh \
-  #               "$pkgdir"/usr/bin/liri-player
-
   install -m755 liri-player \
-                "$pkgdir"/usr/bin/liri-player
+    "$pkgdir"/usr/bin/liri-player
   install -m755 ../liri-player.desktop \
-                "$pkgdir"/usr/share/applications/liri-player.desktop
+    "$pkgdir"/usr/share/applications/liri-player.desktop
 }
 
 # Additional functions to generate a changelog
 
 changelog() {
-    cd "$pkgname"
-    git log $1..HEAD --no-merges --format=" * %s"
+  cd "${_pkgname}"
+  git log $1..HEAD --no-merges --format=" * %s"
 }
 
 gitref() {
-    cd "$pkgname"
-    git rev-parse HEAD
+  cd "${_pkgname}"
+  git rev-parse HEAD
 }
