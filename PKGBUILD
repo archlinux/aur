@@ -5,7 +5,7 @@
 
 set -u
 pkgname='pmacct'
-pkgver='1.5.2'
+pkgver='1.5.3'
 pkgrel='1'
 pkgdesc='Accounting and aggregation toolsuite for IPv4 and IPv6 able to collect data through libpcap, Netlink/ULOG, Netflow and sFlow'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=("http://www.pmacct.net/${pkgname}-${pkgver}.tar.gz"
         'nfacctd.rc.d' \
         'sfacctd.rc.d' \
         'uacctd.rc.d')
-sha256sums=('c12e3897e2f9aa89333968da46eb46855f357750ac1e06e36e72f374e2b54df9'
+sha256sums=('2ef7646828168eb5e5cc1c5cb76d20b9a8ca05eae0bf34fc26bebefbf92c33a4'
             '504b31e1a3ccc6ab9fd56960800e6146cae69c479d1a87a5f491042c382e4384'
             '143e7b83d15df723e2668383efb108e458818b47fdd62a6201b159a5430379e7'
             '990915185774ccb6f167433f1f4a4c415dc60fcaaee2af9d9239dfafefcb8166'
@@ -65,7 +65,8 @@ package() {
   # documentation
   install -Dpm644 "${srcdir}/${pkgname}-${pkgver}/sql"/README.* -t "${pkgdir}/usr/share/doc/pmacct/"
   install -Dpm644 "${srcdir}/${pkgname}-${pkgver}/docs"/* -t "${pkgdir}/usr/share/doc/pmacct/"
-  cp -p 'AUTHORS' 'ChangeLog' 'CONFIG-KEYS' 'COPYING' 'QUICKSTART' 'FAQS' 'KNOWN-BUGS' 'README' 'TODO' 'TOOLS' 'UPGRADE' -t "${pkgdir}/usr/share/doc/pmacct/"
+  cp -p 'AUTHORS' 'ChangeLog' 'CONFIG-KEYS' 'COPYING' 'QUICKSTART' 'FAQS' 'TOOLS' 'UPGRADE' -t "${pkgdir}/usr/share/doc/pmacct/"
+  cp -p 'KNOWN-BUGS' 'README' 'TODO' -t "${pkgdir}/usr/share/doc/pmacct/" || :
   # EXAMPLES changed to QUICKSTART
 
   # Ensure there are no forbidden paths. Place at the end of package() and comment out as you find or need exceptions. (git-aurcheck)
