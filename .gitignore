@@ -1,3 +1,6 @@
+!.gitignore
+
 pkg
 src
 *.pkg*
+*.orig

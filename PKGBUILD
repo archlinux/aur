@@ -10,8 +10,8 @@
 # needs too.
 
 pkgname=ffmpeg-full
-pkgver=2.8.4
-pkgrel=2
+pkgver=2.8.5
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (with all options)'
 arch=('i686' 'x86_64')
@@ -127,8 +127,7 @@ build() {
     --enable-runtime-cpudetect \
     --enable-swresample \
     --enable-vdpau \
-    --enable-version3 \
-    --disable-demuxer='hls' --disable-protocol='concat,hls' # FS#47738
+    --enable-version3
 
   make
   make tools/qt-faststart
