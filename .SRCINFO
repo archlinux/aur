@@ -24,8 +24,8 @@ pkgbase = opennebula
 	depends = expat
 	depends = cdrkit
 	depends = log4cpp>=1.0
-	depends = ruby-opennebula>=4.14.2,
-	depends = ruby-sinatra,
+	depends = ruby-opennebula>=4.14.2
+	depends = ruby-sinatra
 	depends = ruby-builder
 	optdepends = nfs-utils: for using the shared file system storage model
 	optdepends = mariadb>=5.1: optional replacement for SQLite as the DB back-end
