@@ -3,7 +3,7 @@
 pkgname=texlive-xkeyval
 _filename='xkeyval'
 pkgver=2.7a
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides a Key-Value store system for LaTeX documents"
 license=('LPPL')
 arch=(any)
@@ -15,6 +15,12 @@ sha256sums=('e3c8753c159cf796d9826d84df73fe2fa3ea078eae26588b907bcebe101ae90b')
 
 build() {
     cd "$srcdir/$_filename"
+    latex $_filename.dtx
+    latex $_filename.dtx
+    bibtex $_filename
+    makeindex -s gglo.ist -o $_filename.gls $_filename.glo
+    makeindex -s gind.ist -o $_filename.ind $_filename.idx
+    latex $_filename.dtx
     latex $_filename.dtx
 }
 
