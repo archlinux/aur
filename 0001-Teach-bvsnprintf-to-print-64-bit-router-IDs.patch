@@ -1,0 +1,92 @@
+From 749f5fba78b6d8d62a40f3c4e493256f7c431307 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Toke=20H=C3=B8iland-J=C3=B8rgensen?= <toke@toke.dk>
+Date: Thu, 14 Jan 2016 23:24:58 +0100
+Subject: [PATCH 1/2] Teach bvsnprintf() to print 64-bit router IDs.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Using '%lR' seemed like a natural extension to the format specifier.
+Router IDs are printed as hexadecimal octets separated by : -- this
+matches the output of babeld.
+
+Signed-off-by: Toke Høiland-Jørgensen <toke@toke.dk>
+---
+ lib/ip.h     |  2 ++
+ lib/printf.c | 31 ++++++++++++++++++++++++-------
+ 2 files changed, 26 insertions(+), 7 deletions(-)
+
+diff --git a/lib/ip.h b/lib/ip.h
+index 5389c44..5bc44e0 100644
+--- a/lib/ip.h
++++ b/lib/ip.h
+@@ -39,6 +39,8 @@
+ #define IP6_HEADER_LENGTH	40
+ #define UDP_HEADER_LENGTH	8
+ 
++#define ROUTER_ID_64_LENGTH 23
++
+ 
+ #ifdef IPV6
+ #define MAX_PREFIX_LENGTH 128
+diff --git a/lib/printf.c b/lib/printf.c
+index e4cc300..a067fe9 100644
+--- a/lib/printf.c
++++ b/lib/printf.c
+@@ -124,6 +124,7 @@ static char * number(char * str, long num, int base, int size, int precision,
+  * width is automatically replaced by standard IP address width which
+  * depends on whether we use IPv4 or IPv6; |%#I| gives hexadecimal format),
+  * |%R| for Router / Network ID (u32 value printed as IPv4 address)
++ * |%lR| for 64bit Router / Network ID (u64 value printed as eight :-separated octets)
+  * and |%m| resp. |%M| for error messages (uses strerror() to translate @errno code to
+  * message text). On the other hand, it doesn't support floating
+  * point numbers.
+@@ -137,9 +138,10 @@ int bvsnprintf(char *buf, int size, const char *fmt, va_list args)
+ 	unsigned long num;
+ 	int i, base;
+ 	u32 x;
++	u64 X;
+ 	char *str, *start;
+ 	const char *s;
+-	char ipbuf[STD_ADDRESS_P_LENGTH+1];
++	char ipbuf[MAX(STD_ADDRESS_P_LENGTH,ROUTER_ID_64_LENGTH)+1];
+ 	struct iface *iface;
+ 
+ 	int flags;		/* flags to number() */
+@@ -309,12 +311,27 @@ int bvsnprintf(char *buf, int size, const char *fmt, va_list args)
+ 
+ 		/* Router/Network ID - essentially IPv4 address in u32 value */
+ 		case 'R':
+-			x = va_arg(args, u32);
+-			bsprintf(ipbuf, "%d.%d.%d.%d",
+-				 ((x >> 24) & 0xff),
+-				 ((x >> 16) & 0xff),
+-				 ((x >> 8) & 0xff),
+-				 (x & 0xff));
++			if(qualifier == 'l') {
++				X = va_arg(args, u64);
++				bsprintf(ipbuf, "%02x:%02x:%02x:%02x:%02x:%02x:%02x:%02x",
++					((X >> 56) & 0xff),
++					((X >> 48) & 0xff),
++					((X >> 40) & 0xff),
++					((X >> 32) & 0xff),
++					((X >> 24) & 0xff),
++					((X >> 16) & 0xff),
++					((X >> 8) & 0xff),
++					(X & 0xff));
++			}
++			else
++			{
++				x = va_arg(args, u32);
++				bsprintf(ipbuf, "%d.%d.%d.%d",
++					((x >> 24) & 0xff),
++					((x >> 16) & 0xff),
++					((x >> 8) & 0xff),
++					(x & 0xff));
++			}
+ 			s = ipbuf;
+ 			goto str;
+ 
+-- 
+2.7.0
+
