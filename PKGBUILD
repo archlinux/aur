@@ -2,9 +2,9 @@
 
 pkgname=packetbeat
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source network packet analyzer that ships data to Elasticsearch.'
-arch=('i686' 'x86_64' 'armv7h')
+arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="https://www.elastic.co/products/beats/$pkgname"
 license=('APACHE')
 backup=("etc/$pkgname/$pkgname.yml")
