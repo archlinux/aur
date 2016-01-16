@@ -3,7 +3,7 @@
 pkgname=storm-launcher-git
 _pkgname=stormLauncher
 pkgver=1.0.0.8f69ce4
-pkgrel=2
+pkgrel=3
 pkgdesc="Software to control Dream Cheeky O.I.C Storm & Thunder USB Missile Launchers"
 arch=('i686' 'x86_64')
 url="https://github.com/7CTech/stormLauncher"
@@ -15,7 +15,7 @@ depends=('python'
 	'python-pillow' 
 	'python-pyusb' 
 	'tk'
-	'policykit-qt5')
+	'polkit')
 makedepends=('git')
 provides=('stormLauncher')
 source=("$pkgname::git+https://github.com/7CTech/$_pkgname.git")
