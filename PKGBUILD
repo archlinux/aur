@@ -3,7 +3,7 @@
 pkgname=lttv-git
 _gitname="lttv"
 pkgver=1.5.2.gadc007f
-pkgrel=1
+pkgrel=2
 pkgdesc="LTTng 2.x viewer"
 arch=('i686' 'x86_64')
 url="http://lttng.org/"
