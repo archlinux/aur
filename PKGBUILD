@@ -3,7 +3,7 @@
 
 _pkgname=papirus-pack-kde
 pkgbase=papirus-git
-pkgname=('papirus-git' 'papirus-plasma-theme-git' 'papirus-icon-theme-git' 'papirus-color-scheme-git' 'papirus-gtk-theme-git' 'papirus-aurorae-theme-git' 
+pkgname=('papirus-git' 'papirus-plasma-theme-git' 'papirus-icon-theme-git' 'papirus-color-scheme-git' 'papirus-gtk-theme-git' 'papirus-aurorae-theme-git' 'papirus-qtcurve-theme-git'
          'papirus-konsole-colorscheme-git' 'papirus-yakuake-theme-git' 'bomi-skin-papirus-git' 'libreoffice-papirus-theme-git' 'papirus-kmail-theme-git' 'papirus-vlc-theme-git')
 pkgver=r411.da7fafe
 pkgrel=1
@@ -16,7 +16,7 @@ makedepends=('git')
 depends=('plasma-desktop')
 conflicts=('papirus')
 install=()
-source=("git+${url}.git")
+source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver(){
@@ -26,7 +26,7 @@ pkgver(){
 
 package_papirus-git() {
     depends=('papirus-plasma-theme-git' 'papirus-icon-theme-git' 'papirus-color-scheme-git' 'papirus-gtk-theme-git' 'papirus-aurorae-theme-git'
-             'papirus-konsole-colorscheme-git' 'papirus-yakuake-theme-git' 'libreoffice-papirus-theme-git' 'papirus-vlc-theme-git')
+             'papirus-qtcurve-theme-git' 'papirus-konsole-colorscheme-git' 'papirus-yakuake-theme-git' 'libreoffice-papirus-theme-git' 'papirus-vlc-theme-git')
     optdepends=('bomi-skin-papirus-git' 'papirus-kmail-theme-git')
     install=()
     install -dm755 ${pkgdir}/usr/share/plasma/look-and-feel
@@ -100,6 +100,19 @@ package_papirus-aurorae-theme-git() {
     install=()
     install -dm755 ${pkgdir}/usr/share/aurorae/themes
     cp -r ${srcdir}/${_pkgname}/aurorae-themes/Papirus* ${pkgdir}/usr/share/aurorae/themes/
+    find ${pkgdir}/usr -type f -exec chmod 644 {} \;
+    find ${pkgdir}/usr -type d -exec chmod 755 {} \;
+}
+
+package_papirus-qtcurve-theme-git() {
+    pkgdesc="Modified and adaptive Paper decorations for QtCurve"
+    options=('!strip')
+    depends=('qtcurve-gtk2' 'qtcurve-qt4' 'qtcurve-qt5' 'qtcurve-utils' 'lib32-qtcurve-gtk2' 'lib32-qtcurve-qt4' 'lib32-qtcurve-utils')
+    optdepends=()
+    makedepends=('git')
+    conflicts=('papirus-qtcurve-theme')
+    install=()
+    install -Dm644 -t "${pkgdir}/usr/share/QtCurve/"   ${srcdir}/${_pkgname}/QtCurve/*.qtcurve
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
     find ${pkgdir}/usr -type d -exec chmod 755 {} \;
 }
