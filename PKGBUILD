@@ -39,6 +39,5 @@ package() {
   install -D -m644 "../LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
   install -D -m755 "${_pkgname}.phar" "${pkgdir}/usr/share/webapps/bin/${_pkgname}.phar"
-  install -d "${pkgdir}/usr/bin"
   ln -s "/usr/share/webapps/bin/${_pkgname}.phar" "${pkgdir}/usr/bin/${_pkgname}"
 }
