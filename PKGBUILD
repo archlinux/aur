@@ -49,7 +49,7 @@ build() {
   make
   popd
 
-  Build 32bit libraries
+  #Build 32bit libraries
   [[ -d build-i686 ]] || mkdir build-i686
   pushd build-i686
 
