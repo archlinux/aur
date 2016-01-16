@@ -1,7 +1,7 @@
 pkgname=parprouted
 pkgver=0.7
-pkgrel=2
-pkgdesc="proxy ARP IP bridging daemon"
+pkgrel=3
+pkgdesc="daemon for transparent IP (Layer 3) proxy ARP bridging"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://freecode.com/projects/parprouted"
 license=('GPL2')
@@ -26,9 +26,8 @@ build() {
 }
 
 package() {
-	cd parprouted-$pkgver
-	install -Dm0755 parprouted $pkgdir/usr/bin/parprouted
-	install -Dm0644 parprouted.8 $pkgdir/usr/share/man/man8/parprouted.8
-	install -Dm0644 "$srcdir"/../parprouted.service "$pkgdir"/usr/lib/systemd/system/parprouted.service
-	install -Dm0644 "$srcdir"/../parprouted.conf "$pkgdir"/etc/conf.d/parprouted
+	install -Dm0755 "parprouted-$pkgver"/parprouted $pkgdir/usr/bin/parprouted
+	install -Dm0644 "parprouted-$pkgver"/parprouted.8 $pkgdir/usr/share/man/man8/parprouted.8
+	install -Dm0644 "$startdir"/parprouted.service "$pkgdir"/usr/lib/systemd/system/parprouted.service
+	install -Dm0644 "$startdir"/parprouted.conf "$pkgdir"/etc/conf.d/parprouted
 }
