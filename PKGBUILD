@@ -2,18 +2,18 @@
 
 pkgbase=linux-samus4
 pkgver=4.4
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
-source=("https://github.com/raphael/linux-samus/archive/v4.4-1.tar.gz"
+source=("https://github.com/raphael/linux-samus/archive/v4.4-2.tar.gz"
         "config"
         "linux.preset"
         )
 _kernelname=${pkgbase#linux}
-_linuxsrc=linux-samus-4.4-1/build/linux/
+_linuxsrc=linux-samus-4.4-2/build/linux/
 
 # $srcdir is: /home/raphael/src/kernel-pkg/src
 prepare() {
@@ -212,6 +212,11 @@ _package-headers() {
 
   # remove unneeded architectures
   rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
+
+  # remove a files already in linux-docs package
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-01"
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-02"
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.select-break"
 }
 
 _package-docs() {
@@ -239,6 +244,6 @@ for _p in ${pkgname[@]}; do
   }"
 done
 
-md5sums=('f76ac0b7a6bb334a773e35737681f0a6'
+md5sums=('d465be8977546572f860364bc6d453fa'
          'a431b7758b5a597c0f5789b98d520e53'
          '5aae464a8085b2f3adcdcaff29853d04')
