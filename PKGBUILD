@@ -2,7 +2,7 @@
 # % Trigger: 1440186708 %
 
 pkgname=fskit-git
-pkgver=r259.2583ba1
+pkgver=r273.0b4fed9
 pkgrel=1
 pkgdesc='Filesystem utility library and SDK'
 url='https://github.com/jcnelson/fskit.git'
