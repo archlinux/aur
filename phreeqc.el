@@ -461,13 +461,19 @@ with no args, if that value is non-nil."
       (if (re-search-forward "^DATABASE \\(.*.dat\\)" nil t)
           (setq database (match-string 1))))
 
-    (with-temp-file ctrlfile
-      (insert infile "\n"
-              outfile "\n"
-              database "\n"))
+    ;; make sure that the database file is readable
+    (if (not (file-readable-p database))
+        (progn (goto-char 0)
+               (re-search-forward "^DATABASE \\(.*.dat\\)" nil t)
+               (message "Database file \"%s\" not found, please check your input file."
+                        database))
+      (with-temp-file ctrlfile
+        (insert infile "\n"
+                outfile "\n"
+                database "\n"))
 
-    (call-process phreeqc-compile-command ctrlfile "*phreeqc*" nil)
-    (delete-file ctrlfile)))
+      (call-process phreeqc-compile-command ctrlfile "*phreeqc*" nil)
+      (delete-file ctrlfile))))
 
 
 (defun phreeqc-visit-output ()

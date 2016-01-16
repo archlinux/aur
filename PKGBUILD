@@ -2,8 +2,8 @@
 pkgname=phreeqc
 pkgver=3.3.3
 _pkgsvn=10424
-pkgrel=3
-pkgdesc="PHREEQC - A Computer Program for Speciation, Batch-Reaction, One-Dimensional Transport, and Inverse Geochemical Calculations"
+pkgrel=5
+pkgdesc="A Computer Program for Speciation, Batch-Reaction, One-Dimensional Transport, and Inverse Geochemical Calculations"
 arch=('i686' 'x86_64')
 url="http://wwwbrr.cr.usgs.gov/projects/GWC_coupled/phreeqc/"
 license=('custom')
@@ -25,7 +25,7 @@ source=("ftp://brrftp.cr.usgs.gov/pub/charlton/phreeqc/phreeqc-$pkgver-$_pkgsvn.
         "https://raw.githubusercontent.com/jaalto/project-emacs--folding-mode/master/folding.el")
 md5sums=('b4b1f11e5855d3b034473ec51c76f7cc'
          '8facd6e784cd1985b2c57c092b753002'
-         '81a6827b2d0d1d2675cbf4e117095208'
+         '98b0c08bd9bc4adb2ffe6706d4411b4e'
          'd262512bd4a19a68805914d35f8f9019')
 
 build() {
@@ -38,6 +38,11 @@ package() {
   cd "$srcdir/$pkgname-$pkgver-$_pkgsvn"
 
   make DESTDIR="${pkgdir}" install
+
+  # move database and example files into previous location
+  mkdir -p ${pkgdir}/usr/share/phreeqc/
+  mv ${pkgdir}/usr/share/doc/phreeqc/database ${pkgdir}/usr/share/phreeqc/
+  mv ${pkgdir}/usr/share/doc/phreeqc/examples ${pkgdir}/usr/share/phreeqc/
 
   # install supplementary files
   mkdir -p ${pkgdir}/usr/share/emacs/site-lisp/$pkgname
