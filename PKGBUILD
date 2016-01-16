@@ -1,4 +1,4 @@
-# Maintainer: Sebastian Neef <aur AT gehaxelt DOT IN>
+# Maintainer: Christian Schwarz <me@cschwarz.com>
 pkgbase=servefile
 pkgname=servefile
 pkgver=v0.4.3
