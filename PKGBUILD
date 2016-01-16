@@ -1,4 +1,5 @@
-# Maintainer: Jason St. John <jstjohn .. purdue . edu>
+# Maintainer: Rafael Reggiani Manzo <rr.manzo#gmail.com>
+# Contributor: Jason St. John <jstjohn .. purdue . edu>
 # Contributor: Mikhail Kulemin <mihkulemin@gmail.com>
 # Contributor: Michael Pusterhofer <pusterhofer (at) student (dot) tugraz (dot) at>
 
