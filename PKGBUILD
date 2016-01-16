@@ -2,7 +2,9 @@
 # Contributor: codestation <codestation404@gmail.com>
 
 pkgbase=qcma-git
-pkgname=('qcma-git' 'qcma-kdenotifier-git')
+pkgname=('qcma-git'
+         'qcma-kdenotifier-git'
+         'qcma-appindicator-git')
 pkgver=v0.3.10.0.g7886238
 pkgrel=1
 pkgdesc="Content Manager Assistant for the PS Vita. (GIT version)"
@@ -16,6 +18,7 @@ makedepends=('git'
              'ffmpeg'
              'libnotify'
              'knotifications'
+             'libappindicator-gtk2'
              )
 source=('git+https://github.com/codestation/qcma.git')
 sha1sums=('SKIP')
@@ -32,7 +35,7 @@ prepare() {
 build() {
   cd build
   lrelease-qt5 "${srcdir}/qcma/common/resources/translations/"*.ts
-  qmake-qt5 "${srcdir}/qcma/qcma.pro" PREFIX=/usr CONFIG+="ENABLE_KDENOTIFIER ENABLE_KNOTIFICATIONS"
+  qmake-qt5 "${srcdir}/qcma/qcma.pro" PREFIX=/usr CONFIG+="ENABLE_KDENOTIFIER ENABLE_KNOTIFICATIONS ENABLE_APPINDICATOR"
   make
 }
 
@@ -62,4 +65,16 @@ package_qcma-kdenotifier-git() {
   provides=('qcma-kdenotifier')
 
   make -C build/kdenotifier INSTALL_ROOT="${pkgdir}" install
+}
+
+package_qcma-appindicator-git() {
+  pkgdesc="Content Manager Assistant for the PS Vita. (appindicator) (GIT Version)"
+  depends=('qcma-git'
+           'libappindicator-gtk2'
+           )
+  conflicts=('qcma-appindicator')
+  provides=('qcma-appindicator')
+  install=qcma-git.install
+
+  make -C build/appindicator INSTALL_ROOT="${pkgdir}" install
 }
