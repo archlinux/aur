@@ -1,8 +1,8 @@
 # Maintainer: Mark Kubiak <mkubiak.dev at gmail dot com>
 _gitname=wallpaper-reddit
-_gitbranch=dev
+_gitbranch=master
 pkgname=${_gitname}-git
-pkgver=7c1d7b9
+pkgver=5381da0
 pkgrel=1
 pkgdesc="Downloads and sets wallpapers pulled from reddit.com"
 arch=('any')
