@@ -4,7 +4,7 @@
 
 pkgbase=pypy-setuptools
 pkgname=('pypy3-setuptools' 'pypy-setuptools')
-pkgver=19.2
+pkgver=19.3
 pkgrel=1
 epoch=1
 pkgdesc="Easily download, build, install, upgrade, and uninstall Python packages"
@@ -13,7 +13,7 @@ license=('PSF')
 url="http://pypi.python.org/pypi/setuptools"
 makedepends=('pypy3' 'pypy')
 source=("https://pypi.python.org/packages/source/s/setuptools/setuptools-${pkgver}.tar.gz")
-sha512sums=('2494606930d6d422e8c105e8e5b40a07b23709f361164c5df40ff24c80328b861179652c7212fa38137534206c187bc4de42d249bc686d43fad18f23d0a26126')
+sha512sums=('dabc7e77ddbb2b99ae0d6f383c279a7005148bea1511048bdc2a34fc0bb324d858b71bcf9a4432b9221d4a29c7d686b19b0dddb5dccd71fe54b6cc7b1f4d0c35')
 
 prepare() {
   cp -a setuptools-${pkgver}{,-pypy}
@@ -33,6 +33,18 @@ build() {
   # Build pypy 2 module
   cd "${srcdir}"/setuptools-${pkgver}-pypy
   pypy setup.py build
+}
+
+check() {
+  # Workaround UTF-8 tests by setting LC_CTYPE
+
+  # Check pypy3 module
+  cd "${srcdir}"/setuptools-${pkgver}
+  LC_CTYPE=en_US.utf8 pypy3 setup.py ptr
+
+  # Check pypy2 module
+  cd "${srcdir}"/setuptools-${pkgver}-pypy
+  LC_CTYPE=en_US.utf8 pypy setup.py ptr
 }
 
 package_pypy3-setuptools() {
