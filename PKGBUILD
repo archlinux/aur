@@ -3,8 +3,8 @@
 # Contributor: jebaum <jebaum at ucla dot edu>
 
 pkgname=fzf
-pkgver=0.11.1
-pkgrel=2
+pkgver=0.11.2
+pkgrel=1
 pkgdesc="Command-line fuzzy finder"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 depends=('ncurses')
@@ -20,7 +20,7 @@ source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/junegunn/$pkgname/t
         git+https://github.com/junegunn/$pkgname.wiki
         key-bindings.bash.patch
         key-bindings.zsh.patch)
-sha256sums=('611cf1c2da6a7c0d5b582a203774c4d1145c55b601413eb1e7c03e9410bb6733'
+sha256sums=('5449c857e3c290069e748597182a6ab4536670dfceb4c70dfc8d73d395491ed5'
             'SKIP'
             'fc981d036d85d0b9a5e6ba65f84b1c0f86bcee2dabb09238e1edfa1f49a85b63'
             '0b89bf1d6d372b9a8d5927e58151157d42848086a252979006b89b72242c52e6')
@@ -36,12 +36,6 @@ prepare() {
 
   msg2 'Making fzf key-bindings.zsh source zsh completions...'
   patch -p1 < "$srcdir/key-bindings.zsh.patch"
-
-  msg2 'Removing instances of "source ~/.fzf.bash"...'
-  sed -i 's@source ~/.fzf.bash;\s@@' shell/key-bindings.bash
-
-  msg2 'Removing instances of "source ~/.fzf.zsh"...'
-  sed -i 's@source ~/.fzf.zsh;\s@@' shell/key-bindings.zsh
 }
 
 build() {
