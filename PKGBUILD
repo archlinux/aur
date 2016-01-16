@@ -3,7 +3,7 @@
 pkgname=texlive-xkeyval
 _filename='xkeyval'
 pkgver=2.7a
-pkgrel=2
+pkgrel=3
 pkgdesc="Provides a Key-Value store system for LaTeX documents"
 license=('LPPL')
 arch=(any)
