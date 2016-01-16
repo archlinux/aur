@@ -22,7 +22,9 @@ depends=('ruby>=1.8.7'
          'expat'
          'cdrkit'
          'log4cpp>=1.0'
-         'ruby-opennebula>=4.12.1')
+         'ruby-opennebula>=4.14.2',
+         'ruby-sinatra',
+         'ruby-builder')
 makedepends=('xmlrpc-c>=1.31'
              'pkgconfig'
              'scons>=0.98')
