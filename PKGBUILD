@@ -2,19 +2,23 @@
 # Contributor: Michael Spencer <sonrisesoftware@gmail.com>
 
 pkgname=papyros-shell
-pkgver=0.0.5.r163.g79669a3
+pkgver=0.1
 pkgrel=1
-pkgdesc="Wayland and QtQuick based desktop shell for Papyros, currently in-sync with papyros-shell-git"
+pkgdesc="Wayland and QtQuick based desktop shell for Papyros"
 arch=("i686" "x86_64")
 url="https://github.com/papyros/papyros-shell"
 license=("GPL")
 depends=("qt5-base-dev-git" "qt5-declarative" "qt5-quickcontrols" "qt5-wayland-dev-git"
-      "qt5-graphicaleffects" "greenisland" "qml-material" "kdeclarative"
-          "pam" "libpulse" "libqtxdg" "solid" "kconfig" "networkmanager-qt")
-optdepends=('pulseaudio: audio support' 'sddm: login screen theme')
+"qt5-graphicaleffects" "greenisland-git" "qml-material-git" "kdeclarative"
+"pam" "libpulse" "libqtxdg" "solid" "kconfig" "networkmanager-qt"
+"ttf-dejavu" "ttf-droid" "libpapyros-git")
+optdepends=('pulseaudio: audio support'
+'sddm: login screen theme'
+'paper-icon-theme: default icon theme'
+'networkmanager: networking support')
 makedepends=("git" "python" "extra-cmake-modules")
 provides=("$pkgname")
-source=("$pkgname::git+https://github.com/papyros/papyros-shell.git#branch=develop")
+source=("$pkgname::git+https://github.com/papyros/papyros-shell.git#tag=v${pkgver}")
 sha256sums=("SKIP")
 
 pkgver() {
@@ -25,6 +29,9 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+}
+
+build() {
   cd build
   cmake "$srcdir/$pkgname" \
     -DCMAKE_INSTALL_PREFIX=/usr \
