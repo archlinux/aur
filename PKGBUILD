@@ -14,10 +14,10 @@ package() {
   install -d "$certdir"
   install -t "$certdir" -m644 dn42.crt
 
-  echo "Compare fingerprint with https://dn42.net/services/Certificate-Authority or"
-  echo "  https://internal.dn42/services/Certificate-Authority"
+  echo "Compare fingerprint with https://ca.dn42.us/crt/root-ca.crt or"
+  echo "  https://ca.dn42/crt/root-ca.crt"
   openssl x509 -sha256 -fingerprint -noout -in dn42.crt
 }
-md5sums=('acf3819613105a5285288e78b00ab67b')
-sha1sums=('35fb8d352831bd591ee3175f5464efc573a017f3')
-sha256sums=('7c73f59d93ff148bffbb817ac069f161736f0c2580d69418316e83fa46602992')
+md5sums=('e06e30c342c09bef077b13ccadeac674')
+sha1sums=('db9a03902faa7fd6d3fc9759c67d069959ae05f6')
+sha256sums=('c2c31e0bdfed969a523591aba9f6452c08efdc0323d4ac080167a1d97069898b')
