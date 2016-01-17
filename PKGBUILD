@@ -1,4 +1,5 @@
 # Original contributor: Karro <karolina.lindqvist@kramnet.se>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=libcd
 pkgver=5.9
@@ -6,7 +7,7 @@ pkgrel=1
 pkgdesc="Platform-independent graphics library"
 arch=('i686' 'x86_64')
 url="http://www.tecgraf.puc-rio.br/cd/"
-depends=('ftgl' 'libim' 'pdflib-lite' 'gtk2' 'libxmu' 'pangox-compat')
+depends=('ftgl' 'libim' 'pdflib-lite' 'gtk3' 'libxmu' 'pangox-compat')
 makedepends=('lua')
 license=('custom')
 options=('staticlibs')
