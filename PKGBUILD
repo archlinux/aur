@@ -1,8 +1,8 @@
 # Maintainer: Tatsunori Aoki <ginjiro.135 at gmail dot com>
 # Contributor: eagletmt <eagletmt@gmail.com>
 pkgname=ttf-ricty
-pkgver=3.2.4
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 pkgdesc='Japanese TrueType font for developers by mixing Inconsolata and Migu 1M.'
 arch=('any')
 url='https://github.com/yascentur/Ricty'
@@ -14,7 +14,7 @@ source=(Ricty-$pkgver.tar.gz::https://github.com/yascentur/Ricty/archive/$pkgver
 
 build() {
   cd "$srcdir/Ricty-$pkgver"
-  ./ricty_generator.sh /usr/share/fonts/{OTF/Inconsolata.otf,TTF/migu-1m-regular.ttf,TTF/migu-1m-bold.ttf}
+  ./ricty_generator.sh /usr/share/fonts/TTF/{Inconsolata-Regular.ttf,Inconsolata-Bold.ttf,migu-1m-regular.ttf,migu-1m-bold.ttf}
 }
 
 package() {
@@ -25,4 +25,4 @@ package() {
   install -m644 README.md "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
-sha1sums=('7fc8adcc74656d9e2e1acd325de82f0f08a6d222')
+sha1sums=('8e821ad575cd17fc0d3104cc4941c53c5523e7ba')
