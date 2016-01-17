@@ -2,7 +2,7 @@
 # Baseado no PKGBUILD feito por Lara Maia <lara@craft.net.br>
  
 pkgname=irpf
-pkgver=2015.1.2
+pkgver=2015.1.3
 pkgrel=1
 license='custom'
  
