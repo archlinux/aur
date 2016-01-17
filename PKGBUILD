@@ -4,7 +4,7 @@
 
 pkgname=softmaker-office-2016-bin
 pkgver=2016.749
-pkgrel=2
+pkgrel=3
 pkgdesc="Softmaker Office 2016, proprietary office suite; word processing, spreadsheets, presentations"
 url="http://softmaker.com"
 arch=('x86_64' 'i686')
@@ -37,6 +37,13 @@ sha512sums=('0d97c2dabde423d533b087dc3f3cbabb62ffed9a46108218177c8a1dca11443007d
             'd347cb1bd87273b87e283a64ea7d78265dbb524f18f783840cb7d560e402acfc4cba1e6d7fb5fae83314c70fea1d47334f9615592021513fd6e3b8ce7550cdeb'
             '94224fb084136441c1855e86247f6882017eab4648928e1bbbc4691b1b50f41b29a0945ab4056c774d1fc0dfb0edcddb6fffea758023de71877f62b1c545289c')
 
+_langvar=`echo $LANG|cut -f 1 -d"_" 2>/dev/null`
+case "$LNG" in
+de) ;;
+es) ;;
+*) LNG="en" ;;
+esac
+
 package() {
   mkdir -p "${pkgdir}/opt/smoffice2016"
   tar -xzf "${srcdir}/office.tgz" -C "${pkgdir}/opt/smoffice2016"
@@ -44,6 +51,9 @@ package() {
   mv "${pkgdir}/opt/smoffice2016/usr/lib/dpf" "${pkgdir}/opt/smoffice2016"
   rm -rf "${pkgdir}/opt/smoffice2016/usr"
   ln -s "libdpf.so.2.8.0" "${pkgdir}/opt/smoffice2016/dpf/libdpf.so.2"
+
+  mv "${pkgdir}/opt/smoffice2016/spell/langenscheidt_${_langvar}.thn" "${pkgdir}/opt/smoffice2016/spell/langenscheidt.thn"
+  rm "${pkgdir}/opt/smoffice2016/spell/langenscheidt_"*".thn"
 
   install -d "${pkgdir}/usr/bin"
   install -m 755 -t "${pkgdir}/usr/bin" "${srcdir}/planmaker16"
