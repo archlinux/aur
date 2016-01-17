@@ -1,0 +1,11 @@
+post_install() {
+  cat << _EOF
+
+  ==> git-smb install/upgrade note:
+  ----------------------------------------------------------------
+    Usage: git-smb (or alias git=git-smb)
+    Config: /opt/git-smb/etc/config.json 
+    Author's README.md: /opt/git-smb/README.md 
+
+_EOF
+}
