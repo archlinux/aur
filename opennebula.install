@@ -7,9 +7,11 @@ post_install() {
 	# Append the oneadmin credentials to one_auth to avoid overwriting a file
 	# that may already exist
 	usermod -m -d /var/lib/one oneadmin
-	mkdir -p /var/lib/one/.one/
-	echo 'oneadmin:0neadm1n' >> /var/lib/one/.one/one_auth
-	echo ">> You must edit the password in /var/lib/one/.one/one_auth"
+	if [ ! -f /var/lib/one/.one/one_auth ]; then
+		mkdir -p /var/lib/one/.one/
+		echo 'oneadmin:0neadm1n' >> /var/lib/one/.one/one_auth
+		echo ">> You must edit the password in /var/lib/one/.one/one_auth"
+	fi
 	chown oneadmin:cloud -R /var/log/one /var/lib/one /run/one /run/lock/one
 }
 
