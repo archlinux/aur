@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=JStock
+Comment=A stock market software that helps you make smart investment decision
+Exec=jstock
+Icon=jstock
+Terminal=false
+Categories=Office;Finance;Java;
