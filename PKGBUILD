@@ -8,7 +8,7 @@ arch=('any')
 url='http://sixsixfive.deviantart.com/art/Aalglatt-584977881'
 license=("CCPL:cc-by-sa-4.0")
 makedepends=('subversion')
-pkgdepends=('lxqt-config')
+depends=('lxqt-config')
 _svnmod="aalglatt"
 _svntrunk=https://github.com/sixsixfive/misc/trunk/themes/lxqt/$_svnmod
 
