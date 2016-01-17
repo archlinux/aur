@@ -1,5 +1,5 @@
 pkgname=osvr-core-git
-pkgver=v0.6.r740.g0195020
+pkgver=v0.6.r746.gc928dc7
 pkgrel=1
 pkgdesc="The core libraries, applications, and plugins of the OSVR software platform."
 arch=(i686 x86_64)
@@ -41,6 +41,7 @@ prepare() {
 
 #temporary fix for boost incompatibility
 sed -i "s/105900/106000/g" src/osvr/Common/IPCRingBuffer.cpp
+sed -i "s/105900/106000/g" cmake-local/BoostTargets.cmake
 }
 
 build() {
