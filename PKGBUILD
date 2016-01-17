@@ -14,7 +14,7 @@ makedepends=('git' 'emacs' 'texlive-core' 'texlive-latexextra' 'qtchooser' 'qt5-
 provides=('gnuplot=5.1')
 conflicts=('gnuplot')
 install=gnuplot.install
-source=('git://github.com/gnuplot/gnuplot.git' lua53_compat.patch)
+source=('git://github.com/gnuplot/gnuplot.git#commit=597de0d' lua53_compat.patch)
 md5sums=('SKIP' 'c84be2980e0d90037f20a5cf18f9868a')
 options=('!makeflags')
 _gitname="gnuplot"
