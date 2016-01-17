@@ -1,0 +1,12 @@
+[Unit]
+Description=Ambient Light Sensor Daemon
+ 
+[Service]
+User=root
+Group=root
+PIDFile=/var/run/als-controller.pid
+ExecStart=/usr/bin/als-controller
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
