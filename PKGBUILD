@@ -1,0 +1,34 @@
+# Maintainer: CrocoDuck <crocoduck.oducks@gmail.com>
+# Contributor : speps <speps at aur dot archlinux dot org>
+
+pkgname=distrho-vst-git
+pkgver=r336.7bcbc9b
+pkgrel=1
+pkgdesc="DISTRHO VST audio plugins ports"
+arch=('i686' 'x86_64')
+url="http://distrho.sourceforge.net/"
+license=('GPL' 'LGPL')
+depends=('freetype2' 'alsa-lib' 'libxext')
+makedepends=('premake3' 'git' 'libxinerama' 'libxrender' 'libxcursor' 'steinberg-vst36')
+provides=("${pkgname}")
+conflicts=("${pkgname}" "distrho-vst" "distrho-plugins-vst-git")
+source=("${pkgname}::git://github.com/DISTRHO/DISTRHO-Ports")
+md5sums=('SKIP')
+
+prepare() {
+	mkdir -p "$pkgname"/sdks/vstsdk2.4/public.sdk/source
+	ln -rsf /usr/include/vst36/ "$pkgname"/sdks/vstsdk2.4/public.sdk/source/vst2.x
+	ln -rsf /usr/include/vst36/pluginterfaces/ "$pkgname"/sdks/vstsdk2.4/pluginterfaces
+}
+
+build() {
+	cd "$pkgname"
+	./scripts/premake-update.sh linux
+	make vst
+}
+
+package() {
+	cd "$pkgname"
+	install -d bin/vst/ "$pkgdir"/usr/lib/vst/
+	cp -a bin/vst/. "$pkgdir"/usr/lib/vst/
+}
