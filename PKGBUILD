@@ -1,18 +1,19 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=wingide
-_wingver=5.1.8
+_wingver=5.1.9
 _wingrel=1
 pkgver=$_wingver.$_wingrel
 pkgrel=1
+epoch=1 #bump this when adding a new patch
 pkgdesc="Wing IDE Professional is the full-featured Python IDE for professional programmers."
 url="http://www.wingware.com"
 license=('custom')
 arch=('i686' 'x86_64')
 [ "$CARCH" = 'i686' ] && _pkgarch=i386
 [ "$CARCH" = 'x86_64' ] && _pkgarch=x86_64
-_wingpatch_x86_64=("fix-run-as-pkg-module-5.1.8p1-all.tar")
-_wingpatch_i686=("fix-run-as-pkg-module-5.1.8p1-all.tar")
+_wingpatch_x86_64=("completer-fix-5.1.9p1-all.tar")
+_wingpatch_i686=("completer-fix-5.1.9p1-all.tar")
 _patch_url_prefix=http://wingware.com/pub/$pkgname/$_wingver/patches/
 if [[ ! -z "$_wingpatch_x86_64" ]]; then
     _wingpatch_x86_64=( "${_wingpatch_x86_64[@]/#/$_patch_url_prefix}" )
@@ -24,10 +25,10 @@ source_x86_64=("http://wingware.com/pub/$pkgname/$_wingver/$pkgname-$_wingver-$_
 source_i686=("http://wingware.com/pub/$pkgname/$_wingver/$pkgname-$_wingver-$_wingrel-i386-linux.tar.gz" $_wingpatch_i686)
 depends=('hicolor-icon-theme' 'libpng' 'python2' 'xdg-utils')
 options=(!strip !emptydirs)
-md5sums_i686=('a8960c2099f86e4385985e49ca05dfcf'
-              '377ca1633a9bbfaf46dda934ea52a8f5')
-md5sums_x86_64=('7038e5dc3e73fe30aa1098622a1a3616'
-                '377ca1633a9bbfaf46dda934ea52a8f5')
+md5sums_i686=('faa0e3886822334aa915fee36b8b6392'
+              '4715939cdbf494f4993b5e97ffacda55')
+md5sums_x86_64=('c02ef6cecd3394ed14947c49176b8fb1'
+                '4715939cdbf494f4993b5e97ffacda55')
 install=${pkgname}.install
 
 prepare() {
