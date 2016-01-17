@@ -4,7 +4,7 @@
 
 pkgname=softmaker-office-2016-bin
 pkgver=2016.749
-pkgrel=3
+pkgrel=4
 pkgdesc="Softmaker Office 2016, proprietary office suite; word processing, spreadsheets, presentations"
 url="http://softmaker.com"
 arch=('x86_64' 'i686')
@@ -38,10 +38,10 @@ sha512sums=('0d97c2dabde423d533b087dc3f3cbabb62ffed9a46108218177c8a1dca11443007d
             '94224fb084136441c1855e86247f6882017eab4648928e1bbbc4691b1b50f41b29a0945ab4056c774d1fc0dfb0edcddb6fffea758023de71877f62b1c545289c')
 
 _langvar=`echo $LANG|cut -f 1 -d"_" 2>/dev/null`
-case "$LNG" in
-de) ;;
-es) ;;
-*) LNG="en" ;;
+case "${_langvar}" in
+  de) ;;
+  es) ;;
+  *) _langvar="en" ;;
 esac
 
 package() {
