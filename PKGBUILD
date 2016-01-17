@@ -1,8 +1,8 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 # Contributor: Stefan J. Betz <info@stefan-betz.net>
 pkgname='pius'
-pkgver='2.2.1'
-pkgrel=2
+pkgver='2.2.2'
+pkgrel=1
 pkgdesc='PGP Individual UID Signer (PIUS)'
 arch=('any')
 url='http://www.phildev.net/pius/'
@@ -11,7 +11,7 @@ install="$pkgname.install"
 depends=('python2')
 optdepends=('python2-pexpect: interactive mode support')
 source=("https://github.com/jaymzh/pius/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('9e3cb58a6e3576602bc39943818791f1')
+md5sums=('7d1e97af77dbf688c1ae68b1c92f46d9')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
