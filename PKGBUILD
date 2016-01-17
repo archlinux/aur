@@ -4,7 +4,7 @@
 # OPTIONS+=(debug !strip)
 
 pkgname=tinc-pre-git
-pkgver=1.1pre11.188.gcda5a47
+pkgver=1.1pre11.195.g7418e90
 pkgrel=1
 pkgdesc="Virtual Private Network daemon (prerelease)"
 arch=('any')
@@ -33,9 +33,6 @@ build() {
 package() {
     cd "$_gitname"
     make DESTDIR="$pkgdir" install
-
-    # tinc-gui is a python2 application, and horribly outdated
-    sed 's,#!/usr/bin/env python,#!/usr/bin/env python2,' $pkgdir/usr/bin/tinc-gui > $pkgdir/usr/bin/tinc-gui
 
     install -D -m644 "$srcdir/tinc@.service" "$pkgdir/usr/lib/systemd/system/tinc@.service"
 }
