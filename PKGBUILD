@@ -42,6 +42,7 @@ package() {
   cd "$srcdir"/cd
   install -m755 -d "$pkgdir"/usr/lib
   install -m644 lib/L*/*.{a,so} "$pkgdir"/usr/lib
+  rm "$pkgdir"/usr/lib/lib{freetype,z,ftgl}.so "$pkgdir"/usr/lib/libz.a 
   install -m755 -d "$pkgdir"/usr/share/$pkgname
   install -m644 "$srcdir"/cd-${pkgver}_Docs.pdf "$pkgdir"/usr/share/$pkgname
   install -m755 -d "$pkgdir"/usr/include/cd
