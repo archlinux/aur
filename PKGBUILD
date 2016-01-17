@@ -26,13 +26,13 @@ pkgver(){
 }
 
 package_papirus-git() {
-    depends=("papirus-plasma-theme-git: Papirus theme for KDE Plasma 5" 
-             "papirus-icon-theme-git: Papirus icon theme for KDE Plasma 5" 
-             "papirus-color-scheme-git: Papirus color scheme for KDE Plasma 5" 
-             "papirus-gtk-theme-git: Papirus theme for GTK applications" 
-             "papirus-aurorae-theme-git: Papirus theme for Aurorae" 
-             "papirus-qtcurve-theme-git: Papirus theme for QtCurve" 
-             "papirus-konsole-colorscheme-git: Papirus color scheme for Konsole")
+    depends=('papirus-plasma-theme-git' 
+             'papirus-icon-theme-git' 
+             'papirus-color-scheme-git' 
+             'papirus-gtk-theme-git' 
+             'papirus-aurorae-theme-git' 
+             'papirus-qtcurve-theme-git' 
+             'papirus-konsole-colorscheme-git')
     optdepends=("papirus-yakuake-theme-git: Papirus theme for Yakuake" 
                 "bomi-skin-papirus-git: Papirus theme for Bomi" 
                 "libreoffice-papirus-theme-git: Papirus theme for LibreOffice" 
