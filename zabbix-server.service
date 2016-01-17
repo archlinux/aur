@@ -1,0 +1,15 @@
+[Unit]
+Description=Zabbix Server
+Documentation=man:zabbix_server
+After=network.target mysqld.service postgresql.service
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/zabbix_server
+ExecReload=/usr/sbin/zabbix_server -R config_cache_reload
+PIDFile=/run/zabbix/zabbix_server.pid
+Restart=on-abnormal
+
+[Install]
+WantedBy=multi-user.target
+

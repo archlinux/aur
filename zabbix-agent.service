@@ -1,0 +1,14 @@
+[Unit]
+Description=Zabbix Agent
+Documentation=man:zabbix_agentd
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/zabbix_agentd
+#GuessMainPID=no
+PIDFile=/run/zabbix/zabbix_agentd.pid
+Restart=on-abnormal
+
+[Install]
+WantedBy=multi-user.target

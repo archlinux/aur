@@ -1,0 +1,9 @@
+/var/log/zabbix/zabbix_proxy.log {
+    monthly
+    rotate 12
+    compress
+    missingok
+    notifempty
+    create 0640 zabbix zabbix
+    sharedscripts
+}

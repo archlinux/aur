@@ -1,0 +1,29 @@
+[Unit]
+Description=Zabbix Java Gateway
+After=network.target
+
+[Service]
+Type=simple
+Environment=PID_FILE=/run/zabbix/zabbix-java-gateway.pid
+Environment=LISTEN_IP=0.0.0.0
+Environment=LISTEN_PORT=10052
+Environment=START_POLLERS=5
+Environment=TIMEOUT=3
+EnvironmentFile=/etc/zabbix/zabbix_java_gateway.conf
+ExecStart=/usr/bin/java ${JAVA_OPTIONS} -server \
+    -Dzabbix.pidFile=${PID_FILE} \
+    -Dzabbix.listenIP=${LISTEN_IP} \
+    -Dzabbix.listenPort=${LISTEN_PORT} \
+    -Dzabbix.startPollers=${START_POLLERS} \
+    -Dzabbix.timeout=${TIMEOUT} -Dsun.rmi.transport.tcp.responseTimeout=${TIMEOUT}000 \
+    -Dlogback.configurationFile=/etc/zabbix/zabbix_java_gateway.logback.xml \
+    -Djava.library.path=/usr/lib/jni \
+    -jar /usr/bin/zabbix-java-gateway.jar
+PIDFile=/run/zabbix/zabbix_java-gateway.pid
+User=zabbix
+Group=zabbix
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,9 @@
+/var/log/zabbix/zabbix_agentd.log {
+    monthly
+    rotate 12
+    compress
+    missingok
+    notifempty
+    nocreate
+}
+
