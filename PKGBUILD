@@ -1,7 +1,7 @@
 # Maintainer: Niels Martignène <niels.martignene@gmail.com>
 
 pkgname=ty-git
-pkgver=0.6.3.r51.gc1e4e2b
+pkgver=0.6.3.r280.g394e5d5
 pkgrel=1
 pkgdesc="GUI and command-line tools to manage Teensy devices"
 arch=('x86_64' 'i686')
@@ -32,7 +32,6 @@ package() {
   cd ty
 
   make install DESTDIR="${pkgdir}"
-  rm -rf "${pkgdir}/usr/lib/udev"
 
   for size in 16 32 48 256; do
     mkdir -p "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
