@@ -1,7 +1,7 @@
-# Maintainer: Stefan Tatschner <stefan@sevenbyte.org>
+# Maintainer: Stefan Tatschner <rumpelsepp@sevenbyte.org>
 
 pkgname=git-ftp
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Git powered FTP client written as shell script'
 url='https://github.com/git-ftp/git-ftp'
@@ -9,8 +9,7 @@ arch=('any')
 license=('GPL')
 depends=('curl' 'git')
 makedepends=('ruby-ronn')
-source=(https://github.com/git-ftp/git-ftp/archive/$pkgver.tar.gz
-        git-ftp-0.9.0-Replace-pandoc-with-ronn.patch)
+source=(https://github.com/git-ftp/git-ftp/archive/$pkgver.tar.gz)
 md5sums=('bb48c82f402a643fa117d209b377db76'
          '12463b49d14f3133bed635002a33fa68')
 
