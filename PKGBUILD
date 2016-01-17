@@ -1,6 +1,6 @@
 # Maintainer: Chris Rizzitello <sithlord48@gmail.com>
 pkgname=makoureactor-git
-confilicts=blackchocobo
+conflicts=('makoureactor')
 pkgver=1.6.4
 pkgrel=1
 pkgdesc="Final Fantasy 7 Field Editor"
