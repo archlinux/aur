@@ -1,8 +1,8 @@
-# Maintainer: Stefan Tatschner <stefan@sevenbyte.org>
+# Maintainer: Stefan Tatschner <rumpelsepp@sevenbyte.org>
 # Contributor: Andre Wayand <aur-awl@awayand.sleepmail.com>
 
 pkgname=awl
-pkgver=0.55
+pkgver=0.56
 pkgrel=1
 pkgdesc="Andrew's php Web Libraries"
 arch=('any')
