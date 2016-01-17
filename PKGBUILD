@@ -8,7 +8,7 @@ url="http://git.2f30.org/sdhcp/"
 license=( 'MIT/X' )
 makedepends=( 'git' )
 options=( 'strip' )
-source=( "http://git.2f30.org/sdhcp/snapshot/sdhcp-${pkgver}.tar.gz" )
+source=( "http://dl.2f30.org/releases/sdhcp-${pkgver}.tar.gz" )
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -22,4 +22,4 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-md5sums=('373d165250030441d6225c6b9b324336')
+md5sums=('6a9f3a9ccc0df458cfd19b2025a1642c')
