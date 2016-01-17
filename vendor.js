@@ -1,7 +1,3 @@
-// You can make any change in here, it is the purpose of this file.
-
-pref("extensions.update.enabled", true);
-
 // Use LANG environment variable to choose locale
 pref("intl.locale.matchOS", true);
 

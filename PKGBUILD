@@ -29,7 +29,7 @@ _debrepo=http://ftp.debian.org/debian/pool/main/i/
 
 pkgname=iceweasel
 pkgver=$_debver.deb$_debrel
-pkgrel=1
+pkgrel=2
 pkgdesc="Debian Browser based on Mozilla Firefox"
 arch=('i686' 'x86_64')
 license=('GPL' 'MPL' 'LGPL')
@@ -57,14 +57,18 @@ source=("${_debrepo}/${_debname}/${_debname}_${_debver}.orig.tar.xz"
         'iceweasel.desktop'
         'iceweasel-install-dir.patch'
         'vendor.js'
-		'iceweasel-20.0.1-fixed-loading-icon.png')
+		'iceweasel-fixed-loading-icon.png'
+		'iceweasel-disable-GMP-PDM.patch'
+		'iceweasel-support-YUV420J-pixel-format.patch')
 md5sums=('8e39af63adc496dc3c6f1acd0f69fa0f'
          '7c098a67f9f20d763381c28afb626cea'
          '329ae0844819b6baac61d9a5749a6005'
          '7b9e5996dd9fe0b186a43a297db1c6b5'
          '1c42509891cf6843660a5f3c69896e80'
-         'ced8f3b950fb819e784415e61ec91bb1'
-         '6e335a517c68488941340ee1c23f97b0')
+         '35adf69c840aadeb138d1b0be3af63b5'
+         '6e335a517c68488941340ee1c23f97b0'
+         '211de20ce4eb4944415f7cd0ccb01abe'
+         '54e636a3a191dc652decc30ffa0c96e6')
 
 prepare() {
   export DEBIAN_BUILD="firefox-$_debver"
@@ -78,9 +82,12 @@ prepare() {
   
   # We wont save user profile in .mozilla/iceweasel
   sed -i 's/MOZ_APP_PROFILE=mozilla\/firefox/MOZ_APP_PROFILE=mozilla\/iceweasel/g' "debian/branding/configure.sh"
-  
-  # Doesn't apply and seems unimportant, but it seems it isn't included anymore
-  # rm -v debian/patches/l10n/Place-google-and-gmail-before-yandex.patch || true
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1233429
+  patch -Np1 -i "$srcdir/iceweasel-disable-GMP-PDM.patch"
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1233340
+  patch -Np1 -i "$srcdir/iceweasel-support-YUV420J-pixel-format.patch"
 
   quilt push -av
 
@@ -105,8 +112,7 @@ prepare() {
 
   # Fix tab loading icon (flickers with libpng 1.6)
   # https://bugzilla.mozilla.org/show_bug.cgi?id=841734
-  cp "$srcdir/iceweasel-20.0.1-fixed-loading-icon.png" \
-    browser/themes/linux/tabbrowser/loading.png
+  cp "$srcdir/iceweasel-fixed-loading-icon.png" browser/themes/linux/tabbrowser/loading.png
 
 }
 
@@ -137,14 +143,17 @@ package() {
   _brandingdir=debian/branding
   brandingdir=moz-objdir/$_brandingdir
   icondir="$pkgdir/usr/share/icons/hicolor"
-  for i in 16x16 32x32 48x48 64x64; do
-    install -Dm644 "$brandingdir/default${i/x*/}.png" "$icondir/$i/apps/$pkgname.png"
+  for i in 16 22 24 32 48 64 128 192 256 384; do
+    convert -background none "$_brandingdir/${pkgname}_icon.svg" \
+      -resize ${i}x${i}^ -gravity center -extent ${i}x${i} \
+      "$brandingdir/default$i.png"
+    install -Dm644 "$brandingdir/default$i.png" "$icondir/${i}x${i}/apps/$pkgname.png"
   done
-  install -Dm644 "$brandingdir/mozicon128.png"      "$icondir/128x128/apps/$pkgname.png"
-  install -Dm644 "$_brandingdir/iceweasel_icon.svg" "$icondir/scalable/apps/$pkgname.svg"
 
-  install -d                                        "$pkgdir/usr/share/applications"
-  install -m644  "$srcdir/iceweasel.desktop"        "$pkgdir/usr/share/applications"
+  install -Dm644 "$_brandingdir/${pkgname}_icon.svg" "$icondir/scalable/apps/$pkgname.svg"
+ 
+  install -d "$pkgdir/usr/share/applications"
+  install -m644  "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications"
   
   
   # Use system-provided dictionaries
@@ -159,12 +168,11 @@ package() {
   # Workaround for now: https://bugzilla.mozilla.org/show_bug.cgi?id=658850
   ln -sf $pkgname "$pkgdir/usr/lib/$pkgname/$pkgname-bin"
 
-  
+
   # Remove $srcdir refers
   sed -i '1d' "$pkgdir/usr/lib/$pkgname/defaults/pref/channel-prefs.js"
   
-  
-  
+    
   # Searchplugins section
   
   # According to debian choices, we prefer to use /etc/icewasel/searchplugins
