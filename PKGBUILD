@@ -1,4 +1,4 @@
-# Maintainer: Philippe Loctaux <loctauxphilippe@gmail.com>
+# Maintainer: Philippe Loctaux <phil@philippeloctaux.com>
 
 pkgname=materialos-icon-theme-git
 pkgver=0.r33.91eeeb4
