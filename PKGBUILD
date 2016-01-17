@@ -1,6 +1,6 @@
 # Maintainer: McLenin <mclenin at gooogles email>
 pkgname=texlive-acrotex
-pkgver=6.7p
+pkgver=7.7f
 pkgrel=1
 license=('GPL')
 depends=('texlive-core')
@@ -9,7 +9,7 @@ url="http://www.ctan.org/tex-archive/macros/latex/contrib/acrotex"
 arch=('any')
 install=texlive-acrotex.install
 source=(http://mirrors.ctan.org/macros/latex/contrib/acrotex.zip)
-md5sums=('b4973e088d36d403b14f26327680aa24')
+md5sums=('3f9b032a853b615e4a98e683e83bc881')
 
 build()
 {
