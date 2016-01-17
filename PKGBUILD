@@ -8,7 +8,7 @@ pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://gist.github.com/4re'
 license=('GPL')
-depends=('vapoursynth-plugin-fmtconv-git'
+depends=('vapoursynth-plugin-fmtconv'
          )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
