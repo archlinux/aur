@@ -2,7 +2,7 @@
 
 _plug=vstaambk
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=0.3.1.r12.adcef03
+pkgver=0.4.0.r14.c768f82
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -17,7 +17,6 @@ depends=('vapoursynth-plugin-eedi2-git'
          'vapoursynth-plugin-temporalsoften-git'
          'vapoursynth-plugin-sangnommod-git'
          'vapoursynth-plugin-havsfunc'
-         'vapoursynth-plugin-mvsfunc-git'
          )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
