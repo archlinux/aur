@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('php' 'make')
 install="$pkgname.install"
 source=("${pkgname}.tar.gz::https://gitlab.com/davical-project/awl/repository/archive.tar.gz?ref=r${pkgver}")
-sha256sums=('69d8f51e8aefdfb6b5a0fc3e5e32f8b8d650c489079c8ebac5a6b65f2ad3ec89')
+sha256sums=('634115c8e5afe46a5160e39415364fe739df16b636764c5dfae40ace9ca13395')
 
 package() {
   cd "$srcdir/$pkgname.git"
