@@ -2,7 +2,7 @@
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 
 pkgname=nodejs-git
-pkgver=3.0.0.r699.g6588422
+pkgver=5.4.1.r29.ge855b59
 pkgrel=1
 pkgdesc='Evented I/O for V8 javascript'
 arch=('i686' 'x86_64')
@@ -13,8 +13,9 @@ makedepends=('python2' 'procps-ng' 'git')
 optdepends=('npm: nodejs package manager')
 provides=('nodejs')
 conflicts=('nodejs')
-source=($pkgname::git://github.com/nodejs/node#branch=master) # alternative: v5.x
+source=($pkgname::git://github.com/nodejs/node#branch=v5.x)
 sha256sums=('SKIP')
+# alternative: v5.x
 
 pkgver() {
   cd $pkgname
