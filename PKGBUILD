@@ -1,20 +1,16 @@
 # Maintainer: Vinson Chuong <vinsonchuong@gmail.com>
 pkgname=bash-common-bundle-dependencies
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc=Locally\ install\ package\ dependencies
 arch=(any)
 url=https://github.com/vinsonchuong/bash-common-bundle-dependencies
 license=(MIT)
-depends=(
-	bash-common-environment
-	bash-common-parse-options
-	git
-)
+depends=(git)
 makedepends=(clidoc)
 checkdepends=(bats-git)
-source=(https://github.com/vinsonchuong/bash-common-bundle-dependencies/archive/v0.0.1-1.tar.gz)
-md5sums=('c093897b249b4ce2ef9d95d3319f6838')
+source=(https://github.com/vinsonchuong/bash-common-bundle-dependencies/archive/v0.0.2-1.tar.gz)
+md5sums=('314a82089e7282663317d4e54a584545')
 build () 
 { 
     cd "${srcdir}/${pkgname}-${pkgver}-${pkgrel}";
