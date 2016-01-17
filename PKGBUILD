@@ -1,7 +1,7 @@
 # Maintainer: Gerald Nunn <gerald dot b dot nunn at gmail dot com>
 
 pkgname=terminix
-pkgver=0.36.1
+pkgver=0.37.0
 pkgrel=1
 pkgdesc="A tiling terminal emulator based on GTK+ 3"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MPL')
 depends=('gtk3' 'dconf' 'gsettings-desktop-schemas' 'vte3')
 install=terminix.install
 source_x86_64=(https://github.com/gnunn1/terminix/releases/download/$pkgver/terminix.zip)
-md5sums_x86_64=('b39ceaffc0e1fbd33bc3b069b84453e8')
+md5sums_x86_64=('d70fe211fac973007fc6978bfd09c379')
 
 package() {
   mkdir -p "$pkgdir/usr/bin"
