@@ -1,0 +1,14 @@
+[Unit]
+Description=UPnP AV client as a filesystem
+Requires=network.target
+After=network.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+EnvironmentFile=/etc/conf.d/djmount
+ExecStart=/usr/bin/djmount -o ${MOUNTOPTIONS} ${MOUNTPOINT}
+ExecStop=/usr/bin/fusermount -u ${MOUNTPOINT}
+
+[Install]
+WantedBy=multi-user.target

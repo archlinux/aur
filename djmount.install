@@ -1,0 +1,12 @@
+
+post_install() {
+    echo ">>> Creating mountpoint /media/upnp if necessary."
+    echo ">>> (This mountpoint will be recreated as necessary on boot by systemd.)"
+    systemd-tmpfiles --create djmount.conf
+}
+
+post_upgrade() {
+    echo ">>> Creating mountpoint /media/upnp if necessary."
+    echo ">>> (This mountpoint will be recreated as necessary on boot by systemd.)"
+    systemd-tmpfiles --create djmount.conf
+}

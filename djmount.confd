@@ -1,2 +1,10 @@
-OPTIONS="-o ro,allow_other"
+#
+# SEE : man djmount for mount options
+#
+# NOTE: If you change MOUNTPOINT, you should also
+#       copy /usr/lib/tmpfiles.d/djmount.conf
+#       to   /etc/tmpfiles.d/djmount.conf
+#       and edit accordingly.
+#
+MOUNTOPTIONS="ro,allow_other"
 MOUNTPOINT="/media/upnp"
