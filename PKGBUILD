@@ -2,13 +2,13 @@
 
 pkgname=libpsl
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Publix Suffic List library"
 arch=('i686' 'x86_64')
 url="https://github.com/rockdaboot/libpsl"
 license=('MIT')
 depends=('icu>=55.1-1')
-makedepends=('libxslt')
+makedepends=('libxslt' 'python2')
 source=("https://github.com/rockdaboot/libpsl/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
 
 prepare() {
