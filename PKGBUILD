@@ -5,7 +5,7 @@
 
 pkgname="google-cloud-sdk"
 pkgver=92.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Contains tools and libraries that enable you to easily create and manage resources on Google Cloud Platform"
 url="https://cloud.google.com/sdk/"
 license=("Apache")
@@ -70,7 +70,7 @@ package() {
   grep -rl 'python' "$pkgdir/opt/$pkgname" | \
     xargs sed -i 's|#!.*python\b|#!/usr/bin/env python2|g'
   find "$pkgdir/opt/$pkgname/bin/" -maxdepth 1 -type f -exec \
-    sed -i 's/CLOUDSDK_PYTHON=python/CLOUDSDK_PYTHON=python2/g' {} \;
+    sed -i 's/CLOUDSDK_PYTHON=python\b/CLOUDSDK_PYTHON=python2/g' {} \;
 
   # These are only present in the direct numbered downloads we use
   msg2 "Installing man pages"
