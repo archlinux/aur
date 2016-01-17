@@ -1,15 +1,15 @@
 # Maintainer: Thomas Gläßle <t_glaessle@gmx.de>
 
 pkgname=setcapslock
-pkgver=0.0.2
-pkgrel=3
-pkgdesc="Small utility to set the caps lock state."
+pkgver=0.0.3
+pkgrel=1
+pkgdesc="Small utility to set the caps lock state in an X session."
 arch=('i686' 'x86_64')
 url="https://github.com/coldfix/setcapslock"
 license=('custom:UNLICENSE')
 depends=('libx11')
 source=("$url/archive/${pkgver}.tar.gz")
-md5sums=('f69a9771d13d27662adc4c5fcd28f2e6')
+md5sums=('1a59d1511230b9fb5be5cf7be7b81ce2')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
