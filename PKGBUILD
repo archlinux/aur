@@ -6,7 +6,7 @@
 
 pkgname=davical
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A server for calendar sharing"
 arch=('any')
 url="https://gitlab.com/davical-project/davical"
@@ -18,10 +18,10 @@ optdepends=('postgresql: run postgresql locally'
             'php-ldap: PHP module for ldap support')
 backup=("etc/webapps/davical/localhost-conf.php")
 install="$pkgname.install"
-source=("${pkgname}.tar.gz::https://gitlab.com/davical-project/davical/repository/archive.tar.gz?ref=r${pkgver}"
+source=("git+https://gitlab.com/davical-project/davical.git#tag=r${pkgver}"
         httpd-davical.conf
         README.archlinux)
-sha256sums=('4439c2df0052241b65c61eb4f0b10c406d93afd65a5cc6b523b597c0a7b05c15'
+sha256sums=('SKIP'
             'cbcfee6967549baafa313de96f94b61b44c80e0e0eaa3d7309523ff721645db8'
             '619dce9a16e5dffa650954f78d793f93cf8034f51a6d3936d513fa8d78da5778')
 
@@ -30,7 +30,7 @@ _docdir="/usr/share/doc/davical"
 _etcdir="/etc/webapps/davical"
 
 build() {
-  cd "${srcdir}/${pkgname}.git"
+  cd "${srcdir}/${pkgname}"
 
   find -type f -exec sed -i "s%/etc/davical/%/etc/webapps/davical/%g" {} \;
   cd dba
@@ -38,7 +38,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}.git"
+  cd "${srcdir}/${pkgname}"
 
   install -d \
     "${pkgdir}${_instdir}" \
