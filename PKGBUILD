@@ -5,7 +5,7 @@
 pkgname=hifi-interface-git
 pkgver=r37275.29b9592
 pkgrel=1
-pkgdesc="Open, decentralized virtual worlds using sensors to control avatars and dynamically assigned devices as servers. (git - master)"
+pkgdesc="High Fidelity is an open, decentralized virtual world using sensors to control avatars and dynamically assigned devices as servers. (git - master)"
 arch=('i686' 'x86_64')
 url="https://github.com/highfidelity/hifi"
 license=('Apache2')
@@ -49,7 +49,7 @@ pkgver() {
 }
 
 build() {
-  ## Symlink required gverb sources
+  # Symlink required gverb sources
   mkdir -p "$srcdir/$_githifi/interface/external/gverb" && mkdir -p "$srcdir/$_githifi/libraries/audio-client/external/gverb"
   ln -s -f "$srcdir/$_gitgverb/include" "$srcdir/$_githifi/interface/external/gverb/"
   ln -s -f "$srcdir/$_gitgverb/src" "$srcdir/$_githifi/interface/external/gverb/"
@@ -68,7 +68,7 @@ package() {
   mkdir -p "$pkgdir/usr/bin"
   cd "$srcdir/build"
 
-  # TODO: create patched CMAKE with make install target
+  #TODO: create patched CMAKE with make install target
 
   install -Dm755 assignment-client/assignment-client "$pkgdir/opt/hifi/assignment-client"
   ln -s "$pkgdir/opt/hifi/assignment-client" "$pkgdir/usr/bin/assignment-client"
