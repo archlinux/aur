@@ -13,7 +13,7 @@ license=('MIT')
 arch=('any')
 makedepends=('git' 'python2-setuptools' 'python-sphinx')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('0f1b8e0737f3ae91486e29e5c7c110f6ebb33ca7933e4cbaae2e28b47c3d2995')
+sha256sums=('c65762df4733afed585af722978d24bc555fbbabb8ae707e4e525dff6412de5f')
 
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}/docs"
