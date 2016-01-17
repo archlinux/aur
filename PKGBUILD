@@ -4,8 +4,8 @@
 
 pkgbase=tomorrow-theme
 pkgname=("${pkgbase}-vim-git" "${pkgbase}-qtcreator-git")
-pkgver=429.0e0d35a
-pkgrel=3
+pkgver=r429.0e0d35a
+pkgrel=2
 arch=('any')
 license=('MIT')
 url='https://github.com/chriskempson/tomorrow-theme'
@@ -19,7 +19,7 @@ pkgver() {
 	(
 		set -o pipefail
 		git describe --long --tags 2>/dev/null | sed -r 's/^v//;s/-/./g' ||
-		printf '%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+		printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 }
 
