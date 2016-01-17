@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=QuickSynergy
+GenericName=QuickSynergy
+Comment=A GUI for synergy
+Exec=quicksynergy
+Icon=quicksynergy.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Network;
