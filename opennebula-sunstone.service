@@ -1,0 +1,12 @@
+[Unit]
+Description=OpenNebula Web Interface
+
+[Service]
+User=oneadmin
+Group=cloud
+Type=forking
+ExecStart=/usr/bin/sunstone-server start
+ExecStop=/usr/bin/sunstone-server stop
+
+[Install]
+WantedBy=multi-user.target
