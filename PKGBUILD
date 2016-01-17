@@ -1,6 +1,8 @@
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+
 pkgname=elemental
 pkgver=0.85
-pkgrel=1
+pkgrel=2
 url="http://libelemental.org"
 pkgdesc="distributed-memory dense linear algebra"
 makedepends=('cmake')
@@ -21,5 +23,5 @@ build() {
 package() {
   cd "${srcdir}/Elemental-${pkgver}/build"
   make install DESTDIR="$pkgdir"
+  install -Dm644 ../LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-
