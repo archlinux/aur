@@ -4,7 +4,7 @@ pkgname=oclhashcat-git
 _VER=
 #pkgname=oclhashcat
 #_VER=-2.01
-pkgver=r261.9fb506f
+pkgver=r271.45431d9
 pkgrel=1
 pkgdesc='GPGPU-based password recovery utility'
 arch=( 'i686' 'x86_64' 'arm' )
@@ -32,8 +32,11 @@ source=(
     "oclhashcat-error-message.patch"
     "oclhashcat-session.patch"
     )
-md5sums=('SKIP' 'SKIP' 'SKIP' )
-sha1sums=('SKIP' 'SKIP' 'SKIP' )
+md5sums=(
+    'SKIP'
+    '067f04860d4523402955f86adfb2cce6' # oclhashcat-error-message.patch
+    '3756762afe8c1e2da0ee41eee47af3ff' # oclhashcat-session.patch
+    )
 
 pkgver_git() {
     cd "${srcdir}/${pkgname}${_VER}"
