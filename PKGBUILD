@@ -8,7 +8,7 @@ arch=('any')
 url='http://sixsixfive.deviantart.com/art/Simple-583588121'
 license=("CCPL:cc-by-sa-4.0")
 makedepends=('subversion')
-pkgdepends=('lxqt-config')
+depends=('lxqt-config')
 _svnmod="simple"
 _svntrunk=https://github.com/sixsixfive/misc/trunk/themes/lxqt/$_svnmod
 
