@@ -1,7 +1,7 @@
 # Maintainer: Jack L. Frost <fbt@fleshless.org>
 pkgname=sdhcp
 pkgver=0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Suckless dhcp client"
 arch=( 'i686' 'x86_64' )
 url="http://git.2f30.org/sdhcp/"
