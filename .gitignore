@@ -4,5 +4,6 @@
 *.rpm
 *.zip
 *.bz2
+*.asc
 src/
 pkg/
