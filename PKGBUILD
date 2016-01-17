@@ -1,7 +1,7 @@
 # Maintainer: Philippe Loctaux <phil@philippeloctaux.com>
 
 pkgname=materialos-icon-theme-git
-pkgver=0.r33.91eeeb4
+pkgver=0.r206.ad6d2ff
 pkgrel=1
 pkgdesc='A community driven material design icon pack'
 arch=('any')
@@ -23,5 +23,5 @@ package() {
 	cd Linux-Icon-Pack/
 
 	install -dm 755 "$pkgdir"/usr/share/icons
-	cp -dr --no-preserve='ownership' MaterialOS "$pkgdir"/usr/share/icons/
+	cp -dr --no-preserve='ownership' Icons/* "$pkgdir"/usr/share/icons/
 }
