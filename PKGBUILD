@@ -1,17 +1,17 @@
-# Maintainer: Stefan Tatschner <stefan@sevenbyte.org>
+# Maintainer: Stefan Tatschner <rumpelsepp@sevenbyte.org>
 # Contributor: Nikolay Amiantov <nikoamia@gmail.com>
 # Contributor: Andre Wayand <aur-davical@awayand.sleepmail.com>
 # Contributor: <zenlord@gmail.com>
 # Contributor: Michael Seiwald <michael@mseiwald.at>
 
 pkgname=davical
-pkgver=1.1.3.1
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="A server for calendar sharing"
 arch=('any')
 url="https://gitlab.com/davical-project/davical"
 license=('GPL' 'LGPL')
-depends=('php>=5.1' 'awl>=0.55' 'php-pgsql' 'perl-dbd-pg' 'perl-yaml' 'perl-dbi')
+depends=('php>=5.1' 'awl>=0.56' 'php-pgsql' 'perl-dbd-pg' 'perl-yaml' 'perl-dbi')
 optdepends=('postgresql: run postgresql locally'
             'apache: Web server to run davical'
             'nginx: Web server to run davical'
