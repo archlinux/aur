@@ -4,13 +4,13 @@
 
 pkgname=openl2tp
 pkgver=1.8
-pkgrel=5
+pkgrel=6
 pkgdesc="L2TP client / server, written by Katalix Systems specifically for Linux"
 arch=(i686 x86_64)
 url="http://opensource.katalix.com/openl2tp"
 license=("GPL")
 backup=('etc/conf.d/openl2tpd'
-	'etc/ppp/chap-secrets'
+	'etc/ppp/chap-secrets.openl2tp'
 	'etc/openl2tpd.conf')
 depends=('rpcbind'
 	'ppp')
@@ -20,7 +20,7 @@ source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz
 		openl2tp.service
 		openl2tpd-conf.d
 		openl2tpd.conf
-		chap-secrets
+		chap-secrets.openl2tp
 		example-client.openl2tpd.conf
 		example-server.openl2tpd.conf
 		example-server.options.openl2tpd
@@ -58,7 +58,7 @@ package() {
 	install -Dm644 ../openl2tpd-conf.d "$pkgdir"/etc/conf.d/openl2tpd
 	install -Dm644 ../openl2tp.service "$pkgdir"/etc/systemd/system/openl2tp.service
 	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-	install -Dm644 ../chap-secrets "$pkgdir"/etc/ppp/chap-secrets
+	install -Dm644 ../chap-secrets.openl2tp "$pkgdir"/etc/ppp/chap-secrets.openl2tp
 	install -Dm644 ../openl2tpd.conf "$pkgdir"/etc/openl2tpd.conf
 }
 
