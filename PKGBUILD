@@ -3,12 +3,12 @@
 _pkgbasename=distrho-lv2
 pkgname=${_pkgbasename}-git
 pkgver=r336.7bcbc9b
-pkgrel=1
+pkgrel=2
 pkgdesc="Distrho LV2 Audio Plugins, using the JUCE Toolkit"
 arch=('i686' 'x86_64')
 url="http://distrho.sourceforge.net/"
 license=('GPL GPL3')
-depends=('gcc-libs-multilib' 'lv2' 'libxext' 'freetype2' 'alsa-lib')
+depends=('gcc-libs' 'lv2' 'libxext' 'freetype2' 'alsa-lib')
 makedepends=('git' 'premake3' 'libxinerama' 'libxrender' 'libxcursor')
 provides=('distrho-lv2')
 conflicts=('distrho-lv2')
