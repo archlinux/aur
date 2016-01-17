@@ -4,7 +4,7 @@
 # Contributor: Wesley <rudirennsau at hotmail dot com>
 
 pkgname=openclonk
-pkgver=6.1
+pkgver=7.0
 pkgrel=1
 _orig=$pkgname-$pkgver-src
 pkgdesc='Multiplayer-action-tactic-skill game'
@@ -16,7 +16,7 @@ makedepends=('cmake' 'boost' 'imagemagick' 'mesa')
 conflicts=('clonk_rage')
 install=$pkgname.install
 source=("http://openclonk.org/builds/release/$pkgver/$pkgname-$pkgver-src.tar.bz2" 'directories.patch')
-md5sums=('4d2b93bc4e0e5e97ee35b890838316b8'
+md5sums=('96303965e696ac284f054ce58ee51fa9'
          '55e35baf307d699a704e9d939d8402fb')
 
 prepare() {
