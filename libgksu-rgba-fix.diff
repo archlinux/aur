@@ -1,0 +1,13 @@
+=== modified file 'libgksu/libgksu.c'
+--- libgksu/libgksu.c	2009-12-16 16:50:08 +0000
++++ libgksu/libgksu.c	2009-12-16 17:27:57 +0000
+@@ -478,7 +478,7 @@
+   attr.height = 4;
+   attr.wclass = GDK_INPUT_OUTPUT;
+   attr.visual = gdk_screen_get_system_visual (fadeout->screen);
+-  attr.colormap = gdk_screen_get_default_colormap (fadeout->screen);
++  attr.colormap = gdk_screen_get_system_colormap (fadeout->screen);
+   attr.override_redirect = TRUE;
+   attr_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL | GDK_WA_COLORMAP | GDK_WA_NOREDIR;
+ 
+
