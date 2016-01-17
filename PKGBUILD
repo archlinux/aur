@@ -77,7 +77,6 @@ build() {
     --enable-shared \
     --enable-version3 \
     --enable-x11grab \
-    --disable-demuxer='hls' --disable-protocol='concat,hls' `# FS#47738` \
     --enable-libfdk_aac \
     --enable-nonfree
 
