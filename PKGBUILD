@@ -1,6 +1,5 @@
 # Maintainer: ssf <punx69 at gmx dot net>
 
-pkgbase='lxqt-theme-simple-svn'
 pkgname=('lxqt-theme-simple')
 pkgver=0.10
 pkgrel=1
