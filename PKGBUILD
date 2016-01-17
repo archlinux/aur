@@ -1,8 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=perl6-inline-ruby
-pkgver=0.0.4
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="Use Ruby code and libraries in a Perl 6 program"
 arch=('i686' 'x86_64')
 depends=('perl6' 'ruby')
@@ -55,4 +55,5 @@ package() {
 
   msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type f -name "*.lock" -exec rm '{}' \;
+  find "$pkgdir" -type f -print0 | xargs -0 sed -i "s,$pkgdir,,g"
 }
