@@ -16,8 +16,6 @@ post_install() {
 pre_remove() {
 	userdel oneadmin && echo ">> User 'oneadmin' has been removed."
 	groupdel cloud && echo ">> Group 'cloud' has been removed."
-	rm -rf /var/run/one && echo ">> Removed /var/run/one"
-	rm -rf /var/lock/one && echo ">> Removed /var/lock/one"
 }
 
 post_remove() {
