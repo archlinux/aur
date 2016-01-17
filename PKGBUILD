@@ -1,8 +1,8 @@
 # Maintainer: Michael Lojkovic <mikelojkovic@gmail.com>
 
 pkgname=gtk-theme-windows10
-pkgver=0.8.4
-pkgrel=5
+pkgver=0.8.5
+pkgrel=1
 pkgdesc="GTK 3.x Theme made to emulate a Windows 10 environment on Linux machines."
 arch=('any')
 url="https://github.com/Elbullazul/Windows-10"
@@ -10,9 +10,9 @@ license=('GPL')
 depends=('gtk-engines' 'gtk-engine-murrine')
 optdepends=('gnome-themes-standard')
 changelog=(${pkgname}.changelog)
-source=("https://github.com/Elbullazul/Windows-10/releases/download/v0.8.4/Windows.10.Light.v0.8.4.zip"
+source=("https://github.com/Elbullazul/Windows-10/releases/download/v0.8.5/Windows.10.Light.v0.8.5.zip"
 		"https://github.com/Elbullazul/Windows-10/releases/download/v0.8.4/tint2rc")
-sha1sums=('bfbe1cd97f7ced62283d6e259c1f9c2892b25368'
+sha1sums=('13970271f66c737436199026e0eb3e0213965b80'
 			'039e19b79d169cee6617936879b8ee638b8bebf7')
 
 package() {
