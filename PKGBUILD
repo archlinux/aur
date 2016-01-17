@@ -31,8 +31,8 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 conflicts=("$_name")
 source=(http://ffmpeg.org/releases/$_name-$pkgver.tar.bz2{,.asc})
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # ffmpeg-devel
-
-
+sha256sums=('83cc8136a7845546062a43cda9ae3cf0a02f43ef5e434d2f997f055231a75f8e'
+            'SKIP')
 
 build() {
   cd $_name-$pkgver
@@ -89,12 +89,12 @@ build() {
 
 package() {
   cd $_name-$pkgver
-  make DESTDIR="$pkgdir" install install-man
-  install -Dm755 tools/qt-faststart "$pkgdir"/usr/bin/qt-faststart
 
+  make DESTDIR="${pkgdir}" install install-man
+  install -Dm 755 tools/qt-faststart "${pkgdir}"/usr/bin/
 
   install -d "$pkgdir/usr/share/licenses/$pkgname"
   install -m 0644 NOTICE "$pkgdir/usr/share/licenses/$pkgname/NOTICE"
 }
-sha256sums=('83cc8136a7845546062a43cda9ae3cf0a02f43ef5e434d2f997f055231a75f8e'
-            'SKIP')
+
+# vim: ts=2 sw=2 et:
