@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Albion Online
+Comment=The first true cross-platform Sandbox MMO
+Exec=/opt/albiononline/Albion-Online
+Icon=/opt/albiononline/AlbionOnline.xpm
+Terminal=false
