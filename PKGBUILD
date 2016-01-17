@@ -3,9 +3,9 @@
 pkgname=ganglia-minimal
 _pkgbase=${pkgname%%-minimal}
 pkgver=3.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A version of the ganglia package without gmetad to reduce dependencies."
-arch=('i686' 'x86_64' 'armv6h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://ganglia.sourceforge.net/"
 license=('BSD')
 depends=('apr' 'confuse' 'python2' 'pcre')
