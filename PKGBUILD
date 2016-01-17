@@ -5,7 +5,7 @@
 
 pkgname=openclonk
 pkgver=7.0
-pkgrel=1
+pkgrel=2
 _orig=$pkgname-$pkgver-src
 pkgdesc='Multiplayer-action-tactic-skill game'
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ conflicts=('clonk_rage')
 install=$pkgname.install
 source=("http://openclonk.org/builds/release/$pkgver/$pkgname-$pkgver-src.tar.bz2" 'directories.patch')
 md5sums=('96303965e696ac284f054ce58ee51fa9'
-         '55e35baf307d699a704e9d939d8402fb')
+         'ba6ceecd5b2d3983d94e7d3aa24df5fd')
 
 prepare() {
   cd "${srcdir}/${_orig}"
