@@ -8,7 +8,7 @@ pkgdesc="The terminal app for Papyros"
 arch=("i686" "x86_64")
 url="https://github.com/papyros/terminal-app"
 license=("GPL")
-depends=("qt5-base-git" "qt5-declarative" "qml-material-git" "ttf-roboto-mono-powerline-git"
+depends=("qt5-base-dev-git" "qt5-declarative" "qml-material-git" "ttf-roboto-mono-powerline-git"
          "libpapyros-git")
 makedepends=("git" "cmake" "extra-cmake-modules")
 provides=("$_pkgname")
