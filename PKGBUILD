@@ -10,7 +10,7 @@ url="http://opendesktop.org/content/show.php?content=170523"
 license=('GPL3')
 optdepends=("gtk-engine-murrine: for GTK2 themes")
 source=("${pkgname}.tar.gz::https://www.dropbox.com/s/4ik0pbbpsiqe4ci/Aurora-${pkgver%.*}.tar.gz?dl=1")
-sha256sums=('aa4c409b6929050c4733876b52f9a1b026694d9f1898d46437e5aebeb4aeb6b4')
+sha256sums=('33f7db44b0c45236beabffdd2df082403c57bbe922e04fbb2298dcdeeba2e650')
 
 pkgver() {
   dir="$(echo Aurora-*)"
