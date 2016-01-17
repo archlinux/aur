@@ -11,6 +11,7 @@ arch=('i686' 'x86_64')
 license=("BSD")
 source=("http://libelemental.org/pub/releases/Elemental-${pkgver}.tgz")
 md5sums=('b2d70758ad03e3f532010bd621bf9591')
+options=('!makeflags')
 
 build() {
   cd "${srcdir}/Elemental-${pkgver}"
@@ -24,4 +25,6 @@ package() {
   cd "${srcdir}/Elemental-${pkgver}/build"
   make install DESTDIR="$pkgdir"
   install -Dm644 ../LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  # fix conflict with metis package
+  rm "$pkgdir"/usr/include/metis.h "$pkgdir"/usr/lib/libmetis.so
 }
