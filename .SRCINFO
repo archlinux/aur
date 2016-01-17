@@ -1,0 +1,19 @@
+pkgbase = rkt-bin
+	pkgdesc = App container runtime
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = https://github.com/coreos/rkt
+	install = rkt-bin.install
+	arch = x86_64
+	license = apache
+	depends = glibc
+	provides = rkt
+	conflicts = rocket
+	replaces = rocket
+	source = https://github.com/coreos/rkt/releases/download/v0.15.0/rkt-v0.15.0.tar.gz
+	source = https://github.com/coreos/rkt/releases/download/v0.15.0/rkt-v0.15.0.tar.gz.sig
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = rkt-bin
+
