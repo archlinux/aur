@@ -6,7 +6,7 @@
 
 pkgname=xhtml-docs
 pkgver=1.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Set of HTML documentation for XHTML 1.0 & 1.1"
 arch=('any')
 url="http://www.w3.org/"
@@ -36,7 +36,7 @@ package(){
   rsync -av xhtml1-20020801/DTD/ "${pkgdir}/usr/share/doc/xhtml/DTD"
   rsync -av xhtml11-20101123/DTD/ "${pkgdir}/usr/share/doc/xhtml/DTD"
   rsync -av xhtml11-20101123/SCHEMA/ "${pkgdir}/usr/share/doc/xhtml/SCHEMA"
-  ln -s "${pkgdir}/usr/share/doc/xhtml/DTD" "${pkgdir}/usr/share/doc/xhtml/1.0/DTD"
-  ln -s "${pkgdir}/usr/share/doc/xhtml/DTD" "${pkgdir}/usr/share/doc/xhtml/1.1/DTD"
-  ln -s "${pkgdir}/usr/share/doc/xhtml/SCHEMA" "${pkgdir}/usr/share/doc/xhtml/1.1/SCHEMA"
+  ln -s "/usr/share/doc/xhtml/DTD" "${pkgdir}/usr/share/doc/xhtml/1.0/DTD"
+  ln -s "/usr/share/doc/xhtml/DTD" "${pkgdir}/usr/share/doc/xhtml/1.1/DTD"
+  ln -s "/usr/share/doc/xhtml/SCHEMA" "${pkgdir}/usr/share/doc/xhtml/1.1/SCHEMA"
 }
