@@ -10,14 +10,14 @@ arch=(any)
 pkgdesc='Programa Oficial da Receita para elaboração do IRPF'
 url='http://www.receita.fazenda.gov.br'
  
-source=(http://www28.receita.fazenda.gov.br/publico/programas/IRPF/2015/PGDIRPF2015/Java/zip/IRPF2015-1.2.zip
+source=(http://www28.receita.fazenda.gov.br/publico/programas/IRPF/2015/PGDIRPF2015/Java/zip/IRPF2015-1.3.zip
         Copyright
         $pkgname.png
         $pkgname.desktop
         $pkgname.install
 		$pkgname)
  
-md5sums=('c32293038ea598bde0c45843c739b4dc'
+md5sums=('be1ff220abb97dae6468541716dba44b'
          '8433a90404188a62cf93172ac6085813'
          '43d8c9617118578f03b2c4eeb1c72c57'
          '5c3f364ed6e30e8aac69ad4394deabba'
