@@ -1,7 +1,7 @@
 # Maintainer: fuyukaidesu <mirai@kuriyama.moe>
 pkgname=libmlx
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple X programming API in C, designed for students, suitable for beginners"
 arch=('i686' 'x86_64')
 license=('BSD')
