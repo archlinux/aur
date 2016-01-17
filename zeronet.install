@@ -1,0 +1,20 @@
+post_install() {
+    getent passwd zeronet &>/dev/null || {
+        echo -n ">>> Creating zeronet user... "
+        useradd --system --user-group --home /opt/zeronet zeronet
+        echo "done"
+    }
+    post_upgrade
+}
+
+post_upgrade() {
+    chown -R zeronet:zeronet /opt/zeronet
+}
+
+pre_remove() {
+    getent passwd zeronet &>/dev/null && {
+        echo -n ">>> Removing zeronet user... "
+        userdel zeronet
+        echo "done"
+    }
+}
