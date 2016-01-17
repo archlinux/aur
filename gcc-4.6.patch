@@ -1,0 +1,32 @@
+diff -Naur src/openl2tp-1.8/usl/usl_timer.c src/openl2tp-1.8-fixed/usl/usl_timer.c
+--- src/openl2tp-1.8/usl/usl_timer.c	2011-07-04 23:04:55.000000000 +0400
++++ src/openl2tp-1.8-fixed/usl/usl_timer.c	2011-07-04 23:08:01.000000000 +0400
+@@ -88,14 +88,13 @@
+  */
+ void usl_timer_tick(void)
+ {
+-	int result;
+ 	char msg = '\0';
+ 
+ 	usl_tick++;
+ 
+ 	if (!usl_tick_pending) {
+ 		usl_tick_pending = 1;
+-		result = write(usl_tick_pipe[1], &msg, sizeof(msg));
++		write(usl_tick_pipe[1], &msg, sizeof(msg));
+ 	}
+ }
+ 
+@@ -112,11 +111,10 @@
+ 	struct usl_ord_list_head *tmp;
+ 	struct usl_list_head *iwalk;
+ 	struct usl_list_head *itmp;
+-	int result;
+ 	char msg;
+ 	USL_LIST_HEAD(expire_list);
+ 
+-	result = usl_fd_read(usl_tick_pipe[0], &msg, sizeof(msg));
++	usl_fd_read(usl_tick_pipe[0], &msg, sizeof(msg));
+ 	usl_tick_pending = 0;
+ 
+ 	usl_list_for_each(walk, tmp, &usl_timer_list) {

@@ -1,0 +1,14 @@
+[Unit]
+Description=The open L2TP implementation
+After=network.target remote-fs.target nss-lookup.target rpcbind.target
+Requires=rpcbind.service
+
+[Service]
+Type=forking
+PIDFile=/run/openl2tpd.pid
+EnvironmentFile=/etc/conf.d/openl2tpd
+ExecStartPre=/usr/bin/modprobe -q l2tp_ppp
+ExecStart=/usr/bin/openl2tpd $OPENL2TPDARGS
+
+[Install]
+WantedBy=multi-user.target
