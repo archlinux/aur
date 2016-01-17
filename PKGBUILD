@@ -2,12 +2,12 @@
 # Maintainer: 2GMon <t_2gmon@yahoo.co.jp>
 pkgname=mikutter
 pkgver=3.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="a moest twitter client"
 arch=('i686' 'x86_64')
 url="http://mikutter.hachune.net/"
 license=('MIT')
-depends=('ruby-gtk2>=2.2.3' 'ruby-moneta' 'ruby-nokogiri' 'ruby-httpclient')
+depends=('ruby-gtk2>=2.2.3' 'ruby-moneta' 'ruby-nokogiri' 'ruby-httpclient' 'ruby-mini_portile0.6' 'ruby-totoridipjp')
 optdepends=('libnotify: notify support')
 source=(
 #http://mikutter.hachune.net/bin/$pkgname.$pkgver.tar.gz
