@@ -1,13 +1,9 @@
 # Maintainer: Nikola Milinković <nikmil@gmail.com>
 # Submitter: Stefan Husmann <stefan-husmann@t-online.de>
 
-# Set to 'y' to enable Numix-like theme for JabRef
-# DOESN'T WORK DUE TO UPSTREAM CHANGES, BUT WILL BE FIXED SOON :)
-# _numixicons=
-
 pkgname=jabref-git
-pkgver=3.1.r6004.6bc0b53
-_pkgver=3.1dev
+pkgver=3.3.r6523.cfb984c
+_pkgver=3.3dev
 _gitname="jabref"
 pkgrel=1
 pkgdesc="GUI frontend for BibTeX, written in Java -- built from git"
@@ -28,16 +24,8 @@ md5sums=('SKIP'
 
 pkgver() {
   cd $_gitname
-  printf "3.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "3.3.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-
-#prepare(){
-#  cd "$srcdir/$_gitname"
-#  if [ -n "$_numixicons" ]; then
-#      rm -fr ./src/main/resources/images/crystal_16/
-#      cp -a "$srcdir"/crystal_16/ ./src/main/resources/images/crystal_16/
-#  fi
-#}
 
 build() {
   JAVA_HOME=/usr/lib/jvm/java-8-openjdk
