@@ -9,8 +9,6 @@ arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=166769'
 license=('LGPL2.1')
 depends=('vapoursynth')
-provides=("vapoursynth-plugin-${_plug}")
-conflicts=("vapoursynth-plugin-${_plug}-git")
 makedepends=('git')
 source=("https://dl.dropbox.com/u/6596386/vapoursynth-plugins/${_plug}-${pkgver/_/-}.7z")
 sha1sums=('98ffaf3ea7ed8294a6a4b415c2ff813f5b87b8f1')
