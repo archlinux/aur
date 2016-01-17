@@ -8,7 +8,11 @@ pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
 url="https://github.com/dwbuiten/${_plug}"
 license=('LGPL2.1')
-depends=('vapoursynth')
+depends=('vapoursynth'
+         'libavutil.so'
+         'libavformat.so'
+         'libavcodec.so'
+         )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
