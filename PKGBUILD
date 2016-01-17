@@ -2,9 +2,9 @@
 
 pkgname=ganglia
 pkgver=3.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A scalable distributed monitoring system for high-performance computing systems such as clusters and Grids."
-arch=('i686' 'x86_64' 'armv6h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://${pkgname}.sourceforge.net/"
 license=('BSD')
 depends=('apr' 'confuse' 'python2' 'rrdtool')
