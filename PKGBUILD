@@ -3,7 +3,7 @@
 # Contributor: Peter Strapp <peter at strapp.co.uk>
 
 pkgname=astrometrynet
-pkgver=0.65
+pkgver=0.66
 pkgrel=1
 pkgdesc="Astrometry.net plate-solving"
 url="http://astrometry.net/"
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 depends=('gsl' 'cfitsio' 'netpbm' 'wcslib' 'cairo' 'libjpeg-turbo' 'libpng' 'zlib' 'python2-astropy')
 install=astrometrynet.install
 source=("http://astrometry.net/downloads/astrometry.net-${pkgver}.tar.gz")
-sha1sums=('f880a5c45d65028a231ecd9f11157b9dbfb29e8b')
+sha1sums=('c373002fe1a6a0d98d3c44c127714a6e71c04d08')
 
 prepare() {
   cd astrometry.net-${pkgver}
