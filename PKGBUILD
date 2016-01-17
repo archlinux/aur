@@ -20,5 +20,5 @@ pkgver () {
 package() {
   cd "$srcdir/$_gitname" # Git name and $pkgname differs
   # Do the actual installation
-  python setup.py install
+   python setup.py install --prefix=/usr --root="$_gitname" || return 1
 }
