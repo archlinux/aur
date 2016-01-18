@@ -3,7 +3,7 @@
 _pkgname=ratox
 pkgname=$_pkgname-git
 pkgver=0.2.1.r0.g1a84f07
-pkgrel=2
+pkgrel=3
 pkgdesc="FIFO based tox client"
 arch=('i686' 'x86_64')
 url="http://ratox.2f30.org"
