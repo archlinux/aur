@@ -1,0 +1,38 @@
+ 
+diff -urN MotoGT/src/Circuito.cpp MotoGT-patched/src/Circuito.cpp
+--- MotoGT/src/Circuito.cpp	2011-01-13 03:20:23.000000000 +1000
++++ MotoGT-patched/src/Circuito.cpp	2012-02-29 19:42:21.361908658 +1100
+@@ -171,7 +171,7 @@
+ 	if (!osd) {image=NULL; sprite=NULL; return; }
+ 	image = new Image*[image_c];
+ 	sprite = new Sprite*[image_c];
+-	string image_dir=data->tracks[track_index].dir+"t00.png";
++	string image_dir=home_dir + data->tracks[track_index].dir + "t00.png";
+ 	for (int i=0;i<image_c;i++) {
+ 		image[i]=new Image[image_r];
+ 		sprite[i]=new Sprite[image_r];
+diff -urN MotoGT/src/MakeData.cpp MotoGT-patched/src/MakeData.cpp
+--- MotoGT/src/MakeData.cpp	2011-01-11 03:40:30.000000000 +1000
++++ MotoGT-patched/src/MakeData.cpp	2012-02-29 19:42:24.684908507 +1100
+@@ -5,6 +5,7 @@
+ #define PNG_DEBUG 3
+ #include <png.h>
+ #include <fstream>
++#include <sys/stat.h>
+ #include "global.h"
+ #include "Config.h"
+ #include "Confirm.h"
+@@ -376,7 +377,12 @@
+ 				}
+ 				fname[2]='0'+i; 
+ 				fname[1]='0'+j;
+-				if (!f2->Save((dir+fname).c_str()))
++				size_t pos = 0;
++				do {
++					pos = dir.find('/', pos+1);
++					mkdir((home_dir+dir.substr(0, pos)).c_str(), 0755);
++				} while (pos != string::npos);
++				if (!f2->Save((home_dir+dir+fname).c_str()))
+ 					return false;
+ 				f2->width=ancho2; f2->height=ancho2;
+ 			}

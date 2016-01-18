@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=MotoGT
+GenericName=MotoGT Racing
+Exec=motogt
+Icon=/usr/share/pixmaps/MotoGT.png
+Categories=Game;ArcadeGame

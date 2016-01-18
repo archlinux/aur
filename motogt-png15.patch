@@ -1,0 +1,27 @@
+ 
+diff -urN MotoGT/src/MakeData.cpp MotoGT-patched/src/MakeData.cpp
+--- MotoGT/src/MakeData.cpp	2011-01-11 03:40:30.000000000 +1000
++++ MotoGT-patched/src/MakeData.cpp	2012-03-01 04:19:47.203309829 +1100
+@@ -109,10 +109,10 @@
+ 		
+ 		png_read_info(png_ptr, info_ptr);
+ 		
+-		width = info_ptr->width;
+-		height = info_ptr->height;
+-		color_type = info_ptr->color_type;
+-		bit_depth = info_ptr->bit_depth;
++		width = png_get_image_width(png_ptr, info_ptr);
++		height = png_get_image_height(png_ptr, info_ptr);
++		color_type = png_get_color_type(png_ptr, info_ptr);
++		bit_depth = png_get_bit_depth(png_ptr, info_ptr);
+ 		
+ 		number_of_passes = png_set_interlace_handling(png_ptr);
+ 		png_read_update_info(png_ptr, info_ptr);
+@@ -125,7 +125,7 @@
+ 		
+ 		row_pointers = (png_bytep*) malloc(sizeof(png_bytep) * height);
+ 		for (int y=0; y<height; y++)
+-			row_pointers[y] = (png_byte*) malloc(info_ptr->rowbytes);
++			row_pointers[y] = (png_byte*) malloc(png_get_rowbytes(png_ptr,info_ptr));
+ 		
+ 		png_read_image(png_ptr, row_pointers);

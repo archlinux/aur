@@ -1,0 +1,15 @@
+diff -urN MotoGT/src/main.cpp MotoGT-patched/src/main.cpp
+--- MotoGT/src/main.cpp	2011-01-18 13:50:57.000000000 +1000
++++ MotoGT-patched/src/main.cpp	2012-02-29 19:58:39.000000000 +1100
+@@ -82,7 +82,10 @@
+ 	}
+ #endif
+ 	if (home_dir.size()&&home_dir[home_dir.size()]!='/'&&home_dir[home_dir.size()]!='\\') home_dir+=SLASH;
+-	home_dir+=".motogt"; system((string("mkdir \"")+home_dir+"\"").c_str()); home_dir+=SLASH;
++	home_dir+=".motogt"; 
++	system((string("mkdir \"")+home_dir+"\"").c_str()); 
++	system((string("touch \"")+home_dir+"\""+SLASH+"settings.lst").c_str());
++	home_dir+=SLASH;
+ 	
+ 	config = new Config();
+ 	if (argc==2 && string(argv[1])=="--nosound") { 
