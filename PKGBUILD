@@ -2,12 +2,13 @@
 
 pkgname='burgaur'
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A delicious AUR helper. Made from cower.'
 arch=('any')
 url="https://github.com/m45t3r/burgaur"
 license=('MIT')
 depends=('cower' 'pacman' 'python' 'python-termcolor' 'sudo')
+makedepends=('python-setuptools')
 optdepends=('mc: review packages before installing')
 source=("${url}/archive/${pkgver}.tar.gz")
 install='burgaur.install'
