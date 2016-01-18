@@ -1,37 +1,60 @@
-#Maintainer: M0Rf30
+#Maintainer: Unknown
 
 pkgname=i2pd-git
-pkgver=2135.2cc3dfc
+_pkgname=i2pd
+pkgver=2171.870e84a
 pkgrel=1
 pkgdesc="Simplified C++ implementation of I2P client"
 arch=('i686' 'x86_64')
 url="https://github.com/PurpleI2P/i2pd"
-license=('GPL2')
+license=('BSD')
 depends=('boost-libs' 'miniupnpc' 'openssl' 'zlib')
 makedepends=('git' 'boost' 'cmake')
 source=('i2pd::git+https://github.com/PurpleI2P/i2pd.git'
 	i2pd.service
-	i2p.conf
 	i2pd.tmpfiles.conf)
 install=i2pd.install
-backup=(var/lib/i2pd/i2p.conf)
+backup=(var/lib/i2pd/i2pd.conf
+        var/lib/i2pd/tunnels.cfg)
+conflicts=('i2pd')
 
 build() {
-  cd i2pd/build
-  mkdir tmp
-  cd tmp
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DWITH_BINARY=ON -DWITH_LIBRARY=ON -DWITH_UPNP=ON ..
+  mkdir -p build.tmp
+  cd build.tmp
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DWITH_LIBRARY=OFF -DWITH_UPNP=ON ../${_pkgname}/build
   make
 }
 
 package(){
-  cd i2pd/build/tmp
-  make DESTDIR=$pkgdir install  
+  cd build.tmp
+  make DESTDIR=$pkgdir install
 
+  rm -r $pkgdir/usr/src  
+  rm $pkgdir/usr/LICENSE  
+  rm $pkgdir/usr/lib/libi2pd.a  
 
   install -Dm0644 $srcdir/i2pd.service $pkgdir/usr/lib/systemd/system/i2pd.service
-  install -Dm0644 $srcdir/i2p.conf $pkgdir/var/lib/i2pd/i2p.conf
   install -Dm0644 $srcdir/i2pd.tmpfiles.conf $pkgdir/usr/lib/tmpfiles.d/i2pd.conf
+  install -Dm0644 $srcdir/i2pd/debian/i2pd.conf $pkgdir/var/lib/i2pd/i2pd.conf
+  install -Dm0644 $srcdir/i2pd/debian/tunnels.conf $pkgdir/var/lib/i2pd/tunnels.cfg
+  install -Dm0644 $srcdir/i2pd/debian/subscriptions.txt $pkgdir/var/lib/i2pd/subscriptions.txt
+
+  cd $srcdir/i2pd/contrib
+  _dest="$pkgdir/var/lib/${_pkgname}"
+  find ./certificates -type d -exec install -d {} ${_dest}/{} \;
+  find ./certificates -type f -exec install -Dm644 {} ${_dest}/{} \;
+
+  # license
+  install -Dm644 $srcdir/i2pd/LICENSE "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
+
+  # docs
+  install -Dm644 $srcdir/i2pd/README.md "$pkgdir/usr/share/doc/${_pkgname}/README.md"
+  install -Dm644 $srcdir/i2pd/docs/configuration.md "$pkgdir/usr/share/doc/${_pkgname}/configuration.md"
+
+  #man
+  install -Dm644 $srcdir/i2pd/debian/i2pd.1 "$pkgdir/usr/share/man/man1/i2pd.1"
+
+  chmod -R o= $pkgdir/var/lib/i2pd
 }
 
 pkgver() {
@@ -40,6 +63,5 @@ pkgver() {
 }
 
 md5sums=('SKIP'
-         '7125bfdcbb5050c5fbf7531861dc82fa'
-         'b145e41e22806bd4ca4f4064ec4721a2'
-         '862be388708f2b1bd5f727715ec7508d')
+         '44a284eaa8719db82e68bd5a2df7e306'
+         'acda29e5b46a0c9fade734a6a467b381')
