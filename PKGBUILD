@@ -4,7 +4,7 @@
 # Contributor: Matthew <pyther@pyther.net>
 
 pkgname=bacula-client
-pkgver=7.2.0
+pkgver=7.4.0
 pkgrel=1
 pkgdesc='A network backup tool for Linux, Unix, Mac and Windows - client edition'
 conflicts=('bacula')
@@ -18,7 +18,7 @@ backup=('etc/bacula/bconsole.conf'
 validpgpkeys=('2CA9F510CA5CCAF61AB529F59E98BF3210A792AD')
 source=("http://downloads.sourceforge.net/project/bacula/bacula/${pkgver}/bacula-${pkgver}.tar.gz"{,.sig}
 	'bacula-fd.service')
-sha256sums=('818606fe69c50c3ca21b91e609d4ac6ca08e4189419b89d3ec2e81c8c0389e1c'
+sha256sums=('fe850b783523edb19fb4dbfa8c44752d20955121b71a52b0740a9e765bfd73cb'
             'SKIP'
             '37cdab95a99142a7e8494f0a49e54a5bfb1dca28561d0ce70ea64bf98e0c50fd')
 
@@ -35,8 +35,6 @@ build() {
 		--with-scriptdir=/etc/bacula/scripts
 
 	make
-
-
 }
 
 package() {
