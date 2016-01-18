@@ -17,7 +17,7 @@ build() {
   mkdir -p build
   cd build
   flags=""
-  flags="$flags -DOCE_INSTALL_PREFIX=/usr/local"
+  flags="$flags -DOCE_INSTALL_PREFIX=/opt/oce"
   flags="$flags -DOCE_MULTITHREAD_LIBRARY:STRING=TBB"
   flags="$flags -DOCE_WITH_GL2PS=ON"
   flags="$flags -DOCE_WITH_FREEIMAGE=ON"
