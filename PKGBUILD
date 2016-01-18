@@ -2,7 +2,7 @@
 # Maintainer: Hector Martinez-Seara Monne <hseara ##[at]## gmail?com>
 
 pkgname=(votca-tools)
-pkgver=1.2.4
+pkgver=1.3
 pkgrel=1
 pkgdesc="Versatile Object-oriented Toolkit for Coarse-graining Applications (VOTCA) is a package intended to reduce the amount of routine work when doing systematic coarse-graining of various systems. (LIBRARY)"
 url="http://www.votca.org/"
@@ -14,7 +14,7 @@ makedepends=('cmake' 'doxygen')
 source=(
 https://github.com/votca/tools/archive/v${pkgver}.tar.gz
 )
-sha1sums=('45a06b485dbafdd05a3dae30c8106e15247a8a16')
+sha1sums=('1a18ccd1e37af73af118e0abb08fdd48f1e0ebd9')
 
 build() {
   msg2 "Building votca-tools"
