@@ -3,28 +3,30 @@
 # Maintaner: Jose Riha <jose1711 gmail com>
 
 pkgname=voxatron
-pkgver=0.3.2
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Voxatron is an action/adventure game set in a world completely made of tiny cubes that can be blasted to smithereens"
 url="http://www.lexaloffle.com/voxatron.php"
 license=('custom: "commercial"')
 groups=('humblevoxatronbundle' 'games')
 arch=('i686' 'x86_64')
+depends=('libgl' 'sdl')
+optdepends=('alsa-lib: sound support' 'libpulse: sound support')
 case $CARCH in
     i686)
-        depends=('libgl' 'sdl')
-        optdepends=('alsa-lib: sound support' 'libpulse: sound support')
+	_gamepkg="${pkgname}_${pkgver}_i386.zip"
     ;;
     x86_64)
-        depends=('lib32-libgl' 'lib32-sdl')
-        optdepends=('lib32-alsa-lib: sound support' 'lib32-libpulse: sound suport')
+	_gamepkg="${pkgname}_${pkgver}_amd64.zip"
     ;;
 esac
-#makedepends=('curl')
 options=(!strip)
 
-_gamepkg="${pkgname}_${pkgver}_i386.tar.gz"
-source=("hib://${_gamepkg}"
+source_i686=("hib://${_gamepkg}"
+        "$pkgname.desktop"
+	"vox-exec")
+
+source_x86_64=("hib://${_gamepkg}"
         "$pkgname.desktop"
 	"vox-exec")
 
@@ -67,6 +69,9 @@ package(){
   # Install license
   install -Dm 644 "${pkgdir}"/opt/${pkgname}/license.txt "${pkgdir}"/usr/share/licenses/${pkgname}/license
 }
-md5sums=('58cbe8e1a6b8027cfdcfb16d5d61276f'
-         '184c021b52d3a9c8ac5f49435b4b93e0'
-         'bb84f6fcd7cdb18eb417173a6f58e00e')
+md5sums_i686=('247a511e2f1572fff538c78d5bb68d4a'
+              '184c021b52d3a9c8ac5f49435b4b93e0'
+              'bb84f6fcd7cdb18eb417173a6f58e00e')
+md5sums_x86_64=('247a511e2f1572fff538c78d5bb68d4a'
+                '184c021b52d3a9c8ac5f49435b4b93e0'
+                'f7bdba0edf8213cb5c7c9ffe638c5333')
