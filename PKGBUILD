@@ -2,7 +2,7 @@
 # Maintainer: Eric Anderson <ejona86@gmail.com>
 
 pkgname=python2-cliapp
-pkgver=1.20150701
+pkgver=1.20160109
 pkgrel=1
 pkgdesc='Python framework for Unix-like command line programs'
 arch=('any')
@@ -10,7 +10,7 @@ url="http://liw.fi/cliapp/"
 license=('GPL2')
 depends=('python2')
 source=("http://code.liw.fi/debian/pool/main/p/python-cliapp/python-cliapp_$pkgver.orig.tar.xz")
-sha256sums=('6410f7593cfd871efec4bb1a544ffca016a97554b7361fadae827d3068f5406f')
+sha256sums=('7f75501ed3a930d00fc344eaee7cda3e6ba38161a95d75fb315facf8e9a6a028')
 
 build() {
   cd "$srcdir/python-cliapp-$pkgver"
