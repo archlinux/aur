@@ -1,5 +1,5 @@
-# $Id: PKGBUILD 187862 2013-06-07 09:24:58Z tomegun $
-# Maintainer: GI_Jack <iamjacksemail@hackermail.com>
+# Maintainer: brent s. <bts[at]square-r00t[dot]net>
+# Past maintainer: GI_Jack <iamjacksemail@hackermail.com>
 # Contributor: Angel Velasquez <angvp@archlinux.org> 
 # Contributor: Jason Chu <jason@archlinux.org>
 # Contributor: Juergen Hoetzel <jason@archlinux.org>
@@ -9,7 +9,7 @@ pkgname=kismet-allplugins
 _pkgname=kismet
 pkgver=2013_03_R1b
 _realver="${pkgver//_/-}"
-pkgrel=2
+pkgrel=3
 pkgdesc="802.11 layer2 wireless network detector, sniffer, and intrusion detection system(all plugins enabled)"
 arch=('i686' 'x86_64')
 url="http://www.kismetwireless.net/"
@@ -27,9 +27,8 @@ optdepends=('gpsd: log coordinates of detected networks'
 backup=('etc/kismet.conf' 'etc/kismet_drone.conf')
 install=kismet.install
 changelog=kismet.changelog
-source=("http://www.kismetwireless.net/code/${_pkgname}-${_realver}.tar.gz"{,.asc})
-md5sums=('6cdcd78baf2e15edbe8a9de3c5493f02'
-         'SKIP')
+source=("http://www.kismetwireless.net/code/${_pkgname}-${_realver}.tar.gz")
+md5sums=('6cdcd78baf2e15edbe8a9de3c5493f02')
 
 build() {
     cd "${srcdir}/${_pkgname}-${_realver}"
@@ -54,17 +53,17 @@ package() {
     cd "${srcdir}/${_pkgname}-${_realver}"
     
     # Install kismet
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="${pkgdir}" install
 
     # Install plugins
-    make plugins-install DESTDIR="$pkgdir"
+    make plugins-install DESTDIR="${pkgdir}"
 
     #install the PTR plugin
     cd restricted-plugin-ptw/
-    KIS_SRC_DIR="${srcdir}/${_pkgname}-${_realver}" KIS_DEST_DIR="$pkgdir" DESTDIR="$KIS_DEST_DIR" make install || return 1
+    KIS_SRC_DIR="${srcdir}/${_pkgname}-${_realver}" KIS_DEST_DIR="${pkgdir}" DESTDIR="${KIS_DEST_DIR}" make install || return 1
     cd ..
     cd restricted-plugin-autowep/
-    KIS_SRC_DIR="${srcdir}/${_pkgname}-${_realver}" KIS_DEST_DIR="$pkgdir" DESTDIR="$KIS_DEST_DIR" make install || return 1
+    KIS_SRC_DIR="${srcdir}/${_pkgname}-${_realver}" KIS_DEST_DIR="${pkgdir}" DESTDIR="${KIS_DEST_DIR}" make install || return 1
     cd ..
     # the README is very comprehensive, a good idea to include it
     install -D -m 644 "${srcdir}/kismet-${_realver}/README" "${pkgdir}/usr/share/kismet/README"
