@@ -9,8 +9,10 @@ arch=('i686' 'x86_64')
 license=('GPLv2.1')
 makedepends=('cmake')
 depends=('intel-tbb' 'gl2ps' 'freeimage')
-source=(https://github.com/tpaviot/${pkgname}/archive/OCE-${pkgver}.tar.gz)
-md5sums=('4d591b240c9293e879f50d86a0cb2bb3')
+source=(https://github.com/tpaviot/${pkgname}/archive/OCE-${pkgver}.tar.gz oce.sh oce.conf)
+md5sums=('4d591b240c9293e879f50d86a0cb2bb3'
+         '606e400a97d9947459e4de2eca65f04c'
+         '167a9f5c94a16d7855c3ac99e34a4506')
 
 build() {
   cd oce-OCE-${pkgver}
