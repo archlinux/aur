@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-dosbox-git
-pkgver=170.9432d07
+pkgver=191.40ddb3b
 pkgrel=1
 pkgdesc="libretro implementation of DOSBox."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
