@@ -10,7 +10,7 @@ license=('GPLv2.1')
 makedepends=('cmake')
 depends=('intel-tbb' 'gl2ps' 'freeimage')
 source=(https://github.com/tpaviot/${pkgname}/archive/OCE-${pkgver}.tar.gz)
-md5sums=('36c67b87093c675698b483454258af91')
+md5sums=('4d591b240c9293e879f50d86a0cb2bb3')
 
 build() {
   cd oce-OCE-${pkgver}
