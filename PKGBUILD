@@ -2,13 +2,13 @@
 
 pkgname=albiononline
 pkgver=20160116232309
-pkgrel=3
+pkgrel=4
 pkgdesc="The first true cross-platform Sandbox MMO"
 url="https://albiononline.com/"
 arch=('i686' 'x86_64')
 license=('custom')
 makedepends=('unzip')
-depends=('libgl' 'gst-plugins-good')
+depends=('libgl' 'gstreamer0.10-good')
 source=("https://live.albiononline.com/clients/${pkgver}/albion-online-setup" "albiononline.desktop")
 md5sums=('462f30c938c0988a28232fda54b5d21b'
          'cec7e1ad7f4f8acfc0628d0dd8d421e6')
