@@ -4,7 +4,7 @@
 # Contributor: Arch Haskell Team <arch-haskell@haskell.org>
 _hkgname=libmpd
 pkgname=haskell-libmpd
-pkgver=0.9.0.2
+pkgver=0.9.0.4
 pkgrel=1
 pkgdesc="An MPD client library."
 url="http://hackage.haskell.org/package/${_hkgname}"
@@ -25,7 +25,7 @@ depends=('ghc'
 )
 options=('staticlibs')
 source=(http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz)
-md5sums=('f02b903117e8284b30826b07ee8e0b52')
+md5sums=('effde2a23304169bdaae50fcf9db248b')
 install=${pkgname}.install
 build() {
     cd ${srcdir}/${_hkgname}-${pkgver}
