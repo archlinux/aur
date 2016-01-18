@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/ZWS2014/python-iptceditor-gtk3"
 license=('GPL3')
 #groups=()
-depends=('exiv2' 'python>=3.0.0', 'desktop-file-utils')
+depends=('exiv2' 'python>=3.0.0' 'desktop-file-utils' 'python-setuptools')
 #makedepends=()
 #optdepends=()
 #provides=()
