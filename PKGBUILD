@@ -34,8 +34,8 @@ package() {
   install -Dm644 ${srcdir}/oce-OCE-${pkgver}/LICENSE_LGPL_21.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE_LGPL_21.txt"
   install -Dm644 ${srcdir}/oce-OCE-${pkgver}/OCCT_LGPL_EXCEPTION.txt "$pkgdir/usr/share/licenses/$pkgname/OCCT_LGPL_EXCEPTION.txt"
   
-  install -m644 "${srcdir}/99_oce.conf" -t "${pkgdir}/etc/ld.so.conf.d"
-  install -m755 "${srcdir}/99_oce.sh" -t "${pkgdir}/etc/profile.d"
+  install -m644 -D "${srcdir}/99_oce.conf" -t "${pkgdir}/etc/ld.so.conf.d"
+  install -m755 -D "${srcdir}/99_oce.sh" -t "${pkgdir}/etc/profile.d"
 }
 
 # vim:set ts=2 sw=2 et:
