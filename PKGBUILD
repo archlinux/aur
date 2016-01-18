@@ -1,19 +1,20 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=logstash
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='A tool for managing events and logs'
 arch=('any')
 url='https://www.elastic.co/products/logstash'
 license=('Apache License')
-depends=('java-runtime')
+depends=('java-runtime-headless')
 install=logstash.install
 
 source=("https://download.elasticsearch.org/$pkgname/$pkgname/$pkgname-$pkgver.tar.gz"
         "logstash.service"
         "logstash@.service"
         "logstash-web.service"
+        "user.conf"
         "bundle.config")
 
 prepare() {
@@ -37,6 +38,7 @@ package() {
   install -Dm644 logstash.service "$pkgdir"/usr/lib/systemd/system/logstash.service
   install -Dm644 logstash@.service "$pkgdir"/usr/lib/systemd/system/logstash@.service
   install -Dm644 logstash-web.service "$pkgdir"/usr/lib/systemd/system/logstash-web.service
+	install -Dm644 user.conf "$pkgdir"/usr/lib/sysusers.d/logstash.conf
 
   install -Dm644 bundle.config "$pkgdir"/opt/logstash/.bundle/config
 
@@ -44,8 +46,9 @@ package() {
   install -dm755 "$pkgdir"/etc/logstash/conf.d
 }
 
-sha256sums=('1f132e0fc9fc46ebe836951bb44c5cd1a5f8e3f653bb44bded55300cc6c892dc'
+sha256sums=('2ea975e16a02b416a5bd9eed5ab280224820f278d54f6e0ec4cccf0d8f5ca610'
             'c53800afaec5295963e4c8073e5ebda1008729830a5453d40b1aea6f58bf8a41'
             'edc0ff1b4c2ba10c7907c4ed7e93cd035cc9c352b6c00cc514dc14cd3fa686cf'
             '0fac736ad8c27dc3465074a14cfe3111dbb834edd92090598fd696c6840d78c0'
+            'f1dc558bcb50893fe744b9c3ba208829db9e242a83d30493795f837c05f5d89c'
             'd19e7bd73fb602419602296b113047df06688a9c15f5b3436602cc41afa1c486')
