@@ -3,7 +3,7 @@
 pkgname=python-occ
 _pkgname=pythonocc-core
 pkgver=0.16.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A python library whose purpose is to provide 3D modeling features"
 url="https://github.com/tpaviot/pythonocc-core"
 arch=('i686' 'x86_64')
@@ -21,17 +21,17 @@ prepare() {
   flags="$flags -DCMAKE_INSTALL_PREFIX=/usr/local"
   flags="$flags -DOCE_INCLUDE_PATH=/opt/oce/include/oce"
   flags="$flags -DOCE_LIB_PATH=/opt/oce/lib"
-  LD_LIBRARY_PATH=/opt/oce/lib:${LD_LIBRARY_PATH} cmake $flags ..
+  cmake $flags ..
 }
 
 build() {
   cd ${_pkgname}-${pkgver}/build
-  LD_LIBRARY_PATH=/opt/oce/lib:${LD_LIBRARY_PATH} make
+  make
 }
 
 package() {
   cd ${_pkgname}-${pkgver}/build
-  LD_LIBRARY_PATH=/opt/oce/lib:${LD_LIBRARY_PATH} make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" install
   install -Dm644 ${srcdir}/${_pkgname}-${pkgver}/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
