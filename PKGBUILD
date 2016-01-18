@@ -1,16 +1,16 @@
 # Maintainer: Axel Marchand <axel1.marchand@gmail.com>
 # Contributor: Axel Marchand <axel1.marchand@gmail.com>
 pkgname=feather
-pkgver=0.1
-pkgrel=1
+pkgver=0.2
+pkgrel=2
 pkgdesc="A Lightweight Window Manager"
 arch=(any)
 url="https://github.com/AxelMarchand/Feather"
 license=('MIT')
 depends=('libx11')
 makedepends=('make' 'gcc')
-source=('https://github.com/AxelMarchand/Feather/releases/download/v0.1/feather-0.1.tar.gz')
-md5sums=('790873e0eaa2154a6756821439182702')
+source=('https://github.com/AxelMarchand/Feather/releases/download/v0.2/feather-0.2.tar.gz')
+md5sums=('c9c60011755a3cffcf0645351569b338')
 
 build() {
     cd $srcdir/$pkgname-$pkgver
