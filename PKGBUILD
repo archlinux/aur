@@ -2,12 +2,12 @@
 
 pkgname='handbrake-gtk2'
 pkgver=0.9.9
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url="http://handbrake.fr/"
 license=('GPL')
 pkgdesc="Multithreaded video transcoder"
-depends=('bzip2' 'gcc-libs' 'gst-plugins-base' 'libnotify' 'dbus-glib'
+depends=('bzip2' 'gcc-libs' 'gst-plugins-base' 'libnotify' 'dbus-glib' 'libgudev'
 		 'fribidi' 'libass' 'lame' 'gtk2' 'fontconfig' 'freetype2' 'libxml2'
 		 'libogg' 'libvorbis' 'libtheora' 'libsamplerate' 'libbluray'
 		 'libx264' 'libdvdnav' 'desktop-file-utils' 'hicolor-icon-theme')
