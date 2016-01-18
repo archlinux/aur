@@ -13,6 +13,8 @@ makedepends=( 'linux-headers' )
 options=('!strip')
 optdepends=('v4l-utils: Userspace tools and conversion library for Video 4 Linux'
             'xf86-video-v4l: X.org v4l video driver' )
+provides=('droidcam')
+conflicts=('droidcam')
 install="$pkgname.install"
 
 source=("$pkgname.desktop" )
