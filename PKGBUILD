@@ -28,6 +28,12 @@ build() {
 
     msg "GIT checkout done or server timeout"
     msg "Starting build..."
+cat << EOF | patch "$srcdir/$_gitname/SConstruct"
+157c157
+<         env.AppendUnique(CXXFLAGS=["-std=c++03"])
+---
+>         env.AppendUnique(CXXFLAGS=["-std=c++11"])
+EOF
     cd "$srcdir/$_gitname"
 
     scons prefix="/usr" sysconfdir="/etc" || return 1
