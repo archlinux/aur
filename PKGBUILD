@@ -1,34 +1,35 @@
-# Maintainer: Joris Steyn <jorissteyn@gmail.com>
+# Maintainer: brent s. <bts[at]square-r00t[dot]net>
+# Past maintainer: Joris Steyn <jorissteyn@gmail.com>
 # Contributor: TDY <tdy@gmx.com>
 pkgname=iozone
-pkgver=3_420
+pkgver=3_434
 pkgrel=1
 pkgdesc="A filesystem benchmark tool"
-arch=('i686' 'x86_64' 'ppc' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64')
 url="http://www.iozone.org/"
 license=('custom')
 depends=('sh')
 optdepends=('gnuplot: for generating graph reports')
 install=$pkgname.install
-source=(http://www.$pkgname.org/src/current/$pkgname$pkgver.tar
-        $pkgname-$pkgver.diff)
-md5sums=('5205cd571c6e68440772f7e0af0712d6'
-         'a8fcaa9f51095d4c65bddcf7f4ed7cd8')
+source=(http://www.${pkgname}.org/src/current/${pkgname}${pkgver}.tar)
+md5sums=('3e8f4213581407225065b91774e970ed')
 
 build() {
-  cd "$srcdir/$pkgname$pkgver/src/current"
-  patch -Np2 -i "$srcdir/$pkgname-$pkgver.diff"
+  cd "${srcdir}/${pkgname}${pkgver}/src/current"
 
-  if test "$CARCH" == 'armv6h' || \
-     test "$CARCH" == 'armv7h' ; then
-    maketarget=linux-arm
-  else
-    maketarget=linux-$CARCH
+  if [[ "${CARCH}" == 'x86_64' ]];
+  then
+    TARGET='-AMD64'
   fi
-  make $maketarget CFLAGS="$CFLAGS"
+
+  make linux${TARGET} CFLAGS="${CFLAGS}"
 }
 
 package() {
-  cd "$srcdir/$pkgname$pkgver/src/current"
-  make DESTDIR="$pkgdir" install
+  cd "${srcdir}/${pkgname}${pkgver}/src/current"
+  make DESTDIR="${pkgdir}"
+
+  install -D -m 755 ${srcdir}/${pkgname}${pkgver}/src/current/iozone ${pkgdir}/usr/bin/iozone
+  install -D -m 755 ${srcdir}/${pkgname}${pkgver}/src/current/fileop ${pkgdir}/usr/bin/fileop
+  install -D -m 755 ${srcdir}/${pkgname}${pkgver}/src/current/pit_server ${pkgdir}/usr/bin/pit_server
 }
