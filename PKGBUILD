@@ -5,14 +5,14 @@ pkgver=0.1.6.r5.gd73dae3
 pkgrel=1
 pkgdesc="Command line tool for manage and play series and films from any compliant torrent rss feed"
 arch=('any')
-url="https://git.frangor.info/magmatv"
+url="https://gitlab.com/frangor/magmatv"
 license=('GPL3')
 depends=('peerflix-git' 'mpv' 'sqlite' 'libxml2' 'sed' 'curl')
 makedepends=('git')
-optdepends=('subliminal-git: subtitles support' 'notify-send')
+optdepends=('subliminal-git: subtitles support' 'libnotify')
 provides=('magmatv-git')
 conflicts=('magmatv')
-source=('magmatv::git+https://git.frangor.info/magmatv#branch=dev')
+source=('magmatv::git+https://gitlab.com/frangor/magmatv.git#branch=dev')
 sha256sums=('SKIP')
 
 pkgver() {
