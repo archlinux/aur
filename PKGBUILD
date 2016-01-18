@@ -1,8 +1,9 @@
+# Maintainer: brent s. <bts[at]square-r00t[dot]net>
 # Contributor: sergeantspoon <sergeantspoon@archlinux.us>
 
 pkgname=djohn
 pkgver=0.9.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Cracks passwords over multiple computers using john"
 arch=('i686' 'x86_64')
 url="http://ktulu.com.ar/blog/software/djohn/"
