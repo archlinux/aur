@@ -5,7 +5,7 @@
 
 pkgname=mpb
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A program for computing the band structures and electromagnetic modes"
 arch=('i686' 'x86_64')
 url="http://ab-initio.mit.edu/wiki/index.php/MIT_Photonic_Bands"
@@ -29,6 +29,7 @@ build() {
 		F77="gfortran" \
 		CPPFLAGS="-DH5_USE_16_API=1" \
 		--prefix=/usr \
+		--enable-shared \
 		--mandir=/usr/share/man
 	make
 
@@ -38,6 +39,7 @@ build() {
 		F77="gfortran" \
 		CPPFLAGS="-DH5_USE_16_API=1" \
 		--prefix=/usr \
+		--enable-shared \
 		--with-inv-symmetry \
 		--mandir=/usr/share/man
 	make
@@ -48,6 +50,7 @@ build() {
 		F77="gfortran" \
 		CPPFLAGS="-DH5_USE_16_API=1" \
 		--prefix=/usr \
+		--enable-shared \
 		--with-mpi \
 		--mandir=/usr/share/man
 	make
@@ -58,6 +61,7 @@ build() {
 		F77="gfortran" \
 		CPPFLAGS="-DH5_USE_16_API=1" \
 		--prefix=/usr \
+		--enable-shared \
 		--with-inv-symmetry \
 		--with-mpi \
 		--mandir=/usr/share/man
