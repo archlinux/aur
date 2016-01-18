@@ -1,7 +1,7 @@
 # Maintainer: Ian Brunelli <ian@brunelli.me>
 
 pkgname=prefixsuffix
-pkgver=0.6.6
+pkgver=0.6.9
 pkgrel=1
 pkgdesc='A GUI application that renames batches of files by changing the beginning or end of their names.'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('gnome-common' 'mm-common')
 options=('!emptydirs')
 install=prefixsuffix.install
 source=("https://github.com/murraycu/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('35dd19f9642a910f9599293a459bbed3')
+md5sums=('d5e598d8f1a49dc4678a6b40d7ae226e')
 provides=("prefixsuffix=$pkgver")
 
 build() {
