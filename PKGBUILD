@@ -1,9 +1,10 @@
-# Maintainer: Max Roder <maxroder@web.de>
+# Maintainer: brent s. <bts[at]square-r00t[dot]net>
+# Past maintainer: Max Roder <maxroder@web.de>
 # Contributor: ice-man <icemanf@gmail.com>
 
 pkgname=mdcrack
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="MD4/MD5/NTLM1 hash cracker"
 url="http://c3rb3r.openwall.net/mdcrack/"
 arch=('i686' 'x86_64')
