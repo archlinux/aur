@@ -1,6 +1,6 @@
 # Maintainer: Vinson Chuong <vinsonchuong@gmail.com>
 pkgname=gitaur
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc=A\ set\ of\ command-line\ scripts\ that\ automate\ common\ tasks\ in\ maintaining\ AUR\ packages\ on\ GitHub
 arch=(any)
@@ -16,8 +16,8 @@ depends=(
 	pkgbuild-introspection
 )
 makedepends=(clidoc)
-source=(https://github.com/vinsonchuong/gitaur/archive/v0.1.7-1.tar.gz)
-md5sums=('91ed16725717d1d9231519c85011c9b6')
+source=(https://github.com/vinsonchuong/gitaur/archive/v0.1.8-1.tar.gz)
+md5sums=('28642814d4e413fb35776ea43b6deb64')
 build () 
 { 
     cd "${srcdir}/${pkgname}-${pkgver}-${pkgrel}";
@@ -27,7 +27,12 @@ package ()
 { 
     cd "${srcdir}/${pkgname}-${pkgver}-${pkgrel}";
     [[ -d 'bin' ]] && install -Dm755 -t "${pkgdir}/usr/bin" bin/*;
-    [[ -d 'lib' ]] && install -Dm755 -t "${pkgdir}/usr/lib/${pkgname}" lib/*;
+    if [[ -d 'lib' ]]; then
+        for file in $(find 'lib' -type 'f');
+        do
+            install -D -m "$(stat -c '%a' "$file")" "$file" "${pkgdir}/usr/lib/${pkgname}/${file#'lib/'}";
+        done;
+    fi;
     [[ -d 'help' ]] && install -Dm644 -t "${pkgdir}/usr/share/${pkgname}/help" help/*;
     [[ -f 'README.md' ]] && install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" 'README.md';
     [[ -d 'doc' ]] && install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}/doc" doc/*.md;
