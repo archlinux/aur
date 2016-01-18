@@ -1,0 +1,100 @@
+diff --git a/autogen.sh b/autogen.sh
+index c11562f..d8c4966 100755
+--- a/autogen.sh
++++ b/autogen.sh
+@@ -27,8 +27,8 @@ echo "noinst_HEADERS = `find src/ -type f -name \*.h |tr \"\n\" \" \" `" >>$OUT
+ echo "${NAME}_CPPFLAGS = -I\$(srcdir)/$i/ ${COMMON_CPPFLAGS}" >>$OUT
+ echo "${NAME}_CFLAGS = ${COMMON_CFLAGS}" >>$OUT
+ echo "${NAME}_CXXFLAGS = ${COMMON_CXXFLAGS}" >>$OUT
+-echo "${NAME}_LDFLAGS = ${COMMON_LDFLAGS}" >>$OUT
+-echo "${NAME}_LDADD = -lgmp -lfftw3 -lm @CRYPTOPP_LIBS@ ${COMMON_LDADD} " >>$OUT
++echo "${NAME}_LDFLAGS = ${COMMON_LDFLAGS} \$(CRYPTOPP_CFLAGS) " >>$OUT
++echo "${NAME}_LDADD = -lgmp -lfftw3 -lm \$(CRYPTOPP_LIBS) ${COMMON_LDADD} " >>$OUT
+ 
+ libtoolize --force && aclocal && autoconf && automake --add-missing
+ 
+diff --git a/configure.ac b/configure.ac
+index c7ee564..2399b42 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -31,12 +31,20 @@ AC_ARG_WITH([cryptopp],
+ #and check crypto++
+ if test "$WITH_CRYPTOPP" = "yes"; then
+ 	
++	PKG_CHECK_MODULES([CRYPTOPP],[libcrypto++])
++
++	#crypto++ headers are either in include/crypto++ or include/cryptopp,
++	#the information is otherwise unavailable from standard configuration
++	#means. Please report/add more tests if you encounter distros that
++	#place them elsewhere.
+ 	AC_LANG_PUSH([C++])
+-	AC_CHECK_HEADERS([crypto++/sha.h crypto++/tiger.h crypto++/ripemd.h], , AC_MSG_ERROR([Codecrypt requires Crypto++]))
++	AC_CHECK_HEADER([crypto++/config.h],
++		AC_DEFINE([CRYPTOPP_DIR_PLUS], [1]),
++		AC_DEFINE([CRYPTOPP_DIR_PLUS], [0])
++	)
+ 	AC_LANG_POP([C++])
+ 
+ 	AC_DEFINE([HAVE_CRYPTOPP], [1])
+-	AC_SUBST([CRYPTOPP_LIBS], [-lcryptopp])
+ else
+ 	AC_DEFINE([HAVE_CRYPTOPP], [0])
+ fi
+diff --git a/src/rmd_hash.h b/src/rmd_hash.h
+index 2c14a96..b2b3de0 100644
+--- a/src/rmd_hash.h
++++ b/src/rmd_hash.h
+@@ -22,8 +22,13 @@
+ 
+ #if HAVE_CRYPTOPP==1
+ 
+-#include "sha_hash.h"
+-#include <crypto++/ripemd.h>
++#include "hash.h"
++#if CRYPTOPP_DIR_PLUS
++#  include <crypto++/ripemd.h>
++#else
++#  include <cryptopp/ripemd.h>
++#endif
++
+ 
+ //it's used just like SHA, so create it from SHA
+ class rmd128hash : public shahash<CryptoPP::RIPEMD128> {};
+diff --git a/src/sha_hash.h b/src/sha_hash.h
+index 93a7772..0a18dfd 100644
+--- a/src/sha_hash.h
++++ b/src/sha_hash.h
+@@ -22,8 +22,11 @@
+ #if HAVE_CRYPTOPP==1
+ 
+ #include "hash.h"
+-
+-#include <crypto++/sha.h>
++#if CRYPTOPP_DIR_PLUS
++#  include <crypto++/sha.h>
++#else
++#  include <cryptopp/sha.h>
++#endif
+ 
+ template <class shatype>
+ class shahash : public hash_func
+diff --git a/src/tiger_hash.h b/src/tiger_hash.h
+index 915b85b..f21ab12 100644
+--- a/src/tiger_hash.h
++++ b/src/tiger_hash.h
+@@ -22,8 +22,13 @@
+ 
+ #if HAVE_CRYPTOPP==1
+ 
+-#include "sha_hash.h"
+-#include <crypto++/tiger.h>
++#include "hash.h"
++
++#if CRYPTOPP_DIR_PLUS
++#  include <crypto++/tiger.h>
++#else
++#  include <cryptopp/tiger.h>
++#endif
+ 
+ //it's used just like SHA, so create it from SHA
+ class tiger192hash : public shahash<CryptoPP::Tiger> {};
