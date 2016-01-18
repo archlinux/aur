@@ -31,6 +31,9 @@ package() {
   make DESTDIR="${pkgdir}" install
   install -Dm644 ${srcdir}/oce-OCE-${pkgver}/LICENSE_LGPL_21.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE_LGPL_21.txt"
   install -Dm644 ${srcdir}/oce-OCE-${pkgver}/OCCT_LGPL_EXCEPTION.txt "$pkgdir/usr/share/licenses/$pkgname/OCCT_LGPL_EXCEPTION.txt"
+  
+  install -D -m644 "${srcdir}/oce.conf" "${pkgdir}/etc/ld.so.conf.d/oce.conf"
+  install -D -m 755 "${srcdir}/oce.sh" "${pkgdir}/etc/profile.d/oce.sh"
 }
 
 # vim:set ts=2 sw=2 et:
