@@ -43,10 +43,10 @@ EOF
 package() {
   echo "Installing package"
   cd "$srcdir/$_gitname"
-  mkdir -p ${pkgdir}{/usr/bin/,/etc/RHVoice,/usr/lib/,/usr/include,/usr/share/RHVoice}
+  mkdir -p ${pkgdir}{/usr/bin/,/etc/RHVoice,/usr/lib/,/usr/include,/usr/share/RHVoice,/usr/lib/speech-dispatcher-modules}
   install -D build/linux/service/RHVoice{-service,-client} "${pkgdir}/usr/bin/"
   install -D build/linux/test/RHVoice-test "${pkgdir}/usr/bin/"
-  install -D build/linux/sd_module/sd_rhvoice "${pkgdir}/usr/bin/"
+  install -D build/linux/sd_module/sd_rhvoice "${pkgdir}/usr/lib/speech-dispatcher-modules/"
   install -D -m 644 config/RHVoice.conf "${pkgdir}/etc/RHVoice/"
   cp -R config/dicts/ "$pkgdir/etc/RHVoice/"
   install -m 644 build/linux/lib/libRHVoice.so "${pkgdir}/usr/lib"
