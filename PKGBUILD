@@ -2,16 +2,17 @@
 
 pkgname=git-ftp
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Git powered FTP client written as shell script'
 url='https://github.com/git-ftp/git-ftp'
 arch=('any')
 license=('GPL')
 depends=('curl' 'git')
 makedepends=('ruby-ronn')
-source=(https://github.com/git-ftp/git-ftp/archive/$pkgver.tar.gz)
-md5sums=('bb48c82f402a643fa117d209b377db76'
-         '12463b49d14f3133bed635002a33fa68')
+source=("https://github.com/git-ftp/git-ftp/archive/$pkgver.tar.gz"
+        "git-ftp-0.9.0-Replace-pandoc-with-ronn.patch")
+sha256sums=('b0de6dc36db506ac25a6fda21cb33d37b6a0b205fc72b0bd96de87359defc837'
+            '8b790a88290fce3b769a69878244c01ff519b7c2abd8b3f878fe61589cf1393e')
 
 prepare() {
   cd $pkgname-$pkgver
