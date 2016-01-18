@@ -1,0 +1,16 @@
+post_install() {
+  echo -n "Adding dionaea system group... "
+  groupadd -g 69 dionaea && echo "done." || echo "fail."
+  echo -n "Adding dionaea system user... "
+  useradd -c "Dionaea daemon" -u 69 -d /var/lib/dionaea -g dionaea -s /bin/false dionaea && echo "done." || echo "fail."
+  echo -n "Giving dionaea ownership of /var/lib/dionaea ...."
+  chown -R dionaea:dionaea /var/lib/dionaea && echo "done." || echo "fail."
+  passwd -l dionaea &>/dev/null
+
+}
+
+post_remove() {
+  echo -n -e "Removing dionaea system user... "
+  userdel dionaea && echo "done." || echo "fail."
+}
+

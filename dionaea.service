@@ -1,0 +1,13 @@
+[Unit]
+Description=Dionaea
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/var/lib/dionaea/run/dionaea.pid
+ExecStart=/usr/bin/dionaea -u dionaea -g dionaea -c /etc/dionaea/dionaea.conf -w /var/lib/dionaea -p /var/lib/dionaea/run/dionaea.pid -D
+ExecStop=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
+
