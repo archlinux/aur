@@ -2,15 +2,15 @@
 
 _reponame='burgaur'
 pkgname="${_reponame}-git"
-pkgver=2.0
-pkgrel=1
+pkgver=2.2
+pkgrel=2
 pkgdesc='A delicious AUR helper. Made from cower.'
 arch=('any')
 url='https://github.com/m45t3r/burgaur'
 license=('MIT')
 depends=('cower' 'pacman' 'python' 'python-termcolor' 'sudo')
 optdepends=('mc: review packages before installing')
-makedepends=('git' 'python-docutils')
+makedepends=('git' 'python-docutils' 'python-setuptools')
 install='burgaur.install'
 source=("git+${url}")
 md5sums=('SKIP')
