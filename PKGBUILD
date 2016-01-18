@@ -18,11 +18,7 @@ pkgver () {
   echo $(git rev-list --count HEAD).$(git describe --always | sed 's/-/./g')
 }
 
-build() {
-   python setup.py build
-}
-
 package() {
    cd "$srcdir/$_gitname"
-   python setup.py install --prefix=/usr --root="${_gitname}" --optimize=1 || return 1
+   python setup.py install --prefix=/usr --root="${pwd}" --optimize=1 || return 1
 }
