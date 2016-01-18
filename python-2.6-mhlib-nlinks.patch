@@ -1,0 +1,52 @@
+diff --git a/Lib/mhlib.py b/Lib/mhlib.py
+index 856e878..b6efdf9 100644
+--- a/Lib/mhlib.py
++++ b/Lib/mhlib.py
+@@ -156,11 +156,6 @@ class MH:
+         """Return the names of the subfolders in a given folder
+         (prefixed with the given folder name)."""
+         fullname = os.path.join(self.path, name)
+-        # Get the link count so we can avoid listing folders
+-        # that have no subfolders.
+-        nlinks = os.stat(fullname).st_nlink
+-        if nlinks <= 2:
+-            return []
+         subfolders = []
+         subnames = os.listdir(fullname)
+         for subname in subnames:
+@@ -168,11 +163,6 @@ class MH:
+             if os.path.isdir(fullsubname):
+                 name_subname = os.path.join(name, subname)
+                 subfolders.append(name_subname)
+-                # Stop looking for subfolders when
+-                # we've seen them all
+-                nlinks = nlinks - 1
+-                if nlinks <= 2:
+-                    break
+         subfolders.sort()
+         return subfolders
+ 
+@@ -183,11 +173,6 @@ class MH:
+     def listallsubfolders(self, name):
+         """Return the names of subfolders in a given folder, recursively."""
+         fullname = os.path.join(self.path, name)
+-        # Get the link count so we can avoid listing folders
+-        # that have no subfolders.
+-        nlinks = os.stat(fullname).st_nlink
+-        if nlinks <= 2:
+-            return []
+         subfolders = []
+         subnames = os.listdir(fullname)
+         for subname in subnames:
+@@ -200,11 +185,6 @@ class MH:
+                     subsubfolders = self.listallsubfolders(
+                               name_subname)
+                     subfolders = subfolders + subsubfolders
+-                # Stop looking for subfolders when
+-                # we've seen them all
+-                nlinks = nlinks - 1
+-                if nlinks <= 2:
+-                    break
+         subfolders.sort()
+         return subfolders
+ 

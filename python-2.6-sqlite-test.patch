@@ -1,0 +1,12 @@
+diff -aur Python-2.6.9/Lib/sqlite3/test/hooks.py Python-2.6.9.new/Lib/sqlite3/test/hooks.py
+--- Python-2.6.9/Lib/sqlite3/test/hooks.py	2013-10-29 16:04:37.000000000 +0100
++++ Python-2.6.9.new/Lib/sqlite3/test/hooks.py	2014-04-25 22:10:14.336972438 +0200
+@@ -143,7 +143,7 @@
+             create table bar (a, b)
+             """)
+         second_count = len(progress_calls)
+-        self.failUnless(first_count > second_count)
++        self.failUnless(first_count >= second_count)
+ 
+     def CheckCancelOperation(self):
+         """
