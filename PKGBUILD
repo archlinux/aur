@@ -1,8 +1,9 @@
 # Maintainer: petRUShka <petrushkin at yandex ru>
 
 pkgname=droidcam5
+_pkgname=droidcam
 pkgver=5
-pkgrel=1
+pkgrel=2
 _kver="`uname -r | cut -d"." -f1,2`-ARCH"
 pkgdesc='A tool for using your android device as a wireless/usb webcam. Version compatible with Android 4.0.3/4.0.4 phones.'
 arch=('i686' 'x86_64')
@@ -36,8 +37,8 @@ package() {
   # Install droidcam binary file
   cd $pkgdir
   mkdir -p "$pkgdir"/usr/bin
-  install -m755 "$srcdir"/${pkgname} "$pkgdir"/usr/bin/${pkgname}
-  install -m755 "$srcdir"/${pkgname}-cli "$pkgdir"/usr/bin/${pkgname}-cli
+  install -m755 "$srcdir"/${_pkgname} "$pkgdir"/usr/bin/${_pkgname}
+  install -m755 "$srcdir"/${_pkgname}-cli "$pkgdir"/usr/bin/${_pkgname}-cli
 
   # Install the desktop icon and ".desktop" files
   install -dm0755 "${pkgdir}/usr/share/"{applications,pixmaps}
@@ -53,8 +54,8 @@ package() {
          > "$pkgdir"/etc/modprobe.d/droidcam.conf
 
   # Install doc
-  install -dm0755 "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m0644 "${srcdir}/README" "${pkgdir}/usr/share/licenses/$pkgname/README"
+  install -dm0755 "${pkgdir}/usr/share/licenses/${_pkgname}"
+  install -m0644 "${srcdir}/README" "${pkgdir}/usr/share/licenses/$_pkgname/README"
 
   # Install modules
   cd $srcdir/v4l2loopback
