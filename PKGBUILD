@@ -5,7 +5,7 @@ pkgver=4.0.0
 _universal=$pkgver-1  # Version of the universal installer: https://lastpass.com/misc_download2.php
 _chromver=4.0.3-1     # The actual extensions' versions
 _ffver=4.0.1a-1
-pkgrel=2
+pkgrel=3
 pkgdesc="The Universal LastPass installer for Firefox, Chrome, and Opera"
 arch=('i686' 'x86_64')
 url="https://lastpass.com"
@@ -70,7 +70,7 @@ _chrome_package() {
 
 _firefox_package() {
     # Extension + profiles.ini go to $HOME, so do this in .install
-    for i in lp_linux_$_ffver.xpi profiles.ini; do
+    for i in lp4_$_ffver.xpi profiles.ini; do
         install -Dm644 $i "$pkgdir"/usr/share/lastpass/$i
     done
 
