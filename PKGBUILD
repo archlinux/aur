@@ -4,13 +4,13 @@
 _pkgname=lvtk
 pkgname="${_pkgname}-git"
 pkgver=1.2.0.r21.g6bfe981
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of C++ wrappers around the LV2 C API"
 arch=('i686' 'x86_64')
 url="https://github.com/lvtk/lvtk"
 license=('GPL3')
-depends=('lv2')
-makedepends=('boost' 'git' 'gtkmm' 'python2')
+depends=('boost-libs' 'lv2')
+makedepends=('git' 'gtkmm' 'python2' 'ttl2c')
 optdepends=('gtkmm: lv2 sample plugins')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
