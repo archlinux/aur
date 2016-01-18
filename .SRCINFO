@@ -1,9 +1,9 @@
-pkgbase = droidcam
+pkgbase = droidcam5
 	pkgdesc = A tool for using your android device as a wireless/usb webcam. Version compatible with Android 4.0.3/4.0.4 phones.
 	pkgver = 5
 	pkgrel = 1
 	url = http://www.dev47apps.com/
-	install = droidcam.install
+	install = droidcam5.install
 	arch = i686
 	arch = x86_64
 	license = custom
@@ -13,9 +13,9 @@ pkgbase = droidcam
 	optdepends = v4l-utils: Userspace tools and conversion library for Video 4 Linux
 	optdepends = xf86-video-v4l: X.org v4l video driver
 	options = !strip
-	source = droidcam.desktop
+	source = droidcam5.desktop
 	source = http://files.dev47apps.net/50/droidcam-v4l2-.tar.gz
 	md5sums = 199d8f3dbc6697f06350b00de99f2274
 
-pkgname = droidcam
+pkgname = droidcam5
 

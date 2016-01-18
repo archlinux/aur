@@ -1,6 +1,6 @@
-# Maintainer: Daniel Nagy <danielnagy at gmx de>
+# Maintainer: petRUShka <petrushkin at yandex ru>
 
-pkgname=droidcam
+pkgname=droidcam5
 pkgver=5
 pkgrel=1
 _kver="`uname -r | cut -d"." -f1,2`-ARCH"
