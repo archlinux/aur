@@ -3,7 +3,7 @@
 pkgname=python-occ
 _pkgname=pythonocc-core
 pkgver=0.16.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A python library whose purpose is to provide 3D modeling features"
 url="https://github.com/tpaviot/pythonocc-core"
 arch=('i686' 'x86_64')
@@ -19,8 +19,8 @@ prepare() {
   cd build
   flags=""
   flags="$flags -DCMAKE_INSTALL_PREFIX=/usr/local"
-  flags="$flags -DOCE_INCLUDE_PATH=/usr/local/include/oce"
-  flags="$flags -DOCE_LIB_PATH=/usr/local/include/lib"
+  flags="$flags -DOCE_INCLUDE_PATH=/opt/oce/include/oce"
+  flags="$flags -DOCE_LIB_PATH=/opt/oce/include/lib"
   cmake $flags ..
 }
 
