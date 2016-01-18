@@ -1,20 +1,23 @@
-# Maintainer: bugabinga <okrylow@gmail.com>
+# Maintainer: pfrenssen <pieter@frenssen.be>
+# Based on the package "brother-mfc-j4410dw" by bugabinga <okrylow@gmail.com>.
 
-pkgname="brother-mfc-j4410dw"
+pkgname="brother-mfc-j4420dw"
 pkgver="3.0.1"
 pkgrel=1
-pkgdesc="LPR and CUPS driver for the Brother MFC-J4410DW"
+pkgdesc="LPR and CUPS driver for the Brother MFC-J4420DW"
 arch=('i686' 'x86_64')
 url="http://solutions.brother.com/linux/en_us/"
 license=('custom:brother commercial license')
-depends=('cups')
+depends=('cups'
+         'ghostscript'
+         'gsfonts')
 install="$pkgname.install"
-source=("http://www.brother.com/pub/bsc/linux/dlf/mfcj4410dwlpr-$pkgver-$pkgrel.i386.rpm"
-        "http://www.brother.com/pub/bsc/linux/dlf/mfcj4410dwcupswrapper-$pkgver-$pkgrel.i386.rpm"
+source=("http://download.brother.com/welcome/dlf101146/mfcj4420dwlpr-$pkgver-$pkgrel.i386.rpm"
+        "http://download.brother.com/welcome/dlf101147/mfcj4420dwcupswrapper-$pkgver-$pkgrel.i386.rpm"
         'cupswrapper-license.txt'
         'lpr-license.txt')
-md5sums=('ff42d0cf694f25e97dfe7a296a557d42'
-         '1cc08e8da75e08b990a4a910eb209b41'
+md5sums=('c4ceb5a690a4e15091c7fab85c4ebd3b'
+         'f3eea501baee313dbb80ee5055d974a2'
          '97ad0cffd216059e9d1d3121899d8646'
          '5e87a3dc0f3e3438c088eda0f3565f0d')
 
