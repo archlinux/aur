@@ -29,7 +29,7 @@ package() {
   ln -s /opt/albiononline/Albion-Online ${pkgdir}/usr/bin/albiononline 
 
   # install .desktop file
-  install -m755 -D -t ${pkgdir}/usr/share/applications
+  install -m755 -D ${srcdir}/albiononline.desktop -t ${pkgdir}/usr/share/applications
 }
 
 # vim:set ts=2 sw=2 et:
