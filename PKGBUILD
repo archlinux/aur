@@ -1,7 +1,7 @@
-# Maintainer: Brent Saner <brent (dot) saner (at) gmail (dot) com>
+# Maintainer: brent s. <bts[at]square-r00t[dot]net>
 pkgname=johnny-git
 _pkgname=johnny
-pkgver=r402.2a2bfc8
+pkgver=r527.c862833
 pkgrel=1
 pkgdesc="A GUI for john (the ripper, a password audit tool)"
 arch=('i686' 'x86_64')
