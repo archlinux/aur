@@ -1,7 +1,7 @@
 # Maintainer: Andrea Zagli <andrea.zagli.free@gmail.com>
 
 pkgname="gplugin"
-pkgver=0.0.20
+pkgver=0.0.21
 pkgrel=1
 arch=('i868' 'x86_64')
 pkgdesc="A GObject based library that implements a reusable plugin system"
@@ -15,7 +15,7 @@ makedepends=("cmake"
              "help2man"
              "gettext")
 options=('strip' '!debug' 'staticlibs')
-source=("$pkgname::hg+https://bitbucket.org/rw_grim/$pkgname")
+source=("$pkgname::hg+https://bitbucket.org/rw_grim/$pkgname#tag=v$pkgver")
 sha256sums=('SKIP')
 
 build() {
