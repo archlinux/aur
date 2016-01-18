@@ -1,36 +1,33 @@
 # Maintainer: Victor Häggqvist <aur@snilius.com>
-# Contributor: Stean Auditor <stefan.auditor@erdfisch.de>
+# Contributor: Stefan Auditor <stefan.auditor@erdfisch.de>
 
 _pkgname=drupalconsole
-pkgname=drupalconsole-git
-pkgver=0.9.4.r69.g671223d
+pkgname=${_pkgname}-git
+pkgver=0.10.5.r12.geaeb48a
 pkgrel=1
 pkgdesc="The Drupal Console is a suite of tools that you run on a command line interface (CLI) to generate boilerplate code and interact with a Drupal 8 installation."
-url="http://drupalconsole.com/"
-license=('MIT')
 arch=('any')
-depends=('php' 'php-composer')
-provides=('drupalconsole')
-conflicts=('drupalconsole')
-source=($pkgname::git+https://github.com/hechoendrupal/DrupalConsole.git)
+url="http://drupalconsole.com/"
+license=('GPL')
+depends=('php')
+makedepends=("php-box" "php-composer" "git")
+install=("${_pkgname}.install")
+source=("${_pkgname}-${pkgver}"::"git+https://github.com/hechoendrupal/DrupalConsole.git")
 sha512sums=('SKIP')
-install="$_pkgname.install"
 
 pkgver() {
-  cd "$pkgname"
+  cd "${_pkgname}-${pkgver}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$pkgname"
-  composer install
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  ulimit -n 3072
+  php /usr/bin/composer install --no-dev
+  php -d phar.readonly=Off /usr/bin/php-box build
 }
 
 package() {
-  install -dm755 "$pkgdir/opt/$_pkgname/"
-  cp -a "$srcdir/$pkgname/." "$pkgdir/opt/$_pkgname"
-  install -dm755 "$pkgdir/usr/bin"
-  ln -s "/opt/$_pkgname/bin/console" "$pkgdir/usr/bin/drupal"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  install -D -m755 "drupal.phar" "${pkgdir}/usr/bin/drupal"
 }
-
-# vim: ts=2 sts=2 sw=2 et ft=sh
