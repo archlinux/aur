@@ -2,7 +2,7 @@ pkgbase=swift-language
 pkgname=(swift swift-lldb)
 _swiftver=2.2-SNAPSHOT-2016-01-11-a
 pkgver=${_swiftver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="The Swift programming language and debugger"
 arch=('i686' 'x86_64')
 url="http://swift.org/"
@@ -92,7 +92,7 @@ package_swift() {
     # These are based on what's included in the binary release packages
     (
         cd swift-linux-$CARCH
-        install -m755 bin/swift bin/swift-demangle bin/swift-compress "$pkgdir/usr/bin"
+        install -m755 bin/swift bin/swift-demangle bin/swift-compress bin/swift-ide-test "$pkgdir/usr/bin"
         ln -s swift "$pkgdir/usr/bin/swiftc"
         ln -s swift "$pkgdir/usr/bin/swift-autolink-extract"
 
