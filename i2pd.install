@@ -1,20 +1,25 @@
-home=/var/lib/i2pd
-pidfile=/run/i2pd.pid
+USER=i2p
+HOME=/var/lib/i2pd
+
 post_install() {
-  groupadd -g 44 i2p &>/dev/null
-  useradd -u 44 -g i2p -d ${home} -s /bin/nologin i2p &> /dev/null
-  chown i2p:i2p -R ${home} ${pidfile} &> /dev/null
-  chmod 700 ${home} &> /dev/null
-  systemd-tmpfiles --create i2pd.conf
+    getent passwd ${USER} &>/dev/null || {
+        echo -n ">>> Creating ${USER} user... "
+        useradd --system --user-group --home ${HOME} ${USER}
+        echo "done"
+    }
+    post_upgrade
 }
 
 post_upgrade() {
-  getent group i2p &>/dev/null || groupadd -g 44 i2p &>/dev/null
-  getent passwd i2p &>/dev/null || useradd -u 44 -g i2p -d ${home} -s /bin/nologin i2p &> /dev/null
-  chown i2p:i2p -R ${home} ${pidfile} &> /dev/null
+    systemd-tmpfiles --create i2pd.conf
+    chown -R ${USER}:${USER} ${HOME}
+	chmod -R o-rwx ${HOME}
 }
 
 pre_remove() {
-  getent passwd i2p &>/dev/null && userdel i2p &> /dev/null
-  getent group i2p &>/dev/null && groupdel i2p &> /dev/null
+    getent passwd ${USER} &>/dev/null && {
+        echo -n ">>> Removing ${USER} user... "
+        userdel ${USER}
+        echo "done"
+    }
 }
