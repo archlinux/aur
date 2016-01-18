@@ -1,7 +1,7 @@
 # Maintainer: Alex Talker <alextalker at openmailbox dot org>
 # Original maintainer: Simonas Racinas <racinas at icloud.com>
 pkgname=visual-paradigm-community
-pkgver=20160103
+pkgver=13.0.20160103
 pkgrel=1
 pkgdesc="UML design application"
 url='http://www.visual-paradigm.com/download/community.jsp'
@@ -26,15 +26,16 @@ sha256sums=('9597c0abea3499aa6bd1af04bc63fbb301b1d84f7516a6ead7531962380a167a'
 	'a3b898bc9c43cf54baa1c643c619ee172a8103cd15031d574380ca463eb1ec1c')
 
 pkgver(){
-    curl -I -L "$_baseurl/" | grep -Pio '[0-9]{8}' | head -1
+    curl -I -L "$_baseurl/" | grep -Pio '[0-9]{2}_[0-9]{1}_[0-9]{8}' | sed 's/_/./g' | head -1
 }
 
 package() {
+  _ver=${pkgver:0:4} # Probably, dirty a bit
   mkdir -p "${pkgdir}/usr/share/applications"
   mkdir -p "${pkgdir}/usr/share/licenses/visual-paradigm-community-edition/"
   mkdir -p "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
-  cp -r "${srcdir}/Visual_Paradigm_CE_12.2/Application/" "${pkgdir}/usr/share/${pkgname}/"
-  cp -r "${srcdir}/Visual_Paradigm_CE_12.2/.install4j/" "${pkgdir}/usr/share/${pkgname}/.install4j/"
+  cp -r "${srcdir}/Visual_Paradigm_CE_${_ver}/Application/" "${pkgdir}/usr/share/${pkgname}/"
+  cp -r "${srcdir}/Visual_Paradigm_CE_${_ver}/.install4j/" "${pkgdir}/usr/share/${pkgname}/.install4j/"
   cp "visual-paradigm.desktop" "${pkgdir}/usr/share/applications/visual-paradigm.desktop"
   cp "Visual_Paradigm_Fixed" "${pkgdir}/usr/share/${pkgname}/bin/Visual_Paradigm_Fixed"
   cp "visual-paradigm.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/visual-paradigm.png"
