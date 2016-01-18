@@ -1,5 +1,5 @@
 pkgname=rhvoice-git
-pkgver=20141006
+pkgver=20150921
 pkgrel=1
 pkgdesc="free and open source speech synthesizer for Russian language"
 arch=('i686' 'x86_64')
@@ -37,7 +37,6 @@ EOF
     cd "$srcdir/$_gitname"
 
     scons prefix="/usr" sysconfdir="/etc" || return 1
-
 }
 
 package() {
