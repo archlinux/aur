@@ -1,15 +1,16 @@
+# Maintainer: brent s. <bts[at]square-r00t[dot]net>
 # Contributor:	Gergely	Tamas	<mfa.kfki.hu: dice>
-# Maintainer:	Jesse	Jaara	<gmail.com: jesse.jaara>
+# Past maintainer:	Jesse	Jaara	<gmail.com: jesse.jaara>
 
 pkgname=mbr
 pkgver=1.1.11
-pkgrel=2
+pkgrel=3
 pkgdesc="A replacement master boot record"
 url="http://www.chiark.greenend.org.uk/~neilt/mbr/"
 license="GPL"
 makedepends=('bin86')
 arch=('i686' 'x86_64')
-source=(http://www.chiark.greenend.org.uk/~neilt/mbr/$pkgname-$pkgver.tar.gz)
+source=(http://www.chiark.greenend.org.uk/~neilt/mbr/${pkgname}-${pkgver}.tar.gz)
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
