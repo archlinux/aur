@@ -16,7 +16,6 @@ conflicts=('smplayer')
 install=smplayer.install
 source=(https://downloads.sourceforge.net/$_pkgname/$_pkgname-$pkgver.tar.bz2)
 md5sums=('e6f459f640908df2403381a39a27cdba')
-export all_proxy=192.168.56.30:80
 
 build() {
   cd "smplayer-$pkgver"
