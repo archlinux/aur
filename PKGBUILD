@@ -3,7 +3,7 @@
 # Issues: https://github.com/toastercup/aur-packages/issues
 
 pkgname=hifi-interface-git
-pkgver=r37275.29b9592
+pkgver=r37284.8c4abd2
 pkgrel=1
 pkgdesc="High Fidelity is an open, decentralized virtual world using sensors to control avatars and dynamically assigned devices as servers. (git - master)"
 arch=('i686' 'x86_64')
@@ -25,6 +25,7 @@ depends=('qt5-base>=5.5.1'
          'alsa-lib'
          'libxmu'
          'jack'
+         'polyvox'
          'sdl2>=2.0.3'
          'bullet>=2.82'
          'libsoxr>=0.1.1'
