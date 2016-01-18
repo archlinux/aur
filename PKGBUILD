@@ -2,9 +2,9 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=mist
-pkgver=0.3.7
-_pkgver=0-3-7
-pkgrel=2
+pkgver=0.3.8
+_pkgver=0-3-8
+pkgrel=1
 pkgdesc="Ethereum wallet for Ether accounts, wallets and smart contracts (includes Mist browser and Geth cli)."
 arch=('x86_64')
 depends=('gmp'
@@ -19,6 +19,7 @@ provides=('mist'
           'geth')
 conflicts=('mist-git'
            'libnode'
+           'libnode-git'
            'geth'
            'geth-git'
            'go-ethereum'
@@ -26,11 +27,11 @@ conflicts=('mist-git'
 groups=('ethereum')
 url="https://github.com/ethereum/$pkgname"
 license=('GPL')
-source=("${pkgname}.zip::https://github.com/ethereum/$pkgname/releases/download/$pkgver/Ethereum-Wallet-linux64-$_pkgver.zip")
-sha256sums=("00d088bb5d28784217a6dcd2d51567755e8fcf4601f76aa6ce18c831fd1b3d77")
+source=("${pkgname}-${_pkgver}.zip::https://github.com/ethereum/$pkgname/releases/download/v${pkgver}/Ethereum-Wallet-linux64-$_pkgver.zip")
+sha256sums=("6a96a2e18e21ce8b1995b508e05d7a59a701a5aa75a82624c4286a7f8ec9eee5")
 
 package() {
-  rm "${srcdir}/${pkgname}.zip"
+  rm "${srcdir}/${pkgname}-${_pkgver}.zip"
 
   msg2 'Installing Mist...'
   install -d "${pkgdir}/usr/share/${pkgname}"
