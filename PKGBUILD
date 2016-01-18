@@ -3,7 +3,7 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-256xresources
 pkgver=9.21
-pkgrel=2
+pkgrel=3
 pkgdesc="urxvt with patches to support 256 Xresource colors and fixes for line/font spacing"
 arch=('i686' 'x86_64')
 url="http://software.schmorp.de/pkg/rxvt-unicode.html"
@@ -25,16 +25,16 @@ md5sums=('a9a06c608258c5fd247c3725d8f44582'
          'fb78c2ecf87626962734320cc2bb7ab1'
          'fec94dc986fa37ec380079d81de3e0b2'
          'fac55f0a8404c86dad3e702146762332'
-         '8a5599197568c63720e282b9722a7990'
-         ) 
+         '8a5599197568c63720e282b9722a7990')
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
   patch -p0 -i ../256color.patch
   patch -p0 -i ../font-width-fix.patch
   patch -p0 -i ../line-spacing-fix.patch
+  # we disable smart-resize (FS#34807)
+  # do not specify --with-terminfo (FS#46424)
   ./configure  \
     --prefix=/usr \
-    --with-terminfo=/usr/share/terminfo \
     --enable-256-color \
     --enable-combining \
     --enable-fading \
@@ -49,7 +49,7 @@ build() {
     --enable-rxvt-scroll \
     --enable-selectionscrolling \
     --enable-slipwheeling \
-    --enable-smart-resize \
+    --disable-smart-resize \
     --enable-startup-notification \
     --enable-transparency \
     --enable-unicode3 \
