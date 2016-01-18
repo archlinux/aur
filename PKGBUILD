@@ -3,7 +3,7 @@
 
 _pkgname=lvtk
 pkgname="${_pkgname}-git"
-pkgver=1.2.0.r16.g065830b
+pkgver=1.2.0.r21.g6bfe981
 pkgrel=1
 pkgdesc="A set of C++ wrappers around the LV2 C API"
 arch=('i686' 'x86_64')
