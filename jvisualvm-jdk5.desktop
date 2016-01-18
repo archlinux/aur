@@ -1,0 +1,9 @@
+[Desktop Entry]
+Exec=/usr/lib/jvm/java-5-jdk/bin/jvisualvm
+GenericName=Java 5 Monitoring and Performance Monitoring Tool
+Icon=sun-java-jdk5
+Name=Java 5 VisualVM
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Development;Java;
