@@ -20,5 +20,5 @@ pkgver () {
 
 package() {
    cd "$srcdir/$_gitname"
-   python setup.py install --prefix=/usr --root="${pwd}" --optimize=1 || return 1
+   python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1 || return 1
 }
