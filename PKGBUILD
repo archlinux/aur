@@ -2,14 +2,14 @@
 
 pkgname=python-redditcurl
 _pkgname=redditcurl
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Download the images you saved on Reddit.'
 arch=(any)
 url='https://github.com/SeriousBug/redditcurl'
 license=('GPL')
 source=("https://pypi.python.org/packages/source/r/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('c489af3341fdb07d0010aef56325f458')
+md5sums=('318488c736561ca3995eb707489861c6')
 depends=('python'
          'python-beautifulsoup4'
          'python-praw'
