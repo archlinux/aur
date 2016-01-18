@@ -10,7 +10,6 @@ license=('BSD')
 depends=('desktop-file-utils' 'e_dbus' 'elementary')
 optdepends=('acpid: power events on laptop lid close'
             'bc: calculator in everything module'
-            'bluez4: bluetooth module'
             'connman: network module'
             'doxygen: build documentation'
             'evas_generic_loaders: provide support for SVG icons'
