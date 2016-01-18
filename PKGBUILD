@@ -1,8 +1,8 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=oce
-pkgver=0.17.1
-pkgrel=2
+pkgver=0.16.1
+pkgrel=1
 pkgdesc="Open CASCADE Community Edition: patches/improvements/experiments contributed by users over the official Open CASCADE library."
 url="https://github.com/tpaviot/oce"
 arch=('i686' 'x86_64')
