@@ -1,10 +1,10 @@
 _module=deskshow
 _pkgname=moksha-modules-extra
 category=('moksha-modules-extra')
-pkgname=moksha-modules-${_module}-git
+pkgname=moksha-module-${_module}-git
 pkgver=2ea3b73
 pkgrel=1
-pkgdesc="Extra Moksha modules"
+pkgdesc="Deskshow Moksha module"
 arch=('i686' 'x86_64')
 url="http://mokshadesktop.org"
 license=('BSD')
