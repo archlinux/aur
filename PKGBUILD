@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('qt5-base' 'zlib') #Qt5)
 #optdepends=('otf-ipafont: font for displaying japanese')
 install=$pkgname.install
-source=("git://github.com/sithlord48/hyne.git")
+source=("git://github.com/myst6re/hyne.git#branch=develop")
 md5sums=(SKIP)
 
 pkgver() {
