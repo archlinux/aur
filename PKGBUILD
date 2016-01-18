@@ -5,7 +5,7 @@
 
 pkgname=binwalk-git
 _gitname=binwalk
-pkgver=2.1.1.783.95447d6
+pkgver=2.1.2b.795.441e2d1
 pkgrel=1
 pkgdesc="A tool for searching a given binary image for embedded files"
 url="http://binwalk.org"
@@ -20,7 +20,6 @@ optdepends=(
   'cabextract: CAB archive support'
   'cpio: CPIO archvie support'
   'gzip: GZIP decompression support'
-  'lha: LHA decompression support'
   'mtd-utils: JFFS filesystem support'
   'p7zip: ZIP, LZMA and ISO decompression support'
   'squashfs-tools: squashfs support'
@@ -40,7 +39,8 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
-  printf "%s.%s.%s" "$(python setup.py --version)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.%s.%s" "$(python setup.py --version)" \
+    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
