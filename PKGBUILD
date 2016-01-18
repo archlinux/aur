@@ -20,7 +20,7 @@ prepare() {
   flags=""
   flags="$flags -DCMAKE_INSTALL_PREFIX=/usr/local"
   flags="$flags -DOCE_INCLUDE_PATH=/opt/oce/include/oce"
-  flags="$flags -DOCE_LIB_PATH=/opt/oce/include/lib"
+  flags="$flags -DOCE_LIB_PATH=/opt/oce/lib"
   cmake $flags ..
 }
 
