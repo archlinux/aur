@@ -1,20 +1,20 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-jira-rest'
-pkgver='0.011'
+pkgver='0.012'
 pkgrel='1'
 pkgdesc="Thin wrapper around JIRA's REST API"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-data-util' 'perl-html-tree' 'perl-http-message' 'perl-json' 'perl-rest-client' 'perl-uri' 'perl>=5.010')
+depends=('perl-html-tree' 'perl-http-message' 'perl-json' 'perl-rest-client' 'perl-uri' 'perl>=5.010')
 makedepends=()
 url='https://metacpan.org/release/JIRA-REST'
-source=('http://search.cpan.org/CPAN/authors/id/G/GN/GNUSTAVO/JIRA-REST-0.011.tar.gz')
-md5sums=('c9a94f75003a8dc0c98887b5bad52d84')
-sha512sums=('6853b8738d678ae2c5f3f4db03247f2737aa97494e7ba03e19d43228f2180deb14ed35caf90a11db22b61acdd2f78b906141fdb297fb63d3e99a5bf8d98b25be')
-_distdir="JIRA-REST-0.011"
+source=('http://search.cpan.org/CPAN/authors/id/G/GN/GNUSTAVO/JIRA-REST-0.012.tar.gz')
+md5sums=('326a43f66fa808f847fd5b703597f2f2')
+sha512sums=('cd123f58fb6364115c85e6b00815688b583da6bd4c4f6561085fee93ac68f304f24256a83a3c4d2c2b785f8c59a8385d3532af3f9c746cb6cf524064030a0e88')
+_distdir="JIRA-REST-0.012"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
