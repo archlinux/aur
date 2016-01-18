@@ -11,6 +11,7 @@ depends=('libpulse' 'gtk3' 'libnotify' 'avahi' 'libx11' 'gnome-icon-theme'
     'gtk-update-icon-cache')
 makedepends=('pkg-config' )
 optdepends=(
+    'pulseaudio: To control a local pulseaudio instance'
     'paman: Launch PulseAudio manager from tray icon'
     'pavucontrol: Launch PulseAudio mixer from tray icon'
     'pavumeter: Launch PulseAudio volume meter from tray icon'
