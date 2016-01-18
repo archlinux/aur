@@ -1,16 +1,17 @@
+# Maintainer: brent s. <bts[at]square-r00t[dot]net>
 # Contributor:	Arto Jonsson	<kapsi.fi: ajonsson>
 # Contributor:	andrewy		<andrewyates.net: andrew>
-# Maintainer:	Jesse Jaara	<gmail: jesse.jaara>
+# Past maintainer:	Jesse Jaara	<gmail: jesse.jaara>
 
 pkgname=memtester
 pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A userspace utility for testing the memory subsystem for faults"
 arch=('i686' 'x86_64')
 url="http://pyropus.ca/software/memtester/"
 license=('GPL2')
 depends=('glibc')
-source=(http://pyropus.ca/software/memtester/old-versions/$pkgname-$pkgver.tar.gz)
+source=(http://pyropus.ca/software/memtester/old-versions/${pkgname}-${pkgver}.tar.gz)
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
