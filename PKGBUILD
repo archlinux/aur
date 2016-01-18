@@ -2,7 +2,7 @@
 
 pkgname=volatility-git
 _gitname=volatility
-pkgver=2.5.2340.ac60895
+pkgver=2.5.2362.2033154
 pkgrel=1
 pkgdesc="Advanced memory forensics framework"
 url="https://github.com/volatilityfoundation/volatility/wiki"
@@ -14,7 +14,7 @@ optdepends=(
   'python2-pillow: screenshots plugin support'
   'python2-pytz: timezone conversion support'
   'ipython2: enhanced volshell support'
-  'libforensic1394: firewire live analysis support'
+  'python2-libforensic1394: firewire live analysis support'
   'libraw1394: alternative firewire live analysis support'
   'python2-openpyxl: Excel xlsx/xlsm files support'
 )
