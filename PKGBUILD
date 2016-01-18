@@ -3,7 +3,7 @@
 pkgname=('jdk-devel-docs' 'javafx-devel-docs')
 _major=9
 #_minor=1
-_build=100
+_build=101
 _pkgver=$_major
 pkgver=${_major}b${_build}
 #_pkgver=${_major}u${_minor}
@@ -18,8 +18,8 @@ options=('!strip')
 source=("http://download.java.net/jdk$_major/archive/$_build/binaries/jdk-${_pkgver}_doc-all.zip"
         "http://download.java.net/jdk$_major/archive/$_build/binaries/javafx-${_pkgver}_doc.zip"
         'LICENSE')
-md5sums=('278c46ff1394000700744ddf49c450e7'
-         '6e7521a1cf7632f62ba774a9c6d712ec'
+md5sums=('2b0cefed30ecb38cfb87a9ae3c8092f0'
+         '76a96a941c6e7aafd2ce238d3a415b97'
          'f09947a67691a2d78d20a3885889981c')
 
 package_jdk-devel-docs() {
