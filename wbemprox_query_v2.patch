@@ -1,8 +1,8 @@
 diff --git a/dlls/wbemprox/builtin.c b/dlls/wbemprox/builtin.c
-index 2ff3f50..1f97dc9 100644
+index 13f708f..ddb8d7d 100644
 --- a/dlls/wbemprox/builtin.c
 +++ b/dlls/wbemprox/builtin.c
-@@ -2824,7 +2824,7 @@ static UINT32 get_bits_per_pixel( UINT *hres, UINT *vres )
+@@ -2927,7 +2927,7 @@ static UINT32 get_bits_per_pixel( UINT *hres, UINT *vres )
      ReleaseDC( NULL, hdc );
      return ret;
  }
@@ -11,11 +11,10 @@ index 2ff3f50..1f97dc9 100644
  {
      static const WCHAR fmtW[] =
          {'P','C','I','\\','V','E','N','_','%','0','4','X','&','D','E','V','_','%','0','4','X',
-@@ -2837,14 +2837,92 @@ static WCHAR *get_pnpdeviceid( DXGI_ADAPTER_DESC *desc )
+@@ -2940,14 +2940,93 @@ static WCHAR *get_pnpdeviceid( DXGI_ADAPTER_DESC *desc )
      return ret;
  }
- 
--static enum fill_status fill_videocontroller( struct table *table, const struct expr *cond )
+
 +/* some games like to continuously ask for the video controller
 +   since dxgi is expensive, cache results for subsequent calls */
 +static IDXGIFactory1 *factory = NULL;
@@ -68,7 +67,7 @@ index 2ff3f50..1f97dc9 100644
 +}
 +
 +void free_videocontroller_cache()
- {
++{
 +    if (!static_rec)
 +        return;
 +
@@ -89,7 +88,7 @@ index 2ff3f50..1f97dc9 100644
 +        IDXGIFactory1_Release( factory );
 +        factory = NULL;
 +    }
- 
++
 +    if (adapter)
 +    {
 +        IDXGIAdapter1_Release( adapter );
@@ -97,21 +96,22 @@ index 2ff3f50..1f97dc9 100644
 +    }
 +}
 +
-+static enum fill_status fill_videocontroller( struct table *table, const struct expr *cond )
-+{
+ static enum fill_status fill_videocontroller( struct table *table, const struct expr *cond )
+ {
+     static const WCHAR fmtW[] = {'%','u',' ','x',' ','%','u',' ','x',' ','%','I','6','4','u',' ','c','o','l','o','r','s',0};
      struct record_videocontroller *rec;
      HRESULT hr;
 -    IDXGIFactory *factory = NULL;
 -    IDXGIAdapter *adapter = NULL;
 -    DXGI_ADAPTER_DESC desc;
 +    DXGI_ADAPTER_DESC1 desc;
-     UINT hres = 1024, vres = 768, vidmem = 512 * 1024 * 1024;
+     UINT row = 0, hres = 1024, vres = 768, vidmem = 512 * 1024 * 1024;
      const WCHAR *name = videocontroller_deviceidW;
      enum fill_status status = FILL_STATUS_UNFILTERED;
-@@ -2852,14 +2930,24 @@ static enum fill_status fill_videocontroller( struct table *table, const struct
- 
+@@ -2955,14 +3034,24 @@ static enum fill_status fill_videocontroller( struct table *table, const struct
+
      if (!resize_table( table, 1, sizeof(*rec) )) return FILL_STATUS_FAILED;
- 
+
 +    rec = (struct record_videocontroller *)table->data;
 +    if (static_rec && factory && IDXGIFactory1_IsCurrent(factory))
 +    {
@@ -126,65 +126,39 @@ index 2ff3f50..1f97dc9 100644
 -    hr = CreateDXGIFactory( &IID_IDXGIFactory, (void **)&factory );
 +    hr = CreateDXGIFactory1( &IID_IDXGIFactory, (void **)&factory );
      if (FAILED(hr)) goto done;
- 
+
 -    hr = IDXGIFactory_EnumAdapters( factory, 0, &adapter );
 +    hr = IDXGIFactory1_EnumAdapters1( factory, 0, &adapter );
      if (FAILED(hr)) goto done;
- 
+
 -    hr = IDXGIAdapter_GetDesc( adapter, &desc );
 +    hr = IDXGIAdapter1_GetDesc1( adapter, &desc );
      if (SUCCEEDED(hr))
      {
          vidmem = desc.DedicatedVideoMemory;
-@@ -2867,7 +2955,6 @@ static enum fill_status fill_videocontroller( struct table *table, const struct
+@@ -2970,7 +3059,6 @@ static enum fill_status fill_videocontroller( struct table *table, const struct
      }
- 
+
  done:
 -    rec = (struct record_videocontroller *)table->data;
      rec->adapter_dactype       = videocontroller_dactypeW;
      rec->adapter_ram           = vidmem;
      rec->availability          = 3; /* Running or Full Power */
-@@ -2885,14 +2972,15 @@ done:
-     rec->videoarchitecture     = 2; /* Unknown */
-     rec->videomemorytype       = 2; /* Unknown */
+@@ -2990,14 +3078,15 @@ done:
+     wsprintfW( mode, fmtW, hres, vres, (UINT64)1 << rec->current_bitsperpixel );
+     rec->videomodedescription  = heap_strdupW( mode );
      rec->videoprocessor        = heap_strdupW( name );
 +    cache_videocontroller(rec);
 +
 +done_cached:
      if (!match_row( table, row, cond, &status )) free_row_values( table, row );
      else row++;
- 
+
      TRACE("created %u rows\n", row);
      table->num_rows = row;
- 
+
 -    if (adapter) IDXGIAdapter_Release( adapter );
 -    if (factory) IDXGIFactory_Release( factory );
      return status;
  }
- 
-diff --git a/dlls/wbemprox/main.c b/dlls/wbemprox/main.c
-index e6ccd5c..feb489f 100644
---- a/dlls/wbemprox/main.c
-+++ b/dlls/wbemprox/main.c
-@@ -123,6 +123,9 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
-             DisableThreadLibraryCalls(hinstDLL);
-             init_table_list();
-             break;
-+        case DLL_PROCESS_DETACH:
-+            free_videocontroller_cache();
-+            break;
-     }
- 
-     return TRUE;
-diff --git a/dlls/wbemprox/wbemprox_private.h b/dlls/wbemprox/wbemprox_private.h
-index ba25a02..de16fb7 100644
---- a/dlls/wbemprox/wbemprox_private.h
-+++ b/dlls/wbemprox/wbemprox_private.h
-@@ -186,6 +186,7 @@ void free_columns( struct column *, UINT ) DECLSPEC_HIDDEN;
- void free_row_values( const struct table *, UINT ) DECLSPEC_HIDDEN;
- void clear_table( struct table * ) DECLSPEC_HIDDEN;
- void free_table( struct table * ) DECLSPEC_HIDDEN;
-+void free_videocontroller_cache(void) DECLSPEC_HIDDEN;
- UINT get_type_size( CIMTYPE ) DECLSPEC_HIDDEN;
- HRESULT eval_cond( const struct table *, UINT, const struct expr *, LONGLONG *, UINT * ) DECLSPEC_HIDDEN;
- HRESULT get_column_index( const struct table *, const WCHAR *, UINT * ) DECLSPEC_HIDDEN;
+

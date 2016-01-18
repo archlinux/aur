@@ -1,5 +1,5 @@
 diff --git a/configure b/configure
-index ad84e74..7c257c0 100755
+index 18e02b7..e29874a 100755
 --- a/configure
 +++ b/configure
 @@ -681,6 +681,8 @@ XSLT_LIBS
@@ -28,7 +28,7 @@ index ad84e74..7c257c0 100755
  with_osmesa
  with_oss
  with_pcap
-@@ -1008,6 +1013,7 @@ enable_d3d10core
+@@ -1009,6 +1014,7 @@ enable_d3d10core
  enable_d3d11
  enable_d3d8
  enable_d3d9
@@ -36,7 +36,7 @@ index ad84e74..7c257c0 100755
  enable_d3dcompiler_33
  enable_d3dcompiler_34
  enable_d3dcompiler_35
-@@ -2220,6 +2226,9 @@ Optional Packages:
+@@ -2221,6 +2227,9 @@ Optional Packages:
    --without-openal        do not use OpenAL
    --without-opencl        do not use OpenCL
    --without-opengl        do not use OpenGL
@@ -46,7 +46,7 @@ index ad84e74..7c257c0 100755
    --without-osmesa        do not use the OSMesa library
    --without-oss           do not use the OSS sound support
    --without-pcap          do not use the Packet Capture library
-@@ -3460,6 +3469,18 @@ if test "${with_opengl+set}" = set; then :
+@@ -3461,6 +3470,18 @@ if test "${with_opengl+set}" = set; then :
  fi
 
 
@@ -65,7 +65,7 @@ index ad84e74..7c257c0 100755
  # Check whether --with-osmesa was given.
  if test "${with_osmesa+set}" = set; then :
    withval=$with_osmesa;
-@@ -6239,6 +6260,9 @@ fi
+@@ -6240,6 +6261,9 @@ fi
  OPENGL_LIBS=""
 
 
@@ -75,7 +75,7 @@ index ad84e74..7c257c0 100755
 
  # Check whether --enable-largefile was given.
  if test "${enable_largefile+set}" = set; then :
-@@ -11078,6 +11102,632 @@ This is an error since --with-va was requested." "$LINENO" 5 ;;
+@@ -11083,6 +11107,632 @@ This is an error since --with-va was requested." "$LINENO" 5 ;;
  esac
  fi
 
@@ -708,7 +708,7 @@ index ad84e74..7c257c0 100755
      CPPFLAGS="$ac_save_CPPFLAGS"
  else
      X_CFLAGS=""
-@@ -17723,6 +18373,7 @@ ac_config_commands="$ac_config_commands include/stamp-h"
+@@ -17728,6 +18378,7 @@ ac_config_commands="$ac_config_commands include/stamp-h"
  $as_echo_n "creating Makefile rules..." >&6
 
  ALL_VARS_RULES="OPENGL_LIBS = $OPENGL_LIBS
@@ -716,7 +716,7 @@ index ad84e74..7c257c0 100755
  SOCKET_LIBS = $SOCKET_LIBS
  COREFOUNDATION_LIBS = $COREFOUNDATION_LIBS
  IOKIT_LIBS = $IOKIT_LIBS
-@@ -17742,6 +18393,8 @@ X_CFLAGS = $X_CFLAGS
+@@ -17747,6 +18398,8 @@ X_CFLAGS = $X_CFLAGS
  X_PRE_LIBS = $X_PRE_LIBS
  X_LIBS = $X_LIBS
  X_EXTRA_LIBS = $X_EXTRA_LIBS
@@ -725,7 +725,7 @@ index ad84e74..7c257c0 100755
  XML2_CFLAGS = $XML2_CFLAGS
  XML2_LIBS = $XML2_LIBS
  XSLT_CFLAGS = $XSLT_CFLAGS
-@@ -18011,6 +18664,7 @@ wine_fn_config_dll d3d8 enable_d3d8 implib
+@@ -18017,6 +18670,7 @@ wine_fn_config_dll d3d8 enable_d3d8 implib
  wine_fn_config_test dlls/d3d8/tests d3d8_test
  wine_fn_config_dll d3d9 enable_d3d9 implib
  wine_fn_config_test dlls/d3d9/tests d3d9_test
@@ -734,7 +734,7 @@ index ad84e74..7c257c0 100755
  wine_fn_config_dll d3dcompiler_34 enable_d3dcompiler_34
  wine_fn_config_dll d3dcompiler_35 enable_d3dcompiler_35
 diff --git a/configure.ac b/configure.ac
-index e999818..9893d33 100644
+index d487c75..9098d8d 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -67,6 +67,8 @@ AC_ARG_WITH(openal,    AS_HELP_STRING([--without-openal],[do not use OpenAL]),
@@ -755,7 +755,7 @@ index e999818..9893d33 100644
  dnl **** Check for header files ****
 
  AC_SYS_LARGEFILE()
-@@ -1203,6 +1207,45 @@ OpenGL and Direct3D won't be supported.])
+@@ -1205,6 +1209,45 @@ OpenGL and Direct3D won't be supported.])
      WINE_NOTICE_WITH(va,[test "x$ac_cv_lib_soname_va" = "x" -o "x$ac_cv_lib_soname_va_x11" = "x" -o "x$ac_cv_lib_soname_va_drm" = "x"],
                       [libva ${notice_platform}development files not found, GPU video acceleration won't be supported.])
 
@@ -801,7 +801,7 @@ index e999818..9893d33 100644
      CPPFLAGS="$ac_save_CPPFLAGS"
  else
      X_CFLAGS=""
-@@ -2836,6 +2879,7 @@ WINE_CONFIG_DLL(d3d8,,[implib])
+@@ -2839,6 +2882,7 @@ WINE_CONFIG_DLL(d3d8,,[implib])
  WINE_CONFIG_TEST(dlls/d3d8/tests)
  WINE_CONFIG_DLL(d3d9,,[implib])
  WINE_CONFIG_TEST(dlls/d3d9/tests)
@@ -4837,7 +4837,7 @@ index 098cf46..11a7065 100644
 
  struct x11drv_escape_flush_gl_drawable
 diff --git a/include/config.h.in b/include/config.h.in
-index efb82fc..0acbf38 100644
+index 8ac8388..3626e84 100644
 --- a/include/config.h.in
 +++ b/include/config.h.in
 @@ -4,6 +4,12 @@
@@ -4853,7 +4853,7 @@ index efb82fc..0acbf38 100644
  /* Define to a function attribute for Microsoft hotpatch assembly prefix. */
  #undef DECLSPEC_HOTPATCH
 
-@@ -1356,6 +1362,9 @@
+@@ -1359,6 +1365,9 @@
  /* Define to the version of this package. */
  #undef PACKAGE_VERSION
 
@@ -4863,7 +4863,7 @@ index efb82fc..0acbf38 100644
  /* Define to the soname of the libcairo library. */
  #undef SONAME_LIBCAIRO
 
-@@ -1371,6 +1380,9 @@
+@@ -1374,6 +1383,9 @@
  /* Define to the soname of the libdbus-1 library. */
  #undef SONAME_LIBDBUS_1
 
@@ -4873,7 +4873,7 @@ index efb82fc..0acbf38 100644
  /* Define to the soname of the libfontconfig library. */
  #undef SONAME_LIBFONTCONFIG
 
-@@ -1419,6 +1431,9 @@
+@@ -1422,6 +1434,9 @@
  /* Define to the soname of the libpng library. */
  #undef SONAME_LIBPNG
 
@@ -4883,7 +4883,7 @@ index efb82fc..0acbf38 100644
  /* Define to the soname of the libsane library. */
  #undef SONAME_LIBSANE
 
-@@ -1443,6 +1458,21 @@
+@@ -1446,6 +1461,21 @@
  /* Define to the soname of the libX11 library. */
  #undef SONAME_LIBX11
 

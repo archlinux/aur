@@ -1,5 +1,5 @@
 diff --git a/dlls/kernel32/process.c b/dlls/kernel32/process.c
-index 40d804d..ee6c6ce 100644
+index 6e7b23e..63eda34 100644
 --- a/dlls/kernel32/process.c
 +++ b/dlls/kernel32/process.c
 @@ -2429,6 +2429,33 @@ static BOOL create_process_impl( LPCWSTR app_name, LPWSTR cmd_line, LPSECURITY_A
