@@ -40,12 +40,6 @@ package() {
 #  cp -r translations/* $pkgdir/usr/share/acreloaded/locale/
 }
 
-md5sums=('31659ae86f3adbabfd303384b04a9786'
-         'SKIP'
-         'c6db5816ce66282f6d6c7d08792b6095'
-         '53b17712afb7f0a5646b9894032d06ff'
-         'bff621e554812c7325b2bd7f56e9e881'
-         '3b142417157d73da4a7981fd07bcb628')
 md5sums=('260e71aa128710012a94e53fdde61286'
          'c6db5816ce66282f6d6c7d08792b6095'
          '53b17712afb7f0a5646b9894032d06ff'
