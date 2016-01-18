@@ -3,13 +3,13 @@
 # Contributor: Henrik Olsson
 
 pkgname=sunflower
-pkgver=0.2_59
-pkgrel=5
+pkgver=0.3
+pkgrel=1
 pkgdesc="Small, customizable twin-panel file manager"
 url="http://sunflower-fm.org"
 arch=('any')
 license=('GPL3')
-depends=('desktop-file-utils' 'pygtk' 'librsvg')
+depends=('desktop-file-utils' 'pygtk' 'librsvg' 'python2-chardet')
 optdepends=('python2-gnomekeyring: password storage for remote mounts'
             'python2-notify: desktop notifications service'
             'vte: integrated vte-based terminal'
@@ -19,9 +19,9 @@ optdepends=('python2-gnomekeyring: password storage for remote mounts'
 conflicts=('sunflower-hg')
 options=(!strip !zipman)
 install=${pkgname}.install
-source=($url/pub/${pkgname}-${pkgver//_/-}.tgz
+source=($url/pub/${pkgname}-${pkgver}-60.tgz
         sunflower)
-md5sums=('ad3d894003685bbcec3d13bec12058b4'
+md5sums=('3177798c96c2a3a320f12ca432649995'
          '95b68d1631f9406d55bd772231b021e6')
 
 package() {
