@@ -2,7 +2,7 @@
 
 pkgbase=mpv
 pkgname=mpv-light
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc='Video player based on MPlayer/mplayer2, with selection of features.'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ provides=("${pkgbase}")
 conflicts=("${pkgbase}")
 install=mpv.install
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/mpv-player/${pkgbase}/archive/v${pkgver}.tar.gz")
-sha256sums=('042937f483603f0c3d1dec11e8f0045e8c27f19eee46ea64d81a3cdf01e51233')
+sha256sums=('7d31217ba8572f364fcea2955733f821374ae6d8c6d8f22f8bc63c44c0400bdc')
 
 prepare() {
   cd ${pkgbase}-${pkgver}
@@ -72,9 +72,6 @@ package_mpv-light() {
   cd ${pkgbase}-${pkgver}
   ./waf install --destdir="${pkgdir}"
 
-  install -d "${pkgdir}"/usr/share/doc/mpv/examples
-  install -m644 etc/{input,example}.conf \
-    "${pkgdir}"/usr/share/doc/mpv/examples
   install -m644 DOCS/{encoding.rst,tech-overview.txt} \
     "${pkgdir}"/usr/share/doc/mpv
 }
