@@ -2,7 +2,7 @@
 # Fri Jan  8 20:27:41 UTC 2016
 pkgbase = calypso
 	pkgdesc = Manage your Wordpress.com and Jetpack-enabled sites in one place
-	pkgver = 1.1
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://desktop.wordpress.com
 	install = calypso.install
