@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.29
 
 pkgname='perl-io-aio'
-pkgver='4.31'
+pkgver='4.33'
 pkgrel='1'
 pkgdesc="Asynchronous Input/Output"
 arch=('i686' 'x86_64')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('glibc>=2.20' 'perl-common-sense')
 makedepends=()
 url='http://search.mcpan.org/dist/IO-AIO'
-source=('http://search.mcpan.org/CPAN/authors/id/M/ML/MLEHMANN/IO-AIO-4.31.tar.gz')
-md5sums=('de33075400968c2c23a861d05f92a979')
-sha512sums=('f1e564595201ba46506d9aea4f8e54d8aae55b8b018ad8fddcd3eeba3b3a5f6814df21f5dee68a3a30cee7509de22a4440afcec73d6df15d20f44ef5e5496a27')
-_distdir="IO-AIO-4.31"
+source=('http://search.mcpan.org/CPAN/authors/id/M/ML/MLEHMANN/IO-AIO-4.33.tar.gz')
+md5sums=('08243848d09e111ca8a682226a36491f')
+sha512sums=('9d59d9ad511bb07178ed760a0387357ade961f9b0e73cdc64861fa3b5674fb4cdb07b44a0c0810cc364909c1bc4fb012c2975269c1e3035cd37ba21a8a029df9')
+_distdir="IO-AIO-4.33"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
