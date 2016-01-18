@@ -1,0 +1,13 @@
+--- a/src/php/CMakeLists.txt	2016-01-18 14:24:04.954991592 +0100
++++ b/src/php/CMakeLists.txt	2016-01-18 14:24:15.578324977 +0100
+@@ -22,8 +22,8 @@
+ set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-unused-variable -Wno-unused-label -Wno-maybe-uninitialized -Wno-unused-function" )
+ 
+ # Try to find PHP5
+-find_path(PHP_INCLUDE_DIR NAMES main/php.h PATH_SUFFIXES php php5)
+-find_program(PHP_EXECUTABLE NAMES php)
++find_path(PHP_INCLUDE_DIR NAMES main/php.h PATH_SUFFIXES php56)
++find_program(PHP_EXECUTABLE NAMES php56)
+ 
+ # Libkolabxml needs PHP >= 5.3
+ set(PHP_MIN_VERSION 50300)
