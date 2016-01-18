@@ -6,13 +6,13 @@
 
 pkgname=nas
 pkgver=1.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Network Audio System is a network transparent, client/server audio transport system'
 arch=('i686' 'x86_64')
 url='http://radscan.com/nas.html'
 license=('MIT')
 depends=('libxaw')
-makedepends=('imake')
+makedepends=('imake' 'bison' 'flex')
 source=("http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.src.tar.gz"
         'license'
         'nasd.service'
