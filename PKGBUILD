@@ -3,7 +3,7 @@
 
 pkgname=gromacs-5.0-complete
 pkgver=5.0.7
-pkgrel=2
+pkgrel=3
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
 license=("LGPL")
@@ -11,8 +11,22 @@ arch=('i686' 'x86_64')
 depends=('fftw' 'lesstif' 'perl' 'libxml2' 'libsm' 'libx11')
 makedepends=('cmake')
 options=('!libtool')
-source=(ftp://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz)
-sha1sums=('29fd9c13874d26c1e18cd45ec74bd2d9be0b78c1')
+source=(ftp://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz
+        GMXRC.bash.cmakein.patch)
+sha1sums=('29fd9c13874d26c1e18cd45ec74bd2d9be0b78c1'
+          '014b2cbfa13db9b495c88f653805c330747117dc')
+
+export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
+                            #Gromacs will have the ability to read any
+                            #trajectory file format that can be read by
+                            #VMD installation (e.g. AMBER's DCD format). 
+
+prepare() {
+cd ${srcdir}/gromacs-${pkgver}/scripts/
+ls
+patch -p0 -i ${srcdir}/GMXRC.bash.cmakein.patch
+}
+
 
 build() {
   mkdir -p ${srcdir}/{single,double}
