@@ -2,7 +2,7 @@
 
 pkgname=albiononline
 pkgver=20160116232309
-pkgrel=1
+pkgrel=2
 pkgdesc="The first true cross-platform Sandbox MMO"
 url="https://albiononline.com/"
 arch=('i686' 'x86_64')
@@ -21,12 +21,15 @@ package() {
   mv data/* "${pkgdir}/opt/albiononline/."
 
   # this fixes a bug in how the dirs are unpacked
-  mv ${pkgdir}/opt/albiononline/launcher/launcher ${pkgdir}/opt/albiononline/launcher.tmp
-  rm -rf ${pkgdir}/opt/albiononline/launcher/
-  mv ${pkgdir}/opt/albiononline/launcher.tmp ${pkgdir}/opt/albiononline/launcher
+  mv ${pkgdir}/opt/albiononline/launcher ${pkgdir}/opt/albiononline/launcher.extra
+  mv ${pkgdir}/opt/albiononline/launcher.extra/launcher ${pkgdir}/opt/albiononline/launcher
   
+  # link exe
+  mkdir -p ${pkgdir}/usr/bin
+  ln -s /opt/albiononline/Albion-Online ${pkgdir}/usr/bin/albiononline 
+
   # install .desktop file
-  install -D -t ${pkgdir}/usr/share/applications ${pkgname}.desktop
+  install -m755 -D -t ${pkgdir}/usr/share/applications
 }
 
 # vim:set ts=2 sw=2 et:
