@@ -3,7 +3,7 @@
 _pkgname=ratox
 pkgname=$_pkgname-git
 pkgver=0.2.1.r0.g1a84f07
-pkgrel=1
+pkgrel=2
 pkgdesc="FIFO based tox client"
 arch=('i686' 'x86_64')
 url="http://ratox.2f30.org"
@@ -12,7 +12,7 @@ depends=('glibc' 'toxcore')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+http://git.2f30.org/ratox/"
+source=("$_pkgname::git+git://git.2f30.org/ratox/"
         "config.h")
 md5sums=('SKIP'
          'SKIP')
