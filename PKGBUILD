@@ -1,7 +1,7 @@
 # Contributor: Sebastian Wolf <fatmike303 at googlemail dot com>
 pkgname=chipmachine
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A demoscene/retro Jukebox/spotify-like music player'
 arch=('i686' 'x86_64')
 url='https://github.com/sasq64/chipmachine'
