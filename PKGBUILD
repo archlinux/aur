@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 
 pkgname=assaultcube-reloaded
-pkgver=2.6.2
+pkgver=2.6.3
 pkgrel=1
 pkgdesc='AssaultCube Reloaded'
 arch=('i686' 'x86_64')
@@ -10,14 +10,12 @@ license=('GPL3')
 depends=('sdl' 'sdl_mixer' 'sdl_image' 'openal' 'zlib' 'gcc-libs' 'libgl' 'enet' 'libvorbis' 'libx11' 'glu')
 makedepends=('git' )
 source=("https://github.com/actf/acr/archive/v${pkgver}.tar.gz"
-	      "git+https://github.com/actf/translations.git"
         'acreloaded'
         'acreloaded-server'
         'acreloaded.desktop'
         'acreloaded.svg')
 
 package() {
-  mkdir -p ${pkgdir}/usr/share/acreloaded/locale
   mkdir -p ${pkgdir}/usr/bin
   
   cd ${srcdir}/acr-${pkgver}
@@ -36,14 +34,19 @@ package() {
   install -Dm755 ${srcdir}/acreloaded-server ${pkgdir}/usr/bin/acreloaded-server
 
   
-msg "Checkout Languages"
-  cd $srcdir
-  rm -r translations/.git
-  cp -r translations/* $pkgdir/usr/share/acreloaded/locale/
+#msg "Checkout Languages"
+#  cd $srcdir
+#  rm -r translations/.git
+#  cp -r translations/* $pkgdir/usr/share/acreloaded/locale/
 }
 
 md5sums=('31659ae86f3adbabfd303384b04a9786'
          'SKIP'
+         'c6db5816ce66282f6d6c7d08792b6095'
+         '53b17712afb7f0a5646b9894032d06ff'
+         'bff621e554812c7325b2bd7f56e9e881'
+         '3b142417157d73da4a7981fd07bcb628')
+md5sums=('260e71aa128710012a94e53fdde61286'
          'c6db5816ce66282f6d6c7d08792b6095'
          '53b17712afb7f0a5646b9894032d06ff'
          'bff621e554812c7325b2bd7f56e9e881'
