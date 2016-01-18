@@ -10,8 +10,7 @@ url="http://pecl.php.net/package/uploadprogress"
 license=('PHP')
 depends=('php')
 makedepends=('autoconf')
-#source=("${pkgname}-${pkgver}"::"http://pecl.php.net/get/${_pkgname}-${pkgver}.tgz")
-source=("${_pkgname}-${pkgver}"::"git+https://github.com/Jan-E/uploadprogress.git")
+source=("${_pkgname}-${pkgver}"::"git+https://git.php.net/repository/pecl/php/uploadprogress.git")
 sha512sums=('SKIP')
 
 build() {
