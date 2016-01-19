@@ -55,7 +55,7 @@ _srcname=linux-4.1
 _pkgver=4.1.15
 _rtpatchver=rt17
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
@@ -79,7 +79,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux-rt-bfq.preset'
         'change-default-console-loglevel.patch'
         'config' 'config.x86_64'
-        'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch')
+        'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch'
+        '0005-KEYS-Fix-keyring-ref-leak-in-join_session_keyring.patch')
         
 prepare() {
     cd ${_srcname}
@@ -96,6 +97,10 @@ prepare() {
     # Stops X from hanging on certain NVIDIA cards
         msg "Fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch"
         patch -p1 -i "${srcdir}/fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch"
+        
+    ### Fix CVE-2016-0728
+        msg "Fix CVE-2016-0728"
+        patch -Np1 -i "${srcdir}/0005-KEYS-Fix-keyring-ref-leak-in-join_session_keyring.patch"    
     
     ### set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
     # remove this when a Kconfig knob is made available by upstream
@@ -458,7 +463,8 @@ sha512sums=('168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d20
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
             '667288bbbe7aa75702d6983e0cca4efd8949fc30eb8d8205f42ef114f2a3b91db6978295ee0a03d3a8b30c51ebcad1bf3a70783543f2f5502c08b21a37f442b3'
             'e5f32edbb03a0bd7f4bc611f07165a045b3c90e6f0464b9442146bdd34c7b5017d5f5a93bcc57ecaf7c51788f6d70f5e3a0d9077858e395eb259926bce95b86e'
-            '326dc571c072d4c47381852f16c00c8a7b27d11a5e6ff0f60f5e3a21d4a833c1e467dda1c2a5c04a6611af48bb6ef017f9183ea4ee578aab1a07e91e44d4e528')
+            '326dc571c072d4c47381852f16c00c8a7b27d11a5e6ff0f60f5e3a21d4a833c1e467dda1c2a5c04a6611af48bb6ef017f9183ea4ee578aab1a07e91e44d4e528'
+            '1054749d778176ba3f20a1e4089f8bbee376cb1a5760267b202bdef3b4b2b88c5c4337a7e346a8444132ce26e21151362290dd53bd8bcdee8903a512cf293c70')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
