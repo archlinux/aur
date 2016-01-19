@@ -1,10 +1,11 @@
-# Maintainer: Ryon Sherman <ryon.sherman@gmail.com>
+# Maintainer: brent s. <bts[at]square-r00t[dot]net>
+# Past maintainer: Ryon Sherman <ryon.sherman@gmail.com>
 
 _pkgname="truecrack"
 
 pkgname="${_pkgname}-svn"
 pkgrel=1
-pkgver=50
+pkgver=63
 pkgdesc="TrueCrack is a brute-force password cracker for TrueCrypt volume files."
 
 provides=(${_pkgname})
