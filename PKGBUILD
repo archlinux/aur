@@ -33,7 +33,7 @@ build() {
 package() {
   cd build
   make INSTALL_ROOT="$pkgdir" install
-  sed -i '/^QMAKE_PRL_BUILD_DIR =/d' "$pkgdir/usr/lib/libQt5Charts.prl"
+  sed -i '/^QMAKE_PRL_BUILD_DIR =/d' "$pkgdir/usr/lib"/*.prl
 }
 
 # vim:set ts=2 sw=2 et:
