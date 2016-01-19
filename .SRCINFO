@@ -9,7 +9,7 @@ pkgbase = qtile
 	makedepends = python-distribute
 	depends = python
 	depends = pango
-	depends = python-xcffib>=0.3.2
+	depends = python-xcffib>=0.4.0
 	depends = python-cairocffi>=0.7
 	optdepends = python-setproctitle: change the process name to qtile
 	conflicts = qtile-git
