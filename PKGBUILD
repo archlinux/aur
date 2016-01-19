@@ -1,6 +1,6 @@
 # Contributor: Olivier Mehani <shtrom-aur@ssji.net>
 pkgname=libtrace
-pkgver=3.0.19
+pkgver=3.0.21
 pkgrel=1
 pkgdesc="libtrace is a library for trace processing"
 arch=(i686 x86_64)
@@ -23,4 +23,4 @@ package() {
   make DESTDIR="$pkgdir/" install
 }
 
-md5sums=('9faf68b140491e88d2f398816ca8a784')
+md5sums=('cbbd54e1153294f1bc737b060307c057')
