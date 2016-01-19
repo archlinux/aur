@@ -1,8 +1,8 @@
-# Maintainer: Brent Saner <brent (dot) saner (at) gmail (dot) com>
+# Maintainer: brent s. <bts[at]square-r00t[dot]net>
 
 pkgname=storcli
 pkgver=1.15.12
-pkgrel=2
+pkgrel=3
 pkgdesc="CLI program for LSI MegaRAID cards, also works with some Dell PERC RAID cards (successor to megaraid-cli)"
 arch=('i686' 'x86_64')
 url="https://www.thomas-krenn.com/en/wiki/StorCLI"
