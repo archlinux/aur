@@ -1,20 +1,20 @@
 # Maintainer: surefire <surefire@cryptomile.net>
 
 pkgname=skype-electron
-pkgver=20160101
+pkgver=20160512
 pkgrel=1
 pkgdesc="An Electron Skype app designed for use on Linux systems"
 arch=("any")
 url="https://github.com/GyozaGuy/Skype-Electron"
 license=("unknown")
 depends=("electron" "hicolor-icon-theme")
-_commit="5b75bd8496e25daa2b453864669840142be13347"
-source=("https://github.com/GyozaGuy/Skype-Electron/archive/${_commit}.zip"
+_commit="54009c9d19f1d768ca71b75dc5c11a68854c9d47"
+source=("https://github.com/GyozaGuy/Skype-Electron/archive/${_commit}.tar.gz"
 		"skype-electron.desktop"
 		"skype-electron.sh")
-md5sums=("3224f20f3c743a82f6f2836d73ba7281"
-		"08c9dec95a58cc95f653844985fa5be2"
-		"36f42eb8958a9468146b3169fdaef660")
+md5sums=("bd644cd1b08807546068f832446027ea"
+         "08c9dec95a58cc95f653844985fa5be2"
+         "36f42eb8958a9468146b3169fdaef660")
 
 install="skype-electron.install"
 
