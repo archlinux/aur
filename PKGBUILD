@@ -5,15 +5,15 @@ _module="${_name#python-}"
 _cmd="${_module%client}"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="2.0.0"
+pkgver="2.1.1"
 pkgrel="1"
 pkgdesc="Client Library for OpenStack Identity"
 arch=("any")
 url="https://github.com/openstack/${_name}"
 license=("Apache")
 makedepends=("python-pbr>=1.8" "python2-pbr>=1.8")
-source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('6c8895cc15c3ee42a7aea588da297b31e68eaf7af1dfd89eae9ed4c95da17500')
+source=("https://tarballs.openstack.org/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('9778aaccd142acbd545647d173aa66f3ef092bf579d43b95bc9550fbd6d7bf38')
 
 prepare() {
     sed -ri '/argparse/d' "${srcdir}/${_name}-${pkgver}/requirements.txt"
@@ -33,12 +33,11 @@ package_python-keystoneclient() {
         "python-babel>=1.3"
         "python-iso8601>=0.1.9"
         "python-debtcollector>=0.3.0"
-        "python-keystoneauth1>=1.0.0"
-        "python-netaddr>=0.7.12"
+        "python-keystoneauth1>=2.1.0"
         "python-oslo-config>=2.7.0"
         "python-oslo-i18n>=1.5.0"
         "python-oslo-serialization>=1.10.0"
-        "python-oslo-utils>=2.8.0"
+        "python-oslo-utils>=3.2.0"
         "python-prettytable>=0.7"
         "python-requests>=2.8.1"
         "python-six>=1.9.0"
@@ -55,12 +54,11 @@ package_python2-keystoneclient() {
         "python2-babel>=1.3"
         "python2-iso8601>=0.1.9"
         "python2-debtcollector>=0.3.0"
-        "python2-keystoneauth1>=1.0.0"
-        "python2-netaddr>=0.7.12"
+        "python2-keystoneauth1>=2.1.0"
         "python2-oslo-config>=2.7.0"
         "python2-oslo-i18n>=1.5.0"
         "python2-oslo-serialization>=1.10.0"
-        "python2-oslo-utils>=2.8.0"
+        "python2-oslo-utils>=3.2.0"
         "python2-prettytable>=0.7"
         "python2-requests>=2.8.1"
         "python2-six>=1.9.0"
