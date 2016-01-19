@@ -62,5 +62,5 @@ package() {
     install -m 644 -D "$srcdir/ppd_file" \
         "${pkgdir}/usr/share/cups/model/brother_${_model}_printer_en.ppd"
     install -m 755 -D "$srcdir/filter_file" \
-        "${pkgdir}/usr/lib/cups/filter/brlpdwrapper${_model}"
+        "${pkgdir}/usr/lib/cups/filter/brother_lpdwrapper_${_model}"
 }
