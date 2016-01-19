@@ -1,8 +1,9 @@
-# Maintainer: bslackr <brendan at vastactive dot com>
+# Maintainer: brent s. <bts[at]square-r00t[dot]net>
+# Past Maintainer: bslackr <brendan at vastactive dot com>
 
 pkgname=sucrack
 pkgver=1.2.3
-pkgrel=3
+pkgrel=4
 pkgdesc='a multi-threaded Linux/UNIX tool for brute-force cracking local user accounts via su'
 url='http://labs.portcullis.co.uk/application/sucrack'
 license=('custom')
@@ -24,6 +25,6 @@ check() {
 
 package() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="${pkgdir}/" install
   install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
