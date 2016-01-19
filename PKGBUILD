@@ -8,10 +8,10 @@ pkgver=1.90.11
 pkgrel=2
 pkgdesc='C++ wrappers for goocanvas'
 arch=('i686' 'x86_64')
-url='http://ftp.gnome.org/pub/gnome/sources/goocanvasmm/'
+url='https://download.gnome.org/sources/goocanvasmm/'
 license=('GPL')
 depends=('goocanvas' 'gtkmm3')
-source=(http://ftp.gnome.org/pub/gnome/sources/goocanvasmm/1.90/goocanvasmm-${pkgver}.tar.xz)
+source=(https://download.gnome.org/sources/goocanvasmm/1.90/goocanvasmm-${pkgver}.tar.xz)
 sha256sums=('80ff11873ec0e73d9e38b0eb2ffb1586621f0b804093b990e49fdb546476ed6e')
 
 build() {
