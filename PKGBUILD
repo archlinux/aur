@@ -18,7 +18,6 @@
 # Contributor: lano1106 (patch to improve jacob's patch)
 # Contributor: zoopp
 # Contributor: solar (authatieventsd' patch s/-1/255)
-# Contributor: Cold (current_euid patch)
 # Contributor: kolasa (part of 4.3 kernel patches)
 # Contributor: gentoo (part of 4.3 kernel patches)
 # Contributor: 	Philip Müller @ Manjaro (4.4 kernel patch)
@@ -28,7 +27,7 @@
 
 pkgname=catalyst-total
 pkgver=15.9
-pkgrel=9
+pkgrel=10
 # _betano=1.0
 _amdver=15.201.1151
 pkgdesc="AMD/ATI Catalyst drivers for linux. catalyst-hook + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. Radeons HD 2 3 4 xxx ARE NOT SUPPORTED"
@@ -351,6 +350,7 @@ package() {
 	cd ${srcdir}/archive_files/arch/x86/usr
 	install -dm755 ${pkgdir}/usr/lib32
 	install -dm755 ${pkgdir}/usr/lib32/fglrx
+        install -dm755 ${pkgdir}/usr/lib32/dri
 	install -dm755 ${pkgdir}/usr/lib32/xorg/modules/dri
 #	install -dm755 ${pkgdir}/usr/lib32/hsa		#removed in 14.1
 	install -m755 lib/*.so* ${pkgdir}/usr/lib32
@@ -361,7 +361,7 @@ package() {
 	install -m755 X11R6/lib/libfglrx_dm.so.1.0 ${pkgdir}/usr/lib32
 	install -m755 X11R6/lib/libXvBAW.so.1.0 ${pkgdir}/usr/lib32
 	install -m755 X11R6/lib/modules/dri/*.so ${pkgdir}/usr/lib32/xorg/modules/dri
-	ln -snf /usr/lib32/xorg/modules/dri ${pkgdir}/usr/lib32/dri
+        ln -snf /usr/lib32/xorg/modules/dri/fglrx_dri.so ${pkgdir}/usr/lib32/dri/fglrx_dri.so
 
 	cd $pkgdir/usr/lib32
 	ln -sf /usr/lib32/libfglrx_dm.so.1.0	${pkgdir}/usr/lib32/libfglrx_dm.so.1
