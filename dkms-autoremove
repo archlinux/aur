@@ -14,3 +14,5 @@ do
     dkms remove "$module/$modver" -k "$kernel"
     rm -r "${install_tree:=/usr/lib/modules}/$kernel"
 done
+
+exit 0
