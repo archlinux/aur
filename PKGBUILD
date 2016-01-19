@@ -3,7 +3,7 @@
 
 pkgname=bowtie2
 pkgver=2.2.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Bowtie 2 is an ultrafast and memory-efficient tool for aligning sequencing reads to long reference sequence."
 arch=("any")
 optdepends=('intel-tbb: faster multithreading')
