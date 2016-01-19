@@ -1,8 +1,9 @@
 # Maintainer: Dmitry Chusovitin <dchusovitin@gmail.com>
 
 pkgname=docker-machine
-pkgver=0.5.6
-pkgrel=2
+pkgver=0.6.0rc1
+_pkgver=0.6.0-rc1
+pkgrel=1
 epoch=2
 pkgdesc='Machine management for a container-centric world'
 arch=('i686' 'x86_64')
@@ -14,8 +15,8 @@ provides=('docker-machine')
 conflicts=('docker-machine-bin')
 makedepends=('go' 'git')
 
-source=("https://github.com/docker/machine/archive/v${pkgver//_/-}.tar.gz")
-sha256sums=('b6dee30f6e8eb1d3f130cbd9545018e0abb514a968bcd1acd6006ae343f8f402')
+source=("https://github.com/docker/machine/archive/v${_pkgver}.tar.gz")
+sha256sums=('0558cfcf31674f2293ad7fe23eef3ed173c182852744f004c9a3c3c8f790eb81')
 
 prepare() {
     export GOPATH="${srcdir}"
@@ -23,7 +24,7 @@ prepare() {
     cd $srcdir
     mkdir -p src/github.com/docker
     rm -rf src/github.com/docker/machine
-    mv machine-${pkgver} src/github.com/docker/machine
+    mv machine-${_pkgver} src/github.com/docker/machine
 
     cd $srcdir/src/github.com/docker/machine
     go get github.com/tools/godep
