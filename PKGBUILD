@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=libhawaii
-pkgver=0.5.90
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Hawaii libraries"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -11,8 +11,8 @@ depends=('qt5-base' 'qt5-declarative' 'glib2')
 makedepends=('gdb' 'extra-cmake-modules')
 groups=('hawaii')
 options=('debug')
-source=("https://github.com/hawaii-desktop/${pkgname}/archive/v${pkgver}.tar.gz")
-sha1sums=('c41b21f2d744709e377812f537b81e95fb68fda4')
+source=("https://github.com/hawaii-desktop/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
+sha1sums=('540e70590d58df671b5db59621bc71233ffe3726')
 
 prepare() {
 	mkdir -p build
