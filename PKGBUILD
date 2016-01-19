@@ -1,17 +1,17 @@
 # Maintainer: Tolga Cakir <tolga@cevel.net>
 
 pkgname=sidewinderd
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
-pkgdesc="Sidewinder daemon - Linux support for Microsoft Sidewinder X4 / X6 keyboards"
+pkgdesc="Linux support for Microsoft SideWinder X4 / X6 and Logitech G710+."
 arch=('x86_64')
 url="http://cevel.net/projects/sidewinderd/"
-depends=('libconfig' 'tinyxml2')
+depends=('libconfig' 'systemd' 'tinyxml2')
 makedepends=('cmake')
 license=('MIT')
 install=${pkgname}.install
 source=("${pkgname}::https://github.com/tolga9009/sidewinderd/archive/${pkgver}.tar.gz")
-md5sums=('bb24ea3e7bf9289d21af92468347b4ee')
+md5sums=('ba34d1a5a89001d0d1892106d4c4146e')
 
 prepare() {
 	mkdir -p build
