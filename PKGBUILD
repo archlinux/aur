@@ -8,7 +8,7 @@ arch=('x86_64' 'i686')
 depends=('glib2' 'libxml2')
 makedepends=('intltool')
 license=('LGPL')
-source=(http://ftp.gnome.org/pub/gnome/sources/$pkgname/0.6/$pkgname-$pkgver.tar.xz)
+source=(https://download.gnome.org/sources/$pkgname/0.6/$pkgname-$pkgver.tar.xz)
 url="http://www.gnome.org"
 sha256sums=('132b528a948586b0dfa05d7e9e059901bca5a3be675b6071a90a90b81ae5a056')
 
