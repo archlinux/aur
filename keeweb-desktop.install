@@ -1,0 +1,7 @@
+post_install() {
+    [ -e '/bin/gtk-update-icon-cache' ] && gtk-update-icon-cache /usr/share/icons/hicolor
+}
+
+post_upgrade() {
+  post_install
+}
