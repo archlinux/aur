@@ -1,15 +1,15 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
-# BlackMagic's DeckLink SDK
-# You need to download the SDK file from BlackMagic's website. (registration required)
+# Blackmagic's DeckLink SDK
+# You need to download the SDK file from Blackmagic's website. (registration required)
 # Look for a file called "Desktop Video <version> SDK".
 # Download website:
 # https://www.blackmagicdesign.com/support
 
 pkgname=blackmagic-decklink-sdk
 pkgver=10.5.4
-pkgrel=2
-pkgdesc="BlackMagic's DeckLink SDK"
+pkgrel=3
+pkgdesc="Blackmagic's DeckLink SDK"
 arch=('any')
 url="https://www.blackmagicdesign.com/support/"
 license=('custom')
