@@ -1,0 +1,18 @@
+pkgbase = mopidy-audioaddict-git
+	pkgdesc = Mopidy extension for playing music using the audioaddict service
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/nilicule/mopidy-audioaddict
+	arch = any
+	license = APACHE
+	makedepends = python2-setuptools
+	makedepends = git
+	depends = python2
+	depends = python2-pycountry
+	depends = mopidy
+	provides = mopidy-audioaddict
+	options = !emptydirs
+	source = mopidy-gmusic::git+https://github.com/nilicule/mopidy-audioaddict.git
+	md5sums = SKIP
+
+pkgname = mopidy-audioaddict-git
