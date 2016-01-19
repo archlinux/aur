@@ -12,7 +12,7 @@ url="https://github.com/patthoyts/kitgen"
 options=(!buildflags !makeflags !strip)
 license=('custom')
 depends=('lib32-libx11' 'gcc-multilib')
-makedepends=('upx')
+makedepends=('upx' 'ucl')
 provides=(tclkit)
 conflicts=(tclkit)
 
