@@ -7,30 +7,37 @@ pkgname=openfoam
 # The distributors package name
 _distpkgname=OpenFOAM
 
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=2
 pkgdesc="The open source CFD toolbox"
 arch=("any")
-url="http://www.openfoam.com"
+url="http://www.openfoam.org"
 license=("GPL")
 depends=('bzip2' 'paraview' 'parmetis' 'scotch' 'boost' 'flex' 'cgal')
-source=("http://downloads.sourceforge.net/foam/${_distpkgname}-${pkgver}.tgz")
-#        "decomp-options.patch"
-#        "paraFoam.patch"
-#        "scotch-options.patch"
-#        "settings.patch")
+source=("http://downloads.sourceforge.net/foam/${_distpkgname}-${pkgver}.tgz"
+        "paraFoam.patch"
+        "readSTLASCII_L.patch"
+        "ansysToFoam_L.patch"
+        "STLsurfaceFormatASCII_L.patch"
+        "renumberMesh_options.patch"
+        "decomposePar_options.patch"
+        "gambitToFoam_L.patch"
+        "fluent3DMeshToFoam_L.patch"
+        "fluentMeshToFoam_L.patch")
+
 install="${pkgname}.install"
-#sha256sums=('SKIP'
-#            '3faef066228df77bad5b329bf251fc057dc5dac3b749d5bcd292438f89a546b7'
-#            'cdd8c599f34cc967e6fb75b7da5f337aa7b56b19cf0871ebf608af6507abe07c'
-#            'bbf370e411dc7fd95c3d823dac3534d4312fe90c0365b596aa2a3ed016463819'
-#            '9f36415505d71d86a7f18624f8ed9888f8fa7af09833b0dd215477ddca57302f')
-            
-md5sums=('fefa399a5c0cbe33fbabb65be17ea617')
-#         'SKIP'
-#         'SKIP'
-#         'SKIP'
-#         'SKIP')            
+        
+md5sums=('304e6a14b9e69c20989527f5fb1ed724'
+         '352b06d5c1f42eceff784b9130bfe444'
+         '1f1850ac3d005baa6039b5dca5780e55'
+         '23dc21fb55ffc6cfbc8dd5dca903ab22'
+         '285cdc4cd6039da598156fa405e31d29'
+         '815ba1f4df3c40b298e31c57738acd93'
+         '029a20598e565da2638441aa0c39ff74'
+         'be0952767725ff63115f73064a594b35'
+         'a3f8054fe234e18bc2f831d6c23f9abd'
+         '7ab2085baeb8393d4bf7b418658612a9')  
+      
 
 prepare() {
   # Extract the current version and major of paraview and of scotch for use in the system preferences
@@ -43,30 +50,38 @@ prepare() {
   echo "export WM_MPLIB=SYSTEMOPENMPI" >> ${srcdir}/prefs.sh
   echo "export ParaView_VERSION=${_pversion}" >> ${srcdir}/prefs.sh
   echo "export ParaView_MAJOR=${_pmajor}" >> ${srcdir}/prefs.sh
-  cp ${srcdir}/prefs.sh ${srcdir}/${_distpkgname}-${pkgver}/etc || return 1
+  cp ${srcdir}/prefs.sh ${srcdir}/${_distpkgname}-${pkgver}/etc #|| return 1
 
   # Generate the scotch.sh file for arch
   echo "export SCOTCH_VERSION=scotch_${_sversion}" > ${srcdir}/scotch.sh
   echo "export SCOTCH_ARCH_PATH=/usr" >> ${srcdir}/scotch.sh
-  cp ${srcdir}/scotch.sh ${srcdir}/${_distpkgname}-${pkgver}/etc/config || return 1
+  cp ${srcdir}/scotch.sh ${srcdir}/${_distpkgname}-${pkgver}/etc/config #|| return 1
 
   # Patch for archlinux parmetis, paraview and openmpi paths, and scotch link lines
   #patch -p1 < ${srcdir}/decomp-options.patch
-  #patch -p1 < ${srcdir}/paraFoam.patch
+  patch -p1 < ${srcdir}/paraFoam.patch
   #patch -p1 < ${srcdir}/scotch-options.patch
+  patch -p1 < ${srcdir}/readSTLASCII_L.patch
+  patch -p1 < ${srcdir}/ansysToFoam_L.patch
+  patch -p1 < ${srcdir}/STLsurfaceFormatASCII_L.patch
+  patch -p1 < ${srcdir}/renumberMesh_options.patch
+  patch -p1 < ${srcdir}/decomposePar_options.patch
+  patch -p1 < ${srcdir}/gambitToFoam_L.patch
+  patch -p1 < ${srcdir}/fluent3DMeshToFoam_L.patch
+  patch -p1 < ${srcdir}/fluentMeshToFoam_L.patch
 }
 
 build() {
   # Setup the build environment
   export FOAM_INST_DIR=${srcdir}
   foamDotFile=${srcdir}/${_distpkgname}-${pkgver}/etc/bashrc
-  [ -f ${foamDotFile} ] && . ${foamDotFile} || return 1
+  [ -f ${foamDotFile} ] && . ${foamDotFile} #|| return 1
 
   # Enter build directory
-  cd ${srcdir}/${_distpkgname}-${pkgver} || return 1
+  cd ${srcdir}/${_distpkgname}-${pkgver} #|| return 1
 
   # Build and clean up OpenFOAM
-  ./Allwmake || return 1
+  ./Allwmake > ../../openfoam_log.make 2>&1 #|| return 1
   wclean all || return 1
 }
 
@@ -76,13 +91,14 @@ package() {
   # Create destination directories
   install -d ${pkgdir}/opt/${_distpkgname} ${pkgdir}/etc/profile.d || return 1
 
-  # Move package to pkgdir
-  mv ${srcdir}/${_distpkgname}-${pkgver} ${pkgdir}/opt/${_distpkgname} || return 1
+  # copy package to pkgdir
+  cp -r ${srcdir}/${_distpkgname}-${pkgver} ${pkgdir}/opt/${_distpkgname} || return 1
 
   # Add source file
-  echo "export FOAM_INST_DIR=/opt/${_distpkgname}" > ${pkgdir}/etc/profile.d/openfoam.sh || return 1
-  echo "alias ofoam=\"source \${FOAM_INST_DIR}/${_distpkgname}-${pkgver}/etc/bashrc\"" >> ${pkgdir}/etc/profile.d/openfoam.sh || return 1
-
+  echo "export FOAM_INST_DIR=/opt/${_distpkgname}" > ${pkgdir}/etc/profile.d/openfoam-${pkgver}.sh || return 1
+  echo "alias ofoam=\"source \${FOAM_INST_DIR}/${_distpkgname}-${pkgver}/etc/bashrc\"" >> ${pkgdir}/etc/profile.d/openfoam-${pkgver}.sh || return 1
+  chmod 755 ${pkgdir}/etc/profile.d/openfoam-${pkgver}.sh || return 1
+  
   # Add stub thirdparty directory to keep openfoam happy
   install -d ${pkgdir}/opt/${_distpkgname}/ThirdParty-${pkgver} || return 1
 
