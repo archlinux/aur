@@ -1,8 +1,8 @@
 # Maintainer: Guillaume Maudoux <layus DOT on @AT@ gmail DOT com>
 
 pkgname=mozart2-git
-pkgver=v2.0.0.alpha.0.4141.ga2413d4
-pkgrel=2
+pkgver=v2.0.0.alpha.0.4152.g473e132
+pkgrel=1
 pkgdesc="The Mozart Programming System version 2"
 arch=('i686' 'x86_64')
 url="https://github.com/mozart/mozart2"
@@ -16,12 +16,10 @@ install="${pkgname}.install"
 source=(
     "$pkgname::git+http://github.com/mozart/mozart2"
     'git+http://github.com/mozart/mozart2-stdlib'
-    'llvm-3.7.patch::https://github.com/mozart/mozart2/pull/265.diff'
 )
 sha256sums=(
     'SKIP'
     'SKIP'
-    'cdd5ed2e58d7ebcf1bcb6e864823a2badad78ce42100f07335c30907fb569b9f'
 )
 
 pkgver() {
@@ -35,8 +33,6 @@ prepare() {
     git submodule init
     git config submodule.stdlib.url $srcdir/mozart2-stdlib
     git submodule update
-
-    git apply "$srcdir/llvm-3.7.patch"
 
     # Add required libraries to executable.
     # TODO : Explore clang build process, I have no idea why this may be needed.
