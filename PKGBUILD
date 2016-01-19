@@ -16,10 +16,15 @@ optdepends=('python2: build python wrapping'
             'tcl: build tcl wrapping (currently not supported)'
             'perl: build perl wrapping (currently not supported)'
             'java-runtime: build java wrapping (currently not supported)'
-            'swig: generate python wrappers')
+            'swig: generate python wrappers'
+            'pcre: for wrapping'
+            'castxml-git: for wrapping and docs'
+            'clang: for swig')
 makedepends=('cmake')
 source=("http://downloads.sourceforge.net/project/itk/itk/${pkgver:0:3}/InsightToolkit-${pkgver}.tar.xz")
 sha512sums=('f08d922cdf059171caef4a91d13b0ab43d9817655f7e54a0d6c03369b0a502f268918480cf6db3c2ed532fb4895aca982330bd0cf1b1baffec857c6e905b1114')
+
+_usepython=false
 
 build() {
   cd "$srcdir"
@@ -39,8 +44,12 @@ build() {
     -DITK_USE_SYSTEM_ZLIB:BOOL=ON \
     -DITK_USE_SYSTEM_TIFF:BOOL=ON \
     -DITK_USE_SYSTEM_GDCM:BOOL=ON \
-    -ITK_LEGACY_SILENT:BOOL=ON \
-    -ITK_WRAP_PYTHON:BOOL=OFF \
+    -DITK_LEGACY_SILENT:BOOL=ON \
+    $( $_usepython && echo "-DITK_WRAP_PYTHON:BOOL=ON") \
+    $( $_usepython && echo "-DModule_ITKReview:BOOL=OFF") \
+    $( $_usepython && echo "-DITK_USE_SYSTEM_SWIG:BOOL=ON") \
+    $( $_usepython && echo "-DITK_USE_SYSTEM_CASTXML:BOOL=ON") \
+    -DITK_USE_SYSTEM_LIBRARIES:BOOL=ON \
     -DITK_USE_SYSTEM_EXPAT:BOOL=ON \
     -DITK_USE_SYSTEM_FFTW:BOOL=ON \
     -DITK_USE_SYSTEM_HDF5:BOOL=ON \
