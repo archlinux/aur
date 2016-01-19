@@ -1,7 +1,7 @@
 # Maintainer: CTech <ctech.exe@gmail.com>
 
 pkgname=storm-launcher
-pkgver=1.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Software to control Dream Cheeky O.I.C Storm & Thunder USB Missile Launchers"
 arch=('i686' 'x86_64')
