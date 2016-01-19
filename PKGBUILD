@@ -1,9 +1,10 @@
-# Maintainer: Mauro Andreolini <mauro.andreolini@unimore.it>
+# Maintainer: brent s. <bts[at]square-r00t[dot]net>
+# Past maintainer: Mauro Andreolini <mauro.andreolini@unimore.it>
 
 pkgname=pack
 _pkgname=PACK
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Password Analysis and Cracking Kit"
 url="http://thesprawl.org/projects/pack/"
 arch=('any')
@@ -61,4 +62,3 @@ package() {
     install -Dm644 ${srcdir}/${_pkgname}-${pkgver}/${pkgname}/enchant/tokenize/*.py ${pkgdir}/usr/lib/python2.7/${pkgname}/enchant/tokenize
 }
 
-# vim:set ts=2 sw=2 et:
