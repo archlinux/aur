@@ -13,7 +13,15 @@ pkgdesc="An icon project by Darin"
 arch=('any')
 url="https://www.reddit.com/r/linux/comments/41jbjc/an_icon_theme_im_working_on_anyone_willing_to/"
 license=('GPL3')
-depends=('bash')
+depends=('bash'
+	'lxde-icon-theme'
+	'tango-icon-theme'
+	'gnome-icon-theme'
+	'hicolor-icon-theme'
+	'fvwm-crystal'
+	'elementary-xfce-icons'
+	'elementary-icon-theme'
+	'humanity-icon-theme')
 source=("https://drive.google.com/uc?export=download&id=0B4tmeufpN98QeUdab01IRzVaQkU")
 md5sums=('229600b74a43cabd3a395bfa8f6b3697')
 
