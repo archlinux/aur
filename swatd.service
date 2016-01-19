@@ -1,10 +1,10 @@
 [Unit]
-Description=SWATd
+Description=SWATd Daemon
 
 [Service]
 Type=forking
-PIDFile=/var/run/swatd.pid
-ExecStart=/usr/bin/swatd -p /var/run/swatd.pid
+PIDFile=/run/swatd.pid
+ExecStart=/usr/bin/swatd -p /run/swatd.pid
 Restart=on-abort
 
 [Install]

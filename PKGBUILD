@@ -2,7 +2,7 @@
 
 pkgname=swatd-git
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="A daemon for running scripts when a sensor is triggered"
 arch=('any')
 url="https://github.com/defuse/swatd"
@@ -12,7 +12,7 @@ makedepends=('git')
 source=('git+https://github.com/defuse/swatd.git'
 	'swatd.service')
 md5sums=('SKIP'
-	'2af1ce0b079d0641764233e81abd2ac9')
+	'719ef9b8911054561f157475c117c649')
 
 build() {
 	cd "${srcdir}"/swatd
