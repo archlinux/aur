@@ -2,7 +2,7 @@
 
 pkgname=chromium-pepper-flash-standalone
 pkgdesc="Google Chrome's Pepper Flash plugin for Chromium (stable version) - Standalone version"
-pkgver=20.0.0.228
+pkgver=20.0.0.267
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.google.com/chrome"
@@ -16,14 +16,14 @@ source=(license.html::https://www.google.com/chrome/browser/privacy/eula_text.ht
 sha1sums=('1ffba5152cb749300a016efec909b828eba9a64a')
 if [ "$CARCH" == i686 ]; then
         source+=(http://docs.volcanis.me/.pepper-flash/i686/libpepflashplayer.so)
-        sha1sums+=('24ad220b1796a1b744097beea8e043ce9d44f420')
+        sha1sums+=('36fb3de098c7215f1f66be92ff91556ef1506e11')
         source+=(http://docs.volcanis.me/.pepper-flash/i686/manifest.json)
-        sha1sums+=('9f1c537bed5fe4af4d1ed7dfe98434916dda37be')
+        sha1sums+=('2d9bb186b6d2931cd8f0b19ec42b794c1bd3f79a')
 elif [ "$CARCH" == x86_64 ]; then
         source+=(http://docs.volcanis.me/.pepper-flash/x86_64/libpepflashplayer.so)
-        sha1sums+=('ea9c260b1eb7791aaaa50aedb0c4dc300852cdb1')
+        sha1sums+=('361a73664cfdd630e3242d7b3ac935785079e150')
         source+=(http://docs.volcanis.me/.pepper-flash/x86_64/manifest.json)
-        sha1sums+=('ac67b4efa0c0981e82d50f10fea1e3b87db117d4')
+        sha1sums+=('4451676dc7e0ed596c899db80cf5846d1533d087')
 fi
 
 package() {
