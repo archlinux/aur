@@ -2,29 +2,24 @@
 
 pkgname=git-ftp
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Git powered FTP client written as shell script'
 url='https://github.com/git-ftp/git-ftp'
 arch=('any')
 license=('GPL')
 depends=('curl' 'git')
 makedepends=('ruby-ronn')
-source=("https://github.com/git-ftp/git-ftp/archive/$pkgver.tar.gz"
-        "git-ftp-0.9.0-Replace-pandoc-with-ronn.patch")
-sha256sums=('b0de6dc36db506ac25a6fda21cb33d37b6a0b205fc72b0bd96de87359defc837'
-            '8b790a88290fce3b769a69878244c01ff519b7c2abd8b3f878fe61589cf1393e')
+source=("https://github.com/git-ftp/git-ftp/archive/${pkgver}.tar.gz")
+sha256sums=('b0de6dc36db506ac25a6fda21cb33d37b6a0b205fc72b0bd96de87359defc837')
 
-prepare() {
-  cd $pkgname-$pkgver
-  patch -p1 -i ../git-ftp-0.9.0-Replace-pandoc-with-ronn.patch
+build() {
+  cd $pkgname-$pkgver/man
+  make man-ronn
 }
 
 package() {
   cd $pkgname-$pkgver
-  make DESTDIR="$pkgdir" install-all
 
-  cd "$pkgdir"
-  install -d usr/share/
-  mv bin usr/
-  mv man usr/share
+  install -D "git-ftp" "${pkgdir}/usr/bin/git-ftp"
+  install -D "man/man1/git-ftp.1" "${pkgdir}/usr/share/man/man1/git-ftp.1"
 }
