@@ -2,10 +2,11 @@
 # Contributor: Jonathan Steel <mail at jsteel dot org>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Wesley <rudirennsau at hotmail dot com>
+# Contributor: Lukas Werling <lukas.werling@gmail.com>
 
 pkgname=openclonk
 pkgver=7.0
-pkgrel=2
+pkgrel=3
 _orig=$pkgname-$pkgver-src
 pkgdesc='Multiplayer-action-tactic-skill game'
 arch=('i686' 'x86_64')
@@ -13,6 +14,7 @@ url='http://openclonk.org'
 license=('custom')
 depends=('gtk2' 'glew' 'sdl_mixer' 'libxpm'  'hicolor-icon-theme' 'libupnp')
 makedepends=('cmake' 'boost' 'imagemagick' 'mesa')
+optdepends=('openclonk-music: proprietary music package')
 conflicts=('clonk_rage')
 install=$pkgname.install
 source=("http://openclonk.org/builds/release/$pkgver/$pkgname-$pkgver-src.tar.bz2" 'directories.patch')
@@ -39,6 +41,10 @@ package() {
   cd build
   
   make DESTDIR="$pkgdir" install
+
+  # Replace the music packet with unpacked music to allow adding music.
+  rm "$pkgdir/usr/share/openclonk/Music.ocg"
+  install -Dm644 ../planet/Music.ocg/* -t "$pkgdir/usr/share/openclonk/Music.ocg"
 
   # licenses
   install -dm755 "$pkgdir"/usr/share/licenses/$pkgname
