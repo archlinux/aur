@@ -1,6 +1,6 @@
 pkgname=ogre-pagedgeometry-git
 pkgver=1.1.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Paged Geometry plugin for OGRE for fast rendering of trees and grass."
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/ogre-paged"
@@ -20,8 +20,7 @@ build() {
 
   cmake .. \
     -DPAGEDGEOMETRY_BUILD_SAMPLES=0 \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_DOC_PREFIX=/usr/doc/ogre-pagedgeometry
+    -DCMAKE_INSTALL_PREFIX=/usr 
   make  
 }
 
