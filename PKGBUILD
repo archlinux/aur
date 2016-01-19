@@ -1,7 +1,9 @@
-pkgname=zabbix-server-mysql
-_pkgname=zabbix-server
+# Maintainer: Artem Shustrov <artem dot shustrov at gmail dot com>
+_dbtype=mysql
+_pkgname=zabbix
+pkgname=${_pkgname}-server-${_dbtype}
 pkgver=2.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Zabbix is an enterprise-class open source distributed monitoring solution."
 arch=("i686"
       "x86_64")
@@ -12,6 +14,7 @@ depends=("php"
          "fping"
          "traceroute"
          "net-snmp"
+         "iksemel"
          "nmap"
          "sudo"
          "curl"
@@ -20,22 +23,22 @@ depends=("php"
 optdepends=("mariadb: Fast SQL database server, drop-in replacement for MySQL"
             "apache: A high performance Unix-based HTTP server"
             "php-apache: Apache SAPI for PHP"
-            "shellinabox: Web-based ssh/telnet client")
-conflicts=("${_pkgname}"
-           "zabbix-agent")
-backup=("etc/zabbix/zabbix_server.conf"
-        "etc/zabbix/zabbix_agentd.conf")
-install="${_pkgname}.install"
+            "shellinabox-git: Web-based ssh/telnet client")
+conflicts=("${_pkgname}-server"
+           "${_pkgname}-agent")
+backup=("etc/${_pkgname}/${_pkgname}_server.conf"
+        "etc/${_pkgname}/${_pkgname}_agentd.conf")
+install="${_pkgname}-server.install"
 options=("emptydirs")
-source=("http://downloads.sourceforge.net/sourceforge/zabbix/zabbix-${pkgver}.tar.gz"
-        "${_pkgname}.install")
+source=("http://downloads.sourceforge.net/sourceforge/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
+        "${_pkgname}-server.install")
 md5sums=("9f8aeb11d8415585f41c3f2f22566b78"
          "ff761cbdafa70b6c4b26a39b8115ac64")
 sha1sums=("9090472e5f78fd828bf89d5558ceedd60db74443"
           "173b60c310ae9453a0e75429b0917ad8bbf31e6f")
 
 prepare() {
-cat << EOL > "${srcdir}/${_pkgname}.sudoers"
+cat << EOL > "${srcdir}/${_pkgname}-server.sudoers"
 # Defaults specification
 Defaults visiblepw
 
@@ -43,7 +46,7 @@ Defaults visiblepw
 zabbix ALL=(root) NOPASSWD: /usr/bin/nmap
 EOL
 
-cat << EOL > "${srcdir}/${_pkgname}.service"
+cat << EOL > "${srcdir}/${_pkgname}-server.service"
 [Unit]
 Description=Zabbix Server
 After=syslog.target network.target mysqld.service
@@ -60,7 +63,7 @@ PIDFile=/run/zabbix/zabbix_server.pid
 WantedBy=multi-user.target
 EOL
 
-cat << EOL > "${srcdir}/zabbix-agentd.service"
+cat << EOL > "${srcdir}/${_pkgname}-agentd.service"
 [Unit]
 Description=Zabbix Agent
 After=syslog.target network.target
@@ -76,11 +79,47 @@ PIDFile=/run/zabbix/zabbix_agentd.pid
 WantedBy=multi-user.target
 EOL
 
-cat << EOL > "${srcdir}/${_pkgname}.conf"
-d /run/zabbix 0755 zabbix zabbix
+cat << EOL > "${srcdir}/${_pkgname}-server.logrotate"
+/var/log/zabbix/zabbix_server.log {
+    monthly
+    rotate 12
+    compress
+    missingok
+    notifempty
+    create 0640 zabbix zabbix
+    sharedscripts
+}
 EOL
 
-  cd "${srcdir}/zabbix-${pkgver}"
+cat << EOL > "${srcdir}/${_pkgname}-agentd.logrotate"
+/var/log/zabbix/zabbix_agentd.log {
+    monthly
+    rotate 12
+    compress
+    missingok
+    notifempty
+    nocreate
+}
+EOL
+
+cat << EOL > "${srcdir}/${_pkgname}_traps.logrotate"
+/tmp/zabbix_traps.tmp {
+    monthly
+    rotate 12
+    compress
+    missingok
+    notifempty
+    create 0644 zabbix zabbix
+    sharedscripts
+}
+EOL
+
+cat << EOL > "${srcdir}/${_pkgname}-server.tmpfiles"
+d /run/zabbix 0755 zabbix zabbix
+f /tmp/zabbix_traps.tmp 0644 zabbix zabbix
+EOL
+
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   sed -i "s/\/usr\/local\/etc/\/etc\/zabbix/g"                                  $(grep -rl "/usr/local/etc"  "conf/" "man/")
   sed -i "s/# DBSocket=\/tmp\/mysql.sock/DBSocket=\/run\/mysqld\/mysqld.sock/g" $(grep -rl "# DBSocket=/tmp" "conf/"       )
   sed -i "s/# PidFile=\/tmp/PidFile=\/run\/zabbix/g"                            $(grep -rl "# PidFile=/tmp"  "conf/"       )
@@ -89,60 +128,65 @@ EOL
 }
 
 build() {
-  cd "${srcdir}/zabbix-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
   ./configure \
     --prefix=/usr \
     --bindir=/usr/bin \
     --sbindir=/usr/bin \
     --sysconfdir=/etc/zabbix \
-    --enable-ipv6 \
     --enable-server \
     --enable-agent \
-    --with-mysql \
+    --enable-ipv6 \
+    --with-${_dbtype} \
     --with-net-snmp \
     --with-openipmi \
     --with-libcurl \
-    --with-ssh2 \
-    --with-libxml2
+    --with-libxml2 \
+    --with-jabber \
+    --with-ssh2
 
   make || return 1
 }
 
 package() {
-  cd "${srcdir}/zabbix-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install || return 1
 
-  install -dm 0755 "${pkgdir}/usr/share/webapps/zabbix"
-  install -dm 0755 "${pkgdir}/usr/share/zabbix/snmptrap"
-  install -dm 0755 "${pkgdir}/usr/share/zabbix/database"
-  install -dm 0755 "${pkgdir}/usr/share/zabbix/zabbix_agentd"
+  install -dm 0755 "${pkgdir}/usr/share/webapps/${_pkgname}"
+  install -dm 0755 "${pkgdir}/usr/share/${_pkgname}/snmptrap"
+  install -dm 0755 "${pkgdir}/usr/share/${_pkgname}/database"
+  install -dm 0755 "${pkgdir}/usr/share/${_pkgname}/zabbix_agentd"
 
-  cp -r ${srcdir}/zabbix-${pkgver}/frontends/php/* ${pkgdir}/usr/share/webapps/zabbix/
-  chown -R 33:33 "${pkgdir}/usr/share/webapps/zabbix/"
-  find ${pkgdir}/usr/share/webapps/zabbix/ -type f -exec chmod 644 {} \;
-  find ${pkgdir}/usr/share/webapps/zabbix/ -type d -exec chmod 755 {} \;
+  cp -r ${srcdir}/${_pkgname}-${pkgver}/frontends/php/* ${pkgdir}/usr/share/webapps/${_pkgname}/
+  chown -R 33:33 "${pkgdir}/usr/share/webapps/${_pkgname}/"
+  find ${pkgdir}/usr/share/webapps/${_pkgname}/ -type f -exec chmod 644 {} \;
+  find ${pkgdir}/usr/share/webapps/${_pkgname}/ -type d -exec chmod 755 {} \;
 
   for _SQLFILE in {data,images,schema}.sql
   do
-    install -D -m 0644 "${srcdir}/zabbix-${pkgver}/database/mysql/${_SQLFILE}" \
-                       "${pkgdir}/usr/share/zabbix/database/${_SQLFILE}"
+    install -Dm 0644 "${srcdir}/${_pkgname}-${pkgver}/database/${_dbtype}/${_SQLFILE}" \
+                     "${pkgdir}/usr/share/${_pkgname}/database/${_SQLFILE}"
   done
   for _SNMPTRAPFILE in snmptrap.sh zabbix_trap_receiver.pl
   do
-    install -D -m 0755 "${srcdir}/zabbix-${pkgver}/misc/snmptrap/${_SNMPTRAPFILE}" \
-                       "${pkgdir}/usr/share/zabbix/snmptrap/${_SNMPTRAPFILE}"
+    install -Dm 0755 "${srcdir}/${_pkgname}-${pkgver}/misc/snmptrap/${_SNMPTRAPFILE}" \
+                     "${pkgdir}/usr/share/${_pkgname}/snmptrap/${_SNMPTRAPFILE}"
   done
   for _USERPARAMETERFILE in userparameter_{examples,mysql}.conf
   do
-    install -D -m 0644 "${srcdir}/zabbix-${pkgver}/conf/zabbix_agentd/${_USERPARAMETERFILE}" \
-                       "${pkgdir}/usr/share/zabbix/zabbix_agentd/${_USERPARAMETERFILE}"
+    install -Dm 0644 "${srcdir}/${_pkgname}-${pkgver}/conf/zabbix_agentd/${_USERPARAMETERFILE}" \
+                     "${pkgdir}/usr/share/${_pkgname}/zabbix_agentd/${_USERPARAMETERFILE}"
   done
-  install -dm 0750                                    "${pkgdir}/etc/sudoers.d"
-  install -dm 0755                                    "${pkgdir}/run/zabbix"
-  install -dm 0750                                    "${pkgdir}/var/log/zabbix"
-  install -Dm 0640 "${srcdir}/${_pkgname}.sudoers"    "${pkgdir}/etc/sudoers.d/${_pkgname}"
-  install -Dm 0644 "${srcdir}/${_pkgname}.conf"       "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
-  install -Dm 0644 "${srcdir}/${_pkgname}.service"    "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
-  install -Dm 0644 "${srcdir}/zabbix-agentd.service"  "${pkgdir}/usr/lib/systemd/system/zabbix-agentd.service"
+  for _LOGROTATE in ${_pkgname}{-server,-agentd,_traps}
+  do
+    install -Dm 0644 "${srcdir}/${_LOGROTATE}.logrotate" "${pkgdir}/etc/logrotate.d/${_LOGROTATE}"
+  done
+  install -dm 0750                                         "${pkgdir}/etc/sudoers.d"
+  install -dm 0755                                         "${pkgdir}/run/${_pkgname}"
+  install -dm 0750                                         "${pkgdir}/var/log/${_pkgname}"
+  install -Dm 0640 "${srcdir}/${_pkgname}-server.sudoers"  "${pkgdir}/etc/sudoers.d/${_pkgname}-server"
+  install -Dm 0644 "${srcdir}/${_pkgname}-server.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}-server.conf"
+  install -Dm 0644 "${srcdir}/${_pkgname}-server.service"  "${pkgdir}/usr/lib/systemd/system/${_pkgname}-server.service"
+  install -Dm 0644 "${srcdir}/${_pkgname}-agentd.service"  "${pkgdir}/usr/lib/systemd/system/${_pkgname}-agentd.service"
 }
