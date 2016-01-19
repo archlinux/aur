@@ -4,15 +4,15 @@
 _pkgbasename=klick
 pkgname=${_pkgbasename}-git
 pkgver=r174.c050710
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced command-line based metronome for JACK"
 arch=('i686' 'x86_64')
 url="http://das.nasophon.de/klick/"
 license=('GPL')
 depends=('jack' 'liblo' 'rubberband')
 makedepends=('scons' 'boost')
-provides=('${_pkgbasename}')
-conflicts=('${_pkgbasename}')
+provides=("${_pkgbasename}")
+conflicts=("${_pkgbasename}")
 source=("${_pkgbasename}::git://github.com/dsacre/klick.git")
 sha256sums=('SKIP')
 
