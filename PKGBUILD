@@ -15,9 +15,12 @@ conflicts=('caddy-git')
 [ "$CARCH" = 'x86_64' ] && _suffix='amd64' && _md5='947eaa98dd168832da04c1f4c2670e1a'
 [ "$CARCH" = 'armv6h' ] && _suffix='arm'   && _md5='5b1c6aab36e9a1e389386357a4110af1'
 
-source=("https://github.com/mholt/caddy/releases/download/v$pkgver/caddy_linux_$_suffix.tar.gz")
-md5sums=($_md5)
+source=("https://github.com/mholt/caddy/releases/download/v$pkgver/caddy_linux_$_suffix.tar.gz"
+        'caddy.service')
+md5sums=("$_md5"
+         '13772e64a93685262018194da32a6f1b')
 
 package() {
   install -Dm755 "$srcdir/caddy" "$pkgdir/usr/bin/caddy"
+  install -Dm644 "${srcdir}/caddy.service" "${pkgdir}/usr/lib/systemd/system/caddy.service"
 }

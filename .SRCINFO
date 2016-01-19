@@ -10,6 +10,9 @@ pkgbase = caddy
 	license = Apache
 	conflicts = caddy-git
 	source = https://github.com/mholt/caddy/releases/download/v0.8.1/caddy_linux_amd64.tar.gz
+	source = caddy.service
+	md5sums = 947eaa98dd168832da04c1f4c2670e1a
+	md5sums = 13772e64a93685262018194da32a6f1b
 
 pkgname = caddy
 
