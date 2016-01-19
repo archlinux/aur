@@ -2,7 +2,7 @@
 
 _pkgname=fs-uae-launcher
 pkgname=fs-uae-launcher-devel
-pkgver=2.7.6dev
+pkgver=2.7.7dev
 pkgrel=1
 pkgdesc="Launcher and configuration program for FS-UAE (development version)."
 arch=("any")
@@ -16,7 +16,7 @@ source=("http://fs-uae.net/devel/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 #source=("http://ppa.launchpad.net/fengestad/devel/ubuntu/pool/main/f/${_pkgname}/${_pkgname}_${pkgver}.orig.tar.gz")
 provides=("fs-uae-launcher")
 conflicts=("fs-uae-launcher")
-md5sums=('ff3490e1dcfef23fdc4e8d6c865dedfe')
+md5sums=('675c8723cc1f426fa1d813e86c4e3fdf')
 
 
 
@@ -29,6 +29,8 @@ build() {
 package() {
    cd ${_pkgname}-${pkgver}
    make install DESTDIR="${pkgdir}" prefix=/usr
+   # fix bug caused by included six
+   rm -rf "${pkgdir}"/usr/share/${_pkgname}/six
 }
 
 
