@@ -86,7 +86,7 @@ depends=('glibc')
 makedepends=('binutils') # for ar to unpack debian package
 conflicts=('pdksh') # I'm not sure why this is a conflict! There are many ksh clones. Why aren't they all in conflict?
 install='ksh.install'
-_verwatch=('http://www2.research.att.com/~astopen/cgi-bin/download.cgi?action=list&name=ast-base' '&nbsp;\([0-9-]\+\)&nbsp;&nbsp;BASE&nbsp;' 't')
+#_verwatch=('http://www2.research.att.com/~astopen/cgi-bin/download.cgi?action=list&name=ast-base' '&nbsp;\([0-9-]\+\)&nbsp;&nbsp;BASE&nbsp;' 't')
 
 # URL encoding, the sleazy way for the few characters we need!
 _opt_EPLUSERE="${_opt_EPLUSER// /%20}"
@@ -103,6 +103,8 @@ source=("http://${_opt_EPLUSERE}:${_opt_EPLPASS}@www2.research.att.com/~astopen/
         "http://http.us.debian.org/debian/pool/main/k/ksh/${_debfile}" # man page and misc files
 )
 
+source[1]="ast-base.2014-06-25.tgz::https://github.com/nathanmkaya/ksh-arch/blob/master/ast-base.2014-06-25.tgz?raw=true"
+
 # :; is to keep updpkgsums from removing all our sums
 :;sha256sums=('8852b9d37d5034e3780aeb5f963726381eeb4e08bb5bee1fbfa7e3f529c10e1b'
             '58588b07b076f05dbbd5f4f095d5753309a8356ba1e5475262ce77d6bff42dae'
@@ -115,10 +117,12 @@ source=("http://${_opt_EPLUSERE}:${_opt_EPLPASS}@www2.research.att.com/~astopen/
         "http://${_opt_EPLUSERE}:${_opt_EPLPASS}@www2.research.att.com/~astopen/download/tgz/ast-base.2012-08-01.tgz"
         "http://http.us.debian.org/debian/pool/main/k/ksh/${_debfile}" # man page and misc files
 )
+source[1]="http://download.openpkg.org/components/cache/nmake/ast-base.2012-08-01.tgz"
 :;sha256sums=('8852b9d37d5034e3780aeb5f963726381eeb4e08bb5bee1fbfa7e3f529c10e1b'
             '3bd668dbd922790f1d24c78e3522ef4816501e9cf80abf3c480f554c74f4dbac'
             '37495cc625a2174b22a43542acac1d69402ee4992ee084a84690546c5b932b39')
 fi
+source[0]="INIT.2014-12-24.tgz::https://github.com/nathanmkaya/ksh-arch/blob/master/INIT.2014-12-24.tgz?raw=true"
 # makepkg unpacking deb files into the src folder isn't particularly useful.
 noextract=("${_debfile}")
 
@@ -177,7 +181,7 @@ noextract=("${_debfile}")
 # -CJS
 
 # Return sorted list of all version numbers available (used by git-aurcheck)
-_vercheck() {
+_vercheck_disabled() {
   curl -s -l "${_verwatch[0]}" | grep -FB1 '>SOURCE<' | _getlinks "${_verwatch[2]}" | sed -ne "s:^${_verwatch[1]}"'$:\1:p' | tr '.' ':' | LC_ALL=C sort -n | tr ':' '.' # 1>&2
 }
 
@@ -229,78 +233,9 @@ prepare() {
   #sed -i -e 's:/usr/tmp:/tmp:g' 2>/dev/null `grep -l '/usr/tmp' 'src/cmd/nmake/Makerules.mk' 'src/cmd/tw/updatedb.sh' 'src/lib/libast/features/stdio' 'src/lib/libast/features/mmap' 'src/lib/libast/path/pathtemp.c'` || :
   sed -i -e 's:/usr/tmp:/var/tmp:g' 2>/dev/null `grep -l '/usr/tmp' 'src/cmd/nmake/Makerules.mk' 'src/cmd/tw/updatedb.sh' 'src/lib/libast/features/stdio' 'src/lib/libast/features/mmap' 'src/lib/libast/path/pathtemp.c'` || :
 
-if :; then
   # https://forums.opensuse.org/showthread.php/508185-GCC-5/page2
   # https://build.opensuse.org/package/view_file/home:Andreas_Schwab:Factory/ksh/cpp.patch?expand=1
   sed -i -e 's:$cc -E:$cc -E -P:g' 'src/cmd/INIT/iffe.sh'
-else
-
-  # fix L_tmpname, sizeof("/tmp")+15 = 20 (not 19) but we'll use 25 like the 
-  # rest of the code.
-  # This doesn't work. Despire being in src, something in make overwrites this file.
-  # (This was early in the build attempts before I learned how iffe works.
-  #  This claim may be wrong. Other iffe/FEATURE files are source files and 
-  #  cannot be modified by make so this one shouldn't be modified either.)
-  #if ! grep '^\t<<"#define L_tmpnam">> L_tmpnam$' 'src/lib/libast/features/stdio'; then
-  #  sed -i -e 's:^\(\t<<"#define L_tmpnam\)\(">> L_tmpnam\)$:\1 (25)\2:g' 'src/lib/libast/features/stdio'
-  #fi
-  # Until that's figured out, I'll just enable the defaults in the .c files.
-  sed -i -e 's:^#ifndef L_tmpnam$:#undef L_tmpnam\n &:g' \
-    'src/lib/libast/comp/tmpnam.c' 'src/lib/libast/path/pathtmp.c'
-
-  # These patches are worthless. They were a desperate attempt to make 
-  # INIT.2013-05-24 build ast-base.2012-08-01. All I had to do was use the
-  # beta INIT and the release ast-base builds fine. No sense making bad changes
-  # to the ast-base source code when the problems are in INIT and the AT&T devs
-  # have already fixed them. This is left here as a reminder that for code
-  # that formerly compiled, most build problems are from Linux evolution 
-  # breaking INIT and not that unchanged formerly working code has somehow
-  # broken itself.
-  if ! : && [ "${_opt_InstallBETA}" -eq 0 ]; then
-    # These patches are very bad. Unfortunately the nmake files are so terse
-    # that brute force is the only way I can find to get this stuff to work.
-
-    # Library -ldbm seems to have been replaced with -ldb + -lm, fixed in BETA
-    sed -i -e 's: -ldbm: -ldb -lm:g' `grep -l ' -ldbm' 'src/cmd/coshell/Makefile' 'src/cmd/cs/Makefile'` || :
-
-    # The -l switches on the :LIBRARY: line are being ignored.
-    sed -i -e 's|^SHCOMP := shcomp.*$|CCFLAGS = -lm\n &|g' 'src/cmd/ksh93/Makefile'
-
-    # The -l switches on the :LIBRARY: line are being ignored.
-    #sed -i -e 's:^CCFLAGS = \(.*\)$:CCFLAGS= \1 -ldl -ldld:g' 'src/lib/libdll/Makefile'
-  fi
-
-  # Due to the gcc -I- -iquote problem this appears to include the non
-  # prototyped expr.h in src rather than the prototyped version in arch.
-  # On Arch Linux it seems to work. The key feature of -I- is that it removes 
-  # "." as a search folder from #include "expr.h". The build makes a modified 
-  # eval.h in the arch/ folder and uses '-Iarch -I-' to force the arch folder 
-  # in front of "." so that one is taken even though there's a eval.h right 
-  # next to sources.c.
-  # This key functionality is not at all duplicated by -iquote so eliminating 
-  # -I- hasn't been done. This technique is used so that each target in the 
-  # product group ast was extracted from can make custom mods to standard tools 
-  # without changing the sources. 
-  # The only technique that works reasonably well is to use #include <eval.h> 
-  # but that requires changing the sources, something you can't really do on a 
-  # multi core build or when the source files are on a network share and many 
-  # tool chains are being built at once. Another way is to make a proto eval.h 
-  # with an alternate name that is never available but that forces every target 
-  # to make custom mods. Smaller targets may not want the extra burden.
-
-  # Once you see how -I- is being used you get an idea of how much damage gcc
-  # has done to the large tool chains by deprecating -I-.
-  # http://stackoverflow.com/questions/11605515/how-do-i-prevent-a-quoted-include-from-searching-the-directory-of-the-current-so
-  # https://gcc.gnu.org/ml/gcc-help/2005-04/msg00341.html
-
-  # Looks like someone changed a #define to a typedef, added another #define,
-  # but forgot to fix the defined() for the include upline.
-  sed -i -e 's:defined(YYSTYPE):defined(YYSTYPE_IS_DECLARED):g' \
-    'src/lib/libexpr/expr.h'
-
-  # The simplicity of these patches do not adequately reflect the difficulty 
-  # I had in finding them.
-fi
   set +u
 }
 
