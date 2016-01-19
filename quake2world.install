@@ -1,0 +1,9 @@
+# just a message about the data files
+post_install() {
+    echo ">>> If you want to play quake2world you will also need the data files."
+    echo ">>> Install the package quake2world-data-git."
+}
+
+op=$1
+shift
+$op $*
