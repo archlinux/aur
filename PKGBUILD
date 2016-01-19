@@ -6,7 +6,7 @@
 pkgname=i2c-tools-git
 _pkgname=i2c-tools
 pkgver=r290.9726bed
-pkgrel=1
+pkgrel=2
 pkgdesc="Heterogeneous set of I2C tools for Linux that used to be part of lm-sensors."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.lm-sensors.org/wiki/I2CTools"
@@ -28,7 +28,7 @@ pkgver() {
 build() {
   cd "${srcdir}/${pkgname}"
   make clean
-  make EXTRA=eeprog
+  make -j1 EXTRA=eeprog
 }
 
 package() {
