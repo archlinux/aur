@@ -3,16 +3,14 @@
 
 pkgbase=tlp-git
 pkgname=('tlp-git' 'tlp-rdw-git')
-pkgver=0.8.r34.788c4df
+pkgver=0.8.r51.f54b606
 pkgrel=1
 arch=('any')
 url='http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html'
 license=('GPL2' 'GPL3')
 makedepends=('git')
-source=('tlp::git+https://github.com/linrunner/TLP.git'
-        '0001-Fix-man-path.patch')
-sha256sums=('SKIP'
-            'f5a6e1d417fff03ca37a12e6203c2a53d0b266ceedc5ad21e51e57e686d601bf')
+source=('tlp::git+https://github.com/linrunner/TLP.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd tlp
@@ -20,12 +18,6 @@ pkgver() {
   tag='0.8'
 
   echo "$(git describe --tags | sed 's/-/.r/; s/-g/./')"
-}
-
-prepare() {
-  cd tlp
-
-  patch -Np1 -i ../0001-Fix-man-path.patch
 }
 
 package_tlp-git() {
