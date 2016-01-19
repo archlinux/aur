@@ -6,7 +6,6 @@ pkgrel=1
 pkgdesc="This webapp is a desktop password manager compatible with KeePass databases."
 arch=('x86_64')
 url="https://github.com/antelle/keeweb"
-makedepends=('imagemagick')
 license=('MIT')
 source=(
     "${url}/releases/download/v${pkgver}/KeeWeb.linux.x64.zip"
@@ -25,9 +24,9 @@ package(){
     cp --preserve=mode -r * "${pkgdir}"/usr/share/${pkgname}
     rm ${pkgdir}/usr/share/${pkgname}/KeeWeb.linux.x64.zip
 
-    for res in 128x128 16x16 256x256 32x32 48x48; do
+    for res in 128x128; do
         install -dm755 "${pkgdir}/usr/share/icons/hicolor/${res}/apps"
-        convert -resize ${res} -depth 8 "${pkgdir}/usr/share/${pkgname}/resources/app/icon.png" "${pkgdir}/usr/share/icons/hicolor/${res}/apps/keeweb.png"
+        install -Dm755 "${pkgdir}/usr/share/${pkgname}/resources/app/icon.png" "${pkgdir}/usr/share/icons/hicolor/${res}/apps/keeweb.png"
     done
 
     install -dm755 "${pkgdir}/usr/share/applications"
