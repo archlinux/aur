@@ -2,7 +2,7 @@
 
 pkgbase=python-tarantool
 pkgname=(python-tarantool python2-tarantool)
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='Python client library for Tarantool 1.6 Database'
 arch=(any)
@@ -10,7 +10,7 @@ url='https://github.com/tarantool/tarantool-python'
 license=(BSD)
 makedepends=(python-setuptools python2-setuptools python-msgpack python2-msgpack python-yaml python2-yaml python-six python2-six)
 source=(https://pypi.python.org/packages/source/t/tarantool/tarantool-$pkgver.tar.gz)
-sha1sums=('9a8e4a23ca8bd2ad101d1e641752a4851655c725')
+sha1sums=('bce7a3ce6ebc62ab79d01f4bf34f40e681f1c834')
 
 prepare() {
   cp -a tarantool-$pkgver{,-py2}
