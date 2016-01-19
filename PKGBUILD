@@ -16,7 +16,7 @@ depends=(lib32-{'atk>=1.30.0','pango>=1.28.0','cairo>=1.10.0','gdk-pixbuf2>=2.22
          $_pkgbasename)
 options=('!libtool' '!docs')
 license=('LGPL')
-source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/2.24/gtk+-${pkgver}.tar.xz
+source=(https://download.gnome.org/sources/gtk+/2.24/gtk+-${pkgver}.tar.xz
         xid-collision-debug.patch)
 sha256sums=('0741c59600d3d810a223866453dc2bbb18ce4723828681ba24aa6519c37631b8'
             'd758bb93e59df15a4ea7732cf984d1c3c19dff67c94b957575efea132b8fe558')
