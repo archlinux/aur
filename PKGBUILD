@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Chrétien <chretien dot b +aur at gmail dot com>
 pkgname=benchmark
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A microbenchmark support library, by Google"
 arch=('any')
 url="https://github.com/google/benchmark"
@@ -20,7 +20,9 @@ prepare() {
 
   cmake .. -DCMAKE_BUILD_TYPE="Release" \
            -DCMAKE_INSTALL_PREFIX=/usr \
-           -DCMAKE_INSTALL_LIBDIR=lib
+           -DCMAKE_INSTALL_LIBDIR=lib \
+           -DBUILD_SHARED_LIBS=ON \
+           -DBENCHMARK_ENABLE_LTO=ON
 }
 
 build() {
