@@ -1,7 +1,7 @@
 # Maintainer: Konstantin Shalygin (k0ste@cn.ru)
 
 pkgname='virt-viewer'
-pkgver='3.0'
+pkgver='3.1'
 pkgrel='1'
 pkgdesc='Lightweight interface for interacting with the graphical display of virtualized guest OS'
 arch=('any')
@@ -10,7 +10,7 @@ depends=('spice' 'libvirt' 'libxml2' 'spice-gtk3' 'spice-protocol' 'gtk-vnc')
 makedepends=('libtool' 'intltool')
 license=('GPL')
 source=("https://fedorahosted.org/released/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('6331fd64ef9e999e0943844ddc0f89d35bd91bcc9c8e919f7274500930e97144')
+sha256sums=('be4e49470b650fc22513c2c01f2e13e30ee2d494d0d7b319b6f414ca781078c7')
 install="${pkgname}.install"
 
 build() {
