@@ -1,15 +1,16 @@
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
 # Contributor: Wes Brown <wesbrown18@gmail.com>
 pkgname=python2-dpkt
-pkgver=1.8.r98
-pkgrel=3
+_pkgname=dpkt
+pkgver=1.8.6.2
+pkgrel=1
 pkgdesc="This is a Python library for interacting with and creating packets."
 arch=('i686' 'x86_64')
 url=("https://github.com/kbandla/dpkt")
 license=('custom')
 depends=('python2')
-source=("https://github.com/kbandla/dpkt/archive/${pkgver}.tar.gz")
-md5sums=('79922d79eaaad5673520d810f242b95e')
+source=("https://pypi.python.org/packages/source/d/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+md5sums=('ada8a7477f67ffa0cf4042e6138a6fed')
 
 package() {
   cd "${srcdir}/dpkt-${pkgver}"
