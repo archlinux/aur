@@ -1,9 +1,9 @@
-# $Id: PKGBUILD
-# 2015.03.13  one more patch from gentoo
+# Maintainer: Behnam Momeni <sbmomeni [at the] gmail [dot] com>
+# Contributor: Sirocco <sirocco at ngs dot ru>
 
 pkgname=bombono-dvd
 pkgver=1.2.2
-pkgrel=6
+pkgrel=7
 pkgdesc="DVD authoring program with nice and clean GUI"
 arch=('i686' 'x86_64')
 url="http://www.bombono.org"
@@ -16,7 +16,8 @@ conflicts=('bombono-dvd-git')
 source=(http://downloads.sourceforge.net/bombono/$pkgname-$pkgver.tar.bz2
         fix_ffmpeg_codecid.patch bombono-dvd-1.2.2-ffmpeg26.patch
         fix_ptr2bool_cast.patch fix_c++11_literal_warnings.patch fix_crefoftemp_bug.patch
-        autoptr2uniqueptr.patch stream_bool_cast.patch)
+        autoptr2uniqueptr.patch stream_bool_cast.patch
+        fix_deprecated_boost_api.patch)
 install=bombono-dvd.install
 sha256sums=('3ffaadc803dc2526d2805629ee928800ce150cb2e6a40b6724d898c76366f68b'
             'decc8f9261b0fcd18780080438c9fc4297d56a281355f195a5dee9a92abf474a'
@@ -25,7 +26,8 @@ sha256sums=('3ffaadc803dc2526d2805629ee928800ce150cb2e6a40b6724d898c76366f68b'
             '31dfc5400d450490a53bbd386bafb59d68a9a2d6f9036755419d3be035aa87be'
             '0ea8ad5ccf64d30d0463e9bde5b07abdedd00e2da2fa7f3f72de99aa3915a64c'
             '9214f838377cdf35bf1f151e4eaac10952049ccff4d74ca485fc8b6f05bc8ba4'
-            '62d0f56ab4c2512bf004756426da6bf63cc0bd134ae6bc60304cc20116277e27')
+            '62d0f56ab4c2512bf004756426da6bf63cc0bd134ae6bc60304cc20116277e27'
+            '8abd4e79a34a4d919060443439127cca95412d79534eef6554c300f55a0425ed')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -36,6 +38,7 @@ prepare() {
   patch -Np1 -i "${srcdir}/fix_crefoftemp_bug.patch"
   patch -Np1 -i "${srcdir}/autoptr2uniqueptr.patch"
   patch -Np1 -i "${srcdir}/stream_bool_cast.patch"
+  patch -Np1 -i "${srcdir}/fix_deprecated_boost_api.patch"
   # python2 fix
   for file in $(find . -name '*.py' -print); do
      sed -i 's_#!.*/usr/bin/python_#!/usr/bin/python2_' $file
@@ -58,7 +61,7 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver}"
-  scons  PREFIX="/usr" DESTDIR="$pkgdir" CPPFLAGS="-std=c++11 -DBOOST_SYSTEM_NO_DEPRECATED -DBOOST_FILESYSTEM_VERSION=3" USE_EXT_BOOST=1
+  scons  PREFIX="/usr" DESTDIR="$pkgdir" CPPFLAGS="-std=c++11 -DBOOST_SYSTEM_NO_DEPRECATED -DBOOST_FILESYSTEM_NO_DEPRECATED -DBOOST_FILESYSTEM_VERSION=3" USE_EXT_BOOST=1
 }
 
 package() {
