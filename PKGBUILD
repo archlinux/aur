@@ -35,3 +35,5 @@ package() {
   make INSTALL_ROOT="$pkgdir" install
   sed -i '/^QMAKE_PRL_BUILD_DIR =/d' "$pkgdir/usr/lib/libQt5Charts.prl"
 }
+
+# vim:set ts=2 sw=2 et:
