@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Celtx
+Comment=Solution for media pre-production and collaboration
+Exec=/opt/celtx/celtx
+Icon=/opt/celtx/icons/default48.png
+Type=Application
+Terminal=false
+Categories=Office;
