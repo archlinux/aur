@@ -1,6 +1,4 @@
 # Maintainer: Alfredo Ramos <alfredo dot ramos at yandex dot com>
-# Contributor: huiyiqun <huiyiqun@gmail.com>
-# Contributor: Thomas Nordenmark <t.nordenmark@gmail.com>
 
 pkgbase=tomorrow-theme
 pkgname=("${pkgbase}-vim-git" "${pkgbase}-qtcreator-git")
