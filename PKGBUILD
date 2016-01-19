@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=claws-mail-git
-pkgver=3.13.0.r104.g0000265
+pkgver=3.13.2.r0.g60ad263
 pkgrel=1
 pkgdesc='A GTK+ based e-mail client - git checkout'
 arch=('i686' 'x86_64')
