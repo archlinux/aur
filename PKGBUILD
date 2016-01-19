@@ -7,6 +7,7 @@ pkgdesc="Rendering Intelligence Very Easily"
 arch=('any')
 license=('MIT')
 depends=('python2' 'python-six' 'python2-six' 'python-setuptools' 'python2-setuptools')
+conflicts=('python-rivescript-git')
 url=('https://pypi.python.org/pypi/rivescript')
 source=('https://pypi.python.org/packages/source/r/rivescript/rivescript-1.8.1.tar.gz')
 md5sums=('86cba9b7b1cf846d83d61f8ddeafa386')
