@@ -3,7 +3,7 @@
 
 pkgbase=dolphin-emu-git
 pkgname=('dolphin-emu-git' 'dolphin-emu-cli-git' 'dolphin-emu-qt-git')
-pkgver=4.0.2.r8133.8b3c2c1
+pkgver=4.0.2.r8727.d134858
 pkgrel=1
 pkgdesc='A GameCube / Wii / Triforce emulator'
 arch=('x86_64')
@@ -34,7 +34,8 @@ build() {
   cmake .. \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DENABLE_LTO='TRUE' \
-    -DENABLE_QT='TRUE' \
+    -DENABLE_QT2='TRUE' \
+    -DENABLE_SDL='TRUE' \
     -DUSE_SHARED_ENET='TRUE'
   make
 }
@@ -46,7 +47,7 @@ package_dolphin-emu-git() {
   cd dolphin-emu/build
 
   make DESTDIR="${pkgdir}" install
-  rm -rf "${pkgdir}"/usr/bin/dolphin-emu-{nogui,qt}
+  rm -rf "${pkgdir}"/usr/bin/dolphin-emu-{nogui,qt2}
 }
 
 package_dolphin-emu-cli-git() {
@@ -64,7 +65,7 @@ package_dolphin-emu-qt-git() {
   cd dolphin-emu/build
 
   install -dm 755 "${pkgdir}"/usr/bin
-  install -m 755 Binaries/dolphin-emu-qt "${pkgdir}"/usr/bin/
+  install -m 755 Binaries/dolphin-emu-qt2 "${pkgdir}"/usr/bin/
 }
 
 # vim: ts=2 sw=2 et:
