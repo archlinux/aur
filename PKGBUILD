@@ -2,32 +2,24 @@
 # Maintainer: Jose Riha < jose 1711 gmail com >
 
 pkgname=scrabble3d
-pkgver=3.1.2_1
-pkgrel=2
+pkgver=3.1.4_1
+pkgrel=1
 pkgdesc="Highly customizable Scrabble game (classic, SuperScrabble, 3D games)"
 depends=(gtk2)
 arch=('i686' 'x86_64')
-if [ "${CARCH}" = 'i686' ]
-	then
-	_arch=i386
-	else
-	_arch=x86_64
-fi
 url="http://scrabble.sourceforge.net/wiki/"
 license=('GPL')
 
-source=(http://downloads.sourceforge.net/project/scrabble/Main_Program/Linux/Scrabble3D-${_arch}.deb)
+source_i686=(http://downloads.sourceforge.net/project/scrabble/Main_Program/Linux/Scrabble3D-i386.deb)
+source_x86_64=(http://downloads.sourceforge.net/project/scrabble/Main_Program/Linux/Scrabble3D-x86_64.deb)
 
-if [  "${CARCH}" = 'i686' ]; then
-md5sums=('1c6c864ec1f9d26abd08c04af3d5a811')
-else
-md5sums=('1591c94eb804b61d5f502cfa58dc0859')
-fi
+md5sums_i686=('3d5e1ae45fbdac02f9ba7ca6740cb5b8')
+md5sums_x86_64=('406e6cb558c4f440f3db4aeae48b2149')
 
 package() {
   cd "${srcdir}"
 
   ar x Scrabble3D-*.deb
-  tar xf data.tar.gz -C ${pkgdir}
+  tar xJf data.tar.xz -C ${pkgdir}
   chmod -R 755 ${pkgdir}/usr
 }
