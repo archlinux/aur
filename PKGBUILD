@@ -2,7 +2,7 @@
 
 pkgname=storm-launcher
 pkgver=1.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Software to control Dream Cheeky O.I.C Storm & Thunder USB Missile Launchers"
 arch=('i686' 'x86_64')
 url="https://github.com/7CTech/stormLauncher"
@@ -20,19 +20,19 @@ source=("$pkgname::https://github.com/7CTech/stormLauncher/archive/$pkgver.zip")
 sha256sums=('88f17ea88fa6fb663186f34620e94ffcb90281c5735b076012926379db2b8b88')
 
 pkgver() {
-  cd "$srcdir/stormLauncher-1.1"
+  cd "$srcdir/stormLauncher-$pkgver"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/stormLauncher-1.1"
+  cd "$srcdir/stormLauncher-$pkgver"
   mv stormLauncher.py stormLauncher
   chmod +x stormLauncher
   chmod +x stormLauncher-polkit
 }
 
 package() {
-  cd "$srcdir/stormLauncher-1.1"
+  cd "$srcdir/stormLauncher-$pkgver"
   install -Dm755 stormLauncher 		"$pkgdir/usr/bin/stormLauncher"
   install -Dm755 stormLauncher-polkit 	"$pkgdir/usr/bin/stormLauncher-polkit"
   install -Dm644 stormLauncher.png 	"$pkgdir/etc/stormLauncher/stormLauncher.png"
