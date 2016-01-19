@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=hawaii-shell
-pkgver=0.5.91
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Hawaii Shell"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -19,7 +19,7 @@ conflicts=('hawaii-shell-git')
 groups=('hawaii')
 options=('debug')
 source=("https://github.com/hawaii-desktop/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha1sums=('134c3340113fa051025f1169d9de92178cffcd40')
+sha1sums=('766a8bedbf00c3a25dac8d5a88483f757295d17e')
 
 prepare() {
 	mkdir -p build
@@ -34,7 +34,7 @@ build() {
 		-DQML_INSTALL_DIR=lib/qt/qml \
 		-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
 		-DCMAKE_BUILD_TYPE=RelWithDebInfo
-	make VERBOSE=1
+	make
 }
 
 package() {
