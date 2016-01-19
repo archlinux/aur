@@ -1,8 +1,9 @@
-# Maintainer: Max Roder <maxroder@web.de>
+# Maintainer: brent s. <bts[at]square-r00t[dot]net>
+# Past maintainer: Max Roder <maxroder@web.de>
 
 pkgname=weplab
 pkgver=0.1.5
-pkgrel=4
+pkgrel=5
 pkgdesc="A WEP encryption cracker"
 url="http://sourceforge.net/projects/weplab"
 arch=('x86_64' 'i686')
@@ -19,4 +20,3 @@ package() {
 	make DESTDIR=${pkgdir} install
 }
 
-# vim:set ts=2 sw=2 et:
