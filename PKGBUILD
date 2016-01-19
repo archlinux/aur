@@ -7,7 +7,7 @@ pkgdesc="a library for guessing information from video filenames"
 arch=('any')
 url="http://pypi.python.org/pypi/${_pythonmod}"
 license=('GPL3')
-provides=python2-guessit-${pkgver}
+provides=("python2-guessit=${pkgver}")
 conflicts=('python2-guessit' 'pythton2-guessit-git')
 depends=('python2' 'python2-rebulk>=0.6.4' 'python2-regex' 'python2-babelfish>=0.5.5' 'python2-dateutil')
 makedepends=('python2-setuptools')
