@@ -5,7 +5,7 @@
 
 pkgname=flexget-git
 _pkgname=Flexget
-pkgver=1.2.423.r7163.5e871a8
+pkgver=1.2.432.r7289.3418a1b
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -34,7 +34,7 @@ depends=('python2'
          'python2-jsonschema>=2.0' #AUR#
          'python2-tmdb3' #AUR#
          'python2-path>=5.1' #AUR#
-         'python2-guessit<0.10.4'
+         'python2-guessit>=2.0rc5'
          'python2-apscheduler' #AUR#
          'python2-flask'
          'python2-flask-restful' #AUR#
