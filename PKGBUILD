@@ -1,16 +1,17 @@
-# Maintainer: TingPing <tingping@tingping.se>
+# Contributor: Lex Black <autumn-wind at web dot de>
+# Contributor: TingPing <tingping@tingping.se>
 
 pkgbase=brotli
 pkgname=('brotli' 'python-brotli' 'python2-brotli')
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc='Python compression library'
 arch=('i686' 'x86_64')
 license=('Apache')
 url='https://github.com/google/brotli'
 makedepends=('python' 'python2')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/google/$pkgbase/archive/v$pkgver.tar.gz")
-sha256sums=('634d1089ee21b35e0ec5066cb5e44dd097e04e679e1e8c50bffa2b0dc77c2c29')
+sha256sums=('5d49eb1a6dd19304dd683c293abf66c8a419728f4c6d0f390fa7deb2a39eaae2')
 
 build() {
 	cd "$pkgbase-$pkgver"
