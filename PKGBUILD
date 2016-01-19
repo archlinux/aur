@@ -1,17 +1,19 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
-# Ut Video Compiled from Git repository with assembly optimizations. Static library only.
+# Ut Video Compiled from Git repository with assembly (ASM) optimizations.
+# Assembly optimizations cannot be used in Ut Video shared library and thus
+# only a static library is provided in this package.
 
 pkgname=libutvideo-asm-git
-pkgver=v14.2.0.r69.g36eb60c
+pkgver=v15.1.0.r64.g36eb60c
 pkgrel=1
-pkgdesc="A  lossless video codec (Git version, static lib only with asm optimizations)"
+pkgdesc="A  lossless video codec (Git version with ASM optimizations)"
 arch=('i686' 'x86_64')
 url="http://umezawa.dyndns.info/wordpress/"
 license=('GPL')
 makedepends=('git' 'nasm')
-provides=('libutvideo' 'libutvideo-git' 'utvideo' 'utvideo-git' 'libutvideo.a')
-conflicts=('libutvideo' 'libutvideo-git' 'utvideo' 'utvideo-git')
+provides=('libutvideo' 'libutvideo-git' 'libutvideo.a')
+conflicts=('libutvideo' 'libutvideo-git')
 options=('staticlibs')
 source=("$pkgname"::'git+https://github.com/qyot27/libutvideo.git')
 sha256sums=('SKIP')
@@ -20,21 +22,20 @@ pkgver() {
 	cd "${srcdir}/${pkgname}"
 
         # Git, tags available
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
+        # Using the most recent un-annotated tag reachable from the last commit: 
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 
 }
 
 build() {
 	cd "${srcdir}/${pkgname}"
-	
-	
-	# Detect architecture to set correct assembly optimizations
-	_arch=`uname -m`
+		
+	# Set correct assembly optimizations according to target architecture
 
-        if [ "$_arch" == "x86_64" ]; then
+        if [ "$CARCH" == "x86_64" ]; then
             _asmopt="--enable-asm=x64"
             
-        elif [ "$_arch" == "i686" ]; then
+        elif [ "$CARCH" == "i686" ]; then
             _asmopt="--enable-asm=x86"
             
         else
