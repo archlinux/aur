@@ -9,7 +9,7 @@ depends=('python' 'python-schedule' 'libnotify')
 makedepends=('python')
 license=('GPL3')
 source=('https://pypi.python.org/packages/source/p/py_time_widget/py_time_widget-1.1.tar.gz')
-md5sums=('0bee9afd0079fae16b0670ab26e63b80')
+md5sums=('b6b3757d982a1f651b5c48f569e1b2d7')
 
 build() {
     cd $srcdir/py_time_widget-1.1
