@@ -3,7 +3,7 @@
 # Contributor: Fina Miñano <cicely@algofacil.info>
 pkgname=mindi
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Create bootable disks or CD image with your system files, to allow system maintenance"
 arch=('i686' 'x86_64')
 url="http://www.mondorescue.org/"
@@ -28,7 +28,9 @@ package() {
   export CACHEDIR=/var/cache/${pkgname}
   export PKGBUILDMINDI="true"  
 
- ./install.sh 
+  sed -i -e 's@/sbin@/bin@g' install.sh
+  mkdir -p ${pkgdir}/usr/lib/mindi/rootfs/usr/bin
+  ./install.sh 
   DOCDIR_INST=${pkgdir}${DOCDIR}/${pkgname}
   install -d ${DOCDIR_INST}
   install -m 644 ChangeLog AUTHORS COPYING README README.* TODO INSTALL NEWS ${DOCDIR_INST}
