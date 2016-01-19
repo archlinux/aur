@@ -1,8 +1,8 @@
 # Maintainer: Thomas Gläßle <t_glaessleATgmxDOTnet>
 
 pkgname=madx-dev
-pkgver=5.02.07
-pkgrel=2
+pkgver=5.02.08
+pkgrel=1
 pkgdesc="Accelerator Optics simulation code, latest development release"
 url="http://cern.ch/mad"
 license=("custom")
@@ -17,7 +17,7 @@ tarball=madx-src.tgz
 sources=madx-${pkgver}
 
 source=("http://madx.web.cern.ch/madx/releases/${pkgver}/${tarball}")
-md5sums=('SKIP')
+md5sums=('eeb4242faf8ffeb1d195899e6362d4d4')
 
 prepare() {
     mkdir build
