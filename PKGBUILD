@@ -8,20 +8,20 @@
 
 pkgname=victory-icon-theme
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="An icon project by Darin"
 arch=('any')
 url="https://www.reddit.com/r/linux/comments/41jbjc/an_icon_theme_im_working_on_anyone_willing_to/"
 license=('GPL3')
-depends=('bash'
-	'lxde-icon-theme'
-	'tango-icon-theme'
-	'gnome-icon-theme'
-	'hicolor-icon-theme'
-	'fvwm-crystal'
-	'elementary-xfce-icons'
-	'elementary-icon-theme'
-	'humanity-icon-theme')
+makedepends=('bash')
+optdepends=('lxde-icon-theme: fallback icons'
+	'tango-icon-theme: fallback icons'
+	'gnome-icon-theme: fallback icons'
+	'hicolor-icon-theme: fallback icons'
+	'fvwm-crystal: fallback icons'
+	'elementary-xfce-icons: fallback icons'
+	'elementary-icon-theme: fallback icons'
+	'humanity-icon-theme: fallback icons')
 source=("https://drive.google.com/uc?export=download&id=0B4tmeufpN98QeUdab01IRzVaQkU")
 md5sums=('229600b74a43cabd3a395bfa8f6b3697')
 
