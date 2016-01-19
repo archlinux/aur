@@ -31,26 +31,6 @@ source_x86_64=("hib://${_gamepkg}"
 	"vox-exec")
 
 DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Manually download it to \"$(pwd)\", or set up a hib:// DLAGENT in /etc/makepkg.conf."; exit 1')
-#_char=\'
-#DLAGENTS=('https::/bin/echo %o > /tmp/arch && sed -i "s/.part//" /tmp/arch && /usr/bin/curl -s --cookie-jar /tmp/cjar --output /dev/null %u && cp /tmp/cjar ./ && /usr/bin/curl -sL --cookie /tmp/cjar --cookie-jar /tmp/cjar --data "username=$_humbleemail" --data "password=$_humblepassword" %u | grep -f /tmp/arch |grep -o -E "data-web=[^ ]+"| sed -e "s/data-web=\([^ ]*\)/\1/" > /tmp/url && sed -i "s/$_char//g" /tmp/url && /usr/bin/curl --cookie /tmp/cjar --cookie-jar /tmp/cjar -fLC -  --retry 3 --retry-delay 3 -o %o "$(</tmp/url)" && rm -f /tmp/{arch,url} || return 0'
-          #"http::/usr/bin/curl -sL %u | grep voxatron_${pkgver}_ | sed \"s/.*data-web='/url=/\" | sed \"s/' data-bt.*//\" | grep .tar.gz > /tmp/url && /usr/bin/curl -fLC -  --retry 3 --retry-delay 3 -o %o -K /tmp/url && rm /tmp/url")
-#
-#curl reference for update use:
-#curl -sL http://www.humblebundle.com/downloads?key=${_humblevoxatronkey} | grep voxatron_${pkgver}_ | sed -e \"s/.*data-web='/url=/\" | sed -e \"s/' data-bt.*//\" | grep .tar.gz > weblinks.txt
-
-#if [[ ! -f $SRCDEST/${source[0]%%:*} ]]; then
-    #if [[ -z $_humbleemail || -z $_humblepassword ]]; then
-        #if [[ -z $_humblevoxatronkey ]]; then
-            #msg "if you have bound your email and password to your account, "
-            #msg "please export the values _humbleemail and _humblepassword so"
-            #msg "that you can be logged in to download the game."
-            #echo
-            #msg "if you have not bound the key to an email, "
-            #msg "please export _humblevoxatronkey in your .bashrc"
-            #return 1
-        #fi
-    #fi
-#fi
 
 package(){
   cd "${srcdir}"
@@ -72,6 +52,6 @@ package(){
 md5sums_i686=('247a511e2f1572fff538c78d5bb68d4a'
               '184c021b52d3a9c8ac5f49435b4b93e0'
               'bb84f6fcd7cdb18eb417173a6f58e00e')
-md5sums_x86_64=('247a511e2f1572fff538c78d5bb68d4a'
+md5sums_x86_64=('f7bdba0edf8213cb5c7c9ffe638c5333'
                 '184c021b52d3a9c8ac5f49435b4b93e0'
-                'f7bdba0edf8213cb5c7c9ffe638c5333')
+                'bb84f6fcd7cdb18eb417173a6f58e00e')
