@@ -25,11 +25,9 @@ package(){
     cp --preserve=mode -r * "${pkgdir}"/usr/share/${pkgname}
     rm ${pkgdir}/usr/share/${pkgname}/KeeWeb.linux.x64.zip
 
-    #FIXME: should we generate thumbs ?
     for res in 128x128 16x16 256x256 32x32 48x48; do
         install -dm755 "${pkgdir}/usr/share/icons/hicolor/${res}/apps"
         convert -resize ${res} -depth 8 "${pkgdir}/usr/share/${pkgname}/resources/app/icon.png" "${pkgdir}/usr/share/icons/hicolor/${res}/apps/keeweb.png"
-        #ln -s "/usr/share/keeweb-desktop/resources/app/icon.png" "${pkgdir}/usr/share/icons/hicolor/${res}/apps/keeweb.png"
     done
 
     install -dm755 "${pkgdir}/usr/share/applications"
