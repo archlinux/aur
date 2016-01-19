@@ -3,7 +3,7 @@
 # Contributor (Arch): Ander <anderraso@gmail.com>
 
 pkgname=gnuhealth
-pkgver=2.8.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A free Health and Hospital Information System"
 arch=any
@@ -21,18 +21,18 @@ depends=(
           python2-pywebdav
           python2-qrcode 
           python2-vobject
-          "trytond>=3.4"
-          "trytond-account-invoice>=3.4"
-          "trytond-calendar>=3.4"
-          "trytond-country>=3.4"
-          "trytond-stock-lot>=3.4"
+          "trytond>=3.8"
+          "trytond-account-invoice>=3.8"
+          "trytond-calendar>=3.8"
+          "trytond-country>=3.8"
+          "trytond-stock-lot>=3.8"
 )
 source=(
   http://ftp.gnu.org/gnu/health/$pkgname-$pkgver.tar.gz
   http://ftp.gnu.org/gnu/health/$pkgname-$pkgver.tar.gz.sig
 )
 sha512sums=(
-  ae916daaa46d5e5572f6b7e78424f1606e8dbe22381de7b30e1b7f4194317b7f335c17b4fb5a2b7ffc338ae86c1bf2204fdcfe2116accb3124c18477930839fc
+  8859813722f811c62faaaf632dc1d3b3b4ff9a7a33a360a2ac7107fa90fd2a0ea0ff1b9055f240ba4299a00b25435302996d0f51ce766084a88c36cbe5f8e5cb
   SKIP
 )
 validpgpkeys=(
