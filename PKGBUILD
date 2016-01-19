@@ -19,5 +19,7 @@ build() {
 package() {
     cd $srcdir/py_time_widget-1.1
     python setup.py install --root="$pkgdir" --optimize=1
-    ln -s /usr/lib/python3.5/site-packages/py_time_widget/time_widget.py /usr/bin/py_time_widget
+    install -d ${pkgdir}/usr/bin/
+    mv ${srcdir}/py_time_widget-1.1/py_time_widget/time_widget.py ${pkgdir}/usr/bin/py_time_widget
+    #ln -s "py_time_widget/usr/lib/python3.5/site-packages/py_time_widget/time_widget.py" "${pkgdir}/usr/bin/py_time_widget"
 }
