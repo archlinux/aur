@@ -40,14 +40,14 @@ md5sums=('65675a1dbaa4810df0479dbcf62f0ba0'
          '0e883ad44f99da9bc7c23bc102800b62'
          'efd06bfa230cc2194b38e0c8939e72af'
          'e2cf69b204192b5889ceb5b4dedc66f7'
-         '673e0f4d21a19381a2eba8277ce7d4b1'
+	 '1777520d65cc545b5416ee2fed0cd45c'
          'b76fed6aae7b48c8ec0b756670ccde91')
 						   
 prepare(){
 	## https://sft.its.cern.ch/jira/browse/ROOT-6924
 	cd ${pkgname}-${pkgver}
 
-	#patch -p1 < ${srcdir}/python3.diff
+	patch -p1 < ${srcdir}/python3.diff
 	#patch -p1 < ${srcdir}/param.diff
 	2to3 -w etc/dictpch/makepch.py 2>&1 > /dev/null
 
