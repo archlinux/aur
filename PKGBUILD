@@ -9,6 +9,7 @@ arch=('any')
 url="http://javacc.java.net/"
 license=('BSD')
 depends=('java-environment' 'apache-ant')
+makedepends=('subversion')
 _svn_tag="release_6_1_3"
 source=("svn+https://svn.java.net/svn/javacc~svn/tags/$_svn_tag")
 sha256sums=('SKIP')
