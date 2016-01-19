@@ -1,9 +1,10 @@
-# Maintainer: kevku <kevku@gmx.com>
+# Maintainer: brent s. <bts[at]square-r00t[dot]net>
+# Past maintainer: kevku <kevku@gmx.com>
 # Contributor: ajs124 < ajs ÄT online DOT de >
 
 
 pkgname=wifite-mod-pixiewps-git
-pkgver=46.39371b5
+pkgver=67.cb8a19e
 pkgrel=1
 pkgdesc="A tool to attack multiple WEP and WPA encrypted networks at the same time mod with Pixie Dust Attack support"
 arch=(any)
@@ -19,14 +20,14 @@ source=($pkgname::git+https://github.com/aanarchyy/wifite-mod-pixiewps.git)
 sha256sums=('SKIP')
 
 pkgver() {
-	cd $pkgname
+	cd ${pkgname}
         echo `git rev-list --count master`.`git rev-parse --short master`
 }
 
 prepare() {
-	sed -i 's|^#!/usr/bin/python$|#!/usr/bin/python2|' $pkgname/wifite-ng
+	sed -i 's|^#!/usr/bin/python$|#!/usr/bin/python2|' ${pkgname}/wifite-ng
 }
 
 package() {
-	install -D -m755 $pkgname/wifite-ng ${pkgdir}/usr/bin/wifite
+	install -D -m755 ${pkgname}/wifite-ng ${pkgdir}/usr/bin/wifite
 }
