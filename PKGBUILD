@@ -1,6 +1,6 @@
 # Maintainer: Gabriel Jülke <pyriand3r at gmail dot com>
 
-_pkgname=mopidy-audioaddict
+_pkgname=mopidy-audioaddict-git
 pkgname=${_pkgname}-git
 pkgver=1.0.0.r0.g07487f8
 pkgrel=1

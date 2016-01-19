@@ -1,4 +1,4 @@
-pkgbase = mopidy-audioaddict-git
+pkgbase = mopidy-audioaddict
 	pkgdesc = Mopidy extension for playing music using the audioaddict service
 	pkgver = 1.0.0
 	pkgrel = 1
