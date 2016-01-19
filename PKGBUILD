@@ -7,7 +7,6 @@ pkgdesc="The first true cross-platform Sandbox MMO"
 url="https://albiononline.com/"
 arch=('i686' 'x86_64')
 license=('custom')
-makedepends=('unzip')
 depends=('libgl' 'gstreamer0.10-good')
 source=("https://live.albiononline.com/clients/${pkgver}/albion-online-setup" "albiononline.desktop")
 
