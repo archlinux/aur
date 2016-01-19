@@ -1,0 +1,8 @@
+u vdr 666 vdr /home/vdr
+m vdr audio
+m vdr lp
+m vdr optical
+m vdr storage
+m vdr video
+m vdr power
+m vdr uucp
