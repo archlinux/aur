@@ -8,6 +8,8 @@ arch=('i686' 'x86_64')
 url="https://github.com/skilion/onedrive"
 license=('GPL3')
 depends=('dmd' 'curl' 'sqlite')
+provides=('onedrive')
+conflicts=('onedrive')
 source=("${pkgname}::git+https://github.com/skilion/onedrive.git")
 sha256sums=('SKIP')
  
