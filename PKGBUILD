@@ -1,8 +1,9 @@
-# Maintainer: Max Roder <maxroder@web.de>
+# Maintainer: brent s. <bts[at]square-r00t[dot]net>
+# Past maintainer: Max Roder <maxroder@web.de>
 
 pkgname='wpscrack'
 pkgver='0.0.1'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Prove of concept tool to brute force WPS - external registrar PIN of wlan access points'
 url='http://sviehb.wordpress.com'
 arch=('any')
@@ -20,4 +21,3 @@ package() {
 	install -Dm755 wpscrack.py ${pkgdir}/usr/bin/wpscrack
 }
 
-# vim:set ts=2 sw=2 et:
