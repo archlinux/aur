@@ -11,7 +11,7 @@ conflicts=('pioneer-bin' 'pioneer-git')
 depends=('libsigc++' 'sdl2_image' 'freetype2' 'libvorbis' 'assimp' 'hicolor-icon-theme' 'xdg-utils')
 makedepends=('gcc' 'git' 'automake' 'pkg-config' 'naturaldocs')
 source=("http://github.com/pioneerspacesim/pioneer/archive/$pkgver.zip" 'pioneer.desktop')
-md5sums=('941a65b7c4f90335475ee4b68264c139'
+md5sums=('837a6763c571b6b2cca8803115608e19'
          'f2301fe8850926b2d9bd89e3ab1158a8')
 install=pioneer.install
 
