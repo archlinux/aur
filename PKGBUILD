@@ -5,15 +5,15 @@ _module="${_name#python-}"
 _cmd="${_module%client}"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="3.1.0"
+pkgver="4.0.0"
 pkgrel="1"
 pkgdesc="CLI and Client Library for OpenStack Networking"
 arch=("any")
 url="https://github.com/openstack/${_name}"
 license=("Apache")
 makedepends=("python-pbr>=1.8" "python2-pbr>=1.8")
-source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('02c432b35806f4017c9041ac609a367e0423973cdb48706c3c807c8a56e9263d')
+source=("https://tarballs.openstack.org/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('13f4255b698bfcb19acbc8b2550ea10fd41f64e39b7951f0f2af8bec4f077191')
 
 prepare() {
     cd "${srcdir}/${_name}-${pkgver}"
@@ -21,36 +21,44 @@ prepare() {
 }
 
 package_python-neutronclient() {
-    depends=("python-babel>=1.3"
-             "python-cliff>=1.14.0"
-             "python-iso8601>=0.1.9"
-             "python-keystoneclient>=1.6.0"
-             "python-netaddr>=0.7.12"
-             "python-oslo-i18n>=1.5.0"
-             "python-oslo-serialization>=1.4.0"
-             "python-oslo-utils>=2.0.0"
-             "python-pbr>=1.6"
-             "python-requests>=2.5.2"
-             "python-simplejson>=2.2.0"
-             "python-six>=1.9.0")
+    depends=(
+        "python-pbr>=1.6"
+        "python-cliff>=1.15.0"
+        "python-debtcollector>=0.3.0"
+        "python-iso8601>=0.1.9"
+        "python-netaddr>=0.7.12"
+        "python-oslo-i18n>=1.5.0"
+        "python-oslo-serialization>=1.10.0"
+        "python-oslo-utils>=3.2.0"
+        "python-os-client-config>=1.13.1"
+        "python-keystoneauth1>=2.1.0"
+        "python-requests>=2.8.1"
+        "python-simplejson>=2.2.0"
+        "python-six>=1.9.0"
+        "python-babel>=1.3"
+    )
     cd "${srcdir}/${_name}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1
     install -Dm644 "tools/${_cmd}.bash_completion" "${pkgdir}/usr/share/bash-completion/completions/${_cmd}"
 }
 
 package_python2-neutronclient() {
-    depends=("python2-babel>=1.3"
-             "python2-cliff>=1.14.0"
-             "python2-iso8601>=0.1.9"
-             "python2-keystoneclient>=1.6.0"
-             "python2-netaddr>=0.7.12"
-             "python2-oslo-i18n>=1.5.0"
-             "python2-oslo-serialization>=1.4.0"
-             "python2-oslo-utils>=2.0.0"
-             "python2-pbr>=1.6"
-             "python2-requests>=2.5.2"
-             "python2-simplejson>=2.2.0"
-             "python2-six>=1.9.0")
+    depends=(
+        "python2-pbr>=1.6"
+        "python2-cliff>=1.15.0"
+        "python2-debtcollector>=0.3.0"
+        "python2-iso8601>=0.1.9"
+        "python2-netaddr>=0.7.12"
+        "python2-oslo-i18n>=1.5.0"
+        "python2-oslo-serialization>=1.10.0"
+        "python2-oslo-utils>=3.2.0"
+        "python2-os-client-config>=1.13.1"
+        "python2-keystoneauth1>=2.1.0"
+        "python2-requests>=2.8.1"
+        "python2-simplejson>=2.2.0"
+        "python2-six>=1.9.0"
+        "python2-babel>=1.3"
+    )
     cd "${srcdir}/${_name}-${pkgver}"
     python2 setup.py install --root="${pkgdir}" --optimize=1
     mv "${pkgdir}/usr/bin/${_cmd}" "${pkgdir}/usr/bin/${_cmd}2"
