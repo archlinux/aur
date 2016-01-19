@@ -2,7 +2,7 @@
 
 _pkgname=speedtest-cli
 pkgname="$_pkgname-git"
-pkgver=0.3.2.r12.g514b310
+pkgver=0.3.4.r0.g7b09d87
 pkgrel=1
 pkgdesc='Command line interface for testing internet bandwidth using speedtest.net - git devel branch'
 arch=('any')
