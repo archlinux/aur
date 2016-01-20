@@ -15,7 +15,7 @@ pkgdesc="open source IPsec implementation"
 url='http://www.strongswan.org'
 license=("GPL")
 arch=('i686' 'x86_64')
-depends=('curl' 'gmp' 'iproute2' 'openssl' 'sqlite')
+depends=('curl' 'gmp' 'iproute2' 'openssl' 'sqlite' 'libcap' 'libsystemd')
 conflicts=('openswan')
 options=(!libtool)
 backup=(
@@ -62,7 +62,8 @@ build() {
         --enable-ha --enable-vici --enable-swanctl --enable-systemd --enable-ext-auth \
         --disable-mysql --disable-ldap -enable-cmd --enable-forecast --enable-connmark \
 	--enable-aesni --enable-eap-ttls --enable-radattr --enable-xauth-pam --enable-xauth-noauth \
-	--enable-eap-dynamic --enable-eap-peap --enable-eap-tls --enable-chapoly --enable-unity 
+	--enable-eap-dynamic --enable-eap-peap --enable-eap-tls --enable-chapoly --enable-unity \
+	--enable-capabilities=libcap
 #	--enable-ruby-gems --enable-python-eggs
   make
 }
