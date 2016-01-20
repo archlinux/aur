@@ -16,8 +16,7 @@
 +_add_variable_or_fallback('SAGE_SHARE',      opj('$SAGE_LOCAL', 'share', 'sage'))
  
  _add_variable_or_fallback('SAGE_SRC',        opj('$SAGE_ROOT', 'src'))
--_add_variable_or_fallback('SITE_PACKAGES',   site.getsitepackages())
-+_add_variable_or_fallback('SITE_PACKAGES',   site.getsitepackages()+['/usr/lib/sage/site-packages'])
+ _add_variable_or_fallback('SITE_PACKAGES',   site.getsitepackages())
  _add_variable_or_fallback('SAGE_LIB',        SITE_PACKAGES[0])
  
  _add_variable_or_fallback('SAGE_CYTHONIZED', opj('$SAGE_SRC', 'build', 'cythonized'))

@@ -22,26 +22,24 @@ optdepends=('cython2: to compile cython code' 'jmol: 3D plots' 'sage-notebook: B
   'coin-or-cbc: COIN backend for numerical computations' 'nauty: for generating some classes of graphs'
   'buckygen: for generating fullerene graphs' 'plantri: for generating some classes of graphs' 'benzene: for generating fusenes and benzenoids'
   'modular_decomposition: modular decomposition of graphs' 'ffmpeg: to export animations to video' 'imagemagick: to show animations'
-  'coxeter3: Coxeter groups implementation' 'cryptominisat: SAT solver')
+  'coxeter3: Coxeter groups implementation' 'cryptominisat: SAT solver' 'gap-data: for computing Galois groups')
 makedepends=(cython2 boost ratpoints symmetrica fflas-ffpack python2-jinja coin-or-cbc
   mcqd coxeter3 cryptominisat modular_decomposition bliss-graphs tdlib) # libfes
 conflicts=(sagemath)
 provides=(sagemath sage-mathematics)
 source=("git://git.sagemath.org/sage.git#branch=develop" 
-        anal.h package.patch env.patch paths.patch clean.patch skip-check.patch test-optional.patch python-2.7.11.patch
+        anal.h package.patch env.patch paths.patch clean.patch skip-check.patch test-optional.patch python-2.7.11.patch contour.patch
         disable-fes.patch jupyter-path.patch)
 md5sums=('SKIP'
-         'd9a3e113ed147dcee8f89962a8dccd43'
          'a906a180d198186a39820b0a2f9a9c63'
          '9ba81f717ffd4e20b8b2f2a318307488'
-         '5ebdb6e6ac541f040a39f8d3fd9c8ee1'
-         'fd8e3e07f5b7318e6a7200a3c64f5bc2'
+         '93a9716afa561a928f4fd311582de064'
+         '10b9fd56538e0141b9cd476ca690aed6'
          '6d9ae0978ce6a05a0da2cafdfb178a09'
          '5947a420a0b1483f0cbc74c76895789b'
          'cdcabd475b80afe0534a5621e972736e'
          'ef927896f2071b442b1d07d7e69f5f3a'
-         'a83a3b1bc7fcb7cbf752a83a8311fc42'
-         'f333939ea6c41377b66407c81016cee4'
+         '930cb987f63fd465a3a7123b0f5c2b85'
          '4eb23a3c7363258bc9ba764d6e5512ba'
          '16b529194c6105c3364127bd8f1efa83')
 
@@ -82,6 +80,8 @@ prepare(){
   patch -p0 -i ../jupyter-path.patch
 # fix timeit with Python 2.7.11
   patch -p0 -i ../python-2.7.11.patch
+# fix contour plots with matplotlib 1.5.1
+  patch -p0 -i ../contour.patch
 
 # Upstream patches  
 # fix build against libfes 0.2 http://trac.sagemath.org/ticket/15209
