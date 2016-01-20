@@ -1,12 +1,11 @@
-# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
-# Contributor: Michael Healy <horsemanoffaith@gmail.com>
+# Maintainer: Michael Healy <horsemanoffaith@gmail.com>
 
 # vercheck-pkgbuild: auto
 # vercheck-ubuntu: name=${pkgname}, repo=xenial
 
 pkgname=unity-settings-daemon
 _actual_ver=15.04.1
-_extra_ver=+16.04.20151214
+_extra_ver=+16.04.20160119
 pkgver=${_actual_ver}${_extra_ver/\+/.}
 pkgrel=1
 pkgdesc="Unity Settings Daemon"
@@ -26,7 +25,7 @@ source=("https://launchpad.net/ubuntu/+archive/primary/+files/unity-settings-dae
         0001-Remove-accountsservice-dependency.patch
         0002-Add-gnome-settings-daemon-3.12-rfkill-plugin.patch
         0003-Use-GNOME-3.16-deprecated-schemas.patch)
-sha512sums=('33225c3517017b5a41133ddf685bad0d9888e2c629c09970de29aadc010a7610e4428496be2a8343b5f68be8615523a3c3072f2b5c238dedb26e514d4f816ac1'
+sha512sums=('48ffc44a4fd870bb3b6f475c55fd3b30bca9ca49d9cdb75a280932de16f25cbdf2dbb269c2801d088f5572da7adbd3b3ee8bf909e633f29c5278d17b8513986c'
             '57b35496544132c606fcfa50a72c3b2d1a61ef1327d60c3121f02baec65ffc0b9870d62a465ffb59ffac967a51b95a3ea2889fe9e845c9c045b774a0418fded7'
             '44d067ac6e813c8be20d9dba4980bcc27bf700b210e80f3256e2ba240406a34b9d1f208a2e1eda9d2d9a12ca0a5be9a21d54caeac43d8242aa0eb6ccaf439f6d'
             'ca017a06b8d8974205cdbf9fe3de99e29bc4fc791749f526c356998e093deed220d61c9ca8e75544782e105b8c4ba67e67a65a0f729a56522ccae5279b49544b')
