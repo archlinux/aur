@@ -21,27 +21,27 @@ sha256sums=('SKIP'
             '25d1842a4187a1933ff27833201cfd0879da71a50241860e32edecfc7e75f14f')
 
 pkgver() {
-        cd rtags
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd rtags
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd rtags
-	git submodule init
-	git submodule update
+    cd rtags
+    git submodule init
+    git submodule update
 }
 
 build() {
-	cd rtags
-	cmake . \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_INSTALL_PREFIX=/usr
-	make
+    cd rtags
+    cmake . \
+	  -DCMAKE_BUILD_TYPE=Release \
+	  -DCMAKE_INSTALL_PREFIX=/usr
+    make
 }
 
 package() {
-	cd rtags
-	make DESTDIR="${pkgdir}/" install
-        install -D --mode=644 ${srcdir}/rdm.service ${pkgdir}/usr/lib/systemd/user/rdm.service
-        install -D --mode=644 ${srcdir}/rdm.socket ${pkgdir}/usr/lib/systemd/user/rdm.socket
+    cd rtags
+    make DESTDIR="${pkgdir}/" install
+    install -D --mode=644 ${srcdir}/rdm.service ${pkgdir}/usr/lib/systemd/user/rdm.service
+    install -D --mode=644 ${srcdir}/rdm.socket ${pkgdir}/usr/lib/systemd/user/rdm.socket
 }
