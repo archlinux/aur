@@ -4,10 +4,11 @@
 
 pkgname=ted
 pkgver=2.23
-pkgrel=6
+pkgrel=7
 pkgdesc="Lightweight RTF text processor"
 arch=('i686' 'x86_64')
 url="http://www.nllgg.nl/Ted/"
+makedepends=('lsb-release')
 depends=('freetype2' 'desktop-file-utils' 'gtk2' 'libjpeg' 'libpaper' 'libpng' 'libtiff' 'libxpm' 'pcre' 'zlib')
 license=('GPL')
 install=$pkgname.install
