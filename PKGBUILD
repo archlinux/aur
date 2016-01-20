@@ -5,21 +5,33 @@
 
 pkgname=ledger
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A double-entry accounting system with a command-line reporting interface.'
 arch=('i686' 'x86_64')
-url='http://www.ledger-cli.org'
+url='https://github.com/ledger/ledger'
 license=('BSD')
-depends=('boost>=1.49' 'gmp>=4.2.2' 'mpfr>=2.4.0')
-makedepends=('cmake' 'python')
-options=('!libtool')
+depends=('python2' 'boost' 'libedit')
+makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ledger/${pkgname}/archive/v${pkgver}.tar.gz")
 md5sums=('eae070cbbc1a40a277f1394d72ef0fe6')
 
+prepare() {
+  cd ${srcdir}/${pkgname}-${pkgver}
+  sed -i '/enable_testing()\|add_subdirectory(test)/d' ./CMakeLists.txt
+  cmake ./ \
+  -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+  -DCMAKE_INSTALL_LIBDIR:PATH=lib \
+  -DCMAKE_SKIP_RPATH:BOOL=TRUE \
+  -DDISABLE_ASSERTS:BOOL=TRUE \
+  -DBUILD_DEBUG:BOOL=FALSE \
+  -DBUILD_DOCS:BOOL=FALSE \
+  -DUSE_PYTHON:BOOL=TRUE \
+  -DBUILD_EMACSLISP:BOOL=TRUE
+}
+
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  ./acprep --prefix=/usr opt update
-  cmake ./ -DCMAKE_INSTALL_LIBDIR=/usr/lib -DBUILD_EMACSLISP:BOOL=ON -DUSE_PYTHON:BOOL=ON -DBUILD_DOCS:BOOL=OFF
+  cd ${srcdir}/${pkgname}-${pkgver}
+  make
 }
 
 package() {
