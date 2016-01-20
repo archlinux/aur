@@ -2,8 +2,8 @@
 # Contributor: Sergio Conde <skgsergio@gmail.com>
 
 pkgname=discord
-pkgver=0.1.3
-pkgrel=6
+pkgver=0.1.4
+pkgrel=1
 pkgdesc='Discord linux App'
 arch=('i686' 'x86_64')
 url='https://github.com/XNBlank/discord-linux'
@@ -11,13 +11,13 @@ license=('MIT')
 depends=('gtk2')
 
 source=('Discord.desktop')
+
+source_i686=("https://github.com/XNBlank/discord-linux/archive/x86-${pkgver}.tar.gz")
+
+source_x86_64=("https://github.com/XNBlank/discord-linux/archive/x64-${pkgver}.tar.gz")
 sha256sums=('0826f0a07a567d3d966563151329e3e155bf47da528f0698bd677cb46cc468de')
-
-source_i686=("https://github.com/XNBlank/discord-linux/archive/x86-${pkgver}-AUR.tar.gz")
-sha256sums_i686=('6b8ceaee7e3463cc0c4f3c414be8993fda9fadd8345812747e3628d0f87264fd')
-
-source_x86_64=("https://github.com/XNBlank/discord-linux/archive/x64-${pkgver}-AUR.tar.gz")
-sha256sums_x86_64=('8a7189bf1edce61900dacce77a411bcb76256c9aa744f8d970ea1204c236e3b5')
+sha256sums_i686=('733352827f8c264a621383967c69ae98be40ddcfe0fb52e382a44b1787f79d46')
+sha256sums_x86_64=('6ea0b71d9f21e2ee3be3f91d615291a63f9b3258184417add8d8c2dc148c6f79')
 
 package() {
   case $CARCH in
@@ -27,7 +27,7 @@ package() {
 
   # Install files
   install -d "${pkgdir}/opt/discord"
-  cp -a "${srcdir}/${pkgname}-linux-${_arch}-${pkgver}-AUR/." "${pkgdir}/opt/discord/"
+  cp -a "${srcdir}/${pkgname}-linux-${_arch}-${pkgver}/." "${pkgdir}/opt/discord/"
 
   # Make binary executable
   chmod 755 "${pkgdir}/opt/discord/discord"
@@ -49,5 +49,5 @@ package() {
   rm "${pkgdir}/opt/discord/LICENSE"
 
   # Dirty hack... we should tell the developer to store settings in user home...
-  chmod 666 "${pkgdir}/opt/discord/resources/app/init.json"
+  # chmod 666 "${pkgdir}/opt/discord/resources/app/init.json"
 }
