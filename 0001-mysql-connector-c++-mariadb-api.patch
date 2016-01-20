@@ -1,0 +1,13 @@
+diff --git a/driver/nativeapi/libmysql_static_proxy.cpp b/driver/nativeapi/libmysql_static_proxy.cpp
+index 703c0f3..1569e55 100644
+--- a/driver/nativeapi/libmysql_static_proxy.cpp
++++ b/driver/nativeapi/libmysql_static_proxy.cpp
+@@ -319,7 +319,7 @@ LibmysqlStaticProxy::options(MYSQL * mysql, enum mysql_option option, const void
+ int
+ LibmysqlStaticProxy::get_option(MYSQL * mysql, enum mysql_option option, const void *arg)
+ {
+-#if MYSQL_VERSION_ID >= 50703
++#if not defined MARIADB_BASE_VERSION && MYSQL_VERSION_ID >= 50703
+ 	if (::mysql_get_option(mysql, option, arg)) {
+ 		throw sql::InvalidArgumentException("Unsupported option provided to mysql_get_option()");
+ 	} else {
