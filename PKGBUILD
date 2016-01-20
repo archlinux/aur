@@ -1,14 +1,13 @@
 # Maintainer:  Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=vultr
 pkgver=1.5
-pkgrel=2
-pkgdesc="A CLI and API client library"
+pkgrel=3
+pkgdesc="A CLI and API client library for Vultr.com cloud environment"
 arch=(x86_64 i686)
 url="https://jamesclonk.github.io/vultr/"
 license=('MIT')
 options=('!strip')
 _arch=
-_distdir=
 
 case $CARCH in
   x86_64) _arch=amd64 ;;
