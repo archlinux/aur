@@ -1,0 +1,13 @@
+diff -Naur nv.orig/nv.c nv/nv.c
+--- nv.orig/nv.c	2016-01-20 01:34:02.096524000 +0100
++++ nv/nv.c	2016-01-20 01:36:47.610695762 +0100
+@@ -574,7 +574,8 @@
+     void *v
+ )
+ {
+-    return seq_puts(s, s->private);
++    seq_puts(s, s->private);
++    return 0;
+ }
+ 
+ NV_DEFINE_PROCFS_SINGLE_FILE(text_file);
