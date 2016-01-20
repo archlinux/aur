@@ -1,10 +1,10 @@
 # Generated with gembuild (https://github.com/mfinelli/gembuild)
-# Maintainer: Mario Finelli <mario dot finelli at yahoo dot com>
+# Maintainer: Mario Finelli <mario at finel do li>
 
 _gemname=unf
 pkgname=ruby-$_gemname
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='This is a wrapper library to bring Unicode Normalization Form support to Ruby/JRuby.'
 arch=('any')
 url='https://github.com/knu/ruby-unf'
@@ -14,7 +14,7 @@ noextract=($_gemname-$pkgver.gem)
 depends=('ruby')
 makedepends=('rubygems')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
-sha256sums=('49a5972ec0b3d091d3b0b2e00113f2f342b9b212f0db855eb30a629637f6d302')
+sha256sums=('4999517a531f2a955750f8831941891f6158498ec9b6cb1c81ce89388e63022e')
 
 package() {
   cd "$srcdir"
