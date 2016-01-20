@@ -1,4 +1,5 @@
 *.zip
 pkg/
 src/
+*-cinnamon/
 *pkg.tar.xz
