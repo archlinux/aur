@@ -7,6 +7,5 @@ linux-*.tar.sign
 patch-*.xz
 patch-*.sign
 *.log
-*.patch
 *.src.tar.gz
 *.src.tar.gz.sig

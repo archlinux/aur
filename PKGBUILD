@@ -6,7 +6,7 @@ _basekernel=4.3
 _kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
 pkgver=${_basekernel}.3
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/yardenac/linux-linode"
 license=(GPL2)
@@ -17,13 +17,15 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar."{xz,sign}
         'config'
         'config.x86_64'
         'menu.lst'
-        'preset')
+        'preset'
+        'cve-2016-0728-fix.patch')
 sha512sums=('d25812043850530fdcfdb48523523ee980747f3c2c1266149330844dae2cba0d056d4ddd9c0f129f570f5d1f6df5c20385aec5f6a2e0755edc1e2f5f93e2c6bc' 'SKIP'
             '1b9cc343a589a7cdaa66284b3d7129be9869195f5b839dac0222050af42dc7a7451d4e2bf176c1a9939d6572a44a9b6f4534b0c7a79032881a9bc8f8f56c9c69' 'SKIP'
             'ad52875e372eb68a1b3dfd8e6f8ccbfd9e2cafec7d98b10e99d6a84f4c867979934c27ef70d0f34d159c7bd994e966c1824b9c1e41c950a3d3180a90bb7ce882'
             '2e1fb253d39dd2c9c8a44f0acebdd3a12400ab93b0035ef1962065085c2beb5b536b78ac1cacdad3606684513b45bbc0578b7255b9b9788dcc258963b9d6087b'
             '2beaa01dc9679a66ccbbca0f4abeb0f77956651e3f83f114030b2ef344a16240124a549ccee2588b6a1179be6a66b4a8dc931e2c15c4d5282afeb85bb6ada210'
-            'a0a78831075336edef0a8faa34fa550986c3c4d89a89f4f39d798da0211129dc90257d162bec2cdefabef2eb5886a710e70c72074b2f3016788861d05d1e2a1f')
+            'a0a78831075336edef0a8faa34fa550986c3c4d89a89f4f39d798da0211129dc90257d162bec2cdefabef2eb5886a710e70c72074b2f3016788861d05d1e2a1f'
+            '21daef6e568c94a611bff8d76b18c54b46ca84f3036c7d92cad6719422d993c90678e4846cb7bd96fe4dae9635f3114332bf1cd565360265d7d9029a10a0f016')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -38,6 +40,7 @@ install=install
 prepare() {
   cd "${srcdir}/${_srcname}"
   patch -p1 -i "${srcdir}/patch-${pkgver}"
+  patch -Np1 -i "${srcdir}/cve-2016-0728-fix.patch"
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
   else
