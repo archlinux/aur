@@ -9,7 +9,6 @@ arch=('any')
 url="http://codingteam.net/project/sima"
 license=('GPL')
 depends=('python-musicpd')
-makedepends=('make')
 source=("http://codingteam.net/project/sima/download/file/mpd_sima-$pkgver.tar.xz"
         "mpd-sima.service")
 
