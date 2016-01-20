@@ -1,17 +1,17 @@
 # Maintainer: Oden <ops991923 [at] gmail [dot] com>
 pkgname=gort
-pkgver=0.3.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Command Line Toolkit for RobotOps."
 arch=("i686" "x86_64")
 url="http://gort.io"
 license=("Apache")
-depends=("bluez4")
+depends=("bluez")
 source_i686=("https://s3.amazonaws.com/gort-io/$pkgver/gort_${pkgver}_linux_386.tar.gz")
 source_x86_64=("https://s3.amazonaws.com/gort-io/$pkgver/gort_${pkgver}_linux_amd64.tar.gz")
 # update with updpkgsums
-md5sums_i686=('51b78d2ceed50b60a0ecce72c00339b0')
-md5sums_x86_64=('2b49d11c6ebe3f9c42b7fda709876848')
+md5sums_i686=('6c1eea5204188ded205d4d652079b00e')
+md5sums_x86_64=('567abcd97a91f72d67aeb4791e6b6775')
 
 package() {
 	cd ${pkgname}_${pkgver}_*
