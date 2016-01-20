@@ -10,7 +10,7 @@ pkgname=fileobj
 pkgver=0.7.25
 pkgrel=1
 pkgdesc="Portable hex editor with vi like interface written in Python "
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://sourceforge.net/projects/fileobj"
 license=('GPL')
 depends=('python')
@@ -25,14 +25,22 @@ noextract=()
 
 pkg_name_ver="${pkgname}-${pkgver//_/-}"
 
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+}
+
 build() {
     cd "${srcdir}/${pkg_name_ver}"
     python ./setup.py build
 }
 
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+}
+
 package() {
     cd "${srcdir}/${pkg_name_ver}"
-    python ./setup.py install
+    python ./setup.py install --root "${pkgdir}"
 }
 
 #
