@@ -2,10 +2,10 @@
 
 pkgname='qutim'
 pkgver=0.3.1.1294.gb443658
-pkgrel=0
+pkgrel=1
 pkgdesc='qutIM is module-based multiprotocol instant messenger, Qt. All its functionality and features are implemented through separate plugins.'
 arch=('any')
-url="https://github.com/k0ste/${pkgname}"
+url="https://github.com/euroelessar/${pkgname}"
 license=('GPL')
 depends=('qt5-quick1' 'qt5-multimedia' 'qt5-x11extras')
 makedepends=('qbs' 'git' 'gcc' 'sdl_mixer' 'gsasl' 'libotr' 'qtkeychain-qt5' 'qt5-quick1' 'qt5-multimedia' 'qt5-x11extras' 'hunspell' 'aspell')
@@ -43,7 +43,7 @@ prepare() {
 
 build() {
   pushd "${srcdir}/${pkgname}"
-  qbs build -j 2 -d ../${pkgname}-build debug profile:${pkgname} project.addressSanitizer:true indicator.condition:false offtherecord.condition:true
+  qbs build -d ../${pkgname}-build debug profile:${pkgname} project.addressSanitizer:true indicator.condition:false offtherecord.condition:true
 }
 
 package() {
