@@ -53,7 +53,7 @@ pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _kernelname=-bfq
 _srcname=linux-4.3
 pkgver=4.3.3
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
@@ -76,7 +76,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch'
         'config' 'config.x86_64'
         '0004-disabling-primary-plane-in-the-noatomic-case.patch'
-        '0005-KEYS-Fix-keyring-ref-leak-in-join_session_keyring.patch')
+        'CVE-2016-0728.patch')
         
 prepare() {
     cd ${_srcname}
@@ -98,7 +98,7 @@ prepare() {
    
     ### Fix CVE-2016-0728
         msg "Fix CVE-2016-0728"
-        patch -Np1 -i "${srcdir}/0005-KEYS-Fix-keyring-ref-leak-in-join_session_keyring.patch"
+        patch -Np1 -i "${srcdir}/CVE-2016-0728.patch"
 
     ### Patch source with BFQ
         msg "Patching source with BFQ patches"
@@ -454,7 +454,7 @@ sha512sums=('d25812043850530fdcfdb48523523ee980747f3c2c1266149330844dae2cba0d056
             '2a55cf35899b4b6b9f4a4a6d3d39d0f7843954a3b1a57fd28d999e0dcc963cbf411884dfcfd49c671714202745e9c53db9df12f8eab9e98be0b5fade9503c644'
             '07cccbb594033de456ab24c7e8259f35a198a6a1af3fb9467eef5ae78626750a86ee71ef42a1560825f6f5ef2ecd6a9223c3cd8431d8744c6f1d67e25eb7c35c'
             '9e5d95f695bcb5858f8ace8f2f2bf2981b22f46cdbc06453b643ee26c38fdaaf8d487b65249e73a8cbcfc2360c65fd970601aec2358e91f14614d227cf33de1a'
-            '1054749d778176ba3f20a1e4089f8bbee376cb1a5760267b202bdef3b4b2b88c5c4337a7e346a8444132ce26e21151362290dd53bd8bcdee8903a512cf293c70')
+            '52a4c7bedaf369371b8ba081cc255c6afc04a096c1d345ff7ef4e60631243a1ca20ea6464f708a3ed330ed9c2826dd895eeb1d84a230b6d5d07564000c8f455d')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
