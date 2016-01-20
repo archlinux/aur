@@ -1,0 +1,16 @@
+post_install() {
+  post_remove
+  echo "The aasjournal.bst file was installed in:"
+  kpsewhich aasjournal.bst
+  echo "The aastex6.cls file was installed in:"
+  kpsewhich aastex6.cls
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo "Upgrading package database..."
+  mktexlsr
+}
