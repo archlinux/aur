@@ -1,7 +1,7 @@
 # Maintainer: Martin Brodbeck <martin at brodbeck-online dot de>
 pkgname=bibellese
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Helps with reading the bible according to various reading plans (German only)"
 arch=('i686' 'x86_64')
 url="http://www.brodbeck-online.de/software/bibellese"
