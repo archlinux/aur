@@ -8,7 +8,7 @@ url="http://www.gog.com/en/forum/general/lgogdownloader_gogdownloader_for_linux"
 arch=(i686 x86_64)
 license=(WTFPL)
 depends=('boost' 'jsoncpp' 'liboauth' 'rhash' 'tinyxml' 'htmlcxx' 'curl')
-makedepends=('help2man' 'cmake')
+makedepends=('help2man' 'cmake' 'git')
 source=('git://github.com/Sude-/lgogdownloader.git')
 md5sums=('SKIP')
 provides=('lgogdownloader')
@@ -16,7 +16,7 @@ conflicts=('lgogdownloader')
 _gitname="lgogdownloader"
 
 pkgver() {
-	date +"%Y%m%d"
+	git describe --long | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 prepare() {
@@ -52,7 +52,4 @@ package() {
 	cd $srcdir/${_gitname}/build
 	
 	make DESTDIR=$pkgdir install
-
-	install -D -m 755 $srcdir/${_gitname}/build/man/${_gitname}.1.gz \
-		$pkgdir/usr/share/man/man1/${_gitname}.1.gz
 }
