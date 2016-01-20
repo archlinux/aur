@@ -7,7 +7,9 @@ pkgdesc="Hypergeometric Optimization of Motif EnRichment"
 url="http://homer.salk.edu/"
 arch=('i686' 'x86_64')
 license=('GPLv3')
-depends=('perl' 'ghostscript' 'wget')
+optdepends=('ucsc-kent-genome-tools: for the blat tool, required for removing redundant sequences during motif finding'
+  'ghostscript: required for making motif logos')
+depends=('perl' 'weblogo' 'wget')
 source=("http://homer.salk.edu/homer/configureHomer.pl")
 md5sums=('f0f52cfe22bfe341532a11d947aac803')
 #options=(!strip docs libtool emptydirs !zipman staticlibs !upx)
