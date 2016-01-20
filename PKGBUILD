@@ -2,7 +2,7 @@
 
 _gitname=highcommand
 pkgname=$_gitname-git
-pkgver=r52.b4d2b67
+pkgver=r53.0e8424d
 pkgrel=1
 pkgdesc="getopt() for the future"
 url="https://github.com/dlom/highcommand"

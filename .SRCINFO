@@ -1,6 +1,6 @@
 pkgbase = highcommand-git
 	pkgdesc = getopt() for the future
-	pkgver = r52.b4d2b67
+	pkgver = r53.0e8424d
 	pkgrel = 1
 	url = https://github.com/dlom/highcommand
 	arch = i686
