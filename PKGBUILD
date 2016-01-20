@@ -17,6 +17,6 @@ build() {
 package() {
 	cd ${srcdir}
 
-    cp -R etc ${pkgdir}
-    cp -R usr ${pkgdir}
+	cp -R etc ${pkgdir}
+	cp -R usr ${pkgdir}
 }
