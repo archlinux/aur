@@ -1,6 +1,6 @@
 pkgname="indicator-stickynotes"
 pkgver=0.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Sticky Notes'
 arch=('any')
 license=('GPL3')
