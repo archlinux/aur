@@ -4,18 +4,18 @@
 # Contributor: Michael Healy <horsemanoffaith@gmail.com>
 
 # vercheck-pkgbuild: auto
-# vercheck-ubuntu: name=${pkgname%-*}, repo=wily
+# vercheck-ubuntu: name=${pkgname%-*}, repo=xenial
 # vercheck-archlinux: name=${pkgname%-*}, repo=extra, arch=x86_64
-# vercheck-gnome: name=${pkgname%-*}, majorver=3.18
+# vercheck-gnome: name=${pkgname%-*}, majorver=3.19
 # vercheck-ppa: name=${pkgname%-*}, url=ppa:gnome3-team/gnome3-staging
 
 pkgname=gnome-settings-daemon-ubuntu
 _use_ppa=true
-_ppa_rel=0ubuntu1~wily1
-#_ppa_ver=3.18.2
+_ppa_rel=0ubuntu1~xenial1
+#_ppa_ver=3.19.4
 #_ubuntu_rel=0ubuntu1
-#_ubuntu_ver=3.16.3
-pkgver=3.18.2
+#_ubuntu_ver=3.18.2
+pkgver=3.19.4
 pkgrel=1
 pkgdesc="The GNOME Settings daemon with Ubuntu's patches"
 arch=(i686 x86_64)
@@ -39,8 +39,8 @@ else
     source+=("https://launchpad.net/ubuntu/+archive/primary/+files/gnome-settings-daemon_${_ubuntu_ver:-${pkgver}}-${_ubuntu_rel}.debian.tar.xz")
 fi
 
-sha512sums=('82aa939c485d4fa90ee135d4f987a13c6b1629546f41a1399b2badd166c0cc4e298096d860fafefa1236d3af87484bd8903fb6e39fe971660e553e28768775fc'
-            '285d4ceecbf15c3097e14c08b84ca256a14778740e04812a412ad16b85bff7d84fe34025dd86fedb1bd7a936247259572a9055afadc84cad4ce74afe40500546')
+sha512sums=('27398c96dffbc1e1098b0b4e6601f460247f002e0217c578b632edd883fc7fc0a0c5f92f2916eaee68a0859c967de849a7e8d5dfe99064bc0a39edbccfc56c45'
+            '3a18c8fc7661c0799e8e9dc6c6c97dba4f89eb4c5bcb797da7ffd15fcba3e88ea390cf44ca4cfcca48d8d9ef1243be382b32cf4e8879ba17c6060e3898538500')
 prepare() {
   cd "${pkgname%-*}-${pkgver}"
 
