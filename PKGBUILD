@@ -2,18 +2,18 @@
 
 pkgbase=linux-samus4
 pkgver=4.4
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
-source=("https://github.com/raphael/linux-samus/archive/v4.4-3.tar.gz"
+source=("https://github.com/raphael/linux-samus/archive/v4.4-4.tar.gz"
         "config"
         "linux.preset"
         )
 _kernelname=${pkgbase#linux}
-_linuxsrc=linux-samus-4.4-3/build/linux/
+_linuxsrc=linux-samus-4.4-4/build/linux/
 
 # $srcdir is: /home/raphael/src/kernel-pkg/src
 prepare() {
@@ -244,6 +244,7 @@ for _p in ${pkgname[@]}; do
   }"
 done
 
-md5sums=('ebac254101bcaa7e5cd036d2bab6b85d'
-         '41dc6d7c3d4292f9c5ed96b1083b172f'
+# vim:set ts=8 sts=2 sw=2 et:
+md5sums=('6dda781bddf9a91f8b39defdb94a2708'
+         '854836a1b228560a0e7fb201e2a197a1'
          '5aae464a8085b2f3adcdcaff29853d04')
