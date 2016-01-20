@@ -2,7 +2,7 @@
 
 _plug=d2vsource
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=beta7.10.ge4a2d98
+pkgver=beta7.30.g38ec2b7
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -24,17 +24,22 @@ pkgver() {
   echo "$(git describe --long --tags | tr - .)"
 }
 
+prepare() {
+  cd "${_plug}"
+  ./autogen.sh
+}
+
 build() {
   cd "${_plug}"
-  ./configure --install="${pkgdir}/usr/lib/vapoursynth" \
-              --extra-cxxflags="${CXXFLAGS} ${CPPFLAGS}" \
-              --extra-ldflags="${LDFLAGS}"
+  ./configure \
+    --prefix=/usr \
+    --libdir=/usr/lib/vapoursynth
   make
 }
 
 package(){
   cd "${_plug}"
-  make install
+  make DESTDIR="${pkgdir}" install
   install -Dm644 README "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README"
 }
 
