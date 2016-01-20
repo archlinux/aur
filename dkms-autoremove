@@ -1,18 +1,25 @@
 #!/usr/bin/env bash
 
-kerver=`uname --kernel-release | cut -d- -f-2`
-kerrel=`uname --kernel-release | cut -d- -f3`
+uname_release=`uname --kernel-release`
+ker_version=`echo $uname_release | cut -d- -f-2`
+ker_release=`echo $uname_release | cut -d- -f3`
 
 source /etc/dkms/framework.conf
 
-for output in `dkms status | grep $kerrel | grep -v $kerver | tr -d ',' | tr ' ' '/'`
+for output in `dkms status | grep $ker_release | grep -v $ker_version | tr -d ',' | tr ' ' '/'`
 do
     module=`echo $output | cut -d/ -f1`
-    modver=`echo $output | cut -d/ -f2`
+    mod_version=`echo $output | cut -d/ -f2`
     kernel=`echo $output | cut -d/ -f3`
-    
-    dkms remove "$module/$modver" -k "$kernel"
-    rm -r "${install_tree:=/usr/lib/modules}/$kernel"
+
+    dkms remove "$module/$mod_version" -k "$kernel"
+done
+
+modules_dir="${install_tree:=/usr/lib/modules}"
+
+for kernel in `ls $modules_dir | grep -v 'extramodules' | grep -v $uname_release | grep $ker_release`
+do
+    rm -r "$modules_dir/$kernel"
 done
 
 exit 0
