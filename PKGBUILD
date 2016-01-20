@@ -8,7 +8,7 @@ arch=('i686' 'x86_64' 'armv6h')
 url="https://github.com/tldr-pages/tldr-cpp-client"
 license=('MIT')
 depends=('curl')
-makedepends=('git' 'make' 'clang' 'curl')
+makedepends=('git' 'make' 'clang' 'curl' 'libzip')
 source=("git+$url")
 md5sums=('SKIP')
 
