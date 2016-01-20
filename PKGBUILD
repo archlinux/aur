@@ -2,20 +2,20 @@
 # Contributor: Michael Healy <horsemanoffaith@gmail.com>
 
 # vercheck-pkgbuild: auto
-# vercheck-ubuntu: name=${pkgname}, repo=wily
+# vercheck-ubuntu: name=${pkgname}, repo=xenial
 
 pkgname=unity-settings-daemon
 _actual_ver=15.04.1
-_extra_ver=+15.10.20151012
+_extra_ver=+16.04.20151214
 pkgver=${_actual_ver}${_extra_ver/\+/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Unity Settings Daemon"
 arch=(i686 x86_64)
 url="https://launchpad.net/unity-settings-daemon"
 license=(GPL)
 groups=(unity)
 depends=(gnome-settings-daemon-ubuntu gsettings-desktop-schemas-ubuntu fcitx
-         gperf hicolor-icon-theme ibus libappindicator-gtk3 libcanberra-pulse
+         gperf hicolor-icon-theme ibus libappindicator3 libcanberra-pulse
          libnotify librsvg libsystemd libwacom libxkbfile mesa pulseaudio
          pulseaudio-alsa upower)
 makedepends=(intltool xf86-input-wacom libxslt docbook-xsl python2)
@@ -26,10 +26,10 @@ source=("https://launchpad.net/ubuntu/+archive/primary/+files/unity-settings-dae
         0001-Remove-accountsservice-dependency.patch
         0002-Add-gnome-settings-daemon-3.12-rfkill-plugin.patch
         0003-Use-GNOME-3.16-deprecated-schemas.patch)
-sha512sums=('2ba49c34e86eb5bb05c88981009aea472b53a2c29237c146ef798b61f76c455eed9fc4a22f2dc703442c99086a7ab3eb60dfa13ab96512d5f7fca6a827754835'
-'57b35496544132c606fcfa50a72c3b2d1a61ef1327d60c3121f02baec65ffc0b9870d62a465ffb59ffac967a51b95a3ea2889fe9e845c9c045b774a0418fded7'                        
-'44d067ac6e813c8be20d9dba4980bcc27bf700b210e80f3256e2ba240406a34b9d1f208a2e1eda9d2d9a12ca0a5be9a21d54caeac43d8242aa0eb6ccaf439f6d'
-'ca017a06b8d8974205cdbf9fe3de99e29bc4fc791749f526c356998e093deed220d61c9ca8e75544782e105b8c4ba67e67a65a0f729a56522ccae5279b49544b')
+sha512sums=('33225c3517017b5a41133ddf685bad0d9888e2c629c09970de29aadc010a7610e4428496be2a8343b5f68be8615523a3c3072f2b5c238dedb26e514d4f816ac1'
+            '57b35496544132c606fcfa50a72c3b2d1a61ef1327d60c3121f02baec65ffc0b9870d62a465ffb59ffac967a51b95a3ea2889fe9e845c9c045b774a0418fded7'
+            '44d067ac6e813c8be20d9dba4980bcc27bf700b210e80f3256e2ba240406a34b9d1f208a2e1eda9d2d9a12ca0a5be9a21d54caeac43d8242aa0eb6ccaf439f6d'
+            'ca017a06b8d8974205cdbf9fe3de99e29bc4fc791749f526c356998e093deed220d61c9ca8e75544782e105b8c4ba67e67a65a0f729a56522ccae5279b49544b')
 
 prepare() {
   cd "${pkgname}-${_actual_ver}${_extra_ver}"
