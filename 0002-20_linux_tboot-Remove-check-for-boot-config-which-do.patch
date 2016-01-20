@@ -1,0 +1,26 @@
+From cd4bf89b3f70e8e2e983a2eda50e434e0c7a1227 Mon Sep 17 00:00:00 2001
+From: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date: Wed, 20 Jan 2016 00:38:58 -0500
+Subject: [PATCH 2/2] 20_linux_tboot: Remove check for /boot/config-*, which
+ does not exist
+
+---
+ tboot/20_linux_tboot | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tboot/20_linux_tboot b/tboot/20_linux_tboot
+index 6f8cfee..ce59ab9 100644
+--- a/tboot/20_linux_tboot
++++ b/tboot/20_linux_tboot
+@@ -124,7 +124,7 @@ EOF
+ linux_list=`for i in /boot/vmlinu[xz]-* /vmlinu[xz]-* ; do
+     	basename=$(basename $i)
+ 	version=$(echo $basename | sed -e "s,^[^0-9]*-,,g")
+-        if grub_file_is_not_garbage "$i" && grep -qx "CONFIG_INTEL_TXT=y" /boot/config-${version} 2> /dev/null ; then echo -n "$i " ; fi
++        if grub_file_is_not_garbage "$i" ; then echo -n "$i " ; fi
+       done`
+ tboot_list=`for i in /boot/tboot*.gz; do
+         if grub_file_is_not_garbage "$i" ; then echo -n "$i " ; fi
+-- 
+2.7.0
+

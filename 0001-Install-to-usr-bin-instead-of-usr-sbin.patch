@@ -1,0 +1,104 @@
+From fecab57fed659f020872112d2123c89c2e7f0f22 Mon Sep 17 00:00:00 2001
+From: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date: Wed, 20 Jan 2016 00:37:02 -0500
+Subject: [PATCH 1/2] Install to /usr/bin instead of /usr/sbin
+
+---
+ lcptools-v2/Makefile | 6 +++---
+ lcptools/Makefile    | 6 +++---
+ tb_polgen/Makefile   | 8 ++++----
+ utils/Makefile       | 6 +++---
+ 4 files changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/lcptools-v2/Makefile b/lcptools-v2/Makefile
+index d6c4626..6fa9bff 100644
+--- a/lcptools-v2/Makefile
++++ b/lcptools-v2/Makefile
+@@ -34,15 +34,15 @@ dist : install
+ install :
+ 	@set -e; for i in  $(LCP2_TARGETS);\
+ 	do \
+-		$(MAKE) DISTDIR=$(DISTDIR) INST_TARGET=$(DISTDIR)/usr/sbin/$$i do_install; \
++		$(MAKE) DISTDIR=$(DISTDIR) INST_TARGET=$(DISTDIR)/usr/bin/$$i do_install; \
+ 	done
+ 
+ .PHONY: do_install
+ do_install : $(INST_TARGET)
+ 
+ $(INST_TARGET) : $(notdir $(INST_TARGET))
+-	[ -d $(DISTDIR)/usr/sbin ] || $(INSTALL_DIR) $(DISTDIR)/usr/sbin
+-	$(INSTALL_PROG) -t $(DISTDIR)/usr/sbin $^
++	[ -d $(DISTDIR)/usr/bin ] || $(INSTALL_DIR) $(DISTDIR)/usr/bin
++	$(INSTALL_PROG) -t $(DISTDIR)/usr/bin $^
+ 
+ 
+ clean :
+diff --git a/lcptools/Makefile b/lcptools/Makefile
+index f4d8bd4..a20324a 100644
+--- a/lcptools/Makefile
++++ b/lcptools/Makefile
+@@ -50,15 +50,15 @@ dist : install
+ install :
+ 	@set -e; for i in $(TPMNV_TARGETS) $(LCP1_TARGETS) $(LCP2_TARGETS);\
+ 	do \
+-		$(MAKE) DISTDIR=$(DISTDIR) INST_TARGET=$(DISTDIR)/usr/sbin/$$i do_install; \
++		$(MAKE) DISTDIR=$(DISTDIR) INST_TARGET=$(DISTDIR)/usr/bin/$$i do_install; \
+ 	done
+ 
+ .PHONY: do_install
+ do_install : $(INST_TARGET)
+ 
+ $(INST_TARGET) : $(notdir $(INST_TARGET))
+-	[ -d $(DISTDIR)/usr/sbin ] || $(INSTALL_DIR) $(DISTDIR)/usr/sbin
+-	$(INSTALL_PROG) -t $(DISTDIR)/usr/sbin $^
++	[ -d $(DISTDIR)/usr/bin ] || $(INSTALL_DIR) $(DISTDIR)/usr/bin
++	$(INSTALL_PROG) -t $(DISTDIR)/usr/bin $^
+ 
+ 
+ clean :
+diff --git a/tb_polgen/Makefile b/tb_polgen/Makefile
+index 6a76717..3298005 100644
+--- a/tb_polgen/Makefile
++++ b/tb_polgen/Makefile
+@@ -29,11 +29,11 @@ build : $(TARGET)
+ dist : install
+ 
+ 
+-install : $(DISTDIR)/usr/sbin/$(TARGET)
++install : $(DISTDIR)/usr/bin/$(TARGET)
+ 
+-$(DISTDIR)/usr/sbin/$(TARGET) : $(TARGET)
+-	[ -d $(DISTDIR)/usr/sbin ] || $(INSTALL_DIR) $(DISTDIR)/usr/sbin
+-	$(INSTALL_PROG) -t $(DISTDIR)/usr/sbin $(TARGET)
++$(DISTDIR)/usr/bin/$(TARGET) : $(TARGET)
++	[ -d $(DISTDIR)/usr/bin ] || $(INSTALL_DIR) $(DISTDIR)/usr/bin
++	$(INSTALL_PROG) -t $(DISTDIR)/usr/bin $(TARGET)
+ 
+ 
+ clean :
+diff --git a/utils/Makefile b/utils/Makefile
+index 8650bcc..8ec00e2 100644
+--- a/utils/Makefile
++++ b/utils/Makefile
+@@ -27,15 +27,15 @@ dist : install
+ install :
+ 	@set -e; for i in $(TARGETS);\
+ 	do \
+-		$(MAKE) DISTDIR=$(DISTDIR) INST_TARGET=$(DISTDIR)/usr/sbin/$$i do_install; \
++		$(MAKE) DISTDIR=$(DISTDIR) INST_TARGET=$(DISTDIR)/usr/bin/$$i do_install; \
+ 	done
+ 
+ .PHONY: do_install
+ do_install : $(INST_TARGET)
+ 
+ $(INST_TARGET) : $(notdir $(INST_TARGET))
+-	[ -d $(DISTDIR)/usr/sbin ] || $(INSTALL_DIR) $(DISTDIR)/usr/sbin
+-	$(INSTALL_PROG) -t $(DISTDIR)/usr/sbin $^
++	[ -d $(DISTDIR)/usr/bin ] || $(INSTALL_DIR) $(DISTDIR)/usr/bin
++	$(INSTALL_PROG) -t $(DISTDIR)/usr/bin $^
+ 
+ 
+ clean :
+-- 
+2.7.0
+
