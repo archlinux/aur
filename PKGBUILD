@@ -305,7 +305,7 @@ package() {
       patch -Np1 -i ../makefile_compat.patch
       patch -Np1 -i ../lano1106_fglrx_intel_iommu.patch
       patch -Np1 -i ../lano1106_kcl_agp_13_4.patch
-      test "${CARCH}" = "i686" && patch -Np1 -i ../fglrx_gpl_symbol.patch
+      patch -Np1 -i ../fglrx_gpl_symbol.patch
       patch -Np1 -i ../4.3-kolasa-seq_printf.patch
       patch -Np1 -i ../4.3-gentoo-mtrr.patch
       test "${CARCH}" = "i686" && patch -Np1 -i ../crimson_i686_xg.patch
