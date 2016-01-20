@@ -7,7 +7,7 @@
 # Special thanks to Nareto for moving the compile from the .install to the PKGBUILD
 
 pkgname=sagemath-git
-pkgver=7.0.beta0.r0.gd83dab1
+pkgver=7.0.r0.g1961f94
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(i686 x86_64)
@@ -81,7 +81,7 @@ prepare(){
 # fix timeit with Python 2.7.11
   patch -p0 -i ../python-2.7.11.patch
 # fix contour plots with matplotlib 1.5.1
-  patch -p0 -i ../contour.patch
+  patch -p0 -i ../contour.patch
 
 # Upstream patches  
 # fix build against libfes 0.2 http://trac.sagemath.org/ticket/15209
