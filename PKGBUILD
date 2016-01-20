@@ -7,7 +7,7 @@ _srcname=linux-4.1
 # /  |  \
 # SKY NET
 pkgver=4.1.15
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -22,6 +22,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
+        'KEYS-Fix-keyring-ref-leak-in-join_session_keyring.patch'
         'override_for_missing_acs_capabilities.patch'
         'i915_317.patch'
         )
@@ -33,6 +34,7 @@ sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'ee55d469a4c00b6fb4144549f2a9c5b84d9fe7948c7cbd2637dce72227392b4f'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            'b6ce060a6997861e14d1061d72b96c35476e8967dd26c8020fcff4a5f0fe453d'
             '975f79348119bfba8dd972a9fbfe6b38484c45bfd228f2f6d48a0c02426ba149'
             '65faab45248008810b0a5f27162101a34dfe298c14d3506e52236c680353d7f8')
 validpgpkeys=(
@@ -61,6 +63,10 @@ prepare() {
   else
     cat "${srcdir}/config" > ./.config
   fi
+
+  # patch for CVE-2016-0728
+  # https://anonscm.debian.org/cgit/kernel/linux.git/commit/?h=jessie-security&id=0ac8c3e88cf1ea329ede357f2a01a9b1a8734e24
+  patch -Np1 -i "${srcdir}/KEYS-Fix-keyring-ref-leak-in-join_session_keyring.patch"
 
   # patches for vga arbiter fix in intel systems
   patch -Np1 -i "${srcdir}/i915_317.patch"
