@@ -9,21 +9,41 @@ arch=('i686' 'x86_64')
 license=('GPLv3')
 optdepends=('ucsc-kent-genome-tools: for the blat tool, required for removing redundant sequences during motif finding'
   'ghostscript: required for making motif logos')
-depends=('perl' 'weblogo' 'wget')
-source=("http://homer.salk.edu/homer/configureHomer.pl")
-md5sums=('f0f52cfe22bfe341532a11d947aac803')
-#options=(!strip docs libtool emptydirs !zipman staticlibs !upx)
+depends=('perl' 'weblogo2' 'wget')
+source=("http://homer.salk.edu/homer/data/software/homer.v${pkgver}.zip" "homer.sh")
+md5sums=('173c9ad0e35d7639b89331de87505928'
+         '81a149ed531dcca7f0096901fd88ddeb')
+install=('homer.install')
 
 prepare(){
-msg "preparing"
+  cd ${srcdir}/cpp
+  make clean
 }
 
 build(){
-msg "building"
+  #cd ${srcdir}
+  #perl configureHomer.pl -install homer
+
+  cd ${srcdir}/cpp
+  make # this actually also copies the exes to bin/ then clean can't clean them
+  make clean
 }
 
 package() {
-msg "packaging"
+  # just put everything into opt
+  mkdir -p "${pkgdir}/opt/${pkgname}"
+  cp -a ${srcdir}/* "${pkgdir}/opt/${pkgname}/."
+
+  # link the main perl script
+  mkdir -p ${pkgdir}/usr/bin
+  chmod 755 "${pkgdir}/opt/${pkgname}/configureHomer.pl"
+  ln -s /opt/${pkgname}/configureHomer.pl ${pkgdir}/usr/bin/.
+
+  # install profile file
+  install -m755 -D "${srcdir}/homer.sh" -t "${pkgdir}/etc/profile.d"
+  
+  # install license file
+  install -m644 -D "${srcdir}/COPYING" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim:set ts=2 sw=2 et:#
