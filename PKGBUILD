@@ -24,7 +24,7 @@ package_playform() {
   pkgdesc='Playform is an open-world sandbox game written in Rust'
   depends=('libgl' 'libpng' 'sdl2' 'sdl2_ttf' 'nanomsg')
   cd $srcdir/$pkgname-$_git_branch
-  install -Dm755 server/bin/target/release/client $pkgdir/usr/bin/$pkgname
+  install -Dm755 client/bin/target/release/client $pkgdir/usr/bin/$pkgname
   install -Dm644 LICENSE '$pkgdir/usr/share/licenses/$pkgname/LICENSE'
 }
 
