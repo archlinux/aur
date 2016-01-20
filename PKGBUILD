@@ -1,8 +1,8 @@
-# Maintainer: Mario Finelli <mario dot finelli at yahoo dot com>
+# Maintainer: Mario Finelli <mario at finel dot li>
 
 _npmname=postcss-cli
 pkgname=nodejs-$_npmname
-pkgver=2.3.2
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Traditional CLI for postcss."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('nodejs' 'npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('72b03b898ab8d4b4e1222d58d5cda150a1a7978bde35d96b6781f2daf511a1de')
+sha256sums=('4c612d31da8697ccf8d18a8294bd33f89cf969587630d0d4a339377cd5561e7f')
 
 package() {
   cd "$srcdir"
