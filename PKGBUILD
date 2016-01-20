@@ -4,7 +4,7 @@
 # Contributor: Sebastien Binet <binet@lblbox>
 
 pkgname=pypy-pip
-pkgver=7.1.2
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="The PyPA recommended tool for installing Python packages"
 url="https://pip.pypa.io/"
@@ -12,7 +12,7 @@ arch=('any')
 license=('MIT')
 makedepends=('pypy-setuptools') # pypy included in pypy-setuptools
 source=(http://pypi.python.org/packages/source/p/pip/pip-${pkgver}.tar.gz)
-sha256sums=('ca047986f0528cfa975a14fb9f7f106271d4e0c3fe1ddced6c1db2e7ae57a477')
+sha256sums=('90112b296152f270cb8dddcd19b7b87488d9e002e8cf622e14c4da9c2f6319b1')
 
 executable_files=(
   __init__.py
