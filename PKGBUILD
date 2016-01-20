@@ -20,7 +20,7 @@
 # Contributor: solar (authatieventsd' patch s/-1/255)
 # Contributor: kolasa (part of 4.3 kernel patches)
 # Contributor: gentoo (part of 4.3 kernel patches)
-# Contributor: 	Philip Müller @ Manjaro (4.4 kernel patch)
+# Contributor: 	Philip Muller @ Manjaro (4.4 kernel patch)
 
 
 # PKGEXT='.pkg.tar.gz' # imho time to pack this pkg into tar.xz is too long, unfortunatelly yaourt got problems when ext is different from .pkg.tar.xz - V
@@ -311,7 +311,7 @@ package() {
       patch -Np1 -i ../4.2-amd-from_crimson_15.11.patch
       patch -Np1 -i ../4.3-kolasa-seq_printf.patch
       patch -Np1 -i ../4.3-gentoo-mtrr.patch
-      test "${CARCH}" = "i686" && patch -Np1 -i ../fglrx_gpl_symbol.patch
+      patch -Np1 -i ../fglrx_gpl_symbol.patch
       test "${CARCH}" = "i686" && patch -Np1 -i ../crimson_i686_xg.patch
       patch -Np1 -i ../4.4-manjaro-xstate.patch
       patch -Np1 -i ../grsec_arch.patch
