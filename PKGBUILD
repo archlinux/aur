@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc='Sticky Notes'
 arch=('any')
 license=('GPL3')
-depends=('python3' 'libappindicator-gtk3')
+depends=('python3' 'python-gobject' 'libappindicator-gtk3' 'gtksourceview3')
 source=("https://launchpad.net/~umang/+archive/ubuntu/indicator-stickynotes/+files/${pkgname}_${pkgver}-0ppa1_all.deb")
 sha256sums=('c239f9763995463dab33abe12eda71421a5d11c1dfc2cbeea4fab1c6bc2235b8')
 
