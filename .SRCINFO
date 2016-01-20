@@ -1,7 +1,7 @@
 pkgbase = catalyst-generator
 	pkgdesc = AMD/ATI drivers. Generator of catalyst-{kernver} packages with fglrx module inside.
 	pkgver = 15.9
-	pkgrel = 8
+	pkgrel = 9
 	url = http://www.amd.com
 	install = catalyst-generator.install
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = catalyst-generator
 	depends = make
 	depends = patch
 	depends = linux>=3.0
-	depends = linux<4.4
+	depends = linux<4.5
 	depends = linux-headers
 	optdepends = linux-headers: to build the fglrx module for the linux kernel
 	optdepends = linux-lts-headers: to build the fglrx module for the linux-lts kernel
@@ -42,6 +42,7 @@ pkgbase = catalyst-generator
 	source = 4.3-gentoo-mtrr.patch
 	source = 4.2-amd-from_crimson_15.11.patch
 	source = crimson_i686_xg.patch
+	source = 4.4-manjaro-xstate.patch
 	source = grsec_arch.patch
 	md5sums = d2de2df6946b452c266a3c892e6e46ff
 	md5sums = 543e818f543f2897beca49101226e460
@@ -58,7 +59,8 @@ pkgbase = catalyst-generator
 	md5sums = 98828e3eeaec2b3795e584883cc1b746
 	md5sums = fd2851026228ca72124972d1ea0335ea
 	md5sums = 6cdbaf5f71d867d225721a0369413616
-	md5sums = 570e0a70aa97edcc5934e3203542d8d6
+	md5sums = d9bea135ae3e1b3ca87c5bbe6dcf8e72
+	md5sums = 8941e91fc58cb44ce21ab9bda135754e
 
 pkgname = catalyst-generator
 
