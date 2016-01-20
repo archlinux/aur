@@ -10,7 +10,7 @@ pkgbase=lib32-$_pkgbasename
 pkgname=('lib32-catalyst-utils' 'lib32-catalyst-libgl' 'lib32-opencl-catalyst')
 
 pkgver=15.9
-pkgrel=1
+pkgrel=2
 _amdver=15.201.1151
 url="http://www.amd.com"
 arch=(x86_64)
@@ -97,6 +97,7 @@ package_lib32-catalyst-utils() {
       install -D -m755 lib32-catalyst.sh ${pkgdir}/etc/profile.d/lib32-catalyst.sh
       cd ${srcdir}/archive_files/arch/x86/usr
       install -dm755 ${pkgdir}/usr/lib32/fglrx
+      install -dm755 ${pkgdir}/usr/lib32/dri
 #       install -dm755 ${pkgdir}/usr/lib32/hsa
       install -dm755 ${pkgdir}/usr/lib32/xorg/modules/dri
       install -m755 lib/*.so* ${pkgdir}/usr/lib32
@@ -107,7 +108,7 @@ package_lib32-catalyst-utils() {
       install -m755 X11R6/lib/libfglrx_dm.so.1.0 ${pkgdir}/usr/lib32
       install -m755 X11R6/lib/libXvBAW.so.1.0 ${pkgdir}/usr/lib32
       install -m755 X11R6/lib/modules/dri/*.so ${pkgdir}/usr/lib32/xorg/modules/dri
-      ln -snf /usr/lib32/xorg/modules/dri ${pkgdir}/usr/lib32/dri
+      ln -snf /usr/lib32/xorg/modules/dri/fglrx_dri.so ${pkgdir}/usr/lib32/dri/fglrx_dri.so
 
       ln -sf /usr/lib32/libfglrx_dm.so.1.0	${pkgdir}/usr/lib32/libfglrx_dm.so.1
       ln -sf /usr/lib32/libfglrx_dm.so.1.0	${pkgdir}/usr/lib32/libfglrx_dm.so
