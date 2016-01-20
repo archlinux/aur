@@ -3,7 +3,7 @@
 
 pkgname=picpuz
 pkgver=2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="'jigsaw puzzle' program."
 arch=('i686' 'x86_64')
 url="http://www.kornelix.com/picpuz/"
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('gtk3')
 makedepends=('pkgconfig')
 source=("http://www.kornelix.net/downloads/tarballs/$pkgname-$pkgver.tar.gz")
-md5sums=('ed07430ee926b6d6e04dae0da89218a6')
+md5sums=('cb15ba77814674a9c04e8fa6cd51e085')
 
 build() {
   cd ${srcdir}/$pkgname-$pkgver
