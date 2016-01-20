@@ -2,8 +2,10 @@
 Name=OpenBazaar
 GenericName=Decentralized marketplace for trading with anyone using Bitcoin.
 Comment=OpenBazaar is an open source project to create a decentralized network for commerce online—using Bitcoin—that has no fees and cannot be censored.
-Exec=/usr/bin/openbazaar
+Exec=/usr/bin/openbazaar %U
 Icon=/usr/share/icons/hicolor/128x128/apps/openbazaar.png
 Terminal=false
 Type=Application
 Categories=Application;Network;
+MimeType=application/x-openbazaar;x-scheme-handler/ob;
+
