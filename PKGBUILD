@@ -15,13 +15,13 @@ _kernver=`uname -r`
 
 pkgname=catalyst
 pkgver=15.9
-pkgrel=8
+pkgrel=9
 _amdver=15.201.1151
 pkgdesc="AMD/ATI Catalyst drivers for linux. fglrx kernel module only. Radeons HD 2 3 4 xxx ARE NOT SUPPORTED"
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
-depends=('linux>=3.0' 'linux<4.4' 'catalyst-utils')
+depends=('linux>=3.0' 'linux<4.5' 'catalyst-utils')
 makedepends=('gcc-libs' 'gcc>4.0.0' 'make' 'linux-headers')
 conflicts=('catalyst-test')
 install=catalyst.install
@@ -40,6 +40,7 @@ source=(
     4.3-gentoo-mtrr.patch
     4.2-amd-from_crimson_15.11.patch
     crimson_i686_xg.patch
+    4.4-manjaro-xstate.patch
     grsec_arch.patch)
 
 md5sums=('d2de2df6946b452c266a3c892e6e46ff'
@@ -52,7 +53,8 @@ md5sums=('d2de2df6946b452c266a3c892e6e46ff'
 	 '98828e3eeaec2b3795e584883cc1b746'
 	 'fd2851026228ca72124972d1ea0335ea'
 	 '6cdbaf5f71d867d225721a0369413616'
-	 '570e0a70aa97edcc5934e3203542d8d6')
+	 'd9bea135ae3e1b3ca87c5bbe6dcf8e72'
+	 '8941e91fc58cb44ce21ab9bda135754e')
 
 
 build() {
@@ -81,8 +83,9 @@ build() {
       patch -Np1 -i ../4.2-amd-from_crimson_15.11.patch
       patch -Np1 -i ../4.3-kolasa-seq_printf.patch
       patch -Np1 -i ../4.3-gentoo-mtrr.patch
-      test "${CARCH}" = "i686" && patch -Np1 -i ../fglrx_gpl_symbol.patch
+      patch -Np1 -i ../fglrx_gpl_symbol.patch
       test "${CARCH}" = "i686" && patch -Np1 -i ../crimson_i686_xg.patch
+      patch -Np1 -i ../4.4-manjaro-xstate.patch
       patch -Np1 -i ../grsec_arch.patch
 
       cd ${srcdir}/archive_files/common/lib/modules/fglrx/build_mod
