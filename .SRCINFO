@@ -12,23 +12,18 @@ pkgbase = x264-git
 	makedepends = ffmpeg
 	makedepends = l-smash
 	depends = glibc
-	provides = x264
-	provides = libx264
-	conflicts = x264
-	conflicts = libx264
 	source = git://git.videolan.org/x264.git
 	md5sums = SKIP
 
 pkgname = x264-git
 	pkgdesc = CLI tools for encoding H264/AVC video streams (Git)
 	depends = ffmpeg
-	depends = liblsmash.so
+	depends = l-smash
 	provides = x264-10bit
 	provides = x264
 	conflicts = x264-10bit
 	conflicts = x264
 	replaces = x264-10bit
-	replaces = x264
 
 pkgname = libx264-git
 	pkgdesc = Library for encoding H264/AVC video streams (Git)
@@ -38,5 +33,14 @@ pkgname = libx264-git
 	conflicts = x264-dev
 	conflicts = libx264
 	replaces = x264-dev
-	replaces = libx264
+
+pkgname = libx264-10bit-git
+	pkgdesc = Library for encoding H264/AVC video streams - 10bit-depth (Git)
+	provides = libx264.so
+	provides = libx264
+	provides = x264-dev
+	provides = libx264-10bit
+	conflicts = libx264
+	conflicts = x264-dev
+	conflicts = libx264-10bit
 

@@ -7,7 +7,7 @@
 # Build 10-bit x264 instead of 8-bit? (Better quality, but slower.)
 # For comparison, see, e.g.: https://gist.github.com/l4n9th4n9/4459997
 
-_10bit=0   # "1" to enable. This will be auto-detected afterwards.
+_10bit=0   # "1" to enable. (This will be auto-detected afterwards.)
 
 # To revert, uninstall 'libx264-10bit-git', or use:
 
@@ -22,8 +22,6 @@ url="http://www.videolan.org/developers/x264.html"
 license=('GPL')
 depends=('glibc')
 makedepends=('yasm' 'git' 'ffmpeg' 'l-smash')
-conflicts=('x264' 'libx264')
-provides=('x264' 'libx264')
 source=('git://git.videolan.org/x264.git')
 md5sums=('SKIP')
 
@@ -72,10 +70,10 @@ build() {
 
 package_x264-git() {
   pkgdesc='CLI tools for encoding H264/AVC video streams (Git)'
-  depends=('ffmpeg' 'liblsmash.so')
+  depends=('ffmpeg' 'l-smash')
   provides=('x264-10bit' 'x264')
   conflicts=('x264-10bit' 'x264')
-  replaces=('x264-10bit' 'x264')
+  replaces=('x264-10bit')
 
   make -C $_gitname DESTDIR="$pkgdir" install-cli
   install -Dm755 $_gitname-10bit/x264 "$pkgdir"/usr/bin/x264-10bit
@@ -85,7 +83,7 @@ package_libx264-git() {
   pkgdesc='Library for encoding H264/AVC video streams (Git)'
   provides=('libx264.so' 'x264-dev' 'libx264')
   conflicts=('x264-dev' 'libx264')
-  replaces=('x264-dev' 'libx264')
+  replaces=('x264-dev')
 
   install -d "$pkgdir"/usr/lib
   make -C $_gitname DESTDIR="$pkgdir" install-lib-shared
