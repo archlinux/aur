@@ -53,7 +53,7 @@ pkgname=(linux-ck linux-ck-headers)
 _kernelname=-ck
 _srcname=linux-4.3
 pkgver=4.3.3
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
@@ -71,6 +71,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 'linux-ck.preset'
 'change-default-console-loglevel.patch'
 '0001-disabling-primary-plane-in-the-noatomic-case.patch'
+'CVE-2016-0728.patch'
 # ck3
 "http://ck.kolivas.org/patches/4.0/4.3/4.3-ck${_ckpatchversion}/${_ckpatchname}.xz"
 # gcc
@@ -88,6 +89,7 @@ sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
             '2b3ebf5446aa3cac279842ca00bc1f2d6b7ff1766915282c201d763dbf6ca07e'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             'abdd04bd6beecb7c961130a68d71e6332bd260462eeaa2f4f8e634de813dcc4d'
+            '03bed5b1c6ef34a917e218a46d38cd1347c5ab5693131996113c6cad275dc4e9'
             '483c12e130285cbcb49648012416323a5cb8dd8a477fa064d96c2f53019f1b31'
             'cf0f984ebfbb8ca8ffee1a12fd791437064b9ebe0712d6f813fd5681d4840791'
             'ebeb62206999b2749ac43bb287a6a2a5db4f6b1b688a90cefa1ceb5db94aa490'
@@ -107,6 +109,9 @@ prepare() {
 	# fix #46968
   # hangs on older intel hardware
   patch -Np1 -i "${srcdir}/0001-disabling-primary-plane-in-the-noatomic-case.patch"
+
+	# fixes #47820 CVE-2016-0728.patch
+	patch -Np1 -i "${srcdir}/CVE-2016-0728.patch"
 
 	# set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
 	# remove this when a Kconfig knob is made available by upstream
