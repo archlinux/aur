@@ -4,7 +4,7 @@ pkgname=mist-git
 _pkgname=mist
 pkgver=0.3.7.r0.g3e8b9dc
 _pkgver=0-3-7
-pkgrel=1
+pkgrel=2
 pkgdesc="Ethereum wallet for Ether accounts, wallets and smart contracts (includes Mist browser)."
 arch=('x86_64')
 depends=('gmp'
@@ -16,7 +16,7 @@ depends=('gmp'
          'readline'
          'meteor-js'
          'electron'
-         'geth')
+         'geth-git')
 makedepends=('nodejs'
              'npm'
              'meteor-build-client'
