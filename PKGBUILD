@@ -1,29 +1,36 @@
-
-# Contributor: Joe Davison <joedavison.davison@gmail.com>
+# Contributor: Joe Davison <joe@warhaggis.com>
 
 pkgname=irssistats
 pkgver=0.75
-pkgrel=2
+pkgrel=3
 pkgdesc='Parses irssi log files as stats presented in HTML'
 url='http://royale.zerezo.com/irssistats/'
 license=(GPL)
-depends=('irssi')
+optdepends=('irssi')
 arch=('i686' 'x86_64')
 install=irssistats.install
 source=('irssistats.install' "http://royale.zerezo.com/irssistats/irssistats-0.75.tar.gz")
-md5sums=('ba71de6c892f886cf0a5b49d7eacbb49'
-         'f3654fd292220bd9adada7ff6c7f0421')
+sha256sums=('fa6a673d1df6e18981ebe5f95f20738d4bf50100bcfc0f971753b11ea617f752'
+	'7aabbdb55158299997f82a39f1b403339a4ad74b4679030f317a27042d87eb90')
+
 build() {
-    cd $srcdir/$pkgname-$pkgver
+	cd $srcdir/$pkgname-$pkgver
+	make
+}
 
-    mkdir -p $pkgdir/{usr/bin,etc/$pkgname,etc/webapps/$pkgname}
+package() {    
+	install -D -m 755 $srcdir/$pkgname-$pkgver/$pkgname \
+		$pkgdir/usr/bin
 
-    make
-    install -m 755 $srcdir/$pkgname-$pkgver/$pkgname $pkgdir/usr/bin
-    
-    # Copy sample files
-    cp $srcdir/$pkgname-$pkgver/sample.* $pkgdir/etc/irssistats
+	install -D -m 755 $srcdir/$pkgname-$pkgver/sample.nickfile \
+		$pkgdir/etc/irssistats/sample.nickfile
 
-    # Copy "data" html files to webapps
-    cp -R $srcdir/$pkgname-$pkgver/data $pkgdir/etc/webapps/$pkgname
+	install -D -m 755 $srcdir/$pkgname-$pkgver/sample.photofile \
+		$pkgdir/etc/irssistats/sample.photofile
+
+	install -D -m 755 $srcdir/$pkgname-$pkgver/sample.configfile \
+		$pkgdir/etc/irssistats/sample.configfile
+
+	mkdir -p $pkgdir/etc/webapps/$pkgname
+	cp -a $srcdir/$pkgname-$pkgver/data $pkgdir/etc/webapps/$pkgname
 }
