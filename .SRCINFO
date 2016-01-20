@@ -5,6 +5,7 @@ pkgbase = zcash-git
 	url = https://z.cash
 	arch = any
 	license = MIT
+	makedepends = unzip
 	provides = zcash
 	source = git+https://github.com/Electric-Coin-Company/zcash
 	sha1sums = SKIP

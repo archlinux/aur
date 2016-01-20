@@ -7,6 +7,7 @@ pkgdesc="Decentralized and open source cryptocurrency"
 arch=('any')
 url="https://z.cash"
 license=(MIT)
+makedepends=('unzip')
 provides=('zcash')
 source=("git+https://github.com/Electric-Coin-Company/zcash")
 sha1sums=('SKIP')
