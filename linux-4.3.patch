@@ -1,6 +1,6 @@
 diff -Naur nv.orig/nv.c nv/nv.c
---- nv.orig/nv.c	2016-01-20 01:34:02.096524000 +0100
-+++ nv/nv.c	2016-01-20 01:36:47.610695762 +0100
+--- nv.orig/nv.c	2016-01-20 04:11:03.974819000 +0100
++++ nv/nv.c	2016-01-20 04:11:48.095900342 +0100
 @@ -574,7 +574,8 @@
      void *v
  )
@@ -11,3 +11,17 @@ diff -Naur nv.orig/nv.c nv/nv.c
  }
  
  NV_DEFINE_PROCFS_SINGLE_FILE(text_file);
+diff -Naur nv.orig/nv-linux.h nv/nv-linux.h
+--- nv.orig/nv-linux.h	2016-01-20 04:11:03.958152000 +0100
++++ nv/nv-linux.h	2016-01-20 04:11:48.095900342 +0100
+@@ -143,6 +143,10 @@
+ #include <linux/seq_file.h>
+ #endif
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,3,0)
++#undef CONFIG_MTRR
++#endif
++
+ #ifdef CONFIG_MTRR
+ #include <asm/mtrr.h>
+ #endif

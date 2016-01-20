@@ -35,7 +35,7 @@ md5sums+=('944ed806c8d0f9174d5e9e16ae065bf6'
           'a613531fc6a5610e8e07b1dded071901'
           'ab3e06a699bfd0a91ab77a88e112ad44'
           '89072d9c1b37867f01dd7a41521c0ed1'
-          '75273776a44fdb0fa8caa9479ce00094'
+          '20bde657bb715e16295d7e82fe799fca'
           'd28e74675462b215f080960c130c43fc')
 
 prepare() {
