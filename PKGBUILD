@@ -10,7 +10,7 @@
 pkgbase=libindicator3
 pkgname=(libindicator libindicator3)
 _actual_ver=12.10.2
-_extra_ver=+14.10.20140922
+_extra_ver=+16.04.20151208
 pkgver=${_actual_ver}${_extra_ver/+/.}
 pkgrel=2
 epoch=1
@@ -21,7 +21,7 @@ license=(GPL)
 makedepends=(gtk2 gtk3 glib2 ido)
 groups=(unity)
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgbase/3/}_${_actual_ver}${_extra_ver}.orig.tar.gz")
-sha512sums=('b624b229755ae73f74b2197d4fb6d49f5d0b8b3fdc6686d6140a0b087e0b6a53dcd663fa2195c61d3bc61a11249867a45c1b8b7476e0d00b89a92f849f66eda2')
+sha512sums=('350d5081075de0de31a046aaf439a08f15ce8fe3a07350519f55fd2df2caa47d8a4a4d538c114f4297fa37322802681de04cf588b4caaa40ba506c2e5922ef00')
 
 prepare() {
   sed '/-Werror/s/$/ -Wno-deprecated-declarations/' -i ../src/libindicator-${_actual_ver}${_extra_ver}/Makefile.am
