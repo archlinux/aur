@@ -26,7 +26,7 @@
 
 pkgname=catalyst-test
 pkgver=15.12
-pkgrel=1
+pkgrel=2
 # _betano=1.0
 _amdver=15.302
 pkgdesc="AMD/ATI Catalyst drivers for linux AKA Crimson. catalyst-hook + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. PRE-GCN Radeons ARE NOT SUPPORTED"
@@ -346,6 +346,7 @@ package() {
 	cd ${srcdir}/archive_files/arch/x86/usr
 	install -dm755 ${pkgdir}/usr/lib32
 	install -dm755 ${pkgdir}/usr/lib32/fglrx
+        install -dm755 ${pkgdir}/usr/lib32/dri
 	install -dm755 ${pkgdir}/usr/lib32/xorg/modules/dri
 #	install -dm755 ${pkgdir}/usr/lib32/hsa		#removed in 14.1
 	install -m755 lib/*.so* ${pkgdir}/usr/lib32
@@ -356,7 +357,7 @@ package() {
 	install -m755 X11R6/lib/libfglrx_dm.so.1.0 ${pkgdir}/usr/lib32
 	install -m755 X11R6/lib/libXvBAW.so.1.0 ${pkgdir}/usr/lib32
 	install -m755 X11R6/lib/modules/dri/*.so ${pkgdir}/usr/lib32/xorg/modules/dri
-	ln -snf /usr/lib32/xorg/modules/dri ${pkgdir}/usr/lib32/dri
+        ln -snf /usr/lib32/xorg/modules/dri/fglrx_dri.so ${pkgdir}/usr/lib32/dri/fglrx_dri.so
 
 	cd $pkgdir/usr/lib32
 	ln -sf /usr/lib32/libfglrx_dm.so.1.0	${pkgdir}/usr/lib32/libfglrx_dm.so.1
