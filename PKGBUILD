@@ -6,43 +6,44 @@
 
 pkgname=openclonk
 pkgver=7.0
-pkgrel=3
-_orig=$pkgname-$pkgver-src
+pkgrel=4
 pkgdesc='Multiplayer-action-tactic-skill game'
 arch=('i686' 'x86_64')
 url='http://openclonk.org'
 license=('custom')
-depends=('gtk2' 'glew' 'sdl_mixer' 'libxpm'  'hicolor-icon-theme' 'libupnp')
-makedepends=('cmake' 'boost' 'imagemagick' 'mesa')
+depends=('zlib' 'libpng' 'libgl' 'libjpeg-turbo' 'freetype2' 'glew' 'freealut' 'libogg' 'libvorbis' 'gtk3>=3.4' 'libupnp' 'libxrandr' 'sdl>=1.2' 'sdl_mixer>=1.2' 'hicolor-icon-theme' 'desktop-file-utils')
+install=openclonk.install
+makedepends=('cmake' 'boost' 'mesa')
 optdepends=('openclonk-music: proprietary music package')
 conflicts=('clonk_rage')
-install=$pkgname.install
-source=("http://openclonk.org/builds/release/$pkgver/$pkgname-$pkgver-src.tar.bz2" 'directories.patch')
-md5sums=('96303965e696ac284f054ce58ee51fa9'
-         'ba6ceecd5b2d3983d94e7d3aa24df5fd')
+source=("http://openclonk.org/builds/release/$pkgver/$pkgname-$pkgver-src.tar.bz2"
+        'directories.patch')
+sha256sums=('bc1a231d72774a7aa8819e54e1f79be27a21b579fb057609398f2aa5700b0732'
+            '1dca1c23c342fa6b41ba72065217e31f5f5604a1500e16de54f26e9ce760f869')
 
 prepare() {
-  cd "${srcdir}/${_orig}"
+  cd ${pkgname}-${pkgver}-src
   patch -p1 -i ../directories.patch
 }
 
 build() {
-  cd "${srcdir}/${_orig}"
+  cd ${pkgname}-${pkgver}-src
+
   [[ -d build ]] && rm -rf build
   mkdir build && cd build
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DFREETYPE_INCLUDE_DIRS=/usr/include/freetype2
+
   make
 }
 
 package() {
-  cd "${srcdir}/${_orig}"
-  cd build
+  cd ${pkgname}-${pkgver}-src/build
   
   make DESTDIR="$pkgdir" install
 
-  # Replace the music packet with unpacked music to allow adding music.
+  # replace the music packet with unpacked music to allow adding music
   rm "$pkgdir/usr/share/openclonk/Music.ocg"
   install -Dm644 ../planet/Music.ocg/* -t "$pkgdir/usr/share/openclonk/Music.ocg"
 
@@ -51,4 +52,3 @@ package() {
   install -m644 ../licenses/*.txt "$pkgdir"/usr/share/licenses/$pkgname
 }
 
-# vim: ts=2 sw=2 et:
