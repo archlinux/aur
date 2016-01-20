@@ -3,13 +3,14 @@
 _name='Ciliora-Tertia'
 pkgname=cinnamon-theme-${_name,,}-git
 pkgver=r133.97b0e77
-pkgrel=1
+pkgrel=2
 pkgdesc="${_name} theme for Cinnamon 2.8"
 arch=('any')
 url="https://github.com/zagortenay333/${_name,,}-cinnamon"
 license=('GPL')
 depends=('cinnamon>=2.8.0' 'cinnamon<2.9.0')
 replaces=("cinnamon-theme-${_name,,}")
+conflicts=("cinnamon-theme-${_name,,}")
 source=("git+https://github.com/zagortenay333/${_name,,}-cinnamon")
 sha256sums=('SKIP')
 
