@@ -1,28 +1,7 @@
->From 88aa3688d46ecb49ba236da6f761053b75b01528 Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Stefan=20B=C3=BChler?= <lighttpd@stbuehler.de>
-Date: Thu, 3 Dec 2015 14:51:50 +0100
-Subject: [PATCH 1/2] add gcc abi_tag support
-
-<http://reviews.llvm.org/D12834?id=34645>
-conflicts:
-	include/clang/Basic/DiagnosticSemaKinds.td
-	include/clang/Sema/AttributeList.h
-	lib/AST/ItaniumMangle.cpp
----
- docs/ItaniumMangleAbiTags.rst              |  90 +++++
- include/clang/Basic/Attr.td                |   8 +
- include/clang/Basic/DiagnosticSemaKinds.td |  10 +-
- include/clang/Sema/AttributeList.h         |   3 +-
- lib/AST/ItaniumMangle.cpp                  | 525 ++++++++++++++++++++++++-----
- lib/Sema/SemaDeclAttr.cpp                  |  55 +++
- 6 files changed, 609 insertions(+), 82 deletions(-)
- create mode 100644 docs/ItaniumMangleAbiTags.rst
-
-diff --git a/docs/ItaniumMangleAbiTags.rst b/docs/ItaniumMangleAbiTags.rst
-new file mode 100644
-index 0000000..d390162
+Index: docs/ItaniumMangleAbiTags.rst
+===================================================================
 --- /dev/null
-+++ b/docs/ItaniumMangleAbiTags.rst
++++ docs/ItaniumMangleAbiTags.rst
 @@ -0,0 +1,90 @@
 +========
 +Abi Tags
@@ -114,11 +93,11 @@ index 0000000..d390162
 +Example: a cast operator to std::string (which is
 +std::__cxx11::basic_string<...>) will use 'cxx11' as active tag, as it is
 +required from the return type `std::string` but not available.
-diff --git a/include/clang/Basic/Attr.td b/include/clang/Basic/Attr.td
-index d5ba722..36be1fc 100644
---- a/include/clang/Basic/Attr.td
-+++ b/include/clang/Basic/Attr.td
-@@ -349,6 +349,14 @@ class IgnoredAttr : Attr {
+Index: include/clang/Basic/Attr.td
+===================================================================
+--- include/clang/Basic/Attr.td
++++ include/clang/Basic/Attr.td
+@@ -350,6 +350,14 @@
  // Attributes begin here
  //
  
@@ -133,26 +112,28 @@ index d5ba722..36be1fc 100644
  def AddressSpace : TypeAttr {
    let Spellings = [GNU<"address_space">];
    let Args = [IntArgument<"AddressSpace">];
-diff --git a/include/clang/Basic/DiagnosticSemaKinds.td b/include/clang/Basic/DiagnosticSemaKinds.td
-index b00bd8a..c1931f6 100644
---- a/include/clang/Basic/DiagnosticSemaKinds.td
-+++ b/include/clang/Basic/DiagnosticSemaKinds.td
-@@ -2428,7 +2428,8 @@ def warn_attribute_wrong_decl_type : Warning<
-   "Objective-C instance methods|init methods of interface or class extension declarations|"
+Index: include/clang/Basic/DiagnosticSemaKinds.td
+===================================================================
+--- include/clang/Basic/DiagnosticSemaKinds.td
++++ include/clang/Basic/DiagnosticSemaKinds.td
+@@ -2442,7 +2442,8 @@
    "variables, functions and classes|Objective-C protocols|"
    "functions and global variables|structs, unions, and typedefs|structs and typedefs|"
--  "interface or protocol declarations|kernel functions|non-K&R-style functions}1">,
-+  "interface or protocol declarations|kernel functions|non-K&R-style functions"
+   "interface or protocol declarations|kernel functions|non-K&R-style functions|"
+-  "variables, fields and typedefs}1">,
++  "variables, fields and typedefs|"
 +  "structs, classes, variables, functions, methods and inline namespaces}1">,
    InGroup<IgnoredAttributes>;
  def err_attribute_wrong_decl_type : Error<warn_attribute_wrong_decl_type.Text>;
  def warn_type_attribute_wrong_type : Warning<
-@@ -4134,6 +4135,13 @@ def err_definition_of_explicitly_defaulted_member : Error<
+@@ -4150,6 +4151,15 @@
  def err_redefinition_extern_inline : Error<
    "redefinition of a 'extern inline' function %0 is not supported in "
    "%select{C99 mode|C++}1">;
 +def err_attr_abi_tag_only_on_inline_namespace :
 +  Error<"abi_tag attribute only allowed on inline namespaces">;
++def err_attr_abi_tag_only_on_named_namespace :
++  Error<"abi_tag attribute only allowed on named namespaces">;
 +def err_abi_tag_on_redeclaration :
 +  Error<"cannot add abi_tag attribute in redeclaration">;
 +def err_new_abi_tag_on_redeclaration :
@@ -161,25 +142,25 @@ index b00bd8a..c1931f6 100644
  
  def note_deleted_dtor_no_operator_delete : Note<
    "virtual destructor requires an unambiguous, accessible 'operator delete'">;
-diff --git a/include/clang/Sema/AttributeList.h b/include/clang/Sema/AttributeList.h
-index e32781d..87503fa 100644
---- a/include/clang/Sema/AttributeList.h
-+++ b/include/clang/Sema/AttributeList.h
-@@ -855,7 +855,8 @@ enum AttributeDeclKind {
-   ExpectedStructOrTypedef,
+Index: include/clang/Sema/AttributeList.h
+===================================================================
+--- include/clang/Sema/AttributeList.h
++++ include/clang/Sema/AttributeList.h
+@@ -856,7 +856,8 @@
    ExpectedObjectiveCInterfaceOrProtocol,
    ExpectedKernelFunction,
--  ExpectedFunctionWithProtoType
-+  ExpectedFunctionWithProtoType,
+   ExpectedFunctionWithProtoType,
+-  ExpectedVariableFieldOrTypedef
++  ExpectedVariableFieldOrTypedef,
 +  ExpectedStructClassVariableFunctionMethodOrInlineNamespace
  };
  
  }  // end namespace clang
-diff --git a/lib/AST/ItaniumMangle.cpp b/lib/AST/ItaniumMangle.cpp
-index 9da7e9e..c810edb 100644
---- a/lib/AST/ItaniumMangle.cpp
-+++ b/lib/AST/ItaniumMangle.cpp
-@@ -212,6 +212,8 @@ public:
+Index: lib/AST/ItaniumMangle.cpp
+===================================================================
+--- lib/AST/ItaniumMangle.cpp
++++ lib/AST/ItaniumMangle.cpp
+@@ -212,6 +212,8 @@
  class CXXNameMangler {
    ItaniumMangleContextImpl &Context;
    raw_ostream &Out;
@@ -188,7 +169,7 @@ index 9da7e9e..c810edb 100644
  
    /// The "structor" is the top-level declaration being mangled, if
    /// that's not a template specialization; otherwise it's the pattern
-@@ -261,6 +263,167 @@ class CXXNameMangler {
+@@ -261,6 +263,167 @@
  
    } FunctionTypeDepth;
  
@@ -356,7 +337,7 @@ index 9da7e9e..c810edb 100644
    llvm::DenseMap<uintptr_t, unsigned> Substitutions;
  
    ASTContext &getASTContext() const { return Context.getASTContext(); }
-@@ -283,6 +446,10 @@ public:
+@@ -283,6 +446,10 @@
      : Context(C), Out(Out_), Structor(getStructor(D)), StructorType(Type),
        SeqID(0) { }
  
@@ -367,7 +348,7 @@ index 9da7e9e..c810edb 100644
  #if MANGLE_CHECKER
    ~CXXNameMangler() {
      if (Out.str()[0] == '\01')
-@@ -296,18 +463,21 @@ public:
+@@ -296,18 +463,21 @@
  #endif
    raw_ostream &getStream() { return Out; }
  
@@ -391,7 +372,7 @@ index 9da7e9e..c810edb 100644
  
    bool mangleSubstitution(const NamedDecl *ND);
    bool mangleSubstitution(QualType T);
-@@ -334,31 +504,49 @@ private:
+@@ -334,31 +504,49 @@
                              DeclarationName name,
                              unsigned KnownArity = UnknownArity);
  
@@ -451,7 +432,7 @@ index 9da7e9e..c810edb 100644
    void mangleTemplatePrefix(TemplateName Template);
    bool mangleUnresolvedTypeOrSimpleId(QualType DestroyedType,
                                        StringRef Prefix = "");
-@@ -404,6 +592,10 @@ private:
+@@ -405,6 +593,10 @@
    void mangleTemplateParameter(unsigned Index);
  
    void mangleFunctionParam(const ParmVarDecl *parm);
@@ -462,7 +443,7 @@ index 9da7e9e..c810edb 100644
  };
  
  }
-@@ -454,6 +646,11 @@ bool ItaniumMangleContextImpl::shouldMangleCXXName(const NamedDecl *D) {
+@@ -455,6 +647,11 @@
    return true;
  }
  
@@ -474,7 +455,7 @@ index 9da7e9e..c810edb 100644
  void CXXNameMangler::mangle(const NamedDecl *D) {
    // <mangled-name> ::= _Z <encoding>
    //            ::= <data name>
-@@ -469,14 +666,28 @@ void CXXNameMangler::mangle(const NamedDecl *D) {
+@@ -470,14 +667,28 @@
      mangleName(cast<FieldDecl>(D));
  }
  
@@ -508,16 +489,7 @@ index 9da7e9e..c810edb 100644
    if (FD->hasAttr<EnableIfAttr>()) {
      FunctionTypeDepthState Saved = FunctionTypeDepth.push();
      Out << "Ua9enable_ifI";
-@@ -522,7 +733,7 @@ void CXXNameMangler::mangleFunctionEncoding(const FunctionDecl *FD) {
-     FD = PrimaryTemplate->getTemplatedDecl();
-   }
- 
--  mangleBareFunctionType(FD->getType()->getAs<FunctionType>(), 
-+  mangleBareFunctionType(FD->getType()->getAs<FunctionType>(),
-                          MangleReturnType, FD);
- }
- 
-@@ -580,7 +791,21 @@ isTemplate(const NamedDecl *ND, const TemplateArgumentList *&TemplateArgs) {
+@@ -581,7 +792,21 @@
    return nullptr;
  }
  
@@ -540,7 +512,7 @@ index 9da7e9e..c810edb 100644
    //  <name> ::= <nested-name>
    //         ::= <unscoped-name>
    //         ::= <unscoped-template-name> <template-args>
-@@ -596,7 +821,7 @@ void CXXNameMangler::mangleName(const NamedDecl *ND) {
+@@ -597,7 +822,7 @@
      while (!DC->isNamespace() && !DC->isTranslationUnit())
        DC = getEffectiveParentContext(DC);
    else if (GetLocalClassDecl(ND)) {
@@ -549,7 +521,7 @@ index 9da7e9e..c810edb 100644
      return;
    }
  
-@@ -606,76 +831,88 @@ void CXXNameMangler::mangleName(const NamedDecl *ND) {
+@@ -607,76 +832,88 @@
      // Check if we have a template.
      const TemplateArgumentList *TemplateArgs = nullptr;
      if (const TemplateDecl *TD = isTemplate(ND, TemplateArgs)) {
@@ -656,7 +628,7 @@ index 9da7e9e..c810edb 100644
    addSubstitution(Template);
  }
  
-@@ -834,6 +1071,7 @@ void CXXNameMangler::mangleUnresolvedPrefix(NestedNameSpecifier *qualifier,
+@@ -835,14 +1072,16 @@
      else
        Out << "sr";
      mangleSourceName(qualifier->getAsNamespace()->getIdentifier());
@@ -664,7 +636,8 @@ index 9da7e9e..c810edb 100644
      break;
    case NestedNameSpecifier::NamespaceAlias:
      if (qualifier->getPrefix())
-@@ -842,6 +1080,7 @@ void CXXNameMangler::mangleUnresolvedPrefix(NestedNameSpecifier *qualifier,
+       mangleUnresolvedPrefix(qualifier->getPrefix(),
+                              /*recursive*/ true);
      else
        Out << "sr";
      mangleSourceName(qualifier->getAsNamespaceAlias()->getIdentifier());
@@ -672,15 +645,15 @@ index 9da7e9e..c810edb 100644
      break;
  
    case NestedNameSpecifier::TypeSpec:
-@@ -876,6 +1115,7 @@ void CXXNameMangler::mangleUnresolvedPrefix(NestedNameSpecifier *qualifier,
+@@ -877,6 +1116,7 @@
        Out << "sr";
  
      mangleSourceName(qualifier->getAsIdentifier());
-+    writeAbiTags(qualifier->getAsNamespaceAlias());
++    // an Identifier has no type information, so we can't emit abi tags for it
      break;
    }
  
-@@ -921,7 +1161,8 @@ void CXXNameMangler::mangleUnresolvedName(NestedNameSpecifier *qualifier,
+@@ -922,7 +1162,8 @@
  
  void CXXNameMangler::mangleUnqualifiedName(const NamedDecl *ND,
                                             DeclarationName Name,
@@ -690,7 +663,7 @@ index 9da7e9e..c810edb 100644
    unsigned Arity = KnownArity;
    //  <unqualified-name> ::= <operator-name>
    //                     ::= <ctor-dtor-name>
-@@ -940,6 +1181,7 @@ void CXXNameMangler::mangleUnqualifiedName(const NamedDecl *ND,
+@@ -941,6 +1182,7 @@
          Out << 'L';
  
        mangleSourceName(II);
@@ -698,7 +671,7 @@ index 9da7e9e..c810edb 100644
        break;
      }
  
-@@ -979,6 +1221,7 @@ void CXXNameMangler::mangleUnqualifiedName(const NamedDecl *ND,
+@@ -980,6 +1222,7 @@
        assert(FD->getIdentifier() && "Data member name isn't an identifier!");
  
        mangleSourceName(FD->getIdentifier());
@@ -706,7 +679,7 @@ index 9da7e9e..c810edb 100644
        break;
      }
  
-@@ -999,6 +1242,9 @@ void CXXNameMangler::mangleUnqualifiedName(const NamedDecl *ND,
+@@ -1000,6 +1243,9 @@
        assert(D->getDeclName().getAsIdentifierInfo() &&
               "Typedef was not named!");
        mangleSourceName(D->getDeclName().getAsIdentifierInfo());
@@ -716,7 +689,7 @@ index 9da7e9e..c810edb 100644
        break;
      }
  
-@@ -1008,6 +1254,7 @@ void CXXNameMangler::mangleUnqualifiedName(const NamedDecl *ND,
+@@ -1009,6 +1255,7 @@
      // <lambda-sig> ::= <parameter-type>+   # Parameter types or 'v' for 'void'.
      if (const CXXRecordDecl *Record = dyn_cast<CXXRecordDecl>(TD)) {
        if (Record->isLambda() && Record->getLambdaManglingNumber()) {
@@ -724,15 +697,15 @@ index 9da7e9e..c810edb 100644
          mangleLambda(Record);
          break;
        }
-@@ -1019,6 +1266,7 @@ void CXXNameMangler::mangleUnqualifiedName(const NamedDecl *ND,
+@@ -1020,6 +1267,7 @@
        if (UnnamedMangle > 1)
-         Out << llvm::utostr(UnnamedMangle - 2);
+         Out << UnnamedMangle - 2;
        Out << '_';
 +      writeAbiTags(TD, AdditionalAbiTags);
        break;
      }
  
-@@ -1051,6 +1299,7 @@ void CXXNameMangler::mangleUnqualifiedName(const NamedDecl *ND,
+@@ -1052,6 +1300,7 @@
        // Otherwise, use the complete constructor name. This is relevant if a
        // class with a constructor is declared within a constructor.
        mangleCXXCtorType(Ctor_Complete);
@@ -740,7 +713,7 @@ index 9da7e9e..c810edb 100644
      break;
  
    case DeclarationName::CXXDestructorName:
-@@ -1062,6 +1311,7 @@ void CXXNameMangler::mangleUnqualifiedName(const NamedDecl *ND,
+@@ -1063,6 +1312,7 @@
        // Otherwise, use the complete destructor name. This is relevant if a
        // class with a destructor is declared within a destructor.
        mangleCXXDtorType(Dtor_Complete);
@@ -748,7 +721,7 @@ index 9da7e9e..c810edb 100644
      break;
  
    case DeclarationName::CXXOperatorName:
-@@ -1077,6 +1327,7 @@ void CXXNameMangler::mangleUnqualifiedName(const NamedDecl *ND,
+@@ -1078,6 +1328,7 @@
    case DeclarationName::CXXConversionFunctionName:
    case DeclarationName::CXXLiteralOperatorName:
      mangleOperatorName(Name, Arity);
@@ -756,7 +729,7 @@ index 9da7e9e..c810edb 100644
      break;
  
    case DeclarationName::CXXUsingDirective:
-@@ -1093,7 +1344,9 @@ void CXXNameMangler::mangleSourceName(const IdentifierInfo *II) {
+@@ -1094,7 +1345,9 @@
  
  void CXXNameMangler::mangleNestedName(const NamedDecl *ND,
                                        const DeclContext *DC,
@@ -767,7 +740,7 @@ index 9da7e9e..c810edb 100644
    // <nested-name> 
    //   ::= N [<CV-qualifiers>] [<ref-qualifier>] <prefix> <unqualified-name> E
    //   ::= N [<CV-qualifiers>] [<ref-qualifier>] <template-prefix> 
-@@ -1113,30 +1366,35 @@ void CXXNameMangler::mangleNestedName(const NamedDecl *ND,
+@@ -1114,30 +1367,35 @@
    // Check if we have a template.
    const TemplateArgumentList *TemplateArgs = nullptr;
    if (const TemplateDecl *TD = isTemplate(ND, TemplateArgs)) {
@@ -807,7 +780,7 @@ index 9da7e9e..c810edb 100644
    // <local-name> := Z <function encoding> E <entity name> [<discriminator>]
    //              := Z <function encoding> E s [<discriminator>]
    // <local-name> := Z <function encoding> E d [ <parameter number> ] 
-@@ -1148,15 +1406,25 @@ void CXXNameMangler::mangleLocalName(const Decl *D) {
+@@ -1149,15 +1407,25 @@
  
    Out << 'Z';
  
@@ -839,7 +812,7 @@ index 9da7e9e..c810edb 100644
    if (RD) {
      // The parameter number is omitted for the last parameter, 0 for the 
      // second-to-last parameter, 1 for the third-to-last parameter, etc. The 
-@@ -1181,13 +1449,17 @@ void CXXNameMangler::mangleLocalName(const Decl *D) {
+@@ -1182,13 +1450,17 @@
      // Mangle the name relative to the closest enclosing function.
      // equality ok because RD derived from ND above
      if (D == RD)  {
@@ -860,7 +833,7 @@ index 9da7e9e..c810edb 100644
      }
    } else if (const BlockDecl *BD = dyn_cast<BlockDecl>(D)) {
      // Mangle a block in a default parameter; see above explanation for
-@@ -1204,30 +1476,35 @@ void CXXNameMangler::mangleLocalName(const Decl *D) {
+@@ -1205,30 +1477,35 @@
        }
      }
  
@@ -909,7 +882,7 @@ index 9da7e9e..c810edb 100644
      return;
    }
    manglePrefix(getEffectiveDeclContext(Block));
-@@ -1238,10 +1515,11 @@ void CXXNameMangler::mangleUnqualifiedBlock(const BlockDecl *Block) {
+@@ -1239,10 +1516,11 @@
    if (Decl *Context = Block->getBlockManglingContextDecl()) {
      if ((isa<VarDecl>(Context) || isa<FieldDecl>(Context)) &&
          Context->getDeclContext()->isRecord()) {
@@ -924,7 +897,7 @@ index 9da7e9e..c810edb 100644
        }
      }
    }
-@@ -1274,7 +1552,7 @@ void CXXNameMangler::mangleLambda(const CXXRecordDecl *Lambda) {
+@@ -1275,7 +1553,7 @@
        if (const IdentifierInfo *Name
              = cast<NamedDecl>(Context)->getIdentifier()) {
          mangleSourceName(Name);
@@ -933,7 +906,7 @@ index 9da7e9e..c810edb 100644
        }
      }
    }
-@@ -1357,11 +1635,11 @@ void CXXNameMangler::manglePrefix(const DeclContext *DC, bool NoFunction) {
+@@ -1358,11 +1636,11 @@
    // Check if we have a template.
    const TemplateArgumentList *TemplateArgs = nullptr;
    if (const TemplateDecl *TD = isTemplate(ND, TemplateArgs)) {
@@ -947,7 +920,7 @@ index 9da7e9e..c810edb 100644
    }
  
    addSubstitution(ND);
-@@ -1372,27 +1650,30 @@ void CXXNameMangler::mangleTemplatePrefix(TemplateName Template) {
+@@ -1373,27 +1651,30 @@
    //                   ::= <template-param>
    //                   ::= <substitution>
    if (TemplateDecl *TD = Template.getAsTemplateDecl())
@@ -984,7 +957,7 @@ index 9da7e9e..c810edb 100644
    // <template-prefix> ::= <prefix> <template unqualified-name>
    //                   ::= <template-param>
    //                   ::= <substitution>
-@@ -1404,10 +1685,12 @@ void CXXNameMangler::mangleTemplatePrefix(const TemplateDecl *ND,
+@@ -1405,10 +1686,12 @@
  
    // <template-template-param> ::= <template-param>
    if (const auto *TTP = dyn_cast<TemplateTemplateParmDecl>(ND)) {
@@ -998,7 +971,7 @@ index 9da7e9e..c810edb 100644
    }
  
    addSubstitution(ND);
-@@ -1451,6 +1734,7 @@ void CXXNameMangler::mangleType(TemplateName TN) {
+@@ -1452,6 +1735,7 @@
      // <name> ::= <nested-name>
      mangleUnresolvedPrefix(Dependent->getQualifier());
      mangleSourceName(Dependent->getIdentifier());
@@ -1006,7 +979,7 @@ index 9da7e9e..c810edb 100644
      break;
    }
  
-@@ -1542,16 +1826,19 @@ bool CXXNameMangler::mangleUnresolvedTypeOrSimpleId(QualType Ty,
+@@ -1544,16 +1828,19 @@
  
    case Type::Typedef:
      mangleSourceName(cast<TypedefType>(Ty)->getDecl()->getIdentifier());
@@ -1026,7 +999,7 @@ index 9da7e9e..c810edb 100644
      break;
  
    case Type::TemplateSpecialization: {
-@@ -1570,6 +1857,7 @@ bool CXXNameMangler::mangleUnresolvedTypeOrSimpleId(QualType Ty,
+@@ -1572,6 +1859,7 @@
          goto unresolvedType;
  
        mangleSourceName(TD->getIdentifier());
@@ -1034,7 +1007,7 @@ index 9da7e9e..c810edb 100644
        break;
      }
  
-@@ -1601,16 +1889,19 @@ bool CXXNameMangler::mangleUnresolvedTypeOrSimpleId(QualType Ty,
+@@ -1603,16 +1891,19 @@
    case Type::InjectedClassName:
      mangleSourceName(
          cast<InjectedClassNameType>(Ty)->getDecl()->getIdentifier());
@@ -1054,7 +1027,7 @@ index 9da7e9e..c810edb 100644
      mangleTemplateArgs(DTST->getArgs(), DTST->getNumArgs());
      break;
    }
-@@ -2544,7 +2835,11 @@ void CXXNameMangler::mangleType(const InjectedClassNameType *T) {
+@@ -2546,7 +2837,11 @@
  
  void CXXNameMangler::mangleType(const TemplateSpecializationType *T) {
    if (TemplateDecl *TD = T->getTemplateName().getAsTemplateDecl()) {
@@ -1067,7 +1040,7 @@ index 9da7e9e..c810edb 100644
    } else {
      if (mangleSubstitution(QualType(T, 0)))
        return;
-@@ -2591,6 +2886,7 @@ void CXXNameMangler::mangleType(const DependentNameType *T) {
+@@ -2593,6 +2888,7 @@
    Out << 'N';
    manglePrefix(T->getQualifier());
    mangleSourceName(T->getIdentifier());
@@ -1075,7 +1048,7 @@ index 9da7e9e..c810edb 100644
    Out << 'E';
  }
  
-@@ -4011,6 +4307,74 @@ void CXXNameMangler::addSubstitution(uintptr_t Ptr) {
+@@ -4020,6 +4316,76 @@
    Substitutions[Ptr] = SeqID++;
  }
  
@@ -1102,6 +1075,7 @@ index 9da7e9e..c810edb 100644
 +  {
 +    llvm::raw_null_ostream NullOutStream;
 +    CXXNameMangler TrackReturnTypeTags(*this, NullOutStream);
++    TrackReturnTypeTags.disableDerivedAbiTags();
 +
 +    const FunctionProtoType *Proto = cast<FunctionProtoType>(FD->getType()->getAs<FunctionType>());
 +    TrackReturnTypeTags.FunctionTypeDepth.enterResultType();
@@ -1131,6 +1105,7 @@ index 9da7e9e..c810edb 100644
 +  {
 +    llvm::raw_null_ostream NullOutStream;
 +    CXXNameMangler TrackVariableType(*this, NullOutStream);
++    TrackVariableType.disableDerivedAbiTags();
 +
 +    TrackVariableType.mangleType(VD->getType());
 +
@@ -1150,7 +1125,7 @@ index 9da7e9e..c810edb 100644
  //
  
  /// Mangles the name of the declaration D and emits that name to the given
-@@ -4112,6 +4476,7 @@ void ItaniumMangleContextImpl::mangleStaticGuardVariable(const VarDecl *D,
+@@ -4121,6 +4487,7 @@
    //  <special-name> ::= GV <object name>       # Guard variable for one-time
    //                                            # initialization
    CXXNameMangler Mangler(*this, Out);
@@ -1158,17 +1133,19 @@ index 9da7e9e..c810edb 100644
    Mangler.getStream() << "_ZGV";
    Mangler.mangleName(D);
  }
-diff --git a/lib/Sema/SemaDeclAttr.cpp b/lib/Sema/SemaDeclAttr.cpp
-index 5a0f0f8..e3bc97b 100644
---- a/lib/Sema/SemaDeclAttr.cpp
-+++ b/lib/Sema/SemaDeclAttr.cpp
-@@ -4421,6 +4421,58 @@ static void handleDeclspecThreadAttr(Sema &S, Decl *D,
+Index: lib/Sema/SemaDeclAttr.cpp
+===================================================================
+--- lib/Sema/SemaDeclAttr.cpp
++++ lib/Sema/SemaDeclAttr.cpp
+@@ -4451,6 +4451,66 @@
        Attr.getRange(), S.Context, Attr.getAttributeSpellingListIndex()));
  }
  
 +static void handleAbiTagAttr(Sema &S, Decl *D,
 +                             const AttributeList &Attr) {
-+  if (!checkAttributeAtLeastNumArgs(S, Attr, 1))
++  const auto *NS = dyn_cast<NamespaceDecl>(D);
++
++  if (!checkAttributeAtLeastNumArgs(S, Attr, NS ? 0 : 1))
 +    return;
 +
 +  SmallVector<std::string, 4> Tags;
@@ -1181,16 +1158,22 @@ index 5a0f0f8..e3bc97b 100644
 +
 +    Tags.push_back(Tag);
 +  }
++
++  if (NS && !NS->isInline()) {
++    S.Diag(Attr.getLoc(), diag::err_attr_abi_tag_only_on_inline_namespace);
++    return;
++  }
++  if (NS && NS->isAnonymousNamespace()) {
++    S.Diag(Attr.getLoc(), diag::err_attr_abi_tag_only_on_named_namespace);
++    return;
++  }
++  if (NS && Attr.getNumArgs() == 0) {
++      Tags.push_back(NS->getName());
++  }
++
 +  // store tags sorted and without duplicates
 +  std::sort(Tags.begin(), Tags.end());
 +  Tags.erase(std::unique(Tags.begin(), Tags.end()), Tags.end());
-+
-+  if (const auto *NS = dyn_cast<NamespaceDecl>(D)) {
-+    if (!NS->isInline()) {
-+      S.Diag(Attr.getLoc(), diag::err_attr_abi_tag_only_on_inline_namespace);
-+      return;
-+    }
-+  }
 +
 +  const auto *CD = D->getCanonicalDecl();
 +  if (CD != D) {
@@ -1221,7 +1204,7 @@ index 5a0f0f8..e3bc97b 100644
  static void handleARMInterruptAttr(Sema &S, Decl *D,
                                     const AttributeList &Attr) {
    // Check the attribute arguments.
-@@ -5338,6 +5390,9 @@ static void ProcessDeclAttribute(Sema &S, Scope *scope, Decl *D,
+@@ -5438,6 +5498,9 @@
    case AttributeList::AT_Thread:
      handleDeclspecThreadAttr(S, D, Attr);
      break;
@@ -1231,6 +1214,46 @@ index 5a0f0f8..e3bc97b 100644
  
    // Thread safety attributes:
    case AttributeList::AT_AssertExclusiveLock:
--- 
-2.5.0
-
+Index: test/SemaCXX/attr-abi-tag-syntax.cpp
+===================================================================
+--- /dev/null
++++ test/SemaCXX/attr-abi-tag-syntax.cpp
+@@ -0,0 +1,20 @@
++// RUN: %clang_cc1 -std=c++11 -fsyntax-only -verify %s
++
++namespace N1 {
++
++namespace __attribute__((__abi_tag__)) {} // \
++  // expected-error {{abi_tag attribute only allowed on inline namespaces}}
++
++namespace N __attribute__((__abi_tag__)) {} // \
++  // expected-error {{abi_tag attribute only allowed on inline namespaces}}
++
++}
++
++namespace N2 {
++
++inline namespace __attribute__((__abi_tag__)) {} // \
++  // expected-error {{abi_tag attribute only allowed on named namespaces}}
++
++inline namespace N __attribute__((__abi_tag__)) {}
++
++}
+Index: test/SemaCXX/attr-abi-tag.cpp
+===================================================================
+--- /dev/null
++++ test/SemaCXX/attr-abi-tag.cpp
+@@ -0,0 +1,13 @@
++// RUN: %clang_cc1 -x c++ -std=c++11 -triple x86_64-unknown-linux -emit-llvm < %s | FileCheck %s
++
++// CHECK: @_Z5Func1B6Names1v()
++inline namespace Names1 __attribute__((__abi_tag__)) {
++    class C1 {};
++}
++C1 Func1() { return C1(); }
++
++// CHECK: @_Z5Func2B4Tag1B4Tag2v()
++inline namespace Names2 __attribute__((__abi_tag__("Tag1", "Tag2"))) {
++    class C2 {};
++}
++C2 Func2() { return C2(); }
