@@ -1,6 +1,6 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="5.5.316.0"
+pkgver="5.5.316.1"
 pkgrel="1"
 pkgdesc="Perform simple editing of PDF files"
 license=('Custom')
@@ -15,10 +15,10 @@ _x64file="PDFXVE5.x64.msi"
 _installdir="/usr/lib"
 
  source_x86_64+=($_downloadsource/$_x64file)
- md5sums_x86_64+=(878f7b53dbf26a9650dced777934cb36)
+ md5sums_x86_64+=(d7090d272c257e30a41107d8f5d607e1)
 
  source_i686+=($_downloadsource/$_x86file)
- md5sums_i686+=(7689640c4bb2a4ce4a1cc4bc5bcf7871)
+ md5sums_i686+=(541b5d0e07392c5c08c7681f53ca3cdf)
 
 prepare()
 {
