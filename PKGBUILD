@@ -4,23 +4,21 @@ pkgdesc="ROS - Compressed_depth_image_transport provides a plugin to image_trans
 url='http://www.ros.org/wiki/image_transport_plugins'
 
 pkgname='ros-indigo-compressed-depth-image-transport'
-pkgver='1.9.2'
+pkgver='1.9.3'
 _pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-image-transport
   ros-indigo-catkin
   ros-indigo-dynamic-reconfigure
-  ros-indigo-tf
   ros-indigo-cv-bridge)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-image-transport
   ros-indigo-dynamic-reconfigure
-  ros-indigo-tf
   ros-indigo-cv-bridge)
 depends=(${ros_depends[@]})
 
