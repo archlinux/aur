@@ -1,6 +1,6 @@
 # Maintainer: Vi0L0 <vi0l093@gmail.com>
 # Contributor: mid-kid <esteve.varela@gmail.com>
-# Contributor: kralyk (nonce idea execution)
+# Contributor: vchuravy (download  execution)
 
 pkgname="amd-adl-sdk"
 pkgver=9.0
@@ -19,7 +19,7 @@ _sha256sums=('7a0d304e9198d3eae1f98989f9eb06bb83db487802748957490626af15827878')
 
 
 prepare() {
-    warning "Installing this package means that you have read, understand and ACCEPT"
+    warning "Installing this package means that you have red, understood and ACCEPTED"
     warning "the license agreement posted at http://developer.amd.com/amd-license-agreement/"
     warning ""
     warning "will sleep 5 sec to make sure you red it :P"
