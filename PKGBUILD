@@ -2,13 +2,14 @@
 
 _gitname=highcommand
 pkgname=$_gitname-git
-pkgver=r51.91ef7d6
+pkgver=r52.b4d2b67
 pkgrel=1
 pkgdesc="getopt() for the future"
 url="https://github.com/dlom/highcommand"
 license=("MIT")
 depends=("glibc")
 makedepends=("ruby-ronn")
+checkdepends=("cmocka")
 arch=("i686" "x86_64")
 provides=("highcommand")
 conflicts=("highcommand")
@@ -29,4 +30,9 @@ package() {
     cd "$_gitname"
     make DESTDIR="$pkgdir" PREFIX="/usr" install
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+check() {
+    cd "$_gitname"
+    make check
 }
