@@ -3,8 +3,8 @@
 # Contributor: Rémy Oudompheng <oudomphe@clipper.ens.fr>
 
 pkgname=singular4
-pkgver=4.0.2_p2
-_majver=4-0-2
+pkgver=4.0.3
+_majver=4-0-3
 pkgrel=1
 pkgdesc="Computer Algebra System for polynomial computations, version 4"
 arch=(i686 x86_64)
@@ -12,9 +12,8 @@ url="http://www.singular.uni-kl.de/"
 license=(GPL)
 depends=(flint cddlib) # polymake
 makedepends=(doxygen)
-source=("http://www.mathematik.uni-kl.de/ftp/pub/Math/Singular/src/$_majver/$pkgname-${pkgver//_/}.tar.gz") 
-md5sums=('ed2842f1ca8e907cd9ca14bda40460bb'
-         'e69ad9daf0070715daf1defb03dcaed6')
+source=("http://www.mathematik.uni-kl.de/ftp/pub/Math/Singular/src/$_majver/${pkgname%4}-${pkgver//_/}.tar.gz") 
+md5sums=('cf7f8df838a630b58ba67da6b8153469')
 
 build() {
   cd $pkgname-${pkgver//_/}
