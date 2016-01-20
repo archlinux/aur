@@ -10,7 +10,8 @@ url="http://codingteam.net/project/sima"
 license=('GPL')
 depends=('python' 'python-musicpd')
 makedepends=('make')
-source=("http://codingteam.net/project/sima/download/file/mpd_sima-$pkgver.tar.xz")
+source=("http://codingteam.net/project/sima/download/file/mpd_sima-$pkgver.tar.xz"
+        "mpd-sima.service")
 
 build() {
     cd "$srcdir/MPD_sima-${pkgver}"
@@ -22,6 +23,8 @@ build() {
 package() {
     cd "${srcdir}/MPD_sima-${pkgver}"
     python setup.py install --prefix=/usr --root="$pkgdir" || return 1
+    install -Dm644 ../../mpd-sima.service ${pkgdir}/usr/lib/systemd/user/mpd-sima.service
 }
 
-md5sums=('81368753f1d696276e850a9e86dcc060')
+md5sums=('81368753f1d696276e850a9e86dcc060'
+         'c3b52d8a8a0fcf02f2c6ff5a9d831d5a')
