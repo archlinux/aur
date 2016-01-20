@@ -8,7 +8,7 @@ _srcname=linux-4.3
 pkgname=(linux-bld linux-bld-headers)
 _kernelname=-bld
 pkgver=4.3.3
-pkgrel=1
+pkgrel=3
 arch=('i686' 'x86_64')
 url="https://github.com/rmullick/linux"
 license=('GPL2')
@@ -31,6 +31,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	"${_bfqpath}/0002-block-introduce-the-BFQ-v7r8-I-O-sched-for-4.3.patch"
 	"${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.3.0.patch"
         "https://raw.githubusercontent.com/rmullick/bld-patches/master/${_BLDpatch}"
+        "0001-disabling-primary-plane-in-the-noatomic-case.patch"
+        "CVE-2016-0728.patch"
         )
 
 sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
@@ -45,7 +47,9 @@ sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
             'ebeb62206999b2749ac43bb287a6a2a5db4f6b1b688a90cefa1ceb5db94aa490'
             '91b7cb42b8337b768e5329da205a6b61211628ec99b1e308e0e9d5283b2c86eb'
             '77430c7154670dd288b6d5bd45896222bf955f02029ee5d0cfe97cc5d9bc1a9d'
-            '5abf7ed1ff7001926efdec319286bd0876c3f29e9e9cb75532a6865898dd5e38')
+            '5abf7ed1ff7001926efdec319286bd0876c3f29e9e9cb75532a6865898dd5e38'
+            'abdd04bd6beecb7c961130a68d71e6332bd260462eeaa2f4f8e634de813dcc4d'
+            'c11bf7442041f2ddaf6aea62b897c0753200aa64ca0e7b9f2c9700ea16326997')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -95,7 +99,13 @@ prepare() {
       patch -Np1 -i "$p"
   done
 
-#  msg2 "Patches from Archlinux"
+  msg2 "Patches from Archlinux"
+  # fix #46968
+  # hangs on older intel hardware
+  patch -Np1 -i "${srcdir}/0001-disabling-primary-plane-in-the-noatomic-case.patch"
+
+  # fixes #47820 CVE-2016-0728.patch
+  patch -Np1 -i "${srcdir}/CVE-2016-0728.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
