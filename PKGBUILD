@@ -2,7 +2,7 @@
 # Revived from: Vincent Berset <msieurhappy@gmail.com>
 
 pkgname=mpd-sima
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=1
 pkgdesc="Automagically add title to mpd playlist based on last.fm recomendations"
 arch=('any')
@@ -24,5 +24,4 @@ package() {
     python setup.py install --prefix=/usr --root="$pkgdir" || return 1
 }
 
-md5sums=('bc652d4103988ed137602c8789ed93f8')
-md5sums=('7575df527e29ab5f414fd44a8a5760cd')
+md5sums=('81368753f1d696276e850a9e86dcc060')
