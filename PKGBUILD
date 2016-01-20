@@ -1,6 +1,6 @@
 pkgname=serviio
-pkgver=1.5.2
-pkgrel=2
+pkgver=1.6
+pkgrel=0
 pkgdesc="Free DLNA media server"
 arch=('any')
 url="http://www.serviio.org/"
@@ -8,14 +8,12 @@ license=('custom')
 depends=('java-runtime-headless=8' 'ffmpeg')
 source=(http://download.serviio.org/releases/serviio-${pkgver}-linux.tar.gz
         $pkgname.sh
-        $pkgname-console.sh
         $pkgname.service
         $pkgname.desktop
         $pkgname.png
         $pkgname.install)
-md5sums=('70cfa7d9f54b1c921194b6c0d6530ed6'
+md5sums=('2dae7c1a41b0de075d02c244fccd39ab'
          '227a75de2dea1db93c1fba3d004e01ad'
-         '7f38b2f294ce990958dcc63b583807b4'
          'e958d9812448f97fe325dfffe8b44620'
          'fbfcac4ad5dffd909e51ea1a7a6335aa'
          'd41e3e757e412dfcd3036d9e19b81450'
@@ -32,7 +30,7 @@ package() {
 
   # place the serviio scripts in the /usr/bin folder
   install -Dm755 ${srcdir}/$pkgname.sh $pkgdir/usr/bin/$pkgname
-  install -Dm755 ${srcdir}/$pkgname-console.sh $pkgdir/usr/bin/$pkgname-console
+  install -Dm755 bin/$pkgname-console.sh $pkgdir/usr/bin/$pkgname-console
 
   # copy xml config files to the config folder
   install -m644 config/*.xml ${SERVIIO_HOME}/config
