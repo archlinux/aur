@@ -14,7 +14,7 @@ depends=('gmp'
          'qt5-quickcontrols'
          'qt5-webengine'
          'readline'
-         'go-ethereum')
+         'geth')
 provides=('mist'
           'libnode')
 conflicts=('mist-git'
