@@ -2,7 +2,7 @@
 # Maintainer : Colin Arnott <arnottcr@gmail.com>
 
 pkgname=purple-skypeweb-git
-pkgver=20160106.v1.0.54.g623f311
+pkgver=20160120.1.1.11.gb352617
 pkgrel=1
 arch=('any')
 license=('GPLv3')
@@ -10,7 +10,7 @@ pkgdesc="SkypeWeb Plugin for Pidgin"
 url="https://github.com/EionRobb/skype4pidgin/tree/master/skypeweb"
 depends=('libpurple' 'json-glib')
 makedepends=('pkg-config' 'git')
-conflicts=('purple-skypeweb')
+conflicts=('purple-skypeweb' 'skype4pidgin')
 provides=('purple-skypeweb')
 
 source=("$pkgname"::'git://github.com/EionRobb/skype4pidgin')
