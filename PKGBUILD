@@ -23,6 +23,7 @@ cp -a ${srcdir}/weblogo/* "${pkgdir}/opt/${pkgname}/."
 
 # link the exe
 mkdir -p ${pkgdir}/usr/bin
+ln -s /opt/${pkgname}/seqlogo ${pkgdir}/usr/bin/.
 
 # install license file
 install -m644 -D "${srcdir}/weblogo/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
