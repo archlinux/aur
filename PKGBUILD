@@ -3,7 +3,7 @@
 _pkgname=wxgtk
 pkgname=$_pkgname-git
 pkgver=46953a1
-pkgrel=2
+pkgrel=3
 pkgdesc='Cross-Platform GUI Library - GTK+ port'
 arch=("i686" "x86_64")
 url='https://www.wxwidgets.org'
@@ -17,7 +17,7 @@ sha256sums=("SKIP")
 
 pkgver() {
   cd $_pkgname
-  git describe --always | sed "s/^v//;s/-/./g"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
