@@ -1,7 +1,7 @@
 # Maintainer: Zanny <lordzanny at gmail dot com>
 
 pkgname=rbdoom3-bfg-git
-pkgver=r556.5e7e59c
+pkgver=r591.414a426
 pkgrel=1
 pkgdesc="Doom 3 BFG Edition with soft shadows, cleaned up source, Linux and 64 bit Support"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ provides=('rbdoom3-bfg')
 conflicts=('rbdoom-3-bfg')
 install=rbdoom3-bfg-git.install
 source=('rbdoom3-bfg-git::git+https://github.com/RobertBeckebans/RBDOOM-3-BFG.git'
-        'rbdoom3-bfg-git.desktop' 
+        'rbdoom3-bfg-git.desktop'
         'doom3bfg.png')
 md5sums=('SKIP'
          'f5458e6cc915282aec2406dbdc824f9f'
@@ -39,4 +39,6 @@ package() {
   install -Dm755 "$srcdir/$pkgname/neo/RBDoom3BFG" "$pkgdir/usr/bin/rbdoom3bfg"
   install -Dm644 "$srcdir/doom3bfg.png" "$pkgdir/usr/share/pixmaps/doom3bfg.png"
   install -Dm644 "$srcdir/rbdoom3-bfg-git.desktop" "$pkgdir/usr/share/applications/rbdoom3-bfg-git.desktop"
+  install -Dm644 "$srcdir/$pkgname/base/extract_resources.cfg" "$pkgdir/usr/share/games/doom3bfg/base/extract_resources.cfg"
+  cp -r "$srcdir/$pkgname/base/renderprogs" "$pkgdir/usr/share/games/doom3bfg/base"
 }
