@@ -1,6 +1,6 @@
 pkgbase = linux-selinux
 	pkgver = 4.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.kernel.org/
 	arch = i686
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = linux-selinux
 	source = config.x86_64
 	source = linux-selinux.preset
 	source = change-default-console-loglevel.patch
+	source = CVE-2016-0728.patch
 	sha256sums = 4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae
 	sha256sums = SKIP
 	sha256sums = 95cd81fcbb87953f672150d60950548edc04a88474c42de713b91811557fefa5
@@ -30,6 +31,7 @@ pkgbase = linux-selinux
 	sha256sums = 93bd8ee71705de4697178d5930557b7d977ac32757a9f8be331a3292b7078b7e
 	sha256sums = 375da3b030f17581cbf5be9140b79029ca85eebc70197f419a4de77e00fa84e9
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
+	sha256sums = 03bed5b1c6ef34a917e218a46d38cd1347c5ab5693131996113c6cad275dc4e9
 
 pkgname = linux-selinux
 	pkgdesc = The Linux-selinux kernel and modules
