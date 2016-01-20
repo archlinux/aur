@@ -1,7 +1,7 @@
 # Maintainer: Duncan <duncan@vtllf.org>
 
 pkgname=terraform
-pkgver=0.6.8
+pkgver=0.6.9
 pkgrel=1
 pkgdesc="Tool for building, changing, and versioning infrastructure safely and efficiently"
 url='http://www.terraform.io/'
@@ -21,16 +21,15 @@ prepare() {
   cd "${srcdir}/src/${_gourl}/${pkgname}"
   GOPATH="${srcdir}" go get -u github.com/mitchellh/gox
   GOPATH="${srcdir}" go get -u golang.org/x/tools/cmd/stringer
-  GOPATH="${srcdir}" make updatedeps
   mkdir Godeps
   cp deps/v$(echo ${pkgver} | sed 's/\./-/g').json Godeps/Godeps.json
-  GOPATH="${srcdir}" godep restore
+  GOPATH="${srcdir}" godep get
 }
 
 build() {
   msg2 "Build program"
   cd "${srcdir}/src/${_gourl}/${pkgname}"
-  GOPATH="${srcdir}" PATH="${srcdir}/bin:${PATH}" TF_DEV=1 make bin
+  GOPATH="${srcdir}" PATH="${srcdir}/bin:${PATH}" TF_DEV=1 TF_QUICKDEV=1 make bin
 }
 
 package() {
