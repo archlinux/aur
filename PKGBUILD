@@ -9,7 +9,7 @@
 pkgname=fileobj
 pkgver=0.7.25
 pkgrel=1
-pkgdesc="Open-source, cross platform IDE for the C/C++ programming languages"
+pkgdesc="Portable hex editor with vi like interface written in Python "
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/fileobj"
 license=('GPL')
