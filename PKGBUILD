@@ -1,11 +1,11 @@
-# Maintainer: Ordoe Ordoe <aur@cach.co>
+# Maintainer: Afri 5chdn <aur@cach.co>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=mist
 pkgver=0.3.8
 _pkgver=0-3-8
-pkgrel=1
-pkgdesc="Ethereum wallet for Ether accounts, wallets and smart contracts (includes Mist browser and Geth cli)."
+pkgrel=2
+pkgdesc="Ethereum wallet for Ether accounts, wallets and smart contracts (includes Mist browser)."
 arch=('x86_64')
 depends=('gmp'
          'leveldb'
@@ -13,18 +13,13 @@ depends=('gmp'
          'qt5-declarative'
          'qt5-quickcontrols'
          'qt5-webengine'
-         'readline')
+         'readline'
+         'go-ethereum')
 provides=('mist'
-          'libnode'
-          'geth')
+          'libnode')
 conflicts=('mist-git'
            'libnode'
-           'libnode-git'
-           'geth'
-           'geth-git'
-           'go-ethereum'
-           'go-ethereum-git')
-groups=('ethereum')
+           'libnode-git')
 url="https://github.com/ethereum/$pkgname"
 license=('GPL')
 source=("${pkgname}-${_pkgver}.zip::https://github.com/ethereum/$pkgname/releases/download/v${pkgver}/Ethereum-Wallet-linux64-$_pkgver.zip")
@@ -54,7 +49,4 @@ package() {
   find "${pkgdir}" -type f -exec chmod 644 {} +
   chmod 755 "${pkgdir}/usr/share/${pkgname}/Ethereum-Wallet"
   chmod 755 "${pkgdir}/usr/share/${pkgname}/libnode.so"
-
-  msg2 'Installing Geth...'
-  install -m 755 "$srcdir/Ethereum-Wallet-linux-x64-$_pkgver/resources/node/geth/geth" "$pkgdir/usr/bin/geth"
 }
