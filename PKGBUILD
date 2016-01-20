@@ -22,6 +22,11 @@ pkgver() {
 prepare() {
 	cd $srcdir/${_gitname}
 
+# This is probably redundant since we flush repos before a rebuild,
+# but we'll need it in the non-git version
+# So it's here for self reference, mostly.
+# Please direct complaints to /dev/null
+
 	if [ ! -d "build" ]; then
 		mkdir build
 	else
@@ -30,6 +35,9 @@ prepare() {
 
 	cd build
 	
+# Possible options for -DCMAKE_BUILD_TYPE are Release and Debug
+# Debug has console spew
+
  	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
 
 }
