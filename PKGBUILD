@@ -2,7 +2,7 @@
 # Contributor: Josip Ponjavic <josipponjavic at gmail dot com> 
 
 pkgname=rtags-git
-pkgver=v2.0.r990.gccccd8a
+pkgver=r5951.5687de1
 pkgrel=1
 pkgdesc="RTags is a client/server application that indexes C/C++ code."
 arch=('i686' 'x86_64')
@@ -21,8 +21,8 @@ sha256sums=('SKIP'
             '25d1842a4187a1933ff27833201cfd0879da71a50241860e32edecfc7e75f14f')
 
 pkgver() {
-	cd rtags
-	git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+        cd rtags
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
