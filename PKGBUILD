@@ -17,6 +17,7 @@ package() {
 
   install -D "${pkgname}" -t "${pkgdir}/usr/bin"
   install -Dm644 "${pkgname}.conf" -t "${pkgdir}/etc"
+  install -Dm644 bash_completion "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
 }
 
 # vim:set ts=2 sw=2 et:
