@@ -1,5 +1,8 @@
 post_install() {
   gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+  gconftool-2 -t string -s /desktop/gnome/url-handlers/ob/command "openbazaar %s"  
+  gconftool-2 -s /desktop/gnome/url-handlers/ob/needs_terminal false -t bool
+  gconftool-2 -t bool -s /desktop/gnome/url-handlers/ob/enabled true
 }
 
 
