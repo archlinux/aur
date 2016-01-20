@@ -2,12 +2,12 @@
 pkgbase='key-logic'
 pkgname=("$pkgbase" "$pkgbase-examples")
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A dynamic logic proof tool"
 arch=('any')
 url="http://www.key-project.org"
 license=('GPL2')
-depends=('jdk')
+depends=('bash' 'java-environment')
 makedepends=()
 checkdepends=()
 optdepends=()
