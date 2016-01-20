@@ -28,6 +28,7 @@ optdepends=('taglib: for mediaplayer plugin'
             'kdnssd: for zeroconf plugin'
             )
 provides=('ktorrent')
+conflicts=('ktorrent-frameworks-git')
 source=('git://anongit.kde.org/ktorrent.git')
 sha1sums=('SKIP')
 install=ktorrent-git.install
