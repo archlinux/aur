@@ -3,7 +3,7 @@
 pkgname=lightdm-webkit2-greeter
 pkgver=2.0.0
 _bgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A webkit2 greeter for LightDM"
 arch=('i686' 'x86_64')
 url="https://github.com/antergos/lightdm-webkit2-greeter"
@@ -24,6 +24,7 @@ md5sums=('SKIP'
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
+	git checkout 2.0.0
 	git submodule init && git submodule update
 	LIBS+="-ljavascriptcoregtk-4.0" \
 		./autogen.sh \
