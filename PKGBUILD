@@ -3,7 +3,7 @@
 
 pkgname=brackets-bin
 _pkgname=brackets
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc="A code editor for HTML, CSS and JavaScript. "
 arch=("i686" "x86_64")
@@ -23,10 +23,9 @@ install=$pkgname.install
 
 if [[ $CARCH == "x86_64" ]]; then
   _arch=64
-  sha512sums=('63b9893e2aa8e2ffc3e5b21a217e5b6cc9a1b41c35b7a7710bc9f6afe71b6a9618e2b4c5759a89dcad64efa370629d59a26a33f989e28e9dc944431e5ffb8404')
+sha512sums=('e3fba356a6b152e8d27b521ae2be69cc51b935c04f67a448c3f23be4267f40176e1344ef06fd8172ed0927d990ba50c5babde930f713bb9e5e5e912d63787e0c')
 elif [[ $CARCH == "i686" ]]; then
   _arch=32
-  sha512sums=('65cf961dd3c14643a307f9925a071fed5546dd7c075ae9d8c765e0afb73062e8ae67ea5bc035a610c13291bd29e151858ec08f2929464a3e7c69e9c63fdba3be')
 fi
 
 source=("https://github.com/adobe/$_pkgname/releases/download/release-$pkgver/Brackets.Release.$pkgver.$_arch-bit.deb")
