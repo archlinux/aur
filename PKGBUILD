@@ -8,6 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/ethereum/go-ethereum"
 license=('LGPL3' 'GPL3')
 makedepends=('go' 'gmp')
+provides=('geth')
 source=("${pkgname}::git+https://github.com/ethereum/go-ethereum.git")
 sha256sums=('SKIP')
 
