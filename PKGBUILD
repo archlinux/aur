@@ -1,7 +1,7 @@
 # Maintainer: David Parrish <daveparrish@gmail.com>
 
 pkgname=geth-git
-pkgver=v0.9.39.r48.gdb988a4
+pkgver=v0.9.39.r563.ge7f6798
 pkgrel=1
 pkgdesc="Ethereum Go Client"
 arch=('i686' 'x86_64')
