@@ -9,7 +9,8 @@ url="https://github.com/espeak-ng/espeak-ng"
 license=('GPL3')
 depends=(gcc-libs)
 optdepends=('portaudio: speech output via Portaudio'
-  'pulseaudio: speech output via Pulseaudio')
+  'pulseaudio: speech output via Pulseaudio'
+  'libsonic-git: for speech rates higher than 450 words per minute')
 makedepends=('git')
 provides=(espeak)
 conflicts=(espeak espeak-test)
