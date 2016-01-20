@@ -17,20 +17,22 @@
 # Contributor: zoopp
 # Contributor: solar (authatieventsd' patch s/-1/255)
 # Contributor: Cold (current_euid patch)
-# Contributor: kolasa (3.19, 4.0 & 4.1 kernel patch)
+# Contributor: ubuntu (parts of 4.0, 4.1 and 4.2 kernel patches)
+# Contributor: kolasa (parts of 4.2 and 4.3 kernel patches)
+# Contributor: gentoo (patch for 3.10 + part of 4.3 kernel patches)
 
 
 # PKGEXT='.pkg.tar.gz' # imho time to pack this pkg into tar.xz is too long, unfortunatelly yaourt got problems when ext is different from .pkg.tar.xz - V
 
 pkgname=catalyst-total-hd234k
 pkgver=13.1
-pkgrel=32.1
+pkgrel=33.2
 pkgdesc="AMD/ATI legacy drivers. catalyst-hook + catalyst-utils + lib32-catalyst-utils"
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
-depends=('linux>=3.0' 'linux<4.4' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.13.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4' 'gcc49')
+depends=('linux>=3.0' 'linux<4.5' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.13.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4')
 optdepends=('qt4: to run ATi Catalyst Control Center (amdcccle)'
 	    'libxxf86vm: to run ATi Catalyst Control Center (amdcccle)'
 	    'opencl-headers: headers necessary for OpenCL development'
@@ -91,10 +93,13 @@ source=(
     4.2-fglrx-has_fpu.patch
     4.2-kolasa-fpu_save_init.patch
     4.3-kolasa-seq_printf.patch
-    4.3-gentoo-mtrr.patch)
+    4.3-gentoo-mtrr.patch
+    
+    gcc5-something_something_the_dark_side.patch
+    4.4-arch-block_signals.patch)
 
 md5sums=('c07fd1332abe4c742a9a0d0e0d0a90de'
-	 '82c4e97854c020ad147a9122805a8936'
+	 '3c2ff823b56d16e8220d129726b43ff1'
 	 'af7fb8ee4fc96fd54c5b483e33dc71c4'
          'bdafe749e046bfddee2d1c5e90eabd83'
          '9d9ea496eadf7e883d56723d65e96edf'
@@ -126,7 +131,10 @@ md5sums=('c07fd1332abe4c742a9a0d0e0d0a90de'
 	 'ae67dff6c218e028443dff6eacb26485'
 	 'ccfdf4784735a742c53bdc1309f49a51'
 	 'cdea2b2055df7d843b6096615e82d030'
-	 '98828e3eeaec2b3795e584883cc1b746')
+	 '98828e3eeaec2b3795e584883cc1b746'
+	 
+	 'af80a9eb2016811ab79717c2bd370a25'
+	 'd200e156e941ec7b0227e399fd20a9c2')
 
 
 build() {
@@ -304,6 +312,8 @@ package() {
       patch -Np1 -i ../4.2-kolasa-fpu_save_init.patch
 #       patch -Np1 -i ../4.3-kolasa-seq_printf.patch            #not compiling, undeclared m
       patch -Np1 -i ../4.3-gentoo-mtrr.patch
+      patch -Np1 -i ../gcc5-something_something_the_dark_side.patch
+      patch -Np1 -i ../4.4-arch-block_signals.patch
 
     # Prepare modules source files
       _archdir=x86_64
@@ -339,6 +349,7 @@ package() {
 	cd ${srcdir}/archive_files/arch/x86/usr
 	install -dm755 ${pkgdir}/usr/lib32
 	install -dm755 ${pkgdir}/usr/lib32/fglrx
+	install -dm755 ${pkgdir}/usr/lib32/dri
 	install -dm755 ${pkgdir}/usr/lib32/xorg/modules/dri
 	install -m755 lib/*.so* ${pkgdir}/usr/lib32
 	install -m755 X11R6/lib/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib32/fglrx
@@ -352,7 +363,7 @@ package() {
 	install -m755 X11R6/lib/libfglrx_dm.so.1.0 ${pkgdir}/usr/lib32
 	install -m755 X11R6/lib/libXvBAW.so.1.0 ${pkgdir}/usr/lib32
 	install -m755 X11R6/lib/modules/dri/*.so ${pkgdir}/usr/lib32/xorg/modules/dri
-	ln -snf /usr/lib32/xorg/modules/dri ${pkgdir}/usr/lib32/dri
+	ln -snf /usr/lib32/xorg/modules/dri/fglrx_dri.so ${pkgdir}/usr/lib32/dri/fglrx_dri.so
 
 	cd $pkgdir/usr/lib32
 	ln -sf libfglrx_dm.so.1.0 libfglrx_dm.so.1

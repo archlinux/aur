@@ -1,0 +1,34 @@
+diff -uNr 16.1/common/lib/modules/fglrx/build_mod/firegl_public.c 16.1b/common/lib/modules/fglrx/build_mod/firegl_public.c
+--- 16.1/common/lib/modules/fglrx/build_mod/firegl_public.c	2013-01-15 22:33:27.000000000 +0100
++++ 16.1b/common/lib/modules/fglrx/build_mod/firegl_public.c	2016-01-04 20:19:17.356851444 +0100
+@@ -1451,12 +1451,16 @@
+ 
+ void ATI_API_CALL KCL_SIGNAL_BlockAll(int (*notifier)(void *priv), void *pPriv, kcl_sigset_t *pSigMask)
+ {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,4,0)
+     block_all_signals(notifier,pPriv,(sigset_t*)(void *)pSigMask);
++#endif
+ }
+ 
+ void ATI_API_CALL KCL_SIGNAL_UnblockAll(void)
+ {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,4,0)
+     unblock_all_signals();
++#endif
+ }
+ 
+ #if defined(__i386__) 
+diff -uNr 16.1/common/lib/modules/fglrx/build_mod/firegl_public.h 16.1b/common/lib/modules/fglrx/build_mod/firegl_public.h
+--- 16.1/common/lib/modules/fglrx/build_mod/firegl_public.h	2013-01-15 22:33:27.000000000 +0100
++++ 16.1b/common/lib/modules/fglrx/build_mod/firegl_public.h	2016-01-04 20:19:24.263488959 +0100
+@@ -412,8 +412,10 @@
+ extern void ATI_API_CALL KCL_SIGNAL_ConfigureMask(kcl_sigset_t *pSigMask);
+ extern int ATI_API_CALL firegl_sig_notifier(void *priv);
+ extern int              KCL_SIGNAL_Notifier(void *priv);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,4,0)
+ extern void ATI_API_CALL KCL_SIGNAL_BlockAll(int (*notifier)(void *priv), void *pPriv, kcl_sigset_t *pSigMask);
+ extern void ATI_API_CALL KCL_SIGNAL_UnblockAll(void);
++#endif
+ 
+ extern unsigned long ATI_API_CALL kcl__cmpxchg(volatile void *ptr, unsigned long old,                      
+                       unsigned long new, int size);

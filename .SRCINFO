@@ -1,14 +1,14 @@
 pkgbase = catalyst-total-hd234k
 	pkgdesc = AMD/ATI legacy drivers. catalyst-hook + catalyst-utils + lib32-catalyst-utils
 	pkgver = 13.1
-	pkgrel = 32.1
+	pkgrel = 33.2
 	url = http://www.amd.com
 	install = catalyst-total-hd234k.install
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = linux>=3.0
-	depends = linux<4.4
+	depends = linux<4.5
 	depends = linux-headers
 	depends = xorg-server>=1.7.0
 	depends = xorg-server<1.13.0
@@ -23,7 +23,6 @@ pkgbase = catalyst-total-hd234k
 	depends = patch
 	depends = libxinerama
 	depends = mesa>=10.1.0-4
-	depends = gcc49
 	optdepends = qt4: to run ATi Catalyst Control Center (amdcccle)
 	optdepends = libxxf86vm: to run ATi Catalyst Control Center (amdcccle)
 	optdepends = opencl-headers: headers necessary for OpenCL development
@@ -87,8 +86,10 @@ pkgbase = catalyst-total-hd234k
 	source = 4.2-kolasa-fpu_save_init.patch
 	source = 4.3-kolasa-seq_printf.patch
 	source = 4.3-gentoo-mtrr.patch
+	source = gcc5-something_something_the_dark_side.patch
+	source = 4.4-arch-block_signals.patch
 	md5sums = c07fd1332abe4c742a9a0d0e0d0a90de
-	md5sums = 82c4e97854c020ad147a9122805a8936
+	md5sums = 3c2ff823b56d16e8220d129726b43ff1
 	md5sums = af7fb8ee4fc96fd54c5b483e33dc71c4
 	md5sums = bdafe749e046bfddee2d1c5e90eabd83
 	md5sums = 9d9ea496eadf7e883d56723d65e96edf
@@ -119,6 +120,8 @@ pkgbase = catalyst-total-hd234k
 	md5sums = ccfdf4784735a742c53bdc1309f49a51
 	md5sums = cdea2b2055df7d843b6096615e82d030
 	md5sums = 98828e3eeaec2b3795e584883cc1b746
+	md5sums = af80a9eb2016811ab79717c2bd370a25
+	md5sums = d200e156e941ec7b0227e399fd20a9c2
 
 pkgname = catalyst-total-hd234k
 

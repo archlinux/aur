@@ -1,0 +1,421 @@
+diff -uNr 15.12/common/lib/modules/fglrx/15.12/common/lib/modules/fglrx/build_mod/firegl_public.c 15.12b/common/lib/modules/fglrx/build_mod/firegl_public.c
+--- 15.12/common/lib/modules/fglrx/build_mod/firegl_public.c	2015-12-22 20:38:02.000000000 +0100
++++ 15.12b/common/lib/modules/fglrx/build_mod/firegl_public.c	2015-12-22 21:23:25.960041558 +0100
+@@ -6154,6 +6154,7 @@
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(4,2,0)
+     kernel_fpu_begin();
+ #else
++    preempt_disable();
+     __kernel_fpu_begin();
+ #endif
+ #else
+@@ -6208,6 +6209,7 @@
+     kernel_fpu_end();
+ #else
+     __kernel_fpu_end();
++    preempt_enable();
+ #endif
+ }
+ 
+diff -uNr 15.12/common/lib/modules/fglrx/build_mod/kcl_debug.c 15.12b/common/lib/modules/fglrx/build_mod/kcl_debug.c
+--- 15.12/common/lib/modules/fglrx/build_mod/kcl_debug.c	2015-12-22 20:38:02.000000000 +0100
++++ 15.12b/common/lib/modules/fglrx/build_mod/kcl_debug.c	2015-11-25 19:05:48.000000000 +0100
+@@ -29,19 +29,20 @@
+  * - not declared in the corresponding header
+  *
+  */
+-
+ #include <asm-generic/errno-base.h> //for EINVAL definition
+ 
+ #include <linux/version.h>
+ #include <linux/kernel.h>
+ #include <linux/sysrq.h>
+-
++#include <linux/thread_info.h>
++#include "firegl_public.h"
+ #include "kcl_debug.h"
+ 
++extern void* ATI_API_CALL KCL_MEM_SmallBufferAllocAtomic(kcl_size_t size);
++extern void ATI_API_CALL KCL_MEM_SmallBufferFree(void* p);
++
+ extern int ATI_API_CALL firegl_debug_dump(void);
+ 
+-extern void* ATI_API_CALL KCL_MEM_SmallBufferAllocAtomic(unsigned long size);
+-extern void ATI_API_CALL KCL_MEM_SmallBufferFree(void* p);
+ static unsigned int prvGetCpuId(void);
+ 
+ static void kcl_debug_sysrq_dump_handler(int key
+@@ -141,7 +142,6 @@
+  */
+ void ATI_API_CALL KCL_DEBUG_Print(const char* fmt, ...)
+ {
+-
+     char* buffer=KCL_MEM_SmallBufferAllocAtomic(MAX_STRING_LENGTH);
+     va_list marker;
+ 
+@@ -156,6 +156,47 @@
+     KCL_MEM_SmallBufferFree(buffer);
+ }
+ 
++/** \brief Print debug information to the OS debug console according to traceMask and debugMask 
++ *  \param traceMask Bit mask of enabled trace function
++ *  \param debugMask Bit mask of enabled debug level. 0-7 total
++ *  \param name function name
++ *  \param line line number inside the file 
++ *  \param the print parameter
++ *  \param fmt printf-like formatting string
++ *  \param ... printf-like parameters
++ */
++void ATI_API_CALL KCL_DEBUG_Print_Trace(unsigned int traceMask, unsigned int debugMask, void* name, int line, long param, const char* fmt, ...)
++{
++    int print = firegl_trace(traceMask, debugMask, name, line, param);
++    if(print)
++    {
++        int len;
++        char* buffer=KCL_MEM_SmallBufferAllocAtomic(MAX_STRING_LENGTH);
++        if(buffer==NULL)
++            return;
++        if(fmt == NULL)
++        {
++            buffer[0] = '\n';
++            buffer[1] = '\0';
++        }
++        else
++        {
++            va_list marker;
++            va_start(marker, fmt);
++            kcl_vsnprintf(buffer,255,fmt, marker);
++            va_end(marker);
++            len = strlen(buffer);
++            if(buffer[len-1] != '\n')
++            {
++                buffer[len]='\n';
++                buffer[len+1]='\0';
++            }
++        }
++        KCL_DEBUG_Print("[fglrx] %s:%d %s", (char*)name, line, buffer);
++        KCL_MEM_SmallBufferFree(buffer);
++    }
++}
++
+ /** \brief Register keyboard handler to dump module internal state
+  *  \param enable 1 to register the handler, 0 to unregister it
+  *  \return 0
+@@ -170,7 +211,6 @@
+     {
+         unregister_sysrq_key('l', &kcl_debug_sysrq_dump_op);
+     }
+-
+     return 0;
+ }
+ 
+@@ -180,7 +220,6 @@
+ {
+     dump_stack();
+ }
+-
+ /* FIXME: this is temporary workaround to support code using old naming convention */
+ 
+ void ATI_API_CALL __ke_printk(const char* fmt, ...)
+@@ -204,4 +243,67 @@
+ 
+ /* End of FIXME */
+ 
++#ifdef CONFIG_4KSTACKS
++#define STACK_SIZE_MASK 4095UL
++#define STACK_SIZE (4096 - sizeof(struct thread_info))
++#else
++#define STACK_SIZE_MASK 8191UL
++#define STACK_SIZE (8192 - sizeof(struct thread_info))
++#endif
+ 
++static unsigned long stackBase(void)
++{
++    unsigned long esp = ((unsigned long)&esp) & ~STACK_SIZE_MASK;
++    return esp + sizeof(struct thread_info);
++}
++
++/* Don't inline this. The stack frame of this function provides
++ * protection to the caller's stack frame. */
++static noinline unsigned long stackCur(void)
++{
++    unsigned long esp = (unsigned long)&esp;
++    return esp;
++}
++
++/** \brief Mark unused stack with a magick number
++ *
++ * \return  Current amount of stack used in bytes
++ */
++#define STACK_TAG 0x89abcdef
++unsigned ATI_API_CALL KCL_DEBUG_StackTag(void)
++{
++    unsigned *p, *q;
++    unsigned free;
++
++    p = (unsigned *)((stackBase() + sizeof(unsigned)-1) &
++                     ~(sizeof(unsigned)-1));
++    q = (unsigned *)(stackCur() & ~(sizeof(unsigned)-1));
++    free = (unsigned long)q - (unsigned long)p;
++
++    while (p < q)
++    {
++        *p++ = STACK_TAG;
++    }
++
++    return STACK_SIZE - free;
++}
++
++/** \brief Measure maximum amount of stack usage since last call to StackTag
++ *
++ * \return  Maximum amount of stack usage since last call to StackTag in bytes
++ */
++unsigned ATI_API_CALL KCL_DEBUG_StackMeasure(void)
++{
++    unsigned *base, *p, *q;
++
++    base = p = (unsigned *)((stackBase() + sizeof(unsigned)-1) &
++                            ~(sizeof(unsigned)-1));
++    q = (unsigned *)(stackCur() & ~(sizeof(unsigned)-1));
++
++    while (p < q && *p == STACK_TAG)
++    {
++        p++;
++    }
++
++    return STACK_SIZE - ((unsigned long)p - (unsigned long)base);
++}
+diff -uNr 15.12/common/lib/modules/fglrx/build_mod/kcl_debug.h 15.12b/common/lib/modules/fglrx/build_mod/kcl_debug.h
+--- 15.12/common/lib/modules/fglrx/build_mod/kcl_debug.h	2015-12-22 20:38:02.000000000 +0100
++++ 15.12b/common/lib/modules/fglrx/build_mod/kcl_debug.h	2015-11-25 19:05:48.000000000 +0100
+@@ -64,20 +64,27 @@
+    FN_GENERIC_MAXIMUM     = 0x3f
+ } FN_TRACE;
+ 
+-extern void ATI_API_CALL firegl_trace(unsigned int traceMask,
++extern int ATI_API_CALL firegl_trace(unsigned int traceMask,
+                                       unsigned int debugMask,
+                                       void* name,
+                                       int line,
+-                                      long param,
+-                                      const char* fmt,
+-                                      ...);
++                                      long param);
+ 
+ #define MAX_STRING_LENGTH    512
+ 
+ void ATI_API_CALL KCL_DEBUG_Print(const char* fmt, ...);
++void ATI_API_CALL KCL_DEBUG_Print_Trace(unsigned int traceMask,
++	                                             unsigned int debugMask,
++	                                             void* name,
++	                                             int line,
++	                                             long param,
++	                                             const char* fmt,
++	                                             ...);
+ int ATI_API_CALL KCL_DEBUG_RegKbdHandler(int enable);
+ int ATI_API_CALL KCL_DEBUG_RegKbdDumpHandler(int enable);
+ void ATI_API_CALL KCL_DEBUG_OsDump(void);
++unsigned ATI_API_CALL KCL_DEBUG_StackTag(void);
++unsigned ATI_API_CALL KCL_DEBUG_StackMeasure(void);
+ 
+ #ifdef SPECIAL
+ #undef SPECIAL
+@@ -209,102 +216,106 @@
+     KCL_DEBUG_Print("<6>[fglrx] " fmt, ##arg)
+ 
+ 
+-#define KCL_DEBUG_TRACE(m, p, fmt, arg...)  \
+-    do                                      \
+-    {                                       \
+-        firegl_trace(m,                     \
+-                     FN_DEBUG_TRACE,        \
+-                     (void*)__FUNCTION__,   \
+-                     (int)(__LINE__),       \
+-                     (long)(p),             \
+-                     fmt,                   \
+-                     ##arg);                \
++#define KCL_DEBUG_TRACE(m, p, fmt, arg...)       \
++    do                                           \
++    {                                            \
++        KCL_DEBUG_Print_Trace(m,                 \
++                     FN_DEBUG_TRACE,             \
++                     (void*)__FUNCTION__,        \
++                     (int)(__LINE__),            \
++                     (long)(p),                  \
++                     fmt,                        \
++                     ##arg);                     \
+     } while (0)
+ 
+ #define KCL_DEBUG_TRACEIN  KCL_DEBUG_TRACE
+ 
+-#define KCL_DEBUG_TRACEOUT(m, p, fmt, arg...)                                                                     \
+-    do                                      \
+-    {                                       \
+-        firegl_trace(m,                     \
+-                     FN_DEBUG_TRACEOUT,     \
+-                     (void*)__FUNCTION__,   \
+-                     (int)(__LINE__),       \
+-                     (long)(p),             \
+-                     fmt,                   \
+-                     ##arg);                \
+-    } while (0)
+-
+-#define KCL_DEBUG1(m, fmt, arg...)          \
+-    do                                      \
+-    {                                       \
+-        firegl_trace(m,                     \
+-                     FN_DEBUG_LEVEL1,       \
+-                     (void*)__FUNCTION__,   \
+-                     (int)__LINE__,         \
+-                     0,                     \
+-                     fmt,                   \
+-                     ##arg);                \
+-    } while (0)
+-
+-#define KCL_DEBUG2(m, fmt, arg...)          \
+-    do                                      \
+-    {                                       \
+-        firegl_trace(m,                     \
+-                     FN_DEBUG_LEVEL2,       \
+-                     (void*)__FUNCTION__,   \
+-                     (int)__LINE__,         \
+-                     0,                     \
+-                     fmt,                   \
+-                     ##arg);                \
+-    } while (0)
+-
+-#define KCL_DEBUG3(m, fmt, arg...)          \
+-    do                                      \
+-    {                                       \
+-        firegl_trace(m,                     \
+-                     FN_DEBUG_LEVEL3,       \
+-                     (void*)__FUNCTION__,   \
+-                     (int)__LINE__,         \
+-                     0,                     \
+-                     fmt,                   \
+-                     ##arg);                \
+-    } while (0)
+-
+-#define KCL_DEBUG4(m, fmt, arg...)          \
+-    do                                      \
+-    {                                       \
+-        firegl_trace(m,                     \
+-                     FN_DEBUG_LEVEL4,       \
+-                     (void*)__FUNCTION__,   \
+-                     (int)__LINE__,         \
+-                     0,                     \
+-                     fmt,                   \
+-                     ##arg);                \
+-    } while (0)
+-
+-#define KCL_DEBUG5(m, fmt, arg...)          \
+-    do                                      \
+-    {                                       \
+-        firegl_trace(m,                     \
+-                     FN_DEBUG_LEVEL5,       \
+-                     (void*)__FUNCTION__,   \
+-                     (int)__LINE__,         \
+-                     0,                     \
+-                     fmt,                   \
+-                     ##arg);                \
+-    } while (0)
+-
+-#define KCL_DEBUG6(m, fmt, arg...)          \
+-    do                                      \
+-    {                                       \
+-        firegl_trace(m,                     \
+-                     FN_DEBUG_LEVEL6,       \
+-                     (void*)__FUNCTION__,   \
+-                     (int)__LINE__,         \
+-                     0,                     \
+-                     fmt,                   \
+-                     ##arg);                \
++#define KCL_DEBUG_TRACEOUT(m, p, fmt, arg...)    \
++    do                                           \
++    {                                            \
++        KCL_DEBUG_Print_Trace(m,                 \
++                     FN_DEBUG_TRACEOUT,          \
++                     (void*)__FUNCTION__,        \
++                     (int)(__LINE__),            \
++                     (long)(p),                  \
++                     fmt,                        \
++                     ##arg);                     \
++    } while (0)
++
++
++#define KCL_DEBUG1(m, fmt, arg...)               \
++    do                                           \
++    {                                            \
++        KCL_DEBUG_Print_Trace(m,                 \
++                     FN_DEBUG_LEVEL1,            \
++                     (void*)__FUNCTION__,        \
++                     (int)(__LINE__),            \
++                     0,                          \
++                     fmt,                        \
++                     ##arg);                     \
++    } while (0)
++
++#define KCL_DEBUG2(m, fmt, arg...)               \
++    do                                           \
++    {                                            \
++        KCL_DEBUG_Print_Trace(m,                 \
++                     FN_DEBUG_LEVEL2,            \
++                     (void*)__FUNCTION__,        \
++                     (int)(__LINE__),            \
++                     0,                          \
++                     fmt,                        \
++                     ##arg);                     \
++    } while (0)
++
++#define KCL_DEBUG3(m, fmt, arg...)               \
++    do                                           \
++    {                                            \
++        KCL_DEBUG_Print_Trace(m,                 \
++                     FN_DEBUG_LEVEL3,            \
++                     (void*)__FUNCTION__,        \
++                     (int)(__LINE__),            \
++                     0,                          \
++                     fmt,                        \
++                     ##arg);                     \
++    } while (0)
++
++
++#define KCL_DEBUG4(m, fmt, arg...)               \
++    do                                           \
++    {                                            \
++        KCL_DEBUG_Print_Trace(m,                 \
++                     FN_DEBUG_LEVEL4,            \
++                     (void*)__FUNCTION__,        \
++                     (int)(__LINE__),            \
++                     0,                          \
++                     fmt,                        \
++                     ##arg);                     \
++    } while (0)
++
++
++#define KCL_DEBUG5(m, fmt, arg...)               \
++    do                                           \
++    {                                            \
++        KCL_DEBUG_Print_Trace(m,                 \
++                     FN_DEBUG_LEVEL5,            \
++                     (void*)__FUNCTION__,        \
++                     (int)(__LINE__),            \
++                     0,                          \
++                     fmt,                        \
++                     ##arg);                     \
++    } while (0)
++
++
++#define KCL_DEBUG6(m, fmt, arg...)               \
++    do                                           \
++    {                                            \
++        KCL_DEBUG_Print_Trace(m,                 \
++                     FN_DEBUG_LEVEL6,            \
++                     (void*)__FUNCTION__,        \
++                     (int)(__LINE__),            \
++                     0,                          \
++                     fmt,                        \
++                     ##arg);                     \
+     } while (0)
+ 
+ #endif
