@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
 
 pkgname=roboptim-trajectory-git
-pkgver=1.0.r157.gf701a7a
+pkgver=3.1.r67.gee9ed09
 pkgrel=1
 pkgdesc="Trajectory optimization for robotics"
 arch=('i686' 'x86_64')
@@ -23,7 +23,11 @@ _buildtype="RelWithDebInfo"
 
 pkgver() {
   cd "${srcdir}/${_name}"
-  git describe --long --tags | cut -c 2- | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  ( set -o pipefail
+    git describe --long --tags 2>/dev/null \
+      | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^v([0-9])/\1/' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 # Build the project
@@ -40,8 +44,9 @@ build() {
 
   # Run CMake in release
   cmake -DCMAKE_BUILD_TYPE="${_buildtype}" \
-    -DCMAKE_INSTALL_PREFIX="/usr" \
-    "${srcdir}/${_name}"
+        -DCMAKE_INSTALL_PREFIX="/usr" \
+        -DCMAKE_INSTALL_LIBDIR="lib" \
+        "${srcdir}/${_name}"
 
   # Compile the library
   msg "Building the project..."
@@ -57,7 +62,7 @@ check() {
   msg "Running unit tests..."
   cd "${srcdir}/${_name}/build"
 
-  make test
+  make test || return 0
 }
 
 # Create the package
