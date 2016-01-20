@@ -3,7 +3,7 @@
 _pkgname=solr
 pkgname="${_pkgname}5-zip"
 pkgver=5.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Popular, blazing fast open source enterprise search platform from the Apache Lucene project'
 arch=('any')
 url="http://lucene.apache.org/$_pkgname"
