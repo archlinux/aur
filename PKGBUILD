@@ -33,12 +33,12 @@ pkgdesc='A desktop oriented kernel and modules with Liquorix patches'
 __basekernel=4.3
 _minor=3
 pkgver=${__basekernel}.${_minor}
-pkgrel=5
+pkgrel=6
 lqxrel=5
 _kernelname=-lqx
 pkgbase=linux-lqx
 pkgname=('linux-lqx' 'linux-lqx-headers' 'linux-lqx-docs')
-_lqxpatchname="${pkgver}-${lqxrel}.patch"
+_lqxpatchname="${pkgver}-${pkgrel}.patch"
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="http://liquorix.net/"
@@ -55,7 +55,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.x
         "http://liquorix.net/sources/${__basekernel}/config.i386"
         "http://liquorix.net/sources/${__basekernel}/config.i386-pae"
         "http://liquorix.net/sources/${__basekernel}/config.amd64"
-        "linux-lqx.preset")
+        "linux-lqx.preset"
+        "0005-KEYS-Fix-keyring-ref-leak-in-join_session_keyring.patch")
 
 sha512sums=('d25812043850530fdcfdb48523523ee980747f3c2c1266149330844dae2cba0d056d4ddd9c0f129f570f5d1f6df5c20385aec5f6a2e0755edc1e2f5f93e2c6bc'
             'SKIP'
@@ -63,7 +64,8 @@ sha512sums=('d25812043850530fdcfdb48523523ee980747f3c2c1266149330844dae2cba0d056
             'd306143e4928790d69ce92a0a96a518d30c5adbc08ad4677d326ec20ae0769bd896485c107299dec31d1c155e4c4432d9b599370f78e2a6168fed58c00f6648a'
             '34b0166199ef40cee4ac39f10800f637d017035163c2064fff80d0c80e4a0ed901b4e4616104082bd11d316bfbccb6e3fa47b1bcfdcdfe0536980de4e01651b1'
             '503617e4630b527376caedcd4dfa121267f0b73f1623f5ff3a27f1b7c0f4b8053e8686afd775bdfcded5dcb0c6c8f7002001ace35c1d4108b21cc240a902ed78'
-            'fe4dcd7b5ec06ec3ec4aa631531469f58f6a7111e2d33affa98a1b8a8d230c5fa7e25ffdf770fe5ce61f249b0ec0ecd69df2858c4029acee0efaadff957858fe')
+            'fe4dcd7b5ec06ec3ec4aa631531469f58f6a7111e2d33affa98a1b8a8d230c5fa7e25ffdf770fe5ce61f249b0ec0ecd69df2858c4029acee0efaadff957858fe'
+            '1054749d778176ba3f20a1e4089f8bbee376cb1a5760267b202bdef3b4b2b88c5c4337a7e346a8444132ce26e21151362290dd53bd8bcdee8903a512cf293c70')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -78,6 +80,10 @@ prepare() {
 
   # Add Liquorix patches
   patch -Np1 -i ${srcdir}/$_lqxpatchname
+  
+  ### Fix CVE-2016-0728
+        msg "Fix CVE-2016-0728"
+        patch -Np1 -i "${srcdir}/0005-KEYS-Fix-keyring-ref-leak-in-join_session_keyring.patch"
   
     # Trying oldcfg if possible and if selected
   if [ "$_config" = "old" ]; then
