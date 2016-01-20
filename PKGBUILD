@@ -3,12 +3,12 @@
 
 pkgname=finja-git
 _pkgname=finja-git
-pkgver=0.r11.72eb134
+pkgver=0.r116.ce7e4dd
 pkgrel=1
 pkgdesc="Index and find your stuff"
 arch=('any')
 license=('AGPL')
-url=('http://github.com/ganwell/finja')
+url=('http://github.com/adfinis-sygroup/finja')
 depends=('python'
          'python-six'
          'python-binaryornot'
@@ -16,7 +16,7 @@ depends=('python'
 conflicts=()
 provides=('finja' 'finja-git')
 makedepends=()
-source=("$pkgname::git://github.com/ganwell/finja.git"
+source=("$pkgname::git://github.com/adfinis-sygroup/finja.git"
         "LICENSE::https://www.gnu.org/licenses/agpl.txt")
 sha256sums=('SKIP' '57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6')
 
