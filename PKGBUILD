@@ -21,7 +21,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         'change-default-console-loglevel.patch'
         '0001-sdhci-revert.patch'
-        'tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch')
+        'tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch'
+        'CVE-2016-0728.patch')
 
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
@@ -30,7 +31,8 @@ sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
-            'ab57037ecee0a425c612babdff47c831378bca0bff063a1308599989a350226d')
+            'ab57037ecee0a425c612babdff47c831378bca0bff063a1308599989a350226d'
+            '03bed5b1c6ef34a917e218a46d38cd1347c5ab5693131996113c6cad275dc4e9')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -55,6 +57,9 @@ prepare() {
   # fixes #47805 kernel panics on platform modules
   # https://bugzilla.kernel.org/show_bug.cgi?id=110751
   patch -Np1 -i "${srcdir}/tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch"
+
+  # fixes #47820 CVE-2016-0728.patch
+  patch -Np1 -i "${srcdir}/CVE-2016-0728.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
