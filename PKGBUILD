@@ -9,7 +9,7 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=2.8.5
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ depends=('alsa-lib' 'bzip2' 'celt' 'faac' 'fontconfig' 'frei0r-plugins' 'fribidi
          'wavpack' 'zeromq' 'zlib' 'zvbi' 'libdcadec.so'
          'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so' 'libx265.so'
          'snappy' 'openh264' 'xavs')
-makedepends=('hardening-wrapper' 'libvdpau' 'nvenc-api' 'yasm')
+makedepends=('hardening-wrapper' 'libvdpau' 'nvidia-sdk' 'yasm')
 optdepends=('avxsynth-git: for Avisynth support'
             'cuda: for CUDA support')
 conflicts=('ffmpeg' 'ffmpeg-full' 'ffmpeg-git' 'ffmpeg-full-git' 'ffmpeg-full-extra')
