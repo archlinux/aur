@@ -4,14 +4,15 @@ pkgdesc="ROS - A simple viewer for ROS image topics."
 url='http://www.ros.org/wiki/image_view'
 
 pkgname='ros-indigo-image-view'
-pkgver='1.12.14'
+pkgver='1.12.15'
 _pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-nodelet
   ros-indigo-roscpp
+  ros-indigo-message-generation
   ros-indigo-cv-bridge
   ros-indigo-std-srvs
   ros-indigo-catkin
@@ -20,10 +21,10 @@ ros_makedepends=(ros-indigo-nodelet
   ros-indigo-stereo-msgs
   ros-indigo-sensor-msgs
   ros-indigo-camera-calibration-parsers
+  ros-indigo-dynamic-reconfigure
   ros-indigo-message-filters)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
-  opencv
   gtk2)
 
 ros_depends=(ros-indigo-nodelet
@@ -33,9 +34,11 @@ ros_depends=(ros-indigo-nodelet
   ros-indigo-image-transport
   ros-indigo-rosconsole
   ros-indigo-camera-calibration-parsers
+  ros-indigo-dynamic-reconfigure
   ros-indigo-message-filters)
 depends=(${ros_depends[@]}
   opencv
+  python2-numpy
   gtk2)
 
 _tag=release/indigo/image_view/${pkgver}-${_pkgver_patch}
