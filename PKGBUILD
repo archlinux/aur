@@ -1,7 +1,7 @@
 # Maintainer: SanskritFritz (gmail)
 
 pkgname=xfce4-embed-plugin
-pkgver=1.4.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Plugin that enables embedding of any application window into the Xfce panel."
 arch=('i686' 'x86_64')
@@ -28,5 +28,5 @@ package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	make DESTDIR="${pkgdir}" install
 }
-md5sums=('6d1021c0af861241d73971085cde5e52')
+md5sums=('6870b116b85e4fa68d1b9ef76bd1d279')
 
