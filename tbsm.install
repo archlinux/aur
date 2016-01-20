@@ -1,0 +1,3 @@
+post_install() {
+  echo "TIP! It may wise to run 'tbsm doc man' to read most notably chapter 3"
+}
