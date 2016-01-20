@@ -1,7 +1,7 @@
 # Maintainer: Joe Davison <joe@warhaggis.com>
 
 pkgname=lgogdownloader-git
-pkgver=20140830
+pkgver=20160120
 pkgrel=1
 pkgdesc="An open source downloader for GOG.com games, uses the GOG.com API (git version)"
 url="http://www.gog.com/en/forum/general/lgogdownloader_gogdownloader_for_linux"
@@ -19,19 +19,32 @@ pkgver() {
 	date +"%Y%m%d"
 }
 
-build() {
+prepare() {
 	cd $srcdir/${_gitname}
 
-	# Set to debug for more output
-	make release
+	if [ ! -d "build" ]; then
+		mkdir build
+	else
+		rm -rf build/*
+	fi
+
+	cd build
+	
+ 	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
 
 }
 
+build() {
+	cd $srcdir/${_gitname}/build
+
+	make
+}
+
 package() {
-	cd $srcdir/${_gitname}
+	cd $srcdir/${_gitname}/build
 	
 	make DESTDIR=$pkgdir install
 
-	install -D -m 755 $srcdir/${_gitname}/man/${_gitname}.1.gz \
+	install -D -m 755 $srcdir/${_gitname}/build/man/${_gitname}.1.gz \
 		$pkgdir/usr/share/man/man1/${_gitname}.1.gz
 }
