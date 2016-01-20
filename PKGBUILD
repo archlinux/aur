@@ -4,14 +4,16 @@ pkgdesc="ROS - camera_calibration_parsers contains routines for reading and writ
 url='http://ros.org/wiki/camera_calibration_parsers'
 
 pkgname='ros-indigo-camera-calibration-parsers'
-pkgver='1.11.8'
+pkgver='1.11.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-rosconsole
+  ros-indigo-roscpp-serialization
   ros-indigo-catkin
+  ros-indigo-roscpp
   ros-indigo-sensor-msgs)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
@@ -19,7 +21,9 @@ makedepends=('cmake' 'git' 'ros-build-tools'
   yaml-cpp
   pkg-config)
 
-ros_depends=(ros-indigo-sensor-msgs)
+ros_depends=(ros-indigo-roscpp-serialization
+  ros-indigo-roscpp
+  ros-indigo-sensor-msgs)
 depends=(${ros_depends[@]}
   boost
   yaml-cpp)
