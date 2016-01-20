@@ -3,8 +3,8 @@
 pkgname=nginx-http-auth-digest
 provides=('nginx')
 conflicts=('nginx')
-pkgver=1.9.5
-pkgrel=6
+pkgver=1.9.9
+pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release with digest authentication module'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url='http://nginx.org'
@@ -27,7 +27,7 @@ source=($url/download/nginx-$pkgver.tar.gz
         logrotate
         nginx-http-auth-digest.patch
         git+http://github.com/jrkettle/nginx-http-auth-digest)
-md5sums=('2562320f1535e3e31d165e337ae94f21'
+md5sums=('50fdfa08e93ead7a111cba5a5f5735af'
          'ce9a06bcaf66ec4a3c4eb59b636e0dfd'
          '3441ce77cdd1aab6f0ab7e212698a8a7'
          'ad0f0e10c44877a065ebaea9c3f05e5c'
