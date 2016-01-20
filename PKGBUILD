@@ -14,7 +14,7 @@ pkgname=('zabbix3-server'
          'zabbix3-agent'
          'zabbix3-java-gateway'
          'zabbix3-proxy')
-pkgver=3.0.0alpha6
+pkgver=3.0.0beta1
 pkgrel=1
 pkgdesc="Zabbix is an enterprise-class open source distributed monitoring solution."
 arch=('i686' 'x86_64')
@@ -43,6 +43,7 @@ prepare() {
   sed -i "s|# DBSocket=/tmp/mysql.sock|DBSocket=/run/mysqld/mysqld.sock|g"    $(grep -rl "# DBSocket=/tmp" "conf/"       )
   sed -i "s|# PidFile=/tmp|PidFile=/run/zabbix|g"                             $(grep -rl "# PidFile=/tmp"  "conf/"       )
   sed -i "s|LogFile=/tmp|# LogFile=/var/log/zabbix|g"                         $(grep -rl "LogFile=/tmp"    "conf/"       )
+  sed -i "s|# LogType=file|LogType=system|g"                                  $(grep -rl "LogType=file"    "conf/"       )
   sed -i "s|/usr/sbin|/usr/bin|g"                                             $(grep -rl "/usr/sbin"       "conf/"       )
 }
 
@@ -170,7 +171,7 @@ package_zabbix3-proxy() {
 }
 
 
-md5sums=('5a09982684ae90beb4d9bb039b934684'
+md5sums=('979370195fbb967c0e80889f62c25fc7'
          'ecec6e3dff473eafcdfb4d288e1f0e22'
          'e500d8d31d8dfab2ecec9e1396098235'
          '3d6481c5f827d4ef5daca8ef547edc16'
@@ -178,4 +179,4 @@ md5sums=('5a09982684ae90beb4d9bb039b934684'
          'a74ec7fcbdc113ead7e0c83062c66805'
          '748c4661596ef21370e3d43b461e7376'
          '5588ec58fa98bed19a1333cdffd352c6'
-         'bb81847230d49bf9eb438dc74ef2d6ba')
+         'cfb62758de880609adb67d0c09d662c5')

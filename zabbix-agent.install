@@ -1,6 +1,6 @@
 post_install() {
   if type -P systemd-tmpfiles &> /dev/null; then
-    systemd-tmpfiles --create zabbix-agentd.conf
+    systemd-tmpfiles --create zabbix-agent.conf
   fi
   getent group zabbix > /dev/null || groupadd -r zabbix > /dev/null
   getent passwd zabbix > /dev/null || useradd -r -m -g zabbix -s /bin/bash -d / zabbix > /dev/null
@@ -8,7 +8,7 @@ post_install() {
 
 post_upgrade() {
   if type -P systemd-tmpfiles &> /dev/null; then
-    systemd-tmpfiles --create zabbix-agentd.conf
+    systemd-tmpfiles --create zabbix-agent.conf
   fi
   getent group zabbix > /dev/null || groupadd -r zabbix > /dev/null
   getent passwd zabbix > /dev/null || useradd -r -m -g zabbix -s /bin/bash -d / zabbix > /dev/null
