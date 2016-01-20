@@ -4,7 +4,7 @@ pkgname=peru-git
 pkgdesc='A tool for fetching code'
 url='https://github.com/buildinspace/peru'
 license=('MIT')
-pkgver=508.566c228
+pkgver=523.67b14af
 pkgver() {
   cd "$srcdir/peru"
   echo $(git rev-list --count master).$(git rev-parse --short master)
