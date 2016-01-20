@@ -15,7 +15,8 @@ makedepends=('extra-cmake-modules'
              'python'
              'boost'
              )
-conflicts=('libktorrent')
+provides=('libktorrent')
+conflicts=('libktorrent-frameworks')
 source=('git://anongit.kde.org/libktorrent.git')
 sha1sums=('SKIP')
 
