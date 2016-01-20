@@ -9,6 +9,7 @@
 pkgname=fileobj
 pkgver=0.7.25
 pkgrel=1
+
 pkgdesc="Portable hex editor with vi like interface written in Python "
 arch=('any')
 url="http://sourceforge.net/projects/fileobj"
@@ -26,12 +27,12 @@ noextract=()
 pkg_name_ver="${pkgname}-${pkgver//_/-}"
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}/${pkg_name_ver}"
 }
 
 build() {
-    cd "${srcdir}/${pkg_name_ver}"
-    python ./setup.py build
+  cd "${srcdir}/${pkg_name_ver}"
+  python ./setup.py build
 }
 
 check() {
@@ -39,8 +40,8 @@ check() {
 }
 
 package() {
-    cd "${srcdir}/${pkg_name_ver}"
-    python ./setup.py install --root "${pkgdir}"
+  cd "${srcdir}/${pkg_name_ver}"
+  python ./setup.py install --root "${pkgdir}"
 }
 
 #
