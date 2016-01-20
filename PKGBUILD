@@ -1,20 +1,20 @@
 # Maintainer: Maarten van Gompel <proycon at anaproy.nl>
 
-_pkgname=foliatools
-pkgname=foliatools-git
+_pkgname=foliautils
+pkgname=foliautils-git
 pkgver=1
 pkgrel=1
 pkgdesc="Tools for working with the FoLiA format, based on libfolia. *NOT* the same as Python package FoLiA-tools!"
 arch=('i686' 'x86_64')
-url="http://ilk.uvt.nl/"
+url="http://proycon.github.io/folia"
 license=('GPL')
 depends=('ticcutils' 'icu' 'libxml2' 'libfolia' 'libexttextcat')
-provides=('foliatools')
-conflicts=('foliatools')
+provides=('foliautils')
+conflicts=('foliatools' 'foliautils')
 makedepends=('libtool' 'autoconf')
 options=(!libtool)
-source=("git://github.com/proycon/foliatools.git")
-_gitname=("foliatools")
+source=("git://github.com/languagemachines/foliautils.git")
+_gitname=("foliautils")
 noextract=()
 md5sums=('SKIP')
 
