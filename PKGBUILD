@@ -9,6 +9,9 @@ pkgdesc="The go-ethereum commandline client (geth cli)."
 arch=('x86_64')
 depends=('gmp' 'leveldb' 'readline')
 optdepends=('mist: Graphical Ethereum wallet and DApps browser.')
+conflicts=('geth-git'
+           'go-ethereum'
+           'go-ethereum-git')
 url="https://github.com/ethereum/go-ethereum"
 license=('GPL')
 source=("${pkgname}-${pkgver}.tar.bz2::https://github.com/ethereum/go-ethereum/releases/download/v1.3.3/geth-Linux64-20160105143200-1.3.3-c541b38.tar.bz2")
