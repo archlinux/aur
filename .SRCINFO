@@ -17,6 +17,6 @@ pkgbase = bitwig-studio-demo
 	conflicts = bitwig-studio-demo-rc
 	options = !strip
 	source = https://downloads.bitwig.com/stable/1.3.5/bitwig-studio-1.3.6.deb
-	md5sums = ff4fe682f0f36098cd867c75a5be109c
+	md5sums = c13c82d87a319bf2fccad8456910875b
 
 pkgname = bitwig-studio-demo
