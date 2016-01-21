@@ -16,8 +16,9 @@ md5sums_x86_64=('9ec770568944857158b05238b8593405')
 
 package() {
   cd "$srcdir"
+
   install -dm755 "$pkgdir/opt/${pkgname}/"
-    sh "${_basename}.sh" \
+  sh "${_basename}.sh" \
     --skip-license \
     --prefix="$pkgdir/opt/${pkgname}/"
 
@@ -25,5 +26,6 @@ package() {
   ln -s "/opt/${pkgname}/gfxbench_gl" "$pkgdir/usr/bin/$pkgname"
 
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
-  awk '/END USER LICENSE AGREEMENT/,/____cpack__here_doc____/' "${_basename}.sh" | head -n-1 > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  awk '/END USER LICENSE AGREEMENT/,/____cpack__here_doc____/' "${_basename}.sh" |
+    head -n-1 > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
