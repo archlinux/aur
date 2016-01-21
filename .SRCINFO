@@ -1,0 +1,13 @@
+pkgbase = bitscope-server
+	pkgdesc = Network server software for Bitscope oscilloscopes
+	pkgver = 1.1.FK26A
+	pkgrel = 1
+	url = http://www.bitscope.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = http://www.bitscope.com/download/files/bitscope-server_1.1.FK26A_i386.deb
+	sha1sums = fa009f019192d8522666789a21ed7ca1d127a403
+
+pkgname = bitscope-server
+
