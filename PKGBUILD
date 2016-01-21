@@ -1,9 +1,9 @@
 # Maintainer: Steven Noonan <steven@uplinklabs.net>
 
 pkgbase=linux-ec2
-_srcname=linux-4.3
-pkgver=4.3.3
-pkgrel=1
+_srcname=linux-4.4
+pkgver=4.4
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://git.uplinklabs.net/snoonan/projects/archlinux/ec2/ec2-packages.git/tree/linux-ec2"
 license=('GPL2')
@@ -17,27 +17,16 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'config.i686' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'cancel_balloon_v2.patch'
-
-        '0001-mmc-sdhci-get-runtime-pm-when-sdio-irq-is-enabled.patch'
-        '0002-PM-QoS-Add-pm_qos_cancel_request_lazy-that-doesn-t-s.patch'
-        '0003-mmc-sdhci-Support-maximum-DMA-latency-request-via-PM.patch'
-        '0004-mmc-sdhci-acpi-Fix-device-hang-on-Intel-BayTrail.patch'
-        '0005-mmc-sdhci-pci-Fix-device-hang-on-Intel-BayTrail.patch'
+        'keys-fix-keyring-ref-leak-in-join_session_keyring.patch'
         )
-sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
+sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            '95cd81fcbb87953f672150d60950548edc04a88474c42de713b91811557fefa5'
+            '7fcb6a34dab351008185eab3357a1e01f7c282149d982e55d3ecaeca56c87b16'
             'SKIP'
             'SKIP'
             'SKIP'
             '7460d523b7c5af4d7dcd87236ec708c70511a62cd54c400dc8b770e8c79cbfcb'
-            'b242c90f08ea5deb920b0cd7c1066574ee120ce5519b2d512c552fb92ae7e35e'
-            'a7b1f3b66616159932576b7ef053f5af27b2c3e1a64345a327a73882beb06fd5'
-            '2b3dc57468dfbd68d02a48712cb221f54fbb98da4179800ee9cbb2cabfaea21b'
-            'f6c44ffae48124cdd4490b5a2043a7fdbced2ed2f59f3e84d3326faf4b983774'
-            '9815062166e5b3b3ecb9b02412c7ce6001128faec806597c249fa5c615eccc0f'
-            'd3bb559061549f876a3384e738e2f8bd8e937372c80748c2780dc940912b1000')
+            '860ca558f102ae62b122433036389b4dd4056fb1a43db10ba9a2bd26a915c9e9')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -59,14 +48,8 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-  patch -Np1 -i "${srcdir}/cancel_balloon_v2.patch"
 
-  # Bay Trail fixes
-  patch -Np1 -i "${srcdir}/0001-mmc-sdhci-get-runtime-pm-when-sdio-irq-is-enabled.patch"
-  patch -Np1 -i "${srcdir}/0002-PM-QoS-Add-pm_qos_cancel_request_lazy-that-doesn-t-s.patch"
-  patch -Np1 -i "${srcdir}/0003-mmc-sdhci-Support-maximum-DMA-latency-request-via-PM.patch"
-  patch -Np1 -i "${srcdir}/0004-mmc-sdhci-acpi-Fix-device-hang-on-Intel-BayTrail.patch"
-  patch -Np1 -i "${srcdir}/0005-mmc-sdhci-pci-Fix-device-hang-on-Intel-BayTrail.patch"
+  patch -Np1 -i "${srcdir}/keys-fix-keyring-ref-leak-in-join_session_keyring.patch"
 
   cp -L "${srcdir}/config.${CARCH}" .config
 
