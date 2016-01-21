@@ -1,12 +1,12 @@
 pkgbase = python-heatclient
 	pkgdesc = Python client library for Heat
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://launchpad.net/python-heatclient
 	arch = any
 	license = Apache
-	source = https://pypi.python.org/packages/source/p/python-heatclient/python-heatclient-0.8.0.tar.gz
-	sha256sums = 5cd1c855ee21f18bfffbc7269e40c417b953d0855aa3cc8b56d778b8612467d5
+	source = https://pypi.python.org/packages/source/p/python-heatclient/python-heatclient-0.8.1.tar.gz
+	sha256sums = a98e8a10b001fc1f31b02128196310c715112f3e8869a97b662d0b7d59a30ee9
 
 pkgname = python-heatclient
 	depends = python-babel
