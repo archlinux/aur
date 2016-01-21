@@ -2,7 +2,7 @@
 
 _pkgname=openbazaard
 pkgname=${_pkgname}-git
-pkgver=618.6524552
+pkgver=636.c55be08
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
 arch=(any)
@@ -11,7 +11,7 @@ license=('MIT')
 depends=(
 	gnupg
 	python2-autobahn
-	python2-bitcoin
+	python2-bitcointools
 	python2-gnupg-isis
 	python2-libbitcoinclient
 	python2-libnacl-git
