@@ -3,7 +3,7 @@
 # Submitter: Fredrik Tegenfeldt <fredrik.tegenfeldt@unige.ch>
 
 pkgname=slurm-llnl-git
-pkgver=26755.565ccbe
+pkgver=26981.fc4db49
 pkgrel=1
 pkgdesc="Simple Linux Utility for Resource Management (development version)"
 arch=('i686' 'x86_64')
@@ -37,11 +37,11 @@ source=("slurm-tmpfiles.conf"
 	"slurmdbd.service"
 	"${pkgname}"::"git+https://github.com/SchedMD/slurm.git")
 md5sums=('51e4ae2c51edf7c145d1b87bec4c344e'
-	'cae664b8ef44d01783dade9088e25b53'
-	'31899d7a4caaa7bdb8b987afae191b56'
-	'72a4cddcef47bdc989d49d02ee698e55'
-	'cd89bfa37d6b3108fc17c531a27183a0'
-	'SKIP')
+         'cae664b8ef44d01783dade9088e25b53'
+         '834b641efbcb45d300630f51f08a9122'
+         '231a6634fcf774642021377920fffe39'
+         'cef9d45137b9bd431dce3cbe85ef9bca'
+         'SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"

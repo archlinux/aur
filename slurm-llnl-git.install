@@ -2,21 +2,21 @@
 post_install() {
 	id slurm >&/dev/null
 	if [ $? -ne 0 ]; then
-	echo -e "\e[34;1m==>\e[39;1m Adding slurm system group... \e[0m"
-	groupadd -g 64030 -r slurm
-	[ $? -ne 0 ] && groupadd -r slurm
+		echo -e "\e[34;1m==>\e[39;1m Adding slurm system group... \e[0m"
+		groupadd -g 64030 -r slurm
+		[ $? -ne 0 ] && groupadd -r slurm
 
-	echo -e "\e[34;1m==>\e[39;1m Adding slurm system user... \e[0m"
-	useradd -r -c "Slurm Daemon" -d /var/log/slurm-llnl -g slurm -u 64030 slurm
-	[ $? -ne 0 ] && useradd -r -c "Slurm Daemon" -d /var/log/slurm-llnl -g slurm slurm
+		echo -e "\e[34;1m==>\e[39;1m Adding slurm system user... \e[0m"
+		useradd -r -c "Slurm Daemon" -d /var/log/slurm-llnl -g slurm -u 64030 slurm
+		[ $? -ne 0 ] && useradd -r -c "Slurm Daemon" -d /var/log/slurm-llnl -g slurm slurm
 
-	echo -e "\e[34;1m==>\e[39;1m Locking Slurm User Account...\e[0m"
-	passwd -l slurm &>/dev/null
+		echo -e "\e[34;1m==>\e[39;1m Locking Slurm User Account...\e[0m"
+		passwd -l slurm &>/dev/null
 	fi
 
 	# securing the log dir
 	if [ -d /var/log/slurm-llnl ]; then
-	chown -R slurm:slurm /var/log/slurm-llnl
+		chown -R slurm:slurm /var/log/slurm-llnl
 	fi
 
 	echo -e "\e[34;1m==>\e[39;1m NOTE: You have to create a slurm configuration-file in /etc/slurm-llnl/ \e[0m"
@@ -33,9 +33,9 @@ post_upgrade() {
 
 	# THIS HAS TO BE REMOVED ONEDAY - TODO
 	if [ -f /etc/slurm/slurm.conf ]; then
-	mv /etc/slurm/* /etc/slurm-llnl/
-	rmdir /etc/slurm
-	echo -e "\e[34;1m==>\e[39;1m Your configuration-files were moved from /etc/slurm to /etc/slurm-llnl ! \e[0m"
+		mv /etc/slurm/* /etc/slurm-llnl/
+		rmdir /etc/slurm
+		echo -e "\e[34;1m==>\e[39;1m Your configuration-files were moved from /etc/slurm to /etc/slurm-llnl ! \e[0m"
 	fi
 }
 
@@ -43,19 +43,19 @@ post_upgrade() {
 pre_remove() {
 	which systemctl >& /dev/null
 	if [ $? -eq 0 ]; then
-	echo -e "\e[34;1m==>\e[39;1m Stopping slurm daemons through SystemD... \e[0m"
-	systemctl stop slurmd.service
-	systemctl stop slurmdbd.service
-	systemctl stop slurmctld.service
+		echo -e "\e[34;1m==>\e[39;1m Stopping slurm daemons through SystemD... \e[0m"
+		systemctl stop slurmd.service
+		systemctl stop slurmdbd.service
+		systemctl stop slurmctld.service
 
-	echo -e "\e[34;1m==>\e[39;1m Disabling SystemD related file(s)... \e[0m"
-	systemctl disable slurmd.service
-	systemctl disable slurmdbd.service
-	systemctl disable slurmctld.service
+		echo -e "\e[34;1m==>\e[39;1m Disabling SystemD related file(s)... \e[0m"
+		systemctl disable slurmd.service
+		systemctl disable slurmdbd.service
+		systemctl disable slurmctld.service
 	else
-	echo -e "\e[34;1m==>\e[39;1m Stopping slurm daemons... \e[0m"
-	/etc/rc.d/slurm stop
-	/etc/rc.d/slurmdbd stop
+		echo -e "\e[34;1m==>\e[39;1m Stopping slurm daemons... \e[0m"
+		/etc/rc.d/slurm stop
+		/etc/rc.d/slurmdbd stop
 	fi
 }
 
@@ -64,7 +64,7 @@ post_remove() {
 	echo -e "\e[34;1m==>\e[39;1m Removing slurm system user/group... \e[0m"
 	userdel slurm
 
-	# deleting remnant recusivly (there shell be now links!)
+	# deleting remnant recusivly
 	rm -rf /var/lib/slurm-llnl
 
 	# notifying the user of kept dirs
