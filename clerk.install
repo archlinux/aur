@@ -1,0 +1,9 @@
+post_install() {
+    echo "Please copy the provided example config from '/usr/share/clerk/config.example'" 
+    echo "to '\$HOME/.config/clerk/config' and adjust it to your needs!"
+    echo ""
+    echo "  $ mkdir -p \$HOME/.config/clerk"
+    echo "  $ cp /usr/share/clerk/config.example \$HOME/.config/clerk/config"
+    echo ""
+}
+
