@@ -1,6 +1,6 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=ossec-local
-pkgver=2.8.2
+pkgver=2.8.3
 pkgrel=1
 pkgdesc="Open Source Host-based Intrusion Detection System"
 arch=('i686' 'x86_64')
@@ -10,11 +10,11 @@ depends=('openssl')
 backup=('var/ossec/etc/ossec.conf')
 install=ossec.install
 options=('emptydirs')
-source=(http://www.ossec.net/files/ossec-hids-$pkgver.tar.gz \
+source=(https://bintray.com/artifact/download/ossec/ossec-hids/ossec-hids-$pkgver.tar.gz \
         ossec.service config)
-md5sums=('3036d5babc96216135759338466e1f79'
-         '4a197f7f05b2a1d0da54e4fdef1718a5'
-         '510463fc82537b59a45fe55993e6d712')
+sha256sums=('917989e23330d18b0d900e8722392cdbe4f17364a547508742c0fd005a1df7dd'
+            'be5f6fe7e10603a0897c2502e0e6913fbb544a66f59674aaaef87d0f31d09eb9'
+            '10d1cd8589d7aca030ea391b6cca312b91d5aa31f56e60a20b6a56652906db5c')
 
 _instdir=/var/ossec
 
@@ -46,6 +46,7 @@ build() {
   sed -i 's|^GROUP=.*|GROUP=nobody|' src/InstallServer.sh
 
   cd src
+  make setlocal
   make all
   make build
 }
