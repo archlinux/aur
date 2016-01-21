@@ -1,23 +1,23 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=python3-currencyconverter
-pkgver=2014.11
-pkgrel=2
+pkgver=2016
+pkgrel=1
 pkgdesc='Module and command-line tool for currency conversion and rate retrieval.'
 arch=(any)
 license=(GPL)
 url="http://xyne.archlinux.ca/projects/python3-currencyconverter"
-depends=(python3 python3-memoizedb python-xdg)
+depends=(python-xdg python3 python3-memoizedb)
 source=(
-  http://xyne.archlinux.ca/projects/python3-currencyconverter/src/python3-currencyconverter-2014.11.tar.xz
-  http://xyne.archlinux.ca/projects/python3-currencyconverter/src/python3-currencyconverter-2014.11.tar.xz.sig
+  http://xyne.archlinux.ca/projects/python3-currencyconverter/src/python3-currencyconverter-2016.tar.xz
+  http://xyne.archlinux.ca/projects/python3-currencyconverter/src/python3-currencyconverter-2016.tar.xz.sig
 )
 sha512sums=(
-  aca82b2cbd25cada82240af57bc89d8f1da4175f4b656785958e1fb5e76e484a1dbf160a8ecdc63b35b89c41f5f4f5afd56c18184df1d9ca785284f446fc5257
-  6a1adb5ed8a8c02e2dab6f8fa829a78c4459e2f30b8608ccb297809ad3b77947261188d1a3f52b86ed2a6a72bd44e7ac20336d036f9af8b422c9cb7c77bf152e
+  db335ec83d9878d48083e1529a5b0ccd642180d8a8fe02a8a27d158fe05a2bd98ea75686d7645472531177fb0a660abcb4ce22610e595939e56607baea074719
+  a90586e256f4f1ddfe708f004072870c9fd9dc89b4c8a1e962089928d42da1b93fd57f5e8cac3c28f154f29ef747ab8ab675f169e99382eff1144dc0baf0d7dc
 )
 md5sums=(
-  e4e3e61b234a251f6dbd6d489c0a3b16
-  da0bef4a1c93b7e5e2db787d77800b90
+  c0687704d8a43bb406a3d8fe483db942
+  a22e46f3e29168f6b452917310e8ea32
 )
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 
