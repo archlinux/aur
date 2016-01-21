@@ -29,6 +29,7 @@ optdepends=("hwloc: enables the task/cgroup plugin"
 makedepends=('python' 'git')
 provides=('slurm-llnl')
 conflicts=('slurm-llnl' 'slurm-llnl-dev')
+backup=('etc/default/slurm-llnl')
 install=${pkgname}.install
 source=("slurm-tmpfiles.conf"
 	"slurm-llnl-default-conf"
