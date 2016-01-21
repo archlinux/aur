@@ -1,28 +1,15 @@
 post_install() {
-	systemctl enable lightdm.service > /dev/null
-	systemctl enable NetworkManager.service > /dev/null
-
-	sed -i "s/^\(OnlyShowIn=.*\)$/\1Awesome;/g" /etc/xdg/autostart/*.desktop
-	sed -i "s#^background=.*\$#background=/usr/share/kana-p/login-wallpaper.jpg#g" /etc/lightdm/lightdm-webkit-greeter.conf
-	sed -i "s#^\#greeter-session=.*\$#greeter-session=lightdm-webkit-greeter#g" /etc/lightdm/lightdm.conf
-	sed -i "s#^webkit-theme=.*\$#webkit-theme=Bevel#g" /etc/lightdm/lightdm-webkit-greeter.conf
+	kana-p-poison -i > /dev/null 2> /dev/null
 }
 
 pre_upgrade() {
-	pre_remove
+	kana-p-poison -u > /dev/null 2> /dev/null
 }
 
 post_upgrade() {
-	post_install
+	kana-p-poison -i > /dev/null 2> /dev/null
 }
 
-pre_remove()
-{
-	systemctl disable lightdm.service > /dev/null
-	systemctl disable NetworkManager.service > /dev/null
-
-	sed -i "s/^\(OnlyShowIn=.*\)Awesome;\(.*\)$/\1\2/g" /etc/xdg/autostart/*.desktop
-	sed -i 's#^background=/usr/share/kana-p/login-wallpaper.jpg$#background=#g' /etc/lightdm/lightdm-webkit-greeter.conf
-	sed -i "s#^greeter-session=lightdm-webkit-greeter\$#\#greeter-session=#g" /etc/lightdm/lightdm.conf
-	sed -i "s#^webkit-theme=Bevel\$#webkit-theme=webkit#g" /etc/lightdm/lightdm-webkit-greeter.conf
+pre_remove() {
+	kana-p-poison -u > /dev/null 2> /dev/null
 }
