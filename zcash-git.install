@@ -1,0 +1,8 @@
+post_install () {
+  echo "Before running zcashd you need to download the public alpha proving keys (~2GB)"
+  echo
+  echo "$ ./zcutil/fetch-params.sh"
+  echo
+  echo "For more information read https://github.com/Electric-Coin-Company/zcash/wiki/Public-Alpha-Guide"
+}
+# vim:set ts=2 sw=2 et:

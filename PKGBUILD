@@ -11,6 +11,7 @@ makedepends=('unzip')
 provides=('zcash')
 source=("git+https://github.com/Electric-Coin-Company/zcash")
 sha1sums=('SKIP')
+install="${pkgname}.install"
 _gitname=zcash
 
 pkgver() {
@@ -25,6 +26,8 @@ build() {
 
 package() {
   cd $_gitname
+  install -Dm755 src/zcash-cli "${pkgdir}/usr/bin/zcash-cli"
+  install -Dm755 src/zcashd "${pkgdir}/usr/bin/zcashd"
 }
 
 # vim:set ts=2 sw=2 et:
