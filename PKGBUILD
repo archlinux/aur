@@ -1,7 +1,7 @@
 # Maintainer: Samleybrize <stephen.berquet at gmail dot com>
 pkgname=php-ncurses
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Terminal screen handling and optimization package"
 url="http://pecl.php.net/package/ncurses"
 arch=('x86_64' 'i686')
@@ -20,18 +20,22 @@ sha256sums=(
 )
 
 build() {
-  cd "$srcdir/ncurses-$pkgver"
-  patch < ../../ncurses-php7-support.patch
+    phpver=$(php -r 'echo (int) phpversion();')
+    cd "$srcdir/ncurses-$pkgver"
 
-  phpize
-  ./configure --prefix=/usr --with-ncurses
-  make
+    if [ $phpver -ge 7 ]; then
+        patch < ../../ncurses-php7-support.patch
+    fi
+
+    phpize
+    ./configure --prefix=/usr --with-ncurses
+    make
 }
 
 package() {
-  cd "$srcdir/ncurses-$pkgver"
+    cd "$srcdir/ncurses-$pkgver"
 
-  make INSTALL_ROOT="$pkgdir" install
-  echo 'extension=ncurses.so' > ncurses.ini 
-  install -Dm644 ncurses.ini "$pkgdir/etc/php/conf.d/ncurses.ini"
+    make INSTALL_ROOT="$pkgdir" install
+    echo 'extension=ncurses.so' > ncurses.ini 
+    install -Dm644 ncurses.ini "$pkgdir/etc/php/conf.d/ncurses.ini"
 }
