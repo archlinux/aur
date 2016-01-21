@@ -22,14 +22,14 @@ Sphinx==1.1.3
 nose==1.3.0
 colorama>=0.2.5,<=0.3.3
 mock==1.0.1
-rsa>=3.1.2,<=3.1.4
+rsa>=3.1.2,<=3.3.0
 wheel==0.24.0
 
 #setup.py
 import awscli
 
 
-requires = ['botocore==1.3.20',
+requires = ['botocore==1.3.21',
             'colorama>=0.2.5,<=0.3.3',
             'docutils>=0.10',
             'rsa>=3.1.2,<=3.3.0']
@@ -47,7 +47,7 @@ else
 pkgname="${_pyver}-${_pybase}-git"
 _pyverother='python'
 fi
-pkgver=1.9.20.r3223.gdb6021b
+pkgver=1.9.21.r3228.g912aca3
 # Generally when this version changes, the version of botocore also changes
 pkgrel=1
 pkgdesc='Universal Command Line Interface for Amazon Web Services awscli'
@@ -56,7 +56,7 @@ url="https://github.com/aws/${_pybase}"
 license=('Apache') # Apache License 2.0
 _pydepends=( # See setup.py, README.rst, and requirements.txt for version dependencies
   "${_pyver}-bcdoc"           # AUR
-  "${_pyver}-botocore>=1.3.20" # AUR == would make upgrades from AUR impossible. See below.
+  "${_pyver}-botocore>=1.3.21" # AUR == would make upgrades from AUR impossible. See below.
   "${_pyver}-colorama"{">=0.2.5","<=0.3.3"}   # COM
   #"${_pyver}-rsa-3.1.2"{">=3.1.2","<=3.3.0"} # AUR
   "${_pyver}-rsa"{">=3.2","<=3.3.0"}        # COM
@@ -78,7 +78,7 @@ depends=("${_pyver}" "${_pydepends[@]}")
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 options=('!emptydirs' '!strip')
 source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('f9a15157de60f6118f44593b769832d4f7a0e14687bbec2b05eefec9fba81eb0')
+sha256sums=('7d5e0e52ffe31a53a3347648dded2d2a152ec13e2e2cd8b01e7a839c3d311388')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pybase}"
