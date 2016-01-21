@@ -2,7 +2,7 @@
 # Maintainer: nisk1 <esqueleto_bajo[it_looks_like_a_snail]outlook[dot]com>
 
 pkgname=soma
-pkgver=2.10.4
+pkgver=2.10.6
 pkgrel=1
 pkgdesc="Soma - a dialog internet radio player"
 url="http://www.dawoodfall.net/slackbuilds/noversion/soma"
@@ -10,7 +10,7 @@ arch=('any')
 license=('GPL')
 depends=(dialog mplayer)
 source=("http://www.dawoodfall.net/files/slackbuilds/noversion/soma/${pkgname}-${pkgver}.tar.gz")
-md5sums=('f65dc4a09f35e01d1e51c8911947f260')
+md5sums=('dd0c934c00244e93e30f23a606436b24')
 
 package() {
 	cd $srcdir/$pkgname-$pkgver/
