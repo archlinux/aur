@@ -1,0 +1,5 @@
+pkg
+src
+libxmltok
+libxmltok*.tar.xz
+libxmltok*.orig.tar.gz

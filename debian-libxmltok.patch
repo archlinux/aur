@@ -1,0 +1,673 @@
+--- libxmltok-1.2.orig/Makefile
++++ libxmltok-1.2/Makefile
+@@ -1,46 +1,97 @@
+-CC=gcc
++CC=cc
+ # If you know what your system's byte order is, define XML_BYTE_ORDER:
+ # use -DXML_BYTE_ORDER=12 for little-endian byte order;
+ # use -DXML_BYTE_ORDER=21 for big-endian (network) byte order.
+ # -DXML_NS adds support for checking of lexical aspects of XML namespaces spec
+ # -DXML_MIN_SIZE makes a smaller but slower parser
+ # -DXML_DTD adds full support for parsing DTDs
+-CFLAGS=-Wall -O2 -Ixmltok -Ixmlparse -DXML_NS -DXML_DTD
+-AR=ar
++CFLAGS=-Wall -O2
++CFLAGS+=--pipe -DXML_NS -DXML_DTD
++INCLUDES=-Ixmltok -Ixmlparse
+ # Use one of the next two lines; unixfilemap is better if it works.
+ FILEMAP_OBJ=xmlwf/unixfilemap.o
+ #FILEMAP_OBJ=xmlwf/readfilemap.o
+-LIBOBJS=xmltok/xmltok.o \
+-  xmltok/xmlrole.o \
+-  xmlparse/xmlparse.o
+-
+-OBJS=xmlwf/xmlwf.o \
+-  xmlwf/xmlfile.o \
+-  xmlwf/codepage.o \
+-  $(FILEMAP_OBJ)
+-LIB=xmlparse/libexpat.a
++# if you want to make the libraries and shlibs
++MAKE_LIBS=true
++
++ELF_SO_VERSION=1		# major library version
++LIB_VERSION=1.2			# full library version
++LIBS=xmltok/libxmltok.a xmlparse/libxmlparse.a
++ELF_LIBS=xmltok/libxmltok.so.$(LIB_VERSION) \
++  xmlparse/libxmlparse.so.$(LIB_VERSION)
++ELF_OTHER_LIBS=-lc		# other libs to link shlib with
++ELF_FLAGS=-fpic -D_REENTRANT	# flags for compiling shlibs
++AR=ar
++RANLIB=true
++
++prefix		= /usr/local
++bin_dir		= $(prefix)/bin
++
++ifndef MAKE_LIBS
++  OBJS=$(FILEMAP_OBJ) \
++    xmlparse/xmlparse.o \
++    xmltok/xmltok.o \
++    xmltok/xmlrole.o \
++    xmlwf/xmlwf.o \
++    xmlwf/xmlfile.o \
++    xmlwf/codepage.o
++else
++  OBJS=$(FILEMAP_OBJ) \
++    xmlwf/xmlwf.o \
++    xmlwf/xmlfile.o \
++    xmlwf/codepage.o
++  LIBS_TO_BUILD=$(ELF_LIBS) \
++    $(LIBS)
++endif
++
+ EXE=
+ XMLWF=xmlwf/xmlwf$(EXE)
+ 
++# export these variables to sub-makes
++export
++
+ all: $(XMLWF)
+ 
+-$(XMLWF): $(OBJS) $(LIB)
+-	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LIB)
++shlib-version:
++	@echo $(LIB_VERSION)
++
++$(XMLWF): $(OBJS) $(LIBS_TO_BUILD)
++ifndef MAKE_LIBS
++	$(CC) $(CFLAGS) $(INCLUDES) -o $@ $(OBJS)
++else
++	$(CC) $(CFLAGS) $(INCLUDES) -o $@ $(OBJS) -Lxmlparse -lxmlparse \
++		-Lxmltok -lxmltok
++endif
+ 
+-$(LIB): $(LIBOBJS)
+-	$(AR) rc $(LIB) $(LIBOBJS)
++$(LIBS) $(ELF_LIBS):
++	$(MAKE) -C$(dir $@) $(notdir $@)
+ 
+ clean:
+-	rm -f $(OBJS) $(LIBOBJS) $(LIB) $(XMLWF)
++	rm -f $(OBJS) $(XMLWF) gennmtab/gennmtab$(EXE)
++ifdef MAKE_LIBS
++	$(MAKE) -Cxmltok clean
++	$(MAKE) -Cxmlparse clean
++endif
+ 
+ xmltok/nametab.h: gennmtab/gennmtab$(EXE)
+ 	rm -f $@
+ 	gennmtab/gennmtab$(EXE) >$@
+ 
+ gennmtab/gennmtab$(EXE): gennmtab/gennmtab.c
+-	$(CC) $(CFLAGS) -o $@ gennmtab/gennmtab.c
++	$(CC) $(CFLAGS) $(INCLUDES) -o $@ gennmtab/gennmtab.c
+ 
+ xmltok/xmltok.o: xmltok/nametab.h
+ 
+ .c.o:
+-	$(CC) $(CFLAGS) -c -o $@ $<
++	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
++
++shared/%.o:	%.c
++	$(CC) $(CFLAGS) $(INCLUDES) $(ELF_FLAGS) -c -o $@ $<
++
++install:
++	mkdir -p $(bin_dir)
++	cp -a xmlwf/xmlwf$(EXE) $(bin_dir)
++ifdef MAKE_LIBS
++	$(MAKE) -Cxmltok install
++	$(MAKE) -Cxmlparse install
++endif
+--- libxmltok-1.2.orig/debian/libxmltok1-dev.doc-base
++++ libxmltok-1.2/debian/libxmltok1-dev.doc-base
+@@ -0,0 +1,9 @@
++Document: libxmltok1
++Title: XML Parser Toolkit
++Author: James Clark <jjc@jclark.com>
++Abstract: This manual describes the XML Parser Toolkit.
++Section: Text
++
++Format: HTML
++Index: /usr/share/doc/libxmltok1-dev/expat.html
++Files: /usr/share/doc/libxmltok1-dev/*.html
+--- libxmltok-1.2.orig/debian/libxmltok1.docs
++++ libxmltok-1.2/debian/libxmltok1.docs
+@@ -0,0 +1 @@
++debian/README.xmltok
+--- libxmltok-1.2.orig/debian/libxmltok1.install
++++ libxmltok-1.2/debian/libxmltok1.install
+@@ -0,0 +1 @@
++usr/lib/*.so.*
+--- libxmltok-1.2.orig/debian/libxmltok1-dev.examples
++++ libxmltok-1.2/debian/libxmltok1-dev.examples
+@@ -0,0 +1 @@
++sample/*.c
+--- libxmltok-1.2.orig/debian/rules
++++ libxmltok-1.2/debian/rules
+@@ -0,0 +1,70 @@
++#!/usr/bin/make -f
++## ----------------------------------------------------------------------
++## debian/rules : package script for libxmltok
++## ----------------------------------------------------------------------
++
++## ----------------------------------------------------------------------
++## uncomment this to turn on verbose mode
++#export DH_VERBOSE=1
++
++## ----------------------------------------------------------------------
++CFLAGS		= -Wall -g
++
++## ----------------------------------------------------------------------
++ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
++    CFLAGS	+= -O0
++else
++    CFLAGS	+= -O2
++endif
++
++## ----------------------------------------------------------------------
++TMP_DIR		= $(CURDIR)/debian/tmp
++
++## ----------------------------------------------------------------------
++## targets
++
++clean:
++		dh_testdir
++		dh_testroot
++		[ ! -f Makefile ] || $(MAKE) clean
++		dh_clean build-stamp install-stamp
++
++build:		build-stamp
++build-stamp:
++		dh_testdir
++		$(MAKE) CFLAGS="$(CFLAGS)"
++		touch build-stamp
++
++install:	install-stamp
++install-stamp:	build
++		dh_testdir
++		dh_testroot
++		dh_clean -k
++		dh_installdirs
++		$(MAKE) install prefix=$(TMP_DIR)/usr
++		touch install-stamp
++
++binary-indep:
++
++binary-arch:	build install
++		dh_testdir
++		dh_testroot
++		dh_install --sourcedir=$(TMP_DIR)
++		dh_installdocs
++		dh_installexamples
++		dh_installchangelogs
++		dh_strip
++		dh_compress
++		dh_fixperms
++		dh_makeshlibs
++		dh_installdeb
++		dh_shlibdeps
++		dh_gencontrol
++		dh_md5sums
++		dh_builddeb
++
++binary:		binary-indep binary-arch
++
++.PHONY:		clean build install binary-indep binary-arch binary
++
++## ----------------------------------------------------------------------
+--- libxmltok-1.2.orig/debian/libxmltok1-dev.install
++++ libxmltok-1.2/debian/libxmltok1-dev.install
+@@ -0,0 +1,3 @@
++usr/include
++usr/lib/*.a
++usr/lib/*.so
+--- libxmltok-1.2.orig/debian/README.Debian
++++ libxmltok-1.2/debian/README.Debian
+@@ -0,0 +1,22 @@
++expat for Debian
++----------------
++
++The contents of this file are subject to the Mozilla Public License
++Version 1.0 (the "License"); you may not use this file except in
++compliance with the License. You may obtain a copy of the License at
++http://www.mozilla.org/MPL/
++ 
++Software distributed under the License is distributed on an "AS IS"
++basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
++License for the specific language governing rights and limitations
++under the License.
++
++The Original Code is expat.
++
++The Initial Developer of the Original Code is James Clark.
++Portions created by James Clark are Copyright (C) 1998
++James Clark. All Rights Reserved.
++
++Contributor(s): 
++  A. P. Harris <aph@debian.org>
++  Ardo van Rangelrooij <ardo@debian.org>
+--- libxmltok-1.2.orig/debian/control
++++ libxmltok-1.2/debian/control
+@@ -0,0 +1,40 @@
++Source: libxmltok
++Section: libs
++Priority: optional
++Maintainer: Debian XML/SGML Group <debian-xml-sgml-pkgs@lists.alioth.debian.org>
++Uploaders: Ardo van Rangelrooij <ardo@debian.org>
++Homepage: http://www.jclark.com/xml/expat.html
++Vcs-Browser: http://alioth.debian.org/plugins/scmcvs/cvsweb.php/packages/libxmltok/?cvsroot=debian-xml-sgml
++Vcs-Cvs: :pserver:anonymous@cvs.alioth.debian.org:/cvsroot/debian-xml-sgml/packages/libxmltok
++Standards-Version: 3.7.3
++Build-Depends: debhelper (>= 5.0)
++
++Package: libxmltok1-dev
++Section: libdevel
++Priority: optional
++Architecture: any
++Depends: libxmltok1 (= ${binary:Version}), libc6-dev | libc-dev
++Description: XML Parser Toolkit, developer libraries
++ Libraries for XML parsing in C.  It aims to be fully conforming. It
++ is currently not a validating XML processor.
++ .
++ The library libxmltok contains a low-level library for tokenizing
++ XML.  The library libxmlparse contains an XML parser library which is
++ built on top of the xmltok library.
++ .
++ Author:   James Clark <jjc@jclark.com>
++
++Package: libxmltok1
++Section: libs
++Priority: optional
++Architecture: any
++Depends: ${shlibs:Depends}
++Description: XML Parser Toolkit, runtime libraries
++ Libraries for XML parsing in C.  It aims to be fully conforming. It
++ is currently not a validating XML processor.
++ .
++ The library libxmltok contains a low-level library for tokenizing
++ XML.  The library libxmlparse contains an XML parser library which is
++ built on top of the xmltok library.
++ .
++ Author:   James Clark <jjc@jclark.com>
+--- libxmltok-1.2.orig/debian/changelog
++++ libxmltok-1.2/debian/changelog
+@@ -0,0 +1,177 @@
++libxmltok (1.2-3) unstable; urgency=low
++
++  * debian/control:
++    * replaced '${Source-Version}' by '${binary:Version}'
++      (detected by lintian)
++    * upgraded to Debian Policy 3.7.3
++    * added Vcs-Browser and Vcs-Cvs fields
++    * added Homepage field
++      (detected by lintian)
++    * changed build dependency on 'debhelper' to '(>= 5.0)'
++  * debian/compat: bumped version to 5
++  * debian/watch: bumped version to 3
++
++ -- Ardo van Rangelrooij <ardo@debian.org>  Fri, 04 Jan 2008 19:39:18 -0600
++
++libxmltok (1.2-2) unstable; urgency=low
++
++  * Added 'debian/watch'
++  * Makefile: updated to support setting CFLAGS through DEB_BUILD_OPTIONS
++  * debian/rules: added support for DEB_BUILD_OPTIONS
++  * debiam/rules: various small improvements
++
++ -- Ardo van Rangelrooij <ardo@debian.org>  Wed, 24 Nov 2004 16:29:33 -0600
++
++libxmltok (1.2-1) unstable; urgency=low
++
++  * New upstream release
++    (closes: Bug#251869)
++    - Makefile: updated
++    - xmlparse/Makefile: updated
++  * Added copyright statement file 'copying.txt'
++  * debian/copyright: updated to reflect new copyright statement
++  * debian/rules,xmlparse/Makefile,xmltok/Makefile: removed obsolete copyright
++    statement
++  * debian/control: added author's name and package homepage to description
++
++ -- Ardo van Rangelrooij <ardo@debian.org>  Tue,  1 Jun 2004 11:15:39 -0500
++
++libxmltok (1.1-14) unstable; urgency=low
++
++  * debian/control: changed 'Maintainer' to 'Debian XML/SGML Group
++    <debian-xml-sgml-pkgs@lists.alioth.debian.org>' and added current
++    maintainer as 'Uploaders'
++  * debian/control: upgraded to Debian Policy 3.6.1 (no changes)
++
++ -- Ardo van Rangelrooij <ardo@debian.org>  Sun, 29 Feb 2004 11:47:16 -0600
++
++libxmltok (1.1-13) unstable; urgency=low
++
++  * debian/control: changed section of 'libxmltok1-dev' from 'devel'
++    to 'libdevel'
++  * debian/rules: moved debhelper compatibility level setting to
++    'debian/compat' per latest debhelper best practices
++  * debian/control: changed build dependency on 'debhelper' to '(>= 4.1)'
++  * debian/control: upgraded to Debian Policy 3.6.0 (no changes)
++
++ -- Ardo van Rangelrooij <ardo@debian.org>  Thu, 14 Aug 2003 21:59:32 -0500
++
++libxmltok (1.1-12) unstable; urgency=low
++
++  * xmlparse/Makefile: explicit linking against libxmltok
++    (closes: Bug#175052)
++
++ -- Ardo van Rangelrooij <ardo@debian.org>  Sat, 11 Jan 2003 12:14:17 -0600
++
++libxmltok (1.1-11) unstable; urgency=low
++
++  * debian/control: changed dependency for package 'libxmltok1-dev' on the
++    C library from 'libc6-dev' to 'libc6-dev | libc-dev'
++
++ -- Ardo van Rangelrooij <ardo@debian.org>  Wed, 25 Dec 2002 18:52:21 -0600
++
++libxmltok (1.1-10) unstable; urgency=low
++
++  * debian/control: upgraded to Debian Policy 3.5.8
++  * debian/copyright: added the location of the GPL a Debian system
++
++ -- Ardo van Rangelrooij <ardo@debian.org>  Wed, 25 Dec 2002 12:27:29 -0600
++
++libxmltok (1.1-9) unstable; urgency=low
++
++  * debian/rules: upgraded to debhelper v4
++  * debian/control: changed build dependency on debhelper accordingly
++  * debian/rules: migrated from 'dh_movefiles' to 'dh_install'
++  * debian/rules: split off 'install' target from 'binary-arch' target
++
++ -- Ardo van Rangelrooij <ardo@debian.org>  Sat, 10 Aug 2002 09:59:42 -0500
++
++libxmltok (1.1-8) unstable; urgency=low
++
++  * debian/control: removed reference to non-existing Netscape 5 from long
++    description
++    (closes: Bug#131763)
++
++ -- Ardo van Rangelrooij <ardo@debian.org>  Sat, 16 Feb 2002 20:36:52 -0600
++
++libxmltok (1.1-7) unstable; urgency=low
++
++  * Removed explicit dhelp support since doc-base now takes care of this
++  * debian/control: upgraded to Debian Policy 3.5.6
++
++ -- Ardo van Rangelrooij <ardo@debian.org>  Sun,  4 Nov 2001 11:10:28 -0600
++
++libxmltok (1.1-6) unstable; urgency=low
++
++  * debian/control: updated debhelper dependency to remove dh_testversion
++  * debian/control: upgraded to Debian Policy 3.5.2
++
++ -- Ardo van Rangelrooij <ardo@debian.org>  Tue, 24 Apr 2001 20:48:57 -0500
++
++libxmltok (1.1-5) unstable; urgency=low
++
++  * debian/control: fixed section override disparity
++
++ -- Ardo van Rangelrooij <ardo@debian.org>  Mon, 29 Jan 2001 19:39:23 -0600
++
++libxmltok (1.1-4) unstable; urgency=low
++
++  * Initial release as separate branch from expat to ease maintenance
++  * debian/control: updated to reflect separate branch
++    (closes: Bug#81866)
++  * Makefile: added install target
++  * Makefile/xmltok: added install target
++  * Makefile/xmlparse: added install target
++  * debian/rules: completely overhauled
++  * Added doc-base and dhelp support
++
++ -- Ardo van Rangelrooij <ardo@debian.org>  Sun, 28 Jan 2001 09:27:42 -0600
++
++expat (1.1-3) unstable; urgency=low
++   
++  * New maintainer
++   
++ -- Ardo van Rangelrooij <ardo@debian.org>  Sat,  7 Oct 2000 13:40:57 -0500
++   
++expat (1.1-2) unstable; urgency=low
++   
++  * debian/rules: more debhelperification and use more FHS stuff
++  * debian/control: standards bumped to 3.2.1 (closes: Bug#70336)
++   
++ -- Adam Di Carlo <aph@debian.org>  Wed, 27 Sep 2000 00:56:10 -0400
++   
++expat (1.1-1) unstable; urgency=low
++   
++  * new upstream version
++  * debian/rules: aesthetic cleanups, use a bit more debhelper stuff to
++    reduce complexity
++   
++ -- Adam Di Carlo <aph@debian.org>  Tue,  1 Jun 1999 22:36:29 -0400
++   
++expat (1.0.2-1) unstable; urgency=low
++   
++  * new upstream version
++  * maintainer name change
++  * standards-version: bumped to 2.5.0 (no changes required)
++   
++ -- Adam Di Carlo <aph@debian.org>  Wed, 13 Jan 1999 18:35:53 -0500
++   
++expat (1.0-2) unstable; urgency=low
++   
++  * debian/rules: fix symlink for docdir of libxmltok1-dev
++   
++ -- Adam P. Harris <aph@debian.org>  Sun, 23 Aug 1998 15:51:43 -0400
++  
++expat (1.0-1) unstable; urgency=low
++   
++  * Initial release.
++  * Makefile: added MPL notice as required by license, modifications to
++    enable building of xmltok and xmlparse as shared and static
++    libraries.
++  * xmltok/Makefile: created to enable building libxmltok.a and
++    libxmltok.so
++  * xmlparse/Makefile: created to enable building libxmlparse.a and and
++    libxmlparse.so
++  * debian/*: Debian-specific files
++   
++ -- Adam P. Harris <aph@debian.org>  Mon, 17 Aug 1998 01:12:09 -0400
+--- libxmltok-1.2.orig/debian/TODO
++++ libxmltok-1.2/debian/TODO
+@@ -0,0 +1,15 @@
++------------------------------------------------------------------------------
++To do list for libxmltok
++------------------------------------------------------------------------------
++
++BUGS:
++------------------------------------------------------------------------------
++Number Description
++------------------------------------------------------------------------------
++------------------------------------------------------------------------------
++
++WISHLIST:
++------------------------------------------------------------------------------
++Number Description
++------------------------------------------------------------------------------
++------------------------------------------------------------------------------
+--- libxmltok-1.2.orig/debian/README.xmltok
++++ libxmltok-1.2/debian/README.xmltok
+@@ -0,0 +1,32 @@
++xmltok1 shared libraries for Debian
++-----------------------------------
++
++This package contains shared libraries which come with James Clark's
++expat package.
++
++I really have no clue whether all the necessary include files etc are
++included, and whether this is actually a useful package for developers
++using these libraries.  Please report any experiences, good or bad, to
++me.
++
++  Ardo van Rangelrooij <ardo@debian.org>
++
++The contents of this file are subject to the Mozilla Public License
++Version 1.0 (the "License"); you may not use this file except in
++compliance with the License. You may obtain a copy of the License at
++http://www.mozilla.org/MPL/
++ 
++Software distributed under the License is distributed on an "AS IS"
++basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
++License for the specific language governing rights and limitations
++under the License.
++
++The Original Code is expat.
++
++The Initial Developer of the Original Code is James Clark.
++Portions created by James Clark are Copyright (C) 1998
++James Clark. All Rights Reserved.
++
++Contributor(s): 
++  A. P. Harris <aph@debian.org>
++  Ardo van Rangelrooij <ardo@debian.org>
+--- libxmltok-1.2.orig/debian/copyright
++++ libxmltok-1.2/debian/copyright
+@@ -0,0 +1,29 @@
++This is the Debian package of expat 1.x, the C library for parsing XML.
++
++The source package was downloaded from <URL:ftp://ftp.jclark.com/pub/xml/>.
++
++The original packager is Adam Di Carlo <aph@debian.org>.  The current
++maintainer is Ardo van Rangelrooij <ardo@debian.org>.
++
++Copyright:
++
++Copyright (c) 1998, 1999, 2000 Thai Open Source Software Center Ltd
++
++Permission is hereby granted, free of charge, to any person obtaining
++a copy of this software and associated documentation files (the
++"Software"), to deal in the Software without restriction, including
++without limitation the rights to use, copy, modify, merge, publish,
++distribute, sublicense, and/or sell copies of the Software, and to
++permit persons to whom the Software is furnished to do so, subject to
++the following conditions:
++
++The above copyright notice and this permission notice shall be included
++in all copies or substantial portions of the Software.
++
++THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
++EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
++IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
++CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
++TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
++SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+--- libxmltok-1.2.orig/debian/compat
++++ libxmltok-1.2/debian/compat
+@@ -0,0 +1 @@
++5
+--- libxmltok-1.2.orig/debian/libxmltok1-dev.docs
++++ libxmltok-1.2/debian/libxmltok1-dev.docs
+@@ -0,0 +1,2 @@
++debian/README.xmltok
++expat.html
+--- libxmltok-1.2.orig/debian/watch
++++ libxmltok-1.2/debian/watch
+@@ -0,0 +1,2 @@
++version=3
++ftp://ftp.jclark.com/pub/xml/expat-([\d.]+).tar.gz
+\ No newline at end of file
+--- libxmltok-1.2.orig/xmltok/Makefile
++++ libxmltok-1.2/xmltok/Makefile
+@@ -0,0 +1,37 @@
++LIB		:= xmltok
++OBJS		:= xmltok.o xmlrole.o
++INCLUDES	:= -I../xmltok -I../xmlparse
++SHOBJS		:= $(OBJS:%=shared/%)
++ELF_SONAME	:= lib$(LIB).so.$(ELF_SO_VERSION)
++
++prefix		= /usr/local
++lib_dir		= $(prefix)/lib
++inc_dir		= $(prefix)/include/xmltok
++
++lib$(LIB).a: $(OBJS)
++	$(AR) r $@ $?
++	$(RANLIB) $@
++
++lib$(LIB).so.$(LIB_VERSION): $(SHOBJS)
++	$(CC) --shared -o $@ -Wl,-soname,$(ELF_SONAME) $? $(ELF_OTHER_LIBS)
++	ln -sf $@ lib$(LIB).so
++	ln -sf $@ $(ELF_SONAME)
++
++clean:
++	rm -f $(OBJS) lib$(LIB).a
++	rm -f lib$(LIB).so.$(LIB_VERSION) lib$(LIB).so $(ELF_SONAME)
++	rm -rf shared/
++
++.c.o:
++	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
++
++shared/%.o:	%.c
++	@[ -d shared ] || mkdir shared
++	$(CC) $(CFLAGS) $(INCLUDES) $(ELF_FLAGS) -c -o $@ $<
++
++install:
++	mkdir -p $(lib_dir) $(inc_dir)
++	cp -a lib$(LIB).a $(lib_dir)
++	cp -a lib$(LIB).so* $(lib_dir)
++	cp -a *.h $(inc_dir)
++
+--- libxmltok-1.2.orig/copying.txt
++++ libxmltok-1.2/copying.txt
+@@ -0,0 +1,20 @@
++Copyright (c) 1998, 1999, 2000 Thai Open Source Software Center Ltd
++
++Permission is hereby granted, free of charge, to any person obtaining
++a copy of this software and associated documentation files (the
++"Software"), to deal in the Software without restriction, including
++without limitation the rights to use, copy, modify, merge, publish,
++distribute, sublicense, and/or sell copies of the Software, and to
++permit persons to whom the Software is furnished to do so, subject to
++the following conditions:
++
++The above copyright notice and this permission notice shall be included
++in all copies or substantial portions of the Software.
++
++THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
++EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
++IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
++CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
++TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
++SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+--- libxmltok-1.2.orig/xmlparse/Makefile
++++ libxmltok-1.2/xmlparse/Makefile
+@@ -0,0 +1,37 @@
++LIB		:= xmlparse
++OBJS		:= xmlparse.o
++INCLUDES	:= -I../xmltok -I../xmlparse
++SHOBJS		:= $(OBJS:%=shared/%)
++ELF_SONAME	:= lib$(LIB).so.$(ELF_SO_VERSION)
++ELF_OTHER_LIBS	:= -L../xmltok -lxmltok -lc
++
++prefix		= /usr/local
++lib_dir		= $(prefix)/lib
++inc_dir		= $(prefix)/include/xmltok
++
++lib$(LIB).a: $(OBJS)
++	$(AR) r $@ $?
++	$(RANLIB) $@
++
++lib$(LIB).so.$(LIB_VERSION): $(SHOBJS)
++	$(CC) --shared -o $@ -Wl,-soname,$(ELF_SONAME) $? $(ELF_OTHER_LIBS)
++	ln -sf $@ lib$(LIB).so
++	ln -sf $@ $(ELF_SONAME)
++
++clean:
++	rm -f $(OBJS) lib$(LIB).a
++	rm -f lib$(LIB).so.$(LIB_VERSION) lib$(LIB).so $(ELF_SONAME)
++	rm -rf shared/
++
++.c.o:
++	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
++
++shared/%.o:	%.c
++	@[ -d shared ] || mkdir shared
++	$(CC) $(CFLAGS) $(INCLUDES) $(ELF_FLAGS) -c -o $@ $<
++
++install:
++	mkdir -p $(lib_dir) $(inc_dir)
++	cp -a lib$(LIB).a $(lib_dir)
++	cp -a lib$(LIB).so* $(lib_dir)
++	cp -a *.h $(inc_dir)
