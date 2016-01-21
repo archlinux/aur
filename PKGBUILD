@@ -1,7 +1,7 @@
 # Maintainer: Marcin Wieczorek marcin@marcin.co
 pkgname=screenshooter
 pkgver=5.30
-pkgrel=3
+pkgrel=4
 pkgdesc="Take a screenshot and share it with your friends"
 arch=('i686' 'x86_64')
 url="http://screenshooter.net/"
@@ -26,6 +26,7 @@ package() {
   cd "../"
   install -D -m644 "screenshooter.desktop" "${pkgdir}/usr/share/applications/screenshooter.desktop"
   install -D -m644 "icon.png"     "${pkgdir}/usr/share/pixmaps/screenshooter.png"
-  
+
+	mkdir -p $HOME/.config/autostart/
   ln -s /usr/share/applications/screenshooter.desktop $HOME/.config/autostart/screenshooter.desktop
 }
