@@ -3,7 +3,7 @@
 
 pkgname=chromium-snapshot-bin
 pkgver=48.0.2535.0.r353757
-pkgrel=2
+pkgrel=3
 pkgdesc="The open-source project behind Google Chrome (Snapshot builds)"
 arch=('i686' 'x86_64')
 url="https://build.chromium.org"
