@@ -1,16 +1,16 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 
 pkgname=mbelib
-pkgver=1.2.5
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Voice codecs for P25, ProVoice, Half Rate"
 arch=('i686' 'x86_64')
 url="https://github.com/szechyjs/mbelib"
-license=('custom:copyright')
+license=('custom:ISC')
 depends=('glibc')
 makedepends=('cmake')
 source=("https://github.com/szechyjs/$pkgname/archive/v${pkgver}.tar.gz")
-md5sums=('6a609b494a4dfff281a4a6605a3b406f')
+md5sums=('431f35b1676980452f216f1bb63dbdf3')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -28,5 +28,5 @@ package() {
     cp -a libmbe.* "$pkgdir/usr/lib"
     cd ..
     install -Dm644 mbelib.h "$pkgdir/usr/include/mbelib.h"
-    install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
+    install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
