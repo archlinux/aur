@@ -2,7 +2,7 @@
 
 pkgname='clerk'
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="mpd client, based on rofi"
 arch=('any')
 url="https://github.com/carnager/clerk"
@@ -15,7 +15,5 @@ install=clerk.install
 
 package() {
     cd "${srcdir}/${pkgname}"
-    install -D -m 0755 "clerk" "${pkgdir}/usr/bin/clerk"
-    install -D -m 0755 "clerk_helper" "${pkgdir}/usr/bin/clerk_helper"
-    install -D -m 0644 "config.clerk" "${pkgdir}/usr/share/clerk/config.example"
+    make DESTDIR="$pkgdir" PREFIX="/usr" install
 }
