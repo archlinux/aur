@@ -1,4 +1,4 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: M0Rf30
 
 pkgname=python2-bitcointools
 pkgver=1.1.43
@@ -37,6 +37,4 @@ package() {
   mv "$pkgdir/usr/bin/pybtctool" "$pkgdir/usr/bin/pybtctool2"
 }
 
-md5sums=('aa92a040a06b5a6dbdec84fe5242ea06'
-	 'SKIP')
 md5sums=('aa92a040a06b5a6dbdec84fe5242ea06')
