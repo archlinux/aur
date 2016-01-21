@@ -6,7 +6,7 @@
 
 pkgname=gnash-git
 _gitname=gnash
-pkgver=0.8.11.r22311.gf0f66ce
+pkgver=0.8.11.r22339.g62cfdfe
 pkgrel=1
 pkgdesc="The GNU SWF Player based on GameSWF - git development version"
 arch=('i686' 'x86_64')
@@ -24,8 +24,11 @@ options=('!emptydirs')
 install=$_gitname.install
 backup=('etc/gnashpluginrc')
 source=('git://git.sv.gnu.org/gnash.git'
-       'jemalloc_gnash.patch')
-sha256sums=('SKIP' '422aad0cf678f8427b1601e41e6440b3526872b640b6ccd3ab93ae656a9a8c8e')
+        'jemalloc_gnash.patch'
+        'build_on_new_boost.patch')
+sha256sums=('SKIP'
+            '422aad0cf678f8427b1601e41e6440b3526872b640b6ccd3ab93ae656a9a8c8e'
+            '1df546e376f0a0e495f2c1a96f13e29c507dfb5f16b808696dc8c7474d833f65')
 
 pkgver() {
   cd $_gitname
@@ -45,7 +48,10 @@ build() {
 
   patch -Np1 -i "${srcdir}/jemalloc_gnash.patch"
   sed -i 's#${JEMALLOC_CONFIG} --cxxflags#${JEMALLOC_CONFIG} --cflags#g' configure
-  
+
+  # https://savannah.gnu.org/bugs/?46148
+  patch -Np1 -i "${srcdir}/build_on_new_boost.patch"
+
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
