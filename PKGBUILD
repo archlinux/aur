@@ -2,18 +2,41 @@
 
 pkgname=lgogdownloader-git
 pkgver=20160120
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source downloader for GOG.com games, uses the GOG.com API (git version)"
 url="http://www.gog.com/en/forum/general/lgogdownloader_gogdownloader_for_linux"
 arch=(i686 x86_64)
 license=(WTFPL)
-depends=('boost' 'jsoncpp' 'liboauth' 'rhash' 'tinyxml' 'htmlcxx' 'curl')
 makedepends=('help2man' 'cmake' 'git')
-source=('git://github.com/Sude-/lgogdownloader.git')
-md5sums=('SKIP')
 provides=('lgogdownloader')
 conflicts=('lgogdownloader')
 _gitname="lgogdownloader"
+
+# lgogdownloader has a new experimental aria2 feature available
+# set _aria2 to "yes" to enable it
+# For more details see https://www.gog.com/forum/general/lgogdownloader_gogdownloader_for_linux/post744
+# Your mileage may vary -- It probably doesn't work
+_aria2="no"
+
+if [ "$_aria2" == "no" ]; then
+	depends=('boost' 'jsoncpp' 'liboauth' 'rhash' 'tinyxml' 'htmlcxx' 'curl')
+	source=('git://github.com/Sude-/lgogdownloader.git')
+	sha256sums=('SKIP')
+elif [ "$_aria2" == "yes" ]; then
+
+	depends=('boost' 'jsoncpp' 'liboauth' 'rhash' 'tinyxml' 'htmlcxx' 'aria2')
+	source=(
+		'git://github.com/Sude-/lgogdownloader.git' 
+		'https://sites.google.com/site/gogdownloader/use_aria2.diff'
+	)
+	sha256sums=(
+		'SKIP' 
+		'539748573dfde781d29a1fed6bf7f0815353d8e93f1988a73ef9cd13459720ff'
+	)
+else
+	error "$_aria2: Invalid option for _aria2 switch in PKGBUILD."
+	return 1
+fi
 
 pkgver() {
 	git describe --long | sed 's/^v//;s/-/.r/;s/-/./'
@@ -33,13 +56,20 @@ prepare() {
 		rm -rf build/*
 	fi
 
-	cd build
-	
 # Possible options for -DCMAKE_BUILD_TYPE are Release and Debug
 # Debug has console spew
 
+if [ "$_aria2" == "no" ]; then
+	cd build
  	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+fi
 
+if [ "$_aria2" == "yes" ]; then
+	cp $srcdir/use_aria2.diff $srcdir/${_gitname}
+	patch -p1 < use_aria2.diff
+	cd build
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DWITH_ARIA2=1 -DCMAKE_BUILD_TYPE=Release
+fi
 }
 
 build() {
