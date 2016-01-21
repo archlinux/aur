@@ -1,0 +1,18 @@
+pkgbase = bitscope-meter
+	pkgdesc = Bitscope meter software for oscilloscopes
+	pkgver = 2.0.FK22G
+	pkgrel = 1
+	url = http://www.bitscope.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = atk
+	depends = gdk-pixbuf2
+	depends = gtk2
+	depends = pango
+	depends = cairo
+	source = http://www.bitscope.com/download/files/bitscope-meter_2.0.FK22G_i386.deb
+	sha1sums = 5f78841fe3069c6d0bdca025e1e449b686349e0c
+
+pkgname = bitscope-meter
+
