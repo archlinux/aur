@@ -20,19 +20,19 @@ sha256sums=(
 install=${pkgname}.install
 
 package(){
-    mkdir -p "${pkgdir}"/usr/share/${pkgname}
-    cp --preserve=mode -r * "${pkgdir}"/usr/share/${pkgname}
-    rm ${pkgdir}/usr/share/${pkgname}/KeeWeb.linux.x64.zip
+    mkdir -p "${pkgdir}"/opt/${pkgname}
+    cp --preserve=mode -r * "${pkgdir}"/opt/${pkgname}
+    rm ${pkgdir}/opt/${pkgname}/KeeWeb.linux.x64.zip
 
     for res in 128x128; do
         install -dm755 "${pkgdir}/usr/share/icons/hicolor/${res}/apps"
-        install -Dm755 "${pkgdir}/usr/share/${pkgname}/resources/app/icon.png" "${pkgdir}/usr/share/icons/hicolor/${res}/apps/keeweb.png"
+        install -Dm755 "${pkgdir}/opt/${pkgname}/resources/app/icon.png" "${pkgdir}/usr/share/icons/hicolor/${res}/apps/keeweb.png"
     done
 
     install -dm755 "${pkgdir}/usr/share/applications"
     install -Dm644 "keeweb.desktop" "${pkgdir}/usr/share/applications/keeweb.desktop"
 
     mkdir -p "${pkgdir}"/usr/bin
-    echo -e "#!/bin/sh\n/usr/share/${pkgname}/KeeWeb" > ${pkgdir}/usr/bin/KeeWeb
+    echo -e "#!/bin/sh\n/opt/${pkgname}/KeeWeb" > ${pkgdir}/usr/bin/KeeWeb
     chmod 755 ${pkgdir}/usr/bin/KeeWeb
 }
