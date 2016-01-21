@@ -1,33 +1,24 @@
-# Maintainer: Vlad M. <vlad@archlinux.net>
-# Contributor: pisuka <tekmon@gmail.com>
+# Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
+# Contributor: Ranieri Althoff <ranisalt+aur@gmail.com>
 
 pkgname=heroku-toolbelt
-pkgver=3.42.15
+pkgver=3.42.25
 pkgrel=1
-pkgdesc="Everything you need to get started using Heroku (including foreman)"
-arch=('any')
+pkgdesc="Everything you need to get started using Heroku"
+arch=('i686' 'x86_64')
 url="https://toolbelt.heroku.com"
-license=('MIT' 'APACHE' 'RUBY' 'PerlArtistic' 'GPL' 'custom')
-depends=("ruby>=1.9")
-makedepends=("ruby-bundler")
+license=('MIT')
 optdepends=('git')
-conflicts=('ruby-heroku' 'ruby-foreman' 'heroku-client')
-source=('Gemfile' 'Gemfile.lock')
-sha256sums=('f94136836e8f2808bcd2c12cb9d58a4ea42679a05b41e6231efe6475140010f7'
-            '2204a52cd1fc2abfdc8520ed17592184d495125fda66ef0caaef01d689839ba6')
+conflicts=('heroku-client-standalone' 'heroku-toolbelt')
+source=("https://s3.amazonaws.com/assets.heroku.com/heroku-client/heroku-client-${pkgver}.tgz")
+sha256sums=('0394fa11def849d3279969ab503eb6c32f0d81b11735376358d26ba1766ddb56')
 
 package() {
-  cd "$pkgdir"
-  mkdir -p "usr/lib/ruby/vendor_ruby/$pkgname" "usr/bin" "usr/share/man/man1"
-  cd "usr/lib/ruby/vendor_ruby/$pkgname"
+  cd "${srcdir}"
 
-  cp -L "$srcdir"/Gemfile* .
+  install -dm 755 "${pkgdir}/usr/local"
+  install -dm 755 "${pkgdir}/usr/bin"
 
-  bundle install --standalone --deployment --binstubs="$pkgdir/usr/bin"
-
-  cd "$pkgdir"
-
-  find "usr/bin" -type f ! -name heroku ! -name foreman -execdir rm "{}" +
-
-  find "usr/lib/ruby/vendor_ruby/heroku-toolbelt/vendor/bundle/ruby" -path "*/gems/*/man/*" -exec ln -st "usr/share/man/man1/" "/{}" \;
+  mv heroku-client "${pkgdir}/usr/local/heroku"
+  ln -s /usr/local/heroku/bin/heroku "${pkgdir}/usr/bin/heroku"
 }
