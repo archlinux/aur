@@ -1,17 +1,24 @@
 # Maintainer: parazyd <parazyd@dyne.org>
 pkgname=jaromail
 pkgver=4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A commandline tool to easily and privately handle your e-mail"
 arch=('x86_64' 'i686')
 url="https://www.dyne.org/software/jaro-mail/"
 license=('GPL3')
-depends=('zsh' 'mutt' 'fetchmail' 'vim' 'msmtp' 'notmuch' 'abook' 'elinks' 'pinentry' 'wipe' 'alot' 'libgnome-keyring')
+depends=('zsh' 'mutt' 'fetchmail' 'vim' 'msmtp' 'notmuch' 'abook' 'elinks' 'pinentry' 'wipe' 'alot')
 makedepends=('gcc' 'glib2')
-source=("https://files.dyne.org/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=("1ace90a24c3f73ceeff7b7e34470a2d7d01894ac63fdec9e16f333f09d94573f")
+source=("https://files.dyne.org/$pkgname/$pkgname-$pkgver.tar.gz"
+        "00-remove-libgnome-keyring.patch")
+sha256sums=("1ace90a24c3f73ceeff7b7e34470a2d7d01894ac63fdec9e16f333f09d94573f"
+            "3fa439b8ae02c33005a004c45f246e43fa3642c3eb2540c40ad31975e5ecd2a9")
 # Jaromil https://jaromil.dyne.org/contact
 validpgpkeys=('6113D89CA825C5CEDD02C87273B35DA54ACB7D10')
+
+
+prepare() {
+    patch "$pkgname-$pkgver/build/build-gnu.sh" "00-remove-libgnome-keyring.patch"
+}
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -69,7 +76,7 @@ package() {
     printf "Jaro Mail installed in: $PREFIX\n"
     printf "Executable path: $PREFIX/bin/jaro\n\n"
     printf "To initialize your Mail dir use: jaro init\n"
-    printf  "Default is $HOME/Mail\n"
+    printf "Default is /root/Mail\n"
     printf "Change it via environment variable JAROMAILDIR\n"
     printf "****************************************************\n\n"
 
