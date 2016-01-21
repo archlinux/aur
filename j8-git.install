@@ -1,0 +1,15 @@
+post_install() {
+  mkdir -p usr/lib/j8/tools/regex
+  ln -s /usr/lib/libpcreposix.so usr/lib/j8/tools/regex/libjpcre.so
+}
+
+post_upgrade() {
+  if [ $(vercmp $2 8.04.15.20160121-1) -lt 0 ]; then
+    post_install
+  fi
+}
+
+pre_remove() {
+  rm usr/lib/j8/tools/regex/libjpcre.so
+  rmdir usr/lib/j8/tools/regex usr/lib/j8/tools
+}

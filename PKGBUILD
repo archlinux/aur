@@ -1,15 +1,22 @@
 # Maintainer: Lorenzo Tomei <tomeil@tiscali.it>
 
 pkgname=j8-git
-pkgver=8.04.15.20160119
-pkgrel=1
+pkgver=8.04.15.20160121
+pkgrel=4
 pkgdesc='J is a modern, high-level, general-purpose, high-performance programming language'
 arch=('i686' 'x86_64')
 url='http://www.jsoftware.com'
 license=('GPL3'  'LGPL')
-depends=('ncurses' 'qt5-tools' 'qt5-websockets' 'qt5-webengine' 'wget' 'pcre')
-source=('jsource.zip::http://www.jsoftware.com/gitlist/jsource.git/zipball/master' 'qtide.zip::http://www.jsoftware.com/gitlist/qtide.git/zipball/master' 'http://www.databaserossoverde.it/jsoftware/j804_env_20160119.tar.gz')
-md5sums=('SKIP' 'SKIP' '7e9b1bc11404f8c4e5b3db501f83f52e')
+depends=('xdg-utils' 'qt5-webkit' 'qt5-websockets' 'qt5-multimedia')
+optdepends=('wget: for web/gethttp addon'
+            'expat: for api/expat addon'
+            'fftw: for math/fftw addon'
+            'lapack: for math/lapack addon')
+source=('jsource.zip::http://www.jsoftware.com/gitlist/jsource.git/zipball/master'
+        'qtide.zip::http://www.jsoftware.com/gitlist/qtide.git/zipball/master'
+        'jenv.tar.gz::http://www.databaserossoverde.it/jsoftware/j804_env_20160121.tar.gz')
+md5sums=('SKIP' 'SKIP' 'f157ca86bba79f5ae620cb19b163d5e8')
+install=j8-git.install
 if [ "${CARCH}" = x86_64 ]; then
 _xarch=x86_64
 _jarch=j64
@@ -60,6 +67,4 @@ cp -a jenv/* "${pkgdir}"/
 cp -a jbld/"${_jarch}"/bin/{jconsole,libj.so} "${pkgdir}"/usr/lib/j8/bin/
 cp -a bin/linux-"${_xarch}"/release/*  "${pkgdir}"/usr/lib/j8/bin/
 echo "${pkgname}-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.xz (Arch Linux package)" > ${pkgdir}/usr/lib/j8/bin/installer.txt
-chown -R nobody:nobody "${pkgdir}"/srv/j8
 }
-
