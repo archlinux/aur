@@ -7,7 +7,8 @@ pkgrel=1
 pkgdesc="Console CardDAV client"
 license=("GPL3")
 url="https://github.com/scheibler/khard/"
-depends=('python2-configobj' 'python2-vobject' 'python2-atomicwrites' )
+depends=('python2-configobj' 'python2-vobject' 'python2-atomicwrites' 'python2-pyyaml')
+makedepends=('python2-setuptools')
 optdepends=('vdirsyncer: Synchronization of address books with a DAV server.'
             'python2-caldavclientlibrary-svn: Create and remove address books on the DAV server using davcontroller utility.')
 source=("${url}/archive/v${pkgver}.tar.gz")
