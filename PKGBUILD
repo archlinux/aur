@@ -2,15 +2,21 @@
 _name=JaroMail
 pkgname=jaromail-git
 pkgver=4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A commandline tool to easily and privately handle your e-mail, git version"
 arch=('x86_64' 'i686')
 url="https://www.dyne.org/software/jaro-mail"
 license=('GPL3')
-depends=('zsh' 'mutt' 'libgnome-keyring' 'fetchmail' 'vim' 'msmtp' 'notmuch' 'abook' 'elinks' 'pinentry' 'wipe' 'alot')
+depends=('zsh' 'mutt' 'fetchmail' 'vim' 'msmtp' 'notmuch' 'abook' 'elinks' 'pinentry' 'wipe' 'alot')
 makedepends=('gcc' 'glib2')
-source=("git://github.com/dyne/JaroMail")
-sha256sums=("SKIP")
+source=("git://github.com/dyne/JaroMail"
+        "00-remove-libgnome-keyring.patch")
+sha256sums=("SKIP"
+            "3fa439b8ae02c33005a004c45f246e43fa3642c3eb2540c40ad31975e5ecd2a9")
+
+prepare() {
+    patch "$_name/build/build-gnu.sh" "00-remove-libgnome-keyring.patch"
+}
 
 build() {
 	cd "$_name"
