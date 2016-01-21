@@ -1,7 +1,7 @@
 #Maintainer: M. Mastroeni <the_maxtro@hotmail.it>
 pkgname=gimp-gap
-pkgver=2.6
-pkgrel=4
+pkgver=2.6.0
+pkgrel=5
 pkgdesc="Gimp Animation Package, gimp's plugin for animation"
 url="https://www.gimp.org/tutorials/Using_GAP/"
 arch=('x86_64' 'i686')
