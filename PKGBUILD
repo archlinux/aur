@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=albiononline
-pkgver=20160119111749
+pkgver=20160121172027
 pkgrel=1
 pkgdesc="The first true cross-platform Sandbox MMO"
 url="https://albiononline.com/"
@@ -31,5 +31,5 @@ package() {
 
 # vim:set ts=2 sw=2 et:
 
-md5sums=('669a0a0edab3e6d71607c26f1bbbb289'
+md5sums=('de9fa078f283ea069531a9cd66ff13d7'
          'cec7e1ad7f4f8acfc0628d0dd8d421e6')
