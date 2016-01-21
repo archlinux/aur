@@ -3,11 +3,11 @@
 # Submitter: Fredrik Tegenfeldt <fredrik.tegenfeldt@unige.ch>
 
 pkgname=slurm-llnl-dev
-pkgver=15.08.1
+pkgver=15.08.7
 # Hyphens (-) are prohibited however they are used by the package author
 # therefore it is necessary to invoke ${pkgver} like ${pkgver//_/-}
 # this will substituet any udnerscores (_) with hyphens
-pkgrel=2
+pkgrel=1
 pkgdesc="Simple Linux Utility for Resource Management (development version)"
 arch=('i686' 'x86_64')
 url="http://www.schedmd.com"
@@ -40,11 +40,11 @@ source=("slurm-tmpfiles.conf"
 	"slurmdbd.service"
 	"http://www.schedmd.com/download/total/slurm-${pkgver//_/-}.tar.bz2")
 md5sums=('51e4ae2c51edf7c145d1b87bec4c344e'
-	'cae664b8ef44d01783dade9088e25b53'
-	'31899d7a4caaa7bdb8b987afae191b56'
-	'72a4cddcef47bdc989d49d02ee698e55'
-	'cd89bfa37d6b3108fc17c531a27183a0'
-	'5806d610e36e2283dd4769bb1df9516b')
+         'cae664b8ef44d01783dade9088e25b53'
+         '834b641efbcb45d300630f51f08a9122'
+         '231a6634fcf774642021377920fffe39'
+         'cef9d45137b9bd431dce3cbe85ef9bca'
+         'd00b984c0d9fc0bf247e3ebf53c6a232')
 
 build() {
 	cd "${srcdir}/slurm-${pkgver//_/-}"

@@ -6,7 +6,6 @@ ConditionPathExists=/etc/slurm-llnl/slurmdbd.conf
 [Service]
 Type=simple
 EnvironmentFile=/etc/default/slurm-llnl
-ExecStartPre=/usr/bin/mkdir -p /var/lib/slurm-llnl
 ExecStart=/usr/bin/slurmdbd -D $SLURMDBD_OPTIONS
 PIDFile=/var/run/slurm/slurmdbd.pid
 
