@@ -64,7 +64,7 @@ post_remove() {
 	echo -e "\e[34;1m==>\e[39;1m Removing slurm system user/group... \e[0m"
 	userdel slurm
 
-	# deleting remnant recusivly (there shell be now links!)
+	# deleting remnant recusivly
 	rm -rf /var/lib/slurm-llnl
 
 	# notifying the user of kept dirs
