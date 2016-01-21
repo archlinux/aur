@@ -1,0 +1,15 @@
+post_install() {
+    pkgname=mailmotion
+
+    # Fixing membership
+    chown root: /var/log/$pkgname
+    chown -R root: /etc/$pkgname
+
+    true
+}
+
+post_upgrade() {
+}
+
+pre_remove() {
+}
