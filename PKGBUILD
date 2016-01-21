@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/Depado/goploader"
 license=('MIT')
 depends=()
-makedepends=('go')
+makedepends=('go' 'git')
 provides=('goploader')
 validpgpkeys=()
 
