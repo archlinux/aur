@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python2-bitcointools
-pkgver=1.1.42
+pkgver=1.1.43
 pkgrel=1
 pkgdesc="Python Bitcoin Tools"
 arch=('any')
@@ -10,14 +10,10 @@ makedepends=('python2-setuptools')
 url="https://github.com/vbuterin/pybitcointools"
 license=('MIT')
 options=(!emptydirs)
-source=(https://pypi.python.org/packages/source/b/${pkgname#python2-}/${pkgname#python2-}-$pkgver.tar.gz
-	https://github.com/vbuterin/pybitcointools/blob/master/bitcoin/english.txt)
+source=(https://pypi.python.org/packages/source/b/${pkgname#python2-}/${pkgname#python2-}-$pkgver.tar.gz)
 
 prepare(){
   cd "$srcdir/${pkgname#python2-}-$pkgver"
-
-#  msg2 'Fixing setup.py...'
-  sed -i '/data_files.*/d' setup.py
 
 #  msg2 'Fixing Python version...'
   find . -type f -print0 | xargs -0 sed -i 's#/usr/bin/python#/usr/bin/python2#g'
@@ -39,11 +35,8 @@ package() {
 
   msg2 'Renaming pybtctool to pybtctool2...'
   mv "$pkgdir/usr/bin/pybtctool" "$pkgdir/usr/bin/pybtctool2"
-
-  msg2 'Add english wordlist'
-  cp ../english.txt $pkgdir/usr/lib/python2.7/site-packages/bitcointools/
-
 }
 
-md5sums=('93f1f9f18d0cb4022097b0dc45ed60d3'
+md5sums=('aa92a040a06b5a6dbdec84fe5242ea06'
 	 'SKIP')
+md5sums=('aa92a040a06b5a6dbdec84fe5242ea06')
