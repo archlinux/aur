@@ -6,7 +6,7 @@
 
 pkgname=fd
 pkgver=3.01b
-pkgrel=3
+pkgrel=4
 pkgdesc="Ncurses file and directory management tool"
 arch=('i686' 'x86_64')
 url="http://hp.vector.co.jp/authors/VA012337/soft/fd/"
@@ -38,7 +38,7 @@ package() {
     JMANDIR=$pkgdir/usr/share/man/ja/man1\
     DESTDIR="$pkgdir/"\
    install
-  install -m755 ./fd{b,n}sh "$pkgdir"/usr/bin
+  install -m755 ./fd{,b,n}sh "$pkgdir"/usr/bin
   install -DTm644 ./LICENSES.eng "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
   install -d "$pkgdir/etc/$pkgname"
   install -d "$pkgdir/usr/share/doc/$pkgname"
