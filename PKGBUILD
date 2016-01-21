@@ -3,7 +3,7 @@
 
 pkgbase=dolphin-emu-git
 pkgname=('dolphin-emu-git' 'dolphin-emu-cli-git' 'dolphin-emu-qt-git')
-pkgver=4.0.2.r8727.d134858
+pkgver=4.0.2.r8743.3a12dcc
 pkgrel=1
 pkgdesc='A GameCube / Wii / Triforce emulator'
 arch=('x86_64')
@@ -33,6 +33,8 @@ build() {
 
   cmake .. \
     -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DCMAKE_C_FLAGS='-fno-pie' \
+    -DCMAKE_CXX_FLAGS='-fno-pie' \
     -DENABLE_LTO='TRUE' \
     -DENABLE_QT2='TRUE' \
     -DENABLE_SDL='TRUE' \
