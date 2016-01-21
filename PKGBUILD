@@ -5,13 +5,13 @@
 srcname=knot
 pkgname=${srcname}
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='high-performance authoritative-only DNS server'
 url='https://www.knot-dns.cz/'
 arch=('i686' 'x86_64')
 license=('GPL3')
 install=install
-depends=('liburcu>=0.5.4' 'gnutls>=3.0' 'zlib' 'liblmdb' 'jansson')
+depends=('liburcu>=0.5.4' 'gnutls>=3.0' 'zlib' 'lmdb' 'jansson')
 makedepends=('autoconf>=2.65' 'libtool' 'flex>=2.5.3' 'bison>=2.3')
 source=("https://secure.nic.cz/files/knot-dns/${srcname}-${pkgver}.tar.xz"
         'knot.service'
