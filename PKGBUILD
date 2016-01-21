@@ -2,13 +2,20 @@
 
 pkgrealname=webcamoid
 pkgname=webcamoid-git
-pkgver=6.2.0.r58.g5785c72
+pkgver=6.2.0.r68.g9273d45
 pkgrel=1
 pkgdesc="Webcamoid is a full featured webcam capture application."
 url='https://github.com/hipersayanX/webcamoid'
 license=('GPL')
 arch=('i686' 'x86_64' 'armv6h')
 depends=('qt5-quickcontrols' 'qt5-svg' 'ffmpeg' 'libpulse')
+# Enable this lines if you want to use GStreamer instead of FFmpeg.
+# WARNING: GStreamer support is experimental.
+#depends=('qt5-quickcontrols' 'qt5-svg' 'libpulse' 'gst-plugins-base-libs')
+#optdepends=('gst-plugins-base'
+#            'gst-plugins-good'
+#            'gst-plugins-bad'
+#            'gst-plugins-ugly')
 makedepends=('git' 'qt5-tools')
 provides=('webcamoid')
 conflicts=('kdeplasma-applets-webcamoid' 'webcamoid')
@@ -26,7 +33,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/${pkgrealname}"
-    qmake-qt5 Webcamoid.pro
+    qmake-qt5 Webcamoid.pro #USE_GSTREAMER=1
     make
 }
 
