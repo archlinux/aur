@@ -1,7 +1,7 @@
 # Maintainer: Iwan Timmer <irtimmer@gmail.com>
 
 pkgname=storaged
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="LVM DBus add-on for udisks"
 url="https://github.com/storaged-project/storaged"
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('udisks2' 'lvm2')
 makedepends=('intltool' 'gobject-introspection' 'libxslt')
 source=(https://github.com/storaged-project/${pkgname}/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('910d4c10568c575d0ae5be7b68890126')
+md5sums=('b51080d5e91d663c21c07149f1553f94')
 
 build() {
   cd ${pkgname}-${pkgver}
