@@ -10,10 +10,10 @@ license=('GPL2')
 depends=('gtk3<=3.14')
 makedepends=('vala')
 source=("https://gitlab.com/ufee1dead/${pkgname}/repository/archive.tar.gz?ref=v${pkgver}")
-sha256sums=('3f14ab8ade68e04a7fe7fb19d23050d437941bb626ee32f9f81482c73a143eb7')
+sha256sums=('d75d795dbd2a5025ead25954d1d0a55f083e8381173f94a2f7665811b9192dfa')
 
 build() {
-  cd "${srcdir}/${pkgname}.git"
+  cd "${srcdir}/${pkgname}-v${pkgver}"*
 
   autoreconf -vfi
   ./configure --prefix=/usr 
@@ -21,9 +21,9 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}.git"
+  cd "${srcdir}/${pkgname}-v${pkgver}"*
 
-  install -Dm755 "src/${pkgname}" -t "${pkgdir}/usr/bin"
+  install -D "src/${pkgname}" -t "${pkgdir}/usr/bin"
 }
 
 # vim:set ts=2 sw=2 et:
