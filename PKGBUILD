@@ -1,13 +1,13 @@
 # with fixes by 0xAA <0xaa@dmg.sx>
 pkgname="radare2-git"
-pkgver=20150715.8475.d4eb221
+pkgver=20160116.10102.277f134
 pkgrel=1
 pkgdesc="Open-source tools to disasm, debug, analyze and manipulate binary files"
 arch=('i686' 'x86_64')
 url="http://radare.org"
 license=('GPL3' 'LGPL3')
 makedepends=('git')
-depends=('capstone')
+depends=('capstone-git')
 provides=('radare2') # capstone-git is reccomended
 conflicts=('radare2')
 
