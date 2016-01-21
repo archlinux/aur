@@ -2,14 +2,14 @@
 
 pkgname=('python-ceilometerclient'
          'python2-ceilometerclient')
-pkgver='1.5.0'
+pkgver='2.2.1'
 pkgrel='1'
 pkgdesc='Python client library for Ceilometer'
 arch=('any')
 url='https://launchpad.net/python-ceilometerclient'
 license=('Apache')
 source=("https://pypi.python.org/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('f81284c1ac025ba65ac0e630a3bb01d4fd73ad087b9e1218cf677ac42180112c')
+sha256sums=('3939d3853599cec2cdd8f1d1353c4e10f10536fa9c50d919836d3ad9c8e246ea')
 
 package_python-ceilometerclient() {
     depends=('python-pbr'
@@ -18,6 +18,7 @@ package_python-ceilometerclient() {
              'python-oslo-serialization'
              'python-oslo-utils'
              'python-prettytable'
+             'python-keystoneauth1'
              'python-keystoneclient'
              'python-requests'
              'python-six'
@@ -37,6 +38,7 @@ package_python2-ceilometerclient() {
              'python2-oslo-serialization'
              'python2-oslo-utils'
              'python2-prettytable'
+             'python2-keystoneauth1'
              'python2-keystoneclient'
              'python2-requests'
              'python2-six'
