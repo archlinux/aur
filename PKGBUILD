@@ -9,7 +9,7 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=2.8.5
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
@@ -45,6 +45,7 @@ build() {
 
   msg "Starting configure..."
   ./configure \
+    --extra-cflags="-I/usr/include/nvidia-sdk" \
     --enable-shared \
     --disable-debug \
     --disable-static \
