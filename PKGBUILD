@@ -1,7 +1,7 @@
 # Maintainer: Antoine Pierlot-Garcin <antoine@bokbox.com>
 pkgname=debsig-verify-git
 pkgver=0.13.r8.6104eef
-pkgrel=2
+pkgrel=3
 pkgdesc="Debian package signature verification tool"
 arch=('x86_64' 'i686' 'arm')
 url="https://anonscm.debian.org/cgit/dpkg/debsig-verify.git"
@@ -45,4 +45,10 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	make DESTDIR="$pkgdir/" install
+
+	# install doc and policy examples
+	install -m 0755 -d "$pkgdir/usr/share/doc/${pkgname%-git}/"
+	install -m 0644 doc/policy-syntax.txt doc/policy.dtd "$pkgdir/usr/share/doc/${pkgname%-git}/"
+	install -m 0755 -d "$pkgdir/usr/share/doc/${pkgname%-git}/examples"
+	cp -r test/policies/* "$pkgdir/usr/share/doc/${pkgname%-git}/examples/"
 }
