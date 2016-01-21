@@ -7,7 +7,7 @@ post_install() {
 	echo ' recognize the default install dir'
 	echo
         echo ' sudo mv /usr/share/minetest/mods/minetest-mod-weather ~/.minetest/mods'
-        echo ' sudo chown <your user>:<your group> ~/.minetest/mods/minetest-mod-weather'
+        echo ' sudo chown -R <your user>:<your group> ~/.minetest/mods/minetest-mod-weather'
 	echo
         echo
 }
@@ -20,7 +20,7 @@ post_upgrade() {
 	echo ' recognize the default install dir'
 	echo
         echo ' sudo mv /usr/share/minetest/mods/minetest-mod-weather ~/.minetest/mods'
-        echo ' sudo chown <your user>:<your group> ~/.minetest/mods/minetest-mod-weather'
+        echo ' sudo chown -R <your user>:<your group> ~/.minetest/mods/minetest-mod-weather'
 	echo
         echo
 }
