@@ -5,8 +5,8 @@
 # Contributor: Tom < tomgparchaur at gmail dot com >
 
 pkgname=copy-agent
-pkgver=3.2.01.0481
-pkgrel=6
+pkgver=3.2.02.0496
+pkgrel=1
 pkgdesc="Copy.com sync agent"
 arch=("armv6h" "i686" "x86_64")
 url="http://www.copy.com"
@@ -16,7 +16,7 @@ optdepends=("libindicator-gtk2: indicator support")
 options=('!strip' '!upx')
 install=${pkgname}.install
 source=("Copy.tgz::https://copy.com/install/linux/Copy.tgz" "copy-agent.desktop" "copy-agent.png" "copy-agent.svg" "copy-agent.service" 'copy-console.service' 'launch.sh' 'TERMS')
-sha256sums=('f33c0297c2d8f7e90ec481beed88a918446a87507c9ea29f8feae21a4e85f72e'
+sha256sums=('3ce969e7fc85bb8a7b97145ce1c10e201e8d00609f163ee5732c9761dc47f916'
             'ef1767720b5e5eff6567e537f3fed1c1d7da17e4f4248479816cab924f62e431'
             '4119b6c8614c73a1f5fe6143a701395a81a79be1ae435e84a1aaaeae7b15fcaf'
             '1849eae0d9ac5ed57a4bb841f14b3ea56925295bdfc6b01763a4ce54679bfe47'
