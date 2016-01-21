@@ -1,0 +1,4 @@
+pkg/
+src/
+screenshooter_*
+*.pkg.tar.xz
