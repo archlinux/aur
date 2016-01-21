@@ -2,7 +2,7 @@
 
 _pkgname=tevent
 pkgname=lib32-${_pkgname}
-pkgver=0.9.25
+pkgver=0.9.26
 pkgrel=1
 pkgdesc="An event system based on the talloc memory management library (lib32)"
 arch=('x86_64')
@@ -12,10 +12,10 @@ license=('GPL3')
 depends=('lib32-talloc')
 makedepends=('python2')
 optdepends=('python2: for python bindings')
-md5sums=('8d01a2076cb8cd30cab40393d27043df')
+md5sums=('22c372f3d936d751271f588ab71f829b')
 
 build() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
+  cd "${_pkgname}-${pkgver}"
 
   export CC="gcc -m32"
   export CXX="g++ -m32"
@@ -34,10 +34,10 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
+  cd "${_pkgname}-${pkgver}"
   
-  make DESTDIR=${pkgdir}/ install
+  make DESTDIR="${pkgdir}" install
   
-  rm -rf ${pkgdir}/usr/{include,share}
+  rm -rf "${pkgdir}"/usr/{include,share}
 }
 
