@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Mongotron
+Comment=Mongodb admin utility
+Exec=/opt/mongotron-bin/Mongotron
+Icon=mongotron-bin
+Categories=Database;
+Terminal=false
