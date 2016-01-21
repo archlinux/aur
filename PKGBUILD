@@ -1,7 +1,7 @@
 # Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
 
-pkgname=php-cs-fixer
-_pkgname=PHP-CS-Fixer
+_pkgname=php-cs-fixer
+pkgname=${_pkgname}-git
 pkgver=1.11.r121.g9a83ba0
 pkgrel=1
 pkgdesc="Analyzes some PHP source code and tries to fix coding standards issues (PSR-1 and PSR-2 compatible)."
@@ -10,22 +10,24 @@ license="MIT"
 arch=("any")
 depends=("php>=5.3.6")
 makedepends=("php-box" "php-composer" "git")
-source=("${pkgname}-${pkgver}"::"git+https://github.com/FriendsOfPHP/${_pkgname}")
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
+source=("${_pkgname}-${pkgver}"::"git+https://github.com/FriendsOfPHP/PHP-CS-Fixer")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}-${pkgver}"
+  cd "${_pkgname}-${pkgver}"
   git describe --long --tags | sed 's/\([^v-]*-g\)/r\1/;s/-/./g' | sed 's/^v//g'
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   php /usr/bin/composer install --prefer-dist --no-dev
   php -d phar.readonly=Off /usr/bin/php-box build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -D -m755 "${pkgname}.phar" "${pkgdir}/usr/bin/${pkgname}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -D -m755 "${_pkgname}.phar" "${pkgdir}/usr/bin/${_pkgname}"
 }
