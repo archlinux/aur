@@ -17,6 +17,7 @@ makedepends=(git lib32-qt4 pygtk mono intltool python2-dbus gtk-sharp-2 gobject-
 optdepends=('lib32-gtk3: gtk3 bindings'
             'lib32-gtk2: gtk2 bindings'
             'lib32-qt4: qt4 bindings')
+options=(!emptydirs)
 source=("git+https://github.com/lathiat/avahi#commit=$_commit")
 sha256sums=('SKIP')
 
