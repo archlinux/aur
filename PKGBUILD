@@ -1,4 +1,4 @@
-# Maintainer: Duncan <duncan@vtllf.org>
+# Maintainer: Chris Trotman <chris+aur@trotman.io>
 
 pkgname=terraform
 pkgver=0.6.9
