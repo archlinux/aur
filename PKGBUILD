@@ -2,7 +2,7 @@
 # Contributor: Kyle Keen <keenerd [at] gmail.com>, das-ich <das-ich [at] yandex.ru>
 pkgname=powerpanel
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="CyberPower UPS daemon"
 arch=("x86_64" "i686")
 url="http://www.cyberpowersystems.com"
@@ -41,9 +41,11 @@ sed -e 's#/etc#/etc/powerpanel#' -i ${pkgdir}/etc/pwrstatd.conf
 
 # Script command for event of power failure
 install -Dm755 script/pwrstatd-powerfail.sh ${pkgdir}/etc/powerpanel/pwrstatd-powerfail.sh
+sed -e 's#/etc#/etc/powerpanel#' -i ${pkgdir}/etc/powerpanel/pwrstatd-powerfail.sh
 
 # Script command for event of battery low
 install -Dm755 script/pwrstatd-lowbatt.sh ${pkgdir}/etc/powerpanel/pwrstatd-lowbatt.sh
+sed -e 's#/etc#/etc/powerpanel#' -i ${pkgdir}/etc/powerpanel/pwrstatd-lowbatt.sh
 
 # Script command for e-mail notification
 install -Dm755 script/pwrstatd-email.sh ${pkgdir}/etc/powerpanel/pwrstatd-email.sh
