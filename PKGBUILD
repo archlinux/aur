@@ -18,7 +18,7 @@ _use_gtk3=0            # If set 1, then build with GTK3 support, if set 0, then 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=49.0.2623.0
+pkgver=49.0.2623.13
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -85,6 +85,7 @@ source=("https://commondatastorage.googleapis.com/chromium-browser-official/chro
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-snapshot-toolchain-r1.patch'
         # Misc Patches
         'enable_vaapi_on_linux-r3.diff'
+        'chromium-widevine-r0.patch'
         # Patch from crbug (chromium bugtracker)
         )
 sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?marker=chromium-${pkgver}.tar.x | awk -v FS='<td>"' -v RS='"</td>' '$0=$2' | head -n1)"
@@ -99,6 +100,7 @@ sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?m
           '7b9c1a7e0e581413dbebb0e894f68ce2f2ba0e6a'
           # Misc Patches
           'aab4fa1f9aad1a80fdb35545eb74739a240fe0ae'
+          'fa9ff0ff9049784b4a1ec37292530ae61aece610'
           # Patch from crbug (chromium bugtracker)
           )
 options=('!strip')
@@ -439,8 +441,9 @@ prepare() {
   patch -p1 -i "${srcdir}/enable_vaapi_on_linux-r3.diff"
 
   # Patch from crbug (chromium bugtracker)
-  # fix the missing define (if not, fail build) (need upstream fix) # https://crbug.com/473866
-  sed '14i#define WIDEVINE_CDM_VERSION_STRING "The Cake Is a Lie"' -i "third_party/widevine/cdm/stub/widevine_cdm_version.h"
+  # https://crbug.com/473866
+  patch -p0 -i "${srcdir}/chromium-widevine-r0.patch"
+  sed 's|@WIDEVINE_VERSION@|The Cake Is a Lie|g' -i "third_party/widevine/cdm/stub/widevine_cdm_version.h"
 
   ##
 
