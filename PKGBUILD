@@ -1,7 +1,7 @@
 # Maintainer: Antoine Pierlot-Garcin <antoine@bokbox.com>
 pkgname=debsig-verify-git
 pkgver=0.13.r8.6104eef
-pkgrel=1
+pkgrel=2
 pkgdesc="Debian package signature verification tool"
 arch=('x86_64' 'i686' 'arm')
 url="https://anonscm.debian.org/cgit/dpkg/debsig-verify.git"
@@ -36,7 +36,9 @@ prepare() {
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	./autogen
-	./configure --prefix=/usr
+	./configure --prefix=/usr \
+	            --sysconfdir=/etc \
+	            --disable-silent-rules
 	make
 }
 
