@@ -2,7 +2,7 @@
 
 pkgname=easyterm
 _gitname=easyterm
-pkgver=r104.8622171
+pkgver=r105.35acd0c
 pkgrel=1
 pkgdesc='Serial Port Terminal Emulator'
 arch=('x86_64' 'i686')
@@ -12,7 +12,8 @@ license=('GPLv3')
 depends=()
 makedepends=('git' 'qt5-serialport' 'qt5-base')
 optdepends=()
-provides=()
+provides=(easyterm)
+replaces=(easyterm)
 conflicts=()
 
 source=('easyterm::git+http://git.code.sf.net/p/easyterm/code')
