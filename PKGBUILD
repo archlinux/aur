@@ -10,7 +10,7 @@ url="erlang.org"
 license=('APACHE')
 depends=('erlang-nox')
 source=()
-md5sums=()
+
 
 package() {
   install -dm755 "$pkgdir/usr/bin"
