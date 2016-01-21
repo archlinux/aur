@@ -3,7 +3,7 @@
 pkgname=python2-bitcointools
 pkgver=1.1.43
 pkgrel=1
-pkgdesc="Python Bitcoin Tools"
+pkgdesc="Python Bitcoin Tools (fork for OpenBazaar)"
 arch=('any')
 depends=('python2' 'python2-six')
 makedepends=('python2-setuptools')
@@ -34,7 +34,7 @@ package() {
   python2 setup.py install --root="$pkgdir" --optimize=1
 
   msg2 'Renaming pybtctool to pybtctool2...'
-  mv "$pkgdir/usr/bin/pybtctool" "$pkgdir/usr/bin/pybtctool2"
+  rm -rf "$pkgdir/usr/bin/"
 }
 
 md5sums=('aa92a040a06b5a6dbdec84fe5242ea06')
