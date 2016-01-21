@@ -25,7 +25,7 @@ source=("$pkgname"
         "$pkgname"_{16,22,24,32,48,64,128,256}.png
         'LICENSE')
 md5sums=('739c9f17f8c470c5b2a605b05b12da4f'
-         '3653b570fc38ce1f3a8c276c024c7c12'
+         '4fc3c9ab9b13fdc8b75db52d6c74a9c7'
          '6cd41f6e08eee03c6553603fb0b6ecd7'
          '227eac16d1e737bed42742840b950d41'
          '308eb2e0c509e12ecf33165ced9eef0d'
