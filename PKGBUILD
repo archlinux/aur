@@ -2,7 +2,7 @@
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 
 pkgname=nodejs-git
-pkgver=5.4.1.r29.ge855b59
+pkgver=5.5.0.r1.g2d46ea0
 pkgrel=1
 pkgdesc='Evented I/O for V8 javascript'
 arch=('i686' 'x86_64')
@@ -63,10 +63,10 @@ package() {
   make DESTDIR="$pkgdir" install
 
   # install docs as per user request
-  install -d "$pkgdir"/usr/share/doc/nodejs
+  install -d "$pkgdir"/usr/share/doc/nodejs-git
   cp -r doc/api/*.markdown \
-    "$pkgdir"/usr/share/doc/nodejs
+    "$pkgdir"/usr/share/doc/nodejs-git
 
   install -D -m644 LICENSE \
-    "$pkgdir"/usr/share/licenses/nodejs/LICENSE
+    "$pkgdir"/usr/share/licenses/nodejs-git/LICENSE
 }
