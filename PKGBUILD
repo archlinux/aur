@@ -3,8 +3,8 @@
 # Maintainer: Salan54 <salan at fremenil dot com>
 # Modified: 05/16/2013
 pkgname=overlook-fing
-pkgver=2.2
-pkgrel=3
+pkgver=3.0
+pkgrel=1
 _altpkgname=fing
 pkgdesc='The ultimate tool for network discovery and scanning'
 arch=('i686' 'x86_64')
@@ -12,16 +12,16 @@ url='http://www.overlooksoft.com/'
 license=('custom:Overlook Freeware license')
 depends=('boost-libs' 'openssl' 'zlib')
 options=(!strip)
-source_i686=("${pkgname}-${pkgver}.tgz::http://www.overlooksoft.com/packages/linux32/${pkgname}-${pkgver}.tgz"
+source_i686=("${pkgname}-${arch}-${pkgver}.tgz::https://www.fingbox.com/download?plat=lx32&ext=tgz"
     "fingbox-sentinel.service"
     "fingbox-sentinel.script"
     )
-md5sums_i686=('fa523c841daa6963fda51a32b5972bcd' '013488a7afe3048524df6b7527faae69' '95dbef149b9d3a9ea3bac0bd0c77b343')
-source_x86_64=("${pkgname}-${pkgver}.tgz::http://www.overlooksoft.com/packages/linux64/${pkgname}-${pkgver}.tgz"
+md5sums_i686=('152c9d622736b2d493ec5dfbe77b8dd7' '013488a7afe3048524df6b7527faae69' '95dbef149b9d3a9ea3bac0bd0c77b343')
+source_x86_64=("${pkgname}-${arch}-${pkgver}.tgz::https://www.fingbox.com/download?plat=lx64&ext=tgz"
     "fingbox-sentinel.service"
     "fingbox-sentinel.script"
     )
-md5sums_x86_64=('3e599f665442631657ebc8bef74d98e1' '013488a7afe3048524df6b7527faae69' '95dbef149b9d3a9ea3bac0bd0c77b343')
+md5sums_x86_64=('0350ae0d059856ca4e2d417cd655db22' '013488a7afe3048524df6b7527faae69' '95dbef149b9d3a9ea3bac0bd0c77b343')
 
 package() {
   cd "$srcdir"
@@ -43,4 +43,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et ft=sh tw=100:
-

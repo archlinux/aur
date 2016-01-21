@@ -1,7 +1,7 @@
 pkgbase = overlook-fing
 	pkgdesc = The ultimate tool for network discovery and scanning
-	pkgver = 2.2
-	pkgrel = 3
+	pkgver = 3.0
+	pkgrel = 1
 	url = http://www.overlooksoft.com/
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,18 @@ pkgbase = overlook-fing
 	depends = openssl
 	depends = zlib
 	options = !strip
+	source_i686 = overlook-fing-i686-3.0.tgz::https://www.fingbox.com/download?plat=lx32&ext=tgz
+	source_i686 = fingbox-sentinel.service
+	source_i686 = fingbox-sentinel.script
+	md5sums_i686 = 152c9d622736b2d493ec5dfbe77b8dd7
+	md5sums_i686 = 013488a7afe3048524df6b7527faae69
+	md5sums_i686 = 95dbef149b9d3a9ea3bac0bd0c77b343
+	source_x86_64 = overlook-fing-i686-3.0.tgz::https://www.fingbox.com/download?plat=lx64&ext=tgz
+	source_x86_64 = fingbox-sentinel.service
+	source_x86_64 = fingbox-sentinel.script
+	md5sums_x86_64 = 0350ae0d059856ca4e2d417cd655db22
+	md5sums_x86_64 = 013488a7afe3048524df6b7527faae69
+	md5sums_x86_64 = 95dbef149b9d3a9ea3bac0bd0c77b343
 
 pkgname = overlook-fing
 
