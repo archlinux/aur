@@ -76,7 +76,7 @@ package() {
 
   # Icons
   rm chrome-linux/product_logo_48.png
-  for i in 16 22 24 32 36 48 64 128 256; do
+  for i in 16 22 24 32 48 64 128 256; do
     install -Dm644 ${pkgname}_${i}.png "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png
   done
 
