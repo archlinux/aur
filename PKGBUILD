@@ -11,7 +11,7 @@ license=('custom')
 depends=('minetest')
 makedepends=('git')
 provides=('minetest-mod-weather')
-install=('minetest-mod-weather-git.install)
+install=('minetest-mod-weather-git.install')
 source=("$_gitname::git://github.com/Jeija/minetest-mod-weather.git")
 md5sums=('SKIP')
 
