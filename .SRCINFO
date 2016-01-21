@@ -1,0 +1,18 @@
+pkgbase = bitscope-logic
+	pkgdesc = Bitscope logic software for oscilloscopes
+	pkgver = 1.2.FC20C
+	pkgrel = 1
+	url = http://www.bitscope.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = atk
+	depends = gdk-pixbuf2
+	depends = gtk2
+	depends = pango
+	depends = cairo
+	source = http://www.bitscope.com/download/files/bitscope-logic_1.2.FC20C_i386.deb
+	sha1sums = 9a6893080f144ed9b13f433cd07f68fb48ecdd7c
+
+pkgname = bitscope-logic
+
