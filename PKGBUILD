@@ -4,10 +4,10 @@
 # Maintainer: saxonbeta <saxonbeta at gmail>
 # vim:set ts=2 sw=2 et:
 pkgname=libsvm
-pkgver=3.20
-_pkgver=320
+pkgver=3.21
+_pkgver=321
 _pyver=3.5
-pkgrel=3
+pkgrel=1
 pkgdesc="A library for Support Vector Machines classification, include binaries and python bindings."
 arch=(x86_64 i686)
 url="http://www.csie.ntu.edu.tw/~cjlin/libsvm/"
@@ -17,7 +17,7 @@ optdepends=('python: bindings for latest python version'
 'python2: bindings for python 2'
 'java-environment: bindings for java' )
 source=("https://github.com/cjlin1/libsvm/archive/v$_pkgver.tar.gz")
-sha256sums=('e4be7fc8d2e7cb65feae4d6387967484c01c9dc818e7dfff515f663728a6f2ca') 
+sha256sums=('7f494b23f8a4c9fff2643a0805bbd3dad688854cc488c075ec3909bb346b6685')
 
 build() {
   cd "$srcdir/$pkgname-$_pkgver"
