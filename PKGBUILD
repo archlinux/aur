@@ -4,7 +4,7 @@ pkgname=('zarafa-webaccess-mdm')
 groups=('zarafa')
 _pkgname=('mdm')
 pkgver=2.1
-pkgrel=3
+pkgrel=4
 pkgdesc=('Mobile Device Management plugin for Zarafa Webaccess')
 arch=('any')
 url=('https://community.zarafa.com/mod/community_plugins/download.php?release_guid=9498')
