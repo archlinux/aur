@@ -1,8 +1,8 @@
 # Maintainer: Joe Davison <joe@warhaggis.com>
 
 pkgname=lgogdownloader-git
-pkgver=20160120
-pkgrel=2
+pkgver=2.26.r6.g14d9d3d
+pkgrel=1
 pkgdesc="An open source downloader for GOG.com games, uses the GOG.com API (git version)"
 url="http://www.gog.com/en/forum/general/lgogdownloader_gogdownloader_for_linux"
 arch=(i686 x86_64)
@@ -39,6 +39,7 @@ else
 fi
 
 pkgver() {
+	cd $srcdir/${_gitname}
 	git describe --long | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
