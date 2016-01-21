@@ -3,14 +3,15 @@
 # Contributor: Bill Durr <billyburly [at] gmail [dot] com>
 pkgname=crashplan
 pkgver=4.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="An online/offsite backup solution"
 url="http://www.crashplan.com"
 arch=('i686' 'x86_64')
 license=('custom')
 depends=('bash' 'java-runtime-headless')
 makedepends=('cpio')
-optdepents=('java-runtime - For Crashplan GUI')
+optdepents=('java-runtime - For Crashplan GUI'
+            'gtk2 - For Crashplan GUI')
 backup=('opt/crashplan/bin/run.conf'
 	'opt/crashplan/conf/my.service.xml'
 	'opt/crashplan/conf/service.model')
