@@ -5,10 +5,10 @@ post_install() {
   chmod 700 /var/lib/knot
 
   if [ -r /etc/knot/knot.conf -a ! -r /etc/knot/knot.conf.pacorig ]; then
-    knot1to2 --in /etc/knot/knot.conf --out /etc/knot/knot.conf.pacnew
+    /usr/lib/knot/knot1to2 --in /etc/knot/knot.conf --out /etc/knot/knot.conf.pacnew
     mv /etc/knot/knot.conf /etc/knot/knot.conf.pacorig
     mv /etc/knot/knot.conf.pacnew /etc/knot/knot.conf
-    echo 'warning: Old Knot DNS 1.6 configuration has beend saved as /etc/knot/knot.conf.pacorig'
+    echo 'warning: Old Knot DNS 1.6 configuration has been saved as /etc/knot/knot.conf.pacorig'
   fi
 }
 
