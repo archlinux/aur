@@ -1,7 +1,7 @@
 # Maintainer: Mike Cooper (mythmon) <mythmon@gmail.com>
 
 pkgname=grid-cartographer
-pkgver=3.0.6
+pkgver=3.1.2
 pkgrel=1
 pkgdesc='An RPG mapping tool.'
 url='http://www.davidwaltersdevelopment.com/tools/gridcart/'
@@ -9,7 +9,7 @@ license=('custom')
 _tarname="grid_cartographer_v${pkgver//./_}"
 source=("http://www.davidwaltersdevelopment.com/tools/gridcart/files/${_tarname}.tar.gz"
         'gridcart')
-sha256sums=('d62c35cc11b4dae1be61e3835c0a9a51d6feb36e4032b96ce4ec72d9df6f727f'
+sha256sums=('6c003521da8a9b56f8930512d0ba5b4079472f1ddebe7cd5ae9d042516a2978b'
             'f2f1d3cab1a7d571945f3eca34b6371c76026ab333cd68926c1cfb84369bc209')
 arch=('x86_64')
 depends=(libpng12
@@ -24,5 +24,5 @@ package() {
     # Install the program.
     install -Dm755 GridCart64 "${pkgdir}/opt/gridcart/GridCart64"
     unzip base0.zip -d "${pkgdir}/opt/gridcart/"
-    install -Dm644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
+    install -Dm644 Documents/license.txt "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
 }
