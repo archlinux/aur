@@ -1,9 +1,10 @@
 #Maintainer: Bhoppi Chaw <bhoppi#outlook,com>
 
+_pkgbase=noto-fonts
 pkgname=noto-fonts-unhinted
 pkgver=20151224
 _commit=3f1dc1
-pkgrel=1
+pkgrel=2
 pkgdesc='unhinted complement for noto-fonts'
 arch=(any)
 url='http://www.google.com/get/noto'
@@ -14,7 +15,7 @@ install="$pkgname.install"
 
 build()
 {
-    cd $pkgbase-*/hinted
+    cd $_pkgbase-*/hinted
     ls *.ttf |sort -o ../hinted.txt
     cd ../unhinted
     ls *.ttf |sort -o ../unhinted.txt
@@ -24,7 +25,7 @@ build()
 
 package()
 {
-    cd $pkgbase-*
+    cd $_pkgbase-*
     install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
     mkdir -p "$pkgdir"/usr/share/fonts/noto/unhinted
     cd unhinted
