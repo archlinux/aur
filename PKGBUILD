@@ -4,7 +4,7 @@
 
 pkgname=pstate-frequency
 pkgdesc="Easily control Intel p-state driver"
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('git')
@@ -18,7 +18,7 @@ source=(
         "${url}"
         "00-fix-prefix.patch")
 sha256sums=(
-        '44d372769da1e7c28ca1222d3f56b167311246f30fb9640fb8c5ad771c57430c'
+        '54993857a5bd7494ad3cd6a7e37b19bc8095e3308f3160ce066a3f832640e426'
         'e5423df20c03ef19448a78a1ae39e630d90f63c6c4e0962296ad292665575f0d')
 
 prepare() {
