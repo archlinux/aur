@@ -23,5 +23,5 @@ build() {
 
 package() {
   cd $GOPATH
-  install -Dm755 "$srcdir/go/bin/client" /usr/bin/goploader
+  install -Dm755 "$srcdir/go/bin/client" "$pkgdir/usr/bin/goploader"
 }
