@@ -1,22 +1,45 @@
-post_install()
+_get_timer_status()
 {
-	if [ ! -h '/etc/systemd/system/multi-user.target.wants/update-pacman-mirrorlist.timer' ]; then
-		echo 'You most likely want to enable automatic mirrorlist updates by running the following as a privileged user:
-systemctl enable update-pacman-mirrorlist.timer
-systemctl start update-pacman-mirrorlist.timer'
+	if systemctl is-enabled update-pacman-mirrorlist.timer -q; then
+		_enabled=true
+	else
+		_enabled=false
+	fi
+	if systemctl is-active update-pacman-mirrorlist.timer -q; then
+		_active=true
+	else
+		_active=false
 	fi
 }
 
-post_upgrade()
+post_install()
 {
-	post_install
+	_get_timer_status
+	if ! $_enabled || ! $_active; then
+		echo 'You most likely want to enable automatic mirrorlist updates by running the following as a privileged user:'
+		if ! $_enabled && ! $_active; then
+			echo 'systemctl enable update-pacman-mirrorlist.timer --now'
+		else
+			if ! $_enabled; then
+				echo 'systemctl enable update-pacman-mirrorlist.timer'
+			fi
+			if ! $_active; then
+				echo 'systemctl start update-pacman-mirrorlist.timer'
+			fi
+		fi
+	fi
 }
 
-post_remove()
+pre_remove()
 {
-	if [ -h '/etc/systemd/system/multi-user.target.wants/update-pacman-mirrorlist.timer' ]; then
-		echo 'You most likely want to disable automatic mirrorlist updates by running the following as a privileged user:
-systemctl disable update-pacman-mirrorlist.timer
-systemctl stop update-pacman-mirrorlist.timer'
+	_get_timer_status
+	if $_enabled || $_active; then
+		echo 'You most likely want to disable automatic mirrorlist updates by running the following as a privileged user:'
+		if $_enabled; then
+			echo 'rm /etc/systemd/system/multi-user.target.wants/update-pacman-mirrorlist.timer'
+		fi
+		if $_active; then
+			echo 'systemctl stop update-pacman-mirrorlist.timer'
+		fi
 	fi
 }

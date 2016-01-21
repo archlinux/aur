@@ -1,17 +1,18 @@
 # Maintainer: Wyatt J. Brown <sushidudeteam@gmail.com>
 pkgname=update-pacman-mirrorlist
-pkgver=20160108
+pkgver=20160121
 pkgrel=1
 pkgdesc='Automatically updates the pacman mirrorlist.'
 arch=('any')
 url='https://aur.archlinux.org/packages/update-pacman-mirrorlist/'
-license=('BSD')
+license=('custom:Public Domain')
 depends=('curl')
+optdepends=('systemd: timer for automatic mirrorlist updates')
 backup=('etc/update-pacman-mirrorlist')
 install=install
 source=(install LICENSE update-pacman-mirrorlist{,.{config,service,timer}})
-sha512sums=('c2a4e59eb361ca119614f6ae34e073357f82b47cca3ee2a4bc3fc2bbc74953a006516f35765ae478bad2b9fb524295fe4e26c8cd660fad9723967b160c318c77'
-            '74fe42bbc7c50c09d8694f8ba98c81932e27c2ea43d3d49add6a82e9f2e2f6b25c039a39f7c477d7012bdbcdcef03443249a06e6acec9ab9aafc5d72df3d8c07'
+sha512sums=('409104cf5b1157b5a69b139bd021eae3e0b5ead5b8dc7fb6228d5f3040e0f91caa8abd861c41cd83c22701fa57760a38559c041c3fba9110d6463cd47c3c83d1'
+            '57f083acfdb3b05be097f27d8df8afb77820c61ca138f097f22564d3e10dd0b713aaf02e421d6ab8223b6fb462ad16833ce08a0f10ed17a0d3a82f34b9494df0'
             'a77dbca45fb7d22621984ac9f288e0fa63d90465c23fffedb740836b7267a489827d344d9f3de805f565cc2c01ebae54eee9d977df19a8ecb7d27c1c1a1533ca'
             'cf2d28b08afe85e43510013697d1dfb74b56094c8050fce1802f3a80c66b7f7092068c13d849318783cef2f6a96712935014abd6bd783f19507028aec65b6299'
             'e9c2b30d0c838adc3c3069677c86fa8cb22ac401067126ae44b131db4a78edb2d550c02d8490e3bded4d7111a4e72d5fd096a8e98eb54a831f89ef283bc291fc'
