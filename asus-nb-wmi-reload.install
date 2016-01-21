@@ -1,0 +1,27 @@
+post_install() {
+	systemctl is-enabled asus-nb-wmi-reload.service &> /dev/null
+	if [ $? -eq 0 ]; then
+            echo 'Service is enabled already'
+        else
+            echo 'Enabling service'
+            systemctl enable asus-nb-wmi-reload.service &> /dev/null
+	fi
+}
+
+post_upgrade() {
+	systemctl is-enabled asus-nb-wmi-reload.service &> /dev/null
+	if [ $? -eq 0 ]; then
+            echo 'Service is enabled already'
+        else
+            echo 'Enabling service'
+            systemctl enable asus-nb-wmi-reload.service &> /dev/null
+	fi
+	systemctl daemon-reload
+}
+
+pre_remove() {
+	systemctl is-enabled asus-nb-wmi-reload.service &> /dev/null
+	if [ $? -eq 0 ]; then
+            systemctl disable asus-nb-wmi-reload.service &> /dev/null
+	fi
+}
