@@ -1,0 +1,18 @@
+pkgbase = bitscope-dso
+	pkgdesc = Bitscope dso software for oscilloscopes
+	pkgver = 2.9.FE22H
+	pkgrel = 1
+	url = http://www.bitscope.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = atk
+	depends = gdk-pixbuf2
+	depends = gtk2
+	depends = pango
+	depends = cairo
+	source = http://www.bitscope.com/download/files/bitscope-dso_2.9.FE22H_i386.deb
+	sha1sums = 8cdd8f84a87cdeb19cf6ccee9527d267845712d0
+
+pkgname = bitscope-dso
+
