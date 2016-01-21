@@ -3,7 +3,7 @@
 
 _pkgname=https-everywhere
 pkgname=firefox-extension-${_pkgname}
-pkgver=5.1.2
+pkgver=5.1.3
 pkgrel=1
 _file=376291
 pkgdesc="Plugin for firefox which ensures you are using https whenever it's possible."
