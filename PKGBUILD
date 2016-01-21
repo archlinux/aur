@@ -2,7 +2,7 @@
 
 pkgname=gincamalarm
 pkgver=0.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Gin server to manage camera with motion"
 arch=('any')
 url="https://github.com/Chipsterjulien/gincamalarm"
