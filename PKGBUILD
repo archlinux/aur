@@ -10,7 +10,7 @@ makedepends=('nss' 'libstatgrab' 'net-snmp' 'libqb')
 depends=('nss' 'libstatgrab' 'net-snmp' 'libqb')
 provides=('corosync=2.1.0')
 conflicts=('corosync1')
-source=("http://corosync.org/download/corosync-$pkgver.tar.gz"
+source=("http://build.clusterlabs.org/corosync/releases/corosync-$pkgver.tar.gz"
 	"corosync.service")
 
 build() {
@@ -35,5 +35,6 @@ package() {
   	make DESTDIR="${pkgdir}" install
 
 }
+
 md5sums=('8894f00d499e0755467b381e6346f9ff'
          '9ce64dfbc32cdcf7ad2c33385aab1401')
