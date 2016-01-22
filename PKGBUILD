@@ -11,7 +11,7 @@
 
 pkgname=go-git
 epoch=2
-pkgver=1.5beta2.r14.gaadd84e
+pkgver=1.6beta2.r50.g1b6d55a
 pkgrel=1
 provides=(go=1.5)
 conflicts=('go' 'go-hg')
