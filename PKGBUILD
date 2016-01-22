@@ -8,7 +8,8 @@ pkgdesc='Minetest Animals modpack (MOBF example mobs)'
 arch=('any')
 url="https://github.com/sapier/animals_modpack"
 license=('custom')
-depends=('minetest')
+depends=('minetest' 'minetest-mod-adv_spawning-git' 'minetest-mod-animalmaterials-git' 'minetest-mod-factions-git' 
+	'minetest-mod-intllib-git' 'minetest-mod-mobf_core-git')
 makedepends=('git')
 provides=$_gitname                 
 install=$pkgname.install 
