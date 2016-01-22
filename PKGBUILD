@@ -1,7 +1,7 @@
 # Maintainer: Gertjan Halkes <arch at ghalkes dot nl>
 pkgname=libt3widget
 pkgver=0.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++ terminal dialog toolkit."
 arch=('x86_64' 'i686')
 url="http://os.ghalkes.nl/t3/$pkgname.html"
