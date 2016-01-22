@@ -12,16 +12,16 @@ depends=('php')
 makedepends=("php-box" "php-composer" "git")
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}-${pkgver}"::"git+https://github.com/drush-ops/drush.git")
+source=("${_pkgname}"::"git+https://github.com/drush-ops/drush.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}-${pkgver}"
+  cd "${_pkgname}"
   git describe --abbrev=0 --tags
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}"
   php /usr/bin/composer install --no-dev
   cp box.json.dist box.json
   php -d phar.readonly=Off /usr/bin/php-box build
@@ -32,7 +32,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}"
   install -D -m755 "${_pkgname}.phar" "${pkgdir}/usr/bin/${_pkgname}"
   install -D -m644 "examples/example.aliases.drushrc.php" "${pkgdir}/etc/drush/aliases.drushrc.php"
   install -D -m644 "examples/example.drush.ini" "${pkgdir}/etc/drush/drush.ini"
