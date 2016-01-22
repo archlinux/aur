@@ -1,12 +1,12 @@
-# Maintainer: L. Bradley LaBoon <me@bradleylaboon.com>
+# Maintainer: Ryan Hammett <larke12+aur616@linkshideaway.com>
 pkgname=twiccian
-pkgver=0.01
+pkgver=1.0
 pkgrel=1
 pkgdesc="Twitch streaming client for Linux"
 url="https://github.com/octotep/twiccian"
 license=('GPL3')
 arch=('i686' 'x86_64')
-depends=('mpv' 'youtube-dl' 'qt5-base' 'qt5-webengine' 'qt5-webkit' 'qt5-quickcontrols' 'rapidjson')
+depends=('qt5-base' 'qt5-quickcontrols' 'qt5-webengine' 'qt5-webkit' 'qt5-graphicaleffects' 'mpv' 'rapidjson' 'youtube-dl' 'git' 'go')
 makedepends=('git' 'go')
 source=(
 	"twiccian::git://github.com/octotep/twiccian.git"
@@ -25,6 +25,7 @@ build() {
 	cd ../twicciand/
 	export GOPATH=$PWD
 	go get "github.com/walle/cfg"
+	go get "github.com/gorilla/handlers"
 	go get "github.com/gorilla/websocket"
 	go get "github.com/sorcix/irc"
 	go build
