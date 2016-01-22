@@ -1,12 +1,12 @@
 pkgbase=cgal-swig-bindings
 pkgname=('python-cgal' 'java-cgal')
-pkgver=r480.4122805
+pkgver=r495.e5c1bc5
 pkgrel=1
 pkgdesc='CGAL bindings using SWIG '
 arch=('i686' 'x86_64')
 license=('custom: Boost')
-url="https://github.com/xantares/nfc-bindings"
-makedepends=('cmake' 'swig' 'eigen' 'python' 'java-runtime')
+url="https://github.com/CGAL/cgal-swig-bindings"
+makedepends=('cgal' 'cmake' 'swig' 'eigen' 'python' 'java-runtime')
 source=("git+https://github.com/CGAL/cgal-swig-bindings.git")
 md5sums=('SKIP')
 
