@@ -2,7 +2,7 @@
 
 pkgname=python-cliapp
 pkgname_upstream=pyCLIApp
-pkgver=0.1
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A Python module for command line applications"
 arch=(any)
@@ -11,7 +11,7 @@ license=("BSD")
 depends=("python")
 makedepends=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/malte70/$pkgname_upstream/archive/$pkgver.tar.gz")
-sha256sums=('5765376696961a4257c6d5c0f5cd01154b3cb115ecb155c4b9edf8853c9755b7')
+sha256sums=('803ff0a287a155c2d6696873fda692c652bed08fe097510035279de900b2d57e')
 
 package() {
 	cd "${srcdir}/$pkgname_upstream-${pkgver}"
