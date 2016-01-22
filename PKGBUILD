@@ -5,13 +5,13 @@ pkgname=spotify-adkiller
 source=("spotify-adkiller::git+http://github.com/SecUpwN/Spotify-AdKiller#branch=master")
 url="https://github.com/SecUpwN/Spotify-AdKiller"
 pkgver=10
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="Your Party with Spotify - but without ads!"
 arch=('any')
 makedepends=('git')
 license=('GPL3')
-depends=("xorg-xprop" "libpulse" "libnotify" "pulseaudio")
+depends=("xorg-xprop" "libpulse" "libnotify" "pulseaudio" "xdotool")
 md5sums=('SKIP')
 
 package() {
