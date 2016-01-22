@@ -11,6 +11,8 @@ url="http://drupalconsole.com/"
 license=('GPL')
 depends=('php')
 makedepends=("php-box" "php-composer" "git")
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
 install=("${_pkgname}.install")
 source=("${_pkgname}"::"git+https://github.com/hechoendrupal/DrupalConsole.git")
 sha512sums=('SKIP')
