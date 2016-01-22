@@ -2,18 +2,18 @@
 # Maintainer: The Lemon Man
 
 pkgname=ldm
-pkgver=0.6.3
+pkgver=0.7
 pkgrel=2
 pkgdesc="A lightweight device mounter"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/LemonBoy/ldm"
 license=('MIT')
-depends=('udev' 'glib2')
+depends=('udev' 'util-linux' 'glib2')
 provides=('ldm')
 conflicts=('ldm-git')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz"::"http://github.com/lemonboy/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('7e5e2b406bc627d4df7676b470ead6af75739ce96dc283e25467bb123b2717d9')
+sha256sums=('fb464bffec5b7d0680009b43a95881e8c02ec07e84d6f7fb05206d666dc44bdb')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
