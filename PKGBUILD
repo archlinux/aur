@@ -2,29 +2,34 @@
 # Contributor: b.klettbach@gmail.com
 
 pkgname=multimc5
-pkgver=0.4.9
+pkgver=0.4.10
 __pkgver_libnbtplusplus=2.3.1-alpha
 pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
 url="http://multimc.org/"
 license=('Apache')
-depends=('qt5-svg' 'java-environment' 'xdg-utils')
-makedepends=('git' 'cmake' 'qt5-tools' 'qt5-x11extras' 'java-environment'
-	     'zlib')
+depends=('zlib' 'libgl' 'qt5-base' 'qt5-x11extras' 'java-runtime' 'qt5-svg')
+makedepends=('git' 'patch' 'cmake' 'qt5-tools' 'qt5-x11extras' 'java-environment')
 optdepends=('mcedit: Allows editing of minecraft worlds')
 conflicts=('multimc5-git')
 source=("https://github.com/MultiMC/MultiMC5/archive/${pkgver}.tar.gz"
   "https://github.com/MultiMC/libnbtplusplus/archive/v${__pkgver_libnbtplusplus}.tar.gz"
   'multimc5.sh'
   'multimc5.desktop'
+  'cmake-patch.diff'
 )
-sha512sums=('0b5fc69c22f0cd762d6c4225078af1e38b00b583a9c231cc680a724394c88624b4d5602573090036ff1198bc656356aaad2f94d0f76c5cbe8f985cf8ba155cde'
+sha512sums=('d496c5b96e1d2876d44a30316cd2f72db1720f9fba95092dbe0b633d48c337b35d9b9a3b92a8747cd3a72902a78a65b9bf3ff30843a414775667fc9ca77d270d'
             '5e7a85275b7452ce1f507273e1ee264df8ba6536c431df8d223f2512b4823417f9699c1403108468c066c0f7f9bd359bce27cd3a33f35726fb6ba1a2d9b8e4de'
-            '6eb9476c8350fb8055238afc4d62f89897ea6d255a13edde88b76a67d021d88266d86236ef9ea9ebe82729b92cb7d8a9a66114de7c6b31666a82654dfe672049'
-            'a6712d0e84acc719ed1aff740717add44202f88cb42a0b7a3157108b73a1009ac7edd325f75d372e0a63617f40eb614d55fb4e24e5c1fb8957cd280486070675')
+            '6f891ba6b1d940297ffd1b6007f65ce64abe4f6c7bd8ce7d5204fe9886f006f5080c2cb26c7adfaf00e281f92342e5280f2c675b74c3e9b6f5a769169d56dd26'
+            'a6712d0e84acc719ed1aff740717add44202f88cb42a0b7a3157108b73a1009ac7edd325f75d372e0a63617f40eb614d55fb4e24e5c1fb8957cd280486070675'
+            'af4e13cedcf275ca1f95643e88162b741256309f0e6af3629762f204093946cc972a9345f838035777a1e9a64ac0f7893266a43631b9c21967c1b237264ec646')
 
 
+prepare() {
+  cd "${srcdir}/MultiMC5-${pkgver}"
+  patch -p1 -i "${srcdir}/cmake-patch.diff"
+}
 
 build() {
   rmdir "${srcdir}/MultiMC5-${pkgver}/depends/libnbtplusplus" | echo "libnbtplusplus has data"
@@ -33,14 +38,14 @@ build() {
   #sed -i '/add_subdirectory(mmc_updater)/d' CMakeLists.txt
   mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX="/usr/lib/multimc5" $srcdir/MultiMC5-${pkgver}
+  cmake -DCMAKE_INSTALL_PREFIX="/usr/lib/multimc5" -DNBT_USE_ZLIB=ON $srcdir/MultiMC5-${pkgver}
   make
 }
 
 package() {
   cd "$srcdir/MultiMC5-${pkgver}/build"
-  #make DESTDIR="${pkgdir}" install
-  install -D MultiMC "${pkgdir}/usr/lib/multimc5/MultiMC5"
+  make DESTDIR="${pkgdir}" install
+  #install -D MultiMC "${pkgdir}/usr/lib/multimc5/MultiMC5"
   install -D libMultiMC_logic.so \
     "${pkgdir}/usr/lib/multimc5/bin/libMultiMC_logic.so"
   install -D librainbow.so "${pkgdir}/usr/lib/multimc5/bin/librainbow.so"
