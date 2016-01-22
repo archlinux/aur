@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Armitage
+GenericName=Vulernbility Exploitation Toolkit
+Exec=armitage
+Terminal=false
+Icon=/usr/share/icons/metasploit.png
+Type=Application
+Categories=Application;Network;Security
+Comment=A GUI front end for MetaSploit
