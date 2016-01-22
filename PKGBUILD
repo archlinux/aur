@@ -1,6 +1,6 @@
 # Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
 pkgname=pebble-tool-git
-pkgver=v4.0
+pkgver=v4.0.1
 pkgrel=1
 pkgdesc="The pebble tool that goes with libpebble2"
 arch=('any')
@@ -40,6 +40,7 @@ prepare() {
   cd "$srcdir/pebble-tool"
   sed -i 's/==.*$//' requirements.txt
   sed -i 's/==.*'\'',$/'\'',/' setup.py
+  sed -i 's/==.*'\'')$/'\'')/' setup.py
 }
 
 package() {
