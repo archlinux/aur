@@ -2,7 +2,7 @@
 
 _gitname=libertine
 pkgname=otf-libertine-git
-pkgver=20150701
+pkgver=6.1_0_g9ab9652
 pkgrel=1
 pkgdesc="a fork of the Linux Libertine and Linux Biolinum fonts with bugfixes and an OpenType math companion"
 arch=('any')
