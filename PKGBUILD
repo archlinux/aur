@@ -9,8 +9,6 @@ arch=('i686' 'x86_64')
 license=('GPL')
 depends=('glibc')
 makedepends=('git' 'help2man')
-provides=('iprange')
-conflicts=('iprange')
 source=("https://github.com/firehol/iprange/archive/v$pkgver.tar.gz")
 
 build() {
