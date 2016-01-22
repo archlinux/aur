@@ -2,7 +2,7 @@
 
 pkgname=ilbc
 pkgver=rfc3951
-pkgrel=6
+pkgrel=7
 arch=(i686 x86_64)
 pkgdesc="A free speech codec suitable for robust VoIP"
 url="http://www.ilbcfreeware.org/"
@@ -11,11 +11,11 @@ depends=('glibc')
 makedepends=('awk')
 options=(strip)
 source=(http://www.ietf.org/rfc/rfc3951.txt
-  http://www.ilbcfreeware.org/documentation/extract-cfile.txt
+  extract-cfile.awk
   Makefile
   gips_iLBClicense.txt)
 md5sums=('984affd9bf2053064d744a2ccec82289'
-         '25f44e2e725ed2a7504238aaeb4a89e7'
+         '24b50efef208a60dd1269b227b939a6a'
          '833675ff45c04be62bc9d6b2fb6fa508'
          'b738390e4108560b8b593454607ddc2b')
 
@@ -24,7 +24,7 @@ prepare() {
   mkdir ${srcdir}/${pkgname}-${pkgver}
   cp ${srcdir}/Makefile ${srcdir}/${pkgname}-${pkgver}
   cd ${srcdir}/${pkgname}-${pkgver}
-  awk -f ${srcdir}/extract-cfile.txt ${srcdir}/rfc3951.txt  
+  awk -f ${srcdir}/extract-cfile.awk ${srcdir}/rfc3951.txt  
 }
 
 build() {
