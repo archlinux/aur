@@ -3,7 +3,7 @@
 
 pkgname=jlink-software-and-documentation
 pkgver=5.10h
-pkgrel=6
+pkgrel=7
 pkgdesc="Segger JLink software & documentation pack for Linux"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -54,9 +54,6 @@ package(){
     install -Dm755 libjlinkarm.so.*.* "${pkgdir}/usr/lib/"
     ln -s "/usr/lib/libjlinkarm.so.*.*" "${pkgdir}/usr/lib/libjlinkarm.so.${pkgver:0:1}"
 
-    # nrfjprog hardcoded libjlinkarm.so* to be in /opt/SEGGER/JLink (will be fixed in later versions)
-    ln -s "/usr/lib/libjlinkarm.so"* "${pkgdir}/opt/SEGGER/JLink"
-
     for f in J*; do
         ln -s /opt/SEGGER/JLink/"$f" "${pkgdir}/usr/bin"
     done
@@ -64,4 +61,8 @@ package(){
     for f in Doc/*; do
         ln -s /opt/SEGGER/JLink/"$f" "${pkgdir}/usr/share/doc/${pkgname}"
     done
+
+    # nrfjprog hardcoded libjlinkarm.so* to be in /opt/SEGGER/JLink (will be fixed in later versions)
+    ln -s "/usr/lib/libjlinkarm.so.${pkgver:0:1}" "${pkgdir}/opt/SEGGER/JLink/libjlinkarm.so.${pkgver:0:1}"
+
 }
