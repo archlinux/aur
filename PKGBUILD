@@ -1,7 +1,7 @@
 # Maintainer: Gertjan Halkes <arch at ghalkes dot nl>
 pkgname=tilde
 pkgver=0.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="An intuitive text editor for the terminal."
 arch=('x86_64' 'i686')
 url="http://os.ghalkes.nl/$pkgname.html"
