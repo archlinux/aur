@@ -1,7 +1,7 @@
 # Maintainer: Johannes Maibaum <jmaibaum@gmail.com>
 pkgname=otf-libertinus
 _pkgname=${pkgname/otf-/}
-pkgver=6.0
+pkgver=6.1
 pkgrel=1
 pkgdesc="The Libertinus font family. A fork of the Linux Libertine and Linux Biolinum fonts with bugfixes and an OpenType math companion."
 depends=('fontconfig' 'xorg-mkfontdir')
@@ -11,7 +11,7 @@ license=('custom: OFL')
 url="https://github.com/khaledhosny/libertinus"
 install=$pkgname.install
 source=("https://github.com/khaledhosny/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('f73d0c1b3a64aee4ad1473458e69321d4c5bb506fca5d7975f712f9ce0f50379')
+sha256sums=('2c5a32e08d7601ffdc86e52d69dc1d19acfd118ec5bb549073a3cbeb969e74be')
 
 package() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
