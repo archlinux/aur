@@ -10,7 +10,7 @@ license=("CCPL:cc-by-sa-4.0")
 makedepends=('subversion')
 depends=('lxqt-config')
 _svnmod="simple"
-_svntrunk=https://github.com/sixsixfive/misc/trunk/themes/lxqt/$_svnmod
+_svntrunk=https://github.com/sixsixfive/old-themes/trunk/LXQt/$_svnmod
 
 build() {
 	cd "${srcdir}"
