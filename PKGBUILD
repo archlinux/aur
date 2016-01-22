@@ -1,9 +1,10 @@
 # Maintainer: Alexis Polti <ArchSegger at gmail dot com>
+# Maintainer: pzl <alsoelp at gmail dot com>
 
 pkgname=jlink-systemview
 pkgver=2.28
-pkgrel=1
-pkgdesc="Official Segger JLink SystemView for Linux"
+pkgrel=2
+pkgdesc="Segger SystemView for Linux"
 arch=('i686' 'x86_64')
 license=('custom')
 groups=('jlink-tools')
