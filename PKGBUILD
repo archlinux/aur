@@ -3,7 +3,7 @@
 
 pkgname=jlink-software-and-documentation
 pkgver=5.10h
-pkgrel=3
+pkgrel=4
 pkgdesc="Segger JLink software & documentation pack for Linux"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -17,8 +17,8 @@ md5sums_i686=('ef6add335b741a17991c849c1afbf108')
 md5sums_x86_64=('4662bd0b5c12595a0e21c43867b64735')
 install=$pkgname.install
 url=("https://www.segger.com/jlink-software.html")
-conflicts=("j-link-software-and-documentation" "jlink")
-replaces=("j-link-software-and-documentation" "jlink")
+conflicts=("j-link-software-and-documentation")
+replaces=("j-link-software-and-documentation")
 DLAGENTS=("https::/usr/bin/env curl -o %o -d agree=1 -d confirm=yes ")
 _carch=${CARCH}
 if [ ${CARCH} = "i686" ]; then
