@@ -9,7 +9,9 @@ post_install() {
 }
 
 post_upgrade() {
+	true
 }
 
 pre_remove() {
+	true
 }
