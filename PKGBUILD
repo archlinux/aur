@@ -5,13 +5,13 @@
 pkgbase=pypy-setuptools
 pkgname=('pypy3-setuptools' 'pypy-setuptools')
 pkgver=19.4
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Easily download, build, install, upgrade, and uninstall Python packages"
 arch=('any')
 license=('PSF')
+checkdepends=('pypy' 'pypy3')
 url="http://pypi.python.org/pypi/setuptools"
-makedepends=('pypy3' 'pypy')
 source=("https://pypi.python.org/packages/source/s/setuptools/setuptools-${pkgver}.tar.gz")
 sha512sums=('463a2b00193b972e684569dce1527b34d7be9a9d0f866fd8a0c2c1a475558c539148841ca117b0a9c5507d8344dfd5ca515bc6beee59b44c6e8bf05771bc448a')
 
@@ -25,17 +25,8 @@ prepare() {
   sed -i -e "s|^#\!.*/usr/bin/env python|#!/usr/bin/env pypy|" setuptools/command/easy_install.py
 }
 
-build() {
-  # Build pypy 3 module
-  cd "${srcdir}"/setuptools-${pkgver}
-  pypy3 setup.py build
-
-  # Build pypy 2 module
-  cd "${srcdir}"/setuptools-${pkgver}-pypy
-  pypy setup.py build
-}
-
-check() {
+# Rename the following function to check() to enable checking
+_check() {
   # Workaround UTF-8 tests by setting LC_CTYPE
 
   # Check pypy3 module
@@ -53,7 +44,7 @@ package_pypy3-setuptools() {
   replaces=('pypy3-distribute')
 
   cd "${srcdir}/setuptools-${pkgver}"
-  pypy3 setup.py install --prefix=/opt/pypy3 --root="${pkgdir}" --optimize=1 --skip-build
+  pypy3 setup.py install --prefix=/opt/pypy3 --root="${pkgdir}" --optimize=1
 }
  
 package_pypy-setuptools() {
@@ -62,5 +53,5 @@ package_pypy-setuptools() {
   replaces=('pypy-distribute' 'setuptools')
 
   cd "${srcdir}/setuptools-${pkgver}-pypy"
-  pypy setup.py install --prefix=/opt/pypy --root="${pkgdir}" --optimize=1 --skip-build
+  pypy setup.py install --prefix=/opt/pypy --root="${pkgdir}" --optimize=1
 }
