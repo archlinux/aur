@@ -6,7 +6,7 @@
 # Contributor: Vain
 
 pkgname=mu
-pkgver=0.9.15
+pkgver=0.9.16
 pkgrel=1
 pkgdesc="A collection of utilities for indexing and searching Maildirs"
 arch=('i686' 'x86_64')
@@ -14,12 +14,12 @@ url="http://www.djcbsoftware.nl/code/mu"
 license=('GPL3')
 depends=('xapian-core' 'gmime' 'sqlite3')
 makedepends=('webkitgtk')
-optdepends=('cronie: Updating index regularly'
+optdepends=('cron: Updating index regularly'
             'webkitgtk: for msg2pdf and GUI')
 conflicts=('mailutils')
 install=$pkgname.install
-source=($pkgname-$pkgver.tar.gz::https://github.com/djcb/mu/archive/$pkgver.tar.gz)
-sha256sums=('60c63fdf1b726696cb0028b86eaee2aa72e171493b2d5626ea173b912ff25d4c')
+source=($pkgname-$pkgver.tar.gz::https://github.com/djcb/mu/archive/v$pkgver.tar.gz)
+sha256sums=('af086880b00a6954bc1135b226b66a33205893600c8dd04139a6871c62c6f05c')
 
 prepare() {
   cd "${srcdir}"/$pkgname-$pkgver/toys/mug
