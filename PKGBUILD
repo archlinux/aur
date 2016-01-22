@@ -1,5 +1,5 @@
 pkgname=capstone-git
-pkgver=20151229.2531.f9f0c80
+pkgver=20160122.2534.3722c74
 pkgrel=1
 pkgdesc="A lightweight multi-platform, multi-architecture disassembly framework."
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ optdepends=('python: for python3 bindings'
 provides=('capstone')
 conflicts=('capstone')
 
-source=("$pkgname"::"git://github.com/aquynh/capstone.git#branch=next")
+source=("${pkgname}::git+https://github.com/aquynh/capstone.git#branch=next")
 md5sums=('SKIP')
 
 pkgver () {
@@ -38,7 +38,7 @@ build() {
 
 check() {
   cd "${srcdir}/${pkgname}"
-  make check
+  LD_PRELOAD="./tests/libcapstone.so" make check
 
   # uncomment as needed
   #cd "./bindings/python"
