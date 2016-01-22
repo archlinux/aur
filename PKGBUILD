@@ -1,7 +1,7 @@
 # Maintainer: shellkr <revoltism+AUR$gmail.com>
 
-_gitname=minetest-mod-weather
 pkgname=minetest-mod-weather-git
+_gitname=${pkgname%-git*}
 pkgver=7.b2195be
 pkgrel=1
 pkgdesc="Minetest mod that adds weather"
@@ -10,8 +10,8 @@ url="https://forum.minetest.net/viewtopic.php?f=11&t=5245&sid=2e794f55767fd96363
 license=('custom')
 depends=('minetest')
 makedepends=('git')
-provides=('minetest-mod-weather')
-install=('minetest-mod-weather-git.install')
+provides=$_gitname
+install=$pkgname.install
 source=("$_gitname::git://github.com/Jeija/minetest-mod-weather.git")
 md5sums=('SKIP')
 
@@ -22,7 +22,7 @@ pkgver() {
 
 package() {
   cd "$srcdir/$_gitname"
-  mkdir -p "$pkgdir/usr/share/minetest/mods/$_gitname"
-  cp -r * "$pkgdir/usr/share/minetest/mods/$_gitname"
+  mkdir -p "$pkgdir/usr/share/minetest/mods/${_gitname#*mod-}"
+  cp -r * "$pkgdir/usr/share/minetest/mods/${_gitname#*mod-}"
 }
 
