@@ -6,7 +6,7 @@
 # Contributor: Niels Abspoel <aboe76 (at) Gmail (dot) com>
 
 pkgname=facter2
-pkgver=2.4.4
+pkgver=2.4.5
 pkgrel=1
 pkgdesc="Collect and display system facts"
 arch=('any')
@@ -16,7 +16,7 @@ depends=('ruby' 'inetutils' 'net-tools')
 provides=('facter')
 conflicts=('facter')
 source=(http://downloads.puppetlabs.com/facter/facter-$pkgver.tar.gz)
-md5sums=('97e5daae4c9571013506867f1ba8da0a')
+md5sums=('12d5494888cf8eb0258eacfa33ab81e8')
 
 package() {
   cd facter-$pkgver
