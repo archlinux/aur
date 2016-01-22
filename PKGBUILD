@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url='http://openage.sft.mx/'
 license=('GPL3')
 depends=('python' 'libgl' 'libepoxy' 'ftgl' 'fontconfig' 'sdl2' 'sdl2_image' 'opusfile')
-makedepends=('git' 'cmake' 'python-pillow' 'gcc' 'cython' 'python-pygments')
+makedepends=('git' 'cmake' 'python-pillow' 'gcc' 'cython' 'python-pygments' 'python-numpy' 'opus-tools')
 optdepends=('python-pillow: for the media convert script'
             'python-numpy: for the media convert script'
             'opus-tools: for the media convert script'
