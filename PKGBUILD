@@ -6,9 +6,8 @@
 
 pkgname=mysql-workbench-git
 pkgver=6.3.6.r0.gd46b227
-pkgrel=1
-# mysql from git
-_connector_version=1.1.6
+pkgrel=2
+# mysql & mysql-connector-c++ from git
 _gdal_version=2.0.1
 _boost_version=1.59.0
 pkgdesc='A cross-platform, visual database design tool developed by MySQL - git checkout'
@@ -30,22 +29,19 @@ install=mysql-workbench.install
 validpgpkeys=('A4A9406876FCBD3C456770C88C718D3B5072E1F5')
 source=('git://github.com/mysql/mysql-workbench.git'
 	'git://github.com/mysql/mysql-server.git'
-	"http://cdn.mysql.com/Downloads/Connector-C++/mysql-connector-c++-${_connector_version}.tar.gz"{,.asc}
+	'git://github.com/mysql/mysql-connector-cpp.git'
 	"http://download.osgeo.org/gdal/${_gdal_version}/gdal-${_gdal_version}.tar.gz"
 	"https://downloads.sourceforge.net/project/boost/boost/${_boost_version}/boost_${_boost_version//./_}.tar.bz2"
 	'http://www.antlr3.org/download/antlr-3.4-complete.jar'
 	'0001-mysql-workbench-no-check-for-updates.patch'
-	'0002-mysql-connector-c++-json.patch'
 	'arch_linux_profile.xml')
 sha256sums=('SKIP'
             'SKIP'
-            'ad710b3900cae3be94656825aa70319cf7a96e1ad46bf93e07275f3606f69447'
             'SKIP'
             'b55f794768e104a2fd0304eaa61bb8bda3dc7c4e14f2c9d0913baca3e55b83ab'
             '727a932322d94287b62abb1bd2d41723eec4356a7728909e38adb65ca25241ca'
             '9d3e866b610460664522520f73b81777b5626fb0a282a5952b9800b751550bf7'
             'b189e15c6b6f5a707357d9a9297f39ee3a33264fd28b44d5de6f537f851f82cf'
-            '4beb8b6c92f6b2b2189bfdd2f1a073ad54d501f05ef4686e47c661b40f63b9d3'
             '2ade582ca25f6d6d748bc84a913de39b34dcaa6e621a77740fe143007f2833af')
 
 pkgver() {
@@ -74,10 +70,6 @@ prepare() {
 	sed -i '/^FIND_PROGRAM(PYTHON_EXEC /c FIND_PROGRAM(PYTHON_EXEC "python2")' \
 		CMakeLists.txt
 
-	# MySQL connector C++ is lagging behind and misses JSON support
-	cd "${srcdir}/mysql-connector-c++-${_connector_version}/"
-	patch -Np1 < "${srcdir}"/0002-mysql-connector-c++-json.patch
-
 	# put antlr into place
 	install -D ${srcdir}/antlr-3.4-complete.jar ${srcdir}/linux-res/bin/antlr-3.4-complete.jar
 }
@@ -96,7 +88,7 @@ build() {
 	make DESTDIR="${srcdir}/install-bundle/" install
 
 	# Build mysql-connector-c++
-	cd "${srcdir}/mysql-connector-c++-${_connector_version}/"
+	cd "${srcdir}/mysql-connector-cpp/"
 	cmake . \
 		-Wno-dev \
 		-DCMAKE_INSTALL_PREFIX=/usr \
