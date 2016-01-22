@@ -3,11 +3,11 @@
 
 pkgname=jlink-software-and-documentation
 pkgver=5.10h
-pkgrel=5
+pkgrel=6
 pkgdesc="Segger JLink software & documentation pack for Linux"
 arch=('i686' 'x86_64')
 license=('custom')
-groups=('jlink-tools')
+groups=('jlink')
 depends=('glibc')
 source_x86_64=("JLink_Linux_${pkgver/./}_x86_64.tgz::https://www.segger.com/jlink-software.html?step=1&file=JLinkLinuxTGZ64_${pkgver/./}")
 source_i686=("JLink_Linux_${pkgver/./}_i686.tgz::https://www.segger.com/jlink-software.html?step=1&file=JLinkLinuxTGZ32_${pkgver/./}")
