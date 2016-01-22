@@ -1,7 +1,7 @@
 # Maintainer: Marco Kundt <mrckndt@gmail.com>
 
 pkgname=sunxi-tools
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Tools to help hacking Allwinner A10 devices."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=(libusb)
 makedepends=(libusb)
 source=(https://github.com/linux-sunxi/${pkgname}/archive/v${pkgver}.tar.gz)
-sha256sums=('86c1f2ace861a320b90bf5962a45329120ddc903cf0df678f1d31a44d6ba6b6e')
+sha256sums=('2aa0afc21476ee9b03acff20a19f32c522106e61bcbfa1a9463168fe90a85fc5')
 
 
 build() {
@@ -21,8 +21,5 @@ build() {
 package() {
   cd ${pkgname}-${pkgver}
   install -Dm755 -d $pkgdir/usr/bin
-  install -Dm755 -t $pkgdir/usr/bin fexc bootinfo fel nand-part usb-boot
-  cd $pkgdir/usr/bin
-  ln -s fexc bin2fex
-  ln -s fexc fex2bin
+  install -Dm755 -t $pkgdir/usr/bin sunxi-fexc sunxi-bootinfo sunxi-fel sunxi-nand-part fex2bin bin2fex
 }
