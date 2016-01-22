@@ -3,7 +3,7 @@
 
 pkgname=jlink-software-and-documentation
 pkgver=5.10h
-pkgrel=4
+pkgrel=5
 pkgdesc="Segger JLink software & documentation pack for Linux"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -20,44 +20,48 @@ url=("https://www.segger.com/jlink-software.html")
 conflicts=("j-link-software-and-documentation")
 replaces=("j-link-software-and-documentation")
 DLAGENTS=("https::/usr/bin/env curl -o %o -d agree=1 -d confirm=yes ")
-_carch=${CARCH}
-if [ ${CARCH} = "i686" ]; then
-    _carch="i386"
-fi
-
-_jlinkdir=JLink_Linux_V${pkgver/./}_${_carch}
 
 prepare() {
+    # Change src path name
+    if [ ${CARCH} = "i686" ]; then
+        mv JLink_Linux_V${pkgver/./}_i386 JLink
+    else
+        mv JLink_Linux_V${pkgver/./}_x86_64 JLink
+    fi
+
     # Remove `BUS!="usb"` from udev rules. BUS isn't valid anymore
-    cd ${srcdir}/${_jlinkdir}
+    cd ${srcdir}/JLink
     patch -uN 99-jlink.rules ../99-jlink.rules.patch
 }
 
 package(){
     # Match package placement from their .deb, in /opt
-    install -dm755 "${pkgdir}/opt/SEGGER/${_jlinkdir}" \
+    install -dm755 "${pkgdir}/opt/SEGGER/JLink" \
             "${pkgdir}/usr/share/licenses/${pkgname}" \
             "${pkgdir}/usr/lib/" \
             "${pkgdir}/usr/bin/" \
             "${pkgdir}/etc/udev/rules.d/" \
             "${pkgdir}/usr/share/doc/${pkgname}/"
 
-    cd ${srcdir}/${_jlinkdir}
+    cd ${srcdir}/JLink
 
     # Bulk copy everything
-    cp --preserve=mode -r J* Doc Samples README.txt "${pkgdir}/opt/SEGGER/${_jlinkdir}"
+    cp --preserve=mode -r J* Doc Samples README.txt "${pkgdir}/opt/SEGGER/JLink"
 
     # Create links where needed
-    ln -s /opt/SEGGER/${_jlinkdir}/Doc/License.txt "${pkgdir}/usr/share/licenses/${pkgname}/"
+    ln -s /opt/SEGGER/JLink/Doc/License.txt "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm644 99-jlink.rules "${pkgdir}/etc/udev/rules.d/"
     install -Dm755 libjlinkarm.so.*.* "${pkgdir}/usr/lib/"
     ln -s "/usr/lib/libjlinkarm.so.*.*" "${pkgdir}/usr/lib/libjlinkarm.so.${pkgver:0:1}"
 
+    # nrfjprog hardcoded libjlinkarm.so* to be in /opt/SEGGER/JLink (will be fixed in later versions)
+    ln -s "/usr/lib/libjlinkarm.so"* "${pkgdir}/opt/SEGGER/JLink"
+
     for f in J*; do
-        ln -s /opt/SEGGER/${_jlinkdir}/"$f" "${pkgdir}/usr/bin"
+        ln -s /opt/SEGGER/JLink/"$f" "${pkgdir}/usr/bin"
     done
 
     for f in Doc/*; do
-        ln -s /opt/SEGGER/${_jlinkdir}/"$f" "${pkgdir}/usr/share/doc/${pkgname}"
+        ln -s /opt/SEGGER/JLink/"$f" "${pkgdir}/usr/share/doc/${pkgname}"
     done
 }
