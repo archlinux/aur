@@ -5,12 +5,12 @@
 
 pkgname=nvidia-352-git
 pkgver=352.63
-pkgrel=3
+pkgrel=4
 pkgdesc="NVIDIA drivers for linux-git"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-git>=4.2' 'linux-git<4.5' "nvidia-utils-352=${pkgver}" 'libgl')
-makedepends=('linux-headers>=4.2' 'linux-git-headers<4.5')
+depends=('linux-git>=4.3' 'linux-git<4.5' "nvidia-utils-352=${pkgver}" 'libgl')
+makedepends=('linux-headers>=4.3' 'linux-git-headers<4.5')
 provides=('nvidia')
 conflicts=('nvidia-96xx' 'nvidia-173xx' 'nvidia')
 license=('custom')
