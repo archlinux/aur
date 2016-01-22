@@ -2,13 +2,13 @@ _module=deskshow
 _pkgname=moksha-modules-extra
 category=('moksha-modules-extra')
 pkgname=moksha-module-${_module}-git
-pkgver=2ea3b73
+pkgver=f7db19e
 pkgrel=1
 pkgdesc="Deskshow Moksha module"
 arch=('i686' 'x86_64')
 url="http://mokshadesktop.org"
 license=('BSD')
-depends=('moksha')
+depends=('e_dbus' 'elementary')
 source=("$_pkgname::git+https://github.com/JeffHoogland/moksha-modules-extra.git")
 sha256sums=('SKIP')
 
