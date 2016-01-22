@@ -11,7 +11,7 @@ license=('GPL')
 depends=('php')
 makedepends=("php-box" "php-composer" "git")
 install=("${_pkgname}.install")
-source=("${_pkgname}-${pkgver}"::"git+https://github.com/hechoendrupal/DrupalConsole.git")
+source=("${_pkgname}"::"git+https://github.com/hechoendrupal/DrupalConsole.git")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -20,13 +20,13 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}"
   ulimit -n 3072
   php /usr/bin/composer install --no-dev
   php -d phar.readonly=Off /usr/bin/php-box build
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}"
   install -D -m755 "drupal.phar" "${pkgdir}/usr/bin/drupal"
 }
