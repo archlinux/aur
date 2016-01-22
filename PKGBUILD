@@ -9,7 +9,7 @@ install="${pkgname}.install"
 url="https://github.com/DinoTools/dionaea"
 license=(GPLv2)
 arch=('i686' 'x86_64')
-depends=(curl glibc libemu-git liblcfg-git libnl libemu-git libev liblcfg-git libpcap openssl python udns)
+depends=(curl glibc libemu-git liblcfg-git libnl libev libpcap openssl python udns)
 makedepends=(git cython)
 source=("$pkgname"::'git+https://github.com/DinoTools/dionaea.git'
         'dionaea.service'
