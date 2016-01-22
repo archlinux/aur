@@ -11,7 +11,7 @@ _srcname=linux-4.1
 _pkgver=4.1.15
 _rtpatchver=rt17
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -25,7 +25,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar."{xz,sign}
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset"
         'change-default-console-loglevel.patch'
-        'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch')
+        'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch'
+        'CVE-2016-0728.patch')
 
 sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'SKIP'
@@ -37,7 +38,8 @@ sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'fd235f5d73d1b8b93653e9fdeee9c0eca318dddfb2570f9b14b70f3540b8d832'
             '2abb6e506e4a687723d6a6dc21703f5d2b42a8956fbc3313e3da2b03c718c80d'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '7a42d16108eb9a8eacadef3603527fa1beab857cc4db3bd228858488fb1f3fda')
+            '7a42d16108eb9a8eacadef3603527fa1beab857cc4db3bd228858488fb1f3fda'
+            '03bed5b1c6ef34a917e218a46d38cd1347c5ab5693131996113c6cad275dc4e9')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -68,8 +70,11 @@ prepare() {
 
   # A patch to fix a problem that ought to be fixed in the NVIDIA source code.
   # Stops X from hanging on certain NVIDIA cards
-  msg "fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch"
+  msg "fix-race-in-PR-wait-for-completion-simple-wait-code_Nvidia-RT.patch"
   patch -p1 -i "${srcdir}/fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch"
+
+  msg "CVE-2016-0728.patch"
+  patch -p1 -i "${srcdir}/CVE-2016-0728.patch"
 
   msg "All patches have successfully been applied"
 
