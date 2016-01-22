@@ -2,7 +2,7 @@
 
 pkgbase='swift-git'
 pkgname=('swift-im-git' 'swiften-git')
-pkgver=3.0beta2.r87.gd5f0735
+pkgver=3.0beta2.r116.gf377207
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://swift.im/"
@@ -17,12 +17,12 @@ pkgver() {
 }
 
 # Those options need to be consistent between each scons invocation.
-_scons_options='qt5=1 max_jobs=1 optimize=1 debug=0 swiften_dll=1 cxxflags="-DBOOST_SIGNALS_NO_DEPRECATION_WARNING=1"'
+_scons_options='max_jobs=1 optimize=1 debug=0 swiften_dll=1'
 _directory='swift'
 
 build() {
   cd "$srcdir/$_directory"
-  QTDIR=/usr ./scons $_scons_options Swift Swiften
+  ./scons $_scons_options Swift Swiften
 }
 
 package_swift-im-git() {
@@ -33,7 +33,7 @@ package_swift-im-git() {
   conflicts=('swift-im')
 
   cd "$srcdir/$_directory"
-  QTDIR=/usr ./scons $_scons_options SWIFT_INSTALLDIR="$pkgdir/usr/" "$pkgdir/usr/"
+  ./scons $_scons_options SWIFT_INSTALLDIR="$pkgdir/usr/" "$pkgdir/usr/"
 }
 
 package_swiften-git() {
@@ -43,5 +43,5 @@ package_swiften-git() {
   conflicts=('swiften')
 
   cd "$srcdir/$_directory"
-  QTDIR=/usr ./scons $_scons_options SWIFTEN_INSTALLDIR="$pkgdir/usr/" "$pkgdir/usr/"
+  ./scons $_scons_options SWIFTEN_INSTALLDIR="$pkgdir/usr/" "$pkgdir/usr/"
 }
