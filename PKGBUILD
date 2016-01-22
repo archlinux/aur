@@ -14,6 +14,7 @@ optdepends=('python-netcdf4: NetCDF4 support'
             'python-matplotlib: Plotting support'
             'python-dask: Enable out-of-core parallel computation')
 checkdepends=('python-nose')
+replaces=('python-xray')
 #source=(https://pypi.python.org/packages/source/x/xarray/xarray-"$pkgver".tar.gz)
 # I'm using the Github source instead of the PyPI source since the Github source includes the data files used for testing
 source=(https://github.com/xarray/xarray/archive/v"$pkgver".tar.gz)
