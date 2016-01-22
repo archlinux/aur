@@ -15,5 +15,5 @@ noextract=("$pkgname-$pkgver.tgz")
 
 package() {
   npm install -g --user root --prefix "$pkgdir/usr" $pkgname@$pkgver
-  # rm -r "$pkgdir/usr/etc"
+  rm -r "$pkgdir/usr/etc"
 }
