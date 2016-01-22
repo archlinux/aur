@@ -22,7 +22,7 @@ md5sums=('27d47aab32d643e8880397ec6fdb54b4')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure --prefix=/usr
+  CXXFLAGS="-O2 -std=c++11" ./configure --prefix=/usr
   make
 }
 
