@@ -1,7 +1,7 @@
 # Maintainer: Kevin Brodsky <corax26 at gmail dot com>
 # Contributor: Anton Jongsma <anton@felrood.nl>
 pkgname=flexc++
-pkgver=2.03.03
+pkgver=2.03.04
 pkgrel=1
 pkgdesc="C++ scanner generator"
 arch=('i686' 'x86_64')
@@ -9,10 +9,12 @@ url="https://fbb-git.github.io/flexcpp/"
 license=('GPL')
 # Versions taken from the 'required' file in sources
 depends=('libbobcat>=4.01.00')
-makedepends=('icmake>=7.22.00' 'yodl>=3.05.00')
+# TODO: yodl should be >=3.06.00, waiting for the corresponding AUR package to
+# be updated
+makedepends=('icmake>=8.00.04' 'yodl>=3.05.00')
 optdepends=()
 source=("https://github.com/fbb-git/flexcpp/archive/${pkgver}.tar.gz")
-md5sums=('6aca2723aacb909bd99324a3a4951a6e')
+md5sums=('56c9e911f7f6da1df05a4097ecce9f8a')
 
 build() {
   cd "$srcdir/flexcpp-${pkgver}/flexc++"
