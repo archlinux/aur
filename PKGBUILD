@@ -1,7 +1,7 @@
 # Maintainer: Antoine Lubineau <antoine@lubignon.info>
 
 pkgname=decklink
-_dvver=10.5.1a13 # DesktopVideo
+_dvver=10.5.4a4 # DesktopVideo
 _mever=3.5a9 # MediaExpress
 pkgver=${_dvver}
 pkgrel=1
@@ -12,8 +12,9 @@ license=('custom')
 depends=('linux-headers' 'libxml2' 'libpng12' 'glu' 'qt4')
 options=('!strip' 'staticlibs')
 install='decklink.install'
-source=("file://Blackmagic_Desktop_Video_Linux_${pkgver%a*}.tar.gz")
-sha256sums=('2d6d13f4ba786dc24d437880fc6c59f7668d8f84c36bbf70be6da3d1cec5417a')
+source=("file://Blackmagic_Desktop_Video_Linux_${pkgver%a*}.tar")
+sha256sums=('87653c51ed854dac82a8502000f547deda117498b5c045d01bd81ca7388c574d')
+
 
 [ "$CARCH" = "i686" ] && _arch='i386'
 [ "$CARCH" = "x86_64" ] && _arch='x86_64'
