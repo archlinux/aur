@@ -1,30 +1,25 @@
 pkgname=wlc-git
-pkgver=r822.359cfe7
+pkgver=r845.66425fb
 pkgrel=1
 
-pkgdesc='Wayland compositor library.'
+pkgdesc='Wayland compositor library'
 url='https://github.com/Cloudef/wlc'
 arch=('i686' 'x86_64')
 license=('GPL')
 
-depends=('wayland' 'pixman' 'libxkbcommon' 'libinput')
-makedepends=('git' 'cmake' 'libx11' 'libxcb' 'libgl' 'xcb-util-image')
+options=('debug' '!strip')
 
-optdepends=('libx11: Running the compositor as an Xorg client'
-            'libxcb: Running the compositor as an Xorg client'
-            'mesa: For optional platform support (GLESv2, EGL, DRM)'
-            'nvidia: For optional platform support (GLESv2, EGL)'
-            'xcb-util-image: Needed for xwayland support.')
+depends=('wayland' 'pixman' 'libxkbcommon' 'libinput' 'libx11' 'libxcb' 'libgl'
+         'libdrm' 'mesa' 'xcb-util-image')
+makedepends=('git' 'cmake')
 
 provides=('wlc')
 conflicts=('wlc')
 
-source=('git://github.com/Cloudef/wlc'
-        'git://github.com/Cloudef/chck')
+source=('git+https://github.com/Cloudef/wlc'
+        'git+https://github.com/Cloudef/chck')
 
 sha1sums=('SKIP' 'SKIP')
-
-options=('!debug' '!strip')
 
 pkgver() {
     cd wlc
