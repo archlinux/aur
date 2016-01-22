@@ -8,6 +8,7 @@ pkgdesc="Emprint Moksha module"
 arch=('i686' 'x86_64')
 url="http://mokshadesktop.org"
 license=('BSD')
+depends=('efl')
 source=("$_pkgname::git+https://github.com/JeffHoogland/moksha-modules-extra.git")
 sha256sums=('SKIP')
 
