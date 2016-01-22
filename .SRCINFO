@@ -8,8 +8,10 @@ pkgbase = origin-client-bin
 	arch = i686
 	arch = x86_64
 	license = Apache
-	source = https://github.com/openshift/origin/releases/download/v1.1.1/openshift-origin-client-tools-v1.1.1--linux-32bit.tar.gz
-	sha1sums = 10c3d9545aeff90e10a0ed2606fcc399be4596a2
+	source_i686 = https://github.com/openshift/origin/releases/download/v1.1.1/openshift-origin-client-tools-v1.1.1-e1d9873-linux-32bit.tar.gz
+	sha1sums_i686 = 10c3d9545aeff90e10a0ed2606fcc399be4596a2
+	source_x86_64 = https://github.com/openshift/origin/releases/download/v1.1.1/openshift-origin-client-tools-v1.1.1-e1d9873-linux-64bit.tar.gz
+	sha1sums_x86_64 = adacd8d8096dd565d46eacf8f5dcc86a3a9059f3
 
 pkgname = origin-client-bin
 
