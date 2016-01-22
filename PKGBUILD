@@ -2,7 +2,7 @@
 
 pkgname=caffe-git
 pkgver=r3482.813c3c9
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast framework for deep learning built in C++ for speed with a Python 2 interface'
 arch=(x86_64)
 url='https://github.com/BVLC/caffe'
@@ -42,12 +42,12 @@ depends=('cuda'
 source=('git+https://github.com/BVLC/caffe.git'
         'classify-print-results.py'
         'Makefile.config')
-makedepends=('git' 'python2-setuptools' 'gcc-fortran')
+makedepends=('git' 'python2-setuptools' 'gcc-fortran' 'wget')
 provides=('caffe' 'pycaffe' 'python2-pycaffe' )
 conflicts=('caffe' 'pycaffe' 'python2-pycaffe' 'pycaffe-git' 'python2-pycaffe-git')
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP')
+            'c12ddbd524c1b5871cb42a8775cf17a3ef86ae8a859837a6c6c4e2c19deca3d5'
+            'd2bd26feb69894bbe2a807e71703472f66d431947d4b760cd25f3243edf30557')
 
 pkgver() {
   cd caffe
