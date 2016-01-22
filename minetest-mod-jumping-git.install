@@ -6,8 +6,8 @@ post_install() {
         echo ' You have to move the mod to your $HOME/.minetest/mods if it doesnt'
 	echo ' recognize the default install dir'
 	echo
-        echo ' sudo mv /usr/share/minetest/mods/minetest-mod-jumping ~/.minetest/mods'
-        echo ' sudo chown -R <your user>:<your group> ~/.minetest/mods/minetest-mod-jumping'
+        echo ' sudo mv /usr/share/minetest/mods/jumping ~/.minetest/mods'
+        echo ' sudo chown -R <your user>:<your group> ~/.minetest/mods/jumping'
 	echo
         echo
 }
@@ -19,8 +19,8 @@ post_upgrade() {
         echo ' You have to move the mod to your $HOME/.minetest/mods if it doesnt'
 	echo ' recognize the default install dir'
 	echo
-        echo ' sudo mv /usr/share/minetest/mods/minetest-mod-jumping ~/.minetest/mods'
-        echo ' sudo chown -R <your user>:<your group> ~/.minetest/mods/minetest-mod-jumping'
+        echo ' sudo mv /usr/share/minetest/mods/jumping ~/.minetest/mods'
+        echo ' sudo chown -R <your user>:<your group> ~/.minetest/mods/jumping'
 	echo
         echo
 }
