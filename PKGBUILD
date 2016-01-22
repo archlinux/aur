@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python2-rfc3987
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="Parsing and validation of URIs (RFC 3896) and IRIs (RFC 3987)"
 arch=('any')
@@ -11,8 +11,8 @@ url="https://github.com/dgerber/rfc3987"
 license=('GPL3')
 options=(!emptydirs)
 source=(https://pypi.python.org/packages/source/r/${pkgname#python2-}/${pkgname#python2-}-$pkgver.tar.gz)
-md5sums=('40218a2f7c5c04c46ac03da73b27ee18')
-sha256sums=('8bdd8bf28431bae754d34d60a23ca37aefa2cf8ade2de4a0e9d86e4a688b0c2e')
+md5sums=('d129a862af0a4a096f0fc5fea8ed776d')
+sha256sums=('ed37b839553370971a1d5cd53392206206c56ea550d435ef45e6d94e7df50697')
 
 build() {
   cd $srcdir/${pkgname#python2-}-$pkgver
