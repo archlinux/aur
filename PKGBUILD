@@ -2,7 +2,7 @@
 
 pkgname=terraform
 pkgver=0.6.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for building, changing, and versioning infrastructure safely and efficiently"
 url='http://www.terraform.io/'
 arch=('i686' 'x86_64')
@@ -24,6 +24,7 @@ prepare() {
   mkdir Godeps
   cp deps/v$(echo ${pkgver} | sed 's/\./-/g').json Godeps/Godeps.json
   GOPATH="${srcdir}" godep get
+  GOPATH="${srcdir}" godep restore
 }
 
 build() {
