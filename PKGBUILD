@@ -3,7 +3,7 @@
 
 _pkgname='N1'
 pkgname='n1-git'
-pkgver=0.3.43.r4.g4f5aea0
+pkgver=0.3.43.r45.g313c421
 pkgrel=1
 pkgdesc="A new mail client, built on the modern web and designed to be extended."
 arch=('any')
