@@ -3,14 +3,14 @@ pkgname=twiccian
 pkgver=1.0
 pkgrel=1
 pkgdesc="Twitch streaming client for Linux"
-url="https://github.com/octotep/twiccian"
+url="https://github.com/Larke12/twiccian"
 license=('GPL3')
 arch=('i686' 'x86_64')
 depends=('qt5-base' 'qt5-quickcontrols' 'qt5-webengine' 'qt5-webkit' 'qt5-graphicaleffects' 'mpv' 'rapidjson' 'youtube-dl' 'git' 'go')
 makedepends=('git' 'go')
 source=(
-	"twiccian::git://github.com/octotep/twiccian.git"
-	"twicciand::git://github.com/octotep/twicciand.git"
+	"twiccian::git://github.com/Larke12/twiccian.git"
+	"twicciand::git://github.com/Larke12/twicciand.git"
 )
 sha256sums=(
 	'SKIP'
