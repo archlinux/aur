@@ -1,8 +1,8 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=mathopd
 pkgver=1.6b15
-pkgrel=1
-pkgdesc=""
+pkgrel=2
+pkgdesc="A very small, yet very fast HTTP server for UN*X systems"
 arch=(i686 x86_64)
 url="http://www.mathopd.org/"
 license=('BSD')
