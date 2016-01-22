@@ -3,8 +3,8 @@
 
 pkgname=jlink-debugger
 pkgver=2.10d
-pkgrel=2
-pkgdesc="Official Segger JLink debugger for Linux"
+pkgrel=3
+pkgdesc="Segger JLink debugger for Linux"
 arch=('i686' 'x86_64')
 license=('custom')
 groups=('jlink-tools')
