@@ -1,8 +1,8 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-developer-ffmpeg-codecs
-pkgver=48.0.2564.22
-pkgrel=2
+pkgver=49.0.2612.0
+pkgrel=1
 pkgdesc="additional support for proprietary codecs for opera-developer"
 arch=('i686' 'x86_64')
 url="https://ffmpeg.org/"
@@ -16,7 +16,7 @@ options=('!strip')
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
 )
-sha256sums=('525d6c58e0b4faf874fd45efc6097ba06ed540a2326ff85ad70db1b3eb4673a2')
+sha256sums=('3859c3b931de3fc5089c9f011624503bd864e24cea07fe630c346192c780de67')
 
 
 prepare() {
@@ -47,6 +47,7 @@ build() {
     -Dlinux_use_bundled_binutils=0 \
     -Dlinux_use_bundled_gold=0 \
     -Dlinux_use_gold_flags=0 \
+    -Dsysroot='' \
     -Dcomponent=shared_library \
     -Dffmpeg_branding=ChromeOS
 
