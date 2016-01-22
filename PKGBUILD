@@ -2,21 +2,19 @@
 # Contributor: Rax Garfield <admin at dvizho.ks.ua>
 
 pkgname=hunspell-uk
-pkgver=1.9.6
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Ukrainian spelling dictionary"
 arch=('any')
 url="http://extensions.libreoffice.org/extension-center/ukrainian-spelling-dictionary-and-thesaurus"
-license=('LGPL3' 'GPL3')
+license=('LGPL2.1' 'GPL3' 'MPL')
 groups=('dict-uk')
-optdepends=('hunspell: the spell checking libraries and apps'
-            'hyphen-uk: Ukrainian hyphenation rules'
-            'mythes-uk: Ukrainian thesaurus')
+optdepends=('hunspell: the spell checking libraries and apps')
 source=("http://extensions.libreoffice.org/extension-center/ukrainian-spelling-dictionary-and-thesaurus/releases/${pkgver}/dict-uk_ua-${pkgver//./-}.oxt")
-sha256sums=('526365ad178dd0bb829db11ea2cf21a3811e0f16a3a93d65c97b946240d9d4eb')
+sha256sums=('0096014daaa1dcd61b89a240b1a71268aeb2c4831579bda223462a9d7ad81c46')
 
 package() {
-  cd ${srcdir}/uk_UA
+  cd uk_UA
   install -dm755 ${pkgdir}/usr/share/hunspell
   install -m644 uk_UA.* ${pkgdir}/usr/share/hunspell
 
