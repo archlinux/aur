@@ -1,7 +1,7 @@
 # Maintainer: Franek Madej <franek.madej@gmail.com>
 pkgname=yadm
 pkgver=1.03
-pkgrel=2
+pkgrel=3
 pkgdesc="Yet Another Dotfiles Manager"
 arch=('any')
 url="https://github.com/TheLocehiliosan/yadm"
@@ -32,6 +32,6 @@ build() {
 
 package() {
   cd $srcdir/$pkgname
-  install -D -m 755 yadm $pkgdir/usr/bin/
-  install -D -m 644 yadm.1 $pkgdir/usr/share/man/
+  install -D -m 755 yadm $pkgdir/usr/bin/yadm
+  install -D -m 644 yadm.1 $pkgdir/usr/share/man/yadm.1
 }
