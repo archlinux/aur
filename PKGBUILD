@@ -27,5 +27,5 @@ build() {
 
 package() {
   cd $srcdir
-  install -D -m 644 yadm $pkgdir/usr/bin/yadm
+  install -D -m 755 yadm $pkgdir/usr/bin/yadm
 }
