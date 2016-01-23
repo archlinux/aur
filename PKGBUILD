@@ -4,22 +4,20 @@ pkgdesc="ROS - Compressed_image_transport provides a plugin to image_transport f
 url='http://www.ros.org/wiki/image_transport_plugins'
 
 pkgname='ros-jade-compressed-image-transport'
-pkgver='1.9.2'
+pkgver='1.9.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-jade-tf
+ros_makedepends=(ros-jade-catkin
   ros-jade-image-transport
-  ros-jade-catkin
   ros-jade-cv-bridge
   ros-jade-dynamic-reconfigure)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]})
 
-ros_depends=(ros-jade-tf
-  ros-jade-image-transport
+ros_depends=(ros-jade-image-transport
   ros-jade-cv-bridge
   ros-jade-dynamic-reconfigure)
 depends=(${ros_depends[@]})
