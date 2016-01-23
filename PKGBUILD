@@ -4,7 +4,7 @@ pkgdesc="ROS - robot_model contains packages for modeling various aspects of rob
 url='http://ros.org/wiki/robot_model'
 
 pkgname='ros-jade-robot-model'
-pkgver='1.11.7'
+pkgver='1.11.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
