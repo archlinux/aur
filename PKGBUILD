@@ -1,9 +1,10 @@
-# Maintainer: Javier Tia <javier.tia[at]gmail[dot]com>
-# Old Maintainer: Viliam Pucik <viliam.pucik[at]gmail[dot]com>
+# Maintainer: Javier Tia <javier[dot]tia[at]gmail[dot]com>
+# Old Maintainer: Viliam Pucik <viliam[dot]pucik[at]gmail[dot]com>
 # Old Author: jevv
+
 pkgname=hpmyroom
 pkgver=10.4.0.0174
-pkgrel=1
+pkgrel=2
 pkgdesc="HP MyRoom a collaborative conferencing meetings software"
 url="https://www.myroom.hpe.com"
 arch=('i686' 'x86_64')
@@ -26,6 +27,11 @@ package() {
   tar xf data.tar.xz --no-same-permissions --no-overwrite-dir -C ${pkgdir}
   chmod a-x ${pkgdir}/usr/share/applications/HP-myroom.desktop
   find ${pkgdir}/usr/share/hpmyroom/Resources/* -type f -exec chmod a-x {} \;
+
+  chmod -v 0755 ${pkgdir}/usr/share/hpmyroom/Resources/fonts
+  mkdir -p ${pkgdir}/usr/share/fonts
+  cp -r ${pkgdir}/usr/share/hpmyroom/Resources/fonts \
+        ${pkgdir}/usr/share/fonts/TTF
 }
 
 # vim:set ft=sh ts=2 sw=2 et:
