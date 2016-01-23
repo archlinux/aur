@@ -1,13 +1,13 @@
-# $Id: PKGBUILD 256729 2015-12-17 21:03:59Z foutrelis $
-# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
+# Maintainer: Sergey Shatunov <me@prok.pw>
+# Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-gtk3
 _pkgname=chromium
-pkgver=47.0.2526.106
-pkgrel=2
+pkgver=48.0.2564.82
+pkgrel=1
 _launcher_ver=3
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser (GTK3 version)"
 arch=('i686' 'x86_64')
@@ -30,17 +30,15 @@ install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkgname-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
+        chromium-use-non-versioned-icu-namespace.patch
         chromium-fix-print-preview-on-en_GB-locale.patch
-        0001-Add-FPDFAPIJPEG_-prefix-to-more-libjpeg-functions.patch
-        0001-Use-kwalletd5-in-KDE-5-environments.patch
         chromium-widevine.patch)
-sha256sums=('64535073330a3d37aad228d10a15cdcbb5b389e59d079d1a3b22d023b99a58e6'
+sha256sums=('cda64bf427d01bae7d45863812edcd7fa43176238ec07c7752e42afd3e1714fd'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
+            'e4192446cc0ab6a5c540599c8a149f4f2208f0014da2786ada6c9544913d7426'
             '6fff45aafa31fb35a032b4e2175a341e08f9d2a9b37c5cf080c318180f558378'
-            'd114def156d60d5f4c9e42f2955ba19bdebe38037a330ef947af24ace25db39d'
-            '5a4c852ee40c29a2317c3175452aafaf72ecc6d09f0e6d2106ae403ec419ec2d'
-            '379b746e187de28f80f5a7cd19edcfa31859656826f802a1ede054fcb6dfb221')
+            '4660344789c45c9b9e52cb6d86f7cb6edb297b39320d04f6947e5216d6e5f64c')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -68,19 +66,14 @@ prepare() {
   # https://code.google.com/p/chromium/issues/detail?id=541273
   sed -i "/'target_name': 'libvpx'/s/libvpx/&_new/" build/linux/unbundle/libvpx.gyp
 
+  # https://codereview.chromium.org/1505763002
+  patch -Np1 -i ../chromium-use-non-versioned-icu-namespace.patch
+
   # https://code.google.com/p/chromium/issues/detail?id=480415
   patch -Np1 -i ../chromium-fix-print-preview-on-en_GB-locale.patch
 
-  # https://code.google.com/p/chromium/issues/detail?id=505226
-  patch -d third_party/pdfium -Np1 <../0001-Add-FPDFAPIJPEG_-prefix-to-more-libjpeg-functions.patch
-
-  # https://code.google.com/p/chromium/issues/detail?id=500281
-  patch -Np1 -i ../0001-Use-kwalletd5-in-KDE-5-environments.patch
-
   # Enable support for the Widevine CDM plugin
-  # The actual libraries are not included, but can be copied over from Chrome:
-  #   libwidevinecdmadapter.so
-  #   libwidevinecdm.so
+  # libwidevinecdm.so is not included, but can be copied over from Chrome
   # (Version string doesn't seem to matter so let's go with "Pinkie Pie")
   sed "s/@WIDEVINE_VERSION@/Pinkie Pie/" ../chromium-widevine.patch |
     patch -Np1
@@ -93,8 +86,8 @@ prepare() {
   # Use Python 2
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
   # There are still a lot of relative calls which need a workaround
-  mkdir "$srcdir/python2-path"
-  ln -s /usr/bin/python2 "$srcdir/python2-path/python"
+  mkdir -p "$srcdir/python2-path"
+  ln -sf /usr/bin/python2 "$srcdir/python2-path/python"
 
   # Download the PNaCL toolchain on x86_64; i686 toolchain is no longer provided
   if (( $_build_nacl )); then
@@ -159,6 +152,7 @@ build() {
     -Duse_mojo=0
     -Duse_gconf=0
     -Denable_hangout_services_extension=1
+    -Denable_widevine=1
     -Ddisable_fatal_linker_warnings=1
     -Ddisable_glibc=1)
 
@@ -191,11 +185,13 @@ package() {
 
   install -D out/Release/chromedriver "$pkgdir/usr/lib/chromium/chromedriver"
 
-  cp out/Release/{*.pak,*.bin} "$pkgdir/usr/lib/chromium/"
+  cp out/Release/{*.pak,*.bin,libwidevinecdmadapter.so} \
+    "$pkgdir/usr/lib/chromium/"
 
   # Manually strip binaries so that 'nacl_irt_*.nexe' is left intact
   strip $STRIP_BINARIES "$pkgdir/usr/lib/chromium/"{chromium,chrome-sandbox} \
     "$pkgdir/usr/lib/chromium/chromedriver"
+  strip $STRIP_SHARED "$pkgdir/usr/lib/chromium/libwidevinecdmadapter.so"
 
   if (( $_build_nacl )); then
     cp out/Release/nacl_helper{,_bootstrap} out/Release/nacl_irt_*.nexe \
