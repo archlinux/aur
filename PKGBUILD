@@ -4,7 +4,7 @@ pkgdesc="ROS - This package allows you to publish the state of a robot to tf."
 url='http://wiki.ros.org/robot_state_publisher'
 
 pkgname='ros-jade-robot-state-publisher'
-pkgver='1.10.4'
+pkgver='1.12.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -15,11 +15,12 @@ ros_makedepends=(ros-jade-cmake-modules
   ros-jade-kdl-parser
   ros-jade-roscpp
   ros-jade-catkin
+  ros-jade-tf2-ros
+  ros-jade-tf2-kdl
   ros-jade-tf
   ros-jade-sensor-msgs
   ros-jade-rosconsole
-  ros-jade-rostime
-  ros-jade-tf-conversions)
+  ros-jade-rostime)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
   eigen3)
@@ -28,11 +29,12 @@ ros_depends=(ros-jade-orocos-kdl
   ros-jade-kdl-parser
   ros-jade-roscpp
   ros-jade-catkin
+  ros-jade-tf2-ros
+  ros-jade-tf2-kdl
   ros-jade-tf
   ros-jade-sensor-msgs
   ros-jade-rosconsole
-  ros-jade-rostime
-  ros-jade-tf-conversions)
+  ros-jade-rostime)
 depends=(${ros_depends[@]}
   eigen3)
 
