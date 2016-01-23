@@ -2,12 +2,13 @@
 
 pkgname=ttf-ancient-fonts
 pkgver=2.59
-pkgrel=1
+pkgrel=2
 pkgdesc="Unicode Fonts for Ancient Scripts"
 url="http://users.teilar.gr/~g1951d/"
 license=("custom")
 arch=(any)
 depends=(fontconfig xorg-font-utils)
+conflicts=(ttf-symbola)
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.orig.tar.xz"
 	"license")
 md5sums=("df026a39ad8b6069bda9123c0d35ad27"
