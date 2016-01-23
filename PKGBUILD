@@ -17,7 +17,7 @@
 # intel-media-sdk (experimental libmfx support only for x86_64)
 
 pkgname=ffmpeg-full-git
-pkgver=N.78020.g406f300
+pkgver=N.78022.gd863785
 pkgrel=1
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
@@ -176,9 +176,9 @@ build() {
 	
 	# Remove directory references in "--prefix", "--extra-cflags" and "--extra-ldflags"
 	# options from the configuration string that is presented in command line:
-	sed -i 's,--prefix=/usr ,,g' config.h
-	sed -i 's,--extra-cflags=-I/usr/include/nvidia-sdk ,,g' config.h
-	sed -i "s|--extra-ldflags='-Wl,-rpath -Wl,/opt/intel/mediasdk/lib64' ||g" config.h
+	#sed -i 's,--prefix=/usr ,,g' config.h
+	#sed -i 's,--extra-cflags=-I/usr/include/nvidia-sdk ,,g' config.h
+	#sed -i "s|--extra-ldflags='-Wl,-rpath -Wl,/opt/intel/mediasdk/lib64' ||g" config.h
 	
 	make
 	
