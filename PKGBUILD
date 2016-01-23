@@ -1,6 +1,6 @@
 pkgname=wlc-git
-pkgver=r845.66425fb
-pkgrel=2
+pkgver=r854.a7cf372
+pkgrel=1
 
 pkgdesc='Wayland compositor library'
 url='https://github.com/Cloudef/wlc'
@@ -17,9 +17,10 @@ provides=('wlc')
 conflicts=('wlc')
 
 source=('git+https://github.com/Cloudef/wlc'
-        'git+https://github.com/Cloudef/chck')
+        'git+https://github.com/Cloudef/chck'
+        'git://anongit.freedesktop.org/wayland/wayland-protocols')
 
-sha1sums=('SKIP' 'SKIP')
+sha1sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
     cd wlc
@@ -30,7 +31,8 @@ prepare() {
     cd wlc
     git submodule init
     git config submodule.lib/chck.url "$srcdir"/chck
-    git submodule update lib/chck
+    git config submodule.protos/wayland-protocols.url "$srcdir"/wayland-protocols
+    git submodule update lib/chck protos/wayland-protocols
 }
 
 build() {
