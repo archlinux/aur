@@ -13,7 +13,7 @@ source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgn
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   ./configure --prefix=/usr
-  make || return 1
+  make
 }
  
 package(){
