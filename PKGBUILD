@@ -15,7 +15,7 @@ depends=( 'gtk-update-icon-cache'
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://github.com/eliostvs/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('19026e8ad56ef54b5cacd66c46747e14')
+md5sums=('2c4fa841ad8ac3b752cf4a0c2790126c')
 install=tomate-notify-plugin.install
 
 package() {
