@@ -10,10 +10,14 @@
 # ----------------
 # libilbc kvazaar libquvi-scripts0.4 libquvi0.4 chromaprint-fftw libaacplus libbs2b
 # openh264 shine vo-aacenc vo-amrwbenc nut-multimedia-git xavs libutvideo-asm-git
-# flite-fpic libmfx-git intel-media-sdk blackmagic-decklink-sdk nvidia-sdk
+# flite-fpic libmfx-git blackmagic-decklink-sdk nvidia-sdk
+
+# AUR optional dependency
+# -----------------------
+# intel-media-sdk (experimental libmfx support only for x86_64)
 
 pkgname=ffmpeg-full-git
-pkgver=N.77780.gcbad37e
+pkgver=N.78020.g406f300
 pkgrel=1
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
@@ -29,9 +33,10 @@ depends=(
     'snappy' 'libsoxr' 'speex' 'libssh' 'tesseract' 'libtheora' 'twolame' 'libutvideo-asm-git'
     'v4l-utils' 'vid.stab' 'vo-aacenc' 'vo-amrwbenc' 'libvorbis' 'libvpx' 'wavpack' 'libwebp'
     'libx264.so' 'x265' 'libxcb' 'xvidcore' 'zimg' 'zeromq' 'zvbi' 'openal' 'libva' 'libdrm'
-    'libva-intel-driver' 'libmfx-git' 'intel-media-sdk' 'opencl-headers' 'ocl-icd' 'libvdpau'
-    'mesa' 'openssl' 'xavs' 'nvidia-sdk' 'blackmagic-decklink-sdk'
+    'libva-intel-driver' 'libmfx-git' 'opencl-headers' 'ocl-icd' 'libvdpau' 'mesa' 'openssl'
+    'xavs' 'nvidia-sdk' 'blackmagic-decklink-sdk'
 )
+optdepends=('intel-media-sdk: for libmfx support (x86_64 only, experimental)')
 makedepends=('git' 'yasm')
 provides=(
     'ffmpeg' 'qt-faststart' 'ffmpeg-git' 'ffmpeg-full' 'ffmpeg-full-extra' 'ffmpeg-full-nvenc'
