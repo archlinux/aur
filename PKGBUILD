@@ -5,14 +5,14 @@
 # Maintainer: SanskritFritz (gmail)
 
 pkgname=firehol
-pkgver=2.0.3
-pkgrel=2
+pkgver=3.0.1
+pkgrel=1
 epoch=2
 pkgdesc="The iptables stateful packet filtering firewall builder."
 url="http://firehol.sourceforge.net"
 arch=('any')
 license=('GPL')
-depends=('iptables' 'gawk' 'iproute')
+depends=('iptables' 'gawk' 'iproute' 'iprange')
 backup=('etc/firehol/firehol.conf' 'etc/firehol/fireqos.conf')
 install='firehol.install'
 source=("http://firehol.org/download/firehol/releases/v${pkgver}/${pkgname}-${pkgver}.tar.xz"
@@ -42,6 +42,6 @@ package() {
   touch "$pkgdir"/etc/firehol/fire{hol,qos}.conf
 }
 
-md5sums=('454f4fa026874500be8876b2560899cb'
+md5sums=('afee409b698ad0707340112ff0e811b2'
          '6c6571af548273e1f172313e366532df'
          'ae9fc18b19a69149108e9f4ab9ba5de9')
