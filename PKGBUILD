@@ -6,13 +6,13 @@
 # Contributor: William J. Bowman <bluephoenix47@gmail.com>
 pkgname=coq
 pkgver=8.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Formal proof management system. Full version that includes CoqIDE.'
 arch=('i686' 'x86_64')
 url='http://coq.inria.fr/'
 license=('GPL')
 options=('!emptydirs')
-depends=('gtk2' 'ocaml' 'gtksourceview2')
+depends=('gtk2' 'ocaml' 'camlp4' 'gtksourceview2')
 makedepends=('ocaml-findlib' 'lablgtk2')
 optdepends=('coq-doc')
 source=("http://coq.inria.fr/distrib/V$pkgver/files/coq-$pkgver.tar.gz")
