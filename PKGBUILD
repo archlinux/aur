@@ -79,10 +79,6 @@ prepare() {
   # Add Liquorix patches
   patch -Np1 -i ${srcdir}/$_lqxpatchname
   
-  ### Fix CVE-2016-0728
-        msg "Fix CVE-2016-0728"
-        patch -Np1 -i "${srcdir}/CVE-2016-0728.patch"
-  
     # Trying oldcfg if possible and if selected
   if [ "$_config" = "old" ]; then
     if [ -e /proc/config.gz ]; then
