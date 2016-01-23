@@ -2,8 +2,8 @@
 
 _pkgname=wxgtk
 pkgname=$_pkgname-git
-pkgver=46953a1
-pkgrel=3
+pkgver=r60833.a03df74
+pkgrel=1
 pkgdesc='Cross-Platform GUI Library - GTK+ port'
 arch=("i686" "x86_64")
 url='https://www.wxwidgets.org'
