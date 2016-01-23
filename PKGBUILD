@@ -4,7 +4,7 @@ pkgdesc="ROS - rosmsg contains two command-line tools: rosmsg and rossrv."
 url='http://ros.org/wiki/rosmsg'
 
 pkgname='ros-jade-rosmsg'
-pkgver='1.11.13'
+pkgver='1.11.16'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
