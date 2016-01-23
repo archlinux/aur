@@ -1,0 +1,49 @@
+
+# LaTeX crap
+*.aux
+*.bbl
+*.blg
+*.log
+*.toc
+*.nav
+*.out
+*.snm
+*.vrb
+
+# Compiler crap
+*.o
+*.a
+*.[568vq]
+[a568vq].out
+*.cgo1.go
+*.cgo2.c
+_cgo_defun.c
+_cgo_gotypes.go
+_cgo_export.*
+*.so
+_obj
+_test
+_testmain.go
+*.exe
+*.class
+
+# Editor crap
+*~
+*.sw?
+
+# Misc crap
+CVS/
+.svn/
+
+# MAC OS crap
+.DS_Store
+
+# Binary crap
+*.jar
+
+pkg/
+src/
+texlive-tudscr-*.pkg.tar.xz
+texlive-tudscr-*.src.tar.gz
+tudscr_v*.**.zip
+TUD-KOMA-Script_*_Unix_full.zip

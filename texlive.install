@@ -1,0 +1,16 @@
+post_install() {
+	echo ">>> texlive: regenerate TeX database"
+	mktexlsr --quiet
+	echo ">>> done."
+}
+post_upgrade() {
+	echo ">>> texlive: regenerate TeX database"
+	mktexlsr --quiet
+	echo ">>> done."
+}
+
+post_remove() {
+	echo ">>> texlive: regenerate TeX database"
+	mktexlsr --quiet
+	echo ">>> done."
+}
