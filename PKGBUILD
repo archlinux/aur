@@ -4,7 +4,7 @@ pkgdesc="ROS - A set of plugins for publishing and subscribing to sensor_msgs/Im
 url='http://www.ros.org/wiki/image_transport_plugins'
 
 pkgname='ros-jade-image-transport-plugins'
-pkgver='1.9.2'
+pkgver='1.9.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
