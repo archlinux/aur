@@ -12,6 +12,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/cliffordwolf/icestorm.git')
 md5sums=('SKIP')
+_prefix="/usr"
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -32,12 +33,12 @@ package() {
 	cd "$srcdir/${pkgname%-git}"
 
 	# Move the license file into place
-	install -dm 755 "$pkgdir/usr/share/licenses/$pkgname"
-	install -m 644 README "$pkgdir/usr/share/licenses/$pkgname"
+	install -dm 755        "$pkgdir/usr/share/licenses/$pkgname"
+	install -m  644 README "$pkgdir/usr/share/licenses/$pkgname"
 
 	# Install the package
 	make \
       DESTDIR="$pkgdir" \
-      PREFIX="/usr" \
+      PREFIX=$_prefix \
       install
 }
