@@ -1,6 +1,6 @@
 pkgname=wlc-git
 pkgver=r845.66425fb
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Wayland compositor library'
 url='https://github.com/Cloudef/wlc'
@@ -10,7 +10,7 @@ license=('GPL')
 options=('debug' '!strip')
 
 depends=('wayland' 'pixman' 'libxkbcommon' 'libinput' 'libx11' 'libxcb' 'libgl'
-         'libdrm' 'mesa' 'xcb-util-image')
+         'libdrm' 'mesa' 'xcb-util-image' 'xcb-util-wm')
 makedepends=('git' 'cmake')
 
 provides=('wlc')
