@@ -6,7 +6,7 @@
 pkgname=mpv-vapoursynth
 _pkgname=mpv
 epoch=1
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc='Video player based on MPlayer/mplayer2'
 arch=('i686' 'x86_64')
@@ -25,35 +25,31 @@ conflicts=($_pkgname)
 options=('!emptydirs' '!buildflags')
 install=mpv.install
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/mpv-player/$_pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('042937f483603f0c3d1dec11e8f0045e8c27f19eee46ea64d81a3cdf01e51233')
+sha256sums=('7d31217ba8572f364fcea2955733f821374ae6d8c6d8f22f8bc63c44c0400bdc')
 
 prepare() {
-  cd $_pkgname-$pkgver
+  cd ${_pkgname}-${pkgver}
 
   ./bootstrap.py
 }
 
 build() {
-  cd $_pkgname-$pkgver
+  cd ${_pkgname}-${pkgver}
 
   ./waf configure --prefix=/usr \
     --confdir=/etc/mpv \
     --enable-zsh-comp \
     --enable-libmpv-shared \
-    --enable-vapoursynth \
     --enable-cdda
 
   ./waf build
 }
 
 package() {
-  cd $_pkgname-$pkgver
-  
+  cd ${_pkgname}-${pkgver}
+
   ./waf install --destdir="$pkgdir"
 
-  install -d "$pkgdir"/usr/share/doc/mpv/examples
-  install -m644 etc/{input,example}.conf \
-    "$pkgdir"/usr/share/doc/mpv/examples
   install -m644 DOCS/{encoding.rst,tech-overview.txt} \
     "$pkgdir"/usr/share/doc/mpv
 }
