@@ -52,8 +52,8 @@ pkgbase=linux-bfq
 pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _kernelname=-bfq
 _srcname=linux-4.3
-pkgver=4.3.3
-pkgrel=4
+pkgver=4.3.4
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
@@ -75,8 +75,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux-bfq.preset'
         'change-default-console-loglevel.patch'
         'config' 'config.x86_64'
-        '0004-disabling-primary-plane-in-the-noatomic-case.patch'
-        'CVE-2016-0728.patch')
+        '0004-disabling-primary-plane-in-the-noatomic-case.patch')
         
 prepare() {
     cd ${_srcname}
@@ -95,10 +94,6 @@ prepare() {
     # hangs on older intel hardware
         msg "Fix hangs on older intel hardware"
         patch -Np1 -i "${srcdir}/0004-disabling-primary-plane-in-the-noatomic-case.patch"
-   
-    ### Fix CVE-2016-0728
-        msg "Fix CVE-2016-0728"
-        patch -Np1 -i "${srcdir}/CVE-2016-0728.patch"
 
     ### Patch source with BFQ
         msg "Patching source with BFQ patches"
@@ -443,7 +438,7 @@ package_linux-bfq-docs() {
 
 sha512sums=('d25812043850530fdcfdb48523523ee980747f3c2c1266149330844dae2cba0d056d4ddd9c0f129f570f5d1f6df5c20385aec5f6a2e0755edc1e2f5f93e2c6bc'
             'SKIP'
-            '1b9cc343a589a7cdaa66284b3d7129be9869195f5b839dac0222050af42dc7a7451d4e2bf176c1a9939d6572a44a9b6f4534b0c7a79032881a9bc8f8f56c9c69'
+            'ae0454d09a81168164a97e5663f6476e953bfb42ecca597ba9bc07ce4142f8e9567a1e0e1b6726f002669e1acdd39fed0a3ecda54e5719efbf17bd661ea0ba56'
             'SKIP'
             'e31394f8addbfa7d46eaa6ebf4b848a0f13cbfc8d41f3741d2512c7728db839fa67f1a138cc0b5b88a85f0b7c285522e166ad2e349bebd9f4c3f4a187235b6e3'
             '593c8217c83a46faffa2b0639b3b8a17fd2cd68c160d716e9a931c6e114300384f68f6e98bb50a99d17bf3343ff694ce3edca627505813bb08a37f67ba525eee'
@@ -453,8 +448,7 @@ sha512sums=('d25812043850530fdcfdb48523523ee980747f3c2c1266149330844dae2cba0d056
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
             '2a55cf35899b4b6b9f4a4a6d3d39d0f7843954a3b1a57fd28d999e0dcc963cbf411884dfcfd49c671714202745e9c53db9df12f8eab9e98be0b5fade9503c644'
             '07cccbb594033de456ab24c7e8259f35a198a6a1af3fb9467eef5ae78626750a86ee71ef42a1560825f6f5ef2ecd6a9223c3cd8431d8744c6f1d67e25eb7c35c'
-            '9e5d95f695bcb5858f8ace8f2f2bf2981b22f46cdbc06453b643ee26c38fdaaf8d487b65249e73a8cbcfc2360c65fd970601aec2358e91f14614d227cf33de1a'
-            '52a4c7bedaf369371b8ba081cc255c6afc04a096c1d345ff7ef4e60631243a1ca20ea6464f708a3ed330ed9c2826dd895eeb1d84a230b6d5d07564000c8f455d')
+            '9e5d95f695bcb5858f8ace8f2f2bf2981b22f46cdbc06453b643ee26c38fdaaf8d487b65249e73a8cbcfc2360c65fd970601aec2358e91f14614d227cf33de1a')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
