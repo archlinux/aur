@@ -7,7 +7,7 @@
 pkgname=chromium-minimum
 _pkgname=chromium
 pkgver=48.0.2564.82
-pkgrel=1
+pkgrel=2
 _launcher_ver=3
 pkgdesc="The open-source project behind Google Chrome, with a minimum number of dependencies."
 arch=('i686' 'x86_64')
@@ -37,7 +37,7 @@ sha256sums=('cda64bf427d01bae7d45863812edcd7fa43176238ec07c7752e42afd3e1714fd'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             'e4192446cc0ab6a5c540599c8a149f4f2208f0014da2786ada6c9544913d7426'
             '6fff45aafa31fb35a032b4e2175a341e08f9d2a9b37c5cf080c318180f558378'
-            '379b746e187de28f80f5a7cd19edcfa31859656826f802a1ede054fcb6dfb221')
+            '4660344789c45c9b9e52cb6d86f7cb6edb297b39320d04f6947e5216d6e5f64c')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
