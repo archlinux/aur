@@ -4,7 +4,7 @@ pkgdesc="ROS - qt_gui_py_common provides common functionality for GUI plugins wr
 url='http://ros.org/wiki/qt_gui_py_common'
 
 pkgname='ros-jade-qt-gui-py-common'
-pkgver='0.2.28'
+pkgver='0.2.29'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
