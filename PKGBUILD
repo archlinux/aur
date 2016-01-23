@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg-full-git-doc
 pkgver=N.78025.g22ee0a5
-pkgrel=1
+pkgrel=2
 pkgdesc="FFmpeg documentation from Git repository"
 arch=('any')
 url="http://www.ffmpeg.org/"
@@ -26,7 +26,7 @@ pkgver() {
 build() {
 	cd "${srcdir}/${pkgname}"
 	
-	msg "Running ffmpeg configure script. Please wait..."
+	msg2 "Running ffmpeg configure script. Please wait..."
 	
 	./configure \
 	        --prefix=/usr \
