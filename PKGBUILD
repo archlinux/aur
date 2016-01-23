@@ -6,7 +6,7 @@ pkgdesc="Generation of high-energy physics events."
 arch=('i686' 'x86_64')
 url="http://home.thep.lu.se/Pythia/"
 license=('GPL')
-makedepends=('autoconf' 'automake' 'make' 'gcc' 'rsync')
+makedepends=('rsync')
 provides=$pkgname
 source=("http://home.thep.lu.se/~torbjorn/pythia8/$_pkgid.tgz"
 'pythia.sh')
