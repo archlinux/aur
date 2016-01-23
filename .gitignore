@@ -1,0 +1,18 @@
+# LaTeX crap
+*.aux
+*.bbl
+*.blg
+*.log
+*.toc
+*.nav
+*.out
+*.snm
+*.vrb
+
+pkg/
+src/
+texlive-tudscr-fonts-*.pkg.tar.xz
+texlive-tudscr-fonts/
+TUD-KOMA-Script*.zip
+.AURINFO
+
