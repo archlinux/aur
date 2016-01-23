@@ -20,7 +20,7 @@ depends=('glib2'
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://github.com/eliostvs/$_pkgname/archive/$pkgver.tar.gz")
-md5sums=('3daec1366376bee4546b93feed183504')
+md5sums=('be3dfda8736e30db64a43e86e81195dc')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
