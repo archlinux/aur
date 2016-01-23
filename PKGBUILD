@@ -12,12 +12,13 @@ _release=R6
 _sdkver=16.4.2.1
 pkgname=intel-media-sdk
 pkgver="$_year"."$_release"
-pkgrel=4
+pkgrel=5
 pkgdesc="Intel Media SDK (only SDK files, no kernel patches, no system modifications)"
 arch=('x86_64')
 url="https://software.intel.com/en-us/intel-media-server-studio"
 license=('custom' 'BSD')
 makedepends=('poppler')
+provides=('libmfx' 'libmfx.a' 'iHD_drv_video.so' 'libmfxhw64.so' 'libmfxsw64.so' 'libmfx_h264la_hw64.so' 'libmfx_vp8d_hw64.so' 'libmfx_vp8e_hw64.so')
 source=('http://registrationcenter-download.intel.com/akdlm/irc_nas/7719/MediaServerStudioEssentials2015R6.tar.gz')
 sha256sums=('c9f9dc6064a6f15c3275f475d795407f6cfaee621fe87221949ba1dbaeb34e93')
 
