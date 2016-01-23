@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=TFTPgui
+GenericName=TFTP Server
+Comment=Run TFTPgui
+Exec=tftpgui
+Icon=tftpgui
+Terminal=false
+Categories=System;

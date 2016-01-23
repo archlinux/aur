@@ -1,0 +1,17 @@
+post_install() {
+  groupadd tftpusers
+  touch /etc/authbind/byport/69
+  chmod 775 /etc/authbind/byport/69
+  chown root:tftpusers /etc/authbind/byport/69
+  echo "Add any TFTPgui users to the tftpusers group."
+  echo "Users will need to login again to refresh group membership."
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  rm /etc/authbind/byport/69
+  groupdel tftpusers
+}
