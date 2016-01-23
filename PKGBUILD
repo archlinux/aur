@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains a C++ parser for the Unified Robot Descript
 url='http://ros.org/wiki/urdf'
 
 pkgname='ros-jade-urdf'
-pkgver='1.11.7'
+pkgver='1.11.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -19,7 +19,6 @@ ros_makedepends=(ros-jade-cmake-modules
   ros-jade-pluginlib)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
-  pcre
   urdfdom
   urdfdom-headers)
 
@@ -28,7 +27,6 @@ ros_depends=(ros-jade-urdf-parser-plugin
   ros-jade-roscpp
   ros-jade-pluginlib)
 depends=(${ros_depends[@]}
-  pcre
   urdfdom
   urdfdom-headers)
 
