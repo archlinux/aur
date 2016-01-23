@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg-full-git-doc
 pkgver=N.78022.gd863785
-pkgrel=1
+pkgrel=2
 pkgdesc="FFmpeg documentation from Git repository"
 arch=('any')
 url="http://www.ffmpeg.org/"
