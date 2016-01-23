@@ -1,0 +1,21 @@
+PR_USER=plexrequests
+PR_DIR=plexrequests
+
+post_install() {
+	getent group ${PR_USER} &>/dev/null || groupadd -r ${PR_USER} >/dev/null
+	getent passwd ${PR_USER} &>/dev/null || useradd -r -g ${PR_USER} -d /home/${PR_USER} -s /bin/false -c ${PR_USER} ${PR_USER} >/dev/null
+	mkdir /home/${PR_USER}
+	chown -R ${PR_USER}:${PR_USER} /home/${PR_USER}
+	chown -R ${PR_USER}:${PR_USER} /opt/${PR_DIR}
+}
+
+post_upgrade() {
+	systemctl daemon-reload
+}
+
+post_remove() {
+	systemctl stop plexrequests.service
+	getent passwd ${PR_USER} &>/dev/null && userdel ${PR_USER} >/dev/null
+	getent group ${PR_USER} &>/dev/null && groupdel ${PR_USER} >/dev/null
+	true
+}
