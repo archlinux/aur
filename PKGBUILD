@@ -4,7 +4,7 @@ pkgdesc="ROS - Base dependencies and support libraries for ROS."
 url='http://ros.org/wiki/roslib'
 
 pkgname='ros-jade-roslib'
-pkgver='1.12.2'
+pkgver='1.12.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
