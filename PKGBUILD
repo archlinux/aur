@@ -2,7 +2,7 @@
 
 pkgname=anki-drive-sdk-git
 pkgver=0.2.0.r23.20141113
-pkgrel=1
+pkgrel=2
 pkgdesc="C implementation of message protocols and data parsing to communicate with Anki Drive vehicles"
 arch=('i686' 'x86_64')
 url="https://github.com/anki/drive-sdk"
@@ -33,6 +33,7 @@ build() {
 package() {
 	cd "$pkgname/build"
 	make DESTDIR="${pkgdir}/usr" install
+	install -Dm644 '../include/ankidrive.h' "${pkgdir}/usr/include/ankidrive.h"
 	# delete hciconfig, because it is already included in optional package bluez-utils
 	rm "${pkgdir}/usr/bin/hciconfig"
 	install -Dm644 '../LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
