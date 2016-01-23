@@ -1,7 +1,7 @@
 # Maintainer: Elio Esteves Duarte <elio.esteves.duarte@gmail.com>
 _pkgname=tomate
 pkgname=python-$_pkgname
-pkgver=0.3.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A pomodoro timer"
 arch=('any')
@@ -19,7 +19,7 @@ depends=('glib2'
 		 'python')
 makedepends=('python-setuptools')
 options=(!emptydirs)
-source=("https://github.com/eliostvs/tomate/archive/$pkgver.tar.gz")
+source=("https://github.com/eliostvs/$_pkgname/archive/$pkgver.tar.gz")
 md5sums=('3daec1366376bee4546b93feed183504')
 
 package() {
