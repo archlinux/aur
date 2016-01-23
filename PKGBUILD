@@ -1,8 +1,8 @@
 # Maintainer: Dan Johansen <strit83 at gmail dot com>
 
 pkgname=arena-tracker
-pkgver=3.26
-pkgrel=3
+pkgver=3.32
+pkgrel=1
 pkgdesc="Tracks your Hearthstone Arena matches and cards"
 arch=('i686' 'x86_64')
 url="https://github.com/supertriodo/Arena-Tracker/"
