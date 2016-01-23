@@ -48,5 +48,5 @@ package() {
   install -Dm644 "$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
 }
 
-md5sums=('a365f86f0d39e31a6d2f7a72e8b2d624'
+md5sums=('c5a30d107a042960194118d74ac760ab'
          '9b63b578ee8130da91bddb4eba560725')
