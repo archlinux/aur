@@ -2,7 +2,7 @@
 
 pkgname=loop-aes
 _pkgname=loop-AES
-pkgver=v3.7f
+pkgver=v3.7g
 pkgrel=1
 pkgdesc="This package provides loadable Linux kernel module loop
 that has AES cipher built-in."
