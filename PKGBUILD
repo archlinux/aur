@@ -5,7 +5,7 @@
 # Contributer: Patrik Plihal <patrik.plihal@gmail.com>
 
 pkgname=ckan-git
-pkgver=v1.14.2.r1.g1519f19
+pkgver=v1.16.0.r2.g73206fc
 pkgrel=1
 pkgdesc="A metadata repository and associated tools for searching, installing, and managing mods for Kerbal Space Program (KSP)"
 arch=('any')
@@ -49,7 +49,8 @@ build() {
     bin/Debug/log4net.dll \
     bin/Debug/Newtonsoft.Json.dll \
     bin/Debug/INIFileParser.dll \
-    bin/Debug/CurlSharp.dll
+    bin/Debug/CurlSharp.dll \
+    bin/Debug/Autofac.dll
 }
 
 check() {
