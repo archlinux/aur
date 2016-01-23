@@ -1,8 +1,8 @@
 # Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
 
 pkgname=samsung-unified-driver
-pkgver=1.00.36
-pkgrel=2
+pkgver=1.00.37
+pkgrel=1
 
 pkgdesc="Unified Linux Driver for Samsung printers and scanners."
 arch=(i686 x86_64)
@@ -12,9 +12,9 @@ depends=('libxml2' 'libusb-compat' 'cups' 'sane')
 
 options=(!strip)
 source=(
-    "http://downloadcenter.samsung.com/content/DR/201510/20151028111741150/uld_v${pkgver}_00.91.tar.gz"
+    "http://downloadcenter.samsung.com/content/DR/201512/20151210091120064/uld_v${pkgver}_00.99.tar.gz"
     "xerox_mfp-smfp.conf")
-sha512sums=('3f824b1af9dd4dd200a289832289ba44841fc85586322126ff44986d1e44a53fab1f9fba247f02eda784773c44801950d39203ee3e083d4fb6a03526a32d76fc'
+sha512sums=('96feb7f7464db616f400f34a61bf6facafe51da9a48e19d6c4e702ea2377e86f5a5f93d085c50c8220396249febbf8e604a9fe27c25324f36ad0e58552af21fb'
             '325d2e3e42bf74663ba0ac3aa0fc3ee70ef5a5197d03c069fac6bc0f8da0d9e12d50e4b59feacef3000eff5a85d3db7f66834809013b18b31532cfea252460ef')
 
 package() {
