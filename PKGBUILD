@@ -4,7 +4,7 @@ pkgdesc="ROS - camera_calibration_parsers contains routines for reading and writ
 url='http://ros.org/wiki/camera_calibration_parsers'
 
 pkgname='ros-jade-camera-calibration-parsers'
-pkgver='1.11.7'
+pkgver='1.11.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -12,6 +12,8 @@ license=('BSD')
 
 ros_makedepends=(ros-jade-rosconsole
   ros-jade-sensor-msgs
+  ros-jade-roscpp
+  ros-jade-roscpp-serialization
   ros-jade-catkin)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
@@ -19,7 +21,9 @@ makedepends=('cmake' 'git' 'ros-build-tools'
   yaml-cpp
   pkg-config)
 
-ros_depends=(ros-jade-sensor-msgs)
+ros_depends=(ros-jade-sensor-msgs
+  ros-jade-roscpp
+  ros-jade-roscpp-serialization)
 depends=(${ros_depends[@]}
   boost
   yaml-cpp)
