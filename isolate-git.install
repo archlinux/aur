@@ -1,0 +1,27 @@
+post_install() {
+  # Check if the isolate group exists (if not, create it)
+  if ! getent group isolate >/dev/null; then
+    groupadd isolate
+
+    echo
+    echo ">>> If you want to run the isolate command without sudo, you should add"
+    echo ">>> yourself to the isolate group, like this:"
+    echo ">>>   # sudo usermod -a -G isolate <your user>"
+    echo ">>> However, keep in mind that:"
+    echo ">>>   1. You will need to logout, in order to make the change effective"
+    echo ">>>   2. No untrusted user should ever be allowed in the isolate group,"
+    echo ">>>      as they may exploit the isolate command to gain root access"
+    echo
+  fi
+
+  # Allow only users in the "isolate" group to run this without sudo
+  chown root:isolate $pkgdir/usr/bin/isolate
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  groupdel isolate
+}
