@@ -4,7 +4,7 @@ pkgdesc="ROS - Single image rectification and color processing."
 url='http://www.ros.org/wiki/image_proc'
 
 pkgname='ros-jade-image-proc'
-pkgver='1.12.14'
+pkgver='1.12.15'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
