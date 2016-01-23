@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains a tool for setting and publishing joint sta
 url='http://www.ros.org/wiki/joint_state_publisher'
 
 pkgname='ros-jade-joint-state-publisher'
-pkgver='1.11.7'
+pkgver='1.11.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
