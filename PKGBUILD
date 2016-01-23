@@ -11,8 +11,10 @@ license=('LGPL')
 depends=('gcc-multilib' 'lib32-util-linux' 'lib32-libsodium' 'lib32-libpgm')
 makedepends=('asciidoc' 'xmlto')
 options=('staticlibs')
-source=("http://download.zeromq.org/$_pkgbasename-$pkgver.tar.gz")
-md5sums=('d0824317348cfb44b8692e19cc73dc3a')
+source=("http://download.zeromq.org/$_pkgbasename-$pkgver.tar.gz"
+        'https://raw.githubusercontent.com/zeromq/cppzmq/a88bf3e0b/zmq.hpp')
+md5sums=('d0824317348cfb44b8692e19cc73dc3a'
+         '3b61c38fca2967e3c7ef252516da5dd1')
 
 prepare() {
   # Needed for new libsodium
