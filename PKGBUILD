@@ -4,7 +4,7 @@ pkgdesc="ROS - Theora_image_transport provides a plugin to image_transport for t
 url='http://www.ros.org/wiki/image_transport_plugins'
 
 pkgname='ros-jade-theora-image-transport'
-pkgver='1.9.2'
+pkgver='1.9.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -15,7 +15,6 @@ ros_makedepends=(ros-jade-cv-bridge
   ros-jade-message-generation
   ros-jade-catkin
   ros-jade-image-transport
-  ros-jade-tf
   ros-jade-rosbag
   ros-jade-pluginlib
   ros-jade-dynamic-reconfigure)
@@ -28,7 +27,6 @@ ros_depends=(ros-jade-cv-bridge
   ros-jade-std-msgs
   ros-jade-message-runtime
   ros-jade-image-transport
-  ros-jade-tf
   ros-jade-rosbag
   ros-jade-pluginlib
   ros-jade-dynamic-reconfigure)
