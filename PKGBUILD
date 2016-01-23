@@ -1,6 +1,6 @@
 # Maintainer: Elio Esteves Duarte <elio.esteves.duarte@gmail.com>
 pkgname=tomate-notify-plugin
-pkgver=0.3.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Tomate plugin that shows screen notifications"
 arch=('any')
