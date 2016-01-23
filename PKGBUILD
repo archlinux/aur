@@ -8,12 +8,13 @@ arch=('i686' 'x86_64')
 url="https://wiki.gnome.org/msitools"
 license=('GPL')
 depends=('libgsf' 'gcab')
-makedepends=('intltool')
+makedepends=('intltool' 'vala')
 source=(http://ftp.gnome.org/pub/GNOME/sources/msitools/${pkgver}/${pkgname}-${pkgver}.tar.xz)
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   ./configure --prefix=/usr
+  sed -i 's|LIBTOOL = $(SHELL) $(top_builddir)/libtool|LIBTOOL = /usr/bin/libtool|g' Makefile
   make
 }
 
