@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Krzyszkowiak <dos@dosowisko.net>
 pkgname=radioedit
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A simple game where you fight evil record label representatives who want to radio edit your amazing single."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('GPL2+')
 depends=('allegro')
 makedepends=('cmake')
 source=(http://dosowisko.net/radioedit/RadioEdit-$pkgver-Linux.tar.gz)
-sha256sums=('911669d707de7fa35682f5f2118322edfcd03e56d46e6c5236a668c6866bda8a')
+sha256sums=('398ba6bf1ce851f6aadcc11ecaec454401b63743bceff3acf9b57be4d608b56b')
 
 build() {
   mkdir "$pkgname/build"
