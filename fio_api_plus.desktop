@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Fio API Plus
+Comment=Processing of bank statements and transactions
+Exec=fio_api_plus
+Icon=view-bank-account-checking
+Terminal=false
+Type=Application
+Categories=Utility;
