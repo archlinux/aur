@@ -8,7 +8,7 @@ arch=('any')
 url="http://www.fio.cz/bank-services/internetbanking-api"
 license=('unknown')
 depends=('java-runtime' 'ttf-font')
-optdepends=('oxygen-icon: for application icon')
+optdepends=('oxygen-icons: for application icon')
 source=(http://www.fio.cz/apps/fio_api_plus.jar
         $pkgname.desktop $pkgname.sh)
 sha256sums=('ffebb6e4008e044b4d552ee6d08828222512c21a520f95c2f16666b3eaa82ce9'
