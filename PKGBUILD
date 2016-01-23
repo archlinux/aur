@@ -2,7 +2,7 @@
 # Contributor: ValdikSS <iam@valdikss.org.ru>
 
 pkgname=osu
-pkgver=20160105
+pkgver=20160123
 pkgrel=1
 
 source=("http://m1.ppy.sh/r/osu!install.exe"
@@ -16,7 +16,7 @@ md5sums=('SKIP'
          '1d285eb3a5bdb6a70da89116dec18441'
          'd9749afe35fdd440e560d03b0a20a695'
          '31bada75b7fe984395423c877d9bd036'
-         '9759a6ed1e0cf16afea7c496f305422f'
+         'b627b6247932f614446b1b1993b4f3cc'
          '33164b758af5645efca61a99f6ddd342')
 
 pkgdesc="Freeware rhythm video game"
