@@ -5,12 +5,12 @@
  
 pkgname=sir
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple image resizer in Qt" 
 arch=('i686' 'x86_64')
 url="http://marek629.github.io/SIR/" 
 license=('GPLv2') 
-depends=('qt5-base' 'qt5-svg' 'exiv2')
+depends=('qt5-base' 'qt5-imageformats' 'qt5-svg' 'exiv2')
 makedepends=('qt5-tools' 'cmake')
 optdepends=("dcraw: RAW images support")
 source=("https://googledrive.com/host/0B9Il9AGwsKEvLVpDVmIwbHVoYlE/sir_$pkgver.tar.gz") 
