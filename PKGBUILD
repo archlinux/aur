@@ -4,7 +4,7 @@ pkgdesc="ROS - rosclean: cleanup filesystem resources (e.g."
 url='http://ros.org/wiki/rosclean'
 
 pkgname='ros-jade-rosclean'
-pkgver='1.12.2'
+pkgver='1.12.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
