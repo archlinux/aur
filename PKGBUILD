@@ -5,20 +5,20 @@
 # Contributor: George Giorgidze <giorgidze@gmail.com>
 # Contributor: William J. Bowman <bluephoenix47@gmail.com>
 pkgname=coq
-pkgver=8.4pl6
+pkgver=8.5
 pkgrel=1
 pkgdesc='Formal proof management system. Full version that includes CoqIDE.'
 arch=('i686' 'x86_64')
 url='http://coq.inria.fr/'
 license=('GPL')
 options=('!emptydirs')
-depends=('gtk2' 'ocaml' 'camlp5-transitional' 'gtksourceview2')
+depends=('gtk2' 'ocaml' 'gtksourceview2')
 makedepends=('ocaml-findlib' 'lablgtk2')
 optdepends=('coq-doc')
 source=("http://coq.inria.fr/distrib/V$pkgver/files/coq-$pkgver.tar.gz")
-md5sums=('2334a98b64578cb81d2b4127e327b368')
-sha1sums=('c89525295659a805661ef91da24ecfb94e226953')
-sha256sums=('a540a231a9970a49353ca039f3544616ff86a208966ab1c593779ae13c91ebd6')
+md5sums=('bf17135c0bb3f50a65114aec1d80e20b')
+sha1sums=('0a0d124b1869d7e20cfcf3f71f086488c146f883')
+sha256sums=('89a92fb8b91e7cb0797d41c87cd13e4b63bee76c32a6dcc3d7c8055ca6a9ae3d')
 
 build() {
   cd "$srcdir/coq-$pkgver"
@@ -27,10 +27,9 @@ build() {
     -prefix '/usr' \
     -mandir '/usr/share/man' \
     -configdir '/etc/xdg/coq/' \
-    -opt \
     -coqide opt \
-    -usecamlp5 \
-    -with-doc no
+    -with-doc no \
+    -usecamlp4
 
   make world
 }
