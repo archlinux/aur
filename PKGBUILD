@@ -4,7 +4,7 @@ pkgdesc="ROS - rosbuild contains scripts for managing the CMake-based build syst
 url='http://ros.org/wiki/rosbuild'
 
 pkgname='ros-jade-rosbuild'
-pkgver='1.12.2'
+pkgver='1.12.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
