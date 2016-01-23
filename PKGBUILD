@@ -9,8 +9,8 @@ license=('GPLv3')
 depends=('python' 'python-werkzeug' 'python-flask-git' 'python-yaml'
          'python-requests' 'python-docutils' 'python-xdg'
          'python-pymongo' 'python-markdown' 'python-dateutil'
-         'python-magic-git' 'uwsgi' 'uwsgi-plugin-python'
-         'python-click' 'python-pygments')
+         'uwsgi' 'uwsgi-plugin-python'
+         'python-click' 'python-pygments' 'python-pytz')
 
 makedepends=('python-setuptools' 'git' 'graphicsmagick' 'npm')
 #checkdepends=('tox' 'python-pytest' 'python-pytest-cov')
