@@ -7,7 +7,7 @@
 
 pkgbase=linux-lts314
 _srcname=linux-3.14
-pkgver=3.14.58
+pkgver=3.14.59
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -30,7 +30,7 @@ source=(https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.{xz,sign}
 # https://www.kernel.org/pub/linux/kernel/v3.x/sha256sums.asc
 sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
             'SKIP'
-            'e65bbccf03522a609b88c8186eef4cdb41c35bd6f9416b767b67c11718e26d6b'
+            'd46594d3ddf56dd6b6b47b48cd0952a62f275bd1b54285d20060550bbb41908b'
             'SKIP'
             'af6a452fcc11cfa6b538f4124b50381f1dc05ca20bf8dc336552fa7cc354bac3'
             'b6f0f344773b51768ca53158a05a16e1328ad0def7b77ca0bce43211216e5cb1'
