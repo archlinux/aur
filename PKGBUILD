@@ -4,7 +4,7 @@
 # Contributor: ValHue <vhuelamo at gmail dot com>
 #
 pkgname="calendar-indicator"
-pkgver="0.3.1"
+pkgver="0.3.4"
 pkgrel="1"
 pkgdesc="An indicator for google calendar."
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ depends=('python' 'shared-mime-info' 'python-beautifulsoup4' 'python-jinja' 'pyt
 makedepends=('python2-distutils-extra' 'python2-polib')
 conflicts=('calendar-indicator-bzr')
 provides=("${pkgname}")
-source=("https://launchpad.net/~atareao/+archive/ubuntu/atareao/+files/${pkgname}_${pkgver}-0extras14.04.3.tar.gz")
-sha256sums=('b63678f1dd11a0fbed852bdf49ce2ea8596ec8bc2498e2f0efbfe1116813913d')
+source=("https://launchpad.net/~atareao/+archive/ubuntu/atareao/+files/${pkgname}_${pkgver}-0extras15.10.0.tar.xz")
+sha256sums=('4fbfbc8826eb823d0bc8dc025c3505740be24787083be53a3007f7fbdd5eb227')
 #install="${pkgname}.install"
 
 build() {
