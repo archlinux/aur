@@ -4,7 +4,7 @@ pkgdesc="ROS - Tutorials showing how to call into rviz internals from python scr
 url='http://ros.org/wiki/rviz_python_tutorial'
 
 pkgname='ros-jade-rviz-python-tutorial'
-pkgver='0.9.1'
+pkgver='0.9.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
