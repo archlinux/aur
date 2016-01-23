@@ -4,7 +4,7 @@ pkgdesc="ROS - roswtf is a tool for diagnosing issues with a running ROS system.
 url='http://ros.org/wiki/roswtf'
 
 pkgname='ros-jade-roswtf'
-pkgver='1.11.13'
+pkgver='1.11.16'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
