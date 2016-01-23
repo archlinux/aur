@@ -17,8 +17,8 @@
 # intel-media-sdk (experimental libmfx support only for x86_64)
 
 pkgname=ffmpeg-full-git
-pkgver=N.78022.gd863785
-pkgrel=2
+pkgver=N.78025.g22ee0a5
+pkgrel=1
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
 url="http://www.ffmpeg.org/"
@@ -53,23 +53,17 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
-
-        # Git, tags available
-        
-	# Method showing version based on Arch Linux Wiki recommendations.
-	#printf "%s" "$(git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
-	
-	# Method showing version based on FFmpeg Git versioning. Preferred.
+	# Git, tags available
+	        
+	# Method showing version based on FFmpeg Git versioning system
 	printf "%s" "$(git describe --tags --match N | tr '-' '.')"
-
 }
 
 prepare() {
 	cd "${srcdir}/${pkgname}"
 	
-        # Add the ALSA library to the Flite LDFLAGS variable and enables the discovery of Flite
-        sed -i 's/-lflite"/-lflite -lasound"/' configure
-        
+	# Add the ALSA library to the Flite LDFLAGS variable and enables the discovery of Flite
+	sed -i 's/-lflite"/-lflite -lasound"/' configure
 }
 
 build() {
@@ -77,102 +71,102 @@ build() {
 	
 	msg "Running ffmpeg configure script. Please wait..."
 	
-        ./configure \
-                --prefix=/usr \
-                --extra-cflags="-I/usr/include/nvidia-sdk" \
-                --extra-ldflags="-Wl,-rpath -Wl,/opt/intel/mediasdk/lib64" \
-                \
-                --enable-rpath \
-                --enable-gpl \
-                --enable-version3 \
-                --enable-nonfree \
-                --enable-gray \
-                --disable-static \
-                --enable-shared \
-                --disable-htmlpages \
-                --disable-podpages \
-                --disable-txtpages \
-                --enable-avresample \
-                --enable-videotoolbox \
-                \
-                --enable-avisynth \
-                --enable-chromaprint \
-                --enable-fontconfig \
-                --enable-frei0r \
-                --enable-gcrypt \
-                --enable-gmp \
-                --enable-gnutls \
-                --enable-ladspa \
-                --enable-libaacplus \
-                --enable-libass \
-                --enable-libbluray \
-                --enable-libbs2b \
-                --enable-libcaca \
-                --enable-libcelt \
-                --enable-libcdio \
-                --enable-libdc1394 \
-                --enable-libdcadec \
-                --enable-libfaac \
-                --enable-libfdk-aac \
-                --enable-libflite \
-                --enable-libfreetype \
-                --enable-libfribidi \
-                --enable-libgme \
-                --enable-libgsm \
-                --enable-libiec61883 \
-                --enable-libilbc \
-                --enable-libkvazaar \
-                --enable-libmfx \
-                --enable-libmodplug \
-                --enable-libmp3lame \
-                --enable-libnut \
-                --enable-libopencore-amrnb \
-                --enable-libopencore-amrwb \
-                --enable-libopencv \
-                --enable-libopenh264 \
-                --enable-libopenjpeg \
-                --enable-libopus \
-                --enable-libpulse \
-                --enable-librubberband \
-                --enable-libquvi \
-                --enable-librtmp  \
-                --enable-libschroedinger \
-                --enable-libshine \
-                --enable-libsmbclient \
-                --enable-libsnappy \
-                --enable-libsoxr \
-                --enable-libspeex \
-                --enable-libssh \
-                --enable-libtesseract \
-                --enable-libtheora \
-                --enable-libtwolame \
-                --enable-libutvideo \
-                --enable-libv4l2 \
-                --enable-libvidstab \
-                --enable-libvo-aacenc \
-                --enable-libvo-amrwbenc \
-                --enable-libvorbis \
-                --enable-libvpx \
-                --enable-libwavpack \
-                --enable-libwebp \
-                --enable-libx264 \
-                --enable-libx265 \
-                --enable-libxavs \
-                --enable-libxcb \
-                --enable-libxcb-shm \
-                --enable-libxcb-xfixes \
-                --enable-libxcb-shape \
-                --enable-libxvid \
-                --enable-libzimg \
-                --enable-libzmq \
-                --enable-libzvbi \
-                --enable-decklink \
-                --enable-nvenc \
-                --enable-openal \
-                --enable-opencl \
-                --enable-opengl \
-                --enable-openssl \
-                --enable-x11grab
+	./configure \
+	        --prefix=/usr \
+	        --extra-cflags="-I/usr/include/nvidia-sdk" \
+	        --extra-ldflags="-Wl,-rpath -Wl,/opt/intel/mediasdk/lib64" \
+	        \
+	        --enable-rpath \
+	        --enable-gpl \
+	        --enable-version3 \
+	        --enable-nonfree \
+	        --enable-gray \
+	        --disable-static \
+	        --enable-shared \
+	        --disable-htmlpages \
+	        --disable-podpages \
+	        --disable-txtpages \
+	        --enable-avresample \
+	        --enable-videotoolbox \
+	        \
+	        --enable-avisynth \
+	        --enable-chromaprint \
+	        --enable-fontconfig \
+	        --enable-frei0r \
+	        --enable-gcrypt \
+	        --enable-gmp \
+	        --enable-gnutls \
+	        --enable-ladspa \
+	        --enable-libaacplus \
+	        --enable-libass \
+	        --enable-libbluray \
+	        --enable-libbs2b \
+	        --enable-libcaca \
+	        --enable-libcelt \
+	        --enable-libcdio \
+	        --enable-libdc1394 \
+	        --enable-libdcadec \
+	        --enable-libfaac \
+	        --enable-libfdk-aac \
+	        --enable-libflite \
+	        --enable-libfreetype \
+	        --enable-libfribidi \
+	        --enable-libgme \
+	        --enable-libgsm \
+	        --enable-libiec61883 \
+	        --enable-libilbc \
+	        --enable-libkvazaar \
+	        --enable-libmfx \
+	        --enable-libmodplug \
+	        --enable-libmp3lame \
+	        --enable-libnut \
+	        --enable-libopencore-amrnb \
+	        --enable-libopencore-amrwb \
+	        --enable-libopencv \
+	        --enable-libopenh264 \
+	        --enable-libopenjpeg \
+	        --enable-libopus \
+	        --enable-libpulse \
+	        --enable-librubberband \
+	        --enable-libquvi \
+	        --enable-librtmp  \
+	        --enable-libschroedinger \
+	        --enable-libshine \
+	        --enable-libsmbclient \
+	        --enable-libsnappy \
+	        --enable-libsoxr \
+	        --enable-libspeex \
+	        --enable-libssh \
+	        --enable-libtesseract \
+	        --enable-libtheora \
+	        --enable-libtwolame \
+	        --enable-libutvideo \
+	        --enable-libv4l2 \
+	        --enable-libvidstab \
+	        --enable-libvo-aacenc \
+	        --enable-libvo-amrwbenc \
+	        --enable-libvorbis \
+	        --enable-libvpx \
+	        --enable-libwavpack \
+	        --enable-libwebp \
+	        --enable-libx264 \
+	        --enable-libx265 \
+	        --enable-libxavs \
+	        --enable-libxcb \
+	        --enable-libxcb-shm \
+	        --enable-libxcb-xfixes \
+	        --enable-libxcb-shape \
+	        --enable-libxvid \
+	        --enable-libzimg \
+	        --enable-libzmq \
+	        --enable-libzvbi \
+	        --enable-decklink \
+	        --enable-nvenc \
+	        --enable-openal \
+	        --enable-opencl \
+	        --enable-opengl \
+	        --enable-openssl \
+	        --enable-x11grab
 	
 	make
 	
