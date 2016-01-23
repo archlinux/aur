@@ -4,10 +4,10 @@ pkgdesc="ROS - Low-level build system macros and infrastructure for ROS."
 url='http://www.ros.org/wiki/catkin'
 
 pkgname='ros-jade-catkin'
-pkgver='0.6.14'
+pkgver='0.6.16'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=()
@@ -19,9 +19,9 @@ makedepends=('cmake' 'git' 'ros-build-tools'
 
 ros_depends=()
 depends=(${ros_depends[@]}
+  python2-catkin-pkg
   gtest
   python2-nose
-  python2-catkin-pkg
   python2-empy
   python2)
 
