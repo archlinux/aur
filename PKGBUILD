@@ -18,7 +18,7 @@
 
 pkgname=ffmpeg-full-git
 pkgver=N.78025.g22ee0a5
-pkgrel=1
+pkgrel=2
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
 url="http://www.ffmpeg.org/"
@@ -53,6 +53,7 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
+	
 	# Git, tags available
 	        
 	# Method showing version based on FFmpeg Git versioning system
@@ -69,7 +70,7 @@ prepare() {
 build() {
 	cd "${srcdir}/${pkgname}"
 	
-	msg "Running ffmpeg configure script. Please wait..."
+	msg2 "Running ffmpeg configure script. Please wait..."
 	
 	./configure \
 	        --prefix=/usr \
