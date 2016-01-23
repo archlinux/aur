@@ -50,7 +50,6 @@ package_glare-themes() {
 		'kvantum-manager: to easily change the Qt themes'
 		'xfwm4: for full Xfce support'
 		'xfce4-notifyd: for full Xfce support'
-		'slim: inludes a SLiM theme'
 		'audacious: includes a Winamp2.x Skin'
 		'qmmp: includes a Winamp 2.x Skin'
 		'palemoon: Inludes a PaleMoon fix'
@@ -92,8 +91,6 @@ package_glare-themes() {
 	install -Dm0644 "${pkgdir}"/usr/share/themes/Glare/EXTRAS/Winamp2.xSkin/Glare.wsz "${pkgdir}"/usr/share/audacious/Skins/Glare.wsz
 	cd "${pkgdir}"/usr/share/lxqt/themes
 	ln -sv ../../themes/Glare/EXTRAS/LXQtTheme/Glare
-	cd "${pkgdir}"/usr/share/slim/themes
-	ln -sv ../../themes/Glare/EXTRAS/SLiMTheme/GlareSimple
 	cd "${pkgdir}"/usr/lib/palemoon/browser/extensions
 	ln -sv ../../../../share/themes/Glare/EXTRAS/PaleMoonFixes/Glare.xpi Glare@ssfgh.com.xpi
 	install -d "${pkgdir}"/usr/share/backgrounds
