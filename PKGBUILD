@@ -15,7 +15,7 @@ depends=('gtk-update-icon-cache'
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://github.com/eliostvs/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('')
+md5sums=('86876c1b4e66e503a77cfde1a4c6836c')
 install=tomate-indicator-plugin.install
 
 package() {
