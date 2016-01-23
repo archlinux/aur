@@ -4,7 +4,7 @@ pkgdesc="ROS - This stack provides Python bindings for Qt."
 url='http://ros.org/wiki/python_qt_binding'
 
 pkgname='ros-jade-python-qt-binding'
-pkgver='0.2.16'
+pkgver='0.2.17'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
