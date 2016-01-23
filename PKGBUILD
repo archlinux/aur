@@ -4,10 +4,15 @@
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
+# Differences between this and [community]/chromium
+# 1) No dependency or support for speech-dispatcher
+# 2a) No support for NaCl, see: https://en.wikipedia.org/wiki/Google_Native_Client
+# 2b) No need to build for x86_64 using [multilib] due to 2a
+
 pkgname=chromium-minimum
 _pkgname=chromium
 pkgver=48.0.2564.82
-pkgrel=2
+pkgrel=3
 _launcher_ver=3
 pkgdesc="The open-source project behind Google Chrome, with a minimum number of dependencies."
 arch=('i686' 'x86_64')
@@ -19,7 +24,6 @@ depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss' 'icu'
          'libvpx' 'perl' 'perl-file-basedir' 'desktop-file-utils'
          'hicolor-icon-theme')
 makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja')
-makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet')
@@ -51,7 +55,7 @@ _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 # instructions on how to build the toolchain from source don't work that well
 # (at least not from within the Chromium 39 source tree).
 # https://sites.google.com/a/chromium.org/dev/nativeclient/pnacl/building-pnacl-components-for-distribution-packagers
-_build_nacl=1
+_build_nacl=0
 if [[ $CARCH == i686 ]]; then
   _build_nacl=0
 fi
