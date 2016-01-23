@@ -4,7 +4,7 @@ pkgdesc="ROS - Tutorial showing how to compile your own C++ program with RViz di
 url='http://ros.org/wiki/librviz_tutorial'
 
 pkgname='ros-jade-librviz-tutorial'
-pkgver='0.9.1'
+pkgver='0.9.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
