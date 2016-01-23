@@ -4,7 +4,7 @@ pkgdesc="ROS - Python ROS message and service generators."
 url='http://www.ros.org/'
 
 pkgname='ros-jade-genpy'
-pkgver='0.5.4'
+pkgver='0.5.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
