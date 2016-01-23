@@ -4,7 +4,7 @@ pkgdesc="ROS - The OctoMap library implements a 3D occupancy grid mapping approa
 url='http://octomap.github.io'
 
 pkgname='ros-jade-octomap'
-pkgver='1.6.8'
+pkgver='1.7.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
