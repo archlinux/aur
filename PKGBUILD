@@ -15,7 +15,7 @@ depends=('gtk3'
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://github.com/eliostvs/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('19026e8ad56ef54b5cacd66c46747e14')
+md5sums=('ae83cc5fa4d7ddced5098f766dd9b17e')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
