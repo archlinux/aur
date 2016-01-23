@@ -3,7 +3,7 @@
 
 pkgname=minecraft-server
 pkgver=1.8.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft server unit files, script, and jar"
 arch=('any')
 url="http://minecraft.net/"
@@ -25,8 +25,8 @@ md5sums=('3acbaef956308c805e8e2d0a03a737e9'
          '2cf6cdf65e0ed6aa6d452943b1e84357'
          'c644abdf293c2f98033a64d732a4945c'
          '5ed78e366146e47f8498347e93ad5423'
-         'd4656f27716fd78ab64344a517b07443'
-         '2a54c072bb414eb6a14867efabfc163a')
+         '8088e2b05ef4d85049dea41585a9070d'
+         '36962e5da95c9f8a2beb910f312f96c6')
 
 package() {
 	install -Dm644 minecraftd.conf              "${pkgdir}/etc/conf.d/minecraft"
@@ -37,6 +37,10 @@ package() {
 	install -Dm644 minecraft_server.${pkgver}.jar "${pkgdir}/srv/minecraft/minecraft_server.${pkgver}.jar"
 	ln -s "minecraft_server.${pkgver}.jar" "${pkgdir}/srv/minecraft/minecraft_server.jar"
 
+	# Link the log files
 	mkdir -p "${pkgdir}/var/log/"
 	ln -s "/srv/minecraft/logs" "${pkgdir}/var/log/minecraft" #&>/dev/null
+
+	# Give the group write permissions and set user or group ID on execution
+	chmod g+ws "${pkgdir}/srv/minecraft"
 }

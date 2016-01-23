@@ -1,7 +1,7 @@
 USER="minecraft"
 SERVER_ROOT="/srv/minecraft"
 
-_update() {
+post_install() {
 	getent group "${USER}" &>/dev/null
 	if [ $? -ne 0 ]; then
 		echo -e "\e[34;1m==>\e[39;1m Adding ${USER} system group... \e[0m"
@@ -24,12 +24,13 @@ _update() {
 	echo -e "\e[34;1m==>\e[39;1m which is generated after the first server start. \e[0m"
 }
 
-post_install() {
-	_update
-}
-
 post_upgrade() {
-	_update
+	chown -R ${USER}:${USER} "${SERVER_ROOT}"
+
+	if [[ -f /etc/conf.d/minecraft.pacnew ]]; then
+		echo -e "\e[34;1m==>\e[39;1m NOTE: There was a new change on how backup files are handled! Please merge the new \e[0m"
+		echo -e "\e[34;1m==>\e[39;1m configuration file into /etc/conf.d/minecraft by e.g. pacdiff. \e[0m"
+	fi
 }
 
 pre_remove() {
@@ -50,6 +51,6 @@ post_remove() {
 	fi
 
 	# Notifying the user of kept dirs
-	[ -d ${SERVER_ROOT} ] && chown root:root ${SERVER_ROOT} && echo -e "\e[34;1m==>\e[39;1m NOTE: Game saves in ${SERVER_ROOT} were kept on your system.\e[0m"
-	[ -d /etc/conf.d/minecraft ] && echo -e "\e[34;1m==>\e[39;1m NOTE: Your configuration file /etc/conf.d/minecraft was kept on your system.\e[0m"
+	[[ -d "${SERVER_ROOT}" ]] && chown -R root:root "${SERVER_ROOT}" && echo -e "\e[34;1m==>\e[39;1m NOTE: Game saves in ${SERVER_ROOT} were kept on your system.\e[0m"
+	[[ -f "/etc/conf.d/minecraft" ]] && echo -e "\e[34;1m==>\e[39;1m NOTE: Your configuration file /etc/conf.d/minecraft was kept on your system.\e[0m"
 }
