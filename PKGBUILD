@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=ffmpeg-full-git-doc
-pkgver=N.78022.gd863785
-pkgrel=2
+pkgver=N.78025.g22ee0a5
+pkgrel=1
 pkgdesc="FFmpeg documentation from Git repository"
 arch=('any')
 url="http://www.ffmpeg.org/"
@@ -16,15 +16,11 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
-
-        # Git, tags available
-        
-	# Method showing version based on Arch Linux Wiki recommendations.
-	#printf "%s" "$(git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
 	
-	# Method showing version based on FFmpeg Git versioning. Preferred.
+	# Git, tags available
+	
+	# Method showing version based on FFmpeg Git versioning system
 	printf "%s" "$(git describe --tags --match N | tr '-' '.')"
-
 }
 
 build() {
@@ -32,11 +28,11 @@ build() {
 	
 	msg "Running ffmpeg configure script. Please wait..."
 	
-        ./configure \
-                --prefix=/usr \
-                --enable-gpl \
-                --disable-manpages \
-                --disable-podpages
+	./configure \
+	        --prefix=/usr \
+	        --enable-gpl \
+	        --disable-manpages \
+	        --disable-podpages
 	
 	make doc
 }
