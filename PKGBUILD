@@ -4,7 +4,7 @@ pkgdesc="ROS - EusLisp ROS message and service generators."
 url='http://www.ros.org/'
 
 pkgname='ros-jade-geneus'
-pkgver='2.2.4'
+pkgver='2.2.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
