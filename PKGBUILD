@@ -1,23 +1,24 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 # NOTE:
-# You need to download the SDK file from Intel's website. (registration required).
-# Look for the Community Edition Free Download.
-# Download website:
-# https://software.intel.com/en-us/intel-media-server-studio
+# This package provides only the files for Intel Media SDK.
+# The proper installation requires a specific (older) Linux kernel version,
+# kernel patches and other system modifications. For the sake of the system
+# this package will not touch the kernel or system libraries.  Only the SDK
+# files will be provided in '/opt'.
 
 _year=2015
 _release=R6
 _sdkver=16.4.2.1
 pkgname=intel-media-sdk
 pkgver="$_year"."$_release"
-pkgrel=2
-pkgdesc="Intel Media SDK"
+pkgrel=3
+pkgdesc="Intel Media SDK (only SDK files, no kernel patches, no system modifications)"
 arch=('x86_64')
 url="https://software.intel.com/en-us/intel-media-server-studio"
 license=('custom' 'BSD')
 makedepends=('poppler')
-source=("file://MediaServerStudioEssentials${_year}${_release}.tar.gz")
+source=('http://registrationcenter-download.intel.com/akdlm/irc_nas/7719/MediaServerStudioEssentials2015R6.tar.gz')
 sha256sums=('c9f9dc6064a6f15c3275f475d795407f6cfaee621fe87221949ba1dbaeb34e93')
 
 prepare() {
