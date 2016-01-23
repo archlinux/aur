@@ -4,26 +4,27 @@ pkgdesc="ROS - A simple viewer for ROS image topics."
 url='http://www.ros.org/wiki/image_view'
 
 pkgname='ros-jade-image-view'
-pkgver='1.12.14'
+pkgver='1.12.15'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-jade-stereo-msgs
+ros_makedepends=(ros-jade-nodelet
   ros-jade-cv-bridge
   ros-jade-sensor-msgs
-  ros-jade-nodelet
+  ros-jade-message-generation
   ros-jade-roscpp
   ros-jade-catkin
   ros-jade-image-transport
   ros-jade-message-filters
   ros-jade-std-srvs
+  ros-jade-stereo-msgs
   ros-jade-rosconsole
-  ros-jade-camera-calibration-parsers)
+  ros-jade-camera-calibration-parsers
+  ros-jade-dynamic-reconfigure)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
-  opencv
   gtk2)
 
 ros_depends=(ros-jade-cv-bridge
@@ -33,9 +34,11 @@ ros_depends=(ros-jade-cv-bridge
   ros-jade-message-filters
   ros-jade-std-srvs
   ros-jade-rosconsole
-  ros-jade-camera-calibration-parsers)
+  ros-jade-camera-calibration-parsers
+  ros-jade-dynamic-reconfigure)
 depends=(${ros_depends[@]}
   opencv
+  python2-numpy
   gtk2)
 
 _tag=release/jade/image_view/${pkgver}-${_pkgver_patch}
