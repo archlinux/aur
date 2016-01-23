@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Bøe <sebastianbooe@gmail.com>
 pkgname=icestorm-git
-pkgver=r144.75421c0
+pkgver=r170.da6ad20
 pkgrel=1
 pkgdesc="Lattice iCE40 FPGAs Bitstream Documentation (Reverse Engineered)"
 arch=('x86_64')
@@ -26,7 +26,9 @@ build() {
     # more widespread on Arch (gcc is in base-devel).
     CXX=gcc
 
-    make CXX=$CXX
+    make \
+        CXX=$CXX \
+        PREFIX=$_prefix
 }
 
 package() {
