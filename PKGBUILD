@@ -4,7 +4,7 @@ pkgdesc="ROS - System-wide logging mechanism for messages sent to the /rosout to
 url='http://ros.org/wiki/rosout'
 
 pkgname='ros-jade-rosout'
-pkgver='1.11.13'
+pkgver='1.11.16'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
