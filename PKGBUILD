@@ -4,7 +4,7 @@ pkgdesc="ROS - This package provides ROS specific hooks for stage."
 url='http://ros.org/wiki/stage_ros'
 
 pkgname='ros-jade-stage-ros'
-pkgver='1.7.4'
+pkgver='1.7.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -18,11 +18,11 @@ ros_makedepends=(ros-jade-rostest
   ros-jade-roscpp
   ros-jade-catkin
   ros-jade-tf
+  ros-jade-std-srvs
   ros-jade-stage)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
-  boost
-  fltk)
+  boost)
 
 ros_depends=(ros-jade-geometry-msgs
   ros-jade-std-msgs
@@ -30,10 +30,10 @@ ros_depends=(ros-jade-geometry-msgs
   ros-jade-nav-msgs
   ros-jade-roscpp
   ros-jade-tf
+  ros-jade-std-srvs
   ros-jade-stage)
 depends=(${ros_depends[@]}
-  boost
-  fltk)
+  boost)
 
 _tag=release/jade/stage_ros/${pkgver}-${_pkgver_patch}
 _dir=stage_ros
