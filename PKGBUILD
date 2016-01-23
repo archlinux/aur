@@ -4,7 +4,7 @@ pkgdesc="ROS - Contains scripts used by the rosboost-cfg tool for determining cf
 url='http://ros.org/wiki/rosboost_cfg'
 
 pkgname='ros-jade-rosboost-cfg'
-pkgver='1.12.2'
+pkgver='1.12.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
