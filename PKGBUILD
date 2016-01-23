@@ -4,7 +4,7 @@ pkgdesc="ROS - The visulalization_marker_tutorials package."
 url='http://ros.org/wiki/visualization_marker_tutorials'
 
 pkgname='ros-jade-visualization-marker-tutorials'
-pkgver='0.9.1'
+pkgver='0.9.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
