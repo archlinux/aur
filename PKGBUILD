@@ -2,13 +2,13 @@
 # Contributor: William J. Bowman <bluephoenix47@gmail.com>
 pkgname=coq-nox
 pkgver=8.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Formal proof management system. Headless version, without CoqIDE.'
 arch=('i686' 'x86_64')
 url='http://coq.inria.fr/'
 license=('GPL')
 options=('!emptydirs')
-depends=('ocaml')
+depends=('ocaml' 'camlp4')
 provides=('coq')
 conflicts=('coq')
 optdepends=('coq-doc')
