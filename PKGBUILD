@@ -5,8 +5,8 @@
 
 _pkgname="calendar-indicator"
 pkgname="${_pkgname}-bzr"
-pkgver="44"
-pkgrel="1"
+pkgver=45
+pkgrel=1
 pkgdesc="An indicator for google calendar."
 arch=('i686' 'x86_64')
 url="http://www.atareao.es/tag/calendar-indicator/"
