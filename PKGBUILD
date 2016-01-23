@@ -4,7 +4,7 @@ pkgdesc="ROS - rosmake is a ros dependency aware build tool which can be used to
 url='http://ros.org/wiki/rosmake'
 
 pkgname='ros-jade-rosmake'
-pkgver='1.12.2'
+pkgver='1.12.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
