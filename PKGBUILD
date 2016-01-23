@@ -4,7 +4,7 @@ pkgdesc="ROS - This package attempts to show the features of ROS step-by-step, i
 url='http://www.ros.org/wiki/roscpp_tutorials'
 
 pkgname='ros-jade-roscpp-tutorials'
-pkgver='0.6.0'
+pkgver='0.6.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
