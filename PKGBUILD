@@ -4,7 +4,7 @@ pkgdesc="ROS - Tutorials showing how to write plugins for RViz."
 url='http://ros.org/wiki/rviz_plugin_tutorials'
 
 pkgname='ros-jade-rviz-plugin-tutorials'
-pkgver='0.9.1'
+pkgver='0.9.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
