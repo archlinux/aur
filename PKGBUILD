@@ -5,9 +5,9 @@ url='http://rtv.github.com/Stage'
 
 pkgname='ros-jade-stage'
 pkgver='4.1.1'
-_pkgver_patch=2
+_pkgver_patch=6
 arch=('any')
-pkgrel=3
+pkgrel=7
 license=('GPL')
 
 ros_makedepends=()
@@ -24,6 +24,7 @@ ros_depends=(ros-jade-catkin)
 depends=(${ros_depends[@]}
   libjpeg-turbo
   mesa
+  fltk
   gtk2)
 
 _tag=release/jade/stage/${pkgver}-${_pkgver_patch}
