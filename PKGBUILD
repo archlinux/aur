@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains a tool to convert Unified Robot Description
 url='http://ros.org/wiki/collada_urdf'
 
 pkgname='ros-jade-collada-urdf'
-pkgver='1.11.7'
+pkgver='1.11.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -21,7 +21,6 @@ ros_makedepends=(ros-jade-urdf
   ros-jade-angles)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]}
-  pcre
   assimp
   collada-dom
   urdfdom
@@ -35,7 +34,6 @@ ros_depends=(ros-jade-urdf
   ros-jade-resource-retriever
   ros-jade-angles)
 depends=(${ros_depends[@]}
-  pcre
   assimp
   collada-dom
   urdfdom
