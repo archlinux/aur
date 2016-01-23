@@ -5,9 +5,9 @@
 pkgbase=linux-zen           # Build -zen kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.4
-_zenpatch=4c2eaec93e196180c01619a3824bbb85db9acf29
+_zenpatch=32f6cae76e09c3112a79bd21bea0627258561c44
 pkgver=4.4
-pkgrel=4
+pkgrel=4.1
 arch=('i686' 'x86_64')
 url="https://github.com/zen-kernel/zen-kernel"
 license=('GPL2')
@@ -28,7 +28,7 @@ sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'b0ee950b79c469c88b885d46b0762c47ed2807124fde2f5b31005ade0bba8ef5'
             '0ace961e76903d1188d4cae4702beadce822a72e2488543327663dea8ecc9baf'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            'c0ac56b5e9414857a52120ac05d6a675a63920b68c8862e17ff07ec8950dddc6'
+            '0ebf6030625524812728fda6c178d7655c2194b528777b9b443ae591891806ef'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
