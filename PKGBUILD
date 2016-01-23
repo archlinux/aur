@@ -4,7 +4,7 @@ pkgdesc="ROS - Integration test suite based on roslaunch that is compatible with
 url='http://ros.org/wiki/rostest'
 
 pkgname='ros-jade-rostest'
-pkgver='1.11.13'
+pkgver='1.11.16'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -19,6 +19,7 @@ makedepends=('cmake' 'git' 'ros-build-tools'
 ros_depends=(ros-jade-rosmaster
   ros-jade-rosunit
   ros-jade-roslaunch
+  ros-jade-rosgraph
   ros-jade-rospy)
 depends=(${ros_depends[@]}
   boost)
