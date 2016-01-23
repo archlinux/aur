@@ -3,7 +3,7 @@
 pkgname=retroarch-git
 _gitname=RetroArch
 epoch=2
-pkgver=1.2.2.r3723.acb4682
+pkgver=1.3.1.r148.473e6ff
 pkgrel=1
 pkgdesc="Simple frontend for the Libretro API"
 arch=('i686' 'x86_64' 'arm' 'armv6h')
