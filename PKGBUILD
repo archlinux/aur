@@ -8,7 +8,7 @@ _gitname=mongoose-server
 # note: depends=() needs separate customization
 
 pkgname=${_pkgname}${_ext}
-pkgver=1.0
+pkgver=6.2
 pkgrel=1
 pkgdesc="An easily configurable cross-platform http server based on mongoose and libconfig."
 arch=('i686' 'x86_64')
