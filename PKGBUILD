@@ -14,7 +14,7 @@ depends=('gtk-update-icon-cache'
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://github.com/eliostvs/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('')
+md5sums=('afc1bdb52b557e73a2a10100fe27af4b')
 install=tomate-statusicon-plugin.install
 
 package() {
