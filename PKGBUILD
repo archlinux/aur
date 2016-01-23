@@ -4,7 +4,7 @@ pkgdesc="ROS - A set of message filters which take in messages and may output th
 url='http://ros.org/wiki/message_filters'
 
 pkgname='ros-jade-message-filters'
-pkgver='1.11.13'
+pkgver='1.11.16'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
