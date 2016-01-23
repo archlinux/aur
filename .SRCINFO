@@ -10,7 +10,7 @@ pkgbase = keeweb-desktop
 	source = keeweb.desktop
 	source = keeweb-desktop.install
 	sha256sums = 4bed2321519ffbf9a35d1abe98cc7e3b4ea4c477fbb8a6ae2f2d4d8ccc040d46
-	sha256sums = 8fd3b677f5d9fd8c2992004cc01fb5629939c94ca81b43d347f8e57ac6c0a70b
+	sha256sums = 214496b02a0833098789514e3af0a65a4c94041448b5503579726c060b1c2d26
 	sha256sums = 78c88e74b4e951d52f328656c6b12dbb1da5a73019a9f2d230be8d0cdfdcfda8
 
 pkgname = keeweb-desktop

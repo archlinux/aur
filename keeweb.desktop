@@ -9,5 +9,4 @@ MimeType=application/x-keepass2;
 Terminal=false
 StartupNotify=false
 Categories=Utility;
-#StartupWMClass=KeePass2
-#X-Desktop-File-Install-Version=0.22
+StartupWMClass=KeeWeb
