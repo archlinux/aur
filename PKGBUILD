@@ -33,8 +33,8 @@ pkgdesc='A desktop oriented kernel and modules with Liquorix patches'
 __basekernel=4.3
 _minor=3
 pkgver=${__basekernel}.${_minor}
-pkgrel=7
-lqxrel=5
+pkgrel=8
+lqxrel=6
 _kernelname=-lqx
 pkgbase=linux-lqx
 pkgname=('linux-lqx' 'linux-lqx-headers' 'linux-lqx-docs')
@@ -55,17 +55,15 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.x
         "http://liquorix.net/sources/${__basekernel}/config.i386"
         "http://liquorix.net/sources/${__basekernel}/config.i386-pae"
         "http://liquorix.net/sources/${__basekernel}/config.amd64"
-        "linux-lqx.preset"
-        "CVE-2016-0728.patch")
+        "linux-lqx.preset")
 
 sha512sums=('d25812043850530fdcfdb48523523ee980747f3c2c1266149330844dae2cba0d056d4ddd9c0f129f570f5d1f6df5c20385aec5f6a2e0755edc1e2f5f93e2c6bc'
             'SKIP'
-            '1627990023381c046c18d7b93a264c952bf3e7f4e8fd0bb7e8bd24e38b4e27adb603eb3ad1b275f5b9c0296c87b5751b75e24dfdbea2bc1cb04256b37535410d'
+            '8bb64422944c1fc1c6b253c4a730d398ea56383c9d5f06c29b8eff1640fef9c923bbf66de48fc6f85b01224b470bf2e217b49564980e4c34a2706ba807c0ed79'
             'd306143e4928790d69ce92a0a96a518d30c5adbc08ad4677d326ec20ae0769bd896485c107299dec31d1c155e4c4432d9b599370f78e2a6168fed58c00f6648a'
             '34b0166199ef40cee4ac39f10800f637d017035163c2064fff80d0c80e4a0ed901b4e4616104082bd11d316bfbccb6e3fa47b1bcfdcdfe0536980de4e01651b1'
             '503617e4630b527376caedcd4dfa121267f0b73f1623f5ff3a27f1b7c0f4b8053e8686afd775bdfcded5dcb0c6c8f7002001ace35c1d4108b21cc240a902ed78'
-            'fe4dcd7b5ec06ec3ec4aa631531469f58f6a7111e2d33affa98a1b8a8d230c5fa7e25ffdf770fe5ce61f249b0ec0ecd69df2858c4029acee0efaadff957858fe'
-            '52a4c7bedaf369371b8ba081cc255c6afc04a096c1d345ff7ef4e60631243a1ca20ea6464f708a3ed330ed9c2826dd895eeb1d84a230b6d5d07564000c8f455d')
+            'fe4dcd7b5ec06ec3ec4aa631531469f58f6a7111e2d33affa98a1b8a8d230c5fa7e25ffdf770fe5ce61f249b0ec0ecd69df2858c4029acee0efaadff957858fe')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
