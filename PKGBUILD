@@ -1,24 +1,20 @@
-# Maintainer: Sabart Otto - Seberm <seberm[at]seberm[dot]com>
+# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+# Contributor: Sabart Otto - Seberm <seberm[at]seberm[dot]com>
 
 pkgname=ctstream
-pkgver=19
+pkgver=24
 pkgrel=1
 pkgdesc="Get URLs of Czech Television video streams for specific entry page"
-url="http://xpisar.wz.cz/ctstream"
 arch=('any')
+url="http://xpisar.wz.cz/ctstream"
 license=('GPLv3')
 depends=('perl' 'perl-libwww' 'perl-xml-xpath' 'perl-json') 
-optdepends=()
-makedepends=()
-conflicts=()
-replaces=()
-backup=()
-source=("http://xpisar.wz.cz/$pkgname/${pkgname}-${pkgver}")
+source=(http://xpisar.wz.cz/$pkgname/$pkgname-$pkgver)
+md5sums=('a86368a7c474feb4ca9d5799d0b35c17')
 
 package() {
-	cd ${srcdir}
-    install -m755 -d ${pkgdir}/usr/bin
-    install -m755 "${pkgname}-${pkgver}" "${pkgdir}/usr/bin/${pkgname}"
+  cd "${srcdir}"
+
+  install -Dm755 $pkgname-$pkgver "${pkgdir}"/usr/bin/$pkgname
 }
 
-md5sums=('1c54413b5ad5836f39cc9b35f97b09ef')
