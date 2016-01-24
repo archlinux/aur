@@ -1,12 +1,12 @@
 # Maintainer: Thomas Hebb <tommyhebb@gmail.com>
 pkgname=chromecast-tools-git
 pkgver=17.de27ed2
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of simple utilities for working with Chromecast USB boot image files"
 arch=('i686' 'x86_64')
 url="https://github.com/tchebb/chromecast-tools"
 license=('GPL')
-depends=()
+depends=('android-tools')
 makedepends=('git')
 provides=('chromecast-tools')
 conflicts=('chromecast-tools')
