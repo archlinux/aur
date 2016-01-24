@@ -87,7 +87,8 @@ package_zarafa-webapp() {
 
 
     # config
-    backup=("etc/webapps/${pkgname}/config.php"
+    backup=("etc/webapps/${pkgname}/debug.php"
+	    "etc/webapps/${pkgname}/config.php"
 	    "etc/webapps/${pkgname}/nginx-location.conf"
 	    "etc/php/conf.d/${pkgname}.ini"
     	    "etc/php/fpm.d/${pkgname}.conf")    
