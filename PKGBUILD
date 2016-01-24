@@ -25,4 +25,5 @@ package() {
     install -Dm755 "woff-info" "$pkgdir/usr/bin/woff-info"
     install -Dm755 "woff-proof" "$pkgdir/usr/bin/woff-proof"
     install -Dm755 "woff-validate" "$pkgdir/usr/bin/woff-validate"
+    sed -i 's|^#! \?/usr/bin/env python|#!/usr/bin/env python2|' $pkgdir/usr/bin/woff-*
 }
