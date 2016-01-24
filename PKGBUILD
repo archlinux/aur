@@ -3,7 +3,7 @@
 pkgname=s
 pkgver=0.1.2
 pkgrel=1
-pkgdesc="Web search from the terminal. Supports google, reddit, amazon, wikipedia, yahoo, duckduckgo, and bing."
+pkgdesc="Web search from the terminal. Supports google, reddit, amazon, twitter, wikipedia, yahoo, duckduckgo, and bing."
 arch=('i686' 'x86_64')
 url="http://github.com/zquestz/s"
 license=('MIT')
