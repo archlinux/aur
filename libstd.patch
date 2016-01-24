@@ -1,0 +1,22 @@
+--- textroom-0.8.2/application/application.pro	2011-01-22 03:25:20.000000000 +0100
++++ textroom-0.8.2/application/application.pro2	2016-01-24 18:36:39.993915633 +0100
+@@ -5,7 +5,8 @@
+     ui
+ 
+ linux-g++ {
+-	INCLUDEPATH += . \
++QMAKE_CXXFLAGS += -std=c++11
++INCLUDEPATH += . \
+ 	    src \
+ 	    src/include \
+ 	    /usr/include \
+--- textroom-0.8.2/library/library.pro	2011-01-17 12:28:32.000000000 +0100
++++ textroom-0.8.2/library/library.pro2	2016-01-24 18:37:34.743582095 +0100
+@@ -6,6 +6,7 @@
+ DESTDIR = $$LIB_DIR 
+ TARGET = flo
+ QT += opengl xml
++QMAKE_CXXFLAGS += -std=c++11
+ 
+ HEADERS += block.h \
+            blockpropertymodel.h \
