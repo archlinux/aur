@@ -1,11 +1,11 @@
 # Author: Einhard Leichtfuß <respiranto@icloud.com>
 pkgname=ctct
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="a simple console contact manager"
 arch=('any')
 url="https://respiranto.de/bash"
-license=('AGPL')
+license=('AGPL3')
 backup=('etc/ctct/config.sh')
 source=("https://respiranto.de/bash/${pkgname}_v$pkgver.tar.xz")
 md5sums=('fcee4a18e2fbf4b3f2514c685a0a8848')
