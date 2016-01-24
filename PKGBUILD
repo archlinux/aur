@@ -30,5 +30,5 @@ package() {
   install -D -m644 "${srcdir}/mudita24.desktop" "${pkgdir}/usr/share/applications/mudita24.desktop"
   install -D -m644 "${srcdir}/mudita24.png"     "${pkgdir}/usr/share/pixmaps/mudita24.png"
   
-  install -D -m644 COPYING "$pkgdir/usr/share/licenses/$pkgbase/COPYING"
+  install -D -m644 COPYING "$pkgdir/usr/share/licenses/mudita24/COPYING"
 }
