@@ -1,8 +1,8 @@
 # Maintainer: Chipster Julien <julien dot chipster @ archlinux dot fr>
 
 pkgname=mailmotion
-pkgver=0.0.1
-pkgrel=3
+pkgver=0.0.2
+pkgrel=1
 pkgdesc="Send email when motion create picture"
 arch=('any')
 url="https://github.com/Chipsterjulien/mailmotion"
@@ -32,6 +32,10 @@ build() {
     go get github.com/op/go-logging
     echo "Install viper"
     go get github.com/spf13/viper
+    echo "Install natsort"
+    go get bitbucket.org/zombiezen/cardcpx/natsort
+    echo "Install email"
+    go get github.com/scorredoira/email
 
     cd "$_builddir"
 
@@ -58,4 +62,4 @@ package() {
         "$pkgdir"/usr/bin/$pkgname || return 1
 }
 
-sha512sums=('756c65f2d7b9267d8ed4ac03aac60d22328f1cedf8c6b65069e7183c178174bdd17a199fa03fcfe100a37cf22d095907b067d4b698d9182ab464ba51d8a0590f')
+sha512sums=('cd25be339e91909013e04c4755316c3c210b71e9c0ce598682b7f41510b760075cce7e820eab87ec810314b5ea853a45009a9df246623dd8e03c4f2112be0509')
