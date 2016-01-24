@@ -3,7 +3,7 @@
 
 pkgname=minetest-git
 _pkgname=minetest
-pkgver=20150606.8383a61
+pkgver=20160123.a594963
 pkgrel=1
 pkgdesc='Infiniminer/Minecraft inspired game'
 url='http://www.minetest.net/'
@@ -30,7 +30,9 @@ prepare() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	cmake . -DCMAKE_INSTALL_PREFIX=/usr
+	cmake . \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DRUN_IN_PLACE=FALSE
 	make
 }
 
