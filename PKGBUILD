@@ -8,8 +8,8 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt-lts             # Build kernel with a different name
 _srcname=linux-3.18
-_pkgver=3.18.24
-_rtpatchver=rt22
+_pkgver=3.18.25
+_rtpatchver=rt23
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -26,19 +26,21 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar."{xz,sign}
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset"
         'change-default-console-loglevel.patch'
-        'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch')
+        'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch'
+        'CVE-2016-0728.patch')
 
 sha256sums=('becc413cc9e6d7f5cc52a3ce66d65c3725bc1d1cc1001f4ce6c32b69eb188cbd'
             'SKIP'
-            'd0397cacc44b9097b0ed03e824453d59d709f11095b40d02ad6e34247086b347'
+            '78df9b97449715fa4e39158fc27fadbdbb50eab04ac29d1374a95bebaf7adfbf'
             'SKIP'
-            '4f79a003202a81d16704e68c5545bf40414ba614771fa56716f02417e0fb3c0d'
+            'f8d608e2237b5da7354d5fafc88644a9736c1ae0a303fc64f360bcb69c78c93d'
             'SKIP'
             '3c876bd83489e56e62629fc09ce85391bef5ef94cb2feab7751841c221c000c6'
             '49202f4733bd9de254083a85d0a17390f78e68fc6e4bea9e91bfce7e8167349e'
             'a8886f2c9896f81f59cf0413b3e380cda2fbdc667eb9ce8dfcb0fceb6d92279f'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '7a42d16108eb9a8eacadef3603527fa1beab857cc4db3bd228858488fb1f3fda')
+            '7a42d16108eb9a8eacadef3603527fa1beab857cc4db3bd228858488fb1f3fda'
+            '03bed5b1c6ef34a917e218a46d38cd1347c5ab5693131996113c6cad275dc4e9')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -70,6 +72,9 @@ prepare() {
   # Stops X from hanging on certain NVIDIA cards
   msg "fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch"
   patch -p1 -i "${srcdir}/fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch"
+  
+  msg "CVE-2016-0728.patch"
+  patch -p1 -i "${srcdir}/CVE-2016-0728.patch"
 
   msg "All patches have successfully been applied"
 
