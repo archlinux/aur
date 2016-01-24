@@ -4,13 +4,14 @@
 
 pkgname=feedthebeast
 pkgver=1.4.11_378
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="Feed The Beast offers many different styles of Minecraft modpacks to the community, catering to all tastes."
 arch=('any')
 url=('http://feed-the-beast.com/')
 license=('Apache')
-depends=('java-runtime' 'hicolor-icon-theme' 'xorg-xrandr' 'ttf-dejavu')
+# libzip is needed for many modpacks.
+depends=('java-runtime' 'hicolor-icon-theme' 'xorg-xrandr' 'ttf-dejavu' 'libzip')
 makedepends=('libicns')
 install=("${pkgname}.install")
 source=("$pkgname"
