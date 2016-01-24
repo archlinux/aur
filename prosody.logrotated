@@ -1,0 +1,9 @@
+/var/log/prosody/prosody.log /var/log/prosody/prosody.err {
+    # olddir /var/log/old/prosody
+    create 644 prosody prosody
+    sharedscripts
+    missingok
+    postrotate
+        /bin/kill -HUP `cat /run/prosody/prosody.pid 2> /dev/null` 2> /dev/null || true
+    endscript
+}
