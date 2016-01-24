@@ -8,8 +8,8 @@
 
 pkgname=bleachbit-cli
 _pkgname=bleachbit
-pkgver=1.8
-pkgrel=2
+pkgver=1.10
+pkgrel=1
 pkgdesc='Deletes unneeded files to free disk space and maintain privacy. CLI version/no GUI.'
 arch=('any')
 url='http://bleachbit.sourceforge.net/'
@@ -17,15 +17,13 @@ conflicts='bleachbit'
 license=('GPL3')
 depends=('python2' 'desktop-file-utils')
 provides=("bleachbit=${pkgver}")
-source=(http://downloads.sourceforge.net/$_pkgname/$_pkgname-$pkgver.tar.bz2
-fix_localization_debug.patch)
-sha256sums=('dbf50fcbf24b8b3dd1c4325cd62352628d089f88a76eab804df5d90c872ee592'
-            'b09c80ae700f4368d4075da371b16c90a0367103418284fb0329db7f9bbba779')
+source=(http://downloads.sourceforge.net/$_pkgname/$_pkgname-$pkgver.tar.bz2)
+sha256sums=('33209c8f11a1417ef61231a34a8468831b1583a000330092034568b0904f6948')
 
-prepare() {
-	cd "$_pkgname-$pkgver"
-	patch -Np1 -i "$srcdir"/fix_localization_debug.patch
-}
+#prepare() {
+#	cd "$_pkgname-$pkgver"
+#	patch -Np1 -i "$srcdir"/foo.patch
+#}
 
 build() {
 	cd "$_pkgname-$pkgver"
