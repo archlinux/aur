@@ -33,7 +33,7 @@ pkgname=('zarafa-webapp'
 groups=('zarafa')
 pkgver=2.1.1
 _pkgrel=2.1.1
-pkgrel=5
+pkgrel=6
 pkgdesc=('WebApp for Zarafa')
 arch=('any')
 url=('http://www.zarafa.com/')
@@ -128,6 +128,8 @@ package_plugin() {
     cd ${srcdir}/zarafa-webapp-${pkgver}/deploy/plugins/${pluginname}/
 
     # plugin
+    depends=('zarafa-webapp')
+    
     mkdir -p ${pkgdir}/usr/share/webapps/zarafa-webapp/plugins/${pluginname}/
     cp -R * ${pkgdir}/usr/share/webapps/zarafa-webapp/plugins/${pluginname}/
     
