@@ -1,5 +1,4 @@
 # Maintainer: Ricky Sheaves <ricky[at]westdowneast[dot]com>
-pkgbase=mudita24
 pkgname=mudita24-svn
 pkgver=1.1.0.r16
 pkgrel=1
@@ -19,13 +18,13 @@ md5sums=( 'SKIP'
           '3f039ae5900c449d1887e34ce1ebfc62')
 
 build() {
-  cd $pkgname/$pkgbase
+  cd $pkgname/mudita24
   cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
   make
 }
 
 package() {
-  cd $pkgname/$pkgbase
+  cd $pkgname/mudita24
   make DESTDIR="${pkgdir}" install
 
   install -D -m644 "${srcdir}/mudita24.desktop" "${pkgdir}/usr/share/applications/mudita24.desktop"
