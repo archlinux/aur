@@ -12,11 +12,13 @@ source=(
 )
 md5sums=('3c9358f147eff195449736c045a11d8b')
 prepare() {
-    sed -i 's|^#!/usr/bin/env python|#!/usr/bin/env python2|' woffTools-master/setup.py
+    sed -i 's|^#!/usr/bin/env python|#!/usr/bin/python2|' woffTools-master/setup.py
+    sed -i '5 i\from setuptools.command import bdist_egg, egg_info' woffTools-master/setup.py
 }
 build() {
     cd "woffTools-master"
     python2 setup.py build
+    python2 setup.py bdist_egg
 }
 package() {
     cd "woffTools-master"
@@ -25,5 +27,13 @@ package() {
     install -Dm755 "woff-info" "$pkgdir/usr/bin/woff-info"
     install -Dm755 "woff-proof" "$pkgdir/usr/bin/woff-proof"
     install -Dm755 "woff-validate" "$pkgdir/usr/bin/woff-validate"
-    sed -i 's|^#! \?/usr/bin/env python|#!/usr/bin/env python2|' $pkgdir/usr/bin/woff-*
+    sed -i 's|^#! \?/usr/bin/env python|#!/usr/bin/python2|' $pkgdir/usr/bin/woff-*
+
+    mkdir -p "$pkgdir/usr/lib/python2.7/site-packages/woffTools/test"
+    mkdir "$pkgdir/usr/lib/python2.7/site-packages/woffTools/tools"
+    install -D Lib/woffTools/*.py "$pkgdir/usr/lib/python2.7/site-packages/woffTools"
+    install -D Lib/woffTools/test/*.py "$pkgdir/usr/lib/python2.7/site-packages/woffTools/test"
+    install -D Lib/woffTools/tools/*.py "$pkgdir/usr/lib/python2.7/site-packages/woffTools/tools"
+    /usr/bin/python2 -m compileall "$pkgdir/usr/lib/python2.7/site-packages/woffTools"
+    install -Dm644 Lib/woffTools.egg-info/PKG-INFO "$pkgdir/usr/lib/python2.7/site-packages/woffTools-0.1beta-py2.7.egg-info"
 }
