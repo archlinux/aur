@@ -1,5 +1,5 @@
---- gsm-1.0-pl13/Makefile.mingw64	1970-01-01 01:00:00.000000000 +0100
-+++ patched/Makefile.mingw64	2013-06-14 18:09:26.811006596 +0200
+--- gsm-1.0-pl14/Makefile.mingw64	1970-01-01 01:00:00.000000000 +0100
++++ patched/Makefile.mingw64	2016-01-24 14:19:54.510980495 +0100
 @@ -0,0 +1,516 @@
 +# Copyright 1992-1996 by Jutta Degener and Carsten Bormann, Technische
 +# Universitaet Berlin.  See the accompanying file "COPYRIGHT" for
@@ -313,9 +313,9 @@
 +		$(RANLIB) $(LIBGSM)
 +
 +$(LIBGSMDLL):	$(LIB) $(GSM_OBJECTS)
-+	$(LD) -shared -Wl,-soname,libgsm.dll.1 -Wl,-out-implib,$(LIBGSMIMPLIB) -o $@.1.0.13 $(GSM_OBJECTS)
-+	$(LN) libgsm.dll.1.0.13 $(LIBGSMDLL).1
-+	$(LN) libgsm.dll.1.0.13 $(LIBGSMDLL)
++	$(LD) -shared -Wl,-soname,libgsm.dll.1 -Wl,-out-implib,$(LIBGSMIMPLIB) -o $@.1.0.14 $(GSM_OBJECTS)
++	$(LN) libgsm.dll.1.0.14 $(LIBGSMDLL).1
++	$(LN) libgsm.dll.1.0.14 $(LIBGSMDLL)
 +
 +
 +# Toast, Untoast and Tcat -- the compress-like frontends to gsm.
@@ -412,11 +412,11 @@
 +		chmod 444 $@
 +
 +$(GSM_INSTALL_BIN)/libgsm.dll:	$(LIBGSMDLL)
-+		-rm $(RMFLAGS) $@ $@.1 $@.1.0.13
-+		cp $?.1.0.13 $@.1.0.13
-+		chmod 755 $@.1.0.13
-+		$(LN) libgsm.dll.1.0.13 $@
-+		$(LN) libgsm.dll.1.0.13 $@.1
++		-rm $(RMFLAGS) $@ $@.1 $@.1.0.14
++		cp $?.1.0.14 $@.1.0.14
++		chmod 755 $@.1.0.14
++		$(LN) libgsm.dll.1.0.14 $@
++		$(LN) libgsm.dll.1.0.14 $@.1
 +
 +$(GSM_INSTALL_LIB)/libgsm.dll.a:	$(LIBGSMIMPLIB)
 +		-rm $(RMFLAGS) $@
