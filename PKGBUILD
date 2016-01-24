@@ -2,7 +2,7 @@
 # Thanks to the maintainers and contributors of the mu binary package
 
 pkgname=mu-git
-pkgver=v0.9.16
+pkgver=0.9.16
 pkgrel=3
 pkgdesc="mu and mu4e from git"
 arch=('i686' 'x86_64')
