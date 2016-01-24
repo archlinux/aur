@@ -16,8 +16,7 @@ prepare() {
 }
 build() {
     cd "woffTools-master"
-    chmod u+x setup.py
-    ./setup.py build
+    python2 setup.py build
 }
 package() {
     cd "woffTools-master"
