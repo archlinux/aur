@@ -1,0 +1,12 @@
+diff -uprNEBZ --suppress-blank-empty a/cmake/Modules/FindMsgPack.cmake b/cmake/Modules/FindMsgPack.cmake
+--- a/cmake/Modules/FindMsgPack.cmake	2016-01-24 16:10:55.764008000 -0600
++++ b/cmake/Modules/FindMsgPack.cmake	2016-01-24 16:34:29.738888295 -0600
+@@ -24,7 +24,7 @@ ENDIF ()
+
+ FIND_PATH(MSGPACK_INCLUDE_DIR msgpack.hpp)
+
+-FIND_LIBRARY(MSGPACK_LIBRARY NAMES msgpack PATHS)
++FIND_LIBRARY(MSGPACK_LIBRARY NAMES msgpack msgpackc PATHS)
+
+ MARK_AS_ADVANCED(MSGPACK_INCLUDE_DIR MSGPACK_LIBRARY)
+
