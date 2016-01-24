@@ -1,11 +1,11 @@
---- 99-jlink.rules	2016-01-21 23:16:01.893833667 +0100
-+++ 99-jlink.rules.new	2016-01-21 23:16:41.974037640 +0100
+--- 99-jlink.rules	2016-01-21 19:26:19.000000000 +0100
++++ 99-jlink.rules_new	2016-01-24 19:46:20.417970854 +0100
 @@ -6,15 +6,15 @@
  # Matches are AND combined, meaning: a==b,c==d,do stuff
  # results in:                        if (a == b) && (c == d) -> do stuff
  #
 -BUS!="usb", ACTION!="add", SUBSYSTEM!=="usb_device", GOTO="jlink_rules_end"
-+ACTION!="add", SUBSYSTEM!=="usb_device", GOTO="jlink_rules_end"
++SUBSYSTEM!="usb_device", ACTION!="add",  GOTO="jlink_rules_end"
  #
  # Give all users read and write access.
  # Note: NOT all combinations are supported by J-Link right now. Some are reserved for future use, but already added here
