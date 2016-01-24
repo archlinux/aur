@@ -1,7 +1,7 @@
 # Maintainer: Tolga Cakir <tolga@cevel.net>
 
 pkgname=sidewinderd
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Linux support for Microsoft SideWinder X4 / X6 and Logitech G710+."
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cmake')
 license=('MIT')
 install=${pkgname}.install
 source=("${pkgname}::https://github.com/tolga9009/sidewinderd/archive/${pkgver}.tar.gz")
-md5sums=('ba34d1a5a89001d0d1892106d4c4146e')
+md5sums=('8cc5358dc5907cff84db417fc1dc2ccd')
 
 prepare() {
 	mkdir -p build
