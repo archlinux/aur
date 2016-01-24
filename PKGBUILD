@@ -6,7 +6,7 @@
 pkgname=flexget
 _pkgname=FlexGet
 pkgver=1.2.436
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
 
@@ -20,32 +20,31 @@ depends=('python2'
          'python2-sqlalchemy'
          'python2-yaml'
          'python2-beautifulsoup4'
-         'python2-guessit>=2.0rc5'
          'python2-html5lib'
          'python2-pyrss2gen' #AUR#
+         'python2-pynzb' #AUR#
          'python2-progressbar'
          'python2-rpyc' #AUR#
          'python2-jinja'
-         'python2-path' #AUR#
          'python2-requests'
          'python2-dateutil'
          'python2-jsonschema'
-         'python2-pytvmaze>=1.4.4' #AUR#
          'python2-tmdb3' #AUR#
-         'python2-pynzb' #AUR#
+         'python2-path' #AUR#
+         'python2-guessit>=2.0rc5'
          'python2-apscheduler' #AUR#
          'python2-flask'
          'python2-flask-restful' #AUR#
-         'python2-flask-restplus' #AUR#
          'python2-ordereddict'
+         'python2-flask-restplus' #AUR#
          'python2-cherrypy>=3.7.0'
          'python2-flask-assets>=0.11' #AUR#
          'python2-cssmin' #AUR#
          'python2-flask-compress'
          'python2-flask-login>=0.3.2'
-         'python2-libsass>=0.8.3'
          'python2-pyparsing>=2.0.3'
          'python2-pyscss>=1.3.4'
+         'python2-pytvmaze>=1.4.4' #AUR#
          )
 optdepends=('python2-guppy: for memusage plugin' #AUR#
             'python2-transmissionrpc: Transmission support' #AUR#
