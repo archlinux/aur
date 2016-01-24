@@ -1,12 +1,11 @@
 # Maintainer: Luca Weiss <WEI16416@spengergasse.at>
-# Contributor: Luca Weiss <WEI16416@spengergasse.at>
 
 pkgname=razercfg-git
 pkgrel=1
-pkgver=razercfg.0.33.r0.g38e5781
+pkgver=0.33.r15.g95e1d71
 pkgver() {
   cd razercfg
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/^razercfg-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 install=razercfg-git.install
 pkgdesc='Configuration utility for Razer devices on Linux systems.'
