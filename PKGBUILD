@@ -3,7 +3,7 @@
 pkgname=pyhenkan-git
 pkgver=r69.0bdaa36
 pkgrel=1
-pkgdesc='Python Transcoding Tools'
+pkgdesc='Transcoding suite built around VapourSynth and FFmpeg'
 arch=('any')
 url='https://github.com/alucryd/pyhenkan'
 license=('GPL3')
