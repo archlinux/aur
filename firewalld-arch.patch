@@ -42,32 +42,6 @@ diff -rupN firewalld.orig/firewalld.spec firewalld/firewalld.spec
  #%attr(0755,root,root) %{_initrddir}/firewalld
  %{_unitdir}/firewalld.service
  %config(noreplace) %{_sysconfdir}/dbus-1/system.d/FirewallD.conf
-diff -rupN firewalld.orig/src/firewall/core/ebtables.py firewalld/src/firewall/core/ebtables.py
---- firewalld.orig/src/firewall/core/ebtables.py	2014-02-27 09:22:50.616500794 +0100
-+++ firewalld/src/firewall/core/ebtables.py	2014-02-27 09:30:27.740690840 +0100
-@@ -37,7 +37,7 @@ class ebtables:
-     ipv = "ipv4"
- 
-     def __init__(self):
--        self._command = "/sbin/ebtables"
-+        self._command = "/usr/bin/ebtables"
- 
-     def __run(self, args):
-         # convert to string list
-diff -rupN firewalld.orig/src/firewall/core/ipXtables.py firewalld/src/firewall/core/ipXtables.py
---- firewalld.orig/src/firewall/core/ipXtables.py	2014-02-27 09:22:50.643166638 +0100
-+++ firewalld/src/firewall/core/ipXtables.py	2014-02-27 09:31:03.532723907 +0100
-@@ -25,8 +25,8 @@ from firewall.core.prog import runProg
- from firewall.core.logger import log
- 
- COMMAND = {
--    "ipv4": "/sbin/iptables",
--    "ipv6": "/sbin/ip6tables",
-+    "ipv4": "/usr/bin/iptables",
-+    "ipv6": "/usr/bin/ip6tables",
- }
- 
- PROC_IPxTABLE_NAMES = {
 diff -rupN firewalld.orig/src/firewall-offline-cmd firewalld/src/firewall-offline-cmd
 --- firewalld.orig/src/firewall-offline-cmd	2014-02-27 09:22:50.616500794 +0100
 +++ firewalld/src/firewall-offline-cmd	2014-02-27 09:28:41.451288466 +0100
