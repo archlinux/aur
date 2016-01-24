@@ -61,10 +61,9 @@ md5sums=('2689688c328c7bb01fd2081e3c959265'
 
 build() {
     # create translations, compress javascript-files
-#    cd ${srcdir}/zarafa-webapp-${pkgver}
-#    ant deploy
-#    ant deploy-plugins
-    echo "build"
+    cd ${srcdir}/zarafa-webapp-${pkgver}
+    ant deploy
+    ant deploy-plugins
 }
 
 package_zarafa-webapp() {
