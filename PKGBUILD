@@ -5,7 +5,7 @@
 
 pkgname=gelemental
 pkgver=1.2.0
-pkgrel=7
+pkgrel=8
 pkgdesc="gElemental is a periodic table viewer that provides detailed information on the chemical elements"
 arch=('i686' 'x86_64')
 url="http://www.kdau.com/projects/gelemental/"
@@ -38,7 +38,7 @@ build() {
   )
 
   cd ${srcdir}/${pkgname}-${pkgver}
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr CXXFLAGS="--std=c++11"
   make || return 1
 }
 
