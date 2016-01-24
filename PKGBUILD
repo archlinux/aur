@@ -1,11 +1,11 @@
-# Maintainer: Kazuo Teramoto <kaz.rag at gmail dot com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Kazuo Teramoto <kaz.rag at gmail dot com>
 # Contributor: Rémy Oudompheng <remy@archlinux.org>
 # Contributor: Firmicus <francois.archlinux.org>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: bender02 at gmx dot com
 
 pkgname=asymptote-git
-pkgver=2.36.31.g2d94de4
+pkgver=2.36.32.gcd447e1
 pkgrel=1
 pkgdesc="A vector graphics language (like metapost)"
 arch=('i686' 'x86_64')
