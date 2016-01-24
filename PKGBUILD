@@ -3,7 +3,7 @@
 
 pkgname=mu-git
 pkgver=v0.9.16
-pkgrel=2
+pkgrel=3
 pkgdesc="mu and mu4e from git"
 arch=('i686' 'x86_64')
 url="http://www.djcbsoftware.nl/code/mu"
