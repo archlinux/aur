@@ -1,9 +1,8 @@
 # Maintainer: Jan Dolinar <dolik.rce@gmail.com>
 
 pkgbase=upp
-#pkgname=(upp theide umk)
-pkgname=(upp)
-pkgver=8227
+pkgname=(upp theide umk)
+pkgver=9251
 pkgrel=1
 pkgdesc="Radical and innovative multiplatform C++ framework (known as U++)"
 arch=('any')
@@ -16,15 +15,15 @@ optdepends=('libnotify: Enables compiling gtk-styled apps' 'sox: Enables playing
 replaces=()
 backup=()
 options=(!makeflags emptydirs !strip)
-source=("http://downloads.sourceforge.net/project/upp/upp/2015.1/upp-x11-src-$pkgver.tar.gz"
+source=("http://downloads.sourceforge.net/project/upp/upp/2015.2/upp-x11-src-$pkgver.tar.gz"
         'GCC.bm'
         'license.txt'
         'theide.install'
-        'https://upp-mirror.googlecode.com/svn/trunk/uppbox/lpbuild2/theide.1'
-        'https://upp-mirror.googlecode.com/svn/trunk/uppbox/lpbuild2/umk.1'
-        'https://upp-mirror.googlecode.com/svn/trunk/uppbox/lpbuild2/mkfile')
+        'https://raw.githubusercontent.com/ultimatepp/mirror/master/uppbox/lpbuild2/theide.1'
+        'https://raw.githubusercontent.com/ultimatepp/mirror/master/uppbox/lpbuild2/umk.1'
+        'https://raw.githubusercontent.com/ultimatepp/mirror/master/uppbox/lpbuild2/mkfile')
 noextract=()
-md5sums=('b4dae8c2cc15699c91a480c6226cf224'
+md5sums=('e4a453bb587d2f53926bef4ce8d08e2a'
          'a1b57c2231b6b0fa8070941fa4accf72'
          'b214709f096e4f50d61f50988359241e'
          '204e9ece27294b4b73cb3a31f0474d8d'
@@ -56,7 +55,7 @@ build() {
   make -f "$srcdir/mkfile" PKG=ide FLAGS="$FLAGS" NESTS="uppsrc" TIME= COLOR=0 USEMAINCFG=0 JOBS=5 ECHO=0 TARGET="$srcdir/theide"
 }
 
-disabled_package_theide(){
+package_theide(){
   # theide specific settings
   pkgdesc="Modern IDE designed for developping large U++/C++ applications"
   arch=('i686' 'x86_64')
@@ -87,7 +86,7 @@ disabled_package_theide(){
   install -D "$srcdir/theide" "$pkgdir/usr/bin/theide"
 }
 
-disabled_package_umk(){
+package_umk(){
   # theide specific settings
   pkgdesc="Command line builder for U++ applications"
   arch=('i686' 'x86_64')
