@@ -16,7 +16,7 @@
 
 pkgname=ffmpeg-full-git
 pkgver=N.78025.g22ee0a5
-pkgrel=3
+pkgrel=4
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
 url="http://www.ffmpeg.org/"
@@ -25,7 +25,7 @@ depends=(
     'alsa-lib' 'zlib' 'bzip2' 'libpng' 'sdl' 'chromaprint-fftw' 'fontconfig' 'frei0r-plugins'
     'libgcrypt' 'gmp' 'gnutls' 'ladspa' 'libaacplus' 'libass' 'libbluray' 'libbs2b' 'libcaca'
     'celt' 'libcdio-paranoia' 'libdc1394' 'dcadec' 'faac' 'libfdk-aac' 'flite-fpic' 'freetype2'
-    'fribidi' 'libgme' 'gsm' 'libiec61883' 'libilbc' 'kvazaar' 'libmodplug' 'lame'
+    'fribidi' 'libgme' 'gsm' 'libiec61883' 'libilbc' 'kvazaar' 'libmodplug' 'lame' 'netcdf'
     'nut-multimedia-git' 'opencore-amr' 'opencv' 'openh264' 'openjpeg' 'opus' 'pulseaudio'
     'rubberband' 'libquvi0.4' 'rtmpdump' 'schroedinger' 'shine' 'smbclient' 'libavc1394'
     'snappy' 'libsoxr' 'speex' 'libssh' 'tesseract' 'libtheora' 'twolame' 'libutvideo-asm-git'
@@ -160,6 +160,7 @@ build() {
 	        --enable-libzmq \
 	        --enable-libzvbi \
 	        --enable-decklink \
+	        --enable-netcdf \
 	        --enable-nvenc \
 	        --enable-openal \
 	        --enable-opencl \
