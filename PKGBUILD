@@ -13,9 +13,9 @@ pkgver() {
   cd "$srcdir/$pkgname"
   printf "0.10.r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
-pkgdesc="Lightweight and extensible Jabber/XMPP server written in Lua (nightly builds)"
-arch=('i686' 'x86_64')
-url="http://prosody.im/"
+pkgdesc="Lightweight and extensible Jabber/XMPP server written in Lua (development build from trunk-branch)"
+arch=('i686' 'x86_64' 'armv7h')
+url="https://prosody.im/"
 license=('MIT')
 depends=('lua51' 'lua51-socket' 'lua51-expat' 'lua51-filesystem' 'libidn'
          'openssl')
@@ -27,7 +27,7 @@ optdepends=('lua51-sec: TLS encryption support'
 install=prosody.install
 backup=('etc/logrotate.d/prosody'
         'etc/prosody/prosody.cfg.lua')
-source=("prosody-hg::hg+http://hg.prosody.im/trunk"
+source=("prosody-hg::hg+https://hg.prosody.im/trunk"
         'prosody.logrotated'
         'prosody.tmpfile.d'
         'sysuser.conf'
