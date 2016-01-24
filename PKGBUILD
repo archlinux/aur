@@ -1,6 +1,6 @@
 #Maintained by: fordprefect <fordprefect@dukun.de>
 _cranname=curl
-_cranver=0.9.3
+_cranver=0.9.5
 pkgname=r-cran-$_cranname
 pkgver=$_cranver
 pkgrel=1
@@ -10,7 +10,7 @@ arch=('any')
 license=('MIT')
 depends=('r')
 source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('ded5b4b4db19adea5236e7fc1a076d22')
+md5sums=('b0304ad26375c5fd71b557e6411091cd')
  
 package() {
     mkdir -p ${pkgdir}/usr/lib/R/library
