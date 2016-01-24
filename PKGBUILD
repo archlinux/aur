@@ -1,10 +1,8 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 # FFmpeg compiled from Git repository with all possible libraries.
-# At the current moment the following hardware related libraries
-# are not included:
-#    libstagefright-h264
-#    mmal
+# At the current moment only the 'mmal' option is not enabled because it is a
+# hardware related library that is not for x86. All other options are enabled.
 
 # AUR dependencies
 # ----------------
@@ -18,7 +16,7 @@
 
 pkgname=ffmpeg-full-git
 pkgver=N.78025.g22ee0a5
-pkgrel=2
+pkgrel=3
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
 url="http://www.ffmpeg.org/"
