@@ -9,7 +9,7 @@ pkgver() {
 }
 install=razercfg-git.install
 pkgdesc='Configuration utility for Razer devices on Linux systems.'
-arch=(any)
+arch=('x86_64' 'i686')
 license=('GPLv2')
 source=('razercfg::git+https://github.com/mbuesch/razer.git')
 url='http://bues.ch/cms/hacking/razercfg.html'
