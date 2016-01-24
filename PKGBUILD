@@ -2,7 +2,7 @@
 # Contributor: Stephane Travostino <stephane.travostino@gmail.com>
 
 pkgname=python2-pyftpdlib
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Complete asynchronous FTP server library in Python"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=("python2-sendfile: used to speedup transfers"
             "python2-pyopenssl: used for SSL support")
 conflicts=('pyftpdlib')
 source=("https://pypi.python.org/packages/source/p/pyftpdlib/pyftpdlib-${pkgver}.tar.gz")
-md5sums=('5aeda8287f4e5ba263e48a79f2a246fd')
+md5sums=('0c6f7c447fb702af4d5ca0123003c9fd')
 
 build() {
   cd "$srcdir/pyftpdlib-$pkgver"
