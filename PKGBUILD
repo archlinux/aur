@@ -104,8 +104,8 @@ package_zarafa-webapp() {
     cp ${srcdir}/nginx-ssl.example.conf ${pkgdir}/etc/webapps/${pkgname}/
     cp ${srcdir}/nginx-location.conf ${pkgdir}/etc/webapps/${pkgname}/
     cp zarafa-webapp.conf ${pkgdir}/etc/webapps/${pkgname}/apache.example.conf
-    cp config.php.dist ${pkgdir}/etc/webapps/${pkgname}/config.example.php
-    cp debug.php.dist ${pkgdir}/etc/webapps/${pkgname}/debug.example.php
+    cp ${pkgdir}/etc/webapps/${pkgname}/config.php ${pkgdir}/etc/webapps/${pkgname}/config.example.php
+    cp ${pkgdir}/etc/webapps/${pkgname}/debug.php ${pkgdir}/etc/webapps/${pkgname}/debug.example.php
 
     ## php 
     mkdir -p ${pkgdir}/etc/php/conf.d
@@ -147,8 +147,8 @@ package_plugin() {
 	cp config.php ${pkgdir}/etc/webapps/zarafa-webapp/plugins/${pluginname}/config.php
 	ln -s /etc/webapps/zarafa-webapp/plugins/${pluginname}/config.php ${pkgdir}/usr/share/webapps/zarafa-webapp/plugins/${pluginname}/config.php
 	
-	## config examples	
-	cp config.php ${pkgdir}/etc/webapps/zarafa-webapp/plugins/${pluginname}/config.example.php
+	## config examples
+	cp ${pkgdir}/etc/webapps/zarafa-webapp/plugins/${pluginname}/config.php ${pkgdir}/etc/webapps/zarafa-webapp/plugins/${pluginname}/config.example.php
     fi
 }
 
