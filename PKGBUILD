@@ -2,8 +2,8 @@
 
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-256xresources
-pkgver=9.21
-pkgrel=3
+pkgver=9.22
+pkgrel=1
 pkgdesc="urxvt with patches to support 256 Xresource colors and fixes for line/font spacing"
 arch=('i686' 'x86_64')
 url="http://software.schmorp.de/pkg/rxvt-unicode.html"
@@ -19,13 +19,13 @@ source=(http://dist.schmorp.de/rxvt-unicode/$_pkgname-$pkgver.tar.bz2
         urxvt-tabbed.desktop)
 provides=(rxvt-unicode)
 conflicts=(rxvt-unicode)
-md5sums=('a9a06c608258c5fd247c3725d8f44582'
-         'df0c3a8b6bb0578d1b91e4081c47881c'
-         'd4e03127a0d3bbf2e173850770651b08'
-         'fb78c2ecf87626962734320cc2bb7ab1'
-         'fec94dc986fa37ec380079d81de3e0b2'
-         'fac55f0a8404c86dad3e702146762332'
-         '8a5599197568c63720e282b9722a7990')
+sha256sums=('e94628e9bcfa0adb1115d83649f898d6edb4baced44f5d5b769c2eeb8b95addd'
+            '686770fe4e8d6bb0ba497ad2e1f217d17515f2544d80abe76496c63ead2bfaa4'
+            '546a388d0595404a59c71c3eaeba331031032a75f96c57e9a860f27bbd7ebfcc'
+            'e51a598ee616b5953c991a4135dd1acc13a62f1180a8b842297f5401df55dc69'
+            '5f9c435d559371216d1c5b49c6ec44bfdb786b12d925d543c286b0764dea0319'
+            '91536bb27c6504d6cb0d33775a0c4709a4b439670b900f0c278c25037f19ad66'
+            'ccd7c436e959bdc9ab4f15801a67c695b382565b31d8c352254362e67412afcb')
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
   patch -p0 -i ../256color.patch
