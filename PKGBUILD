@@ -4,11 +4,11 @@ pkgdesc="High performance software library for parallel computing with an easy-t
 url='http://arrayfire.com'
 pkgver=3.2.1
 arch=('i686' 'x86_64')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 makedepends=('cmake' 'graphviz' 'doxygen' 'opencl-headers' 'glfw' 'glew' 'boost' 'git')
 makedepends_x86_64=('cuda' 'nvidia-utils')
-depends=('cblas' 'fftw' 'boost-libs' 'lapack' 'forge' 'freeimage' 'glfw' 'glew')
+depends=('cblas' 'fftw' 'boost-libs' 'lapacke' 'forge' 'freeimage' 'glfw' 'glew')
 optdepends=('cuda: Required for using CUDA backend'
             'nvidia-utils: Required for using CUDA backend'
             'libclc: Required for using OpenCL backend')
