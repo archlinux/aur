@@ -4,7 +4,8 @@
 # Contributor: Dieter Plaetinck <dieter@plaetinck.be>
 
 pkgname=vcsh
-pkgver=1.20150502
+pkgver=1.20151229.1
+_pkgver=1.20151229-1
 pkgrel=1
 pkgdesc='manage config files in HOME via fake bare git repositories'
 arch=('any')
@@ -12,9 +13,9 @@ url='https://github.com/RichiH/vcsh'
 license=('GPL')
 depends=('git')
 optdepends=('myrepos: helps manage a large number of repositories')
-source=("https://github.com/RichiH/vcsh/archive/v${pkgver}.zip")
-_src_dir="vcsh-${pkgver}"
-sha256sums=('4b39f229f6149e46f07a98fc3cb284f4c7e37b99b35f84b2365032e360dcf61f')
+source=("https://github.com/RichiH/vcsh/archive/v${_pkgver}.zip")
+_src_dir="vcsh-${_pkgver}"
+sha256sums=('fbdfc75f2d10520ffd9bf16acdbebf609c73a093ba95fcf73194fed1ed8d177d')
 
 prepare() {
   cd "$srcdir/$_src_dir"
