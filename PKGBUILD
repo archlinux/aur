@@ -2,7 +2,7 @@
 # Contributor: fcpt, Marcel Dopita <m@rcel.cz>, Holodoc
 pkgname=jdownloader2
 pkgver=latest
-pkgrel=7
+pkgrel=8
 pkgdesc='Download manager, written in Java, for one-click hosting sites like Rapidshare and Megaupload. Uses its own updater.'
 arch=('any')
 conflicts=('jdownloader')
@@ -32,7 +32,7 @@ source=('JDownloader'
         'jdownloader.service' )
 sha256sums=('a396cdb10aaa7c67820b2e7dfc9207557f28397d889a81fd8e90694aa3e4ffc6'
             '901e1c17b9fe0cb958c1bf43b711fde3a894fe8d3d193a07f094b5ded6b572f0'
-            '5bdb4044847ef0c71ad1b1cabee9b92b346857763486d499a4a3b4b6f2136659'
+            '34a8885e657dce4cde1c9d1036ea1221e6422597f8965f3ef9d5952e3dc9f71e'
             'c4301592694b3273ed44814debcc03bf1e4fc85882954f5c03e55508c53c4491'
             '44a499df472328f9034f9972aad02df0fc27a45ef1bb3e9314576d2fa9fdfcbe'
             '92cfbe543ee1f9e094347dbd9c0c6a59bd52974145f00dbece8ed0da9a828bfa'

@@ -20,4 +20,11 @@ if [ ! -f "JDownloader.jar" ]; then
 	wget -O JDownloader.jar http://installer.jdownloader.org/JDownloader.jar
 fi
 
-exec java -Djava.awt.headless=true -jar JDownloader.jar -norestart "$@"
+LOGFILE="JDownloader.service.log"
+
+if [ -f "$LOGFILE" ]; then
+  # Save the old Logfile (this automatically removes the n-2 one, if there is one)
+  mv "${LOGFILE}" "${LOGFILE}.old"
+fi 
+echo "All output is redirected to \"$(readlink -f "${LOGFILE}")\"" 
+exec java -Djava.awt.headless=true -jar JDownloader.jar -norestart "$@" >"${LOGFILE}" 2>&1
