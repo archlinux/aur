@@ -1,7 +1,7 @@
 # Contributor: Bug <bug2000@gmail.com>
 # Maintainer: Bug <bug2000@gmail.com>
 pkgname=xpra-winswitch
-pkgver=0.16.0
+pkgver=0.16.1
 pkgrel=1
 pkgdesc="Modified version of xpra by Winswitch"
 arch=('i686' 'x86_64')
@@ -18,16 +18,18 @@ install=xpra-winswitch.install
 source=("https://xpra.org/src/xpra-$pkgver.tar.xz"
         "xpra-winswitch.install"
         'xpra@.service')
-sha256sums=('69ab3d14ffbd4aa34f9d7cda237a8e72183ac395c23252d3882f889a20cc189f'
+sha256sums=('727178e64578679ac0111dd868e01579e8add5384ed40624dee508bf9ed5f677'
             '1b1f8c58e1e8e5aa9816bffb1611a8a704a482ddfe789512159d5727035468f0'
             'b882f72380ca6bdee9580e839440dd5bd3523b9db804095887127b9cce6cfaf2')
 
 build() {
   cd ${srcdir}/xpra-$pkgver
   echo $CFLAGS
+  #python2 setup.py build || return 1
   CFLAGS="$CFLAGS -fno-strict-aliasing" python2 setup.py build || return 1
   cd rencode
-  CFLAGS="$CFLAGS -fno-strict-aliasing" python2 setup.py build || return 1
+  python2 setup.py build || return 1
+  #CFLAGS="$CFLAGS -fno-strict-aliasing" python2 setup.py build || return 1
 }
 
 package() {
