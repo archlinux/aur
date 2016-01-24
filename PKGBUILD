@@ -2,7 +2,7 @@
 
 pkgname=nordlicht-git
 _gitname=nordlicht
-pkgver=20150624
+pkgver=20160124
 pkgrel=1
 pkgdesc="Creates colorful moviebarcodes from video files, comes with a shared C library"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ sha1sums=('SKIP')
 
 build() {
   cd "$srcdir/$_gitname"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr
+  cmake -DCMAKE_INSTALL_LIBDIR=/usr/lib
   make
 }
 
