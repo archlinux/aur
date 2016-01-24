@@ -3,7 +3,7 @@
 pkgname=libfprint-vfs0050
 epoch=1
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for fingerprint readers with vfs0050 driver"
 arch=(i686 x86_64)
 url="https://github.com/zemen/libfprint"
