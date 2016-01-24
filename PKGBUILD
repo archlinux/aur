@@ -1,9 +1,9 @@
 # Maintainer: Josh Ellithorpe <quest at mac dot com>
 
 pkgname=s
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
-pkgdesc="Web search from the terminal. Just opens your default browser."
+pkgdesc="Web search from the terminal. Supports google, reddit, amazon, wikipedia, yahoo, duckduckgo, and bing"
 arch=('i686' 'x86_64')
 url="http://github.com/zquestz/s"
 license=('MIT')
@@ -11,7 +11,7 @@ makedepends=('go' 'git')
 options=('!strip' '!emptydirs')
 provides=("s=${pkgver}")
 source=("https://github.com/zquestz/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('865e264ec56bce7ca77045ec2b723452efff578b469d35061f2ee2437d828dc4')
+sha256sums=('64aceb91b657e0d694de2cc4a006d34abc5b3413fd1c6c55a96a696be42f9f49')
 _gourl="github.com/zquestz/${pkgname}"
 
 build() {
