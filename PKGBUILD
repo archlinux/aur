@@ -3,7 +3,7 @@
 pkgbase=bcc
 pkgname=('bcc' 'bcc-tools' 'python-bcc' 'python2-bcc')
 pkgver=0.1.7
-pkgrel=3
+pkgrel=4
 pkgdesc="BPF Compiler Collection"
 arch=('x86_64')
 url="https://github.com/iovisor/bcc"
@@ -57,6 +57,7 @@ package_bcc() {
 package_bcc-tools() {
   pkgdesc="BPF Compiler Collection - Tools"
   depends=('bcc')
+  conflicts=('bcc-tools-git')
   optdepends=('python-bcc: Python 3 bindings for BCC'
               'python2-bcc: Python 2 bindings for BCC')
 
@@ -75,6 +76,7 @@ package_python-bcc() {
   pkgdesc="BPF Compiler Collection - Python 3 bindings"
   makedepends=('cmake')
   depends=('bcc' 'python')
+  conflicts=('python-bcc-git')
 
   # the C lib s already built, force a quick python3 binding build
   cd "${srcdir}/${pkgbase}-${pkgver}/build"
@@ -92,6 +94,7 @@ package_python2-bcc() {
   pkgdesc="BPF Compiler Collection - Python 2 bindings"
   makedepends=('cmake')
   depends=('bcc' 'python2')
+  conflicts=('python2-bcc-git')
 
   # the C lib s already built, force a quick python2 binding build
   cd "${srcdir}/${pkgbase}-${pkgver}/build"
