@@ -1,6 +1,6 @@
 # Maintainer: Brice Waegeneire <brice dot wge at gmail dot com>
 pkgname=git-subrepo
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Git Submodule Alternative"
 arch=('i686' 'x86_64')
