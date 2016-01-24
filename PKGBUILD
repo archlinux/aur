@@ -5,7 +5,7 @@
 
 pkgname=flexget
 _pkgname=FlexGet
-pkgver=1.2.405
+pkgver=1.2.436
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -20,7 +20,7 @@ depends=('python2'
          'python2-sqlalchemy'
          'python2-yaml'
          'python2-beautifulsoup4'
-         'python2-guessit<0.10.4'
+         'python2-guessit>=2.0rc5'
          'python2-html5lib'
          'python2-pyrss2gen' #AUR#
          'python2-progressbar'
@@ -30,14 +30,14 @@ depends=('python2'
          'python2-requests'
          'python2-dateutil'
          'python2-jsonschema'
-         'python2-pytvmaze>=1.3.9' #AUR#
+         'python2-pytvmaze>=1.4.4' #AUR#
          'python2-tmdb3' #AUR#
          'python2-pynzb' #AUR#
          'python2-apscheduler' #AUR#
          'python2-flask'
          'python2-flask-restful' #AUR#
+         'python2-flask-restplus' #AUR#
          'python2-ordereddict'
-         'python2-flask-restplus072'
          'python2-cherrypy>=3.7.0'
          'python2-flask-assets>=0.11' #AUR#
          'python2-cssmin' #AUR#
@@ -58,15 +58,13 @@ makedepends=('python2-paver'
 source=("https://pypi.python.org/packages/source/F/FlexGet/${_pkgname}-${pkgver}.tar.gz"
         'flexget.service'
         "http://download.flexget.com/ChangeLog"
-        "fix_beautifulsoup_4_4_0.patch"
         )
 
 changelog=ChangeLog
 
-sha256sums=('53aa70863a56640231f02a3c6cc09f96f93fd1dcdbb5c2be892e43b271e34674'
+sha256sums=('a7d44df937220a93476f480861ad78e83631f9366e1d9c41126130f58ab14f76'
             'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
-            'dcc1bc676b8c2b798fa9a7e0ed2b6853323e9e9d8ff696696dddeaf29cbc13d6'
-            '9007c382e68970554ef572dd76411d3df8a37f79d68255410b488a1fc399918b')
+            'dcc1bc676b8c2b798fa9a7e0ed2b6853323e9e9d8ff696696dddeaf29cbc13d6')
 
 prepare() {
   cd "${_pkgname}"-"${pkgver}"
@@ -74,7 +72,6 @@ prepare() {
   msg "Patching shebangs to point to python2"
   sed -i 's/\(python\)/\12/' flexget{,/ui}/__init__.py
 
-  patch < "${srcdir}"/fix_beautifulsoup_4_4_0.patch
 }
 
 package() {
