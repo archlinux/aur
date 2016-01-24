@@ -7,7 +7,7 @@ _git_patches=""
 _git_patches+="783:mono-process-name "
 
 pkgname="sonarr-git"
-pkgver=2.0.0.r6635
+pkgver=2.0.0.r6665
 pkgrel=1
 pkgdesc="Automated TV series manager and downloader - git branch ${_gitbranch}"
 arch=(any)
@@ -70,6 +70,7 @@ build() {
   cd "${_gitname}"
 
   export MONO_IOMAP=case
+  mono ./tools/nuget/nuget.exe restore ./src/NzbDrone.sln
   xbuild ./src/NzbDrone.sln /t:Configuration=Release /t:Build
 
   node ./node_modules/gulp/bin/gulp.js build
