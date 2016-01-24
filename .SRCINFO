@@ -8,6 +8,7 @@ pkgbase = qsyncthingtray
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
+	makedepends = cmake
 	depends = qt5-webengine
 	source = qsyncthingtray-0.4.2b.tar.gz::https://github.com/sieren/QSyncthingTray/archive/0.4.2b.tar.gz
 	md5sums = 1d8d0848136ca94524b27889fadf0e7f
