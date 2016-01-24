@@ -5,7 +5,7 @@
 
 _pkgname=vcsh
 pkgname=vcsh-git
-pkgver=1.20141026.r38.gd5c11e4
+pkgver=1.20151229.1.r0.g87bccfd
 pkgrel=1
 epoch=1
 pkgdesc='manage config files in HOME via fake bare git repositories'
@@ -13,11 +13,11 @@ arch=('any')
 url='https://github.com/RichiH/vcsh'
 license=('GPL')
 depends=('git')
-makedepends=('git' 'ruby-ronn') # perl-shell-command perl-test-most
+makedepends=('git') # perl-shell-command perl-test-most 'ruby-ronn'
 optdepends=('myrepos: helps manage a large number of repositories')
 provides=("vcsh")
 conflicts=("vcsh")
-source=("git://github.com/RichiH/vcsh.git")
+source=("git://github.com/RichiH/vcsh.git#branch=debian")
 md5sums=('SKIP')
 
 pkgver() {
@@ -34,13 +34,13 @@ prepare() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  
-  make manpages
+
+  #make manpages
 }
 
 check() {
   cd "$srcdir/$_pkgname"
-  
+
   # Tests aren't done currently because of the number of flagged aur packages
   #make -k test
 }
