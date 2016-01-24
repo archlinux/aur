@@ -2,9 +2,8 @@
 
 pkgbase=petrified
 pkgname=('petrified' 'petrified-systemd')
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
-changelog=petrified.archlog
 arch=('any')
 url="https://github.com/troyengel/petrified"
 license=('GPL3')
