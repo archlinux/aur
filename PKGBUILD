@@ -1,12 +1,12 @@
 pkgname=simpleorcapluginsystem-git
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="SOPS Provides a simple plugin system for orca include plugins"
 arch=(any)
 license=('GPL3')
 url=('https://github.com/chrys87/simple-orca-plugin-system')
 source=('git+https://github.com/chrys87/simple-orca-plugin-system.git')
-depends=('orca','yad','zenity')
+depends=('orca' 'yad' 'zenity')
 makedepends=('git')
 install='simpleorcapluginsystem-git.install'
 provides=('simpleorcapluginsystem')
