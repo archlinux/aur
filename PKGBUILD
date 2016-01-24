@@ -2,7 +2,7 @@
 # Maintainer: Bug <bug2000@gmail.com>
 pkgname=xpra-winswitch
 pkgver=0.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Modified version of xpra by Winswitch"
 arch=('i686' 'x86_64')
 url='http://xpra.org/'
@@ -19,7 +19,7 @@ source=("https://xpra.org/src/xpra-$pkgver.tar.xz"
         "xpra-winswitch.install"
         'xpra@.service')
 sha256sums=('727178e64578679ac0111dd868e01579e8add5384ed40624dee508bf9ed5f677'
-            '1b1f8c58e1e8e5aa9816bffb1611a8a704a482ddfe789512159d5727035468f0'
+            'ae7cffba6c132517ef4bd41d107ac665d4319dd7f7f606898884e0885cf4ce8f'
             'b882f72380ca6bdee9580e839440dd5bd3523b9db804095887127b9cce6cfaf2')
 
 build() {
@@ -38,4 +38,6 @@ package() {
   python2 setup.py install --root=${pkgdir} || return 1
   cd rencode
   python2 setup.py install --root=${pkgdir} || return 1
+  mkdir -p ${pkgdir}/usr/lib/sysusers.d
+  echo g xpra - - > ${pkgdir}/usr/lib/sysusers.d/xpra.conf
 }
