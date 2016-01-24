@@ -2,17 +2,14 @@
 
 pkgname=brother-dcp1510
 pkgver=3.0.1_1
-pkgrel=1
+pkgrel=2
 pkgdesc="Brother cups and lpr driver for DCP-1510, DCP-1510r, DCP-1511, DCP-1512, DCP-1512r, DCP-1518"
 arch=('i686' 'x86_64')
 url="http://support.brother.com/g/s/id/linux/en/download_prn.html"
 license=('GPL')
-
-if [ "$(uname -m)" = "x86_64" ]; then
- depends=('lib32-libstdc++5' 'psutils' 'cups')
-else
- depends=('psutils' 'cups')
-fi
+depends=('psutils' 'cups')
+depends_x86_64=('lib32-glibc')
+optdepends=('brscan4: scanner support')
 
 source=(http://www.brother.com/pub/bsc/linux/dlf/dcp1510lpr-3.0.1-1.i386.deb
 		http://www.brother.com/pub/bsc/linux/dlf/dcp1510cupswrapper-3.0.1-1.i386.deb)
