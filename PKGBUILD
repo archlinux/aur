@@ -2,7 +2,7 @@
 
 pkgname=vim-singlecompile
 pkgver=2.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='This plugin is aimed at making it more convenient to compile or run a single source file without leaving vim'
 arch=('any')
 license=('GPL')
