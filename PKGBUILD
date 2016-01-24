@@ -31,7 +31,7 @@ package() {
   cd isolate
   make PREFIX="$pkgdir/usr" install install-doc
 
-  # The isolate binary has the suid bit set (to run as root without using sudo)
+  # The isolate binary has the setuid bit set (to run as root without sudo)
   # however we should let only the owner and the group be able to run it:
   chmod o-r-x $pkgdir/usr/bin/isolate
 }

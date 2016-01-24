@@ -15,7 +15,7 @@ post_install() {
   fi
 
   # Allow only users in the "isolate" group to run this without sudo
-  chown root:isolate $pkgdir/usr/bin/isolate
+  chown root:isolate /usr/bin/isolate
 }
 
 post_upgrade() {
