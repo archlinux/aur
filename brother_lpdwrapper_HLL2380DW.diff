@@ -1,0 +1,19 @@
+--- brother_lpdwrapper_HLL2380DW	2016-01-22 20:47:41.000000000 -0800
++++ brother_lpdwrapper_HLL2380DW_new	2016-01-22 21:35:06.270764564 -0800
+@@ -43,15 +43,7 @@
+ $width=-1;
+ $height=-1;
+ 
+-#my $basedir = Cwd::realpath ($0);
+-my $basedir = `readlink $0`;
+-if ( $basedir eq '' ){
+-    $basedir = `realpath $0`;
+-}
+-chomp($basedir);
+-
+-$basedir =~ s/$PRINTER\/cupswrapper\/.*$/$PRINTER\//g;
+-
++my $basedir = "/opt/brother/Printers/HLL2380DW";
+ 
+ %units = ( pt   => \&pt2dot, 
+ 	   mm   => \&mm2dot, 
