@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pyhenkan-git
-pkgver=r63.c8c5ea6
+pkgver=r69.0bdaa36
 pkgrel=1
 pkgdesc='Python Transcoding Tools'
 arch=('any')
@@ -14,9 +14,7 @@ optdepends=('vapoursynth-plugin-flash3kyuu_deband-git: f3kdb deband filter'
             'vapoursynth-plugin-fluxsmooth: FluxSmooth denoise filters'
             'vapoursynth-plugin-ffms2: ffms2 source filter'
             'vapoursynth-plugin-lsmashsource: L-SMASH source filters'
-            'vapoursynth-plugin-temporalsoften-git: TemporalSoften denoise filter'
-            'x264: x264 and x264-10bit encoders'
-            'x265: x265, x265-10bit and x265-12bit encoders')
+            'vapoursynth-plugin-temporalsoften-git: TemporalSoften denoise filter')
 provides=('pyhenkan')
 conflicts=('pyhenkan')
 source=('git+https://github.com/alucryd/pyhenkan.git')
