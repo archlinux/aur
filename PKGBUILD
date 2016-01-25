@@ -1,28 +1,47 @@
 # Maintainer : Antonio Orefice <kokoko3k@gmail.com>
+
 pkgname=gopreload-git
-pkgver=20151202
+_gitname=gopreload
+pkgver=r30.3f5d2de
 pkgrel=1
-pkgdesc="Preloads files needed for given programs."
+pkgdesc="Preloads files needed for given programs"
 arch=('any')
-license=('GPL')
-depends=('strace' 'coreutils')
-conflicts=('gopreload')
 url="http://forums.gentoo.org/viewtopic-t-622085-highlight-preload.html"
-_gitroot="https://github.com/kokoko3k/gopreload"
-install=gopreload.install
+license=('GPL')
+depends=('strace')
+makedepends=('git')
+provides=('gopreload')
+conflicts=('gopreload')
+backup=('etc/gopreload.conf')
+install=${_gitname}.install
+source=('git://github.com/kokoko3k/gopreload.git')
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${_gitname}"
+
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-	rm -R $srcdir/gopreload &>/dev/null || echo "No old repository found, proceding to git clone..."
-	git clone --depth 1 $_gitroot || return 1
-	cd $srcdir/gopreload/usr/share/gopreload/mapandlock.source
-	mv $srcdir/gopreload/README $srcdir/gopreload/usr/share/gopreload/README
-	./compile.sh && ./install.sh
-	rm -R  $srcdir/gopreload/usr/share/gopreload/mapandlock.source
+  cd "${srcdir}/${_gitname}"
+
+  mv README "usr/share/${_gitname}/"
+
+  cd "usr/share/${_gitname}/mapandlock.source"
+  ./compile.sh && ./install.sh
+
+  rm -R  ../mapandlock.source
 }
- 
+
 package() { 
-	mv $srcdir/gopreload/* $pkgdir
-	mkdir -p $pkgdir/usr/bin
-	mkdir -p $pkgdir/usr/lib/systemd/system
-	ln -s /usr/share/gopreload/bin/Prepare.sh $pkgdir/usr/bin/gopreload-prepare
+  cd "${srcdir}/${_gitname}"
+
+  mv * "${pkgdir}"
+
+  mkdir -p "${pkgdir}/usr/bin"
+  ln -s /usr/share/gopreload/bin/Prepare.sh "${pkgdir}/usr/bin/gopreload-prepare"
 }
+
+# vim:set ts=2 sw=2 et:
+
