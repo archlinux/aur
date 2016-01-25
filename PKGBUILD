@@ -4,7 +4,7 @@
 
 pkgname=popcorn-time-ce-git
 _pkgname=popcorn-time-ce
-pkgver=r47.791d12b
+pkgver=r51.40e1eeb
 pkgrel=1
 pkgdesc="Allow anyone to easily watch their favorite movies, shows, and anime"
 arch=('i686' 'x86_64')
@@ -52,21 +52,21 @@ build() {
 package() {
   cd "${srcdir}"
 
-  _bpath="${srcdir}/${_gitname}/build/${_pkgname}/${_platform}"
+  _bpath="${srcdir}/${_gitname}/build/Popcorn-Time-CE/${_platform}"
 
   install -d "${pkgdir}/usr/lib/${_pkgname}"
   install -d "${pkgdir}/usr/lib/${_pkgname}/locales"
   install -d "${pkgdir}/usr/bin"
 
   # Program
-  install -Dm755 "${_bpath}/popcorn-time-ce" "${pkgdir}/usr/lib/${_pkgname}/"
+  install -Dm755 "${_bpath}/Popcorn-Time-CE" "${pkgdir}/usr/lib/${_pkgname}/"
   install -Dm644 "${_bpath}/nw.pak" "${pkgdir}/usr/lib/${_pkgname}/"
   install -Dm644 "${_bpath}/libffmpegsumo.so" "${pkgdir}/usr/lib/${_pkgname}/"
   install -Dm644 "${_bpath}/icudtl.dat" "${pkgdir}/usr/lib/${_pkgname}/"
   install -Dm644 "${_bpath}/locales/"*.pak "${pkgdir}/usr/lib/${_pkgname}/locales/"
 
   # Link to program
-  ln -s "/usr/lib/${_pkgname}/popcorn-time-ce" "${pkgdir}/usr/bin/popcorn-time-ce"
+  ln -s "/usr/lib/${_pkgname}/Popcorn-Time-CE" "${pkgdir}/usr/bin/${_pkgname}"
 
   # Desktop file
   install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
