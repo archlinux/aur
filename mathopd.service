@@ -1,0 +1,14 @@
+[Unit]
+Description=A very small, yet very fast HTTP server for UN*X systems
+After=network.target
+
+[Service]
+Type=simple
+SyslogLevel=notice
+
+ExecStart=/usr/bin/mathopd -f /etc/mathopd/mathopd.cfg
+ExecReload=/usr/bin/kill -HUP $MAINPID
+KillMode=process
+
+[Install]
+WantedBy=multiuser.target
