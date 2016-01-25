@@ -3,7 +3,7 @@
 
 pkgname=plecs-standalone
 _pkgname="plecs"
-pkgver=v3.7.3
+pkgver=v3.7.4
 pkgrel=1
 pkgdesc="A Circuit simulation tool written by plexim (license needed, only demo mode available otherwise)"
 url='http://www.plexim.com/de/products/plecs_standalone'
@@ -14,9 +14,9 @@ provides=('plecs-standalone')
 depends=('octave' 'qt4')
 makedepends=("findutils")
 
-source=("$pkgname-$pkgver.tar.gz::http://www.plexim.com/sites/default/files/packages/plecs-standalone-3-7-3_linux64.tar.gz")
-md5sums=('d69a0f2ee9eabb31cad8a554a4cb0a29')
-sha1sums=('000148d3fe1438abb1bffc44df42bfe9ef30b30c')
+source=("$pkgname-$pkgver.tar.gz::http://www.plexim.com/sites/default/files/packages/plecs-standalone-3-7-4_linux64.tar.gz")
+md5sums=('fba4f9f6998bcfbc6f3ef9c730fc4265')
+sha1sums=('b7f738eee73f025981cdde9ab75669d9135b00b0')
 
 package() {
 	cd "$_pkgname"
