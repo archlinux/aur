@@ -4,7 +4,7 @@
 
 _pkgname=freeminer
 pkgname=${_pkgname}-git
-pkgver=0.4.13.7.989.g65ef866
+pkgver=0.4.13.7.991.g950b602
 pkgrel=2
 pkgdesc='An open source sandbox game inspired by Minecraft. Development version.'
 arch=('i686' 'x86_64')
@@ -22,13 +22,11 @@ source=(
 	"git+https://github.com/${_pkgname}/${_pkgname}.git"
 	"${pkgname}.install"
 	'enet_shared_lib.patch'
-	'msgpackc_fix.patch'
 )
 sha512sums=(
 	'SKIP'
 	'd590345e9b87e4350b7420eebf8f69e4ad65a53415257573b569ed1c85568a40b4f65fc8df5925f7c03af75d340c52a10a4d1389e5d868816aef9711102ebef1'
 	'ac51ee33df27f9fb3bdf16c50b2a9da602d6c55bba7afe21492d0056cdfefa5f84ccfb306c23bd2bcf22066ca3ef2a952110ba0de350602393754f0466383004'
-	'29b589f11bf2fbd8b0c7fa6df82ce2fc08d781dc9bad29e73cff5dd496331da583aededb039344840272423c0dc45fa72b067b5fd4fa05d3fa9aedd9c9757656'
 )
 
 pkgver() {
@@ -42,9 +40,6 @@ prepare() {
 	
 	# Use Arch's enet lib
 	patch -Np1 < ../enet_shared_lib.patch
-
-	# msgpack-c now povides libmsgpackc
-	patch -Np1 < ../msgpackc_fix.patch
 	
 	# Remove src/msgpack-c src/enet and src/jsoncpp submodules
 	git submodule deinit src/{msgpack-c,enet,jsoncpp}
