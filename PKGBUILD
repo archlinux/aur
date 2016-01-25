@@ -3,7 +3,7 @@
 # Contributor: Arthur Vuillard <arthur@hashbang.fr>
 
 pkgname='python-pew'
-pkgver=0.1.18
+pkgver=0.1.19
 pkgrel=1
 pkgdesc="Python Env Wrapper, a set of tools to manage multiple virtual environments"
 url="https://github.com/berdario/pew"
@@ -35,6 +35,6 @@ package() {
     "$pkgdir/usr/share/zsh/site-functions/_pew"
 }
 
-md5sums=('ae383c7aa97f3a94d69931634039543b')
+md5sums=('3ba44da08cad87c930218283eb17120d')
 
 # vim:set ts=2 sw=2 et:
