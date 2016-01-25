@@ -4,29 +4,24 @@
 
 pkgname=bitlbee-facebook
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Facebook protocol plugin for BitlBee'
 arch=('any')
 url='https://github.com/jgeboski/bitlbee-facebook'
 license=('GPL')
 depends=('bitlbee' 'json-glib')
-source=('https://github.com/jgeboski/bitlbee-facebook/archive/v1.0.0.tar.gz')
-sha512sums=('14cf6263c12636465a73f6fa442083af2c2f7bddc101fca84a8a6cec4b8c58cd0d5e0aea3901c25bd27ea7f2eb5b5fb65543a1501db948066cc780f52339a94e')
-
-pkgver() {
-  cd ${pkgname%%-git}
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+source=("https://github.com/jgeboski/$pkgname/archive/v$pkgver.tar.gz")
+sha512sums=('a8e3520c799c8b7b526afe322f6713f9a9d83d8763c06349737b4c759a7c0b4ce64feb362eeba12a80eec0f9db669291b521257d52f316bcaa2b51d80db2789b')
 
 build() {
-  cd ${pkgname%%-git}
+  cd $pkgname-$pkgver
   ./autogen.sh
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd ${pkgname%%-git}
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 }
 
