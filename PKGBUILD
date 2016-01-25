@@ -7,12 +7,12 @@
 pkgbase=nvidia-mainline
 pkgname=(nvidia-mainline nvidia-mainline-dkms)
 pkgver=361.18
-_extramodules=extramodules-4.4-mainline
-pkgrel=1
+_extramodules=extramodules-4.5-mainline
+pkgrel=2
 pkgdesc="NVIDIA drivers for linux-mainline"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-makedepends=('nvidia-libgl' "nvidia-utils=${pkgver}" 'linux-mainline' 'linux-mainline-headers>=4.4rc1' 'linux-mainline-headers<4.5rc1')
+makedepends=('nvidia-libgl' "nvidia-utils=${pkgver}" 'linux-mainline' 'linux-mainline-headers>=4.5rc1' 'linux-mainline-headers<4.6rc1')
 license=('custom')
 options=('!strip')
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
@@ -49,7 +49,7 @@ build() {
 
 package_nvidia-mainline() {
     pkgdesc="NVIDIA drivers for linux-mainline"
-    depends=('linux-mainline>=4.4rc1' 'linux-mainline<4.5rc1' "nvidia-utils=${pkgver}" 'libgl')
+    depends=('linux-mainline>=4.5rc1' 'linux-mainline<4.6rc1' "nvidia-utils=${pkgver}" 'libgl')
     install=nvidia.install
 
     install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia.ko" \
