@@ -1,14 +1,14 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=percona-nagios-plugins
-pkgver=1.1.4
-pkgrel=2
+pkgver=1.1.6
+pkgrel=1
 pkgdesc="Enterprise-grade MySQL monitoring plugins for nagios"
 arch=("any")
 url="http://www.percona.com/software/percona-monitoring-plugins/"
 license=('GPL')
 
-source=("http://www.percona.com/downloads/percona-monitoring-plugins/$pkgver/percona-monitoring-plugins-$pkgver.tar.gz")
+source=("https://www.percona.com/downloads/percona-monitoring-plugins/$pkgver/percona-monitoring-plugins-$pkgver.tar.gz")
 
 package() {
 	cd "$srcdir/percona-monitoring-plugins-$pkgver/nagios/bin"
@@ -18,4 +18,4 @@ package() {
 	done
 }
 
-sha256sums=('ce6b6f19ac6d6c0cbeead5bd3a54adcc91dc51bc14e81c4f0e5109cc5ee8a495')
+sha256sums=('01149ed15831130b6ed2fd72ebeb3f735fc936fd6a193cfb49b09f649a89f89e')
