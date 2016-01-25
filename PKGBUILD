@@ -1,5 +1,5 @@
 pkgname=dnf-plugins-core
-_pkgver=0.1.15
+_pkgver=0.1.16
 _rpmrel=1
 pkgver=$_pkgver.$_rpmrel
 pkgrel=1
@@ -8,10 +8,11 @@ arch=('any')
 url="https://github.com/rpm-software-management/$pkgname"
 license=('GPL2')
 depends=('dnf' 'python')
-makedepends=('cmake')
+makedepends=('cmake' 'python-sphinx')
 checkdepends=('python-nose')
+options=(!emptydirs)
 source=("$url/archive/$pkgname-$_pkgver-$_rpmrel.tar.gz")
-md5sums=('8c793b691d050fd1506105cb042dec98')
+md5sums=('1293667b793a3751d9fab82f876eecf0')
 
 prepare() {
 	mv "$pkgname-$pkgname-$_pkgver-$_rpmrel" "$pkgname-$pkgver"
@@ -28,6 +29,8 @@ build() {
 	      -DPYTHON_DESIRED=3          \
 	      ..
 	make
+	# sphinx-build fails with non UTF-8 locales
+	make LC_ALL=en_US.UTF-8 doc-man
 }
 
 check() {
