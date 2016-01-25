@@ -1,3 +1,4 @@
+# $Id: PKGBUILD 155944 2016-01-11 06:44:32Z fyan $
 # Maintainer: Jiachen Yang <farseerfc@gmail.com>
 # AUR Maintainer: Phil Schaf <flying-sheep@web.de>
 
@@ -16,9 +17,8 @@ md5sums=('1b46eaca5b6e0516ec682459954b210d')
 
 prepare(){
     cp -r "$srcdir/$_pypiname-$pkgver" "$srcdir/$_pypiname-$pkgver-py2"
-    
-
 }
+
 package_python-pdfrw() {
     depends=('python')
     cd "$srcdir/$_pypiname-$pkgver"
