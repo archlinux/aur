@@ -1,0 +1,41 @@
+pre_install() {
+  # Create a system user for journey to run under
+  if [[ ! $(id journey 2>/dev/null) ]]; then
+    /usr/bin/useradd -r -d /usr/lib/journey -s /usr/bin/bash -U -G http journey
+  fi
+}
+
+post_install() {
+  # Fix ownership of files and directories
+  if [[ $(id journey 2>/dev/null) ]]; then
+    chown -R journey:journey /opt/journey
+  fi
+  # Reload to daemon to make sure it finds the service file
+  systemctl daemon-reload
+}
+
+pre_upgrade() {
+  pre_install
+}
+
+post_upgrade() {
+  # Reload systemd for the new/updated service file and restart the service if
+  # it is already running on the system
+  systemctl daemon-reload
+  systemctl condrestart journey.service
+}
+
+pre_remove() {
+  # Stop the service regardless if it is running
+  systemctl stop journey.service
+}
+
+post_remove() {
+  # Remove the user and group
+  if [[ ! $(id journey 2>/dev/null) ]]; then
+    userdel journey
+    groupdel journey
+  fi
+  # Reload systemd for the removed service file
+  systemctl daemon-reload
+}

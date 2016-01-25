@@ -1,0 +1,8 @@
+# Downloads packages
+/*.zip
+# Built packages
+/*.tar.xz
+
+# Temporary build directories
+/src
+/pkg
