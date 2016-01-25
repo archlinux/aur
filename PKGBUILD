@@ -6,7 +6,7 @@
 
 pkgbase=python-sphinx
 pkgname=('python-sphinx' 'python2-sphinx')
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 
 arch=('any')
@@ -36,7 +36,7 @@ checkdepends=(
 )
 
 source=("http://pypi.python.org/packages/source/S/Sphinx/Sphinx-$pkgver.tar.gz")
-md5sums=('a0aa2e92d749d52c678873994dff9e10')
+md5sums=('14bc6413d9863e36fd7204770bd6fcfe')
 
 prepare() {
   # souce duplication is required because makefile modify source code
@@ -74,8 +74,16 @@ check() {
 
 package_python-sphinx() {
   pkgdesc='Python3 documentation generator'
-  depends=('python-jinja' 'python-pygments' 'python-docutils' 'python-sphinx_rtd_theme' 'python-sphinx-alabaster-theme' 'python-babel' 
-'python-snowballstemmer' 'python-six')
+  depends=(
+    'python-jinja'
+    'python-pygments'
+    'python-docutils'
+    'python-sphinx_rtd_theme'
+    'python-sphinx-alabaster-theme'
+    'python-babel'
+    'python-snowballstemmer'
+    'python-six'
+  )
   optdepends=('texlive-latexextra: for generation of PDF documentation')
 
   cd Sphinx-$pkgver
@@ -86,8 +94,16 @@ package_python-sphinx() {
 
 package_python2-sphinx() {
   pkgdesc='Python2 documentation generator'
-  depends=('python2-jinja' 'python2-pygments' 'python2-docutils' 'python2-sphinx_rtd_theme' 'python2-sphinx-alabaster-theme' 'python2-babel' 
-'python2-snowballstemmer' 'python2-six')
+  depends=(
+    'python2-jinja'
+    'python2-pygments'
+    'python2-docutils'
+    'python2-sphinx_rtd_theme'
+    'python2-sphinx-alabaster-theme'
+    'python2-babel'
+    'python2-snowballstemmer'
+    'python2-six'
+  )
   optdepends=('texlive-latexextra: for generation of PDF documentation')
 
   cd Sphinx-${pkgver}2
