@@ -7,20 +7,20 @@
 # - when building ssreflect modify the download location, as mentioned by daoo, and if you have coq 8.4pl4-1 you will have to remove the coq>=8.4 dependency since makepkg gets confused. 
 
 pkgname=ssreflect
-pkgver=1.5
-pkgrel=2
+pkgver=1.6
+pkgrel=1
 pkgdesc="A set of extensions to the scripting language of Coq."
-url="http://ssr.msr-inria.inria.fr/"
+url="https://math-comp.github.io/math-comp/"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('coq<8.5') # 'coq>=8.4'
+depends=('coq=8.5') # Also works with 8.4pl6 but don't quite know how to say that
 makedepends=('camlp5-transitional>=6.12')
-source=(http://ssr.msr-inria.inria.fr/FTP/ssreflect-1.5.tar.gz)
-sha256sums=('bad978693d1bfd0a89586a34678bcc244e3b7efba6431e0f83d8e1ae8f82a142')
-sha512sums=('4d2ece36609ecc38796568e13d3fe093eefa1bd0bd0c062788ef10c639bccba37bc40023098ea609f5877a1afcbc08c346e1a69640203cd95a9e75709816642f')
+source=(mathcomp-$pkgver.tar.gz::https://github.com/math-comp/math-comp/tarball/mathcomp-$pkgver)
+sha256sums=('19c5b5b872f50f8b055b86ea3d42692549813b0ebf1ebc6cfa1f05c8892a1bea')
+sha512sums=('b98e82fc39f44c2c885b739a1693c403278912703910efb54bca27096581074b5e11742a41e48b4923b515b549c3290a26b1d43b8dae0c2b56f85d40f56f5a4b')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/math-comp-math-comp-52a8679/mathcomp/$pkgname
 
   # SSReflect requires *a lot* of memory to build. It can be a good
   # idea add -j1 to the following command to force a sequential build.
@@ -28,7 +28,7 @@ build() {
 }
 
 package(){
-  cd $srcdir/$pkgname-$pkgver
-  make DESTDIR=$pkgdir 'COQLIB:=$(DESTDIR)/$(shell coqtop -where)/' install
+  cd $srcdir/math-comp-math-comp-52a8679/mathcomp/$pkgname
+  make DSTROOT=$pkgdir 'COQLIB:=$(DESTDIR)/$(shell coqtop -where)/' install
 }
 
