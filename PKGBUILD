@@ -3,11 +3,11 @@
 
 pkgname=lwxc-git
 _pkgname=lwxc
-pkgver=c656d4d
+pkgver=r42.c656d4d
 pkgrel=1
 pkgdesc="le wild xmms2 client, a simple media library browser"
 arch=('any')
-url="http://phragment.github.com/lwxc/"
+url='https://github.com/phragment/lwxc'
 license=('GPL3')
 depends=('python' 'python-gobject' 'python-dbus' 'xmms2-git')
 makedepends=('git')
@@ -21,12 +21,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --always | sed 's/-/./g'
-}
-
-build() {
-  cd "$srcdir/$_pkgname"
-  # nothing to do here
+  echo r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 package() {
