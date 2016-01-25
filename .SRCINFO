@@ -1,0 +1,15 @@
+pkgbase = replacer
+	pkgdesc = Replace text in files
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/dmerejkowsky/replacer
+	arch = any
+	license = BSD
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.python.org/packages/source/r/replacer/replacer-1.0.3.tar.gz
+	md5sums = 57dd3ddf75c977dadaf14759903973df
+
+pkgname = replacer
+
