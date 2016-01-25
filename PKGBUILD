@@ -12,7 +12,7 @@ arch=("i686" "x86_64" "armv7l" "armv7h")
 url="https://www.arangodb.com/"
 license=('APACHE')
 depends=("glibc" "gcc-libs" "openssl" "readline" "systemd")
-makedepends=("python2 gcc-go")
+makedepends=("python2 go")
 provides=("arangodb=$pkgver")
 conflicts=("arangodb-latest" "arangodb-git")
 backup=('etc/arangodb/arangob.conf'
