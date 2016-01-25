@@ -3,10 +3,10 @@
 
 pkgname=ppd-toshiba-estudio5560c
 provides="ppd-toshiba-estudio5560c"
-pkgdesc="Printer only driver for the Toshiba e-STUDIO 5560c (and at least one other)"
+pkgdesc="Printer only driver for the Toshiba e-STUDIO 5560c (and at least two others)"
 url="http://www.eid.toshiba.com.au/n_driver_ebx_colour.asp"
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 license=('Propietary')
 depends=('cups')
