@@ -6,12 +6,12 @@
 _bldtype=Release
 #_bldtype=Debug
 
-_uimmozcrev=318.0562676
-_mozcrev=95de40fa884d693172605e7283ec82233a908b29
+_uimmozcrev=320.7072409
+_mozcrev=2628af6995dbbbb9ccdb52d1160db1dbd5ed3bae
 
 pkgname=uim-mozc
 _pkgname=mozc
-pkgver=2.17.2240.102
+pkgver=2.17.2313.102
 pkgrel=1
 pkgdesc="uim plugin module for Mozc"
 arch=('i686' 'x86_64')
@@ -24,11 +24,9 @@ makedepends=('pkg-config' 'python2' 'git' 'ninja' 'clang')
 source=(
   mozc::git+https://github.com/google/mozc.git#commit=${_mozcrev}
   http://downloads.sourceforge.net/project/pnsft-aur/mozc/uim-mozc-${_uimmozcrev}.tar.xz
-  adapt_mozc2.17.2240.102.patch
 )
 sha1sums=('SKIP'
-          '5cd298aaac5afd7ff8882453e3e8fa698c2c5aa1'
-          '031654d8fb40225a6c193d89246b294256ae33f4')
+          'dd2582a4eb854b9feef064681ec8232c856e1f7f')
 
 
 pkgver() {
@@ -52,8 +50,6 @@ prepare() {
   cp -rf "${srcdir}/uim-mozc-${_uimmozcrev}/uim" unix/
   # Extract license part of uim-mozc
   head -n 32 unix/uim/mozc.cc > unix/uim/LICENSE
-
-  patch -p2 -i "${srcdir}/adapt_mozc2.17.2240.102.patch"
 
 }
 
