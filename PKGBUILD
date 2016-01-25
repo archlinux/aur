@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-counterparty-lib-git
-pkgver=20151104
+pkgver=20160124
 pkgrel=1
 pkgdesc="Counterparty Protocol Reference Implementation"
 arch=('any')
@@ -29,7 +29,7 @@ groups=('counterparty')
 url="https://github.com/CounterpartyXCP/counterparty-lib"
 license=('MIT')
 options=('!emptydirs')
-source=(${pkgname%-git}::git+https://github.com/CounterpartyXCP/counterparty-lib)
+source=(${pkgname%-git}::git+https://github.com/CounterpartyXCP/counterparty-lib#branch=develop)
 sha256sums=('SKIP')
 provides=('python-counterparty-lib')
 conflicts=('python-counterparty-lib')
