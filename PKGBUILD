@@ -4,23 +4,32 @@
 pkgname=mist
 pkgver=0.3.8
 _pkgver=0-3-8
-pkgrel=2
+pkgrel=3
 pkgdesc="Ethereum wallet for Ether accounts, wallets and smart contracts (includes Mist browser)."
 arch=('x86_64')
-depends=('gmp'
-         'leveldb'
-         'qt5-base'
-         'qt5-declarative'
-         'qt5-quickcontrols'
-         'qt5-webengine'
-         'readline'
-         'geth')
-provides=('mist'
-          'libnode')
-conflicts=('mist-git'
-           'libnode'
-           'libnode-git')
-url="https://github.com/ethereum/$pkgname"
+depends=(
+  'gmp'
+  'leveldb'
+  'qt5-base'
+  'qt5-declarative'
+  'qt5-quickcontrols'
+  'qt5-webengine'
+  'readline'
+)
+provides=(
+  'mist'
+  'libnode'
+)
+conflicts=(
+  'mist-git'
+  'libnode'
+  'libnode-git'
+)
+optdepends=(
+  'geth: The go-ethereum commandline client.'
+  'ethereum: The cpp-ethereum commandline client.'
+)
+url="https://github.com/ethereum/mist"
 license=('GPL')
 source=("${pkgname}-${_pkgver}.zip::https://github.com/ethereum/$pkgname/releases/download/v${pkgver}/Ethereum-Wallet-linux64-$_pkgver.zip")
 sha256sums=("6a96a2e18e21ce8b1995b508e05d7a59a701a5aa75a82624c4286a7f8ec9eee5")
