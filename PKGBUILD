@@ -5,7 +5,7 @@
 _pkgbasename=python2
 pkgname=lib32-$_pkgbasename
 pkgver=2.7.11
-pkgrel=2
+pkgrel=3
 _pybasever=2.7
 pkgdesc="A high-level scripting language (32 bit)"
 arch=('x86_64')
@@ -88,7 +88,7 @@ package() {
     
     # create symlinks
     ln -s python2.7-32         ${pkgdir}/usr/bin/python2-32
-    ln -s python2.7-32-config  ${pkgdir}/usr/bin/python2-32.config
+    ln -s python2.7-32-config  ${pkgdir}/usr/bin/python2-32-config
 
     # clean up #!s
     find ${pkgdir}/usr/lib32/python2.7/ -name '*.py' | xargs sed -i "s|#[ ]*![ ]*/usr/bin/env python$|#!/usr/bin/env python2.7-32|"
