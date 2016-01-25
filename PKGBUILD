@@ -4,14 +4,14 @@
 # Contributer: Sébastien Luttringer <seblu@aur.archlinux.org>
 pkgbase=(virtualbox-ck-fbcondecor-modules)
 pkgname=(virtualbox-ck-fbcondecor-host-modules virtualbox-ck-fbcondecor-guest-modules)
-pkgver=4.3.20
-pkgrel=4
+pkgver=5.0.12
+pkgrel=1
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
 license=('GPL')
 makedepends=('linux-ck-fbcondecor-headers' "virtualbox-host-dkms>=$pkgver" "virtualbox-guest-dkms>=$pkgver" 'dkms')
 
-_extramodules=extramodules-3.18-ck-fbcondecor
+_extramodules=extramodules-4.3-ck-fbcondecor
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 
 build() {
@@ -31,7 +31,7 @@ package_virtualbox-ck-fbcondecor-host-modules() {
 	#pkgdesc="${_Hpkgdesc}"
 	pkgdesc='Host kernel modules for VirtualBox running under Linux-ck-fbcondecor.'
 	provides=("virtualbox-host-modules")
-	depends=('linux-ck-fbcondecor>=3.18' 'linux-ck-fbcondecor<3.19')
+	depends=('linux-ck-fbcondecor>=4.3' 'linux-ck-fbcondecor<4.4')
 	conflicts=('virtualbox-ck-host-modules-atom' 'virtualbox-ck-host-modules-barcelona' 'virtualbox-ck-host-modules-bulldozer' 'virtualbox-ck-host-modules-corex' 'virtualbox-ck-host-modules-core2' 'virtualbox-ck-host-modules-haswell' 'virtualbox-ck-host-modules-ivybridge' 'virtualbox-ck-host-modules-kx' 'virtualbox-ck-host-modules-k10' 'virtualbox-ck-host-modules-nehalem' 'virtualbox-ck-host-modules-p4' 'virtualbox-ck-host-modules-piledriver' 'virtualbox-ck-host-modules-pentm' 'virtualbox-ck-host-modules-sandybridge')
 	#replaces=('virtualbox-ck-host-modules-corex')
 	#groups=('ck-generic')
@@ -50,7 +50,7 @@ package_virtualbox-ck-fbcondecor-guest-modules() {
 	pkgdesc='Guest kernel modules for VirtualBox running under Linux-ck-fbcondecor.'
 	license=('GPL')
 	provides=("virtualbox-guest-modules")
-	depends=('linux-ck-fbcondecor>=3.18' 'linux-ck-fbcondecor<3.19')
+	depends=('linux-ck-fbcondecor>=4.3' 'linux-ck-fbcondecor<4.4')
 	conflicts=('virtualbox-ck-guest-modules-atom' 'virtualbox-ck-guest-modules-barcelona' 'virtualbox-ck-guest-modules-bulldozer' 'virtualbox-ck-guest-modules-corex' 'virtualbox-ck-guest-modules-core2' 'virtualbox-ck-guest-modules-haswell' 'virtualbox-ck-guest-modules-ivybridge' 'virtualbox-ck-guest-modules-kx' 'virtualbox-ck-guest-modules-k10' 'virtualbox-ck-guest-modules-nehalem' 'virtualbox-ck-guest-modules-p4' 'virtualbox-ck-guest-modules-piledriver' 'virtualbox-ck-guest-modules-pentm' 'virtualbox-ck-guest-modules-sandybridge')
 	#replaces=('virtualbox-ck-guest-modules-corex')
 	#groups=('ck-generic')
@@ -62,4 +62,8 @@ package_virtualbox-ck-fbcondecor-guest-modules() {
 	find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
 	sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='$_extramodules'/" "$startdir/guest.install"
 }
+
+
+
+
 

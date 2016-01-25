@@ -1,5 +1,5 @@
 _depmod() {
-	EXTRAMODULES='extramodules-3.18-ck-fbcondecor'
+	EXTRAMODULES='extramodules-4.3-ck-fbcondecor'
 	depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
 }
 
