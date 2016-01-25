@@ -3,8 +3,8 @@
 
 pkgname=mosquitto-hg
 _hgname=mosquitto
-pkgver=3070.db5147ce80f1
-pkgrel=2
+pkgver=r3142.16b70372e2c4
+pkgrel=1
 pkgdesc="An Open Source MQTT v3.1 Broker"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="http://mosquitto.org/"
@@ -20,13 +20,13 @@ source=("$_hgname::hg+https://bitbucket.org/oojah/mosquitto#branch=1.2"
         'usr_move.patch')
 md5sums=('SKIP'
          'bac7f1ff5c13b9e04e82c875c5f2c422'
-         '8e1c14e99d7eba210b874e80b5153f0d'
+         '8f6f9ab9205f9cfd9148f5372a6dabc6'
          'b37551bbdccf751cdc5ea5b25afd2f5a')
 
 pkgver() {
   cd "$srcdir/$_hgname"
 
-  echo $(hg identify -n).$(hg identify -i)
+  echo r$(hg identify -n).$(hg identify -i)
 }
 
 build() {
