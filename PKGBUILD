@@ -3,7 +3,7 @@
 
 pkgname=pcb2gcode-git
 _pkgname=pcb2gcode
-pkgver=r241.eb2a001
+pkgver=r250.250d53a
 pkgrel=1
 pkgdesc="Gerber to gcode file converter" 
 arch=('i686' 'x86_64')
@@ -13,19 +13,12 @@ makedepends=('git' 'boost')
 depends=('gtkmm' 'boost-libs' 'gerbv-git')
 provides=('pcb2gcode')
 conflicts=('pcb2gcode')
-source=("$_pkgname"::'git://github.com/pcb2gcode/pcb2gcode.git'
-        'glibmm.patch')
-md5sums=('SKIP'
-         '3cc7d7023d3d89332d88a9eaa97eb8bc')
+source=("$_pkgname"::'git://github.com/pcb2gcode/pcb2gcode.git')
+md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$srcdir/$_pkgname"
-  patch -p1 -i ../glibmm.patch
 }
 
 build() {
