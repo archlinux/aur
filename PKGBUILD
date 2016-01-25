@@ -1,6 +1,6 @@
 # Maintainer: Dimitri Merejkowsky <d.merej@gmail.com>
 pkgname=replacer
-pkgver='1.0.3'
+pkgver='1.0.4'
 pkgrel='1'
 pkgdesc='Replace text in files'
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python')
 makedepends=('python' 'python-setuptools')
 
 source=("https://pypi.python.org/packages/source/r/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('57dd3ddf75c977dadaf14759903973df')
+md5sums=('2791e8f2f1f607ffab301bc91178a1b0')
 
 
 build() {
