@@ -18,6 +18,9 @@ MAXHEAP="${MAXHEAP:-1024M}"
 THREADS="${THREADS:-1}"
 JAVA_PARMS="${JAVA_PARMS:-"-Xmx${MAXHEAP} -Xms${MINHEAP} -XX:ParallelGCThreads=${THREADS}"}"
 
+# The actual program name
+declare -r myname="minecraftd"
+
 # Check for sudo rigths
 if [ $(sudo whoami) != "root" ]; then
 	echo "You must have sudo access in order to use this script."
@@ -222,11 +225,11 @@ server_console() {
 
 # Help function, no arguments required
 help() {
-	cat <<- 'EOF'
+	cat <<-EOF
 	This script was design to easily control any minecraft server. Quite every parameter for a given
 	minecraft server derivative can be altered by editing the variables in the configuration file.
 
-	Usage: minecraftd {start|stop|status|backup|command <command>|console}
+	Usage: $myname {start|stop|status|backup|restore|command <command>|console}
 	    start                Start the minecraft server
 	    stop                 Stop the minecraft server
 	    restart              Restart the minecraft server

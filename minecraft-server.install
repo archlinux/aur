@@ -28,8 +28,10 @@ post_upgrade() {
 	chown -R ${USER}:${USER} "${SERVER_ROOT}"
 
 	if [[ -f /etc/conf.d/minecraft.pacnew ]]; then
-		echo -e "\e[34;1m==>\e[39;1m NOTE: There was a new change on how backup files are handled! Please merge the new \e[0m"
-		echo -e "\e[34;1m==>\e[39;1m configuration file into /etc/conf.d/minecraft by e.g. pacdiff. \e[0m"
+		echo -e "\e[34;1m==>\e[39;1m NOTE: There was a new change on how backup files are handled! Unfortunately this makes \e[0m"
+		echo -e "\e[34;1m==>\e[39;1m old backups incompatible with the newly implemeted restore feature. Bare in mind that no data is lost \e[0m"
+		echo -e "\e[34;1m==>\e[39;1m neither are those backups useless. They just will not work with the restore capability of the management script. \e[0m"
+		echo -e "\e[34;1m==>\e[39;1m NOTE: Please merge the new configuration file into /etc/conf.d/minecraft by e.g. using pacdiff. \e[0m"
 	fi
 }
 
