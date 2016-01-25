@@ -7,7 +7,7 @@ arch=(i686 x86_64)
 url="https://github.com/openshift/origin"
 license=('Apache')
 
-_base_url=https://github.com/openshift/origin/releases/download/v$pkgver/openshift-origin-client-tools-v$pkgver-$hash-linux
+_base_url=https://github.com/openshift/origin/releases/download/v$pkgver/openshift-origin-client-tools-v$pkgver-$_hash-linux
 if [[ $CARCH == 'x86_64' ]]; then
 	source=("$_base_url-64bit.tar.gz")
 	sha1sums=('adacd8d8096dd565d46eacf8f5dcc86a3a9059f3')
