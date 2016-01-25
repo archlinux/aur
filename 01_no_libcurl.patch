@@ -1,0 +1,24 @@
+--- CMakeLists.txt	2016-01-26 04:42:00.188883428 +0900
++++ CMakeLists.txt.new	2016-01-26 04:41:36.532014891 +0900
+@@ -45,9 +45,9 @@
+ find_package(Qt5Widgets REQUIRED)
+ 
+ # find libcurl
+-find_package(Libcurl REQUIRED)
+-include_directories(${LIBCURL_INCLUDE_DIRS})
+-add_definitions(${LIBCURL_DEFINITIONS})
++# find_package(Libcurl REQUIRED)
++# include_directories(${LIBCURL_INCLUDE_DIRS})
++# add_definitions(${LIBCURL_DEFINITIONS})
+ 
+ # header and library
+ if(NOT BUILD_IN_OBS AND NOT LibObs_FOUND)
+@@ -78,7 +78,7 @@
+ target_link_libraries(rtmp-nicolive
+ 	Qt5::Core
+ 	Qt5::Widgets
+-	${LIBCURL_LIBRARIES}
++    # ${LIBCURL_LIBRARIES}
+ 	libobs)
+ 
+ if(BUILD_IN_OBS)
