@@ -35,7 +35,8 @@ Counterwallet
 Create a counterwallet.conf / counterwallet.testnet.conf file in the
 counterblock config directory:
 
-  $ cat > ~/.config/counterblock/counterwallet.conf <<'EOF'
+  $ cat > ~/.config/counterblock/counterwallet.conf <<'EOCONF'
   [Default]
   support-email=<your support email>
+  EOCONF
 EOF

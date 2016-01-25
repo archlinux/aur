@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=counterwallet
-pkgver=1.6.3
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Counterparty web wallet"
 arch=('any')
@@ -12,7 +12,7 @@ groups=('counterparty')
 url="https://counterwallet.io"
 license=('CDDL')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/CounterpartyXCP/counterwallet/tar.gz/$pkgver)
-sha256sums=('fdc7cafdab0d258a3f66aaea0b9b04d5d9afae4e1545e5fcebca9bbed4b35f96')
+sha256sums=('10f0707df34191b9ff8ba0cd76bd6d708dfa48ddbd0687393b9e5800c0b129e8')
 options=('!strip')
 install=counterwallet.install
 
@@ -28,7 +28,7 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
 
   msg2 'Fetching Web assets...'
-  cd src && bower install --allow-root --config.interactive=false && cd ..
+  pushd src && bower install --allow-root --config.interactive=false && popd
 
   msg2 'Fetching NPM dependencies...'
   npm install
