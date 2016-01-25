@@ -1,9 +1,9 @@
 # Maintainer: Alexander Rødseth <xyproto@archlinux.org>
 
 pkgname=algernon
-pkgver=0.85
+pkgver=0.87
 pkgrel=1
-pkgdesc='HTTP/2 web server with built-in support for HTTP/2, Markdown, Amber, GCSS, JSX and Lua'
+pkgdesc='HTTP/2 web server with support for HTTP/2, Markdown, Pongo2, Amber, GCSS, JSX and Lua'
 arch=('x86_64' 'i686')
 url='http://algernon.roboticoverlords.org/'
 license=('MIT')
