@@ -5,8 +5,8 @@
 # Maintainer: Flávio Zavan <flavio.zavan at gmail>
 # vim:set ts=2 sw=2 et:
 pkgname=libsvm-openmp
-pkgver=3.20
-_pkgver=320
+pkgver=3.21
+_pkgver=321
 _pyver=3.5
 pkgrel=1
 pkgdesc="A library for Support Vector Machines classification, includes openmp support, binaries and python bindings."
@@ -21,7 +21,7 @@ optdepends=('python: bindings for latest python version'
 'java-environment: bindings for java' )
 source=("https://github.com/cjlin1/libsvm/archive/v$_pkgver.tar.gz"
     "openmp.patch")
-sha256sums=('e4be7fc8d2e7cb65feae4d6387967484c01c9dc818e7dfff515f663728a6f2ca'
+sha256sums=('7f494b23f8a4c9fff2643a0805bbd3dad688854cc488c075ec3909bb346b6685'
     'd357cc901505cb1aecd055cc953490f617b1baa8ac129ab580acf300c60ca1b0')
 
 build() {
