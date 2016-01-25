@@ -3,7 +3,7 @@
 pkgname=castxml-git
 _gitname=CastXML
 pkgdesc="C-family abstract syntax tree XML output tool."
-pkgver=552dd69
+pkgver=r243.f57109f
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/CastXML/CastXML"
@@ -21,7 +21,12 @@ md5sums=(
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
-  git log | head -n 1 | cut -d" " -f2 | awk '{print substr($0,0,7)}'
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" \
+      "$(git rev-list --count HEAD)" \
+      "$(git log | head -n 1 | cut -d" " -f2 | awk '{print substr($0,0,7)}')"
+  )
 }
 
 prepare() {
