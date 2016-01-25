@@ -1,12 +1,11 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=counterblock
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="Extended functionality for Counterparty"
 arch=('any')
-depends=('cython2'
-         'git'
+depends=('git'
          'leveldb'
          'libxml2'
          'libxslt'
@@ -31,7 +30,7 @@ depends=('cython2'
          'python2-prettytable'
          'python2-pycoin'
          'python2-pygeoip'
-         'python2-pymongo-2.9'
+         'python2-pymongo'
          'python2-pytest'
          'python2-python-bitcoinlib'
          'python2-pyzmq'
@@ -43,27 +42,33 @@ depends=('cython2'
          'redis'
          'sqlite'
          'zeromq')
-makedepends=('python2-setuptools')
+makedepends=('cython2' 'python2-setuptools')
 optdepends=('armory: for armory_utxsvr'
-            'counterparty-cli: Counterparty server'
-            'python: for armory_utxsvr')
+            'counterparty-cli: Counterparty server')
 groups=('counterparty')
 url="https://github.com/CounterpartyXCP/counterblock"
 license=('MIT')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/CounterpartyXCP/counterblock/tar.gz/$pkgver)
-sha256sums=('ba529709abc88b709d516524b36353c38d24137b7423fed0c42f1d4aeedb8f66')
+sha256sums=('b7554c5233e2d351ba3d37690c165ff414d4acc6da7ed8d41fd87a4e1b48d337')
 install=counterblock.install
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  msg2 'Fixing setup.py...'
+  sed -i "/'setup_requires':.*/d" setup.py
+}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  msg 'Building...'
+  msg2 'Building...'
   python2 setup.py build
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  msg 'Installing...'
+  msg2 'Installing...'
   python2 setup.py install --root="$pkgdir" --optimize=1
 }
