@@ -5,7 +5,7 @@
 pkgname=nemo-git
 pkgver=2.8.6.r17.g6237086
 pkgrel=1
-pkgdesc="Cinnamon file manager (Nautilus fork)"
+pkgdesc="Cinnamon file manager, git-version"
 arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/nemo"
 license=('GPL')
