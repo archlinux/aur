@@ -31,7 +31,7 @@ build() {
 
 package() {
   cd $_pkgname
-  make PREFIX="usr" DESTDIR="$pkgdir" install
+  make PREFIX="/usr" DESTDIR="$pkgdir" install
 }
 
 # vim:set ts=2 sw=2 et:
