@@ -1,0 +1,3 @@
+#!/bin/sh
+cd /usr/share/singularity-git
+exec python2 singularity.py "$@"
