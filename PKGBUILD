@@ -3,8 +3,8 @@
 # Contributor: Thijs Vermeir <thijsvermeir@gmail.com>
 
 pkgname=jhbuild
-pkgver=3.12.0
-pkgrel=2
+pkgver=3.15.92
+pkgrel=1
 pkgdesc='Tool to build the whole GNOME desktop from sources'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -17,9 +17,9 @@ makedepends=(rsync
              gnome-doc-utils
              yelp-tools)
 install=jhbuild.install
-source=('https://git.gnome.org/browse/jhbuild/snapshot/jhbuild-3.12.0.tar.xz'
+source=("https://git.gnome.org/browse/jhbuild/snapshot/jhbuild-${pkgver}.tar.xz"
         'module_autogenargs.patch')
-sha256sums=('e84676f6a6b327abddc7d606abe103517c25bd4bc017973913bd37c3b5f9d7e1'
+sha256sums=('c1be78139ee9d566a042a7b4c1d61ad435bc70b75d3f1b84de0a1038fc59cab6'
             'f92dd2735e47d0032f4069fbf1c4d1207c83eabd0a6317ea78f39d6157e854b2')
 url='https://live.gnome.org/Jhbuild/'
 
