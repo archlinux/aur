@@ -1,7 +1,7 @@
 # Maintainer: Sander Boom <sanderboom@gmail.com>
 
 pkgname=ansible-lint
-pkgver=2.1.3
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="Checks playbooks for practices and behaviour that could potentially be improved."
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python2' 'ansible')
 makedepends=('python2-distribute')
 source=("https://pypi.python.org/packages/source/a/ansible-lint/ansible-lint-${pkgver}.tar.gz")
-sha256sums=('7fe24ff73fb4efcb772484ccb40a1d15aebcf5fffaf9fe289a6ca93e41254071')
+sha256sums=('acd8bea93e77a81659354268e993f3c70386265a91acb5403eae56bd4e2c83a9')
 
 build() {
     cd $srcdir/ansible-lint-${pkgver}
