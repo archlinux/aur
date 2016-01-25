@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=counterwallet-git
-pkgver=20150420
+pkgver=20160124
 pkgrel=1
 pkgdesc="Counterparty web wallet"
 arch=('any')
@@ -35,7 +35,7 @@ build() {
   cd ${pkgname%-git}
 
   msg2 'Fetching Web assets...'
-  cd src && bower install --allow-root --config.interactive=false && cd ..
+  pushd src && bower install --allow-root --config.interactive=false && popd
 
   msg2 'Fetching NPM dependencies...'
   npm install
