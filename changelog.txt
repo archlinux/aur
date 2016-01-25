@@ -1,3 +1,6 @@
+Git commits a8c0b8a->ab60329
+	* Callback work for trigger axis event
+
 Git commits db7b12a->a8c0b8a
 	* Simple example script (sc-callbacks.py)
 	* Default mouse scale slightly reduced

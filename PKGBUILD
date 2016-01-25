@@ -1,7 +1,7 @@
 # Maintainer: vorpalblade77@gmail.com
 pkgname=python-steamcontroller-git
 _pkgname=steamcontroller
-pkgver=a8c0b8a
+pkgver=ab60329
 pkgrel=1
 pkgdesc="Standalone userland driver for the Steam controller"
 arch=('i686' 'x86_64')
