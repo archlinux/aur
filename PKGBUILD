@@ -4,7 +4,7 @@
 
 pkgname=gateone-git
 _gitname="GateOne"
-pkgver=1.1_r485.ga34f7e0
+pkgver=1.1_r502.g1d0e803
 pkgrel=1
 pkgdesc="Web-based terminal emulator and SSH client"
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=('python2-imaging: A python module for manipulating images'
             'python2-kerberos: Only necessary if you plan to use the Kerberos authentication module'
             'python2-pyopenssl: Used to generate self-signed SSL keys and certificates'
             'dtach: Allows sessions to be resumed even if Gate One is restarted'
-            'python2-mutagen: Display audio metadata when reading audio files')
+            'mutagen: Display audio metadata when reading audio files')
 # systemd needs to be in makedepends for building in clean chroot
 makedepends=('git' 'systemd')
 # we need emptydirs for the etc and var-lib folders
