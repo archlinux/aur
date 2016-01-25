@@ -1,7 +1,7 @@
 pkgbase = ttf-hack-powerline-git
 	pkgdesc = Hack for Powerline
 	pkgver = r100.a44abd0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/powerline/fonts
 	install = ttf-hack-powerline-git.install
 	arch = any
@@ -12,6 +12,7 @@ pkgbase = ttf-hack-powerline-git
 	depends = xorg-font-utils
 	conflicts = powerline-fonts
 	conflicts = powerline-fonts-git
+	conflicts = ttf-hack
 	source = git+https://github.com/powerline/fonts.git
 	md5sums = SKIP
 
