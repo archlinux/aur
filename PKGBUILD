@@ -1,39 +1,45 @@
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer:  TDY <tdy@gmx.com>
+# Maintainer:  Caleb Maclennan <caleb@alerque.com>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: TDY <tdy@gmx.com>
 # Contributor: Grigorios Bouzakis <grbzks[at]gmail[dot]com>
 # Contributor: Justin Wong <justin.w.xd[at]gmail[dot]com>
-# Contributor: Caleb Maclennan <caleb@alerque.com>
 
-pkgname=tmux-truecolor
+pkgname=tmux-truecolor-git
 _pkgname=tmux
+_branch=master
 pkgver=2.1
-pkgrel=1.1
+pkgrel=1
 pkgdesc='A terminal multiplexer, with true color support'
 url='http://tmux.github.io/'
 arch=('i686' 'x86_64')
 license=('BSD')
-conflicts=('tmux')
+conflicts=('tmux' 'tmux-truecolor' 'tmux-24bit-color' 'tmux-true_colors')
 provides=('tmux')
 depends=('ncurses' 'libevent' 'libutempter')
-source=(https://github.com/tmux/tmux/releases/download/${pkgver}/tmux-${pkgver}.tar.gz
-	LICENSE
-	tmux-24.diff::https://github.com/tmux/tmux/pull/112.diff
+source=("git://github.com/tmux/${_pkgname}.git#branch=$_branch"
+	'LICENSE'
+	'tmux-24.patch::https://github.com/tmux/tmux/pull/112.patch'
 	)
+sha256sums=('SKIP'
+            'b5de80619e4884ced2dfe0a96020e85dcfb715a831ecdfdd7ce8c97b5a6ff2cc'
+            'SKIP')
 
-md5sums=('74a2855695bccb51b6e301383ad4818c'
-	 '71601bc37fa44e4395580b321963018e'
-	 '650ab3688db6477260bf587883583d0c')
+pkgver() {
+    cd "${srcdir}/${_pkgname}"
+    git describe --long --tags | sed 's/^v//;s/-/_/g'
+}
 
 build() {
-	cd "$srcdir/$_pkgname-${pkgver/_/}"
-	sed -e '/256colors.pl/d;d;d' -i ../tmux-24.diff
-	patch -p1 < ../tmux-24.diff
+    cd "${srcdir}/${_pkgname}"
+    #grep 256colors.pl ../tmux-24.diff
+	#sed -e '/256colors.pl/d;d;d' -i ../tmux-24.diff
+	patch -p1 < "${srcdir}/tmux-24.patch"
 	./configure --prefix=/usr
 	make
 }
 
 package() {
-	cd "$srcdir/$_pkgname-${pkgver/_/}"
+    cd "${srcdir}/${_pkgname}"
 	make install DESTDIR=$pkgdir
 	install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/tmux/LICENSE"
 
