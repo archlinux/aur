@@ -28,12 +28,12 @@ _bldtype=Release
 #*************************************************************
 
 _zipcoderel=201512
-_mozcrev=95de40fa884d693172605e7283ec82233a908b29
+_mozcrev=2628af6995dbbbb9ccdb52d1160db1dbd5ed3bae
 
 pkgbase=mozc
 pkgname=mozc
 true && pkgname=('mozc')
-pkgver=2.17.2240.102
+pkgver=2.17.2313.102
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/mozc/"
@@ -77,6 +77,9 @@ prepare() {
 
   cd "${srcdir}/${pkgbase}/src/"
 
+  # Extract liccense part of mozc
+  head -n 29 server/mozc_server.cc > LICENSE
+
   # Generate zip code dictionary seed
   if [[ "$_zipcode" == "yes" ]]; then
     msg "Generating zip code dict seed..."
@@ -86,9 +89,6 @@ prepare() {
       >> ${pkgbase}/src/data/dictionary_oss/dictionary09.txt
     msg "Done."
   fi
-
-  # Extract liccense part of mozc
-  head -n 29 server/mozc_server.cc > LICENSE
 
 }
 
