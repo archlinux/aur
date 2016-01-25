@@ -13,24 +13,25 @@ makedepends=('bzr' 'cmake' 'vala')
 conflicts=('haguichi')
 provides=('haguichi')
 install=$pkgname.install
-source=('bzr+lp:haguichi/1.3')
+source=('bzr+lp:haguichi')
 sha256sums=('SKIP')
+_pkg=haguichi
 
 pkgver() {
-  cd $srcdir/1.3
+  cd $srcdir/$_pkg
 
   echo "r$(bzr revno)"
 }
 
 build() {
-  rm -rf $srcdir/1.3/build
-  mkdir $srcdir/1.3/build
-  cd $srcdir/1.3/build
+  rm -rf $srcdir/$_pkg/build
+  mkdir $srcdir/$_pkg/build
+  cd $srcdir/$_pkg/build
 
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DICON_UPDATE=OFF -DGSETTINGS_COMPILE=OFF
   make
 }
 
 package() {
-  make -C $srcdir/1.3/build DESTDIR="$pkgdir" install
+  make -C $srcdir/$_pkg/build DESTDIR="$pkgdir" install
 }
