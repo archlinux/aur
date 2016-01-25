@@ -1,0 +1,10 @@
+[Unit]
+Description=Journey Blogging Platform
+After=network.target
+
+[Service]
+User=journey
+ExecStart=/opt/journey/journey
+
+[Install]
+WantedBy=multi-user.target
