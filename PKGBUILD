@@ -2,7 +2,7 @@
 # Contributor: William Giokas <1007380@gmail.com>
 
 pkgname=i3status-git
-pkgver=2.9.r80.g395d025
+pkgver=2.10.r11.g8532980
 pkgrel=1
 pkgdesc='Generates status bar to use with dzen2 or wmii'
 arch=('i686' 'x86_64')
