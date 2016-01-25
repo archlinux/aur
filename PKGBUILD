@@ -10,14 +10,14 @@
 # Contributor: Simon Tunnat (systemd service file v3)
 
 pkgname=glassfish-v4
-pkgver=4.1
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="GlassFish 4 is a Java EE 7 open source application server"
 url="http://glassfish.java.net/"
 license=("CDDL")
 provides=("glassfish")
 conflicts=("glassfish")
-depends=("java-environment")
+depends=("java-environment>=7")
 arch=("any")
 options=(!strip)
 source=(
@@ -25,7 +25,7 @@ source=(
     glassfish.service
 )
 
-sha256sums=('3edc5fc72b8be241a53eae83c22f274479d70e15bdfba7ba2302da5260f23e9d'
+sha256sums=('1b20d42b7d97d0282b90b3f6ec958138f1e81a500468f391ff5aa06afb599b9c'
             '46f60ff39231a62c39131ff6c04ff1196f147e810a500f02d9505b7327285de8')
 
 package() {
