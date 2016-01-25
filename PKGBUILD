@@ -2,43 +2,56 @@
 
 pkgname=mist-git
 _pkgname=mist
-pkgver=0.3.7.r0.g3e8b9dc
-_pkgver=0-3-7
-pkgrel=2
+pkgver=v0.3.8.r2.g64cb59b
+_pkgver=0-3-8
+pkgrel=1
 pkgdesc="Ethereum wallet for Ether accounts, wallets and smart contracts (includes Mist browser)."
-arch=('x86_64')
-depends=('gmp'
-         'leveldb'
-         'qt5-base'
-         'qt5-declarative'
-         'qt5-quickcontrols'
-         'qt5-webengine'
-         'readline'
-         'meteor-js'
-         'electron'
-         'geth-git')
-makedepends=('nodejs'
-             'npm'
-             'meteor-build-client'
-             'gulp')
-provides=('mist'
-          'libnode')
-conflicts=('mist'
-           'libnode'
-           'libnode-git')
+arch=('i686' 'x86_64')
+depends=(
+  'gmp'
+  'leveldb'
+  'qt5-base'
+  'qt5-declarative'
+  'qt5-quickcontrols'
+  'qt5-webengine'
+  'readline'
+  'meteor-js'
+  'electron'
+)
+makedepends=(
+  'nodejs'
+  'npm'
+  'meteor-build-client'
+  'gulp'
+)
+provides=(
+  'mist'
+  'libnode'
+)
+conflicts=(
+  'mist'
+  'libnode'
+  'libnode-git'
+)
+optdepends=(
+  'geth: The go-ethereum commandline client.'
+  'ethereum: The cpp-ethereum commandline client.'
+)
 url="https://github.com/ethereum/mist"
 license=('GPL')
 source=("${pkgname}::git+https://github.com/ethereum/mist")
 sha256sums=("SKIP")
 
 pkgver() {
-  cd ${pkgname}
+  cd ${srcdir}/${pkgname}
+  git checkout -q develop
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   msg2 'Building Mist...'
   cd ${srcdir}/${pkgname}
+  git checkout develop
   git submodule update --init
   npm install electron-prebuilt
   npm install meteor-build-client
@@ -48,9 +61,14 @@ build() {
 }
 
 package() {
+  _arch="ia32"
+  if [ "${CARCH}" = "x86_64" ]; then
+    _arch="x64"
+  fi
+
   msg2 'Installing Mist...'
   install -d "${pkgdir}/usr/share/mist"
-  cp -a "${srcdir}/${pkgname}/dist_wallet/Ethereum-Wallet-linux-x64-${_pkgver}/." "${pkgdir}/usr/share/${_pkgname}"
+  cp -a "${srcdir}/${pkgname}/dist_wallet/Ethereum-Wallet-linux-${_arch}-${_pkgver}/." "${pkgdir}/usr/share/${_pkgname}"
 
   install -d "${pkgdir}/usr/bin"
   ln -s "/usr/share/${_pkgname}/Ethereum-Wallet" "${pkgdir}/usr/bin/mist"
