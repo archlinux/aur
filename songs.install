@@ -1,0 +1,15 @@
+post_install() {
+  post_upgrade
+}
+
+post_upgrade() {
+  echo "==> Detecting new library..."
+  texhash
+}
+
+post_remove() {
+  post_upgrade
+}
+
+
+# vim:set ts=2 sw=2 et:
