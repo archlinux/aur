@@ -11,11 +11,11 @@
 
 pkgname=telegram-desktop-patched
 pkgver=0.9.19
-pkgrel=1
+pkgrel=2
 _qtver=5.5.1
 pkgdesc='Telegram Desktop with bigger sticker panel and dark colour scheme patches.'
 arch=('i686' 'x86_64')
-url="https://git.melvinvermeeren.com/melvin/telegram-desktop"
+url="https://git.melvinvermeeren.com/melvin/telegram-desktop#branch=release"
 license=('GPL3')
 depends=('ffmpeg' 'icu' 'jasper' 'libexif' 'libmng' 'libwebp' 'libxkbcommon-x11'
 	 'libinput' 'libproxy' 'mtdev' 'openal' 'libva' 'desktop-file-utils'
