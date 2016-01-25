@@ -1,13 +1,14 @@
 # Maintainer: Trevor <assviolat0r at live dot com>
 # Co-maintainer: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
 pkgname=skype-desktop-bin
-pkgver=19.664fc5b
+pkgver=37.deb39db
 pkgrel=1
 pkgdesc="An unofficial client of Skype for Linux, running on top of Node Webkit."
 arch=('i686' 'x86_64')
 url="https://github.com/haskellcamargo/skype-unofficial-client"
 license=('MIT')
-depends=('gconf' 'libnotify')
+depends=('gconf')
+optdepends=('libnotify')
 makedepends=('make' 'git')
 #options=('!strip')
 # Actually check for the architecture (Trevor, is so much juice! :D)
