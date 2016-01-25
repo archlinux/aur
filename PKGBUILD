@@ -4,9 +4,9 @@
 
 pkgname=bitlbee-facebook
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Facebook protocol plugin for BitlBee'
-arch=('i686' 'x86_64' 'armv7h')
+arch=('any')
 url='https://github.com/jgeboski/bitlbee-facebook'
 license=('GPL')
 depends=('bitlbee' 'json-glib')
