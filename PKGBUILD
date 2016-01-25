@@ -6,8 +6,8 @@
 # Fixes in AUR by: ogarcia
 
 pkgname=libqtelegram-ae-git
-epoch=2
-pkgver=6.0.r2.g70ef02a
+epoch=3
+pkgver=6.1.stable.r0.g4ad3aae
 pkgrel=1
 pkgdesc="Telegram library written in Qt based on telegram-cli code"
 arch=('x86_64' 'i686')
@@ -15,7 +15,7 @@ license=('GPL3')
 url=("https://launchpad.net/libqtelegram")
 provides=("libqtelegram-ae=$epoch:$pkgver")
 conflicts=('libqtelegram-ae')
-depends=('qt5-base>=5.5' 'qt5-multimedia')
+depends=('qt5-base' 'qt5-multimedia')
 makedepends=('cmake' 'git')
 source=("$pkgname"::"git+https://github.com/Aseman-Land/libqtelegram-aseman-edition.git")
 md5sums=('SKIP')
