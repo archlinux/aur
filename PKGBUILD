@@ -3,8 +3,8 @@
 
 pkgname=lemonbar-sm-git
 _pkgname=lemonbar
-pkgver=v1.0-157-gf1f885a
-pkgrel=2
+pkgver=v1.0.157.gf1f885a
+pkgrel=3
 pkgdesc="Fork of lemonbar, with xft support and the ability to select monitor."
 arch=('i686' 'x86_64')
 url="https://github.com/osense/bar"
