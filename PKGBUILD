@@ -7,7 +7,7 @@
 pkgname=tmux-truecolor-git
 _pkgname=tmux
 _branch=master
-pkgver=2.1
+pkgver=2.1_284_gca29dc9
 pkgrel=1
 pkgdesc='A terminal multiplexer, with true color support'
 url='http://tmux.github.io/'
@@ -31,9 +31,8 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    #grep 256colors.pl ../tmux-24.diff
-	#sed -e '/256colors.pl/d;d;d' -i ../tmux-24.diff
 	patch -p1 < "${srcdir}/tmux-24.patch"
+    sh autogen.sh
 	./configure --prefix=/usr
 	make
 }
@@ -45,8 +44,7 @@ package() {
 
 	install -dm755 "$pkgdir/usr/share/tmux/"
 	install -m644 examples/* "$pkgdir/usr/share/tmux/"
-	install -Dm644 examples/tmux.vim "$pkgdir/usr/share/vim/vimfiles/syntax/tmux.vim"
 
 	install -d $pkgdir/usr/share/bash-completion/completions/
-	mv $pkgdir/usr/share/tmux/bash_completion_tmux.sh $pkgdir/usr/share/bash-completion/completions/tmux
+	install -m644 $pkgdir/usr/share/tmux/bash_completion_tmux.sh $pkgdir/usr/share/bash-completion/completions/tmux
 }
