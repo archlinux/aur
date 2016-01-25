@@ -5,7 +5,7 @@
 
 pkgname=avr-libc-svn
 _pkgname=avr-libc
-pkgver=2454
+pkgver=r2494
 pkgrel=1
 pkgdesc="The C runtime library for the AVR family of microcontrollers"
 arch=('any')
@@ -22,7 +22,7 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/$_pkgname"
 
-  echo "$(svnversion)"
+  echo r$(svnversion)
 }
 
 build() {
@@ -40,8 +40,8 @@ build() {
 package() {
   cd "$srcdir/$_pkgname"
 
-  make DESTDIR=${pkgdir} install
-  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/COPYING
+  make DESTDIR="$pkgdir" install
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/COPYING
 }
 
 # vim:set ts=2 sw=2 et:
