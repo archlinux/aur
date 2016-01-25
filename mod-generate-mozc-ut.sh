@@ -20,6 +20,7 @@ sed -i \
     -e '/# generate zip code dic/,+11d' \
     -e '/# debian\/rules/,+2d' \
     -e '/# PKGBUILD/,+2d' \
+    -e '/# compress mozc-ut/,+4d' \
     generate-mozc-ut.sh
 
 sed -i \

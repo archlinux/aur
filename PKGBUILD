@@ -69,15 +69,15 @@ _ibus_mozc="yes"
 _bldtype=Release
 #_bldtype=Debug
 
-_mozcrev=95de40fa884d693172605e7283ec82233a908b29
-_utdicver=20151130
+_mozcrev=2628af6995dbbbb9ccdb52d1160db1dbd5ed3bae
+_utdicver=20160121
 _zipcoderel=201512
-_uimmozcrev=318.0562676
+_uimmozcrev=320.7072409
 
 pkgbase=mozc-ut
 pkgname=mozc-ut
 true && pkgname=('mozc-ut')
-pkgver=2.17.2240.102.20151130
+pkgver=2.17.2313.102.20160121
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc_01.html"
@@ -91,16 +91,14 @@ source=(
   http://downloads.sourceforge.net/project/pnsft-aur/mozc/x-ken-all-${_zipcoderel}.zip
   http://downloads.sourceforge.net/project/pnsft-aur/mozc/jigyosyo-${_zipcoderel}.zip
   mod-generate-mozc-ut.sh
-  adapt_mozc2.17.2240.102.patch
 )
 sha1sums=('SKIP'
-          'd37a86d338b1bd16b42e117c81dc8923625b00b4'
-          '1673bfa2e29c4f2687b860da7f9c403c94bf3e00'
+          '5d57e0c3378592952bc018435de0edc947e2d101'
+          'e1068171b0dc6b984344d92f0e9cfa17eb966c78'
           'e0ba18e67c1be8e3cfb8ecb30760597b215da255'
           'b07c667a82fd31c752a973c8bee06dab8178c3f0'
           '11636b6256f3382d11ac4df41db243acd33a44b3'
-          'c94c49cd3ef48dbe252c319c337d84888e743279'
-          '031654d8fb40225a6c193d89246b294256ae33f4')
+          '3b525b6802251c07d8cb3f67815c59a4d896c6fe')
 
 
 if [[ "$_ibus_mozc" == "yes" ]]; then
@@ -111,7 +109,7 @@ if [[ "$_uim_mozc" == "yes" ]]; then
   true && pkgname+=('uim-mozc-ut')
   makedepends+=('uim')
   source+=(http://downloads.sourceforge.net/project/pnsft-aur/mozc/uim-mozc-${_uimmozcrev}.tar.xz)
-  sha1sums+=('5cd298aaac5afd7ff8882453e3e8fa698c2c5aa1')
+  sha1sums+=('dd2582a4eb854b9feef064681ec8232c856e1f7f')
 
 fi
 
@@ -160,8 +158,6 @@ prepare() {
     fi
     # Extract license part of uim-mozc
     head -n 32 unix/uim/mozc.cc > unix/uim/LICENSE
-
-    patch -p2 -i "${srcdir}/adapt_mozc2.17.2240.102.patch"
 
   fi
 
