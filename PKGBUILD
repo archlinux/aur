@@ -4,16 +4,16 @@
 # Contrubutor: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-ck-fbcondecor
-pkgver=355.06
-_extramodules=extramodules-4.1-ck-fbcondecor
+pkgver=361.18
+_extramodules=extramodules-4.3-ck-fbcondecor
 pkgrel=1
 _pkgdesc="NVIDIA drivers for linux-ck-fbcondecor."
 pkgdesc="$_pkgdesc"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
-depends=('linux-ck-fbcondecor' "libgl" "nvidia-utils=${pkgver}")
-makedepends=('linux-ck-fbcondecor-headers' )
+depends=('linux-ck-fbcondecor' "libgl" "nvidia-utils")
+makedepends=('linux-ck-fbcondecor-headers' 'pacman>=4.2.0')
 conflicts=('nvidia-340xx-ck' 'nvidia-304xx-ck' 'nvidia-275xx-ck' 'nvidia-319-ck' 'nvidia-96xx-ck' 'nvidia-beta-ck' 'nvidia-ck-atom' 'nvidia-ck-barcelona' 'nvidia-ck-bulldozer' 'nvidia-ck-corex' 'nvidia-ck-core2' 'nvidia-ck-haswell' 'nvidia-ck-ivybridge' 'nvidia-ck-kx' 'nvidia-ck-k10' 'nvidia-ck-nehalem' 'nvidia-ck-p4' 'nvidia-ck-piledriver' 'nvidia-ck-pentm' 'nvidia-ck-sandybridge' 'nvidia-304xx-ck-atom' 'nvidia-304xx-ck-barcelona' 'nvidia-304xx-ck-corex' 'nvidia-304xx-ck-core2' 'nvidia-304xx-ck-haswell' 'nvidia-304xx-ck-ivybridge' 'nvidia-304xx-ck-kx' 'nvidia-304xx-ck-k10' 'nvidia-304xx-ck-nehalem' 'nvidia-304xx-ck-p4' 'nvidia-304xx-ck-piledriver' 'nvidia-304xx-ck-pentm' 'nvidia-304xx-ck-sandybridge' 'nvidia-340xx-ck-atom' 'nvidia-340xx-ck-barcelona' 'nvidia-340xx-ck-bulldozer' 'nvidia-340xx-ck-core2' 'nvidia-340xx-ck-haswell' 'nvidia-340xx-ck-ivybridge' 'nvidia-340xx-ck-kx' 'nvidia-340xx-ck-k10' 'nvidia-340xx-ck-nehalem' 'nvidia-340xx-ck-p4' 'nvidia-340xx-ck-piledriver' 'nvidia-340xx-ck-pentm' 'nvidia-340xx-ck-sandybridge' 'nvidia-ck' 'nvidia')
 #groups=('ck-generic')
 #replaces=()
@@ -28,10 +28,10 @@ esac
 # Source
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/NVIDIA-Linux-x86_64-$pkgver-no-compat32.run")
-md5sums_i686=('c4d2ae0dd6338874e5e8358fe630ba8f')
-md5sums_x86_64=('8bdf64adc94bd9e170e4a7412ca9e5ba')
+md5sums_i686=('ade4f7d0a5631ff492088671bc303a0a')
+md5sums_x86_64=('29a88f1538d622cebf751593396053e4')
 
-# Auto-detect patches (e.g. nvidia-linux-4.1.patch)
+# Auto-detect patches (e.g. nvidia-linux-4.3.patch)
 for _patch in $(ls "$startdir"/*.patch 2>/dev/null); do
   source+=("$_patch")
   md5sums+=('SKIP')
@@ -86,6 +86,14 @@ package() {
     install -Dm644 $_pkg/kernel/nvidia-uvm.ko \
             "$pkgdir/usr/lib/modules/$_extramodules/nvidia-uvm.ko"
   fi
+
+  # Install Modeset module:
+  #
+  # "nvidia-modeset.ko does not provide any new user-visible functionality or interfaces to third party applications.
+  #  However, in a later release, nvidia-modeset.ko will be used as a basis for the modesetting interface provided by
+  #  the kernel's direct rendering manager (DRM)."
+  install -Dm644 $_pkg/kernel/nvidia-modeset.ko \
+         "$pkgdir"/usr/lib/modules/$_extramodules/nvidia-modeset.ko
 
   # Compress
   gzip "$pkgdir"/usr/lib/modules/$_extramodules/nvidia*.ko
