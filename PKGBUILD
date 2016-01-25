@@ -1,8 +1,8 @@
 # Maintainer: kusanaginoturugi <kusanaginoturugi at gmail dot com>
 pkgname=man-pages-ldp-ja
 pkgver=3.79
-pkgrel=1
-pkgdesc="Man pages that is distributed by Linux Documentation Project for Japanese"
+pkgrel=2
+pkgdesc="Japanese man pages that is distributed by Linux Documentation Project"
 arch=('any')
 url="http://osdn.jp/projects/linuxjm/"
 license=('GPL3' 'custom')
@@ -15,14 +15,13 @@ package() {
     cd $srcdir/LDP_man-pages/release/man${i}
     if [ ! -e "${pkgdir}/usr/share/man/ja_JP.UTF-8/man${i}/" ]; then
       mkdir -p "${pkgdir}/usr/share/man/ja_JP.UTF-8/man${i}/"
-      chmod -R 755 "${pkgdir}/usr/share/man/ja_JP.UTF-8/man${i}/"
+      chmod 755 "${pkgdir}/usr/share/man/ja_JP.UTF-8/man${i}/"
     fi
 
     # To copy a noexistent man only.
     for f in *.${i} ; do
       if [ ! -e /usr/share/man/ja_JP.UTF-8/man${i}/${f}.gz ]; then
-        cp ${f} "${pkgdir}/usr/share/man/ja_JP.UTF-8/man${i}/${f}"
-        chmod 644 *.${i}
+        install -D -m644 ${f} "${pkgdir}/usr/share/man/ja_JP.UTF-8/man${i}/${f}"
       fi
     done
   done
