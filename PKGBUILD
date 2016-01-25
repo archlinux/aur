@@ -11,10 +11,6 @@ pkgdesc="A multi-model NoSQL database, combining key-value, document and graph d
 arch=("i686" "x86_64" "armv7l" "armv7h")
 url="https://www.arangodb.com/"
 license=('APACHE')
-# The depends line should look like this but Arango bundles V8, libev
-# & ICU. This is why its slow to compile and takes a lot of space when
-# building. TODO: is it possible to get Arango to use the system V8?
-# depends=("glibc" "gcc-libs" "openssl" "readline" "systemd" "v8" "libev" "icu")
 depends=("glibc" "gcc-libs" "openssl" "readline" "systemd")
 makedepends=("python2 gcc-go")
 provides=("arangodb=$pkgver")
