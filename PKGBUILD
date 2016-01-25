@@ -6,7 +6,7 @@ pkgver=0.3.8
 _pkgver=0-3-8
 pkgrel=3
 pkgdesc="Ethereum wallet for Ether accounts, wallets and smart contracts (includes Mist browser)."
-arch=('x86_64')
+arch=('i686' 'x86_64')
 depends=(
   'gmp'
   'leveldb'
@@ -31,15 +31,27 @@ optdepends=(
 )
 url="https://github.com/ethereum/mist"
 license=('GPL')
-source=("${pkgname}-${_pkgver}.zip::https://github.com/ethereum/$pkgname/releases/download/v${pkgver}/Ethereum-Wallet-linux64-$_pkgver.zip")
-sha256sums=("6a96a2e18e21ce8b1995b508e05d7a59a701a5aa75a82624c4286a7f8ec9eee5")
+source=(
+  "${pkgname}-${_pkgver}-ia32.zip::https://github.com/ethereum/$pkgname/releases/download/v${pkgver}/Ethereum-Wallet-linux32-$_pkgver.zip"
+  "${pkgname}-${_pkgver}-x64.zip::https://github.com/ethereum/$pkgname/releases/download/v${pkgver}/Ethereum-Wallet-linux64-$_pkgver.zip"
+)
+sha256sums=(
+  "d2ee41e54d3a19ca2e35b5792c79401941bf3bd935be6b8288b135cbf121c552"
+  "6a96a2e18e21ce8b1995b508e05d7a59a701a5aa75a82624c4286a7f8ec9eee5"
+)
 
 package() {
-  rm "${srcdir}/${pkgname}-${_pkgver}.zip"
+
+  _arch="ia32"
+  if [ "${CARCH}" = "x86_64" ]; then
+    _arch="x64"
+  fi
+
+  rm "${srcdir}/${pkgname}-${_pkgver}-${_arch}.zip"
 
   msg2 'Installing Mist...'
   install -d "${pkgdir}/usr/share/${pkgname}"
-  cp -a "${srcdir}/Ethereum-Wallet-linux-x64-${_pkgver}/." "${pkgdir}/usr/share/${pkgname}"
+  cp -a "${srcdir}/Ethereum-Wallet-linux-${_arch}-${_pkgver}/." "${pkgdir}/usr/share/${pkgname}"
 
   install -d "${pkgdir}/usr/bin"
   ln -s "/usr/share/${pkgname}/Ethereum-Wallet" "${pkgdir}/usr/bin/mist"
