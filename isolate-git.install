@@ -16,6 +16,9 @@ post_install() {
 
   # Allow only users in the "isolate" group to run this without sudo
   chown root:isolate /usr/bin/isolate
+
+  # Restore setuid bit
+  chmod u+s /usr/bin/isolate
 }
 
 post_upgrade() {

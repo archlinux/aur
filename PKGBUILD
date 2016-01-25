@@ -2,7 +2,7 @@
 # Maintainer: William Di Luigi <williamdiluigi@gmail.com>
 
 pkgname=isolate-git
-pkgver=r68.a3a2c4d
+pkgver=r79.450096d
 pkgrel=1
 pkgdesc="Sandbox for securely executing untrusted programs"
 arch=('i686' 'x86_64')
@@ -24,14 +24,17 @@ pkgver() {
 
 build() {
   cd isolate
-  make isolate isolate.1
+  make PREFIX="/usr" VARPREFIX="/var" CONFIGDIR="/etc" isolate isolate.1
 }
 
 package() {
   cd isolate
-  make PREFIX="$pkgdir/usr" install install-doc
+  make PREFIX="$pkgdir/usr" VARPREFIX="$pkgdir/var" CONFIGDIR="$pkgdir/etc" install install-doc
+
+  # Patch the configuration file so that it uses a standard directory
+  sed -i "s|/var/local/lib/isolate|/var/lib/isolate|" $pkgdir/etc/isolate
 
   # The isolate binary has the setuid bit set (to run as root without sudo)
   # however we should let only the owner and the group be able to run it:
-  chmod o-r-x $pkgdir/usr/bin/isolate
+  chmod o-x $pkgdir/usr/bin/isolate
 }
