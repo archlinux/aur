@@ -1,6 +1,6 @@
-# Maintainer: Alexander Merry <dev@randomguy3.me.uk>
+# Maintainer: Alex Merry <dev@randomguy3.me.uk>
 pkgname=polyml
-pkgver=5.5.2
+pkgver=5.6
 pkgrel=1
 epoch=
 pkgdesc="A full implementation of Standard ML (SML)"
@@ -11,22 +11,22 @@ groups=()
 options=('!libtool')
 depends=('gmp' 'libffi')
 install='polyml.install'
-source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname/$pkgver/$pkgname.$pkgver.tar.gz)
-md5sums=('c935fd2d17749c1e127098215da990c9')
+source=(https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz)
+md5sums=('d59cfdaa75a84e429a277cdc01b2369c')
 
 build() {
-  cd "$srcdir/$pkgname.$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
   ./configure --prefix=/usr --without-x --with-system-libffi --with-gmp --enable-shared
   make
 }
 
 check() {
-  cd "$srcdir/$pkgname.$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
   make -k check
 }
 
 package() {
-  cd "$srcdir/$pkgname.$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" install
 
   # mesa-demos also installs a binary called "poly".
