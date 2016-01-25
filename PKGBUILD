@@ -5,7 +5,7 @@
 # - https://aur.archlinux.org/packages/arangodb-git
 
 pkgname=arangodb
-pkgver=2.6.8
+pkgver=2.7.3
 pkgrel=1
 pkgdesc="A multi-model NoSQL database, combining key-value, document and graph data models."
 arch=("i686" "x86_64" "armv7l" "armv7h")
@@ -16,23 +16,22 @@ license=('APACHE')
 # building. TODO: is it possible to get Arango to use the system V8?
 # depends=("glibc" "gcc-libs" "openssl" "readline" "systemd" "v8" "libev" "icu")
 depends=("glibc" "gcc-libs" "openssl" "readline" "systemd")
-makedepends=("python2 go")
+makedepends=("python2 gcc-go")
 provides=("arangodb=$pkgver")
 conflicts=("arangodb-latest" "arangodb-git")
 backup=('etc/arangodb/arangob.conf'
   'etc/arangodb/arangodump.conf'
   'etc/arangodb/arangorestore.conf'
-  'etc/arangodb/arangod.conf/'
+  'etc/arangodb/arangod.conf'
   'etc/arangodb/arangoimp.conf'
   'etc/arangodb/arangosh.conf'
   'etc/arangodb/arango-dfdb.conf'
-  'etc/arangodb/arangoirb.conf'
   'etc/arangodb/foxx-manager.conf'
 )
 options=()
 install=arangodb.install
 source=("https://www.arangodb.com/repositories/Source/$pkgname-$pkgver.tar.bz2" "arangodb.service")
-sha256sums=('8fa29e826c8fde5c0aff3f74d3ac1ada798d9364e0b73fdb5f58e8c228eee26c'
+sha256sums=('6738a498a7df82eb78dacb5299ab184f80190f037e0fd504b05cf7924ac193e6'
             'ccde74e481761e2879845a0c9fbef601f4cdd73465d425549d3ad6714e99443d')
 
 build() {
