@@ -2,7 +2,7 @@
 
 pkgname=viennarna
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="RNA Secondary Structure Prediction and Comparison"
 arch=('x86_64' 'i686')
 license=('Custom')
@@ -44,6 +44,9 @@ package() {
   mv "$pkgdir"/usr/share/ViennaRNA/bin/* "$pkgdir"/usr/bin
   rmdir "$pkgdir/usr/share/ViennaRNA/bin"
   rm -rf "$pkgdir/usr/lib/perl5/core_perl"
+  # remove test scripts
+  rm -rf "$pkgdir/usr/lib/perl/RNA/t"
+  rm -f "$pkgdir/usr/lib/perl/test.pl"
 
   # no need for that file it is outdated anyway
   rm $pkgdir/usr/share/info/dir
