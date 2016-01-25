@@ -1,7 +1,7 @@
 # Maintainer: Michael Gerhaeuser <michael.gerhaeuser@gmail.com>
 # Contributor: Harley Laue <losinggeneration@gmail.com>
 pkgname=zerobrane-studio
-pkgver=1.20
+pkgver=1.30
 pkgrel=1
 pkgdesc="A lightweight Lua-based IDE for Lua"
 arch=(any)
@@ -15,11 +15,11 @@ optdepends=('love: to debug love programs')
 install=zerobrane-studio.install
 _github_user="pkulchenko"
 _github_project="ZeroBraneStudio"
-_github_rev="6a688bd"
+_github_rev="aa20da1"
 source=("https://github.com/$_github_user/$_github_project/tarball/${pkgver}"
         "zbstudio.patch"
         "user.lua")
-md5sums=('eebae3e617bc395c124412324b233d3d'
+md5sums=('28439bfe24813b02e7321ab91f75a25d'
          '3bb356b8549b60352e8ab36b9a6d9a92'
          '73636b0c87d0412e316e7ad58151e70d')
 
