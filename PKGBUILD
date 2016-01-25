@@ -1,13 +1,15 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter at gmail dot com>
 
 pkgname=numix-folders-git
-pkgver=r385.9249679
+pkgver=r398.9fb2e78
 pkgrel=1
 pkgdesc="Alternate folders for use with the Numix base icon theme."
 arch=('any')
 url="https://github.com/numixproject/numix-folders"
 license=('GPL3')
-depends=('numix-icon-theme-git' 'python-gobject' 'gksu')
+depends=('numix-icon-theme-git')
+optdepends=('python-gobject: GUI support'
+            'gksu: GUI support')
 makedepends=('git')
 options=('!strip')
 install=numix-folders.install
