@@ -7,7 +7,7 @@
 # hm_b <holger@music-nerds.net>
 
 pkgname="renoise3-demo"
-pkgver="3.0.1"
+pkgver="3.1.0"
 pkgrel="1"
 pkgdesc="A music composition program"
 arch=("i686" "x86_64")
@@ -23,9 +23,9 @@ options=("!strip")
 # then declares the $md5sums and $source arrays accordingly.
 if [[ $CARCH = "x86_64" ]]; then
     if64="_64"
-    md5sums=('9fe1467691af0a869a5c5d4d0be51023')
+    md5sums=('563585735b7bb8db2b3a974d4263aa2a')
 else
-    md5sums=('e58958e8634c13a8291ce33e9b11c643')
+    md5sums=('923e2dc22ad895e474a4dbb9da216b2b')
 fi
 source=("http://files.renoise.com/demo/Renoise_${pkgver//./_}_Demo_x86$if64.tar.bz2")
 
