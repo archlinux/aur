@@ -1,14 +1,14 @@
 # Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
 
 pkgname=intel-xdk
-pkgver=2807
+pkgver=2893
 pkgrel=1
 _rpmver=2.0-0
 pkgdesc='Comprehensive, cross-platform HTML5 development environment'
 arch=('i686' 'x86_64')
 url='http://xdk.intel.com'
 license=('custom')
-depends=('libudev0')
+depends=('libudev0 libnotify')
 makedepends=('rpmextract')
 
 source=('intel-xdk' 'intel-xdk.desktop')
@@ -17,11 +17,11 @@ md5sums=('f7438a93f7691901ac17ea39b3fbb6a8' '34d9c2b87221acf10812ab1150357dc9')
 if [ "${CARCH}" == 'i686' ]; then
   _arch='32'
   _carch='i486'
-  md5sums+=('a6162f2c15fa078648f4b39c3ea3e357')
+  md5sums+=('74525d4911edd038df55cffeae561632')
 elif [ "${CARCH}" == 'x86_64' ]; then
   _arch='64'
   _carch='x86_64'
-  md5sums+=('a45cbc731281ed295fbf6409efd6006f')
+  md5sums+=('2093894edfa70502ba8261bf53f83e47')
 fi
 
 _base="xdk_web_linux${_arch}"
