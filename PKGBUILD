@@ -2,7 +2,7 @@
 
 pkgname=viennarna
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="RNA Secondary Structure Prediction and Comparison"
 arch=('x86_64' 'i686')
 license=('Custom')
@@ -18,7 +18,7 @@ provides=('Kinfold=1.3' 'RNAforester=2.0' "viennarna2=${pkgver}")
 source=(http://www.tbi.univie.ac.at/RNA/packages/source/ViennaRNA-${pkgver}.tar.gz)
 
 options=('staticlibs' '!strip')
-sha256sums=('45ba1b3a43854c05d3dfc789120d9ae563d17a9716963f9086ff7f521c9057b1')
+sha256sums=('78910cc1dc44de22ba081d841c84a32dfc52f0ec186447eafd82cb15cfdbf991')
 
 build() {
   cd "${srcdir}/ViennaRNA-${pkgver}"
@@ -43,10 +43,6 @@ package() {
   done
   mv "$pkgdir"/usr/share/ViennaRNA/bin/* "$pkgdir"/usr/bin
   rmdir "$pkgdir/usr/share/ViennaRNA/bin"
-  rm -rf "$pkgdir/usr/lib/perl5/core_perl"
-  # remove test scripts
-  rm -rf "$pkgdir/usr/lib/perl/RNA/t"
-  rm -f "$pkgdir/usr/lib/perl/test.pl"
 
   # no need for that file it is outdated anyway
   rm $pkgdir/usr/share/info/dir
