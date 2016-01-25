@@ -2,8 +2,9 @@
 # Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 
 pkgname=tp-battery-icon-git
-pkgver=20121115
-pkgrel=2
+_pkgname=tp-battery-icon
+pkgver=r21.0cbd6e7
+pkgrel=1
 pkgdesc="A simple yet powerful tray icon, using tp_smapi or acpi_call."
 arch=('any')
 url="https://github.com/phragment/tp-battery-icon"
@@ -15,39 +16,22 @@ makedepends=('git')
 provides=('tp-battery-icon')
 conflicts=('tp-battery-icon')
 install=tp-battery-icon.install
-source=('tp-battery-icon.desktop'
+source=('tp-battery-icon::git+https://github.com/phragment/tp-battery-icon.git'
+        'tp-battery-icon.desktop'
         '90-tp_smapi.rules'
         '90-acpi_call.rules')
-md5sums=('55013014907d603bc3b1621cbf17f92c'
+md5sums=('SKIP'
+         '55013014907d603bc3b1621cbf17f92c'
          'db0364032a7d0625bcc27f519428f9ff'
          '67f7ee0c792f515195fba26d26449ca6')
 
-_gitroot=git://github.com/phragment/tp-battery-icon.git
-_gitname=tp-battery-icon-git
-
-build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
-  # nothing to do here
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  echo r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir/$_pkgname"
 
   install -D -m755 "tp-battery-icon.py" "$pkgdir/usr/bin/tp-battery-icon"
   install -D -m644 "tp-battery-icon.svg" "$pkgdir/usr/share/pixmaps/tp-battery-icon.svg"

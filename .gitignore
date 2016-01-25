@@ -1,0 +1,8 @@
+pkg/
+src/
+*.swp
+*.pkg.tar.xz
+*.src.tar.gz
+
+tp-battery-icon/
+
