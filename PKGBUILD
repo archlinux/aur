@@ -2,7 +2,7 @@
 
 _pkgname=colort
 pkgname=${_pkgname}-git
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc='colort[int] - adjust colors by values.'
 arch=('i686' 'x86_64')
@@ -27,5 +27,5 @@ build() {
 
 package() {
     cd "$srcdir/$_pkgname"
-    make install
+    make DESTDIR="$pkgdir" install
 }
