@@ -2,13 +2,13 @@
 
 pkgname=intel-xdk
 pkgver=2893
-pkgrel=1
+pkgrel=2
 _rpmver=2.0-0
 pkgdesc='Comprehensive, cross-platform HTML5 development environment'
 arch=('i686' 'x86_64')
 url='http://xdk.intel.com'
 license=('custom')
-depends=('libudev0 libnotify')
+depends=('libudev0' 'libnotify')
 makedepends=('rpmextract')
 
 source=('intel-xdk' 'intel-xdk.desktop')
