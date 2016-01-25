@@ -2,17 +2,17 @@
 # Contributor: Boyan Ding <stu_dby@126.com>
 
 _pkgname=bbswitch
-_extramodules=extramodules-4.4-mainline
+_extramodules=extramodules-4.5-mainline
 _kernver=$(cat /usr/lib/modules/${_extramodules}/version)
 pkgname=bbswitch-mainline
 pkgver=0.8
-pkgrel=8
+pkgrel=9
 pkgdesc="Kernel module allowing to switch dedicated graphics card on Optimus laptops for linux-mainline"
 arch=('i686' 'x86_64')
 url=("https://github.com/Bumblebee-Project/${_pkgname}")
 license=('GPL')
-depends=('linux-mainline>=4.4rc1' 'linux-mainline<4.5rc1')
-makedepends=('linux-mainline-headers>=4.4rc1' 'linux-mainline-headers<4.5rc1')
+depends=('linux-mainline>=4.5rc1' 'linux-mainline<4.6rc1')
+makedepends=('linux-mainline-headers>=4.5rc1' 'linux-mainline-headers<4.6rc1')
 provides=${_pkgname}
 install=${pkgname}.install
 source=("v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
