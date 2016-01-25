@@ -11,7 +11,8 @@ license=('GPL3')
 depends=('gtk2')
 source=("$pkgname.c"
         "Makefile")
-md5sums=('SKIP')
+md5sums=('SKIP'
+         'SKIP')
 
 build() {
   cd "$srcdir/"
