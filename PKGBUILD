@@ -1,7 +1,7 @@
 # Maintainer: Gavin Costello <gavcos at gmail dot com>
 # Contributor:
 pkgname=angularjs
-pkgver=1.4.5
+pkgver=1.4.9
 pkgrel=1
 pkgdesc="An open-source JavaScript framework, whose goal is to augment browser-based applications with model–view–controller (MVC) capability, in an effort to make both development and testing easier."
 arch=(any)
@@ -9,7 +9,7 @@ url="http://angularjs.org"
 license=('MIT')
 depends=('jquery')
 source=("https://ajax.googleapis.com/ajax/libs/${pkgname}/${pkgver}/angular.js" "https://ajax.googleapis.com/ajax/libs/${pkgname}/${pkgver}/angular.min.js")
-md5sums=('a5807498c5d4494aff13723982ab8e7b' '26680517e1024ca2c4f9ed4e0aa1619e')
+md5sums=('9e75fabc0b1b629ec2283975719c5494' '9324788c75670e5a821cd5d2355f0754')
 
 package() {
   cd "${srcdir}"
