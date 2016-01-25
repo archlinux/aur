@@ -40,8 +40,8 @@ build() {
 	 --with-sound \
 	 --with-xwidgets \
 	 --with-rsvg \
-	 --with-gconf 
-  make bootstrap
+	 --with-gconf  \
+  make
 }
 
 package() {
