@@ -5,7 +5,7 @@ true && pkgname=(linux-xps13 linux-xps13-headers)
 _kernelname=-xps13
 _srcname=linux-4.3
 pkgver=4.3.3
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="https://github.com/gunzy83/linux-xps13-aur"
 license=('GPL2')
@@ -20,6 +20,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'config.x86_64'
         'linux-xps13.preset'
         'change-default-console-loglevel.patch'
+        'CVE-2016-0728.patch'
         'xps13.patch')
 sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
             'SKIP'
@@ -30,6 +31,7 @@ sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
             '98caa62b4759f6ae180660cc1be4aeda7198e50fb7cf51aee4e677ae6ee2d19e'
             'bf7ccd0ca928dc47b7e2a87d08d8f19faafbb21ff957e22f1ee78a180961047e'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            '03bed5b1c6ef34a917e218a46d38cd1347c5ab5693131996113c6cad275dc4e9'
             'f7723d4a2e07da82b3698fb4edb5cf1ca0ccbbc3e789247118fcb7a44d89cdf2')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -44,6 +46,9 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
+  # fixes #47820 CVE-2016-0728.patch
+  patch -Np1 -i "${srcdir}/CVE-2016-0728.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
