@@ -3,8 +3,8 @@
 
 pkgname=scummvm-git
 _pkgname=scummvm
-pkgver=20131209
-pkgrel=4
+pkgver=r70525.75d1385
+pkgrel=1
 pkgdesc="A 'virtual machine' for several classic graphical point-and-click adventure games."
 arch=('i686' 'x86_64')
 url="http://www.scummvm.org"
@@ -18,9 +18,9 @@ md5sums=('SKIP')
 install=${_pkgname}.install
  
 pkgver() {
-  cd "$_srcdir/$_pkgname"
+  cd "$srcdir/$_pkgname"
 
-  date +%Y%m%d
+  echo r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
  
 build() {
