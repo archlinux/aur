@@ -3,7 +3,7 @@
 # Contributor: FzerorubigD <Fzerorubigd {AT} GMail {DOT} com>
 pkgname=obfs4proxy
 _gitname=obfs4
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc='The obfourscator - a pluggable transport proxy written in Go'
 arch=('i686' 'x86_64')
