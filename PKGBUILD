@@ -11,8 +11,8 @@ pkgdesc='Multicast DNS-SD / Zeroconf Suite (32-bit)'
 arch=('x86_64')
 url='http://git.0pointer.net/avahi.git'
 license=('LGPL')
-depends=('avahi' 'expat' 'lib32-gdbm' 'lib32-glib2' 'lib32-libcap' 'lib32-libdaemon' 'lib32-libdbus')
-makedepends=('git' 'gobject-introspection' 'gtk-sharp-2' 'intltool' 'lib32-gtk2' 'lib32-gtk3' 'lib32-qt4'
+depends=("${pkgname#lib32-}" 'expat' 'lib32-gdbm' 'lib32-glib2' 'lib32-libcap' 'lib32-libdaemon' 'lib32-libdbus')
+makedepends=('gcc-multilib' 'git' 'gobject-introspection' 'gtk-sharp-2' 'intltool' 'lib32-gtk2' 'lib32-gtk3' 'lib32-qt4'
              'pygtk' 'python-dbus' 'python2-dbus' 'mono' 'xmltoman')
 optdepends=('lib32-gtk3: gtk3 bindings'
             'lib32-gtk2: gtk2 bindings'
