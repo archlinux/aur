@@ -1,6 +1,6 @@
 # Maintainer: Ramana Kumar <ramana at member dot fsf dot org>
 pkgname=polyml-fixes-git
-pkgver=5.6r2075.99bc5ee
+pkgver=5.6.99bc5ee
 pkgrel=1
 pkgdesc="Poly/ML implementation of Standard ML (latest release + fixes)"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-fixes-git}"
-	printf "5.6r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "5.6.%s" "$(git rev-parse --short HEAD)"
 }
 
 build() {
