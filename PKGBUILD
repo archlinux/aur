@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=python-sqlalchemy-git
-pkgver=1.0.8.281.g70e24ad
+pkgver=1.0.8.284.gdf3f125
 pkgrel=1
 pkgdesc="Python SQL toolkit and Object Relational Mapper"
 arch=('i686' 'x86_64')
