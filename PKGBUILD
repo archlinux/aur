@@ -72,7 +72,7 @@ _bldtype=Release
 _mozcrev=2628af6995dbbbb9ccdb52d1160db1dbd5ed3bae
 _utdicver=20160121
 _zipcoderel=201512
-_uimmozcrev=320.7072409
+_uimmozcrev=321.3ea28b1
 
 pkgbase=mozc-ut
 pkgname=mozc-ut
