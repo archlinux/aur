@@ -1,23 +1,25 @@
+# Maintainer: Zanny <lordzanny@gmail.com>
 # Maintainer: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
 # Author: Antonio Rojas <arojas@archlinux.org>
 
+_gitname=ktp-common-internals
 pkgname=telepathy-kde-common-internals-git
-pkgver=r1790.bec1480
+pkgver=v15.12.0.r10.gcad98ea
 pkgrel=1
 pkgdesc='Common components for KDE-Telepathy'
 arch=(i686 x86_64)
 url='http://community.kde.org/Real-Time_Communication_and_Collaboration'
 license=(GPL)
-depends=(knotifyconfig ktexteditor kpeople telepathy-qt5 kaccounts-integration-git libotr hicolor-icon-theme telepathy-mission-control telepathy-logger-qt-git)
+depends=(knotifyconfig ktexteditor kpeople telepathy-logger-qt kaccounts-integration libotr hicolor-icon-theme telepathy-accounts-signon)
 makedepends=(extra-cmake-modules git kdoctools doxygen python)
 conflicts=(telepathy-kde-common-internals)
-source=("git://anongit.kde.org/ktp-common-internals.git")
+source=("git://anongit.kde.org/$_gitname")
 sha256sums=('SKIP')
 install=$pkgname.install
 
 pkgver() {
-  cd ktp-common-internals
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/$_gitname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -26,7 +28,7 @@ prepare() {
 
 build() {
   cd build
-  cmake ../ktp-common-internals \
+  cmake ../$_gitname \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DLIB_INSTALL_DIR=lib \
