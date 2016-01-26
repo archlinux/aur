@@ -2,8 +2,8 @@
 
 pkgname=terminix-git
 _pkgname=terminix
-pkgver=0.40.0.r4.7935eab
-pkgrel=1
+pkgver=0.40.0.r45.99719b8
+pkgrel=2
 pkgdesc="A tiling terminal emulator based on GTK+ 3 (git master)"
 arch=('x86_64')
 url="http://github.com/gnunn1/terminix"
@@ -29,15 +29,7 @@ build() {
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/usr/share/applications"
-  mkdir -p "$pkgdir/usr/share/terminix/schemes"
-  mkdir -p "$pkgdir/usr/share/terminix/resources"
-  
   cd "$_pkgname"
-  install -Dm755 terminix "$pkgdir/usr/bin/terminix"
-  install -Dm644 data/pkg/desktop/com.gexperts.Terminix.desktop "$pkgdir/usr/share/applications/com.gexperts.Terminix.desktop"
-  install -Dm644 data/schemes/* "$pkgdir/usr/share/terminix/schemes/"
-  install -Dm644 data/resources/terminix.gresource "$pkgdir/usr/share/terminix/resources/terminix.gresource"
-  install -Dm644 data/gsettings/com.gexperts.Terminix.gschema.xml "$pkgdir/usr/share/glib-2.0/schemas/com.gexperts.Terminix.gschema.xml"
+  ./install.sh $pkgdir/usr
+  rm $pkgdir/usr/share/glib-2.0/schemas/gschemas.compiled 
 }
