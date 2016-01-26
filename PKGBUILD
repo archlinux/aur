@@ -19,24 +19,24 @@
 # I use NFS personally: sudo mount qpii.local:/ /mnt/pi
 
 # comment this turkey out in any circumstance when you need to regenate .SRCINFO
-echo "Set your sysroot prior to build" && exit 1
+#echo "Set your sysroot prior to build" && exit 1
 _sysroot=/mnt/pi
 
 _piver=1
-pkgname=qpi${_piver}
+pkgname=qt-sdk-raspberry-pi${_piver}
 _packaginguser=$(whoami)
-_libspkgname="${pkgname}-libs"
+_libspkgname="${pkgname}-target-libs"
 _mkspec="linux-rpi${_piver}-g++"
 pkgver=5.6.0
 _pkgver=${pkgver}-beta
 _baseprefix=/opt
-_installprefix=${_baseprefix}/qt-${_pkgver}-rpi${_piver}
+_installprefix=${_baseprefix}/${pkgname}-${_pkgver}
 _pipkgname=qt-everywhere-opensource-src-${_pkgver}
 pkgrel=5
-pkgdesc="Cross compile Qt for the Raspberry Pi${_piver}"
+pkgdesc="Qt SDK for the Raspberry Pi${_piver}"
 arch=("x86_64")
 url="http://www.qt.io"
-license=("LGPL3")
+license=("LGPL3" "GPL3")
 depends=("qpi-toolchain" "qtcreator")
 makedepends=("git" "pkgconfig" "gcc")
 source=("git://github.com/sirspudd/mkspecs.git" "https://download.qt.io/development_releases/qt/5.6/${_pkgver}/single/${_pipkgname}.tar.gz")
