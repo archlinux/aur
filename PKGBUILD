@@ -2,8 +2,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=qtikz-svn
-pkgver=232
-pkgrel=2
+pkgver=231
+pkgrel=1
 pkgdesc="A small application helping you to create TikZ diagrams (from the LaTeX pgf package)"
 arch=('i686' 'x86_64')
 url="http://www.hackenberger.at/blog/ktikz-editor-for-the-tikz-language/"
