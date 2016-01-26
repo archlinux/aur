@@ -6,7 +6,7 @@
 _bldtype=Release
 #_bldtype=Debug
 
-_uimmozcrev=320.7072409
+_uimmozcrev=321.3ea28b1
 _mozcrev=2628af6995dbbbb9ccdb52d1160db1dbd5ed3bae
 
 pkgname=uim-mozc
@@ -26,7 +26,7 @@ source=(
   http://downloads.sourceforge.net/project/pnsft-aur/mozc/uim-mozc-${_uimmozcrev}.tar.xz
 )
 sha1sums=('SKIP'
-          'dd2582a4eb854b9feef064681ec8232c856e1f7f')
+          '22b7c2a5b0a7fef778ee72ebe5873a75e879d26b')
 
 
 pkgver() {
