@@ -2,7 +2,7 @@
 
 pkgname=feeluown-git
 _pkgname=FeelUOwn
-pkgver=20151226
+pkgver=20160115
 pkgrel=1
 pkgdesc="个性化音乐服务 For Mac And Linux"
 arch=("any")
@@ -38,17 +38,8 @@ EOF
 
     cat > "${_pkgname}.sh" << EOF
 #!/usr/bin/env sh
-DATA_PATH="\${HOME}/.${_pkgname}"
-if [ ! -d \${DATA_PATH} ]; then
-    mkdir -p \${DATA_PATH}
-fi
-python /usr/share/${pkgname}/feeluown/main.py
+python /usr/share/${pkgname}/feeluown/main.py \$*
 EOF
-
-    # save login data to ~/.FeelUOwn
-    cd "$srcdir/$_pkgname/feeluown"
-    sed -i '2 i import os' constants.py
-    sed -i 's!^DATA_PATH.*$!DATA_PATH = os.path.expanduser("~/.FeelUOwn/")!g' constants.py
 }
 
 package() {
