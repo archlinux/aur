@@ -20,6 +20,7 @@ package() {
   mkdir -p "$pkgdir"/usr/{bin,share/games/barbie}
 
   cp -r run_game.py lib data "$pkgdir/usr/share/games/barbie"
+  chmod 755 "$pkgdir/usr/share/games/barbie/run_game.py"
   rm "$pkgdir"/usr/share/games/barbie/data/*.txt
 
   install -Dm644 "$srcdir/barbie.desktop" \
