@@ -3,7 +3,7 @@
 
 pkgname=fldigi
 pkgver=3.23.07
-pkgrel=1
+pkgrel=2
 pkgdesc="Digital Modem Program for Amateur Radio"
 arch=('i686' 'x86_64')
 url="http://w1hkj.com"
