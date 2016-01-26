@@ -7,7 +7,9 @@ arch=('i686' 'x86_64')
 depends=('glibc')
 license=('custom')
 url='http://alasir.com/software/ramspeed/'
-source=(http://www.alasir.com/software/ramspeed/$pkgname-$pkgver.tar.gz Makefile)
+# Original source is http://www.alasir.com/software/ramspeed/$pkgname-$pkgver.tar.gz
+# but it may not work.
+source=(http://sources.buildroot.net/$pkgname-$pkgver.tar.gz Makefile)
 md5sums=('546394131a1467a8651e0b8a218970c0'
          '03ff681717c551b53a736e9e3c6ea786')
 
