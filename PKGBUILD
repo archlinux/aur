@@ -1,6 +1,6 @@
 _name=gnome-modulesets
 pkgname=$_name-git
-pkgver=76.792f8ab
+pkgver=20160125.r76.792f8ab
 pkgrel=1
 pkgdesc="Latests modulesets to build GNOME with JHBuild"
 arch=(any)
@@ -14,7 +14,7 @@ md5sums=(SKIP)
 pkgver() {
   cd "$srcdir/$_name"
   d=$(date +'%Y%m%d')
-  printf "$dr%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  printf "%s.r%s.%s" $d $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 package() {
