@@ -1,7 +1,7 @@
 # Maintainer: TingPing tingping@tingping.se
 
 pkgname=hexchat-git
-pkgver=2.11.0.r1186.g73636a0
+pkgver=2.11.0.r1218.g5c534ac
 pkgrel=1
 pkgdesc='A GTK+ based IRC client'
 arch=('i686' 'x86_64' 'armv6h')
@@ -26,7 +26,7 @@ pkgver() {
   cd "$_gitname"
 
   # Development releases don't get tags, so pull it from configure.ac
-  _ver=`gawk 'match($0, /AC_INIT\(.*,\[(.*)\]/, matches) { print matches[1] }' configure.ac`
+  _ver=`autoconf -t 'AC_INIT:$2'`
   _rev=`git describe | sed 's/^v[^-]*-/r/; s/-/./'`
   echo "$_ver.$_rev"
 }
