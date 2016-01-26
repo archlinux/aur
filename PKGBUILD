@@ -2,7 +2,7 @@
 # Maintainer: Elliott Seyler <emhs@mossberg>
 # Maintainer: Jenya Sovetkin <e dot sovetkin at gmail dot com>
 pkgname=sweethome3d-furniture-library
-pkgver=1.13
+pkgver=1.18
 pkgrel=1
 pkgdesc="A tool to manage furniture in Sweet Home 3D"
 arch=('i686' 'x86_64')
