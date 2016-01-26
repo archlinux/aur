@@ -10,6 +10,7 @@ _familytext="Raspberry Pi"
 _devicetext="${_familytext} ${_piver}"
 
 setup_toolchain() {
+    echo "Registering toolchain with Qt Creator"
 ${_sdktool} addTC \
     --id "ProjectExplorer.ToolChain.Gcc:${_devicefamily}" \
     --name "${_familytext} toolchain" \
@@ -17,6 +18,7 @@ ${_sdktool} addTC \
     --abi arm-linux-generic-elf-32bit \
     --supportedAbis arm-linux-generic-elf-32bit
 
+    echo "Registering debugger with Qt Creator"
 ${_sdktool} addDebugger \
     --id "${_devicefamily}_gdb" \
     --name "${_familytext} gdb" \
@@ -50,6 +52,7 @@ setup_kit() {
   remove_kit
   setup_toolchain
  
+    echo "Registering device with Qt Creator"
 ${_sdktool} addDev \
     --id "${_devicename}_device" \
     --name "${_devicetext}" \
@@ -61,12 +64,14 @@ ${_sdktool} addDev \
     --sshPort 22 \
     --freePorts "10000-10100"
 
+    echo "Registering Qt install with Qt Creator"
 ${_sdktool} addQt \
     --id "${_devicename}_qt" \
     --name "${_devicetext} Qt" \
     --qmake ${_qmakepath} \
     --type RemoteLinux.EmbeddedLinuxQt
 
+    echo "Creating Qt Creator Kit"
 ${_sdktool} addKit \
     --id "${_devicename}_kit" \
     --name "${_devicetext} Kit" \
