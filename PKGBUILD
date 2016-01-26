@@ -14,6 +14,7 @@ url="http://www.amule.org"
 license=('GPL')
 conflicts=('amule')
 depends=('wxgtk2.8' 'geoip')
+makedepends=('crypto++')
 source=("http://amule.sourceforge.net/tarballs/aMule-SVN-r${pkgver}.tar.bz2")
 md5sums=('f3c666b6fa518a3e6e2c21670c243292')
 
