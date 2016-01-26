@@ -1,5 +1,5 @@
 pkgname=amule-git
-pkgver=2.4.0.r10288.17e1816
+pkgver=2.4.0.r10305.4a508bf
 pkgrel=1
 pkgdesc='Client for the eD2k and Kad networks'
 arch=(i686 x86_64)
@@ -27,18 +27,14 @@ http://svgicons.o7a.net/unofficial/amule.png
 https://anonscm.debian.org/cgit/pkg-amule/amule.git/plain/debian/patches/configure_ignore_gdlib-config_garbage.diff
 https://anonscm.debian.org/cgit/pkg-amule/amule.git/plain/debian/patches/use_xdg-open_as_preview_default.diff
 https://anonscm.debian.org/cgit/pkg-amule/amule.git/plain/debian/patches/version_check.diff
-https://raw.githubusercontent.com/microcai/gentoo-zh/master/net-p2p/amule-dlp/files/amule-dlp-scanner-header.patch
 https://raw.githubusercontent.com/pld-linux/aMule/master/aMule-cas-datadir.patch
-https://raw.githubusercontent.com/pld-linux/aMule/master/build.patch
 )
 sha256sums=(SKIP
             737873e5f29dabaca6f9ac96b612eda8cba0236b6618e380107ea7d1d7665b78
-            505f70995a56d748f853265fba84a1bbdfbb0291195842b69e76370013239a6e
+            594a667bac53d3c881523c8c1a49d622a0752d84e0601aef062a586493ba998e
             902f8f719c1c02335880621717f23c683da8edbb31add75d3e1267b190e03b9c
-            0904ff6a1dfa298f452332831345feb4aa6575668a8b092b3cc6edfbfed974fe
-            04db8bbb57834174148c48da4f02832c413a8911eb5ace0ee11190990b875ff9
-            897ac890b5f1b8cb4b53fded313cb2779bed5d39041a320885dd9dbe30878879
-            a76b5fe7042e226ccc048fce68006845b942a5400e31ebb42ff4530ff60b2eb8)
+            7bf39a64a723ab3e55ccfef93df2ec9cdd8108e56aa0733a4412755931cb3244
+            897ac890b5f1b8cb4b53fded313cb2779bed5d39041a320885dd9dbe30878879)
 
 pkgver() {
   cd amule
@@ -50,12 +46,9 @@ pkgver() {
 prepare() {
   cd amule
 
-  sed -i '15,$ d' $srcdir/amule-dlp-scanner-header.patch
   sed -i '12,$ d' $srcdir/configure_ignore_gdlib-config_garbage.diff
 
   patch -Np1 < $srcdir/aMule-cas-datadir.patch
-  patch -Np1 < $srcdir/amule-dlp-scanner-header.patch
-  patch -Np1 < $srcdir/build.patch
   patch -Np1 < $srcdir/configure_ignore_gdlib-config_garbage.diff
   patch -Np1 < $srcdir/use_xdg-open_as_preview_default.diff
   patch -Np1 < $srcdir/version_check.diff
