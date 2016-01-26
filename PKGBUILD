@@ -1,7 +1,7 @@
 _module=mem
 _pkgname=moksha-modules-extra
 category=('moksha-modules-extra')
-pkgname=moksha-modules-${_module}-git
+pkgname=moksha-module-${_module}-git
 pkgver=f7db19e
 pkgrel=1
 pkgdesc="Extra Moksha modules"
