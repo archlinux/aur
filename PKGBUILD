@@ -11,11 +11,11 @@
 
 pkgname=telegram-desktop-patched
 pkgver=0.9.19
-pkgrel=2
+pkgrel=3
 _qtver=5.5.1
 pkgdesc='Telegram Desktop with bigger sticker panel and dark colour scheme patches.'
 arch=('i686' 'x86_64')
-url="https://git.melvinvermeeren.com/melvin/telegram-desktop#branch=release"
+url="https://git.melvinvermeeren.com/melvin/telegram-desktop"
 license=('GPL3')
 depends=('ffmpeg' 'icu' 'jasper' 'libexif' 'libmng' 'libwebp' 'libxkbcommon-x11'
 	 'libinput' 'libproxy' 'mtdev' 'openal' 'libva' 'desktop-file-utils'
@@ -23,7 +23,7 @@ depends=('ffmpeg' 'icu' 'jasper' 'libexif' 'libmng' 'libwebp' 'libxkbcommon-x11'
 makedepends=('git' 'patch' 'libunity' 'libappindicator-gtk2')
 provides=('telegram-desktop')
 conflicts=('telegram-desktop')
-source=("tdesktop::git+https://git.melvinvermeeren.com/melvin/telegram-desktop.git"
+source=("tdesktop::git+https://git.melvinvermeeren.com/melvin/telegram-desktop.git#branch=release"
 	"http://download.qt-project.org/official_releases/qt/${_qtver%.*}/$_qtver/single/qt-everywhere-opensource-src-$_qtver.tar.xz"
 	"telegramdesktop.desktop"
 	"tg.protocol")
