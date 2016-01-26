@@ -1,6 +1,6 @@
 Pi-hole Archlinux configuration instructions
 Server version
-rev. 0.1
+rev. 0.2
 
 Pi-Hole Web server admin page: http://<server-ip>/admin
 
@@ -47,8 +47,8 @@ Instructions below assume ArchLinux default system config files are untouched or
 
 6) enable and start lighttpd service
 
-# systemctl enable lighttpd.service
-# systemctl start lighttpd.service
+# systemctl reenable lighttpd.service
+# systemctl restart lighttpd.service
 
 7) FUNDAMENTAL: point dns resolution of your lan clients to this machine
 

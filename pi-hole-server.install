@@ -1,12 +1,11 @@
 post_install() {
   cat <<- EOF
     ==> please read configuration instructions at /usr/share/doc/pihole/configuration
+    ==> lighttpd config file is changed. please uninstall and reinstall following configuration steps.
     ==> first install/update run...
 EOF
   chown -R http.http /srv/http/pihole
-  touch /run/log/pihole.log
-  chmod 644 /run/log/pihole.log
-  chown dnsmasq.root /run/log/pihole.log
+  systemd-tmpfiles --create pi-hole.conf
   /usr/bin/gravity.sh > /dev/null
 }
 

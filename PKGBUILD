@@ -2,19 +2,18 @@
 
 pkgname=pi-hole-server
 _pkgname=pi-hole
-pkgver=2.2
+pkgver=2.4
 pkgrel=1
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
 arch=('any')
 license=('GPL2')
 url="https://github.com/jacobsalmela/pi-hole"
-depends=('cron' 'dnsmasq' 'lighttpd' 'php-cgi')
+depends=('cron' 'dnsmasq' 'lighttpd' 'php-cgi' 'bc' 'figlet')
 conflicts=('pi-hole-server')
 install=$pkgname.install
 
 source=(https://github.com/jacobsalmela/$_pkgname/archive/v$pkgver.tar.gz
 	https://github.com/jacobsalmela/AdminLTE/archive/master.zip
-	https://raw.githubusercontent.com/jacobsalmela/pi-hole/master/advanced/index.html
 	configuration
 	dnsmasq.include
 	dnsmasq.complete
@@ -25,31 +24,41 @@ source=(https://github.com/jacobsalmela/$_pkgname/archive/v$pkgver.tar.gz
 	whitelist.txt
 	blacklist.txt)
 
-md5sums=('8387d55bc37b661827ad614701157b19'
-         '807c8cd98cfba066dac9b16ff0e08c8e'
-         '58d5c6d200e4bdf990e04d7dbfc3cf57'
-         'c01b982f3ef13c5fe140cc242a3b627b'
+md5sums=('b051dc1bd79182262336ce8bc11fb816'
+         'ef69a57624685ef11c265785e914782b'
+         '77e128965dbc7e94a31a908f58a5aa6c'
          'fd607f890103e97e480d814a5dfbee5b'
          '06bb49cf66cc1db8be5e476a54b1e933'
-         '4f5f6076d358c1375525e6ab481dfb7d'
+         '29aab2a7cdc82097b719935c01698777'
          '564f47c5cfab0a1b7b010ddbcf8e3b84'
          '8f99cfaae99f1542788dfbd7a39b5603'
          'a2d0530954e8eb19592f686e29c24c45'
-         '534de24fb56acfd3b451cf4b1b382218'
-         '534de24fb56acfd3b451cf4b1b382218')
+         'd41d8cd98f00b204e9800998ecf8427e'
+         'd41d8cd98f00b204e9800998ecf8427e')
 
 prepare() {
   # modify service management
-  sed -i 's|^		sudo service dnsmasq start|		systemctl start dnsmasq|' "$srcdir"/$_pkgname-$pkgver/gravity.sh
+  sed -i 's|^		\$SUDO service dnsmasq start|		$SUDO systemctl start dnsmasq|' "$srcdir"/$_pkgname-$pkgver/gravity.sh
 
-  # change log location in admin php interface
+  # change log location in admin php interface and scripts
   sed -i 's|/var/log/pihole.log|/run/log/pihole.log|' "$srcdir"/AdminLTE-master/index.php
   sed -i 's|/var/log/pihole.log|/run/log/pihole.log|' "$srcdir"/AdminLTE-master/api.php
+  sed -i 's|/var/log/pihole.log|/run/log/pihole.log|' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
+
+  # original toilet util is in aur, enter figlet
+  sed -i 's|		toilet -f small -F gay Pi-hole|		figlet Pi-hole|' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
+
+  # change bin location in admin php interface
+  sed -i 's|/usr/local/bin/|/usr/bin/|' "$srcdir"/AdminLTE-master/index.php
+  sed -i 's|/usr/local/bin/|/usr/bin/|' "$srcdir"/AdminLTE-master/api.php
 }
 
 package() {
   cd "$srcdir"
   install -Dm755 ./$_pkgname-$pkgver/gravity.sh "$pkgdir"/usr/bin/gravity.sh || return 1
+  install -Dm755 ./$_pkgname-$pkgver/advanced/Scripts/chronometer.sh "$pkgdir"/usr/bin/chronometer.sh || return 1
+  install -Dm755 ./$_pkgname-$pkgver/advanced/Scripts/blacklist.sh "$pkgdir"/usr/bin/blacklist.sh || return 1
+  install -Dm755 ./$_pkgname-$pkgver/advanced/Scripts/whitelist.sh "$pkgdir"/usr/bin/whitelist.sh || return 1
   install -Dm755 $_pkgname-daily.cron "$pkgdir"/etc/cron.daily/$_pkgname-daily || return 1
   install -Dm755 $_pkgname-weekly.cron "$pkgdir"/etc/cron.weekly/$_pkgname-weekly || return 1
   install -Dm644 pi-hole.tmpfile "$pkgdir"/etc/tmpfiles.d/pi-hole.conf || return 1
@@ -64,7 +73,7 @@ package() {
   install -Dm644 configuration "$pkgdir"/usr/share/doc/pihole/configuration || return 1
 
   install -dm755 "$pkgdir"/srv/http/pihole/admin || return 1
-  install -Dm644 index.html "$pkgdir"/srv/http/pihole/index.html || return 1
+  install -Dm644 ./$_pkgname-$pkgver/advanced/index.html "$pkgdir"/srv/http/pihole/index.html || return 1
   cp -dpr --no-preserve=ownership AdminLTE-master/* "$pkgdir"/srv/http/pihole/admin/
 }
 
