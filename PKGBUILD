@@ -1,26 +1,30 @@
+# Maintainer: Steffen Weber <-boenki-gmx-de->
 # Contributor: schuay <jakob.gruber@gmail.com>
 # Contributor: rennero <rennero@bastardi.net>
+
 pkgname=hasciicam
-pkgver=1.1.2
+pkgver=1.3
 pkgrel=1
-pkgdesc="Renders video input as ascii (either to the terminal, to a text file, or a live webpage)"
+pkgdesc="Renders video input as ascii (to the terminal, textfile, or live webpage)"
 url="http://ascii.dyne.org/"
-depends=('aalib' 'libv4l' 'ftplib')
+depends=('aalib' 'libv4l')
 arch=('i686' 'x86_64')
-install=${pkgname}.install
-source=("https://files.dyne.org/.xsend.php?file=hasciicam/releases/${pkgname}_$pkgver.tar.gz")
-md5sums=('2c7393270e18ab913043683fa3390d8c')
-license=('GPL')
+install=$pkgname.install
+source=("https://files.dyne.org/$pkgname/${pkgname}_$pkgver.tar.gz")
+md5sums=('4d77c6a4cf6e2b1474d5fec0ff450b80')
+license=('GPL3')
 
 build() {
-  cd "${srcdir}"/${pkgname}-$pkgver
-  
-  sed -i 's_\(Iconsdir.*\)icons$_\1pixmaps_; /Menu_DATA/d' share/Makefile.am
-  ./configure --prefix="${pkgdir}"/usr --mandir="${pkgdir}"/usr/share/man
-
+  cd ${pkgname}_$pkgver
+  ./configure --prefix="$pkgdir/usr" --mandir="$pkgdir/usr/share/man"
   make
 }
+
 package() {
-  cd "${srcdir}"/${pkgname}-$pkgver
+  cd ${pkgname}_$pkgver
   make install
+
+  cd "$pkgdir/usr/share"
+  mv icons pixmaps
+  rm -r menu
 }
