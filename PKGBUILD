@@ -7,7 +7,7 @@
 
 _pkgname=autorandr
 pkgname=autorandr-git
-pkgver=r170.ed599bc
+pkgver=r198.ac540ff
 pkgrel=1
 pkgdesc='Auto-detect the connect display hardware and load the appropiate X11 setup using xrandr. Formerly autodisper. No disper support.'
 arch=('any')
@@ -31,11 +31,11 @@ install="$pkgname.install"
 source=(
   "$_pkgname"::"git+https://github.com/phillipberndt/$_pkgname.git"
   "$pkgname.install"
+  systemd-unit-dir.patch
 )
-md5sums=(
-  'SKIP'
-  'bedb41a350cdf6983872119aef71fed6'
-)
+md5sums=('SKIP'
+         'bedb41a350cdf6983872119aef71fed6'
+         '04ccd2e108878ee07fbb3282a3f7f75f')
 
 pkgver() {
   cd "$_pkgname"
@@ -48,13 +48,10 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
-  sed --in-place --regexp-extended 's@(#!/usr/bin/env python)@\12@' contrib/autorandr_monitor/autorandr_monitor
+  patch -p1 -i ../systemd-unit-dir.patch
 }
 
 package() {
   cd "$_pkgname"
-  make DESTDIR="$pkgdir" INSTALL_PATH=/usr/bin install >/dev/null
-  make DESTDIR="$pkgdir" hotplug >/dev/null
-
-  install -Dm755 contrib/autorandr_monitor/autorandr_monitor "$pkgdir/usr/bin/autorandr_monitor"
+  make DESTDIR="$pkgdir" PREFIX=/usr install
 }
