@@ -1,23 +1,24 @@
+# Maintainer Zanny <lordzanny@gmail.com>
 # Maintainer: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
 # Author: Antonio Rojas <arojas@archlinux.org>
 
+_gitname=ktp-text-ui
 pkgname=telepathy-kde-text-ui-git
-pkgver=r1849.cd56b18
+pkgver=v15.12.0.r3.g1c1a9cb
 pkgrel=1
 pkgdesc='Telepathy handler for Text Chats'
 arch=('i686' 'x86_64')
 url='http://community.kde.org/Real-Time_Communication_and_Collaboration'
 license=('GPL')
-depends=('telepathy-kde-common-internals-git')
+depends=('telepathy-kde-common-internals-git' 'kemoticons' 'kdewebkit')
 makedepends=('extra-cmake-modules' 'git' 'kdoctools' 'python')
 conflicts=('telepathy-kde-text-ui')
-replaces=('telepathy-kde-text-ui-frameworks-git')
-source=("git://anongit.kde.org/ktp-text-ui.git")
+source=("git://anongit.kde.org/$_gitname")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ktp-text-ui
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/$_gitname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -26,7 +27,7 @@ prepare() {
 
 build() {
   cd build
-  cmake ../ktp-text-ui \
+  cmake ../$_gitname \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DLIB_INSTALL_DIR=lib \
@@ -37,5 +38,5 @@ build() {
 
 package() {
   cd build
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="$pkgdir" install
 }
