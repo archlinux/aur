@@ -20,7 +20,7 @@
 
 # Options
 
-_build_web_engine=false
+_skip_web_engine=true
 
 # comment this turkey out in any circumstance when you need to regenate .SRCINFO
 #echo "Set your sysroot prior to build" && exit 1
@@ -50,8 +50,7 @@ install=qpi.install
 _fully_qualified_install_script="${startdir}/${install_script}"
 _device_configure_flags=""
 
-
-if $_build_web_engine && [[ ${_piver} = "1" ]]; then
+if $_skip_web_engine || [[ ${_piver} = "1" ]]; then
   _device_configure_flags="-skip qtwebengine"
 fi
 
