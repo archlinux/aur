@@ -29,4 +29,7 @@ package() {
 
 	install -d "$pkgdir"/usr/bin
 	ln -s ../../opt/avocode/Avocode "$pkgdir"/usr/bin/avocode
+
+    install -D -m644 "../Avocode.desktop"           "${pkgdir}/usr/share/applications/Avocode.desktop"
+    install -D -m644 "../avocode-app-icon.png"      "${pkgdir}/usr/share/pixmaps/avocode-app-icon.png"
 }
