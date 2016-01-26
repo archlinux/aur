@@ -1,6 +1,6 @@
 pkgbase = palemoon
 	pkgdesc = Open source web browser based on Firefox focusing on efficiency.
-	pkgver = 25.8.1
+	pkgver = 26.0.0
 	pkgrel = 1
 	url = http://www.palemoon.org/
 	install = palemoon.install
@@ -17,6 +17,7 @@ pkgbase = palemoon
 	makedepends = yasm
 	makedepends = gstreamer0.10
 	makedepends = gstreamer0.10-base-plugins
+	makedepends = libpulse
 	depends = gtk2
 	depends = dbus-glib
 	depends = desktop-file-utils
@@ -31,7 +32,7 @@ pkgbase = palemoon
 	optdepends = gstreamer0.10-bad-plugins
 	optdepends = gstreamer0.10-good-plugins
 	optdepends = gstreamer0.10-ugly-plugins
-	source = git+https://github.com/MoonchildProductions/Pale-Moon#tag=25.8.1_Release
+	source = git+https://github.com/MoonchildProductions/Pale-Moon#tag=26.0.0_Release
 	source = palemoon.desktop
 	source = mozconfig.in
 	md5sums = SKIP
