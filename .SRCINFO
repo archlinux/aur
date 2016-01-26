@@ -1,12 +1,13 @@
 pkgbase = particle-dev
 	pkgdesc = A meta-package that installs all dependencies for Particle Photon / Electron dev.
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	depends = arm-none-eabi-gcc
 	depends = arm-none-eabi-newlib
 	depends = perl-archive-zip
 	depends = dfu-util
+	depends = particle-udev
 	depends = particle-cli
 
 pkgname = particle-dev

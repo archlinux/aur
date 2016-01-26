@@ -1,7 +1,7 @@
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
 pkgname=particle-dev
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A meta-package that installs all dependencies for Particle Photon / Electron dev."
 arch=('any')
 url=""
@@ -12,6 +12,7 @@ depends=(
     'arm-none-eabi-newlib'
     'perl-archive-zip'
     'dfu-util'
+    'particle-udev'
     'particle-cli'
 )
 makedepends=()
