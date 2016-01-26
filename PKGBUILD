@@ -2,9 +2,9 @@
 pkgname=python2-ami
 pkgver=0.0.2
 pkgrel=1
-pkgdesc="A python2 to asterisk management interface libary"
+pkgdesc=""
 arch=('any')
-url="https://bitbucket.org/cyrilrbt/caldav/wiki/Ho"
+url="https://github.com/ettoreleandrotognoli/python-ami/"
 depends=('')
 conflicts=()
 install=
