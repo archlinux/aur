@@ -2,7 +2,7 @@
 
 pkgname=pi-hole-standalone
 _pkgname=pi-hole
-pkgver=2.2
+pkgver=2.4
 pkgrel=1
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch alteration for standalone PC.'
 arch=('any')
@@ -20,25 +20,27 @@ source=(https://github.com/jacobsalmela/$_pkgname/archive/v$pkgver.tar.gz
 	whitelist.txt
 	blacklist.txt)
 
-md5sums=('8387d55bc37b661827ad614701157b19'
+md5sums=('b051dc1bd79182262336ce8bc11fb816'
          '8820584b1a9e0b49edcf9c06e1195553'
          'fa485f038d577c354068410ed1159d94'
          '1b2e808b699a6b58647641f12379f65d'
          'a2d0530954e8eb19592f686e29c24c45'
-         '534de24fb56acfd3b451cf4b1b382218'
-         '534de24fb56acfd3b451cf4b1b382218')
+         'd41d8cd98f00b204e9800998ecf8427e'
+         'd41d8cd98f00b204e9800998ecf8427e')
 
 prepare() {
   # change local ip to unusable 0.0.0.0 (ref. http://dlaa.me/blog/post/skyhole)
   sed -i '/^function gravity_reload() {/a sed -i "s/^[0-9\\.]\\+\\s/0.0.0.0 /g" /etc/pihole/gravity.list' "$srcdir"/$_pkgname-$pkgver/gravity.sh
 
   # modify service management
-  sed -i 's|^		sudo service dnsmasq start|		systemctl start dnsmasq|' "$srcdir"/$_pkgname-$pkgver/gravity.sh
+  sed -i 's|^		\$SUDO service dnsmasq start|		$SUDO systemctl start dnsmasq|' "$srcdir"/$_pkgname-$pkgver/gravity.sh
 }
 
 package() {
   cd "$srcdir"
   install -Dm755 ./$_pkgname-$pkgver/gravity.sh "$pkgdir"/usr/bin/gravity.sh || return 1
+  install -Dm755 ./$_pkgname-$pkgver/advanced/Scripts/blacklist.sh "$pkgdir"/usr/bin/blacklist.sh || return 1
+  install -Dm755 ./$_pkgname-$pkgver/advanced/Scripts/whitelist.sh "$pkgdir"/usr/bin/whitelist.sh || return 1
   install -Dm755 $_pkgname.cron "$pkgdir"/etc/cron.weekly/$_pkgname || return 1
   install -dm777 "$pkgdir"/etc/pihole
   install -dm755 "$pkgdir"/etc/pihole/configs
