@@ -2,7 +2,7 @@
 
 _pkgname=asus-nb-wmi-reload
 pkgname=asus-nb-wmi-reload-git
-pkgver=20160121
+pkgver=20160126
 pkgrel=1
 pkgdesc="A systemd service for reload ASUS NB WMI Driver after resume"
 arch=('any')
