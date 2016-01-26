@@ -3,33 +3,33 @@
 
 pkgname=bmkdep
 pkgver=20140112
-pkgrel=1
+pkgrel=2
 pkgdesc="NetBSD mkdep: construct Makefile dependency list"
 arch=('i686' 'x86_64')
 makedepends=('bmake')
 url="https://code.google.com/p/bmkdep"
 license=('BSD')
-source=(https://bmkdep.googlecode.com/files/$pkgname-$pkgver.tar.gz)
-sha256sums=('393aafe3d42eee6f055741268904d4f6da82700394eb4b942f3015c8c36f674c')
+source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/trociny/$pkgname/tar.gz/$pkgname-$pkgver)
+sha256sums=('0e63b2e1aa6086e0c928197cc68c66dc180894f18abb159d84e6fe40a259c27f')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgname-$pkgver"
 
-  msg 'Fixing Makefile...'
+  msg2 'Fixing Makefile...'
   sed -i 's/MANDIR=/MANDIR?=/' Makefile
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgname-$pkgver"
 
-  msg 'Building...'
+  msg2 'Building...'
   PREFIX=/usr bmake
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgname-$pkgver"
 
-  msg 'Installing...'
+  msg2 'Installing...'
   install -dm 755 "$pkgdir/usr/bin"
   install -dm 755 "$pkgdir/usr/share/man/cat1"
   PREFIX="$pkgdir/usr" MANDIR="$pkgdir/usr/share/man" bmake install
