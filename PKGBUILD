@@ -8,8 +8,8 @@
 
 _pkgname=bs1770gain
 pkgname=bs1770gain-debian-git
-pkgver=0.4.5
-pkgrel=1
+pkgver=0.4.8
+pkgrel=2
 pkgdesc='A loudness scanner compliant with ITU-R BS.1770.'
 arch=('x86_64')
 url='http://bs1770gain.sourceforge.net'
