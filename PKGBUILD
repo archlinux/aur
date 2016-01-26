@@ -3,7 +3,7 @@
 
 pkgname=apache-spark
 pkgver=1.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="fast and general engine for large-scale data processing"
 arch=('any')
 url="http://spark.apache.org"
@@ -51,6 +51,12 @@ package() {
                 ln -s "$binpath" $binary
                 sed -i 's|^export SPARK_HOME=.*$|export SPARK_HOME=/usr/share/apache-spark|' "$pkgdir/$binpath"
         done
+
+        mkdir -p $pkgdir/etc/profile.d
+        echo '#!/bin/sh' > $pkgdir/etc/profile.d/apache-spark.sh
+        echo SPARK_HOME=$pkgdir/usr/share/apache-spark' >> $pkgdir/etc/profile.d/netkit.sh
+        echo 'export SPARK_HOME' >> $pkgdir/etc/profile.d/netkit.sh
+        chmod 755 $pkgdir/etc/profile.d/netkit.sh
 
         install -Dm644 "$srcdir/apache-spark-standalone.service" "$pkgdir/usr/lib/systemd/system/apache-spark-standalone.service"
         install -Dm644 "$srcdir/spark-env.sh" "$pkgdir/etc/apache-spark/spark-env.sh"
