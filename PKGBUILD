@@ -1,5 +1,5 @@
 pkgname=hyper
-pkgver=0.1
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A Lightweight Web Browser"
 arch=(any)
@@ -7,8 +7,8 @@ url="https://github.com/AxelMarchand/Hyper"
 license=('MIT')
 depends=('webkitgtk')
 makedepends=('make' 'gcc' 'pkg-config')
-source=('https://github.com/AxelMarchand/Hyper/releases/download/v0.1/hyper-0.1.tar.gz')
-md5sums=('0c7e0aa5d9166c3edadfd72e8531817a')
+source=('https://github.com/AxelMarchand/Hyper/releases/download/v0.1.1/hyper-0.1.1.tar.gz')
+md5sums=('057970f90e9650f36faccc17e5f2061c')
 
 build() {
     cd $srcdir/$pkgname-$pkgver
