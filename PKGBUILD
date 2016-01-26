@@ -22,14 +22,6 @@ build() {
   rm -rf dkms/vboxguest/$pkgver/source
   cp -r /var/lib/dkms .
 
-  echo patch vboxhost files
-  # copy this dir to local dir so we can patch it.
-  cp -r -L dkms/vboxguest/$pkgver/source dkms/vboxguest/$pkgver/src
-  rm dkms/vboxguest/$pkgver/source
-  mv dkms/vboxguest/$pkgver/src dkms/vboxguest/$pkgver/source
- 
-  cp ../lnkops.c dkms/vboxguest/$pkgver/source/vboxsf/lnkops.c
-
   echo "dkms_tree='$srcdir/dkms'" > dkms.conf
   
   # build host modules
