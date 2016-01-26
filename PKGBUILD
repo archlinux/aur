@@ -1,7 +1,7 @@
 # Contributor: Thiago Coutinho <root at thiagoc . net>
 pkgname=xtables-addons
-pkgver=2.6
-pkgrel=3
+pkgver=2.10
+pkgrel=1
 pkgdesc="Successor to patch-o-matic(-ng). Additional extensions for iptables, ip6tables, etc. CHAOS, TARPIT, TEE, DELUDE and other targets; condition, geoip, ipp2p and other matches. Includes ipset package."
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -12,8 +12,8 @@ conflicts=(ipset)
 replaces=(ipset)
 provides=(ipset)
 install='xtables-addons.install'
-source=(http://download.sourceforge.net/project/xtables-addons/Xtables-addons/$pkgver/$pkgname-$pkgver.tar.xz)
-md5sums=('087835ba7e564481b6fd398692268340')
+source=(http://sourceforge.net/projects/${pkgname}/files/Xtables-addons/$pkgname-$pkgver.tar.xz)
+md5sums=('727bf0dd4a3d9c65724267bd0d5d80b0')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
@@ -23,12 +23,12 @@ build() {
       --sysconfdir=/etc \
       --with-xtlibdir=/usr/lib/iptables \
       --mandir=/usr/share/man
-  make || return 1
+  make
 }
 
 package () {
   cd $srcdir/$pkgname-$pkgver
-  make DESTDIR=$pkgdir install || return 1
+  make DESTDIR=$pkgdir install
   mv $pkgdir/lib/* $pkgdir/usr/lib/
   mv $pkgdir/usr/lib/modules/$(uname -r)/extra $pkgdir/usr/lib/modules/$(uname -r)/$(readlink /usr/lib/modules/$(uname -r)/extramodules)
   rmdir $pkgdir/lib
