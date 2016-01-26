@@ -7,7 +7,8 @@ pkgrel=1
 arch=('i686' 'x86_64')
 url="http://swift.im/"
 license=('GPL3')
-makedepends=('python2' 'openssl' 'boost' 'qt5-base' 'qt5-multimedia' 'qt5-webkit' 'qt5-x11extras' 'qt5-tools')
+makedepends=('git' 'python2' 'openssl' 'boost' 'qt5-base' 'qt5-multimedia'
+             'qt5-webkit' 'qt5-x11extras' 'qt5-tools')
 source=("git://swift.im/swift")
 md5sums=('SKIP')
 
