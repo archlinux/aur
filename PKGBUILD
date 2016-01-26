@@ -4,7 +4,7 @@
 pkgname=getfem++
 _pkgname=getfem
 pkgver=5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic C++ finite element library."
 arch=('i686' 'x86_64')
 url="http://download.gna.org/getfem/html/homepage/"
@@ -35,6 +35,9 @@ prepare(){
   sed -i 's/env\ python/env\ python2/g' interface/tests/python/*.py
   sed -i 's/LOG_COMPILER\ =\ python/LOG_COMPILER\ =\ python2/g' interface/tests/python/Makefile.in
   sed -i 's/python\ setup.py/python2\ setup.py/g' interface/src/python/Makefile.in
+
+  # Use shared library for qd
+  sed -i 's/libqd.a/libqd.so/g' configure
 }
 
 build() {
