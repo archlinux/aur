@@ -1,6 +1,6 @@
-diff -U 3 -H -d -r -N -- neo4j-community-2.3.1-orig/bin/neo4j neo4j-community-2.3.1-mod/bin/neo4j
---- neo4j-community-2.3.1-orig/bin/neo4j	2015-11-10 10:15:38.000000000 -0200
-+++ neo4j-community-2.3.1-mod/bin/neo4j	2015-12-26 21:48:05.787841796 -0200
+diff -Naur neo4j-community-2.3.2-orig/bin/neo4j neo4j-community-2.3.2-mod/bin/neo4j
+--- neo4j-community-2.3.2-orig/bin/neo4j	2016-01-12 21:01:31.000000000 -0200
++++ neo4j-community-2.3.2-mod/bin/neo4j	2016-01-26 10:38:34.784729340 -0200
 @@ -33,24 +33,13 @@
  LAUNCHD_NAME="org.neo4j.server"
  
@@ -60,9 +60,9 @@ diff -U 3 -H -d -r -N -- neo4j-community-2.3.1-orig/bin/neo4j neo4j-community-2.
    if [ ! -e "$LIBDIR" ] ; then
      echo "Error: missing Neo4j Library, expected at $LIBDIR"
      exit 1
-diff -U 3 -H -d -r -N -- neo4j-community-2.3.1-orig/bin/neo4j-import neo4j-community-2.3.1-mod/bin/neo4j-import
---- neo4j-community-2.3.1-orig/bin/neo4j-import	2015-11-10 10:15:38.000000000 -0200
-+++ neo4j-community-2.3.1-mod/bin/neo4j-import	2015-12-26 20:25:21.546530977 -0200
+diff -Naur neo4j-community-2.3.2-orig/bin/neo4j-import neo4j-community-2.3.2-mod/bin/neo4j-import
+--- neo4j-community-2.3.2-orig/bin/neo4j-import	2016-01-12 21:01:31.000000000 -0200
++++ neo4j-community-2.3.2-mod/bin/neo4j-import	2016-01-26 10:38:34.784729340 -0200
 @@ -21,19 +21,7 @@
  #Remember where we started from so that working dir is set correctly
  RUN_FROM=`pwd`
@@ -93,9 +93,9 @@ diff -U 3 -H -d -r -N -- neo4j-community-2.3.1-orig/bin/neo4j-import neo4j-commu
  fi
  
  LIBRARY_JARS=""
-diff -U 3 -H -d -r -N -- neo4j-community-2.3.1-orig/bin/neo4j-shell neo4j-community-2.3.1-mod/bin/neo4j-shell
---- neo4j-community-2.3.1-orig/bin/neo4j-shell	2015-11-10 10:15:38.000000000 -0200
-+++ neo4j-community-2.3.1-mod/bin/neo4j-shell	2015-12-26 20:27:40.619567323 -0200
+diff -Naur neo4j-community-2.3.2-orig/bin/neo4j-shell neo4j-community-2.3.2-mod/bin/neo4j-shell
+--- neo4j-community-2.3.2-orig/bin/neo4j-shell	2016-01-12 21:01:31.000000000 -0200
++++ neo4j-community-2.3.2-mod/bin/neo4j-shell	2016-01-26 10:38:34.784729340 -0200
 @@ -21,19 +21,7 @@
  #Remember where we started from so that working dir is set correctly
  RUN_FROM=`pwd`
