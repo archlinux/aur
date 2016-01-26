@@ -2,9 +2,9 @@
 # Contributor: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de
 
 pkgname=gtk-theme-arc-git
-_pkgname=Arc-theme
+_pkgname=arc-theme
 _pkgauthor=horst3180
-pkgver=371.3648a77
+pkgver=373.d1ddbf2
 pkgrel=1
 pkgdesc="A flat theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell. Latest commit from Github."
 arch=('any')
