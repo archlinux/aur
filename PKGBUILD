@@ -1,8 +1,10 @@
+# Maintainer Zanny <lordzanny@gmail.com>
 # Maintainer: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
 # Author: Antonio Rojas <arojas@archlinux.org>
 
+_gitname=ktp-contact-runner
 pkgname=telepathy-kde-contact-runner-git
-pkgver=r206.c2afaad
+pkgver=v15.07.80.r1.g3e07f5f
 pkgrel=1
 pkgdesc='KRunner plugin for KDE Telepathy'
 arch=('i686' 'x86_64')
@@ -16,8 +18,8 @@ source=("git://anongit.kde.org/ktp-contact-runner.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ktp-contact-runner
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/$_gitname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -26,7 +28,7 @@ prepare() {
 
 build() {
   cd build
-  cmake ../ktp-contact-runner \
+  cmake ../$_gitname \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DLIB_INSTALL_DIR=lib \
