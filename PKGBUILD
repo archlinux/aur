@@ -21,4 +21,5 @@ build() {
 package() {
     cd "$srcdir/BlackJack"
     make install
+    cp "$srcdir/BlackJack/res" /usr/local/games/BlackJack
 }
