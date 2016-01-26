@@ -1,7 +1,7 @@
-diff -ru gnupg-2.1.5/configure gnupg-2.1.5-patched/configure
---- gnupg-2.1.5/configure	2015-06-11 14:44:30.000000000 +0200
-+++ gnupg-2.1.5-patched/configure	2015-06-27 02:34:10.326765711 +0200
-@@ -2840,7 +2840,7 @@
+diff -ru gnupg-2.1.10/configure gnupg-2.1.10-patched/configure
+--- gnupg-2.1.10/configure	2015-12-04 10:57:06.000000000 +0100
++++ gnupg-2.1.10-patched/configure	2016-01-26 14:55:11.000000000 +0100
+@@ -2861,7 +2861,7 @@
  
  ac_config_headers="$ac_config_headers config.h"
  
@@ -10,9 +10,9 @@ diff -ru gnupg-2.1.5/configure gnupg-2.1.5-patched/configure
  
  # Find a good install program.  We prefer a C program (faster),
  # so one script is as good as another.  But avoid the broken or
-diff -ru gnupg-2.1.5/configure.ac gnupg-2.1.5-patched/configure.ac
---- gnupg-2.1.5/configure.ac	2015-06-09 13:38:14.000000000 +0200
-+++ gnupg-2.1.5-patched/configure.ac	2015-06-27 02:34:10.326765711 +0200
+diff -ru gnupg-2.1.10/configure.ac gnupg-2.1.10-patched/configure.ac
+--- gnupg-2.1.10/configure.ac	2015-12-04 10:55:19.000000000 +0100
++++ gnupg-2.1.10-patched/configure.ac	2016-01-26 14:55:11.000000000 +0100
 @@ -19,7 +19,7 @@
  
  # Process this file with autoconf to produce a configure script.
@@ -22,7 +22,7 @@ diff -ru gnupg-2.1.5/configure.ac gnupg-2.1.5-patched/configure.ac
  
  # To build a release you need to create a tag with the version number
  # (git tag -s gnupg-2.n.m) and run "./autogen.sh --force".  Please
-@@ -229,7 +229,7 @@
+@@ -234,7 +234,7 @@
                large_secmem=$enableval, large_secmem=no)
  AC_MSG_RESULT($large_secmem)
  if test "$large_secmem" = yes ; then
@@ -31,9 +31,9 @@ diff -ru gnupg-2.1.5/configure.ac gnupg-2.1.5-patched/configure.ac
  else
     SECMEM_BUFFER_SIZE=32768
  fi
-diff -ru gnupg-2.1.5/g10/keygen.c gnupg-2.1.5-patched/g10/keygen.c
---- gnupg-2.1.5/g10/keygen.c	2015-06-02 17:47:50.000000000 +0200
-+++ gnupg-2.1.5-patched/g10/keygen.c	2015-06-27 02:34:10.326765711 +0200
+diff -ru gnupg-2.1.10/g10/keygen.c gnupg-2.1.10-patched/g10/keygen.c
+--- gnupg-2.1.10/g10/keygen.c	2015-12-04 10:53:27.000000000 +0100
++++ gnupg-2.1.10-patched/g10/keygen.c	2016-01-26 14:55:11.000000000 +0100
 @@ -1560,7 +1560,7 @@
    int err;
    char *keyparms;
