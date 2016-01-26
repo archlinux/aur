@@ -3,7 +3,7 @@
 _pkgname='nsenter'
 pkgname="python-${_pkgname}"
 pkgver=0.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Small context manager for entering Linux kernel namespaces.'
 arch=('any')
 url='https://pypi.python.org/pypi/nsenter'
@@ -24,6 +24,7 @@ sha256sums=(
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   patch -Np1 <"$srcdir/entrypoint-name.patch"
+  patch -Np1 <"$srcdir/optional-reqs.patch"
 }
 
 check() {
