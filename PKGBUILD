@@ -46,7 +46,7 @@ install=qpi.install
 _device_configure_flags=""
 
 if [[ ${_piver} = "1" ]]; then
-  _device_configure_flags="-skip qtwebengine -no-icu"
+  _device_configure_flags="-skip qtwebengine"
 fi
 
 build() {
@@ -103,6 +103,7 @@ build() {
     -prefix ${_installprefix} \
     -opengl es2 \
     -egl \
+    -no-icu \
     \
     -no-widgets \
     -make libs \
