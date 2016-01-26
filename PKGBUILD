@@ -9,7 +9,7 @@
 
 pkgname=atom-editor-beta-bin
 _ver=1.5.0
-_beta=beta0
+_beta=beta1
 pkgver="${_ver}.${_beta}"
 pkgrel=1
 pkgdesc="Chrome-based text editor from Github - Beta Channel - Precompiled binary from official repository"
@@ -22,7 +22,7 @@ optdepends=('gvfs')
 conflicts=('atom-editor-beta')
 install=$pkgname.install
 
-md5sums=('3f4120054197a7e737c3b2793b6f51bb'
+md5sums=('8a2d0d2f5894ceb8c6ea0c87eba49217'
          'bec6d0ab5edca667f726dd84540626aa')
 source=("atom-amd64-v${_ver}-${_beta}.deb::https://github.com/atom/atom/releases/download/v${_ver}-${_beta}/atom-amd64.deb"
          atom-python.patch)
@@ -30,6 +30,7 @@ source=("atom-amd64-v${_ver}-${_beta}.deb::https://github.com/atom/atom/releases
 package() {
   bsdtar xf data.tar.gz
   patch -p1 < "${srcdir}"/atom-python.patch
+  sed -i 's|env PYTHON=python2 GTK_IM_MODULE= QT_IM_MODULE= XMODIFIERS= /usr/share/atom-beta/atom|/usr/bin/atom-beta|' usr/share/applications/atom-beta.desktop
   chmod -R g-w usr
   mv usr "${pkgdir}"
 }
