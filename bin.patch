@@ -1,6 +1,6 @@
-diff -U 3 -H -d -r -N -- neo4j-enterprise-2.3.1-orig/bin/neo4j neo4j-enterprise-2.3.1-mod/bin/neo4j
---- neo4j-enterprise-2.3.1-orig/bin/neo4j	2015-11-10 10:15:38.000000000 -0200
-+++ neo4j-enterprise-2.3.1-mod/bin/neo4j	2015-12-26 23:24:48.091651298 -0200
+diff -Naur neo4j-enterprise-2.3.2-orig/bin/neo4j neo4j-enterprise-2.3.2-mod/bin/neo4j
+--- neo4j-enterprise-2.3.2-orig/bin/neo4j	2016-01-12 21:01:31.000000000 -0200
++++ neo4j-enterprise-2.3.2-mod/bin/neo4j	2016-01-26 10:46:11.898865302 -0200
 @@ -33,24 +33,13 @@
  LAUNCHD_NAME="org.neo4j.server"
  
@@ -60,9 +60,9 @@ diff -U 3 -H -d -r -N -- neo4j-enterprise-2.3.1-orig/bin/neo4j neo4j-enterprise-
    if [ ! -e "$LIBDIR" ] ; then
      echo "Error: missing Neo4j Library, expected at $LIBDIR"
      exit 1
-diff -U 3 -H -d -r -N -- neo4j-enterprise-2.3.1-orig/bin/neo4j-arbiter neo4j-enterprise-2.3.1-mod/bin/neo4j-arbiter
---- neo4j-enterprise-2.3.1-orig/bin/neo4j-arbiter	2015-11-10 10:15:38.000000000 -0200
-+++ neo4j-enterprise-2.3.1-mod/bin/neo4j-arbiter	2015-12-27 11:47:10.059939013 -0200
+diff -Naur neo4j-enterprise-2.3.2-orig/bin/neo4j-arbiter neo4j-enterprise-2.3.2-mod/bin/neo4j-arbiter
+--- neo4j-enterprise-2.3.2-orig/bin/neo4j-arbiter	2016-01-12 21:01:31.000000000 -0200
++++ neo4j-enterprise-2.3.2-mod/bin/neo4j-arbiter	2016-01-26 10:46:11.898865302 -0200
 @@ -33,22 +33,13 @@
  LAUNCHD_NAME="org.neo4j.arbiter"
  
@@ -162,9 +162,9 @@ diff -U 3 -H -d -r -N -- neo4j-enterprise-2.3.1-orig/bin/neo4j-arbiter neo4j-ent
        org.neo4j.server.enterprise.StandaloneClusterClient
  
    else
-diff -U 3 -H -d -r -N -- neo4j-enterprise-2.3.1-orig/bin/neo4j-backup neo4j-enterprise-2.3.1-mod/bin/neo4j-backup
---- neo4j-enterprise-2.3.1-orig/bin/neo4j-backup	2015-11-10 10:15:38.000000000 -0200
-+++ neo4j-enterprise-2.3.1-mod/bin/neo4j-backup	2015-12-26 23:45:30.542081252 -0200
+diff -Naur neo4j-enterprise-2.3.2-orig/bin/neo4j-backup neo4j-enterprise-2.3.2-mod/bin/neo4j-backup
+--- neo4j-enterprise-2.3.2-orig/bin/neo4j-backup	2016-01-12 21:01:31.000000000 -0200
++++ neo4j-enterprise-2.3.2-mod/bin/neo4j-backup	2016-01-26 10:46:11.898865302 -0200
 @@ -21,19 +21,7 @@
  #Remember where we started from so that working dir is set correctly
  RUN_FROM=`pwd`
@@ -195,9 +195,9 @@ diff -U 3 -H -d -r -N -- neo4j-enterprise-2.3.1-orig/bin/neo4j-backup neo4j-ente
  fi
  
  LIBRARY_JARS=""
-diff -U 3 -H -d -r -N -- neo4j-enterprise-2.3.1-orig/bin/neo4j-import neo4j-enterprise-2.3.1-mod/bin/neo4j-import
---- neo4j-enterprise-2.3.1-orig/bin/neo4j-import	2015-11-10 10:15:38.000000000 -0200
-+++ neo4j-enterprise-2.3.1-mod/bin/neo4j-import	2015-12-26 23:47:28.601807337 -0200
+diff -Naur neo4j-enterprise-2.3.2-orig/bin/neo4j-import neo4j-enterprise-2.3.2-mod/bin/neo4j-import
+--- neo4j-enterprise-2.3.2-orig/bin/neo4j-import	2016-01-12 21:01:31.000000000 -0200
++++ neo4j-enterprise-2.3.2-mod/bin/neo4j-import	2016-01-26 10:46:11.898865302 -0200
 @@ -21,19 +21,7 @@
  #Remember where we started from so that working dir is set correctly
  RUN_FROM=`pwd`
@@ -228,9 +228,9 @@ diff -U 3 -H -d -r -N -- neo4j-enterprise-2.3.1-orig/bin/neo4j-import neo4j-ente
  fi
  
  LIBRARY_JARS=""
-diff -U 3 -H -d -r -N -- neo4j-enterprise-2.3.1-orig/bin/neo4j-shell neo4j-enterprise-2.3.1-mod/bin/neo4j-shell
---- neo4j-enterprise-2.3.1-orig/bin/neo4j-shell	2015-11-10 10:15:38.000000000 -0200
-+++ neo4j-enterprise-2.3.1-mod/bin/neo4j-shell	2015-12-26 23:48:56.444936928 -0200
+diff -Naur neo4j-enterprise-2.3.2-orig/bin/neo4j-shell neo4j-enterprise-2.3.2-mod/bin/neo4j-shell
+--- neo4j-enterprise-2.3.2-orig/bin/neo4j-shell	2016-01-12 21:01:31.000000000 -0200
++++ neo4j-enterprise-2.3.2-mod/bin/neo4j-shell	2016-01-26 10:46:11.975532041 -0200
 @@ -21,19 +21,7 @@
  #Remember where we started from so that working dir is set correctly
  RUN_FROM=`pwd`
