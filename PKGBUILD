@@ -26,7 +26,7 @@ _build_web_engine=false
 #echo "Set your sysroot prior to build" && exit 1
 _sysroot=/mnt/pi
 
-_piver=1
+_piver=2
 pkgname=qt-sdk-raspberry-pi${_piver}
 _packaginguser=$(whoami)
 _libspkgname="${pkgname}-target-libs"
