@@ -1,4 +1,4 @@
-# Maintainer: Anton Leontyev <scileont /at/ gmail.com>
+# Maintainer: Anton Leontiev <scileont /at/ gmail.com>
 pkgname=ramspeed
 pkgver=2.6.0
 pkgrel=2
