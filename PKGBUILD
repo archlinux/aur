@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-sound-output-device-chooser-git
 _gitname=gse-sound-output-device-chooser
-pkgver=r6.65da144
+pkgver=r17.1baa9b3
 pkgrel=1
 pkgdesc="Shows a list of sound output devices (similar to gnome sound settings) in the status menu below the volume slider."
 arch=('any')
@@ -22,8 +22,7 @@ package() {
   _uuid='sound-output-device-chooser@kgshank.net'
   
   cd "${_gitname}/${_uuid}"
-  install -Dm644 "metadata.json" \
-    "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/metadata.json"
-  install -m644 "extension.js" \
-    "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/extension.js"
+  # Copy extension files into place.
+  find -maxdepth 1 \( -iname '*.js*' -or -iname '*.css' -or -iname '*.ui' \) -exec install -Dm644 -t "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}" '{}' +
+  find -maxdepth 2 \( -wholename '*schemas/*.xml' \) -exec install -Dm644 -t "${pkgdir}/usr/share/glib-2.0/schemas/" '{}' +
 }
