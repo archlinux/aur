@@ -10,6 +10,9 @@ else
 SOURCES += fltmem.c intmem.c fltmark.c intmark.c
 endif
 
+CPPFLAGS += -DLinux
+CFLAGS += -O3
+
 ramspeed: $(SOURCES)
 	echo $(CARCH)
 	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) $^ -o $@
