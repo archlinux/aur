@@ -1,7 +1,7 @@
 #Maintainer: Alberto Oliveira <orkan.aos@gmail.com>
 pkgname=slim-theme-arch-tetra
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=3
 pkgdesc="Minimal Arch Linux SLiM theme"
 arch=('any')
 url="http://github.com/AlbertoOS/slim-theme-arch-tetra"
