@@ -1,15 +1,14 @@
 # Maintainer: Carlo Cabanilla <carlo.cabanilla@gmail.com>
 pkgname=pertino
-pkgver=500.4567
+pkgver=510.4573
 pkgrel=1
 pkgdesc="Cloud-based VPN client"
-arch=(i686 x86_64)
+arch=x86_64
 url="http://pertino.com/"
 license=('proprietary')
 depends=('dhclient')
 makedepends=('sed')
 _srcfileprefix="${pkgname}_${pkgver}-1_"
-source_i686=("client.conf" "pgateway.service" "http://download.pertino.com/clients/linux/$(echo $pkgver | tr . -)/${_srcfileprefix}i386.deb")
 source_x86_64=("client.conf" "pgateway.service" "http://download.pertino.com/clients/linux/$(echo $pkgver | tr . -)/${_srcfileprefix}amd64.deb")
 noextract=("${source[@]%%::*}")
 install=${pkgname}.install
@@ -50,9 +49,6 @@ package() {
     ln -s "/usr/share/pgateway/pGateway" "$pkgdir/usr/bin/pGateway"
     ln -s "/usr/share/pgateway/pertino" "$pkgdir/usr/bin/pertino"
 }
-md5sums_i686=('6860e827d05c06b63dad13fbc0b947c8'
-              'c8dd2304f286498e215543a4651b4e37'
-              'c12e420b9fa84157ec45500431f65b90')
 md5sums_x86_64=('6860e827d05c06b63dad13fbc0b947c8'
                 'c8dd2304f286498e215543a4651b4e37'
-                '9e639b0df3da34e09f4f442d9bbae948')
+                '94ec406cf30353e24bf605e635d5b64d')
