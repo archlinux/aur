@@ -33,7 +33,7 @@ package() {
 
   printf '%s\n%s\n' \
     "#!/bin/bash" \
-    "/usr/share/barbie/run_game.py" \
+    "/usr/share/games/barbie/run_game.py" \
     > "$pkgdir/usr/bin/barbie"
 
   chmod 755 "$pkgdir/usr/bin/barbie"
