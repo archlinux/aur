@@ -3,22 +3,17 @@
 
 _pkgname=QuiteRSS
 pkgname=quiterss
-pkgver=0.18.2
-pkgrel=3
+pkgver=0.18.3
+pkgrel=1
 pkgdesc="Fast and light RSS/Atom feed reader written on Qt/С++"
 arch=('i686' 'x86_64')
 url="http://quiterss.org/"
 license=('GPL3')
-depends=('qt5-multimedia' 'qt5-tools')
+depends=('qt5-multimedia' 'qt5-webkit' 'hicolor-icon-theme' 'desktop-file-utils')
+makedepends=('qt5-tools')
 install=$pkgname.install
-source=("http://quiterss.org/files/$pkgver/$_pkgname-$pkgver-src.tar.gz" "$pkgname.patch")
-sha512sums=('ff441887de758f0cdbab32db7a3e730024261c058f487c3409a872554f1fee35ba62f2e7fbd91b0aacfcd09fbf2b1c33a18d96f4153c0c171ea458ac9099b44a'
-            'f4d1d38ec51765ff11e2b7499f1388a5e5bf91463efcc09b629d801cae4a8224427d8525b8e9c22eedd4d9ecf03d17fd41edb81f925aaaa82fd483b12875f455')
-
-prepare() {
-cd "$srcdir"
-patch -p1 -i "$pkgname".patch
-}
+source=("http://quiterss.org/files/$pkgver/$_pkgname-$pkgver-src.tar.gz")
+sha512sums=('e4a6348999c265c5c383cd02e80e027febdf3b71aac3b7934feecf8507d71954dcf3b0ceb4216f21965278630f37f4ba6d1e946252a84ced9b8e52ef1ae4b595')
 
 build() {
 cd "$srcdir"
