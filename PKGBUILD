@@ -1,23 +1,24 @@
+# Maintainer: Zanny <lordzanny@gmail.com>
 # Maintainer: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
 # Author: Antonio Rojas <arojas@archlinux.org>
 
+_gitname=ktp-accounts-kcm
 pkgname=telepathy-kde-accounts-kcm-git
-pkgver=r1109.608947e
+pkgver=v15.07.80.r12.gbe4a1e0
 pkgrel=1
 pkgdesc='KCM Module for configuring Telepathy Instant Messaging Accounts'
 arch=('i686' 'x86_64')
 url='http://community.kde.org/Real-Time_Communication_and_Collaboration'
 license=('GPL')
-depends=('telepathy-qt5' 'kaccounts-integration-git')
-makedepends=('extra-cmake-modules' 'git' 'intltool')
+depends=('telepathy-qt5' 'kaccounts-integration')
+makedepends=('extra-cmake-modules' 'intltool')
 conflicts=('telepathy-kde-accounts-kcm')
-replaces=('telepathy-kde-accounts-kcm-frameworks-git')
-source=("git://anongit.kde.org/ktp-accounts-kcm.git")
+source=("git://anongit.kde.org/$_gitname")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ktp-accounts-kcm
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/$_gitname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -26,7 +27,7 @@ prepare() {
 
 build() {
   cd build
-  cmake ../ktp-accounts-kcm \
+  cmake ../$_gitname \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DLIB_INSTALL_DIR=lib \
