@@ -7,7 +7,7 @@
 pkgname=firehol-git
 _gitname=firehol
 pkgver=v3.0.1.r8.g6c426bd
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="The iptables stateful packet filtering firewall builder."
 url="http://firehol.org/"
@@ -19,7 +19,7 @@ provides=('firehol')
 conflicts=('firehol')
 backup=('etc/firehol/firehol.conf' 'etc/firehol/fireqos.conf')
 install='firehol.install'
-source=('git://github.com/ktsaou/firehol.git'
+source=("$_gitname::git+https://github.com/firehol/firehol"
         'firehol.service' 'fireqos.service')
 
 pkgver() {
@@ -28,15 +28,18 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/$_gitname"
+	cd "$_gitname"
 
 	./autogen.sh
 	./configure --enable-maintainer-mode --prefix="/usr" --sysconfdir="/etc" --sbindir="/usr/bin"
-	make
+
+	# Documents are created in certain order
+	# thus parallel processing must be disabled:
+	MAKEFLAGS="-j1" make
 }
 
 package() {
-	cd "$srcdir/$_gitname"
+	cd "$_gitname"
 
 	make prefix="$pkgdir/usr" sysconfdir="$pkgdir/etc" sbindir="$pkgdir/usr/bin" install
 
@@ -44,7 +47,7 @@ package() {
 	install -D -m644 $srcdir/fireqos.service "$pkgdir/usr/lib/systemd/system/fireqos.service"
 
 	# backup does not work if the file is not contained in the package
-	# plus, creating it in post_install will set 777 permissions and we dont want that
+	# plus, creating it in post_install will set 777 permissions and we don't want that
 	touch "$pkgdir/etc/firehol/firehol.conf"
 	chmod 600 "$pkgdir/etc/firehol/firehol.conf"
 	touch "$pkgdir/etc/firehol/fireqos.conf"
