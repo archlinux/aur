@@ -1,0 +1,12 @@
+--- ./setup.py.old	2016-01-26 12:18:09.169870846 -0500
++++ ./setup.py	2016-01-26 12:21:13.526724075 -0500
+@@ -12,6 +12,9 @@
+ 
+ 
+ def get_install_requirements(path):
++    import sys
++    if sys.version_info[0] >= 3 and sys.version_info[1] >= 4:
++        return []
+     content = open(os.path.join(__location__, path)).read()
+     return [req for req in content.split('\\n') if req != '']
+ 
