@@ -5,15 +5,15 @@
 
 pkgname=lib32-avahi
 pkgver=0.6.32rc
-pkgrel=4
+pkgrel=5
 _commit=dbb07bea8d315b76f94b16e55a1c2b2cc8ddd91f
 pkgdesc='Multicast DNS-SD / Zeroconf Suite (32-bit)'
 arch=('x86_64')
 url='http://git.0pointer.net/avahi.git'
 license=('LGPL')
-depends=('expat' 'lib32-libdaemon' 'lib32-glib2' 'lib32-libdbus' 'lib32-libcap' 'lib32-gdbm' 'avahi')
-makedepends=(git lib32-qt4 pygtk mono intltool python2-dbus gtk-sharp-2 gobject-introspection lib32-gtk3
-             xmltoman python-dbus)
+depends=('avahi' 'expat' 'lib32-gdbm' 'lib32-glib2' 'lib32-libcap' 'lib32-libdaemon' 'lib32-libdbus')
+makedepends=('git' 'gobject-introspection' 'gtk-sharp-2' 'intltool' 'lib32-gtk2' 'lib32-gtk3' 'lib32-qt4'
+             'pygtk' 'python-dbus' 'python2-dbus' 'mono' 'xmltoman')
 optdepends=('lib32-gtk3: gtk3 bindings'
             'lib32-gtk2: gtk2 bindings'
             'lib32-qt4: qt4 bindings')
