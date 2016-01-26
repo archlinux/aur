@@ -1,11 +1,11 @@
 # Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
 pkgname=kicost
 pkgver=0.1.15
-pkgrel=1
+pkgrel=2
 pkgdesc="KiCAD script to convert BOM xml into spreadsheet"
 url="https://github.com/xesscorp/KiCost/"
+makedepends=('python2-setuptools')
 depends=('python2'
-         'python2-pip'
          'python2-beautifulsoup4'
          'python2-xlsxwriter'
          'python2-future'
@@ -32,5 +32,6 @@ build() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     python2 setup.py install --root="$pkgdir" --optimize=1 
+    rm -rf ${pkgdir}/usr/lib/python*/site-packages/tests
 }
 
