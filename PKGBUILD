@@ -1,8 +1,8 @@
 # Maintainer: Franco Masotti <franco dot masotti at student dot unife dot it>
 pkgname=gnupot
-pkgver=0.3.r0.ge7a03b7
-pkgrel=3
-pkgdesc="Yet another libre Dropbox clone written in bash and based on git."
+pkgver=0.4.r0.g2e04d10
+pkgrel=1
+pkgdesc="A fully free, highly customizable and very efficient shell wrapper for git and SSH, which imitates Dropbox."
 arch=('any')
 url="https://github.com/frnmst/gnupot"
 license=('GPL3')
@@ -19,7 +19,7 @@ depends=('coreutils'
 	'gawk')
 makedepends=('coreutils' 'sed' 'git>=2.4')
 install=.INSTALL
-source=(git://github.com/frnmst/gnupot.git)
+source=('git://github.com/frnmst/gnupot.git#branch=master')
 md5sums=('SKIP')
 
 build() {
@@ -28,6 +28,7 @@ build() {
 	sed -i 's/"${0%\/gnupot}"/\/opt\/gnupot/' gnupot.sh
 	sed -i 's/"${prgPath%\/gnupot}"/\/opt\/gnupot/' functions.sh
 	sed -i "s/git describe --long/printf \""$pkgver\\\\n"\"/" functions.sh
+	sed -i 's/src\/form.sh/\/opt\/gnupot\/src\/form.sh/' config.sh
 	sed -i 's/src\/configVariables.conf/\/opt\/gnupot\/src\/configVariables.conf/' config.sh
 }
 
@@ -41,6 +42,7 @@ package() {
 	install -Dm755 src/gnupot.sh "$pkgdir"/opt/gnupot/src/gnupot.sh
 	install -Dm766 src/functions.sh "$pkgdir"/opt/gnupot/src/functions.sh
 	install -Dm755 src/config.sh "$pkgdir"/opt/gnupot/src/config.sh
+	install -Dm766 src/form.sh "$pkgdir"/opt/gnupot/src/form.sh
 	install -Dm766 src/configVariables.conf "$pkgdir"/opt/gnupot/src/configVariables.conf
 	install -Dm755 man/gnupot.man "$pkgdir"/usr/share/man/man1/gnupot.1
 	install -Dm755 man/gnupot.config.man "$pkgdir"/usr/share/man/man5/gnupot.config.5
