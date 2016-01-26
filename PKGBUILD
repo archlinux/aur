@@ -1,16 +1,18 @@
 pkgname=moksha-modules-extra-git
-pkgver=f7db19e
+pkgver=9ab20a0
 pkgrel=1
 _pkgname=moksha-modules-extra
 pkgdesc="Extra Moksha modules"
 arch=('i686' 'x86_64')
 url="http://mokshadesktop.org"
 license=('BSD')
-depends=('elementary' 'moksha-module-deskshow-git' 'moksha-module-emprint-git')
+depends=('moksha' 'moksha-modules-emprint-git')
+conflicts=('moksha-module-cpu-git' 'moksha-module-deskshow-git' 'moksha-module-diskio-git' 'moksha-module-mem-git' 'moksha-module-net-git')
 _module_list=(
   'alarm'
   'calendar'
   'cpu'
+  'deskshow'
   'diskio'
   'engage'
   'flame'
