@@ -46,9 +46,15 @@ makedepends=("git" "pkgconfig" "gcc")
 source=("git://github.com/sirspudd/mkspecs.git" "https://download.qt.io/development_releases/qt/5.6/${_pkgver}/single/${_pipkgname}.tar.gz")
 sha256sums=("SKIP" "d69103ec34b3775edfa47581b14ee9a20789d4b0d7d26220fb92f2cd32eb06f9")
 options=('!strip')
-install=qpi.install
+_install_script=qpi.install
+_fully_qualified_install_script="${startdir}/${_install_script}"
 _device_configure_flags=""
 
+# Work around the fact we are injecting information into the install script which packaging
+if [[ -n "${startdir}" ]]; then
+  touch ${_fully_qualified_install_script}
+fi
+install=${_install_script}
 
 if $_build_web_engine && [[ ${_piver} = "1" ]]; then
   _device_configure_flags="-skip qtwebengine"
@@ -134,9 +140,25 @@ build() {
   make
 }
 
+create_install_script()
+{
+  local _fully_qualified_install_script_template="${startdir}/_${_install_script}"
+
+  rm ${_fully_qualified_install_script}
+
+  # populate vars
+  echo "piver=\"${_piver}\"" >> ${_fully_qualified_install_script}
+  echo "_qmakepath=\"${_installprefix}/bin/qmake\"" >> ${_fully_qualified_install_script}
+  echo "_sysroot=\"${_sysroot}\"" >> ${_fully_qualified_install_script}
+
+  cat ${_fully_qualified_install_script_template} >> ${_fully_qualified_install_script}
+}
+
 package() {
   local _srcdir="${srcdir}/${_pipkgname}"
   local _bindir="${_srcdir}-build"
+
+  create_install_script
 
   # cleanup
   rm -Rf ${pkgdir}
