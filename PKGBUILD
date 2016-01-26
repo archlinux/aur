@@ -57,13 +57,13 @@ package() {
 	install -D -m644 glbinding-config.cmake "${pkgdir}/usr/lib/cmake/${_name}/glbinding-config.cmake"
 	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
 
-	# clean up
-	rm -r "${pkgdir}/usr/share/glbinding"
+	msg "Clean up"
+	rm -vr "${pkgdir}/usr/share/glbinding"
 
-	# filename collision reduction
-	cd "${pkgdir}/usr/bin"
-	for exec in *; do
-		mv $exec glb-$exec
+	msg "Filename collision reduction"
+	cd "${pkgdir}"
+	for exec in usr/bin/*; do
+		mv -v $exec $(dirname $exec)/glb-$(basename $exec)
 	done
 }
 
