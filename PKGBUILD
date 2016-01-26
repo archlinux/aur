@@ -1,8 +1,10 @@
+# Maintainer Zanny <lordzanny@gmail.com>
 # Maintainer: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
 # Author: Antonio Rojas <arojas@archlinux.org>
 
+_gitname=ktp-filetransfer-handler
 pkgname=telepathy-kde-filetransfer-handler-git
-pkgver=r184.482151e
+pkgver=v15.07.80.r1.g876a8e3
 pkgrel=1
 pkgdesc='KDE Telepathy file transfer handler'
 arch=('i686' 'x86_64')
@@ -11,12 +13,12 @@ license=('GPL')
 depends=('telepathy-kde-common-internals-git')
 makedepends=('extra-cmake-modules' 'git' 'kdoctools' 'python')
 conflicts=('telepathy-kde-filetransfer-handler')
-source=("git://anongit.kde.org/ktp-filetransfer-handler.git")
+source=("git://anongit.kde.org/$_gitname")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ktp-filetransfer-handler
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/$_gitname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -25,7 +27,7 @@ prepare() {
 
 build() {
   cd build
-  cmake ../ktp-filetransfer-handler \
+  cmake ../$_gitname \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DLIB_INSTALL_DIR=lib \
@@ -35,5 +37,5 @@ build() {
 
 package() {
   cd build
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="$pkgdir" install
 }
