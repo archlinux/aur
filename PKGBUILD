@@ -18,6 +18,10 @@
 # Mount/copy this prepped rasp rootfs somewhere and set this path as the sysroot below
 # I use NFS personally: sudo mount qpii.local:/ /mnt/pi
 
+# Options
+
+_build_web_engine=false
+
 # comment this turkey out in any circumstance when you need to regenate .SRCINFO
 #echo "Set your sysroot prior to build" && exit 1
 _sysroot=/mnt/pi
@@ -45,7 +49,8 @@ options=('!strip')
 install=qpi.install
 _device_configure_flags=""
 
-if [[ ${_piver} = "1" ]]; then
+
+if $_build_web_engine && [[ ${_piver} = "1" ]]; then
   _device_configure_flags="-skip qtwebengine"
 fi
 
