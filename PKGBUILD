@@ -3,7 +3,7 @@ pkgname=jxcore
 pkgver=0.3.0.7.r347.g1638e28
 pkgrel=2
 pkgdesc="Evented IO for SpiderMonkey and V8 JavaScript"
-arch=('arm' 'armv6' 'armv7' 'i686' 'x86_64')
+arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="http://jxcore.io/"
 license=('common')
 depends=()
@@ -27,12 +27,12 @@ set_flags() {
     GYPFLAGS="-Darm_thumb -Darm_float_abi=soft -Darm_version=5 -Darm_fpu= -Darm_test_noprobe=on"
   fi
 
-  if [ "$CARCH" == "armv6" ]; then
+  if [ "$CARCH" == "armv6h" ]; then
     CONFIGFLAG="--with-arm-float-abi=hard --dest-cpu=arm"
     GYPFLAGS="-Darm_thumb -Darm_float_abi=hard -Darm_version=6 -Darm_fpu=vfpv2"
   fi
 
-  if [ "$CARCH" == "armv7" ]; then
+  if [ "$CARCH" == "armv7h" ]; then
     CONFIGFLAG="--with-arm-float-abi=hard --dest-cpu=arm"
     GYPFLAGS="-Darm_thumb -Darm_float_abi=hard -Darm_version=7 -Darm_fpu=vfpv3-d16"
   fi
