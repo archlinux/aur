@@ -3,7 +3,7 @@
 # Contributor: HLFH
 
 pkgname=h2o
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ url="https://github.com/h2o/h2o"
 license=('MIT')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/h2o/$pkgname/tar.gz/v$pkgver
         h2o.service)
-sha256sums=('84602a50aec62c30af46996922db7bbfc4a3fe74779dc074d5ff32313d27d03c'
+sha256sums=('49d7cdb4e33b02b63eef1f1625c089ace89b6b839764cd067e510ff3a472c6c6'
             '8a85462b6798deaaab343b5dae73437e251c5018d70d260a4a4440b9bbb053e6')
 backup=('etc/h2o.conf')
 provides=('h2o' 'libh2o')
