@@ -1,7 +1,7 @@
 # Maintainer: CrocoDuck <crocoduck.oducks@gmail.com>
 # Contributor: Simon Thorpe <simon@hivetechnology.com.au>
 
-pkgname=pianoteq-standard-trial-bin
+pkgname=pianoteq-stage-trial-bin
 pkgver=5.4.2
 pkgrel=1
 pkgdesc="Virtual piano instrument using physical modelling synthesis. Both standalone and plugin versions."
@@ -16,9 +16,9 @@ source=('https://www.pianoteq.com/images/logo/pianoteq_icon_128.png')
 sha256sums=('94ee64cf6688a49d74f0bf70d811e7466abac103feeab17496a89f828afcc6d3')
 
 # Define the target archive filename:
-_downfname=pianoteq_linux_trial_v${pkgver//./}.7z
+_downfname=pianoteq_stage_linux_trial_v${pkgver//./}.7z
 # Define its checksum:
-_downsha256sum=5fe0cc6c56544630dc5c4b1160915feab1ad0bca597731d3546d413b610e6dfe
+_downsha256sum=cc4aa1527a19194289bafb1a7f27d066f445fa9664c5adf79bf4bb51384a4c73
 
 prepare(){
 	# The archive download link needs to be retrieved. Retrieve download page source:
@@ -33,7 +33,7 @@ prepare(){
 	# Extract:
  	7z x $_downfname
 	# Generate Desktop Entry:
-	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='Pianoteq 5' --categories 'Audio;Sequencer;Midi;AudioVideoEditing;Music;AudioVideo;'
+	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='Pianoteq 5 STAGE' --categories 'Audio;Sequencer;Midi;AudioVideoEditing;Music;AudioVideo;'
 }
 
 package(){
@@ -45,16 +45,16 @@ package(){
   	if [[ "$CARCH" == i686 ]]; then
 		archdir=i386
  	else
-		archdir=amd64
+		archdir=amd64	
 	fi
 	# Install program files:
-    	install -Dm755 "$srcdir/Pianoteq 5/$archdir/Pianoteq 5" "$pkgdir/usr/bin/$pkgname"
-    	install -Dm755 "$srcdir/Pianoteq 5/$archdir/Pianoteq 5.so" "$pkgdir/usr/lib/vst/$pkgname.so"
-	cp -ar "$srcdir/Pianoteq 5/$archdir/Pianoteq 5.lv2" "$pkgdir/usr/lib/lv2/$pkgname.lv2"
+	install -Dm755 "$srcdir/Pianoteq 5 STAGE/$archdir/Pianoteq 5 STAGE" "$pkgdir/usr/bin/$pkgname"
+    	install -Dm755 "$srcdir/Pianoteq 5 STAGE/$archdir/Pianoteq 5 STAGE.so" "$pkgdir/usr/lib/vst/$pkgname.so"
+	cp -ar "$srcdir/Pianoteq 5 STAGE/$archdir/Pianoteq 5 STAGE.lv2" "$pkgdir/usr/lib/lv2/$pkgname.lv2"
 	# Install desktop launcher:
   	install -Dm644 "$srcdir/pianoteq_icon_128.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
   	install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 	# Install the license:
 	mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-	install -m644 Pianoteq\ 5/*Licence* "$pkgdir/usr/share/licenses/$pkgname/"
+	install -m644 Pianoteq\ 5\ STAGE/*Licence* "$pkgdir/usr/share/licenses/$pkgname/"
 }
