@@ -1,13 +1,13 @@
 # Maintainer: Emmanuel Gil Peyrot <emmanuel.peyrot@collabora.com>
 
 pkgname=wayland-protocols-git
-pkgver=1.0.37.3543bb7
+pkgver=1.0.41.0b05b70
 pkgrel=1
 pkgdesc='Wayland protocols that add functionalities not available in the core protocol'
 arch=('any')
 url='http://cgit.freedesktop.org/wayland/wayland-protocols'
 license=('MIT')
-makedepends=('git')
+makedepends=('git' 'wayland')
 conflicts=('wayland-protocols')
 provides=('wayland-protocols')
 
