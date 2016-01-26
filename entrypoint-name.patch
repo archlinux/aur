@@ -1,0 +1,11 @@
+--- ./setup.py.old	2016-01-26 10:57:42.891058510 -0500
++++ ./setup.py	2016-01-26 10:58:03.320708183 -0500
+@@ -42,7 +42,7 @@
+         setup_requires=['flake8'],
+         install_requires=get_install_requirements('requirements.txt'),
+         packages=setuptools.find_packages(exclude=['tests', 'tests.*']),
+-        entry_points={'console_scripts': ['nsenter = nsenter:main']}
++        entry_points={'console_scripts': ['nsenter-py = nsenter:main']}
+     )
+ 
+ if __name__ == '__main__':
