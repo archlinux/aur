@@ -1,6 +1,6 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Tom Moore <t.moore01@gmail.com>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Rob Sletten <rsletten@gmail.com>
-# Contributor: Tom Moore <t.moore01@gmail.com>
 # Contributor: monty <linksoft@gmx.de>
 # Contributor: Jon Wiersma <archaur@jonw.org>
 # Contributor: Arthur <arthur.darcet@m4x.org>
