@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python2-python-bitcoinlib-git
-pkgver=20150927
+pkgver=20160126
 pkgrel=1
 pkgdesc="An easy interface to the Bitcoin protocol and data structures"
 arch=('any')
