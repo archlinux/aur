@@ -3,7 +3,7 @@
 _pkgname='xpad'
 pkgname='xpad-dkms-git'
 pkgver='0.4'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Driver for the Xbox/ Xbox 360/ Xbox 360 Wireless/ Xbox One Controllers"
 arch=('i686' 'x86_64')
 url="https://github.com/paroj/xpad"
@@ -13,15 +13,20 @@ depends=('dkms')
 makedepends=('git')
 conflicts=("${_pkgname}-dkms")
 source=("${pkgname}::git+https://github.com/paroj/xpad.git"
+        "xpad.conf"
         "${pkgname}.install")
 md5sums=('SKIP'
+         '4218c9543d551377825392295544c3c2'
          '75cad51dc48d8fa879f926432beabf66')
 
 package() {
-    cd "$srcdir/$pkgname"
+    # install depmod config file so our driver gets higher priority than the intree module
+    install -dm 755 "$pkgdir/etc/depmod.d"
+    install -m 644 "$srcdir/xpad.conf" "$pkgdir/etc/depmod.d"
 
-    install -d "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
-    install -m 644 -T xpad.c "${pkgdir}/usr/src/${_pkgname}-${pkgver}/${_pkgname}.c"
+    cd "$srcdir/$pkgname"
+    install -dm 755 "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
+    install -m 644 -T xpad.c "${pkgdir}/usr/src/${_pkgname}-${pkgver}/xpad.c"
     install -m 644 -T Makefile "${pkgdir}/usr/src/${_pkgname}-${pkgver}/Makefile"
     install -m 644 -T dkms.conf "${pkgdir}/usr/src/${_pkgname}-${pkgver}/dkms.conf"
 }
