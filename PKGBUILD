@@ -6,33 +6,29 @@
 
 pkgname=firehol-git
 _gitname=firehol
-pkgver=2013.10.23
+pkgver=v3.0.1.r8.g6c426bd
 pkgrel=1
+epoch=1
 pkgdesc="The iptables stateful packet filtering firewall builder."
 url="http://firehol.org/"
 arch=('any')
 license=('GPL')
-depends=('iptables' 'gawk' 'iproute')
-makedepends=('git' 'dblatex')
+depends=('iptables' 'gawk' 'iproute' 'iprange' 'ipset' 'traceroute')
+makedepends=('git' 'dblatex' 'pandoc')
 provides=('firehol')
 conflicts=('firehol')
 backup=('etc/firehol/firehol.conf' 'etc/firehol/fireqos.conf')
 install='firehol.install'
 source=('git://github.com/ktsaou/firehol.git'
-        'disable-kernel-vercheck.patch' 'firehol.service' 'fireqos.service')
+        'firehol.service' 'fireqos.service')
 
 pkgver() {
-        cd "$_gitname"
-        git log -1 --format="%cd" --date=short | sed 's|-|.|g'
+	cd "$_gitname"
+	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
 	cd "$srcdir/$_gitname"
-
-	# the sed command for minimum kernel version is broken, and since it
-	# only ensures we are using a kernel > 2.3, we can safely skip it entirely
-	# https://bugs.archlinux.org/task/25917
-#	patch -p1 < "$srcdir/disable-kernel-vercheck.patch"
 
 	./autogen.sh
 	./configure --enable-maintainer-mode --prefix="/usr" --sysconfdir="/etc" --sbindir="/usr/bin"
@@ -56,6 +52,5 @@ package() {
 }
 
 md5sums=('SKIP'
-         '73a8ae701f82af98e56a4b2f436fb399'
          'd87f844ac0ef319fd0ea0adcb0a66905'
          'ea0b9238f494e4eeeac7a975346bcf3c')
