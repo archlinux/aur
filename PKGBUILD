@@ -8,6 +8,7 @@ pkgdesc="Language packs for K3B GIT AUR releases"
 arch=('any')
 url="https://github.com/FadeMind/${_pkgname}"
 license=('GPL')
+makedepends=('git')
 optdepends=('k3b-git: K3B GIT version' 
             'k3b-frameworks-git: K3B KF5 Frameworks branch GIT version')
 source=("${_pkgname}::git+${url}.git")
