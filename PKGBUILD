@@ -1,16 +1,17 @@
-# Maintainer: FadeMind <fademind@gmail.com>
+# Maintainer: Jack Random <jack (at) random.to>
+# Contributor: FadeMind <fademind@gmail.com>
 
 _pkgname=breeze-dark
 pkgname=yakuake-skin-${_pkgname}-frameworks
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Breeze Dark skin for Yakuake (Plasma 5)"
 arch=('any')
-url="http://opendesktop.org/content/show.php?content=170330"
+url="https://opendesktop.org/content/show.php?content=170330"
 license=('GPL')
 depends=('yakuake-frameworks-git')
-source=("${_pkgname}.tar.xz::https://copy.com/jWvNPzWQFBDAlInB/breeze-dark.tar.xz?download=1")
-sha256sums=('ea2fa363d9b8f2bb8e7a4cb5abbaa5f15f97e6868c152d9fb6f67ff0d032d882')
+source=("${_pkgname}.tar.xz::https://opendesktop.org/CONTENT/content-files/170330-breeze_dark.tar.gz")
+sha256sums=('9d3f7a9c0eb3aeb65e6b9cfbb83e207113ec5a2a5d0a420c7a16b5db69a92912')
 
 package() {
     cd ${srcdir}
