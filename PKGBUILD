@@ -4,7 +4,7 @@ pkgdesc="ROS - This metapackage depends on packages for interfacing common joyst
 url='http://www.ros.org/wiki/joystick_drivers'
 
 pkgname='ros-indigo-joystick-drivers'
-pkgver='1.10.0'
+pkgver='1.10.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -20,10 +20,16 @@ ros_depends=(ros-indigo-joy
   ros-indigo-wiimote)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/joystick_drivers/${pkgver}-${_pkgver_patch}
-_dir=joystick_drivers
-source=("${_dir}"::"git+https://github.com/ros-gbp/joystick_drivers-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/joystick_drivers/${pkgver}-${_pkgver_patch}
+# _dir=joystick_drivers
+# source=("${_dir}"::"git+https://github.com/ros-gbp/joystick_drivers-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="joystick_drivers-release-release-indigo-joystick_drivers-${pkgver}-${_pkgver_patch}"
+source=("https://github.com/ros-gbp/joystick_drivers-release/archive/release/indigo/joystick_drivers/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('b6fcc4e0b7e1984c8e3514728e455d5a5b81e1232a53080867e4c958a37d38e4')
 
 build() {
   # Use ROS environment variables
@@ -45,6 +51,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
