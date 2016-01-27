@@ -1,7 +1,7 @@
 # Maintainer: Nils Czernia <nils[at]czserver[dot]de>
 pkgname=moodle-git
 _pkgname=moodle
-pkgver=20151223
+pkgver=v3.0.0.662.geddec36
 pkgrel=1
 pkgdesc='Moodle is a open-source software learning management system'
 arch=('any')
@@ -12,6 +12,11 @@ conflicts=('moodle' 'moodle-plus')
 options=('!strip')
 source=("moodle-git::git+https://github.com/moodle/moodle.git")
 md5sums=('SKIP')
+
+pkgver() {
+	cd ${srcdir}/${pkgname}
+	git describe --always | sed 's|-|.|g'
+}
 
 package() {
     cd "$pkgdir"
