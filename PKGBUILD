@@ -1,6 +1,7 @@
 pkgbase=swift-language
 pkgname=(swift swift-lldb)
-_swiftver=2.2-SNAPSHOT-2016-01-11-a
+_swiftver=2.2-SNAPSHOT-2016-01-25-a
+_develver=${_swiftver//2.2-SNAPSHOT/DEVELOPMENT-SNAPSHOT}
 pkgver=${_swiftver//-/.}
 pkgrel=2
 pkgdesc="The Swift programming language and debugger"
@@ -16,20 +17,20 @@ source=(
     "swift-clang-${_swiftver}.tar.gz::https://github.com/apple/swift-clang/archive/swift-${_swiftver}.tar.gz"
     "swift-lldb-${_swiftver}.tar.gz::https://github.com/apple/swift-lldb/archive/swift-${_swiftver}.tar.gz"
     "swift-cmark-${_swiftver}.tar.gz::https://github.com/apple/swift-cmark/archive/swift-${_swiftver}.tar.gz"
-    "swift-llbuild-${_swiftver}.tar.gz::https://github.com/apple/swift-llbuild/archive/swift-${_swiftver}.tar.gz"
-    "swift-package-manager-${_swiftver}.tar.gz::https://github.com/apple/swift-package-manager/archive/swift-${_swiftver}.tar.gz"
-    "swift-corelibs-xctest-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-xctest/archive/swift-${_swiftver}.tar.gz"
-    "swift-corelibs-foundation-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-foundation/archive/swift-${_swiftver}.tar.gz"
+    "swift-llbuild-${_develver}.tar.gz::https://github.com/apple/swift-llbuild/archive/swift-${_develver}.tar.gz"
+    "swift-package-manager-${_develver}.tar.gz::https://github.com/apple/swift-package-manager/archive/swift-${_develver}.tar.gz"
+    "swift-corelibs-xctest-${_develver}.tar.gz::https://github.com/apple/swift-corelibs-xctest/archive/swift-${_develver}.tar.gz"
+    "swift-corelibs-foundation-${_develver}.tar.gz::https://github.com/apple/swift-corelibs-foundation/archive/swift-${_develver}.tar.gz"
 )
-sha256sums=('6fdf3e053422f1e77d307ff381486b31a7161ff99ecfbb631ee936b2cafcac74'
-            'a4c567c010eea1e76ae6ba05b874dfd5b0e19d8f3b72649d9ed431df443ad787'
-            '934ce9fb6742b79d013ba4257a0e249530ba1be00bb1155bbb698fe0cdd6f042'
-            '415c3c627c8d1bcb7b6759d015b23a68131105c89badaec5d0d7a2378acf2d42'
-            'fc1053cf91050da55064c5cd703ebae0aacc181955245963ac405a3a0c7e6d8b'
-            'c5e92b71daecbeeb8fe043fe58bc85c7deacaadc21caa38357d569ae4093a023'
-            '60b11af87b565d68dd5e6d13af5052f359923e3146a6ffc8336c86d68b5c4fa6'
-            '5fde35c76b688ec37d8e25f0bc3cc1738548d8bd03a709bcfb3cb2744b221a9e'
-            '66bf0fb21c37bb2792b113b770e225c90bca548b2246f86054e14c6cc79f0517')
+sha256sums=('616cf1cfaa407ffb22cd60f9c5a95dc3227665c72dd5c8d044b31174430af3b6'
+            '7b07af901b6fe42793e4f25a470db8d61c60c16b92e434de17fc151861e00172'
+            'eec56334ffcec1cefaca5758031c722a0cf12eb0d3fac30f9d30c1bded16eeea'
+            '1016010c5496db0f57c5cf822f12a7d9742ca51374b39fce1e5f599d4cf6deb8'
+            '063469a810855a622bb05846b3f74fb0f0f92585e46c5ec16618188a71d21f24'
+            'dbf0aa2b04d04cce2281b452008506ffbe140d47c3a4d933ad715e6ee1ccdf06'
+            '84105f264f16755e27a0ebc8d25de51c1d72a33007b61ad68eb0ea185f15b0a8'
+            'a04845547b7f81e3e68e3df171393159550c4b3ecdea51768ac976d29c0b1c30'
+            'cf16b948cc84fc9d3f16c6a7d8955a3a68f00d762323e828a74499b58f68893b')
 
 prepare() {
     # Use python2 where appropriate
@@ -51,13 +52,15 @@ prepare() {
     # Use directory names which build-script expects
     for sdir in llvm clang lldb cmark llbuild corelibs-xctest corelibs-foundation; do
         if [[ "$sdir" =~ ^corelibs- ]]; then
-            ln -sf swift-${sdir}-swift-${_swiftver} swift-${sdir}
+            ln -sf swift-${sdir}-swift-${_develver} swift-${sdir}
+        elif [[ "$sdir" == "llbuild" ]]; then
+            ln -sf swift-${sdir}-swift-${_develver} ${sdir}
         else
             ln -sf swift-${sdir}-swift-${_swiftver} ${sdir}
         fi
     done
     ln -sf swift-swift-${_swiftver} swift
-    ln -sf swift-package-manager-swift-${_swiftver} swiftpm
+    ln -sf swift-package-manager-swift-${_develver} swiftpm
 }
 
 build() {
