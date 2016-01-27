@@ -1,26 +1,26 @@
 # Maintainer: Ashley Towns <mail(at)ashleytowns(dot)id(dot)au>
 
-_version=2.2-SNAPSHOT-2016-01-25-a
+_version=DEVELOPMENT-SNAPSHOT-2016-01-25-a
 
-pkgname=swift-bin
+pkgname=swift-development-bin
 pkgver=${_version//-/.}
 pkgrel=1
-pkgdesc="The Swift programming language, the binary drops from the official website"
+pkgdesc="The Swift programming language, the development snapshot binary drops from the official website"
 arch=('x86_64')
 url="https://swift.org"
 license=('apache')
 depends=('icu55' 'ncurses5-compat-libs' 'libedit' 'python2' 'libutil-linux' 'libbsd' 'clang' 'libtinfo' 'python2-six' 'libxml2')
-conflicts=('lldb' 'swift-language-git')
+conflicts=('lldb' 'swift-language-git' 'swift-bin')
 options=('!strip')
 validpgpkeys=('7463A81A4B2EEA1B551FFBCFD441C977412B37AD')
 provides=('swift-language')
 replaces=('swift-language-bin')
 
 source=(
-  "https://swift.org/builds/swift-2.2-branch/ubuntu1510/swift-${_version}/swift-${_version}-ubuntu15.10.tar.gz"
-  "https://swift.org/builds/swift-2.2-branch/ubuntu1510/swift-${_version}/swift-${_version}-ubuntu15.10.tar.gz.sig"
+  "https://swift.org/builds/development/ubuntu1510/swift-${_version}/swift-${_version}-ubuntu15.10.tar.gz"
+  "https://swift.org/builds/development/ubuntu1510/swift-${_version}/swift-${_version}-ubuntu15.10.tar.gz.sig"
 )
-sha256sums=('641f415dbc8ed08d22eb60723339ccd47cc41c9012512815b68cc411da286dc2'
+sha256sums=('bbdc27d2855fdcfa1cb77e78bd2e751b73a399670950036d5de3c446f9045072'
             'SKIP')
 
 package() {
