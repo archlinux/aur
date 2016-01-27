@@ -1,11 +1,12 @@
-# Maintainer: Constantin Lorenz <Cons27773964@aol.com>
+# Maintainer: Constantin Lorenz <Cons27773964 at aol dot com>
+# Contributor: Yardena Cohen <yardenack at gmail dot com>
 
 # To port this PKGBUILD to another language of tor-browser you 
 # have to change $pkgname, $_language, $pkgdesc and $url in PKGBUILD
 # AND (!) the first line in the .install file!
 
 pkgname='tor-browser-de'
-pkgver='5.0.7'
+pkgver='5.5'
 _language='de'
 pkgrel=1
 pkgdesc='Tor Browser Bundle: Anonymes Surfen mit Firefox und Tor'
@@ -35,9 +36,9 @@ source+=("${pkgname}.desktop"
 md5sums=('5b0844612fcbed11666e3c766072b092'
          '494afbfa60fb4ce21840244cc3f7208c'
          'bb53b2544e2038943e703c7c6ccf48a1')
-md5sums_x86_64=('2076f5a05b6024abc1a152de77270e25'
+md5sums_x86_64=('fe010884d0c12e94fda72bb277f15c1d'
                 'SKIP')
-md5sums_i686=('be8753a4d066d9f1b5dea7c306b0f2eb'
+md5sums_i686=('aaa858e80a8e7e6213a37b932b239331'
               'SKIP')
 
 noextract_x86_64=("tor-browser-linux64-${pkgver}_${_language}.tar.xz")
