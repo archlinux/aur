@@ -1,0 +1,16 @@
+pkgbase = mmh-git
+	pkgdesc = The Modern Mail Handler
+	pkgver = 0.2.r14.e9df3f1
+	pkgrel = 1
+	url = http://marmaro.de/prog/mmh/
+	arch = i686
+	arch = x86_64
+	license = CUSTOM:BSD
+	makedepends = git
+	provides = mmh
+	conflicts = mmh
+	source = mmh::git+http://git.marmaro.de/mmh
+	md5sums = SKIP
+
+pkgname = mmh-git
+
