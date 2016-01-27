@@ -9,12 +9,12 @@
 
 pkgname=google-appengine-python
 pkgver=1.9.31
-_zipver=$pkgver
+_zipver=${pkgver}
 pkgrel=1
 arch=(any)
 pkgdesc="Google App Engine SDK for Python"
-url=https://cloud.google.com/appengine/downloads
-license=(APACHE)
+url=https://cloud.google.com/appengine/downloads#Google_App_Engine_SDK_for_Python
+license=('APACHE')
 depends=('python2>=2.7')
 optdepends=('mysql-python: MySQL DB API'
   'python2-crypto=2.6: cryptography functions'
