@@ -1,16 +1,16 @@
 pkgname=dwm-custom
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="A helper for compiling dwm in userspace (default=6.1)"
 url="https://git.framasoft.org/bobo/dwm-custom"
 arch=('any')
 license=('GPL3')
 depends=('dwm' 'tar' 'sed' 'wget' 'patch')
-source=("https://git.framasoft.org/bobo/dwm-custom/raw/master/snapshot/dwm-custom-0.1.tar.gz")
-md5sums=('d879cddac01049a7e7ab3d0a2441a002')
+source=("https://git.framasoft.org/bobo/dwm-custom/raw/master/snapshot/dwm-custom-$pkgver.tar.gz")
+md5sums=('b9a94794dd29d7382853e619019cf892')
 
 prepare() {
-  sed -i -e "s#DOCDIR=.*#DOCDIR=/usr/share/doc/$pkgname#" $srcdir/$pkgname-build
+  sed -i -e "s:DOCDIR=.*:DOCDIR=/usr/share/doc/$pkgname:" $srcdir/$pkgname-build
 }
 
 package() {
