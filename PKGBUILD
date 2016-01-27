@@ -1,15 +1,15 @@
 # Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
 
 pkgname=jacktrip-git
-pkgver=1.1.r17.gb5ad0df
+pkgver=1.1.r22.g359aa3a
 pkgrel=1
 pkgdesc="Tool to manage and tune JACK settings for optimum performance between networked machines."
 arch=('i686' 'x86_64')
 url="https://github.com/jcacerec/jacktrip"
 license=('MIT')
 depends=('jack' 'qt5-base' 'rtaudio')
-provides=('jacktrip')
-conflicts=('jacktrip')
+provides=("${pkgname%-*}")
+conflicts=("${pkgname%-*}")
 source=("${pkgname}::git+https://github.com/jcacerec/jacktrip.git")
 sha512sums=('SKIP')
 _branch=master
@@ -29,7 +29,7 @@ prepare() {
 }
 
 build() {
-   cd "${srcdir}/${pkgname}/jacktrip/src"
+  cd "${srcdir}/${pkgname}/jacktrip/src"
   ./build
 }
 
