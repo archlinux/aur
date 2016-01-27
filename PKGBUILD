@@ -10,15 +10,15 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 depends=('bash' 'ncurses')
 optdepends=(
-    'w3m: Display Images'
-    'imagemagick: Image cropping / Thumbnail creation'
-    'feh: Wallpaper Display or'
-    'nitrogen: Wallpaper Display'
-    'mpc: Current Song or'
     'cmus: Current Song'
-    'xorg-xdpyinfo: Resolution Detection'
-    'wmctrl: Accurate window manager detection'
+    'feh: Wallpaper Display'
+    'imagemagick: Image cropping / Thumbnail creation'
+    'mpc: Current Song'
+    'nitrogen: Wallpaper Display'
     'scrot: Take a screenshot'
+    'w3m: Display Images'
+    'wmctrl: Accurate window manager detection'
+    'xorg-xdpyinfo: Resolution Detection'
 )
 makedepends=('git')
 source=("$pkgname::git+https://github.com/dylanaraps/fetch.git")
