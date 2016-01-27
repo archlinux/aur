@@ -173,15 +173,9 @@ package_gcc49-alternative-libs-multilib()
 
   rm ${pkgdir}/usr/share/locale/de/LC_MESSAGES/libstdc++.mo
   rm ${pkgdir}/usr/share/locale/fr/LC_MESSAGES/libstdc++.mo
-  
-
-
-
 
   # remove stuff in lib32-gcc-libs
   #rm -r ${pkgdir}/usr/lib32
-
-
 
   # Install Runtime Library Exception
   #  install -Dm644 ${srcdir}/${_basedir}/COPYING.RUNTIME     ${pkgdir}/usr/share/licenses/gcc-libs-multilib/RUNTIME.LIBRARY.EXCEPTION
@@ -340,63 +334,6 @@ EOF
 #  ln -s ../gcc-libs-multilib/RUNTIME.LIBRARY.EXCEPTION ${pkgdir}/usr/share/licenses/gcc-multilib/
 }
 
-package_gcc49-alternative-fortran-multilib()
-{
-  pkgdesc="Fortran front-end for GCC for multilib"
-  depends=("gcc-multilib=$pkgver-$pkgrel")
-  provides=("gcc-fortran=$pkgver-$pkgrel")
-  conflicts=('gcc-fortran')
-  options=('!emptydirs')
-#  install=gcc49-alternative-fortran.install
-
-  cd ${srcdir}/gcc-build
-  make -C $CHOST/libgfortran DESTDIR=$pkgdir install-{{caf,my}execlibLTLIBRARIES,toolexeclibDATA}
-  make -C $CHOST/32/libgfortran DESTDIR=$pkgdir install-{{caf,my}execlibLTLIBRARIES,toolexeclibDATA}
-  make -C $CHOST/libgomp DESTDIR=$pkgdir install-nodist_fincludeHEADERS
-  make -C gcc DESTDIR=$pkgdir fortran.install-{common,man,info}
-  install -Dm755 gcc/f951 $pkgdir/${_libdir}/f951
-
-  ln -s gfortran ${pkgdir}/usr/bin/f95
-
-  # Install Runtime Library Exception
-  install -d ${pkgdir}/usr/share/licenses/gcc-fortran-multilib/
-  ln -s ../gcc-libs-multilib/RUNTIME.LIBRARY.EXCEPTION ${pkgdir}/usr/share/licenses/gcc-fortran-multilib/
-}
-
-package_gcc49-alternative-objc-multilib()
-{
-  pkgdesc="Objective-C front-end for GCC for multilib"
-  depends=("gcc-multilib=$pkgver-$pkgrel")
-  provides=("gcc-objc=$pkgver-$pkgrel")
-  conflicts=('gcc-objc')
-
-  cd ${srcdir}/gcc-build
-  make DESTDIR=$pkgdir -C $CHOST/libobjc install-headers
-  install -dm755 $pkgdir/${_libdir}
-  install -m755 gcc/cc1obj{,plus} $pkgdir/${_libdir}/
-
-  # Install Runtime Library Exception
-  install -d ${pkgdir}/usr/share/licenses/gcc-objc-multilib/
-  ln -s ../gcc-libs-multilib/RUNTIME.LIBRARY.EXCEPTION ${pkgdir}/usr/share/licenses/gcc-objc-multilib/
-}
 
 
-package_gcc49-alternative-go-multilib()
-{
-  pkgdesc="Go front-end for GCC for multilib"
-  depends=("gcc-multilib=$pkgver-$pkgrel")
-  provides=("gcc-go=$pkgver-$pkgrel")
-  conflicts=('gcc-go')
-  options=('!emptydirs')
-#  install=gcc49-alternative-go.install
 
-  cd ${srcdir}/gcc-build
-  make -C $CHOST/libgo DESTDIR=$pkgdir install-exec-am
-  make -C $CHOST/32/libgo DESTDIR=$pkgdir install-exec-am
-  make -C gcc DESTDIR=$pkgdir go.install-{common,man,info}
-  install -Dm755 gcc/go1 $pkgdir/${_libdir}/go1
-
-  # Install Runtime Library Exception
-  install -d ${pkgdir}/usr/share/licenses/gcc-go-multilib/
-  ln -s ../gcc-libs-multilib/RUNTIME.LIBRARY.EXCEPTION ${pkgdir}/usr/share/licenses/gcc-go-multilib/
-}
