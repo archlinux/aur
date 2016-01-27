@@ -90,8 +90,8 @@ package_seafile-shared() {
 package_seafile-server() {
   depends=("seafile-shared"
            "python2-mako" "python2-dateutil" "python2-webpy" "python2-pip"
-           "python2-virtualenv" "python2-flup" "python2-six"
-           "libevhtp-seafile" "git")
+           "python2-virtualenv" "python2-flup" "python2-six" "python2-chardet"
+           "python2-simplejson" "libevhtp-seafile" "git")
   conflicts=("seafile-shared<${pkgver}")
   options=('!libtool' '!emptydirs')
   install=seafile-server.install
