@@ -1,12 +1,13 @@
-# Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
+# Contributor: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
 # Contributor: Alexandre Minoshi (Almin-Soft Group)
 
 pkgname=pacmanxg
-pkgver=4.16.3
-pkgrel=3
+pkgver=4.17.0
+pkgrel=1
 pkgdesc="Yet another GUI for pacman and yaourt. Depends on neither GTK or Qt: only X11"
-arch=('i686' 'x86_64')
-url="http://almin-soft.ru/index.php?programmy/pacmanxg/tags/pacmanxg"
+#arch=('i686' 'x86_64')
+arch=('i686')
+url="http://almin-soft.ru/index.php?sluzhebnye/pacmanxg/tags/pacmanxg"
 license=('GPL2')
 optdepends=(
   'curl: news and screenshot support' 
@@ -18,14 +19,15 @@ optdepends=(
 options=('!strip')
 install=${pkgname}.install
 
-if [ "${CARCH}" = 'x86_64' ]; then
-  depends=('pacman' 'ssx' 'lib32-libx11' 'lib32-libxrender' 'lib32-gcc-libs')
-  source=("pacmanxg_64.tar.bz2::http://almin-soft.fsay.net/data/files/pacmanxg/download.php?get=pacmanxg_64.tar.bz2")
-  sha512sums=('d70e9482b911c53d44f2a530875668754f3c47d95168711ac436a83c2560907e95fd4c9bdc32d743351aeb0702336ded273ac0567b46f37ebe7377524cf346b8')
-elif [ "${CARCH}" = 'i686' ]; then
+#if [ "${CARCH}" = 'x86_64' ]; then
+#  depends=('pacman' 'ssx' 'lib32-libx11' 'lib32-libxrender' 'lib32-gcc-libs')
+#  source=("pacmanxg_64.tar.bz2::http://almin-soft.fsay.net/data/files/pacmanxg/download.php?get=pacmanxg_64.tar.bz2")
+#  sha512sums=('d70e9482b911c53d44f2a530875668754f3c47d95168711ac436a83c2560907e95fd4c9bdc32d743351aeb0702336ded273ac0567b46f37ebe7377524cf346b8')
+#elif [ "${CARCH}" = 'i686' ]; then
+if [ "${CARCH}" = 'i686' ]; then
   depends=('pacman' 'ssx' 'libx11' 'gcc-libs' 'libxrender')
-  source=("pacmanxg.tar.bz2::http://almin-soft.fsay.net/data/files/pacmanxg/download.php?get=pacmanxg.tar.bz2")
-  sha512sums=('7ec638aaa398c8069f4cd54f221ac90b6090464b68a09918a6d61b8cc165410e986b3e0cbe89e85b77dd3610903d97da896c8bfd37e79315760cbae9c515d0bc')
+  source=("pacmanxg.tar.bz2::http://almin-soft.ru/data/files/repo/i686/download.php?get=pacmanxg")
+
 fi
 
 package() {
