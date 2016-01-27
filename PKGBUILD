@@ -1,19 +1,21 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Jack Random <jack (@) random.to>
+# Contributor: Antonio Rojas <arojas@archlinux.org
 # Contributor: Jerome Leclanche <jerome.leclanche+arch@gmail.com>
 
 _gitname=akonadi
 pkgname=$_gitname-git
-pkgver=r3157.3ccf157
+pkgver=r10357.7eb79ba
 pkgrel=1
-pkgdesc="PIM layer, which provides an asynchronous API to access all kind of PIM data"
+pkgdesc="PIM layer, which provides an asynchronous API to access all kind of PIM data. builds with PostgreSQL backend"
 arch=('i686' 'x86_64')
-url="http://www.kde.org"
+url="https://community.kde.org/KDE_PIM/akonadi"
 license=('LGPL')
-depends=('qt5-base' 'shared-mime-info' 'mariadb')
-makedepends=('git' 'extra-cmake-modules-git' 'postgresql')
+depends=('qt5-base' 'shared-mime-info' 'libxslt' 'postgresql')
+makedepends=('git' 'extra-cmake-modules' 'postgresql')
+optdepends=('mariadb: MariaDB backend')
 conflicts=("$_gitname")
 provides=("$_gitname")
-source=("git://anongit.kde.org/$_gitname")
+source=("git://github.com/KDE/$_gitname")
 install=$pkgname.install
 sha256sums=("SKIP")
 
@@ -33,7 +35,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF \
-    -DDATABASE_BACKEND=SQLITE \
+    -DDATABASE_BACKEND=POSTGRES \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
   make
 }
