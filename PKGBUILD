@@ -9,7 +9,7 @@ license=('CCPL:cc-by-sa')
 depends=('artwiz-fonts')
 optdepends=('slim: login manager providing theme support')
 source=(http://github.com/AlbertoOS/${pkgname}/archive/v${pkgver}.tar.gz)
-md5sums=('d708c78968900d79a763be7fd6a5e187')
+md5sums=('c83c45530854cd1799a7b54f5776ba59')
 
 package() {
   cd "${srcdir}"/${pkgname}-${pkgver}/arch-tetra
@@ -21,5 +21,3 @@ package() {
   install -m 644 -D ../README "${pkgdir}"/usr/share/slim/themes/arch-tetra/README
 
 }
-
-# vim:set ts=2 sw=2 et:
