@@ -1,7 +1,7 @@
 # Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
 
 pkgname=gnome-shell-extension-freon-git
-pkgver=15.r1.g2dbddc7
+pkgver=17.r0.g08948e0
 pkgrel=1
 pkgdesc="Displays: CPU temperature, HDD/SSD temperature, video card temperature (nVidia/Catalyst), voltage and fan RPM in a GNOME Shell top bar pop-down."
 arch=('any')
@@ -13,8 +13,8 @@ optdepends=(
   'udisks2: optional backend for storage temperature sensors.'
   'hddtemp: optional backend for S.M.A.R.T. temperature sensors.'
 )
-provides=('gnome-shell-extension-freon')
-conflicts=('gnome-shell-extensions-git' 'gnome-shell-extensions-freon')
+provides=("${pkgname%-*}")
+conflicts=("${pkgname%-*}" 'gnome-shell-extensions-git')
 install="gschemas.install"
 source=("${pkgname}::git+https://github.com/UshakovVasilii/gnome-shell-extension-freon.git")
 sha512sums=('SKIP')
