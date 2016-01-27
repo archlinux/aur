@@ -3,7 +3,7 @@
 # Contributor: mareex <marcus dot behrendt dot 86 at gmail dot com>
 
 pkgname=gnome-shell-extension-lockkeys-git
-pkgver=r79.3ee6fd6
+pkgver=r80.222289e
 pkgrel=1
 pkgdesc="Lock key state indicator for GNOME Shell."
 arch=('any')
