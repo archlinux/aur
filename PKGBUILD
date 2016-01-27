@@ -4,7 +4,7 @@
 
 pkgname=copay
 pkgver=1.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Copay Bitcoin Wallet"
 #arch=('i686' 'x86_64')
 arch=('x86_64')
@@ -34,7 +34,7 @@ package() {
     cd ${pkgdir}/opt/copay
 
     # Unzip the binary package
-    unzip ${startdir}/copay-linux.zip
+    unzip ${startdir}/Copay-linux.zip
     
     # Remove arch suffix 
     mv copay-linux/* .
