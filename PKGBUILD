@@ -2,7 +2,7 @@
 pkgname='minisatip'
 pkgdesc="SAT>IP server, tested with DVB-S, DVB-S2, DVB-T, DVB-T2, DVB-C, DVB-C2, ATSC and ISDB-T cards"
 pkgver=0.4.1
-pkgrel=3
+pkgrel=4
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/catalinii/minisatip"
 license=('GPL2')
@@ -13,11 +13,13 @@ depends=('libdvbcsa' 'linuxtv-dvb-apps')
 optdepends=('oscam: channels descrambling')
 backup=('etc/conf.d/minisatip')
 install='minisatip.install'
-source=("git+https://github.com/catalinii/minisatip#commit=99fed041702c3a136008a285b5c015a981a5dfd3"
+source=("git+${url}#commit=99fed041702c3a136008a285b5c015a981a5dfd3"
+        "Add-EXTRA_CFLAGS-adn-EXTRA_LDFLAGS-to-Makefile.patch::${url}/commit/43482f469e9efd9d9b2026d9346b9b1331a90d32.patch"
         'minisatip.service'
         'minisatip.sysuser'
         'minisatip.conf')
 sha256sums=('SKIP'
+            '4a6d3f3f2c246b6143706e53f598e8a7ec8f603b8fd7379cbb08c87d12d5b9f5'
             'ea3b7b52c33946c156f174c043015e6922af0c28ef43f9a4b4615e3abb36d4ad'
             '9f0ea2c29ab6c69bd444a6e4021928bbafc332c71735e1af975c3a973c3e5c2e'
             '24a03332e662c80c00d8f7ce40a60b35bcd7c8d08052c8e4deeb7e0f6720a2aa')
@@ -29,13 +31,12 @@ pkgver() {
 
 prepare() {
 	cd ${srcdir}/minisatip
-	git cherry-pick bf082f655936d37cfa94a1a28e689b8d6ef1b7de
-	git cherry-pick 43482f469e9efd9d9b2026d9346b9b1331a90d32
+	sed -i 's/FLAGS?/FLAGS/g' ../Add-EXTRA_CFLAGS-adn-EXTRA_LDFLAGS-to-Makefile.patch
+	patch -p1 -i ../Add-EXTRA_CFLAGS-adn-EXTRA_LDFLAGS-to-Makefile.patch
 }
 
 build() {
 	cd ${srcdir}/minisatip
-	sed -i 's/FLAGS?/FLAGS/g' Makefile
 	make DVBCA=yes EXTRA_CFLAGS="${CFLAGS}" EXTRA_LDFLAGS="${LDFLAGS}"
 }
 
