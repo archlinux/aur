@@ -11,8 +11,8 @@ url="http://pypi.python.org/pypi/enum/"
 license=('GPL2')
 depends=('python2')
 makedepends=('python2-distribute')
-provides=('python2-enum')
-conflicts=('python2-enum')
+provides=("${pkgname}")
+conflicts=("${pkgname}")
 source=("https://pypi.python.org/packages/source/e/enum/enum-${pkgver}.tar.gz")
 sha512sums=('67819dc2412f833b4d27171dd71d12a7b67a35c1e8401d03938621273b1c13b6ec6d561b2cddaaf2080d92abfed5ccaa460996a3e7f7058e0f90ae3a0dd0f552')
 
