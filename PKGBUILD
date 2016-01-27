@@ -21,7 +21,7 @@ _replacesoldmodules=() # '%' gets replaced with _kernelname
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}_${_rtpatchver}
 pkgver=${_pkgver//-/_}.${_rtpatchver}
-pkgrel=1
+pkgrel=2
 rcnrel=armv7-x6
 arch=('i686' 'x86_64' 'armv7h')
 url="https://rt.wiki.kernel.org/"
@@ -48,6 +48,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
+        'CVE-2016-0728.patch'
         '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch'
         '0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
         # armv7h patches
@@ -78,6 +79,7 @@ sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'ded625b4711e1390c36e581965cf4149cc6971657040c048a9f83ca9c9a0d11c'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            '03bed5b1c6ef34a917e218a46d38cd1347c5ab5693131996113c6cad275dc4e9'
             '61370b766e0c60b407c29d2c44b3f55fc352e9049c448bc8fcddb0efc53e42fc'
             '3d3266bd082321dccf429cc2200d1a4d870d2031546f9f591b6dfbb698294808'
             'b485e9da38a70cb2a878714384ce4ddb36b0c3524b90d80cbff8a9a18c519e0b'
@@ -142,6 +144,9 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
+  # fixes #47820 CVE-2016-0728.patch
+  patch -Np1 -i "${srcdir}/CVE-2016-0728.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
