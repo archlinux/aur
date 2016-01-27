@@ -15,7 +15,7 @@ makedepends=('git' 'extra-cmake-modules' 'postgresql')
 optdepends=('mariadb: MariaDB backend')
 conflicts=("$_gitname")
 provides=("$_gitname")
-source=("git://github.com/KDE/$_gitname")
+source=("git+https://github.com/KDE/$_gitname")
 install=$pkgname.install
 sha256sums=("SKIP")
 
