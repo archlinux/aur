@@ -7,9 +7,9 @@
 ## If you will not be using ibus, comment out below.
 _ibus_mozc="yes"
 ## If you will be using uim, uncomment below.
-#_uim_mozc="yes"
+_uim_mozc="yes"
 ## If applying patch for uim-mozc fails, try to uncomment below.
-#_kill_kill_line="yes"
+_kill_kill_line="yes"
 ## This will disable the 'kill-line' feature of uim-mozc.
 
 ## If you will be using mozc.el on Emacs, uncomment below.
@@ -109,7 +109,7 @@ if [[ "$_uim_mozc" == "yes" ]]; then
   true && pkgname+=('uim-mozc-ut')
   makedepends+=('uim')
   source+=(http://downloads.sourceforge.net/project/pnsft-aur/mozc/uim-mozc-${_uimmozcrev}.tar.xz)
-  sha1sums+=('dd2582a4eb854b9feef064681ec8232c856e1f7f')
+  sha1sums+=('22b7c2a5b0a7fef778ee72ebe5873a75e879d26b')
 
 fi
 
