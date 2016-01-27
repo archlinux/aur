@@ -8,7 +8,7 @@
 # without X, or at the login screen. Contrib is welcome
 
 pkgname=coolmaster-keyboard
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="Control the backlight for Coolmaster Dominator keyboards"
 url="http://aur.archlinux.org"
@@ -17,18 +17,18 @@ license=('GPL3')
 depends=('xorg-xset')
 backup=('etc/default/keyboard_backlight')
 install=${pkgname}.install
-source=("90-keyboard-backlight.sh"
-        "keyboard_backlight"
+source=("90-coolmaster-keyboard.sh"
+        "coolmaster_keyboard"
         "keyboard_led_toggle.sh"
 )
-sha256sums=('10d7549b18036df045ff1e94413d5e6de93a825da661b960c51935de503aec82'
-            'b3dc05f6de9591eef0d66d575a7b15fa11b9cb5dcd166c3e4a94639290fe6779'
+sha256sums=('82f534cf47b01fe2cf217918b50f40c909c521be12f6c7dbf5e5029c1de7e7c1'
+            '5949356d3a44ba4d5431c9ff461e9f6cc1e0b89ae8fc9c29d8b9f4aeec0dd230'
             '168f733e8308e7e711264f798ccb742456e0c2131841c471620b9e32fbc3f4c9')
 
 package() {
   cd "${srcdir}"
-  install -Dm755 90-keyboard-backlight.sh "${pkgdir}/etc/X11/xinit/xinitrc.d/90-keyboard-backlight.sh"
-  install -Dm644 keyboard_backlight "${pkgdir}/etc/default/keyboard_backlight"
+  install -Dm755 90-coolmaster-keyboard.sh "${pkgdir}/etc/X11/xinit/xinitrc.d/90-coolmaster-keyboard.sh"
+  install -Dm644 coolmaster_keyboard "${pkgdir}/etc/default/coolmaster_keyboard"
   install -Dm755 keyboard_led_toggle.sh "${pkgdir}/usr/bin/keyboard_led_toggle.sh"
 }
 

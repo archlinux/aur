@@ -4,11 +4,9 @@ post_install(){
 This package contains a series of scripts for controlling the backlight on the
 Coolmaster Dominator keyboard.
 
-To change the default status on login, edit /etc/default/keyboard_backlight
+configuration is at: /etc/default/coolmaster_keyboard
 
-It is enabled by default
-
-to toggle the backlight, use /usr/bin/keyboard_led_toggle.sh
+To toggle the backlight: use /usr/bin/keyboard_led_toggle.sh
 EOF
 }
 
