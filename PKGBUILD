@@ -9,8 +9,8 @@ arch=('i686' 'x86_64')
 url="https://github.com/jcacerec/jacktrip"
 license=('MIT')
 depends=('jack' 'qt5-base')
-provides=('jacktrip')
-conflicts=('jacktrip')
+provides=("${pkgname}")
+conflicts=("${pkgname}-git")
 source=("https://github.com/jcacerec/jacktrip/archive/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('4c6b99deb424910348a3a0b8621dba4abfcbdf1a93b3d2a63fe8098113dffc03c472ab536de6c58e9202cd25823af7ebde4ab818e5a74bedcf8b353417dfda91')
 
