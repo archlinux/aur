@@ -2,7 +2,7 @@
 
 pkgname=eclipse-jubula
 pkgver=3.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Jubula plugins for Eclipse IDE to create functional GUI tests'
 arch=('any')
 url='http://eclipse.org/jubula/'
@@ -12,7 +12,7 @@ options=('!strip')
 source=(
 #"https://hudson.eclipse.org/hudson/job/jubula-luna/lastSuccessfulBuild/artifact/jubula/org.eclipse.jubula.site/target/org.eclipse.jubula.site-2.3.0-SNAPSHOT.zip")
 "https://hudson.eclipse.org/jubula/job/jubula-mars/lastSuccessfulBuild/artifact/org.eclipse.jubula.core/org.eclipse.jubula.repo/target/org.eclipse.jubula.repo-${pkgver}-SNAPSHOT.zip")
-sha256sums=('b60d416e4727f73ee5cb06ef19b5647d09957faf0b12ebfe73459a3c20eac61a')
+sha256sums=('72638a77fa02d2b47c23acee4f5636dce885ad6ae8c39b3b9c718b9414b0dc76')
 
 package() {
   # remove features and plug-ins contain sources
