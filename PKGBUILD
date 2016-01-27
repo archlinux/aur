@@ -7,7 +7,7 @@
 ## If you will not be using ibus, comment out below.
 _ibus_mozc="yes"
 ## If you will be using uim, uncomment below.
-_uim_mozc="yes"
+#_uim_mozc="yes"
 ## If applying patch for uim-mozc fails, try to uncomment below.
 _kill_kill_line="yes"
 ## This will disable the 'kill-line' feature of uim-mozc.
@@ -70,14 +70,14 @@ _bldtype=Release
 #_bldtype=Debug
 
 _mozcrev=2628af6995dbbbb9ccdb52d1160db1dbd5ed3bae
-_utdicver=20160121
+_utdicver=20160125
 _zipcoderel=201512
 _uimmozcrev=321.3ea28b1
 
 pkgbase=mozc-ut
 pkgname=mozc-ut
 true && pkgname=('mozc-ut')
-pkgver=2.17.2313.102.20160121
+pkgver=2.17.2313.102.20160125
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc_01.html"
@@ -93,8 +93,8 @@ source=(
   mod-generate-mozc-ut.sh
 )
 sha1sums=('SKIP'
-          '5d57e0c3378592952bc018435de0edc947e2d101'
-          'e1068171b0dc6b984344d92f0e9cfa17eb966c78'
+          'c0e7d8e9d2a3dcc41effda4901f5142820565bf5'
+          '701737f457cd0a1832ff5e6ed961cf1d6317d5b7'
           'e0ba18e67c1be8e3cfb8ecb30760597b215da255'
           'b07c667a82fd31c752a973c8bee06dab8178c3f0'
           '11636b6256f3382d11ac4df41db243acd33a44b3'
