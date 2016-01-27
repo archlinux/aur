@@ -1,16 +1,17 @@
-# Maintainer: FadeMind <fademind@gmail.com>
+# Maintainer: Jack Random <jack (at) random.to>
+# Contributor: FadeMind <fademind@gmail.com>
 
 _pkgname=velours
 pkgname=yakuake-skin-${_pkgname}
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Dark, monochromatic and translucent skin for Yakuake (KDE4)"
 arch=('any')
-url="http://opendesktop.org/content/show.php?content=170866"
+url="https://opendesktop.org/content/show.php?content=170866"
 license=('CCPL:by-sa')
 depends=('yakuake')
-source=("${_pkgname}.tar.gz::http://opendesktop.org/CONTENT/content-files/170866-${_pkgname}-yakuake.tar.gz")
-sha256sums=('4df70237b6bd4ca1069ad4c3d571df5fa15cda87e37f112cac4f67143500162d')
+source=("${_pkgname}.tar.gz::https://opendesktop.org/CONTENT/content-files/170866-${_pkgname}-yakuake.tar.gz")
+sha256sums=('bce3bb36f64588f26caa8cba3f48642a882b0742e6d71a25e1b920905663c192')
 
 package() {
     cd ${srcdir}/${_pkgname}-yakuake
