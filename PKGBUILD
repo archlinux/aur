@@ -38,6 +38,7 @@ build() {
 
 package_maia-wallpaper() {
   pkgdesc='Maia wallpaper'
+  category=('artwork-maia')
   cd build
   make DESTDIR="${pkgdir}" install
 
@@ -53,6 +54,7 @@ package_maia-wallpaper() {
 
 package_maia-icon-theme() {
   pkgdesc='Maia icon theme'
+  category=('artwork-maia')
   cd build
   make DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}/usr/share/color-schemes"
@@ -66,6 +68,7 @@ package_plasma5-themes-maia() {
   pkgdesc='Maia theme for KDE Plasma 5'
   depends=('breeze' 'maia-icon-theme')
   replaces=('maia-themes')
+  category=('artwork-maia')
   cd build
   make DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}/usr/share/sddm"
@@ -74,6 +77,7 @@ package_plasma5-themes-maia() {
 
 package_sddm-maia-theme() {
   pkgdesc="Maia theme for SDDM"
+  category=('artwork-maia')
   cd build
   make DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}/usr/share/color-schemes"
