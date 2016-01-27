@@ -4,14 +4,15 @@ pkgdesc="ROS - Drivers for the Asus Xtion and Primesense Devices."
 url='http://www.ros.org/'
 
 pkgname='ros-indigo-openni2-camera'
-pkgver='0.2.2'
+pkgver='0.2.5'
 _pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-nodelet
   ros-indigo-roscpp
+  ros-indigo-message-generation
   ros-indigo-catkin
   ros-indigo-image-transport
   ros-indigo-camera-info-manager
@@ -23,6 +24,7 @@ makedepends=('cmake' 'git' 'ros-build-tools'
 
 ros_depends=(ros-indigo-nodelet
   ros-indigo-roscpp
+  ros-indigo-message-runtime
   ros-indigo-image-transport
   ros-indigo-camera-info-manager
   ros-indigo-sensor-msgs
@@ -30,10 +32,16 @@ ros_depends=(ros-indigo-nodelet
 depends=(${ros_depends[@]}
   openni2)
 
-_tag=release/indigo/openni2_camera/${pkgver}-${_pkgver_patch}
-_dir=openni2_camera
-source=("${_dir}"::"git+https://github.com/ros-gbp/openni2_camera-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/openni2_camera/${pkgver}-${_pkgver_patch}
+# _dir=openni2_camera
+# source=("${_dir}"::"git+https://github.com/ros-gbp/openni2_camera-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="openni2_camera-release-release-indigo-openni2_camera-${pkgver}-${_pkgver_patch}"
+source=("https://github.com/ros-gbp/openni2_camera-release/archive/release/indigo/openni2_camera/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('32da13bbdd53d387e73db4a274548e0537ead4d2e8e34486b0c124bc2d40fe75')
 
 build() {
   # Use ROS environment variables
