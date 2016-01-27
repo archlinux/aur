@@ -2,13 +2,12 @@
 
 pkgname=cachedir
 pkgver=1.3
-_filever="${pkgver}-1"
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility for tagging directories as cache directories."
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://liw.fi/cachedir/"
-license=('GPLv3')
-depends=('python2-cliapp')
+license=('GPL')
+depends=('python2')
 source=("http://code.liw.fi/debian/pool/main/c/${pkgname}/${pkgname}_${pkgver}.orig.tar.xz")
 
 build() {
