@@ -4,7 +4,7 @@ pkgdesc="ROS - Launch files to open an RGBD device and load all nodelets to conv
 url='http://www.ros.org/wiki/rgbd_launch'
 
 pkgname='ros-indigo-rgbd-launch'
-pkgver='2.1.0'
+pkgver='2.1.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -24,10 +24,16 @@ ros_depends=(ros-indigo-image-proc
   ros-indigo-depth-image-proc)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/rgbd_launch/${pkgver}-${_pkgver_patch}
-_dir=rgbd_launch
-source=("${_dir}"::"git+https://github.com/ros-gbp/rgbd_launch-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rgbd_launch/${pkgver}-${_pkgver_patch}
+# _dir=rgbd_launch
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rgbd_launch-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rgbd_launch-release-release-indigo-rgbd_launch-${pkgver}-${_pkgver_patch}"
+source=("https://github.com/ros-gbp/rgbd_launch-release/archive/release/indigo/rgbd_launch/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('cfb1f8b7e2e27901e6ff35a256014754faae95422155eae9d9f6d279e1869120')
 
 build() {
   # Use ROS environment variables
