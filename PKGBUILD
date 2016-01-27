@@ -10,7 +10,7 @@ arch=('any')
 url="https://opendesktop.org/content/show.php?content=167519"
 license=('GPL')
 depends=('yakuake')
-source=("${_pkgname}.tar.gz::http://opendesktop.org/CONTENT/content-files/167519-breezeV1.0.tar.gz")
+source=("${_pkgname}.tar.gz::https://opendesktop.org/CONTENT/content-files/167519-breezeV1.0.tar.gz")
 sha256sums=('d07a6769e5432faa704313bc81f2ec040276d34317f121641a2aeb548b937976')
 
 package() {
