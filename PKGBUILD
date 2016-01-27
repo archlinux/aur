@@ -2,7 +2,7 @@
 pkgname=ramspeed
 pkgver=2.6.0
 pkgrel=2
-pkgdesc='Open source utility to measure cache and memory performance'
+pkgdesc='Open source memory and cache benchmark (UP version)'
 arch=('i686' 'x86_64' 'armv7h')
 depends=('glibc')
 license=('custom')
