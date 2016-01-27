@@ -1,9 +1,10 @@
-# Maintainer: James Tappin <jtappinatgmaildotcom>
+# Maintainer: Miguel de Val-Borro <miguel@archlinux.net>
+# Contributor: James Tappin <jtappinatgmaildotcom>
 # Contributor: Orlando Garcia Feal <rodland at gmail dot com>
 
 pkgname=gnudatalanguage
-pkgver=0.9.5
-pkgrel=4
+pkgver=0.9.6
+pkgrel=1
 pkgdesc="An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)"
 arch=('i686' 'x86_64')
 url="http://gnudatalanguage.sourceforge.net/"
@@ -14,7 +15,7 @@ makedepends=('cmake')
 options=('!makeflags')
 source=(http://downloads.sourceforge.net/gnudatalanguage/gdl-${pkgver}.tar.gz \
     gdl.profile)
-md5sums=('2d02283c544820729479a57545d5b599'
+md5sums=('8f63812acf18fe6e9b632e32e0956d15'
          '40aa5fd8278cd8e80425c62a577563cc')
 
 build() {
