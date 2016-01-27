@@ -10,7 +10,8 @@ url="https://www.gnu.org/software/gdb/download/"
 license=('GPL')
 groups=('devel')
 depends=("python2")
-sources=("http://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz")
+source=("http://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz")
+sha256sums=('25c72f3d41c7c8554d61cacbeacd5f40993276d2ccdec43279ac546e3993d6d5')
 
 
 prepare() {
