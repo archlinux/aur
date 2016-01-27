@@ -18,14 +18,14 @@ depends=(
   'libpng12'
   'libsmf'
   'linuxsampler-svn'
+  'mxml'
   'ntk-git'
   'python-pyliblo'
   'python-pyqt4'
-  'mxml'
   'zita-convolver'
   'zita-resampler'
 )
-makedepends=('gtk2' 'gtk3')
+makedepends=('gtk2' 'gtk3' 'pygtk' 'zlib' 'zynaddsubfx')
 optdepends=(
   'gtk2: lv2 gtk2 ui support'
   'gtk3: lv2 gtk3 ui support'
@@ -33,8 +33,8 @@ optdepends=(
   'zlib: extra native plugins'
   'zynaddsubfx: ZynAddSubFX banks'
 )
-provides=('carla')
-conflicts=('carla')
+provides=("${pkgname}")
+conflicts=("${pkgname}-git")
 install=${pkgname}.install
 source=("https://downloads.sourceforge.net/project/kxstudio/Releases/${pkgname}/Carla-${pkgver}-src.tar.bz2")
 sha512sums=('bc0fd43cc2237abafc5676d1e0a002d0d85ccdf588d681f6f9e63fd4af99125de2dd31c442ae55b17d2ebfc732dfbeaf238f4cab018e100c2e76df719298fe51')
