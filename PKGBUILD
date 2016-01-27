@@ -2,7 +2,7 @@
 
 _pkgname=openbazaard
 pkgname=${_pkgname}-git
-pkgver=636.c55be08
+pkgver=665.c8cae4f
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
 arch=(any)
@@ -26,6 +26,7 @@ depends=(
 	python2-txjson-rpc
 	python2-txrestapi
 	python2-txrudp
+	python2-txws
 )
 
 makedepends=(git)
