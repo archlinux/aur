@@ -1,7 +1,7 @@
 # Maintainer: Oliver Sherouse <oliver DOT sherouse AT gmail DOT com>
 _pkgname=seaborn
 pkgname=python-$_pkgname
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Statistical data visualization"
 arch=("any")
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('python-pandas' 'python-matplotlib' 'python-scipy')
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/s/$_pkgname/$_pkgname-$pkgver.tar.gz")
-md5sums=('bc518f1f45dadb9deb2bb57ca3af3cad')
+md5sums=('764c030a9db60ec804b9a506d0a38cd2')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
