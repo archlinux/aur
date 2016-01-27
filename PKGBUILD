@@ -9,7 +9,7 @@
 # Contributor: Valentine Sinitsyn <e_val@inbox.ru>
 
 pkgname=networkmanager-consolekit
-pkgver=1.0.8
+pkgver=1.0.10
 pkgrel=1
 _pppver=2.4.7
 pkgdesc="NetworkManager with ConsoleKit support for non-systemd systems"
@@ -34,12 +34,14 @@ replaces=('networkmanager')
 conflicts=('networkmanager')
 backup=('etc/NetworkManager/NetworkManager.conf')
 install=networkmanager.install
-source=(http://ftp.gnome.org/pub/gnome/sources/NetworkManager/${pkgver:0:3}/NetworkManager-${pkgver}.tar.xz
+source=(https://download.gnome.org/sources/NetworkManager/${pkgver:0:3}/NetworkManager-$pkgver.tar.xz
+        0001-core-fix-failure-to-configure-routes.patch
         NetworkManager.conf 
         disable_set_hostname.patch 
         networkmanager.rc
         )
-sha256sums=('8bb128950f8a79ff881afadb46dd55e16f952390cf7cb4e06063431e5144937f'
+sha256sums=('1bcfce8441dfd9f432a100d06b54f3831a2275cccc3b74b1b4c09a011e179fbc'
+            '27d84d45046826a25e861a126099d9ad39e84408530c1bb898287e4543eb84f7'
             '2c6a647b5aec9f3c356d5d95251976a21297c6e64bd8d2a59339f8450a86cb3b'
             '25056837ea92e559f09563ed817e3e0cd9333be861b8914e45f62ceaae2e0460'
             'e39a2a0401518abd1d1d060200e2ca0f0854cdc49a5cb286919be177a7cd90fc')
@@ -50,6 +52,7 @@ prepare() {
 
   cd NetworkManager-$pkgver
 
+  patch -Np1 -i ../0001-core-fix-failure-to-configure-routes.patch
   patch -Np1 -i ../disable_set_hostname.patch
   NOCONFIGURE=1 ./autogen.sh
 }
