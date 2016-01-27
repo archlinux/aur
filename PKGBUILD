@@ -1,8 +1,8 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=zoom
-pkgver=1.1.37479.0107
-pkgrel=4
+pkgver=1.1.38634.0127
+pkgrel=1
 pkgdesc="Video Conferencing and Web Conferencing Service"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -19,8 +19,8 @@ options=(!strip)
 install=${pkgname}.install
 source_i686=("https://zoom.us/client/latest/zoom_${pkgver}_i386.deb")
 source_x86_64=("https://zoom.us/client/latest/zoom_${pkgver}_amd64.deb")
-md5sums_i686=('ec7bb2220765334181bae35247a08fa4')
-md5sums_x86_64=('32233200a1f1892526931b6de25a7957')
+md5sums_i686=('04a048120906b08af9cdd97f5152513d')
+md5sums_x86_64=('006f07c7294a9fbaadef6ee3543dbeaf')
 
 package() {
 	bsdtar xf data.tar.xz
