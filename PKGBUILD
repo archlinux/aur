@@ -8,10 +8,10 @@ pkgdesc="Session management system for JACK."
 arch=('i686' 'x86_64')
 url="https://launchpad.net/ladish"
 license=('GPL2')
-depends=('jack' 'boost' 'dbus-glib' 'laditools-git' 'flowcanvas<=0.7.1' 'a2jmidid')
+depends=('a2jmidid' 'boost' 'dbus-glib' 'flowcanvas<=0.7.1' 'jack' 'laditools-git')
 makedepends=('git' 'python2')
-provides=('ladish' 'lash')
-conflicts=('ladish' 'lash')
+provides=("${pkgname}" 'lash')
+conflicts=("${pkgname}" 'lash')
 install=${pkgname}.install
 source=("${pkgname}::git://repo.or.cz/ladish.git")
 sha512sums=('SKIP')
