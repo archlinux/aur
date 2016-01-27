@@ -2,17 +2,17 @@
 # Contributor: Benjamin van der Burgh <benjaminvdb@gmail.com>
 
 pkgname=octave-hg
-pkgver=4.1.0+21141+.34368609f62b+
+pkgver=4.1.0+21145+.307096fb67e1+
 pkgrel=1
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
 arch=('i686' 'x86_64')
 license=('GPL')
-# Some of these may be optional, e.g. arpack, lapack, qhull, but if they
+# Some of these may be optional, e.g. arpack, lapack, qhull, cblas but if they
 # are installed, octave will be linked against them.
 depends=('fftw>=3.2.2' 'curl' 'fltk' 'hdf5' 'glpk' 'arpack' 'gl2ps' 
 	 'qscintilla' 'qhull' 'graphicsmagick' 'portaudio' 'mesa'
-	 'suitesparse' 'java-environment')
+	 'suitesparse' 'java-environment' 'cblas') 
 makedepends=('pcre' 'mercurial' 'gcc-fortran' 'gperf' 'rsync' 'gnuplot'
 	     'gettext' 'suitesparse' 'transfig' 'epstool' 'texlive-core'
 	     'icoutils')
