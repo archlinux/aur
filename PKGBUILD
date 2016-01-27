@@ -10,8 +10,8 @@ pkgdesc="Provides functionality for small OpenGL programs. (32-bit)"
 arch=('x86_64')
 url="http://freeglut.sourceforge.net/"
 license=('MIT')
-depends=( 'lib32-libgl' 'lib32-libsm' 'lib32-libxrandr' 'lib32-libxi' 'lib32-libxxf86vm' 'freeglut')
-makedepends=('gcc-multilib' 'lib32-mesa' 'lib32-glu' 'lib32-libxxf86vm' 'cmake')
+depends=("${pkgname#lib32-}" 'lib32-libgl' 'lib32-libsm' 'lib32-libxi' 'lib32-libxrandr' 'lib32-libxxf86vm')
+makedepends=('cmake' 'gcc-multilib' 'lib32-glu' 'lib32-mesa' 'lib32-libxxf86vm')
 source=("http://downloads.sourceforge.net/freeglut/${pkgname#lib32-}-${pkgver}.tar.gz")
 sha512sums=('9c45d5b203b26a7ff92331b3e080a48e806c92fbbe7c65d9262dd18c39cd6efdad8a795a80f499a2d23df84b4909dbd7c1bab20d7dd3555d3d88782ce9dd15b0')
 
