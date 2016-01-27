@@ -1,8 +1,7 @@
-# Maintainer: freaknils <nils@czserver.de>
-
+# Maintainer: Nils Czernia <nils@czserver.de>
 _pkgname=roundcube-rcmcarddav
 pkgname="${_pkgname}-git"
-pkgver=20151119
+pkgver=59a6d00
 pkgrel=1
 pkgdesc="This plugin allows users to export their contacts via CardDAV"
 arch=('any')
@@ -12,6 +11,11 @@ license=('GPL')
 depends=('roundcubemail>=0.9.0')
 source=("$pkgname::git+https://github.com/blind-coder/rcmcarddav.git")
 md5sums=('SKIP')
+
+pkgver() {
+        cd ${srcdir}/${pkgname}
+        git describe --always | sed 's|-|.|g'
+}
 
 package() {
   cd "${srcdir}/${pkgname}"
