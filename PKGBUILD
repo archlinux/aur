@@ -12,7 +12,6 @@ license=('GPL2')
 optdepends=(
   'curl: news and screenshot support' 
   'yaourt: AUR support' 
-  'lib32-libxft: anti-aliasing fix for x64' 
   'pkgfile: for searching file(s) from packages' 
   'scrot: for making screenshots'
 )
