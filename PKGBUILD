@@ -2,7 +2,7 @@
 # Contributor: Ramon Buldó <ramon@manjaro.org>
 
 pkgbase=artwork-maia
-pkgname=('maia-icon-theme' 'plasma5-themes-maia' 'sddm-maia-theme' 'maia-wallpaper' 'artwork-maia')
+pkgname=('artwork-maia' 'maia-icon-theme' 'plasma5-themes-maia' 'sddm-maia-theme' 'maia-wallpaper')
 pkgver=ba7d79c
 pkgrel=1
 _gitcommit=ba7d79c5836c19981c4d49bdf04b1403826d4efb
