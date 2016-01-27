@@ -12,10 +12,13 @@ depends=('bash' 'ncurses')
 optdepends=(
     'w3m: Display Images'
     'imagemagick: Image cropping / Thumbnail creation'
-    'feh: Wallpaper Display'
-    'mpc: Current Song'
+    'feh: Wallpaper Display or'
+    'nitrogen: Wallpaper Display'
+    'mpc: Current Song or'
+    'cmus: Current Song'
     'xorg-xdpyinfo: Resolution Detection'
     'wmctrl: Accurate window manager detection'
+    'scrot: Take a screenshot'
 )
 makedepends=('git')
 source=("$pkgname::git+https://github.com/dylanaraps/fetch.git")
