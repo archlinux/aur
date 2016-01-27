@@ -6,13 +6,13 @@
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 _pkgname=lightspark
 pkgname=$_pkgname-git
-pkgver=0.7.2.r360.ga1c32e2
+pkgver=0.7.2.r454.g9e5f3db
 pkgrel=1
 pkgdesc="An open source flash player implementation"
 arch=('i686' 'x86_64')
 url="http://lightspark.sourceforge.net"
 license=('LGPL3')
-depends=('gtk2' 'boost-libs' 'glew' 'ffmpeg' 'curl' 'desktop-file-utils' 'rtmpdump')
+depends=('gtk2' 'boost-libs' 'glew' 'ffmpeg' 'curl' 'desktop-file-utils' 'rtmpdump' 'sdl_mixer')
 makedepends=('git' 'cmake' 'nasm' 'llvm' 'boost')
 optdepends=('gnash-gtk: Gnash fallback support')
 provides=("$_pkgname")
