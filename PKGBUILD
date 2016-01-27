@@ -2,14 +2,14 @@
 
 pkgname=dboxfe2
 pkgver=0.1.3
-pkgrel=5
+pkgrel=6
 pkgdesc="A dosbox frontend"
 url="http://chm-projects.de/?q=dboxfe"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('qt4')
 conflicts=('dboxfe')
-source=(http://garr.dl.sourceforge.net/project/dboxfe.berlios/dboxfe-$pkgver.tar.bz2)
+source=(http://skylink.dl.sourceforge.net/project/dboxfe.berlios/dboxfe-$pkgver.tar.bz2)
 
 build() {
   cd $srcdir/dboxfe-$pkgver
