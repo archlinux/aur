@@ -87,6 +87,9 @@ build() {
   local _reducerelocations="${_srcdir}/qtbase/config.tests/unix/bsymbolic_functions.test"
   sed -i "s/error/warning/" ${_reducerelocations}
 
+  # Work around our embarresing propensity to stomp on your own tailored build configuration
+  sed -i "s/O[23]/Os/"  ${_srcdir}/qtbase/mkspecs/common/gcc-base.conf
+
   # end patch
 
   # Breaks in qtwayland
