@@ -2,7 +2,7 @@
 
 pkgname=dymo-cups-drivers
 pkgver=1.4.0.5
-pkgrel=1
+pkgrel=2
 _archive_ver=1.4.0
 url=http://global.dymo.com/
 pkgdesc="Official Dymo supplied Linux Cups drivers for LabelWriter series"
