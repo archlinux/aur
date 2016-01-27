@@ -10,8 +10,8 @@ pkgdesc="An open source reference implementation of the icalendar data type and 
 arch=('x86_64')
 url='https://github.com/libical/libical'
 license=('LGPL' 'MPL')
-depends=('lib32-glibc')
-makedepends=('cmake')
+depends=("${pkgname#lib32-}" 'lib32-glibc')
+makedepends=('cmake' 'gcc-multilib')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname#lib32-}/${pkgname#lib32-}/archive/v${pkgver}.tar.gz")
 sha512sums=('efce88c73352fc34e9f7eda2234bdb593e917b33d1373cc6e6a21a72db1b14f2ed72976d6084dddcd8f07b08a15d5f04370bc825695d2fd40cc7b8488a7a977f')
 
