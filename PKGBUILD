@@ -1,3 +1,5 @@
+# Maintainer: Jack Random <jack (at) random.to>
+
 pkgname=abgx360
 pkgver=1.0.6
 pkgrel=2
@@ -30,5 +32,3 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
-
-# vim:set ts=2 sw=2 et:
