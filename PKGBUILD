@@ -3,26 +3,21 @@
 _target=msp430-elf
 pkgname="${_target}-gdb"
 pkgver=7.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNU Debugger for the ${_target} target."
 arch=('x86_64' 'x86')
 url="https://www.gnu.org/software/gdb/download/"
 license=('GPL')
 groups=('devel')
 depends=("python2")
-source=("http://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz"
-        fix-dwarf2read.patch)
-sha256sums=('25c72f3d41c7c8554d61cacbeacd5f40993276d2ccdec43279ac546e3993d6d5'
-            '94dbe29525a65b0427548551f2a8c17fd1bfb58dcfeac0a57e14b7b1ab2cccb5')
+sources=("http://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz")
+
 
 prepare() {
   cd "$srcdir/gdb-$pkgver"
   [[ -d gdb-build ]] && rm -rf gdb-build
   mkdir gdb-build
   
-  # temporary fix for
-  # https://sourceware.org/bugzilla/show_bug.cgi?id=19033
-  patch -p1 < ../fix-dwarf2read.patch
   # fix libiberty
   # sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
 
