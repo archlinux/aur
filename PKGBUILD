@@ -13,8 +13,8 @@ optdepends=(
   'udisks2: optional backend for storage temperature sensors.'
   'hddtemp: optional backend for S.M.A.R.T. temperature sensors.'
 )
-provides=('gnome-shell-extension-freon')
-conflicts=('gnome-shell-extensions-git' 'gnome-shell-extensions-freon')
+provides=("${pkgname}")
+conflicts=("${pkgname}-git" 'gnome-shell-extensions-git')
 install="gschemas.install"
 source=("${pkgname}::https://github.com/UshakovVasilii/gnome-shell-extension-freon/archive/EGO-15.tar.gz")
 sha512sums=('09b4ac37391367d2dd56eb61599ce6bb6fdd2f4a7e6aa6acc6cd9afcbe81977b7ab3dec7cc74e3162eaaf425f26cfe55b9e448bb309692cf109de230cfbc93fa')
