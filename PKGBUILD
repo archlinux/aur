@@ -23,18 +23,18 @@ _pgo=false
 
 # We're getting this from Debian Sid
 _debname=iceweasel
-_debver=43.0.4
+_debver=44.0
 _debrel=1
 _debrepo=http://ftp.debian.org/debian/pool/main/i/
 
 pkgname=iceweasel
 pkgver=$_debver.deb$_debrel
-pkgrel=2
+pkgrel=1
 pkgdesc="Debian Browser based on Mozilla Firefox"
 arch=('i686' 'x86_64')
 license=('GPL' 'MPL' 'LGPL')
 depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme' 'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite')
-makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'libpulse' 'gst-plugins-base-libs' 'inetutils' 'quilt' 'pkg-config' 'nss>=3.18.1' 'libidl2'  'librsvg' 'libxslt' 'autoconf2.13' 'imagemagick' 'gconf')
+makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'libpulse' 'inetutils' 'quilt' 'pkg-config' 'nss>=3.18.1' 'libidl2'  'librsvg' 'libxslt' 'autoconf2.13' 'imagemagick' 'gconf')
 
 options=(!emptydirs !makeflags debug)
 if $_pgo; then
@@ -43,9 +43,8 @@ if $_pgo; then
 fi
 
 optdepends=('networkmanager: Location detection via available WiFi networks'
-            'gst-plugins-good: h.264 video'
-            'gst-libav: h.264 video'
 			'upower: Battery API'
+			'ffmpeg: H264/AAC/MP3 decoding'
             'iceweasel-extension-archsearch: Iceweasel Arch search engines'
             'iceweasel-extension-archforumsearch-it: Iceweasel search engines for Arch Linux Italian forum')
 url="https://packages.debian.org/source/sid/iceweasel"
@@ -57,18 +56,14 @@ source=("${_debrepo}/${_debname}/${_debname}_${_debver}.orig.tar.xz"
         'iceweasel.desktop'
         'iceweasel-install-dir.patch'
         'vendor.js'
-		'iceweasel-fixed-loading-icon.png'
-		'iceweasel-disable-GMP-PDM.patch'
-		'iceweasel-support-YUV420J-pixel-format.patch')
-md5sums=('8e39af63adc496dc3c6f1acd0f69fa0f'
-         '7c098a67f9f20d763381c28afb626cea'
+		'iceweasel-fixed-loading-icon.png')
+md5sums=('cca619497c1c7e1a255a463d0fc75fb0'
+         '20cc51d6550e03f15d797689762711b9'
          '329ae0844819b6baac61d9a5749a6005'
          '7b9e5996dd9fe0b186a43a297db1c6b5'
          '1c42509891cf6843660a5f3c69896e80'
          '35adf69c840aadeb138d1b0be3af63b5'
-         '6e335a517c68488941340ee1c23f97b0'
-         '211de20ce4eb4944415f7cd0ccb01abe'
-         '54e636a3a191dc652decc30ffa0c96e6')
+         '6e335a517c68488941340ee1c23f97b0')
 
 prepare() {
   export DEBIAN_BUILD="firefox-$_debver"
@@ -82,12 +77,6 @@ prepare() {
   
   # We wont save user profile in .mozilla/iceweasel
   sed -i 's/MOZ_APP_PROFILE=mozilla\/firefox/MOZ_APP_PROFILE=mozilla\/iceweasel/g' "debian/branding/configure.sh"
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1233429
-  patch -Np1 -i "$srcdir/iceweasel-disable-GMP-PDM.patch"
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1233340
-  patch -Np1 -i "$srcdir/iceweasel-support-YUV420J-pixel-format.patch"
 
   quilt push -av
 
