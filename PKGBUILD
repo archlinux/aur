@@ -12,7 +12,7 @@
 pkgname=qtcreator28
 pkgver=2.8.1
 _pkgver=2.8.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Lightweight, cross-platform integrated development environment (2.8.x)'
 arch=('i686' 'x86_64')
 url='http://qt-project.org'
@@ -31,10 +31,12 @@ optdepends=('qt51-doc: for the integrated Qt documentation'
 install=${pkgname}.install
 source=("git+https://github.com/qtproject/qt-creator.git#tag=v${_pkgver}"
         "git+https://github.com/qtproject/qt-labs-qbs.git"
-        "${pkgname}.desktop")
+        "${pkgname}.desktop"
+        "cmake-wrapper.sh")
 md5sums=('SKIP'
          'SKIP'
-         '297116239167ff1b2fdbe014688bf140')
+         '297116239167ff1b2fdbe014688bf140'
+         'f80002d551c3ace26e4e6405519c96c8')
 _install_root="/opt/$pkgname"
 
 prepare() {
@@ -84,4 +86,7 @@ package() {
     install -Dm644 ${pkgdir}/opt/${pkgname}/usr/share/icons/hicolor/${ii}.png ${pkgdir}/usr/share/icons/hicolor/${ii}28.png
   done
   rm -r ${pkgdir}/opt/${pkgname}/usr/share/icons
+
+  # install cmake wrapper
+  install -Dm755 ${srcdir}/cmake-wrapper.sh ${pkgdir}/opt/${pkgname}/usr/bin/cmake-wrapper.sh
 }

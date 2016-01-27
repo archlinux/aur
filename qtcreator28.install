@@ -1,6 +1,19 @@
 post_install() {
     update-desktop-database -q
     gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+    cat << EOF
+
+This version of QtCreator does not work with cmake > 2.
+To work around this, there is a wrapper script provided in
+
+/opt/qtcreator28/usr/bin/cmake-wrapper.sh
+
+which you can configure to be used as cmake executable in 
+
+Tools > Options > Build & Run > Cmake
+
+EOF
 }
 
 post_upgrade() {
