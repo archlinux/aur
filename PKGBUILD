@@ -4,7 +4,7 @@ pkgdesc="ROS - Launch files to start the openni2_camera drivers using rgbd_launc
 url='http://www.ros.org/'
 
 pkgname='ros-indigo-openni2-launch'
-pkgver='0.2.1'
+pkgver='0.2.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -22,10 +22,16 @@ ros_depends=(ros-indigo-nodelet
   ros-indigo-tf)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/openni2_launch/${pkgver}-${_pkgver_patch}
-_dir=openni2_launch
-source=("${_dir}"::"git+https://github.com/ros-gbp/openni2_launch.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/openni2_launch/${pkgver}-${_pkgver_patch}
+# _dir=openni2_launch
+# source=("${_dir}"::"git+https://github.com/ros-gbp/openni2_launch.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="openni2_launch-release-indigo-openni2_launch-${pkgver}-${_pkgver_patch}"
+source=("https://github.com/ros-gbp/openni2_launch/archive/release/indigo/openni2_launch/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('f82a11d3f4aa34dd6ba804913559ba2ad4f9ddf1f686cd63452cfb2fb9a73324')
 
 build() {
   # Use ROS environment variables
