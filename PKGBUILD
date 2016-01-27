@@ -10,8 +10,8 @@ url="https://launchpad.net/ladish"
 license=('GPL2')
 depends=('a2jmidid' 'boost' 'dbus-glib' 'flowcanvas<=0.7.1' 'jack' 'laditools-git')
 makedepends=('git' 'python2')
-provides=("${pkgname}" 'lash')
-conflicts=("${pkgname}" 'lash')
+provides=("${pkgname%-*}" 'lash')
+conflicts=("${pkgname%-*}" 'lash')
 install=${pkgname}.install
 source=("${pkgname}::git://repo.or.cz/ladish.git")
 sha512sums=('SKIP')
