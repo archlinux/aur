@@ -1,9 +1,9 @@
-# Maintainer: Victor Häggqvist <aur@snilius.com>
-# Contributor: Stefan Auditor <stefan.auditor@erdfisch.de>
+# Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
+# Contributor: Victor Häggqvist <aur@snilius.com>
 
 _pkgname=drupalconsole
 pkgname=${_pkgname}-git
-pkgver=0.10.5.r31.gdd3012c
+pkgver=0.10.6.r4.gd885ece
 pkgrel=1
 pkgdesc="The Drupal Console is a suite of tools that you run on a command line interface (CLI) to generate boilerplate code and interact with a Drupal 8 installation."
 arch=('any')
