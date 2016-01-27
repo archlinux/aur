@@ -3,7 +3,6 @@ post_install() {
     export CLOJURESCRIPT_HOME=/opt/clojurescript/
     echo ">>> Add /opt/clojurescript/bin/ to your PATH environmental variable"
     echo ">>> Then: "
-    echo ">>> REPL: type 'cljs'"
     echo ">>> Compiler: type 'cljsc'"
 }
 

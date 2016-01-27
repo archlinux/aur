@@ -5,7 +5,7 @@
 
 pkgname=clojurescript-git
 _realname=${pkgname/%-git/}
-pkgver=r3297.r2.ge962ec0
+pkgver=r1.7.228.r3.gdb695a9
 pkgrel=1
 pkgdesc="Clojure to JS compiler, git version"
 arch=('any')
@@ -24,9 +24,8 @@ install=$pkgname.install
 source=(
   "git+https://github.com/clojure/clojurescript.git"  
   'clojurescript.sh')
-md5sums=(
-  'SKIP' 
-  '2265f31dcd3e5dad7ddd59a28b998bfb')
+md5sums=('SKIP'
+         '2265f31dcd3e5dad7ddd59a28b998bfb')
 
 pkgver() {
   cd $srcdir/$_realname
