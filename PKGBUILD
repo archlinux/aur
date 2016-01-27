@@ -36,6 +36,11 @@ build() {
   make
 }
 
+package_artwork-maia() {
+  pkgdesc="Maia artwork meta-package"
+  depends=('maia-icon-theme' 'maia-wallpaper' 'plasma5-themes-maia' 'sddm-maia-theme')
+}
+
 package_maia-wallpaper() {
   pkgdesc='Maia wallpaper'
   cd build
@@ -81,9 +86,4 @@ package_sddm-maia-theme() {
   rm -rf "${pkgdir}/usr/share/kservices5"
   rm -rf "${pkgdir}/usr/share/plasma"
   rm -rf "${pkgdir}/usr/share/wallpapers"
-}
-
-package_artwork-maia() {
-  pkgdesc="Maia artwork meta-package"
-  depends=('maia-icon-theme' 'maia-wallpaper' 'plasma5-themes-maia' 'sddm-maia-theme')
 }
