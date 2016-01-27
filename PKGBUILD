@@ -29,7 +29,7 @@ _debrepo=http://ftp.debian.org/debian/pool/main/i/
 
 pkgname=iceweasel
 pkgver=$_debver.deb$_debrel
-pkgrel=1
+pkgrel=2
 pkgdesc="Debian Browser based on Mozilla Firefox"
 arch=('i686' 'x86_64')
 license=('GPL' 'MPL' 'LGPL')
@@ -59,7 +59,7 @@ source=("${_debrepo}/${_debname}/${_debname}_${_debver}.orig.tar.xz"
 		'iceweasel-fixed-loading-icon.png')
 md5sums=('cca619497c1c7e1a255a463d0fc75fb0'
          '20cc51d6550e03f15d797689762711b9'
-         '329ae0844819b6baac61d9a5749a6005'
+         '9f8cd36718fa474ce593c90979d14b38'
          '7b9e5996dd9fe0b186a43a297db1c6b5'
          '1c42509891cf6843660a5f3c69896e80'
          '35adf69c840aadeb138d1b0be3af63b5'
