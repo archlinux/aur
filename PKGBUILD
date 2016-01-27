@@ -4,7 +4,7 @@
 _pkgname=breeze
 pkgname=yakuake-skin-${_pkgname}
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A Breeze skin for Yakuake (KDE4)"
 arch=('any')
 url="https://opendesktop.org/content/show.php?content=167519"
@@ -15,5 +15,5 @@ sha256sums=('d07a6769e5432faa704313bc81f2ec040276d34317f121641a2aeb548b937976')
 
 package() {
     cd ${srcdir}
-    find ${_pkgname}/* -type f -exec install -Dm644 '{}' "${pkgdir}/usr/share/apps/yakuake/skins/{}" \;
+    find breezeV1.0/* -type f -exec install -Dm644 '{}' "${pkgdir}/usr/share/apps/yakuake/skins/{}" \;
 }  
