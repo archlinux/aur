@@ -1,15 +1,15 @@
-# Maintainer: Lara Maia <lara@craft.net.br>
+# Maintainer: Lara Maia <dev@lara.click>
 
 pkgname=cpuled
 pkgdesc="It's a program to let the keyboard LEDs indicate CPU load."
 url='http://web.archive.org/web/20011210154318/www.sudac.org/~napolium/linux/'
 pkgver=0.1
-pkgrel=3
-arch=('i686' 'x86_64')
+pkgrel=4
+arch=('i686' 'x86_64' 'armv6h')
 depends=('glibc')
 license='GPL'
 
-source=("http://lara.craft.net.br/$pkgname-$pkgver.tar.gz"
+source=("http://downloads.lara.click/$pkgname-$pkgver.tar.gz"
 	'fix-warnings.patch'
 	'makefile_update.patch')
 	
