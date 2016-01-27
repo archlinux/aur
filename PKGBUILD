@@ -2,15 +2,19 @@
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 
 pkgname=vsxu-git
-pkgver=0.5.1.r1.gbcc7e75
+pkgver=0.5.1.r0.g98bf097
 pkgrel=1
 pkgdesc="A free to use program that lets you create and perform real-time audio visual presets."
 arch=('i686' 'x86_64')
 url="http://www.vsxu.com/"
 license=('GPL' 'custom')
-depends=('pulseaudio' 'glew' 'glfw' 'glfw2' 'opencv' 'libpng12' 'desktop-file-utils' 'xdg-utils')
-makedepends=('git' 'cmake')
-optdepends=( 'jack: alternate audio source')
+depends=('desktop-file-utils' 'glew' 'glfw2' 'libpng12' 'opencv' 'xdg-utils')
+makedepends=('alsa-lib' 'cmake' 'git' 'pulseaudio' 'jack')
+optdepends=(
+  'alsa-lib: ALSA support.'
+  'jack: JACK support'
+  'pulseaudio: PulseAudio support'
+)
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 install=${pkgname}.install
