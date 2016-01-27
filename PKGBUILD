@@ -47,7 +47,7 @@ source=("git://github.com/sirspudd/mkspecs.git" "https://download.qt.io/developm
 sha256sums=("SKIP" "d69103ec34b3775edfa47581b14ee9a20789d4b0d7d26220fb92f2cd32eb06f9")
 options=('!strip')
 install=qpi.install
-_fully_qualified_install_script="${startdir}/${install_script}"
+_fully_qualified_install_script="${startdir}/${install}"
 _device_configure_flags=""
 
 if $_skip_web_engine || [[ ${_piver} = "1" ]]; then
@@ -136,7 +136,7 @@ build() {
 
 create_install_script()
 {
-  local _fully_qualified_install_script_template="${startdir}/_${install_script}"
+  local _fully_qualified_install_script_template="${startdir}/_${install}"
 
   rm ${_fully_qualified_install_script}
 
