@@ -1,0 +1,187 @@
+diff --git a/src/evdev.c b/src/evdev.c
+index 0fcb0bb..8a18104 100644
+--- a/src/evdev.c
++++ b/src/evdev.c
+@@ -92,7 +92,7 @@
+ /* Any of those triggers a proximity event */
+ static int proximity_bits[] = {
+         BTN_TOOL_PEN,
+-        BTN_TOOL_RUBBER,
++//        BTN_TOOL_RUBBER,
+         BTN_TOOL_BRUSH,
+         BTN_TOOL_PENCIL,
+         BTN_TOOL_AIRBRUSH,
+@@ -113,7 +113,7 @@ static void EvdevCloseDevice(InputInfoPtr pInfo);
+ static void EvdevInitAxesLabels(EvdevPtr pEvdev, int mode, int natoms, Atom *atoms);
+ static void EvdevInitOneAxisLabel(EvdevPtr pEvdev, int mapped_axis,
+                                   const char **labels, int label_idx, Atom *atoms);
+-static void EvdevInitButtonLabels(EvdevPtr pEvdev, int natoms, Atom *atoms);
++static void EvdevInitButtonLabels(InputInfoPtr pInfo, EvdevPtr pEvdev, int natoms, Atom *atoms);
+ static void EvdevInitProperty(DeviceIntPtr dev);
+ static int EvdevSetProperty(DeviceIntPtr dev, Atom atom,
+                             XIPropertyValuePtr val, BOOL checkonly);
+@@ -580,7 +580,7 @@ EvdevProcessButtonEvent(InputInfoPtr pInfo, struct input_event *ev)
+     int value;
+     EvdevPtr pEvdev = pInfo->private;
+ 
+-    button = EvdevUtilButtonEventToButtonNumber(pEvdev, ev->code);
++    button = EvdevUtilButtonEventToButtonNumber(pInfo, pEvdev, ev->code);
+ 
+     /* Get the signed value, earlier kernels had this as unsigned */
+     value = ev->value;
+@@ -814,7 +814,7 @@ EvdevProcessKeyEvent(InputInfoPtr pInfo, struct input_event *ev)
+     value = ev->value;
+ 
+     /* don't repeat mouse buttons */
+-    if (ev->code >= BTN_MOUSE && ev->code < KEY_OK)
++    if (ev->code >= BTN_MISC && ev->code < KEY_OK)
+         if (value == 2)
+             return;
+ 
+@@ -822,6 +822,10 @@ EvdevProcessKeyEvent(InputInfoPtr pInfo, struct input_event *ev)
+     {
+         if (ev->code == proximity_bits[i])
+         {
++            if( libevdev_get_id_vendor(pEvdev->dev) == 0x1b96 ) {
++               xf86IDrvMsg(pInfo, X_WARNING, "Discarding code %x\n", ev->code);
++            }
++
+             EvdevProcessProximityEvent(pInfo, ev);
+             return;
+         }
+@@ -1750,7 +1754,7 @@ EvdevAddButtonClass(DeviceIntPtr device)
+     pEvdev = pInfo->private;
+ 
+     labels = malloc(pEvdev->num_buttons * sizeof(Atom));
+-    EvdevInitButtonLabels(pEvdev, pEvdev->num_buttons, labels);
++    EvdevInitButtonLabels(pInfo, pEvdev, pEvdev->num_buttons, labels);
+ 
+     if (!InitButtonClassDeviceStruct(device, pEvdev->num_buttons, labels,
+                                      pEvdev->btnmap))
+@@ -2118,6 +2122,7 @@ EvdevProbe(InputInfoPtr pInfo)
+ {
+     int i, has_rel_axes, has_abs_axes, has_keys, num_buttons, has_scroll;
+     int has_lmr; /* left middle right */
++    int has_stylus;
+     int has_mt; /* multitouch */
+     int ignore_abs = 0, ignore_rel = 0;
+     EvdevPtr pEvdev = pInfo->private;
+@@ -2153,16 +2158,17 @@ EvdevProbe(InputInfoPtr pInfo)
+     has_keys = FALSE;
+     has_scroll = FALSE;
+     has_lmr = FALSE;
++    has_stylus = FALSE;
+     has_mt = FALSE;
+     num_buttons = 0;
+ 
+     /* count all buttons */
+-    for (i = BTN_MISC; i < BTN_JOYSTICK; i++)
++    for (i = BTN_MISC; i < KEY_OK; i++)
+     {
+         int mapping = 0;
+         if (libevdev_has_event_code(pEvdev->dev, EV_KEY, i))
+         {
+-            mapping = EvdevUtilButtonEventToButtonNumber(pEvdev, i);
++            mapping = EvdevUtilButtonEventToButtonNumber(pInfo, pEvdev, i);
+             if (mapping > num_buttons)
+                 num_buttons = mapping;
+         }
+@@ -2172,6 +2178,19 @@ EvdevProbe(InputInfoPtr pInfo)
+               libevdev_has_event_code(pEvdev->dev, EV_KEY, BTN_MIDDLE) ||
+               libevdev_has_event_code(pEvdev->dev, EV_KEY, BTN_RIGHT);
+ 
++    // Alternate Stylus buttons
++    has_stylus = libevdev_has_event_code(pEvdev->dev, EV_KEY, BTN_TOUCH) ||
++              libevdev_has_event_code(pEvdev->dev, EV_KEY, BTN_STYLUS) ||
++              libevdev_has_event_code(pEvdev->dev, EV_KEY, BTN_STYLUS2) ||
++              libevdev_has_event_code(pEvdev->dev, EV_KEY, BTN_TOOL_PEN) ||
++              libevdev_has_event_code(pEvdev->dev, EV_KEY, BTN_TOOL_RUBBER);
++
++    has_lmr |= has_stylus;
++
++    if ( has_stylus ) {
++        xf86IDrvMsg(pInfo, X_PROBED, "Found tablet stylus buttons\n");
++    }
++
+     if (num_buttons)
+     {
+         pEvdev->flags |= EVDEV_BUTTON_EVENTS;
+@@ -2714,8 +2733,12 @@ _X_EXPORT XF86ModuleData evdevModuleData =
+  * returns 0 on non-button event.
+  */
+ unsigned int
+-EvdevUtilButtonEventToButtonNumber(EvdevPtr pEvdev, int code)
++EvdevUtilButtonEventToButtonNumber(InputInfoPtr pInfo, EvdevPtr pEvdev, int code)
+ {
++    if( libevdev_get_id_vendor(pEvdev->dev) == 0x1b96 ) {
++       xf86IDrvMsg(pInfo, X_WARNING, "Button event code %x.\n",code);
++    }
++
+     switch (code)
+     {
+         /* Mouse buttons */
+@@ -2736,8 +2759,15 @@ EvdevUtilButtonEventToButtonNumber(EvdevPtr pEvdev, int code)
+ 
+         /* Tablet stylus buttons */
+         case BTN_TOUCH ... BTN_STYLUS2:
++            xf86IDrvMsg(pInfo, X_WARNING, "Button event code matched - old code\n");
+             return 1 + code - BTN_TOUCH;
+ 
++        /* Alternate Tablet stylus buttons */
++	case BTN_TOOL_PEN:
++        case BTN_TOOL_RUBBER:
++             xf86IDrvMsg(pInfo, X_WARNING, "Button event code matched\n");
++	     return 3;
++
+         /* The rest */
+         default:
+             /* Ignore */
+@@ -2775,7 +2805,7 @@ static void EvdevInitAxesLabels(EvdevPtr pEvdev, int mode, int natoms, Atom *ato
+         EvdevInitOneAxisLabel(pEvdev, pEvdev->abs_axis_map[axis], abs_labels, axis, atoms);
+ }
+ 
+-static void EvdevInitButtonLabels(EvdevPtr pEvdev, int natoms, Atom *atoms)
++static void EvdevInitButtonLabels(InputInfoPtr pInfo, EvdevPtr pEvdev, int natoms, Atom *atoms)
+ {
+     Atom atom;
+     int button, bmap;
+@@ -2785,7 +2815,7 @@ static void EvdevInitButtonLabels(EvdevPtr pEvdev, int natoms, Atom *atoms)
+     for (button = 0; button < natoms; button++)
+         atoms[button] = atom;
+ 
+-    for (button = BTN_MISC; button < BTN_JOYSTICK; button++)
++    for (button = BTN_MISC; button < KEY_OK; button++)
+     {
+         int group = (button % 0x100)/16;
+         int idx = button - ((button/16) * 16);
+@@ -2801,7 +2831,7 @@ static void EvdevInitButtonLabels(EvdevPtr pEvdev, int natoms, Atom *atoms)
+             continue;
+ 
+         /* Props are 0-indexed, button numbers start with 1 */
+-        bmap = EvdevUtilButtonEventToButtonNumber(pEvdev, button) - 1;
++        bmap = EvdevUtilButtonEventToButtonNumber(pInfo, pEvdev, button) - 1;
+         atoms[bmap] = atom;
+     }
+ 
+@@ -2942,7 +2972,7 @@ EvdevInitProperty(DeviceIntPtr dev)
+         if ((pEvdev->num_buttons > 0) && (prop_btn_label = XIGetKnownProperty(BTN_LABEL_PROP)))
+         {
+             Atom atoms[EVDEV_MAXBUTTONS];
+-            EvdevInitButtonLabels(pEvdev, EVDEV_MAXBUTTONS, atoms);
++            EvdevInitButtonLabels(pInfo, pEvdev, EVDEV_MAXBUTTONS, atoms);
+             rc = XIChangeDeviceProperty(dev, prop_btn_label, XA_ATOM, 32,
+                                         PropModeReplace, pEvdev->num_buttons, atoms, FALSE);
+             if (rc != Success)
+diff --git a/src/evdev.h b/src/evdev.h
+index 4d44d2b..1150a88 100644
+--- a/src/evdev.h
++++ b/src/evdev.h
+@@ -255,7 +255,7 @@ void EvdevPostButtonEvent(InputInfoPtr pInfo, int button, enum ButtonAction act)
+ void EvdevQueueButtonClicks(InputInfoPtr pInfo, int button, int count);
+ void EvdevPostRelativeMotionEvents(InputInfoPtr pInfo);
+ void EvdevPostAbsoluteMotionEvents(InputInfoPtr pInfo);
+-unsigned int EvdevUtilButtonEventToButtonNumber(EvdevPtr pEvdev, int code);
++unsigned int EvdevUtilButtonEventToButtonNumber(InputInfoPtr pInfo, EvdevPtr pEvdev, int code);
+ 
+ /* Middle Button emulation */
+ int  EvdevMBEmuTimer(InputInfoPtr);
