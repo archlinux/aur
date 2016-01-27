@@ -15,7 +15,7 @@ arch=(any)
 pkgdesc="Google App Engine SDK for Python"
 url=https://cloud.google.com/appengine/downloads
 license=(APACHE)
-depends=(python2)
+depends=('python2>=2.7')
 optdepends=(mysql-python
   python2-crypto=2.6
   python2-crcmod=1.7
