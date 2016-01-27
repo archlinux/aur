@@ -2,10 +2,10 @@
 
 _target=msp430-elf
 pkgname=${_target}-binutils #-git
-_pkgver=2.25.1
+_pkgver=2.26
 pkgver=${_pkgver}
 #pkgver=2.25.r84308.c576455
-pkgrel=3
+pkgrel=1
 pkgdesc="GNU binary utilities for the ${_target} target."
 arch=(i686 x86_64)
 options=('!libtool' '!buildflags') 
@@ -21,11 +21,9 @@ depends=('zlib' 'flex')
 
 # build from source
 source=(ftp://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.bz2
-        bfd-fix.patch
-        tc-msp430.c.patch)
-sha256sums=('b5b14added7d78a8d1ca70b5cb75fef57ce2197264f4f5835326b0df22ac9f22'
-            '1b5e879dbd9da83a8c7f86abac5cf706b8ba48e3f0525d893a53c651e4015124'
-            'af639e72b33ce9a6b9f2fcb13355d27d7425f94a6fbefa3d0a377932a6786985')
+        dwarf-line-fix.patch)
+sha256sums=('c2ace41809542f5237afc7e3b8f32bb92bc7bc53c6232a84463c423b0714ecd9'
+            '465964bd2ebf5a7eea340c1e145b3e01bb9da4aa2d9e7d24f8d18a3d2473e2af')
 
 # pkgver() {
 #   cd "${srcdir}/binutils-${_pkgver}"
@@ -36,13 +34,12 @@ sha256sums=('b5b14added7d78a8d1ca70b5cb75fef57ce2197264f4f5835326b0df22ac9f22'
 
 prepare() {
   cd "${srcdir}/binutils-${_pkgver}"
-  # https://sourceware.org/bugzilla/show_bug.cgi?id=17940
-  patch -p1 < ../bfd-fix.patch
-  # update list of known MCU names
-  # https://sourceware.org/ml/binutils-cvs/2015-10/msg00074.html
-  # the list has to be in sync with gcc
-  patch -p1 < ../tc-msp430.c.patch
-
+  # fix for
+  # https://sourceware.org/ml/binutils/2016-01/msg00299.html
+  # found in
+  # https://sourceware.org/ml/binutils/2016-01/msg00304.html
+  patch -p1 < ../dwarf-line-fix.patch
+ 
   # ensure a clean build
   [[ -d binutils-build ]] && rm -rf binutils-build
   mkdir binutils-build
