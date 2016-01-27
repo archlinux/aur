@@ -2,7 +2,7 @@
 # Contributor: mickael9 <mickael9 at gmail dot com>
 
 pkgname=bitlbee-facebook-git
-pkgver=r81.ac00b33
+pkgver=r108.8ba3f26
 pkgrel=1
 pkgdesc='Facebook protocol plugin for BitlBee'
 arch=('i686' 'x86_64' 'armv7h')
@@ -10,6 +10,7 @@ url='https://github.com/jgeboski/bitlbee-facebook'
 license=('GPL')
 depends=('bitlbee' 'json-glib')
 makedepends=('git')
+conflicts=('bitlbee-facebook')
 source=('git+https://github.com/jgeboski/bitlbee-facebook.git')
 md5sums=('SKIP')
 
