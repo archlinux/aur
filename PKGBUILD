@@ -33,7 +33,6 @@ optdepends=('mysql-python: MySQL DB API'
   'python2-webapp2=2.3: lightweight web framework'
   'python2-webob=1.2.3: wrappers around WSGI request environment'
   'python2-yaml=3.10: YAML serialization and deserialization')
-makedepends=(unzip)
 options=(!strip)
 install=install
 source=(https://storage.googleapis.com/appengine-sdks/featured/google_appengine_${_zipver}.zip)
