@@ -3,7 +3,7 @@
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
 arch=('any')
 license=('GPL2')
@@ -45,8 +45,13 @@ prepare() {
   sed -i 's|/var/log/pihole.log|/run/log/pihole.log|' "$srcdir"/AdminLTE-master/api.php
   sed -i 's|/var/log/pihole.log|/run/log/pihole.log|' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
 
-  # original toilet util is in aur, enter figlet
+  # original toilet is in aur, enter figlet
   sed -i 's|		toilet -f small -F gay Pi-hole|		figlet Pi-hole|' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
+
+  # little arch changes to chronometer.sh
+  sed -i "/figlet Pi-hole/a NICDEV=$\(ip route get 8.8.8.8 | awk '{for\(i=1;i<=NF;i++\)if\(\$\i~/dev/\)print $\(i+1\)}'\)" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
+  sed -i 's|$(ifconfig eth0 \||$(ifconfig $NICDEV \||' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
+  sed -i 's|/inet addr/|/inet /|' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
 
   # change bin location in admin php interface
   sed -i 's|/usr/local/bin/|/usr/bin/|' "$srcdir"/AdminLTE-master/index.php
