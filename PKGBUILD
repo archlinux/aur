@@ -3,7 +3,7 @@
 
 _gemname=json-jwt
 pkgname=ruby-$_gemname
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc='JSON Web Token and its family (JSON Web Signature, JSON Web Encryption and JSON Web Key) in Ruby'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby ruby-multi_json ruby-url_safe_base64 ruby-activesupport ruby-binda
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('3ed850fc1fad76ffd632972a91ac9e73fa964c6c')
+sha1sums=('720f71056bc3d189cb0b2c396256ce103d7a2dd0')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
