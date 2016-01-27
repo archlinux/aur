@@ -20,7 +20,7 @@ _replacesoldmodules=() # '%' gets replaced with _kernelname
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}
-pkgrel=3
+pkgrel=4
 rcnrel=armv7-x3
 arch=('i686' 'x86_64' 'armv7h')
 url="http://linux-libre.fsfla.org/"
@@ -45,6 +45,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
+        'tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch'
+        'CVE-2016-0728.patch'
+        '0001-sdhci-revert.patch'
         '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch'
         '0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
         # armv7h patches
@@ -69,9 +72,12 @@ sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'SKIP'
             '12bab1b743a4ee7602ad355f1d4582799f38d125202cffeea1c395bece25776c'
             'd67f719de2d9b9cba751b0ad9e0d41f8ccf2dd301961c975b55edf740c34fd6c'
-            '8c5a492751701c13e79f3cbc4d1142664c089fb5bee9431cc1df669be45be222'
+            '98873b55f22ef3210c25e5f3147120d66cb1258906c7347e4f526ed6917013e0'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            'ab57037ecee0a425c612babdff47c831378bca0bff063a1308599989a350226d'
+            '03bed5b1c6ef34a917e218a46d38cd1347c5ab5693131996113c6cad275dc4e9'
+            '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
             '61370b766e0c60b407c29d2c44b3f55fc352e9049c448bc8fcddb0efc53e42fc'
             '3d3266bd082321dccf429cc2200d1a4d870d2031546f9f591b6dfbb698294808'
             '031beb6ec9b55a0425b938141ec06e200ca17cc50d69f605643b8ddb6065a55e'
@@ -131,6 +137,18 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
+  # revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=9faac7b95ea4f9e83b7a914084cc81ef1632fd91
+  # fixes #47778 sdhci broken on some boards
+  # https://bugzilla.kernel.org/show_bug.cgi?id=106541
+  patch -Rp1 -i "${srcdir}/0001-sdhci-revert.patch"
+
+  # fixes #47805 kernel panics on platform modules
+  # https://bugzilla.kernel.org/show_bug.cgi?id=110751
+  patch -Np1 -i "${srcdir}/tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch"
+
+  # fixes #47820 CVE-2016-0728.patch
+  patch -Np1 -i "${srcdir}/CVE-2016-0728.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
