@@ -9,9 +9,9 @@
 # Based on linux package
 
 pkgbase=linux-libre-pck
-_pkgbasever=4.3-gnu
-_pkgver=4.3.3-gnu
-_pckpatchver=pck2
+_pkgbasever=4.4-gnu
+_pkgver=${_pkgbasever}
+_pckpatchver=pck1
 
 _replacesarchkernel=('linux-zen')
 _replacesoldkernels=()
@@ -21,7 +21,7 @@ _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}.${_pckpatchver}
 pkgrel=1
-rcnrel=armv7-x1
+rcnrel=armv7-x3
 arch=('i686' 'x86_64' 'armv7h')
 url="https://wiki.parabola.nu/PCK"
 license=('GPL2')
@@ -32,8 +32,8 @@ fi
 options=('!strip')
 source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz"
         "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz.sign"
-        "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz"
-        "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz.sign"
+        #"http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz"
+        #"http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz.sign"
         "https://repo.parabola.nu/other/pck/patches/${_pkgver}/patch-${_pkgver}-${_pckpatchver}.patch"
         "https://repo.parabola.nu/other/pck/patches/${_pkgver}/patch-${_pkgver}-${_pckpatchver}.patch.sig"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm"
@@ -47,9 +47,12 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
+        'tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch'
+        'CVE-2016-0728.patch'
+        '0001-sdhci-revert.patch'
         # armv7h patches
-        "https://repo.parabola.nu/other/rcn-libre-pck/patches/${_pkgver%-*}/rcn-libre-pck-${_pkgver%-*}-${rcnrel}.patch"
-        "https://repo.parabola.nu/other/rcn-libre-pck/patches/${_pkgver%-*}/rcn-libre-pck-${_pkgver%-*}-${rcnrel}.patch.sig"
+        "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
+        "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch.sig"
         '0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch'
         '0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch'
         '0003-SMILE-Plug-device-tree-file.patch'
@@ -59,11 +62,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0007-set-default-cubietruck-led-triggers.patch'
         '0008-USB-armory-support.patch'
         '0009-ARM-dts-dove-add-Dove-divider-clocks.patch')
-sha256sums=('1d280ae2730eb6c9b8c7e920cac2e8111c8db02c498db0c142860a84106cc169'
+sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'SKIP'
-            '4e5d062db675a304a1b7bb99a9d2eb1ff617fd31fac9b28df059444b5a98b1d5'
-            'SKIP'
-            'f34d9f6f851f2fd0ae5f577fa80fb7463424e851e2cff5cbafd22c8628fb2b7c'
+            'bdac8556b7156bb383b50b1818a44cd4f4ba15edd9b0044e86ba4268ffa21482'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -71,12 +72,15 @@ sha256sums=('1d280ae2730eb6c9b8c7e920cac2e8111c8db02c498db0c142860a84106cc169'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '6896de00951a51f771a6fe0581889e90705e25a23ce479574b67b47009a2a3de'
-            '766e995b525c690f609a0cf72b99baa021d31e1ba3a411442de4fb6b62bbeb56'
-            '1fe992ae174402fa3cc63cf4ac7e2d420a5c87f5706f639f90359b03bef017c5'
+            '7bb5b6fa10f1da6b5d0a6b071c7e95911cfc3e43348dfeb9a811f39ecb70f655'
+            'b9223741f54070522ad41013ab336c9d03ff89779b3b610dd2bc58023e0acf70'
+            '6f001d335ff0a0db95b4446224d580460a6038666addbb8e5f7bc119457acc82'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '1e90df4fb94c40c4255352f58214620e3411ae9475c205e2f5f9a57d7c170c83'
+            'ab57037ecee0a425c612babdff47c831378bca0bff063a1308599989a350226d'
+            '03bed5b1c6ef34a917e218a46d38cd1347c5ab5693131996113c6cad275dc4e9'
+            '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
+            '031beb6ec9b55a0425b938141ec06e200ca17cc50d69f605643b8ddb6065a55e'
             'SKIP'
             'a851312b26800a7e189b34547d5d4b2b62a18874f07335ac6f426c32b47c3817'
             '486976f36e1919eac5ee984cb9a8d23a972f23f22f8344eda47b487ea91047f4'
@@ -113,7 +117,7 @@ prepare() {
 
   if [ "${CARCH}" = "armv7h" ]; then
     # RCN patch (CM3 firmware deblobbed)
-    git apply -v "${srcdir}/rcn-libre-pck-${_pkgver%-*}-${rcnrel}.patch"
+    git apply -v "${srcdir}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
 
     # ALARM patches
     patch -p1 -i "${srcdir}/0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch"
@@ -133,6 +137,18 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
+  # revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=9faac7b95ea4f9e83b7a914084cc81ef1632fd91
+  # fixes #47778 sdhci broken on some boards
+  # https://bugzilla.kernel.org/show_bug.cgi?id=106541
+  patch -Rp1 -i "${srcdir}/0001-sdhci-revert.patch"
+
+  # fixes #47805 kernel panics on platform modules
+  # https://bugzilla.kernel.org/show_bug.cgi?id=110751
+  patch -Np1 -i "${srcdir}/tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch"
+
+  # fixes #47820 CVE-2016-0728.patch
+  patch -Np1 -i "${srcdir}/CVE-2016-0728.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
@@ -372,6 +388,11 @@ _package-headers() {
 
   # remove unneeded architectures
   find "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch -mindepth 1 -maxdepth 1 -type d -not -name "$KARCH" -exec rm -rf {} +
+
+  # remove a files already in docs package
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-01"
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-02"
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.select-break"
 }
 
 _package-docs() {
