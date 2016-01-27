@@ -9,6 +9,7 @@ arch=('any')
 url="https://github.com/FadeMind/${_pkgname}"
 license=('GPL')
 depends=('yakuake-frameworks-git')
+makedepends=('git')
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
