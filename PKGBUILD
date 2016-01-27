@@ -4,10 +4,10 @@ pkgdesc="ROS - ROS driver for a generic Linux joystick."
 url='http://www.ros.org/wiki/joy'
 
 pkgname='ros-indigo-joy'
-pkgver='1.10.0'
+pkgver='1.10.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=4
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin
@@ -24,10 +24,16 @@ ros_depends=(ros-indigo-diagnostic-updater
 depends=(${ros_depends[@]}
   linuxconsole)
 
-_tag=release/indigo/joy/${pkgver}-${_pkgver_patch}
-_dir=joy
-source=("${_dir}"::"git+https://github.com/ros-gbp/joystick_drivers-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/joy/${pkgver}-${_pkgver_patch}
+# _dir=joy
+# source=("${_dir}"::"git+https://github.com/ros-gbp/joystick_drivers-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="joystick_drivers-release-release-indigo-joy-${pkgver}-${_pkgver_patch}"
+source=("https://github.com/ros-gbp/joystick_drivers-release/archive/release/indigo/joy/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('e45644510f8943bc38cd8aea63c0cd8a650e72bea95147e85130f3c588702438')
 
 build() {
   # Use ROS environment variables
@@ -49,6 +55,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
