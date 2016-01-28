@@ -20,11 +20,6 @@ build() {
   make RELEASE=true
   sed -i 's,rom_path=.*,rom_path=/usr/share/caprice32/rom/,' cap32.cfg
   sed -i 's,resources_path=.*,resources_path=/usr/share/caprice32/resources/,' cap32.cfg
-  # Default images path to $HOME
-  sed -i 's,snap_path=.*,snap_path=~,' cap32.cfg
-  sed -i 's,drvA_path=.*,drvA_path=~,' cap32.cfg
-  sed -i 's,drvB_path=.*,drvB_path=~,' cap32.cfg
-  sed -i 's,tape_path=.*,tape_path=~,' cap32.cfg
 }
 
 package() {
