@@ -1,26 +1,18 @@
 # Maintainer: Gerald Nunn <gerald dot b dot nunn at gmail dot com>
 
 pkgname=terminix
-pkgver=0.40.0
+pkgver=0.45.0
 pkgrel=1
 pkgdesc="A tiling terminal emulator based on GTK+ 3"
 arch=('x86_64')
 url="http://github.com/gnunn1/terminix"
 license=('MPL')
 depends=('gtk3' 'dconf' 'gsettings-desktop-schemas' 'vte3')
+optdepends=('libnautilus-extension: for "open with terminix" support in nautilus')
 install=terminix.install
 source_x86_64=(https://github.com/gnunn1/terminix/releases/download/$pkgver/terminix.zip)
-md5sums_x86_64=('7269a5785afba78d43036c7227349d78')
+sha256sums_x86_64=('3b2b9d6d7c17b953ae8e4ce8d0516197688703af287aef26298df9d0bb0edf69')
 
 package() {
-  mkdir -p "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/usr/share/applications"
-  mkdir -p "$pkgdir/usr/share/terminix/schemes"
-  mkdir -p "$pkgdir/usr/share/terminix/resources"
-
-  install -Dm755 usr/bin/terminix "$pkgdir/usr/bin/terminix"
-  install -Dm755 usr/share/applications/com.gexperts.Terminix.desktop "$pkgdir/usr/share/applications/com.gexperts.Terminix.desktop"
-  install -Dm755 usr/share/terminix/schemes/* "$pkgdir/usr/share/terminix/schemes/"
-  install -Dm755 usr/share/terminix/resources/* "$pkgdir/usr/share/terminix/resources/"
-  install -Dm755 usr/share/glib-2.0/schemas/com.gexperts.Terminix.gschema.xml "$pkgdir/usr/share/glib-2.0/schemas/com.gexperts.Terminix.gschema.xml"
+	cp -ar $srcdir/usr $pkgdir/usr
 }
