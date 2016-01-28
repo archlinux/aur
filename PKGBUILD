@@ -4,7 +4,7 @@
 
 pkgname=wwwoffle
 pkgver=2.9i
-pkgrel=5
+pkgrel=6
 pkgdesc="Simple caching proxy server with special features for use with dial-up internet links. Includes startup scripts for OpenRC, System V init, systemd."
 arch=('i686' 'x86_64' 'arm' 'arm64')
 url="http://www.gedanken.org.uk/software/wwwoffle/"
@@ -65,6 +65,10 @@ package() {
   # Move documentation into the place we want it.
   mkdir -p "${pkgdir}/usr/share"
   mv -v "${pkgdir}/usr/doc" "${pkgdir}/usr/share/doc"
+
+  # Symlink the HTML-Documentation under wwwoffle's spool directory to the documentation directory. Note: The html documentation needs to stay at wwwoffle's spool directory, since it serves it from there when it's webinterface is accessed.
+  mkdir -p "${pkgdir}/usr/share/doc/wwwoffle/html"
+  ln -sv "/var/spool/wwwoffle/html"/{de,en,es,fr,it,nl,pl,ru} "${pkgdir}/usr/share/doc/wwwoffle/html/"
 
   # Install startup scripts for different init systems.
   install -D -m755 "${srcdir}/initscript_sysvinit" "${pkgdir}/etc/rc.d/wwwoffle"
