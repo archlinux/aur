@@ -1,4 +1,4 @@
-#9a111e928deb9a142606c47709502eb5bf1e8cf2u Maintainer: American_Jesus <american.jesus.pt AT gmail DOT com>
+# Maintainer: American_Jesus <american.jesus.pt AT gmail DOT com>
 # Contributor: Yardena Cohen <yardenack at gmail dot com>
 # Contributor: Max Roder <maxroder@web.de>
 # Contributor: Felipe Facundes <felipe.facundes@gmail.com>
