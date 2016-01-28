@@ -2,12 +2,12 @@
 # Contributor: Enrico Bacis <enrico.bacis@gmail.com>
 pkgname=edx-downloader-git
 pkgver=r558.053fbc0
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple tool to download video lectures from edx.org.'
 arch=('any')
 url='https://github.com/shk3/edx-downloader'
 license=('LGPL3')
-makedepends=('git' 'pandoc-bin')
+makedepends=('git' 'pandoc')
 depends=('python' 'python-beautifulsoup4' 'youtube-dl' 'python-six' 'python-html5lib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
