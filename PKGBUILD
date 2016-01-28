@@ -1,18 +1,18 @@
 # Maintainer: Florian Bruhin <archlinux.org@the-compiler.org>
 
 pkgname=check_lm_sensors
-pkgver=3.1.1
-pkgrel=2
+pkgver=4.1.1
+pkgrel=1
 pkgdesc="Nagios plugin to monitor the values of on board sensors and hard disk temperatures"
 arch=('any')
-url="https://trac.id.ethz.ch/projects/nagios_plugins/wiki/check_lm_sensors"
+url="https://github.com/matteocorti/check_lm_sensors"
 license=('GPL')
-depends=('perl-nagios-plugin')
+depends=('perl-monitoring-plugin' 'perl-readonly')
 optdepends=('sudo: check localhost without authentication' 'hddtemp: check HDD temperatures')
-source=("${pkgname}-${pkgver}.tar.gz::https://trac.id.ethz.ch/projects/nagios_plugins/downloads/125"
+source=("https://github.com/matteocorti/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
     'sudo.patch'
 	'sudoers')
-sha256sums=('e226cb81bc7bda5a3bb26141f3406132ae0d01e23ab03d451896e9b7128d2318'
+sha256sums=('c4487804a3f31db5333d8fdc5e31dec122ea5f15395e4bb6531d8e88e4a73511'
             '2aef426881e478ed621c3fe072edd5301bb95cfeed817a4bd2e8e494badec7a5'
             '3c47dda8eb4a0b6ce697d665882618f0387831072be7e9e2c3c45086fea644e3')
 
