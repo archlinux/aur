@@ -36,7 +36,7 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver/openpgm/pgm"
-  make DESTDIR="$pkgdir/usr" install
+  make DESTDIR="$pkgdir" install
 
   # lib32 cleanup
   rm -rf "$pkgdir"/usr/{bin,lib,include,share} "$pkgdir/etc"
