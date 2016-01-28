@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Logisim Evolution
+Comment=An educational tool for designing and simulating digital logic circuits
+Exec=/usr/bin/logisim-evolution
+Icon=logisim-evolution
+Terminal=false
+Type=Application
+Categories=Education
+MimeType=application/x-logisim-evolution
