@@ -1,4 +1,4 @@
-# Maintainer: Tamaasz
+# Maintainer: Tomaash
 
 pkgname=pax-britannica
 pkgver=20110514
