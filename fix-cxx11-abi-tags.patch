@@ -1,0 +1,11 @@
+diff --git a/include/llvm/Analysis/RegionInfo.h b/include/llvm/Analysis/RegionInfo.h
+--- a/include/llvm/Analysis/RegionInfo.h
++++ b/include/llvm/Analysis/RegionInfo.h
+@@ -408,6 +408,7 @@
+ 
+   /// @brief Returns the name of the Region.
+   /// @return The Name of the Region.
++  __attribute__((abi_tag("cxx11")))
+   std::string getNameStr() const;
+ 
+   /// @brief Return the RegionInfo object, that belongs to this Region.
