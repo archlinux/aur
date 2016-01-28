@@ -2,8 +2,8 @@
 
 pkgname=lib32-libcurl-compat
 _pkgname=curl
-pkgver=7.46.0
-pkgrel=2
+pkgver=7.47.0
+pkgrel=1
 pkgdesc="An URL retrieval library (32bit version)"
 arch=('x86_64')
 url="http://curl.haxx.se"
@@ -15,7 +15,7 @@ replaces=('lib32-curl' 'lib32-libcurl' 'lib32-libcurl-gnutls' 'lib32-curl-gnutls
 conflicts=('lib32-curl' 'lib32-libcurl-gnutls')
 options=('strip')
 source=("http://curl.haxx.se/download/${_pkgname}-$pkgver.tar.gz")
-md5sums=('230e682d59bf8ab6eca36da1d39ebd75')
+md5sums=('5109d1232d208dfd712c0272b8360393')
 install=curl-compat.install
 
 build() {
