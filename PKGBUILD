@@ -1,7 +1,7 @@
 # Maintainer: Dimitri Merejkowsky <d.merej@gmail.com>
 pkgname=qibuild
-pkgver='3.11'
-pkgrel='6'
+pkgver='3.11.1'
+pkgrel='1'
 pkgdesc='The meta build framework'
 arch=('any')
 url='http://doc.aldebaran.com/qibuild/'
@@ -19,7 +19,7 @@ optdepends=(
 makedepends=('python2' 'python2-docutils')
 
 source=("https://pypi.python.org/packages/source/q/qibuild/qibuild-${pkgver}.tar.gz")
-md5sums=('07eaeaf8203d7211992f302058a13471')
+md5sums=('c1d5d92f0c61ed56da8551ab5818ffdb')
 
 
 build() {
