@@ -8,8 +8,7 @@ url="https://github.com/qguv/arms"
 license=('GPL')
 depends=('sudo' 'less')
 makedepends=('git')
-optdepends=('reflector: to automatically update the mirrorlist'
-            'lostfiles: to locate files not managed by pacman (AUR)')
+optdepends=('reflector: to automatically update the mirrorlist')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('arms::git+https://github.com/qguv/arms')
