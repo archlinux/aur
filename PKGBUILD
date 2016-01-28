@@ -9,6 +9,7 @@ arch=(any)
 url="https://github.com/LiuLang/python3-xlib"
 license=('GPL2')
 depends=('python')
+makedepends=('git')
 source=("git+https://github.com/LiuLang/python3-xlib.git")
 md5sums=('SKIP')
 
