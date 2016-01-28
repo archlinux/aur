@@ -10,7 +10,7 @@ url='https://github.com/lunixbochs/glshim'
 license=('custom')
 depends=('libx11' 'gcc-libs')
 makedepends=('git' 'cmake')
-
+provides=('libgl')
 source=("git+https://github.com/lunixbochs/${_gitname}.git")
 md5sums=('SKIP')
 
