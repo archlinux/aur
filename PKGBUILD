@@ -1,7 +1,7 @@
 # Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 
 pkgname=yourls
-pkgver=1.7
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="your own URL shortener"
 arch=('any')
@@ -12,7 +12,7 @@ conflicts=('yourls-svn')
 backup=('etc/webapps/yourls/config.php')
 install=$pkgname.install
 source=("yourls-${pkgver}.tar.gz::https://github.com/YOURLS/YOURLS/archive/${pkgver}.tar.gz")
-sha1sums=('4da4c4f17bb55e452d96495bf6372f78ec47499f')
+sha1sums=('2af15998b035ee084595536eb5b5562bf8197051')
 
 package() {
   cd "$srcdir/YOURLS-$pkgver"
