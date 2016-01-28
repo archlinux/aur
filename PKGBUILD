@@ -8,7 +8,7 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-patched
 pkgver=9.22
-pkgrel=1
+pkgrel=2
 pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt) with fixed font spacing'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -32,14 +32,21 @@ sha1sums=('e575b869782fbfed955f84f48b204ec888d91ba1'
           'b7fde1c46af45e831828738874f14b092b1e795f'
           'dfbc8729c545105eff21e20ef3a4a3841a68a192')
 
-build() {
+prepare() {
   cd $_pkgname-$pkgver
+
   patch -p0 -i ../font-width-fix.patch
   patch -p0 -i ../line-spacing-fix.patch
   patch -p0 -i ../sgr-mouse-mode.patch
+}
+
+build() {
+  cd $_pkgname-$pkgver
+
+  # we disable smart-resize (FS#34807)
+  # do not specify --with-terminfo (FS#46424)
   ./configure \
     --prefix=/usr \
-    --with-terminfo=/usr/share/terminfo \
     --enable-256-color \
     --enable-combining \
     --enable-fading \
@@ -54,7 +61,7 @@ build() {
     --enable-rxvt-scroll \
     --enable-selectionscrolling \
     --enable-slipwheeling \
-    --enable-smart-resize \
+    --disable-smart-resize \
     --enable-startup-notification \
     --enable-transparency \
     --enable-unicode3 \
