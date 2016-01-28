@@ -3,13 +3,13 @@
 
 pkgname=ruby-icalendar
 pkgver=2.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Internet calendaring, Ruby style'
 arch=('any')
 url='https://github.com/icalendar/icalendar'
 license=('Ruby')
 depends=()
-optdepends=('ruby-activesupport-4.1: ActiveSupport is required for TimeWithZone support, but not required for general use.')
+optdepends=('ruby-activesupport-3: ActiveSupport is required for TimeWithZone support, but not required for general use.')
 options=('!emptydirs')
 source=("http://rubygems.org/downloads/${pkgname#*-}-${pkgver}.gem")
 noextract=("${pkgname#*-}-${pkgver}.gem")
