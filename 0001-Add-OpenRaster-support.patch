@@ -1,0 +1,25 @@
+From 780e0ec75d4a680925843c6d36d34e8b963692f7 Mon Sep 17 00:00:00 2001
+From: Jon Nordby <jononor@gmail.com>
+Date: Thu, 14 Oct 2010 23:28:55 +0200
+Subject: [PATCH] Add OpenRaster support
+
+This open image file format uses OpenDocumentFormat compatible
+thumbnails, so just use the same thumbnailer.
+---
+ odf-thumbnailer/odf-thumbnailer.desktop.in |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/odf-thumbnailer/odf-thumbnailer.desktop.in b/odf-thumbnailer/odf-thumbnailer.desktop.in
+index ae7618f..66326ed 100644
+--- a/odf-thumbnailer/odf-thumbnailer.desktop.in
++++ b/odf-thumbnailer/odf-thumbnailer.desktop.in
+@@ -5,5 +5,5 @@ Encoding=UTF-8
+ Type=X-Thumbnailer
+ Name=ODF Thumbnailer
+ TryExec=unzip
+-MimeType=application/vnd.oasis.opendocument.presentation;application/vnd.oasis.opendocument.presentation-template;application/vnd.oasis.opendocument.spreadsheet;application/vnd.oasis.opendocument.spreadsheet-template;application/vnd.oasis.opendocument.text;application/vnd.oasis.opendocument.text-template;application/vnd.oasis.opendocument.graphics;
++MimeType=application/vnd.oasis.opendocument.presentation;application/vnd.oasis.opendocument.presentation-template;application/vnd.oasis.opendocument.spreadsheet;application/vnd.oasis.opendocument.spreadsheet-template;application/vnd.oasis.opendocument.text;application/vnd.oasis.opendocument.text-template;application/vnd.oasis.opendocument.graphics;image/openraster;
+ X-Thumbnailer-Exec=@libexecdir@/odf-thumbnailer %i %o %s
+-- 
+1.7.3.1
+
