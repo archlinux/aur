@@ -3,7 +3,7 @@
 pkgname='zeronet'
 pkgver=0.3.4
 pkgrel=1
-arch=('armv7h')
+arch=('any')
 url="https://zeronet.io/"
 depends=('python2>=2.7.10'
          'python2-gevent'
