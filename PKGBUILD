@@ -107,9 +107,9 @@ build() {
 package_llvm-debug() {
     pkgdesc="Low Level Virtual Machine"
     depends=("llvm-libs-debug=$pkgver-$pkgrel" 'perl')
-    provides=('llvm')
-    replaces=('llvm')
-    conflicts=('llvm')
+    # provides=('llvm')
+    # replaces=('llvm')
+    # conflicts=('llvm')
 
     cd "${srcdir}/${_pkgname}"
 
@@ -167,9 +167,9 @@ package_llvm-debug() {
 package_llvm-libs-debug() {
     pkgdesc="Low Level Virtual Machine (runtime library)"
     depends=('gcc-libs' 'zlib' 'libffi' 'ncurses')
-    provides=('llvm-libs')
-    replaces=('llvm-libs')
-    conflicts=('llvm-libs')
+    # provides=('llvm-libs')
+    # replaces=('llvm-libs')
+    # conflicts=('llvm-libs')
 
     install -m755 -d "${pkgdir}"$_install_prefix/lib/
 
@@ -187,9 +187,9 @@ package_clang-debug() {
     pkgdesc="C language family frontend for LLVM"
     url="http://clang.llvm.org/"
     depends=("llvm-debug=$pkgver-$pkgrel" 'gcc')
-    provides=('clang')
-    replaces=('clang')
-    conflicts=('clang')
+    # provides=('clang')
+    # replaces=('clang')
+    # conflicts=('clang')
 
     sed -e 's:$(PROJ_prefix)/share/doc/llvm:$(PROJ_prefix)/share/doc/clang:' \
         -i "${srcdir}/${_pkgname}/Makefile.config"
@@ -244,9 +244,9 @@ package_clang-analyzer-debug() {
     pkgdesc="A source code analysis framework"
     url="http://clang-analyzer.llvm.org/"
     depends=("clang-debug=$pkgver-$pkgrel" 'python2')
-    provides=('clang-analyzer')
-    replaces=('clang-analyzer')
-    conflicts=('clang-analyzer')
+    # provides=('clang-analyzer')
+    # replaces=('clang-analyzer')
+    # conflicts=('clang-analyzer')
 
     cd "${srcdir}/${_pkgname}/tools/clang"
 
@@ -281,9 +281,9 @@ package_clang-tools-extra-debug() {
     pkgdesc="Extra tools built using Clang's tooling APIs"
     url="http://clang.llvm.org/"
     depends=("clang-debug=$pkgver-$pkgrel")
-    provides=('clang-tools-extra')
-    replaces=('clang-tools-extra')
-    conflicts=('clang-tools-extra')
+    # provides=('clang-tools-extra')
+    # replaces=('clang-tools-extra')
+    # conflicts=('clang-tools-extra')
 
     cd "${srcdir}/${_pkgname}/tools/clang/tools/extra"
 
