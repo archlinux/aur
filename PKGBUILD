@@ -1,8 +1,9 @@
+# Maintainer: Jose Riha <jose1711 gmail com>
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=java3d
 pkgver=1.5.2
-pkgrel=8
+pkgrel=9
 pkgdesc="High-level constructs to create and manipulate 3D geometry"
 arch=('i686' 'x86_64')
 url="https://java3d.java.net/"
@@ -22,10 +23,7 @@ source=(http://download.java.net/media/$pkgname/builds/release/$pkgver/$_pkgname
 package() {
 	cd $srcdir/$_pkgname-${pkgver//./_}-linux-$_arch
 	install -D -m644 LICENSE-Java3D-v${pkgver//./_}.txt $pkgdir/usr/share/licenses/$_pkgname/LICENSE
-	local dest=$JAVA_HOME
-	if [ "$dest" != "/usr/lib/jvm/java-7-openjdk/jre" ] ; then
-		dest="$dest/jre"
-	fi
+	local dest=$(readlink -f /usr/lib/jvm/default/jre)
 	install -d -m755 $pkgdir/$dest
 	cd $pkgdir/$dest
 	unzip $srcdir/$_pkgname-${pkgver//./_}-linux-$_arch/$_pkgname-jre.zip
