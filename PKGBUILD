@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="A tool for predicting and estimating the complexity of a genomic sequencing library, equivalent to predicting and estimating the number of redundant reads from a given sequencing depth."
 arch=('i686' 'x86_64')
 url="http://smithlabresearch.org/software/preseq/"
+depends=('gsl')
 license=('GPLv3')
 source=("https://github.com/smithlabcode/${pkgname}/releases/download/v${pkgver}/${pkgname}_v${pkgver}.tar.bz2")
 #source=("https://github.com/smithlabcode/${pkgname}/archive/v${pkgver}.tar.gz")
