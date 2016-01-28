@@ -148,7 +148,7 @@ create_install_script()
   rm ${_fully_qualified_install_script}
 
   # populate vars
-  echo "piver=\"${_piver}\"" >> ${_fully_qualified_install_script}
+  echo "_piver=\"${_piver}\"" >> ${_fully_qualified_install_script}
   echo "_qmakepath=\"${_installprefix}/bin/qmake\"" >> ${_fully_qualified_install_script}
   echo "_sysroot=\"${_sysroot}\"" >> ${_fully_qualified_install_script}
 
