@@ -27,7 +27,11 @@ _skip_web_engine=true
 _sysroot=/mnt/pi
 
 _piver=2
-pkgname=qt-sdk-raspberry-pi${_piver}
+_pkgname=qt-sdk-raspberry-pi
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+replaces=("${_pkgname}")
+pkgname="${_pkgname}${_piver}"
 _packaginguser=$(whoami)
 _libspkgname="${pkgname}-target-libs"
 _mkspec="linux-rpi${_piver}-g++"
