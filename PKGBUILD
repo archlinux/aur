@@ -1,28 +1,30 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
 # Contributor: Alexander 'hatred' Drozdov <adrozdoff@gmail.com>
 pkgname=routeconverter
-pkgver=2.16.3
+pkgver=2.17
 pkgrel=1
 pkgdesc="A free tool to edit and convert routes, tracks and waypoints."
 # not sure if 64bit version works - on http://static.routeconverter.com/download/previous-releases/2.16/ there is no 64bit version any more
-arch=(i686)
-#arch=(i686 x86_64)
+#arch=(i686)
+arch=(i686 x86_64)
 url="http://www.routeconverter.de/en"
 license=('GPL')
 depends=('java-environment>=6' 'libwebkit3')
 optdepends=('gpsbabel: for some additional format support')
 changelog=ChangeLog
-source=(routeconverter
+sourcecommon=(routeconverter
         routeconverter-cli
         http://www.routeconverter.de/download/RouteConverterCmdLine.jar)
-[ "$CARCH" == "i686" ]   && source=(${source[@]} http://www.routeconverter.de/download/RouteConverterLinux.jar)
-#[ "$CARCH" == "x86_64" ] && source=(${source[@]} http://www.routeconverter.de/download/RouteConverterLinux64.jar)
+source_i686=(${sourcecommon[@]} http://www.routeconverter.de/download/RouteConverterLinux.jar)
+#source_x86_64=(${sourcecommon[@]} http://www.routeconverter.de/download/RouteConverterLinux64.jar)
 
-md5sums=('4bc45e6a1a93656a0deb8956f71b6af8'
+md5sumscommon=('4bc45e6a1a93656a0deb8956f71b6af8'
          'fdf570309917df1c1536b7e3c7740b33'
-         'e95c8f2f2fe68054eb9e06370eb2439e')
-[ "$CARCH" == "i686" ]   && md5sums=(${md5sums[@]} '96b38e7eaebc22ba21575e50e1c89bfd')
-#[ "$CARCH" == "x86_64" ] && md5sums=(${md5sums[@]} '8d99d74806864946803131d7ecef9795')
+         'f2b6d764bfb8687705a04641207b37ae'
+)
+
+md5sums_i686=(${md5sumscommon[@]} 'a8bee928224cf37c05d034b70a8d7d8e')
+#md5sums_x86_64=(${md5sumscommon[@]} '')
 
 noextract=(RouteConverterCmdLine.jar
            RouteConverterLinux.jar
