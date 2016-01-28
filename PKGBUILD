@@ -35,7 +35,7 @@ pkgver=5.6.0
 _pkgver=${pkgver}-beta
 _baseprefix=/opt
 _installprefix=${_baseprefix}/${pkgname}-${_pkgver}
-_pipkgname=qt-everywhere-opensource-src-${_pkgver}
+_source_package_name=qt-everywhere-opensource-src-${_pkgver}
 pkgrel=5
 pkgdesc="Qt SDK for the Raspberry Pi${_piver}"
 arch=("x86_64")
@@ -43,7 +43,7 @@ url="http://www.qt.io"
 license=("LGPL3" "GPL3")
 depends=("qpi-toolchain" "qtcreator")
 makedepends=("git" "pkgconfig" "gcc")
-source=("git://github.com/sirspudd/mkspecs.git" "https://download.qt.io/development_releases/qt/5.6/${_pkgver}/single/${_pipkgname}.tar.gz")
+source=("git://github.com/sirspudd/mkspecs.git" "https://download.qt.io/development_releases/qt/5.6/${_pkgver}/single/${_source_package_name}.tar.gz")
 sha256sums=("SKIP" "d69103ec34b3775edfa47581b14ee9a20789d4b0d7d26220fb92f2cd32eb06f9")
 options=('!strip')
 install=qpi.install
@@ -55,7 +55,7 @@ if $_skip_web_engine || [[ ${_piver} = "1" ]]; then
 fi
 
 build() {
-  local _srcdir="${srcdir}/${_pipkgname}"
+  local _srcdir="${srcdir}/${_source_package_name}"
   local _bindir="${_srcdir}-build"
 
   # Qt tries to do the right thing and stores these, breaking cross compilation
@@ -152,7 +152,7 @@ create_install_script()
 }
 
 package() {
-  local _srcdir="${srcdir}/${_pipkgname}"
+  local _srcdir="${srcdir}/${_source_package_name}"
   local _bindir="${_srcdir}-build"
 
   create_install_script
