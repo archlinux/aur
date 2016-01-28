@@ -1,7 +1,7 @@
 # Maintainer: Josh Ellithorpe <quest at mac dot com>
 
 pkgname=s
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=0
 pkgdesc="Web search from the terminal. Supports over 50 providers including google, github, and stackoverflow."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('go' 'git')
 options=('!strip' '!emptydirs')
 provides=("s=${pkgver}")
 source=("https://github.com/zquestz/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('d4b808d1f1c8193a684ed3e194523f2569668709f656b753f07ce72cb951e624')
+sha256sums=('7bbab1365624af964e9928dfb7431d9346783b0f5db6f55ade45494030077860')
 _gourl="github.com/zquestz/${pkgname}"
 
 build() {
