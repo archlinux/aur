@@ -6,7 +6,7 @@ pkgdesc="ARMS: The Arch Regular Maintenance Script"
 arch=('any')
 url="https://github.com/qguv/arms"
 license=('GPL')
-depends=('sudo')
+depends=('sudo' 'less')
 makedepends=('git')
 optdepends=('reflector: to automatically update the mirrorlist'
             'lostfiles: to locate files not managed by pacman (AUR)')
