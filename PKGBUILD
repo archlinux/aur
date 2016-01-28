@@ -2,7 +2,7 @@
 # Contributor: Maciej Sieczka <msieczka at sieczka dot org>
 
 pkgname=grass
-pkgver=7.0.2
+pkgver=7.0.3
 pkgrel=1
 _shortver=${pkgver%.*}; _shortver=${_shortver/./}
 pkgdesc='Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and visualization'
@@ -14,7 +14,7 @@ makedepends=('libxt')
 optdepends=('postgresql: PostgreSQL database interface')
 install=$pkgname.install
 source=("http://grass.osgeo.org/grass$_shortver/source/$pkgname-$pkgver.tar.gz")
-md5sums=('1f2c8f5cba2fe2d681a01b9519180e9e')
+md5sums=('dfbd39829036ee2d59b13c35a183ec0e')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -61,10 +61,11 @@ package() {
 
   cd "$pkgdir/opt/$pkgname"
 
+  # Fix for 3rd party python scripts
+  ln -s ../../../usr/bin/python2 bin/python
+
   # Put freedesktop.org files in correct location
   mv share "$pkgdir/usr"
-  install -Dm644 gui/icons/grass-48x48.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/grass.png"
-  install -Dm644 gui/icons/grass-64x64.png "$pkgdir/usr/share/icons/hicolor/64x64/apps/grass.png"
 
   # Fix some paths that get hard coded by make install
   sed -i "s|$pkgdir||g" demolocation/.grassrc$_shortver \
