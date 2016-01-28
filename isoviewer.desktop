@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Comment=
+Terminal=false
+Name=ISO Viewer
+Exec=isoviewer
+Type=Application
+Icon=dialog-information
+Categories=Viewer;Utility;
