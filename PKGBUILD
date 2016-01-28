@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Reuße <seb@wirrsal.net>
 pkgname=metastore-git
 _gitname=metastore
-pkgver=r104.d32bae9
+pkgver=r122.41861e7
 pkgrel=1
 pkgdesc="Store and restore metadata from a filesystem."
 arch=(i686 x86_64)
@@ -30,7 +30,5 @@ build() {
 package() {
   cd "$_gitname"
   make PREFIX="$pkgdir"/usr install
-  mkdir -p "$pkgdir"/usr/share/metastore/examples
-  install -m755 examples/* "$pkgdir"/usr/share/metastore/examples
 }
 
