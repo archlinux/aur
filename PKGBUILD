@@ -1,7 +1,7 @@
-# Contributer: Stefan Seemayer <stefan@seemayer.de>
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
+# Contributer: Stefan Seemayer <stefan@seemayer.de>
 pkgname=tsmclient
-pkgver=7.1.3
+pkgver=7.1.4
 pkgrel=1
 pkgdesc="IBM Tivoli Storage Manager Client"
 arch=('x86_64')
@@ -19,7 +19,7 @@ options=(!strip)
 source=(ftp://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v7r1/Linux/LinuxX86/BA/v${pkgver//.}/${pkgver}.0-TIV-TSMBAC-LinuxX86.tar
 	dsmcad.service)
 
-sha1sums=('4b9b66e994cf6fc9b2eb5f2ca663c0a0fc89a6c7'
+sha1sums=('acecc4cc3fbe0f3d5cf9bd2cd9339534214b091d'
           'd4702d06339da46e998980e0d145e1f3e92f30aa')
 
 prepare() {
