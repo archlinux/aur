@@ -3,7 +3,7 @@
 # Maintainer: polyzen <polycitizen at gmail dot com>
 pkgbase=heavything
 pkgname=('rwasa' 'webslap' 'hnwatch' 'dhtool' 'sshtalk' 'toplip')
-pkgver=1.14
+pkgver=1.15
 pkgrel=1
 pkgdesc='A General purpose x64 Asm library for 2ton products'
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('fasm')
 url='https://2ton.com.au/HeavyThing'
 license=('GPL3')
 source=("https://2ton.com.au/HeavyThing-$pkgver.tar.gz")
-sha256sums=('2a22cc7e04b4cf8a9550fab685145964474f72dbac32a97a9eb3d0090deff745')
+sha256sums=('6cf9347d7dd7aa58c594ed806a3a7b6b4f7d66c66782161c9e5ba0a098552668')
 
 build () {
   cd "HeavyThing-$pkgver"
