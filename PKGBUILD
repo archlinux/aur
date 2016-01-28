@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('go' 'git')
 provides=('goploader')
-validpgpkeys=()
+validpgpkeys=('046ACD2837CF8CE73E63 3F34049F37E7F991FB5F')
 
 prepare() {
   mkdir "$srcdir/go"
