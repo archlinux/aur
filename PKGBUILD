@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=inkscape-bzr
-pkgver=r14620
+pkgver=r14622
 pkgrel=1
 pkgdesc="An Open Source vector graphics editor, using Scalable Vector Graphics (SVG) file format"
 url="https://launchpad.net/inkscape"
@@ -20,7 +20,7 @@ optdepends=('python2-numpy: some extensions'
 makedepends=('boost' 'intltool' 'bzr' 'gettext' 'pango' 'fontconfig')
 provides=('inkscape')
 conflicts=('inkscape')
-options=('!libtool' '!makeflags')
+options=('!libtool')
 source=('inkscape::bzr+http://bazaar.launchpad.net/~inkscape.dev/inkscape/trunk/')
 md5sums=('SKIP')
 install=inkscape-bzr.install
