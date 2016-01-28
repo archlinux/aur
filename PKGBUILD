@@ -14,7 +14,7 @@ md5sums=('819b58764d22d1cd54e4f11bd4c002f9')
 
 build() {
   cd "$pkgname-$pkgver"
-  cmake -DCMAKE_INSTALL_LIBDIR=/usr/lib
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib
   make
 }
 
