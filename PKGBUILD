@@ -3,8 +3,8 @@
 pkgname=thunderbird-earlybird
 _name=thunderbird
 _channel=earlybird
-_milestone=45.0a2
-pkgver=45.0a2.20160124004005
+_milestone=46.0a2
+pkgver=46.0a2.20160127004007
 pkgrel=1
 pkgdesc="Standalone Mail/News reader - Earlybird channel"
 arch=('i686' 'x86_64')
