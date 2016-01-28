@@ -14,8 +14,8 @@ makedepends=('openssl')
 options=('!libtool')
 conflicts=('sylpheed')
 install="$pkgname.install"
-source=("http://sylpheed.sraoss.jp/$_pkgname/v3.5/$_pkgname-$pkgver.tar.gz"
-    "http://sylpheed.sraoss.jp/$_pkgname/v3.5/$_pkgname-$pkgver.tar.gz.asc")
+source=("http://sylpheed.sraoss.jp/$_pkgname/v${pkgver%.*}/$_pkgname-$pkgver.tar.gz"
+    "http://sylpheed.sraoss.jp/$_pkgname/v${pkgver%.*}/$_pkgname-$pkgver.tar.gz.asc")
 validpgpkeys=('8CF3A5AC417ADE72B0AA4A835024337CC00C2E26') # Hiroyuki Yamamoto
 sha256sums=('75bcc631eb6a7c8c46fb3f5cd18d509e794a7974302d5e5bd3950599e7686983'
             'SKIP')
