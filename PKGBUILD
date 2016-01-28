@@ -1,8 +1,8 @@
 # Maintainer: Zhuoyun Wei <wzyboy@wzyboy.org>
 
 pkgname=telegram-purple
-pkgver=1.2.4
-_pkgver=v1.2.4
+pkgver=1.2.5
+_pkgver=v1.2.5
 pkgrel=1
 pkgdesc="Adds support for Telegram to Pidgin, Adium, Finch and other Libpurple based messengers."
 arch=('i686' 'x86_64')
