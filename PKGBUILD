@@ -1,4 +1,4 @@
-#Maintainer: Christian Rebischke <echo Q2hyaXMuUmViaXNjaGtlQGdtYWlsLmNvbQo= | base64 -d>
+#Maintainer: Christian Rebischke <Chris.Rebischke@archlinux.org>
 
 pkgname=viper-framework-git
 provides=viper-framework
@@ -17,7 +17,8 @@ depends=(
 "python2-pefile" "python2-crypto" "python2-olefile" "python2-oletools"
 "python2-django" "python2-pymisp" "python2-scandir" "python2-pypssl"
 "python2-pypdns" "python2-pype32" "python2-pbkdf2" "python2-dateutil"
-"python2-requests-cache") 
+"python2-requests-cache" "python2-cffi" "python2-cryptography"
+"python2-terminaltables" "python2-virustotal-api" "radare2-bindings") 
 makedepends=("git")
 source=("git+https://github.com/botherder/viper"
         "viper-framework.install")
@@ -26,18 +27,18 @@ sha512sums=(
 "5f2446433205c4b04b7a2aad4c2262dfd54dc25a034a1b94f8de45a37a164c3fccdebdda60446148ddb940a5f84257426cbda21b7815d1e7b3cea5e9af54c0fe")
 install="viper-framework.install"
 pkgver() {
-  cd viper
-  printf "%s.%s.%s" "$(git describe --tags --abbrev=0)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd viper
+	printf "%s.%s.%s" "$(git describe --tags --abbrev=0)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd viper
-  python2 -m compileall .
-  python2 -O -m compileall .
+	cd viper
+	python2 -m compileall .
+	python2 -O -m compileall .
 }
 
 package() {
-  cd "$srcdir/viper"
-  mkdir -p "$pkgdir/opt/viper/"
-  mv * "$pkgdir/opt/viper/"
+	cd "$srcdir/viper"
+	mkdir -p "$pkgdir/opt/viper/"
+	mv * "$pkgdir/opt/viper/"
 }
