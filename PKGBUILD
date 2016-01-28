@@ -1,6 +1,6 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 pkgname=peek
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Peek - animated GIF recorder"
 arch=('i686' 'x86_64')
