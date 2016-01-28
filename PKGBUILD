@@ -1,7 +1,7 @@
 # Maintainer: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
 
 pkgname=gog-prisonarchitect
-pkgver=2.3.0.5
+pkgver=2.4.0.6
 pkgrel=1
 pkgdesc="Prison construction and management simulation, GOG version"
 url=('https://www.gog.com/game/prison_architect')
@@ -13,8 +13,8 @@ options=('staticlibs' '!strip')
 DLAGENTS+=("gog::/usr/bin/echo Could not find %u. Manually download it to \"$(pwd)\", or set up a gog:// DLAGENT in /etc/makepkg.conf.")
 
 source=("gog://gog_prison_architect_${pkgver}.sh")
-md5sums=('d10de9aac9ba70efd748ae728585d776')
-sha512sums=('9a072b73118bb18f8f7b20caadbc2d3cd6839d65fa8a7b1ba9628ab4867222242cf4c33c6cfcb2758b4c85a5777e06230ba17ea4001b6a39620db0d74d12f753')
+md5sums=('1575ac089ed80eaf7825a62791a9b047')
+sha512sums=('55c442749f82f5f1509daad7e5699e0ceb1a204c1a99efb95533c09dc9aa43a1dbae7f9f40ce1c280f15a85b6f91d8780ea18405dba9b793a232150f1b7bd68a')
 noextract=("gog_prison_architext_${pkgver}.sh")
 PKGEXT=.pkg.tar
 
