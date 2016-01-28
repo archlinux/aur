@@ -1,7 +1,7 @@
 # Maintainer: Yuval Adam <yuval at y3xz dot com> PGP-Key: 271386AA2EB7672F
 
 pkgname=inspectrum
-pkgver=0.1
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="SDR signal analyzer"
 arch=('any')
@@ -10,7 +10,7 @@ license=(GPL)
 depends=('qt5-base' 'fftw')
 makedepends=('cmake' 'pkg-config')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=("30eeec26166e41fe2d8007b0042420602d9920bcd4ccf0f74ea1fd64dfc93bfe")
+sha256sums=("b139cd7978f294d4872a1e3e70a813f4e9600f7677da5b9f6c431b3fa7f7e03e")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
