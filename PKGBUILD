@@ -1,8 +1,8 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 pkgname=ttf-overpass
-pkgver=2.0
-pkgrel=2
+pkgver=2.1
+pkgrel=1
 pkgdesc="An open source font family inspired by Highway Gothic esp. suited for signs, lettering and web sites (true type format)."
 arch=('any')
 license=('custom:SIL Open Font License 1.1')
@@ -10,9 +10,9 @@ url="http://overpassfont.org/"
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 conflicts=('overpass-ttf')
 install=$pkgname.install
-source=('https://github.com/andyfitz/overpass/archive/2.0.tar.gz'
+source=("https://github.com/RedHatBrand/overpass/archive/${pkgver}.tar.gz"
         'LICENSE.md')
-sha256sums=('8b6093e88c179760431a57eae862cc8bfe13b767fe0c8060ec7fd96729274383'
+sha256sums=('a7562994399cdf33a2e91e4fb1e1e76bb44121f32007b4da15b01579537d9e06'
             '3efc4faefa080b65eb3365a4910b67a1697d8e560e1e6f1c30797a6aed4f719b')
 
 package() {
