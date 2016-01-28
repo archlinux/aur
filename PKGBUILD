@@ -6,7 +6,7 @@
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=gitlab
-pkgver=8.4.1
+pkgver=8.4.2
 pkgrel=1
 pkgdesc="Project management and code hosting application"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ license=('MIT')
 depends=('ruby2.1' 'git>=1.7.10' 'ruby2.1-bundler>=1.5.2' 'gitlab-shell=2.6.10' 'openssh' 'redis>=2.8' 'libxslt' 'icu' 'nodejs')
 makedepends=('cmake')
 optdepends=(
-	'gitlab-workhorse=0.6.1: for http(s) access'
+	'gitlab-workhorse=0.6.2: for http(s) access'
 	'mariadb: database backend'
 	'postgresql>=9.1: database backend'
 	'python2-docutils: reStructuredText markup language support'
@@ -47,7 +47,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/gitlabhq/gitlabhq/archive/v
 	nginx-ssl.conf.example
 	lighttpd.conf.example)
 install='gitlab.install'
-sha512sums=('58738132b1390345af2c8f7eddb1d6496027837c4519be51dd8c83240f1409f8ebcebd19fb4c3244428593cc96782d28f50cb3eb4300b47637cea71c5e955d33'
+sha512sums=('754f06986696c993aaa3e5faacc361b8b3e46d0268a6fbe14a2163fd63ecaa589af206eb45d1ff034a4553fc57ccbfa0182f6bb9ea323d015f1e2c9f635361ab'
 	'5dd7a940eee6a84095478af514dcc98c4fc6c4a214de1ddfa4a1e727d4ba34984d66d51affd7844ffebb75fed8f781b38a0da80fba6a5b8fa832948ab39b2249'
 	'2c9d8c650a1808d730bb0f6c45ea8fe2f354d56a5bea1da7eb17dc687ec06b731472af842f4cce0704bf738b5a88001a06e1907d18a35d363e88c4dd6f3e9c7d'
 	'c22439ee4cb34adf42de7619a2b83b02359cada38cbe99dd3031e6e72225ec4b2c2d6306331eadfc1c2044609b7a7e8bceddf7be213b5d4dbcaff86b35fe1ce7'
