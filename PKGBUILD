@@ -22,7 +22,7 @@ optdepends=(
 )
 license=('GPL2')
 source=(
-  "$_pkgname::git+https://github.com/$_pkgname/$_pkgname.git"
+  "$_pkgname::git+https://github.com/symless/$_pkgname.git"
   "${_pkgname}s_at.socket"
   "${_pkgname}s_at.service"
   'missing-include-fix.patch'
