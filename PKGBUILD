@@ -2,7 +2,7 @@
 
 pkgname=gohufont-powerline
 _gitname=$pkgname
-pkgver=0.1.r1.g0b2a9cf
+pkgver=0.1.r2.g1243b5b
 pkgrel=1
 depends=()
 makedepends=('xorg-bdftopcf')
@@ -20,6 +20,6 @@ pkgver() {
 
 package() {
 	cd "$srcdir/$_gitname"
-	make install DESTDIR=$pkgdir
+	make install PREFIX=/usr DESTDIR=$pkgdir
 }
 
