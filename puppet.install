@@ -1,0 +1,23 @@
+pre_install() {
+  getent group puppet &>/dev/null || groupadd -r puppet -g 52
+  getent passwd puppet &>/dev/null || useradd -r -u 52 -g puppet \
+    -d /var/lib/puppet -s /sbin/nologin -c "Puppet" puppet
+}
+
+pre_upgrade() {
+  pre_install
+}
+
+pre_remove() {
+  if [[ -f /var/run/puppet/master.pid ]]; then
+    systemctl stop puppetmaster
+  fi
+
+  if [[ -f /var/run/puppet/agent.pid ]]; then
+    systemctl stop puppet
+  fi
+}
+
+post_remove() {
+  userdel puppet
+}
