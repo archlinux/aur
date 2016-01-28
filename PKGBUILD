@@ -2,8 +2,8 @@
 # Contributor: Maximilian Berger <snowdragon92@gmail.com>
 
 pkgname=atlauncher
-pkgrel=2
-pkgver=3.2.2.1
+pkgrel=1
+pkgver=3.2.3.1
 pkgdesc="ATLauncher is a Launcher for Minecraft which integrates multiple different ModPacks to allow you to download and install ModPacks easily and quickly. Installs latest released jar."
 arch=('any')
 url="http://www.atlauncher.com/"
@@ -18,10 +18,12 @@ source=("http://www.atlauncher.com/download/jar"
         )
 noextract=('jar')
 
+
 md5sums=('SKIP'
-         'SKIP'
+         '2aa7755e8bf88ba7ad7f7303d29b439f'
          'bb6c25c948b8d2341a27803c123df453'
-         '8ab8a70ca8c7dbff0dc23bec40a5a923')
+         'e116c617332de8b19bf34f130c7eec2e')
+
 
 pkgver() {
     cd "$srcdir"
