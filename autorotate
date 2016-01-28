@@ -1,0 +1,3 @@
+#!/bin/sh
+
+/usr/share/surfacepro3-autorotate/autorotate.py
