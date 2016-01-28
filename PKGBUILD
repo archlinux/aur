@@ -2,13 +2,13 @@
 
 pkgname=libadios
 pkgver=1.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc="ADIOS Adaptable IO system for simulations. The Adaptable IO System (ADIOS) provides a simple, flexible way for scientists to describe the data in their code that may need to be written, read, or processed outside of the running simulation."
 url="https://www.olcf.ornl.gov/center-projects/adios/"
 install=$pkgname.install
 license=('BSD')
 arch=('i686' 'x86_64')
-depends=('openmpi' 'python2' 'mxml')
+depends=('openmpi' 'python2' 'mxml' 'gcc-fortran')
 source=(http://users.nccs.gov/~pnorbert/adios-$pkgver.tar.gz)
 sha256sums=('f752b2093f5453b3ec4717aad67da7c3227b3687367a0b3fe7ad80eed391327e')
 
