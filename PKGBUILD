@@ -2,7 +2,7 @@
 # Contributor: Sebastien Binet binet-at-cern-ch
 pkgname=cvmfs
 pkgver=2.1.19
-pkgrel=1
+pkgrel=2
 pkgdesc="A client-server file system implemented in FUSE and developed to deliver software distributions onto virtual machines in a fast, scalable, and reliable way."
 arch=('x86_64' 'i686')
 url="http://cernvm.cern.ch/portal/filesystem"
@@ -14,11 +14,16 @@ install=cvmfs.install
 source=(https://ecsft.cern.ch/dist/cvmfs/cvmfs-2.1.19/$pkgname-$pkgver.tar.gz)
 md5sums=('57b3dd1687af498803a1dcb4f22382d6')
 
+prepare() {
+	cd "$srcdir/$pkgname-$pkgver"
+        sed -e "s/\/sbin/\/usr\/bin/g" -i CMakeLists.txt mount/CMakeLists.txt
+}
+
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
         mkdir -p build
         cd build
-        cmake ../
+        cmake ../ -DCMAKE_INSTALL_LIBDIR:PATH=lib
         make
 }
 
