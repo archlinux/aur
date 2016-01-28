@@ -2,7 +2,7 @@
 
 pkgname=rsem
 _pkgname=RSEM
-pkgver=1.2.19
+pkgver=1.2.26
 pkgrel=1
 pkgdesc="accurate quantification of gene and isoform expression from RNA-Seq data"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=GNU
 depends=('perl' 'r')
 optdepends=('bowtie2')
 source=(https://github.com/bli25wisc/${_pkgname}/archive/v${pkgver}.tar.gz)
-md5sums=('69667ee47337617847dc97da2765fd08')
+md5sums=('228e64cc0f1d1ff4c006e0b64d98cb0f')
 
 build() {
    cd "${srcdir}/${_pkgname}-${pkgver}"
