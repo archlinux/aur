@@ -3,7 +3,7 @@
 _gitname=El-General
 _pkgname=ElGeneralDark
 pkgname=('elgeneral-dark-icon-theme-git')
-pkgver=r67.8adb36b
+pkgver=r73.250ac6f
 pkgrel=1
 pkgdesc="A dark icon theme for Plasma Desktop"
 arch=('any')
