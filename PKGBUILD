@@ -2,7 +2,7 @@
 # Maintainer: Fabien Devaux < fdev31 at gmail dot com >
 
 pkgname=pythonbrew
-pkgver=1.3.5
+pkgver=1.3.6
 pkgrel=1
 pkgdesc='Manage python installations in your $HOME'
 arch=(any)
@@ -12,7 +12,7 @@ depends=('python')
 makedepends=('python-distribute')
 
 source=(http://pypi.python.org/packages/source/p/pythonbrew/pythonbrew-${pkgver}.tar.gz)
-md5sums=('ccf194a69a7909a08743efb40bf8ca31')
+md5sums=('aa968680a8b61fdc034ce01b31311614')
 
 build() {
   cd "${srcdir}/pythonbrew-${pkgver}"
