@@ -2,15 +2,18 @@
 # Contributor: Valsu [arch(at)hylia.de]
 
 pkgname=eureka
-pkgver=1.07
-pkgrel=3
+pkgver=1.11
+_pkgver=111
+pkgrel=1
 pkgdesc="A map editor for the classic DOOM games"
 url="http://eureka-editor.sourceforge.net/"
 arch=('x86_64' 'i686')
 license=('GPL2')
 depends=('fltk' 'libjpeg-turbo')
-source=("http://download.sourceforge.net/eureka-editor/Eureka/1.07/${pkgname}-${pkgver}-source.tar.gz")
-md5sums=('b9f3048ee56e4e7dcaa8c2e1c5bc7076')
+source=("http://download.sourceforge.net/eureka-editor/Eureka/1.07/${pkgname}-${_pkgver}-source.tar.gz"
+"eureka.install")
+md5sums=('354f95f286a064ce405de9baacb9771d'
+         '41026f5e9e4d3ba7559da2a8c9b26816')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}-source"
@@ -33,3 +36,5 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
+
+
