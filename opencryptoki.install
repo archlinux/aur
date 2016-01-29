@@ -1,5 +1,5 @@
 post_install() {
-  groupadd -r pkcs11
+  getent group pkcs11 > /dev/null || groupadd -r pkcs11
 }
 
 post_upgrade() {

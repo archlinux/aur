@@ -4,8 +4,8 @@
 # Contributor: VuDu <vudu.curse@gmail.com>
 
 pkgname=opencryptoki
-pkgver=3.3
-pkgrel=2
+pkgver=3.4.1
+pkgrel=1
 pkgdesc="PKCS11 implementation for Linux"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/opencryptoki"
@@ -13,9 +13,9 @@ license=('CPL' 'GPL')
 depends=('openssl' 'trousers' 'expect')
 makedepends=('libtool')
 install=${pkgname}.install
-source=(http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}-v${pkgver}.tgz
+source=(http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/3.4/${pkgname}-v${pkgver}.tgz
         'opencryptoki.tmpfiles.conf')
-sha256sums=('9e056f520147f1e55fa9ab9661b4a7b8589d9b13fa3bb1f122c6a0a79d416bb5'
+sha256sums=('018ea402f3a1b38b203282fb047dfac209d94bf2988f2c29793eca65455452c4'
             'e315fc996a1f416efd34f6f3e3149378118cded0da9f8a919e9501ea8db90fac')
 
 build() {
