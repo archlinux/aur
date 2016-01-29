@@ -16,7 +16,7 @@ optdepends=('python2-gnomekeyring: password storage for remote mounts'
             'mutagen: audio-metadata support'
             'gvfs: mount-management'
             'python2-dbus: single application instance support')
-conflicts=('sunflower-hg')
+conflicts=('sunflower-git')
 options=(!strip !zipman)
 install=${pkgname}.install
 source=($url/pub/${pkgname}-${pkgver}-60.tgz
