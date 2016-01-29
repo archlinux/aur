@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Petitjean <alpetitjean at gmail dot com>
 
 pkgname=mopidy-dirble
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Mopidy extension for Dirble open radio directory"
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
 makedepends=('python2')
 provides=('mopidy-dirble')
 source=("https://github.com/mopidy/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('136000b57f3716b9863e43d4d05812d7')
+md5sums=('f99761b0681cc21590f9deeec5b4207a')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
