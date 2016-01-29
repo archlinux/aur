@@ -3,7 +3,7 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-intensityfix
 pkgver=9.22
-pkgrel=1
+pkgrel=2
 pkgdesc='A unicode enabled rxvt-clone terminal emulator (urxvt), patched to avoid intense colors on 256 color escape codes'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -18,17 +18,29 @@ source=(
   'urxvtc.desktop'
   'urxvt-tabbed.desktop'
   'intensity.patch'
+  'font-width-fix.patch'
+  'line-spacing-fix.patch'
 )
 md5sums=('93782dec27494eb079467dacf6e48185'
          'fec94dc986fa37ec380079d81de3e0b2'
          'fac55f0a8404c86dad3e702146762332'
          '8a5599197568c63720e282b9722a7990'
-         '9e2ccfa07aafa6aeaf1dbdd005437af7')
+         '9e2ccfa07aafa6aeaf1dbdd005437af7'
+         'fef588d6bfe52304bf80e8f1771577b6'
+         '9f3248bc397ee76b008375f2ab0f201a')
+
+prepare() {
+  cd $_pkgname-$pkgver
+
+  patch -p0 -i ../intensity.patch
+  
+  # From https://aur.archlinux.org/packages/rxvt-unicode-patched/
+  patch -p0 -i ../font-width-fix.patch
+  patch -p0 -i ../line-spacing-fix.patch
+}
 
 build() {
   cd $_pkgname-$pkgver
-
-  patch -Np0 -i ../intensity.patch
 
   # we disable smart-resize (FS#34807)
   # do not specify --with-terminfo (FS#46424)
