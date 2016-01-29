@@ -1,8 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=avro-c-git
-pkgver=20160106
-pkgrel=2
+pkgver=20160122
+pkgrel=1
 pkgdesc="C bindings for Avro data serialization framework"
 arch=('i686' 'x86_64')
 depends=('snappy' 'xz' 'zlib')
