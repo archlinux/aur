@@ -7,7 +7,7 @@
 pkgname=clion-eap
 _pkgname=clion
 _archname=CLion
-pkgver=144.3143.4
+pkgver=144.3357.5
 _pkgver=${pkgver}
 pkgrel=1
 pkgdesc="C/C++ IDE. 30-day evaluation."
@@ -26,7 +26,7 @@ optdepends=(
   'swift-language: Swift programming language support (Also requires the plugin)'
 )
 source=("https://download.jetbrains.com/cpp/${_archname}-${_pkgver}.tar.gz")
-sha512sums=('9929384c82531fb95a809853740a8ec8990d31f0bdffd2504fcf587d2b77bf8042c210e09f011be459a359b4648003b32f1dac2c46ab4b464638bdc24da66cb2')
+sha512sums=('d68b07c47b6f8053b952f9d3b1680108178d9155ef7e8396ddc0f0b3722d9893879423e42419ff9bb64064c11a5ba22a7b758d6736291a2e72fcf9d645871160')
 noextract=("${_archname}-${_pkgver}.tar.gz")
 
 package() {
