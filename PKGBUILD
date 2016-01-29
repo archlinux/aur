@@ -6,8 +6,8 @@ pkgdesc="Magi (Coin Magi - XMG) is a hybrid PoW/PoS-based cryptocurrency. Magi i
 arch=('any')
 url="https://github.com/magi-project/magi"
 license=('')
-depends=('qt' 'qt5')
-makedepends=('make' 'qt' 'qt5')
+depends=('qt5-base')
+makedepends=('make' 'qt5-base')
 provides=('magi-qt')
 validpgpkeys=('046ACD2837CF8CE73E633F34049F37E7F991FB5F')
 
