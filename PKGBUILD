@@ -6,7 +6,7 @@
 
 pkgname=tmux-git
 _gitname=tmux
-pkgver=2.1.r275.gea9873e
+pkgver=2.1.r290.g4043790
 pkgrel=1
 pkgdesc="A terminal multiplexer"
 url="http://tmux.github.io"
@@ -44,10 +44,7 @@ package() {
 
   make DESTDIR="$pkgdir" install
   install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/tmux/LICENSE"
-  install -dm755 "$pkgdir/usr/share/tmux/"
-  install -m644 examples/* "$pkgdir/usr/share/tmux/"
 
-  # move bash_completion file
-  install -d "$pkgdir/usr/share/bash-completion/completions/"
-  mv "$pkgdir/usr/share/tmux/bash_completion_tmux.sh" "$pkgdir/usr/share/bash-completion/completions/tmux"
+  # install example config file
+  install -Dm755 example_tmux.conf "$pkgdir/usr/share/tmux/example_tmux.conf"
 }
