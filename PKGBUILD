@@ -2,10 +2,9 @@
 
 pkgname=stardict-de-cz
 pkgver=20150301
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU/FDL German-Czech dictionary for StarDict"
 arch=(any)
-depends=('stardict')
 url="http://gnu.nemeckoceskyslovnik.cz/"
 license=('FDL')
 md5sums=('ef41d0ebf1d50d86492b171718f47dae')
