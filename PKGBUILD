@@ -4,13 +4,13 @@
 _gitname=wafw00f
 pkgname=wafw00f-git
 pkgver=0.9.3.r102.ge8ad02c
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of security tools to identify and fingerprint Web Application Firewall/WAF products protecting a website"
 arch=('any')
 url="https://github.com/sandrogauci/wafw00f"
 license=('GPL')
-depends=('python')
-makedepends=('git')
+depends=('python' 'python-pluginbase')
+makedepends=('git' 'python-distribute')
 provides=('wafw00f')
 source=("$_gitname"::'git+https://github.com/sandrogauci/wafw00f.git')
 sha512sums=('SKIP')
