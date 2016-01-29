@@ -3,13 +3,13 @@
 
 pkgname=warzone2100-git
 _gitname=warzone2100
-pkgver=master_base.r28.g4437024
+pkgver=r13131.6d6ee05
 pkgrel=1
 pkgdesc="3D realtime strategy game on a future Earth (Git version)"
 arch=('i686' 'x86_64')
 url="http://wz2100.net/"
 license=('GPL')
-depends=('gettext' 'qt5-base' 'qt5-script' 'sdl2' 'libtheora' 'openal' 'libvorbis' 'glew' 'physfs' 'quesoglc' 'ttf-dejavu')
+depends=('qt5-script' 'sdl2' 'libtheora' 'openal' 'libvorbis' 'physfs' 'quesoglc' 'ttf-dejavu')
 makedepends=('zip' 'unzip' 'git')
 provides=('warzone' 'warzone2100' 'warzone-svn' 'warzone2100-beta')
 conflicts=('warzone2100')
@@ -18,13 +18,12 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_gitname"
-  git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
   cd "$srcdir/$_gitname"
   ./autogen.sh
- sed -i 's/-Werror//g' configure
   ./configure --prefix=/usr
   make
 }
