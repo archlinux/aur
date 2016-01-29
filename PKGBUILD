@@ -11,13 +11,13 @@
 
 pkgbase=mesa-git
 pkgname=('opencl-mesa-git' 'libva-mesa-driver-git' 'mesa-vdpau-git' 'mesa-git' 'mesa-libgl-git')
-pkgver=11.2.0_devel.75335.52865ef
+pkgver=11.2.0_devel.75890.30fcf24
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm>=2.4.66' 'dri2proto' 'dri3proto' 'presentproto' 
              'libxshmfence' 'libxxf86vm'  'libxdamage' 'libvdpau' 'libva' 'wayland' 'elfutils' 'llvm-svn'
-             'systemd' 'libomxil-bellagio' 'libclc' 'clang-svn' 'git'
-             'libtxc_dxtn' 'ocl-icd' 'openssl' 'gnutls')
+             'libomxil-bellagio' 'libcl' 'libclc' 'clang-svn' 'git' 'libgcrypt'
+             'libtxc_dxtn' 'ocl-icd')
              
 url="http://mesa3d.sourceforge.net"
 license=('custom')
@@ -27,7 +27,7 @@ md5sums=('SKIP'
          '5c65a0fe315dd347e09b1f2826a1df5a')
 
 pkgver() {
-    cd "${srcdir}/mesa"
+    cd mesa
     echo $(cat VERSION | tr "-" "_").$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
@@ -36,15 +36,24 @@ _mesaver() {
     [ -f $path ] && cat "$path"
 }
 
+prepare() {
+  cd mesa
+
+  # Fix detection of libLLVM when built with CMake
+  #sed -i 's/LLVM_SO_NAME=.*/LLVM_SO_NAME=LLVM/' configure.ac
+}
+
+
 build () {
-  cd "${srcdir}/mesa"
+  cd mesa
 
   ./autogen.sh --prefix=/usr \
                --sysconfdir=/etc \
                --with-dri-driverdir=/usr/lib/xorg/modules/dri \
-               --with-gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl \
+               --with-gallium-drivers=i915,r300,r600,radeonsi,nouveau,svga,swrast,virgl \
                --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
                --with-egl-platforms=x11,drm,wayland \
+               --with-sha1=libgcrypt \
                --enable-llvm-shared-libs \
                --enable-egl \
                --enable-gbm \
@@ -77,7 +86,7 @@ build () {
 
 package_opencl-mesa-git () {
   pkgdesc="OpenCL support for AMD/ATI Radeon Mesa drivers"
-  depends=('libxfixes' 'libxext' 'libcl' 'libclc' 'nettle' "mesa-git=${pkgver}")
+  depends=('libxfixes' 'libxext' 'libcl' 'libclc' 'libgcrypt' "mesa-git=${pkgver}")
   optdepends=('opencl-headers: headers necessary for OpenCL development')
   provides=("opencl-mesa=$(_mesaver)")
   replaces=('opencl-mesa')
@@ -96,7 +105,7 @@ package_opencl-mesa-git () {
 
 package_libva-mesa-driver-git() {
   pkgdesc="VA-API implementation for gallium"
-  depends=('nettle' "mesa-git=${pkgver}")
+  depends=("mesa-git=${pkgver}")
   provides=("libva-mesa-driver=$(_mesaver)")
   conflicts=('libva-mesa-driver')
 
@@ -110,7 +119,7 @@ package_libva-mesa-driver-git() {
 
 package_mesa-vdpau-git() {
   pkgdesc="Mesa VDPAU drivers"
-  depends=('nettle' "mesa-git=${pkgver}")
+  depends=("mesa-git=${pkgver}")
   provides=("mesa-vdpau=$(_mesaver)")
   replaces=('mesa-vdpau')
   conflicts=('mesa-vdpau')
@@ -124,8 +133,8 @@ package_mesa-vdpau-git() {
 
 package_mesa-git () {
   pkgdesc="an open-source implementation of the OpenGL specification"
-  depends=('libdrm>=2.4.66' 'wayland' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'systemd' 'elfutils'
-           'libomxil-bellagio' 'libtxc_dxtn' 'llvm-libs-svn' 'libxvmc')
+  depends=('libdrm>=2.4.66' 'wayland' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'elfutils'
+           'libomxil-bellagio' 'libtxc_dxtn' 'libgcrypt' 'llvm-libs-svn' 'libxvmc')
   optdepends=('nettle: for GLX-TLS support'
               'opengl-man-pages: for the OpenGL API man pages'
               'mesa-vdpau-git: for accelerated video playback'
