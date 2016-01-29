@@ -9,7 +9,7 @@ pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="An open source clone of Tetris Attack based on SDL"
 url="http://sourceforge.net/projects/blockattack"
-license=('GPL2')
+license=('GPL')
 depends=('enet' 'physfs' 'sdl_mixer' 'sdl_image' 'sdl_ttf')
 source=("http://downloads.sourceforge.net/blockattack/blockattack-${pkgver}.tar.bz2"
         "block-attack.patch")
