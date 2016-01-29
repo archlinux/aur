@@ -1,9 +1,9 @@
 # Maintainer:  WorMzy Tykashi <wormzy.tykashi@gmail.com>
 # Contributor: artiom <a.mv at gmx dot fr>
-pkgname=palemoon
+pkgname=palemoon-privacy
 pkgver=26.0.0
 pkgrel=1
-pkgdesc="Open source web browser based on Firefox focusing on efficiency."
+pkgdesc="Open source web browser based on Firefox focusing on efficiency with privacy patches from github.com/williex/firefox-privacy"
 arch=('i686' 'x86_64')
 url="http://www.palemoon.org/"
 license=('MPL' 'GPL' 'LGPL')
@@ -16,13 +16,14 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'gstreamer0.10-bad-plugins'
             'gstreamer0.10-good-plugins'
             'gstreamer0.10-ugly-plugins')
+conflicts=('palemoon')
 install=palemoon.install
 source=(git+"https://github.com/MoonchildProductions/Pale-Moon#tag=${pkgver}_Release"
         palemoon.desktop
         mozconfig.in)
 md5sums=('SKIP'
          '32231f6e6a532021fd04c6d7b32f4270'
-         '9ff0a5a4cfa930148cb96612bed4fe09')
+         'SKIP')
 
 prepare() {
   sed 's#%SRCDIR%#'"$srcdir"'#g' mozconfig.in > mozconfig
@@ -47,27 +48,27 @@ package() {
   make package
   cd dist
   install -d "$pkgdir"/usr/{bin,lib}
-  cp -r palemoon/ "$pkgdir/usr/lib/$pkgname"
-  ln -s "../lib/$pkgname/palemoon" "$pkgdir/usr/bin/palemoon"
-  install -Dm644 "$srcdir/palemoon.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  cp -r palemoon/ "$pkgdir/usr/lib/palemoon"
+  ln -s "../lib/palemoon/palemoon" "$pkgdir/usr/bin/palemoon"
+  install -Dm644 "$srcdir/palemoon.desktop" "$pkgdir/usr/share/applications/palemoon.desktop"
 
   # icons
   install -Dm644 palemoon/browser/chrome/icons/default/default16.png \
-    "$pkgdir/usr/share/icons/hicolor/16x16/apps/$pkgname.png"
+    "$pkgdir/usr/share/icons/hicolor/16x16/apps/palemoon.png"
   install -Dm644 palemoon/browser/chrome/icons/default/default32.png \
-    "$pkgdir/usr/share/icons/hicolor/32x32/apps/$pkgname.png"
+    "$pkgdir/usr/share/icons/hicolor/32x32/apps/palemoon.png"
   install -Dm644 palemoon/browser/chrome/icons/default/default48.png \
-    "$pkgdir/usr/share/icons/hicolor/48x48/apps/$pkgname.png"
+    "$pkgdir/usr/share/icons/hicolor/48x48/apps/palemoon.png"
   install -Dm644 palemoon/browser/icons/mozicon128.png \
-    "$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
+    "$pkgdir/usr/share/icons/hicolor/128x128/apps/palemoon.png"
 
   # use system-provided dictionaries
-  rm -rf "$pkgdir"/usr/lib/$pkgname/{dictionaries,hyphenation}
-  ln -s /usr/share/hunspell "$pkgdir/usr/lib/$pkgname/dictionaries"
-  ln -s /usr/share/hyphen "$pkgdir/usr/lib/$pkgname/hyphenation"
+  rm -rf "$pkgdir"/usr/lib/palemoon/{dictionaries,hyphenation}
+  ln -s /usr/share/hunspell "$pkgdir/usr/lib/palemoon/dictionaries"
+  ln -s /usr/share/hyphen "$pkgdir/usr/lib/palemoon/hyphenation"
 
   # avoid duplicate binaries
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  #ln -sf palemoon "$pkgdir/usr/lib/$pkgname/palemoon-bin"
-  rm -f "$pkgdir/usr/lib/$pkgname/palemoon-bin"
+  #ln -sf palemoon "$pkgdir/usr/lib/palemoon/palemoon-bin"
+  rm -f "$pkgdir/usr/lib/palemoon/palemoon-bin"
 }
