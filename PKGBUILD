@@ -1,8 +1,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-ffmpeg-codecs
-pkgver=47.0.2526.111
-_opver=34
+pkgver=48.0.2564.82
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for opera"
 arch=('i686' 'x86_64')
@@ -17,7 +16,7 @@ options=('!strip')
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
 )
-sha256sums=('179a9189634eb344078c5728fb429bc8581015437ff857261268ab7dbe093708')
+sha256sums=('cda64bf427d01bae7d45863812edcd7fa43176238ec07c7752e42afd3e1714fd')
 
 
 prepare() {
@@ -58,7 +57,7 @@ package() {
   cd "$srcdir/chromium-$pkgver"
 
   install -Dm644 out/Release/lib/libffmpeg.so \
-    "$pkgdir/usr/lib/opera/lib_extra/libffmpeg.so.$_opver"
+    "$pkgdir/usr/lib/opera/lib_extra/libffmpeg.so"
 }
 
 # vim:set ts=2 sw=2 et:
