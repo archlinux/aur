@@ -34,6 +34,7 @@ package() {
   cd $pkgname
   install -D -m755 fetch "$pkgdir/usr/bin/fetch"
   install -D -m644 LICENSE.md "$pkgdir/usr/share/licenses/fetch/LICENSE.md"
+  install -D -m755 config "$pkgdir/usr/share/fetch/config"
   install -d -m755 ascii/distro/ "$pkgdir/usr/share/fetch/ascii/distro"
   install -D -m755 ascii/distro/* "$pkgdir/usr/share/fetch/ascii/distro/"
 }
