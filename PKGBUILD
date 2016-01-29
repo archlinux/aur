@@ -1,13 +1,13 @@
 # Maintainer: Dan Johansen <strit83 at gmail dot com>
 
 pkgname=arena-tracker
-pkgver=3.32
+pkgver=3.33
 pkgrel=1
 pkgdesc="Tracks your Hearthstone Arena matches and cards"
 arch=('i686' 'x86_64')
 url="https://github.com/supertriodo/Arena-Tracker/"
 license=('GPL')
-depends=('qt5-base')
+depends=('qt5-base' 'python-pyautogui')
 makedepends=('opencv' 'git')
 provides=(arena-tracker)
 conflicts=('arena-tracker' 'arena-tracker-git')
