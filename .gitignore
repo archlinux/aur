@@ -1,0 +1,7 @@
+*
+!.git*
+!PKGBUILD
+!pkg
+!src
+!*.install
+!.SRCINFO
