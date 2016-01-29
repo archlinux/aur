@@ -1,32 +1,32 @@
-# Maintainer: josephgbr <rafael.f.f1@gmail.com>
-
 pkgname=nmclient
-pkgver=2.2.2
-pkgrel=5
-pkgdesc="Novell Messenger client for linux"
+pkgver=3.0.2
+pkgrel=1
+pkgdesc="Novell Messenger Client for Linux"
 url="http://gwclient.provo.novell.com/"
 arch=('i686' 'x86_64')
 license=(custom)
+provides=('nmclient')
+conflictis=('nmclient2')
 install=$pkgname.install
 depends=('bash' 'hicolor-icon-theme' 'desktop-file-utils')
 makedepends=('unzip' 'rpmextract')
-depends_i686=('java-runtime' 'glib2' 'libxext' 'gtk2')
-depends_x86_64=('java32-runtime' 'lib32-glib2' 'lib32-libxext' 'lib32-gtk2')
-source=(https://gwclient.innerweb.novell.com/client/messenger/nvlmsgrlinuxrpm.zip)
-md5sums=('b10d0015e76edb50eb169193bc919a5a')
+depends_i686=('jre' 'glib2' 'libxext' 'gtk2')
+depends_x86_64=('bin32-jre' 'lib32-glib2' 'lib32-libxext' 'lib32-gtk2')
+source=(https://gwclient.innerweb.novell.com/client/messenger/nim30linux.zip)
+md5sums=('e332649760df984b166d39c427d2ae9f')
 
 build() {
     # just extract blob package
   rm -rf "$pkgname-$pkgver"
   mkdir "$pkgname-$pkgver"
   cd "$pkgname-$pkgver"
-  rpmextract.sh "$srcdir"/nvlmsgrlinux.rpm
+  rpmextract.sh "$srcdir"/novell-messenger-client-3.0.2-20151117.x86_64.rpm
   chmod +rx opt usr
 }
 
 package() {
   cd "$pkgname-$pkgver"
-
+ 
      # prepare directories  
   install -d "$pkgdir"/usr/bin \
          "$pkgdir"/usr/share/nmclient/ \
@@ -47,17 +47,20 @@ package() {
     JAVA_BIN=/usr/bin/java32
   fi
   
+    # set paths
+  sed -e "s#^CLIENT_PATH=.*#CLIENT_PATH=/usr/share/nmclient/#" \
+    -i "$pkgdir"/usr/bin/nmclient    
   sed -e "s#LD_LIBRARY_PATH=.*#LD_LIBRARY_PATH=\$JAVA_BIN:\$CLIENT_PATH \\\\#" \
-    -e "s#^JAVA_BIN=.*#JAVA_BIN=$JAVA_BIN#" \
-    -e "s#^CLIENT_PATH=.*#CLIENT_PATH=/usr/share/nmclient/#" \
-    -i "$pkgdir"/usr/bin/nmclient
+    -e "s#^JAVA_BIN=.*#JAVA_BIN=$JAVA_BIN#"                                    \
+    -e "s#^CLIENT_PATH=.*#CLIENT_PATH=/usr/share/nmclient/#"                   \
+    -i "$pkgdir"/usr/share/nmclient/launcher
   
     # set Icons and desktop file, and fix their paths
-  mv "$pkgdir"/usr/share/nmclient/nmclient.desktop \
+  mv "$pkgdir"/usr/share/nmclient/nmclient.desktop  \
        "$pkgdir"/usr/share/applications/
-  mv "$pkgdir"/usr/share/nmclient/nmclient.png \
+  mv "$pkgdir"/usr/share/nmclient/nmclient3.png     \
        "$pkgdir"/usr/share/icons/hicolor/48x48/apps/
   
-  sed -e 's/Exec=.*/Exec=nmclient/;s/Icon=.*/Icon=nmclient.png/' \
+  sed -e 's/Exec=.*/Exec=nmclient/;s/Icon=.*/Icon=nmclient3.png/' \
     -i "$pkgdir"/usr/share/applications/nmclient.desktop
 }
