@@ -1,11 +1,12 @@
 # Maintainer: Dylan Araps <dyl@tfwno.gf>
 pkgname=fetch-git
 _pkgname=fetch
-pkgver=0.2.1.r88.gea3508f
+pkgver=1.0.r26.g9bde0eb
 pkgrel=1
 pkgdesc="CLI script to show your system's info and display an image using w3m."
 arch=('any')
 url="https://github.com/dylanaraps/fetch"
+license=('MIT')
 provides=($_pkgname)
 conflicts=($_pkgname)
 depends=('bash' 'ncurses')
@@ -31,5 +32,8 @@ pkgver() {
 
 package() {
   cd $pkgname
-  install -Dm755 "fetch" "$pkgdir/usr/bin/fetch"
+  install -D -m755 fetch "$pkgdir/usr/bin/fetch"
+  install -D -m644 LICENSE.md "$pkgdir/usr/share/licenses/fetch/LICENSE.md"
+  install -d -m755 ascii/distro/ "$pkgdir/usr/share/fetch/ascii/distro"
+  install -D -m755 ascii/distro/* "$pkgdir/usr/share/fetch/ascii/distro/"
 }
