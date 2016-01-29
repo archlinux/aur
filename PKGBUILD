@@ -11,7 +11,6 @@ arch=('i686' 'x86_64')
 
 depends=('bash' 'xcb-util-wm' 'sxhkd' 'cottage-git')
 makedepends=('git')
-checkdepends=('linux-headers')
 provides=('howm-x11')
 conflicts=('howm-x11')
 
@@ -28,14 +27,6 @@ pkgver() {
 build() {
     cd "$pkgname"
     make debug
-}
-
-check() {
-    cd "$pkgname"
-    find /usr/lib/modules -name checkpatch.pl -print -quit | xargs -i cp {} .
-
-    printf 'spellingtxt||disable\n' > spelling.txt
-    make check
 }
 
 package() {
