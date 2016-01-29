@@ -8,7 +8,7 @@
 
 # Maintainer: Fabien Devaux <fdev31@gmail.com>
 pkgname=blender-plugin-retopoflow-git
-pkgver=1.0
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A suite of retopology tools for Blender"
 arch=('any')
