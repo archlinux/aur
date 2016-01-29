@@ -1,6 +1,6 @@
 # Maintainer: M0Rf30
 pkgname=iortcw-git
-pkgver=499
+pkgver=521
 pkgrel=1
 pkgdesc="Merge of ioquake3 features and fixes into Return to Castle Wolfenstein"
 arch=('i686' 'x86_64')
@@ -88,11 +88,11 @@ package() {
         #
         # i686 Systems
         #
-        sed -i "s:ARCH:i386:" \
+        sed -i "s:ARCH:x86:" \
             $srcdir/iortcwsp.launcher
-        sed -i "s:ARCH:i386:" \
+        sed -i "s:ARCH:x86:" \
             $srcdir/iortcwmp.launcher
-        sed -i "s:ARCH:i386:" \
+        sed -i "s:ARCH:x86:" \
             $srcdir/iortcwded.launcher
     fi
   
