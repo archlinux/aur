@@ -5,7 +5,7 @@ _py=python2
 _n=pydub
 
 pkgname=$_py-$_n
-pkgver=0.10.0
+pkgver=0.16.3
 pkgrel=1
 pkgdesc="Manipulate audio with an simple and easy high level interface"
 depends=($_py 'ffmpeg')
@@ -13,7 +13,7 @@ makedepends=($_py "$_py-distribute")
 arch=('any')
 conflicts=("$_py-$n-git")
 source=(http://pypi.python.org/packages/source/p/$_n/$_n-$pkgver.tar.gz)
-md5sums=('abd575830143fd9ae89abfcc8b4d6a84')
+md5sums=('f1825422225bb8614cd808aa94916fd7')
 url="http://pydub.com"
 license="MIT"
 
