@@ -3,13 +3,13 @@
 # Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
 
 pkgname=purple-whatsapp
-pkgver=0.8.6
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="WhatsApp protocol implementation for libpurple (pidgin)"
 arch=('i686' 'x86_64')
 url="https://github.com/davidgfnet/whatsapp-purple"
 license=('GPLv2')
-depends=('libpurple' 'freeimage')
+depends=('libpurple' 'freeimage' 'protobuf-c')
 optdepends=('pidgin')
 provides=('purple-whatsapp')
 source=("git+https://github.com/davidgfnet/whatsapp-purple.git#tag=v${pkgver}")
