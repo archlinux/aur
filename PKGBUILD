@@ -2,7 +2,7 @@
 
 _pkgname=openbazaard-standalone
 pkgname=${_pkgname}-git
-pkgver=620.0596593
+pkgver=676.255d4bb
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
 arch=(any)
@@ -28,7 +28,7 @@ msg2 "Creating an optimized standalone executable"
   virtualenv2 env
   source env/bin/activate
   pip2 install --upgrade -r requirements.txt
-  pip2 install pyinstaller
+  pip2 install https://github.com/pyinstaller/pyinstaller/archive/develop.zip
   env/bin/pyinstaller -F -n ${_pkgname}  openbazaard.py
   
 msg2 "Install systemd service"
