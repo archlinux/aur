@@ -6,7 +6,7 @@
 # Contributor: Florent Peterschmitt <florent@peterschmitt.fr>
 
 pkgname=apt-cacher-ng
-pkgver=0.8.6
+pkgver=0.8.9
 pkgrel=1
 pkgdesc="A caching proxy specialized for package files."
 url="http://www.unix-ag.uni-kl.de/~bloch/acng/"
@@ -16,14 +16,12 @@ depends=('zlib' 'bzip2' 'fuse' 'xz' 'openssl')
 makedepends=('cmake')
 source=("http://ftp.debian.org/debian/pool/main/a/apt-cacher-ng/apt-cacher-ng_${pkgver}.orig.tar.xz"
         'acng.conf.patch'
-        'apt-cacher-ng.service.patch'
-        'apt-cacher-ng.conf.patch')
+        'apt-cacher-ng.service.patch')
 
 backup=('etc/apt-cacher-ng/acng.conf')
-md5sums=('5cb18432ab41ff6a051f780bf99fb2d9'
+md5sums=('bfc8034c7b372e680473523ae2be8dee'
          '180e14417a70642a53c77bcb6a7b7292'
-         '815e0727aec1f59bbeda15094446260e'
-         '489c6e676c7f143e177f5723526c0129')
+         '9645bdcd30a6b0ddc956c2a48c7a27ff')
 
 install=apt-cacher-ng.install
 
@@ -41,9 +39,7 @@ build() {
   make all || return 1
 
   patch -Np0 -i "${srcdir}/acng.conf.patch"
-  cd ..
   patch -Np0 -i "${srcdir}/apt-cacher-ng.service.patch"
-  patch -Np0 -i "${srcdir}/apt-cacher-ng.conf.patch"
 }
 
 package() {
@@ -56,8 +52,8 @@ package() {
 
   install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  install -D -m644 ${srcdir}/${pkgname}-${pkgver}/systemd/apt-cacher-ng.service ${pkgdir}/usr/lib/systemd/system/apt-cacher-ng.service
-  install -D -m644 ${srcdir}/${pkgname}-${pkgver}/systemd/apt-cacher-ng.conf ${pkgdir}/usr/lib/tmpfiles.d/apt-cacher-ng.conf
+  install -D -m644 ${srcdir}/${pkgname}-${pkgver}/builddir/systemd/apt-cacher-ng.service ${pkgdir}/usr/lib/systemd/system/apt-cacher-ng.service
+  install -D -m644 ${srcdir}/${pkgname}-${pkgver}/builddir/systemd/apt-cacher-ng.conf ${pkgdir}/usr/lib/tmpfiles.d/apt-cacher-ng.conf
   mkdir -p ${pkgdir}/var/log/apt-cacher-ng
   mkdir -p ${pkgdir}/var/cache/apt-cacher-ng
 }

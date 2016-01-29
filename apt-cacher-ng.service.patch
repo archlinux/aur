@@ -4,7 +4,7 @@
  
  [Service]
  # the SocketPath option can be removed if the inetd bridge functionality is not needed
--ExecStart=/usr/sbin/apt-cacher-ng SocketPath=/var/run/apt-cacher-ng/socket -c /etc/apt-cacher-ng ForeGround=1
+-ExecStart=/usr/sbin/apt-cacher-ng SocketPath=/run/apt-cacher-ng/socket -c /etc/apt-cacher-ng ForeGround=1
 +ExecStart=/usr/bin/apt-cacher-ng SocketPath=/run/apt-cacher-ng/socket -c /etc/apt-cacher-ng ForeGround=1
  User=apt-cacher-ng
  Group=apt-cacher-ng
