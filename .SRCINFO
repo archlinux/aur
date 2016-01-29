@@ -4,6 +4,7 @@ pkgbase = blender-plugin-manuelbastionilab
 	pkgrel = 1
 	url = http://www.manuelbastioni.com/manuellab.php
 	arch = any
+	groups = blender
 	license = AGPL
 	makedepends = unzip
 	depends = blender
