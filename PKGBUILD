@@ -1,7 +1,7 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=mathopd
 pkgver=1.6b15
-pkgrel=4
+pkgrel=5
 pkgdesc="A very small, yet very fast HTTP server for UN*X systems"
 arch=(i686 x86_64)
 url="http://www.mathopd.org/"
@@ -27,21 +27,33 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	msg2 'Creating a log directory...'
-	install -o nobody -g nobody -d $pkgdir/var/log/$pkgname
-	mkdir -m755 -p $pkgdir/{etc,usr/{bin,share/doc/$pkgname}}
-	cp ./doc/* $pkgdir/usr/share/doc/$pkgname
-	install -TDm644 ./doc/sample.cfg $pkgdir/etc/$pkgname/$pkgname.cfg
-	cd ./src
-	make PREFIX=/usr SBINDIR=/usr/bin DESTDIR="$pkgdir/" install
-	msg2 'Installing systemd service...'
-	install -TDm 644 "$srcdir/$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+	
+	msg2 'Installing the config file...'
+	install -TDm644 doc/sample.cfg $pkgdir/etc/$pkgname/$pkgname.cfg
         # config file
 	sed \
 	 -e 's/^User daemon$/User nobody/' \
 	 -e 's!/var/mathopd/log!/var/log/mathopd!g' \
 	 -i $pkgdir/etc/$pkgname/$pkgname.cfg
+	
+	msg2 'Creating a log directory...'
+	install -o nobody -g nobody -d $pkgdir/var/log/$pkgname
+	mkdir -m755 -p $pkgdir/{etc,usr/{bin,share/doc/$pkgname}}
+	
+	msg2 'Copying document files...'
+	cp ./doc/* $pkgdir/usr/share/doc/$pkgname
+		
+	msg2 'Installing the rest of file...'
+	# license
+	install -Dm644 ./COPYING $pkgdir/usr/share/licenses/$pkgname/LICENSE
+	cd ./src
+        # binary	
+	make PREFIX=/usr SBINDIR=/usr/bin DESTDIR="$pkgdir/" install
+	
+	msg2 'Installing systemd service...'
+	install -TDm 644 "$srcdir/$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+
 	# man pages
-	install -TDm644 $srcdir/$pkgname.conf.5.gz $pkgdir/usr/share/man/man5/$pkgname.conf.5.gz
-	install -TDm644 $srcdir/$pkgname.8.gz $pkgdir/usr/share/man/man8/$pkgname.8.gz
+	install -Dm644 $srcdir/$pkgname.conf.5.gz $pkgdir/usr/share/man/man5/$pkgname.conf.5.gz
+	install -Dm644 $srcdir/$pkgname.8.gz $pkgdir/usr/share/man/man8/$pkgname.8.gz
 }
