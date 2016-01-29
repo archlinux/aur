@@ -4,7 +4,7 @@
 
 pkgname=ghost.py
 _uc_pkg=Ghost.py
-pkgver=0.1.1
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Webkit based webclient (relies on PyQT)"
 arch=('any')
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('python2' 'python2-pyqt')
 makedepends=('python2-distribute')
 source=(http://pypi.python.org/packages/source/G/$_uc_pkg/$_uc_pkg-$pkgver.tar.gz)
-md5sums=('8ea797161ef3173a9cb6860533d79d18')
+md5sums=('310197fbb4f852e7ce50767b9c822bdf')
 
 package() {
    cd $_uc_pkg-$pkgver 
