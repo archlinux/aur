@@ -4,7 +4,7 @@
 
 pkgbase=pypy-setuptools
 pkgname=('pypy3-setuptools' 'pypy-setuptools')
-pkgver=19.6
+pkgver=19.6.1
 pkgrel=1
 epoch=1
 pkgdesc="Easily download, build, install, upgrade, and uninstall Python packages"
@@ -12,21 +12,14 @@ arch=('any')
 license=('PSF')
 makedepends=('pypy' 'pypy3')
 url="http://pypi.python.org/pypi/setuptools"
-source=("https://pypi.python.org/packages/source/s/setuptools/setuptools-${pkgver}.tar.gz"
-        # This commit is necessary for the real pypy3 patch
-        'pypy3-pre.patch'::'https://bitbucket.org/pypa/setuptools/commits/69acec16260b246c63cba48f80b46895d5b84393/raw/'
-        'pypy3.patch'::'https://bitbucket.org/pypa/setuptools/commits/11ef9534d735140144b43d8aff99c7da8f2746bf/raw/')
-sha512sums=('79b9a0f595bda16f18997d9937c6bc2e21bb2bb23fcca4be29df2fb71649c5ba973428472e3c795f2a5d6fbcccf1d5f29096a0fb593a4c52fa87b1d003e474da'
-            'aa1912f17621c40747d437eb228e6cffaa25f2f77e91d20107efe971a09f74e774b0d8d828570f580a488b92890c021dd2931bb043a5b8a291eaf2dad4c9c016'
-            'a05ba834b13682c607f4e8c0247c5bc16e52351a5ca2afa82b6be5c2d8a26ffa2bcb336eb315851229e6eff0145ebd8ec6b870c2f118ee18100dc914b76801d7')
+source=("https://pypi.python.org/packages/source/s/setuptools/setuptools-${pkgver}.tar.gz")
+sha512sums=('542c41aafdeca3e7658650dfb1c2f5209eb89ae17586cddf1a57316b987507c1263648c93d4177d8d1f775c0ce60c0849b9f4639e395b364ddfe4d92f019be0c')
 
 prepare() {
   cp -a setuptools-${pkgver}{,-pypy}
 
   cd "${srcdir}"/setuptools-${pkgver}
   sed -i -e "s|^#\!.*/usr/bin/env python|#!/usr/bin/env pypy3|" setuptools/command/easy_install.py
-  patch -i ../pypy3-pre.patch -p1 -N -F 0
-  patch -i ../pypy3.patch -p1 -N -F 0
 
   cd "${srcdir}"/setuptools-${pkgver}-pypy
   sed -i -e "s|^#\!.*/usr/bin/env python|#!/usr/bin/env pypy|" setuptools/command/easy_install.py
