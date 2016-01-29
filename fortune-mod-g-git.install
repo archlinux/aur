@@ -1,0 +1,12 @@
+pre_install() {
+    echo 'I *DO NOT* maintain the source repo.'
+    echo 'This package does not run the python build script to avoid trusting'
+    echo 'the git repo, but you should still inspect the package before installing.'
+    echo ''
+    echo "This package conatins offensive fortunes. If you might be offended, don't install."
+}
+
+post_install() {
+    echo 'You can randomly browse through installed offensive fortunes with fortune -o'
+}
+
