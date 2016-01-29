@@ -7,11 +7,8 @@ pkgdesc="a python interface to asterisk"
 arch=('any')
 url="http://sourceforge.net/projects/pyst/"
 license=('GPL')
-depends=()
-backup=()
 conflicts=()
 options=(!emptydirs)
-install=
 source=(http://sourceforge.net/projects/pyst/files/pyst/${pkgver}/${_pkgname}-${pkgver}.tar.gz/download)
 sha256sums=('84361ca8325704eefd6d54df83b60b8119ee277a968715860b7a81d8015332ea')
 
