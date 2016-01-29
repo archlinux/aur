@@ -12,7 +12,7 @@
 pkgbase=mesa-git
 pkgname=('opencl-mesa-git' 'libva-mesa-driver-git' 'mesa-vdpau-git' 'mesa-git' 'mesa-libgl-git')
 pkgver=11.2.0_devel.75890.30fcf24
-pkgrel=1
+pkgrel=1.1
 arch=('i686' 'x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm>=2.4.66' 'dri2proto' 'dri3proto' 'presentproto' 
              'libxshmfence' 'libxxf86vm'  'libxdamage' 'libvdpau' 'libva' 'wayland' 'elfutils' 'llvm-svn'
@@ -35,14 +35,6 @@ _mesaver() {
     path="${srcdir}/mesa/VERSION"
     [ -f $path ] && cat "$path"
 }
-
-prepare() {
-  cd mesa
-
-  # Fix detection of libLLVM when built with CMake
-  #sed -i 's/LLVM_SO_NAME=.*/LLVM_SO_NAME=LLVM/' configure.ac
-}
-
 
 build () {
   cd mesa
@@ -75,9 +67,6 @@ build () {
                --with-clang-libdir=/usr/lib
 
   make
-#               --with-gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl \
-#              --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
-
   
   # fake installation
   mkdir -p "${srcdir}/fakeinstall"
@@ -135,8 +124,7 @@ package_mesa-git () {
   pkgdesc="an open-source implementation of the OpenGL specification"
   depends=('libdrm>=2.4.66' 'wayland' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'elfutils'
            'libomxil-bellagio' 'libtxc_dxtn' 'libgcrypt' 'llvm-libs-svn' 'libxvmc')
-  optdepends=('nettle: for GLX-TLS support'
-              'opengl-man-pages: for the OpenGL API man pages'
+  optdepends=('opengl-man-pages: for the OpenGL API man pages'
               'mesa-vdpau-git: for accelerated video playback'
               'libva-mesa-driver-git: for accelerated video playback')
   provides=("mesa=$(_mesaver)" 'mesa-r300-r600-radeonsi-git' 'mesa-dri')
