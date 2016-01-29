@@ -1,3 +1,5 @@
+*.pkg.tar
+*.pkg.tar.xz
 *.tar.xz
 albion-online-setup
 pkg/

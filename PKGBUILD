@@ -14,6 +14,9 @@ options=(!strip docs libtool emptydirs !zipman staticlibs !upx)
 md5sums=('4eeee3350a862b8dbbc8a89e9ecf6c59'
          'cec7e1ad7f4f8acfc0628d0dd8d421e6')
 
+
+PKGEXT='.pkg.tar'
+
 package() {
   mkdir -p "${pkgdir}/opt/albiononline"
   mv data/* "${pkgdir}/opt/albiononline/."
