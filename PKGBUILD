@@ -15,7 +15,7 @@ _mod1ver=0.2.0
 _mod2=ngx_http_substitutions_filter_module
 _mod2ver=0.6.4
 
-pkgname=nginx-mainline-boringssl
+pkgname=nginx-mainline-boringssl-google_fliter
 pkgver=1.9.10
 pkgrel=2
 pkgdesc="lightweight HTTP server, statically linked against BoringSSL,with ngx_http_google_filter_module."
