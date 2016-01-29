@@ -6,3 +6,4 @@ Exec=/opt/soundnode-app-bin/Soundnode-App
 Icon=/opt/soundnode-app-bin/soundnode.png
 Terminal=false
 Type=Application
+Category=AudioVideo;Player
