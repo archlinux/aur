@@ -1,7 +1,10 @@
 # $Id$
 # Contributor: Dale Blount <dale@archlinux.org>
 # Contributor: Gregor Ibic <gregor.ibic@intelicom.si>
-# Maintainer: Gaetan Bisson <bisson@archlinux.org>
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
+# Maintainer: Micheael Novick <mnovick1988@gmail.com>
+#
+# Cloned from the Archlinux PKGBUILD for clamav
 
 pkgname=clamav-git
 _gitname=clamav-devel
