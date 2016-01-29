@@ -5,22 +5,27 @@
 _cfgdir=/opt/openresty/nginx/conf
 _tmpdir=/var/lib/openresty
 pkgname=openresty
-_pkgname=ngx_openresty
-pkgver=1.9.7.2
+pkgver=1.9.7.3
 pkgrel=1
-pkgdesc="a powerful web app server by extending nginx"
+pkgdesc="A Fast and Scalable Web Platform by Extending NGINX with Lua"
 arch=('i686' 'x86_64')
 url="http://openresty.org/"
 license=('BSD')
 depends=('perl>=5.6.1' 'readline' 'pcre' 'openssl')
+makedepends=('git')
 install=
-source=(http://openresty.org/download/$_pkgname-$pkgver.tar.gz
+source=(http://openresty.org/download/$pkgname-$pkgver.tar.gz
         service
-        openresty.logrotate)
+        openresty.logrotate
+	'git+https://github.com/openresty/stream-lua-nginx-module.git'
+	'git+https://github.com/openresty/stream-echo-nginx-module.git'
+	)
 noextract=()
-sha256sums=('3a202e6f6898614dfa2c0fa8a565762ac790fa0b572e259e23b246b31a896fb9'
+sha256sums=('3e4422576d11773a03264021ff7985cd2eeac3382b511ae3052e835210a9a69a'
             'ec55ac7da98f5f5ec54d096c5f79b656edec0ebca835b6b9f1d20fb7be7119c5'
-            '613b0ed3fe4b5ee505ddb5122ee41604f464a5049be81c97601ee93970763a23')
+            '613b0ed3fe4b5ee505ddb5122ee41604f464a5049be81c97601ee93970763a23'
+            'SKIP'
+            'SKIP')
 
 backup=(${_cfgdir:1}/fastcgi.conf
         ${_cfgdir:1}/fastcgi_params
@@ -34,7 +39,7 @@ backup=(${_cfgdir:1}/fastcgi.conf
         etc/logrotate.d/openresty)
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
 
   ./configure \
     --prefix=/opt/openresty \
@@ -52,6 +57,10 @@ build() {
     --with-luajit \
     --with-pcre-jit \
     --with-http_v2_module \
+    --with-stream \
+    --with-stream_ssl_module \
+    --add-module="../stream-lua-nginx-module" \
+    --add-module="../stream-echo-nginx-module" \
     # --without-http_echo_module         \ # disable ngx_http_echo_module
     # --without-http_xss_module          \ # disable ngx_http_xss_module
     # --without-http_coolkit_module      \ # disable ngx_http_coolkit_module
@@ -204,8 +213,9 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
+  install -Dm644 COPYRIGHT $pkgdir/usr/share/licenses/$pkgname/LICENSE
   install -d "$pkgdir"/etc/logrotate.d
   install -m644 "$srcdir"/openresty.logrotate "$pkgdir"/etc/logrotate.d/openresty
   install -d "$pkgdir"/$_tmpdir
