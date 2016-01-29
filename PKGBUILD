@@ -3,7 +3,7 @@
 pkgname=mattermost
 pkgver=1.4.0
 _pkgver=${pkgver/rc/-rc}
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source Slack-alternative in Golang and React"
 arch=('i686' 'x86_64')
 url="http://mattermost.org"
@@ -17,10 +17,12 @@ optdepends=('mariadb: SQL server storage'
 install=mattermost.install
 source=(https://github.com/mattermost/platform/archive/v$_pkgver/$pkgname-$_pkgver.tar.gz
         mattermost.service
-        mattermost-user.conf)
+        mattermost-user.conf
+        log4go.patch::https://github.com/mattermost/platform/commit/b1251b93932adf616a996725448d0b77fad0d3c1.patch)
 sha256sums=('8cfcb69ac5801a8323d71a270daac1c4a3cd0d920f812894e92e5a75a551d47c'
             'b02a0bdbffd17a3a02b6d0098d2a10363ad595070ce6985513b7e6496f9b655a'
-            '7cd154ed034a09f6671cab68bc9c30a7fd84e777e801e2aaf93a567cfa0dccfd')
+            '7cd154ed034a09f6671cab68bc9c30a7fd84e777e801e2aaf93a567cfa0dccfd'
+            '1823acf3e6eeafac5c94c9092678803f87d5d6418b8acdf5ca367ded4bca2968')
 
 prepare() {
 	mkdir -p src/github.com/mattermost
@@ -32,6 +34,8 @@ prepare() {
 	sed "s|_BUILD_DATE_|$(date -u)|g" -i model/version.go
 	sed "s|_BUILD_NUMBER_|$_pkgver-$pkgrel|g" -i model/version.go
 	sed "s|_BUILD_HASH_|-|g" -i model/version.go
+
+	patch -p1 -i "$srcdir"/log4go.patch
 }
 
 build() {
