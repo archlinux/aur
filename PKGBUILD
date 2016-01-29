@@ -2,14 +2,13 @@
 # Contributor:	Michal Karas <largon at largon dot net>
 
 pkgname=stardict-en-cz
-pkgver=20151101
+pkgver=20160101
 pkgrel=1
 pkgdesc="GNU/FDL English-Czech dictionary for StarDict"
 arch=(any)
-depends=('stardict')
 url="http://slovnik.zcu.cz/"
 license=('FDL')
-md5sums=('6e32a6b37a50bb68408dc597eff9cd7d')
+md5sums=('c5adfdbd2f21552a610b5902b2033c1e')
 source=(http://dl.cihar.com/slovnik/stable/stardict-english-czech-$pkgver.tar.gz)
 
 package() {
