@@ -1,7 +1,7 @@
 # Maintainer: Tom X. Tobin <tomxtobin@tomxtobin.com>
 
 pkgname=rocker
-pkgver=1.0.1
+pkgver=1.1.0
 _pkgver=${pkgver//_/-}
 pkgrel=1
 pkgdesc="Docker build tool with additional features"
@@ -10,22 +10,33 @@ url="https://github.com/grammarly/$pkgname"
 license=('Apache')
 makedepends=('go')
 source=("https://github.com/grammarly/$pkgname/archive/$_pkgver.zip")
-sha256sums=('5e9eeab73bdfb28431e1c5037bb046ecbc0a4147e25b615602b12f351b287043')
-_git_commit="eec16c99034d644e92ded47904d1c229e62bb187"
+sha256sums=('25a96317d88a3b136684acc2c45485577c30b75116ce5475b44c2a6a3ab6f0ef')
+_git_commit="2d8fe8949c011b89acb1f3346866f9be48e90c5b"
 _ldflags="\
 -X main.Version=$_pkgver \
 -X main.GitCommit=$_git_commit \
 -X main.GitBranch=$_pkgver \
 -X main.BuildTime=$(TZ=GMT date "+%Y-%m-%d_%H:%M_GMT")"
+_srcdir="$pkgname-$_pkgver"
+_rocker_vendor="vendor/github.com/grammarly/rocker"
+
+prepare() {
+  mkdir -p gopath/src
+  mv $_srcdir gopath/src
+  cd gopath/src/$_srcdir
+  mkdir -p $_rocker_vendor
+  mv src $_rocker_vendor
+}
 
 build() {
-  cd "$pkgname-$_pkgver"
-  export GOPATH="$(pwd):$(pwd)/vendor"
-  go build -ldflags "$_ldflags" -o bin/$pkgname src/cmd/rocker/main.go
+  export GOPATH="$(pwd)/gopath"
+  export GO15VENDOREXPERIMENT=1
+  cd gopath/src/$_srcdir
+  go build -ldflags "$_ldflags" -o bin/$pkgname
 }
 
 package() {
-  cd "$pkgname-$_pkgver"
+  cd gopath/src/$_srcdir
   install -Dm755 bin/$pkgname $pkgdir/usr/bin/$pkgname
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
