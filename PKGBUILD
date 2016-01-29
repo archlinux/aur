@@ -6,11 +6,11 @@ pkgdesc="Pull down transactions from your bank and create ledger transactions fo
 arch=("any")
 url="https://gitlab.com/egh/ledger-autosync"
 license=('GPL3')
-depends=('python2' 'python2-ofxparse')
+depends=('python2' 'ofxclient-git' 'ofxparse-git')
 optdepends=('ledger')
 makedepends=('git')
-provides=("${pkgname%}")
-conflicts=("${pkgname%}")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=('git+https://gitlab.com/egh/ledger-autosync.git')
 md5sums=('SKIP')
 
