@@ -4,7 +4,7 @@
 # Modified: 05/16/2013
 pkgname=overlook-fing
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 _altpkgname=fing
 pkgdesc='The ultimate tool for network discovery and scanning'
 arch=('i686' 'x86_64')
@@ -30,16 +30,16 @@ package() {
   install -dm755 "${pkgdir}"/var/data/${_altpkgname}/{box,sentinel}
   install -dm755 "${pkgdir}"/var/log/${_altpkgname}
 
-  install -Dm644 ./usr/share/${_altpkgname}/template/conf/sentinel.txt "${pkgdir}"/var/data/${_altpkgname}/sentinel/
-  install -Dm644 ./usr/share/${_altpkgname}/template/conf/*.properties "${pkgdir}"/etc/${_altpkgname}/
+  install -Dm644 ./usr/local/share/${_altpkgname}/template/conf/sentinel.txt "${pkgdir}"/var/data/${_altpkgname}/sentinel/
+  install -Dm644 ./usr/local/share/${_altpkgname}/template/conf/*.properties "${pkgdir}"/etc/${_altpkgname}/
 
   # systemd & fingbox-sentinel
-  install -Dm755 fingbox-sentinel.service "${pkgdir}"/usr/lib/systemd/system/fingbox-sentinel.service
-  install -Dm755 fingbox-sentinel.script "${pkgdir}"/usr/lib/systemd/scripts/fingbox-sentinel
+  install -Dm755 fingbox-sentinel.service "${pkgdir}"/usr/local/lib/systemd/system/fingbox-sentinel.service
+  install -Dm755 fingbox-sentinel.script "${pkgdir}"/usr/local/lib/systemd/scripts/fingbox-sentinel
 
   # license
-  install -dm755 "${pkgdir}"/usr/share/licenses/${_altpkgname}
-  ln -s /usr/share/${_altpkgname}/doc/license.txt "${pkgdir}"/usr/share/licenses/${_altpkgname}/license
+  install -dm755 "${pkgdir}"/usr/local/share/licenses/${_altpkgname}
+  ln -s /usr/local/share/${_altpkgname}/doc/license.txt "${pkgdir}"/usr/local/share/licenses/${_altpkgname}/license
 }
 
 # vim:set ts=2 sw=2 et ft=sh tw=100:

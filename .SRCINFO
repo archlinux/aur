@@ -1,7 +1,7 @@
 pkgbase = overlook-fing
 	pkgdesc = The ultimate tool for network discovery and scanning
 	pkgver = 3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.overlooksoft.com/
 	arch = i686
 	arch = x86_64
