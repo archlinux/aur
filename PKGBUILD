@@ -10,7 +10,6 @@ url="https://github.com/HarveyHunt/cottage"
 license=('GPL')
 arch=('i686' 'x86_64')
 
-checkdepends=('linux-headers')
 options=('debug')
 source=("$pkgname::git+https://github.com/HarveyHunt/cottage#branch=master")
 sha256sums=('SKIP')
@@ -23,14 +22,6 @@ pkgver() {
 build() {
   cd "$pkgname"
   make debug
-}
-
-check() {
-  cd "$pkgname"
-  find /usr/lib/modules -name checkpatch.pl -print -quit | xargs -i cp {} .
-
-  printf 'spellingtxt||disable\n' > spelling.txt
-  make check
 }
 
 package() {
