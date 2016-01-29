@@ -12,12 +12,9 @@ makedepends=('boost' 'automoc4' 'qrencode' 'miniupnpc' 'protobuf')
 provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 install=bitcoin-qt.install
-source=('git+https://github.com/bitcoinclassic/bitcoinclassic.git#branch=0.11.2'
-				'bitcoin-qt.install')
-sha256sums=('SKIP'
-            'ebf7090ca1202e2c2ccd1aa5bb03e6ac911c458141a1cedda9b41f9c26c2602c')
-sha512sums=('SKIP'
-            '67383fa1dd2f9576cc3c282f3a9b8c5f2d3eaa13799a6a7eb9eb2969face0ddaf6bb82c286c928b89397d8d2c9ba2efe9a603442f4bf6ed6d89ae9323c169375')
+source=('git+https://github.com/bitcoinclassic/bitcoinclassic.git#branch=0.11.2')
+sha256sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/bitcoinclassic"
