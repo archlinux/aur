@@ -1,6 +1,6 @@
 # Maintainer: Devaux Fabien <fdev31@gmail.com>
 pkgname=kvazaar-git
-pkgver=0.2.0
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="An open-source HEVC encoder"
 arch=('i686' 'x86_64')
@@ -43,16 +43,19 @@ build() {
   #
   # BUILD HERE
   #
-  cd src
+  ./autogen.sh
+  ./configure --prefix=/usr/
   make
 }
 
 package() {
   cd "$srcdir/$_gitname-build"
-  mkdir -p "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/usr/share/doc/$_gitname"
-  cp src/$_gitname "$pkgdir/usr/bin/"
-  cp README.md "$pkgdir/usr/share/doc/$_gitname/"
+  make DESTDIR="$pkgdir/" install
+
+#  mkdir -p "$pkgdir/usr/bin"
+#  mkdir -p "$pkgdir/usr/share/doc/$_gitname"
+#  cp src/$_gitname "$pkgdir/usr/bin/"
+#  cp README.md "$pkgdir/usr/share/doc/$_gitname/"
 }
 
 # vim:set ts=2 sw=2 et:
