@@ -1,0 +1,16 @@
+--- src/event/ngx_event_openssl.c	2016-01-10 02:38:56.405000000 +0000
++++ src/event/ngx_event_openssl.c.mod	2016-01-10 02:40:10.388000000 +0000
+@@ -1909,13 +1909,11 @@
+ 
+             /* handshake failures */
+         if (n == SSL_R_BAD_CHANGE_CIPHER_SPEC                        /*  103 */
+-            || n == SSL_R_BLOCK_CIPHER_PAD_IS_WRONG                  /*  129 */
+             || n == SSL_R_DIGEST_CHECK_FAILED                        /*  149 */
+             || n == SSL_R_ERROR_IN_RECEIVED_CIPHER_LIST              /*  151 */
+             || n == SSL_R_EXCESSIVE_MESSAGE_SIZE                     /*  152 */
+             || n == SSL_R_LENGTH_MISMATCH                            /*  159 */
+             || n == SSL_R_NO_CIPHERS_PASSED                          /*  182 */
+-            || n == SSL_R_NO_CIPHERS_SPECIFIED                       /*  183 */
+             || n == SSL_R_NO_COMPRESSION_SPECIFIED                   /*  187 */
+             || n == SSL_R_NO_SHARED_CIPHER                           /*  193 */
+             || n == SSL_R_RECORD_LENGTH_MISMATCH                     /*  213 */
