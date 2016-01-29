@@ -1,0 +1,55 @@
+diff -ur test2/ShotgunDebuggerSource/Makefile test/ShotgunDebuggerSource/Makefile
+--- test2/ShotgunDebuggerSource/Makefile	2010-02-05 04:10:12.000000000 -0600
++++ test/ShotgunDebuggerSource/Makefile	2016-01-29 01:46:20.797801718 -0600
+@@ -39,18 +39,18 @@
+ 	rm -f $(OBJ) $(BIN)
+ 	
+ install:
+-	install -d $(BINDIR)
+-	install $(BIN) $(BINDIR)
+-	install -d $(PKGDATADIR)/levels
+-	install -m 644 levels/* $(PKGDATADIR)/levels
+-	install -d $(PKGDATADIR)/snd
+-	install -m 644 snd/* $(PKGDATADIR)/snd
+-	install -d $(PKGDATADIR)/models
+-	install -m 644 models/* $(PKGDATADIR)/models
+-	install -d $(PKGDATADIR)/sprites
+-	install -m 644 sprites/*.png $(PKGDATADIR)/sprites
+-	install -d $(PKGDATADIR)/sprites/skins
+-	install -m 644 sprites/skins/* $(PKGDATADIR)/sprites/skins
++	install -d $(DESTDIR)$(BINDIR)
++	install $(BIN) $(DESTDIR)$(BINDIR)
++	install -d $(DESTDIR)$(PKGDATADIR)/levels
++	install -m 644 Resources/levels/* $(DESTDIR)$(PKGDATADIR)/levels
++	install -d $(DESTDIR)$(PKGDATADIR)/snd
++	install -m 644 Resources/snd/* $(DESTDIR)$(PKGDATADIR)/snd
++	install -d $(DESTDIR)$(PKGDATADIR)/models
++	install -m 644 Resources/models/* $(DESTDIR)$(PKGDATADIR)/models
++	install -d $(DESTDIR)$(PKGDATADIR)/sprites
++	install -m 644 Resources/sprites/*.png $(DESTDIR)$(PKGDATADIR)/sprites
++	install -d $(DESTDIR)$(PKGDATADIR)/sprites/skins
++	install -m 644 Resources/sprites/skins/* $(DESTDIR)$(PKGDATADIR)/sprites/skins
+ 
+ uninstall:
+ 	rm -v $(BINDIR)/$(BIN)
+Only in test/ShotgunDebuggerSource: .Makefile.swp
+diff -ur test2/ShotgunDebuggerSource/sdb.h test/ShotgunDebuggerSource/sdb.h
+--- test2/ShotgunDebuggerSource/sdb.h	2010-02-04 22:29:33.000000000 -0600
++++ test/ShotgunDebuggerSource/sdb.h	2016-01-29 01:27:11.931163117 -0600
+@@ -39,7 +39,7 @@
+ #include <vector>
+ #include <fstream>
+ #include <iostream>
+-
++#include <climits>
+ 
+ 
+ #ifdef __MACOSX__
+@@ -99,6 +99,7 @@
+ #define LOCALSTATEDIR "/.sdb/"
+ #endif
+ #endif
++#define LOCALSTATEDIR "/.sdb/"
+ 
+ #define CONFIG_FILE "preferences.txt"
+ #define PLAYER_DATA_FILE "player.dat"
