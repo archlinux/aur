@@ -19,6 +19,7 @@ depends=(
 	python2-protobuf
 	python2-pyelliptic
 	python2-pystun
+	python2-python-bitcoinlib
 	python2-requests
 	python2-service-identity
 	python2-twisted
