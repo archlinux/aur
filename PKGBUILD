@@ -9,9 +9,8 @@ url="http://hgdownload.soe.ucsc.edu/admin/exe/"
 license=other
 install=$pkgname.install
 depends=('mariadb-clients' 'libpng' 'openssl')
-source=(http://hgdownload.soe.ucsc.edu/admin/exe/userApps.v${pkgver}.src.tgz .hg.conf)
-sha1sums=('0294bf61a0ac8c0d57d1e354ad3eb17187cdecb9'
-          'ffc9a7064a697476639c46e9280e0b43ac2393b3')
+source=(http://hgdownload.soe.ucsc.edu/admin/exe/userApps.v${pkgver}.src.tgz)
+sha1sums=('0294bf61a0ac8c0d57d1e354ad3eb17187cdecb9')
 
 prepare() {
   cd "${srcdir}/userApps/"
@@ -20,6 +19,12 @@ prepare() {
 
 build() {
    cd "${srcdir}/userApps/"
+   
+   # not sure why this is required
+   make libs
+   cp /home/docker/ucsc-kent-genome-tools/src/userApps/kent/src/lib/x86_64/* /home/docker/ucsc-kent-genome-tools/src/userApps/kent/src/lib/local/.
+   cp /home/docker/ucsc-kent-genome-tools/src/userApps/kent/src/lib/local/* /home/docker/ucsc-kent-genome-tools/src/userApps/kent/src/lib/x86_64/.
+   
    make all
 }
 
@@ -29,11 +34,15 @@ package() {
    mv bin/ "${pkgdir}/usr/bin/kentUtils/"
 
    mkdir -p "$pkgdir/etc/profile.d"
-   echo 'export PATH=/usr/bin/kentUtils:$PATH' > "$pkgdir/etc/profile.d/kentUtils.sh"
+   echo "export PATH=/usr/bin/kentUtils:"'$PATH' > "$pkgdir/etc/profile.d/kentUtils.sh"
 
    mkdir -p "${pkgdir}/opt/kentUtils/"
-   
-   cp "${srcdir}/.hd.conf" "${pkgdir}/opt/kentUtils/."
+cat  > "${pkgdir}/opt/kentUtils/.hg.conf" <<EOF
+db.host=genome-mysql.cse.ucsc.edu
+db.user=genomep
+db.password=password
+central.db=hgcentral
+EOF
    
    install -D -m644 licenseUcscGenomeBrowser.txt "${pkgdir}/usr/share/licenses/kentUtils/licenseUcscGenomeBrowser.txt"
    install -D -m644 GenomeBrowserLicense.pdf "${pkgdir}/usr/share/licenses/kentUtils/GenomeBrowserLicense.pdf"
