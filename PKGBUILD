@@ -3,7 +3,7 @@
 
 pkgname=cottage-git
 pkgver=94f2379
-pkgrel=4
+pkgrel=5
 
 pkgdesc="Use howm commands, operators and set configuration values through a UNIX socket."
 url="https://github.com/HarveyHunt/cottage"
