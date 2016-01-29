@@ -5,14 +5,14 @@ _py=python2
 _n=taskw
 
 pkgname=$_py-$_n
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Python bindings for your taskwarrior database"
 depends=($_py)
 makedepends=($_py "$_py-distribute")
 arch=('any')
 source=(http://pypi.python.org/packages/source/${_n:0:1}/$_n/$_n-$pkgver.tar.gz)
-md5sums=('09010ce19e0be86422516a3e784cb5d3')
+md5sums=('e5d3eedbbbf00b50bd2f797839888791')
 url="http://github.com/ralphbean/taskw"
 license="GPL"
 
