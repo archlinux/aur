@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=backblaze-b2-git
-pkgver=r139.24408e8
+pkgver=r154.588d400
 pkgrel=1
 pkgdesc="Backblaze B2 Command Line Client."
 arch=('any')
@@ -9,6 +9,7 @@ url="https://www.backblaze.com/b2/cloud-storage.html"
 license=('MIT')
 depends=('python2')
 makedepends=('git')
+optdepends=('python-tqdm: upload/download progress bar')
 provides=('backblaze-b2')
 conflicts=('backblaze-b2')
 source=('git://github.com/Backblaze/B2_Command_Line_Tool.git')
