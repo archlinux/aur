@@ -13,9 +13,10 @@ url="https://www.mozilla.org/en-US/firefox/channel/#beta"
 license=('MPL' 'GPL' 'LGPL')
 depends=('alsa-lib' 'dbus-glib' 'desktop-file-utils' 'gtk2' 'gtk3' 'hicolor-icon-theme'
          'icu' 'libevent' 'libvpx' 'libxt' 'mime-types' 'nss' 'sqlite')
-optdepends=('ffmpeg: additional video and audio decoders'
+optdepends=('ffmpeg: H264/AAC/MP3 decoding'
             'libpulse: PulseAudio driver'
-            'networkmanager: Location detection via available WiFi networks')
+            'networkmanager: Location detection via available WiFi networks'
+            'upower: Battery API')
 makedepends=('pacman>=4.2.0')
 provides=("firefox=$pkgver")
 install=$pkgname.install
@@ -28,8 +29,8 @@ if [[ $_build = ? ]]; then
   source_i686=("https://ftp.mozilla.org/pub/firefox/candidates/$_major-candidates/build$_build/linux-i686/en-US/firefox-$_major.tar.bz2")
   source_x86_64=("https://ftp.mozilla.org/pub/firefox/candidates/$_major-candidates/build$_build/linux-x86_64/en-US/firefox-$_major.tar.bz2")
 fi
-sha512sums=('33a52a79f7db0f6b9c54018b59edb6e89b8b503cd84c872ac3273c548033b6f33254e90018267e722f61c61858d764c838732b9cea43012526f8251c96acd57c'
-            '01063521f3f49da8baa080b6d69f3d7ce1ed29705617d1a101c7c8863bbb5ec155b4e25bbadf3c824ea78c8dfe000a1436e61856f190c28c3cf599f38e6101a6')
+sha512sums=('702359fd891da5ac3b24124a328f70bac3034e9bbb33c1eb00da15420825ce3e13cf62bfdf5fe2ef9cc876a0e533422d7989af62e966123a21171293e5e4fa14'
+            '776fccb247711d33621605dd0807c03528ffd0f9bc14f20b4f60f344589c1aad62e9377c22bcf583066c8c600cd86bf9db5b48e2c44924cd48a48c1c4a9c39a0')
 sha512sums_i686=('c9b3c32c3b2dfe6d2e62e818f7dd1addc02a3cc0a6840e5352e0cc09eb0d1e03ec5c285af8cb6c3d2d1f2bb9a86adc6501d8d4b1e53e0a8478bc9ce8cf3f259a')
 sha512sums_x86_64=('59f90e867d60f9ec2d9ccc4158f268d91e3ef77e2f6f33a7adc779352a3664b75c6ef7163581cbf8305aa8a3bf4f2561fe5f63b440c832124081c769843be93f')
 
