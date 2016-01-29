@@ -2,14 +2,14 @@
 # Previous maintainer: Joel Teichroeb <joel@teichroeb.net>
 
 pkgname=rr-git
-pkgver=4.0.2.r59.g7770179
+pkgver=4.0.2.r105.g4ad2055
 pkgrel=1
 pkgdesc='a nondeterministic debugger'
 arch=(i686 x86_64)
 url='http://rr-project.org/'
 license=('custom')
-depends=('libpfm4' 'libdisasm' 'python2-pexpect')
-makedepends=('git' 'cmake')
+depends=('python2-pexpect' 'gdb')
+makedepends=('git' 'cmake' 'gdb')
 [ "$CARCH" = 'x86_64' ] && makedepends+=('gcc-multilib')
 source=(git://github.com/mozilla/rr)
 sha1sums=('SKIP')
