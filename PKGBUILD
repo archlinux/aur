@@ -1,7 +1,7 @@
 # Maintainer: Alad Wenter <https://wiki.archlinux.org/index.php/Special:EmailUser/Alad>
 
 pkgname=howm-x11-git
-pkgver=0.5.33.gafffe1e
+pkgver=0.5.102.gd326a44
 pkgrel=1
 
 pkgdesc='A lightweight, tiling X11 window manager that mimics vi by offering operators, motions and modes.'
