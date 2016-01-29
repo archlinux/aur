@@ -2,14 +2,14 @@
 # Maintainer: Alexandre BIQUE <bique.alexandre@gmail.com>
 pkgname=libreswan
 pkgver=3.16
-pkgrel=1
+pkgrel=2
 pkgdesc="IPsec implementation with IKEv1 and IKEv2 keying protocols"
 arch=('i686' 'x86_64')
 url="https://libreswan.org/"
 license=('GPLv2')
 groups=()
 depends=(unbound nss libcap-ng curl)
-makedepends=('docbook-xsl' 'xmlto')
+makedepends=('docbook-xsl' 'xmlto' 'flex' 'bison')
 checkdepends=()
 optdepends=()
 provides=()
