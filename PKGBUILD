@@ -3,7 +3,7 @@
 
 _name=Moar
 pkgname=python2-moar
-pkgver=1.3.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Easy thumbnails for everyone"
 url="http://github.com/lucuma/Moar"
@@ -12,7 +12,7 @@ license=("GPL")
 depends=("python2" "python-imaging")
 
 source=("http://pypi.python.org/packages/source/M/${_name}/${_name}-${pkgver}.tar.gz")
-md5sums=('cf68132d2546a58dec7f684891e98cbb')
+md5sums=('906f294bab05f51279f745ede10e1b30')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
