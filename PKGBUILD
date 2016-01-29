@@ -9,8 +9,8 @@
 # Maintainer: fdev31@gmail.com
 pkgname=instant-meshes
 pkgver=git
-pkgrel=3
-pkgdesc="interactive retopology of .obj or .ply developed as part of SIGGRAPH ASIA 2015"
+pkgrel=4
+pkgdesc="interactive retopology of .obj or .ply (point cloud) developed as part of SIGGRAPH ASIA 2015"
 arch=("any")
 url="http://igl.ethz.ch/projects/instant-meshes/"
 license=('custom')
@@ -60,6 +60,19 @@ package() {
   bin="Instant Meshes"
   install -TD -m 755 "$bin" "$pkgdir/usr/bin/$bin"
   install -TD -m 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  install -TD -m 644 resources/icon.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/instant-meshes.png"
+  cat > instant-meshes.desktop <<EOF
+Desktop Entry]
+Name=Instant Meshes
+GenericName=3D retopology
+Comment=Interactive re-mesh / skinning tool
+Keywords=3d,cg,modeling,sculpting
+Exec=Instant\\ Meshes %f
+Icon=instant-meshes
+Terminal=false
+Type=Application
+Categories=Graphics;3DGraphics;
+EOF
 }
 
 # vim:set ts=2 sw=2 et:
