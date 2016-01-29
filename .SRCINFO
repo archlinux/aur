@@ -1,0 +1,18 @@
+pkgbase = itpp
+	pkgdesc = C++ library of mathematical, signal processing and communication routines
+	pkgver = 4.3.1
+	pkgrel = 1
+	url = http://itpp.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = blas
+	depends = lapack
+	depends = fftw
+	depends = perl
+	source = http://downloads.sourceforge.net/project/itpp/itpp/4.3.1/itpp-4.3.1.tar.bz2
+	md5sums = 94f3dac6df2bb829819d0aa99b501933
+
+pkgname = itpp
+
