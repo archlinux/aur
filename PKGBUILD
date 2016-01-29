@@ -13,7 +13,7 @@ pkgbase=llvm-debug
 pkgname=('llvm-debug' 'llvm-libs-debug' 'clang-debug' 'clang-analyzer-debug' 'clang-tools-extra-debug')
 _pkgname='llvm'
 pkgver=258811
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://llvm.org"
 license=('custom:University of Illinois')
@@ -63,6 +63,9 @@ prepare() {
 
     # Fix bug 20176
     patch -p1 < "${srcdir}/bug-20176-template-friend-fix.patch"
+
+    # Fix ABI tags
+    patch -p1 < "${srcdir}/fix-cxx11-abi-tags.patch"
 
     # Fix docs installation directory
     sed -e 's:$(PROJ_prefix)/docs/llvm:$(PROJ_prefix)/share/doc/llvm:' \
