@@ -1,0 +1,30 @@
+diff --git a/brother_lpdwrapper_HLL2360D b/brother_lpdwrapper_HLL2360D.new
+index 1af93d4..f7d1bfd 100755
+--- a/opt/brother/Printers/HLL2360D/cupswrapper/brother_lpdwrapper_HLL2360D
++++ b/opt/brother/Printers/HLL2360D/cupswrapper/brother_lpdwrapper_HLL2360D
+@@ -43,15 +43,7 @@ if ( $DEBUG > 0 ){
+ $width=-1;
+ $height=-1;
+ 
+-#my $basedir = Cwd::realpath ($0);
+-my $basedir = `readlink $0`;
+-if ( $basedir eq '' ){
+-    $basedir = `realpath $0`;
+-}
+-chomp($basedir);
+-
+-$basedir =~ s/$PRINTER\/cupswrapper\/.*$/$PRINTER\//g;
+-
++my $basedir = "/usr/share/brother/Printers/HLL2360D";
+ 
+ %units = ( pt   => \&pt2dot, 
+ 	   mm   => \&mm2dot, 
+@@ -84,7 +76,7 @@ if ( @ARGV >= 6 ){
+ }
+ 
+ 
+-$PRINTER =~ s/^\/opt\/.*\/Printers\///g;
++$PRINTER =~ s/^\/usr\/share\/.*\/Printers\///g;
+ $PRINTER =~ s/\/cupswrapper//g;
+ $PRINTER =~ s/\///g;
+ 
