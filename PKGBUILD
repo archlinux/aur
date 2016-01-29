@@ -8,7 +8,7 @@ pkgdesc="Energia is a Arduino IDE clone for use with the MSP430 launchpad"
 arch=('i686' 'x86_64')
 url="http://energia.nu/"
 license=('GPL')
-depends=(java-environment java-rxtx)
+depends=(java-environment java-rxtx libusb-compat gcc-libs-multilib)
 provides=('energia')
 # staticlibs keeps all *.a files which are necessary since we bundle a toolchain
 # !strip disable stripping of debug symbols which are useful
@@ -17,7 +17,7 @@ install='energia.install'
 source=('energia.desktop'
         '10-msp430-launchpad.rules')
 md5sums=('a7ce061d9fc0f9530e058204e532b40b'
-         'dcdf66ac4ae446dcfadbcd6a2dbb6f31')
+         '9bcbda86498c3a71b4af1309a743716d')
 if [[ $CARCH == "x86_64" ]]; then
  source+=("$pkgname-$pkgver-$CARCH.tgz::http://energia.nu/downloads/downloadv3.php?file=energia-0101E$pkgver-linux64.tgz")
  md5sums+=('cbb348ff40c2f9d42c025eb9a6484ae2')
@@ -46,8 +46,9 @@ _copy_src() {
 }
 
 _patch_package_for_lock_issues() {
-  ln -sf /usr/lib/librxtxSerial.so "$pkgdir/opt/energia/lib/librxtxSerial64.so"
-  ln -sf /usr/lib/librxtxSerial.so "$pkgdir/opt/energia/lib/librxtxSerial32.so"
+  for arch in '' 32 64; do
+    ln -sf /usr/lib/librxtxSerial.so "$pkgdir/opt/energia/lib/librxtxSerial${arch}.so"
+  done
   ln -sf /usr/share/java/rxtx/RXTXcomm.jar "$pkgdir/opt/energia/lib/RXTXcomm.jar"
   install -m755 "$srcdir/10-msp430-launchpad.rules" "$pkgdir/etc/udev/rules.d/"
 }
