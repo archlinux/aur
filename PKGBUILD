@@ -1,13 +1,13 @@
 # Maintainer: Carmen Bianca Bakker <carmenbbakker@gmail.com>
 pkgname=pyparadox
 pkgver=0.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A nix launcher for Paradox titles.'
 arch=('any')
 url='https://gitlab.com/carmenbbakker/pyparadox'
 license=('GPL3')
 depends=('python>=3.3' 'python-pyqt5' 'python-appdirs')
-makedepends=('python-pip' 'python-wheel')
+makedepends=('python-setuptools')
 optdepends=('qt5-quickcontrols')
 source=("https://pypi.python.org/packages/source/p/pyparadox/pyparadox-${pkgver}.tar.gz"
         'pyparadox-ck2.desktop'
@@ -18,9 +18,7 @@ md5sums=('4bd01836237a78859aa76f72a98f4005'
 
 package() {
     cd "${srcdir}/$pkgname-$pkgver"
-    python setup.py bdist_wheel
-    pip install -I --root="$pkgdir/" \
-        "dist/pyparadox-${pkgver}-py3-none-any.whl"
+    python setup.py install --root="${pkgdir}/"
 
     install -D -m 755 "${srcdir}/pyparadox-ck2.desktop" \
         "${pkgdir}/usr/share/applications/pyparadox-ck2.desktop"
