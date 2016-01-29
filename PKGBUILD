@@ -2,26 +2,27 @@
 
 pkgname=arena-tracker
 pkgver=3.33
-pkgrel=1
+pkgrel=2
 pkgdesc="Tracks your Hearthstone Arena matches and cards"
 arch=('i686' 'x86_64')
 url="https://github.com/supertriodo/Arena-Tracker/"
 license=('GPL')
-depends=('qt5-base' 'python-pyautogui')
-makedepends=('opencv' 'git')
+depends=('qt5-base' 'python-pyautogui' 'intel-tbb' 'xcb-util-renderutil')
 provides=(arena-tracker)
 conflicts=('arena-tracker' 'arena-tracker-git')
-source=("arena-tracker.desktop")
+source=("https://github.com/supertriodo/Arena-Tracker/releases/download/v$pkgver/Arena.Tracker.v$pkgver.Linux.zip"
+	"ArenaTracker.ico"
+	"arena-tracker.desktop")
 
-prepare() {
-	git clone https://github.com/supertriodo/Arena-Tracker.git
-}
+#prepare() {
+#	zip -xpf Arena.Tracker.v$pkgver.Linux.zip
+#}
 
-build() {
-	cd "Arena-Tracker"
-	qmake ArenaTracker.pro
-	make
-}
+#build() {
+#	cd "Arena-Tracker"
+#	qmake ArenaTracker.pro
+#	make
+#}
 
 
 package() {
@@ -29,12 +30,14 @@ package() {
 	install -dm755 $pkgdir/usr/share/applications
 	install -dm755 $pkgdir/usr/share/icons/
 	install -d $pkgdir/usr/bin/
-	install -m755 $srcdir/Arena-Tracker/ArenaTracker $pkgdir/opt/$pkgname/$pkgname
-	install -m755 $srcdir/Arena-Tracker/ArenaTracker.ico $pkgdir/usr/share/icons/$pkgname.ico
+	install -m755 $srcdir/"Arena Tracker v$pkgver Linux"/ArenaTracker $pkgdir/opt/$pkgname/$pkgname
+	install -m755 $srcdir/ArenaTracker.ico $pkgdir/usr/share/icons/$pkgname.ico
 	install -m755 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
-	cp -R $srcdir/Arena-Tracker/HSCards $pkgdir/opt/$pkgname/HSCards
+	cp -R $srcdir/"Arena Tracker v$pkgver Linux"/HSCards $pkgdir/opt/$pkgname/HSCards
 	ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 	ln -s "/opt/$pkgname/HSCards/" "$pkgdir/usr/bin/"
 	chmod 0777 "$pkgdir/opt/$pkgname/HSCards/"
 }
-md5sums=('30d6a980e82a37af04f56f3d39451fb0')
+md5sums=('5ba4faf3c26c76f7b81d275f85105dad'
+	'81cbf4e6a4d8711ba29ad526b4c2c755'
+	'c81a05fdc3b96092fb363f841267e21f')

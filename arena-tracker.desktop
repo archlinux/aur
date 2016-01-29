@@ -1,6 +1,5 @@
 [Desktop Entry]
-Version=3.26
-Name=arena-tracker
+Name=Arena Tracker
 GenericName=Arena Tracking Software
 Comment=Free and open source software to track your Hearthstone Arena runs
 Exec=/usr/bin/arena-tracker
