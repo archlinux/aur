@@ -1,17 +1,17 @@
-# Linux Arch maintainer: Serge Victor <arch@random.re>
-# Contributors:  
-# - Krzysztof Wloch <wloszekk [at] gmail [dot] com>
-# - Luke McCarthy <luke@iogopro.co.uk>
+# Maintainer: FadeMind <fademind@gmail.com>
+# Contributor: Serge Victor <arch@random.re>
+# Contributor: Krzysztof Wloch <wloszekk [at] gmail [dot] com>
+# Contributor: Luke McCarthy <luke@iogopro.co.uk>
 
 pkgname=fasm
-pkgver=1.71.39
+pkgver=1.71.49
 pkgrel=1
 pkgdesc="Fast and efficient self-assembling x86 assembler for DOS, Windows and Linux operating systems"
 arch=('i686' 'x86_64')
 url="http://www.flatassembler.net/"
 license=('custom')
-source=(http://www.flatassembler.net/$pkgname-$pkgver.tgz)
-md5sums=(''22a100b479e350efc8a8c2d814c1ee67)
+source=("${pkgname}-${pkgver}.tgz::http://www.flatassembler.net/${pkgname}-${pkgver}.tgz")
+sha256sums=('f601c1d02ac27a06631dfaebb83268e6491ce1167d9b043dc9d528f158d87372')
 makedepends=('gcc')
 
 if test "$CARCH" == x86_64; then
@@ -60,5 +60,3 @@ package() {
     cp examples/libcdemo/*.asm $pkgdir/usr/share/doc/$pkgname/examples/libcdemo/
     cp examples/libcdemo/*.inc $pkgdir/usr/share/doc/$pkgname/examples/libcdemo/
 }
-
-# vim:set ts=2 sw=2 et:
