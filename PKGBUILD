@@ -12,7 +12,7 @@ makedepends=('python-setuptools' 'python-django' 'angularjs')
 license=('unknown')
 arch=('any')
 source=("https://pypi.python.org/packages/source/d/django-angularjs/django-angularjs-${pkgver}.tar.gz")
-sha256=('2760a99d195ac678aac9cbbe63238af0455765ba494dc369d9ad88111dd75796')
+sha256sum=('2760a99d195ac678aac9cbbe63238af0455765ba494dc369d9ad88111dd75796')
 
 package() {
     cd "${srcdir}/${_module}-${pkgver}"
