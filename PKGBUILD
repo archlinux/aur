@@ -2,7 +2,7 @@
 
 _pyname=pyFFTW
 pkgname=python-pyfftw
-pkgver=0.9.2
+pkgver=0.10.1
 pkgrel=1
 pkgdesc='A pythonic wrapper around FFTW.'
 url='http://hgomersall.github.io/pyFFTW/'
@@ -10,7 +10,7 @@ depends=('fftw' 'python-numpy')
 license=('BSD')
 arch=('i686' 'x86_64')
 source=("https://pypi.python.org/packages/source/${_pyname:0:1}/$_pyname/$_pyname-$pkgver.tar.gz")
-md5sums=('34fcbc68afb8ebe5f040a02a8d20d565')
+md5sums=('dab57de9d23f3b333115265914f3d240')
 
 build() {
   cd $srcdir/$_pyname-$pkgver
