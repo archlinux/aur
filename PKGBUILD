@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Reuße <seb@wirrsal.net>
 pkgname=resolve-trivial-conflicts-git
 _gitname=resolve-trivial-conflicts
-pkgver=r52.48ae21a
+pkgver=r70.84d10f2
 pkgrel=1
 pkgdesc="Resolve trivial conflicts automatically when merging branches in git repositories."
 arch=(i686 x86_64)
@@ -26,7 +26,7 @@ build() {
     cd "$_gitname"
     cabal update
     cabal sandbox init
-    cabal install --dependencies-only --disable-shared
+    cabal install --dependencies-only
     cabal configure --prefix /usr --disable-executable-dynamic
     cabal build
 }
