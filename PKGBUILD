@@ -1,7 +1,7 @@
 # Maintainer: Patrizio Bekerle <patrizio at bekerle dot com>
 
 pkgname=qownnotes
-pkgver=VERSION-STRING
+pkgver=0.84
 pkgrel=1
 pkgdesc="Open source notepad and todo list manager with ownCloud integration"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('qt5-base' 'qt5-svg' 'qt5-script')
 makedepends=('git' 'qt5-tools')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source=("${pkgname}-${pkgver}.tar.xz")
+source=("https://github.com/pbek/QOwnNotes.git")
 md5sums=('SKIP')
 
 build() {
