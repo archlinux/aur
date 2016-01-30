@@ -13,6 +13,6 @@ source=(https://downloads.openmedialibrary.com/$pkgname-$pkgver.tar.xz)
 sha1sums=('518193cc1c8724e936fcced8ae8fa61600eefbf3')
 
 package() {
-  cd "${pkgbase}-${pkgver}"
+  cd "${srcdir}"
   make install PREFIX=/usr DESTDIR="${pkgdir}"
 }
