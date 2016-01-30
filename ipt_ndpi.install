@@ -1,0 +1,7 @@
+post_install() {
+  depmod -a
+}
+
+post_remove() {
+  depmod -a
+}
