@@ -3,11 +3,9 @@
 #   Thomas Baechler <thomas@archlinux.org>
 #   graysky <graysky@archlinux.us>
 
-_enable_NUMA=n
-
 pkgname=(linux-lts318-ck linux-lts318-ck-headers)
-pkgver=3.18.25
-pkgrel=2
+pkgver=3.18.26
+pkgrel=1
 arch=(i686 x86_64)
 url="https://www.kernel.org/"
 license=(GPL2)
@@ -15,27 +13,33 @@ makedepends=(kmod inetutils bc)
 options=(!strip)
 source=(
     "https://www.kernel.org/pub/linux/kernel/v3.x/linux-${pkgver}.tar.xz"
+
     "https://www.kernel.org/pub/linux/kernel/v3.x/linux-${pkgver}.tar.sign"
     "http://ck.kolivas.org/patches/3.0/3.18/3.18-ck1/patch-3.18-ck1.bz2"
     "http://repo-ck.com/source/gcc_patch/enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch.gz"
     "linux-lts318-ck.preset"
     "change-default-console-loglevel.patch"
+
     "config"
     "config.x86_64"
+
     "http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.18.0-v7r8/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r8-3.18.0.patch"
     "http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.18.0-v7r8/0002-block-introduce-the-BFQ-v7r8-I-O-sched-for-3.18.0.patch"
     "http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.18.0-v7r8/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-3.18.0.patch"
 )
 
 sha512sums=(
-    "a841095746d6108f2f0b3eb815438ecd2e8d3b6c8caa2e0f91d844c8a6624b746d2faf422d68194a1c0e1da5446134a0f3255898956a547458bcd58982868a45"
+    "df2f08237978b7942217d59f6edb29c4b35ddc35298c5f0352e81a9b0c1aaf45bf07cf5d6cf24dfaea90de588c44aac7a9ad301e036020853703d6afa6046ef4"
+
     "SKIP"
     "c1ffbbc641cf9ef3c666a1fe5ddff1ab9ed02eb2d8d229d5ce4c11487609ef81beee456c211a658355c2061a108042929b9ad62914395a22077754ade4eb6a23"
     "62fdd5c0a060a051b64093d71fbb028781061ccb7a28c5b06739a0b24dac0945740d9b73ff170784f60005a589774bcc14f56523ec51557eb3a677f726ec34cf"
     "5877f717c7a6eb9add32fd877394d7e6dd5b9238e4407a9ede18c3dc39be3fa0307c17fbd2bf3cc42dabe0756bf870934399c4150b20c9082f77749ef3ef49c3"
     "d9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8"
+
     "92efb571fe4fd74eba923e03e6794263f242ce0e0c894ad60187d52cd25a2af1030c07b2a570c07aac8020a91ec018f2009663c83387902d550aa0ceff7ccbe6"
-    "9e80ae4f8be552b76517e383a266f53194c15e944034c4d2cc8c2db5abbf3f2bbf25a65cd5c9354c3523b4c244939b2bcd002a84ba8efe6733c5ed3c44d019b1"
+    "9d172d12fd9f227c17da1e98c3acf4b13b12b83a4061c1907e4975a690058df6b615982710cb28636d4949a95cb0e9fe9bcbe2d072c282a081746be7e6ee6b6d"
+
     "d3178ffbe2fc35b1b2bfccef587a658d5bd148a691bc9d6e3a0adfa7b6729f755278f638cd1e615fbfb96a1b847c660b24418df38710e3aee86ddaa378ad0c82"
     "29123cad496e9df7a6babb0afbc77af9990b22b08d8e8867139586fdf1be2b198c1400b05761d68cf1264df57f567ae745cf6024d1f4a744a21cae664e8bc4e1"
     "54aa608ec24289b219a1dc4290f0e77a8cd92213ff2b08292239a9ca839b613868519ed270c27c59b4d0b85c6cc1d088e6785ac40defbcf2188266ac12314c3f"
@@ -65,21 +69,6 @@ prepare() {
         cat "${srcdir}/config.x86_64" > ./.config
     else
         cat "${srcdir}/config" > ./.config
-    fi
-
-    if [ "$_enable_NUMA" = "n" ]; then
-        if [ "$CARCH" = "x86_64" ]; then
-            sed -i -e "s/CONFIG_NUMA=y/# CONFIG_NUMA is not set/" \
-                -i -e "/CONFIG_AMD_NUMA=y/d" \
-                -i -e "/CONFIG_X86_64_ACPI_NUMA=y/d" \
-                -i -e "/CONFIG_NODES_SPAN_OTHER_NODES=y/d" \
-                -i -e "/# CONFIG_NUMA_EMU is not set/d" \
-                -i -e "/CONFIG_NODES_SHIFT=6/d" \
-                -i -e "/CONFIG_NEED_MULTIPLE_NODES=y/d" \
-                -i -e "/# CONFIG_MOVABLE_NODE is not set/d" \
-                -i -e "/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d" \
-                -i -e "/CONFIG_ACPI_NUMA=y/d" ./.config
-        fi
     fi
 
     sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
