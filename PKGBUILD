@@ -10,7 +10,7 @@ export LG2=en
 ###########################################################
 
 pkgname=i2p
-pkgver=0.9.23
+pkgver=0.9.24
 pkgrel=1
 pkgdesc="A distributed anonymous network"
 url="https://geti2p.net"
@@ -19,7 +19,7 @@ arch=('any')
 depends=('java-runtime' 'java-service-wrapper')
 makedepends=('apache-ant' 'java-environment')
 [[ "$LG2" != 'en' ]] && makedepends+=('gettext')
-optdepends=('robert: I2P BitTorrent client') #'gtk2: for rrd graphs'
+#optdepends=('gtk2: for rrd graphs')
 conflicts=('i2p-bin' 'i2p-dev')
 backup=('opt/i2p/wrapper.config')
 install='i2p.install'
@@ -38,7 +38,7 @@ source=("${_url}/i2psource_${pkgver}.tar.bz2"{,.sig}
             'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config')
 }
 
-sha256sums=('24e303f2af1b7b14ed3a6e17cc7d1b6432ec99d8d00246a88486922941c72345'
+sha256sums=('134481ae5ef934a411545330d1b22e768189c424a65db47058db0f7d9cf51e7d'
             'SKIP'
             '9bb899ece87099716da29bac8b7da02916fc325699b68989e73c1fe333a6342f'
             'ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53'
