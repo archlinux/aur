@@ -57,8 +57,8 @@ build() {
     --with-umfpack --enable-java \
     --with-java-homedir=/usr/lib/jvm/`archlinux-java get` \
     --with-java-includedir=/usr/lib/jvm/`archlinux-java get`/include \
-     --with-java-libdir={/usr/lib/jvm/`archlinux-java get`/lib/${_arch}/server,/usr/lib/jvm/`archlinux-java get`/jre/lib/${_arch}/server}
-  CXXFLAGS+=" $(llvm-config --cxxflags) -fexceptions" make
+    --with-java-libdir={/usr/lib/jvm/`archlinux-java get`/lib/${_arch}/server,/usr/lib/jvm/`archlinux-java get`/jre/lib/${_arch}/server}
+  make
 }
 
 package() {
