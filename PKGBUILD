@@ -22,8 +22,8 @@ build() {
    
    # not sure why this is required
    make libs
-   cp /home/docker/ucsc-kent-genome-tools/src/userApps/kent/src/lib/x86_64/* /home/docker/ucsc-kent-genome-tools/src/userApps/kent/src/lib/local/.
-   cp /home/docker/ucsc-kent-genome-tools/src/userApps/kent/src/lib/local/* /home/docker/ucsc-kent-genome-tools/src/userApps/kent/src/lib/x86_64/.
+   cp kent/src/lib/x86_64/* kent/src/lib/local/.
+   cp kent/src/lib/local/* kent/src/lib/x86_64/.
    
    make all
 }
