@@ -1,6 +1,6 @@
 # Maintainer: Colin Duquesnoy <colin[dot]duquesnoy[at]gmail[dot]com>
 pkgname=opencobolide
-pkgver=4.7.0
+pkgver=4.7.1
 pkgrel=1
 pkgdesc="A simple and lightweight COBOL IDE based on the GnuCOBOL compiler."
 arch=("any")
@@ -9,8 +9,7 @@ license=("GPL")
 depends=("python" "python-pyqt5" "gnu-cobol")
 makedepends=("python-setuptools")
 source=("https://github.com/OpenCobolIDE/OpenCobolIDE/archive/${pkgver}.tar.gz")
-md5sums=('62f41a1e07cd445ba1881b19e3672f86')
-
+md5sums=('b00ac86b63624c91a2680825f642ea5e')
 
 package() {
   cd "$srcdir/OpenCobolIDE-$pkgver"
