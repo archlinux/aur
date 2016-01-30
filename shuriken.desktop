@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Shuriken
+GenericName=Beat Slicer
+Comment=Shuriken Beat Slicer
+Exec=shuriken %F
+Icon=shuriken
+Terminal=false
+Type=Application
+Categories=AudioVideo;Audio;AudioEditing;
