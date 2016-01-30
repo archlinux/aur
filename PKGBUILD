@@ -2,7 +2,7 @@
 # Contributor: joyfulgirl <joyfulgirl (at) archlinux.us>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=edbrowse-git
-pkgver=3.5.4.2.r261.gebf2190
+pkgver=3.6.1.r15.g52babdc
 pkgrel=1
 pkgdesc="A line-oriented editor, browser and mail client."
 arch=('i686' 'x86_64')
@@ -35,8 +35,8 @@ package() {
   cd "$srcdir/$pkgname/src"
   make DESTDIR="$pkgdir" prefix=/usr install
   install -Dm644 ../doc/man-edbrowse-debian.1 $pkgdir/usr/share/man/man1/edbrowse.1
-  mkdir -p $pkgdir/usr/share/doc/$pkgname
-  install -Dm644 ../doc/usersguide.html ../doc/sample.ebrc ../README $pkgdir/usr/share/doc/$pkgname
-  install -Dm644 ../COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
+  mkdir -p $pkgdir/usr/share/doc/${pkgname%-*}
+  install -Dm644 ../doc/usersguide.html ../doc/sample.ebrc ../README $pkgdir/usr/share/doc/${pkgname%-*}
+  install -Dm644 ../COPYING $pkgdir/usr/share/licenses/${pkgname%-*}/COPYING
 }
 
