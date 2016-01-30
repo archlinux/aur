@@ -8,7 +8,7 @@ url="http://www.debian.org/"
 license=('GPL')
 depends=('gettext' 'perl')
 source=(ftp://ftp.debian.org/debian/pool/main/i/intltool-debian/${pkgname}_${pkgver}+20060710.1_all.deb)
-md5sums=('505291f7124f988e5adb6c4fa0303bae')
+sha256sums=('121b13900d598f737acd9461575e36d93eead49c61a95ab04273fb68e1ecc60a')
 
 build() {
 	cd ${srcdir}
