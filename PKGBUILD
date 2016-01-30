@@ -51,8 +51,7 @@ build() {
   [[ $CARCH == "i686" ]] && _arch=i386
   export LD_PRELOAD=/usr/lib/libGL.so
   
-  MOC=moc-qt4 UIC=uic-qt4 \
-    CXXFLAGS+=" $(llvm-config --cxxflags) -fexceptions" ./configure \
+  MOC=moc-qt4 UIC=uic-qt4 ./configure \
     --prefix=/usr --libexecdir=/usr/lib --enable-shared --disable-jit \
     --with-umfpack --enable-java \
     --with-java-homedir=/usr/lib/jvm/`archlinux-java get` \
