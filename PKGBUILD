@@ -3,7 +3,7 @@
 pkgname='i7z-git'
 _pkgname='i7z'
 pkgver=5023138
-pkgrel=2
+pkgrel=3
 pkgdesc="A better i7 (and now i3, i5) reporting tool for Linux. Git version."
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -11,8 +11,8 @@ depends=('ncurses')
 makedepends=('qt4' 'git')
 optdepends=('qt4: for i7z-gui')
 url="https://github.com/ajaiantilal/i7z"
-provides='i7z'
-conflicts='i7z'
+provides=('i7z')
+conflicts=('i7z')
 source=("git://github.com/ajaiantilal/i7z.git")
 md5sums=('SKIP')
 
