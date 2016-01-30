@@ -1,6 +1,6 @@
 # Maintainer: atomicbeef <teddyg522@gmail.com>
 pkgname=python-libtcod-cffi
-pkgver=0.2.3
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="Python CFFI port of libtcod."
 arch=('any')
@@ -9,7 +9,7 @@ license=('BSD')
 depends=('python' 'python-cffi' 'sdl' 'libpng' 'zlib')
 makedepends=('python-setuptools')
 source=("https://github.com/HexDecimal/libtcod-cffi/archive/v$pkgver.tar.gz")
-md5sums=('c1b9fff53fdffc7c6302bef23fc9f885')
+md5sums=('f7552231df4b5889609c2736ce8986c3')
 
 prepare() {
     cd "libtcod-cffi-$pkgver"
