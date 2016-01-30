@@ -5,7 +5,6 @@ post_install() {
   mkfontdir /usr/share/fonts/local
   echo "Make sure that you add /usr/share/fonts/local/ to xorg.conf under the"
   echo "\"Files\" section."
-  echo "See the README in /usr/share/doc/tamzen-font for more info."
 }
 
 # arg 1: the new package version

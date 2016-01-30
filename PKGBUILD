@@ -2,13 +2,13 @@
 _pkgname=triskweline-code-font
 pkgname=$_pkgname
 pkgver=4.b516857
-pkgrel=1
+pkgrel=2
 pkgdesc="A monospaced bitmap font, modified from Triskweline for better code readability."
 arch=('any')
 url="https://github.com/ideasman42/triskweline-code-font"
 license=('CC0')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-install=("$pkgname.install")
+install=$pkgname.install
 source=("git://github.com/ideasman42/$_pkgname.git")
 noextract=()
 md5sums=('SKIP')
