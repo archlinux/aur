@@ -14,7 +14,7 @@ license=('MIT')
 depends=('libva')
 provides=('libva-driver-intel' 'libva-driver-intel_arm')
 replaces=('libva-driver-intel' 'libva-driver-intel_arm')
-source=(http://freedesktop.org/software/vaapi/releases/$pkgname/$pkgname-$pkgver.tar.bz2)
+source=(http://freedesktop.org/software/vaapi/releases/$_pkgname/$_pkgname-$pkgver.tar.bz2)
 md5sums=('80ea2e1db7f90489d033f0dc32fbf4dd')
 
 prepare() {
