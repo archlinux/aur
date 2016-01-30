@@ -1,0 +1,24 @@
+--- ScriptCommunicator.pro.orig	2016-01-08 22:15:31.243355050 +0100
++++ ScriptCommunicator.pro	2016-01-08 22:16:27.679588796 +0100
+@@ -1,8 +1,8 @@
+-greaterThan(QT_MAJOR_VERSION, 4) {
+-    QT       += widgets serialport
+-} else {
+-    include($$QTSERIALPORT_PROJECT_ROOT/src/serialport/qt4support/serialport.prf)
+-}
++DESTDIR = build
++OBJECTS_DIR = build/.obj
++MOC_DIR = build/.moc
++RCC_DIR = build/.rcc
++UI_DIR = build/.ui
+ 
+ CONFIG += c++11
+ 
+@@ -15,6 +15,7 @@
+ QT += uitools
+ QT += network
+ QT += sql
++QT += widgets serialport
+ 
+ unix{
+ LIBS += -ldl
