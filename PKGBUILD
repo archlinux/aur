@@ -112,8 +112,11 @@ pkgver() {
     # This will almost match the output of `llvm-config --version` when the
     # LLVM_APPEND_VC_REV cmake flag is turned on. The only difference is
     # dash being replaced with underscore because of Pacman requirements.
-    echo $(sed -n '/^AC_INIT/s|^.*,\[\([[:digit:]\.]\+svn\)\],.*$|\1|p' \
-        autoconf/configure.ac)_r$(svnversion | tr -d [A-z])
+    echo $(awk -F 'MAJOR |MINOR |PATCH |SUFFIX |)' \
+            'BEGIN { ORS="." ; i=0 } \
+             /set\(LLVM_VERSION_/ { print $2 ; i++ ; if (i==2) ORS="" } \
+             END { print "\n" }' \
+        CMakeLists.txt)_r$(svnversion | tr -d [A-z])
 }
 
 prepare() {
