@@ -3,12 +3,12 @@
 
 pkgname=klayout
 pkgver=0.24.4
-pkgrel=2
+pkgrel=3
 pkgdesc="High Performance Layout Viewer And Editor. Support of GDS and OASIS files."
 arch=('i686' 'x86_64')
 url="http://www.klayout.de/"
 license=('GPL')
-depends=('qt4' 'ruby-2.1')
+depends=('qt4' 'ruby2.1')
 source=(
 	http://www.klayout.de/downloads/klayout-${pkgver}.tar.gz
 	klayoutEditor.desktop
@@ -16,8 +16,8 @@ source=(
 )
 build() {
 	cd "$srcdir/klayout-${pkgver}"
-	build_opt="-qt /usr -qtinc /usr/include/qt4 -qtbin /usr/lib/qt4/bin -bin $pkgdir/usr/bin -rblib /usr/lib/libruby.so"
-
+	build_opt="-qt /usr -qtinc /usr/include/qt4 -qtbin /usr/lib/qt4/bin -bin $pkgdir/usr/bin
+		-rblib /opt/ruby2.1/lib/libruby.so -rbinc /opt/ruby2.1/include/ruby-2.1.0/"
 	case ${CARCH} in
 		i686)
 			sh build.sh $build_opt -platform linux-32-gcc-release
