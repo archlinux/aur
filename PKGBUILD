@@ -10,7 +10,8 @@ license=('GPL3')
 depends=('ffmpeg' 'python-gobject' 'python-lxml' 'python-pymediainfo'
          'vapoursynth')
 makedepends=('git' 'python-setuptools')
-optdepends=('vapoursynth-plugin-flash3kyuu_deband-git: f3kdb deband filter'
+optdepends=('ffmpeg-full: More codecs'
+            'vapoursynth-plugin-flash3kyuu_deband-git: f3kdb deband filter'
             'vapoursynth-plugin-fluxsmooth: FluxSmooth denoise filters'
             'vapoursynth-plugin-ffms2: ffms2 source filter'
             'vapoursynth-plugin-lsmashsource: L-SMASH source filters'
