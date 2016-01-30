@@ -1,25 +1,27 @@
+# Maintainer Zanny <lordzanny@gmail.com>
 # Maintainer: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
 # Author: Antonio Rojas <arojas@archlinux.org> 
 
+_gitname=kaccounts-integration
 pkgname=kaccounts-integration-git
-pkgver=r806.1689783
+pkgver=v15.07.80.r70.g9b792c9
 pkgrel=1
 pkgdesc='Small system to administer web accounts for the sites and services across the KDE desktop, including: Google, Facebook, Owncloud, IMAP, 
 Jabber and others'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/kdereview/kaccounts-integration'
 license=(GPL)
-depends=(kcmutils kio signon libaccounts-qt5) # kdepimlibs-git
+depends=(kcmutils signon libaccounts-qt5)
 makedepends=(extra-cmake-modules git kdoctools)
 optdepends=('kaccounts-providers-git: Provider files')
 provides=('kaccounts-integration')
 conflicts=('kaccounts-integration')
-source=("git://anongit.kde.org/kaccounts-integration.git")
+source=("git://anongit.kde.org/$_gitname")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd kaccounts-integration
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/$_gitname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -28,7 +30,7 @@ prepare() {
 
 build() {
   cd build
-  cmake ../kaccounts-integration \
+  cmake ../$_gitname \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DLIB_INSTALL_DIR=lib \
