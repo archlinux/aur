@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+    <mime-type type="application/x-fritzing">
+        <comment>Fritzing project</comment>
+        <comment xml:lang="de">Fritzing Projekt</comment>
+        <comment xml:lang="fr">Projet Fritzing</comment>
+        <icon name="fritzing"/>
+        <glob pattern="*.fzz"/>
+    </mime-type>
+</mime-info>
