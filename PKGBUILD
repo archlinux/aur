@@ -1,5 +1,5 @@
+# Maintainer: Daniel Milde <daniel at milde dot cz>
 # Contributor: Danibspi danibspi <at> gmail <dot> com
-# Contributor: Daniel Milde <daniel@milde.cz>
 
 pkgname=cunit
 pkgver=2.1.3
