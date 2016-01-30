@@ -4,7 +4,7 @@
 # Contributor: Andres Perera <aepd87@gmail.com>
 
 pkgname=pacman-git
-pkgver=v4.1.0rc1-23
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="A library-based package manager with dependency support. git version."
 arch=('i686' 'x86_64')
@@ -65,10 +65,6 @@ package() {
       myflags="-march=x86-64 "
       ;;
   esac
-  sed -i "$pkgdir/etc/makepkg.conf" \
-    -e "s|@CARCH[@]|$CARCH|g" \
-    -e "s|@CHOST[@]|$mychost|g" \
-    -e "s|@CARCHFLAGS[@]|$myflags|g"
 
   # contrib
   make DESTDIR="$pkgdir" -C contrib install
