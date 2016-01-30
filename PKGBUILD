@@ -21,8 +21,8 @@ prepare(){
   cd "${srcdir}"
 
   # Out of source build
-  rm -rf build
-  mkdir -p build
+  rm -rf -- build
+  mkdir -p -- build
 }
 
 build() {
