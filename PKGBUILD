@@ -13,6 +13,7 @@ arch=('arm' 'armv6h' 'armv7h')
 url='http://freedesktop.org/wiki/Software/vaapi'
 license=('MIT')
 depends=('libva')
+makedepends=('libdrm')
 provides=('libva-driver-intel' 'libva-driver-intel_arm')
 replaces=('libva-driver-intel' 'libva-driver-intel_arm')
 source=(http://freedesktop.org/software/vaapi/releases/$_pkgname/$_pkgname-$pkgver.tar.bz2)
