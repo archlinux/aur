@@ -1,4 +1,4 @@
-From fec7cd86ca4fe43d64f51af873fa9f81b6c7cf9f Mon Sep 17 00:00:00 2001
+From ae33abe3ab357de1dc341841c435d7e3cd4fca8b Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Wed, 7 Jan 2015 16:01:00 +0100
 Subject: [PATCH 1/3] emulation: Add sequences and signals for desktop
@@ -60,10 +60,10 @@ index 0276422ec6d4..2c35c685930a 100644
  VOID:STRING,UINT
  VOID:UINT,UINT
 diff --git a/src/vte.cc b/src/vte.cc
-index 5b70bd1bfa77..55e57dd3270a 100644
+index 701891ba93b3..7830319ea9a3 100644
 --- a/src/vte.cc
 +++ b/src/vte.cc
-@@ -8898,6 +8898,9 @@ vte_terminal_finalize(GObject *object)
+@@ -8906,6 +8906,9 @@ vte_terminal_finalize(GObject *object)
  
  	remove_update_timeout (terminal);
  
@@ -73,7 +73,7 @@ index 5b70bd1bfa77..55e57dd3270a 100644
  	/* discard title updates */
          g_free(terminal->pvt->window_title);
          g_free(terminal->pvt->window_title_changed);
-@@ -10630,6 +10633,7 @@ vte_terminal_class_init(VteTerminalClass *klass)
+@@ -10638,6 +10641,7 @@ vte_terminal_class_init(VteTerminalClass *klass)
  	klass->child_exited = NULL;
  	klass->encoding_changed = NULL;
  	klass->char_size_changed = NULL;
@@ -81,7 +81,7 @@ index 5b70bd1bfa77..55e57dd3270a 100644
  	klass->window_title_changed = NULL;
  	klass->icon_title_changed = NULL;
  	klass->selection_changed = NULL;
-@@ -10704,6 +10708,25 @@ vte_terminal_class_init(VteTerminalClass *klass)
+@@ -10712,6 +10716,25 @@ vte_terminal_class_init(VteTerminalClass *klass)
                       1, G_TYPE_INT);
  
          /**
@@ -107,7 +107,7 @@ index 5b70bd1bfa77..55e57dd3270a 100644
           * VteTerminal::window-title-changed:
           * @vteterminal: the object which received the signal
           *
-@@ -12720,6 +12743,16 @@ need_processing (VteTerminal *terminal)
+@@ -12732,6 +12755,16 @@ need_processing (VteTerminal *terminal)
  	return _vte_incoming_chunks_length (terminal->pvt->incoming) != 0;
  }
  
@@ -124,7 +124,7 @@ index 5b70bd1bfa77..55e57dd3270a 100644
  /* Emit an "icon-title-changed" signal. */
  static void
  vte_terminal_emit_icon_title_changed(VteTerminal *terminal)
-@@ -12767,6 +12800,11 @@ vte_terminal_emit_pending_signals(VteTerminal *terminal)
+@@ -12779,6 +12812,11 @@ vte_terminal_emit_pending_signals(VteTerminal *terminal)
  
  	vte_terminal_emit_adjustment_changed (terminal);
  
@@ -158,10 +158,10 @@ index dbe3ffed81ba..8b21635bea9e 100644
          VteTerminalClassPrivate *priv;
  };
 diff --git a/src/vteinternal.hh b/src/vteinternal.hh
-index 4eeeddbc2e1f..b8575d02c99e 100644
+index f2152e6a8853..8c4c87d73122 100644
 --- a/src/vteinternal.hh
 +++ b/src/vteinternal.hh
-@@ -367,6 +367,11 @@ public:
+@@ -369,6 +369,11 @@ public:
  	gboolean cursor_moved_pending;
  	gboolean contents_changed_pending;
  
@@ -183,10 +183,10 @@ index ad5b6d99f938..287caa5b5928 100644
  "set-current-file-uri", VTE_SEQUENCE_HANDLER(vte_sequence_handler_set_current_file_uri)
 +"send-notification", VTE_SEQUENCE_HANDLER(vte_sequence_handler_send_notification)
 diff --git a/src/vteseq.cc b/src/vteseq.cc
-index ffb00f689a0a..ec9370c7c37d 100644
+index bf76995165bb..59f091f166aa 100644
 --- a/src/vteseq.cc
 +++ b/src/vteseq.cc
-@@ -2227,6 +2227,96 @@ vte_sequence_handler_return_terminal_id (VteTerminal *terminal, GValueArray *par
+@@ -2243,6 +2243,96 @@ vte_sequence_handler_return_terminal_id (VteTerminal *terminal, GValueArray *par
  	vte_sequence_handler_send_primary_device_attributes (terminal, params);
  }
  
@@ -284,10 +284,10 @@ index ffb00f689a0a..ec9370c7c37d 100644
  static void
  vte_sequence_handler_send_secondary_device_attributes (VteTerminal *terminal, GValueArray *params)
 -- 
-2.1.0
+2.5.0
 
 
-From 930f9e8252175ed3ca94f12af3d6c271637da947 Mon Sep 17 00:00:00 2001
+From d781b9be57a7d612558241a1712d1ad28c56de44 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Thu, 29 Jan 2015 13:09:17 +0100
 Subject: [PATCH 2/3] vte.sh: Emit OSC 777 from PROMPT_COMMAND
@@ -315,10 +315,10 @@ index 2d211caa2f17..1c0543bd9d26 100644
  
  case "$TERM" in
 -- 
-2.1.0
+2.5.0
 
 
-From 2b2ad252df1add231616f5024cdc572ef587771c Mon Sep 17 00:00:00 2001
+From 21df58de64837af0216926743fbb9b3a10f82dfc Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Thu, 22 Jan 2015 16:37:10 +0100
 Subject: [PATCH 3/3] vteapp: Add a test for the notification-received signal
@@ -328,7 +328,7 @@ Subject: [PATCH 3/3] vteapp: Add a test for the notification-received signal
  1 file changed, 7 insertions(+)
 
 diff --git a/src/app.vala b/src/app.vala
-index e102e4618d81..cc2248009232 100644
+index aa8d312abbca..290657d9495d 100644
 --- a/src/app.vala
 +++ b/src/app.vala
 @@ -102,6 +102,8 @@ class Window : Gtk.ApplicationWindow
@@ -353,5 +353,5 @@ index e102e4618d81..cc2248009232 100644
  
  class App : Gtk.Application
 -- 
-2.1.0
+2.5.0
 
