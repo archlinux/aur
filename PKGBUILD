@@ -18,6 +18,7 @@ optdepends=(
     'nitrogen: Wallpaper Display'
     'scrot: Take a screenshot'
     'w3m: Display Images'
+    'xorg-xprop: Accurate window manager detection'
     'wmctrl: Accurate window manager detection'
     'xorg-xdpyinfo: Resolution Detection'
 )
