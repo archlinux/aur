@@ -1,7 +1,7 @@
 # Maintainer: jbreams@gmail.com
 pkgname=gonepass-git
 pkgver=r27.38d00f3
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK+ 1Password reader"
 arch=('x86_64')
 url="https://github.com/jbreams/gonepass"
@@ -39,4 +39,23 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}/build"
 	make DESTDIR=$pkgdir/ install
+}
+
+post_install() {
+    glib-compile-schemas /usr/share/glib-2.0/schemas
+    update-desktop-database -q
+}
+
+pre_upgrade() {
+    if [ -f /usr/share/glib-2.0/schemas/gonepass.gschema.xml ]; then
+        gconfpkg --uninstall gonepass
+    fi
+}
+
+post_upgrade() {
+    post_install $1
+}
+
+post_remove() {
+    post_install $1
 }
