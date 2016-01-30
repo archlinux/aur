@@ -1,0 +1,11 @@
+post_install() {
+  echo "The commands 'wingo' and 'wingo-cmd' have been installed."
+  echo "Documentation is located in /usr/share/doc/wingo."
+  echo "You should now create a fresh configuration with 'wingo --write-config'"
+  echo "For more help, file an issue at https://github.com/BurntSushi/wingo"
+}
+
+post_upgrade() {
+  post_install
+}
+
