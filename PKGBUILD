@@ -1,6 +1,6 @@
  #Maintainer: Kobus van Schoor <pbscube at gmail dot com>
 pkgname=dchain
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A C++ symmetrical-key string encryption library"
 url="http://github.com/Cube777/dchain"
