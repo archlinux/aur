@@ -9,7 +9,7 @@ pkgdesc='Command line password manager.'
 arch=('i686' 'x86_64')
 url='https://www.steelpasswordmanager.org'
 license=('GPL')
-depends=('libmcrypt' 'mhash' 'sqlite')
+depends=('libsteel')
 makedepends=('git')
 source=("$pkgname::git+https://gitlab.com/Rosvall/steel.git#tag=v$pkgver" "https://gitlab.com/Rosvall/libsteel/repository/archive.zip?ref=v1.0")
 sha256sums=('SKIP'
