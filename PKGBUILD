@@ -5,6 +5,7 @@
 
 pkgname=libva-intel-driver_arm
 _pkgname=libva-intel-driver
+pkgbase=libva-intel-driver
 pkgver=1.6.2
 pkgrel=1
 pkgdesc='VA-API implementation for Intel G45 and HD Graphics family. ARM Compliant.'
