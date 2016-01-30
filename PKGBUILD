@@ -15,7 +15,7 @@ pkgver=0.42.05
 _dfver=42_05
 _sfver=42.05
 _ufver=0.42.05
-pkgrel=1
+pkgrel=2
 pkgdesc="A single-player fantasy game. You control a dwarven outpost or an adventurer in a randomly generated persistent world. Packed with Spacefox's tileset and graphics pack.  Does not replace other dwarffortress packages."
 arch=(i686 x86_64)
 url="http://www.bay12forums.com/smf/index.php?topic=129219.0"
@@ -41,7 +41,7 @@ backup=('opt/df_linux-sf/data/init/colors.txt'
         'opt/df_linux-sf/data/init/interface.txt')
 
 source=("df_${_dfver}.tar.bz2::http://www.bay12games.com/dwarves/df_${_dfver}_linux.tar.bz2"
-        "spacefox_${_sfver}.zip::https://github.com/fricy/Spacefox/archive/${_sfver}.zip"
+        "spacefox_${_sfver}.zip::https://github.com/DFgraphics/Spacefox/archive/${_sfver}.zip"
         "unfuck_${_ufver}.zip::https://github.com/svenstaro/dwarf_fortress_unfuck/archive/${_ufver}.zip"
         "dwarffortress-sf"
         "dwarffortress-sf.desktop"
@@ -49,7 +49,7 @@ source=("df_${_dfver}.tar.bz2::http://www.bay12games.com/dwarves/df_${_dfver}_li
         "LICENSE-sf")
 
 md5sums=('79d2768e7f3ff0d086caa980331466c4'
-         'da5f53bf57697fdeda99d63f080734b3'
+         '8614f9eb6ccfbba46c1c1e0225555624'
          '9c5399cf2980a221ca30e6d6e9fc7645'
          '53c9d5bfcb35281c81b78fea23da0698'
          '60de2d654998220f426bbe41f2e57471'
