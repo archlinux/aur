@@ -2,15 +2,15 @@
 # Based on wine-staging PKGBUILD
 
 #Additional patches:
+# -Gallium Nine support
 # -Mip-Map fix (see https://bugs.winehq.org/show_bug.cgi?id=34480 )
 # -Keybind patch reversion
 # -Heap allocation perfomance improvement patch
 # -Wbemprox videocontroller query fix v2 (see https://bugs.winehq.org/show_bug.cgi?id=38879 )
 # -Steam patch, Crossover Hack version (see https://bugs.winehq.org/show_bug.cgi?id=39403 )
-# -HD7700M support (not referenced in Wine)
 
 pkgname=wine-gaming-nine
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
@@ -18,7 +18,6 @@ _winesrcdir="wine-patched-staging-$_pkgbasever"
 
 source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbasever.tar.gz"
         30-win32-aliases.conf
-        hd7700m_support.patch
         heap_perf.patch
         keybindings.patch
         mipmap.patch
@@ -26,9 +25,8 @@ source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbas
         steam.patch
         wbemprox_query_v2.patch
         )
-sha1sums=('d18ac6f55a1c6333cfe6961980685fad4404c695'
+sha1sums=('0caaea9075d73c2432aa7e91d77aaf79fcc3268a'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
-          '8fa4b03f68f18b4de80f10c7a43c0e99a5cb017c'
           '0f4ac455436d5714a2cf0b537ed25f4fa5c1a7fd'
           'f3febb8836f38320742a546c667106608d4c4395'
           'c3096fccbac23e520d03f592db7f23350cbbc0bc'
@@ -137,7 +135,6 @@ prepare()
     patch -p1 < ../mipmap.patch
     patch -p1 < ../heap_perf.patch
     patch -p1 < ../wbemprox_query_v2.patch
-    patch -p1 < ../hd7700m_support.patch
 
     patch -p1 -R < ../keybindings.patch
 
