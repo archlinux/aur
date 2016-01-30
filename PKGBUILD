@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 257059 2015-12-21 08:03:24Z foutrelis $
+# $Id: PKGBUILD 258593 2016-01-26 15:50:24Z foutrelis $
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor : Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-gtk2
 _pkgname=firefox
-pkgver=43.0.4
+pkgver=44.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=('i686' 'x86_64')
@@ -15,11 +15,9 @@ depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
          'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
          'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite' 'ttf-font')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf'
-             'xorg-server-xvfb' 'libpulse' 'inetutils' 'gst-plugins-base-libs')
+             'xorg-server-xvfb' 'libpulse' 'inetutils')
 optdepends=('networkmanager: Location detection via available WiFi networks'
-            'ffmpeg: H264/AAC decoding'
-            'gst-plugins-good: MP3 playback'
-            'gst-plugins-ugly: MP3 playback'
+            'ffmpeg: H264/AAC/MP3 decoding'
             'upower: Battery API')
 install=firefox.install
 options=('!emptydirs' '!makeflags')
@@ -31,8 +29,8 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/
         firefox-install-dir.patch
         vendor.js
         firefox-fixed-loading-icon.png)
-sha256sums=('76cfa99285d49dede4097096ab3e7ee4bdedb64084b1fc23f2de216884245a76'
-            '272fa8b8ca6afa224d9adf15d458dea6c8510248e62550254b9a5dfb286204de'
+sha256sums=('ea82b0f4840d320aa4fe8046ba28e686bf6dc60f707a0514a9d68c150d0c4c1d'
+            'e75e13807e5f210dde53b785e25c8a5345d7bb459f857355b7b87bffc24b312b'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
@@ -69,10 +67,10 @@ prepare() {
   echo -n "$_mozilla_api_key" >mozilla-api-key
   echo "ac_add_options --with-mozilla-api-keyfile=\"$PWD/mozilla-api-key\"" >>.mozconfig
 
-  mkdir -p "$srcdir/path"
+  mkdir "$srcdir/path"
 
   # WebRTC build tries to execute "python" and expects Python 2
-  ln -sf /usr/bin/python2 "$srcdir/path/python"
+  ln -s /usr/bin/python2 "$srcdir/path/python"
 
   # configure script misdetects the preprocessor without an optimization level
   # https://bugs.archlinux.org/task/34644
