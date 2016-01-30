@@ -1,0 +1,17 @@
+pkgbase = poker-odds-git
+	pkgdesc = A poker odds calculator written in Google Go
+	pkgver = 39.ab073b1
+	pkgrel = 1
+	url = https://github.com/cmccabe/poker-odds
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = go
+	makedepends = git
+	provides = poker-odds
+	conflicts = poker-odds
+	source = poker-odds::git+https://github.com/cmccabe/poker-odds.git
+	sha1sums = SKIP
+
+pkgname = poker-odds-git
+
