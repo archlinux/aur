@@ -1,9 +1,10 @@
-# Maintainer:  WorMzy Tykashi <wormzy.tykashi@gmail.com>
+# Maintainer: ilikenwf/Matt Parnell <parwok@gmail.com>
+# Forked from palemoon PKGBUILD by WorMzy Tykashi <wormzy.tykashi@gmail.com>
 # Contributor: artiom <a.mv at gmx dot fr>
 pkgname=palemoon-git
 pkgver=25.6.0_beta2.768.g1ed2a91
 pkgrel=1
-pkgdesc="Open source web browser based on Firefox focusing on efficiency with privacy patches from github.com/williex/firefox-privacy"
+pkgdesc="Open source web browser based on Firefox focusing on efficiency (git version)"
 arch=('i686' 'x86_64')
 url="http://www.palemoon.org/"
 license=('MPL' 'GPL' 'LGPL')
