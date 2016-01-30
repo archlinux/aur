@@ -3,7 +3,7 @@
 
 pkgname=energia
 pkgver=0017
-pkgrel=1
+pkgrel=2
 pkgdesc="Energia is a Arduino IDE clone for use with the MSP430 launchpad"
 arch=('i686' 'x86_64')
 url="http://energia.nu/"
