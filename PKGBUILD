@@ -1,64 +1,45 @@
 # Contributor: Andrew Gallant <andrew@burntsushi.net>
-# Maintainer: Andrew Gallant
+# Maintainer: aksr <aksr at t-com dot me>
 pkgname=wingo-git
-pkgver=20121022
+pkgver=r427.a56d639
 pkgrel=1
-pkgdesc="An X window manager featuring per-monitor workspaces with floating and tiling placement policies."
-arch=('any')
+pkgdesc="A fully-featured window manager written in Go."
+arch=('i686' 'x86_64')
 url="https://github.com/BurntSushi/wingo"
 license=('WTFPL')
-groups=()
-makedepends=('go' 'git' 'mercurial')
-source=()
-noextract=()
-install=wingo.install
-md5sums=()
+makedepends=('git' 'go')
+install=${pkgname}.install
+_gourl=github.com/BurntSushi/wingo
+_gourl2=github.com/BurntSushi/wingo/wingo-cmd
+
+pkgver() {
+  cd "$srcdir/src/${_gourl}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
   cd "$srcdir"
-
-  msg "go getting wingo... (this may take a while)"
-  GOPATH="$srcdir" go get -u -f -v -x github.com/BurntSushi/wingo
-
-  msg "go getting wingo-cmd..."
-  GOPATH="$srcdir" go get -u -f -v -x github.com/BurntSushi/wingo/wingo-cmd
+  GOPATH="$srcdir" go get -u -f -v -x ${_gourl}
+  GOPATH="$srcdir" go get -u -f -v -x ${_gourl2}
 }
 
 package() {
   cd "$srcdir"
-
-  # Install the wingo executables.
   install -Dm755 bin/wingo "$pkgdir/usr/bin/wingo"
   install -Dm755 bin/wingo-cmd "$pkgdir/usr/bin/wingo-cmd"
+  cd "$srcdir/src/${_gourl}"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname%-*}/README.md"
+  install -Dm644 COMPLIANCE "$pkgdir/usr/share/doc/${pkgname%-*}/COMPLIANCE"
+  install -Dm644 HOWTO-COMMANDS "$pkgdir/usr/share/doc/${pkgname%-*}/HOWTO-COMMANDS"
+  install -Dm644 HOWTO-CONFIGURE "$pkgdir/usr/share/doc/${pkgname%-*}/HOWTO-CONFIGURE"
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/${pkgname%-*}/COPYING"
 
-  # Install Wingo documentation.
-  cd "$srcdir/src/github.com/BurntSushi/wingo"
-  install -Dm644 COMPLIANCE "$pkgdir/usr/share/doc/wingo/COMPLIANCE"
-  install -Dm644 COPYING "$pkgdir/usr/share/doc/wingo/COPYING"
-  install -Dm644 HOWTO-COMMANDS "$pkgdir/usr/share/doc/wingo/HOWTO-COMMANDS"
-  install -Dm644 HOWTO-CONFIGURE "$pkgdir/usr/share/doc/wingo/HOWTO-CONFIGURE"
-  install -Dm644 INSTALL "$pkgdir/usr/share/doc/wingo/INSTALL"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/wingo/README.md"
-  install -Dm644 STYLE "$pkgdir/usr/share/doc/wingo/STYLE"
-
-  # Install Wingo configuration to /etc/xdg/wingo
-  cd "$srcdir/src/github.com/BurntSushi/wingo/config"
-  install -Dm644 hooks.wini "$pkgdir/etc/xdg/wingo/hooks.wini"
-  install -Dm644 key.wini "$pkgdir/etc/xdg/wingo/key.wini"
-  install -Dm644 mouse.wini "$pkgdir/etc/xdg/wingo/mouse.wini"
-  install -Dm644 options.wini "$pkgdir/etc/xdg/wingo/options.wini"
-  install -Dm644 theme.wini "$pkgdir/etc/xdg/wingo/theme.wini"
-
-  # Install Wingo data files to /usr/share/wingo
-  cd "$srcdir/src/github.com/BurntSushi/wingo/data"
-  install -Dm644 DejaVuSans.ttf "$pkgdir/usr/share/wingo/DejaVuSans.ttf"
-  install -Dm644 wingo.wav "$pkgdir/usr/share/wingo/wingo.wav"
-  install -Dm644 wingo.png "$pkgdir/usr/share/wingo/wingo.png"
-  install -Dm644 close.png "$pkgdir/usr/share/wingo/close.png"
-  install -Dm644 minimize.png "$pkgdir/usr/share/wingo/minimize.png"
-  install -Dm644 maximize.png "$pkgdir/usr/share/wingo/maximize.png"
-
-  # Install Wingo xsession file to /usr/share/xsessions
-  cd "$srcdir/src/github.com/BurntSushi/wingo/data/archlinux/wingo-git"
-  install -Dm644 wingo.desktop "$pkgdir/usr/share/xsessions/wingo.desktop"
+  mkdir -p $pkgdir/{/usr/share/${pkgname%-*},etc/xdg/${pkgname%-*}}
+  cp config/*.wini "$pkgdir/etc/xdg/${pkgname%-*}"
+  cd data
+  cp *.png "$pkgdir/usr/share/${pkgname%-*}"
+  install -Dm644 wingo.wav "$pkgdir/usr/share/${pkgname%-*}/wingo.wav"
+  install -Dm644 DejaVuSans.ttf "$pkgdir/usr/share/${pkgname%-*}/DejaVuSans.ttf"
+  install -Dm644 archlinux/wingo-git/wingo.desktop "$pkgdir/usr/share/xsessions/wingo.desktop"
 }
+
