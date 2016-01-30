@@ -2,7 +2,7 @@
 pkgname=yacreader
 pkgver=8.0
 pkgrel=3
-pkgdesc=('A comic reader for cross-platform reading and managing your digital comic collection.')
+pkgdesc="A comic reader for cross-platform reading and managing your digital comic collection."b
 arch=('i686' 'x86_64')
 url="http://www.yacreader.com"
 license=('GPL3')
