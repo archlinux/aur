@@ -2,7 +2,7 @@
 
 pkgname='vimiv-git'
 pkgrel=1
-pkgver=r59.a5f091b
+pkgver=r69.58d15aa
 pkgdesc="An image viewer with vim-like keybindings"
 arch=('any')
 url="https://github.com/karlch/vimiv"
@@ -11,7 +11,7 @@ depends=('python3' 'python-gobject' 'gtk3' 'python-pillow')
 makedepends=('git')
 optdepends=('imagemagick: for the optimization of images'
             'jhead: for much better autorotation depending on EXIF data')
-backup=('etc/vimiv/vimivrc.py')
+backup=('etc/vimiv/vimivrc' 'etc/vimiv/keys.conf')
 source=("$pkgname::git+${url}.git")
 md5sums=('SKIP')
 
@@ -24,4 +24,9 @@ package() {
     cd "$srcdir/$pkgname"
 
     make DESTDIR="$pkgdir" install
+}
+
+post_upgrade() {
+    printf "The new version comes with two new configuration files. The old \
+file vimivrc.py can be removed. See vimivrc(5) for more information.\n"
 }
