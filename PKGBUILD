@@ -5,8 +5,8 @@
 
 _pkgbasename=ffmpeg
 pkgname=lib32-$_pkgbasename
-pkgver=2.8.4
-pkgrel=2
+pkgver=2.8.5
+pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
@@ -33,7 +33,7 @@ provides=(
 )
 source=(http://ffmpeg.org/releases/$_pkgbasename-$pkgver.tar.bz2{,.asc})
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-sha256sums=('83cc8136a7845546062a43cda9ae3cf0a02f43ef5e434d2f997f055231a75f8e'
+sha256sums=('3b6d9951533323ee64a21d0aa7667a780b3470bfe4e0fb7c1b33307ce290615a'
             'SKIP')
 
 build() {
@@ -73,8 +73,7 @@ build() {
     --enable-libxvid \
     --enable-shared \
     --enable-version3 \
-    --enable-x11grab \
-    --disable-demuxer='hls' --disable-protocol='concat,hls' # FS#47738
+    --enable-x11grab
 
 #    --enable-libdcadec \
 #    --enable-libopencore_amrnb \
