@@ -1,14 +1,11 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=dyncall-git
-pkgver=20150207
+pkgver=20151201
 pkgrel=1
 pkgdesc="Generic Dynamic FFI package"
-arch=('i686' 'x86_64')
-makedepends=('cmake'
-             'git'
-             'make'
-             'yasm')
+arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+makedepends=('cmake' 'git' 'make' 'yasm')
 url="https://github.com/MoarVM/dyncall"
 license=('custom')
 source=(git+https://github.com/MoarVM/dyncall)
@@ -33,7 +30,7 @@ package() {
   cd ${pkgname%-git}
 
   msg 'Installing license...'
-  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 
   msg 'Installing...'
   make DESTDIR="$pkgdir" install
