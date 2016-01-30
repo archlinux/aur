@@ -1,0 +1,363 @@
+diff --git a/src/board/board-internals.h b/src/board/board-internals.h
+index 9716b64..47a4b8f 100644
+--- a/src/board/board-internals.h
++++ b/src/board/board-internals.h
+@@ -89,7 +89,7 @@ struct _BoardChangeStackEntry {
+ };
+ 
+ 
+-inline void	board_undo_changes (Board *board, int num_undos);
++void	board_undo_changes (Board *board, int num_undos);
+ 
+ int		determine_position_delta (int delta_x, int delta_y);
+ 
+diff --git a/src/board/board.c b/src/board/board.c
+index 5625365..b392b45 100644
+--- a/src/board/board.c
++++ b/src/board/board.c
+@@ -281,7 +281,7 @@ board_is_game_over (const Board *board, BoardRuleSet rule_set,
+ 
+ 
+ /* Determine if a move is legal according to specified rules. */
+-inline int
++int
+ board_is_legal_move (const Board *board, BoardRuleSet rule_set, int color, ...)
+ {
+   va_list move;
+@@ -300,7 +300,7 @@ board_is_legal_move (const Board *board, BoardRuleSet rule_set, int color, ...)
+ 
+ 
+ /* Play the specified move on the given board. */
+-inline void
++void
+ board_play_move (Board *board, int color, ...)
+ {
+   va_list move;
+@@ -388,7 +388,7 @@ board_apply_changes
+  * tracking unexpectedly changing move number (i.e. with MN[] SGF
+  * property that doesn't correspond a real move).
+  */
+-inline void
++void
+ board_add_dummy_move_entry (Board *board)
+ {
+   assert (board);
+@@ -409,7 +409,7 @@ board_add_dummy_move_entry (Board *board)
+  * changes.  If not moves or changes are in the stack yet, return
+  * zero.
+  */
+-inline int
++int
+ board_undo (Board *board, int num_undos)
+ {
+   int k;
+@@ -467,7 +467,7 @@ board_get_move_number (const Board *board, int num_moves_backward)
+ }
+ 
+ 
+-inline void
++void
+ board_undo_changes (Board *board, int num_changes)
+ {
+   int k;
+@@ -1059,7 +1059,7 @@ game_parse_move (Game game, int board_width, int board_height,
+  * If the default setup is not empty, nonzero is returned and zero
+  * otherwise.
+  */
+-inline int
++int
+ game_get_default_setup (Game game, int width, int height,
+ 			BoardPositionList **black_stones,
+ 			BoardPositionList **white_stones)
+diff --git a/src/board/board.h b/src/board/board.h
+index f7f76f3..b19cad9 100644
+--- a/src/board/board.h
++++ b/src/board/board.h
+@@ -208,17 +208,17 @@ int		board_adjust_color_to_play (const Board *board,
+ int		board_is_game_over (const Board *board, BoardRuleSet rule_set,
+ 				    int color_to_play);
+ 
+-inline int	board_is_legal_move (const Board *board, BoardRuleSet rule_set,
++int	board_is_legal_move (const Board *board, BoardRuleSet rule_set,
+ 				     int color, ...);
+ 
+-inline void	board_play_move (Board *board, int color, ...);
++void	board_play_move (Board *board, int color, ...);
+ void		board_apply_changes
+ 		  (Board *board,
+ 		   const BoardPositionList *const
+ 		     change_lists[NUM_ON_GRID_VALUES]);
+-inline void	board_add_dummy_move_entry (Board *board);
++void	board_add_dummy_move_entry (Board *board);
+ 
+-inline int	board_undo (Board *board, int num_moves);
++int	board_undo (Board *board, int num_moves);
+ 
+ int		board_get_move_number (const Board *board,
+ 				       int num_moves_backward);
+@@ -299,7 +299,7 @@ int		game_parse_move (Game game, int board_width, int board_height,
+ 				 BoardAbstractMoveData *move_data);
+ 
+ 
+-inline int	game_get_default_setup (Game game, int width, int height,
++int	game_get_default_setup (Game game, int width, int height,
+ 					BoardPositionList **black_stones,
+ 					BoardPositionList **white_stones);
+ 
+diff --git a/src/gui-gtk/gtk-configuration.c b/src/gui-gtk/gtk-configuration.c
+index f5f5a25..165ae99 100644
+--- a/src/gui-gtk/gtk-configuration.c
++++ b/src/gui-gtk/gtk-configuration.c
+@@ -723,7 +723,7 @@ go_board_appearance_defaults_init (void *section_structure)
+ {
+   BoardAppearance *structure = (BoardAppearance *) section_structure;
+ 
+-  structure->background_texture	= utils_duplicate_string ("/usr/local/share/quarry/textures/wood1.jpg");
++  structure->background_texture	= utils_duplicate_string ("/usr/share/quarry/textures/wood1.jpg");
+   structure->markup_theme	= utils_duplicate_string ("Default");
+ }
+ 
+@@ -734,7 +734,7 @@ amazons_board_appearance_defaults_init (void *section_structure)
+   AmazonsBoardAppearance *structure = (AmazonsBoardAppearance *) section_structure;
+ 
+   structure->board_appearance.background_texture
+-    = utils_duplicate_string ("/usr/local/share/quarry/textures/wood1.jpg");
++    = utils_duplicate_string ("/usr/share/quarry/textures/wood1.jpg");
+   structure->board_appearance.markup_theme
+     = utils_duplicate_string ("Default");
+ }
+diff --git a/src/gui-gtk/gtk-control-center.c b/src/gui-gtk/gtk-control-center.c
+index 7ce3a57..a130b3a 100644
+--- a/src/gui-gtk/gtk-control-center.c
++++ b/src/gui-gtk/gtk-control-center.c
+@@ -159,7 +159,7 @@ gtk_control_center_present (void)
+ 
+ 
+ 
+-inline void
++void
+ gtk_control_center_window_created (GtkWindow *window)
+ {
+   windows = g_slist_prepend (windows, window);
+@@ -188,14 +188,14 @@ gtk_control_center_window_destroyed (const GtkWindow *window)
+ }
+ 
+ 
+-inline void
++void
+ gtk_control_center_new_reason_to_live (void)
+ {
+   num_other_reasons_to_live++;
+ }
+ 
+ 
+-inline void
++void
+ gtk_control_center_lost_reason_to_live (void)
+ {
+   if (--num_other_reasons_to_live == 0 && windows == NULL)
+diff --git a/src/gui-gtk/gtk-control-center.h b/src/gui-gtk/gtk-control-center.h
+index 75a911e..286fed5 100644
+--- a/src/gui-gtk/gtk-control-center.h
++++ b/src/gui-gtk/gtk-control-center.h
+@@ -31,11 +31,11 @@
+ 
+ void		gtk_control_center_present (void);
+ 
+-inline void	gtk_control_center_window_created (GtkWindow *window);
++void	gtk_control_center_window_created (GtkWindow *window);
+ gint		gtk_control_center_window_destroyed (const GtkWindow *window);
+ 
+-inline void	gtk_control_center_new_reason_to_live (void);
+-inline void	gtk_control_center_lost_reason_to_live (void);
++void	gtk_control_center_new_reason_to_live (void);
++void	gtk_control_center_lost_reason_to_live (void);
+ 
+ void		gtk_control_center_quit (void);
+ 
+diff --git a/src/gui-utils/time-control.c b/src/gui-utils/time-control.c
+index 3db4130..dd525b8 100644
+--- a/src/gui-utils/time-control.c
++++ b/src/gui-utils/time-control.c
+@@ -95,7 +95,7 @@ time_control_new_from_sgf_node (const SgfNode *sgf_node)
+ /* Note that this function only duplicates the settings, not the
+  * state of its argument.
+  */
+-inline TimeControl *
++TimeControl *
+ time_control_duplicate (const TimeControl *time_control)
+ {
+   return time_control_new (time_control->main_time,
+diff --git a/src/gui-utils/time-control.h b/src/gui-utils/time-control.h
+index c25ad29..30804ed 100644
+--- a/src/gui-utils/time-control.h
++++ b/src/gui-utils/time-control.h
+@@ -55,7 +55,7 @@ struct _TimeControl {
+ TimeControl *	time_control_new (int main_time,
+ 				  int overtime_length, int moves_per_overtime);
+ TimeControl *	time_control_new_from_sgf_node (const SgfNode *sgf_node);
+-inline TimeControl *
++TimeControl *
+ 		time_control_duplicate (const TimeControl *time_control);
+ void		time_control_init (TimeControl *time_control,
+ 				   int main_time,
+diff --git a/src/sgf/sgf-privates.h b/src/sgf/sgf-privates.h
+index faa4b57..c983e98 100644
+--- a/src/sgf/sgf-privates.h
++++ b/src/sgf/sgf-privates.h
+@@ -79,7 +79,7 @@ void		sgf_property_free_value (SgfValueType value_type,
+ 					 SgfValue *value);
+ 
+ /* Defined in `sgf-utils.c', but also used from `sgf-undo.c'. */
+-inline void	sgf_utils_do_switch_to_given_node (SgfGameTree *tree,
++void	sgf_utils_do_switch_to_given_node (SgfGameTree *tree,
+ 						   SgfNode *node);
+ void		sgf_utils_descend_nodes (SgfGameTree *tree, int num_nodes);
+ void		sgf_utils_ascend_nodes (SgfGameTree *tree, int num_nodes);
+diff --git a/src/sgf/sgf-properties.h b/src/sgf/sgf-properties.h
+index e0db98e..e11b341 100644
+--- a/src/sgf/sgf-properties.h
++++ b/src/sgf/sgf-properties.h
+@@ -7,7 +7,7 @@
+ #define QUARRY_SGF_PROPERTIES_H
+ 
+ 
+-#define SGF_REAL_VALUES_ALLOCATED_SEPARATELY 1
++#define SGF_REAL_VALUES_ALLOCATED_SEPARATELY 0
+ 
+ 
+ typedef enum {
+@@ -16,9 +16,9 @@ typedef enum {
+   SGF_NUMBER,
+   SGF_DOUBLE,
+   SGF_COLOR,
++  SGF_REAL,
+   SGF_FIRST_MALLOC_TYPE,
+-  SGF_REAL = SGF_FIRST_MALLOC_TYPE,
+-  SGF_SIMPLE_TEXT,
++  SGF_SIMPLE_TEXT = SGF_FIRST_MALLOC_TYPE,
+   SGF_FAKE_SIMPLE_TEXT,
+   SGF_TEXT,
+   SGF_LIST_OF_POINT,
+diff --git a/src/sgf/sgf-tree.c b/src/sgf/sgf-tree.c
+index 9fd7f29..e91ddbf 100644
+--- a/src/sgf/sgf-tree.c
++++ b/src/sgf/sgf-tree.c
+@@ -1271,7 +1271,7 @@ sgf_node_count_subtree_nodes (const SgfNode *node)
+ /* Dynamically allocate an SgfProperty structure and initialize its
+  * type and pointer to the next property with given values.
+  */
+-inline SgfProperty *
++SgfProperty *
+ sgf_property_new (SgfGameTree *tree, SgfType type, SgfProperty *next)
+ {
+   SgfProperty *property = memory_pool_alloc (&tree->property_pool);
+@@ -1288,7 +1288,7 @@ sgf_property_new (SgfGameTree *tree, SgfType type, SgfProperty *next)
+  * types need to be freed.  Values of other types are stored in the
+  * property structure itself.
+  */
+-inline void
++void
+ sgf_property_delete (SgfProperty *property, SgfGameTree *tree)
+ {
+   assert (property);
+diff --git a/src/sgf/sgf-undo-operations.c b/src/sgf/sgf-undo-operations.c
+index e44b43c..7b4cefe 100644
+--- a/src/sgf/sgf-undo-operations.c
++++ b/src/sgf/sgf-undo-operations.c
+@@ -34,9 +34,6 @@ const SgfUndoOperationInfo sgf_undo_operations[] = {
+   { sgf_operation_change_property_do_change,
+     sgf_operation_change_property_do_change,
+     sgf_operation_change_property_free_data },
+-  { sgf_operation_change_real_property_do_change,
+-    sgf_operation_change_real_property_do_change,
+-    NULL },
+   { sgf_operation_custom_undo,
+     sgf_operation_custom_redo,
+     sgf_operation_custom_free_data }
+diff --git a/src/sgf/sgf-undo-operations.h b/src/sgf/sgf-undo-operations.h
+index ccadf4b..243c3d2 100644
+--- a/src/sgf/sgf-undo-operations.h
++++ b/src/sgf/sgf-undo-operations.h
+@@ -17,7 +17,6 @@ typedef enum {
+   SGF_OPERATION_NEW_PROPERTY,
+   SGF_OPERATION_DELETE_PROPERTY,
+   SGF_OPERATION_CHANGE_PROPERTY,
+-  SGF_OPERATION_CHANGE_REAL_PROPERTY,
+   SGF_OPERATION_CUSTOM,
+   SGF_NUM_OPERATIONS
+ } SgfUndoOperation;
+diff --git a/src/sgf/sgf-utils.c b/src/sgf/sgf-utils.c
+index 9a18912..4fc6fe8 100644
+--- a/src/sgf/sgf-utils.c
++++ b/src/sgf/sgf-utils.c
+@@ -64,7 +64,7 @@ static int	strings_are_equal (const void *first_string,
+ 				   const void *second_string);
+ 
+ 
+-inline void
++void
+ sgf_utils_play_node_move (const SgfNode *node, Board *board)
+ {
+   assert (node);
+@@ -1738,7 +1738,7 @@ do_enter_tree (SgfGameTree *tree, SgfNode *down_to)
+ }
+ 
+ 
+-inline void
++void
+ sgf_utils_do_switch_to_given_node (SgfGameTree *tree, SgfNode *node)
+ {
+   SgfNode *path_scan;
+diff --git a/src/sgf/sgf.h b/src/sgf/sgf.h
+index 3b8e852..80dad9c 100644
+--- a/src/sgf/sgf.h
++++ b/src/sgf/sgf.h
+@@ -646,10 +646,10 @@ SgfNode *	 sgf_node_traverse_backward (const SgfNode *node);
+ int		 sgf_node_count_subtree_nodes (const SgfNode *node);
+ 
+ 
+-inline SgfProperty *
++SgfProperty *
+ 		 sgf_property_new (SgfGameTree *tree, SgfType type,
+ 				   SgfProperty *next);
+-inline void	 sgf_property_delete (SgfProperty *property,
++void	 sgf_property_delete (SgfProperty *property,
+ 				      SgfGameTree *tree);
+ void		 sgf_property_delete_at_link (SgfProperty **link,
+ 					      SgfGameTree *tree);
+@@ -819,7 +819,7 @@ typedef enum {
+ } SgfPasteResult;
+ 
+ 
+-inline void   sgf_utils_play_node_move (const SgfNode *node, Board *board);
++void   sgf_utils_play_node_move (const SgfNode *node, Board *board);
+ void	      sgf_utils_format_node_move (const SgfGameTree *tree,
+ 					  const SgfNode *node,
+ 					  StringBuffer *buffer,
+diff --git a/src/utils/string-list.c b/src/utils/string-list.c
+index 961303c..36817f9 100644
+--- a/src/utils/string-list.c
++++ b/src/utils/string-list.c
+@@ -689,7 +689,7 @@ association_list_item_dispose (AssociationListItem *item)
+ }
+ 
+ 
+-inline char *
++char *
+ association_list_find_association (AssociationList *list, const char *key)
+ {
+   AssociationListItem *item = association_list_find (list, key);
+diff --git a/src/utils/utils.h b/src/utils/utils.h
+index 896af4a..5448c4b 100644
+--- a/src/utils/utils.h
++++ b/src/utils/utils.h
+@@ -448,7 +448,7 @@ void		association_list_item_dispose (AssociationListItem *item);
+ 							 (notch)))
+ 
+ 
+-inline char *	association_list_find_association (AssociationList *list,
++char *	association_list_find_association (AssociationList *list,
+ 						   const char *key);
+ 
+ 

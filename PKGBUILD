@@ -6,24 +6,33 @@ pkgver=0.3.0.1
 pkgrel=1
 pkgdesc="A multi-purpose GUI for Go, Amazons, and Othello"
 arch=('i686' 'x86_64')
-url='https://gitorious.org/quarry'
+# Originally http://home.gna.org/quarry/ (abandoned)
+# Brief developement at https://gitorious.org/quarry/ (dead with gitorious)
+url='https://gitorious.org/quarry/quarry/'
 license=('GPL')
 depends=('librsvg' 'desktop-file-utils' 'gtk2')
 optdepends=('gnugo: play Go against the computer'
             'grhino: play Othello against the computer')
 makedepends=('xmlto')
 install='quarry.install'
-source=("$pkgname-$pkgver.tar.gz::https://gitorious.org/$pkgname/quarry/archive/a6003cd78d9d3045aa65f11db3fdd05a0bff31fb.tar.gz")
-md5sums=('11039e0c0fef8ccfdc6aeadfb6ae73bd')
+source=("https://github.com/ejona86/$pkgname/archive/$pkgver.tar.gz"
+        'inline.patch')
+sha256sums=('b9349d98127aac41a100720d51dbb0a2c3908c6b6ee40bfd2e36f5a296b19d76'
+            'ef3a4760905cf68f467febd55aefbb143da58c1c2f1f5ece7e7512489396710b')
+
+prepare() {
+  cd $pkgname-$pkgver/
+  patch -p1 < "$srcdir/inline.patch"
+}
 
 build() {
-  cd $pkgname-quarry/
+  cd $pkgname-$pkgver/
   ./configure --prefix=/usr
   make
   make html
 }
 
 package() {
-  cd $pkgname-quarry/
+  cd $pkgname-$pkgver/
   make DESTDIR="$pkgdir" install
 }
