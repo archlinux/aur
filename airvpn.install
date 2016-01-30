@@ -34,7 +34,7 @@ postmove() {
 post_remove() {
     msg_blue "Removing old links and folders..."
     rm -f /usr/bin/airvpn
-    rm -f $HOME/airvpn
+    rm -rdf $HOME/airvpn
     msg_blue "Updating desktop MIME database..."
     update-desktop-database -q
 }
