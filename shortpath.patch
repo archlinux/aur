@@ -1,0 +1,31 @@
+--- sidebar.c.orig	2014-12-18 23:35:50.589683928 +0000
++++ sidebar.c	2014-12-18 23:30:40.680566728 +0000
+@@ -313,6 +313,8 @@
+ 		sidebar_folder_name = option(OPTSIDEBARSHORTPATH) ? mutt_basename(tmp->path) : tmp->path + maildir_is_prefix*(strlen(Maildir));
+ 		if ( maildir_is_prefix && option(OPTSIDEBARFOLDERINDENT) ) {
+ 			char *tmp_folder_name;
++			char *tmp_folder_name_dot;
++			char *tmp_folder_name_slash;
+ 			int i;
+ 			tmp_folder_name = tmp->path + strlen(Maildir) + 1;
+ 			for (i = 0; i < strlen(tmp->path) - strlen(Maildir); i++) {
+@@ -320,11 +322,15 @@
+ 			}   
+ 			if (sidebar_folder_depth > 0) {
+  				if (option(OPTSIDEBARSHORTPATH)) {
+- 					tmp_folder_name = strrchr(tmp->path, '.');
+- 					if (tmp_folder_name == NULL)
++ 					tmp_folder_name_dot = strrchr(tmp->path, '.');
++ 					tmp_folder_name_slash = strrchr(tmp->path, '/');
++
++                                        if (tmp_folder_name_dot == NULL && tmp_folder_name_slash == NULL)
+  						tmp_folder_name = mutt_basename(tmp->path);
+- 					else
+-						tmp_folder_name++;
++                                        else if (tmp_folder_name_dot > tmp_folder_name_slash)
++                                                tmp_folder_name = tmp_folder_name_dot + 1;
++                                        else
++                                                tmp_folder_name = tmp_folder_name_slash + 1;
+  				}
+  				else
+  					tmp_folder_name = tmp->path + strlen(Maildir) + 1;
