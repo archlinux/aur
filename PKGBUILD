@@ -1,4 +1,7 @@
-# Contributer: Toni Foerster <stonerl@skeps.de>, André Klitzing <aklitzing@online.de>
+# Maintainer: Daniel Milde <daniel at milde dot cz>
+# Contributor: Toni Foerster <stonerl at skeps dot de>
+# Contributor: André Klitzing <aklitzing at online dot de>
+
 pkgname=intltool-debian
 pkgver=0.35.0
 pkgrel=5
