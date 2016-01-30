@@ -9,7 +9,7 @@ license=('BSD')
 depends=('php' 'pecl-raphf' 'pecl-propro')
 makedepends=('autoconf')
 source=(http://pecl.php.net/get/pecl_http-${pkgver}.tgz)
-md5sums=('367302919d7c1c86792581ba8ccbdac7')
+sha256sums=('068fff6dcf161a91c9abff6f70a924e540e44d63e5224f5c1191b8c89b7ddc89')
 install=http.install
 
 build() {
