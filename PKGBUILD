@@ -2,7 +2,7 @@
 
 pkgname=lib32-ffmpeg-compat
 pkgver=0.10.16
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete and free Internet live audio and video broadcasting solution (32bit)'
 arch=('x86_64')
