@@ -2,12 +2,12 @@
 pkgname=vncshare-git
 pkgver=0.1
 pkgrel=1
-pkgdesc="Easily share your screen over HTTP using VNC and novnc."
+pkgdesc="Easily share your screen over HTTP using VNC."
 arch=(any)
 url="https://github.com/jryan0/vncshare"
 license=('MIT')
 groups=()
-depends=(net-tools novnc openssl)
+depends=(net-tools novnc openssl bash)
 makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
