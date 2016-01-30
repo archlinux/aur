@@ -1,7 +1,7 @@
 # Maintainer: Fabien Devaux <fdev31@gmail.com>
 pkgname=aury
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Automates maintenance of AUR python packages"
 arch=('any')
 url="https://github.com/fdev31/aury.git"
@@ -10,7 +10,7 @@ groups=()
 depends=('python' 'git')
 makedepends=()
 provides=()
-conflicts=()
+conflicts=('aury-git')
 replaces=()
 backup=()
 options=(!emptydirs)
