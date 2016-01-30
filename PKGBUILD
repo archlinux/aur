@@ -1,5 +1,5 @@
 pkgname=microcom
-pkgver=2014.09.0
+pkgver=2016.01.0
 pkgrel=1
 pkgdesc="terminal emulator"
 arch=('i686' 'x86_64')
@@ -10,10 +10,12 @@ md5sums=('SKIP')
 
 build() {
 	cd "${srcdir}/${pkgname}"
+	autoreconf -fi
+	./configure --prefix=/usr
 	make
 }
 
 package() {
 	cd "${srcdir}/${pkgname}"
-	install -Dm755 microcom "${pkgdir}/usr/bin/microcom"
+	make install DESTDIR="${pkgdir}"
 }
