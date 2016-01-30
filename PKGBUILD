@@ -3,7 +3,7 @@
 
 pkgbase=lib32-smbclient
 pkgname=('lib32-libwbclient' 'lib32-smbclient')
-pkgver=4.1.12
+pkgver=4.3.4
 pkgrel=1
 pkgdesc="Tools to access a server's filespace and printers via SMB"
 arch=('x86_64')
@@ -11,9 +11,10 @@ url='http://www.samba.org'
 license=('GPL3')
 makedepends=('lib32-avahi' 'lib32-gnutls' 'lib32-libbsd' 'lib32-libcap' \
              'lib32-libcups' 'lib32-libgcrypt' 'lib32-pam' 'lib32-python2' \
-             'lib32-systemd' 'lib32-talloc' 'lib32-tdb')
+             'lib32-systemd' 'lib32-talloc' 'lib32-tdb' 'lib32-popt' \
+             'lib32-tevent' 'lib32-ldb' 'lib32-libarchive')
 source=("http://us1.samba.org/samba/ftp/stable/samba-${pkgver}.tar.gz")
-sha256sums=('033604674936bf5c77d7df299b0626052b84a41505a6a6afe902f6274fc29898')
+sha256sums=('5d0eb52e842832af922f7d57716eacff23192906ec3bdf6727e18ca24f1419d9')
 
 build() {
   cd samba-${pkgver}
@@ -26,16 +27,17 @@ $(find ${srcdir}/samba-${pkgver} -name 'configure.ac')
 $(find ${srcdir}/samba-${pkgver} -name 'upgrade_from_s3')
 $(find ${srcdir}/samba-${pkgver}/buildtools -type f)
 $(find ${srcdir}/samba-${pkgver}/source4/scripting -type f)"
-  sed -i -e 's|/usr/bin/env python$|/usr/bin/env python2|' \
-         -e 's|python-config|python2-config|' \
-         -e 's|bin/python|bin/python2|' \
+  sed -i -e 's|/usr/bin/env python$|/usr/bin/env python2-32|' \
+         -e 's|python-config|python2-32-config|' \
+         -e 's|bin/python|bin/python2-32|' \
       ${PYTHON_CALLERS}
   IFS=${SAVEIFS}
 
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
-  export PYTHON='/usr/bin/python2'
+  export PYTHON='/usr/bin/python2-32'
+  export PYTHON_CONFIG='/usr/bin/python2-32-config'
   _samba4_idmap_modules='idmap_ad,idmap_rid,idmap_adex,idmap_hash,idmap_tdb2'
   _samba4_pdb_modules='pdb_tdbsam,pdb_ldap,pdb_ads,pdb_smbpasswd,pdb_wbc_sam,pdb_samba4'
   _samba4_auth_modules='auth_unix,auth_wbc,auth_server,auth_netlogond,auth_script,auth_samba4'
@@ -43,6 +45,7 @@ $(find ${srcdir}/samba-${pkgver}/source4/scripting -type f)"
   ./configure \
     --prefix='/usr' \
     --libdir='/usr/lib32' \
+    --libexecdir='/usr/lib32' \
     --localstatedir='/var' \
     --sbindir='/usr/bin' \
     --enable-fhs \
@@ -54,7 +57,7 @@ $(find ${srcdir}/samba-${pkgver}/source4/scripting -type f)"
     --with-sockets-dir='/var/run/samba' \
     --with-{ads,ldap,winbind,acl-support} \
     --with-pam \
-    --with-pammodulesdir='/usr/lib/security' \
+    --with-pammodulesdir='/usr/lib32/security' \
     --bundled-libraries='!tdb,!talloc,!pytalloc-util,!tevent,!popt,!ldb,!pyldb-util' \
     --with-shared-modules="${_samba4_idmap_modules},${_samba4_pdb_modules},${_samba4_auth_modules}"
   make
@@ -67,11 +70,11 @@ package_lib32-libwbclient() {
 
   cd staging
 
-  install -dm 755 "${pkgdir}"/usr/lib/{pkgconfig,samba}
-  mv usr/lib/libwbclient*.so* "${pkgdir}"/usr/lib/
-  mv usr/lib/samba/libwinbind-client*.so* "${pkgdir}"/usr/lib/samba/
-  mv usr/lib/samba/libreplace.so* "${pkgdir}"/usr/lib/samba/
-  mv usr/lib/pkgconfig/wbclient.pc "${pkgdir}"/usr/lib/pkgconfig/
+  install -dm 755 "${pkgdir}"/usr/lib32/{pkgconfig,samba}
+  mv usr/lib32/libwbclient*.so* "${pkgdir}"/usr/lib32/
+  mv usr/lib32/samba/libwinbind-client*.so* "${pkgdir}"/usr/lib32/samba/
+  mv usr/lib32/samba/libreplace*.so* "${pkgdir}"/usr/lib32/samba/
+  mv usr/lib32/pkgconfig/wbclient.pc "${pkgdir}"/usr/lib32/pkgconfig/
 }
 
 package_lib32-smbclient() {
@@ -81,12 +84,12 @@ package_lib32-smbclient() {
 
   cd staging
 
-  install -dm 755 "${pkgdir}"/usr/lib/{pkgconfig,samba}
-  for lib in usr/lib/lib*.so*; do
-    mv ${lib} "${pkgdir}"/usr/lib/
+  install -dm 755 "${pkgdir}"/usr/lib32/{pkgconfig,samba}
+  for lib in usr/lib32/lib*.so*; do
+    mv ${lib} "${pkgdir}"/usr/lib32/
   done
-  for lib in usr/lib/samba/lib*.so*; do
-    mv ${lib} "${pkgdir}"/usr/lib/samba/
+  for lib in usr/lib32/samba/lib*.so*; do
+    mv ${lib} "${pkgdir}"/usr/lib32/samba/
   done
 }
 
