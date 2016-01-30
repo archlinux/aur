@@ -1,4 +1,4 @@
-# Contributor: Daniel Milde <info@milde.cz>
+# Maintainer: Daniel Milde <daniel at milde dot cz>
 pkgname=pecl-http
 pkgver=2.5.0
 pkgrel=1
