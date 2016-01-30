@@ -3,7 +3,7 @@
 
 pkgname=bowtie2
 pkgver=2.2.6
-pkgrel=5
+pkgrel=6
 pkgdesc="Bowtie 2 is an ultrafast and memory-efficient tool for aligning sequencing reads to long reference sequence."
 arch=("any")
 optdepends=('intel-tbb: faster multithreading')
@@ -13,7 +13,7 @@ source=("https://github.com/BenLangmead/${pkgname}/archive/v${pkgver}.tar.gz")
 md5sums=('9e5d10dff2424177e8051092ff502bb6')
 
 build() {
-   cd $srcdir/$pkgname-$pkgver
+   cd "${srcdir}/${pkgname}-${pkgver}"
    if pacman -Q intel-tbb > /dev/null 2>/dev/null; then
       msg2 "Building with Intel's TBB multithreading support"
       #WITH_TBB=1 make
@@ -26,12 +26,14 @@ build() {
 }
 
 package() {
+   mkdir -p "${pkgdir}/opt/${pkgname}"
+   cp -a "${srcdir}/${pkgname}-${pkgver}"/* "${pkgdir}/opt/${pkgname}"/.
    cd "${srcdir}/${pkgname}-${pkgver}"
    make DESTDIR="${pkgdir}" install
-   mkdir -p ${pkgdir}/usr/share/doc/${pkgname}
-   cp -a doc/* ${pkgdir}/usr/share/doc/${pkgname}/.
-   cp -a example ${pkgdir}/usr/share/doc/${pkgname}
-   cp -a scripts ${pkgdir}/usr/share/doc/${pkgname}
+   #mkdir -p ${pkgdir}/usr/share/doc/${pkgname}
+   #cp -a doc/* ${pkgdir}/usr/share/doc/${pkgname}/.
+   #cp -a example ${pkgdir}/usr/share/doc/${pkgname}
+   #cp -a scripts ${pkgdir}/usr/share/doc/${pkgname}
    install -Dm644 ${srcdir}/${pkgname}-${pkgver}/MANUAL -t "${pkgdir}/usr/share/doc/${pkgname}"
    install -Dm644 ${srcdir}/${pkgname}-${pkgver}/LICENSE -t "$pkgdir/usr/share/licenses/${pkgname}"
 }
