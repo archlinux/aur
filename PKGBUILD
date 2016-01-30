@@ -10,7 +10,7 @@ license=('GPL3')
 arch=('any')
 depends=('python' 'python-pillow' 'python-lxml' 'python-pyopenssl' 'python-crypto' 'poppler' 'python-gobject')
 source=(https://downloads.openmedialibrary.com/$pkgname-$pkgver.tar.xz)
-sha1sums=('518193cc1c8724e936fcced8ae8fa61600eefbf3')
+sha1sums=('5524083d748218034f125599308b7661c529beb4')
 
 package() {
   cd "${srcdir}"
