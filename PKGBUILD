@@ -15,7 +15,6 @@ depends=('kaccounts-integration')
 makedepends=('extra-cmake-modules' 'git' 'intltool')
 provides=('kaccounts-providers')
 conflicts=('kaccounts-providers')
-install=$pkgname.install
 source=("git://anongit.kde.org/$_gitname")
 sha256sums=('SKIP')
 
