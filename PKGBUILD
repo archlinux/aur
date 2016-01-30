@@ -7,18 +7,19 @@ arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/scriptcommunicator/"
 license=('GPL3')
 depends=('qt5-script' 'qt5-serialport')
-makedepends=('qt5-tools')
+makedepends=('qt5-tools' 'dos2unix')
 
 source=("http://sourceforge.net/projects/scriptcommunicator/files/Source/ScriptCommunicator_${pkgver}_source.zip" 
 	"qmake.patch"
 	"$pkgname.desktop")
 md5sums=('b77ae0b2dfdc1a7a8625b29be55925ea'
-         '126ac5abe605c069119f85d9fc0fa4c5'
+         'a8e19e835ae4073bbd6a479e414e5d57'
          'f1b6721b942570e9f5349acbef5992b0')
 
 
 prepare() {
-	cd "ScriptCommunicator_${pkgver}_source"	
+	cd "ScriptCommunicator_${pkgver}_source"
+	dos2unix ScriptCommunicator.pro
 	patch -i "$srcdir/qmake.patch"
 }
 
