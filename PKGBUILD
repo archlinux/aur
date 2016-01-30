@@ -6,8 +6,8 @@
 
 # AUR dependencies
 # ----------------
-# libilbc kvazaar chromaprint-fftw libaacplus libbs2b openh264 shine vo-aacenc
-# vo-amrwbenc nut-multimedia-git xavs libutvideo-asm-git flite-fpic libmfx-git
+# libilbc kvazaar chromaprint-fftw libbs2b openh264 shine vo-amrwbenc
+# nut-multimedia-git xavs libutvideo-asm-git flite-fpic libmfx-git
 # blackmagic-decklink-sdk nvidia-sdk
 
 # AUR optional dependency
@@ -15,7 +15,7 @@
 # intel-media-sdk (experimental libmfx support only for x86_64)
 
 pkgname=ffmpeg-full-git
-pkgver=N.78035.g3b9f41a
+pkgver=N.78205.g31f5fa2
 pkgrel=1
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
@@ -23,16 +23,16 @@ url="http://www.ffmpeg.org/"
 license=('GPL3' 'custom:UNREDISTRIBUTABLE')
 depends=(
     'alsa-lib' 'zlib' 'bzip2' 'libpng' 'sdl' 'chromaprint-fftw' 'fontconfig' 'frei0r-plugins'
-    'libgcrypt' 'gmp' 'gnutls' 'ladspa' 'libaacplus' 'libass' 'libbluray' 'libbs2b' 'libcaca'
-    'celt' 'libcdio-paranoia' 'libdc1394' 'dcadec' 'faac' 'libfdk-aac' 'flite-fpic' 'freetype2'
+    'libgcrypt' 'gmp' 'gnutls' 'ladspa' 'libass' 'libbluray' 'libbs2b' 'libcaca' 'celt'
+    'libcdio-paranoia' 'libdc1394' 'dcadec' 'faac' 'libfdk-aac' 'flite-fpic' 'freetype2'
     'fribidi' 'libgme' 'gsm' 'libiec61883' 'libilbc' 'kvazaar' 'libmodplug' 'lame' 'netcdf'
     'nut-multimedia-git' 'opencore-amr' 'opencv' 'openh264' 'openjpeg' 'opus' 'pulseaudio'
     'rubberband' 'rtmpdump' 'schroedinger' 'shine' 'smbclient' 'libavc1394' 'snappy' 'libsoxr'
     'speex' 'libssh' 'tesseract' 'libtheora' 'twolame' 'libutvideo-asm-git' 'v4l-utils'
-    'vid.stab' 'vo-aacenc' 'vo-amrwbenc' 'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'libx264.so'
-    'x265' 'libxcb' 'xvidcore' 'zimg' 'zeromq' 'zvbi' 'openal' 'libva' 'libdrm'
-    'libva-intel-driver' 'libmfx-git' 'opencl-headers' 'ocl-icd' 'libvdpau' 'mesa' 'openssl'
-    'xavs' 'nvidia-sdk' 'blackmagic-decklink-sdk'
+    'vid.stab' 'vo-amrwbenc' 'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265'
+    'libxcb' 'xvidcore' 'zimg' 'zeromq' 'zvbi' 'openal' 'libva' 'libdrm' 'libva-intel-driver'
+    'libmfx-git' 'opencl-headers' 'ocl-icd' 'libvdpau' 'mesa' 'openssl' 'xavs' 'nvidia-sdk'
+    'blackmagic-decklink-sdk'
 )
 optdepends=('intel-media-sdk: for libmfx support (x86_64 only, experimental)')
 makedepends=('git' 'yasm')
@@ -96,7 +96,6 @@ build() {
 	        --enable-gmp \
 	        --enable-gnutls \
 	        --enable-ladspa \
-	        --enable-libaacplus \
 	        --enable-libass \
 	        --enable-libbluray \
 	        --enable-libbs2b \
@@ -141,7 +140,6 @@ build() {
 	        --enable-libutvideo \
 	        --enable-libv4l2 \
 	        --enable-libvidstab \
-	        --enable-libvo-aacenc \
 	        --enable-libvo-amrwbenc \
 	        --enable-libvorbis \
 	        --enable-libvpx \
