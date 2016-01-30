@@ -2,7 +2,7 @@
 # Co-Maintainer: Marc Straube <email@marcstraube.de>
 # Contributor: Attila Bukor <r1pp3rj4ck [at] w4it [dot] eu>
 pkgname=phpunit
-pkgver=5.1.4
+pkgver=5.1.5
 pkgrel=1
 pkgdesc="PHPUnit is a programmer-oriented testing framework for PHP."
 url="https://phpunit.de"
@@ -12,8 +12,8 @@ depends=("php")
 install="${pkgname}.install"
 source=("https://phar.phpunit.de/${pkgname}-${pkgver}.phar"
         "https://raw.githubusercontent.com/sebastianbergmann/${pkgname}/${pkgver}/LICENSE")
-sha512sums=('6157c95b36e496d9bb38640f1b634d3746efc953cce50e6509f817910a0dddf627d78cb33eae85cbf0a57826af4b0716d8a7b28f49746aef279f3fd076668c8c'
-            '8cd4a84df128f54ef6cf657d2d6e4307b2f4fe92f60b94f6639c16c2ebcffcb20923fcfee3cf7becddf0e138c5affacb887ac43d356c7ef220f73e6d75bd9fef')
+sha512sums=('c64aab949820f87226b51959887701ac341ed97dafa122bfa4e98875ec8cb61c24eb90375b91670a98a9fc0e850d8bed5f9de783e3520ae5b3bac40be0e0096f'
+            '62e7d1d00af9db6ef5d2ba79a8039f4df2d00ef8124678b4c56d94e69e210e0e74e2f2156e469c57c1e24354cbd3a8ae97059917e364aaa52e9892f814adede3')
 
 package() {
   install -D -m 644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
