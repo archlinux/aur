@@ -2,29 +2,17 @@
 # namcap says dependency 'libibmad' is not needed, but without it, configure fails with "cannot find infiniband/mad.h", provided by libibmad, and mstflint-4.0.1/mtcr_ul/mtcr_ib_ofed.c does include "infiniband/mad.h"
 
 pkgname=mstflint
-pkgver=4.1.0
-_pkgver_subver=1.46
-_pkgver_commit=gb1cdaf7
+pkgver=4.3.0
+_pkgver_subver=1.49
+_pkgver_commit=g9b9af70
 pkgrel=1
 pkgdesc='OpenFabrics Alliance firmware burning application for Mellanox HCA/NIC cards'
 arch=('x86_64' 'i686')
 url=('https://www.openfabrics.org/index.php/overview.html')
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('bash' 'zlib' 'libibmad')
-source=("https://www.openfabrics.org/downloads/${pkgname}/${pkgname}-${pkgver}-${_pkgver_subver}.${_pkgver_commit}.tar.gz"
-        'disableWerror.patch')
-md5sums=('030179e989e09562320e11511648f4e7'
-         '00467463d323ca845f121145bdd22dde')
-
-prepare() {
-  # v4.0.1.143.g97d7275 triggers -Werror, due to maybe uninitialized variables at fs3_ops.cpp:1727, 1863, and 1068
-  # Giving configure options of CFLAGS="-Wno-error" and CXXFLAGS="-Wno-error" doesn't work, because its build system adds "-Werror" at the end, which overrides
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
-  # Unsure how to use sed without updating timestamps, so using a patch
-  # Without --set-utc flag, aclocal rebuild is triggered, which is otherwise not a makedepends.  Even if included, it is hardcoded to look for aclocal-1.13, and aclocal-1.15 would be installed
-  patch --set-utc -p1 -i ${srcdir}/disableWerror.patch
-}
+source=("https://www.openfabrics.org/downloads/${pkgname}/${pkgname}-${pkgver}-${_pkgver_subver}.${_pkgver_commit}.tar.gz")
+md5sums=('65d0de5cacccf9ae76d3c1d650fe875b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
