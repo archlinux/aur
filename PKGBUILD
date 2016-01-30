@@ -2,8 +2,8 @@
 # JVM build disabled 2016-01-04 'gen/jvm/stage1/NQPHLL.jar' failed
 
 pkgname=nqp-git
-pkgver=20160104
-pkgrel=2
+pkgver=20160128
+pkgrel=1
 pkgdesc="Lightweight Perl 6-like environment for virtual machines, with MoarVM support"
 arch=('i686' 'x86_64')
 depends=('moarvm')
