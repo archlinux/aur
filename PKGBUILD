@@ -16,7 +16,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=('https://drive.google.com/uc?export=download&confirm=no_antivirus&id=0B4YjcQAoes55MTJ5Z0xGNWNMdEU')
-md5sums=('210ac45d35a13ad4cd29a3d7784df0bb')
+md5sums=('727d47de7a151985345590898ffd0dab')
 
 package() {
   echo "Installing VK API"
@@ -26,5 +26,3 @@ package() {
   install -D -m755 $srcdir/svkm.py $pkgdir/usr/bin/svkm
 
 }
-
-# vim:set ts=2 sw=2 et:
