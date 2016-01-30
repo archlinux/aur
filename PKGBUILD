@@ -2,7 +2,7 @@
 pkgname=vncshare-git
 pkgver=0.1
 pkgrel=1
-pkgdesc="Easily share your screen over HTTP using VNC."
+pkgdesc="Easily share your screen over HTTP using VNC and novnc."
 arch=(any)
 url="https://github.com/jryan0/vncshare"
 license=('MIT')
