@@ -3,7 +3,7 @@
 
 pkgname='xtables-addons'
 pkgver='2.10'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Xtables-addons is a set of additional extensions for the Xtables packet filter that is present in the Linux kernel'
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -17,7 +17,7 @@ source=("http://sourceforge.net/projects/${pkgname}/files/Xtables-addons/${pkgna
 sha256sums=('2a2d92ae924437d757f55514502c6ef3aeccc6106f729c702efe703ad30f4007')
 _kernver=`uname -r`
 
-build() {
+prepare() {
   pushd "${srcdir}/${pkgname}-${pkgver}"
   ./configure \
     --prefix=/usr \
@@ -29,6 +29,11 @@ build() {
     --docdir=/usr/share/doc \
     --libexecdir=/usr/lib/iptables \
     --with-xtlibdir=/usr/lib/iptables
+  popd
+}
+
+build() {
+  pushd "${srcdir}/${pkgname}-${pkgver}"
   make
   popd
 }
