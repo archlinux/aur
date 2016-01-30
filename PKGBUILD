@@ -1,5 +1,5 @@
 pkgname='holo-build'
-pkgver=1.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Cross-distribution system package compiler'
 arch=('i686' 'x86_64')
@@ -11,13 +11,12 @@ depends=(
 )
 makedepends=('go' 'perl')
 source=("https://github.com/holocm/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('0911ba457d288f5f2adc4fffb53269b5')
+md5sums=('a87f113f5248caf80f1767d561f98ecd')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    # correct various typos in the Makefile of this version
+    # version detection from release tarball is broken in this version
     sed -i 's/^VERSION := .*$/VERSION := '${pkgver}/ Makefile
-    sed -i 's/vERSION/VERSION/' Makefile
 }
 
 build() {
