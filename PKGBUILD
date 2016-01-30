@@ -1,10 +1,10 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=moarvm-git
-pkgver=20160104
+pkgver=20160128
 pkgrel=1
 pkgdesc="6model-based VM for NQP and Rakudo Perl 6"
-arch=('i686' 'x86_64')
+arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 depends=('dyncall' 'libatomic_ops' 'libuv' 'llvm')
 makedepends=('clang' 'git' 'make' 'pkg-config')
 groups=('perl6')
