@@ -3,9 +3,9 @@
 
 pkgname=cunit
 pkgver=2.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight system for writing, administering, and running unit tests in C"
-arch=(i686 x86_64)
+arch=(i686 x86_64 armv6h armv7h)
 url="http://cunit.sourceforge.net/"
 license=('LGPL2')
 depends=('glibc')
