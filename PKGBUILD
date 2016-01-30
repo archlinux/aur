@@ -12,7 +12,7 @@ _use_clang=0           # Use clang compiler (system). Results in faster build an
 _use_bundled_clang=0   # Use bundled clang compiler (needs build). NOTE: if use this option , '_use_clang' need set to 1
 _use_ccache=0          # Use ccache when build
 _use_pax=0             # Set 1 to change PaX permisions in executables NOTE: only use if use PaX environment
-_use_gtk3=1            # If set 1, then build with GTK3 support, if set 0, then build with GTK2 TODO: back to GTK3: https://code.google.com/p/chromium/issues/detail?id=575038
+_use_gtk3=1            # If set 1, then build with GTK3 support, if set 0, then build with GTK2
 
 ##############################################
 ## -- Package and components information -- ##
