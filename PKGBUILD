@@ -38,7 +38,7 @@ build() {
 
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MOZCONFIG="$srcdir/mozconfig"
-  export CPPFLAGS="$CPPFLAGS -O2"
+  export CPPFLAGS="$CPPFLAGS -O2 -march=native "
   python2 mach build || echo "Next =>"
   python2 mach build
 }
