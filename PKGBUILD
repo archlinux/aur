@@ -12,21 +12,23 @@ pkgver=4.00.1.0
 pkgrel=1
 pkgdesc="Application for the visualization of CAD drawing files, QT4 version"
 arch=('i686' 'x86_64')
-url="http://www.opendesign.com/guestfiles"
+url="https://www.opendesign.com/guestfiles"
 license=('custom')
+DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 conflicts=('teighaviewer' 'teighaviewer-qt5')
 provides=('teighaviewer')
 depends=('bash' 'hicolor-icon-theme')
 depends_i686=('qt4' 'libgl')
 depends_x86_64=('lib32-qt4' 'lib32-libgl')
 install=${pkgname}.install
-source=(http://www.opendesign.com/files/guestdownloads/TeighaViewer/TeighaViewer_QT4_lnxX86_4.4dll.deb
+source=(https://www.opendesign.com/files/guestdownloads/TeighaViewer/TeighaViewer_QT4_lnxX86_4.4dll.deb
         'license')
-md5sums=('f98e24dcea0ab88637c3d70132c61200'
+md5sums=('cca742852192bf55d046469e9bd703d3'
          '62b5539acd57c50855e29d1157c10697')
 
 build() {
-  [ ! -d ${_altname}-${pkgver} ] && mkdir ${_altname}-${pkgver}
+  rm -rf ${_altname}-${pkgver}
+  mkdir ${_altname}-${pkgver}
   tar xf data.tar.gz -C ${_altname}-${pkgver}
 }
 
