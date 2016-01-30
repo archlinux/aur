@@ -2,7 +2,7 @@
 
 pkgname=qownnotes-pbek
 pkgver=0.84.1
-tag="fac06c478a4e85197ae8fe24c32377ad82a8f9bf"
+tag="5bbcddeea8daecb9cf1716741b13afaefde646b5"
 pkgrel=1
 pkgdesc="Open source notepad and todo list manager with ownCloud integration"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ source=("git://github.com/pbek/QOwnNotes.git#tag=$tag")
 md5sums=('SKIP')
 
 build() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/QOwnNotes"
     git submodule update --init
     cd src
 
@@ -29,7 +29,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${pkgname}/src"
+    cd "${srcdir}/QOwnNotes/src"
 
     install -D -m 0755 QOwnNotes $pkgdir/usr/bin/QOwnNotes
     install -D -m 0644 QOwnNotes.desktop $pkgdir/usr/share/applications/QOwnNotes.desktop
