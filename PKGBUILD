@@ -1,7 +1,7 @@
 # Maintainer: Ainola
 pkgname=neovim-csound
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Set of Tools for Editing Csound Files with Neovim"
 arch=('any')
 url="http://www.eumus.edu.uy/docentes/jure/csound/vim/"
@@ -12,6 +12,11 @@ optdepends=('csound')
 install='neovim-csound.install'
 source=('http://ainola.sdf.org/vim-csound.tar.gz')
 sha256sums=('5dbec0f3c7dcae48d3c4adafcab029a5caab8d9bd824b6e10a88533650c4f104')
+
+prepare(){
+    # Package was made for vim: nvim doesn't use the same structure.
+    find "$srcdir" -type f -exec sed -i 's@$VIM/vimfiles@$VIM/runtime@g' {} +
+}
 
 package() {
   _vimdir="$pkgdir/usr/share/nvim/runtime"
