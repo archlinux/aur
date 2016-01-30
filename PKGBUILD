@@ -1,14 +1,14 @@
 # Maintainer: Benjamin Chrétien <chretien dot b plus aur at gmail dot com>
 pkgname=ignition-transport
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The transport library combines ZeroMQ with Protobufs to create a fast and efficient message passing system"
 arch=('i686' 'x86_64')
 url="http://ignitionrobotics.org"
 license=('Apache')
 groups=('development')
-depends=()
-makedepends=('cmake' 'ruby-ronn' 'pkg-config>=0.28' 'protobuf' 'protobuf-c' 'zeromq' 'uuid' 'doxygen')
+depends=('protobuf' 'protobuf-c' 'zeromq' 'uuid')
+makedepends=('cmake' 'ruby-ronn' 'pkg-config>=0.28' 'doxygen')
 optdepends=()
 conflicts=()
 source=("https://bitbucket.org/ignitionrobotics/ign-transport/get/${pkgname}_${pkgver}.tar.bz2")
