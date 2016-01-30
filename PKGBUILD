@@ -1,4 +1,4 @@
-# Maintainer: Shalygin Konstantin <k0ste@opentech.ru>
+# Maintainer: Shalygin Konstantin <k0ste@cn.ru>
 # Contributor: Thiago Coutinho <root at thiagoc . net>
 
 pkgname='xtables-addons'
@@ -7,30 +7,37 @@ pkgrel='2'
 pkgdesc='Xtables-addons is a set of additional extensions for the Xtables packet filter that is present in the Linux kernel'
 arch=('i686' 'x86_64')
 license=('GPL2')
-url="http://xtables-addons.sourceforge.net/"
-depends=('iptables>=1.4.5' 'glibc' 'linux>=3.7')
-makedepends=('linux-api-headers' 'linux-headers')
-install='xtables-addons.install'
-source=(http://sourceforge.net/projects/${pkgname}/files/Xtables-addons/$pkgname-$pkgver.tar.xz)
-md5sums=('727bf0dd4a3d9c65724267bd0d5d80b0')
+url="http://${pkgname}.sourceforge.net"
+depends=('iptables' 'glibc' 'linux')
+makedepends=('linux-api-headers' 'linux-headers' 'libtool' 'gcc')
+conflicts=('xtables-addons-dkms')
+replaces=('xtables-addons-dkms')
+install="${pkgname}.install"
+source=("http://sourceforge.net/projects/${pkgname}/files/Xtables-addons/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('2a2d92ae924437d757f55514502c6ef3aeccc6106f729c702efe703ad30f4007')
+_kernver=`uname -r`
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  pushd "${srcdir}/${pkgname}-${pkgver}"
   ./configure \
-      --prefix=/usr \
-      --libexecdir=/usr/lib/iptables \
-      --sysconfdir=/etc \
-      --with-xtlibdir=/usr/lib/iptables \
-      --mandir=/usr/share/man
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --bindir=/usr/bin \
+    --sbindir=/usr/bin \
+    --libdir=/usr/lib \
+    --mandir=/usr/share/man \
+    --docdir=/usr/share/doc \
+    --libexecdir=/usr/lib/iptables \
+    --with-xtlibdir=/usr/lib/iptables
   make
+  popd
 }
 
-package () {
-  cd $srcdir/$pkgname-$pkgver
-  make DESTDIR=$pkgdir install
-  mv $pkgdir/lib/* $pkgdir/usr/lib/
-  mv $pkgdir/usr/lib/modules/$(uname -r)/extra $pkgdir/usr/lib/modules/$(uname -r)/$(readlink /usr/lib/modules/$(uname -r)/extramodules)
-  rmdir $pkgdir/lib
-  mv $pkgdir/usr/sbin $pkgdir/usr/bin
-  chmod a-x $pkgdir/usr/lib/iptables/*.so
+package() {
+  pushd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
+  libtool --finish "${pkgdir}/usr/lib"
+  mv -f "${pkgdir}"/lib/* "${pkgdir}/usr/lib"
+  rmdir "${pkgdir}/lib"
+  popd
 }
