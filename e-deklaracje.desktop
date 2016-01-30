@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Categories=Office
+Exec=/usr/bin/adobe-air /opt/e-deklaracje/e-DeklaracjeDesktop.air
+Icon=/usr/share/pixmaps/e-deklaracje.png
+Name=e-Deklaracje
