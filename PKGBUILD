@@ -1,7 +1,7 @@
 # Maintainer:  WorMzy Tykashi <wormzy.tykashi@gmail.com>
 # Contributor: artiom <a.mv at gmx dot fr>
-pkgname=palemoon-privacy
-pkgver=26.0.0
+pkgname=palemoon-git
+pkgver=25.6.0_beta2.768.g1ed2a91
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency with privacy patches from github.com/williex/firefox-privacy"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'gstreamer0.10-bad-plugins'
             'gstreamer0.10-good-plugins'
             'gstreamer0.10-ugly-plugins')
-conflicts=('palemoon')
+conflicts=('palemoon', 'palemoon-privacy')
 install=palemoon.install
 source=(git+"https://github.com/MoonchildProductions/Pale-Moon"
         palemoon.desktop
@@ -24,6 +24,11 @@ source=(git+"https://github.com/MoonchildProductions/Pale-Moon"
 md5sums=('SKIP'
          '32231f6e6a532021fd04c6d7b32f4270'
          'SKIP')
+
+pkgver() {
+	cd Pale-Moon
+	git describe --always | sed 's|-|.|g'
+}
 
 prepare() {
   sed 's#%SRCDIR%#'"$srcdir"'#g' mozconfig.in > mozconfig
