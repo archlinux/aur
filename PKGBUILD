@@ -1,5 +1,6 @@
 # Maintainer: James Harvey <jamespharvey20@gmail.com>
 # * No namcap warnings or errors
+# Up to date with fedora's ibacm-1.1.0-1.el7.src.rpm, except not using their coverity and compile warning fixes patch, for arch's preference of vanilla upstream, unless substantial need shown
 
 pkgname=ibacm
 pkgver=1.1.0
@@ -12,7 +13,7 @@ arch=('x86_64' 'i686')
 url=('https://www.openfabrics.org/index.php/overview.html')
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('libibverbs' 'libibumad')
-source=("https://www.openfabrics.org/downloads/rdmacm/${pkgname}-${pkgver}.tar.gz"
+source=("https://downloads.openfabrics.org/downloads/rdmacm/${pkgname}-${pkgver}.tar.gz"
         'ibacm.service')
 md5sums=('0e31f454343f5adb677c443125680eae'
          'ddb76ae6e28a18fcc984770b5699ea00')
