@@ -1,6 +1,6 @@
 pkgbase = qownnotes-pbek
 	pkgdesc = Open source notepad and todo list manager with ownCloud integration
-	pkgver = 0.84.1
+	pkgver = 0.85
 	pkgrel = 1
 	url = http://www.qownnotes.org/
 	arch = i686
