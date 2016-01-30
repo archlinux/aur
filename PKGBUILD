@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.0.6.r279.8a21e0f
+pkgver=0.0.0.6.r441.e1eb075
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=('x86_64')
@@ -9,13 +9,21 @@ url='https://github.com/DHrpcs3/rpcs3'
 license=('GPL2')
 depends=('gcc-libs' 'glew' 'glibc' 'libgl' 'libx11' 'openal' 'wxgtk'
          'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libswscale.so')
-makedepends=('asmjit-git' 'cmake' 'git')
+makedepends=('cmake' 'git')
 provides=('rpcs3')
 conflicts=('rpcs3')
-source=('git+https://github.com/DHrpcs3/rpcs3.git'
+source=('git+https://github.com/RPCS3/rpcs3.git'
+        'git+https://github.com/RPCS3/common'
+        'git+https://github.com/RPCS3/rsx_program_decompiler.git'
+        'git+https://github.com/kobalicek/asmjit.git#commit=b0dad1a'
+        'git+https://github.com/Microsoft/GSL.git'
         'rpcs3-system-libs.patch')
 sha256sums=('SKIP'
-            'dea43bf8c143753fb9985c2f0d9921daec025876b21817e98e3e5ddc875887e9')
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '0180072e040f7d523a8abfbe79c14d3a149c06f2225ccb385ba4ef354401b70f')
 
 pkgver() {
   cd rpcs3
@@ -24,7 +32,19 @@ pkgver() {
 }
 
 prepare() {
-  cd rpcs3
+  cd rsx_program_decompiler
+
+  git submodule init common
+  git config submodule.common.url ../common
+  git submodule update common
+
+  cd ../rpcs3
+
+  git submodule init asmjit GSL rsx_program_decompiler
+  git config submodule.asmjit.url ../asmjit
+  git config submodule.GSL.url ../GSL
+  git config submodule.rsx_program_decompiler.url ../rsx_program_decompiler
+  git submodule update asmjit GSL rsx_program_decompiler
 
   patch -Np1 -i ../rpcs3-system-libs.patch
 
