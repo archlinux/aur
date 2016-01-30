@@ -7,14 +7,14 @@
 ###########################################################
 
 pkgname=i2p-bin
-pkgver=0.9.23
+pkgver=0.9.24
 pkgrel=1
 pkgdesc="A distributed anonymous network (pre-compiled binary)"
 url="http://www.i2p2.de"
 license=('GPL2')
 arch=('any')
 depends=('java-runtime' 'java-service-wrapper')
-optdepends=('robert: I2P BitTorrent client') #'gtk2: for rrd graphs'
+#optdepends=('gtk2: for rrd graphs')
 conflicts=('i2p' 'i2p-dev')
 provides=('i2p')
 backup=('opt/i2p/wrapper.config')
@@ -35,7 +35,7 @@ source=("${_url}/i2pinstall_${pkgver}.jar"{,.sig}
             'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config')
 }
 
-sha256sums=('843a8059830b009d10c47cc7c85e260ad88f7c3c16e289bbf80c0eb178318823'
+sha256sums=('f5a06c4ed7e3c22048eef18901b85baa1f9bed3e507c212700723701036e2bb3'
             'SKIP'
             '9bb899ece87099716da29bac8b7da02916fc325699b68989e73c1fe333a6342f'
             'ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53'
