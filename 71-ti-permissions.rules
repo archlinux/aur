@@ -1,0 +1,20 @@
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6010", MODE:="0660"
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="a6d0", MODE:="0660"
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="a6d1", MODE:="0660"
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="0451", ATTRS{idProduct}=="bef1", MODE:="0660"
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="0451", ATTRS{idProduct}=="bef2", MODE:="0660"
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="0451", ATTRS{idProduct}=="bef3", MODE:="0660"
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="0451", ATTRS{idProduct}=="bef4", MODE:="0660"
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="0451", ATTRS{idProduct}=="f432", MODE:="0660"
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="0d28", ATTRS{idProduct}=="0204", MODE:="0660"
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="1cbe", ATTRS{idProduct}=="00fd", MODE:="0660"
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="1cbe", ATTRS{idProduct}=="00ff", MODE:="0660"
+
+KERNEL=="hidraw*", ATTRS{busnum}=="*", ATTRS{idVendor}=="0d28", ATTRS{idProduct}=="0204", MODE:="0660"
+
+ATTRS{idVendor}=="0451", ATTRS{idProduct}=="bef0", ENV{ID_MM_DEVICE_IGNORE}="1"
+ATTRS{idVendor}=="0c55" ,ATTRS{idProduct}=="0220", ENV{ID_MM_DEVICE_IGNORE}="1"
+
+KERNEL=="ttyACM[0-9]*",MODE:="0660"
+
+SUBSYSTEM=="usb", ATTRS{idVendor}=="0451", ATTRS{idProduct}=="c32a", MODE="0660", GROUP="uucp", RUN+="/sbin/modprobe ftdi-sio" RUN+="/bin/sh -c '/bin/echo 0451 c32a > /sys/bus/usb-serial/drivers/ftdi_sio/new_id'"

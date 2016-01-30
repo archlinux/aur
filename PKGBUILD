@@ -15,9 +15,9 @@ provides=('energia')
 options=(!strip staticlibs)
 install='energia.install'
 source=('energia.desktop'
-        '10-msp430-launchpad.rules')
+        '71-ti-permissions.rules')
 md5sums=('a7ce061d9fc0f9530e058204e532b40b'
-         '9bcbda86498c3a71b4af1309a743716d')
+         '4d16b78cdc123adeed25600803998ee9')
 if [[ $CARCH == "x86_64" ]]; then
  source+=("$pkgname-$pkgver-$CARCH.tgz::http://energia.nu/downloads/downloadv3.php?file=energia-0101E$pkgver-linux64.tgz")
  md5sums+=('cbb348ff40c2f9d42c025eb9a6484ae2')
@@ -50,7 +50,7 @@ _patch_package_for_lock_issues() {
     ln -sf /usr/lib/librxtxSerial.so "$pkgdir/opt/energia/lib/librxtxSerial${arch}.so"
   done
   ln -sf /usr/share/java/rxtx/RXTXcomm.jar "$pkgdir/opt/energia/lib/RXTXcomm.jar"
-  install -m755 "$srcdir/10-msp430-launchpad.rules" "$pkgdir/etc/udev/rules.d/"
+  install -m755 "$srcdir/71-ti-permissions.rules" "$pkgdir/etc/udev/rules.d/"
 }
 
 _link_binary_to_bin() {
