@@ -12,6 +12,11 @@ license=('GPL3')
 source=("https://github.com/BenLangmead/${pkgname}/archive/v${pkgver}.tar.gz")
 md5sums=('9e5d10dff2424177e8051092ff502bb6')
 
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make clean
+}
+
 build() {
    cd "${srcdir}/${pkgname}-${pkgver}"
    if pacman -Q intel-tbb > /dev/null 2>/dev/null; then
