@@ -1,13 +1,15 @@
 pkgname=libunarr-git
-pkgver=r189.91c3eb5
-pkgrel=2
+pkgver=r190.d1be8c4
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/zeniko/unarr"
-pkgdesc=('A lightweight decompression library with support for rar, tar and zip archives.')
+license="LGPL3"
+pkgdesc="A lightweight decompression library with support for rar, tar and zip archives."
 source=('git+https://github.com/zeniko/unarr'
 		'https://raw.githubusercontent.com/selmf/unarr/master/CMakeLists.txt'
 		)
 makedepends=('cmake' 'git')
+depends=('zlib' 'bzip2')
 
 pkgver() {
   cd "${srcdir}/unarr"
