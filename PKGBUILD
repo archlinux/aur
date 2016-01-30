@@ -2,7 +2,7 @@
 
 pkgrealname=webcamoid
 pkgname=webcamoid-git
-pkgver=6.2.0.r68.g9273d45
+pkgver=6.2.0.r71.g7973f00
 pkgrel=1
 pkgdesc="Webcamoid is a full featured webcam capture application."
 url='https://github.com/hipersayanX/webcamoid'
