@@ -8,17 +8,17 @@
 ## -- Build options -- ##
 #########################
 
-_use_clang=1           # Use clang compiler (system). Results in faster build and smaller chromium.
-_use_bundled_clang=1   # Use bundled clang compiler (needs build). NOTE: if use this option , '_use_clang' need set to 1
+_use_clang=0           # Use clang compiler (system). Results in faster build and smaller chromium.
+_use_bundled_clang=0   # Use bundled clang compiler (needs build). NOTE: if use this option , '_use_clang' need set to 1
 _use_ccache=0          # Use ccache when build
 _use_pax=0             # Set 1 to change PaX permisions in executables NOTE: only use if use PaX environment
-_use_gtk3=0            # If set 1, then build with GTK3 support, if set 0, then build with GTK2 TODO: back to GTK3: https://code.google.com/p/chromium/issues/detail?id=575038
+_use_gtk3=1            # If set 1, then build with GTK3 support, if set 0, then build with GTK2 TODO: back to GTK3: https://code.google.com/p/chromium/issues/detail?id=575038
 
 ##############################################
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=49.0.2623.23
+pkgver=50.0.2633.3
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -60,6 +60,7 @@ makedepends=('libexif'
              'subversion'
              'yasm'
              'git'
+             'imagemagick'
              )
 makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
 optdepends=('chromium-pepper-flash-dev: PPAPI Flash Player (Dev Channel)'
@@ -85,8 +86,10 @@ source=("https://commondatastorage.googleapis.com/chromium-browser-official/chro
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-snapshot-toolchain-r1.patch'
         # Misc Patches
         'enable_vaapi_on_linux-r3.diff'
-        'chromium-widevine-r0.patch'
         # Patch from crbug (chromium bugtracker)
+        'chromium-widevine-r0.patch' # https://crbug.com/473866
+        'gtk2_ui.patch' # http://crbug.com/575038
+        'https://codereview.chromium.org/download/issue1644893002_1.diff' # http://crbug.com/571943
         )
 sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?marker=chromium-${pkgver}.tar.x | awk -v FS='<td>"' -v RS='"</td>' '$0=$2' | head -n1)"
           "$(curl -sL "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes" | grep sha1 | cut -d " " -f3)"
@@ -100,8 +103,11 @@ sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?m
           '7b9c1a7e0e581413dbebb0e894f68ce2f2ba0e6a'
           # Misc Patches
           'aab4fa1f9aad1a80fdb35545eb74739a240fe0ae'
-          'fa9ff0ff9049784b4a1ec37292530ae61aece610'
           # Patch from crbug (chromium bugtracker)
+          'fa9ff0ff9049784b4a1ec37292530ae61aece610'
+          '9d3e97a19b8468050df92366671ecce00a55a3dc'
+          '3558f4cbf74d6de346a4a8d2fa824e9690ecf9e7'
+
           )
 options=('!strip')
 install=chromium-dev.install
@@ -441,9 +447,15 @@ prepare() {
   patch -p1 -i "${srcdir}/enable_vaapi_on_linux-r3.diff"
 
   # Patch from crbug (chromium bugtracker)
+  # http://crbug.com/575038
+  patch -p1 -i "${srcdir}/gtk2_ui.patch"
+
   # https://crbug.com/473866
   patch -p0 -i "${srcdir}/chromium-widevine-r0.patch"
   sed 's|@WIDEVINE_VERSION@|The Cake Is a Lie|g' -i "third_party/widevine/cdm/stub/widevine_cdm_version.h"
+
+  # http://crbug.com/571943
+  patch -p1 -i "${srcdir}/issue1644893002_1.diff"
 
   ##
 
@@ -517,7 +529,7 @@ build() {
       export CXXFLAGS="${CXXFLAGS} -Wno-unknown-warning-option"
     elif [ "${_use_bundled_clang}" = "1" ]; then
       msg2 "Setup and build bundled Clang"
-      python2 tools/clang/scripts/update.py --force-local-build --without-android
+      python2 tools/clang/scripts/update.py --force-local-build --without-android --gcc-toolchain=/usr
       if [ "${_use_ccache}" = "0" ]; then
         export CC="${_bundled_clang_path}/clang -Qunused-arguments"
         export CXX="${_bundled_clang_path}/clang++ -Qunused-arguments"
