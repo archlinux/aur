@@ -5,7 +5,7 @@
 
 pkgname=silo
 pkgver=4.10.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A Mesh and Field I/O Library and Scientific Database"
 url="https://wci.llnl.gov/simulation/computer-codes/silo"
 arch=('i686' 'x86_64')
@@ -29,20 +29,37 @@ build() {
   cd "${srcdir}/build"
 
   export PYTHON=/usr/bin/python2
-  ../${pkgname}-${pkgver}/configure \
-    --prefix=/usr \
-    --enable-shared --enable-optimization \
-    --enable-fortran --enable-browser \
-    --enable-silex \
-    --with-Qt-dir= --with-Qt-include-dir=/usr/include/qt4 \
-    --with-Qt-bin-dir=/usr/lib/qt4/bin  --with-Qt-lib-dir=/usr/lib \
-    --with-Qt-lib="{QtCore,QtGui}" \
-    --with-zlib=/usr/include,/usr/lib \
-    --with-hdf5=/usr/include,/usr/lib \
-    --enable-pythonmodule \
-    --with-szlib=/usr/lib \
-    --enable-install-lite-headers \
-    --enable-hzip --enable-fpzip
+  if [ "$(pacman -Qs hdf- | grep  -o mpi)" == "mpi" ]
+  then
+    ../${pkgname}-${pkgver}/configure \
+      --prefix=/usr \
+      --enable-shared --enable-optimization \
+      --enable-fortran --enable-browser \
+      --enable-silex \
+      --with-Qt-dir= --with-Qt-include-dir=/usr/include/qt4 \
+      --with-Qt-bin-dir=/usr/lib/qt4/bin  --with-Qt-lib-dir=/usr/lib \
+      --with-Qt-lib="{QtCore,QtGui}" \
+      --with-zlib=/usr/include,/usr/lib \
+      --enable-pythonmodule \
+      --with-szlib=/usr/lib \
+      --enable-install-lite-headers \
+      --enable-hzip --enable-fpzip
+  else
+    ../${pkgname}-${pkgver}/configure \
+      --prefix=/usr \
+      --enable-shared --enable-optimization \
+      --enable-fortran --enable-browser \
+      --enable-silex \
+      --with-Qt-dir= --with-Qt-include-dir=/usr/include/qt4 \
+      --with-Qt-bin-dir=/usr/lib/qt4/bin  --with-Qt-lib-dir=/usr/lib \
+      --with-Qt-lib="{QtCore,QtGui}" \
+      --with-zlib=/usr/include,/usr/lib \
+      --with-hdf5=/usr/include,/usr/lib \
+      --enable-pythonmodule \
+      --with-szlib=/usr/lib \
+      --enable-install-lite-headers \
+      --enable-hzip --enable-fpzip
+  fi
 
   make
 }
