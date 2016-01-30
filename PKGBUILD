@@ -1,6 +1,6 @@
 # Maintainer: Fabien Devaux <fdev31@gmail.com>
 pkgname=aury
-pkgver=1.1.1
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Automates maintenance of AUR python packages"
 arch=('any')
@@ -15,11 +15,11 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=('https://pypi.python.org/packages/source/a/aury/aury-1.0.tar.gz#md5=d1d6600a17f6d80e322165366534c4e6')
-md5sums=('a0f532310f54c2456634670f7d3cd26d')
+source=("https://pypi.python.org/packages/source/a/aury/aury-${pkgver}.tar.gz")
+md5sums=('621bc74f7e03d2fdbb69ac7260efff82')
 
 package() {
-  cd "$srcdir/aury-1.0"
+  cd "$srcdir/aury-${pkgver}"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
