@@ -1,22 +1,20 @@
 # Maintainer: Johannes Maibaum <jmaibaum@gmail.com>
 pkgname=otf-libertinus
 _pkgname=${pkgname#*-}
-pkgver=6.1
-pkgrel=2
+pkgver=6.2
+pkgrel=1
 pkgdesc="The Libertinus font family. A fork of the Linux Libertine and Linux Biolinum fonts with bugfixes and an OpenType math companion."
 depends=('fontconfig' 'xorg-mkfontdir')
 conflicts=('otf-libertine-git' 'otf-libertinus-git')
 arch=('any')
-license=('custom: OFL' 'GPL')
+license=('OFL')
 url="https://github.com/khaledhosny/libertinus"
 install=$pkgname.install
 source=("https://github.com/khaledhosny/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('2c5a32e08d7601ffdc86e52d69dc1d19acfd118ec5bb549073a3cbeb969e74be')
+sha256sums=('f3c20cd0c07bc36467693611d9d520bacf36df35e8af7b8338aaf52064b6c6e3')
 
 package() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
 	find . -name '*.otf' -execdir install -Dm644 {} $pkgdir/usr/share/fonts/OTF/{} \;
-	install -Dm644 LICENCE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -m644 OFL.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-OFL"
-	install -m644 GPL.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-GPL"
+	install -Dm644 OFL.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-OFL"
 }
