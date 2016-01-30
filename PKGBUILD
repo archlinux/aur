@@ -2,7 +2,7 @@
 # Cleanup: Sam Stuewe <halosghost@archlinux.info>
 # still want to build trunk? use http://sprunge.us/XARP instead
 pkgname="nightingale-git"
-pkgver=4e3f055
+pkgver=78bd501
 pkgrel=1
 pkgdesc="No binaries used. Open source fork of the Songbird Media Player with updates and fixes."
 arch=('i686' 'x86_64')
