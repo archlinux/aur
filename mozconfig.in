@@ -29,8 +29,8 @@ mk_add_options MOZ_APP_PROFILE=palemoon
 
 # Use System libraries
 #ac_add_options --enable-default-toolkit=cairo-gtk3 # breaks the build, gtk3 support is not ready
-#ac_add_options --enable-system-cairo # system cairo without layers acceleration results in choppy video playback
 #ac_add_options --with-system-nss # build stops and informs us that system nss is not currently supported
+ac_add_options --enable-system-cairo # system cairo may result in choppy video playback without layer acceleration
 ac_add_options --with-system-nspr
 ac_add_options --with-system-jpeg
 ac_add_options --with-system-zlib
