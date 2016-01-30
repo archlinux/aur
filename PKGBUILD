@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=ffmpeg-full-git-doc
-pkgver=N.78035.g3b9f41a
+pkgver=N.78205.g31f5fa2
 pkgrel=1
 pkgdesc="FFmpeg documentation from Git repository"
 arch=('any')
