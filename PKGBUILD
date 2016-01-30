@@ -1,7 +1,7 @@
 # Mantainer maz-1 < ohmygod19993 at gmail dot com >
 pkgname=kcm-imchooser-frameworks
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A input method starter and configure tool. It can help you set annoying system environment variable. Unofficial KF5 port."
 arch=('i686' 'x86_64')
 url='http://kde-apps.org/content/show.php/kcm+imchooser?content=146776'
