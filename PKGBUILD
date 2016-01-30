@@ -9,23 +9,25 @@
 pkgname=teighafileconverter-qt5
 _altname=teighafileconverter
 pkgver=4.00.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Converts files between the .dwg and .dxf file formats, QT5 version"
 arch=('i686' 'x86_64')
-url="http://www.opendesign.com/guestfiles"
+url="https://www.opendesign.com/guestfiles"
 license=('custom')
 conflicts=('teighafileconverter-qt4')
 depends=('qt5-base' 'libxfixes' 'libgl' 'bash' 'hicolor-icon-theme')
 install=${pkgname}.install
 source=('license')
-source_i686=(http://www.opendesign.com/files/guestdownloads/TeighaFileConverter/TeighaFileConverter_QT5_lnxX86_4.7dll.deb)
-source_x86_64=(http://www.opendesign.com/files/guestdownloads/TeighaFileConverter/TeighaFileConverter_QT5_lnxX64_4.7dll.deb)
+DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
+source_i686=(https://www.opendesign.com/files/guestdownloads/TeighaFileConverter/TeighaFileConverter_QT5_lnxX86_4.7dll.deb)
+source_x86_64=(https://www.opendesign.com/files/guestdownloads/TeighaFileConverter/TeighaFileConverter_QT5_lnxX64_4.7dll.deb)
 md5sums=('62b5539acd57c50855e29d1157c10697')
 md5sums_i686=('84b46aa845781da1f8a398578a64590e')
 md5sums_x86_64=('f28adffae333c414ab3bcfeaa70c5600')
 
 build() {
-  [ ! -d ${_altname}-${pkgver} ] && mkdir ${_altname}-${pkgver}
+  rm -rf ${_altname}-${pkgver}
+  mkdir ${_altname}-${pkgver}
   tar xf data.tar.gz -C ${_altname}-${pkgver}
 }
 
