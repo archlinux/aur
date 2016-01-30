@@ -4,7 +4,7 @@ _pkgname2=spyder
 _pkgname3=spyder3
 pkgbase=$_pkgname2-git
 pkgname=($_pkgname2-git $_pkgname3-git)
-pkgver=3.0.0b2.r119.g7bae783
+pkgver=3.0.0b2.r130.gb269751
 pkgrel=1
 arch=('any')
 url="https://github.com/spyder-ide/spyder"
@@ -36,11 +36,12 @@ build() {
 
 package_spyder-git() {
   pkgdesc="Scientific PYthon Development EnviRonment providing MATLAB-like features (Python 2 version)"
+  # Note: 'ipython2-notebook' contains QTConsole
+  # Note: 'ipython2' (dependency of 'ipython2-notebook') contains Pickleshare
+  # Note: 'ipython2-notebook' nor 'jupyter' contain a Python 2 version of Nbconvert
   # 'icu'
-  # 'jupyter' does not contain a Python 2 of Nbconvert
-  # 'ipython2' ('ipython2-notebook') contains Pickleshare
-  depends=('ipython2-notebook'
-           'python2-pyqt5'
+  depends=('python2-pyqt5'
+           'ipython2-notebook'
            'python2-pyflakes'
            'python2-sphinx'
            'python2-pygments'
@@ -52,8 +53,6 @@ package_spyder-git() {
            'python2-pyzmq'
            'desktop-file-utils'
            'gtk-update-icon-cache')
-  # 'ipython2<4.0: enhanced Python interpreter'
-  # 'ipython2-notebook>=4.0: enhanced Python interpreter (qtconsole)'
   optdepends=('python2-pyqt4: Qt-Python bindings'
               'python2-pyside: Qt-Python bindings'
               'python2-rope: editor code completion, calltips and go-to-definition'
@@ -78,26 +77,22 @@ package_spyder-git() {
 
 package_spyder3-git() {
   pkgdesc="Scientific PYthon Development EnviRonment providing MATLAB-like features (Python 3 version)"
+  # Note: 'jupyter' contains QTConsole and Nbconvert
+  # Note: 'ipython' (dependency of 'jupyter') contains Pickleshare
   # 'icu'
-  # 'ipython' ('ipython-notebook') contains Pickleshare
-  # 'jupyter' contains Nbconvert
-  depends=('ipython-notebook'
-           'python-pyqt5'
+  depends=('python-pyqt5'
+           'jupyter'
            'python-pyflakes'
            'python-sphinx'
            'python-pygments'
            'python-pylint'
            'pep8'
            'python-psutil'
-           'jupyter'
            'python-qtawesome'
 
            'python-pyzmq'
            'desktop-file-utils'
            'gtk-update-icon-cache')
-  # 'ipython<4.0: enhanced Python interpreter'
-  # 'ipython-notebook>=4.0: enhanced Python interpreter (qtconsole)'
-  # 'jupyter: nbconvert - manipulation of notebooks in the Editor'
   optdepends=('python-pyqt4: Qt-Python bindings'
               'python-pyside: Qt-Python bindings'
               'python-rope: editor code completion, calltips and go-to-definition'
