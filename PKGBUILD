@@ -13,14 +13,14 @@ depends=('python-click' 'python-setuptools' 'python-lxml'
 optdepends=('python-requests-oauthlib: Remotestorage support')
 checkdepends=('python-pytest' 'python-wsgi-intercept'
               'radicale' 'python-werkzeug' 'python-pytest-xprocess'
-              'python-pytest-localserver')
+              'python-pytest-localserver' 'python-hypothesis')
 source=("https://pypi.python.org/packages/source/v/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('dcc171a7e47425466cf513d42ff5ab10')
 
-# check() {
-#   cd "$srcdir/${pkgname}-$pkgver"
-#   sh build.sh tests
-# }
+check() {
+  cd "$srcdir/${pkgname}-$pkgver"
+  DAV_SERVER=skip REMOTESTORAGE_SERVER=skip python setup.py test
+}
 
 build() {
   cd "$srcdir/${pkgname}-$pkgver"
