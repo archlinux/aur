@@ -6,10 +6,12 @@ pkgver=0.5.1
 pkgrel=1
 pkgdesc="A Boulder Dash like game for consoles/terminals. Level editor included."
 arch=('i686' 'x86_64')
-url="http://www.x86.no/cavezofphear/"
+#url="http://www.x86.no/cavezofphear/"
+url="https://web.archive.org/web/20140328135903/http://www.x86.no/cavezofphear/"
 license=('GPL')
 depends=('ncurses')
-source=(http://www.x86.no/cavezofphear/phear-$pkgver.tar.bz2)
+#source=(http://www.x86.no/cavezofphear/phear-$pkgver.tar.bz2)
+source=(http://entware.dyndns.info/sources/phear-$pkgver.tar.bz2)
 md5sums=('c9b3751dc52d332aaf04cbed4addf7c1')
 
 build() {
