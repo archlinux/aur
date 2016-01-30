@@ -1,6 +1,6 @@
 # Maintainer: Elio Esteves Duarte <elio.esteves.duarte@gmail.com>
 pkgname=tomate-alarm-plugin
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Tomate plugin that shows screen notifications"
 arch=('any')
@@ -15,7 +15,7 @@ depends=('gtk3'
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://github.com/eliostvs/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('ae83cc5fa4d7ddced5098f766dd9b17e')
+md5sums=('4839d7d4d40ea050e8dfb9955f2d6fc1')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
