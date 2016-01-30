@@ -1,4 +1,4 @@
-pkgbase = qownnotes
+pkgbase = qownnotes-pbek
 	pkgdesc = Open source notepad and todo list manager with ownCloud integration
 	pkgver = 0.84
 	pkgrel = 1
