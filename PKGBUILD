@@ -10,6 +10,7 @@ url="https://github.com/majn/telegram-purple"
 license=("GPL")
 makedepends=("git")
 depends=('glib2' 'libgcrypt' 'libpurple' 'zlib' 'libwebp')
+conflict=('telegram-purple')
 
 source=("git+https://github.com/majn/telegram-purple")
 sha512sums=('SKIP')
