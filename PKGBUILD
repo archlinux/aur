@@ -2,8 +2,8 @@
 # Contributor: Oliver Jaksch <arch-aur@com-in.de>
 pkgname="dahdi-tools"
 pkgdesc="DAHDI tools for Asterisk (Digium, OpenVox, Allo and Yeastar cards)"
-pkgver=2.10.2
-pkgrel=2
+pkgver=2.11.0
+pkgrel=1
 arch=("i686" "x86_64")
 url="http://www.asterisk.org/"
 license=("LGPLv2")
@@ -15,12 +15,10 @@ backup=(
 source=(
   "http://downloads.asterisk.org/pub/telephony/dahdi-tools/${pkgname}-${pkgver}.tar.gz"
   "http://mirror.netcologne.de/gentoo/distfiles/gentoo-dahdi-tools-patchset-0.4.tar.bz2"
-  "dahdi-tools-2.10.1-gcc510.patch"
 )
 sha256sums=(
-  "9e904815dedab231084c542d2d7d5dcc832ebec4b5d5d999a5d757df8b2d571a"
+  "0075b34c698fea6be8f1bf0738953225caad0e37c831b95ef368b908217241e1"
   "71642a87e566220c7e7f908adb25dadcf87ff62a23150a6e6074708fd91297b1"
-  "f14128582ee6bf9695ef3eb700c62003a5167a77a124015043c0acaee23ce653"
 )
 
 build() {
@@ -28,26 +26,23 @@ build() {
 
   # enable additional drivers.
   patch -Np1 -i "${srcdir}/dahdi-tools-patchset/01-blacklist-non-digium-modules.diff"
-  patch -Np1 -i "${srcdir}/dahdi-tools-patchset/02-parallel-make.diff"
-  patch -Np1 -i "${srcdir}/dahdi-tools-patchset/03-no-hardware-fiddling.diff"
-  patch -Np1 -i "${srcdir}/dahdi-tools-patchset/04-vendorlib.diff"
-  patch -Np1 -i "${srcdir}/dahdi-tools-patchset/05-respect-ldflags.diff"
-  patch -Np1 -i "${srcdir}/dahdi-tools-patchset/06-respect-udev-rules.diff"
-
-  # compile fixes for latest gcc.
-  patch -Np1 -i "${srcdir}/dahdi-tools-2.10.1-gcc510.patch"
-
-  # fix wrong installation paths.
-  sed 's,/lib/udev,/etc/lib/udev,' -i xpp/Makefile
-  sed 's,$(prefix)/sbin,$(prefix)/bin,' -i xpp/Makefile
 
   # compile.
-  ./configure --sbindir=/usr/bin
+  unset CFLAGS
+  unset LDFLAGS
+  ./configure --sbindir=/usr/bin --with-udevrules=/usr/lib/udev/rules.d
   make DESTDIR="${pkgdir}" all
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+
+  # install.
   make DESTDIR="${pkgdir}" install
   install -D -m 0644 xpp/genconf_parameters "${pkgdir}/etc/dahdi/genconf_parameters"
+
+  # cleanup installation.
+  cp "${pkgdir}/etc/dahdi/system.conf.sample" "${pkgdir}/etc/dahdi/system.conf"
+  mv "${pkgdir}/usr/lib/udev/rules.d/xpp.rules" "${pkgdir}/usr/lib/udev/rules.d/98-xpp.rules"
+  rm "${pkgdir}/usr/lib/udev/rules.d/dahdi.rules"
 }
