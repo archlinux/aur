@@ -11,15 +11,15 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 depends=('bash' 'ncurses')
 optdepends=(
-    'cmus: Current Song'
-    'feh: Wallpaper Display'
-    'imagemagick: Image cropping / Thumbnail creation'
-    'mpc: Current Song'
-    'nitrogen: Wallpaper Display'
-    'scrot: Take a screenshot'
-    'w3m: Display Images'
-    'wmctrl: Accurate window manager detection'
-    'xorg-xdpyinfo: Resolution Detection'
+  'cmus: Current Song'
+  'feh: Wallpaper Display'
+  'imagemagick: Image cropping / Thumbnail creation'
+  'mpc: Current Song'
+  'nitrogen: Wallpaper Display'
+  'scrot: Take a screenshot'
+  'w3m: Display Images'
+  'wmctrl: Accurate window manager detection'
+  'xorg-xdpyinfo: Resolution Detection'
 )
 makedepends=('git')
 source=("$pkgname::git+https://github.com/dylanaraps/fetch.git")
@@ -32,9 +32,6 @@ pkgver() {
 
 package() {
   cd $pkgname
-  install -D -m755 fetch "$pkgdir/usr/bin/fetch"
+  make DESTDIR="$pkgdir" install
   install -D -m644 LICENSE.md "$pkgdir/usr/share/licenses/fetch/LICENSE.md"
-  install -D -m755 config "$pkgdir/usr/share/fetch/config"
-  install -d -m755 ascii/distro/ "$pkgdir/usr/share/fetch/ascii/distro"
-  install -D -m755 ascii/distro/* "$pkgdir/usr/share/fetch/ascii/distro/"
 }
