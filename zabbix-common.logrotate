@@ -1,4 +1,4 @@
-/var/log/zabbix/zabbix_proxy.log {
+/var/log/zabbix/zabbix_*.log {
     monthly
     rotate 12
     compress
@@ -7,3 +7,4 @@
     create 0640 zabbix zabbix
     sharedscripts
 }
+

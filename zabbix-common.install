@@ -1,0 +1,16 @@
+post_install() {
+  # create user
+  systemd-sysusers zabbix-common.conf
+  # create runtime dirs
+  systemd-tmpfiles --create zabbix-common.conf
+  # log directory
+  mkdir -p -m750 /var/log/zabbix
+  chown zabbix:zabbix /var/log/zabbix
+  # home dir permissions
+  chown zabbix:zabbix /var/lib/zabbix
+
+}
+
+post_upgrade() {
+  post_install "$1"
+}
