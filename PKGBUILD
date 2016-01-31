@@ -13,7 +13,7 @@ license=('Apache')
 depends=('boost>=1.40.0' 'curl>=4.0' 'freeglut' 'freeimage>=3.0'
          'intel-tbb>=3.0' 'libccd>=1.4' 'libltdl>=2.4.2' 'libtar>=1.2' 'libxml2>=2.7.7'
          'ogre' 'protobuf>=2.3.0' 'qt4' 'sdformat>=3.1.1' 'ignition-math>=2' 'ignition-transport'
-         'tinyxml>=2.6.2')
+         'tinyxml>=2.6.2' 'tinyxml2')
 optdepends=('bullet>=2.82: Bullet support'
             'cegui>=0.8.3: Design custom graphical interfaces'
             'ffmpeg>=0.8.3: Playback movies on textured surfaces'
