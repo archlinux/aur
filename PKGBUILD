@@ -10,7 +10,7 @@ license=('GPL')
 depends=('gtksourceviewmm' 'dconf')
 makedepends=('intltool')
 install=$pkgname.install
-source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz
+source=(https://download.gnome.org/sources/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz
         regexxer-glib2.32.patch
         fix-deprecated.patch)
 sha256sums=('2a7832541a0306b3d4eb63a1cf8978d7bbfc7927e9304473fe801d71fd99736c'
