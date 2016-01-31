@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('gtk3' 'python-gobject' 'hicolor-icon-theme')
 makedepends=('python-setuptools' 'intltool' 'itstool' 'pep8-python3' 'gobject-introspection')
 install=d-feet.install
-source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
+source=(https://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
 sha256sums=('88f0df5fcb862387ff3d1793873c5eb368c3e4db0bbd82ea65f748cbf70a6359')
 
 build() {
