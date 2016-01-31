@@ -59,7 +59,7 @@ check() {
 
 package() {
   cd "$srcdir/ff++"
-  make -d DESTDIR="$pkgdir" install || true
+  make -d DESTDIR="$pkgdir" install
   install -Dm644 examples++/freefem++.pref $pkgdir/etc/freefem++.pref
   find $pkgdir/usr/lib/ff++/ -name "*.h" -exec chmod o+r {} \;
   # remove unneeded files
