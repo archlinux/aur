@@ -2,8 +2,9 @@
 # Contributor in comments: Misc <https://aur.archlinux.org/account/misc/>
 
 pkgname=opsu-git
+_pkgname=opsu
 pkgver=0.12.1.r0.g7245673
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source osu!-client written in Java."
 arch=('any')
 url="https://itdelatrisu.github.io/opsu/"
@@ -11,12 +12,12 @@ license=('GPL3')
 changelog=.CHANGELOG
 depends=('java-runtime' 'bash')
 makedepends=('java-environment' 'java-web-start' 'gradle' 'gendesk' 'git')
-provides=('opsu-git')
-conflicts=('opsu-git')
+provides=('opsu')
+conflicts=('opsu')
 source=(${pkgname}::git://github.com/itdelatrisu/opsu.git
-        opsu-git.sh )
+        opsu.sh )
 sha512sums=('SKIP'
-            '4c8b89b4f273a076620c98058623a0e8c0ab875f191cb65f126e9a0134e0b072ed27ac8a03928225db1b5b9e832935b4efca0db1d7a02b0c8b96ec87748398f3')
+            '4b065052fef55e1860a51dfa5af080930b1001e4c82cd8b3b0383bd68b239d382d788408235a7cb4fb4a1d04123a6049188a2e2c2d0e5fd08a3deb69da25fc2d')
 
 pkgver()
 {
@@ -27,7 +28,7 @@ pkgver()
 prepare()
 {
 	# generate .desktop-file
-	gendesk -n -f --pkgname "${pkgname}" --pkgdesc "$pkgdesc" --name "opsu!-git" --exec "${pkgname}" --categories "Game"
+	gendesk -n -f --pkgname "${pkgname_}" --pkgdesc "$pkgdesc" --name "opsu!-git" --exec "${pkgname_}" --categories "Game"
 
 	# update .CHANGELOG
 	git -C "${srcdir}/${pkgname}" log --graph -10 > "${startdir}/.CHANGELOG"
@@ -43,10 +44,9 @@ package()
 {
 	# cut pkgver
 	_pkgver=$(git -C "${srcdir}/${pkgname}" describe --tags | sed 's/-.*//')
-	_pkgname=opsu
 
-	install -Dm644 "${srcdir}/${pkgname}/build/libs/${_pkgname}-${_pkgver}.jar" "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
-	install -Dm644 "${srcdir}/${pkgname}/res/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-	install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-	install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm644 "${srcdir}/${pkgname}/build/libs/${_pkgname}-${_pkgver}.jar" "${pkgdir}/usr/share/java/${_pkgname}/${_pkgname}.jar"
+	install -Dm644 "${srcdir}/${pkgname}/res/logo.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+	install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+	install -Dm755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
 }
