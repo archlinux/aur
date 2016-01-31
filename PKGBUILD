@@ -2,9 +2,9 @@
 
 pkgname=qownnotes-pbek
 pkgver=0.86
-tag="429c20be1b5c9d5c6cefd775c02fc853294eef75"
+tag="800060fcbeee887480b22c99106d3477ae6c0fd5"
 pkgrel=1
-pkgdesc="Open source notepad and todo list manager with ownCloud integration"
+pkgdesc="Open source notepad and todo list manager with markdown support and ownCloud integration"
 arch=('i686' 'x86_64')
 url='http://www.qownnotes.org/'
 license=('GPL2')
