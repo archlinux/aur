@@ -3,7 +3,7 @@
 
 pkgname=pianoteq-stage-trial-bin
 pkgver=5.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Virtual piano instrument using physical modelling synthesis. Both standalone and plugin versions."
 arch=('i686' 'x86_64')
 url="https://www.pianoteq.com/pianoteq5"
@@ -11,7 +11,7 @@ license=('custom')
 depends=('alsa-lib' 'freetype2' 'libxext')
 makedepends=('gendesk' 'wget' 'p7zip')
 provides=("${pkgname}")
-conflicts=("${pkgname}")
+conflicts=("${pkgname}" "pianoteq-stage")
 source=('https://www.pianoteq.com/images/logo/pianoteq_icon_128.png')
 sha256sums=('94ee64cf6688a49d74f0bf70d811e7466abac103feeab17496a89f828afcc6d3')
 
