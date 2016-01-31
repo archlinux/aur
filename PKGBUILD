@@ -2,7 +2,7 @@
 # Contributor: Giacomo <giacomogiorgianni at gmail dot com>
 
 pkgname=vokoscreen
-_pkgver=2.4.12-beta
+_pkgver=2.4.13-beta
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc='An easy to use screencast creator. Qt5 UI.'
@@ -25,7 +25,7 @@ source=(
 	'desktop_file.patch'
 )
 sha512sums=(
-	'f9dbc72243ff1bb31f2ea36a678d2d421a1e0eac43cb84e6969943c1fb3ff3b96370e97535b182a9805855dfb218e403e4e4622a3fbbb77791b5f8ef459891c3'
+	'73887d5842729c7bea8757826d09cfafe7c7bda59a3bdee1b9e800b2e21985fb52b6498d6b0cd7c73b5a9d680bbaa3fbe49d3690ad7dd5e03a610e0a932e248c'
 	'3ddc567f831b9f6e2672997a77a099cf8fdd5a6a1d79157738c1670c9106fd6c4e09d74287a770c19bac23dcb73a19ce69cc1ac893d4988f75c7ac35668f7a90'
 )
 
@@ -33,7 +33,7 @@ prepare() {
 	cd ${srcdir}/${pkgname}-${_pkgver}
 	
 	# Desktop file description
-	patch -p1 < ../desktop_file.patch
+	patch -Np1 < ../desktop_file.patch
 
 	# Create build directory
 	mkdir -p ${srcdir}/build
