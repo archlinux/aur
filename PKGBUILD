@@ -1,3 +1,4 @@
+# Maintainer: Zanny <lordzanny@gmail.com>
 # Maintainer: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
 # Author: Ivan Shapovalov <intelfx100@gmail.com>
 # Contributor: George Brooke <george+arch.aur@george-brooke.co.uk>
@@ -12,7 +13,7 @@ license=('GPL')
 depends=('telepathy-kde-accounts-kcm-git'
          'telepathy-kde-approver-git'
          'telepathy-kde-auth-handler-git'
-#        'telepathy-kde-call-ui-git' # non-qt5
+         'telepathy-kde-call-ui-git'
          'telepathy-kde-contact-list-git'
          'telepathy-kde-contact-runner-git'
          'telepathy-kde-desktop-applets-git'
@@ -21,14 +22,8 @@ depends=('telepathy-kde-accounts-kcm-git'
 #        'telepathy-kde-kipi-plugin-git' # unmaintained, non-qt5
          'telepathy-kde-send-file-git'
          'telepathy-kde-text-ui-git'
-         'signon-ui'
-         'signon-plugin-oauth2'
-         'signon-kwallet-extension'
-         'kaccounts-providers-git'
-         'libsignon-glib'
-         'telepathy-accounts-signon')
+         'kaccounts-providers-git')
 
 package() {
     return 0
 }
-# vim:set ts=2 sw=2 et:
