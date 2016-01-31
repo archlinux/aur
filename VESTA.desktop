@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=VESTA
+Exec=/usr/bin/VESTA %F
+Type=Application
+Categories=Science
+Terminal=false
+StartupNotify=false
+Icon=/opt/VESTA/img/logo.png
+GenericName="3D visualization program for structural models, volumetric data such as electron/nuclear densities, and crystal morphologies."
+Comment="Crystal structure visualization program"
+MimeType=application/x-vesta;
