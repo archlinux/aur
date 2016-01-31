@@ -8,9 +8,6 @@
 CONFIG="/etc/default/coolmaster_keyboard"
 source "$CONFIG"
 
-#exit counter
-declare -i EXIT=0
-
 #issue warnings to stderr, also increment the error count.
 warn(){
     echo "coolmaster-keyboard: WARN: $@" 1>&2
@@ -28,5 +25,3 @@ case $BACKLIGHT in
     ;;
 esac
 
-#pass errors back to script that called us.
-exit $EXIT

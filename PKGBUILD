@@ -8,7 +8,7 @@
 # without X, or at the login screen. Contrib is welcome
 
 pkgname=coolmaster-keyboard
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc="Control the backlight for Coolmaster Dominator keyboards"
 url="http://aur.archlinux.org"
@@ -21,7 +21,7 @@ source=("90-coolmaster-keyboard.sh"
         "coolmaster_keyboard"
         "keyboard_led_toggle.sh"
 )
-sha256sums=('82f534cf47b01fe2cf217918b50f40c909c521be12f6c7dbf5e5029c1de7e7c1'
+sha256sums=('84e9af948178a4f3a4054f87a17adf0f5ba23845b4a0a98900344c261612ef66'
             '5949356d3a44ba4d5431c9ff461e9f6cc1e0b89ae8fc9c29d8b9f4aeec0dd230'
             '168f733e8308e7e711264f798ccb742456e0c2131841c471620b9e32fbc3f4c9')
 
