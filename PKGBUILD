@@ -15,7 +15,7 @@ optdepends=('gst-plugins-good: Extra media codecs'
             'gst-libav: Extra media codecs'
             'gst-vaapi: Hardware accelerated video decode')
 install=$pkgname.install
-source=(http://ftp.gnome.org/pub/GNOME/sources/$_pkgname/$pkgver/$_pkgname-$pkgver.tar.xz
+source=(https://download.gnome.org/sources/$_pkgname/$pkgver/$_pkgname-$pkgver.tar.xz
         0001-Set-windowing-backend-to-X11.patch
         clutter-gst3.patch)
 sha256sums=('0d33a05c1ad3cc075b8b9bf38d45634ea5204159454597b0882dd6a8d9763f58'
