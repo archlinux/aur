@@ -1,12 +1,13 @@
 _npmname=sinopia
 pkgname=nodejs-$_npmname
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Private npm repository server"
 arch=("any")
 url="https://github.com/rlidwka/sinopia"
 license=()
-depends=("nodejs" "npm")
+depends=("nodejs")
+makedepends=("npm")
 install=nodejs-sinopia.install
 source=("http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz"
         "sinopia.service"
