@@ -4,7 +4,7 @@
 # Contributor: George Brooke <george+arch.aur@george-brooke.co.uk>
 
 pkgname=telepathy-kde-git-meta
-pkgver=17
+pkgver=18
 pkgrel=1
 pkgdesc="Metapackage for the development version of all kde-telepathy components."
 arch=('any')
