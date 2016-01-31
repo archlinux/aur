@@ -14,6 +14,8 @@ source=("https://github.com/dcampbell24/cparted/archive/cparted-$pkgver.tar.gz")
 md5sums=('SKIP')
 
 package() {
+  cd cparted-cparted-0.1
+
   python2 setup.py build_scripts -e "/usr/bin/env python2"
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
