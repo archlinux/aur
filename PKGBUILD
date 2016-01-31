@@ -3,7 +3,7 @@
 # JVM build disabled 2015-12-27 (Missing serialize function for REPR ContextRef)
 
 pkgname=rakudo-git
-pkgver=20160130
+pkgver=20160131
 pkgrel=1
 pkgdesc="Perl 6 on MoarVM"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ optdepends=('gdb: GDB runner'
 groups=('perl6')
 url="https://github.com/rakudo/rakudo"
 license=('PerlArtistic')
-source=(git+https://github.com/atweiden/rakudo#branch=tools-parse-revision)
+source=(git+https://github.com/rakudo/rakudo)
 sha256sums=('SKIP')
 provides=('perl6' 'rakudo')
 conflicts=('perl6' 'rakudo')
