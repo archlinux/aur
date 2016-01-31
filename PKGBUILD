@@ -95,14 +95,14 @@ prepare() {
 
 package () {
   cd ${srcdir}
-  install -d ${pkgdir}/usr/lib32/bin32-firefox/extensions/
-  install -d ${pkgdir}/usr/lib32/bin32-firefox//defaults/pref
-  echo 'pref("intl.locale.matchOS", true);' >> ${pkgdir}/usr/lib32/bin32-firefox//defaults/pref/lang-pref.js
+  install -d ${pkgdir}/usr/lib32/bin32-firefox/browser/extensions/
+  install -d ${pkgdir}/usr/lib32/bin32-firefox/defaults/pref
+  echo 'pref("intl.locale.matchOS", true);' >> ${pkgdir}/usr/lib32/bin32-firefox/defaults/pref/lang-pref.js
   for item in ${srcdir}/*.xpi; do
     iitem=$(basename $item)
     iitem=${iitem/.xpi/@firefox.mozilla.org.xpi}
     iitem="langpack-${iitem}"
-    install -m644 $item ${pkgdir}/usr/lib32/bin32-firefox/extensions/$iitem
+    install -m644 $item ${pkgdir}/usr/lib32/bin32-firefox/browser/extensions/$iitem
   done
 }
 
