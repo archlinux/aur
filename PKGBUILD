@@ -14,7 +14,7 @@
 
 pkgname=pan-git
 _gitname=pan2
-pkgver=139.185.g9847fe5
+pkgver=139.188.ga52b404
 pkgrel=1
 pkgdesc="Pan is a Usenet newsreader that's good at both text and binaries. Development version."
 url="http://pan.rebelbase.com/"
@@ -26,7 +26,7 @@ conflicts=('pan')
 provides=('pan')
 install=pan.install
 source=("git://git.gnome.org/$_gitname")
-md5sums=SKIP
+md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_gitname"
