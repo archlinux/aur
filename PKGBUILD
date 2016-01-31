@@ -2,18 +2,18 @@
 # Contributor: Michael Eckert <michael.eckert@linuxmail.org>
 
 pkgname=deltarpm
-pkgver=3.6
+pkgver=3.6.1
 pkgrel=1
 pkgdesc="Create deltas between rpms"
 arch=('i686' 'x86_64')
 license=('BSD')
-url="http://gitorious.org/$pkgname/$pkgname"
+url="https://github.com/rpm-software-management/$pkgname"
 depends=('rpm-org' 'zlib')
 makedepends=('python2' 'python')
 optdepends=('python2: for python2 module'
             'python:  for python3 module')
-source=("ftp://ftp.suse.com/pub/projects/$pkgname/$pkgname-3.6.tar.bz2")
-md5sums=('2cc2690bd1088cfc3238c25e59aaaec1')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+md5sums=('c48086229bdfcf5af890f104231180c6')
 
 build() {
 	cd "$pkgname-$pkgver"
