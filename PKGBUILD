@@ -11,7 +11,7 @@ Jabber and others'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/kdereview/kaccounts-integration'
 license=(GPL)
-depends=(kcmutils signon libaccounts-qt5)
+depends=(kcmutils signon-kwallet-extension signon-plugin-oauth2 signon-ui)
 makedepends=(extra-cmake-modules git kdoctools)
 optdepends=('kaccounts-providers-git: Provider files')
 provides=('kaccounts-integration')
@@ -26,6 +26,8 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+  cd "$srcdir/$_gitname"
+  git revert 0ba1dde28cfacff71b264bba1b43a3f6e5992406 0b2bbbb1ca9266e8e2c9b685d4d44f1d69822b03
 }
 
 build() {
