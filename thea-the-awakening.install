@@ -13,7 +13,7 @@ post_install(){
 	echo " - to unstuck stuck keys unfocus the game window."
 }
 
-post_update(post_update(){
+post_upgrade(){
   echo "	-This version wont get any updates!"
   echo "	-There is now an official Linux version in the Steam Beta branch witch gets updates!"
 }
