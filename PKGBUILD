@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=passpie
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Manage login credentials from terminal"
 arch=('any')
@@ -17,8 +17,8 @@ url="https://github.com/marcwebbie/passpie"
 license=('MIT')
 options=(!emptydirs)
 source=(https://pypi.python.org/packages/source/p/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('b5904d6d810aa272fcf4807924c6106c')
-sha256sums=('cc28d8813690042b62eff798dc807dd53864d1d918fff877b7fd0c1c9d556130')
+md5sums=('938e9e9dd53d126dd72bda5a996ffd5b')
+sha256sums=('d769fd20454a8cd7802ac145d95e144d4f61b4f467999d19c50349766956d51d')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
