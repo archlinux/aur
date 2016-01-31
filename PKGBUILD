@@ -3,8 +3,8 @@
 
 _pkgname=pyalpm
 pkgname=$_pkgname-git
-pkgver=0.6.2.r3.g3c4692b
-pkgrel=3
+pkgver=0.8.r0.g1b5abcf
+pkgrel=1
 pkgdesc="Libalpm bindings for Python 3 (Git version)"
 arch=('i686' 'x86_64')
 url="http://projects.archlinux.org/users/remy/pyalpm.git/"
