@@ -3,7 +3,7 @@
 # Contributor: Duncan Ferguson <duncan_ferguson@users.sourceforge.net>
 
 pkgname=clusterssh
-pkgver=4.04
+pkgver=4.05
 pkgrel=1
 pkgdesc="Control multiple open terminal windows with connections to specified hosts and an administration console"
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=('perl-module-build')
 options=('!emptydirs')
 changelog=$pkgname.changelog
 source=(http://downloads.sourceforge.net/$pkgname/App-ClusterSSH-$pkgver.tar.gz)
-sha256sums=('0f76cbca6a50c42366788c76f4d09713c6a21d43ff97cadbe660a1e3c5caaaae')
+sha256sums=('a2fa2722f1cf6901daa4576b2c2ec09e3c44a9911912d48332a6b66de2ddabd6')
 
 build() {
   cd "${srcdir}"/App-ClusterSSH-$pkgver
