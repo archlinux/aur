@@ -1,0 +1,94 @@
+--- SConstruct
++++ SConstruct
+@@ -81,8 +81,8 @@ def DoWithVariables(variables, prefix, what):
+ 
+ def CheckForQtAt(context, qtdir):
+   context.Message('Checking for Qt at %s... ' % qtdir)
+-  libp = os.path.join(qtdir, 'lib')
+-  cppp = os.path.join(qtdir, 'include')
++  libp = os.path.join(qtdir, 'lib', 'qt3')
++  cppp = os.path.join(qtdir, 'include', 'qt3')
+   result = AttemptLinkWithVariables(context,
+       { "LIBS": "qt-mt", "LIBPATH": libp , "CPPPATH": cppp },
+       """
+@@ -113,7 +113,7 @@
+     potential_qt_dirs.insert(0, os.environ[ 'QTDIR' ])
+   
+   if env[ 'qt_directory' ] != "/":
+-     uic_path = os.path.join(env['qt_directory'], 'bin', 'uic')
++     uic_path = os.path.join(env['qt_directory'], 'bin', 'uic-qt3')
+      if os.path.isfile(uic_path):
+         potential_qt_dirs.insert(0, env[ 'qt_directory' ])
+      else:
+@@ -124,16 +124,16 @@
+     context.env.Replace(QTDIR = i)
+     if CheckForQtAt(context, i):
+        # additional checks to validate QT installation
+-       if not os.path.isfile(os.path.join(i, 'bin', 'uic')):
++       if not os.path.isfile(os.path.join(i, 'bin', 'uic-qt3')):
+           print "QT - failed to find uic."
+           return 0
+-       if not os.path.isfile(os.path.join(i, 'bin', 'moc')):
++       if not os.path.isfile(os.path.join(i, 'bin', 'moc-qt3')):
+           print "QT - failed to find moc."
+           return 0
+-       if not os.path.exists(os.path.join(i, 'lib')):
++       if not os.path.exists(os.path.join(i, 'lib', 'qt3')):
+           print "QT - failed to find QT lib path."
+           return 0
+-       if not os.path.exists(os.path.join(i, 'include')):
++       if not os.path.exists(os.path.join(i, 'include', 'qt3')):
+           print "QT - failed to find QT include path."
+           return 0
+        return 1
+@@ -210,9 +210,9 @@ env['QT_AUTOSCAN'] = 1
+ print "QTDIR = " + env['QTDIR']
+ env.Replace(QT_BINPATH = os.path.join ( env['QTDIR'] , 'bin')) 
+ print 'Setting up QT_BINPATH = ' + env['QT_BINPATH']
+-env.Replace(QT_UIC = os.path.join ( env['QTDIR'] , 'bin', 'uic')) 
++env.Replace(QT_UIC = os.path.join ( env['QTDIR'] , 'bin', 'uic-qt3')) 
+ print 'Setting up QT_UIC = ' + env['QT_UIC']
+-env.Replace(QT_MOC = os.path.join ( env['QTDIR'] , 'bin', 'moc')) 
++env.Replace(QT_MOC = os.path.join ( env['QTDIR'] , 'bin', 'moc-qt3')) 
+ print 'Setting up QT_MOC = ' + env['QT_MOC']
+ # env.Append(QT_DEBUG = 1)
+ 
+--- createtrans.sh
++++ createtrans.sh
+@@ -2,7 +2,7 @@
+ 
+ echo -n "Generating project file for translations..."
+ 
+-qmake -project -o translations.pro
++qmake-qt3 -project -o translations.pro
+ echo "done"
+ echo >> translations.pro
+ echo -n "TRANSLATIONS += " >> translations.pro
+@@ -13,7 +13,7 @@
+ 
+ echo -n "Updating translations..."
+ mkdir -p translations
+-lupdate translations.pro
++lupdate-qt3 translations.pro
+ echo "done"
+ echo "ts and po files output in translations/ "
+ 
+--- comptrans.sh
++++ comptrans.sh
+@@ -1,6 +1,6 @@
+ echo -n "Generating project file for translations..."
+ 
+-qmake -project -o translations.pro
++qmake-qt3 -project -o translations.pro
+ echo "done"
+ echo >> translations.pro
+ echo -n "TRANSLATIONS += " >> translations.pro
+@@ -10,7 +10,7 @@
+ # requires to actually load its translations.
+ 
+ echo -n "Compiling po and ts files..."
+-lrelease translations.pro
++lrelease-qt3 translations.pro
+ mkdir data/translations
+ cp translations/*.qm data/translations/
+ rm -f translations/*.qm
