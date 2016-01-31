@@ -3,10 +3,6 @@ pre_install() {
     virtualenv2 --relocatable /usr/lib/seafile/seafileenv
     source /usr/lib/seafile/seafileenv/bin/activate
 
-    pip2 install chardet
-    pip2 install simplejson
-    pip2 install six
-    pip2 install python-dateutil
     pip2 install gunicorn
     pip2 install "Django>=1.5.8,<1.6"
     pip2 install django-pipeline
