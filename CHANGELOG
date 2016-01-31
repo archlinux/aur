@@ -1,3 +1,31 @@
+2016-01-31	Andy Pieters aur@AndyPieters.me.uk
+
+	* 2.4.0-Oct:
+
+		new upstream release "Oct":
+
+			lifx-firmware-update (2.4.0) testing; urgency=low
+
+			* New product support.
+			* Stability improvements.
+			* Smoother waveform transitions.
+			* Better DNS fallback support.
+
+			-- LIFX Labs <software@lifx.com>  Mon, 19 Oct 2015 12:00:00 +1100
+
+2016-01-31	Andy Pieters aur@AndyPieters.me.uk
+
+	* 2.3.0-Aug: (not released via PACMAN)
+
+		new upstream minor release "Aug"
+
+			lifx-firmware-update (2.3.0) testing; urgency=low
+
+			* Wi-Fi connectivity improvements.
+			* Disable support for 802.11n on LIFX White 800.
+
+	 -- LIFX Labs <software@lifx.com>  Tue, 04 Aug 2015 12:20:00 +1000
+
 2015-06-21	Andy Pieters aur@AndyPieters.me.uk
 
 	* 2.2.0Jun:

@@ -1,13 +1,12 @@
 #!/usr/bin/bash
 # Maintainer: Andy Pieters Email address: http://www.google.com/recaptcha/mailhide/d?k=01Ki1c9JXzChsLtix5Bxu-qw==&c=1kofqD_jhDD8xD-SsJCk3-8DptvHUrc2qB4YPUWwBk4=
 
-pkgname=("lifx-firmware-update" "libotav1" "libotav2")
+pkgname=("lifx-firmware-update" "libotav1" "libotav2" )
 
-__lifx_firmware_version="2.2.0"
-__lifx_firmware_release="Jun"
-__lifx_firmware_update_filename="${pkgname}_${__lifx_firmware_version}_amd64-${__lifx_firmware_release}.deb?dl=1"
+__lifx_firmware_version="2.4.0"
+__lifx_firmware_release="oct"
 
-pkgver="${__lifx_firmware_version}${__lifx_firmware_release}"
+pkgver="${__lifx_firmware_version}"
 pkgrel=1
 pkgdesc="Firmware updater for Lifx light bulbs"
 
@@ -18,29 +17,37 @@ url="http://www.lifx.com/pages/updates"
 license=("custom:unknown")
 
 depends=(qt5-base)
-makedepends=(binutils)
+makedepends=('bash>=4')
 
 source=(
-	"https://dropbox.com/s/fwc759w5bg96a1n/${__lifx_firmware_update_filename}"
-	"lifx-firmware-update.install"
+	"https://dropbox.com/s/k7i2q2vvi7a7kck/LIFX-Bulb-Update-Installer-${__lifx_firmware_release^}.deb?dl=1"
 	CHANGELOG
 	LICENSE
 )
 
-sha512sums=('a636fc42878f04e091a0341142ae43fa1250be4aaadc5da052bdc970184d606f2b079a3f570dd6c0cdd3aa9491bdae3b3b19cb27fb7cd59165f4f7a9a7375f25'
-            '4d5898fcc387611be0356c0de7142affcadef110980b03013d2c18ebe1da509f48191d8a9c46c113e9854e98ac9bb9728d0c3482200f3a764e72c08457bc1ffd'
-            '90764741ca88c2d7b2f3cae083a22a0b87d6f1c8cef0d703d4d51e2a40d39b853ee44306900ea1719c14d642ffde3df1ad34cd07437c3cca6f625173d4b9a677'
+sha512sums=('9aa82a57c9e5348da3841c8519008343ea966fa920a1d609237e27f665ef0213883249e419b417f37476a48a1030c3e9b37290b2ff0c60aaf03a0e4265e35db4'
+            'ad918e2da0f20c577bf1b5b6abb797df58c38da3e39ead6745cab36fd6312e2984fdd38213806f07a9ac9c84e017b17e19f5b6154f47ebaeb6baecb337c4a5f8'
             '04f404a850a3b839feaa8b5590043bd9d7442ac354a2060045943005de5dfc5e7f706835beef68d08aae1a007841e1342190352c3c8e4f7b3c1d51703d8c504a')
 
 prepare() {
         cd "${srcdir}"
 
 		bsdtar -xf data.tar.xz
+		
+		# fix the desktop file
+		
+		sed -i 	-e 's#/usr/local/#/usr/#g' \
+				-e 's#share/lifx#share/applications#g' \
+				-e 's#\.run##g' \
+				"${srcdir}/usr/local/share/lifx/lifx-firmware-update.desktop"
 }
 
 package_lifx-firmware-update() {
 
 	depends=(libotav1 libotav2)
+	provides=("lifx-firmware-update")
+	replaces=("lifx-firmware-info")
+
 	install="lifx-firmware-update.install"
 	changelog=CHANGELOG
 
@@ -72,7 +79,7 @@ package_libotav1() {
 	
 	lifx_firmware_install_license
 
-	lifx_firmware_install usr/local/lib/libotav1.so usr/local/lib/libotav2.so
+	lifx_firmware_install usr/local/lib/libotav1.so
 		
 	# we can manually remove the local part here since the file need not be
 	# copied from the source
@@ -105,9 +112,13 @@ lifx_firmware_install() {
 		
 			local strFile="$1"
 			
-			# remove the local/ part
+			# we need to do 2 transformations: any 'local' part has to be
+			# removed from the destination, and, 
+			# usr/share/lifx needs replacing with /usr/share/applications
 			
-			strTarget="${strFile/\/local}"
+			strTarget="${strFile/\/local}" # replace the local/ with naught, and
+			
+			strTarget="${strTarget/usr\/share\/lifx/usr\/share\/applications}" # adjust directory for icon and menu-entry
 			
 			# install the files 
 			
