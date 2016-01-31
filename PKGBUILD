@@ -1,0 +1,35 @@
+# Contributor: tsester <univ@lavabit.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+
+pkgname=agedu-git
+pkgver=r124.59b0ed3
+pkgrel=1
+pkgdesc="Track down wasted disk space"
+arch=('i686' 'x86_64')
+url="http://www.chiark.greenend.org.uk/~sgtatham/agedu/"
+license=('custom:MIT')
+makedepends=('subversion' 'halibut')
+depends=('glibc')
+provides=('agedu')
+conflicts=('agedu')
+source=("git://git.tartarus.org/simon/agedu.git")
+md5sums=('SKIP')
+_gitname=agedu
+
+pkgver() {
+  cd "$srcdir"/"$_gitname"
+  printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+}
+
+build() {
+  cd "$srcdir/$_gitname"
+  ./mkauto.sh
+  ./configure --prefix=/usr
+  make
+}
+
+package() {
+  cd "$srcdir/$_gitname"
+  make DESTDIR="$pkgdir/" install  
+  install -Dm644 LICENCE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+}
