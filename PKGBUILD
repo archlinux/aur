@@ -3,15 +3,15 @@
 
 _pkgname=qml-material
 pkgname=$_pkgname-git
-pkgver=0.2.0.r0.g803035d
+pkgver=0.2.0.r6.g2984904
 pkgrel=1
 pkgdesc="A UI framework for QtQuick implementing Material Design"
 arch=("i686" "x86_64")
 url="https://github.com/papyros/qml-material"
 license=("LGPL")
 depends=("qt5-base" "qt5-declarative" "qt5-quickcontrols" "qt5-svg"
-"qt5-graphicaleffects")
-makedepends=("git")
+      "qt5-graphicaleffects")
+makedepends=("git" "python" "extra-cmake-modules")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+https://github.com/papyros/qml-material.git#branch=develop")
@@ -28,14 +28,18 @@ prepare() {
 }
 
 build() {
-  cd build
-  qmake "$srcdir/$_pkgname"
-  make
+	cd build
+    cmake "$srcdir/${_pkgname}" \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DLIB_INSTALL_DIR=lib \
+		-DLIBEXEC_INSTALL_DIR=lib \
+		-DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+	make
 }
 
 package() {
-  cd build
-  make INSTALL_ROOT="$pkgdir" install
+	cd build
+	make DESTDIR="${pkgdir}" install
 }
 
 # Additional functions to generate a changelog
