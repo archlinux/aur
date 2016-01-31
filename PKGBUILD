@@ -13,11 +13,11 @@ depends=("qt5-base-dev-git" "qt5-declarative" "qml-material-git" "ttf-roboto-mon
 makedepends=("git" "cmake" "extra-cmake-modules")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+https://github.com/papyros/terminal-app.git")
+source=("$_pkgname::git+https://github.com/papyros/terminal-app.git#branch=develop")
 sha256sums=("SKIP")
 
 pkgver() {
-    cd "$_pkgname"
+    cd "$srcdir/$_pkgname"
     # cutting off 'foo-' prefix that presents in the git tag
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
