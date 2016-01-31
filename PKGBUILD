@@ -16,7 +16,7 @@ depends=(
 	"libxext" "inputproto" "libgl" "libxkbcommon" "systemd"
 	"libpng" "sqlite" "fontconfig" "icu" "libxrender" "libinput"
 )
-makedepends=("git" "postgresql-libs")
+makedepends=("git" "postgresql-libs" "gtk2")
 optdepends=(
 	"qtchooser: set the default Qt toolkit"
 	"postgresql-libs: PostgreSQL driver"
