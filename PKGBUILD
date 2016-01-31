@@ -2,7 +2,7 @@
 pkgname=mac-port
 _shnver="s7"
 pkgver=3.99.u4.b5.s7
-pkgrel=2
+pkgrel=6
 pkgdesc="Monkey's Audio lossless audio codec - shntool patched"
 arch=('i686' 'x86_64')
 url="http://etree.org/shnutils/shntool/support/formats/ape/unix/"
