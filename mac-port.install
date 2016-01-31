@@ -1,0 +1,13 @@
+post_install() {
+	cat <<-EndOfMessage
+	     This software has a very strange license which is incompatible
+	     with GPL. You should carefully consider if you want to use this.
+	     The license can be read here:
+	     http://www.monkeysaudio.com/license.html
+	EndOfMessage
+	/bin/true
+}
+
+post_upgrade() {
+	post_install
+}
