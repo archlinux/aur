@@ -1,3 +1,21 @@
+2015-01-30
+
+	* V0.8.25
+	Bug fix: Pull request can not change branch when both sides are organizations #2014
+	Bug fix: Duplicate of files' name in directory #2254
+	Bug fix: Rename organization redirects to old name #2268
+	Bug fix: HTML pages are rendered in raw mode #2283
+	Bug fix: Allow access to non-home pages of empty repository #2345
+	Bug fix: 500 when viewing authentication-related pages #2349
+	Bug fix: 500 when filename starts with ':' #2373
+	Improvement: Add config option [server] SSH_ROOT_PATH to indicate directory of authorized_keys file #1436
+	Improvement: Commit IDs use monospace fonts #2264
+	Improvement: Truncate repository name if too long #2287
+	Features: Support GitHub style Markdown checklist #1048
+	Features: Add more APIs: user followers #1692
+	Features: Support side-by-side diff view #1925 #2296
+	Features: Support highlight inline diff #2335
+
 2015-12-18
 
 	* V0.8.10
