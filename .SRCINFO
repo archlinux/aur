@@ -1,15 +1,16 @@
 pkgbase = pycp
 	pkgdesc = cp and mv with a progressbar
-	pkgver = 7.0
+	pkgver = 7.1
 	pkgrel = 1
 	url = http://github.com/yannicklm/pycp
 	arch = any
 	license = MIT
 	makedepends = python
+	makedepends = python-setuptools
 	makedepends = help2man
 	depends = python
-	source = http://pypi.python.org/packages/source/p/pycp/pycp-7.0.tar.gz
-	md5sums = e1ba0162fb22d72084be3af9178ce019
+	source = http://pypi.python.org/packages/source/p/pycp/pycp-7.1.tar.gz
+	md5sums = 65a1ce3f035d109e947c1cb9a39732cc
 
 pkgname = pycp
 
