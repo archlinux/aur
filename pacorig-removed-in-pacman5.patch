@@ -1,0 +1,22 @@
+Support for .pacorig files has been removed in
+libalpm, so remove the relevant event case.
+
+Signed-off-by: Jelle van der Waa <jelle at vdwaa.nl>
+---
+ src/transaction.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/transaction.c b/src/transaction.c
+index 9c28c50..4e681f8 100644
+--- a/src/transaction.c
++++ b/src/transaction.c
+@@ -141,7 +141,6 @@ void pyalpm_eventcb(alpm_event_t *event) {
+     case ALPM_EVENT_KEY_DOWNLOAD_DONE:
+     case ALPM_EVENT_PACNEW_CREATED:
+     case ALPM_EVENT_PACSAVE_CREATED:
+-    case ALPM_EVENT_PACORIG_CREATED:
+     default:
+       eventstr = "unknown event";
+   }
+-- 
+2.7.0
