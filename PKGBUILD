@@ -2,7 +2,7 @@
 
 _npmname=postcss-cli
 pkgname=nodejs-$_npmname
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Traditional CLI for postcss."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('nodejs' 'npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('4c612d31da8697ccf8d18a8294bd33f89cf969587630d0d4a339377cd5561e7f')
+sha256sums=('528c7445fc091724bee1177b3acd823d0669d7fb441344a164fc18c41ca7fce0')
 
 package() {
   cd "$srcdir"
