@@ -2,9 +2,9 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=mist
-pkgver=0.3.8
-_pkgver=0-3-8
-pkgrel=3
+pkgver=0.3.9
+_pkgver=0-3-9
+pkgrel=1
 pkgdesc="Ethereum wallet for Ether accounts, wallets and smart contracts (includes Mist browser)."
 arch=('i686' 'x86_64')
 depends=(
@@ -32,16 +32,15 @@ optdepends=(
 url="https://github.com/ethereum/mist"
 license=('GPL')
 source=(
-  "${pkgname}-${_pkgver}-ia32.zip::https://github.com/ethereum/$pkgname/releases/download/v${pkgver}/Ethereum-Wallet-linux32-$_pkgver.zip"
-  "${pkgname}-${_pkgver}-x64.zip::https://github.com/ethereum/$pkgname/releases/download/v${pkgver}/Ethereum-Wallet-linux64-$_pkgver.zip"
+  "${pkgname}-${_pkgver}-ia32.zip::https://github.com/ethereum/$pkgname/releases/download/${pkgver}/Ethereum-Wallet-linux32-$_pkgver.zip"
+  "${pkgname}-${_pkgver}-x64.zip::https://github.com/ethereum/$pkgname/releases/download/${pkgver}/Ethereum-Wallet-linux64-$_pkgver.zip"
 )
 sha256sums=(
-  "d2ee41e54d3a19ca2e35b5792c79401941bf3bd935be6b8288b135cbf121c552"
-  "6a96a2e18e21ce8b1995b508e05d7a59a701a5aa75a82624c4286a7f8ec9eee5"
+  "1102622f862c9001e3ce36d27bd76b4a0b29c4a4c359a9acf62ccdc4f5b8821d"
+  "9d0bb4ca4fb8f4d5acba3596ac4231b9d1661583e91a5c4f03789aaab73b2952"
 )
 
 package() {
-
   _arch="ia32"
   if [ "${CARCH}" = "x86_64" ]; then
     _arch="x64"
