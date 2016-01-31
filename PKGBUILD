@@ -3,18 +3,18 @@ pkgname=nodejs-$_npmname
 pkgver=1.4.0
 pkgrel=1
 pkgdesc="Private npm repository server"
-arch=(any)
+arch=("any")
 url="https://github.com/rlidwka/sinopia"
 license=()
-depends=('nodejs' 'npm')
+depends=("nodejs" "npm")
 install=nodejs-sinopia.install
-source=( http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz
-         sinopia.service
-         nodejs-sinopia.install )
-noextract=($_npmname-$pkgver.tgz)
-sha1sums=( 36bf5209356facbf6cef18fa32274d116043ed24
-           a96ee3c3407e70a22bef11d42f0f3b393eefc1ae
-           9cb284b9f22894a6f2cd465156d9ed9f5c1c8776 )
+source=( "http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz"
+         "sinopia.service"
+         "nodejs-sinopia.install" )
+noextract=("$_npmname-$pkgver.tgz")
+sha1sums=( "36bf5209356facbf6cef18fa32274d116043ed24"
+           "a96ee3c3407e70a22bef11d42f0f3b393eefc1ae"
+           "9cb284b9f22894a6f2cd465156d9ed9f5c1c8776" )
 
 package() {
   cd $srcdir
