@@ -7,7 +7,6 @@ arch=('i686' 'x86_64')
 url="https://github.com/graylor/FastQSP"
 license=('GPL3')
 depends=('qt5-base')
-makedepends=('git')
 _origname=FastQSP
 source=("https://github.com/graylor/${_origname}/archive/v${pkgver}.tar.gz")
 md5sums=('1ef933fe07191b232a8f7b719afbcb17')
