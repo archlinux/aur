@@ -1,0 +1,10 @@
+[Unit]
+Description=Netdata. Real-time performance monitoring.
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/netdata
+ExecStop=/usr/bin/killall netdata
+
+[Install]
+WantedBy=multi-user.target
