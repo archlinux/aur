@@ -6,7 +6,7 @@ pkgbase = gnome-shell-extension-arch-update
 	pkgrel = 1
 	url = https://github.com/RaphaelRochet/arch-update
 	arch = any
-	license = unknown
+	license = GPL3
 	depends = gnome-shell>=3.18
 	provides = gnome-shell-extension-arch-update
 	conflicts = gnome-shell-extension-arch-update

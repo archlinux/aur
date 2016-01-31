@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Update indicator for ArchLinux and Gnome-Shell"
 arch=('any')
 url="https://github.com/RaphaelRochet/arch-update"
-license=('unknown')
+license=('GPL3')
 depends=('gnome-shell>=3.18')
 provides=('gnome-shell-extension-arch-update')
 conflicts=('gnome-shell-extension-arch-update')
