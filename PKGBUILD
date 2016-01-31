@@ -3,7 +3,7 @@
 
 pkgname=librsvg-git
 pkgver=2.40.13.r4.g7948f3b
-pkgrel=1
+pkgrel=2
 pkgdesc="A SVG viewing library"
 arch=(i686 x86_64)
 license=('LGPL')

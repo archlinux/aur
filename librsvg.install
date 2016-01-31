@@ -1,88 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
-<head>
-<title>svntogit/packages.git - Git clone of the 'packages' repository
-</title>
-<meta name='generator' content='cgit v0.10.2'/>
-<meta name='robots' content='index, nofollow'/>
-<link rel='stylesheet' type='text/css' href='/cgit.css'/>
-<link rel='shortcut icon' href='/favicon.ico'/>
-<link rel='alternate' title='Atom feed' href='https://projects.archlinux.org/svntogit/packages.git/atom/trunk/librsvg.install?h=packages/librsvg' type='application/atom+xml'/>
-<link rel='vcs-git' href='git://projects.archlinux.org/svntogit/packages.git' title='svntogit/packages.git Git repository'/>
-<link rel='vcs-git' href='http://projects.archlinux.org/git/svntogit/packages.git' title='svntogit/packages.git Git repository'/>
-<link rel='vcs-git' href='https://projects.archlinux.org/git/svntogit/packages.git' title='svntogit/packages.git Git repository'/>
-<link rel='vcs-git' href='ssh://gerolde.archlinux.org/srv/projects/git/svntogit/packages.git' title='svntogit/packages.git Git repository'/>
-</head>
-<body>
-	<div id="archnavbar"><!-- Arch Linux global navigation bar -->
-		<div id="archnavbarlogo">
-			<p><a href="http://www.archlinux.org/" title="Arch news, packages, projects and more"></a></p>
-		</div>
-		<div id="archnavbarmenu">
-			<ul id="archnavbarlist">
-				<li id="anb-home"><a href="http://www.archlinux.org/" title="Arch news, packages, projects and more">Home</a></li>
-				<li id="anb-packages"><a href="http://www.archlinux.org/packages/" title="Arch Package Database">Packages</a></li>
-				<li id="anb-forums"><a href="https://bbs.archlinux.org/" title="Community forums">Forums</a></li>
-				<li id="anb-wiki"><a href="https://wiki.archlinux.org/" title="Community documentation">Wiki</a></li>
-				<li id="anb-bugs"><a href="https://bugs.archlinux.org/" title="Report and follow bugs">Bugs</a></li>
-				<li id="anb-aur"><a href="https://aur.archlinux.org/" title="Arch Linux User Repository">AUR</a></li>
-				<li id="anb-download"><a href="http://www.archlinux.org/download/" title="Get Arch Linux">Download</a></li>
-			</ul>
-		</div>
-	</div><!-- #archnavbar -->
-<div id='cgit'><table id='header'>
-<tr>
-<td class='main'><a href='/'>index</a> : <a title='svntogit/packages.git' href='/svntogit/packages.git/'>svntogit/packages.git</a></td></tr>
-<tr><td class='sub'>Git clone of the 'packages' repository
-</td><td class='sub right'></td></tr></table>
-<table class='tabs'><tr><td>
-<a href='/svntogit/packages.git/?h=packages/librsvg'>summary</a><a href='/svntogit/packages.git/refs/?h=packages/librsvg'>refs</a><a href='/svntogit/packages.git/log/trunk/librsvg.install?h=packages/librsvg'>log</a><a class='active' href='/svntogit/packages.git/tree/trunk/librsvg.install?h=packages/librsvg'>tree</a><a href='/svntogit/packages.git/commit/trunk/librsvg.install?h=packages/librsvg'>commit</a><a href='/svntogit/packages.git/diff/trunk/librsvg.install?h=packages/librsvg'>diff</a><a href='/svntogit/packages.git/stats/trunk/librsvg.install?h=packages/librsvg'>stats</a></td><td class='form'><form class='right' method='get' action='/svntogit/packages.git/log/trunk/librsvg.install'>
-<input type='hidden' name='h' value='packages/librsvg'/><select name='qt'>
-<option value='grep'>log msg</option>
-<option value='author'>author</option>
-<option value='committer'>committer</option>
-<option value='range'>range</option>
-</select>
-<input class='txt' type='text' size='10' name='q' value=''/>
-<input type='submit' value='search'/>
-</form>
-</td></tr></table>
-<div class='path'>path: <a href='/svntogit/packages.git/tree/?h=packages/librsvg'>root</a>/<a href='/svntogit/packages.git/tree/trunk?h=packages/librsvg'>trunk</a>/<a href='/svntogit/packages.git/tree/trunk/librsvg.install?h=packages/librsvg'>librsvg.install</a></div><div class='content'>blob: 8852ebf28b33505999d710ec480fb12b867e62a6 (<a href='/svntogit/packages.git/plain/trunk/librsvg.install?h=packages/librsvg'>plain</a>)
-<table summary='blob content' class='blob'>
-<tr><td class='linenumbers'><pre><a id='n1' href='#n1'>1</a>
-<a id='n2' href='#n2'>2</a>
-<a id='n3' href='#n3'>3</a>
-<a id='n4' href='#n4'>4</a>
-<a id='n5' href='#n5'>5</a>
-<a id='n6' href='#n6'>6</a>
-<a id='n7' href='#n7'>7</a>
-<a id='n8' href='#n8'>8</a>
-<a id='n9' href='#n9'>9</a>
-<a id='n10' href='#n10'>10</a>
-<a id='n11' href='#n11'>11</a>
-</pre></td>
-<td class='lines'><pre><code>post_install<span class="hl opt">() {</span>
-    gdk-pixbuf-query-loaders <span class="hl opt">--</span>update-cache
-<span class="hl opt">}</span>
+post_install() {
+    gdk-pixbuf-query-loaders --update-cache
+}
 
-post_upgrade<span class="hl opt">() {</span>
+post_upgrade() {
     post_install
-<span class="hl opt">}</span>
+}
 
-post_remove<span class="hl opt">() {</span>
+post_remove() {
     post_install
-<span class="hl opt">}</span>
-</code></pre></td></tr></table>
-</div> <!-- class=content -->
-<div class="foot" style="padding-left:1em;padding-right:1em;">
-<p>Copyright &copy; 2002-2014 <a href="mailto:jvinet@zeroflux.org"
-title="contact Judd Vinet">Judd Vinet</a> and <a href="mailto:aaron@archlinux.org"
-title="contact Aaron Griffin">Aaron Griffin</a>. The Arch Linux name and logo
-are recognized trademarks. Some rights reserved. The registered trademark
-Linux&reg; is used pursuant to a sublicense from LMI, the exclusive licensee
-of Linus Torvalds, owner of the mark on a world-wide basis.</p>
-</div>
-</div> <!-- id=cgit -->
-</body>
-</html>
+}
