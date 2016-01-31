@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Exec=jpdfbookmarks
+Name=JPdfBookmarks
+GenericName=PDF bookmarks editor
+X-KDE-StartupNotify=true
+Comment=PDF bookmarks editor
+Icon=/usr/share/icons/hicolor/128x128/apps/jpdfbookmarks.png
+Terminal=false
+Type=Application
+Categories=Office;
