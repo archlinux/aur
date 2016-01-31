@@ -5,17 +5,19 @@ pkgrel=2
 pkgdesc="Private npm repository server"
 arch=("any")
 url="https://github.com/rlidwka/sinopia"
-license=()
+license=("WTFPL")
 depends=("nodejs")
 makedepends=("npm")
 install=nodejs-sinopia.install
 source=("http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz"
         "sinopia.service"
-        "nodejs-sinopia.install")
+        "nodejs-sinopia.install"
+        "LICENSE")
 noextract=("$_npmname-$pkgver.tgz")
 sha1sums=("36bf5209356facbf6cef18fa32274d116043ed24"
           "a96ee3c3407e70a22bef11d42f0f3b393eefc1ae"
-          "9cb284b9f22894a6f2cd465156d9ed9f5c1c8776")
+          "9cb284b9f22894a6f2cd465156d9ed9f5c1c8776"
+          "337ece375beddfdb7392699fd00eb9b3e823d03f")
 
 package() {
   cd $srcdir
@@ -28,6 +30,8 @@ package() {
 
   install -Dm644 sinopia.service "$pkgdir/usr/lib/systemd/system/sinopia.service"
   install -Dm644 sinopia.service "$pkgdir/usr/lib/systemd/user/sinopia.service"
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
