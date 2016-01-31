@@ -2,7 +2,7 @@
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 pkgname=arpage
 pkgver=0.3.3
-pkgrel=7
+pkgrel=8
 pkgdesc="JACK MIDI arpeggiator with transport and tempo sync"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/arpage/"
@@ -24,6 +24,7 @@ build() {
   # fix XML syntax
   sed -i "s_\(arpeggiator\)/_/\1_" -i src/arpstorage.cc
 
+  CPPFLAGS="-std=gnu++11"
   ./configure --prefix=/usr
   make
 }
