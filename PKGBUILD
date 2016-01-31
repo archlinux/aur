@@ -13,8 +13,8 @@ depends=('qt5-base' 'udisks2' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('git')
 optdepends=("xdg-su: needed for non-KDE users"
 	    "kdesu: needed for KDE")
-conflicts=imagewriter
-install=imagewriter.install
+conflicts=("imagewriter")
+install="imagewriter.install"
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
