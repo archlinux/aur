@@ -2,7 +2,7 @@
 
 pkgbase=reposurgeon
 pkgname=({cy,}reposurgeon)
-pkgver=3.31
+pkgver=3.32
 pkgrel=1
 pkgdesc="Performs surgery on version control repositories."
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=('bzr'
             'src'
             'subversion')
 source=("$url$pkgbase-$pkgver.tar.xz" install-repocutter.patch)
-sha256sums=('cf317e29183a67bf819cd39ebf55b91b3f905ed394f740eeb23cee680b130135'
+sha256sums=('ccb1e765c7aba3ec0ecdf75f93824adb4db92698ad6aedf581a73212e1ec06e4'
             '99c6b3ba2b11b96b97240ba2f89369b81c89f0a6bcd5fd1ffe32e44b1706ffd0')
 
 prepare() {
