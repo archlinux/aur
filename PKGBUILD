@@ -8,7 +8,7 @@ url="http://github.com/yannicklm/pycp"
 arch=('any')
 license=('MIT')
 depends=('python')
-makedepends=('python' 'help2man')
+makedepends=('python' 'python-setuptools' 'help2man')
 source=("http://pypi.python.org/packages/source/p/pycp/pycp-${pkgver}.tar.gz")
 md5sums=('e1ba0162fb22d72084be3af9178ce019')
 
