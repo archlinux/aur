@@ -8,11 +8,11 @@ pkgdesc="Library of common classes for Papyros"
 arch=("i686" "x86_64")
 url="https://github.com/papyros/libpapyros"
 license=("GPL")
-depends=("qt5-base-dev-git" "qt5-declarative" "kconfig")
+depends=("qt5-base-dev-git" "qt5-declarative" "kconfig" "kwallet")
 makedepends=("git" "python" "extra-cmake-modules")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+https://github.com/papyros/libpapyros.git")
+source=("${_pkgname}::git+https://github.com/papyros/libpapyros.git#branch=develop")
 sha256sums=("SKIP")
 
 pkgver() {
