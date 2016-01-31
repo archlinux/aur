@@ -3,7 +3,7 @@
 _python=python
 _pkgname=vdirsyncer
 pkgname=${_python}-${_pkgname}-git
-pkgver=0.8.0.r0.g6c7b6f4
+pkgver=0.8.1.r0.g20ac606
 pkgrel=1
 pkgdesc="Synchronize CalDAV and CardDAV."
 arch=('i686' 'x86_64')
@@ -16,9 +16,8 @@ depends=("${_python}-click>=5.0"
          "${_python}-keyring" "${_python}-requests-oauthlib")
 makedepends=("git" "${_python}-sphinx")
 checkdepends=("${_python}-pytest-xprocess" "${_python}-pytest-localserver"
-             "radicale"
-             "${_python}-werkzeug" "${_python}-wsgi-intercept"
-             "${_python}-hypothesis")
+             "${_python}-werkzeug"
+             "${_python}-hypothesis" "${_python}-pytest-subtesthack")
 source=("git://github.com/untitaker/${_pkgname}.git")
 sha256sums=('SKIP')
 conflicts=("${_python}-vdirsyncer" "vdirsyncer")
@@ -48,7 +47,7 @@ build() {
 check(){
   cd "${srcdir}/${_pkgname}"
 
-  py.test
+  make test
 }
 
 package() {
