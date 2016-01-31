@@ -1,6 +1,6 @@
 # Maintainer: Ian D. Scott <ian@perebruin.com>
 pkgname=pianod
-pkgver=174
+pkgver=175
 pkgrel=1
 pkgdesc="Pandora Client Daemon"
 url="http://deviousfish.com/pianod/"
@@ -8,7 +8,7 @@ arch=('x86_64' 'i686')
 license=('mit')
 depends=('mksh' 'libao' 'libgcrypt' 'gnutls' 'json-c' 'faad2' 'libmad')
 source=("http://deviousfish.com/Downloads/pianod/${pkgname}-${pkgver}.tar.gz" )
-md5sums=('cca2143e4a5301dea8c0cb9fcbd20881')
+md5sums=('6d0e460b3dcb0bbc68bdd58631f02afa')
 backup=('etc/pianod.startscript' 'etc/pianod.env')
 
 prepare() {
