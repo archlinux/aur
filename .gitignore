@@ -1,0 +1,6 @@
+pkg/
+src/
+synthclone-*.tar.gz
+synthclone-*.pkg.tar.xz
+.AURINFO
+
