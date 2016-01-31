@@ -16,13 +16,10 @@ makedepends=('git')
 source=(
     'git+https://projects.archlinux.org/git/users/remy/pyalpm.git'
     '0001-Fix-build-for-Python-3.5.patch'
-    # https://lists.archlinux.org/pipermail/arch-projects/2016-January/004320.html
-    'pacorig-removed-in-pacman5.patch'
 )
 md5sums=(
     'SKIP'
     'd5481d4f9920860518277a78857c25e8'
-    '0bc081273ff6817080cd7c3226413f54'
 )
 
 pkgver() {
@@ -37,7 +34,6 @@ prepare() {
   cd "$srcdir/$_pkgname"
 
   patch -Np1 -i ../0001-Fix-build-for-Python-3.5.patch
-  patch -Np1 -i ../pacorig-removed-in-pacman5.patch
 }
 
 package() {
