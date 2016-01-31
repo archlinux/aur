@@ -2,7 +2,7 @@
 
 pkgname=opsu
 pkgver=0.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source osu!-client written in Java."
 arch=('any')
 url="https://itdelatrisu.github.io/opsu/"
@@ -11,7 +11,7 @@ changelog=.CHANGELOG
 depends=('java-runtime' 'bash')
 makedepends=('java-environment' 'java-web-start' 'gradle' 'gendesk' 'git')
 provides=('opsu')
-conflicts=('opsu')
+conflicts=('opsu-git')
 source=( ${pkgname}::git://github.com/itdelatrisu/opsu.git#tag=${pkgver}
          opsu.sh )
 sha512sums=('SKIP'
