@@ -15,7 +15,7 @@ depends=(kcmutils signon-kwallet-extension signon-plugin-oauth2 signon-ui)
 makedepends=(extra-cmake-modules git kdoctools)
 optdepends=('kaccounts-providers-git: Provider files')
 provides=('kaccounts-integration')
-conflicts=('kaccounts-integration')
+conflicts=('kaccounts-integration' 'account-plugins')
 source=("git://anongit.kde.org/$_gitname")
 sha256sums=('SKIP')
 
@@ -27,7 +27,8 @@ pkgver() {
 prepare() {
   mkdir -p build
   cd "$srcdir/$_gitname"
-  git revert 0ba1dde28cfacff71b264bba1b43a3f6e5992406 0b2bbbb1ca9266e8e2c9b685d4d44f1d69822b03
+  # See https://bugs.kde.org/show_bug.cgi?id=347219
+  git revert -n 0ba1dde28cfacff71b264bba1b43a3f6e5992406 0b2bbbb1ca9266e8e2c9b685d4d44f1d69822b03
 }
 
 build() {
