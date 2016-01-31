@@ -16,7 +16,7 @@
 # https://github.com/docker/docker/blob/master/project/PACKAGERS.md
 
 pkgname=docker-git
-pkgver=1.10.0.dev.19692.e357be4
+pkgver=1.10.0.dev.21841.5f5a752
 pkgrel=1
 epoch=1
 pkgdesc='Pack, ship and run any application as a lightweight container.'
@@ -78,10 +78,11 @@ package() {
   cd docker
   _dockerver="$(cat VERSION)"
   install -Dm755 "bundles/$_dockerver/dynbinary/docker-$_dockerver" "$pkgdir/usr/bin/docker"
-  install -Dm755 "bundles/$_dockerver/dynbinary/dockerinit-$_dockerver" "$pkgdir/usr/lib/docker/dockerinit"
+
   # completion
   install -Dm644 "contrib/completion/bash/docker" "$pkgdir/usr/share/bash-completion/completions/docker"
   install -Dm644 "contrib/completion/zsh/_docker" "$pkgdir/usr/share/zsh/site-functions/_docker"
+
   # systemd
   install -Dm644 "$srcdir/docker.service" "$pkgdir/usr/lib/systemd/system/docker.service"
   install -Dm644 "$srcdir/docker.conf" "$pkgdir/etc/sysctl.d/docker.conf"
