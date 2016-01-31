@@ -1,6 +1,6 @@
 pkgbase = nomachine
 	pkgdesc = Remote desktop application
-	pkgver = 5.0.58
+	pkgver = 5.0.63
 	pkgrel = 1
 	url = http://www.nomachine.com
 	install = nomachine.install
@@ -11,10 +11,10 @@ pkgbase = nomachine
 	depends = bash
 	conflicts = nxmanager nxwebplayer nxserver nxnode nxclient
 	options = !strip
-	source_x86_64 = http://download.nomachine.com/download/5.0/Linux/nomachine_5.0.53_1_x86_64.tar.gz
-	sha512sums_x86_64 = 1f9bc71ca90b4e87a9ad63930dcf66e220a3f055a3abba99944c3436877ef84b761cd8e4221d348a1669e487a68bd6110f49aeae7ed4b9cee905048780e1b499
-	source_i686 = http://download.nomachine.com/download/5.0/Linux/nomachine_5.0.53_1_i686.tar.gz
-	sha512sums_i686 = 6ca0db1b0d3a172fced1724f7f4d7d495be107e8a16bbffcc4336a8ed60d72026a253b01b1b64c69c583e84dbf0c897ec7bbf5b5b51b1ab9321f68c800215d83
+	source_x86_64 = http://download.nomachine.com/download/5.0/Linux/nomachine_5.0.63_1_x86_64.tar.gz
+	sha512sums_x86_64 = 1f478acade9a7cda8c1e34edeb5d16aa6c2a18479fcfbe24bb6edbeeccff8456f44153d771749745eda80ab44972a01e1ceca457eb265825e161d6d25fa86363
+	source_i686 = http://download.nomachine.com/download/5.0/Linux/nomachine_5.0.63_1_i686.tar.gz
+	sha512sums_i686 = c519b3c51c0d12bd4b357a59302f80962a01a9e8c46be1f61b500a92490f27883ed5245ef132d4dbf7de1ab2efa2b85d181854e11a5bcd70c7e7271e263c8c3f
 
 pkgname = nomachine
 
