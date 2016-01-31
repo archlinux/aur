@@ -11,7 +11,7 @@ depends=('python2' 'python2-pyparted')
 conflicts=('cparted-git')
 options=(!emptydirs)
 source=("https://github.com/davekong/cparted/tarball/cparted-$pkgver")
-md5sums=('407bddcbbe68b651e0434383afdb59cb')
+md5sums=('SKIP')
 
 package() {
   cd "$srcdir/davekong-cparted-5f4fe07"
