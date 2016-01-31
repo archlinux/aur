@@ -13,12 +13,12 @@ pkgname=linux-lts310
 true && pkgname=(linux-lts310 linux-lts310-headers)
 _kernelname=-lts310
 _srcname=linux-3.10
-pkgver=3.10.95
+pkgver=3.10.96
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org"
 license=('GPL2')
-makedepends=('kmod' 'inetutils' 'bc')
+makedepends=('kmod' 'inetutils' 'bc' 'gcc49')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.sign"
@@ -33,7 +33,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         '0002_asmlinkage.patch')
 sha256sums=('df27fa92d27a9c410bfe6c4a89f141638500d7eadcca5cce578954efc2ad3544'
             'SKIP'
-            'ab24f03f4226d1d1e33cdc9b4184fc7342bc5e5c56db65bdc1c30089a2cf6b12'
+            '3b4a759bb2197a22658ac5638fff9d2fbd4951f97c283d08944a4c0ad03ed39f'
             'SKIP'
             'd7fada52453d12a24af9634024c36792697f97ce0bc6552939cd7b2344d00cd9'
             'abd98bed3e743ba60809fe54a1a5c6b46b9f401844b0beef8da1708b1fe8196b'
@@ -121,7 +121,7 @@ build() {
   cd "${srcdir}/linux-3.10"
 
   msg "Running make bzImage and modules"
-  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  make CC="gcc-4.9" ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
 
 package_linux-lts310() {
