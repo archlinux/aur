@@ -1,14 +1,14 @@
 pkgbase = govpn
 	pkgdesc = Simple secure free software DPI/censorship-resistant VPN daemon
-	pkgver = 5.2
+	pkgver = 5.4
 	pkgrel = 1
 	url = http://www.cypherpunks.ru/govpn/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = go
-	source = http://sourceforge.net/projects/govpn/files/govpn-5.2.tar.xz
-	sha256sums = 44e3a3265b30305a4436e172565585c327fb28d26197e61b7496c437d032c0db
+	source = http://sourceforge.net/projects/govpn/files/govpn-5.4.tar.xz
+	sha256sums = a1a001d9ef899ff6b61872eb7d2425a09eb0161574f50c8da6e4b14beb9b0ff6
 
 pkgname = govpn
 
