@@ -1,7 +1,7 @@
 _npmname=sinopia
 pkgname=nodejs-$_npmname
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Private npm repository server"
 arch=("any")
 url="https://github.com/rlidwka/sinopia"
@@ -20,7 +20,7 @@ sha1sums=("36bf5209356facbf6cef18fa32274d116043ed24"
           "337ece375beddfdb7392699fd00eb9b3e823d03f")
 
 package() {
-  npm install -g --prefix "$pkgdir/usr" $_npmname-$pkgver.tgz
+  npm install -g --user root --prefix "$pkgdir/usr" $_npmname-$pkgver.tgz
 
   rmdir "$pkgdir/usr/etc"
 
