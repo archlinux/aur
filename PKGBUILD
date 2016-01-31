@@ -2,13 +2,13 @@
 # Contributor: Oliver Jaksch <arch-aur@com-in.de>
 pkgname="dahdi-linux"
 pkgdesc="DAHDI drivers for Asterisk (Digium, OpenVox, Allo and Yeastar cards)"
-pkgver=2.10.2
-pkgrel=2
+pkgver=2.11.0
+pkgrel=1
 arch=("i686" "x86_64")
 url="http://www.asterisk.org/"
 license=("LGPLv2")
-depends=("linux>=4.2" "linux<4.3")
-makedepends=("linux-headers>=4.2" "linux-headers<4.3")
+depends=("linux>=4.3" "linux<4.4")
+makedepends=("linux-headers>=4.3" "linux-headers<4.4")
 conflicts=("dahdi")
 install="${pkgname}.install"
 source=(
@@ -17,7 +17,7 @@ source=(
   "http://www.junghanns.net/downloads/jnet-dahdi-drivers-1.0.14.tar.gz"
 )
 sha256sums=(
-  "6270444cb9b345941267b162038cc45f5ef4485139176e88e2c4d22fa35a2c59"
+  "50d3785d00fa37e6121ea58a888aa2dd39161db58c4bfcf24c8a2b4fe9d8b704"
   "4bd57ffa61d718b847080af274fdf2414bf83a6567dffa05786e3e9b900cdf5f"
   "c71d1ac29c78511b59914cc9aa1798529ae7b344cdc8403a797dbcddbe486974"
 )
@@ -48,6 +48,8 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+
+  # install.
   make DESTDIR="${pkgdir}" install-firmware
   make DESTDIR="${pkgdir}" install-include
   make DESTDIR="${pkgdir}" install-xpp-firm
@@ -55,6 +57,7 @@ package() {
   # beautifying firmware directory.
   rm "${pkgdir}/usr/lib/firmware/".d*
 
+  # compress modules.
   cd drivers
-  find . -name "*.ko" -exec gzip "{}" \; -exec install -D -m 0644 "{}.gz" "${pkgdir}/usr/lib/modules/extramodules-4.2-ARCH/{}.gz" \;
+  find . -name "*.ko" -exec gzip "{}" \; -exec install -D -m 0644 "{}.gz" "${pkgdir}/usr/lib/modules/extramodules-4.3-ARCH/{}.gz" \;
 }
