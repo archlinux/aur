@@ -4,7 +4,7 @@
 pkgname=opsu-git
 _pkgname=opsu
 pkgver=0.12.1.r0.g7245673
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source osu!-client written in Java."
 arch=('any')
 url="https://itdelatrisu.github.io/opsu/"
@@ -28,7 +28,7 @@ pkgver()
 prepare()
 {
 	# generate .desktop-file
-	gendesk -n -f --pkgname "${pkgname_}" --pkgdesc "$pkgdesc" --name "opsu!-git" --exec "${pkgname_}" --categories "Game"
+	gendesk -n -f --pkgname "${_pkgname}" --pkgdesc "$pkgdesc" --name "opsu!" --exec "${_pkgname}" --categories "Game"
 
 	# update .CHANGELOG
 	git -C "${srcdir}/${pkgname}" log --graph -10 > "${startdir}/.CHANGELOG"
@@ -47,6 +47,6 @@ package()
 
 	install -Dm644 "${srcdir}/${pkgname}/build/libs/${_pkgname}-${_pkgver}.jar" "${pkgdir}/usr/share/java/${_pkgname}/${_pkgname}.jar"
 	install -Dm644 "${srcdir}/${pkgname}/res/logo.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
-	install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+	install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 	install -Dm755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
 }
