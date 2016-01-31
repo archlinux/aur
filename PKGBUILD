@@ -1,14 +1,14 @@
 # Maintainer: Ariel Popper <a@arielp.com>
 pkgname=vim-airline-git
-pkgver=0.7.r60.gf45ecda
+pkgver=0.7.r217.g8c860b7
 pkgrel=1
 epoch=1
 pkgdesc="A lean & mean statusline for vim that's light as air."
 arch=(any)
 url="https://github.com/bling/vim-airline"
 license=('GPL')
-groups=()
-depends=('vim-runtime')
+conflicts=('vim-airline')
+provides=('vim-airline')
 optdepends=('otf-powerline-symbols-git: Use the Powerline symbols')
 makedepends=('git')
 install=airline.install
