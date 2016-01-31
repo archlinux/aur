@@ -26,11 +26,11 @@ build() {
 		--with-xtst \
 		--with-docs \
 		--disable-static
-	make
+	make -j1
 }
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	make DESTDIR="${pkgdir}" install
+	make -j1 DESTDIR="${pkgdir}" install
 }
