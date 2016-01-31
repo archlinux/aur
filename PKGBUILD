@@ -10,16 +10,15 @@ license=('GPL')
 depends=('emacs')
 makedepends=('texlive-plainextra')
 install=else.install
-sources=('https://github.com/stefanhusmann/emacs-else.git')
-md5sums=('SKIP')
+sources=('else::git+https://github.com/stefanhusmann/emacs-else.git')
 
 pkgver(){
-  cd emacs-else
+  cd "$srcdir"/else
   git log -1 --format="%cd" --date=short | tr - _ 
 }
 
 build() {
-  cd emacs-else
+  cd "$srcdir"/else
   makeinfo else.texi 
   texi2pdf else.texi 
   sed -i 's/string-to-int/string-to-number/g' setnu.el 
@@ -30,7 +29,7 @@ build() {
 }
 
 package() {
-  cd emacs-else
+  cd "$srcdir"/else
   install -Dm644 else "$pkgdir"/usr/share/info/else.info 
   install -Dm644 else.pdf \
     "$pkgdir"/usr/share/doc/$pkgname/$pkgname.pdf 
