@@ -3,9 +3,9 @@
 
 pkgname=coffee-script-git
 pkgver=1.10.0.37.g65c35e0
-pkgrel=1
+pkgrel=2
 pkgdesc='Language that compiles into JavaScript'
-arch=any
+arch=('any')
 url=http://coffeescript.org
 license=('custom')
 depends=('nodejs' 'underscorejs')
