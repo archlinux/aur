@@ -4,7 +4,7 @@
 pkgname=thea-the-awakening-bin
 _pkgname=thea-the-awakening
 pkgver=1.RC51118.1
-pkgrel=6
+pkgrel=7
 pkgdesc="A turn-based strategic survival game steeped in Slavic myth. -gratis unsuported linux build"
 arch=('i686' 'x86_64')
 url="http://steamcommunity.com/app/378720/discussions/0/490125737485986607"

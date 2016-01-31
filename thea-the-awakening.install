@@ -1,6 +1,8 @@
 post_install(){
 	echo "This is an UNSUPORTED build of the game as a GIFT to the linux community!"
+  echo "	-This version wont get any updates !!"
 	echo "	-the buyable Windows version costs around 20€"
+  echo "	-there is now an official Linux version in the Steam Beta branche wich gets updates!"
 	echo
 	echo "If you find any bugs pleas report them to http://steamcommunity.com/app/378720/discussions/0/490125737485986607"
 	echo
@@ -9,4 +11,9 @@ post_install(){
 	echo " Workaround;"
 	echo " - only use the mouse."
 	echo " - to unstuck stuck keys unfocus the game window."
+}
+
+post_update(post_update(){
+  echo "	-This version wont get any updates!"
+  echo "	-There is now an official Linux version in the Steam Beta branch witch gets updates!"
 }
