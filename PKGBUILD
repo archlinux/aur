@@ -1,6 +1,6 @@
 # Maintainer: Simon Conseil <contact+aur at saimon dot org>
 pkgname=peat
-pkgver=0.3.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Repeat commands!"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/sjl/peat"
 license=('GPL3')
 depends=('python2')
 source=("https://github.com/sjl/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('c8826f667d69e274e476966806adaf30')
+md5sums=('3cf6935c5c563065b7441fe229c39754')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
