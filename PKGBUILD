@@ -4,23 +4,25 @@
 # This package is based on the gog-terraria package and the gog-freedom-planet package from Ainola.
 
 pkgname=gog-shovel-knight
-pkgver=2.5.0.7
+pkgver=2.6.0.8
 pkgrel=1
+_gamename=${pkgname#gog-}
+_gamename_=${_gamename//-/_}
+
 pkgdesc='Yacht Club Games'
 arch=("i686" "x86_64")
 url='http://www.gog.com/game/shovel_knight'
 license=('custom:commercial')
 depends=('sdl2')
 groups=('games')
-source=("gog://${pkgname//-/_}_${pkgver}.sh" "${pkgname}.desktop")
-sha512sums=('0aa037055fb440bbeec79f2bc3b743a9b145297921677fb4355d055801d2e5be8aadd6ac83b751ac0fa10fd13b30cd255ce5b867c321d3074a2b1021d85af1f7'
+source=("gogdownloader://${_gamename_}/en3installer4" "${pkgname}.desktop")
+sha512sums=('455cbb79d232c6cda3aec402553497a87fb897b9b3e0575e0e018e1439581c09b3bc2d171c7238ef3259dcd4768fe1534d4dc80df91771b884185c501784c1cd'
             'a30a86d218c1249aef5e4f8116d90b61913c74a0bb0629ef1a04c3736d2a3d1960d6b28d562aa83bbc49383594c55de346f9e1893e222e50bba6ebe0d8cd43fc')
 
-# You need to download the gog.com installer file manually or with lgogdownloader.
-DLAGENTS+=("gog::/usr/bin/echo %u - This is is not a real URL, you need to download the GOG file manually to \"$PWD\" or setup a gog:// DLAGENT. Read this PKGBUILD for more information.")
+# Register lgogdownloader as a download agent
+DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
 
-# Prevent compressing final package
-PKGEXT='.pkg.tar'
+makedepends=("lgogdownloader>=2.25")
 
 prepare(){
     cd "$srcdir/data/noarch"
