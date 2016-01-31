@@ -9,7 +9,7 @@ depends=('alsa-lib' 'python2' 'pygtk' 'python2-pyalsaaudio')
 source=("http://projects.flogisoft.com/$pkgname/download/${pkgname}_${pkgver}_src.tar.gz")
 md5sums=('59038e18afa94bcf08dc3bec3f19f23a')
 
-build () {
+build() {
 	cd "$pkgname-$pkgver"
 	# modify the shebang line to force the use of /usr/bin/python2
 	# instead of /usr/bin/python
