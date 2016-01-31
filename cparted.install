@@ -1,0 +1,18 @@
+## arg 1:  the new package version
+post_install() {
+  echo ""
+  echo "WARNING: This software needs more testing."
+  echo "Read the man page or README.md for known issues."
+  echo ""
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  echo ""
+  echo "WARNING: This software needs more testing."
+  echo "Read the man page or README.md for known issues."
+  echo ""
+}
+
+# vim:set ts=2 sw=2 et:
