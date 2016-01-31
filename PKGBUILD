@@ -2,7 +2,7 @@
 
 pkgname=emacs-else-git 
 pkgver=2014_02_14
-pkgrel=2
+pkgrel=3
 pkgdesc="Emacs Language Sensitive Editor -- minor mode to use language specific abbreviations"
 url="http://home.comcast.net/~dharter46"
 arch=('any')
@@ -10,15 +10,16 @@ license=('GPL')
 depends=('emacs')
 makedepends=('texlive-plainextra')
 install=else.install
-sources=('else::git+https://github.com/stefanhusmann/emacs-else.git')
+source=('git+https://github.com/stefanhusmann/emacs-else.git')
+md5sums=('SKIP')
 
 pkgver(){
-  cd "$srcdir"/else
+  cd "$srcdir"/emacs-else
   git log -1 --format="%cd" --date=short | tr - _ 
 }
 
 build() {
-  cd "$srcdir"/else
+  cd "$srcdir"/emacs-else
   makeinfo else.texi 
   texi2pdf else.texi 
   sed -i 's/string-to-int/string-to-number/g' setnu.el 
@@ -29,7 +30,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir"/else
+  cd "$srcdir"/emacs-else
   install -Dm644 else "$pkgdir"/usr/share/info/else.info 
   install -Dm644 else.pdf \
     "$pkgdir"/usr/share/doc/$pkgname/$pkgname.pdf 
