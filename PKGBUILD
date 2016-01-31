@@ -2,7 +2,7 @@
 
 _pkgname=libpapyros
 pkgname=${_pkgname}-git
-pkgver=r4.492a148
+pkgver=r10.da15692
 pkgrel=1
 pkgdesc="Library of common classes for Papyros"
 arch=("i686" "x86_64")
