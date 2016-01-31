@@ -20,10 +20,6 @@ sha1sums=("36bf5209356facbf6cef18fa32274d116043ed24"
           "337ece375beddfdb7392699fd00eb9b3e823d03f")
 
 package() {
-  cd $srcdir
-  local _npmdir="$pkgdir/usr/lib/node_modules/"
-  mkdir -p $_npmdir
-
   npm install -g --prefix "$pkgdir/usr" $_npmname-$pkgver.tgz
 
   rmdir "$pkgdir/usr/etc"
