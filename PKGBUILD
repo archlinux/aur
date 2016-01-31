@@ -1,13 +1,13 @@
 # Maintainer: Vic Luo  <vicluo96@gmail.com>
 pkgname=xmradio-git
-pkgver=1.0
+pkgver=0.5.1.14.ga5187cc
 pkgrel=1
+epoch=1
 pkgdesc="xmradio is a tiny Internet Xia Mi Radio client for Linux, which supports many radio style, skin builtin and many other features."
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://github.com/timxx/xmradio"
 license=('GPL3')
-depends=('dbus'
-                'vlc')
+depends=('dbus' 'vlc')
 makedepends=('cmake'
                 'gcc'
                 'gettext'
@@ -24,20 +24,20 @@ makedepends=('cmake'
                 'libdbusmenu-glib'
                 'gstreamer'
                 'libpeas-git')
-source=("https://github.com/timxx/xmradio/archive/master.zip"
-        "$pkgname-$pkgver.patch")
+source=("git+https://github.com/timxx/xmradio.git")
+install="${pkgname}.install"
 
-md5sums=('SKIP'
-        '29fb1bd33a1c91b1d49fa28a5166fa4c')
+md5sums=('SKIP')
 
-        prepare() {
-                cd "xmradio-master"
-                patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-        }
+pkgver()
+{
+    cd "xmradio"
+    git describe --tags | sed 's/-/./g'
+}
 
 build() {
-	cd "xmradio-master"
-    mkdir build
+	cd "xmradio"
+    mkdir -p build
     cd build
     echo "$pkgdir"
     cmake .. -DCMAKE_INSTALL_PREFIX="/usr"
@@ -45,6 +45,6 @@ build() {
 }
 
 package() {
-	cd "xmradio-master/build"
+	cd "xmradio/build"
 	make DESTDIR="$pkgdir/" install
 }
