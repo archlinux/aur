@@ -5,7 +5,7 @@
 
 pkgname=cbatticon-gtk2
 _pkgname=cbatticon
-pkgver=1.5.0
+pkgver=1.6.2
 pkgrel=1
 pkgdesc='Lightweight and fast battery icon that sits in your system tray'
 arch=('x86_64' 'i686')
@@ -15,7 +15,7 @@ depends=('libnotify' 'gtk2')
 provides=('cbatticon')
 conflicts=('cbatticon')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/valr/$_pkgname/archive/$pkgver.tar.gz")
-sha256sums=('de64143ac188c63dd5c37ae785861c48681c8fb0f57b78d9a8afa53686ec3fb9')
+sha256sums=('fd78c2a38441f78116b68dbef67c8ab67d323d781206a76a3fe5cc09f4bce1ee')
 
 build() {
   make -C "$_pkgname-$pkgver" WITH_NOTIFY=1 WITH_GTK3=0
