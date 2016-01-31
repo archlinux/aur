@@ -14,8 +14,6 @@ source=("https://github.com/davekong/cparted/tarball/cparted-$pkgver")
 md5sums=('SKIP')
 
 package() {
-  cd "$srcdir/davekong-cparted-5f4fe07"
-
   python2 setup.py build_scripts -e "/usr/bin/env python2"
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
