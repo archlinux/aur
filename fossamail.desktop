@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=FossaMail
+Comment=Read Mail & News
+Keywords=Internet;Mail;Email;RSS;News
+Exec=fossamail %u
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=fossamail
+Categories=Network;Email;Internet
+MimeType=message/rfc822;x-scheme-handler/mailto;application/rss+xml;application/x-xpinstall;
+StartupNotify=true
