@@ -4,7 +4,7 @@
 
 pkgname=sunflower
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Small, customizable twin-panel file manager"
 url="http://sunflower-fm.org"
 arch=('any')
@@ -19,9 +19,9 @@ optdepends=('python2-gnomekeyring: password storage for remote mounts'
 conflicts=('sunflower-git')
 options=(!strip !zipman)
 install=${pkgname}.install
-source=($url/pub/${pkgname}-${pkgver}-60.tgz
+source=($url/pub/${pkgname}-${pkgver}-61.tgz
         sunflower)
-md5sums=('3177798c96c2a3a320f12ca432649995'
+md5sums=('a5cd28438e83b88e5a4edeb3aacef0c6'
          '95b68d1631f9406d55bd772231b021e6')
 
 package() {
