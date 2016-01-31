@@ -1,15 +1,16 @@
+# Maintainer: Miguel de Val-Borro <miguel@archlinux.net>
 # Contributor: Arthur Danskin <arthurdanskin@gmail.com>
-# Maintainer:  Mike Ressler <mike.ressler@alum.mit.edu>
+# Contributor: Mike Ressler <mike.ressler@alum.mit.edu>
 
 pkgname=python2-pyfits
-pkgver=3.3
+pkgver=3.4
 pkgrel=1
 pkgdesc="A python language interface to FITS formatted data files"
 url="http://www.stsci.edu/resources/software_hardware/pyfits"
 license=('BSD')
 arch=('i686' 'x86_64')
 source=("http://pypi.python.org/packages/source/p/pyfits/pyfits-$pkgver.tar.gz")
-md5sums=('0d4f3515bc714f48093578e96ca7219d')
+md5sums=('ae38c61ed5574f29cfd202bfe3091fd9')
 
 depends=('python2>=2.5' 'python2-numpy')
 
