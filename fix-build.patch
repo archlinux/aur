@@ -1,0 +1,12 @@
+diff -Naur sparkleshare-1.5.0.orig/SparkleShare/Linux/SparkleUI.cs sparkleshare-1.5.0/SparkleShare/Linux/SparkleUI.cs
+--- sparkleshare-1.5.0.orig/SparkleShare/Linux/SparkleUI.cs	2016-01-31 03:10:01.820152958 +0000
++++ sparkleshare-1.5.0/SparkleShare/Linux/SparkleUI.cs	2016-01-31 03:15:36.915518296 +0000
+@@ -61,7 +61,7 @@
+ 
+         public void Run ()
+         {   
+-            (this.application as GLib.Application).Run (null, null);
++            (this.application as GLib.Application).Run (0, null);
+         }
+ 
+ 
