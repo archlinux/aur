@@ -10,7 +10,7 @@ install=cparted.install
 depends=('python2' 'python2-pyparted')
 conflicts=('cparted-git')
 options=(!emptydirs)
-source=("https://github.com/davekong/cparted/tarball/cparted-$pkgver")
+source=("https://github.com/dcampbell24/cparted/archive/cparted-$pkgver.tar.gz")
 md5sums=('SKIP')
 
 package() {
