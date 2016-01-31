@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/davekong/cparted"
 license=('GPL')
 install=cparted.install
-depends=('python2' 'pyparted>=3.6')
+depends=('python2' 'python2-pyparted')
 conflicts=('cparted-git')
 options=(!emptydirs)
 source=("https://github.com/davekong/cparted/tarball/cparted-$pkgver")
