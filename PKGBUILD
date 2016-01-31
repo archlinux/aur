@@ -4,17 +4,17 @@
 _pkgname=imagewriter
 pkgname="${_pkgname}-git"
 pkgver=20150521
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical utility for writing raw disk images & hybrid ISOs to USB keys. QT5 GIT release."
 arch=('i686' 'x86_64')
 url="https://github.com/openSUSE/${_pkgname}"
 license=('GPL2')
 depends=('qt5-base' 'udisks2' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('git')
-optdepends=("xdg-su: needed for non-KDE users   "
+optdepends=("xdg-su: needed for non-KDE users"
 	    "kdesu: needed for KDE")
-conflicts=("${_pkgname}")
-install=("${_pkgname}.install")
+conflicts=imagewriter
+install=imagewriter.install
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
