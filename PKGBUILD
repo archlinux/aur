@@ -1,5 +1,5 @@
 _npmname=sinopia
-pkgname=nodejs-sinopia # All lowercase
+pkgname=nodejs-$_npmname
 pkgver=1.4.0
 pkgrel=1
 pkgdesc="Private npm repository server"
