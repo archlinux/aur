@@ -1,8 +1,8 @@
 # Maintainer: Felix Kauselmann <licorn at gmail dot com>
 pkgname=yacreader
 pkgver=8.0
-pkgrel=3
-pkgdesc="A comic reader for cross-platform reading and managing your digital comic collection."b
+pkgrel=4
+pkgdesc="A comic reader for cross-platform reading and managing your digital comic collection."
 arch=('i686' 'x86_64')
 url="http://www.yacreader.com"
 license=('GPL3')
@@ -14,13 +14,18 @@ optdepends=(
 conflicts=('yacreader-bin')
 install='yacreader.install'
 source=( "https://bitbucket.org/luisangelsm/yacreader/downloads/yacreader-8.0-src.tar.xz" 
-		'logger.patch' )
+		'logger.patch'
+		'checkversion.patch')
 sha256sums=('579ea8f37e986e7d34306a4382d56916004035b03ae8742ebc7d43516e63dad8'
-            '9fee8b4da9a49b86b5de54fd37434fe46d772c92e3b3324cc748bf926c533484')
+            '9fee8b4da9a49b86b5de54fd37434fe46d772c92e3b3324cc748bf926c533484'
+            '183c4348b60a73553369220ab560eb2942c93ab8cb71e83af516028db05500b1')
 
 prepare() {
-  cd $srcdir/$pkgname-$pkgver/YACReaderLibrary/server/lib/bfLogging
-  patch -p0 < $srcdir/logger.patch
+  cd "$srcdir/$pkgname-$pkgver"
+  patch -p0 -i ../checkversion.patch
+  cd YACReaderLibrary/server/lib/bfLogging
+  patch -p0 -i $srcdir/logger.patch
+  
 }
 
 build() {
