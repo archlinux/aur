@@ -17,7 +17,6 @@ pkgbase = greenisland
 	depends = libdrm
 	depends = libinput
 	depends = qt5-declarative
-	depends = hawaii-qt5-wayland
 	depends = xkeyboard-config
 	depends = libxkbcommon
 	depends = fontconfig
