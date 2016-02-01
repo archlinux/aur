@@ -2,15 +2,15 @@
 pkgname=python-storjcore
 _pkgname=${pkgname/python-/}
 pkgver=0.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Storj core library"
 url="https://github.com/Storj/storjcore"
-depends=('python' 'python-pip' 'python-crypto' 'python-btctxstore')
+depends=('python' 'python-setuptools' 'python-crypto' 'python-btctxstore')
 optdepends=()
 license=('MIT')
 arch=('any')
 source=("https://github.com/Storj/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('9111c8d44637b24f1458a44813361eced7dffcade3b23d7a40fa92a63e5d7ac0')
+sha512sums=('daf8f2e1ad9b0a5163c6c63506f85e118c70b1105a2720e081596cafd008d364de0c0d2a76908aede62a2deb23b6f15073f736c75c0f2e35f6ed38864775b766')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
@@ -20,6 +20,6 @@ build() {
 package() {
     cd "$srcdir/$_pkgname-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1 
-    rm -rf ${pkgdir}/usr/lib/python3.4/site-packages/tests/
+    rm -rf ${pkgdir}/usr/lib/python*/site-packages/tests/
 }
 
