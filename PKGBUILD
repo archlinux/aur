@@ -1,7 +1,7 @@
 # Maintainer: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=wego-git
-pkgver=r59.f5baabc
+pkgver=r81.cd7c11a
 pkgrel=1
 pkgdesc="Weather app for your terminal."
 arch=('any')
@@ -21,12 +21,14 @@ prepare() {
     export GOPATH="$srcdir/$pkgname"
     go get github.com/mattn/go-colorable
     go get github.com/mattn/go-runewidth
+    go get github.com/schachmat/wego/backends
+    go get github.com/schachmat/ingo
 }
 
 build() {
     cd "$srcdir/$pkgname"
     msg2 'Building wego'
-    go build -o wego we.go
+    go build -o wego main.go
 }
 
 package() {
