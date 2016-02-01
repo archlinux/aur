@@ -57,6 +57,6 @@ build() {
 }
 
 package() {
-  install -Dm644 "${_gitname}/libretro/ppsspp_libretro.so" "${pkgdir}/usr/lib/libretro/libretro-ppsspp.so"
-  install -Dm644 "ppsspp_libretro.info" "${pkgdir}/usr/lib/libretro/libretro-ppsspp.info"
+  install -Dm644 "${_gitname}/libretro/ppsspp_libretro.so" "${pkgdir}/usr/lib/libretro/ppsspp_libretro.so"
+  install -Dm644 "ppsspp_libretro.info" "${pkgdir}/usr/lib/libretro/ppsspp_libretro.info"
 }
