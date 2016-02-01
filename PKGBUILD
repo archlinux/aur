@@ -3,12 +3,13 @@
 pkgname=ketchup-bin
 _pkgname=ketchup
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='a pomodoro timer using client <-> server architecture'
 arch=(x86_64)
 url='https://github.com/jreinert/ketchup'
 license=('MIT')
-depends=(libpcl)
+depends=(gc-static libevent gcc-libs-multilib pcre libyaml)
+makedepends=(perl)
 
 source=(
   "https://github.com/jreinert/$_pkgname/archive/$pkgver.tar.gz"
