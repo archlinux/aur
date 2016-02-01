@@ -9,7 +9,7 @@
 
 pkgname="griffith"
 pkgver=0.13
-pkgrel=8
+pkgrel=9
 pkgdesc="Movie collection manager application"
 arch=('any')
 url="http://www.griffith.cc/"
