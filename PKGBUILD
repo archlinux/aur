@@ -5,7 +5,7 @@ pkgver=3.3.2
 pkgrel=1
 pkgdesc="3D visualization program for structural models, volumetric data such as electron/nuclear densities, and crystal morphologies."
 url="http://jp-minerals.org/vesta"
-license="custom"
+license=('custom')
 arch=('i686' 'x86_64')
 depends=('gtk2' 'libpng12')
 
