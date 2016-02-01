@@ -3,7 +3,6 @@
 # I *DO NOT* maintain the source repo.
 # This package does not run the python build script to avoid trusting
 # the git repo, but you should still inspect the package before installing.
-# This is /g/ we're talking about.
 
 pkgname=fortune-mod-g-git
 _pkgname=gfortune
