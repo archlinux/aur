@@ -13,7 +13,7 @@ pkgdesc="TeX Live - TU Dresden corporate design fonts for tudscr"
 license=('custom:tud-cd-fonts')
 arch=('any')
 depends=('texlive-core' 'texlive-fontsextra')
-url=("http://latex.wcms-file3.tu-dresden.de/phpBB3/index.php")
+url="http://latex.wcms-file3.tu-dresden.de/phpBB3/index.php"
 install=texlive.install
 source=("font_archives.md5"
         "https://github.com/tud-cd/tudscr/releases/download/fonts/TUD-KOMA-Script_fonts_Unix.zip"
