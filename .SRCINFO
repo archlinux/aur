@@ -1,0 +1,11 @@
+pkgbase = flexihub-x86_64
+	pkgdesc = FlexiHub
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = http://www.flexihub.com/
+	arch = x86_64
+	license = Demo version
+	makedepends = rpmextract
+
+pkgname = flexihub-x86_64
+
