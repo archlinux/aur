@@ -3,11 +3,11 @@
 pkgname=ketchup-bin
 _pkgname=ketchup
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='a pomodoro timer using client <-> server architecture'
-arch=(any)
+arch=(x86_64)
 url='https://github.com/jreinert/ketchup'
-licence=('MIT')
+license=('MIT')
 depends=(libpcl)
 
 source=(
@@ -15,7 +15,7 @@ source=(
   "https://github.com/jreinert/$_pkgname/releases/download/$pkgver/ketchup"{,.sig}
   "https://github.com/jreinert/$_pkgname/releases/download/$pkgver/ketchup-server"{,.sig}
 )
-validgpgkeys=('26DCD9B1C4192A20C856D3A04D9F310E17204540')
+validpgpkeys=('26DCD9B1C4192A20C856D3A04D9F310E17204540')
 sha512sums=(
   7e15514281e9f31ce15f4c1e2888927069711e04253a188e6ac211a2eb61097dcadbe6e25d319111a4adceae6f0b1da5ec302ec4af512b24fd500ada3e8bbaa2
   SKIP
