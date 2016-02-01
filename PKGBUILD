@@ -1,6 +1,6 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=rabcdasm-git
-pkgver=1.17.r0.gfe93f5e
+pkgver=1.18.r0.g68f6fa2
 pkgrel=1
 pkgdesc="Robust ABC (ActionScript Bytecode) [Dis-]Assembler"
 arch=('x86_64' 'i686')
@@ -8,7 +8,7 @@ url="https://github.com/CyberShadow/RABCDAsm"
 license=('GPL3')
 depends=('xz')
 makedepends=('git' 'dmd' 'dtools' 'libphobos-devel')
-source=("$pkgname::git+git://github.com/CyberShadow/RABCDAsm.git")
+source=("$pkgname::git+https://github.com/CyberShadow/RABCDAsm.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -18,6 +18,9 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
+  #disable hardening-wrapper
+  #https://issues.dlang.org/show_bug.cgi?id=15054
+  export PATH=/usr/bin/
   dmd -run build_rabcdasm.d
 }
 
