@@ -1,7 +1,7 @@
 # Maintainer: cornholio <vigo.the.unholy.carpathian@gmail.com>
 
 pkgname=mailpile-git
-pkgver=r4459.829adbb
+pkgver=r4960.bdd1cf5
 pkgrel=1
 pkgdesc="A modern, fast web-mail client with user-friendly encryption and privacy features."
 arch=('any')
@@ -44,7 +44,6 @@ package() {
 	mkdir -p "${pkgdir}/usr/bin"
 	mkdir -p "${pkgdir}/usr/share/mailpile"
 
-	cp -r "${srcdir}/Mailpile/static" "${pkgdir}/usr/share/mailpile/static"
 	cp -r "${srcdir}/Mailpile/mailpile" "${pkgdir}/usr/share/mailpile/"
 	cp -r "${srcdir}/Mailpile/locale" "${pkgdir}/usr/share/mailpile/"
 	cp "${srcdir}/Mailpile/mp" "${pkgdir}/usr/bin/"
