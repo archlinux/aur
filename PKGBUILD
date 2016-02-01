@@ -4,7 +4,7 @@
 # Contributor: Boohbah <boohbah at gmail dot com>
 
 pkgname=rkt-git
-pkgver=0.11.0.r12.gfad1cb1
+pkgver=0.16.0.r92.gfedaf31
 pkgrel=1
 pkgdesc="App container runtime"
 arch=('x86_64')
@@ -44,6 +44,8 @@ package() {
     install -Dm644 "dist/init/systemd/${unit}" \
       "${pkgdir}/usr/lib/systemd/system/${unit}"
   done
+
+  install -Dm644 "dist/bash_completion/rkt.bash" "${pkgdir}/usr/share/bash-completion/completions/rkt"
 
   cd build-rkt-*+git
   install -Dm755 bin/rkt "$pkgdir/usr/bin/rkt"
