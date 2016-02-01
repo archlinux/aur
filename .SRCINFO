@@ -1,6 +1,6 @@
 pkgbase = mailpile-git
 	pkgdesc = A modern, fast web-mail client with user-friendly encryption and privacy features.
-	pkgver = r4459.829adbb
+	pkgver = r4960.bdd1cf5
 	pkgrel = 1
 	url = http://www.mailpile.is
 	arch = any
