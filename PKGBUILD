@@ -8,7 +8,7 @@ _pkgver=16
 _eap="True"
 epoch=3
 pkgver=16.${_buildver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Early access version of the upcoming version of Intellij Idea IDE (community version)"
 arch=('any')
 options=(!strip)
@@ -18,10 +18,10 @@ depends=('java-environment' 'giflib' 'libxtst')
 makedepends=('wget')
 if [[ ${_eap} = "True" ]]; then
 	source=("http://download.jetbrains.com/idea/ideaIC-${_buildver}-custom-jdk-linux.tar.gz")
-	sha256sums=$(wget -q "${source}.sha256" && cat "ideaIC-${_buildver}-custom-jdk-linux.tar.gz.sha256" | cut -f1 -d" ")
+  sha256sums=($(wget -q "${source}.sha256" && cat "ideaIC-${_buildver}-custom-jdk-linux.tar.gz.sha256" | cut -f1 -d" "))
 else
 	source=("http://download.jetbrains.com/idea/ideaIC-${_pkgver}.tar.gz")
-	sha256sums=$(wget -q "${source}.sha256" && cat "ideaIC-${_pkgver}.tar.gz.sha256" | cut -f1 -d" ")
+  sha256sums=($(wget -q "${source}.sha256" && cat "ideaIC-${_pkgver}.tar.gz.sha256" | cut -f1 -d" "))
 fi
 
 package() {
