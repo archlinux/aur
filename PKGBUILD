@@ -7,12 +7,12 @@ pkgver=r74.5bd5816
 pkgrel=1
 pkgdesc="Google Search from command line"
 arch=('any')
-url="https://github.com/jarun/google-cli"
+url="https://github.com/jarun/googler"
 license=('GPL3')
 depends=('python')
 makedepends=('git')
 conflicts=('googler')
-source=('git://github.com/jarun/google-cli.git')
+source=('git://github.com/jarun/googler.git')
 md5sums=('SKIP')
 
 pkgver() {
