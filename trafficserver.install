@@ -12,5 +12,5 @@ post_upgrade() {
 }
 
 post_remove() {
-	echo 'Tserver log files and cache files must be cleaned up manually.'
+    echo 'Tserver log files and cache files must be cleaned up manually.'
 }
