@@ -3,7 +3,9 @@
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=2.4
-pkgrel=2
+pkgrel=3
+_wwwpkgname=AdminLTE
+_wwwpkgver=1.0.0
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
 arch=('any')
 license=('GPL2')
@@ -13,7 +15,7 @@ conflicts=('pi-hole-server')
 install=$pkgname.install
 
 source=(https://github.com/jacobsalmela/$_pkgname/archive/v$pkgver.tar.gz
-	https://github.com/jacobsalmela/AdminLTE/archive/master.zip
+	https://github.com/pi-hole/AdminLTE/archive/v1.0.0.tar.gz
 	configuration
 	dnsmasq.include
 	dnsmasq.complete
@@ -25,7 +27,7 @@ source=(https://github.com/jacobsalmela/$_pkgname/archive/v$pkgver.tar.gz
 	blacklist.txt)
 
 md5sums=('b051dc1bd79182262336ce8bc11fb816'
-         'ef69a57624685ef11c265785e914782b'
+         'a2ec5ea92cce506f0fc61cc0a8f2c527'
          '77e128965dbc7e94a31a908f58a5aa6c'
          'fd607f890103e97e480d814a5dfbee5b'
          '06bb49cf66cc1db8be5e476a54b1e933'
@@ -41,8 +43,8 @@ prepare() {
   sed -i 's|^		\$SUDO service dnsmasq start|		$SUDO systemctl start dnsmasq|' "$srcdir"/$_pkgname-$pkgver/gravity.sh
 
   # change log location in admin php interface and scripts
-  sed -i 's|/var/log/pihole.log|/run/log/pihole.log|' "$srcdir"/AdminLTE-master/index.php
-  sed -i 's|/var/log/pihole.log|/run/log/pihole.log|' "$srcdir"/AdminLTE-master/api.php
+  sed -i 's|/var/log/pihole.log|/run/log/pihole.log|' "$srcdir"/$_wwwpkgname-$_wwwpkgver/index.php
+  sed -i 's|/var/log/pihole.log|/run/log/pihole.log|' "$srcdir"/$_wwwpkgname-$_wwwpkgver/api.php
   sed -i 's|/var/log/pihole.log|/run/log/pihole.log|' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
 
   # original toilet is in aur, enter figlet
@@ -54,8 +56,12 @@ prepare() {
   sed -i 's|/inet addr/|/inet /|' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
 
   # change bin location in admin php interface
-  sed -i 's|/usr/local/bin/|/usr/bin/|' "$srcdir"/AdminLTE-master/index.php
-  sed -i 's|/usr/local/bin/|/usr/bin/|' "$srcdir"/AdminLTE-master/api.php
+  sed -i 's|/usr/local/bin/|/usr/bin/|' "$srcdir"/$_wwwpkgname-$_wwwpkgver/index.php
+  sed -i 's|/usr/local/bin/|/usr/bin/|' "$srcdir"/$_wwwpkgname-$_wwwpkgver/api.php
+
+  # since we don't directly install from git...
+  sed -i -e '/<b>Pi-hole Version <\/b> /,+1d' "$srcdir"/$_wwwpkgname-$_wwwpkgver/index.php
+  sed -i -e '/<div class="pull-right hidden-xs">/a<b>Pi-hole Version </b> '"$pkgver"'\n<b> - Web Interface Version </b>'"$_wwwpkgver"'' "$srcdir"/$_wwwpkgname-$_wwwpkgver/index.php
 }
 
 package() {
@@ -79,6 +85,6 @@ package() {
 
   install -dm755 "$pkgdir"/srv/http/pihole/admin || return 1
   install -Dm644 ./$_pkgname-$pkgver/advanced/index.html "$pkgdir"/srv/http/pihole/index.html || return 1
-  cp -dpr --no-preserve=ownership AdminLTE-master/* "$pkgdir"/srv/http/pihole/admin/
+  cp -dpr --no-preserve=ownership $_wwwpkgname-$_wwwpkgver/* "$pkgdir"/srv/http/pihole/admin/
 }
 

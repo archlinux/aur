@@ -1,7 +1,6 @@
 post_install() {
   cat <<- EOF
     ==> please read configuration instructions at /usr/share/doc/pihole/configuration
-    ==> lighttpd config file is changed. please uninstall and reinstall following configuration steps.
     ==> first install/update run...
 EOF
   chown -R http.http /srv/http/pihole
