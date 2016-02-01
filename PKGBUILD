@@ -2,7 +2,7 @@
 # Contributor:  prettyvanilla <prettyvanilla@posteo.at>
 
 pkgname=libretro-ppsspp-git
-pkgver=14111.67abe46
+pkgver=17170.ea17e27
 pkgrel=1
 pkgdesc="libretro implementation of PPSSPP. (PlayStation Portable/PSP)"
 arch=('i686' 'x86_64' 'arm' 'armv6h')
@@ -28,8 +28,7 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
-         'SKIP'
-        )
+         'e0f4c3aa2f4799d438c291f2b2a464c8')
 
 pkgver() {
   cd "${_gitname}"
