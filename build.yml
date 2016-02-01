@@ -1,0 +1,14 @@
+maintainer: Michael Spencer <sonrisesoftware@gmail.com>
+name: papyros-files
+description: The file manager for Papyros
+license: GPL
+url: https://github.com/papyros/files-app
+branch: master
+type: cmake
+depends:
+    - qt5-base
+    - qt5-declarative
+    - qt5-graphicaleffects
+    - qml-material-git
+    - taglib
+    - kdeclarative

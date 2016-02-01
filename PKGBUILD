@@ -2,26 +2,26 @@
 # Contributor: Michael Spencer <sonrisesoftware@gmail.com>
 
 _pkgname=papyros-files
-pkgname=$_pkgname-git
+pkgname=${_pkgname}-git
 pkgver=0.0.4.r41.gf95637c
-pkgrel=1
+pkgrel=3
 pkgdesc="The file manager for Papyros"
 arch=("i686" "x86_64")
 url="https://github.com/papyros/files-app"
-license=("LGPL")
-depends=("qt5-declarative" "qt5-graphicaleffects" "qt5-tools" "qml-material-git"
-"taglib" "kdeclarative")
-makedepends=("git" "cmake" "intltool" "extra-cmake-modules")
-optdepends=('pulseaudio: audio support')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("$_pkgname::git+https://github.com/papyros/files-app.git#branch=master")
+license=("GPL")
+depends=("qt5-base-dev-git" "qt5-declarative" "qt5-graphicaleffects" "qml-material-git" "taglib" "kdeclarative" )
+makedepends=("git" "qt5-tools" "cmake" "extra-cmake-modules")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}" )
+source=("${_pkgname}::git+https://github.com/papyros/files-app.git#branch=master")
 sha256sums=("SKIP")
 
 pkgver() {
-  cd "$_pkgname"
-  # cutting off 'foo-' prefix that presents in the git tag
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/${_pkgname}"
+  (set -o pipefail
+  git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 prepare() {
@@ -30,7 +30,13 @@ prepare() {
 
 build() {
   cd build
-  cmake "$srcdir/$_pkgname" -DCMAKE_INSTALL_PREFIX=/usr
+  cmake $srcdir/${_pkgname} \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DLIB_INSTALL_DIR=lib \
+    -DLIBEXEC_INSTALL_DIR=lib \
+    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+    -DBUILD_TESTING=OFF
   make
 }
 
@@ -42,11 +48,11 @@ package() {
 # Additional functions to generate a changelog
 
 changelog() {
-  cd "$_pkgname"
+  cd "$srcdir/${_pkgname}"
   git log $1..HEAD --no-merges --format=" * %s"
 }
 
 gitref() {
-  cd "$_pkgname"
+  cd "$srcdir/${_pkgname}"
   git rev-parse HEAD
 }
