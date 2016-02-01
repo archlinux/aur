@@ -3,7 +3,7 @@
 pkgname=javafx-devel-samples
 _major=9
 #_minor=1
-_build=102
+_build=103
 _pkgver=$_major
 pkgver=${_major}b${_build}
 #_pkgver=${_major}u${_minor}
@@ -18,7 +18,7 @@ optdepends=("java-runtime>=$_major: Run the examples"
 options=('!strip')
 source=("http://download.java.net/jdk$_major/archive/$_build/binaries/javafx-${_pkgver}_linux-x86_demo.zip"
         'OTN-Early-Adopter-License-Terms.txt')
-md5sums=('c344df5c1fc9b3e0598b6b68602a320c'
+md5sums=('ad0add204e476bbdc6472d47b30f1db5'
          'f09947a67691a2d78d20a3885889981c')
 
 package() {
