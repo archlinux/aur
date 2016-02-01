@@ -2,7 +2,7 @@
 
 pkgname=libretro-mednafen-psx-git
 _gitname=beetle-psx-libretro
-pkgver=849.83b4b48
+pkgver=884.dc45d91
 pkgrel=1
 pkgdesc="libretro implementation of Mednafen PSX"
 arch=('i686' 'x86_64')
@@ -23,6 +23,6 @@ build()
 
 package()
 {
-	install -v -Dm644 $srcdir/$_gitname.info $pkgdir/usr/lib/libretro/libretro-mednafen-psx.info
-	install -v -Dm644 $srcdir/$_gitname/mednafen_psx_libretro.so $pkgdir/usr/lib/libretro/libretro-mednafen-psx.so
+	install -v -Dm644 $srcdir/$_gitname.info $pkgdir/usr/lib/libretro/mednafen_psx_libretro.info
+	install -v -Dm644 $srcdir/$_gitname/mednafen_psx_libretro.so $pkgdir/usr/lib/libretro/mednafen_psx_libretro.so
 }
