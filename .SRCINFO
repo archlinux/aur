@@ -1,21 +1,20 @@
 pkgbase = germinal
 	pkgdesc = Minimalist terminal emulator based on vte and tmux
-	pkgver = 14
-	pkgrel = 2
+	pkgver = 15
+	pkgrel = 1
 	url = https://github.com/Keruspe/Germinal
 	install = germinal.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = intltool
+	makedepends = appstream-glib
 	depends = glib2
 	depends = vte3
 	depends = pango
 	depends = tmux
-	source = http://www.imagination-land.org/files/germinal/germinal-14.tar.xz
-	source = cwd.patch
-	md5sums = 0d1498921837833d8a2395cf2a9768b9
-	md5sums = d1eec5fef2efd7b0586b4c235fb45556
+	source = http://www.imagination-land.org/files/germinal/germinal-15.tar.xz
+	md5sums = c1ef274e8aa88e9b4f35de52a34b4159
 
 pkgname = germinal
 
