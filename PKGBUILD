@@ -3,7 +3,7 @@
 # Contributor: Art Gramlich <art@gramlich-net.com>
 
 pkgname=icu-staticlibs
-pkgver=55.1
+pkgver=56.1
 pkgrel=1
 pkgdesc="International Components for Unicode library with staticlibs enabled"
 arch=(i686 x86_64)
@@ -15,7 +15,7 @@ options=(staticlibs)
 source=(#http://download.icu-project.org/files/icu4c/${pkgver}/icu4c-${pkgver/./_}-src.tgz
 	    http://download.icu-project.org/files/icu4c/${pkgver}/icu4c-${pkgver//./_}-src.tgz
 	    icu.8198.revert.icu5431.patch)
-md5sums=('e2d523df79d6cb7855c2fbe284f4db29'
+md5sums=('c4a2d71ff56aec5ebfab2a3f059be99d'
          'ebd5470fc969c75e52baf4af94a9ee82')
 
 prepare() {
