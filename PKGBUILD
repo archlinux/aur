@@ -15,7 +15,7 @@ makedepends=('extra-cmake-modules' 'qt5-tools')
 conflicts=('hawaii-system-preferences-git')
 groups=('hawaii')
 options=('debug')
-source=("https://github.com/hawaii-desktop/hawaii-system-preferences/releases/download/v0.5.0/hawaii-system-preferences-0.5.0.tar.xz")
+source=("https://github.com/hawaii-desktop/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
 sha1sums=('d88e031e7ed9be20e7559820a7649a4b')
 
 prepare() {
