@@ -1,4 +1,4 @@
-# Maintainer: John Jekins twodopeshaggy@gmail.com
+# Maintainer: Johnathan Jenkins twodopeshaggy@gmail.com
 # Contributor: Mark Cornick <mcornick@mcornick.com>
 # Contributor: Patrick Palka <patrick@parcs.ath.cx>
 
