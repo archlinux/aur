@@ -1,0 +1,10 @@
+#
+# Parameters to be passed to wwwoffle.
+# 
+# NOTE:
+#   This file is parsed when using System V initscript or openrc-initscript,
+#   but it is ignored when using systemd to start up wwwoffle.
+#   When using systemd, edit the wwwoffle service definition directly to change startup options.
+#
+
+WWWOFFLE_ARGS="-c /etc/wwwoffle/wwwoffle.conf"
