@@ -1,9 +1,10 @@
-# Maintainer: r20d20 <r20d20@web.de>
+# Maintainer: johnnybash <georgpfahler@wachenzell.org>
+# Contributor: r20d20 <r20d20@web.de>
 pkgname=hibiscus-nightly
 pkgver=2.7.0
 pkgrel=1
 pkgdesc="Hibiscus Plugin for Jameica Plattform"
-arch=(i686 x86_64)
+arch=(armv6h armv7h armv8h i686 x86_64)
 url="http://www.willuhn.de/products/hibiscus/"
 license=('GPL')
 depends=('jameica-nightly>=2.7')
