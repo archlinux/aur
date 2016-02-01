@@ -2,12 +2,12 @@
 
 pkgname='pkgbrowser'
 pkgver=0.19.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A utility for browsing pacman databases and the AUR'
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/kachelaqa/$pkgname"
 license=('GPL2')
-depends=('pacman>=4.1' 'pacman<4.3' 'python>=3.2' 'python<3.6' 'python-pyqt5')
+depends=('pacman>=4.1' 'pacman<5.1' 'python>=3.2' 'python<3.6' 'python-pyqt5')
 install="$pkgname.install"
 source=("$url/downloads/$pkgname-$pkgver.tar.gz")
 md5sums=('c954b48f11cbb995fcb2a5005486bc38')
