@@ -26,7 +26,7 @@ md5sums=('3acbaef956308c805e8e2d0a03a737e9'
          'fef6fadd0739ae03ff71ba61025be207'
          '5ed78e366146e47f8498347e93ad5423'
          '9f56e2a4f435e642a0b183c6bff5c206'
-         'b10ce9918eefba8b5966e971d5ea4775')
+         'dcf4f4b4de06c6ff3b5445539c4e3d42')
 
 package() {
 	install -Dm644 minecraftd.conf              "${pkgdir}/etc/conf.d/minecraft"
