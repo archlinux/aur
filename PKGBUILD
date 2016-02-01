@@ -2,14 +2,14 @@
 
 pkgname=gtk-theme-windows10
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK 3.x Theme made to emulate a Windows 10 environment on Linux machines."
 arch=('any')
 url="https://github.com/Elbullazul/Windows-10"
 license=('GPL')
 depends=('gtk-engines' 'gtk-engine-murrine')
 optdepends=('gnome-themes-standard' 'windows10-tint2rc')
-changelog=(${pkgname}.changelog)
+changelog=${pkgname}.changelog
 source=("https://github.com/Elbullazul/Windows-10/releases/download/v0.9/Windows.10.Light.v0.9.zip")
 sha1sums=('58fa8eea1046503a8a9554e78bf606d55cfb8e1e')
 
