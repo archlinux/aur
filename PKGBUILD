@@ -3,34 +3,42 @@
 
 pkgname=scrivener
 pkgver=1.9.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful content-generation tool for writers"
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url="http://www.literatureandlatte.com/scrivener.php"
 license=('custom')
 depends=('gstreamer0.10-base-plugins' 'libxrender' 'fontconfig' 'libpng12')
 optdepends=('aspell:       needed for spell checking (also needs dictionaries)'
             'multimarkdown: needed for export to latex')
-source=("http://www.literatureandlatte.com/scrivenerforlinux/scrivener-${pkgver}-amd64.tar.gz"
-        "scrivener.png" "scrivener.desktop")
-sha256sums=('7abd6ee279af90a0a63df7f2eb2e35ea087721d3dacb0583167f68bf57926901'
-            'f8ab2f4d9ae61e443ea72ac11dc8e2671e8bb5ec3c6e51a7b3b7c35aa621449d'
+source=("scrivener.png" "scrivener.desktop")
+sha256sums=('f8ab2f4d9ae61e443ea72ac11dc8e2671e8bb5ec3c6e51a7b3b7c35aa621449d'
             '75d2efffb2539a3c3de2b10ddb47f20b06790128721138f90bf09aec29f69fd5')
+source_x86_64=("http://www.literatureandlatte.com/scrivenerforlinux/scrivener-${pkgver}-amd64.tar.gz")
+sha256sums_x86_64=('7abd6ee279af90a0a63df7f2eb2e35ea087721d3dacb0583167f68bf57926901')
+source_i686=("http://www.literatureandlatte.com/scrivenerforlinux/scrivener-${pkgver}-i386.tar.gz")
+sha256sums_i686=('c24a80adb85458c4f0727f94acd773550395d5f88470711e90b788b84890179f')
 
 package() {
+  if [ "$CARCH" == "i686" ]; then
+  	scrivdir="${srcdir}/scrivener-${pkgver}-i386"
+  else
+  	scrivdir="${srcdir}/scrivener-${pkgver}-amd64"
+  fi
+
   mkdir -p "${pkgdir}/usr/share/licenses/$pkgname"
   mkdir -p "${pkgdir}/usr/share/doc/$pkgname"
   mkdir -p "${pkgdir}/usr/share/applications/$pkgname"
   mkdir -p "${pkgdir}/usr/share/pixmaps/$pkgname"
   mkdir -p "${pkgdir}/usr/bin"
   mkdir -p "${pkgdir}/opt/${pkgname}"
-  mv "${srcdir}/scrivener-${pkgver}-amd64/licence.htm" "${pkgdir}"/usr/share/licenses/"$pkgname/"
   ln -s /opt/scrivener/bin/scrivener.sh "${pkgdir}"/usr/bin/scrivener
   install -D -m644 "${srcdir}"/scrivener.desktop "${pkgdir}"/usr/share/applications/"$pkgname/"
   install -D -m644 "${srcdir}"/scrivener.png "${pkgdir}"/usr/share/pixmaps/"$pkgname/"
-  mv "${srcdir}"/scrivener-${pkgver}-amd64/bin/ "${pkgdir}"/opt/"$pkgname/"
-  mv "${srcdir}"/scrivener-${pkgver}-amd64/lib/ "${pkgdir}"/opt/"$pkgname/"
-  mv "${srcdir}"/scrivener-${pkgver}-amd64/readme.txt "${pkgdir}"/usr/share/doc/"${pkgname}"
+  mv "${scrivdir}"/licence.htm "${pkgdir}"/usr/share/licenses/"$pkgname/"
+  mv "${scrivdir}"/bin/ "${pkgdir}"/opt/"$pkgname/"
+  mv "${scrivdir}"/lib/ "${pkgdir}"/opt/"$pkgname/"
+  mv "${scrivdir}"/readme.txt "${pkgdir}"/usr/share/doc/"${pkgname}"
 
   #file names cause errors, if this is needed for you 
   rm -r $pkgdir/opt/scrivener/bin/Aspell/dict/portugu*s.alias
