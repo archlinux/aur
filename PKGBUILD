@@ -4,7 +4,7 @@
 pkgname=nemo-terminal
 pkgver=2.8.1
 _mintrel=rosa
-pkgrel=2
+pkgrel=3
 pkgdesc="An embedded terminal for Nemo, the Cinnamon file manager."
 arch=('any')
 url="https://github.com/linuxmint/nemo-extensions"
