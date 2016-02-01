@@ -4,7 +4,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=jgraphx
-pkgver=3.4.1.0
+pkgver=3.4.1.3
 pkgrel=1
 pkgdesc="Open source graph drawing component."
 arch=('any')
@@ -13,7 +13,7 @@ license=('BSD')
 depends=('java-runtime')
 source=( "${pkgname}-v${pkgver}.tar.gz::https://github.com/jgraph/jgraphx/archive/v${pkgver}.tar.gz"
 )
-sha256sums=('bd1903853a7fe52e366fce9afd0a76a24cbf13c24e653bce5267687181e2f368')
+sha256sums=('400a042c5ffd95f2484757d1bd6c44f578a2489e5ddde1e63c22d04ea8190a03')
 
 package() {
   cd "${srcdir}/jgraphx-${pkgver}"
