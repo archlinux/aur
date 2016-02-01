@@ -2,7 +2,7 @@
 
 pkgname=windows10-icons
 pkgver=0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Icons to emulate a Windows 10 look"
 arch=('any')
 url="https://github.com/Elbullazul/Windows-10"
@@ -17,6 +17,9 @@ package()
 
 	install -d -m 755 "$pkgdir/usr/share/icons/Windows-10-Icons"
 
-	find . -type fl -exec \
+	find . -type f -exec \
+		install -D -m 644 '{}' "$pkgdir/usr/share/icons/Windows-10-Icons/{}" \;
+
+	find . -type l -exec \
 		install -D -m 644 '{}' "$pkgdir/usr/share/icons/Windows-10-Icons/{}" \;
 }
