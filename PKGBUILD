@@ -5,14 +5,14 @@ pkgver=1.2.0alpha6
 _pkgver=1.2.0-alpha.6
 pkgrel=1
 pkgdesc="Container Cluster Manager for Docker"
-depends=('glibc')
+depends=('glibc' 'bash')
 makedepends=('go' 'rsync')
 optdepends=('etcd: etcd cluster required to run Kubernetes')
 arch=('x86_64' 'i686')
 source=("https://github.com/GoogleCloudPlatform/kubernetes/archive/v$_pkgver.tar.gz"
         "kubernetes.install")
 url="http://kubernetes.io/"
-license="APACHE"
+license=("APACHE")
 install=kubernetes.install
 sha256sums=('f75f17751bfe4e7832c57e7e0d983b854281779abeed4377041e08cc51bb8226'
             'f40b4b14a71f8138de69021e967d993e8b14db2cebe66eee20c7e66839ad1fde')
