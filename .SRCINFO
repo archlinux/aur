@@ -1,0 +1,12 @@
+pkgbase = aspell-da
+	pkgdesc = Danish dictionary for aspell
+	pkgver = 0.50.1
+	pkgrel = 1
+	url = http://aspell.net/
+	arch = any
+	depends = aspell
+	source = ftp://ftp.gnu.org/gnu/aspell/dict/da/aspell-da-0.50.1-0.tar.bz2
+	md5sums = 1bf582a9aa0e0f8007a2ba9d52964e7e
+
+pkgname = aspell-da
+
