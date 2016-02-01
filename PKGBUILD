@@ -1,7 +1,7 @@
 # Maintainer: Jurica Bradaric <jbradaric@gmail.com>
 pkgname=python2-pyxb
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Generates Python code for classes that correspond to data structures defined by XMLSchema"
 arch=(any)
 url="http://pyxb.sourceforge.net/"
@@ -20,4 +20,7 @@ build() {
 package() {
     cd "$srcdir/PyXB-$pkgver"
     python2 setup.py install --root="$pkgdir" --optimize=1
+    for filename in $pkgdir/usr/bin/*; do
+        mv "${filename}" "${filename}2"
+    done
 }
