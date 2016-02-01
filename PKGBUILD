@@ -4,7 +4,7 @@
 
 pkgname=rkt
 pkgver=0.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="App container runtime"
 arch=('x86_64')
 url="https://github.com/coreos/rkt"
@@ -40,6 +40,8 @@ package() {
     install -Dm644 "dist/init/systemd/${unit}" \
       "${pkgdir}/usr/lib/systemd/system/${unit}"
   done
+
+  install -Dm644 "dist/bash_completion/rkt.bash" "${pkgdir}/usr/share/bash-completion/completions/rkt"
 
   cd "build-${pkgname}-${pkgver}"
   install -Dm755 bin/rkt "$pkgdir/usr/bin/rkt"
