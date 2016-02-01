@@ -1,9 +1,10 @@
 # Maintainer: Kyle <kyle@gmx.ca>
 # Contributor: mib1982 <Mi.Bentlage@gmail.com>
+# Contributor: z3ntu <luca.emanuel.weiss@gmail.com>
 
 pkgname=f3
 pkgver=6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Utilities to detect and repair counterfeit flash storage, i.e. thumb drives and memory cards with less flash than advertised"
 arch=('i686' 'x86_64')
 url="http://oss.digirati.com.br/f3/"
@@ -11,8 +12,8 @@ license=('GPL3')
 depends=('parted')
 options=('!buildflags'
          '!makeflags')
-conflicts=
-provides=
+conflicts=()
+provides=()
 source=(https://github.com/AltraMayor/${pkgname}/archive/v${pkgver}.zip)
 md5sums=('b38abfb1c35996e4d193d3be694b4448')
 
