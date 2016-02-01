@@ -1,7 +1,7 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 pkgname=spigot
 pkgver=1.8.8
-pkgrel=5
+pkgrel=6
 pkgdesc="High performance Minecraft server implementation"
 arch=(any)
 url="http://www.spigotmc.org/"
@@ -21,10 +21,10 @@ source=("https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/art
 noextract=("BuildTools.jar")
 md5sums=('SKIP'
          'fd17202ba0bb7796439f0b2f6bc53be4'
-         '774cd44ed90f6be51d368533cf74d7c2'
+         '872d2e03799f1f8f0c75acdebce91894'
          '580c470c92d88ae2362250d59bd33b10'
-         '12a49f9b4ba6e5f4887555af0947949b'
-         '528b26d2326fe92d96d29d8b615c9d6d')
+         '675f4b1080f2543f43058c7124dcafc2'
+         '38c9c94d10e2f6ca86a56cdb0d47d72a')
 backup=("etc/conf.d/${pkgname}")
 
 build() {

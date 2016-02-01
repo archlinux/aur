@@ -2,7 +2,6 @@
 Description=Daily Spigot Backup
 
 [Timer]
-Type=forking
 OnCalendar=daily
 AccuracySec=5min
 Persistent=true
