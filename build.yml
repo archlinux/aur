@@ -1,0 +1,14 @@
+maintainer: Michael Spencer <sonrisesoftware@gmail.com>
+name: papyros-terminal
+description: The terminal app for Papyros
+license: GPL
+url: https://github.com/papyros/terminal-app
+branch: develop
+type: cmake
+depends:
+    - qt5-base
+    - qt5-declarative
+    - qml-material
+    - ttf-roboto-mono-powerline-git
+    - libpapyros
+    - qmltermwidget
