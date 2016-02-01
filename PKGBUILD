@@ -7,7 +7,7 @@
 
 
 pkgname=slowmovideo-git
-pkgver=20150423
+pkgver=20160117
 pkgrel=1
 pkgdesc="Video slow motion effect via interpolation"
 arch=('i686' 'x86_64')
