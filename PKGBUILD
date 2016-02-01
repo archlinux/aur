@@ -1,4 +1,5 @@
 # Maintainer: Vic Luo  <vicluo96@gmail.com>
+# Maintainer: wenLiangcan <boxeed@gmail.com>
 pkgname=xmradio-git
 pkgver=0.5.1.14.ga5187cc
 pkgrel=1
