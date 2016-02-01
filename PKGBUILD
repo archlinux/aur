@@ -1,7 +1,7 @@
 # Maintainer: Anton Larionov <diffident dot cat at gmail dot com>
 
 pkgname=img2djvu-git
-pkgver=22.0cea05f
+pkgver=23.78b777e
 pkgrel=1
 pkgdesc="Single-pass DjVu encoder based on DjVu Libre and ImageMagick"
 arch=('any')
