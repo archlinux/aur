@@ -6,12 +6,12 @@
 pkgname=pkgbrowser-qt4
 _pkgname=pkgbrowser
 pkgver=0.18.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility for browsing pacman databases and the AUR (Qt4 Version)"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/kachelaqa/pkgbrowser"
 license=('GPL2')
-depends=('pacman>=4.1' 'pacman<4.3' 'python>=3.2' 'python-pyqt4')
+depends=('pacman' 'python>=3.2' 'python-pyqt4')
 provides=($_pkgname)
 conflicts=($_pkgname)
 replaces=($_pkgname)
