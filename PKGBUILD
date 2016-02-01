@@ -2,7 +2,7 @@
 # Maintainer: Peter Severin <peter@wireframesketcher.com>
 
 pkgname=wireframesketcher
-pkgver=4.5.0
+pkgver=4.5.1
 pkgrel=1
 pkgdesc="WireframeSketcher, wireframing tool for professionals (Trial)"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ license=('nonfree')
 depends=('java-runtime' 'gtk2>=2.8.0' 'webkitgtk2' 'libxtst')
 source_i686=("http://cdn.wireframesketcher.com/studio/dist/WireframeSketcher-${pkgver}_i386.deb")
 source_x86_64=("http://cdn.wireframesketcher.com/studio/dist/WireframeSketcher-${pkgver}_amd64.deb")
-sha512sums_i686=('24de99eb40056aef83616a2aff872a73c41edbbe2047c11333a63c6eb4698ee6cd01c53e0b14d8d46b6908f1e41ea3f746bae6fd22fda472167056e09308f301')
-sha512sums_x86_64=('e61c5acec7c739b2ebb48138e80e4a59371e4cc09a3cda77da6383e5aef1b6f827404c9fc276d27a07f16cfc1b63c1768dc7112e951bc82d8fd80efe8cdc74f2')
+sha512sums_i686=('4043cc9574edf6466a93958f50cb547809549ce4f66cb091a631ffa15922080e9a480a8067a4b0dc1698b624e75da2cd4ca446757554de647cfb7f645d022c4b')
+sha512sums_x86_64=('78e2cd6b1a07b860091878a5daf886db8dbf5020c763c1815ad2f77f08e6231252a53544ea629ad0231c8646013ad73bc1f9203f4a7d9571677bfde9f99a79de')
 
 package () {
     cd $srcdir
