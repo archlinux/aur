@@ -28,7 +28,7 @@ source=(
   "${install}"
 )
 
-### NOTE: Higher key size and other algorithms are supported in the current SVN version of wwwoffle -- so consider installing the package 'wwwoffle-svn' instead.
+### NOTE: Higher key size for wwwoffle's root certificate and other algorithms are supported in the current SVN version of wwwoffle -- so consider installing the package 'wwwoffle-svn' instead.
 
 sha256sums=(
   'e6341a4ec2631dc22fd5209c7e5ffe628a5832ad191d444c56aebc3837eed2ae'
