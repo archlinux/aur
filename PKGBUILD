@@ -1,6 +1,6 @@
 # Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
 pkgname=roboptim-core-python-git
-pkgver=3.0.r0.ga48b485
+pkgver=3.2.r0.gb93f7f7
 pkgrel=1
 pkgdesc="Python bindings for RobOptim"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ source=("${_gitname}"::${_gitroot})
 md5sums=('SKIP')
 
 # Build type
-_buildtype="RelWithDebInfo"
+_buildtype="Release"
 
 # Build directory
 _builddir="${_gitname}-build"
@@ -33,54 +33,41 @@ pkgver() {
     git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^v([0-9])/\1/'
 }
 
-# Build the project
-build() {
-    msg "Updating Git submodules"
+prepare() {
+  cd "${srcdir}/${_gitname}"
+  git submodule init
+  git submodule update
 
-    cd "${srcdir}/${_gitname}"
-    git submodule init
-    git submodule update
+  cd "${srcdir}"
+  mkdir -p ${_builddir}
+  cd "${_builddir}"
 
-    msg "Starting CMake (build type = ${_buildtype})"
-
-    # Create a build directory
-    cd "${srcdir}"
-    mkdir -p ${_builddir}
-    cd "${_builddir}"
-
-    # Run CMake in release
-    cmake -DCMAKE_BUILD_TYPE="${_buildtype}" \
-          -DCMAKE_INSTALL_PREFIX="/usr" \
-          -DPYTHON_EXECUTABLE=/usr/bin/python2 \
-          -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
-          -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
-          "${srcdir}/${_gitname}"
-
-    # Compile the library
-    msg "Building the project"
-    make --silent
-
-    # Create the documentation
-    msg "Creating the documentation"
-    make --silent doc
+  cmake -DCMAKE_BUILD_TYPE="${_buildtype}" \
+        -DCMAKE_INSTALL_PREFIX="/usr" \
+        -DCMAKE_INSTALL_LIBDIR="lib" \
+        -DPYTHON_EXECUTABLE=/usr/bin/python2 \
+        -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
+        -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        "${srcdir}/${_gitname}"
 }
 
-# Run unit tests
+build() {
+  cd "${srcdir}/${_builddir}"
+  make
+}
+
 check() {
-    msg "Running unit tests"
-    cd "${srcdir}/${_builddir}"
-    export PYTHONPATH=$(pwd)/src
-    make test
+  cd "${srcdir}/${_builddir}"
+  export PYTHONPATH=$(pwd)/src
+  make test
 }
 
 # Create the package
 package() {
-    cd "${srcdir}/${_builddir}"
+  cd "${srcdir}/${_builddir}"
+  make --silent DESTDIR="${pkgdir}/" install
 
-    msg "Installing files"
-    make --silent DESTDIR="${pkgdir}/" install
-
-    # Remove ${src_dir} from the doxytag
-    msg "Correcting doxytag file"
-    sed -i "s:${srcdir}::g" ${pkgdir}/${_doxytag}
+  # Remove ${src_dir} from the doxytag
+  msg "Correcting doxytag file"
+  sed -i "s:${srcdir}::g" ${pkgdir}/${_doxytag}
 }
