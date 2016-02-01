@@ -1,11 +1,10 @@
 [Unit]
 Description=BitTorrent client daemon
-Documentation=https://github.com/btpd/btpd
-After=network.target
+After=network-up.target
 
 [Service]
 Type=simple
 ExecStart=/usr/bin/btpd --no-daemon
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
