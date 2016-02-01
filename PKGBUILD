@@ -2,7 +2,7 @@
 # Maintainer: kusakata <shohei atmark kusakata period com>
 
 pkgname=libtins
-pkgver=3.2
+pkgver=3.3
 pkgrel=1
 pkgdesc="A high-level, multiplatform C++ network packet sniffing and crafting library"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('libpcap' 'openssl')
 makedepends=('cmake')
 options=('!libtool')
 source=("https://github.com/mfontanini/libtins/archive/v${pkgver}.tar.gz")
-md5sums=('f7da307e2a3fb897654983baf2de0ac3')
+sha256sums=('a2d9b8a4dd0b2a4d0d1924d2b2b03ea76a7ceb241f91c6a7ed262a1a7d64d94d')
 
 build() {
   cd "${srcdir}/libtins-${pkgver}"
@@ -29,3 +29,4 @@ package() {
   rm -R "${pkgdir}/usr/CMake/"
 }
 
+# vim:set ft=sh ts=2 sw=2 et:
