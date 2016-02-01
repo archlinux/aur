@@ -1,0 +1,30 @@
+maintainer: Michael Spencer <sonrisesoftware@gmail.com>
+name: papyros-shell
+description: Wayland and QtQuick based desktop shell for Papyros
+license: GPL
+url: https://github.com/papyros/papyros-shell
+branch: develop
+type: cmake
+depends:
+    - qt5-base-git
+    - qt5-declarative
+    - qt5-quickcontrols
+    - qt5-wayland-dev-git
+    - qt5-graphicaleffects
+    - greenisland-git
+    - qml-material-git
+    - kdeclarative
+    - pam
+    - libpulse
+    - libqtxdg
+    - solid
+    - kconfig
+    - networkmanager-qt
+    - ttf-dejavu
+    - ttf-droid
+    - libpapyros-git
+optdepends:
+    pulseaudio: audio support
+    sddm: login screen theme
+    paper-icon-theme: default icon theme
+    networkmanager: networking support
