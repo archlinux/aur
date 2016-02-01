@@ -2,7 +2,7 @@
 
 pkgname=qownnotes-pbek
 pkgver=0.87
-tag="95e991b6512dbe249e8e8affe2173aa09f29ad7a"
+tag="ae9bffc2035f3c6b06eb80c991625cc121b49e03"
 pkgrel=1
 pkgdesc="Open source notepad and todo list manager with markdown support and ownCloud integration"
 arch=('i686' 'x86_64')
@@ -44,4 +44,6 @@ package() {
     install -D -m 0644 images/icons/256x256/QOwnNotes.png $pkgdir/usr/share/icons/hicolor/256x256/apps/QOwnNotes.png
     install -D -m 0644 images/icons/512x512/QOwnNotes.png $pkgdir/usr/share/icons/hicolor/512x512/apps/QOwnNotes.png
     install -D -m 0644 images/icons/scalable/QOwnNotes.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/QOwnNotes.svg
+    install -D -m 0644 languages/QOwnNotes_de.qm $pkgdir/usr/share/QOwnNotes/languages/QOwnNotes_de.qm
+    install -D -m 0644 languages/QOwnNotes_fr.qm $pkgdir/usr/share/QOwnNotes/languages/QOwnNotes_fr.qm
 }
