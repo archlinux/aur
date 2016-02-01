@@ -1,0 +1,12 @@
+maintainer: Michael Spencer <sonrisesoftware@gmail.com>
+name: libpapyros
+description: Library of common classes for Papyros
+license: LGPL
+url: https://github.com/papyros/libpapyros
+branch: develop
+type: cmake
+depends:
+    - qt5-base
+    - qt5-declarative
+    - kconfig
+    - kwallet
