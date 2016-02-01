@@ -26,7 +26,7 @@ source=("http://launchpad.net/${pkgname}/trunk/0.13/+download/${pkgname}-${pkgve
 		"http://www.strits.dk/files/PluginMovieIMDB.py")
 sha256sums=('60576d33aa855ab45d654288d7bf2ead8accecb72fd2acbc373656294ab8f242'
             'f5e0b43c6ee56148b55cc650599c96b7774491867d38b47278bc121bf33fb9af'
-            '3500b6f25fdbf8ebae40c38a5ba0c95a0ff27f74961b6d1cdc975b27adcc5cdf')
+            '7184164f5902878350e319caf977079d1ac15babe754a0b5da91f6125dce6348')
 
 build() {
     cd "${pkgname}-${pkgver}"
