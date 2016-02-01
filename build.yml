@@ -1,0 +1,13 @@
+maintainer: Michael Spencer <sonrisesoftware@gmail.com>
+name: qml-material
+description: A UI framework for QtQuick implementing Material Design
+license: LGPL
+url: https://github.com/papyros/qml-material
+branch: develop
+type: cmake
+depends:
+    - qt5-base
+    - qt5-declarative
+    - qt5-quickcontrols
+    - qt5-svg
+    - qt5-graphicaleffects
