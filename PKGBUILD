@@ -1,13 +1,10 @@
-# Maintainer: Melvin Vermeeren <mail@melvinvermeeren.com>
+# Maintainer: Melvin Vermeeren <mail@mel.vin>
 # Based upon telegram-desktop package by eduardosm.
 #
-# If you want to cherry-pick patches, check out the git repo:
-# - https://git.melvinvermeeren.com/melvin/telegram-desktop
-# TODO: Allow selection of patches in PKGBUILD.
+# Prebuilt binaries can be found in the git repo.
 #
-# For bug reports, contact @vermeeren on Telegram.
-# Pre-built binary in my repo (only 64-bit):
-# - https://melvinvermeeren.com/repo/archlinux/melvinvermeeren/x86_64/
+# If you want to cherry-pick patches, check out the git repo:
+# TODO: Allow selection of patches in PKGBUILD.
 
 pkgname=telegram-desktop-patched
 pkgver=0.9.19
@@ -15,7 +12,7 @@ pkgrel=3
 _qtver=5.5.1
 pkgdesc='Telegram Desktop with bigger sticker panel and dark colour scheme patches.'
 arch=('i686' 'x86_64')
-url="https://git.melvinvermeeren.com/melvin/telegram-desktop"
+url="https://git.mel.vin/melvin/telegram-desktop"
 license=('GPL3')
 depends=('ffmpeg' 'icu' 'jasper' 'libexif' 'libmng' 'libwebp' 'libxkbcommon-x11'
 	 'libinput' 'libproxy' 'mtdev' 'openal' 'libva' 'desktop-file-utils'
@@ -23,7 +20,7 @@ depends=('ffmpeg' 'icu' 'jasper' 'libexif' 'libmng' 'libwebp' 'libxkbcommon-x11'
 makedepends=('git' 'patch' 'libunity' 'libappindicator-gtk2')
 provides=('telegram-desktop')
 conflicts=('telegram-desktop')
-source=("tdesktop::git+https://git.melvinvermeeren.com/melvin/telegram-desktop.git#branch=release"
+source=("tdesktop::git+https://git.mel.vin/melvin/telegram-desktop.git#branch=release"
 	"http://download.qt-project.org/official_releases/qt/${_qtver%.*}/$_qtver/single/qt-everywhere-opensource-src-$_qtver.tar.xz"
 	"telegramdesktop.desktop"
 	"tg.protocol")
