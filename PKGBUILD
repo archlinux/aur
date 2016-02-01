@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/jarun/google-cli"
 license=('GPL3')
 depends=('python')
-conflicts=('google-cli-git')
+conflicts=('googler-git')
 source=("https://github.com/jarun/google-cli/archive/v$pkgver.tar.gz")
 md5sums=('1329218e1331546861cf64b30ac5fe39')
 
