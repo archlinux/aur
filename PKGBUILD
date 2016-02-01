@@ -1,7 +1,7 @@
 # Maintainer: Auguste Pop <auguste [at] gmail [dot] com>
 
 pkgname=crafty
-pkgver=25.0
+pkgver=25.0.1
 pkgrel=1
 pkgdesc="A computer chess program"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ source=(http://www.cis.uab.edu/hyatt/crafty/source/$pkgname-$pkgver.zip
         http://www.cis.uab.edu/hyatt/crafty/book/book.bin
         http://www.cis.uab.edu/hyatt/crafty/book/books.bin
         copyright)
-md5sums=('df72f7497795aa6626d2ab85b0762612'
+md5sums=('b7acc17fedd528d9651f4e5533263264'
          '6d527840579904bf0e0b0a456a580a9b'
          '966a852a2ccd3c32e9167061592928d3'
          '438cec9f32fb79f58822f97cf64e7afb')
@@ -24,6 +24,9 @@ prepare()
         Makefile
     [[ $arch == "i686" ]] && sed -i -e '/opt/s/ -DINLINEASM//g' Makefile
     sed -i 's:"crafty.hlp":BOOKDIR"/crafty.hlp":' option.c
+
+    # bug fix
+    sed -i '/PopCnt/s/arg1/x/' boolean.c
 }
 
 build()
