@@ -1,7 +1,7 @@
 # Maintainer: Sven Hesse <drmccoy@drmccoy.de>
 
 pkgname=xoreos-tools
-pkgver=0.0.3.r0.gd6c63d2
+pkgver=0.0.4.r0.ga3c1a2a
 pkgrel=1
 pkgdesc="Tools to help with xoreos development"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('zlib'
          'libxml2')
 makedepends=()
-source=('git://github.com/xoreos/xoreos-tools.git#tag=v0.0.3')
+source=('git://github.com/xoreos/xoreos-tools.git#tag=v0.0.4')
 md5sums=('SKIP')
 
 pkgver() {
