@@ -4,7 +4,7 @@
 _mintrel=betsy
 pkgname=nemo-dropbox
 pkgver=2.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Dropbox for Linux - Nemo extension"
 arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/nemo-extensions"
