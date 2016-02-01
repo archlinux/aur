@@ -15,7 +15,7 @@ source=("${_pkgname}"::"git+https://github.com/hechoendrupal/DrupalConsole.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}-${pkgver}"
+  cd "${_pkgname}"
   git describe --abbrev=0 --tags
 }
 
