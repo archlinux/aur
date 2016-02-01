@@ -8,7 +8,7 @@ pkgdesc="Apache Traffic Server"
 url="http://trafficserver.apache.org/"
 license=('Apache')
 arch=('i686' 'x86_64')
-depends=('tcl' 'hwloc' 'curl')
+depends=('tcl' 'hwloc' 'curl' 'libunwind')
 makedepends=('flex')
 
 source=(

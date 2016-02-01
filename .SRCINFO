@@ -12,6 +12,7 @@ pkgbase = trafficserver
 	depends = tcl
 	depends = hwloc
 	depends = curl
+	depends = libunwind
 	backup = etc/trafficserver/congestion.config
 	backup = etc/trafficserver/logs_xml.config
 	backup = etc/trafficserver/hosting.config
