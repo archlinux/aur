@@ -1,6 +1,6 @@
 pkgname=fusiondirectory-plugin-kolab2-schema
-pkgver=1.0.9.2
-pkgver=1.0.9.2
+pkgver=1.0.9.3
+pkgver=1.0.9.3
 pkgrel=1
 pkgdesc="LDAP schema for FusionDirectory kolab2 plugin"
 arch=("any")
@@ -11,7 +11,7 @@ depends=("fusiondirectory-schema>=$pkgver" "fusiondirectory-plugin-mail-schema>=
 
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
 "http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-${pkgver}.tar.gz")
-md5sums=('e6d29278191de3288efdb7d43dd25d98' '07ba5c23c6ea6d1aa15d24d828841acf')
+md5sums=('157f7397e273594ca55a55f76c31af54' 'd8e520cf5b3fbfea3daa90d5b012d58e')
 
 package() {
 cd ./fusiondirectory-plugins-${pkgver}
