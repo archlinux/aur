@@ -2,7 +2,7 @@
 
 pkgname='windows10-tint2rc'
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="tin2rc file for windows10 gtk theme"
 arch=('any')
 url="https://github.com/Elbullazul/windows-10"
@@ -14,5 +14,5 @@ package()
 {
 	mv tint2rc windows10.tint2rc
 
-  	install -d -m 755 "$pkgdir/usr/share/tint2/windows10.tint2rc"
+  	install -D -m 755 windows10.tint2rc "$pkgdir/usr/share/tint2/windows10.tint2rc"
 }
