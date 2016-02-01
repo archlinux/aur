@@ -23,8 +23,8 @@ optdepends=(
 	"unixodbc: ODBC driver"
 	"libfbclient: Firebird/iBase driver"
 )
-provides=("$_pkgname" "qtchooser")
-conflicts=("$_pkgname" "qtchooser")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=("$_pkgname::git://code.qt.io/qt/qtbase.git#branch=5.5"
 		"0001-Add-a-way-to-filter-window-system-events.patch")
 sha256sums=('SKIP'
