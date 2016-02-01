@@ -1,6 +1,6 @@
 pkgname=telegram-desktop-dark-git
 pkgver=0.9.18
-pkgrel=1
+pkgrel=2
 _qtver=5.5.1
 pkgdesc='Desktop version of Telegram messaging app. (Dark Theme)'
 arch=('i686' 'x86_64')
@@ -51,8 +51,8 @@ build() {
 	./configure -prefix "$srcdir/qt" -release -opensource -confirm-license -qt-zlib \
 	            -qt-libpng -qt-libjpeg -qt-freetype -qt-harfbuzz -qt-pcre -qt-xcb \
 	            -qt-xkbcommon-x11 -no-opengl -static -nomake examples -nomake tests
-	make -j4 module-qtbase module-qtimageformats
-	make -j4 module-qtbase-install_subtargets module-qtimageformats-install_subtargets
+	make module-qtbase module-qtimageformats
+	make module-qtbase-install_subtargets module-qtimageformats-install_subtargets
 
 	export PATH="$srcdir/qt/bin:$PATH"
 
@@ -77,7 +77,7 @@ build() {
 	grep "$pattern" "$srcdir/tdesktop/Telegram/Telegram.pro" | sed "s/$pattern//g" | xargs make
 
 	qmake CONFIG+=release "../../Telegram/Telegram.pro"
-	make -j4
+	make
 }
 
 package() {
