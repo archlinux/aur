@@ -1,7 +1,7 @@
 # Maintainer: Rick Kerkhof <rick.2889@gmail.com>
 pkgname=soundnode-app-bin
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Soundcloud client for the desktop"
 arch=('x86_64' 'i686')
 url="http://www.soundnodeapp.com/"
@@ -9,10 +9,6 @@ license=('GPL3')
 
 # Required, otherwise it won't run.
 options=('!strip')
-
-makedepends=()
-depends=()
-optdepends=()
 
 # I couldn't figure out how to build it properly and the website has no per-release
 # archives. The SHA256sums will fail if it updates; that should be an indication that
@@ -32,13 +28,15 @@ sha256sums=('aaae33882ab1e2334b4a33b4235cbdd4beb1379b08f5fa3a0a270f716ea43fa7'
 'a62a6bf1f28f21ba9d32b642cd29e9685a1c1f889347d041a1ab02e65dbbc2ca')
 
 package() {
-        install -d -m 755 ${pkgdir}/opt/
-        install -d -m 755 ${pkgdir}/usr/share/applications/
-        
-        
-        install -D -m 644 ${srcdir}/soundnode-app.desktop ${pkgdir}/usr/share/applications/
+	install -dm755 "$pkgdir"/usr/bin
+        install -dm755 "$pkgdir"/opt/
+        install -dm755 "$pkgdir"/usr/share/applications/
+        install -Dm644 "$srcdir"/soundnode-app.desktop "$pkgdir"/usr/share/applications/
+
+        # We're creating a broken link here. It'll be fixed when all files are in place :)
+        ln -s /opt/soundnode-app-bin/Soundnode-App "$pkgdir"/usr/bin/soundnode
     
-        rm ${srcdir}/Soundnode-App.zip
-        rm ${srcdir}/soundnode-app.desktop
-	cp -Lr ${srcdir} $pkgdir/opt/${pkgname}
+        rm "$srcdir"/Soundnode-App.zip
+        rm "$srcdir"/soundnode-app.desktop
+	cp -Lr "$srcdir" "$pkgdir"/opt/"$pkgname"
 }
