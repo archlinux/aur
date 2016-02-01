@@ -2,7 +2,7 @@
 
 pkgname=python2-daemon
 _libname=${pkgname/python2-/python-}
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Library to implement a well-behaved Unix daemon process"
 license=("PSF")
@@ -22,4 +22,4 @@ package() {
 	python2 setup.py install --skip-build -O1 --root="$pkgdir"
 }
 
-sha256sums=('ae30f6d4d7399665317f90d986686cf455a1b3e61e3c042cc00a39a34e3b4825')
+sha256sums=('58a8c187ee37c3a28913bef00f83240c9ecd4a59dce09a24d92f5c941606689f')
