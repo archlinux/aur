@@ -3,12 +3,12 @@
 
 pkgname=asus-fan-dkms-git
 pkgver=v0.9.1.r6.g2472ad6
-pkgrel=1
+pkgrel=2
 _realname=asus-fan
 _modname=asus_fan
 pkgdesc="Kernel module allowing to control (both) fan inside various ASUS laptops"
 arch=('i686' 'x86_64')
-url=("http://github.com/daringer/asus-fan")
+url="http://github.com/daringer/asus-fan"
 md5sums=('SKIP')
 license=('GPL')
 depends=('dkms')
