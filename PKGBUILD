@@ -11,9 +11,9 @@ depends=(zsh)
 makedepends=(git)
 provides=(zsh-autopair)
 conflicts=(zsh-autopair)
-source=git+https://github.com/hlissner/zsh-autopair
+source=(git+https://github.com/hlissner/zsh-autopair)
 install=zsh-autopair-git.install
-sha256sums=SKIP
+sha256sums=(SKIP)
 
 
 pkgver() {
