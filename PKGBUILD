@@ -6,7 +6,7 @@ pkgver=7.2.0
 _pkgmajver=7.2
 _pkgrev=${pkgver}-48204
 _libvmimever=0.9.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A C++ class library for working with MIME messages"
 arch=('any')
 url="http://www.vmime.org/"
@@ -47,7 +47,6 @@ package() {
 
 	./configure --disable-debug \
 		--enable-sasl \
-		--enable-ssl \
 		--enable-tls\
 		--enable-platform-posix \
 		--enable-messaging \
