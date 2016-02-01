@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Name=Telegram Desktop (Dark)
+Comment=Desktop version of Telegram messaging app (Dark Theme)
+Exec=/usr/bin/telegram-desktop-dark -- %u
+Icon=telegram-desktop
+Terminal=false
+StartupWMClass=Telegram
+Type=Application
+Categories=Network;
+MimeType=application/x-xdg-protocol-tg;x-scheme-handler/tg;
