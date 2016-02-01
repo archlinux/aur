@@ -2,7 +2,7 @@
 
 pkgname=nodejs-jspm
 _npmname=jspm
-pkgver=0.16.25
+pkgver=0.16.26
 pkgrel=1
 pkgdesc="Registry and format agnostic JavaScript package manager"
 arch=('any')
