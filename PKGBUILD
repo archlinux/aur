@@ -1,5 +1,5 @@
 pkgname=fusiondirectory-plugin-quota
-pkgver=1.0.9.2
+pkgver=1.0.9.3
 pkgrel=1
 pkgdesc="Plugin for storing filesystem quota per user inside LDAP tree"
 arch=("any")
@@ -10,7 +10,7 @@ depends=("fusiondirectory>=$pkgver" "fusiondirectory-plugin-systems>=$pkgver")
 install=fusiondirectory-plugin-quota.install
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
 "http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-${pkgver}.tar.gz")
-md5sums=('e6d29278191de3288efdb7d43dd25d98' '07ba5c23c6ea6d1aa15d24d828841acf')
+md5sums=('157f7397e273594ca55a55f76c31af54' 'd8e520cf5b3fbfea3daa90d5b012d58e')
 
 package() {
 cd ./fusiondirectory-plugins-${pkgver}
