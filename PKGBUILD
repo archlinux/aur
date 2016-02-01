@@ -2,7 +2,7 @@
 
 _pkgname=libmill
 pkgname=lib32-${_pkgname}
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc='Go-style concurrency in C'
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=('!buildflags')
 makedepends=('gcc-multilib')
 license=('MIT')
 source=("https://github.com/sustrik/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('81171ec5652548c22bab97aab0a342cb72138bc0c675596d6cdcd1813b1a12e4')
+sha256sums=('800888e4741f86620a53665147c4d308bb85082d9ee1d112bfc28af925d1f5f1')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
