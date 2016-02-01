@@ -5,7 +5,7 @@
 # Contributor: Luigi Ranghetti <ggranga at gmail dot com>
  
 pkgname="osmc-installer-bin"
-pkgver="1.2.3"
+pkgver="1.2.4"
 pkgrel="1"
 pkgdesc="OSMC Installer allows you to install OSMC on a variety of devices."
 url="http://osmc.tv"
@@ -16,8 +16,8 @@ provides=('osmc-installer')
 
 source_i686=("http://download.opensuse.org/repositories/home:/osmc/Debian_8.0/i386/osmc-installer_${pkgver//./}_i386.deb")
 source_x86_64=("http://download.opensuse.org/repositories/home:/osmc/Debian_8.0/amd64/osmc-installer_${pkgver//./}_amd64.deb")
-sha256sums_i686=('cc14d157f0ae63202afef0e3247b2b8dad53440659f129be5efc3a4de9d66da0')
-sha256sums_x86_64=('bd1bb3a182210ae6a1dc33ae7f1fd42216ad833b974aea7bc09cadfc6f4396ae')
+sha256sums_i686=('9a99f6555be7627de0923cd4f1e110dd4b81e3a9da75e1c5aca3154c6d059770')
+sha256sums_x86_64=('2284107a464bbb5eb470c235b48941a673ee39066edfc747c1a2b019993ea705')
  
 package() {
     cd "${srcdir}"
