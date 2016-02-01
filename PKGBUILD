@@ -2,25 +2,26 @@
 # Contributor: Michael Spencer <sonrisesoftware@gmail.com>
 
 _pkgname=papyros-settings
-pkgname=$_pkgname-git
-pkgver=0.0.1.r5.gb69d96d
+pkgname=${_pkgname}-git
+pkgver=0.1.0.r2.g060599e
 pkgrel=1
 pkgdesc="The settings app for Papyros"
 arch=("i686" "x86_64")
 url="https://github.com/papyros/settings-app"
 license=("GPL")
-depends=("qt5-base-dev-git" "qt5-declarative" "qml-material-git" "papyros-shell-git"
-         "qtaccountsservice-git")
-makedepends=("git" "cmake" "extra-cmake-modules")
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("$_pkgname::git+https://github.com/papyros/settings-app.git#branch=develop")
+depends=("qt5-base-dev-git" "qt5-declarative" "qml-material-git" "papyros-shell-git" "libpapyros-git" "qtaccountsservice-git" )
+makedepends=("git" "qt5-tools" "cmake" "extra-cmake-modules")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}" )
+source=("${_pkgname}::git+https://github.com/papyros/settings-app.git#branch=develop")
 sha256sums=("SKIP")
 
 pkgver() {
-  cd "$_pkgname"
-  # cutting off 'foo-' prefix that presents in the git tag
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/${_pkgname}"
+  (set -o pipefail
+  git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 prepare() {
@@ -29,7 +30,13 @@ prepare() {
 
 build() {
   cd build
-  cmake "$srcdir/$_pkgname" -DCMAKE_INSTALL_PREFIX=/usr
+  cmake $srcdir/${_pkgname} \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DLIB_INSTALL_DIR=lib \
+    -DLIBEXEC_INSTALL_DIR=lib \
+    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+    -DBUILD_TESTING=OFF
   make
 }
 
@@ -41,11 +48,11 @@ package() {
 # Additional functions to generate a changelog
 
 changelog() {
-  cd "$_pkgname"
+  cd "$srcdir/${_pkgname}"
   git log $1..HEAD --no-merges --format=" * %s"
 }
 
 gitref() {
-  cd "$_pkgname"
+  cd "$srcdir/${_pkgname}"
   git rev-parse HEAD
 }

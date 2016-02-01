@@ -1,0 +1,14 @@
+maintainer: Michael Spencer <sonrisesoftware@gmail.com>
+name: papyros-settings
+description: The settings app for Papyros
+license: GPL
+url: https://github.com/papyros/settings-app
+branch: develop
+type: cmake
+depends:
+    - qt5-base
+    - qt5-declarative
+    - qml-material-git
+    - papyros-shell-git
+    - libpapyros-git
+    - qtaccountsservice-git
