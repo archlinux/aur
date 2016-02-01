@@ -9,7 +9,7 @@
 _pkgname=qt5-wayland
 pkgname=${_pkgname}-dev-git
 pkgver=5.5.1.r4.g9d40864
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform application and UI framework (QtWayland) - Version for Developers!"
 arch=("i686" "x86_64")
 url="https://qt.gitorious.org/qt/qtwayland/"
@@ -21,8 +21,8 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-git")
 options=("staticlibs" "libtool")
 
-_ver=5.5
-source=("$_pkgname::git://code.qt.io/qt/qtwayland.git#branch=${_ver}"
+_ver=5.5.1
+source=("$_pkgname::git://code.qt.io/qt/qtwayland.git#branch=5.5"
         "0001-Update-wayland.xml-to-1.6.patch"
         "0002-Add-support-for-keyboard-repeat-rate-and-delay.patch"
         "0003-Use-xkbcommon-for-internal-key-events-too.patch")
