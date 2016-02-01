@@ -4,7 +4,7 @@ pkgname=jameica-nightly
 pkgver=2.7.0
 pkgrel=1
 pkgdesc="Jameica Plattform"
-arch=(armv6h i686 x86_64)
+arch=(armv6h armv7h armv8h i686 x86_64)
 url="http://www.willuhn.de/products/jameica/"
 license=('GPL')
 depends=('java-runtime>=1.6')
@@ -14,15 +14,15 @@ source=("http://www.willuhn.de/products/jameica/releases/nightly/jameica-$pkgver
 md5sums=('SKIP'
          'c5915975edcf2ef695f57e93983ebbe6')
 
-if [ "$CARCH" = "armv6h" ]; then
-depends+=(swt)
+if [ "$CARCH" = "armv6h" ] || [ "$CARCH" = "armv7h" ] || [ "$CARCH" = "armv8h" ]; then
+	depends+=(swt)
 fi
 
 package() {
 	mkdir -p ${pkgdir}/usr/share/{java/jameica,applications}
 	cp -R "${srcdir}/jameica" "${pkgdir}/usr/share/java"
 	
-	if [ "$CARCH" = "armv6h" ]; then
+	if [ "$CARCH" = "armv6h" ] || [ "$CARCH" = "armv7h" ] || [ "$CARCH" = "armv8h" ]; then
 
 		# remove local swt lib
 		rm -rf ${pkgdir}/usr/share/java/jameica/lib/swt/linux64
@@ -38,8 +38,8 @@ package() {
 		# remove dead bodies
 		rm -rf ${pkgdir}/usr/share/java/jameica/unzipped
 
-		# link jameica-linux64.jar to jameica-linux64.jar 
-		ln -s ${pkgdir}/usr/share/java/jameica/jameica-linux64.jar ${pkgdir}/usr/share/java/jameica/jameica-linux.jar
+		# link jameica-linux64.jar to jameica-linux.jar 
+		ln ${pkgdir}/usr/share/java/jameica/jameica-linux64.jar ${pkgdir}/usr/share/java/jameica/jameica-linux.jar
 
 	fi
 	
