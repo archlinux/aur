@@ -3,7 +3,7 @@
 # Contributor bitwave < aur [at] oomlu [d0t] de >
 # Alex say thanks to Filip about support this package while he was away from Arch.
 pkgname=multidoge
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Java-based DogeCoin client"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ source=("https://github.com/langerhans/${pkgname}/releases/download/v${pkgver}/m
         install.properties
         ${pkgname}.desktop
         dogecoin.png)
-md5sums=('e92e3364d34f35876cf14d631d90c32c'
+md5sums=('e69a81b1e86c7aa72d3b36d0d5fb4218'
          '937bebe7bdda35b2089415fbe0c79926'
          'ecb77c4f6857760ac0bb278b2771ee1c'
          'd66bfe1d4f5856dccc93e7e63d3f9f4d'
@@ -32,8 +32,8 @@ package() {
 	install -Dm 644 tmp-install/${pkgname}-exe.jar ${pkgdir}/usr/share/java/multidoge/multidoge.jar
 	install -Dm 755 ${pkgname} ${pkgdir}/usr/bin/multidoge
 
-        install -Dm 644 ${pkgname}.desktop ${pkgdir}/usr/share/applications/multidoge.desktop
-        install -Dm 644 dogecoin.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
+  install -Dm 644 ${pkgname}.desktop ${pkgdir}/usr/share/applications/multidoge.desktop
+  install -Dm 644 dogecoin.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
 
 	msg "Done!"
 }
