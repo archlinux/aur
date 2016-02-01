@@ -1,3 +1,7 @@
+post_install() {
+    systemd-tmpfiles --create trafficserver.conf
+}
+
 post_upgrade() {
     # There are configuration changes required when upgrading to major
     # version 4.

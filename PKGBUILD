@@ -96,7 +96,7 @@ package()
     cd "${srcdir}"/"${pkgname}-${pkgver}"
     make install DESTDIR="${pkgdir}"
 
-    chmod 750 "${pkgdir}"/run/trafficserver
+    rm -rf "${pkgdir}"/run
 
     chown root:root "${pkgdir}"/usr/share/trafficserver
 
