@@ -5,8 +5,8 @@
 
 _pkgname=qt5-base
 pkgname=$_pkgname-dev-git
-pkgver=5.5.1.r129.g5ef14c5
-pkgrel=1
+pkgver=5.5.1.r133.ga40ea09
+pkgrel=2
 pkgdesc="A cross-platform application and UI framework"
 arch=("i686" "x86_64")
 url="https://qt-project.org/"
@@ -14,7 +14,7 @@ license=("GPL3" "LGPL")
 depends=(
 	"dbus" "xcb-util-keysyms" "xcb-util-wm" "xcb-util-image"
 	"libxext" "inputproto" "libgl" "libxkbcommon" "systemd"
-	"libpng" "sqlite" "fontconfig" "icu" "libxrender" "libinput"
+	"libpng" "sqlite" "fontconfig" "icu" "libxrender" "libinput" "qtchooser"
 )
 makedepends=("git" "postgresql-libs" "gtk2")
 optdepends=(
@@ -46,36 +46,32 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_pkgname"
 
-	./configure -confirm-license -opensource \
-		-prefix /usr \
-		-bindir /usr/lib/qt/bin \
-		-docdir /usr/share/doc/qt \
-		-headerdir /usr/include/qt \
-		-archdatadir /usr/lib/qt \
-		-datadir /usr/share/qt \
-		-sysconfdir /etc/xdg \
-		-examplesdir /usr/share/doc/qt/examples \
-		-system-sqlite \
-		-openssl-linked \
-		-nomake examples \
-		-nomake tests \
-		-no-rpath \
-		-optimized-qmake \
-		-dbus-linked \
-		-reduce-relocations \
-        -egl \
-        -eglfs \
-		-libinput
-	make
+  ./configure -confirm-license -opensource \
+    -prefix /usr \
+    -bindir /usr/lib/qt/bin \
+    -docdir /usr/share/doc/qt \
+    -headerdir /usr/include/qt \
+    -archdatadir /usr/lib/qt \
+    -datadir /usr/share/qt \
+    -sysconfdir /etc/xdg \
+    -examplesdir /usr/share/doc/qt/examples \
+    -system-sqlite \
+    -openssl-linked \
+    -nomake examples \
+    -nomake tests \
+    -no-rpath \
+    -optimized-qmake \
+    -dbus-linked \
+    -reduce-relocations \
+    -egl \
+    -eglfs \
+    -libinput
+  make
 }
 
 package() {
-	cd "$srcdir/$_pkgname"
-	make INSTALL_ROOT="$pkgdir" install
-      for file in "${pkgdir}"/usr/lib/qt/bin/*; do
-              mkdir -p "${pkgdir}"/usr/bin
-              ln -s /usr/lib/qt/bin/$(basename $file) "${pkgdir}"/usr/bin/$(basename $file)
-      done
+  cd "$srcdir/$_pkgname"
+  make INSTALL_ROOT="$pkgdir" install
 }
