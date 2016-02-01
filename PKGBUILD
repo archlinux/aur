@@ -16,9 +16,7 @@ depends=('alsa-lib' 'avahi' 'boost-libs' 'curl' 'expat' 'freetype2' 'fribidi'
          'libmicrohttpd' 'libmpeg2' 'libpng' 'libpulse' 'libsamplerate'
          'libssh' 'libtiff' 'libusb-compat' 'libva' 'libvdpau' 'libx11'
          'libxext' 'libxrandr' 'lzo' 'pcre' 'python2' 'sdl' 'sdl_image'
-         'sdl_mixer' 'sqlite' 'smbclient' 'taglib' 'tinyxml' 'yajl' 'zlib'
-         'libavcodec.so' 'libavfilter.so' 'libavformat.so' 'libavutil.so'
-         'libpostproc.so' 'libswresample.so' 'libswscale.so')
+         'sdl_mixer' 'sqlite' 'smbclient' 'taglib' 'tinyxml' 'yajl' 'zlib')
 makedepends=('boost' 'cmake' 'doxygen' 'ffmpeg-compat' 'git' 'java-environment'
              'libcec' 'libplist' 'libshairport' 'nasm' 'swig' 'unzip' 'zip')
 optdepends=('libplist: AirPlay support'
@@ -58,7 +56,7 @@ build() {
     -DENABLE_AUTOUPDATE='FALSE' \
     -DENABLE_PYTHON='TRUE' \
     -DPYTHON_EXEC='/usr/bin/python2' \
-    -DUSE_INTERNAL_FFMPEG='FALSE'
+    -DUSE_INTERNAL_FFMPEG='TRUE'
   make
 }
 
@@ -74,5 +72,3 @@ package() {
   install -m 644 ../plex/Resources/plexhometheater.desktop "${pkgdir}"/usr/share/applications/
   install -m 644 ../plex/Resources/plex-icon-256.png "${pkgdir}"/usr/share/pixmaps/plexhometheater.png
 }
-
-# vim: ts=2 sw=2 et:
