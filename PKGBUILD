@@ -12,7 +12,7 @@ pkgbase=linux-libre-grsec
 _pkgbasever=4.3-gnu
 _pkgver=4.3.4-gnu
 _grsecver=3.1
-_timestamp=201601231215
+_timestamp=201601292206
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -48,6 +48,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
+        '0001-disabling-primary-plane-in-the-noatomic-case.patch'
         '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch'
         '0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
         # armv7h patches
@@ -60,12 +61,13 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0005-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch'
         '0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch'
         '0007-set-default-cubietruck-led-triggers.patch'
-        '0008-USB-armory-support.patch')
+        '0008-USB-armory-support.patch'
+        '0009-ARM-dts-dove-add-Dove-divider-clocks.patch')
 sha256sums=('1d280ae2730eb6c9b8c7e920cac2e8111c8db02c498db0c142860a84106cc169'
             'SKIP'
             '73ad579342bf4d4954953fa76a79454d81213a151694a7ac70d486808f1bdf3a'
             'SKIP'
-            '478654b1a68ed24b777009429a05a366a13240af7a13292afa912fe09413b50a'
+            'e7836ec43279b83684d1b7902a532a19451d9c89a28be41ef4c341ca53bcfe72'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -75,9 +77,10 @@ sha256sums=('1d280ae2730eb6c9b8c7e920cac2e8111c8db02c498db0c142860a84106cc169'
             'SKIP'
             'eb3f017ba28fdbb52506a8a7b560a2c0edb70812fd5eabb33013619e109ecdd6'
             'a3261779f2c8602e7fba79f5f479d6c4a2f9935a41879228cc6dbe79c1d624bd'
-            '0e1ccaf0db006291273d3095bbd190eefe9807520e44645b3d76c79fa3644050'
+            'f47d3f7cb82daebe37cd9299dcabe859f7d4e8343906f6c33ec43a80d1193aa0'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            'abdd04bd6beecb7c961130a68d71e6332bd260462eeaa2f4f8e634de813dcc4d'
             '61370b766e0c60b407c29d2c44b3f55fc352e9049c448bc8fcddb0efc53e42fc'
             '3d3266bd082321dccf429cc2200d1a4d870d2031546f9f591b6dfbb698294808'
             '7f58bf48fd6b0c93b448ced408ef5b6cb41da392f58378475f8d5f5c09f2a98f'
@@ -89,7 +92,8 @@ sha256sums=('1d280ae2730eb6c9b8c7e920cac2e8111c8db02c498db0c142860a84106cc169'
             'abc9593a479b9bb677112fa1d6502c8165d27d0854a712e1662374e4bafb96a0'
             'd068215561ce769439901da0118e251c624de58fe414cc2166fbf972f76dd1a7'
             'ac0fb2180560652f94bebb3c09baef3c34785b539cae541df175ebec6989d79c'
-            'c23c3bf29fd557fe2e9ca72e65cd0f1e790b771b4568d0732388d7d420cefd6a')
+            'c23c3bf29fd557fe2e9ca72e65cd0f1e790b771b4568d0732388d7d420cefd6a'
+            '5e1b8b1e9b3243a5ab315481c39b1b88f28923148659dcc0ac7ed78d9ba4f072')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
@@ -131,6 +135,7 @@ prepare() {
     patch -p1 -i "${srcdir}/0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch"
     patch -p1 -i "${srcdir}/0007-set-default-cubietruck-led-triggers.patch"
     patch -p1 -i "${srcdir}/0008-USB-armory-support.patch"
+    patch -p1 -i "${srcdir}/0009-ARM-dts-dove-add-Dove-divider-clocks.patch"
   fi
 
   # add freedo as boot logo
@@ -144,6 +149,10 @@ prepare() {
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
+
+  # fix #46968
+  # hangs on older intel hardware
+  patch -Np1 -i "${srcdir}/0001-disabling-primary-plane-in-the-noatomic-case.patch"
 
   # make the radeon driver load without the firmwares
   # http://www.fsfla.org/pipermail/linux-libre/2015-August/003098.html
