@@ -1,16 +1,17 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=tarantool
-_commit=3fb2936620674fe33b98cccb9c462068f4a587e0
-pkgver=1.6.7.r592
+_commit=cb15dda8469cad3cdba6d656504fb629fa5e6d80
+pkgver=1.6.8.r420
 pkgrel=1
 pkgdesc='Lua application server integrated with a database management system'
 arch=(i686 x86_64)
 url='http://www.tarantool.org'
 license=(BSD)
-depends=(readline ncurses zlib)
-makedepends=(git cmake)
+depends=(readline ncurses zlib libyaml)
+makedepends=(git cmake systemd)
 checkdepends=(python2-daemon python2-gevent python2-tarantool)
+install=tarantool.install
 source=(git://github.com/tarantool/tarantool.git#commit=$_commit
         git://github.com/tarantool/luajit.git
         git://github.com/tarantool/msgpuck.git
@@ -47,10 +48,15 @@ build() {
 
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_SYSCONFDIR=/etc/tarantool \
+    -DCMAKE_INSTALL_BINDIR=/usr/bin \
+    -DCMAKE_INSTALL_SYSCONFDIR=/etc \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_SKIP_RPATH=ON \
+    -DENABLE_BUNDLED_LIBYAML:BOOL=OFF \
+    -DENABLE_BACKTRACE:BOOL=ON \
+    -DWITH_SYSTEMD:BOOL=ON \
+    -DENABLE_DIST:BOOL=ON \
     .
 
   make
@@ -66,5 +72,5 @@ package() {
   make install DESTDIR="$pkgdir"
 
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  rm "$pkgdir/usr/share/doc/tarantool/LICENSE"
+  rm -r "$pkgdir/var/run"
 }
