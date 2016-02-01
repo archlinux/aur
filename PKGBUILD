@@ -1,8 +1,9 @@
 pkgname='co2mon-git'
 pkgdesc='CLI for MasterKit CO2 Monitor'
-pkgver=2.1.0.r4.ge2ed7b3
+pkgver=2.1.0.r6.ge8d7ce5
 pkgrel=1
 arch=('i686' 'x86_64')
+license=('GPL3')
 url='https://github.com/dmage/co2mon'
 
 conflicts=('co2mon')
