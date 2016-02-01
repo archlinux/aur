@@ -3,7 +3,7 @@
 
 pkgname=minecraft-server
 pkgver=1.8.9
-pkgrel=3
+pkgrel=4
 pkgdesc="Minecraft server unit files, script, and jar"
 arch=('any')
 url="http://minecraft.net/"
