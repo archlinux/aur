@@ -2,7 +2,7 @@
 # Contributor: David Roheim <david dot roheim at gmail dot com>
 
 pkgname='trafficserver'
-pkgver=5.3.1
+pkgver=6.1.0
 pkgrel=1
 pkgdesc="Apache Traffic Server"
 url="http://trafficserver.apache.org/"
@@ -16,8 +16,8 @@ source=(
     trafficserver.tmpfiles
     trafficserver.service.in.patch)
 
-md5sums=('9c0e2450b1dd1bbdd63ebcc344b5a813'
-         'fc8ab2b6d01e22fb376832fb13137db1'
+md5sums=('9297aba67bafb531d8e74ba709675433'
+         '44b617f732eb1944a916f36cc393ab7b'
          '74ba08091f580f8984eee8db0f7e4d27')
 
 install=${pkgname}.install
@@ -31,14 +31,12 @@ backup=(
     'etc/trafficserver/records.config'
     'etc/trafficserver/socks.config'
     'etc/trafficserver/trafficserver-release'
-    'etc/trafficserver/prefetch.config'
     'etc/trafficserver/splitdns.config'
     'etc/trafficserver/vaddrs.config'
     'etc/trafficserver/cluster.config'
     'etc/trafficserver/storage.config'
     'etc/trafficserver/volume.config'
     'etc/trafficserver/icp.config'
-    'etc/trafficserver/update.config'
     'etc/trafficserver/remap.config'
     'etc/trafficserver/ssl_multicert.config'
     'etc/trafficserver/cache.config'
@@ -52,6 +50,7 @@ backup=(
     'etc/trafficserver/body_factory/default/cache#not_in_cache'
     'etc/trafficserver/body_factory/default/response#bad_response'
     'etc/trafficserver/body_factory/default/request#scheme_unsupported'
+    'etc/trafficserver/body_factory/default/redirect#moved_permanently'
     'etc/trafficserver/body_factory/default/connect#dns_failed'
     'etc/trafficserver/body_factory/default/README'
     'etc/trafficserver/body_factory/default/redirect#moved_temporarily'
