@@ -1,7 +1,7 @@
 # Maintainer: Joakim Reinert <mail+aur@jreinert.com>
 
 pkgname=ketchup-git
-pkgver=0.0.1
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='a pomodoro timer using client <-> server architecture'
 arch=(any)
@@ -17,7 +17,7 @@ conflicts=('ketchup-bin')
 
 pkgver() {
   cd "$pkgname"
-  git describe --tags | sed 's/^v//;s/-/./g'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
