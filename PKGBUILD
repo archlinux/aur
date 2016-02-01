@@ -16,7 +16,7 @@ conflicts=('hawaii-system-preferences-git')
 groups=('hawaii')
 options=('debug')
 source=("https://github.com/hawaii-desktop/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha1sums=('d88e031e7ed9be20e7559820a7649a4b')
+sha1sums=('3d6a2e77953859efad03863888784c12a47b12ef')
 
 prepare() {
 	mkdir -p build
