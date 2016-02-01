@@ -1,9 +1,9 @@
 # Maintainer: Javier Tia <javier.tia at gmail dot com>
 
 pkgname=lib32-libtins
-pkgver=3.2
+pkgver=3.3
 pkgrel=1
-pkgdesc="32-bit A high-level, multiplatform C++ network packet sniffing and crafting library"
+pkgdesc="A high-level, multiplatform C++ network packet sniffing and crafting library (32-bit) version"
 arch=('x86_64')
 url="http://libtins.github.io/"
 license=('BSD')
@@ -12,18 +12,16 @@ makedepends=('cmake')
 options=('!libtool')
 source=(
   "https://github.com/mfontanini/libtins/archive/v${pkgver}.tar.gz"
-  "Set-where-find-and-install-32-bits-libraries.patch"
+  "0001-Set-where-find-and-install-32-bits-libraries.patch"
 )
 
-sha256sums=(
-  '7f11c8b6c33574fcc48a5310557320d7eff7216d28e6f7062ea3e4745f2ce4fc'
-  '97d41800372ebf25dff241fb84c58e1d798cc9fc16c17b0e528a5f28efcfd99d'
-)
+sha256sums=('a2d9b8a4dd0b2a4d0d1924d2b2b03ea76a7ceb241f91c6a7ed262a1a7d64d94d'
+            'cda02bbdf6edf95b6adaef57b1c4122dae26932c8ff4465e00183b0403a85e34')
 
 prepare() {
   cd "${srcdir}"/libtins-${pkgver}
   mkdir build
-  patch -Np1 -i ${srcdir}/Set-where-find-and-install-32-bits-libraries.patch
+  patch -Np1 -i ${srcdir}/${source[1]}
 }
 
 build() {
@@ -33,7 +31,7 @@ build() {
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
   cmake -D CMAKE_BUILD_TYPE=Release -D LIBTINS_ENABLE_CXX11=yes \
         -D CMAKE_INSTALL_PREFIX=/usr ../
-  make -j8
+  make
 }
 
 package() {
@@ -42,3 +40,4 @@ package() {
   rm -R "${pkgdir}"/usr/{CMake,include}/
 }
 
+# vim:set ft=sh ts=2 sw=2 et:
