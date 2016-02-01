@@ -3,7 +3,7 @@
 _mintrel=betsy
 pkgname=nemo-compare
 pkgver=2.8.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Context menu comparison extension for Nemo file manager"
 arch=("any")
 url="https://github.com/linuxmint/nemo-extensions"
