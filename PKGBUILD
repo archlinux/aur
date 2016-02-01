@@ -5,7 +5,7 @@
 # AND (!) the first line in the .install file!
 
 pkgname='tor-browser-zh-cn'
-pkgver='5.0.7'
+pkgver='5.5'
 _language='zh-CN'
 pkgrel=1
 pkgdesc='Tor Browser Bundle: Anonymous browsing using firefox and tor'
@@ -31,8 +31,8 @@ source+=("${pkgname}.desktop"
          "${pkgname}.png"
          "${pkgname}.sh")
 
-sha256sums_x86_64=('3ecd5bdfec874ce65b725db6989547801a0d429651e2461a1645b1d5eb636bd8' 'SKIP')
-sha256sums_i686=(  '4b9f42fbb18587a77994153e3a0e59e1f1c3395f8bd3a13468f630057df36d9d' 'SKIP')
+sha256sums_x86_64=('a091d3c033bf80d7021a23255e40fc8efa238f72a03f67d43e75d1a7df2fdee9' 'SKIP')
+sha256sums_i686=(  '053cec43ed8447e2ad3a122c3d6bd80699b3569c06c26b20bbbb626effcdf406' 'SKIP')
 sha256sums+=('3d5fc01f2cfbae0a00b7117b0b0a24028d1686e6f81a347809f74de2d8522ff7'
              '17fc2f5784d080233aca16e788d62ab6fe3e57cf781b123cfe32767de97d6d3b'
              '89ed1cda6611abcbfdafef9aec78ada146643455d6675b22b72319ae286ea67e')
@@ -59,5 +59,5 @@ package() {
       install -Dm 644 tor-browser-linux32-${pkgver}_${_language}.tar.xz ${pkgdir}/opt/${pkgname}/tor-browser-linux32-${pkgver}_${_language}.tar.xz
    else
       install -Dm 644 tor-browser-linux64-${pkgver}_${_language}.tar.xz ${pkgdir}/opt/${pkgname}/tor-browser-linux64-${pkgver}_${_language}.tar.xz
-   fi
+  fi
 }
