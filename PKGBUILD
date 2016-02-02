@@ -18,7 +18,7 @@ makedepends=( 'qt5-base')
 options=(!emptydirs)
 
 
-source=("http://cloudcross.mastersoft24.ru/download/?v=$pkgver-rc1&r=pacman")
+source=("http://cloudcross.mastersoft24.ru/download/?v=$pkgver-rc3&r=pacman")
 
 
 md5sums=("")
@@ -26,7 +26,7 @@ md5sums=("")
 
 build() {
 
-	cd "$srcdir/CloudCross-$pkgver-rc1"
+	cd "$srcdir/CloudCross-$pkgver-rc2"
 	
 	rm -rf build
 	mkdir build
@@ -36,11 +36,11 @@ build() {
 }
  
 package() {
-	cd "$srcdir/CloudCross-$pkgver-rc1/build"
+	cd "$srcdir/CloudCross-$pkgver-rc2/build"
 	
 	mkdir -p "${pkgdir}/usr/bin"
 	
-	cp "$srcdir/CloudCross-$pkgver-rc1/build/ccross" "${pkgdir}/usr/bin"
+	cp "$srcdir/CloudCross-$pkgver-rc2/build/ccross" "${pkgdir}/usr/bin"
 	
 	#ln -s "${pkgdir}/usr/bin/ccross" "${pkgdir}/usr/bin/CloudCross" 
 	#ln -s "${pkgdir}/usr/bin/ccross" "${pkgdir}/usr/bin/grive2" 
