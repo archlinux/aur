@@ -51,36 +51,39 @@ _use_current=
 pkgbase=linux-rt-bfq
 pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _kernelname=-rt-bfq
-_srcname=linux-4.1
-_pkgver=4.1.15
-_rtpatchver=rt17
+_srcname=linux-4.4
+_pkgver=4.4.1
+_rtpatchver=rt4
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=3
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc')
-_bfqrel=v7r8
-#_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.1.0-${_bfqrel}"
-_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.1.0-${_bfqrel}/"
+_bfqrel=v7r11
+_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.4.0-${_bfqrel}"
+#_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.4.0-${_bfqrel}/"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
 
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.sign"
-        "http://www.kernel.org/pub/linux/kernel/projects/rt/4.1/patch-${_pkgver}-${_rtpatchver}.patch.xz"
-        "http://www.kernel.org/pub/linux/kernel/projects/rt/4.1/patch-${_pkgver}-${_rtpatchver}.patch.sign"
-        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-4.1.patch"
-        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-for-4.1.patch"
-        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqrel}-for-4.1.0.patch"
+        "http://www.kernel.org/pub/linux/kernel/projects/rt/4.4/patch-${_pkgver}-${_rtpatchver}.patch.xz"
+        "http://www.kernel.org/pub/linux/kernel/projects/rt/4.4/patch-${_pkgver}-${_rtpatchver}.patch.sign"
+        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-4.4.0.patch"
+        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-for-4.4.0.patch"
+        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqrel}-for.patch"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         'linux-rt-bfq.preset'
         'change-default-console-loglevel.patch'
         'config' 'config.x86_64'
         'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch'
-        'CVE-2016-0728.patch')
+        '0004-sdhci-revert.patch'
+        '0006-tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch'
+        '0007-4.4-revert-btrfs.patch'
+        '0008-4.4-revert-xfs.patch')
         
 prepare() {
     cd ${_srcname}
@@ -98,9 +101,21 @@ prepare() {
         msg "Fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch"
         patch -p1 -i "${srcdir}/fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch"
         
-    ### Fix CVE-2016-0728
-        msg "Fix CVE-2016-0728"
-        patch -Np1 -i "${srcdir}/CVE-2016-0728.patch"    
+    ### Revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=9faac7b95ea4f9e83b7a914084cc81ef1632fd91
+    # fixes #47778 sdhci broken on some boards
+    # https://bugzilla.kernel.org/show_bug.cgi?id=106541
+        msg "Fixes #47778 sdhci broken on some boards"
+        patch -Rp1 -i "${srcdir}/0004-sdhci-revert.patch"    
+        
+    ### Fixes #47805 kernel panics on platform modules
+    # https://bugzilla.kernel.org/show_bug.cgi?id=110751
+        msg "Fixes #47805 kernel panics on platform modules"
+        patch -Np1 -i "${srcdir}/0006-tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch"
+        
+    ### Fix broken suspend from btrfs and xfs
+        msg "Fix #47757"
+        patch -Np1 -i "${srcdir}/0007-4.4-revert-btrfs.patch"
+        patch -Np1 -i "${srcdir}/0008-4.4-revert-xfs.patch"    
     
     ### set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
     # remove this when a Kconfig knob is made available by upstream
@@ -422,6 +437,11 @@ package_linux-rt-bfq-headers() {
 		/usr/bin/strip ${STRIP_BINARIES} "${binary}";;
 	esac
 	done
+	
+        # remove a files already in linux-bfq-docs package
+        rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-01"
+        rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-02"
+        rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.select-break"
 
     # remove unneeded architectures
     rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
@@ -449,22 +469,25 @@ package_linux-rt-bfq-docs() {
     rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 }
 
-sha512sums=('168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d201625c66e375a23226745eaada9176eb006ca023613cec089349e91751f3c0'
+sha512sums=('13c8459933a8b80608e226a1398e3d1848352ace84bcfb7e6a4a33cb230bbe1ab719d4b58e067283df91ce5311be6d2d595fc8c19e2ae6ecc652499415614b3e'
             'SKIP'
-            '646daf16c01fb8c3013c7c9919c18c3635eb6bd37560623cb56cc7a6d0b22fb13290cee8865dfbcc435cd8544cc3ecb6f3aae538d10c9e0b1098806f233155a3'
+            'b117b6f88dd713a33691306e483d5c42bcf61091d91f7248e1537ac7f7b96380f5f7df81f399cecda13d9388ad7aa52ed2e6d46f7b27706d2f197b8e64c330b3'
             'SKIP'
-            '37ca7f60d7451ee8cc07ba4b698a42e48cc4d3fddedbfddfe4e414d81d754840fd3cc6a2f87e7f1bcb934aa6699651904feec50e8ad7e801eb721736d5ea0e16'
+            '4aefa6c6aacdc91b33974b625a72ab91c7731418b84544d41b4c9d79053683b687da5427d8c7bd74b502c6a97f3753b213f0c7435afd6ac1f21fee31835201c2'
             'SKIP'
-            '383cd020ab882389731ef78abca727eccc8247ed82b95c89df93d7065bfde093b82e32190ad1fb29b37de35eb20b40339f2c02ad694a3978884255b193f5bc1a'
-            'f7bcb50e7de166e0d89194a3cad1feae99c4a5a9918e8af691d7635ed8ef64762ff2af4702dc6ba0eef0fc01ad75173abddbf01ae89bc6e03ace5e54f4098b12'
-            '1db70764577d3e8d5e65351bdef7f2cf61d2546138a6342c4bf4e5e6738b8e06b5291a9a0c12f9fc2c8cb620048006d05474cf75902cb26e7504038150cf0a44'
+            'bfd5d1a2d8f203e4d13914d311e8cc79b81695a41dc24179074cb05a5a9b5b0cc89a77062c6b8f79c850281aaa0d02dce40e23750aea7d1015f675c1cc024027'
+            '275b7573adf648325ab950f8a8be7753f2efac0c4cd5030d31b0482fca0b9b9886c85dec989acde15eadf128366c250ecbd19d5527bfb41f472425fef43e93fd'
+            '9defbcaca7ec7c849c67f1907be32c75638300d012e41d540f3d35ce13aff8561dfb68f31389096ab1c3d5b64631e682352458046af1e8af5abe085a1f59d9a1'
             '62fdd5c0a060a051b64093d71fbb028781061ccb7a28c5b06739a0b24dac0945740d9b73ff170784f60005a589774bcc14f56523ec51557eb3a677f726ec34cf'
             '14d530c8d727e5253474b3d46a7e30933bcc0aa9a6cf597ab6557c12779e2ce627d49258a3623f48421b48cd1a29012f7e3ff984387488c101d94d98fe0aae9d'
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
-            '667288bbbe7aa75702d6983e0cca4efd8949fc30eb8d8205f42ef114f2a3b91db6978295ee0a03d3a8b30c51ebcad1bf3a70783543f2f5502c08b21a37f442b3'
-            'e5f32edbb03a0bd7f4bc611f07165a045b3c90e6f0464b9442146bdd34c7b5017d5f5a93bcc57ecaf7c51788f6d70f5e3a0d9077858e395eb259926bce95b86e'
+            '756a5c5ec2db9153d0f749c4f358501d78743ab6f7538c7c127aad0a6a0bd21364f15315689f4ccd8c7b559e4cebefdfb8bb55ee90aabe3d0bd5a3d5f00703c7'
+            '56ce250e1b14b03b28dfdf03923ffd173d05edc5fe9dcf5daecd121370e618d62eb8448b930503d69989c9c7ee3e3d8b64768962e78f5a1d08ba1267405192df'
             '326dc571c072d4c47381852f16c00c8a7b27d11a5e6ff0f60f5e3a21d4a833c1e467dda1c2a5c04a6611af48bb6ef017f9183ea4ee578aab1a07e91e44d4e528'
-            '52a4c7bedaf369371b8ba081cc255c6afc04a096c1d345ff7ef4e60631243a1ca20ea6464f708a3ed330ed9c2826dd895eeb1d84a230b6d5d07564000c8f455d')
+            'be80d7ee558595d4b17b07a5a2b729d9a9503c963ec1b19bac6a87601eaefd28075aea7fb6d9c77e2e15e063fc6a8a2e8744bc1efe63e2a58b8c3ede0d89c821'
+            'a4580a922f8c1e26a4c41065e1690ee15a6ca8c096b329c2dde048ff11eef4c98348d9b4c87702862e0bf4cfaeff5122d4aca9d3b4085efc805068dd79c7f30c'
+            '9ebfcb5bfa613bd6b2c2817d3487bd22c2fbbb5f686f68c28912813be141d584b33cc8d8f175ce7cf10ec686902f7336c966b04b00d6aa5409298f1474c58035'
+            '321a4817ca9a7486f7bf212978e6eeab1481b31c37d35209d7062be7d9f360d5b1f26b2dc45a4c46879c2d14b4ed212b322ea91d0fb85f74d6c298a7cc2a3198')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
