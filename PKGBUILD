@@ -2,10 +2,10 @@
 
 pkgname='virt-viewer'
 pkgver='3.1'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Lightweight interface for interacting with the graphical display of virtualized guest OS'
 arch=('any')
-url='http://virt-manager.org/'
+url='http://virt-manager.org'
 depends=('spice' 'libvirt' 'libxml2' 'spice-gtk3' 'spice-protocol' 'gtk-vnc')
 makedepends=('libtool' 'intltool')
 license=('GPL')
