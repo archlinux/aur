@@ -2,7 +2,7 @@
 
 
 pkgname=cloudcross
-pkgver=1.0.1
+pkgver=1.0.1-rc2
 pkgrel=2
 pkgdesc="CloudCross is a improved Google Drive sync client."
 arch=('i686' 'x86_64')
