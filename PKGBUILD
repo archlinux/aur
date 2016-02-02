@@ -1,7 +1,7 @@
 # Maintainer: Carlos Silva <r3pek@r3pek.org>
 
 pkgname=autenticacao-gov-pt
-pkgver=1.0.6
+pkgver=1.0.11
 pkgrel=1
 pkgdesc="O Autenticação.gov.pt é o mecanismo que permite utilizar o Cartão de Cidadão eficientemente e em segurança nos navegadores que suportem ou não plugins Java"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('java-runtime' 'pcsclite' 'pcsc-tools' 'ccid')
 
 source=("autenticacao-gov-pt.install" "https://autenticacao.gov.pt/fa/ajuda/software/autenticacao.gov.pt.deb")
 
-md5sums=("435ec9d005b57c3982afdaedb27dbc5b" "7f91ec2ebd87733451919fb21ddf2182")
+md5sums=("435ec9d005b57c3982afdaedb27dbc5b" "c4f4adc926eeac38293aba833f782382")
 
 install='autenticacao-gov-pt.install'
 
