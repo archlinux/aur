@@ -23,7 +23,7 @@ pkgver() {
 build() {
   cd "$srcdir/d0_blind_id"
   sh autogen.sh
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --enable-static --enable-shared
   make
 }
 
