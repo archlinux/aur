@@ -4,7 +4,7 @@ pkgdesc="ROS - This package provides implementations of the Trajectory Rollout a
 url='http://wiki.ros.org/base_local_planner'
 
 pkgname='ros-indigo-base-local-planner'
-pkgver='1.12.5'
+pkgver='1.12.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -52,10 +52,16 @@ ros_depends=(ros-indigo-nav-core
 depends=(${ros_depends[@]}
   eigen3)
 
-_tag=release/indigo/base_local_planner/${pkgver}-${_pkgver_patch}
-_dir=base_local_planner
-source=("${_dir}"::"git+https://github.com/ros-gbp/navigation-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/base_local_planner/${pkgver}-${_pkgver_patch}
+# _dir=base_local_planner
+# source=("${_dir}"::"git+https://github.com/ros-gbp/navigation-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="navigation-release-release-indigo-base_local_planner-${pkgver}-${_pkgver_patch}"
+source=("https://github.com/ros-gbp/navigation-release/archive/release/indigo/base_local_planner/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('eafd6c1ef89b9c67d14387a0aa6b0bb8a1d51124421ed81302e8e2d1285a61b6')
 
 build() {
   # Use ROS environment variables
