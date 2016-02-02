@@ -2,7 +2,7 @@ pkgname=('heka')
 srcname='heka'
 pkgdesc='Data collection and processing made easy'
 pkgver='0.10.0'
-pkgrel='1'
+pkgrel='2'
 arch=('i686' 'x86_64')
 url="https://github.com/mozilla-services/${srcname}"
 license=('MPL2')
@@ -23,12 +23,16 @@ conflicts=("${pkgname[0]%-git}")
 
 source=(
     "${srcname}::git+https://github.com/mozilla-services/${srcname}.git#tag=v${pkgver}"
-    "cmake.patch"
+    'heka.service'
+    'cmake.patch'
 )
 sha512sums=(
     'SKIP'
     'SKIP'
+    'SKIP'
 )
+
+install='heka.install'
 
 prepare() {
     cd "${srcdir}/${srcname}"
@@ -37,36 +41,36 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/${srcname}"
+    path_build="${srcdir}/build"
+    mkdir --parents "${path_build}"
+    cd "${path_build}"
 
-    BUILD_DIR="${PWD}/build"
-    export GOPATH="${BUILD_DIR}/heka"
+    export GOPATH="${path_build}/heka"
+    export LD_LIBRARY_PATH="${GOPATH}/lib"
+    export DYLD_LIBRARY_PATH="${GOPATH}/lib"
     export GOBIN="${GOPATH}/bin"
     export PATH="${GOBIN}:${PATH}"
-    export LD_LIBRARY_PATH="${BUILD_DIR}/heka/lib"
     export CTEST_OUTPUT_ON_FAILURE=1
 
-    mkdir --parents "${BUILD_DIR}"
-    cd "${BUILD_DIR}"
     cmake \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DCMAKE_BUILD_TYPE='release' \
         -DHEKA_PATH='/usr/share/heka' \
-        ..
+        "${srcdir}/${srcname}"
     make
 }
 
 package() {
-    cd "${srcdir}/${srcname}"
+    path_build="${srcdir}/build"
+    cd "${path_build}"
 
-    BUILD_DIR="${PWD}/build"
-    export GOPATH="${BUILD_DIR}/heka"
+    export GOPATH="${path_build}/heka"
     export GOBIN="${GOPATH}/bin"
     export PATH="${GOBIN}:${PATH}"
 
-    cd "${BUILD_DIR}"
     make DESTDIR="${pkgdir}" install
 
-    install -D --directory "${pkgdir}/var/cache/hekad"
-    install -D --directory "${pkgdir}/etc/heka/conf.d"
+    install --owner='533' --group='533' --mode='750' --directory "${pkgdir}/var/cache/hekad"
+    install --directory "${pkgdir}/etc/heka/conf.d"
+    install -D --mode='644' "${srcdir}/heka.service" "${pkgdir}/usr/lib/systemd/system/heka.service"
 }

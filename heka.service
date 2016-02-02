@@ -1,0 +1,16 @@
+[Unit]
+Description=heka - data collector and processor daemon
+After=network.target auditd.service
+
+[Service]
+User=heka
+Group=heka
+
+Restart=on-failure
+
+ExecStart=/usr/bin/hekad -config=/etc/heka/conf.d/
+
+ExecReload=/usr/bin/kill --signal HUP ${MAINPID}
+
+[Install]
+WantedBy=multi-user.target
