@@ -1,6 +1,6 @@
 # Maintainer: Jacob Mischka <jacob@mischka.me>
 pkgname=brave
-pkgver=0.7.12dev
+pkgver=0.7.11dev
 pkgrel=1
 pkgdesc='Web browser that blocks ads and trackers by default.'
 arch=('i686' 'x86_64')
@@ -9,16 +9,13 @@ license=('custom':"MPL2")
 makedepends=('npm')
 source=("https://github.com/brave/browser-laptop/archive/v${pkgver}.tar.gz"
 		"Brave.desktop")
-md5sums=('af19aa9ef6e5bb20d73a567453ddab75'
+md5sums=('87d9b65b3386eab299cffbba04a474d9'
          '6919ccb899e04cf785696ff2a0172938')
 
 build() {
 	cd "${srcdir}/browser-laptop-${pkgver}"
 	npm install node-gyp@3.2.1
 	npm install
-
-	sed -i.bak "/'npm run checks',/d" ./tools/buildPackage.js
-
 	npm run build-package
 }
 
