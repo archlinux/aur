@@ -1,9 +1,9 @@
 # Maintainer: Ondřej Svoboda <ondrej@svobodasoft.cz>
 pkgname=osdlyrics-git
-provides=osdlyrics
+provides=(osdlyrics)
 conflicts=(osdlyrics osdlyrics-pedrohlc)
 _pkgver=0.4.99
-pkgver=0.4.99.r817.3fe2571
+pkgver=0.4.99.r821.98f02ce
 pkgrel=1
 pkgdesc="Standalone lyrics fetcher/displayer (windowed and OSD mode). Supports MPRIS1/2 players, and MPD."
 arch=(i686 x86_64)
