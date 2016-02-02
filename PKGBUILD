@@ -1,13 +1,20 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=k3b-frameworks-git
-pkgver=2.9.90.r5954.52b299a
+pkgver=2.9.90.r5955.e8961fe
 pkgrel=1
 pkgdesc="Feature-rich and easy to handle CD burning application. KF5 Frameworks branch. (Git version)"
 arch=('i686' 'x86_64')
 url='http://k3b.sourceforge.net'
 license=('GPL')
-depends=('qt5-webkit' 'kfilemetadata' 'knotifyconfig' 'kcmutils' 'libkcddb-frameworks-git' 'libsamplerate' 'hicolor-icon-theme')
+depends=('qt5-webkit'
+         'kfilemetadata'
+         'knotifyconfig'
+         'kcmutils'
+         'libkcddb-frameworks-git'
+         'libsamplerate'
+         'hicolor-icon-theme'
+         )
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'kdoctools' 'flac' 'libmpcdec' 'ffmpeg' 'libmad' 'libdvdread' 'musicbrainz' 'libvorbis')
 optdepends=('cdrdao: for CD DAO mode burning support'
             'cdrkit: for CD burning support'
@@ -30,10 +37,8 @@ optdepends=('cdrdao: for CD DAO mode burning support'
             'musicbrainz: Provide information about the CD, about the artist or about related information')
 provides=('k3b')
 conflicts=('k3b')
-source=('git://anongit.kde.org/k3b.git#branch=kf5'
-        'fix_install_knotify_kxmlgui_files.patch')
-sha1sums=('SKIP'
-          '1a797024b07492d281fc7ffdaaaa933ffb83d52d')
+source=('git://anongit.kde.org/k3b.git#branch=kf5')
+sha1sums=('SKIP')
 install=k3b-frameworks-git.install
 
 pkgver() {
@@ -44,9 +49,6 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-
-  cd k3b
-  patch -p0 -i "${srcdir}/fix_install_knotify_kxmlgui_files.patch"
 }
 
 build() {
