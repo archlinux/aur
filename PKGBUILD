@@ -5,7 +5,7 @@ _module="${_name}"
 _check="enabled"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="1.0.2"
+pkgver="1.0.3"
 pkgrel="1"
 pkgdesc="An extension module for click to enable registering CLI commands via setuptools entry-points."
 arch=("any")
@@ -19,7 +19,7 @@ if [[ "${_check}" == "enabled" ]]; then
                   "python2-pytest")
 fi
 source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('3e33f24dafbc8f52dd2a557f5fb1452acc7ab67ff354220a832a393bdedb46a8')
+sha256sums=('7acc5e7eedd2dfd719714e8d53ae99030b5357aed661d0b06dacd6c2d583d7c5')
 
 prepare() {
     cp -a "${srcdir}/${_name}-${pkgver}" "${srcdir}/${_name}-${pkgver}-python2"
