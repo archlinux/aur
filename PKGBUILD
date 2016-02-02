@@ -68,6 +68,7 @@ _pgmver() {
             sed 's|\.$||g')"
   
   echo "${_ver}"
+  
   if [ -z "${_ver}" ]; then
     return 1
   fi
@@ -79,6 +80,7 @@ _svnrelease() {
   _rev="$(svn info "${_unpackeddir}" | grep '^Revision' | cut -d' ' -f2)"
   
   echo "${_rev}"
+  
   if [ -z "${_rev}" ]; then
     return 1
   fi
@@ -116,7 +118,7 @@ build() {
   ### Update version.h to the actual version.
   _ver="$(_pgmver)"
   _rev="$(_svnrelease)"
-  msg "Updating version in src/version.h to ${_ver}+svn${_rev}."
+  msg "Updating version in src/version.h to ${_ver}+svn${_rev}..."
   sed -i 's|^\([[:space:]]*#define[[:space:]]*WWWOFFLE_VERSION[[:space:]]*\).*$|/*+ +*/\n/*+ The following line was automatically upgraded by the Arch Linux PKGBUILD (package build script) +*/\n/*+ in order to match the version as in conf/wwwoffle.conf.template and the SVN revision. +*/\n\1"'"${_ver}+svn${_rev}"'"|' \
     'src/version.h'
   
