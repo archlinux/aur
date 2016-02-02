@@ -1,6 +1,6 @@
 pkgbase = fbc
 	pkgdesc = FreeBASIC Compiler (Release version)
-	pkgver = 1.04
+	pkgver = 1.05
 	pkgrel = 1
 	url = http://www.freebasic.net
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = fbc
 	conflicts = freebasic
 	conflicts = fbc-git
 	options = staticlibs
-	source = https://downloads.sourceforge.net/fbc/FreeBASIC-1.04.0-source.tar.gz
+	source = https://downloads.sourceforge.net/fbc/FreeBASIC-1.05.0-source.tar.gz
 	sha256sums = SKIP
 
 pkgname = fbc
