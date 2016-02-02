@@ -4,7 +4,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=flow
-pkgver=0.20.1
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="A static typechecker for JavaScript"
 arch=('i686' 'x86_64')
@@ -14,10 +14,17 @@ url="http://flowtype.org"
 license=('BSD')
 source=(
     "https://github.com/facebook/${pkgname}/archive/v${pkgver}.tar.gz"
+    'Makefile-fPIC.patch'
 )
 sha256sums=(
-    '0b2f7fc1eaa15c6ed8f39ddfd7f94e758e52b805c43efcf45d5acce6057eb705'
+    '6e367334193f4785da0c96bd1d82937a8336cd0f65bbaa2b8fcb8e6a2fcfe69f'
+    '85c7dc96e0ad270edc8f5dc631069282fb5be4a044a80878cd357642316066b8'
 )
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -p0 <"${srcdir}/../Makefile-fPIC.patch"
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
