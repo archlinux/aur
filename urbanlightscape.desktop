@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=UrbanLightscape
+GenericName=UrbanLightscape
+Comment=A photo filter for exposure, brightness and lighting correction
+Type=Application
+Exec=urbanlightscape %f
+Icon=urbanlightscape
+Terminal=false
+Categories=Graphics;2DGraphics;
