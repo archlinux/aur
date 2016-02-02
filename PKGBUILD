@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=watch-git
-pkgver=r48.0c9b18a
+pkgver=r50.e8a67f1
 pkgrel=1
 epoch=
 pkgdesc="Watches for changes in a directory tree and reruns a command in an acme win or just on the terminal."
@@ -23,6 +23,7 @@ noextract=()
 _gourl=github.com/eaburns/Watch
 
 pkgver() {
+  GOPATH="$srcdir" go get -d ${_gourl}
   cd "$srcdir/src/${_gourl}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
