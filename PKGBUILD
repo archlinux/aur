@@ -2,11 +2,11 @@
 
 _pkgname=dodo
 pkgname=${_pkgname}-git
-pkgver=r74.f4d89e7
+pkgver=r122.52f622e
 pkgrel=1
 pkgdesc="Scriptable in-place file editor"
 arch=('i686' 'x86_64')
-url=(https://github.com/mkfifo/${_pkgname})
+url="https://github.com/mkfifo/${_pkgname}"
 license=('MIT')
 depends=()
 makedepends=('git')
