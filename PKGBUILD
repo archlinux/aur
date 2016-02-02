@@ -4,7 +4,7 @@ pkgdesc="ROS - A ROS node that simply forwards odometry information."
 url='http://wiki.ros.org/fake_localization'
 
 pkgname='ros-indigo-fake-localization'
-pkgver='1.12.5'
+pkgver='1.12.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -31,10 +31,16 @@ ros_depends=(ros-indigo-roscpp
   ros-indigo-message-filters)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/fake_localization/${pkgver}-${_pkgver_patch}
-_dir=fake_localization
-source=("${_dir}"::"git+https://github.com/ros-gbp/navigation-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/fake_localization/${pkgver}-${_pkgver_patch}
+# _dir=fake_localization
+# source=("${_dir}"::"git+https://github.com/ros-gbp/navigation-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="navigation-release-release-indigo-fake_localization-${pkgver}-${_pkgver_patch}"
+source=("https://github.com/ros-gbp/navigation-release/archive/release/indigo/fake_localization/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('082dd66300c59447ba9fbc7b0b2672d61bc0f4127ffaa310b305da33f6047a06')
 
 build() {
   # Use ROS environment variables
