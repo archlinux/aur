@@ -11,8 +11,15 @@ license=('BSD')
 depends=('pcre' 'libsndfile' 'libxmu' 'freetype2' 'libedit' 'libxml2' 'libtiff' 'libevent' 'yajl' 'libmysqlclient' 'lzo' 'libpng' 'python2' 'util-linux' 'freeglut' 'libjpeg-turbo' 'libtheora')
 makedepends=('cmake' 'git')
 options=('!makeflags' '!buildflags')
-source=("git://github.com/stevedekorte/io#tag=$pkgver")
-md5sums=('SKIP')
+source=("git://github.com/stevedekorte/io#tag=$pkgver"
+        PATCH-Fix-for-inlining-in-C11-mode.patch)
+md5sums=('SKIP'
+         'a3bab046cbc4be88ec95bb22c28abab3')
+
+prepare() {
+  cd io
+  git am ../PATCH-Fix-for-inlining-in-C11-mode.patch
+}
 
 build() {
   cd io
