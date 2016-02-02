@@ -2,13 +2,12 @@
 
 pkgname=yturl
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='YouTube videos on the command line'
 url=http://github.com/cdown/yturl
 arch=(any)
 license=(MIT)
-depends=(python python-requests)
-makedepends=(python-setuptools)
+depends=(python python-requests python-setuptools)
 source=("https://github.com/cdown/yturl/archive/${pkgver}.zip")
 md5sums=('5f8a316b6f5cfb80a6186f90aec92e8f')
 
