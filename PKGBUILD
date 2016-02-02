@@ -11,7 +11,7 @@ license=('GPLv3')
 makedepends=('perl-module-build')
 depends=('perl>=5.22.0' 'perl-data-dump' 'perl-math-gmpq' 'perl-math-gmpz' 'perl-math-mpfr>=3.29' 'perl-math-mpc')
 
-source="https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz"
+source=("https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('268b453a1ab6454a9e87bd74dff43bb9c17de9bb330195118c78f572a6adc9b1')
 
 package() {
