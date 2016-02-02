@@ -5,11 +5,11 @@
 # Modified by: César Vecchio <cesar UNDERSTRIKE vecchio AT yahoo DOT com>
 
 pkgname=med-openmpi
-pkgver=3.0.8
-pkgrel=3
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="MED stands for Modelisation et Echanges de Donnees, i.e. Data Modelization and Exchanges - MED is code-aster exchange module linked to hdf5"
 url="http://www.code-aster.org/outils/med/"
-license="LGPL"
+license=("LGPL")
 depends=('hdf5-openmpi' 'zlib')
 makedepends=('gcc-fortran' 'coreutils' 'openmpi' 'swig')
 provides=('med')
@@ -18,23 +18,23 @@ replaces=('med')
 arch=('i686' 'x86_64')
 source=("http://files.salome-platform.org/Salome/other/${pkgname//-openmpi/}-${pkgver}.tar.gz"
 	h5public_extract.patch)
-md5sums=('8adb41767474d262abca1ce031d08f47'
+md5sums=('a1e1eb068f20634f5ea797914241eb51'
          '156ab9456bab7b70237d0fc785b97e7c')
 
 prepare() {
-  cd ${srcdir}/${pkgname//-openmpi/}-${pkgver} || return 1
+  cd ${srcdir}/${pkgname//-openmpi/}-${pkgver}_SRC || return 1
   patch -Np1 -i ../h5public_extract.patch
 }
 
 build() {
-  cd ${srcdir}/${pkgname//-openmpi/}-${pkgver} || return 1
+  cd ${srcdir}/${pkgname//-openmpi/}-${pkgver}_SRC || return 1
 
   PYTHON=/usr/bin/python2 MPIFC=mpif90 ./configure --prefix=/usr --with-swig=swig --datadir=/usr/share/med --with-med_int=int || return 1
   make || return 1
 }
 
 package() {
-  cd ${srcdir}/${pkgname//-openmpi/}-${pkgver} || return 1
+  cd ${srcdir}/${pkgname//-openmpi/}-${pkgver}_SRC || return 1
 
   make DESTDIR=${pkgdir} install || return 1
   # now move the testprograms to share, we don't want all the stuff in the bindir
