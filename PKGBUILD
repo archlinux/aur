@@ -1,35 +1,42 @@
 # Maintainer: Aleksey Filippov <sarum9in@gmail.com>
 
 pkgbase=grpc
-pkgname=('grpc' 'php-grpc')
-pkgver=0.11.1
+# PHP is disabled until https://github.com/grpc/grpc/issues/4337 is fixed
+#pkgname=('grpc' 'php-grpc')
+pkgname=('grpc')
+pkgver=0.12.0
 _pkgver=$(echo $pkgver | tr . _)
-pkgrel=3
+pkgrel=1
 pkgdesc="A high performance, open source, general RPC framework that puts mobile and HTTP/2 first."
 arch=('i686' 'x86_64')
 url='http://www.grpc.io/'
 license=('BSD')
 makedepends=('re2c' 'openssl' 'protobuf3' 'php')
 source=(https://github.com/$pkgname/$pkgname/archive/release-$_pkgver.tar.gz)
-md5sums=('fb9b58c1f30deab63bd3ff2d046771a7')
+md5sums=('ea20466d6871394ea71d6881d3af2d0f')
 
 build() {
-  # Core
   cd "$srcdir/$pkgname-release-$_pkgver"
+
+  # Patch
+  sed -r 's|GetUmbrellaClassName|GetReflectionClassName|g' -i src/compiler/csharp_generator.cc
+
+  # Core
   # Avoid collision with yaourt's environment variable
   env --unset=BUILDDIR make $MAKEFLAGS prefix=/usr
 
   # PHP
-  cd "$srcdir/$pkgbase-release-$_pkgver/src/php/ext/$pkgbase"
-  phpize
-  LDFLAGS=-L"$srcdir/$pkgname-release-$_pkgver/libs/opt" ./configure --enable-grpc="$srcdir/$pkgname-release-$_pkgver"
-  make $MFLAGS
+  #cd "$srcdir/$pkgbase-release-$_pkgver/src/php/ext/$pkgbase"
+  #phpize
+  #LDFLAGS=-L"$srcdir/$pkgname-release-$_pkgver/libs/opt" ./configure --enable-grpc="$srcdir/$pkgname-release-$_pkgver"
+  #make $MFLAGS
 }
 
 check() {
+  true
   # PHP
-  cd "$srcdir/$pkgbase-release-$_pkgver/src/php/ext/$pkgbase"
-  make test
+  #cd "$srcdir/$pkgbase-release-$_pkgver/src/php/ext/$pkgbase"
+  #make test
 }
 
 _install_dir() (
@@ -49,7 +56,7 @@ package_grpc() {
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
-package_php-grpc() {
+_package_php-grpc() {
   depends=("grpc=${pkgver}-${pkgrel}" 'php')
 
   cd "$srcdir/$pkgbase-release-$_pkgver/src/php/ext/$pkgbase"
