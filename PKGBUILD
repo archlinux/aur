@@ -6,7 +6,7 @@
 pkgname=firefox-gtk2-bin
 _pkgname=firefox
 pkgver=44.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -16,8 +16,6 @@ depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
          'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite' 'ttf-font')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'ffmpeg: H264/AAC decoding'
-            'gst-plugins-good: MP3 playback'
-            'gst-plugins-ugly: MP3 playback'
             'upower: Battery API')
 install=firefox.install
 options=('!emptydirs' '!makeflags')
@@ -29,8 +27,8 @@ source_i686=(https://github.com/iPotable/firefox-gtk2-bin-archlinux/raw/master/f
 source_x86_64=(https://github.com/iPotable/firefox-gtk2-bin-archlinux/raw/master/firefox-${pkgver}.en-US.linux-x86_64.tar.bz2)
 sha256sums=('c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4')
-sha256sums_i686=('9c06ebfcdfc9f1c97f4078b5d8ee1fe67262f2362cddf1517d8e51b281d18128')
-sha256sums_x86_64=('5c2a041bf4cdd94222c6d7576a8b25ca7880e24aa8f26ac04f0c2cd243af7cf7')
+sha256sums_i686=('e33ce57c6dce0cd0cf06f8bfae47aa2440d9bf9da88d942fb63598baeea92d33')
+sha256sums_x86_64=('7dcf048f6cd0de9322f3b56319f94b59e874675948d91ccb2d09aa2af68c4da7')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 
 package() {
