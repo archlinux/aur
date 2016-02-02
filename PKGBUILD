@@ -2,7 +2,7 @@
 # Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 
 pkgname=sigrok-cli
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Client software that supports various hardware logic analyzers, CLI client"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://www.sigrok.org/wiki/Sigrok-cli"
 license=('GPL3')
 depends=('libsigrok' 'libsigrokdecode')
 source=("http://sigrok.org/download/source/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('f6786bc4d2455b8b7d225f4909946549')
+md5sums=('5989c334c6e679585b6730011fac4c4a')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
