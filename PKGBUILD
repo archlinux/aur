@@ -55,50 +55,50 @@ _BFQ_enable_=
 
 pkgname=(linux-ck-fbcondecor linux-ck-fbcondecor-headers)
 _kernelname=-ck-fbcondecor
-_srcname=linux-4.1
-pkgver=4.1.12
+_srcname=linux-4.3
+pkgver=4.3.5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc')
 options=('!strip')
-_ckpatchversion=2
-_ckpatchname="patch-4.1-ck${_ckpatchversion}"
+_ckpatchversion=3
+_ckpatchname="patch-4.3-ck${_ckpatchversion}"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
-_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.1.0-v7r8"
+_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.3.0-v7r8"
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
 "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
 "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-fbcondecor-4.1.patch
+'fbcondecor-4.3.patch'
 'config.x86_64' 'config'
 'linux-ck-fbcondecor.preset'
 'change-default-console-loglevel.patch'
-# ck1
-"http://ck.kolivas.org/patches/4.0/4.1/4.1-ck${_ckpatchversion}/${_ckpatchname}.bz2"
-'bfs-009-add-preempt_offset-argument-to-should_resched.patch'
+'0001-disabling-primary-plane-in-the-noatomic-case.patch'
+# ck3
+"http://ck.kolivas.org/patches/4.0/4.3/4.3-ck${_ckpatchversion}/${_ckpatchname}.xz"
 # gcc
 "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
 # bfq
-"${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r8-4.1.patch"
-"${_bfqpath}/0002-block-introduce-the-BFQ-v7r8-I-O-sched-for-4.1.patch"
-"${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.1.0.patch")
-sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
+"${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r8-4.3.patch"
+"${_bfqpath}/0002-block-introduce-the-BFQ-v7r8-I-O-sched-for-4.3.patch"
+"${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.3.0.patch")
+sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
             'SKIP'
-            'f3520b06e6a2b9929173c680de75f11cde9f0a380e04195d538b5de820a549ae'
+            '637b55eca2fe7b46cec0856bb60ce162a22b4d855e40fa0dff956561e70ce4ee'
             'SKIP'
             'b8c95822b17a90b65431c518f349bdb7a448688da2774b5b652ef085824d7b42'
-            '1e1e592503a7e3c7e93e4f65624dfae4f8f3221468b7219e7ccfd8df7e668cbc'
-            '14ef2bb50aca50a2e7388012497e70b4cd69eb505b13bba2ffd72f1de975a8ea'
-            '2b264754fb155101481e44ea583ff219fdd35a6d88e59bda63b7e854eac7aa7b'
+            'ab8696b87c4c16f26c0a3bdf1515b153d633f862ad040fcbe67a214c8681007d'
+            'cafd8992ef12a762695636d11fe89e663e3cd56f7d6489455bb0d0cdda2ff0d9'
+            '644ca1ccb886a8ce00b8acf05b946dae559f3bb91dd5e69be09d413a7f8c4165'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '87726411f583862e456156fe82ef51b188e5d92e7a4bd944e01a091cd7c46428'
-            '0c8d94a0c416db0fafe6f12469798b2ea9f3d23d9cd712b6db7e1eaf421097e0'
-            '819961379909c028e321f37e27a8b1b08f1f1e3dd58680e07b541921282da532'
-            'ec0ca3c8051ea6d9a27a450998af8162464c224299deefc29044172940e96975'
-            'c5c2c48638c2a8180948bd118ffcc33c8b7ff5f9f1e4b04c8e2cafeca2bde87b'
-            '4f30f76adbdf49aec8d41ac27ad212734500c272f3cba594f134a7bc263820d9')
+            'abdd04bd6beecb7c961130a68d71e6332bd260462eeaa2f4f8e634de813dcc4d'
+            '483c12e130285cbcb49648012416323a5cb8dd8a477fa064d96c2f53019f1b31'
+            'cf0f984ebfbb8ca8ffee1a12fd791437064b9ebe0712d6f813fd5681d4840791'
+            'ebeb62206999b2749ac43bb287a6a2a5db4f6b1b688a90cefa1ceb5db94aa490'
+            '91b7cb42b8337b768e5329da205a6b61211628ec99b1e308e0e9d5283b2c86eb'
+            '77430c7154670dd288b6d5bd45896222bf955f02029ee5d0cfe97cc5d9bc1a9d')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -110,6 +110,10 @@ prepare() {
 	# add upstream patch
 	patch -p1 -i "${srcdir}/patch-${pkgver}"
 
+	# fix #46968
+  # hangs on older intel hardware
+  patch -Np1 -i "${srcdir}/0001-disabling-primary-plane-in-the-noatomic-case.patch"
+
 	# set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
 	# remove this when a Kconfig knob is made available by upstream
 	# (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
@@ -118,12 +122,8 @@ prepare() {
 	# patch source with ck patchset with BFS
 	# fix double name in EXTRAVERSION
 	sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "${srcdir}/${_ckpatchname}"
-	msg "Patching source with ck2 including BFS v0.464"
+	msg "Patching source with ck3 including BFS v0.467"
 	patch -Np1 -i "${srcdir}/${_ckpatchname}"
-
-	# build issue fix for 4.1.12
-	# http://ck-hack.blogspot.com/2015/08/bfs-464-linux-41-ck2.html?showComment=1445937376359#c8153343895524903784
-	patch -Np1 -i "${srcdir}/bfs-009-add-preempt_offset-argument-to-should_resched.patch"
 
 	# Patch source to enable more gcc CPU optimizatons via the make nconfig
 	msg "Patching source with gcc patch to enable more cpus types"
@@ -136,7 +136,7 @@ prepare() {
 	
 	# Patch source to enable frame buffer decorations.
 	msg "Patching source with fbcondecor patch."
-	patch -Np1 -i "${srcdir}/fbcondecor-4.1.patch"
+	patch -Np1 -i "${srcdir}/fbcondecor-4.3.patch"
 
 	# Clean tree and copy ARCH config over
 	msg "Running make mrproper to clean source tree"
@@ -255,8 +255,8 @@ build() {
 }
 
 package_linux-ck-fbcondecor() {
-	pkgdesc='Linux Kernel with the ck2 patchset featuring the Brain Fuck Scheduler v0.464 and the fbcondecor framebuffer decoration support.'
-	#_Kpkgdesc='Linux Kernel and modules with the ck2 patchset featuring the Brain Fuck Scheduler v0.464 and the fbcondecor framebuffer decoration support.'
+	pkgdesc='Linux Kernel with the ck3 patchset featuring the Brain Fuck Scheduler v0.467 and the fbcondecor framebuffer decoration support.'
+	#_Kpkgdesc='Linux Kernel and modules with the ck3 patchset featuring the Brain Fuck Scheduler v0.467 and the fbcondecor framebuffer decoration support.'
 	#pkgdesc="${_Kpkgdesc}"
 	depends=('coreutils' 'linux-firmware' 'mkinitcpio>=0.7')
 	optdepends=('crda: to set the correct wireless channels of your country' 'nvidia-ck: nVidia drivers for linux-ck' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
