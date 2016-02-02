@@ -4,7 +4,7 @@ pkgdesc="ROS - This package provides the c++ extensions for a variety of threade
 url='http://wiki.ros.org/ecl_threads'
 
 pkgname='ros-indigo-ecl-threads'
-pkgver='0.61.3'
+pkgver='0.61.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -32,10 +32,16 @@ ros_depends=(ros-indigo-ecl-errors
   ros-indigo-ecl-config)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/ecl_threads/${pkgver}-${_pkgver_patch}
-_dir=ecl_threads
-source=("${_dir}"::"git+https://github.com/yujinrobot-release/ecl_core-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/ecl_threads/${pkgver}-${_pkgver_patch}
+# _dir=ecl_threads
+# source=("${_dir}"::"git+https://github.com/yujinrobot-release/ecl_core-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ecl_core-release-release-indigo-ecl_threads-${pkgver}-${_pkgver_patch}"
+source=("https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_threads/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('e2e8988a291d84c2b9d5103f268361dc51fab92cf989aff898a9403aae3382e4')
 
 build() {
   # Use ROS environment variables
