@@ -1,7 +1,7 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=esteidpkcs11loader
 _browser=firefox
-pkgver=3.11.0.1061
+pkgver=3.12.0.1063
 pkgrel=1
 pkgdesc="Firefox PKCS#11 module loader"
 arch=('any')
@@ -9,9 +9,8 @@ url="http://www.id.ee/"
 license=('LGPL')
 depends=('opensc' 'pcsclite' 'ccid')
 makedepends=('cmake' 'unzip' 'zip')
-conflicts=('esteid-browser-plugin-svn' 'sk-esteidpkcs11loader-svn')
 source=("https://installer.id.ee/media/ubuntu/pool/main/e/$pkgname/${pkgname}_$pkgver.orig.tar.xz")
-sha256sums=('c06c36f090d4afdf84135792065ca3201d58e6d73732711cc64b4dabc351e168')
+sha256sums=('fb2aef40bc45a10a4a685d57c125690a8ab647f433715232e88db568da02edcc')
 validpgpkeys=('43650273CE9516880D7EB581B339B36D592073D4')
 
 package() {
