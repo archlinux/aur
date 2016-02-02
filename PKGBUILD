@@ -11,7 +11,7 @@ arch=('any')
 license=('GPLv3')
 
 depends=('openbox' 'perl>=5.14.0' 'perl-data-dump' 'perl-linux-desktopfiles>=0.09')
-source="https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz"
+source=("https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('6a2c8b2add2fd5bd31b40a67dd6e0920282019e3706f172ad67d6e466f82f769')
 install='readme.install'
 
