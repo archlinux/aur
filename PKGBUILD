@@ -12,7 +12,7 @@ conflicts=('da2013ctl')
 makedepends=('git')
 source=('git+https://github.com/Streetwalrus/da2013ctl.git')
 md5sums=('SKIP')
-install=('da2013ctl.install')
+install='da2013ctl.install'
 
 pkgver() {
   cd "${srcdir}/da2013ctl"
