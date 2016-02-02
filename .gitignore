@@ -1,0 +1,5 @@
+pkg/*
+src/*
+spice*/*
+*.deb
+*.tar.*
