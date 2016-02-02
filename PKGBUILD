@@ -6,16 +6,21 @@ arch=('any')
 url='http://pkg-config.freedesktop.org/'
 license=('zlib')
 depends=('pkg-config' 'mingw-w64-crt')
-source=('x86_64-w64-mingw32-pkg-config' 'i686-w64-mingw32-pkg-config')
+source=('mingw-pkgconfig.sh')
 install='mingw-w64-pkg-config.install'
-md5sums=('7a828d6aa57390613679edb208610045'
-         '18530650bb2ef89bf91176cedd4ce20b')
+md5sums=('ac8ea293618b2b94d7db14b52db5cf72')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
+build() {
+  for _arch in ${_architectures}; do
+    sed "s|@TRIPLE@|${_arch}|g" mingw-pkgconfig.sh > ${_arch}-pkg-config
+  done
+}
+
 package() {
   # This indeed has to go to the "normal" directory tree
-  install -d -m755 ${pkgdir}/usr/bin
+  install -d ${pkgdir}/usr/bin
   for _arch in ${_architectures}; do
     install -m755 ${_arch}-pkg-config  ${pkgdir}/usr/bin
   done

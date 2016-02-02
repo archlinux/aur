@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Taken from
 # http://www.mega-nerd.com/erikd/Blog/CodeHacking/MinGWCross/pkg-config.html
@@ -10,7 +10,7 @@
 # When using the mingw32msvc cross compiler tools, the native Linux
 # pkg-config executable works fine as long as the default PKG_CONFIG_LIBDIR
 # is overridden.
-export PKG_CONFIG_LIBDIR=/usr/x86_64-w64-mingw32/lib/pkgconfig
+export PKG_CONFIG_LIBDIR=/usr/@TRIPLE@/lib/pkgconfig
 
 # Also want to override the standard user defined PKG_CONFIG_PATH with
 # a mingw32msvc specific one.
