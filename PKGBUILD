@@ -30,11 +30,11 @@ _use_32bit_pae="no"	# "yes": Use the PAE config for 32-bit
 ###########################################################################################################
 
 pkgdesc='A desktop oriented kernel and modules with Liquorix patches'
-__basekernel=4.3
-_minor=3
+__basekernel=4.4
+_minor=0
 pkgver=${__basekernel}.${_minor}
-pkgrel=8
-lqxrel=6
+pkgrel=4
+lqxrel=4
 _kernelname=-lqx
 pkgbase=linux-lqx
 pkgname=('linux-lqx' 'linux-lqx-headers' 'linux-lqx-docs')
@@ -43,7 +43,7 @@ arch=('i686' 'x86_64')
 license=('GPL2')
 url="http://liquorix.net/"
 if [ "$_custom" = "x" ]; then
-   makedepends=('qt4' 'kmod' 'inetutils' 'bc')
+   makedepends=('qt5-base' 'kmod' 'inetutils' 'bc')
 else
    makedepends=('kmod' 'inetutils' 'bc')
 fi
@@ -57,12 +57,12 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.x
         "http://liquorix.net/sources/${__basekernel}/config.amd64"
         "linux-lqx.preset")
 
-sha512sums=('d25812043850530fdcfdb48523523ee980747f3c2c1266149330844dae2cba0d056d4ddd9c0f129f570f5d1f6df5c20385aec5f6a2e0755edc1e2f5f93e2c6bc'
+sha512sums=('13c8459933a8b80608e226a1398e3d1848352ace84bcfb7e6a4a33cb230bbe1ab719d4b58e067283df91ce5311be6d2d595fc8c19e2ae6ecc652499415614b3e'
             'SKIP'
-            '8bb64422944c1fc1c6b253c4a730d398ea56383c9d5f06c29b8eff1640fef9c923bbf66de48fc6f85b01224b470bf2e217b49564980e4c34a2706ba807c0ed79'
-            'd306143e4928790d69ce92a0a96a518d30c5adbc08ad4677d326ec20ae0769bd896485c107299dec31d1c155e4c4432d9b599370f78e2a6168fed58c00f6648a'
-            '34b0166199ef40cee4ac39f10800f637d017035163c2064fff80d0c80e4a0ed901b4e4616104082bd11d316bfbccb6e3fa47b1bcfdcdfe0536980de4e01651b1'
-            '503617e4630b527376caedcd4dfa121267f0b73f1623f5ff3a27f1b7c0f4b8053e8686afd775bdfcded5dcb0c6c8f7002001ace35c1d4108b21cc240a902ed78'
+            'ef7794e63f2406df896b2a3ecec21125e9f83841ddc8f0f126683c609121c2f40ea9a6d1401af34c644a081ab96ebbec5a9861cd215d64a070466389d85be710'
+            'e59eb3135a599dc2d44da6eb6e33cce2d7b09f6ccffd0b964d4d1e6e032adebd01e3d3c564304f260056871d1ae5f086e32a0be01baa1168570428d1a6c5248e'
+            '802beea8bbf9d47b58c6ac36f54bff5586b24a95b29b475fcf1fe938422cceae7d8de876a00914c633de8bd6621fe8331311cea80c0ccb7adf5edda59400e99b'
+            '3e24cb3b8d6a1873af2ebb7b268c48e756727639237213b4f64b92e69d27d4459bb35ae8794c2ac33b4b6993b74cdce20a72ea8efa696877188f4ae8ae778c83'
             'fe4dcd7b5ec06ec3ec4aa631531469f58f6a7111e2d33affa98a1b8a8d230c5fa7e25ffdf770fe5ce61f249b0ec0ecd69df2858c4029acee0efaadff957858fe')
             
 validpgpkeys=(
