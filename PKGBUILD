@@ -8,7 +8,7 @@ pkgdesc="Perl module to get and parse the Linux .desktop files"
 arch=('any')
 url="https://metacpan.org/module/Linux::DesktopFiles"
 
-source="http://cpan.metacpan.org/authors/id/T/TR/TRIZEN/${_pkgname}-${pkgver}.tar.gz"
+source=("http://cpan.metacpan.org/authors/id/T/TR/TRIZEN/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('45afb52301ed1553fa741c40e62dc91280bb0e6e58dad83e6a49415a02f0973b')
 
 license=('GPLv3')
