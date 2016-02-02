@@ -2,14 +2,14 @@
 
 _pkgname=qupzilla
 pkgname=$_pkgname-qtwebkit-git
-pkgver=1.8.6.31.gc84751d
+pkgver=1.8.9.34.gc59b1f1
 pkgrel=1
-pkgdesc="Cross-platform Qt web browser. Legacy QtWebKit branch."
-arch=("i686" "x86_64")
-url="http://www.qupzilla.com"
-license=("GPL3" "custom")
-makedepends=("git" "qt5-tools")
-depends=("qt5-webkit" "qt5-script")
+pkgdesc='Cross-platform Qt web browser. QtWebKit branch.'
+arch=('i686' 'x86_64')
+url='http://www.qupzilla.com'
+license=('GPL3' 'custom')
+depends=('qt5-webkit' 'qt5-script' 'qt5-x11extras')
+makedepends=('git' 'qt5-tools')
 provides=("$_pkgname" "$_pkgname-qt4" "$_pkgname-qt5" "$_pkgname-git" "$_pkgname-qt5-qtwebkit-git")
 conflicts=("$_pkgname" "$_pkgname-qt4" "$_pkgname-qt5" "$_pkgname-git" "$_pkgname-qt5-qtwebkit-git")
 replaces=("$_pkgname-qt5-qtwebkit-git")
@@ -28,8 +28,7 @@ build() {
     export KDE_INTEGRATION="true"
     export QUPZILLA_PREFIX="/usr/"
 
-    qmake-qt5
-    make clean
+    qmake-qt5 CONFIG+=debug
     make
 
 }
