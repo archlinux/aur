@@ -6,18 +6,21 @@
 
 pkgbase=mesa-rbp
 pkgname=('libva-mesa-driver-rbp' 'mesa-rbp' 'mesa-libgl-rbp')
-pkgver=11.0.3
-pkgrel=1
+pkgver=11.1.1
+pkgrel=2
 arch=('armv6h' 'armv7h')
-makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
+makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto'
              'libxshmfence' 'libxxf86vm' 'libxdamage' 'libvdpau' 'libva' 'wayland' 'elfutils' 'llvm'
-             'systemd' 'libomxil-bellagio' 'libclc' 'clang')
+             'systemd' 'libomxil-bellagio' 'libgcrypt' 'clang')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
-source=(ftp://ftp.freedesktop.org/pub/mesa/${pkgver}/mesa-${pkgver}.tar.xz
+options=('!libtool')
+source=(ftp://ftp.freedesktop.org/pub/mesa/${pkgver}/mesa-${pkgver}.tar.xz{,.sig}
         LICENSE)
-sha256sums=('ab2992eece21adc23c398720ef8c6933cb69ea42e1b2611dc09d031e17e033d6'
+sha256sums=('64db074fc514136b5fb3890111f0d50604db52f0b1e94ba3fcb0fe8668a7fd20'
+            'SKIP'
             '7fdc119cf53c8ca65396ea73f6d10af641ba41ea1dd2bd44a824726e01c8b3f2')
+validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D') # Emil Velikov <emil.l.velikov@gmail.com>
 
 prepare() {
   cd ${srcdir}/?esa-*
@@ -34,9 +37,10 @@ build() {
   ./configure --prefix=/usr \
     --sysconfdir=/etc \
     --with-dri-driverdir=/usr/lib/xorg/modules/dri \
-    --with-gallium-drivers=swrast,vc4 \
-    --with-dri-drivers=swrast \
+    --with-gallium-drivers=freedreno,nouveau,swrast${VC4} \
+    --with-dri-drivers=nouveau,swrast \
     --with-egl-platforms=x11,drm,wayland \
+    --with-sha1=libgcrypt \
     --enable-llvm-shared-libs \
     --enable-egl \
     --enable-gbm \
@@ -49,15 +53,12 @@ build() {
     --enable-gles1 \
     --enable-gles2 \
     --enable-texture-float \
-    --enable-xa \
     --enable-omx \
     --enable-nine \
     --with-clang-libdir=/usr/lib
-
     # --help
 
   make
-
   # fake installation
   mkdir $srcdir/fakeinstall
   make DESTDIR=${srcdir}/fakeinstall install
