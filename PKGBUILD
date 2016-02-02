@@ -2,15 +2,15 @@
 
 pkgname=archlinux-themes-sddm
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Adaptation to SDDM of archlinux-themes-kdm"
 arch=('any')
 url="http://www.archlinux.org/"
 license=('CCPL:cc-by-sa')
 depends=('sddm')
 install="$pkgname.install"
-source="https://github.com/Guidobelix/archlinux-themes-sddm/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.bz2"
-md5sums='4481d85d8635b410b29bae64fbdc7cd9'
+source=("https://github.com/Guidobelix/archlinux-themes-sddm/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('4481d85d8635b410b29bae64fbdc7cd9')
 
 package() {
   cd $pkgname-$pkgver
