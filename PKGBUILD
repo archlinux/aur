@@ -3,7 +3,7 @@
 pkgname=krdc-git
 pkgver=15.12.1.r10.gc94a465
 pkgrel=1
-pkgdesc='Remote Desktop Client'
+pkgdesc='Remote Desktop Client (frameworks branch)'
 url='http://kde.org/applications/internet/krdc/'
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL')
