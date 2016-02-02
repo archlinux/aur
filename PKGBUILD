@@ -23,7 +23,8 @@ noextract=()
 _gourl=robpike.io/cmd/typo
 
 pkgver() {
-  cd "$srcdir/src/${_gourl}"
+  GOPATH="$srcdir" go get -d ${_gourl}
+  cd "$srcdir/src/${_gourl}/"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
