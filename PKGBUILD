@@ -1,6 +1,7 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: <development[at]kondorgulasch[dot]de>
 
+#TODO
 pkgname=pidgin-xmpp-receipts
 pkgver=0.7
 pkgrel=1
