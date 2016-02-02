@@ -4,7 +4,7 @@ pkgdesc="ROS - This planner attempts to find a legal place to put a carrot for t
 url='http://wiki.ros.org/carrot_planner'
 
 pkgname='ros-indigo-carrot-planner'
-pkgver='1.12.5'
+pkgver='1.12.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -30,10 +30,16 @@ ros_depends=(ros-indigo-nav-core
 depends=(${ros_depends[@]}
   eigen3)
 
-_tag=release/indigo/carrot_planner/${pkgver}-${_pkgver_patch}
-_dir=carrot_planner
-source=("${_dir}"::"git+https://github.com/ros-gbp/navigation-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/carrot_planner/${pkgver}-${_pkgver_patch}
+# _dir=carrot_planner
+# source=("${_dir}"::"git+https://github.com/ros-gbp/navigation-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="navigation-release-release-indigo-carrot_planner-${pkgver}-${_pkgver_patch}"
+source=("https://github.com/ros-gbp/navigation-release/archive/release/indigo/carrot_planner/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('40869b3e0e9906f2202818b49067025ac878c2c888c56e1ea11acdff1f4869c6')
 
 build() {
   # Use ROS environment variables
