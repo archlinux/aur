@@ -11,7 +11,7 @@ license=('proprietary')
 depends=('ffmpeg-compat' 'libresample')
 makedepends=('pacman>=4.2.0')
 provides=("clickshare=$pkgver")
-source=("https://cloud.digi-merc.org/index.php/s/rlQOpUHP6bV3968/download")
+source=("https://raw.githubusercontent.com/digi-merc/clickshare-arch/master/clickshare-linux.tar.gz")
 sha256sums=('04ed7e6321f1a96316ef64e548d63df38fc727d0819b21bfc67102a6af3c8949')
 
 package() {
