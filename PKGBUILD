@@ -1,9 +1,9 @@
 # Maintainer: Johannes Postma <jgmpostma@gmail.com>
 pkgname=8p
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An ncurses-based command-line player for 8tracks.com"
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url="https://github.com/jgmp/8p"
 license=('BSD')
 depends=('curl' 'jansson' 'libbsd' 'ncurses' 'vlc')
