@@ -1,6 +1,6 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 pkgname=rmilter
-pkgver=1.7.0
+pkgver=1.7.2
 pkgrel=1
 epoch=
 pkgdesc="Another sendmail milter for different mail checks."
@@ -16,19 +16,11 @@ install=rmilter.install
 
 source=("${pkgname}-${pkgver}.tar.gz::https://codeload.github.com/vstakhov/${pkgname}/tar.gz/${pkgver}"
         "${pkgname}.service"
-        "5df526d039345067201ece2accef05831be5d7d7.patch"
 )
 
-sha256sums=('0337c1e643f1c9115ae9a53cb79d883ef857ca8457a94b37ef135ee89166ea3d'
+sha256sums=('3033c190667276f1d716784cb6b485971a3249ab9a6151d7a5ae3848e6de61eb'
             'c53ae6a6c323440e0f1f1d22a985878f3022300402bbee0b99109fe8dfc39c14'
-            'd9be5866568c2e074b6016c4af48e70e734b924acb5cbda515b241a9e7107c70'
 )
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
-  patch -p1 <../5df526d039345067201ece2accef05831be5d7d7.patch
-}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
