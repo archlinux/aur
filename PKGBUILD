@@ -51,31 +51,34 @@ _use_current=
 pkgbase=linux-bfq
 pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _kernelname=-bfq
-_srcname=linux-4.3
-pkgver=4.3.5
+_srcname=linux-4.4
+pkgver=4.4.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc')
-_bfqrel=v7r8
-_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.3.0-${_bfqrel}"
-#_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.3.0-${_bfqrel}"
+_bfqrel=v7r11
+_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.4.0-${_bfqrel}"
+#_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.4.0-${_bfqrel}"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
 
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-4.3.patch"
-        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-for-4.3.patch"
-        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqrel}-for-4.3.0.patch"
+        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-4.4.0.patch"
+        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-for-4.4.0.patch"
+        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqrel}-for.patch"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         'linux-bfq.preset'
         'change-default-console-loglevel.patch'
         'config' 'config.x86_64'
-        '0004-disabling-primary-plane-in-the-noatomic-case.patch')
+        '0004-sdhci-revert.patch'
+        '0006-tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch'
+        '0007-4.4-revert-btrfs.patch'
+        '0008-4.4-revert-xfs.patch')
         
 prepare() {
     cd ${_srcname}
@@ -90,10 +93,21 @@ prepare() {
         msg "Patching set DEFAULT_CONSOLE_LOGLEVEL to 4"
         patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
         
-    ### Fix #46968
-    # hangs on older intel hardware
-        msg "Fix hangs on older intel hardware"
-        patch -Np1 -i "${srcdir}/0004-disabling-primary-plane-in-the-noatomic-case.patch"
+    ### Revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=9faac7b95ea4f9e83b7a914084cc81ef1632fd91
+    # fixes #47778 sdhci broken on some boards
+    # https://bugzilla.kernel.org/show_bug.cgi?id=106541
+        msg "Fixes #47778 sdhci broken on some boards"
+        patch -Rp1 -i "${srcdir}/0004-sdhci-revert.patch"    
+        
+    ### Fixes #47805 kernel panics on platform modules
+    # https://bugzilla.kernel.org/show_bug.cgi?id=110751
+        msg "Fixes #47805 kernel panics on platform modules"
+        patch -Np1 -i "${srcdir}/0006-tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch" 
+    
+    ### Fix broken suspend from btrfs and xfs
+        msg "Fix #47757"
+        patch -Np1 -i "${srcdir}/0007-4.4-revert-btrfs.patch"
+        patch -Np1 -i "${srcdir}/0008-4.4-revert-xfs.patch"
 
     ### Patch source with BFQ
         msg "Patching source with BFQ patches"
@@ -409,6 +423,11 @@ package_linux-bfq-headers() {
 		/usr/bin/strip ${STRIP_BINARIES} "${binary}";;
 	esac
 	done
+	
+        # remove a files already in linux-bfq-docs package
+        rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-01"
+        rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-02"
+        rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.select-break"
 
     # remove unneeded architectures
     rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
@@ -436,20 +455,23 @@ package_linux-bfq-docs() {
     rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 }
 
-sha512sums=('d25812043850530fdcfdb48523523ee980747f3c2c1266149330844dae2cba0d056d4ddd9c0f129f570f5d1f6df5c20385aec5f6a2e0755edc1e2f5f93e2c6bc'
+sha512sums=('13c8459933a8b80608e226a1398e3d1848352ace84bcfb7e6a4a33cb230bbe1ab719d4b58e067283df91ce5311be6d2d595fc8c19e2ae6ecc652499415614b3e'
             'SKIP'
-            '70509a0c42153c8fcad5346ddc10d1e8c92737cf36eca808e403c607fa020004d843168d774ae5f82a726ab2dae89aa866387ab157134a67c163e10d84a588a3'
+            'b117b6f88dd713a33691306e483d5c42bcf61091d91f7248e1537ac7f7b96380f5f7df81f399cecda13d9388ad7aa52ed2e6d46f7b27706d2f197b8e64c330b3'
             'SKIP'
-            'e31394f8addbfa7d46eaa6ebf4b848a0f13cbfc8d41f3741d2512c7728db839fa67f1a138cc0b5b88a85f0b7c285522e166ad2e349bebd9f4c3f4a187235b6e3'
-            '593c8217c83a46faffa2b0639b3b8a17fd2cd68c160d716e9a931c6e114300384f68f6e98bb50a99d17bf3343ff694ce3edca627505813bb08a37f67ba525eee'
-            '76e63b7c983d695a420fbe58a5d29063722a413a540160e63789d4dc4d6ac59c8cd15a6583ee4c8bcef965ab9512d4e69a4c1dac207bbe954b49f7356c90bdf4'
+            'bfd5d1a2d8f203e4d13914d311e8cc79b81695a41dc24179074cb05a5a9b5b0cc89a77062c6b8f79c850281aaa0d02dce40e23750aea7d1015f675c1cc024027'
+            '275b7573adf648325ab950f8a8be7753f2efac0c4cd5030d31b0482fca0b9b9886c85dec989acde15eadf128366c250ecbd19d5527bfb41f472425fef43e93fd'
+            '9defbcaca7ec7c849c67f1907be32c75638300d012e41d540f3d35ce13aff8561dfb68f31389096ab1c3d5b64631e682352458046af1e8af5abe085a1f59d9a1'
             '62fdd5c0a060a051b64093d71fbb028781061ccb7a28c5b06739a0b24dac0945740d9b73ff170784f60005a589774bcc14f56523ec51557eb3a677f726ec34cf'
             '607c0fa70375bff2f51387c4984e6f2da18c786a58281ab5c28f6b49c6da22578832afa96503f26a18575ffed677b2f9522a822b5db856b76c4144dd5b59ff6b'
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
-            '2a55cf35899b4b6b9f4a4a6d3d39d0f7843954a3b1a57fd28d999e0dcc963cbf411884dfcfd49c671714202745e9c53db9df12f8eab9e98be0b5fade9503c644'
-            '07cccbb594033de456ab24c7e8259f35a198a6a1af3fb9467eef5ae78626750a86ee71ef42a1560825f6f5ef2ecd6a9223c3cd8431d8744c6f1d67e25eb7c35c'
-            '9e5d95f695bcb5858f8ace8f2f2bf2981b22f46cdbc06453b643ee26c38fdaaf8d487b65249e73a8cbcfc2360c65fd970601aec2358e91f14614d227cf33de1a')
-
+            'd6714cbe5cdc19f6a92a32bc7bb84950c68194bc63946c42eefe6301d6f0fc43e9b318689292d1f1c9d177c57cac70c0fe6ea3338e2723473243676d3393a586'
+            '7fd583ba714ad34d56d9dd5cd0ea330567b1587100aeef7f644242a273d33fb93b80ddc35661ac6a23a2babe961c0745722943ea5d6eab1eedd594c950387286'
+            'be80d7ee558595d4b17b07a5a2b729d9a9503c963ec1b19bac6a87601eaefd28075aea7fb6d9c77e2e15e063fc6a8a2e8744bc1efe63e2a58b8c3ede0d89c821'
+            'a4580a922f8c1e26a4c41065e1690ee15a6ca8c096b329c2dde048ff11eef4c98348d9b4c87702862e0bf4cfaeff5122d4aca9d3b4085efc805068dd79c7f30c'
+            '9ebfcb5bfa613bd6b2c2817d3487bd22c2fbbb5f686f68c28912813be141d584b33cc8d8f175ce7cf10ec686902f7336c966b04b00d6aa5409298f1474c58035'
+            '321a4817ca9a7486f7bf212978e6eeab1481b31c37d35209d7062be7d9f360d5b1f26b2dc45a4c46879c2d14b4ed212b322ea91d0fb85f74d6c298a7cc2a3198')
+            
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
