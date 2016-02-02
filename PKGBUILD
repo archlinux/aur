@@ -1,7 +1,7 @@
 # Maintainer: Matheus de Alcantara <matheus.de.alcantara@gmail.com>
 
 pkgname=atom-editor-beta
-_pkgrel=beta2
+_pkgrel=beta3
 _pkgver=1.5.0
 pkgver="${_pkgver}.${_pkgrel}"
 pkgrel=1
@@ -16,7 +16,7 @@ conflicts=('atom-editor-bin' 'atom-editor-git' 'atom-editor-beta-bin' 'atom-edit
 install=atom.install
 source=("https://github.com/atom/atom/archive/v${_pkgver}-${_pkgrel}.tar.gz"
         'atom-python.patch')
-sha256sums=('90aba8df657ec7e97648109287de502248ef74aacc75ad431f429c5458c0cff5'
+sha256sums=('327ee22f709de65bf7b666371569a2094d04faf6dc983e32555d0bde80273da4'
             'f3a1b7f032cd2d98cf56dc1d912d6a7791656a470514e316b0e6132eb5cf9dc0')
 
 prepare() {
