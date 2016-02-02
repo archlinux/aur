@@ -31,6 +31,8 @@ ac_add_options --enable-startup-notification
 ac_add_options --enable-pulseaudio
 ac_add_options --disable-gstreamer
 
+ac_add_options --enable-rust
+
 ac_add_options --enable-crashreporter
 ac_add_options --disable-telemetry-reporting
 ac_add_options --disable-updater
