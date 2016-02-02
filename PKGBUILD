@@ -2,7 +2,7 @@
 
 pkgname=gone-home-hib
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Gone home is an interactive exploration simulator by Fullbright."
 arch=('i686' 'x86_64')
 url="http://www.gonehomegame.com/"
@@ -14,7 +14,7 @@ source=("hib://GoneHome_v${pkgver}.tar.gz"
 sha256sums=("ecd01fcde184f7d1937579e7d5d4a791007887b88f9baa10039747166bb2d097"
             "dea74a9436b2b37a63265c0606195293cb751855e2de473e678ab85600c92053"
             "ea11e510a7c52e485cf1e87eb985691029b62fc694830a0c57f14b4173ac8edd")
-install=("${pkgname}.install")
+install="${pkgname}.install"
 [ "$CARCH" == "x86_64" ] && _arch="x86_64" || _arch="x86"
 # Prevent compressing final package
 PKGEXT='.pkg.tar'
