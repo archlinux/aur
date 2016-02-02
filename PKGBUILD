@@ -1,19 +1,19 @@
 # Maintainer: zoe <chp321@gmail.com>
 pkgname=kxstitch
-pkgver=1.2.0
-pkgrel=9
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="The program that lets you create cross stitch patterns and charts."
 arch=('i686' 'x86_64')
 depends=('kdebase-runtime' 'imagemagick')
 makedepends=('cmake' 'automoc4' 'doxygen' 'patch')
-url="http://kxstitch.sourceforge.net/"
+url="https://userbase.kde.org/KXStitch"
 license=('GPL')
-source=(http://www-ftp.lip6.fr/pub/X11/kde/stable/kxstitch/${pkgver}/src/kxstitch-${pkgver}.tar.bz2 kxstitch.install)
-md5sums=('b6b33dcfc30ec9df81b9df2c4edd4d24' '5b554364ee8db32e0bb1e881bf0bca34')
+source=("http://download.kde.org/stable/${pkgname}/${pkgver}/src/${pkgname}-${pkgver}.tar.bz2" 'kxstitch.install')
+md5sums=('6e7934065961646867a24004196693b0' '5b554364ee8db32e0bb1e881bf0bca34')
 install=kxstitch.install
 
 build() {
-    cd "$srcdir/kxstitch-${pkgver}"
+    cd "${srcdir}/kxstitch-${pkgver}"
     sed -i 's/-DMAGICKCORE_HDRI_ENABLE=0/-DMAGICKCORE_HDRI_ENABLE=1/' CMakeLists.txt
     
     # Avoid bug in cmake :
@@ -28,7 +28,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/kxstitch-${pkgver}/build"
+    cd "${srcdir}/kxstitch-${pkgver}/build"
     make DESTDIR="${pkgdir}" install
 
     # this one is unnecessary and namcap hates this dangling link
