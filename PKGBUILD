@@ -7,7 +7,7 @@ pkgdesc="Simple workspace based timetracking tool"
 arch=('i686' 'x86_64')
 url="https://github.com/Hoglet/TimeIT"
 license=('gpl-2.0')
-depends=('cmake')
+depends=('cmake' 'libnotify' 'gtkmm' 'jansson' 'libxss')
 #optdepends=('timeit-server')
 source=('timeit::git+https://github.com/Hoglet/TimeIT')
 
