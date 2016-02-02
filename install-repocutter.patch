@@ -1,8 +1,8 @@
 diff --git a/Makefile b/Makefile
-index 21c64d3..10c758f 100644
+index 5404af0..1af0d7f 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -60,7 +60,7 @@ install: all
+@@ -65,7 +65,7 @@ install: all
  	$(INSTALL) -d "$(target)/bin"
  	$(INSTALL) -d "$(target)/share/doc/reposurgeon"
  	$(INSTALL) -d "$(target)/$(mandir)/man1"
