@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libkdeaccessibilityclient-git
-pkgver=r242.f98b97b
+pkgver=0.1.0.r243.f66d849
 pkgrel=1
 pkgdesc="Helper to make writing accessibility tools easier. Used by screen readers for example. (GIT version)"
 url='https://projects.kde.org/projects/playground/accessibility/libkdeaccessibilityclient'
@@ -16,7 +16,8 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd libkdeaccessibilityclient
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  _ver="$(cat CMakeLists.txt | grep -m3 -e _VERSION_MAJOR -e _VERSION_MINOR -e _VERSION_PATCH | grep -o "[[:digit:]]*" | paste -sd'.')"
+  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
