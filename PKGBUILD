@@ -2,7 +2,7 @@
 
 pkgname=ttf-mikachan
 pkgver=8.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Mikachan Japanese TrueType fonts for X."
 arch=('any')
 url="http://mikachan-font.com/"
@@ -20,5 +20,5 @@ package() {
     install -m644 "mikachanfont-${pkgver}"/fonts/*.ttf "${pkgdir}/usr/share/fonts/TTF"
 
     install -d "${pkgdir}/usr/share/licenses/custom/${pkgname}"
-    install -m644 "mikachanfont-${pkgver}"/COPYRIGHT "${pkgdir}/usr/share/licenses/custom/${pkgname}/license.txt"
+    install -m644 "mikachanfont-${pkgver}"/COPYRIGHT "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
 }
