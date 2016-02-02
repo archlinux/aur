@@ -2,7 +2,7 @@
 # Contributor: Marcin Wieczorek <marcin@marcin.co>
 
 pkgname=gitkraken
-pkgrel=1
+pkgrel=2
 pkgver=0.6.2
 pkgdesc="The intuitive, fast, and beautiful cross-platform Git client."
 url="http://www.gitkraken.com/"
@@ -34,7 +34,7 @@ package() {
     install -d "$pkgdir"/usr/bin
     ln -s ../../opt/gitkraken/gitkraken "$pkgdir"/usr/bin/gitkraken
 
-    install -D -m644 "../eula.html"             "${pkgdir}/usr/share/licenses/${pkgname}/eula.html"
-    install -D -m644 "../GitKraken.desktop"     "${pkgdir}/usr/share/applications/GitKraken.desktop"
-    install -D -m644 "../gitkraken.png"         "${pkgdir}/usr/share/pixmaps/gitkraken.png"
+    install -D -m644 "./eula.html" "${pkgdir}/usr/share/licenses/${pkgname}/eula.html"
+    install -D -m644 "./GitKraken.desktop" "${pkgdir}/usr/share/applications/GitKraken.desktop"
+    install -D -m644 "./gitkraken.png" "${pkgdir}/usr/share/pixmaps/gitkraken.png"
 }
