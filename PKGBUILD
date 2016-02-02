@@ -5,11 +5,11 @@
 
 pkgname=pdftk
 pkgver=2.02
-pkgrel=6
+pkgrel=7
 pkgdesc="Pdftk is a simple tool for doing everyday things with PDF documents"
 arch=('i686' 'x86_64')
 url="http://www.pdfhacks.com/pdftk"
-license="GPL"
+license=("GPL")
 depends=('gcc-gcj' 'gcc-gcj-ecj')
 options=('!makeflags')
 source=("http://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/${pkgname}-${pkgver}-src.zip"
