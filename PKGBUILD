@@ -1,16 +1,16 @@
 # Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com> PGP-Key: 78695CFD
-# Contributor: shivik <> PGP-Key: 761E423C
+# Contributor: shivik <> PGP-Key: 761E4.4C
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-304xx-lqx
 pkgver=304.131
-_extramodules=extramodules-4.3-lqx
-pkgrel=1
+_extramodules=extramodules-4.4-lqx
+pkgrel=2
 pkgdesc="NVIDIA drivers for linux-lqx kernel, 304xx legacy branch"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-lqx>=4.3' 'linux-lqx<4.4' "nvidia-304xx-utils=${pkgver}" "nvidia-304xx-libgl")
-makedepends=('linux-lqx-headers>=4.3' 'linux-lqx-headers<4.4')
+depends=('linux-lqx>=4.4' 'linux-lqx<4.5' "nvidia-304xx-utils=${pkgver}" "nvidia-304xx-libgl")
+makedepends=('linux-lqx-headers>=4.4' 'linux-lqx-headers<4.5')
 conflicts=('nvidia-lqx' 'nvidia-340xx-lqx')
 license=('custom')
 install=nvidia-304xx-lqx.install
@@ -19,7 +19,6 @@ source_i686=("ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux
 source_x86_64=("ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
 md5sums_i686=('9f3222fd7287d9b31f54f1d75760e183')
 md5sums_x86_64=('24c9c6a8679edae3b2a608b191fdc727')
-
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
