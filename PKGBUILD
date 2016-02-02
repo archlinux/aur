@@ -10,6 +10,7 @@ arch=('any')
 url="https://www.mediawiki.org/wiki/Parsoid"
 license=('GPL2')
 depends=('nodejs')
+makedepends=('git' 'npm')
 optdepends=(
     'mediawiki: MediaWiki engine'
 )
