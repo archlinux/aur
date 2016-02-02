@@ -12,7 +12,7 @@ depends=('systemd' 'bumblebee')
 makedepends=('git')
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
-install=("${_pkgname}.install")
+install="${_pkgname}.install"
 
 pkgver() {
     cd ${srcdir}/${_pkgname}
