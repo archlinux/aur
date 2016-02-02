@@ -34,6 +34,9 @@ package() {
 
   chmod 755 "$pkgdir/usr/bin/alterego"
 
-  install -Dm644 "$srcdir/alterego.desktop" "$pkgdir/usr/share/applications/alterego.desktop"
-  install -Dm644 "$srcdir/ae1-150x150.png" "$pkgdir/usr/share/pixmaps/alterego.png"
+  install -Dm644 "$srcdir/alterego.desktop" \
+    "$pkgdir/usr/share/applications/alterego.desktop"
+
+  install -Dm644 "$srcdir/ae1-150x150.png" \
+    "$pkgdir/usr/share/pixmaps/alterego.png"
 }
