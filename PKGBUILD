@@ -1,16 +1,16 @@
-# Maintainer: Konstantin Shalygin (k0ste@cn.ru)
+# Maintainer: Konstantin Shalygin <k0ste@cn.ru>
 
 pkgname='ovirt-guest-agent'
 _mainver='1.0.11'
 pkgver="${_mainver}.2"
-pkgrel='1'
+pkgrel='2'
 pkgdesc='The oVirt Guest Agent'
 arch=('x86_64')
 url='http://wiki.ovirt.org/Category:Ovirt_guest_agent'
 depends=('systemd' 'python2' 'python2-dbus' 'python2-gobject2' 'dbus-glib' 'python2-ethtool' 'usermode')
 makedepends=('pam' 'libtool' 'python2' 'python2-pep8' 'pep8')
 license=('ASL 2.0')
-install=("${pkgname}.install")
+install="${pkgname}.install"
 source=("python2-arch.patch"
 	"sysusers.conf"
 	"${pkgname}.service"
@@ -22,12 +22,9 @@ sha256sums=('95c162b584dd137296bcec70d14079d4b93d10d8542a87bd8f1cd6ad01e4b140'
 backup=("etc/${pkgname}.conf")
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  pushd "${pkgname}-${pkgver}"
   patch -p1 -i ../python2-arch.patch
-}
 
-build() {
-  cd "${pkgname}-${pkgver}"
   PYTHON=/usr/bin/python2 ./configure \
     --prefix=/usr \
     --bindir=/usr/bin \
@@ -44,7 +41,13 @@ build() {
     --without-gdm \
     --without-kdm \
     --enable-securedir=/usr/lib/security
+  popd
+}
+
+build() {
+  pushd "${pkgname}-${pkgver}"
   make
+  popd
 }
 
 package() {
