@@ -9,7 +9,7 @@
 pkgname=plex-media-server
 pkgver=0.9.15.2.1663
 _pkgsum=7efd046
-pkgrel=2
+pkgrel=3
 pkgdesc='Plex Media Server'
 arch=('arm' 'armv7h' 'i686' 'x86_64')
 url='https://plex.tv/'
@@ -35,7 +35,7 @@ sha256sums_i686=('0ee9891b82563a1351001ed6f5a20011a887d9d81c9d2092dad2965240ee5d
 sha256sums_x86_64=('f06225807c6284914bca1cfaec4490d594c53a2c794d916b321658388d40f9cf')
 
 # Fix for arm compilation provided by tahayassen
-  if [[ $CARCH =~ arm* ]]; then
+  if [[ $CARCH != arm* ]]; then
     makedepends=('prelink')
   fi
 
