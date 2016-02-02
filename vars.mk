@@ -5,3 +5,6 @@
 
 TEMPLATE = PKGBUILD.template
 
+export VERSION = 2.0
+export REL = 1
+
