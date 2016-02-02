@@ -1,34 +1,35 @@
-# Maintainer: Ariel Popper <a@arielp.com>
+# Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
+# Contributor: Ariel Popper <a@arielp.com>
+
 pkgname=vim-airline-git
 pkgver=0.7.r217.g8c860b7
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A lean & mean statusline for vim that's light as air."
-arch=(any)
-url="https://github.com/bling/vim-airline"
+arch=('any')
+url='https://github.com/vim-airline/vim-airline'
 license=('GPL')
+depends=('vim')
+makedepends=('git')
 conflicts=('vim-airline')
 provides=('vim-airline')
-optdepends=('otf-powerline-symbols-git: Use the Powerline symbols')
-makedepends=('git')
-install=airline.install
+groups=('vim-plugins')
+optdepends=('otf-powerline-symbols-git: use the Powerline symbols'
+            'vim-airline-themes-git: alternative themes')
+install='airline.install'
 md5sums=('SKIP')
 
-_gitname=airline
-_gitbranch=master
-source=("${_gitname}::git+https://github.com/bling/vim-airline.git#branch=${_gitbranch}")
+source=("git+https://github.com/vim-airline/${pkgname%-git}.git")
 
 pkgver() {
-  cd "${srcdir}/${_gitname}"
+  cd "${pkgname%-git}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "${srcdir}/${_gitname}"
+  cd "${pkgname%-git}"
   local vimfiles="${pkgdir}/usr/share/vim/vimfiles"
 
   mkdir -p "${vimfiles}"
   cp -r autoload doc plugin t "${vimfiles}"
 }
-
-# vim:set ts=2 sw=2 et:
