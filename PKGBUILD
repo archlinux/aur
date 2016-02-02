@@ -11,7 +11,7 @@ arch=('any')
 license=('GPLv3')
 
 depends=('perl>=5.16.0' 'gtk2-perl' 'perl-file-mimeinfo')
-source="https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz"
+source=("https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('b285a70f7e234427b4116df0ad64500abc20ea9e5a212d7cfd2f8e066b202831')
 
 package() {
