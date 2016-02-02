@@ -2,9 +2,9 @@
 
 pkgname=fbc-git
 pkgver=1.05
-pkgrel=1
+pkgrel=2
 _pkgname=fbc
-_bootver=1.04.0
+_bootver=1.05.0
 pkgdesc="FreeBASIC Compiler (Development version)"
 arch=('i686' 'x86_64')
 url="http://www.freebasic.net"
