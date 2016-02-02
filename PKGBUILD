@@ -2,7 +2,7 @@
 pkgname=pkgupd-git
 _pkgname=pkgupd
 pkgver=0.37
-pkgrel=1
+pkgrel=2
 pkgdesc="Checks repositories and AUR for package updates"
 arch=('i686' 'x86_64')
 url="https://github.com/foucault/pkgupd"
