@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=s-git
-pkgver=r123.0b290d5
+pkgver=r183.09fb935
 pkgrel=1
 epoch=
 pkgdesc="Open a web search in your terminal."
@@ -23,6 +23,7 @@ noextract=()
 _gourl=github.com/zquestz/s
 
 pkgver() {
+  GOPATH="$srcdir" go get -d ${_gourl}
   cd "$srcdir/src/${_gourl}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
