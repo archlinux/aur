@@ -1,0 +1,6 @@
+## DSLogic
+# 2a0e:0001
+ATTRS{idVendor}=="2a0e", ATTRS{idProduct}=="0001", ENV{ID_MM_DEVICE_IGNORE}="1"
+ATTRS{idVendor}=="2a0e", ATTRS{idProduct}=="0001", ENV{MTP_NO_PROBE}="1"
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="2a0e", ATTRS{idProduct}=="0001", GROUP="plugdev", MODE="0660"
+
