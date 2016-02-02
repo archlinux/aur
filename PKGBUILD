@@ -2,17 +2,15 @@
 # Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 
 pkgname=libserialport
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A minimal, cross-platform shared library for sigrok, intended to take care of the OS-specific details when writing software that uses serial ports"
 arch=('i686' 'x86_64')
 url="http://sigrok.org/wiki/Libserialport"
 license=('GPL3')
-depends=('libsystemd')
-provides=('libserialport')
-conflicts=('libserialport')
+depends=('glibc')
 source=("http://sigrok.org/download/source/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('750fa8dc1baf26b42fb4cadd9327674b')
+md5sums=('b93f0325a6157198152b5bd7e8182b51')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
