@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Robomongo
+Comment=Shell-centric cross-platform open source MongoDB management tool
+Type=Application
+Categories=Development;
+Exec=robomongo
+Terminal=false
+StartupNotify=true
+Icon=robomongo.png
