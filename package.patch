@@ -1,0 +1,119 @@
+diff -aur -bZwB cadabra2-git.old/client_server/CMakeLists.txt cadabra2-git/client_server/CMakeLists.txt
+--- cadabra2-git.old/client_server/CMakeLists.txt	2016-02-02 13:19:27.734125137 -0500
++++ cadabra2-git/client_server/CMakeLists.txt	2016-02-02 13:19:40.397385649 -0500
+@@ -29,7 +29,9 @@
+ message("-- Found JSONCPP include dir: ${JSONCPP_INCLUDE_DIRS}")
+ message("-- Found JSONCPP library dir: ${JSONCPP_LIBRARY_DIRS}")
+ include_directories("${Boost_INCLUDE_DIRS}" ${PYTHON_INCLUDE_DIR})
++if(JSONCPP_INCLUDE_DIRS)
+ include_directories("${JSONCPP_INCLUDE_DIRS}")
++endif(JSONCPP_INCLUDE_DIRS)
+ pkg_check_modules(UUID uuid REQUIRED)
+ include_directories("${UUID_INCLUDE_DIRS}")
+ 
+@@ -70,5 +72,6 @@
+ install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/cadabra-server DESTINATION bin)
+ install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/cadabra2html DESTINATION bin)
+ install(TARGETS cadabra_client LIBRARY DESTINATION "${INSTALL_LIB_DIR}")
++install(TARGETS cadabra_server LIBRARY DESTINATION "${INSTALL_LIB_DIR}")
+ 
+ 
+diff -aur -bZwB cadabra2-git.old/client_server/regexp_tester.cc cadabra2-git/client_server/regexp_tester.cc
+--- cadabra2-git.old/client_server/regexp_tester.cc	2016-02-02 13:19:27.734125137 -0500
++++ cadabra2-git/client_server/regexp_tester.cc	2016-02-02 13:19:37.057404853 -0500
+@@ -13,7 +13,8 @@
+ 	try {
+ 		std::regex match(argv[1]);
+ 		std::smatch res;
+-		if(std::regex_search(std::string(argv[2]), res, match)) {
++		std::string arg = argv[2];
++		if(std::regex_search(arg, res, match)) {
+ 			for(unsigned int i=0; i<res.size(); ++i) {
+ 				std::cout << i << ":\t |" << res[i] << "|" << std::endl;
+ 				}
+diff -aur -bZwB cadabra2-git.old/core/CMakeLists.txt cadabra2-git/core/CMakeLists.txt
+--- cadabra2-git.old/core/CMakeLists.txt	2016-02-02 13:19:27.737458452 -0500
++++ cadabra2-git/core/CMakeLists.txt	2016-02-02 13:19:37.057404853 -0500
+@@ -19,7 +19,8 @@
+ set(Boost_USE_MULTITHREADED ON)
+ set(Boost_USE_STATIC_RUNTIME OFF)
+ find_package(Boost 1.45.0 COMPONENTS python)
+-find_program(PYTHON "python" REQUIRED)
++set(Python_ADDITIONAL_VERSIONS 2.7)
++find_package(PythonInterp REQUIRED)
+ 
+ if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+     if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS 3.5)
+@@ -150,11 +151,11 @@
+ #set(SETUP_PY_IN "${CMAKE_CURRENT_SOURCE_DIR}/setup.py.in")
+ #set(SETUP_PY    "${CMAKE_CURRENT_BINARY_DIR}/setup.py")
+ #configure_file(${SETUP_PY_IN} ${SETUP_PY})
+-#install(CODE "execute_process(COMMAND ${PYTHON} ${SETUP_PY} install)")
++#install(CODE "execute_process(COMMAND ${PYTHON_EXECUTABLE} ${SETUP_PY} install)")
+ 
+ # import site; print site.getsitepackages()[0]
+ 
+-execute_process(COMMAND ${PYTHON} -c "import site; print site.getsitepackages()[0];" 
++execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "import site; print site.getsitepackages()[0];" 
+   OUTPUT_VARIABLE python_site_path OUTPUT_STRIP_TRAILING_WHITESPACE)
+ 
+ message("-- Python site path at ${python_site_path}")
+diff -aur -bZwB cadabra2-git.old/core/PythonCdb.cc cadabra2-git/core/PythonCdb.cc
+--- cadabra2-git.old/core/PythonCdb.cc	2016-02-02 13:19:27.737458452 -0500
++++ cadabra2-git/core/PythonCdb.cc	2016-02-02 13:19:37.060738167 -0500
+@@ -4,6 +4,7 @@
+ // make boost::python understand std::shared_ptr when compiled with clang.
+ // http://stackoverflow.com/questions/13986581/using-boost-python-stdshared-ptr
+ 
++namespace boost {
+ #if not defined(get_pointer)
+ template<typename T>
+ T *get_pointer(std::shared_ptr<T> p)
+@@ -11,6 +12,7 @@
+ 		return p.get();
+ 		}
+ #endif
++}
+ 
+ #include "Parser.hh"
+ #include "Exceptions.hh"
+diff -aur -bZwB cadabra2-git.old/frontend/common/CMakeLists.txt cadabra2-git/frontend/common/CMakeLists.txt
+--- cadabra2-git.old/frontend/common/CMakeLists.txt	2016-02-02 13:19:27.747458394 -0500
++++ cadabra2-git/frontend/common/CMakeLists.txt	2016-02-02 13:19:42.164042159 -0500
+@@ -25,8 +25,11 @@
+ endif()
+ 
+ # Create library
++set(INSTALL_LIB_DIR     lib           CACHE PATH "Installation directory for libraries")
+ include_directories(".")
+ add_library(texengine SHARED TeXEngine.cc lodepng.cc exec-stream.cc)
+ target_link_libraries(texengine ${Boost_LIBRARIES} pthread)
+ add_executable(test_tex test_tex.cc)
+ target_link_libraries(test_tex texengine)
++install(TARGETS texengine LIBRARY DESTINATION "${INSTALL_LIB_DIR}")
++
+diff -aur -bZwB cadabra2-git.old/frontend/gtkmm/CMakeLists.txt cadabra2-git/frontend/gtkmm/CMakeLists.txt
+--- cadabra2-git.old/frontend/gtkmm/CMakeLists.txt	2016-02-02 13:19:27.747458394 -0500
++++ cadabra2-git/frontend/gtkmm/CMakeLists.txt	2016-02-02 13:19:37.060738167 -0500
+@@ -14,7 +14,9 @@
+ link_directories(${GTKMM3_LIBRARY_DIRS})
+ add_definitions(${GTKMM3_CFLAGS_OTHER})
+ pkg_check_modules(JSONCPP jsoncpp REQUIRED)   # libjsoncpp-dev
++if(JSONCPP_INCLUDE_DIRS)
+ include_directories("${JSONCPP_INCLUDE_DIRS}")
++endif(JSONCPP_INCLUDE_DIRS)
+ link_directories(${JSONCPP_LIBRARY_DIRS})
+ find_package(Boost 1.45.0 COMPONENTS system)
+ set(Boost_USE_STATIC_LIBS OFF)
+diff -aur -bZwB cadabra2-git.old/frontend/gtkmm/NotebookWindow.cc cadabra2-git/frontend/gtkmm/NotebookWindow.cc
+--- cadabra2-git.old/frontend/gtkmm/NotebookWindow.cc	2016-02-02 13:19:27.747458394 -0500
++++ cadabra2-git/frontend/gtkmm/NotebookWindow.cc	2016-02-02 13:19:37.060738167 -0500
+@@ -25,7 +25,7 @@
+ #ifdef __APPLE__
+ 	scale = 1.0;
+ #else
+-	settings = Gio::Settings::create("org.cinnamon.desktop.interface");
++	settings = Gio::Settings::create("org.gnome.desktop.interface");
+ 	scale = settings->get_double("text-scaling-factor");
+ #endif
+ 	engine.latex_packages.push_back("breqn");
