@@ -1,16 +1,16 @@
 # Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com> PGP-Key: 78695CFD
-# Contributor: shivik <> PGP-Key: 761E423C
+# Contributor: shivik <> PGP-Key: 761E4.4C
 # Contributor : Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-340xx-lqx
 pkgver=340.96
-_extramodules=extramodules-4.3-lqx
-pkgrel=1
+_extramodules=extramodules-4.4-lqx
+pkgrel=2
 pkgdesc="NVIDIA drivers for linux-lqx, 340xx legacy branch"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-lqx>=4.3' 'linux-lqx<4.4' "nvidia-340xx-libgl" "nvidia-340xx-utils=${pkgver}")
-makedepends=('linux-lqx-headers>=4.3' 'linux-lqx-headers<4.4')
+depends=('linux-lqx>=4.4' 'linux-lqx<4.5' "nvidia-340xx-libgl" "nvidia-340xx-utils=${pkgver}")
+makedepends=('linux-lqx-headers>=4.4' 'linux-lqx-headers<4.5')
 conflicts=('nvidia-lqx' 'nvidia-304xx-lqx')
 license=('custom')
 install=${pkgname}.install
