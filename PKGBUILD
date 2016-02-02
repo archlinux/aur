@@ -2,18 +2,16 @@
 
 pkgname=argouml
 pkgver=0.34
-pkgrel=3
+pkgrel=4
 pkgdesc="UML 1.4 modeller"
 arch=('any')
 url="http://argouml.tigris.org/"
 license=('EPL')
 depends=('java-runtime')
 source=("${pkgname}-${pkgver}.tar.gz::http://argouml-downloads.tigris.org/nonav/argouml-0.34/ArgoUML-0.34.tar.gz"
-        "${pkgname}"
         "${pkgname}.desktop");
 noextract=()
 md5sums=("440efea6096a00b8c19daab1ecddaf7c"
-         "c9febf6fcf3230e1a1538ef9502d2d2c"
          "137bff550da020b3e87d7ab4a6d1f6e5")
 validpgpkeys=()
 
@@ -27,7 +25,7 @@ package() {
     cp -pR ${srcdir}/${pkgname}-${pkgver}/* ${pkgdir}/opt/${pkgname}/
 
     msg2 "Creating executable file..."
-    cp -p ${srcdir}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
+    ln -s "/opt/argouml/argouml.sh" ${pkgdir}/usr/bin/${pkgname}
 
     msg2 "Creating desktop entry..."
     cp -p ${srcdir}/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
