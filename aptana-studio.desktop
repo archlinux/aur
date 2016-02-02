@@ -1,0 +1,9 @@
+ [Desktop Entry]
+ Name=Aptana Studio 3
+ Comment=A web development IDE
+ Icon=/usr/lib/aptana/icon.xpm
+ Exec=aptana-studio
+ Terminal=false
+ Type=Application
+ Categories=Development;IDE;Web;HTML;PHP;CSS;
+ StartupNotify=true
