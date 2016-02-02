@@ -2,7 +2,7 @@
 pkgname=beamer-theme-metropolis-git
 pkgver=20151217
 pkgrel=1
-pkgdesc="A modern LaTeX Beamer theme"
+pkgdesc="A modern LaTeX Beamer theme -- Git version."
 url="https://github.com/matze/mtheme"
 arch=("any")
 license=("custom:cc-by-sa-4.0")
