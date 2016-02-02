@@ -12,7 +12,7 @@ makedepends=('bison' 'swig')
 depends=('lapack' 'libpulse' 'libsamplerate') #not sure if libsamplerate is needed
 source=("http://downloads.sourceforge.net/project/cmusphinx/${pkgname}/${pkgver}/$pkgname-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/cmusphinx/sphinxbase/master/LICENSE")
-md5sums=('12acdeda1d597631947e5531463431f1'
+md5sums=('a6e1e258d1124f59fa8c8a53fc9313f5'
          '469fd92fa8cd1d4ca7ee0fe7435af689')
 options=('!libtool')
 
