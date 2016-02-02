@@ -10,28 +10,28 @@
 
 pkgname=opera
 pkgver=35.0.2066.37
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast and secure web browser"
 url="http://www.opera.com/"
 install=${pkgname}.install
 options=(!strip !zipman)
 license=('custom:opera')
 backup=("etc/$pkgname/default")
+arch=('i686' 'x86_64')
 depends=('gtk2' 'desktop-file-utils' 'shared-mime-info' 'libxtst' 'gconf' 'libxss' 'alsa-lib' 'nss' 'ttf-font' 'libnotify')
 optdepends=(
     'curl: opera crash reporter and autoupdate checker'
     'opera-ffmpeg-codecs: playback of proprietary video/audio'
 )
-arch=('x86_64')
-source_x86_64=(
-    "http://get.geo.opera.com/pub/${pkgname}/desktop/${pkgver}/linux/${pkgname}-stable_${pkgver}_amd64.deb"
-)
 source=(
     "opera"
     "default"
 )
+source_i686=("http://get.geo.opera.com/pub/${pkgname}/desktop/${pkgver}/linux/${pkgname}-stable_${pkgver}_i386.deb")
+source_x86_64=("http://get.geo.opera.com/pub/${pkgname}/desktop/${pkgver}/linux/${pkgname}-stable_${pkgver}_amd64.deb")
 sha256sums=('508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5'
             '4913d97dec0ddc99d1e089b029b9123c2c86b7c88d631c4d1111b119b09da027')
+sha256sums_i686=('d92b1ba02017d0f61b79383d99c6a902311686e68e1c5b2a56b0823c2c878540')
 sha256sums_x86_64=('3afa543f51d5f7fe4e8fbff93518c4afe0a0a8fab5e43210fbc0f6d42739d148')
 
 prepare() {
