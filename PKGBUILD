@@ -6,7 +6,7 @@ _pkgname=wwwoffle
 pkgname="${_pkgname}-svn"
 # _pkgver=2.9i
 pkgver=2.9j.r2202
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple caching proxy server with special features (request, recursive fetch, ...) for use with dial-up internet links. Includes startup scripts for OpenRC, System V init, systemd."
 arch=('i686' 'x86_64' 'arm' 'arm64')
 url="http://www.gedanken.org.uk/software/wwwoffle/"
@@ -57,19 +57,8 @@ sha256sums=(
   '87eb11ad6e43eb9ac866806e413b187196d2d3b9383de76139d4e4ff71ffe855'
 )
 
-pkgver() {
-  # Format: RELEASE.rREVISION, e.g. 2.9j.r2202
-  
+_pgmver() {
   _unpackeddir="${srcdir}/${_pkgname}"
-  
-  _rev="$(svn info "${_svnurl}" | grep '^Revision' | cut -d' ' -f2)"
-  
-  if [ -z "${_rev}" ]; then
-    echo "$0: Error: Could not determine SVN revision." > /dev/stderr
-    echo "Aborting." > /dev/stderr
-    false
-    exit 1
-  fi
   
   # Well, this _is_ useless use of cat, but to make it more clear to see in which order things are going on I do the cat first and then the grep.
   _ver="$(cat "${_unpackeddir}/conf/wwwoffle.conf.template" | \
@@ -78,11 +67,43 @@ pkgver() {
             sed 's|.* \([^ ]*\)$|\1|g' | \
             sed 's|\.$||g')"
   
+  echo "${_ver}"
+  if [ -z "${_ver}" ]; then
+    return 1
+  fi
+}
+
+_svnrelease() {
+  _unpackeddir="${srcdir}/${_pkgname}"
+  
+  _rev="$(svn info "${_unpackeddir}" | grep '^Revision' | cut -d' ' -f2)"
+  
+  echo "${_rev}"
+  if [ -z "${_rev}" ]; then
+    return 1
+  fi
+}
+
+pkgver() {
+  # Format: RELEASE.rREVISION, e.g. 2.9j.r2202
+  
+  _unpackeddir="${srcdir}/${_pkgname}"
+  
+  _ver="$(_pgmver)"
+  _rev="$(_svnrelease)"
+  
   if [ -z "${_ver}" ]; then
     echo "$0: Error: Could not determine version." > /dev/stderr
     echo "Aborting." > /dev/stderr
     false
-    exit 1
+    return 1
+  fi
+  
+  if [ -z "${_rev}" ]; then
+    echo "$0: Error: Could not determine SVN revision." > /dev/stderr
+    echo "Aborting." > /dev/stderr
+    false
+    return 1
   fi
   
   echo "${_ver}.r${_rev}"
@@ -92,11 +113,20 @@ build() {
   _unpackeddir="${srcdir}/${_pkgname}"
   cd "${_unpackeddir}"
   
+  ### Update version.h to the actual version.
+  _ver="$(_pgmver)"
+  _rev="$(_svnrelease)"
+  msg "Updating version in src/version.h to ${_ver}+svn${_rev}."
+  sed -i 's|^\([[:space:]]*#define[[:space:]]*WWWOFFLE_VERSION[[:space:]]*\).*$|/*+ +*/\n/*+ The following line was automatically upgraded by the Arch Linux PKGBUILD (package build script) +*/\n/*+ in order to match the version as in conf/wwwoffle.conf.template and the SVN revision. +*/\n\1"'"${_ver}+svn${_rev}"'"|' \
+    'src/version.h'
+  
+  ### Make the ./configure-script.
   # libtoolize --force
   # aclocal
   # autoheader
   autoconf -o configure -v configure.in
   
+  ### Configure the Makefile.
   ./configure \
     --prefix=/usr \
     --bindir=/usr/bin \
@@ -110,6 +140,7 @@ build() {
     --with-confdir=/etc/wwwoffle \
     --with-default-language=en
   
+  ### Build the software.
   make || return 1
 }
 
@@ -117,26 +148,26 @@ package() {
   _unpackeddir="${srcdir}/${_pkgname}"
   cd "${_unpackeddir}"
   
-  # Install the software.
+  ### Install the software.
   make DESTDIR="${pkgdir}" install
   
-  # Move documentation into the place we want it.
+  ### Move documentation into the place we want it.
   mkdir -p "${pkgdir}/usr/share"
   mv -v "${pkgdir}/usr/doc" "${pkgdir}/usr/share/doc"
 
-  # Symlink the HTML-Documentation under wwwoffle's spool directory to the documentation directory. Note: The html documentation needs to stay at wwwoffle's spool directory, since it serves it from there when it's webinterface is accessed.
+  ### Symlink the HTML-Documentation under wwwoffle's spool directory to the documentation directory. Note: The html documentation needs to stay at wwwoffle's spool directory, since it serves it from there when it's webinterface is accessed.
   mkdir -p "${pkgdir}/usr/share/doc/wwwoffle/html"
   ln -sv "/var/spool/wwwoffle/html"/{de,en,es,fr,it,nl,pl,ru} "${pkgdir}/usr/share/doc/wwwoffle/html/"
 
-  # Install startup scripts for different init systems.
+  ### Install startup scripts for different init systems.
   install -D -m755 "${srcdir}/initscript_sysvinit" "${pkgdir}/etc/rc.d/wwwoffle"
   install -D -m755 "${srcdir}/initscript_openrc" "${pkgdir}/etc/init.d/wwwoffle"
   install -D -m644 "${srcdir}/initscript_systemd" "${pkgdir}/usr/lib/systemd/system/wwwoffle.service"
   
-  # Install a default configuration file.
+  ### Install a default initscript configuration file (for openrc and sysvinit only; for systemd user has to manually edit the systemd service file).
   install -D -m644 "${srcdir}/conf_d_wwwoffle" "${pkgdir}/etc/conf.d/wwwoffle"
 
-  # Change config such that wwwoffle runs as user wwwoffle and group wwwoffle. (Adding user and group is handled by the ${install}-script.)
+  ### Change config such that wwwoffle runs as user wwwoffle and group wwwoffle. (Adding user and group is handled by the ${install}-script.)
   sed -i -e 's/^#run-uid.*/ run-uid           = wwwoffle/' \
     "${pkgdir}/etc/wwwoffle/wwwoffle.conf"
   sed -i -e 's/^#run-gid.*/ run-gid           = wwwoffle/' \
