@@ -4,7 +4,7 @@ pkgdesc="ROS - Provides a portable set of time functions that are especially use
 url='http://wiki.ros.org/ecl_time_lite'
 
 pkgname='ros-indigo-ecl-time-lite'
-pkgver='0.61.1'
+pkgver='0.61.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -24,10 +24,16 @@ ros_depends=(ros-indigo-ecl-license
   ros-indigo-ecl-build)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/ecl_time_lite/${pkgver}-${_pkgver_patch}
-_dir=ecl_time_lite
-source=("${_dir}"::"git+https://github.com/yujinrobot-release/ecl_lite-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/ecl_time_lite/${pkgver}-${_pkgver_patch}
+# _dir=ecl_time_lite
+# source=("${_dir}"::"git+https://github.com/yujinrobot-release/ecl_lite-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ecl_lite-release-release-indigo-ecl_time_lite-${pkgver}-${_pkgver_patch}"
+source=("https://github.com/yujinrobot-release/ecl_lite-release/archive/release/indigo/ecl_time_lite/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('7737d30001c0af63c334efdb97c3070dc6bb164a0845a2b35bb2986017d4f68a')
 
 build() {
   # Use ROS environment variables
