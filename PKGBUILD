@@ -3,7 +3,7 @@
 pkgname=globalplatformpro-git
 pkgver=0.3.6.r8.g3f2f96f
 pkgrel=1
-pkgdesc=""
+pkgdesc="A powerful tool for managing applets and keys on JavaCards based on the GlobalPlatform specifications"
 arch=('any')
 url="https://javacard.pro/globalplatform/"
 license=('LGPL3')
