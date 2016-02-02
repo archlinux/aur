@@ -3,7 +3,7 @@
 
 pkgname=cloudcross
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="CloudCross is a improved Google Drive sync client."
 arch=('i686' 'x86_64')
 url="http://cloudcross.mastersoft24.ru"
@@ -21,7 +21,7 @@ options=(!emptydirs)
 source=("http://cloudcross.mastersoft24.ru/download/?v=$pkgver-rc1&r=pacman")
 
 
-md5sums=("257bd1d3773093accbff9af4725ed61f")
+md5sums=("")
 
 
 build() {
