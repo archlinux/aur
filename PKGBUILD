@@ -5,14 +5,14 @@
 
 # Maintainer: Anthony HAMON <hamon.anth@gmail.com>
 pkgname=goller
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Command line log parser to aggregate fields and count occurences"
 arch=('x86_64' 'i686')
 url="https://github.com/antham/goller"
 license=('GPL')
-source=("https://github.com/antham/goller/releases/download/v2.0.1/goller_linux_386")
-md5sums=("c83290829c725cecdced0a930c344364")
+source=("https://github.com/antham/goller/releases/download/v2.0.2/goller_linux_386")
+md5sums=("9351bfd51503d6cbbf7c128355fab931")
 
 package() {
     install -Dm755 "goller_linux_386" "$pkgdir/usr/bin/$pkgname"
