@@ -1,15 +1,16 @@
 # Maintainer: David Parrish <daveparrish@gmail.com>
 
 pkgname=geth-git
-pkgver=v0.9.39.r563.ge7f6798
+pkgver=v0.9.39.r588.gf85212a
 pkgrel=1
 pkgdesc="Ethereum Go Client"
 arch=('i686' 'x86_64')
 url="https://github.com/ethereum/go-ethereum"
 license=('LGPL3' 'GPL3')
 makedepends=('go' 'gmp')
+optdepends=('mist: Graphical Ethereum wallet and DApps browser.')
 provides=('geth')
-source=("${pkgname}::git+https://github.com/ethereum/go-ethereum.git")
+source=("${pkgname}::git+https://github.com/ethereum/go-ethereum.git#branch=develop")
 sha256sums=('SKIP')
 
 pkgver() {
