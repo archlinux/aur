@@ -5,7 +5,7 @@
 # Contributor: Dmitry Shilov <stormblast@land.ru>
 
 pkgname=doomsday
-pkgver=1.15.7
+pkgver=1.15.8
 pkgrel=1
 pkgdesc="An advanced Doom engine that supports DOOM, Heretic and Hexen."
 url="http://dengine.net/"
