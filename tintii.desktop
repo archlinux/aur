@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Tintii
+GenericName=Tintii
+Comment=Filter the color of your photos
+Type=Application
+Exec=tintii %f
+Icon=tintii
+Terminal=false
+Categories=Graphics;2DGraphics;
