@@ -6,7 +6,7 @@ epoch=
 pkgdesc="Recursive file compare tool"
 arch=('i686' 'x86_64')
 url="https://github.com/n-t-roff/rlcmp"
-license=('GPL')
+license=('BSD')
 groups=()
 depends=('libavlbst-git')
 makedepends=('git')
@@ -40,6 +40,6 @@ package() {
        MANDIR=$pkgdir/usr/share/man \
        INCDIR=$pkgdir/usr//include \
        LIBDIR=$pkgdir/usr/lib install
-
+  install -Dm644 LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
 }
 
