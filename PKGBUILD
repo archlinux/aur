@@ -6,9 +6,9 @@ pkgdesc="Evented IO for SpiderMonkey and V8 JavaScript"
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="http://jxcore.io/"
 license=('common')
-depends=()
+depends=('openssl' 'zlib' 'http-parser' 'nodejs' )
 makedepends=('python2')
-optdepends=()
+optdepends=('npm:: node package manager')
 conflicts=()
 options=()
 install=
@@ -66,8 +66,14 @@ build() {
 
   export PYTHON=python2
   $PYTHON ./configure \
+    --prefix="/usr" \
     --engine-mozilla \
     --dest-os="linux" \
+    --shared-http-parser \
+    --shared-openssl \
+    --shared-zlib \
+    --without-npm \
+    --without-dtrace \
     ${CONFIGFLAG} 
   make
 
@@ -89,6 +95,18 @@ package() {
 
   install -D -m644 JXCORE_LICENSE \
     "$pkgdir/usr/share/licenses/jxcore/LICENSE"
+  # conflicts 
+  rm  "$pkgdir/usr/include/node/ares.h"
+  rm  "$pkgdir/usr/include/node/ares_version.h"
+  rm  "$pkgdir/usr/include/node/common.gypi"
+  rm  "$pkgdir/usr/include/node/config.gypi"
+  rm  "$pkgdir/usr/include/node/nameser.h"
+  rm  "$pkgdir/usr/include/node/node.h"
+  rm  "$pkgdir/usr/include/node/node_buffer.h"
+  rm  "$pkgdir/usr/include/node/node_internals.h"
+  rm  "$pkgdir/usr/include/node/node_object_wrap.h"
+  rm  "$pkgdir/usr/include/node/node_version.h"
+  rm  -rf "$pkgdir/usr/share/man"
 }
 
 # vim:set ts=2 sw=2 et:
