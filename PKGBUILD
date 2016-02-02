@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=lokalize-git
-pkgver=2.0.r1232.c9495b0
+pkgver=2.0.r1254.8930707
 pkgrel=1
 pkgdesc="Computer-Aided Translation System. (GIT version)"
 url='https://www.kde.org/applications/development/lokalize'
@@ -20,10 +20,8 @@ makedepends=('extra-cmake-modules'
 replaces=('kdesdk-lokalize')
 conflicts=('kdesdk-lokalize' 'lokalize')
 provides=('lokalize')
-source=('git://anongit.kde.org/lokalize.git'
-        'patch.patch')
-sha1sums=('SKIP'
-          'b33455548073fda877d390f7929a14dcefd7fea0')
+source=('git://anongit.kde.org/lokalize.git')
+sha1sums=('SKIP')
 install=lokalize-git.install
 
 pkgver() {
@@ -34,8 +32,6 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-
-  patch -p0 -i patch.patch
 }
 
 build() {
