@@ -6,7 +6,7 @@ pkgdesc='A volume keys control daemon for Xfce (pulseaudio fork from Xubuntu)'
 arch=('i686' 'x86_64')
 license=('GPL3')
 conflicts=('xfce4-volumed')
-url=('https://launchpad.net/xfce4-volumed-pulse')
+url='https://launchpad.net/xfce4-volumed-pulse'
 depends=('libnotify' 'pulseaudio' 'libkeybinder2')
 optdepends=('xfconf: to store/modify the selected sound card'
 'xfce4-notifyd: for OSD notifications')
