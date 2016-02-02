@@ -1,12 +1,13 @@
 #Contributor:Andrea Tarocchi <valdar@email.it> 
 pkgname=wiiuse
 pkgver=0.14.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Library written in C that connects with several Nintendo Wii remotes" 
 arch=(i686 x86_64)
 url="https://github.com/rpavlik/wiiuse" 
-depends=('bluez-libs' 'cmake')
-license="GPL3"
+depends=('bluez-libs') 
+makedepends=('cmake')
+license=('GPL3')
 install=wiiuse.install
 postfix=_src.tar.gz
 #source=("$pkgname-$pkgver.tar.gz::https://github.com/rpavlik/$pkgname/zipball/$pkgver")
