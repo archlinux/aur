@@ -1,17 +1,16 @@
---- plugin/LanguageTool.vim.orig	2014-05-01 16:10:07.000000000 +0200
-+++ plugin/LanguageTool.vim	2014-05-01 16:11:27.000000000 +0200
-@@ -156,23 +156,6 @@
-       endif
+--- plugin/LanguageTool.vim.orig	2016-02-02 14:30:03.889339778 +0100
++++ plugin/LanguageTool.vim	2016-02-02 14:31:03.478880279 +0100
+@@ -163,22 +163,6 @@
      endif
    endif
--
+ 
 -  let s:languagetool_jar = exists("g:languagetool_jar")
 -  \ ? g:languagetool_jar
--  \ : $HOME . '/languagetool-2.4.1/languagetool-commandline.jar'
+-  \ : $HOME . '/languagetool/languagetool-commandline.jar'
 -
 -  if !filereadable(s:languagetool_jar)
 -    " Hmmm, can't find the jar file.  Try again with expand() in case user
--    " set it up as: let g:languagetool_jar = '$HOME/.../languagetool-commandline.jar'
+-    " set it up as: let g:languagetool_jar = '$HOME/languagetool-commandline.jar'
 -    let l:languagetool_jar = expand(s:languagetool_jar)
 -    if !filereadable(expand(l:languagetool_jar))
 -      echomsg "LanguageTool cannot be found at: " . s:languagetool_jar
@@ -24,7 +23,7 @@
    return 0
  endfunction
  
-@@ -236,8 +219,7 @@
+@@ -242,8 +226,7 @@
    let l:range = a:line1 . ',' . a:line2
    silent exe l:range . 'w!' . l:tmpfilename
  
@@ -32,5 +31,5 @@
 -  \ . ' -jar '  . s:languagetool_jar
 +  let l:languagetool_cmd = 'languagetool'
    \ . ' -c '    . s:languagetool_encoding
-   \ . ' -d '    . s:languagetool_disable_rules
+   \ . (empty(s:languagetool_disable_rules) ? '' : ' -d '.s:languagetool_disable_rules)
    \ . ' -l '    . s:languagetool_lang
