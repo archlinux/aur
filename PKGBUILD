@@ -4,7 +4,7 @@ pkgdesc="ROS - This provides an Eigen implementation for ecls linear algebra."
 url='http://wiki.ros.org/ecl_eigen'
 
 pkgname='ros-indigo-ecl-eigen'
-pkgver='0.61.3'
+pkgver='0.61.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -21,10 +21,16 @@ ros_depends=(ros-indigo-ecl-license)
 depends=(${ros_depends[@]}
   eigen3)
 
-_tag=release/indigo/ecl_eigen/${pkgver}-${_pkgver_patch}
-_dir=ecl_eigen
-source=("${_dir}"::"git+https://github.com/yujinrobot-release/ecl_core-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/ecl_eigen/${pkgver}-${_pkgver_patch}
+# _dir=ecl_eigen
+# source=("${_dir}"::"git+https://github.com/yujinrobot-release/ecl_core-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ecl_core-release-release-indigo-ecl_eigen-${pkgver}-${_pkgver_patch}"
+source=("https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_eigen/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('437ce1016cd6ca419e90e707616c2f11ee86ee2e6d6a95be7f352cad00572d04')
 
 build() {
   # Use ROS environment variables
