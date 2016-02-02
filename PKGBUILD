@@ -5,7 +5,7 @@ _name="oslo.utils"
 _module="${_name/./-}"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="3.3.0"
+pkgver="3.4.0"
 pkgrel="1"
 pkgdesc="Oslo Utility library"
 arch=("any")
@@ -13,7 +13,7 @@ url="https://github.com/openstack/${_name}"
 license=("Apache")
 makedepends=("python-pbr>=1.8" "python2-pbr>=1.8")
 source=("https://tarballs.openstack.org/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('484f1025132756c065b5843ceb420b113a4fd262071887e85e5a2695f71bcabc')
+sha256sums=('b62438d4c5d4ba0cf32f0a4f3c5f1fe147675a607826342174694630ccce0b6f')
 
 prepare() {
     cp -a "${srcdir}/${_name}-${pkgver}" "${srcdir}/${_name}-${pkgver}-python2"
