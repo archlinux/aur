@@ -4,7 +4,7 @@ pkgdesc="ROS - Contains transforms (e.g."
 url='http://wiki.ros.org/ecl_mobile_robot'
 
 pkgname='ros-indigo-ecl-mobile-robot'
-pkgver='0.60.0'
+pkgver='0.60.1'
 _pkgver_patch=1
 arch=('any')
 pkgrel=2
@@ -14,8 +14,9 @@ ros_makedepends=(ros-indigo-ecl-errors
   ros-indigo-ecl-license
   ros-indigo-ecl-math
   ros-indigo-ecl-formatters
-  ros-indigo-catkin
+  ros-indigo-ecl-build
   ros-indigo-ecl-geometry
+  ros-indigo-catkin
   ros-indigo-ecl-linear-algebra)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]})
@@ -24,14 +25,21 @@ ros_depends=(ros-indigo-ecl-errors
   ros-indigo-ecl-license
   ros-indigo-ecl-math
   ros-indigo-ecl-formatters
+  ros-indigo-ecl-build
   ros-indigo-ecl-geometry
   ros-indigo-ecl-linear-algebra)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/ecl_mobile_robot/${pkgver}-${_pkgver_patch}
-_dir=ecl_mobile_robot
-source=("${_dir}"::"git+https://github.com/yujinrobot-release/ecl_navigation-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/ecl_mobile_robot/${pkgver}-${_pkgver_patch}
+# _dir=ecl_mobile_robot
+# source=("${_dir}"::"git+https://github.com/yujinrobot-release/ecl_navigation-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ecl_navigation-release-release-indigo-ecl_mobile_robot-${pkgver}-${_pkgver_patch}"
+source=("https://github.com/yujinrobot-release/ecl_navigation-release/archive/release/indigo/ecl_mobile_robot/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('76a460e0d02ac6f1c1bfa836b645af11ef6de8e2feb23957d88f5929d168f81b')
 
 build() {
   # Use ROS environment variables
