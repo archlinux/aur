@@ -3,14 +3,14 @@
 
 pkgname=genymotion
 pkgver=2.6.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Complete set of tools that provides a virtual environment for Android."
 arch=('i686' 'x86_64')
-license="UNKNOWN"
 url="http://www.genymotion.com/"
 depends=('ffmpeg-compat' 'gstreamer0.10' 'gstreamer0.10-base' 'libpng' 'net-tools' 'protobuf' 'qca' 'qt5-script' 'qt5-webkit' 'virtualbox')
 install=$pkgname.install
-sha512sums=('48e9bafe1d64b688c51eceb8d129f44d690060ff9a6d82eefcf3295f7834516ce62439faf4f4454287f594fc410aafbafd30a43537ea3d295c42bee8e4e03ac7')
+sha512sums=('48e9bafe1d64b688c51eceb8d129f44d690060ff9a6d82eefcf3295f7834516ce62439faf4f4454287f594fc410aafbafd30a43537ea3d295c42bee8e4e03ac7'
+            '92286b54b4dfa68b4400ab4c72717c091fe6ea7e9142ef1cfebabe801e682f2a217a443c5990cf2b59f7fa5a4bc22484e8f11b0071766f689363d74d19cbe840')
 
 if [[ $CARCH == x86_64 ]]; then
   _ARCH="x64"
@@ -21,6 +21,7 @@ else
 fi
 
 source=("genymotion.desktop"
+        "genymotion-player.desktop"
         "http://files2.genymotion.com/genymotion/genymotion-$pkgver/$pkgname-${pkgver}-linux_$_ARCH.bin")
 
 package(){
@@ -35,5 +36,6 @@ package(){
   ln -s /opt/genymotion/player $pkgdir/usr/bin/genymotion-player
   ln -s /opt/genymotion/gmtool $pkgdir/usr/bin/gmtool
   install -Dm644 $srcdir/genymotion.desktop $pkgdir/usr/share/applications/genymotion.desktop
+  install -Dm644 $srcdir/genymotion-player.desktop $pkgdir/usr/share/applications/genymotion-player.desktop
   chown -R root:root $pkgdir/opt/genymotion
 }
