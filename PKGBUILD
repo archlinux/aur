@@ -18,7 +18,7 @@ optdepends=('doom1-wad: Doom shareware',
             'heretic1-wad: Heretic shareware', 
             'hexen1-wad: Hexen shareware')
 source=("http://netcologne.dl.sourceforge.net/project/deng/Doomsday Engine/${pkgver}/doomsday-stable-${pkgver}.tar.gz")
-md5sums=('4650cfa3b843a61d13b1e46e9a449ac8')
+md5sums=('14487b988bd3b46580164cdcfa5989d5')
 
 build() {
     # Fix annoying messages from libpng (thanks to jwm-art)
