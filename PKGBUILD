@@ -18,7 +18,7 @@ _slowfscache_ver="1.10"
 _slowfscache_dirname="ngx_slowfscache"
 _echo_ver="v0.58"
 _echo_dirname="ngx_echo"
-_headersmore_ver="v0.27"
+_headersmore_ver="v0.29"
 _headersmore_dirname="ngx_headersmore"
 _uploadprogress_ver="v0.9.1"
 _uploadprogress_dirname="ngx_uploadprogress"
@@ -28,7 +28,7 @@ _fancyindex_ver="v0.3.5"
 _fancyindex_dirname="ngx_fancyindex"
 _authpam_ver="1.4"
 _authpam_dirname="ngx_authpam"
-_pagespeed_ver="1.9.32.10"
+_pagespeed_ver="1.10.33.2"
 _pagespeed_dirname="ngx_pagespeed"
 _rtmp_ver="v1.1.7"
 _rtmp_dirname="ngx_rtmp"
@@ -40,8 +40,8 @@ _accesskey_ver="2.0.3"
 _accesskey_dirname="ngx_accesskey"
 
 pkgname=nginx-custom
-pkgver=1.8.0
-pkgrel=4
+pkgver=1.8.1
+pkgrel=1
 pkgdesc="lightweight HTTP server and IMAP/POP3 proxy server with standard, additional and 3d party modules"
 arch=('i686' 'x86_64')
 
@@ -94,17 +94,17 @@ md5sums=('d56559ed5e8cc0b1c7adbe33f2300c4c'
          '845cab784b50f1666bbf89d7435ac7af'
          '79031b58828462dec53a9faed9ddb36a'
          '6696dc228a567506bca3096b5197c9db'
-         '3ca4a37931e9fa301964b8ce889da8cb'
+         '2e91695074dbdfbf1bcec0ada9fda462'
          '6d28dfd6cef1f130a1df97d61425798c'
          '3d4ec04bbc16c3b555fa20392c1119d1'
          '68a1af12d5c1218fb2b3e05ed7ff6f0c'
          'f7dee95dbe8ada5f4d8e9d59ca1f4797'
-         '9fe68166a6e93c99373157ca10eca016'
+         '838081f1398965fbf3037bc38d1c2208'
          '6fe61c5b44b2e338c66e1e33ff7e95ab'
          'ac5e7f485476af70e0ee1c52016cddaf'
          'a5c0fb3af7158297c1457739947b9b0c'
-         '1f915fdf13825f3246000c6b2024af49'
-         'c4069b751887d736f643ba698239c514'
+         'dffa6d500ea1af840b28c1c4244b1fcf'
+         '0c3b1e0c0884b899c37c0cb92b306bcd'
          'a81e63cd4cf28eaf0c87d27c44e4c44a'
          '2cb502dbda335be4ebd5fed0b3182bae'
          '1bc31058991268e4cfdb44e9b6d8b3b3'
