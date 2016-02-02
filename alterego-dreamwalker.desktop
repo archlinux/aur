@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Alter Ego 2
+GenericName=Alter Ego - Dream Walker
+Exec=alterego-dreamwalker
+Icon=alterego-dreamwalker
+Terminal=false
+Type=Application
+Categories=Game;ArcadeGame;
