@@ -2,7 +2,7 @@
 
 pkgname=monitorix
 pkgver=3.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A lightweight system monitoring tool that uses rrd databases.'
 arch=('any')
 url='http://www.monitorix.org'
@@ -17,8 +17,8 @@ optdepends=(
 	'nvidia: enable support for nVidia card temp and usage monitoring.'
 	'smartmontools: enable support for hdd bad sector monitoring.'
 	'terminus-font: if graphs do not contain characters, you may need this font package.')
-conflicts=$pkgname-git
-backup=(etc/$pkgname/$pkgname.conf etc/$pkgname.conf)
+conflicts=("$pkgname-git")
+backup=("etc/$pkgname/$pkgname.conf" "etc/$pkgname.conf")
 install=readme.install
 source=("http://www.$pkgname.org/$pkgname-$pkgver.tar.gz")
 sha256sums=('d284f9a7296a42fcb8e8f67c7c8400fa5fba95c49016bebc87f0f66fc3094e90')
