@@ -1,7 +1,7 @@
 # Maintainer: Marc McIntosh <marc@marcmcintosh.ninja>
 pkgname=jxcore
-pkgver=0.3.0.7.r347.g1638e28
-pkgrel=2
+pkgver=0.3.1.1.r14.g71002d0
+pkgrel=1
 pkgdesc="Evented IO for SpiderMonkey and V8 JavaScript"
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="http://jxcore.io/"
