@@ -23,6 +23,7 @@ noextract=()
 _gourl=github.com/dborzov/lsp
 
 pkgver() {
+  GOPATH="$srcdir" go get -d ${_gourl}
   cd "$srcdir/src/${_gourl}"
   git describe --tags | sed -E 's/^v//g;s/([^-]*-g)/r\1/;s/-/./g'
 }
