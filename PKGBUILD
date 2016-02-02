@@ -2,7 +2,7 @@
 # Contributor: Suhaimi Ghazali <serdotlinecho@gmail.com>
 
 pkgname=gnome-mpv-git
-pkgver=0.6.r89.g56d2694
+pkgver=0.6.r110.g05d6629
 pkgrel=1
 pkgdesc="GNOME frontend for MPV"
 arch=('i686' 'x86_64')
@@ -23,6 +23,7 @@ pkgver() {
 
 build() {
     cd "$pkgname"
+    mkdir m4  # Temporary fix ?
     autoreconf -sfi
     intltoolize -c --automake
     ./configure --prefix=/usr
