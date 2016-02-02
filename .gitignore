@@ -1,3 +1,4 @@
+*.patch
 pkg/
 src/
 *.tar.gz
