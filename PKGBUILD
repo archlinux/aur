@@ -1,6 +1,6 @@
 pkgname=addic7ed-cli
-pkgver=1.3
-pkgrel=2
+pkgver=1.4
+pkgrel=1
 pkgdesc="Addic7ed command-line interface"
 arch=('any')
 url="https://github.com/BenoitZugmeyer/addic7ed-cli"
@@ -18,9 +18,10 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://github.com/BenoitZugmeyer/${pkgname}/archive/v${pkgver}.zip")
-md5sums=('2d31652967e485ea876f07e6963bd9d9')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
+
+md5sums=('44a4a88a65a170c9ce902037ac730206')
