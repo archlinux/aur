@@ -12,7 +12,7 @@ makedepends=('swig')
 depends=('sphinxbase=5prealpha' 'python2' 'python' 'gstreamer0.10-base' 'gst-plugins-base-libs')
 source=("http://downloads.sourceforge.net/cmusphinx/$pkgname-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/cmusphinx/pocketsphinx/master/LICENSE")
-md5sums=('e8402e90570935b26745d313c133b376'
+md5sums=('dc4246dbeb577731432227ad33289326'
          '93bfe6b712fe592d844ef581e1e53d47')
 options=('!libtool')
 
@@ -22,10 +22,14 @@ prepare() {
 }
 
 build() {
+
+  msg2 "Building python3 environment"
   cd "$pkgname-$pkgver-py3"
   ./configure --prefix=/usr
   make
 
+
+  msg2 "Building python2 environment"
 	cd "../$pkgname-$pkgver-py2"
 	export PYTHON=/usr/bin/python2
   ./configure --prefix=/usr
