@@ -39,5 +39,6 @@ package() {
   make INCDIR=$pkgdir/usr/include \
        LIBDIR=$pkgdir/usr/lib \
        MANDIR=$pkgdir/usr/share/man install
+  install -Dm644 LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
 }
 
