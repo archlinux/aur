@@ -2,7 +2,7 @@
 
 pkgname=vcsn
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Finite state machine manipulation platform, consisting of a library and tools implemented on top of it."
 arch=('i686' 'x86_64')
 url="http://vaucanson.lrde.epita.fr/"
