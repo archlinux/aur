@@ -9,12 +9,14 @@
 pkgname=plex-media-server
 pkgver=0.9.15.2.1663
 _pkgsum=7efd046
-pkgrel=3
+pkgrel=4
 pkgdesc='Plex Media Server'
 arch=('arm' 'armv7h' 'i686' 'x86_64')
 url='https://plex.tv/'
 license=('custom')
 depends=('systemd')
+makedepends_i686=('prelink')
+makedepends_x86_64=('prelink')
 replaces=('plexmediaserver')
 conflicts=('plexmediaserver' 'plexmediaserver-plexpass')
 backup=('etc/conf.d/plexmediaserver')
@@ -34,22 +36,11 @@ sha256sums_armv7h=('704a63c14329f99b941749ec4fd9285ff43e3eb53ffa6910295143b3c6b1
 sha256sums_i686=('0ee9891b82563a1351001ed6f5a20011a887d9d81c9d2092dad2965240ee5d5a')
 sha256sums_x86_64=('f06225807c6284914bca1cfaec4490d594c53a2c794d916b321658388d40f9cf')
 
-# Fix for arm compilation provided by tahayassen
-  if [[ $CARCH != arm* ]]; then
-    makedepends=('prelink')
-  fi
-
 prepare() {
-  if [[ $CARCH =~ arm* ]]; then
-    mkdir -p usr/lib/plexmediaserver
-    tar -xf package.tgz -C usr/lib/plexmediaserver/
-  fi
+  [[ $CARCH =~ arm* ]] && mkdir -p usr/lib/plexmediaserver && tar -xf package.tgz -C usr/lib/plexmediaserver/
 
   #Fix for SELinux and Grsecurity
-
-  if [[ $CARCH != arm* ]]; then
-  execstack -c usr/lib/plexmediaserver/libgnsdk_dsp.so*
-  fi
+  [[ $CARCH != arm* ]] && execstack -c usr/lib/plexmediaserver/libgnsdk_dsp.so*
 }
 
 package() {
