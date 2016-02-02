@@ -4,7 +4,7 @@ pkgname=alterego-dreamwalker
 # could not find any version number, so using 1.0
 pkgver=1.0
 pkgrel=1
-pkgdesc="AlterEgo2 - You control a hero who has a phantom twin, his alter ego."
+pkgdesc="Alter Ego 2 - You control a hero who has a phantom twin, his alter ego."
 url="http://www.retrosouls.net/?page_id=704"
 arch=('any')
 license=('custom:free')
@@ -21,7 +21,7 @@ package() {
 
   mkdir -p "$pkgdir"/usr/{bin,share/games/alterego-dreamwalker}
   rm AlterEgo2.sh
-  cp -r * "$pkgdir/usr/share/games/alterego-dreamwalker/"  
+  cp -r * "$pkgdir/usr/share/games/alterego-dreamwalker/"
 
   printf "%s\n%s\n" \
     '#!/bin/bash' \
