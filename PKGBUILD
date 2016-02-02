@@ -1,6 +1,6 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=libdigidoc
-pkgver=3.10.1.1208
+pkgver=3.10.1.1212
 pkgrel=1
 pkgdesc="Library for creating DigiDoc signature files"
 arch=('x86_64' 'i686')
@@ -8,9 +8,8 @@ url="http://www.id.ee/"
 license=('LGPL')
 depends=('libxml2' 'openssl')
 makedepends=('cmake' 'pcsclite' 'opensc')
-conflicts=('libdigidoc-svn' 'sk-libdigidoc-svn')
 source=("https://installer.id.ee/media/ubuntu/pool/main/libd/$pkgname/${pkgname}_$pkgver.orig.tar.xz")
-sha256sums=('a7de5e93baccd2d807232dbbe9b4dde72e08921c9a414a719fe275d8d6e40cd6')
+sha256sums=('ad5e0603aea2e02977f17318cc93a53c3a19a815e57b2347d97136d11c110807')
 validpgpkeys=('43650273CE9516880D7EB581B339B36D592073D4')
 
 build() {
