@@ -14,7 +14,7 @@ depends=('perl-www-mechanize' 'perl-io-html' 'perl-lwp-protocol-https')
 optdepends=('moc: daemon support for moc player'
             'cmus: daemon support for cmus player')
 
-source="https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz"
+source=("https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('a878beccbbe947942c5df8bd2a8afb704756e82ab61a357816cb143ef12c77b0')
 install='readme.install'
 
