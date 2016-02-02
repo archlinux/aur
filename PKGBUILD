@@ -4,17 +4,12 @@ pkgbase=thinkfan-git
 pkgname=('thinkfan-openrc' 'thinkfan-systemd')
 pkgver=1.0.r150
 pkgrel=1
-pkgdesc="Thinkfan is a simple, lightweight fan control program. Originally designed
-specifically for IBM/Lenovo Thinkpads, it now supports any kind of system via
-the sysfs hwmon interface (/sys/class/hwmon). It is designed to eat as little
-CPU power as possible."
+pkgdesc="rewrite of Thinkfan in C++11"
 arch=('i686' 'x86_64')
-url="http://thinkfan.sourceforge.net"
+url="https://raw.githubusercontent.com/vmatare/thinkfan/master/README"
 license=('GPL3')
 makedepends=('git' 'cmake' 'make' 'sed')
 optdepends=('libatasmart: read HDD temperatures' 'lm_sensors: hwmon support')
-#source=("$pkgname::git://git.code.sf.net/p/thinkfan/code#branch=master")
-##using new fork!
 source=("${pkgbase}::git://github.com/vmatare/thinkfan#branch=master")
 md5sums=('SKIP')
 
@@ -50,7 +45,6 @@ commonstuff() {
 	provides=("${pkgname}=$pkgver"  "${pkgname}-git=$pkgver")
 	conflicts=("${pkgname}<=$pkgver" "${pkgname}-git<=$pkgver")
 	replaces=("${pkgname}<=$pkgver" "${pkgname}-git<=$pkgver")
-	depends+=('openrc')
 	cd "${pkgbase}"
 	make install DESTDIR="${pkgdir}"
 	install -d "${pkgdir}"/etc
@@ -64,6 +58,7 @@ commonstuff() {
 
 package_thinkfan-openrc() {
 	install="openrc.install"
+	depends+=('openrc')
 	commonstuff
 	sed -i 's|#!/sbin/runscript|#!/usr/bin/openrc-run|' rcscripts/thinkfan.gentoo
 	install -Dm755 rcscripts/thinkfan.gentoo "${pkgdir}"/etc/init.d/thinkfan
