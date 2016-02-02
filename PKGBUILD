@@ -2,11 +2,11 @@
 # Maintainer: Zeph <zeph33@gmail.com>
 
 pkgname=pamac-aur
-pkgver=2.4.3
-_pkgver=2.4.3
-pkgrel=7
+pkgver=3.0.0
+_pkgver=3.0.0
+pkgrel=1
 # This is the release package so the below _gitcommit variable should (usually) be commented out.
-_gitcommit="d7d393ed4e265ed0041a287e10306c6cf65971d8"
+#_gitcommit="d7d393ed4e265ed0041a287e10306c6cf65971d8"
 pkgdesc="A Gtk3 frontend for libalpm"
 arch=('any')
 url="https://github.com/manjaro/pamac"
@@ -29,12 +29,12 @@ else
   source=("pamac-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 fi
 
-source+=('notification-improvment.patch::https://github.com/manjaro/pamac/pull/88.patch')
-source+=('pacman5.patch')
+#source+=('notification-improvment.patch::https://github.com/manjaro/pamac/pull/88.patch')
+#source+=('pacman5.patch')
 
-sha256sums=('f8534a276a929ffdcc315d15e7a5b04274faacde2714e0a64bf8358b84d355db'
-            '749d9d153fbbe5b3709423983a6da6dfafae16a09acf8ccb6d35427f47cb804a'
-            '282928e3292fdb8b9e60b60251779b544160a1724b4bf32379a5c9ce14ecf54f')
+sha256sums=('e1806ea77d23dbb91c56ea70c0a7279d3bcaa25989f84f360900cf39e5e93b94')
+#sha256sums+=('749d9d153fbbe5b3709423983a6da6dfafae16a09acf8ccb6d35427f47cb804a')
+#sha256sums+=('282928e3292fdb8b9e60b60251779b544160a1724b4bf32379a5c9ce14ecf54f'
 
 prepare() {
   if [ "$_gitcommit" != "" ]; then
@@ -45,8 +45,8 @@ prepare() {
   sed -i -e "s|\"$_pkgver\"|\"$pkgver-$pkgrel\"|g" manager_window.vala
   cd "$srcdir/pamac-$pkgver/"
   # patches here
-  patch -Np1 -i $srcdir/notification-improvment.patch
-  patch -Np1 -i $srcdir/pacman5.patch
+#  patch -Np1 -i $srcdir/notification-improvment.patch
+#  patch -Np1 -i $srcdir/pacman5.patch
 }
 
 build() {
