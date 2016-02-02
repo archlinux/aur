@@ -21,7 +21,7 @@ options=(!emptydirs)
 source=("http://cloudcross.mastersoft24.ru/download/?v=$pkgver-rc2&r=pacman")
 
 
-md5sums=("")
+md5sums=("ee035d038cba9b70789f6bb9ee41007d")
 
 
 build() {
