@@ -4,7 +4,7 @@ pkgdesc="ROS - Embeds the TCLAP library inside the ecl."
 url='http://wiki.ros.org/ecl_command_line'
 
 pkgname='ros-indigo-ecl-command-line'
-pkgver='0.61.3'
+pkgver='0.61.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -18,10 +18,16 @@ makedepends=('cmake' 'git' 'ros-build-tools'
 ros_depends=(ros-indigo-ecl-license)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/ecl_command_line/${pkgver}-${_pkgver_patch}
-_dir=ecl_command_line
-source=("${_dir}"::"git+https://github.com/yujinrobot-release/ecl_core-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/ecl_command_line/${pkgver}-${_pkgver_patch}
+# _dir=ecl_command_line
+# source=("${_dir}"::"git+https://github.com/yujinrobot-release/ecl_core-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ecl_core-release-release-indigo-ecl_command_line-${pkgver}-${_pkgver_patch}"
+source=("https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_command_line/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('fad4bee7dea4d89dd0aa65d155fa2f509adb42bddc14e08eb9219fe595619fc6')
 
 build() {
   # Use ROS environment variables
