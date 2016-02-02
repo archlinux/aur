@@ -20,7 +20,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch'
         '0001-sdhci-revert.patch'
         'tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch'
-        'KEYS-Fix-keyring-ref-leak-in-join_session_keyring.patch'
         'override_for_missing_acs_capabilities.patch'
         'i915_317.patch')
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
@@ -31,7 +30,6 @@ sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
             'ab57037ecee0a425c612babdff47c831378bca0bff063a1308599989a350226d'
-            'b6ce060a6997861e14d1061d72b96c35476e8967dd26c8020fcff4a5f0fe453d'
             '975f79348119bfba8dd972a9fbfe6b38484c45bfd228f2f6d48a0c02426ba149'
             'b5a8eebbe75e1801b35d2f5197eba6f57123c224e09e97a7eb526f1fa58ac918')
 validpgpkeys=(
@@ -69,10 +67,6 @@ prepare() {
   else
     cat "${srcdir}/config" > ./.config
   fi
-
-  # patch for CVE-2016-0728
-  # https://anonscm.debian.org/cgit/kernel/linux.git/commit/?h=jessie-security&id=0ac8c3e88cf1ea329ede357f2a01a9b1a8734e24
-  patch -Np1 -i "${srcdir}/KEYS-Fix-keyring-ref-leak-in-join_session_keyring.patch"
 
   # patches for vga arbiter fix in intel systems
   echo '==> Applying i915 VGA arbitration patch'
