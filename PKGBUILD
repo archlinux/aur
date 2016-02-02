@@ -1,10 +1,10 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
-pkgdesc="ROS - This package provides an implementation of a 2D costmap based on the occupancy grid and a user specified inflation radius."
+pkgdesc="ROS - This package provides an implementation of a 2D costmap."
 url='http://wiki.ros.org/costmap_2d'
 
 pkgname='ros-indigo-costmap-2d'
-pkgver='1.12.5'
+pkgver='1.12.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -52,10 +52,16 @@ ros_depends=(ros-indigo-tf
   ros-indigo-pluginlib)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/costmap_2d/${pkgver}-${_pkgver_patch}
-_dir=costmap_2d
-source=("${_dir}"::"git+https://github.com/ros-gbp/navigation-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/costmap_2d/${pkgver}-${_pkgver_patch}
+# _dir=costmap_2d
+# source=("${_dir}"::"git+https://github.com/ros-gbp/navigation-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="navigation-release-release-indigo-costmap_2d-${pkgver}-${_pkgver_patch}"
+source=("https://github.com/ros-gbp/navigation-release/archive/release/indigo/costmap_2d/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('5e4cc95581dae3e55726dc4c9e43a29bd01d8c55c1c525ac009c2625051c6b33')
 
 build() {
   # Use ROS environment variables
