@@ -12,7 +12,7 @@ arch=('x86_64' 'i686')
 url="https://github.com/antham/goller"
 license=('GPL')
 source=("https://github.com/antham/goller/releases/download/v2.0.2/goller_linux_386")
-md5sums=("9351bfd51503d6cbbf7c128355fab931")
+md5sums=("bbf91d1984e543cd8a54ec08132ee808")
 
 package() {
     install -Dm755 "goller_linux_386" "$pkgdir/usr/bin/$pkgname"
