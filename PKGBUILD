@@ -12,13 +12,16 @@ depends=('pcre' 'libsndfile' 'libxmu' 'freetype2' 'libedit' 'libxml2' 'libtiff' 
 makedepends=('cmake' 'git')
 options=('!makeflags' '!buildflags')
 source=("git://github.com/stevedekorte/io#tag=$pkgver"
-        PATCH-Fix-for-inlining-in-C11-mode.patch)
+        PATCH-Fix-for-inlining-in-C11-mode.patch
+        PATCH-added--msse2-to-compile-flags-for.patch)
 md5sums=('SKIP'
-         'a3bab046cbc4be88ec95bb22c28abab3')
+         'a3bab046cbc4be88ec95bb22c28abab3'
+         '83552f6cabb4224cbcdcc01cb3bd4b90')
 
 prepare() {
   cd io
-  git am ../PATCH-Fix-for-inlining-in-C11-mode.patch
+  patch -p1 -i../PATCH-Fix-for-inlining-in-C11-mode.patch
+  patch -p1 -i../PATCH-added--msse2-to-compile-flags-for.patch
 }
 
 build() {
