@@ -2,6 +2,8 @@
 # module level
 # Mischa Lehmann <ducksource@duckpond.ch>
 # vim: set noexpandtab list:
-include ../include.mk
+
+TOPLEVEL := ../
 TEMPLATE := PKGBUILD.template
 
+include ../include.mk
