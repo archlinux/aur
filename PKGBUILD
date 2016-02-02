@@ -2,19 +2,19 @@
 
 pkgname=digilent.adept.runtime
 pkgver=2.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The Adept Runtime consists of the shared libraries, firmware images, and configuration files necessary to communicate with Digilent's devices."
 arch=('i686' 'x86_64')
-url="https://www.digilentinc.com/Products/Detail.cfm?Prod=ADEPT2"
+url="https://reference.digilentinc.com/digilent_adept_2"
 license=('custom')
 depends=('libusb')
 conflicts=('libftd2xx')
 options=('!strip')
 backup=('etc/digilent-adept.conf' 'etc/ld.so.conf.d/digilent-adept-libraries.conf' 'etc/udev/rules.d/52-digilent-usb.rules')
-source_i686=("http://www.digilentinc.com/Data/Products/ADEPT2/${pkgname}_${pkgver}_i386.deb")
-source_x86_64=("http://www.digilentinc.com/Data/Products/ADEPT2/${pkgname}_${pkgver}_amd64.deb")
-sha256sums_i686=('da3f3e41c66120c2799768a10c3c9cc956e0d7068ddbe104a09f78b299e856f3')
-sha256sums_x86_64=('45f66f9803cad62fa6c4468903e12556c66ee95dd433f1c6e91cadca44e50679')
+source_i686=("https://cloud.digilentinc.com/Software/Adept2/${pkgname}_${pkgver}-${pkgrel}_i386.deb")
+source_x86_64=("https://cloud.digilentinc.com/Software/Adept2/${pkgname}_${pkgver}-${pkgrel}_amd64.deb")
+sha256sums_i686=('c693fe2eebe96ea4f6977a0ffbebd02e2f6eeea530df28865b4f5e590c70012e')
+sha256sums_x86_64=('510a3c36c8931673cbe4fd6bee39a0b7edbc962b7796aff1b39f0a4f07712e3a')
 
 package() {
   # Extract
