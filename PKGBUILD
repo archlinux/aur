@@ -1,7 +1,7 @@
 # Maintainer: redfish <redfish at galactica dot pw>
 
 pkgname='zeronet'
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 arch=('any')
 url="https://zeronet.io/"
@@ -13,10 +13,10 @@ license=('GPL2')
 pkgdesc="Decentralized websites using Bitcoin crypto and the BitTorrent network."
 provides=(zeronet)
 conflicts=(zeronet zeronet-git)
-source=("https://github.com/HelloZeroNet/ZeroNet/archive/v0.3.4.tar.gz"
+source=("https://github.com/HelloZeroNet/ZeroNet/archive/v$pkgver.tar.gz"
         "zeronet.conf"
         "zeronet.service")
-md5sums=('b42a32f2aeed74f118f560b3e6e59d7a'
+md5sums=('879a0882fcbd3618020a78a56bb6597f'
          '1c2281156533c912e407cf64f6a57e96'
 	 '5ff9b2c9b8f913bf4fd29b61e61e2334')
 install=("zeronet.install")
