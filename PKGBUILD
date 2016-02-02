@@ -6,7 +6,7 @@
 
 pkgname=darktable-git
 _gitname=darktable
-pkgver=release.0.9.3.10806.g5c68bb3-1
+pkgver=release.0.9.3.10806.g5c68bb3
 pkgrel=1
 pkgdesc="A virtual lighttable and darkroom for photographers"
 arch=('i686' 'x86_64')
