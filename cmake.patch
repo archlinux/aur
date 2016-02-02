@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index dfabba7..c1a0ffc 100644
+index 7f42228..0324223 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -19,7 +19,6 @@ find_package(Go 1.4 REQUIRED)
@@ -10,3 +10,15 @@ index dfabba7..c1a0ffc 100644
  set(PROJECT_PATH "${CMAKE_BINARY_DIR}/heka")
  set(HEKA_PATH "${PROJECT_PATH}/src/github.com/mozilla-services/heka")
  set(LUA_INCLUDE_PATH "${PROJECT_PATH}/include")
+@@ -289,9 +288,9 @@ endif()
+ if (INCLUDE_MOZSVC)
+     add_test(mozsvc ${GO_EXECUTABLE} test ${BENCHMARK_FLAG} ${COVERAGE_FLAG} github.com/mozilla-services/heka-mozsvc-plugins)
+ endif()
+-install(FILES "${HEKA_PATH}/cmd/heka-sbmgr/sbmgr.toml" "${HEKA_PATH}/cmd/heka-sbmgr/hekad.toml.sbmgr" DESTINATION bin)
++install(FILES "${HEKA_PATH}/cmd/heka-sbmgr/sbmgr.toml" "${HEKA_PATH}/cmd/heka-sbmgr/hekad.toml.sbmgr" DESTINATION "share/${CMAKE_PROJECT_NAME}/examples")
+ if(INCLUDE_SANDBOX)
+-install(FILES "${HEKA_PATH}/sandbox/lua/testsupport/hekabench_cbuf_counter.lua" DESTINATION bin)
++install(FILES "${HEKA_PATH}/sandbox/lua/testsupport/hekabench_cbuf_counter.lua" DESTINATION "share/${CMAKE_PROJECT_NAME}/examples")
+ endif()
+ install(FILES "${CMAKE_SOURCE_DIR}/LICENSE.txt" DESTINATION "share/${CMAKE_PROJECT_NAME}")
+ install(DIRECTORY "${CMAKE_SOURCE_DIR}/dasher" DESTINATION "share/${CMAKE_PROJECT_NAME}")
