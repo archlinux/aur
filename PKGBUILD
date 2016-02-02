@@ -10,7 +10,7 @@ depends=(bash hpsmh hp-snmp-agents)
 groups=(hpproliant)
 license=("CUSTOM")
 
-source=(http://downloads.linux.hp.com/SDR/downloads/mcp/centos/7/x86_64/current/${pkgname}-${pkgver//_/-}.noarch.rpm)
+source=("http://downloads.linux.hpe.com/SDR/repo/mcp/centos/7/x86_64/current/${pkgname}-${pkgver//_/-}.noarch.rpm")
 sha256sums=('2f1cb2337b044a505ddb12826870a7f573f9050982711af53d36b5e45f0d78b1')
 
 package() {
