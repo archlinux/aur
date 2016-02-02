@@ -4,7 +4,7 @@ pkgdesc="ROS - Metaprogramming tools move alot of runtime calculations to be shi
 url='http://wiki.ros.org/ecl_mpl'
 
 pkgname='ros-indigo-ecl-mpl'
-pkgver='0.61.3'
+pkgver='0.61.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -18,10 +18,16 @@ makedepends=('cmake' 'git' 'ros-build-tools'
 ros_depends=(ros-indigo-ecl-license)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/ecl_mpl/${pkgver}-${_pkgver_patch}
-_dir=ecl_mpl
-source=("${_dir}"::"git+https://github.com/yujinrobot-release/ecl_core-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/ecl_mpl/${pkgver}-${_pkgver_patch}
+# _dir=ecl_mpl
+# source=("${_dir}"::"git+https://github.com/yujinrobot-release/ecl_core-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ecl_core-release-release-indigo-ecl_mpl-${pkgver}-${_pkgver_patch}"
+source=("https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_mpl/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('5b623ae4de2296c221297f3ffc88eafde878aec56600b69f82614b8a9e90c897')
 
 build() {
   # Use ROS environment variables
