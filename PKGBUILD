@@ -13,6 +13,7 @@ _gourl=github.com/BurntSushi/wingo
 _gourl2=github.com/BurntSushi/wingo/wingo-cmd
 
 pkgver() {
+  GOPATH="$srcdir" go get -d ${_gourl}
   cd "$srcdir/src/${_gourl}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
