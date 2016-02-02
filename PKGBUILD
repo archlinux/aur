@@ -1,26 +1,31 @@
 # $Id: PKGBUILD 67819 2012-03-14 16:22:14Z spupykin $
-# Maintainer: Daniel Wallace <danielwallace at gtmanfred dot com>
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Johannes Löthberg <johannes@kyriasis.com>
+# Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=zathura-pdf-mupdf
-pkgver=0.2.8
-pkgrel=2
+pkgver=0.2.9
+pkgrel=1
+
 pkgdesc="PDF support for Zathura (MuPDF backend)"
-arch=('i686' 'x86_64')
 url="https://pwmt.org/projects/zathura-pdf-mupdf/"
+arch=('i686' 'x86_64')
 license=('custom')
-depends=('zathura' 'jbig2dec' 'openjpeg2' 'cairo')
+
 conflicts=('zathura-pdf-poppler')
+
+depends=('zathura' 'jbig2dec' 'openjpeg2' 'cairo')
 makedepends=('mupdf>=1.4')
-source=("https://pwmt.org/projects/zathura/plugins/download/$pkgname-$pkgver.tar.gz")
-md5sums=('b0bf109c536bf1da131c38861cebb7e6')
+
+source=(https://pwmt.org/projects/zathura/plugins/download/zathura-pdf-mupdf-$pkgver.tar.gz)
+sha1sums=(55b47ed2962589eeef88168554aa5bd2f6557ed3)
 
 build() {
-  make -C "${srcdir}/$pkgname-$pkgver" MUPDF_LIB="-lmupdf -lmujs"
+  make -C zathura-pdf-mupdf-$pkgver MUPDF_LIB="-lmupdf -lmujs"
 }
 
 package(){
-  make -C "${srcdir}/$pkgname-$pkgver" DESTDIR="$pkgdir" install
-  install -Dm0644 "${srcdir}/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  make -C zathura-pdf-mupdf-$pkgver DESTDIR="$pkgdir" install
+  install -Dm0644 zathura-pdf-mupdf-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
