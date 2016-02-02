@@ -4,7 +4,7 @@ pkgdesc="ROS - Template based exceptions - these are simple and practical and av
 url='http://wiki.ros.org/ecl_exceptions'
 
 pkgname='ros-indigo-ecl-exceptions'
-pkgver='0.61.3'
+pkgver='0.61.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -22,10 +22,16 @@ ros_depends=(ros-indigo-ecl-license
   ros-indigo-ecl-config)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/ecl_exceptions/${pkgver}-${_pkgver_patch}
-_dir=ecl_exceptions
-source=("${_dir}"::"git+https://github.com/yujinrobot-release/ecl_core-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/ecl_exceptions/${pkgver}-${_pkgver_patch}
+# _dir=ecl_exceptions
+# source=("${_dir}"::"git+https://github.com/yujinrobot-release/ecl_core-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ecl_core-release-release-indigo-ecl_exceptions-${pkgver}-${_pkgver_patch}"
+source=("https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_exceptions/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('a8a8ffb69a340d762f06cdcbddc6afe045b75f24d14fad7d30feab95bf51cb03')
 
 build() {
   # Use ROS environment variables
