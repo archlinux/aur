@@ -1,16 +1,16 @@
-# Maintainer: Shalygin Konstantin (k0ste@opentech.ru)
+# Maintainer: Shalygin Konstantin <k0ste@opentech.ru>
 
 pkgname='spice-xpi'
 pkgver='2.8.90'
-pkgrel='10'
+pkgrel='11'
 pkgdesc='XPI client for interacting with SPICE servers. This package contains a mozilla browser client for interacting with SPICE servers.'
-arch=('any')
-url='http://spice-space.com/'
+arch=('x86_64')
+url='http://spice-space.com'
 license=('GPL')
 depends=('firefox' 'spice')
 provides=('browser-plugin-spice')
 conflicts=('browser-plugin-spice')
-makedepends=('git' 'python2' 'xulrunner' 'zip')
+makedepends=('git' 'python2' 'xulrunner' 'zip' 'gawk')
 source=("git://anongit.freedesktop.org/spice/${pkgname}"
 	"git://anongit.freedesktop.org/spice/spice-protocol")
 sha256sums=('SKIP'
