@@ -3,7 +3,7 @@
 pkgname=rocker-compose
 pkgver=0.1.4_rc2
 _pkgver=${pkgver//_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc="Docker composition tool for idempotently deploying multi-container apps"
 arch=('i686' 'x86_64')
 url="https://github.com/grammarly/$pkgname"
@@ -29,4 +29,5 @@ package() {
   cd "$pkgname-$_pkgver"
   install -Dm755 bin/$pkgname $pkgdir/usr/bin/$pkgname
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 completion/zsh/_$pkgname "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }
