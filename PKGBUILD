@@ -3,7 +3,7 @@
 
 pkgname=gnome-mpv-git
 pkgver=0.6.r110.g05d6629
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME frontend for MPV"
 arch=('i686' 'x86_64')
 url="https://github.com/gnome-mpv/gnome-mpv"
@@ -23,10 +23,7 @@ pkgver() {
 
 build() {
     cd "$pkgname"
-    mkdir m4  # Temporary fix ?
-    autoreconf -sfi
-    intltoolize -c --automake
-    ./configure --prefix=/usr
+    ./autogen.sh --prefix=/usr
     make
 }
 
