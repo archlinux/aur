@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=trojita-git
-pkgver=0.5.r105.gaff95e2
+pkgver=0.6.r25.g1bc33c4
 pkgrel=1
 pkgdesc="A fast QT IMAP e-mail client"
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ provides=('trojita')
 makedepends=('git' 'cmake')
 install=trojita.install
 
-source=('git://anongit.kde.org/trojita.git')
+source=('git+https://github.com/jktjkt/trojita.git')
 md5sums=('SKIP')
 
 pkgver() {
