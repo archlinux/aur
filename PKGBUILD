@@ -12,7 +12,7 @@ arch=('any')
 url="https://github.com/manjaro/pamac"
 license=('GPL3')
 depends=('glib2>=2.42' 'json-glib' 'libsoup' 'dbus-glib' 'polkit' 'vte3>=0.38' 'gtk3>=3.16'
-         'libnotify' 'desktop-file-utils' 'pacman>=4.2' 'gnutls>=3.4')
+         'libnotify' 'desktop-file-utils' 'pacman>=5.0' 'gnutls>=3.4')
 optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome'
             'lxsession: needed for authentification in Xfce, LXDE etc.'
             'yaourt: needed for AUR support')
