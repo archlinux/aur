@@ -1,0 +1,11 @@
+--- configure.orig	2011-10-29 15:06:21.656894682 -0400
++++ configure	2011-10-29 15:06:34.410158926 -0400
+@@ -2808,7 +2808,7 @@
+ 
+ echo "$as_me:$LINENO: checking for udev version" >&5
+ echo $ECHO_N "checking for udev version... $ECHO_C" >&6
+-udev_ver=`udevinfo -V | awk '{ print $3 }'`
++udev_ver=`udevadm -V`
+ if test -n "$udev_ver"; then
+   echo "$as_me:$LINENO: result: $udev_ver" >&5
+ echo "${ECHO_T}$udev_ver" >&6

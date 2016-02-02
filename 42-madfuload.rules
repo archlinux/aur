@@ -1,0 +1,16 @@
+# madfuload.rules - udev rules for loading firmware into M-Audio DFU devices
+
+# Audiophile
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="0763", ATTR{idProduct}=="2803", RUN+="/usr/bin/madfuload -l -n -f /usr/share/usb/maudio/ma003101.bin -D $env{DEVNAME}"
+
+# MobilePre
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="0763", ATTR{idProduct}=="2804", RUN+="/usr/bin/madfuload -l -3 -f /usr/share/usb/maudio/ma004103.bin -D $env{DEVNAME}"
+
+# Sonica
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="0763", ATTR{idProduct}=="2805", RUN+="/usr/bin/madfuload -l -n -f /usr/share/usb/maudio/ma005101.bin -D $env{DEVNAME}"
+
+# Transit
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="0763", ATTR{idProduct}=="2806", RUN+="/usr/bin/madfuload -l -3 -f /usr/share/usb/maudio/ma006100.bin -D $env{DEVNAME}"
+
+# Ozone
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="0763", ATTR{idProduct}=="2808", RUN+="/usr/bin/madfuload -l -3 -f /usr/share/usb/maudio/ma008100.bin -D $env{DEVNAME}"
