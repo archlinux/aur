@@ -1,0 +1,4 @@
+post_install(){
+    echo ">> Before run Parsoid, modify /usr/share/webapps/parsoid/localsettings.js ."
+    echo ">> Reference comments in this file for help ."
+}
