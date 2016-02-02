@@ -1,12 +1,12 @@
-# Maintainer: Tomasz Maciej Nowak <com[dot]gmail[at]tmn505>
-# Maintainer: Konstantin Shalygin (k0ste@cn.ru)
+# Maintainer: Konstantin Shalygin <k0ste@cn.ru>
+# Contributor: Tomasz Maciej Nowak <com[dot]gmail[at]tmn505>
 
 pkgname='xupnpd'
 pkgdesc="eXtensible UPnP agent (proxy IP TV multicast to DLNA)"
 pkgver='1.033'
-pkgrel='3'
+pkgrel='4'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
-url=("http://${pkgname}.org")
+url="http://${pkgname}.org"
 license=('GPL2')
 makedepends=('git' 'lua' 'lua-luajson')
 optdepends=('udpxy: custom udp to http proxy')
