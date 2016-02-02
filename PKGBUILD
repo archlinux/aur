@@ -2,7 +2,7 @@
 # Contributor: Mick Elliot <micke at sfu dot ca>
 
 pkgname=ncbi-toolkit
-pkgver=9.0.0
+pkgver=12.0.0
 _pkgver=${pkgver//./_}
 pkgrel=1
 pkgdesc="Applications, scripts and C++ libraries for the analysis of biological data"
@@ -11,15 +11,14 @@ url="http://www.ncbi.nlm.nih.gov/books/NBK7160/"
 license=('custom')
 depends=('python2' 'pcre' 'sqlite' 'lzo2' 'libtiff' 'giflib' 'libxpm' 'libmysqlclient' 'libpng' 'gnutls' 'libxml2' 'libxslt')
 optdepends=('fltk' 'wxgtk' 'db48' 'fcgi')
-makedepends=('autoconf')
+makedepends=('autoconf' 'gcc<4.9')
 provides=('blast+-bin')
 conflicts=('blast+-bin')
 source=("ftp://ftp.ncbi.nlm.nih.gov/toolbox/ncbi_tools++/ARCHIVE/$_pkgver/ncbi_cxx--$_pkgver.tar.gz" "LICENSE")
-md5sums=('46cbd232e024690ae617d1c44f3380b4'
+md5sums=('eb90379fb6a35dd9e5c928b49c4d8a74'
          '344b3873e649094cf2dbaac7b55cafbc')
 
-build()
-{
+build() {
   # for details see http://www.ncbi.nlm.nih.gov/books/NBK7167/#ch_config.Configuring_with_UNI
   # flags that do not work: --with-dll --with-bdb
   FLAGS="--without-debug --with-bin-release --with-bincopy --with-static \
@@ -45,4 +44,3 @@ package() {
   mv "$srcdir/build/lib/ncbi" "$pkgdir/usr/lib/" # make install error otherwise
   make install
 }
-
