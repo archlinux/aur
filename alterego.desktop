@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Alter Ego
+GenericName=Alter Ego
+Exec=alterego
+Icon=alterego
+Terminal=false
+Type=Application
+Categories=Game;ArcadeGame;
