@@ -2,13 +2,13 @@
 # Contributor: jackoneill <cantabile dot desu at gmail dot com>
 
 pkgname=vapoursynth-git
-pkgver=r29.0.g9080b2e
+pkgver=r30.22.g5f46305
 pkgrel=1
 pkgdesc="A video processing framework with simplicity in mind. (GIT version)"
 arch=('i686' 'x86_64')
 url='http://www.vapoursynth.com'
 license=('LGPL2.1' 'custom:OFL' 'custom:WFTPL')
-depends=('zimg-git'
+depends=('libzimg.so'
          'libass'
          'tesseract'
          'python'
@@ -44,8 +44,10 @@ prepare() {
 
 build() {
   cd vapoursynth
-  ./configure --prefix=/usr \
-              --enable-imwri
+  ./configure \
+    --prefix=/usr \
+    --enable-imwri \
+    --disable-static
   make
   make -C doc html man
 }
