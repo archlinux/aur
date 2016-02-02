@@ -18,8 +18,8 @@ conflicts=("dropbox-experimental")
 options=('!strip' '!upx')
 
 source=("dropbox.png" "dropbox.desktop" "terms.txt" "dropbox.service" "dropbox@.service")
-source_i686=("https://dl.dropboxusercontent.com/u/17/${pkgname}-lnx.x86-${pkgver}.tar.gz")
-source_x86_64=("https://dl.dropboxusercontent.com/u/17/${pkgname}-lnx.x86_64-${pkgver}.tar.gz")
+source_i686=("https://d1ilhw0800yew8.cloudfront.net/client/${pkgname}-lnx.x86-${pkgver}.tar.gz")
+source_x86_64=("https://d1ilhw0800yew8.cloudfront.net/client/${pkgname}-lnx.x86_64-${pkgver}.tar.gz")
 
 sha256sums=('e7d245f5d1a3d5322614b61400ae2913a8caef44bc86717ff7d8197a15dd7f01'
             '541f2fd2de0d601a08cde7853e404062f542af21e6e7106825b5e68177168e0f'
