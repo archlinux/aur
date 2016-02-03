@@ -1,0 +1,27 @@
+[SAV]
+account=Assets:Bank:Savings Account
+currency=AUD
+date=1
+csv_date_format=%d-%b-%y
+ledger_date_format=%Y/%m/%d
+desc=6
+credit=2
+debit=-1
+mapping_file=mappings.SAV
+
+[SAV_addons]
+beneficiary=3
+purpose=4
+
+
+[CHQ]
+account=Assets:Bank:Cheque Account
+currency=AUD
+date=1
+csv_date_format=%d/%m/%Y
+ledger_date_format=%Y/%m/%d
+desc=2
+credit=3
+debit=4
+mapping_file=mappings.CHQ
+skip_lines=0
