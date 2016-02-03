@@ -21,8 +21,8 @@
 # must be added to the wheel group (usermod -G).
 
 # for install_group in `groups`; do
-#   if [ "$install_group" = "wheel" ]; then
-#     find ~/build -type f -perm /400 -name "autorebuild-*.sh" -exec sh '{}' ';'
+#   if [ "${install_group}" = 'wheel' ]; then
+#     find ~/build -maxdepth 2 -type f -perm /400 -name 'autorebuild-*.sh' -exec sh '{}' ';'
 #     break
 #   fi
 # done
