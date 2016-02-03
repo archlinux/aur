@@ -7,7 +7,7 @@ _major=7
 _minor=79
 _build=b15
 pkgver=${_major}u${_minor}
-pkgrel=2
+pkgrel=3
 pkgdesc="Oracle Java $_major Development Kit (32-bit) (public release - end of support)"
 arch=('x86_64')
 url='http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html'
@@ -98,8 +98,13 @@ package() {
         rename -- "." "32-$_jname." $i
     done
 
-    # Fix .desktop paths
-    sed -e "s|Exec=|&$_jvmdir/jre/bin/|" \
+    # Fix .desktop's
+    sed -e '/JavaWS/!s|Name=Java|Name=Java '"$_major"'|' \
+        -e "s|Name=JavaWS|Name=JavaWS $_major|" \
+        -e "s|Name=.*|& (32-bit)|" \
+        -e "s|Comment=Java|Comment=Java $_major|" \
+        -e "s|Comment=.*|& (32-bit)|" \
+        -e "s|Exec=|&$_jvmdir/jre/bin/|" \
         -e "s|.png|32-$_jname.png|" \
     -i jre/lib/desktop/applications/*
 
