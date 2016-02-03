@@ -1,0 +1,6 @@
+pkg/
+src/
+liblscp/
+liblscp-svn*.tar.xz
+liblscp-svn*.src.tar.xz
+.AURINFO
