@@ -1,8 +1,8 @@
 # Maintainer: Dmitry Chusovitin <dchusovitin@gmail.com>
 
 pkgname=docker-machine-bin
-pkgver=0.6.0rc2
-_pkgver=0.6.0-rc2
+pkgver=0.6.0rc3
+_pkgver=0.6.0-rc3
 pkgrel=1
 pkgdesc='Machine management for a container-centric world'
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     "https://raw.githubusercontent.com/docker/machine/master/LICENSE"
 )
 sha256sums=(
-    'be12dbedb573b5ec25f40a1dc3fa9249306d56c7c0d1c4e42582f41fc2d913c3'
+    '467e71cf8bf8dc8f7dec17964a252fc79a4dca8de8bbd4018df6a46067a99a69'
     'SKIP'
 )
 
