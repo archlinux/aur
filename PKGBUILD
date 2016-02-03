@@ -1,7 +1,7 @@
 # Maintainer: Dave Reisner <d@falconindy.com>
 
 pkgname=curl-git
-pkgver=7.37.1.17.g6f8046f
+pkgver=7.47.0.18.g0515e49
 pkgrel=1
 pkgdesc="A URL retrieval utility and library"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('git')
 provides=('curl=999')
 conflicts=('curl')
 options=('!libtool')
-source=('git://github.com/bagder/curl.git'
+source=('git://github.com/curl/curl.git'
         'curlbuild.h')
 md5sums=('SKIP'
          '751bd433ede935c8fae727377625a8ae')
