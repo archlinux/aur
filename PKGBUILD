@@ -2,7 +2,7 @@
 
 _pkgname=qstlink2
 pkgname="${_pkgname}-git"
-pkgver=1.2.1.r194.bdcd247
+pkgver=1.2.3.r227.562460b
 pkgrel=1
 pkgdesc="A ST-Link V2 (Debugger/Programmer) client graphical user interface"
 arch=('i686' 'x86_64' 'arm')
@@ -19,8 +19,8 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-  ver="$(grep ^VERSION QStlink2.pro | cut -f 2 -d =)"
-  echo $ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  local ver=$(git describe --tags)
+  echo "${ver#v*}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare(){
