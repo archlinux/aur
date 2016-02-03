@@ -1,0 +1,6 @@
+pkg/
+src/
+.AURINFO
+suil/
+suil-git-*.tar.xz
+suil-git-*.src.tar.gz
