@@ -1,0 +1,6 @@
+pkg/
+src/
+.AURINFO
+lilv/
+lilv-git-*.tar.xz
+lilv-git-*.src.tar.gz
