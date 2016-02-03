@@ -1,7 +1,7 @@
 pkgbase = powerline-fonts-git
 	pkgdesc = Powerline fonts for X11 and the console
 	pkgver = r100.a44abd0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/powerline/fonts
 	install = powerline-fonts-git.install
 	arch = any
