@@ -1,35 +1,79 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
-makedepends=('git' 'cmake' 'subversion' 'yasm' 'aften' 'dcaenc' 'faac' 'faad2' 'fribidi' 'jack2' 'lame' 'libdca' 'libpulse' 'libva'
-             'libvpx' 'libx264' 'opencore-amr' 'twolame' 'xvidcore' 'x265' 'sqlite'
-             'qt4' 'glu'
-             'qt5-script' 'qt5-tools' 'libxv') #'gtk3'
 pkgbase=avidemux-git
-pkgname=('avidemux-core-git' 'avidemux-qt4-git' 'avidemux-qt5-git' 'avidemux-cli-git') #avidemux-gtk-git
-pkgver=2.6.10.150607.4c23a42c229
+pkgname=('avidemux-core-git'
+         'avidemux-qt-git'
+         'avidemux-cli-git'
+         )
+pkgver=2.6.11.160203.dd4a5e0
 pkgrel=1
 pkgdesc="A graphical/cli tool to edit video (filter/re-encode/split). (GIT version)"
-url="http://www.avidemux.org/"
-license=('GPL2')
 arch=('i686' 'x86_64')
-source=('avidemux::git+https://github.com/mean00/avidemux2.git')
-sha1sums=('SKIP')
+url='http://www.avidemux.org'
+license=('GPL2')
+makedepends=('git'
+             'cmake'
+             'subversion'
+             'yasm'
+             'aften'
+             'dcaenc'
+             'faac'
+             'faad2'
+             'fribidi'
+             'jack2'
+             'lame'
+             'libdca'
+             'libpulse'
+             'libva'
+             'libvpx'
+             'libx264'
+             'opencore-amr'
+             'twolame'
+             'xvidcore'
+             'x265'
+             'sqlite'
+             'glu'
+             'qt5-script'
+             'qt5-tools'
+             'libxv'
+             'vapoursynth'
+             )
+source=('avidemux::git+https://github.com/mean00/avidemux2.git'
+        'fix_verbose.patch'
+        'fix_nvenc_check.patch'
+        'add_settings_pluginui_message_error.patch'
+        'fix_vf_hflip_plugin_name.patch'
+        )
+sha1sums=('SKIP'
+          '4b61f11627278578a180d4bdc3b6100544107f32'
+          '19bcbe1c3aa6df8fdee2d10ecb9626b46de00175'
+          '4162d53297ec9d77633723ae911c605d8fdca3f1'
+          '54ffd680b4a18a945f8a03c650abbccb48952d70'
+          )
 
 pkgver() {
   cd avidemux
-  _ver="$(cat cmake/avidemuxVersion.cmake | grep -e CPACK_PACKAGE_VERSION_MAJOR -e CPACK_PACKAGE_VERSION_MINOR -e CPACK_PACKAGE_VERSION_P| head -n3 | cut -d '"' -f2)"
-  echo "$(echo ${_ver} | tr ' ' .).$(date -u +%g%m%d).$(git log --format=oneline -1 | head -c 11)"
+  _ver="$(cat cmake/avidemuxVersion.cmake | grep -m3 -e CPACK_PACKAGE_VERSION_MAJOR -e CPACK_PACKAGE_VERSION_MINOR -e CPACK_PACKAGE_VERSION_P | grep -o "[[:digit:]]*" | paste -sd'.')"
+  echo -e "${_ver}.$(date -u +%g%m%d).$(git rev-parse --short HEAD | head -c 11)"
 }
 
 prepare() {
   mkdir -p build_core{,_plugins,_plugins_settings}
-  mkdir -p build_qt4{,_plugins}
-  mkdir -p build_qt5{,_plugins}
-#   mkdir -p build_gtk{,_plugins}
+  mkdir -p build_qt{,_plugins}
   mkdir -p build_cli{,_plugins}
 
+  cd avidemux
   # http://avidemux.org/smuf/index.php/topic,16302.msg71463.html#msg71463
-  sed 's|hf_hflip|vf_hflip|g' -i avidemux/avidemux_plugins/ADM_videoFilters6/horizontalFlip/CMakeLists.txt
+  patch -p1 -i "${srcdir}/fix_vf_hflip_plugin_name.patch"
+
+  # http://avidemux.org/smif/index.php/topic,16301.0.html
+  patch -p1 -i "${srcdir}/fix_verbose.patch"
+
+  # http://avidemux.org/smif/index.php/topic,16451.0.html
+  patch --binary -p1 -i "${srcdir}/fix_nvenc_check.patch"
+
+  # add SETTINGS to MESSAGE(FATAL_ERROR in avidemux_plugins/CMakeLists.txt
+  patch -p1 -i "${srcdir}/add_settings_pluginui_message_error.patch"
 }
 
 build() {
@@ -38,10 +82,9 @@ build() {
   cmake ../avidemux/avidemux_core \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DFAKEROOT="${srcdir}/fakeroot" \
-    -DVERBOSE=
-  make VERBOSE= -j1
-  make VERBOSE= DESTDIR="${srcdir}/fakeroot" install
+    -DFAKEROOT="${srcdir}/fakeroot"
+  make -j1
+  make DESTDIR="${srcdir}/fakeroot" install
 
   msg2 "Build Common Plugins"
   cd "${srcdir}/build_core_plugins"
@@ -51,90 +94,39 @@ build() {
     -DPLUGIN_UI=COMMON \
     -DQTSCRIPT=OFF \
     -DFAKEROOT="${srcdir}/fakeroot" \
-    -DAVIDEMUX_SOURCE_DIR="${srcdir}/avidemux" \
-    -DVERBOSE=
-  make VERBOSE=
-  make VERBOSE= DESTDIR="${srcdir}/fakeroot" install
+    -DAVIDEMUX_SOURCE_DIR="${srcdir}/avidemux"
+  make
+  make DESTDIR="${srcdir}/fakeroot" install
 
-  msg2 "Build Qt4 GUI"
-  cd "${srcdir}/build_qt4"
+  msg2 "Build Qt GUI"
+  cd "${srcdir}/build_qt"
   cmake ../avidemux/avidemux/qt4 \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DFAKEROOT="${srcdir}/fakeroot" \
-    -DVERBOSE=
-  make VERBOSE=
-  make VERBOSE= DESTDIR="${srcdir}/fakeroot" install
+    -DENABLE_QT5=ON \
+    -DFAKEROOT="${srcdir}/fakeroot"
+  make
+  make DESTDIR="${srcdir}/fakeroot" install
 
-  msg2 "Build Qt4 GUI Plugins"
-  cd "${srcdir}/build_qt4_plugins"
+  msg2 "Build Qt GUI Plugins"
+  cd ${srcdir}/build_qt_plugins
   cmake ../avidemux/avidemux_plugins \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DPLUGIN_UI=QT4 \
-    -DFAKEROOT="${srcdir}/fakeroot" \
-    -DAVIDEMUX_SOURCE_DIR="${srcdir}/avidemux" \
-    -DVERBOSE=
-  make VERBOSE=
-  make VERBOSE= DESTDIR="${srcdir}/fakeroot" install
-
-  msg2 "Build Qt5 GUI"
-  cd "${srcdir}/build_qt5"
-  cmake ../avidemux/avidemux/qt4 \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DENABLE_QT5=ON \
-    -DFAKEROOT="${srcdir}/fakeroot" \
-    -DVERBOSE=
-  make VERBOSE=
-  make VERBOSE= DESTDIR="${srcdir}/fakeroot" install
-
-  msg2 "Build Qt5 GUI Plugins"
-  cd ${srcdir}/build_qt5_plugins
-  cmake "../avidemux/avidemux_plugins" \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_QT5=ON \
     -DPLUGIN_UI=QT4 \
-    -DQT_LRELEASE_EXECUTABLE=/usr/bin/lrelease-qt5 \
     -DFAKEROOT="${srcdir}/fakeroot" \
-    -DAVIDEMUX_SOURCE_DIR="${srcdir}/avidemux" \
-    -DVERBOSE=
-  make VERBOSE=
-  make VERBOSE= DESTDIR="${srcdir}/fakeroot" install
-
-#
-#   msg2 "Build Gtk GUI"
-#   cd "${srcdir}/build_gtk"
-#   cmake ../avidemux/avidemux/gtk \
-#     -DCMAKE_BUILD_TYPE=Release \
-#     -DCMAKE_INSTALL_PREFIX=/usr \
-#     -DFAKEROOT="${srcdir}/fakeroot" \
-#     -DVERBOSE=
-#   make VERBOSE=
-#   make VERBOSE= DESTDIR="${srcdir}/fakeroot" install
-#
-#   msg2 "Build Gtk GUI plugins"
-#   cd ${srcdir}/build_gtk_plugins
-#   cmake "../avidemux/avidemux_plugins" \
-#     -DCMAKE_BUILD_TYPE=Release \
-#     -DCMAKE_INSTALL_PREFIX=/usr \
-#     -DPLUGIN_UI=GTK \
-#     -DFAKEROOT="${srcdir}/fakeroot" \
-#     -DAVIDEMUX_SOURCE_DIR="${srcdir}/avidemux" \
-#     -DVERBOSE=
-#   make VERBOSE=
-#   make VERBOSE= DESTDIR="${srcdir}/fakeroot" install
+    -DAVIDEMUX_SOURCE_DIR="${srcdir}/avidemux"
+  make
+  make DESTDIR="${srcdir}/fakeroot" install
 
   msg2 "Build CLI frontend"
   cd "${srcdir}/build_cli"
   cmake ../avidemux/avidemux/cli \
-    -DFAKEROOT="${srcdir}/fakeroot" \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DVERBOSE=
-  make VERBOSE=
-  make VERBOSE= DESTDIR="${srcdir}/fakeroot" install
+    -DCMAKE_INSTALL_PREFIX=/usr
+  make
+  make DESTDIR="${srcdir}/fakeroot" install
 
   msg2 "Build CLI plugins"
   cd "${srcdir}/build_cli_plugins"
@@ -142,110 +134,89 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DPLUGIN_UI=CLI \
-    -DFAKEROOT="${srcdir}/fakeroot" \
-    -DAVIDEMUX_SOURCE_DIR="${srcdir}/avidemux" \
-    -DVERBOSE=
-  make VERBOSE=
-  make VERBOSE= DESTDIR="${srcdir}/fakeroot" install
+    -DAVIDEMUX_SOURCE_DIR="${srcdir}/avidemux"
+  make
 
   msg2 "Build Settings"
   cd "${srcdir}/build_core_plugins_settings"
   cmake ../avidemux/avidemux_plugins \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr  \
-    -DFAKEROOT="${srcdir}/fakeroot" \
-    -DAVIDEMUX_SOURCE_DIR="${srcdir}/avidemux" \
     -DPLUGIN_UI=SETTINGS \
-    -DVERBOSE=
-  make VERBOSE=
-  make VERBOSE= DESTDIR="${srcdir}/fakeroot" install
+    -DAVIDEMUX_SOURCE_DIR="${srcdir}/avidemux"
+  make
 }
 
 package_avidemux-core-git() {
-  depends=('aften' 'dcaenc' 'faac' 'faad2' 'fribidi' 'jack2' 'lame' 'libdca' 'libpulse' 'libva' 'libvpx'  'opencore-amr' 'twolame' 'xvidcore' 'sqlite' 'libx264' 'x265')
   pkgdesc="Core libs for Avidemux. (GIT version)"
+  depends=('aften'
+           'dcaenc'
+           'faac'
+           'faad2'
+           'fribidi'
+           'jack2'
+           'lame'
+           'libdca'
+           'libpulse'
+           'libva'
+           'libvpx'
+           'opencore-amr'
+           'twolame'
+           'xvidcore'
+           'sqlite'
+           'libx264'
+           'x265'
+           )
+  optdepends=('avidemux-qt-git: a Qt GUI for Avidemux'
+              'avidemux-cli-git: a CLI frontend for Avidemux'
+              'wine: AVSload (Load Avisynth scripts on Avidemux)'
+              'vapoursynth: vsProxy (Load Vapoursynth scripts on Avidemux')
   provides=("avidemux-core-git=${pkgver}" 'avidemux-core')
-  optdepends=('avidemux-qt4-git: a Qt4 GUI for Avidemux. (GIT Version) (install from "avidemux-git" package)'
-              'avidemux-qt5-git: a Qt5 GUI for Avidemux. (GIT Version) (install from "avidemux-git" package)'
-              'avidemux-gtk-git: a Gtk3 GUI for Avidemux. (GIT Version) (install from "avidemux-git" package)'
-              'avidemux-cli-git: a CLI frontend for Avidemux. (GIT Version) (install from "avidemux-git" package)'
-              'wine: AVSload')
+  conflicts=('avidemux-core')
 
-  make VERBOSE= -C build_core DESTDIR="${pkgdir}" install
-  make VERBOSE= -C build_core_plugins DESTDIR="${pkgdir}" install
-  make VERBOSE= -C build_core_plugins_settings DESTDIR="${pkgdir}" install
+  make -C build_core DESTDIR="${pkgdir}" install
+  make -C build_core_plugins DESTDIR="${pkgdir}" install
+  make -C build_core_plugins_settings DESTDIR="${pkgdir}" install
 
-  for i in 4 5; do
-    if [ -f fakeroot/usr/lib/ADM_plugins6/videoEncoders/libADM_ve_x26${i}_other.so ]; then
-      install -Dm755 fakeroot/usr/lib/ADM_plugins6/videoEncoders/libADM_ve_x26${i}_other.so "${pkgdir}/usr/lib/ADM_plugins6/videoEncoders/libADM_ve_x26${i}_other.so"
-    fi
-  done
+  if [ -f fakeroot/usr/lib/ADM_plugins6/videoEncoders/libADM_ve_x264_other.so ]; then
+    install -Dm755 fakeroot/usr/lib/ADM_plugins6/videoEncoders/libADM_ve_x264_other.so "${pkgdir}/usr/lib/ADM_plugins6/videoEncoders/libADM_ve_x264_other.so"
+  fi
+  if [ -f fakeroot/usr/lib/ADM_plugins6/videoEncoders/libADM_ve_x265_other.so ]; then
+    install -Dm755 fakeroot/usr/lib/ADM_plugins6/videoEncoders/libADM_ve_x265_other.so "${pkgdir}/usr/lib/ADM_plugins6/videoEncoders/libADM_ve_x265_other.so"
+  fi
 }
 
-package_avidemux-qt4-git() {
-  depends=("avidemux-core-git=${pkgver}" 'qt4' 'glu' 'libx264' 'x265')
-  pkgdesc="Qt4 GUI for Avidemux. (GIT version)"
-  provides=("avidemux-qt4-git=${pkgver}")
-  conflicts=('avidemux-qt4')
-  install=avidemux.install
+package_avidemux-qt-git() {
+  pkgdesc="Qt GUI for Avidemux. (GIT version)"
+  depends=("avidemux-core-git=${pkgver}"
+           'qt5-script'
+           'libxv'
+           'glu'
+           'desktop-file-utils'
+           )
+  provides=('avidemux-qt')
+  conflicts=('avidemux-qt4' 'avidemux-qt5' 'avidemux-qt')
+  install=avidemux-git.install
 
-  make VERBOSE= -C build_qt4 DESTDIR="${pkgdir}" install
-  make VERBOSE= -C build_qt4_plugins DESTDIR="${pkgdir}" install
+  make -C build_qt DESTDIR="${pkgdir}" install
+  make -C build_qt_plugins DESTDIR="${pkgdir}" install
 
-  install -Dm644 avidemux/avidemux2.desktop "${pkgdir}/usr/share/applications/avidemux-qt4.desktop"
-  sed -e 's|Icon=avidemux|Icon=avidemux-qt4|g' \
-      -e 's|Exec=avidemux2_gtk|Exec=avidemux3_qt4|g' \
-      -e 's|Name=avidemux2|Name=Avidemux Qt4|' \
-      -i "${pkgdir}/usr/share/applications/avidemux-qt4.desktop"
-  install -Dm644 avidemux/avidemux_icon.png "${pkgdir}/usr/share/pixmaps/avidemux-qt4.png"
-}
-
-package_avidemux-qt5-git() {
-  depends=("avidemux-core-git=${pkgver}" 'qt5-script' 'libxv' 'desktop-file-utils' 'libx264' 'x265')
-  pkgdesc="Qt5 GUI for Avidemux. (GIT version)"
-  provides=("avidemux-qt5-git=${pkgver}")
-  conflicts=('avidemux-qt5')
-  install=avidemux.install
-
-  make VERBOSE= -C build_qt5 DESTDIR="${pkgdir}" install
-  make VERBOSE= -C build_qt5_plugins DESTDIR="${pkgdir}" install
-
-  install -Dm644 avidemux/avidemux2.desktop "${pkgdir}/usr/share/applications/avidemux-qt5.desktop"
-  sed -e 's|Icon=avidemux|Icon=avidemux-qt5|g' \
+  install -Dm644 avidemux/avidemux2.desktop "${pkgdir}/usr/share/applications/avidemux-qt.desktop"
+  sed -e 's|Icon=avidemux|Icon=avidemux-qt|g' \
       -e 's|Exec=avidemux2_gtk|Exec=avidemux3_qt5|g' \
-      -e 's|Name=avidemux2|Name=Avidemux Qt5|' \
-      -i "${pkgdir}/usr/share/applications/avidemux-qt5.desktop"
-  install -Dm644 avidemux/avidemux_icon.png "${pkgdir}/usr/share/pixmaps/avidemux-qt5.png"
+      -e 's|Name=avidemux2|Name=Avidemux Qt|' \
+      -i "${pkgdir}/usr/share/applications/avidemux-qt.desktop"
+  install -Dm644 avidemux/avidemux_icon.png "${pkgdir}/usr/share/pixmaps/avidemux-qt.png"
 }
-
-# package_avidemux-gtk-git() {
-#   depends=("avidemux-core-git=${pkgver}" 'gtk3' 'libxv' 'sdl' 'desktop-file-utils')
-#   pkgdesc="Gtk3 GUI for Avidemux. (GIT version)"
-#   provides=("avidemux-gtk-git=${pkgver}" 'avidemux-gtk')
-#   conflicts=('avidemux-gtk')
-#   install=avidemux.install
-#
-#   make VERBOSE= -C build_gtk DESTDIR="${pkgdir}" install
-#   make VERBOSE= -C build_gtk_plugins DESTDIR="${pkgdir}" install
-#
-#   install -Dm644 avidemux/avidemux2.desktop "${pkgdir}/usr/share/applications/avidemux-gtk.desktop"
-#   sed -e 's|Icon=avidemux|Icon=avidemux-gtk|g' \
-#       -e 's|Exec=avidemux2_gtk|Exec=avidemux3_gtk|g' \
-#       -e 's|Name=avidemux2|Name=Avidemux Gtk|' \
-#       -i "${pkgdir}/usr/share/applications/avidemux-gtk.desktop"
-#   install -Dm644 avidemux/avidemux_icon.png "${pkgdir}/usr/share/pixmaps/avidemux-gtk.png"
-#
-#   rm -fr "${pkgdir}/usr/lib/ADM_plugins6/videoEncoders/"
-# }
 
 package_avidemux-cli-git() {
-  depends=("avidemux-core-git=${pkgver}")
   pkgdesc="CLI frontend for Avidemux. (GIT version)"
-  provides=("avidemux-cli-git=${pkgver}" 'avidemux-cli')
+  depends=("avidemux-core-git=${pkgver}")
+  provides=('avidemux-cli')
   conflicts=('avidemux-cli')
 
-  make VERBOSE= -C build_cli DESTDIR="${pkgdir}" install
-  make VERBOSE= -C build_cli_plugins DESTDIR="${pkgdir}" install
+  make -C build_cli DESTDIR="${pkgdir}" install
+  make -C build_cli_plugins DESTDIR="${pkgdir}" install
 
   rm -fr "${pkgdir}/usr/lib/ADM_plugins6/videoEncoders/"
 }

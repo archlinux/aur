@@ -1,0 +1,10 @@
+diff --git a/cmake/admCoreIncludes.cmake b/cmake/admCoreIncludes.cmake
+index 5263ded..47b8afb 100644
+--- a/cmake/admCoreIncludes.cmake
++++ b/cmake/admCoreIncludes.cmake
+@@ -1,5 +1,4 @@
+ # eclipse
+-SET(CMAKE_VERBOSE_MAKEFILE ON)
+ IF(CMAKE_COMPILER_IS_GNUCC)
+   SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fmessage-length=0")
+ ENDIF(CMAKE_COMPILER_IS_GNUCC)

@@ -1,0 +1,13 @@
+diff --git a/avidemux_plugins/CMakeLists.txt b/avidemux_plugins/CMakeLists.txt
+index ee7148c..eb34e95 100644
+--- a/avidemux_plugins/CMakeLists.txt
++++ b/avidemux_plugins/CMakeLists.txt
+@@ -61,7 +61,7 @@ SET(DO_CLI    0)
+ SET(DO_SETTINGS    0)
+ 
+ IF (NOT PLUGIN_UI)
+-	MESSAGE(FATAL_ERROR "Please add -DPLUGIN_UI=[ALL|QT4|GTK|CLI|COMMON]")
++	MESSAGE(FATAL_ERROR "Please add -DPLUGIN_UI=[ALL|QT4|GTK|CLI|COMMON|SETTINGS]")
+ ENDIF (NOT PLUGIN_UI)
+ 
+ if(PLUGIN_UI MATCHES "ALL")
