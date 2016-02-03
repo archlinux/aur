@@ -3,6 +3,18 @@
 # This PKGBUILD is maintained on github:
 # https://github.com/michaellass/AUR
 
+###############################################################################
+# INSTRUCTIONS                                                                #
+# ------------                                                                #
+#                                                                             #
+# API changes between different Kodi versions make it necessary to specify    #
+# the version of Kodi you want to build this package for. You can choose      #
+# between Isengard (15), Jarvis (16) and git master (99). Do so in the        #
+# following line.                                                             #
+###############################################################################
+
+API=15
+
 pkgname=kodi-addon-pvr-vdr-vnsi-git
 pkgver=r295.550a4a2
 pkgrel=1
@@ -12,11 +24,18 @@ arch=('armv7h' 'i686' 'x86_64')
 url="https://github.com/kodi-pvr/pvr.vdr.vnsi"
 license=('GPL')
 makedepends=('cmake' 'git' 'kodi-platform-git')
-depends=('kodi>=15.0')
+depends=('kodi')
 provides=('kodi-addon-pvr-vdr-vnsi')
 conflicts=('kodi-addon-pvr-vdr-vnsi' 'kodi-pvr-addons')
-source=("${pkgname}::git+https://github.com/kodi-pvr/pvr.vdr.vnsi.git#branch=${_branch}")
+source=("${pkgname}::git+https://github.com/kodi-pvr/pvr.vdr.vnsi.git")
 md5sums=('SKIP')
+
+case "$API" in
+  15)  source[0]="${pkgname}::git+https://github.com/kodi-pvr/pvr.vdr.vnsi.git#branch=Isengard" ;;
+  16)  source[0]="${pkgname}::git+https://github.com/kodi-pvr/pvr.vdr.vnsi.git#branch=Jarvis" ;;
+  99)  ;;
+  *)   error "Unknown API version. Follow instructions in PKGBUILD." && false
+esac
 
 pkgver() {
   cd "$pkgname"
