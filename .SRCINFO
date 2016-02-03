@@ -1,6 +1,6 @@
 pkgbase = pidgin-mini
 	pkgdesc = A minimal version of Pidgin for sane XMPP / IRC users
-	pkgver = 2.10.11
+	pkgver = 2.10.12
 	pkgrel = 1
 	url = http://pidgin.im/
 	install = pidgin.install
@@ -19,8 +19,8 @@ pkgbase = pidgin-mini
 	conflicts = pidgin
 	conflicts = libpurple
 	options = !libtool
-	source = https://downloads.sourceforge.net/pidgin/pidgin-2.10.11.tar.bz2
-	md5sums = 7c8bb6f997e05e7929104439872c2844
+	source = https://downloads.sourceforge.net/pidgin/pidgin-2.10.12.tar.bz2
+	sha256sums = 2c7523f0fefe89749c03b2b738ab9f7bd186da435be4762f1487eee31e77ffdd
 
 pkgname = pidgin-mini
 
