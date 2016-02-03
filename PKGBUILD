@@ -2,29 +2,26 @@
 
 # Documentation
 
-# Set up the pi for Qt compilation. On Arch I just install chromium which pulls in all the deps
-# Removed xcomposite as code path breaks
+# Set up the pi for Qt compilation.
+# For a comprehensive set of deps I just install chromium which pulls in everything
 
-# Remove 2 (mesa) pkgconfig files we allow screw our mkspec
-# rm /usr/lib/pkgconfig/glesv2.pc
-# rm /usr/lib/pkgconfig/egl.pc
+#* I had to removed xcomposite as code path breaks
+#* Remove 2 (mesa) pkgconfig files we allow to screw our mkspec
+# * rm /usr/lib/pkgconfig/glesv2.pc
+# * rm /usr/lib/pkgconfig/egl.pc
 
-# You are gonna want to export the following vars in /etc/profile.d
-# if you intend to primarily use Wayland
+# NB! Mount/copy this prepped rasp rootfs somewhere and set this path as the sysroot below
+# I use NFS personally: sudo mount qpi2.local:/ /mnt/pi
+# comment this turkey out in any circumstance when you need to regenate .SRCINFO
 
-#export QT_QPA_PLATFORM=wayland
-#export QT_WAYLAND_CLIENT_BUFFER_INTEGRATION=brcm
+# Mandatory edit
 
-# Mount/copy this prepped rasp rootfs somewhere and set this path as the sysroot below
-# I use NFS personally: sudo mount qpii.local:/ /mnt/pi
+echo "Set your sysroot below prior to build then delete this line" && exit 1
+_sysroot=/mnt/pi
 
 # Options
 
 _skip_web_engine=true
-
-# comment this turkey out in any circumstance when you need to regenate .SRCINFO
-echo "Set your sysroot prior to build" && exit 1
-_sysroot=/mnt/pi
 
 _piver=2
 _pkgname=qt-sdk-raspberry-pi
