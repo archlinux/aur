@@ -2,7 +2,7 @@
 
 pkgname=topbeat
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source server monitoring agent that stores metrics in Elasticsearch'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url='https://www.elastic.co/products/beats'
@@ -13,7 +13,7 @@ optdepends=('elasticsearch: for running standalone installation')
 options=('!strip')
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("https://github.com/elastic/beats/archive/v$pkgver.tar.gz"
+source=("https://github.com/elastic/beats/archive/v$pkgver/beats-$pkgver.tar.gz"
         "$pkgname.service")
 sha256sums=('bba6c5d7d22959e90296d6d1dd7975c80250b491166a712cece72ee91165d25c'
             '62f5b613d9464e4d8b1074c1a54b95cbd1c6615f0c788f1d9093becbdbc6c45d')
