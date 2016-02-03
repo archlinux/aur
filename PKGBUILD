@@ -1,10 +1,10 @@
 # Maintainer: Devin Christensen <quixoten at gmail dot com>
 pkgname=otf-sauce-code-powerline-git
 pkgver=r100.a44abd0
-pkgrel=1
+pkgrel=2
 pkgdesc="Sauce Code Powerline"
 arch=('any')
-url=('https://github.com/powerline/fonts')
+url='https://github.com/powerline/fonts'
 license=('custom:SIL Open Font License, Version 1.1')
 depends=(fontconfig xorg-font-utils )
 makedepends=('git')
