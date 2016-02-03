@@ -8,11 +8,12 @@ pkgrel=1
 url="https://github.com/${author}/${app}"
 license=('APACHE')
 arch=('x86_64')
+conflicts=('saberlight')
 makedepends=('git' 'go')
 provides=(${app})
 source=("${app}::git://${repo}/${author}/${app}")
 md5sums=('SKIP')
-install=$pkgname.install
+install=${pkgname}.install
 
 pkgver() {
   cd "${srcdir}/${app}"
@@ -24,10 +25,10 @@ build() {
   export GO15VENDOREXPERIMENT="1"
   mkdir -p ${srcdir}/src/${repo}/${author}
   ln -s ${srcdir}/${app} ${srcdir}/src/${repo}/${author}
-  cd $srcdir/src/${repo}/${author}/${app}
+  cd ${srcdir}/src/${repo}/${author}/${app}
   make build VERSION=${pkgver}
 }
 
 package() {
-  install -Dm755 "${srcdir}/${app}/app/${app}" "$pkgdir/usr/bin/$app"
+  install -Dm755 "${srcdir}/${app}/app/${app}" "${pkgdir}/usr/bin/${app}"
 }
