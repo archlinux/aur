@@ -1,7 +1,7 @@
 pkgbase = ttf-droid-sans-mono-dotted-powerline-git
 	pkgdesc = Droid Sans Mono for Powerline (Dotted Zero)
 	pkgver = r100.a44abd0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/powerline/fonts
 	install = ttf-droid-sans-mono-dotted-powerline-git.install
 	arch = any
