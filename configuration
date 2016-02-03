@@ -1,6 +1,8 @@
 Pi-hole Archlinux configuration instructions
 Standalone version
-rev. 0.1
+rev. 0.2
+
+It is possible to add custom ad-list server in /etc/pihole/adlists.list
 
 Instructions below assume ArchLinux default system config files are untouched
 
