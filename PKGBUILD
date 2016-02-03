@@ -2,9 +2,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname='gauche-git'
-pkgver=0.9.5.pre1.8946
+pkgver=0.9.5.pre1.8952
 pkgrel=1
-pkgdesc="R5RS Scheme implementation developed to be a handy script interpreter"
+pkgdesc="R7RS Scheme implementation developed to be a handy script interpreter"
 arch=('i686' 'x86_64')
 url='http://practical-scheme.net/gauche/index.html'
 license=('BSD')
@@ -26,6 +26,8 @@ pkgver() {
 prepare() {
   cd "$srcdir/$_gitname"/lib
   sed -i '130,134d' Makefile.in
+  cd "$srcdir/$_gitname"/src
+  sed -i '345,347d' Makefile.in
 }
   
 build() {
