@@ -6,7 +6,7 @@
 
 _pkgname=xf86-input-evdev
 pkgname=$_pkgname-git-surfacepen3
-pkgver=2.10.1.3.r663.g7b0a65d-1
+pkgver=2.10.1.3.r663.g7b0a65d
 pkgrel=1
 pkgdesc="X.org evdev input driver - Git version (with the patch for Surface Pen 3)"
 arch=('i686' 'x86_64')
