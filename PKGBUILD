@@ -1,9 +1,8 @@
 # Maintainer: James An <james@jamesan.ca>
 
-_pkgname=solr
-pkgname="$_pkgname-undertow"
+pkgname=solr-undertow
 pkgver=1.6.0_BETA_1
-pkgrel=1
+pkgrel=2
 pkgdesc='Solr / SolrCloud running in high performance server'
 arch=('i686' 'x86_64' 'any')
 url="https://github.com/kohesive/$pkgname"
@@ -40,16 +39,16 @@ package() {
   for lib in $(basename --multiple lib/*); do
     install -Dm644 lib/$lib "$pkgdir/usr/share/java/$pkgname/$lib"
   done
-  for conf in $(basename --multiple example/$_pkgname-home/*); do
-    install -Dm644 "example/$_pkgname-home/$conf" "$pkgdir/etc/$_pkgname/$conf"
+  for conf in $(basename --multiple example/solr-home/*); do
+    install -Dm644 "example/solr-home/$conf" "$pkgdir/etc/solr/$conf"
   done
   for doc in $(basename --multiple example/*.conf); do
     install -Dm644 "example/$doc" "$pkgdir/usr/share/doc/$pkgname/$doc"
   done
 
-  install -Dm644 ../default.conf "$pkgdir/etc/$_pkgname/default.conf"
+  install -Dm644 ../default.conf "$pkgdir/etc/solr/default.conf"
   install -Dm644 "../$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
   install -dm755 "$pkgdir/var/log/$pkgname"
 
-  chown -R 521:521 "$pkgdir/etc/$_pkgname" "$pkgdir/var/log/$pkgname"
+  chown -R 521:521 "$pkgdir/etc/solr" "$pkgdir/var/log/$pkgname"
 }
