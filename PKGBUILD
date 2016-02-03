@@ -2,7 +2,7 @@
 # Maintainer: Alad Wenter <https://wiki.archlinux.org/index.php/Special:EmailUser/Alad>
 
 pkgname=cottage
-pkgver=0.2.1
+pkgver=0.3
 pkgrel=1
 
 pkgdesc="Use howm commands, operators and set configuration values through a UNIX socket."
@@ -10,24 +10,17 @@ arch=('i686' 'x86_64')
 url="https://github.com/HarveyHunt/cottage"
 license=('GPL')
 
-checkdepends=('linux-headers')
-source=("https://github.com/HarveyHunt/cottage/archive/$pkgver.tar.gz")
-sha256sums=('3daedc4a8771ca08d53662a3b9868ba2e7f30c00cadd64310b372833d9c6c3b2')
+source=("https://github.com/HarveyHunt/cottage/archive/v$pkgver.tar.gz")
+sha256sums=('edf196357f7ff86ff615407926e3aa96007f65c5128990b3fa51bd08677a946b')
 
 build() {
   cd "$pkgname-$pkgver"
-  make release
-}
-
-check() {
-  cd "$pkgname-$pkgver"
-  find /usr/lib/modules -name checkpatch.pl -print -quit | xargs -i cp {} .
-  make check
+  make
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 bin/release/cottage "$pkgdir"/usr/bin/cottage
+  install -Dm755 cottage "$pkgdir"/usr/bin/cottage
 }
 
 # vim:set ts=2 sw=2 et:
