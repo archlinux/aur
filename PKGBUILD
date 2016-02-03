@@ -1,4 +1,4 @@
-# Maintainer: Donald Carr <sirspudd@gmail.com>
+# Contributer: Donald Carr <sirspudd@gmail.com>
 
 # Documentation
 
@@ -87,12 +87,12 @@ build() {
 
   # patch
   local _webenginefileoverride="${_srcdir}/qtwebengine/tools/qmake/mkspecs/features/functions.prf"
-  sed -i "s/linux-clang/linux*/" ${_webenginefileoverride}
+  sed -i "s/linux-clang/linux*/" ${_webenginefileoverride} || exit 1
   local _reducerelocations="${_srcdir}/qtbase/config.tests/unix/bsymbolic_functions.test"
-  sed -i "s/error/warning/" ${_reducerelocations}
+  sed -i "s/error/warning/" ${_reducerelocations} || exit 1
 
   # Work around our embarresing propensity to stomp on your own tailored build configuration
-  sed -i "s/O[23]/Os/"  ${_srcdir}/qtbase/mkspecs/common/gcc-base.conf
+  sed -i "s/O[23]/Os/"  ${_srcdir}/qtbase/mkspecs/common/gcc-base.conf || exit 1
 
   # end patch
 
@@ -128,17 +128,17 @@ build() {
     -sysroot ${_sysroot} \
     -device ${_mkspec} \
     -device-option CROSS_COMPILE=/opt/arm-sirspuddarch-linux-gnueabihf/bin/arm-sirspuddarch-linux-gnueabihf- \
-    ${_device_configure_flags}
+    ${_device_configure_flags} || exit 1
 
-  make
+  make || exit 1
 
   # regrettably required, as qtwayland barfs on shadow builds
   # as private header paths not included: no clue how to fix, bypassing
 
-  cp -r "${_srcdir}/qtwayland" "${_bindir}"
+  cp -r "${_srcdir}/qtwayland" "${_bindir}" || exit 1
   cd "${_bindir}/qtwayland"
-  ${_bindir}/qtbase/bin/qmake CONFIG+=wayland-compositor
-  make
+  ${_bindir}/qtbase/bin/qmake CONFIG+=wayland-compositor || exit 1
+  make || exit 1
 }
 
 create_install_script()
@@ -166,11 +166,11 @@ package() {
   mkdir -p ${pkgdir}
 
   cd "${_bindir}"
-  INSTALL_ROOT="$pkgdir" make install
+  INSTALL_ROOT="$pkgdir" make install || exit 1
 
   # regrettably required
   cd "${_bindir}/qtwayland"
-  INSTALL_ROOT="$pkgdir" make install
+  INSTALL_ROOT="$pkgdir" make install || exit 1
 
   # Qt is now installed to $pkgdir/$sysroot/$prefix
   # manually generate/decompose host/target
@@ -184,17 +184,17 @@ package() {
   cp ${startdir}/PKGBUILD.libs ${_libspkgbuild}
   mv "${pkgdir}/${_sysroot}/${_baseprefix}" ${_libspkgdir}
   # set correct libs version
-  sed -i "s/libspackagename/${_libspkgname}/" ${_libspkgbuild}
-  sed -i "s/libspiversion/${_piver}/" ${_libspkgbuild}
+  sed -i "s/libspackagename/${_libspkgname}/" ${_libspkgbuild} || exit 1
+  sed -i "s/libspiversion/${_piver}/" ${_libspkgbuild} || exit 1
 
-  sed -i "s/6.6.6/${pkgver}/" ${_libspkgbuild}
+  sed -i "s/6.6.6/${pkgver}/" ${_libspkgbuild} || exit 1
 
   mkdir -p ${_pkgprofiled}
-  cp ${startdir}/qpi.sh ${_pkgprofiled}
-  sed -i "s,localpiprefix,${_installprefix}," ${_pkgprofiled}/qpi.sh
+  cp ${startdir}/qpi.sh ${_pkgprofiled} || exit 1
+  sed -i "s,localpiprefix,${_installprefix}," ${_pkgprofiled}/qpi.sh || exit 1
 
   cd ${_libsdir}
-  runuser -l ${_packaginguser} -c 'makepkg -f'
+  runuser -l ${_packaginguser} -c 'makepkg -f' || exit 1
 
   echo "the libs package for the Raspberry Pi${_piver} is in the ${_packaginguser} home directory awaiting deployment"
 
