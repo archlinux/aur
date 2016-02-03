@@ -7,8 +7,8 @@
 # Contributor: Hexchain Tong <richard0053@gmail.com>
 
 pkgname=botan-stable
-pkgver=1.10.10
-pkgrel=3
+pkgver=1.10.12
+pkgrel=1
 pkgdesc='Crypto library written in C++'
 license=('BSD')
 arch=('x86_64' 'i686')
@@ -18,8 +18,8 @@ makedepends=('python2' 'asio' 'git')
 provides=('botan-stable')
 validpgpkeys=('621DAF6411E1851C4CF9A2E16211EBF1EFBADFBC')
 source=("https://botan.randombit.net/releases/Botan-${pkgver}.tgz"{,.asc})
-sha256sums+=('6b67b14746410461fe4a8ce6a625e7eef789243454fe30eab7329d5984be4163'
-           'c37766426b09f6103e7f14713c88e09ff053df645352457bf45069e83deb47a0')
+sha256sums+=('affc3a79919577943f896e64d3e4a4dcc4970c5bf80cc98c7f3a3144745eac27'
+           'd72a80abd20450a6308b420f16585d5f6e54a689d116dc1374a09ce96e5f9da4')
 
 prepare() {
   # Use python2 for the installation scripts
