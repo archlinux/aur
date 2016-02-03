@@ -1,0 +1,8 @@
+pkg/
+src/
+.AURINFO
+zita-lrx/
+zita-lrx-*.tar.xz
+zita-lrx-*.src.tar.gz
+zita-lrx-*.tar.gz
+zita-lrx-*.tar.bz2
