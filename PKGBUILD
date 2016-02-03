@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/archlinuxfr/yaourt/issues/67"
 depends=('pacman')
 source=("makepkg-asroot.patch")
-install=(makepkg-asroot.install)
+install='makepkg-asroot.install'
 md5sums=('SKIP')
 
 package() {
