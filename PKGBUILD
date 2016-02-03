@@ -9,7 +9,6 @@ pkgdesc='an intuitive black and white conversion software with focus on a respon
 arch=('i686' 'x86_64')
 url='http://fd-imaging.com/apps-2/blacksilk-bw-toolkit/'
 license=('GPL')
-groups=()
 depends=(
 qt5-quick1
 libpng12
@@ -21,8 +20,8 @@ qt5-multimedia
 )
 makedepends=(
 chrpath
+imagemagick
 )
-install=''
 source=(
 https://fd-imaging.com/files/blacksilk/releases/BlackSilk.Standalone.${_pkgver}.linux.zip
 https://fd-imaging.com/wp-content/uploads/2012/03/Black_Silk_Logo_Big.png
