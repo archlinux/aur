@@ -9,6 +9,7 @@ arch=('i686' 'x86_64')
 url="https://toolbelt.heroku.com"
 license=('MIT')
 optdepends=('git')
+provides=('heroku-client-standalone' 'heroku-toolbelt')
 conflicts=('heroku-client-standalone' 'heroku-toolbelt')
 source=("https://s3.amazonaws.com/assets.heroku.com/heroku-client/heroku-client-${pkgver}.tgz")
 sha256sums=('1c174580a895ec4b446ab2d4837d00e731362dd4ee46268251e2cc7d99d077d9')
