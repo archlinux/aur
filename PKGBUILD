@@ -1,8 +1,10 @@
-# Maintainer: ant32 <antreimer@gmail.com>
+# Maintainer: Martchus <martchus@gmx.net>
+# Contributor: ant32 <antreimer@gmail.com>
 # Contributor: Filip Brcic <brcha@gna.org>
+
 _qt_module=qtsensors
 pkgname=mingw-w64-qt5-sensors
-pkgver=5.5.0
+pkgver=5.5.1
 pkgrel=1
 arch=(any)
 pkgdesc="Provides access to sensor hardware and motion gesture recognition (mingw-w64)"
@@ -11,10 +13,10 @@ makedepends=(mingw-w64-gcc)
 options=(!strip !buildflags staticlibs)
 license=("custom, FDL, GPL3, LGPL")
 groups=(mingw-w64-qt mingw-w64-qt5)
-url="http://qt-project.org"
+url="https://www.qt.io/"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
-source=("http://download.qt-project.org/official_releases/qt/5.5/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-md5sums=('68ea0a61147a4934ca0fbd04fae10ed6')
+source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
+md5sums=('25250d66b0f21d41711dbf8648fe21e6')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
