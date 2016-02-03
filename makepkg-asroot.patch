@@ -1,23 +1,23 @@
---- makepkg.orig	2015-08-06 07:49:11.111748914 +0200
-+++ makepkg	2015-08-06 07:51:49.684787202 +0200
-@@ -3314,6 +3314,7 @@
+--- makepkg.orig	2016-02-03 19:26:28.315550968 +0100
++++ makepkg	2016-02-03 19:27:58.235547900 +0100
+@@ -1869,6 +1869,7 @@
  	printf -- "$(gettext "  --skipinteg      Do not perform any verification checks on source files")\n"
  	printf -- "$(gettext "  --skippgpcheck   Do not verify source files with PGP signatures")\n"
  	printf -- "$(gettext "  --verifysource   Download source files (if needed) and perform integrity checks")\n"
-+       printf -- "$(gettext "  --asroot         Build with super cow powers")\n"
++        printf -- "$(gettext "  --asroot         Build with super cow powers")\n"
  	echo
  	printf -- "$(gettext "These options can be passed to %s:")\n" "pacman"
  	echo
-@@ -3355,7 +3356,7 @@
+@@ -1910,7 +1911,7 @@
            'help' 'holdver' 'ignorearch' 'install' 'key:' 'log' 'noarchive' 'nobuild'
-           'nocolor' 'nocheck' 'nodeps' 'noextract' 'noprepare' 'nosign' 'pkg:' 'repackage'
-           'rmdeps' 'sign' 'skipchecksums' 'skipinteg' 'skippgpcheck' 'source' 'syncdeps'
--          'verifysource' 'version')
-+          'verifysource' 'version' 'asroot')
+           'nocolor' 'nocheck' 'nodeps' 'noextract' 'noprepare' 'nosign' 'packagelist'
+           'pkg:' 'printsrcinfo' 'repackage' 'rmdeps' 'sign' 'skipchecksums' 'skipinteg'
+-          'skippgpcheck' 'source' 'syncdeps' 'verifysource' 'version')
++          'skippgpcheck' 'source' 'syncdeps' 'verifysource' 'version' 'asroot')
  
  # Pacman Options
  OPT_LONG+=('asdeps' 'noconfirm' 'needed' 'noprogressbar')
-@@ -3564,9 +3565,7 @@
+@@ -2106,9 +2107,7 @@
  
  if (( ! INFAKEROOT )); then
  	if (( EUID == 0 )); then
