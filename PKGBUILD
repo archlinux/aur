@@ -2,7 +2,7 @@
 # Contributor: Ranieri Althoff <ranisalt+aur@gmail.com>
 
 pkgname=heroku-toolbelt
-pkgver=3.42.25
+pkgver=3.42.29
 pkgrel=1
 pkgdesc="Everything you need to get started using Heroku"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 optdepends=('git')
 conflicts=('heroku-client-standalone' 'heroku-toolbelt')
 source=("https://s3.amazonaws.com/assets.heroku.com/heroku-client/heroku-client-${pkgver}.tgz")
-sha256sums=('0394fa11def849d3279969ab503eb6c32f0d81b11735376358d26ba1766ddb56')
+sha256sums=('1c174580a895ec4b446ab2d4837d00e731362dd4ee46268251e2cc7d99d077d9')
 
 package() {
   cd "${srcdir}"
