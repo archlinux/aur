@@ -1,14 +1,14 @@
 # Maintainer: Anton Batenev <antonbatenev@yandex.ru>
 
 pkgname=python2-toxcore
-pkgver=0.0.18
+pkgver=0.0.19
 pkgrel=1
 pkgdesc="Python binding for ToxCore"
 arch=('i686' 'x86_64')
 url="https://github.com/abbat/pytoxcore"
 license=('GPL-3')
-depends=('toxcore' 'python2')
-makedepends=('git' 'toxcore' 'python2')
+depends=('python2' 'libvpx' 'opus' 'libsodium' 'toxcore')
+makedepends=('git' 'python2' 'libvpx' 'opus' 'libsodium' 'toxcore')
 source=("git+https://github.com/abbat/pytoxcore.git#tag=v${pkgver}")
 sha512sums=('SKIP')
 
