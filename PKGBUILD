@@ -63,7 +63,7 @@ build() {
         --disable-mysql --disable-ldap -enable-cmd --enable-forecast --enable-connmark \
 	--enable-aesni --enable-eap-ttls --enable-radattr --enable-xauth-pam --enable-xauth-noauth \
 	--enable-eap-dynamic --enable-eap-peap --enable-eap-tls --enable-chapoly --enable-unity \
-	--enable-capabilities=libcap
+	--with-capabilities=libcap
 #	--enable-ruby-gems --enable-python-eggs
   make
 }
