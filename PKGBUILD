@@ -7,12 +7,12 @@
 pkgbase=libdbusmenu
 pkgname=("${pkgbase}-glib" "${pkgbase}-gtk"{2,3})
 pkgver=12.10.3.15.04.20150410.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for passing menus over DBus"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/libdbusmenu"
 license=('GPL3')
-makedepends=('gnome-doc-utils' 'gobject-introspection' 'gtk2' 'gtk3' 'intltool' 'vala')
+makedepends=('gnome-common' 'gnome-doc-utils' 'gobject-introspection' 'gtk2' 'gtk3' 'intltool' 'vala')
 options=('!emptydirs')
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgbase}_12.10.3+15.04.20150410.2.orig.tar.gz")
 sha512sums=('c15b79464bc6498cb1e912efbe648606b7bf3b5c521c4d4e5c7decf002b4e8362444177922a5abd8a057a803a8cc00e72de6e36209189eb255efb83e2ded0b06')
