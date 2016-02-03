@@ -1,7 +1,7 @@
 # Maintainer: Claudio d'Angelis <claudiodangelis at gmail dot com>
 pkgname=toggl-bin
 pkgver=7.3.247
-pkgrel=7
+pkgrel=8
 pkgdesc="Free Time Tracking Software which is insanely easy to use. (Unofficial Binary)"
 arch=('x86_64')
 url="https://toggl.com"
@@ -25,7 +25,8 @@ package() {
     	install -dm755 "${pkgdir}/usr/share/icons/hicolor/${res}/apps"
     	ln -s "/opt/toggldesktop/icons/${res}/toggldesktop.png" "${pkgdir}/usr/share/icons/hicolor/${res}/apps/toggldesktop.png"
   	done
-
+    # Fixing permissions
+    chmod -R 755 "/opt/toggldesktop"
   	install -dm755 "${pkgdir}/usr/share/applications"
   	install -Dm644 "toggl.desktop" "${pkgdir}/usr/share/applications/toggl.desktop"
 
