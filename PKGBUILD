@@ -20,6 +20,14 @@ md5sums=('6d48db8de5fa82a41122a59638dbb92e'
          '3f8f716ddf4daa9073f32fc3666d1004'
          '4f48f542c296933ee35cd739e2189448')
 
+pkgver()  {
+  curl --silent "${url/github.com/api.github.com\/repos}/releases" | \
+    grep --max-count=1 tag_name | \
+    cut --fields=4 --delimiter=\" | \
+    sed 's/^v//' | \
+    tr '-' '_'
+}
+
 prepare() {
   cd "$pkgname-${pkgver//_/-}"
   sed --in-place "s#\$APP_HOME/lib#/usr/share/java/$pkgname#g" "bin/$pkgname"
