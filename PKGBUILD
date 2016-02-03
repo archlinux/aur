@@ -2,8 +2,8 @@
 
 _gitname=powerline
 pkgname="otf-powerline-symbols-git"
-pkgver=20130118
-pkgrel=4
+pkgver=20140317
+pkgrel=1
 pkgdesc='Fallback font for the Powerline symbols'
 url='https://github.com/powerline/powerline'
 license=('MIT')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}"
-	git log -1 --format="%cd" --date=short font/PowerlineSymbols.otf | sed 's|-||g'
+	git log -1 --format="%cd" --date=short font | sed 's|-||g'
 }
 
 package() {
