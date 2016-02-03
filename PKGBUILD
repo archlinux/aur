@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=artanis-git
-pkgver=r819.9ad2f8a
+pkgver=r830.e508e45
 pkgrel=1
 pkgdesc="A fast monolithic web-framework of Scheme"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('git')
 provides=('artanis')
 conflicts=('artanis')
 install=$pkgname.install
-source=("git+https://github.com/NalaGinrut/artanis.git#commit=9ad2f8ac780e5fee4dc5c7e61688817b9f9237f2")
+source=("git+https://github.com/NalaGinrut/artanis.git")
 _gitname="artanis"
 md5sums=('SKIP')
 
