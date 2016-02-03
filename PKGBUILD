@@ -3,19 +3,42 @@
 # This PKGBUILD is maintained on github:
 # https://github.com/michaellass/AUR
 
+###############################################################################
+# INSTRUCTIONS                                                                #
+# ------------                                                                #
+#                                                                             #
+# API changes between different Kodi versions make it necessary to specify    #
+# the version of Kodi you want to build this package for. You can choose      #
+# between Isengard (15), Jarvis (16) and git master (99). Do so in the        #
+# following line.                                                             #
+###############################################################################
+
+API=15
+
 pkgname=kodi-platform-git
-pkgver=r40.45d6ad1
+pkgver=r34.054a42f
 pkgrel=1
 pkgdesc='Kodi platform support library'
 arch=('armv7h' 'i686' 'x86_64')
 url="https://github.com/xbmc/kodi-platform"
 license=('GPL')
 makedepends=('cmake' 'git')
-depends=('kodi' 'libplatform')
+depends=('kodi')
 provides=('kodi-platform')
 conflicts=('kodi-platform')
-source=("${pkgname}::git+https://github.com/xbmc/kodi-platform.git#commit=45d6ad1")
+source=("${pkgname}::git+https://github.com/xbmc/kodi-platform.git")
 md5sums=('SKIP')
+
+# Corresponding commit IDs are taken from
+# https://github.com/xbmc/xbmc/blob/$BRANCH/project/cmake/addons/depends/common/kodi-platform/kodi-platform.txt
+case "$API" in
+  15)  depends+=('libplatform-legacy')
+       source[0]="${pkgname}::git+https://github.com/xbmc/kodi-platform.git#commit=054a42f66" ;;
+  16)  depends+=('libplatform-legacy')
+       source[0]="${pkgname}::git+https://github.com/xbmc/kodi-platform.git#commit=15edaf78d" ;;
+  99)  depends+=('libplatform') ;;
+  *)   error "Unknown API version. Follow instructions in PKGBUILD." && false
+esac
 
 pkgver() {
   cd "$pkgname"
