@@ -1,43 +1,34 @@
-# Maintainer: Robert Knauer <robert@privatdemail.net>
-# Contributor: SID/sidious <miste78 at web.de> 
+# Maintainer: Michael Straube <m.s.online gmx.de>
+# Contributor: Robert Knauer <robert@privatdemail.net>
 
 pkgname=freedoko
-pkgver=0.7.12
+pkgver=0.7.14
 pkgrel=1
 pkgdesc="Free version of the german card game Doppelkopf"
 arch=('i686' 'x86_64')
 url="http://free-doko.sourceforge.net/en/FreeDoko.html"
-license=('GPL')
+license=('GPL2')
 depends=('gtkmm' 'gnet' 'freealut')
-makedepends=('unzip')
+makedepends=('asciidoc' 'texlive-latexextra')
 conflicts=('freedoko-bin32')
-install='freedoko.install'
-source=(
-  "http://downloads.sourceforge.net/free-doko/FreeDoko_${pkgver}.src.zip"
-  'help.cpp.diff'
-  'Makefile.diff'
-  'Makefile.install.directories.diff'
-)
-sha256sums=(
-  'ce81ad52c16b4c5d59366ef8624da1be59326bbb8e58a79efee1448d9f603685'
-  '84d13d02548e42d9b9ebc41179bece4e98612565bbf133502713ee54e7716fcb'
-  'bb46506282f10366703138bc1bd78c76cf75079fa0571b45161f4c1d38b43626'
-  '3747cf13c8cf866e31a981061967b399adb37fea22b3b77791d76ea140faf735'
-)
+source=("http://downloads.sourceforge.net/free-doko/FreeDoko_$pkgver.src.zip"
+        "freedoko-0.7.14-archlinux.patch")
+sha256sums=('a27ab7acabb28aa8d038f0022377ea3e68d52626d454beaf0f65e0b91c777de9'
+            '69a2dbc5c58fd7bd36f6f67e2628fe441689f862cdad63d3761c0b112e2c3a8b')
 
 prepare() {
-  cd "${srcdir}/FreeDoko_${pkgver}"
-  patch -p0 < "${srcdir}/help.cpp.diff"
-  patch -p0 < "${srcdir}/Makefile.diff"
-  patch -p0 < "${srcdir}/Makefile.install.directories.diff"
-}
-
-build() {
-  cd "${srcdir}/FreeDoko_${pkgver}"
-  make compile
+  cd "$srcdir/FreeDoko_$pkgver"
+  patch -p0 < "$srcdir/freedoko-0.7.14-archlinux.patch"
 }
 
 package() {
-  cd "${srcdir}/FreeDoko_${pkgver}"
-  make DESTDIR="${pkgdir}" install
+  cd "$srcdir/FreeDoko_$pkgver"
+
+  make DESTDIR="$pkgdir" install
+
+  install -Dm644 "$srcdir/FreeDoko_0.7.14/bin/FreeDoko.desktop" \
+    "$pkgdir/usr/share/applications/freedoko.desktop"
+
+  rm "$pkgdir"/usr/share/doc/freedoko/de/{Windows,SuSE,Windows.kompilieren}
+  rm "$pkgdir/usr/share/doc/freedoko/en/Windows"
 }
