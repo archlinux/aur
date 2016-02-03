@@ -4,9 +4,9 @@
 # SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgbase=linux-selinux
-_srcname=linux-4.3
-pkgver=4.3.3
-pkgrel=3
+_srcname=linux-4.4
+pkgver=4.4.1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -17,24 +17,28 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-        "0001-disabling-primary-plane-in-the-noatomic-case.patch"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux-selinux.preset'
         'change-default-console-loglevel.patch'
-        'CVE-2016-0728.patch')
+        '0001-sdhci-revert.patch'
+        'tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch'
+        '0001-4.4-revert-btrfs.patch'
+        '0001-4.4-revert-xfs.patch')
 
-sha256sums=('4a622cc84b8a3c38d39bc17195b0c064d2b46945dfde0dae18f77b120bc9f3ae'
+sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            '95cd81fcbb87953f672150d60950548edc04a88474c42de713b91811557fefa5'
+            'c0218043e61da3921cd14579ae4a8774a6fdad91667a9fdb851d0a35f62edb48'
             'SKIP'
-            'abdd04bd6beecb7c961130a68d71e6332bd260462eeaa2f4f8e634de813dcc4d'
-            '68e9919a798ebf6242f0f88a3404a1fcc65b889c4855f0a7414f81066d93d9aa'
-            '93bd8ee71705de4697178d5930557b7d977ac32757a9f8be331a3292b7078b7e'
+            '87dcca2025cd2eab16e130e4d1f4a69cb1516eb12935d7e29c98a07196ecd291'
+            'a0e993a465290325e0b7c432358066d16f766d8580f9337de20fa92bb658e994'
             '375da3b030f17581cbf5be9140b79029ca85eebc70197f419a4de77e00fa84e9'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '03bed5b1c6ef34a917e218a46d38cd1347c5ab5693131996113c6cad275dc4e9')
+            '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
+            'ab57037ecee0a425c612babdff47c831378bca0bff063a1308599989a350226d'
+            '51586b733e9f178bebe577258b6057b035eded516ffe8bf8bbb26cb0b26c4958'
+            'ffbfaa192d17bfc7c6293aa9a07efe57f65177051ae3d8033d5e45a7bca2e0ad')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -51,17 +55,23 @@ prepare() {
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
   
-  # fixes #47820 CVE-2016-0728.patch
-  patch -Np1 -i "${srcdir}/CVE-2016-0728.patch"
+  # revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=9faac7b95ea4f9e83b7a914084cc81ef1632fd91
+  # fixes #47778 sdhci broken on some boards
+  # https://bugzilla.kernel.org/show_bug.cgi?id=106541
+  patch -Rp1 -i "${srcdir}/0001-sdhci-revert.patch"
+
+  # fixes #47805 kernel panics on platform modules
+  # https://bugzilla.kernel.org/show_bug.cgi?id=110751
+  patch -Np1 -i "${srcdir}/tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch"
+
+  # #47757 fix broken suspend from btrfs and xfs
+  patch -Np1 -i "${srcdir}/0001-4.4-revert-xfs.patch"
+  patch -Np1 -i "${srcdir}/0001-4.4-revert-btrfs.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
-
-  # fix #46968
-  # hangs on older intel hardware
-  patch -Np1 -i "${srcdir}/0001-disabling-primary-plane-in-the-noatomic-case.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
@@ -282,6 +292,11 @@ _package-headers() {
 
   # remove unneeded architectures
   rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
+  
+  # remove a files already in linux-docs package
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-01"
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-02"
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.select-break"
 }
 
 _package-docs() {
