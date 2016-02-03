@@ -6,8 +6,8 @@
 #
 
 pkgname=orx
-pkgver=1.6
-pkgrel=2
+pkgver=1.7
+pkgrel=1
 pkgdesc='ORX: Portable Game Engine'
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/orx/"
@@ -16,13 +16,13 @@ depends=('openal' 'libsndfile' 'mesa-libgl')
 
 if test "$CARCH" == x86_64; then
   _dev=linux64
-  md5sums=('c8b1a8f1a104e47121c8a746ce683da7')
+  md5sums=('b8c86348b07cda5effd02e0e1656a693')
 else
-  _dev=linux32
-  md5sums=('9edf9edfc855608c2e0574e82a666b0f')
+ _dev=linux32
+ md5sums=('c28ea2db81be3aec7b8b231830eeb3f2')
 fi 
 
-source=("http://sourceforge.net/projects/orx/files/orx/orx%20-%201.6%20(4168)/orx-dev-${_dev}-${pkgver}.tar.bz2")
+source=("https://sourceforge.net/projects/orx/files/orx/orx%20-%201.7%20%284092%29/orx-dev-${_dev}-${pkgver}.tar.bz2")
 
 package() {
  # make dirs

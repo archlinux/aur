@@ -1,7 +1,7 @@
 pkgbase = orx
 	pkgdesc = ORX: Portable Game Engine
-	pkgver = 1.6
-	pkgrel = 2
+	pkgver = 1.7
+	pkgrel = 1
 	url = http://sourceforge.net/projects/orx/
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = orx
 	depends = openal
 	depends = libsndfile
 	depends = mesa-libgl
-	source = http://sourceforge.net/projects/orx/files/orx/orx%20-%201.6%20(4168)/orx-dev-linux32-1.6.tar.bz2
-	md5sums = 9edf9edfc855608c2e0574e82a666b0f
+	source = https://sourceforge.net/projects/orx/files/orx/orx%20-%201.7%20%284092%29/orx-dev-linux32-1.7.tar.bz2
+	md5sums = c28ea2db81be3aec7b8b231830eeb3f2
 
 pkgname = orx
 
