@@ -3,7 +3,7 @@
 pkgname=ricin-git
 _pkgname=Ricin
 _submodule=tox-vapi
-pkgver=0.233.47be533
+pkgver=0.261.abcc501
 pkgrel=1
 pkgdesc="Lightweight and Fully-Hackable Tox client powered by Vala & Gtk3"
 url="https://github.com/RicinApp/Ricin"
