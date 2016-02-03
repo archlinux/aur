@@ -1,0 +1,14 @@
+#!/bin/bash
+
+user_dir=$HOME/.odpscmd
+sys_dir=/opt/odpscmd/conf
+
+if [ ! -e ${user_dir} ]; then
+    if [ ! -d ${user_dir} ]; then
+        echo "init $HOME/.odpscmd/odps_config.ini ..."
+        mkdir -p ${user_dir}
+        cp ${sys_dir}/odps_config.ini ${user_dir}/odps_config.ini
+    fi
+fi
+
+java -Xms64m -Xmx512m -classpath "/opt/odpscmd/lib/*:${user_dir}/:${sys_dir}/" com.aliyun.openservices.odps.console.ODPSConsole  "$@"
