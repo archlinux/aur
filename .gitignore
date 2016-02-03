@@ -1,0 +1,7 @@
+src/
+pkg/
+gigedit/
+gigedit-svn-*.tar.xz
+gigedit-svn-*.src.tar.gz
+.AURINFO
+
