@@ -5,7 +5,7 @@ pkgname=bitcoind-classic-git
 pkgver=v0.11.2.cl1.b1.r5.gcc2351c-1
 pkgrel=1
 pkgdesc="Bitcoin Classic versions of bitcoind, bitcoin-cli, and bitcoin-tx"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="https://bitcoinclassic.com/"
 depends=('boost'
          'boost-libs'
@@ -57,7 +57,7 @@ build() {
     --enable-hardening \
     --with-gui=no \
     --with-gnu-ld
-  make -j
+  make
 }
 
 package() {
@@ -87,7 +87,7 @@ package() {
   make DESTDIR="$pkgdir" install
 
   msg2 'Installing bitcoin.conf...'
-  # Install bitcoin.conf is one does not already exist, to prevent overwriting of RPC password
+  # Install bitcoin.conf is one does not already exist
   [[ ! -e "/etc/bitcoin/bitcoin.conf" ]] && install -Dm 600 "$srcdir/bitcoin.conf" -t "$pkgdir/etc/bitcoin"
 
 
