@@ -116,17 +116,17 @@ Index: include/clang/Basic/DiagnosticSemaKinds.td
 ===================================================================
 --- include/clang/Basic/DiagnosticSemaKinds.td
 +++ include/clang/Basic/DiagnosticSemaKinds.td
-@@ -2442,7 +2442,8 @@
+@@ -2448,7 +2448,8 @@
    "variables, functions and classes|Objective-C protocols|"
    "functions and global variables|structs, unions, and typedefs|structs and typedefs|"
    "interface or protocol declarations|kernel functions|non-K&R-style functions|"
--  "variables, fields and typedefs}1">,
-+  "variables, fields and typedefs|"
+-  "variables, enums, fields and typedefs}1">,
++  "variables, enums, fields and typedefs|"
 +  "structs, classes, variables, functions, methods and inline namespaces}1">,
    InGroup<IgnoredAttributes>;
  def err_attribute_wrong_decl_type : Error<warn_attribute_wrong_decl_type.Text>;
  def warn_type_attribute_wrong_type : Warning<
-@@ -4150,6 +4151,15 @@
+@@ -4158,6 +4159,15 @@
  def err_redefinition_extern_inline : Error<
    "redefinition of a 'extern inline' function %0 is not supported in "
    "%select{C99 mode|C++}1">;
@@ -150,8 +150,8 @@ Index: include/clang/Sema/AttributeList.h
    ExpectedObjectiveCInterfaceOrProtocol,
    ExpectedKernelFunction,
    ExpectedFunctionWithProtoType,
--  ExpectedVariableFieldOrTypedef
-+  ExpectedVariableFieldOrTypedef,
+-  ExpectedVariableEnumFieldOrTypedef
++  ExpectedVariableEnumFieldOrTypedef,
 +  ExpectedStructClassVariableFunctionMethodOrInlineNamespace
  };
  
@@ -1137,7 +1137,7 @@ Index: lib/Sema/SemaDeclAttr.cpp
 ===================================================================
 --- lib/Sema/SemaDeclAttr.cpp
 +++ lib/Sema/SemaDeclAttr.cpp
-@@ -4451,6 +4451,66 @@
+@@ -4492,6 +4492,66 @@
        Attr.getRange(), S.Context, Attr.getAttributeSpellingListIndex()));
  }
  
@@ -1204,7 +1204,7 @@ Index: lib/Sema/SemaDeclAttr.cpp
  static void handleARMInterruptAttr(Sema &S, Decl *D,
                                     const AttributeList &Attr) {
    // Check the attribute arguments.
-@@ -5438,6 +5498,9 @@
+@@ -5479,6 +5539,9 @@
    case AttributeList::AT_Thread:
      handleDeclspecThreadAttr(S, D, Attr);
      break;
