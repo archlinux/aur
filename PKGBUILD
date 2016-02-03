@@ -4,7 +4,7 @@
 
 pkgname=cockpit
 pkgver=0.93
-pkgrel=1
+pkgrel=2
 pkgdesc='A systemd web based user interface for Linux servers'
 arch=(i686 x86_64 armv6h armv7h)
 url='http://www.cockpit-project.org/'
@@ -25,7 +25,7 @@ build() {
   cd build
   
   ../autogen.sh
-  ../configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc
+  ../configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --localstatedir=/var
   make
 }
 
