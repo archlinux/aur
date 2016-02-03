@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=passpie-git
-pkgver=20160131
+pkgver=20160203
 pkgrel=1
 pkgdesc="Manage login credentials from terminal"
 arch=('any')
