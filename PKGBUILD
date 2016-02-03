@@ -2,14 +2,14 @@
 pkgdesc='File name manipulation module for Torch7'
 pkgname='torch7-paths-git'
 pkgver=r39.3c0dc8f
-pkgrel=2
-makedepends='cmake'
-depends='luajit'
-conflicts='torch7-paths'
-provides='torch7-paths'
+pkgrel=3
+makedepends=('cmake')
+depends=('luajit')
+conflicts=('torch7-paths')
+provides=('torch7-paths')
 arch=('x86_64' 'i686')
 url='https://github.com/torch/paths'
-license='BSD'
+license=('BSD')
 source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
 
