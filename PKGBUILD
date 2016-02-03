@@ -10,7 +10,7 @@ url='http://talloc.samba.org/'
 license=('GPL3')
 source=("http://samba.org/ftp/talloc/talloc-${pkgver}.tar.gz")
 depends=('lib32-glibc' 'talloc')
-makedepends=('gcc-multilib' 'python2')
+makedepends=('gcc-multilib' 'lib32-python2')
 sha256sums=('3833e750cf0b8c3439186cba38800cba9e26adfbce10ee98ba709c24eb1cdddd')
 
 prepare() {
@@ -25,14 +25,15 @@ build() {
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  export PYTHON='/usr/bin/python2.7-32'
+  export PYTHON_CONFIG='/usr/bin/python2.7-32-config'
 
   ./configure \
     --prefix='/usr' \
     --libdir='/usr/lib32' \
     --localstatedir='/var'\
     --sysconfdir='/etc/samba' \
-    --enable-talloc-compat1 \
-    --disable-python
+    --enable-talloc-compat1
   make
 }
 
