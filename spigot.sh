@@ -117,10 +117,10 @@ backup_files() {
 		mc_command save-off
 		mc_command save-all
 		sync && wait
-		${SUDO_CMD} tar -C "${SERVER_ROOT}" -czf "${BACKUPPATH}/${FILE}" --totals "${WORLDPATHS}" 2>&1 | grep -v "tar: Removing leading "
+		${SUDO_CMD} tar -C "${SERVER_ROOT}" -czf "${BACKUPPATH}/${FILE}" --totals ${WORLDPATHS} 2>&1 | grep -v "tar: Removing leading "
 		mc_command save-on
 	else
-		${SUDO_CMD} tar -C "${SERVER_ROOT}" -czf "${BACKUPPATH}/${FILE}" --totals "${WORLDPATHS}" 2>&1 | grep -v "tar: Removing leading "
+		${SUDO_CMD} tar -C "${SERVER_ROOT}" -czf "${BACKUPPATH}/${FILE}" --totals ${WORLDPATHS} 2>&1 | grep -v "tar: Removing leading "
 	fi
 	echo -e "\e[39;1mbackup completed\e[0m\n"
 
