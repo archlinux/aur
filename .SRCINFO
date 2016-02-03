@@ -1,7 +1,7 @@
 pkgbase = otf-inconsolata-g-powerline-git
 	pkgdesc = Inconsolata-g for Powerline
 	pkgver = r100.a44abd0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/powerline/fonts
 	install = otf-inconsolata-g-powerline-git.install
 	arch = any
