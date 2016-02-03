@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=PyCharm Edu
+Icon=pycharm-edu
+GenericName=Learn Programming with Python
+Comment=Free, Easy & Professional Tool to Learn Programming with Python
+Exec=/usr/bin/pycharm-edu
+Terminal=false
+Type=Application
+Categories=Development;IDE; 
+StartupNotify=true
+StartupWMClass=jetbrains-pycharm
