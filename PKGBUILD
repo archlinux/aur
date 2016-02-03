@@ -10,7 +10,7 @@ depends=('texlive-bin')
 makedepends=('git')
 provides=('bibtool')
 conflicts=('bibtool')
-source=("git+https://github.com/ge-ne/bibtool")
+source=("git+https://github.com/ge-ne/bibtool#commit=af3a9d2ca5709e5638c2ec84dfbe034ebad016c7")
 md5sums=('SKIP')
 options=('!makeflags')
 _gitname="bibtool"
