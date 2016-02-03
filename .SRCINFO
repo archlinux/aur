@@ -1,0 +1,15 @@
+pkgbase = eclipse-jubula-git
+	pkgdesc = Jubula plugins for Eclipse IDE to create functional GUI tests (gerrit version)
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = http://eclipse.org/jubula/
+	arch = any
+	license = EPL
+	depends = eclipse>=4.3.0,
+	depends = eclipse-mylyn
+	options = !strip
+	source = https://hudson.eclipse.org/jubula/job/jubula-gerrit/lastSuccessfulBuild/artifact/org.eclipse.jubula.core/org.eclipse.jubula.repo/target/org.eclipse.jubula.repo-4.0.0-SNAPSHOT.zip
+	sha256sums = d5d6a361f32198890af29357764ab1628727a86426d7e4d74350aecc24fb03e0
+
+pkgname = eclipse-jubula-git
+
