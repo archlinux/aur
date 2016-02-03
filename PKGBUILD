@@ -1,16 +1,16 @@
 # Maintainer: Arnoud Willemsen <mail at lynthium dot com>
 
 pkgname=firejail-git
-pkgver=r101.38f13e8
+pkgver=r544.19afadb
 pkgrel=1
 pkgdesc="Linux namespaces sandbox program (GIT version)"
 arch=(i686 x86_64)
 license=(GPL2)
 url="https://github.com/netblue30/firejail"
-backup=(etc/firejail/login.users)
+backup=('etc/firejail/login.users')
 source=("${pkgname}::git+https://github.com/netblue30/firejail.git")
 sha512sums=('SKIP')
-conflicts=firejail
+conflicts=('firejail')
 
 pkgver() {
   	cd "${srcdir}/${pkgname}"
