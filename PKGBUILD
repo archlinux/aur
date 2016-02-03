@@ -11,7 +11,7 @@ license=('GPL')
 depends=('xdg-utils' 'rofi' 'pass' 'xdotool' 'xclip')
 optdepends=('passed-git: change fieldnames in password files')
 
-install=('rofi-pass.install')
+install=rofi-pass.install
 makedepends=('git')
 source=('git+http://git.53280.de/rofi-pass')
 
