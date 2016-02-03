@@ -1,12 +1,14 @@
-# Maintainer: ant32 <antreimer@gmail.com>
+# Maintainer: Martchus <martchus@gmx.net>
+# Contributor: ant32 <antreimer@gmail.com>
 # Contributor: Filip Brcic <brcha@gna.org>
 # Contributor: jellysheep <max.mail@dameweb.de>
+
 pkgname=mingw-w64-qt5-base
 pkgver=5.5.1
 pkgrel=1
 pkgdesc="A cross-platform application and UI framework (mingw-w64)"
 arch=(i686 x86_64)
-url="http://qt-project.org"
+url="https://www.qt.io/"
 license=("custom, FDL, GPL3, LGPL")
 depends=(
   mingw-w64-crt
@@ -33,7 +35,7 @@ makedepends=(mingw-w64-gcc
              mingw-w64-pkg-config)
 options=(!strip !buildflags staticlibs)
 _pkgfqn="qtbase-opensource-src-${pkgver}"
-source=("http://download.qt-project.org/official_releases/qt/5.5/${pkgver}/submodules/${_pkgfqn}.tar.xz"
+source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         "qt5-merge-static-and-shared-library-trees.patch"
         "add-angle-support.patch"
         "use-external-angle-library.patch"
