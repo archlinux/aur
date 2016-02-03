@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=vim-tomorrow-theme-git
-pkgver=v1.0.r20.g5d66e71
+pkgver=1.0.r24.gf45a2ca
 pkgrel=1
 pkgdesc="Tomorrow Theme for Vim"
 arch=('any')
@@ -20,16 +20,14 @@ noextract=()
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
+  cd "$srcdir/$pkgname"
   git describe --long | sed -E 's/^v//g;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package() {
   cd "$srcdir/$pkgname/colors"
-  install -Dm644 Tomorrow.vim $pkgdir/usr/share/vim/vimfiles/colors/Tomorrow.vim
-  install -Dm644 Tomorrow-Night.vim $pkgdir/usr/share/vim/vimfiles/colors/Tomorrow-Night.vim
-  install -Dm644 Tomorrow-Night-Blue.vim $pkgdir/usr/share/vim/vimfiles/colors/Tomorrow-Night-Blue.vim
-  install -Dm644 Tomorrow-Night-Bright.vim $pkgdir/usr/share/vim/vimfiles/colors/Tomorrow-Night-Bright.vim
-  install -Dm644 Tomorrow-Night-Eighties.vim $pkgdir/usr/share/vim/vimfiles/colors/Tomorrow-Night-Eighties.vim
+  for i in *.vim; do
+    install -Dm644 $i $pkgdir/usr/share/vim/vimfiles/colors/$i
+  done
 }
 
