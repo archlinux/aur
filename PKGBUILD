@@ -4,9 +4,10 @@
 
 pkgname=roll
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to roll a user-defined dice sequence and display the result"
 arch=('i686' 'x86_64')
+depends=('glibc')
 url="http://matteocorti.github.io/roll/"
 license=('GPL2')
 source=("https://github.com/matteocorti/roll/releases/download/v${pkgver}/roll-${pkgver}.tar.gz")
