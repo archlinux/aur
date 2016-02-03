@@ -1,7 +1,7 @@
 # Maintainer: Joakim Reinert <mail+aur@jreinert.com>
 
 _name=icsv2ledger
-pkgname=python-icsv2ledger
+pkgname=python-icsv2ledger-git
 pkgver=r181.97329f6
 pkgrel=1
 pkgdesc='Interactive importing of CSV files to Ledger'
