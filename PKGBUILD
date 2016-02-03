@@ -1,20 +1,21 @@
-# Maintainer: ant32 <antreimer@gmail.com>
+# Maintainer: Martchus <martchus@gmx.net>
+# Contributor: ant32 <antreimer@gmail.com>
 # Contributor: Filip Brcic <brcha@gna.org>
 
 _qt_module=qtscript
 pkgname="mingw-w64-qt5-script"
-pkgver=5.5.0
+pkgver=5.5.1
 pkgrel=1
 arch=('any')
-pkgdesc="Qt5 for Windows -- QtScript module (mingw-w64)"
+pkgdesc="Classes for making Qt applications scriptable. Provided for Qt 4.x compatibility (mingw-w64)"
 depends=('mingw-w64-qt5-base')
 makedepends=('mingw-w64-gcc')
 options=('!strip' '!buildflags' 'staticlibs')
 license=('GPL3' 'LGPL')
-url="http://qt-project.org/"
+url="https://www.qt.io/"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
-source=("http://download.qt-project.org/official_releases/qt/5.5/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-md5sums=('1e9766d2651d6a81221525462378336d')
+source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
+md5sums=('7abbe43ec935004a9312387b4aa6b07f')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
