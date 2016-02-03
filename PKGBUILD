@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-pck
 _pkgbasever=4.4-gnu
-_pkgver=${_pkgbasever}
+_pkgver=4.4.1-gnu
 _pckpatchver=pck1
 
 _replacesarchkernel=('linux-zen')
@@ -21,7 +21,7 @@ _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}.${_pckpatchver}
 pkgrel=1
-rcnrel=armv7-x3
+rcnrel=armv7-x5
 arch=('i686' 'x86_64' 'armv7h')
 url="https://wiki.parabola.nu/PCK"
 license=('GPL2')
@@ -32,8 +32,8 @@ fi
 options=('!strip')
 source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz"
         "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz.sign"
-        #"http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz"
-        #"http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz.sign"
+        "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz"
+        "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz.sign"
         "https://repo.parabola.nu/other/pck/patches/${_pkgver}/patch-${_pkgver}-${_pckpatchver}.patch"
         "https://repo.parabola.nu/other/pck/patches/${_pkgver}/patch-${_pkgver}-${_pckpatchver}.patch.sig"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm"
@@ -47,9 +47,6 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        'tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch'
-        'CVE-2016-0728.patch'
-        '0001-sdhci-revert.patch'
         # armv7h patches
         "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
         "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch.sig"
@@ -64,7 +61,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0009-ARM-dts-dove-add-Dove-divider-clocks.patch')
 sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'SKIP'
-            'bdac8556b7156bb383b50b1818a44cd4f4ba15edd9b0044e86ba4268ffa21482'
+            'ed09b329d879bb758374b6a76acb841cdf63a6638720378657fb2b6eeed6b265'
+            'SKIP'
+            '70cc35af80d6079248de8fb8711bf5e936e0a1d4651cee26afd0a79c20900fd8'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -72,15 +71,12 @@ sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '7bb5b6fa10f1da6b5d0a6b071c7e95911cfc3e43348dfeb9a811f39ecb70f655'
-            'b9223741f54070522ad41013ab336c9d03ff89779b3b610dd2bc58023e0acf70'
-            '6f001d335ff0a0db95b4446224d580460a6038666addbb8e5f7bc119457acc82'
+            'c6790bbc5b881ec19d0428ea5fb51d2a391ffa26ac3f84f725fbe5b26c505153'
+            '4057f6cca290d1e1a7fda8a73e6bf0084af5af3e4ca4b319af444423f0b4331c'
+            '4c009f2993d3f0a495943dcab12d56dd1f41552673ece8349414503fc6dd4707'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'ab57037ecee0a425c612babdff47c831378bca0bff063a1308599989a350226d'
-            '03bed5b1c6ef34a917e218a46d38cd1347c5ab5693131996113c6cad275dc4e9'
-            '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
-            '031beb6ec9b55a0425b938141ec06e200ca17cc50d69f605643b8ddb6065a55e'
+            '989d87384f448e942fa8656f6c4ce7212670fdfbf5dde567ad9f31ec6e316976'
             'SKIP'
             'a851312b26800a7e189b34547d5d4b2b62a18874f07335ac6f426c32b47c3817'
             '486976f36e1919eac5ee984cb9a8d23a972f23f22f8344eda47b487ea91047f4'
@@ -137,18 +133,6 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
-  # revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=9faac7b95ea4f9e83b7a914084cc81ef1632fd91
-  # fixes #47778 sdhci broken on some boards
-  # https://bugzilla.kernel.org/show_bug.cgi?id=106541
-  patch -Rp1 -i "${srcdir}/0001-sdhci-revert.patch"
-
-  # fixes #47805 kernel panics on platform modules
-  # https://bugzilla.kernel.org/show_bug.cgi?id=110751
-  patch -Np1 -i "${srcdir}/tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch"
-
-  # fixes #47820 CVE-2016-0728.patch
-  patch -Np1 -i "${srcdir}/CVE-2016-0728.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
@@ -289,12 +273,14 @@ _package-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}"
   cp -a arch/${KARCH}/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
   if [ "${CARCH}" = "armv7h" ]; then
-    mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-omap2"
-    cp -a arch/${KARCH}/mach-omap2/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-omap2/"
-    mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-mvebu"
-    cp -a arch/${KARCH}/mach-mvebu/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-mvebu/"
-    mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/plat-omap"
-    cp -a arch/${KARCH}/plat-omap/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/plat-omap/"
+    for i in dove exynos mvebu omap2 versatile; do
+      mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-${i}"
+      cp -a arch/${KARCH}/mach-${i}/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-${i}/"
+    done
+    for i in omap orion samsung versatile; do
+      mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/plat-${i}"
+      cp -a arch/${KARCH}/plat-${i}/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/plat-${i}/"
+    done
   fi
 
   # copy files necessary for later builds
