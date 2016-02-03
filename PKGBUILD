@@ -3,7 +3,7 @@
 
 pkgname=heroku-toolbelt
 pkgver=3.42.29
-pkgrel=1
+pkgrel=2
 pkgdesc="Everything you need to get started using Heroku"
 arch=('i686' 'x86_64')
 url="https://toolbelt.heroku.com"
@@ -21,5 +21,5 @@ package() {
   install -dm 755 "${pkgdir}/usr/bin"
 
   mv heroku-client "${pkgdir}/opt/heroku-toolbelt"
-  ln -s /usr/local/heroku/bin/heroku "${pkgdir}/usr/bin/heroku"
+  ln -s /opt/heroku-toolbelt/bin/heroku "${pkgdir}/usr/bin/heroku"
 }
