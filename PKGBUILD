@@ -2,8 +2,8 @@
 
 _pkgname=solr
 pkgname="$_pkgname-undertow"
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc='Solr / SolrCloud running in high performance server'
 arch=('i686' 'x86_64' 'any')
 url="https://github.com/bremeld/$pkgname"
@@ -16,7 +16,7 @@ install="$pkgname.install"
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tgz"
         'default.conf'
         "$pkgname.service")
-md5sums=('2dda8c827a4acd54dd248d5358e0ba27'
+md5sums=('19e2f582370c82353a04932a3458af76'
          '3f8f716ddf4daa9073f32fc3666d1004'
          '4f48f542c296933ee35cd739e2189448')
 
