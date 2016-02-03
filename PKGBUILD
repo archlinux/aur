@@ -1,9 +1,9 @@
 # Maintainer: TingPing <tingping@tingping.se>
 
 pkgname=plex-media-player
-pkgver=1.0.3
-_gitrev=132
-_gitver=16fa0ecc
+pkgver=1.0.4
+_gitrev=169
+_gitver=da1dda84
 _fullname="$pkgname-$pkgver.$_gitrev-$_gitver"
 _webclientver=62b0efd # Set in CMakeModules/WebClientVariables.cmake
 pkgrel=2
@@ -18,7 +18,7 @@ source=("$_fullname.tar.gz::https://github.com/plexinc/plex-media-player/archive
         "https://nightlies.plex.tv/directdl/plex-dependencies/plex-web-client-plexmediaplayer/latest/plex-web-client-konvergo-${_webclientver}.cpp.tbz2"
         'plex-media-player.desktop')
 noextract=("plex-web-client-konvergo-$_webclientver.cpp.tbz2")
-sha256sums=('ec4d7d7b1d00dfb17897af54607987dd37334b4abcb34fb7a6f9d2f8ab9bdf44'
+sha256sums=('bdc33ddc5590dab4171bf164f6c391e903968ca7eb48cbc137e22ad1e77d1394'
             '247613b14692d312fd3edb36dfb34dc1dd2639f084e11084fa7c52b9a6c96a39'
             'b03845b761cc18a88252b72d0c83e439006224660444d9174f53cc577f9498b6')
 
@@ -33,10 +33,6 @@ prepare() {
 	# This isn't necessary and fails
 	sed -i 's|file(WRITE ${QTROOT}/bin/qt.conf ${QTCONFCONTENT})||' \
 	       CMakeModules/QtConfiguration.cmake
-
-	# They removed the web-client version shipped at the time, but the new version works at least for this release
-	sed -i "s|38c0884894f8c5676fea56937b3dfb99cbd3e06f|a7134046e39d6b85de07a77cc1f21d1736c566a9|; s|f9aee64|$_webclientver|" \
-	       CMakeModules/WebClientVariables.cmake
 
 	# Use our downloaded copy of web-client
 	mkdir -p build/src
