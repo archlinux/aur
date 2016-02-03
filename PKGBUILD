@@ -3,14 +3,12 @@
 buildarch=20
 
 pkgbase=linux-rpi
-_commit=db37370d01c4f46c010ce666ce318fb385ac5fe7
-#_commit=636409f1234270749cf6456445d00b0c5980d353
+_commit=0108373f573aa71e3f2bf48bdccafd09d478ecf5
 _srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
-_desc="Raspberry Pi"
-pkgver=4.1.16
-#pkgver=4.5
-pkgrel=4
+_desc="Raspberry Pi mainline kernel"
+pkgver=4.1.17
+pkgrel=1
 bfqver=v7r8
 arch=('armv6h' 'armv7h')
 url="http://www.kernel.org/"
@@ -26,7 +24,7 @@ source=("https://github.com/raspberrypi/linux/archive/${_commit}.tar.gz"
         'cmdline.txt'
         'config.v6'
         'config.v7')
-md5sums=('d63e2cf9b02f203ca1f9ea02e6f53dd9'
+md5sums=('0767555c2df6efc19e6b905ae2deccf1'
          'SKIP'
          '74bf103542cbdee0363819309adb97a2'
          'f09baae3c7add4ed9bedde22ae3efe19'
@@ -38,7 +36,6 @@ md5sums=('d63e2cf9b02f203ca1f9ea02e6f53dd9'
 
 prepare() {
   cd "${srcdir}/${_srcname}"
-
   msg2 "AUFS patches"
   cp -ru "${srcdir}/aufs4-standalone/Documentation" .
   cp -ru "${srcdir}/aufs4-standalone/fs" .
@@ -154,7 +151,7 @@ _package() {
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for linux kernel - ${_desc}"
   provides=("linux-headers=${pkgver}")
-  conflicts=('linux-headers')
+  conflicts=('linux-headers' 'linux-raspberrypi-headers')
   replaces=('linux-raspberrypi-latest-headers')
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
