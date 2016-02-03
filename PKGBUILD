@@ -1,20 +1,21 @@
-# Maintainer: ant32 <antreimer@gmail.com>
+# Maintainer: Martchus <martchus@gmx.net>
+# Contributor: ant32 <antreimer@gmail.com>
 # Contributor: Filip Brcic <brcha@gna.org>
 
 _qt_module=qtquick1
 pkgname="mingw-w64-qt5-quick1"
-pkgver=5.5.0
+pkgver=5.5.1
 pkgrel=1
 arch=('any')
-pkgdesc="Qt5 for Windows -- QtQuick1 module (mingw-w64)"
+pkgdesc="Qt Declarative is provided for Qt 4 compatibility (mingw-w64)"
 depends=('mingw-w64-qt5-base' 'mingw-w64-qt5-script' 'mingw-w64-qt5-tools')
 makedepends=('mingw-w64-gcc')
 options=('!strip' '!buildflags' 'staticlibs')
 license=('GPL3' 'LGPL')
-url="http://qt-project.org/"
+url="https://www.qt.io/"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
-source=("http://download.qt-project.org/official_releases/qt/5.5/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-md5sums=('8cd53fd1100e7f7cdf5b14f7c227e7b9')
+source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
+md5sums=('46a61a405844cbe88a754127422f6b6d')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
