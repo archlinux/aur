@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Blacksilk
+Comment=An intuitive black and white conversion software with focus on a responsive user interface and workflow
+Exec=blacksilk
+Icon=blacksilk
+Terminal=false
+StartupNotify=false
+Categories=Application;Graphics
