@@ -10,19 +10,15 @@
 # * rm /usr/lib/pkgconfig/glesv2.pc
 # * rm /usr/lib/pkgconfig/egl.pc
 
-# NB! Mount/copy this prepped rasp rootfs somewhere and set this path as the sysroot below
-# I use NFS personally: sudo mount qpi2.local:/ /mnt/pi
-# comment this turkey out in any circumstance when you need to regenate .SRCINFO
+# I use NFS to develop against my sysroot personally: sudo mount qpi2.local:/ /mnt/pi
 
-# Mandatory edit
-
-echo "Set your sysroot below prior to build then delete this line" && exit 1
+# NB: Mandatory edit: set this variable to point to your raspberry pi's sysroot
 _sysroot=/mnt/pi
 
 # Options
-
 _skip_web_engine=true
 
+# PKGBUILD
 _piver=2
 _pkgname=qt-sdk-raspberry-pi
 provides=("${_pkgname}")
@@ -50,6 +46,23 @@ options=('!strip')
 install=qpi.install
 _fully_qualified_install_script="${startdir}/${install}"
 _device_configure_flags=""
+
+#Sanity check
+__pkgconfigpath="${_sysroot}/usr/lib/pkgconfig"
+__eglpkgconfigpath="${__pkgconfigpath}/egl.pc"
+__glespkgconfigpath="${__pkgconfigpath}/glesv2.pc"
+
+if [[ ! -d ${__pkgconfigpath} ]]; then
+  echo "You have to set a valid sysroot to proceed with the build"
+  exit 1
+fi
+
+if [[ -f ${__eglpkgconfigpath} ]] || [[ -f ${__glespkgconfigpath} ]] ; then
+  echo "Mesa is about to eat our communal poodle; delete egl.pc and glesv2.pc in your sysroot"
+  exit 1
+fi
+
+#end sanity check
 
 if $_skip_web_engine || [[ ${_piver} = "1" ]]; then
   _device_configure_flags="-skip qtwebengine"
