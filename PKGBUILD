@@ -6,8 +6,8 @@
 # Contributor: Revellion
 
 pkgname=xen-igvtg
-pkgver=4.5.0_2015Q3
-pkgrel=2
+pkgver=4.5.0_2015Q4
+pkgrel=1
 pkgdesc="Virtual Machine Hypervisor & Tools"
 arch=(x86_64)
 url="http://www.xenproject.org/"
@@ -23,7 +23,7 @@ options=(!buildflags !strip)
 install=$pkgname.install
 changelog=ChangeLog
 source=(xen_src::git+https://github.com/01org/igvtg-xen
-    qemu-xen::git+https://github.com/01org/igvtg-qemu.git#branch=xengt_public2015q3
+    qemu-xen::git+https://github.com/01org/igvtg-qemu.git#branch=xengt_public2015q4
     http://xenbits.xen.org/xen-extfiles/ipxe-git-9a93db3f0947484e30e753bbd61a10b17336e20e.tar.gz
     http://xenbits.xen.org/xen-extfiles/lwip-1.3.0.tar.gz
     http://xenbits.xen.org/xen-extfiles/zlib-1.2.3.tar.gz
