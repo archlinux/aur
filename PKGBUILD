@@ -2,7 +2,7 @@
 
 pkgname=tint2-git
 _pkgname=tint2
-pkgrel=1
+pkgrel=2
 pkgver=0.12.1.r44.g1f7f197
 pkgdesc="Git official release"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('cmake')
 install=${pkgname}.install
 provides=('tint2')
 conflicts=('tint2' 'tint' 'tint2-svn')
-source="git+https://gitlab.com/o9000/tint2.git"
+source=("git+https://gitlab.com/o9000/tint2.git")
 md5sums=('SKIP')
 
 pkgver() {
