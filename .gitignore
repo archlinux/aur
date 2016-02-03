@@ -1,0 +1,8 @@
+pkg/
+src/
+.AURINFO
+zita-rev1/
+zita-rev1*.tar.xz
+zita-rev1*.tar.gz
+zita-rev1*.tar.bz2
+zita-rev1*.src.tar.gz
