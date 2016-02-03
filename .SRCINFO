@@ -1,0 +1,21 @@
+pkgbase = gsasl-ntlm
+	pkgdesc = Simple Authentication and Security Layer framework and a few common SASL mechanisms - NTLM support
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = http://josefsson.org/gsasl/
+	install = gsasl.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gnutls
+	depends = libidn
+	depends = krb5
+	depends = libgcrypt
+	depends = libntlm
+	provides = gsasl
+	conflicts = gsasl
+	source = ftp://ftp.gnu.org/gnu/gsasl/gsasl-1.8.0.tar.gz
+	sha1sums = 343fd97ae924dc406986c02fb9b889f4114239ae
+
+pkgname = gsasl-ntlm
+
