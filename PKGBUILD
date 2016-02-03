@@ -2,7 +2,7 @@
 
 pkgname=storaged
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="LVM DBus add-on for udisks"
 url="https://github.com/storaged-project/storaged"
 license=('LGPL')
@@ -14,7 +14,7 @@ md5sums=('b51080d5e91d663c21c07149f1553f94')
 
 build() {
   cd ${pkgname}-${pkgver}
-  ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc
+  ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --localstatedir=/var
   make
 }
 
