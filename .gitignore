@@ -1,0 +1,4 @@
+wget/
+gnulib/
+*.pkg.tar.xz
+*.tar.gz
