@@ -2,7 +2,7 @@
 
 pkgname=packetbeat
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source network packet analyzer that ships data to Elasticsearch.'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="https://www.elastic.co/products/beats/$pkgname"
@@ -14,7 +14,7 @@ optdepends=('elasticsearch: for running standalone installation')
 options=('!strip')
 provides=('packetbeat')
 conflicts=('packetbeat-bin')
-source=("https://github.com/elastic/beats/archive/v$pkgver.tar.gz"
+source=("https://github.com/elastic/beats/archive/v$pkgver/beats-$pkgver.tar.gz"
         "$pkgname.service")
 sha256sums=('bba6c5d7d22959e90296d6d1dd7975c80250b491166a712cece72ee91165d25c'
             '09420676932fd4292351c9b55e835c545013477d015b7ffe8d5009ed1984da64')
