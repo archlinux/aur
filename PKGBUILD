@@ -6,11 +6,11 @@ pkgrel=2
 pkgdesc="DreamChess - OpenGL Chess Game"
 arch=('any')
 url="https://github.com/dreamchess/dreamchess"
-license=('GNU')
+license=('GPL')
 
 # tried to include all necessary deps and none that aren't
 # please notify if list not fully correct
-depends=(mxml sdl_mixer sdl_image glew libgl expat libxext)
+depends=(mxml sdl_mixer sdl_image glew libgl expat)
 makedepends=(git bison)
 
 source=('git://github.com/dreamchess/dreamchess.git')
