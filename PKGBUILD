@@ -14,7 +14,7 @@ depends=('gtk3' 'gtk-engine-murrine')
 makedepends=('git')
 provides=('gtk-theme-iris-light')
 conflicts=('gtk-theme-iris-light')
-changelog=('CHANGELOG')
+changelog="CHANGELOG"
 source=(${_pkgname}::'git+https://github.com/xyl0n/iris-light.git')
 sha256sums=('SKIP')
 
