@@ -1,7 +1,7 @@
 # Maintainer: Branislav Holý <branoholy@gmail.com>
 pkgname=regilo
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple C++ library for controlling the Neato XV robot and the Hokuyo scanner"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/branoholy/$pkgname"
@@ -11,13 +11,13 @@ makedepends=('cmake>=2.8.0')
 source=("https://github.com/branoholy/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
         "https://github.com/branoholy/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.sig")
 md5sums=('a9b3b4453672b9b51e422051a5b0785c'
-         '59858417b3cca8960aab2f97fc12c4ef')
+         'f4b5c7a26ac3300f786392336f83049d')
 sha1sums=('e83df657080781ec2340e50ead789ba8b5745c15'
-          'a036a0e915e85850d08706003127261facf8d5df')
+          'b8f161c73d816f071e45af762f5000b43b0731bc')
 sha256sums=('8c941bccd23503323f2467d78ce3902c095e614950b9e92e83d042d5ad7f5cb0'
-            'cd940e437bb1a6e4efb598cdf7456aa50dd4eabd712d6deca627d262ad36fc06')
+            '2a5b8114fb54b15276a098988b8ba088c23c11d52eab4d926984b8e384a27bcf')
 sha512sums=('619b1352718065f926254bbbef56571a9dd49ce05af6c1613564152f18cae1c2e4318e90b5c9a3d65054f43a3dc820b4b8510fff07a0fbba14eddaf98f89222f'
-            '81fd9be58da226e72586fe446fd2e92da26a19172646c30c679f1490108d8b780bcae25e8e781f3845c9fa52bb1e7566a89187f202d175b2ef26206e5a49909d')
+            'c02b2e2e29f4b779b1686d4b7a34e90160bb409947d26a7e65e668b4ac50fee19d83eb11c430569cbc0ca84a57ce554aa4d93131d0c9b212c350b43195d3b103')
 validpgpkeys=('D25809BF3563AA56A12B0F4D545EDD46FBAC61E6')
 
 build() {
