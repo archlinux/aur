@@ -1,0 +1,8 @@
+pkg/
+src/
+.AURINFO
+jaaa/
+jaaa-*.tar.xz
+jaaa-*.src.tar.gz
+jaaa-*.tar.gz
+jaaa-*.tar.bz2
