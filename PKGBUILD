@@ -3,8 +3,20 @@
 # This PKGBUILD is maintained on github:
 # https://github.com/michaellass/AUR
 
+###############################################################################
+# INSTRUCTIONS                                                                #
+# ------------                                                                #
+#                                                                             #
+# API changes between different Kodi versions make it necessary to specify    #
+# the version of Kodi you want to build this package for. You can choose      #
+# between Isengard (15), Jarvis (16) and git master (99). Do so in the        #
+# following line.                                                             #
+###############################################################################
+
+API=15
+
 pkgname=kodi-addon-pvr-hts-git
-pkgver=r306.9b05d4c
+pkgver=r314.016b0b3
 pkgrel=1
 _branch=Isengard
 pkgdesc='Tvheadend HTSP PVR client addon for Kodi'
@@ -12,11 +24,18 @@ arch=('armv7h' 'i686' 'x86_64')
 url="https://github.com/kodi-pvr/pvr.hts"
 license=('GPL')
 makedepends=('cmake' 'git' 'kodi-platform-git')
-depends=('kodi>=15.0')
+depends=('kodi')
 provides=('kodi-addon-pvr-hts')
 conflicts=('kodi-addon-pvr-hts' 'kodi-pvr-addons')
-source=("${pkgname}::git+https://github.com/kodi-pvr/pvr.hts.git#branch=${_branch}")
+source=("${pkgname}::git+https://github.com/kodi-pvr/pvr.hts.git")
 md5sums=('SKIP')
+
+case "$API" in
+  15)  source[0]="${pkgname}::git+https://github.com/kodi-pvr/pvr.hts.git#branch=Isengard" ;;
+  16)  source[0]="${pkgname}::git+https://github.com/kodi-pvr/pvr.hts.git#branch=Jarvis" ;;
+  99)  ;;
+  *)   error "Unknown API version. Follow instructions in PKGBUILD." && false
+esac
 
 pkgver() {
   cd "$pkgname"
