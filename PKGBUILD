@@ -3,14 +3,14 @@
 
 pkgname=emacs-psvn
 pkgver=2015.07.20_21.42.00
-pkgrel=1
+pkgrel=2
 pkgdesc="Subversion interface for emacs"
 url="http://www.emacswiki.org/cgi-bin/wiki/SubVersion"
 license=('GPL2')
 depends=('emacs')
 install=$pkgname.install
 source=(http://www.xsteve.at/prg/emacs/psvn.el)
-md5sums=('ec4b76a5f93ee23001fab5b9f6ae4c97')
+md5sums=('1abc852ced8c82267770ea953d819486')
 makedepends=('awk')
 arch=('any')
 
