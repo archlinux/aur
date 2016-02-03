@@ -1,0 +1,6 @@
+pkg/
+src/
+.AURINFO
+raul/
+raul-svn-*.tar.xz
+raul-svn-*.src.tar.gz
