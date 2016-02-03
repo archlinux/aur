@@ -28,5 +28,5 @@ package() {
   install -d "${pkgdir}/usr/share/webapps/${_pkgname}"
   cp -r "${_pkgname}" "${pkgdir}/usr/share/webapps/"
   install -d "${pkgdir}/usr/bin"
-  ln -s "${pkgdir}/usr/share/webapps/${_pkgname}/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  ln -s "/usr/share/webapps/${_pkgname}/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
