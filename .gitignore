@@ -1,0 +1,6 @@
+pkg/
+src/
+.AURINFO
+light-desktop-item-edit/
+light-desktop-item-edit-git-*.tar.xz
+light-desktop-item-edit-git-*.src.tar.gz
