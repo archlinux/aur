@@ -11,8 +11,8 @@ pkgdesc="Command line log parser to aggregate fields and count occurences"
 arch=('x86_64' 'i686')
 url="https://github.com/antham/goller"
 license=('GPL')
-source=("https://github.com/antham/goller/releases/download/v2.0.2/goller_linux_386")
-md5sums=("bbf91d1984e543cd8a54ec08132ee808")
+source=("https://github.com/antham/goller/releases/download/v2.1.0/goller_linux_386")
+md5sums=("5776f43bbb4a60417c147ed7f40ebe5e")
 
 package() {
     install -Dm755 "goller_linux_386" "$pkgdir/usr/bin/$pkgname"
