@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=bibtool-git
-pkgver=2.63.55.gaf3a9d2
+pkgver=2.63.61.g73b156c
 pkgrel=1
 pkgdesc="Command line manipulation of BibTeX files - from git-repo"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('texlive-bin')
 makedepends=('git')
 provides=('bibtool')
 conflicts=('bibtool')
-source=("git+https://github.com/ge-ne/bibtool#commit=af3a9d2ca5709e5638c2ec84dfbe034ebad016c7")
+source=("git+https://github.com/ge-ne/bibtool")
 md5sums=('SKIP')
 options=('!makeflags')
 _gitname="bibtool"
@@ -18,6 +18,11 @@ _gitname="bibtool"
 pkgver() {
   cd "$srcdir"/"$_gitname"
   git describe --tags | sed 's|[-_]|.|g' | cut -c9-
+}
+
+prepare() {
+  cd "$srcdir"/"$_gitname"
+  sed -i '135s+int+void+' rewrite.c
 }
 
 build() {
