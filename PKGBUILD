@@ -2,7 +2,7 @@
 
 pkgname=filebeat
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Collects, pre-processes, and forwards log files from remote sources'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url='https://www.elastic.co/products/beats'
@@ -14,7 +14,7 @@ install="$pkgname.install"
 options=('!strip')
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("https://github.com/elastic/beats/archive/v$pkgver.tar.gz"
+source=("https://github.com/elastic/beats/archive/v$pkgver/beats-$pkgver.tar.gz"
         "$pkgname.install"
         "$pkgname.service"
         "$pkgname.sysusers")
