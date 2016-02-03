@@ -1,13 +1,13 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgdesc='Tool to aid wrapping C functions to be used from Lua'
 pkgname='torch7-cwrap-git'
-pkgver=r26.6e7d52f
+pkgver=r31.381256d
 pkgrel=1
-conflicts='torch7-cwrap'
-provides='torch7-cwrap'
-arch='any'
+conflicts=('torch7-cwrap')
+provides=('torch7-cwrap')
+arch=('any')
 url='https://github.com/torch/cwrap'
-license='BSD'
+license=('BSD')
 source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
 
