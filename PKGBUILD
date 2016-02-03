@@ -9,7 +9,7 @@ pkgname=("lib32-${_pkgbase}-gtk2" "lib32-${_pkgbase}-gtk3" "lib32-${_pkgbase}-sh
 #_extra_ver=+15.04.20141110
 #pkgver=${_actual_ver}${_extra_ver/+/.}
 pkgver=12.10.0
-pkgrel=6
+pkgrel=7
 pkgdesc='Allow applications to export a menu into the Unity Menu bar (32-bit)'
 arch=('i686' 'x86_64')
 url="https://launchpad.net/${_pkgbase}"
@@ -87,8 +87,7 @@ package_lib32-libappindicator-gtk2() {
 	cd "${srcdir}/${pkgname}"
 	make -j1 DESTDIR="${pkgdir}" install
 	make -j1 -C bindings/mono DESTDIR="${pkgdir}" uninstall
-	rm -rf "${pkgdir}/usr/share"
-	rm -rf "${pkgdir}/usr/include"
+	rm -rf "${pkgdir}"/usr/{include,share}
 }
 
 package_lib32-libappindicator-gtk3() {
@@ -100,8 +99,7 @@ package_lib32-libappindicator-gtk3() {
 	cd "${srcdir}/${pkgname}"
 	make -j1 -C src DESTDIR="${pkgdir}" install
 	make -j1 -C bindings/mono DESTDIR="${pkgdir}" uninstall
-	rm -rf "${pkgdir}/usr/share"
-	rm -rf "${pkgdir}/usr/include"
+	rm -rf "${pkgdir}"/usr/{include,share}
 }
 
 package_lib32-libappindicator-sharp() {
@@ -111,6 +109,5 @@ package_lib32-libappindicator-sharp() {
 	make -C bindings/mono DESTDIR="${pkgdir}" install
 	cp -dr --no-preserve=ownership "${pkgdir}/usr/lib/mono/appindicator-sharp" "${pkgdir}/usr/lib32/mono/"
 	cp -dr --no-preserve=ownership "${pkgdir}/usr/lib/mono/gac" "${pkgdir}/usr/lib32/mono/"
-	rm -rf "${pkgdir}/usr/share"
-	rm -rf "${pkgdir}/usr/include"
+	rm -rf "${pkgdir}"/usr/{include,share,lib}
 }
