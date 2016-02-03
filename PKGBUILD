@@ -1,19 +1,20 @@
-# Maintainer: ant32 <antreimer@gmail.com>
+# Maintainer: Martchus <martchus@gmx.net>
+# Contributor: ant32 <antreimer@gmail.com>
 
 _qt_module=qtsvg
 pkgname="mingw-w64-qt5-svg"
-pkgver=5.5.0
+pkgver=5.5.1
 pkgrel=1
 arch=('any')
-pkgdesc="Qt5 for Windows -- QtSvg module (mingw-w64)"
+pkgdesc="Classes for displaying the contents of SVG files (mingw-w64)"
 depends=('mingw-w64-qt5-base')
 makedepends=('mingw-w64-gcc')
 options=('!strip' '!buildflags' 'staticlibs')
 license=('GPL3' 'LGPL')
-url="http://qt-project.org/"
+url="https://www.qt.io/"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
-source=("http://download.qt-project.org/official_releases/qt/5.5/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-md5sums=('08234e3c3696f1a75df30201ca16d4bc')
+source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
+md5sums=('505fb8ba483818e53f759edbf735456e')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
