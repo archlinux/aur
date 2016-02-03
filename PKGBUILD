@@ -3,7 +3,7 @@
 _pkgname=sratom
 pkgname="${_pkgname}-git"
 pkgver=0.4.7.r110.ea2e469
-pkgrel=1
+pkgrel=2
 pkgdesc="An LV2 Atom RDF serialisation library"
 arch=('i686' 'x86_64')
 url="http://drobilla.net/software/$_pkgname/"
@@ -12,7 +12,7 @@ depends=('lv2' 'sord')
 makedepends=('git' 'python')
 conflicts=("${_pkgname}" "${_pkgname}-svn")
 provides=("${_pkgname}")
-install=("${_pkgname}.install")
+install="${_pkgname}.install"
 source=("${_pkgname}::git+http://git.drobilla.net/sratom.git")
 md5sums=('SKIP')
 
