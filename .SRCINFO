@@ -1,7 +1,7 @@
 pkgbase = bin32-jre7
 	pkgdesc = Oracle Java 7 Runtime Environment (32-bit) (public release - end of support)
 	pkgver = 7u79
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html
 	install = bin32-jre7.install
 	arch = x86_64
