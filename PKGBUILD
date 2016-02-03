@@ -86,8 +86,15 @@ fi
 }
 
 pkgver() {
-  cd "$srcdir"/$_gitname/
+  cd $srcdir
+  if [ ! -d $_gitname  ] ; then
+   git clone $_gitroot
+   cd "$srcdir"/$_gitname/
    printf "$date"."r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  else
+   cd "$srcdir"/$_gitname/
+   printf "$date"."r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  fi
 }
 
 
