@@ -2,8 +2,8 @@
 # Maintainer:  Alad Wenter <https://wiki.archlinux.org/index.php/Special:EmailUser/Alad>
 
 pkgname=cottage-git
-pkgver=94f2379
-pkgrel=5
+pkgver=79f4476
+pkgrel=1
 
 pkgdesc="Use howm commands, operators and set configuration values through a UNIX socket."
 url="https://github.com/HarveyHunt/cottage"
@@ -26,7 +26,7 @@ build() {
 
 package() {
   cd "$pkgname"
-  install -Dm755 "bin/debug/cottage" "$pkgdir/usr/bin/cottage"
+  install -Dm755 cottage "$pkgdir/usr/bin/cottage"
 }
 
 # vim:set ts=2 sw=2 et:
