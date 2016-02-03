@@ -1,8 +1,8 @@
 # Maintainer: Dmitry Chusovitin <dchusovitin@gmail.com>
 
 pkgname=docker-machine
-pkgver=0.6.0rc2
-_pkgver=0.6.0-rc2
+pkgver=0.6.0rc3
+_pkgver=0.6.0-rc3
 pkgrel=1
 epoch=2
 pkgdesc='Machine management for a container-centric world'
@@ -16,7 +16,7 @@ conflicts=('docker-machine-bin')
 makedepends=('go' 'git')
 
 source=("https://github.com/docker/machine/archive/v${_pkgver}.tar.gz")
-sha256sums=('f59e679225f454ed696eb0fb926c1988ae59ede3eef5d344e8537b4f195539e2')
+sha256sums=('eac622065fbad7e689cf9524c12d4ea42a3e0687ae1f228f7d88f1489ff581ff')
 
 prepare() {
     export GOPATH="${srcdir}"
