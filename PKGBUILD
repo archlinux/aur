@@ -11,10 +11,10 @@
 
 pkgname=mpv-git
 _gitname=mpv
-pkgver=42598.gbd5a02d
+pkgver=42762.g5d94977
 pkgrel=1
 pkgdesc='Video player based on MPlayer/mplayer2 (git version)'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('GPL3')
 url='http://mpv.io'
 _undetected_depends=('desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils')
