@@ -1,7 +1,7 @@
 # Maintainer: not_anonymous <nmlibertarian@gmail.com>
 
 pkgname=xsatcom
-pkgver=2.9
+pkgver=3.0
 pkgrel=1
 pkgdesc="Ham Radio - satellite tracking."
 arch=('i686' 'x86_64')
@@ -53,12 +53,12 @@ package() {
 	mv $pkgdir/usr/bin/$pkgname $pkgdir/usr/bin/$pkgname.1
 	install -D -m 755 ../$pkgname.1 $pkgdir/usr/bin/$pkgname
 }
-md5sums=('c4b41986591d00230c37281b9600a26a'
+md5sums=('027b9da4dbeff7871bda3baf617a6297'
          '9d53a30a57e2308b35f52a815768910c'
          'da46deb421a73376507b575629df5a48'
          'edcd3f301ec8ea95453d40534beb6ede'
          '49b427b41f3e7354c2502883d7f6801b')
-sha256sums=('806882e8650f0dc6464864e4720aade7138146c8e2d42fba20dbbc6dec51c952'
+sha256sums=('3801375df515e0025de5508d8a1abcb96f225706c663e31eb8aeec80b8468d55'
             '9ed0f048bd2642c77a2c777e576f39fe5580d4b2435441961d55049f520fd114'
             'cbbc674993a789a42f7117358fa7b2b959c85376656722db942c40a2ad2eece8'
             '857eb46c32c12333a7110fb3ea99d2246084724856638f2e04324fc2a576626d'
