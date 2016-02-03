@@ -1,18 +1,20 @@
-# Maintainer: ant32 <antreimer@gmail.com>
+# Maintainer: Martchus <martchus@gmx.net>
+# Contributor: ant32 <antreimer@gmail.com>
+
 _qt_module=qtactiveqt
 pkgname=mingw-w64-qt5-activeqt
-pkgver=5.5.0
+pkgver=5.5.1
 pkgrel=1
 arch=(any)
-pkgdesc="Qt's ActiveX Framework (mingw-w64)"
+pkgdesc="ActiveX integration framework (mingw-w64)"
 depends=(mingw-w64-qt5-base)
 makedepends=(mingw-w64-{gcc,headers-git,crt-git,winpthreads-git} python)
 options=(!strip !buildflags staticlibs)
 groups=(mingw-w64-qt mingw-w64-qt5)
 license=("custom, FDL, GPL3, LGPL")
-url="http://qt-project.org"
+url="https://www.qt.io/"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
-source=("http://download.qt-project.org/official_releases/qt/5.5/${pkgver}/submodules/${_pkgfqn}.tar.xz"
+source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         "qt5-activeqt-fix-compilation.patch"
         "qtactiveqt-fix-build.patch"
         "qtactiveqt-win64.patch")
