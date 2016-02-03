@@ -1,33 +1,42 @@
 diff -aur pamac.orig/resources/manager_window.ui pamac.patch/resources/manager_window.ui
---- pamac.orig/resources/manager_window.ui	2015-10-20 10:53:27.000000000 +0200
-+++ pamac.patch/resources/manager_window.ui	2015-10-21 13:31:53.259843158 +0200
-@@ -43,7 +43,6 @@
+--- pamac.orig/resources/manager_window.ui	2016-02-02 09:28:07.000000000 +0100
++++ pamac.patch/resources/manager_window.ui	2016-02-03 11:03:49.629616970 +0100
+@@ -43,121 +43,85 @@
    <template class="PamacManagerWindow" parent="GtkApplicationWindow">
      <property name="visible">True</property>
      <property name="can_focus">False</property>
 -    <property name="title" translatable="yes">Package Manager</property>
      <property name="window_position">center</property>
-     <property name="default_height">600</property>
+-    <property name="default_height">600</property>
++    <property name="default_width">1200</property>
++    <property name="default_height">800</property>
      <property name="icon_name">system-software-install</property>
-@@ -54,118 +53,6 @@
+     <child>
+       <object class="GtkBox" id="box0">
+         <property name="visible">True</property>
+         <property name="can_focus">False</property>
          <property name="orientation">vertical</property>
-         <property name="spacing">6</property>
+-        <property name="spacing">6</property>
          <child>
 -          <object class="GtkBox" id="box1">
--            <property name="visible">True</property>
--            <property name="can_focus">False</property>
++          <object class="GtkToolbar" id="toolbar1">
+             <property name="visible">True</property>
+             <property name="can_focus">False</property>
 -            <property name="spacing">6</property>
--            <child>
+             <child>
 -              <object class="GtkButton" id="refresh_button">
--                <property name="visible">True</property>
++              <object class="GtkToolItem" id="search_toolitem">
+                 <property name="visible">True</property>
 -                <property name="can_focus">True</property>
 -                <property name="receives_default">False</property>
 -                <property name="tooltip_text" translatable="yes">Refresh databases</property>
 -                <signal name="clicked" handler="on_refresh_button_clicked" swapped="no"/>
--                <child>
++                <property name="can_focus">False</property>
+                 <child>
 -                  <object class="GtkImage" id="refresh_icon">
--                    <property name="visible">True</property>
--                    <property name="can_focus">False</property>
++                  <object class="GtkBox" id="box1">
+                     <property name="visible">True</property>
+                     <property name="can_focus">False</property>
 -                    <property name="icon_name">view-refresh-symbolic</property>
 -                    <property name="icon_size">1</property>
 -                  </object>
@@ -104,41 +113,83 @@ diff -aur pamac.orig/resources/manager_window.ui pamac.patch/resources/manager_w
 -                    <property name="can_focus">False</property>
 -                    <property name="icon_name">emblem-system-symbolic</property>
 -                    <property name="icon_size">1</property>
--                  </object>
--                </child>
++                    <child>
++                      <object class="GtkBox" id="box2">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="orientation">vertical</property>
++                        <child>
++                          <placeholder/>
++                        </child>
++                      </object>
++                      <packing>
++                        <property name="expand">True</property>
++                        <property name="fill">True</property>
++                        <property name="position">0</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkSearchEntry" id="search_entry">
++                        <property name="width_request">500</property>
++                        <property name="visible">True</property>
++                        <property name="can_focus">True</property>
++                        <property name="receives_default">True</property>
++                        <property name="caps_lock_warning">False</property>
++                        <property name="primary_icon_name">edit-find-symbolic</property>
++                        <signal name="activate" handler="on_search_entry_activate" swapped="no"/>
++                        <signal name="icon-press" handler="on_search_entry_icon_press" swapped="no"/>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">1</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkBox" id="box5">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="orientation">vertical</property>
++                        <child>
++                          <placeholder/>
++                        </child>
++                      </object>
++                      <packing>
++                        <property name="expand">True</property>
++                        <property name="fill">True</property>
++                        <property name="position">2</property>
++                      </packing>
++                    </child>
+                   </object>
+                 </child>
 -                <style>
 -                  <class name="image-button"/>
 -                </style>
--              </object>
--              <packing>
+               </object>
+               <packing>
 -                <property name="expand">False</property>
 -                <property name="fill">True</property>
 -                <property name="pack_type">end</property>
 -                <property name="position">3</property>
--              </packing>
--            </child>
--          </object>
--          <packing>
--            <property name="expand">False</property>
--            <property name="fill">True</property>
--            <property name="position">0</property>
--          </packing>
--        </child>
--        <child>
++                <property name="expand">True</property>
++                <property name="homogeneous">False</property>
+               </packing>
+             </child>
++            <style>
++              <class name="search-bar"/>
++            </style>
+           </object>
+           <packing>
+             <property name="expand">False</property>
+@@ -169,6 +133,7 @@
            <object class="GtkPaned" id="paned1">
              <property name="visible">True</property>
              <property name="can_focus">True</property>
-@@ -173,31 +60,16 @@
++            <property name="border_width">12</property>
+             <child>
                <object class="GtkNotebook" id="filters_notebook">
                  <property name="visible">True</property>
-                 <property name="can_focus">True</property>
-+                <property name="border_width">5</property>
-                 <signal name="switch-page" handler="on_filters_notebook_switch_page" after="yes" swapped="no"/>
-                 <child>
-                   <object class="GtkBox" id="box3">
-                     <property name="visible">True</property>
-                     <property name="can_focus">False</property>
-+                    <property name="border_width">6</property>
+@@ -181,64 +146,6 @@
                      <property name="orientation">vertical</property>
                      <property name="spacing">6</property>
                      <child>
@@ -159,142 +210,126 @@ diff -aur pamac.orig/resources/manager_window.ui pamac.patch/resources/manager_w
 -                      </packing>
 -                    </child>
 -                    <child>
-                       <object class="GtkBox" id="search_aur_box">
-                         <property name="visible">True</property>
-                         <property name="can_focus">False</property>
-@@ -207,8 +79,8 @@
-                           <object class="GtkLabel" id="search_aur_label">
-                             <property name="visible">True</property>
-                             <property name="can_focus">False</property>
+-                      <object class="GtkBox" id="search_aur_box">
+-                        <property name="visible">True</property>
+-                        <property name="can_focus">False</property>
+-                        <property name="spacing">12</property>
+-                        <property name="homogeneous">True</property>
+-                        <child>
+-                          <object class="GtkLabel" id="search_aur_label">
+-                            <property name="visible">True</property>
+-                            <property name="can_focus">False</property>
+-                            <property name="margin_start">6</property>
 -                            <property name="hexpand">True</property>
-                             <property name="margin_start">6</property>
-+                            <property name="hexpand">True</property>
-                             <property name="label" translatable="yes">Search in AUR</property>
-                             <property name="xalign">0</property>
-                           </object>
-@@ -444,6 +316,7 @@
-                     <property name="can_focus">True</property>
-                     <property name="hexpand">True</property>
-                     <property name="vexpand">True</property>
-+                    <property name="border_width">5</property>
-                     <property name="shadow_type">in</property>
-                     <child>
-                       <object class="GtkTreeView" id="packages_treeview">
-@@ -556,6 +429,7 @@
-                     <property name="height_request">150</property>
-                     <property name="visible">True</property>
-                     <property name="can_focus">True</property>
-+                    <property name="border_width">5</property>
-                     <signal name="switch-page" handler="on_properties_notebook_switch_page" after="yes" swapped="no"/>
-                     <child>
-                       <object class="GtkScrolledWindow" id="infos_scrolledwindow">
-@@ -834,6 +708,133 @@
-             <property name="position">1</property>
+-                            <property name="label" translatable="yes">Search in AUR</property>
+-                            <property name="xalign">0</property>
+-                          </object>
+-                          <packing>
+-                            <property name="expand">False</property>
+-                            <property name="fill">True</property>
+-                            <property name="position">0</property>
+-                          </packing>
+-                        </child>
+-                        <child>
+-                          <object class="GtkSwitch" id="search_aur_button">
+-                            <property name="visible">True</property>
+-                            <property name="can_focus">False</property>
+-                            <property name="tooltip_text" translatable="yes">Search in AUR</property>
+-                            <property name="halign">end</property>
+-                          </object>
+-                          <packing>
+-                            <property name="expand">False</property>
+-                            <property name="fill">True</property>
+-                            <property name="position">1</property>
+-                          </packing>
+-                        </child>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">1</property>
+-                      </packing>
+-                    </child>
+-                    <child>
+                       <object class="GtkScrolledWindow" id="scrolledwindow3">
+                         <property name="visible">True</property>
+                         <property name="can_focus">True</property>
+@@ -967,6 +874,145 @@
            </packing>
          </child>
-+      </object>
+       </object>
 +    </child>
 +    <child type="titlebar">
 +      <object class="GtkHeaderBar" id="headerbar1">
 +        <property name="visible">True</property>
 +        <property name="can_focus">False</property>
++        <property name="title">Package Manager</property>
 +        <property name="show_close_button">True</property>
 +        <child>
-+          <object class="GtkBox" id="box1">
-+            <property name="visible">True</property>
-+            <property name="can_focus">False</property>
-+            <property name="spacing">6</property>
-+            <child>
-+              <object class="GtkButton" id="refresh_button">
-+                <property name="visible">True</property>
-+                <property name="can_focus">True</property>
-+                <property name="receives_default">False</property>
-+                <property name="tooltip_text" translatable="yes">Refresh databases</property>
-+                <signal name="clicked" handler="on_refresh_button_clicked" swapped="no"/>
-+                <child>
-+                  <object class="GtkImage" id="refresh_icon">
-+                    <property name="visible">True</property>
-+                    <property name="can_focus">False</property>
-+                    <property name="icon_name">view-refresh-symbolic</property>
-+                    <property name="icon_size">1</property>
-+                  </object>
-+                </child>
-+                <style>
-+                  <class name="image-button"/>
-+                </style>
-+              </object>
-+              <packing>
-+                <property name="expand">False</property>
-+                <property name="fill">True</property>
-+                <property name="position">0</property>
-+              </packing>
-+            </child>
-+            <child>
-+              <object class="GtkButton" id="valid_button">
-+                <property name="visible">True</property>
-+                <property name="can_focus">True</property>
-+                <property name="receives_default">False</property>
-+                <property name="tooltip_text" translatable="yes">Apply changes</property>
-+                <signal name="clicked" handler="on_valid_button_clicked" swapped="no"/>
-+                <child>
-+                  <object class="GtkImage" id="valid_icon">
-+                    <property name="visible">True</property>
-+                    <property name="can_focus">False</property>
-+                    <property name="icon_name">emblem-ok-symbolic</property>
-+                    <property name="icon_size">1</property>
-+                  </object>
-+                </child>
-+                <style>
-+                  <class name="image-button"/>
-+                </style>
-+              </object>
-+              <packing>
-+                <property name="expand">False</property>
-+                <property name="fill">True</property>
-+                <property name="position">1</property>
-+              </packing>
-+            </child>
-+            <child>
-+              <object class="GtkButton" id="cancel_button">
-+                <property name="visible">True</property>
-+                <property name="can_focus">True</property>
-+                <property name="receives_default">False</property>
-+                <property name="tooltip_text" translatable="yes">Cancel all planned changes</property>
-+                <signal name="clicked" handler="on_cancel_button_clicked" swapped="no"/>
-+                <child>
-+                  <object class="GtkImage" id="cancel_icon">
-+                    <property name="visible">True</property>
-+                    <property name="can_focus">False</property>
-+                    <property name="icon_name">edit-delete-symbolic</property>
-+                    <property name="icon_size">1</property>
-+                  </object>
-+                </child>
-+                <style>
-+                  <class name="image-button"/>
-+                </style>
-+              </object>
-+              <packing>
-+                <property name="expand">False</property>
-+                <property name="fill">True</property>
-+                <property name="position">2</property>
-+              </packing>
-+            </child>
-+            <child>
-+              <placeholder/>
-+            </child>
-+          </object>
-+        </child>
-+        <child type="title">
-+          <object class="GtkSearchEntry" id="search_entry">
-+            <property name="width_request">300</property>
++          <object class="GtkButton" id="refresh_button">
 +            <property name="visible">True</property>
 +            <property name="can_focus">True</property>
-+            <property name="receives_default">True</property>
-+            <property name="caps_lock_warning">False</property>
-+            <property name="primary_icon_name">edit-find-symbolic</property>
-+            <signal name="activate" handler="on_search_entry_activate" swapped="no"/>
-+            <signal name="icon-press" handler="on_search_entry_icon_press" swapped="no"/>
++            <property name="receives_default">False</property>
++            <property name="tooltip_text" translatable="yes">Refresh databases</property>
++            <signal name="clicked" handler="on_refresh_button_clicked" swapped="no"/>
++            <child>
++              <object class="GtkImage" id="refresh_icon">
++                <property name="visible">True</property>
++                <property name="can_focus">False</property>
++                <property name="icon_name">view-refresh-symbolic</property>
++                <property name="icon_size">1</property>
++              </object>
++            </child>
++            <style>
++              <class name="image-button"/>
++            </style>
 +          </object>
++        </child>
++        <child>
++          <object class="GtkButton" id="valid_button">
++            <property name="visible">True</property>
++            <property name="can_focus">True</property>
++            <property name="receives_default">False</property>
++            <property name="tooltip_text" translatable="yes">Apply changes</property>
++            <signal name="clicked" handler="on_valid_button_clicked" swapped="no"/>
++            <child>
++              <object class="GtkImage" id="valid_icon">
++                <property name="visible">True</property>
++                <property name="can_focus">False</property>
++                <property name="icon_name">emblem-ok-symbolic</property>
++                <property name="icon_size">1</property>
++              </object>
++            </child>
++            <style>
++              <class name="image-button"/>
++            </style>
++          </object>
++          <packing>
++            <property name="position">1</property>
++          </packing>
++        </child>
++        <child>
++          <object class="GtkButton" id="cancel_button">
++            <property name="visible">True</property>
++            <property name="can_focus">True</property>
++            <property name="receives_default">False</property>
++            <property name="tooltip_text" translatable="yes">Cancel all planned changes</property>
++            <signal name="clicked" handler="on_cancel_button_clicked" swapped="no"/>
++            <child>
++              <object class="GtkImage" id="cancel_icon">
++                <property name="visible">True</property>
++                <property name="can_focus">False</property>
++                <property name="icon_name">edit-delete-symbolic</property>
++                <property name="icon_size">1</property>
++              </object>
++            </child>
++            <style>
++              <class name="image-button"/>
++            </style>
++          </object>
++          <packing>
++            <property name="position">2</property>
++          </packing>
 +        </child>
 +        <child>
 +          <object class="GtkMenuButton" id="menu_button">
@@ -316,10 +351,53 @@ diff -aur pamac.orig/resources/manager_window.ui pamac.patch/resources/manager_w
 +          </object>
 +          <packing>
 +            <property name="pack_type">end</property>
-+            <property name="position">1</property>
++            <property name="position">3</property>
 +          </packing>
 +        </child>
-       </object>
++        <child>
++          <object class="GtkBox" id="search_aur_box">
++            <property name="visible">True</property>
++            <property name="can_focus">False</property>
++            <property name="halign">center</property>
++            <property name="valign">center</property>
++            <property name="spacing">2</property>
++            <property name="homogeneous">True</property>
++            <child>
++              <object class="GtkLabel" id="search_aur_label">
++                <property name="visible">True</property>
++                <property name="can_focus">False</property>
++                <property name="margin_start">6</property>
++                <property name="hexpand">True</property>
++                <property name="label" translatable="yes">Search in AUR</property>
++                <property name="xalign">0</property>
++              </object>
++              <packing>
++                <property name="expand">False</property>
++                <property name="fill">True</property>
++                <property name="position">0</property>
++              </packing>
++            </child>
++            <child>
++              <object class="GtkSwitch" id="search_aur_button">
++                <property name="visible">True</property>
++                <property name="can_focus">False</property>
++                <property name="tooltip_text" translatable="yes">Search in AUR</property>
++                <property name="halign">end</property>
++              </object>
++              <packing>
++                <property name="expand">False</property>
++                <property name="fill">True</property>
++                <property name="position">1</property>
++              </packing>
++            </child>
++          </object>
++          <packing>
++            <property name="pack_type">end</property>
++            <property name="position">4</property>
++          </packing>
++        </child>
++      </object>
      </child>
    </template>
+ </interface>
 Only in pamac.patch/resources: manager_window.ui~
