@@ -4,6 +4,8 @@ post_install() {
     ==> first install/update run...
 EOF
   /usr/bin/gravity.sh > /dev/null
+  systemctl daemon-reload > /dev/null
+  systemctl start pi-hole-gravity.timer > /dev/null
 }
 
 post_upgrade() {
