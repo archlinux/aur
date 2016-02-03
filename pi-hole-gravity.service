@@ -1,0 +1,9 @@
+[Unit]
+Description=Ad-serving domains collector
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/gravity.sh
+Nice=19
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7

@@ -1,3 +1,0 @@
-#!/bin/bash
-truncate -s 0 /run/log/pihole.log > /dev/null
-

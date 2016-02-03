@@ -1,0 +1,9 @@
+[Unit]
+Description=Reset dnsmasq/pi-hole query log
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/truncate -s 0 /run/log/pihole.log
+Nice=19
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
