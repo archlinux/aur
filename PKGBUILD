@@ -12,7 +12,7 @@ depends=('qt4>=4.8' 'nasm' 'gdb' 'gcc')
 depends_x86_64+=('gcc-multilib')
 
 source=("https://github.com/Dman95/SASM/archive/v${pkgver}.tar.gz")
-md5sums=("dcc4d5c1a3e5ef576f51b367925bad34")
+sha256sums=('ae873eacfc4f74195fa7eb6ff3972aa4b14fca1de7c1dd5de11f7c8e7f9aacfb')
 
 build() {
 cd "${srcdir}/SASM-${pkgver}"
