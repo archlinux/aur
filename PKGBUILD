@@ -2,7 +2,7 @@
 pkgbase=libvariant
 pkgname=libvariant
 pkgver=1.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A C++ dynamically typed composable object library with de/serializers"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/gallen/libvariant"
@@ -20,8 +20,13 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver}/build"
-  cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-      -DCMAKE_BUILD_TYPE=Release -DLIBVARIANT_BUILD_EXAMPLES=off ..
+  cmake -DCMAKE_C_FLAGS:STRING="${CFLAGS} ${CPPFLAGS}" \
+    -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS} ${CPPFLAGS}" \
+    -DCMAKE_EXE_LINKER_FLAGS:STRING="${LDFLAGS}" \
+    -DCMAKE_SHARED_LINKER_FLAGS:STRING="${LDFLAGS}" \
+    -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+    -DBUILD_SHARED_LIBS:BOOL=ON \
+    -DLIBVARIANT_BUILD_EXAMPLES=off ..
   make
 }
 
