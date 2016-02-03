@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-lts
 _pkgbasever=4.1-gnu
-_pkgver=4.1.16-gnu
+_pkgver=4.1.17-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -59,7 +59,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0008-USB-armory-support.patch')
 sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
-            '665a1f8aafc0ddf91a3683acdb7b49a87d2b879dd17766d4fd15d4472255e90c'
+            'e98e671651b038bf49079ba3bd34761a0da2c397a314b606e5150eb81719bd8d'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -74,7 +74,7 @@ sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '38cf6bdf70dc070ff0b785937d99347bb91f8531ea2bcca50283c8923a184c6d'
             '3d3266bd082321dccf429cc2200d1a4d870d2031546f9f591b6dfbb698294808'
-            '17452440f32dc53e673c65a5dfc0c7ac116cd15c93aabfb4b6f99fe528616f43'
+            '0e232ac3fb70c0ceb9f9f1ede9cdc0f786eb8ba732f9404c903dd81db89fb27e'
             'SKIP'
             '203b07cc241f2374d1e18583fc9940cc69da134f992bff65a8b376c717aa7ea7'
             '28fb8c937c2a0dc824ea755efba26ac5a4555f9a97d79f4e31f24b23c5eae59c'
@@ -277,12 +277,14 @@ _package-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}"
   cp -a arch/${KARCH}/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
   if [ "${CARCH}" = "armv7h" ]; then
-    mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-omap2"
-    cp -a arch/${KARCH}/mach-omap2/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-omap2/"
-    mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-mvebu"
-    cp -a arch/${KARCH}/mach-mvebu/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-mvebu/"
-    mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/plat-omap"
-    cp -a arch/${KARCH}/plat-omap/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/plat-omap/"
+    for i in dove exynos mvebu omap2 versatile; do
+      mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-${i}"
+      cp -a arch/${KARCH}/mach-${i}/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-${i}/"
+    done
+    for i in omap orion samsung versatile; do
+      mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/plat-${i}"
+      cp -a arch/${KARCH}/plat-${i}/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/plat-${i}/"
+    done
   fi
 
   # copy files necessary for later builds
