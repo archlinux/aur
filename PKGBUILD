@@ -1,14 +1,14 @@
 # Maintainer: Sergey Vlasov <sergey@vlasov.me>
 pkgname=nulloy
-pkgver=0.8.1
-pkgrel=3
+pkgver=0.8.2
+pkgrel=1
 pkgdesc="Music Player with a Waveform Progress Bar"
 arch=('i686' 'x86_64')
 url="http://nulloy.com/"
 license=('GPLv3')
 depends=('qt4' 'gst-plugins-base' 'taglib')
 source=("https://github.com/$pkgname/$pkgname/releases/download/$pkgver/${pkgname}-${pkgver}.tar.gz")
-md5sums=('7a3c1ec1473b52c311edd57aa0ab0c36')
+md5sums=('a3a5c2b02c991899868ade1433c62011')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
