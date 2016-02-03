@@ -1,10 +1,10 @@
 # Maintainer: Devin Christensen <quixoten at gmail dot com>
 pkgname=ttf-dejavu-sans-mono-powerline-git
 pkgver=r100.a44abd0
-pkgrel=1
+pkgrel=2
 pkgdesc="DejaVu Sans Mono for Powerline"
 arch=('any')
-url=('https://github.com/powerline/fonts')
+url='https://github.com/powerline/fonts'
 license=('custom:DejaVu Fonts License, Version 1.0')
 depends=(fontconfig xorg-font-utils )
 makedepends=('git')
