@@ -5,13 +5,12 @@ author=madhead
 repo=github.com
 pkgver=r31.71fc2f8
 pkgrel=1
-epoch=1
 url="https://github.com/${author}/${app}"
 license=('APACHE')
 arch=('x86_64')
 makedepends=('git' 'go')
 provides=(${app})
-source=("${app}::git+git://${repo}/${author}/${app}")
+source=("${app}::git://${repo}/${author}/${app}")
 md5sums=('SKIP')
 install=$pkgname.install
 
