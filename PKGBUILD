@@ -11,11 +11,11 @@ makedepends=('git' 'cmake')
 options=('!buildflags')
 install=openrct2.install
 source=('https://github.com/OpenRCT2/OpenRCT2/archive/v0.0.3.1.tar.gz'
-        'https://openrct.net/launcher/libs/orctlibs.zip'
+        'https://github.com/OpenRCT2/openrct2.github.io/raw/797f5d6b1dbe1cad6a806350866318b7154fdc61/files/orctlibs.zip'
         'openrct2'
         'openrct2.desktop')
 sha256sums=('036f40d98fd444b08ed0d04f61e7f9f2a4175c5938830a78abb1582b2081f9ab'
-            '0a7b5ea46e9cb4b19000b69690eae0b75929752f7db192c78bd7ffb61d696835'
+            '31c5e19d9f794bd5f0e75f20c2b4c3c4664d736b0a4d50c8cde14a9a9007b62d'
             '2cead106464f257d64c74333280ee6bf4056167cc69840371e81a77e64858989'
             'b916d4a9f56af82693ba21f43e09ababe9f132fd7c3b78efa1b4387ee1bc3a4d')
 
