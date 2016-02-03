@@ -10,39 +10,36 @@
 # needs too.
 
 pkgname=ffmpeg-full
-pkgver=2.8.5
+pkgver=2.8.6
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (with all options)'
 arch=('i686' 'x86_64')
 url='http://ffmpeg.org/'
 license=('GPL3' 'custom:UNREDISTRIBUTABLE')
-depends=(
-      'alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'gnutls' 'gsm' 'lame' 'libass'
-      'libbluray' 'libmodplug' 'libpulse' 'libsoxr' 'libssh' 'libtheora'
-      'libva' 'libvdpau' 'libwebp' 'opencore-amr' 'openjpeg' 'opus'
-      'schroedinger' 'sdl' 'speex' 'v4l-utils' 'xvidcore' 'zlib'
-      'libdcadec.so' 'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so'
-      'libvpx.so' 'libx264.so' 'libx265.so'
-      'celt' 'faac' 'frei0r-plugins' 'jack' 'ladspa' 'libaacplus'
-      'libavc1394' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libcl' 'libdc1394'
-      'libfdk-aac' 'libgme' 'libiec61883' 'libutvideo-git'
-      'libxv' 'mesa' 'openal' 'opencl-headers' 'openh264'
-      'rtmpdump' 'shine' 'snappy' 'twolame' 'vid.stab'
-      'vo-aacenc' 'vo-amrwbenc' 'wavpack' 'xavs' 'zeromq' 'zvbi'
-      )
+depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'gnutls' 'gsm' 'lame'
+         'libass' 'libbluray' 'libmodplug' 'libpulse' 'libsoxr' 'libssh'
+         'libtheora' 'libva' 'libvdpau' 'libwebp' 'opencore-amr' 'openjpeg'
+         'opus' 'schroedinger' 'sdl' 'speex' 'v4l-utils' 'xvidcore' 'zlib'
+         'libdcadec.so' 'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so'
+         'libvpx.so' 'libx264.so' 'libx265.so'
+         'celt' 'faac' 'frei0r-plugins' 'jack' 'ladspa' 'libaacplus'
+         'libavc1394' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libcl' 'libdc1394'
+         'libfdk-aac' 'libgme' 'libiec61883' 'libmfx-git' 'libutvideo-git'
+         'libxv' 'mesa' 'openal' 'opencl-headers' 'openh264'
+         'rtmpdump' 'shine' 'snappy' 'twolame' 'vid.stab'
+         'vo-aacenc' 'vo-amrwbenc' 'wavpack' 'xavs' 'zeromq' 'zvbi')
 makedepends=('hardening-wrapper' 'libvdpau' 'yasm')
+optdepends=('intel-media-sdk: for Intel QSV encoding/decoding')
 conflicts=('ffmpeg' 'ffmpeg-git' 'ffmpeg-full-git')
-provides=(
-      'libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
-      'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
-      'libswscale.so'
-      'ffmpeg'
-      )
+provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
+          'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
+          'libswscale.so'
+          'ffmpeg')
 source=(http://ffmpeg.org/releases/ffmpeg-$pkgver.tar.bz2{,.asc}
         UNREDISTRIBUTABLE.txt)
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # ffmpeg-devel
-sha256sums=('3b6d9951533323ee64a21d0aa7667a780b3470bfe4e0fb7c1b33307ce290615a'
+sha256sums=('40611e329bc354592c6f8f1deb033c31b91f80e91f5707ca4f9afceca78d8e62'
             'SKIP'
             'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4')
 
@@ -82,6 +79,7 @@ build() {
     --enable-libgme \
     --enable-libgsm \
     --enable-libiec61883 \
+    --enable-libmfx \
     --enable-libmodplug \
     --enable-libmp3lame \
     --enable-libopencore-amrnb \
