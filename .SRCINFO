@@ -8,10 +8,10 @@ pkgbase = nvidiux
 	arch = any
 	license = GPL3
 	depends = gksu
-	depends = python-psutil
+	depends = python2-psutil
 	depends = tk
 	depends = libva-vdpau-driver
-	depends = python-pyqt4
+	depends = python2-pyqt4
 	source = https://github.com/RunGp/Nvidiux/archive/1.2.1.tar.gz
 	md5sums = 0230915eef276ca9e623a3d0ff648513
 

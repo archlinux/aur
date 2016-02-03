@@ -7,10 +7,10 @@ arch=(any)
 url="https://github.com/RunGp/Nvidiux"
 license=('GPL3')
 depends=('gksu'
-		 'python-psutil'
+		 'python2-psutil'
 		 'tk'
 		 'libva-vdpau-driver'
-		 'python-pyqt4')
+		 'python2-pyqt4')
 package()
 {
 	cd "$srcdir/Nvidiux-1.2.1"
