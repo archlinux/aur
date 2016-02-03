@@ -7,7 +7,7 @@ _major=6
 _minor=45
 _build=b06
 pkgver=${_major}u${_minor}
-pkgrel=3
+pkgrel=4
 pkgdesc="Oracle Java $_major Runtime Environment (public release - end of support)"
 arch=('i686' 'x86_64')
 url="https://www.java.com/en/download/faq/java_$_major.xml"
@@ -94,8 +94,11 @@ package() {
         rename -- "." "-$_jname." $i
     done
 
-    # Fix .desktop paths
-    sed -e "s|Exec=|&$_jvmdir/bin/|" \
+    # Fix .desktop's
+    sed -e '/JavaWS/!s|Name=Java|Name=Java '"$_major"'|' \
+        -e "s|Name=JavaWS|Name=JavaWS $_major|" \
+        -e "s|Comment=Java|Comment=Java $_major|" \
+        -e "s|Exec=|&$_jvmdir/bin/|" \
         -e "s|.png|-$_jname.png|" \
     -i lib/desktop/applications/*
 
