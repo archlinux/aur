@@ -7,7 +7,7 @@
 
 _pkgname=ffmpeg
 pkgname=ffmpeg-headless
-pkgver=2.8.5
+pkgver=2.8.6
 pkgrel=1
 epoch=1
 pkgdesc='The FFmpeg media toolkit optimised for server (headless) systems'
@@ -26,7 +26,7 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 conflicts=('ffmpeg')
 replaces=('ffmpeg')
 source=(http://ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.bz2)
-sha256sums=('3b6d9951533323ee64a21d0aa7667a780b3470bfe4e0fb7c1b33307ce290615a')
+sha256sums=('40611e329bc354592c6f8f1deb033c31b91f80e91f5707ca4f9afceca78d8e62')
 
 build() {
   cd ${_pkgname}-${pkgver}
