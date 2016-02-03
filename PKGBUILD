@@ -23,7 +23,7 @@
 _skip_web_engine=true
 
 # comment this turkey out in any circumstance when you need to regenate .SRCINFO
-#echo "Set your sysroot prior to build" && exit 1
+echo "Set your sysroot prior to build" && exit 1
 _sysroot=/mnt/pi
 
 _piver=2
