@@ -1,0 +1,9 @@
+post_upgrade() {
+  echo; echo "To use eduroam at FMFI UK, copy the template..."
+  echo; echo "   # cp /etc/netctl/examples/eduroam-fmfi /etc/netctl/eduroam"
+  echo; echo "...and edit it to match your credentials."; echo
+}
+
+post_install() {
+  post_upgrade()
+}

@@ -1,0 +1,16 @@
+# Configuration example for the Faculty of mathematics, physics and informatics,
+# Comenius University in Bratislava. 2016 by Miloš Polakovič <milos@mailbox.org>
+Connection='wireless'
+Interface=<NETWORK INTERFACE>  # example: wlp2s0
+Security='wpa-configsection'
+Description="FMFI UK eduroam network config"
+IP='dhcp'
+TimeoutWPA=30
+WPAConfigSection=(
+    'ssid="eduroam"'
+    'key_mgmt=WPA-EAP'
+    'eap=PEAP'
+    'phase2="auth=MSCHAPv2"'
+    'identity="<SURNAME><#>"'  # example: mrkva66
+    'password="<YOUR-SECRET>"'  # example: nj6ekw
+)
