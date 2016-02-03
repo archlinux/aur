@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   GOPATH="$srcdir" go get -fix -v -x ${_gourl}/gcp-cups-connector
-  GOPATH="$srcdir" go get -fix -v -x ${_gourl}/gcp-cups-connector-util
+  GOPATH="$srcdir" go get -fix -v -x ${_gourl}/gcp-connector-util
 }
 
 package() {
