@@ -3,11 +3,11 @@
 
 pkgname=arch-backup
 pkgver=0.8.9
-pkgrel=4
+pkgrel=5
 pkgdesc="trivial backup scripts (ssh/smb support)"
 arch=(any)
 url="http://code.google.com/p/archlinux-stuff/"
-license="GPL"
+license=("GPL")
 depends=()
 backup=(etc/arch-backup/arch-backup.conf)
 source=(http://archlinux-stuff.googlecode.com/files/arch-backup-$pkgver.tar.gz)
