@@ -1,0 +1,8 @@
+pkg/
+src/
+.AURINFO
+zita-dpl1/
+zita-dpl1-*.tar.xz
+zita-dpl1-*.src.tar.gz
+zita-dpl1-*.tar.gz
+zita-dpl1-*.tar.bz2
