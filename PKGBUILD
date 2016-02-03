@@ -8,6 +8,8 @@ arch=('any')
 url='http://eclipse.org/jubula/'
 license=('EPL')
 depends=('eclipse>=4.3.0', 'eclipse-mylyn')
+provides=('eclipse-jubula')
+conflicts=('eclipse-jubula')
 options=('!strip')
 source=(
 "https://hudson.eclipse.org/jubula/job/jubula-gerrit/lastSuccessfulBuild/artifact/org.eclipse.jubula.core/org.eclipse.jubula.repo/target/org.eclipse.jubula.repo-${pkgver}-SNAPSHOT.zip")
