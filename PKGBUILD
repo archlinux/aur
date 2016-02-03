@@ -3,7 +3,7 @@
 pkgname=docker-machine
 pkgver=0.6.0rc3
 _pkgver=0.6.0-rc3
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc='Machine management for a container-centric world'
 arch=('i686' 'x86_64')
@@ -14,6 +14,7 @@ depends=()
 provides=('docker-machine')
 conflicts=('docker-machine-bin')
 makedepends=('go' 'git')
+optdepends=('net-tools: required for VirtualBox driver')
 
 source=("https://github.com/docker/machine/archive/v${_pkgver}.tar.gz")
 sha256sums=('eac622065fbad7e689cf9524c12d4ea42a3e0687ae1f228f7d88f1489ff581ff')
