@@ -12,10 +12,10 @@ depends=('mingw-w64-qt5-declarative')
 makedepends=('mingw-w64-gcc')
 options=('!strip' '!buildflags' 'staticlibs')
 license=('LGPL')
-url="https://www.qt.io/"
+url="http://qt-project.org/wiki/QtSerialPort"
 _pkgfqn="${_qt_module}-opensource-src-$pkgver"
-source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-md5sums=('01ace647bda006b61200f61ebe6ef93b')
+source=("http://download.qt-project.org/official_releases/qt/5.5/${pkgver}/submodules/${_pkgfqn}.tar.xz")
+md5sums=('24b59d5928092f02e0cba969d9548350')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
