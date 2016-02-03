@@ -11,7 +11,7 @@ _pkgver=$_major
 pkgver=${_major}b${_build}
 #_pkgver=${_major}u${_minor}
 #pkgver=${_major}u${_minor}.b${_build}
-pkgrel=1
+pkgrel=2
 pkgdesc="Oracle Java $_major Development Kit Snapshot (32-bit)"
 arch=('x86_64')
 url=https://jdk$_major.java.net/
@@ -93,8 +93,13 @@ package() {
         rename -- "." "32-$_jname." $i
     done
 
-    # Fix .desktop paths
-    sed -e "s|Exec=|&$_jvmdir/bin/|" \
+    # Fix .desktop's
+    sed -e '/JavaWS/!s|Name=Java|Name=Java '"$_major"'|' \
+        -e "s|Name=JavaWS|Name=JavaWS $_major|" \
+        -e "s|Name=.*|& (32-bit)|" \
+        -e "s|Comment=Java|Comment=Java $_major|" \
+        -e "s|Comment=.*|& (32-bit)|" \
+        -e "s|Exec=|&$_jvmdir/bin/|" \
         -e "s|.png|32-$_jname.png|" \
     -i lib/desktop/applications/*
 
