@@ -3,7 +3,7 @@
 
 _pkgname=PuLP
 pkgname=python-${_pkgname,,}
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="A Linear Programming modeler written in Python"
 arch=("any")
@@ -12,7 +12,7 @@ url="https://github.com/coin-or/pulp"
 depends=("python-pyparsing")
 conflicts=("python2-pulp")
 source=("https://pypi.python.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('4b04f8fdde731b82b54470c0e501344c37e8d1b7dce87f05a95b28de08c59c457ceaca38da6f43cc0e03a2c51179a89bcc10ab522eed36f7655172b35de695b9')
+sha512sums=('78236923bec5d6fd61e2d5398d83c234a19620a15ab72e9a2c0ce1d814e630a6baab428aeba3ed48851d028f949dc69bb388f0cbaa1f35f57be1ada024eaa3e8')
 
 build() {
 	cd "$srcdir/$_pkgname-$pkgver"
