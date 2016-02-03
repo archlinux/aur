@@ -5,8 +5,8 @@
 
 _pkgname=qt5-base
 pkgname=$_pkgname-dev-git
-pkgver=5.5.1.r133.ga40ea09
-pkgrel=2
+pkgver=5.5.1.r134.gb5ea7a5
+pkgrel=1
 pkgdesc="A cross-platform application and UI framework"
 arch=("i686" "x86_64")
 url="https://qt-project.org/"
