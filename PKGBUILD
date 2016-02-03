@@ -2,31 +2,31 @@
 
 _pkgname=solr
 pkgname="$_pkgname-undertow"
-pkgver=1.5.0
+pkgver=1.6.0_BETA_1
 pkgrel=1
 pkgdesc='Solr / SolrCloud running in high performance server'
 arch=('i686' 'x86_64' 'any')
-url="https://github.com/bremeld/$pkgname"
+url="https://github.com/kohesive/$pkgname"
 license=('Apache')
 depends=('java-environment>=7')
 optdepends=('solr5-war: Solr 5.x WAR file'
             'solr4-war: Solr 4.x WAR file'
             'solr3-war: Solr 3.x WAR file')
 install="$pkgname.install"
-source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tgz"
+source=("$url/releases/download/v${pkgver//_/-}/$pkgname-${pkgver//_/-}.tgz"
         'default.conf'
         "$pkgname.service")
-md5sums=('19e2f582370c82353a04932a3458af76'
+md5sums=('6d48db8de5fa82a41122a59638dbb92e'
          '3f8f716ddf4daa9073f32fc3666d1004'
          '4f48f542c296933ee35cd739e2189448')
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-${pkgver//_/-}"
   sed --in-place "s#\$APP_HOME/lib#/usr/share/java/$pkgname#g" "bin/$pkgname"
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-${pkgver//_/-}"
 
   install -Dm755 bin/$pkgname "$pkgdir/usr/bin/$pkgname"
   for lib in $(basename --multiple lib/*); do
