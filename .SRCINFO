@@ -3,21 +3,15 @@
 pkgbase = python-toxcore
 	pkgdesc = Python binding for ToxCore
 	pkgver = 0.0.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/abbat/pytoxcore
 	arch = i686
 	arch = x86_64
 	license = GPL-3
 	makedepends = git
 	makedepends = python
-	makedepends = libvpx
-	makedepends = opus
-	makedepends = libsodium
 	makedepends = toxcore
 	depends = python
-	depends = libvpx
-	depends = opus
-	depends = libsodium
 	depends = toxcore
 	source = git+https://github.com/abbat/pytoxcore.git#tag=v0.0.19
 	sha512sums = SKIP
