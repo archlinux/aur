@@ -1,10 +1,10 @@
 # Maintainer: Devin Christensen <quixoten at gmail dot com>
 pkgname=otf-inconsolata-powerline-git
 pkgver=r100.a44abd0
-pkgrel=1
+pkgrel=2
 pkgdesc="Inconsolata for Powerline"
 arch=('any')
-url=('https://github.com/powerline/fonts')
+url='https://github.com/powerline/fonts'
 license=('custom:SIL Open Font License, Version 1.0')
 depends=(fontconfig xorg-font-utils )
 makedepends=('git')
