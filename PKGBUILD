@@ -1,7 +1,9 @@
+# Maintainer: Martchus <martchus@gmx.net>
 # Contributor: Filip Brcic <brcha@gna.org>
+
 _qt_module=qtdeclarative
 pkgname=mingw-w64-qt5-declarative
-pkgver=5.5.0
+pkgver=5.5.1
 pkgrel=1
 arch=(any)
 pkgdesc="Classes for QML and JavaScript languages (mingw-w64)"
@@ -10,11 +12,11 @@ makedepends=(mingw-w64-gcc python)
 options=(!strip !buildflags staticlibs)
 groups=(mingw-w64-qt mingw-w64-qt5)
 license=("custom, FDL, GPL3, LGPL")
-url="http://qt-project.org"
+url="https://www.qt.io/"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
-source=("http://download.qt-project.org/official_releases/qt/5.5/${pkgver}/submodules/${_pkgfqn}.tar.xz"
+source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         "qt5-build-qmldevtools-as-shared-library.patch")
-md5sums=('1452c92f8c660dc7d23d9e17d89f8716'
+md5sums=('b7997c9d8df4ea60945229883f9ce8ed'
          '6c445ba7713b69d90f52bb2242303853')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
