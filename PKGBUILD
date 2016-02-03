@@ -16,9 +16,9 @@ sha256sums=('0394fa11def849d3279969ab503eb6c32f0d81b11735376358d26ba1766ddb56')
 package() {
   cd "${srcdir}"
 
-  install -dm 755 "${pkgdir}/usr/local"
+  install -dm 755 "${pkgdir}/opt"
   install -dm 755 "${pkgdir}/usr/bin"
 
-  mv heroku-client "${pkgdir}/usr/local/heroku"
+  mv heroku-client "${pkgdir}/opt/heroku-toolbelt"
   ln -s /usr/local/heroku/bin/heroku "${pkgdir}/usr/bin/heroku"
 }
