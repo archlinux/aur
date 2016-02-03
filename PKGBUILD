@@ -2,13 +2,13 @@
 
 pkgname=python2-toxcore
 pkgver=0.0.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Python binding for ToxCore"
 arch=('i686' 'x86_64')
 url="https://github.com/abbat/pytoxcore"
 license=('GPL-3')
-depends=('python2' 'libvpx' 'opus' 'libsodium' 'toxcore')
-makedepends=('git' 'python2' 'libvpx' 'opus' 'libsodium' 'toxcore')
+depends=('python2' 'toxcore')
+makedepends=('git' 'python2' 'toxcore')
 source=("git+https://github.com/abbat/pytoxcore.git#tag=v${pkgver}")
 sha512sums=('SKIP')
 
