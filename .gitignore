@@ -1,0 +1,8 @@
+pkg/
+src/
+.AURINFO
+fomp/
+fomp*.tar.xz
+fomp*.tar.gz
+fomp*.tar.bz2
+fomp*.src.tar.gz
