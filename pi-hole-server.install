@@ -6,6 +6,9 @@ EOF
   chown -R http.http /srv/http/pihole
   systemd-tmpfiles --create pi-hole.conf
   /usr/bin/gravity.sh > /dev/null
+  systemctl daemon-reload > /dev/null
+  systemctl start pi-hole-gravity.timer > /dev/null
+  systemctl start pi-hole-logtruncate.timer > /dev/null
 }
 
 post_upgrade() {
