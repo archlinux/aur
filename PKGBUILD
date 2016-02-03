@@ -8,9 +8,9 @@ pkgdesc="Linux-CAN / SocketCAN user space applications"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/linux-can/can-utils"
 license=('GPLv2')
-makedepends=(git autoconf libtool)
-provides=can-utils
-conflicts=can-utils
+makedepends=("git" "autoconf" "libtool")
+provides=("can-utils")
+conflicts=("can-utils")
 source=("git+https://github.com/linux-can/can-utils.git")
 md5sums=('SKIP')
 
