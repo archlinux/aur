@@ -1,20 +1,21 @@
-# Maintainer: ant32 <antreimer@gmail.com>
+# Maintainer: Martchus <martchus@gmx.net>
+# Contributor: ant32 <antreimer@gmail.com>
 # Contributor: Filip Brcic <brcha@gna.org>
 
 _qt_module=qttools
 pkgname="mingw-w64-qt5-tools"
-pkgver=5.5.0
+pkgver=5.5.1
 pkgrel=1
 arch=('any')
-pkgdesc="Qt5 for Windows -- QtTools module (mingw-w64)"
-depends=('mingw-w64-qt5-base' 'mingw-w64-glib2')  # glib2 can be removed once qt5-base has it in depends
+pkgdesc="A cross-platform application and UI framework (Development Tools, QtHelp; mingw-w64)"
+depends=('mingw-w64-qt5-base')
 makedepends=('mingw-w64-gcc')
 options=('!strip' '!buildflags' 'staticlibs')
 license=('GPL3' 'LGPL')
-url="http://qt-project.org/"
+url="https://www.qt.io/"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
-source=("http://download.qt-project.org/official_releases/qt/5.5/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-md5sums=('2057ef2110b6a1aec260a69e2860a502')
+source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
+md5sums=('535ff9df9d83e9bde08ee3913b751d07')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
