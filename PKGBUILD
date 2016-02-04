@@ -2,7 +2,7 @@
 
 pkgname=brave-browser-git
 _pkgname=browser-laptop
-pkgver=0.7.12dev.46
+pkgver=0.7.12dev.47
 pkgrel=1
 pkgdesc="A chromium-based web browser that stops ads and trackers by Brendan Eich and Co. Development master branch."
 arch=('i686' 'x86_64')
@@ -34,8 +34,7 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
 
-  #npm install node-gyp@3.2.1  # Upstream asks for node-gyp@3.2.1 but... I cry scaremongering!
-                               # Let me know if I'm wrong.
+  npm install node-gyp@3.2.1
   npm install
   npm run build-package
 }
