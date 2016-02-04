@@ -4,32 +4,34 @@
 # Maintainer: zoe <chp321@gmail.com>
 
 pkgname=cewe-monlivrephoto
-pkgver=5.1.8
-pkgrel=2
-pkgdesc="Création off-line de livres photos, commandables ensuite en ligne auprès de divers partenaires commerciaux - Version française"
+pkgver=6.0.5
+pkgrel=1
+pkgdesc="Création off-line de livres photos, commandables ensuite en ligne auprès de la FNAC"
 url="http://www.livrephoto-cewe.fr/"
 license=("custom:eula")
 depends=('libx11' 'libjpeg' 'curl' 'wget')
+makedepends=('unzip')
 conflicts=('cewe-fotobuch')
 arch=('i686' 'x86_64')
-source=("http://dls.photoprintit.com/download/Data/14227/hps/setup_Mon_LIVRE_PHOTO_CEWE.tgz"         
-"cewe-monlivrephoto.desktop" "cewe-monlivrephoto.install")
-install=cewe-monlivrephoto.install
-md5sums=('f52b231f042bbb0476b81e499261af5e' 'a6b82116c19dcca0b5d8ac74707d8938' '82baecba5be4c2af0cccf0f5bc0e00c7')
+source=("http://dls.photoprintit.com/download/Data/18455/hps/setup_Atelier_Photo_FNAC.tgz"         
+"$pkgname.desktop" "$pkgname.install")
+install=$pkgname.install
+# setup_Atelier_Photo_FNAC.tgz (script perl) is versatile too much, so it is better to skip its md5sum :
+md5sums=(SKIP 'a6b82116c19dcca0b5d8ac74707d8938' '82baecba5be4c2af0cccf0f5bc0e00c7')
 
 package() {
         cd $srcdir
         mkdir -p $pkgdir/usr/{share/$pkgname,bin}
-        ./install.pl --installDir=$pkgdir/usr/share/cewe-monlivrephoto --workingDir=$srcdir -k -v
+        ./install.pl --installDir=$pkgdir/usr/share/$pkgname --workingDir=$srcdir -k -v
         # create startup script
         (echo "#!/bin/bash
 cd /usr/share/$pkgname
-./cewe-monlivrephoto \"\$@\"") > $pkgdir/usr/bin/cewe-monlivrephoto
-        chmod 755 $pkgdir/usr/bin/cewe-monlivrephoto
+./$pkgname \"\$@\"") > $pkgdir/usr/bin/$pkgname
+        chmod 755 $pkgdir/usr/bin/$pkgname
         # utf-8 and space in executable filenames is generally a bad idea
         cd $pkgdir/usr/share/$pkgname
-        mv "Mon LIVRE PHOTO CEWE" "cewe-monlivrephoto"
+        mv "Atelier Photo FNAC" "$pkgname"
         # create desktop shortcut
-        install -D -m644 $pkgdir/usr/share/$pkgname/Resources/keyaccount/32.xpm $pkgdir/usr/share/pixmaps/cewe-monlivrephoto.xpm && \
-        install -D -m644 $srcdir/cewe-monlivrephoto.desktop $pkgdir/usr/share/applications/cewe-monlivrephoto.desktop || return 1
+        install -D -m644 $pkgdir/usr/share/$pkgname/Resources/keyaccount/32.xpm $pkgdir/usr/share/pixmaps/$pkgname.xpm && \
+        install -D -m644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop || return 1
 }
