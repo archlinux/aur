@@ -11,7 +11,7 @@ backup=("etc/webapps/${pkgname}/config.php")
 source=("https://github.com/librenms/${pkgname}/archive/${pkgver}.tar.gz"
         "apache.example.conf"
         "nginx.example.conf")
-install=("librenms.install")
+install="librenms.install"
 sha256sums=('7d17395d6c0677fcad1b360d266936e17cee54bf32e3bfc7aa3cb19dbecd9597'
             'aed1a35b2d84f3b40e0d519ccdb56a5929896ae7cfedd3766f5df4b51fac3319'
             'e1722c586e61e320c2382b2322150e176c61523dccb81eeec6c3d4618819110c')
