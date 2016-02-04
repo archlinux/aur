@@ -11,9 +11,9 @@ url="https://github.com/enkore/basiciw/"
 license=('MIT')
 depends=('python' 'wireless_tools')
 makedepends=('git')
-conflicts=basiciw-git
-provides=basiciw-git
-replaces=basiciw-git
+conflicts=('basiciw-git')
+provides=('basiciw-git')
+replaces=('basiciw-git')
 source=("https://pypi.python.org/packages/source/b/basiciw/basiciw-$pkgver.tar.gz")
 md5sums=('bf4197a549c57c19c33a9a67d7da2eb4')
 
