@@ -5,21 +5,26 @@
 pkgbase=digikam
 pkgname=('digikam' 'kipi-plugins')
 pkgver=4.14.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.digikam.org/"
 makedepends=('kdepimlibs4' 'libkexiv2_4' 'libkdcraw4' 'libkipi4' 'libksane4' 'liblqr'
              'opencv' 'boost' 'libgpod' 'libkvkontakte' 'hugin' 'libgphoto2'
-             'cmake' 'automoc4' 'doxygen' 'lensfun' 'qt4-gstreamer' 'imagemagick' 'eigen' 
+             'cmake' 'automoc4' 'doxygen' 'lensfun' 'imagemagick' 'eigen' 
 	     'libbaloo4' 'libpgf' 'libusb-compat' 'libkface4' 'libkgeomap4' 'libmediawiki' 'clang')
-source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha1sums=('08bbded5433e442dce8ac00eb301606ef0924e8c')
+source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
+	lensfun-0.3.2.patch::"https://quickgit.kde.org/?p=digikam.git&a=commitdiff&h=0f15998&o=plain")
+sha1sums=('08bbded5433e442dce8ac00eb301606ef0924e8c'
+          'b2e262ea5060ad5ffd7d92d41a9badcea6e6c299')
 
 prepare() {
 # Fix compilation with clang
   sed -e '/fno-tree-pre/d' -i $pkgname-$pkgver/core/CMakeLists.txt
+# Fix build with lensfun 0.3.2
+  cd $pkgbase-$pkgver/core
+  patch -p1 -i "$srcdir"/lensfun-0.3.2.patch
 }
 
 build() {
@@ -67,7 +72,6 @@ package_kipi-plugins() {
               'libgpod: iPodExport plugin'
               'opencv: Remove Red Eyes plugin'
               'imagemagick: Video SlideShow plugin'
-              'qt4-gstreamer: Video SlideShow plugin'
 	      'hugin: panorama tools')
   options=('staticlibs')
   install=kipi-plugins.install
