@@ -1,18 +1,18 @@
 # Maintainer: Harm Müller <harm[DOT]mueller[AT]gmail[DOT]com>
 pkgname='perl-rex'
 pkgver='1.3.3'
-pkgrel='2'
+pkgrel='4'
 pkgdesc="(R)?ex Deployment & Configuration Management"
 arch=('any')
 license=('Apache')
 options=('!emptydirs')
-depends=('perl-hash-merge' 'perl-net-ssh2' 'perl-libwww' 'perl-io-string' 'perl-json-xs' 'perl-list-allutils' 'perl-sort-naturally' 'perl-term-readkey' 'perl-text-glob' 'perl-xml-simple' 'perl-yaml' 'perl-net-openssh' 'perl-test-useallmodules' 'perl-io-tty' 'perl-net-sftp-foreign' 'perl-test-pod' 'perl-string-escape' 'perl-test-deep')
+depends=('perl-hash-merge' 'perl-net-ssh2' 'perl-libwww' 'perl-io-string' 'perl-json-xs' 'perl-list-allutils' 'perl-sort-naturally' 'perl-term-readkey' 'perl-text-glob' 'perl-xml-simple' 'perl-yaml' 'perl-net-openssh' 'perl-test-useallmodules' 'perl-io-tty' 'perl-net-sftp-foreign' 'perl-test-pod' 'perl-string-escape' 'perl-test-deep'i 'perl-devel-caller')
 makedepends=()
 url='http://www.rexify.org/'
-source=('http://search.cpan.org/CPAN/authors/id/F/FE/FERKI/Rex-1.3.3.tar.gz')
-md5sums=('39ae7a114998364e3b90bd227bc8c163')
-sha512sums=('b2331e400027568f59496ff52f0a19bd009f66fea2a5b80ed9055859f59f0057afa50f61934cccd5af434c6f60dfa99700bc3904127b822a5ae684cb8bb6c70c')
-_distdir="Rex-1.3.3"
+source=('http://search.cpan.org/CPAN/authors/id/F/FE/FERKI/Rex-1.3.3_01.tar.gz')
+md5sums=('879a51c97ae05996360a48a463d0ff0a')
+sha512sums=('c62db40b225c1ae79f5e410bae65bb0133cd39228cf5001c02fdcb1446f4f309842805504f7cc2178082bf95cb2466b1be414a16f6020e8c5a4fc1890e016031')
+_distdir="Rex-1.3.3_01"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
