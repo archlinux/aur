@@ -7,7 +7,8 @@ pkgver='0.6.1.dev0'
 pkgrel=1
 pkgdesc="Photo gallery app for PostgreSQL and Django."
 url="https://github.com/zsiciarz/django-pgallery"
-depends=('python-django' 'python-pillow' 'python-psycopg2' 'python-django-markitup' 'python-django-model-utils')
+depends=('python-django' 'python-pillow' 'python-psycopg2'
+         'python-django-markitup' 'python-django-model-utils' 'python-django-hstore')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
