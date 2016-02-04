@@ -9,6 +9,7 @@ arch=('i686' 'x86_64')
 url="http://www.samsung.com"
 license=('custom:samsung')
 depends=('cups' 'ghostscript')
+conflicts=('samsung-printers')
 source=("http://org.downloadcenter.samsung.com/content/DR/201311/20131111155959500/uld_v1.00.06.tar.gz")
 md5sums=('94ee35696ddad334a53f76c9606607a5')
 sha256sums=('cc0144ede06710cc4c8c0e1bc6aa00464a4029d8153cff63f63fa1c6eb2b61e7')
