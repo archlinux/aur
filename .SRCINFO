@@ -8,9 +8,9 @@ pkgbase = libzookeeper
 	license = Apache
 	makedepends = apache-ant
 	makedepends = autoconf
+    makedepends = cppunit
 	provides = libzookeper
 	source = https://github.com/apache/zookeeper/archive/release-3.4.7.tar.gz
 	md5sums = 6c10db76b92b860c7852343ecdc8372e
 
 pkgname = libzookeeper
-
