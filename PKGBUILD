@@ -1,7 +1,7 @@
 # Maintainer: Yuval Adam <yuval at y3xz dot com> PGP-Key: 271386AA2EB7672F
 
 pkgname=rkt-bin
-pkgver=0.16.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="App container runtime"
 arch=('x86_64')
