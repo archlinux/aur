@@ -1,7 +1,7 @@
 # Maintainer: Manuel Mazzuola <origin.of@gmail.com>
 pkgname=turtl
 pkgver=0.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Turtl lets you take notes, bookmark websites, and store documents for sensitive projects."
 arch=('i686' 'x86_64')
 url="https://turtl.it"
@@ -19,10 +19,10 @@ md5sums_x86_64=("224d568533ddf37b7759b8c1bf39cf01")
 
 package() {
   cd "${_pkg}"
-  mkdir -p ${pkgdir}$HOME/.turtl
-	./install.sh ${pkgdir}$HOME/.turtl > /dev/null
-  chown -R $USER ${pkgdir}$HOME/.turtl
-  gendesk -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --exec "$HOME/.turtl/turtl" -f > /dev/null
+  mkdir -p ${pkgdir}/opt/turtl
+	./install.sh ${pkgdir}/opt/turtl > /dev/null
+  rm -f "$HOME/.local/share/applications/turtl.desktop" > /dev/null
+  gendesk -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --exec "/opt/turtl/turtl" -f > /dev/null
   install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm644 ../"$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
