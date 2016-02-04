@@ -1,24 +1,23 @@
 # Maintainer: Alex "grevus" Lobtsov <alex@lobtsov.com>
 pkgname=php-translit
-pkgver=0.6.1
-pkgrel=2
+pkgver=0.6.2
+pkgrel=1
 pkgdesc="Transliterates non-latin character sets to latin"
 url="http://pecl.php.net/package/translit"
 arch=('x86_64' 'i686')
 license=('PHP')
 depends=('php')
 backup=('etc/php/conf.d/translit.ini')
+pkgver_url=`echo ${pkgver} | sed s/\\\\./_/g`
 
 source=(
-    http://pecl.php.net/get/translit-${pkgver}.tgz
+    "https://github.com/derickr/pecl-translit/archive/RELEASE_$pkgver_url.tar.gz"
 )
 
-sha256sums=(
-    864faa76ef249e0203b761fd6a0b93ad5f61d1c1f4893dc0637997772bf671e3
-)
+sha256sums=('863ba3793d09776c309ae1a46af2826f8acf855db10ba8d976716ec6ab2ea3a5')
 
 build() {
-  cd "$srcdir/translit-$pkgver"
+    cd "$srcdir/pecl-translit-RELEASE_$pkgver_url"
 
   phpize
   ./configure --prefix=/usr
@@ -26,7 +25,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/translit-$pkgver"
+    cd "$srcdir/pecl-translit-RELEASE_$pkgver_url"
 
   make INSTALL_ROOT="$pkgdir" install
   echo ';extension=translit.so' > translit.ini
