@@ -1,11 +1,11 @@
---- Makefile.orig	2015-05-26 14:47:10.822217029 +0200
-+++ Makefile	2015-03-23 13:00:00.000000000 +0100
+--- Makefile.old	2016-02-04 09:48:38.033242148 +0100
++++ Makefile	2016-02-04 09:48:44.986370234 +0100
 @@ -9,7 +9,7 @@
  
  
  swmm5 : $(objs)
--	  cc -o swmm5 -lm $(objs)
-+	  cc -fopenmp -o swmm5 -lm $(objs)
+-      cc -o swmm5 -fopenmp -lm -lpthread $(objs)
++	cc -o swmm5 -fopenmp -lm -lpthread $(objs)
  
  swmm5.o       : consts.h macros.h enums.h error.h datetime.h objects.h funcs.h text.h globals.h swmm5.h
  climate.o     : headers.h

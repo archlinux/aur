@@ -1,19 +1,19 @@
 # Maintainer: gaelic
 pkgname=swmm
-pkgver=5.1.009
+pkgver=5.1.010
 pkgrel=1
 pkgdesc="Storm Water Management Model Engine"
 url="http://www2.epa.gov/water-research/storm-water-management-model-swmm"
 arch=('x86_64' 'i686')
 license=('custom:OpenSource')
 makedepends=('unzip')
-source=("http://www2.epa.gov/sites/production/files/2015-05/swmm51009_engine_0.zip"
+source=("http://www.epa.gov/sites/production/files/2015-08/swmm51010_engine.zip"
 	"swmm5.c.patch"
 	"Makefile.patch")
 
-md5sums=('18947dcf3f21153d387b432609781266'
+md5sums=('e7f341c88c5782bc4fee3840f5eacc5b'
          '257f5c7c8e01007382aceb718b3dbb7c'
-         'f2267133313a1cf705f187c74753ff9e')
+         '9b410afa9d6f787fe95b07b99b2ee752')
 
 makezip="makefiles.zip"
 srczip="source$(echo $pkgver | tr \. \_)"
