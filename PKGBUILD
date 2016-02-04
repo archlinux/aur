@@ -1,45 +1,41 @@
-# Maintainer: nandub <dev@nandub.info>
+# Maintainer: Mark E.A. <evalapply ``dot'' aur ``at'' airmail ``dot'' cc>
+# Contributor: nandub <dev@nandub.info>
 # Contributor: plmday
 
 pkgname=io-git
-pkgver=20110905
-pkgrel=3
+pkgver=20151111.11.g457b5ff
+pkgrel=1
 pkgdesc="Io is a prototype-based programming language inspired by Smalltalk"
 arch=('i686' 'x86_64')
 url="http://www.iolanguage.com/"
 license=('BSD')
-depends=('libevent' 'yajl' 'pcre')
+depends=('pcre' 'libsndfile' 'libxmu' 'freetype2' 'libedit' 'libxml2'
+	'libtiff' 'libevent' 'yajl' 'libmysqlclient' 'lzo' 'libpng'
+	'python2' 'util-linux' 'freeglut' 'libjpeg-turbo' 'libtheora')
 makedepends=('git' 'cmake')
+provides=('io')
 conflicts=('io')
+source=('git+https://github.com/stevedekorte/io.git')
+sha256sums=('SKIP')
 
-_gitroot="https://github.com/stevedekorte/io.git"
-_gitname="io"
+pkgver() {
+	cd io
+	git describe | sed -e 's|\.||g' -e 's|-|.|g'
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
+	cd io
+	sed -ri "s|20[0-9]+|$pkgver|" libs/iovm/source/IoVersion.h
 
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone --depth=1 "$_gitroot" "$_gitname"
-    cd "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "build"
-  mkdir "build"
-  cd "build"
-
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+	mkdir -p build
+	cd build
+	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+	make -j1
 }
 
 package() {
-  cd "$srcdir/$_gitname/build"
-  make DESTDIR="$pkgdir/" install
+	cd io
+	make -C build DESTDIR="$pkgdir" install
+	install -Dm644 license/bsd_license.txt \
+	"$pkgdir/usr/share/licenses/$pkgname/bsd_license.txt"
 }
-
-# vim:set ts=2 sw=2 et:
