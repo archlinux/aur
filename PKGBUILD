@@ -2,7 +2,7 @@
 
 pkgname=ttf-myricam
 pkgver=2.010.20160103
-pkgrel=1
+pkgrel=2
 pkgdesc="Japanese TrueType font for developers obtained by mixing Inconsolata and Mgen+"
 arch=('any')
 url="http://myrica.estable.jp/"
@@ -19,7 +19,7 @@ package() {
     install -d "${pkgdir}/usr/share/fonts/MyricaM/"
     install -m644 "MyricaM.TTC" "${pkgdir}/usr/share/fonts/MyricaM"
 
-    install -d "${pkgdir}/usr/share/licenses/custom/${pkgname}"
+    install -d "${pkgdir}/usr/share/licenses/${pkgname}"
     install -m644 "LICENSE_Apache.txt" "${pkgdir}/usr/share/licenses/${pkgname}"
     install -m644 "LICENSE_M+.txt" "${pkgdir}/usr/share/licenses/${pkgname}"
     install -m644 "LICENSE_OFL.txt" "${pkgdir}/usr/share/licenses/${pkgname}"
