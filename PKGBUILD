@@ -4,7 +4,7 @@ url='https://github.com/andrewgregory/pacutils'
 pkgver=0.0.328
 pkgrel=1
 arch=('i686' 'x86_64')
-depends=('pacman>=4.2')
+depends=('pacman>=5.0')
 makedepends=('git')
 provides=("pacutils=$pkgver")
 license=('MIT')
