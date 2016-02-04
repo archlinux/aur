@@ -12,7 +12,6 @@ options=('!buildflags')
 md5sums=('989d1daf6e9f4b629a4f8f5329c8e21c')
 
 build() {
-    cd "$srcdir"
     mkdir -p "$pkgname-$pkgver.build"
     cd "$pkgname-$pkgver.build"
     cmake \
@@ -28,5 +27,7 @@ build() {
 }
 
 package() {
-    make -C "$srcdir/build" install DESTDIR="$pkgdir"
+    make \
+        -C "$pkgname-$pkgver.build" \
+        install DESTDIR="$pkgdir"
 }
