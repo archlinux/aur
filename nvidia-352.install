@@ -1,7 +1,9 @@
 post_install() {
-    EXTRAMODULES='extramodules-4.3-ARCH'
-    depmod $(cat /usr/lib/modules/${EXTRAMODULES}/version)
-    echo 'In order to use nvidia module, reboot the system.'
+    EXTRAMODULES='extramodules-4.4-ARCH'
+    # Update module dependencies for all kernels
+    for _kernel in $(cat /usr/lib/modules/extramodules-*/version); do
+        depmod $_kernel
+    done
 }
 
 post_upgrade() {

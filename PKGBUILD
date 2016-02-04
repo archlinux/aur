@@ -5,12 +5,12 @@
 
 pkgname=nvidia-352
 pkgver=352.63
-pkgrel=4
+pkgrel=5
 pkgdesc="NVIDIA drivers for linux"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('linux>=4.3' 'linux<4.4' "nvidia-utils-352=${pkgver}" 'libgl')
-makedepends=('linux-headers>=4.3' 'linux-headers<4.4')
+depends=('linux>=4.3' 'linux<4.5' "nvidia-utils-352=${pkgver}" 'libgl')
+makedepends=('linux-headers>=4.3' 'linux-headers<4.5')
 provides=('nvidia')
 conflicts=('nvidia-96xx' 'nvidia-173xx' 'nvidia')
 license=('custom')
