@@ -2,7 +2,7 @@
 # Maintainer: Tobias Frilling <tobias@frilling-online.de>
 
 pkgname=guvcview-qt5-git
-pkgver=2.0.2.1.r33.g530f1e9
+pkgver=2.0.3.r11.gd557ef4
 pkgrel=1
 pkgdesc="Video viewer and capturer for the linux uvc driver, Qt5-version"
 arch=('i686' 'x86_64')
