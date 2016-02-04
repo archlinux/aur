@@ -13,7 +13,7 @@ pkgbase=mesa-git
 pkgname=('opencl-mesa-git' 'libva-mesa-driver-git' 'mesa-vdpau-git' 'mesa-git' 'mesa-libgl-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
 pkgver=11.2.0_devel.75996.9c78cfd
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm>=2.4.66' 'dri2proto' 'dri3proto' 'presentproto' 
              'libxshmfence' 'libxxf86vm'  'libxdamage' 'libvdpau' 'libva' 'wayland' 'elfutils' 'llvm-svn'
@@ -48,6 +48,7 @@ build () {
                --with-clang-libdir=/usr/lib \
                --with-sha1=libnettle \
                --enable-texture-float \
+               --enable-dri3 \
                --enable-osmesa \
                --enable-xa \
                --enable-gbm \
@@ -72,7 +73,7 @@ build () {
 #  --disable-gles1              disable support for OpenGL ES 1.x API                                   [default=enabled]
 #  --disable-gles2              disable support for OpenGL ES 2.x API                                   [default=enabled]
 #  --enable-dri                 enable DRI modules                                                      [default=enabled]
-#  --enable-dri3                enable DRI3                                                             [default=auto]
+#  --enable-dri3                enable DRI3                                                             [default=auto]                                  enabled
 #  --enable-glx                 enable GLX library                                                      [default=enabled]
 #  --enable-osmesa              enable OSMesa library                                                   [default=disabled]                              enabled
 #  --enable-gallium-osmesa      enable Gallium implementation of the OSMesa library                     [default=disabled]
