@@ -9,14 +9,14 @@ arch=('i686' 'x86_64')
 url='http://www.google.com/chrome'
 license=('custom:chrome')
 options=('!strip')
-_chrome_ver=48.0.2564.97
+_chrome_ver=48.0.2564.103
 depends=("chromium")
 source=('chrome-eula_text.html::https://www.google.com/chrome/intl/en/eula_text.html')
 source_i686=("https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${_chrome_ver}-1_i386.deb")
 source_x86_64=("https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${_chrome_ver}-1_amd64.deb")
 sha256sums=('b35811bb330576631e64f7885c66720e0be4ca81afb04328b3a0f288a708e37f')
-sha256sums_i686=('5448419fff33b01456d609ce0f1981fdd07f9c3d55d70156e13d6aa7f34cad3d')
-sha256sums_x86_64=('a26418953bcb76900a6c64de6891fa178c8f98244923d65cdf4606dcde09bcf2')
+sha256sums_i686=('8150047cf15b487307a889eaf7a298de9622ce11c3fe9ec94aef0a56bcad90c5')
+sha256sums_x86_64=('425178e641bab0d5f49b23bbe221eef8e2590424c6026c8f9b18a4ca96c0a7a3')
 
 pkgver() {
   bsdtar -xf data.tar.xz opt/google/chrome/{chrome,libwidevinecdm.so}
