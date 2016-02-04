@@ -4,14 +4,14 @@
 _pkgname=light-desktop-item-edit
 pkgname="${_pkgname}-git"
 pkgver=0.3.r35.f38a55e
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="Light editor for *.desktop files without gnome-panel or xfce dependencies."
 arch=(any)
 url="https://github.com/gerasev-kirill/light-desktop-item-edit"
 license=('LGPL')
 depends=('python2-gobject' 'gtk3')
-makedepends=('git')
+makedepends=('git' 'intltool')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://github.com/gerasev-kirill/light-desktop-item-edit.git")
