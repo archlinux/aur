@@ -1,28 +1,30 @@
 # Maintainer: Spider.007 <aur@spider007.net>
 pkgname=graylog
-replaces=graylog2-server
-pkgver=1.3.3
+replaces=(graylog2-server graylog-web-interface)
+conflicts=(${replaces[*]})
+pkgver=2.0.0_alpha.1
 pkgrel=1
 pkgdesc="Graylog is an open source syslog implementation that stores your logs in ElasticSearch and MongoDB"
 arch=('any')
 url="https://www.graylog.org/"
-license=('GPL')
-depends=(java-runtime 'elasticsearch<2.0' mongodb)
+license=(GPL)
+depends=(java-runtime-headless)
+optdepends=('elasticsearch>2.0' mongodb)
 install=graylog.install
 backup=(
 	etc/graylog/server/server.conf
 )
 source=(
-	https://packages.graylog2.org/releases/$replaces/$pkgname-$pkgver.tgz
+	https://packages.graylog2.org/releases/$pkgname/$pkgname-${pkgver/_/-}.tgz
 	graylog-tmpfiles.conf
 	graylog.service
 )
-sha256sums=('1e98509376dc22ff1602838cebb49b4732618296acc58063ba34f4a97f667ba0'
+sha256sums=('6962b7b2d9809e782f229c187e54674029882ee2caacabaa02161a020b3cb3b5'
             'SKIP'
             'SKIP')
 
 package() {
-	cd "$srcdir/$pkgname-${pkgver}"
+	cd "$srcdir/$pkgname-${pkgver/_/-}"
 
 	mkdir -p $pkgdir/var/lib/graylog/{spool,data/journal,log}
 	chown nobody: -R $pkgdir/var/lib/graylog/
