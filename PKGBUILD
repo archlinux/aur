@@ -12,7 +12,7 @@ license=('GPL')
 depends=('indicator-application' 'libdbusmenu-gtk2' 'libindicator')
 makedepends=('libappindicator')
 options=('!libtool')
-source=(https://launchpad.net/indicators-gtk2/$pkgname/i-a-$pkgver/+download/$_pkgname-$pkgver.tar.gz)
+source=("https://launchpad.net/indicators-gtk2/$pkgname/i-a-$pkgver/+download/$_pkgname-$pkgver.tar.gz")
 md5sums=('1d10bf69a026acd636f1b99d4cd7dce9')
 
 build() {
