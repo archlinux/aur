@@ -1,0 +1,29 @@
+# Maintainer: skydrome <skydrome@i2pmail.org>
+# Contributor: skydrome <skydrome@i2pmail.org>
+
+pkgname=durian
+pkgver=0.5.1
+pkgrel=1
+pkgdesc="items search tool and watcher for Path of Exile"
+url="http://thirdy.github.io/durian"
+license=('GPL2')
+arch=('any')
+depends=('java-runtime>=8' 'java-openjfx')
+PKGEXT='.pkg.tar'
+
+source=("https://github.com/thirdy/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.zip"
+        "icon-128x128.png"
+        "durian.sh")
+
+sha256sums=('fa79f4479c4ad0b673cad47f8482f6fa9093db4e6031992caf100898bfdc1e17'
+            '8535d56a223568ca05e5a84361d36e4269f9b7c176e93c8b5f6c0a0c4993be5c'
+            '45ec0230d18832190bc1addcecaf9e4fd932b4bd60a7e28efce6ad298542866c')
+package() {
+    cd "$srcdir"
+    install -dm755 "${pkgdir}/usr/share/java/"
+
+    cp -r durian-${pkgver} "${pkgdir}/usr/share/java/durian"
+    chmod -R 777           "${pkgdir}/usr/share/java/durian"
+    install -Dm755 ${pkgname}.sh    "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 icon-128x128.png "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}.png"
+}
