@@ -2,7 +2,7 @@
 # Contributor: Dmitry Chusovitin <dchusovitin@gmail.com>
  
 pkgname='yandex-disk'
-pkgver=0.1.5.940
+pkgver=0.1.5.948
 pkgrel=1
 pkgdesc='Yandex.Disk keeps your files with you at all times.'
 arch=('i686' 'x86_64')
@@ -16,14 +16,14 @@ source=("http://repo.yandex.ru/yandex-disk/deb/pool/main/y/yandex-disk/yandex-di
         "yandex-disk.install"
         "yandex-disk.service")
  
-md5sums=('98a2fa8b0e4b12f53c179f2e97af234e'
-         '5ad775bd895526c6b1f335c6d71dbdfa'
-         '682610854f31ae387a35268ff2fcb867')
+sha512sums=('673ce1f792e8acb9062a9ab3c5977f84cff9079e31bef1d58b105533ca5a3e0564628146e4cd634aa79415ac1128e1b3b55ce03495b8ec2ce3b8d88282e6238e'
+            '847a1c619c9c0ddf1f8c6bbc9723cff3d91cc2509bc4b2b5642103eab43bc413a52737b88d70fc33167a46d253228dbb510208ee48152561c903827de8b93ae7'
+            '26803f67069e23e5ef82d3a127e01400d7db5fa03b1904f64b5cacbfd705b4d0f43e26f6cb93b74e333ca01f911b0212cdb3fba20188c793fdde6e14449b38a9')
  
 [ "$CARCH" = "x86_64" ] && 
-md5sums=('f4f3b9093ff30faa16a9df1504025947'
-         '5ad775bd895526c6b1f335c6d71dbdfa'
-         '682610854f31ae387a35268ff2fcb867')
+sha512sums=('ab0e61f17ed6ca93e845d981b2186e34244d13bcd2a6888eb309b564678e5775ea1d046fa83c84dd2012fd9373b2615d42d39b19e42addf7a78e20e2f89402b0'
+            '847a1c619c9c0ddf1f8c6bbc9723cff3d91cc2509bc4b2b5642103eab43bc413a52737b88d70fc33167a46d253228dbb510208ee48152561c903827de8b93ae7'
+            '26803f67069e23e5ef82d3a127e01400d7db5fa03b1904f64b5cacbfd705b4d0f43e26f6cb93b74e333ca01f911b0212cdb3fba20188c793fdde6e14449b38a9')
  
 package() {
         cd $srcdir
