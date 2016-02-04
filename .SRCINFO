@@ -1,7 +1,7 @@
 pkgbase = networkmanager-noscan
 	pkgdesc = Network Management daemon with Wi-Fi scanning disabled when already connected (improves reliability of the connection in several Wireless cards)
 	pkgver = 1.0.10
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.gnome.org/projects/NetworkManager/
 	install = networkmanager.install
 	arch = i686

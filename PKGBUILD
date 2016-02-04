@@ -3,12 +3,12 @@
 
 pkgbase=networkmanager-noscan
 pkgname=networkmanager-noscan
-provides=networkmanager
-replaces=networkmanager
-conflicts=networkmanager
+provides=('networkmanager')
+replaces=('networkmanager')
+conflicts=('networkmanager')
 
 pkgver=1.0.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Network Management daemon with Wi-Fi scanning disabled when already connected (improves reliability of the connection in several Wireless
 cards)"
 arch=(i686 x86_64)
