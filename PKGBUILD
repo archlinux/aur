@@ -9,7 +9,7 @@ url="https://github.com/maxfierke/$_repo"
 license=('GPL3')
 arch=('any')
 depends=('gtk-engine-murrine')
-source="$pkgname-$pkgver.tar.gz::$url/archive/$_snapshot.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$_snapshot.tar.gz")
 md5sums=('f398cfb734f7d918665f0ac6b6a7e592')
 
 package() {
