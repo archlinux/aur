@@ -1,7 +1,7 @@
 # Maintainer: Daniel Milde <daniel@milde.cz>
 
 pkgname=python-hg
-pkgver=3.5.1.rc1.r99422.01397c11ebb8
+pkgver=3.6.0a0.r100157.7fb10bdbe01b
 pkgrel=1
 _pybasever=3.6
 _pkgname=cpython
@@ -19,9 +19,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   printf "%s.r%s.%s" \
-      "$(hg tags | awk 'NR==2 {print $1}' | sed -E 's/^v//;s/([a-z])/.\1/')" \
+      "3.6.0a0" \
       "$(hg identify -n)" \
       "$(hg identify -i)"
+      #"$(hg tags | awk 'NR==2 {print $1}' | sed -E 's/^v//;s/([a-z])/.\1/')" \
 }
 
 prepare() {
