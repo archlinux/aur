@@ -1,37 +1,33 @@
-# Maintainer: Antonio Rojas
+# Maintainer: Peter Mattern <pmattern at arcor dot de>
+# Contributor: Bhushan Shah
+# Contributor: Antonio Rojas
 
-pkgname=sddm-kcm-git
-pkgver=r130.5fab0a1
+_pkgname=sddm-kcm
+pkgname=$_pkgname-git
+pkgver=5.4.95.7.ga208c02
 pkgrel=1
-pkgdesc="SDDM configuration module for KDE"
+pkgdesc='KDE Config Module for SDDM'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kdereview/sddm-kcm/'
 license=('GPL')
-depends=('sddm' 'kio' 'libxcursor')
-makedepends=('extra-cmake-modules' 'kdoctools' 'qt5-tools')
-conflicts=('sddm-kcm')
-provides=('sddm-kcm')
+depends=('kio' 'libxcursor' 'sddm')
+makedepends=('git' 'extra-cmake-modules' 'qt5-tools')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=("git://anongit.kde.org/sddm-kcm.git")
-groups=('plasma')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd sddm-kcm
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd $_pkgname
+  git describe --always | sed 's:^v::;s:-:.:g'
 }
 
 build() {
-  cd build
-  cmake ../sddm-kcm \
-    -DCMAKE_BUILD_TYPE=Release \
+  mkdir -p build && cd build
+  cmake ${srcdir}/${_pkgname} \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DSYSCONF_INSTALL_DIR=/etc
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
   make
 }
 
@@ -39,4 +35,3 @@ package() {
   cd build
   make DESTDIR="$pkgdir" install
 }
-
