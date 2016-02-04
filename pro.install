@@ -1,0 +1,14 @@
+post_install() {
+    echo
+    echo
+    echo -e "\t                        GAME NOTES"
+    echo -e "\t                   ´*~##############~*\`"
+    echo -e "\t##########################################################"
+    echo -e "\t#                                                        #"
+    echo -e "\t# You need to create an account at                       #"
+    echo -e "\t# http://www.pokemon-revolution-online.net/Register.php  #"
+    echo -e "\t#                                                        #"
+    echo -e "\t##########################################################"
+    echo
+    echo
+} 

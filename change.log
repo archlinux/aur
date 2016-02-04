@@ -1,0 +1,11 @@
+Game Changelog
+http://pokemon-revolution-online.net/Forum/viewtopic.php?f=14&t=4563
+
+Packaging
+
+0.93_2.20160202
+* ready for PRO 0.93_2
+* enforce opengl to workaround a bug that makes the game start in direct3d mode on linux -> "PROLinux93_2.x86_64 -force-opengl"
+* new starter "pokemonrevolutiononline" in /usr/bin
+* now use <0.folderversion>.<yyyymmdd> to get a better package versioning. 
+###################
