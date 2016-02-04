@@ -1,7 +1,7 @@
 pkgbase = ttf-material-icons
 	pkgdesc = Google Material Design icon font
-	pkgver = r69.60e4c5d
-	pkgrel = 1
+	pkgver = r98.e24770a
+	pkgrel = 2
 	url = https://github.com/google/material-design-icons
 	install = ttf-material-icons.install
 	arch = any
@@ -12,4 +12,3 @@ pkgbase = ttf-material-icons
 	md5sums = SKIP
 
 pkgname = ttf-material-icons
-

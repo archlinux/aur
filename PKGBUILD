@@ -1,7 +1,7 @@
 # Maintainer: ZidHuss <zidhussein at gmail dot com>
 pkgname=ttf-material-icons
-pkgver=r69.60e4c5d
-pkgrel=1
+pkgver=r98.e24770a
+pkgrel=2
 pkgdesc="Google Material Design icon font"
 arch=('any')
 url='https://github.com/google/material-design-icons'
