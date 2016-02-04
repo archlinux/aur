@@ -8,7 +8,7 @@ url="https://github.com/oberon2007/$pkgname"
 license=('GPL')
 arch=('any')
 depends=('gtk-engines')
-source="$pkgname-$pkgver.tar.gz::$url/archive/$_snapshot.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$_snapshot.tar.gz")
 md5sums=('7d61e553b9d3228da79884929107b702')
 
 package() {
