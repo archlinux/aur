@@ -3,7 +3,7 @@
 
 _pkgname=light-desktop-item-edit
 pkgname="${_pkgname}-git"
-pkgver=.r35.f38a55e
+pkgver=0.3.r35.f38a55e
 pkgrel=1
 epoch=2
 pkgdesc="Light editor for *.desktop files without gnome-panel or xfce dependencies."
@@ -14,14 +14,14 @@ depends=('python2-gobject' 'gtk3')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source="${_pkgname}::git+https://github.com/gerasev-kirill/light-desktop-item-edit.git"
+source=("${_pkgname}::git+https://github.com/gerasev-kirill/light-desktop-item-edit.git")
 md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${_pkgname}"
 
-    local ver=$(grep "^VERSION" Makefile | awk '{print $3}')
-    echo "$ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  local ver=$(grep '^AC_INIT' configure.ac | sed 's/.*\[\(.*\)\])/\1/')
+  echo "$ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
