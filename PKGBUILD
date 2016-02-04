@@ -3,7 +3,7 @@
 # Contributor: Ner0
 
 pkgname=nemo-git
-pkgver=2.8.6.r17.g6237086
+pkgver=2.8.6.r20.gf539ba5
 pkgrel=1
 pkgdesc="Cinnamon file manager, git-version"
 arch=('i686' 'x86_64')
