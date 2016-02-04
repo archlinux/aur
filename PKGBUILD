@@ -1,7 +1,7 @@
 # Maintainer: Kai Yuan <kent.yuan @t gmail d@t com>
 pkgname=retmux
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="tmux sessions backup and restore tool"
 arch=('any')
 url="https://github.com/sk1418/retmux"
@@ -10,7 +10,7 @@ makedepends=('git')
 depends=('python2' 'tmux' 'python2-setuptools')
 sha256sums=('SKIP')
 sha512sums=('SKIP')
-source="$pkgname::git+http://github.com/sk1418/${pkgname%-*}.git"
+source=("$pkgname::git+http://github.com/sk1418/${pkgname%-*}.git")
 
 package() {
   cd ${pkgname}
