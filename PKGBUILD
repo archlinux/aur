@@ -1,13 +1,13 @@
 # Maintainer: Riley Trautman <asonix.dev@gmail.com>
 
 pkgname=toontown-rewritten
-pkgver=1.2.0
+pkgver=1.2.3
 pkgrel=2
 pkgdesc="An MMO originally by Disney, rewritten. An account is needed to play."
 arch=("x86_64")
 url=""
 license=("")
-depends=("qt5-base")
+depends=("qt5-base" "openal")
 makedepends=("git")
 provides=("$pkgname")
 source=("https://download.toontownrewritten.com/launcher/linux/TTRLinux-v$pkgver.tar.gz"
