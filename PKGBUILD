@@ -3,7 +3,7 @@
 pkgname=libbitcoin-explorer
 pkgver=2.2.0
 pkgrel=3
-pkgdesc="The Bitcoin Command Line Tool"
+pkgdesc="Bitcoin Command Line Tool"
 arch=('i686' 'x86_64')
 depends=('boost'
          'boost-libs'
@@ -12,7 +12,9 @@ depends=('boost'
          'icu'
          'libbitcoin'
          'libbitcoin-client'
+         'libpng'
          'libsodium'
+         'qrencode'
          'secp256k1-git'
          'zeromq')
 makedepends=('autoconf'
@@ -20,6 +22,7 @@ makedepends=('autoconf'
              'gcc'
              'git'
              'libtool'
+             'm4'
              'make'
              'pkg-config')
 groups=('libbitcoin')
