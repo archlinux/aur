@@ -1,17 +1,17 @@
 #! /bin/bash
 ## helper script to run PRO.
-EXECFILE="PROLinux93_2.x86_64"
 GAMEDIR="/opt/pokemonrevolutiononline"
+GAMEBINARY="GAMEBINARYNAME"
 
 ## enforce opengl to workaround a bug that makes the game start in direct3d mode on linux -> "-force-opengl"
 OPTIONS="-force-opengl"
 
-echo -e "--> \"${GAMEDIR}/${EXECFILE}\" ${OPTIONS} ${@}"
+echo -e "--> \"${GAMEDIR}/${GAMEBINARY}\" ${OPTIONS} ${@}"
 echo -e "..."
 ## to workaround an error that the game can't find some importtant files on some systems, we cd to the game root first
 cd ${GAMEDIR}
 
 ## start the game!
-"${GAMEDIR}/${EXECFILE}" ${OPTIONS} ${@}
+"${GAMEDIR}/${GAMEBINARY}" ${OPTIONS} ${@}
 
 exit
