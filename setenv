@@ -1,0 +1,3 @@
+MEMORY_OPTS="-Xms128m -Xmx256m"
+TUNING_OPTS=
+XML_OPTS=-DentityExpansionLimit=128000
