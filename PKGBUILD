@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Index and find your stuff"
 arch=('any')
 license=('AGPL')
-url=('http://github.com/adfinis-sygroup/finja')
+url='http://github.com/adfinis-sygroup/finja'
 depends=('python'
          'python-six'
          'python-binaryornot'
