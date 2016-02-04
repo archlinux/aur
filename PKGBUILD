@@ -1,0 +1,30 @@
+pkgname=nibl
+pkgver=0.2
+pkgrel=1
+pkgdesc="NIBL Package search"
+arch=('any')
+license=('GPL')
+url="https://github.com/2ion/nibl"
+depends=(\
+  'python'                \
+  'python-termcolor'      \
+  'python-terminaltables' \
+  'python-beautifulsoup4' \
+  'python-requests')
+makedepends=('cython' 'pkg-config' 'gcc')
+options=(!emptydirs)
+source=('https://github.com/2ion/nibl/archive/master.tar.gz')
+sha256sums=(SKIP)
+
+build()
+{
+  cd "$srcdir/nibl-master"
+  make
+}
+
+package()
+{
+  cd "$srcdir/nibl-master"
+  make DESTDIR="$pkgdir/" install
+}
+
