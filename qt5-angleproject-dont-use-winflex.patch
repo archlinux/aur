@@ -1,0 +1,11 @@
+--- qtwebkit-opensource-src-5.0.0/Tools/qmake/mkspecs/features/default_pre.prf.orig	2013-01-04 22:00:45.442588676 +0100
++++ qtwebkit-opensource-src-5.0.0/Tools/qmake/mkspecs/features/default_pre.prf	2013-01-04 22:01:10.427771469 +0100
+@@ -98,7 +98,7 @@
+ # A newer version of flex is required on Windows. At the moment the only
+ # one that appears to provide binaries and is not cygwin is winflex.
+ FLEX = flex
+-win32: FLEX = win_flex
++win32:!win32-g++*: FLEX = win_flex
+ 
+ BIN_EXTENSION =
+ win32: BIN_EXTENSION = .exe

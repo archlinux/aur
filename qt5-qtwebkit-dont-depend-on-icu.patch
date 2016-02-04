@@ -1,6 +1,6 @@
 --- qtwebkit-opensource-src-5.0.0/Tools/qmake/mkspecs/features/configure.prf.orig	2013-01-04 18:56:36.785550268 +0100
 +++ qtwebkit-opensource-src-5.0.0/Tools/qmake/mkspecs/features/configure.prf	2013-01-04 18:58:20.047373664 +0100
-@@ -115,9 +115,9 @@
+@@ -120,9 +120,9 @@
      }
  
      # Sanity checks that would prevent us from building the whole project altogether.
@@ -10,8 +10,8 @@
 +#    !android:!mac:!config_icu {
 +#       addReasonForSkippingBuild("ICU is required.")
 +#    }
-     production_build:blackberry|qnx {
-         addReasonForSkippingBuild("Build not supported on BB10/QNX yet.")
+     production_build:blackberry {
+         addReasonForSkippingBuild("Build not supported on BB10 yet.")
      }
 --- qtwebkit-opensource-src-5.0.0/Source/WTF/wtf/Platform.h.orig	2013-01-04 19:28:53.735934784 +0100
 +++ qtwebkit-opensource-src-5.0.0/Source/WTF/wtf/Platform.h	2013-01-04 19:28:13.856641177 +0100

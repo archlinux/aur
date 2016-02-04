@@ -1,8 +1,8 @@
 --- Source/WebKit/qt/Api/qwebkitglobal.h.orig	2013-01-06 19:14:49.225087412 +0100
 +++ Source/WebKit/qt/Api/qwebkitglobal.h	2013-01-06 19:15:02.498182976 +0100
-@@ -26,7 +26,6 @@
- 
- #define QTWEBKIT_VERSION_CHECK(major, minor, patch) ((major<<16)|(minor<<8)|(patch))
+@@ -24,7 +24,6 @@
+ #include <QtCore/qglobal.h>
+ #include <QtCore/qstring.h>
  
 -#ifndef QT_STATIC
  #  if !defined(QT_BUILD_WEBKITWIDGETS_LIB) && defined(BUILDING_WEBKIT)

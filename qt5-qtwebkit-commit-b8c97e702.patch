@@ -1,0 +1,30 @@
+From b8c97e702b56c60fdbd7f72add58a18a9743bf48 Mon Sep 17 00:00:00 2001
+From: Pierre Rossi <pierre.rossi@digia.com>
+Date: Tue, 4 Dec 2012 14:27:24 +0100
+Subject: [PATCH] [Qt] Yet another unreviewed speculative windows build fix.
+
+WebKit2 relies on the QWEBKIT_EXPORT macro from WebKit1 as well.
+
+* Api/qwebkitglobal.h:
+
+git-svn-id: http://svn.webkit.org/repository/webkit/trunk@136495 268f45cc-cd09-0410-ab3c-d52691b4dbfc
+Change-Id: Iadd377b766f7282688abaa6c51c94d486dbb8edd
+Reviewed-by: Simon Hausmann <simon.hausmann@digia.com>
+---
+ Source/WebKit/qt/Api/qwebkitglobal.h |    2 +-
+ Source/WebKit/qt/ChangeLog           |    8 ++++++++
+ 2 files changed, 9 insertions(+), 1 deletions(-)
+
+diff --git a/Source/WebKit/qt/Api/qwebkitglobal.h b/Source/WebKit/qt/Api/qwebkitglobal.h
+index 6ee30ca..44e4d45 100644
+--- a/Source/WebKit/qt/Api/qwebkitglobal.h
++++ b/Source/WebKit/qt/Api/qwebkitglobal.h
+@@ -27,7 +27,7 @@
+ #define QTWEBKIT_VERSION_CHECK(major, minor, patch) ((major<<16)|(minor<<8)|(patch))
+ 
+ #ifndef QT_STATIC
+-#  if defined(QT_BUILD_WEBKIT_LIB)
++#  if !defined(QT_BUILD_WEBKITWIDGETS_LIB) && defined(BUILDING_WEBKIT)
+ #      define QWEBKIT_EXPORT Q_DECL_EXPORT
+ #  else
+ #      define QWEBKIT_EXPORT Q_DECL_IMPORT

@@ -1,11 +1,9 @@
 --- qtwebkit-opensource-src-5.4.0/Source/WebCore/platform/graphics/ANGLEWebKitBridge.h.orig	2014-12-29 22:48:34.532357391 +0100
 +++ qtwebkit-opensource-src-5.4.0/Source/WebCore/platform/graphics/ANGLEWebKitBridge.h	2014-12-29 23:01:26.254334924 +0100
-@@ -34,14 +34,15 @@
- #elif PLATFORM(WIN)
+@@ -35,13 +35,14 @@
  #include "GLSLANG/ShaderLang.h"
  #else
--#include "ShaderLang.h"
-+#include "GLSLANG/ShaderLang.h"
+ #include "ShaderLang.h"
 +#include "angle_gl.h"
  #endif
  

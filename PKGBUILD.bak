@@ -67,8 +67,6 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 prepare() {
   cd "${srcdir}/${_pkgfqn}"
 
-  # note: all patches are from http://pkgs.fedoraproject.org/git/rpms/mingw-qt5-qtwebkit.git
-
   # The ICU libraries used for cross-compilation are named exactly the same as their native Linux counterpart
   #patch -p0 -b -i ../qt5-qtwebkit-use-correct-icu-libs.patch
 
@@ -123,10 +121,6 @@ build() {
   unset PKG_CONFIG_PATH
   cd "${srcdir}/${_pkgfqn}"
   for _arch in ${_architectures}; do
-    # Since Source/ThirdParty/ANGLE has been removed ensure files
-    # from system ANGLE can be included
-    export CPATH=/usr/$_arch/include:/usr/$_arch/include/GLSLANG
-
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-qmake-qt5 QMAKE_CXXFLAGS+=-Wno-c++0x-compat ../WebKit.pro
     make

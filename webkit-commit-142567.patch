@@ -1,0 +1,57 @@
+Index: trunk/Source/WebCore/platform/graphics/ANGLEWebKitBridge.cpp
+===================================================================
+--- trunk/Source/WebCore/platform/graphics/ANGLEWebKitBridge.cpp	(revision 136430)
++++ trunk/Source/WebCore/platform/graphics/ANGLEWebKitBridge.cpp	(revision 142567)
+@@ -33,7 +33,14 @@
+ namespace WebCore {
+ 
+-inline static int getValidationResultValue(const ShHandle compiler, ShShaderInfo shaderInfo)
+-{
+-    int value = -1;
++// Temporary typedef to support an incompatible change in the ANGLE API.
++#if !defined(ANGLE_SH_VERSION) || ANGLE_SH_VERSION < 108
++typedef int ANGLEGetInfoType;
++#else
++typedef size_t ANGLEGetInfoType;
++#endif
++
++inline static ANGLEGetInfoType getValidationResultValue(const ShHandle compiler, ShShaderInfo shaderInfo)
++{
++    ANGLEGetInfoType value = 0;
+     ShGetInfo(compiler, shaderInfo, &value);
+     return value;
+@@ -56,13 +63,11 @@
+     }
+ 
+-    int numSymbols = getValidationResultValue(compiler, symbolType);
+-    if (numSymbols < 0)
+-        return false;
+-
+-    int maxNameLength = getValidationResultValue(compiler, symbolMaxNameLengthType);
++    ANGLEGetInfoType numSymbols = getValidationResultValue(compiler, symbolType);
++
++    ANGLEGetInfoType maxNameLength = getValidationResultValue(compiler, symbolMaxNameLengthType);
+     if (maxNameLength <= 1)
+         return false;
+ 
+-    int maxMappedNameLength = getValidationResultValue(compiler, SH_MAPPED_NAME_MAX_LENGTH);
++    ANGLEGetInfoType maxMappedNameLength = getValidationResultValue(compiler, SH_MAPPED_NAME_MAX_LENGTH);
+     if (maxMappedNameLength <= 1)
+         return false;
+@@ -72,7 +77,7 @@
+     Vector<char, 256> mappedNameBuffer(maxMappedNameLength);
+     
+-    for (int i = 0; i < numSymbols; ++i) {
++    for (ANGLEGetInfoType i = 0; i < numSymbols; ++i) {
+         ANGLEShaderSymbol symbol;
+-        int nameLength = -1;
++        ANGLEGetInfoType nameLength = 0;
+         switch (symbolType) {
+         case SH_ACTIVE_ATTRIBUTES:
+@@ -88,5 +93,5 @@
+             return false;
+         }
+-        if (nameLength <= 0)
++        if (!nameLength)
+             return false;
+         
