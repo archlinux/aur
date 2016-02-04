@@ -1,9 +1,9 @@
 # Maintainer: Dmitry Chusovitin <dchusovitin@gmail.com>
 
 pkgname=docker-machine
-pkgver=0.6.0rc3
-_pkgver=0.6.0-rc3
-pkgrel=2
+pkgver=0.6.0rc4
+_pkgver=0.6.0-rc4
+pkgrel=1
 epoch=2
 pkgdesc='Machine management for a container-centric world'
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ makedepends=('go' 'git')
 optdepends=('net-tools: required for VirtualBox driver')
 
 source=("https://github.com/docker/machine/archive/v${_pkgver}.tar.gz")
-sha256sums=('eac622065fbad7e689cf9524c12d4ea42a3e0687ae1f228f7d88f1489ff581ff')
+sha256sums=('0e9be95ac643180958bd0de9167cd1ad20fb83083318434131293b2876be23c8')
 
 prepare() {
     export GOPATH="${srcdir}"
