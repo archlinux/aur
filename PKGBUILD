@@ -8,7 +8,7 @@
 #
 
 pkgname=electrum-git
-pkgver=20160105
+pkgver=20160204
 pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
@@ -61,12 +61,6 @@ prepare() {
 
   msg2 'Fixing setup.py...'
   git apply "$srcdir/setup.py.patch"
-
-  msg2 'Fixing app.fil...'
-  # plugins/labels.py → plugins/labels/labels.py
-  sed -i 's@plugins/labels.py@plugins/labels/labels.py@' app.fil
-  # plugins/virtualkeyboard.py → plugins/virtualkeyboard/qt.py
-  sed -i 's@plugins/virtualkeyboard.py@plugins/virtualkeyboard/qt.py@' app.fil
 }
 
 build() {
