@@ -6,7 +6,7 @@ pkgdesc="Extra Moksha modules"
 arch=('i686' 'x86_64')
 url="http://mokshadesktop.org"
 license=('BSD')
-depends=('moksha' 'moksha-modules-emprint-git')
+depends=('moksha' 'moksha-module-emprint-git')
 conflicts=('moksha-module-cpu-git' 'moksha-module-deskshow-git' 'moksha-module-diskio-git' 'moksha-module-mem-git' 'moksha-module-net-git')
 _module_list=(
   'alarm'
