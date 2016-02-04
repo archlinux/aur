@@ -3,7 +3,7 @@
 pkgname=libbitcoin-consensus-git
 pkgver=20160114
 pkgrel=1
-pkgdesc="Libbitcoin Consensus Library"
+pkgdesc="Bitcoin Consensus Library"
 arch=('i686' 'x86_64')
 depends=('boost'
          'boost-libs'
