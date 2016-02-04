@@ -3,7 +3,7 @@
 pkgname=abduco
 pkgver=0.5
 pkgrel=1
-conflicts=${pkgname}-git
+conflicts=(${pkgname}-git)
 pkgdesc="Tool for session {at,de}tach support which allows a process to run independently from its controlling terminal"
 arch=('i686' 'x86_64')
 url="http://www.brain-dump.org/projects/${pkgname}/"
