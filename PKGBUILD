@@ -1,0 +1,56 @@
+# Maintainer: PitBall
+
+pkgname=nvidia-352-lts
+pkgver=352.63
+pkgrel=1
+pkgdesc="NVIDIA drivers for linux"
+arch=('i686' 'x86_64')
+url="http://www.nvidia.com/"
+depends=('linux-lts' "nvidia-utils-352=${pkgver}" 'libgl')
+makedepends=('linux-lts-headers')
+provides=('nvidia')
+conflicts=('nvidia-lts-ck' 'nvidia-lts' 'nvidia-lts310-ck' 'nvidia-lts318-ck')
+license=('custom')
+install=nvidia-352-lts.install
+options=(!strip)
+source=("ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run"
+        "ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
+md5sums=('7882ecda1763504beb10af77a21b21c5'
+         'ce1ec67f875d434c212b859b582204c5')
+
+[[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
+[[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
+
+_major=$(pacman -Q linux-lts | grep -Po "\d+\.\d+")
+_extramodules=extramodules-$_major-lts
+_kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
+ 
+prepare() {
+    rm -rf "${_pkg}"	
+    sh "${_pkg}.run" --extract-only 
+    cd "${_pkg}"
+}
+
+build() {
+    cd "${_pkg}"/kernel
+    IGNORE_CC_MISMATCH=1 make SYSSRC=/usr/lib/modules/"${_kernver}/build" module
+
+    if [[ "$CARCH" = "x86_64" ]]; then
+        cd uvm
+        IGNORE_CC_MISMATCH=1 make SYSSRC=/usr/lib/modules/"${_kernver}/build" module
+    fi
+}
+
+package() {
+    install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia.ko" \
+        "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia.ko"
+
+    if [[ "$CARCH" = "x86_64" ]]; then
+        install -D -m644 "${srcdir}/${_pkg}/kernel/uvm/nvidia-uvm.ko" \
+            "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia-uvm.ko"
+    fi
+
+    gzip "${pkgdir}/usr/lib/modules/${_extramodules}/"*.ko
+
+}
+
