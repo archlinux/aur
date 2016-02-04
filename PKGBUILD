@@ -10,7 +10,7 @@ license=('FREEWARE')
 [ "$CARCH" = "i686" ] && depends=(wine mpg123)
 [ "$CARCH" = "x86_64" ] && depends=(wine lib32-mpg123)
 makedepends=()
-source=(mp3directcut mp3directcut.desktop mp3dcicon.png http://softdar.ru/fileup/mp3DC$_downver.exe)
+source=(mp3directcut mp3directcut.desktop mp3dcicon.png "mp3DC$_downver.exe::http://www.videohelp.com/download/mp3DC$_downver.exe?r=SvBPXMDg")
 md5sums=(
 	'31de44159649baddf5c7b6936b87133f' '910ada5caa9b0ea67a88bfc7ffe9c237'
 	'81a5bbd5789094b4bf5822791826c162' '0ca5940345f25f3fe2d1af1f610547ff')
