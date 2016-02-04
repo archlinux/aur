@@ -10,7 +10,7 @@
 
 _name=vlc
 pkgname=vlc-git
-pkgver=r2.2.0.git.5803.gadfe0c2
+pkgver=2.2.0.git.r6294.gc9c734d
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version)"
 arch=('i686' 'x86_64')
@@ -67,7 +67,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_name}"
-  git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/g;s/^.//;s/-/./g'
 }
 
 prepare() {
