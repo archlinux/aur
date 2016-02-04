@@ -2,11 +2,11 @@
 pkgname=auditd-openrc
 pkgver=20151011
 pkgrel=1
-pkgdesc="OpenRC auditd init script"
+pkgdesc="Auditd init script for OpenRC (from systemd-free.org - not apg's way)"
 url='http://people.redhat.com/sgrubb/audit/'
 arch=('any')
 license=('GPL')
-depends=('audit' 'openrc-core')
+depends=('audit' 'openrc')
 install='audit.install'
 _base_url="https://gitweb.gentoo.org/repo/gentoo.git/plain/sys-process/audit/files"
 source=("$_base_url/auditd-conf.d-2.1.3"
@@ -24,6 +24,11 @@ _inst_confd(){
 }
 _inst_initd(){
    install -Dm755 "${srcdir}/${1}-init.d-2.4.3" "${pkgdir}/etc/init.d/$1"
+
+   sed -e 's|#!/sbin/runscript|#!/usr/bin/openrc-run|' \
+	 -e 's|/var/run|/run|g' \
+	 -i "${pkgdir}/etc/init.d/$1"
+   # ^^--- should work without this, but actually does not (at boot)
 }
 
 package() {
