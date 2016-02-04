@@ -1,7 +1,7 @@
 pkgname=pacutils-git
 pkgdesc='alpm front-end tools'
 url='https://github.com/andrewgregory/pacutils'
-pkgver=0.0.256
+pkgver=0.0.328
 pkgrel=1
 arch=('i686' 'x86_64')
 depends=('pacman>=4.2')
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgname"
-    make
+    make SYSCONFDIR=/etc LOCALSTATEDIR=/var
 }
 
 check() {
