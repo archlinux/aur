@@ -2,12 +2,12 @@
 
 _pkgbase=ctrulib
 pkgname="$_pkgbase-git"
-pkgver=r1029.cf0a0dc
+pkgver=r1090.42ce1d8
 pkgrel=1
 pkgdesc="C library for writing user mode arm11 code for the 3DS (CTR)"
 arch=('i686' 'x86_64')
 url="https://github.com/smealum/ctrulib"
-license="ZLIB"
+license=("ZLIB")
 depends=('devkitarm')
 makedepends=('git')
 optdepends=('doxygen: to generate HTML documentation, rebuild after installing')
@@ -48,10 +48,5 @@ package() {
   hash doxygen && (
     install -dm755 "$pkgdir/usr/share/doc"
     cp -r docs "$pkgdir/usr/share/doc/$_pkgbase"
-  )
-
-  # Make $CTRULIB available system-wide.
-  install -dm755 "$pkgdir/etc/profile.d"
-  echo "export CTRULIB='$_DEVKITPRO/$_libname'" > "$pkgdir/etc/profile.d/$_pkgbase.sh"
-  chmod +x "$pkgdir/etc/profile.d/$_pkgbase.sh"
+  ) || true
 }
