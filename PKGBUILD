@@ -5,11 +5,11 @@
 
 pkgname=r-mkl
 pkgver=3.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Language and environment for statistical computing and graphics, set up to use Intel's MKL by default."
 arch=('i686' 'x86_64')
 license=('GPL')
-url=('http://www.r-project.org/')
+url='http://www.r-project.org/'
 provides=("r=${pkgver}","r-mkl=${pkgver}")
 conflicts=('r')
 depends=('intel-mkl'
@@ -29,17 +29,15 @@ depends=('intel-mkl'
         'xz'
         'desktop-file-utils'
         'zip'
-        'unzip'
-        'openmp')
+        'unzip')
 makedepends=('jdk8-openjdk'
             'gcc-fortran'
             'tk')
 optdepends=('tk: tcl/tk interface'
-            'texlive-bin: latex sty files'
-            'icc: intel compiler'
-            'icpc: intel compiler'
-            'xiar: intel compiler'
-            'xild: intel compiler')
+            'texlive-bin: LaTeX sty files'
+            'intel-compiler-base: Intel C/C++ compiler'
+            'intel-fortran-compiler: Intel Fortran compiler'
+            'intel-mpi: Intel MPI')
 backup=('etc/R/Makeconf'
         'etc/R/Renviron'
         'etc/R/ldpaths'
@@ -62,15 +60,8 @@ sha512sums=('9d7294af860204f4d84e25eb503111c9607beedbc42f01de073c915945a6342c3e2
             '55ed6e819dcbb231d842d825134b84d1a24db177558d5dad9369d57fd21d0239d6433c4311531171a101ca3c7c0685493e9cc6c1fe9e4e0df59f2331cff150ba'
             'aae388c5b6c02d9fb857914032b0cd7d68a9f21e30c39ba11f5a29aaf1d742545482054b57ce18872eabb6605bbb359b2fc1e9be5ce6881443fdbdf6b67fab3b')
 
-if [ "$CARCH" == "x86_64" ]; then
-  _intel_arch=intel64
-  _intel_lib=mkl_intel_lp64
-elif [ "$CARCH" == "i686" ]; then
-  _intel_arch=ia32
-  _intel_lib=mkl_gf
-fi
-
-_CC="icc" # comment to build without the Intel compiler
+# Build with GCC/GFortran or the Intel Compiler Suite
+# _CC="icc" # uncomment to build with the Intel compiler suite
 
 prepare() {
   cd R-${pkgver}
@@ -85,20 +76,35 @@ prepare() {
 build() {
   cd R-${pkgver}
 
+  # https://software.intel.com/sites/products/mkl/mkl_link_line_advisor.htm
+  # Interface Layer: LP64 (R uses 32-bit integers)
+
+  if [ "$CARCH" == "x86_64" ]; then
+    _intel_arch=intel64
+    _intel_lib=mkl_intel_lp64
+    _gcc_opt=" -O3 -m64"
+    _gfortran_lib=mkl_gf_lp64
+  elif [ "$CARCH" == "i686" ]; then
+    _intel_arch=ia32
+    _intel_lib=mkl_intel
+    _gcc_opt=" -O3 -m32"
+    _gfortran_lib=mkl_gf
+  fi
+
+  # Set up the environment for MKL
+  source /opt/intel/mkl/bin/mklvars.sh ${_intel_arch}
+
   if [ $_CC = "icc" ]; then
-    # Set up the environment for MKL
-    source /opt/intel/mkl/bin/mklvars.sh ${_intel_arch}
-    source /opt/intel/composerxe/linux/bin/ifortvars.sh ${_intel_arch}
-    _icclibpath=$(echo $MKLROOT | sed "s%mkl%compiler%g")/lib/${_intel_arch}
-    _mkllibpath=$MKLROOT/lib/${_intel_arch}
-    _openmplibpath=${PROD_DIR}/compiler/lib/intel64
-    _mkllibs="-L${_mkllibpath} -L${_openmplibpath} -Wl,--no-as-needed \
+    source /opt/intel/composerxe/linux/bin/compilervars.sh ${_intel_arch}
+    _intel_cc_opt=" -O3 -xHost -ipo -qopenmp -parallel"
+    export MAIN_LDFLAGS=" -qopenmp"
+
+    _mkllibs=" -L${MKLROOT}/lib/${_intel_arch} \
       -l${_intel_lib} \
-      -lmkl_intel_thread \
       -lmkl_core \
-      -liomp5 -ldl -lpthread -lm"
-    LDFLAGS="${LDFLAGS} -L${_icclibpath}"
-    export MAIN_LDFLAGS="-qopenmp"
+      -lmkl_intel_thread \
+      -lpthread \
+      -lm"
 
     export CC="icc"
     export CXX="icpc"
@@ -106,57 +112,46 @@ build() {
     export LD="xild"
     export _F77="ifort"
     export _FC="ifort"
-    export CFLAGS="-O3 -ipo -qopenmp -parallel -xHost -fp-model strict -qopt-mem-layout-trans=3 -I${MKLROOT}/include"
-    export CXXFLAGS="-O3 -ipo -qopenmp -parallel -xHost -fp-model strict -qopt-mem-layout-trans=3 -I${MKLROOT}/include"
-    export FFLAGS="-O3 -ipo -qopenmp -parallel -xHost -fp-model strict -qopt-mem-layout-trans=3 -I${MKLROOT}/include"
-    export FCFLAGS="-O3 -ipo -qopenmp -parallel -xHost -fp-model strict -qopt-mem-layout-trans=3 -I${MKLROOT}/include"
-
-    ./configure  --prefix=/usr \
-      --libdir=/usr/lib \
-      --sysconfdir=/etc/R \
-      --datarootdir=/usr/share \
-        rsharedir=/usr/share/R/ \
-        rincludedir=/usr/include/R/ \
-        rdocdir=/usr/share/doc/R/ \
-      --with-x \
-      --with-blas="${_mkllibs}" \
-      --with-lapack \
-      --enable-R-shlib \
-      --enable-memory-profiling \
-      --enable-BLAS-shlib \
-      --enable-openmp \
-      F77=${_F77} \
-      FC=${_FC} \
-      LIBnn=lib
-
-    # Place Intel's basic math library prior to GLIBC libm
-    sed -i "s/\(^\| \)-lm\( \|$\)/\1-limf -lm\2/g" {./,etc/}Makeconf
-
+    export CFLAGS="${_intel_cc_opt} -I${MKLROOT}/include"
+    export CXXFLAGS="${_intel_cc_opt} -I${MKLROOT}/include"
+    export FFLAGS="${_intel_cc_opt} -I${MKLROOT}/include"
+    export FCFLAGS="${_intel_cc_opt} -I${MKLROOT}/include"
   else
+    _mkllibs=" -Wl,--no-as-needed -L${MKLROOT}/lib/${_intel_arch} \
+      -l${_gfortran_lib} \
+      -lmkl_core \
+      -lmkl_intel_thread \
+      -liomp5 \
+      -ldl \
+      -lpthread \
+      -lm"
+
     export _F77="gfortran"
     export _FC="gfortran"
-    export CFLAGS="-O3 -fopenmp"
-    export CXXFLAGS="-O3 -fopenmp"
-    export FFLAGS="-O3 -fopenmp"
-    export FCFLAGS="-O3 -fopenmp"
-
-    ./configure  --prefix=/usr \
-      --libdir=/usr/lib \
-      --sysconfdir=/etc/R \
-      --datarootdir=/usr/share \
-        rsharedir=/usr/share/R/ \
-        rincludedir=/usr/include/R/ \
-        rdocdir=/usr/share/doc/R/ \
-      --with-x \
-      --with-blas \
-      --with-lapack \
-      --enable-R-shlib \
-      --enable-memory-profiling \
-      --enable-openmp \
-      F77=${_F77} \
-      FC=${_FC} \
-      LIBnn=lib
+    export CFLAGS="${_gcc_opt} -I${MKLROOT}/include"
+    export CXXFLAGS="${_gcc_opt} -I${MKLROOT}/include"
+    export FFLAGS="${_gcc_opt} -I${MKLROOT}/include"
+    export FCFLAGS="${_gcc_opt} -I${MKLROOT}/include"
   fi
+
+  ./configure  --prefix=/usr \
+    --libdir=/usr/lib \
+    --sysconfdir=/etc/R \
+    --datarootdir=/usr/share \
+    rsharedir=/usr/share/R/ \
+    rincludedir=/usr/include/R/ \
+    rdocdir=/usr/share/doc/R/ \
+    --with-x \
+    --with-blas="${_mkllibs}" \
+    --with-lapack \
+    --enable-R-shlib \
+    --enable-openmp \
+    F77=${_F77} \
+    FC=${_FC} \
+    LIBnn=lib
+
+  # Place Intel's basic math library prior to GLIBC libm
+  sed -i "s/\(^\| \)-lm\( \|$\)/\1-limf -lm\2/g" {./,etc/}Makeconf
 
   # Build the package
   make
