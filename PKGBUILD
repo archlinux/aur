@@ -1,22 +1,24 @@
 # Maintainer: George Angelopoulos <george@usermod.net>
 
 pkgname=collectl
-pkgver=4.0.2
-pkgrel=3
+pkgver=4.0.4
+pkgrel=1
 pkgdesc="A tool for viewing and gethering system performance metrics."
 arch=('any')
 url="http://collectl.sourceforge.net/"
 license=('GPL2' 'custom:artistic')
 depends=('perl')
 backup=('etc/collectl.conf')
-source=("http://sourceforge.net/projects/collectl/files/collectl/${pkgname}-${pkgver}/${pkgname}-${pkgver}.src.tar.gz"
-        "collectl.service")
-md5sums=('8502fbb30539e6f9ac962b8577a863b4'
-         '1a840bf752b462164d9192a5d51816d3')
+source=("http://sourceforge.net/projects/collectl/files/collectl/${pkgname}-${pkgver}/${pkgname}-${pkgver}.src.tar.gz")
+md5sums=('40765d3afc8f96a7744d4249b12fc606')
 
 package() {
 	cd "${pkgname}-${pkgver}"
     DESTDIR="${pkgdir}" ./INSTALL
+
+    # systemd service file exists upstream but is not handled quite well by
+    # the upstream INSTALL script. We install it here explicitly.
+    install -D -m644 service/${pkgname}.service "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 
     # we don't have sysv init in arch
     rm -rf ${pkgdir}/etc/init.d
@@ -29,5 +31,4 @@ package() {
     # match with any of the common ones in Arch Linux, we'll copy the
     # artistic license here as custom.
     install -D -m644 ARTISTIC "${pkgdir}/usr/share/licenses/${pkgname}/ARTISTIC"
-    install -D -m644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 }
