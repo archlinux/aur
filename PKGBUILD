@@ -3,7 +3,7 @@
 
 pkgname=ceti-2-themes
 pkgver=20150923
-pkgrel=2
+pkgrel=3
 pkgdesc='Ceti-2 is a theme for GTK 3, GTK 2 and Gnome-Shell. It supports GTK 3 and GTK 2 based desktop environments like Gnome, Unity, Budgie, Pantheon, etc.'
 _gnomever=3.18
 _releasever=20150923
@@ -13,14 +13,14 @@ license=('GPL3')
 depends=('gtk-engine-murrine')
 conflicts=('ceti-2-themes-git')
 source=("${pkgname}-${_releasever}.tar.gz::https://github.com/horst3180/Ceti-2-theme/archive/${_releasever}.tar.gz")
-sha256sums=('a9978f52da7f66f30190183c5f24acb442ef699225e575ea7453682914901525')
+sha256sums=('ce80498ca550d5e6649dda6da072a2bae8e3e41c3c54d1e953fc9421052e627b')
 
 build() {
-  cd Ceti-2-theme-${_releasever}
+  cd ceti-2-theme-${_releasever}
   ./autogen.sh --prefix=/usr --with-gnome=${_gnomever}
 }
 package() {
-  cd Ceti-2-theme-${_releasever}
+  cd ceti-2-theme-${_releasever}
 
   make DESTDIR="$pkgdir" install
   cd extra
