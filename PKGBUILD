@@ -11,7 +11,7 @@ url="http://www.canon.co.uk/Support/Consumer_Products/products/Fax__Multifunctio
 license=('custom')
 depends=('popt')
 provides=("cnijfilter-common=$pkgver")
-source=(http://gdlp01.c-wss.com/gds/8/0100005508/01/cnijfilter-mg6400series-$pkgver-1-deb.tar.gz)
+source=("http://gdlp01.c-wss.com/gds/8/0100005508/01/cnijfilter-mg6400series-$pkgver-1-deb.tar.gz")
 md5sums=('a921257bad9765399445e5dca899e250')
 
 package() {
