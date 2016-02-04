@@ -2,7 +2,7 @@
 
 pkgname=artanis-git
 pkgver=r830.e508e45
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast monolithic web-framework of Scheme"
 arch=('any')
 url="http://web-artanis.com/"
@@ -22,7 +22,6 @@ pkgver() {
 }
 
 build() {
-LANG=C
   cd "$srcdir"/"$_gitname"
   ./autogen.sh
   ./configure --prefix=/usr
