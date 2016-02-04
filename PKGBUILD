@@ -1,7 +1,7 @@
 pkgname=goglus-cursor-theme
 pkgver=1.0
-pkgrel=1
-pkgdesc="Breeze Amber cursor theme."
+pkgrel=2
+pkgdesc="X11 Mouse Theme"
 arch=('any')
 url="http://kde-look.org/content/show.php/goglus_cursor?content=127487"
 license=('GPL')
