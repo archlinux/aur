@@ -4,24 +4,21 @@
 # Contributor: falconindy <d@falconindy.com>
 
 pkgname=weex
-pkgver=2.6.1.5
-pkgrel=6
+pkgver=2.8.2
+pkgrel=1
 pkgdesc="A non-interactive FTP client for updating web pages"
 arch=(i686 x86_64)
 license=("GPL")
-source=("http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz"
-        "weex-2.6.1.5-formatstring.patch"
-        "weex-2.6.1.5-va_list.patch")
-md5sums=("c10192608ab9f715c4c1ea63cf6ad2da"
-         "a12d955c5a4d6b059395a0da22942114"
+source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/weex_$pkgver.tar.gz"
+        "weex-va_list.patch")
+md5sums=("3a4d908cb75bfb705b6228985af66024"
          "522552e03b82ab5669fd21c558290691")
 url="http://weex.sourceforge.net/"
 
 prepare() {
   cd "$pkgname-$pkgver"
 
-  patch -Np0 -i ../weex-$pkgver-formatstring.patch
-  [[ $CARCH == x86_64 ]] && patch -Np0 -i ../weex-$pkgver-va_list.patch
+  [[ $CARCH == x86_64 ]] && patch -Np0 -i ../weex-va_list.patch
 }
 
 build() {
@@ -31,7 +28,7 @@ build() {
   unset CPPFLAGS
   CFLAGS+=' -D_FORTIFY_SOURCE=2'
 
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --build=x86_64-unknown-linux-gnu --disable-dependency-tracking
   make
 }
 
