@@ -5,4 +5,4 @@ pkg
 *.tar
 *.tar.xz
 # Generated files
-clion-eap.desktop
+*.desktop
