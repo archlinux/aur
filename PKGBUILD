@@ -15,7 +15,7 @@ install=${pkgname}.install
 
 source=(${url}/${_pkgname}/${_pkgname}-${pkgver}.tar.bz2)
 
-md5sums=('5f50564b9aa67b6c96e363e81899a92c')
+md5sums=('6fb2217b15586295ce949e93538a701d')
 
 build() {
 	cd ${srcdir}/${_pkgname}-${pkgver}
