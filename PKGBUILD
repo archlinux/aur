@@ -13,7 +13,7 @@ replaces=('rocket')
 conflicts=('rocket')
 source=(
   "https://github.com/coreos/rkt/releases/download/v${pkgver}/rkt-v${pkgver}.tar.gz"
-  "https://github.com/coreos/rkt/releases/download/v${pkgver}/rkt-v${pkgver}.tar.gz.sig"
+  "https://github.com/coreos/rkt/releases/download/v${pkgver}/rkt-v${pkgver}.tar.gz.asc"
 )
 sha256sums=('SKIP' 'SKIP')
 validpgpkeys=('BECE2BD4B68D2071255A7A4E3689AD7F72EBB080')
