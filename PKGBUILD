@@ -1,14 +1,14 @@
 pkgname=php-inotify
-pkgver=0.1.6
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="The inotify extension allows to use inotify functions in a PHP script."
+pkgdesc="Inotify bindings for PHP 5 and PHP 7."
 arch=('i686' 'x86_64')
 url="http://pecl.php.net/package/inotify"
 license=('PHP')
 depends=('php')
 backup=('etc/php/conf.d/inotify.ini')
 source=(http://pecl.php.net/get/inotify-$pkgver.tgz)
-sha256sums=('979f80a25d4eb0de282617ffc0df46f07346a8383f310b9b943e48992e5b494e')
+sha256sums=('d044a89d26bbaa110f34f182b1c92ab5eb09768096bacf3d837d7e49ac045107')
 
 build() {
   cd "$srcdir/inotify-$pkgver"
