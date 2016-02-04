@@ -19,6 +19,6 @@ package() {
     install -d "${pkgdir}/usr/share/fonts/TTF"
     install -m644 "mikachanfont-${pkgver}"/fonts/*.ttf "${pkgdir}/usr/share/fonts/TTF"
 
-    install -d "${pkgdir}/usr/share/licenses/custom/${pkgname}"
+    install -d "${pkgdir}/usr/share/licenses/${pkgname}"
     install -m644 "mikachanfont-${pkgver}"/COPYRIGHT "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
 }
