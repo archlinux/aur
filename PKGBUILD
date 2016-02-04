@@ -20,15 +20,15 @@ md5sums=('b92e0b7b0f34dd2b60f89a62ca3bf4ae'
          'c996d26914e71897019c33854b0ae634')
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${_pkgver}"
 	sed -i 's%/usr/share/%/usr/share/lightdm-webkit/themes/antergos/%g' index.html
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${_pkgver}"
 	install -dm755 "${pkgdir}/usr/share/lightdm-webkit/themes"
 	cp -dpr --no-preserve=ownership "${srcdir}/antergos-wallpapers-${_bgver}" wallpapers
 	cp -dpr --no-preserve=ownership \
-		"${srcdir}/${pkgname}-${pkgver}" \
+		"${srcdir}/${pkgname}-${_pkgver}" \
 		"${pkgdir}/usr/share/lightdm-webkit/themes/${_pkgname}"
 }
