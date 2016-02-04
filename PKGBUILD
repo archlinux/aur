@@ -2,12 +2,12 @@
 # Contributor: Andre Klitzing <andre () incubo () de>
 
 pkgname=nsis
-pkgver=2.46
-pkgrel=7
+pkgver=2.50
+pkgrel=1
 pkgdesc='A professional open source system to create Windows installers'
 arch=('i686' 'x86_64')
 url='http://nsis.sourceforge.net'
-license='custom:zlib'
+license=('custom:zlib')
 depends=('gcc-libs')
 makedepends=('scons' 'mingw-w64-gcc')
 options=(!strip)
@@ -17,7 +17,7 @@ source=(http://downloads.sourceforge.net/project/nsis/NSIS%202/$pkgver/$pkgname-
         nsis-2.46-missing-unistd-include.patch
         nsis-2.46-static-libstdc++.patch
         nsis-add-mingw-w64-support.patch)
-md5sums=('61c2e81739436b06d7cf7bcce1d533ac'
+md5sums=('076850a971589a787d30224bfde936aa'
          '9eead3b78da54e3afda8f6a5b663aea9'
          '28f1002dd3c6a57cd3e1f8bb09c81fc5'
          'c4f912f0ca7fa455948f9f6a73314d93'
