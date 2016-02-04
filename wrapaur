@@ -523,7 +523,7 @@ check_updates()
 
 check_pkgversion()
 {
-	newver=$(curl -s "https://${aururl}/rpc.php?type=info&arg=$1" | awk -F : '{print $10}' | awk -F , '{print $1}' | sed 's/"//g')
+	newver=$(curl -s "https://${aururl}/rpc.php?type=info&arg=$1" | awk -F \": '{print $10}' | awk -F , '{print $1}' | sed 's/"//g')
 	currentver=$(pacman -Qi $1 | awk '{print $3}' | head -n 2 | tail -n 1)
 	if [[ $newver != $currentver ]] && [[ ! -z $newver ]]; then
 		echo 1
