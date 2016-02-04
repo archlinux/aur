@@ -2,6 +2,7 @@
 # Contributors:
 
 _fred=#tag=build01470
+#_fred=#branch=next
 _wot=#tag=build0018
 
 pkgname=freenet
@@ -11,7 +12,7 @@ _pkgver=0.7.5
 pkgdesc="An encrypted network without censorship"
 url="https://downloads.freenetproject.org"
 license=('GPL2')
-arch=('any')
+arch=('i686' 'x86_64')
 install='freenet.install'
 
 depends=('java-runtime>=7' 'gmp' 'java-service-wrapper')
@@ -41,7 +42,7 @@ noextract=('lzma465.tar.bz2'
            'mantissa-7.2-src.zip'
            'db4o-7.4-java.zip'
            'commons-compress.jar'
-           'bcprov-jdk15on-152.jar')
+           'bcprov-jdk15on-154.jar')
 
 # here we have only java-commons-compress coming prebuilt by
 # the freenetproject, the rest we build ourselves
@@ -53,7 +54,7 @@ source=("git+https://github.com/freenet/fred.git${_fred}"
         "${url}/alpha/opennet/seednodes.fref"
         "IpToCountry.dat::http://software77.net/geo-ip/?DL=4"
         "${url}/contrib/jar/latest/commons-compress.jar"
-        "https://www.bouncycastle.org/download/bcprov-jdk15on-152.jar"
+        "https://www.bouncycastle.org/download/bcprov-jdk15on-154.jar"
         "http://downloads.sourceforge.net/project/ant-contrib/ant-contrib/1.0b3/ant-contrib-1.0b3-bin.tar.bz2"
         "https://raw.githubusercontent.com/i2p/i2p.i2p/master/core/c/jcpuid/src/jcpuid.c"
         "https://raw.githubusercontent.com/i2p/i2p.i2p/master/core/c/jcpuid/include/jcpuid.h"
@@ -69,7 +70,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '16924be3c8f1322b659f3ff08060a43f45f2e8de6f95af28d86fe9876e79008d'
-            '0dc4d181e4d347893c2ddbd2e6cd5d7287fc651c03648fa64b2341c7366b1773'
+            'd0ae14598f9c528d2ab7bb8ed00e785a5440f692712cd362d69328aba25efb57'
             '96effcca2581c1ab42a4828c770b48d54852edf9e71cefc9ed2ffd6590571ad1'
             'f1ecddb5395892e0b2e6282bc3a1437d06afa52758057850ecccfa0a79c45c5d'
             '9ec758801a9864ae10caf851ee60ed22c3ef44428e77689c203d9b890921a6d2'
@@ -77,7 +78,7 @@ sha256sums=('SKIP'
             '865c1f259d9c544861cc12b4ea64ad35ec6388c1392b3e5247eaed0f316e42b7'
             '9912dcfc8f30143b68e6f9c51505ae921100eb6b24690a8680582bb23559d95a'
             '434f67e2e86edb555b7dfb572a52d7ff719373989e1f1830f779bfccc678539f'
-            '6ae810e40ac177b4238e95b31329d099f6a7cc95154ec1b1844538580e692f64'
+            'c0ce093a098d91dee6be294f8a2fc929aabad95612f994933194d0da5c4cdd25'
             'f7bceda39b36d1d79e70c8ba8e0e68d4cfe060b16e67d8341078af5fda13b405'
             'c935fd04dd8e0e8c688a3078f3675d699679a90be81c12686837e0880aa0fa1e'
             '265f7ed2dd4fecb058884d3f8974674b06e0be46131c3b2bc6a310373937d2ef'
@@ -117,7 +118,7 @@ prepare() {
     ln -sf /usr/share/java/wrapper.jar contrib/freenet-ext/dist/
     ln -sf /usr/share/java/{hamcrest-core,junit}.jar lib/
     ln -sf "$srcdir"/ant-contrib/{ant-contrib-1.0b3,ant-contrib}.jar
-    cp "$srcdir"/bcprov-jdk15on-152.jar lib/bcprov.jar
+    cp "$srcdir"/bcprov-jdk15on-154.jar lib/bcprov.jar
     cp "$srcdir"/{lzma465.tar.bz2,league-lzmajio-0.95-0-gd38bf5c.tar.gz,jBitcollider-0.8.zip,mantissa-7.2-src.zip,db4o-7.4-java.zip} contrib/freenet-ext/lib
 
     # we're going to compile our own C libraries
