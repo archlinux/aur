@@ -3,7 +3,7 @@
 pkgname=libbitcoin-node
 pkgver=2.4.0
 pkgrel=1
-pkgdesc="Bitcoin Full Node"
+pkgdesc="Bitcoin Full Node Library"
 arch=('i686' 'x86_64')
 depends=('boost'
          'boost-libs'
