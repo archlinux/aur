@@ -12,13 +12,13 @@
 
 pkgbase=lib32-mesa-git
 pkgname=('lib32-mesa-vdpau-git' 'lib32-mesa-git' 'lib32-mesa-libgl-git' 'lib32-libva-mesa-driver-git')
-pkgver=11.2.0_devel.75890.30fcf24
+pkgver=11.2.0_devel.75996.9c78cfd
 pkgrel=1
 arch=('x86_64')
 makedepends=('python2' 'lib32-libxml2' 'lib32-expat' 'lib32-libx11' 'glproto' 'lib32-libdrm>=2.4.66' 'dri2proto' 'dri3proto' 'presentproto'
              'lib32-libxshmfence' 'lib32-libxxf86vm' 'lib32-libxdamage' 'gcc-multilib' 'lib32-elfutils'  'lib32-systemd'
-             'lib32-libvdpau' 'lib32-wayland' 'python2-mako' 'lib32-libtxc_dxtn' 'git' 'lib32-libgcrypt'
-             'mesa-git' 'libva-mesa-driver-git' 'mesa-vdpau-git' 'mesa-libgl-git' 'lib32-llvm-libs-svn' 'lib32-llvm-svn' )
+             'lib32-libvdpau' 'lib32-wayland' 'python2-mako' 'lib32-libtxc_dxtn' 'git' 'lib32-nettle'
+             'mesa-git' 'libva-mesa-driver-git' 'mesa-vdpau-git' 'mesa-libgl-git' 'lib32-llvm-libs-svn' 'lib32-llvm-svn' 'lib32-libxvmc' )
 url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=('mesa::git://anongit.freedesktop.org/mesa/mesa#branch=master'
@@ -49,27 +49,61 @@ build() {
                --prefix=/usr \
                --sysconfdir=/etc \
                --with-dri-driverdir=/usr/lib32/xorg/modules/dri \
-               --with-gallium-drivers=i915,r300,r600,radeonsi,nouveau,swrast,virgl \
+               --with-gallium-drivers=i915,ilo,r300,r600,radeonsi,nouveau,swrast,virgl \
                --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
                --with-egl-platforms=x11,drm,wayland \
-               --with-sha1=libgcrypt \
+               --with-sha1=libnettle \
+               --enable-texture-float \
+               --enable-dri3 \
+               --enable-osmesa \
+               --enable-xa \
+               --enable-gbm \
+               --enable-nine \
+               --enable-xvmc \
+               --enable-vdpau \
                --enable-va \
                --with-va-libdir=/usr/lib32/dri \
-               --enable-llvm-shared-libs \
-               --enable-egl \
-               --enable-gbm \
-               --enable-gallium-llvm \
-               --enable-shared-glapi \
                --enable-glx-tls \
-               --enable-dri \
-               --enable-glx \
-               --enable-osmesa \
-               --enable-gles1 \
-               --enable-gles2 \
-               --enable-texture-float \
-               --enable-nine \
-               --enable-vdpau
-  
+
+#
+# configure flag                description                                                             default                                         overridden
+#  --enable-debug               use debug compiler flags and macros                                     [default=disabled]
+#  --enable-profile             enable profiling of code                                                [default=disabled]
+#  --enable-mangling            enable mangled symbols and library name                                 [default=disabled]
+#  --enable-texture-float       enable floating-point textures and renderbuffers                        [default=disabled]                              enabled
+#  --disable-asm                disable assembly usage                                                  [default=enabled on supported  plaforms]
+#  --enable-selinux             Build SELinux-aware Mesa                                                [default=disabled]
+#  --disable-opengl             disable support for standard OpenGL API                                 [default=enabled]
+#  --disable-gles1              disable support for OpenGL ES 1.x API                                   [default=enabled]
+#  --disable-gles2              disable support for OpenGL ES 2.x API                                   [default=enabled]
+#  --enable-dri                 enable DRI modules                                                      [default=enabled]
+#  --enable-dri3                enable DRI3                                                             [default=auto]                                  enabled
+#  --enable-glx                 enable GLX library                                                      [default=enabled]
+#  --enable-osmesa              enable OSMesa library                                                   [default=disabled]                              enabled
+#  --enable-gallium-osmesa      enable Gallium implementation of the OSMesa library                     [default=disabled]
+#  --disable-egl                disable EGL library                                                     [default=enabled]
+#  --enable-xa                  enable build of the XA X Acceleration API                               [default=disabled]                              enabled
+#  --enable-gbm                 enable gbm library                                                      [default=auto]                                  enabled
+#  --enable-nine                enable build of the nine Direct3D9 API                                  [default=no]                                    enabled
+#  --enable-xvmc                enable xvmc library                                                     [default=auto]                                  enabled
+#  --enable-vdpau               enable vdpau library                                                    [default=auto]                                  enabled
+#  --enable-omx                 enable OpenMAX library                                                  [default=disabled]
+#  --enable-va                  enable va library                                                       [default=auto]                                  enabled
+#  --enable-opencl              enable OpenCL library                                                   [default=disabled]
+#  --enable-opencl-icd          Build an OpenCL ICD library to be loaded by an ICD implementation       [default=disabled]
+#  --enable-xlib-glx             make GLX library Xlib-based instead of DRI-based                       [default=disabled]
+#  --enable-r600-llvm-compiler   Enable experimental LLVM backend for graphics shaders                  [default=disabled]
+#  --enable-gallium-tests        Enable optional Gallium tests)                                         [default=disabled]
+#  --enable-shared-glapi         Enable shared glapi for OpenGL                                         [default=enabled]
+#  --disable-shader-cache        Disable binary shader cache
+#  --enable-sysfs                enable /sys PCI identification                                         [default=disabled]
+#  --disable-driglx-direct      disable direct rendering in GLX and EGL for DRI                         [default=auto]
+#  --enable-glx-tls             enable TLS support in GLX                                               [default=disabled]                              enabled
+#  --enable-glx-read-only-text  Disable writable .text section on x86 (decreases performance)           [default=disabled]
+#  --enable-gallium-llvm        build gallium LLVM support                                              [default=enabled on x86/x86_64]
+#  --enable-llvm-shared-libs    link with LLVM shared libraries                                         [default=enabled]
+#
+
   make
 
   # fake installation
@@ -79,7 +113,7 @@ build() {
 
 package_lib32-libva-mesa-driver-git() {
   pkgdesc="VA-API implementation for gallium (32-bit)"
-  depends=('lib32-libdrm' 'lib32-libx11' 'lib32-llvm-libs-svn' 'lib32-expat' 'lib32-elfutils' 'lib32-libgcrypt' 'libva-mesa-driver-git')
+  depends=('lib32-libdrm' 'lib32-libx11' 'lib32-llvm-libs-svn' 'lib32-expat' 'lib32-elfutils' 'lib32-nettle' 'libva-mesa-driver-git')
   provides=("lib32-libva-mesa-driver=$(_mesaver)")
   conflicts=('lib32-libva-mesa-driver')
 
@@ -92,7 +126,7 @@ package_lib32-libva-mesa-driver-git() {
 
 package_lib32-mesa-vdpau-git() {
   pkgdesc="Mesa VDPAU drivers (32-bit)"
-  depends=('lib32-libdrm' 'lib32-libx11' 'lib32-expat' 'lib32-llvm-libs-svn' 'lib32-elfutils' 'mesa-vdpau-git' 'lib32-libgcrypt')
+  depends=('lib32-libdrm' 'lib32-libx11' 'lib32-expat' 'lib32-llvm-libs-svn' 'lib32-elfutils' 'mesa-vdpau-git' 'lib32-nettle')
   provides=('lib32-mesa-vdpau')
   replaces=('lib32-mesa-vdpau')
   conflicts=('lib32-mesa-vdpau')
@@ -107,7 +141,7 @@ package_lib32-mesa-vdpau-git() {
 package_lib32-mesa-git() {
   pkgdesc="an open-source implementation of the OpenGL specification (32-bit)"
   depends=('lib32-libdrm' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libxshmfence' 'lib32-systemd'
-           'lib32-elfutils' 'lib32-llvm-libs-svn' 'lib32-wayland' 'lib32-libtxc_dxtn' 'mesa-git' 'lib32-libxvmc' 'lib32-libgcrypt')
+           'lib32-elfutils' 'lib32-llvm-libs-svn' 'lib32-wayland' 'lib32-libtxc_dxtn' 'mesa-git' 'lib32-libxvmc' 'lib32-nettle')
   optdepends=('opengl-man-pages: for the OpenGL API man pages'
               'lib32-mesa-vdpau-git: for accelerated video playback')
   provides=("lib32-mesa=$(_mesaver)" 'lib32-mesa-dri' 'lib32-mesa-r300-r600-radeonsi-git')
