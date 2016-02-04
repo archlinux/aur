@@ -1,7 +1,6 @@
-Only in avro-cpp-1.7.7-patched/: CMakeLists.txt.orig
-diff -ur avro-cpp-1.7.7/scripts/gen-cppcode.py avro-cpp-1.7.7-patched/scripts/gen-cppcode.py
---- avro-cpp-1.7.7/scripts/gen-cppcode.py	2014-07-18 20:20:04.000000000 +0100
-+++ avro-cpp-1.7.7-patched/scripts/gen-cppcode.py	2014-07-30 01:19:33.603500815 +0100
+diff -uNr avro-cpp-1.8.0.orig/scripts/gen-cppcode.py avro-cpp-1.8.0/scripts/gen-cppcode.py
+--- avro-cpp-1.8.0.orig/scripts/gen-cppcode.py	2016-02-04 13:28:36.564240294 +0000
++++ avro-cpp-1.8.0/scripts/gen-cppcode.py	2016-02-04 13:35:33.354241323 +0000
 @@ -1,4 +1,4 @@
 -#!/usr/bin/python
 +#!/usr/bin/python2
