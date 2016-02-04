@@ -1,7 +1,7 @@
 # Maintainer: Kai Yuan <kent.yuan @t gmail d@t com>
 pkgname=zhuaxia
 pkgver=3.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="cli tool to download mp3 from xiami.com and music.163.com"
 arch=('any')
 url="https://github.com/sk1418/zhuaxia"
@@ -11,7 +11,7 @@ depends=('python2-requests' 'mutagen' 'python2-beautifulsoup4' 'python2-setuptoo
 conflicts=('python2-mutagen')
 sha256sums=('SKIP')
 sha512sums=('SKIP')
-source="$pkgname::git+http://github.com/sk1418/${pkgname%-*}.git"
+source=("$pkgname::git+http://github.com/sk1418/${pkgname%-*}.git")
 
 package() {
   cd ${pkgname}
