@@ -1,11 +1,13 @@
 # Maintainer: Corelli <corelli AT yepmail DOT net>
 # Contributor: >pmav99< >at< >gmail< >dot< >com<
 # Contributor: Kevin Klement
+# Contributor: FSSlc
+
 pkgname=texlive-dummy
 pkgver=0.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Something to trick Arch into thinking it has its texlive packages installed."
-url=('http://www.tug.org/texlive/')
+url="http://www.tug.org/texlive/"
 arch=('any')
 license=('GPL')
 depends=()
