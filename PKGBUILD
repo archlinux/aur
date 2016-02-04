@@ -3,13 +3,13 @@
 pkgname=nvidia-352-lts
 pkgver=352.63
 pkgrel=1
-pkgdesc="NVIDIA drivers for linux"
+pkgdesc="NVIDIA drivers for linux-lts"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
 depends=('linux-lts' "nvidia-utils-352=${pkgver}" 'libgl')
 makedepends=('linux-lts-headers')
 provides=('nvidia')
-conflicts=('nvidia-lts-ck' 'nvidia-lts' 'nvidia-lts310-ck' 'nvidia-lts318-ck')
+conflicts=('nvidia-lts')
 license=('custom')
 install=nvidia-352-lts.install
 options=(!strip)
