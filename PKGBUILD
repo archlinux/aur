@@ -2,9 +2,7 @@
 # Maintainer: Richard Schwab <mail NOSPAM w.tf-w.tf>
 
 pkgname=libiphone-git
-pkgver=20150922
-#pkgver=1.1.5.23.g41ba99e
-#epoch=1
+pkgver=1.2.0.r13.gdf1f5c4
 pkgrel=1
 pkgdesc="libiphone is a software library that talks the native Apple USB protocols that the iPhone uses. (no cython support for now)"
 url="http://libimobiledevice.org/"
@@ -16,11 +14,11 @@ optdepends=('doxygen: Documentation')
 #optdepends=('cython: Python bindings' 'doxygen: Documentation')
 provides=('libiphone')
 source=('libiphone::git+http://git.sukimashita.com/libimobiledevice.git')
-md5sums=(SKIP)
+md5sums=('SKIP')
 
 pkgver() {
 	cd libiphone
-	git describe --tags | sed "s/-/./g"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
