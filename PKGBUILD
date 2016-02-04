@@ -3,7 +3,7 @@
 
 pkgname=pianoteq-stage-trial-bin
 pkgver=5.5.1
-pkgrel=2
+pkgrel=1
 pkgdesc="Virtual piano instrument using physical modelling synthesis. Both standalone and plugin versions."
 arch=('i686' 'x86_64')
 url="https://www.pianoteq.com/pianoteq5"
