@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
 source=("https://pypi.python.org/packages/source/d/django-model-utils/django-model-utils-${pkgver}.tar.gz")
-md5sums=('6bef27d0ef53a2132b86825921c3b0da')
+sha256sums=('26795b12c85044073438d78d6efbb0071ebe1ebf7be2c185f2f0ba25ac446464')
 
 package() {
     depends+=()
