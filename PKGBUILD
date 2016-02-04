@@ -3,7 +3,7 @@
 pkgname=libbitcoin-client-git
 pkgver=20151213
 pkgrel=2
-pkgdesc="The Bitcoin Client Protocol Implementation"
+pkgdesc="Bitcoin Client Protocol Library"
 arch=('i686' 'x86_64')
 depends=('boost'
          'boost-libs'
