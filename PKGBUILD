@@ -1,6 +1,6 @@
 pkgname=blogc-runserver
 pkgver=0.1
-pkgrel=0
+pkgrel=1
 pkgdesc="A simple HTTP server to test blogc websites"
 arch=('i686' 'x86_64')
 url="https://github.com/blogc/blogc-runserver"
