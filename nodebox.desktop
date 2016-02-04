@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=NodeBox
+Comment=Node-based software application for generative design
+GenericName=
+Exec=/usr/bin/nodebox
+Icon=nodebox
+Type=Application
+StartupNotify=true
+Categories=Graphisme;
+MimeType=text/plain;
