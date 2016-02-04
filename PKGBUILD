@@ -4,9 +4,9 @@
 # Contributor: Dr.Egg <rwhite@archlinux.us>
 
 pkgname=musescore-git
-pkgver=r9850.77e980d
+pkgver=r9993.5b20a4a
 _branch=master
-pkgrel=2
+pkgrel=1
 pkgdesc='Latest git-version of the sheet music editor MuseScore'
 arch=('i686' 'x86_64')
 url='https://github.com/musescore/MuseScore'
