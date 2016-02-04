@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
 source=("https://pypi.python.org/packages/source/d/django-markitup/django-markitup-${pkgver}.tar.gz")
-md5sums=('3de508b3bfb7b5a421c5cce4fc4c54f6')
+sha256sums=('89164fe1cde7d08af18b3a4f948b32fa9202d1731e2f267bd2de89d2da92560b')
 
 package() {
     depends+=()
