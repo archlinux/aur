@@ -3,8 +3,8 @@
 # Contributor: mosra <mosra@centrum.cz>
 
 pkgname=mypaint-git
-pkgver=1.2.0.beta.4.r15.g50b8f1a
-pkgrel=2
+pkgver=1.2.0.r33.g713d0be
+pkgrel=1
 pkgdesc="A fast and easy painting application for digital painters, with brush dynamics"
 arch=('i686' 'x86_64')
 url="http://mypaint.org/"
@@ -42,7 +42,4 @@ build() {
 package() {
 	cd "$srcdir/mypaint"
 	scons prefix="/usr" enable_gegl=true use_sharedlib=yes --install-sandbox="$pkgdir" "$pkgdir"
-
-	#mypaint fails to start if this isn't installed, report upstream later
-	cp brushlib/libmypaint-tests.so "$pkgdir/usr/lib/"
 }
