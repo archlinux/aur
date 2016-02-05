@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=sawfish-git
-pkgver=sawfish.1.11.90.6.gba51040
+pkgver=1.11.90.6.gba51040
 pkgrel=1
 pkgdesc='A window manager extensible using a Lisp-based scripting language.'
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ _gitname=sawfish
 
 pkgver() {
   cd $_gitname
-  git describe --tags|sed 's/-/./g'
+  git describe --tags|sed 's/-/./g'|cut -c9-
 }
 
 build() {
