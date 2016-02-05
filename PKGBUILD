@@ -2,7 +2,7 @@
 
 _plug=flt
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r2.0.gc94c091
+pkgver=r4.0.g3a05971
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -26,7 +26,10 @@ prepare() {
 
   echo "all:
 	  g++ -c -std=gnu++11 -fPIC -Wextra -Wno-unused-parameter ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o FloatFilters.o FloatFilters.cpp
-	  g++ -shared -fPIC ${LDFLAGS} -o lib${_plug}.so FloatFilters.o" > Makefile
+	  g++ -c -std=gnu++11 -fPIC -Wextra -Wno-unused-parameter ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o InDeflate.o InDeflate.cpp
+	  g++ -c -std=gnu++11 -fPIC -Wextra -Wno-unused-parameter ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o MaxMinimum.o MaxMinimum.cpp
+	  g++ -c -std=gnu++11 -fPIC -Wextra -Wno-unused-parameter ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o Median.o Median.cpp
+	  g++ -shared -fPIC ${LDFLAGS} -o lib${_plug}.so FloatFilters.o InDeflate.o MaxMinimum.o Median.o" > Makefile
 }
 
 build() {
