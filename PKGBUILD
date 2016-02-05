@@ -41,5 +41,6 @@ package() {
     install -Dm755 mime/comicthumb ${pkgdir}/usr/bin/comicthumb
     install -Dm644 mime/comicthumb.1.gz ${pkgdir}/usr/share/man/man1/comicthumb.1.gz
     install -Dm644 mime/comicthumb.thumbnailer ${pkgdir}/usr/share/thumbnailers/comicthumb.thumbnailer
+    install -Dm644 mime/comicbook.schemas ${pkgdir}/usr/share/gconf/schemas/mcomix.schemas
 }
 
