@@ -1,7 +1,7 @@
 # Maintainer: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
 _pkgname=dgedit
 pkgname=$_pkgname-git
-pkgver=0.r7.a9e821d
+pkgver=0.r9.9af1d8c
 pkgrel=1
 pkgdesc="The DrumGizmo drumkit editor"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
