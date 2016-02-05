@@ -1,6 +1,6 @@
 # Maintainer: Marius Orcsik <marius.orcsik@gmail.com>
 pkgname=plasma-wallpaper-himawari-git
-pkgver=r5.9d29366
+pkgver=r7.2049a94
 pkgrel=1
 pkgdesc="Plasma Wallpaper Himawari"
 arch=("any")
@@ -10,7 +10,7 @@ depends=('plasma-workspace')
 makedepends=('git' 'cmake') 
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git+https://github.com/mariusor/plasmahimawari.git")
+source=("${pkgname%-git}::git+https://github.com/Hyperz/plasmahimawari.git")
 md5sums=('SKIP')
 
 pkgver() {
