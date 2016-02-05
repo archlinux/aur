@@ -20,6 +20,7 @@ md5sums=('82128b2983b8242edb71f7903a8523e4'
 
 package() {
   cd $srcdir
+  rm -rf *.[15]
   for f in *.[15]*; do mv "$f" "${f%%?attredirects=0&d=1}"; done
   for i in 1 5; do
     if [ ! -e "${pkgdir}/usr/share/man/ja_JP.UTF-8/man${i}/" ]; then
