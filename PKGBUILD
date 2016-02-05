@@ -1,7 +1,7 @@
 # Contributor: Ben Ward <benjamin.ward@bathspa.org>
 # Maintainer: Alexsandr Pavlov <kidoz at mail dot ru>
 pkgname=rstudio-desktop
-pkgver=0.99.486
+pkgver=0.99.491
 _gwtver=2.7.0
 _ginver=1.5
 _clangver=3.6.1
@@ -10,7 +10,11 @@ pkgdesc="Open source and enterprise-ready professional software for the R commun
 arch=('i686' 'x86_64')
 url="http://www.rstudio.com/"
 license=('AGPL')
-depends=('r>=2.11.1' 'boost-libs>=1.50' qt5-base qt5-webkit pango shared-mime-info mathjax pandoc clang)
+depends=(
+	'r>=2.11.1' 'boost-libs>=1.50'
+	pango shared-mime-info mathjax pandoc clang
+	qt5-base qt5-declarative qt5-location qt5-sensors qt5-svg qt5-webkit qt5-xmlpatterns
+)
 makedepends=('cmake>=2.8' 'boost>=1.50' java-environment apache-ant openssl pam)
 conflicts=('rstudio-desktop-bin' 'rstudio-desktop-git' 'rstudio-desktop-preview-bin')
 install=rstudio-desktop.install
@@ -21,7 +25,7 @@ source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/tarball/v$pk
         "qdatastream.patch")
 noextract=('core-dictionaries.zip'
            "gin-$_ginver.zip")
-sha256sums=('e6e8dff7506f31293b319ac26ee58e4fbd8da528b8887b70e31438d8b407d3c9'
+sha256sums=('78ce1a5b6288d61332781c9dac7a894c322950e476322bc5268c4d8866892ac1'
             'f561f4eb5d5fe1cff95c881e6aed53a86e9f0de8a52863295a8600375f96ab94'
             'aa65061b73836190410720bea422eb8e787680d7bc0c2b244ae6c9a0d24747b3'
             '4341a9630efb9dcf7f215c324136407f3b3d6003e1c96f2e5e1f9f14d5787494'
