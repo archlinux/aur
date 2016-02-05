@@ -3,11 +3,11 @@
 # Contributor: Jon Yamokoski <code@jonyamo.us>
 
 pkgname=pass-git
-pkgver=20140701.337
+pkgver=20160205.395
 pkgrel=1
 pkgdesc='Stores, retrieves, generates, and synchronizes passwords securely'
 url='http://www.passwordstore.org/'
-license='GPL2'
+license=('GPL2')
 arch=('any')
 depends=('bash' 'git' 'gnupg' 'grep' 'pwgen' 'tree>=1.7.0' 'xclip')
 makedepends=('git')
