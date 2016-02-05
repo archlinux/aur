@@ -19,7 +19,7 @@ source=("https://downloads.atlassian.com/software/stash/downloads/atlassian-bitb
         'stash.tmpfiles'
         'stash.sysusers'
         'local.conf')
-sha256sums=('0632382b092105bbc99e580ef1a92e076eed94ac277ad4804e474bf70fa6722c'
+sha256sums=('7d29f1dc5960547528856d54a2d498be5e3220d741a8500e6160f08bc4dec2b3'
             '6c937a9fdb747e04585405244b24fdd49a4e087a76a1b1792107f20c28fa3950'
             'f314c949fd86741ae830d8e97243874a9bf70622ad7c33af2369cc5eb4c17bd9'
             'b8b44f798e8611bfc0e05c07e117c3a4b43cc09a4d53cd401c35d766e2e3f283'
