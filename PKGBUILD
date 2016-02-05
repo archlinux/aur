@@ -1,15 +1,18 @@
 # Maintainer: archlinux@carstenfeuls.de
 
 pkgname=kde-services
-pkgver=2.1
-pkgrel=1
+pkgver="2.1"
+pkgrel=3
 pkgdesc="kde-service multifunction"
 arch=('any')
 url="https://opendesktop.org/content/show.php/kde-services?content=147065"
 license=('GPL')
 depends=('kdebase-runtime' 'dmidecode' 'festival' 'poppler' 'ffmpeg' 'transcode' 'ghostscript' 'fuse' 'cdrkit' 'diffutils' 'fuseiso' 'youtube-dl')
-source=("http://downloads.sourceforge.net/project/kde-services/Source-Code/$pkgname-$pkgver.tar.bz2" System-Tools_addtoservicemenu.desktop)
+source=("http://downloads.sourceforge.net/project/kde-services/Source-Code/$pkgname-$pkgver.tar.bz2" 
+	"System-Tools_addtoservicemenu.desktop")
 install=${pkgname}.install
+sha512sums=('f928e839a7a009d7db91a3d0265d3f4538005e2f84301d21541031928c32742e6eb4f337010d98f6f200135ab7665ce5db33c5d727a92ca1aa9f0d63fce5157e'
+            '170b89e91dad38340424911f3a1daad69b4a3bc7aa6813ffd74e53c4b34c2555f68c05334b0d2a7fa17d1f0f778369e7cfe3e0590e18e8e0bf006ec1685a59f2')
 
 package() {
   cd $srcdir/$pkgname-$pkgver
@@ -43,5 +46,3 @@ package() {
   #sed '13,36d' <$pkgdir/usr/share/kde4/services/ServiceMenus/System-Tools_addtoservicemenu.desktop
   cp $srcdir/System-Tools_addtoservicemenu.desktop $pkgdir/usr/share/kde4/services/ServiceMenus/System-Tools_addtoservicemenu.desktop
 }
-sha512sums=('c10f5be7ade82cff4079d63fa83a615a871cec0df3ec15bea87fe63ae074ae5c13754a77eb4b72d99f0b9ffd8689caf585e341a43fb270f211de69c2b42a1b9f'
-            '170b89e91dad38340424911f3a1daad69b4a3bc7aa6813ffd74e53c4b34c2555f68c05334b0d2a7fa17d1f0f778369e7cfe3e0590e18e8e0bf006ec1685a59f2')
