@@ -1,7 +1,7 @@
 # Maintainer: Miloš Polakovič <milos@mailbox.org>
 pkgname=netctl-eduroam-fmfi
 pkgver=20160203
-pkgrel=1
+pkgrel=2
 pkgdesc='Example netctl profile for eduroam at FMFI UK'
 arch=(i686 x86_64)
 url=https://www.github.com/mpolakovic/netctl-eduroam-fmfi
