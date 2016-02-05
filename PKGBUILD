@@ -17,9 +17,6 @@ install="${pkgname%-*}.install"
 source=('https://launchpad.net/feedreader/'${pkgver%.*}'/'${pkgver}'/+download/FeedReader-'${pkgver}'.tar.gz')
 sha256sums=('e43ceb9eb866c2e8e16d460b6914e6450b2c97fe62f0730a2ec67a3c7d7f0a3c')
 
-pkgver() {
-  cd "${srcdir}"
-}
 
 ##Build without Libunity (-DWITH_LIBUNITY=OFF)
 build() {
