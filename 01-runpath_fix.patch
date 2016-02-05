@@ -1,12 +1,12 @@
-diff -aur burp-2.0.30-pristine/Makefile.am burp-2.0.30-patched/Makefile.am
---- burp-2.0.30-pristine/Makefile.am	2016-01-03 00:59:14.000000000 -0600
-+++ burp-2.0.30-patched/Makefile.am	2016-01-03 09:10:06.010636099 -0600
-@@ -358,7 +358,7 @@
+diff -aur burp-2.0.32-pristine/Makefile.am burp-2.0.32-new/Makefile.am
+--- burp-2.0.32-pristine/Makefile.am	2016-01-30 23:48:49.000000000 -0600
++++ burp-2.0.32-new/Makefile.am	2016-02-04 21:25:41.568400983 -0600
+@@ -380,7 +380,7 @@
  
  install-data-local:
  	$(AM_V_at)$(MKDIR_P) $(DESTDIR)$(localstatedir)/spool/burp
 -	$(AM_V_at)$(MKDIR_P) $(DESTDIR)$(runstatedir)
 +	$(AM_V_at)$(MKDIR_P) $(DESTDIR)/run
- 	$(AM_V_at)$(MKDIR_P) $(DESTDIR)$(sysconfdir)/CA-client
- 	$(AM_V_at)$(MKDIR_P) $(DESTDIR)$(sysconfdir)/autoupgrade/server/win32
- 	$(AM_V_at)$(MKDIR_P) $(DESTDIR)$(sysconfdir)/autoupgrade/server/win64/$(VERSION)
+ 
+ clean-local: clean-local-check
+ 
