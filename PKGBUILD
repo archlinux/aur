@@ -2,7 +2,7 @@
 # Note that this package is in no way officially supported by Atlassian.
 
 pkgname=atlassian-stash
-pkgver=4.2.0
+pkgver=4.3.2
 pkgrel=1
 pkgdesc="Bitbucket Server (Stash)"
 url="https://www.atlassian.com/software/bitbucket/server"
