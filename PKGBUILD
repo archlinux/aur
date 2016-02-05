@@ -3,7 +3,7 @@
 # Contributor: Vincent Demeester <vincent@sbr.pm>
 
 pkgname=(python-dockerpty python2-dockerpty)
-pkgver=0.3.4
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Python library to use the pseudo-tty of a docker container"
 arch=('any')
