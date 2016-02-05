@@ -3,7 +3,7 @@
 # Contributor: Lightning <sgsdxzy@gmail.com>
 
 pkgbase=dolphin-emu-git-netplay
-pkgname=('dolphin-emu-git-netplay' 'dolphin-emu-cli-git-netplay' 'dolphin-emu-qt-git-netplay')
+pkgname=('dolphin-emu-git-netplay' 'dolphin-emu-cli-git-netplay')
 pkgver=4.0.2.r7840.ce493b8
 pkgrel=1
 pkgdesc='A GameCube / Wii / Triforce emulator, v4.0-7840 for Super Smash Bros Netplay'
