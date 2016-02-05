@@ -15,7 +15,7 @@ install=python-django-hstore.install
 source=("https://pypi.python.org/packages/source/d/django-hstore/django-hstore-${pkgver}.tar.gz"
         "python-django-hstore.install")
 sha256sums=('0d91e12308bc42098831222ae9fd94e4d071c905926bc45310697e0f1bcfdb18'
-            '94ddead2cdecbc6a69f55c1b5eceb5bb0774e81ceb21c65aba338581d263e057')
+            '1232df4fe48a0f84f19faa05805ef8ce99403ef8d11901d190140a19ce4259c7')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}/doc"

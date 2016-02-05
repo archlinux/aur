@@ -1,3 +1,3 @@
 post_install() {
-  echo "==> Make sure to enter the following as root: psql -d template1 -c 'create extension hstore;'"
+  echo "==> Make sure to enter the following as the postgres user: psql -d template1 -c 'create extension hstore;'"
 }
