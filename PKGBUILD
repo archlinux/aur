@@ -1,5 +1,5 @@
 pkgname=cantata-git
-pkgver=1.9.50.r6021.20186cc
+pkgver=2.0.50.r6087.55fb716
 pkgrel=1
 pkgdesc="Qt5 graphical client for Music Player Daemon (MPD) - git version."
 arch=('i686' 'x86_64')
@@ -17,20 +17,9 @@ source=("$pkgname::git+https://github.com/CDrummond/cantata.git")
 install="${pkgname}.install"
 sha1sums=('SKIP')
 
-# VLC is needed for HTTP Stream Playback. Change to 1 to enable this.
-_USE_VLC=0
-
-if [[ "$_USE_VLC" = '1' ]]
-then
-  depends+=('vlc')
-  _WITH_VLC='ON'
-else
-  _WITH_VLC='OFF'
-fi
-
 pkgver() {
   cd "${pkgname}"
-  printf "1.9.50.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "2.0.50.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -46,8 +35,7 @@ build() {
   cmake ../${pkgname} \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DENABLE_HTTP_STREAM_PLAYBACK=$_WITH_VLC \
-    -DENABLE_KDE=OFF
+    -DENABLE_LIBVLC=OFF
   make
 }
 
