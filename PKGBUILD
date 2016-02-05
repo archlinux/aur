@@ -6,9 +6,9 @@
 # https://github.com/michaellass/AUR
 
 pkgname=ent
-pkgver=1.1
-debianver="${pkgver}debian-4"
-pkgrel=3
+pkgver=1.2
+debianver="${pkgver}debian-1"
+pkgrel=1
 pkgdesc="Pseudorandom number sequence test"
 arch=('i686' 'x86_64')
 url="http://packages.debian.org/sid/ent"
@@ -18,8 +18,8 @@ makedepends=('asciidoc' 'docbook2x' 'perl-xml-libxml')
 source=("http://ftp.de.debian.org/debian/pool/main/e/${pkgname}/${pkgname}_${pkgver}debian.orig.tar.gz"
 	"http://ftp.de.debian.org/debian/pool/main/e/${pkgname}/${pkgname}_${debianver}.debian.tar.xz"
 	"LICENSE")
-sha256sums=('8ac6606208ed8ed094479f6e12fe28a65bab0fd5c8eb054b74c65c86f98427a0'
-            'ebb2a26231424465b5480e7bb0db24407f2ad6031db471dab07b9e8b145b0ad3'
+sha256sums=('2df63722b30d309f373416bfce69adaadb5f7a82294fb0d661c5f258dcc7d049'
+            '8f5a6db3f060f4694711bed828b23c037da38d6b7f4226c1095b9294d5ba5180'
             '4ebee40438cb4df5dadbe3028002fdc17f07daee751cb79d53d7f55fbc37ce36')
 
 prepare() {
