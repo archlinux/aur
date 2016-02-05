@@ -9,7 +9,7 @@ arch=(any)
 url="https://github.com/tj/git-extras"
 license=('custom:MIT')
 depends=('git')
-source="https://github.com/tj/${pkgname}/archive/${pkgver}.tar.gz"
+source=("https://github.com/tj/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('d4c028e2fe78abde8f3e640b70f431318fb28d82894dde22772efe8ba3563f85')
 
 package() {
