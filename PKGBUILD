@@ -1,5 +1,5 @@
 # Maintainer: Your Name <youremail@domain.com>
-pkgname=python2-faforever
+pkgname=python2-fafclient
 pkgver=0.11.44
 pkgrel=1
 epoch=0
