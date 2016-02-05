@@ -11,8 +11,11 @@ depends=('python' 'python-django' 'python-psycopg2')
 makedepends=('python-setuptools' 'asciidoc' 'pygmentize')
 license=('BSD')
 arch=('any')
-source=("https://pypi.python.org/packages/source/d/django-hstore/django-hstore-${pkgver}.tar.gz")
-sha256sums=('0d91e12308bc42098831222ae9fd94e4d071c905926bc45310697e0f1bcfdb18')
+install=python-django-hstore.install
+source=("https://pypi.python.org/packages/source/d/django-hstore/django-hstore-${pkgver}.tar.gz"
+        "python-django-hstore.install")
+sha256sums=('0d91e12308bc42098831222ae9fd94e4d071c905926bc45310697e0f1bcfdb18'
+            '94ddead2cdecbc6a69f55c1b5eceb5bb0774e81ceb21c65aba338581d263e057')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}/doc"

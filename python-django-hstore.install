@@ -1,0 +1,3 @@
+post_install() {
+  echo "==> Make sure to enter the following as root: psql -d template1 -c 'create extension hstore;'"
+}
