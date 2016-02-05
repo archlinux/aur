@@ -9,21 +9,27 @@ _build_voip=true
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git
-pkgver=v0.6.0.RC2.r450.g6554362
+pkgver=v0.6.0.RC3.r0.g182f816
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://retroshare.sourceforge.net/"
 license=('GPL' 'LGPL')
 
-depends=('qt4' 'libupnp' 'libgnome-keyring' 'libxss' 'libmicrohttpd' 'sqlcipher')
+# qt4
+#depends=('qt4' 'libupnp' 'libgnome-keyring' 'libxss' 'libmicrohttpd' 'sqlcipher')
+#makedepends=('git')
+
+#qt 5
+depends=('qt5-multimedia' 'qt5-x11extras' 'libupnp' 'libgnome-keyring' 'libxss' 'libmicrohttpd' 'sqlcipher')
+makedepends=('git' 'qt5-tools')
+
 optdepends=('tor: tor hidden node support'
             'i2p: i2p hidden node support')
-makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
-install='retroshare.install'
+install="${_pkgname}.install"
 
 source=("${_pkgname}::git+https://github.com/RetroShare/RetroShare.git"
         'retroshare.install')
@@ -60,10 +66,11 @@ build() {
 	LANG=C ./version_detail.sh
 	cd ../..
 
-	qmake-qt4 -r "CONFIG-=debug" "CONFIG+=release" \
-			QMAKE_CFLAGS_RELEASE="${CFLAGS}"\
-			QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}"\
-			RetroShare.pro
+	# qt4: qmake-qt4 -r ...
+	qmake   "CONFIG-=debug" "CONFIG+=release" \
+		QMAKE_CFLAGS_RELEASE="${CFLAGS}"\
+		QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}"\
+		RetroShare.pro
 	make
 }
 
