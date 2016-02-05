@@ -2,8 +2,8 @@
 
 pkgbase=linux-think
 pkgdesc="Linux kernel with patches for Lenovo Think T530. It contains fbcondecor patch and changes required for VGA passthrough - for experiments"
-_srcname=linux-4.3
-pkgver=4.3.4
+_srcname=linux-4.4
+pkgver=4.4.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -120,9 +120,6 @@ _package() {
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
-  provides=("kernel26${_kernelname}=${pkgver}")
-  conflicts=("kernel26${_kernelname}")
-  replaces=("kernel26${_kernelname}")
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
 
@@ -181,9 +178,6 @@ _package() {
 
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
-  provides=("kernel26${_kernelname}-headers=${pkgver}")
-  conflicts=("kernel26${_kernelname}-headers")
-  replaces=("kernel26${_kernelname}-headers")
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
@@ -301,9 +295,6 @@ _package-headers() {
 
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
-  provides=("kernel26${_kernelname}-docs=${pkgver}")
-  conflicts=("kernel26${_kernelname}-docs")
-  replaces=("kernel26${_kernelname}-docs")
 
   cd "${srcdir}/${_srcname}"
 
@@ -324,10 +315,10 @@ for _p in ${pkgname[@]}; do
   }"
 done
 
-md5sums=('58b35794eee3b6d52ce7be39357801e7'
-         '5bbeeb57b8cff23e5c27430e60810d1b'
+md5sums=('9a78fa2eb6c68ca5a40ed5af08142599'
+         'd9e951895c8c249f0bf52d85f3e63bce'
          'df7fceae6ee5d7e7be7b60ecd7f6bb35'
-         'a47f5a15bee5df93f4447dad48bc1799'
+         '25e7035cc844d3b69c30e5ade406c591'
          'be91dd41334c87c68ed0e730846b8192'
          '4675e1fe4bd326a50f168c5674bab13c'
          '13d89fa42302dca268a7c9580176c980'
