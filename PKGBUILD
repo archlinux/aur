@@ -1,7 +1,7 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=sjaakii
-pkgver=1.0.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A XBoard chess engine that can play normal chess as well as a number of other games and chess variants"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://www.eglebbk.dds.nl/program/chess-index.html"
 license=('GPL3')
 makedepends=('cmake')
 source=("http://www.eglebbk.dds.nl/program/download/${pkgname}-${pkgver}-src.tar.gz")
-md5sums=('2bb83c6740bfe594ba5221b1712f8c75')
+md5sums=('24771662d06592d45b255dda216378fc')
 
 build() {
   cd "${srcdir}/SjaakII"
