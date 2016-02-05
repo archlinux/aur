@@ -1,13 +1,13 @@
 # Maintainer: Marat Akhin <Marat.Akhin@gmail.com>
 
 pkgname=z3-stable-git
-pkgver=20150513
+pkgver=20160205
 pkgrel=1
 pkgdesc="Z3 is a high-performance theorem prover being developed at Microsoft Research (built from Github)"
 arch=('i686' 'x86_64')
 url="https://github.com/Z3Prover/z3"
 license=('MIT')
-makedepends=('python2' 'git')
+makedepends=('python' 'git')
 conflicts=('z3-bin')
 
 _gitroot="https://github.com/Z3Prover/z3"
@@ -29,26 +29,19 @@ build() {
   msg "Starting make..."
   cd "$srcdir/$_gitname"
 
-  python2 scripts/mk_make.py # --prefix="$pkgdir"
+  Z3_INSTALL_INCLUDE_DIR="include/z3" \
+  python scripts/mk_make.py \
+    --prefix="$pkgdir/usr" \
+    --pypkgdir="$pkgdir/usr/lib/python3.5/site-packages" \
+    --python \
+    --java \
+    --ml
 
   cd "$srcdir/$_gitname/build"
   make
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/usr/include/z3"
-  mkdir -p "$pkgdir/usr/lib"
-  mkdir -p "$pkgdir/usr/lib/python2.7/site-packages"
-
-  cd "$srcdir/$_gitname/src/api"
-  cp `find . -name "z3*.h"` "$pkgdir/usr/include/z3"
-  cd "$srcdir/$_gitname/src/api/c++"
-  cp `find . -name "z3*.h"` "$pkgdir/usr/include/z3"
-
   cd "$srcdir/$_gitname/build"
-  cp `find . -name "z3"` "$pkgdir/usr/bin/"
-  cp `find . -name "libz3.*"` "$pkgdir/usr/lib"
-  cp `find . -name "libz3.*"` "$pkgdir/usr/lib/python2.7/site-packages"
-  cp `find . -name "z3*.pyc"` "$pkgdir/usr/lib/python2.7/site-packages"
+  make install
 }
