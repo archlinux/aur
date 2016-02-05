@@ -2,7 +2,7 @@
 application=himawaripy
 pkgname=${application}-git
 pkgrel=1
-pkgver=r19.23a30e5
+pkgver=r30.a0c04c1
 pkgdesc="Put near-realtime picture of Earth as your desktop background."
 url="https://github.com/boramalper/${application}"
 arch=('x86_64' 'i686')
