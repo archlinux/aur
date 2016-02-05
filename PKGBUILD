@@ -27,9 +27,11 @@ prepare() {
 
 build() {
   cd "${_plug}/src"
-  ./configure --install="${pkgdir}/usr/lib/vapoursynth" \
-              --extra-cflags="${CFLAGS} $(pkg-config --cflags vapoursynth)" \
-              --extra-ldflags="${LDFLAGS}"
+  ./configure \
+    --install="${pkgdir}/usr/lib/vapoursynth" \
+    --extra-cflags="${CFLAGS} $(pkg-config --cflags vapoursynth)" \
+    --extra-ldflags="${LDFLAGS}"
+  make
 }
 
 package(){
