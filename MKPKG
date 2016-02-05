@@ -1,0 +1,4 @@
+arch=('x86_64')
+pkgname=('dolphin-emu-git-netplay' 'dolphin-emu-cli-git-netplay')
+
+check_git $packagedir/dolphin-emu-git/dolphin-emu
