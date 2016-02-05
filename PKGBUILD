@@ -4,7 +4,7 @@
 pkgname=deadwood
 pkgver=3.2.09
 pkgrel=1
-pkgdesc="resolver for MaraDNS server"
+pkgdesc="Deadwood is MaraDNS 2.0's recursive resolver"
 arch=('i686' 'x86_64')
 url="http://maradns.samiam.org/deadwood/"
 depends=()
