@@ -4,8 +4,8 @@
 # Contributor: joel schaerer <joel.schaerer@laposte.net>
 
 pkgname=insight-toolkit
-pkgver=4.8.2
-pkgrel=2
+pkgver=4.9.0
+pkgrel=3
 pkgdesc='Cross-platform system that provides developers with an extensive suite of software tools for image analysis'
 arch=('i686' 'x86_64')
 url='http://www.itk.org/'
@@ -22,7 +22,7 @@ optdepends=('python2: build python wrapping'
             'clang: for swig')
 makedepends=('cmake')
 source=("http://downloads.sourceforge.net/project/itk/itk/${pkgver:0:3}/InsightToolkit-${pkgver}.tar.xz")
-sha512sums=('f08d922cdf059171caef4a91d13b0ab43d9817655f7e54a0d6c03369b0a502f268918480cf6db3c2ed532fb4895aca982330bd0cf1b1baffec857c6e905b1114')
+sha512sums=('9a6f3796fa87cc9c3eff442ca04c11e05fde4fd52609f9c49c030dbd318a0e92518ef55aac4b6ba773d4bc1962d0cb644e93a526b909492b29405f33c35fd408')
 
 _usepython=false
 
