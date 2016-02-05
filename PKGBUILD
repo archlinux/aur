@@ -2,7 +2,8 @@
 
 pkgname='eclipse-jubula-git'
 pkgver=4.0.0
-pkgrel=2
+_buildNumber=384
+pkgrel=3
 pkgdesc='Jubula plugins for Eclipse IDE to create functional GUI tests (gerrit version)'
 arch=('any')
 url='http://eclipse.org/jubula/'
@@ -11,10 +12,9 @@ depends=('eclipse>=4.3.0', 'eclipse-mylyn')
 provides=('eclipse-jubula')
 conflicts=('eclipse-jubula')
 options=('!strip')
-_buildNumber=381
 source=(
 "https://hudson.eclipse.org/jubula/job/jubula-gerrit/${_buildNumber}/artifact/org.eclipse.jubula.core/org.eclipse.jubula.repo/target/org.eclipse.jubula.repo-${pkgver}-SNAPSHOT.zip")
-sha256sums=('34520dcf3f438c9a51dbdda9da37fd751c98292e5ba39fbe22dd88265b1eaba3')
+sha256sums=('02b5b24564cd87bb6dffdcccb89efc26ed1c14e88c3ce7bb5b5165d3280df6a5')
 
 package() {
   # remove features and plug-ins contain sources
