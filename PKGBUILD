@@ -1,4 +1,4 @@
-#Maintainer: David McInnis<davidm@eagles.ewu.edu>
+#Maintainer: David McInnis <davidm@eagles.ewu.edu>
 
 pkgbase=('python-django-markitup')
 pkgname=('python-django-markitup')
