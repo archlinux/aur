@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=ktorrent-git
-pkgver=5.0.0.r2202.faf83d2
+pkgver=5.0.0.r2208.dd8732e
 pkgrel=1
 pkgdesc="A powerful BitTorrent client. (GIT version)"
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ optdepends=('taglib: for mediaplayer plugin'
             'kdnssd: for zeroconf plugin'
             )
 provides=('ktorrent')
-conflicts=('ktorrent-frameworks-git')
+conflicts=('ktorrent')
 source=('git://anongit.kde.org/ktorrent.git')
 sha1sums=('SKIP')
 install=ktorrent-git.install
