@@ -1,5 +1,5 @@
 pkgname=p2pvc-git
-pkgver=0.3
+pkgver=0.r195.41f2ae9
 pkgrel=1
 pkgdesc="A point to point color terminal video chat"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/$pkgname"
   # Use the tag of the last commit
-  git describe --long -- tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
