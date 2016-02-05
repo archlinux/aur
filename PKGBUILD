@@ -2,10 +2,10 @@
 pkgname=liblognorm
 pkgver=1.1.2
 pkgrel=1
-pkgdesc="A fast-samples based normalization library"
+pkgdesc="A fast-samples based normalization library for logs"
 arch=('i686' 'x86_64')
 url=""
-license=('GPL2', 'Apache')
+license=('GPL2' 'Apache')
 groups=()
 depends=()
 makedepends=()
