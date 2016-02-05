@@ -5,9 +5,9 @@
 
 pkgname='influxdb'
 _gitname='influxdb'
-pkgver='0.9.6.1'
-branch='0.9.6'
-commit='6d3a8603cfdaf1a141779ed88b093dcc5c528e5e'
+pkgver='0.10.0'
+branch='0.10.0'
+commit='b8bb32ecad9808ef00219e7d2469514890a0987a'
 pkgrel='1'
 epoch=
 pkgdesc='Scalable datastore for metrics, events, and real-time analytics'
@@ -31,12 +31,12 @@ source=("https://github.com/influxdb/influxdb/archive/$pkgtar"
         "$pkgname.install")
 changelog=
 noextract=("$pkgtar")
-md5sums=('763f31f73913c7b0e1113723ead125cb'
+md5sums=('6b3c80de417f18836c4193cd99da6baa'
          'SKIP'
          'SKIP')
 
 prepare()
-{ 
+{
   export GOPATH="${srcdir}"
   export INFLUXDBGOPATH="$GOPATH/src/github.com/influxdb/influxdb"
   export GOBIN="$GOPATH/bin"
@@ -46,10 +46,10 @@ prepare()
 
   echo "Extracting influxdb archive..."
   mkdir -p $INFLUXDBGOPATH
-  tar -C $INFLUXDBGOPATH --strip-components=1 -xzf $pkgtar 
+  tar -C $INFLUXDBGOPATH --strip-components=1 -xzf $pkgtar
 
 }
-build() 
+build()
 {
   echo "Building influxdb version=${pkgver} branch=$branch commit=${commit}..."
   cd $INFLUXDBGOPATH
@@ -64,6 +64,9 @@ package()
   # binaries
   install -D -m755 "$GOBIN/influxd" "$pkgdir/usr/bin/influxd"
   install -D -m755 "$GOBIN/influx" "$pkgdir/usr/bin/influx"
+
+  # migration tool from 0.9 to 0.10
+  install -D -m755 "$GOBIN/influx_tsm" "$pkgdir/usr/bin/influx_tsm"
 
   # configuration file
   install -D -m644 "$INFLUXDBGOPATH/etc/config.sample.toml" "${pkgdir}/etc/influxdb.conf"
