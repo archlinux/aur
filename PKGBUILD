@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=zsh-completions-git
-pkgver=0.12.0.r76.gc2dde89
+pkgver=0.14.0.r0.g173ae72
 pkgrel=1
 pkgdesc="Additional completion definitions for Zsh"
 arch=(any)
