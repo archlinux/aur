@@ -3,7 +3,7 @@
 
 pkgname=atlassian-stash
 pkgver=4.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitbucket Server (Stash)"
 url="https://www.atlassian.com/software/bitbucket/server"
 license=('custom')
@@ -13,7 +13,7 @@ depends=('java-runtime=8'
          'perl>=5.8.8')
 backup=('etc/systemd/system/stash.service.d/local.conf'
         'etc/stash/server.xml')
-install='atlassian-stash.install'
+install="$pkgname.install"
 source=("https://downloads.atlassian.com/software/stash/downloads/atlassian-bitbucket-$pkgver.tar.gz"
         'stash.service'
         'stash.tmpfiles'
@@ -27,14 +27,16 @@ sha256sums=('7d29f1dc5960547528856d54a2d498be5e3220d741a8500e6160f08bc4dec2b3'
 
 package() {
   install -dm750 "$pkgdir/var/lib/stash"
-  install -dm755 "$pkgdir/opt/atlassian-stash"
-  cp -r "$srcdir/atlassian-bitbucket-$pkgver/"* "$pkgdir/opt/atlassian-stash"
-  install -Dm755 "$pkgdir/opt/atlassian-stash/conf/server.xml" "$pkgdir/etc/stash/server.xml"
-  rm "$pkgdir/opt/atlassian-stash/conf/server.xml"
+  install -dm755 "$pkgdir/opt/$pkgname"
+	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+	cp -r "$srcdir/atlassian-bitbucket-$pkgver/licenses/"* "$pkgdir/usr/share/licenses/$pkgname"
+  cp -r "$srcdir/atlassian-bitbucket-$pkgver/"* "$pkgdir/opt/$pkgname"
+  install -Dm755 "$pkgdir/opt/$pkgname/conf/server.xml" "$pkgdir/etc/stash/server.xml"
+  rm "$pkgdir/opt/$pkgname/conf/server.xml"
   ln -s "/etc/stash/server.xml" "$pkgdir/var/lib/stash/server.xml"
   # remove unneeded Windows files
-  find "$pkgdir/opt/atlassian-stash/bin" -name '*.bat' -type f -exec rm "{}" \;
-  find "$pkgdir/opt/atlassian-stash/bin" -name '*.exe' -type f -exec rm "{}" \;
+  find "$pkgdir/opt/$pkgname/bin" -name '*.bat' -type f -exec rm "{}" \;
+  find "$pkgdir/opt/$pkgname/bin" -name '*.exe' -type f -exec rm "{}" \;
 
 
   # setup systemd service
