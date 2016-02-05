@@ -1,7 +1,7 @@
 # Maintainer: Bob Gregory <pathogenix@gmail.com>
 pkgname=liblognorm
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast-samples based normalization library for logs"
 arch=('i686' 'x86_64')
 url=""
