@@ -8,7 +8,7 @@ url="https://github.com/ilanschnell/bsdiff4"
 depends=('python2' )
 makedepends=('python2' )
 license=('BSD')
-arch=('any')
+arch=('i686' 'x86_64')
 source=('https://pypi.python.org/packages/source/b/bsdiff4/bsdiff4-1.1.4.tar.gz')
 md5sums=('29f6089290505fc1a852e176bd276c43')
 
