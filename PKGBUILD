@@ -4,10 +4,10 @@
 # Contributor: Brice Carpentier <brice@daknet.org>
 
 pkgname=cairo-infinality-lcdfilter
-pkgver=1.14.2
-pkgrel=1
+pkgver=1.14.6
+pkgrel=0
 pkgdesc="Cairo vector graphics library patched with infinality patches"
-arch=(i686 x86_64)
+arch=(i686 x86_64 armv7h)
 license=('LGPL' 'MPL')
 url="http://cairographics.org/"
 depends=('libpng' 'libxrender' 'libxext' 'fontconfig' 'pixman>=0.28.0' 'glib2' 'mesa' 'libgl' 'lzo')
@@ -26,7 +26,7 @@ source=(
 	"cairo-server-side-gradients.patch"
 	"cairo-webkit-html5-fix.patch"
         "cairo-lcdfilter-make-default-default.patch")
-sha1sums=('c8da68aa66ca0855b5d0ff552766d3e8679e1d24'
+sha1sums=('0a59324e6cbe031b5b898ff8b9e2ffceb9d114f5'
           'd8ffcb4c4745f7e61671109362a80a872ac989d3'
           '72ecf2dda8462e1588512de257ccbe18642d507f'
           '5bff494f52a16114f4cf6d04bfb0b9d7c4e9da23'
