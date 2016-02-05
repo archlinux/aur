@@ -12,8 +12,10 @@ makedepends=('git' 'texlive-core' 'qt5-tools')
 provides=('qtikz')
 conflicts=('qtikz')
 install=qtikz.install
-source=("qtikz::git+https://github.com/fhackenberger/ktikz")
-md5sums=('SKIP')
+source=("qtikz::git+https://github.com/fhackenberger/ktikz" config.diff makefile.diff)
+md5sums=('SKIP'
+         'ff93a529fe32d095a6390a629c51bece'
+         '4eb8ee23d0762037887d1003daf55c30')
 _gitname=qtikz
 
 pkgver() {
@@ -21,15 +23,21 @@ pkgver() {
   printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
+prepare() {
+  cd "$_gitname"/qmake
+  patch -p0 < "$srcdir"/config.diff
+}
+
 build() {
   cd "$_gitname"
   qmake qtikz.pro
+  patch -p0 < "$srcdir"/makefile.diff
   make
 }
 
 package() {
   cd "$_gitname"
-  make INSTALL_ROOT="$pkgdir/$pkgname" install
+  make INSTALL_ROOT="$pkgdir"/usr install
 }
 
 
