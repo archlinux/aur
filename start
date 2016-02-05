@@ -1,5 +1,0 @@
-#!/bin/python
-
-from himawaripy.himawaripy import main
-
-main()
