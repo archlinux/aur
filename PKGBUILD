@@ -1,6 +1,6 @@
 # Maintainer: Johnny Nielsen <j_e_n_pub at yahoo dot dk>
 pkgname='archupgrade'
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Automatic Arch Linux Upgrade"
 arch=('any')
@@ -10,8 +10,8 @@ depends=('python>=3.5' 'pacman' 'sudo')
 #gettext is required for msgfmt to generate .mo files from .po files.
 makedepends=('gettext')
 install=$pkgname.install
-source="https://github.com/Johnny1000/${pkgname}/archive/v${pkgver}.tar.gz"
-md5sums=('e5fa651b8c76a1720ef1101ce7acd03b')
+source=("https://github.com/Johnny1000/${pkgname}/archive/v${pkgver}.tar.gz")
+md5sums=('4ddd2de5a5875ac5698fa136e200b25e')
 
 package() {
     srcdir=${srcdir}/${pkgname}-${pkgver}
