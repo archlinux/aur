@@ -2,7 +2,7 @@
 
 pkgname=quodlibet-git
 _srcname=quodlibet
-pkgver=093e5f4
+pkgver=r7848.84a0f2e
 pkgrel=1
 pkgdesc="An audio library tagger, manager and player"
 arch=('any')
