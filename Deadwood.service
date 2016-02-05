@@ -1,0 +1,12 @@
+[Unit]
+Description=Deadwood resolver for MaraDNS server
+Documentation=/usr/share/doc/Deadwood
+
+[Service]
+ExecStart=/usr/bin/Deadwood -f /etc/dwood3rc
+ExecReload=/bin/kill -HUP $MAINPID
+StandardOutput=null
+
+[Install]
+WantedBy=multi-user.target
+Alias=deadwood.service
