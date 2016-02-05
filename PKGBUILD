@@ -1,7 +1,7 @@
 # vim: set shiftwidth=3:
 # Maintainer: Adrian Bacircea <adrian.bacircea@gmail.com>
 pkgname=sourceweb
-pkgver=r395.867cd09
+pkgver=r399.d0c2fdf
 pkgrel=1
 pkgdesc="Source code indexer and code navigation tool for C/C++ code."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('qt4' 'python' 'clang')
 makedepends=('qt4')
 
-source=("${pkgname}::git+https://github.com/adytzu2007/sourceweb#branch=clang-3.6")
+source=("${pkgname}::git+https://github.com/rprichard/sourceweb")
 sha256sums=('SKIP')
 
 pkgver() {
