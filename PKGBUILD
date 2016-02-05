@@ -3,15 +3,16 @@
 _pkgname=audacious
 pkgname=${_pkgname}-qt5
 pkgver=3.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight, advanced audio player (with qt5 interface)"
 arch=('i686' 'x86_64')
 url="http://audacious-media-player.org/"
 license=('BSD')
-depends=('qt5-base' 'libguess' 'libsm' 'audacious-plugins-qt5'
+depends=('qt5-base' 'libguess' 'libsm' 
          'hicolor-icon-theme' 'desktop-file-utils')
 makedepends=('python2') # for gdbus-codegen
-optdepends=('unzip: zipped skins support')
+optdepends=('unzip: zipped skins support'
+            'audacious-plugins-qt5: many helpful plugins')
 provides=("${_pkgname}=${pkgver}")
 conflicts=('audacious')
 replaces=('audacious-player')
