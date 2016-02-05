@@ -10,7 +10,7 @@ url="https://forum.minetest.net/viewtopic.php?f=11&t=5245&sid=2e794f55767fd96363
 license=('custom')
 depends=('minetest')
 makedepends=('git')
-provides=$_gitname
+provides=("$_gitname")
 install=$pkgname.install
 source=("$_gitname::git://github.com/Jeija/minetest-mod-weather.git")
 md5sums=('SKIP')
