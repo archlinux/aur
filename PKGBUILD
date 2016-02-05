@@ -6,33 +6,40 @@ pkgver=v3.0.g77a20a5
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
-url="http://forum.doom9.org/showthread.php?t=171555"
+url='http://forum.doom9.org/showthread.php?t=171555'
 license=('custom:WTFPL' 'LGPL')
-depends=('vapoursynth')
+depends=('vapoursynth'
+         'libsndfile'
+         )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/dubhater/vapoursynth-${_plug}.git"
-        "http://www.wtfpl.net/txt/copying/copying")
+        'COPYING::http://www.wtfpl.net/txt/copying/copying')
 sha1sums=('SKIP'
-          'SKIP')
-_gitname="${_plug}"
+          '337ece375beddfdb7392699fd00eb9b3e823d03f')
 
 pkgver() {
-  cd "${_gitname}"
+  cd "${_plug}"
   echo "$(git describe --long --tags | tr - .)"
 }
 
-build() {
-  cd "${_gitname}"
+prepare() {
+  cd "${_plug}"
   ./autogen.sh
-  ./configure --prefix=/usr --libdir=/usr/lib/vapoursynth
+}
+
+build() {
+  cd "${_plug}"
+  ./configure \
+    --prefix=/usr \
+    --libdir=/usr/lib/vapoursynth
   make
 }
 
 package(){
-  cd "${_gitname}"
+  cd "${_plug}"
   make DESTDIR="${pkgdir}" install
-  install -Dm644 readme.rst "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README"
-  install -Dm644 ../copying "${pkgdir}/usr/share/licenses/${pkgname}/copying"
+  install -Dm644 readme.rst "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme.rst"
+  install -Dm644 ../COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
