@@ -12,8 +12,10 @@ depends=('vapoursynth')
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("git+https://github.com/gnaggnoyil/${_plug}.git")
-sha1sums=('SKIP')
+source=("git+https://github.com/gnaggnoyil/${_plug}.git"
+        'patch.patch')
+sha1sums=('SKIP'
+          '415d78cd88311c9b884f29ad570a96b558551d19')
 
 pkgver() {
   cd "${_plug}"
@@ -23,10 +25,7 @@ pkgver() {
 prepare() {
   rm -fr "${_plug}/"{VapourSynth,VSHelper}.h
 
-  # fix missing include
-  sed '26a#include <stdlib.h>' -i "${_plug}/Backend.cpp"
-  # comment unused parameter on linux
-  sed -e '35a/*' -e '38a*/' -i "${_plug}/Backend.cpp"
+  patch -p1 -i "${srcdir}/patch.patch"
 
   echo "all:
 	  g++ -c -std=gnu++11 -I. -fPIC ${CXXFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth) -o Backend.o ${_plug}/Backend.cpp
