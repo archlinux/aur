@@ -1,0 +1,23 @@
+--- qtikzconfig.pri	2016-02-02 18:52:16.990065588 +0100
++++ qtikzconfig.pri.new	2016-02-05 19:20:14.849508464 +0100
+@@ -28,7 +28,7 @@
+ #MIME_INSTALL_DIR = /usr/share/mime/packages
+ 
+ #install documentation here:
+-#DOCUMENTATION_INSTALL_DIR=$${RESOURCES_INSTALL_DIR}/documentation
++DOCUMENTATION_INSTALL_DIR=$${RESOURCES_INSTALL_DIR}/doc
+ 
+ #install templates here:
+ #TEMPLATES_INSTALL_DIR=$${RESOURCES_INSTALL_DIR}/templates
+@@ -46,9 +46,9 @@
+ CONFIG += release
+ 
+ # qmake command:
+-#QMAKECOMMAND = qmake-qt4
++QMAKECOMMAND = qmake
+ # lrelease command:
+-#LRELEASECOMMAND = lrelease-qt4
++LRELEASECOMMAND = lrelease
+ # qcollectiongenerator command:
+ #QCOLLECTIONGENERATORCOMMAND = qcollectiongenerator
+ 
