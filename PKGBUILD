@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/AlessandroYorba/Alduin"
 license=('MIT')
 source=("https://github.com/AlessandroYorba/Alduin/archive/${pkgver}.tar.gz")
-md5sums=('22599eaf36fdf2f43808fbe52b76a801')
+md5sums=('8cdc5a5d48427f7fbd9ca6f57876e1ae')
 
 _name=Alduin
 
