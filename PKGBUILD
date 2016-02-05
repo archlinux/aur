@@ -11,7 +11,7 @@ _build_voip=true
 ### Nothing to be changed below this line ###
 
 pkgname=retroshare
-pkgver=0.6.0.RC3
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -36,7 +36,7 @@ install="${pkgname}.install"
 source=("https://github.com/RetroShare/RetroShare/archive/v${pkgver}.tar.gz"
         'retroshare.install')
 
-sha256sums=('c0c3998e3f0a1c7893926cd1c7cc51c26fb03c05648f5c089a4e3d68ae3870a9'
+sha256sums=('50b9157bbe407aaefcbf9af1f29392e63148dc060bf78a3b200c9bc09998cf7c'
             '44ea7d8b0208e8954391184dcbb8ff94b2efc246580057a1d2b2e73ad262aad2')
 
 # Add missing dependencies if needed
