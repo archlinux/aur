@@ -19,7 +19,10 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-  printf "2.0.50.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+
+  _ver="$(cat CMakeLists.txt | grep -m3 -e CPACK_PACKAGE_VERSION_MAJOR -e CPACK_PACKAGE_VERSION_MINOR \
+       -e CPACK_PACKAGE_VERSION_PATCH | grep -o "[[:digit:]]*" | paste -sd'.')"
+  printf "%s.r%s.%s" "$_ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
