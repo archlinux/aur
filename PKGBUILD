@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libktorrent-git
-pkgver=1.9.50.r355.7faa68d
+pkgver=1.9.50.r376.54f39bb
 pkgrel=1
 pkgdesc="A BitTorrent protocol implementation. (GIT version)"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ makedepends=('extra-cmake-modules'
              'boost'
              )
 provides=('libktorrent')
-conflicts=('libktorrent-frameworks')
+conflicts=('libktorrent')
 source=('git://anongit.kde.org/libktorrent.git')
 sha1sums=('SKIP')
 
