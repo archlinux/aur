@@ -1,14 +1,15 @@
 pkgbase = nodejs-js2coffee
 	pkgdesc = JavaScript to CoffeeScript
-	pkgver = 2.0.4
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = http://js2.coffee/
 	arch = any
 	license = MIT
+	makedepends = npm
 	depends = nodejs
 	depends = coffee-script
-	source = js2coffee-2.0.4.tar.gz::https://github.com/js2coffee/js2coffee/archive/v2.0.4.tar.gz
-	md5sums = c53a93310d90e1f5c1f5e553d8ad620c
+	source = js2coffee-2.1.0.tar.gz::https://github.com/js2coffee/js2coffee/archive/v2.1.0.tar.gz
+	md5sums = 4c1019b2f524dc59d067e13fd78274e9
 
 pkgname = nodejs-js2coffee
 
