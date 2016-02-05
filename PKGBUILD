@@ -1,7 +1,7 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=rhythmbox-llyrics
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="A Rhythmbox plugin for displaying lyrics in the sidebar."
 url="https://github.com/dmo60/lLyrics"
@@ -11,7 +11,7 @@ makedepends=('git')
 depends=('rhythmbox>=3.0' 'python-chardet' 'python-lxml' )
 install=$pkgname.install
 source=("https://github.com/dmo60/lLyrics/archive/v$pkgver.zip")
-md5sums=('a1d19eb0663c2d4027aa5b5af9d2b50c')
+md5sums=('96c1068a01a834c9bf267fa15e86b811')
 
 _plugin_name=llyrics
 
