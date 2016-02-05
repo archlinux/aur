@@ -275,19 +275,119 @@ index 8ee2014..01425fc 100644
  
  def is_development_version(version):
      return "-" in version and not is_prerelease_version(version)
+diff --git a/src/fa/game_process.py b/src/fa/game_process.py
+index 331a785..250d284 100644
+--- a/src/fa/game_process.py
++++ b/src/fa/game_process.py
+@@ -40,7 +40,17 @@ class GameProcess(QtCore.QProcess):
+ 
+             executable = os.path.join(config.Settings.get('game/bin/path'),
+                                       "ForgedAlliance.exe")
+-            command = '"' + executable + '" ' + " ".join(arguments)
++            import util
++            if util.WINDOWS:
++                command = '"' + executable + '" ' + " ".join(arguments)
++            else:
++                command = util.wine_exe + ' "' + executable + '" ' + " ".join(arguments)
++                if util.wine_use_optirun:
++                    command = "optirun " + command
++                if util.wine_prefix:
++                    wine_env = QtCore.QProcessEnvironment.systemEnvironment()
++                    wine_env.insert("WINEPREFIX", util.wine_prefix)
++                    QtCore.QProcess.setProcessEnvironment(self, wine_env)
+ 
+             logger.info("Running FA with info: " + str(info))
+             logger.info("Running FA via command: " + command)
+diff --git a/src/fa/updater.py b/src/fa/updater.py
+index e7226f7..6aeb4fa 100644
+--- a/src/fa/updater.py
++++ b/src/fa/updater.py
+@@ -396,7 +396,7 @@ class Updater(QtCore.QObject):
+                 dst_file = os.path.join(dst_dir, file_)
+                 if not os.path.exists(dst_file):
+                     shutil.copy(src_file, dst_dir)
+-                os.chmod(dst_file, stat.S_IWRITE)   # make all files we were considering writable, because we may need to patch them
++                os.chmod(dst_file, stat.S_IWRITE | stat.S_IREAD)   # make all files we were considering writable, because we may need to patch them
+ 
+     def doUpdate(self):
+         """ The core function that does most of the actual update work."""
 diff --git a/src/util/__init__.py b/src/util/__init__.py
-index 39d8ebb..f3e489d 100644
+index 39d8ebb..28bf36f 100644
 --- a/src/util/__init__.py
 +++ b/src/util/__init__.py
-@@ -15,7 +15,10 @@ LOGFILE_MAX_SIZE = 256 * 1024  #256kb should be enough for anyone
+@@ -7,6 +7,24 @@ from ctypes import *
+ def developer():
+     return sys.executable.endswith("python.exe")
+ 
++# Public settings object
++# Stolen from Config because reasons
++from config import _settings
++settings = _settings
++
++import platform
++if platform.system() == "Windows":
++    WINDOWS = True
++else:
++    WINDOWS = False
++    wine_exe = settings.value("wine/exe", "wine")
++    if settings.contains("wine/prefix"):
++        wine_prefix = settings.value("wine/prefix")
++    else:
++        wine_prefix = os.path.join(os.path.expanduser("~"), ".wine")
++    settings_file = settings.fileName()
++    wine_use_optirun = settings.value("wine/use_optirun", False)
++
+ from config import VERSION as VERSION_STRING
+ 
+ LOGFILE_MAX_SIZE = 256 * 1024  #256kb should be enough for anyone
+@@ -15,7 +33,10 @@ LOGFILE_MAX_SIZE = 256 * 1024  #256kb should be enough for anyone
  UNITS_PREVIEW_ROOT = "http://content.faforever.com/faf/unitsDB/icons/big/"
  
  #These are paths relative to the executable or main.py script
 -COMMON_DIR = os.path.join(os.getcwd(), "res")
-+if sys.platform == 'win32':
++if WINDOWS:
 +  COMMON_DIR = os.path.join(os.getcwd(), "res")
 +else:
 +  COMMON_DIR = os.path.join("/usr", "share", "fafclient")
  
  # These directories are in Appdata (e.g. C:\ProgramData on some Win7 versions)
  if 'ALLUSERSPROFILE' in os.environ:
+@@ -58,12 +79,21 @@ REPO_DIR = os.path.join(APPDATA_DIR, "repo")
+ if not os.path.exists(REPO_DIR):
+     os.makedirs(REPO_DIR)
+ 
+-LOCALFOLDER = os.path.join(os.path.expandvars("%LOCALAPPDATA%"), "Gas Powered Games",
+-                           "Supreme Commander Forged Alliance")
+-if not os.path.exists(LOCALFOLDER):
+-    LOCALFOLDER = os.path.join(os.path.expandvars("%USERPROFILE%"), "Local Settings", "Application Data",
+-                               "Gas Powered Games", "Supreme Commander Forged Alliance")
++if WINDOWS:
++    LOCALFOLDER = os.path.join(os.path.expandvars("%LOCALAPPDATA%"), "Gas Powered Games",
++                               "Supreme Commander Forged Alliance")
++    if not os.path.exists(LOCALFOLDER):
++        LOCALFOLDER = os.path.join(os.path.expandvars("%USERPROFILE%"), "Local Settings", "Application Data",
++                                   "Gas Powered Games", "Supreme Commander Forged Alliance")
++else:
++    import getpass
++    LOCALFOLDER = os.path.join(wine_prefix, 'drive_c', 'users', getpass.getuser(), "Local Settings", "Application Data",
++                                   "Gas Powered Games", "Supreme Commander Forged Alliance")
++
+ PREFSFILENAME = os.path.join(LOCALFOLDER, "game.prefs")
++if not os.path.exists(PREFSFILENAME):
++    PREFSFILENAME = os.path.join(LOCALFOLDER, "Game.prefs") #fix wrong case on some Linux machines
++
+ 
+ DOWNLOADED_RES_PIX = {}
+ DOWNLOADING_RES_PIX = {}
+@@ -161,11 +191,6 @@ __theme = None
+ __themedir = None
+ 
+ 
+-# Public settings object
+-# Stolen from Config because reasons
+-from config import _settings
+-settings = _settings
+-
+ def clean_slate(path):
+     if os.path.exists(path):
+         logger.info("Wiping " + path)

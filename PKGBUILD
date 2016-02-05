@@ -19,8 +19,8 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/FAForever/client/archive/$pkgver.tar.gz" 'changes.patch')
-sha256sums=('3c0f0647df78674974fd02baa409c532191e74f663093c5c4597aae28404a15a' 'aa26012c1beb54c7895d8ed78474ea9bf1069782231a6feaa66ba96e23130d90')
+source=("https://github.com/FAForever/client/archive/$pkgver.tar.gz" 'changes.patch' 'FAForever.desktop')
+sha256sums=('3c0f0647df78674974fd02baa409c532191e74f663093c5c4597aae28404a15a' '0b7512dd2eb49afaf2c4fc2ea3c755fca4a05c792fc75ec7f7e0b23f449b29f7' 'f503475daa227d4ce1fa66063b065db7375ce3c0d161d77e3c2bd19c65468cbc')
 noextract=()
 validpgpkeys=()
 
@@ -38,7 +38,8 @@ build() {
 package() {
 	cd "client-$pkgver"
 	FAFCLIENT_VERSION=$pkgver python2 setup.py install --root="$pkgdir" --optimize=1 
-	mkdir -p "$pkgdir/usr/share"
+  mkdir -p "$pkgdir/usr/share"
 	cp -r "res" "$pkgdir/usr/share/fafclient"
   echo "$pkgver" > "$pkgdir/usr/share/fafclient/RELEASE-VERSION"
+  install -D "$srcdir/FAForever.desktop" "$pkgdir/usr/share/applications/FAForever.desktop"
 }
