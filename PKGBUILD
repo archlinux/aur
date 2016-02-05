@@ -1,4 +1,4 @@
-#Maintainer: David McInnis<davidm@eagles.ewu.edu>
+#Maintainer: David McInnis <davidm@eagles.ewu.edu>
 
 pkgbase=('python-django-model-utils')
 pkgname=('python-django-model-utils')
