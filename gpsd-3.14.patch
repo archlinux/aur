@@ -1,0 +1,20 @@
+diff -wbBur gpsdrive-20150407/src/gps_handler.c gpsdrive-20150407.q/src/gps_handler.c
+--- gpsdrive-20150407/src/gps_handler.c	2015-04-07 14:39:04.000000000 +0300
++++ gpsdrive-20150407.q/src/gps_handler.c	2015-05-22 14:40:05.036450732 +0300
+@@ -443,11 +443,11 @@
+ 		for (i=0;i<data->satellites;i++)
+ #endif
+ 		{
+-			gps_sats[i].used = data->used[i];
+-			gps_sats[i].prn = data->PRN[i];
+-			gps_sats[i].elevation = data->elevation[i];
+-			gps_sats[i].azimuth = data->azimuth[i];
+-			gps_sats[i].snr = data->ss[i];
++			gps_sats[i].used = data->skyview[i].used;
++			gps_sats[i].prn = data->skyview[i].PRN;
++			gps_sats[i].elevation = data->skyview[i].elevation;
++			gps_sats[i].azimuth = data->skyview[i].azimuth;
++			gps_sats[i].snr = data->skyview[i].ss;
+ 		}
+ 	}
+ 

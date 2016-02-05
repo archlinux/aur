@@ -1,0 +1,4 @@
+post_install() {
+  echo "Don't forget to generate geoinfo.db with geoinfo.pl script"
+  echo "Also you can check http://wiki.archlinux.org/index.php/GpsDrive"
+}

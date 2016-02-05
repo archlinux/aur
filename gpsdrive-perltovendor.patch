@@ -1,0 +1,28 @@
+diff -ru gpsdrive-2.11/scripts/osm/perl_lib/CMakeLists.txt gpsdrive-2.11-patched/scripts/osm/perl_lib/CMakeLists.txt
+--- gpsdrive-2.11/scripts/osm/perl_lib/CMakeLists.txt	2010-06-24 15:53:32.000000000 -0400
++++ gpsdrive-2.11-patched/scripts/osm/perl_lib/CMakeLists.txt	2014-06-11 18:50:59.000000000 -0400
+@@ -5,10 +5,10 @@
+   MACRO_OPTIONAL_FIND_PACKAGE(Perl)
+ 
+   if (PERL_FOUND)
+-    if (NOT PERL_SITELIB)       
++    if (NOT PERL_VENDORLIB)       
+         MACRO_OPTIONAL_FIND_PACKAGE(PerlLibs)
+-    endif (NOT PERL_SITELIB)        
+-    #MESSAGE("DEBUG: > PERL_SITELIB: ${PERL_SITELIB}")
++    endif (NOT PERL_VENDORLIB)        
++    #MESSAGE("DEBUG: > PERL_VENDORLIB: ${PERL_VENDORLIB}")
+ 
+     file(GLOB_RECURSE perl_modules ${CMAKE_CURRENT_SOURCE_DIR}/*.pm)
+ 
+@@ -16,8 +16,8 @@
+         foreach(perl_module ${perl_modules})
+           file(RELATIVE_PATH relative_module_path ${CMAKE_CURRENT_SOURCE_DIR} ${perl_module})
+           get_filename_component(relative_module_path ${relative_module_path} PATH)
+-          install(FILES ${perl_module} DESTINATION ${PERL_SITELIB}/${relative_module_path})
+-          #message("DEBUG: install ${perl_module} to ${PERL_SITELIB}/${relative_module_path}")
++          install(FILES ${perl_module} DESTINATION ${PERL_VENDORLIB}/${relative_module_path})
++          #message("DEBUG: install ${perl_module} to ${PERL_VENDORLIB}/${relative_module_path}")
+         endforeach(perl_module ${perl_modules})
+       endif (perl_modules)
+   endif (PERL_FOUND)
