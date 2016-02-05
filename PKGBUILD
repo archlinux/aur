@@ -11,7 +11,6 @@ depends=('sqlite3' 'gtk3' 'webkit2gtk' 'libnotify' 'libsoup' 'libgee' 'json-glib
 makedepends=('vala' 'gobject-introspection' 'cmake')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-replaces=(${pkgname%-*})
 install="${pkgname%-*}.install"
 source=('git+https://github.com/jangernert/FeedReader.git')
 sha256sums=('SKIP')
