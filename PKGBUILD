@@ -44,6 +44,6 @@ package() {
 
 pkgver() {
   cd ${pkgname}
-  git log -1 --pretty=format:%h
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 																			
