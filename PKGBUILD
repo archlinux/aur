@@ -10,8 +10,8 @@ url="https://github.com/sapier/mobf_core"
 license=('custom')
 depends=('minetest')
 makedepends=('git')
-provides=('minetest-mod-mobf_core')
-install=('minetest-mod-mobf_core-git.install')
+provides=("$_gitname")
+install=$pkgname.install
 source=("$_gitname::git+git://github.com/sapier/mobf_core.git")
 md5sums=('SKIP')
 
