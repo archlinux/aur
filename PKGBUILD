@@ -7,7 +7,7 @@ pkgname='ros-indigo-gazebo-plugins'
 pkgver='2.4.9'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD, Apache 2.0')
 
 ros_makedepends=(ros-indigo-geometry-msgs
@@ -68,17 +68,23 @@ depends=(${ros_depends[@]}
 
 _tag=release/indigo/gazebo_plugins/${pkgver}-${_pkgver_patch}
 _dir=gazebo_plugins
-source=("${_dir}"::"git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git"#tag=${_tag})
-md5sums=('SKIP')
+source=("${_dir}"::"git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git"#tag=${_tag}
+        "gazebo7.patch")
+sha256sums=('SKIP'
+            '715d38ef4b51dfb712c4b049b026d546748e3ede9d8da7c9bd6fba4a4b4a1753')
 
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
   [ -f /opt/ros/indigo/setup.bash ] && source /opt/ros/indigo/setup.bash
 
+  # Fix for gazebo 7
+  git -C ${srcdir}/${_dir} apply ${srcdir}/gazebo7.patch
+
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
+
 
   # Fix Python2/Python3 conflicts
   /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
