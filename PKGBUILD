@@ -8,7 +8,7 @@
 #
 
 pkgname=amule-adnza-svn
-pkgver=546
+pkgver=548
 pkgrel=1
 pkgdesc="aMule patched for Fastweb Network (Italy) by Adunanza forum - SVN development branch"
 url='http://amule-adunanza.sourceforge.net/'
