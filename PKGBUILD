@@ -5,7 +5,7 @@
 
 pkgname=cairo-infinality-lcdfilter
 pkgver=1.14.6
-pkgrel=0
+pkgrel=1
 pkgdesc="Cairo vector graphics library patched with infinality patches"
 arch=(i686 x86_64 armv7h)
 license=('LGPL' 'MPL')
