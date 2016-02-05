@@ -11,8 +11,10 @@ license=('GPL')
 depends=('vapoursynth'
          'opencv'
          )
-source=("${_plug}::git+https://github.com/invisiblearts/VapourSynth-Inpaint.git")
-sha1sums=('SKIP')
+source=("${_plug}::git+https://github.com/invisiblearts/VapourSynth-Inpaint.git"
+        'patch.patch')
+sha1sums=('SKIP'
+          'a1bedda17d7025f0131b3e0fb12ac622cdd69f0e')
 
 pkgver() {
   cd "${_plug}"
@@ -24,11 +26,7 @@ prepare(){
   cd "${_plug}"
   rm -fr VSHelper.h VapourSynth.h
 
-  sed -e 's|vapoursynth.h|VapourSynth.h|g' \
-      -e 's|vshelper.h|VSHelper.h|g' \
-      -e 's|"VapourSynth.h"|<VapourSynth.h>|g' \
-      -e 's|"VSHelper.h"|<VSHelper.h>|g' \
-      -i *
+  patch -p1 -i "${srcdir}/patch.patch"
 
   echo "all:
 	  g++ -c -std=gnu++11 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o Inpaint.o Inpaint.cpp
