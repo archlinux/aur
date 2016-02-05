@@ -1,0 +1,14 @@
+post_install() {
+    systemctl daemon-reload
+
+    echo 'Start the new systemd unit:'
+    echo 'sudo systemctl enable --now qotd.service'
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+
+    echo 'Restart the qotd systemd unit:'
+    echo 'sudo systemctl restart qotd.service'
+}
+
