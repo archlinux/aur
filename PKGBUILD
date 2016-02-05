@@ -14,10 +14,10 @@ md5sums=('4ebe54391f1d7dbe2facbba5fc8567d9')
 
 build() {
     cd $srcdir/marshmallow-jsonapi-0.4.2
-    python setup.py build
+    python2 setup.py build
 }
 
 package() {
     cd $srcdir/marshmallow-jsonapi-0.4.2
-    python setup.py install --root="$pkgdir" --optimize=1 
+    python2 setup.py install --root="$pkgdir" --optimize=1 
 }
