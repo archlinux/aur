@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin,all/allfiles
+Icon=/usr/share/icons/gtkhash48.png
+Actions=calc
+
+[Desktop Action calc]
+Name=Calculer md5sum et sha1sum
+Icon=/usr/share/icons/gtkhash48.png
+Exec=md5sha1calc %U
