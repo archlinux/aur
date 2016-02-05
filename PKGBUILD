@@ -1,7 +1,7 @@
 # Maintainer: Gregory Scheerlinck <gregory dot scheerlinck at gmail dot com>
 _npmname=arch-wiki-man
 _npmver=1.0.5
-pkgname=awman # All lowercase
+pkgname=arch-wiki-man # All lowercase
 pkgver=1.0.5
 pkgrel=1
 pkgdesc="The Arch Wiki as linux man pages"
