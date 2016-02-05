@@ -55,7 +55,7 @@ post_upgrade() {
         echo "   /var/subsonic/db to this new location."
         echo ""
         echo "!! This package now runs subsonic as the user 'subsonic'."
-        echo "   You mightneed to edit permissions for your media folders."
+        echo "   You might need to edit permissions for your media folders."
         rm -f /tmp/subsonic-was-active
         echo ""
         echo "!! Not restarting subsonic automatically."
