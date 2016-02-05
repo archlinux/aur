@@ -5,7 +5,7 @@
 pkgname=spideroak-one
 _PkgName=SpiderOakONE
 pkgver=6.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Secure file backup, sync and sharing client. This provides the client for SpiderOakONE."
 arch=('i686' 'x86_64')
 url="https://spideroak.com/"
