@@ -1,15 +1,16 @@
 # Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
-pkgname="ctrtool-git"
-pkgver=r105.038aca2
+_pkgname='ctrtool'
+pkgname="$_pkgname-git"
+pkgver=r205.ac8c9d4
 pkgrel=1
 pkgdesc="Tools for the Nintendo 3DS"
 arch=('i686' 'x86_64')
 url="https://github.com/profi200/Project_CTR"
-license="custom"
+license=('custom')
 makedepends=('git')
-provides=('ctrtool')
-conflicts=('ctrtool')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
 _pkgbase=ctr
 source=("$_pkgbase::git+https://github.com/profi200/Project_CTR")
@@ -21,11 +22,11 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_pkgbase/ctrtool"
+  cd "$srcdir/$_pkgbase/$_pkgname"
   make
 }
 
 package() {
-  cd "$srcdir/$_pkgbase/ctrtool"
-  install -Dm755 ctrtool "$pkgdir/usr/bin/ctrtool"
+  cd "$srcdir/$_pkgbase/$_pkgname"
+  install -Dm755 ctrtool "$pkgdir/usr/bin/$_pkgname"
 }
