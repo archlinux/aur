@@ -4,7 +4,7 @@
 
 pkgname=pass-git
 pkgver=20160205.395
-pkgrel=1
+pkgrel=2
 pkgdesc='Stores, retrieves, generates, and synchronizes passwords securely'
 url='http://www.passwordstore.org/'
 license=('GPL2')
