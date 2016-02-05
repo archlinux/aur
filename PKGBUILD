@@ -42,7 +42,8 @@ build() {
     --lxvst \
     --optimize \
     --with-backends=jack,alsa,dummy \
-    --use-external-libs
+    --use-external-libs \
+    --cxx11
 
   python2 waf build $MAKEFLAGS
 }
