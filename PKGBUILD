@@ -50,7 +50,7 @@ build() {
 
     mkdir -p build
     cd build
-    # ArchLinux: CL 9.1.0 still needs to be built without LLDB
+    # ArchLinux: CL 9.1.0 still needs to be built without LLDB because of error: Option 'aarch64-reserve-x18' registered more than once
     #cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DENABLE_CLANG=1 -DENABLE_LLDB=1 -DWITH_MYSQL=1 -DCMAKE_INSTALL_LIBDIR=lib ..
     cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DENABLE_CLANG=1 -DENABLE_LLDB=0 -DWITH_MYSQL=1 -DCMAKE_INSTALL_LIBDIR=lib ..
     make
