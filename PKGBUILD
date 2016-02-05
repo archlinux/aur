@@ -7,7 +7,7 @@
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-sysvcompat-selinux')
 pkgver=228
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 groups=('selinux')
@@ -46,6 +46,16 @@ prepare() {
   # https://github.com/systemd/systemd/commit/e5d44b34cca3
   # https://github.com/systemd/systemd/issues/2023
   git cherry-pick -n e5d44b34cca3
+
+  # virt: detect dmi before cpuid
+  # https://github.com/systemd/systemd/commit/050e65ada2e0
+  # https://github.com/systemd/systemd/issues/1993
+  git cherry-pick -n 050e65ada2e0
+
+  # logind: load SELinux labelling system
+  # https://github.com/systemd/systemd/commit/4b51966cf6c0
+  # https://github.com/systemd/systemd/pull/2508
+  git cherry-pick -n 4b51966cf6c0
 
   ./autogen.sh
 }
