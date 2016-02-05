@@ -1,7 +1,7 @@
 #Maintainer: Iwan Timmer <irtimmer@gmail.com>
 
 pkgname=docker-swarm
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A Docker-native clustering system"
 depends=('glibc')
@@ -9,8 +9,8 @@ makedepends=('go' 'godep')
 arch=('x86_64' 'i686')
 source=("https://github.com/docker/swarm/archive/v$pkgver.tar.gz")
 url="https://github.com/docker/swarm/"
-license="BSD"
-sha256sums=('33c6566af395affbf9861d1491613c48a70e6c61c532910cef2210be7b1323f7')
+license=("BSD")
+sha256sums=('463aa579a0c43f2874bb14f37bac0ce4ae233672f84360d398a206d18e706cf5')
 
 prepare() {
     cd $srcdir
