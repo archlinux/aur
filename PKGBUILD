@@ -4,11 +4,11 @@
 
 pkgname=pycarddav-git
 _pkgname=pycarddav
-pkgver=0.7.0.24.g64bfcfe
+pkgver=0.7.0.27.gaacefd3
 pkgrel=1
 epoch=1
 pkgdesc="pyCardDAV is a simple to use CardDAV CLI client"
-arch=any
+arch=('any')
 url="http://lostpackets.de/pycarddav/"
 license=('Expat/MIT')
 conflicts=('pycarddav')
