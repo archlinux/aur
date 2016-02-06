@@ -8,8 +8,8 @@ pkgdesc="Allows you to run a command and see what it does to your files"
 arch=('any')
 url="https://github.com/p-e-w/maybe"
 license=('GPL')
-depends=('python')
-makedepends=('git' 'python-setuptools' 'python-ptrace' 'python-blessings')
+depends=('python' 'python-ptrace' 'python-blessings')
+makedepends=('git' 'python-setuptools')
 source=("${pkgname%-*}::git+https://github.com/p-e-w/maybe.git")
 md5sums=('SKIP')
 
