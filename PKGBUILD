@@ -37,6 +37,12 @@ pkgver() {
   bzr revno
 }
 
+prepare() {
+  cd "${srcdir}/referencer"
+  gnome-doc-prepare --force
+}
+
+
 build() {
   cd "$srcdir/referencer"
   CXXFLAGS="$CXXFLAGS -std=gnu++11"
