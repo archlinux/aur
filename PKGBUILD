@@ -15,7 +15,7 @@ sha256sums=('281924cf1a1f01a5e0bf0c61037ef0f5487c7f2e516c4905c17b6a5da6d7814d')
 build() {
   cd "$srcdir/$pkgname-$pkgname-$pkgver"
 
-  msg 'Building...'
+  msg2 'Building...'
   export PREFIX=/usr SYSCONFDIR=/etc MANDIR=/usr/share/man
   export SUBPRJ_DFLT='paexec doc examples'
   mkcmake all
@@ -24,14 +24,14 @@ build() {
 check() {
   cd "$srcdir/$pkgname-$pkgname-$pkgver"
 
-  msg 'Testing...'
+  msg2 'Testing...'
   mkcmake test
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgname-$pkgver"
 
-  msg 'Installing...'
+  msg2 'Installing...'
   export PREFIX=/usr SYSCONFDIR=/etc MANDIR=/usr/share/man
   export SUBPRJ_DFLT='paexec doc examples'
   mkcmake DESTDIR="$pkgdir" install
