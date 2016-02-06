@@ -11,7 +11,7 @@
 
 pkgname=chromium-minimum
 _pkgname=chromium
-pkgver=48.0.2564.97
+pkgver=48.0.2564.103
 pkgrel=1
 _launcher_ver=3
 pkgdesc="The open-source project behind Google Chrome, with a minimum number of dependencies."
@@ -27,7 +27,7 @@ makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet')
-conflicts='chromium'
+conflicts=('chromium')
 options=('!strip')
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkgname-$pkgver.tar.xz
@@ -36,7 +36,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         chromium-use-non-versioned-icu-namespace.patch
         chromium-fix-print-preview-on-en_GB-locale.patch
         chromium-widevine.patch)
-sha256sums=('7734b81a329ba9a1588a9dfb12a227b24cc227ef59bcda8aff51524c3fb252db'
+sha256sums=('1c599fc69254494ee43ff7e12d90ecf1c213ee495c6229e560d17ce2357d2299'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             'e4192446cc0ab6a5c540599c8a149f4f2208f0014da2786ada6c9544913d7426'
