@@ -1,5 +1,6 @@
 [Unit]
 Description=open source server monitoring agent that stores metrics in Elasticsearch
+Documentation=https://www.elastic.co/guide/en/beats/topbeat/current
 After=network.target
 
 [Service]
