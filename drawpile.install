@@ -20,7 +20,6 @@ _update() {
 post_install() {
 	_update
 	note "If installing optional dependencies afterwards you may have to recompile this package."
-	#note "If you wish to only install the server or client set 'BUILD' to 'SERVER' or 'CLIENT' in the PKGBUILD file and recompile this package."
 }
 
 post_upgrade() {
