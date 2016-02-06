@@ -2,13 +2,14 @@
 
 _pkgname=papyros-terminal
 pkgname=${_pkgname}-git
-pkgver=0.1.0.r3.g3f7007d
-pkgrel=2
+pkgver=0.1.1.r10.gdddab22
+pkgrel=1
 pkgdesc="The terminal app for Papyros"
 arch=("i686" "x86_64")
 url="https://github.com/papyros/terminal-app"
 license=("GPL")
-depends=("qt5-base-dev-git" "qt5-declarative" "qml-material" "ttf-roboto-mono-powerline-git" "libpapyros" "qmltermwidget" )
+depends=("qt5-base-dev-git" "qt5-declarative" "qml-material" "ttf-roboto-mono-powerline-git"
+         "libpapyros-git" "papyros-qmltermwidget-git" )
 makedepends=("git" "qt5-tools" "cmake" "extra-cmake-modules")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" )
