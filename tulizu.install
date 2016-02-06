@@ -1,0 +1,3 @@
+post_install() {
+  echo "TIP! Run 'tulizu doc man' to become familiar"
+}
