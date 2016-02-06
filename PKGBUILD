@@ -1,7 +1,7 @@
 # Maintainer: PhiBo <phibo at dinotools dot org>
 
 pkgname=dionaea-git
-pkgver=r1051.162ddc1
+pkgver=r1056.cca9471
 pkgrel=1
 pkgdesc="Dionaea honeypot"
 backup=('etc/dionaea/dionaea.conf')
@@ -39,7 +39,7 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   make DESTDIR=$pkgdir install
-  install -D -m755 $startdir/dionaea.service $pkgdir/etc/systemd/system/dionaea.service
-  sed -i 's:"var/dionaea/:"dionaea/:g' "$pkgdir/etc/dionaea/dionaea.conf"
+  install -D -m644 "${startdir}/dionaea.service" "${pkgdir}/usr/lib/systemd/system/dionaea.service"
+  sed -i 's:"var/dionaea/:"dionaea/:g' "${pkgdir}/etc/dionaea/dionaea.conf"
 }
  
