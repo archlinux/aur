@@ -6,7 +6,7 @@ pkgrel=4
 pkgdesc="a Gnome application to organise documents or references, and ultimately generate a BibTeX bibliography file"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/referencer/"
-license="GPL"
+license=('GPL2')
 makedepends=(   'intltool'
                 'gnome-doc-utils'
                 'gnome-icon-theme' 
@@ -19,12 +19,12 @@ depends=(       'boost-libs'
 source=("https://launchpad.net/$pkgname/1./$pkgver/+download/$pkgname-$pkgver.tar.gz")
 install=${pkgname}.install
 
-CXXFLAGS="$CXXFLAGS -std=gnu++11"
 
 build() {
   export PYTHON=/usr/bin/python2
   cd "$srcdir/$pkgname-$pkgver"
 #  autoreconf
+  CXXFLAGS="$CXXFLAGS -std=gnu++11"
   ./configure --prefix="/usr" --disable-update-mime-database --enable-python
   sed -i 's|$(MAKE) $(AM_MAKEFLAGS) install-data-hook||' data/Makefile
   make clean
