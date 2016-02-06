@@ -3,7 +3,7 @@
 
 pkgname=tkgate-beta
 pkgver=2.0_b10
-pkgrel=1
+pkgrel=2
 license=('GPL')
 pkgdesc="A digital circuit simulator with a tcl/tk-based graphical editor. Beta version"
 depends=('tcl' 'tk' 'libsm')
@@ -22,6 +22,6 @@ build() {
 package() {
   cd ${srcdir}/tkgate-${pkgver//_/-}
   make DESTDIR=${pkgdir} install
-  ln -sf ${pkgdir}/usr/bin/verga ${pkgdir}/usr/share/tkgate/libexec/verga
-  ln -sf ${pkgdir}/usr/bin/tkgate ${pkgdir}/usr/share/tkgate/libexec/tkgate
+  ln -sf /usr/bin/verga ${pkgdir}/usr/share/tkgate/libexec/verga
+  ln -sf /usr/bin/tkgate ${pkgdir}/usr/share/tkgate/libexec/tkgate
 }
