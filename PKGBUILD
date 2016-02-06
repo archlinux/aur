@@ -33,8 +33,6 @@ package_jdk-docs() {
   mv docs/* "$pkgdir"/usr/share/doc/java/
 
   # License
-  install -d "$pkgdir"/usr/share/licenses/$pkgname/
-  install -m644 LICENSE-Documentation "$pkgdir"/usr/share/licenses/$pkgname/
   install -Dm644 LICENSE-Documentation "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
@@ -47,6 +45,5 @@ package_javafx-docs() {
   mv api "$pkgdir"/usr/share/doc/java/javafx/
 
   # License
-  install -d "$pkgdir"/usr/share/licenses/$pkgname/
   install -Dm644 LICENSE-Oracle-Legal-Notices "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
