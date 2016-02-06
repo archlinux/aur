@@ -1,7 +1,7 @@
 # Maintainer: Jenya Sovetkin <e.sovetkin@gmail.com>
 pkgname=mkinitcpio-openswap
 pkgver=0.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="mkinitcpio hook to open swap at boot time"
 arch=(any)
 license=('unknown')
@@ -14,8 +14,8 @@ source=('openswap.hook'
         'openswap.conf')
 md5sums=('a5b52e3c3b5dc592f41567b21ec2e9cf'
          'ae743e0fd95cc1c07705cf7c472416b1'
-         '8a72bf00f155512490884eb4911cc4f4')
-
+         '101861982a5e2ad64a32a158894bbbea')
+                          
 
 package() {  
   install -Dm 644 openswap.hook \
