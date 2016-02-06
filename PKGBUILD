@@ -27,7 +27,7 @@ build() {
 package_virtualbox-luca020400-host-modules() {
   pkgdesc='Host kernel modules for VirtualBox running under Linux-luca020400.'
   provides=("virtualbox-host-modules")
-  depends=('linux-ck>=4.4')
+  depends=('linux-luca020400>=4.4')
   install=host.install
 
   install -dm755 "$pkgdir/usr/lib/modules/$_extramodules"
@@ -41,7 +41,7 @@ package_virtualbox-luca020400-guest-modules() {
   pkgdesc='Guest kernel modules for VirtualBox running under Linux-luca020400.'
   license=('GPL')
   provides=("virtualbox-guest-modules")
-  depends=('linux-ck>=4.4')
+  depends=('linux-luca020400>=4.4')
   install=guest.install
 
   install -dm755 "$pkgdir/usr/lib/modules/$_extramodules"
