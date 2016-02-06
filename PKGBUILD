@@ -1,3 +1,5 @@
+# Maintainer: Doug Newgard <scimmia at archlinux dot info>
+
 pkgbase=notepadqq-src
 pkgname=notepadqq
 pkgver=0.50.6
@@ -26,7 +28,8 @@ prepare() {
 build() {
   cd $pkgname
 
-  ./configure --prefix /usr
+  qmake-qt5 PREFIX=/usr notepadqq.pro
+
   make
 }
 
