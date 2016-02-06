@@ -1,17 +1,17 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-fieldslib
-pkgver=113.00.00
+pkgver=113.24.00
 pkgrel=1
 license=('Apache')
 arch=('i686' 'x86_64')
 pkgdesc="OCaml record fields as first class values "
 url="https://github.com/janestreet/fieldslib"
 depends=('ocaml' 'camlp4' 'ocaml-type_conv')
-makedepends=('ocaml-findlib')
+makedepends=('ocaml-findlib' 'opam')
 source=("https://ocaml.janestreet.com/ocaml-core/$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/${pkgname#ocaml-}-${pkgver}.tar.gz")
 options=('!strip')
-md5sums=('1d6c41507d25bcfdd24ce4e97efea404')
+md5sums=('3afa341134a5e4e4b583f6c617fa4e72')
 
 build() {
   cd "${srcdir}/${pkgname#ocaml-}-${pkgver}"
@@ -23,9 +23,5 @@ build() {
 package() {
   cd "${srcdir}/${pkgname#ocaml-}-${pkgver}"
 
-  OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
-  mkdir -p "$OCAMLFIND_DESTDIR"
-  DESTDIR="${pkgdir}" \
-    OCAMLFIND_DESTDIR="$OCAMLFIND_DESTDIR" \
-    make install
+  make install PREFIX="${pkgdir}/usr"
 }
