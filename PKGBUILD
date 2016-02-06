@@ -9,10 +9,10 @@
 # Based on linux-rt package
 
 pkgbase=linux-libre-rt
-_pkgbasever=4.1-gnu
-_pkgver=4.1.15-gnu
-_rtbasever=4.1
-_rtpatchver=rt17
+_pkgbasever=4.4-gnu
+_pkgver=4.4.1-gnu
+_rtbasever=4.4
+_rtpatchver=rt5
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -21,8 +21,8 @@ _replacesoldmodules=() # '%' gets replaced with _kernelname
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}_${_rtpatchver}
 pkgver=${_pkgver//-/_}.${_rtpatchver}
-pkgrel=2
-rcnrel=armv7-x6
+pkgrel=1
+rcnrel=armv7-x5
 arch=('i686' 'x86_64' 'armv7h')
 url="https://rt.wiki.kernel.org/"
 license=('GPL2')
@@ -48,12 +48,15 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        'CVE-2016-0728.patch'
+        'tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch'
+        '0001-sdhci-revert.patch'
+        '0001-4.4-revert-btrfs.patch'
+        '0001-4.4-revert-xfs.patch'
         '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch'
         '0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
         # armv7h patches
-        "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
-        "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch.sig"
+        "https://repo.parabola.nu/other/rcn-libre-rt/patches/${_pkgver%-*}/rcn-libre-rt-${_pkgver%-*}-${rcnrel}.patch"
+        "https://repo.parabola.nu/other/rcn-libre-rt/patches/${_pkgver%-*}/rcn-libre-rt-${_pkgver%-*}-${rcnrel}.patch.sig"
         '0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch'
         '0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch'
         '0003-SMILE-Plug-device-tree-file.patch'
@@ -61,12 +64,13 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0005-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch'
         '0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch'
         '0007-set-default-cubietruck-led-triggers.patch'
-        '0008-USB-armory-support.patch')
-sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
+        '0008-USB-armory-support.patch'
+        '0009-ARM-dts-dove-add-Dove-divider-clocks.patch')
+sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'SKIP'
-            'c7ae216251d4f2557ad39a498b8b393403cbe673962e2d4ad533bb2bf49d6875'
+            'ed09b329d879bb758374b6a76acb841cdf63a6638720378657fb2b6eeed6b265'
             'SKIP'
-            '5113ad6af15bf2db1031038acdec96f924a3d34f37541360cf1aa04208346b9d'
+            '05074ca09b97ad01eb9186e29cd8804e40ea489f1bffb64bcb46dafc73aa0b88'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -74,24 +78,28 @@ sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '8ace26ce32289263670854955ef979f7e74a48b747aade9086f81f50944c8ac1'
-            'e08e7c9da8beb7551c3cf9741581df3bcd2483608756d69d82bc7be929f5047f'
-            'ded625b4711e1390c36e581965cf4149cc6971657040c048a9f83ca9c9a0d11c'
+            '395079cf7bdaef8fd80dbe8fd9e45d827d44b66f6eeaf87d57c25047a42efeae'
+            '93d8c9e4937e59b17336853afcf2ade326ab5182e7bef239b363ec963d698291'
+            'c1b28105e8283299a23e9dde63b91563d875a847e4757c525fb521384c68057e'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '03bed5b1c6ef34a917e218a46d38cd1347c5ab5693131996113c6cad275dc4e9'
+            'ab57037ecee0a425c612babdff47c831378bca0bff063a1308599989a350226d'
+            '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
+            '51586b733e9f178bebe577258b6057b035eded516ffe8bf8bbb26cb0b26c4958'
+            'ffbfaa192d17bfc7c6293aa9a07efe57f65177051ae3d8033d5e45a7bca2e0ad'
             '61370b766e0c60b407c29d2c44b3f55fc352e9049c448bc8fcddb0efc53e42fc'
             '3d3266bd082321dccf429cc2200d1a4d870d2031546f9f591b6dfbb698294808'
-            'b485e9da38a70cb2a878714384ce4ddb36b0c3524b90d80cbff8a9a18c519e0b'
+            '9507b808e2edca2a9105af7876add112d2dde3c14ce794a3d77ef7c64d5e5c92'
             'SKIP'
-            '2654680bc8f677f647bca6e2b367693bf73ffb2edc21e3757a329375355a335d'
-            '842e4f483fa36c0e7dbe18ad46d78223008989cce097e5bef1e14450280f5dfe'
-            '810697eec07faa60acb59b97df291e5f2e9428e86ae54e5ef90a6e4b2d0844ab'
-            'c743e41975260aab3176b6f473707c8d8371cb89575e1c128bddb3bd74030b8b'
-            'abc9593a479b9bb677112fa1d6502c8165d27d0854a712e1662374e4bafb96a0'
-            'd068215561ce769439901da0118e251c624de58fe414cc2166fbf972f76dd1a7'
-            'ac0fb2180560652f94bebb3c09baef3c34785b539cae541df175ebec6989d79c'
-            'c23c3bf29fd557fe2e9ca72e65cd0f1e790b771b4568d0732388d7d420cefd6a')
+            'a851312b26800a7e189b34547d5d4b2b62a18874f07335ac6f426c32b47c3817'
+            '486976f36e1919eac5ee984cb9a8d23a972f23f22f8344eda47b487ea91047f4'
+            '6dadc17ea56d93ec0f1d0c3c98c25a7863e9ba3c4af50dc411d630a1bcc98f08'
+            '9c5d6d035c9a7103f19804c2284291d461d4b848cccd3ec07272bde68ba29513'
+            '6644705cd73c55056b5fed91cfb3199c1114b088d96dbd3c29358cd49863aeba'
+            '08d0aa76393ea2d1a853d0ea9b02aa616224ac915473ab057bb98285212bc994'
+            '1cb502674bf7a1ea79b359d1613fe891ba37f6aa64f5f5eca309d46ba01ab417'
+            '05bf1d8f94feab06bdd9fd958bc9bde4d1249a0cdeb8d3d3e16e6fac6dc5baed'
+            '5e1b8b1e9b3243a5ab315481c39b1b88f28923148659dcc0ac7ed78d9ba4f072')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
@@ -125,7 +133,7 @@ prepare() {
 
   if [ "${CARCH}" = "armv7h" ]; then
     # RCN patch (CM3 firmware deblobbed)
-    git apply -v "${srcdir}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
+    git apply -v "${srcdir}/rcn-libre-rt-${_pkgver%-*}-${rcnrel}.patch"
 
     # ALARM patches
     patch -p1 -i "${srcdir}/0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch"
@@ -136,6 +144,7 @@ prepare() {
     patch -p1 -i "${srcdir}/0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch"
     patch -p1 -i "${srcdir}/0007-set-default-cubietruck-led-triggers.patch"
     patch -p1 -i "${srcdir}/0008-USB-armory-support.patch"
+    patch -p1 -i "${srcdir}/0009-ARM-dts-dove-add-Dove-divider-clocks.patch"
   fi
 
   # add freedo as boot logo
@@ -145,8 +154,18 @@ prepare() {
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
-  # fixes #47820 CVE-2016-0728.patch
-  patch -Np1 -i "${srcdir}/CVE-2016-0728.patch"
+  # revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=9faac7b95ea4f9e83b7a914084cc81ef1632fd91
+  # fixes #47778 sdhci broken on some boards
+  # https://bugzilla.kernel.org/show_bug.cgi?id=106541
+  patch -Rp1 -i "${srcdir}/0001-sdhci-revert.patch"
+
+  # fixes #47805 kernel panics on platform modules
+  # https://bugzilla.kernel.org/show_bug.cgi?id=110751
+  patch -Np1 -i "${srcdir}/tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch"
+
+  # #47757 fix broken suspend from btrfs and xfs
+  patch -Np1 -i "${srcdir}/0001-4.4-revert-xfs.patch"
+  patch -Np1 -i "${srcdir}/0001-4.4-revert-btrfs.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
@@ -295,12 +314,14 @@ _package-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}"
   cp -a arch/${KARCH}/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
   if [ "${CARCH}" = "armv7h" ]; then
-    mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-omap2"
-    cp -a arch/${KARCH}/mach-omap2/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-omap2/"
-    mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-mvebu"
-    cp -a arch/${KARCH}/mach-mvebu/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-mvebu/"
-    mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/plat-omap"
-    cp -a arch/${KARCH}/plat-omap/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/plat-omap/"
+    for i in dove exynos mvebu omap2 versatile; do
+      mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-${i}"
+      cp -a arch/${KARCH}/mach-${i}/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-${i}/"
+    done
+    for i in omap orion samsung versatile; do
+      mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/plat-${i}"
+      cp -a arch/${KARCH}/plat-${i}/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/plat-${i}/"
+    done
   fi
 
   # copy files necessary for later builds
@@ -394,6 +415,11 @@ _package-headers() {
 
   # remove unneeded architectures
   find "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch -mindepth 1 -maxdepth 1 -type d -not -name "$KARCH" -exec rm -rf {} +
+
+  # remove a files already in docs package
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-01"
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-02"
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.select-break"
 }
 
 _package-docs() {
