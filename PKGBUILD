@@ -34,9 +34,9 @@ groups=('zarafa')
 pkgver=2.1.1
 _pkgrel=2.1.1
 pkgrel=6
-pkgdesc=('WebApp for Zarafa')
+pkgdesc='WebApp for Zarafa'
 arch=('any')
-url=('http://www.zarafa.com/')
+url='http://www.zarafa.com/'
 license=('AGPL3')
 depends=('php<7'
 	 'php-fpm<7')
@@ -70,7 +70,7 @@ package_zarafa-webapp() {
     cd ${srcdir}/zarafa-webapp-${pkgver}/deploy
     
     # application
-    install=("${pkgname}.install")
+    install="${pkgname}.install"
     replaces=('zarafa-webapp-plugins')
     
     mkdir -p ${pkgdir}/usr/share/webapps/${pkgname}/
