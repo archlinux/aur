@@ -9,7 +9,7 @@ makedepends=('godep' 'go')
 arch=('x86_64' 'i686')
 source=("https://github.com/opencontainers/runc/archive/v$pkgver.tar.gz")
 url="http://runc.io/"
-license="APACHE"
+license=("APACHE")
 sha256sums=('4d446cc796e32376f9227f7f2c2a05645874e063010cde1618b30a552caba7e0')
 
 prepare() {
