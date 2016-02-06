@@ -8,7 +8,7 @@ pkgdesc='Opus tags editor'
 url='https://github.com/fmang/opustags'
 license=('BSD3')
 
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 depends=('glibc' 'libogg')
 makedepends=('gcc' 'make')
 
