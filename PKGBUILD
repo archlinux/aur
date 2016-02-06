@@ -7,7 +7,8 @@ arch=('i686' 'x86_64')
 url="https://cgit.gentoo.org/proj/elfix.git"
 license=('GPL3')
 depends=('attr' 
-		 'libelf')
+	'libelf'
+	'python')
 makedepends=('autoconf'
              'automake'
              'binutils'
@@ -28,12 +29,28 @@ sha512sums=('1d1139d57d795cc093fc634440d71b3d5d56d3e6994d2d869de6253863b8100a26d
 build() {
   cd "$pkgname-$pkgver"
   ./autogen.sh
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --sbindir=/usr/bin
   make
 }
 
-package() {
+check() {
   cd "$pkgname-$pkgver"
+  make -k check
+}
 
-  make DESTDIR="$pkgdir/" install
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  msg2 'Installing license...'
+  install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/${pkgname%%-*}"
+
+  msg2 'Installing man pages...'
+  install -Dm 644 doc/revdep-pax.1 \
+    -t "$pkgdir/usr/share/man/man1"
+  install -Dm 644 doc/paxctl-ng.1 \
+    -t "$pkgdir/usr/share/man/man1"
+
+  msg2 'Installing paxctl-ng and revdep-pax...'
+  make DESTDIR="$pkgdir" install
 }
