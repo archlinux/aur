@@ -7,7 +7,7 @@ post_install() {
 	echo "To change that, edit /etc/zsh/zshrc file."
 	echo "Global settings reside in the /etc/zsh/ directory."
 	echo "To personalize Zsh and zim, edit your local ~/.zshrc and ~/.zimrc files."
-	echo "A user can also have a custom, overriding Prezto installation in ~/.zim/"
+	echo "A user can also have a custom, overriding Zim installation in ~/.zim/"
 	echo
 }
 
