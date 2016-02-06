@@ -1,0 +1,14 @@
+post_install() {
+	echo "Remember to copy the scripts from /usr/share/dwin/scripts to ~/.config/dwin/scripts"
+}
+
+pre_upgrade() {
+  post_install "$@"
+}
+
+post_upgrade() {
+  post_install "$@"
+}
+
+post_remove() {
+}
