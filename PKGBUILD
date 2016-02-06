@@ -13,7 +13,7 @@ depends=('php<7'
 makedepends=('php-composer')
 optdepends=('nginx'
 	    'zarafa-server')
-install=('install')
+install='install'
 backup=('etc/webapps/sabre-zarafa/nginx-location.conf'
 	'etc/php/conf.d/sabre-zarafa.ini'
 	'etc/php/fpm.d/sabre-zarafa.conf')
