@@ -8,10 +8,10 @@ pkgname=bbswitch-grsec
 _pkgname=bbswitch
 pkgver=0.8
 _extramodules=extramodules-4.3.5-grsec
-pkgrel=8
+pkgrel=9
 pkgdesc="Kernel module allowing to switch dedicated graphics card on Optimus laptops for linux-grsec"
 arch=('i686' 'x86_64')
-url=("http://github.com/Bumblebee-Project/bbswitch")
+url="http://github.com/Bumblebee-Project/bbswitch"
 license=('GPL')
 depends=('linux-grsec>=4.3.5' 'linux-grsec<4.4')
 makedepends=('linux-grsec-headers>=4.3.5' 'linux-grsec-headers<4.4')
