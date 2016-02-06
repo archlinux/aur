@@ -1,3 +1,9 @@
+2016-02-06 jakob <grandchild@gmx.net>
+
+	* 1.5.1107-1 :
+	Fix license array in PKGBUILD
+
+
 2015-06-09 jakob <grandchild@gmx.net>
 	
 	* 1.4.992-1 :

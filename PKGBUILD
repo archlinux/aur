@@ -2,13 +2,13 @@
 
 pkgname=glmixer-svn
 _pkgname=glmixer
-pkgver=1.4.992
+pkgver=1.5.1107
 pkgrel=1
 pkgdesc="Real-time graphics mixing for video performance"
 url="http://sourceforge.net/projects/glmixer/"
 #install=glmixer.install
 changelog=.Changelog
-license="GPL"
+license=('GPL')
 arch=('i686' 'x86_64')
 provides=('glmixer')
 conflicts=('glmixer')
