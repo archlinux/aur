@@ -2,7 +2,7 @@
 
 pkgname=filebeat
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Collects, pre-processes, and forwards log files from remote sources'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url='https://www.elastic.co/products/beats'
@@ -20,14 +20,14 @@ source=("https://github.com/elastic/beats/archive/v$pkgver/beats-$pkgver.tar.gz"
         "$pkgname.sysusers")
 sha256sums=('bba6c5d7d22959e90296d6d1dd7975c80250b491166a712cece72ee91165d25c'
             '9a31ad43b3f8f26a3c2c48715b9a887d59e180dfcefea080e1ad54a91986bcb0'
-            'd6db8138b0cb70925a529609b612ad0caf0c72bd8cf2e6b85de64eb2c42bced7'
+            '1b668b67134dcbca41193f7987371c6e9ead9853f3ebcb54d5c80a9d0b9decf0'
             '33feb3690f8b31563cc1e2da557c2aa326501ce9ccd7e0a142036902bfdb05ff')
 
 prepare() {
     cd "beats-$pkgver/$pkgname"
 
     # Perform some timestomping to avoid make warnings
-    _t="$(date -r Makefile +'%Y-%m-%d %k:%M:%S')"
+    LANG=C _t="$(date -r Makefile +'%Y-%m-%d %k:%M:%S')"
     # Avoid installing extraneous configs
     sed -i '/[- ]win/d ; /[- ]darwin/d ; /[- ]binary/d' Makefile
     # Install the Linux config as default
