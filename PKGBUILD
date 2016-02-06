@@ -15,7 +15,7 @@ depends=('php<7'
 optdepends=('nginx'
 	    'apache'
 	    'zarafa-server')
-install=('install')
+install='install'
 backup=('etc/webapps/z-push/nginx-location.conf'
 	'etc/php/conf.d/z-push.ini'
 	'etc/php/fpm.d/z-push.conf')
