@@ -4,7 +4,7 @@
 pkgname=thea-the-awakening-bin
 _pkgname=thea-the-awakening
 pkgver=1.RC51118.1
-pkgrel=7
+pkgrel=8
 pkgdesc="A turn-based strategic survival game steeped in Slavic myth. -gratis unsuported linux build"
 arch=('i686' 'x86_64')
 url="http://steamcommunity.com/app/378720/discussions/0/490125737485986607"
@@ -26,11 +26,10 @@ package() {
   install -d "${pkgdir}/usr/share/applications"
   install -d "${pkgdir}/usr/bin"
 
-  arch=`uname -m`
-  if [ $arch == i686 ];then
+  if [ $CARCH == i686 ];then
   	    install -m755 "${srcdir}/Thea.x86" "${pkgdir}/opt/games/${_pkgname}"
         ln -s "/opt/games/${_pkgname}/Thea.x86" "${pkgdir}/usr/bin/${_pkgname}"
-  elif [ $arch == x86_64 ];then
+  elif [ $CARCH == x86_64 ];then
   	    install -m755 "${srcdir}/Thea.x86_64" "${pkgdir}/opt/games/${_pkgname}"
         ln -s "/opt/games/${_pkgname}/Thea.x86_64" "${pkgdir}/usr/bin/${_pkgname}"
   fi
