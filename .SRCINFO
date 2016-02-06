@@ -1,7 +1,7 @@
 pkgbase = yuyo-gtk-theme-git
 	pkgdesc = The Official Ubuntu MATE GTK theme (forked from Moka Project's Orchis GTK theme)
 	pkgver = 100.8f75db1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/snwh/yuyo-gtk-theme
 	arch = any
 	license = GPL3
