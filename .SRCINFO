@@ -20,4 +20,5 @@ pkgbase = jdk-docs
 pkgname = jdk-docs
 
 pkgname = javafx-docs
+	pkgver = 8u72
 
