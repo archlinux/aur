@@ -4,7 +4,7 @@
 pkgname=yuyo-gtk-theme-git
 _pkgname=yuyo-gtk-theme
 pkgver=100.8f75db1
-pkgrel=2
+pkgrel=3
 pkgdesc="The Official Ubuntu MATE GTK theme (forked from Moka Project's Orchis GTK theme)"
 arch=('any')
 url="https://github.com/snwh/yuyo-gtk-theme"
@@ -13,7 +13,7 @@ depends=('gtk-engine-murrine')
 optdepends=("python: scripts to simplify the rendering process"
 	"inkscape: edit theme assets")
 makedepends=('git')
-source=("${_pkgname}"::"git+https://github.com/snwh/yuyo-gtk-theme.git")
+source=("${_pkgname}"::"git+https://github.com/Acidburn0zzz/yuyo-gtk-theme.git")
 md5sums=('SKIP')
 
 pkgver() {
