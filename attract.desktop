@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Attract-Mode
+Comment=Front-end for command line emulators
+Exec=attract
+Icon=attract
+Terminal=false
+Type=Application
+StartupNotify=false
+Categories=Game;
