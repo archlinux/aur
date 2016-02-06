@@ -9,12 +9,19 @@ url='https://github.com/p-e-w/maybe'
 license=('GPLv3')
 depends=('python-ptrace')
 makedepends=('python' 'python-pip')
+source=(https://pypi.python.org/packages/source/m/${pkgname#python-}/${pkgname#python-}-$pkgver.tar.gz)
+md5sums=('7eebbe47c1cf5f314153a45823e2a823')
 
 build() {
-  pip install --no-deps --target='maybe' maybe
+  cd "$srcdir/${pkgname#python-}-$pkgver"
+
+  msg 'Building...'
+  python setup.py build
 }
 
 package() {
-  mkdir -p $pkgdir/usr/lib/python3.5/site-packages/
-  cp -r $srcdir/maybe/* $pkgdir/usr/lib/python3.5/site-packages/
+  cd "$srcdir/${pkgname#python-}-$pkgver"
+
+  msg 'Installing...'
+  python setup.py install --root="$pkgdir" --optimize=1
 }
