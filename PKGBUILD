@@ -3,7 +3,7 @@
 
 pkgname=lemonbar-sm-git
 _pkgname=lemonbar
-pkgver=v1.0.157.gf1f885a
+pkgver=1.0.r157.gf1f885a
 pkgrel=1
 pkgdesc="Fork of lemonbar, with xft support and the ability to select monitor."
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 pkgver() {
     cd "$_pkgname"
 
-        if git_version=$( git describe --long --tags 2>/dev/null ); then
+        if git_version=$( git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/; s/-/./g' 2>/dev/null ); then
             IFS='-' read last_tag tag_rev commit <<< "$git_version"
             printf '%s.r%s.%s' "$last_tag" "$tag_rev" "$commit"
         else
