@@ -22,7 +22,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '0003-bfq.patch'
         'change-default-console-loglevel.patch'
         'enable_additional_cpu_optimizations_for_gcc.patch')
-sha256sums=('9a78fa2eb6c68ca5a40ed5af08142599'
+md5sums=('9a78fa2eb6c68ca5a40ed5af08142599'
             'd9e951895c8c249f0bf52d85f3e63bce'
             '8e798cc06597116d59bfd94472cb4d13'
             'eb14dcfd80c00852ef81ded6e826826a'
