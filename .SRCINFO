@@ -1,6 +1,6 @@
 pkgbase = nibl
-	pkgdesc = NIBL Package search
-	pkgver = 0.2
+	pkgdesc = NIBL package search
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/2ion/nibl
 	arch = any

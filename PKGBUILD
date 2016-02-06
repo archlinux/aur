@@ -1,7 +1,7 @@
 pkgname=nibl
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
-pkgdesc="NIBL Package search"
+pkgdesc="NIBL package search"
 arch=('any')
 license=('GPL')
 url="https://github.com/2ion/nibl"
