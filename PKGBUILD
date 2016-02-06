@@ -2,7 +2,7 @@
 
 pkgname=lib32-isl-git
 _gitname=isl
-pkgver=0.14.1.496.g47edc76
+pkgver=0.16.1.20.gee54b48
 pkgrel=1
 pkgdesc="Library for manipulating sets and relations of integer points bounded by linear constraints (development version)"
 arch=('i686' 'x86_64')
@@ -42,7 +42,7 @@ package() {
   make -j1 DESTDIR="$pkgdir/" install
 
   install -dm755 $pkgdir/usr/share/gdb/auto-load/usr/lib32/
-  mv $pkgdir/{,/usr/share/gdb/auto-load/}usr/lib32/libisl.so.13.1.1-gdb.py
+  mv $pkgdir/{,/usr/share/gdb/auto-load/}usr/lib32/libisl.so.15.1.1-gdb.py
 
   rm -rf "$pkgdir/usr/include"
 }
