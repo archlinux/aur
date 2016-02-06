@@ -1,7 +1,7 @@
 # Maintainer : Florent H. CARRÉ <colundrum@gmail.com>
 pkgname=qarte
-pkgver=2.7.0
-pkgrel=2
+pkgver=2.8.0
+pkgrel=1
 pkgdesc='Allow you to browse into the archive of arte+7 & arteLiveWeb sites and to record your prefered videos.'
 url='https://launchpad.net/qarte'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 source=(http://ppa.launchpad.net/vincent-vandevyvre/vvv/ubuntu/pool/main/q/qarte/${pkgname}_${pkgver}.orig.tar.gz)
 depends=('python2-pyqt4' 'python2-notify' 'rtmpdump')
 optdepends=('cronie: for differed download')
-md5sums=('bf8fe0488bfd200857dcb5d53441d94d')
+md5sums=('4a16eea0aa640eb34ccb88b9e4abd401')
 
 package() {
 	cd $srcdir/${pkgname}-${pkgver}
@@ -20,6 +20,7 @@ package() {
 
 	# For crontab
 	sed -i "/.replace('<root>', root)/ s/.*/                                    .replace('python', 'python2')\\\\\n&/" differedTask.py
+	sed -i 's/from crontab.crontab import CronTab/from crontab import CronTab/g' differedTask.py
 
 	# Fix chmod on loaders.py
 	chmod 755 loaders.py
