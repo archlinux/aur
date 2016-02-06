@@ -2,7 +2,7 @@
 
 pkgname=topbeat
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='An open source server monitoring agent that stores metrics in Elasticsearch'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url='https://www.elastic.co/products/beats'
@@ -16,13 +16,13 @@ conflicts=("$pkgname")
 source=("https://github.com/elastic/beats/archive/v$pkgver/beats-$pkgver.tar.gz"
         "$pkgname.service")
 sha256sums=('bba6c5d7d22959e90296d6d1dd7975c80250b491166a712cece72ee91165d25c'
-            '62f5b613d9464e4d8b1074c1a54b95cbd1c6615f0c788f1d9093becbdbc6c45d')
+            'ac768b039c699c63a3cda17518f3a2ec0481dff23e6366f6fb452c819bd5825b')
 
 prepare() {
     cd "beats-$pkgver/$pkgname"
 
     # Perform some timestomping to avoid make warnings
-    _t="$(date -r Makefile +'%Y-%m-%d %k:%M:%S')"
+    LANG=C _t="$(date -r Makefile +'%Y-%m-%d %k:%M:%S')"
     # Avoid installing extraneous configs
     sed -i '/[- ]win/d ; /[- ]darwin/d ; /[- ]binary/d' Makefile
     # Install the Linux config as default
