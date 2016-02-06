@@ -5,7 +5,7 @@
 # Contributor: Simon Zimmermann <simon@insmo.com>
 
 pkgname='pass-patched-passmenu-notify-git'
-pkgver=latest-passmenu-notify
+pkgver=latest
 pkgrel=1
 pkgdesc='Stores, retrieves, generates, and synchronizes passwords securely'
 arch=('any')
