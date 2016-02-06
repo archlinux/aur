@@ -9,8 +9,7 @@ pkgbase = qt4-color-widgets
 	makedepends = git
 	depends = qt4
 	depends = qt-color-widgets-common
-	provides = qt4-color-picker
-	conflicts = qt4-color-picker
+	replaces = qt4-color-picker
 	source = qt4-color-widgets::git+git://github.com/mbasaglia/Qt-Color-Widgets.git
 	sha256sums = SKIP
 
