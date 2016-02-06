@@ -1,4 +1,4 @@
-# Maintainer: Andrei G Florea <andrei91ro at gmail dot com>
+# Maintainer: Andrei G. Florea <andrei91ro at gmail dot com>
 
 pkgname=kilombo-git # '-bzr', '-git', '-hg' or '-svn'
 pkgver="v0.1.r177.83c55c7"
