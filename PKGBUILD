@@ -13,7 +13,7 @@ license=('AGPL3')
 depends=('php<7'
 	 'php-fpm<7')
 makedepends=('gettext')
-install=("install")
+install="install"
 source=("zarafa-${pkgver}.tar.gz::http://download.zarafa.com/community/final/${_pkgmajver}/${pkgver}-51838/sourcecode/zarafa-${_pkgrev}.tar.gz"
 	"nginx-location.conf"
 	"nginx-ssl.example.conf"
