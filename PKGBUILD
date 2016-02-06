@@ -2,9 +2,9 @@
 pkgname=pycarddav
 _pkgname=pyCardDAV
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="pyCardDAV is a simple to use CardDAV CLI client"
-arch=any
+arch=('any')
 url="http://lostpackets.de/pycarddav/"
 license=('Expat/MIT')
 depends=('python2' 'python2-vobject' 'python2-requests' 'python2-lxml' 'python2-urwid' 'python2-xdg')
