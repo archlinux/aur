@@ -2,9 +2,9 @@
 # Contributor: Gadget3000 <Gadget3000@msn.com>
 pkgname=mp3check
 pkgver=0.8.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Check mp3 files for consistency plus fix header and id3tag errors"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="https://code.google.com/p/mp3check/"
 license=('GPL')
 source=(https://mp3check.googlecode.com/files/mp3check-${pkgver}.tgz)
