@@ -1,9 +1,12 @@
-# Maintainer: Andya <ap_9@outlook.com>
+# Maintainer: Andya <hugo981@gmx.com>
 # Contributor: Lazaros Koromilas <koromilaz@gmail.com>
 
 pkgname=saxon-he
-pkgver=9.7.0.2
-pkgrel=1
+_major=9.7
+_minor=0.2
+pkgver=${_major}.${_minor}
+_pkgver=$(echo $pkgver | tr . -)
+pkgrel=2
 pkgdesc="XSLT 2.0 / XPath 2.0 and 3.0 / XQuery 1.0 and 3.0 processor for Java - Home Edition"
 url="http://saxon.sourceforge.net/"
 license=('MPL')
@@ -11,10 +14,10 @@ arch=('any')
 depends=('java-runtime-headless')
 provides=('java-saxon')
 conflicts=('java-saxon')
-source=("http://sourceforge.net/projects/saxon/files/Saxon-HE/9.6/SaxonHE9-6-0-8J.zip"
+source=("http://sourceforge.net/projects/saxon/files/Saxon-HE/${_major}/SaxonHE${_pkgver}J.zip"
         saxon-xslt.sh
         saxon-xquery.sh)
-md5sums=('a4aa61220056d8b8938253946b89b0f2'
+md5sums=('59993da904879bde84ccfbb0b5c75955'
          '4197e2b5278a02e0aa7d383d9dc4f11d'
          '1a37078990f913ce7c37eb3a1bd39283')
 
