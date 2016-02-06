@@ -2,10 +2,10 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoind-classic-git
-pkgver=v0.11.2.cl1.b1.r5.gcc2351c-1
+pkgver=v0.11.2.cl1.b2.r12.g3a60b0e
 pkgrel=1
 pkgdesc="Bitcoin Classic versions of bitcoind, bitcoin-cli, and bitcoin-tx"
-arch=('i686' 'x86_64' 'armv7h')
+arch=('any')
 url="https://bitcoinclassic.com/"
 depends=('boost'
          'boost-libs'
