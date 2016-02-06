@@ -9,6 +9,7 @@ url="http://savannah.gnu.org/projects/cssc"
 license=('GPL2')
 depends=('gcc-libs' 'sh')
 options=('!emptydirs')
+provides=('sccs')
 source=(http://ftp.gnu.org/gnu/$pkgname/$_PKGNAME-$pkgver.tar.gz)
 md5sums=('e1a973092577012f0c25421e7005f0f1')
 
