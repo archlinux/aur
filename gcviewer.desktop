@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=GCViewer
+Comment=Visualizes verbose GC output
+Exec=gcviewer
+Icon=gcviewer
+Terminal=false
