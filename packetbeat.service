@@ -1,5 +1,6 @@
 [Unit]
 Description=Open Source Real-Time Packet Analyzer
+Documentation=https://www.elastic.co/guide/en/beats/packetbeat/current
 After=network.target
 
 [Service]

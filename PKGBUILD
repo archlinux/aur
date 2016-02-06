@@ -2,7 +2,7 @@
 
 pkgname=packetbeat
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='An open source network packet analyzer that ships data to Elasticsearch.'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="https://www.elastic.co/products/beats/$pkgname"
@@ -17,13 +17,13 @@ conflicts=('packetbeat-bin')
 source=("https://github.com/elastic/beats/archive/v$pkgver/beats-$pkgver.tar.gz"
         "$pkgname.service")
 sha256sums=('bba6c5d7d22959e90296d6d1dd7975c80250b491166a712cece72ee91165d25c'
-            '09420676932fd4292351c9b55e835c545013477d015b7ffe8d5009ed1984da64')
+            'e45629a37d5c305efa26e2b6a68561528762081681e547e312bb058cbff76125')
 
 prepare() {
     cd "beats-$pkgver/$pkgname"
 
     # Perform some timestomping to avoid make warnings
-    _t="$(date -r Makefile +'%Y-%m-%d %k:%M:%S')"
+    LANG=C _t="$(date -r Makefile +'%Y-%m-%d %k:%M:%S')"
     # Remove win and darwin config installation
     sed -i '/[- ]win/d ; /[- ]darwin/d' Makefile
     # Replace Linux config filename
