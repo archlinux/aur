@@ -75,6 +75,8 @@ package() {
 
     msg2 "Removing redundancies..."
     rm    db/bin/*.bat
+    rm    db/3RDPARTY
+    rm    db/LICENSE
     rm -r jre/lib/desktop/icons/HighContrast
     rm -r jre/lib/desktop/icons/HighContrastInverse
     rm -r jre/lib/desktop/icons/LowContrast
@@ -147,7 +149,7 @@ package() {
     mv man/ "$pkgdir"/usr/share
 
     # Move/link licenses
-    mv COPYRIGHT LICENSE *.txt "$pkgdir"/usr/share/licenses/java${_major}-${_pkgname}32/
+    mv db/NOTICE COPYRIGHT LICENSE *.txt "$pkgdir"/usr/share/licenses/java${_major}-${_pkgname}32/
     ln -sf /usr/share/licenses/java${_major}-${_pkgname}32/ "$pkgdir"/usr/share/licenses/$pkgname
 
     msg2 "Installing Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files..."
