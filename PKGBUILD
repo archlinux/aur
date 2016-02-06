@@ -1,8 +1,8 @@
 # Maintainer: Nicolas F. <aur@fratti.ch>
 pkgname=("zopfli-git" "libzopfli-git" "zopflipng-git" "libzopflipng-git")
-pkgver=1.0.0.r47.g720b20e
-pkgrel=2
-arch=('i686' 'x86_64' 'ARM')
+pkgver=1.0.0.r49.g0aa5474
+pkgrel=1
+arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="https://github.com/google/zopfli"
 license=('Apache')
 makedepends=('git')
