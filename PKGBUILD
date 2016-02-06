@@ -1,7 +1,8 @@
 # $Id$
 # Maintainer: Luca Stefani <luca.stefani.ge1@gmail.com>
 
-pkgbase=linux-luca020400
+pkgname=(linux-luca020400 linux-luca020400-headers linux-luca020400-docs)
+_kernelname=-luca020400
 _srcname=linux-4.4
 pkgver=4.4.1
 pkgrel=2
@@ -34,8 +35,6 @@ md5sums=('9a78fa2eb6c68ca5a40ed5af08142599'
          'f0387e673975e9f2a5e05136948edece'
          'df7fceae6ee5d7e7be7b60ecd7f6bb35'
          '1e8ecc2208e18d8152aa8df710e94f59')
-
-_kernelname=${pkgbase#linux}
 
 prepare() {
   cd "${srcdir}/${_srcname}"
@@ -100,12 +99,11 @@ build() {
   make -j$(cat /proc/cpuinfo | grep "^processor" | wc -l) ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
 
-_package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
-  [ "${pkgbase}" = "linux" ] && groups=('base')
+package_linux-luca020400() {
+  pkgdesc="The Linux-luca020400 kernel and modules"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
-  backup=("etc/mkinitcpio.d/${pkgbase}.preset")
+  backup=("etc/mkinitcpio.d/linux-luca020400.preset")
   install=linux.install
 
   cd "${srcdir}/${_srcname}"
@@ -119,7 +117,7 @@ _package() {
 
   mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
-  cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
+  cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-linux-luca020400"
 
   # set correct depmod command for install
   cp -f "${startdir}/${install}" "${startdir}/${install}.pkg"
@@ -130,13 +128,13 @@ _package() {
     -i "${startdir}/${install}"
 
   # install mkinitcpio preset file for kernel
-  install -D -m644 "${srcdir}/linux.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  install -D -m644 "${srcdir}/linux.preset" "${pkgdir}/etc/mkinitcpio.d/linux-luca020400.preset"
   sed \
-    -e "1s|'linux.*'|'${pkgbase}'|" \
-    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
-    -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgbase}.img\"|" \
-    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
-    -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+    -e "1s|'linux.*'|'linux-luca020400'|" \
+    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-linux-luca020400\"|" \
+    -e "s|default_image=.*|default_image=\"/boot/initramfs-linux-luca020400.img\"|" \
+    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-linux-luca020400-fallback.img\"|" \
+    -i "${pkgdir}/etc/mkinitcpio.d/linux-luca020400.preset"
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
@@ -159,8 +157,8 @@ _package() {
   install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux" 
 }
 
-_package-headers() {
-  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
+package_linux-luca020400-headers() {
+  pkgdesc="Header files and scripts for building modules for Linux-luca020400 kernel"
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
@@ -274,15 +272,15 @@ _package-headers() {
 
   # remove unneeded architectures
   rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
-  
+
   # remove a files already in linux-docs package
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-01"
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-02"
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.select-break"
 }
 
-_package-docs() {
-  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
+package_linux-luca020400-docs() {
+  pkgdesc="Kernel hackers manual - HTML documentation that comes with the Linux-luca020400 kernel"
 
   cd "${srcdir}/${_srcname}"
 
@@ -294,11 +292,3 @@ _package-docs() {
   # remove a file already in linux package
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 }
-
-pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
-for _p in ${pkgname[@]}; do
-  eval "package_${_p}() {
-    $(declare -f "_package${_p#${pkgbase}}")
-    _package${_p#${pkgbase}}
-  }"
-done
