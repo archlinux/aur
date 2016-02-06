@@ -4,8 +4,8 @@
 # Author: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 # Maintainer: Julian Xhokaxhiu <info@julianxhokaxhiu.com>
 pkgname=oscam-git
-pkgver=11209
-_gitrev=1a39a0a4212b403eb22f6b1113f531d08a79d802
+pkgver=11211
+_gitrev=ec4bd2d5105384845f0bcfbe7eea4e0439069258
 pkgrel=1
 pkgdesc="Open Source Conditional Access Module software"
 url="http://www.streamboard.tv/oscam"
