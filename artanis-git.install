@@ -18,3 +18,4 @@ pre_remove() {
     install-info --delete $infodir/$file.gz $infodir/dir 2> /dev/null
   done
 }
+
