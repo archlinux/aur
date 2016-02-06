@@ -11,7 +11,7 @@ pkgdesc="Command line log parser to aggregate fields and count occurences"
 arch=('x86_64' 'i686')
 url="https://github.com/antham/goller"
 license=('GPL')
-source=("https://github.com/antham/goller/releases/download/v2.2.0/goller_linux_386")
+source=("https://github.com/antham/goller/releases/download/v2.2.1/goller_linux_386")
 md5sums=("961ec1035185b2e780ac7e9079bc6227")
 
 package() {
