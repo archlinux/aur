@@ -6,7 +6,7 @@
 # Maintainer: Anthony HAMON <hamon.anth@gmail.com>
 pkgname=goller
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line log parser to aggregate fields and count occurences"
 arch=('x86_64' 'i686')
 url="https://github.com/antham/goller"
