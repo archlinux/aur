@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Maudoux <layus DOT on @AT@ gmail DOT com>
 
 pkgname=mozart2-git
-pkgver=v2.0.0.alpha.0.4152.g473e132
+pkgver=v2.0.0.alpha.0.4158.g06e26f5
 pkgrel=1
 pkgdesc="The Mozart Programming System version 2"
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ provides=('mozart')
 conflicts=('mozart' 'mozart-git' 'mozart2' 'mozart2-bin')
 install="${pkgname}.install"
 source=(
-    "$pkgname::git+http://github.com/mozart/mozart2"
-    'git+http://github.com/mozart/mozart2-stdlib'
+    "$pkgname::git+https://github.com/mozart/mozart2"
+    'git+https://github.com/mozart/mozart2-stdlib'
 )
 sha256sums=(
     'SKIP'
