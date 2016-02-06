@@ -1,7 +1,7 @@
 # Maintainer: Chris Rizzitello <sithlord48@gmail.com>
 pkgname=makoureactor-git
 conflicts=('makoureactor')
-pkgver=1.6.5.r4.g311d035
+pkgver=1.6.5.r15.gfc58b30
 pkgrel=1
 pkgdesc="Final Fantasy 7 Field Editor"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ md5sums=(SKIP)
 
 pkgver() {
   cd "makoureactor"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
   
 
@@ -26,11 +26,7 @@ build() {
 }
 package(){
   cd "makoureactor"
-  install -D -m755 makoureactor "$pkgdir"/usr/bin/makoureactor
-  install -D -m644 Makou_Reactor.desktop "$pkgdir"/usr/share/applications/Makou_Reactor.desktop
-  install -D -m644 images/logo-shinra.png "$pkgdir"/usr/share/pixmaps/logo-shinra.png
+  INSTALL_ROOT=$pkgdir make install
   install -D -m644 debian/menu "$pkgdir"/usr/share/menu/makoureactor
-  install -d "$pkgdir"/usr/share/makoureactor/
-  cp -r *.qm "$pkgdir"/usr/share/makoureactor/
   install -m666 vars.cfg "$pkgdir"/usr/share/makoureactor/
 }  
