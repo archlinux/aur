@@ -9,7 +9,7 @@
 
 _gitname=gkrellm
 pkgname=${_gitname}-git
-pkgver=20141122.4263ff1
+pkgver=20160206.5e76842
 pkgrel=1
 pkgdesc="System monitor package for GTK2"
 arch=('x86_64' 'i686')
