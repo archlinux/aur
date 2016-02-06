@@ -56,7 +56,7 @@ optdepends=('zarafa-webaccess'
 	    'z-push'
 	    'bash-completion'
 	    'postfix')
-install=("install")
+install="install"
 source=("zarafa-${pkgver}.tar.gz::http://download.zarafa.com/community/final/${_pkgmajver}/${pkgver}-51838/sourcecode/zarafa-${_pkgrev}.tar.gz"
 	"arm.diff"
 	"zarafa-server.service"
