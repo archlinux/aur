@@ -5,7 +5,7 @@
 pkgname=goboom-bin
 _pkgname=goboom
 
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="A dmenu wrapper"
 url="https://github.com/victorhaggqvist/goboom"
