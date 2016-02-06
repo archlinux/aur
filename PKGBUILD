@@ -39,11 +39,14 @@ package_jdk-docs() {
 }
 
 package_javafx-docs() {
+  _minor=72
+  pkgver=${_major}u${_minor}
+
   # Install
   install -d "$pkgdir"/usr/share/doc/java/javafx/
   mv api "$pkgdir"/usr/share/doc/java/javafx/
 
   # License
   install -d "$pkgdir"/usr/share/licenses/$pkgname/
-  install -Dm644 LICENSE-JavaFX "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 LICENSE-Oracle-Legal-Notices "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
