@@ -1,12 +1,13 @@
 # Maintainer: Zanny <lordzanny@gmail.com>
 
 pkgname=gst-plugins-openwebrtc-git
-pkgver=r127.f40f330
+pkgver=v0.3.0.r37.f40f330
 pkgrel=1
 pkgdesc="OpenWebRTC specific GStreamer plugins"
 arch=(i386 x86_64)
 url="https://github.com/EricssonResearch/openwebrtc-gst-plugins"
 license=('BSD')
+groups=(gst-plugins)
 depends=(gst-plugins-base-libs libusrsctp-git)
 makedepends=(git)
 provides=(gst-plugins-openwebrtc)
@@ -18,13 +19,12 @@ _vcsname=openwebrtc-gst-plugins
 
 pkgver() {
     cd "$srcdir/$_vcsname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "%s" "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
     cd "$srcdir/$_vcsname"
-    ./autogen.sh
-    ./configure --prefix=/usr
+    ./autogen.sh --prefix=/usr
     make
 }
 
