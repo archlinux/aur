@@ -1,7 +1,7 @@
 # Maintainer: Chris Rizzitello <sithlord48@gmail.com>
 pkgname=makoureactor-git
 conflicts=('makoureactor')
-pkgver=1.6.4
+pkgver=r403.44865a3
 pkgrel=1
 pkgdesc="Final Fantasy 7 Field Editor"
 arch=('i686' 'x86_64')
@@ -14,8 +14,12 @@ md5sums=(SKIP)
 
 pkgver() {
   cd "makoureactor"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
+  
 
 build() {
   cd "makoureactor"
@@ -31,4 +35,5 @@ package(){
   install -D -m644 debian/menu "$pkgdir"/usr/share/menu/makoureactor
   install -d "$pkgdir"/usr/share/makoureactor/
   cp -r *.qm "$pkgdir"/usr/share/makoureactor/
+  install -m666 vars.cfg "$pkgdir"/usr/share/makoureactor/
 }  
