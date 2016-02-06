@@ -1,0 +1,50 @@
+diff -ruN src/main.cpp src.new/main.cpp
+--- src/main.cpp	2013-03-13 18:05:06.000000000 +0100
++++ src.new/main.cpp	2014-01-03 15:23:23.140370042 +0100
+@@ -22,7 +22,7 @@
+ #include "vector.h"
+ #include "probe.h"
+ 
+-static char * egbb_path = "c:/egbb/";
++static char * egbb_path = "/usr/share/toga2/egbb/";
+ static uint32 egbb_cache_size = 16; 
+ 
+ // functions
+diff -ruN src/option.cpp src.new/option.cpp
+--- src/option.cpp	2013-03-13 20:52:14.000000000 +0100
++++ src.new/option.cpp	2014-01-03 15:24:19.695132239 +0100
+@@ -37,8 +37,8 @@
+    { "Ponder", true, "false", "check", "", NULL },
+ 
+    { "OwnBook",  true, "true",           "check",  "", NULL },
+-   { "BookFile", true, "performance.bin", "string", "", NULL },
+-   { "Bitbases Path", true, "c:/egbb/", "string", "", NULL },
++   { "BookFile", true, "/usr/share/toga2/performance.bin", "string", "", NULL },
++   { "Bitbases Path", true, "/usr/share/toga2/egbb/", "string", "", NULL },
+    { "Bitbases Cache Size", true, "16", "spin", "min 16 max 1024", NULL },
+    { "MultiPV", true, "1", "spin",  "min 1 max 10", NULL },
+ 
+diff -ruN src/protocol.cpp src.new/protocol.cpp
+--- src/protocol.cpp	2013-03-13 18:05:52.000000000 +0100
++++ src.new/protocol.cpp	2014-01-03 15:23:26.957133228 +0100
+@@ -52,7 +52,7 @@
+ static bool Infinite; // infinite or ponder mode?
+ static bool Delay; // postpone "bestmove" in infinite/ponder mode?
+ 
+-static char * dirptr = "C:/egbb";
++static char * dirptr = "/usr/share/toga2/egbb/";
+ 
+ // prototypes
+ 
+diff -ruN src/readme.txt src.new/readme.txt
+--- src/readme.txt	2013-03-13 20:36:10.000000000 +0100
++++ src.new/readme.txt	2014-01-03 15:24:57.149412289 +0100
+@@ -137,7 +137,7 @@
+     ------------
+        First You have to download the 5men bitbases from Leo Dijksman's WBEC site 
+        http://www.wbec-ridderkerk.nl . The egbbs are 340mb in size. Then put them 
+-       anywhere in your computer. The default path is c:\egbb\ but you can change this in the uci options. 
++       anywhere in your computer. The default path is /usr/share/toga2/egbb/ but you can change this in the uci options. 
+        The egbbdll.dll must be in the same folder as the bitbase files.
+ 
+ Thanks Fabien Letouzey for the great source code of the program Fruit 2.1.

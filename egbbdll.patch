@@ -1,0 +1,18 @@
+diff -ruN egbbdll/cache.h egbbdll.new/cache.h
+--- egbbdll/cache.h	2008-10-24 18:46:52.000000000 +0200
++++ egbbdll.new/cache.h	2014-01-03 15:42:05.119988723 +0100
+@@ -2,6 +2,7 @@
+ #define __CACHE__
+ 
+ #include "my_types.h"
++#include <cstring>
+ 
+ /*
+ data to be cached
+@@ -50,4 +51,4 @@
+ 	static void alloc(UBMP32);
+ };
+ 
+-#endif
+\ No newline at end of file
++#endif
