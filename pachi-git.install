@@ -1,0 +1,23 @@
+post_install() {
+  cat <<END
+
+  The resulting binary program `pachi` is a GTP client; connect to it
+  with your favorite Go program interface (e.g. gogui or qgo), or use
+  kgsGtp to connect it to KGS.
+
+  Pachi can use an opening book in a Fuego-compatible format - you can
+  obtain one at http://gnugo.baduk.org/fuegoob.htm and use it in Pachi
+  with the -f parameter:
+
+    ./pachi -f book.dat ...
+
+  Pachi can also use a pattern database to improve its playing performance.
+  You can get it at http://pachi.or.cz/pat/ - you will also find further
+  instructions there.
+END
+}
+
+post_upgrade() {
+  post_install
+}
+
