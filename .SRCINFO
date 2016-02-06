@@ -1,0 +1,15 @@
+pkgbase = manuale
+	pkgdesc = A fully manual Let's Encrypt client
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/veeti/manuale
+	arch = any
+	license = MIT
+	depends = python-setuptools
+	depends = python-cryptography
+	depends = python-requests
+	source = https://pypi.python.org/packages/source/m/manuale/manuale-1.0.0.tar.gz
+	sha256sums = aa4866bee634e9bd8aeafdfaeafea17e19a2efafe73ae2ec2d4a9d788d14b5bb
+
+pkgname = manuale
+
