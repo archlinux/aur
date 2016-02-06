@@ -10,8 +10,7 @@ url='https://github.com/mbasaglia/Qt-Color-Widgets'
 license=('LGPL3')
 depends=('qt5-base' 'qt-color-widgets-common')
 makedepends=('git')
-provides=('qt5-color-picker')
-conflicts=('qt5-color-picker')
+replaces=('qt5-color-picker')
 source=("${pkgname}::git+git://github.com/mbasaglia/Qt-Color-Widgets.git")
 sha256sums=('SKIP')
 
