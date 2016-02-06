@@ -71,7 +71,7 @@ _NUMAdisable=y	# Disable NUMA in kernel config
 pkgname=(linux-lts-ck linux-lts-ck-headers)
 _kernelname=-lts-ck
 _srcname=linux-4.1
-pkgver=4.1.16
+pkgver=4.1.17
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -102,7 +102,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha512sums=('168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d201625c66e375a23226745eaada9176eb006ca023613cec089349e91751f3c0'
             'SKIP'
-            '3630f7c5575dca4c4ea4ec81db94773934003e9b19d99232503660d8397f7830770b6b6ce40bee99f05e4aae22018f96a5523b98b0a78a30a51332ddbcf284a4'
+            'fa8675bac395ad7255693728ee601cd84a02aeee660ee5f2bf5684a6af053c9cf07afb0abb3324b1eb149305701a0bb9252053e840edc2aebb6499139dc12edd'
             'SKIP'
             '76dd25223cba6dd2c7033c5ff7d370e741b0a708a389a4ff6479146edc768c5bb51c44211fd7402f4e79cf3fd50fff92f1517ea55e0fe809f37ded6b07267171'
             '8fe96d603341da028b832a85db8aee78fc712a182346fd9de78db00f869d1c2267ac9c4ea86d5a9160b5afd95fb3750061053772aabd1043cf43b20a84f4f4a5'
@@ -266,7 +266,7 @@ package_linux-lts-ck() {
 	#_Kpkgdesc='Linux Kernel and modules with the ck2 patchset featuring the Brain Fuck Scheduler v0.464.'
 	#pkgdesc="${_Kpkgdesc}"
 	depends=('coreutils' 'linux-firmware' 'mkinitcpio>=0.7')
-	optdepends=('crda: to set the correct wireless channels of your country'  'nvidia-lts-ck: nVidia drivers for linux-lts-ck' 'nvidia-340xx-lts-ck: nVidia drivers for linux-lts-ck' 'modprobed_db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
+	optdepends=('crda: to set the correct wireless channels of your country'  'nvidia-dkms: nVidia drivers for linux-lts-ck' 'nvidia-340xx-dkms: nVidia drivers for linux-lts-ck' 'modprobed_db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
 	provides=("linux-lts-ck=${pkgver}")
 	replaces=('kernel26-lts-ck')
 	backup=("etc/mkinitcpio.d/linux-lts-ck.preset")
