@@ -1,0 +1,34 @@
+From 9e672e82e01f0bbe11869a4b67bd0a26c9494c50 Mon Sep 17 00:00:00 2001
+From: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date: Wed, 29 Oct 2014 00:36:15 -0400
+Subject: [PATCH] Temporarily disable previous-button drop-shadow drawing
+
+When indicator-sound is connected to a media player through mpris,
+a bug in either cairo or ido causes unity-panel-service to segfault
+---
+ src/idoplaybackmenuitem.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/idoplaybackmenuitem.c b/src/idoplaybackmenuitem.c
+index 11af9bb..5fb66da 100644
+--- a/src/idoplaybackmenuitem.c
++++ b/src/idoplaybackmenuitem.c
+@@ -1443,6 +1443,7 @@ ido_playback_menu_item_draw (GtkWidget* button, cairo_t *cr)
+                  MIDDLE_END);
+   }
+ 
++#if 0
+   // draw previous-button drop-shadow
+   if ((item->cur_pushed_button == BUTTON_PREVIOUS && item->keyboard_activated) ||
+       item->cur_hover_button == BUTTON_PREVIOUS)
+@@ -1485,6 +1486,7 @@ ido_playback_menu_item_draw (GtkWidget* button, cairo_t *cr)
+     _surface_blur (surf, 1);
+     _finalize (cr, &cr_surf, &surf, abs_prev_x, PREV_Y + 1.0f);
+   }
++#endif
+ 
+   // draw previous-button
+   _setup (&cr_surf, &surf, PREV_WIDTH, PREV_HEIGHT);
+-- 
+2.1.2
+
