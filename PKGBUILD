@@ -7,7 +7,7 @@ _pkgbase=systemd
 pkgbase=systemd-knock
 pkgname=('systemd-knock' 'libsystemd-knock' 'systemd-knock-sysvcompat')
 pkgver=228
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
@@ -48,6 +48,11 @@ prepare() {
   # https://github.com/systemd/systemd/commit/e5d44b34cca3
   # https://github.com/systemd/systemd/issues/2023
   git cherry-pick -n e5d44b34cca3
+
+  # virt: detect dmi before cpuid
+  # https://github.com/systemd/systemd/commit/050e65ada2e0
+  # https://github.com/systemd/systemd/issues/1993
+  git cherry-pick -n 050e65ada2e0
 
   # Rename "Linux" -> "GNU/Linux"
   patch -Np1 -i "$srcdir/gnu+linux.patch"
@@ -97,7 +102,7 @@ package_systemd-knock() {
   pkgdesc="system and service manager with support for stealth TCP sockets (Parabola rebranded)"
   license=('GPL2' 'LGPL2.1')
   depends=('acl' 'bash' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
-           'libgcrypt' "libsystemd=$pkgver" 'libidn' 'lz4' 'pam' 'libelf' 'libseccomp'
+           'libgcrypt' 'libsystemd-knock' 'libidn' 'lz4' 'pam' 'libelf' 'libseccomp'
            'util-linux' 'xz')
   provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver" "systemd=$pkgver")
   replaces=('nss-myhostname' 'systemd-tools' 'udev')
