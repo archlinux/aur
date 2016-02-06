@@ -6,7 +6,7 @@
 
 _pkgbase=milkytracker
 pkgname=milkytracker-git
-pkgver=v0.90.86.r23.g6b07c69
+pkgver=v0.90.86.r103.g5801528
 pkgrel=1
 pkgdesc='Fast Tracker II inspired music tracker'
 arch=('x86_64' 'i686')
@@ -20,8 +20,12 @@ optdepends=('jack-audio-connection-kit: JACK audio support')
 options=('docs' '!strip')
 install="${_pkgbase}.install"
 source=("${_pkgbase}::git+https://github.com/Deltafire/MilkyTracker.git"
+        "rtaudio::git+https://github.com/thestk/rtaudio.git"
+        "rtmidi::git+https://github.com/thestk/rtmidi.git"
         "${_pkgbase}.install")
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'de270bb640a7ca57b4c70d270c55fc45228d823232b2fd9d00682465c635d1fb')
 
 pkgver() {
@@ -32,6 +36,12 @@ pkgver() {
 prepare() {
   gendesk -n --pkgname "$_pkgbase" --pkgdesc "$pkgdesc" --name 'MilkyTracker' \
     --categories 'AudioVideo;Audio;AudioVideoEditing;'
+
+  cd "$srcdir/${_pkgbase}"
+  git submodule init
+  git config "submodule.src/milkyplay/drivers/generic/rtaudio.url" "$srcdir/rtaudio"
+  git config "submodule.src/midi/rtmidi.url" "$srcdir/rtmidi"
+  git submodule update
 }
 
 build() {
