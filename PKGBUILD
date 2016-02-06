@@ -1,7 +1,8 @@
+
 # Maintainer: Bachir Soussi Chiadmi (scbh at g-u-i dot me)
 pkgname=nodebox-git
-pkgver=3.0.44.r6.ecdaa14
-pkgrel=1
+pkgver=3.0.44-x
+pkgrel=2
 pkgdesc="Node-based software application for generative design."
 arch=('any')
 url="https://www.nodebox.net"
@@ -11,6 +12,7 @@ makedepends=('git' 'apache-ant' 'java-openjfx')
 provides=('nodebox')
 source=('git://github.com/nodebox/nodebox.git' 'nodebox.sh' 'nodebox.desktop' 'nodebox.png')
 md5sums=('SKIP' 'e60ce94f6d0eac4d93908bb5df3e94eb' 'b4afc4203d2f46459d226d923f93c2f4' '908bb603513778a7d800374027c5b24f')
+conflicts=("nodebox")
 
 pkgver() {
 	cd "$srcdir/nodebox"
