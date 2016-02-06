@@ -5,9 +5,9 @@ pkgname=("zarafa-webapp-${_pkgname}")
 groups=('zarafa')
 pkgver=1.2
 pkgrel=5
-pkgdesc=('Passwd plugin for Zarafa Webapp')
+pkgdesc='Passwd plugin for Zarafa Webapp'
 arch=('any')
-url=('https://github.com/silentsakky/zarafa-webapp-passwd')
+url='https://github.com/silentsakky/zarafa-webapp-passwd'
 source=("https://github.com/silentsakky/zarafa-webapp-passwd/raw/master/builds/passwd-1.2.zip"
 	"compress-static")
 backup=("etc/webapps/zarafa-webapp/plugins/${_pkgname}/config.php")
