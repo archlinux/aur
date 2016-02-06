@@ -7,6 +7,7 @@ pkgdesc='See what a program does before deciding whether you really want it to h
 arch=('any')
 url='https://github.com/p-e-w/maybe'
 license=('GPLv3')
+depends=('python-ptrace')
 makedepends=('python' 'python-pip')
 
 build() {
