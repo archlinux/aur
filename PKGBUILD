@@ -5,9 +5,9 @@ pkgname=("zarafa-webaccess-${_pkgname}")
 groups=('zarafa')
 pkgver=2.1
 pkgrel=5
-pkgdesc=('Mobile Device Management plugin for Zarafa Webaccess')
+pkgdesc='Mobile Device Management plugin for Zarafa Webaccess'
 arch=('any')
-url=('https://community.zarafa.com/mod/community_plugins/download.php?release_guid=9498')
+url='https://community.zarafa.com/mod/community_plugins/download.php?release_guid=9498'
 source=('mdm2.zip::https://community.zarafa.com/mod/community_plugins/download.php?release_guid=9498'
         'zarafa-webaccess-mdm.ini'
         'mdm_login.patch'
