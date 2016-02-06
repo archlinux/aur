@@ -3,8 +3,8 @@
 
 _realname=libkqueue
 pkgname=lib32-$_realname
-pkgver=2.0.3
-pkgrel=2
+pkgver=2.0.4
+pkgrel=1
 pkgdesc="Userspace implementation of the kqueue kernel event notification mechanism found in FreeBSD and other BSD-based (32-bit)"
 url="https://github.com/mheily/libkqueue"
 arch=('x86_64')
@@ -12,8 +12,8 @@ license=('BSD')
 depends=('lib32-glibc' 'libkqueue')
 makedepends=('gcc-multilib')
 options=('!libtool')
-source=("https://github.com/mheily/$_realname/releases/download/v$pkgver/$_realname-$pkgver.tar.gz")
-md5sums=('42d405a26c36f734e2c7d3a936e30abe')
+source=("https://github.com/mheily/$_realname/archive/v$pkgver.tar.gz")
+md5sums=('fb708a9183b8793e0b2b2252818df144')
 
 build() {
 	cd "$srcdir/$_realname-$pkgver"
