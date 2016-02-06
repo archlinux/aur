@@ -67,8 +67,10 @@ depends=(${ros_depends[@]}
   gazebo)
 
 _tag=release/jade/gazebo_plugins/${pkgver}-${_pkgver_patch}
-_dir=gazebo_plugins
-source=("${_dir}"::"git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git"#tag=${_tag})
+#Fix for Gazebo 7
+_dir=gazebo_plugins/gazebo_plugins
+_commit=a1c01ba821bc8ba1ef8f2a1356934f1345a19861
+source=("${_dir}"::"git+https://github.com/ros-simulation/gazebo_ros_pkgs.git"#commit=${_commit})
 md5sums=('SKIP')
 
 build() {
