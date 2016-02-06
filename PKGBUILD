@@ -1,5 +1,5 @@
 pkgname=terminator-gtk3-bzr
-pkgver=r1561
+pkgver=r1637
 pkgrel=1
 pkgdesc='GTK3 porting branch for terminal emulator that supports tabs and grids GTK3'
 arch=('any')
