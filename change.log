@@ -3,6 +3,9 @@ http://pokemon-revolution-online.net/Forum/viewtopic.php?f=14&t=4563
 
 Packaging
 
+0.93_3.20160206-1
+* PRO 0.93_3 - gogogo!
+
 0.93_2.20160202.1
 * correct directory permissions 775 -> 755
 * move files instead of copy them to save 50% (around 2GiB) memory while makepkg
