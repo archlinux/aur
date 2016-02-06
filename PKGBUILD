@@ -12,28 +12,28 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        'linux.preset'
         'linux.install'
+        'linux.preset'
         'config'
-        'change-default-console-loglevel.patch'
         '0001-4.4-revert-btrfs.patch'
         '0001-4.4-revert-xfs.patch'
         '0001-bfq.patch'
         '0002-bfq.patch'
         '0003-bfq.patch'
+        'change-default-console-loglevel.patch'
         'enable_additional_cpu_optimizations_for_gcc.patch')
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+sha256sums=('9a78fa2eb6c68ca5a40ed5af08142599'
+            'd9e951895c8c249f0bf52d85f3e63bce'
+            '8e798cc06597116d59bfd94472cb4d13'
+            'eb14dcfd80c00852ef81ded6e826826a'
+            '145dbe8281a4424d6c06afdaed56d1c6'
+            'd0b2697353a167f0ca1e24506589cd22'
+            '7820a5f4c97660d4c9272ea599e3cdcc'
+            'c1d7fcfe88edb658375089c0a9cc1811'
+            '953133d5e387de2ad79ac0ae5c27cb6b'
+            'f0387e673975e9f2a5e05136948edece'
+            'df7fceae6ee5d7e7be7b60ecd7f6bb35'
+            '1e8ecc2208e18d8152aa8df710e94f59')
 
 _kernelname=${pkgbase#linux}
 
