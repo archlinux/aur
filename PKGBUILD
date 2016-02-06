@@ -2,14 +2,14 @@
 
 pkgname=selfspy-git
 _pkgname=selfspy
-pkgver=0.1.4.r169.g363aa5f
-pkgrel=3
+pkgver=0.1.4.r194.gb0be0ab
+pkgrel=1
 epoch=1
 pkgdesc="X11 personal keylogger daemon with statistical analysis."
 url="https://github.com/gurgeh/selfspy"
 install=selfspy.install
 changelog=.Changelog
-license="GPL"
+license=('GPL')
 arch=('i686' 'x86_64')
 provides=('selfspy')
 conflicts=('selfspy')
