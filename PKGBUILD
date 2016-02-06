@@ -7,7 +7,7 @@ pkgdesc="a Gnome application to organise documents or references, and \
          ultimately generate a BibTeX bibliography file"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/referencer/"
-license="GPL"
+license=('GPL2')
 makedepends=(   'autoconf'
                 'automake' 
                 'bzr'
@@ -25,7 +25,7 @@ depends=(       'poppler-glib'
         #        'gtkmm-utils')
 conflicts=('referencer' 'referencer-svn' 'referencer-hg')
 replaces=('referencer-svn' 'referencer-hg')
-provides=referencer
+provides=('referencer')
 install=referencer.install
 source=('referencer::bzr+https://code.launchpad.net/~referencer-devs/referencer/trunk')
 md5sums=('SKIP')
@@ -39,6 +39,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/referencer"
+  CXXFLAGS="$CXXFLAGS -std=gnu++11"
   export AUTOMAKE=automake
   msg "Starting autogen.sh..."
   ./autogen.sh --prefix="/usr" --disable-update-mime-database
