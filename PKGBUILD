@@ -1,7 +1,7 @@
 # Maintainer: Andrew Kiss <ubervoltage@gmail.com>
 pkgname=morsetran
-pkgver=1.0
-pkgrel=1
+pkgver=1.1
+pkgrel=2
 url="https://github.com/supervoltage/$pkgname"
 pkgdesc="ASCII morse code translator"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
