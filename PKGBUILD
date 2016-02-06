@@ -12,7 +12,9 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         'linux.install'
         'linux.preset'
         'config'
@@ -23,18 +25,24 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '0003-bfq.patch'
         'change-default-console-loglevel.patch'
         'enable_additional_cpu_optimizations_for_gcc.patch')
-md5sums=('9a78fa2eb6c68ca5a40ed5af08142599'
-         'd9e951895c8c249f0bf52d85f3e63bce'
-         '8e798cc06597116d59bfd94472cb4d13'
-         'eb14dcfd80c00852ef81ded6e826826a'
-         '145dbe8281a4424d6c06afdaed56d1c6'
-         'd0b2697353a167f0ca1e24506589cd22'
-         '7820a5f4c97660d4c9272ea599e3cdcc'
-         'c1d7fcfe88edb658375089c0a9cc1811'
-         '953133d5e387de2ad79ac0ae5c27cb6b'
-         'f0387e673975e9f2a5e05136948edece'
-         'df7fceae6ee5d7e7be7b60ecd7f6bb35'
-         '1e8ecc2208e18d8152aa8df710e94f59')
+sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
+            'SKIP'
+            'c0218043e61da3921cd14579ae4a8774a6fdad91667a9fdb851d0a35f62edb48'
+            'SKIP'
+            'e1195de2d0bebc1fc81d8ad887f4b30376fe7b428e59a587e0544c0b34a80b84'
+            'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
+            '3e85b02124359e244b56a01f840970b8af72b2f7f42be1d2db9d74837b7ef503'
+            '51586b733e9f178bebe577258b6057b035eded516ffe8bf8bbb26cb0b26c4958'
+            'ffbfaa192d17bfc7c6293aa9a07efe57f65177051ae3d8033d5e45a7bca2e0ad'
+            'd1cf14cc696b0f716454fe8eb9746383700889d5d22ad829611f0433cc77b4ce'
+            'b17c3fb18c5b8c20a45a38198f293679ca6aef08d16f12cd816a5cfafac4b2c4'
+            '69a21bc286a628128cfc4723558829cb6ff6c2d7c4dfd4468457898674187b25'
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            'f479a5ca6abe4d50ca4c09e6e83a027369fcd3efff8d5ce60f0699d8fa47beb8')
+validpgpkeys=(
+              'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
+              '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
+             )
 
 prepare() {
   cd "${srcdir}/${_srcname}"
