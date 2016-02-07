@@ -3,7 +3,7 @@
 
 pkgname=tbs-dvb-drivers
 pkgver=v160126_4.3.3_3_ARCH
-pkgrel=1
+pkgrel=2
 pkgdesc="TBS proprietary DVB drivers + firmware"
 url="http://www.tbsdtv.com"
 arch=('i686' 'x86_64')
@@ -58,18 +58,30 @@ build() {
 }
 
 package() {
+        _kernver=`uname -r`
 
-        mkdir -p $pkgdir/usr/lib/modules/`uname -r`/updates/tbs
+        for r in /lib/modules/*; do
+            s=${r:13}
+            if [[ ${s:0:3} = "ext" ]]; then
+                if [[ `cat ${r}/version | grep -c ${_kernver}` != 0 ]]; then
+                    _destidir=${s}
+                fi
+            elif [[ ${s} = ${_kernver} ]] && [[ ! -e ${r}/extramodules ]]; then
+                _destidir=${_kernver}/video
+            fi  
+        done
+
+        mkdir -p $pkgdir/usr/lib/modules/${_destidir}/tbs
         mkdir -p $pkgdir/usr/lib/firmware
 
         install -m0644 $srcdir/*dvb*.fw  $pkgdir/usr/lib/firmware
-        find "$srcdir/linux-tbs-drivers" -name '*.ko' -exec cp {} $pkgdir/usr/lib/modules/`uname -r`/updates/tbs \;
+        find "$srcdir/linux-tbs-drivers" -name '*.ko' -exec cp {} $pkgdir/usr/lib/modules/${_destidir}/tbs \;
 
         echo ""
         msg "Compressing modules, this will take awhile..."
         echo ""
         find "$pkgdir" -name '*.ko' -print0 | xargs -0 -P`nproc` -n10 gzip -9
 
-        chmod -R go-w $pkgdir/usr/lib/modules/`uname -r`/updates
+        chmod -R go-w $pkgdir/usr/lib/modules/${_destidir}/tbs
 
 }
