@@ -6,14 +6,15 @@ pkgname=openblas-lapack
 _PkgName=OpenBLAS
 _pkgname=openblas
 pkgver=0.2.15
-pkgrel=3
+_lapackver=3.5.0
+pkgrel=4
 pkgdesc="Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas)"
 arch=('i686' 'x86_64')
 url="http://xianyi.github.com/OpenBLAS/"
 license=('BSD')
 depends=('gcc-libs')
 makedepends=('perl' 'gcc-fortran')
-provides=('openblas' 'blas=3.6.0' 'lapack=3.6.0' 'cblas' 'lapacke')
+provides=('openblas' "blas=${_lapackver}" "lapack=${_lapackver}" "cblas=${_lapackver}" "lapacke=${_lapackver}")
 conflicts=('openblas' 'blas' 'lapack' 'cblas' 'lapacke')
 options=(!emptydirs)
 source=(${_PkgName}-${pkgver}.tar.gz::https://github.com/xianyi/${_PkgName}/archive/v${pkgver}.tar.gz)
@@ -44,14 +45,14 @@ package(){
   cd "${pkgdir}/usr/lib/"
   # BLAS
   ln -sf libopenblas.so libblas.so
-  ln -sf libopenblas.so libblas.so.3
-  ln -sf libopenblas.so libblas.so.3.5.0
+  ln -sf libopenblas.so libblas.so.${_lapackver:0:1}
+  ln -sf libopenblas.so libblas.so.${_lapackver}
   # CBLAS
   ln -sf libopenblas.so libcblas.so
   # LAPACK
   ln -sf libopenblas.so liblapack.so
-  ln -sf libopenblas.so liblapack.so.3
-  ln -sf libopenblas.so liblapack.so.3.5.0
+  ln -sf libopenblas.so liblapack.so.${_lapackver:0:1}
+  ln -sf libopenblas.so liblapack.so.${_lapackver}
   # LAPACKE
   ln -sf libopenblas.so liblapacke.so
 }
