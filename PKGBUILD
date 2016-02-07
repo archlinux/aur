@@ -11,7 +11,9 @@ url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
-_bfq="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.4.0-v7r11"
+_bfqrel=v7r11
+_bfqkern=4.4.0
+_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/${_bfqkern}-${_bfqrel}"
 _stable_queue="http://git.kernel.org/cgit/linux/kernel/git/stable/stable-queue.git/plain"
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
@@ -22,9 +24,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'config'
         '0001-4.4-revert-btrfs.patch'
         '0001-4.4-revert-xfs.patch'
-        "${_bfq}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.4.0.patch"
-        "${_bfq}/0002-block-introduce-the-BFQ-v7r11-I-O-sched-for-4.4.0.patch"
-        "${_bfq}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-for.patch"
+        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-${_bfqkern}.patch"
+        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-for-${_bfqkern}.patch"
+        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqrel}-for.patch"
         'change-default-console-loglevel.patch'
         'enable_additional_cpu_optimizations_for_gcc.patch')
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
@@ -33,7 +35,7 @@ sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
             'e1195de2d0bebc1fc81d8ad887f4b30376fe7b428e59a587e0544c0b34a80b84'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            '8a97d96f541313fa8b798c734d34a271c6a389ba2260b7408af09c4ae474a5d9'
+            '35d9b90c8f30a7622bfdddefca4d5bd5e0c1e989f4b6490a2d4673e8599749bd'
             '51586b733e9f178bebe577258b6057b035eded516ffe8bf8bbb26cb0b26c4958'
             'ffbfaa192d17bfc7c6293aa9a07efe57f65177051ae3d8033d5e45a7bca2e0ad'
             'd1cf14cc696b0f716454fe8eb9746383700889d5d22ad829611f0433cc77b4ce'
