@@ -8,6 +8,7 @@ pkgdesc="Everything you need to get started using Heroku"
 arch=('i686' 'x86_64')
 url="https://toolbelt.heroku.com"
 license=('MIT')
+depends=('ruby')
 optdepends=('git')
 provides=('heroku-client-standalone' 'heroku-toolbelt')
 conflicts=('heroku-client-standalone' 'heroku-toolbelt')
