@@ -2,7 +2,7 @@
 pkgname=mpv-bash-completion-git
 pkgver=0.15.0
 epoch=3
-pkgrel=1
+pkgrel=2
 pkgdesc="Bash completion for the mpv video player"
 arch=('any')
 url="https://github.com/2ion/mpv-bash-completion"
@@ -44,5 +44,4 @@ check() {
 package() {
   cd "$srcdir/${pkgname%-git}"
   install -Dm644 "${_completioncommand}" "${pkgdir}/etc/bash_completion.d/${_completioncommand}"
-  install -Dm644 BUGS "${pkgdir}/usr/share/doc/${pkgname%-git}/KNOWN_BUGS.txt"
 }
