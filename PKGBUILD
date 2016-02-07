@@ -25,10 +25,10 @@ source=(git+https://github.com/gandrewstone/BitcoinUnlimited.git#branch=0.11cfg_
         bitcoin.conf
         bitcoin.logrotate)
 sha256sums=('SKIP'
-            '00362da5b6c9ab3dd19b195751eb0f54bdb796d7b4bc825cb9be4ea0261c22b8'
+            '938f4265e238cbc038ebee9cb93076a8ba0ae94708ac7b7379385b1f8d019676'
             '7bf4bdad419c1ee30b88c7e4190707c5ff250da8b23d68d5adf14043f8e2ac73')
 sha512sums=('SKIP'
-            'f26ca0c80e78f650a52840e52217a93fcbe1f61546f0dc7aa0cab11adb7448d28b01bca7a37ccbfd7d4f6ca37aae34470d309cd884854c1cc95b66e9f9bf3952'
+            'd4a1943db156b463063605575c353465fb9ab3fc213e76d290f2a10f91412a3c0001f0217ef372fa36e927df0ff68a2f4a920906a382c208ec0b314283c894a9'
             'ec2a33c546e60d14249652de0249352bbda57ee4b293715b3eaf7d37c0e9a904894dddb02ad63cad2780510fb9866fdc6421a5ed15649f63967eaae5cbb59f3b')
 backup=('etc/bitcoin/bitcoin.conf'
         'etc/logrotate.d/bitcoin')
