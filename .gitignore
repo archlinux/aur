@@ -1,0 +1,7 @@
+pkg/
+src/
+.AURINFO
+lv2file-*.tar.xz
+lv2file-*.src.tar.gz
+*.tar.gz
+lv2file.1
