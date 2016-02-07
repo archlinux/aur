@@ -1,6 +1,6 @@
 pkgname=unfs3
 pkgver=0.9.22
-pkgrel=3
+pkgrel=4
 pkgdesc="A user-space implementation of the NFSv3 server specification"
 arch=('i686' 'x86_64')
 url="http://unfs3.sourceforge.net/"
@@ -12,7 +12,7 @@ md5sums=('ddf679a5d4d80096a59f3affc64f16e5' '7c28cd320ac4868cc6f0ca089fbf2e75' '
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	./configure --prefix=/usr
+	./configure --prefix=/usr --sbindir=/usr/bin
 	make
 }
 
