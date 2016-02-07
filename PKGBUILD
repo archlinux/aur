@@ -2,7 +2,7 @@
 
 pkgname=panda
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Perl6 module installer"
 arch=('any')
 depends=('curl'
@@ -38,6 +38,7 @@ package() {
 
   msg2 'Installing...'
   install -dm 755 "$pkgdir/usr/share/perl6/vendor"
+  export RAKUDO_LOG_PRECOMP=1
   export PERL6LIB="inst#$pkgdir/usr/share/perl6/vendor"
   alacryd install
 
