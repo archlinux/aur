@@ -16,9 +16,6 @@ build() {
 	cd "${srcdir}/browser-laptop-${pkgver}"
 	npm install node-gyp@3.2.1
 	npm install
-
-	sed -i.bak "/'npm run checks',/d" ./tools/buildPackage.js
-
 	npm run build-package
 }
 
