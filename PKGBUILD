@@ -16,5 +16,6 @@ md5sums=('1195019e9546eba0db5b00cfcdb89da9')
 
 package() {
 	install -d -m755 "$pkgdir/usr/share/themes/"
+	cd Flattastic-master
 	cp -r Flattastic-* "$pkgdir/usr/share/themes/"
 }
