@@ -7,6 +7,7 @@ arch=('i686' 'x86_64')
 url='https://www.brave.com/'
 license=('custom':"MPL2")
 makedepends=('npm')
+depends=('gtk2' 'nss' 'alsa-lib' 'libnotify' 'gconf' 'libxtst' 'desktop-file-utils')
 source=("https://github.com/brave/browser-laptop/archive/v${pkgver}.tar.gz"
 		"Brave.desktop")
 md5sums=('a24d283f688b1a59ab8090b02c6a674a'
