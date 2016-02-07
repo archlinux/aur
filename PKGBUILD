@@ -5,9 +5,9 @@
 # plugin's real name.
 _pkgname=overbiteff
 pkgname=firefox-extension-overbite
-pkgver=3.0.1627.1
-pkgrel=2
-_file=187612
+pkgver=3.1.1695
+pkgrel=1
+_file=390716
 pkgdesc="Gopher plugin for Firefox"
 arch=('any')
 url="http://gopher.floodgap.com/overbite/"
@@ -16,7 +16,7 @@ depends=("firefox")
 makedepends=('unzip')
 source=("https://addons.mozilla.org/firefox/downloads/file/${_file}/${_pkgname}-${pkgver}.xpi")
 noextract=("${_pkgname}-$pkgver.xpi")
-md5sums=('f791955b53d83610507027d4de7c09df')
+md5sums=('2394e7956331f606df35130f1c0e673e')
 
 prepare() {
   cd "${srcdir}"
