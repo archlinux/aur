@@ -3,7 +3,7 @@
 
 pkgname=dasom-qt-git
 _pkgname=dasom-qt
-pkgver=1.2.24c488c
+pkgver=1.2.4.f6060cc
 pkgrel=1
 pkgdesc="QT IM modules for Dasom"
 arch=('any')
