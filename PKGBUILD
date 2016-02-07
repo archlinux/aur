@@ -25,7 +25,10 @@ optdepends=('qt5-doc: for the integrated Qt documentation'
             'mercurial: for mercurial support'
             'bzr: for bazaar support'
             'clang: Clang code model'
-            'valgrind: for analyze support')
+            'valgrind: for analyze support'
+            'subversion: for subversion support'
+            'cvs: for cvs support'
+            'valgrind: for valgrind support')
 provides=('qtcreator')
 conflicts=('qtcreator')
 install='qtcreator-git.install'
