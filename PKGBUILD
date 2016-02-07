@@ -1,8 +1,8 @@
 # Maintainer: Jens John <dev@2ion.de>
 pkgname=mpv-bash-completion-git
-pkgver=0.10.0
-epoch=2
-pkgrel=3
+pkgver=0.15.0
+epoch=3
+pkgrel=1
 pkgdesc="Bash completion for the mpv video player"
 arch=('any')
 url="https://github.com/2ion/mpv-bash-completion"
