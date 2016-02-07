@@ -2,8 +2,8 @@
 # Contributor: Gimmeapill <gimmeapill at gmail dot com>
 _pkgbasename=sequencer64
 pkgname=${_pkgbasename}-git
-pkgver=r233.c14ba05
-pkgrel=2
+pkgver=0.9.9.16.r0.ge5884ae
+pkgrel=1
 pkgdesc="A live-looping MIDI sequencer"
 arch=('i686' 'x86_64')
 url="https://github.com/ahlstromcj/sequencer64.git"
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${_pkgbasename}"
 
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
