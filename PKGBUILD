@@ -52,6 +52,38 @@ build() {
   ./make-xpi.py
 }
 
+# Version information for this extension is noted in the config.json and only
+# inserted into the install.rdf, so overwriting this function directs it to the
+# right location.
+query-version() {
+  sed -n "s/^ *\"$1-version\": \"\\([^\"]\+\\)\",\$/\\1/p" *.json
+}
+
+version-range() {
+  local emid=$(emid $1)
+  echo "$1>$(version min $emid)" "$1<$(version max $emid)"
+}
+
+emid() {
+  case $1 in
+    firefox)     echo '{ec8030f7-c20a-464f-9b0e-13a3a9e97384}' ;;
+    thunderbird) echo '{3550f703-e582-4d05-9a08-453d09bdfdc6}' ;;
+    *) return 1 ;;
+  esac
+}
+
+version() {
+  local version="$(query-version $1 $2)"
+  if [[ $version =~ ([[:digit:]]+).\* ]]; then
+    if [[ $1 = max ]]; then
+      echo $(( ${BASH_REMATCH[1]} + 1 ))
+    else
+      echo "=${BASH_REMATCH[1]}"
+    fi
+  else
+    echo "=$version"
+  fi
+}
 
 prepare_target() {
   local target=${pkgname%%-*}
@@ -67,7 +99,14 @@ package() {
 }
 
 package_firefox-theme-gnome-git() {
+  real_depends_theme
+
   package theme
+}
+
+# Hide the versioned dependency from .SRCINFO generation in a subfunction.
+real_depends_theme() {
+  depends+=($(version-range firefox))
 }
 
 package_firefox-extension-gnome-theme-tweak-git() {
@@ -75,13 +114,13 @@ package_firefox-extension-gnome-theme-tweak-git() {
   conflicts=('firefox-extension-gnome-theme-tweak')
   pkgdesc='Extension for customizing GNOME theme.'
   depends=('firefox-theme-gnome')
-  real_depends
+  real_depends_extension
 
   package extension
 }
 
 # Hide the versioned dependency from mksrcinfo, as the pkgver
 # function has to update the value before it can be properly used.
-real_depends() {
+real_depends_extension() {
   depends=("firefox-theme-gnome=$pkgver")
 }
