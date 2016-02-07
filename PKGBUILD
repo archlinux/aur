@@ -3,9 +3,8 @@
 
 pkgname=ntfy
 pkgver=1.0.0
-pkgrel=1
-pkgdesc="A utility for sending push notifications to different backends (Pushover
-Pushbullet, XMPP and various desktop notification systems"
+pkgrel=2
+pkgdesc="A utility for sending push notifications to different backends (Pushover, Pushbullet, XMPP and various desktop notification systems)"
 url="https://github.com/dschep/ntfy"
 depends=('python' )
 makedepends=('python3' 'python-yaml')
