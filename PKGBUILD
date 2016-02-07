@@ -1,7 +1,6 @@
 # Maintainer: Christian Schwarz <me@cschwarz.com>
 pkgname=artisan-roaster-scope
-pkgver=0.9.7
-_commit="a6bdeffafb54b0382191dcbff4a682a845274bcb"
+pkgver=0.9.8
 pkgrel=1
 pkgdesc="Artisan is a software that helps coffee roasters record, analyze, and control roast profiles."
 arch=("any")
@@ -9,6 +8,7 @@ url="https://github.com/artisan-roaster-scope/artisan"
 license=('GPL3')
 depends=( "python2"
           "python2-sip"
+          "python2-scipy"
           "python2-numpy"
           "python2-cx_freeze"
           "python2-pyserial"
@@ -24,15 +24,16 @@ depends=( "python2"
           "python2-yoctopuce"
 )
 makedepends=('git')
-source=("git+https://github.com/artisan-roaster-scope/artisan.git#commit=${_commit}")
-md5sums=('SKIP')
+source=("https://github.com/artisan-roaster-scope/artisan/archive/v${pkgver}.tar.gz"
+)
+md5sums=('c7ac63c932cefde75ee6270fb2edbe13')
 #generate with 'makepkg -g'
 
 install="$pkgname.install"
 
 prepare() {
   
-  cd "$srcdir/artisan"
+  cd "$srcdir/artisan-${pkgver}"
 
   # Package thinks /usr/bin/env python returns python2 
   find .  -name "*.py" -exec sed -i \
@@ -44,7 +45,7 @@ prepare() {
 
 package() {
   
-  cd "$srcdir/artisan"
+  cd "$srcdir/artisan-${pkgver}"
 
   # Copy the relevant project files to usr/share/artisan  
   cp -r debian/usr "$pkgdir/"
@@ -54,7 +55,7 @@ package() {
   install -m755 -d "$usrshr"
 
   cp -r artisanlib "$usrshr"
-  cp artisan*.{icns,ico,xml,png,pro,py} "$usrshr"
+  cp artisan*.{icns,ico,png,pro,py} "$usrshr"
   cp Comm*.py "$usrshr"
   cp -r const "$usrshr"
   cp -r icons "$usrshr"
@@ -65,9 +66,13 @@ package() {
   cp -r translations "$usrshr"
   cp -r Wheels "$usrshr"
 
+  # xdg-mime filetype descriptions
+  install -m755 -d "$pkgdir/usr/share/appdata"
+  cp *.xml "$pkgdir/usr/share/appdata"
+
   # Make main script executable
   chmod +x "$usrshr/artisan.py"
-  
+
   # Create a symlink to the main python script in usr/bin
   install -m755 -d "$pkgdir/usr/bin"
   cd "$pkgdir/usr/bin"
