@@ -2,7 +2,7 @@
 
 pkgbase=python-tunigo
 pkgname=('python-tunigo' 'python2-tunigo')
-pkgver=0.1.3
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Python API for the browse feature of Spotify"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/trygveaa/python-tunigo"
 license=('APACHE')
 makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools')
 source=("https://github.com/trygveaa/python-tunigo/archive/v${pkgver}.tar.gz")
-md5sums=('a8724b6964d76782cb7156a8b713fdce')
+md5sums=('8b7cc6c78e91d4aff7674f25fbb8e19c')
 
 package_python-tunigo() {
   depends=('python' 'python-requests')
