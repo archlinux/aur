@@ -10,7 +10,7 @@ url="http://www.glbinding.org/"
 license=('MIT')
 
 depends=('libgl')
-makedepends=('cmake' 'git')
+makedepends=('cmake' 'git' 'glfw')
 checkdepends=('gmock')
 conflicts=('glbinding')
 
