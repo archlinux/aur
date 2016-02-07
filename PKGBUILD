@@ -3,8 +3,8 @@
 pkgbase=python-natsort
 pkgname=('python-natsort' 'python2-natsort')
 _pyname=natsort
-pkgver=4.0.3
-pkgrel=2
+pkgver=4.0.4
+pkgrel=1
 pkgdesc='Sort lists naturally.'
 arch=('any')
 url='https://github.com/SethMMorton/natsort'
@@ -12,7 +12,7 @@ license=('MIT')
 makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('ef2c4d6e2c5dc0458fe604a91f721aaa')
+md5sums=('03c9562e852672172bfe4b1a00e02d11')
 
 prepare() {
   cd "${srcdir}/${_pyname}-${pkgver}"
