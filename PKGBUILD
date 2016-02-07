@@ -2,7 +2,7 @@
 
 pkgname=remmina-plugin-folder
 pkgver=1.2.2.0
-pkgrel=1
+pkgrel=2
 _builderver=1.2.2.0
 pkgdesc="A protocol plugin for Remmina to open a folder."
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ sha256sums=('bce686835b951dc49263dd760ea3a216618e5d5b1f6652da94edf4ba95081434'
             'dc1b4724637723bfbd60fbf8e5f34958d4d36506f310c70fc0d5dfcb1a604d96')
 
 prepare() {
-  msg2 'To build for Remmina >= 1.2 set -DREMMINA_VER_1_1=OFF'
+  msg2 'To build for Remmina < 1.2 set -DREMMINA_VER_1_1=ON'
 }
 
 build() {
@@ -30,7 +30,7 @@ build() {
   cp -r "remmina-plugin-builder-${_builderver}" build
   cp -r "${pkgname}-${pkgver}"/* "build/remmina-plugin-to-build"
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DREMMINA_VER_1_1=ON .
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DREMMINA_VER_1_1=OFF .
   make
 }
 
