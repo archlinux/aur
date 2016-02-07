@@ -1,8 +1,9 @@
+# Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgname='tappet-git'
-pkgver=0.r92
-pkgrel=1
+pkgver=0.r93
+pkgrel=2
 pkgdesc='Simple encrypted UDP tunnel using TweetNaCl'
-license='MIT'
+license=('custom:MIT')
 url='https://github.com/amenonsen/tappet'
 source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
