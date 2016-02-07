@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/gustawho/${_pkgname}"
 license=('CCPL:by-sa')
 depends=('grub')
-install=("${pkgname}.install")
+install=${pkgname}.install
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
