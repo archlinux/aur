@@ -43,7 +43,7 @@ package() {
   unzip -d "$waflib" zip/waflib.zip
 
   # compile all python sources for once to be used after installation.
-  python -m compileall "$waflib"
+  python -OOm compileall "$waflib"
 }
 
 # vim:set ts=2 sw=2 et:
