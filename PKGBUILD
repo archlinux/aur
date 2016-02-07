@@ -7,7 +7,7 @@
 # Contributor: heinz from #qt-creator
 
 pkgname=qtcreator-git
-pkgver=v3.6.0.beta1.r111.ga1f2b8c
+pkgver=v3.6.82
 pkgrel=1
 pkgdesc='Lightweight, cross-platform integrated development environment'
 arch=('i686' 'x86_64')
@@ -66,6 +66,6 @@ package() {
 
   install -Dm644 "${srcdir}/qtcreator.desktop" \
     "${pkgdir}/usr/share/applications/qtcreator.desktop"
-  install -Dm644 "${srcdir}/qt-creator/LGPL_EXCEPTION.TXT" \
-    "${pkgdir}/usr/share/licenses/qtcreator/LGPL_EXCEPTION.TXT"
+  install -Dm644 "${srcdir}/qt-creator/LICENSE.GPL3-EXCEPT" \
+    "${pkgdir}/usr/share/licenses/qtcreator/LICENSE.GPL3-EXCEPT"
 }
