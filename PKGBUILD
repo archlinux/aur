@@ -5,11 +5,11 @@
 
 pkgname=firefox-theme-nasa-night-launch
 pkgdesc="Dark theme for Firefox. Inspired by the night launch of STS-116."
-pkgver=0.6.20150625
+pkgver=0.6.20160112
 pkgrel=1
 url="http://home.comcast.net/~username54321/starfield/index.html"
 license=('custom')
-md5sums=('865000b40b8e5924117368837d2f9ce1')
+md5sums=('e56a1984a22bbfab5fa169a7cc331922')
 
 [ "$arch" ] || arch=('any')
 
