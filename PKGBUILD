@@ -3,16 +3,16 @@
 # Maintained at : https://github.com/jarondl/aur-pkgbuilds-jarondl
 pkgname=python-isort
 _pkgname=isort
-pkgver=3.9.6
+pkgver=4.2.2
 pkgrel=1
 pkgdesc="isort your python imports for you so you don't have to."
 arch=('any')
 url="https://github.com/timothycrosley/isort"
 license=('MIT')
-depends=(python python-pies python-natsort)
+depends=(python)
 makedepends=(python-setuptools)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha512sums=('70a186b5a4b837b524dc60080631cdf159ccc17616a4224644069cc364c9484a9db7941e9ab60681fa8f4066ea38c83c66cdcc17eac0329efd1d30ee011576a8')
+sha512sums=('c5035cf5c594c75765a6fa82c80035e38c1878e022428a031502778e69d1fb509b1e98fbd79fcf0266c9758f1df41563480190f03efc2370908dacb8924767ee')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
