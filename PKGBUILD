@@ -3,7 +3,7 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=gnome-shell-extension-stealmyfocus-git
-pkgver=r11.9fd4b4c
+pkgver=r11
 pkgrel=1
 pkgdesc="Shell Extension that let window that demand attention to steal focus"
 arch=(any)
@@ -15,8 +15,8 @@ install=notice.install
 makedepends+=('git')
 source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")
 md5sums+=('SKIP')
-provides+=($_gitname)
-conflicts+=($_gitname)
+provides+=("$_gitname=$pkgver")
+conflicts+=("$_gitname")
 pkgver() {
   cd ${_gitname:-$pkgname}
   git describe --long --tags 2>/dev/null | sed 's/[^[:digit:]]*\(.\+\)-\([[:digit:]]\+\)-g\([[:xdigit:]]\{7\}\)/\1.r\2.g\3/;t;q1'
