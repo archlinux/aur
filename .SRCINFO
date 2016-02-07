@@ -7,7 +7,7 @@ pkgbase = aurora-themes
 	license = GPL3
 	optdepends = gtk-engine-murrine: for GTK2 themes
 	source = aurora-themes.tar.gz::https://www.dropbox.com/s/4ik0pbbpsiqe4ci/Aurora-3.18.tar.gz?dl=1
-	sha256sums = 2bba0b992c276efbe592371ac646f76820a915ca68f15eff6ab8c0dce18937c5
+	sha256sums = eecedbcc5e9b56a296b2effc45c790df6ab7ef447cb17a6f0c04cccbac589075
 
 pkgname = aurora-themes
 
