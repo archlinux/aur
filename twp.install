@@ -1,0 +1,15 @@
+
+post_install () {
+  # Check user/group twp exists
+  getent group twp >/dev/null || groupadd --system twp
+  getent passwd twp >/dev/null || \
+          useradd --system -c "teeworlds web panel user" -g twp -s /bin/false -d /srv/twp twp
+  post_upgrade
+}
+
+post_upgrade() {
+  # Ensure directories exist
+  mkdir -p /srv/twp
+  # Fix permissions on necessary directories
+  chown -R twp:twp /srv/twp
+}

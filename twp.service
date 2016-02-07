@@ -1,0 +1,12 @@
+[Unit]
+Description=Teeworlds Web Panel
+After=network.target
+
+[Service]
+User=twp
+Type=simple
+ExecStart=/usr/bin/python2 /srv/twp/twp.py
+WorkingDirectory=/srv/twp
+
+[Install]
+WantedBy=multi-user.target
