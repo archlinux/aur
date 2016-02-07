@@ -1,7 +1,7 @@
 # Maintainer: Jacob Mischka <jacob@mischka.me>
 pkgname=brave
 pkgver=0.7.13dev
-pkgrel=1
+pkgrel=2
 pkgdesc='Web browser that blocks ads and trackers by default.'
 arch=('i686' 'x86_64')
 url='https://www.brave.com/'
