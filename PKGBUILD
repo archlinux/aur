@@ -1,8 +1,8 @@
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
 pkgname=tldr-rs-git
 _name=tldr-rs
-pkgver=r36.534fe17
-pkgrel=3
+pkgver=r63.fb62eaa
+pkgrel=1
 pkgdesc="A fast TLDR client written in Rust."
 arch=('x86_64' 'i686')
 url="https://github.com/dbrgn/tldr-rs"
