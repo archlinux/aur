@@ -4,13 +4,13 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=mozilla-extension-stylish
-pkgver=2.0.5
+pkgver=2.0.6
 pkgrel=1
 pkgdesc='Customize your favorite web sites with user styles.'
 url='https://userstyles.org/'
 license=('GPL')
 optdepends=(firefox thunderbird)
-md5sums=('a94261c1281fa7ec3764c3d95b7504e9')
+md5sums=('479f2f2be86d2be266e8189e1410f7e9')
 
 [ "$arch" ] || arch=('any')
 
