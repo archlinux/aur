@@ -1,7 +1,7 @@
 # Maintainer: Markus Kaiser <markus dot kaiser at in dot tum dot de>
 _pkgname=holoviews
 pkgname=python-$_pkgname
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Data visualization via annotation"
 arch=("any")
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('python-numpy' 'python-param')
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/h/$_pkgname/$_pkgname-$pkgver.tar.gz")
-md5sums=('7a5d24d9a0e22cdab0c9c1acf7ef27f6')
+md5sums=('208a0adcdba873dd8d4edf1f136d77fa')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
