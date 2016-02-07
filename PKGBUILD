@@ -1,8 +1,8 @@
 # Maintainer: Storm Dragon <stormdragon2976@gmail.com>
 _pkgname=gasher
 pkgname=gasher-git
-pkgver=0
-pkgrel=2
+pkgver=0.76.93fb812
+pkgrel=1
 pkgdesc="A GNU Social client written in bash."
 arch=('any')
 url="https://github.com/stormdragon2976/gasher"
