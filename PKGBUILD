@@ -12,7 +12,6 @@ _actual_ver=12.10.1
 _extra_ver=+15.04.20141110
 pkgver=${_actual_ver}${_extra_ver/\+/.}
 pkgrel=2
-epoch=1
 pkgdesc="A library to allow applications to export a menu into the Unity Menu bar"
 arch=(i686 x86_64)
 url="https://launchpad.net/libappindicator"
