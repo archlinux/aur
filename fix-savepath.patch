@@ -1,0 +1,18 @@
+--- data/tools.py.orig	2016-02-07 20:09:59.949254368 +0100
++++ data/tools.py	2016-02-07 20:10:30.811842082 +0100
+@@ -6,9 +6,13 @@
+ import random
+ import sys
+ import json
+-        
++
+ class DB:
+-    dirname = 'save'
++    # patched to save the DB in $HOME/.floodit
++    savedir = os.path.join(os.path.expanduser('~'), '.floodit')
++    if not os.path.exists(savedir):
++        os.mkdir(savedir)
++    dirname = os.path.join(savedir, 'save')
+     if not os.path.exists(dirname):
+         os.mkdir(dirname)
+     path = os.path.join(dirname, 'database{}'.format(sys.version.split()[0]))

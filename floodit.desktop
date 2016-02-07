@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Flood It
+Comment=A Flood It clone
+Exec=floodit
+Terminal=false
+Type=Application
+Categories=Application;Game;LogicGame
+Icon=/usr/lib/python2.7/site-packages/pygame/pygame_icon.svg
