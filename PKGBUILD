@@ -2,15 +2,15 @@
 
 _name=glbinding
 pkgname=${_name}-git
-pkgver=1.1.0.r161.gf05f2cc
+pkgver=1.1.0.r164.gbe8f9e4
 pkgrel=1
 pkgdesc="A generated C++ binding for the OpenGL API, generated using the gl.xml specification"
 arch=('i686' 'x86_64')
 url="http://www.glbinding.org/"
 license=('MIT')
 
-depends=('libgl')
-makedepends=('cmake' 'git' 'glfw')
+depends=('libgl' 'glfw')
+makedepends=('cmake' 'git')
 checkdepends=('gmock')
 conflicts=('glbinding')
 
