@@ -3,9 +3,9 @@
 # Contributor: Daniel Wallace <daniel.wallace@gatech.edu>
 
 pkgname=openpht
-pkgver=1.5.0.502
-_pkghash=7563ca94
-pkgrel=1
+pkgver=1.5.1.508
+_pkghash=67218541
+pkgrel=2
 pkgdesc='OpenPHT is a community driven fork of Plex Home Theater '
 arch=('i686' 'x86_64')
 url='https://github.com/RasPlex/OpenPHT/'
@@ -24,19 +24,12 @@ optdepends=('libplist: AirPlay support'
             'libcec: Pulse-Eight USB-CEC adapter support'
             'pulseaudio: PulseAudio support')
 source=("https://github.com/RasPlex/OpenPHT/archive/v${pkgver}-${_pkghash}.tar.gz"
-        'plex-ffmpeg-compat.patch'
-        'plex-libcec.patch'
         'plexhometheater.sh')
-sha256sums=('e0839e21211d85c53e9bc0675f5bd24fa4ec7d935bb89a882c36cdb18cf7ab79'
-            '5b370e4dec6998130df46ad6bd5ca6258e3a040dd6c6cc4085c335dc3d6050bd'
-            '7e5f6c1e07184a0b0affe4ef7c0bd06d1094f7a28cf5baa35d31a69cf488a9db'
+sha256sums=('4fd3d382adbbc3ce00a5ce96b0393eb75a4f09a12a6de25a96338e0f271e9744'
             'dc6bd394c07a2ececbb2f8c53cb54afd5d78f7c00a0b34acab3e71217da085fb')
 
 prepare() {
   cd OpenPHT-${pkgver}-${_pkghash}
-
-  patch -Np1 -i ../plex-libcec.patch
-  patch -Np1 -i ../plex-ffmpeg-compat.patch
 }
 
 build() {
