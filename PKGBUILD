@@ -6,15 +6,15 @@ pkgname=openblas-lapack
 _PkgName=OpenBLAS
 _pkgname=openblas
 pkgver=0.2.15
-pkgrel=2
+pkgrel=3
 pkgdesc="Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas)"
 arch=('i686' 'x86_64')
 url="http://xianyi.github.com/OpenBLAS/"
 license=('BSD')
 depends=('gcc-libs')
 makedepends=('perl' 'gcc-fortran')
-provides=('openblas' 'blas=3.5.0' 'lapack=3.5.0' 'cblas')
-conflicts=('openblas' 'blas' 'lapack' 'cblas')
+provides=('openblas' 'blas=3.6.0' 'lapack=3.6.0' 'cblas' 'lapacke')
+conflicts=('openblas' 'blas' 'lapack' 'cblas' 'lapacke')
 options=(!emptydirs)
 source=(${_PkgName}-${pkgver}.tar.gz::https://github.com/xianyi/${_PkgName}/archive/v${pkgver}.tar.gz)
 sha256sums=('73c40ace5978282224e5e122a41c8388c5a19e65a6f2329c2b7c0b61bacc9044')
@@ -40,7 +40,7 @@ package(){
   # Install license
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  # Symlink to provide blas, cblas and lapack
+  # Symlink to provide blas, cblas, lapack and lapacke
   cd "${pkgdir}/usr/lib/"
   # BLAS
   ln -sf libopenblas.so libblas.so
