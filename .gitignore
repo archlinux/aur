@@ -1,0 +1,5 @@
+pkg/
+src/
+ntfy/
+*.tar.gz
+*.tar.xz
