@@ -2,9 +2,9 @@
 pkgname=palemoon-i18n-default
 pkgver=26.0
 pkgrel=1
-pkgdesc="Pale Moon language pack for system default language."
+pkgdesc="Pale Moon language pack for system active language."
 arch=('any')
-url="http://www.palemoon.org/"
+url="http://www.palemoon.org/langpacks.shtml"
 license=('MPL' 'GPL')
 depends=("palemoon>=$pkgver")
 source=("lang-pref.js")
