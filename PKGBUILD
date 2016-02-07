@@ -6,7 +6,7 @@ pkgdesc="Fast real-time large-dataset viewing and plotting tool for KDE"
 arch=('i686' 'x86_64')
 url="http://kst-plot.kde.org"
 license=('GPL')
-depends=('gsl' 'qt5-base' 'muparser' 'python2-scipy>=0.9' 'python2-numpy>=1.6' 'cfitsio' 'python2-pyside')
+depends=('gsl' 'qt5-base' 'qt5-svg' 'muparser' 'python2-scipy>=0.9' 'python2-numpy>=1.6' 'cfitsio' 'python2-pyside')
 optdepends=(
   'getdata: provides support for files in the Dirfile format'
   'libmatio: provides support for Matlab binary files'
