@@ -1,7 +1,7 @@
 pkgbase = upass
 	pkgdesc = Console UI for pass
-	pkgver = 0.1.4
-	pkgrel = 2
+	pkgver = 0.1.5
+	pkgrel = 1
 	url = https://github.com/Kwpolska/upass
 	arch = any
 	license = BSD
@@ -11,8 +11,8 @@ pkgbase = upass
 	depends = python-urwid
 	depends = python-pyperclip
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/u/upass/upass-0.1.4.tar.gz
-	md5sums = 4bcb9683da51dc7dbf5bbd96c001fabc
+	source = https://pypi.python.org/packages/source/u/upass/upass-0.1.5.tar.gz
+	md5sums = 25932df5ae1a02401c06dcb6249889c7
 
 pkgname = upass
 
