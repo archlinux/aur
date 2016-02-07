@@ -2,7 +2,7 @@
 
 pkgname=remmina-plugin-open
 pkgver=1.2.2.0
-pkgrel=1
+pkgrel=2
 _builderver=1.2.2.0
 pkgdesc="A protocol plugin for Remmina to open a document with its associated application."
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ sha256sums=('bce686835b951dc49263dd760ea3a216618e5d5b1f6652da94edf4ba95081434'
             'a8c6d09041ae1c658856d607f82f86be7536cbd8c268330d7ab4ae986435c313')
 
 prepare() {
-  msg2 'To build for Remmina >= 1.2 set -DREMMINA_VER_1_1=OFF'
+  msg2 'To build for Remmina < 1.2 set -DREMMINA_VER_1_1=ON'
 }
 
 build() {
@@ -27,7 +27,7 @@ build() {
   cp -r "remmina-plugin-builder-${_builderver}" build
   cp -r "${pkgname}-${pkgver}"/* "build/remmina-plugin-to-build"
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DREMMINA_VER_1_1=ON .
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DREMMINA_VER_1_1=OFF .
   make
 }
 
