@@ -11,6 +11,8 @@ url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
+_bfq="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.4.0-v7r11"
+_stable_queue="http://git.kernel.org/cgit/linux/kernel/git/stable/stable-queue.git/plain"
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
@@ -20,9 +22,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'config'
         '0001-4.4-revert-btrfs.patch'
         '0001-4.4-revert-xfs.patch'
-        '0001-bfq.patch'
-        '0002-bfq.patch'
-        '0003-bfq.patch'
+        "${_bfq}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.4.0.patch"
+        "${_bfq}/0002-block-introduce-the-BFQ-v7r11-I-O-sched-for-4.4.0.patch"
+        "${_bfq}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-for.patch"
         'change-default-console-loglevel.patch'
         'enable_additional_cpu_optimizations_for_gcc.patch')
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
@@ -52,8 +54,9 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-  for path_queue in `curl http://git.kernel.org/cgit/linux/kernel/git/stable/stable-queue.git/plain/queue-4.4/series`; do
-    curl "http://git.kernel.org/cgit/linux/kernel/git/stable/stable-queue.git/plain/queue-4.4/$path_queue" | patch -Np1
+
+  for path_queue in `curl ${_stable_queue}/queue-4.4/series`; do
+    curl "${_stable_queue}/queue-4.4/$path_queue" | patch -Np1
   done
 
   # #47757 fix broken suspend from btrfs and xfs
@@ -61,9 +64,9 @@ prepare() {
   patch -Np1 -i "${srcdir}/0001-4.4-revert-btrfs.patch"
 
   # bfq
-  patch -Np1 -i "${srcdir}/0001-bfq.patch"
-  patch -Np1 -i "${srcdir}/0002-bfq.patch"
-  patch -Np1 -i "${srcdir}/0003-bfq.patch"
+  patch -Np1 -i "${srcdir}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.4.0.patch"
+  patch -Np1 -i "${srcdir}/0002-block-introduce-the-BFQ-v7r11-I-O-sched-for-4.4.0.patch"
+  patch -Np1 -i "${srcdir}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-for.patch"
 
   # gcc cpu optimizations
   patch -Np1 -i "${srcdir}/enable_additional_cpu_optimizations_for_gcc.patch"
