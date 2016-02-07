@@ -1,9 +1,9 @@
-# Maintainer: Melvin Vermeeren <mail@melvinvermeeren.com>
+# Maintainer: Melvin Vermeeren <mail@mel.vin>
 # Edited from: firefox-extension-https-everywhere
 
-_pkgname=canvasblocker-0.2.1-Release-fx+an
+_pkgname=canvasblocker-0.2.2-Release-fx
 pkgname=firefox-extension-canvasblocker
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Plugin for firefox that prevents canvas fingerprinting to prevent tracking."
 license=('MPL')
@@ -13,7 +13,7 @@ depends=("firefox")
 makedepends=("unzip")
 source=("https://addons.cdn.mozilla.net/user-media/addons/534930/${_pkgname}.xpi")
 noextract=("${_pkgname}.xpi")
-sha256sums=('2b503eae89b5602419c09ed5a4e1425036ba15177743b9a2dd71b6bfcc7dcb6c')
+sha256sums=('8f4f9cb379f8c590a97ddb1fa27bdd8e14846b3e86e2501d6ebd59b7ab08418e')
 
 prepare() {
 	cd "$srcdir"
