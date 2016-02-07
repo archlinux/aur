@@ -21,7 +21,7 @@ install=palemoon.install
 source=(palemoon.desktop)
 source_i686=("palemoon-$pkgver.en-US.linux-i686.tar.bz2::http://linux.palemoon.org/installer/download.php?v=$pkgver&a=i686")
 source_x86_64=("palemoon-$pkgver.en-US.linux-x86_64.tar.bz2::http://linux.palemoon.org/installer/download.php?v=$pkgver&a=x86_64")
-sha1sums=('83ff22ff7a034efac31f1dd5f27ad0115a778743')
+sha1sums=('764f6fb188eeeb4f759c0d3ff61ff464fb8565e7')
 sha1sums_i686=('278b091697cff7dab972aa0627aedd2eedf9f9e7')
 sha1sums_x86_64=('5dcc4c7b0383ae3467273dcad151bb941da0b5aa')
 
