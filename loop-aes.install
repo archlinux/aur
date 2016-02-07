@@ -2,31 +2,31 @@ EXTRADIR=/usr/lib/modules/$(uname -r)/$(readlink /usr/lib/modules/$(uname -r)/ex
 KERNELDIR=/usr/lib/modules/$(uname -r)/kernel
 
 post_install () {
+     # removal of debris from the previous version,sorry
+     if [ -f $EXTRADIR/loop-def.ko.gz ]
+     then
+     mv $EXTRADIR/loop-def.ko.gz $KERNELDIR/drivers/block/loop.ko.gz
+     rm $KERNELDIR/drivers/block/loop.ko.gz.backup
+     fi
+     
+     echo "Depmod..."
+     depmod
+     modprobe -r loop
+     modprobe loop-aes
 
-cp $KERNELDIR/drivers/block/loop.ko.gz $KERNELDIR/drivers/block/loop.ko.gz.backup
-mv $KERNELDIR/drivers/block/loop.ko.gz $EXTRADIR/loop-def.ko.gz
-
-echo "DEPMOD..."
-depmod
-
-echo "->> # (modinfo) loop -> loop-aes module"
-echo "->> # (modinfo) loop-def -> default loop module"
-echo "->> % Please reinstall this package after kernel update"
+     echo "->> % Now you can use the loop-aes, rebuild the kernel is not required!"
+     echo "->> @ I plan to add hooks for initramfs"
+     echo "->> % Please reinstall this package after kernel update"
 }
 
 post_upgrade() {
-
-if [ -f $KERNELDIR/drivers/block/loop.ko.gz ]; then post_install
-else echo "DEPMOD..." && depmod
-fi
+    post_install
 
 }
 
 post_remove() {
-
-mv $EXTRADIR/loop-def.ko.gz $KERNELDIR/drivers/block/loop.ko.gz
-rm $KERNELDIR/drivers/block/loop.ko.gz.backup
-
-echo "DEPMOD..."
-depmod
+      echo "Depmod..."
+      depmod
+      modprobe -r loop-aes
+      modprobe loop
 }
