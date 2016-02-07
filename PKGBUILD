@@ -15,7 +15,7 @@ md5sums=('8b7cc6c78e91d4aff7674f25fbb8e19c')
 package_python-tunigo() {
   depends=('python' 'python-requests')
 
-  cd "${srcdir}/tunigo-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   python setup.py install --root="${pkgdir}/" --optimize=1
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
@@ -24,7 +24,7 @@ package_python-tunigo() {
 package_python2-tunigo() {
   depends=('python2' 'python2-requests')
 
-  cd "${srcdir}/tunigo-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   python2 setup.py install --root="${pkgdir}/" --optimize=1
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
