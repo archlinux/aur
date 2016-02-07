@@ -80,7 +80,7 @@ package_firefox-extension-gnome-theme-tweak-git() {
   package extension
 }
 
-# Hide the versioned dependncy from mksrcinfo, as the pkgver
+# Hide the versioned dependency from mksrcinfo, as the pkgver
 # function has to update the value before it can be properly used.
 real_depends() {
   depends=("firefox-theme-gnome=$pkgver")
