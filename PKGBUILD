@@ -5,7 +5,7 @@ _pkgname=rigsofrods
 _gitname=rigs-of-rods
 
 pkgname=$_pkgname-git
-pkgver=0.4.5.1.r351.g785fb55
+pkgver=0.4.5.1.r504.g8ba8aaf
 pkgrel=1
 pkgdesc="An open source vehicle simulator based on soft-body physics"
 arch=('i686' 'x86_64')
