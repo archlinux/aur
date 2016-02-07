@@ -1,4 +1,4 @@
-# Maintainer: Melvin Vermeeren <mail@melvinvermeeren.com>
+# Maintainer: Melvin Vermeeren <mail@mel.vin>
 # Edited from: firefox-extension-https-everywhere
 
 _pkgname=tab_wheel_scroll-20140723-fx+sm+tb
