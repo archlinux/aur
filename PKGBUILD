@@ -3,18 +3,20 @@
 
 pkgname=oclhashcat
 _pkgname=oclHashcat
-pkgver=1.37
-pkgrel=3
+pkgver=2.01
+pkgrel=1
 pkgdesc="Worlds fastest password cracker with dictionary mutation engine (for AMD)"
-url=('https://hashcat.net/oclhashcat')
+url='https://hashcat.net/oclhashcat'
 arch=('i686' 'x86_64')
 license=('custom')
 depends=('catalyst-utils>=14.9' 'opencl-catalyst>=14.9')
 replaces=('oclhashcat-amd')
 conflicts=('oclhashcat-amd')
 options=('!strip')
-source=(https://hashcat.net/files/${_pkgname}-${pkgver}.7z)
-sha512sums=('74d5ef5be20357e706bfbff496a60e8c2d90b33e93981bca398d04099645bef0ec8df9b77f179bb770312966f788a2fe7a486abdf9a3e7bee7b0204d2d900902')
+source=(https://hashcat.net/files/${_pkgname}-${pkgver}.7z{,.asc})
+sha512sums=('068f900aad1fbed9cbb767d1fdff5a41f98c60c3805c13121fe803e2aa461a8411f4904b5f1716a3dc82b9db4b08258a69a07d3f8aac087ad28b43cc2319e0e1'
+            'SKIP')
+validpgpkeys=('A70833229D040B4199CC00523C17DA8B8A16544F') # Hashcat signing key <signing@hashcat.net>
 
 package() {
   cd ${_pkgname}-${pkgver}
