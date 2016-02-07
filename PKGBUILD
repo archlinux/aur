@@ -2,8 +2,8 @@
 # Maintainer: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=python-arxiv2bib
-pkgver=1.0.5
-pkgrel=2
+pkgver=1.0.7
+pkgrel=1
 pkgdesc="Provides a command line tool to get metadata for an academic paper posted at arXiv.org in BibTeX format."
 arch=('any')
 url="https://pypi.python.org/pypi/arxiv2bib"
@@ -24,4 +24,4 @@ package(){
 }
 
 # vim:ts=2:sw=2:et:
-md5sums=('67041f21b15ba52991b9d90a418fbff7')
+md5sums=('ecf847f298798df66bdbcffccb40ecac')
