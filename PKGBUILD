@@ -4,7 +4,7 @@
 # Contributor: Firmicus <francois . archlinux . org>
 
 pkgname=texlive-localmanager-git
-pkgver=0.4.5.r3.g8c9f9e4
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="A shell and command-line utility to manage TeXLive on Arch Linux"
 arch=('any')
@@ -17,8 +17,8 @@ _giturl="git://projects.archlinux.org/users/remy/${pkgname%-git}.git"
 makedepends+=('git')
 source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")
 md5sums+=('SKIP')
-provides+=($_gitname)
-conflicts+=($_gitname)
+provides+=("$_gitname=$pkgver")
+conflicts+=("$_gitname")
 pkgver() {
   cd ${_gitname:-$pkgname}
   git describe --long --tags 2>/dev/null | sed 's/[^[:digit:]]*\(.\+\)-\([[:digit:]]\+\)-g\([[:xdigit:]]\{7\}\)/\1.r\2.g\3/;t;q1'
