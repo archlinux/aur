@@ -1,0 +1,15 @@
+pkgbase = python2-inifile
+	pkgdesc = Ini file library for Python.
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/mitsuhiko/python-inifile
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2
+	options = !emptydirs
+	source = https://github.com/mitsuhiko/python-inifile/archive/0.3.tar.gz
+	md5sums = de2ef0f997c880e9d30362310776b652
+
+pkgname = python2-inifile
+
