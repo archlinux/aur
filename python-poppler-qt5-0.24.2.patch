@@ -1,0 +1,19 @@
+diff -aur python-poppler-qt5-0.24.2.pristine/poppler-qt5.sip python-poppler-qt5-0.24.2.new/poppler-qt5.sip
+--- python-poppler-qt5-0.24.2.pristine/poppler-qt5.sip	2016-02-07 14:36:03.574983819 +0100
++++ python-poppler-qt5-0.24.2.new/poppler-qt5.sip	2016-02-07 14:37:37.955122246 +0100
+@@ -6,10 +6,13 @@
+  */
+ 
+ 
++%Feature QTXML_AVAILABLE
++
+ %Import QtCore/QtCoremod.sip
+ %Import QtGui/QtGuimod.sip
+-
+-%Feature QTXML_AVAILABLE
++%If(QTXML_AVAILABLE)
++%Import QtXml/QtXmlmod.sip
++%End
+ 
+ %Timeline {
+     POPPLER_V0_20_0
