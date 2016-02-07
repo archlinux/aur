@@ -18,8 +18,6 @@ depends=('kcoreaddons' 'sonnet' 'kcodecs' 'kio' 'kross' 'kxmlgui' 'ki18n')
 # Comment/uncomment the following dependencies to disable/enable support for
 # MPV, gstreamer and/or Xine backend.
 # These are not optdepends as they must be present at build time.
-# Also ensure these deps aren't installed if you don't want to link against them
-# because Subtitle Composer will always link against them if available.
 #depends+=('mpv')
 depends+=('gstreamer')
 depends+=('xine-lib')
