@@ -1,0 +1,26 @@
+pkgbase = python2-lektor
+	pkgdesc = A static content management system.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://www.getlektor.com
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-pip
+	depends = python2-requests
+	depends = python2-babel
+	depends = python2-flask
+	depends = python2-watchdog
+	depends = python2-click
+	depends = python2-pyasn1
+	depends = python2-ndg-httpsclient
+	depends = python2-mistune
+	depends = python2-inifile
+	depends = exifread
+	options = !emptydirs
+	source = https://github.com/lektor/lektor/archive/1.2.1.tar.gz
+	sha256sums = 2bd739579d4298547dd6ec5a1da74bf48236a66c1813bd07e44306fb750224de
+
+pkgname = python2-lektor
+
