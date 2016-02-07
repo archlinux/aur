@@ -1,0 +1,5 @@
+post_install() {
+	echo -e "\n"
+	echo -e "INFO: There is also a flattastic stylish theme to make firefox fit in better:"
+	echo -e "      https://userstyles.org/styles/121079/flattastic-light-for-firefox\n"
+}
