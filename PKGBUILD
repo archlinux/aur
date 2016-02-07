@@ -34,7 +34,7 @@ package(){
     done
 
     mkdir -p "${pkgdir}"/usr/bin
-    echo -e "#!/bin/sh\n/opt/${pkgname}/KeeWeb \$1" > ${pkgdir}/usr/bin/KeeWeb
+    echo -e "#!/bin/sh\n/opt/${pkgname}/KeeWeb --disable-updater \$1" > ${pkgdir}/usr/bin/KeeWeb
     chmod 755 ${pkgdir}/usr/bin/KeeWeb
 
     install -Dm644 keeweb.xml "$pkgdir"/usr/share/mime/packages/keeweb.xml
