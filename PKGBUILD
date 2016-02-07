@@ -1,7 +1,7 @@
 # Maintainer : sumt <sumt at sci dot fi>
 
 pkgname=prpltwtr-git
-pkgver=0.14.0.r3.g5960aa0
+pkgver=0.14.0.r7.g71c4d4f
 pkgrel=1
 pkgdesc="A libpurple plugin which treats microblogging (Twitter, identi.ca) as IM protocols"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ conflicts=('prpltwtr')
 provides=('prpltwtr')
 
 pkgver() {
-  cd "$pkgname"
+  cd prpltwtr
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
