@@ -8,7 +8,7 @@ pkgrel=2
 pkgdesc="An abstract realtime strategy/action game in space"
 arch=('i686')
 url="http://www.queasygames.com/gate88/"
-license="custom"
+license=("custom")
 groups=('games')
 depends=(sdl sdl_mixer sdl_net libvorbis mesa)
 source=(http://www.queasygames.com/gate88/Gate88_$pkgver.tar.gz
@@ -26,7 +26,7 @@ package() {
   chmod a+x $srcdir/Gate88_$pkgver/sound \
     $srcdir/Gate88_$pkgver/music \
     $srcdir/Gate88_$pkgver/music/non-ingame
-		
+
   mkdir -p $pkgdir/usr/share/$pkgname/lib \
     $pkgdir/usr/share/applications \
     $pkgdir/usr/share/licenses/$pkgname \
@@ -41,7 +41,7 @@ package() {
 
   cp $srcdir/Gate88_${pkgver}/lib/libstdc++-libc6.2-2.so.3 \
     $pkgdir/usr/share/$pkgname/lib
-		
+
   cp $srcdir/Gate88_${pkgver}/*.conf $pkgdir/etc/$pkgname
   cp $srcdir/Gate88_${pkgver}/license.txt \
     $pkgdir/usr/share/licenses/$pkgname
@@ -50,4 +50,3 @@ package() {
   cp $srcdir/$pkgname.desktop $pkgdir/usr/share/applications
   cp $srcdir/$pkgname $pkgdir/usr/bin
 }
-
