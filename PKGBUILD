@@ -1,4 +1,4 @@
-# Maintainer: Melvin Vermeeren <mail@melvinvermeeren.com
+# Maintainer: Melvin Vermeeren <mail@mel.vin>
 # Co-Maintainer: oi_wtf <brainpower at mailbox dot org>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Allan McRae <allan@archlinux.org>
