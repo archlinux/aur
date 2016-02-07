@@ -1,4 +1,4 @@
-pkgbase = python2-lektor
+pkgbase = lektor
 	pkgdesc = A static content management system.
 	pkgver = 1.2.1
 	pkgrel = 1
@@ -22,5 +22,5 @@ pkgbase = python2-lektor
 	source = https://github.com/lektor/lektor/archive/1.2.1.tar.gz
 	sha256sums = 2bd739579d4298547dd6ec5a1da74bf48236a66c1813bd07e44306fb750224de
 
-pkgname = python2-lektor
+pkgname = lektor
 
