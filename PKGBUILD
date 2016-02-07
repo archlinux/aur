@@ -59,11 +59,5 @@ package() {
 
 	msg "Clean up"
 	rm -vr "${pkgdir}/usr/share/glbinding"
-
-	msg "Filename collision reduction"
-	cd "${pkgdir}"
-	for exec in usr/bin/*; do
-		mv -v $exec $(dirname $exec)/glb-$(basename $exec)
-	done
 }
 
