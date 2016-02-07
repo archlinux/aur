@@ -2,7 +2,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ethereum-git
-pkgver=1.0rc2.r115.g5059829
+pkgver=1.0rc2.r117.g58d2a77
 pkgrel=1
 pkgdesc="Ethereum decentralised consensus-based deterministic transaction resolution platform (C++ toolkit, full webthree-umbrella, latest unstable git version)"
 arch=('i686' 'x86_64')
@@ -81,12 +81,16 @@ conflicts=('alethfive'
 
 pkgver() {
   cd ${pkgname%-git}
+  git checkout -q develop
+  git pull -q
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   msg 'Updating...'
   cd ${pkgname%-git}
+  git checkout develop
+  git pull
   git submodule update --init --recursive
 
   msg 'Building...'
