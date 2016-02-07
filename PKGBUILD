@@ -5,7 +5,7 @@ pkgver=0.9.6
 pkgrel=3
 pkgdesc="ncurses user interface for canto-daemon"
 url="http://codezen.org/canto-ng/"
-license="GPL"
+license=("GPL")
 arch=('i686' 'x86_64')
 depends=('ncurses' 'readline' 'canto-daemon>=0.9.2')
 optdepends=('xdg-utils: xdg-open is used as default browser')
