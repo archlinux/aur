@@ -1,4 +1,4 @@
-# Maintainer: Sebastian Wilzbach <sebi at wilzbach dot me>
+# Maintainer: confusedfla <sebi at notsharingmy dot info>
 # Contributor: Eduard Bachmakov <e.bachmakov@gmail.com>
 pkgname=moderntimeline
 pkgver=20150306
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('texlive-latexextra')
 install=
 source=("http://mirror.ctan.org/macros/latex/contrib/moderntimeline.zip")
-md5sums=('c92231ed0239a9e30f271cc25e9123c7')
+md5sums=('ee03eee7bc9c1cab2613dde158824ff3')
 
 package() {
   cd "$srcdir/moderntimeline"
