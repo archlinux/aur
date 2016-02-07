@@ -1,18 +1,18 @@
-# Maintainer:  Christopher Arndt <aur -at- chrisarndt -dot- de>
+# Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 _pkgname=lv2file
 pkgname="${_pkgname}-git"
 pkgver=0.84.r31.aed7c77
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line program to process audio files with LV2 plugins"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/jeremysalwen/lv2file"
 license=('GPL3')
-depends=('argtable')
-makedepends=('git' 'lv2')
+depends=('argtable' 'libsndfile' 'lilv')
+makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+https://github.com/jeremysalwen/lv2file.git")
+source=("${_pkgname}::git+https://github.com/jeremysalwen/${_pkgname}.git")
 md5sums=('SKIP')
 
 
@@ -33,7 +33,8 @@ package() {
   cd "${srcdir}/${_pkgname}"
 
   make DESTDIR="$pkgdir" install
-  install -Dm 644 debian/lv2file.1 "$pkgdir/usr/share/man/man1/lv2file.1"
+  install -Dm 644 "debian/${_pkgname}.1" \
+    "$pkgdir/usr/share/man/man1/${_pkgname}.1"
 }
 
 # vim:set ts=2 sw=2 et:
