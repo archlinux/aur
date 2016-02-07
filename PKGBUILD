@@ -6,7 +6,7 @@
 
 pkgname=asymptote-git
 epoch=1
-pkgver=2.37git.12.g4c3480c
+pkgver=2.37r12.g4c3480c
 pkgrel=1
 pkgdesc="A vector graphics language (like metapost)"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ _gitname=asymptote
 
 pkgver() {
   cd "$srcdir/${_gitname}"
-  git describe --tags|sed s+-+.+g|sed s+tpatch.+r+
+  git describe --tags|sed s+-+.+g|sed s+git.+r+
 }
 
 build() {
