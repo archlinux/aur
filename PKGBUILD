@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=latex2e-help-texinfo  
-pkgver=2015_10
-pkgrel=2
+pkgver=2016_02
+pkgrel=1
 pkgdesc="Inofficial LaTeX2e Reference Manual in info format"
 url="http://home.gna.org/latexrefman/"
 arch=('any')
