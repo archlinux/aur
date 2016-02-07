@@ -2,7 +2,6 @@
 
 pkgbase=python-tunigo
 pkgname=('python-tunigo' 'python2-tunigo')
-_pypiname=tunigo
 pkgver=0.1.3
 pkgrel=1
 pkgdesc="Python API for the browse feature of Spotify"
@@ -10,13 +9,13 @@ arch=('any')
 url="https://github.com/trygveaa/python-tunigo"
 license=('APACHE')
 makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools')
-source=("https://pypi.python.org/packages/source/t/${_pypiname}/${_pypiname}-${pkgver}.tar.gz")
+source=("https://github.com/trygveaa/python-tunigo/archive/v${pkgver}.tar.gz")
 md5sums=('a8724b6964d76782cb7156a8b713fdce')
 
 package_python-tunigo() {
   depends=('python' 'python-requests')
 
-  cd "${srcdir}/${_pypiname}-${pkgver}"
+  cd "${srcdir}/tunigo-${pkgver}"
   python setup.py install --root="${pkgdir}/" --optimize=1
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
@@ -25,7 +24,7 @@ package_python-tunigo() {
 package_python2-tunigo() {
   depends=('python2' 'python2-requests')
 
-  cd "${srcdir}/${_pypiname}-${pkgver}"
+  cd "${srcdir}/tunigo-${pkgver}"
   python2 setup.py install --root="${pkgdir}/" --optimize=1
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
