@@ -1,8 +1,8 @@
-# Maintainer: Muflone <webreg@vbsimple.net>
+# Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=remmina-plugin-ultravnc
 pkgver=1.2.2.0
-pkgrel=1
+pkgrel=2
 _builderver=1.2.2.0
 pkgdesc="A protocol plugin for Remmina to connect via VNC using UltraVNC viewer."
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ sha256sums=('bce686835b951dc49263dd760ea3a216618e5d5b1f6652da94edf4ba95081434'
             'db8385e59e1cb55e6ffede3fdd0d64923e0b37737f2c2bec8fe28f71196118d9')
 
 prepare() {
-  msg2 'To build for Remmina >= 1.2 set -DREMMINA_VER_1_1=OFF'
+  msg2 'To build for Remmina < 1.2 set -DREMMINA_VER_1_1=ON'
 }
 
 build() {
@@ -25,7 +25,7 @@ build() {
   cp -r "remmina-plugin-builder-${_builderver}" build
   cp -r "${pkgname}-${pkgver}"/* "build/remmina-plugin-to-build"
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DREMMINA_VER_1_1=ON .
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DREMMINA_VER_1_1=OFF .
   make
 }
 
