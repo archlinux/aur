@@ -40,7 +40,7 @@ md5sums_i686=('6e53d422be03c4694a046b6a13fbbf81'
               '29d251c3399f497cda973f6a3e06b322'
               '62981ec22f92add684406addc5e4d03a'
               'fb8504ceaf8aa25d43eefc5f90abfa06'
-              '3102142a57efb1cb1442d131ae86633e')
+              'aee806a767f350dab8bfb39db0ee0e18')
 md5sums_x86_64=('91aca9095b22b1991ef8f75eb99c790f'
                 '0aa8db6ac0e58ccbe85d0fe4923fb39e'
                 '0aae5f0110179e8e1d588530bcce5d2a'
@@ -49,7 +49,7 @@ md5sums_x86_64=('91aca9095b22b1991ef8f75eb99c790f'
                 '29d251c3399f497cda973f6a3e06b322'
                 '62981ec22f92add684406addc5e4d03a'
                 'fb8504ceaf8aa25d43eefc5f90abfa06'
-                '3102142a57efb1cb1442d131ae86633e')
+                'aee806a767f350dab8bfb39db0ee0e18')
 sha256sums_i686=('7446263df3764cbc0fc5ba9fc6eb3dd921b94bd787f8195c177a7927ae7d6c07'
                  'b65b377c0d9ecae9eea722843bca0add6bdb7e50929a7e1f751b79b6621c6073'
                  'ad880c8459ecfdb96abe6a4689af06bdd27906e0edcd39d0915482f2da91e722'
@@ -58,7 +58,7 @@ sha256sums_i686=('7446263df3764cbc0fc5ba9fc6eb3dd921b94bd787f8195c177a7927ae7d6c
                  '47ecf202c41cafc90f15db67bdeb9d448cf6c20f96745fcad7bdfc24b5c21ff9'
                  '9acf7f46052f6e508af4f38be4574f34bf0f57d2cf462f072606d3f177b4c957'
                  '8973ffc8689564898d52b54dc27d3cacf7aa3b61d6fcc390da40e773ad7dffed'
-                 '00362da5b6c9ab3dd19b195751eb0f54bdb796d7b4bc825cb9be4ea0261c22b8')
+                 '938f4265e238cbc038ebee9cb93076a8ba0ae94708ac7b7379385b1f8d019676')
 sha256sums_x86_64=('258a74c3e7fb13ab0a31fdeea6c243ba956c372e9c8c69473ce0fd79876bfb9a'
                    'b65b377c0d9ecae9eea722843bca0add6bdb7e50929a7e1f751b79b6621c6073'
                    'ad880c8459ecfdb96abe6a4689af06bdd27906e0edcd39d0915482f2da91e722'
@@ -67,7 +67,7 @@ sha256sums_x86_64=('258a74c3e7fb13ab0a31fdeea6c243ba956c372e9c8c69473ce0fd79876b
                    '47ecf202c41cafc90f15db67bdeb9d448cf6c20f96745fcad7bdfc24b5c21ff9'
                    '9acf7f46052f6e508af4f38be4574f34bf0f57d2cf462f072606d3f177b4c957'
                    '8973ffc8689564898d52b54dc27d3cacf7aa3b61d6fcc390da40e773ad7dffed'
-                   '00362da5b6c9ab3dd19b195751eb0f54bdb796d7b4bc825cb9be4ea0261c22b8')
+                   '938f4265e238cbc038ebee9cb93076a8ba0ae94708ac7b7379385b1f8d019676')
 
 package() {
   msg2 "Extracting and installing binaries..."
