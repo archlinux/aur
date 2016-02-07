@@ -1,8 +1,8 @@
-# Maintainer: Mario Finelli <mario dot finelli at yahoo dot com>
+# Maintainer: Mario Finelli <mario at finel dot li>
 # Contributor: Sabart Otto <seberm at gmail dot com>
 
 pkgname=adminer
-pkgver=4.2.3
+pkgver=4.2.4
 pkgrel=1
 pkgdesc="A full-featured MySQL management tool written in PHP."
 arch=('any')
@@ -15,7 +15,7 @@ install=${pkgname}.install
 source=("${pkgname}.install"
         "https://www.adminer.org/static/download/${pkgver}/${pkgname}-${pkgver}.php") 
 sha256sums=('f3d2c8d2119cccf4d84d32ad2662300eecda62ffba7304505e563e192b5a10ef'
-            '40e72c917aa4f5f19d39b7322322989fd3b752131821b9f13459ca765796957c')
+            'ea21b95da1a2f66d26849160f3257823254663144e6b3b506c35160b70c7b3bd')
 
 package() {
   _instdir=$pkgdir/usr/share/webapps/$pkgname
