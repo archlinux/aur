@@ -5,7 +5,7 @@
 
 pkgname=jogl
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenGL bindings for Java'
 arch=('x86_64' 'i686')
 url="http://jogamp.org/"
@@ -13,8 +13,13 @@ license=('BSD')
 depends=('java-runtime' 'libgl')
 source=("jogl.LICENSE.txt"
   "gluegen.LICENSE.txt"
-	"http://jogamp.org/deployment/v${pkgver}/jar/orig/jogl-all.jar"
-	"http://jogamp.org/deployment/v${pkgver}/jar/orig/gluegen-rt.jar")
+	"jogl-all-v${pkgver}.jar::http://jogamp.org/deployment/v${pkgver}/jar/orig/jogl-all.jar"
+	"gluegen-rt-v${pkgver}.jar::http://jogamp.org/deployment/v${pkgver}/jar/orig/gluegen-rt.jar")
+source_i686=("jogl-all-natives-linux-i586-v${pkgver}.jar::http://jogamp.org/deployment/v${pkgver}/jar/orig/jogl-all-natives-linux-i586.jar"
+	"gluegen-rt-natives-linux-i586-v${pkgver}.jar::http://jogamp.org/deployment/v${pkgver}/jar/orig/gluegen-rt-natives-linux-i586.jar")
+source_x86_64=("jogl-all-natives-linux-amd64-v${pkgver}.jar::http://jogamp.org/deployment/v${pkgver}/jar/orig/jogl-all-natives-linux-amd64.jar"
+	"gluegen-rt-natives-linux-amd64-v${pkgver}.jar::http://jogamp.org/deployment/v${pkgver}/jar/orig/gluegen-rt-natives-linux-amd64.jar")
+
 md5sums=('e77015f08f0c8c3b39b9b7d379d57183'
          '3809542dae46666cb50b9cb7c6d5ac5f'
          'ce831cf96129a663433861a7eda55595'
@@ -24,13 +29,7 @@ md5sums_x86_64=('0ff2870c4f8da227b05e79b352133c3e'
 md5sums_i686=('79b946d0e6fff33a82a2e0d90133796a'
               'd67501bb4c973ca06140c34e8fb97461')
 
-source_i686=("http://jogamp.org/deployment/v${pkgver}/jar/orig/jogl-all-natives-linux-i586.jar"
-	"http://jogamp.org/deployment/v${pkgver}/jar/orig/gluegen-rt-natives-linux-i586.jar")
-
-source_x86_64=("http://jogamp.org/deployment/v${pkgver}/jar/orig/jogl-all-natives-linux-amd64.jar"
-	"http://jogamp.org/deployment/v${pkgver}/jar/orig/gluegen-rt-natives-linux-amd64.jar")
-
-noextract=({jogl-all,gluegen-rt}.jar)
+noextract=("jogl-all-v${pkgver}.jar" "gluegen-rt-v${pkgver}.jar")
 
 package() {
   # *.so files
@@ -38,8 +37,8 @@ package() {
   find "${srcdir}/natives" -type f -print0 | xargs -0 mv -t "${pkgdir}/usr/lib/${pkgname}"
 
   cd "${srcdir}"
-  install -Dm644 "jogl-all.jar" "${pkgdir}/usr/share/java/${pkgname}/jogl-all.jar"
-  install -Dm644 "gluegen-rt.jar" "${pkgdir}/usr/share/java/${pkgname}/gluegen-rt.jar"
+  install -Dm644 "jogl-all-v${pkgver}.jar" "${pkgdir}/usr/share/java/${pkgname}/jogl-all.jar"
+  install -Dm644 "gluegen-rt-v${pkgver}.jar" "${pkgdir}/usr/share/java/${pkgname}/gluegen-rt.jar"
   install -Dm644 "jogl.LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/jogl.LICENSE.txt"
   install -Dm644 "gluegen.LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/gluegen.LICENSE.txt"
 
