@@ -15,8 +15,8 @@ optdepends=(firefox thunderbird)
 makedepends+=('git')
 source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")
 md5sums+=('SKIP')
-provides+=($_gitname)
-conflicts+=($_gitname)
+provides+=("$_gitname=$pkgver")
+conflicts+=("$_gitname")
 
 # Move down repository content for easier access by following functions.
 prepare() {
