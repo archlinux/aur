@@ -10,7 +10,16 @@ url="http://opendesktop.org/content/show.php?content=170523"
 license=('GPL3')
 optdepends=("gtk-engine-murrine: for GTK2 themes")
 source=("${pkgname}.tar.gz::https://www.dropbox.com/s/4ik0pbbpsiqe4ci/Aurora-${pkgver%.*}.tar.gz?dl=1")
-sha256sums=('28fc4b3ba2e70ee6e7fe6d1e4785be4e9f4064dae58440f02e077752c7a6e780')
+sha256sums=('b47691e1effb39ba85baa88e161fab8ae3c7e3baafd303d3b2f77e0ebb63750f')
+
+# The archive downloaded from Dropbox seems to change its hash without any
+# evident content change. This could originate from the compression of these
+# files on the fly, so recompressing it is an attempt to stabilize the checksum
+# only dependent on the actual contents.
+DLAGENTS=("https::/usr/bin/bash -c $(
+  printf '%s\n' "${DLAGENTS[@]}" | sed -n 's/https::\(.*\)/\1/p' \
+    | sed 's/-[^ ] %o //' | sed 's/ /\\ /g'
+)\ |\ bsdtar\ -caf\ %o\ @-")
 
 pkgver() {
   dir="$(echo Aurora-*)"
