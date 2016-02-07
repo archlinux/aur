@@ -12,7 +12,7 @@ optdepends=('gnome-themes-standard: gtk3 support'
 			'gdk-pixbuf2: gtk2 support')
 install=flattastic-theme.install
 source=('https://github.com/Spagy/Flattastic/archive/master.zip')
-md5sums=('d6de6e38b553b5e74e41c50a43589b81')
+md5sums=('1195019e9546eba0db5b00cfcdb89da9')
 
 package() {
 	install -d -m755 "$pkgdir/usr/share/themes/"
