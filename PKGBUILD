@@ -1,7 +1,6 @@
-# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+# Maintainer: Michael Healy <horsemanoffaith@gmail.com>
 # Original Maintainer: Jan de Groot <jgc@archlinux.org>
 # Contributor: thn81 <root@scrat>
-# Contributor: Michael Healy <horsemanoffaith@gmail.com>
 
 # vercheck-pkgbuild: auto
 # vercheck-ubuntu: name=${pkgname%-*}, repo=xenial
@@ -12,10 +11,10 @@
 pkgname=gnome-settings-daemon-ubuntu
 _use_ppa=true
 _ppa_rel=0ubuntu1~xenial1
-#_ppa_ver=3.19.4
+#_ppa_ver=3.19.5
 #_ubuntu_rel=0ubuntu1
 #_ubuntu_ver=3.18.2
-pkgver=3.19.4
+pkgver=3.19.5
 pkgrel=1
 pkgdesc="The GNOME Settings daemon with Ubuntu's patches"
 arch=(i686 x86_64)
@@ -39,8 +38,9 @@ else
     source+=("https://launchpad.net/ubuntu/+archive/primary/+files/gnome-settings-daemon_${_ubuntu_ver:-${pkgver}}-${_ubuntu_rel}.debian.tar.xz")
 fi
 
-sha512sums=('27398c96dffbc1e1098b0b4e6601f460247f002e0217c578b632edd883fc7fc0a0c5f92f2916eaee68a0859c967de849a7e8d5dfe99064bc0a39edbccfc56c45'
-            '3a18c8fc7661c0799e8e9dc6c6c97dba4f89eb4c5bcb797da7ffd15fcba3e88ea390cf44ca4cfcca48d8d9ef1243be382b32cf4e8879ba17c6060e3898538500')
+sha512sums=('c6d1529766aff5d90d0cc055d90ae0516700243fc5e86bd96d2a40506da5f356c14fad2db936faeca350407803d358a50a8020b4ecba58e21cb428bf8fccfe88'
+            '57708693d527a6f9de9a6ad116d690a00c79831b07f9cba70927554324416f6282b6e168a921d9dd1686cf6ac1ae88e5d0d973e2bd0c4f13936c3027db5102a7')
+
 prepare() {
   cd "${pkgname%-*}-${pkgver}"
 
