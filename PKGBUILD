@@ -7,7 +7,7 @@
 # Server = http://smoothware.net/$repo/$arch
 
 pkgname=subtitlecomposer-git
-pkgver=v0.5.7.41.g0fe91f5
+pkgver=v0.5.8
 pkgrel=1
 pkgdesc="A KDE subtitle editor - nightly build"
 arch=('i686' 'x86_64')
@@ -35,7 +35,7 @@ pkgver() {
 
 build() {
 	cd ${srcdir}/subtitlecomposer
-	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -Wno-dev
+	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
 	make
 }
 
