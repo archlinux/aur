@@ -1,7 +1,7 @@
 # Maintainer: Franek Madej <franek.madej@gmail.com>
 pkgname=yadm
-pkgver=1.03
-pkgrel=3
+pkgver=1.03.r3.g4948f1b
+pkgrel=1
 pkgdesc="Yet Another Dotfiles Manager"
 arch=('any')
 url="https://github.com/TheLocehiliosan/yadm"
@@ -23,7 +23,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe  --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -33,5 +33,5 @@ build() {
 package() {
   cd $srcdir/$pkgname
   install -D -m 755 yadm $pkgdir/usr/bin/yadm
-  install -D -m 644 yadm.1 $pkgdir/usr/share/man/yadm.1
+  install -D -m 644 yadm.1 $pkgdir/usr/share/man/man1/yadm.1
 }
