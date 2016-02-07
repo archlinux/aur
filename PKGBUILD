@@ -2,7 +2,7 @@
 
 pkgname=mdp-git
 _pkgname=mdp
-pkgver=1.0.3.4.g43d2fc7
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="A command-line based markdown presentation tool."
 arch=('i686' 'x86_64')
