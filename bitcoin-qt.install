@@ -1,0 +1,76 @@
+post_install() {
+    _mkrpcpass
+    [[ ! -e "$HOME/.bitcoin/server.pem" ]] && _mkssl
+    update-desktop-database -q
+    printf "%b\n" "$bitcoin"
+}
+
+post_upgrade() {
+    update-desktop-database -q
+    printf "%b\n" "$bitcoin"
+}
+
+post_remove() {
+    update-desktop-database -q
+}
+
+# ------------------------------------------------------------------------------
+# helper function for enabling SSL in bitcoin-core
+# ------------------------------------------------------------------------------
+
+_mkssl() {
+  echo -n "Enabling SSL..." # https://en.bitcoin.it/wiki/Enabling_SSL_on_original_client_daemon
+  openssl genrsa -out $HOME/.bitcoin/server.pem 2048
+  expect <<EOF | perl -ne 'print if /-----BEGIN\sCERTIFICATE-----/../-----END\sCERTIFICATE-----/' > $HOME/.bitcoin/server.cert
+    spawn openssl req -new -x509 -nodes -sha1 -days 3650 -key $HOME/.bitcoin/server.pem
+    expect "Country*" {
+      send "\r"
+    }
+    expect "State*" {
+      send "\r"
+    }
+    expect "Locality*" {
+      send "\r"
+    }
+    expect "Organization*" {
+      send "\r"
+    }
+    expect "Organizational*" {
+      send "\r"
+    }
+    expect "Common*" {
+      send "\r"
+    }
+    expect "Email*" {
+      send "\r"
+    }
+    expect eof
+EOF
+  echo "done"
+}
+
+# ------------------------------------------------------------------------------
+# helper function for writing secure, random RPC password to bitcoin.conf
+# ------------------------------------------------------------------------------
+
+_mkrpcpass() {
+  # create password
+  _rpc_password=$(bash -c 'tr -dc a-zA-Z0-9 < /dev/urandom | head -c32 && echo')
+
+  #write to bitcoin.conf
+  sed -i "s/rpcpassword=secret/rpcpassword=$_rpc_password/g" $HOME/.bitcoin/bitcoin.conf
+}
+
+read -d '' bitcoin <<'EOF'
+########################################################################
+########################################################################
+##                                                                    ##
+##  Bitcoin Classic                                                   ##
+##  ____________                                                      ##
+##                                                                    ##
+##  Config:        ~/.bitcoin/bitcoin.conf                            ##
+##  Blockchain:    ~/.bitcoin/                                        ##
+##                                                                    ##
+########################################################################
+########################################################################
+EOF
