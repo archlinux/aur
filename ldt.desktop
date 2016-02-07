@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Exec=/opt/ldt/LuaDevelopmentTools
+Icon=/usr/share/icons/hicolor/256x256/apps/ldt.xpm
+Terminal=false
+Name=LuaDevelopmentTool
+Comment=Lua Development Tools (LDT) is about providing Lua developers with an IDE
+GenericName=IDE for lua
+GenericName[fr]=IDE pour le langage lua
+Categories=Development;
+X-Desktop-File-Install-Version=0.22
