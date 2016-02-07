@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Exec=/usr/bin/QCost
+Comment=Software per la redazione di computi metrici estimativi
+Terminal=false
+Name=QCost
+Icon=/usr/share/pixmaps/qcost.svg
+Categories=Office;
+
