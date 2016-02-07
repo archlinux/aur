@@ -1,39 +1,11 @@
-# Maintainer: Martchus <martchus@gmx.net>
-# Contributor: Mladen Milinkovic <maxrd2@smoothware.net>
-
-# You can install/update Subtitle Composer from repository if you add following to /etc/pacman.conf
-# [subtitlecomposer]
-# # Subtitle Composer
-# SigLevel = PackageRequired
-# Server = http://smoothware.net/$repo/$arch
-
-pkgname=subtitlecomposer
-pkgver=0.5.8
-pkgrel=1
-pkgdesc="A KDE subtitle editor"
-arch=('i686' 'x86_64')
-url="https://github.com/maxrd2/${pkgname}"
-license=('GPL')
-depends=('kcoreaddons' 'sonnet' 'kcodecs' 'kio' 'kross' 'kxmlgui' 'ki18n')
-# Comment/uncomment the following dependencies to disable/enable support for
-# MPV, gstreamer and/or Xine backend.
-# These are not optdepends as they must be present at build time.
-#depends+=('mpv')
-depends+=('gstreamer')
-depends+=('xine-lib')
-makedepends=('extra-cmake-modules')
-install=${pkgname}.install
-optdepends=('mplayer: for MPlayer backend')
-source=("https://github.com/maxrd2/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('09b95b408af45224c88529b09594349f')
-
-build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  cmake -DCMAKE_INSTALL_PREFIX=/usr
-  make
+post_install() {
+  update-desktop-database -q
 }
 
-package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  make DESTDIR=${pkgdir} install
-} 
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  post_install $1
+}
