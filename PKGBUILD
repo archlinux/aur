@@ -1,10 +1,8 @@
-# Maintainer: Amiad Bareli <amiadb at gmail dot com>
-# Last Contributor: amiad
 pkgname=behafucha
 pkgver=0.7
-pkgrel=6
+pkgrel=7
 pkgdesc="Convert English/Hebrew text to Hebrew/English text"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/ilsh1964/behafucha/"
 license=('GPL')
 depends=(bc zenity pygtk xsel xvkbd)
@@ -15,9 +13,12 @@ build() {
   cd $srcdir/Behafucha-$pkgver/Source/
   sed -i '1c#!/usr/bin/python2' Behafucha.py
   sed -i '3c python2 /usr/lib/Behafucha/Behafucha.py' $pkgname
+}
+
+package() {
+  cd $srcdir/Behafucha-$pkgver/Source/
   install -Dm 755 $pkgname $pkgdir/usr/bin/$pkgname
   install -Dm 644 Behafucha.py $pkgdir/usr/lib/Behafucha/Behafucha.py
   install -Dm 644 $pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
   install -Dm 644 $pkgname.png $pkgdir/usr/share/pixmaps/$pkgname.png
 }
-
