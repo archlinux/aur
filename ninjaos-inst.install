@@ -1,0 +1,62 @@
+#This is a replacement for installscript.sh
+
+post_install() {
+    echo $(tput bold)"Ninja OS:$(tput sgr0) Starting Post-Install Script..."
+
+    #keep a count of errors
+    declare -i errors=0 
+    #initialize pacman's gpg keys
+    pacman-key --init
+    errors+=$?
+    pacman-key --populate archlinux
+    errors+=$?
+    #set capabilities so these work. this doesn't work quiet right because
+    #either AUFS or tmpfs doesn't respect extended atributes
+    setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' /usr/bin/dumpcap
+    errors+=$?
+    setcap 'CAP_NET_RAW+ep' /usr/bin/ping
+    errors+=$?
+    setcap 'CAP_NET_RAW+ep' /usr/bin/ping6
+    errors+=$?
+    setcap 'CAP_NET_RAW+ep' /usr/bin/arp-scan
+    errors+=$?
+    #so ping actually works 
+    chmod u+s /usr/bin/ping
+    errors+=$?
+    chmod u+s /usr/bin/ping6
+    errors+=$?
+    #use old style network interface naming conventions
+    ln -s /dev/null /etc/udev/rules.d/80-net-setup-link.rules
+    errors+=$?
+    ln -s /usr/share/zoneinfo/Etc/Zulu /etc/localtime
+    errors+=$?
+    #add a system group for NetworkManager
+    groupadd -r networkmanager
+    errors+=$?
+
+    #Now check if there are any errors to determine the type of exit message
+    if [ "${errors}" -ne "0" ];then
+        echo $(tput bold)"Ninja OS:$(tput sgr0) Post Install No Errors"
+      else
+        echo $(tput bold)"Ninja OS:$(tput sgr0) Something Went Wrong with the Post Install"
+    fi
+}
+
+post_remove() {
+    #put things back the way we found them
+    #remove capabilities
+    setcap -r /usr/bin/dumpcap
+    setcap -r /usr/bin/ping
+    setcap -r /usr/bin/ping6
+    setcap -r /usr/bin/arp-scan
+    #un uid pings
+    chmod u-s /usr/bin/ping
+    chmod u-s /usr/bin/ping6
+    #remove udev rules for interface naming
+    rm /etc/udev/rules.d/80-net-setup-link.rules
+    #unset clock
+    rm /etc/localtime
+    #get rid of networkmanager group created earlier
+    groupdel networkmanager
+
+}
