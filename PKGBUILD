@@ -6,7 +6,7 @@
 # vercheck-launchpad: name=${pkgname}
 
 pkgbase=libindicator-ubuntu
-pkgname=(libindicator-gtk2 libindicator-gtk3)
+pkgname=(libindicator-ubuntu-gtk2 libindicator-ubuntu-gtk3)
 _actual_ver=12.10.2
 _extra_ver=+16.04.20151208
 pkgver=${_actual_ver}${_extra_ver/+/.}
@@ -58,7 +58,7 @@ build() {
   popd
 }
 
-package_libindicator-gtk2() {
+package_libindicator-ubuntu-gtk2() {
   pkgdesc+=" (GTK+ 2 library)"
   depends=(cairo gtk2-ubuntu glib2)
 
@@ -67,7 +67,7 @@ package_libindicator-gtk2() {
   make -j1 DESTDIR="${pkgdir}/" install
 }
 
-package_libindicator-gtk3() {
+package_libindicator-ubuntu-gtk3() {
   pkgdesc+=" (GTK+ 3 library)"
   depends=(gtk3-ubuntu glib2 ido-ubuntu)
   options+=(!emptydirs)
