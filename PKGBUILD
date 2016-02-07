@@ -1,4 +1,4 @@
-# Maintainer: Melvin Vermeeren <mail@melvinvermeeren.com>
+# Maintainer: Melvin Vermeeren <mail@mel.vin>
 # If you would like to contribute, place a comment or send an email.
 # These profiles may not work for all setups, they're only tested on my desktop.
 pkgname=firejail-profiles
