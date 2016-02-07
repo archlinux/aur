@@ -2,7 +2,7 @@
 
 pkgname=remmina-plugin-exec
 pkgver=1.2.2.0
-pkgrel=1
+pkgrel=2
 _builderver=1.2.2.0
 pkgdesc="A protocol plugin for Remmina to execute an external process."
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ sha256sums=('bce686835b951dc49263dd760ea3a216618e5d5b1f6652da94edf4ba95081434'
             'ff004bbe70c24f8ce292ff35f39f25e745d1a75ba71f69142af68ada002ec530')
 
 prepare() {
-  msg2 'To build for Remmina >= 1.2 set -DREMMINA_VER_1_1=OFF'
+  msg2 'To build for Remmina < 1.2 set -DREMMINA_VER_1_1=ON'
 }
 
 build() {
@@ -25,7 +25,7 @@ build() {
   cp -r "remmina-plugin-builder-${_builderver}" build
   cp -r "${pkgname}-${pkgver}"/* "build/remmina-plugin-to-build"
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DREMMINA_VER_1_1=ON .
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DREMMINA_VER_1_1=OFF .
   make
 }
 
