@@ -3,7 +3,7 @@
 
 pkgname=dasom-jeongeum-git
 _pkgname=dasom-jeongeum
-pkgver=1.2.8f71b26
+pkgver=1.2.1.c911a64
 pkgrel=1
 pkgdesc="Korean engine module based on libhangul for Dasom"
 arch=('any')
