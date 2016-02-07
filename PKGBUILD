@@ -2,7 +2,7 @@
 
 pkgname=perl6-linenoise
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bindings to linenoise"
 arch=('i686' 'x86_64')
 depends=('perl6' 'perl6-native-resources')
@@ -14,21 +14,12 @@ license=('MIT')
 source=($pkgname-$pkgver::git+https://github.com/hoelzro/p6-linenoise)
 sha256sums=('SKIP')
 
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  msg2 'Preparing native library build script...'
-  cat >> .alacryd-build-script.p6 << 'EOF'
-use Native::Resources::Build;
-make("$*CWD", "$*CWD/resources/lib", :libname<linenoise>);
-EOF
-}
-
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
   msg2 'Building...'
-  perl6 .alacryd-build-script.p6
+  perl6 -M Native::Resources::Build \
+        -e 'make("$*CWD", "$*CWD/resources/lib", :libname<linenoise>)'
 }
 
 check() {
