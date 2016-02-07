@@ -1,0 +1,7 @@
+pkg/
+src/
+.AURINFO
+lv2proc/
+lv2proc-*.tar.xz
+lv2proc-*.src.tar.gz
+lv2proc-*.tar.bz2
