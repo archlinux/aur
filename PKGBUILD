@@ -3,7 +3,7 @@
 pkgname=loop-aes
 _pkgname=loop-AES
 pkgver=v3.7g
-pkgrel=2
+pkgrel=3
 pkgdesc="This package provides loadable Linux kernel module loop
 that has AES cipher built-in."
 arch=('i686' 'x86_64')
@@ -29,7 +29,8 @@ package() {
 	install -D loop.ko.gz ${pkgdir}/usr/lib/modules/$(uname -r)/$(readlink 
 /usr/lib/modules/$(uname -r)/extramodules)/loop-aes.ko.gz
 	install -d -m755 "${pkgdir}/usr/lib/modprobe.d"
-	echo "alias loop loop-aes" > "${pkgdir}/usr/lib/modprobe.d/loop.conf"
+	install -d -m755 "${pkgdir}/usr/lib/modules-load.d"
 	echo "blacklist loop" >> "${pkgdir}/usr/lib/modprobe.d/loop.conf"
-	echo "blacklist cryptoloop" >> "${pkgdir}/usr/lib/modprobe.d/loop.conf"
+	echo "alias loop loop-aes" > "${pkgdir}/usr/lib/modprobe.d/loop.conf"
+	echo "loop-aes" > "${pkgdir}/usr/lib/modules-load.d/loop.conf"
 }
