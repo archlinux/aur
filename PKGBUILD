@@ -11,7 +11,6 @@ _actual_ver=12.10.2
 _extra_ver=+16.04.20151208
 pkgver=${_actual_ver}${_extra_ver/+/.}
 pkgrel=1
-epoch=1
 pkgdesc="A set of symbols and convience functions that all indicators would like to use"
 arch=(i686 x86_64)
 url="https://launchpad.net/libindicator"
