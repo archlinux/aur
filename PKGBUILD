@@ -1,8 +1,8 @@
 pkgname='cockroachdb-git'
 pkgdesc='A Scalable, Geo-Replicated, Transactional Datastore'
-pkgver=r6125.ga46df17
+pkgver=r7357.e617cdb
 pkgrel=1
-license='Apache'
+license=('Apache')
 url='https://github.com/cockroachdb/cockroach'
 source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
