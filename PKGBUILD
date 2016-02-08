@@ -1,6 +1,6 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
-pkgbase=qtikz-git
+pkgname=qtikz-git
 pkgver=r196.ab7bd73
 pkgrel=1
 pkgdesc="Small application helping you to create TikZ diagrams"
