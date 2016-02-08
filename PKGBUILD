@@ -2,12 +2,12 @@
 # Contributor: Malina Salina <bluesilence@hotmail.co.uk>
 pkgname='reop'
 pkgver='2.1.0'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Utility to create and verify cryptographic signatures'
 url='https://github.com/tedu/reop/'
 license=('MIT')
 arch=('arm' 'i686' 'x86_64')
-depends=('libsodium')
+depends=('libsodium>=1.0.8')
 conflicts=('reop-git')
 options=('zipman')
 source=("http://www.tedunangst.com/flak/files/${pkgname}-${pkgver}.tgz")
