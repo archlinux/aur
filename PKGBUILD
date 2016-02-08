@@ -5,11 +5,11 @@
 pkgname=update-hosts-git
 _gitname=update-hosts
 pkgdesc="Generate a hosts file based on multiple sources (git)"
-pkgver=r70.6f998dc
+pkgver=r94.d034128
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('any')
 makedepends=('git')
-depends=('coreutils' 'gawk' 'sed' 'grep')
+depends=()
 optdepends=('curl: Default download client' 'wget: Optional download client')
 provides=('update-hosts')
 conflicts=('update-hosts')
