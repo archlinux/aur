@@ -1,0 +1,16 @@
+diff -aur luajit-2.0new/src/luaconf.h luajit-2.0/src/luaconf.h
+--- luajit-2.0new/src/luaconf.h	2016-02-08 15:54:03.315771899 +0100
++++ luajit-2.0/src/luaconf.h	2016-02-08 15:53:06.391831590 +0100
+@@ -135,8 +135,12 @@
+ #define LUA_API		__declspec(dllimport)
+ #endif
+ #else
++#if defined(_WIN32)
++#define LUA_API		
++#else
+ #define LUA_API		extern
+ #endif
++#endif
+ 
+ #define LUALIB_API	LUA_API
+ 

@@ -7,15 +7,18 @@ url='http://luajit.org/'
 license=('MIT')
 depends=('gcc-libs' 'go-cross') 
 makedepends=('git')
-source=(git+http://luajit.org/git/luajit-2.0.git#branch=v2.1)
-sha256sums=('SKIP')
+source=(git+http://luajit.org/git/luajit-2.0.git#branch=v2.1 luajit.patch)
 options=(staticlibs !strip)
+sha256sums=('SKIP'
+            '522b28febf6ea955e66cf859c8f39b76447e8faa49689e9ceac9fca217ea02f2')
 
 build() { 
 	unset LDFLAGS
 	unset CFLAGS
 	export MACOSX_DEPLOYMENT_TARGET=10.6
 	cd luajit-2.0
+
+	patch -p1 -i $srcdir/luajit.patch 
 
 	make amalg CC="gcc -m32" CROSS=i686-w64-mingw32- TARGET_SYS=Windows BUILDMODE=static
 	mkdir -p ../output/lib/windows-386
