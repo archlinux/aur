@@ -2,7 +2,7 @@
 
 pkgname=muduo
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='A C++ non-blocking multi-threaded network library'
 url='https://github.com/chenshuo/muduo'
 license=(BSD)
@@ -15,10 +15,11 @@ sha1sums=('b37881ba54a59d1847560aa2b1bdcd2e8250a35c')
 
 build() {
   cd muduo-$pkgver
+  sed -i '/-Werror/d' CMakeLists.txt
   BUILD_NO_EXAMPLES=1 INSTALL_DIR=/usr ./build.sh
 }
 
 package() {
-  cd build/Release
+  cd build/release
   make install DESTDIR="$pkgdir"
 }
