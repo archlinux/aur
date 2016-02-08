@@ -1,0 +1,52 @@
+commit cbf2baa3a9435161885fa638014ec07c543c43b8
+Author: Geoffrey Tran <geoffrey.tran@gmail.com>
+Date:   Tue Feb 3 20:11:28 2015 -0600
+
+    Added support for Belkin B2B128 USB 3.0 Hub + Gigabit Ethernet Adapter
+
+diff --git a/ax88179_178a.c b/ax88179_178a.c
+index 6fe3f60..45e8f43 100755
+--- a/ax88179_178a.c
++++ b/ax88179_178a.c
+@@ -1,5 +1,6 @@
+ /*
+  * ASIX AX88179 based USB 3.0 Ethernet Devices
++ * Copyright (C) 2015 Geoffrey Tran <geoffrey.tran@gmail.com>
+  * Copyright (C) 2003-2005 David Hollis <dhollis@davehollis.com>
+  * Copyright (C) 2005 Phil Chang <pchang23@sbcglobal.net>
+  * Copyright (c) 2002-2003 TiVo Inc.
+@@ -2107,6 +2108,23 @@ static const struct driver_info samsung_info = {
+ 	.tx_fixup = ax88179_tx_fixup,
+ };
+ 
++static const struct driver_info belkin_info = {
++	.description = "Belkin USB Ethernet Adapter",
++	.bind	= ax88179_bind,
++	.unbind = ax88179_unbind,
++	.status = ax88179_status,
++	.link_reset = ax88179_link_reset,
++	.reset	= ax88179_reset,
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 32)
++	.stop	= ax88179_stop,
++	.flags	= FLAG_ETHER | FLAG_FRAMING_AX | FLAG_AVOID_UNLINK_URBS,
++#else
++	.flags	= FLAG_ETHER | FLAG_FRAMING_AX,
++#endif
++	.rx_fixup = ax88179_rx_fixup,
++	.tx_fixup = ax88179_tx_fixup,
++};
++
+ static const struct usb_device_id	products[] = {
+ {
+ 	/* ASIX AX88179 10/100/1000 */
+@@ -2132,6 +2150,10 @@ static const struct usb_device_id	products[] = {
+ 	/* Samsung USB Ethernet Adapter */
+ 	USB_DEVICE(0x04e8, 0xa100),
+ 	.driver_info = (unsigned long) &samsung_info,
++}, {
++	/* Belkin B2B128 USB 3.0 Hub + Gigabit Ethernet Adapter */
++	USB_DEVICE(0x050d, 0x0128),
++	.driver_info = (unsigned long) &belkin_info,
+ },
+ 	{ },		/* END */
+ };
