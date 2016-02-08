@@ -1,9 +1,9 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgname='dwt'
 pkgver='0.6.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Simple no-frills terminal emulator based on VTE'
-license='MIT'
+license=('MIT')
 url='https://github.com/aperezdc/dwt'
 source=( "http://people.igalia.com/aperez/files/${pkgname}-${pkgver}.tar.xz" )
 arch=('i686' 'x86_64' 'arm')
