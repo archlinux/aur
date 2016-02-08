@@ -2,7 +2,7 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=zynaddsubfx-git
-pkgver=2.5.1.r295.g08d6c92
+pkgver=2.5.3.osx.r1.gb97f65d
 pkgrel=1
 pkgdesc="A powerful realtime, multi-timbral software synthesizer."
 arch=('i686' 'x86_64')
@@ -31,9 +31,9 @@ pkgver() {
   )
 }
 prepare() {
+  [ -d build ] || mkdir build
   cd "${srcdir}/${pkgname}"
   git checkout ${_branch}
-  [ -d build ] || mkdir build
 
   # pull rtosc and instruments
   git submodule update --init
@@ -46,29 +46,29 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname}/build"
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
+  cd "${srcdir}/build"
+  cmake ../"${pkgname}" -DCMAKE_INSTALL_PREFIX=/usr \
            -DCMAKE_INSTALL_LIBDIR=/usr/lib \
            -DGuiModule=ntk
   make
 
   # build external programs
-  cd ../ExternalPrograms/Spliter && make
-  cd ../Controller && make
+  cd "../${pkgname}/ExternalPrograms/Spliter" && make
+  cd "../Controller" && make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}/build"
+  cd "${srcdir}/build"
   make DESTDIR="${pkgdir}/" install
 
   # external programs
-  install -Dm644 ../ExternalPrograms/Spliter/spliter \
+  install -Dm644 "../${pkgname}/ExternalPrograms/Spliter/spliter" \
                  "${pkgdir}/usr/bin/spliter"
-  install -Dm644 ../ExternalPrograms/Controller/controller \
+  install -Dm644 "../${pkgname}/ExternalPrograms/Controller/controller" \
                  "${pkgdir}/usr/bin/controller"
 
   # spliter doc
-  install -Dm644 ../ExternalPrograms/Spliter/readme.txt \
+  install -Dm644 "../${pkgname}/ExternalPrograms/Spliter/readme.txt" \
                  "${pkgdir}/usr/share/doc/zynaddsubfx/SPLITER.txt"
 
   # additional parameters
