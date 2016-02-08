@@ -16,7 +16,7 @@ source=("http://downloads.sourceforge.net/freeglut/${pkgname#lib32-}-${pkgver}.t
 sha512sums=('9c45d5b203b26a7ff92331b3e080a48e806c92fbbe7c65d9262dd18c39cd6efdad8a795a80f499a2d23df84b4909dbd7c1bab20d7dd3555d3d88782ce9dd15b0')
 
 prepare() {
-  cd "${srcdir}/${pkgname#lib32-}-${pkgver}"
+  cd "${srcdir}"
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export LDFLAGS='-m32'
@@ -25,13 +25,13 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname#lib32-}-${pkgver}/build"
+  cd "${srcdir}/build"
   cmake ${srcdir}/${pkgname#lib32-}-${pkgver} -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib32 -DCMAKE_BUILD_TYPE=Release
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname#lib32-}-${pkgver}/build"
+  cd "${srcdir}/build"
   make DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}/usr/"{bin,include,share}
   mkdir -p "${pkgdir}/usr/share/licenses"
