@@ -30,7 +30,7 @@ build() {
 package() {
   install -d $pkgdir/usr/share/emacs/site-lisp
   install -m644 $srcdir/$_gitname/*.el* \
-	  $pkgdir/usr/share/emacs/site-lisp/x
+	  $pkgdir/usr/share/emacs/site-lisp/
   install -Dm755 $srcdir/$_gitname/prepare_4_aur4.sh \
 	  $pkgdir/usr/bin/prepare_4_aur4.sh
 }
