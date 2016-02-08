@@ -3,8 +3,8 @@
 #Contributor: Jonathan 'gishten' Gustafsson <mynick AT mynick DOT com>
 #Contributor: Diego <cdprincipe@gmail.com
 pkgname=ampache
-pkgver=3.8.1
-pkgrel=3
+pkgver=3.8.2
+pkgrel=1
 pkgdesc="A PHP-based tool for managing and playing your audio/video files via a web interface"
 arch=('i686' 'x86_64')
 url="http://www.ampache.org/"
@@ -19,7 +19,7 @@ conflicts=('ampache-git' 'ampache-development')
 install=${pkgname}.install
 source=(https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}_all.zip
         'nginx-example.conf')
-sha256sums=('20fc3679830e0f950b94e632c23fce79d0192f6338db0c23b29443a5ef87607f'
+sha256sums=('b54a4f08248c4389e98ce3f680da0bbc1c19e388e379e6920dc601947acaa3e2'
             'efb63c0ac7e6462ee5c705b9c1998a1d2462502e19e7e5c97fce2c5142b8e62e')
 
 build() {
