@@ -1,8 +1,8 @@
 pkgname='statsdaemon'
 pkgdesc='Port of StatsD to Go, with built-in Graphite support'
-license='custom'
+license=('custom')
 pkgver='0.7.1'
-pkgrel='1'
+pkgrel='2'
 makedepends=('go')
 depends=('glibc')
 arch=('x86_64' 'arm' 'i686')
