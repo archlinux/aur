@@ -2,7 +2,7 @@
 
 pkgname=airvpn-portable
 pkgver=2.10.3
-pkgrel=3
+pkgrel=4
 pkgdesc='NO MONO REQUIRED-AirVPN client "Eddie" based on OpenVPN, portable version.'
 arch=('i686' 'x86_64')
 url=https://airvpn.org/linux/
@@ -44,6 +44,7 @@ package() {
     ## Fix .desktop file for KDE
     if [ -f "/usr/bin/dolphin" ]; then
       msg2 "Installing desktop file for KDE..."
+      cd $srcdir
       install -Dm644 "$srcdir/AirVPN.png"  "$pkgdir/usr/share/pixmaps/airvpn.png"
       cp "$srcdir/AirVPN.desktop" "$srcdir/airvpn.desktop"
       desktop-file-install -m 644 --set-comment="VPN service based on OpenVPN"\
