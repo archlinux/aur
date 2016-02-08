@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Cremer <bc@benjamin-cremer.de>
 
 pkgname=php-tideways
-pkgver=3.0.3
+pkgver=4.0.3
 pkgrel=1
 pkgdesc="Tideways Profiler PHP Extension"
 arch=('i686' 'x86_64')
@@ -13,9 +13,9 @@ provides=('php-tideways')
 conflicts=('php-tideways')
 
 source=("https://github.com/tideways/php-profiler-extension/archive/v$pkgver.tar.gz"
-        "https://github.com/tideways/profiler/releases/download/v2.0.7/Tideways.php")
-sha256sums=('3a761f23ffd3df5a06adefdd1ecdb3bc9c3d2e53d0b5af1cef707957cc4040d4'
-            '3de6dd19d27922835eaf884f1fe1d8851a0c29dacb0d98a9ab809700017d16f7')
+        "https://github.com/tideways/profiler/releases/download/v2.0.10/Tideways.php")
+sha256sums=('2faab0fd3e1f4df9ffafbdabdad7a1ab753e4a0be5610c31df6f93d9357b01bd'
+            '93fc0e5fc5c8269a5af80b96cb85decf605c1590dcc1304930597049404bbb3d')
 
 build() {
     cd "$srcdir/php-profiler-extension-$pkgver"
