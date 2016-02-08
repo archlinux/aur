@@ -2,7 +2,7 @@
 
 _pkgname=qotd
 pkgname=$_pkgname-git
-pkgver=0.3.0
+pkgver=0.3.0_3_g6af5f4c.6af5f4c
 pkgrel=1
 pkgdesc="A simple QOTD (quote of the day) daemon."
 arch=('any')
@@ -10,6 +10,7 @@ url="https://github.com/ammongit/$_pkgname"
 license=('GPL')
 depends=()
 makedepends=('git' 'gcc') # Also compatible with clang. Change CC in src/Makefile.
+optdepends=('systemd')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=()
