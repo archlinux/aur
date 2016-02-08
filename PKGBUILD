@@ -7,7 +7,7 @@ pkgdesc="GreenPAK1-5 Designer"
 arch=('i686' 'x86_64')
 url="http://www.silego.com/softdoc/software.html"
 license=('custom')
-depends=('desktop-file-utils' 'glu' 'gtk-update-icon-cache' 'libusb' 'qtwebkit' 'shared-mime-info')
+depends=('desktop-file-utils' 'glu' 'graphviz' 'gtk-update-icon-cache' 'libusb' 'qtwebkit' 'shared-mime-info')
 options=('!strip')
 install=${pkgname}.install
 
