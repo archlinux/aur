@@ -84,6 +84,6 @@ package() {
   files=("mason_frag_sequencing" "mason_genome" "mason_materializer" "mason_methylation"
 	"mason_simulator" "mason_splicing" "mason_tests" "mason_variator")
   for file in "${files[@]}" ; do
-  	install -m0755 bin/$file $pkgdir/usr/bin/$file
+  	install -m755 bin/$file $pkgdir/usr/bin/$file
   done
 }
