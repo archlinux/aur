@@ -1,8 +1,8 @@
 pkgname='dwt-git'
-pkgver=0.5.1.r55.g172eb45
+pkgver=0.6.0.r3.g62d9270
 pkgrel=1
 pkgdesc='Simple no-frills terminal emulator based on VTE - Git build'
-license='MIT'
+license=('MIT')
 url='https://github.com/aperezdc/dwt'
 source=("${pkgname}::git+${url}.git")
 sha1sums=('SKIP')
