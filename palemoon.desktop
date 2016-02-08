@@ -1,5 +1,6 @@
 [Desktop Entry]
-Name=Palemoon
+Version=1.0
+Name=Pale Moon
 GenericName=Web Browser
 GenericName[ar]=متصفح ويب
 GenericName[ast]=Restolador Web
@@ -81,12 +82,14 @@ Comment[uk]=Перегляд сторінок Інтернету
 Comment[vi]=Để duyệt các trang web
 Comment[zh_CN]=浏览互联网
 Comment[zh_TW]=瀏覽網際網路
+Keywords=Internet;WWW;Browser;Web;Explorer
 Exec=palemoon %u
 Terminal=false
+X-MultipleArgs=false
 Type=Application
 Icon=palemoon
-Categories=Network;WebBrowser;
-MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;
+Categories=Network;WebBrowser;Internet;
+MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;x-scheme-handler/chrome;video/webm;application/x-xpinstall;
 StartupNotify=true
 Actions=NewTab;NewWindow;NewPrivateWindow;
 
