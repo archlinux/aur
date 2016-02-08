@@ -3,7 +3,7 @@
 pkgname=mpd-sacd
 pkgver=0.20
 pkgrel=2
-pkgdesc='Flexible, powerful, server-side application for playing music'
+pkgdesc='MPD with patches for SACD and DVDA ISO playback.'
 url='http://git.musicpd.org/cgit/manisiutkin/mpd.git/'
 license=('GPL')
 arch=('i686' 'x86_64')
