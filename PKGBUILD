@@ -3,15 +3,15 @@ pkgdesc='Python module for the HiPack serialization format'
 pkgname=('python2-hipack' 'python-hipack')
 pkgbase='python-hipack'
 _pkgname='hipack'
-pkgver='9'
+pkgver='12'
 pkgrel='1'
 url='http://hipack.org'
 depends=()
 makedepends=('python2-setuptools' 'python-setuptools')
 license=('GPL3' 'MIT')
-arch='any'
+arch=('any')
 source=("https://pypi.python.org/packages/source/h/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('52d43cc25382d75496799f86c6a6d2da')
+sha512sums=('958c85dd852bd36fe2bd21c5d24f67eb2276130fabd624afcc4264b522ce49b7955afc41dbdb666553fc9d9b5c5c5b14a821aece6c2c275d3aca86dfe031681b')
 
 package_common () {
 	python$1 setup.py install --optimize=1 --root="${pkgdir}"
