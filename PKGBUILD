@@ -1,11 +1,11 @@
 # Maintainer: Tinu Weber <takeya@bluewin.ch>
 
 pkgname=cc-tool-git
-pkgver=r4.a7d3582
-pkgrel=1
+pkgver=r6.6a8ab82
+pkgrel=2
 pkgdesc="Support for Texas Instruments CC Debugger"
 arch=('x86_64')
-url='http://sourceforge.net/projects/cctool/'
+url='https://github.com/dashesy/cc-tool.git'
 license=('GPL')
 makedepends=('git')
 depends=('boost>=1.39.0')
@@ -13,7 +13,7 @@ source=('git+https://github.com/dashesy/cc-tool.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir"
+  cd "$srcdir/cc-tool"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
