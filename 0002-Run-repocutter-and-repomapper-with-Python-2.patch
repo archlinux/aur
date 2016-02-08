@@ -1,0 +1,33 @@
+From eda2ef44b0f5fa4b1d73030cce1166dfbb3019e0 Mon Sep 17 00:00:00 2001
+From: Mike Swanson <mikeonthecomputer@gmail.com>
+Date: Mon, 8 Feb 2016 02:09:51 -0800
+Subject: [PATCH 2/2] Run repocutter and repomapper with Python 2
+
+---
+ repocutter | 2 +-
+ repomapper | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/repocutter b/repocutter
+index f0d6c3d..a196c9a 100755
+--- a/repocutter
++++ b/repocutter
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ #
+ # Hacked together by ESR, October 2009. New BSD license applies.
+ # The Subversion project is explicitly granted permission to redistribute
+diff --git a/repomapper b/repomapper
+index a3e507a..5b3033c 100755
+--- a/repomapper
++++ b/repomapper
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # SPDX-License-Identifier: BSD-2-Clause
+ 
+ """
+-- 
+2.7.0
+

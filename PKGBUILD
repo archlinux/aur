@@ -3,7 +3,7 @@
 pkgbase=reposurgeon
 pkgname=({cy,}reposurgeon)
 pkgver=3.33
-pkgrel=1
+pkgrel=2
 pkgdesc="Performs surgery on version control repositories."
 arch=('any')
 url="http://www.catb.org/esr/$pkgbase/"
@@ -18,9 +18,12 @@ optdepends=('bzr'
             'mercurial'
             'src'
             'subversion')
-source=("$url$pkgbase-$pkgver.tar.xz" install-repocutter.patch)
+source=("$url$pkgbase-$pkgver.tar.xz"
+        0001-Install-repocutter-along-with-the-other-tools.patch
+        0002-Run-repocutter-and-repomapper-with-Python-2.patch)
 sha256sums=('88a88d8fa0f612f5efc7ba5b2ca741713d260a250ada5b1ee01029436c08b571'
-            '2b851c0e52b488a637c83ee6a78a9b4916dd0be597c4c9987a408fe8d8bdb4d9')
+            '700c76e85eee935f84d268b9cbec618f0cc973cee25f59aa388efac1b12343fb'
+            'd1547a1ba5a2e29859b9b1c05ac8a6bd1f96938c3c807ea94793cc734c587eb9')
 
 prepare() {
   cd "$srcdir/$pkgbase-$pkgver"
