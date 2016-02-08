@@ -2,7 +2,7 @@
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=owncloud-app-roundcube
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="Roundcubemail integration for owncloud"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('owncloud')
 makedepends=()
 options=('!strip')
 source=("$pkgname-$pkgver.zip::https://apps.owncloud.com/CONTENT/content-files/151523-roundcube.zip")
-md5sums=('5c8288fa5bd4678f193836e475329572')
+md5sums=('8ba8bf0435908a60d758cc78372e723c')
 
 prepare() {
   cd ${srcdir}/roundcube
