@@ -4,7 +4,7 @@
 # Website 	: 	http://www.erikdubois.be
 ############################################################################
 
-# Below command will add everything inside the project folder
+
 mksrcinfo
 git add --all .
 
