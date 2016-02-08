@@ -1,15 +1,15 @@
 # Maintainer: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
 _pkgname=drumgizmo
 pkgname=$_pkgname-git
-pkgver=0.9.8.1.r22.ga611e1e
+pkgver=0.9.8.1.r363.g9aa7d52
 pkgrel=1
 pkgdesc="an open source cross-platform drum plugin and stand-alone application (lv2)"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.drumgizmo.org"
 license=('GPL')
 groups=('lv2-plugins')
-depends=('libsmf' 'jack' 'libao' 'qt4' 'zita-resampler')
-makedepends=('git' 'cppunit')
+depends=('libsmf' 'jack' 'zita-resampler' 'libx11')
+makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+http://git.drumgizmo.org/drumgizmo.git"
@@ -33,18 +33,9 @@ prepare() {
 build() {
   cd "$_pkgname"
   ./configure --prefix=/usr \
-              --enable-lv2 \
-              --enable-cli \
-              --enable-editor \
-              --enable-static=no \
-              --with-resample
+              --enable-lv2
   make
 }
-
-#check() {
-#  cd "$_pkgname"
-#  make check
-#}
 
 package() {
   cd "$_pkgname"
