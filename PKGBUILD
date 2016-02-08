@@ -51,10 +51,10 @@ build() {
 	make clean
 
 	make amalg HOST_CC="gcc -m32" CC="gcc -fPIC" CROSS=arm-linux-androideabi- TARGET_SYS=Linux BUILDMODE=static
-	mkdir -p ../output/lib/android-386
-	cp src/libluajit.a -t ../output/lib/android-386
-	ln -sf libluajit.a ../output/lib/android-386/liblua5.1.a
-	ln -sf libluajit.a ../output/lib/android-386/liblua.a
+	mkdir -p ../output/lib/android-arm
+	cp src/libluajit.a -t ../output/lib/android-arm
+	ln -sf libluajit.a ../output/lib/android-arm/liblua5.1.a
+	ln -sf libluajit.a ../output/lib/android-arm/liblua.a
 	make clean
 
 	make amalg HOST_CC="gcc" CC="gcc -fPIC" CROSS=aarch64-linux-android- TARGET_SYS=Linux BUILDMODE=static
