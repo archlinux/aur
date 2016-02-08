@@ -1,7 +1,7 @@
 # Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=bitcoin-unlimited-git
-pkgver=20151227.bffc279
+pkgver=20160104.82fd775
 pkgrel=1
 pkgdesc='Bitcoin Unlimited versions of Bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt, w/GUI and wallet'
 arch=('i686' 'x86_64')
@@ -28,10 +28,10 @@ build() {
   cd "$srcdir/BitcoinUnlimited"
 
 	msg2 'Building...'
-  CXXFLAGS="$CXXFLAGS -DBOOST_VARIANT_USE_RELAXED_GET_BY_DEFAULT=1"
+  CXXFLAGS="$CXXFLAGS -DBOOST_VARIANT_USE_RELAXED_GET_BY_DEFAULT=1 -UUPNPDISCOVER_SUCCESS"
 	./autogen.sh
 	./configure --prefix=/usr --with-incompatible-bdb --with-gui=qt4
-  make
+  make -j$(nproc)
 }
 
 package() {
@@ -53,11 +53,9 @@ package() {
 								 "$pkgdir/usr/share/man/man1/bitcoind.1"
   install -Dm644 "$srcdir/BitcoinUnlimited/contrib/debian/manpages/bitcoin.conf.5"\
 								 "$pkgdir/usr/share/man/man5/bitcoin.conf.5"
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 
   msg2 'Installing bitcoin-cli...'
 	install -Dm755 "$srcdir/BitcoinUnlimited/src/bitcoin-cli" "$pkgdir/usr/bin/bitcoin-cli"
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 
   msg2 'Installing bitcoin-tx...'
 	install -Dm755 "$srcdir/BitcoinUnlimited/src/bitcoin-tx" "$pkgdir/usr/bin/bitcoin-tx"
