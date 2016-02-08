@@ -16,7 +16,7 @@ optdepends=(
   'pulseaudio: PulseAudio support'
 )
 provides=("${pkgname}")
-conflicts=("${pkgname}")
+conflicts=("${pkgname}-git")
 install=${pkgname}.install
 source=("https://github.com/vovoid/vsxu/archive/v${pkgver}.tar.gz")
 sha512sums=('e77d8e7300a43ceeb59cf39771f0d8ac8930cebffb4d25305a9e245fd5e2d668e126267227c5334f999688307f8b22cf30183c495137f7490942d78581d0d4a6')
