@@ -1,5 +1,4 @@
 pkgname=go-cross
-epoch=2
 pkgver=1.6
 pkgrel=1
 pkgdesc='Compiler and tools for the Go programming language from Google (with cgo support for Windows, Android, Mac OS  X and Linux)'
@@ -13,7 +12,7 @@ conflicts=(go)
 provides=(go=1.6)
 source=("$pkgname::git+https://github.com/golang/go.git" "osxcross::git+https://github.com/tpoechtrager/osxcross.git" "https://www.dropbox.com/s/yfbesd249w10lpc/MacOSX10.10.sdk.tar.xz" "gowrapper.sh")
 noextract=("MacOSX10.10.sdk.tar.xz")
-sha256sums=('SKIP' 'SKIP' '631b4144c6bf75bf7a4d480d685a9b5bda10ee8d03dbf0db829391e2ef858789' '9b5777655c685f628f7bd159c1819302182d6058e5eae94081c1b194300a0f03')
+sha256sums=('SKIP' 'SKIP' '631b4144c6bf75bf7a4d480d685a9b5bda10ee8d03dbf0db829391e2ef858789' '74c82ade084581190b868a8c8077514a2c14f42a70cd49d9369548dab14f0926')
 
 build() {
   cd "$srcdir/osxcross"

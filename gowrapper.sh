@@ -6,7 +6,7 @@ case "$1" in
 		;;
 esac
 export CGO_ENABLED=1
-export PATH=/opt/cross-go/osx/bin:/opt/cross-go/ndk-x86/bin:/opt/cross-go/ndk-arm64/bin:/opt/cross-go/ndk-arm/bin:$PATH
+export PATH=/opt/go-cross/osx/bin:/opt/go-cross/ndk-x86/bin:/opt/go-cross/ndk-arm64/bin:/opt/go-cross/ndk-arm/bin:$PATH
 case "$GOOS" in
 	windows)
 		case "$GOARCH" in
