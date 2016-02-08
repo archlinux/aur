@@ -1,7 +1,7 @@
 # Maintainer: Ivan Shapovalov <intelfx100@gmail.com>
 
 pkgname=matrix-synapse
-_pkgver=0.12.0
+_pkgver=0.12.1-rc1
 pkgver="${_pkgver//-/.}"
 pkgrel=1
 pkgdesc="Matrix reference homeserver"
@@ -14,7 +14,8 @@ depends=('python2-twisted>=15.1.0' 'python2-service-identity'
          'python2-pillow' 'python2-pydenticon' 'python2-ujson' 'python2-blist'
          'python2-pysaml2' 'python2-requests' 'python2-dateutil' 'python2-pytz'
          'python2-systemd' 'python2-matrix-angular-sdk' 'python2-unpaddedbase64'
-         'python2-canonicaljson' 'python2-signedjson' 'python2-pymacaroons-pynacl')
+         'python2-canonicaljson' 'python2-signedjson' 'python2-pymacaroons-pynacl'
+         'python2-simplejson')
 makedepends=('python2-twisted' 'python2-mock' 'python2-setuptools_trial')
 source=("git://github.com/matrix-org/synapse#tag=v$_pkgver"
 		'sysusers-synapse.conf')
