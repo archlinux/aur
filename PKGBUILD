@@ -1,6 +1,6 @@
 pkgname='vault-git'
 pkgdesc='A tool for managing secrets'
-pkgver=v0.3.1.r61.g5b5e185
+pkgver=v0.5.0.r0.g985c733
 pkgrel=1
 url='https://vaultproject.io/'
 license=('MPL')
@@ -38,7 +38,7 @@ build () {
 	export GOPATH="${srcdir}:$(pwd)"
 	cd "${_srcpath}"
 	go generate ./...
-	godep go build -v -x -o "${srcdir}/vault"
+	godep go build -v -o "${srcdir}/vault"
 }
 
 package () {
