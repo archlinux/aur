@@ -17,10 +17,12 @@ case "$GOOS" in
 			amd64)
 				export CC=x86_64-w64-mingw32-gcc 
 				export CXX=x86_64-w64-mingw32-g++ 
+				export CGO_LDFLAGS="-Wl,--allow-multiple-definition -L/opt/go-cross/lib/$GOOS-$GOARCH"
 				;;
 			386)
 				export CC=i686-w64-mingw32-gcc 
 				export CXX=i686-w64-mingw32-g++ 
+				export CGO_LDFLAGS="-Wl,--allow-multiple-definition -L/opt/go-cross/lib/$GOOS-$GOARCH"
 				;;
 		esac
 		;;
