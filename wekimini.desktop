@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=WekiMini
+Comment=The Wekinator: On-the-fly Learning for Controller Mapping.
+Path=/usr/share/java/wekimini
+Exec=wekimini
+Icon=/usr/share/wekimini/icon.icns
+Terminal=false
+Categories=Music;Java;
