@@ -4,13 +4,11 @@ _gitname=espeak-ng
 pkgver=0.0 # determined from git origin
 pkgrel=1
 pkgdesc="Next generation open source speech synthesizer based on Espeak (git version)"
-arch=(i686 x86_64)
+arch=(armv6h armv7h i686 x86_64)
 url="https://github.com/espeak-ng/espeak-ng"
 license=('GPL3')
-depends=(gcc-libs)
-optdepends=('portaudio: speech output via Portaudio'
-  'pulseaudio: speech output via Pulseaudio'
-  'libsonic-git: for speech rates higher than 450 words per minute')
+depends=(gcc-libs pcaudiolib-git)
+optdepends=()
 makedepends=('git')
 provides=(espeak)
 conflicts=(espeak espeak-test)
