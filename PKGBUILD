@@ -1,4 +1,4 @@
-# Maintainer and Contributor: Vladimir Kamensky  <mastersoft24@yandex.ru>
+# Maintainer and Contributor: Vladimir Kamensky   <mastersoft24@yandex.ru>
 
 
 pkgname=cloudcross
