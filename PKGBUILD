@@ -1,8 +1,8 @@
 pkgname='bdf-zevv-peep'
 pkgdesc='Monospace bitmap programming font aimed for FullHD displays'
 pkgver='1'
-pkgrel='1'
-arch='any'
+pkgrel='2'
+arch=('any')
 license=('MIT')
 url='http://zevv.nl/play/code/zevv-peep/'
 makedepends=('xorg-mkfontdir' 'xorg-mkfontscale')
