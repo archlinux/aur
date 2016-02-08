@@ -1,7 +1,7 @@
 # Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=bitcoin-classic-git
-pkgver=classic.0.11.2.b1.r0.gec8e314
+pkgver=v0.11.2.cl1.b2.r12.g3a60b0e
 pkgrel=1
 pkgdesc='Bitcoin Classic versions of Bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt, most recent stable branch, w/GUI and wallet'
 arch=('i686' 'x86_64')
@@ -50,11 +50,9 @@ package() {
 								 "$pkgdir/usr/share/man/man1/bitcoind.1"
   install -Dm644 "$srcdir/bitcoinclassic/contrib/debian/manpages/bitcoin.conf.5"\
 								 "$pkgdir/usr/share/man/man5/bitcoin.conf.5"
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 
   msg2 'Installing bitcoin-cli...'
 	install -Dm755 "$srcdir/bitcoinclassic/src/bitcoin-cli" "$pkgdir/usr/bin/bitcoin-cli"
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 
   msg2 'Installing bitcoin-tx...'
 	install -Dm755 "$srcdir/bitcoinclassic/src/bitcoin-tx" "$pkgdir/usr/bin/bitcoin-tx"
