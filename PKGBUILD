@@ -2,8 +2,8 @@
 # Maintainer: Zeph <zeph33@gmail.com>
 pkgname=codelite-bin
 _pkgname=codelite
-pkgver=9.0
-pkgrel=7
+pkgver=9.1.1
+pkgrel=1
 pkgdesc="Cross platform IDE for the C/C++ programming languages"
 arch=('i686' 'x86_64')
 url="http://www.codelite.org/"
