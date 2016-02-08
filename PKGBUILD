@@ -18,12 +18,14 @@ build() {
 	make amalg CC="gcc -m32" CROSS=i686-w64-mingw32- TARGET_SYS=Windows BUILDMODE=static
 	mkdir -p ../output/lib/windows-386
 	cp src/libluajit.a -t ../output/lib/windows-386
+	ln -sf libluajit.a ../output/lib/windows-386/liblua5.1.a
 	ln -sf libluajit.a ../output/lib/windows-386/liblua.a
 	make clean
 
 	make amalg CC="gcc" CROSS=x86_64-w64-mingw32- TARGET_SYS=Windows BUILDMODE=static
 	mkdir -p ../output/lib/windows-amd64
 	cp src/libluajit.a -t ../output/lib/windows-amd64
+	ln -sf libluajit.a ../output/lib/windows-amd64/liblua5.1.a
 	ln -sf libluajit.a ../output/lib/windows-amd64/liblua.a
 	make clean
 
@@ -32,30 +34,35 @@ build() {
 	make amalg HOST_CC="gcc -m32" CC="gcc -fPIC" CROSS=arm-linux-androideabi- TARGET_SYS=Linux BUILDMODE=static
 	mkdir -p ../output/lib/android-386
 	cp src/libluajit.a -t ../output/lib/android-386
+	ln -sf libluajit.a ../output/lib/android-386/liblua5.1.a
 	ln -sf libluajit.a ../output/lib/android-386/liblua.a
 	make clean
 
 	make amalg HOST_CC="gcc" CC="gcc -fPIC" CROSS=aarch64-linux-android- TARGET_SYS=Linux BUILDMODE=static
 	mkdir -p ../output/lib/android-arm64
 	cp src/libluajit.a -t ../output/lib/android-arm64
+	ln -sf libluajit.a ../output/lib/android-arm64/liblua5.1.a
 	ln -sf libluajit.a ../output/lib/android-arm64/liblua.a
 	make clean
 
 	make amalg HOST_CC="gcc -m32" CC="gcc -fPIC" CROSS=i686-linux-android- TARGET_SYS=Linux BUILDMODE=static
 	mkdir -p ../output/lib/android-386
 	cp src/libluajit.a -t ../output/lib/android-386
+	ln -sf libluajit.a ../output/lib/android-386/liblua5.1.a
 	ln -sf libluajit.a ../output/lib/android-386/liblua.a
 	make clean
 
 	make amalg CC="gcc -m32 -march=i686" BUILDMODE=static 
 	mkdir -p ../output/lib/linux-386
 	cp src/libluajit.a -t ../output/lib/linux-386
+	ln -sf libluajit.a ../output/lib/linux-386/liblua5.1.a
 	ln -sf libluajit.a ../output/lib/linux-386/liblua.a
 	make clean
 
 	make amalg BUILDMODE=static
 	mkdir -p ../output/lib/linux-amd64
 	cp src/libluajit.a -t ../output/lib/linux-amd64
+	ln -sf libluajit.a ../output/lib/linux-amd64/liblua5.1.a
 	ln -sf libluajit.a ../output/lib/linux-amd64/liblua.a
 	mkdir -p dest
 	make install DESTDIR=$(realpath ../dest)
