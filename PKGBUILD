@@ -8,7 +8,7 @@
 # Server = http://smoothware.net/$repo/$arch
 
 pkgname=subtitlecomposer
-pkgver=0.5.8
+pkgver=0.5.9
 pkgrel=1
 pkgdesc="A KDE subtitle editor"
 arch=('i686' 'x86_64')
@@ -25,9 +25,11 @@ depends+=('gstreamer')
 depends+=('xine-lib')
 makedepends=('extra-cmake-modules')
 install=${pkgname}.install
-optdepends=('mplayer: for MPlayer backend')
+optdepends=('mplayer: for MPlayer backend'
+            'ruby: for scripting'
+            'python: for scripting')
 source=("https://github.com/maxrd2/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('09b95b408af45224c88529b09594349f')
+md5sums=('e2ce6a23b58645401dd3df6f2cd27f1f')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
