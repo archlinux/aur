@@ -13,5 +13,5 @@ md5sums=('7bdefca83f0cd9be35e8d3d5795f25c8')
 
 package() {
 	cd "$srcdir/pymbar-$pkgver"
-    python2 setup.py install --root=$pkgdir || return 1
+    python2 setup.py install -O2 --root=$pkgdir || return 1
 }
