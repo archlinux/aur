@@ -8,7 +8,7 @@
 # 4. cp -va "VST3 SDK/." ~/SDKs/vstsdk2.4
 
 pkgname=radium
-pkgver=3.1.4
+pkgver=3.6.1
 pkgrel=1
 pkgdesc="A graphical music editor. A next generation tracker."
 arch=('i686' 'x86_64')
@@ -31,10 +31,11 @@ depends=(
 )
 makedepends=(
     'cmake'
+    'boost'
 )
 options=(!strip)
 source=("https://github.com/kmatheussen/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('0bb481835ebdc14c542839e4e66dc22b')
+md5sums=('1860ddce263f8eefaf5e32e80fe1c418')
 
 build() {
     cd "${pkgname}-${pkgver}"
