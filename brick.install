@@ -40,7 +40,7 @@ post_upgrade() {
 }
 
 pre_remove(){
-	rm /opt/bick/{libnss3.so.1d,libnssutil3.so.1d,libnspr4.so.0d,libplc4.so.0d,libsmime3.so.1d,libssl3.so.1d,libplds4.so.0d}
+	rm /opt/brick/{libnss3.so.1d,libnssutil3.so.1d,libnspr4.so.0d,libplc4.so.0d,libsmime3.so.1d,libssl3.so.1d,libplds4.so.0d}
 }
 
 post_remove() {

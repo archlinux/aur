@@ -2,7 +2,7 @@
 
 pkgname=brick
 pkgver=0.2.9.34
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source Bitrix24 messenger client"
 arch=('i686' 'x86_64')
 url="https://github.com/buglloc/brick"
