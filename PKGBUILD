@@ -6,8 +6,8 @@
 pkgname='gn-git'
 pkgdesc='Meta-build system which generates Ninja build files'
 pkgver=r694.feb0c39
-pkgrel=1
-license='BSD'
+pkgrel=2
+license=('BSD')
 arch=('x86_64' 'i686')
 depends=('glibc' 'gcc-libs')
 makedepends=('python2')
