@@ -1,60 +1,41 @@
 # Maintainer: Lukas Sabota <lukas@lwsabota.com>
-pkgbase=g13
-pkgname=$pkgbase-git
-pkgver=20150903
-pkgrel=2
+# Contributor: K. Hampf <khampf@users.sourceforge.net>
+
+pkgbase="g13"
+pkgname="g13-git"
+pkgver=20160120
+pkgrel=1
 pkgdesc="Userspace driver for the Logitech G13 Keyboard"
 arch=('x86_64' 'i686')
 url="https://github.com/ecraven/g13"
 license=('unknown')
-groups=()
 depends=('boost-libs')
 makedepends=('git' 'boost')
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-source=()
-noextract=()
-
-_gitroot="https://github.com/ecraven/g13"
-
+source=("${pkgname}::git://github.com/ecraven/g13")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd $pkgbase
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${pkgname}"
+  local desc=$(git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
+  if [ -z "$desc" ]; then
+    # date of last commit as YYYYMMDD
+    git log -1 --date=format:%Y%m%d --format=%cd
+  fi
 }
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [ -d $pkgbase ] ; then
-    cd $pkgbase && git pull origin
-    msg "The local files are updated."
-  else
-    git clone $_gitroot $pkgbase
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting make..."
-
-  rm -rf "$srcdir/$pkgbase-build"
-  git clone "$srcdir/$pkgbase" "$srcdir/$pkgbase-build"
-  cd "$srcdir/$pkgbase-build"
-
-  #
-  # BUILD HERE
-  #
-
+  cd "${pkgname}"
   make
 }
 
 package() {
-  cd "$srcdir/$pkgbase-build"
-  mkdir -p ${pkgdir}/usr/bin
-  cp g13d ${pkgdir}/usr/bin
+  cd "${pkgname}"
+  install -d -m755 "${pkgdir}/usr/bin"
+  install -D -m755 g13d "${pkgdir}/usr/bin"
+  install -D -m755 pbm2lpbm "${pkgdir}/usr/bin"
+  install -d -m755 "${pkgdir}/usr/share/doc/${pkgname}"
+  install -D -m644 README.md g13.png g13.svg "${pkgdir}/usr/share/doc/${pkgname}"
+  install -d -m755 "${pkgdir}/usr/share/doc/${pkgname}/examples"
+  install -D -m644 91-g13.rules clock.sh *.lpbm *.bind "${pkgdir}/usr/share/doc/${pkgname}/examples"
 } 
 
