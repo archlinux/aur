@@ -22,7 +22,7 @@ build(){
 package(){
   cd $srcdir/$pkgname-$pkgver
   make DESTDIR=$pkgdir install
-  mkdir -p ${pkgdir}/usr/local/share/
+  #mkdir -p ${pkgdir}/usr/local/share/
   #ln -s ${pkgdir}/usr/share/sigrok-firmware ${pkgdir}/usr/local/share/sigrok-firmware
   #ln -s /usr/local/share/sigrok-firmware $pkgdir/usr/share/sigrok-firmware
 }
