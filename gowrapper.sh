@@ -43,8 +43,8 @@ case "$GOOS" in
 				export CXX=x86_64-unknown-linux-gnu-g++ 
 				;;
 			386)
-				export CC=x86_64-unknown-linux-gnu-gcc -m32 -march=i686 
-				export CXX=x86_64-unknown-linux-gnu-g++ -m32 -march=i686 
+				export CC="x86_64-unknown-linux-gnu-gcc -m32 -march=i686"
+				export CXX="x86_64-unknown-linux-gnu-g++ -m32 -march=i686"
 				;;
 		esac
 		;;
