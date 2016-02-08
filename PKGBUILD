@@ -12,5 +12,5 @@ md5sums=('c4a550ac1bf983d4286909ffc2e6ebd0')
 
 package() {
   cd "$srcdir/alchemical-analysis-${pkgver}"
-    python2 setup.py install --root=$pkgdir || return 1
+    python2 setup.py install -O2 --root=$pkgdir || return 1
 }
