@@ -1,6 +1,6 @@
 pkgbase = zsh-autosuggestions-git
 	pkgdesc = Fish shell like fast/unobtrusive autosuggestions for zsh
-	pkgver = 0.2.1.92.7a00bfa
+	pkgver = 0.2.1.101.f154d25
 	pkgrel = 1
 	url = https://github.com/tarruda/zsh-autosuggestions
 	install = zsh-autosuggestions.install
