@@ -3,14 +3,14 @@
 #Former maintainer: Gui||aume <michaudg at gmail.com>
 
 pkgname=ceph-deploy
-pkgver=1.5.30
+pkgver=1.5.31
 pkgrel=1
 arch=(any)
 pkgdesc="Deploy Ceph with minimal infrastructure, using just SSH access"
 url=http://ceph.com
 license=(custom)
-source=(git://github.com/ceph/ceph-deploy.git#tag=v$pkgver)
-sha256sums=(SKIP)
+source=(${pkgname}-${pkgver}.tar.gz::https://codeload.github.com/ceph/${pkgname}/tar.gz/v${pkgver})
+sha256sums=("3fa7ac18ccc80830c1a6544a87dcda18804ec51de83cabc2c097dadcaca7ad7a")
 depends=(python2 python2-pushy)
 makedepends=(git python2-setuptools)
 
