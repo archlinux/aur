@@ -3,7 +3,7 @@
 pkgbase=(virtualbox-luca020400-modules)
 pkgname=(virtualbox-luca020400-host-modules virtualbox-luca020400-guest-modules)
 pkgver=5.0.14
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='http://virtualbox.org'
 license=('GPL')
@@ -30,11 +30,11 @@ package_virtualbox-luca020400-host-modules() {
   depends=('linux-luca020400>=4.4')
   install=host.install
 
-  install -dm755 "$pkgdir/usr/lib/modules/$_extramodules"
+  install -dm755 "$pkgdir/usr/lib/modules/${_extramodules}"
   cd "dkms/vboxhost/$pkgver/$_kernver/$CARCH/module"
-  install -m644 * "$pkgdir/usr/lib/modules/$_extramodules"
+  install -m644 * "$pkgdir/usr/lib/modules/${_extramodules}"
   find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
-  sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='$_extramodules'/" "$startdir/host.install"
+  sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='${_extramodules}'/" "$startdir/host.install"
 }
 
 package_virtualbox-luca020400-guest-modules() {
@@ -44,9 +44,9 @@ package_virtualbox-luca020400-guest-modules() {
   depends=('linux-luca020400>=4.4')
   install=guest.install
 
-  install -dm755 "$pkgdir/usr/lib/modules/$_extramodules"
+  install -dm755 "$pkgdir/usr/lib/modules/${_extramodules}"
   cd "dkms/vboxguest/$pkgver/$_kernver/$CARCH/module"
-  install -m644 * "$pkgdir/usr/lib/modules/$_extramodules"
+  install -m644 * "$pkgdir/usr/lib/modules/${_extramodules}"
   find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
-  sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='$_extramodules'/" "$startdir/guest.install"
+  sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='${_extramodules}'/" "$startdir/guest.install"
 }
