@@ -17,20 +17,6 @@ build() {
 	export MACOSX_DEPLOYMENT_TARGET=10.6
 	cd luajit-2.0
 
-	make amalg CC="gcc" CROSS=i386-apple-darwin14- TARGET_SYS=OSX BUILDMODE=static
-	mkdir -p ../output/lib/darwin-386
-	cp src/libluajit.a -t ../output/lib/darwin-386
-	ln -sf libluajit.a ../output/lib/darwin-386/liblua5.1.a
-	ln -sf libluajit.a ../output/lib/darwin-386/liblua.a
-	make clean
-
-	make amalg CC="gcc" CROSS=x86_64-apple-darwin14- TARGET_SYS=OSX BUILDMODE=static
-	mkdir -p ../output/lib/darwin-amd64
-	cp src/libluajit.a -t ../output/lib/darwin-amd64
-	ln -sf libluajit.a ../output/lib/darwin-amd64/liblua5.1.a
-	ln -sf libluajit.a ../output/lib/darwin-amd64/liblua.a
-	make clean
-
 	make amalg CC="gcc -m32" CROSS=i686-w64-mingw32- TARGET_SYS=Windows BUILDMODE=static
 	mkdir -p ../output/lib/windows-386
 	cp src/libluajit.a -t ../output/lib/windows-386
@@ -46,6 +32,20 @@ build() {
 	make clean
 
 	export PATH=/opt/go-cross/osx/bin:/opt/go-cross/ndk-x86/bin:/opt/go-cross/ndk-arm64/bin:/opt/go-cross/ndk-arm/bin:$PATH
+
+	make amalg CC="gcc" CROSS=i386-apple-darwin14- TARGET_SYS=OSX BUILDMODE=static
+	mkdir -p ../output/lib/darwin-386
+	cp src/libluajit.a -t ../output/lib/darwin-386
+	ln -sf libluajit.a ../output/lib/darwin-386/liblua5.1.a
+	ln -sf libluajit.a ../output/lib/darwin-386/liblua.a
+	make clean
+
+	make amalg CC="gcc" CROSS=x86_64-apple-darwin14- TARGET_SYS=OSX BUILDMODE=static
+	mkdir -p ../output/lib/darwin-amd64
+	cp src/libluajit.a -t ../output/lib/darwin-amd64
+	ln -sf libluajit.a ../output/lib/darwin-amd64/liblua5.1.a
+	ln -sf libluajit.a ../output/lib/darwin-amd64/liblua.a
+	make clean
 
 	make amalg HOST_CC="gcc -m32" CC="gcc -fPIC" CROSS=arm-linux-androideabi- TARGET_SYS=Linux BUILDMODE=static
 	mkdir -p ../output/lib/android-386
