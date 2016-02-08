@@ -2,7 +2,7 @@
 
 pkgname=qownnotes-pbek
 pkgver=0.95
-tag="2b4c63462362fe1724891e484a04ca98e31bab4c"
+tag="597bdc74ee5f838176d5941f00bf3b959a31619a"
 pkgrel=1
 pkgdesc="Open source notepad and todo list manager with markdown support and ownCloud integration"
 arch=('i686' 'x86_64')
