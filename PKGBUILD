@@ -2,15 +2,15 @@
 # Contributor: erm67
 # Contributor: JD Steffen
 pkgname=hexen2
-pkgver=1.5.6
-_gamecodever=1.28
-pkgrel=2
+pkgver=1.5.7
+_gamecodever=1.29
+pkgrel=1
 pkgdesc="Hammer of Thyrion: A cross-platform port of Raven Software's Hexen II source based on an older linux port, Anvil of Thyrion"
 arch=('i686' 'x86_64')
 url="http://uhexen2.sourceforge.net/"
 license=('GPL2')
-depends=('gtk2' 'libmad' 'libvorbis' 'sdl>=1.2.4')
-makedepends=('nasm')
+depends=('bash' 'libmad' 'libvorbis' 'sdl>=1.2.4')
+makedepends=('libmad' 'libvorbis' 'nasm')
 provides=('hexenworld')
 install=hexen2.install
 source=(http://downloads.sourceforge.net/uhexen2/hexen2source-${pkgver}.tgz \
@@ -18,11 +18,12 @@ source=(http://downloads.sourceforge.net/uhexen2/hexen2source-${pkgver}.tgz \
 	      http://downloads.sourceforge.net/uhexen2/hexenworld-pakfiles-0.15.tgz \
 	      hexen2.desktop \
 	      hexen2.sh)
-sha256sums=('4cf9a32aeb521076c2a6ee0d6a14d98ba27706403360a01e93b4754eb9d7619d'
-            '1b7934f2d22fff1b43621e6476cf34466cc943ffba2ee0b20f44f21aa972768a'
+sha256sums=('cdba2b9f0c24260bb06cfead8dfd3a01d9fa924b55bfaa84f79cd874bb69bbd0'
+            '7649c0ba74ed43dc22c2d9cde300326d0a14e3e6c641b2739a6ebe058d567ffe'
             '49462cdf984deee7350d03c7d192d1c34d682647ffc9d06de4308e0a7c71c4d9'
             'f3130b7aa64ffb0c041429ea4f8c32de338fd892f16b9f89dd470d6cc7f757cf'
             'c592f675cc04fba0d6c3608d41dc1aed7923e66c49e9ee598ff7f77f7218c812')
+
 build() {
 
   cd $srcdir/hexen2source-$pkgver
@@ -36,6 +37,7 @@ build() {
   make -C engine/hexen2/server
   # HexenWorld binaries
   make -C engine/hexenworld/server
+  make -s -C engine/hexenworld/client localclean
   make -C engine/hexenworld/client hw
   make -s -C engine/hexenworld/client localclean
   make -C engine/hexenworld/client glhw
@@ -45,17 +47,14 @@ build() {
   # Build h2patch
   make -C h2patch
 
-  # Launcher binaries
-  make -C launcher 
-
   # Build the hcode compiler
   make -C utils/hcc
   # Build the game-code
-  utils/hcc/hcc -src ../gamecode-${_gamecodever}/hc/h2
-  utils/hcc/hcc -src ../gamecode-${_gamecodever}/hc/h2 -name progs2.src
-  utils/hcc/hcc -src ../gamecode-${_gamecodever}/hc/portals -oi -on
-  utils/hcc/hcc -src ../gamecode-${_gamecodever}/hc/hw -oi -on
-  #utils/hcc/hcc -src ../gamecode-${_gamecodever}/hc/siege -oi -on
+  utils/hcc/hcc -src ../gamecode-${_gamecodever}/hc/h2 -os
+  utils/hcc/hcc -src ../gamecode-${_gamecodever}/hc/h2 -os -name progs2.src
+  utils/hcc/hcc -src ../gamecode-${_gamecodever}/hc/portals -os -oi -on
+  utils/hcc/hcc -src ../gamecode-${_gamecodever}/hc/hw -os -oi -on
+  #utils/hcc/hcc -src ../gamecode-${_gamecodever}/hc/siege -os -oi -on
 
 }
 
@@ -71,10 +70,17 @@ package() {
   install -D -m755 engine/hexenworld/server/hwsv ${pkgdir}/opt/$pkgname/hwsv
   install -D -m755 hw_utils/hwmaster/hwmaster ${pkgdir}/opt/$pkgname/hwmaster
   install -D -m755 h2patch/h2patch ${pkgdir}/opt/$pkgname/h2patch
-  install -D -m755 launcher/h2launcher ${pkgdir}/opt/$pkgname/h2launcher
   
+  # Install the run script and make symlinks to it
   mkdir -p ${pkgdir}/usr/bin
-  install -D -m755 ../../hexen2.sh ${pkgdir}/usr/bin/$pkgname
+  sed -i 's|^hexen2dir=.*$|hexen2dir=/opt/hexen2|g' scripts/hexen2-run.sh
+  install -D -m755 scripts/hexen2-run.sh ${pkgdir}/usr/bin/hexen2-run.sh
+  ln -s hexen2-run.sh ${pkgdir}/usr/bin/glhexen2
+  ln -s hexen2-run.sh ${pkgdir}/usr/bin/hexen2
+  ln -s hexen2-run.sh ${pkgdir}/usr/bin/h2ded
+  ln -s hexen2-run.sh ${pkgdir}/usr/bin/glhwcl
+  ln -s hexen2-run.sh ${pkgdir}/usr/bin/hwcl
+  ln -s hexen2-run.sh ${pkgdir}/usr/bin/hwsv
 
   # Install the cd-rip scripts
   install -D -m755 scripts/cdrip_hexen2.sh ${pkgdir}/opt/$pkgname/cdrip_hexen2.sh
@@ -94,7 +100,6 @@ package() {
   install -D -m644 docs/CHANGES.old ${pkgdir}/opt/$pkgname/docs/CHANGES.old
   install -D -m644 docs/README.music ${pkgdir}/opt/$pkgname/docs/README.music
   install -D -m644 docs/README.3dfx ${pkgdir}/opt/$pkgname/docs/README.3dfx
-  install -D -m644 docs/README.launcher ${pkgdir}/opt/$pkgname/docs/README.launcher
   install -D -m644 docs/README.hwcl ${pkgdir}/opt/$pkgname/docs/README.hwcl
   install -D -m644 docs/README.hwsv ${pkgdir}/opt/$pkgname/docs/README.hwsv
   install -D -m644 docs/README.hwmaster ${pkgdir}/opt/$pkgname/docs/README.hwmaster
@@ -121,6 +126,8 @@ package() {
   install -D -m644 gamecode-${_gamecodever}/res/portals/default.cfg ${pkgdir}/opt/$pkgname/portals/default.cfg
   mkdir -p ${pkgdir}/opt/$pkgname/hw/
   install -D -m644 gamecode-${_gamecodever}/hc/hw/hwprogs.dat ${pkgdir}/opt/$pkgname/hw/hwprogs.dat
+  install -D -m644 gamecode-${_gamecodever}/res/hw/mapcycle.cfg ${pkgdir}/opt/$pkgname/hw/mapcycle.cfg
+  install -D -m644 gamecode-${_gamecodever}/res/hw/server.cfg ${pkgdir}/opt/$pkgname/hw/server.cfg
   install -D -m644 gamecode-${_gamecodever}/res/hw/strings.txt ${pkgdir}/opt/$pkgname/hw/strings.txt
   install -D -m644 gamecode-${_gamecodever}/res/hw/default.cfg ${pkgdir}/opt/$pkgname/hw/default.cfg
   install -D -m644 hw/pak4.pak ${pkgdir}/opt/$pkgname/hw/pak4.pak
