@@ -1,7 +1,7 @@
 pkgname=perl-pgtap
 pkgver=3.31
 pkgrel=1
-pkgdesc='This packages the Foo-Bar distribution, containing the Foo::Bar module!'
+pkgdesc='Stream TAP from pgTAP test scripts'
 _dist=TAP-Parser-SourceHandler-pgTAP
 arch=('any')
 url="http://pgtap.org"
