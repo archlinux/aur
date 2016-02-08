@@ -3,7 +3,7 @@
 
 pkgname=sigrok-firmware-fx2lafw
 pkgver=0.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="An open-source firmware for Cypress FX2"
 arch=(any)
 url="http://sigrok.org/wiki/Fx2lafw"
@@ -23,6 +23,6 @@ package(){
   cd $srcdir/$pkgname-$pkgver
   make DESTDIR=$pkgdir install
   mkdir -p ${pkgdir}/usr/local/share/
-  ln -s ${pkgdir}/usr/share/sigrok-firmware ${pkgdir}/usr/local/share/sigrok-firmware
+  #ln -s ${pkgdir}/usr/share/sigrok-firmware ${pkgdir}/usr/local/share/sigrok-firmware
   #ln -s /usr/local/share/sigrok-firmware $pkgdir/usr/share/sigrok-firmware
 }
