@@ -2,13 +2,14 @@
 _tarname='Delorean'
 pkgname='python-delorean'
 pkgdesc='Library providing a more convenient use of datetimes'
-pkgver='0.5.0'
+pkgver='0.6.0'
 pkgrel='1'
+url='http://delorean.readthedocs.org/'
 license=('custom:MIT')
 arch=('any')
 depends=('python-pytz' 'python-dateutil')
 source=("https://pypi.python.org/packages/source/D/Delorean/${_tarname}-${pkgver}.tar.gz")
-sha512sums=('0206e2953f9f0f5ea151b1d0ab34549249e42fffb4a92aa7a5024c15b21a6aeb310ff9c06c0bdc3eb76d887587d13dadbd3c8588504ccf094c864923b3307fb6')
+sha512sums=('ceb9adbed3086b4ae510d5aa2cc2b2a23f56bfb5e67dff6b34b94c977f58de2745ef736421a4650f98486cb5e9e79c78e95954372620f6f240e0f8da4a6c9d30')
 
 package () {
 	cd "${_tarname}-${pkgver}"
