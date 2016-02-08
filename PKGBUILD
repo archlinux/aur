@@ -6,21 +6,12 @@ pkgdesc="Yltra Flat is an icon theme build upon Ultra Flat icons"
 arch=('any')
 url="https://github.com/erikdubois/yltra-flat-icon-theme"
 license=('Attribution-NonCommercial-ShareAlike 4.0 International Public License')
-#groups=()
-#depends=()
 makedepends=('git')
 provides=('yltra-flat-icon-git')
-#conflicts=()
-#replaces=()
-#backup=()
-options=('!strip')
+options=(!strip !emptydirs)
 install='yltra-flat-icon-git.install'
-#changelog=
-#source=($pkgname-$pkgver.tar.gz)
 source=('yltra-flat-icon-theme::git+https://github.com/erikdubois/yltra-flat-icon-theme.git')
-#noextract=()
 sha256sums=('SKIP')
-#md5sums=() #autofill using updpkgsums
 
 package() {
   cd yltra-flat-icon-theme
