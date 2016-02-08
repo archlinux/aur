@@ -18,5 +18,5 @@ pkgver() {
 
 package() {
   cd "$srcdir/alchemical-analysis"
-    python2 setup.py install --root=$pkgdir || return 1
+    python2 setup.py install -O2 --root=$pkgdir || return 1
 }
