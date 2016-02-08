@@ -1,8 +1,8 @@
 pkgname='gst-bt-git'
-pkgver=r66.f1085b6
-pkgrel=1
+pkgver=r70.5a088b7
+pkgrel=2
 pkgdesc='GStreamer plug-in which provides BitTorrent sources'
-license='LGPL'
+license=('LGPL')
 url='https://github.com/turran/gst-bt'
 source=("${pkgname}::git+${url}.git")
 sha1sums=('SKIP')
