@@ -1,6 +1,6 @@
 # Maintainer: Ben Wolsieffer <benwolsieffer@gmail.com>
-pkgname=qdriverstation-git
-pkgver=r413.b27ba5b
+pkgname=qdriverstation
+pkgver=0.14
 pkgrel=1
 pkgdesc="Drive your FRC robot with your phone or tablet!"
 arch=('i686' 'x86_64')
@@ -14,31 +14,28 @@ conflicts=("${pkgname%-git}")
 replaces=()
 backup=()
 options=()
-source=('qdriverstation::git+https://github.com/WinT-3794/QDriverStation.git')
+source=("https://github.com/WinT-3794/QDriverStation/archive/${pkgver}.tar.gz")
 noextract=()
-md5sums=('SKIP')
+md5sums=('371136d9ad505be4acf065caba019f25')
 
-pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+extractdir="QDriverStation-${pkgver}"
 
 prepare() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/${extractdir}"
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/${extractdir}"
 	qmake-qt5
 	make
 }
 
 check() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/${extractdir}"
 	make -k check
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/${extractdir}"
 	make INSTALL_ROOT="$pkgdir/" install
 }
