@@ -1,12 +1,13 @@
 # Maintainer: Roman Beslik <me@beroal.in.ua>
 pkgname=x11-bell-gst-git
 pkgver=r2.27459b6
-pkgrel=1
+pkgrel=2
 pkgdesc="It connects to a X11 server and plays SOUND_FILE by GStreamer when the XkbBellNotify event occurs."
 arch=('i686' 'x86_64')
 url="https://github.com/beroal/x11-bell-gst"
 license=('BSD')
 makedepends=('git')
+depends=('gstreamer>=1' 'libxcb')
 provides=('x11-bell-gst')
 conflicts=('x11-bell-gst')
 source=('git://github.com/beroal/x11-bell-gst.git')
