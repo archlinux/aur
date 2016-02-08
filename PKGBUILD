@@ -1,9 +1,9 @@
 pkgname='statsite'
 pkgdesc='A C implementation of StatsD'
 pkgver='0.7.1'
-pkgrel='1'
+pkgrel='2'
 url='http://armon.github.io/statsite'
-license='custom:BSD'
+license=('custom:BSD')
 makedepends=('scons')
 depends=('glibc')
 optdepends=('python: InfluxDB, Graphite, Ganglia, and Librato sinks'
