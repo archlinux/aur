@@ -13,9 +13,9 @@ _log_path="/var/log/${_pkgname}"
 
 
 pkgname=nginx-mainline-libressl
-pkgver=1.9.6
+pkgver=1.9.10
 pkgrel=1
-librever=2.2.4
+librever=2.3.2
 pkgdesc="lightweight HTTP server, statically linked against LibreSSL."
 arch=('i686' 'x86_64')
 
@@ -28,7 +28,7 @@ makedepends=(
 
 url="http://nginx.org"
 license=('custom')
-conflicts=('nginx' 'nginx-libressl' 'nginx-unstable' 'nginx-svn' 'nginx-devel' 'nginx-custom-dev' 'nginx-full') 
+conflicts=('nginx' 'nginx-libressl' 'nginx-unstable' 'nginx-svn' 'nginx-devel' 'nginx-custom-dev' 'nginx-full')
 provides=('nginx')
 backup=("${_conf_path}/nginx.conf"
 	"${_conf_path}/koi-win"
@@ -51,8 +51,8 @@ source=( "nginx.conf"
 sha256sums=('8d8e314da10411b29157066ea313fc080a145d2075df0c99a1d500ffc7e8b7d1'
             'adcf6507abb2d4edbc50bd92f498ba297927eed0460d71633df94f79637aa786'
             '225228970d779e1403ba4314e3cd8d0d7d16f8c6d48d7a22f8384db040eb0bdf'
-            'ed501fc6d0eff9d3bc1049cc1ba3a3ac8c602de046acb2a4c108392bbfa865ea'
-            '6b409859be8654afc3862549494e097017e64c8d167f12584383586306ef9a7e')
+            'fb14d76844cab0a5a0880768be28965e74f9956790f618c454ef6098e26631d9'
+            '80f45fae4859f161b1980cad846d4217417d0c89006ad29c0ea8c88da564a96a')
 
 build() {
 	local _src_dir="${srcdir}/${_pkgname}-${pkgver}"
