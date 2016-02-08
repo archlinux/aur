@@ -2,10 +2,10 @@
 pkgname='fmsx'
 pkgdesc='Portable MSX/MSX2/MSX2+ emulator'
 pkgver='4.4'
-pkgrel='1'
+pkgrel='2'
 _dlname="fMSX${pkgver//./}"
 url='http://fms.komkon.org/fMSX'
-license='custom'
+license=('custom')
 arch=('i686' 'x86_64')
 depends=('libxext' 'bash' 'zlib')
 makedepends=('sed')
