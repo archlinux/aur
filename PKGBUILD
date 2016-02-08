@@ -1,6 +1,6 @@
 pkgname=leleleplayer-git
 _gitname=leleleplayer
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=2
 pkgdesc="An audio player wich can find similar songs in your library"
 arch=('i686' 'x86_64')
