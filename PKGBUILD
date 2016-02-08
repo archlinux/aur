@@ -4,7 +4,7 @@
 
 pkgname=lib32-gmp4
 pkgver=4.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Legacy version of gmp. Provides libgmp.so.3 (32 bit)"
 arch=('x86_64')
 url="http://gmplib.org/"
@@ -12,7 +12,7 @@ depends=('lib32-gcc-libs' 'sh' 'lib32-gmp')
 makedepends=('gcc-multilib')
 license=('LGPL3')
 options=('!libtool')
-source=(https://gmplib.org/download/gmp/gmp-${pkgver}.tar.bz2)
+source=(https://gmplib.org/download/gmp/archive/gmp-${pkgver}.tar.bz2)
 sha256sums=('936162c0312886c21581002b79932829aa048cfaf9937c6265aeaa14f1cd1775')
 sha512sums=('2e0b0fd23e6f10742a5517981e5171c6e88b0a93c83da701b296f5c0861d72c19782daab589a7eac3f9032152a0fc7eff7f5362db8fccc4859564a9aa82329cf')
 
