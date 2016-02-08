@@ -12,7 +12,7 @@ conflicts=(go)
 provides=(go=1.6)
 source=("$pkgname::git+https://github.com/golang/go.git" "osxcross::git+https://github.com/tpoechtrager/osxcross.git" "https://www.dropbox.com/s/yfbesd249w10lpc/MacOSX10.10.sdk.tar.xz" "gowrapper.sh")
 noextract=("MacOSX10.10.sdk.tar.xz")
-sha256sums=('SKIP' 'SKIP' '631b4144c6bf75bf7a4d480d685a9b5bda10ee8d03dbf0db829391e2ef858789' '74c82ade084581190b868a8c8077514a2c14f42a70cd49d9369548dab14f0926')
+sha256sums=('SKIP' 'SKIP' '631b4144c6bf75bf7a4d480d685a9b5bda10ee8d03dbf0db829391e2ef858789' '55f4a443cd63e7a685f95aaef4a8cd319b57607440b8373a040a7d0096af39c3')
 
 build() {
   cd "$srcdir/osxcross"
