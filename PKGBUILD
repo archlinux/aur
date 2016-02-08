@@ -1,19 +1,21 @@
+# $Id: PKGBUILD 160534 2016-02-07 18:26:19Z anatolik $
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=tarantool-git
-pkgver=1.6.7.r593.gc17fa86
+pkgver=1.6.8.r459
 pkgrel=1
-pkgdesc='an in-memory database designed to store the most volatile and highly accessible web content'
+pkgdesc='Lua application server integrated with a database management system'
 arch=(i686 x86_64)
 url='http://www.tarantool.org'
 license=(BSD)
-depends=(readline ncurses zlib)
+depends=(readline ncurses zlib libyaml)
+makedepends=(git cmake systemd)
+checkdepends=(python2-daemon python2-gevent python2-tarantool)
 conflicts=(tarantool)
 provides=(tarantool)
 replaces=(tarantool)
-makedepends=(git cmake)
-checkdepends=(python2-daemon python2-tarantool python2-gevent python2-yaml)
-source=(git://github.com/tarantool/tarantool.git
+install=tarantool.install
+source=(git://github.com/tarantool/tarantool.git#branch=1.6
         git://github.com/tarantool/luajit.git
         git://github.com/tarantool/msgpuck.git
         git://github.com/rtsisyk/luafun.git
@@ -30,7 +32,7 @@ sha1sums=('SKIP'
 
 pkgver() {
   cd tarantool
-  git describe | sed 's/^v//; s/-/.r/; s/-/./'
+  git describe | sed 's/^v//; s/-/.r/; s/-.*//'
 }
 
 build() {
@@ -49,11 +51,15 @@ build() {
 
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_SYSCONFDIR=/etc/tarantool \
-    -DCMAKE_INSTALL_LOCALSTATEDIR=/var \
+    -DCMAKE_INSTALL_BINDIR=/usr/bin \
+    -DCMAKE_INSTALL_SYSCONFDIR=/etc \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_SKIP_RPATH=ON \
+    -DENABLE_BUNDLED_LIBYAML:BOOL=OFF \
+    -DENABLE_BACKTRACE:BOOL=ON \
+    -DWITH_SYSTEMD:BOOL=ON \
+    -DENABLE_DIST:BOOL=ON \
     .
 
   make
@@ -69,5 +75,5 @@ package() {
   make install DESTDIR="$pkgdir"
 
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  rm "$pkgdir/usr/share/doc/tarantool/LICENSE"
+  rm -r "$pkgdir/var/run"
 }
