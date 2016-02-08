@@ -2,7 +2,7 @@
 
 pkgname=jugglinglab
 pkgver=0.6.2
-pkgrel=3
+pkgrel=4
 pkgdesc="An application for creating and animating juggling patterns."
 arch=('any')
 url="http://jugglinglab.sourceforge.net/"
@@ -19,7 +19,9 @@ package() {
    cd $srcdir/JugglingLab/
    install -m644 bin/JugglingLab.jar $pkgdir/usr/share/jugglinglab/
    sed -i 's|bin/JugglingLab.jar|/usr/share/jugglinglab/JugglingLab.jar|g' ./JugglingLab
+   sed -i 's|JugglingLab.jar|/usr/share/jugglinglab/JugglingLab.jar|;1s|#!/bin/csh -f|#!/bin/sh|' ./bin/j2
    install -m755 JugglingLab $pkgdir/usr/bin/jugglinglab
+   install -m755 bin/j2 $pkgdir/usr/bin/jugglinglab-generator
    install -m644 COPYING.txt $pkgdir/usr/share/jugglinglab/
    install -m644 README.html $pkgdir/usr/share/jugglinglab/
    install -m644 patterns/* $pkgdir/usr/share/jugglinglab/patterns/
