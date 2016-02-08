@@ -1,9 +1,9 @@
 # Maintainer: Forest Crossman <cyrozap at gmail dot com>
 
 pkgname=greenpak-designer-dev
-pkgver=5.02
+pkgver=5.03
 pkgrel=4
-pkgdesc="GreenPAK1-4 Designer"
+pkgdesc="GreenPAK1-5 Designer"
 arch=('i686' 'x86_64')
 url="http://www.silego.com/softdoc/software.html"
 license=('custom')
@@ -11,8 +11,8 @@ depends=('desktop-file-utils' 'glu' 'gtk-update-icon-cache' 'libusb' 'qtwebkit' 
 options=('!strip')
 install=${pkgname}.install
 
-source=("http://www.silego.com/uploads/resources/GP1-4_Designer_v${pkgver}.00${pkgrel}_LNX_Setup.zip")
-sha256sums=('602252572a31681bfc615e9e580779cda7137e965198bd3255665e32fe9a7ef5')
+source=("http://www.silego.com/uploads/resources/GP1-5_Designer_v${pkgver}.00${pkgrel}_LNX_Setup.zip")
+sha256sums=('6fc639ed9c1729d664740608fd33f13d6e140da2519b0c428dc410a3cba96efe')
 
 if [[ $CARCH == 'i686' ]]; then
   _arch='i386'
@@ -22,7 +22,7 @@ fi
 
 package() {
   # Extract the proper package
-  ar p greenpak-designer-dev_${pkgver}-${pkgrel}_${_arch}.deb data.tar.xz | \
+  ar p ${pkgname}_${pkgver}-${pkgrel}_${_arch}.deb data.tar.xz | \
     tar -xJ --exclude="usr/share/doc-base" --exclude="usr/share/lintian" -C "${pkgdir}"/
 
   # Shuffle some files
