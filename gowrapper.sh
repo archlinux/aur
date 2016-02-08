@@ -8,7 +8,7 @@ esac
 export CGO_ENABLED=1
 export PATH=/opt/go-cross/osx/bin:/opt/go-cross/ndk-x86/bin:/opt/go-cross/ndk-arm64/bin:/opt/go-cross/ndk-arm/bin:$PATH
 export GOOS=${GOOS-linux}
-export GOARCH=${$GOARCH-amd64}
+export GOARCH=${GOARCH-amd64}
 export CGO_LDFLAGS="-L/opt/go-cross/lib/$GOOS-$GOARCH"
 export CGO_CFLAGS="-I/opt/go-cross/include/$GOOS-$GOARCH"
 case "$GOOS" in
