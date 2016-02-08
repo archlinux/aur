@@ -6,23 +6,26 @@
 # SigLevel = PackageRequired
 # Server = http://smoothware.net/$repo/$arch
 
+# If dependencies 'mpv' and 'xine-lib' are not installed 
+# they can be removed from depends line, and 
+# package will built without mpv/xine support
+
 pkgname=subtitlecomposer-git
-pkgver=v0.5.8
+pkgver=0.5.8.3.gd340bf2
 pkgrel=1
 pkgdesc="A KDE subtitle editor - nightly build"
 arch=('i686' 'x86_64')
 url="https://github.com/maxrd2/subtitlecomposer"
 license=('GPL')
-depends=('kdelibs' 'gettext')
-makedepends=('cmake' 'automoc4' 'git')
+depends=('kdebase-runtime' 'kross' 'mpv' 'xine-lib')
+makedepends=('cmake' 'automoc4' 'git' 'gettext')
 conflicts=('subtitlecomposer')
 install='subtitlecomposer.install'
 optdepends=(
-	'mpv: for MPV backend'
 	'mplayer: for MPlayer backend'
 	'mplayer2: for MPlayer backend'
-	'gstreamer: for GStreamer backend'
-	'xine-lib: for Xine backend'
+	'ruby: for scripting'
+	'python: for scripting'
 	)
 source=('git+https://github.com/maxrd2/subtitlecomposer.git')
 md5sums=('SKIP')
@@ -30,7 +33,7 @@ md5sums=('SKIP')
 pkgver() {
 	export APP_VER=${pkgver}
 	cd ${srcdir}/subtitlecomposer
-	git describe --always | sed 's|-|.|g'
+	git describe --always | sed 's|-|.|g' | sed -e 's/^v//g'
 }
 
 build() {
