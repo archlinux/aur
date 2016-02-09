@@ -1,9 +1,10 @@
 # Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
 # Contributor: rtfreedman  <rob<d0t>til<d0t>freedman< T>googlemail<d0t>com>
 # Contributor: Pyro Devil <p.devil@gmail.com>
+
 pkgname=exfat-dkms-git
 _gitname=exfat-git
-pkgver=156.42635ed
+pkgver=158.7f71834
 pkgrel=1 
 pkgdesc='Native (nofuse) kernel module for EXtendedFAT support - use with DKMS'
 url="https://github.com/dorimanx/exfat-nofuse"
