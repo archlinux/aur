@@ -11,7 +11,7 @@ url="https://dask.readthedocs.org/"
 license=('BSD')
 depends=('python' 'python-numpy' 'python-dill' 'python-pandas' 'python-toolz' 'python-psutil' 'python-pyzmq' 'python-bcolz' 'python-cloudpickle')
 makedepends=('python-setuptools')
-checkdepends=('python-nose' 'graphviz')
+checkdepends=('python-nose' 'python-pygraphviz') # python-cachey
 source=(https://pypi.python.org/packages/source/d/dask/dask-$pkgver.tar.gz)
 sha256sums=('ff27419e059715907afefe6cbcc1f8c748855c7a93be25be211dabcb689cee3b')
 
