@@ -20,13 +20,11 @@ pkgver() {
   git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 build() {
-  cd "${srcdir}/${_gitname}"
-  python setup.py install 
 }
 
 package() {
   cd "${srcdir}/${_gitname}"
-  python setup.py install --prefix=/usr --root=${pkgdir} -O1 --skip-build
+  python setup.py install --prefix=/usr --root=${pkgdir}
   
 }
 
