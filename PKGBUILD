@@ -3,8 +3,8 @@
 
 pkgname=python-bcolz
 _pkgname=bcolz
-pkgver=0.9.0
-pkgrel=2
+pkgver=0.12.1
+pkgrel=1
 pkgdesc="columnar and compressed data containers."
 arch=('any')
 url="https://bcolz.readthedocs.org/"
@@ -13,7 +13,7 @@ depends=('python' 'python-numpy')
 optdepends=('python-numexpr')
 makedepends=('python-setuptools')
 source=(https://pypi.python.org/packages/source/b/bcolz/bcolz-$pkgver.tar.gz)
-sha256sums=('086b1ad62accf6b45e9386edfa23ccc9f8a1feaec5803e7f39753139eb016a50')
+sha256sums=('a8dafa42cd4f3ca130ecb81f7e778204a12c2180c18fd570ef753de58ee7ddbd')
 
 package(){
   cd "$srcdir/$_pkgname-$pkgver"
