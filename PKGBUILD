@@ -2,11 +2,12 @@
 # Contributor: Eric Belanger <eric at archlinux.org>
 # Contributor: Daniel J Griffiths <ghost1227 at archlinux.us>
 # Contributor: Wesley Merkel <ooesili at gmail.com>
+# Contributor: sekret <sekret at posteo.se>
 
 _pkgname=htop
 pkgname=$_pkgname-solarized
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive process viewer with solarized patch"
 arch=('i686' 'x86_64')
 url="http://htop.sourceforge.net/"
@@ -41,7 +42,8 @@ build() {
       --enable-unicode \
       --enable-openvz \
       --enable-vserver \
-      --enable-cgroup
+      --enable-cgroup \
+      --enable-oom
 
   make
 }
