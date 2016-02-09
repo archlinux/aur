@@ -2,7 +2,7 @@
 
 _pkgname=youtube-viewer
 pkgname=gtk-youtube-viewer
-pkgver=3.2.0
+pkgver=3.2.0.7.g5ca0a15
 pkgrel=1
 pkgdesc="A Gtk2 application for searching and streaming videos from YouTube."
 arch=('any')
@@ -22,10 +22,10 @@ optdepends=(
             'perl-term-readline-gnu: for better STDIN support'
             'youtube-dl: for playing videos with encrypted signatures'
             'wget: for downloading videos with wget'
-            'mplayer: for playing the videos with MPlayer'
-            'vlc: for playing the videos with VLC'
-            'smplayer: for playing the videos with SMPlayer'
-            'mpv: for playing the videos with MPV (recommended)'
+            'mplayer: for playing videos with MPlayer'
+            'vlc: for playing videos with VLC'
+            'smplayer: for playing videos with SMPlayer'
+            'mpv: for playing videos with MPV (recommended)'
             )
 
 source=('git://github.com/trizen/youtube-viewer.git')
