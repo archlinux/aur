@@ -2,7 +2,7 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=zynaddsubfx-git
-pkgver=2.5.3.osx.r1.gb97f65d
+pkgver=2.5.3.r1.gb97f65d
 pkgrel=1
 pkgdesc="A powerful realtime, multi-timbral software synthesizer."
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ pkgver() {
   cd "${srcdir}/${pkgname}"
   git checkout ${_branch} --quiet
   ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --tags 2>/dev/null | sed 's/\osx.//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
