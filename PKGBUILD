@@ -1,0 +1,33 @@
+# Maintainer: Miodrag Tokić
+
+pkgname=watson
+pkgver=1.2.0
+pkgrel=1
+pkgdesc='A wonderful CLI to track your time!'
+arch=('any')
+url="https://tailordev.github.io/Watson/"
+license=('MIT')
+groups=()
+depends=('python' 'python-arrow' 'python-click' 'python-requests')
+makedepends=('python-setuptools')
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=(!emptydirs)
+
+source=("https://github.com/TailorDev/Watson/archive/${pkgver}.tar.gz")
+sha256sums=('3ef29a44c12e1b05f7af8569f90fa4cf110d2bc74b75ccadb74c45bb8efaad80')
+
+build() {
+    cd "$srcdir/Watson-${pkgver}"
+    sed -i '/pytest-runner/d' requirements.txt
+    python setup.py build
+}
+
+package() {
+    cd "$srcdir/Watson-${pkgver}"
+    install -D -m 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m 644 watson.completion "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+    python setup.py install --root="${pkgdir}" --optimize=1
+}
