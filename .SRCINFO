@@ -1,0 +1,18 @@
+pkgbase = python-pydstool-git
+	pkgdesc = PyDSTool is a sophisticated & integrated simulation and analysis environment for dynamical systems models of physical systems (ODEs, DAEs, maps, and hybrid systems).
+	pkgver = v0.90.2
+	pkgrel = 1
+	url = https://github.com/robclewley/pydstool
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = python>=3.3
+	depends = python-numpy
+	depends = python-scipy
+	provides = python-pydstool
+	source = pydstool::git+https://github.com/robclewley/pydstool.git
+	md5sums = SKIP
+
+pkgname = python-pydstool-git
+
