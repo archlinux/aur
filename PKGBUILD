@@ -1,28 +1,32 @@
 # Maintainer:  WorMzy Tykashi <wormzy.tykashi@gmail.com>
 # Contributor: artiom <a.mv at gmx dot fr>
+# Contributor: ilikenwf
+# Contributor: American_Jesus
 pkgname=palemoon-beta
-pkgver=26.0.0_goanna_beta4
+pkgver=26.1.0b1
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
 url="http://www.palemoon.org/"
 license=('MPL' 'GPL' 'LGPL')
-depends=('gtk2' 'dbus-glib' 'desktop-file-utils' 'libxt' 'mime-types' 'nss' 'alsa-lib')
-makedepends=('git' 'python2' 'autoconf2.13' 'unzip' 'zip' 'yasm' 'gstreamer0.10' 'gstreamer0.10-base-plugins')
+depends=('gtk2' 'dbus-glib' 'desktop-file-utils' 'libxt' 'mime-types' 'nss' 'alsa-lib' 'hunspell'
+         'nspr' 'libjpeg-turbo' 'zlib' 'bzip2' 'libpng' 'libevent' 'libvpx' 'startup-notification')
+makedepends=('git' 'python2' 'autoconf2.13' 'unzip' 'zip' 'yasm' 'gstreamer0.10' 'gstreamer0.10-base-plugins' 'libpulse')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libpulse: PulseAudio audio driver'
             'hunspell: spell checker and morphological analyzer'
-            'hyphen: library for hyphenation and justification')
+            'hyphen: library for hyphenation and justification'
+            'gstreamer0.10-bad-plugins'
+            'gstreamer0.10-good-plugins'
+            'gstreamer0.10-ugly-plugins')
 conflicts=('palemoon' 'palemoon-bin')
 install=palemoon.install
-# non-standard naming for goanna beta
-#source=(git+"https://github.com/MoonchildProductions/Pale-Moon#tag=$pkgver"
-source=(git+"https://github.com/MoonchildProductions/Pale-Moon#commit=e29fbaa43e1ad87774f5f7e3cd17e37fe61566f0"
+source=(git+"https://github.com/MoonchildProductions/Pale-Moon#tag=$pkgver"
         palemoon.desktop
         mozconfig.in)
 md5sums=('SKIP'
-         '32231f6e6a532021fd04c6d7b32f4270'
-         '9ff0a5a4cfa930148cb96612bed4fe09')
+         'ba2923c637c7324c2f5b151f0b22da6a'
+         'f518f022bd6bf4b57d0b01eaefeab161')
 
 prepare() {
   sed 's#%SRCDIR%#'"$srcdir"'#g' mozconfig.in > mozconfig
