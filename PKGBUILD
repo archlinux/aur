@@ -3,7 +3,7 @@
 # Based on [multilib]'s lib32-nvidia-utils: https://www.archlinux.org/packages/multilib/x86_64/lib32-nvidia-utils/
 
 pkgname=('lib32-nvidia-utils-beta' 'lib32-nvidia-libgl-beta' 'lib32-opencl-nvidia-beta')
-pkgver=361.18
+pkgver=361.28
 pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
@@ -12,7 +12,7 @@ makedepends=('pacman>=4.2.0')
 options=('!strip')
 _pkg="NVIDIA-Linux-x86-$pkgver"
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/$_pkg.run")
-md5sums_x86_64=('ade4f7d0a5631ff492088671bc303a0a')
+md5sums_x86_64=('d4fc7fcf1204a46f15733d7cc2711ad2')
 
 _create_links() {
   # create missing soname links
@@ -67,9 +67,9 @@ package_lib32-nvidia-libgl-beta() {
 
   # OpenGL (link)
   install -d "$pkgdir"/usr/lib32/
-  ln -s /usr/lib32/nvidia/libGL.so.1 "$pkgdir"/usr/lib32/libGL.so.1
-  ln -s libGL.so.1 "$pkgdir"/usr/lib32/libGL.so.$pkgver
-  ln -s libGL.so.1 "$pkgdir"/usr/lib32/libGL.so
+  ln -s /usr/lib32/nvidia/libGL.so.1.0.0 "$pkgdir"/usr/lib32/libGL.so.1.0.0
+  ln -s libGL.so.1.0.0 "$pkgdir"/usr/lib32/libGL.so.1
+  ln -s libGL.so.1.0.0 "$pkgdir"/usr/lib32/libGL.so
 
   # GLX (link)
   ln -s /usr/lib32/nvidia/libGLX.so.0 "$pkgdir"/usr/lib32/libGLX.so.0
@@ -106,9 +106,9 @@ package_lib32-nvidia-utils-beta() {
   cd $_pkg
 
   # OpenGL
-  install -Dm755 libGL.so.1 "$pkgdir"/usr/lib32/nvidia/libGL.so.1
-  install -Dm755 libnvidia-glcore.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-glcore.so.$pkgver
+  install -Dm755 libGL.so.1.0.0 "$pkgdir"/usr/lib32/nvidia/libGL.so.1.0.0
   install -Dm755 libGLdispatch.so.0 "$pkgdir"/usr/lib32/libGLdispatch.so.0
+  install -Dm755 libnvidia-glcore.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-glcore.so.$pkgver
   install -Dm755 libOpenGL.so.0 "$pkgdir"/usr/lib32/libOpenGL.so.0
 
   # GLX
