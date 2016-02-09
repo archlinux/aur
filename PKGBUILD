@@ -9,6 +9,6 @@ license=('GPLv3')
 source=('echo')
 md5sums=('6ef4e462054089178e59b6eda5c0f043')
 package() {
-	  install -dm755 "$pkgdir/bin"
+	  install -dm755 "$pkgdir/bin/"
 	    install -m755 echo "$pkgdir/bin/"
     }
