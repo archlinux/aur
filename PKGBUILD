@@ -33,7 +33,7 @@ source=(# Chrome
         'profiles.ini')
 noextract=("lp4_$_ffver.xpi")
 md5sums=('009f2d1a3ac25eb7a3a18f5ad0fc4f53'
-		 'c3374e6ff3e7633506795022b11be7ee'
+         'c3374e6ff3e7633506795022b11be7ee'
          '151251e415bccdffc1dc0df592d1d7e1'
          '9af777d2eea8e67ad332235718a7653d'
          '933dc325b5be6049f4d8fadb2f0014cd'
