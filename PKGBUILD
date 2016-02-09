@@ -1,7 +1,7 @@
 # Contributor: dorkster <jajdorkster@gmail.com>
 
 pkgname=flare-game-git
-pkgver=v0.20.r173.g29a073f
+pkgver=v0.20.r440.gf88c803
 pkgrel=1
 pkgdesc="Fantasy action RPG using the FLARE engine - Git version"
 url="http://www.flarerpg.org/"
@@ -15,7 +15,7 @@ source=("git://github.com/clintbellanger/flare-game.git")
 sha1sums=('SKIP')
 
 pkgver() {
-    cd $srcdir/flare-engine
+    cd $srcdir/flare-game
     git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
