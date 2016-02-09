@@ -25,6 +25,6 @@ package() {
     cd "$srcdir/$pkgname-$pkgver"
     echo -e "\x1b[29;5;7m Installing... \x1b[0m"
     python setup.py install --root="$pkgdir" --optimize=1
-    echo "[Desktop Entry]\nExec=chrt --idle 0 octopussh\nName=octopussh\nType=Application" > "$srcdir/octopussh.desktop"
+    echo "[Desktop Entry]\nExec=chrt --idle 0 octopussh\nName=octopussh\nType=Application\nCategories=Utility\nIcon=system-run" > "$srcdir/octopussh.desktop"
     install -Dm755 "$srcdir/octopussh.desktop" "$pkgdir/usr/share/applications/octopussh.desktop"
 }
