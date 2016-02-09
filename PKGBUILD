@@ -2,7 +2,7 @@
 
 pkgname=maybe-git
 _pkgname=maybe
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Allows you to run a command and see what it does to your files"
 arch=('any')
