@@ -2,7 +2,7 @@
 
 _pkgname=openbazaar
 pkgname=${_pkgname}-git
-pkgver=1702.91c1a43
+pkgver=1866.2d95e1b
 pkgrel=1
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon"
 arch=(any)
@@ -15,7 +15,6 @@ source=(
 	"${_pkgname}.sh"
         "${_pkgname}.desktop"
         "${_pkgname}.png"
-	patch
 )
 install=${_pkgname}.install
 options=('!strip')
@@ -24,7 +23,6 @@ replaces=(${_pkgname})
 
 build(){
   cd $srcdir/${_pkgname}
-  patch -Np1 -i ../patch
   npm install
 }
 
@@ -56,5 +54,4 @@ pkgver() {
 md5sums=('SKIP'
          '2f915aa854435ce7cd1dfca4eccd0112'
          'a528a6284cbdf4e901af319ca3bb68d9'
-         '71fc6ef0cc128dc1d00eff33c12c66cb'
-         'b87e42ca176fcaf4f96ea1dcf353c6f9')
+         '71fc6ef0cc128dc1d00eff33c12c66cb')
