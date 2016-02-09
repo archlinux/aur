@@ -1,0 +1,6 @@
+*
+!PKGBUILD
+!virtualbox-guest-modules-r500v.install
+!virtualbox-host-modules-r500v.install
+!.SRCINFO
+!.gitignore
