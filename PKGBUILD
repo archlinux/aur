@@ -1,6 +1,6 @@
 # Maintainer: mawcomw <mawcomw@gmail.com>
 pkgname=limesurvey
-pkgver=2.0.6.151018
+pkgver=2.5.0.160206
 pkgrel=1
 pkgdesc="Then open source survey application."
 arch=('any')
@@ -19,19 +19,18 @@ optdepends=('apache: a supported application server'
 provides=('limesurvey')
 #conflicts=()
 #replaces=()
-#backup=('usr/share/webapps/redmine/config/configuration.yml'
-#	'usr/share/webapps/redmine/config/database.yml')
+#backup=('')
 #options=()
 #install=limesurvey.install
 #changelog
-source=('http://download.limesurvey.org/latest-stable-release/limesurvey206plus-build151018.tar.gz'
+source=('http://download.limesurvey.org/latest-stable-release/limesurvey250plus-build160206.tar.gz'
 	'apache.example.conf')
 #noextract
 #md5sums=()
 #sha1sums=()
 #sha256sums=()
 #sha384sums=()
-sha512sums=('7e545d559565ffbcc3ebb9cf7de50f8bfd69c7ffbcfe50ffdf4d253232d474cd43dc8e1bc555ba248d0fca70329adc29e5a42cb68233c643852028a7051811c9'
+sha512sums=('986b14ed6250896ad2c1d1bad296d4147ed529fd6cb3cd48a34cc40fe405054d24b18923c7b1f8e76f1aff0326c7bd8267d2c7009ba6e9ffa5be54b59516c562'
 	    'e594a3a02cb04e1cca9ddf1c5995344f20adc9c5543fe622ad66fdc48d587fc969541530f1e2a8883e0f501ed1b2d409c23ecc7cd8e29aaea0369f625cd4f417')
 
 build() {
