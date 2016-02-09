@@ -9,7 +9,7 @@
 # Contributor: Niels Abspoel <aboe76 (at) Gmail (dot) com>
 
 pkgname=puppet3
-pkgver=3.8.5
+pkgver=3.8.6
 pkgrel=1
 pkgdesc="Server automation framework and application"
 arch=('any')
@@ -24,7 +24,7 @@ backup=('etc/puppet/auth.conf' 'etc/puppet/fileserver.conf'
         'etc/puppet/puppet.conf' 'etc/puppet/tagmail.conf')
 install=puppet.install
 source=(http://downloads.puppetlabs.com/puppet/puppet-$pkgver.tar.gz)
-md5sums=('53145ac80abadd146ca88b67d488b5c8')
+md5sums=('a24db464181b08c44db652cb0fd35313')
 
 prepare() {
   cd puppet-$pkgver
