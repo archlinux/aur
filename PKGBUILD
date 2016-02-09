@@ -4,7 +4,7 @@ pkgdesc="ROS - Packages for interfacing ROS with OpenCV, a library of programmin
 url='http://www.ros.org/wiki/vision_opencv'
 
 pkgname='ros-indigo-vision-opencv'
-pkgver='1.11.10'
+pkgver='1.11.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -19,10 +19,16 @@ ros_depends=(ros-indigo-opencv-apps
   ros-indigo-cv-bridge)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/vision_opencv/${pkgver}-${_pkgver_patch}
-_dir=vision_opencv
-source=("${_dir}"::"git+https://github.com/ros-gbp/vision_opencv-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/vision_opencv/${pkgver}-${_pkgver_patch}
+# _dir=vision_opencv
+# source=("${_dir}"::"git+https://github.com/ros-gbp/vision_opencv-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="vision_opencv-release-release-indigo-vision_opencv-${pkgver}-${_pkgver_patch}"
+source=("https://github.com/ros-gbp/vision_opencv-release/archive/release/indigo/vision_opencv/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('1d69984b38acb6a724087dd8611e1732048fe48c4177d1acebc7ad812210feba')
 
 build() {
   # Use ROS environment variables
