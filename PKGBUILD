@@ -50,10 +50,9 @@ source=('git+https://github.com/Valloric/YouCompleteMe.git'
         'git+https://github.com/nosami/OmniSharpServer.git'
         'git+https://github.com/icsharpcode/NRefactory.git'
         'git+https://github.com/jbevain/cecil.git'
-        'git+https://github.com/ternjs/tern.git'
         'git+https://github.com/jwilm/racerd.git')
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-            'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+            'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 if [[ "${CARCH}" == 'x86_64' ]]; then
   # use bundled libclang on x86_64
   source+=("${_CLANG_URL}/${_CLANG_FILENAME}"{,.sig})
@@ -95,7 +94,6 @@ prepare() {
   git config submodule.third_party/OmniSharpServer.url "$srcdir/OmniSharpServer"
   git config submodule.third_party/requests.url "$srcdir/requests"
   git config submodule.third_party/racerd.url "$srcdir/racerd"
-  git config submodule.third_party/tern.url "$srcdir/tern"
   git submodule update
 
   cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/JediHTTP"
@@ -144,7 +142,7 @@ build() {
   cargo build --release
 
   msg2 'Building Tern completer...' # SetUpTern()
-  cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/tern"
+  cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/tern_runtime"
   pwd
   npm install --production --python=python2
   # }}}
@@ -169,7 +167,7 @@ package() {
       "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/clang_includes"
   fi
 
-  cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/"{argparse,bottle,frozendict,JediHTTP,requests,tern,waitress} \
+  cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/"{argparse,bottle,frozendict,JediHTTP,requests,tern_runtime,waitress} \
     "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/third_party"
 
   cp    "$srcdir/YouCompleteMe/third_party/ycmd/third_party/gocode/gocode" \
