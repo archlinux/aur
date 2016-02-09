@@ -4,7 +4,7 @@ pkgdesc="ROS - image_geometry contains C++ and Python libraries for interpreting
 url='http://www.ros.org/wiki/image_geometry'
 
 pkgname='ros-indigo-image-geometry'
-pkgver='1.11.10'
+pkgver='1.11.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -22,10 +22,16 @@ depends=(${ros_depends[@]}
   opencv
   python2-numpy)
 
-_tag=release/indigo/image_geometry/${pkgver}-${_pkgver_patch}
-_dir=image_geometry
-source=("${_dir}"::"git+https://github.com/ros-gbp/vision_opencv-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/image_geometry/${pkgver}-${_pkgver_patch}
+# _dir=image_geometry
+# source=("${_dir}"::"git+https://github.com/ros-gbp/vision_opencv-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="vision_opencv-release-release-indigo-image_geometry-${pkgver}-${_pkgver_patch}"
+source=("https://github.com/ros-gbp/vision_opencv-release/archive/release/indigo/image_geometry/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('ae5ca0e8d70b234395fc4a5ab8a1fc8997c78ecff168758771d29833c62234c2')
 
 build() {
   # Use ROS environment variables
