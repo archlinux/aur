@@ -13,9 +13,9 @@ license=(GPL)
 depends=('deadbeef>=0.6', gtk2)
 backup=()
 source=('https://gitlab.com/zykure/deadbeef-fb/raw/release/source/deadbeef-fb_20160209_0.90_src.tar.gz')
-md5sums=('a192a744926a0aa8cfac2702c6a330d3')
-sha1sums=('94995e9d216446f6dd4b8f80457899de63c75e15')
-sha256sums=('ecfbde80d540aa4e9558ac707987af61522e02e2c8de00850ca080f1d31b5120')
+md5sums=('da537597af97068b7bf88d763bb189f1')
+sha1sums=('488f93cb700b9452652ca731beb32efbaec0c679')
+sha256sums=('00abe047864160f04e9ba97e3c4dff40ef9684251cc10d619a9272cafdd8d8d0')
 
 build() {
   cd ${srcdir}/deadbeef-fb-devel
