@@ -4,7 +4,7 @@ pkgdesc="ROS - This contains CvBridge, which converts between ROS Image messages
 url='http://www.ros.org/wiki/cv_bridge'
 
 pkgname='ros-indigo-cv-bridge'
-pkgver='1.11.10'
+pkgver='1.11.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -28,10 +28,16 @@ depends=(${ros_depends[@]}
   boost
   python2)
 
-_tag=release/indigo/cv_bridge/${pkgver}-${_pkgver_patch}
-_dir=cv_bridge
-source=("${_dir}"::"git+https://github.com/ros-gbp/vision_opencv-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/cv_bridge/${pkgver}-${_pkgver_patch}
+# _dir=cv_bridge
+# source=("${_dir}"::"git+https://github.com/ros-gbp/vision_opencv-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="vision_opencv-release-release-indigo-cv_bridge-${pkgver}-${_pkgver_patch}"
+source=("https://github.com/ros-gbp/vision_opencv-release/archive/release/indigo/cv_bridge/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('42bef11fc64cf0daae49da83601a18e19db9dfd02181ce31f90f02db0c2763b4')
 
 build() {
   # Use ROS environment variables
