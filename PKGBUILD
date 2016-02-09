@@ -5,13 +5,13 @@
 
 # Maintainer: Thorsten Lanfer <tlanfer@gmail.com>
 pkgname=openhab-runtime
-pkgver=1.7.1
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="openHAB automation runtime"
 arch=('any')
 url="http://www.openhab.org/"
 license=('EPL')
-depends=('java-runtime>=7')
+depends=('java-runtime-headless>=7')
 makedepends=('unzip')
 optdepends=('openhab-addons: bindings and actions')
 backup=('etc/openhab/openhab.cfg'
@@ -21,7 +21,7 @@ source=("https://bintray.com/artifact/download/openhab/bin/distribution-$pkgver-
 				"openhab.service"
 				"openhab-startsh.patch")
 noextract=("distribution-$pkgver-runtime.zip")
-md5sums=('d8c1e777bfa9da5c19a9b363fcbe99b5'
+md5sums=('0bc4b3a590771c344ff16e70157ab30d'
          'e06c404f7174ac0b1d9c2e9e429c3b5f'
          '18299bfcb7865fec55d06890e25c8668'
          '481370e7c473aff7e9267e2e4f6fe68c')
