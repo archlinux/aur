@@ -4,7 +4,7 @@
 _qt_module=qtserialport
 pkgname="mingw-w64-qt5-serialport"
 pkgver=5.5.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Provides access to hardware and virtual serial ports (mingw-w64)"
 depends=('mingw-w64-qt5-base')
@@ -56,7 +56,7 @@ package() {
     rm -f "${pkgdir}/usr/${_arch}/lib/"*.dll
 
     ${_arch}-strip --strip-unneeded "${pkgdir}/usr/${_arch}/bin/"*.dll
-    ${_arch}-strip --strip-unneeded "${pkgdir}/usr/${_arch}/lib/"*.dll.a
+    ${_arch}-strip -g "${pkgdir}/usr/${_arch}/lib/"*.dll.a
     #${_arch}-strip -g "${pkgdir}/usr/${_arch}/lib/"*t.a
   done
 
