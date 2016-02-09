@@ -3,12 +3,12 @@
 pkgbase = faiss-echo
 	pkgdesc = echo in 875 bytes (97% smaller)
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2 
 	url = https://github.com/faissaloo/echo
 	arch = any
 	license = GPLv3
 	source = echo
-	md5sums = a81092670537db8342ba8baf609378da
+	md5sums = 6ef4e462054089178e59b6eda5c0f043 
 
 pkgname = faiss-echo
 

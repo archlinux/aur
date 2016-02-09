@@ -7,8 +7,8 @@ arch=any
 url=https://github.com/faissaloo/echo
 license=GPLv3
 source=echo
-md5sums=a81092670537db8342ba8baf609378da
+md5sums=6ef4e462054089178e59b6eda5c0f043
 package() {
-	  install -dm755 "$pkgdir/usr/bin"
-	    install -m755 echo "$pkgdir/usr/bin/"
+	  install -dm755 "$pkgdir/bin"
+	    install -m755 echo "$pkgdir/bin/"
     }
