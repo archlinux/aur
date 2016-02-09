@@ -1,7 +1,7 @@
 pkgbase = blender-plugin-archimesh
 	pkgdesc = Blender add-on for creating architecture elements.
 	pkgver = 1.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Antonioya/blender/tree/master/archimesh
 	arch = any
 	groups = blender

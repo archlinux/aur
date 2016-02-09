@@ -1,10 +1,10 @@
 # Maintainer: Fabien Devaux <fdev31@gmail.com>
 pkgname=blender-plugin-archimesh
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Blender add-on for creating architecture elements."
 url="https://github.com/Antonioya/blender/tree/master/archimesh"
-license="GPL"
+license=("GPL")
 arch=('any')
 depends=('blender')
 groups=('blender')
