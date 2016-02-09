@@ -10,16 +10,16 @@
 PKGEXT='.pkg.tar'
 
 pkgname=unity-editor-bin
-_version=5.3.1
+_version=5.3.2
 _build=f1
-_buildtag=20160106
+_buildtag=20160208
 pkgver=${_version}${_build}+${_buildtag}
 pkgrel=1
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
 arch=('x86_64')
 license=('custom')
 url="https://unity3d.com/"
-depends=('desktop-file-utils' 'xdg-utils' 'gcc-multilib' 'libgl' 'glu' 'nss' 'libpng12' 'libxtst' 'libpqxx' 'monodevelop')
+depends=('desktop-file-utils' 'xdg-utils' 'gcc-multilib' 'libgl' 'glu' 'nss' 'libpng12' 'libxtst' 'libpqxx' 'monodevelop' 'npm')
 optdepends=('ffmpeg: for WebGL exporting'
 	'nodejs: for WebGL exporting'
 	'java-runtime: for WebGL exporting'
@@ -32,7 +32,7 @@ conflicts=('unity-editor')
 options=(!strip)
 install=${pkgname}.install
 source=("http://download.unity3d.com/download_unity/linux/unity-editor-${pkgver}_amd64.deb")
-md5sums=('ebee68a0a303a776c4d557e7df33a1df')
+md5sums=('adcd0c62618fb711aa31565609fd0390')
 
 package() {
 	bsdtar xf data.tar.gz
