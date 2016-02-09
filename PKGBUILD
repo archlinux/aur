@@ -26,7 +26,7 @@ update_git(){
     cd "$_gitname" && git pull origin > /dev/null
     msg "The local files are updated."
   else
-    git -q clone --depth 1 "$_gitroot" "$_gitname"
+    git clone -q --depth 1 "$_gitroot" "$_gitname"
   fi
 
   msg "GIT checkout done or server timeout"
@@ -35,7 +35,7 @@ update_git(){
 pkgver() {
   update_git
   cd "${srcdir}/${_gitname}"
-  printf "r.%s" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
