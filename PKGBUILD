@@ -25,7 +25,7 @@ build() {
 
 package() {
   cd "${srcdir}"
-	install -D -m 644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -D -m 644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
   install -d "${pkgdir}/usr/share/webapps/${_pkgname}"
   cp -r "${_pkgname}" "${pkgdir}/usr/share/webapps/"
   install -d "${pkgdir}/usr/bin"
