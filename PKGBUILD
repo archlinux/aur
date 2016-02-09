@@ -55,8 +55,8 @@ package() {
   install -m 0644 target/GenomeAnalysisTK.jar "$pkgdir/usr/share/${_pkgname}/"
   install -m 0644 target/Queue.jar "$pkgdir/usr/share/${_pkgname}/"
   install -d "$pkgdir/usr/bin"
-  echo 'java -jar /usr/share/${_pkgname}/GenomeAnalysisTK.jar "$@"' > "$pkgdir/usr/bin/gatk"
-  echo 'java -jar /usr/share/${_pkgname}/Queue.jar "$@"' > "$pkgdir/usr/bin/gatk-queue"
+  echo "java -jar /usr/share/${_pkgname}"'/GenomeAnalysisTK.jar "$@"' > "$pkgdir/usr/bin/gatk"
+  echo "java -jar /usr/share/${_pkgname}"'/Queue.jar "$@"' > "$pkgdir/usr/bin/gatk-queue"
   chmod 0755 "$pkgdir/usr/bin/gatk"
   chmod 0755 "$pkgdir/usr/bin/gatk-queue"
 }
