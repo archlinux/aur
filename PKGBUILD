@@ -47,12 +47,13 @@ source=('git+https://github.com/Valloric/YouCompleteMe.git'
         'git+https://github.com/vheon/JediHTTP.git'
         'git+https://github.com/Pylons/waitress.git'
         'git+https://github.com/nsf/gocode.git'
+        'git+https://github.com/Manishearth/godef.git'
         'git+https://github.com/nosami/OmniSharpServer.git'
         'git+https://github.com/icsharpcode/NRefactory.git'
         'git+https://github.com/jbevain/cecil.git'
         'git+https://github.com/jwilm/racerd.git')
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-            'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+            'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 if [[ "${CARCH}" == 'x86_64' ]]; then
   # use bundled libclang on x86_64
   source+=("${_CLANG_URL}/${_CLANG_FILENAME}"{,.sig})
@@ -91,6 +92,7 @@ prepare() {
   git config submodule.third_party/JediHTTP.url "$srcdir/JediHTTP"
   git config submodule.third_party/waitress.url "$srcdir/waitress"
   git config submodule.third_party/gocode.url "$srcdir/gocode"
+  git config submodule.third_party/godef.url "$srcdir/godef"
   git config submodule.third_party/OmniSharpServer.url "$srcdir/OmniSharpServer"
   git config submodule.third_party/requests.url "$srcdir/requests"
   git config submodule.third_party/racerd.url "$srcdir/racerd"
@@ -135,6 +137,9 @@ build() {
   cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/gocode"
   pwd
   go build
+  cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/godef"
+  pwd
+  go build
 
   msg2 'Building Rust completer...' # BuildRacerd()
   cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/racerd"
@@ -151,6 +156,7 @@ build() {
 package() {
   mkdir -p "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/third_party/OmniSharpServer/OmniSharp/bin/Release"
   mkdir -p "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/third_party/gocode"
+  mkdir -p "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/third_party/godef"
   mkdir -p "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/third_party/racerd/target/release"
 
   cp -r "$srcdir/YouCompleteMe/"{autoload,doc,plugin,python} \
@@ -172,6 +178,8 @@ package() {
 
   cp    "$srcdir/YouCompleteMe/third_party/ycmd/third_party/gocode/gocode" \
     "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/third_party/gocode/gocode"
+  cp    "$srcdir/YouCompleteMe/third_party/ycmd/third_party/godef/godef" \
+    "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/third_party/godef/godef"
   cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer/OmniSharp/bin/Release" \
     "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/third_party/OmniSharpServer/OmniSharp/bin"
   cp    "$srcdir/YouCompleteMe/third_party/ycmd/third_party/racerd/target/release/racerd" \
