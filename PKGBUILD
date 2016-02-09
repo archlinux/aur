@@ -53,7 +53,11 @@ EOF
 install="${pkgname}.install"
 
 build() {
-    sed -i -e 's:chown lp $SPOOLER_NAME:chown root $SPOOLER_NAME:g' $srcdir/opt/brother/Printers/${_pkgname}/inf/setupPrintcapij
+    if [[ ! $LANG =~ [a-z]{2}_(US|CA) ]]; then
+        sed -i -r -e 's@(PaperType\s*=\s*\{?)Letter(\}?\s*)$@\1A4\2@gi' $srcdir/opt/brother/Printers/${_pkgname}/inf/brmfcj6920dw{func,rc}
+        sed -i -r -e 's@(\*Default[a-z]+:\s+)Letter\s*$@\1A4@gi' $srcdir/opt/brother/Printers/${_pkgname}/cupswrapper/brother_${_pkgname}_printer_en.ppd
+    fi
+    sed -i -e 's@chown lp $SPOOLER_NAME@chown root $SPOOLER_NAME@g' $srcdir/opt/brother/Printers/${_pkgname}/inf/setupPrintcapij
 }
 
 package() {
