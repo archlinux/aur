@@ -2,8 +2,8 @@
 _pkgname=pwntools
 
 pkgname=python2-${_pkgname}-git
-pkgver=2.2.r424.g8f35519
-pkgrel=2
+pkgver=2.2.r427.gd498a34
+pkgrel=1
 pkgdesc="The CTF framework used by Gallopsled in every CTF"
 arch=('any')
 url="http://pwntools.com/"
@@ -19,7 +19,7 @@ depends=('python2>=2.7'
          'python2-requests'
          'python2-psutil'
          'ropgadget')
-conflicts=('python2-pwntools-git', 'python2-pwntools')
+conflicts=('python2-pwntools-git' 'python2-pwntools')
 source=("${pkgname}"::'git+https://github.com/Gallopsled/pwntools.git')
 md5sums=('SKIP')
 
