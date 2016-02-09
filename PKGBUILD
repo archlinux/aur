@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="safeaur is auto Backup and re-store System for yaourt."
 url="https://github.com/ToxicTrigger/safeaur.git"
 arch=('any')
-license=('GPL3')
+#license=('GPL3')
 depends=('yaourt>=1.6' 'pacman>=4')
 #optdepends=('')
 makedepends=()
