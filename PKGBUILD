@@ -1,7 +1,8 @@
+# Maintainer: Daniel Milde <daniel at milde dot cz>
 # Contributor: megadriver <megadriver at gmx dot com>
 
 pkgname=xonsh
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="A Python-ish, BASHwards-compatible shell"
 url="http://xonsh.org"
@@ -11,7 +12,7 @@ depends=('python' 'python-ply')
 optdepends=('python-prompt_toolkit: support for SHELL_TYPE=prompt_toolkit')
 source=("https://github.com/scopatz/xonsh/archive/$pkgver.zip")
 install=xonsh.install
-sha256sums=('a30c495de0af17869055bc7676155408577eb438c7970fa4ccbd193fd0d89081')
+sha256sums=('dc6f8466103694f17457b67efa0fd91a5733ff332e09e20af86b8f91e643c5b3')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
