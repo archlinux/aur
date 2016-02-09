@@ -197,7 +197,7 @@ build() {
 _package() {
     pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
     [ "${pkgbase}" = "linux" ] && groups=('base')
-    depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
+    depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7' 'xz')
     optdepends=('crda: to set the correct wireless channels of your country' 'nvidia-r500v: nVidia drivers for linux-r500v' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
     backup=("etc/mkinitcpio.d/${pkgbase}.preset")
     install=linux-r500v.install
