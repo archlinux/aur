@@ -1,0 +1,74 @@
+--- a/drivers/gpu/drm/i915/intel_fifo_underrun.c.old
++++ b/drivers/gpu/drm/i915/intel_fifo_underrun.c
+@@ -98,7 +98,7 @@
+ 	I915_WRITE(reg, pipestat | PIPE_FIFO_UNDERRUN_STATUS);
+ 	POSTING_READ(reg);
+ 
+-	DRM_ERROR("pipe %c underrun\n", pipe_name(crtc->pipe));
++	DRM_DEBUG("pipe %c underrun\n", pipe_name(crtc->pipe));
+ }
+ 
+ static void i9xx_set_fifo_underrun_reporting(struct drm_device *dev,
+@@ -116,7 +116,7 @@
+ 		POSTING_READ(reg);
+ 	} else {
+ 		if (old && pipestat & PIPE_FIFO_UNDERRUN_STATUS)
+-			DRM_ERROR("pipe %c underrun\n", pipe_name(pipe));
++			DRM_DEBUG("pipe %c underrun\n", pipe_name(pipe));
+ 	}
+ }
+ 
+@@ -147,7 +147,7 @@
+ 	I915_WRITE(GEN7_ERR_INT, ERR_INT_FIFO_UNDERRUN(pipe));
+ 	POSTING_READ(GEN7_ERR_INT);
+ 
+-	DRM_ERROR("fifo underrun on pipe %c\n", pipe_name(pipe));
++	DRM_DEBUG("fifo underrun on pipe %c\n", pipe_name(pipe));
+ }
+ 
+ static void ivybridge_set_fifo_underrun_reporting(struct drm_device *dev,
+@@ -167,7 +167,7 @@
+ 
+ 		if (old &&
+ 		    I915_READ(GEN7_ERR_INT) & ERR_INT_FIFO_UNDERRUN(pipe)) {
+-			DRM_ERROR("uncleared fifo underrun on pipe %c\n",
++			DRM_DEBUG("uncleared fifo underrun on pipe %c\n",
+ 				  pipe_name(pipe));
+ 		}
+ 	}
+@@ -212,7 +212,7 @@
+ 	I915_WRITE(SERR_INT, SERR_INT_TRANS_FIFO_UNDERRUN(pch_transcoder));
+ 	POSTING_READ(SERR_INT);
+ 
+-	DRM_ERROR("pch fifo underrun on pch transcoder %c\n",
++	DRM_DEBUG("pch fifo underrun on pch transcoder %c\n",
+ 		  transcoder_name(pch_transcoder));
+ }
+ 
+@@ -235,7 +235,7 @@
+ 
+ 		if (old && I915_READ(SERR_INT) &
+ 		    SERR_INT_TRANS_FIFO_UNDERRUN(pch_transcoder)) {
+-			DRM_ERROR("uncleared pch fifo underrun on pch transcoder %c\n",
++			DRM_DEBUG("uncleared pch fifo underrun on pch transcoder %c\n",
+ 				  transcoder_name(pch_transcoder));
+ 		}
+ 	}
+@@ -368,7 +368,7 @@
+ 		return;
+ 
+ 	if (intel_set_cpu_fifo_underrun_reporting(dev_priv, pipe, false))
+-		DRM_ERROR("CPU pipe %c FIFO underrun\n",
++		DRM_DEBUG("CPU pipe %c FIFO underrun\n",
+ 			  pipe_name(pipe));
+ }
+ 
+@@ -386,7 +386,7 @@
+ {
+ 	if (intel_set_pch_fifo_underrun_reporting(dev_priv, pch_transcoder,
+ 						  false))
+-		DRM_ERROR("PCH transcoder %c FIFO underrun\n",
++		DRM_DEBUG("PCH transcoder %c FIFO underrun\n",
+ 			  transcoder_name(pch_transcoder));
+ }
+ 

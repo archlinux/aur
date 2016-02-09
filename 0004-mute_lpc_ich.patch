@@ -1,0 +1,20 @@
+--- a/drivers/mfd/lpc_ich.c.old
++++ b/drivers/mfd/lpc_ich.c
+@@ -905,7 +905,7 @@
+ 	res = &gpio_ich_res[ICH_RES_GPE0];
+ 	res->start = base_addr + ACPIBASE_GPE_OFF;
+ 	res->end = base_addr + ACPIBASE_GPE_END;
+-	ret = acpi_check_resource_conflict(res);
++	ret = 0;
+ 	if (ret) {
+ 		/*
+ 		 * This isn't fatal for the GPIO, but we have to make sure that
+@@ -941,7 +941,7 @@
+ 		break;
+ 	}
+ 
+-	ret = lpc_ich_check_conflict_gpio(res);
++	ret = 0;
+ 	if (ret < 0) {
+ 		/* this isn't necessarily fatal for the GPIO */
+ 		acpi_conflict = true; 

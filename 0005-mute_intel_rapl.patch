@@ -1,0 +1,83 @@
+--- a/drivers/powercap/intel_rapl.c.old
++++ b/drivers/powercap/intel_rapl.c
+@@ -327,7 +327,7 @@
+ 	if (rd->id == RAPL_DOMAIN_PACKAGE) {
+ 		rp = find_package_by_id(rd->package_id);
+ 		if (!rp) {
+-			dev_warn(&power_zone->dev, "no package id %s\n",
++			dev_dbg(&power_zone->dev, "no package id %s\n",
+ 				rd->name);
+ 			return -ENODEV;
+ 		}
+@@ -439,7 +439,7 @@
+ 	}
+ 
+ 	if (rd->state & DOMAIN_STATE_BIOS_LOCKED) {
+-		dev_warn(&power_zone->dev, "%s locked by BIOS, monitoring only\n",
++		dev_dbg(&power_zone->dev, "%s locked by BIOS, monitoring only\n",
+ 			rd->name);
+ 		ret = -EACCES;
+ 		goto set_exit;
+@@ -848,7 +848,7 @@
+ 	u32 value;
+ 
+ 	if (rdmsrl_safe_on_cpu(cpu, MSR_RAPL_POWER_UNIT, &msr_val)) {
+-		pr_err("Failed to read power unit MSR 0x%x on CPU %d, exit.\n",
++		pr_warn("Failed to read power unit MSR 0x%x on CPU %d, exit.\n",
+ 			MSR_RAPL_POWER_UNIT, cpu);
+ 		return -ENODEV;
+ 	}
+@@ -874,7 +874,7 @@
+ 	u32 value;
+ 
+ 	if (rdmsrl_safe_on_cpu(cpu, MSR_RAPL_POWER_UNIT, &msr_val)) {
+-		pr_err("Failed to read power unit MSR 0x%x on CPU %d, exit.\n",
++		pr_warn("Failed to read power unit MSR 0x%x on CPU %d, exit.\n",
+ 			MSR_RAPL_POWER_UNIT, cpu);
+ 		return -ENODEV;
+ 	}
+@@ -983,7 +983,7 @@
+ 	u32 mdata;
+ 
+ 	if (!rapl_defaults->floor_freq_reg_addr) {
+-		pr_err("Invalid floor frequency config register\n");
++		pr_warn("Invalid floor frequency config register\n");
+ 		return;
+ 	}
+ 
+@@ -1205,7 +1205,7 @@
+ 		}
+ 	}
+ 	if (!power_zone) {
+-		pr_err("no package domain found, unknown topology!\n");
++		pr_warn("no package domain found, unknown topology!\n");
+ 		ret = -ENODEV;
+ 		goto exit_package;
+ 	}
+@@ -1294,7 +1294,7 @@
+ 		msr = MSR_DRAM_ENERGY_STATUS;
+ 		break;
+ 	default:
+-		pr_err("invalid domain id %d\n", domain);
++		pr_warn("invalid domain id %d\n", domain);
+ 		return -EINVAL;
+ 	}
+ 	/* make sure domain counters are available and contains non-zero
+@@ -1325,7 +1325,7 @@
+ 	}
+ 	rp->nr_domains = bitmap_weight(&rp->domain_map,	RAPL_DOMAIN_MAX);
+ 	if (!rp->nr_domains) {
+-		pr_err("no valid rapl domains found in package %d\n", rp->id);
++		pr_warn("no valid rapl domains found in package %d\n", rp->id);
+ 		ret = -ENODEV;
+ 		goto done;
+ 	}
+@@ -1516,7 +1516,7 @@
+ 
+ 	id = x86_match_cpu(rapl_ids);
+ 	if (!id) {
+-		pr_err("driver does not support CPU family %d model %d\n",
++		pr_warn("driver does not support CPU family %d model %d\n",
+ 			boot_cpu_data.x86, boot_cpu_data.x86_model);
+ 
+ 		return -ENODEV;
