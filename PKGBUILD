@@ -8,7 +8,7 @@
 pkgname=conky-lua-nv
 _pkgname=conky
 pkgver=1.10.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An advanced system monitor for X based on torsmo with lua and nvidia enabled"
 arch=('i686' 'x86_64')
 url="https://github.com/brndnmtthws/conky"
@@ -30,7 +30,7 @@ sha1sums=('97b59ec1daf54126b30516e8663a9cf1f218d8ae'
           '96cdbc38e8706c8a3120601983df5c7265716128'
           '3ef0f96772410f975e815087509db9537edcd6e2')
 options=('!strip' 'debug')
-install=('conky-lua-nv.install')
+install='conky-lua-nv.install'
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
