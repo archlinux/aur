@@ -1,14 +1,13 @@
 # Maintainer: George Angelopoulos <george@usermod.net>
 pkgname=vim-colorscheme-alduin
-pkgver=1.8.3
+pkgver=1.8.4
 pkgrel=1
 pkgdesc="A dark low-contrast Vim colorscheme for Terminal Vim and GUI Vim."
 arch=('any')
 url="https://github.com/AlessandroYorba/Alduin"
 license=('MIT')
-source=("https://github.com/AlessandroYorba/Alduin/archive/${pkgver}.tar.gz")
-md5sums=('0d623c385c4d3aadf6f92ccb5732a8f0')
-
+source=("https://github.com/AlessandroYorba/Alduin/archive/v${pkgver}.tar.gz")
+md5sums=('d545f66f214cbdd0ce79ce9d84cca3d4')
 _name=Alduin
 
 package() {
