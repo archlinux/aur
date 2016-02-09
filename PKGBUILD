@@ -37,10 +37,6 @@ build() {
   msg "GIT checkout done or server timeout"
   msg "Starting build..."
 
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
   mvn install
 }
 
@@ -51,7 +47,7 @@ pkgver() {
 
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir/$_gitname"
   install -d "$pkgdir/usr/share/${_pkgname}"
   install -m 0644 README.md "$pkgdir/usr/share/${_pkgname}/README.md"
   install -d "$pkgdir/usr/share/${_pkgname}/licensing"
@@ -59,8 +55,8 @@ package() {
   install -m 0644 target/GenomeAnalysisTK.jar "$pkgdir/usr/share/${_pkgname}/"
   install -m 0644 target/Queue.jar "$pkgdir/usr/share/${_pkgname}/"
   install -d "$pkgdir/usr/bin"
-  echo "java -jar /usr/share/${_pkgname}/GenomeAnalysisTK.jar" > "$pkgdir/usr/bin/gatk"
-  echo "java -jar /usr/share/${_pkgname}/GenomeAnalysisTK.jar" > "$pkgdir/usr/bin/gatk-queue"
+  echo 'java -jar /usr/share/${_pkgname}/GenomeAnalysisTK.jar "$@"' > "$pkgdir/usr/bin/gatk"
+  echo 'java -jar /usr/share/${_pkgname}/Queue.jar "$@"' > "$pkgdir/usr/bin/gatk-queue"
   chmod 0755 "$pkgdir/usr/bin/gatk"
   chmod 0755 "$pkgdir/usr/bin/gatk-queue"
 }
