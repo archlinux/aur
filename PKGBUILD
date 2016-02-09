@@ -1,13 +1,13 @@
 # Maintainer: Chris Rizzitello <sithlord48@gmail.com>
 pkgname=makoureactor-git
 conflicts=('makoureactor')
-pkgver=1.6.5.r15.gfc58b30
+pkgver=1.6.5.r31.gc8264a7
 pkgrel=1
 pkgdesc="Final Fantasy 7 Field Editor"
 arch=('i686' 'x86_64')
 url="https://github.com/myst6re/makoureactor"
 license=('GPL3')
-depends=('qt4') #Qt5)
+depends=('qt5-base' 'freeglut') #Qt5)
 #optdepends=('otf-ipafont: font for displaying japanese')
 source=("git://github.com/myst6re/makoureactor.git#branch=develop")
 md5sums=(SKIP)
@@ -20,8 +20,8 @@ pkgver() {
 
 build() {
   cd "makoureactor"
-  qmake-qt4 Makou_Reactor.pro #Qt4 Build
-  #qmake-qt5 Makou_Reactor.pro #Qt5 Build
+  #qmake-qt4 Makou_Reactor.pro #Qt4 Build
+  qmake-qt5 Makou_Reactor.pro #Qt5 Build
   make
 }
 package(){
