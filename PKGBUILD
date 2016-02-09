@@ -6,10 +6,10 @@
 # Maintainer: Fabien Devaux <fdev31@gmail.com>
 pkgname=volpack
 pkgver=1.0c7
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Enhanced Philippe Lacroute's volpack volume rendering library"
-arch=("any")
+arch=('i686' 'x86_64')
 url="http://amide.sourceforge.net/packages.html"
 license=('GPL')
 groups=()
