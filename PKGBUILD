@@ -29,6 +29,8 @@ depends=('vapoursynth-plugin-addgrain-git'
          'vapoursynth-plugin-temporalsoften-git'
          )
 makedepends=('git')
+provides=("vapoursynth-plugin-${_plug}")
+conflicts=("vapoursynth-plugin-${_plug}")
 source=("git+https://github.com/HomeOfVapourSynthEvolution/havsfunc.git")
 sha1sums=('SKIP')
 
