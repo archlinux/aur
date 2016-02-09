@@ -34,7 +34,7 @@ build() {
 package_virtualbox-host-modules-r500v(){
     _kernver="$(cat /usr/lib/modules/$_extramodules/version)"
     pkgdesc='Host kernel modules for VirtualBox running under linux-r500v'
-    depends=('linux-r500v>=4.5rc1' 'linux-r500v<4.6rc1')
+    depends=('linux-r500v>=4.5rc1' 'linux-r500v<4.6rc1' 'xz')
     provides=("virtualbox-host-modules")
     conflicts=('virtualbox-modules-r500v')
     install=virtualbox-host-modules-r500v.install
@@ -54,7 +54,7 @@ package_virtualbox-guest-modules-r500v(){
     _kernver="$(cat /usr/lib/modules/$_extramodules/version)"
     pkgdesc='Guest kernel modules for VirtualBox running under linux-r500v'
     license=('GPL')
-    depends=('linux-r500v>=4.5rc1' 'linux-r500v<4.6rc1')
+    depends=('linux-r500v>=4.5rc1' 'linux-r500v<4.6rc1' 'xz')
     provides=("virtualbox-guest-modules")
     conflicts=('virtualbox-modules-r500v')
     install=virtualbox-guest-modules-r500v.install
