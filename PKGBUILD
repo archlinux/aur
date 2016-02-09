@@ -2,7 +2,7 @@
 
 pkgname=xonsh-git
 _gitname=xonsh
-pkgver=0.2.3.r4.g208d8f7
+pkgver=0.2.6.r5.g54a11e7
 pkgrel=1
 pkgdesc="A Python-ish, BASHwards-compatible shell"
 url="http://github.com/scopatz/xonsh"
