@@ -5,20 +5,20 @@
 
 # Maintainer: Thorsten Lanfer <tlanfer@gmail.com>
 pkgname=openhab-addons
-pkgver=1.7.1
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="openHAB automation addons"
 arch=('any')
 url="http://www.openhab.org/"
 license=('EPL')
-depends=('java-runtime>=7'
-				 'openhab-runtime=1.7.1')
+depends=('java-runtime-headless>=7'
+				 "openhab-runtime=$pkgver")
 makedepends=('unzip')
 optdepends=()
 backup=()
 source=("https://bintray.com/artifact/download/openhab/bin/distribution-$pkgver-addons.zip")
 noextract=("distribution-$pkgver-addons.zip")
-md5sums=('5141177fa8cc009756eabc95fa399b2c')
+md5sums=('a06f50c8198d7b82a2f80006c9b6ff9e')
 
 prepare() {
 	mkdir "$srcdir/$pkgname"
