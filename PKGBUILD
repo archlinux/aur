@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains the description (mechanical, kinematic, vis
 url='http://ros.org/wiki/pr2_description'
 
 pkgname='ros-indigo-pr2-description'
-pkgver='1.11.11'
+pkgver='1.11.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -28,7 +28,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="pr2_common-release-release-indigo-pr2_description-${pkgver}-${_pkgver_patch}"
 source=("https://github.com/pr2-gbp/pr2_common-release/archive/release/indigo/pr2_description/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('374299e55f8026529c04b17230ec5a3fe1035e43db75f1a4e89a46a819d97463')
+sha256sums=('1b44581a75f58babeea7b498d4c70614eaf4e6ce088ce381db264616d94dfda4')
 
 build() {
   # Use ROS environment variables
