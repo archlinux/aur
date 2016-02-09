@@ -2,8 +2,8 @@
 
 pkgname=gnucash-xbt
 _pkgname=gnucash
-pkgver=2.6.10
-pkgrel=1
+pkgver=2.6.11
+pkgrel=2
 pkgdesc="A personal and small-business financial-accounting application with Bitcoin support"
 arch=('i686' 'x86_64')
 url="http://www.gnucash.org"
@@ -20,7 +20,7 @@ provides=('gnucash')
 install=gnucash.install
 source=("http://downloads.sourceforge.net/sourceforge/${_pkgname}/${_pkgname}-${pkgver}.tar.bz2"
 		"xbt.patch")
-sha1sums=('09c3eadde1f02056f0d41aee566c9d0cc05a8e6a'
+sha1sums=('40d0fb36112b21b3749552b0811c461b1467923a'
 		  '7244b9cc71d0d03c43055c062f3eeba5e3544630')
 
 prepare() {
