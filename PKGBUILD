@@ -2,7 +2,7 @@
 # Maintainer: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=python-imageio
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="Library for reading and writing a wide range of image, video, scientific, and volumetric data formats"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python' 'python-numpy')
 makedepends=('python-setuptools')
 source=(https://pypi.python.org/packages/source/i/imageio/imageio-${pkgver}.zip)
-sha256sums=('ad9a3e75ffa802cca87a56bfdc6af7facbf8db5c62232b63c9822f10ac49292e')
+sha256sums=('37ab7ad6ca37905cee6b3535a0dba21506647d663b4414089b85b20e2b9f985d')
 
 package() {
   cd "$srcdir/imageio-$pkgver"
