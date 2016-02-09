@@ -15,10 +15,10 @@ depends=(
 	python2-bleach
 	python2-gnupg-isis
 	python2-libbitcoinclient
-	python2-libnacl-git
 	python2-miniupnpc
 	python2-protobuf
 	python2-pyelliptic
+	python2-pynacl
 	python2-pystun
 	python2-python-bitcoinlib
 	python2-requests
