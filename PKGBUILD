@@ -4,7 +4,7 @@
 
 pkgname=yfktest
 pkgver=0.0.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Ham Radio Contesting Logger"
 arch=('any')
 url="http://fkurz.net/ham/yfktest.html"
@@ -12,8 +12,9 @@ license=('GPL')
 depends=('perl-curses' 'desktop-file-utils' 'cty' 'masterscp')
 optdepends=('hamlib: rig interfacing'
 	    'cwdaemon: transmitting cw'
-	    'winkeydeamon: usb cw xmit'
-	    'bigcty: contest version country files')
+	    'winkeydaemon: usb cw xmit'
+	    'bigcty: contest version country files'
+	    'hamradio-menus: XDG compliant menuing')
 install=$pkgname.install
 source=(
 #http://fkurz.net/ham/$pkgname/$pkgname-$pkgver.tar.gz
@@ -23,7 +24,7 @@ source=(
 
 __svntrunk="svn://svn.fkurz.net/yfktest/"
 __svnmod=('trunk')
-__svnrev=656
+__svnrev=665
 
 prepare() {
 	cd "$srcdir"
