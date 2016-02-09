@@ -1,7 +1,7 @@
 # Maintainer: D. Can Celasun <dcelasun[at]gmail[dot]com>
 pkgname=n1
 pkgver=0.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="N1 is a new mail client for Mac, Linux and Windows, built on the modern web and designed to be extended."
 arch=('x86_64')
 url="https://nylas.com/N1/"
@@ -22,7 +22,8 @@ package() {
     find "${pkgdir}"/usr -type f -exec chmod 644 {} \;
     find "${pkgdir}"/usr/bin -type f -exec chmod 755 {} \;
     find "${pkgdir}"/usr -type d -exec chmod 755 {} \;
-    chmod 755 "${pkgdir}"/usr/share/nylas/nylas 
+    chmod 755 "${pkgdir}"/usr/share/nylas/nylas
+    chmod 755 "${pkgdir}"/usr/share/nylas/resources/app/apm/bin/{node,apm}
 
     mkdir -p "${pkgdir}"/usr/share/licenses/nylas-n1/
 
