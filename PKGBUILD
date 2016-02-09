@@ -3,7 +3,7 @@
 
 pkgname=meataxe
 pkgver=2.4.24
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of programs for working with matrix representations over finite fields"
 arch=(i686 x86_64)
 url="http://www.math.rwth-aachen.de/~MTX/"
@@ -26,9 +26,9 @@ md5sums=('e0f384e37a69671c73c2904e4e69dc01'
 prepare() {
   cd $pkgname-$pkgver
 #  for _patch in IO_fixes StrassenWinogradImplementation StrassenWinogradUsage TweakEchelon UseErrorPropagation; do
-#  for _patch in p1 p2 p3 p4 p5; do
-#   patch -p1 -i ../$_patch.patch
-#  done
+  for _patch in p1 p2 p3 p4 p5; do
+   patch -p1 -i ../$_patch.patch
+  done
 }
 
 build() {
@@ -37,14 +37,15 @@ build() {
   export CFLAGS="-std=gnu99 -O -Wall -fPIC"
   export ZZZ=0
   touch Makefile.conf
-  make
+# make
+  make tmp/libmtx.a
 }
 
 package() {
   cd $pkgname-$pkgver
   
-  mkdir -p "$pkgdir"/usr/{include,lib,bin,share/doc/meataxe}
-  install -m755 bin/* "$pkgdir"/usr/bin
+  mkdir -p "$pkgdir"/usr/{include,lib,share/doc/meataxe}
+#  install -m755 bin/* "$pkgdir"/usr/bin
   install -m644 tmp/libmtx.a "$pkgdir"/usr/lib
   install -m644 src/meataxe.h "$pkgdir"/usr/include
   install -m644 doc/* "$pkgdir"/usr/share/doc/meataxe
