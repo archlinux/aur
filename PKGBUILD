@@ -52,7 +52,7 @@ build() {
            -DGuiModule=ntk
   make
 
-  # build external programs
+  # External programs
   cd "../${pkgname}/ExternalPrograms/Spliter" && make
   cd "../Controller" && make
 }
@@ -61,17 +61,15 @@ package() {
   cd "${srcdir}/build"
   make DESTDIR="${pkgdir}/" install
 
-  # external programs
-  install -Dm644 "../${pkgname}/ExternalPrograms/Spliter/spliter" \
+  # External programs and documentation.
+  install -Dm755 "../${pkgname}/ExternalPrograms/Spliter/spliter" \
                  "${pkgdir}/usr/bin/spliter"
-  install -Dm644 "../${pkgname}/ExternalPrograms/Controller/controller" \
-                 "${pkgdir}/usr/bin/controller"
-
-  # spliter doc
   install -Dm644 "../${pkgname}/ExternalPrograms/Spliter/readme.txt" \
                  "${pkgdir}/usr/share/doc/zynaddsubfx/SPLITER.txt"
+  install -Dm755 "../${pkgname}/ExternalPrograms/Controller/controller" \
+                 "${pkgdir}/usr/bin/controller"
 
-  # additional parameters
+  # Additional parameters
   install -d "${pkgdir}/usr/share/zynaddsubfx/parameters"
   bsdtar --strip-components 1 --uid 0 --gid 0 -zxf \
                  ${srcdir}/${source[1]##*/} -C \
