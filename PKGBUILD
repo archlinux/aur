@@ -1,35 +1,38 @@
 # Maintainer: Boohbah <boohbah at gmail.com>
+# Contributor: mathieui <mathieui[at]mathieui.net>
+# Contributor: rayanamukami <matthewchoi_123 at hotmail.com>
 
 pkgname=oneko
-pkgver=1.2.sakura.5
-pkgrel=1
-pkgdesc="A modified version of oneko. KINOMOTO Sakura chases around your mouse cursor."
-arch=('i686' 'x86_64')
+pkgrel=4
+pkgver=1.2.5
+_pkgver="1.2.sakura.5"
+pkgdesc="A cat that chases around your cursor"
+arch=('x86_64' 'i686')
 url="http://www.daidouji.com/oneko/"
-license=('Unknown')
-depends=('libx11')
-makedepends=('libxext')
-source=("http://www.daidouji.com/oneko/distfiles/$pkgname-$pkgver.tar.gz"
-        'add-includes.patch')
-md5sums=('456b318fa6e61431bf4f0a42b110014a'
-         'fae2e02a36ececa2bcf13e08afa2bd95')
-
-prepare() {
-  cd "$pkgname-$pkgver"
-  patch -p1 -i "$srcdir/add-includes.patch"
-}
+license=('Public Domain')
+depends=('libx11' 'libxext')
+makedepends=('imake' 'make' 'desktop-file-utils')
+source=("http://www.daidouji.com/$pkgname/distfiles/$pkgname-$_pkgver.tar.gz")
+md5sums=('456b318fa6e61431bf4f0a42b110014a')
 
 build() {
-  cd "$pkgname-$pkgver"
-  gcc -lm -lX11 -o oneko oneko.c
+    cd "$srcdir/$pkgname-$_pkgver/"
+    xmkmf -a
+    make
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  install -Dm755 oneko "$pkgdir/usr/bin/oneko"
-  install -Dm644 oneko.man "$pkgdir/usr/share/man/man6/oneko.6"
-  mkdir "$pkgdir/usr/share/oneko"
-  cp -a bitmaps bitmasks cursors "$pkgdir/usr/share/oneko"
-}
+    cd "$srcdir/$pkgname-$_pkgver/"
+    _mandir="$pkgdir/usr/share/man"
 
-# vim:set ts=2 sw=2 et:
+    mkdir -p "$_mandir/man1/"
+    mkdir -p "$_mandir/jp/man1/"
+    mkdir -p "$pkgdir/usr/bin"
+
+    make DESTDIR=$pkgdir install
+
+    cp oneko.man "$_mandir/man1/oneko.1"
+    cp oneko.man.jp "$_mandir/jp/man1/oneko.1"
+    echo -e '#!/bin/sh'"\nxsetroot -cursor_name top_left_arrow || xsetroot -cursor_name left_ptr " > "$pkgdir/usr/bin/oneko-restore-cursor"
+    chmod +x "$pkgdir/usr/bin/oneko-restore-cursor"
+}
