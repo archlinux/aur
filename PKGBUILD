@@ -1,9 +1,9 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=routino-svn
 pkgver=r1832
-pkgrel=1
+pkgrel=2
 pkgdesc='Router for OpenStreetMap Data'
-arch=('x86_64')
+arch=('i386' 'x86_64')
 url='http://www.routino.org/'
 license=('AGPL3')
 depends=('zlib' 'bzip2')
