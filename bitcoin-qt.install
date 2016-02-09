@@ -1,6 +1,6 @@
 post_install() {
-    _mkrpcpass
-    [[ ! -e "$HOME/.bitcoin/server.pem" ]] && _mkssl
+#    _mkrpcpass
+#    [[ ! -e "$HOME/.bitcoin/server.pem" ]] && _mkssl
     update-desktop-database -q
     printf "%b\n" "$bitcoin"
 }
@@ -68,8 +68,17 @@ read -d '' bitcoin <<'EOF'
 ##  Bitcoin Classic                                                   ##
 ##  ____________                                                      ##
 ##                                                                    ##
-##  Config:        ~/.bitcoin/bitcoin.conf                            ##
-##  Blockchain:    ~/.bitcoin/                                        ##
+##    In order to secure RPC, you should create a bitcoin.conf        ##
+##  file in "~/.bitcoin" to configure RPC, at least containing        ##
+##  the following lines:                                              ##
+##                                                                    ##
+##    rpcallowip=127.0.0.1                                            ##
+##    rpcuser=bitcoin                                                 ##
+##    rpcpassword=Your_long_secret_password_here                      ##
+##                                                                    ##
+##    OR                                                              ##
+##                                                                    ##
+##    server=0                                                        ##
 ##                                                                    ##
 ########################################################################
 ########################################################################

@@ -4,7 +4,7 @@ pkgname=bitcoin-classic
 pkgver=v0.11.2.cl1.b2
 _vertemp=${pkgver%.*.*}
 _ver=${_vertemp#v}
-pkgrel=1
+pkgrel=2
 pkgdesc='Official Bitcoin Classic binaries: bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt with auto setup of RPC SSL'
 arch=('i686' 'x86_64')
 url="https://bitcoinclassic.com/"
@@ -84,12 +84,12 @@ package() {
   install -Dm 644 "$srcdir/bitcoin-qt.1" -t "$pkgdir/usr/share/man/man1"
   install -Dm644 "$srcdir/bitcoin.conf.5" -t "$pkgdir/usr/share/man/man5"
 
-  msg2 'Installing bitcoin.conf if one does not already exist...'
-  [[ ! -e "$HOME/.bitcoin/bitcoin.conf" ]] && install -Dm 600 "$srcdir/bitcoin.conf" \
-	-t "$pkgdir$HOME/.bitcoin"
+#  msg2 'Installing bitcoin.conf if one does not already exist...'
+#  [[ ! -e "$HOME/.bitcoin/bitcoin.conf" ]] && install -Dm 600 "$srcdir/bitcoin.conf" \
+#	-t "$pkgdir$HOME/.bitcoin"
 
-  msg2 "Placing proper home directory location in .install file..."
-	sed -i "s|\$HOME|$HOME|g" $startdir/bitcoin-qt.install
+#  msg2 "Placing proper home directory location in .install file..."
+#	sed -i "s|\$HOME|$HOME|g" $startdir/bitcoin-qt.install
 
 	msg2 'Installing icon...'
 	install -Dm644 "$srcdir/bitcoin128.png" "$pkgdir/usr/share/pixmaps/bitcoin128.png"
