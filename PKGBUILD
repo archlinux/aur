@@ -1,21 +1,15 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname=svtplay-dl
-pkgver=0.30.2016.01.10
+pkgver=0.30.2016.02.08
 pkgrel=1
-pkgdesc="Small command-line program to download videos from svtplay.se/tv4play.se/tv3play.se/tv8play.se/tv6play.se/viaplay.se/aftonbladet"
+pkgdesc="Media downloader for "play" sites (e.g. SVT Play)"
 url="https://github.com/spaam/svtplay-dl"
 license=('MIT')
 arch=('any')
 depends=('rtmpdump' 'python-crypto' 'python-requests')
 makedepends=('python-setuptools')
 source=(https://github.com/spaam/svtplay-dl/archive/$pkgver.tar.gz)
-md5sums=('0d3af899786f199b2a60a08e3f6d55e6')
-
-prepare() {
-
-sed -i 's/hashlib.sha256(data\[\"programVersionId\"\]).hexdigest()/hashlib.sha256(data\[\"programVersionId\"\].encode('\''utf-8'\'')).hexdigest()/g' "$srcdir/$pkgname-$pkgver/lib/svtplay_dl/service/svtplay.py"
-
-}
+md5sums=('d4dcea149df9c9edc01f00c83c2fedaf')
 
 package() {
 
@@ -23,9 +17,9 @@ package() {
 
   python setup.py install --root="$pkgdir/" --optimize=1
 
-  pod2man --section 1 --utf8 --center "svtplay-dl manual" --release "svtplay-dl 0.30" --date "2016.01.10" svtplay-dl.pod svtplay-dl.1
-  gzip -9 svtplay-dl.1
-  install -Dm644 "$srcdir/$pkgname-$pkgver/svtplay-dl.1.gz" "$pkgdir/usr/share/man/man1/svtplay-dl.1.gz"
+  pod2man --section 1 --utf8 --center "${pkgname} manual" --release "${pkgname} ${pkgver:0:4}" --date "${pkgver:5:10}" ${pkgname}.pod ${pkgname}.1
+  gzip -9 ${pkgname}.1
+  install -Dm644 "$srcdir/$pkgname-$pkgver/${pkgname}.1.gz" "$pkgdir/usr/share/man/man1/${pkgname}.1.gz"
 
   install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
