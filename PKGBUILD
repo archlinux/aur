@@ -31,7 +31,7 @@ pkgver() {
 
 
 pkgname=nginx-nchan-git
-pkgver=1.9.9.nchan0.98.r0.g3f0862b
+pkgver=1.9.9.nchan0.99.r0.g2b0a004
 pkgrel=1
 pkgdesc="Nginx + Nchan - a flexible pub/sub server (git version)"
 arch=('i686' 'x86_64')
