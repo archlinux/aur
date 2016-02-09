@@ -2,7 +2,7 @@
 
 pkgname=cc-tool-git
 pkgver=r6.6a8ab82
-pkgrel=2
+pkgrel=3
 pkgdesc="Support for Texas Instruments CC Debugger"
 arch=('x86_64')
 url='https://github.com/dashesy/cc-tool.git'
@@ -11,6 +11,8 @@ makedepends=('git')
 depends=('boost>=1.39.0')
 source=('git+https://github.com/dashesy/cc-tool.git')
 md5sums=('SKIP')
+conflicts=('cc-tool')
+provides=('cc-tool')
 
 pkgver() {
   cd "$srcdir/cc-tool"
