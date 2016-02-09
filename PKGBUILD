@@ -1,6 +1,6 @@
 # Maintainer: Mathias Bragagia <youremail@domain.com>
 pkgname=kana-p
-pkgver=0.3.3
+pkgver=0.4
 pkgrel=1
 pkgdesc="Lite desktop manager - use lightdm, awesome and compton - BETA"
 arch=('any')
@@ -114,6 +114,16 @@ depends=(
 	'util-linux'
 	'accountsservice'
 
+	'xorg-fonts-type1'
+	'artwiz-fonts'
+	'font-bh-ttf'
+	'font-bitstream-speedo'
+	'gsfonts'
+	'sdl_ttf'
+	'ttf-cheapskate'
+	'ttf-freefont'
+	'ttf-arphic-uming'
+	'ttf-baekmuk'
 	'ttf-dejavu'
 	'ttf-bitstream-vera'
 	'ttf-opensans'
@@ -127,10 +137,9 @@ depends=(
 	'srandrd'
 
 	'lightdm'
-	'lightdm-gtk-greeter'
 	'lightdm-webkit-greeter'
 	'lightdm-webkit-theme-bevel-git'
-	'light-locker'
+	'i3lock-wrapper'
 
 	'compton'
 	'awesome'
