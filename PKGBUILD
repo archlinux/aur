@@ -35,13 +35,13 @@ prepare() {
   cd "${srcdir}/${pkgname}"
   git checkout ${_branch}
 
-  # pull rtosc and instruments
+  # Pull rtosc and instruments
   git submodule update --init
 
-  # does not build with --as-needed
+  # Does not build with --as-needed
   LDFLAGS=${LDFLAGS//,--as-needed}
 
-  # do not use /usr/lib64
+  # Prevent use of /usr/lib64
   sed -i 's:lib64:lib:' src/CMakeLists.txt
 }
 
