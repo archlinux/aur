@@ -1,3 +1,4 @@
+# Maintainer: Stefano Campanella <stefanocampanella1729@gmail.com>
 pkgname=pythia
 pkgver=8.2.12
 _pkgid=$pkgname`echo $pkgver | tr -d '.'`
@@ -7,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://home.thep.lu.se/Pythia/"
 license=('GPL')
 makedepends=('rsync')
-provides=$pkgname
+provides=('$pkgname')
 source=("http://home.thep.lu.se/~torbjorn/pythia8/$_pkgid.tgz"
 'pythia.sh')
 md5sums=('0886d1b2827d8f0cd2ae69b925045f40'
