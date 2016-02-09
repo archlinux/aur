@@ -1,7 +1,7 @@
 # Maintainer: Daniel Appelt <daniel.appelt@gmail.com>
 pkgname=openmusic
-pkgver=6.9.1_beta_0
-pkgrel=3
+pkgver=6.10.1
+pkgrel=2
 pkgdesc="A visual programming language designed for music composition. (32 bit)"
 arch=('i686' 'x86_64')
 url="http://repmus.ircam.fr/openmusic/linux"
@@ -30,9 +30,9 @@ install="$pkgname.install"
 # respective agent configuration.
 export CURL_HOME="$startdir"
 source=('.curlrc'
-        "http://forge.ircam.fr/p/OM/downloads/get/OM_${pkgver}.tar.bz2")
-md5sums=('b0dc7498bade5c4fa60da87503a16ef2'
-         '6ba97ee9b63e4e8b3e9487ef8e758992')
+        "http://forge.ircam.fr/p/OM/downloads/get/OM_${pkgver}-${pkgrel}.tar.bz2")
+sha256sums=('21473828e9f743d216caf06dc13ec1dfc78d500e7e58d13414c682653388ea7e'
+            '94ac8332a609f2ad6ae94ac3f274f66d773b130afc43ca99de54c7ff4cb2e200')
 
 package() {
 	cd "$srcdir/OM_${pkgver}"
