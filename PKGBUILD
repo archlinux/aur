@@ -1,5 +1,5 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
-# Contributor: josephgbr <rafael.f.f1@gmail.com>
+# Contributor: josephgbr
 
 pkgbase=lib32-smbclient
 pkgname=('lib32-libwbclient' 'lib32-smbclient')
@@ -51,6 +51,7 @@ $(find ${srcdir}/samba-${pkgver}/source4/scripting -type f)"
     --enable-fhs \
     --enable-gnutls \
     --disable-rpath-install \
+    --disable-glusterfs \
     --with-configdir='/etc/samba' \
     --with-lockdir='/var/cache/samba' \
     --with-piddir='/var/run' \
