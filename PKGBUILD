@@ -1,6 +1,6 @@
 # Maintainer: Tobias Frilling <tobias@frilling-online.de>
 pkgname=leiningen-completions
-pkgver=2.5.2
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="Completion scripts for leiningen"
 arch=('any')
@@ -8,11 +8,11 @@ url="http://github.com/technomancy/leiningen"
 license=("EPL")
 conflicts=('zsh-completions' 'zsh-completions-git')
 
-_commit="fe48537e7d6e7a042729fe3cf16bb0b34679938f"
+_commit="f9a464e008214941e93c046413004517325818bb"
 source=("https://raw.github.com/technomancy/leiningen/$_commit/zsh_completion.zsh"
         "https://raw.github.com/technomancy/leiningen/$_commit/bash_completion.bash")
-sha1sums=('9a2986ec76216060ff2e65ef0af142ca50aaa63b'
-          '824028076c419324a7b32f5344fef4d546ac21b5')
+md5sums=('651b6383e1c0b1481fe1c93bf8ee2474'
+         '1561749a48bc6a3f17627ce6af1d80ba')
 
 package() {
   cd ${srcdir}
