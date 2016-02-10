@@ -1,10 +1,10 @@
 # Maintainer: Chris <alostengineer at narmos dot org>
 pkgname=madsonic6
-pkgver=6.0.78960
+pkgver=6.0.7860
 pkgvera=6.0
 pkgdate=20160109
-pkgrel=2
-pkgdesc="Madsonic Mashup Mod is a fork of the Subsonic Server Build with some Subsonic Data schema modifications! This is the latest devel version.:"
+pkgrel=1
+pkgdesc="Madsonic Mashup Mod is a fork of the Subsonic Server Build with some Subsonic Data schema modifications! This is the latest stable version.:"
 arch=('i686' 'x86_64')
 url="http://madsonic.org/"
 license=('GPL')
