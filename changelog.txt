@@ -1,3 +1,6 @@
+Git commits ab60329->dc9f278
+	* Fix typo (LPAD -> RPAD)
+
 Git commits a8c0b8a->ab60329
 	* Callback work for trigger axis event
 
