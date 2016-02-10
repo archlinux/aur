@@ -3,7 +3,7 @@
 
 pkgname=meataxe
 pkgver=2.4.24
-pkgrel=2
+pkgrel=3
 pkgdesc="A set of programs for working with matrix representations over finite fields"
 arch=(i686 x86_64)
 url="http://www.math.rwth-aachen.de/~MTX/"
@@ -34,7 +34,7 @@ prepare() {
 build() {
   cd $pkgname-$pkgver
 
-  export CFLAGS="-std=gnu99 -O -Wall -fPIC"
+  export CFLAGS1="$CFLAGS -std=gnu99 -O -Wall -fPIC"
   export ZZZ=0
   touch Makefile.conf
 # make
