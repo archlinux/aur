@@ -1,11 +1,6 @@
 post_install() {
-	# lpr
 	/opt/brother/Printers/mfcj6920dw/inf/setupPrintcapij mfcj6920dw -i
-	
-	# cupswrapper
 	/opt/brother/Printers/mfcj6920dw/cupswrapper/cupswrappermfcj6920dw
-	
-	systemctl restart org.cups.cupsd
 }
 
 post_upgrade() {
@@ -13,14 +8,6 @@ post_upgrade() {
 }
 
 pre_remove() {
-	# lpr
 	/opt/brother/Printers/mfcj6920dw/inf/setupPrintcapij mfcj6920dw -e
-	
-	# cupswrapper
 	/opt/brother/Printers/mfcj6920dw/cupswrapper/cupswrappermfcj6920dw -e
 }
-
-op=$1
-shift
-
-$op "$@"
