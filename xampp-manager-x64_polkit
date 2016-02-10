@@ -1,0 +1,6 @@
+#!/bin/bash
+if [ $(which pkexec) ]; then
+	pkexec "/opt/lampp/manager-linux-x64.run" "$@"
+else
+	/opt/lampp/manager-linux-x64.run "$@"
+fi
