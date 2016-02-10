@@ -1,5 +1,4 @@
 # Maintainer: Christian Rebischke <chris.rebischke@archlinux.org>
-# vim:set noet sts=4 sw=4 ts=4 tw=76:
 
 _pyname=oletools
 pkgname=python2-oletools
@@ -11,7 +10,7 @@ arch=('any')
 url="https://bitbucket.org/decalage/oletools"
 license=('BSD')
 source=("https://bitbucket.org/decalage/oletools/downloads/$_pyname-$pkgver.tar.gz")
-sha512sums=('4c9a1141b7d3e59010e5af93acced268c7c027c9049232b67fad8b0770de3cc55a9ca87178fb9d714bc485d95e9cf0f10b30101fc61b7ab6f1caf40d5ea427af')
+sha512sums=('d70d8c0dde63b8e69eafbbcda60928e6e45b306f87562a64b3b1fad94f729a04b210b2f6634e030ed69e1dd3cab61a365c875021f0e9e01f6a862f3533fadbae')
 
 package() {
 	cd "$srcdir/$_pyname-$pkgver"
@@ -22,3 +21,4 @@ package() {
 
 }
 
+# vim:set noet sts=4 sw=4 ts=4 tw=76:
