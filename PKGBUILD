@@ -1,9 +1,10 @@
 pkgbase=swift-language
 pkgname=(swift swift-lldb)
-_swiftver=2.2-SNAPSHOT-2016-01-25-a
-_develver=${_swiftver//2.2-SNAPSHOT/DEVELOPMENT-SNAPSHOT}
+_swiftver=2.2-SNAPSHOT-2016-02-08-a
+_swiftold=2.2-SNAPSHOT-2016-01-11-a
+#_develver=${_swiftver//2.2-SNAPSHOT/DEVELOPMENT-SNAPSHOT}
 pkgver=${_swiftver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="The Swift programming language and debugger"
 arch=('i686' 'x86_64')
 url="http://swift.org/"
@@ -17,20 +18,20 @@ source=(
     "swift-clang-${_swiftver}.tar.gz::https://github.com/apple/swift-clang/archive/swift-${_swiftver}.tar.gz"
     "swift-lldb-${_swiftver}.tar.gz::https://github.com/apple/swift-lldb/archive/swift-${_swiftver}.tar.gz"
     "swift-cmark-${_swiftver}.tar.gz::https://github.com/apple/swift-cmark/archive/swift-${_swiftver}.tar.gz"
-    "swift-llbuild-${_develver}.tar.gz::https://github.com/apple/swift-llbuild/archive/swift-${_develver}.tar.gz"
-    "swift-package-manager-${_develver}.tar.gz::https://github.com/apple/swift-package-manager/archive/swift-${_develver}.tar.gz"
-    "swift-corelibs-xctest-${_develver}.tar.gz::https://github.com/apple/swift-corelibs-xctest/archive/swift-${_develver}.tar.gz"
-    "swift-corelibs-foundation-${_develver}.tar.gz::https://github.com/apple/swift-corelibs-foundation/archive/swift-${_develver}.tar.gz"
+    "swift-llbuild-${_swiftold}.tar.gz::https://github.com/apple/swift-llbuild/archive/swift-${_swiftold}.tar.gz"
+    "swift-package-manager-${_swiftold}.tar.gz::https://github.com/apple/swift-package-manager/archive/swift-${_swiftold}.tar.gz"
+    "swift-corelibs-xctest-${_swiftold}.tar.gz::https://github.com/apple/swift-corelibs-xctest/archive/swift-${_swiftold}.tar.gz"
+    "swift-corelibs-foundation-${_swiftold}.tar.gz::https://github.com/apple/swift-corelibs-foundation/archive/swift-${_swiftold}.tar.gz"
 )
-sha256sums=('616cf1cfaa407ffb22cd60f9c5a95dc3227665c72dd5c8d044b31174430af3b6'
-            '7b07af901b6fe42793e4f25a470db8d61c60c16b92e434de17fc151861e00172'
-            'eec56334ffcec1cefaca5758031c722a0cf12eb0d3fac30f9d30c1bded16eeea'
-            '1016010c5496db0f57c5cf822f12a7d9742ca51374b39fce1e5f599d4cf6deb8'
-            '063469a810855a622bb05846b3f74fb0f0f92585e46c5ec16618188a71d21f24'
-            'dbf0aa2b04d04cce2281b452008506ffbe140d47c3a4d933ad715e6ee1ccdf06'
-            '84105f264f16755e27a0ebc8d25de51c1d72a33007b61ad68eb0ea185f15b0a8'
-            'a04845547b7f81e3e68e3df171393159550c4b3ecdea51768ac976d29c0b1c30'
-            'cf16b948cc84fc9d3f16c6a7d8955a3a68f00d762323e828a74499b58f68893b')
+sha256sums=('0bbb6ea37c05ca73862ee8f9f05ed2118aca12d6c0b371c1cbaf66ed333f6325'
+            '93a142abd766418669816d21e47c0b855719e1b08da946499fd4f48e3d55cb46'
+            'cc0eb9e27799b8b2cadf906da4fc7dec1da7952793543d922dea67e104a20421'
+            'b75eacd9360142f8014a24317299da1d90ada6c2a6a0b92bca47a239cc347260'
+            '075b1ebd1446b1c430de776e83817f9fb0cfd0cdd33a77b2ff926d45b16a0715'
+            'c5e92b71daecbeeb8fe043fe58bc85c7deacaadc21caa38357d569ae4093a023'
+            '60b11af87b565d68dd5e6d13af5052f359923e3146a6ffc8336c86d68b5c4fa6'
+            '5fde35c76b688ec37d8e25f0bc3cc1738548d8bd03a709bcfb3cb2744b221a9e'
+            '66bf0fb21c37bb2792b113b770e225c90bca548b2246f86054e14c6cc79f0517')
 
 prepare() {
     # Use python2 where appropriate
@@ -52,15 +53,15 @@ prepare() {
     # Use directory names which build-script expects
     for sdir in llvm clang lldb cmark llbuild corelibs-xctest corelibs-foundation; do
         if [[ "$sdir" =~ ^corelibs- ]]; then
-            ln -sf swift-${sdir}-swift-${_develver} swift-${sdir}
+            ln -sf swift-${sdir}-swift-${_swiftold} swift-${sdir}
         elif [[ "$sdir" == "llbuild" ]]; then
-            ln -sf swift-${sdir}-swift-${_develver} ${sdir}
+            ln -sf swift-${sdir}-swift-${_swiftold} ${sdir}
         else
             ln -sf swift-${sdir}-swift-${_swiftver} ${sdir}
         fi
     done
     ln -sf swift-swift-${_swiftver} swift
-    ln -sf swift-package-manager-swift-${_develver} swiftpm
+    ln -sf swift-package-manager-swift-${_swiftold} swiftpm
 }
 
 build() {
