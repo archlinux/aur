@@ -15,7 +15,7 @@ pkgver() {
     cd "$srcdir/$_pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgrel=3
+pkgrel=4
 pkgdesc="Vim-like five-fingered interface for Firefox"
 arch=(any)
 url="http://dactyl.sourceforge.net/pentadactyl"
