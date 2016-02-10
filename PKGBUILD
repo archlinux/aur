@@ -3,7 +3,7 @@
 pkgname=cmake-elementary-bzr
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="CMake's elementary moduiles"
+pkgdesc="CMake's elementary modules"
 arch=('any')
 url="https://code.launchpad.net/~elementary-os/+junk/cmake-modules"
 license=('GPL3')
