@@ -2,12 +2,13 @@
 
 pkgname=acpi_call-dkms
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A linux kernel module that enables calls to ACPI methods through /proc/acpi/call'
-arch=('i686' 'x86_64')
-url=('http://github.com/mkottman/acpi_call')
+arch=('any')
+url='http://github.com/mkottman/acpi_call'
 license=('GPL')
 depends=('dkms')
+makedepends=('markdown')
 optdepends=('linux-headers: needed if using archlinux default kernel'
 	    'linux-lts-headers: needed if using the archlinux lts kernel')
 provides=('acpi_call')
@@ -35,6 +36,12 @@ DEST_MODULE_LOCATION[0]="/extra"
 EOF
 }
 
+build() {
+	cd "${srcdir}/acpi_call-${pkgver}"
+
+	markdown README.md > README.html
+}
+
 package() {
 	cd "${srcdir}/acpi_call-${pkgver}"
 
@@ -53,5 +60,6 @@ package() {
 
 	# install REAMDE
 	install -D -m0644 README.md "${pkgdir}/usr/share/doc/acpi_call/README.md"
+	install -D -m0644 README.html "${pkgdir}/usr/share/doc/acpi_call/README.html"
 }
 
