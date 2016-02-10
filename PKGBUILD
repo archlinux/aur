@@ -1,18 +1,16 @@
-# Maintainer: DonVla <donvla@users.sourceforge.net>
+# Maintainer: Marcin Wieczorek <marcin@marcin.co>
+# Contributor: DonVla <donvla@users.sourceforge.net>
 
 pkgname=dcompmgr-git
-pkgver=20110523
+pkgver=20160210
 pkgrel=1
 pkgdesc="Dana's composite manager (not for production use)"
 arch=(i686 x86_64)
 url="http://git.openbox.org/?p=dana/dcompmgr.git;a=summary"
 license=('GPL')
 depends=('libgl' 'glproto')
-source=()
-noextract=()
 _gitroot="git://git.openbox.org/dana/dcompmgr"
 _gitname="dcompmgr"
-
 
 package() {
   cd "$srcdir"
