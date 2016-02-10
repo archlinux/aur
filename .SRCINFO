@@ -4,7 +4,6 @@ pkgbase = google-chrome-beta
 	pkgrel = 1
 	url = https://www.google.com/chrome/index.html
 	install = google-chrome-beta.install
-	arch = i686
 	arch = x86_64
 	license = custom:chrome
 	makedepends = pacman>=4.2.0
@@ -32,14 +31,12 @@ pkgbase = google-chrome-beta
 	provides = pepper-flash
 	options = !emptydirs
 	options = !strip
+	source = google-chrome-beta_49.0.2623.39_amd64.deb::https://dl.google.com/linux/direct/google-chrome-beta_current_amd64.deb
 	source = google-chrome-beta
 	source = eula_text.html
+	md5sums = ab3ad7f02d59868ac5fcc73fe20bec6d
 	md5sums = ca16d5162eed85b1ba4e6b9fc37f9e35
 	md5sums = b7e752f549b215ac77f284b6486794b6
-	source_i686 = google-chrome-beta_49.0.2623.39_i386.deb::https://dl.google.com/linux/direct/google-chrome-beta_current_i386.deb
-	md5sums_i686 = f93d5483fc58cc4a00bd354bd7367a7e
-	source_x86_64 = google-chrome-beta_49.0.2623.39_amd64.deb::https://dl.google.com/linux/direct/google-chrome-beta_current_amd64.deb
-	md5sums_x86_64 = ab3ad7f02d59868ac5fcc73fe20bec6d
 
 pkgname = google-chrome-beta
 
