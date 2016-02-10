@@ -2,7 +2,7 @@
 
 _plug=knlmeanscl
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=0.7.4.r246.f70fcaf
+pkgver=0.7.4.r256.ed072e3
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -31,13 +31,14 @@ prepare() {
 
 build() {
   cd "${_plug}"
-  ./configure --install=/usr/lib/vapoursynth \
-              --extra-cxxflags="${CXXFLAGS} ${CPPFLAGS}" \
-              --extra-ldflags="${LDFLAGS}"
+  ./configure \
+    --install=/usr/lib/vapoursynth \
+    --extra-cxxflags="${CXXFLAGS} ${CPPFLAGS}" \
+    --extra-ldflags="${LDFLAGS}"
   make
 }
 
 package(){
   make -C "${_plug}" DESTDIR="${pkgdir}" install
-  install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+  install -Dm644 "${_plug}/DOC.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/DOC.md"
 }
