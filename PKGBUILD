@@ -3,14 +3,18 @@
 _plug=knlmeanscl
 pkgname=vapoursynth-plugin-${_plug}
 pkgver=0.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=171379'
 license=('GPL')
-depends=('vapoursynth' 'libcl')
-makedepends=('git' 'opencl-headers')
-source=("https://github.com/Khanattila/KNLMeansCL/archive/v${pkgver}.tar.gz")
+depends=('vapoursynth'
+         'libcl'
+         )
+makedepends=('git'
+             'opencl-headers'
+             )
+source=("${_plug}-${pkgver}.tar.gz::https://github.com/Khanattila/KNLMeansCL/archive/v${pkgver}.tar.gz")
 sha1sums=('ad180de5e244a97e6629dfdecee7b46e73e1b06a')
 
 # prepare() {
@@ -19,13 +23,14 @@ sha1sums=('ad180de5e244a97e6629dfdecee7b46e73e1b06a')
 
 build() {
   cd "KNLMeansCL-${pkgver}"
-  ./configure --install=/usr/lib/vapoursynth \
-              --extra-cxxflags="${CXXFLAGS} ${CPPFLAGS}" \
-              --extra-ldflags="${LDFLAGS}"
+  ./configure \
+    --install=/usr/lib/vapoursynth \
+    --extra-cxxflags="${CXXFLAGS} ${CPPFLAGS}" \
+    --extra-ldflags="${LDFLAGS}"
   make
 }
 
 package(){
   make -C "KNLMeansCL-${pkgver}" DESTDIR="${pkgdir}" install
-  install -Dm644 "KNLMeansCL-${pkgver}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+  install -Dm644 "KNLMeansCL-${pkgver}/DOC.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/DOC.md"
 }
