@@ -3,10 +3,10 @@
 
 pkgname="phpmd"
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Takes a given PHP source code base and look for several potential problems within that source."
 url="http://phpmd.org/"
-license="BSD"
+license=("BSD")
 arch=("any")
 depends=("php>=5.3.0")
 source=(
