@@ -4,9 +4,9 @@
 pkgname=pamac-aur
 pkgver=3.0.0
 _pkgver=3.0.0
-pkgrel=1
+pkgrel=4
 # This is the release package so the below _gitcommit variable should (usually) be commented out.
-#_gitcommit="d7d393ed4e265ed0041a287e10306c6cf65971d8"
+_gitcommit="e53a71fc3a8d77b9d95cb7fef9fd5dab9c778756"
 pkgdesc="A Gtk3 frontend for libalpm"
 arch=('any')
 url="https://github.com/manjaro/pamac"
@@ -29,24 +29,18 @@ else
   source=("pamac-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 fi
 
-#source+=('notification-improvment.patch::https://github.com/manjaro/pamac/pull/88.patch')
-#source+=('pacman5.patch')
-
-sha256sums=('e1806ea77d23dbb91c56ea70c0a7279d3bcaa25989f84f360900cf39e5e93b94')
-#sha256sums+=('749d9d153fbbe5b3709423983a6da6dfafae16a09acf8ccb6d35427f47cb804a')
-#sha256sums+=('282928e3292fdb8b9e60b60251779b544160a1724b4bf32379a5c9ce14ecf54f'
+sha256sums=('4d899635715a863dd554680e1eb830d7ce9fb026f7c901145e61b24c77d34641')
 
 prepare() {
   if [ "$_gitcommit" != "" ]; then
     mv "$srcdir/pamac-$_gitcommit" "$srcdir/pamac-$pkgver"
   fi
+
   # adjust version string
   cd "$srcdir/pamac-$pkgver/src"
-  sed -i -e "s|\"$_pkgver\"|\"$pkgver-$pkgrel\"|g" manager_window.vala
+  sed -i -e "s|\"$_pkgver\"|\"$pkgver-$pkgrel\"|g" pamac_config.vala 
   cd "$srcdir/pamac-$pkgver/"
   # patches here
-#  patch -Np1 -i $srcdir/notification-improvment.patch
-#  patch -Np1 -i $srcdir/pacman5.patch
 }
 
 build() {
