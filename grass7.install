@@ -1,0 +1,11 @@
+post_upgrade() {
+  gtk-update-icon-cache -q /usr/share/icons/hicolor
+}
+
+post_install() {
+  post_upgrade
+}
+
+post_remove() {
+  post_upgrade
+}
