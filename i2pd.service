@@ -7,7 +7,7 @@ User=i2p
 Group=i2p
 Type=forking
 PIDFile=/run/i2pd/i2pd.pid
-ExecStart=/usr/bin/i2pd --conf=/var/lib/i2pd/i2pd.conf --pidfile=/run/i2pd/i2pd.pid --service=1 --daemon=1
+ExecStart=/usr/bin/i2pd --conf=/var/lib/i2pd/i2pd.conf --pidfile=/run/i2pd/i2pd.pid --service --daemon
 ExecReload=/usr/bin/kill -HUP $MAINPID
 ### Uncomment, if auto restart needed
 #Restart=on-failure
