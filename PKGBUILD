@@ -6,7 +6,6 @@ pkgdesc="Automatically create portable Linux applications (formerly CDEpack)"
 url="http://www.pgbovine.net/cde.html"
 arch=('x86_64' 'i686')
 license=('GPL3')
-makedepends=()
 source=("https://github.com/pgbovine/${pkgname}/archive/v${pkgver}.tar.gz")
 md5sums=('8a9236ca9c38b0101bd931f24b09c32d')
 
