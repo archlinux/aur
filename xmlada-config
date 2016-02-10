@@ -1,0 +1,154 @@
+#!/bin/sh
+# @configure_input@
+
+xmlada_config_dir=`dirname $0`
+prefix=`(cd "$xmlada_config_dir"; pwd)`
+prefix=`dirname $prefix`
+
+exec_prefix=/usr
+libdir=/usr/lib/xmlada
+
+mflags_static=""
+mflags_relocatable=""
+libs_relocatable=""
+libs_static=""
+full_libs_relocatable=""
+full_libs_static=""
+
+cflags=-I/usr/include/xmlada
+
+mflags_static="${mflags_static} -aI/usr/include/xmlada -aO/usr/lib/xmlada/static"
+mflags_relocatable="${mflags_relocatable} -aI/usr/include/xmlada -aO/usr/lib/xmlada/relocatable"
+
+for module in sax unicode; do
+   libs_static="${libs_static} /usr/lib/xmlada/static/libxmlada_${module}.a"
+   libs_relocatable="${libs_relocatable} -L/usr/lib/xmlada/relocatable/ -lxmlada_${module}"
+done
+
+libs_static="${libs_static} /usr/lib/xmlada/static/libxmlada_input_sources.a"
+libs_relocatable="${libs_relocatable} -L/usr/lib/xmlada/relocatable -lxmlada_input_sources"
+
+for module in dom schema; do
+    full_libs_static="${full_libs_static} /usr/lib/xmlada/static/libxmlada_${module}.a"
+    full_libs_relocatable="${full_libs_relocatable} -lxmlada_${module}"
+done
+
+show_cflags=0
+show_mflags=1
+show_libs=1
+sax_only=0
+libtype=static
+
+usage()
+{
+   cat <<EOF
+Usage: xmlada-config [OPTIONS]
+Options:
+        No option:
+            Output all the flags (compiler and linker) required
+            to compiler your program
+        [--prefix]
+            Output the directory in which XML/Ada is installed
+        [--version|-v]
+            Output the version of XML/Ada
+        [--libs]
+            Output the linker flags to use for XML/Ada
+        [--cflags]
+            Output the compiler flags to use for XML/Ada
+        [--sax]
+            Output all the flags to use for XML/Ada, provided
+            you are not using the DOM module.
+        [--static]
+            Output all the flags (compiler and linker) required to
+            compile a static version of your program
+        [--shared]
+            Output flags to link with a shared library
+EOF
+}
+
+while test $# -gt 0; do
+  case "$1" in
+  -*=*) optarg=`echo "$1" | sed 's/[-_a-zA-Z0-9]*=//'` ;;
+  *) optarg= ;;
+  esac
+
+  case $1 in
+    --help|-h)
+      usage 1>&2
+      exit 1
+      ;;
+    --prefix)
+      echo $prefix
+      exit 0
+      ;;
+    --version|-v)
+      echo XmlAda 4.6.0.0
+      exit 0
+      ;;
+    --libs)
+      show_libs=1
+      show_cflags=0
+      show_mflags=0
+      ;;
+    --sax)
+      sax_only=1
+      ;;
+    --cflags)
+      show_libs=0
+      show_cflags=1
+      show_mflags=0
+      ;;
+    --static)
+      libtype=static
+      ;;
+    --shared)
+      libtype=relocatable
+      ;;
+    *)
+      usage 1>&2
+      exit 1
+      ;;
+  esac
+  shift
+done
+
+## Force static if relocatable was not installed
+if [ -d $libdir/relocatable ]; then
+   :
+else
+   libtype=static
+fi
+
+result=""
+
+if [ $show_cflags = 1 ]; then
+   result="$cflags"
+fi
+
+if [ $show_mflags = 1 ]; then
+   if [ $libtype = static ]; then
+      result="$mflags_static"
+   else
+      result="$mflags_relocatable"
+   fi
+
+   if [ $show_libs = 1 ]; then
+      result="$result -largs "
+   fi
+fi
+
+if [ $show_libs = 1 ]; then
+   if [ $libtype = static ]; then
+      result="${result}${libs_static}"
+      if [ $sax_only = 0 ]; then
+         result="${result} ${full_libs_static}"
+      fi
+   else
+      result="${result}${libs_relocatable}"
+      if [ $sax_only = 0 ]; then
+         result="${result} ${full_libs_relocatable}"
+      fi
+   fi
+fi
+
+echo $result
