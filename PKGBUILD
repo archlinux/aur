@@ -1,6 +1,6 @@
 # Maintainer: Alejandro Baez <code at baez dot nyc>
 
-pkgname='ta-rust'
+pkgname='ta-rust-hg'
 pkgver=r131.92194848a7d2
 pkgrel=1
 pkgdesc="A Rust module and lexer for Textadept"
