@@ -1,0 +1,8 @@
+[Unit]
+Description=Lampp service (XAMPP)
+
+[Service]
+Type=oneshot
+ExecStart=/opt/lampp/lampp start
+ExecStop=/opt/lampp/lampp stop
+RemainAfterExit=yes
