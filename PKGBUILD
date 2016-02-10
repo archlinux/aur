@@ -5,10 +5,10 @@ _basename="deprecation-detector"
 _tag="0.1.0-alpha4"
 pkgname="php-${_basename}"
 pkgver=${_tag/\-/\.}
-pkgrel=2
+pkgrel=3
 pkgdesc="static code analyzer for your project's source code to find usages of deprecated methods, classes and interfaces"
 url="https://github.com/sensiolabs-de/deprecation-detector"
-license="MIT"
+license=("MIT")
 arch=("any")
 depends=("php>=5.3.9")
 source=(
