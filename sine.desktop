@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.8.4
+Name=SINE Isochronic Entrainer
+Comment=Brainwave Entrainment Application
+Path=/usr/share/sine
+Exec=SINE
+Icon=sine
+Terminal=false
+Categories=AudioVideo;Audio;
+MimeType=application/x-sine

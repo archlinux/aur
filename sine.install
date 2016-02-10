@@ -1,0 +1,11 @@
+post_install() {
+    cd "/usr/share/sine"
+	xdg-icon-resource install --context mimetypes --size 256 preset.png application-x-sine
+	xdg-mime install preset-mime.xml
+	xdg-icon-resource install --novendor --size  256 sine.png sine
+	xdg-icon-resource install --novendor --size  256 editor.png sine-editor
+}
+pre_remove() {
+	cd "/usr/share/sine"
+	xdg-mime uninstall preset-mime.xml
+}
