@@ -1,12 +1,12 @@
 # Maintainer: Jnogueira <jnogueira at yandex dot com>
 # Based on the DCP-J552DW PKGBUILD -> Marius Rejdak <mariuswol at gmail dot com>
-_Bmodel=mfc
-_Bversion=j6920dw
+_Btype=mfc
+_Bmodel=j6920dw
 pkgver=3.0.0
 pkgrel=1
-_pkgname=${_Bmodel}${_Bversion}
-pkgname=brother-${_Bmodel}-${_Bversion}
-pkgdesc="Driver for the Brother ${_Bmodel^^}-${_Bversion^^} printer"
+_pkgname=${_Btype}${_Bmodel}
+pkgname=brother-${_Btype}-${_Bmodel}
+pkgdesc="Driver for the Brother ${_Btype^^}-${_Bmodel^^} printer"
 url="http://solutions.brother.com/linux/en_us/index.html"
 license=('custom:brother')
 depends=('a2ps' 'cups')
