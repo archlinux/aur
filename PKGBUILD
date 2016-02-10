@@ -1,4 +1,4 @@
-# Maintainer: Alejandro Baez <code at baez dot nyc>
+# Maintainer: Alejandro Baez <https://keybase.io/baez>
 
 pkgname='ta-rust-hg'
 pkgver=r133.8273cacd1ff8
