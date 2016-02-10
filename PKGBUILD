@@ -2,7 +2,7 @@
 
 pkgname=perl6-control-bail
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Perl6 module for deferred error handling"
 arch=('any')
 depends=('perl6')
@@ -11,17 +11,8 @@ makedepends=('alacryd' 'git')
 groups=('perl6')
 url="https://github.com/skids/perl6-Control-Bail"
 license=('PerlArtistic')
-source=($pkgname-$pkgver::git+https://github.com/skids/perl6-Control-Bail
-        META6.json.diff::https://github.com/atweiden/perl6-Control-Bail/commit/d21914efefa122fcc9e22bcc87c0f2b0d36c893b.diff)
-sha256sums=('SKIP'
-            'cd17172632d1a9773955f627a168ed1746476a6e75028071f355490a1b21e315')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  msg2 'Fixing META6.json...'
-  git apply "$srcdir/META6.json.diff"
-}
+source=($pkgname-$pkgver::git+https://github.com/skids/perl6-Control-Bail)
+sha256sums=('SKIP')
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
