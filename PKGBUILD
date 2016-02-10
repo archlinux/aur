@@ -1,7 +1,7 @@
 # Maintainer: Jesse Bryan <winneonsword@gmail.com>
 pkgname=cappy
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A simple and reliable screenshot tool."
 arch=('any')
@@ -9,10 +9,10 @@ url="https://github.com/Winneon/cappy"
 license=('MIT')
 depends=('curl'
          'xdotool'
-         'xclip'
+         'xsel'
          'imagemagick')
 source=("https://github.com/Winneon/cappy/archive/master.tar.gz")
-md5sums=('a471b246ff3a711d019d83d67cc4e129')
+md5sums=('4015a5681e4eab7d817d61461f5becad')
 
 
 package(){
