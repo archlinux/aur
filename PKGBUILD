@@ -3,10 +3,10 @@
 
 pkgname="phpcpd"
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Copy/Paste Detector (CPD) for PHP code."
 url="https://github.com/sebastianbergmann/phpcpd"
-license="BSD"
+license=("BSD")
 arch=("any")
 depends=("php>=5.3.3")
 source=(
