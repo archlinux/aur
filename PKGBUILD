@@ -1,19 +1,20 @@
 # Maintainer: M0Rf30 <morfeo89 [at] hotmail [dot] it>
 # Contributor: Leslie Zhai <xiang.zhai [at] i-soft [dot] com [dot] cn>
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
+# Contributor: ackalker
 
 pkgname=leap-motion-driver
 _major=2.3.1
 _build=31549
 pkgver=${_major}
-pkgrel=1
+pkgrel=2
 pkgdesc="The Leap Motion Driver"
 arch=('i686' 'x86_64')
 url="https://developer.leapmotion.com/downloads"
 depends=('mesa' 'libxxf86vm')
 makedeps=('xz' 'tar')
 license=('custom')
-source=(https://dl.dropboxusercontent.com/u/7226803/Leap_Motion_SDK_Linux_$_major.tgz
+source=(Leap_Motion_Setup_Linux_$_major.tgz::https://warehouse.leapmotion.com/apps/4186/download
     		LICENSE
     		leapd.service
     		leap-motion-driver.install
@@ -23,7 +24,7 @@ source=(https://dl.dropboxusercontent.com/u/7226803/Leap_Motion_SDK_Linux_$_majo
 install=leap-sdk.install
 
 package() {
-  cd ${srcdir}/LeapDeveloperKit_${_major}+${_build}_linux
+  cd ${srcdir}/Leap_Motion_*
 
   if [ "$CARCH" == 'x86_64' ]; then
     bsdtar xf Leap-${_major}+${_build}-x64.deb
@@ -54,9 +55,9 @@ package() {
 	done
 }
 
-md5sums=('d9facdfed290823d3a5358ca5077e883'
-	 '78a4f0934b105397d1f7b17d06e4717c'
-	 '07287e65a3c2a4e2a956b7ba9038d816'
-	 '7dcbd917193007746310130fb76e53eb'
-	 '0261f47c2d5090681446f6917b1858ba'
-	 '5b85d03f4109203c5f7ecd610a33136d')
+md5sums=('e6c677df40a155d751befd79d8392c9a'
+         '78a4f0934b105397d1f7b17d06e4717c'
+         '07287e65a3c2a4e2a956b7ba9038d816'
+         '7dcbd917193007746310130fb76e53eb'
+         '0261f47c2d5090681446f6917b1858ba'
+         '5b85d03f4109203c5f7ecd610a33136d')
