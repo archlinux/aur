@@ -1,0 +1,12 @@
+post_install() {
+  cat << _EOF
+
+  ==> lwt install note:
+  ------------------------------------------------------------------------------
+    To configure lwt, copy lwt.conf to ~/.config/lwt/lwt.conf
+
+    Sample config:
+      https://raw.githubusercontent.com/mewkiz/lwt/master/lwt.conf
+
+_EOF
+}

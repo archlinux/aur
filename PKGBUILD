@@ -1,13 +1,14 @@
 pkgname=lwt-git
-pkgver=20150830
+pkgver=20160210
 pkgrel=1
 pkgdesc="Lightweight terminal emulator based on the VTE and GTK libraries."
 url="https://github.com/mewkiz/lwt"
 arch=('x86_64' 'i686')
 license=('public domain')
-depends=('gtk3' 'vte3')
+depends=('gtk3' 'vte3' 'iniparser')
 makedepends=('git')
 conflicts=('lwt')
+install=${pkgname}.install
 
 _gitroot='https://github.com/mewkiz/lwt.git'
 _gitname='lwt'
