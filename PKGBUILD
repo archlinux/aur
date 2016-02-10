@@ -7,6 +7,7 @@
 
 pkgname=('roccat-tools-common'
          'roccat-tools-arvo'
+         'roccat-tools-kiro'
          'roccat-tools-isku'
          'roccat-tools-iskufx'
          'roccat-tools-kone'
@@ -26,7 +27,7 @@ pkgname=('roccat-tools-common'
          'roccat-tools-tyon'
          'roccat-tools-nyth')
 pkgbase=roccat-tools
-pkgver=3.8.0
+pkgver=3.9.0
 pkgrel=1
 pkgdesc='Userland applications to configure and make extended use of ROCCAT devices'
 arch=('i686' 'x86_64')
@@ -37,7 +38,7 @@ makedepends=('cmake')
 optdepends=('kmod-roccat: Adds support for the old kone device.')
 source=("http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-$pkgver.tar.bz2")
 
-md5sums=('f97b6af3ed86f359ab8b1a74745be968')
+md5sums=('7ca1a714f1db29fb90bf0c875c206aeb')
 
 build() {
   cd "$srcdir/$pkgbase-$pkgver"
@@ -68,6 +69,16 @@ package_roccat-tools-arvo() {
   make DESTDIR="$pkgdir/" install
   cd "$srcdir/$pkgbase-$pkgver"
   install -Dm644 udev/90-roccat-arvo.rules $pkgdir/usr/lib/udev/rules.d/90-roccat-arvo.rules
+}
+
+package_roccat-tools-kiro() {
+  pkgdesc='Userland applications to configure and make extended use of ROCCAT Kiro devices'
+  depends=('roccat-tools-common')
+
+  cd "$srcdir/$pkgbase-$pkgver/kiro"
+  make DESTDIR="$pkgdir/" install
+  cd "$srcdir/$pkgbase-$pkgver"
+  install -Dm644 udev/90-roccat-kiro.rules $pkgdir/usr/lib/udev/rules.d/90-roccat-kiro.rules
 }
 
 package_roccat-tools-isku() {
