@@ -3,7 +3,7 @@
 
 pkgname='bitwig-studio-demo'
 pkgver='1.3.6'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Music production system for production, remixing and performance'
 arch=('x86_64')
 url='http://www.bitwig.com/'
@@ -13,12 +13,13 @@ license=('custom')
 # please tell me via mail or Github:
 # https://github.com/mkzero/bitwig-studio-demo-aur
 depends=('jack' 'xdg-utils' 'zenity' 'xcb-util-wm' 'libbsd')
-optdepends=('alsa-lib' 'oss' 'libav: MP3 support')
+optdepends=('alsa-lib' 'oss' 'ffmpeg: MP3 support')
 provides=('bitwig-studio')
 conflicts=('bitwig-studio-demo-rc')
 options=(!strip)
 source=("https://downloads.bitwig.com/stable/${pkgver}/bitwig-studio-${pkgver}.deb")
 md5sums=('c13c82d87a319bf2fccad8456910875b')
+install=$pkgname.install
 
 package() {
   # Create pkgdir folders
