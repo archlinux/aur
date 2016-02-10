@@ -1,10 +1,10 @@
 # Maintainer: Matheus de Alcantara <matheus.de.alcantara@gmail.com>
 
 pkgname=atom-editor-beta
-_pkgrel=beta3
-_pkgver=1.5.0
-pkgver="${_pkgver}.${_pkgrel}"
-pkgrel=2
+_pkgbeta=0
+_pkgver=1.6.0
+pkgver="${_pkgver}.beta${_pkgbeta}"
+pkgrel=1
 pkgdesc='Chrome-based text editor from Github - Beta Channel'
 arch=('x86_64' 'i686')
 url='https://github.com/atom/atom'
@@ -14,13 +14,13 @@ optdepends=('gvfs: file deletion support')
 makedepends=('git' 'npm')
 conflicts=('atom-editor-bin' 'atom-editor-git' 'atom-editor-beta-bin' 'atom-editor')
 install=atom.install
-source=("https://github.com/atom/atom/archive/v${_pkgver}-${_pkgrel}.tar.gz"
+source=("https://github.com/atom/atom/archive/v${_pkgver}-beta${_pkgbeta}.tar.gz"
         'atom-desktop.patch')
-sha256sums=('327ee22f709de65bf7b666371569a2094d04faf6dc983e32555d0bde80273da4'
+sha256sums=('1827363652bb7664bf1ac5510bae703fd030ac60275935f1e34ab944c2f7c7b5'
             'b144dd1578528ca7f3d8d100db873eb32fbc4d801e45b2161d281629a32695a1')
 
 prepare() {
-	cd "atom-${_pkgver}-${_pkgrel}"
+	cd "atom-${_pkgver}-beta${_pkgbeta}"
 
 	sed -i -e "/exception-reporting/d" \
 		-e "/metrics/d" package.json
@@ -33,14 +33,14 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/atom-${_pkgver}-${_pkgrel}"
+	cd "$srcdir/atom-${_pkgver}-beta${_pkgbeta}"
 
 	export PYTHON=python2
 	script/build --build-dir "$srcdir/atom-build"
 }
 
 package() {
-	cd "$srcdir/atom-${_pkgver}-${_pkgrel}"
+	cd "$srcdir/atom-${_pkgver}-beta${_pkgbeta}"
 
 	script/grunt install --build-dir "$srcdir/atom-build" --install-dir "$pkgdir/usr"
 	patch resources/linux/Atom.desktop < "${srcdir}/atom-desktop.patch"
