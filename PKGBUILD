@@ -3,10 +3,10 @@
 
 pkgname="php-go"
 pkgver=2.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple PHP build tool."
 url="https://github.com/herrera-io/php-go"
-license="MIT"
+license=("MIT")
 arch=("any")
 depends=("php>=5.3.3")
 makedepends=("php-box" "php-composer" "git")
