@@ -65,11 +65,11 @@ package_lib32-nvidia-libgl-beta() {
   conflicts=('lib32-libgl' 'lib32-nvidia-libgl' 'lib32-mesa<10.1.0-2')
   cd $_pkg
 
-  # OpenGL (link)
+  # libGL (link)
   install -d "$pkgdir"/usr/lib32/
-  ln -s /usr/lib32/nvidia/libGL.so.1.0.0 "$pkgdir"/usr/lib32/libGL.so.1.0.0
-  ln -s libGL.so.1.0.0 "$pkgdir"/usr/lib32/libGL.so.1
-  ln -s libGL.so.1.0.0 "$pkgdir"/usr/lib32/libGL.so
+  ln -s /usr/lib32/nvidia/libGL.so.$pkgver "$pkgdir"/usr/lib32/libGL.so.$pkgver
+  ln -s libGL.so.$pkgver "$pkgdir"/usr/lib32/libGL.so.1
+  ln -s libGL.so.$pkgver "$pkgdir"/usr/lib32/libGL.so
 
   # GLX (link)
   ln -s /usr/lib32/nvidia/libGLX.so.0 "$pkgdir"/usr/lib32/libGLX.so.0
@@ -92,6 +92,9 @@ package_lib32-nvidia-libgl-beta() {
   ln -s libGLESv2.so.2 "$pkgdir"/usr/lib32/libGLESv2.so.$pkgver
   ln -s libGLESv2.so.2 "$pkgdir"/usr/lib32/libGLESv2.so
 
+  # VDPAU (link)
+  ln -s /usr/lib32/vdpau/libvdpau_nvidia.so.$pkgver "$pkgdir"/usr/lib32/libvdpau_nvidia.so
+  
   # License (link)
   install -d "$pkgdir"/usr/share/licenses/
   ln -s nvidia-utils/ "$pkgdir"/usr/share/licenses/lib32-nvidia-libgl
@@ -105,8 +108,8 @@ package_lib32-nvidia-utils-beta() {
   conflicts=('lib32-nvidia-utils')
   cd $_pkg
 
-  # OpenGL
-  install -Dm755 libGL.so.1.0.0 "$pkgdir"/usr/lib32/nvidia/libGL.so.1.0.0
+  # libGL & OpenGL
+  install -Dm755 libGL.so.$pkgver "$pkgdir"/usr/lib32/nvidia/libGL.so.$pkgver
   install -Dm755 libGLdispatch.so.0 "$pkgdir"/usr/lib32/libGLdispatch.so.0
   install -Dm755 libnvidia-glcore.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-glcore.so.$pkgver
   install -Dm755 libOpenGL.so.0 "$pkgdir"/usr/lib32/libOpenGL.so.0
@@ -144,7 +147,8 @@ package_lib32-nvidia-utils-beta() {
   install -Dm755 libnvidia-fatbinaryloader.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-fatbinaryloader.so.$pkgver
 
   # TLS (Thread local storage) support for OpenGL libs
-  install -Dm755 tls/libnvidia-tls.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-tls.so.$pkgver
+  install -Dm755 libnvidia-tls.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-tls.so.$pkgver         # Classic
+  install -Dm755 tls/libnvidia-tls.so.$pkgver "$pkgdir"/usr/lib32/tls/libnvidia-tls.so.$pkgver # New
 
   # GPU monitoring and management
   install -Dm755 libnvidia-ml.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-ml.so.$pkgver
