@@ -1,19 +1,22 @@
 # Maintainer: Maarten van Gompel <proycon at anaproy dot nl>
 pkgname=libfolia
 pkgver=0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ library for FoLiA (Format for Linguistic Annotation)"
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('ticcutils' 'icu' 'libxml2')
-makedepends=('libtool' 'autoconf')
+makedepends=('libtool' 'autoconf' 'autoconf-archive')
 options=(!libtool)
-url="http://proycon.github.io/folia"
-source=("http://software.ticc.uvt.nl/$pkgname-$pkgver.tar.gz")
-md5sums=('9053c8eaefb83131d1f31eaccd844608')
+url="https://proycon.github.io/folia"
+_gituser="LanguageMachines"
+_gitname="libfolia"
+source=(https://github.com/LanguageMachines/libfolia/archive/v0.13.tar.gz)
+md5sums=(9a087947aac798f3da115f6afc460556)
 
 build() {
   cd $srcdir/$pkgname-$pkgver
+  bash bootstrap.sh
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
   make
 }
