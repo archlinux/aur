@@ -8,4 +8,4 @@ Exec=SINE
 Icon=sine
 Terminal=false
 Categories=AudioVideo;Audio;
-MimeType=application/x-sine
+MimeType=application/x-sine;
