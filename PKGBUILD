@@ -1,27 +1,29 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=artanis
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.2
+pkgrel=1
 pkgdesc="A fast monolithic web-framework of Scheme"
 url="http://web-artanis.com/"
 depends=('guile')
 arch=('any')
 license=('GPL')
-source=(http://alpha.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.bz2 Makefile.in.patch)
-md5sums=('0ac17cdda340aa468cb9aa30956dcca2'
-         'ec8451aa3912501be9d9c8ad48f68b38')
+install=$pkgname.install
+source=(http://alpha.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.bz2)
+sha256sums=('a08d66a7960093bf62a82a5f7b663f88b67650bd628b34c72967e6f7aa996839')
 
-prepare() {
-  cd $srcdir/$pkgname-$pkgver
-  patch -p1 < $srcdir/Makefile.in.patch
-}
- 
 build() {
   cd $srcdir/$pkgname-$pkgver
   ./autogen.sh
   ./configure --prefix=/usr
-  make 
+  make
+  make docs
+}
+
+check() {
+  cd "$srcdir"/$pkgname-$pkgver
+  export GUILE_LOAD_PATH=$GUILE_LOAD_PATH:.
+  guile -c '(display (@ (artanis artanis) artanis-version))'
 }
 
 package() {
