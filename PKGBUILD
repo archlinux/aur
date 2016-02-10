@@ -2,8 +2,9 @@
 # based on original squirrelmail package by darose
 
 pkgname=squirrelmail-dev-svn
-pkgver=14537
+pkgver=14539
 pkgrel=1
+_svnmod='squirrelmail'
 pkgdesc='Webmail for Nuts! (Development version Subversion source)'
 arch=('any')
 license=('GPL')
@@ -12,16 +13,23 @@ depends=('php' 'perl' 'imap-server')
 makedepends=('subversion')
 conflicts=('squirrelmail')
 provides=('squirrelmail=1.5.2')
-source=("http://sourceforge.net/code-snapshots/svn/s/sq/squirrelmail/code/squirrelmail-code-${pkgver}-trunk.zip")
-sha512sums=('a920475a0fdd6f49b67f68175cd5b3752193e0f251f2369519be53d7a58f86c3224fd14db3afb2af44bfc7e4cbe9f8a9140b045b70e05456bf69f9b5f0a92d1a')
+source=("squirrelmail::svn+http://svn.code.sf.net/p/squirrelmail/code/trunk/${_svnmod}#revision=${pkgver}")
+sha512sums=('SKIP')
 backup=(srv/http/squirrelmail/.htaccess srv/http/squirrelmail/config/config.php)
 install=${pkgname}.install
 options=(!strip)
 
-prepare() {
-	cd ${srcdir}
+pkgver() {
+	cd "$srcdir"/${_svnmod}
+	local ver=$(svnversion)
+	printf "r%s" "${ver//[[:alpha:]]}"
+}
 
-	ln -sf "squirrelmail-code-${pkgver}-trunk/squirrelmail" squirrelmail-build
+prepare() {
+	if [ -d ${_svnmod}-build ]; then
+		rm -Rf ${_svnmod}-build
+	fi
+	svn --force export ${_svnmod} ${_svnmod}-build
 }
 
 package() {
@@ -29,9 +37,6 @@ package() {
 	mkdir -p "${pkgdir}"/srv/http/squirrelmail
 	cd "${pkgdir}"/srv/http/squirrelmail
 	cp -a "${srcdir}"/squirrelmail-build/* .
-
-	# remove CVS dirs
-	find "${pkgdir}" -type d -name CVS -exec rm -rf {} \;
 
 	# customize config (data and attachments in /var/lib/squirrelmail)
 	cd config
