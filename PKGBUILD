@@ -2,7 +2,7 @@
 
 pkgbase=python-pynacl
 pkgname=($pkgbase python2-pynacl)
-pkgver=0.3.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Python binding to the Networking and Cryptography (NaCl) library'
 license=('Apache')
@@ -12,7 +12,7 @@ depends=('libsodium')
 makedepends=('python-setuptools' 'python-pycparser' 'python-cffi'
              'python2-setuptools' 'python2-pycparser' 'python2-cffi')
 source=("https://pypi.python.org/packages/source/P/PyNaCl/PyNaCl-${pkgver}.tar.gz")
-md5sums=('04dc891f6b95e3defa8a35ade57559c9')
+md5sums=('12fd03d8ce64e0318cb1c69272f17704')
 
 prepare() {
 	cp -a "PyNaCl-$pkgver"{,-python2}
