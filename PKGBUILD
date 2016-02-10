@@ -19,6 +19,7 @@ pkgver() {
 }
 
 package() {
+  rm "rust/.hg" -rf
 	cd "rust"
   mkdir -p "${pkgdir}/opt/textadept/modules/rust"
 	cp -r "." "${pkgdir}/opt/textadept/modules/rust"
