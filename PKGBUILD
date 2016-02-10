@@ -3,7 +3,7 @@
 _gitname=attract
 _gitbranch=master
 pkgname=${_gitname}-git
-pkgver=1.6.2.47
+pkgver=1.6.2.48.7b99b99
 pkgrel=1
 pkgdesc="A graphical front-end for command line emulators that hides the underlying operating system and is intended to be controlled with a joystick or gamepad."
 arch=('i686' 'x86_64')
@@ -25,8 +25,7 @@ sha1sums=('SKIP'
 
 pkgver() {
 	cd "${_gitname}"
-	tag=$(git describe --tags --abbrev=0)
-	printf "%s.%s" ${tag//v} $(git rev-list --count ${tag}..HEAD)
+	printf "%s" "$(git describe --long --tags | sed 's/v//g;s/\([^-]*-\)g/\1/;s/-/./g')"
 }
 
 build() {
@@ -37,6 +36,7 @@ build() {
 package() {
 	cd "${_gitname}"
 	make prefix="${pkgdir}/usr" install
+	install -Dm644 License.txt ${pkgdir}/usr/share/licenses/${_gitname}/License.txt
 	install -Dm644 ../ATTRACT.MODE.intro.16-9.v6.1080p.mp4 ${pkgdir}/usr/share/attract/intro/intro.mp4
 	install -Dm644 util/icon.png ${pkgdir}/usr/share/pixmaps/attract.png
 	install -Dm644 ${srcdir}/attract.desktop ${pkgdir}/usr/share/applications/attract.desktop
