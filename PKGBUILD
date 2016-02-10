@@ -1,21 +1,32 @@
 # Maintainer: Kartik Mohta <kartikmohta@gmail.com>
 pkgname=gtsam
 pkgver=3.2.1
-pkgrel=1
-pkgdesc="A library of C++ classes that implement smoothing and mapping (SAM) in robotics and vision, using factor graphs and Bayes networks as the underlying computing paradigm rather than sparse matrices."
+pkgrel=2
+pkgdesc="A library of C++ classes that implement smoothing and mapping (SAM) in\
+  robotics and vision, using factor graphs and Bayes networks as the underlying\
+  computing paradigm rather than sparse matrices."
 url="https://collab.cc.gatech.edu/borg/gtsam/"
 arch=('x86_64' 'i686')
 license=('BSD')
 depends=('boost-libs' 'intel-tbb')
 makedepends=('boost')
-source=("https://research.cc.gatech.edu/borg/sites/edu.borg/files/downloads/${pkgname}-${pkgver}.tgz")
-md5sums=('fbbd90319c636ac41233c1b6ff9fbf75')
+source=("https://research.cc.gatech.edu/borg/sites/edu.borg/files/downloads/${pkgname}-${pkgver}.tgz"
+        "fix-boost-serialization-include.patch")
+md5sums=('fbbd90319c636ac41233c1b6ff9fbf75'
+         '3cb88a6e3da13892d66f49bef1b1d28f')
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -Np1 -i ../fix-boost-serialization-include.patch
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   mkdir -p build
   cd build
-  cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DGTSAM_BUILD_EXAMPLES_ALWAYS=OFF -DGTSAM_BUILD_TESTS=OFF -DGTSAM_BUILD_WRAP=OFF -DGTSAM_INSTALL_CPPUNITLITE=OFF -DGTSAM_INSTALL_GEOGRAPHICLIB=OFF -DGTSAM_BUILD_DOCS=OFF
+  cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DGTSAM_BUILD_EXAMPLES_ALWAYS=OFF \
+    -DGTSAM_BUILD_TESTS=OFF -DGTSAM_BUILD_WRAP=OFF -DGTSAM_BUILD_DOCS=OFF \
+    -DGTSAM_INSTALL_CPPUNITLITE=OFF -DGTSAM_INSTALL_GEOGRAPHICLIB=OFF
   make
 }
 
