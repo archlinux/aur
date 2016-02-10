@@ -1,5 +1,5 @@
 # Maintainer: Lev Levitsky <levlev@mail.ru>
-pkgbase=('percolator-bin')
+pkgbase='percolator-bin'
 pkgname=('percolator' 'percolator-converters' 'elude')
 pkgver=2.10
 pkgrel=1
@@ -15,18 +15,24 @@ source=("https://github.com/percolator/percolator/releases/download/rel-${pkgver
 md5sums=('ff9ec3b71587958697909d6954098700')
 package_percolator() {
 	pkgdesc="Percolator and qvality, two post processors for shotgun proteomics data."
-	ar x "${srcdir}/percolator-v${pkgver/./-}-linux-amd64.deb"
+	provides=("${pkgname[0]}")
+	conflicts=("${pkgname[0]}")
+	ar x "${srcdir}/${pkgname[0]}-v${pkgver/./-}-linux-amd64.deb"
 	tar -xzf "${srcdir}/data.tar.gz" -C "$pkgdir"
 }
 
 package_percolator-converters() {
 	pkgdesc="Parsers of different database search engines to percolator input format."
-	ar x "${srcdir}/percolator-converters-v${pkgver/./-}-linux-amd64.deb"
+	provides=("${pkgname[1]}")
+	conflicts=("${pkgname[1]}")
+	ar x "${srcdir}/${pkgname[1]}-v${pkgver/./-}-linux-amd64.deb"
 	tar -xzf "${srcdir}/data.tar.gz" -C "$pkgdir"
 }
 
 package_elude() {
 	pkgdesc="Software package for prediction of retention times in mass spectorometry experiments."
-	ar x "${srcdir}/elude-v${pkgver/./-}-linux-amd64.deb"
+	provides=("${pkgname[2]}")
+	conflicts=("${pkgname[2]}")
+	ar x "${srcdir}/${pkgname[2]}-v${pkgver/./-}-linux-amd64.deb"
 	tar -xzf "${srcdir}/data.tar.gz" -C "$pkgdir"
 }
