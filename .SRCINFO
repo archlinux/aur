@@ -1,5 +1,5 @@
 pkgbase = qownnotes-pbek
-	pkgdesc = This package will be discontinued, since I will now maintain `qownnotes`. QOwnNotes is a open source notepad and todo list manager with markdown support and ownCloud integration.
+	pkgdesc = This package will be discontinued, since I will now maintain `qownnotes`. Please move over to package `qownnotes`. QOwnNotes is a open source notepad and todo list manager with markdown support and ownCloud integration.
 	pkgver = 0.96
 	pkgrel = 1
 	url = http://www.qownnotes.org/
