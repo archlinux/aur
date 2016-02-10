@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gambit-git
-pkgver=15.0.0.r15.g0860191
+pkgver=15.0.0.r16.g05c2e6f
 pkgrel=1
 pkgdesc="Tools for doing computation in game theory - git version"
 arch=('i686' 'x86_64')
