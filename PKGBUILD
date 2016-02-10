@@ -1,12 +1,26 @@
 #Maintainer: M0Rf30
 
 pkgname=soundcloud-dl-git
-pkgver=r96.f6544ad
+pkgver=r121.c3d87d2
 pkgrel=1
 pkgdesc="Souncloud music downloader"
-url=(https://github.com/flyingrub/scdl)
+url="https://github.com/flyingrub/scdl"
 arch=(any)
-depends=(python-wget recode python-soundcloud-git python-docopt python-simplejson python-fudge python-urllib3 python-eyed3 python-mutagen python-termcolor python-six python-wget)
+depends=(
+python-clint
+python-docopt
+python-eyed3
+python-fudge
+python-mutagen
+python-simplejson
+python-six
+python-soundcloud-git
+python-termcolor
+python-urllib3
+python-wget
+python-wget
+recode
+)
 makedepends=(git python-setuptools)
 source=($pkgname::git+https://github.com/flyingrub/scdl.git)
 install=soundcloud-dl.install
