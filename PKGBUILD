@@ -9,7 +9,7 @@ _cracklib=default
 _ldap=default
 
 pkgname=xtheme
-pkgver=7.3.3
+pkgver=7.3.5
 pkgrel=1
 pkgdesc="A fork of the atheme IRC services"
 arch=("i686" "x86_64")
@@ -29,11 +29,11 @@ backup=(
 )
 install=xtheme.install
 source=(
-	"https://github.com/XthemeOrg/Xtheme/releases/download/7.3.3/Xtheme-7.3.3.tar.bz2"
+	"https://github.com/XthemeOrg/Xtheme/releases/download/$pkgver/Xtheme-$pkgver.tar.bz2"
 	"system.service"
 )
 md5sums=(
-	"6a11f4aeac6d730a7001a0647b24f527"
+	"f896153d6fbcc2100bfe73ac07ec4305"
 	"SKIP"
 )
 
