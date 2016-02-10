@@ -8,6 +8,7 @@ arch=('any')
 url="https://code.launchpad.net/~elementary-os/+junk/cmake-modules"
 license=('GPL3')
 depends=('cmake')
+makedepends=('bzr')
 source=('bzr+lp:~elementary-os/+junk/cmake-modules')
 sha256sums=('SKIP')
 
