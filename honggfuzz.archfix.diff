@@ -1,0 +1,33 @@
+commit 6bd3328c71655cfb1ccb1d1bb7b236265b39c0fe
+Author: Emil Edholm <bobby@verypublic.org>
+Date:   Wed Feb 10 09:29:31 2016 +0100
+
+    Make it compile on ArchLinux. See #55
+
+diff --git a/Makefile b/Makefile
+index 30df595..643cf41 100644
+--- a/Makefile
++++ b/Makefile
+@@ -38,7 +38,8 @@ ifeq ($(OS),Linux)
+                    -Wno-unknown-warning-option -funroll-loops -O2 \
+                    -D_FILE_OFFSET_BITS=64
+     ARCH_LDFLAGS := -lpthread -L/usr/local/include -L/usr/include \
+-                    -lunwind-ptrace -lunwind-generic -lbfd -lopcodes -lrt
++                    -lunwind-ptrace -lunwind-generic -lbfd -lopcodes -lrt \
++                    -ldl -lz /usr/lib64/libiberty.a
+     ARCH_SRCS := $(wildcard linux/*.c)
+ 
+     ifeq ("$(wildcard /usr/include/bfd.h)","")
+diff --git a/linux/bfd.c b/linux/bfd.c
+index 27e9305..27a2ad2 100644
+--- a/linux/bfd.c
++++ b/linux/bfd.c
+@@ -21,6 +21,8 @@
+  *
+  */
+ 
++#define PACKAGE 1
++#define PACKAGE_VERSION 1
+ #include "common.h"
+ #include "linux/bfd.h"
+ 
