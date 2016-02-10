@@ -1,12 +1,12 @@
-# Maintainer: Shalygin Konstantin (k0ste@cn.ru)
+# Maintainer: Shalygin Konstantin <k0ste@cn.ru>
 
 pkgname='ivideon-server-headless'
 pkgver='3.5.4'
-pkgrel='936'
-_rel='354b8ee4b276'
+pkgrel='938'
+_rel='47210f120e99'
 pkgdesc='Ivideon-server daemon'
 arch=('x86_64')
-url=('http://ivideon.com/')
+url='https://ivideon.com'
 license=('freeware')
 depends=('portaudio' 'ffmpeg' 'gstreamer0.10' 'gstreamer0.10-base-plugins' 'gstreamer0.10-good-plugins')
 makedepends=('libarchive')
@@ -17,7 +17,7 @@ source=("https://packages.ivideon.com/ubuntu/pool/non-free/i/${pkgname}/${pkgnam
 	"sysusers.conf"
 	"schedule.json"
 	"videoservertmp.conf")
-sha256sums=('cb4ed698041d755dd411d27eeede3be2ebb2a811b7eaa5f0c8c77a86b71178d2'
+sha256sums=('1593954e6dfffac208ce3af22f5c99f96b25013c080b3f54c9ca5439f05b6bc8'
             '48cd5beedc9992a26448ee06c44460c8e9f3014154adcad0eee39aa985851071'
             'f0010bc64cd7c1b5aefcc7241f0e0074528aec1a4b51dd08bd429e95acd26012'
             '91c4b133ad4d1fda72679ab393b647ac24a56e3c0d46cd2a908a47ed8524ec81'
