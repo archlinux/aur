@@ -3,10 +3,10 @@
 
 pkgname="phpdcd"
 pkgver=1.0.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Dead Code Detector (DCD) for PHP code."
 url="https://github.com/sebastianbergmann/phpdcd"
-license="BSD"
+license=("BSD")
 arch=("any")
 depends=("php>=5.3.3")
 source=(
