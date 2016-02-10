@@ -1,7 +1,7 @@
 pkgbase = cherrymusic-devel-git
 	pkgdesc = A standalone HTML5 (with Flash fallback) music streaming server based on CherryPy and jPlayer. Git devel-branch.
-	pkgver = 20140315
-	pkgrel = 4
+	pkgver = 20160210
+	pkgrel = 1
 	url = http://fomori.org/cherrymusic
 	install = cherrymusic-devel-git.install
 	arch = any
@@ -21,6 +21,7 @@ pkgbase = cherrymusic-devel-git
 	optdepends = imagemagick
 	optdepends = python-unidecode
 	optdepends = python-gobject
+	optdepends = python-pillow
 	provides = cherrymusic
 	conflicts = cherrymusic
 	options = !emptydirs
