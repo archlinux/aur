@@ -1,7 +1,7 @@
 # Maintainer: Peter Reschenhofer < peterreschenhofer at gmail dot com >
 # Contributor: Familia < carlosfamilia at gmail dot com >
 pkgname=rstudio-server-bin
-pkgver=0.99.491
+pkgver=0.99.878
 pkgrel=1
 pkgdesc="A integrated development environment (IDE) for R (binary version from RStudio official website)"
 arch=('i686' 'x86_64')
@@ -12,34 +12,34 @@ conflicts=('rstudio-server' 'rstudio-server-git')
 provides=("rstudio-server=${pkgver}")
 #options=(!strip)
 
-_deb_x86_md5=16f0d1b3dd2466355c80a738164fdb8c
-_deb_x64_md5=3b14518d89ba228ad78e44c1421230ec
+_deb_x86_md5=e6e032a5f48d6f37c5d3319398c40bea
+_deb_x64_md5=c23a273f5e9e779efca1f3d51ce22383
 _rstudioservice_md5=eea28f7865720f6c8d5de12f3f631880
 
-case "$CARCH" in
+case "${CARCH}" in
     'i686')
         _arch=i386
-        md5sums=($_deb_x86_md5 $_rstudioservice_md5)
+        md5sums=(${_deb_x86_md5} ${_rstudioservice_md5})
         ;;
     'x86_64')
         _arch=amd64
-        md5sums=($_deb_x64_md5 $_rstudioservice_md5)
+        md5sums=(${_deb_x64_md5} ${_rstudioservice_md5})
         ;;
 esac    
 
 source=("https://download2.rstudio.org/rstudio-server-${pkgver}-${_arch}.deb"
         "rstudio-server.service")
 
-install="$pkgname".install
+install="${pkgname}".install
 
 package() {
     msg "Converting debian package..."
 
-    cd "$srcdir"
-    tar zxpf data.tar.gz -C "$pkgdir"
-    chmod 755 $(find $pkgdir/usr -type d)
+    cd "${srcdir}"
+    tar zxpf data.tar.gz -C "${pkgdir}"
+    chmod 755 $(find ${pkgdir}/usr -type d)
 
-    install -m755 -d "$pkgdir/usr/bin"
+    install -m755 -d "${pkgdir}/usr/bin"
     install -m755 -d "${pkgdir}/etc/rstudio"
     install -m644 -D "rstudio-server.service" "${pkgdir}/etc/systemd/system/rstudio-server.service"
 }
