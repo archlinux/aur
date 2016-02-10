@@ -2,8 +2,8 @@ pkgname=linux-usermode
 true && pkgname=(linux-usermode linux-usermode-modules)
 pkgbase=linux-usermode
 _kernelname=-usermodelinux
-_srcname=linux-4.3
-pkgver=4.3.0
+_srcname=linux-4.4
+pkgver=4.4.1
 pkgrel=1
 pkgdesc="User mode Linux kernel and modules"
 arch=('i686' 'x86_64')
@@ -12,16 +12,17 @@ url="http://user-mode-linux.sourceforge.net/"
 depends=('coreutils')
 makedepends=('bc' 'inetutils' 'vde2-static' 'vde2')
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-#	"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+	"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
 	config-i686
 	config-x86_64)
-md5sums=('58b35794eee3b6d52ce7be39357801e7'
-         '80abbe6afc9d3444381968eea4d6dd74'
-         '3cc1ee484f8a619447d1f9e238e3392f')
+md5sums=('9a78fa2eb6c68ca5a40ed5af08142599'
+         'd9e951895c8c249f0bf52d85f3e63bce'
+         '6591c4b84535db059a29f6d0aec12b88'
+         '30b8f016b4b97857b24827718b735a8f')
 
 prepare() {
   cd "${srcdir}/${_srcname}"
-#  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  patch -p1 -i "${srcdir}/patch-${pkgver}"
 }
 
 build() {
@@ -36,8 +37,8 @@ build() {
 #make ARCH=um oldconfig
 #return 1
 
-#  make ARCH=um vmlinux modules KCFLAGS=-fPIC
-  make ARCH=um vmlinux modules KCFLAGS="-fPIC -D__used='__attribute__((__used__))'"
+  make ARCH=um vmlinux modules KCFLAGS=-fPIC
+#  make ARCH=um vmlinux modules KCFLAGS="-fPIC -D__used='__attribute__((__used__))'"
 }
 
 package_linux-usermode() {

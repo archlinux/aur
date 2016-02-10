@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# User Mode Linux/x86 4.3.0 Kernel Configuration
+# User Mode Linux/x86 4.4.1 Kernel Configuration
 #
 CONFIG_UML=y
 CONFIG_MMU=y
@@ -72,7 +72,6 @@ CONFIG_GENERIC_HWEIGHT=y
 CONFIG_FLATMEM=y
 CONFIG_FLAT_NODE_MEM_MAP=y
 # CONFIG_HAVE_BOOTMEM_INFO_NODE is not set
-CONFIG_PAGEFLAGS_EXTENDED=y
 CONFIG_SPLIT_PTLOCK_CPUS=4
 CONFIG_COMPACTION=y
 CONFIG_MIGRATION=y
@@ -456,6 +455,7 @@ CONFIG_WLAN=y
 # Enable WiMAX (Networking options) to see the WiMAX drivers
 #
 # CONFIG_WAN is not set
+# CONFIG_NVM is not set
 
 #
 # Character devices
@@ -532,7 +532,6 @@ CONFIG_USB_OHCI_LITTLE_ENDIAN=y
 # Microsoft Hyper-V guest support
 #
 # CONFIG_STAGING is not set
-# CONFIG_CHROME_PLATFORMS is not set
 
 #
 # Generic IOMMU Pagetable Support
@@ -584,6 +583,15 @@ CONFIG_IOMMU_SUPPORT=y
 # CONFIG_GENERIC_PHY is not set
 # CONFIG_POWERCAP is not set
 # CONFIG_NVMEM is not set
+# CONFIG_STM is not set
+# CONFIG_STM_DUMMY is not set
+# CONFIG_STM_SOURCE_CONSOLE is not set
+# CONFIG_INTEL_TH is not set
+
+#
+# FPGA Configuration Support
+#
+# CONFIG_FPGA is not set
 CONFIG_NET=y
 
 #
@@ -971,6 +979,7 @@ CONFIG_CRYPTO_ECB=m
 # CONFIG_CRYPTO_LRW is not set
 # CONFIG_CRYPTO_PCBC is not set
 CONFIG_CRYPTO_XTS=m
+# CONFIG_CRYPTO_KEYWRAP is not set
 
 #
 # Hash modes
@@ -1116,6 +1125,7 @@ CONFIG_FRAME_WARN=1024
 # CONFIG_UNUSED_SYMBOLS is not set
 # CONFIG_DEBUG_FS is not set
 # CONFIG_DEBUG_SECTION_MISMATCH is not set
+CONFIG_SECTION_MISMATCH_WARN_ONLY=y
 CONFIG_FRAME_POINTER=y
 # CONFIG_DEBUG_FORCE_WEAK_PER_CPU is not set
 CONFIG_MAGIC_SYSRQ_DEFAULT_ENABLE=0x1
@@ -1191,6 +1201,7 @@ CONFIG_DEBUG_BUGVERBOSE=y
 # CONFIG_TEST_HEXDUMP is not set
 # CONFIG_TEST_STRING_HELPERS is not set
 # CONFIG_TEST_KSTRTOX is not set
+# CONFIG_TEST_PRINTF is not set
 # CONFIG_TEST_RHASHTABLE is not set
 # CONFIG_TEST_BPF is not set
 # CONFIG_TEST_LKM is not set
