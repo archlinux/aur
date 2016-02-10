@@ -1,36 +1,51 @@
-# Maintainer: Midov <midov at midov dot pl>
+# Maintainer: Patrizio Bekerle <patrizio at bekerle dot com>
+
 pkgname=qownnotes
-_pkgname=QOwnNotes
-_tag="linux-b939-070648"
-pkgver=0.96
+pkgver=0.96.1
+tag="202be907d63734177c6a189191e44db84920f78d"
 pkgrel=1
-pkgdesc="Open source notepad for that works together with the notes application of OwnCloud."
-url="http://www.qownnotes.org/"
-arch=('x86_64' 'i686')
-license=('GPL3')
-depends=('gcc' 'qt5-base' 'qt5-svg' 'qt5-script')
-makedepends=('git')
-#install=$pkgname.install
-source=("git://github.com/pbek/QOwnNotes.git#tag=$_tag"
-	git://github.com/pbek/qmarkdowntextedit
-	qownnotes.desktop)
-md5sums=('SKIP'
-	 'SKIP'
-	'dd75c043efe26395e0a12be809806f70')
+pkgdesc="Open source notepad and todo list manager with markdown support and ownCloud integration"
+arch=('i686' 'x86_64')
+url='http://www.qownnotes.org/'
+license=('GPL2')
+groups=('qownnotes')
+depends=('qt5-base' 'qt5-svg' 'qt5-script' 'openssl')
+makedepends=('gcc' 'git' 'qt5-tools')
+provides=("${pkgname%-*}")
+conflicts=("${pkgname%-*}")
+source=("git://github.com/pbek/QOwnNotes.git#tag=$tag")
+md5sums=('SKIP')
 
 build() {
-  cd "${srcdir}/${_pkgname}"
-  cd "${srcdir}/${_pkgname}/src"
-  rm -r libraries/qmarkdowntextedit
-  ln -s "${srcdir}/qmarkdowntextedit" "${srcdir}/${_pkgname}/src/libraries/"
-  qmake QOwnNotes.pro -r
-  make
+    cd "${srcdir}/QOwnNotes"
+    git submodule update --init
+    cd src
+
+    echo "#define VERSION \"${pkgver}\"" > version.h
+    echo "#define RELEASE \"AUR\"" > release.h
+
+    qmake
+    make
 }
 
-
 package() {
-  cd "${srcdir}/${_pkgname}"
-  install -Dm755 "${srcdir}/${_pkgname}/src/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "${srcdir}/qownnotes.desktop" "${pkgdir}/usr/share/applications/qownnotes.desktop"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    cd "${srcdir}/QOwnNotes/src"
+
+    install -D -m 0755 QOwnNotes $pkgdir/usr/bin/QOwnNotes
+    install -D -m 0644 QOwnNotes.desktop $pkgdir/usr/share/applications/QOwnNotes.desktop
+    install -D -m 0644 images/icons/128x128/QOwnNotes.png $pkgdir/usr/share/pixmaps/QOwnNotes.png
+    install -D -m 0644 images/icons/16x16/QOwnNotes.png $pkgdir/usr/share/icons/hicolor/16x16/apps/QOwnNotes.png
+    install -D -m 0644 images/icons/24x24/QOwnNotes.png $pkgdir/usr/share/icons/hicolor/24x24/apps/QOwnNotes.png
+    install -D -m 0644 images/icons/32x32/QOwnNotes.png $pkgdir/usr/share/icons/hicolor/32x32/apps/QOwnNotes.png
+    install -D -m 0644 images/icons/48x48/QOwnNotes.png $pkgdir/usr/share/icons/hicolor/48x48/apps/QOwnNotes.png
+    install -D -m 0644 images/icons/64x64/QOwnNotes.png $pkgdir/usr/share/icons/hicolor/64x64/apps/QOwnNotes.png
+    install -D -m 0644 images/icons/96x96/QOwnNotes.png $pkgdir/usr/share/icons/hicolor/96x96/apps/QOwnNotes.png
+    install -D -m 0644 images/icons/128x128/QOwnNotes.png $pkgdir/usr/share/icons/hicolor/128x128/apps/QOwnNotes.png
+    install -D -m 0644 images/icons/256x256/QOwnNotes.png $pkgdir/usr/share/icons/hicolor/256x256/apps/QOwnNotes.png
+    install -D -m 0644 images/icons/512x512/QOwnNotes.png $pkgdir/usr/share/icons/hicolor/512x512/apps/QOwnNotes.png
+    install -D -m 0644 images/icons/scalable/QOwnNotes.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/QOwnNotes.svg
+    install -D -m 0644 languages/QOwnNotes_de.qm $pkgdir/usr/share/QOwnNotes/languages/QOwnNotes_de.qm
+    install -D -m 0644 languages/QOwnNotes_fr.qm $pkgdir/usr/share/QOwnNotes/languages/QOwnNotes_fr.qm
+    install -D -m 0644 languages/QOwnNotes_pl.qm $pkgdir/usr/share/QOwnNotes/languages/QOwnNotes_pl.qm
+    install -D -m 0644 languages/QOwnNotes_cn.qm $pkgdir/usr/share/QOwnNotes/languages/QOwnNotes_cn.qm
 }
