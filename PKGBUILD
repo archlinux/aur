@@ -3,14 +3,14 @@
 
 pkgname=areca-bin
 pkgver=7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Personal file backup software supporting compression, encryption and incremental backups."
 arch=('i686' 'x86_64')
 license=('GPL2')
 depends=('java-runtime')
 provides=('areca')
 conflicts=('areca')
-url=('http://www.areca-backup.org')
+url='http://www.areca-backup.org'
 source=("areca.sh"
 	"areca_cl.sh"
 	"areca_decrypt.sh"
