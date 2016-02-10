@@ -3,7 +3,7 @@
 
 pkgname=areca-beta
 pkgver=7.4.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Personal file backup software supporting compression, encryption and incremental backups."
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -11,7 +11,7 @@ depends=('java-runtime' 'swt')
 makedepends=('apache-ant')
 provides=('areca')
 conflicts=('areca')
-url=('http://www.areca-backup.org')
+url='http://www.areca-backup.org'
 source=("http://sourceforge.net/projects/areca/files/areca-beta/areca-$pkgver-beta/areca-$pkgver-beta-src.tar.gz"
 	"areca.sh"
 	"areca_cl.sh"
