@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Coapres
+Exec=coapres
+Icon=coapres.png
+Terminal=false
+Type=Application
+Categories=Application;Game;
+StartupNotify=false
