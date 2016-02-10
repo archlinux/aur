@@ -1,7 +1,7 @@
 # Contributor: vit01 (vitirk) <me@ii-net.tk>
 
 pkgname='iicli-modular'
-pkgver='0.5.6'
+pkgver='0.6.0'
 pkgdesc="Qt-client for ii network (russian)"
 pkgrel=1
 arch=('any')
