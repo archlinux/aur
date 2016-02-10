@@ -4,7 +4,7 @@ pkgname=(python-llvmlite-git python2-llvmlite-git)
 
 pkgbase=python-llvmlite-git
 _gitname=llvmlite
-pkgver=0.6.0.r10.g6cf9861
+pkgver=0.9.0.dev.r48.g775c5e0
 pkgrel=1
 pkgdesc="A lightweight LLVM python binding for writing JIT compilers"
 url="https://github.com/numba/llvmlite"
@@ -32,6 +32,7 @@ package_python-llvmlite-git() {
   provides=('python-llvmlite') 
 
   cd ${srcdir}/${_gitname}
+  sed -i 's/-lLLVMOProfileJIT/ /g' ffi/Makefile.linux
   python setup.py install \
     --prefix=/usr \
     --root=$pkgdir
@@ -42,6 +43,7 @@ package_python2-llvmlite-git() {
   provides=('python2-llvmlite')
 
   cd ${srcdir}/${_gitname}-py2
+  sed -i 's/-lLLVMOProfileJIT/ /g' ffi/Makefile.linux
   python2 setup.py install \
     --prefix=/usr \
     --root=$pkgdir
