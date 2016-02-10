@@ -18,6 +18,6 @@ md5sums=('SKIP')
 
     package() {
 	      cd $pkgname
-	        install -Dm755 "echo" "$pkgdir/bin/echo"
+	        install -Dm755 "echo" "$pkgdir/usr/bin/echo"
 	  }
 
