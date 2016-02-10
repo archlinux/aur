@@ -23,10 +23,10 @@ update_git(){
   msg "Connecting to GIT server...."
 
   if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin > /dev/null
+    cd "$_gitname" && git pull origin >&2
     msg "The local files are updated."
   else
-    git clone -q --depth 1 "$_gitroot" "$_gitname"
+    git clone --depth 1 "$_gitroot" "$_gitname" >&2
   fi
 
   msg "GIT checkout done or server timeout"
