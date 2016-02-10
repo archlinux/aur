@@ -2,11 +2,11 @@
 
 _pkgname=ticcutils
 pkgname=ticcutils-git
-pkgver=161
-pkgrel=2
-pkgdesc="Common library with functions for tools developed at Tilburg Centre for Cognition and Communication"
+pkgver=201
+pkgrel=1
+pkgdesc="Common library with functions for tools developed at Tilburg Centre for Cognition and Communication (Tilburg University) and Center of Language and Speech Technology (Radboud University Nijmegen)"
 arch=('i686' 'x86_64')
-url="http://ilk.uvt.nl/"
+url="https://github.com/LanguageMachines/ticcutils/"
 license=('GPL')
 depends=('gcc-libs' 'libxml2' 'bzip2' 'libtar' 'boost' 'zlib')
 provides=('ticcutils')
