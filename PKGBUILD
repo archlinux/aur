@@ -8,7 +8,7 @@ pkgname=google-chrome-dev
 pkgver=50.0.2638.0
 pkgrel=1
 pkgdesc="An attempt at creating a safer, faster, and more stable browser (Dev Channel)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://www.google.com/chrome/index.html"
 license=('custom:chrome')
 depends=('alsa-lib' 'desktop-file-utils' 'flac' 'gconf' 'gtk2' 'harfbuzz' 'harfbuzz-icu' 'hicolor-icon-theme'
@@ -20,18 +20,16 @@ provides=('google-chrome' 'pepper-flash')
 options=('!emptydirs' '!strip')
 install=$pkgname.install
 _channel=unstable
-source=('google-chrome-unstable'
+source=("google-chrome-${_channel}_${pkgver}_amd64.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_amd64.deb"
+        'google-chrome-unstable'
         'eula_text.html')
-source_i686=("google-chrome-${_channel}_${pkgver}_i386.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_i386.deb")
-source_x86_64=("google-chrome-${_channel}_${pkgver}_amd64.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_amd64.deb")
-md5sums=('11b55a3fec7279db32b63e3a0b97dc01'
+md5sums=('169af721f2c05ff1da8aade7b36dd849'
+         '11b55a3fec7279db32b63e3a0b97dc01'
          'b7e752f549b215ac77f284b6486794b6')
-md5sums_i686=('f93d5483fc58cc4a00bd354bd7367a7e')
-md5sums_x86_64=('169af721f2c05ff1da8aade7b36dd849')
 
 ## Previous build (also see: /var/cache/pacman/pkg/google-chrome-dev-*):
-#source_x86_64=('http://mirror.glendaleacademy.org/chrome/pool/main/g/google-chrome-unstable/google-chrome-unstable_50.0.2633.3-1_amd64.deb')
-#md5sums_x86_64=('05d0dc954f76e2623192ec5132ec62bc')
+#source[0]=('http://mirror.glendaleacademy.org/chrome/pool/main/g/google-chrome-unstable/google-chrome-unstable_50.0.2633.3-1_amd64.deb')
+#md5sums[0]=('05d0dc954f76e2623192ec5132ec62bc')
 
 package() {
   msg2 "Extracting the data.tar.xz..."
