@@ -1,6 +1,6 @@
 # Maintainer: Alejandro Baez <https://keybase.io/baez>
 
-pkgname='ta-rust-hg'
+pkgname='textadept-rust'
 pkgver=r133.8273cacd1ff8
 pkgrel=1
 pkgdesc="A Rust module and lexer for Textadept"
