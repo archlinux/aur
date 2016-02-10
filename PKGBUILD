@@ -1,4 +1,4 @@
-pkgname=python-python-telegram-bot
+pkgname=python-telegram-bot
 pkgver=3.3b1
 pkgrel=1
 pkgdesc="A Python wrapper around the Telegram Bot API"
