@@ -12,7 +12,7 @@ depends=('curl'
          'xclip'
          'imagemagick')
 source=("https://github.com/Winneon/cappy/archive/master.tar.gz")
-md5sums=('a3a5d5647280638644fc1b4f7a3acb23')
+md5sums=('24026bf160fa32ff36f73c50dcd0e542')
 
 
 package(){
