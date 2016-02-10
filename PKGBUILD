@@ -1,5 +1,5 @@
 #!/bin/zsh
-_nchan_ver=0.99.1
+_nchan_ver=0.99.3
 _nginx_ver=1.8.0
 
 _nchan_tag="v${_nchan_ver}"
@@ -29,7 +29,7 @@ pkgver() {
 
 
 pkgname=nginx-nchan
-pkgver=1.8.0.nchan0.99.1
+pkgver=1.8.0.nchan0.99.3
 pkgrel=1
 pkgdesc="Nginx + Nchan - a flexible pub/sub server"
 arch=('i686' 'x86_64')
