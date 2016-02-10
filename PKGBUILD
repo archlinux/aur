@@ -2,7 +2,7 @@
 
 pkgname=i2pd-git
 _pkgname=i2pd
-pkgver=2171.870e84a
+pkgver=2321.72b3c10
 pkgrel=1
 pkgdesc="Simplified C++ implementation of I2P client"
 arch=('i686' 'x86_64')
@@ -63,5 +63,6 @@ pkgver() {
 }
 
 md5sums=('SKIP'
-         '44a284eaa8719db82e68bd5a2df7e306'
+         '6684e6f267a524260577e91e94743b53'
          'acda29e5b46a0c9fade734a6a467b381')
+
