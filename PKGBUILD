@@ -82,6 +82,6 @@ package() {
                  ${srcdir}/${source[1]##*/} -C \
                  "${pkgdir}/usr/share/zynaddsubfx/parameters"
                  
-  # Desktop file sans predefied I/O and icon
+  # Desktop file sans predefied I/O
   install -Dm644 "${srcdir}/${pkgname%-*}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-*}.desktop"
 }
