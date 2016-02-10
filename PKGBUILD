@@ -3,8 +3,8 @@
 
 pkgname=distrho-vst-git
 pkgver=r336.7bcbc9b
-pkgrel=1
-pkgdesc="DISTRHO VST audio plugins ports"
+pkgrel=2
+pkgdesc="Distrho VST Audio Plugins, using the JUCE Toolkit"
 arch=('i686' 'x86_64')
 url="http://distrho.sourceforge.net/"
 license=('GPL' 'LGPL')
