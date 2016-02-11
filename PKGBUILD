@@ -1,7 +1,7 @@
 # Contributor: Ethan Zonca <e@ethanzonca.com>
 pkgname=python-canard
-provides="python-canard"
-conflicts="python-canard"
+provides=('python-canard')
+conflicts=('python-canard')
 pkgdesc="CANard is a library for dealing with Controller Area Network (CAN) data from Python"
 url="http://github.com/ericevenchick/CANard"
 pkgver=0.2.1
