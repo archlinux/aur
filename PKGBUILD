@@ -1,17 +1,16 @@
-# Maintainer: Christian Rebischke <echo Q2hyaXMuUmViaXNjaGtlQGdtYWlsLmNvbQo= | base64 -d>
-
+# Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 pkgbase=python-piexif
 _pyname=piexif
 pkgname=('python-piexif' 'python2-piexif')
 makedepends=('python' 'python2')
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="Python library to read and write EXIF data from TIFF and JPG files"
 arch=('any')
 url="https://pypi.python.org/pypi/piexif#downloads"
 license=('BSD')
 source=("https://pypi.python.org/packages/source/p/$_pyname/$_pyname-$pkgver.zip")
-sha512sums=('6d55795c2aca3aa5ceb484e6549d1b64476abb018410821db8e74bb14a7993d57f8cf5008bfdabedab357ebac3bde682f8a533dfc8a047545423f26764c27eb9')
+sha512sums=('e011936bc9a339d60cdc21cf740b725745a434b782a380caf6896f101b1d41cc04f24135cb745406f042e070601773b0f4adbeb66f5aa757a514b86ddaf576b6')
 
 package_python-piexif() {
   depends=('python')
@@ -31,5 +30,4 @@ package_python2-piexif() {
 
 }
 
-# vim:set ts=2 sw=2 et:
-
+# vim:set et sw=2 ts=2 tw=79:
