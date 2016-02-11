@@ -1,0 +1,19 @@
+--- pysolar-0.6/Pysolar/radiation.py	2014-04-21 01:37:19.000000000 +0200
++++ pysolar-0.6/Pysolar/radiation.py	2016-02-11 10:49:50.633411106 +0100
+@@ -22,6 +22,7 @@
+ """
+ #from . import solar
+ import math
++import datetime 
+ 
+ def GetAirMassRatio(altitude_deg):
+ 	# from Masters, p. 412
+@@ -40,7 +41,7 @@
+ 	# from Masters, p. 412
+ 	
+ 	if(altitude_deg > 0):
+-		day = solar.GetDayOfYear(utc_datetime)
++		day = int(datetime.datetime.utcnow().strftime("%j"))
+ 		flux = GetApparentExtraterrestrialFlux(day)
+ 		optical_depth = GetOpticalDepth(day)
+ 		air_mass_ratio = GetAirMassRatio(altitude_deg)

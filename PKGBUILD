@@ -9,9 +9,16 @@ depends=('python2'
 		)
 url='http://pysolar.org/'
 license=('GPLv3')
-md5sums=('78005c1e498100cc30842af20ca76069')
-source=('https://github.com/pingswept/pysolar/archive/0.6.tar.gz')
+md5sums=('78005c1e498100cc30842af20ca76069'
+         '5b0209ad50cab6b281daf44f5102688e')
+source=('https://github.com/pingswept/pysolar/archive/0.6.tar.gz'
+		'radiation.patch')
 
+
+prepare() {
+	pwd
+	patch -Np0 -i radiation.patch 
+}
 package() {
 	cd "${srcdir}/pysolar-0.6/"
 	python2 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
