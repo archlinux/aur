@@ -2,7 +2,7 @@
 # Maintainer: Stefan Tatschner <rumpelsepp@sevenbyte.org>
 
 pkgname=syncthing-relaysrv
-pkgver=0.12.1
+pkgver=0.12.18
 pkgrel=1
 pkgdesc='Relay server for Syncthing'
 url='https://github.com/syncthing/relaysrv/'
@@ -14,7 +14,7 @@ source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz
         syncthing-relaysrv.tmpfiles
         syncthing-relaysrv.sysusers)
 install=$pkgname.install
-md5sums=('8a5af0bca0037e3a3ffe050bda680286'
+md5sums=('25be2acfd413f3b0c880d0d47a65a3d3'
          'b94da81c43dbee67bcf3e9b80de7a1d6'
          'a63ec0b544d22d9dfab4c0cc8d40aa60')
 
@@ -42,5 +42,4 @@ package() {
     "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
   install -Dm0644 "$srcdir/$pkgname.sysusers" \
     "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-
 }
