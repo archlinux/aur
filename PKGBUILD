@@ -3,9 +3,9 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=pycharm-eap
-_buildver=143.1919.2
-_pkgver=5.0.4
-_eap="False"
+_buildver=144.3891.17
+_pkgver=5.1.0
+_eap="True"
 pkgver="${_pkgver}.${_buildver}"
 pkgrel=1
 pkgdesc="Powerful Python and Django IDE, Early Access Program (EAP) build. Professional edition."
@@ -13,20 +13,19 @@ arch=('any')
 options=('!strip')
 url="https://confluence.jetbrains.com/pages/viewpage.action?pageId=23004355"
 license=("custom")
-depends=("java-environment>=6")
 makedepends=("wget")
 provides=("pycharm-professional" "pycharm-pro-eap")
 conflicts=("pycharm-professional" "pycharm-pro-eap")
 groups=("development" "IDE" "editor" "jetbrains")
 
 if [[ "True" = "${_eap}" ]]; then
-	_srcfile="pycharm-professional-${_buildver}.tar.gz"
+	_srcfile="pycharm-professional-${_buildver}-custom-jdk-linux.tar.gz"
 	source=("http://download.jetbrains.com/python/${_srcfile}"
 			"${pkgname}.desktop")
 	sha256sums=($(wget -q "${source}.sha256" && cat "${_srcfile}.sha256" | cut -f1 -d" ")
 				"aa9573c177f5d4d3092b9dff2aef5b4c7d25ff9c2b044be222a0512dff759731")
 else
-	_srcfile="pycharm-professional-${_pkgver}.tar.gz"
+	_srcfile="pycharm-professional-${_pkgver}-custom-jdk-linux.tar.gz"
 	source=("http://download.jetbrains.com/python/${_srcfile}"
 			"${pkgname}.desktop")
 	sha256sums=($(wget -q "${source}.sha256" && cat "${_srcfile}.sha256" | cut -f1 -d" ")
