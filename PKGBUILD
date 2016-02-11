@@ -1,7 +1,7 @@
 # Maintainer: Martchus <martchus@gmx.net>
 pkgname=mingw-w64-freetype2-bootstrap
-pkgver=2.6.2
-pkgrel=2
+pkgver=2.6.3
+pkgrel=1
 pkgdesc="TrueType font rendering library (mingw-w64 bootstrap)"
 arch=('any')
 url="http://www.freetype.org/"
@@ -18,7 +18,7 @@ source=(http://download.savannah.gnu.org/releases/freetype/freetype-${pkgver}.ta
         0003-Enable-subpixel-hinting.patch
         0004-Mask-subpixel-hinting-with-an-env-var.patch)
 options=(!strip !buildflags !libtool staticlibs)
-sha1sums=('29c22b85b77cb22cf95c13e7062e21f39fe6b17a'
+sha1sums=('6c98bd5d0be313207c37ca23d25faf983486aee5'
           'SKIP'
           '1c7bc438df0428a63f881e7e4343b22c5b09ecb1'
           'e2d2b8c4847ab9cfd497179c7140835e99ece711'
