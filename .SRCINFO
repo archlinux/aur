@@ -1,7 +1,7 @@
 pkgbase = budgie-desktop
 	pkgdesc = Simple GTK3 desktop experience from Solus Project
-	pkgver = 10.2.2
-	pkgrel = 2
+	pkgver = 10.2.3
+	pkgrel = 1
 	url = http://solus-project.com/
 	install = budgie-desktop.install
 	arch = i686
@@ -31,8 +31,8 @@ pkgbase = budgie-desktop
 	depends = gnome-desktop>=3.18
 	depends = upower>=0.9.20
 	depends = polkit>=0.105
-	source = budgie-desktop-10.2.2.tar.gz::https://github.com/solus-project/budgie-desktop/releases/download/v10.2.2/budgie-desktop-10.2.2.tar.xz
-	sha256sums = e686c848b841795ab37bab0c82587b0f7b80882e8fd0c1e5832c0612c60f39bb
+	source = budgie-desktop-10.2.3.tar.gz::https://github.com/solus-project/budgie-desktop/releases/download/v10.2.3/budgie-desktop-10.2.3.tar.xz
+	sha256sums = 2556a75220dfde4fd75e80a43a2d07575cea887ad0d4e169acb48e135707beac
 
 pkgname = budgie-desktop
 

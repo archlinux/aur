@@ -3,8 +3,8 @@
 # Contributor: Josh Klar <j@iv597.com>
 
 pkgname=budgie-desktop
-pkgver=10.2.2
-pkgrel=2
+pkgver=10.2.3
+pkgrel=1
 pkgdesc="Simple GTK3 desktop experience from Solus Project"
 arch=('i686' 'x86_64')
 url="http://solus-project.com/"
@@ -20,7 +20,7 @@ makedepends=('git' 'python2' 'vala' 'gobject-introspection>=1.44.0')
 
 install=budgie-desktop.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/solus-project/budgie-desktop/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('e686c848b841795ab37bab0c82587b0f7b80882e8fd0c1e5832c0612c60f39bb')
+sha256sums=('2556a75220dfde4fd75e80a43a2d07575cea887ad0d4e169acb48e135707beac')
 
 build() {
 	cd "$srcdir"/$pkgname-$pkgver
