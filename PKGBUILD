@@ -19,6 +19,14 @@ package() {
 	install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
 	cp ${_pyname}/doc/* "${pkgdir}/usr/share/doc/${pkgname}"
 
+	# fixing shebang line
+	cd "${pkgdir}/usr/lib/python2.7/site-packages/oletools/"
+	for file in *.py; do
+		if [ "$file" != "__init__.py" ]; then
+			sed -i '1s/python/python2/' "$file"
+		fi
+	done
+
 }
 
 # vim:set noet sts=4 sw=4 ts=4 tw=76:
