@@ -1,0 +1,40 @@
+diff --git a/CRT.c b/CRT.c
+index 2ab20c2..74a1d78 100644
+--- a/CRT.c
++++ b/CRT.c
+@@ -181,7 +181,7 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
+       [LED_COLOR] = ColorPair(Green,Black),
+       [TASKS_RUNNING] = A_BOLD | ColorPair(Green,Black),
+       [PROCESS] = A_NORMAL,
+-      [PROCESS_SHADOW] = A_BOLD | ColorPair(Black,Black),
++      [PROCESS_SHADOW] = A_BOLD | ColorPair(Green,Black),
+       [PROCESS_TAG] = A_BOLD | ColorPair(Yellow,Black),
+       [PROCESS_MEGABYTES] = ColorPair(Cyan,Black),
+       [PROCESS_BASENAME] = A_BOLD | ColorPair(Cyan,Black),
+@@ -193,7 +193,7 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
+       [PROCESS_THREAD] = ColorPair(Green,Black),
+       [PROCESS_THREAD_BASENAME] = A_BOLD | ColorPair(Green,Black),
+       [BAR_BORDER] = A_BOLD,
+-      [BAR_SHADOW] = A_BOLD | ColorPair(Black,Black),
++      [BAR_SHADOW] = A_BOLD | ColorPair(Green,Black),
+       [SWAP] = ColorPair(Red,Black),
+       [GRAPH_1] = A_BOLD | ColorPair(Cyan,Black),
+       [GRAPH_2] = ColorPair(Cyan,Black),
+@@ -201,7 +201,7 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
+       [MEMORY_BUFFERS] = ColorPair(Blue,Black),
+       [MEMORY_BUFFERS_TEXT] = A_BOLD | ColorPair(Blue,Black),
+       [MEMORY_CACHE] = ColorPair(Yellow,Black),
+-      [LOAD_AVERAGE_FIFTEEN] = ColorPair(Cyan,Black),
++      [LOAD_AVERAGE_FIFTEEN] = ColorPair(Green,Black),
+       [LOAD_AVERAGE_FIVE] = A_BOLD | ColorPair(Cyan,Black),
+       [LOAD_AVERAGE_ONE] = A_BOLD | ColorPair(White,Black),
+       [LOAD] = A_BOLD,
+@@ -215,7 +215,7 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
+       [CPU_NICE_TEXT] = A_BOLD | ColorPair(Blue,Black),
+       [CPU_NORMAL] = ColorPair(Green,Black),
+       [CPU_KERNEL] = ColorPair(Red,Black),
+-      [CPU_IOWAIT] = A_BOLD | ColorPair(Black, Black),
++      [CPU_IOWAIT] = A_BOLD | ColorPair(Green, Black),
+       [CPU_IRQ] = ColorPair(Yellow,Black),
+       [CPU_SOFTIRQ] = ColorPair(Magenta,Black),
+       [CPU_STEAL] = ColorPair(Cyan,Black),
