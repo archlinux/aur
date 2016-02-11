@@ -2,7 +2,7 @@
 
 _pkgname=honggfuzz
 pkgname=${_pkgname}-git
-pkgver=0.6.r429.g14717ca
+pkgver=0.6.r435.g2e06f56
 pkgrel=1
 pkgdesc="A general-purpose, easy-to-use fuzzer with interesting analysis options"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ source=('git://github.com/google/honggfuzz'
         'honggfuzz.archfix.diff'
        )
 md5sums=('SKIP'
-         '74b75ac4ffc876fde8b202969bc47cf4')
+         'ad862d346eca45e696f4d6dd3e0d4ae0')
 patches=(honggfuzz.archfix.diff)
 
 pkgver() {
