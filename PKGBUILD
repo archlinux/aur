@@ -9,7 +9,7 @@ makedepends=('git')
 source=("lsdsk::git+https://github.com/AndyCrowd/lsdsk.git")
 license=('GPL2')
 md5sums=('SKIP')
-url=("https://github.com/AndyCrowd/lsdsk/blob/master/lsdsk")
+url="https://github.com/AndyCrowd/lsdsk/blob/master/lsdsk"
 
 package() {
   install -d "$pkgdir/usr/bin"
