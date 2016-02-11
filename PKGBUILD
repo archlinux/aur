@@ -1,8 +1,9 @@
 # Maintainer: wenLiangcan <boxeed at gmail dot com>
 
 pkgname=tower-of-guns
-pkgver=1414520623
+pkgver=1.27_2015021101
 pkgrel=1
+epoch=1
 pkgdesc='Tower of Guns is a fast-paced, first-person shooter for the twitch gamer, featuring a few randomized elements to keep each playthrough fresh.'
 arch=('i686' 'x86_64')
 url='http://www.towerofguns.com/'
@@ -13,13 +14,13 @@ else
     depends=('openal' 'libvorbis' 'gcc-libs' 'libgl' 'libxext')
 fi
 options=('!strip')
-_gamepkg="TowerOfGuns_Linux_${pkgver}.sh"
+_gamepkg="TowerOfGuns-Linux-${pkgver//_/-}-g_fix.sh"
 source=("${pkgname}.desktop"
         "${pkgname}.sh"
         "hib://${_gamepkg}")
 md5sums=('c5848b7ef54506f7538d26e5335609c4'
          '09390a3d0f46508537e8d5d0ab8f8297'
-         '44878e651e2e06461262ce5cac5e8d12')
+         '45fae40e529e678c9129f9ee2dc8694b')
 noextract=("${_gamepkg}")
 install=$pkgname.install
 # You can download the Humble Indie Bundle file manually, or you can configure
@@ -59,3 +60,4 @@ package(){
 
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 }
+
