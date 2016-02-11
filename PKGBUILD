@@ -1,6 +1,6 @@
 # Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
 pkgname=roboptim-core-git
-pkgver=3.1.r19.g9d1e41c
+pkgver=3.2.r20.g8efb578
 pkgrel=1
 pkgdesc="Numerical Optimization for Robotics"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ source=("${_gitname}"::${_gitroot})
 md5sums=('SKIP')
 
 # Build type
-_buildtype="RelWithDebInfo"
+_buildtype="Release"
 
 # Build directory
 _builddir="${_gitname}-build"
