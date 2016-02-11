@@ -1,5 +1,4 @@
-# Maintainer: Christian Rebischke <echo Q2hyaXMuUmViaXNjaGtlQGdtYWlsLmNvbQo= | base64 -d>
-
+# Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 pkgbase=python-pdns
 _pyname=pdns
 pkgname=('python-pdns' 'python2-pdns')
@@ -19,7 +18,6 @@ package_python-pdns() {
   python setup.py install -O1 --root=$pkgdir
   install -Dm 644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm 644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README"
-
 }
 
 package_python2-pdns() {
@@ -28,8 +26,6 @@ package_python2-pdns() {
   python2 setup.py install -O1 --root=$pkgdir
   install -Dm 644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm 644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README"
-
 }
 
-# vim:set ts=2 sw=2 et:
-
+# vim:set et sw=2 ts=2 tw=79:
