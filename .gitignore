@@ -1,0 +1,6 @@
+pkg/
+src/
+.AURINFO
+jalv-select/
+jalv-select-git-*.tar.xz
+jalv-select-git-*.src.tar.gz
