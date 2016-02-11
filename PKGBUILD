@@ -1,9 +1,10 @@
 # Maintainer: Tomas Jasek <tomsik68(at)gmail(dot)com>
 # Contributor: Aisberg
+# Contributor: The_Loko
 
 pkgname="aptana-studio"
 pkgver="3.6.1"
-pkgrel=2
+pkgrel=3
 pkgdesc="Aptana Studio 3.6.1 is code base and complete eclipse-based environment that includes extensive capabilities to build Ruby and Rails, PHP, and Python applications, along with complete HTML, CSS and JavaScript editing. "
 arch=('i686' 'x86_64')
 url="http://www.aptana.com/products/studio3/download.html"
@@ -11,7 +12,9 @@ license=('GPL3')
 groups=()
 depends=('java-runtime')
 makedepends=(tar)
-optdepends=()
+optdepends=('webkitgtk2: internal browser support' 
+			'chromium: internal browser support'
+		   )
 provides=()
 conflicts=()
 replaces=()

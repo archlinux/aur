@@ -1,13 +1,15 @@
 pkgbase = aptana-studio
 	pkgdesc = Aptana Studio 3.6.1 is code base and complete eclipse-based environment that includes extensive capabilities to build Ruby and Rails, PHP, and Python applications, along with complete HTML, CSS and JavaScript editing.
 	pkgver = 3.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.aptana.com/products/studio3/download.html
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = tar
 	depends = java-runtime
+	optdepends = webkitgtk2: internal browser support
+	optdepends = chromium: internal browser support
 	source = aptana-studio.desktop
 	md5sums = 6b3b2d4809ac7c92c312950f06224387
 	source_i686 = https://github.com/aptana/studio3/releases/download/v3.6.1/Aptana_Studio_3_Setup_Linux_x86_3.6.1.zip
