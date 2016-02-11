@@ -7,7 +7,7 @@
 pkgname=sx
 pkgver="2.17"
 pkgrel=1
-pkgdesc="sxconsole is a tool used to extract various report types and then analyze those extracted reports with plugins"
+pkgdesc="A tool used to extract various report types and then analyze those extracted reports with plugins."
 arch=('any')
 url="https://fedorahosted.org/sx/"
 license=('GPL')
