@@ -12,7 +12,7 @@ pkgrel=1
 pkgdesc="A cross-platform code builder and library manager"
 arch=('any')
 url="https://github.com/platformio/platformio/"
-license=('GPL')
+license=('Apache')
 depends=('python2'
          'python2-click'
          'python2-bottle'
