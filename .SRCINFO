@@ -26,7 +26,7 @@ pkgbase = lastpass
 	noextract = lpchrome_4.1.1-1.crx
 	source = lplinux_4.0.0-1.tar.bz2::https://lastpass.com/lplinux.tar.bz2
 	source = lpchrome_4.1.1-1.crx::https://clients2.google.com/service/update2/crx?response=redirect&prodversion=48.0.2564.109&x=id%3Dhdokiejnpimakedhajhdlcegeplioahd%26uc
-	source = lpchrome_linux_4.1.1-1.crx::https://lastpass.com/lpchrome_linux.crx
+	source = lpchrome_linux_4.0.6-1.crx::https://lastpass.com/lpchrome_linux.crx
 	source = com.lastpass.nplastpass.json
 	source = lastpass_policy.json
 	source = lp4_4.0.4a-1.xpi::https://lastpass.com/lp4.xpi
