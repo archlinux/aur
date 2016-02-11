@@ -7,7 +7,7 @@ pkgname=$_pkgname-qt
 pkgver=15.12.1
 pkgrel=1
 pkgdesc="Desktop Globe - Qt version"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://www.kde.org/applications/system/marble"
 license=('GPL')
 makedepends=('extra-cmake-modules' 'gpsd' 'libwlocate' 'qt5-tools')
@@ -23,7 +23,7 @@ md5sums=('49ae100aa2ec034d702636008dba5f2f')
 prepare() {
   mkdir -p build
 
-  # only build the KDE app
+  # only build the QT app
   sed -e '/mobile/d' \
       -e '/Quick/d' \
       -e '/touch/d' \
