@@ -4,31 +4,24 @@
 
 _pkgname=marble
 pkgname=$_pkgname-qt
-pkgver=15.12.0
+pkgver=15.12.1
 pkgrel=1
 pkgdesc="Desktop Globe - Qt version"
-arch=(i686 x86_64)
+arch=('i686' 'x86_64')
 url="https://www.kde.org/applications/system/marble"
-license=(GPL)
-makedepends=(extra-cmake-modules gpsd quazip-qt5 libwlocate phonon-qt5 qt5-webkit qt5-tools)
-depends=(qt5-webkit quazip-qt5 phonon-qt5 qt5-svg qt5-script libwlocate gpsd hicolor-icon-theme)
+license=('GPL')
+makedepends=('extra-cmake-modules' 'gpsd' 'libwlocate' 'qt5-tools')
+depends=('qt5-webkit' 'quazip-qt5' 'phonon-qt5' 'qt5-svg' 'qt5-script' 'libwlocate' 'gpsd' 'hicolor-icon-theme')
 optdepends=('gpsd: GPS based geolocation'
             'libwlocate: WLAN based geolocation')
-provides=(marble)
-conflicts=(marble)
+provides=("$_pkgname" 'marble-data' 'libastro')
+conflicts=("$_pkgname" 'marble-data' 'libastro')
 install=$pkgname.install
-source=("http://download.kde.org/stable/applications/$pkgver/src/$_pkgname-$pkgver.tar.xz"
-	       plugin-dir.patch::"https://quickgit.kde.org/?p=marble.git&a=commitdiff&h=f59d559&o=plain")
-md5sums=('a7a481936281a7d584b9168d98fcd5d5'
-         'e4441d763de7588a8c4fa93b83d945fe')
+source=("http://download.kde.org/stable/applications/$pkgver/src/$_pkgname-$pkgver.tar.xz")
+md5sums=('49ae100aa2ec034d702636008dba5f2f')
 
 prepare() {
   mkdir -p build
-
-# fix installation designer plugins path https://bugs.kde.org/show_bug.cgi?id=348554
-  cd $_pkgname-$pkgver
-  #patch -p1 -i ../plugin-dir.patch
-  cd ..
 
   # only build the KDE app
   sed -e '/mobile/d' \
