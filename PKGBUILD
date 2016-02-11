@@ -24,8 +24,8 @@ package() {
 
 	install -Dm755 "${srcdir}"/tpc-master/TurionPowerControl "${pkgdir}"/usr/bin/tpc
 	mkdir "${pkgdir}"/etc/
-	mkdir "${pkgdir}"/etc/modprobe.d
-	touch "${pkgdir}"/etc/modprobe.d/tpc.conf
-	echo "cpuid" > "${pkgdir}"/etc/modprobe.d/tpc.conf
-	echo "msr" >> "${pkgdir}"/etc/modprobe.d/tpc.conf
+	mkdir "${pkgdir}"/etc/modules-load.d
+	touch "${pkgdir}"/etc/modules-load.d/tpc.conf
+	echo "cpuid" > "${pkgdir}"/etc/modules-load.d/tpc.conf
+	echo "msr" >> "${pkgdir}"/etc/modules-load.d/tpc.conf
 }
