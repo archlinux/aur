@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Terminal=false
+Categories=Office;
+Exec=spnxclient
+Icon=/usr/share/sphinx/icon.ico
+Name=Sphinx
+GenericName=Sphinx client software
+GenericName[ru]=Клиент СКУД СФИНКС
