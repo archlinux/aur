@@ -3,7 +3,7 @@
 pkgbase = python2-canard
 	pkgdesc = CANard is a library for dealing with Controller Area Network (CAN) data from Python
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/ericevenchick/CANard
 	arch = i686
 	arch = x86_64
