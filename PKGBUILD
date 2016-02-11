@@ -1,11 +1,12 @@
-# Maintainer: Peter Reschenhofer <peter.reschenhofer@gmail.com>
-# Contributor: Troy Engel <troyengel+arch@gmail.com>
+# Maintainer: Matthew Boswell <mordervomubel+archlinux at lockmail.us>
+# Previous Maintainer: Troy Engel <troyengel+arch@gmail.com>
+# Previous Maintainer: Peter Reschenhofer <peter.reschenhofer@gmail.com>
 # Contributor: William Overstreet <william.ab.overstreet@gmail.com>
 # Contributor: Vinicius de Avila Jorge <vinicius.avila.jorge@gmail.com>
 
 
 pkgname=libpurple-meanwhile
-pkgver=2.10.11
+pkgver=2.10.12
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
@@ -17,7 +18,7 @@ depends=('glib2' 'meanwhile' 'libpurple')
 provides=('libpurple-meanwhile')
 options=('!libtool')
 source=(http://downloads.sourceforge.net/pidgin/pidgin-$pkgver.tar.bz2)
-sha256sums=('f2ae211341fc77efb9945d40e9932aa535cdf3a6c8993fe7919fca8cc1c04007')
+sha256sums=('2c7523f0fefe89749c03b2b738ab9f7bd186da435be4762f1487eee31e77ffdd')
 
 build() {
   cd "$srcdir/pidgin-$pkgver"
