@@ -1,5 +1,4 @@
-# Maintainer: Christian Rebischke <chris.rebischke@archlinux.org>
-
+# Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 _pyname=oletools
 pkgname=python2-oletools
 pkgver=0.42
