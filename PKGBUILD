@@ -9,7 +9,7 @@ url="https://ioam.github.io/holoviews"
 license=('BSD')
 depends=('python-numpy' 'python-param')
 options=(!emptydirs)
-source=("https://pypi.python.org/packages/source/h/$_pkgname/$_pkgname-$pkgver.tar.gz")
+source=("https://pypi.python.org/packages/source/h/$_pkgname/$_pkgname-$pkgver.zip")
 md5sums=('81a128d0deff6065e148126a1de6dbd2')
 
 package() {
