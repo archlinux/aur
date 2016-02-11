@@ -1,5 +1,4 @@
-# Maintainer: Christian Rebischke <echo Q2hyaXMuUmViaXNjaGtlQGdtYWlsLmNvbQo= | base64 -d>
-
+# Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 pkgname=pyew-git
 pkgver=100.2d086a1
 pkgrel=1
@@ -27,5 +26,4 @@ package() {
   
 }
 
-
-# vim:set ts=2 sts=2 sw=2 et
+# vim:set et sw=2 ts=2 tw=79:
