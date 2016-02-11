@@ -4,8 +4,8 @@
 # Contributor: Marek Jędryka <marek629@poczta.onet.pl>
  
 pkgname=sir
-pkgver=3.0
-pkgrel=2
+pkgver=3.1
+pkgrel=1
 pkgdesc="Simple image resizer in Qt" 
 arch=('i686' 'x86_64')
 url="http://marek629.github.io/SIR/" 
@@ -26,4 +26,4 @@ package() {
      cd "$srcdir/$pkgname/bld"
      make DESTDIR="$pkgdir/" install
 }  
-sha1sums=('a850b9883424bd803e3b2941f1e5d841403ae591')
+sha1sums=('8e0a104ba6dacf97cda2eb1a8ce392d67b49f96f')

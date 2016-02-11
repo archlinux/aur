@@ -1,0 +1,6 @@
+src/
+pkg/
+sir-*.pkg.tar.xz
+sir-*.src.tar.gz
+sir_*.tar.gz
+
