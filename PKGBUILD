@@ -1,6 +1,5 @@
-# Maintainer : Christian Rebischke <echo Q2hyaXMuUmViaXNjaGtlQGdtYWlsLmNvbQo= | base64 -d>
+# Maintainer : Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
-
 pkgname=kippo-git
 pkgver=v0.9.282.d461745
 provides=('kippo') 
@@ -55,4 +54,4 @@ package() {
   install -Dm 644 doc/README "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
 
-# vim:set et sw=2 ts=2 tw=80:
+# vim:set et sw=2 ts=2 tw=79:
