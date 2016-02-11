@@ -1,0 +1,6 @@
+[Unit]
+Description=Floodlight SDN OpenFlow Controller
+
+[Service]
+WorkingDirectory=/opt/floodlight
+ExecStart=-/usr/bin/java -jar /opt/floodlight/floodlight.jar
