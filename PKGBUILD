@@ -1,9 +1,9 @@
 # Maintainer: barcia <barcia@opmbx.org>
 
-_gitname=Antu-U
+_gitname=Antu
 _pkgname=Antu
 pkgname=('antu-icon-theme-git')
-pkgver=r73.250ac6f
+pkgver=r78.83a633c
 pkgrel=1
 pkgdesc="An icon theme for Plasma Desktop"
 arch=('any')
