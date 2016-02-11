@@ -9,7 +9,7 @@ makedepends=('git')
 source=("fbrokendesktop::git+https://github.com/AndyCrowd/fbrokendesktop.git")
 license=('GPL2')
 md5sums=('SKIP')
-url=("https://github.com/AndyCrowd/")
+url="https://github.com/AndyCrowd/"
 
 package() {
   install -d "$pkgdir/usr/bin"
