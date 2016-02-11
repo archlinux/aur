@@ -3,13 +3,13 @@
 _pkgname="arc-firefox-theme"
 pkgname="${_pkgname}-git"
 pkgver=latest
-pkgrel=2
+pkgrel=3
 pkgdesc="Arc Firefox Theme"
 url="https://github.com/horst3180/arc-firefox-theme"
 arch=('i686' 'x86_64')
 license=('Mozilla Public License version 2.0')
 depends=('firefox')
-makedeps=('autoconf automake zip')
+makedepends=('autoconf' 'automake' 'zip' 'unzip' 'git')
 source=("${_pkgname}::git+https://github.com/horst3180/arc-firefox-theme.git")
 sha1sums=('SKIP')
 
