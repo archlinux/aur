@@ -4,9 +4,8 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-gtk2-bin
-_pkgname=firefox
-pkgver=44.0
-pkgrel=2
+pkgver=44.0.1
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -27,8 +26,8 @@ source_i686=(https://github.com/iPotable/firefox-gtk2-bin-archlinux/raw/master/f
 source_x86_64=(https://github.com/iPotable/firefox-gtk2-bin-archlinux/raw/master/firefox-${pkgver}.en-US.linux-x86_64.tar.bz2)
 sha256sums=('c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4')
-sha256sums_i686=('e33ce57c6dce0cd0cf06f8bfae47aa2440d9bf9da88d942fb63598baeea92d33')
-sha256sums_x86_64=('7dcf048f6cd0de9322f3b56319f94b59e874675948d91ccb2d09aa2af68c4da7')
+sha256sums_i686=('f85debe9c631cc3518092f7cbe2d600218db53bc93ef952e204d90018945b70a')
+sha256sums_x86_64=('2498c0c5b18a53dcce237e62375d0d075bc23c91064ee583f363c4910b0aa8b5')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 
 package() {
