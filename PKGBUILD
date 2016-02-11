@@ -1,6 +1,6 @@
 # Maintainer: barcia <barcia@opmbx.org>
 
-_gitname=Antu-U
+_gitname=Antu
 _pkgname=AntuDark
 pkgname=('antu-dark-icon-theme-git')
 pkgver=r73.250ac6f
