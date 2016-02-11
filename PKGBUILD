@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=ghostscript-git
-pkgver=20160205
+pkgver=20160211
 pkgrel=1
 pkgdesc="An interpreter for the PostScript language"
 arch=('i686' 'x86_64')
@@ -56,7 +56,7 @@ package() {
 
   # install missing doc files # http://bugs.archlinux.org/task/18023
   mkdir -p ${pkgdir}/usr/share/ghostscript/doc/
-  install -m 644 ${srcdir}/$_gitname/doc/{Ps2ps2.htm,gs-vms.hlp,gsdoc.el,pscet_status.txt} ${pkgdir}/usr/share/ghostscript/doc/
+  install -m 644 ${srcdir}/$_gitname/doc/{gs-vms.hlp,gsdoc.el,pscet_status.txt} ${pkgdir}/usr/share/ghostscript/doc/
   
   mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
   install -m644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/
