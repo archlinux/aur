@@ -2,7 +2,7 @@
 # Contributor: Yann Lopez <arch at lonewulf dot net>
 pkgname=babeld
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A loop-avoiding distance-vector routing protocol"
 arch=('i686' 'x86_64')
 url="http://www.pps.univ-paris-diderot.fr/~jch/software/babel/"
@@ -17,7 +17,7 @@ source=("http://www.pps.univ-paris-diderot.fr/~jch/software/files/$pkgname-$pkgv
 md5sums=('e26df61b4640b6b12f5165b934c9afb2'
          'SKIP'
          '2b009a8f97eb038fbd7e73c5dd341bf5'
-         'd6407e493f79aad1887394639ef5d50e')
+         'a6e981b203187045b3f63e5d5f660f1e')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

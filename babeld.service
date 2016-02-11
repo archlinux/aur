@@ -4,9 +4,8 @@ Documentation=man:babeld(8) http://www.pps.univ-paris-diderot.fr/~jch/software/b
 After=network.target
 
 [Service]
-Type=forking
-ExecStart=/usr/bin/babeld -D
-PIDFile=/var/run/babeld.pid
+Type=simple
+ExecStart=/usr/bin/babeld
 
 [Install]
 WantedBy=multi-user.target
