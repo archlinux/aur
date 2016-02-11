@@ -1,0 +1,31 @@
+post_install() {
+  getent group deluge &>/dev/null || groupadd -g 125 deluge
+  if ! getent passwd deluge &>/dev/null; then
+    useradd -c 'Deluge user' -u 125 -g deluge -d /srv/deluge -s /bin/false deluge
+    passwd -l deluge &>/dev/null
+  fi
+
+  post_upgrade
+
+
+
+
+cat <<EOF
+>>> The optional headless daemon started using 'systemctl start deluged.service'
+    uses the "deluge" user. Its default download directory is /srv/deluge.
+EOF
+}
+
+post_upgrade() {
+  systemd-tmpfiles --create deluge.conf
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+  update-desktop-database -q
+}
+
+post_remove() {
+  getent passwd deluge &>/dev/null && userdel deluge
+  getent group deluge &>/dev/null && groupdel deluge
+
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+  update-desktop-database -q
+}
