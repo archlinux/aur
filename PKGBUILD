@@ -1,17 +1,16 @@
-# Maintainer: Christian Rebischke <echo Q2hyaXMuUmViaXNjaGtlQGdtYWlsLmNvbQo= | base64 -d>
-
+# Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 pkgbase=python-pymisp
 _pyname=pymisp
 pkgname=('python-pymisp' 'python2-pymisp')
 makedepends=('python' 'python2')
-pkgver=1.12
+pkgver=2.2
 pkgrel=1
 pkgdesc="API for MISP."
 arch=('any')
-url="https://pypi.python.org/pypi/pymisp"
+url="https://github.com/MISP/PyMISP/"
 license=('BSD2')
-source=("https://pypi.python.org/packages/source/p/$_pyname/$_pyname-$pkgver.tar.gz")
-sha512sums=('6f991b00b9cf92dde2545b04ddea39c7a90161b0b29fcf8655f8a98e616532f0d4fd5dcee9dd0f401591e6b09499261a2cd52c4273d2f533e3b31387de7c82d3')
+source=("https://github.com/MISP/PyMISP/archive/v$pkgver.tar.gz")
+sha512sums=('125e9251acb832b2c63bb08f1a9f17e22ee155a21d5f97cc642a046c7c5ebe4a457ba7cd635ca196f20607b446ea2716b3ef73d9e2b81d05446700a830bca04c')
 
 package_python-pymisp() {
   depends=('python')
@@ -27,5 +26,4 @@ package_python2-pymisp() {
 
 }
 
-# vim:set ts=2 sw=2 et:
-
+# vim:set et sw=2 ts=2 tw=79:
