@@ -1,8 +1,8 @@
 # Maintainer: Tim Kleinschmidt <tim.kleinschmidt@gmail.com>
 
 pkgname=avocode
-pkgrel=2
-pkgver=2.5.2
+pkgrel=1
+pkgver=2.5.4
 pkgdesc="The bridge between designers and developers"
 url="http://avocode.com/"
 provides=('avocode')
@@ -18,8 +18,8 @@ source_i686=("https://media.avocode.com/download/avocode-app/${pkgver}/avocode-a
 source_x86_64=("https://media.avocode.com/download/avocode-app/${pkgver}/avocode-app-linux-${pkgver}.zip")
 md5sums=('e2c75eca26477c665c946beec421423a'
          '96c2dd65a4a3ac5bcdba7426ade1960e')
-md5sums_i686=('6ae67370f956382585b2f65e5334de62')
-md5sums_x86_64=('2336879c4c231011a892026c9b4dfa01')
+md5sums_i686=('77e05b8505339432b58121083edbca67')
+md5sums_x86_64=('c0b17a2c7700b6fc6ccc291dc3889787')
 package() {
 	install -d "$pkgdir"/opt
 	cp -R "$srcdir"/Avocode-linux-x64/ "$pkgdir"/opt/avocode
