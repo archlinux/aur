@@ -9,11 +9,11 @@
 pkgname=bleachbit-cli
 _pkgname=bleachbit
 pkgver=1.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Deletes unneeded files to free disk space and maintain privacy. CLI version/no GUI.'
 arch=('any')
 url='http://bleachbit.sourceforge.net/'
-conflicts='bleachbit'
+conflicts=('bleachbit')
 license=('GPL3')
 depends=('python2' 'desktop-file-utils')
 provides=("bleachbit=${pkgver}")
