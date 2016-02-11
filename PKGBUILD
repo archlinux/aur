@@ -1,5 +1,4 @@
-#Maintainer: Christian Rebischke <echo Q2hyaXMuUmViaXNjaGtlQGdtYWlsLmNvbQo= | base64 -d>
-
+#Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 pkgname=inetsim
 pkgver=1.2.5
 pkgrel=1
@@ -32,3 +31,5 @@ package() {
   mv "${pkgdir}/opt/${pkgname}-${pkgver}" "${pkgdir}/opt/inetsim"
 
 }
+
+# vim:set et sw=2 ts=2 tw=79:
