@@ -5,7 +5,7 @@
 # or use: $ curl -s https://dl.google.com/linux/chrome/rpm/stable/x86_64/repodata/other.xml.gz | gzip -df | awk -F\" '/pkgid/{ sub(".*-","",$4); print $4": "$10 }'
 
 pkgname=google-chrome-dev
-pkgver=50.0.2638.0
+pkgver=50.0.2645.4
 pkgrel=1
 pkgdesc="An attempt at creating a safer, faster, and more stable browser (Dev Channel)"
 arch=('x86_64')
@@ -23,12 +23,12 @@ _channel=unstable
 source=("google-chrome-${_channel}_${pkgver}_amd64.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_amd64.deb"
         'google-chrome-unstable'
         'eula_text.html')
-md5sums=('169af721f2c05ff1da8aade7b36dd849'
+md5sums=('47e1b9595171284b22556eb0a2998fd8'
          '11b55a3fec7279db32b63e3a0b97dc01'
          'b7e752f549b215ac77f284b6486794b6')
 
 ## Previous build (also see: /var/cache/pacman/pkg/google-chrome-dev-*):
-#source[0]=('http://mirror.glendaleacademy.org/chrome/pool/main/g/google-chrome-unstable/google-chrome-unstable_50.0.2633.3-1_amd64.deb')
+#source[0]=('http://mirror.glendaleacademy.org/chrome/pool/main/g/google-chrome-unstable/google-chrome-unstable_50.0.2638.0-1_amd64.deb')
 #md5sums[0]=('05d0dc954f76e2623192ec5132ec62bc')
 
 package() {
