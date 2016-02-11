@@ -1,0 +1,7 @@
+post_install() {
+  echo 'libs3 is now installed'
+}
+
+post_upgrade() {
+  post_install
+}
