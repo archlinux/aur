@@ -5,9 +5,11 @@ pkgname=mythtv-git
 pkgver=v0.28.pre.r3405.g362170e
 pkgrel=1
 pkgdesc='Free Open Source software digital video recorder (DVR) project'
-arch=('i686' 'x86_64')
 url='http://www.mythtv.org/'
 license=('GPL2')
+
+# I am leaving in i686 for convenience, but have no way to properly test it
+arch=('i686' 'x86_64')
 
 # These dependencies have not been recently reviewed to cull unnecessary entries
 depends=('avahi' 'fftw' 'lame' 'libass' 'libavc1394' 'libcdio' 'libiec61883' 'libgl'
@@ -26,11 +28,11 @@ conflicts=('mythtv')
 replaces=('mythtv')
 
 install='mythtv.install'
-#source=('git+ssh://e5550/home/martyg/Git/mythtv#branch=master'
+#source=('git+ssh://e5550/home/martyg/Git/mythtv#tag=v0.28-b1'
 source=('git://github.com/MythTV/mythtv.git#branch=master'
 	'mythbackend.service')
 sha256sums=('SKIP'
-            'ecfde779ded8332cc62c86fac6b432b09cbf5d254135798287ada688af9a1302')
+            'ed5ca54de26b7cd8a64e09626eed6e09f35d677daf88c530bb24cc4252bcce6d')
 
 pkgver() {
   cd "$srcdir/mythtv/mythtv"
