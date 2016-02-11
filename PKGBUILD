@@ -1,4 +1,6 @@
-# Maintainer: Ricardo Leuck <leuck.r at gmail>
+# Maintainer : David Phillips <dbphillipsnz at gmail>
+# Contributor: Ricardo Leuck <leuck.r at gmail> (original brewtarget-git PKGBUILD)
+
 pkgname=brewtarget
 pkgver=2.3.0
 pkgrel=1
