@@ -1,22 +1,36 @@
-diff -aur snapcast-0.4.0/init.scripts/systemd/snapclient.service snapcast-0.4.0.new/init.scripts/systemd/snapclient.service
---- snapcast-0.4.0/init.scripts/systemd/snapclient.service	2015-12-28 13:58:35.000000000 +0100
-+++ snapcast-0.4.0.new/init.scripts/systemd/snapclient.service	2016-01-01 21:42:38.169018147 +0100
-@@ -1,6 +1,7 @@
+diff -aur snapcast-0.5.0-beta-1-orig/client/debian/snapclient.service snapcast-0.5.0-beta-1/client/debian/snapclient.service
+--- snapcast-0.5.0-beta-1-orig/client/debian/snapclient.service	2016-02-11 11:35:44.674153749 +0100
++++ snapcast-0.5.0-beta-1/client/debian/snapclient.service	2016-02-11 11:46:39.844153747 +0100
+@@ -1,11 +1,13 @@
  [Unit]
  Description=Snapcast client
  After=network.target
++After=avahi-daemon.service
 +Requires=avahi-daemon.service
  
  [Service]
+ EnvironmentFile=-/etc/default/snapclient
  Type=forking
-diff -aur snapcast-0.4.0/init.scripts/systemd/snapserver.service snapcast-0.4.0.new/init.scripts/systemd/snapserver.service
---- snapcast-0.4.0/init.scripts/systemd/snapserver.service	2015-12-28 13:58:35.000000000 +0100
-+++ snapcast-0.4.0.new/init.scripts/systemd/snapserver.service	2016-01-01 21:42:48.855684354 +0100
-@@ -1,6 +1,7 @@
+-ExecStart=/usr/sbin/snapclient $SNAPCLIENT_OPTS
++ExecStart=/usr/bin/snapclient $SNAPCLIENT_OPTS
+ PIDFile=/var/run/snapclient.pid
+ 
+ [Install]
+diff -aur snapcast-0.5.0-beta-1-orig/server/debian/snapserver.service snapcast-0.5.0-beta-1/server/debian/snapserver.service
+--- snapcast-0.5.0-beta-1-orig/server/debian/snapserver.service	2016-02-11 11:35:44.667487082 +0100
++++ snapcast-0.5.0-beta-1/server/debian/snapserver.service	2016-02-11 11:45:51.524153748 +0100
+@@ -1,11 +1,13 @@
  [Unit]
  Description=Snapcast server
  After=network.target
++After=avahi-daemon.service
 +Requires=avahi-daemon.service
  
  [Service]
+ EnvironmentFile=-/etc/default/snapserver
  Type=forking
+-ExecStart=/usr/sbin/snapserver $SNAPSERVER_OPTS
++ExecStart=/usr/bin/snapserver $SNAPSERVER_OPTS
+ PIDFile=/var/run/snapserver.pid
+ 
+ [Install]
