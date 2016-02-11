@@ -1,5 +1,4 @@
-# Maintainer: Christian Rebischke <echo Q2hyaXMuUmViaXNjaGtlQGdtYWlsLmNvbQo= | base64 -d>
-
+# Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 pkgbase=python-pypssl
 _pyname=pypssl
 pkgname=('python-pypssl' 'python2-pypssl')
@@ -32,5 +31,4 @@ package_python2-pypssl() {
 
 }
 
-# vim:set ts=2 sw=2 et:
-
+# vim:set et sw=2 ts=2 tw=79:
