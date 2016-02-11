@@ -1,6 +1,6 @@
 # Maintainer: Dries007 <admin@dries007.net>
 pkgname=ivona
-pkgver=0
+pkgver=r10.16d6f32
 pkgrel=1
 pkgdesc="TTS - Text to speech - program that uses the IVONA Speech Cloud HTTP API"
 arch=('i686' 'x86_64')
