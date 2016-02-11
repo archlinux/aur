@@ -1,5 +1,3 @@
-# Maintainer: xantares <xantares09 at hotmail dot com>
-
 pkgname=psp-sdk-base
 pkgver=1.0
 pkgrel=1
