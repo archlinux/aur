@@ -2,7 +2,7 @@
 
 pkgname=otf-vollkorn
 pkgdesc="Vollkorn typeface by Friedrich Althausen (OpenType)"
-url=('http://vollkorn-typeface.com/')
+url='http://vollkorn-typeface.com/'
 license=('custom:SIL Open Font License')
 pkgver=3.005
 pkgrel=1

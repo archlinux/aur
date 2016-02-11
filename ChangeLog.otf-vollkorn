@@ -1,3 +1,7 @@
+2016-02-11 jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
+
+        * 3.005-1 : change to the PKGBUILD only, url should not be an array
+
 2014-08-19 jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
 
         * 3.005-1 :
