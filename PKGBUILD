@@ -4,7 +4,7 @@ _swiftver=2.2-SNAPSHOT-2016-02-08-a
 _swiftold=2.2-SNAPSHOT-2016-01-11-a
 #_develver=${_swiftver//2.2-SNAPSHOT/DEVELOPMENT-SNAPSHOT}
 pkgver=${_swiftver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="The Swift programming language and debugger"
 arch=('i686' 'x86_64')
 url="http://swift.org/"
@@ -22,6 +22,7 @@ source=(
     "swift-package-manager-${_swiftold}.tar.gz::https://github.com/apple/swift-package-manager/archive/swift-${_swiftold}.tar.gz"
     "swift-corelibs-xctest-${_swiftold}.tar.gz::https://github.com/apple/swift-corelibs-xctest/archive/swift-${_swiftold}.tar.gz"
     "swift-corelibs-foundation-${_swiftold}.tar.gz::https://github.com/apple/swift-corelibs-foundation/archive/swift-${_swiftold}.tar.gz"
+    "swift-no-docs.patch"
 )
 sha256sums=('0bbb6ea37c05ca73862ee8f9f05ed2118aca12d6c0b371c1cbaf66ed333f6325'
             '93a142abd766418669816d21e47c0b855719e1b08da946499fd4f48e3d55cb46'
@@ -31,7 +32,8 @@ sha256sums=('0bbb6ea37c05ca73862ee8f9f05ed2118aca12d6c0b371c1cbaf66ed333f6325'
             'c5e92b71daecbeeb8fe043fe58bc85c7deacaadc21caa38357d569ae4093a023'
             '60b11af87b565d68dd5e6d13af5052f359923e3146a6ffc8336c86d68b5c4fa6'
             '5fde35c76b688ec37d8e25f0bc3cc1738548d8bd03a709bcfb3cb2744b221a9e'
-            '66bf0fb21c37bb2792b113b770e225c90bca548b2246f86054e14c6cc79f0517')
+            '66bf0fb21c37bb2792b113b770e225c90bca548b2246f86054e14c6cc79f0517'
+            '1a8663c48a1a203d1825ae62a7e4191e4980a2dad461d4d88152221ad9e2171d')
 
 prepare() {
     # Use python2 where appropriate
@@ -62,6 +64,10 @@ prepare() {
     done
     ln -sf swift-swift-${_swiftver} swift
     ln -sf swift-package-manager-swift-${_swiftold} swiftpm
+
+    # Sphinx 1.3.5 raises a warning (promoted to error) when using an unknown
+    # syntax highlighting language (like "swift").
+    ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/swift-no-docs.patch" )
 }
 
 build() {
