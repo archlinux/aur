@@ -1,0 +1,15 @@
+[Unit]
+Description=WebVirtMgr NoVNC proxy
+
+[Service]
+Environment=WEBVIRTMGR_DAEMON=/usr/lib/webvirtmgr/console/webvirtmgr-novnc
+Environment=WEBVIRTMGR_LOCK_DIR=/var/lock/webvirtmgr
+Environment=WEBVIRTMGR_USER=webvirtmgr
+Environment=WEBVIRTMGR_GROUP=webvirtmgr
+User=webvirtmgr
+Group=webvirtmgr
+ExecStart=/usr/bin/python2 /usr/lib/webvirtmgr/console/webvirtmgr-novnc
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
