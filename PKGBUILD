@@ -3,7 +3,7 @@
 pkgname='postfixadmin-zarafa'
 groups=('zarafa')
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Customization for default Postfixadmin to be able to manage Zarafa-Server with DB-Plugin."
 arch=('any')
 license=('GPL')
@@ -35,7 +35,7 @@ package() {
     cp ${pkgname}.timer ${_destdir_systemd}
     
     # var
-    touch ${_destdir_lib}/lastlog
+    #touch ${_destdir_lib}/lastlog
   
     # docs
     cp config.zarafa.php ${_destdir_doc}/config-example.zarafa.php
