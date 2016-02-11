@@ -2,7 +2,7 @@
 pkgname='bitmonero-git'
 _gitname='bitmonero'
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://getmonero.org/"
 license=('custom:Cryptonote')
@@ -44,7 +44,7 @@ package() {
         install -D -m755 "$srcdir/$_gitname/build/release/bin/simplewallet" "$pkgdir/usr/bin/simplewallet"
 
         # install simpleminer
-        install -D -m755 "$srcdir/$_gitname/build/release/bin/simplewallet" "$pkgdir/usr/bin/simpleminer"
+        install -D -m755 "$srcdir/$_gitname/build/release/bin/simpleminer" "$pkgdir/usr/bin/simpleminer"
 
         # install unit-file for service bitmonerod
         install -Dm644 $srcdir/bitmonerod@.service "${pkgdir}/usr/lib/systemd/system/bitmonerod@.service"
