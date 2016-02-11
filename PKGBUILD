@@ -16,7 +16,7 @@ depends=('mkinitcpio' 'syslinux' 'parted' 'dosfstools' 'util-linux')
 optdepends=('hdparm: ATA Security erase command, future feature')
 install="${pkgname}.install"
 source=("${pkgname}.${pkgver}.tar.gz")
-sha256sums=('18da569b370a0af827d007d0dda82b2648b5509ebe9fcfe01fd01a3c75447f0b')
+sha256sums=('880fd0b2b7609372e67d67727490494f0c9475bbc65862879c8242db8f651425')
 package() {
     cd "${srcdir}/${pkgname}.${pkgver}"
     cp -ra . "${pkgdir}"
