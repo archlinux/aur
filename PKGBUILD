@@ -1,5 +1,4 @@
-# Maintainer: (epsilom) Xavier Corredor <xavier.corredor.llano (a) gmail.com>
-# Old-Mantainer: Gonzalo Seguel <gonzaloseguel@gmail.com>
+# Maintainer: ava1ar <mail(at)ava1ar(dot)me>
 
 pkgname=kfilebox-qt5-git
 _pkgname=kfilebox
@@ -10,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/marcpayne/kfilebox"
 license=('GPL')
 depends=('knotifications' 'ki18n' 'hicolor-icon-theme')
-makedepends=('git' 'cmake>2.8.12')
+makedepends=('git' 'cmake>2.8.12' 'extra-cmake-modules')
 provides=('dropbox')
 conflicts=('kfilebox')
 source=(git+https://github.com/marcpayne/kfilebox.git#branch=qt5-kf5-port)
