@@ -1,7 +1,7 @@
 # Maintainer: Ivan Shapovalov <intelfx100@gmail.com>
 
 pkgname=matrix-synapse
-_pkgver=0.12.1-rc1
+_pkgver=0.13.2
 pkgver="${_pkgver//-/.}"
 pkgrel=1
 pkgdesc="Matrix reference homeserver"
@@ -18,11 +18,18 @@ depends=('python2-matrix-angular-sdk'
          'python2-signedjson' 'python2-pymacaroons-pynacl' 'python2-simplejson')
 makedepends=('python2-twisted' 'python2-mock' 'python2-setuptools_trial')
 source=("git://github.com/matrix-org/synapse#tag=v$_pkgver"
-		'sysusers-synapse.conf')
+		'sysusers-synapse.conf'
+		'deps-relax-pynacl-check.patch')
 md5sums=('SKIP'
-         'dfbffdd307c5559357a2ff51a1906700')
+         'dfbffdd307c5559357a2ff51a1906700'
+         'e98392881f1af244632c6886d01d5634')
 backup=('etc/synapse/log_config.yaml')
 install='synapse.install'
+
+prepare() {
+	cd "synapse"
+	git am < "$srcdir/deps-relax-pynacl-check.patch"
+}
 
 build() {
 	cd "synapse"
