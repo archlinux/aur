@@ -1,4 +1,4 @@
-# Maintainer: Christian Rebischke <echo Q2hyaXMuUmViaXNjaGtlQGdtYWlsLmNvbQo= | base64 -d>
+# Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 
 pkgbase=python-requests-cache
 _pyname=requests-cache
@@ -8,10 +8,10 @@ pkgver=0.4.10
 pkgrel=1
 pkgdesc="Persistent cache for requests library"
 arch=('any')
-url="https://pypi.python.org/pypi/requests-cache#downloads"
+url="https://github.com/reclosedev/requests-cache"
 license=('BSD')
-source=("https://pypi.python.org/packages/source/r/$_pyname/$_pyname-$pkgver.zip")
-sha512sums=('1ddb9becb15d5ad580b90d297bd078fa0c154a382777b1a0d72bbd4fd5b1e47d56bd41d5220c1d0e66521b69800c9730af6d9b7261f97a907bd05f628754fe05')
+source=("https://github.com/reclosedev/$_pyname/archive/v$pkgver.tar.gz")
+sha512sums=('677923baf822a518958ff499197c668d43e15c300a4a86bf84d4a2bb9ddd97bfdd97ac0f9d064900fb5119a8fe43b129b6a29eaaba131beb5b031578799b94cc')
 
 package_python-requests-cache() {
   depends=('python')
@@ -31,5 +31,4 @@ package_python2-requests-cache() {
 
 }
 
-# vim:set ts=2 sw=2 et:
-
+# vim:set et sw=2 ts=2 tw=79:
