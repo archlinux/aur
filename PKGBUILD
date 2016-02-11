@@ -1,5 +1,4 @@
-# Maintainer: Christian Rebischke <Chris.Rebischke@archlinux.org>
-
+# Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 pkgbase=python-terminaltables
 _pyname=terminaltables
 pkgname=('python-terminaltables' 'python2-terminaltables')
@@ -8,21 +7,21 @@ pkgver=2.1.0
 pkgrel=1
 pkgdesc="Generate simple tables in terminals from a nested list of strings"
 arch=('any')
-url="https://pypi.python.org/pypi/terminaltables#downloads"
+url="https://github.com/Robpol86/terminaltables"
 license=('MIT')
-source=("https://pypi.python.org/packages/source/t/$_pyname/$_pyname-$pkgver.tar.gz")
-sha512sums=('6a2719dac42195b95fdf22d8fea3857924cf88ae6f0ece00c6f97ff9acf36444a3c9a73410b2b919c9cf11e785279ab1f7ea26c51276b055918ec78297b86bfa')
+source=("https://github.com/Robpol86/$_pyname/archive/v$pkgver.tar.gz")
+sha512sums=('6b6d16164936121c7e5d2034bba2e28679ddd488cd34d97ea8c92431cbe4ae9bcda677d3a1978860f70cebbb3108c6dceaf703e11ac74013bef60d7f89b039ef')
 
 package_python-terminaltables() {
-    depends=('python')
-    cd "$srcdir/$_pyname-$pkgver"
-    python setup.py install -O1 --root=$pkgdir
+  depends=('python')
+  cd "$srcdir/$_pyname-$pkgver"
+  python setup.py install -O1 --root=$pkgdir
 }
 
 package_python2-terminaltables() {
-    depends=('python2')
-    cd "$srcdir/$_pyname-$pkgver"
-    python2 setup.py install -O1 --root=$pkgdir
+  depends=('python2')
+  cd "$srcdir/$_pyname-$pkgver"
+  python2 setup.py install -O1 --root=$pkgdir
 }
 
-# vim:set et sw=4 ts=4 tw=76:
+# vim:set et sw=2 ts=2 tw=79: 
