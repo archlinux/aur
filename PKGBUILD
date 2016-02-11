@@ -9,10 +9,10 @@ arch=('any')
 license=('MIT')
 install=''
 source=()
-depends=('python2' 'python2-pexpect' 'python2-markupsafe')
-optdepends=()
+depends=('python2' 'python2-pexpect' 'python2-markupsafe' 'python-virtualenv' 'python2-virtualenv' 'python-sh' 'python-appdirs')
+optdepends=('android-sdk-build-tools: For building Android projects')
 conflicts=()
-provides=''
+provides=()
 makedepends=('cmake' 'libusb>=1.0')
 
 _gitname="buildozer"
