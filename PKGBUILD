@@ -1,10 +1,10 @@
 # Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=bitcoin-classic
-pkgver=v0.11.2.cl1.b2
-_vertemp=${pkgver%.*.*}
+pkgver=v0.11.2.cl1
+_vertemp=${pkgver%.*}
 _ver=${_vertemp#v}
-pkgrel=2
+pkgrel=1
 pkgdesc='Official Bitcoin Classic binaries: bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt with auto setup of RPC SSL'
 arch=('i686' 'x86_64')
 url="https://bitcoinclassic.com/"
