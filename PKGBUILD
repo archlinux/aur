@@ -1,4 +1,5 @@
 # Maintainer: Ben Iofel <iofelben@gmail.com>
+# Contributor: Patrick Griffis <tingping@tingping.se>
 
 _gitname='vaccine'
 pkgname=vaccine-git
