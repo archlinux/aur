@@ -1,7 +1,7 @@
 # Maintainer: Stephan Hilb <stephan@ecshi.net>
 pkgname=open-jtalk-cvs
 pkgver=1.09.r201512250117
-pkgrel=2
+pkgrel=3
 pkgdesc="Japanese text-to-speech system"
 arch=('i686' 'x86_64')
 url="http://open-jtalk.sourceforge.net/"
@@ -37,6 +37,7 @@ prepare() {
     cd "$srcdir/$pkgname/src"
 
     [[ -f ChangeLog ]] || ln -s NEWS ChangeLog
+    sed -Ei "s/(@prefix@\/)dic/\1share\/${pkgname%-cvs}\/dic/" mecab-naist-jdic/Makefile.am
 }
 
 build() {
