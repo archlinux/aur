@@ -4,7 +4,7 @@ pkgname=lastpass
 pkgver=4.0.0
 _universal=$pkgver-1  # Version of the universal installer: https://lastpass.com/misc_download2.php
 _chromver=4.1.1-1     # The actual extensions' versions
-_chromver_linux=4.0.6-1     # The actual extensions' versions
+#_chromver_linux=4.0.6-1     # The actual extensions' versions
 _ffver=4.0.4a-1
 pkgrel=7
 pkgdesc="The Universal LastPass installer for Firefox, Chrome, and Opera"
@@ -26,18 +26,18 @@ optdepends=('chromium: for Chromium'
 install=$pkgname.install
 source=(# Chrome
         "lplinux_$_universal.tar.bz2::$url/lplinux.tar.bz2"
-        "lpchrome_$_chromver.crx::https://clients2.google.com/service/update2/crx?response=redirect&prodversion=48.0.2564.109&x=id%3Dhdokiejnpimakedhajhdlcegeplioahd%26uc"
-        "lpchrome_linux_${_chromver_linux}.crx::$url/lpchrome_linux.crx"
+        #"lpchrome_$_chromver.crx::https://clients2.google.com/service/update2/crx?response=redirect&prodversion=48.0.2564.109&x=id%3Dhdokiejnpimakedhajhdlcegeplioahd%26uc"
+        #"lpchrome_linux_${_chromver_linux}.crx::$url/lpchrome_linux.crx"
+        "lpchrome_linux_$_chromver.crx::$url/lpchrome_linux.crx"
         'com.lastpass.nplastpass.json'
         'lastpass_policy.json'
         # Firefox
         "lp4_$_ffver.xpi::$url/lp4.xpi"
         'profiles.ini')
-noextract=("lp4_$_ffver.xpi"
-           "lpchrome_$_chromver.crx")
+noextract=("lp4_$_ffver.xpi")
+#           "lpchrome_$_chromver.crx")
 md5sums=('009f2d1a3ac25eb7a3a18f5ad0fc4f53'
-         '16c3bcb113a7e3f0b7d7e3a6805a2d41'
-		 'c3374e6ff3e7633506795022b11be7ee'
+		 '7685d7bb8b030a46df35cd3cd83fd373'
          '151251e415bccdffc1dc0df592d1d7e1'
          '9af777d2eea8e67ad332235718a7653d'
          '6db597fea2196950bcb54472beab2cd3'
@@ -55,7 +55,8 @@ prepare() {
 
 _chrome_package() {
     # Install to single place for linking
-    install -Dm644 lpchrome_$_chromver.crx "$pkgdir"/usr/share/lastpass/lpchrome_$_chromver.crx
+    #install -Dm644 lpchrome_$_chromver.crx "$pkgdir"/usr/share/lastpass/lpchrome_$_chromver.crx
+    install -Dm644 lpchrome_linux_$_chromver.crx "$pkgdir"/usr/share/lastpass/lpchrome_linux_$_chromver.crx
     install -Dm755 nplastpass$_64 "$pkgdir"/etc/opt/chrome/native-messaging-hosts/nplastpass$_64
 
     # 64-bit?
