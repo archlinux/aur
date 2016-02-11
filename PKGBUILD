@@ -11,9 +11,10 @@ makedepends=('cmake')
 license=('LGPL')
 source=("https://github.com/warmcat/libwebsockets/archive/v$pkgver.tar.gz")
 md5sums=('c66a7437e4d05f1f073630837a2142e9')
+_pkgname=${pkgname/15/}
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-$pkgver"
   rm -rf build
   mkdir build
   cd build
@@ -22,7 +23,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver/build"
+  cd "$srcdir/$_pkgname-$pkgver/build"
   make DESTDIR="${pkgdir}" install
 
   cd ..
