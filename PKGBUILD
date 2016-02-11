@@ -1,31 +1,36 @@
 ## Maintainer: Thermi <noel[ at ] familie-kuntze.de>
 # Submitter: nullie
 pkgname=lsyncd
-pkgver=2.1.5
-pkgrel=2
+pkgver=2.1.6
+pkgrel=1
 pkgdesc="Live Syncing (Mirror) Daemon"
 arch=('i686' 'x86_64')
 url="https://github.com/axkibe/lsyncd"
 license=('GPL2')
-depends=('lua51' 'rsync')
-makedepends=('asciidoc' 'lua51')
+depends=('lua52' 'rsync')
+makedepends=('asciidoc' 'lua52')
 source=("https://github.com/axkibe/lsyncd/archive/release-$pkgver.tar.gz"
-	"lsyncd.service"
-        "configure-a2x-fix.patch")
+        "CMakeLists.txt.patch"
+        "FindLua.cmake.patch"
+	"lsyncd.service")
 
-sha256sums=('aa82fd9bf5737395e374650720c02f033d74a7101b57878ac92f5720ae9e7ece'
-            '538072a4505abbdf8c4d16c9200810d4a2253f892a71fc16b5cd7f35ebe1ae57'
-            'dff13f88a2fe7103ba4daa22b45c1fb188142571ae064209ec5b956cd6aae6e7') 
+sha256sums=('02c241ee71b6abb23a796ac994a414e1229f530c249b838ae72d2ef74ae0f775'
+            '72ad10f3e06b932713dd92e6ad8f5931ead34135d48e8a2e6dfd2e20bb1a9a87'
+            '60bc61193c367adef43e0e376507e4a88e93b1b266146aa4e0768ba83e0a668d'
+            '538072a4505abbdf8c4d16c9200810d4a2253f892a71fc16b5cd7f35ebe1ae57')
+
 build() {
-  cd $srcdir/$pkgname-release-$pkgver
-  patch -Np1 -i ../configure-a2x-fix.patch
-  ./autogen.sh  --prefix=/usr
-  ./configure --prefix=/usr
-  make
+    cd $srcdir/$pkgname-release-$pkgver
+    patch -p1 < $srcdir/CMakeLists.txt.patch
+    patch -p1 < $srcdir/FindLua.cmake.patch
+    mkdir -p build
+    cd build
+    cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+    make
 }
- 
+
 package() {
-  cd $srcdir/$pkgname-release-$pkgver
-  make DESTDIR=$pkgdir install
-  install -D ${srcdir}/lsyncd.service ${pkgdir}/usr/lib/systemd/system/lsyncd.service
+    cd $srcdir/$pkgname-release-$pkgver/build
+    make DESTDIR=$pkgdir install
+    install -D ${srcdir}/lsyncd.service ${pkgdir}/usr/lib/systemd/system/lsyncd.service
 }
