@@ -4,16 +4,16 @@
 
 _pkgbasename=libcap
 pkgname=lib32-$_pkgbasename
-pkgver=2.24
+pkgver=2.25
 pkgrel=1
 pkgdesc="POSIX 1003.1e capabilities (32-bit)"
 arch=(x86_64)
 url="http://www.kernel.org/pub/linux/libs/security/linux-privs/"
 license=('GPL2')
 depends=('lib32-attr' $_pkgbasename)
-makedepends=('gcc-multilib')
+makedepends=('gcc-multilib' 'linux-api-headers')
 source=(https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-${pkgver}.tar.xz)
-md5sums=('d43ab9f680435a7fff35b4ace8d45b80')
+md5sums=('6666b839e5d46c2ad33fc8aa2ceb5f77')
 
 build() {
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
