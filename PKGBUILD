@@ -1,18 +1,17 @@
-# Maintainer: Christian Rebischke <echo Q2hyaXMuUmViaXNjaGtlQGdtYWlsLmNvbQo= | base64 -d>
-
+# Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 pkgbase=python-pype32
 _pyname=pype32
 pkgname=('python-pype32' 'python2-pype32')
 makedepends=('python' 'python2')
-_pkgver=0.1-alpha4
+_pkgver=0.1-alpha5
 pkgver=0.1
 pkgrel=1
 pkgdesc="Yet another Python library to read and write PE/PE+ files."
 arch=('any')
-url="https://pypi.python.org/pypi/pype32#downloads"
+url="https://github.com/crackinglandia/pype32"
 license=('BSD3')
-source=("https://pypi.python.org/packages/source/p/$_pyname/$_pyname-$_pkgver.zip")
-sha512sums=('a3ebf1f337d698660f5350aaf062ee3ba89156293d5e526e4e0b8ad35e89dac511d2f0c2b6a40fdb98cfed2061f33a642720128c4a0069cf8953a0fcaa8ad358')
+source=("https://github.com/crackinglandia/pype32/archive/v$_pkgver.tar.gz")
+sha512sums=('9cd85fc6bca27e11c48c06b64641d8a850dafd14f9912845180b027bf677608af2f5a5e77db87dd6ad7805f4af601666e5bbc6e1b72286244d6216839cca520e')
 
 package_python-pype32() {
   depends=('python')
@@ -27,4 +26,3 @@ package_python2-pype32() {
 }
 
 # vim:set ts=2 sw=2 et:
-
