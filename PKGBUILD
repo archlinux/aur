@@ -1,4 +1,4 @@
-# Maintainer: Christian Rebischke <Chris.Rebischke[at]archlinux[dot]org>
+# Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 pkgname='binnavi'
 pkgver=6.0.0
