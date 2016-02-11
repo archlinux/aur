@@ -1,7 +1,7 @@
 # Maintainer: Andrés Rodríguez - mixedCase <andres.rodriguez __at__ lithersoft.com>
 
 pkgname=python2-buildozer-git
-pkgver=20150303
+pkgver=20160211
 pkgrel=1
 pkgdesc="Generic Python packager for Android / iOS and Desktop"
 url="https://github.com/kivy/buildozer"
