@@ -35,3 +35,8 @@
   `makepkg -src`
 * Check package
   `namcap docker-gc-*.pkg.tar.xz`
+* Test-install package
+  `pacman -U docker-gc-*.pkg.tar.xz`
+* Remove tmp files
+  `rm docker-gc`
+  `rm docker-gc-*.pkg.tar.xz`
