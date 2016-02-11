@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=LinPal
+Categories=Network;Games
+GenericName=Palace Client
+Comment=
+Exec=/usr/share/linpal/linpal
+Icon=/usr/share/icons/linpal.svg
