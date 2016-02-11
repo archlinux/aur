@@ -2,8 +2,8 @@
 
 pkgname=mydumper
 pkgver=0.9.1
-_myver=5.6.27
-pkgrel=1
+_myver=5.6.28
+pkgrel=2
 pkgdesc="A high performance MySQL backup tool."
 arch=("i686" "x86_64")
 url="https://launchpad.net/mydumper"
@@ -90,6 +90,6 @@ package() {
 }
 
 sha256sums=('aefab5dc4192acb043d685b6bb952c87557fbea5e083b8547c68ccfec878171f'
-            '8356bba23f3f6c0c2d4806110c41d1c4d6a4b9c50825e11c5be4bbee2b20b71d'
+            '217cd96921abdd709b9b4ff3ce2af4cbd237de43679cf19385d19df03a037b21'
             'e6b7d938cc5882cad564103f6e367c1babaccb624587c96e9e6c349e58e7ede4'
             '9b35858057d82948579f43d8b95605a88d80580412bf5ed1daf992c092ca4edf')
