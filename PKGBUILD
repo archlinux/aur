@@ -1,4 +1,4 @@
-# Maintainer: Christian Rebischke <echo Q2hyaXMuUmViaXNjaGtlQGdtYWlsLmNvbQo= | base64 -d>
+# Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 pkgname='nyan'
 pkgver=1.2.0
 pkgrel=1
@@ -14,3 +14,5 @@ package() {
   cd "${srcdir}/$pkgname-$pkgver"
   install -D -m755 nyan.sh "${pkgdir}/usr/bin/nyan"
 }
+
+# vim:set et sw=2 ts=2 tw=79:
