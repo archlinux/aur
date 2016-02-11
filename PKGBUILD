@@ -29,16 +29,13 @@ prepare() {
 
 	 ./autogen.sh
 
-	 sed -i 's|ncursesw/curses.h|curses.h|' RichString.[ch] configure
-	 sed -i 's|python|python2|' scripts/MakeHeader.py
-
 	 ./configure \
         --prefix=/usr \
+        --sysconfdir=/etc \
         --enable-unicode \
         --enable-openvz \
         --enable-vserver \
-        --enable-cgroup \
-        --enable-oom
+        --enable-cgroup
 }
 
 build() {
