@@ -14,7 +14,7 @@ md5sums=(765101c002be892d64caa23b905b07de)
 
 build() {
 
-  cd "${srcdir}"/turionpowercontrol-master
+  cd "${srcdir}"/tpc-master
 
   make
 
@@ -22,7 +22,7 @@ build() {
 
 package() {
 
-	install -Dm755 "${srcdir}"/turionpowercontrol-master/TurionPowerControl "${pkgdir}"/usr/bin/tpc
+	install -Dm755 "${srcdir}"/tpc-master/TurionPowerControl "${pkgdir}"/usr/bin/tpc
 	mkdir "${pkgdir}"/etc/
 	mkdir "${pkgdir}"/etc/modprobe.d
 	touch "${pkgdir}"/etc/modprobe.d/tpc.conf
