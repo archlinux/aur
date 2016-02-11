@@ -5,8 +5,9 @@ _pkgname=nginx
 provides=('nginx')
 conflicts=('nginx')
 pkgver=1.9.11
-pkgrel=1
-pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline, with Naxsi, Certificate Transparency, GeoIP (GeoIP Legacy) mYubiKey Auth Support builtin and with Thread Pools.'
+pkgrel=2
+pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline, Brotli
+Support, with Naxsi, Certificate Transparency, GeoIP (GeoIP Legacy) mYubiKey Auth Support builtin and with Thread Pools.'
 arch=('i686' 'x86_64')
 url='http://nginx.org'
 license=('custom')
@@ -30,6 +31,7 @@ source=($url/download/nginx-$pkgver.tar.gz
 	#https://github.com/pagespeed/ngx_pagespeed/archive/release-$_psver.zip
     #https://dl.google.com/dl/page-speed/psol/$_psolver.tar.gz
 	git+https://github.com/nbs-system/naxsi.git
+    git+https://github.com/google/ngx_brotli.git
 	git+https://github.com/sanderv32/ngx_http_auth_yubikey_module.git
 	#git+https://github.com/aperezdc/ngx-fancyindex.git
 	git+https://github.com/openresty/headers-more-nginx-module.git
@@ -78,7 +80,8 @@ build() {
     --add-module=../ngx_http_auth_yubikey_module \
     --add-module=../naxsi/naxsi_src \
     --add-module=../headers-more-nginx-module \
-    --add-module=../nginx-ct
+    --add-module=../nginx-ct \
+    --add-module=../ngx_brotli
 
   make
 }
