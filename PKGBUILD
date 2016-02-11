@@ -1,6 +1,6 @@
 # Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 pkgbase=python-pymisp
-_pyname=pymisp
+_pyname=PyMISP
 pkgname=('python-pymisp' 'python2-pymisp')
 makedepends=('python' 'python2')
 pkgver=2.2
