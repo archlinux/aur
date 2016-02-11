@@ -3,9 +3,9 @@
 
 pkgname=csstidy
 pkgver=1.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A program that optimises, formats and fixes CSS code"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="http://sourceforge.net/projects/csstidy/"
 license=('GPL')
 depends=('gcc-libs')
