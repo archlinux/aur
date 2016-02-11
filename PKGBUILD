@@ -14,12 +14,13 @@ sha512sums=('2008c5a3d3c01041743aaf55b4ded31797550f886eb69bfb82a4d6bf769658ab871
 
 package() {
 
-    cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-    install -d "${pkgdir}/usr/share/vim/vimfiles/"{plugin,doc,autoload}
-    find . -type d -exec chmod 755 '{}' \;
-    cp -dr plugin/* "$pkgdir/usr/share/vim/vimfiles/plugin/"
-    install -Dm0644 doc/extline.txt "${pkgdir}/usr/share/vim/vimfiles/doc/extline.txt"
-    cp -r autoload/extline.vim "$pkgdir/usr/share/vim/vimfiles/autoload/"
+  install -d "${pkgdir}/usr/share/vim/vimfiles/"{plugin,doc,autoload}
+  find . -type d -exec chmod 755 '{}' \;
+  cp -dr plugin/* "$pkgdir/usr/share/vim/vimfiles/plugin/"
+  install -Dm0644 doc/extline.txt "${pkgdir}/usr/share/vim/vimfiles/doc/extline.txt"
+  cp -r autoload/extline.vim "$pkgdir/usr/share/vim/vimfiles/autoload/"
 }
 
+# vim:set et sw=2 ts=2 tw=79:
