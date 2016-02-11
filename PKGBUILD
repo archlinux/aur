@@ -7,7 +7,7 @@ depends=('python2'
 		 'python2-numpy'
 		 'python2-pytz'
 		)
-url=('http://pysolar.org/')
+url='http://pysolar.org/'
 license=('GPLv3')
 md5sums=('78005c1e498100cc30842af20ca76069')
 source=('https://github.com/pingswept/pysolar/archive/0.6.tar.gz')
