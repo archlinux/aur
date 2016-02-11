@@ -1,8 +1,9 @@
 # Contributor: MartiMcFly <martimcfly@autorisation.de>
 
 pkgname='postfixadmin-zarafa'
+groups=('zarafa')
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Customization for default Postfixadmin to be able to manage Zarafa-Server with DB-Plugin."
 arch=('any')
 license=('GPL')
