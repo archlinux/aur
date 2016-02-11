@@ -3,9 +3,9 @@
 pkgname=lastpass
 pkgver=4.0.0
 _universal=$pkgver-1  # Version of the universal installer: https://lastpass.com/misc_download2.php
-_chromver=4.0.6-1     # The actual extensions' versions
+_chromver=4.1.0-1     # The actual extensions' versions
 _ffver=4.0.4a-1
-pkgrel=5
+pkgrel=6
 pkgdesc="The Universal LastPass installer for Firefox, Chrome, and Opera"
 arch=('i686' 'x86_64')
 url="https://lastpass.com"
@@ -25,7 +25,7 @@ optdepends=('chromium: for Chromium'
 install=$pkgname.install
 source=(# Chrome
         "lplinux_$_universal.tar.bz2::$url/lplinux.tar.bz2"
-        "lpchrome_linux_$_chromver.crx::$url/lpchrome_linux.crx"
+        "lpchrome_$_chromver.crx::https://clients2.google.com/service/update2/crx?response=redirect&prodversion=48.0.2564.109&x=id%3Dhdokiejnpimakedhajhdlcegeplioahd%26uc"
         'com.lastpass.nplastpass.json'
         'lastpass_policy.json'
         # Firefox
@@ -33,7 +33,7 @@ source=(# Chrome
         'profiles.ini')
 noextract=("lp4_$_ffver.xpi")
 md5sums=('009f2d1a3ac25eb7a3a18f5ad0fc4f53'
-         'c3374e6ff3e7633506795022b11be7ee'
+         '16c3bcb113a7e3f0b7d7e3a6805a2d41'
          '151251e415bccdffc1dc0df592d1d7e1'
          '9af777d2eea8e67ad332235718a7653d'
          '933dc325b5be6049f4d8fadb2f0014cd'
