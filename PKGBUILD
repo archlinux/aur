@@ -1,17 +1,17 @@
-# Maintainer: Christian Rebischke <echo Q2hyaXMuUmViaXNjaGtlQGdtYWlsLmNvbQo= | base64 -d>
+# Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 
 pkgbase=python-pypdns
-_pyname=pypdns
+_pyname=PyPDNS
 pkgname=('python-pypdns' 'python2-pypdns')
 makedepends=('python' 'python2')
 pkgver=1.3
 pkgrel=1
 pkgdesc="Python API for PDNS."
 arch=('any')
-url="https://pypi.python.org/pypi/pypdns#downloads"
+url="https://github.com/CIRCL/PyPDNS"
 license=('BSD')
-source=("https://pypi.python.org/packages/source/p/$_pyname/$_pyname-$pkgver.tar.gz")
-sha512sums=('193454f76a533764194ff9460f1d656240d8a8ef0a4d88a7ea71aa3546988162945bea3e7b8c8ebcbb903332867284359b699c62f06fe76ba1b9f293c53153d8')
+source=("https://github.com/CIRCL/PyPDNS/archive/v$pkgver.tar.gz")
+sha512sums=('02fdfd696ae1698e27e56b1c31385a74f1db6e249af5903fd36567cf8912c428e333515ee9db3d717f9fd640a3ebc6be38133a4f3e7fbbaea2f2a335f7c686ee')
 
 package_python-pypdns() {
   depends=('python')
@@ -25,5 +25,4 @@ package_python2-pypdns() {
   python2 setup.py install -O1 --root=$pkgdir
 }
 
-# vim:set ts=2 sw=2 et:
-
+# vim:set et sw=2 ts=2 tw=79:
