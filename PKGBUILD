@@ -5,7 +5,7 @@ _pkgname=nginx
 provides=('nginx')
 conflicts=('nginx')
 pkgver=1.9.11
-pkgrel=3
+pkgrel=5
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline, Brotli
 Support, with Naxsi, Certificate Transparency, GeoIP (GeoIP Legacy) ,YubiKey Auth Support builtin and with Thread Pools.'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ license=('custom')
 _psver=1.9.32.4-beta
 _psolver=1.9.32.4
 
-depends=('pcre' 'zlib' 'openssl' 'geoip' 'yubico-c-client')
+depends=('pcre' 'zlib' 'openssl' 'geoip' 'yubico-c-client' 'libbrotli-git')
 backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/fastcgi_params'
         'etc/nginx/koi-win'
