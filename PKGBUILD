@@ -16,7 +16,6 @@ source=('https://github.com/pingswept/pysolar/archive/0.6.tar.gz'
 
 
 prepare() {
-	pwd
 	patch -Np0 -i radiation.patch 
 }
 package() {
