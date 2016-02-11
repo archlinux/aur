@@ -2,7 +2,7 @@
 # Maintainer: Branislav Holý <branoholy@gmail.com>
 pkgname=regilo-lib
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple C++ library for controlling the Neato XV robot and the Hokuyo scanner"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/branoholy/regilo"
@@ -22,13 +22,13 @@ sha512sums=('2d177ccbe81ef38804912b3d06f44bc32465093d8d936fba9e38dfc1a94d6485175
 validpgpkeys=('D25809BF3563AA56A12B0F4D545EDD46FBAC61E6')
 
 build() {
-	cd $pkgname-$pkgver
+	cd regilo-$pkgver
 	mkdir -p build && cd build
 	cmake -Dlibrary-only:bool=on -DCMAKE_INSTALL_PREFIX=/usr ..
 	make
 }
 
 package() {
-	cd $pkgname-$pkgver/build
+	cd regilo-$pkgver/build
 	make DESTDIR="$pkgdir/" install
 }
