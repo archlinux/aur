@@ -2,7 +2,7 @@
 # Contributor: Amish
 
 pkgname=geoip-citydata
-pkgver=20160106
+pkgver=20160211
 pkgrel=1
 pkgdesc="City database for geoip IP location lookups"
 depends=('geoip')
@@ -13,7 +13,7 @@ source=('https://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.xz'
         'https://geolite.maxmind.com/download/geoip/database/GeoLiteCityv6-beta/GeoLiteCityv6.dat.gz')
 # skipping md5sums, because of random unscheduled upstream changes, if you want to check, use commented line below
 md5sums=('SKIP' 'SKIP')
-#md5sums=('d7a55f43cd8545629ff033201726bd66' 'aa7a14ffeea2cb2c5ae00d728f6c1240')
+#md5sums=('47f974b1616d7cd1ef81c7b8b3a8d1c2' 'ff54dd9aa58ffb9ca50786ff5b6548d8')
     
 package() {
     mkdir -p ${pkgdir}/usr/share/GeoIP/
