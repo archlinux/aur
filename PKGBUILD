@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Reuße <seb@wirrsal.net>
 pkgname=metastore-git
 _gitname=metastore
-pkgver=r122.41861e7
+pkgver=v1.1.0.r4.g0350d47
 pkgrel=1
 pkgdesc="Store and restore metadata from a filesystem."
 arch=(i686 x86_64)
@@ -16,10 +16,8 @@ md5sums=(SKIP)
 
 pkgver() {
     cd "$_gitname"
-    # No tagged commits. ヽ(´ー｀)ノ
-    commit=$(git rev-list --count master)
-    hash=$(git rev-parse --short HEAD)
-    echo "r$commit.$hash"
+    git describe --long --tags \
+        | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
