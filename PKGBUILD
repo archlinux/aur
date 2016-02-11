@@ -3,9 +3,9 @@
 pkgname=lastpass
 pkgver=4.0.0
 _universal=$pkgver-1  # Version of the universal installer: https://lastpass.com/misc_download2.php
-_chromver=4.1.0-1     # The actual extensions' versions
+_chromver=4.1.1-1     # The actual extensions' versions
 _ffver=4.0.4a-1
-pkgrel=6
+pkgrel=7
 pkgdesc="The Universal LastPass installer for Firefox, Chrome, and Opera"
 arch=('i686' 'x86_64')
 url="https://lastpass.com"
@@ -26,17 +26,20 @@ install=$pkgname.install
 source=(# Chrome
         "lplinux_$_universal.tar.bz2::$url/lplinux.tar.bz2"
         "lpchrome_$_chromver.crx::https://clients2.google.com/service/update2/crx?response=redirect&prodversion=48.0.2564.109&x=id%3Dhdokiejnpimakedhajhdlcegeplioahd%26uc"
+        "lpchrome_linux_$_chromver.crx::$url/lpchrome_linux.crx"
         'com.lastpass.nplastpass.json'
         'lastpass_policy.json'
         # Firefox
         "lp4_$_ffver.xpi::$url/lp4.xpi"
         'profiles.ini')
-noextract=("lp4_$_ffver.xpi")
+noextract=("lp4_$_ffver.xpi"
+           "lpchrome_$_chromver.crx")
 md5sums=('009f2d1a3ac25eb7a3a18f5ad0fc4f53'
          '16c3bcb113a7e3f0b7d7e3a6805a2d41'
+		 'c3374e6ff3e7633506795022b11be7ee'
          '151251e415bccdffc1dc0df592d1d7e1'
          '9af777d2eea8e67ad332235718a7653d'
-         '933dc325b5be6049f4d8fadb2f0014cd'
+         '6db597fea2196950bcb54472beab2cd3'
          'd0f555a644484baccf649f7969794ece')
 
 # 64-bit?
@@ -74,8 +77,8 @@ _firefox_package() {
         install -Dm644 $i "$pkgdir"/usr/share/lastpass/$i
     done
 
-    # Binary plugin
-    install -Dm755 libnplastpass$_64.so "$pkgdir"/usr/lib/mozilla/plugins/libnplastpass$_64.so
+    ## Binary plugin
+    #install -Dm755 libnplastpass$_64.so "$pkgdir"/usr/lib/mozilla/plugins/libnplastpass$_64.so
 }
 
 package() {
