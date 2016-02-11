@@ -5,9 +5,9 @@ _pkgname=nginx
 provides=('nginx')
 conflicts=('nginx')
 pkgver=1.9.11
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline, Brotli
-Support, with Naxsi, Certificate Transparency, GeoIP (GeoIP Legacy) mYubiKey Auth Support builtin and with Thread Pools.'
+Support, with Naxsi, Certificate Transparency, GeoIP (GeoIP Legacy) ,YubiKey Auth Support builtin and with Thread Pools.'
 arch=('i686' 'x86_64')
 url='http://nginx.org'
 license=('custom')
