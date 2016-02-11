@@ -10,7 +10,7 @@ source=("http://garr.dl.sourceforge.net/project/lstv/lstv-0.0.1.tar.gz")
 optdepends=(w_scan)
 license=('GPL')
 md5sums=("5ad21d52ee7a03773136921563ef3738")
-url=("https://sourceforge.net/projects/lstv/")
+url="https://sourceforge.net/projects/lstv/"
 
 package() {
   install -d "$pkgdir/usr/bin"
