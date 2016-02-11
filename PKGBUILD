@@ -7,8 +7,8 @@
 pkgbase=linux-mptcp
 _srcname=mptcp
 _mptcpv=0.90
-pkgver=0.90.486957.5e606ce
-pkgrel=3
+pkgver=0.90.487573.41341ce
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.multipath-tcp.org/"
 license=('GPL2')
