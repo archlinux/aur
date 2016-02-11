@@ -3,7 +3,7 @@
 _pyname=oletools
 pkgname=python2-oletools
 pkgver=0.42
-pkgrel=1
+pkgrel=2
 pkgdesc="Python tools to analyze security characteristics of MS Office and OLE files"
 depends=('python2')
 arch=('any')
