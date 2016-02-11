@@ -1,0 +1,29 @@
+#!/usr/bin/bash
+post_install() {
+    ln -s /usr/share/scripts/shuriken_forge.sh /usr/bin/shuriken_forge
+    package_help
+}
+
+post_upgrade() {
+    package_help
+}
+
+pre_remove(){
+    rm -f /usr/bin/shuriken_forge
+}
+
+package_help() {
+    cat << EOF
+	=Ninja Boot and Nuke=
+Spun off from Ninja OS(http://ninjaos.org) as a stand along package. This
+package has both the mkinitcpio profile for NBAN, and the shuriken creation tool
+.
+
+* Build NBAN: mkinitcpio -p nban
+
+* Build a shuriken: shuriken_forge </dev/sdX>
+
+See shuriken_forge --help for more information.
+
+EOF
+}
