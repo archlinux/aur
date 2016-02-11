@@ -2,8 +2,8 @@
 
 
 pkgname=cloudcross
-pkgver=v1.0.3
-pkgrel=3
+pkgver=v1.0.4
+pkgrel=1
 pkgdesc="CloudCross is a improved Google Drive sync client."
 arch=('i686' 'x86_64')
 url="http://cloudcross.mastersoft24.ru"
@@ -21,7 +21,7 @@ options=(!emptydirs)
 source=("http://cloudcross.mastersoft24.ru/download/archive/?r=pacman")
 
 
-md5sums=("c2d09be80c12797f1880f1d679437947")
+md5sums=("f3657a743b02f15c1560954089924579")
 
 
 build() {
@@ -39,8 +39,10 @@ package() {
 	cd "$srcdir/cloudcross-$pkgver-$pkgrel/build"
 	
 	mkdir -p "${pkgdir}/usr/bin"
+        mkdir -p "${pkgdir}/usr/share/man/man0"
 	
 	cp "$srcdir/cloudcross-$pkgver-$pkgrel/build/ccross" "${pkgdir}/usr/bin"
+        cp "$srcdir/cloudcross-$pkgver-$pkgrel/doc/ccross.1" "${pkgdir}/usr/share/man/man0"
 	
 	#ln -s "${pkgdir}/usr/bin/ccross" "${pkgdir}/usr/bin/CloudCross" 
 	#ln -s "${pkgdir}/usr/bin/ccross" "${pkgdir}/usr/bin/grive2" 
