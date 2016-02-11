@@ -32,4 +32,4 @@ package() {
 	mv cloud-buster "$pkgdir/usr/share/"
 }
 
-# vim:set noet sts=4 sw=4 ts=4 tw=76:
+# vim:set et sw=2 ts=2 tw=79:
