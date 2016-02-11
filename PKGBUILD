@@ -78,8 +78,8 @@ _firefox_package() {
         install -Dm644 $i "$pkgdir"/usr/share/lastpass/$i
     done
 
-    ## Binary plugin
-    #install -Dm755 libnplastpass$_64.so "$pkgdir"/usr/lib/mozilla/plugins/libnplastpass$_64.so
+    # Binary plugin
+    install -Dm755 libnplastpass$_64.so "$pkgdir"/usr/lib/mozilla/plugins/libnplastpass$_64.so
 }
 
 package() {
