@@ -4,8 +4,8 @@
 _pkgname="autonumlock"
 pkgname="autonumlock"
 
-pkgver="1.1.2"
-pkgrel=2
+pkgver="1.1.3"
+pkgrel=1
 
 pkgdesc="Automatically enables Numlock for external keyboard. Can also execute custom commands, like 'xmodmap'."
 arch=("any")
@@ -18,7 +18,7 @@ source=("https://github.com/MightyPork/autonumlock/archive/$pkgver.zip")
 provides=($_pkgname)
 replaces=($_pkgname "autonumlock-git")
 
-md5sums=('8c32ee834a2278598cdd21fefdb0d631')
+md5sums=('16736387ffc3229375dfba03300db14a')
 
 package() {
 	# install license
