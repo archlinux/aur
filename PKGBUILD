@@ -3,7 +3,7 @@
 
 _pkgname=setroot
 pkgname=setroot
-pkgver=v1.4.6
+pkgver=v1.5
 pkgrel=1
 pkgdesc="simple program that sets your (X11) wallpaper. inspired by the *setroots and feh."
 arch=('i686' 'x86_64')
