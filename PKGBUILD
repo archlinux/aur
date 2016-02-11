@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 url='http://www.vtk.org/'
 license=('BSD')
 depends=('gcc-libs' 'gl2ps')
-makedepends=('boost' 'cmake' 'java-environment' 'doxygen' 'gnuplot' 'tk' 'wget' 'python2-matplotlib' 'python2-twisted' 'python2-mpi4py' 'python2-autobahn' 'unixodbc' 'gdal' 'openmpi' 'mariadb' 'glew' 'ffmpeg' 'lesstif' 'qt5-base' 'jsoncpp')
+makedepends=('boost' 'cmake' 'ninja' 'java-environment' 'doxygen' 'gnuplot' 'tk' 'wget' 'python2-matplotlib' 'python2-twisted' 'python2-mpi4py' 'python2-autobahn' 'unixodbc' 'gdal' 'openmpi' 'mariadb' 'glew' 'ffmpeg' 'lesstif' 'qt5-base' 'jsoncpp')
 optdepends=('python2: python bindings'
             'java-runtime: java bindings'
             'tk: tcl bindings'
@@ -100,15 +100,16 @@ build() {
     ${cmake_system_flags} \
     ${cmake_system_python_flags} \
     -DCMAKE_BUILD_TYPE=Release \
-    "${srcdir}/VTK-$pkgver"
+    "${srcdir}/VTK-$pkgver" \
+    -GNinja
 
-  make
+  ninja
 }
 
 package() {
   cd "${srcdir}/build"
 
-  make DESTDIR="${pkgdir}" install
+  ninja DESTDIR="${pkgdir}" install
 
   # Move the vtk.jar to the arch-specific location
   install -dv "${pkgdir}/usr/share/java/vtk"
