@@ -61,8 +61,9 @@ def run_makepkg():
 
 
 def update_srcinfo():
-    cmd = ["mksrcinfo"]
-    subprocess.check_call(cmd, cwd=THIS_DIR)
+    cmd = ["makepkg", "--printsrcinfo"]
+    with open(".SRCINFO", "w") as fp:
+        subprocess.check_call(cmd, cwd=THIS_DIR, stdout=fp)
 
 def commit_all(version):
     cmd = ["git", "add", "PKGBUILD", ".SRCINFO"]
