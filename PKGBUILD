@@ -3,20 +3,21 @@
 # Contributor: abstracity <quarkin@gmail.com>
 
 pkgname=archmage
-pkgver=0.2.4
-pkgrel=3
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="An extensible reader and decompiler for files in the CHM format"
 arch=('any')
-url="http://archmage.sourceforge.net/"
+url="https://github.com/dottedmag/archmage"
 license=('GPL')
-depends=('python2-pychm' 'python-beautifulsoup')
+depends=('python2-pychm' 'python2-beautifulsoup4')
+makedepends=('python2-setuptools' 'git')
 optdepends=('lynx: for converting html to plain text'
             'elinks: for converting html to plain text'
             'htmldoc: for converting to single html and pdf formats'
             'mod_python: for apache/python integration')
 backup=(etc/$pkgname/arch.conf)
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2)
-sha256sums=('de48cb2021c9ec199cf943d6cf764a550527fff775ae3ed817e4f25164709f53')
+source=($pkgname-$pkgver::git+https://github.com/dottedmag/archmage.git#tag=$pkgver)
+sha256sums=('SKIP')
 
 package() {
   cd "${srcdir}"/$pkgname-$pkgver
