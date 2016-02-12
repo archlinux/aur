@@ -2,13 +2,12 @@
 # Maintainer: Branislav Holý <branoholy@gmail.com>
 pkgname=lsl-core-lib
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for working with LIDAR data"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/branoholy/lsl"
 license=('GPL3')
 makedepends=('cmake>=2.8' 'eigen>=3.0')
-depends=('')
 source=("https://github.com/branoholy/lsl/archive/v$pkgver/lsl-$pkgver.tar.gz"
         "https://github.com/branoholy/lsl/releases/download/v$pkgver/lsl-$pkgver.tar.gz.sig")
 md5sums=('d18d1f5632fb29dcf92896da0eda11d2'
