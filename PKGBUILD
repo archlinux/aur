@@ -23,7 +23,7 @@ optdepends=('libdcadec.so' 'libvidstab.so' 'libfdk-aac')
 makedepends=('hardening-wrapper' 'yasm')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
-          'libswscale.so' 'ffmpeg=${pkgver}-${pkgrel}')
+          'libswscale.so' "ffmpeg=${pkgver}")
 conflicts=('ffmpeg')
 replaces=('ffmpeg')
 source=(http://ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.bz2)
