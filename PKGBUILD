@@ -1,5 +1,5 @@
 pkgname=lwt-git
-pkgver=20160210
+pkgver=20160212
 pkgrel=1
 pkgdesc="Lightweight terminal emulator based on the VTE and GTK libraries."
 url="https://github.com/mewkiz/lwt"

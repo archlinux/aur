@@ -3,10 +3,7 @@ post_install() {
 
   ==> lwt install note:
   ------------------------------------------------------------------------------
-    To configure lwt, copy lwt.conf to ~/.config/lwt/lwt.conf
-
-    Sample config:
-      https://raw.githubusercontent.com/mewkiz/lwt/master/lwt.conf
+    To configure lwt, copy /usr/share/lwt/lwt.conf to ~/.config/lwt/lwt.conf
 
 _EOF
 }
