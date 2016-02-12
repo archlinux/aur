@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 258996 2016-02-08 23:31:33Z foutrelis $
+# $Id: PKGBUILD 259082 2016-02-11 22:45:23Z foutrelis $
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor : Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-gtk2
 _pkgname=firefox
-pkgver=44.0.1
+pkgver=44.0.2
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=('i686' 'x86_64')
@@ -30,7 +30,7 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/
         vendor.js
         firefox-quicktime.patch
         firefox-fixed-loading-icon.png)
-sha256sums=('07d35c7a3aebe8b5f4b451784b5334f6a1aece8cbc921b2e12fb26c990629c9e'
+sha256sums=('0bb28841a9268c50cbb239f759f16f55b3a624f679c68965158beaa0a83a2d9e'
             'e75e13807e5f210dde53b785e25c8a5345d7bb459f857355b7b87bffc24b312b'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
