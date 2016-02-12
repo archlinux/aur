@@ -3,7 +3,7 @@
 pkgname=proot
 _pkgname=PRoot
 pkgver=5.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="chroot, mount --bind, and binfmt_misc without privilege/setup"
 arch=('i686' 'x86_64')
 url="http://proot.me"
@@ -11,8 +11,16 @@ license=('GPL')
 provides=('proot')
 depends=('talloc')
 makedepends=('python-docutils' 'libxslt')
-source=(${pkgname}-v${pkgver}.tar.gz::https://github.com/cedric-vincent/${_pkgname}/archive/v${pkgver}.tar.gz)
-sha1sums=('7aaffddb8f955dc1015402846768a5e755294579')
+source=(${pkgname}-v${pkgver}.tar.gz::https://github.com/cedric-vincent/${_pkgname}/archive/v${pkgver}.tar.gz
+        0001-Fix-use-of-size.patch)
+sha1sums=('7aaffddb8f955dc1015402846768a5e755294579'
+          '32de528010837ba7bc4d828f6e4b8f29570ec96e')
+
+prepare() {
+  cd "${srcdir}/PRoot-5.1.0"
+  patch -p1 -i ${srcdir}/0001-Fix-use-of-size.patch
+}
+
 
 build() {
 	cd "${srcdir}"/${_pkgname}-${pkgver}/src
