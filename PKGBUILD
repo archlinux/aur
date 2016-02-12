@@ -1,34 +1,46 @@
 # Maintainer: Grigorii Horos <horosgrisa@gmail.com>
 
-_git=0395ad251ff1d4134b4df50f77d0241997e0c0e7
+_git=f67b142c208cf238d0e85793483f7a1d5a1c05b4
 _repo=papirus-pack-kde
 pkgbase=papirus
-pkgname=( 'papirus' 'bomi-skin-papirus' 'libreoffice-style-papirus' 'papirus-color-scheme' 'papirus-kmail-theme' 'plasma-theme-papirus' 'papirus-gtk-theme' 'papirus-konsole-colorscheme' 'yakuake-skin-papirus' 'vlc-skin-papirus' 'papirus-aurorae-theme' 'papirus-icon-theme' 'papirus-plasma-theme' 'papirus-qtcurve-theme' )
-pkgver=20160116
-pkgrel=4
+pkgname=( 'papirus' 'papirus-look-and-feel' 'bomi-skin-papirus' 'libreoffice-style-papirus' 'papirus-color-scheme' 'papirus-kmail-theme' 'plasma-theme-papirus' 'papirus-gtk-theme' 'papirus-konsole-colorscheme' 'yakuake-skin-papirus' 'vlc-skin-papirus' 'papirus-aurorae-theme' 'papirus-icon-theme' 'papirus-plasma-theme' 'papirus-qtcurve-theme' )
+pkgver=20160212
+pkgrel=1
 arch=('any')
 url="https://github.com/varlesh/${_repo}"
 license=('CCPL:by-sa')
 
 options=('!strip')
 source=("${_repo}-${pkgver}.tar.gz::${url}/archive/${_git}.tar.gz")
-sha256sums=('193ed7bc6d5b29fe693124f25ea2ee31228f81d379cd0e669ed74f67d2981257')
+sha256sums=('12fcc4fdb9ed41bd33fdfbe07b064285051a47ef1a3a1cba9d1c3cc7179e773e')
 
-package_papirus() {
+package_papirus(){
+    optdepends=(
+        'papirus-look-and-feel: Look-and-feel package for modified and adaptive Paper theme for KDE.'
+        'plasma-theme-papirus: Modified and adaptive Paper plasma theme for KDE'
+        'papirus-icon-theme: Modified and adaptive Paper icon theme for KDE'
+        'papirus-color-scheme: Modified and adaptive Paper color scheme for KDE'
+        'papirus-qtcurve-theme: Modified and adaptive Paper decorations for QtCurve'
+        'papirus-aurorae-theme: Modified and adaptive Paper decorations for Kwin'
+        'yakuake-skin-papirus: Modified and adaptive Paper skin for Yakuake'
+        'papirus-konsole-colorscheme: Modified and adaptive Paper colorscheme for Konsole'
+        'papirus-kmail-theme: Modified and adaptive Paper theme for Kmail'
+        'papirus-gtk-icon-theme: Modified and adaptive gtk Paper icon theme'
+        'papirus-gtk-theme: Modified and adaptive Paper gtk theme'
+        'bomi-skin-papirus: Papirus theme for Bomi'
+        'libreoffice-style-papirus: Libreoffice Papirus theme'
+        'vlc-skin-papirus: Paper skin for VLC Media Player'
+        )
+    install -D -m644  ${srcdir}/${_repo}-${_git}/plasma-themes/papirus/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+}
+
+package_papirus-look-and-feel() {
     pkgdesc="Look-and-feel package for modified and adaptive Paper theme for KDE."
-    depends=('plasma-theme-papirus' 'papirus-icon-theme' 'papirus-color-scheme' 'papirus-gtk-theme')
-    optdepends=('papirus-qtcurve-theme: Modified and adaptive Paper decorations for QtCurve'
-                'yakuake-skin-papirus: Modified and adaptive Paper skin for Yakuake'
-                'papirus-konsole-colorscheme: Modified and adaptive Paper colorscheme for Konsole'
-                'papirus-kmail-theme: Modified and adaptive Paper theme for Kmail'
-                'bomi-skin-papirus: Papirus theme for Bomi'
-                'libreoffice-style-papirus: Papirus theme for Libreoffice'
-                'vlc-skin-papirus: Paper skin for VLC Media Player')
-   install -d ${pkgdir}/usr/share/plasma/look-and-feel
-   cp -r ${srcdir}/${_repo}-${_git}/look-and-feel/* ${pkgdir}/usr/share/plasma/look-and-feel/
-   install -D -m644  ${srcdir}/${_repo}-${_git}/plasma-themes/papirus/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-   find ${pkgdir}/usr -type f -exec chmod 644 {} \;
-   find ${pkgdir}/usr -type d -exec chmod 755 {} \;
+    install -d ${pkgdir}/usr/share/plasma/look-and-feel
+    cp -r ${srcdir}/${_repo}-${_git}/look-and-feel/* ${pkgdir}/usr/share/plasma/look-and-feel/
+    install -D -m644  ${srcdir}/${_repo}-${_git}/plasma-themes/papirus/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+    find ${pkgdir}/usr -type f -exec chmod 644 {} \;
+    find ${pkgdir}/usr -type d -exec chmod 755 {} \;
 } 
 
 package_bomi-skin-papirus() {
@@ -43,7 +55,7 @@ package_bomi-skin-papirus() {
 
 
 package_libreoffice-style-papirus() {
-    pkgdesc="Libreoffice Papirus theme "
+    pkgdesc="Libreoffice Papirus theme"
     depends=('libreoffice')
     replaces=('libreoffice-papirus-theme')
     install -d ${pkgdir}/usr/lib/libreoffice/share/config
