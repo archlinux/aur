@@ -15,6 +15,7 @@ source=("${_repo}-${pkgver}.tar.gz::${url}/archive/${_git}.tar.gz")
 sha256sums=('12fcc4fdb9ed41bd33fdfbe07b064285051a47ef1a3a1cba9d1c3cc7179e773e')
 
 package_papirus(){
+    pkgdesc="Meta-package for modified and adaptive Paper theme"
     optdepends=(
         'papirus-look-and-feel: Look-and-feel package for modified and adaptive Paper theme for KDE.'
         'plasma-theme-papirus: Modified and adaptive Paper plasma theme for KDE'
