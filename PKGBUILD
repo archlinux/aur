@@ -2,13 +2,14 @@
 
 pkgbase=mgba-git
 pkgname=('libmgba-git' 'mgba-sdl-git' 'mgba-qt-git')
-pkgver=r2955.ec32efd
+pkgver=r3212.811d654
 pkgrel=1
 arch=('i686' 'x86_64')
-url="http://mgba.io/"
+url='http://mgba.io/'
 license=('custom:MPL2')
 makedepends=('git' 'cmake' 'qt5-base' 'qt5-multimedia' 'sdl2' 'zlib' 'libpng'
              'libzip' 'libedit' 'ffmpeg' 'imagemagick' 'desktop-file-utils' 'libepoxy')
+install=mgba.install
 source=("git+https://github.com/mgba-emu/mgba.git")
 sha1sums=('SKIP')
 
@@ -18,11 +19,7 @@ pkgver() {
 }
 
 prepare() {
-  if [[ -d build ]]; then
-    rm -rf build && mkdir build
-  else
-    mkdir build
-  fi
+  [[ ! -d build ]] && mkdir build || rm -rf build
 }
 
 build() {
@@ -39,8 +36,6 @@ package_libmgba-git() {
 
   cmake -DCOMPONENT=libmgba mgba -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
     -P build/cmake_install.cmake
-
-  rm -rf "$pkgdir"/usr/share/icons
   install -Dm644 "$srcdir"/mgba/LICENSE "$pkgdir"/usr/share/licenses/libmgba/LICENSE
 }
 
@@ -52,7 +47,6 @@ package_mgba-sdl-git() {
 
   cmake -DCOMPONENT=mgba-sdl mgba -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
     -P build/cmake_install.cmake
-
   install -d "$pkgdir"/usr/share/licenses/mgba-sdl
   ln -s /usr/share/licenses/libmgba/LICENSE "$pkgdir"/usr/share/licenses/mgba-sdl/LICENSE
 }
@@ -62,16 +56,11 @@ package_mgba-qt-git() {
   depends=('libmgba-git' 'qt5-base' 'qt5-multimedia' 'sdl2' 'libepoxy')
   conflicts=('mgba-qt')
   provides=('mgba-qt')
-  install=mgba.install
 
   cmake -DCOMPONENT=mgba-qt mgba -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
     -P build/cmake_install.cmake
-
-  for i in 16 24 32 48 64 96 128 256 512; do
-    install -Dm644 "$srcdir"/mgba/res/mgba-$i.png "$pkgdir"/usr/share/icons/hicolor/${i}x$i/apps/mgba.png
-  done
-
   install -d "$pkgdir"/usr/share/licenses/mgba-qt
   ln -s /usr/share/licenses/libmgba/LICENSE "$pkgdir"/usr/share/licenses/mgba-qt/LICENSE
   desktop-file-install "$srcdir"/mgba/res/mgba-qt.desktop --dir "$pkgdir"/usr/share/applications/
+  install -Dm644 mgba/res/mgba-256.png "$pkgdir"/usr/share/pixmaps/mgba.png
 }
