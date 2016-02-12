@@ -2,7 +2,7 @@
 
 pkgname=ultra-flat-icons
 pkgver=1.3.4
-pkgrel=4
+pkgrel=5
 pkgdesc='A simple flat icon theme, derived from Flattr icon theme.'
 arch=('any')
 url='http://gnome-look.org/content/show.php?content=167477'
@@ -23,20 +23,20 @@ source=(
 )
 sha512sums=(
 	'b39093e0ea3d79d01616058a8b03d2aa570e1728b642eac41bd0f0f1dbcd77416ac017fd1378c6118579463a018273cdfd5220712508336bc63b8c147eb5b1a2'
-	'214a66945265b3cf304651514792f9f4a32959f2d9f18cfd9c2e2ea4ccf44264a5ccedb4f8790c1e3b6fe6b6b4caf981890759fce7538f003682f98fe5374213'
+	'60c88422a3e2a5f3e21f9ae50e7810b2b9f8227023162ba004448ddf3823ad34120c6a73df2bab3a74af77c6c3b5cd406a9f8e7cb3db69ba8af7eda775889ffe'
 	'3ce42f27f494f8b4a715e646faeb611d4e573a2bc5960b7f340426bded98c85f2c3ea2a1a1c88256c861558c1f4a4e0408b5f3696ec60c87eb7bd5bf2bf8145c'
 )
 
 icon_fix() {
 	# Check if dir exists
-	if [[ ! -d ${1} ]]; then
+	if [[ ! -d "${1}" ]]; then
 		warning "${1} doesn't exist"
 	else
 		# Change current working directory
-		cd ${1}
+		cd "${1}"
 		
 		# Apps
-		if [[ -d apps ]]; then
+		if [[ -d "apps" ]]; then
 			# AMD Catalyst
 			ln -fsr apps/scalable/amd.svg apps/scalable/ccc_large.svg
 			
@@ -76,9 +76,9 @@ icon_fix() {
 			if [[ ${2} == true ]]; then
 				# Replace folder
 				rm -fR status/scalable
-				mv status/scalable\ white\ panel status/scalable
+				mv "status/scalable white panel" status/scalable
 			else
-				rm -fR status/scalable\ white\ panel
+				rm -fR "status/scalable white panel"
 			fi
 		fi
 		
@@ -89,49 +89,49 @@ icon_fix() {
 
 package() {
 	# Base directory 
-	mkdir -p ${pkgdir}/usr/share/icons
-	cd ${pkgdir}/usr/share/icons
+	mkdir -p "${pkgdir}"/usr/share/icons
+	cd "${pkgdir}"/usr/share/icons
 	
 	# Icon base name
 	local _iconset=UltraFlatIcons
 	
 	# Default
 	mkdir ${_iconset}
-	cp -a ${srcdir}/${pkgname}/{actions,apps,categories,devices,emblems,mimetypes,places,status,index.theme} ${_iconset}
+	cp -a "${srcdir}"/${pkgname}/{actions,apps,categories,devices,emblems,mimetypes,places,status,index.theme} ${_iconset}
 	
 	# Default dark
 	mkdir ${_iconset}Dark
-	cp -a ${srcdir}/${pkgname}/{status,index.theme} ${_iconset}Dark
+	cp -a "${srcdir}"/${pkgname}/{status,index.theme} ${_iconset}Dark
 	
 	# Orange
 	mkdir ${_iconset}Orange
-	cp -a ${srcdir}/${pkgname}-orange/{actions,apps,categories,devices,emblems,mimetypes,places,status,index.theme} ${_iconset}Orange
+	cp -a "${srcdir}"/${pkgname}-orange/{actions,apps,categories,devices,emblems,mimetypes,places,status,index.theme} ${_iconset}Orange
 	
 	# Orange dark
 	mkdir ${_iconset}OrangeDark
-	cp -a ${srcdir}/${pkgname}-orange/{status,index.theme} ${_iconset}OrangeDark
+	cp -a "${srcdir}"/${pkgname}-orange/{status,index.theme} ${_iconset}OrangeDark
 	
 	# Green
 	mkdir ${_iconset}Green
-	cp -a ${srcdir}/${pkgname}-mint-green/{actions,apps,categories,devices,emblems,mimetypes,places,status,index.theme} ${_iconset}Green
+	cp -a "${srcdir}"/${pkgname}-mint-green/{actions,apps,categories,devices,emblems,mimetypes,places,status,index.theme} ${_iconset}Green
 	
 	# Green dark
 	mkdir ${_iconset}GreenDark
-	cp -a ${srcdir}/${pkgname}-mint-green/{status,index.theme} ${_iconset}GreenDark
+	cp -a "${srcdir}"/${pkgname}-mint-green/{status,index.theme} ${_iconset}GreenDark
 	
 	# Fix
-	icon_fix ${pkgdir}/usr/share/icons/${_iconset}
-	icon_fix ${pkgdir}/usr/share/icons/${_iconset}Dark true
-	icon_fix ${pkgdir}/usr/share/icons/${_iconset}Orange
-	icon_fix ${pkgdir}/usr/share/icons/${_iconset}OrangeDark true
-	icon_fix ${pkgdir}/usr/share/icons/${_iconset}Green
-	icon_fix ${pkgdir}/usr/share/icons/${_iconset}GreenDark true
+	icon_fix "${pkgdir}"/usr/share/icons/${_iconset}
+	icon_fix "${pkgdir}"/usr/share/icons/${_iconset}Dark true
+	icon_fix "${pkgdir}"/usr/share/icons/${_iconset}Orange
+	icon_fix "${pkgdir}"/usr/share/icons/${_iconset}OrangeDark true
+	icon_fix "${pkgdir}"/usr/share/icons/${_iconset}Green
+	icon_fix "${pkgdir}"/usr/share/icons/${_iconset}GreenDark true
 	
 	# Patch index files
-	patch -p1 < ${srcdir}/index_theme_fix.patch
+	patch -Np1 < "${srcdir}"/index_theme_fix.patch
 	
 	# License
-	mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
-	cp ${srcdir}/${pkgname}/LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-	cp ${srcdir}/${pkgname}/CREDITS ${pkgdir}/usr/share/licenses/${pkgname}
+	mkdir -p "${pkgdir}"/usr/share/licenses/${pkgname}
+	cp "${srcdir}"/${pkgname}/LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+	cp "${srcdir}"/${pkgname}/CREDITS "${pkgdir}"/usr/share/licenses/${pkgname}
 }
