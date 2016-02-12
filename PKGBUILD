@@ -4,7 +4,7 @@
 # Maintainer: Jan D. Behrens <zykure@web.de>
 
 pkgname=deadbeef-plugin-fb
-pkgver=20160209_0.90
+pkgver=20160212_0.91
 pkgrel=1
 pkgdesc="A filebrowser plugin for the DeaDBeeF audio player"
 arch=('any')
@@ -12,10 +12,10 @@ url="https://gitlab.com/zykure/deadbeef-fb"
 license=(GPL)
 depends=('deadbeef>=0.6', gtk2)
 backup=()
-source=('https://gitlab.com/zykure/deadbeef-fb/raw/release/source/deadbeef-fb_20160209_0.90_src.tar.gz')
-md5sums=('da537597af97068b7bf88d763bb189f1')
-sha1sums=('488f93cb700b9452652ca731beb32efbaec0c679')
-sha256sums=('00abe047864160f04e9ba97e3c4dff40ef9684251cc10d619a9272cafdd8d8d0')
+source=('https://gitlab.com/zykure/deadbeef-fb/raw/release/source/deadbeef-fb_20160212_0.91_src.tar.gz')
+md5sums=('e5569f7731b6f5fb2e95235a2e5abd8c')
+sha1sums=('2354e27dde15fdebc2093f4b256d9b30a05499c6')
+sha256sums=('ee2b9735c49e4f0d30783d2e87e5785c806344cfc5103920ac047149baac3349')
 
 build() {
   cd ${srcdir}/deadbeef-fb-devel
