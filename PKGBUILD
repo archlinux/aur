@@ -36,7 +36,7 @@ icon_fix() {
 		cd "${1}"
 		
 		# Apps
-		if [[ -d "apps" ]]; then
+		if [[ -d apps ]]; then
 			# AMD Catalyst
 			ln -fsr apps/scalable/amd.svg apps/scalable/ccc_large.svg
 			
