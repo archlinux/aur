@@ -4,7 +4,7 @@ _install_cron_file=
 
 pkgname=clamav-unofficial-sigs
 pkgver=4.9.2
-pkgrel=2
+pkgrel=3
 pkgdesc='ClamAV Unofficial Signatures Updater maintained by eXtremeSHOK.com'
 arch=('any')
 url='https://github.com/extremeshok/clamav-unofficial-sigs'
@@ -34,6 +34,8 @@ package() {
 	install -Dm644 clamav-unofficial-sigs.8 ${pkgdir}/usr/share/man/man8/clamav-unofficial-sigs.8
 	install -Dm644 clamav-unofficial-sigs-logrotate ${pkgdir}/etc/logrotate.d/clamav-unofficial-sigs-logrotate
 	install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/clamav-unofficial-sigs/LICENSE
+
+	install -d -o clamav -g clamav ${pkgdir}/var/lib/clamav-unofficial-sigs
 
 	if [ -n "$_install_cron_file" ]; then
 		install -Dm644 clamav-unofficial-sigs-cron \
