@@ -1,0 +1,13 @@
+pkgbase = ekopath-bin
+	pkgdesc = A high-performance Intel 64 / AMD64 compiler for C99, C++ 2003, Fortran 90/95 and partial 2003
+	pkgver = 20160212
+	pkgrel = 1
+	url = http://pathscale.com/ekopath-compiler-suite
+	arch = x86_64
+	license = GPL
+	options = !strip
+	source = checkver.py
+	md5sums = dee1655664ef4a5fe3d05b0b5aff00ac
+
+pkgname = ekopath-bin
+
