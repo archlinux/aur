@@ -4,15 +4,15 @@
 
 _pkgname=libcaca
 pkgname=lib32-$_pkgname
-pkgver=0.99.beta18
-pkgrel=3
+pkgver=0.99.beta19
+pkgrel=1
 pkgdesc="Color AsCii Art library (32-bit)"
 arch=("x86_64")
 url="http://caca.zoy.org/wiki/libcaca"
 license=('custom:WTFPL')
 depends=("$_pkgname" "lib32-imlib2")
 source=("http://libcaca.zoy.org/files/$_pkgname/$_pkgname-$pkgver.tar.gz")
-md5sums=('93d35dbdb0527d4c94df3e9a02e865cc')
+md5sums=('a3d4441cdef488099f4a92f4c6c1da00')
 
 build() {
     export CC="gcc -m32"
@@ -39,6 +39,4 @@ build() {
 package() {
     make -C $_pkgname-$pkgver DESTDIR="$pkgdir" install
     rm -rf "$pkgdir"/usr/{bin,include,lib,share}/
-
-    rmdir "$pkgdir/usr/lib32/jni"
 }
