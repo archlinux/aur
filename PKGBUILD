@@ -1,7 +1,7 @@
 # Maintainer: Aaron Bishop <erroneous at gmail dot com>
 pkgname=brewpi-www
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="BrewPi web interface"
 arch=('any')
 url="http://www.brewpi.com/"
