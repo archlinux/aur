@@ -18,7 +18,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'upower: Battery API')
 install=firefox.install
 options=('!emptydirs' '!makeflags')
-provides=("firefox=${pkgver}-${pkgrel}")
+provides=("firefox=${pkgver}")
 conflicts=("firefox")
 source=(firefox.desktop
         vendor.js)
