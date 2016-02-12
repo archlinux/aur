@@ -7,19 +7,19 @@ pkgrel=1
 arch=('any')
 url="http://www.sqlalchemy.org/"
 license=('MIT')
-makedepends=('python-sphinx' 'python-mako' 'python-sphinx-paramlinks')
+makedepends=('python-sphinx' 'python-mako' 'python-sphinx-paramlinks' 'python-zzzeeksphinx')
 source=("http://pypi.python.org/packages/source/S/SQLAlchemy/SQLAlchemy-$pkgver.tar.gz")
 sha256sums=(0b24729787fa1455009770880ea32b1fa5554e75170763b1aef8b1eb470de8a3)
 
 build() {
-  cd "${srcdir}/SQLAlchemy-${pkgver}"
-  python setup.py build_sphinx
+	cd "${srcdir}/SQLAlchemy-${pkgver}"
+	python setup.py build_sphinx
 }
 
 package() {
-  cd "${srcdir}/SQLAlchemy-${pkgver}"
-  mkdir -p "$pkgdir/usr/share/doc/$pkgname"
-  while read -d ''; do
-    install -Dm644 "$REPLY" "$pkgdir/usr/share/doc/$pkgname/${REPLY#build/sphinx/html/}"
-  done < <(find doc/build/output/html -type f -print0)
+	cd "${srcdir}/SQLAlchemy-${pkgver}"
+	mkdir -p "$pkgdir/usr/share/doc/$pkgname"
+	while read -d ''; do
+		install -Dm644 "$REPLY" "$pkgdir/usr/share/doc/$pkgname/${REPLY#build/sphinx/html/}"
+	done < <(find build/sphinx/html -type f -print0)
 }
