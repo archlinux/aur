@@ -12,4 +12,4 @@ package() {
   cd "$srcdir"
   install -Dm644 public_suffix_list.dat "$pkgdir/usr/share/publicsuffix/effective_tld_names.dat"
 }
-sha256sums=('2ad536bf32e7a54cd31a64a463371f7ee2548530f664e932ba03aeab9a50c559')
+sha256sums=('f90ec9d0db993d68dae5028c91834b9b1da1e8a1242df9c3f3526a438757ab7b')
