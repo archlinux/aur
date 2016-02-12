@@ -2,7 +2,7 @@
 
 pkgname=u-gotme
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Software to download and upload tracks, routes and waypoints to the I-gotU series of GPS loggers : GT-800, GT-800Pro, GT-820Pro and GT-900Pro."
 arch=('i686' 'x86_64')
 if test "$CARCH" == x86_64; then
@@ -48,5 +48,5 @@ package() {
   install -DTm644 ${srcdir}/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
 
   mkdir -p ${pkgdir}/usr/bin/
-  ln -s ${pkgdir}/usr/share/java/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
+  ln -s "/usr/share/java/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
