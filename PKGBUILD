@@ -1,9 +1,9 @@
 # Maintainer: Gunther Schulz <forum (at) guntherschulz.de>
 
 pkgname=dcled
-pkgver=1.9
+pkgver=stable.1.9.kost.r4.gc819fec
 _pkgver=1.9
-pkgrel=1
+pkgrel=2
 pkgdesc='dcled - userland driver for Dream Cheeky (Dream Link?) USB LED Message Board'
 url='https://github.com/kost/dcled'
 license=('GPL')
@@ -28,6 +28,10 @@ build() {
 
 package() {
   cd $pkgname
+
   install -Dm755 $srcdir/$pkgname/dcled \
     "$pkgdir/usr/bin/dcled"
+
+  install -Dm644 $srcdir/$pkgname/40-dcled.rules \
+    "$pkgdir/etc/udev/rules.d/40-dcled.rules"
 }
