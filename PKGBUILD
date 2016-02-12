@@ -4,7 +4,7 @@
 
 _pkgname=vokoscreen
 pkgname=${_pkgname}-git
-pkgver=2.4.9.beta.14.ga0a2ec8
+pkgver=2.4.15.beta.3.ge00de96
 pkgrel=2
 pkgdesc='An easy to use screencast creator. Qt5 UI. Development version.'
 arch=('i686' 'x86_64')
@@ -32,17 +32,17 @@ sha512sums=(
 
 pkgver() {
 	# Updating package version
-	cd ${srcdir}/${_pkgname}
+	cd "${srcdir}"/${_pkgname}
 	git describe --long --tags 2>/dev/null | sed -r 's/-/./g'
 }
 
 prepare() {
 	# Desktop file description
-	cd ${srcdir}/${_pkgname}
+	cd "${srcdir}"/${_pkgname}
 	patch -p1 < ../desktop_file.patch
 
 	# Create build directory
-	mkdir -p ${srcdir}/build
+	mkdir -p "${srcdir}"/build
 }
 
 build() {
@@ -54,7 +54,7 @@ build() {
 	fi
 
 	# Building package
-	cd ${srcdir}/build
+	cd "${srcdir}"/build
 	qmake-qt5 ../${_pkgname} \
 		CONFIG+=release \
 		CONFIG+=c++14 \
@@ -65,6 +65,6 @@ build() {
 
 package() {
 	# Installing package
-	cd ${srcdir}/build
-	make INSTALL_ROOT=${pkgdir} install
+	cd "${srcdir}"/build
+	make INSTALL_ROOT="${pkgdir}" install
 }
