@@ -3,7 +3,7 @@
 pkgname=proot-bin
 _pkgname=proot
 pkgver=5.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="chroot, mount --bind, and binfmt_misc without privilege/setup (bin only)"
 arch=('i686' 'x86_64')
 url="http://proot.me"
@@ -11,10 +11,10 @@ license=('GPL')
 provides=('proot')
 conflicts=('proot')
 depends=('talloc')
-[ "$CARCH" = "i686" ] && source=("${_pkgname}"::'http://portable.proot.me/proot-x86_64')
-[ "$CARCH" = "x86_64" ] && source=("${_pkgname}"::'http://portable.proot.me/proot-x86_64')
-[ "$CARCH" = "i686" ] && sha1sums=('6b2f18ff13c1b7f1efe5b55dac0dadaa6966f7a1')
-[ "$CARCH" = "x86_64" ] && sha1sums=('5e713559fd336074971590e8cbe7ab1593ffabfc')
+source_i686=("${_pkgname}"::'http://portable.proot.me/proot-x86')
+source_x86_64=("${_pkgname}"::'http://portable.proot.me/proot-x86_64')
+sha1sums_i686=('6b2f18ff13c1b7f1efe5b55dac0dadaa6966f7a1')
+sha1sums_x86_64=('5e713559fd336074971590e8cbe7ab1593ffabfc')
 
 package() {
 	install -dm755 "${pkgdir}"/usr/bin
