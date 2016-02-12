@@ -1,8 +1,8 @@
-# Maintainer: Maxime Poulin <maxpoulin64@gmail.com>
+# Contributor: Maxime Poulin <maxpoulin64@gmail.com>
 # Contributor: Duncan K. <duncank@fastmail.fm>
 pkgname=shout-irc
 pkgver=0.53.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Web-based IRC client"
 url='http://shout-irc.com/'
 arch=('any')
@@ -42,4 +42,7 @@ package() {
 	
 	install -Dm644 $srcdir/system.service $pkgdir/usr/lib/systemd/system/${pkgname}.service
 	install -Dm644 $srcdir/user.service $pkgdir/usr/lib/systemd/user/${pkgname}.service
+	
+	grep -FRlZ "$startdir" "$pkgdir" | \
+		xargs -0 -- sed -i "s|$startdir|/tmp/build|g"
 }
