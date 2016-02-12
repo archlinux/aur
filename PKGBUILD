@@ -2,7 +2,7 @@
 
 PN=Cyberfox
 pkgname=cyberfox
-pkgver=44.0.1
+pkgver=44.0.2
 pkgrel=1
 pkgdesc="Fast and privacy oriented fork of Mozilla Firefox"
 arch=('x86_64')
@@ -11,8 +11,10 @@ license=('GPL')
 depends=('gtk2' 'libxt' 'dbus-glib' 'alsa-lib' 'hicolor-icon-theme' 'nss>=3.14.1' )
 source=("${pkgname}.desktop"
         "http://downloads.sourceforge.net/project/cyberfox/Zipped%20Format/${PN}-$pkgver.en-US.linux-${arch}.tar.bz2")
+
 md5sums=('9bfb5aaced348dd7db8c2c62cbc2150d'
-         '1ba9d3ffb0202e3fc152251522bd3c24')
+         'b03278b17847421871b74121ef5f62b5')
+
 package() {
     install -d "$pkgdir"/{usr/bin,opt}
     mv "${PN}" "${pkgdir}/opt/${pkgname}"
