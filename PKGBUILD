@@ -5,7 +5,7 @@ _postfixadminver=2.93
 pkgname=('zarafa-postfixadmin'
 	 'zarafa-postfixadmin-worker')
 groups=('zarafa')
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
 pkgdesc="A web based interface used to manage mailboxes, virtual domains and aliases created for Zarafa-Server with DB-Plugin and Postfix"
 arch=('any')
@@ -43,7 +43,7 @@ package_zarafa-postfixadmin() {
     # var
     # template cache needs to be writeable
     mkdir ${_destdir_lib}/templates_c
-    ln -s /var/lib/${pkgname}/templates_c ${_destdir}/template_c
+    ln -s /var/lib/${pkgname}/templates_c ${_destdir}/templates_c
 
     # docs
     mv ${_destdir}/{*.TXT,tests,ADDITIONS,DOCUMENTS,VIRTUAL_VACATION} ${_destdir_doc}
