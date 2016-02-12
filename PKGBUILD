@@ -8,7 +8,7 @@ arch=(any)
 url="https://bitbucket.org/zzzeek/$_basepkg"
 license=('MIT')
 depends=('python' 'python-sphinx')
-source=(https://pypi.python.org/packages/source/s/$_basepkg/$_basepkg-$pkgver.tar.gz)
+source=("https://pypi.python.org/packages/source/s/$_basepkg/$_basepkg-$pkgver.tar.gz")
 sha1sums=(8201182841728c97ba5a401a1214b85988935800)
 
 package() {
