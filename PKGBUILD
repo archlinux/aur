@@ -2,8 +2,9 @@
 # Contributor: Tom Swartz <tom@tswartz.net>
 
 pkgname=soapyrtlsdr-git
-pkgver=20151225
+pkgver=r53.a44abc3
 pkgrel=1
+epoch=2
 pkgdesc="SoapySDR RTL-SDR Support Module"
 arch=('any')
 url="https://github.com/pothosware/SoapySDR"
@@ -13,6 +14,10 @@ makedepends=('git')
 source=(${pkgname}::"git+https://github.com/pothosware/SoapyRTLSDR.git")
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
         cd "${srcdir}/${pkgname}"
