@@ -43,11 +43,11 @@ install="${pkgname}.install"
 
 build() {
 	sed -i -r -e 's@(/etc/init\.d/lprng stop\s*)$@\1\nfi\nif [ -e /usr/lib/systemd/system/org.cups.cups-lpd.socket ]; then\n\tsystemctl stop org.cups.cups-lpd.socket@gi' \
-			-e 's@(/etc/init\.d/cupsys restart\s*)$@\1\nelif [ -e /usr/lib/systemd/system/org.cups.cupsd.service ]; then\n\tsystemctl restart org.cups.cupsd@gi' \
-			$srcdir/opt/brother/Printers/${_pkgname}/cupswrapper/cupswrapper${_pkgname}
+		-e 's@(/etc/init\.d/cupsys restart\s*)$@\1\nelif [ -e /usr/lib/systemd/system/org.cups.cupsd.service ]; then\n\tsystemctl restart org.cups.cupsd@gi' \
+		$srcdir/opt/brother/Printers/${_pkgname}/cupswrapper/cupswrapper${_pkgname}
 
 	if [[ ! $LANG =~ [a-z]{2}_(US|CA) ]]; then
-		sed -i -r -e 's@(PaperType\s*=\s*\{?)Letter(\}?\s*)$@\1A4\2@gi' $srcdir/opt/brother/Printers/${_pkgname}/inf/brmfcj6920dw{func,rc}
+		sed -i -r -e 's@(PaperType\s*=\s*\{?)Letter(\}?\s*)$@\1A4\2@gi' $srcdir/opt/brother/Printers/${_pkgname}/inf/br${_pkgname}{func,rc}
 		sed -i -r -e 's@(\*Default[a-z]+:\s+)Letter\s*$@\1A4@gi' $srcdir/opt/brother/Printers/${_pkgname}/cupswrapper/brother_${_pkgname}_printer_en.ppd
 	fi
 
