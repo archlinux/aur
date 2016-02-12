@@ -1,23 +1,21 @@
 # Maintainer: Simon Hanna <simon dot hanna AT serve-me DOT info>
 
 pkgname=('python2-django-postorius')
-_pkgbase=postorius
-_commit=3d2b22974176126286047d511e7ecba25c54ed2c
-pkgver=1.0.1
+_commit=29bae4b21d32328d509d88f71611b1f1bff18310
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A Django app that provides a web user interface to access GNU Mailman"
 arch=(any)
 makedepends=('python2-setuptools')
-depends=('python2' 'python2-django' 'python2-django-browserid' 
-         'python2-mailmanclient' 'python2-httplib2')
+depends=('python2' 'python2-django' 'python2-django-browserid' 'python2-mailmanclient')
 url="https://gitlab.com/mailman/postorius"
 license=('LGPL')
 options=(!emptydirs)
-source=("${_pkgbase}-${pkgver}.tar.gz::https://gitlab.com/mailman/postorius/repository/archive.tar.gz?ref=${pkgver}")
-sha256sums=('9d942d8208e914c2b6a68034e1b534adecb892c7b507e6d4f39b40c8bf8389af')
+source=("postorius-${pkgver}.tar.gz::https://gitlab.com/mailman/postorius/repository/archive.tar.gz?ref=${pkgver}")
+sha256sums=('fda320f6b86fb16389251506d91c74237463e533905a458a85083f0ede6a4e03')
 
 package() {
-  cd "$srcdir/$_pkgbase-$pkgver-$_commit"
+  cd "$srcdir/postorius-$pkgver-$_commit"
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
