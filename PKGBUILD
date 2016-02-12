@@ -4,7 +4,7 @@
 pkgname=qextserialport
 pkgver=1.2rc
 pkgrel=6
-pkgdesc="Cross-platform serial port class libary for Qt4 and Qt5."
+pkgdesc="Cross-platform serial port class libary for Qt."
 arch=('i686' 'x86_64')
 url='https://github.com/qextserialport/qextserialport'
 license=('MIT')
