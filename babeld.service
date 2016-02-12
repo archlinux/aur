@@ -5,7 +5,10 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/babeld
+# Don't write a PID file, since it prevents babeld from starting again
+# in case of crash.
+ExecStart=/usr/bin/babeld -I ''
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
