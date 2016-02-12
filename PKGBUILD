@@ -1,19 +1,20 @@
 # Maintainer: valvetime <valvetimepackages@gmail.com>
 # Contributor: Tom Swartz <tom@tswartz.net>
 
-
-#TODO: fix icon installation
-
 pkgname=cubicsdr-git
-pkgver=20151226
+_pkgname=cubicsdr
+pkgver=r969.786f5ba
 pkgrel=1
+epoch=2
 pkgdesc="Cross-Platform Software-Defined Radio Application"
 arch=('any')
 url="https://github.com/cjcliffe/CubicSDR"
 license=('GPL2')
 depends=('fftw' 'wxgtk' 'soapysdr-git' 'liquid-dsp-git')
 optdepends=('soapyrtlsdr-git: RTL-SDR dongle support')
-makedepends=('git' 'automake' 'cmake' 'imagemagick')
+makedepends=('git' 'automake' 'cmake' 'libicns')
+conflicts=('cubicsdr')
+install="${pkgname}.install"
 source=(cubicsdr-git::"git+https://github.com/cjcliffe/cubicsdr.git")
 sha256sums=('SKIP')
 
@@ -26,12 +27,14 @@ build() {
 	make -j2
 
 
+}
 
-#convert the icon to png
-	
-	cd "$srcdir/cubicsdr-git/icon"
-	convert CubicSDR.ico CubicSDR.png
 
+
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 
@@ -39,7 +42,7 @@ build() {
 
 
 
-package() {
+package()	{
 
 cd "$srcdir/$pkgname/build"
 
@@ -51,41 +54,54 @@ cd "$srcdir/$pkgname/build"
 
 	install -dm755 "${pkgdir}/usr/bin"
 	install -dm755 "${pkgdir}/usr/share"
-        install -dm755 "${pkgdir}/usr/share/cubicsdr"
+	install -dm755 "${pkgdir}/usr/share/cubicsdr"
 
 
-#TODO: detect arch to make this work on x86
+#TODO: detect arch to make this work on x86 automatically
 #for now change this manually on 32 bit systems
-	cd "${srcdir}/cubicsdr-git/build/x64"
-        
+cd "${srcdir}/cubicsdr-git/build/x64"
+
 	install -Dm755 CubicSDR "${pkgdir}/usr/share/cubicsdr/cubicsdr"
 
+	install -Dm755 vera_sans_mono12.fnt "${pkgdir}/usr/share/cubicsdr/vera_sans_mono12.fnt"
+	install -Dm755 vera_sans_mono16.fnt "${pkgdir}/usr/share/cubicsdr/vera_sans_mono16.fnt"
+	install -Dm755 vera_sans_mono18.fnt "${pkgdir}/usr/share/cubicsdr/vera_sans_mono18.fnt"
+	install -Dm755 vera_sans_mono24.fnt "${pkgdir}/usr/share/cubicsdr/vera_sans_mono24.fnt"
+	install -Dm755 vera_sans_mono32.fnt "${pkgdir}/usr/share/cubicsdr/vera_sans_mono32.fnt"
+	install -Dm755 vera_sans_mono48.fnt "${pkgdir}/usr/share/cubicsdr/vera_sans_mono48.fnt"
+	install -Dm755 vera_sans_mono12_0.png "${pkgdir}/usr/share/cubicsdr/vera_sans_mono12_0.png"
+	install -Dm755 vera_sans_mono16_0.png "${pkgdir}/usr/share/cubicsdr/vera_sans_mono16_0.png"
+	install -Dm755 vera_sans_mono18_0.png "${pkgdir}/usr/share/cubicsdr/vera_sans_mono18_0.png"
+	install -Dm755 vera_sans_mono24_0.png "${pkgdir}/usr/share/cubicsdr/vera_sans_mono24_0.png"
+	install -Dm755 vera_sans_mono32_0.png "${pkgdir}/usr/share/cubicsdr/vera_sans_mono32_0.png"
+	install -Dm755 vera_sans_mono48_0.png "${pkgdir}/usr/share/cubicsdr/vera_sans_mono48_0.png"
 
-        install -Dm755 vera_sans_mono12.fnt "${pkgdir}/usr/share/cubicsdr/vera_sans_mono12.fnt"
-        install -Dm755 vera_sans_mono16.fnt "${pkgdir}/usr/share/cubicsdr/vera_sans_mono16.fnt"
-        install -Dm755 vera_sans_mono18.fnt "${pkgdir}/usr/share/cubicsdr/vera_sans_mono18.fnt"
-        install -Dm755 vera_sans_mono24.fnt "${pkgdir}/usr/share/cubicsdr/vera_sans_mono24.fnt"
-        install -Dm755 vera_sans_mono32.fnt "${pkgdir}/usr/share/cubicsdr/vera_sans_mono32.fnt"
-        install -Dm755 vera_sans_mono48.fnt "${pkgdir}/usr/share/cubicsdr/vera_sans_mono48.fnt"
-        install -Dm755 vera_sans_mono12_0.png "${pkgdir}/usr/share/cubicsdr/vera_sans_mono12_0.png"
-        install -Dm755 vera_sans_mono16_0.png "${pkgdir}/usr/share/cubicsdr/vera_sans_mono16_0.png"
-        install -Dm755 vera_sans_mono18_0.png "${pkgdir}/usr/share/cubicsdr/vera_sans_mono18_0.png"
-        install -Dm755 vera_sans_mono24_0.png "${pkgdir}/usr/share/cubicsdr/vera_sans_mono24_0.png"
-        install -Dm755 vera_sans_mono32_0.png "${pkgdir}/usr/share/cubicsdr/vera_sans_mono32_0.png"
-        install -Dm755 vera_sans_mono48_0.png "${pkgdir}/usr/share/cubicsdr/vera_sans_mono48_0.png"
+
+cd $srcdir/cubicsdr-git
+
+    # icons are trapped inside .icns format, free them.
+	icns2png -x icon/CubicSDR.icns
+
+#get a list of icon filenames for renaming
+#gets names of all .pngs and puts it into iconlist file
+ls -1 | grep .png > iconlist
+
+#strip out the cubicsdr part from each line in iconlist
+cut -c 10- iconlist > icons
+
+#iterate over the icons text file, copying icon files for each entry
+for word in $(cat icons); do cp CubicSDR_$word icon_$word; done
+
+#install the icons
+    for size in 16 32 128 256 512; do
+	install -Dm644 "icon_${size}x${size}x32.png" \
+	  "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png"
+done
 
 
-#install the icon
-	cd "$srcdir/cubicsdr-git/icon"
-	install -Dm644 "CubicSDR-0.png" "$pkgdir/usr/share/cubicsdr/CubicSDR.png"
 
-#install the .desktop file
-#dirty hack to get to the root dir (the one with the PKGBUILD)
-	cd $srcdir	
+#install the desktop file
+	cd $srcdir
 	cd ..
-	install -Dm644 "cubicsdr.desktop" "$pkgdir/usr/share/applications/cubicsdr.desktop"
-
-#install the wrapper script into /usr/bin/
-        install -Dm755 wrapper.sh "${pkgdir}/usr/bin/cubicsdr"
-
-}
+		install -Dm644 $pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
+	}

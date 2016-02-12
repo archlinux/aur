@@ -1,0 +1,12 @@
+post_install() {
+ln -s /usr/share/cubicsdr/cubicsdr /usr/local/bin/
+	}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	rm /usr/local/bin/cubicsdr
+}
+
