@@ -1,7 +1,7 @@
 # Maintainer: Ole Ernst <olebowle[at]gmx[dot]com>
 pkgname=media-build-dvbsky
 pkgver=20151028
-pkgrel=3
+pkgrel=4
 pkgdesc="Driver for DVBSky cards/boxes"
 arch=('i686' 'x86_64')
 url="http://www.dvbsky.net/Support_linux.html"
@@ -25,6 +25,7 @@ prepare() {
   sed -i '/depmod/d' v4l/Makefile v4l/scripts/make_makefile.pl
   patch -p1 -i ../add_c2800e.patch
   patch -p1 -i ../4.3-compat.patch
+  grep -rl pci_dma_supported | xargs sed -i 's/pci_dma_supported/pci_set_dma_mask/'
   export _kernver=$(</usr/lib/modules/extramodules-[0-9]\.+([0-9])-ARCH/version)
   sed -i "s/KERNEL_VERSION=.*/KERNEL_VERSION=$_kernver/" "$startdir/$install"
 }
