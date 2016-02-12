@@ -1,30 +1,29 @@
 # Maintainer: David Adler <david dot jo dot adler at gmail dot com>
+# Contributor: Albert Graef <aggraef at gmail dot com>
 # Contributor: Arch Linux Pro Audio <dev@archaudio.org>
 # Contributor: svoufff <svoufff at gmail dot com>
 # Contributor: Shinlun Hsieh <yngwiexx@yahoo.com.tw>
 pkgname=qmidiroute
-pkgver=0.3.0
-pkgrel=3
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="a filter/router for MIDI events"
 arch=('i686' 'x86_64')
 url="http://alsamodular.sourceforge.net/"
 license=('GPL')
-depends=('qt4')
-source=(http://downloads.sourceforge.net/alsamodular/$pkgname-$pkgver.tar.bz2 $pkgname.desktop)
-md5sums=('8f2dfc9f0abc5d243e365b919926dc55'
-         '40a978928bb4795ac28b9387074875bb')
+depends=('qt5-base' 'qt5-tools' 'qtchooser')
+install="$pkgname.install"
+source=(http://downloads.sourceforge.net/alsamodular/$pkgname-$pkgver.tar.bz2)
+md5sums=('eac3b97814e372cef4068f2d06263269')
+
 build() {
   cd $srcdir/$pkgname-$pkgver
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --enable-qt5
   make
 }
+
 package() { 
   cd $srcdir/$pkgname-$pkgver
   make DESTDIR="$pkgdir" install
-
-  # Install .desktop and icon
-  install -D -m644 src/pixmaps/qmidiroute_48.xpm $pkgdir/usr/share/pixmaps/qmidiroute_48.xpm
-  install -D -m644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
 
   # Install doc
   mkdir -p $pkgdir/usr/share/doc/$pkgname
