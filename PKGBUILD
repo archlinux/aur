@@ -2,7 +2,7 @@
 # Contributor: Benjamin van der Burgh <benjaminvdb@gmail.com>
 
 pkgname=octave-hg
-pkgver=4.1.0+21236.5d23ea5c733a
+pkgver=4.1.0+21249.a032c6708f5c
 pkgrel=1
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
@@ -23,12 +23,12 @@ provides=("octave=4.1.0")
 install=octave.install
 source=('java-slackware.patch')
 md5sums=('cb5a497834876e68ad28160751afe4c1')
-options=('!emptydirs' '!makeflags')
+options=('!emptydirs')
 _hgroot=http://hg.savannah.gnu.org/hgweb/
 _hgrepo=octave
 
 pkgver() {
-  cd $srcdir
+  cd "$srcdir"
   if [ -d ${_hgrepo} ]; then
       cd ${_hgrepo}
       hg pull -u
@@ -39,13 +39,13 @@ pkgver() {
   _appver=$(awk -F", " '/bugs/ {print $2}' configure.ac|tr -d [])
   echo ${_appver}$(hg identify -n).$(hg identify -i)
 }
-
+  
 build() {
-  cd $srcdir
-  [[ -d $srcdir/${_hgrepo}-build ]] && rm -rf $srcdir/${_hgrepo}-build
-  cp -rf $srcdir/${_hgrepo} $srcdir/${_hgrepo}-build
+  cd "$srcdir"
+  [[ -d "$srcdir"/${_hgrepo}-build ]] && rm -rf $srcdir/${_hgrepo}-build
+  cp -rf "$srcdir"/${_hgrepo} $srcdir/${_hgrepo}-build
  
-  cd $srcdir/${_hgrepo}-build
+  cd "$srcdir"/${_hgrepo}-build
    ./bootstrap --bootstrap-sync 
   [[ $CARCH == "x86_64" ]] && _arch=amd64
   [[ $CARCH == "i686" ]] && _arch=i386
@@ -61,7 +61,7 @@ build() {
 }
 
 package() {
-  cd $srcdir/${_hgrepo}-build
+  cd "$srcdir"/${_hgrepo}-build
   make DESTDIR=${pkgdir} install
   # add octave library path to ld.so.conf.d
   install -d "${pkgdir}/etc/ld.so.conf.d"
