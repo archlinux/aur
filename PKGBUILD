@@ -2,16 +2,16 @@
 # Maintainer: Peter Strapp <peter at strapp.co.uk>
 
 pkgname=libindi_3rdparty
-pkgver=1.1.0
-pkgrel=3
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="3rd party drivers for INDI, a distributed control protocol designed to operate astronomical instrumentation"
 url="http://www.indilib.org/index.php?title=Main_Page"
 license=(LGPL2.1)
 arch=(i686 x86_64)
 depends=(libvorbis libusb openal libnova libjpeg libindi libgphoto2 libftdi-compat cfitsio dcraw)
 makedepends=(cmake boost)
-source=("http://www.indilib.org/jdownloads/Source/${pkgname}_${pkgver}.tar.gz")
-sha1sums=('dff30ef8fd4021a6bda6381c011e334dbb0b8c8d')
+source=("http://indilib.org/jdownloads/Source/${pkgname}_${pkgver}.tar.gz")
+sha1sums=('7348b96ae663d11ea877bdb9f181e3126e14eeb6')
 
 prepare() {
   mkdir -p build
