@@ -35,7 +35,7 @@ package() {
   cp -r firefox/ "$pkgdir/usr/lib/firefox"
   ln -s ../lib/firefox/firefox "$pkgdir/usr/bin/firefox"
 
-  install -Dm644 ../vendor.js "$pkgdir/usr/lib/firefox/browser/defaults/preferences/vendor.js"
+  install -Dm644 vendor.js "$pkgdir/usr/lib/firefox/browser/defaults/preferences/vendor.js"
 
   for i in 16 32 48; do
       install -Dm644 "$srcdir/firefox/browser/chrome/icons/default/default$i.png" \
