@@ -1,4 +1,5 @@
-# Maintainer: kfgz <kfgz at interia dot pl>
+# Maintainer: haagch <haagch@studi.informatik.uni-stuttgart.de>
+# Contributor: kfgz <kfgz at interia dot pl>
 # Contributor: 6xx
 # Contributor: csslayer
 
