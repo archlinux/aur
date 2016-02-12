@@ -1,0 +1,16 @@
+[Unit]
+Description=The Lounge IRC client
+After=network.target
+
+[Service]
+User=thelounge
+Group=thelounge
+Type=simple
+ExecStart=/usr/bin/lounge --home /etc/thelounge
+ProtectSystem=yes
+ProtectHome=yes
+NoNewPrivileges=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target

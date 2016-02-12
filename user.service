@@ -1,0 +1,9 @@
+[Unit]
+Description=The Lounge IRC client
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/lounge
+
+[Install]
+WantedBy=default.target
