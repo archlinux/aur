@@ -5,7 +5,7 @@
 
 pkgname=budgie-desktop
 pkgver=10.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple GTK3 desktop experience from Solus Project"
 arch=('i686' 'x86_64')
 url="http://solus-project.com/"
@@ -15,7 +15,7 @@ depends=('libwnck3>=3.14' 'gnome-menus>=3.10.1' 'gnome-settings-daemon' 'libpeas
 		 'mutter>=3.18' 'desktop-file-utils' 'libgee' 'gnome-themes-standard'
 		 'gtk3>=3.16' 'libpulse' 'upower' 'intltool' 'gnome-session>=3.18'
 		 'gnome-terminal' 'gnome-control-center' 'nautilus' 'libpulse>=2'
-		 'gnome-desktop>=3.18' 'upower>=0.9.20' 'polkit>=0.105')
+		 'gnome-desktop>=3.18' 'upower>=0.9.20' 'polkit>=0.105' 'gtk-doc')
 
 makedepends=('git' 'python2' 'vala' 'gobject-introspection>=1.44.0')
 
