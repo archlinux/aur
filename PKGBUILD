@@ -1,25 +1,23 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=vym-devel
-pkgver=2.3.24
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="A mindmapping tool"
 arch=('i686' 'x86_64')
 url="http://www.insilmaril.de/vym/"
 license=('GPL')
-depends=('qt4' 'unzip' 'zip')
-conflicts=('vym')
-options=('!emptydirs')
+depends=('qt5-svg' 'desktop-file-utils')
 install=$pkgname.install
-source=(http://downloads.sourceforge.net/sourceforge/vym/vym-$pkgver.tar.bz2
+source=(https://sourceforge.net/projects/vym/files/Development/vym-$pkgver.tar.bz2
         vym.desktop)
-sha256sums=('b719521b97cd1cf1ab881a46325519bd9c48191537eadac8d4251a08a0741e06'
+sha256sums=('55550549fcc8cc151ff6235a09bb8fc1412f0b598cc6f9072345058c5e12b9f3'
             'e299c69c213e7aac3f5b5d0ab088132b4ec7cb63a391f272e75ed64f049d541b')
 
 build() {
   cd "${srcdir}"/vym-$pkgver
 
-  qmake-qt4 PREFIX=/usr
+  qmake PREFIX=/usr/share
   make
 }
 
@@ -29,9 +27,14 @@ package() {
 # install files
   make INSTALL_ROOT="${pkgdir}" install
 
-# correct doc location
-  install -d "${pkgdir}"/usr/share/doc/vym
-  install -m644 doc/* "${pkgdir}"/usr/share/doc/vym
+# fix executable path
+  mv "${pkgdir}"/usr/share/bin "${pkgdir}"/usr/bin
+
+# install documentation
+  install -Dm644 "${srcdir}"/vym-$pkgver/doc/vym.1.gz \
+    "${pkgdir}"/usr/share/man/man1/vym.1.gz
+  install -Dm644 "${srcdir}"/vym-$pkgver/doc/vym.pdf \
+    "${pkgdir}"/usr/share/doc/$pkgname/vym.pdf
   rm -rf "${pkgdir}"/usr/share/doc/packages
 
 # .desktop and icon file
