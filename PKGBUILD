@@ -186,7 +186,7 @@ _opt_pagesize="Letter" # A4, Letter, Legal
 set -u
 pkgname='hylafaxplus'
 _pkgnick='hylafax'
-pkgver='5.5.7'
+pkgver='5.5.8'
 pkgrel='1'
 pkgdesc='Enterprise Fax Server'
 arch=('i686' 'x86_64')
@@ -219,7 +219,7 @@ source=("http://downloads.sourceforge.net/hylafax/${_pkgnick}-${pkgver}.tar.gz"
         'hfaxd.service'
         'faxgetty@.service'
         'sendfaxvsi-1.0.tgz')
-sha256sums=('b323f2191ea6a7c5ebfcb657b5a9a5faa94decfe82a36e5155b8f399ff4877a6'
+sha256sums=('e06a4e34f0be67aa742a0f5d30f311022ad3e2a1f5e4f9e6ac0c0b9d901ad266'
             'ad13d5171f5a8eb55a5773fc429dcef8418db90a8742cec18484534e86198da8'
             '7b481d783f3c18303acd7d650321313302401e780616dce1f80b71a210bb58cf'
             'cff7250310dd278554be61ca25539a9ee6da663e14562bdbc9914df4527ff14b'
