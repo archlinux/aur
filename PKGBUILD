@@ -4,7 +4,7 @@ _install_cron_file=
 
 pkgname=clamav-unofficial-sigs
 pkgver=4.9.2
-pkgrel=3
+pkgrel=4
 pkgdesc='ClamAV Unofficial Signatures Updater maintained by eXtremeSHOK.com'
 arch=('any')
 url='https://github.com/extremeshok/clamav-unofficial-sigs'
@@ -19,6 +19,7 @@ md5sums=('28e8aa5bc8618b577228d58e83f27814'
 sha256sums=('70e05f63add7e03d5af2dba6bcd31fda98646577798d99e6902e5f264c302e93'
             '6dcf94c34df7d5c321dd9ee7bedfd9262a6f32533d4f5786c1c0b6c4ebb7c7e4'
             '9a49e67a615d462917d605e5924bccfbe8c0e646e93d5cfc4faa2dd2d853c8d1')
+install='install'
 
 prepare() {
 	cd "$pkgname-$pkgver"
