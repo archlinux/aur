@@ -1,8 +1,8 @@
 # Maintainer: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=colorhug-client
-pkgver=0.2.7
-pkgrel=2
+pkgver=0.2.8
+pkgrel=1
 pkgdesc="Calibration client for the Hughski ColorHug device"
 arch=('i686' 'x86_64')
 url="http://www.hughski.com/"
@@ -16,7 +16,7 @@ provides=('colorhug-client')
 install=colorhug-client.install
 source=(http://people.freedesktop.org/~hughsient/releases/$pkgname-$pkgver.tar.xz
 $pkgname-$pkgver-man.patch)
-md5sums=('9304f47fd079a411fbc0294d67a139e4'
+md5sums=('7c73d5088e14556f09181115346448ac'
          '6b67bc461c3f48c3721a0a463ff7ad5b')
 
 prepare() {
