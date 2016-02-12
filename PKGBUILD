@@ -2,8 +2,9 @@
 # Contributor: Tom Swartz <tom@tswartz.net>
 
 pkgname=soapysdr-git
-pkgver=20151225
+pkgver=r333.ddbca72
 pkgrel=1
+epoch=2
 pkgdesc="Vendor and platform neutral SDR support library"
 arch=('any')
 url="https://github.com/pothosware/SoapySDR"
@@ -20,6 +21,13 @@ build() {
 	cmake .. -DCMAKE_BUILD_TYPE=Release
 	make -j4
 }
+
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 
 package() {
 	make -C "${srcdir}/${pkgname}/build" DESTDIR="${pkgdir}" install
