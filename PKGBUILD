@@ -3,12 +3,12 @@
 pkgname='webvirtmgr'
 pkgdesc='Web front-end for KVM virtual machines'
 pkgver=v4.8.9
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='https://www.webvirtmgr.net/'
 license=('Apache')
 depends=('libvirt' 'libvirt-python' 'qemu' 'dnsmasq' 'bridge-utils' 'ebtables' 'dmidecode' 'python2' 'supervisor'
-         'websockify')
+         'websockify' 'python2-django' 'python2-lockfile' 'python2-gunicorn' 'python2-django-auth-ldap')
 makedepends=('python2-pip')
 options=('!strip' '!emptydirs')
 install="${pkgname}.install"
