@@ -11,9 +11,9 @@ pkgdesc="A web based interface used to manage mailboxes, virtual domains and ali
 arch=('any')
 license=('GPL')
 url="https://git.pietma.com/pietma/${pkgname}"
-depends=('php')
-optdepends=('mysql'
-            'zarafa-server')
+depends=('php'
+	 'mysql'
+	 'zarafa-server')
 source=("postfixadmin-${_postfixadminver}.tar.gz::http://downloads.sourceforge.net/postfixadmin/postfixadmin-${_postfixadminver}.tar.gz"
 	"zarafa-postfixadmin-${pkgver}::git+https://git.pietma.com/pietma/${pkgname}.git#tag=v${pkgver}")
 md5sums=('d9a0e19bdb3241411cac8446d511fdb4'
