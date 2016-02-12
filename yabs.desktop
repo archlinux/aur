@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Icon=yabs
+Exec=yabs %f
+StartupNotify=true
+StartupWMClass=B-A-A-B
+Name=Yabs
+Categories=Application;Office;Java;
