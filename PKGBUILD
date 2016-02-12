@@ -12,6 +12,7 @@ url="http://pathscale.com/ekopath-compiler-suite"
 arch=('x86_64')
 license=('GPL')
 options=(!strip)
+makedepends=(python)
 source=(checkver.py)
 
 pkgver() {

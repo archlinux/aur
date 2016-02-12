@@ -5,6 +5,7 @@ pkgbase = ekopath-bin
 	url = http://pathscale.com/ekopath-compiler-suite
 	arch = x86_64
 	license = GPL
+	makedepends = python
 	options = !strip
 	source = checkver.py
 	md5sums = dee1655664ef4a5fe3d05b0b5aff00ac
