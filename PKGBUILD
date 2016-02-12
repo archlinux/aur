@@ -1,7 +1,7 @@
 # Maintainer: Sergio Conde <skgsergio@gmail.com>
 
 pkgname=gr-air-modes-git
-pkgver=20150903
+pkgver=r376.514414f
 pkgrel=1
 pkgdesc="A software-defined radio receiver for Mode S transponder signals, including ADS-B reports from equipped aircraft."
 arch=('i686' 'x86_64')
@@ -21,19 +21,19 @@ sha256sums=('SKIP'
            '346532b617e5557188a3493a5be2bd08ff29823eb11cc207336a0e32f9ac7344')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  git show -s --format="%cd" --date=short HEAD | tr -d '-'
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   # Fix pyqt4 detection, this patch should be deleted when this pull request
   # is accepted https://github.com/bistromath/gr-air-modes/pull/67
   patch -Np1 -i "../fix-pyqtconfig-missing-for-new-pyqt4.patch"
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   mkdir -p build
   cd build
 
@@ -50,7 +50,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname/build/"
+  cd "$pkgname/build/"
   make DESTDIR="$pkgdir" install
 
   # Fix shebangs
