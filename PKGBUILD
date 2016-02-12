@@ -8,7 +8,8 @@ _srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
 _desc="Raspberry Pi mainline kernel"
 pkgver=4.1.17
-pkgrel=2
+pkgrel=4
+epoch=1
 bfqver=v7r8
 arch=('armv6h' 'armv7h')
 url="http://www.kernel.org/"
@@ -16,45 +17,19 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git')
 options=('!strip')
 source=("https://github.com/raspberrypi/linux/archive/${_commit}.tar.gz"
-#        "git+https://github.com/sfjro/aufs4-standalone.git#branch=aufs${pkgver%.*}"
-#        "ftp://teambelgium.net/bfq/patches/${pkgver%.*}.0-${bfqver}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${bfqver}-${pkgver%.*}.patch"
-#        "ftp://teambelgium.net/bfq/patches/${pkgver%.*}.0-${bfqver}/0002-block-introduce-the-BFQ-${bfqver}-I-O-sched-for-${pkgver%.*}.patch"
-#        "ftp://teambelgium.net/bfq/patches/${pkgver%.*}.0-${bfqver}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${bfqver}-for-${pkgver%.*}.0.patch"
         'config.txt'
-        'cmdline.txt'
-        'config.v6'
-        'config.v7')
+        'cmdline.txt')
 md5sums=('0767555c2df6efc19e6b905ae2deccf1'
-#         'SKIP'
-#         '74bf103542cbdee0363819309adb97a2'
-#         'f09baae3c7add4ed9bedde22ae3efe19'
-#         'bd8cc19a31d1cf8aeeaf9245057c4f9b'
          '9a3c82da627b317ec79c37fd6afba569'
-         '60bc3624123c183305677097bcd56212'
-         'db8c931027f6814822ad63424699524c'
-         'fb6a30b7a10b998703161a459ffde256')
+         '60bc3624123c183305677097bcd56212')
 
 prepare() {
   cd "${srcdir}/${_srcname}"
-#  msg2 "AUFS patches"
-#  cp -ru "${srcdir}/aufs4-standalone/Documentation" .
-#  cp -ru "${srcdir}/aufs4-standalone/fs" .
-#  cp -ru "${srcdir}/aufs4-standalone/include/uapi/linux/aufs_type.h" ./include/linux
-#  cp -ru "${srcdir}/aufs4-standalone/include/uapi/linux/aufs_type.h" ./include/uapi/linux
-
-#  patch -Np1 -i ../aufs4-standalone/aufs4-kbuild.patch
-#  patch -Np1 -i ../aufs4-standalone/aufs4-base.patch
-#  patch -Np1 -i ../aufs4-standalone/aufs4-mmap.patch
-#  patch -Np1 -i ../aufs4-standalone/aufs4-standalone.patch
-
-#  msg2 "Add BFQ patches"
-#  patch -Np1 -i "${srcdir}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${bfqver}-${pkgver%.*}.patch"
-#  patch -Np1 -i "${srcdir}/0002-block-introduce-the-BFQ-${bfqver}-I-O-sched-for-${pkgver%.*}.patch"
-#  patch -Np1 -i "${srcdir}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${bfqver}-for-${pkgver%.*}.0.patch"
 
   msg "Prepare to build"
-  [[ $CARCH == "armv6h" ]] && cat "${srcdir}/config.v6" > ./.config
-  [[ $CARCH == "armv7h" ]] && cat "${srcdir}/config.v7" > ./.config
+  make bcm2709_defconfig
+  #[[ $CARCH == "armv6h" ]] && cat "${srcdir}/config.v6" > ./.config
+  #[[ $CARCH == "armv7h" ]] && cat "${srcdir}/config.v7" > ./.config
 
   # add pkgrel to extraversion
   sed -ri "s|^(EXTRAVERSION =)(.*)|\1 \2-${pkgrel}|" Makefile
@@ -67,30 +42,6 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_srcname}"
-
-  # get kernel version
-  #make prepare
-
-  # load configuration
-  # Configure the kernel. Replace the line below with one of your choice.
-  #make menuconfig # CLI menu for configuration
-  #make nconfig # new CLI menu for configuration
-  #make xconfig # X-based configuration
-  #make oldconfig # using old config from previous kernel version
-  #make bcmrpi_defconfig # using RPi defconfig
-  # ... or manually edit .config
-
-  # Copy back our configuration (use with new kernel version)
-  #cp ./.config ../${pkgver}.config
-
-  ####################
-  # stop here
-  # this is useful to configure the kernel
-  #msg "Stopping build"
-  #return 1
-  ####################
-
-  #yes "" | make config
 
   msg "Building!"
   make ${MAKEFLAGS} zImage modules dtbs
