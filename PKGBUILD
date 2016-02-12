@@ -2,7 +2,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ethereum-git
-pkgver=1.0rc2.r117.g58d2a77
+pkgver=1.0rc2.r121.g1e9f549
 pkgrel=1
 pkgdesc="Ethereum decentralised consensus-based deterministic transaction resolution platform (C++ toolkit, full webthree-umbrella, latest unstable git version)"
 arch=('i686' 'x86_64')
