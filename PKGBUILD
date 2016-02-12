@@ -1,31 +1,18 @@
-# Maintainer: Don Harper <duck at duckland dot org>
-# Contributor: Kaiting Chen <kaitocracy at gmail.com>
-# Contributor: Pete Morris <pete dot morris at gmail>
+pkgname=chronicle
+pkgver=0.1
+pkgrel=1
+pkgdesc="A command-line journal with optional encryption"
+arch=("i686" "x86_64")
+url="https://github.com/NorfairKing/$pkgname"
+license=('GPL')
+provides=("$pkgname")
+optdepends=("tar" "openssl")
+source=("https://github.com/NorfairKing/chronicle/archive/v0.1.tar.gz")
+md5sums=('f37ccab38da6649df50e0bf3f0375c42')
 
-pkgname='chronicle'
-pkgver='4.6'
-pkgrel='1'
-pkgdesc='A simple blog compiler writte in Perl'
-arch=('any')
-url='http://www.steve.org.uk/Software/chronicle/'
-license=('GPL' 'PerlArtistic')
-depends=('perl-timedate'
-  'perl-html-template')
 
-md5sums=('0831867886591c0a747ec1b3139d7e17')
-source=("$url/$pkgname-$pkgver.tar.gz")
-
-build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
-  sed -i "s|^prefix=$|prefix=$pkgdir|" Makefile
-  sed -i 's|/usr/local/bin|/usr/bin|g' Makefile
-
-  make DESTDIR=$pkgdir install
-}
-
-packege() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  install -Dm644 cgi-bin/comments.cgi \
-    ${pkgdir}/usr/share/${pkgname}/comments.cgi
+package() {
+  local dir="$pkgdir/usr/bin"
+  mkdir -p $dir
+  cp $pkgname-$pkgver/chronicle.sh "$dir/chronicle"
 }
