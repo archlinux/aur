@@ -5,11 +5,11 @@ pkgname=('python-hgapi'
 	 'python2-hgapi')
 pkgdesc="Python API to Mercurial using the command-line interface"
 pkgver=1.7.3
-pkgrel=1
+pkgrel=2
 url="https://bitbucket.org/haard/hgapi"
 license=('MIT')
 arch=('any')
-source="https://bitbucket.org/haard/hgapi/get/${pkgver}.tar.gz"
+source=("https://bitbucket.org/haard/hgapi/get/${pkgver}.tar.gz")
 md5sums=('0d0aeb97d0c8b5cc724fc36dff84148d')
 
 package_python-hgapi(){
