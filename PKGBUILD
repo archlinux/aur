@@ -3,7 +3,7 @@
 _gitname=attract
 _gitbranch=master
 pkgname=${_gitname}-git
-pkgver=1.6.2.48.7b99b99
+pkgver=1.6.2.49.6c3b9fc
 pkgrel=1
 pkgdesc="A graphical front-end for command line emulators that hides the underlying operating system and is intended to be controlled with a joystick or gamepad."
 arch=('i686' 'x86_64')
