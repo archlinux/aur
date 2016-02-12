@@ -3,12 +3,12 @@
 
 pkgname="nautilus-pushbullet"
 pkgver="0.3.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="An extension for Nautilus to send files with pushbullet"
 arch=('any')
 url="http://www.atareao.es/tag/nautilus-pushbullet/"
 license=('GPL-3.0+')
-depends=('python2')
+depends=('python2' 'pushbullet-commons')
 makedepends=('python2-distutils-extra')
 provides=("${pkgname}")
 source=("https://launchpad.net/~atareao/+archive/ubuntu/atareao/+files/${pkgname}_${pkgver}-0extras14.04.0.tar.gz")
