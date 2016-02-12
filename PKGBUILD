@@ -61,7 +61,7 @@ package() {
   msg2 "Installing to /opt..."
   mv * "$pkgdir"/opt/vuze/
 
-  msg2 "Fixing paths"
+  msg2 "Fixing paths..."
   sed 's|#PROGRAM_DIR=.*|PROGRAM_DIR="/opt/vuze"|' \
       -i "$pkgdir"/usr/bin/vuze \
 
