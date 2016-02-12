@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Leclercq <nicolas.private@gmail.com>
 
 pkgname='telegraf'
-pkgver='0.10.1'
+pkgver='0.10.2'
 pkgrel='1'
 epoch=
 pkgdesc='Server-level metric gathering agent for InfluxDB'
@@ -19,10 +19,10 @@ replaces=()
 backup=('etc/telegraf/telegraf.conf')
 options=()
 install="$pkgname.install"
-source="$pkgname.install"
+source=("$pkgname.install")
 changelog=
 noextract=()
-md5sums='SKIP'
+md5sums=('SKIP')
 
 prepare()
 {
@@ -33,10 +33,10 @@ prepare()
     rm -rf $GOBIN;
   fi;
 
-  go get github.com/influxdata/telegraf
+  go get -v github.com/influxdata/telegraf
   cd $TELEGRAFPATCH
   git checkout $pkgver
-  go get github.com/sparrc/gdm
+  go get -v github.com/sparrc/gdm
   $GOBIN/gdm restore
 }
 build()
