@@ -1,6 +1,6 @@
 # Maintainer: Tarn Burton <twburton at gmail dot com>
 pkgname='pioneer'
-pkgver=20160205
+pkgver=20160211
 pkgrel=1
 pkgdesc="A game of lonely space adventure"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ conflicts=('pioneer-bin' 'pioneer-git')
 depends=('libsigc++' 'sdl2_image' 'freetype2' 'libvorbis' 'assimp' 'hicolor-icon-theme' 'xdg-utils')
 makedepends=('gcc' 'git' 'automake' 'pkg-config' 'naturaldocs')
 source=("http://github.com/pioneerspacesim/pioneer/archive/$pkgver.zip" 'pioneer.desktop')
-md5sums=('e0e560c0ca91938a655e6ea7579d62df'
+md5sums=('385ebb38da1dda071382b34a6c335fdc'
          'f2301fe8850926b2d9bd89e3ab1158a8')
 install=pioneer.install
 
