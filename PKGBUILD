@@ -19,7 +19,8 @@ md5sums_x86_64=('b2c09aa1a40f1f385931f94779ddbb3e')
 
 package() {
   # Extract archive
-  bsdtar -xf data.tar.gz -C "$pkgdir"
+  msg "Extracting the data.tar.gz..."
+  bsdtar -xf data.tar.gz -C "$pkgdir/"
 
   # Main install
   msg2 "Moving files..."
@@ -31,6 +32,7 @@ package() {
   [[ $CARCH = i686 ]] && _arch=i386
 
   ## File manager plugins
+  msg2 "Installing file manager plugins..."
   # Dolphin
   install -Dm755 "$pkgdir"/opt/$pkgname/ext/bcompare_ext_kde.$_arch.so \
            "$pkgdir"/usr/lib/kde4/bcompare_ext_kde.so
