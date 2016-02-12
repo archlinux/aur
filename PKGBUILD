@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://zynaddsubfx.sourceforge.net"
 license=('GPL')
 depends=('fftw' 'fltk' 'lash' 'liblo' 'portaudio' 'mxml' 'ntk-git')
-makedepends=('git' 'cmake' 'dssi' 'gendesk')
+makedepends=('git' 'cmake' 'dssi' 'gendesk' 'setconf')
 optdepends=('dssi: dssi plugin')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
@@ -50,7 +50,7 @@ build() {
   [ -f zynaddsubfx.desktop ] && rm zynaddsubfx.desktop
   gendesk $startdir/PKGBUILD
   # Match camel case of included .desktop files
-  sed -i 's:Name=Zynaddsubfx:Name=ZynAddSubFX:' zynaddsubfx.desktop
+  setconf "${pkgname%-*}.desktop" Name "ZynAddSubFX"
 
 
   cd "${srcdir}/build"
