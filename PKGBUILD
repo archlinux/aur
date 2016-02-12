@@ -4,13 +4,13 @@
 # Original Maintainer: Anders Lund <anders at alweb dot dk>
 
 pkgname=opencpn-git
-pkgver=20160209.39c0b7c
+pkgver=20160211.eab78f4
 pkgrel=1
 pkgdesc="Open Source Chart Plotting and Marine Navigation"
 arch=('i686' 'x86_64')
 license=("GPL2")
 depends=('wxgtk' 'gpsd' 'portaudio' 'tinyxml' 'hicolor-icon-theme')
-makedepends=('cmake' 'clang')
+makedepends=('cmake' 'clang' 'git')
 conflicts=("opencpn")
 url="http://opencpn.org"
 install=opencpn.install
