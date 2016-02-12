@@ -2,8 +2,8 @@
 
 pkgname="libreoffice-fresh-kalahari"
 pkgver=0.4.6
-pkgrel=1
-_lover=5.0
+pkgrel=2
+_lover=5.1
 pkgdesc="Kalahari icon themes for libreoffice-fresh-rpm"
 arch=('any')
 url="https://github.com/FadeMind/${pkgname}"
