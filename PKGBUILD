@@ -2,7 +2,7 @@
 
 pkgname=numix-folders-git
 pkgver=r398.9fb2e78
-pkgrel=1
+pkgrel=2
 pkgdesc="Alternate folders for use with the Numix base icon theme."
 arch=('any')
 url="https://github.com/numixproject/numix-folders"
@@ -24,6 +24,7 @@ pkgver() {
 prepare() {
   cd numix-folders
   rm -rf .git LICENSE README.md
+  echo "TryExec=gksudo" >> numix-folders.desktop
 }
 
 package() {

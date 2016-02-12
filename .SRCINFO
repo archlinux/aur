@@ -1,7 +1,7 @@
 pkgbase = numix-folders-git
 	pkgdesc = Alternate folders for use with the Numix base icon theme.
 	pkgver = r398.9fb2e78
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/numixproject/numix-folders
 	install = numix-folders.install
 	arch = any
