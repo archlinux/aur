@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Exec=u-gotme
+Icon=/usr/share/icons/hicolor/48x48/apps/u-gotme48.png
+Terminal=false
+Name=u-gotme
+Comment=Download and upload tracks, routes and waypoints to the I-gotU series of GPS loggers
+GenericName=u-gotme
+GenericName[fr]=u-gotme
+X-KDE-StartupNotify=true
+Categories=Science;Maps;Geography;Education;
