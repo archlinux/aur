@@ -1,6 +1,6 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname=public_suffix_list
-pkgver=20160127
+pkgver=20160212
 pkgrel=1
 pkgdesc='List of "public suffixes" under which Internet users can (or historically could) directly register names'
 arch=('any')
