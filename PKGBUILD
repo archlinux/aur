@@ -1,20 +1,20 @@
-# Contributor: grimi <grimi at poczta dot fm>
+# Maintainer: goetzc
+# Contributor: grimi
 
 pkgname=xcursor-breeze
-pkgver=20150109
+epoch=1
+pkgver=1.0
 pkgrel=1
-pkgdesc="Breeze standart cursor theme (KDE Plasma 2)"
+pkgdesc="Breeze cursor theme (KDE Plasma 5)"
 arch=('any')
-url="https://kver.wordpress.com/2015/01/09/curses-i-mean-cursors/"
+url="http://gnome-look.org/content/show.php/Breeze+Serie?content=169316"
 license=('GPL')
 depends=('libxcursor')
 makedepends=('unzip')
-source=("${pkgname}-${pkgver}.zip::https://share.kde.org/public.php?service=files&t=1525897da49fbebacc28e5b6b1836382&download")
-md5sums=('edbd19776aa3cbc4c0241fa1728c023f')
+source=("Breeze-Default-${pkgver}.tgz::https://copy.com/FzUgqqvKfo3mLpeB/Breeze-Default.tgz?download=1")
+md5sums=('5563f9d94c1896d606db260f0e809f76')
 
 package() {
-  find Breeze/ -type f -not -name "*~" \
-      -exec install -Dm644 "{}" "${pkgdir}/usr/share/icons/{}" \;
-  find Breeze/ -type l \
-      -exec cp -d "{}" "${pkgdir}/usr/share/icons/{}" \;
+  install -dm755 "$pkgdir"/usr/share/icons/
+  cp -r "$srcdir"/Breeze-Default/ "$pkgdir"/usr/share/icons/Breeze-Default
 }
