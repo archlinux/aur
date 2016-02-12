@@ -1,0 +1,19 @@
+# arg 1: the new package version
+# arg 2: the old package version
+post_install() {
+  cat << EOF
+
+  NOTE ZSH Users:
+  If you want to use the gibo completion, you have to source the script
+  from /usr/share/zsh/site-functions/_gibo or add it to your ~/.zshrc
+
+EOF
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  echo "Remember to remove the ${HOME}/.gitignore-boilerplates directory."
+}
