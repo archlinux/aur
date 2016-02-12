@@ -74,7 +74,6 @@ package_zarafa-postfixadmin() {
 }
 
 package_zarafa-postfixadmin-worker() {
-
     # ZARAF-POSTFIXADMIN-WORKER
     ###
     _destdir=${pkgdir}/usr/share/${pkgname}
@@ -90,6 +89,4 @@ package_zarafa-postfixadmin-worker() {
     cp zarafa-postfixadmin-worker ${_destdir}
 
     cp systemd/* ${_destdir_systemd}
-
-    # TODO installskript for include!
 }
