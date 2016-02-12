@@ -1,10 +1,11 @@
 # Maintainer: Carlos Silva <r3pek@r3pek.org>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Contributor: Josh Klar <j@iv597.com>
+# Contributor: Stefano <capitani74@gmail.com>
 
 pkgname=budgie-desktop
 pkgver=10.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple GTK3 desktop experience from Solus Project"
 arch=('i686' 'x86_64')
 url="http://solus-project.com/"
@@ -25,6 +26,7 @@ sha256sums=('2556a75220dfde4fd75e80a43a2d07575cea887ad0d4e169acb48e135707beac')
 build() {
 	cd "$srcdir"/$pkgname-$pkgver
 	intltoolize --force
+	gtkdocize || exit 1
 	autoreconf --force --install
 	./configure --prefix=/usr --sysconfdir=/etc
 	make
