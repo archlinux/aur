@@ -1,7 +1,7 @@
 # Maintainer: Aaron Bishop <erroneous at gmail dot com>
 pkgname=brewpi-script
 pkgver=0.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="The BrewPi Python script logs the data, monitors the temperature profile and communicates with the BrewPi slave and the web server"
 arch=('any')
 url="http://www.brewpi.com/"
