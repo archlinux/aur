@@ -6,7 +6,7 @@ pkgbase=papirus-git
 pkgname=('papirus-git' 'papirus-plasma-theme-git' 'papirus-icon-theme-git' 'papirus-color-scheme-git' 'papirus-gtk-theme-git' 'papirus-aurorae-theme-git' 'papirus-qtcurve-theme-git'
          'papirus-konsole-colorscheme-git' 'papirus-yakuake-theme-git' 'bomi-skin-papirus-git' 'libreoffice-papirus-theme-git' 'papirus-kmail-theme-git' 'papirus-vlc-theme-git' 
          'papirus-k3b-theme-git' 'papirus-smplayer-theme-git')
-pkgver=r456.acae11c
+pkgver=r468.80235f4
 pkgrel=1
 pkgdesc="Look-and-feel package for modified and adaptive Paper theme for KDE"
 arch=('any')
@@ -160,7 +160,7 @@ package_libreoffice-papirus-theme-git() {
     optdepends=('libreoffice' 'libreoffice-fresh-rpm')
     conflicts=('libreoffice-style-papirus' 'libreoffice-papirus-theme' 'libreoffice-fresh-rpm-papirus-theme')
     install -Dm644 -t "${pkgdir}/usr/lib/libreoffice/share/config/" ${srcdir}/${_pkgname}/libreoffice-icons/*.zip
-    install -Dm644 -t "${pkgdir}/opt/libreoffice5.0/share/config/"  ${srcdir}/${_pkgname}/libreoffice-icons/*.zip
+    install -Dm644 -t "${pkgdir}/opt/libreoffice5.1/share/config/"  ${srcdir}/${_pkgname}/libreoffice-icons/*.zip
     find "${pkgdir}" -type f -exec chmod 644 {} +
     find "${pkgdir}" -type d -exec chmod 755 {} +
 }
