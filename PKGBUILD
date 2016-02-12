@@ -1,5 +1,5 @@
 # $Id$
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
@@ -13,12 +13,13 @@ epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
 arch=('i686' 'x86_64' 'armv7h')
 url='http://ffmpeg.org/'
-license=('GPL3')
+license=('GPL3') #enabling libfdk_aac makes ffmpeg incompatible with the GPL!
 depends=('bzip2' 'fontconfig' 'fribidi' 'gnutls' 'gsm' 'lame' 'libass'
          'libbluray' 'libmodplug' 'libtheora' 'libwebp' 'opencore-amr'
          'openjpeg' 'opus' 'schroedinger' 'speex' 'v4l-utils' 'xvidcore' 'zlib'
          'libvorbis.so' 'libvorbisenc.so' 'libvpx.so' 'libx264.so' 'libx265.so'
          'rtmpdump')
+optdepends=('libdcadec.so' 'libvidstab.so' 'libfdk-aac')
 makedepends=('hardening-wrapper' 'yasm')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
@@ -65,7 +66,11 @@ build() {
     --enable-shared \
     --enable-version3 \
     --enable-librtmp \
-    --enable-runtime-cpudetect
+    --enable-runtime-cpudetect #\
+    #--enable-libdcadec \
+    #--enable-libvidstab \
+    #--enable-libfdk_aac \
+    #--enable-nonfree
 
   make
   make doc/ff{mpeg,play,server}.1
