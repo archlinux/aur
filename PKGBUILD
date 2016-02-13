@@ -8,7 +8,7 @@ pkgdesc="qLiveStreamer is a small Qt/C++ frontend for Livestreamer, inspired by 
 arch=('i686' 'x86_64')
 url="https://github.com/Hyperz/qLiveStreamer"
 license=('GPL2')
-depends=('qt5' 'livestreamer')
+depends=('qt5-base' 'livestreamer')
 makedepends=('git')
 source=('git+https://github.com/Hyperz/qLiveStreamer.git')
 # Because the sources are not static, skip Git checksum:
