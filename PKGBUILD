@@ -1,7 +1,7 @@
 # Maintainer: Rick Kerkhof <rick.2889@gmail.com>
 pkgname=soundnode-app-bin
 pkgver=0.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Soundcloud client for the desktop"
 arch=('x86_64' 'i686')
 url="http://www.soundnodeapp.com/"
@@ -9,6 +9,8 @@ license=('GPL3')
 
 # Required, otherwise it won't run.
 options=('!strip')
+
+depends=('gconf')
 
 # I couldn't figure out how to build it properly and the website has no per-release
 # archives. The SHA256sums will fail if it updates; that should be an indication that
@@ -35,7 +37,7 @@ package() {
 
         # We're creating a broken link here. It'll be fixed when all files are in place :)
         ln -s /opt/soundnode-app-bin/Soundnode-App "$pkgdir"/usr/bin/soundnode
-    
+
         rm "$srcdir"/Soundnode-App.zip
         rm "$srcdir"/soundnode-app.desktop
 	cp -Lr "$srcdir" "$pkgdir"/opt/"$pkgname"
