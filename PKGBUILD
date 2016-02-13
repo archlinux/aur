@@ -2,7 +2,7 @@
 _pkgname=cubway
 pkgname=$_pkgname-git
 pkgver=r122.b689803
-pkgrel=1
+pkgrel=2
 pkgdesc='WebApp container implemented by QtWebkit, which provides some JavaScript API.'
 arch=('i686' 'x86_64')
 url='https://github.com/Icenowy/Cubway'
@@ -29,8 +29,8 @@ build() {
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-	mkdir -p "${pkgdir}/opt/Subway/Cubway/Modules/"
-	mkdir "${pkgdir}/opt/Subway/Cubway/Modules/Xdg"
+	install -m755 -d "${pkgdir}/opt/Subway/Cubway/Modules/"
+	install -m755 -d "${pkgdir}/opt/Subway/Cubway/Modules/Xdg"
 	install -m755 build/cubway "${pkgdir}/opt/Subway/Cubway/"
 	install -m644 build_xdg/libXdg.so "${pkgdir}/opt/Subway/Cubway/Modules/Xdg/"
 	cd "${srcdir}"
