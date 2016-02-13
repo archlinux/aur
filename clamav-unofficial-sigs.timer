@@ -1,0 +1,8 @@
+[Unit]
+Description=clamav-unofficial-sigs third-party signature databases updater
+
+[Timer]
+OnCalendar=*:45
+
+[Install]
+WantedBy=timers.target
