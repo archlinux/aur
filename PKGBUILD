@@ -2,9 +2,8 @@
 # Maintainer: Patryk Kowalczyk <patryk at kowalczyk dot ws>
 pkgname=qemu-spice
 _pkgname=qemu
-pkgver=2.4.1
+pkgver=2.5.0
 pkgrel=1
-#rc=-rc3
 pkgdesc="Latest stable QEMU with KVM spice usbredir virtfs smartcard seccomp iscsi tpm glusterfs fdt and RDMA live migration"
 arch=(i686 x86_64 armv7h)
 license=('GPL2' 'LGPL2.1')
@@ -39,8 +38,8 @@ build()
 		--enable-sdl \
 		--enable-linux-aio \
 		--enable-virtfs \
-		--enable-smartcard-nss \
 		--enable-libiscsi \
+        --enable-smartcard \
 		--enable-libssh2 \
 		--enable-tpm \
 		--enable-glusterfs \
@@ -108,5 +107,5 @@ fi
 	rm "${pkgdir}/usr/share/qemu/vgabios-vmware.bin"
 	rmdir "${pkgdir}/var/run"
 }
-md5sums=('a895e93ec1dafc34bc64ed676f0d55a6'
+md5sums=('f469f2330bbe76e3e39db10e9ac4f8db'
          'b316a066d2f1bb57d8f5b7ea1d0d1caf')
