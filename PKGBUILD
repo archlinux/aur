@@ -3,7 +3,7 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
 
 pkgname=nvidia-pae
-pkgver=361.18
+pkgver=361.28
 _extramodules=extramodules-4.4-pae
 pkgrel=1
 pkgdesc="NVIDIA drivers for linux-pae"
@@ -18,7 +18,7 @@ options=(!strip)
 
 source=("nv-drm.patch" "ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 md5sums=('2365f1405f0c7bbb8f8cd7ebd5e4e301'
-         'ade4f7d0a5631ff492088671bc303a0a')
+         'd4fc7fcf1204a46f15733d7cc2711ad2')
 _pkg="NVIDIA-Linux-x86-${pkgver}"
 
 prepare() {
