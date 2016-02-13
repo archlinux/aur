@@ -19,7 +19,9 @@ depends=('python' 'python-pyqt5' 'phonon'
         )
 optdepends=('libreoffice-fresh: display impress presentations'
             'vlc: play multimedia'
-            'mupdf: display pdfs')
+            'mupdf: display pdfs'
+            'python-mysql-connector: Use a mysql/mariadb database'
+            'python-psycopg2: Use a postgresql database')
 install=openlp.install
 source=('bzr+http://bazaar.launchpad.net/~openlp-core/openlp/trunk/' 'openlp.sh')
 sha256sums=('SKIP'
