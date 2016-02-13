@@ -5,8 +5,8 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-ice       # Build kernel with a different name
 _srcname=linux-4.4
-pkgver=4.4.1
-pkgrel=1
+pkgver=4.4
+pkgrel=3
 _toipatch=tuxonice-for-linux-head-4.4.0-rc7-2016-01-01.patch
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -15,8 +15,8 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
@@ -25,20 +25,20 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch'
 	'0001-sdhci-revert.patch'
 	'tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch'
+	'CVE-2016-0728.patch'
         "http://tuxonice.net/downloads/all/${_toipatch}.bz2"
 )
 
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            'c0218043e61da3921cd14579ae4a8774a6fdad91667a9fdb851d0a35f62edb48'
-            'SKIP'
-            '8de8cda5ddbbc32e3cf5dd11f1b3a52a67d2b54e33c86b966261ce9c0fbf5717'
-            'd05c3cd44e379331ceb41a2a53c94539c35e5d306e4fe723a3f454ec8071fd65'
+            '07bc47ccb7b4830c8a76d1a43097b4f860af485beab9951f3bf73784a3ba02ef'
+            'ec4ae405cd91c83b9ab41414957e8a4c9c4c23f839273d653ea55a7fc701e75c'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '8c270194a0ab5deea628880f42443dff0932d445f1aa6aec6a295924a18b7643'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
             'ab57037ecee0a425c612babdff47c831378bca0bff063a1308599989a350226d'
+            '03bed5b1c6ef34a917e218a46d38cd1347c5ab5693131996113c6cad275dc4e9'
             'e68d737a78c9f73b2e5fd1b2ce4344a9085a6461415b6ed18217e6ebc25bd671')
 validpgpkeys=(
             'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -51,7 +51,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  #patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -64,6 +64,9 @@ prepare() {
   # fixes #47805 kernel panics on platform modules
   # https://bugzilla.kernel.org/show_bug.cgi?id=110751
   patch -Np1 -i "${srcdir}/tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch"
+
+  # fixes #47820 CVE-2016-0728.patch
+  patch -Np1 -i "${srcdir}/CVE-2016-0728.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream

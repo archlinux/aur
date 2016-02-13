@@ -1,7 +1,7 @@
 pkgbase = linux-ice
 	pkgdesc = The Linux-ice kernel and modules
-	pkgver = 4.4.1
-	pkgrel = 1
+	pkgver = 4.4
+	pkgrel = 3
 	url = http://www.kernel.org/
 	arch = i686
 	arch = x86_64
@@ -14,8 +14,6 @@ pkgbase = linux-ice
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.4.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.4.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.4.1.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.4.1.sign
 	source = config
 	source = config.x86_64
 	source = linux.preset
@@ -23,18 +21,18 @@ pkgbase = linux-ice
 	source = change-default-console-loglevel.patch
 	source = 0001-sdhci-revert.patch
 	source = tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch
+	source = CVE-2016-0728.patch
 	source = http://tuxonice.net/downloads/all/tuxonice-for-linux-head-4.4.0-rc7-2016-01-01.patch.bz2
 	sha256sums = 401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2
 	sha256sums = SKIP
-	sha256sums = c0218043e61da3921cd14579ae4a8774a6fdad91667a9fdb851d0a35f62edb48
-	sha256sums = SKIP
-	sha256sums = 8de8cda5ddbbc32e3cf5dd11f1b3a52a67d2b54e33c86b966261ce9c0fbf5717
-	sha256sums = d05c3cd44e379331ceb41a2a53c94539c35e5d306e4fe723a3f454ec8071fd65
+	sha256sums = 07bc47ccb7b4830c8a76d1a43097b4f860af485beab9951f3bf73784a3ba02ef
+	sha256sums = ec4ae405cd91c83b9ab41414957e8a4c9c4c23f839273d653ea55a7fc701e75c
 	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
 	sha256sums = 8c270194a0ab5deea628880f42443dff0932d445f1aa6aec6a295924a18b7643
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
 	sha256sums = 5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375
 	sha256sums = ab57037ecee0a425c612babdff47c831378bca0bff063a1308599989a350226d
+	sha256sums = 03bed5b1c6ef34a917e218a46d38cd1347c5ab5693131996113c6cad275dc4e9
 	sha256sums = e68d737a78c9f73b2e5fd1b2ce4344a9085a6461415b6ed18217e6ebc25bd671
 
 pkgname = linux-ice
@@ -45,23 +43,23 @@ pkgname = linux-ice
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-ice=4.4.1
-	provides = linux=4.4.1
+	provides = kernel26-ice=4.4
+	provides = linux=4.4
 	conflicts = kernel26-ice
 	replaces = kernel26-ice
 	backup = etc/mkinitcpio.d/linux-ice.preset
 
 pkgname = linux-ice-headers
 	pkgdesc = Header files and scripts for building modules for Linux-ice kernel
-	provides = kernel26-ice-headers=4.4.1
-	provides = linux-headers=4.4.1
+	provides = kernel26-ice-headers=4.4
+	provides = linux-headers=4.4
 	conflicts = kernel26-ice-headers
 	replaces = kernel26-ice-headers
 
 pkgname = linux-ice-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-ice kernel
-	provides = kernel26-ice-docs=4.4.1
-	provides = linux-docs=4.4.1
+	provides = kernel26-ice-docs=4.4
+	provides = linux-docs=4.4
 	conflicts = kernel26-ice-docs
 	replaces = kernel26-ice-docs
 
