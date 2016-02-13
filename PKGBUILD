@@ -2,7 +2,7 @@
 
 pkgname=airvpn-portable
 pkgver=2.10.3
-pkgrel=4
+pkgrel=5
 pkgdesc='NO MONO REQUIRED-AirVPN client "Eddie" based on OpenVPN, portable version.'
 arch=('i686' 'x86_64')
 url=https://airvpn.org/linux/
