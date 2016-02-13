@@ -3,14 +3,14 @@
 
 pkgname=mopidy-tunein
 _pypiname=Mopidy-TuneIn
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Mopidy extension for playing music from TuneIn"
 arch=('any')
 url="http://www.mopidy.com"
 license=('APACHE')
 depends=(
-	'mopidy>=0.18'
+	'mopidy>=1.1'
 	'python2-setuptools'
 	'python2-requests'
 )
