@@ -1,6 +1,6 @@
 # Maintainer: aggraef@gmail.com
 pkgname=guidoar-git
-pkgver=351.7e91eda
+pkgver=353.9d4997e
 pkgrel=1
 pkgdesc="a library to browse, transform and manipulate Guido scores (git version)"
 arch=('x86_64' 'i686')
@@ -27,8 +27,7 @@ build() {
 package() {
     cd "$srcdir/$pkgname/build"
     make install DESTDIR="$pkgdir"
-    # Fix up the installation path (upstream uses cmake, but no
-    # CMAKE_INSTALL_PREFIX)
-    mv "$pkgdir/usr/local/include" "$pkgdir/usr/local/lib" "$pkgdir/usr"
+    # Fix up installation paths
+    mv "$pkgdir/usr/local/include" "$pkgdir/usr"
     rmdir "$pkgdir/usr/local"
 }
