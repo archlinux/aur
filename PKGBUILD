@@ -11,7 +11,7 @@ _pkgver=$pkgver
 pkgrel=3
 pkgdesc="RPM Package Manager - RPM.org fork, used in major RPM distros"
 arch=('i686' 'x86_64')
-url=("http://www.rpm.org/")
+url="http://www.rpm.org/"
 license=('GPL2')
 depends=('lua>=5.1' 'file' 'nss>=3.12' 'popt' 'elfutils' 'libarchive' 'libcap')
 makedepends=('python2' 'python')
