@@ -1,25 +1,26 @@
-# Maintainer: Pedro Gabriel <pedrogabriel@dcc.ufmg.br>
+# Maintaincer: Horo <horo@yoitsu.moe>
+# Contributor: Pedro Gabriel <pedrogabriel@dcc.ufmg.br>
 # Colaborator: Chun Yang <x@cyang.info>
 # Colaborator: Jonhoo
 
 pkgname=ghost
-pkgver=0.7.1
-pkgrel=3
+pkgver=0.7.6
+pkgrel=1
 pkgdesc="Free, open, simple blogging platform"
 arch=('any')
 url="http://ghost.org"
 license=('MIT')
-makedepends=('unzip' 'npm')
-depends=('nodejs>=0.12')
-backup=('srv/ghost/Gruntfile.js' 'srv/ghost/index.js' 'srv/ghost/package.json')
+makedepends=('unzip')
+depends=('nodejs>=0.12' 'npm')
+backup=('srv/ghost/config.js')
 install=ghost.install
-source=(http://ghost.org/zip/$pkgname-$pkgver.zip
-  ghost.service
-	new-node.patch)
-noextract=($pkgname-$pkgver.zip)
-sha256sums=('aeae4b83553633df4ef3fe6bd97479b6082e3e6f752a263b61957cca3a365e10'
-            'f6ddfd93a839cadcc34b8b5971948aebad2ab3989210ac04c66b8d681e11d3ee'
-            '02645f3bebb7c1e770d06c85ce4c24cc0d59976dcde17f036e053d98253e3cfa')
+source=(https://ghost.org/zip/$pkgname-$pkgver.zip
+        ghost.service
+        ghost.install)
+noextract=(ghost-0.7.6.zip)
+sha512sums=('b6a04d0c5fa2bcc22bc1bfd6828cde8619aa62289f14b76d18ff1876acdc30d720f7a7c508bb46a6ec2f3ba1757d6e49190a11656c240274e2d7c3967965b8bc'
+            '9028de4621c38bf83a22c1cbfa0529d6538516838d641730226fcc24487d654a7d8dcb0b45e455a0a697bd0a9dd80dfdbce6ca8ec1d2e895683ab35846dac10c'
+            'c4cbd918bf050dbf4b77d5ff016836947351fb1f575359b19e0d6c0343275a253f0922e3be952a9e672c3d2659e67327f92c19573ff5e5fde7f68826afec6d8f')
 
 # Note: You may need to log into ghost.org and download the zip file manually
 # and place it inside the same directory as the PKGBUILD
@@ -27,14 +28,8 @@ sha256sums=('aeae4b83553633df4ef3fe6bd97479b6082e3e6f752a263b61957cca3a365e10'
 package() {
     install -dm755 "$pkgdir/srv/ghost"
     cd "$pkgdir/srv/ghost"
-
-    # bsdtar is giving an error with the package
-    #   ./: Can't remove already-existing dir
-    #   bsdtar: Error exit delayed from previous errors.
-    # bsdtar -xf "$srcdir/$pkgname-$pkgver.zip"
     unzip "$srcdir/$pkgname-$pkgver.zip"
-    patch "$pkgdir/srv/ghost/package.json" < "$srcdir/new-node.patch"
-    rm "$pkgdir/srv/ghost/npm-shrinkwrap.json"
+    export GHOST_NODE_VERSION_CHECK=false
     npm install --production
 
     install -Dm644 "$srcdir/ghost.service" "${pkgdir}/usr/lib/systemd/system/ghost.service"

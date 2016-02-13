@@ -10,7 +10,8 @@ post_install() {
     cat <<-EOF
 	To use ghost with systemd, run
 		systemctl enable ghost.service
-
+    You may want to modify some settings via edit
+        /srv/ghost/config.js
 	By default, Ghost can be accessed at http://localhost:2368/
 	after it is started.
 	EOF

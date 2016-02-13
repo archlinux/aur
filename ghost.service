@@ -4,6 +4,7 @@ After=network.target
 
 [Service]
 WorkingDirectory=/srv/ghost
+Environment=GHOST_NODE_VERSION_CHECK=false
 ExecStart=/usr/bin/npm start --production /srv/ghost
 User=ghost
 
