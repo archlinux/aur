@@ -3,10 +3,10 @@
 
 pkgname=weboob-git
 pkgver=1.1-54-ga338ae8
-pkgrel=1
+pkgrel=2
 pkgdesc="Weboob (Web Out Of Browsers) provides several applications to interact with a lot of websites."
 url="http://weboob.org"
-license=('GPL3')
+license=('AGPL3')
 arch=('i686' 'x86_64' 'armv6h')
 depends=(
     phonon-qt4
@@ -21,6 +21,7 @@ depends=(
     python2-mechanize
     python2-prettytable
     python2-pyqt
+    python2-pyqt5
     python2-pysqlite
     python2-requests
     python2-simplejson
