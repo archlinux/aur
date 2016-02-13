@@ -1,7 +1,7 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
 
 pkgname=singularityviewer-alpha
-pkgver=1.8.6.6691
+pkgver=1.8.6.6695
 pkgrel=1
 pkgdesc="An exciting client for Second Life (secondlife) and OpenSim (opensimulator), which combines the look and feel of Viewer 1.23 with the latest and greatest of available technology. (alpha version)"
 url="http://www.singularityviewer.org/"
@@ -11,16 +11,23 @@ depends=('apr-util' 'gtk2' 'libgl' 'libidn' 'libjpeg-turbo' 'mesa' 'nss' 'sdl' '
 optdepends=('libpulse: for PulseAudio support' 'alsa-lib: for ALSA support' 'nvidia-utils: for NVIDIA support' 'flashplugin: for inworld Flash support' 'gstreamer0.10: for video support, may need good, bad and ugly plugins' 'lib32-freealut: for OpenAL support')
 conflicts=("singularityviewer")
 provides=("singularityviewer")
-source_i686=("http://files.streamgrid.net/singularity/SingularityAlpha-i686-$pkgver.tar.bz2"
+source_i686=("http://sourceforge.net/projects/singularityview/files/alphas/SingularityAlpha-i686-$pkgver.tar.bz2"
 	"singularityviewer.desktop"
 	"singularityviewer.launcher")
-source_x86_64=("http://files.streamgrid.net/singularity/SingularityAlpha-x86_64-$pkgver.tar.bz2"
+#source_i686=("http://files.streamgrid.net/singularity/SingularityAlpha-i686-$pkgver.tar.bz2"
+#	"singularityviewer.desktop"
+#	"singularityviewer.launcher")
+
+source_x86_64=("http://sourceforge.net/projects/singularityview/files/alphas/SingularityAlpha-x86_64-$pkgver.tar.bz2"
 	"singularityviewer.desktop"
 	"singularityviewer.launcher")
-md5sums_i686=('81eccb3c99a8952cc8e17a947a3e939e'
+#source_x86_64=("http://files.streamgrid.net/singularity/SingularityAlpha-x86_64-$pkgver.tar.bz2"
+#	"singularityviewer.desktop"
+#	"singularityviewer.launcher")
+md5sums_i686=('428dbaf9fe4859c617cfafa1d8060b3a'
               'ff7aa34dcd7548e3acdb3c2d44ae6604'
               'eb596f5cf7b6f2d0c55c0082fb99a905')
-md5sums_x86_64=('72a94cb190252845be8e969dba543e51'
+md5sums_x86_64=('425e24c05eafe8075c34977194762634'
                 'ff7aa34dcd7548e3acdb3c2d44ae6604'
                 'eb596f5cf7b6f2d0c55c0082fb99a905')
 
