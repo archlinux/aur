@@ -5,7 +5,7 @@
 
 # Maintainer: Thorsten Lanfer <tlanfer@gmail.com>
 pkgname=openhab-runtime
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="openHAB automation runtime"
 arch=('any')
