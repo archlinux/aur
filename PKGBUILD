@@ -3,8 +3,8 @@
 _srcname="ImageMagick"
 _srcver="6.9.3-4"
 pkgname=imagemagick-full-doc
-pkgver="$(echo ${_srcver} | tr '-' '_')"
-pkgrel=1
+pkgver="$(echo ${_srcver} | tr '-' '.')"
+pkgrel=2
 pkgdesc="The ImageMagick documentation (utilities manuals and libraries API)"
 arch=('any')
 url="http://www.imagemagick.org/"
