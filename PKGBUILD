@@ -34,12 +34,12 @@ package() {
     cd $srcdir/airvpn_linux_x??_portable
     msg2 "Moving stuff in place..."
     for i in airvpn libgdiplus.so.0 libMonoPosixHelper.so update-resolv-conf; do
-        install -Dm755 $i "$pkgdir$HOME/airvpn/$i"; done
+        install -Dm755 $i "$pkgdir$HOME/.airvpn-portable/$i"; done
 
     msg2 "Set proper home directory in install file..."
     sed -i "s|\$HOME|$HOME|g" $startdir/airvpn.install
     chmod 700 "$pkgdir$HOME"
-    chown -R $USER:users "$pkgdir$HOME/airvpn"
+    chown -R $USER:users "$pkgdir$HOME/.airvpn-portable"
 
     ## Fix .desktop file for KDE
     if [ -f "/usr/bin/dolphin" ]; then

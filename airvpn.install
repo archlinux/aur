@@ -14,16 +14,20 @@ yellow="${bold}$(tput setaf 3)"
 
 post_install() {
     msg_blue "Creating necessary links..."
-    ln -sf $HOME/airvpn/airvpn /usr/bin/airvpn
-    ln -sf /usr/bin/openvpn $HOME/airvpn/openvpn
-    ln -sf /usr/bin/stunnel $HOME/airvpn/stunnel
+    ln -sf $HOME/.airvpn-portable/airvpn /usr/bin/airvpn
+    ln -sf /usr/bin/openvpn $HOME/.airvpn-portable/openvpn
+    ln -sf /usr/bin/stunnel $HOME/.airvpn-portable/stunnel
     msg_blue "Updating desktop MIME database..."
     update-desktop-database -q
 }
 
 post_upgrade() {
-    msg_blue "Updating desktop MIME database..."
-    update-desktop-database -q
+    [[ -e "$HOME/airvpn/AirVPN.xml" ]] && \
+    msg_blue "Copying config file from old directory to new directory." && \
+    cp -n $HOME/airvpn/AirVPN.xml $HOME/.airvpn-portable
+    post_install
+#    msg_blue "Updating desktop MIME database..."
+#    update-desktop-database -q
 }
 
 postmove() {
@@ -34,7 +38,7 @@ postmove() {
 post_remove() {
     msg_blue "Removing old links and folders..."
     rm -f /usr/bin/airvpn
-    rm -rdf $HOME/airvpn
+    rm -rdf $HOME/.airvpn-portable
     msg_blue "Updating desktop MIME database..."
     update-desktop-database -q
 }
