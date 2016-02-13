@@ -1,7 +1,7 @@
 # Maintainer: aggraef@gmail.com
 pkgname=guidolib-git
-pkgver=2100.0f02cdf
-pkgrel=2
+pkgver=2145.e4a5632
+pkgrel=1
 pkgdesc="engine for the graphic rendering of music scores, based on the Guido Music Notation format (git version)"
 arch=('x86_64' 'i686')
 url="http://guidolib.sourceforge.net/"
