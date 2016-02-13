@@ -2,24 +2,24 @@
 # Contributor: EnteEnteEnte <ducksource@duckpond.ch>
 
 pkgname='teamspeak3-server'
-pkgver='3.0.12'
+pkgver='3.0.12.1'
 pkgrel=1
 pkgdesc='A proprietary VoIP conference software'
 license=('custom')
 arch=('i686' 'x86_64')
 url="http://www.teamspeak.com"
-depends=('')
-makedepends=('curl')
+depends=('glibc')
+optdepends=('mariadb-connector-c: for MariaDB backend')
 backup=(etc/default/teamspeak3-server)
 install='teamspeak3-server.install'
 source=('teamspeak3-server.default'
         'teamspeak3-server.service')
 source_i686=("http://teamspeak.gameserver.gamed.de/ts3/releases/$pkgver/teamspeak3-server_linux_x86-$pkgver.tar.bz2")
 source_x86_64=("http://teamspeak.gameserver.gamed.de/ts3/releases/$pkgver/teamspeak3-server_linux_amd64-$pkgver.tar.bz2")
-sha256sums=('ef0e074b8cb28ecb266d708c04e854664f31c3434023b7466fa8be24da719115'
+sha256sums=('bc52b851f5d7c878050e70661fafa8983031a43d115bc2762bae82f4331ee36e'
             '3d1b7c34e6d460d12f4bf51bdf96d2d58036493a969025fabd2b4ea38c9ac170')
-sha256sums_i686=('0c865adbdb9dafde16127f718c007de4e6ac29a2126f9c8c52c78ea9b0e6897b')
-sha256sums_x86_64=('b6f1afc0c8f677af2e1694e99a8ca2475b99b85c9bf6652fd0f96ad2256e2769')
+sha256sums_i686=('6d56780de18b3066b297193caf27b2aa7d361e916f31582ea3c4ea0413ea42ea')
+sha256sums_x86_64=('99d1382e748fe2099d519592c65bc4923b58b70fec2091b09a47e0a4ab34ff33')
 
 if [ "$CARCH" == "x86_64" ]; then
   _TSARCH='amd64'

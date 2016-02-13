@@ -125,4 +125,4 @@
 #  Default: New permissions will be added to existing groups automatically.
 
 TS_ARGS="logpath=/var/log/teamspeak3-server/ dbsqlpath=/usr/share/teamspeak3-server/sql/"
-
+LD_LIBRARY_PATH="/usr/lib/mariadb/:$LD_LIBRARY_PATH"
