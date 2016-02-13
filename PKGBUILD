@@ -8,7 +8,7 @@ _pkgdate=20150915020029
 pkgrel=1
 pkgdesc="Webtools framework for the Eclipse platform"
 url="http://www.eclipse.org/webtools/"
-license="Eclipse Public License"
+license=("Eclipse Public License")
 arch=('any')
 depends=( 'eclipse' 'eclipse-emf' 'eclipse-gef' 'java-runtime>=5' )
 optdepends=("java-environment>=5" "eclipse-dtp")
