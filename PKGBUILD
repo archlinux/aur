@@ -1,7 +1,7 @@
 # vim:set ts=2 sw=2 et:
 # Maintainer: 2GMon <t_2gmon@yahoo.co.jp>
 pkgname=mikutter
-pkgver=3.3.5
+pkgver=3.3.6
 pkgrel=1
 pkgdesc="a moest twitter client"
 arch=('i686' 'x86_64')
@@ -31,5 +31,5 @@ EOF
   chmod +x $pkgdir/usr/share/applications/mikutter.desktop
 }
 
-md5sums=('00bec1ab2d97ea1fdf5155f3155a8148'
+md5sums=('fd0c09eb9c843fc5680b1b99f1410700'
          '18e28a76097af88457462b08752382df')
