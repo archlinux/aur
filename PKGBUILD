@@ -1,6 +1,6 @@
 # Maintainer: aggraef@gmail.com
 pkgname=midisharelight-git
-pkgver=1647.f8a17cc
+pkgver=1648.e13a6a7
 pkgrel=1
 pkgdesc="light version of the MidiShare library (git version)"
 arch=('x86_64' 'i686')
