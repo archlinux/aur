@@ -10,10 +10,10 @@ _debrepo=http://security.debian.org/debian-security/pool/updates/main/i/
 
 pkgname=iceweasel-stable-bin
 pkgver=${_debver}.deb${_debrel}
-pkgrel=1
+pkgrel=2
 pkgdesc="Debian Stable (Jessie) Browser based on Mozilla Firefox (bin version)"
 arch=('i686' 'x86_64')
-url=("https://packages.debian.org/jessie/iceweasel")
+url="https://packages.debian.org/jessie/iceweasel"
 license=('MPL' 'GPL' 'LGPL')
 conflicts=("$_debname")
 provides=("$_debname"="$_debver")
