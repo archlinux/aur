@@ -2,7 +2,7 @@
 
 pkgname=mpsolve-git
 pkgver=3.1.4.r335.ga468e63
-pkgrel=3
+pkgrel=4
 pkgdesc="Multiprecision rootfinder for complex roots of univariate polynomials"
 url="http://numpi.dm.unipi.it/software/mpsolve"
 arch=('i686' 'x86_64')
@@ -38,5 +38,7 @@ check () {
 package () {
   cd ${srcdir}/MPSolve
   make DESTDIR="${pkgdir}" install
-  sed -e "s/$(echo "${pkgdir}" | sed -e 's/[\/&]/\\&/g')//g" -i ${pkgdir}/usr/share/octave/octave_packages
+  if [ -f ${pkgdir}/usr/share/octave/octave_packages ]; then
+    sed -e "s/$(echo "${pkgdir}" | sed -e 's/[\/&]/\\&/g')//g" -i ${pkgdir}/usr/share/octave/octave_packages
+  fi
 }
