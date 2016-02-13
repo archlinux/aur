@@ -11,7 +11,7 @@ pkgname=atom-editor-beta-bin
 _ver=1.6.0
 _beta=beta3
 pkgver="${_ver}.${_beta}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Chrome-based text editor from Github - Beta Channel - Precompiled binary from official repository"
 arch=('x86_64')
 url="https://github.com/atom/atom"
@@ -23,13 +23,16 @@ conflicts=('atom-editor-beta')
 install=$pkgname.install
 
 md5sums=('0868d950cdd35e4109f2aefb15ff23ca'
-         'bec6d0ab5edca667f726dd84540626aa')
+         'bec6d0ab5edca667f726dd84540626aa'
+         'b05aef80afa76162ff9a1992cef3f0f9')
 source=("atom-amd64-v${_ver}-${_beta}.deb::https://github.com/atom/atom/releases/download/v${_ver}-${_beta}/atom-amd64.deb"
-         atom-python.patch)
+         atom-python.patch
+         startupwmclass.patch)
 
 package() {
   bsdtar xf data.tar.gz
   patch -p1 < "${srcdir}"/atom-python.patch
+  patch -p1 < "${srcdir}"/startupwmclass.patch
   sed -i 's|env PYTHON=python2 GTK_IM_MODULE= QT_IM_MODULE= XMODIFIERS= /usr/share/atom-beta/atom|/usr/bin/atom-beta|' usr/share/applications/atom-beta.desktop
   chmod -R g-w usr
   mv usr "${pkgdir}"
