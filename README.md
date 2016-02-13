@@ -1,9 +1,9 @@
 # archci(1) -- Script to build app container images based on Archlinux packages
 
 ## SYNOPSIS
-```sh
-archci SRCDIR TRGDIR
-```
+
+	archci [-h|--help] [-v|--verbose] SRCDIR TRGDIR
+
 
 ## DESCRIPTION
 This Script allows you to build [AppContainer](https://coreos.com/rkt/docs/0.5.6/app-container.html) images. It takes advantage of the existing Arch Linux ecosystem, and allows you to install either repository packages or packages from the AUR.
@@ -60,6 +60,6 @@ The files are named to be easily used by the [aci-discovery](https://github.com/
 ## INSTALLATION
 The script depends on the [sx](https://www.npmjs.com/package/sx) npm package. It should be either installed globally or into `/usr/lib/archci/node_modules`.
 
-In addition we need `bash`, `pacstrap`, `arch-chroot`, `pacaur`, `actool`, `sudo` and `gpg` installed.
+In addition we need `fish`, `pacstrap`, `arch-chroot`, `pacaur`, `actool`, `sudo` and `gpg` installed.
 
 If you are running this script on Arch, you can simply install the [archci](https://aur.archlinux.org/packages/archci/) AUR package.
