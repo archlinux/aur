@@ -5,12 +5,12 @@ pkgbase=gtk2-patched-filechooser-icon-view
 pkgname=gtk2-patched-filechooser-icon-view
 pkgver=2.24.29
 _patchver=d60e3f1330f3044aeffad8516adc3c444e751b2f
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="GTK2 patched with ahodesuka's filechooser-icon-view patch."
 url="https://gist.github.com/ahodesuka/01213036b58e510dc074"
-provides="gtk2=$pkgver"
-conflicts=gtk2
+provides=("gtk2=$pkgver")
+conflicts=('gtk2')
 install=gtk2.install
 depends=('atk' 'pango' 'libxcursor' 'libxinerama' 'libxrandr' 'libxi' 'libxcomposite' 'libxdamage' 
          'shared-mime-info' 'cairo' 'libcups' 'gtk-update-icon-cache' 'glib2-patched-thumbnailer')
