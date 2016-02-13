@@ -1,0 +1,68 @@
+enable_start_service() {
+  systemctl enable rightlink
+  systemctl start rightlink --no-block
+}
+
+add_rightlink_user() {
+  if ! id -u rightlink >/dev/null 2>&1; then
+    useradd -c "rightlink service" -m -d /home/rightlink -U -s /bin/false rightlink
+  fi
+}
+
+post_any() {
+  touch /var/lib/rightscale-identity
+  chmod 0600 /var/lib/rightscale-identity
+
+  add_rightlink_user
+
+  useradd -c "RightScale Managed Login" -d /home/rightscale -s /bin/bash -m rightscale &>/dev/null
+
+  mkdir -p /home/rightscale/.ssh
+  touch /home/rightscale/.ssh/authorized_keys
+  chmod -R go-rwx /home/rightscale/.ssh
+  chown -R rightscale /home/rightscale/.ssh
+
+  # Change the cloud-init config to run user-data script at every boot so we pull in updated
+  # user-data after a stop&start. This is a bit of a hack, but it's not clear what else to do that
+  # is clean. Somehow using once-per-instance doesn't actually work, at least not on CentOS7 or
+  # Fedora 20. Sigh
+  if [[ -w /etc/cloud/cloud.cfg ]]; then
+    sed -i -e '/ - scripts-user$/s/scripts-user/[scripts-user, always]/' /etc/cloud/cloud.cfg
+    #sed -i -e '/ - scripts-user$/s/scripts-user/[scripts-user, once-per-instance]/' /etc/cloud/cloud.cfg
+  else
+    echo "Cannot fix /etc/cloud/cloud.cfg to run user-data script at every boot: stop/start may not work"
+  fi
+
+  # enable_start_service
+
+  echo
+  echo 'If you are not bootstrapping a cloud instance automatically:'
+  echo '    - Ensure you have populated /var/lib/rightscale-identity'
+  echo '      before starting the system service!'
+  echo '      (see the User Data field on the Info tab of your server)'
+  echo
+	echo "==> To enable the RightScale RightLink service:"
+	echo "# systemctl enable rightlink.service"
+	echo
+	echo "==> To start RightScale RightLink:"
+	echo "# systemctl start rightlink.service"
+}
+
+post_install() {
+  post_any
+}
+
+post_upgrade() {
+  systemctl daemon-reload
+  post_any
+  echo
+  echo "==> To restart RightScale RightLink with the new version (when upgrading):"
+	echo "# systemctl restart rightlink.service"
+}
+
+post_remove() {
+  systemctl disable rightlink > /dev/null 2>&1 || true
+  systemctl stop rightlink > /dev/null 2>&1 || true
+}
+
+# vim:set ts=2 sw=2 et:

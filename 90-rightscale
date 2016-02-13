@@ -1,0 +1,12 @@
+# Rightlink service startup requires these directives:
+Defaults:root !requiretty
+Defaults:rightlink !requiretty
+Defaults:rightlink !env_reset
+root ALL=(ALL) SETENV:ALL
+# Blanket permissions. If you wish to remove the NOPASSWD:ALL line and tighten
+# permissions, you must add in permissions for (1) lifecycle management (reboot/terminate)
+# via /sbin/init and (2) managed login. The minimal set of permissions to do this
+# are given below. The first line below would allow (1) and second would allow (2)
+# rightlink ALL=(root) NOPASSWD:/sbin/init
+# rightlink ALL=(rightscale) NOPASSWD:/usr/bin/tee /home/rightscale/.ssh/authorized_keys
+rightlink ALL=(ALL) SETENV:NOPASSWD:ALL
