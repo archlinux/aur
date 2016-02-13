@@ -18,7 +18,7 @@ makedepends=('git')
 conflicts=($_pkgname)
 provides=($_pkgname)
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
-url=('https://tox.chat')
+url='https://tox.chat'
 source=("${pkgname}::git+https://github.com/JFreegman/toxic.git")
 sha512sums=('SKIP')
 
