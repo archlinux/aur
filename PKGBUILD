@@ -1,3 +1,4 @@
+# Maintainer: goetzc
 # Contributor: danyf90, Ricky, Adrian Berriel
 
 pkgname=plasma5-theme-caledonia
@@ -10,8 +11,8 @@ license=('CCPL')
 url="http://sourceforge.net/projects/caledonia/"
 depends=('plasma-workspace')
 conflicts=('caledonia-bundle')
-source=("http://sourceforge.net/projects/caledonia/files/Caledonia%20%28Plasma-KDE%20Theme%29/$_themename-$pkgver.tar.gz")
-sha256sums='3d855b7806d23ad3f748a30e9b0fa94c8ad7ec489fd19a4c026276b3045c5bcc'
+source=("https://dl.dropboxusercontent.com/u/40068438/Caledonia-2.0.tar.gz")
+sha256sums=('3d855b7806d23ad3f748a30e9b0fa94c8ad7ec489fd19a4c026276b3045c5bcc')
 
 package() {
   cd $srcdir
