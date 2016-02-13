@@ -1,8 +1,8 @@
-# Maintainer: Gerald Nunn <gerald dot b dot nunn at gmail dot com>
+# Maintainer: Davi da Silva Böger <dsboger at gmail dot com>
 
 pkgname=terminix-git
 _pkgname=terminix
-pkgver=0.45.0.r1.70aed81
+pkgver=0.46.0.r1.28b5d8e
 pkgrel=1
 pkgdesc="A tiling terminal emulator based on GTK+ 3 (git master)"
 arch=('x86_64')
