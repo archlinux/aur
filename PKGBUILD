@@ -3,7 +3,7 @@
 # Contributor: Janne Heß <jannehess@gmail.com>
 
 pkgname=zfsmond-git
-pkgver=90cc056
+pkgver=487922c
 pkgrel=1
 pkgdesc='Tiny ZFS Web Interface written in AngularJS and Flask Restful'
 url='https://github.com/FireDrunk/ZFSmond'
