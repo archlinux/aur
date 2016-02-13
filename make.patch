@@ -1,0 +1,26 @@
+--- a/Makefile	2010-12-31 14:41:36.000000000 -0500
++++ b/Makefile	2016-02-13 16:06:51.354411602 -0500
+@@ -67,19 +67,19 @@
+ # default flags
+ CFLAGS= -O2 -D FB2TOEPUB_VERSION="$(VERSION)" -I$(incdir)
+ 
+-all : makedirs $(distdir)/fb2toepub
++all : makedirs scanner $(distdir)/fb2toepub
+ 
+ makedirs :
+ 	mkdir -p $(objdir)
+ 	mkdir -p $(distdir)
+ 
++scanner : $(srcdir)/scanner.cpp $(srcdir)/scanner.l
++	flex -o $^
++
+ $(distdir)/fb2toepub : $(COBJ)
+ 	g++ -o $@ $(COBJ) -lz
+ 	strip $@
+ 
+-$(srcdir)/scanner.cpp : $(srcdir)/scanner.l
+-	flex -o$@ $<
+-
+ $(objdir)/%.o : $(srcdir)/%.cpp $(HSRC)
+ 	g++ $(CFLAGS) -o $@ -c $<
+ 
