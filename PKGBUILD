@@ -3,7 +3,7 @@
 
 pkgname=vim-airline
 pkgver=0.7
-pkgrel=1
+pkgrel=3
 pkgdesc='Lean & mean statusline/tabline for ViM'
 arch=('any')
 url='https://github.com/vim-airline/vim-airline'
