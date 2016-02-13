@@ -30,6 +30,4 @@ package() {
     mkdir -p ${_npmdir}
     cd ${_npmdir}
     npm install -g --prefix "${pkgdir}/usr" ${_npmname}
-    find "${pkgdir}" -type f -exec chmod 644 {} +
-    find "${pkgdir}" -type d -exec chmod 755 {} +
 }
