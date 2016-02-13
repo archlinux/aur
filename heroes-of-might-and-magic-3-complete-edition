@@ -10,4 +10,4 @@ then
 fi
 cd /opt/gog/heroes-of-might-and-magic-3-complete-edition
 #wine Heroes3.exe "$@"
-wine HD3_Launcher.exe "$@"
+wine HD_Launcher.exe "$@"
