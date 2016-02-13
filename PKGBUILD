@@ -1,9 +1,9 @@
 # Maintainer: Albert Graef <aggraef at gmail dot com>
 
 pkgname=pizmidi-git
-pkgver=43.6c827fa
+pkgver=44.a985e3d
 pkgrel=1
-pkgdesc="VST plugin architecture for Faust"
+pkgdesc="a comprehensive suite of VST MIDI plugins"
 arch=("i686" "x86_64")
 license=('LGPL')
 url="https://bitbucket.org/agraef/pizmidi/"
