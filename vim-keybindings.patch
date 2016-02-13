@@ -179,10 +179,10 @@ index 6789770..22a0f3f 100644
  extern PanelClass Panel_class;
  
 diff --git a/README b/README
-index 3bc17a4..fd7a9d6 100644
+index 1af7377..92a76be 100644
 --- a/README
 +++ b/README
-@@ -16,6 +16,44 @@ but we also have code for running under FreeBSD and Mac OS X
+@@ -17,6 +17,44 @@ but we also have code for running under FreeBSD and Mac OS X
  This software has evolved considerably over the years,
  and is reasonably complete, but there is always room for improvement.
  
@@ -224,7 +224,7 @@ index 3bc17a4..fd7a9d6 100644
 +* 'l' can no longer be used to list open files, being replaced with 'L'
 +
 +
- Comparison between 'htop' and classic 'top'
+ Comparison between `htop` and classic `top`
  -------------------------------------------
  
 diff --git a/ScreenManager.c b/ScreenManager.c
