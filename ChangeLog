@@ -1,3 +1,8 @@
+2016-02-13 Peter Spiess-Knafl <psk@autistici.org>
+
+	* 0.6.0-2:
+	Rebuild against new libmicrohttpd12
+
 2015-04-07 Peter Spiess-Knafl <psk@autistici.org>
 
 	* 0.5.0-1:
