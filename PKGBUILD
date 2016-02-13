@@ -14,8 +14,8 @@ depends=(
       'libbluray' 'libmodplug' 'libpulse' 'libsoxr' 'libssh' 'libtheora'
       'libva' 'libvdpau' 'libwebp' 'opencore-amr' 'openjpeg' 'opus'
       'schroedinger' 'sdl' 'speex' 'v4l-utils' 'xvidcore' 'zlib'
-      'libdcadec.so' 'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so'
-      'libvpx.so' 'libx264.so' 'libx265.so' 'libfdk-aac')
+      'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so' 'libvpx.so' 
+      'libx264.so' 'libx265.so' 'libfdk-aac')
 makedepends=('hardening-wrapper' 'ladspa' 'libvdpau' 'yasm')
 optdepends=('ladspa: LADSPA filters')
 provides=(
@@ -48,7 +48,7 @@ build() {
     --enable-libass \
     --enable-libbluray \
     --enable-libdcadec \
-	--enable-libfdk-aac \
+    --enable-libfdk-aac \
     --enable-libfreetype \
     --enable-libfribidi \
     --enable-libgsm \
