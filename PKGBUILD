@@ -10,10 +10,10 @@ _debrepo=http://ftp.de.debian.org/debian/pool/main/i/
  
 pkgname=iceweasel-bin
 pkgver=${_debver}.deb${_debrel}
-pkgrel=1
+pkgrel=2
 pkgdesc="Debian Browser based on Mozilla Firefox (bin version)"
 arch=('i686' 'x86_64')
-url=("https://packages.debian.org/sid/iceweasel")
+url="https://packages.debian.org/sid/iceweasel"
 license=('MPL' 'GPL' 'LGPL')
 conflicts=("$_debname")
 provides=("$_debname"="$_debver")
