@@ -21,7 +21,7 @@ source=("https://bintray.com/artifact/download/openhab/bin/distribution-$pkgver-
 				"openhab.service"
 				"openhab-startsh.patch")
 noextract=("distribution-$pkgver-runtime.zip")
-md5sums=('0bc4b3a590771c344ff16e70157ab30d'
+md5sums=('c70145611a4c858d346bcc3873ab7bde'
          'e06c404f7174ac0b1d9c2e9e429c3b5f'
          '18299bfcb7865fec55d06890e25c8668'
          '481370e7c473aff7e9267e2e4f6fe68c')
