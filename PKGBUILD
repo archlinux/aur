@@ -1,13 +1,13 @@
 pkgname=postgresql-debversion
-pkgver=1.0.7
-pkgrel=2
+pkgver=1.0.8
+pkgrel=1
 pkgdesc="Debian version number type for PostgreSQL"
 arch=('i686' 'x86_64')
 url="https://packages.debian.org/source/sid/postgresql-debversion"
 license=('GPL3')
-depends=('postgresql' 'apt')
+depends=('postgresql>9.4' 'postgresql<9.5' 'apt')
 source=("http://httpredir.debian.org/debian/pool/main/p/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz")
-sha256sums=('13fb00112cd0ad0ce76b2415649aec02f8925d8b3e704fb4187c9a684435b2b6')
+sha256sums=('baa7f0eeda937a6fd9024408965739dc390c20f86ad077d915ecaffd14664229')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
