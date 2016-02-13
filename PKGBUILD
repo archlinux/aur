@@ -2,13 +2,13 @@
 application=himawaripy
 pkgname=${application}-git
 pkgrel=1
-pkgver=r78.073a277
+pkgver=r87.f18836f
 license=('MIT')
 pkgdesc="Put near-realtime picture of Earth as your desktop background."
 url="https://github.com/boramalper/${application}"
 arch=('x86_64' 'i686')
-depends=('python' 'python-pillow')
-makedepends=('git')
+depends=('python' 'python-pillow' 'python-tzlocal' 'python-dateutil')
+makedepends=('git' 'python-setuptools')
 source=(
   "git+https://github.com/boramalper/${application}"
 )
