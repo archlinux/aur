@@ -5,7 +5,7 @@
 pkgbase=python-django-tables2
 _pkgbase="${pkgbase#python-}"
 pkgname=(python-django-tables2 python2-django-tables2)
-pkgver=1.0.7
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='A module for rendering Django data sets as HTML tables.'
 arch=(any)
@@ -21,7 +21,7 @@ makedepends=(
 )
 options=(!emptydirs)
 source=("https://github.com/bradleyayers/${_pkgbase}/archive/v${pkgver}.tar.gz")
-sha256sums=('e76a7d96189dab2f388e7215859e282ea634128d1737bc8081fd85b92761a299')
+sha256sums=('1e1b618948fa8fa6713569641b67a2b8ca9eaea0c250de895ac6fea145bca07d')
 
 package_python-django-tables2() {
   depends=(python-django python-six)
