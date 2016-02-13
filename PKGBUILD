@@ -1,6 +1,7 @@
 # Maintainer: Christopher Bero <bigbero@gmail.com>
 # Taken from https://aur.archlinux.org/packages/mspds
 # PKGBUILD copied from https://github.com/greigdp/msp430-mspds
+# Contributor: Alexei Colin <ac@alexeicolin.com>
 pkgname=mspds
 pkgver=3.05.01.01
 pkgrel=4
