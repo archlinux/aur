@@ -30,6 +30,7 @@ package() {
     cd "$pkgdir/srv/ghost"
     unzip "$srcdir/$pkgname-$pkgver.zip"
     export GHOST_NODE_VERSION_CHECK=false
+    cp config.example.js config.js
     npm install --production
 
     install -Dm644 "$srcdir/ghost.service" "${pkgdir}/usr/lib/systemd/system/ghost.service"
