@@ -2,7 +2,7 @@
 
 pkgname=u-gotme
 pkgver=2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Software to download and upload tracks, routes and waypoints to the I-gotU series of GPS loggers : GT-800, GT-800Pro, GT-820Pro and GT-900Pro."
 arch=('i686' 'x86_64')
 if test "$CARCH" == x86_64; then
@@ -20,7 +20,7 @@ source=("http://blog.studioblueplanet.net/wp-content/files/${pkgname}/${pkgname}
 md5sums=(
 'd7458b46e93b5ee386c50ae0df35bfad'
 '06558d55015c55eb5a518603fefe48f7'
-'2c326c52127c7aa8522e450b50b1b061'
+'5f2bcb939768aee9b99c4126454ddce8'
 'e264102987e6e1d75310da548b9ed395')
 
                     

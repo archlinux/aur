@@ -9,4 +9,4 @@ Comment=Download and upload tracks, routes and waypoints to the I-gotU series of
 GenericName=u-gotme
 GenericName[fr]=u-gotme
 X-KDE-StartupNotify=true
-Categories=Science;Maps;Geography;Education;
+Categories=Application;Science;Maps;Geography;Education;
