@@ -2,12 +2,12 @@
 # Contributor: ianux <ianux@free.fr>
 
 pkgname=weboob-git
-pkgver=1.1-33-gf20418c
+pkgver=1.1-54-ga338ae8
 pkgrel=1
 pkgdesc="Weboob (Web Out Of Browsers) provides several applications to interact with a lot of websites."
 url="http://weboob.org"
 license=('GPL3')
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h')
 depends=(
     phonon-qt4
     python2-cssselect
