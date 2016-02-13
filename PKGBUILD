@@ -4,7 +4,7 @@
 _pkgbase=xorg-server
 pkgname=('xorg-server-dev' 'xorg-server-xephyr-dev' 'xorg-server-xdmx-dev' 'xorg-server-xvfb-dev' 'xorg-server-xnest-dev' 'xorg-server-xwayland-dev' 'xorg-server-common-dev' 'xorg-server-devel-dev')
 pkgver=1.18.1  # https://lists.x.org/archives/xorg-announce/2016-February/002674.html
-pkgrel=1
+pkgrel=3
 arch=('i686' 'x86_64')
 license=('custom')
 groups=('xorg')
@@ -18,20 +18,22 @@ makedepends=('pixman' 'libx11' 'mesa' 'libgl' 'xf86driproto' 'xcmiscproto' 'xtra
              'libxshmfence' 'libunwind')
 source=(${url}/releases/individual/xserver/${_pkgbase}-${pkgver}.tar.bz2{,.sig}
         xvfb-run
-        xvfb-run.1)
+        xvfb-run.1
+        Fix-XineramaQueryScreens-for-reverse-prime.patch)
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'C383B778255613DFDB409D91DB221A6900000011'
               'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3')
 sha256sums=('85ec56dbeb89a951295cdf4f39bf38e515f900d35e06d4a8081b114d1520789d'
             'SKIP'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
-            '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776')
+            '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
+            'afc334dfe1f1eb9e557ae01771b0f774c8fc578115e1698462ab670d1b0a213a')
 
 prepare() {
   cd "${_pkgbase}-${pkgver}"
 
-  msg2 "Starting autoreconf..."
-  autoreconf -fvi
+  msg2 "FS#47151"
+  patch -Np1 -i ../Fix-XineramaQueryScreens-for-reverse-prime.patch
 }
 
 build() {
