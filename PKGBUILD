@@ -1,11 +1,11 @@
 pkgname=wlc-git
-pkgver=r854.a7cf372
-pkgrel=1
+pkgver=r873.faa4d3c
+pkgrel=2
 
 pkgdesc='Wayland compositor library'
 url='https://github.com/Cloudef/wlc'
 arch=('i686' 'x86_64')
-license=('GPL')
+license=('MIT')
 
 options=('debug' '!strip')
 
@@ -49,4 +49,5 @@ check() {
 package() {
     cd wlc
     make DESTDIR="$pkgdir" install
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
