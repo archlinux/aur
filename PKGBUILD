@@ -3,8 +3,8 @@
 # Contributor: JohnTheKipper <roteocktober@hotmail.com>
 
 pkgname=bootchart2-git
-pkgver=0.14.8.gc39e34e
-pkgrel=2
+pkgver=0.14.8.gc55e058
+pkgrel=1
 pkgdesc='Boot Process Performance Visualization'
 url='https://github.com/xrmx/bootchart'
 license=('GPL')
