@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ruby-binman
-pkgver=4.1.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="Produces UNIX manual pages for executable scripts"
 arch=('any')
@@ -9,7 +9,7 @@ depends=('ruby' 'ruby-opener')
 url="https://github.com/sunaku/binman"
 license=('ISC')
 source=(https://rubygems.org/downloads/${pkgname#*-}-${pkgver}.gem)
-sha256sums=('69bb96e992eaccb82871b2eda2201645471a78ab76bcb20121f75cb20a57fe30')
+sha256sums=('73501b43ab2a67fb7611199b07a920db41f33297fd0d8a93ef2867862508589c')
 noextract=("${pkgname#*-}-${pkgver}.gem")
 provides=('binman' 'ruby-binman')
 conflicts=('binman')
