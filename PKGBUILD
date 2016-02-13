@@ -3,7 +3,7 @@
 
 pkgname=tor-browser-es
 _language=es-ES
-pkgver=5.5
+pkgver=5.5.2
 pkgrel=1
 pkgdesc="Tor Browser Bundle: Navegación anónima utilizando Firefox y Tor"
 arch=('i686' 'x86_64')
@@ -27,8 +27,8 @@ source+=("$pkgname.desktop"
          "$pkgname.png"
          "$pkgname.sh")
 
-sha256sums_x86_64=('06a606743de151efdd7d9389478976bee83a7b3934323f6bf972b0e4b89ccf72' 'SKIP')
-sha256sums_i686=('e28c844b7fd02515cf51f245ac4be2fbc2ee77dd0053515db436090751fa7b97' 'SKIP')
+sha256sums_x86_64=('db1a0f1330e921b832943c14cc2a3d1f4c9cea8f1e034bc8923afc00c26ee0ee' 'SKIP')
+sha256sums_i686=('1e2c4500697cd512d0e1aacdcacdf4edcd923d37d41d81f93c5f2653d0889b94' 'SKIP')
 sha1sums=('28e65f7537e7dc76af475166365ad0deabb91cb9'
           '7a283313a21bb9cd8331891f99d2646186231636'
           'd4da2996d4b99d847a9ed382401b9f41cea4098b')
