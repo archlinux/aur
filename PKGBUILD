@@ -1,7 +1,7 @@
 # Maintainer: Niels Martignène <niels.martignene@gmail.com>
 
 pkgname=pycrc
-pkgver=0.8.3
+pkgver=0.9
 pkgrel=1
 pkgdesc="A free, easy to use Cyclic Redundancy Check (CRC) calculator and C source code generator"
 arch=(any)
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python')
 options=(!emptydirs)
 source=("https://pycrc.org/download/pycrc-${pkgver}.tar.gz")
-sha256sums=('f06da6d049713c5cd6d292aebd09a0325d0832f59e6cf521e4ad4b54de16359c')
+sha256sums=('0ebe3ceb7210d14f23dc68d1b2d741e05f6e02fd00ed708966061b783a10e211')
 
 _sitedir=`python -c "import site; print(site.getsitepackages()[0])"`
 
