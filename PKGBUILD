@@ -3,7 +3,7 @@
 # Contributor: Janne Heß <jannehess@gmail.com>
 
 pkgname=serve2d-git
-pkgver=0.2.0.7e5f2
+pkgver=2aabb2d
 pkgrel=1
 pkgdesc="A protocol detecting server, based off the serve2 library"
 url="https://github.com/joushou/serve2d"
@@ -19,7 +19,7 @@ arch=("i686" "x86_64")
 
 pkgver() {
 	cd "${srcdir}/serve2d"
-	git describe | sed 's/-/./g'
+	git describe --always | sed 's/-/./g'
 }
 
 prepare() {
@@ -30,7 +30,7 @@ prepare() {
 
 build() {
 	cd ${srcdir}/root
-	export GOPATH=${GOPATH}:${srcdir}/root
+	export GOPATH="${srcdir}/root"
 	go build github.com/joushou/serve2d
 }
 
