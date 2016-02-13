@@ -1,0 +1,12 @@
+diff -Nur beebeep-code-650orig/src/AudioManager.h beebeep-code-650/src/AudioManager.h
+--- beebeep-code-650orig/src/AudioManager.h	2016-02-05 16:09:37.000000000 +0100
++++ beebeep-code-650/src/AudioManager.h	2016-02-13 00:14:21.197259670 +0100
+@@ -33,7 +33,7 @@
+ 
+ #include "Config.h"
+ #ifdef BEEBEEP_USE_PHONON4
+-  #include <Phonon/MediaObject>
++  #include <KDE/Phonon/MediaObject>
+ #endif
+ 
+ 

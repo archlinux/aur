@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=BeeBEEP (Secure Lan Messenger)
+Exec=/usr/bin/beebeep
+Icon=beebeep
+Terminal=false
+Type=Application
+Categories=Application;Network;
+Keywords=lan;chat;bee;beep
