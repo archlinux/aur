@@ -8,7 +8,7 @@ pkgname=('papirus-git' 'papirus-plasma-theme-git' 'papirus-icon-theme-git' 'papi
          'papirus-k3b-theme-git' 'papirus-smplayer-theme-git' 'papirus-gtk-icon-theme-git')
 pkgver=r476.43f950b
 pkgrel=1
-pkgdesc="Look-and-feel package for modified and adaptive Paper theme for KDE"
+pkgdesc="Papirus Suite for KDE"
 arch=('any')
 url="https://github.com/varlesh/${_pkgname}"
 license=('CCPL:by-sa')
@@ -40,26 +40,23 @@ package_papirus-git() {
                 "papirus-vlc-theme-git: Papirus theme for VLC Media Player" 
                 "papirus-k3b-theme-git: Papirus theme for K3B" 
                 "papirus-smplayer-theme-git: Papirus theme for SMPlayer")
-    install -dm755 ${pkgdir}/usr/share/plasma/look-and-feel
-    cp -r ${srcdir}/${_pkgname}/kde-pack/look-and-feel/* ${pkgdir}/usr/share/plasma/look-and-feel/
-    find "${pkgdir}" -type f -exec chmod 644 {} +
-    find "${pkgdir}" -type d -exec chmod 755 {} +
 } 
 
 package_papirus-plasma-theme-git() {
-    pkgdesc="Modified and adaptive Paper plasma theme for KDE"
+    pkgdesc="Papirus plasma theme for KDE"
     options=()
     depends=('plasma-desktop')
     optdepends=()
     conflicts=('plasma-theme-papirus')
-    install -dm755 ${pkgdir}/usr/share/plasma/desktoptheme
+    install -dm755 ${pkgdir}/usr/share/plasma/{desktoptheme,look-and-feel}
     cp -r ${srcdir}/${_pkgname}/kde-pack/plasma-themes/papirus* ${pkgdir}/usr/share/plasma/desktoptheme/
+    cp -r ${srcdir}/${_pkgname}/kde-pack/look-and-feel/* ${pkgdir}/usr/share/plasma/look-and-feel/
     find "${pkgdir}" -type f -exec chmod 644 {} +
     find "${pkgdir}" -type d -exec chmod 755 {} +
 }
 
 package_papirus-icon-theme-git() {
-    pkgdesc="Modified and adaptive Paper icon theme for KDE"
+    pkgdesc="Papirus icon theme for KDE"
     options=('!strip')
     depends=()
     optdepends=()
@@ -74,7 +71,7 @@ package_papirus-icon-theme-git() {
 }
 
 package_papirus-color-scheme-git() {
-    pkgdesc="Modified and adaptive Paper color scheme for KDE"
+    pkgdesc="Papirus color scheme for KDE"
     options=()
     depends=('plasma-desktop')
     optdepends=()
@@ -85,7 +82,7 @@ package_papirus-color-scheme-git() {
 }
 
 package_papirus-gtk-theme-git() {
-    pkgdesc="Modified and adaptive Paper GTK theme for KDE"
+    pkgdesc="Papirus GTK theme for KDE"
     options=()
     depends=('gtk-engine-murrine' 'gtk2' 'gtk3')
     optdepends=()
@@ -97,7 +94,7 @@ package_papirus-gtk-theme-git() {
 }
 
 package_papirus-aurorae-theme-git() {
-    pkgdesc="Modified and adaptive Paper decorations for Kwin"
+    pkgdesc="Papirus decorations for Kwin"
     options=()
     depends=('kwin')
     optdepends=()
@@ -109,7 +106,7 @@ package_papirus-aurorae-theme-git() {
 }
 
 package_papirus-qtcurve-theme-git() {
-    pkgdesc="Modified and adaptive Paper decorations for QtCurve"
+    pkgdesc="Papirus decorations for QtCurve"
     options=()
     depends=('qtcurve-gtk2' 'qtcurve-qt4' 'qtcurve-qt5' 'qtcurve-utils' 'lib32-qtcurve-gtk2' 'lib32-qtcurve-qt4' 'lib32-qtcurve-utils')
     optdepends=()
@@ -120,7 +117,7 @@ package_papirus-qtcurve-theme-git() {
 }
 
 package_papirus-konsole-colorscheme-git() {
-    pkgdesc="Modified and adaptive Paper colorscheme for Konsole"
+    pkgdesc="Papirus colorscheme for Konsole"
     options=()
     depends=('konsole')
     optdepends=()
@@ -132,7 +129,7 @@ package_papirus-konsole-colorscheme-git() {
 }
 
 package_papirus-yakuake-theme-git() {
-    pkgdesc="Modified and adaptive Paper theme for Yakuake"
+    pkgdesc="Papirus theme for Yakuake"
     options=()
     depends=()
     optdepends=('yakuake' 'yakuake-frameworks-git')
@@ -157,7 +154,7 @@ package_bomi-skin-papirus-git() {
 }
 
 package_libreoffice-papirus-theme-git() {
-    pkgdesc="Libreoffice Papirus theme"
+    pkgdesc="Papirus theme for Libreoffice"
     options=()
     depends=()
     optdepends=('libreoffice' 'libreoffice-fresh-rpm')
@@ -169,7 +166,7 @@ package_libreoffice-papirus-theme-git() {
 }
 
 package_papirus-kmail-theme-git() {
-    pkgdesc="Modified and adaptive Paper theme for Kmail"
+    pkgdesc="Papirus theme for Kmail"
     options=()
     depends=('kmail')
     optdepends=()
@@ -181,7 +178,7 @@ package_papirus-kmail-theme-git() {
 }
 
 package_papirus-vlc-theme-git() {
-    pkgdesc="Modified and adaptive Paper theme for VLC Media Player"
+    pkgdesc="Papirus theme for VLC Media Player"
     options=()
     depends=('vlc')
     conflicts=('papirus-vlc-theme')
@@ -191,7 +188,7 @@ package_papirus-vlc-theme-git() {
 }
 
 package_papirus-k3b-theme-git() {
-    pkgdesc="Modified and adaptive Paper theme for K3B"
+    pkgdesc="Papirus theme for K3B"
     options=()
     depends=('k3b')
     install -dm755 ${pkgdir}/usr/share/{k3b/pics,apps/k3b/pics}
@@ -202,7 +199,7 @@ package_papirus-k3b-theme-git() {
 }
 
 package_papirus-smplayer-theme-git() {
-    pkgdesc="Modified and adaptive Paper theme for SMPlayer"
+    pkgdesc="Papirus theme for SMPlayer"
     options=()
     depends=('smplayer')
     conflicts=('papirus-smplayer-theme')
@@ -213,7 +210,7 @@ package_papirus-smplayer-theme-git() {
 }
 
 package_papirus-gtk-icon-theme-git() {
-    pkgdesc="Modified and adaptive Paper icon theme for GTK"
+    pkgdesc="Papirus icon theme for GTK"
     options=('!strip')
     depends=()
     optdepends=()
