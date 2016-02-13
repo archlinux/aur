@@ -2,16 +2,16 @@
 
 pkgname=iacs
 pkgver=1.1.4.5161
-pkgrel=1
+pkgrel=2
 pkgdesc="IBM i Access Client Solutions provides a Java based, platform-independent interface for IBM iAccess/iSeries (formerly known as AS400)."
 arch=('any')
 url="http://www.ibm.com/systems/power/software/i/access/solutions.html"
 license=('custom')
 depends=('java-runtime' 'gtk-update-icon-cache')
 install="${pkgname}.install"
-source=("ftp://ftp.software.ibm.com/as400/products/clientaccess/solutions/updates/IBMiAccess_v1r1m4_Update1.zip"
-        "ftp://ftp.software.ibm.com/as400/products/clientaccess/solutions/updates/Readme.txt"
-        "ftp://ftp.software.ibm.com/as400/products/clientaccess/solutions/GettingStarted_en.html"
+source=("https://dl.dropboxusercontent.com/u/99802211/External_Sources/IBM%20i%20Access%20Client%20Solutions/${pkgver}/IBMiAccess_v1r1m4_Update1.zip"
+        "https://dl.dropboxusercontent.com/u/99802211/External_Sources/IBM%20i%20Access%20Client%20Solutions/${pkgver}/Readme.txt"
+        "https://dl.dropboxusercontent.com/u/99802211/External_Sources/IBM%20i%20Access%20Client%20Solutions/${pkgver}/GettingStarted_en.html"
         "${pkgname}"
         "${pkgname}.desktop")
 sha256sums=('50879a348c4a7cf785b025a8b29a7cfd59da37f63e19c7bb7bea8f0564a3629f'
