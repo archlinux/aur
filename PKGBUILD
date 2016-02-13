@@ -1,18 +1,18 @@
-# Maintainer: Ian Brunelli (brunelli) <ian@brunelli.me>
+# Maintainer: Ian Brunelli (brunelli) <ianbrunelli@gmail.com>
 
 pkgname=gnome-news-git
 _gitname=gnome-news
-pkgver=r192.9ec458d
-pkgrel=2
+pkgver=r202.1acff9a
+pkgrel=1
 pkgdesc='A GNOME 3 Feed Reader'
 arch=('i686' 'x86_64')
 license=('GPL3')
-url="https://github.com/ignatenkobrain/${_gitname}"
+url="https://git.gnome.org/browse/${_gitname}"
 depends=('gtk3' 'python' 'tracker>=1.5.1')
 makedepends=('appstream-glib' 'autoconf' 'automake' 'git' 'intltool')
 options=('!emptydirs')
 install=gnome-news.install
-source=("git://github.com/ignatenkobrain/${_gitname}.git")
+source=("git://git.gnome.org/${_gitname}")
 md5sums=('SKIP')
 conflicts=('gnome-news')
 provides=("gnome-news=$pkgver")
