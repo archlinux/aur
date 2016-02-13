@@ -4,7 +4,7 @@
 _npmname=tldr
 _pkgname=nodejs-tldr
 pkgname=nodejs-tldr-git
-pkgver=r1369.08d9c7f
+pkgver=r1437.61a3795
 pkgrel=1
 pkgdesc="Simplified and community-driven man pages (git version)"
 arch=('any')
@@ -30,4 +30,6 @@ package() {
     mkdir -p ${_npmdir}
     cd ${_npmdir}
     npm install -g --prefix "${pkgdir}/usr" ${_npmname}
+    find "${pkgdir}" -type f -exec chmod 644 {} +
+    find "${pkgdir}" -type d -exec chmod 755 {} +
 }
