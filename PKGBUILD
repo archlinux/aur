@@ -7,9 +7,10 @@ pkgname=rar
 pkgver=5.3.0
 pkgrel=1
 pkgdesc="A command-line port of the rar compression utility"
-url="http://www.rarlab.com/rarnew.htm"
+url="http://www.rarlab.com"
 arch=('i686' 'x86_64')
 license=('custom')
+depends=('gcc-libs')
 backup=('etc/rarfiles.lst')
 conflicts=('rar-beta' 'unrar')
 provides=('rar-beta' 'unrar')
@@ -23,7 +24,7 @@ md5sums_x86_64=('4add9475873193174fcea70da55ee1c3')
 
 
 package() {
-    cd "$srcdir/rar"
+    cd "${srcdir}/${pkgname}"
     install -Dm755 rar          "${pkgdir}/usr/bin/rar"
     install -Dm755 unrar        "${pkgdir}/usr/bin/unrar"
     install -Dm755 rar_static   "${pkgdir}/usr/bin/rar_static"
