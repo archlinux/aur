@@ -2,3 +2,5 @@
 !PKGBUILD
 !.SRCINFO
 !.gitignore
+!*.1
+
