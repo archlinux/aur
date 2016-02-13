@@ -1,0 +1,63 @@
+From 5901fd41964f33b868245dc1ed8e6bd74d825e4a Mon Sep 17 00:00:00 2001
+From: Nicolas Cornu <ncornu@aldebaran.com>
+Date: Mon, 28 Dec 2015 14:19:13 +0100
+Subject: [PATCH] Use std::is_same instead of boost's one
+
+Change-Id: Icf30a7afd89aafada9be9ed8c3cf65649fbca7f7
+Reviewed-on: http://gerrit.aldebaran.lan/66726
+Reviewed-by: ncornu <ncornu@aldebaran.com>
+Tested-by: ncornu <ncornu@aldebaran.com>
+---
+ qi/detail/executioncontext.hpp | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/qi/detail/executioncontext.hpp b/qi/detail/executioncontext.hpp
+index fa9a5f2..cba60f2 100644
+--- a/qi/detail/executioncontext.hpp
++++ b/qi/detail/executioncontext.hpp
+@@ -10,6 +10,7 @@
+ #include <boost/function.hpp>
+ #include <qi/clock.hpp>
+ #include <qi/api.hpp>
++#include <type_traits>
+ 
+ namespace qi
+ {
+@@ -53,14 +54,14 @@ public:
+   /// call a callback asynchronously to be executed in delay
+   /// @deprecated since 2.5
+   template <typename R>
+-  QI_API_DEPRECATED typename boost::disable_if<boost::is_same<R, void>,
++  QI_API_DEPRECATED typename boost::disable_if<std::is_same<R, void>,
+                               qi::Future<R> >::type
+       async(const boost::function<R()>& callback,
+           qi::Duration delay);
+   /// call a callback asynchronously to be executed on tp
+   /// @deprecated since 2.5
+   template <typename R>
+-  QI_API_DEPRECATED typename boost::disable_if<boost::is_same<R, void>,
++  QI_API_DEPRECATED typename boost::disable_if<std::is_same<R, void>,
+                               qi::Future<R> >::type
+       async(const boost::function<R()>& callback, qi::SteadyClockTimePoint tp);
+ 
+@@ -157,7 +158,7 @@ void checkCanceled(qi::Future<void> f, qi::Promise<R> p)
+ }
+ 
+ template <typename R>
+-typename boost::disable_if<boost::is_same<R, void>,
++typename boost::disable_if<std::is_same<R, void>,
+                             qi::Future<R> >::type
+     ExecutionContext::async(const boost::function<R()>& callback,
+                             qi::Duration delay)
+@@ -174,7 +175,7 @@ typename boost::disable_if<boost::is_same<R, void>,
+ }
+ 
+ template <typename R>
+-typename boost::disable_if<boost::is_same<R, void>,
++typename boost::disable_if<std::is_same<R, void>,
+                             qi::Future<R> >::type
+     ExecutionContext::async(const boost::function<R()>& callback,
+                             qi::SteadyClockTimePoint tp)
+-- 
+2.7.1
+

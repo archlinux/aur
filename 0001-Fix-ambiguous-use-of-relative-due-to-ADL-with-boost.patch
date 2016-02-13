@@ -1,0 +1,29 @@
+From a3672cee0da8ad00dc54955be7c51c2c13a196e2 Mon Sep 17 00:00:00 2001
+From: Nicolas Cornu <ncornu@aldebaran.com>
+Date: Mon, 28 Dec 2015 14:16:39 +0100
+Subject: [PATCH] Fix ambiguous use of "relative()" due to ADL with boost
+
+Change-Id: Ib7beb4557621cd509b50d030bdc52dd53db8193a
+Reviewed-on: http://gerrit.aldebaran.lan/66725
+Reviewed-by: ncornu <ncornu@aldebaran.com>
+Tested-by: ncornu <ncornu@aldebaran.com>
+---
+ src/sdklayout-boost.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/sdklayout-boost.cpp b/src/sdklayout-boost.cpp
+index ba11d44..cd3f68e 100644
+--- a/src/sdklayout-boost.cpp
++++ b/src/sdklayout-boost.cpp
+@@ -539,7 +539,7 @@ namespace qi {
+             const std::string fullPath = itD->path().string(qi::unicodeFacet());
+             if (boost::regex_match(fullPath, pathRegex))
+             {
+-              std::string relativePath = relative(dataPath, itD->path());
++              std::string relativePath = ::relative(dataPath, itD->path());
+               if (matchedPaths.find(relativePath) == matchedPaths.end())
+               {
+                 // we only add the match if it was not found in a previous
+-- 
+2.7.1
+
