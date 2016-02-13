@@ -15,7 +15,7 @@ _dejavu_font_dir="/usr/share/fonts/TTF"
 _gs_font_dir="/usr/share/fonts/Type1"
 _windows_font_dir="/usr/share/fonts/WindowsFonts"
 _srcname="ImageMagick"
-_srcver="6.9.3-3"
+_srcver="6.9.3-4"
 pkgname=imagemagick-full
 pkgver="$(echo ${_srcver} | tr '-' '_')"
 pkgrel=1
@@ -45,7 +45,7 @@ backup=("etc/ImageMagick-${pkgver%%.*}/coder.xml"
         "etc/ImageMagick-${pkgver%%.*}/type-windows.xml")
 options=('!docs' 'libtool' '!emptydirs')
 source=("http://www.imagemagick.org/download/${_srcname}-${_srcver}.tar.xz")
-sha256sums=('d127f76c674f1454adf0444ecec96f344c3dca522cc3320f0ef88d8060123048')
+sha256sums=('0d4266940d27afb617fc8b3481ffdf63dd02ca13806d581ac5cb28638725c275')
 
 build() {
 	cd "$_srcname"-"$_srcver"
