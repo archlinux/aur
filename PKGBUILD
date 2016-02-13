@@ -14,8 +14,7 @@ license=('GPL')
 depends=('xfce4-panel' 'libindicator-gtk2' 'libindicator-gtk3' 'hicolor-icon-theme' 'xdg-utils')
 makedepends=('intltool' 'xfce4-dev-tools')
 optdepends=('indicator-application-gtk2: take menus from applications and place them in the panel'
-            'indicator-sound-gtk2: unified sound menu'
-            'indicator-sound: GTK3 unified sound menu')
+            'indicator-sound: unified sound menu')
 install=$pkgname.install
 source=(http://archive.xfce.org/src/panel-plugins/xfce4-indicator-plugin/${_major}/${_pkgname}-${pkgver}.tar.bz2)
 sha256sums=('c46b529b0f31c8ba9401fdc3e245ed3f30e61fadc0e8d2ddb6aaa10b02edbd52')
