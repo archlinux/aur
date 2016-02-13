@@ -4,11 +4,11 @@
 
 pkgname=haroopad
 pkgver=0.13.1
-pkgrel=4
+pkgrel=6
 pkgdesc="A markdown enabled document processor"
 arch=('i686' 'x86_64')
 url="http://pad.haroopress.com/"
-changelog=('changelog')
+changelog='changelog'
 license=('custom')
 depends=('xdg-utils'
          'desktop-file-utils'
