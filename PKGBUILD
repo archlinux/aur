@@ -1,7 +1,7 @@
 # Maintainer: Bjarno Oeyen <aur _AT_ bjarno _DOT_ be>
 
 pkgname=game-jolt-client
-pkgrel=1
+pkgrel=2
 pkgver=0.3.0
 pkgdesc="Play games. Make games. Stay indie."
 url="http://gamejolt.com/client"
@@ -27,7 +27,7 @@ package() {
 	ln -s ../../opt/game-jolt-client/game-jolt-client "$pkgdir"/usr/bin/game-jolt-client
 
 	install -Dm644 "../APPLICENSE"               "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 "../Game Jolt Client.desktop" "${pkgdir}/usr/share/applications/Game Jolt Client.desktop"
+	install -Dm644 "../game-jolt-client.desktop" "${pkgdir}/usr/share/applications/game-jolt-client.desktop"
 	install -Dm644 "../game-jolt.png"            "${pkgdir}/usr/share/pixmaps/game-jolt.png"
 	install -Dm644 "../package.json.new"         "${pkgdir}/opt/game-jolt-client/package.json"
 }
