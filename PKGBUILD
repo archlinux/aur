@@ -1,8 +1,8 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=getver
-pkgver=0.4
-pkgrel=2
+pkgver=0.5
+pkgrel=1
 pkgdesc='Find the latest version number for a given URL'
 arch=('x86_64' 'i686')
 url='https://github.com/xyproto/getver/'
