@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 _srcname="ImageMagick"
-_srcver="6.9.3-3"
+_srcver="6.9.3-4"
 pkgname=imagemagick-full-doc
 pkgver="$(echo ${_srcver} | tr '-' '_')"
 pkgrel=1
@@ -12,7 +12,7 @@ license=('custom')
 provides=('imagemagick-doc')
 conflicts=('imagemagick-doc' 'imagemagick-git-doc')
 source=("http://www.imagemagick.org/download/${_srcname}-${_srcver}.tar.xz")
-sha256sums=('d127f76c674f1454adf0444ecec96f344c3dca522cc3320f0ef88d8060123048')
+sha256sums=('0d4266940d27afb617fc8b3481ffdf63dd02ca13806d581ac5cb28638725c275')
 
 build() {
 	cd "$_srcname"-"$_srcver"
