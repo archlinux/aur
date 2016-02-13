@@ -1,6 +1,6 @@
 # Maintainer: Vinson Chuong <vinsonchuong@gmail.com>
 pkgname=prototypical
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc=A\ starting\ point\ for\ a\ project
 arch=(any)
@@ -16,13 +16,13 @@ depends=(
 	npm
 )
 optdepends=(hub)
-makedepends=(
+makedepends=(clidoc)
+checkdepends=(
 	bats-git
 	git
 )
-checkdepends=(bats-git)
-source=(https://github.com/vinsonchuong/prototypical/archive/v0.0.3-1.tar.gz)
-md5sums=('6050e566342d250aa8aec016e742176b')
+source=(https://github.com/vinsonchuong/prototypical/archive/v0.0.4-1.tar.gz)
+md5sums=("SKIP")
 build () 
 { 
     cd "${srcdir}/${pkgname}-${pkgver}-${pkgrel}";
@@ -30,14 +30,18 @@ build ()
 }
 check () 
 { 
-    cd "${srcdir}/${pkgname}-${pkgver}-${pkgrel}";
-    PATH="${PWD}/bin:${PATH}" bats spec
+    true
 }
 package () 
 { 
     cd "${srcdir}/${pkgname}-${pkgver}-${pkgrel}";
     [[ -d 'bin' ]] && install -Dm755 -t "${pkgdir}/usr/bin" bin/*;
-    [[ -d 'lib' ]] && install -Dm755 -t "${pkgdir}/usr/lib/${pkgname}" lib/*;
+    if [[ -d 'lib' ]]; then
+        for file in $(find 'lib' -type 'f');
+        do
+            install -D -m "$(stat -c '%a' "$file")" "$file" "${pkgdir}/usr/lib/${pkgname}/${file#'lib/'}";
+        done;
+    fi;
     [[ -d 'help' ]] && install -Dm644 -t "${pkgdir}/usr/share/${pkgname}/help" help/*;
     [[ -f 'README.md' ]] && install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" 'README.md';
     [[ -d 'doc' ]] && install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}/doc" doc/*.md;
