@@ -1,16 +1,16 @@
 # Contributor: Angelo Theodorou <encelo@users.sourceforge.net>
 
 pkgname=taskcoach
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="A simple open source todo manager to manage personal tasks and todo lists"
 arch=('any')
 url="http://www.taskcoach.org"
 license=('GPL3')
-depends=('python2' 'wxpython2.8' 'curl' 'twisted')
+depends=('python2' 'wxpython2.8' 'curl' 'twisted' 'libxss')
 changelog=taskcoach.changelog
 source=(http://downloads.sourceforge.net/sourceforge/$pkgname/TaskCoach-$pkgver.tar.gz)
-md5sums=('ef131184e8d7236d80bd07080fe2b014')
+md5sums=('10c145061ea72b9ecbb9e276cc3ef10c')
 
 build() {
 	cd $srcdir/TaskCoach-$pkgver

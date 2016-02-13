@@ -1,3 +1,8 @@
+2016-02-13 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added libxss as a dependency
+
 2014-04-01 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
 
 	* PKGBUILD :
