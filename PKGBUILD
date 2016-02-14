@@ -3,17 +3,17 @@
 
 _dbname=cremona_ellcurve
 pkgname=sage-data-$_dbname
-pkgver=20150519
+pkgver=20160211
 pkgrel=1
 pkgdesc="John Cremona's large database of elliptic curves for SageMath"
-arch=('any')
+arch=(any)
 url="http://www.sagemath.org"
-license=('GPL')
+license=(GPL)
 depends=(sagemath)
 makedepends=()
 #source=("http://www.sagemath.org/packages/upstream/database_$_dbname/database_$_dbname-$pkgver.tar.bz2")
 source=("http://mirrors.mit.edu/sage/spkg/upstream/database_$_dbname/database_$_dbname-$pkgver.tar.bz2")
-md5sums=('aac18192545c43e1c2e282169eecfa04')
+md5sums=('4bfe0c7630dfcadfe4ec1d0c635ce423')
 
 package() {
   cd src
