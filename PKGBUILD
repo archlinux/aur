@@ -1,29 +1,27 @@
 # Maintainer: Alex Szczuczko <alex@szc.ca>
 
 pkgname=handoffate-gog
-pkgver=1.0.0.1
+pkgver=2.7.0.9
 pkgrel=1
 pkgdesc="A hybrid roguelike/action-RPG/deck builder"
 arch=("i686" "x86_64")
 url="http://www.gog.com/game/hand_of_fate"
 license=("custom:commercial")
 options=()
-depends=()
+depends=("gcc-libs" "gcc-libs-multilib" "glibc" "glu" "libx11" "libxau" "libxcb" "libxcursor" "libxdmcp" "libxext" "libxfixes" "libxrandr" "libxrender" "libgl")
 source=("${pkgname}.desktop"
-        "gog_hand_of_fate_${pkgver}.tar.gz::file://gog_hand_of_fate_${pkgver}.tar.gz")
+        "launch.sh"
+        "gog_hand_of_fate_${pkgver}.sh::file://gog_hand_of_fate_${pkgver}.sh")
 sha256sums=("065176e1ddc31fdb96af3f7910522573fdace45ff931763b05b1e3ec7797efe9"
-            "9e1265898618f3d55ad022b5dd932b8bdd0752eb042a3b387fe1a2ab6996f494")
-
-# Modify depends for the arch type
-if [ "$CARCH" = "x86_64" ]
-then
-    depends+=("lib32-gcc-libs" "lib32-glibc" "lib32-glu" "lib32-libx11" "lib32-libxau" "lib32-libxcb" "lib32-libxcursor" "lib32-libxdmcp" "lib32-libxext" "lib32-libxfixes" "lib32-libxrandr" "lib32-libxrender" "lib32-libgl")
-else
-    depends+=("gcc-libs" "gcc-libs-multilib" "glibc" "glu" "libx11" "libxau" "libxcb" "libxcursor" "libxdmcp" "libxext" "libxfixes" "libxrandr" "libxrender" "libgl")
-fi
+            "6262d1bbe1d7e99fa019905cff634b660466476f7431dcddd37b499790e14485"
+            "ec446a2fcc7755179fc8f0ae25ede2cf3ae50bcbb163d7f47aed9ca15334b24f")
 
 # Disable compression of the package
 PKGEXT=".pkg.tar"
+
+prepare() {
+    ln -s "data/noarch/" "$srcdir/Hand of Fate"
+}
 
 package() {
     # Binaries
@@ -33,6 +31,7 @@ package() {
     else
         install -Dm755 "$srcdir/Hand of Fate/game/Hand of Fate.x86" "$pkgdir/opt/$pkgname/game/Hand of Fate"
     fi
+    install -m755 "$srcdir/launch.sh" "$pkgdir/opt/$pkgname/game/launch.sh"
 
     # Data
     # Hardlink files to save the disk space and time spent copying them (they are large)
@@ -46,7 +45,7 @@ package() {
         "$srcdir/Hand of Fate/docs/End User License Agreement.txt"
 
     # Icon
-    install -m644 -t "$pkgdir/opt/$pkgname/" "$srcdir/Hand of Fate/support/gog-hand-of-fate.png"
+    install -m644 -t "$pkgdir/opt/$pkgname/" "$srcdir/Hand of Fate/support/icon.png"
 
     #
     # System integration
@@ -54,7 +53,7 @@ package() {
 
     # /bin
     install -m755 -d "$pkgdir/usr/bin/"
-    ln -s "/opt/$pkgname/game/Hand of Fate" "$pkgdir/usr/bin/$pkgname"
+    ln -s "/opt/$pkgname/game/launch.sh" "$pkgdir/usr/bin/$pkgname"
 
     # License
     install -m755 -d "$pkgdir/usr/share/licenses/$pkgname/"
@@ -62,7 +61,7 @@ package() {
 
     # Icon
     install -m755 -d "$pkgdir/usr/share/pixmaps/"
-    ln -s "/opt/$pkgname/gog-hand-of-fate.png" "$pkgdir/usr/share/pixmaps/${pkgname}.png"
+    ln -s "/opt/$pkgname/icon.png" "$pkgdir/usr/share/pixmaps/${pkgname}.png"
 
     # .desktop File
     install -m755 -d "$pkgdir/usr/share/applications/"

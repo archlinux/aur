@@ -1,4 +1,5 @@
 *.swp
+*.sh
 *.tar.gz
 *.tar.xz
 *.tar
