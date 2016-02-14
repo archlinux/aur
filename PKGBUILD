@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=freecad-greyltc-git
-pkgver=r6226.7773ad0
+pkgver=1
 pkgrel=1
 pkgdesc='A general purpose 3D CAD modeler - git checkout of greltc'\''s repo'
 arch=('i686' 'x86_64')
@@ -16,12 +16,12 @@ optdepends=('freecad-dxf: import DXF files'
 	'pycollada-git: create, edit and load COLLADA documents')
 provides=('freecad')
 conflicts=('freecad' 'freecad-git')
-source=('freecad::git://github.com/greysAcademicCode/FreeCAD')
+source=('freecad::git://github.com/greyltc/FreeCAD')
 sha256sums=('SKIP')
 
 pkgver() {
-	cd freecad/
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd freecad/
+  echo$(git describe --tags --abbrev=0)
 }
 
 prepare() {
