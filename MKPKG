@@ -1,5 +1,5 @@
 pkgname=('lightdm-pantheon-greeter-bzr')
-builddeps=('granite-bzr' 'libindicator-gtk3')
+builddeps=('granite-bzr' 'wingpanel-bzr')
 
 check_bzr $packagedir/$pkgname/${pkgname%-*}
 
