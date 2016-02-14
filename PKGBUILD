@@ -3,7 +3,7 @@
 _name=distribution
 pkgname="python-${_name}"
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Short, simple, direct scripts for creating ASCII graphical histograms in the terminal'
 url='https://github.com/philovivero/distribution'
 arch=('any')
@@ -15,7 +15,7 @@ sha256sums=('b6bfca0b2a802c179f0a9b3dc12290ac0331f10f7472230e1e664aeff16ebd63')
 
 prepare() {
   cd "${srcdir}/${_name}-${pkgver}"
-  sed -i 's|^#!/usr/bin/python$|#!/usr/bin/python2|' ${_name}.py
+  sed -i 's|^#!/usr/bin/env\ python$|#!/usr/bin/env\ python2|' ${_name}.py
 }
 
 package() {
