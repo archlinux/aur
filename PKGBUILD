@@ -1,6 +1,6 @@
 # Maintainer: Grigorii Horos <horosgrisa@gmail.com>
 
-_git=423988a4115e449b3f9e4bc1ec9fcdbf14eb37d0
+_git=d3795f0b84e6e4001536c4fc4b10a3869f8e3214
 _repo=papirus-suite
 pkgbase=papirus
 pkgname=(
@@ -20,7 +20,7 @@ pkgname=(
      'vlc-skin-papirus'
      'libreoffice-style-papirus'
 )
-pkgver=20160213
+pkgver=20160214
 pkgrel=1
 arch=('any')
 url="https://github.com/varlesh/${_repo}"
@@ -28,7 +28,7 @@ license=('CCPL:by-sa')
 
 options=('!strip')
 source=("${_repo}-${pkgver}.tar.gz::${url}/archive/${_git}.tar.gz")
-sha256sums=('224701f90e9c3da93f3a31cd1a0b1141115577dbdccaf30c1a706fe4330221d6')
+sha256sums=('d0609e4b0bab538b69fbd991ae1ec777da4d4c8c231a05f458df840d824c7a79')
 
 package_papirus(){
     pkgdesc="Meta-package for modified and adaptive Paper theme"
