@@ -1,7 +1,7 @@
 pkgbase = cubway-git
 	pkgdesc = WebApp container implemented by QtWebkit, which provides some JavaScript API.
 	pkgver = r122.b689803
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Icenowy/Cubway
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = cubway-git
 	depends = qt5-base
 	depends = qt5-webkit
 	depends = libqtxdg
+	provides = cubway
 	source = cubway::git+https://github.com/Icenowy/Cubway.git
 	source = https://cirno.xyz/~jqk/files/Babel.tar.gz
 	md5sums = SKIP

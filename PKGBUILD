@@ -2,12 +2,13 @@
 _pkgname=cubway
 pkgname=$_pkgname-git
 pkgver=r122.b689803
-pkgrel=2
+pkgrel=3
 pkgdesc='WebApp container implemented by QtWebkit, which provides some JavaScript API.'
 arch=('i686' 'x86_64')
 url='https://github.com/Icenowy/Cubway'
 depends=('qt5-base' 'qt5-webkit' 'libqtxdg')
 makedepends=('git' 'cmake' 'make' 'gcc')
+provides=('cubway')
 source=('cubway::git+https://github.com/Icenowy/Cubway.git' 'https://cirno.xyz/~jqk/files/Babel.tar.gz')
 md5sums=('SKIP' 'bf23c4f0cec5f235617c5fa9ee02cc91')
 
