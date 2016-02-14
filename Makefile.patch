@@ -1,0 +1,9 @@
+--- Makefile.orig	2015-07-04 18:23:14.000000000 +0300
++++ Makefile		2016-02-14 17:58:32.246196892 +0300
+@@ -1,5 +1,5 @@
+ DEST=fuse-zip
+-prefix=/usr/local
++prefix=/usr
+ exec_prefix=$(prefix)
+ bindir=$(exec_prefix)/bin
+ datarootdir=$(prefix)/share
