@@ -4,11 +4,12 @@ _python=python
 _name=wdocker
 
 pkgname=$_python-wdocker-git
-pkgver=21
+pkgver=32
 pkgrel=1
 pkgdesc='Define docker commands in your Dockerfile'
 depends=('python')
 makedepends=('git')
+optdepends=('python-ansicolors: colored output')
 arch=('any')
 source=("git://github.com/babab/${_name}.git")
 url='http://pypi.python.org/pypi/wdocker'
