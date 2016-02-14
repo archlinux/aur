@@ -12,8 +12,9 @@ source=("http://downloads.sourceforge.net/project/sardi/${pkgname}-${pkgver}-${p
 sha256sums=('SKIP')
 
 package() {
-  cd ${pkgname}-${pkgver}-${pkgrel}
-
+  #cd ${pkgname}-${pkgver}-${pkgrel}
+  cd src
+  
   install -dm 755 "${pkgdir}"/usr/share/icons
   cp -dr --no-preserve='ownership' Sardi "${pkgdir}"/usr/share/icons/
   cp -dr --no-preserve='ownership' Sardi\ Faenza\ Black "${pkgdir}"/usr/share/icons/
