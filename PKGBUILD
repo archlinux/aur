@@ -1,20 +1,21 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=maya-calendar-bzr
-pkgver=r807
+pkgver=r882
 pkgrel=1
 pkgdesc='The Pantheon Calendar'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/maya'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('contractor-bzr' 'folks' 'granite-bzr' 'libchamplain' 'libpeas')
+depends=('cairo' 'clutter' 'clutter-gtk' 'evolution-data-server' 'folks'
+         'gdk-pixbuf2' 'geocode-glib' 'glib2' 'glibc' 'gtk3' 'libchamplain'
+         'libgee' 'libical' 'libnotify' 'libsoup'
+         'libgranite.so')
 makedepends=('bzr' 'cmake' 'vala')
 install='maya-calendar.install'
-source=('maya-calendar::bzr+lp:maya'
-        'maya-calendar-evolution3.16.patch')
-sha256sums=('SKIP'
-            'd49987b6e2158a1403521354aeeacd23e65ada377f4047f9b9a7f0b5249c2df7')
+source=('maya-calendar::bzr+lp:maya')
+sha256sums=('SKIP')
 
 pkgver() {
   cd maya-calendar
@@ -25,7 +26,6 @@ pkgver() {
 prepare() {
   cd maya-calendar
 
-  patch -Np1 -i ../maya-calendar-evolution3.16.patch
   sed 's|${CMAKE_INSTALL_FULL_LIBDIR}|${CMAKE_INSTALL_PREFIX}/lib|g' -i $(grep -rl CMAKE_INSTALL_FULL_LIBDIR)
 }
 
