@@ -2,13 +2,13 @@
 # Contributor: Vitaliy Berdinskikh <ur6lad@archlinux.org.ua>
 
 pkgname=hamlib
-pkgver=1.2.15.3
-pkgrel=3
+pkgver=3.0
+pkgrel=1
 pkgdesc="Ham radio equipment control libraries"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://hamlib.org"
 license=('GPL' 'LGPL')
-depends=('perl' 'python2' 'tcl' 'libxml2' 'libusb-compat' 'perl-opcodes' 'libtool')
+depends=('perl' 'python2' 'tcl' 'libxml2' 'libusb-compat' 'libtool')
 makedepends=('libtool' 'swig' 'pkgconfig')
 source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz)
 options=('!emptydirs')
@@ -26,7 +26,7 @@ build() {
 		--sbindir=/usr/bin \
 		--with-perl-binding \
 		--with-python-binding \
-		--enable-tcl-binding
+		--with-tcl-binding
 
 	make
 }
@@ -46,6 +46,5 @@ package() {
 	/usr/bin/find $pkgdir -name '.packlist' -delete
 	/usr/bin/find $pkgdir -name '*.pod' -delete
 }
-
-md5sums=('3cad8987e995a00e5e9d360e2be0eb43')
-sha256sums=('a2ca4549e4fd99d6e5600e354ebcb57502611aa63c6921c1b8a825289833f75e')
+sha1sums=('d7da25f1d4b48f9e2a90f45a114ae266bb6e8885')
+sha256sums=('bc16546161a47e21a44a710a40aeb0bce478f112bffcc4f253eb27e150f1c21e')
