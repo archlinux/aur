@@ -1,6 +1,6 @@
 pkgbase="gcc-multilib-trunk-git"
 pkgname=('gcc-multilib-git' 'gcc-libs-multilib-git' 'lib32-gcc-libs-git' 'gcc-objc-multilib-git')
-pkgver=6.0.139276.6f5a4f4
+pkgver=6.0.144658.2959d9c
 pkgrel=1
 pkgdesc="The GNU Compiler Collection developmental snapshot"
 arch=('any')
@@ -14,6 +14,13 @@ md5sums=('SKIP')
 
 _basedir="gcc"
 
+# CHOST is in the form <architecture>-<vendor>-<operatingSystem>-<cLibrary>
+# Arch currently reports CHOST with vendor "unknown".  GCC expected this until recently, when for architecture x86_64 it now expects "pc".
+_CHOST=${CHOST}
+if [[ "${CHOST}" == 'x86_64-unknown-linux-gnu' ]]; then
+  _CHOST='x86_64-pc-linux-gnu'
+fi
+
 pkgver() {
   cd ${srcdir}/${_basedir}
 
@@ -23,7 +30,7 @@ pkgver() {
   echo ${_ver}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
-_libdir="usr/lib/gcc/$CHOST/$pkgver"
+_libdir="usr/lib/gcc/$_CHOST/$pkgver"
 
 prepare() {
         cd ${srcdir}/${_basedir}
@@ -69,7 +76,7 @@ build() {
         make
 
         # make documentation
-        make -C $CHOST/libstdc++-v3/doc doc-man-doxygen
+        make -C $_CHOST/libstdc++-v3/doc doc-man-doxygen
 }
 
 check() {
@@ -102,20 +109,20 @@ package_gcc-multilib-git()
         install -m755 gcc/gcov $pkgdir/usr/bin/
         install -m755 -t $pkgdir/${_libdir}/ gcc/{cc1,cc1plus,collect2,lto1}
 
-        make -C $CHOST/libgcc DESTDIR=${pkgdir} install
-        make -C $CHOST/32/libgcc DESTDIR=${pkgdir} install
+        make -C $_CHOST/libgcc DESTDIR=${pkgdir} install
+        make -C $_CHOST/32/libgcc DESTDIR=${pkgdir} install
 
         for i in ${pkgdir}/usr/lib{,32}/libgcc_s.so*; do
                 [ -f "$i" ] && rm $i
         done
 
-        make -C $CHOST/libstdc++-v3/src DESTDIR=${pkgdir} install
-        make -C $CHOST/libstdc++-v3/include DESTDIR=${pkgdir} install
-        make -C $CHOST/libstdc++-v3/libsupc++ DESTDIR=${pkgdir} install
-        make -C $CHOST/libstdc++-v3/python DESTDIR=${pkgdir} install
-        make -C $CHOST/32/libstdc++-v3/src DESTDIR=${pkgdir} install
-        make -C $CHOST/32/libstdc++-v3/include DESTDIR=${pkgdir} install
-        make -C $CHOST/32/libstdc++-v3/libsupc++ DESTDIR=${pkgdir} install
+        make -C $_CHOST/libstdc++-v3/src DESTDIR=${pkgdir} install
+        make -C $_CHOST/libstdc++-v3/include DESTDIR=${pkgdir} install
+        make -C $_CHOST/libstdc++-v3/libsupc++ DESTDIR=${pkgdir} install
+        make -C $_CHOST/libstdc++-v3/python DESTDIR=${pkgdir} install
+        make -C $_CHOST/32/libstdc++-v3/src DESTDIR=${pkgdir} install
+        make -C $_CHOST/32/libstdc++-v3/include DESTDIR=${pkgdir} install
+        make -C $_CHOST/32/libstdc++-v3/libsupc++ DESTDIR=${pkgdir} install
 
         install -d $pkgdir/usr/share/gdb/auto-load/usr/lib
         mv $pkgdir/usr/lib/libstdc++.so.6.*-gdb.py \
@@ -129,19 +136,19 @@ package_gcc-multilib-git()
         make -C gcc DESTDIR=${pkgdir} install-mkheaders
         make -C lto-plugin DESTDIR=${pkgdir} install
 
-        make -C $CHOST/libcilkrts DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS \
+        make -C $_CHOST/libcilkrts DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS \
         install-nodist_cilkincludeHEADERS
-        make -C $CHOST/libgomp DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS \
+        make -C $_CHOST/libgomp DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS \
         install-nodist_libsubincludeHEADERS
-        make -C $CHOST/libitm DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
-        make -C $CHOST/libquadmath DESTDIR=${pkgdir} install-nodist_libsubincludeHEADERS
-        make -C $CHOST/libsanitizer DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
-        make -C $CHOST/libsanitizer/asan DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
-        make -C $CHOST/32/libcilkrts DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
-        make -C $CHOST/32/libgomp DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
-        make -C $CHOST/32/libitm DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
-        make -C $CHOST/32/libsanitizer DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
-        make -C $CHOST/32/libsanitizer/asan DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
+        make -C $_CHOST/libitm DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
+        make -C $_CHOST/libquadmath DESTDIR=${pkgdir} install-nodist_libsubincludeHEADERS
+        make -C $_CHOST/libsanitizer DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
+        make -C $_CHOST/libsanitizer/asan DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
+        make -C $_CHOST/32/libcilkrts DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
+        make -C $_CHOST/32/libgomp DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
+        make -C $_CHOST/32/libitm DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
+        make -C $_CHOST/32/libsanitizer DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
+        make -C $_CHOST/32/libsanitizer/asan DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
 
         make -C libiberty DESTDIR=${pkgdir} install
         # install PIC version of libiberty
@@ -190,7 +197,7 @@ EOF
         chmod 755 $pkgdir/usr/bin/c{8,9}9
 
         # install the libstdc++ man pages
-        make -C $CHOST/libstdc++-v3/doc DESTDIR=$pkgdir doc-install-man
+        make -C $_CHOST/libstdc++-v3/doc DESTDIR=$pkgdir doc-install-man
 
         # Install Runtime Library Exception
         install -d ${pkgdir}/usr/share/licenses/gcc-multilib/
@@ -209,23 +216,23 @@ package_gcc-libs-multilib-git()
 
         cd ${srcdir}/gcc-build
 
-        make -C $CHOST/libgcc DESTDIR=${pkgdir} install-shared
+        make -C $_CHOST/libgcc DESTDIR=${pkgdir} install-shared
         [ -f ${pkgdir}/${_libdir}/libgcc_eh.a ] && rm ${pkgdir}/${_libdir}/libgcc_eh.a
 
         for lib in libatomic libcilkrts libgfortran libgomp \
         libitm libquadmath libsanitizer/{a,l,ub}san libstdc++-v3/src libvtv; do
-                [ -d $CHOST/$lib ] && make -C $CHOST/$lib DESTDIR=${pkgdir} install-toolexeclibLTLIBRARIES
+                [ -d $_CHOST/$lib ] && make -C $_CHOST/$lib DESTDIR=${pkgdir} install-toolexeclibLTLIBRARIES
         done
 
         [[ $CARCH == "x86_64" ]] && \
-        make -C $CHOST/libsanitizer/tsan DESTDIR=${pkgdir} install-toolexeclibLTLIBRARIES
+        make -C $_CHOST/libsanitizer/tsan DESTDIR=${pkgdir} install-toolexeclibLTLIBRARIES
 
-        make -C $CHOST/libobjc DESTDIR=${pkgdir} install-libs
+        make -C $_CHOST/libobjc DESTDIR=${pkgdir} install-libs
 
-        make -C $CHOST/libstdc++-v3/po DESTDIR=${pkgdir} install
+        make -C $_CHOST/libstdc++-v3/po DESTDIR=${pkgdir} install
 
         for lib in libgomp libitm libquadmath; do
-                [ -d $CHOST/$lib ] && make -C $CHOST/$lib DESTDIR=${pkgdir} install-info
+                [ -d $_CHOST/$lib ] && make -C $_CHOST/$lib DESTDIR=${pkgdir} install-info
         done
 
         # remove stuff in lib32-gcc-libs
@@ -246,15 +253,15 @@ package_lib32-gcc-libs-git()
 
         cd ${srcdir}/gcc-build
 
-        make -C $CHOST/32/libgcc DESTDIR=${pkgdir} install-shared
+        make -C $_CHOST/32/libgcc DESTDIR=${pkgdir} install-shared
         [ -f ${pkgdir}/${_libdir}/32/libgcc_eh.a ] && rm ${pkgdir}/${_libdir}/32/libgcc_eh.a
 
         for lib in libatomic libcilkrts libgfortran libgomp libitm libquadmath \
         libsanitizer/{a,l,ub}san libstdc++-v3/src libvtv; do
-                [ -d $CHOST/32/$lib ] && make -C $CHOST/32/$lib DESTDIR=${pkgdir} install-toolexeclibLTLIBRARIES
+                [ -d $_CHOST/32/$lib ] && make -C $_CHOST/32/$lib DESTDIR=${pkgdir} install-toolexeclibLTLIBRARIES
         done
 
-        [ -d $CHOST/32/libobjc ] && make -C $CHOST/32/libobjc DESTDIR=${pkgdir} install-libs
+        [ -d $_CHOST/32/libobjc ] && make -C $_CHOST/32/libobjc DESTDIR=${pkgdir} install-libs
 
         # remove stuff in gcc-libs-multilib
         [ -d ${pkgdir}/usr/lib ] && rm -r ${pkgdir}/usr/lib
@@ -272,7 +279,7 @@ package_gcc-objc-multilib-git()
         conflicts=('gcc-objc')
 
         cd ${srcdir}/gcc-build
-        make DESTDIR=$pkgdir -C $CHOST/libobjc install-headers
+        make DESTDIR=$pkgdir -C $_CHOST/libobjc install-headers
         install -dm755 $pkgdir/${_libdir}
         install -m755 gcc/cc1obj{,plus} $pkgdir/${_libdir}/
 
