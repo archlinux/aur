@@ -1,5 +1,5 @@
-# Maintainer: Justin Dray <justin@dray.be>
-# Maintainer: Justin Dray <justin@dray.be>
+# Maintainer: Chris Clonch <chris at theclonchs dot com>
+# Contributer: Justin Dray <justin@dray.be>
 
 pkgname='chronograf'
 pkgver='0.10.0'
