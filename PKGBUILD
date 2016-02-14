@@ -7,9 +7,11 @@ pkgname=(
      'papirus'
      'papirus-icon-theme-gtk'
      'papirus-icon-theme-kde'
+     'papirus-gtk-theme'
      'papirus-look-and-feel'
      'plasma-theme-papirus'
      'papirus-color-scheme'
+     'papirus-qtcurve-theme'
      'papirus-aurorae-theme'
      'yakuake-skin-papirus'
      'papirus-konsole-colorscheme'
@@ -17,7 +19,6 @@ pkgname=(
      'bomi-skin-papirus'
      'vlc-skin-papirus'
      'libreoffice-style-papirus'
-
 )
 pkgver=20160213
 pkgrel=1
