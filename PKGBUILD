@@ -1,8 +1,8 @@
 pkgname=wlc-git
-pkgver=r873.faa4d3c
+pkgver=r877.fbb1c69
 pkgrel=2
 
-pkgdesc='Wayland compositor library'
+pkgdesc='wayland compositor library'
 url='https://github.com/Cloudef/wlc'
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -37,7 +37,10 @@ prepare() {
 
 build() {
     cd wlc
-    cmake -DCMAKE_BUILD_TYPE=Upstream -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib
+    cmake -DCMAKE_BUILD_TYPE=Upstream \
+        -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DSOURCE_WLPROTO=ON
     make
 }
 
