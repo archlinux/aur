@@ -6,9 +6,10 @@ pkgdesc="Python bindings for libosmium"
 url="http://osmcode.org/pyosmium"
 arch=('x86_64' 'i686')
 license=('custom')
-depends=('boost-libs')
+depends=('boost-libs' 'libosmium')
 optdepends=()
-conflicts=(libosmium)
+conflicts=('pyosmium')
+provides=('pyosmium')
 source=('pyosmium::git+https://github.com/osmcode/pyosmium.git')
 md5sums=('SKIP')
 
