@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Etherwall
+Comment=Etherwall Ethereum Wallet
+Exec=etherwall
+Icon=etherwall.png
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Network;Application;

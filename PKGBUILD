@@ -1,7 +1,7 @@
 # Maintainer: Ales Katona <almindor@gmail.com>
 pkgname=etherwall
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Ethereum GUI Wallet (QT5)"
 arch=(i686 x86_64)
 url="http://etherwall.com"
@@ -17,8 +17,12 @@ build() {
 }
 
 package() {
-  cd "$pkgname-release-$pkgver"
-
   mkdir -p "$pkgdir/usr/bin"
-  cp ./Etherwall "$pkgdir/usr/bin/etherwall"
+  mkdir -p "$pkgdir/usr/share/pixmaps"
+  mkdir -p "$pkgdir/usr/share/applications"
+
+  cd "$pkgname-release-$pkgver"
+  cp "../../etherwall.desktop" "$pkgdir/usr/share/applications"
+  cp "./Etherwall" "$pkgdir/usr/bin/etherwall"
+  cp "./qml/images/icon.png" "$pkgdir/usr/share/pixmaps/etherwall.png"
 }
