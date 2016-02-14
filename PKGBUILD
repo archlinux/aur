@@ -3,7 +3,7 @@
 
 pkgname=sawfish-git
 pkgver=1.11.90.6.gba51040
-pkgrel=2
+pkgrel=3
 pkgdesc='A window manager extensible using a Lisp-based scripting language.'
 arch=('i686' 'x86_64')
 url='http://sawfish.wikia.com'
