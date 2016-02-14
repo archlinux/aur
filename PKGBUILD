@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-tinydb
-pkgver=3.1.2
+pkgver=3.1.3
 pkgrel=1
 pkgdesc="Lightweight document oriented database optimized for your happiness"
 arch=('any')
@@ -11,8 +11,8 @@ url="https://github.com/msiemens/tinydb"
 license=('MIT')
 options=(!emptydirs)
 source=(https://pypi.python.org/packages/source/t/${pkgname#python-}/${pkgname#python-}-$pkgver.zip)
-md5sums=('b06cbaf837a6dfe7332dbe6fde3ff11e')
-sha256sums=('6d9df6c30fc37dad487c23bfadfa6161de422a7f2b16b55d779df88559fc9095')
+md5sums=('4c3e1c73e404bb7bf9e3bddba405b313')
+sha256sums=('c46d46e5e4e632df47c75d8bf402f3d8e08a468e782b5475398dc6ac6448e16d')
 
 build() {
   cd "$srcdir/${pkgname#python-}-$pkgver"
