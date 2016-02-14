@@ -27,7 +27,7 @@ source=('bzr+lp:noise'
         'mesa-demos-conflict.patch'
         'noise-install-dirs.patch')
 sha256sums=('SKIP'
-            '14f49009caaa5a86e0508c86e368a419bb8bf8d9317854cb7b678b1deb80085a'
+            '0bda9d1b767b6ecd6bd3285abf348f74f7451ea6ae0a725d9a91885d0ff56b8e'
             'd0ebc710a742d942e04a8df61d91dd75ae4b2aeafe7fece08f1fbc90c507f1df')
 
 pkgver() {

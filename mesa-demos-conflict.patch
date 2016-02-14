@@ -1,6 +1,6 @@
 diff -rupN noise.orig/data/CMakeLists.txt noise/data/CMakeLists.txt
---- noise.orig/data/CMakeLists.txt	2016-02-14 15:28:33.335401548 +0100
-+++ noise/data/CMakeLists.txt	2016-02-14 15:33:41.864134136 +0100
+--- noise.orig/data/CMakeLists.txt	2016-02-14 17:19:41.832028621 +0100
++++ noise/data/CMakeLists.txt	2016-02-14 17:30:04.621096326 +0100
 @@ -2,16 +2,16 @@ include (Translations)
  
  # We need to create two temporary desktop files in order to have all translations available.
@@ -18,56 +18,34 @@ diff -rupN noise.orig/data/CMakeLists.txt noise/data/CMakeLists.txt
 +    configure_file_translation(${CMAKE_CURRENT_BINARY_DIR}/noise-player-original.desktop.in ${CMAKE_CURRENT_BINARY_DIR}/noise-player.desktop ${CMAKE_SOURCE_DIR}/po/)
  endif ()
  
--configure_file_translation(${CMAKE_CURRENT_SOURCE_DIR}/noise.appdata.xml.in ${CMAKE_CURRENT_BINARY_DIR}/noise.appdata.xml ${CMAKE_SOURCE_DIR}/po/)
-+configure_file_translation(${CMAKE_CURRENT_SOURCE_DIR}/noise-player.appdata.xml.in ${CMAKE_CURRENT_BINARY_DIR}/noise-player.appdata.xml ${CMAKE_SOURCE_DIR}/po/)
+ configure_file_translation(${CMAKE_CURRENT_SOURCE_DIR}/noise.appdata.xml.in ${CMAKE_CURRENT_BINARY_DIR}/noise.appdata.xml ${CMAKE_SOURCE_DIR}/po/)
  
--install (FILES ${CMAKE_CURRENT_BINARY_DIR}/noise.appdata.xml DESTINATION share/appdata)
+ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/noise.appdata.xml DESTINATION share/appdata)
 -install (FILES ${CMAKE_CURRENT_BINARY_DIR}/noise.desktop DESTINATION share/applications)
-+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/noise-player.appdata.xml DESTINATION share/appdata)
 +install (FILES ${CMAKE_CURRENT_BINARY_DIR}/noise-player.desktop DESTINATION share/applications)
 diff -rupN noise.orig/data/noise.appdata.xml.in noise/data/noise.appdata.xml.in
---- noise.orig/data/noise.appdata.xml.in	2016-02-14 15:28:33.335401548 +0100
-+++ noise/data/noise.appdata.xml.in	1970-01-01 01:00:00.000000000 +0100
-@@ -1,37 +0,0 @@
--<?xml version="1.0" encoding="UTF-8"?>
--<!-- Copyright 2015 elementary, LLC <contact@elementary.io> -->
--<component type="desktop">
+--- noise.orig/data/noise.appdata.xml.in	2016-02-14 17:19:41.832028621 +0100
++++ noise/data/noise.appdata.xml.in	2016-02-14 17:30:19.570444585 +0100
+@@ -1,7 +1,7 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <!-- Copyright 2015 elementary, LLC <contact@elementary.io> -->
+ <component type="desktop">
 -  <id>noise.desktop</id>
--  <metadata_license>CC0-1.0</metadata_license>
--  <project_group>elementary</project_group>
--  <project_license>GPL-3.0+</project_license>
--  <_name>Music</_name>
--  <_summary>The official elementary music player</_summary>
--  <description>
--    <_p>
--      Music is a fast and beautiful audio player with a focus on
--      music and libraries. It handles external devices, CDs, and
--      album art.
--    </_p>
--  </description>
--  <releases>
--    <release timestamp="1427915704" version="0.3.1"/>
--    <release timestamp="1401003480" version="0.3.0"/>
--    <release timestamp="1376719060" version="0.2.4"/>
--    <release timestamp="1374379743" version="0.2.3"/>
--    <release timestamp="1372369509" version="0.2.2"/>
--    <release timestamp="1370825702" version="0.2.1"/>
--    <release timestamp="1355236601" version="0.2.0"/>
--    <release timestamp="1320168563" version="0.1.0"/>
--  </releases>
--  <provides>
++  <id>noise-player.desktop</id>
+   <metadata_license>CC0-1.0</metadata_license>
+   <project_group>elementary</project_group>
+   <project_license>GPL-3.0+</project_license>
+@@ -25,7 +25,7 @@
+     <release timestamp="1320168563" version="0.1.0"/>
+   </releases>
+   <provides>
 -    <binary>noise</binary>
--    <library>libnoise-core.so.0</library>
--  </provides>
--  <developer_name>elementary LLC.</developer_name>
--  <url type="homepage">http://elementary.io/</url>
--  <url type="bugtracker">https://bugs.launchpad.net/noise</url>
--  <url type="donation">https://elementary.io/get-involved#funding</url>
--  <url type="help">https://elementaryos.stackexchange.com/questions/tagged/noise</url>
--  <update_contact>contact_at_elementary.io</update_contact>
--</component>
++    <binary>noise-player</binary>
+     <library>libnoise-core.so.0</library>
+   </provides>
+   <developer_name>elementary LLC.</developer_name>
 diff -rupN noise.orig/data/noise.desktop.in.in noise/data/noise.desktop.in.in
---- noise.orig/data/noise.desktop.in.in	2016-02-14 15:28:33.335401548 +0100
+--- noise.orig/data/noise.desktop.in.in	2016-02-14 17:19:41.832028621 +0100
 +++ noise/data/noise.desktop.in.in	1970-01-01 01:00:00.000000000 +0100
 @@ -1,19 +0,0 @@
 -[Desktop Entry]
@@ -89,50 +67,9 @@ diff -rupN noise.orig/data/noise.desktop.in.in noise/data/noise.desktop.in.in
 -[Desktop Action AboutDialog]
 -Exec=noise --about
 -_Name=About @APP_NAME@
-diff -rupN noise.orig/data/noise-player.appdata.xml.in noise/data/noise-player.appdata.xml.in
---- noise.orig/data/noise-player.appdata.xml.in	1970-01-01 01:00:00.000000000 +0100
-+++ noise/data/noise-player.appdata.xml.in	2016-02-14 15:31:53.290954117 +0100
-@@ -0,0 +1,37 @@
-+<?xml version="1.0" encoding="UTF-8"?>
-+<!-- Copyright 2015 elementary, LLC <contact@elementary.io> -->
-+<component type="desktop">
-+  <id>noise-player.desktop</id>
-+  <metadata_license>CC0-1.0</metadata_license>
-+  <project_group>elementary</project_group>
-+  <project_license>GPL-3.0+</project_license>
-+  <_name>Music</_name>
-+  <_summary>The official elementary music player</_summary>
-+  <description>
-+    <_p>
-+      Music is a fast and beautiful audio player with a focus on
-+      music and libraries. It handles external devices, CDs, and
-+      album art.
-+    </_p>
-+  </description>
-+  <releases>
-+    <release timestamp="1427915704" version="0.3.1"/>
-+    <release timestamp="1401003480" version="0.3.0"/>
-+    <release timestamp="1376719060" version="0.2.4"/>
-+    <release timestamp="1374379743" version="0.2.3"/>
-+    <release timestamp="1372369509" version="0.2.2"/>
-+    <release timestamp="1370825702" version="0.2.1"/>
-+    <release timestamp="1355236601" version="0.2.0"/>
-+    <release timestamp="1320168563" version="0.1.0"/>
-+  </releases>
-+  <provides>
-+    <binary>noise-player</binary>
-+    <library>libnoise-core.so.0</library>
-+  </provides>
-+  <developer_name>elementary LLC.</developer_name>
-+  <url type="homepage">http://elementary.io/</url>
-+  <url type="bugtracker">https://bugs.launchpad.net/noise</url>
-+  <url type="donation">https://elementary.io/get-involved#funding</url>
-+  <url type="help">https://elementaryos.stackexchange.com/questions/tagged/noise</url>
-+  <update_contact>contact_at_elementary.io</update_contact>
-+</component>
 diff -rupN noise.orig/data/noise-player.desktop.in.in noise/data/noise-player.desktop.in.in
 --- noise.orig/data/noise-player.desktop.in.in	1970-01-01 01:00:00.000000000 +0100
-+++ noise/data/noise-player.desktop.in.in	2016-02-14 15:31:23.618654066 +0100
++++ noise/data/noise-player.desktop.in.in	2016-02-14 17:19:48.261652683 +0100
 @@ -0,0 +1,19 @@
 +[Desktop Entry]
 +Type=Application
@@ -153,9 +90,22 @@ diff -rupN noise.orig/data/noise-player.desktop.in.in noise/data/noise-player.de
 +[Desktop Action AboutDialog]
 +Exec=noise-player --about
 +_Name=About @APP_NAME@
+diff -rupN noise.orig/po/CMakeLists.txt noise/po/CMakeLists.txt
+--- noise.orig/po/CMakeLists.txt	2016-02-14 17:19:41.835361759 +0100
++++ noise/po/CMakeLists.txt	2016-02-14 17:28:26.395450634 +0100
+@@ -5,7 +5,7 @@ add_translations_catalog (${GETTEXT_PACK
+     ../src
+     ../plugins
+     DESKTOP_FILES
+-        ${CMAKE_BINARY_DIR}/data/noise.desktop.in
+-        ${CMAKE_BINARY_DIR}/data/noise-original.desktop.in
++        ${CMAKE_BINARY_DIR}/data/noise-player.desktop.in
++        ${CMAKE_BINARY_DIR}/data/noise-player-original.desktop.in
+     APPDATA_FILES
+         ../data/noise.appdata.xml.in)
 diff -rupN noise.orig/src/CMakeLists.txt noise/src/CMakeLists.txt
---- noise.orig/src/CMakeLists.txt	2016-02-14 15:28:33.348734291 +0100
-+++ noise/src/CMakeLists.txt	2016-02-14 15:34:39.289121176 +0100
+--- noise.orig/src/CMakeLists.txt	2016-02-14 17:19:41.845361173 +0100
++++ noise/src/CMakeLists.txt	2016-02-14 17:19:48.261652683 +0100
 @@ -88,7 +88,7 @@ vala_precompile (CLIENT_VALA_C ${SRC_TAR
    ${CLIENT_VAPI}
  )
