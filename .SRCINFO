@@ -1,0 +1,20 @@
+pkgbase = ffmpegyag
+	pkgdesc = Simple FFmpeg GUI for Linux & Windows
+	pkgver = 0.7.6
+	pkgrel = 1
+	url = https://sourceforge.net/projects/ffmpegyag
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = grep
+	makedepends = findutils
+	makedepends = make
+	makedepends = coreutils
+	depends = ffmpeg
+	depends = wxgtk
+	source = http://downloads.sourceforge.net/project/ffmpegyag/ffmpegyag_0.7.6_src.tar.gz
+	md5sums = d0191a0bcc0d0ace20a5cc6acda1bef9
+
+pkgname = ffmpegyag
+
