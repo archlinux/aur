@@ -1,6 +1,6 @@
 post_install() {
-  ln -sf /usr/local/WordPress.com/WordPress.com /usr/local/bin/WordPress.com
-  echo "Run WordPress.com after install"
+  ln -sf /usr/share/wpcom/wpcom /usr/local/bin/wpcom
+  echo "Run wpcom after install"
 }
 
 post_upgrade() {
