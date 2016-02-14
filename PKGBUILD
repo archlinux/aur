@@ -2,7 +2,7 @@
 # Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
 
 pkgname=noise-player-bzr
-pkgver=r1830
+pkgver=r1902
 pkgrel=1
 pkgdesc='The Pantheon Music Player'
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ source=('bzr+lp:noise'
         'mesa-demos-conflict.patch'
         'noise-install-dirs.patch')
 sha256sums=('SKIP'
-            'b3bec8516d9497ee961fcd607e96b7c17ed76eed3d7af4093827ff5e052d0dc0'
+            '14f49009caaa5a86e0508c86e368a419bb8bf8d9317854cb7b678b1deb80085a'
             'd0ebc710a742d942e04a8df61d91dd75ae4b2aeafe7fece08f1fbc90c507f1df')
 
 pkgver() {
