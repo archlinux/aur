@@ -1,7 +1,7 @@
 pkgbase = rpython
 	pkgdesc = Restricted python compiler
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pypy.org
 	arch = any
 	license = MIT
