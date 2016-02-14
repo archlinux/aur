@@ -1,7 +1,7 @@
 # Maintainer: Fabien JUIF <fabien.juif@gmail.com>
-application=shellshape
-pkgname=gnome-shell-extension-${application}-git
-pkgrel=1
+_application=shellshape
+pkgname=gnome-shell-extension-${_application}-git
+pkgrel=2
 pkgver=r306.839fe66
 license=('GPL3')
 pkgdesc="Tiling window manager extension for gnome-shell."
@@ -11,49 +11,49 @@ depends=('gnome-shell')
 makedepends=('git' 'npm')
 install=${pkgname}.install
 source=(
-  "git+https://github.com/timbertson/${application}"
+  "git+https://github.com/timbertson/${_application}"
 )
 sha256sums=(
   'SKIP'
 )
 
 build() {
-  cd ${srcdir}/${application}
-  build_dir=${srcdir}/${application}/${application}
+  cd ${srcdir}/${_application}
+  build_dir=${srcdir}/${_application}/${_application}
 
   # build it
   make
 }
 
 package() {
-  build_dir=${srcdir}/${application}/${application}
+  build_dir=${srcdir}/${_application}/${_application}
 
   # directories architecture
   mkdir -p ${pkgdir}/usr/share/gnome-shell/extensions/shellshape@gfxmonk.net
-  mkdir -p ${pkgdir}/usr/share/icons
+  mkdir -p ${pkgdir}/usr/share/icons/hicolor/scalable
   mkdir -p ${pkgdir}/usr/share/glib-2.0/schemas
 
   # copies
   # - extension
   dest_dir="${pkgdir}/usr/share/gnome-shell/extensions/shellshape@gfxmonk.net"
-  cp ${srcdir}/${application}/build/gjs/*.js ${dest_dir}/
+  cp ${srcdir}/${_application}/build/gjs/*.js ${dest_dir}/
   cp ${build_dir}/metadata.json ${dest_dir}/
   cp ${build_dir}/shellshape.pot ${dest_dir}/
   cp -R ${build_dir}/lib ${dest_dir}/
 
-  # Locales
+  # - locales
   cp -R ${build_dir}/locale ${pkgdir}/usr/share/locale
 
-  # Glib-2.0
-  cp ${srcdir}/${application}/schemas/*.xml ${pkgdir}/usr/share/glib-2.0/schemas/
+  # - glib-2.0
+  cp ${srcdir}/${_application}/schemas/*.xml ${pkgdir}/usr/share/glib-2.0/schemas/
 
-  # Icons
-  cp -R ${srcdir}/${application}/icons ${pkgdir}/usr/share/icons
+  # - icons
+  cp -R ${srcdir}/${_application}/icons/status ${pkgdir}/usr/share/icons/hicolor/scalable
 
 }
 
 pkgver() {
-  cd ${application}
+  cd ${_application}
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
