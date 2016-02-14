@@ -17,8 +17,8 @@
 
 
 pkgbase=linux-w110er
-_srcname=linux-4.3
-pkgver=4.3.4
+_srcname=linux-4.4
+pkgver=4.4.1
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -36,18 +36,23 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        "0001-disabling-primary-plane-in-the-noatomic-case.patch")
+        '0001-sdhci-revert.patch'
+        'tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch'
+        '0001-4.4-revert-btrfs.patch'
+        '0001-4.4-revert-xfs.patch')
 
-md5sums=('58b35794eee3b6d52ce7be39357801e7'
+md5sums=('9a78fa2eb6c68ca5a40ed5af08142599'
          'SKIP'
-         '5bbeeb57b8cff23e5c27430e60810d1b'
+         'd9e951895c8c249f0bf52d85f3e63bce'
          'SKIP'
          '2bb07837febe3baaced4c1c0afb0507c'
-         'c320955ab7d7a76f509cb24b1b55229d'
+         '3b0b8e0ea48b3320c950cd5c6958141f'
          'eb14dcfd80c00852ef81ded6e826826a'
          'df7fceae6ee5d7e7be7b60ecd7f6bb35'
-         'e4c5760bfd6da1f1052acd3f468917e8')
-
+         'e1093d9bc718f362344ab56b85d4fb76'
+         'a00ad770d2a49a282a8bbf951852c2a1'
+         'd0b2697353a167f0ca1e24506589cd22'
+         '7820a5f4c97660d4c9272ea599e3cdcc')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -65,15 +70,24 @@ prepare() {
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
+  # revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=9faac7b95ea4f9e83b7a914084cc81ef1632fd91
+  # fixes #47778 sdhci broken on some boards
+  # https://bugzilla.kernel.org/show_bug.cgi?id=106541
+  patch -Rp1 -i "${srcdir}/0001-sdhci-revert.patch"
+
+  # fixes #47805 kernel panics on platform modules
+  # https://bugzilla.kernel.org/show_bug.cgi?id=110751
+  patch -Np1 -i "${srcdir}/tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch"
+
+  # #47757 fix broken suspend from btrfs and xfs
+  patch -Np1 -i "${srcdir}/0001-4.4-revert-xfs.patch"
+  patch -Np1 -i "${srcdir}/0001-4.4-revert-btrfs.patch"
+
   
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
-
-  # fix #46968
-  # hangs on older intel hardware
-  patch -Np1 -i "${srcdir}/0001-disabling-primary-plane-in-the-noatomic-case.patch"
 
   #CPU OPTIMIZATIONS
   patch -Np1 -i "${srcdir}/enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
