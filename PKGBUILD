@@ -5,7 +5,7 @@ pkgver=1.2.7
 pkgrel=1
 pkgdesc="Manage your Wordpress.com and Jetpack-enabled sites in one place"
 arch=(i686 x86_64)
-url=https://desktop.wordpress.com
+url=https://public-api.wordpress.com/rest/v1.1/desktop/linux/download?type=deb
 license=(GPL2)
 depends=()
 conflicts=()
