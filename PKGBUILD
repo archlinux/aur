@@ -6,7 +6,7 @@
 
 set -u
 pkgname='checkbashisms'
-pkgver='20160107'
+pkgver='20160203'
 # To get the date of the last commit for this file
 # Be in the tree for the .pl file
 # https://anonscm.debian.org/cgit/collab-maint/devscripts.git/tree/scripts/checkbashisms.pl
@@ -24,7 +24,7 @@ source=("${_srcfile}::https://anonscm.debian.org/cgit/collab-maint/devscripts.gi
         'https://anonscm.debian.org/cgit/collab-maint/devscripts.git/plain/scripts/checkbashisms.1'
         'https://anonscm.debian.org/cgit/collab-maint/devscripts.git/plain/scripts/checkbashisms.bash_completion'
 )
-sha256sums=('20dd6184747e8d5452b412a86602c029ac9c3d3094dc12b99f5b038e626df33b'
+sha256sums=('6943f31aae8552fdec53f5d4c386f08ec029630bf0df46576c2d7c43a2f25081'
             'c74d1ed33fee4cf2ccca0d7690d404d551a4edcbde0ddc602104d9198359cefb'
             'b8107f79c88e88cb90ad5c802d3b243675f9d2af6c00fe7e822a58033e51d3b0')
 
@@ -34,8 +34,8 @@ _verscan() {
   local _rv=1
   [ "$1" -ne 0 ] && _rv=0
   local _rvfile=''
-  local _remfile="$(sha256sum < <(curl -s "${source[1]}") | cut -d' ' -f1)"
-  if [ "${_remfile}" != "${sha256sums[1]}" ]; then
+  local _remfile="$(sha256sum < <(curl -s "${source[0]}") | cut -d' ' -f1)"
+  if [ "${_remfile}" != "${sha256sums[0]}" ]; then
     local _vercmp=1
     [ "$2" -ge 3 ] && printf '%-s %s\n' "${_vercmp}" "${_remfile}" 1>&2
     if [ "${_vercmp}" -ge 1 ]; then
