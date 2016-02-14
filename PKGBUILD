@@ -3,7 +3,7 @@
 pkgname=keybase-git
 pkgdesc='the Keybase Go client, filesystem, and GUI'
 license=('BSD')
-pkgver=1.0.11_20160211201200+91f4733
+pkgver=1.0.11_20160214002804+d9662a2
 pkgver() {
   "$srcdir/client/packaging/version.sh" prerelease | sed 's/-/_/g'
 }
@@ -14,8 +14,8 @@ makedepends=(go npm git rsync)
 # keybase-release is a deprecated AUR package
 conflicts=(keybase keybase-release)
 source=(
-  'git+ssh://git@github.com/keybase/client'
-  'git+ssh://git@github.com/keybase/kbfs-beta'
+  'git+https://github.com/keybase/client'
+  'git+https://github.com/keybase/kbfs-beta'
 )
 md5sums=('SKIP' 'SKIP')
 install=keybase.install
