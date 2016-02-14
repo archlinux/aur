@@ -1,0 +1,14 @@
+pkgbase = luadoc
+	pkgdesc = Lua documentation generator
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://keplerproject.github.io/luadoc/
+	arch = any
+	license = MIT
+	depends = lua51
+	depends = lua51-filesystem
+	source = http://files.luaforge.net/releases/luadoc/luadoc/LuaDoc-3.0.1/luadoc-3.0.1.tar.gz
+	md5sums = ec3a0c0b9413e401a2d466cc0930d505
+
+pkgname = luadoc
+
