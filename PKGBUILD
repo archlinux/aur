@@ -2,13 +2,15 @@
 
 _plug=lsmashsource
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r834.51771ab
+pkgver=r875.14b040e
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=167435'
 license=('LGPL')
 depends=('vapoursynth'
+         'glibc'
+         'libavutil.so'
          'libavformat.so'
          'libavcodec.so'
          'libswscale.so'
@@ -32,9 +34,10 @@ prepare() {
 
 build() {
   cd "${_plug}/VapourSynth"
-  ./configure --prefix=/usr \
-              --extra-cflags="${CFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth)" \
-              --extra-ldflags="${LDFLAGS}"
+  ./configure \
+    --prefix=/usr \
+    --extra-cflags="${CFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth)" \
+    --extra-ldflags="${LDFLAGS}"
   make
 }
 
