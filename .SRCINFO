@@ -1,0 +1,20 @@
+pkgbase = virtualhere-server-bin
+	pkgdesc = VirtualHere USB Server for Linux Desktop
+	pkgver = 2.7.2
+	pkgrel = 1
+	url = https://www.virtualhere.com/usb_server_software
+	arch = i686
+	arch = x86_64
+	license = custom
+	optdepends = avahi: systemd unit support
+	provides = virtualhere
+	conflicts = virtualhere
+	source = virtualhere.service
+	md5sums = b317ad221de44c968d2368825e1682fe
+	source_i686 = https://www.virtualhere.com/sites/default/files/usbserver/vhusbdi386
+	md5sums_i686 = 60109f2782f31494017b217e595f8bdc
+	source_x86_64 = https://www.virtualhere.com/sites/default/files/usbserver/vhusbdx86_64
+	md5sums_x86_64 = ccdcd1a9fb5ca8c5bbbe34e175172568
+
+pkgname = virtualhere-server-bin
+

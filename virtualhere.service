@@ -1,0 +1,9 @@
+[Unit]
+Description=VirtualHere USB Sharing
+Requires=avahi-daemon.service
+After=avahi-daemon.service
+[Service]
+ExecStart=/usr/bin/vhusbd
+Type=idle
+[Install]
+WantedBy=multi-user.target
