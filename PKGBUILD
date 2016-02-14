@@ -3,17 +3,17 @@
 
 pkgname=gog-mountandblade-warband
 pkgver=2.7.0.12
-pkgrel=4
+pkgrel=5
 _vcver=2.8.0.10
 _nwver=2.1.0.3
-_libcurlver=7.45.0-1+b1
+_libcurlver=7.47.0-1
 _libcurllibver=4.4.0
-_libgnutlsver=28_3.3.19-1
-_libgnutlslibver=28.41.11
-_libnghttp2ver=14_1.6.0-1
-_libnghttp2libver=14.4.0
+_libgnutlsver=28_3.3.20-1
+_libgnutlslibver=28.41.12
+_libnghttp2ver=14_1.7.1-1
+_libnghttp2libver=14.4.1
 pkgdesc="An action role playing game, GOG version"
-url=('https://www.gog.com/game/mount_blade_warband')
+url='https://www.gog.com/game/mount_blade_warband'
 license=('custom')
 arch=('i686' 'x86_64')
 depends_x86_64=('lib32-sdl2' 'lib32-libaudio2' 'lib32-nettle' 'lib32-krb5' 'lib32-glew1.10'
@@ -35,15 +35,15 @@ source=("gog://gog_mount_blade_warband_${pkgver}.sh"
 md5sums=('643d44d3f972f366c0557289a13db266'
          'cb0f422a1b714fc3668d00517efd6087'
          '92e8d8c7d2c3abb27e30997d32804fd0'
-         'bf703a8da771cd155e54be301cd47e34'
-         'eb0eeda4de92d6f9e04c9436b58c5305'
-         'c8f157bba7b769ce94d99b5ffaca6d68')
+         '7251bfe155ddd43b7eeb2347fc2ebeb7'
+         '3605a1084367771a5acbe3e72baf4708'
+         '3bb9b3fd3223edf670541879352b8440')
 sha512sums=('69e66c63bcb37b88cd6dbef3119c20ed6000fd340f2c5f2c9f15381ab5738fe806e1548bbf2ff6c0b2aa855272d4cbac51fd27d13e99f48b45cf9d506213fda1'
             'e45948d33d1e20d9c55520686b0a7f3dd9d67f34e76e1bd597c88c6c2da578cb89c2d289f2c9a202c8a9e3462fa99b32ef47f77fd6fd89ba41c0c78f493bc15e'
             '2b3d26f0925f4fcdd83898ce8878d14581cfba8ff51d2a3ba709cd204ddb39229e36f0747c7ddaf2100747c05528059e65407eb52e0658990b64e808f843fbbc'
-            '9e87ac7b559034b96caa72e607cc2a572c2f760e7015ceab2c06dd77eeb70e0a22a0f35ef34cf1a1296c28a44ea44dddf2c4e7e72d8ba33773d59bb742a699ec'
-            'bccf428e12d36ea14d46c446d244c4c014662717d66a9d9921ea0fef2c29735b98fb63cf78f178db7a0e8c8ffafe8179be232b0298e288dc0fe00ba58a620f07'
-            '61a8527c9c8f1ee043d0830bcdafdd70d72e3fd2953b7b7767b676596a8001c974af3e8117f2f2655391441e65e8ee229c0b84fc9d326fc4915be87aa3739286')
+            '1dacdd8af19ced652d35c521ab235af942c7ff4a60c0209966e04bcad844999ba48b35a77bce8a9b328ef328dc173b4ea2d2b191f219a73397513ae1243c7e80'
+            'f2285e936f51ae913adb0b9eea3ffed94bd735409a4d11c96d3bde3a0f934f03ba674fcdd67ba35cea7b35d472ebaab2ee658ebe302618d87c1d42f88e794e00'
+            '713ff05574bbf8d3d9f495a9e07152e552835eb2d257c98056761576a38931f19f08a6f4894ecce1f955b25a62a00f11272b24839a8bc0d4eb54bce9bee36085')
 
 noextract=("gog_mount_blade_warband_${pkgver}.sh"
            "gog_mount_blade_warband_viking_conquest_reforged_edition_dlc_${_vcver}.sh"
