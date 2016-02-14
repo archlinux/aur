@@ -16,8 +16,8 @@ conflicts=('yakuake')
 _gitroot="git://anongit.kde.org/yakuake.git"
 _gitname="yakuake"
 
-source=('copy_paste_1.patch')
-md5sums=('SKIP')
+source=('copy_paste.patch', 'copy_paste_1.patch')
+md5sums=('93066339994c7bc90a10cf7fbbe92232', 'ff24408441c375be8f01c6b4a460e7e9')
 
 
 build() {
