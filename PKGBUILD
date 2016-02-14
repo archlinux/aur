@@ -1,6 +1,6 @@
 # Maintainer: Grigorii Horos <horosgrisa@gmail.com>
 
-_git=d3795f0b84e6e4001536c4fc4b10a3869f8e3214
+_git=509a1bd651df1bcf4eb46b07dce7d4b9d6b1ef25
 _repo=papirus-suite
 pkgbase=papirus
 pkgname=(
@@ -23,32 +23,32 @@ pkgname=(
     'libreoffice-style-papirus'
 )
 pkgver=20160214
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/varlesh/${_repo}"
 license=('CCPL:by-sa')
 
 options=('!strip')
 source=("${_repo}-${pkgver}.tar.gz::${url}/archive/${_git}.tar.gz")
-sha256sums=('d0609e4b0bab538b69fbd991ae1ec777da4d4c8c231a05f458df840d824c7a79')
+sha256sums=('20da1b8f69305fa152818a9473241bd65f51d7052fb82907be26a8c9e2ad08b5')
 
 package_papirus(){
-    pkgdesc="Meta-package for modified and adaptive Paper theme"
+    pkgdesc="Meta-package for modified and adaptive Papirus theme"
     optdepends=(
-    	'papirus-icon-theme-gtk: Modified and adaptive gtk Paper icon theme for Gnome'
-    	'papirus-icon-theme-kde: Modified and adaptive Paper icon theme for KDE'
-    	'papirus-gtk-theme: Modified and adaptive Paper gtk theme'
-        'papirus-look-and-feel: Look-and-feel package for modified and adaptive Paper theme for KDE.'
-        'plasma-theme-papirus: Modified and adaptive Paper plasma theme for KDE'
-        'papirus-color-scheme: Modified and adaptive Paper color scheme for KDE'
-        'papirus-qtcurve-theme: Modified and adaptive Paper decorations for QtCurve'
-        'papirus-aurorae-theme: Modified and adaptive Paper decorations for Kwin'
-        'yakuake-skin-papirus: Modified and adaptive Paper skin for Yakuake'
-        'papirus-konsole-colorscheme: Modified and adaptive Paper colorscheme for Konsole'
-        'papirus-kmail-theme: Modified and adaptive Paper theme for Kmail'
+    	'papirus-icon-theme-gtk: Modified and adaptive gtk Papirus icon theme for Gnome'
+    	'papirus-icon-theme-kde: Modified and adaptive Papirus icon theme for KDE'
+    	'papirus-gtk-theme: Modified and adaptive Papirus gtk theme'
+        'papirus-look-and-feel: Look-and-feel package for modified and adaptive Papirus theme for KDE.'
+        'plasma-theme-papirus: Modified and adaptive Papirus plasma theme for KDE'
+        'papirus-color-scheme: Modified and adaptive Papirus color scheme for KDE'
+        'papirus-qtcurve-theme: Modified and adaptive Papirus decorations for QtCurve'
+        'papirus-aurorae-theme: Modified and adaptive Papirus decorations for Kwin'
+        'yakuake-skin-papirus: Modified and adaptive Papirus skin for Yakuake'
+        'papirus-konsole-colorscheme: Modified and adaptive Papirus colorscheme for Konsole'
+        'papirus-kmail-theme: Modified and adaptive Papirus theme for Kmail'
         'papirus-k3b-theme: Papirus theme for K3B'
         'bomi-skin-papirus: Papirus theme for Bomi'
-        'vlc-skin-papirus: Paper skin for VLC Media Player'
+        'vlc-skin-papirus: Papirus skin for VLC Media Player'
         'smplayer-theme-papirus: Papirus theme for SMPlayer'
         'libreoffice-style-papirus: Libreoffice Papirus theme'
     )
@@ -56,7 +56,7 @@ package_papirus(){
 
 
 package_papirus-icon-theme-gtk() {
-    pkgdesc="Modified and adaptive gtk Paper icon theme for Gnome"
+    pkgdesc="Modified and adaptive gtk Papirus icon theme for Gnome"
     install -d ${pkgdir}/usr/share/icons
     cp -r ${srcdir}/${_repo}-${_git}/gtk-icons/* ${pkgdir}/usr/share/icons/
     install -D -m644  ${srcdir}/${_repo}-${_git}/gtk-icons/Papirus-GTK/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
@@ -65,7 +65,7 @@ package_papirus-icon-theme-gtk() {
 }
 
 package_papirus-icon-theme-kde() {
-    pkgdesc="Modified and adaptive Paper icon theme for KDE"
+    pkgdesc="Modified and adaptive Papirus icon theme for KDE"
     install -d ${pkgdir}/usr/share/icons
     install -d ${pkgdir}/usr/share/apps/amarok/icons/papirus
     install -d ${pkgdir}/usr/share/apps/amarok/icons/papirus-black-panel
@@ -80,7 +80,7 @@ package_papirus-icon-theme-kde() {
 } 
 
 package_papirus-gtk-theme() {
-    pkgdesc="Modified and adaptive Paper gtk theme"
+    pkgdesc="Modified and adaptive Papirus gtk theme"
     depends=('gtk-engine-murrine' 'gdk-pixbuf2')
     optdepends=('lib32-gtk-engine-murrine' 'lib32-gdk-pixbuf2')
     install -d ${pkgdir}/usr/share/themes
@@ -91,7 +91,7 @@ package_papirus-gtk-theme() {
 } 
 
 package_papirus-look-and-feel() {
-    pkgdesc="Look-and-feel package for modified and adaptive Paper theme for KDE."
+    pkgdesc="Look-and-feel package for modified and adaptive Papirus theme for KDE."
     install -d ${pkgdir}/usr/share/plasma/look-and-feel
     cp -r ${srcdir}/${_repo}-${_git}/kde-pack/look-and-feel/* ${pkgdir}/usr/share/plasma/look-and-feel/
     install -D -m644  ${srcdir}/${_repo}-${_git}/kde-pack/plasma-themes/papirus/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
@@ -111,7 +111,7 @@ package_plasma-theme-papirus() {
 } 
 
 package_papirus-color-scheme() {
-    pkgdesc="Modified and adaptive Paper color scheme for KDE"
+    pkgdesc="Modified and adaptive Papirus color scheme for KDE"
     install -d ${pkgdir}/usr/share/color-schemes
     cp -r ${srcdir}/${_repo}-${_git}/kde-pack/color-schemes/Papirus* ${pkgdir}/usr/share/color-schemes/
     install -D -m644  ${srcdir}/${_repo}-${_git}/kde-pack/color-schemes/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
@@ -120,7 +120,7 @@ package_papirus-color-scheme() {
 } 
 
 package_papirus-qtcurve-theme() {
-    pkgdesc="Modified and adaptive Paper decorations for QtCurve"
+    pkgdesc="Modified and adaptive Papirus decorations for QtCurve"
     options=('!strip')
     depends=('qtcurve-gtk2' 'qtcurve-qt4' 'qtcurve-qt5' 'qtcurve-utils')
     optdepends=('lib32-qtcurve-gtk2' 'lib32-qtcurve-qt4' 'lib32-qtcurve-utils')
@@ -132,7 +132,7 @@ package_papirus-qtcurve-theme() {
 }
 
 package_papirus-aurorae-theme() {
-    pkgdesc="Modified and adaptive Paper decorations for Kwin"
+    pkgdesc="Modified and adaptive Papirus decorations for Kwin"
     install -d ${pkgdir}/usr/share/aurorae/themes
     cp -r ${srcdir}/${_repo}-${_git}/kde-pack/aurorae-themes/Papirus* ${pkgdir}/usr/share/aurorae/themes/
     install -D -m644  ${srcdir}/${_repo}-${_git}/kde-pack/aurorae-themes/Papirus/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
@@ -141,7 +141,7 @@ package_papirus-aurorae-theme() {
 } 
 
 package_yakuake-skin-papirus() {
-    pkgdesc="Modified and adaptive Paper skin for Yakuake"
+    pkgdesc="Modified and adaptive Papirus skin for Yakuake"
     depends=('yakuake')
     replaces=('papirus-yakuake-theme')
     install -d ${pkgdir}/usr/share/apps/yakuake/skins
@@ -154,7 +154,7 @@ package_yakuake-skin-papirus() {
 } 
 
 package_papirus-konsole-colorscheme() {
-    pkgdesc="Modified and adaptive Paper colorscheme for Konsole"
+    pkgdesc="Modified and adaptive Papirus colorscheme for Konsole"
     depends=('konsole')
     install -d ${pkgdir}/usr/share/apps/konsole
     install -d ${pkgdir}/usr/share/konsole
@@ -166,7 +166,7 @@ package_papirus-konsole-colorscheme() {
 } 
 
 package_papirus-kmail-theme() {
-    pkgdesc="Modified and adaptive Paper theme for Kmail"
+    pkgdesc="Modified and adaptive Papirus theme for Kmail"
     depends=('kmail')
     install -d ${pkgdir}/usr/share/messageviewer/themes
     cp -r ${srcdir}/${_repo}-${_git}/kde-pack/kmail-theme/papirus* ${pkgdir}/usr/share/messageviewer/themes/
@@ -200,7 +200,7 @@ package_bomi-skin-papirus() {
 } 
 
 package_vlc-skin-papirus(){
-    pkgdesc="Paper skin for VLC Media Player"
+    pkgdesc="Papirus skin for VLC Media Player"
     depends=('vlc')
     install -dm755 ${pkgdir}/usr/share/vlc/skins2
     cp -r ${srcdir}/${_repo}-${_git}/players-skins/vlc-skins/Papirus* ${pkgdir}/usr/share/vlc/skins2/
