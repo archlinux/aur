@@ -1,7 +1,7 @@
 pkgbase = nibl
-	pkgdesc = NIBL package search
+	pkgdesc = Command line interface to the NIBL XDCC package search
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/2ion/nibl
 	arch = any
 	license = GPL
