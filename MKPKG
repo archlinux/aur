@@ -2,8 +2,8 @@ arch=('any')
 pkgname=('pantheon-session-bzr')
 builddeps=('libindicator-gtk3' 'cerbere-bzr' 'gtk-theme-elementary-bzr'
            'ttf-opensans' 'pantheon-backgrounds-bzr' 'plank-theme-pantheon-bzr'
-           'pantheon-default-settings-bzr' 'slingshot-launcher-bzr'
-           'granite-bzr' 'ido' 'wingpanel-bzr' 'gala-bzr')
+           'pantheon-default-settings-bzr' 'granite-bzr' 'gala-bzr'
+           'wingpanel-bzr' 'switchboard-bzr' 'slingshot-launcher-bzr')
 
 check_bzr $packagedir/$pkgname/${pkgname%-*}
 
