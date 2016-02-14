@@ -18,6 +18,7 @@ pkgname=(
      'papirus-kmail-theme'
      'bomi-skin-papirus'
      'vlc-skin-papirus'
+     'smplayer-theme-papirus'
      'libreoffice-style-papirus'
 )
 pkgver=20160214
@@ -45,8 +46,9 @@ package_papirus(){
         'papirus-konsole-colorscheme: Modified and adaptive Paper colorscheme for Konsole'
         'papirus-kmail-theme: Modified and adaptive Paper theme for Kmail'
         'bomi-skin-papirus: Papirus theme for Bomi'
-        'libreoffice-style-papirus: Libreoffice Papirus theme'
         'vlc-skin-papirus: Paper skin for VLC Media Player'
+        'smplayer-theme-papirus: Papirus theme for SMPlayer'
+        'libreoffice-style-papirus: Libreoffice Papirus theme'
     )
 }
 
@@ -187,12 +189,22 @@ package_bomi-skin-papirus() {
 
 package_vlc-skin-papirus(){
     pkgdesc="Paper skin for VLC Media Player"
-    options=('!strip')
     depends=('vlc')
     install -dm755 ${pkgdir}/usr/share/vlc/skins2
     cp -r ${srcdir}/${_repo}-${_git}/players-skins/vlc-skins/Papirus* ${pkgdir}/usr/share/vlc/skins2/
     find ${pkgdir}/usr -type f -exec chmod 644 {} \;
     find ${pkgdir}/usr -type d -exec chmod 755 {} \;
+}
+
+package_smplayer-theme-papirus() {
+    pkgdesc="Papirus theme for SMPlayer"
+    options=()
+    depends=('smplayer')
+    conflicts=('papirus-smplayer-theme-git')
+    install -Dm644 -t "${pkgdir}/usr/share/smplayer/themes/Papirus/"        ${srcdir}/${_repo}-${_git}/players-skins/smplayer-themes/Papirus/*
+    install -Dm644 -t "${pkgdir}/usr/share/smplayer/themes/PapirusDark/"    ${srcdir}/${_repo}-${_git}/players-skins/smplayer-themes/PapirusDark/*
+    find "${pkgdir}" -type f -exec chmod 644 {} \;
+    find "${pkgdir}" -type d -exec chmod 755 {} \;
 }
 
 package_libreoffice-style-papirus() {
