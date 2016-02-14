@@ -12,7 +12,8 @@ optdepends=('sparsehash: sparse-mem-table index map'
             'geos: convert OSM geometries into GEOS geometries'
             'proj: project OSM coordinates into spatial reference systems'
             'doxygen: build Libosmium API documentation')
-conflicts=(libosmium)
+conflicts=('libosmium')
+provides=('libosmium')
 source=('libosmium::git+https://github.com/osmcode/libosmium.git')
 md5sums=('SKIP')
 
