@@ -18,8 +18,8 @@ package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
   gem install --ignore-dependencies --no-user-install -i "${pkgdir}${_gemdir}" -n "${pkgdir}/usr/bin" ${_gemname}-${pkgver}.gem
   install -Dm 644 "${pkgdir}${_gemdir}/gems/${_gemname}-${pkgver}/"{USAGE.rdoc,README.rdoc,FAQ.rdoc} \
-    -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s "${_gemdir}/gems/${_gemname}-${pkgver}/examples" "${pkgdir}/usr/share/licenses/${pkgname}" 
+    -t "${pkgdir}/usr/share/doc/${pkgname}"
+  ln -s "${_gemdir}/gems/${_gemname}-${pkgver}/examples" "${pkgdir}/usr/share/doc/${pkgname}" 
   find "${pkgdir}" -name gem_make.out -o -name gem.build_complete -o -name mkmf.log | xargs rm
   rm "${pkgdir}/${_gemdir}/cache/${_gemname}-${pkgver}.gem"
 }
