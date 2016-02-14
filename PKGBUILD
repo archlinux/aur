@@ -2,7 +2,7 @@
 _pkgname=dock-applet
 pkgname=mate-applet-dock-git
 pkgver=0.62.r3.gf4af0cd
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="An application dock applet for the MATE panel"
 arch=('any')
@@ -21,6 +21,8 @@ pkgver() {
 
 build() {
 	cd "$srcdir/dock-applet"
+        aclocal
+        automake --add-missing
         autoreconf
 	./configure --prefix=/usr --disable-schemas-compile
 	make
