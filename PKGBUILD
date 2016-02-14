@@ -25,7 +25,7 @@ test ! -z "${_opt_HexCode}" && _opt_HexCode="-${_opt_HexCode}"
 
 _pkgname='adminer'
 pkgname="${_pkgname}-git"
-pkgver=4.2.3.r0.gf83e3f4
+pkgver=4.2.4.r0.g49e2ac4
 pkgrel=1
 pkgdesc='a web based SQL management tool supporting MySQL, PostgreSQL, SQLite, MS SQL, Oracle, Firebird, SimpleDB, Elasticsearch and MongoDB. Formerly phpMinAdmin.'
 arch=('any')
