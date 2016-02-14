@@ -1,65 +1,49 @@
 diff -rupN pantheon-default-settings.orig/debian/elementary-default-settings.gsettings-override pantheon-default-settings/debian/elementary-default-settings.gsettings-override
---- pantheon-default-settings.orig/debian/elementary-default-settings.gsettings-override	2015-08-15 20:06:16.609411891 +0200
-+++ pantheon-default-settings/debian/elementary-default-settings.gsettings-override	2015-08-15 20:06:27.228450909 +0200
-@@ -6,7 +6,6 @@ show-day=true
- show-events=false
+--- pantheon-default-settings.orig/debian/elementary-default-settings.gsettings-override	2016-02-14 17:09:27.093570959 +0100
++++ pantheon-default-settings/debian/elementary-default-settings.gsettings-override	2016-02-14 17:11:00.074100778 +0100
+@@ -1,13 +1,12 @@
+ [net.launchpad.plank.dock.settings]
+-dock-items=['gala-multitaskingview.dockitem','midori.dockitem','pantheon-mail.dockitem','maya-calendar.dockitem','noise.dockitem','audience.dockitem','pantheon-photos.dockitem','switchboard.dockitem','appcenter.dockitem']
++dock-items=['gala-multitaskingview.dockitem','midori.dockitem','pantheon-mail.dockitem','maya-calendar.dockitem','noise.dockitem','audience.dockitem','pantheon-photos.dockitem','switchboard.dockitem']
+ hide-mode='window-dodge'
+ show-dock-item=false
+ theme='Gtk+'
  
  [org.gnome.desktop.background]
 -draw-background=true
  picture-options='zoom'
- picture-uri='file:///usr/share/backgrounds/elementaryos-default'
+-picture-uri='file:///usr/share/backgrounds/elementaryos-default'
++picture-uri='file:///usr/share/backgrounds/pantheon/elementaryos-default'
  primary-color='#000000'
-@@ -22,7 +21,6 @@ font-name='Droid Sans 9'
+ show-desktop-icons=false
+ 
+@@ -21,7 +20,6 @@ font-name='Droid Sans 9'
  gtk-theme='elementary'
  icon-theme='elementary'
  monospace-font-name='Droid Sans Mono 10'
 -show-unicode-menu=false
  toolbar-style='icons'
  
- [org.gnome.desktop.screensaver]
-@@ -106,7 +104,6 @@ active=false
+ [org.gnome.desktop.peripherals.touchpad]
+@@ -102,7 +100,6 @@ active=false
  
  [org.gnome.settings-daemon.plugins.media-keys]
  screensaver='<Super>l'
 -terminal='<Super>t'
  
  [org.gnome.settings-daemon.plugins.power]
- idle-dim=false
-diff -rupN pantheon-default-settings.orig/midori/config pantheon-default-settings/midori/config
---- pantheon-default-settings.orig/midori/config	2015-08-15 20:06:16.609411891 +0200
-+++ pantheon-default-settings/midori/config	2015-08-15 20:07:27.899614019 +0200
-@@ -3,7 +3,7 @@ default-font-family=Droid Sans
- enable-spell-checking=true
- enable-webgl=true
- homepage=http://start.elementary.io/
--text-editor=gnome-text-editor %F
-+text-editor=scratch-text-editor %F
- show-statusbar=false
- close-buttons-left=true
- first-party-cookies-only=false
-diff -rupN pantheon-default-settings.orig/plank/dock1/launchers/softwarecenter.dockitem pantheon-default-settings/plank/dock1/launchers/softwarecenter.dockitem
---- pantheon-default-settings.orig/plank/dock1/launchers/softwarecenter.dockitem	2015-08-15 20:06:16.609411891 +0200
-+++ pantheon-default-settings/plank/dock1/launchers/softwarecenter.dockitem	1970-01-01 01:00:00.000000000 +0100
+ ambient-enabled=false
+diff -rupN pantheon-default-settings.orig/plank/dock1/launchers/appcenter.dockitem pantheon-default-settings/plank/dock1/launchers/appcenter.dockitem
+--- pantheon-default-settings.orig/plank/dock1/launchers/appcenter.dockitem	2016-02-14 17:09:27.093570959 +0100
++++ pantheon-default-settings/plank/dock1/launchers/appcenter.dockitem	1970-01-01 01:00:00.000000000 +0100
 @@ -1,4 +0,0 @@
--[PlankItemsDockItemPreferences]
--Launcher=file:///usr/share/applications/ubuntu-software-center.desktop
+-[PlankDockItemPreferences]
+-Launcher=file:///usr/share/applications/appcenter.desktop
 -
 -
-diff -rupN pantheon-default-settings.orig/plank/dock1/settings pantheon-default-settings/plank/dock1/settings
---- pantheon-default-settings.orig/plank/dock1/settings	2015-08-15 20:06:16.609411891 +0200
-+++ pantheon-default-settings/plank/dock1/settings	2015-08-15 20:06:27.231783941 +0200
-@@ -11,7 +11,7 @@ UnhideDelay=0
- #The monitor number for the dock. Use -1 to keep on the primary monitor.
- Monitor=-1
- #List of *.dockitem files on this dock. DO NOT MODIFY
--DockItems=gala-multitaskingview.dockitem;;midori.dockitem;;geary.dockitem;;maya-calendar.dockitem;;noise.dockitem;;audience.dockitem;;shotwell.dockitem;;switchboard.dockitem;;softwarecenter.dockitem
-+DockItems=gala-multitaskingview.dockitem;;midori.dockitem;;geary.dockitem;;maya-calendar.dockitem;;noise.dockitem;;audience.dockitem;;shotwell.dockitem;;switchboard.dockitem
- #The position for the dock on the monitor.
- Position=3
- #The dock's position offset from center (in percent).
 diff -rupN pantheon-default-settings.orig/policykit.desktop pantheon-default-settings/policykit.desktop
---- pantheon-default-settings.orig/policykit.desktop	2015-08-15 20:06:16.609411891 +0200
-+++ pantheon-default-settings/policykit.desktop	2015-08-15 20:10:28.123193063 +0200
+--- pantheon-default-settings.orig/policykit.desktop	2016-02-14 17:09:27.093570959 +0100
++++ pantheon-default-settings/policykit.desktop	2016-02-14 17:11:00.074100778 +0100
 @@ -1,6 +1,6 @@
  [Desktop Entry]
  Name=Authentication Dialog
@@ -69,8 +53,8 @@ diff -rupN pantheon-default-settings.orig/policykit.desktop pantheon-default-set
  Terminal=false
  Type=Application
 diff -rupN pantheon-default-settings.orig/settings.ini pantheon-default-settings/settings.ini
---- pantheon-default-settings.orig/settings.ini	2015-08-15 20:06:16.609411891 +0200
-+++ pantheon-default-settings/settings.ini	2015-08-15 20:09:15.959776311 +0200
+--- pantheon-default-settings.orig/settings.ini	2016-02-14 17:09:27.093570959 +0100
++++ pantheon-default-settings/settings.ini	2016-02-14 17:11:00.074100778 +0100
 @@ -2,6 +2,6 @@
  gtk-theme-name = elementary
  gtk-icon-theme-name = elementary
