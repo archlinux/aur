@@ -2,12 +2,13 @@
 
 pkgname=libraqm
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A library that encapsulates the logic for complex text layout"
 arch=('i686' 'x86_64')
 url="https://github.com/HOST-Oman/libraqm"
 license=('custom')
-depends=('freetype2' 'harfbuzz' 'fribidi' 'glib2' 'gtk-doc')
+depends=('freetype2' 'harfbuzz' 'fribidi')
+makedepends=('gtk-doc')
 provides=('libraqm.so')
 conflicts=('libraqm-git')
 source=("$pkgname"-"$pkgver".tar.gz::"https://github.com/HOST-Oman/libraqm/archive/v${pkgver}.tar.gz")
