@@ -8,24 +8,29 @@ pkgdesc="Audio Plugin Host"
 arch=('i686' 'x86_64')
 url="http://kxstudio.sf.net/carla"
 license=('GPL2')
-depends=('liblo' 'python' 'qt4')
-makedepends=('ffmpeg' 'fftw' 'fluidsynth' 'glu' 'gtk2' 'gtk3' 'libsmf' 'linuxsampler-svn' 'mxml' 'ntk-git' 'pygtk' 'python-pyqt4' 'python-pyliblo' 'qt5-base' 'zlib' 'zynaddsubfx')
+depends=(
+  'clthreads'
+  'clxclient'
+  'ffmpeg'
+  'fluidsynth'
+  'glu'
+  'liblo'
+  'libpng12'
+  'libsmf'
+  'linuxsampler-svn'
+  'mxml'
+  'ntk-git'
+  'python-pyliblo'
+  'python-pyqt4'
+  'zita-convolver'
+  'zita-resampler'
+)
+makedepends=('gtk2' 'gtk3' 'pygtk' 'zlib' 'zynaddsubfx')
 optdepends=(
-  'ffmpeg: Extra - Native plugin'
-  'fftw: Extra - Native plugin'
-  'fluidsynth: SF2 support'
-  'glu: OpenGL support'
-  'gtk2: LV2 GTK2 UI support'
-  'gtk3: LV2 GTK3 UI support'
-  'libsmf: Extra - Native Plugin'
-  'linuxsampler-svn: GIG and SFZ support'
-  'mxml: Extra - Native plugin'
-  'ntk-git: Extra - Native plugin'
-  'python-pyliblo: Carla-Control'
-  'python-rdflib: LADSPA-RDF support'
+  'gtk2: lv2 gtk2 ui support'
+  'gtk3: lv2 gtk3 ui support'
   'pygtk: NekoFilter UI'
-  'qt5-base: LV2 UI support'
-  'zlib: Extra - Native plugin'
+  'zlib: extra native plugins'
   'zynaddsubfx: ZynAddSubFX banks'
 )
 provides=("${pkgname}")
