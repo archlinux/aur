@@ -1,17 +1,17 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=snap-photobooth-bzr
-pkgver=r336
+pkgver=r352
 pkgrel=1
 pkgdesc='The Pantheon Photo Booth'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/snap-elementary'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gst-plugins-base-libs'
-         'gstreamer' 'gtk3' 'libgee'
+depends=('clutter' 'clutter-gst' 'clutter-gtk' 'glib2' 'glibc' 'gstreamer'
+         'gtk3'
          'libgranite.so')
-makedepends=('bzr' 'cmake' 'vala' 'zeitgeist')
+makedepends=('bzr' 'cmake' 'vala')
 install='snap-photobooth.install'
 source=('snap-photobooth::bzr+lp:snap-elementary')
 sha256sums=('SKIP')
