@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd freecad/
-  echo$(git describe --tags --abbrev=0)
+  echo $(git describe --tags --abbrev=0)
 }
 
 prepare() {
