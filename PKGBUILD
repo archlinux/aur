@@ -6,7 +6,7 @@ pkgdesc="The GNU Compiler Collection developmental snapshot"
 arch=('any')
 license=('GPL3' 'LGPL' 'custom')
 url="http://gcc.gnu.org"
-makedepends=('binutils>=2.25' 'libmpc' 'doxygen' 'lib32-glibc>=2.20')
+makedepends=('binutils>=2.25' 'libmpc' 'doxygen' 'lib32-glibc>=2.20' 'git')
 checkdepends=('dejagnu' 'inetutils')
 options=('!emptydirs')
 source=('git+git://gcc.gnu.org/git/gcc.git#branch=trunk')
