@@ -2,7 +2,7 @@
 
 pkgname=vesta
 pkgver=3.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="3D visualization program for structural models, volumetric data such as electron/nuclear densities, and crystal morphologies."
 url="http://jp-minerals.org/vesta"
 license=('custom')
@@ -12,11 +12,11 @@ depends=('gtk2' 'libpng12')
 _url="http://www.geocities.jp/kmo_mma/crystal/download"
 source_i686=("${_url}/VESTA-i686.tar.bz2")
 source_x86_64=("${_url}/VESTA-x86_64.tar.bz2")
-source=('VESTA' 'VESTA.desktop')
+source=('VESTA' 'VESTA.desktop' 'vesta.install')
 
 md5sums_i686=('d4704bbf015665c8d924629bdfe3f2ca')
 md5sums_x86_64=('614a1d1eac36106223490300933f511a')
-md5sums=('8de33bd748dc36059dc7684109c03a4c' 'fdd7040720e4b58a26caa7db09669acf')
+md5sums=('8de33bd748dc36059dc7684109c03a4c' 'fdd7040720e4b58a26caa7db09669acf' 'caabe467168af9e44cf380af1abfe280')
 
 
 package() {
