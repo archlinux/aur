@@ -18,14 +18,14 @@ _srcname="ImageMagick"
 _srcver="6.9.3-4"
 pkgname=imagemagick-full
 pkgver="$(echo ${_srcver} | tr '-' '.')"
-pkgrel=3
+pkgrel=4
 pkgdesc="An image viewing/manipulation program (Q32 HDRI with all libs and features)"
 arch=('i686' 'x86_64')
 url="http://www.imagemagick.org/"
 license=('custom')
 depends=('jemalloc' 'bzip2' 'libx11' 'libxext' 'libxt' 'libsm' 'zlib' 'autotrace-nomagick' 'fftw'
-         'libfpx' 'djvulibre' 'fontconfig' 'freetype2' 'ghostscript' 'gsfonts' 'graphviz' 'jbigkit'
-         'libjpeg-turbo' 'lcms' 'lcms2' 'openjpeg2' 'liblqr' 'xz' 'openexr' 'pango' 'libpng' 
+         'libfpx' 'djvulibre' 'fontconfig' 'freetype2' 'libraqm' 'ghostscript' 'gsfonts' 'graphviz'
+         'jbigkit' 'libjpeg-turbo' 'lcms' 'lcms2' 'openjpeg2' 'liblqr' 'xz' 'openexr' 'pango' 'libpng' 
          'librsvg' 'libtiff' 'libwebp' 'libwmf' 'libxml2' 'libmpeg2' 'opencl-headers' 'ocl-icd')
 provides=('imagemagick' 'libMagickCore-6.Q32HDRI.so' 'libMagickWand-6.Q32HDRI.so' 
           'libMagick++-6.Q32HDRI.so')
@@ -83,6 +83,7 @@ build() {
 	        --with-djvu \
 	        --with-fontconfig \
 	        --with-freetype \
+	        --with-raqm \
 	        --with-gslib \
 	        --with-gvc \
 	        --with-jbig \
