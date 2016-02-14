@@ -2,7 +2,7 @@
 
 pkgname=brother-dcpj4110dw
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Driver for the Brother DCP-J4110DW wifi multifuncional printer"
 url="http://solutions.brother.com/linux/en_us/index.html"
 license=('custom:brother')

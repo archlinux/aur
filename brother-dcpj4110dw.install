@@ -1,9 +1,9 @@
 post_install() {
 	# lpr
-	/opt/brother/Printers/dcpj4120dw/inf/setupPrintcapij dcpj4120dw -i
+	/opt/brother/Printers/dcpj4110dw/inf/setupPrintcapij dcpj4110dw -i
 	
 	# cupswrapper
-	/opt/brother/Printers/dcpj4120dw/cupswrapper/cupswrapperdcpj4120dw
+	/opt/brother/Printers/dcpj4110dw/cupswrapper/cupswrapperdcpj4110dw
 	
 	systemctl restart org.cups.cupsd.service
 }
@@ -14,10 +14,10 @@ post_upgrade() {
 
 pre_remove() {
 	# lpr
-	/opt/brother/Printers/dcpj4120dw/inf/setupPrintcapij dcpj4120dw -e
+	/opt/brother/Printers/dcpj4110dw/inf/setupPrintcapij dcpj4110dw -e
 	
 	# cupswrapper
-	/opt/brother/Printers/dcpj4120dw/cupswrapper/cupswrapperdcpj4120dw -e
+	/opt/brother/Printers/dcpj4110dw/cupswrapper/cupswrapperdcpj4110dw -e
 }
 
 op=$1
