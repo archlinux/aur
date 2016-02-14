@@ -33,6 +33,10 @@ build() {
   cp geo_bsd/*.py ${srcdir}/temp/geo_bsd
   cp geo_bsd/*.so ${srcdir}/temp/geo_bsd
   cp setup.py ${srcdir}/temp/
+}
+
+package() {
   cd ${srcdir}/temp/
   python2 setup.py install --prefix=/usr --root="$pkgdir" || return 1
+    
 }
