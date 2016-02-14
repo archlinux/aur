@@ -1,4 +1,4 @@
-index 3c22019..025299d 100644
+index 3c22019..877d2c2 100644
 --- a/yakuake/app/terminal.cpp
 +++ b/yakuake/app/terminal.cpp
 @@ -24,6 +24,7 @@
@@ -40,29 +40,30 @@ index 3c22019..025299d 100644
 +        newAct->setShortcut(QKeySequence(Qt::ALT + Qt::Key_V));
 +        newAct->setEnabled(true);
 +
-+//        newAct = actionCollection->addAction("terminal-copy", this, SLOT(copy()));
-+//        newAct->setShortcut(QKeySequence(Qt::ALT + Qt::Key_C));
-+//        newAct->setEnabled(true);
++        newAct = actionCollection->addAction("terminal-copy", this, SLOT(copy()));
++        newAct->setShortcut(QKeySequence(Qt::ALT + Qt::Key_C));
++        newAct->setEnabled(true);
 +
 +        newAct = actionCollection->addAction("terminal-clear", this, SLOT(clear_scrollback()));
 +        newAct->setShortcut(QKeySequence(Qt::ALT + Qt::Key_K));
 +        newAct->setEnabled(true);
 +
-+//        newAct = actionCollection->addAction("terminal-paste1", this, SLOT(paste()));
-+//        newAct->setShortcut(QKeySequence(Qt::META + Qt::Key_V));
-+//        newAct->setEnabled(true);
++        newAct = actionCollection->addAction("terminal-paste1", this, SLOT(paste()));
++        newAct->setShortcut(QKeySequence(Qt::META + Qt::Key_V));
++        newAct->setEnabled(true);
 +
-+//        newAct = actionCollection->addAction("terminal-copy1", this, SLOT(copy()));
-+//        newAct->setShortcut(QKeySequence(Qt::META + Qt::Key_C));
-+//        newAct->setEnabled(true);
++        newAct = actionCollection->addAction("terminal-copy1", this, SLOT(copy()));
++        newAct->setShortcut(QKeySequence(Qt::META + Qt::Key_C));
++        newAct->setEnabled(true);
 +
-+//        newAct = actionCollection->addAction("terminal-clear1", this, SLOT(clear_scrollback()));
-+//        newAct->setShortcut(QKeySequence(Qt::META + Qt::Key_K));
-+//        newAct->setEnabled(true);
++        newAct = actionCollection->addAction("terminal-clear1", this, SLOT(clear_scrollback()));
++        newAct->setShortcut(QKeySequence(Qt::META + Qt::Key_K));
++        newAct->setEnabled(true);
 +        
      }
  }
  
+diff --git a/yakuake/app/terminal.h b/yakuake/app/terminal.h
 index 23e70a0..bdd5a23 100644
 --- a/yakuake/app/terminal.h
 +++ b/yakuake/app/terminal.h

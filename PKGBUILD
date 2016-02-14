@@ -16,8 +16,8 @@ conflicts=('yakuake')
 _gitroot="git://anongit.kde.org/yakuake.git"
 _gitname="yakuake"
 
-source=('copy_paste.patch')
-md5sums=('cc680a2a0493237dc02913eb3b7e1740')
+source=('copy_paste_1.patch')
+md5sums=('SKIP')
 
 
 build() {
@@ -44,7 +44,7 @@ build() {
   msg "Starting make..."
 
   cd ${srcdir}
-  patch -p1 --verbose -i $srcdir/copy_paste.patch 
+  patch -p1 --verbose -i $srcdir/copy_paste_1.patch 
   mkdir -p build
   cd build
   cmake ../${_gitname} \
