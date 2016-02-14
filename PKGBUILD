@@ -4,12 +4,11 @@
 
 pkgname=libplatform-legacy
 pkgver=1.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Platform support library used by add-ons for Kodi up to Jarvis"
 arch=('i686' 'x86_64')
 url="https://github.com/Pulse-Eight/platform"
 license=('GPL')
-conflicts=('libplatform')
 makedepends=('cmake')
 depends=('gcc-libs')
 source=(https://github.com/Pulse-Eight/platform/archive/${pkgver}.tar.gz)
