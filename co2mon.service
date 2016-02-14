@@ -1,5 +1,7 @@
 [Unit]
 Description=Polling daemon for masterkit co2monitor
+BindsTo=dev-co2mon.device
+After=dev-co2mon.device
 
 [Service]
 User=nobody
