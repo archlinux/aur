@@ -1,0 +1,40 @@
+diff --git a/lisp/sawfish/wm/commands/poweroff.jl b/lisp/sawfish/wm/commands/poweroff.jl
+index 97b40c8..c88386f 100644
+--- a/lisp/sawfish/wm/commands/poweroff.jl
++++ b/lisp/sawfish/wm/commands/poweroff.jl
+@@ -36,22 +36,22 @@
+ 
+   (define-structure-alias poweroff sawfish.wm.commands.poweroff)
+ 
+-  (defcustom reboot-command "ssd --reboot"
++  (defcustom reboot-command "systemctl reboot"
+     "The command used to reboot the computer."
+     :type string
+     :group (misc apps))
+ 
+-  (defcustom halt-command "ssd --shutdown"
++  (defcustom halt-command "systemctl halt"
+     "The command used to halt the computer."
+     :type string
+     :group (misc apps))
+ 
+-  (defcustom suspend-command "ssd --suspend"
++  (defcustom suspend-command "systemctl suspend"
+     "The command used to suspend the computer."
+     :type string
+     :group (misc apps))
+ 
+-  (defcustom hibernate-command "ssd --hibernate"
++  (defcustom hibernate-command "systemctl hibernate"
+     "The command used to hibernate the computer."
+     :type string
+     :group (misc apps))
+@@ -61,7 +61,7 @@
+     :type string
+     :group (misc apps))
+ 
+-  (defcustom lockdown-command "ssd --lockdown"
++  (defcustom lockdown-command "xscreensaver-command --lock"
+     "The command used to lockdown the display."
+     :type string
+     :group (misc apps))

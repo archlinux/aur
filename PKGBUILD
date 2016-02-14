@@ -3,7 +3,7 @@
 
 pkgname=sawfish-git
 pkgver=1.11.90.6.gba51040
-pkgrel=1
+pkgrel=2
 pkgdesc='A window manager extensible using a Lisp-based scripting language.'
 arch=('i686' 'x86_64')
 url='http://sawfish.wikia.com'
@@ -14,18 +14,23 @@ optdepends=('emacs: for using sawfish.el')
 provides=('sawfish=1.11')
 conflicts=('sawfish')
 install=sawfish.install
-source=('git://github.com/SawfishWM/sawfish.git')
+source=('git://github.com/SawfishWM/sawfish.git' arch_poweroff_defaults.patch)
 options=('!libtool')
-md5sums=('SKIP')
+sha1sums=('SKIP' '73dbf5f93c0124c11f0254267d662f86be1f2767')
 _gitname=sawfish
 
 pkgver() {
-  cd $_gitname
+  cd "$_gitname"
   git describe --tags|sed 's/-/./g'|cut -c9-
 }
 
+prepare() {
+  cd "$_gitname"
+  patch -p1 < "$srcdir"/arch_poweroff_defaults.patch
+}
+
 build() {
-  cd $_gitname
+  cd "$_gitname"
   ./autogen.sh 
   ./configure --prefix=/usr --with-nls 
   make 
@@ -33,7 +38,7 @@ build() {
 }
 
 package() {
-  cd $_gitname
+  cd "$_gitname"
   make DESTDIR="$pkgdir" install 
   install -Dm644 sawfish.el $pkgdir/usr/share/emacs/site-lisp/sawfish.el
   install -Dm644 sawfish.elc $pkgdir/usr/share/emacs/site-lisp/sawfish.elc
