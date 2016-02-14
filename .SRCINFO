@@ -1,0 +1,13 @@
+pkgbase = cubway-jslib-simplejs-git
+	pkgdesc = Simple DOM operation library.
+	pkgver = r30.a081568
+	pkgrel = 1
+	url = https://github.com/SubwayDesktop/simple.js/
+	arch = any
+	makedepends = coreutils
+	provides = cubway-jslib-simplejs
+	source = cubway-jslib-simplejs::git+https://github.com/SubwayDesktop/simple.js.git
+	md5sums = SKIP
+
+pkgname = cubway-jslib-simplejs-git
+
