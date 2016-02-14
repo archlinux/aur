@@ -1,6 +1,7 @@
 # Maintainer: Mohammed Yaseen Mowzer <yaseen@mowzer.co.za>
+
 pkgname=spectrum2
-pkgver=2.0.0
+pkgver=2.0.2
 pkgrel=1
 #epoch=
 pkgdesc="Create C++ transports easily"
@@ -21,7 +22,7 @@ install=
 changelog=
 source=("https://github.com/hanzz/$pkgname/archive/$pkgver.tar.gz")
 noextract=()
-sha256sums=('bd1b79fbc0cb300d9ce1f7d79503f96820dbac60f247e2973225ff9f7f1ff07f')
+sha256sums=('e8c318f5acdb5b369779dff41eb330f956a8939e4f2e5efd8087cb1335a43456')
 validpgpkeys=()
 
 build() {
