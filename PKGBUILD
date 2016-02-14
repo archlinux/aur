@@ -19,14 +19,11 @@ sha256sums=(
 
 build() {
   cd ${srcdir}/${_application}
-  build_dir=${srcdir}/${_application}/${_application}
-
-  # build it
   make
 }
 
 package() {
-  build_dir=${srcdir}/${_application}/${_application}
+  _builddir=${srcdir}/${_application}/${_application}
 
   # directories architecture
   mkdir -p ${pkgdir}/usr/share/gnome-shell/extensions/shellshape@gfxmonk.net
@@ -35,14 +32,14 @@ package() {
 
   # copies
   # - extension
-  dest_dir="${pkgdir}/usr/share/gnome-shell/extensions/shellshape@gfxmonk.net"
-  cp ${srcdir}/${_application}/build/gjs/*.js ${dest_dir}/
-  cp ${build_dir}/metadata.json ${dest_dir}/
-  cp ${build_dir}/shellshape.pot ${dest_dir}/
-  cp -R ${build_dir}/lib ${dest_dir}/
+  _destdir="${pkgdir}/usr/share/gnome-shell/extensions/shellshape@gfxmonk.net"
+  cp ${srcdir}/${_application}/build/gjs/*.js ${_destdir}
+  cp ${_builddir}/metadata.json ${_destdir}
+  cp ${_builddir}/shellshape.pot ${_destdir}
+  cp -R ${_builddir}/lib ${_destdir}
 
   # - locales
-  cp -R ${build_dir}/locale ${pkgdir}/usr/share/locale
+  cp -R ${_builddir}/locale ${pkgdir}/usr/share/locale
 
   # - glib-2.0
   cp ${srcdir}/${_application}/schemas/*.xml ${pkgdir}/usr/share/glib-2.0/schemas/
