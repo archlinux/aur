@@ -3,7 +3,7 @@
 _plug=havsfunc
 pkgname=vapoursynth-plugin-${_plug}
 pkgver=r21
-pkgrel=3
+pkgrel=4
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('any')
 url='http://forum.doom9.org/showthread.php?t=166582'
@@ -17,7 +17,7 @@ depends=('vapoursynth-plugin-addgrain-git'
          'vapoursynth-plugin-dfttest-git'
          'vapoursynth-plugin-eedi2-git'
          'vapoursynth-plugin-fft3dfilter-git'
-         'vapoursynth-plugin-flash3kyuu_deband-git'
+         'vapoursynth-plugin-f3kdb'
          'vapoursynth-plugin-fluxsmooth'
          'vapoursynth-plugin-fmtconv'
          'vapoursynth-plugin-genericfilters-git'
