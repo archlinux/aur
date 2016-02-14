@@ -175,7 +175,6 @@ package_papirus-kmail-theme() {
 
 package_papirus-k3b-theme() {
     pkgdesc="Papirus theme for K3B"
-    options=()
     depends=('k3b')
     install -dm755 ${pkgdir}/usr/share/{k3b/pics,apps/k3b/pics}
     cp -r ${srcdir}/${_repo}-${_git}/kde-pack/k3b-themes/* ${pkgdir}/usr/share/k3b/pics/
