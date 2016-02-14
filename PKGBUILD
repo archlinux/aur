@@ -3,10 +3,10 @@
 _fnt_name=league-spartan
 pkgname=ttf-${_fnt_name}
 pkgver=20160215
-pkgrel=1
+pkgrel=2
 pkgdesc="A new classic, this is a bold, modern, geometric sans-serif font that has no problem kicking its enemies in the chest."
 arch=('any')
-url="http://openfontlibrary.org/fr/font/abibas"
+url="https://www.theleagueofmoveabletype.com/${_fnt_name}"
 license=('custom:OFL')
 groups=('lmt-fonts')
 depends=('fontconfig' 'xorg-font-utils')
