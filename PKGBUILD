@@ -2,11 +2,11 @@
 
 pkgname=howdoi-git
 _pkgname="howdoi"
-pkgver=1.1.7.210.14116ff
+pkgver=1.1.7.218.5926d69
 pkgrel=1
 pkgdesc="A code search tool. (from git, build for python 3)"
 arch=(any)
-url=("https://github.com/gleitz/howdoi")
+url="https://github.com/gleitz/howdoi"
 license=('MIT')
 depends=(
   'python'
