@@ -4,6 +4,7 @@
 set PATH '/usr/lib/archci/node_modules/.bin' $PATH
 set VERBOSE false
 set JUSTHELPED false
+set UNPRIVUSER $USER
 
 function printUsage
 	set JUSTHELPED true
@@ -42,13 +43,13 @@ function run
 
 	printf "\r\033[K%-"$padding"s %s" $action "[....]"
 
-	if test $VERBOSE = true
+	if test "$VERBOSE" = true
 		eval $cmd
 	else
 		eval $cmd > /dev/null ^ $error
 	end
 
-	if test $status = 0
+	if test "$status" = 0
 		printf "\r\033[K%-"$padding"s %s\n" $action "["(set_color green)" OK "(set_color normal)"]"
 	else
 		printf "\r\033[K%-"$padding"s %s\n" $action "["(set_color red)"FAIL"(set_color normal)"]"
@@ -62,19 +63,19 @@ end
 
 # Cleanup once the script exits
 function cleanup --on-process %self
-	if test $JUSTHELPED != true
+	if test "$JUSTHELPED" != true
 		echo
 		echo "Cleaning Up"
 
 		# Clean up pre script if neccessary
-		if test $PRERUN = true -a $POSTRUN = false
+		if test "$PRERUN" = true -a "$POSTRUN" = false
 			runPostScript
 		end
 
 		# Clean up remaining folders
-		sudo rm -rf $BUILDDIR
-		sudo rm -rf $AURDIR
-		sudo rm -rf $AURBUILDDIR
+		rm -rf $BUILDDIR
+		rm -rf $AURDIR
+		rm -rf $AURBUILDDIR
 
 		echo 'Done'
 	end
@@ -86,7 +87,7 @@ function notfound --on-event fish_command_not_found
 end
 
 function validateManifest
-	test -f $MANIFEST
+	test -f "$MANIFEST"
 	and actool validate $MANIFEST
 end
 
@@ -100,67 +101,67 @@ function extractLabels
 	and set -g MGROUP (sx -jxi $MANIFEST x.app.group)
 
 	# If we have no version in the manifest and no installed packages, abort
-	and if test -z "$MVERSION" -a ! -f $ARCH -a ! -f $AUR
+	and if test -z "$MVERSION" -a ! -f "$ARCH" -a ! -f "$AUR"
 		abort 'No version in manifest and no aur/arch packages!'
 	end
 end
 
 function bootstrapRootFS
 	mkdir -pm 755 $BUILDDIR/rootfs
-	and sudo pacstrap -cdGM $BUILDDIR/rootfs filesystem
+	and pacstrap -cdGM $BUILDDIR/rootfs filesystem
 end
 
 function runPreScript
-	if test -f $PRESCRIPT
+	if test -f "$PRESCRIPT"
 		. $PRESCRIPT $BUILDDIR/rootfs
 		and set -g PRERUN true
 	end
 end
 
 function installDepsArch
-	if test -f $ARCHBUILD
-		sudo pacman --asdeps --noconfirm -r $BUILDDIR/rootfs -S (cat $ARCHBUILD)
+	if test -f "$ARCHBUILD"
+		pacman --asdeps --noconfirm -r $BUILDDIR/rootfs -S (cat $ARCHBUILD)
 	end
 end
 
 function installDepsAur
-	if test -f $AURBUILD
+	if test -f "$AURBUILD"
 		# Only make the packages with pacaur, then install them with pacman
-		env PKGDEST=$AURBUILDDIR pacaur --noconfirm --noedit --foreign -m (cat $AURBUILD)
-		and sudo pacman -r $BUILDDIR/rootfs --asdeps --noconfirm -U $AURBUILDDIR/*
+		env PKGDEST=$AURBUILDDIR runuser -u $UNPRIVUSER -- pacaur --noconfirm --noedit --foreign -m (cat $AURBUILD)
+		and pacman -r $BUILDDIR/rootfs --asdeps --noconfirm -U $AURBUILDDIR/*
 	end
 end
 
 function installArch
-	if test -f $ARCH
-		sudo pacman --noconfirm --asexplicit -r $BUILDDIR/rootfs -S (cat $ARCH)
+	if test -f "$ARCH"
+		pacman --noconfirm --asexplicit -r $BUILDDIR/rootfs -S (cat $ARCH)
 	end
 end
 
 function installAur
-	if test -f $AUR
+	if test -f "$AUR"
 		# Only make the packages with pacaur, then install them with pacman
-		env "PKGDEST=$AURDIR" pacaur --noconfirm --noedit --foreign -m (cat $AUR)
-		and sudo pacman -r $BUILDDIR/rootfs --asexplicit --noconfirm -U $AURDIR/*
+		env "PKGDEST=$AURDIR" runuser -u $UNPRIVUSER -- pacaur --noconfirm --noedit --foreign -m (cat $AUR)
+		and pacman -r $BUILDDIR/rootfs --asexplicit --noconfirm -U $AURDIR/*
 	end
 end
 
 function copyRootFS
-	if test -d $ROOTFS
-		sudo cp -rpf $ROOTFS $BUILDDIR
+	if test -d "$ROOTFS"
+		cp -rpf $ROOTFS $BUILDDIR
 	end
 end
 
 function runBuildScript
-	if test -f $BUILDSCRIPT
+	if test -f "$BUILDSCRIPT"
 		cp $BUILDSCRIPT $BUILDDIR/rootfs/build
-		and sudo chroot $BUILDDIR/rootfs /build
-		and sudo rm -rf $BUILDDIR/rootfs/build
+		and chroot $BUILDDIR/rootfs /build
+		and rm -rf $BUILDDIR/rootfs/build
 	end
 end
 
 function runPostScript
-	if test -f $POSTSCRIPT
+	if test -f "$POSTSCRIPT"
 		. $POSTSCRIPT $BUILDDIR/rootfs
 		and set -g POSTRUN true
 	end
@@ -168,7 +169,7 @@ end
 
 function removeDeps
 	if not test -z (pacman -Qtdqr $BUILDDIR/rootfs)
-		sudo pacman --noconfirm -r $BUILDDIR/rootfs -Rns (pacman -Qtdqr $BUILDDIR/rootfs)
+		pacman --noconfirm -r $BUILDDIR/rootfs -Rns (pacman -Qtdqr $BUILDDIR/rootfs)
 	end
 end
 
@@ -178,18 +179,18 @@ function copyManifest
 	set NMGROUP (cat $BUILDDIR/rootfs/etc/group | grep "^$MGROUP:" | cut -d: -f3)
 
 	# If we have no version, load it from the first installed package
-	if test -z $MVERSION
-		if test -f $AUR
-			set -g MVERSION (sudo pacman -r $BUILDDIR/rootfs -Q (head -1 $AUR) | sed 's/[^ ]* //')
+	if test -z "$MVERSION"
+		if test -f "$AUR"
+			set -g MVERSION (pacman -r $BUILDDIR/rootfs -Q (head -1 $AUR) | sed 's/[^ ]* //')
 		else
-			set -g MVERSION (sudo pacman -r $BUILDDIR/rootfs -Q (head -1 $ARCH) | sed 's/[^ ]* //')
+			set -g MVERSION (pacman -r $BUILDDIR/rootfs -Q (head -1 $ARCH) | sed 's/[^ ]* //')
 		end
 	end
 
 	# Copy and patch the manifest
 	cp "$MANIFEST" "$BUILDDIR/manifest"
 
-	if not test -z $MVERSION
+	if not test -z "$MVERSION"
 		# Patch in the new version
 		sx -jxpF $BUILDDIR/manifest "x.labels.push({'name':'version', 'value':'$MVERSION'}); x"
 	end
@@ -205,10 +206,12 @@ function buildACI
 	mkdir -p (dirname "$ACI")
 
 	# Build the aci
-	and sudo actool build $BUILDDIR $ACI
+	and actool build $BUILDDIR $ACI
 
 	# Generate Signature
-	and gpg --armor --output $ACI.asc --detach-sig $ACI
+	and chown -R $UNPRIVUSER $TRGDIR
+	and runuser -u $UNPRIVUSER -- gpg --armor --output $ACI.asc --detach-sig $ACI
+	and chown -R $USER $TRGDIR
 end
 
 # Parse arguments
@@ -221,11 +224,18 @@ for arg in $argv
 	end
 end
 
+# Check user, we cannot run if we are not run with sudo
+if test "$USER" = root -a ! -z "$SUDO_USER"
+	set UNPRIVUSER $SUDO_USER
+else
+	abort 'Has to be run via sudo'
+end
+
 set SRCDIR (realpath $argv[-2])
 set TRGDIR (realpath $argv[-1])
 
 # Validate Input
-if not test -d $SRCDIR -a -d $TRGDIR
+if not test -d "$SRCDIR" -a -d "$TRGDIR"
 	echo "Source or Target Directory not found!"
 	echo
 
@@ -239,8 +249,8 @@ set NAME (basename "$SRCDIR")
 set PRERUN false
 set POSTRUN false
 
-set AURDIR (mktemp -d)
-set AURBUILDDIR (mktemp -d)
+set AURDIR (runuser -u $UNPRIVUSER -- mktemp -d)
+set AURBUILDDIR (runuser -u $UNPRIVUSER -- mktemp -d)
 set BUILDDIR (mktemp -d)
 
 set AUR "$SRCDIR/aur.deps"
