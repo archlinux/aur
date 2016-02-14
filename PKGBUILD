@@ -2,7 +2,7 @@
 
 _plug=havsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r21.0.g1c17eda
+pkgver=r21.2.g0282a34
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}. (GIT Version)"
 arch=('any')
