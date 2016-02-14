@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=SoulSeekQT
 Exec=soulseekqt
-Icon=soulseekqt
+Icon=soulseek
 Terminal=false
 Type=Application
 Categories=Network;P2P;
