@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ruby-parser
-pkgver=2.3.0.5
+pkgver=2.3.0.6
 pkgrel=1
 pkgdesc="A Ruby parser written in pure Ruby"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/whitequark/parser"
 license=('MIT')
 depends=('ruby' 'ruby-ast')
 source=(https://rubygems.org/downloads/${pkgname#*-}-${pkgver}.gem)
-sha256sums=('0b98382ca469cf7dd0da59aa1cb38446c97a7a1b624f115987db0f17ded5dca1')
+sha256sums=('7fc1c0b72d237c8842ff15d8709acda05cacd38492ce5065dfb1304d659924e4')
 noextract=("${pkgname#*-}-${pkgver}.gem")
 
 package() {
