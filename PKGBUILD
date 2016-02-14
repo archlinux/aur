@@ -19,6 +19,8 @@ conflicts=('freecad' 'freecad-git')
 source=('freecad::git://github.com/greyltc/FreeCAD')
 sha256sums=('SKIP')
 
+PKGEXT='.pkg.tar'
+
 pkgver() {
   cd freecad/
   echo $(git describe --tags --abbrev=0)
