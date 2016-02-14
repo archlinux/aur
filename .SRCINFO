@@ -1,0 +1,15 @@
+pkgbase = subway-launcher-git
+	pkgdesc = An HTML5-based application launcher for GNU/Linux with MS-modern-like style.
+	pkgver = r33.fd12ae3
+	pkgrel = 1
+	url = https://github.com/SubwayDesktop/subway-launcher
+	arch = any
+	makedepends = coreutils
+	depends = cubway
+	depends = cubway-jslib-simplejs
+	provides = subway-launcher
+	source = subway-launcher::git+https://github.com/SubwayDesktop/subway-launcher.git
+	md5sums = SKIP
+
+pkgname = subway-launcher-git
+
