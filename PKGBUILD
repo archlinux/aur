@@ -63,6 +63,9 @@ package() {
 	cp -ra "${pkgdir}/usr/Mod" "${pkgdir}/usr/share/freecad/"
 	rm -r "${pkgdir}/usr/Mod"
 
+	# install the desktop icon
+	install -m644 -D ${srcdir}/freecad/src/Gui/Icons/freecad.svg -t ${pkgdir}/usr/share/icons
+
 	# Install pixmaps and desktop shortcut
 	desktop-file-install --dir="${pkgdir}/usr/share/applications" "${srcdir}/freecad/package/debian/freecad.desktop"
 }
