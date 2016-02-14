@@ -5,7 +5,7 @@ _name=wdocker
 
 pkgname=$_python-wdocker-git
 pkgver=32
-pkgrel=1
+pkgrel=2
 pkgdesc='Define docker commands in your Dockerfile'
 depends=('python')
 makedepends=('git')
@@ -35,4 +35,6 @@ package() {
             "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/${_name}/README.rst" \
             "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
+    install -Dm644 "${srcdir}/${_name}/zsh/_wdocker" \
+            "${pkgdir}/usr/share/zsh/site-functions/_wdocker"
 }
