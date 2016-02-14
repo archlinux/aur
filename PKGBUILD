@@ -18,7 +18,7 @@ _srcname="ImageMagick"
 _srcver="6.9.3-4"
 pkgname=imagemagick-full
 pkgver="$(echo ${_srcver} | tr '-' '.')"
-pkgrel=2
+pkgrel=3
 pkgdesc="An image viewing/manipulation program (Q32 HDRI with all libs and features)"
 arch=('i686' 'x86_64')
 url="http://www.imagemagick.org/"
@@ -49,61 +49,68 @@ sha256sums=('0d4266940d27afb617fc8b3481ffdf63dd02ca13806d581ac5cb28638725c275')
 
 build() {
 	cd "$_srcname"-"$_srcver"
-
-        ./configure \
-                --prefix=/usr \
-                --sysconfdir=/etc \
-                --enable-static=no \
-                --enable-shared=yes \
-                --enable-opencl \
-                --enable-hdri \
-                --enable-hugepages \
-                --disable-delegate-build \
-                --with-modules \
-                --with-quantum-depth=32 \
-                --with-magick-plus-plus \
-                --with-perl \
-                --with-perl-options="INSTALLDIRS=vendor" \
-                --with-jemalloc \
-                --with-umem \
-                --with-bzlib \
-                --with-x \
-                --with-zlib \
-                --with-autotrace \
-                --without-dps \
-                --with-fftw \
-                --with-fpx \
-                --with-djvu \
-                --with-fontconfig \
-                --with-freetype \
-                --with-gslib \
-                --with-gvc \
-                --with-jbig \
-                --with-jpeg \
-                --with-lcms \
-                --with-openjp2 \
-                --with-lqr \
-                --with-lzma \
-                --with-openexr \
-                --with-pango \
-                --with-png \
-                --with-rsvg \
-                --with-tiff \
-                --with-webp \
-                --with-wmf \
-                --with-xml \
-                --with-dejavu-font-dir="$_dejavu_font_dir" \
-                --with-gs-font-dir="$_gs_font_dir" \
-                --with-windows-font-dir="$_windows_font_dir"
+	
+	
+	./configure \
+	        --prefix=/usr \
+	        --sysconfdir=/etc \
+	        --enable-static=no \
+	        --enable-shared=yes \
+	        --enable-fast-install=yes \
+	        --enable-openmp \
+	        --enable-opencl \
+	        --enable-largefile \
+	        --enable-cipher \
+	        --enable-hdri \
+	        --enable-hugepages \
+	        --enable-docs \
+	        --disable-delegate-build \
+	        --with-threads \
+	        --with-modules \
+	        --with-quantum-depth=32 \
+	        --with-magick-plus-plus \
+	        --with-perl \
+	        --with-perl-options="INSTALLDIRS=vendor" \
+	        --with-jemalloc \
+	        --with-umem \
+	        --with-bzlib \
+	        --with-x \
+	        --with-zlib \
+	        --with-autotrace \
+	        --without-dps \
+	        --with-fftw \
+	        --with-fpx \
+	        --with-djvu \
+	        --with-fontconfig \
+	        --with-freetype \
+	        --with-gslib \
+	        --with-gvc \
+	        --with-jbig \
+	        --with-jpeg \
+	        --with-lcms \
+	        --with-openjp2 \
+	        --with-lqr \
+	        --with-lzma \
+	        --with-openexr \
+	        --with-pango \
+	        --with-png \
+	        --with-rsvg \
+	        --with-tiff \
+	        --with-webp \
+	        --with-wmf \
+	        --with-xml \
+	        --with-dejavu-font-dir="$_dejavu_font_dir" \
+	        --with-gs-font-dir="$_gs_font_dir" \
+	        --with-windows-font-dir="$_windows_font_dir"
+	        
 	make
 }
 
 package() {
-  
 	cd "$_srcname"-"$_srcver"
 	
 	make -j1 DESTDIR="$pkgdir/" install
+	
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 NOTICE "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
-	
 }
