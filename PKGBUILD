@@ -2,7 +2,7 @@
 
 pkgname=factorio
 pkgver=0.12.20
-pkgrel=1
+pkgrel=2
 pkgdesc="A 2D game about building and maintaining factories."
 arch=('i686' 'x86_64')
 url="http://www.factorio.com/"
@@ -58,7 +58,7 @@ package() {
 
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/usr/share/applications"
-  install -d "${pkgdir}/usr/share/factorio"
+  install -g games -m 775 -d "${pkgdir}/usr/share/factorio"
   install -d "${pkgdir}/usr/share/licenses/factorio"
 
   install -m755 "bin/${__factorio_arch}/factorio" "$pkgdir/usr/bin/factorio"
