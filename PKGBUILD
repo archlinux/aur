@@ -5,8 +5,8 @@
 _pkgname=wwwoffle
 pkgname="${_pkgname}-svn"
 # _pkgver=2.9i
-pkgver=2.9j.r2202
-pkgrel=2
+pkgver=2.9j.r2210
+pkgrel=1
 pkgdesc="Simple caching proxy server with special features (request, recursive fetch, ...) for use with dial-up internet links. Includes startup scripts for OpenRC, System V init, systemd."
 arch=('i686' 'x86_64' 'arm' 'arm64')
 url="http://www.gedanken.org.uk/software/wwwoffle/"
@@ -59,7 +59,6 @@ sha256sums=(
 
 _pgmver() {
   _unpackeddir="${srcdir}/${_pkgname}"
-  
   # Well, this _is_ useless use of cat, but to make it more clear to see in which order things are going on I do the cat first and then the grep.
   _ver="$(cat "${_unpackeddir}/conf/wwwoffle.conf.template" | \
             grep -E '^#.*WWWOFFLE.*[Vv]ersion' | \
@@ -76,7 +75,6 @@ _pgmver() {
 
 _svnrelease() {
   _unpackeddir="${srcdir}/${_pkgname}"
-  
   _rev="$(svn info "${_unpackeddir}" | grep '^Revision' | cut -d' ' -f2)"
   
   echo "${_rev}"
@@ -87,10 +85,8 @@ _svnrelease() {
 }
 
 pkgver() {
-  # Format: RELEASE.rREVISION, e.g. 2.9j.r2202
-  
   _unpackeddir="${srcdir}/${_pkgname}"
-  
+  # Format: RELEASE.rREVISION, e.g. 2.9j.r2202
   _ver="$(_pgmver)"
   _rev="$(_svnrelease)"
   
@@ -109,6 +105,15 @@ pkgver() {
   fi
   
   echo "${_ver}.r${_rev}"
+}
+
+prepare() {
+  _unpackeddir="${srcdir}/${_pkgname}"
+  cd "${_unpackeddir}"
+  find "${srcdir}"/*.patch -xtype f 2>/dev/null | while read _patch; do
+    msg "Applying patch '${_patch}' ..."
+    patch -p1 < "${_patch}" || exit "$?"
+  done
 }
 
 build() {
