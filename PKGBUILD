@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel
-pkgver=0.3.0
+pkgver=0.3.0.2
 pkgrel=1
 pkgdesc='The Pantheon Top Panel'
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ optdepends=('indicator-datetime: Display date and time'
             'indicator-power: Battery idicator')
 makedepends=('cmake' 'vala')
 install="wingpanel.install"
-source=("https://launchpad.net/wingpanel/freya/${pkgver}/+download/wingpanel-${pkgver}.tgz")
-sha256sums=('41cd475427dc7fb0dfd889ac91a580590023888b54afe6979fd1593ada152c3a')
+source=("https://launchpad.net/wingpanel/0.3.x/${pkgver}/+download/wingpanel-${pkgver}.tar.xz")
+sha256sums=('c8efc810eb671f4e6736133216353eb8cd7b23ed4001a8c3a8e8e2a7aa5d4dec')
 
 build() {
   cd wingpanel-${pkgver}
