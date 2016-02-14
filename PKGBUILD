@@ -2,7 +2,7 @@
 # Contributor: bjoern lindig bjoern dot lindig at googlemail dot com
 
 pkgname=gnumeric-pure-hg
-pkgver=5603.18b658dbc088
+pkgver=5611.c4dc19d7f764
 pkgrel=1
 pkgdesc="Gnumeric plugin for the Pure programming language"
 arch=('i686' 'x86_64')
