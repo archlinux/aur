@@ -2,7 +2,7 @@
 # Contributor: Diego <cdprincipe@gmail.com>
 
 pkgname=numix-themes-git
-pkgver=2.5.1.r109.c61729d
+pkgver=2.5.1.r125.0619757
 pkgrel=1
 pkgdesc='A flat and light theme with a modern look (GNOME, Openbox, Unity, Xfce)'
 arch=('any')
