@@ -33,7 +33,7 @@ sha256sums=('224701f90e9c3da93f3a31cd1a0b1141115577dbdccaf30c1a706fe4330221d6')
 package_papirus(){
     pkgdesc="Meta-package for modified and adaptive Paper theme"
     optdepends=(
-    	'papirus-gtk-icon-theme: Modified and adaptive gtk Paper icon theme for Gnome'
+    	'papirus-icon-theme-gtk: Modified and adaptive gtk Paper icon theme for Gnome'
     	'papirus-icon-theme-kde: Modified and adaptive Paper icon theme for KDE'
     	'papirus-gtk-theme: Modified and adaptive Paper gtk theme'
         'papirus-look-and-feel: Look-and-feel package for modified and adaptive Paper theme for KDE.'
