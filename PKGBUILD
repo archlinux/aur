@@ -2,8 +2,8 @@
 
 pkgname=uemacs-git
 pkgver=20141208.r122
-pkgrel=2
-pkgdesc="MicroEMACS 3.9e customized by Linus Torvalds"
+pkgrel=3
+pkgdesc="MicroEMACS/PK 4.0.15 customized by Linus Torvalds"
 arch=('i686' 'x86_64')
 url="http://git.kernel.org/?p=editors/uemacs/uemacs.git;a=summary"
 license=('custom')
