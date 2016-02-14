@@ -2,7 +2,7 @@
 _pkgname=cubway-jslib-simplejs
 pkgname=$_pkgname-git
 pkgver=r30.a081568
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple DOM operation library.'
 arch=('any')
 url='https://github.com/SubwayDesktop/simple.js/'
@@ -19,5 +19,5 @@ pkgver() {
 package() {
 	cd "${srcdir}/${_pkgname}"
 	install -m755 -d "${pkgdir}/opt/Subway/simple.js"
-	install -m755 simple.js "${pkgdir}/opt/Subway/simple.js/"
+	install -m644 simple.js "${pkgdir}/opt/Subway/simple.js/"
 }
