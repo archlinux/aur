@@ -24,7 +24,8 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_vcsname"
-    ./autogen.sh --prefix=/usr
+    ./autogen.sh
+    ./configure --prefix=/usr
     make
 }
 
