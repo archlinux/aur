@@ -2,7 +2,7 @@
 
 _pkgname=openbazaar
 pkgname=${_pkgname}-git
-pkgver=1866.2d95e1b
+pkgver=1975.be6d08b
 pkgrel=1
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon"
 arch=(any)
@@ -23,7 +23,7 @@ replaces=(${_pkgname})
 
 build(){
   cd $srcdir/${_pkgname}
-  npm install
+  npm install --production
 }
 
 package(){
@@ -33,11 +33,10 @@ msg2 "Installing Openbazaar data"
   cp -r $srcdir/${_pkgname} $pkgdir/opt/
 
 msg2 "Symlinking to allow gui to automatically call daemon"
-  ln -sr /var/lib/openbazaard $pkgdir/opt/${_pkgname}/OpenBazaar-Server  
- 
+  ln -sr "/var/lib/openbazaard $pkgdir/opt/${_pkgname}/OpenBazaar-Server"  
+
 msg2 "Installing execution script"
   install -Dm755 $srcdir/${_pkgname}.sh $pkgdir/usr/bin/${_pkgname}
-  
 
   rm -rf $pkgdir/opt/${_pkgname}/{.git*,.eslint*,.travis*}
 
