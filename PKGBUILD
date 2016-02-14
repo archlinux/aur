@@ -12,12 +12,13 @@ source=("http://gdlp01.c-wss.com/gds/1/0100004671/01/cnijfilter-mg5400series-3.8
 md5sums=('e76ff321213bca10ae33aef9f162c301')
 
 package() {
-  if [ "${CARCH}" = 'x86_64' ]; then
-    rpmfile=$(find "$srcdir" -name cnijfilter-common-$pkgver*${CARCH}*.rpm)
-  elif [ "${CARCH}" = 'i686' ]; then
-    rpmfile=$(find "$srcdir" -name cnijfilter-common-$pkgver*i386*.rpm)
-  fi
-  cd $pkgdir
-  rpmextract.sh $rpmfile
+    if [ "${CARCH}" = 'x86_64' ]; then
+        rpmfile=$(find "$srcdir" -name cnijfilter-common-$pkgver*${CARCH}*.rpm)
+    elif [ "${CARCH}" = 'i686' ]; then
+        rpmfile=$(find "$srcdir" -name cnijfilter-common-$pkgver*i386*.rpm)
+    fi
+    cd $pkgdir
+    rpmextract.sh $rpmfile
+    mv ./usr/lib64 ./usr/lib
 }
 
