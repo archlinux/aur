@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-bluetooth-bzr
-pkgver=r5
+pkgver=r25
 pkgrel=1
 pkgdesc='Bluetooth indicator for Wingpanel'
 arch=('i686' 'x86_64')
@@ -13,6 +13,7 @@ depends=('bluez' 'glib2' 'glibc' 'gtk3'
 makedepends=('bzr' 'cmake' 'vala')
 provides=('wingpanel-indicator-bluetooth')
 conflicts=('wingpanel-indicator-bluetooth')
+install='wingpanel-indicator-bluetooth.install'
 source=('bzr+lp:wingpanel-indicator-bluetooth')
 sha256sums=('SKIP')
 
