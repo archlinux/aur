@@ -1,5 +1,5 @@
 pkgname=cmake-lint
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="Check for coding style issues in CMake files"
 arch=('any')
@@ -8,7 +8,7 @@ license=('APACHE')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://github.com/richq/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('cb7dd4b403c2d5a1a989b9a15944950e')
+md5sums=('81bbc87d65a27a88a5121f58843d4c8c')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
