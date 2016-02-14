@@ -1,0 +1,15 @@
+pkgbase = rpython
+	pkgdesc = Restricted python compiler
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = http://pypy.org
+	arch = any
+	license = MIT
+	depends = python2
+	depends = python2-setuptools
+	depends = python2-pytest
+	source = https://pypi.python.org/packages/source/r/rpython/rpython-0.1.4.tar.gz
+	md5sums = 680fcee2fed5f94fcb4390130510eec9
+
+pkgname = rpython
+
