@@ -1,28 +1,23 @@
 # Maintainer: samæ <samæ at marvid dot fr>
 
-_fnt_name=junction
+_fnt_name=raleway
 pkgname=ttf-${_fnt_name}
 pkgver=20160215
 pkgrel=1
-pkgdesc="Junction is a a humanist sans-serif, and the first open-source type project started by The League of Moveable Type."
+pkgdesc="An elegant sans-serif font, designed in a single thin weight."
 arch=('any')
 url="http://theleagueofmoveabletype.com/${_fnt_name}"
 license=('custom:OFL')
 groups=('lmt-fonts')
 depends=('fontconfig' 'xorg-font-utils')
-conflicts=('otf-junction')
+conflicts=('otf-raleway')
 source=("https://github.com/theleagueof/${_fnt_name}/archive/master.zip")
 install=${pkgname}.install
-md5sums=('e35636a6a9075db4f1bc09df69b8d0d3')
+md5sums=('147dff2149b4d910023e459de8b260bb')
 
 package() {
-  install -Dm644 ${srcdir}/${_fnt_name}-master/Junction-bold.otf    ${pkgdir}/usr/share/fonts/OTF/JunctionBold.otf
-  install -Dm644 ${srcdir}/${_fnt_name}-master/Junction-light.otf   ${pkgdir}/usr/share/fonts/OTF/JunctionLight.otf
-  install -Dm644 ${srcdir}/${_fnt_name}-master/Junction-regular.otf ${pkgdir}/usr/share/fonts/OTF/JunctionRegular.otf
-
-  install -Dm644 ${srcdir}/${_fnt_name}-master/webfonts/junction-bold.ttf    ${pkgdir}/usr/share/fonts/OTF/JunctionBold.ttf
-  install -Dm644 ${srcdir}/${_fnt_name}-master/webfonts/junction-light.ttf   ${pkgdir}/usr/share/fonts/OTF/JunctionLight.ttf
-  install -Dm644 ${srcdir}/${_fnt_name}-master/webfonts/junction-regular.ttf ${pkgdir}/usr/share/fonts/OTF/JunctionRegular.ttf
+  install -Dm644 ${srcdir}/${_fnt_name}-master/Raleway\ Thin.otf    ${pkgdir}/usr/share/fonts/OTF/RalewayThin.otf
+  install -Dm644 ${srcdir}/${_fnt_name}-master/Raleway\ Thin.ttf    ${pkgdir}/usr/share/fonts/TTF/RalewayThin.ttf
 
   install -Dm644 ${srcdir}/${_fnt_name}-master/Open\ Font\ License.markdown ${pkgdir}/usr/share/licenses/${pkgname}/OFL.txt
 }
