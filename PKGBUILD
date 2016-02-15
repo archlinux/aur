@@ -37,7 +37,7 @@ source=(# Chrome
 noextract=("lp4_$_ffver.xpi")
 #           "lpchrome_$_chromver.crx")
 md5sums=('009f2d1a3ac25eb7a3a18f5ad0fc4f53'
-		 '7685d7bb8b030a46df35cd3cd83fd373'
+         '7685d7bb8b030a46df35cd3cd83fd373'
          '151251e415bccdffc1dc0df592d1d7e1'
          '9af777d2eea8e67ad332235718a7653d'
          '6db597fea2196950bcb54472beab2cd3'
