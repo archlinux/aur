@@ -2,7 +2,7 @@
 
 pkgname=backblaze-b2-git
 pkgver=r167.245ce9d
-pkgrel=1
+pkgrel=2
 pkgdesc="Backblaze B2 Command Line Client."
 arch=('any')
 url="https://www.backblaze.com/b2/cloud-storage.html"
@@ -28,6 +28,6 @@ prepare() {
 package() {
     cd "$srcdir/B2_Command_Line_Tool"
     install -Dm0755 b2 "$pkgdir/usr/bin/b2"
-    install -Dm0644 contrib/b2 "$pkgdir/usr/share/bash-completion/completions/b2"
+    install -Dm0644 contrib/b2 "$pkgdir/etc/bash_completion.d/b2"
     install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/backblaze-b2/LICENSE"
 }
