@@ -24,13 +24,13 @@ post_install() {
     _update
     echo
 
-    note "Custom flags should be put directly in: ~/.config/chromium-flags.conf
-    Setting CHROMIUM_FLAGS in /etc is deprecated."
+    note "Pepper Flash is now auto-detected from: 
+    - /usr/lib/PepperFlash/ (chromium-pepper-flash-dev)
+    - /opt/google/chrome-unstable/PepperFlash/ (google-chrome-dev)"
     echo
 
-    note "Pepper Flash is now auto-detected from: 
-    - /usr/lib/PepperFlash (chromium-pepper-flash-dev)
-    - /opt/google/chrome-unstable/PepperFlash (google-chrome-dev)"
+    note "Custom flags should be put directly in: ~/.config/chromium-flags.conf
+    (CHROMIUM_FLAGS is deprecated.)"
     echo
 
     note "The launcher is called: 'chromium-snapshot-bin'"
