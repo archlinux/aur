@@ -1,10 +1,12 @@
 # Maintainer: Sam S. <smls75@gmail.com>
 
 pkgname=aquaria-ose-git
-pkgver=1.1.3+g485.8d6b65c
-_basever=1.1.3
+_installname=aquaria-ose
+pkgver=1.1.3+o1.002+g609.d8da857
+_osever=1.002
+_basever=1.1.3+o$_osever
 pkgrel=1
-pkgdesc="A 2D fantasy underwater action-adventure game (improved engine a.k.a. Open Source Edition)"
+pkgdesc="A 2D fantasy underwater action-adventure game (Open Source Edition of the engine = original v1.1.3 + many improvements)"
 url='https://github.com/AquariaOSE/Aquaria'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -27,7 +29,9 @@ pkgver() {
 
 build() {
   cd $_gitname
+  _ver="$_osever revision $(git rev-parse --short HEAD)"
   cmake -DAQUARIA_DEFAULT_DATA_DIR=/usr/share/aquaria \
+        -DAQUARIA_OVERRIDE_VERSION_STRING="Aquaria OSE $_ver (based on Aquaria v1.1.3)" \
         -DAQUARIA_USE_SDL2=1
   make
 }
@@ -43,5 +47,6 @@ package() {
   cp -r "$srcdir/$_gitname"/{game_scripts,files}/* usr/share/aquaria/override
 
   # Install desktop entry
-  install -Dm644 "$srcdir/$pkgname.desktop" usr/share/applications/$pkgname.desktop
+  install -Dm644 "$srcdir"/$_installname.desktop \
+                 usr/share/applications/$_installname.desktop
 }
