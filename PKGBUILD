@@ -9,10 +9,10 @@ pkgver=0.8.1
 pkgrel=1
 pkgdesc="An rsync-like utility using boto's S3 and Google Storage interfaces."
 url="http://github.com/seedifferently/boto_rsync"
-license="MIT"
 arch=("any")
+license=("MIT")
 makedepends=("git")
-depends=("python2" "python2-boto")
+depends=("python2-boto")
 source=()
 
 _gitroot="http://github.com/seedifferently/${_filename_}.git"
