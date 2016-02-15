@@ -2,7 +2,7 @@
 
 _pkgname=libasr
 pkgname=libasr-snapshot
-pkgver=201505061057
+pkgver=201602131606
 pkgrel=1
 pkgdesc='A FREE asynchronous DNS resolver.'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ provides=('libasr')
 conflicts=('libasr')
 options=(!strip)
 source=("http://www.opensmtpd.org/archives/$_pkgname-$pkgver.tar.gz")
-sha256sums=('50ad9ed14ab0eb2abd27cfd45047f49b5470ec48717e2d024b017fa43c69f69d')
+sha256sums=('e5684a08d5eb61d68a94a24688f23bee8785c8a51a1bd34c88cae5aee5aa6da2')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
