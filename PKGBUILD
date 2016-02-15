@@ -1,15 +1,15 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 pkgname='iwatch'
 pkgver='0.2.2'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="realtime filesystem monitoring program using inotify"
 arch=('any')
 license=('GPL')
 options=('!emptydirs')
 depends=('perl-event' 'perl-linux-inotify2' 'perl-mail-sendmail' 'perl-xml-simpleobject-libxml')
 backup=('etc/iwatch/iwatch.xml')
-url='http://iwatch.sourceforge.net/'
-source=('http://sourceforge.net/projects/iwatch/files/iwatch/0.2.2/iwatch-0.2.2.tgz/download'
+url='https://iwatch.sourceforge.net/'
+source=('https://sourceforge.net/projects/iwatch/files/iwatch/0.2.2/iwatch-0.2.2.tgz/download'
         'iwatch.service')
 md5sums=('b32155e844b0d58871dc72041160938d'
          '0d18bc48c52b1858e865715582a1f914')
