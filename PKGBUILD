@@ -8,7 +8,7 @@ _branch='master'
 pkgrel=1
 arch=(any)
 url='http://www.sile-typesetter.org/'
-license='MIT'
+license=('MIT')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git://github.com/alerque/${pkgname%-git}.git#branch=${_branch}")
