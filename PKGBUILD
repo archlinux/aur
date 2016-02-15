@@ -5,7 +5,7 @@ pkgver=0.2.1
 pkgrel=1
 pkgdesc='Turn SSH into a thin client specifically for your app'
 arch=('x86_64')
-url='https://github.com/dokku/sshcommand'
+url='https://github.com/dokku/plugn'
 license=('bsd')
 
 source=("https://github.com/dokku/plugn/releases/download/v${pkgver}/plugn_${pkgver}_linux_x86_64.tgz")
