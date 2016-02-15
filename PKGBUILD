@@ -2,7 +2,7 @@
 # Contributor: Rogof <rogof /at/ gmx /dot/ com>
 
 pkgname=ccl-svn
-pkgver=1.12.dev.r16661.trunk
+pkgver=1.12_r16702
 pkgrel=1
 pkgdesc="The Clozure Common Lisp implementation"
 url="http://ccl.clozure.com/"
@@ -24,7 +24,7 @@ pkgver() {
   # get version from version.lisp file & the svn revision
   local ver_prog="(format t \"~a.~a_r~a\" ccl::*openmcl-major-version* ccl::*openmcl-minor-version* $(svnversion))"
   # use head to remove trailing NIL
-  echo -n $ver_prog | ./lx86cl$_arch -n -Q -b -l level-1/version.lisp | awk '/Version/ {print $2}'|sed 's+-+.+g'|sed 's+M++'
+  echo -n $ver_prog | ./lx86cl$_arch -n -Q -b -l level-1/version.lisp |head -1
 }
 
 build() {
