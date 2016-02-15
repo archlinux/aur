@@ -78,6 +78,7 @@ package() {
 
 	cp -RL "$GO_PLATFORM_DIR"/web/{static,templates} web/
 	cp -RL "$GO_PLATFORM_DIR"/api/templates api/
+	cp -RL "$GO_PLATFORM_DIR"/i18n .
 
 	echo $pkgver > config/build.txt
 	mv web/static/js/bundle{,-$pkgver}.min.js
