@@ -1,10 +1,10 @@
 # Maintainer: samæ <samæ at marvid dot fr>
 
-_fnt_name=prociono
+_fnt_name=chunk
 pkgname=ttf-${_fnt_name}
 pkgver=20160215
 pkgrel=1
-pkgdesc="A roman serif with blackletter elements."
+pkgdesc="An ultra-bold, ultra-awesome slab serif typeface."
 arch=('any')
 url="http://theleagueofmoveabletype.com/${_fnt_name}"
 license=('custom:OFL')
@@ -13,7 +13,7 @@ depends=('fontconfig' 'xorg-font-utils')
 conflicts=()
 source=("https://github.com/theleagueof/${_fnt_name}/archive/master.zip")
 install=${pkgname}.install
-md5sums=('e92f54c9db1047927d9c26e8fc069cf1')
+md5sums=('96287d88f72c475a3006031b80dcdc5e')
 
 package() {
   install -d ${pkgdir}/usr/share/fonts/OTF
