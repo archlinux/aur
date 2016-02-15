@@ -1,6 +1,6 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=flatbuffers
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="An efficient cross platform serialization library for C++, with support for Java, C# and Go"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=()
 makedepends=(cmake)
 optdepends=('go' 'java-environment' 'mono')
 source=(https://github.com/google/$pkgname/archive/v$pkgver.tar.gz)
-md5sums=('4691dd77ac665c8a53ed2b003dde5e5a')
+md5sums=('86d13e8c4c19c2bbadff86c5435b2fca')
 
 
 build() {
@@ -27,7 +27,4 @@ check() {
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
-  _docdir="$pkgdir/usr/share/doc/$pkgname"  
-  install -m755 -d $_docdir
-  cp -a docs/*.html docs/html $_docdir
 }
