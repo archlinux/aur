@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=forking
-ExecStart=/usr/sbin/tincd --user=nobody --net=%i
+ExecStart=/usr/bin/tincd --user=nobody --net=%i
 ExecReload=/usr/bin/tinc --net %I reload
 Restart=on-abnormal
 
