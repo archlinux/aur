@@ -1,9 +1,10 @@
-# Maintainer: Dario Giovannetti <dev at dariogiovannetti dot net>
+# Maintainer: Simon Doppler <dop dot simon at gmail dot com>
+# Submitter: Dario Giovannetti <dev at dariogiovannetti dot net>
 
 _projname=gitcheck
 _authname=badele
 pkgname=${_projname}-git
-pkgver=96.27697a0
+pkgver=134.92644cd
 pkgrel=1
 pkgdesc='Check status of multiple git repositories in one pass'
 arch=('any')

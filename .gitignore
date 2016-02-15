@@ -1,4 +1,5 @@
-/gitcheck
-/*.pkg.tar.xz
-/*.src.tar.gz
-/PKGBUILD.fork
+gitcheck
+pkg
+src
+*.pkg.tar.xz
+*.src.tar.gz
