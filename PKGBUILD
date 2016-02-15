@@ -11,8 +11,8 @@ license=('GPL')
 depends=('sdl2' 'openal' 'gcc-libs')
 makedepends=('cmake')
 optdepends=('aquaria-data-hib: Game data from the Humble Bundle release')
-conflicts=('aquaria-hib-git' 'aquaria-hib-hg' 'aquaria' 'aquaria-git' 'aquaria-ose-git')
-replaces=('aquaria-hib-git' 'aquaria-hib-hg' 'aquaria' 'aquaria-git')
+conflicts=('aquaria-hib-git' 'aquaria-hib-hg' 'aquaria' 'aquaria-hib' 'aquaria-git' 'aquaria-ose-git')
+replaces=('aquaria')
 install="$pkgname.install"
 
 _repo=Aquaria
