@@ -10,7 +10,6 @@ url="http://theleagueofmoveabletype.com/${_fnt_name}"
 license=('custom:OFL')
 groups=('lmt-fonts')
 depends=('fontconfig' 'xorg-font-utils')
-conflicts=('otf-junction')
 source=("https://github.com/theleagueof/${_fnt_name}/archive/master.zip")
 install=${pkgname}.install
 md5sums=('23ec5900abd2b9f9196cec94ae505315')
