@@ -1,0 +1,11 @@
+# Build
+src/
+pkg/
+
+# Sources/Packages
+*.deb
+*.tar
+
+# Quilt
+patches/
+.pc/
