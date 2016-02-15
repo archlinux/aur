@@ -17,11 +17,6 @@ makedepends=()
 depends=('bash' 'openssl')
 url="http://www.softether.org/"
 
-#pkgver() {
-#  cd "SoftEtherVPN"
-#  git log | grep -o -m1 'v[0-9].*' | tr '-' '.'
-#}
-
 build(){
   cd "${srcdir}/${pkgver//_/-}"
   if [ "${CARCH}" == "i686" ]; then 
