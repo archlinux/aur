@@ -3,12 +3,12 @@
 
 pkgname=python2-neovim-git
 _pkgname=python2-neovim-git
-pkgver=0.r262.605897b
+pkgver=0.1.0.r1.gdea5427
 pkgrel=1
 pkgdesc="Python client to neovim, git version. Use this to keep up with neovim-git"
 arch=('any')
 license=('Apache2')
-url=('http://github.com/neovim/python-client')
+url='http://github.com/neovim/python-client'
 depends=('python2'
          'python2-msgpack'
          'python2-greenlet'
