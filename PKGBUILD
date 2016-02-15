@@ -5,8 +5,8 @@
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=zathura-pdf-mupdf
-pkgver=0.2.9
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 
 pkgdesc="PDF support for Zathura (MuPDF backend)"
 url="https://pwmt.org/projects/zathura-pdf-mupdf/"
@@ -18,14 +18,8 @@ conflicts=('zathura-pdf-poppler')
 depends=('zathura' 'jbig2dec' 'openjpeg2' 'cairo')
 makedepends=('mupdf>=1.4')
 
-source=(https://pwmt.org/projects/zathura/plugins/download/zathura-pdf-mupdf-$pkgver.tar.gz
-        fix-colorspace.patch)
-sha1sums=('55b47ed2962589eeef88168554aa5bd2f6557ed3'
-          '47814ed0e2431a9c25cb7e3c7444526b1eff0eab')
-
-prepare() {
-  patch -d zathura-pdf-mupdf-$pkgver < $srcdir/fix-colorspace.patch
-}
+source=(https://pwmt.org/projects/zathura/plugins/download/zathura-pdf-mupdf-$pkgver.tar.gz)
+sha1sums=('ae0be41ea7c75b8ddc083fe01f1366673ea9751a')
 
 build() {
   make -C zathura-pdf-mupdf-$pkgver MUPDF_LIB="-lmupdf -lmujs"
