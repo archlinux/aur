@@ -9,7 +9,7 @@ url="https://sourceforge.net/projects/timeslottracker/"
 license=('GPL2')
 provides=("timeslottracker")
 depends=("java-environment")
-source=("http://downloads.sourceforge.net/project/timeslottracker/TimeSlotTracker/1.2.9/timeslottracker_${pkgver}_all.deb")
+source=("http://downloads.sourceforge.net/project/timeslottracker/TimeSlotTracker/${pkgver}/timeslottracker_${pkgver}_all.deb")
 md5sums=('4c528a47457cf5be3e899cd34cf66611')
 
 package() {
