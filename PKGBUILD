@@ -1,19 +1,19 @@
 # Maintainer: samæ <samæ at marvid dot fr>
 
-_fnt_name=prociono
+_fnt_name=sniglet
 pkgname=ttf-${_fnt_name}
 pkgver=20160215
 pkgrel=1
-pkgdesc="A roman serif with blackletter elements."
+pkgdesc="A fun rounded display face that’s great for headlines."
 arch=('any')
 url="http://theleagueofmoveabletype.com/${_fnt_name}"
 license=('custom:OFL')
 groups=('lmt-fonts')
 depends=('fontconfig' 'xorg-font-utils')
-conflicts=()
+conflicts=('ttf-impallari-sniglet')
 source=("https://github.com/theleagueof/${_fnt_name}/archive/master.zip")
 install=${pkgname}.install
-md5sums=('e92f54c9db1047927d9c26e8fc069cf1')
+md5sums=('f649d483683a4f5de8051dc23fe7ac2c')
 
 package() {
   install -d ${pkgdir}/usr/share/fonts/OTF
