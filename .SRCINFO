@@ -1,34 +1,35 @@
 pkgbase = mitmproxy
 	pkgdesc = SSL-capable man-in-the-middle HTTP proxy
-	pkgver = 0.15
-	pkgrel = 3
+	pkgver = 0.16
+	pkgrel = 1
 	url = http://mitmproxy.org/
 	arch = any
 	license = GPL
-	checkdepends = python2-nose
+	checkdepends = python2-pytest-runner
 	checkdepends = pathod
 	checkdepends = python2-mock
 	makedepends = git
 	depends = python2-netlib
-	depends = python2-pyasn1
-	depends = python2-pyparsing
-	depends = python2-configargparse
+	depends = python2-h2
 	depends = python2-tornado
-	depends = python2-watchdog
+	depends = python2-configargparse
 	depends = python2-pyperclip
 	depends = python2-blinker
-	depends = python2-setuptools
-	depends = python2-urwid
-	depends = python2-lxml
-	depends = python2-pillow
+	depends = python2-pyparsing
 	depends = python2-html2text
 	depends = python2-construct
+	depends = python2-six
+	depends = python2-pillow
+	depends = python2-watchdog
 	depends = python2-click
+	depends = python2-urwid
+	depends = python2-lxml
+	depends = python2-setuptools
 	optdepends = python2-pyamf: Contentviews - Decodes AMF files
 	optdepends = python2-protobuf: Contentviews - Extended content decoding
 	optdepends = python2-cssutils: Contentviews - Beautifies CSS files
 	provides = python2-libmproxy
-	source = git+https://github.com/mitmproxy/mitmproxy.git#tag=v0.15
+	source = git+https://github.com/mitmproxy/mitmproxy.git#tag=v0.16
 	sha256sums = SKIP
 
 pkgname = mitmproxy
