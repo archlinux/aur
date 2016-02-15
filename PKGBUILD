@@ -2,12 +2,13 @@
 pkgname=asclock-xlib
 _pkgname=asclock
 pkgver=2.0.12
-pkgrel=5
+pkgrel=6
 pkgdesc="The AfterStep clock dock app - Xlib version"
 url="http://www.cs.mun.ca/~gstarkes/wmaker/dockapps/time.html#asclock"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('libxpm')
+makedepends=('imake')
 provides=('asclock')
 conflicts=('asclock' 'asclock-gtk')
 source=("http://gentoo.osuosl.org/distfiles/$_pkgname-$pkgver.tar.gz"
