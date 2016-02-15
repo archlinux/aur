@@ -5,19 +5,19 @@
 # Contributor: lubosz
 
 pkgname=pcl-qt5
-pkgver=1.7.2
-pkgrel=3
+pkgver=1.8.0rc1
+pkgrel=1
 pkgdesc="A comprehensive open source library for n-D Point Clouds and 3D geometry processing (Qt5 version)"
 arch=('x86_64' 'i686')
 url='http://www.pointclouds.org'
 license=('BSD')
-depends=('boost' 'eigen' 'flann' 'vtk6' 'qhull' 'qt5-base' 'glu' 'qt5-webkit' 'openmpi')
+depends=('boost' 'eigen' 'flann' 'vtk' 'qhull' 'qt5-base' 'glu' 'qt5-webkit' 'openmpi')
 makedepends=('cmake' 'gl2ps')
 optdepends=('cuda' 'openni2' 'python-sphinx')
 source=("https://github.com/PointCloudLibrary/pcl/archive/pcl-${pkgver}.tar.gz"
-        "qt5.patch")
-sha256sums=('479f84f2c658a6319b78271111251b4c2d6cf07643421b66bbc351d9bed0ae93'
-            '9e7303a9faa2fc5d0453841333a3e7c3801452b79efcef0d3c9d3f13285d5b91')
+        "vtk7.patch")
+sha256sums=('18ff4519026a7885d2fd0ee1d06939a7755e83e082840e4929fb2883948e5142'
+            'eaf5f90ded00d47ae8fbb34c3cc8878e694f44b684038a9c593c432035a0b2c1')
 provides=('pcl')
 conflicts=('pcl')
 
@@ -32,19 +32,14 @@ prepare() {
   grep -rl '#include <boost/date_time/posix_time/posix_time.hpp>' . \
     | xargs sed -i "s/#include <boost.*posix_time.hpp>/#ifndef Q_MOC_RUN\n\r#include <boost\\/date_time\\/posix_time\\/posix_time.hpp>\n\r#endif/g"
 
-  patch -p1 < ../qt5.patch
-
-  # Fix for vtk6
-  sed -i "s,CMAKE_INSTALL_RPATH \"\${CMAKE_INSTALL_PREFIX}/\${LIB_INSTALL_DIR}\",CMAKE_INSTALL_RPATH \"/opt/vtk6/lib\",g" "CMakeLists.txt"
+  patch -p1 < ../vtk7.patch
 
   # [[ -d build ]] && rm -r build
   mkdir -p build && cd build
 
   # -DBUILD_gpu_people=OFF \ Disable until CUDA npp detection is fixed in cmake
-  export CMAKE_PREFIX_PATH="/opt/vtk6:/usr"
   cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_RPATH="/opt/vtk6/lib" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_apps=ON \
     -DBUILD_apps_cloud_composer=OFF \
