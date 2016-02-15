@@ -6,14 +6,14 @@
 
 pkgname=pcl-qt5
 pkgver=1.7.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A comprehensive open source library for n-D Point Clouds and 3D geometry processing (Qt5 version)"
 arch=('x86_64' 'i686')
 url='http://www.pointclouds.org'
 license=('BSD')
-depends=('boost' 'eigen' 'flann' 'vtk' 'qhull' 'qt5-base' 'glu' 'qt5-webkit')
+depends=('boost' 'eigen' 'flann' 'vtk6' 'qhull' 'qt5-base' 'glu' 'qt5-webkit' 'openmpi')
 makedepends=('cmake' 'gl2ps')
-optdepends=('openmpi' 'cuda' 'openni2' 'python-sphinx')
+optdepends=('cuda' 'openni2' 'python-sphinx')
 source=("https://github.com/PointCloudLibrary/pcl/archive/pcl-${pkgver}.tar.gz"
         "qt5.patch")
 sha256sums=('479f84f2c658a6319b78271111251b4c2d6cf07643421b66bbc351d9bed0ae93'
@@ -21,8 +21,8 @@ sha256sums=('479f84f2c658a6319b78271111251b4c2d6cf07643421b66bbc351d9bed0ae93'
 provides=('pcl')
 conflicts=('pcl')
 
-build() {
-  cd $srcdir/pcl-pcl-$pkgver
+prepare() {
+  cd "${srcdir}/pcl-pcl-${pkgver}"
 
   # Patch to support boost 1.5.6:
   # 1. Api change. See http://www.pcl-users.org/PCL-compilation-errors-Please-help-me-td4035209.html
@@ -34,12 +34,17 @@ build() {
 
   patch -p1 < ../qt5.patch
 
+  # Fix for vtk6
+  sed -i "s,CMAKE_INSTALL_RPATH \"\${CMAKE_INSTALL_PREFIX}/\${LIB_INSTALL_DIR}\",CMAKE_INSTALL_RPATH \"/opt/vtk6/lib\",g" "CMakeLists.txt"
+
   # [[ -d build ]] && rm -r build
   mkdir -p build && cd build
 
   # -DBUILD_gpu_people=OFF \ Disable until CUDA npp detection is fixed in cmake
+  export CMAKE_PREFIX_PATH="/opt/vtk6:/usr"
   cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_RPATH="/opt/vtk6/lib" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_apps=ON \
     -DBUILD_apps_cloud_composer=OFF \
@@ -57,14 +62,16 @@ build() {
     -DBUILD_gpu_tracking=ON \
     -DBUILD_app_3d_rec_framework=ON \
     -DBUILD_simulation=ON
+}
 
+build() {
+  cd "${srcdir}/pcl-pcl-${pkgver}/build"
   make
 }
 
 package() {
-  cd $srcdir/pcl-pcl-$pkgver/build
-
-  make DESTDIR=$pkgdir install
+  cd "${srcdir}/pcl-pcl-${pkgver}/build"
+  make DESTDIR=${pkgdir} install
 
   install -Dm644 ../LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
