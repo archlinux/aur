@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=AirZoshi
+Exec=/usr/bin/airzoshi %F
+Comment=ebook reader
+Type=Application
+StartupNotify=true
+Terminal=false
+Path=/opt/airapps/airzoshi
+Icon=airzoshi
+Categories=Viewer;Graphics;2DGraphics;VectorGraphics;
+MimeType=text/plain;application/epub+zip;application/pdf;application/x-cbz;image/jpeg;image/png;image/gif;
