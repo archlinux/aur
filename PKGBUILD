@@ -2,28 +2,22 @@
 # Maintainer: dpayne <darby.payne@gmail.com>
 
 pkgname="cli-visualizer"
-pkgver=0.2
-pkgrel=1.2
-epoch=1
+pkgver=1.1
+pkgrel=2
 pkgdesc="A cli visualizer for mpd"
 arch=('i686' 'x86_64')
-url="https://github.com/dpayne/cli-visualizer"
+url="https://github.com/dpayne/cli-visualizer/"
 license=('MIT')
 depends=('ncurses' 'fftw')
 makedepends=('git' 'fftw' 'pkg-config')
 conflicts=()
 install=${pkgname}.install
-source=("git+https://github.com/dpayne/cli-visualizer")
-md5sums=('SKIP')
-
-pkgver() {
-  cd cli-visualizer || exit
-  echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
+source=('https://github.com/dpayne/cli-visualizer/archive/v1.1.tar.gz')
+sha256sums=('13ae8ce89d3d2e41524a42dbb14343b951701f44650ea5a977c3311cb96a113f')
 
 build() {
-  cd cli-visualizer || exit
-  make
+    cd $pkgname-$pkgver
+    make
 }
 
 package() {
