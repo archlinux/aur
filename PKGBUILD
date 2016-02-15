@@ -3,7 +3,7 @@
 # Maintainer: Brent Carmer
 
 pkgname=yices-bin
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 provides=('yices')
 conflicts=('yices')
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 url="http://yices.csl.sri.com/"
 license=('custom')
 source=("http://yices.csl.sri.com/cgi-bin/yices2-newnewdownload.cgi?file=yices-$pkgver-$CARCH-unknown-linux-gnu-static-gmp.tar.gz&accept=I+Agree")
-sha512sums=('12f025632415363f51dea9d7515bda99cdd1c4834774af88deb7f79c7f068c9f8d29ab238f336ee1ca6f6411ccc2138e877711fce47f097ba606537fd9e61732')
+sha512sums=('d9bf0cc20091e165db59ac97923e93e5137e21e88414b006a7569ffd5c4351ed55cbebcc7670f6df509ef2eb1824ec5fd77ec0a7ba798aa31ffc1ea621242351')
 
 package() {
   cd "$srcdir/yices-$pkgver/"
