@@ -12,7 +12,7 @@ pkgname=('qemu-git'
          'qemu-block-rbd-git'
          'qemu-block-gluster-git'
          'qemu-guest-agent-git')
-pkgver=2.5.0.r42679.3fd3c4b
+pkgver=2.5.0.r43989.80b5d6b
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
@@ -39,7 +39,7 @@ mips64 mips64el mipsel mipsn32 mipsn32el or32 ppc ppc64 ppc64abi32 ppc64le s390x
 sh4 sh4eb sparc sparc32plus sparc64 moxie ppcemb tricore unicore32 xtensa xtensaeb)
 _extra_blob=(QEMU,cgthree.bin QEMU,tcx.bin bamboo.dtb openbios-ppc
 openbios-sparc32 openbios-sparc64 palcode-clipper petalogix-ml605.dtb
-petalogix-s3adsp1800.dtb ppc_rom.bin s390-ccw.img s390-zipl.rom slof.bin
+petalogix-s3adsp1800.dtb ppc_rom.bin s390-ccw.img slof.bin
 spapr-rtas.bin u-boot.e500)
 
 pkgver() {
