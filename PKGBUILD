@@ -1,8 +1,8 @@
 # Maintainer: Weitian Leung <weitianleung[at]gmail[dot]com>
 
 pkgname=bing-wallpaper-git
-pkgver=r10
-pkgrel=3
+pkgver=r21
+pkgrel=1
 pkgdesc="Change wallpaper from Bing daily"
 arch=(any)
 license=('GPL3')
