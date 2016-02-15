@@ -10,7 +10,7 @@ pkgdesc='Check status of multiple git repositories in one pass'
 arch=('any')
 url="https://github.com/${_authname}/${_projname}"
 license=('MIT')
-depends=('python')
+depends=('python-colored')
 source=("git://github.com/${_authname}/${_projname}.git")
 md5sums=('SKIP')
 
