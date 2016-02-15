@@ -3,7 +3,7 @@
 
 pkgname="php-go"
 pkgver=2.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple PHP build tool."
 url="https://github.com/herrera-io/php-go"
 license=("MIT")
@@ -18,7 +18,7 @@ build() {
   cd "${srcdir}/${pkgname}"
 
   composer install --prefer-dist --no-dev
-  php-box build
+  php -d phar.readonly=Off /usr/bin/php-box build
 }
 
 package() {
