@@ -1,6 +1,6 @@
 pkgbase="gcc-multilib-trunk-git"
 pkgname=('gcc-multilib-git' 'gcc-libs-multilib-git' 'lib32-gcc-libs-git' 'gcc-objc-multilib-git')
-pkgver=6.0.144658.2959d9c
+pkgver=6.0.144667.048186c
 pkgrel=1
 pkgdesc="The GNU Compiler Collection developmental snapshot"
 arch=('any')
@@ -209,7 +209,7 @@ package_gcc-libs-multilib-git()
 {
         pkgdesc="Runtime libraries shipped by GCC for multilib"
         depends=('glibc>=2.20' "lib32-gcc-libs-git=$pkgver-$pkgrel")
-        provides=("gcc-libs=$pkgver-$pkgrel")
+        provides=("gcc-libs=$pkgver-$pkgrel" "gcc-libs-multilib=$pkgver-$pkgrel")
         conflicts=('gcc-libs')
         options=('!emptydirs' '!strip')
         install=gcc-libs.install
