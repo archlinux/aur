@@ -1,6 +1,6 @@
 # Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
 pkgname=libarcus-git
-pkgver=r117.2ad9f67
+pkgver=r237.22e3fea
 pkgrel=1
 pkgdesc="A library designed to facilitate the communication between Cura and its backend and similar code."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('protobuf3')
 makedepends=('git' 'cmake')
 source=('git+https://github.com/Ultimaker/libArcus.git'
 		'site-packages-dir.patch')
-md5sums=('SKIP' 'b8946cb96b180f82bdd8804b292ec5dd')
+md5sums=('SKIP' 'a89dda56f6dbe4c29d9bf25abb186312')
 
 pkgver() {
   cd libArcus
