@@ -18,7 +18,5 @@ package() {
   HOME=/tmp gem install --no-user-install --ignore-dependencies \
   -i "${pkgdir}${_gemdir}" ${_gemname}-${pkgver}.gem
 
-  bsdtar -xf data.tar.gz -C "$srcdir/"
-
-  install -D -m755 bin/rak ${pkgdir}/usr/bin/rak
+  install -D -m755 "${pkgdir}${_gemdir}/bin/rak" "${pkgdir}/usr/bin/rak"
 }
