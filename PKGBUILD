@@ -12,8 +12,8 @@ arch=('i686' 'x86_64')
 license=('GPL')
 depends=('sdl2' 'openal' 'gcc-libs')
 makedepends=('cmake')
-conflicts=('aquaria-hib-git' 'aquaria-hib-hg' 'aquaria' 'aquaria-git')
-replaces=('aquaria-hib-git' 'aquaria-hib-hg' 'aquaria' 'aquaria-git')
+conflicts=('aquaria-hib-git' 'aquaria-hib-hg' 'aquaria' 'aquaria-hib' 'aquaria-git' 'aquaria-ose')
+replaces=('aquaria-git' 'aquaria-hib-git' 'aquaria-hib-hg')
 install="$pkgname.install"
 
 source=('git://github.com/AquariaOSE/Aquaria.git' "aquaria-ose.desktop")
