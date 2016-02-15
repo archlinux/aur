@@ -1,10 +1,10 @@
 # Maintainer: samæ <samæ at marvid dot fr>
 
-_fnt_name=prociono
+_fnt_name=orbitron
 pkgname=ttf-${_fnt_name}
 pkgver=20160215
 pkgrel=1
-pkgdesc="A roman serif with blackletter elements."
+pkgdesc="A geometric sans-serif font from the future."
 arch=('any')
 url="http://theleagueofmoveabletype.com/${_fnt_name}"
 license=('custom:OFL')
@@ -13,7 +13,7 @@ depends=('fontconfig' 'xorg-font-utils')
 conflicts=()
 source=("https://github.com/theleagueof/${_fnt_name}/archive/master.zip")
 install=${pkgname}.install
-md5sums=('e92f54c9db1047927d9c26e8fc069cf1')
+md5sums=('43c6818cfd1ddcdb845c32d0cdfa3b4f')
 
 package() {
   install -d ${pkgdir}/usr/share/fonts/OTF
