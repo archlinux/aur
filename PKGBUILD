@@ -27,7 +27,7 @@ build() {
 	make
 }
 
-check() {
+test() {
 	cd "$_pkgname-$pkgver/common"
 	make test
 }
