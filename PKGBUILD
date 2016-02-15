@@ -2,7 +2,7 @@
 
 pkgname=aquaria-ose-git
 _installname=aquaria-ose
-pkgver=1.1.3+o1.002+g609.d8da857
+pkgver=1.1.3+o1.002+g610.6971e78
 _osever=1.002
 _basever=1.1.3+o$_osever
 pkgrel=1
@@ -14,10 +14,11 @@ depends=('sdl2' 'openal' 'gcc-libs')
 makedepends=('cmake')
 conflicts=('aquaria-hib-git' 'aquaria-hib-hg' 'aquaria' 'aquaria-hib' 'aquaria-git' 'aquaria-ose')
 replaces=('aquaria-git' 'aquaria-hib-git' 'aquaria-hib-hg')
-install="$pkgname.install"
+optdepends=('aquaria-data-hib: Game data from the Humble Bundle release')
+install="$_installname.install"
 
 source=('git://github.com/AquariaOSE/Aquaria.git' "aquaria-ose.desktop")
-md5sums=('SKIP' '8677297d97cee364ca63652503ed6e62')
+md5sums=('SKIP' '0d1457aa0fae8ded40c011a7d766e46f')
 
 _gitname=Aquaria
 
@@ -31,6 +32,7 @@ build() {
   cd $_gitname
   _ver="$_osever revision $(git rev-parse --short HEAD)"
   cmake -DAQUARIA_DEFAULT_DATA_DIR=/usr/share/aquaria \
+        -DAQUARIA_EXTRA_DATA_DIR=/usr/share/aquaria/override \
         -DAQUARIA_OVERRIDE_VERSION_STRING="Aquaria OSE $_ver (based on Aquaria v1.1.3)" \
         -DAQUARIA_USE_SDL2=1
   make
