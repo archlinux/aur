@@ -46,9 +46,10 @@ sha512sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${srcname}"
 
-    printf 'r%s.%s\n' \
-        "$( git rev-list HEAD | wc --lines )" \
-        "$( git describe --always | sed 's/-/./g' )"
+    printf 'r%s.%s.%s\n' \
+        "$( git rev-list --count 'HEAD' )" \
+        "$( git log --max-count='1' --pretty='format:%ct' )" \
+        "$( git rev-parse --short 'HEAD' )"
 }
 
 prepare() {
