@@ -1,6 +1,6 @@
 pkgbase = ipmicfg
 	pkgdesc = Supermicro IPMI configuration tool
-	pkgver = 1.22.0_general_20150814
+	pkgver = 1.23.0_general_20151106
 	pkgrel = 1
 	url = http://www.supermicro.com/products/nfo/ipmi.cfm
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = ipmicfg
 	license = custom:"Super Micro Computer"
 	makedepends = unzip
 	depends = glibc
-	source = ftp://ftp.supermicro.com/utility/IPMICFG/ipmicfg_1.22.0_general_20150814.zip
-	sha256sums = 953d91f22f42d88e0b6187ed7bbbc35b7b888d3eed1ae6e4924a1668e190250c
+	source = ftp://ftp.supermicro.com/utility/IPMICFG/ipmicfg_1.23.0_general_20151106.zip
+	sha256sums = d393f6c0dbf44cdd20b7dd7905b844a5407cb35dcca77597bc90df4e518a39e5
 
 pkgname = ipmicfg
 
