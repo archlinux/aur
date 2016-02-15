@@ -1,6 +1,6 @@
 # Maintainer: Tavian Barnes <tavianator@tavianator.com>
 pkgname=bfs-git
-pkgver=r50.da51ac2
+pkgver=0.67.r1.32fdf4a
 pkgrel=1
 pkgdesc="A breadth-first version of find."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -21,7 +21,7 @@ noextract=()
 
 pkgver() {
 	cd "${srcdir}/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 build() {
@@ -36,6 +36,6 @@ check() {
 
 package() {
 	cd "${srcdir}/${pkgname%-git}"
-	install -D -m755 bfs "${pkgdir}/usr/bin/bfs"
+	make install DESTDIR="${pkgdir}"
 	install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}"
 }
