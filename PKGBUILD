@@ -2,7 +2,7 @@
 
 pkgname=ib-tws
 pkgver=954.2s
-pkgrel=1
+pkgrel=2
 pkgdesc='Electronic trading platform from discount brokerage firm Interactive Brokers'
 arch=('any')
 url="http://interactivebrokers.com/"
@@ -21,7 +21,7 @@ md5sums=('e1cae2de592add7133bb08123e8db1ad'
          '9205b5eade96d69f8e470cc52c30db4a'
          'c95eeb41fec3aae6ad5e82703a39060c'
          'ffa9fcfb623850e5c9e796040bdbd052'
-         '55cb27eb8898d9b5c454e54751d10ffa')
+         'bad09c9c6646eae57fcb28bce10054d2')
 
 
 build() {
