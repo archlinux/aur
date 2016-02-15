@@ -12,8 +12,8 @@ _localmodcfg=     # Optionally load needed modules for the make localmodconfigs
 
 pkgbase=linux-r500v
 _srcname=linux-4.4
-_patchver=4.5-rc3
-pkgver=4.5rc3
+_patchver=4.5-rc4
+pkgver=4.5rc4
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -40,13 +40,15 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '0002-mute_intel_fifo_underrun.patch'
         '0003-mute_osl.patch'
         '0004-mute_lpc_ich.patch'
-        '0005-mute_intel_rapl.patch')
+        '0005-mute_intel_rapl.patch'
+        ### backport # https://github.com/torvalds/linux/commit/631c0e84d941a43c9477afbea6374a18b816f68e
+        '0001-4.5-drmfixes_i915_20160215.patch')
 
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            '151b54060f1c1be5236f5effc8668ad1812fe2eb9bc8153ccab70cc4fa42fcf3'
+            'd3f536316fd51162a0f67013821737fb7f724f27b2574241f11ed7513d54853c'
             'SKIP'
-            '756a168bbc3bb582f0df45b977c32af53658f21d62fe15171c9ac85f52d8852a'
+            '3ee8df86bc3e6b4adf108c56735c1d6d733cd536fb6a992861d2e5decf6b3d66'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             'd1cf14cc696b0f716454fe8eb9746383700889d5d22ad829611f0433cc77b4ce'
@@ -57,7 +59,8 @@ sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'c9a44f7b3cbeea3cd373ba24c515a22fc95e392dc24a98d914127edea6fc8c18'
             'dda83ac32c2c4f338890191b87f8bb330182af83c6f28c0c3e96a3d13e85247d'
             '1b4dbb6af30bf800cb488ccfbe55deb3073c028223e2b06f5a8399556b5b73ec'
-            '4b438d6053f4678a00d2a8640804ba6b16628596b16efff367b050e17844414d')
+            '4b438d6053f4678a00d2a8640804ba6b16628596b16efff367b050e17844414d'
+            '9104defc92684cf3a131c7a5a4ff992f948321904a95f59a4c254deb11fe0671')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -90,6 +93,9 @@ prepare() {
     for p in $(ls ${srcdir}/000{1,2,3,4,5}-mute*.patch); do
         patch -Np1 -i "$p"
     done
+    
+    msg "Patching source with drmfixes_i915_20160215 patches"
+    patch -Np1 -i "${srcdir}/0001-4.5-drmfixes_i915_20160215.patch"
     
     # Patch source to enable more gcc CPU optimizatons via the make nconfig
     # https://github.com/graysky2/kernel_gcc_patch
