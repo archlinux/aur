@@ -4,7 +4,8 @@
 #
 
 pkgname=hgsubversion
-pkgver=1.8.2
+_dirname=durin42-hgsubversion-bd979667611d
+pkgver=1.8.5
 pkgrel=1
 pkgdesc="extension for Mercurial that allows using Mercurial as a Subversion client"
 url="https://bitbucket.org/durin42/hgsubversion"
@@ -12,15 +13,15 @@ arch=(any)
 license=('GPL2')
 depends=('mercurial' 'subversion')
 source=("https://bitbucket.org/durin42/$pkgname/get/$pkgver.tar.bz2")
-md5sums=('f3fdd32f63a03d54c88c9f35b3972570')
+md5sums=('15bb751e298b12773bb1fa8e05031bb8')
 
 build() {
-  cd "$srcdir/durin42-hgsubversion-38be7a6b6def"
+  cd "$srcdir/$_dirname"
   python2 setup.py build
 }
 
 package() {
-  cd "$srcdir/durin42-hgsubversion-38be7a6b6def"
+  cd "$srcdir/$_dirname"
   python2 setup.py install --prefix=/usr --root="$pkgdir"
 }
 
