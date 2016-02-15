@@ -2,6 +2,9 @@ post_install() {
   if [ $(getent group _smtpd > /dev/null) ]; then
     groupadd -r _smtpd
   fi;
+  if [ $(getent group _smtpq > /dev/null) ]; then
+    groupadd -r _smtpq
+  fi;
   if [ $(getent passwd _smtpd > /dev/null) ]; then
     useradd -c "SMTPD Daemon" -r -g _smtpd -d /var/empty -s /sbin/nologin _smtpd
   fi;
