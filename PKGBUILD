@@ -1,7 +1,7 @@
 # Maintainer: Javier Tia <javier dot tia at gmail dot com>
 
 pkgname=pipethis
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc='Replace your $(curl | sh) installers'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL2')
 makedepends=('go' 'git')
 options=('!strip' '!emptydirs')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('286233b84d4b236f42b0c8d3e322d872555dc7afc8ca719197de7bb8b909644d')
+sha256sums=('77c0a5acc8893db0540907e6963c8ee52f82927861758e154c8e0455b99c4577')
 _gourl=github.com/ellotheth/pipethis
 
 build() {
