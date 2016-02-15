@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc="A 2D fantasy underwater action-adventure game (Humble Bundle version; game data only)"
 url='http://www.bit-blot.com/'
 arch=('any')
-license=('custom: "commercial"')
+license=('custom:commercial')
 makedepends=('pngrim-git')
 provides=('aquaria-data=1.1.3')
 install='aquaria-data-hib.install'

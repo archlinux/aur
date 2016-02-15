@@ -1,10 +1,14 @@
 
 post_install() {
   if (! pacman -Qqs '^aquaria' | grep -vw 'data' >/dev/null); then
-    echo "Note:"
-    echo " | This package only provides the (proprietary) game data."
-    echo " | For the game executable, install one of the following packages:"
-    echo " |   aquaria-git  ..  for the improved Open Source version"
+    cat <<END
+.-----------------------------------------------------------------.
+| This package only installs the (proprietary) game data.         |
+| For the game executable, install one of the following packages: |
+|   aquaria-ose                                                   |
+|   aquaria-ose-git                                               |
+'-----------------------------------------------------------------'
+END
   fi
 }
 
