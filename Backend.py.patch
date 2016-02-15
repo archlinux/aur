@@ -1,0 +1,17 @@
+*** a/UM/Backend/Backend.py	2015-07-27 08:51:09.000000000 +0100
+--- b/UM/Backend/Backend.py	2016-02-15 10:53:34.986201167 +0000
+***************
+*** 89,100 ****
+      ##  Start the (external) backend process.
+      def _runEngineProcess(self, command_list):
+          kwargs = {}
+-         if subprocess.mswindows:
+-             su = subprocess.STARTUPINFO()
+-             su.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+-             su.wShowWindow = subprocess.SW_HIDE
+-             kwargs["startupinfo"] = su
+-             kwargs["creationflags"] = 0x00004000 #BELOW_NORMAL_PRIORITY_CLASS
+          return subprocess.Popen(command_list, stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.PIPE, **kwargs)
+  
+      def _storeOutputToLogThread(self, handle):
+--- 89,94 ----
