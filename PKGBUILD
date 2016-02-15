@@ -6,7 +6,7 @@ pkgver=0
 pkgrel=1
 pkgdesc='Incremental merge for git'
 arch=('any')
-license='GPL2'
+license=('GPL2')
 url='https://github.com/mhagger/git-imerge'
 depends=('python2' 'git')
 makedepends=('git')
@@ -26,4 +26,6 @@ build() {
 package () {
     cd "${srcdir}"/${_pkgname}
     install -D -m755 git-imerge "${pkgdir}"/usr/bin/git-imerge
+    install -D -m644 git-imerge.bashcomplete \
+            "${pkgdir}"/usr/share/bash-completion/completions/git-imerge
 }
