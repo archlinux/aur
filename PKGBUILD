@@ -1,7 +1,7 @@
 # Maintainer: Milan Oberkirch <aur@oberkirch.org>
 pkgname=qgroundcontrol-git
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Micro air vehicle ground control station."
 arch=('any')
 url="http://qgroundcontrol.org/"
@@ -38,13 +38,14 @@ build() {
 
   cd "$srcdir/$_gitname-build"
   git submodule init && git submodule update
-  qmake qgroundcontrol.pro
+  mkdir build && cd build
+  qmake ../qgroundcontrol.pro
   make
 }
 
 package() {
   mkdir -p "${pkgdir}/opt" "${pkgdir}/usr/bin"
-  cp -R "$srcdir/$_gitname-build/release" "${pkgdir}/opt/qgroundcontrol"
+  cp -R "$srcdir/$_gitname-build/build/release" "${pkgdir}/opt/qgroundcontrol"
   cat <<EndOfFile > "${pkgdir}/usr/bin/qgroundcontrol"
 #!/bin/bash
 cd /opt/qgroundcontrol/
