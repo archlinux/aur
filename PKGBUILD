@@ -1,10 +1,10 @@
 # Maintainer: samæ <samæ at marvid dot fr>
 
-_fnt_name=junction
+_fnt_name=blackout
 pkgname=ttf-${_fnt_name}
 pkgver=20160215
 pkgrel=1
-pkgdesc="Junction is a a humanist sans-serif, and the first open-source type project started by The League of Moveable Type."
+pkgdesc="A bad-ass, unholy-mother-shut-your-mouth stencil sans-serif."
 arch=('any')
 url="http://theleagueofmoveabletype.com/${_fnt_name}"
 license=('custom:OFL')
@@ -13,16 +13,13 @@ depends=('fontconfig' 'xorg-font-utils')
 conflicts=('otf-junction')
 source=("https://github.com/theleagueof/${_fnt_name}/archive/master.zip")
 install=${pkgname}.install
-md5sums=('e35636a6a9075db4f1bc09df69b8d0d3')
+md5sums=('23ec5900abd2b9f9196cec94ae505315')
 
 package() {
-  install -Dm644 ${srcdir}/${_fnt_name}-master/Junction-bold.otf    ${pkgdir}/usr/share/fonts/OTF/JunctionBold.otf
-  install -Dm644 ${srcdir}/${_fnt_name}-master/Junction-light.otf   ${pkgdir}/usr/share/fonts/OTF/JunctionLight.otf
-  install -Dm644 ${srcdir}/${_fnt_name}-master/Junction-regular.otf ${pkgdir}/usr/share/fonts/OTF/JunctionRegular.otf
-
-  install -Dm644 ${srcdir}/${_fnt_name}-master/webfonts/junction-bold.ttf    ${pkgdir}/usr/share/fonts/OTF/JunctionBold.ttf
-  install -Dm644 ${srcdir}/${_fnt_name}-master/webfonts/junction-light.ttf   ${pkgdir}/usr/share/fonts/OTF/JunctionLight.ttf
-  install -Dm644 ${srcdir}/${_fnt_name}-master/webfonts/junction-regular.ttf ${pkgdir}/usr/share/fonts/OTF/JunctionRegular.ttf
+  install -Dm644 ${srcdir}/${_fnt_name}-master/Blackout\ 2\ AM.ttf      ${pkgdir}/usr/share/fonts/OTF/Blackout2AM.ttf
+  install -Dm644 ${srcdir}/${_fnt_name}-master/Blackout\ Midnight.ttf   ${pkgdir}/usr/share/fonts/OTF/BlackoutMidnight.ttf
+  install -Dm644 ${srcdir}/${_fnt_name}-master/Blackout\ Sunrise.ttf    ${pkgdir}/usr/share/fonts/OTF/BlackoutSunrise.ttf
+  install -Dm644 ${srcdir}/${_fnt_name}-master/Blackout\ Two\ AM.ttf    ${pkgdir}/usr/share/fonts/OTF/BlackoutTwoAM.ttf
 
   install -Dm644 ${srcdir}/${_fnt_name}-master/Open\ Font\ License.markdown ${pkgdir}/usr/share/licenses/${pkgname}/OFL.txt
 }
