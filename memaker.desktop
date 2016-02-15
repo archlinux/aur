@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=MeMaker
+Name[en_US]=MeMaker
+GenericName=Avatar Creator
+Comment=Builds avatars for all your applications.
+Type=Application
+Icon=/usr/share/pixmaps/memaker.png
+Exec=/usr/bin/memaker
+Categories=GNOME;Application;Graphics
+Terminal=false
