@@ -1,19 +1,19 @@
 # Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
 
 pkgname=python-vobject
-pkgver=0.9.0
-pkgrel=1
+pkgver=0.8.1c
+pkgrel=2
 pkgdesc='Module for parsing and generating vCard and vCalendar files'
-url='https://pypi.python.org/pypi/vobject'
+url='http://vobject.skyhouseconsulting.com'
 license=('Apache')
 arch=('any')
 depends=('python-dateutil' 'python-pyicu')
 makedepends=('python-setuptools')
-source=("https://github.com/eventable/vobject/archive/${pkgver}.tar.gz")
-sha256sums=('a9c6179351c00943de9ad4bb264e1fe66a91e9052a7c3d24485887c12026e0b6')
+source=("https://github.com/abbgrade/python-vobject/archive/master.zip")
+sha256sums=('35ede8ac08816eccac297aa8d1b766c39a1ff6f4871d3a7fe0a0d0077531debb')
 
 package() {
-  cd "vobject-${pkgver}"
+  cd "${pkgname}-master"
   python3 setup.py install --root="${pkgdir}" --optimize=1
   rm -rf ${pkgdir}/usr/bin
 }
