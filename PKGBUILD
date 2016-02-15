@@ -2,8 +2,8 @@
 
 pkgname=mopidy-podcast
 _pypiname=Mopidy-Podcast
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.1.2
+pkgrel=1
 pkgdesc="Mopidy extension for searching and browsing podcasts."
 arch=('any')
 url="https://github.com/tkem/mopidy-podcast"
@@ -17,7 +17,7 @@ depends=(
 )
 makedepends=('python2' 'git')
 source=("https://pypi.python.org/packages/source/M/${_pypiname}/${_pypiname}-${pkgver}.tar.gz")
-md5sums=('48d3e685d5fc0a0fe0bdd12ef432cd39')
+md5sums=('699bcd8e4fc295295534998cfeb290dc')
 
 package() {
   cd "$srcdir/$_pypiname-$pkgver"
