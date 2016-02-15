@@ -1,13 +1,16 @@
 
 post_install() {
-  if (! pacman -Qqs '^aquaria-data' >/dev/null); then
-    echo "Note:"
-    echo " | This package only provides the game engine. You will also"
-    echo " | need to install the proprietary game data, using one of the"
-    echo " | aquaria-data-* packages."
-  fi
-}
-
-post_upgrade() {
-  post_install "$@"
+    cat <<END
+.--------------------------------------------------------------------.
+| This package only provides the (improved) game engine.             |
+| To play it you also need to buy the original game data, e.g. from: |
+|   - Humble Bundle  <http://www.bit-blot.com/aquaria/buy.html>      |
+|   - GOG.com        <http://www.gog.com/game/aquaria>               |
+|   - Steam          <http://store.steampowered.com/app/24420>       |
+| And then either:                                                   |
+|   - Install the corresponding "aquaria-data-*" AUR package, or     |
+|   - Extract the game data to a custom directory and set the        |
+|     AQUARIA_DATA_PATH environment variable to it.                  |
+'--------------------------------------------------------------------'
+END
 }
