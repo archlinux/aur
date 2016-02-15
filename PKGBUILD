@@ -1,10 +1,10 @@
 # Maintainer: Grigorii Horos <horosgrisa@gmail.com>
 pkgname=feedreader-git
 pkgver=1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple feedreader client for web services like Tiny Tiny RSS and in the future others."
 arch=('i686' 'x86_64')
-url="https://launchpad.net/feedreader"
+url="https://github.com/jangernert/FeedReader"
 license=('GPL3')
 groups=()
 depends=('sqlite3' 'gtk3' 'webkit2gtk' 'libnotify' 'libsoup' 'libgee' 'json-glib' 'libsecret' )
