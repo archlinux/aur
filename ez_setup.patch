@@ -1,0 +1,16 @@
+diff --git a/setup.py b/setup.py
+index 3ee7f89..b135611 100644
+--- a/setup.py
++++ b/setup.py
+@@ -41,8 +41,9 @@ from fipy.tools.copy_script import Copy_script
+ from fipy.tests.testClass import _TestClass
+ 
+ # bootstrap setuptools for users that don't already have it
+-import ez_setup
+-ez_setup.use_setuptools()
++# comented out because it breaks installation
++#import ez_setup
++#ez_setup.use_setuptools()
+ 
+ from setuptools import setup, find_packages
+ 
