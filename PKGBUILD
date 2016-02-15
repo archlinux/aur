@@ -3,7 +3,7 @@
 
 
 pkgname="python-raspberry-gpio"
-pkgver="0.5.11"
+pkgver="0.6.1"
 pkgrel="1"
 pkgdesc="Python library for GPIO access on a Raspberry Pi"
 arch=("armv6h" "armv7h")
@@ -12,7 +12,7 @@ license=("MIT")
 depends=("python")
 makedepends=("python-distribute")
 source=("https://pypi.python.org/packages/source/R/RPi.GPIO/RPi.GPIO-$pkgver.tar.gz")
-md5sums=("9dc3dab6ce2b7ccb833a866efb392821")
+md5sums=("254d0443a436eb241367c487274e7197")
 
 
 package() {
