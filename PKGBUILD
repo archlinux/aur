@@ -1,14 +1,14 @@
 # Maintainer: Nicolas F. <aur@fratti.ch>
 pkgname="pngnq-s9"
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64' 'ARM')
 pkgdesc="Modified version of pngnq, neural network colour quantizer for PNG images"
-url="http://sourceforge.net/projects/pngnqs9/"
+url="https://sourceforge.net/projects/pngnqs9/"
 conflicts=('pngnq')
 depends=('libpng')
 license=('custom')
-source=("http://sourceforge.net/projects/pngnqs9/files/pngnq-s9-${pkgver}.tar.gz/download")
+source=("https://downloads.sourceforge.net/sourceforge/pngnqs9/pngnq-s9-${pkgver}.tar.gz")
 sha256sums=('4c88a87e7b3c09f762f5bb27cd9639402b35d48abe010174d2e0cfd2fdd98ae6')
 
 build() {
