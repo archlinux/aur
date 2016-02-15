@@ -1,8 +1,8 @@
 # Maintainer: TheNiceGuy <gabrielpolloguilbert@gmail.com>
 
 pkgname=vpaint
-pkgver=1.5
-pkgrel=2
+pkgver=1.6
+pkgrel=1
 pkgdesc='VPaint is an experimental vector graphics editor based on the Vector Animation Complex technology.'
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -12,8 +12,7 @@ url='http://www.vpaint.org'
 conflicts=('vpaint-git')
 provides=()
 source=("https://github.com/dalboris/vpaint/archive/v$pkgver.tar.gz")
-md5sums=('aee4b49c9a9a0345a1d98d734a008b7d')
-options=()
+md5sums=('f9b36a571f6dceafefa66d8a71006163')
 
 prepare() {
 	gendesk -f --pkgname "$pkgname" --pkgdesc "$pkgdesc"
@@ -33,6 +32,6 @@ build() {
 package() {
 	mkdir -p "$pkgdir/usr/bin"
 
-	install -Dm755 "$srcdir/$pkgname-$pkgver/build/VPaint" "$pkgdir/usr/bin/vpaint"
+	install -Dm755 "$srcdir/$pkgname-$pkgver/build/Gui/VPaint" "$pkgdir/usr/bin/vpaint"
 	install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
