@@ -2,7 +2,7 @@
 
 _gemname='minitest'
 pkgname="ruby-${_gemname}"
-pkgver='5.8.0'
+pkgver='5.8.3'
 pkgrel=1
 pkgdesc='A complete suite of testing facilities supporting TDD, BDD, mocking and benchmarking'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('rubygems')
 options=(!emptydirs)
 url="http://rubygems.org/gems/${_gemname}"
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
-md5sums=('08b56ee3f3217f328382527177557438')
+md5sums=('a4e576ad52c86d03e3badfc3c4fb0656')
 noextract=("${_gemname}-${pkgver}.gem")
 
 package() {
