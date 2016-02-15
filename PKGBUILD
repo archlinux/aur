@@ -1,6 +1,6 @@
 _name='zsh-autosuggestions'
-pkgname="${_name}-git"
-pkgver=0.2.1.101.f154d25
+pkgname=zsh-autosuggestions-git
+pkgver=0.2.1.119.76f415b
 pkgrel=1
 pkgdesc='Fish shell like fast/unobtrusive autosuggestions for zsh'
 url='https://github.com/tarruda/zsh-autosuggestions'
@@ -20,14 +20,15 @@ pkgver() {
 
 package() {
     cd "${srcdir}/${_name}"
+    make -B zsh-autosuggestions.zsh
     install -d "${pkgdir}/usr/share/zsh/plugins/${_name}"
-    cp -a --no-preserve=ownership dist/autosuggestions.zsh "${pkgdir}/usr/share/zsh/plugins/${_name}"
+    cp -a --no-preserve=ownership "zsh-autosuggestions.zsh" "${pkgdir}/usr/share/zsh/plugins/${_name}"
 
     # license
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
 }
 
-#check() {
-#    cd "${srcdir}/${_name}"
-#    make test
-#}
+check() {
+    cd "${srcdir}/${_name}"
+    make test
+}
