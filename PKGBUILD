@@ -32,7 +32,7 @@ package() {
   cp share/${pkgname}.desktop $pkgdir/usr/share/applications
 
   # Install icons
-  cp -r share/icons $pkgdir/usr/share/icons/$pkgname
+  cp -r share/icons/256x256/fgo.png $pkgdir/usr/share/icons
 
   # Install binary
   cp ../fgo-run $pkgdir/usr/bin/fgo
