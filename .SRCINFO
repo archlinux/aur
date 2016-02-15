@@ -1,0 +1,18 @@
+pkgbase = fgo
+	pkgdesc = FGo! is a fast and simple GUI-launcher for FlightGear flight simulator, written in python
+	pkgver = 1.5.5
+	pkgrel = 1
+	url = http://sites.google.com/site/erobosprojects/flightgear/add-ons/fgo
+	arch = any
+	license = GPL
+	depends = python2
+	depends = python-imaging
+	depends = tcl
+	depends = tk
+	source = fgo-run
+	source = https://sites.google.com/site/erobosprojects/flightgear/add-ons/fgo/download/fgo-1.5.5.tar.gz
+	sha256sums = 3b0ab65fd5647d15a9f0bc6c82ff7ca69ec657bd2d1651116f1ecda88b7cd67c
+	sha256sums = 5d35b65da65d2ffbb747e4c150db7f5f489f0bc22aaff7df5a087b3b39b128b9
+
+pkgname = fgo
+
