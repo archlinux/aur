@@ -1,4 +1,4 @@
-# Maintainer: Milan Oberkirch <aur@oberkirch.org>
+# Maintainer: Anselmo L. S. Melo <anselmolsm@gmail.com>
 pkgname=qgroundcontrol-git
 pkgver=2.5.0
 pkgrel=2
