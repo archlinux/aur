@@ -2,7 +2,7 @@
 
 _pkgname=openbazaard
 pkgname=${_pkgname}-git
-pkgver=738.414c3a1
+pkgver=759.0a6afa5
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
 arch=(any)
@@ -57,6 +57,8 @@ package(){
   install -dm755 $pkgdir/var/lib/
 
   cp -r ${_pkgname} $pkgdir/var/lib/
+
+  install -Dm755 $srcdir/${_pkgname}.sh $pkgdir/var/lib/${_pkgname}/${_pkgname}
 
   msg2 "Python2 bytecode generation"
   cd $pkgdir/var/lib/${_pkgname}/ && python2 -m compileall .
