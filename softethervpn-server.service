@@ -1,0 +1,11 @@
+[Unit]
+Description=SoftEther VPN Server daemon
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/vpnserver start
+ExecReload=/usr/bin/vpnserver stop
+
+[Install]
+WantedBy=multi-user.target
