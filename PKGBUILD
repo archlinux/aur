@@ -4,10 +4,10 @@ _pkgname=pwsafe
 pkgname=passwordsafe
 _pkgver=0.97
 pkgver="$_pkgver"BETA
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple & Secure Password Management"
 arch=('i686' 'x86_64')
-url=("https://pwsafe.org/")
+url="https://pwsafe.org/"
 license=('Artistic2.0')
 #to build without yubikey support, remove ykpers and uncomment NO_YUBI in build()
 depends=('libxtst' 'wxgtk' 'webkitgtk2' 'yubikey-personalization' 'xerces-c')
