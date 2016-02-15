@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=logstash
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='A tool for managing events and logs'
 arch=('any')
@@ -46,7 +46,7 @@ package() {
   install -dm755 "$pkgdir"/etc/logstash/conf.d
 }
 
-sha256sums=('aee2437f45c726ec354f0bf9634b3638428d48bef32beb412f827eb2cc736f78'
+sha256sums=('a7c55428aabdf2a2143f5907f3e5bb4bfba897f17359142e4dae70d7b446591e'
             'c53800afaec5295963e4c8073e5ebda1008729830a5453d40b1aea6f58bf8a41'
             'edc0ff1b4c2ba10c7907c4ed7e93cd035cc9c352b6c00cc514dc14cd3fa686cf'
             '0fac736ad8c27dc3465074a14cfe3111dbb834edd92090598fd696c6840d78c0'
