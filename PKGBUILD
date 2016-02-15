@@ -2,7 +2,7 @@
 
 gitname=htop
 pkgname=${gitname}-git
-pkgver=778.1bedac1
+pkgver=788.fd21630
 pkgrel=1
 pkgdesc="Interactive text-mode process viewer"
 url="https://github.com/hishamhm/${gitname}"
