@@ -5,7 +5,6 @@ post_install() {
 	#echo "This will cause a lot of Windows applications to malfunction even if they usually work in wine."
 	#echo "Please create your ~/.wine with 'WINEARCH=win32 winecfg' if you are unsure and on x86_64."
 	#echo "See the Arch wiki on wine for more information."
-        #echo "This version include the patches in https://bugs.winehq.org/show_bug.cgi?id=39057."
 }
 
 post_remove() {

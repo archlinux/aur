@@ -7,18 +7,18 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-staging-ivb
-pkgver=1.9.1
+pkgver=1.9.3
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
 
 source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbasever.tar.gz"
         30-win32-aliases.conf
-        patch-1.9.1-ivb.patch
+        patch-$pkgver-ivb.patch
         patch_temp_constants.patch)
-sha512sums=('3d999c7f025764aed1ee300c5f81f7638a55f0dd9c4b764d2ffcbb04970d9232c94e0658b5cd20dfa729d35e0a09e8da9f92523412c2ef5706ab08744e0743af'
+sha512sums=('20cf49a208127c157bc4b2e125aaea47b7199cdf75376c3a5f521f5472cade003a75079c51acc8b0d60107e9983dbc00e76cc881aaedfb1b37969eb735a5e6b6'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
-            'c2966299f0c3f4605e8dcf39e3c840b0a5b654ef48a85fd2506b11a4ce17710e9543efcba3b990174b72e3b4ae2a95226ab33a4a58d17eed8a7de599e6df8489'
+            '71a8614e9044cc750fcf80431dff6fe383b5abe906e05224082fefcdb4d4429f8c118eb775689e59386b863e01fd1376e5ae2569a292418212ac8b84156d62e7'
             '83583553d8db60e671679adcddedb87a2f8a740d36e5cdffef4a0cf2b995e48be216e53a7d1ee3bbeafd5bf9d0938b4c32b42265620c8e7c5bba967da893be11')
 
 pkgdesc="A compatibility layer for running Windows programs - Staging branch: indexed vertex blending - https://bugs.winehq.org/show_bug.cgi?id=39057"
@@ -26,71 +26,73 @@ url="http://www.wine-staging.com"
 arch=(i686 x86_64)
 options=(staticlibs)
 license=(LGPL)
-install=wine.install
+install=wine-staging.install
 
 _depends=(
-  attr            lib32-attr
-  fontconfig      lib32-fontconfig
-  lcms2           lib32-lcms2
-  libxml2         lib32-libxml2
-  libxcursor      lib32-libxcursor
-  libxrandr       lib32-libxrandr
-  libxdamage      lib32-libxdamage
-  libxi           lib32-libxi
-  gettext         lib32-gettext
-  freetype2       lib32-freetype2
-  glu             lib32-glu
-  libsm           lib32-libsm
-  gcc-libs        lib32-gcc-libs
-  libpcap         lib32-libpcap
+  attr             lib32-attr
+  fontconfig       lib32-fontconfig
+  lcms2            lib32-lcms2
+  libxml2          lib32-libxml2
+  libxcursor       lib32-libxcursor
+  libxrandr        lib32-libxrandr
+  libxdamage       lib32-libxdamage
+  libxi            lib32-libxi
+  gettext          lib32-gettext
+  freetype2        lib32-freetype2
+  glu              lib32-glu
+  libsm            lib32-libsm
+  gcc-libs         lib32-gcc-libs
+  libpcap          lib32-libpcap
   desktop-file-utils
 )
 
 makedepends=(autoconf ncurses bison perl fontforge flex
-  'gcc>=4.5.0-2'  'gcc-multilib>=4.5.0-2'
-  giflib          lib32-giflib
-  libpng          lib32-libpng
-  gnutls          lib32-gnutls
-  libxinerama     lib32-libxinerama
-  libxcomposite   lib32-libxcomposite
-  libxmu          lib32-libxmu
-  libxxf86vm      lib32-libxxf86vm
-  libldap         lib32-libldap
-  mpg123          lib32-mpg123
-  openal          lib32-openal
-  v4l-utils       lib32-v4l-utils
-  alsa-lib        lib32-alsa-lib
-  libxcomposite   lib32-libxcomposite
-  mesa            lib32-mesa
-  mesa-libgl      lib32-mesa-libgl
-  libcl           lib32-libcl
-  libxslt         lib32-libxslt
-  libpulse        lib32-libpulse
-  libva           lib32-libva
-  gtk3            lib32-gtk3
+  'gcc>=4.5.0-2'   'gcc-multilib>=4.5.0-2'
+  giflib                lib32-giflib
+  libpng                lib32-libpng
+  gnutls                lib32-gnutls
+  libxinerama           lib32-libxinerama
+  libxcomposite         lib32-libxcomposite
+  libxmu                lib32-libxmu
+  libxxf86vm            lib32-libxxf86vm
+  libldap               lib32-libldap
+  mpg123                lib32-mpg123
+  openal                lib32-openal
+  v4l-utils             lib32-v4l-utils
+  alsa-lib              lib32-alsa-lib
+  libxcomposite         lib32-libxcomposite
+  mesa                  lib32-mesa
+  mesa-libgl            lib32-mesa-libgl
+  libcl                 lib32-libcl
+  libxslt               lib32-libxslt
+  libpulse              lib32-libpulse
+  libva                 lib32-libva
+  gtk3                  lib32-gtk3
+  gst-plugins-base-libs lib32-gst-plugins-base-libs
   samba
   opencl-headers
 )
   
 optdepends=(
-  giflib          lib32-giflib
-  libpng          lib32-libpng
-  libldap         lib32-libldap
-  gnutls          lib32-gnutls
-  mpg123          lib32-mpg123
-  openal          lib32-openal
-  v4l-utils       lib32-v4l-utils
-  libpulse        lib32-libpulse
-  alsa-plugins    lib32-alsa-plugins
-  alsa-lib        lib32-alsa-lib
-  libjpeg-turbo   lib32-libjpeg-turbo
-  libxcomposite   lib32-libxcomposite
-  libxinerama     lib32-libxinerama
-  ncurses         lib32-ncurses
-  libcl           lib32-libcl
-  libxslt         lib32-libxslt
-  libva           lib32-libva
-  gtk3            lib32-gtk3
+  giflib                lib32-giflib
+  libpng                lib32-libpng
+  libldap               lib32-libldap
+  gnutls                lib32-gnutls
+  mpg123                lib32-mpg123
+  openal                lib32-openal
+  v4l-utils             lib32-v4l-utils
+  libpulse              lib32-libpulse
+  alsa-plugins          lib32-alsa-plugins
+  alsa-lib              lib32-alsa-lib
+  libjpeg-turbo         lib32-libjpeg-turbo
+  libxcomposite         lib32-libxcomposite
+  libxinerama           lib32-libxinerama
+  ncurses               lib32-ncurses
+  libcl                 lib32-libcl
+  libxslt               lib32-libxslt
+  libva                 lib32-libva
+  gtk3                  lib32-gtk3
+  gst-plugins-base-libs lib32-gst-plugins-base-libs
   cups
   samba           dosbox
 )
@@ -115,14 +117,13 @@ prepare() {
 
   sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i $pkgname/configure*
 
-  # These additional CPPFLAGS solve FS#27662 and FS#34195
-  export CPPFLAGS="${CPPFLAGS/-D_FORTIFY_SOURCE=2/} -D_FORTIFY_SOURCE=0"
-
   # Get rid of old build dirs
   rm -rf $pkgname-{32,64}-build
   mkdir $pkgname-32-build
+
+  # Apply the ivb patches
   cd $pkgname
-  patch -Np1 -i ../patch-1.9.1-ivb.patch
+  patch -Np1 -i ../patch-$pkgver-ivb.patch
   patch -Np1 -i ../patch_temp_constants.patch
 }
 
@@ -138,10 +139,9 @@ build() {
       --prefix=/usr \
       --libdir=/usr/lib \
       --with-x \
-      --without-gstreamer \
+      --with-gstreamer \
       --enable-win64 \
       --with-xattr
-    # Gstreamer was disabled for FS#33655
 
     make
 
@@ -158,12 +158,11 @@ build() {
   ../$pkgname/configure \
     --prefix=/usr \
     --with-x \
-    --without-gstreamer \
+    --with-gstreamer \
     --with-xattr \
     "${_wine32opts[@]}"
 
-  # These additional flags solve FS#23277
-  make CFLAGS+="-mstackrealign -mincoming-stack-boundary=2" CXXFLAGS+="-mstackrealign -mincoming-stack-boundary=2"
+  make
 }
 
 package() {
