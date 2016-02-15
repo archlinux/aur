@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://community.kde.org/Real-Time_Communication_and_Collaboration"
 license=('GPL')
 depends=('telepathy-kde-common-internals-git' 'qt5-gstreamer')
-makedepends=('extra-cmake-modules' 'git')
+makedepends=('extra-cmake-modules' 'git' 'boost')
 source=("git://anongit.kde.org/$_gitname")
 sha256sums=('SKIP')
 
