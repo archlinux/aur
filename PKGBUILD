@@ -1,7 +1,7 @@
 # Contributor: Brent Carmer
 
 pkgname=yices
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="An automatic theorem prover - compile from source"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ builddepends=(
   'make'
 )
 source=("http://yices.csl.sri.com/cgi-bin/yices2-newnewdownload.cgi?file=yices-$pkgver-src.tar.gz&accept=I+Agree")
-sha512sums=('0398535a4bf8940cf10ed78873fffa6f177e6e20fcdffd5efea7ab40775efba0577951e63c42df6a28f7dae41c2ac9d970fd80bd8c0fe3286af7427068cd92be')
+sha512sums=('597558d3a7ffe870e79d878de292f8cf2993a5a8a69c0cda77849fd3bb20d6fbb784da0df202b1abd8f6c3976dfca5d3b10f94e067043e1c29e87d1e7161a4ef')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
