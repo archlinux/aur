@@ -16,12 +16,12 @@ source=('https://github.com/dpayne/cli-visualizer/archive/v1.1.tar.gz')
 sha256sums=('13ae8ce89d3d2e41524a42dbb14343b951701f44650ea5a977c3311cb96a113f')
 
 build() {
-    cd $pkgname-$pkgver
+    cd $pkgname-$pkgver || exit
     make
 }
 
 package() {
-  cd cli-visualizer || exit
+  cd $pkgname-$pkgver || exit
   install -Dm755 build/vis "$pkgdir/usr/bin/vis"
   install -Dm644 examples/blue "$pkgdir"/usr/share/doc/"$pkgname"/blue
   install -Dm644 examples/config "$pkgdir"/usr/share/doc/"$pkgname"/config
