@@ -1,10 +1,10 @@
 # Maintainer: samæ <samæ at marvid dot fr>
 
-_fnt_name=sorts-mill-goudy
+_fnt_name=prociono
 pkgname=ttf-${_fnt_name}
 pkgver=20160215
 pkgrel=1
-pkgdesc="A ‘revival’ of Goudy Oldstyle and Italic."
+pkgdesc="A roman serif with blackletter elements."
 arch=('any')
 url="http://theleagueofmoveabletype.com/${_fnt_name}"
 license=('custom:OFL')
@@ -13,7 +13,7 @@ depends=('fontconfig' 'xorg-font-utils')
 conflicts=()
 source=("https://github.com/theleagueof/${_fnt_name}/archive/master.zip")
 install=${pkgname}.install
-md5sums=('c256686900b7d5ebf75d94d507859d5d')
+md5sums=('e92f54c9db1047927d9c26e8fc069cf1')
 
 package() {
   install -d ${pkgdir}/usr/share/fonts/OTF
