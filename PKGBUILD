@@ -2,7 +2,7 @@
 
 pkgname=xpa
 pkgver=2.1.17
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A messaging system provides seamless communication between many kinds of Unix programs"
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ noextract=()
 build() {
   cd ${srcdir}/$pkgname-$pkgver
 
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --enable-shared=link
   make
 }
 
