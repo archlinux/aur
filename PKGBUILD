@@ -8,8 +8,8 @@ pkgver=1
 pkgrel=2
 pkgdesc="Adds Zsh autocompletion definitions for packer-color"
 url="https://gist.github.com/dmikalova/6103111"
-license="GPL3"
 arch=("any")
+license=("GPL3")
 depends=("zsh")
 source=(http://dl.dropbox.com/u/106000/Software/Shell/_${_app_})
 
