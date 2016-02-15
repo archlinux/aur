@@ -3,7 +3,7 @@
 # Contributor: Yonathan Dossow <ydossow@archlinux.cl>
 pkgname=389-console
 pkgver=1.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A Java based remote management console used for managing 389 Administration Server and 389 Directory Server."
 arch=('any')
 url="http://port389.org"
@@ -19,10 +19,16 @@ prepare() {
   sed -i '/man.dir/d' build.xml
 }
 
-package(){
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  /usr/share/apache-ant/bin/ant -Dbuilt.dir="built"
+}
+
+package() {
   cd "$srcdir/$pkgname-$pkgver"
   
-  /usr/share/apache-ant/bin/ant -Dbuilt.dir="$pkgdir"
+  install -Dm644 built/389-console "$pkgdir/usr/bin/389-console"
+  install -Dm644 built/389-console_en.jar "$pkgdir/usr/share/java/389-console_en.jar"
   install -Dm644 389-console.8 "$pkgdir/usr/share/man/man8/389-console.8"
 }
 
