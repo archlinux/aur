@@ -2,43 +2,51 @@
 
 pkgname=notepadqq-git
 _pkgname=notepadqq
-pkgver=0.50.6.r0.g82ee840
-pkgrel=2
+pkgver=0.50.6.r13.gd558efa
+pkgrel=1
 pkgdesc="A Linux clone of Notepad++"
 arch=('i686' 'x86_64')
 url="http://notepadqq.altervista.org/wp/"
 license=('GPL3')
 depends=('qt5-webkit>5.2' 'hicolor-icon-theme' 'desktop-file-utils')
-makedepends=('git' 'qt5-svg>5.2' 'qt5-tools>5.2')
+makedepends=('git' 'qt5-svg>5.2')
 provides=('notepadqq')
-conflicts=('notepadqq-bin' 'notepadqq' 'notepadqq-common')
+conflicts=('notepadqq-bin' 'notepadqq' 'notepadqq-common' 'notepadqq-src')
 install=${_pkgname}.install
-sha1sums=('SKIP')
+sha1sums=('SKIP'
+          'SKIP')
 options=('!emptydirs')
 
-source=(git+https://github.com/notepadqq/notepadqq.git)
+source=("git://github.com/notepadqq/notepadqq.git"
+        "git://github.com/notepadqq/CodeMirror.git")
 
 pkgver() {
-	cd "${srcdir}/${_pkgname}"
+	cd "${_pkgname}"
 	set -o pipefail
 	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd "${_pkgname}"
+
+  git config submodule.src/editor/libs/codemirror.url "${srcdir}/CodeMirror"
+  git submodule init
+  git submodule update
+}
+
 build() {
-	cd "${srcdir}/${_pkgname}"
+	cd "${_pkgname}"
 	
-	 ./configure --prefix "${pkgdir}/usr"
+	 qmake-qt5 PREFIX=/usr notepadqq.pro
+
 	 make
 	
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}/src/ui"
-	make DESTDIR="${pkgdir}/usr" install
-	
-	# fixes missing in the desktop application menu (especially for LXqt)
-	sed -i 's/\(Cateories=.*\)/\1Accessories;/' "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+	cd "${_pkgname}"
 
-	install -Dm644 "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg" "${pkgdir}/usr/share/pixmaps/${_pkgname}.svg"
+	make INSTALL_ROOT="${pkgdir}" install
 }
+
