@@ -19,8 +19,8 @@ url='http://qgis.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('qca-qt4' 'gdal' 'qwtpolar' 'gsl' 'spatialindex' 'icu'
-         'python2-qscintilla' 'python2-sip' 'python2-psycopg2' 'python2-six' 'python2-dateutil'
-         'python2-httplib2' 'python2-jinja' 'python2-markupsafe' 'python2-pygments' 'python2-pytz')
+         'python2-qscintilla' 'python2-sip' 'python2-psycopg2'
+         python2-{httplib2,jinja,markupsafe,owslib,pygments,dateutil,pytz,six})
 makedepends=('cmake' 'txt2tags' 'perl')
 optdepends=('gpsbabel: GPS Tool plugin')
 install="$pkgname.install"
@@ -58,7 +58,8 @@ build() {
     -DENABLE_TESTS=FALSE \
     -DCMAKE_SKIP_RPATH=TRUE \
     -DPYTHON_EXECUTABLE=/usr/bin/python2 \
-    -DWITH_INTERNAL_{QWTPOLAR,DATEUTIL,HTTPLIB2,JINJA2,MARKUPSAFE,PYGMENTS,PYTZ,SIX}=FALSE \
+    -DWITH_INTERNAL_QWTPOLAR=FALSE \
+    -DWITH_INTERNAL_{HTTPLIB2,JINJA2,MARKUPSAFE,OWSLIB,PYGMENTS,DATEUTIL,PYTZ,SIX}=FALSE \
 #    -DWITH_SERVER=TRUE \
 #    -DWITH_GLOBE=TRUE
 
