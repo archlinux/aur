@@ -6,7 +6,7 @@ pkgver=0.7.10
 pkgrel=3
 pkgdesc="An easy-to-use backup solution for making archives"
 url="http://www.backup-manager.org/"
-license="GPL"
+license=("GPL")
 depends=('perl')
 optdepends=(
 	'gnupg: backup encryption'
