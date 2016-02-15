@@ -6,7 +6,7 @@
 pkgname=vtk6
 pkgver=6.3.0
 _majorver=6.3
-pkgrel=5
+pkgrel=1
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization. Legacy 6.3 version.'
 arch=('i686' 'x86_64')
 url='http://www.vtk.org/'
@@ -100,7 +100,7 @@ build() {
     ${cmake_system_flags} \
     ${cmake_system_python_flags} \
     -DCMAKE_BUILD_TYPE=Release \
-    "${srcdir}/VTK-$pkgver" \
+    "${srcdir}/VTK-${pkgver}" \
     -GNinja
 
   ninja
@@ -109,18 +109,18 @@ build() {
 package() {
   cd "${srcdir}/build"
 
-  ninja DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
 
   # Move the vtk.jar to the arch-specific location
-  install -dv "${pkgdir}/usr/share/java/vtk"
-  mv -v "${pkgdir}/usr/lib/vtk.jar" "${pkgdir}/usr/share/java/vtk"
-  rm -rf "${pkgdir}/usr/lib/vtk-${_majorver}/java"
+  install -dv "${pkgdir}/opt/${pkgname}/share/java/vtk"
+  mv -v "${pkgdir}/opt/${pkgname}/lib/vtk.jar" "${pkgdir}/opt/${pkgname}/share/java/vtk"
+  rm -rf "${pkgdir}/opt/${pkgname}/lib/vtk-${_majorver}/java"
 
   # Install license
-  install -dv "${pkgdir}/usr/share/licenses/vtk"
-  install -m644 "${srcdir}/VTK-$pkgver/Copyright.txt" "${pkgdir}/usr/share/licenses/vtk"
+  install -dv "${pkgdir}/opt/${pkgname}/share/licenses/vtk"
+  install -m644 "${srcdir}/VTK-${pkgver}/Copyright.txt" "${pkgdir}/opt/${pkgname}/share/licenses/vtk"
 
   # Fix path of QtDesigner plugin
-  install -dv "${pkgdir}/usr/lib/qt5"
-  mv "$pkgdir"/usr/plugins "$pkgdir"/usr/lib/qt5/plugins
+  install -dv "${pkgdir}/opt/${pkgname}/lib/qt5"
+  mv "${pkgdir}"/opt/${pkgname}/plugins "${pkgdir}"/opt/${pkgname}/lib/qt5/plugins
 }
