@@ -8,7 +8,7 @@ url="http://stormdragon.tk/fortunes/question-answer-jokes"
 license=('WTFPL')
 depends=('fortune-mod')
 source=("$url")
-md5sums=('89ca04c5c7255b7a732f1cefe8bf17c2')
+md5sums=('985e2fe024f9ccdf0b3196fa32789b5f')
 
 build()
 {
