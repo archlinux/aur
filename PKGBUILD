@@ -19,7 +19,7 @@ url='http://qgis.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('qca-qt4' 'gdal' 'qwtpolar' 'gsl' 'spatialindex' 'icu'
-         'python2-qscintilla' 'python2-sip' 'python2-psycopg2'
+         'python2-qscintilla-qt4' 'python2-sip' 'python2-psycopg2'
          python2-{httplib2,jinja,markupsafe,owslib,pygments,dateutil,pytz,six})
 makedepends=('cmake' 'txt2tags' 'perl')
 optdepends=('gpsbabel: GPS Tool plugin')
