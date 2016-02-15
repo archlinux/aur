@@ -4,7 +4,7 @@
 _pkgbase=security-checker
 pkgname="php-${_pkgbase}"
 pkgver=3.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="PHP frontend for security.sensiolabs.org"
 url="https://github.com/sensiolabs/security-checker"
 license=("MIT")
@@ -22,7 +22,7 @@ sha256sums=(
 build() {
     cd "${srcdir}/${_pkgbase}-${pkgver}"
     composer install --prefer-dist
-    php-box build
+    php -d phar.readonly=Off /usr/bin/php-box build
 }
 
 package() {
