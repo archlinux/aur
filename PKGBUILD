@@ -21,7 +21,7 @@ pkgname=(
 )
 _pkgname='llvm'
 
-pkgver=3.9.0svn_r259634
+pkgver=3.9.0svn_r260915
 pkgrel=1
 
 arch=('i686' 'x86_64')
@@ -56,7 +56,7 @@ sha256sums=(
     'SKIP'
     'SKIP'
     '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48'
-    '2463debfaafa6122e774badbb10e936902631f06e5d72cc66713adb8c7a5ab93'
+    'e27576d05ca886e3a20382858129c37d72437ae9e29bf390db09e9d8083feff7'
 )
 
 #
