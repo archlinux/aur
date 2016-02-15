@@ -4,14 +4,13 @@
 _pkgbase=security-checker
 pkgname="php-${_pkgbase}"
 pkgver=3.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="PHP frontend for security.sensiolabs.org"
 url="https://github.com/sensiolabs/security-checker"
 license=("MIT")
 arch=("any")
 depends=("php>=5.3.3")
 makedepends=("php-box" "php-composer")
-install="${pkgname}.install"
 source=(
   "https://github.com/sensiolabs/${_pkgbase}/archive/v${pkgver}.zip"
 )
