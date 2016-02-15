@@ -3,13 +3,13 @@
 pkgname=purple-facebook-git
 _gitname="purple-facebook"
 pkgrel=1
-pkgver=565fbae05259.r3.g6bb0e31
+pkgver=92885e0456ed.r1.g04f1edd
 pkgdesc="A purple (pidgin, finch, ...) plugin for Facebook chat, based on the new Facebook 
 Messenger 
 protocol"
 url="https://github.com/jgeboski/purple-facebook/"
 arch=('i686' 'x86_64')
-license='GPL2'
+license=('GPL2')
 
 source=('purple-facebook::git+https://github.com/jgeboski/purple-facebook'
 )
