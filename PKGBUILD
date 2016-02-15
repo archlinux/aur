@@ -1,11 +1,11 @@
 # Maintainer Simon Legner <Simon.Legner@gmail.com>
 
 pkgname=soundcloud-syncer
-pkgver=0.3.1
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Synchronize user's favorites tracks from soundcloud"
 url="https://github.com/sliim/soundcloud-syncer"
-depends=('python' 'python3-stagger-svn' 'python-pydub' 'python-dateutil' 'python-magic')
+depends=('python' 'python-stagger-git' 'python-pydub' 'python-dateutil' 'python-magic-git')
 license=('GPLv3')
 arch=('any')
 source=("https://github.com/Sliim/$pkgname/archive/$pkgver.tar.gz")
@@ -20,6 +20,6 @@ package() {
     python setup.py install --root="$pkgdir" --optimize=1 
 }
 
-sha1sums=('a8bd01503ba0c35b8ae0488fe8ebd9bfe6a8d4c6')
-sha256sums=('ce963b7ed64a8edcf6325fc91b18195881588340e5135aa87148bb2c68646553')
-md5sums=('13188f124ec49a5142485aaf1975b216')
+md5sums=('d666cecfa280a4c08c1401ebb495a313')
+sha1sums=('6a81b3d00e96975d11821e4a64d804aff46f548a')
+sha256sums=('7d77b7b6c799a4bc7701210fab0df79f825f5bf54362ac2bfa16d2b83cd8019b')
