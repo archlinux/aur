@@ -3,7 +3,7 @@
 
 pkgname="dcron-git"
 pkgver="4.5.r9.g6186237"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="dillon's lightweight cron daemon (Git version)."
 arch=("i686" "x86_64" "armv6h" "armv7h")
 license=("GPL")
