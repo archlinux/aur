@@ -1,6 +1,6 @@
 pkgname=orbment-git
-pkgver=r486.3c77fc8
-pkgrel=1
+pkgver=r495.ab6da87
+pkgrel=3
 
 pkgdesc='A modular wayland compositor based on wlc'
 url='https://github.com/Cloudef/orbment'
@@ -9,9 +9,7 @@ license=('GPL')
 
 options=('debug' '!strip')
 
-# This dependency should be 'wlc' but AUR helpers aren't capable of figuring
-# out that the AUR package 'wlc-git' provides 'wlc'.
-depends=('wlc-git')
+depends=('wlc')
 makedepends=('git' 'cmake' 'libpng')
 optdepends=('weston: test weston clients in orbment'
             'bemenu: dynamic menu similar to dmenu for launching programs'
@@ -43,7 +41,10 @@ prepare() {
 
 build() {
     cd orbment
-    cmake -DCMAKE_BUILD_TYPE=Upstream -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib
+    cmake -DCMAKE_BUILD_TYPE=Upstream \
+        -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DSOURCE_CHCK=ON
     make
 }
 
