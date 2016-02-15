@@ -1,6 +1,6 @@
 # Contributor: Storm Dragon <support@stormdragon.tk>
 pkgname=fortune-mod-question-answer-jokes
-pkgver=4
+pkgver=4.1
 pkgrel=3
 pkgdesc="Q: what do you get from this fortune file? A: Some funny, and some really cheesy jokes."
 arch=('any')
