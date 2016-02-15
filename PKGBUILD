@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=backblaze-b2-git
-pkgver=r154.588d400
+pkgver=r167.245ce9d
 pkgrel=1
 pkgdesc="Backblaze B2 Command Line Client."
 arch=('any')
@@ -28,5 +28,6 @@ prepare() {
 package() {
     cd "$srcdir/B2_Command_Line_Tool"
     install -Dm0755 b2 "$pkgdir/usr/bin/b2"
+    install -Dm0644 contrib/b2 "$pkgdir/usr/share/bash-completion/completions/b2"
     install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/backblaze-b2/LICENSE"
 }
