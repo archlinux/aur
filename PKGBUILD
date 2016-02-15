@@ -6,11 +6,7 @@ pkgname=('zarafa-webapp'
 	 'zarafa-webapp-browsercompatibility'
 	 'zarafa-webapp-clockwidget'
 	 'zarafa-webapp-contactfax'
-	 'zarafa-webapp-dropboxattachment'
 	 'zarafa-webapp-extbox'
-	 'zarafa-webapp-facebook'
-	 'zarafa-webapp-facebookwidget'
-	 'zarafa-webapp-feedback'
 	 'zarafa-webapp-files'
 	 'zarafa-webapp-folderwidgets'
 	 'zarafa-webapp-gmaps'
@@ -18,22 +14,15 @@ pkgname=('zarafa-webapp'
 	 'zarafa-webapp-pdfbox'
 	 'zarafa-webapp-pimfolder'
 	 'zarafa-webapp-quickitems'
-	 'zarafa-webapp-salesforce'
-	 'zarafa-webapp-shellgame'
-	 'zarafa-webapp-spreed'
-	 'zarafa-webapp-statslogging'
-	 'zarafa-webapp-sugarcrm'
 	 'zarafa-webapp-titlecounter'
-	 'zarafa-webapp-twidget'
 	 'zarafa-webapp-webappmanual'
 	 'zarafa-webapp-webodf'
 	 'zarafa-webapp-xmpp'
-         'zarafa-webapp-zdeveloper'
-	 'zarafa-webapp-zperformance')
+         'zarafa-webapp-zdeveloper')
 groups=('zarafa')
-pkgver=2.1.1
-_pkgrel=2.1.1
-pkgrel=6
+pkgver=2.1.2
+_pkgrel=2.1.2
+pkgrel=1
 pkgdesc='WebApp for Zarafa'
 arch=('any')
 url='http://www.zarafa.com/'
@@ -50,7 +39,7 @@ source=("webapp-${pkgver}.tar.gz::http://download.zarafa.com/community/final/Web
 	"zarafa-webapp.ini"
 	"zarafa-webapp.install"
 	"compress-static")
-md5sums=('2689688c328c7bb01fd2081e3c959265'
+md5sums=('231a0ceb064c9c213de6dcdd2b7ae732'
          'b64d0a12ff31cac4357ba8bb4cbfb6f8'
          '1bdab5b1e4473c1b0f6ce2e5c8f1da61'
          '7adcf5e023718421a5e8e07e5e9a2480'
@@ -163,27 +152,11 @@ package_zarafa-webapp-clockwidget() {
     package_plugin ${pkgname//zarafa-webapp-/}
 }
 
-package_zarafa-webapp-dropboxattachment() {
-    package_plugin ${pkgname//zarafa-webapp-/}
-}
-
 package_zarafa-webapp-contactfax() {
     package_plugin ${pkgname//zarafa-webapp-/}
 }
 
 package_zarafa-webapp-extbox() {
-    package_plugin ${pkgname//zarafa-webapp-/}
-}
-
-package_zarafa-webapp-facebook() {
-    package_plugin ${pkgname//zarafa-webapp-/}
-}
-
-package_zarafa-webapp-facebookwidget() {
-    package_plugin ${pkgname//zarafa-webapp-/}
-}
-
-package_zarafa-webapp-feedback() {
     package_plugin ${pkgname//zarafa-webapp-/}
 }
 
@@ -215,31 +188,7 @@ package_zarafa-webapp-quickitems() {
     package_plugin ${pkgname//zarafa-webapp-/}
 }
 
-package_zarafa-webapp-salesforce() {
-    package_plugin ${pkgname//zarafa-webapp-/}
-}
-
-package_zarafa-webapp-shellgame() {
-    package_plugin ${pkgname//zarafa-webapp-/}
-}
-
-package_zarafa-webapp-spreed() {
-    package_plugin ${pkgname//zarafa-webapp-/}
-}
-
-package_zarafa-webapp-statslogging() {
-    package_plugin ${pkgname//zarafa-webapp-/}
-}
-
-package_zarafa-webapp-sugarcrm() {
-    package_plugin ${pkgname//zarafa-webapp-/}
-}
-
 package_zarafa-webapp-titlecounter() {
-    package_plugin ${pkgname//zarafa-webapp-/}
-}
-
-package_zarafa-webapp-twidget() {
     package_plugin ${pkgname//zarafa-webapp-/}
 }
 
@@ -256,9 +205,5 @@ package_zarafa-webapp-xmpp() {
 }
 
 package_zarafa-webapp-zdeveloper() {
-    package_plugin ${pkgname//zarafa-webapp-/}
-}
-
-package_zarafa-webapp-zperformance() {
     package_plugin ${pkgname//zarafa-webapp-/}
 }
