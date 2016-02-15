@@ -1,4 +1,5 @@
 pkgbase = jamomacore-git
+        pkgname = JamomaCore
 	pkgdesc = The Jamoma Frameworks
 	pkgver = 1.0b1
 	pkgrel = 3
