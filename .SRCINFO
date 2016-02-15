@@ -1,0 +1,18 @@
+pkgbase = winestuff
+	pkgdesc = Library utility for winegame
+	pkgver = 0.2.0
+	pkgrel = 3
+	url = http://code.google.com/p/winegame/
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = qt4
+	makedepends = cmake
+	source = http://winegame.googlecode.com/files/winestuff-0.2.0.tar.gz
+	md5sums = a01f55d30bd0e1dcee3a44aa0fa5369d
+
+pkgname = winestuff
+	depends = qt4
+	depends = fuseiso
+	depends = winetricks
+
