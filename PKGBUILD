@@ -1,30 +1,29 @@
-#! /bin/bash
+# Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
+# Contributor: jorge_barroso <jorge.barroso.11@gmail.com>
 # Contributor: Yonathan Dossow <ydossow@archlinux.cl>
-# Maintainer: jorge_barroso <jorge.barroso.11@gmail.com>
 pkgname=389-console
-pkgver=1.1.7
-pkgrel=4
+pkgver=1.1.9
+pkgrel=1
 pkgdesc="A Java based remote management console used for managing 389 Administration Server and 389 Directory Server."
 arch=('any')
 url="http://port389.org"
 license=('GPL')
-depends=('which' 'bash' 'idm-console-framework' 'java-runtime')
-makedepends=('java-environment')
+depends=('which' 'bash' 'idm-console-framework' 'java-environment')
+makedepends=('apache-ant')
 source=(http://directory.fedoraproject.org/sources/$pkgname-$pkgver.tar.bz2)
-sha512sums=('d2ea4c65ea6bb01d3163271a44bb4fab4167863e2df1389e8d4bd2782083c33563ddfd232512d8b28f0de037a7cf0dd7ee554c1660d40fa50d731224748d9f6e')
+sha1sums=('bcc15330156beab1dab57cedef838f8ec5b26988')
 
-build() {
+prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-  
-  /usr/share/apache-ant/bin/ant -Dbuilt.dir=`pwd`/built
-} 
+  # manpage installation is broken, disable, install manually
+  sed -i '/man.dir/d' build.xml
+}
 
 package(){
-
-install -d $pkgdir/usr/share/java
-install -m644 $srcdir/$pkgname-$pkgver/built/389-console-1.1.7_en.jar $pkgdir/usr/share/java
-install -d $pkgdir/usr/bin
-install -m755 $srcdir/$pkgname-$pkgver/built/$pkgname $pkgdir/usr/bin
+  cd "$srcdir/$pkgname-$pkgver"
+  
+  /usr/share/apache-ant/bin/ant -Dbuilt.dir="$pkgdir"
+  install -Dm644 389-console.8 "$pkgdir/usr/share/man/man8/389-console.8"
 }
 
 # vim:set ts=2 sw=2 et:
