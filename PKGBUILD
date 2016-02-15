@@ -10,7 +10,7 @@ depends=('gcc-libs' 'sh' 'gmp')
 makedepends=('gcc')
 license=('LGPL3')
 options=('!libtool')
-source=(https://gmplib.org/download/gmp/gmp-${pkgver}.tar.xz)
+source=(https://gmplib.org/download/archive/gmp-${pkgver}/gmp-${pkgver}.tar.xz)
 sha256sums=('f69eff1bc3d15d4e59011d587c57462a8d3d32cf2378d32d30d008a42a863325')
 sha512sums=('d2ddecc7d0bcfd158f65dfdc4650b9c7092abce52835887ed896cc79870036329ea6bef3f8337a5807bbb4321676366914832ae6a7874a0e54da0203591d03d1')
 
