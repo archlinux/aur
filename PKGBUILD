@@ -4,10 +4,11 @@
 
 pkgname="sozi"
 
-pkgver=15.11
+pkgver=16.02
 # the build version is obtained from [here](https://github.com/senshu/Sozi/releases)
-_buildver=15.11.210709
-pkgrel=2
+_buildver=16.02.141048
+_pkgverpostfix="-fix344" # this is required because the pkgver cannot contain hyphen
+pkgrel=1
 
 pkgdesc="A zooming presentation based on SVG, using JavaScript"
 url="http://sozi.baierouge.fr/"
@@ -20,40 +21,39 @@ optdepends=(
   'inkscape: for editing the original SVG document (any SVG editor can be used)'
 )
 makedepends=('npm' 'bower' 'nodejs-grunt-cli'
-  'jq' 'npm-semver')
+  'jq' 'semver')
 
-source=("https://github.com/senshu/Sozi/archive/${pkgver}.tar.gz"
+source=("https://github.com/senshu/Sozi/archive/${pkgver}${_pkgverpostfix}.tar.gz"
   "http://www.1001freefonts.com/d/5854/droid_sans.zip")
-sha1sums=('17a53a4a87a1b774e4e1f81011b857ac77bc5570'
+sha1sums=('564a162628d6d179fd6785dec4d0e38e863b0e5d'
   '265b6cc7b7cea7bcfb74eec52bc9c0e44f039740')
 
 source_i686=('http://dl.nwjs.io/v0.12.3/nwjs-v0.12.3-linux-ia32.tar.gz'
   'buildConfig-i686.js')
 sha1sums_i686=('6ee4fba0bf546d19b3754f72b0c394a6926671f0'
   '9a956604ab3be4a8c32c69cc36eb5344b2e3824f')
-# 64bits systems won't work with the nwjs newer than 0.12.1 (last available version is 0.12.3)
-source_x86_64=('http://dl.nwjs.io/v0.12.1/nwjs-v0.12.1-linux-x64.tar.gz'
+source_x86_64=('http://dl.nwjs.io/v0.12.3/nwjs-v0.12.3-linux-x64.tar.gz'
   'buildConfig-x86_64.js')
-sha1sums_x86_64=('1d9b49643b13e0cd7cc4631e2a6386b4e12f2b68'
-  'ec8cee21c9406cbadf600670af1032bdef9c75d0')
+sha1sums_x86_64=('addb12dd904f64b7523b210186e1eb3ecfd9d2e6'
+  'af5bc341b95f50e94089e7fbb6535b6f6a919799')
+_nwjsver="0.12.3"
 
 options=(!strip)
 
 prepare() {
-  cd "${srcdir}/Sozi-${pkgver}/"
+  cd "${srcdir}/Sozi-${pkgver}${_pkgverpostfix}/"
 
   sed -i "s/grunt.template.today(\"yy.mm.ddHHMM\")/\"${_buildver}\"/" Gruntfile.js
 
   install -D -m644 "${srcdir}/DroidSans.ttf" "vendor/DroidSans/DroidSans.ttf"
   install -D -m644 "${srcdir}/DroidSans-Bold.ttf" "vendor/DroidSans/DroidSans-Bold.ttf"
 
+  mkdir -p "cache/${_nwjsver}/"
   if [[ $CARCH == "x86_64" ]]; then
-    mkdir -p "cache/0.12.1/"
-    cp -a -l "${srcdir}/nwjs-v0.12.1-linux-x64" "cache/0.12.1/linux64"
+    cp -a -l "${srcdir}/nwjs-v${_nwjsver}-linux-x64" "cache/${_nwjsver}/linux64"
     cp "${srcdir}/buildConfig-x86_64.js" "buildConfig.js"
   else
-    mkdir -p "cache/0.12.3/"
-    cp -a -l "${srcdir}/nwjs-v0.12.3-linux-ia32" "cache/0.12.3/linux32"
+    cp -a -l "${srcdir}/nwjs-v${_nwjsver}-linux-ia32" "cache/${_nwjsver}/linux32"
     cp "${srcdir}/buildConfig-i686.js" "buildConfig.js"
   fi
 }
@@ -101,7 +101,7 @@ npminstallpackage() {
 build() {
   mkdir -p "${srcdir}/build/"
 
-  cd "${srcdir}/Sozi-${pkgver}/"
+  cd "${srcdir}/Sozi-${pkgver}${_pkgverpostfix}/"
   cat package.json | jq -r '.dependencies, .devDependencies | to_entries? | map(.key + "@" + .value) | .[]' | sort -u | while read dep; do
     local package="$(echo "$dep" | gawk -F'@' '{ print $1 }')"
     local semverspec="$(echo "$dep" | gawk -F'@' '{ print $2 }')"
@@ -109,7 +109,7 @@ build() {
     npminstallpackage "$target"
   done
 
-  cd "${srcdir}/Sozi-${pkgver}/"
+  cd "${srcdir}/Sozi-${pkgver}${_pkgverpostfix}/"
   rm -rf "node_modules"; mkdir "node_modules"
   cat package.json | jq -r '.dependencies, .devDependencies | to_entries? | map(.key + "@" + .value) | .[]' | sort -u | while read dep; do
     local package="$(echo "$dep" | gawk -F'@' '{ print $1 }')"
@@ -134,18 +134,18 @@ build() {
 
 package() {
   if [[ $CARCH == "x86_64" ]]; then
-    cd "${srcdir}/Sozi-${pkgver}/build/Sozi/Sozi-${_buildver}-linux64/"
+    cd "${srcdir}/Sozi-${pkgver}${_pkgverpostfix}/build/Sozi/Sozi-${_buildver}-linux64/"
   else
-    cd "${srcdir}/Sozi-${pkgver}/build/Sozi/Sozi-${_buildver}-linux32/"
+    cd "${srcdir}/Sozi-${pkgver}${_pkgverpostfix}/build/Sozi/Sozi-${_buildver}-linux32/"
   fi
-  mkdir -p "${pkgdir}/opt/sozi-${pkgver}/"
-  cp -a * "${pkgdir}/opt/sozi-${pkgver}/"
+  mkdir -p "${pkgdir}/opt/sozi-${pkgver}${_pkgverpostfix}/"
+  cp -a * "${pkgdir}/opt/sozi-${pkgver}${_pkgverpostfix}/"
 
   mkdir -p "${pkgdir}/usr/bin/"
   cd "${pkgdir}/usr/bin/"
-  ln -s "/opt/sozi-${pkgver}/Sozi" sozi
+  ln -s "/opt/sozi-${pkgver}${_pkgverpostfix}/Sozi" sozi
 
-  cd "${srcdir}/Sozi-${pkgver}/"
+  cd "${srcdir}/Sozi-${pkgver}${_pkgverpostfix}/"
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/sozi/MPL2.0"
 
   #TODO: Create a .desktop file too
