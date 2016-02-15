@@ -2,12 +2,12 @@
 
 # This is the package build for the tools to build nban and the shuriken
 # This was originally developed for Ninja OS, but has been seperated out as
-# an arch package
+# an arch package.
 
 pkgname=mkinitcpio-nban
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
-pkgdesc="Ninja Boot and Nuke. A boot and nuke impleneted as a initcpio image."
+pkgdesc="Ninja Boot'n'Nuke. Boot'n'Nuke implemented as an initcpio image."
 url="http://ninjaos.org"
 arch=('any')
 license=('GPL3')
@@ -16,7 +16,7 @@ depends=('mkinitcpio' 'syslinux' 'parted' 'dosfstools' 'util-linux')
 optdepends=('hdparm: ATA Security erase command, future feature')
 install="${pkgname}.install"
 source=("${pkgname}.${pkgver}.tar.gz")
-sha256sums=('880fd0b2b7609372e67d67727490494f0c9475bbc65862879c8242db8f651425')
+sha256sums=('d405fbeb0a62442996fe3ae5f2d971498d8d86da4148146d7e13c8ab158506f3')
 package() {
     cd "${srcdir}/${pkgname}.${pkgver}"
     cp -ra . "${pkgdir}"
