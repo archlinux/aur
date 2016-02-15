@@ -3,14 +3,14 @@
 
 pkgname=hhsuite
 pkgver=2.0.16
-pkgrel=2
+pkgrel=3
 pkgdesc="A set of programs for protein sequence homology detection by iterative HMM-HMM comparison for computational biology like PSI-BLAST"
 arch=('i686' 'x86_64')
 url="http://hhblits.genzentrum.lmu.de/"
 license=(GPL)
 depends=('libpng')
 
-source=("ftp://toolkit.lmb.uni-muenchen.de/pub/HH-suite/releases/$pkgname-$pkgver.tar.gz"
+source=("http://wwwuser.gwdg.de/~compbiol/data/hhsuite/releases/hhsuite-latest.tar.gz"
         "hhsuite.sh")
 md5sums=('39f9c6ed31e49618e7868a5b81f9ddef'
          'fe3864b3095fa7243b67dcee0f95ba38')
