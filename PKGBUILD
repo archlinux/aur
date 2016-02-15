@@ -1,34 +1,35 @@
 # Maintainer: Mikkel Oscar Lyderik <mikkeloscar at gmail dot com>
 
 pkgname=scaleway-cli
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.7.1
+pkgrel=1
 pkgdesc="Manage BareMetal Servers from Command Line"
 arch=('i686' 'x86_64')
 url="https://scaleway.com"
 license=('MIT')
 makedepends=('go' 'git')
 source=("https://github.com/scaleway/$pkgname/archive/v${pkgver}.tar.gz")
-sha1sums=('1ad53502358dd28b90fca4e407d07786e79f5e7d')
+sha1sums=('fcfaf25ccdb1800cfcc694f3f3b76d485f6ef33f')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-
   # setup local gopath
-  mkdir -p $srcdir/src/github.com/scaleway/
-  ln -s $srcdir/$pkgname-$pkgver $srcdir/src/github.com/scaleway/$pkgname
+  mkdir -p "$srcdir/src/github.com/scaleway/"
+  ln -s "$srcdir/$pkgname-$pkgver" "$srcdir/src/github.com/scaleway/$pkgname"
 
-  GOPATH="$srcdir" go get -v -d
+  cd "$srcdir/src/github.com/scaleway/$pkgname"
+
+  GO15VENDOREXPERIMENT=1 GOPATH="$srcdir" go get -v -d
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/src/github.com/scaleway/$pkgname"
   GOPATH="$srcdir" make
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  install -Dm755 scw $pkgdir/usr/bin/scw
+  install -Dm755 scw "$pkgdir/usr/bin/scw"
+  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
