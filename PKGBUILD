@@ -1,19 +1,20 @@
 # Maintainer: Alex Merry <alexmerry@kde.org>
 
 pkgname='icemon'
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.0.1
+pkgrel=1
 pkgdesc='Icecream GUI monitor.'
 url='https://github.com/icecc/icemon'
 license=('GPL')
-depends=('icecc' 'qt5-base>=5.2')
+depends=('icecream' 'qt5-base>=5.2' 'hicolor-icon-theme')
 # docbook2x required for man page generation
 makedepends=('cmake' 'docbook2x')
 provides=('icemon')
 conflicts=('icemon-git')
 arch=('i686' 'x86_64')
-source=('https://github.com/icecc/icemon/archive/v3.0.0.tar.gz')
-md5sums=('7ba23d812db4bdd32d52e947c5749217')
+install=icemon.install
+source=("https://github.com/icecc/${pkgname}/archive/v${pkgver}.tar.gz")
+md5sums=('0127427ac71ccb198706d2575be246ec')
 
 build() {
     mkdir -p build
