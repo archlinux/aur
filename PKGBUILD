@@ -4,8 +4,8 @@
 
 pkgname=z-push
 groups=('zarafa')
-pkgver=2.2.7
-pkgrel=3
+pkgver=2.2.8
+pkgrel=1
 pkgdesc="open-source implementation of the ActiveSync protocol"
 arch=('any')
 url="http://z-push.sf.net/"
@@ -31,7 +31,7 @@ source=("${pkgname}-${pkgver}.tar.gz::http://download.z-push.org/final/2.2/${pkg
 	"z-push-admin"
 	"z-push-top")
 
-md5sums=('218b838a908ebf63f13d080fd57fbf73'
+md5sums=('e55b04680bb9c698301155c47aeb87f8'
          '32a459bd61135b6c5e99e82e3a6b0007'
          '1091aa1ba272ef05bf628f73b05c527a'
          'fee38ae6ba98ae7afcb49b1edbc31d8e'
