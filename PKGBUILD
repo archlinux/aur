@@ -3,7 +3,7 @@
 pkgname=notepadqq-git
 _pkgname=notepadqq
 pkgver=0.50.6.r13.gd558efa
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linux clone of Notepad++"
 arch=('i686' 'x86_64')
 url="http://notepadqq.altervista.org/wp/"
