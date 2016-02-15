@@ -1,7 +1,7 @@
 # Maintainer:  Xiaoxiao Pu <i@xiaoxiao.im>
 
 pkgname=create_ap
-pkgver=r169.3bae9f4-1
+pkgver=r191.69541cb
 pkgrel=1
 pkgdesc="A shell script to create a NATed/Bridged Software Access Point"
 arch=('any')
