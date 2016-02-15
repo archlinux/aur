@@ -2,8 +2,8 @@
 
 pkgname=pi-hole-server
 _pkgname=pi-hole
-pkgver=2.5.1
-pkgrel=2
+pkgver=2.5.2
+pkgrel=1
 _wwwpkgname=AdminLTE
 _wwwpkgver=1.0.0
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
@@ -14,7 +14,7 @@ depends=('dnsmasq' 'lighttpd' 'php-cgi' 'bc' 'figlet')
 conflicts=('pi-hole-standalone')
 install=$pkgname.install
 
-source=(https://github.com/$_pkgname/$_pkgname/archive/V$pkgver.tar.gz
+source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	https://github.com/$_pkgname/$_wwwpkgname/archive/v$_wwwpkgver.tar.gz
 	configuration
 	dnsmasq.include
@@ -28,7 +28,7 @@ source=(https://github.com/$_pkgname/$_pkgname/archive/V$pkgver.tar.gz
 	whitelist.txt
 	blacklist.txt)
 
-md5sums=('45cc585733b9cceb55ddf38c7c9f1066'
+md5sums=('47a6f79302cf9c8a596b9c61b4532b80'
          'a2ec5ea92cce506f0fc61cc0a8f2c527'
          '791c86996377ceca23d1459ea0fd5cd6'
          'fd607f890103e97e480d814a5dfbee5b'
@@ -45,6 +45,9 @@ md5sums=('45cc585733b9cceb55ddf38c7c9f1066'
 prepare() {
   # modify service management
   sed -i 's|^		\$SUDO service dnsmasq start|		$SUDO systemctl start dnsmasq|' "$srcdir"/$_pkgname-$pkgver/gravity.sh
+
+  # gravity call paths changing
+  sed -i 's|/usr/local/bin/|/usr/bin/|' "$srcdir"/$_pkgname-$pkgver/gravity.sh
 
   # adlists.default is already there
   sed -i '/\$SUDO cp \/etc\/.pihole\/adlists.default \/etc\/pihole\/adlists.default/d' "$srcdir"/$_pkgname-$pkgver/gravity.sh
