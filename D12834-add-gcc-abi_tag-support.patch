@@ -116,7 +116,7 @@ Index: include/clang/Basic/DiagnosticSemaKinds.td
 ===================================================================
 --- include/clang/Basic/DiagnosticSemaKinds.td
 +++ include/clang/Basic/DiagnosticSemaKinds.td
-@@ -2448,7 +2448,8 @@
+@@ -2451,7 +2451,8 @@
    "variables, functions and classes|Objective-C protocols|"
    "functions and global variables|structs, unions, and typedefs|structs and typedefs|"
    "interface or protocol declarations|kernel functions|non-K&R-style functions|"
@@ -126,7 +126,7 @@ Index: include/clang/Basic/DiagnosticSemaKinds.td
    InGroup<IgnoredAttributes>;
  def err_attribute_wrong_decl_type : Error<warn_attribute_wrong_decl_type.Text>;
  def warn_type_attribute_wrong_type : Warning<
-@@ -4158,6 +4159,15 @@
+@@ -4161,6 +4162,15 @@
  def err_redefinition_extern_inline : Error<
    "redefinition of a 'extern inline' function %0 is not supported in "
    "%select{C99 mode|C++}1">;
@@ -1137,7 +1137,7 @@ Index: lib/Sema/SemaDeclAttr.cpp
 ===================================================================
 --- lib/Sema/SemaDeclAttr.cpp
 +++ lib/Sema/SemaDeclAttr.cpp
-@@ -4492,6 +4492,66 @@
+@@ -4486,6 +4486,66 @@
        Attr.getRange(), S.Context, Attr.getAttributeSpellingListIndex()));
  }
  
@@ -1148,7 +1148,7 @@ Index: lib/Sema/SemaDeclAttr.cpp
 +  if (!checkAttributeAtLeastNumArgs(S, Attr, NS ? 0 : 1))
 +    return;
 +
-+  SmallVector<std::string, 4> Tags;
++  SmallVector<StringRef, 4> Tags;
 +
 +  for (unsigned I = 0, E = Attr.getNumArgs(); I != E; ++I) {
 +    StringRef Tag;
@@ -1204,7 +1204,7 @@ Index: lib/Sema/SemaDeclAttr.cpp
  static void handleARMInterruptAttr(Sema &S, Decl *D,
                                     const AttributeList &Attr) {
    // Check the attribute arguments.
-@@ -5479,6 +5539,9 @@
+@@ -5459,6 +5519,9 @@
    case AttributeList::AT_Thread:
      handleDeclspecThreadAttr(S, D, Attr);
      break;
