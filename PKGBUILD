@@ -3,13 +3,13 @@
 pkgname=notepadqq-git
 _pkgname=notepadqq
 pkgver=0.50.6.r13.gd558efa
-pkgrel=2
+pkgrel=3
 pkgdesc="A Linux clone of Notepad++"
 arch=('i686' 'x86_64')
 url="http://notepadqq.altervista.org/wp/"
 license=('GPL3')
 depends=('qt5-webkit>5.2' 'hicolor-icon-theme' 'desktop-file-utils')
-makedepends=('git' 'qt5-svg>5.2')
+makedepends=('git' 'qt5-svg>5.2' 'qt5-tools>5.2')
 provides=('notepadqq')
 conflicts=('notepadqq-bin' 'notepadqq' 'notepadqq-common' 'notepadqq-src')
 install=${_pkgname}.install
