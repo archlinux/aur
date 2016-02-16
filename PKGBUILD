@@ -4,7 +4,7 @@
 # Contributor: jibi <jibi@paranoici.org>
 
 pkgname='inspircd'
-pkgver='2.0.20'
+pkgver='2.0.21'
 pkgrel='1'
 pkgdesc='A stable, modern and lightweight IRC daemon'
 arch=('any')
@@ -13,22 +13,20 @@ license=('GPL2')
 conflicts=('inspircd')
 provides=('inspircd')
 depends=('perl')
-makedepends=('pkg-config' 'libmariadbclient' 'postgresql' 'sqlite3' 'libldap' 'geoip'
-             'tre' 'gnutls' 'openssl' 'libgcrypt')
+makedepends=('pkg-config' 'libmariadbclient' 'sqlite3' 'libldap' 'geoip'
+             'gnutls' 'openssl' 'libgcrypt')
 optdepends=('gnutls: m_ssl_gnutls'
             'libgcrypt: m_ssl_gnutls'
             'openssl: m_ssl_openssl'
             'libmariadbclient: m_mysql'
             'pcre: m_regex_pcre'
-            'postgresql: m_pgsql'
             'sqlite3: m_sqlite3'
             'libldap: m_ldapoper and m_ldapauth'
-            'geoip: m_geoip'
-            'tre: m_regex_tre')
+            'geoip: m_geoip')
 install='inspircd.install'
 source=("https://github.com/inspircd/inspircd/archive/v$pkgver.tar.gz"
         'inspircd.service')
-sha512sums=('85463f7df379e5c7e190b4cc7ea67a80d5c4e5799c68abf2329e8204239dbed7258d11c97e5138039a8002f18ca0bd75ffc5c362b02cc27170adaf8cda6acc7e'
+sha512sums=('28f38e8195d5cb6e7c7f2c4bcff2f0fcc13fb462a26975269faf899af7228c3ece2002ee819d0d5e2242ae5687a8e198e82cace8b3ff75521a44f12ac29ade0f'
             '5a16a7c237693ffc6a108358f339b6aa2451fb16430561848ae869f890199b38fab6a13640bcc35cf1d07e32d7e5fff405d88668ee05ddaffc2ef61cb42ee832')
 
 build() {
@@ -39,10 +37,8 @@ build() {
     --enable-extras=m_ldapauth.cpp \
     --enable-extras=m_ldapoper.cpp \
     --enable-extras=m_mysql.cpp \
-    --enable-extras=m_pgsql.cpp \
     --enable-extras=m_regex_pcre.cpp \
     --enable-extras=m_regex_posix.cpp \
-    --enable-extras=m_regex_tre.cpp \
     --enable-extras=m_sqlite3.cpp
 
   ./configure \
