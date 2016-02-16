@@ -2,7 +2,7 @@
 # Contributor: Rogof <rogof /at/ gmx /dot/ com>
 
 pkgname=ccl-svn
-pkgver=1.12_r16702
+pkgver=1.12.r16702
 pkgrel=1
 pkgdesc="The Clozure Common Lisp implementation"
 url="http://ccl.clozure.com/"
@@ -20,32 +20,32 @@ _arch=''
 [ "${CARCH}" = 'x86_64' ] && _arch=64
 
 pkgver() {
-  cd $srcdir/ccl
+  cd "$SRCDEST"/ccl
   # get version from version.lisp file & the svn revision
   local ver_prog="(format t \"~a.~a_r~a\" ccl::*openmcl-major-version* ccl::*openmcl-minor-version* $(svnversion))"
   # use head to remove trailing NIL
-  echo -n $ver_prog | ./lx86cl$_arch -n -Q -b -l level-1/version.lisp |head -1
+  echo -n $ver_prog | ./lx86cl$_arch -n -Q -b -l level-1/version.lisp |head -1|tr _ .
 }
 
 build() {
-  cd $srcdir/ccl
+  cd "$srcdir"/ccl
   echo '(ccl:rebuild-ccl :full t)' | ./lx86cl$_arch -n -Q -b
 }
 
 package() {
-  cd $srcdir/ccl
+  cd "$srcdir"/ccl
   
   # install data
-  mkdir -p "$pkgdir/usr/lib/$pkgname"
+ install -d "$pkgdir/usr/lib/$pkgname"
   cp -a {compiler,contrib,level-*,lib*,lisp-kernel,objc-bridge,tools,x86-headers$_arch,xdump,lx86cl$_arch*} \
      "$pkgdir/usr/lib/$pkgname"
   
   # install examples
-  mkdir -p "$pkgdir/usr/share/$pkgname"
+  install -d "$pkgdir/usr/share/$pkgname"
   cp -a examples "$pkgdir/usr/share/$pkgname"
   
   # install documentation
-  mkdir -p "$pkgdir/usr/share/doc/$pkgname"
+  install -d "$pkgdir/usr/share/doc/$pkgname"
   cp -a doc/* "$pkgdir/usr/share/doc/$pkgname"
   
   # remove unwanted files
