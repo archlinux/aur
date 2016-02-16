@@ -43,8 +43,9 @@ query-version() {
 
 pkgver() {
   cd "$_gitname"
-  sed -n 's/.*"version"\s*:\s*"\([[:digit:].]*\)"\s*,.*/\1/p' \
-    *.json 2>/dev/null | tr '\n' '.'
+  find -iname '*.json' -exec sed -n \
+    's/.*"version"\s*:\s*"\([[:digit:].]*\)"\s*,.*/\1/p' \
+    '{}' \; -quit 2>/dev/null | tr '\n' '.'
 printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
