@@ -1,8 +1,7 @@
 # Maintainer: Simon Hanna <simon dot hanna AT serve-me DOT info>
 
 pkgname=('python-nose2' 'python2-nose2')
-_pkgbase='nose2'
-pkgver=0.5.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="The next generation of nicer testing for python"
 arch=(any)
@@ -10,19 +9,19 @@ url="https://github.com/nose-devs/nose2"
 license=('BSD')
 options=(!emptydirs)
 source=("https://github.com/nose-devs/nose2/archive/${pkgver}.tar.gz")
-sha256sums=('b81afc72e91c0f2bf26ec2418caac3cabc9e1379451c255cd733d686bc627db5')
+sha256sums=('2afcd6684ffa5d1dbeead3bcb4bda6cbc0b95d2c505df64e15b3b242081d6753')
 makedepends=('python-setuptools' 'python2-setuptools')
 
 package_python-nose2() {
-  depends=('python')
-  cd "$srcdir/$_pkgbase-$pkgver"
+  depends=('python' 'python-six')
+  cd "$srcdir/nose2-$pkgver"
   install -D -m644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
 package_python2-nose2() {
-  depends=('python2')
-  cd "$srcdir/$_pkgbase-$pkgver"
+  depends=('python2' 'python2-six')
+  cd "$srcdir/nose2-$pkgver"
   install -D -m644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
