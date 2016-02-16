@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=mattersend
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="CLI tool to send messages to the Incoming webhook of mattermost"
 arch=(any)
@@ -22,4 +22,4 @@ package() {
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('c3758fe1305c67c16906cde017fa0a4be704d997216a3a7da7e86426b650acd1')
+sha256sums=('d5c7647a06cca3b3a57cb9ab821d5def19eced5586cf452aa22c7edf1e531ea6')
