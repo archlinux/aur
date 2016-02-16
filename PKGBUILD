@@ -2,8 +2,8 @@
 
 _pkgname=Meliora
 pkgname=meliora-openbox-themes
-pkgver=20160214
-pkgrel=2
+pkgver=20160215
+pkgrel=1
 pkgdesc="$_pkgname Openbox Themes"
 arch=('any')
 license=('ZLIB')

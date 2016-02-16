@@ -2,8 +2,8 @@
 # Mon Feb 15 00:45:51 UTC 2016
 pkgbase = meliora-openbox-themes
 	pkgdesc = Meliora Openbox Themes
-	pkgver = 20160214
-	pkgrel = 2
+	pkgver = 20160215
+	pkgrel = 1
 	url = https://bitbucket.org/Ensayia/meliora-openbox-themes
 	arch = any
 	license = ZLIB
