@@ -9,7 +9,7 @@ arch=('any')
 url="http://www.iti.gov.br/icp-brasil/certificados/188-atualizacao/4530-ac-raiz"
 license=('GPL')
 depends=('ca-certificates-utils')
-makedepends=('unzip openssl')
+makedepends=('unzip' 'openssl')
 install='ca-certificates-icp_br.install'
 source=(
     'http://acraiz.icpbrasil.gov.br/credenciadas/CertificadosAC-ICP-Brasil/ACcompactado.zip'
