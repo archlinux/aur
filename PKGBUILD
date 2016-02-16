@@ -3,17 +3,18 @@
 
 pkgname='grass7'
 pkgver='7.0.3'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and visualization."
 arch=('i686' 'x86_64')
 url='https://grass.osgeo.org'
 license=('GPL')
 
 # More about GRASS build and runtime deps on http://grasswiki.osgeo.org/wiki/Compile_and_Install.
-depends=('zlib' 'freetype2' 'cfitsio' 'fftw' 'gdal' 'geos' 'glu' 'libjpeg'
-         'liblas' 'libpng' 'libtiff' 'libxmu' 'mesa' 'postgresql' 'proj'
-         'wxpython2.8' 'wxgtk2.8' 'xorg-server' 'cairo' 'unixodbc' 'python2'
-         'python2-numpy' 'python2-matplotlib' 'python2-pillow' 'subversion')
+depends=('zlib' 'blas' 'lapack' 'freetype2' 'cfitsio' 'fftw' 'gdal' 'geos' 'glu'
+         'libjpeg' 'liblas' 'libpng' 'libtiff' 'libxmu' 'mesa' 'postgresql'
+         'proj' 'wxpython2.8' 'wxgtk2.8' 'xorg-server' 'cairo' 'unixodbc'
+         'python2' 'python2-numpy' 'python2-matplotlib' 'python2-pillow'
+         'subversion')
 makedepends=('doxygen')
 optdepends=('r: R language interface. See http://grasswiki.osgeo.org/wiki/R_statistics.')
 install=$pkgname.install
@@ -61,27 +62,22 @@ build() {
 
   # GRASS build system can't cope with current Arch's /etc/makepkg.conf default
   # CPPFLAGS="-D_FORTIFY_SOURCE=2".
+  # 
+  # The culprit appears to be (per config.log):
+  # /usr/include/sys/cdefs.h:30:3: error: #error "You need a ISO C conforming compiler to use the glibc headers"
+  # gcc: error: unrecognized command line option '-nologo'
   #
-  # At configure it throws:
-  #
-  # checking for curses.h... no
-  # configure: error: *** Unable to locate curses includes.
-  #
-  # Due to (in config.log):
-  #
-  # In file included from /usr/include/assert.h:36:0,
-  #                  from configure:1527:
-  # /usr/include/features.h:330:4: warning: #warning _FORTIFY_SOURCE requires compiling with optimization (-O) [-Wcpp]
-  # #  warning _FORTIFY_SOURCE requires compiling with optimization (-O)
-  #    ^
+  # I have reported it in GRASS bugtracker: https://trac.osgeo.org/grass/ticket/2916.
   #
   # I don't have a better idea than removing any -D_FORTIFY_SOURCE occurences
-  # from CPPFLAGS.
+  # from CPPFLAGS for now.
 
   CPPFLAGS=`echo $CPPFLAGS | sed 's/-D_FORTIFY_SOURCE=.//g'` CFLAGS="$CFLAGS -Wall" CXXFLAGS="$CXXFLAGS -Wall" ./configure \
     --prefix=/opt \
     --exec_prefix=/opt/$pkgname \
     --with-freetype-includes=/usr/include/freetype2 \
+    --with-blas \
+    --with-lapack \
     --with-geos \
     --with-liblas \
     --with-nls \
