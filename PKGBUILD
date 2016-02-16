@@ -1,7 +1,7 @@
 # Maintainer: Jens Kuske <jenskuske@gmail.com>
 # Contributor: smotocel69 <smotocel69@gmail.com>
 pkgname=libvdpau-sunxi
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc="VDPAU driver for Allwinner sunxi SoCs"
 arch=('armv7h')
@@ -10,7 +10,7 @@ license=('LGPL')
 depends=('libx11')
 makedepends=('libvdpau')
 source=("https://github.com/linux-sunxi/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('8a29b2b5394e9ad5f461af48cea780d3cb183bfc80399e58a27b632c1a9d5bab')
+sha256sums=('5139b007d9075654cfb47ced29f4e335302b7ede9ea9544524aa2232c357b08a')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
