@@ -3,7 +3,7 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 # Download of pre-built package:
-# https://mega.nz/#!ug1hQQgQ!PNjMtaNmwD0BqSslKQpXTifCQuzmBn2oPg0prPt1zkE
+# https://mega.nz/#!yplU1aQT!EUtJaH2xBPVDyc-zqc0Hzu-ASXG_TKmDAUNebsW0wwk
 
 pkgbase=linux-elanfix       # Build stock -ARCH kernel with fix for ELAN
 #pkgbase=linux-custom       # Build kernel with a different name
