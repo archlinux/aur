@@ -1,13 +1,13 @@
 # Maintainer: Kilian Köppchen <kiliankoeppchen at gmail dot com>
 pkgname=fifechan-git
-pkgver=0.1.1.r9.g102fb65
+pkgver=0.1.1.r20.gbcd9f57
 pkgrel=1
 pkgdesc="Fifechan is a C++ GUI library designed for
 games. It comes with a standard set of 'widgets'."
 arch=(any)
 url="http://fifengine.github.io/fifechan/"
 license=('(L)GPL')
-depends=('sdl_image' 'allegro4' 'libgl' 'glut')
+depends=('sdl2_image' 'allegro4' 'libgl' 'glut')
 makedepends=('git' 'cmake' 'make')
 source=("$pkgname"::'git+https://github.com/fifengine/fifechan.git')
 md5sums=('SKIP')
