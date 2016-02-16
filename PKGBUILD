@@ -1,15 +1,15 @@
 # Maintainer: Alexander Görtz <aur@nyloc.de>
 
 pkgname=python-systemd-git
-pkgver=230.r8.g58c65cf
+pkgver=231.r3.g87a9d64
 pkgrel=1
 pkgdesc="Systemd python bindings"
 arch=('any')
 url="https://github.com/systemd/python-systemd"
 depends=('python' 'systemd')
 makedepends=('python-setuptools')
-provides=python-systemd
-conflicts=python-systemd
+provides=('python-systemd')
+conflicts=('python-systemd')
 license=('GPL3')
 arch=('any')
 source=("${pkgname}"::"git+https://github.com/systemd/python-systemd.git")
