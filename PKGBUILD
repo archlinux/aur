@@ -3,16 +3,16 @@
 
 pkgname=orbment-vfs-git
 pkgver=r467.ed0746e
-pkgrel=1
+pkgrel=2
 
-pkgdesc='A modular wayland compositor based on wlc (using the vfs branch).'
+pkgdesc='A modular wayland compositor based on wlc (feature/vfs branch).'
 url='https://github.com/Cloudef/orbment'
 arch=('i686' 'x86_64')
 license=('GPL')
 
 # This dependency should be 'wlc' but AUR helpers aren't capable of figuring
 # out that the AUR package 'wlc-git' provides 'wlc'.
-depends=('wlc-git')
+depends=('wlc')
 makedepends=('git' 'cmake' 'libpng')
 optdepends=('weston: To test weston clients in orbment.'
             'bemenu: Dynamic menu similar to dmenu for launching programs.'
@@ -51,7 +51,10 @@ prepare() {
 
 build() {
     cd orbment
-    cmake -DCMAKE_BUILD_TYPE=Upstream -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib
+    cmake -DCMAKE_BUILD_TYPE=Upstream \
+        -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DSOURCE_CHCK=ON
     make
 }
 
