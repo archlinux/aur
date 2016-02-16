@@ -1,7 +1,7 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=diffoscope-git
-pkgver=45.551.a0f6f85
+pkgver=48.596.68ab8ad
 pkgrel=1
 pkgdesc='Tool for in-depth comparison of files, archives, and directories'
 url='https://diffoscope.org/'
@@ -13,6 +13,7 @@ optdepends=(
   'binutils: binary utilities support'
   'bzip2: bzip2 utilities support'
   'cdrkit: ISO utilities support'
+  'colord: ICC profiles support'
   'cpio: cpio archive support'
   'diffutils: diff utilities support'
   'e2fsprogs: Ext2/3/4 filesystem utilities support'
@@ -39,7 +40,7 @@ optdepends=(
 makedepends=('git')
 # TODO: readd fpc
 checkdepends=(
-  'python-pytest' 'acl' 'binutils' 'bzip2' 'cdrkit' 'cpio' 'diffutils' 'e2fsprogs' 'enjarify' 'java-environment' 'fontforge' 'gettext' 'ghc' 'gnupg'
+  'python-pytest' 'acl' 'binutils' 'bzip2' 'cdrkit' 'colord' 'cpio' 'diffutils' 'e2fsprogs' 'enjarify' 'java-environment' 'fontforge' 'gettext' 'ghc' 'gnupg'
   'mono-tools' 'poppler' 'sqlite' 'squashfs-tools' 'tlsh' 'unzip' 'gzip' 'tar' 'vim' 'xz')
 provides=('diffoscope')
 conflicts=('diffoscope')
