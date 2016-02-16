@@ -1,9 +1,9 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgbase=vulkan-git
-pkgname=('vulkan-git' 'vulkan-sdk-git')
+pkgname=('vulkan-loader-git' 'vulkan-sdk-git')
 pkgver=r3.7e195e8
-pkgrel=1
+pkgrel=2
 url='https://www.khronos.org/vulkan'
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -15,12 +15,18 @@ sha1sums=('SKIP'
           'SKIP'
           'beaab6bfd4f3f219f295c4fbdc6300098ddeea2c'
           '437ece58e06c0bdab40ea4eb7fb0787ea8250150')
+depends=('glslang-git' 'spirv-tools-git')
 makedepends=('cmake' 'asciidoc' 'source-highlight')
 options=('zipman')
+
+_libver=1.0.3
 
 pkgver() {
   cd "${srcdir}"/Vulkan-Docs
   printf "r%d.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+
+  _libver=$(grep VK_API_VERSION src/vulkan/vulkan.h \
+    | sed -r 's/^.*\(\s*([0-9]+)\s*,\s*([0-9]+)\s*,\s*([0-9]+)\s*\).*$/\1.\2.\3/')
 }
 
 prepare() {
@@ -56,10 +62,30 @@ build() {
   make manpages
 }
 
+package_vulkan-loader-git() {
+  pkgdesc='Vulkan ICD (installable client driver) loader'
+  conflicts=('vulkan-loader')
+  provides=("vulkan-loader")
+  #provides=("vulkan-loader=${_libver}")
+
+  # Shared library & symlinks
+  cd "${srcdir}"/Vulkan-LoaderAndValidationLayers
+  install -dm755 "${pkgdir}"/usr/lib/
+  install -m755 loader/libvulkan.so."${_libver}"     "${pkgdir}"/usr/lib/libvulkan.so."${_libver}"
+  ln -s                libvulkan.so."${_libver}"     "${pkgdir}"/usr/lib/libvulkan.so."${_libver%%.*}"
+  ln -s                libvulkan.so."${_libver%%.*}" "${pkgdir}"/usr/lib/libvulkan.so
+
+  # License
+  install -Dm644 "${srcdir}"/Vulkan-LoaderAndValidationLayers/LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+}
+
 package_vulkan-sdk-git() {
   pkgdesc='Vulkan SDK'
-  depends=("vulkan-git=${pkgver}")
+  depends=("vulkan-loader")
+  #depends=("vulkan-loader=${pkgver}")
   conflicts=('vulkan-sdk')
+  provides=("vulkan-sdk")
+  #provides=("vulkan-sdk=${_libver}")
   options=('staticlibs')
 
   # Headers
@@ -89,22 +115,5 @@ package_vulkan-sdk-git() {
   install -d        "${pkgdir}/usr/share/man/man3/"
   install -m644 *.3 "${pkgdir}/usr/share/man/man3/"
 
-  install -Dm644 "${srcdir}"/Vulkan-LoaderAndValidationLayers/LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
-}
-
-package_vulkan-git() {
-  pkgdesc='Vulkan ICD (installable client driver) loader'
-  conflicts=('vulkan')
-
-  local _libver=1.0.3
-
-  # Shared library & symlinks
-  cd "${srcdir}"/Vulkan-LoaderAndValidationLayers
-  install -dm755 "${pkgdir}"/usr/lib/
-  install -m755 loader/libvulkan.so."${_libver}"     "${pkgdir}"/usr/lib/libvulkan.so."${_libver}"
-  ln -s                libvulkan.so."${_libver}"     "${pkgdir}"/usr/lib/libvulkan.so."${_libver%%.*}"
-  ln -s                libvulkan.so."${_libver%%.*}" "${pkgdir}"/usr/lib/libvulkan.so
-
-  # License
   install -Dm644 "${srcdir}"/Vulkan-LoaderAndValidationLayers/LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }

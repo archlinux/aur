@@ -1,6 +1,6 @@
 pkgbase = vulkan-git
 	pkgver = r3.7e195e8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.khronos.org/vulkan
 	arch = i686
 	arch = x86_64
@@ -8,6 +8,8 @@ pkgbase = vulkan-git
 	makedepends = cmake
 	makedepends = asciidoc
 	makedepends = source-highlight
+	depends = glslang-git
+	depends = spirv-tools-git
 	options = zipman
 	source = https://github.com/KhronosGroup/Vulkan-Docs
 	source = https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers
@@ -18,13 +20,15 @@ pkgbase = vulkan-git
 	sha1sums = beaab6bfd4f3f219f295c4fbdc6300098ddeea2c
 	sha1sums = 437ece58e06c0bdab40ea4eb7fb0787ea8250150
 
-pkgname = vulkan-git
+pkgname = vulkan-loader-git
 	pkgdesc = Vulkan ICD (installable client driver) loader
-	conflicts = vulkan
+	provides = vulkan-loader
+	conflicts = vulkan-loader
 
 pkgname = vulkan-sdk-git
 	pkgdesc = Vulkan SDK
-	depends = vulkan-git=r3.7e195e8
+	depends = vulkan-loader
+	provides = vulkan-sdk
 	conflicts = vulkan-sdk
 	options = staticlibs
 
