@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=krdc-git
-pkgver=15.12.1.r10.gc94a465
+pkgver=15.12.1.r24.g7947f47
 pkgrel=1
 pkgdesc='Remote Desktop Client (frameworks branch)'
 url='http://kde.org/applications/internet/krdc/'
@@ -10,7 +10,7 @@ license=('GPL' 'LGPL' 'FDL')
 depends=('telepathy-qt5' 'kcmutils' 'kdnssd' 'knotifyconfig' 'libvncserver')
 makedepends=('extra-cmake-modules' 'git' 'kdoctools' 'kdelibs4support')
 optdepends=('freerdp: RDP support'
-            'keditbookmarks: to edit bookmarks')
+            'kdebase-keditbookmarks: to edit bookmarks')
 provides=(kdenetwork-krdc)
 conflicts=(kdenetwork-krdc)
 source=('git://anongit.kde.org/krdc.git#branch=frameworks')
