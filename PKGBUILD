@@ -1,6 +1,6 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 pkgname=freetype2-demos
-pkgver=2.6.2
+pkgver=2.6.3
 pkgrel=1
 pkgdesc="Freetype2 utilities such as ftdump and ftview."
 arch=('i686' 'x86_64')
@@ -9,8 +9,8 @@ license=('GPL')
 depends=('libx11' 'zlib' 'freetype2')
 source=(http://download.savannah.gnu.org/releases/freetype/ft2demos-${pkgver}.tar.bz2 
   http://downloads.sourceforge.net/sourceforge/freetype/freetype-${pkgver}.tar.bz2)
-md5sums=('b11dd2f9a4b511e842d31a50e4a63627'
-         '86109d0c998787d81ac582bad9adf82e')
+md5sums=('f7c6102f29834a80456264fe4edd81d1'
+         '0037b25a8c090bc8a1218e867b32beb1')
 
 build() {
   cd "$srcdir"
