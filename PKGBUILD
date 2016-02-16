@@ -4,9 +4,9 @@
 
 pkgname=sipcrack
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="SIPcrack is a SIP protocol login cracker."
-license=(custom)
+license=('custom')
 url="http://www.remote-exploit.org/codes_sipcrack.html"
 arch=(i686 x86_64)
 
