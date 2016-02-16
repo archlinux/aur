@@ -11,7 +11,7 @@ depends=('firefox')
 conflicts=('firefox-extension-ublock')
 source=("https://addons.cdn.mozilla.net/user-media/addons/607454/ublock_origin-$pkgver-fx+an+sm+tb.xpi")
 noextract=("${source##*/}")
-sha256sums=('9c975cc8f0448f351bb25911ab1ac51667c5b1eaa1de0ce6e39965e0ced864e0')
+sha256sums=('cd0ca9277f842c740f763547f7b649f5184d8695b86856364fc4c0d58577ae6b')
 
 package() {
   install -Dm755 "${source##*/}" "$pkgdir"/usr/lib/firefox/browser/extensions/uBlock0@raymondhill.net.xpi
