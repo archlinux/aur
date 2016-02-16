@@ -1,0 +1,21 @@
+pkgbase = vulkan
+	pkgver = 1.0.3.1
+	pkgrel = 1
+	url = https://www.khronos.org/vulkan
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = asciidoc
+	makedepends = source-highlight
+	options = zipman
+	source = https://vulkan.lunarg.com/
+	source = vulkan.pc
+
+pkgname = vulkan
+	pkgdesc = Vulkan ICD (installable client driver) loader
+
+pkgname = vulkan-sdk
+	pkgdesc = Vulkan SDK
+	depends = vulkan=1.0.3.1
+	options = staticlibs
+

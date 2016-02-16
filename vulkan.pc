@@ -1,0 +1,10 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: vulkan
+Description: Vulkan library
+Version: %{version}
+Libs: -L${libdir} -lvulkan
+Cflags: -I${includedir}
