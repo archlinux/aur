@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="OpenGL Image (GLI) is a header only C++ image library for graphics software"
 arch=('any')
 license=('MIT')
-url=("http://gli.g-truc.net")
+url="http://gli.g-truc.net"
 depends=('glm>=0.9.7.0')
 source=("https://github.com/g-truc/gli/archive/$pkgver.tar.gz")
 sha512sums=('5d8874081f25c30a761edec9282486d2b8ee9e2b7915c14f140daff0a28c89cf5f35430e84d4f4eca7e66a563ddcfd0d9b8e76b9d7352f0b609691460036776e')
