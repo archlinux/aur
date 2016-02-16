@@ -2,9 +2,8 @@
 
 pkgname=oclint-bin
 _pkgname=oclint
-pkgver=0.8.1
-_pkgverminor=0.8
-_distrosuffix="3.13.0-35-generic"
+pkgver=0.10.2
+_distrosuffix="3.13.0-48-generic"
 pkgrel=1
 pkgdesc="A static code analysis tool for improving quality and reducing defects"
 arch=(x86_64)
@@ -13,8 +12,8 @@ license=('custom')
 depends=('python2')
 provides=('oclint')
 conflicts=('oclint')
-source=(http://archives.oclint.org/releases/$_pkgverminor/$_pkgname-$pkgver-x86_64-linux-$_distrosuffix.tar.gz)
-sha256sums=('f74c19a55cba53174419c3cfb64c9f62673986d72507c80b3ef1b6e8bf3317f3')
+source=(https://github.com/oclint/oclint/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-linux-$_distrosuffix.tar.gz)
+sha256sums=('570aee9698f2f730ea75e01b4916f80e566551ab441681177ca561e146b3238b')
 
 build() {
 	cd "$srcdir/$_pkgname-$pkgver"
