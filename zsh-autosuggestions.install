@@ -1,4 +1,5 @@
 post_install() {
     echo "==> To use zsh autosuggestions, include the following snippet in your .zshrc:
+    # This must be sourced before zsh-syntax-highlighting
     source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 }
