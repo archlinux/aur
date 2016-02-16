@@ -4,7 +4,7 @@
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname=openssh-git
-pkgver=7.1.P1.r1.g189de02
+pkgver=7.1.P1.r189.g5ac712d
 pkgrel=1
 pkgdesc='Free version of the SSH connectivity tools'
 url='http://www.openssh.org/portable.html'
@@ -28,7 +28,7 @@ sha256sums=('SKIP'
             '69cc2abaaae0aa8071b8eac338b2df725f60ce73381843179b74eaac78ba7f1d'
             'c5ed9fa629f8f8dbf3bae4edbad4441c36df535088553fe82695c52d7bde30aa'
             'de14363e9d4ed92848e524036d9e6b57b2d35cc77d377b7247c38111d2a3defd'
-	    '4effac1186cc62617f44385415103021f72f674f8b8e26447fc1139c670090f6'
+            '4effac1186cc62617f44385415103021f72f674f8b8e26447fc1139c670090f6'
             '64576021515c0a98b0aaf0a0ae02e0f5ebe8ee525b1e647ab68f369f81ecd846')
 
 backup=('etc/ssh/ssh_config' 'etc/ssh/sshd_config' 'etc/pam.d/sshd')
