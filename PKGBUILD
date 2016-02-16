@@ -1,7 +1,7 @@
 # Maintainer: McNoggins <gagnon88 (at) Gmail (dot) com>
 pkgname="python-imread"
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Read images to numpy arrays"
 arch=('any')
 url="https://pypi.python.org/pypi/imread/"
