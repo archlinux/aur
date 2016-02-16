@@ -3,7 +3,8 @@
 pkgname=spirv-tools-git
 pkgver=r436.dd8a661
 pkgrel=1
-url=''
+pkgdesc='API and commands for processing SPIR-V modules'
+url='https://github.com/KhronosGroup/SPIRV-Tools'
 arch=('i686' 'x86_64')
 license=('MIT')
 source=('git+https://github.com/KhronosGroup/SPIRV-Tools')
