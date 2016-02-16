@@ -1,0 +1,39 @@
+post_install() {
+    pkgname=filteripdyn
+
+    # Fixing membership
+    chown root: /var/log/$pkgname
+    chown -R root: /etc/$pkgname
+
+    # Reload systemctl
+    systemctl daemon-reload
+
+    echo "Adding filteripdyn in systemctl:"
+    echo "  systemctl enable filteripdyn"
+    echo "  systemctl start filteripdyn"
+
+    true
+}
+
+post_upgrade() {
+    # Reload systemctl
+    systemctl daemon-reload
+
+    echo "You should restart iptables, filteripdyn, …"
+    echo "  systemctl restart iptables"
+    echo "  systemctl restart filteripdyn"
+
+    true
+}
+
+pre_remove() {
+    pkgname=filteripdyn
+    # Remove symlink in systemd
+    systemctl disable $pkgname
+    # Stop server
+    systemctl stop $pkgname
+    # Reload systemctl
+    systemctl daemon-reload
+
+    true
+}
