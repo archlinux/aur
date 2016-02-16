@@ -1,5 +1,3 @@
-# Maintainer: bjo@nord-west.org
-
 pkgname=mopidy-alarmclock
 _pypiname=Mopidy-AlarmClock
 pkgver=0.1.5
