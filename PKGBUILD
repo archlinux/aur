@@ -1,6 +1,6 @@
 _name='zsh-autosuggestions'
 pkgname="${_name}-git"
-pkgver=0.2.1.123.45ab49d
+pkgver=v0.2.9
 pkgrel=1
 pkgdesc='Fish shell like fast/unobtrusive autosuggestions for zsh'
 url='https://github.com/tarruda/zsh-autosuggestions'
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
    cd "${srcdir}/${_name}"
-   echo "0.2.1.$(git rev-list --count HEAD).$(git describe --always )"
+   git describe --tags
 }
 
 package() {
