@@ -4,10 +4,10 @@
 
 pkgname=mbr
 pkgver=1.1.11
-pkgrel=3
+pkgrel=4
 pkgdesc="A replacement master boot record"
 url="http://www.chiark.greenend.org.uk/~neilt/mbr/"
-license="GPL"
+license=("GPL")
 makedepends=('bin86')
 arch=('i686' 'x86_64')
 source=(http://www.chiark.greenend.org.uk/~neilt/mbr/${pkgname}-${pkgver}.tar.gz)
