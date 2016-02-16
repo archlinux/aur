@@ -1,0 +1,11 @@
+# built packages
+*.pkg.tar*
+
+# Sources
+*.xz
+*.sign
+
+# generated files
+linux.install.pkg
+pkg/
+src/

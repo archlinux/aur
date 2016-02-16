@@ -1,8 +1,11 @@
-# $Id: PKGBUILD 258839 2016-02-03 14:33:04Z foutrelis $
-# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
-# Maintainer: Thomas Baechler <thomas@archlinux.org>
+# Maintainer: Leonard König <leonard dot r dot koenig@googlemail.com>
+# Contributor: Tobias Powalowski <tpowa@archlinux.org>
+# Contributor: Thomas Baechler <thomas@archlinux.org>
 
-pkgbase=linux               # Build stock -ARCH kernel
+# Download of pre-built package:
+# https://mega.nz/#!ug1hQQgQ!PNjMtaNmwD0BqSslKQpXTifCQuzmBn2oPg0prPt1zkE
+
+pkgbase=linux-elanfix       # Build stock -ARCH kernel with fix for ELAN
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.4
 pkgver=4.4.1
@@ -12,6 +15,7 @@ url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
+provides=linux
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
@@ -24,7 +28,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '0001-sdhci-revert.patch'
         'tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch'
         '0001-4.4-revert-btrfs.patch'
-        '0001-4.4-revert-xfs.patch')
+        '0001-4.4-revert-xfs.patch'
+        '0001-4.4-fix-elan.patch')
 
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
@@ -37,7 +42,9 @@ sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
             'ab57037ecee0a425c612babdff47c831378bca0bff063a1308599989a350226d'
             '51586b733e9f178bebe577258b6057b035eded516ffe8bf8bbb26cb0b26c4958'
-            'ffbfaa192d17bfc7c6293aa9a07efe57f65177051ae3d8033d5e45a7bca2e0ad')
+            'ffbfaa192d17bfc7c6293aa9a07efe57f65177051ae3d8033d5e45a7bca2e0ad'
+            '3c682a53e16d4b7f95c39183e5d2388b2c4ecd9da56574b65485efc31459f86e')
+
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -66,6 +73,9 @@ prepare() {
   # #47757 fix broken suspend from btrfs and xfs
   patch -Np1 -i "${srcdir}/0001-4.4-revert-xfs.patch"
   patch -Np1 -i "${srcdir}/0001-4.4-revert-btrfs.patch"
+
+  # fix some elan trackpads
+  patch -Np1 -i "${srcdir}/0001-4.4-fix-elan.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
@@ -111,7 +121,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules + fix for ELAN touchpads"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')

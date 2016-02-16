@@ -28,6 +28,8 @@ post_upgrade() {
     echo ">>>          In order to use your keyboard during early init, you MUST"
     echo ">>>          include the 'keyboard' hook in your mkinitcpio.conf."
   fi
+
+  echo "Don't forget to add the entry 'linux-elanfix' to your bootloader"
 }
 
 post_remove() {
