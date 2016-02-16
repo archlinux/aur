@@ -1,0 +1,15 @@
+pkgbase = cargo-clippy-git
+	pkgdesc = A cargo subcommand that runs the clippy linter
+	pkgver = r18.c3f6ba5
+	pkgrel = 1
+	url = https://github.com/arcnmx/cargo-clippy
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = cargo
+	provides = cargo-clippy
+	source = cargo-clippy::git+https://github.com/arcnmx/cargo-clippy.git
+	sha256sums = SKIP
+
+pkgname = cargo-clippy-git
+
