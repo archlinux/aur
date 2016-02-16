@@ -10,13 +10,14 @@ _pkgbasever=4.4-gnu
 _pkgver=4.4.1-gnu
 
 _srcname=linux-${_pkgbasever%-*}
+_archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel headers sanitized for use in userspace"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.gnu.org/software/libc"
 license=('GPL2')
-provides=('linux-api-headers')
+provides=("linux-api-headers=${_archpkgver}")
 conflicts=('linux-api-headers')
 replaces=('linux-api-headers')
 source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz"
