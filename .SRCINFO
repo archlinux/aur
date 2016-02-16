@@ -3,8 +3,8 @@
 pkgbase = meliora-openbox-themes
 	pkgdesc = Meliora Openbox Themes
 	pkgver = 20160214
-	pkgrel = 1
-	url = https://bitbucket.org/Ensayia/meliora-openbox-themes/src
+	pkgrel = 2
+	url = https://bitbucket.org/Ensayia/meliora-openbox-themes
 	arch = any
 	license = ZLIB
 	depends = openbox

@@ -3,11 +3,11 @@
 _pkgname=Meliora
 pkgname=meliora-openbox-themes
 pkgver=20160214
-pkgrel=1
+pkgrel=2
 pkgdesc="$_pkgname Openbox Themes"
 arch=('any')
 license=('ZLIB')
-url="https://bitbucket.org/Ensayia/meliora-openbox-themes/src"
+url="https://bitbucket.org/Ensayia/meliora-openbox-themes"
 depends=('openbox')
 source=('meliora-openbox-themes::git+https://bitbucket.org/Ensayia/meliora-openbox-themes.git#branch=master')
 md5sums=('SKIP')
