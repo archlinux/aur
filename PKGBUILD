@@ -3,7 +3,7 @@
 
 pkgname=vocal-git
 _gitname=vocal
-pkgver=2.0-master
+pkgver=2.0
 pkgrel=1
 pkgdesc="Vocal. The podcast client for the modern free desktop."
 arch=('i686' 'x86_64')
