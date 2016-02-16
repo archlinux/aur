@@ -1,6 +1,6 @@
 pkgbase = python-mailmanclient
 	pkgdesc = Library that provides official Python bindings for the GNU Mailman 3 REST API
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://gitlab.com/mailman/mailmanclient
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-mailmanclient
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	options = !emptydirs
-	source = mailmanclient-1.0.0.tar.gz::https://gitlab.com/mailman/mailmanclient/repository/archive.tar.gz?ref=1.0.0
-	sha256sums = d02b6477c4a7fa5f5a378a696ed51f4122eb9196b9384dca0ee52d612a4d77b7
+	source = -1.0.1.tar.gz::https://gitlab.com/mailman/mailmanclient/repository/archive.tar.gz?ref=1.0.1
+	sha256sums = 71bc240347a50dc1b547c6cf21c5f4763b35c074b1f3900fb144c07edc267185
 
 pkgname = python-mailmanclient
 	depends = python
