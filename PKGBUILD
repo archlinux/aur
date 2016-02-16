@@ -1,14 +1,14 @@
 # Maintainer: xpt <user.xpt@gmail.com>
 
 pkgname=liggghts-lpp #t1
-pkgver=3.2
+pkgver=20140910
 pkgrel=0
 pkgdesc="Open Source Discrete Element Method Particle Simulation Software - Post Processing (Pizza.py)"
 arch=('any')
 url="https://github.com/CFDEMproject/LPP"
 license=('GPL')
 depends=('liggghts' 'python2-numpy') 
-_gitroot=" https://github.com/CFDEMproject/LPP.git"
+_gitroot="https://github.com/CFDEMproject/LPP.git"
 _gitname="LPP"
 
 
@@ -39,7 +39,9 @@ build() {
    install -Dm644 examples/files/* $pkgdir/usr/share/liggghts/examples-lpp/files
    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/liggghts/lpp/LICENSE"
    install -Dm644 "README" "$pkgdir/usr/share/licenses/liggghts/lpp/README"
-  echo -e '#! /bin/bash\npython2 /usr/share/liggghts/lpp/src/lpp.py $@' >  $pkgdir/usr/bin/liggghts-lpp
+  echo -e '#! /bin/bash\npython2 /usr/share/liggghts/lpp/src/lpp.py $@' >  $pkgdir/usr/bin/lpp
+  chmod +x $pkgdir/usr/bin/lpp
   echo -e '#! /bin/bash\npython2 /usr/share/liggghts/lpp/src/pizza.py $@' >  $pkgdir/usr/bin/pizza
+  chmod +x $pkgdir/usr/bin/pizza
 } 
 
