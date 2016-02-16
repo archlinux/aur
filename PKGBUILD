@@ -1,6 +1,6 @@
 # Maintainer: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
 pkgname=libcue-git
-pkgver=v1.4.0.r8.62a4b71
+pkgver=v2.0.0.r0.5e54a77
 pkgrel=1
 pkgdesc="CUE Sheet Parser Library"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('GPL2')
 makedepends=('git' 'cmake' 'flex' 'bison')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('libcue::git+https://github.com/lipnitsk/libcue.git#commit=62a4b71')
+source=('libcue::git+https://github.com/lipnitsk/libcue.git#branch=master')
 noextract=()
 md5sums=('SKIP')
 
