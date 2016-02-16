@@ -1,6 +1,6 @@
 pkgbase = python-django-gravatar
 	pkgdesc = Includes helper methods for interacting with gravatars outside of template code
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/twaddington/django-gravatar
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-django-gravatar
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	options = !emptydirs
-	source = https://github.com/twaddington/django-gravatar/archive/1.3.0.tar.gz
-	sha256sums = b557e25748585647df3774727f2183117691bde1236f3054117e35f66c66f88c
+	source = https://github.com/twaddington/django-gravatar/archive/1.4.0.tar.gz
+	sha256sums = 849a4ffdb99c333f69709a54bccc12dd266e1db7a8f352eb0ebcc97e65161782
 
 pkgname = python-django-gravatar
 	depends = python-django
