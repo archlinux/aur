@@ -1,11 +1,12 @@
 # Maintainer: Michele Mocciola <mickele>
 # Contributor: Guillaume Dollé < dolle dot guillaume at gmail dot com >
+# Contributor: Lucas H. Gabrielli
 pkgname=mumps
-pkgver=5.0.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="Sparse solver library using Gaussian elimination"
 url="http://mumps.enseeiht.fr"
-license="custom"
+license=("custom")
 depends=('lapack' 'openmpi' 'scotch>=6.0.3-3' 'scalapack' 'metis' 'bzip2')
 makedepends=()
 provides=()
@@ -63,5 +64,5 @@ package(){
   # Install license
   install -D -m644 "${srcdir}/MUMPS_${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-md5sums=('3c6aeab847e9d775ca160194a9db2b75'
+md5sums=('b477573fdcc87babe861f62316833db0'
          'e1d80cc7b2f942f1451e764a6c0e8567')
