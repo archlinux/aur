@@ -24,7 +24,7 @@ index fd52581..bb81fb8 100755
  
  # respect GNUMAKE environment variable for backwards compatibility
 diff --git a/devel/ftoption.h b/devel/ftoption.h
-index eda772e..d408a5d 100644
+index f68b3ad..fb01836 100644
 --- a/devel/ftoption.h
 +++ b/devel/ftoption.h
 @@ -607,6 +607,17 @@ FT_BEGIN_HEADER
@@ -46,7 +46,7 @@ index eda772e..d408a5d 100644
    /* of the TrueType bytecode interpreter is used that doesn't implement   */
    /* any of the patented opcodes and algorithms.  The patents related to   */
 diff --git a/include/freetype/config/ftoption.h b/include/freetype/config/ftoption.h
-index 4970945..3df05be 100644
+index b481f8f..b05932a 100644
 --- a/include/freetype/config/ftoption.h
 +++ b/include/freetype/config/ftoption.h
 @@ -92,7 +92,7 @@ FT_BEGIN_HEADER
@@ -83,18 +83,22 @@ index 4970945..3df05be 100644
    /* of the TrueType bytecode interpreter is used that doesn't implement   */
    /* any of the patented opcodes and algorithms.  The patents related to   */
 diff --git a/src/autofit/aflatin.c b/src/autofit/aflatin.c
-index 3065895..214c217 100644
+index 53851e7..c20e7d3 100644
 --- a/src/autofit/aflatin.c
 +++ b/src/autofit/aflatin.c
-@@ -24,6 +24,7 @@
+@@ -24,7 +24,10 @@
  #include "afpic.h"
  #include "aflatin.h"
  #include "aferrors.h"
+-
 +#include "strings.h"
- 
++#ifdef FT_CONFIG_OPTION_INFINALITY_PATCHSET
++#include "../base/ftinf.h"
++#endif
  
  #ifdef AF_CONFIG_OPTION_USE_WARPER
-@@ -40,6 +41,10 @@
+ #include "afwarp.h"
+@@ -40,6 +43,10 @@
  #undef  FT_COMPONENT
  #define FT_COMPONENT  trace_aflatin
  
@@ -105,41 +109,19 @@ index 3065895..214c217 100644
  
    /* needed for computation of round vs. flat segments */
  #define FLAT_THRESHOLD( x )  ( x / 14 )
-@@ -899,8 +904,33 @@
+@@ -916,7 +923,10 @@
      FT_Pos        delta;
      AF_LatinAxis  axis;
      FT_UInt       nn;
-+#ifdef FT_CONFIG_OPTION_INFINALITY_PATCHSET 
-+    int checked_adjust_heights_env = 0;
+-
++#ifdef FT_CONFIG_OPTION_INFINALITY_PATCHSET
 +    FT_Bool adjust_heights         = FALSE;
- 
- 
-+    if ( checked_adjust_heights_env == 0 )
-+    {
-+      char *adjust_heights_env =
-+        getenv( "INFINALITY_FT_AUTOHINT_INCREASE_GLYPH_HEIGHTS" );
-+      if ( adjust_heights_env != NULL )
-+      {
-+        if ( strcasecmp(adjust_heights_env, "default" ) != 0 )
-+        {
-+          if ( strcasecmp(adjust_heights_env, "true") == 0 )
-+            adjust_heights = TRUE;
-+          else if ( strcasecmp(adjust_heights_env, "1") == 0 )
-+            adjust_heights = TRUE;
-+          else if ( strcasecmp(adjust_heights_env, "on") == 0 )
-+            adjust_heights = TRUE;
-+          else if ( strcasecmp(adjust_heights_env, "yes") == 0 )
-+            adjust_heights = TRUE;
-+        }
-+      }
-+      checked_adjust_heights_env = 1;
-+    }
++    if(ftinf) adjust_heights=ftinf->autohint_increase_glyph_heights;
 +#endif /* FT_CONFIG_OPTION_INFINALITY_PATCHSET */
-+
+ 
      if ( dim == AF_DIMENSION_HORZ )
      {
-       scale = scaler->x_scale;
-@@ -927,7 +957,7 @@
+@@ -944,7 +954,7 @@
      {
        AF_LatinAxis  Axis = &metrics->axis[AF_DIMENSION_VERT];
        AF_LatinBlue  blue = NULL;
@@ -148,7 +130,7 @@ index 3065895..214c217 100644
  
        for ( nn = 0; nn < Axis->blue_count; nn++ )
        {
-@@ -937,7 +967,12 @@
+@@ -954,7 +964,12 @@
            break;
          }
        }
@@ -162,12 +144,12 @@ index 3065895..214c217 100644
        if ( blue )
        {
          FT_Pos   scaled;
-@@ -1056,7 +1091,13 @@
+@@ -1110,7 +1125,13 @@
  
          /* a blue zone is only active if it is less than 3/4 pixels tall */
          dist = FT_MulFix( blue->ref.org - blue->shoot.org, scale );
 +
-+#ifdef FT_CONFIG_OPTION_INFINALITY_PATCHSET 
++#ifdef FT_CONFIG_OPTION_INFINALITY_PATCHSET
 +        /* Do at low ppems ( ~< 200 ), in order to prevent fringes */
 +        if ( dist <= 256 && dist >= -256 )
 +#else
@@ -176,11 +158,11 @@ index 3065895..214c217 100644
          {
  #if 0
            FT_Pos  delta1;
-@@ -1107,7 +1148,12 @@
+@@ -1161,7 +1182,12 @@
              delta2 = -delta2;
  
            blue->ref.fit   = FT_PIX_ROUND( blue->ref.cur );
-+#ifdef FT_CONFIG_OPTION_INFINALITY_PATCHSET 
++#ifdef FT_CONFIG_OPTION_INFINALITY_PATCHSET
 +          /* Round to prevent fringes */
 +          blue->shoot.fit = FT_PIX_ROUND( blue->ref.fit - delta2 );
 +#else
@@ -189,64 +171,51 @@ index 3065895..214c217 100644
  
  #endif
  
-@@ -1945,7 +1991,10 @@
+@@ -2015,7 +2041,10 @@
                dist = edge->fpos - blue->shoot.org;
                if ( dist < 0 )
                  dist = -dist;
 -
-+#ifdef FT_CONFIG_OPTION_INFINALITY_PATCHSET 
++#ifdef FT_CONFIG_OPTION_INFINALITY_PATCHSET
 +              /* round down to pixels */
 +              /*dist = FT_MulFix( dist, scale ) & ~63;*/
 +#endif
                dist = FT_MulFix( dist, scale );
                if ( dist < best_dist )
                {
-@@ -2120,8 +2169,31 @@
+@@ -2190,8 +2219,17 @@
      FT_Pos           dist     = width;
      FT_Int           sign     = 0;
      FT_Int           vertical = ( dim == AF_DIMENSION_VERT );
-+#ifdef FT_CONFIG_OPTION_INFINALITY_PATCHSET 
+-
+-
++#ifdef FT_CONFIG_OPTION_INFINALITY_PATCHSET
 +    FT_Int           infinality_dist = 0;
 +    FT_UInt          autohint_snap_stem_height = 0;
-+    FT_UInt          checked_autohint_snap_stem_height = 0;
- 
- 
-+    if ( checked_autohint_snap_stem_height == 0 )
-+    {
-+      char *autohint_snap_stem_height_env = 
-+        getenv( "INFINALITY_FT_AUTOHINT_SNAP_STEM_HEIGHT" );
-+      if ( autohint_snap_stem_height_env != NULL )
-+      {
-+        sscanf ( autohint_snap_stem_height_env, "%u",
-+                 &autohint_snap_stem_height );
-+
-+        if ( autohint_snap_stem_height > 100 )
-+          autohint_snap_stem_height = 100;
-+        else if ( autohint_snap_stem_height < 0 )
-+          autohint_snap_stem_height = 0;
-+      }
-+      checked_autohint_snap_stem_height = 1;
-+    }
++    if( ftinf ) autohint_snap_stem_height=ftinf->autohint_snap_stem_height;
++    if ( autohint_snap_stem_height > 100 )
++        autohint_snap_stem_height = 100;
++    else if ( autohint_snap_stem_height < 0 )
++        autohint_snap_stem_height = 0;
 +
 +    if ( autohint_snap_stem_height == 0 )
 +#endif /* FT_CONFIG_OPTION_INFINALITY_PATCHSET */
      if ( !AF_LATIN_HINTS_DO_STEM_ADJUST( hints ) ||
           axis->extra_light                       )
        return width;
-@@ -2131,9 +2203,73 @@
+@@ -2201,9 +2239,73 @@
        dist = -width;
        sign = 1;
      }
-+#ifdef FT_CONFIG_OPTION_INFINALITY_PATCHSET 
++#ifdef FT_CONFIG_OPTION_INFINALITY_PATCHSET
 +    /* Calculate snap value differently than standard freetype */
 +    if ( autohint_snap_stem_height > 0                              &&
 +         ( ( vertical && !AF_LATIN_HINTS_DO_VERT_SNAP( hints ) )  ||
 +           ( !vertical && !AF_LATIN_HINTS_DO_HORZ_SNAP( hints ) ) ) )
 +    {
-+      infinality_dist = af_latin_snap_width( axis->widths, 
++      infinality_dist = af_latin_snap_width( axis->widths,
 +                                             axis->width_count, dist );
- 
--    if ( (  vertical && !AF_LATIN_HINTS_DO_VERT_SNAP( hints ) ) ||
++
 +      if ( metrics->root.scaler.face->size->metrics.x_ppem > 9 &&
 +           axis->width_count > 0                               &&
 +           abs( axis->widths[0].cur - infinality_dist ) < 32   &&
@@ -301,14 +270,15 @@ index 3065895..214c217 100644
 +              ( ( vertical && !AF_LATIN_HINTS_DO_VERT_SNAP( hints ) )  ||
 +                ( !vertical && !AF_LATIN_HINTS_DO_HORZ_SNAP( hints ) ) ) )
 +#else
-+
+ 
+-    if ( (  vertical && !AF_LATIN_HINTS_DO_VERT_SNAP( hints ) ) ||
 +    if ( ( vertical && !AF_LATIN_HINTS_DO_VERT_SNAP( hints ) ) ||
           ( !vertical && !AF_LATIN_HINTS_DO_HORZ_SNAP( hints ) ) )
 +#endif /* FT_CONFIG_OPTION_INFINALITY_PATCHSET */
      {
        /* smooth hinting process: very lightly quantize the stem width */
  
-@@ -2193,6 +2329,9 @@
+@@ -2263,6 +2365,9 @@
        }
      }
      else
@@ -318,23 +288,23 @@ index 3065895..214c217 100644
      {
        /* strong hinting process: snap the stem width to integer pixels */
  
-@@ -2200,7 +2339,10 @@
+@@ -2270,7 +2375,10 @@
  
  
        dist = af_latin_snap_width( axis->widths, axis->width_count, dist );
 -
 +#ifdef FT_CONFIG_OPTION_INFINALITY_PATCHSET
-+      if ( autohint_snap_stem_height > 0 ) 
++      if ( autohint_snap_stem_height > 0 )
 +        goto Done_Width;
 +#endif /* FT_CONFIG_OPTION_INFINALITY_PATCHSET */
        if ( vertical )
        {
          /* in the case of vertical hinting, always round */
-@@ -2263,6 +2405,32 @@
+@@ -2333,6 +2441,32 @@
      }
  
    Done_Width:
-+#ifdef FT_CONFIG_OPTION_INFINALITY_PATCHSET 
++#ifdef FT_CONFIG_OPTION_INFINALITY_PATCHSET
 +    if ( axis->widths[0].cur > 42 )
 +      /* weighted average */
 +      dist = (dist * ( 100 - autohint_snap_stem_height )
@@ -363,7 +333,7 @@ index 3065895..214c217 100644
      if ( sign )
        dist = -dist;
  
-@@ -2284,6 +2452,8 @@
+@@ -2354,6 +2488,8 @@
                                                          base_edge->flags,
                                                          stem_edge->flags );
  
@@ -372,41 +342,21 @@ index 3065895..214c217 100644
  
      stem_edge->pos = base_edge->pos + fitted_width;
  
-@@ -2844,8 +3014,32 @@
+@@ -2915,8 +3051,11 @@
      int       dim;
  
      AF_LatinAxis  axis;
-+#ifdef FT_CONFIG_OPTION_INFINALITY_PATCHSET 
-+    FT_Int    emboldening_strength = 0;
-+    FT_Bool   checked_use_various_tweaks_env = FALSE;
-+    FT_Bool   use_various_tweaks = FALSE;
- 
 -
-+    if ( !checked_use_various_tweaks_env )
-+    {
-+      char *use_various_tweaks_env = 
-+        getenv( "INFINALITY_FT_USE_VARIOUS_TWEAKS" );
-+      if ( use_various_tweaks_env != NULL )
-+      {
-+        if ( strcasecmp(use_various_tweaks_env, "default" ) != 0 )
-+        {
-+          if ( strcasecmp(use_various_tweaks_env, "true") == 0 )
-+            use_various_tweaks = TRUE;
-+          else if ( strcasecmp(use_various_tweaks_env, "1") == 0 )
-+            use_various_tweaks = TRUE;
-+          else if ( strcasecmp(use_various_tweaks_env, "on") == 0 )
-+            use_various_tweaks = TRUE;
-+          else if ( strcasecmp(use_various_tweaks_env, "yes") == 0 )
-+            use_various_tweaks = TRUE;
-+        }
-+      }
-+      checked_use_various_tweaks_env = TRUE;
-+    }
+-
++#ifdef FT_CONFIG_OPTION_INFINALITY_PATCHSET
++    FT_Int    emboldening_strength = 0;
++    FT_Bool   use_various_tweaks = FALSE;
++    if( ftinf ) use_various_tweaks=ftinf->use_various_tweaks;
 +#endif /* FT_CONFIG_OPTION_INFINALITY_PATCHSET */
      error = af_glyph_hints_reload( hints, outline );
      if ( error )
        goto Exit;
-@@ -2913,7 +3107,11 @@
+@@ -2986,7 +3125,11 @@
      }
  
      af_glyph_hints_save( hints, outline );
@@ -420,7 +370,7 @@ index 3065895..214c217 100644
      return error;
    }
 diff --git a/src/autofit/aflatin.h b/src/autofit/aflatin.h
-index 6855492..736f251 100644
+index dd75ef3..257265e 100644
 --- a/src/autofit/aflatin.h
 +++ b/src/autofit/aflatin.h
 @@ -62,6 +62,9 @@ FT_BEGIN_HEADER
@@ -433,80 +383,2238 @@ index 6855492..736f251 100644
  
  #define AF_LATIN_BLUE_ACTIVE      ( 1U << 0 ) /* zone height is <= 3/4px   */
  #define AF_LATIN_BLUE_TOP         ( 1U << 1 ) /* we have a top blue zone   */
+diff --git a/src/base/Jamfile b/src/base/Jamfile
+index e39fb09..a33e9a1 100644
+--- a/src/base/Jamfile
++++ b/src/base/Jamfile
+@@ -55,6 +55,7 @@ SubDir  FT2_TOP $(FT2_SRC_DIR) base ;
+                     ftglyph
+                     ftgxval
+                     ftinit
++                    ftinf
+                     ftlcdfil
+                     ftmm
+                     ftotval
+diff --git a/src/base/ftbase.c b/src/base/ftbase.c
+index 253dfb7..59d2d17 100644
+--- a/src/base/ftbase.c
++++ b/src/base/ftbase.c
+@@ -33,6 +33,9 @@
+ #include "ftstream.c"
+ #include "fttrigon.c"
+ #include "ftutil.c"
++#ifdef FT_CONFIG_OPTION_INFINALITY_PATCHSET
++#include "ftinf.c"
++#endif
+ 
+ #ifdef FT_MACINTOSH
+ #include "ftmac.c"
+diff --git a/src/base/ftinf.c b/src/base/ftinf.c
+new file mode 100644
+index 0000000..cef285d
+--- /dev/null
++++ b/src/base/ftinf.c
+@@ -0,0 +1,359 @@
++#include <stdlib.h>
++#include "ftinf.h"
++#define true  1
++#define false 0
++
++#define on  1
++#define off 0
++#define end (-128)
++
++#define sw2pv 18  /* STEM_WIDTH_2_PPEM */
++#define maxp 100  /* MAX_PPEM */
++
++typedef signed char pv;         /* ppm and values type */
++/* the arrays start with existence flag + values */
++typedef struct sa_rules_s {
++    const char *name;
++    pv always_use_100[1+4+1];
++    pv brightness[1+2+1];
++    pv contrast[1+2+1];
++    pv edge_detection[1+4+1];
++    pv m[1+4+1];
++    pv bearing_correction[1+2+1];
++    pv spacing[1+5+1];
++    pv start[1+5+1];
++    pv stem_scaling[1+6+1];
++    pv stem_translating[1+2+1];
++    pv stem_translating_only[1+10+1];
++    pv stem_widths[1+4];        /* these end with maxp */
++    pv synthesize_stems[1+2+1];
++} sa_rules_t;
++
++#pragma GCC diagnostic ignored "-Wpedantic" /* C99 struct initializer tags are needed */
++#pragma GCC diagnostic ignored "-Wunused-function"
++
++const ftinf_t *ftinf;
++/* final settings, updated from environment */
++ftinf_t _env;
++
++/* rules and hashing function */
++#include "ftinf_rh.c"
++
++/* rules selection */
++void ftinf_fill_stem_values( Stem_Data *stem_values,
++                             const char *family, int ppem, int use_known ){
++    /* set the defaults */
++    stem_values->bearing_correction = TRUE;
++    stem_values->brightness = 0.0;
++    stem_values->contrast = 0.0;
++    stem_values->edge_detection = FALSE;
++    stem_values->m = -1;
++    stem_values->stem_scaling = -1;
++    stem_values->stem_spacing = -1;
++    stem_values->stem_start = -1;
++    stem_values->stem_translating = 0;
++    stem_values->stem_translating_only = -1024;
++    stem_values->stem_width = -1;
++    stem_values->synth_stems = FALSE;
++    stem_values->use_100 = FALSE;
++    /* pick from known rules if requested and they exist for current family */
++    if( !use_known )
++        return;
++    else {
++        const sa_rules_t *r=ftinf_rules( family );
++        int i;
++        if( r==NULL ) return;
++        if( r->stem_widths[0]==on )
++            for( i=1; r->stem_widths[i]!=maxp; ++i )
++                if( ppem < r->stem_widths[i] ){
++                    stem_values->stem_width = i-1;
++                    break;
++                }
++
++        if( r->stem_scaling[0]==on )
++            for( i=1; r->stem_scaling[i]!=end; i+=2 )
++                if( ppem==r->stem_scaling[i] ){
++                    stem_values->stem_scaling = r->stem_scaling[i+1];
++                    break;
++                }
++
++        if( r->m[0]==on )
++            for( i=1; r->m[i]!=end; i+=2 )
++                if( ppem==r->m[i] ){
++                    stem_values->m = r->m[i+1];
++                    break;
++                }
++
++        if( r->stem_translating_only[0]==on )
++            for( i=1; r->stem_translating_only[i]!=end; i+=2 )
++                if( ppem==r->stem_translating_only[i] || r->stem_translating_only[i]==0 ){
++                    stem_values->stem_translating_only = r->stem_translating_only[i+1];
++                    break;
++                }
++
++        if( r->stem_translating[0]==on )
++            for( i=1; r->stem_translating[i]!=end; i+=2 )
++                if( ppem==r->stem_translating[i] || r->stem_translating[i]==0 ){
++                    stem_values->stem_translating = r->stem_translating[i+1];
++                    break;
++                }
++
++        if( r->always_use_100[0]==on )
++            for( i=1; r->always_use_100[i]!=end; i+=2 )
++                if( ppem>=r->always_use_100[i] && ppem<=r->always_use_100[i+1] ){
++                    stem_values->use_100 = TRUE;
++                    break;
++                }
++
++        if( r->synthesize_stems[0]==on )
++            for( i=1; r->synthesize_stems[i]!=end; i+=2 )
++                if( ppem>=r->synthesize_stems[i] && ppem<=r->synthesize_stems[i+1] ){
++                    stem_values->synth_stems = TRUE;
++                    break;
++                }
++
++        if( r->edge_detection[0]==on )
++            for( i=1; r->edge_detection[i]!=end; i+=2 )
++                if( ppem>=r->edge_detection[i] && ppem<=r->edge_detection[i+1] ){
++                    stem_values->edge_detection = TRUE;
++                    break;
++                }
++
++        if( r->bearing_correction[0]==on )
++            for( i=1; r->bearing_correction[i]!=end; i+=2 )
++                if( ppem>=r->bearing_correction[i] && ppem<=r->bearing_correction[i+1] ){
++                    stem_values->bearing_correction = FALSE;
++                    break;
++                }
++
++#if(0)
++        if( r->brightness[0]==on )
++            for( i=1; r->brightness[i]!=end; i+=2 )
++                if( ppem==r->brightness[i]||r->brightness[i]==0 ){
++                    stem_values->brightness=r->brightness[i+1]*(1.0f/300.0f);
++                    break;
++                }
++
++        if( r->contrast[0]==on )
++            for( i=1; r->contrast[i]!=end; i+=2 )
++                if( ppem==r->contrast[i]||r->contrast[i]==0 ){
++                    stem_values->contrast=r->contrast[i+1]*(1.0f/300.0f);
++                    break;
++                }
++        if( r->spacing[0]==on ){
++            /* not used by original code */
++        }
++        if( r->start[0]==on ){
++            /* not used by original code */
++        }
++#endif
++    }
++    return;
++}
++
++void ftinf_get_bc( const char *family, int ppem, float *brightness, float *contrast ){
++    const sa_rules_t *r=ftinf_rules( family );
++    *brightness=0;
++    *contrast=0;
++    if( r ){
++        int i;
++        if( r->brightness[0]==on )
++            for( i=1; r->brightness[i]!=end; i+=2 )
++                if( ppem==r->brightness[i]||r->brightness[i]==0 ){
++                    *brightness=r->brightness[i+1]*(1.0f/300.0f);
++                    break;
++                }
++
++        if( r->contrast[0]==on )
++            for( i=1; r->contrast[i]!=end; i+=2 )
++                if( ppem==r->contrast[i]||r->contrast[i]==0 ){
++                    *contrast=r->contrast[i+1]*(1.0f/300.0f);
++                    break;
++                }
++    }
++    return;
++}
++
++static int
++bool_val( const char *s ){
++    if ( s != NULL )
++        return strcasecmp(s, "true") == 0
++            || strcasecmp(s, "1") == 0
++            || strcasecmp(s, "on") == 0
++            || strcasecmp(s, "yes") ==0;
++    else
++        return 0;
++}
++
++static int
++int_val( const char *s, int min, int max ){
++    int val;
++    sscanf ( s, "%d", &val );
++    if ( val > max )
++        val = max;
++    else if ( val < min )
++        val = min;
++    return val;
++}
++
++/* settings and hashing function */
++#include "ftinf_sh.c"
++
++/*
++  Get active Infinality settings
++ */
++void ftinf_env(){
++    const char *s;
++    ftinf=ftinf_settings( getenv( "INFINALITY_FT" ) );
++
++    if( ftinf==NULL ){
++        ftinf=ftinf_settings( "ultimate3" );
++        /* this should always succeed */
++#if(0)
++        if( ftinf==NULL ){
++            /* put an error here */
++            exit(-1);
++        }
++#endif
++    }
++    _env=ftinf[0];      /* copy as defaults */
++
++    /* check if custom environment values are set and update with them */
++    s=getenv( "INFINALITY_FT_AUTOHINT_INCREASE_GLYPH_HEIGHTS" );
++    if( s ) _env.autohint_increase_glyph_heights=bool_val( s );
++    s=getenv( "INFINALITY_FT_AUTOHINT_SNAP_STEM_HEIGHT" );
++    if( s ) _env.autohint_snap_stem_height=int_val( s, 0, 100 );
++    s=getenv( "INFINALITY_FT_USE_VARIOUS_TWEAKS" );
++    if( s ) _env.use_various_tweaks=bool_val( s );
++    s=getenv( "INFINALITY_FT_USE_KNOWN_SETTINGS_ON_SELECTED_FONTS" );
++    if( s ) _env.use_known_settings_on_selected_fonts=bool_val(s);
++#if(0)                          /* not used (naming error also) */
++    s=getenv( "INFINALITY_FT_AUTOHINT_MINIMUM_STEM_WIDTH" );
++    if( s ) _env.autohint_minimum_stem_height=int_val( s, 0, 100 );
++#endif
++    s=getenv( "INFINALITY_FT_STEM_SNAPPING_SLIDING_SCALE" );
++    if( s ) sscanf( s, "%d", &_env.stem_snapping_sliding_scale );
++    s=getenv( "INFINALITY_FT_STEM_ALIGNMENT_STRENGTH" );
++    if( s ) sscanf( s, "%d", &_env.stem_alignment_strength );
++    s=getenv( "INFINALITY_FT_STEM_FITTING_STRENGTH" );
++    if( s ) sscanf( s, "%d", &_env.stem_fitting_strength );
++    s=getenv( "INFINALITY_FT_CHROMEOS_STYLE_SHARPENING_STRENGTH" );
++    if( s ) _env.chromeos_style_sharpening_strength=int_val( s, 0, 100 );
++    s=getenv( "INFINALITY_FT_BRIGHTNESS" );
++    if( s ) sscanf( s, "%d", &_env.brightness );
++    s=getenv( "INFINALITY_FT_CONTRAST" );
++    if( s ) sscanf( s, "%d", &_env.contrast );
++    s=getenv( "INFINALITY_FT_WINDOWS_STYLE_SHARPENING_STRENGTH" );
++    if( s ) _env.windows_style_sharpening_strength=int_val( s, 0, 100 );
++    s=getenv( "INFINALITY_FT_GAMMA_CORRECTION" );
++    if( s ){
++        float *f=_env.gamma_correction;
++        sscanf ( s, "%f %f", &f[0], &f[1] );
++        if( f[1] < 1.0f ) f[1]=1.0f;
++    }
++    s=getenv( "INFINALITY_FT_FRINGE_FILTER_STRENGTH" );
++    if( s ) sscanf( s, "%d", &_env.fringe_filter_strength );
++    s=getenv( "INFINALITY_FT_GRAYSCALE_FILTER_STRENGTH" );
++    if( s ) sscanf( s, "%d", &_env.grayscale_filter_strength );
++    s=getenv( "INFINALITY_FT_AUTOHINT_HORIZONTAL_STEM_DARKEN_STRENGTH" );
++    if( s ) sscanf( s, "%d", &_env.autohint_horizontal_stem_darken_strength );
++    s=getenv( "INFINALITY_FT_AUTOHINT_VERTICAL_STEM_DARKEN_STRENGTH" );
++    if( s ) sscanf( s, "%d", &_env.autohint_vertical_stem_darken_strength );
++    s=getenv( "INFINALITY_FT_GLOBAL_EMBOLDEN_X_VALUE" );
++    if( s ) sscanf( s, "%d", &_env.global_embolden_x_value );
++    s=getenv( "INFINALITY_FT_GLOBAL_EMBOLDEN_Y_VALUE" );
++    if( s ) sscanf( s, "%d", &_env.global_embolden_y_value );
++    s=getenv( "INFINALITY_FT_BOLD_EMBOLDEN_X_VALUE" );
++    if( s ) sscanf( s, "%d", &_env.bold_embolden_x_value );
++    s=getenv( "INFINALITY_FT_BOLD_EMBOLDEN_Y_VALUE" );
++    if( s ) sscanf( s, "%d", &_env.bold_embolden_y_value );
++    s=getenv( "INFINALITY_FT_FILTER_PARAMS" );
++    if( s ) {
++        int *f=_env.filter_params;
++        if( sscanf( s, "%d %d %d %d %d", f+1, f+2, f+3, f+4, f+5 )==5 )
++            f[0]=on;
++        else
++            f[0]=off;           /* FIXME: put a warning? */
++    }
++    /* do the range verifications as in original code */
++    if ( _env.stem_snapping_sliding_scale > maxp )
++        _env.stem_snapping_sliding_scale = 0;
++    else if ( _env.stem_snapping_sliding_scale < 0 )
++        _env.stem_snapping_sliding_scale = 0;
++    if (_env.stem_snapping_sliding_scale < 11 &&
++        _env.stem_snapping_sliding_scale > 0  )
++        _env.stem_snapping_sliding_scale = 11;
++
++    if ( _env.stem_alignment_strength > 100 )
++        _env.stem_alignment_strength = 100;
++    else if ( _env.stem_alignment_strength < 0 )
++        _env.stem_alignment_strength = 0;
++
++    if ( _env.stem_fitting_strength > 100 )
++        _env.stem_fitting_strength = 100;
++    else if ( _env.stem_fitting_strength < 0 )
++        _env.stem_fitting_strength = 0;
++
++    if ( _env.chromeos_style_sharpening_strength > 100 )
++        _env.chromeos_style_sharpening_strength = 100;
++    else if ( _env.chromeos_style_sharpening_strength < 0 )
++        _env.chromeos_style_sharpening_strength = 0;
++
++    if ( _env.brightness > 100 )
++        _env.brightness = 100;
++    else if ( _env.brightness < -100 )
++        _env.brightness = 0;
++
++    if ( _env.contrast > 100 )
++        _env.contrast = 100;
++    else if ( _env.contrast < -100 )
++        _env.contrast = 0;
++
++    if ( _env.windows_style_sharpening_strength > 100 )
++        _env.windows_style_sharpening_strength = 100;
++    else if ( _env.windows_style_sharpening_strength < 0 )
++        _env.windows_style_sharpening_strength = 0;
++
++    if ( _env.fringe_filter_strength > 100 )
++        _env.fringe_filter_strength = 100;
++    else if ( _env.fringe_filter_strength < 0 )
++        _env.fringe_filter_strength = 0;
++
++    if ( _env.grayscale_filter_strength > 100 )
++        _env.grayscale_filter_strength = 100;
++    else if ( _env.grayscale_filter_strength < 0 )
++        _env.grayscale_filter_strength = 0;
++
++    if ( _env.autohint_horizontal_stem_darken_strength > 100 )
++        _env.autohint_horizontal_stem_darken_strength = 100;
++    else if ( _env.autohint_horizontal_stem_darken_strength < 0 )
++        _env.autohint_horizontal_stem_darken_strength = 0;
++
++    if ( _env.autohint_vertical_stem_darken_strength > 100 )
++        _env.autohint_vertical_stem_darken_strength = 100;
++    else if ( _env.autohint_horizontal_stem_darken_strength < 0 )
++        _env.autohint_vertical_stem_darken_strength = 0;
++
++    if ( _env.global_embolden_x_value > 128 )
++        _env.global_embolden_x_value = 128;
++    else if ( _env.global_embolden_x_value < -128 )
++        _env.global_embolden_x_value = -128;
++
++    if ( _env.global_embolden_y_value > 128 )
++        _env.global_embolden_y_value = 128;
++    else if ( _env.global_embolden_y_value < -128 )
++          _env.global_embolden_y_value = -128;
++
++    if ( _env.bold_embolden_x_value > 128 )
++        _env.bold_embolden_x_value = 128;
++    else if (_env.bold_embolden_x_value < -128 )
++        _env.bold_embolden_x_value = -128;
++
++    if ( _env.bold_embolden_y_value > 128 )
++        _env.bold_embolden_y_value = 128;
++    else if ( _env.bold_embolden_y_value < -128 )
++        _env.bold_embolden_y_value = -128;
++
++    /* point to the combined and checked settings */
++    ftinf=&_env;
++}
+diff --git a/src/base/ftinf.h b/src/base/ftinf.h
+new file mode 100644
+index 0000000..dc35f48
+--- /dev/null
++++ b/src/base/ftinf.h
+@@ -0,0 +1,64 @@
++#ifndef _FTINF_H_
++#define _FTINF_H_
++/*
++    Stem snapping rules
++    (base freetype typedefs assumed already included)
++ */
++typedef struct
++{
++    FT_Int       stem_width;
++    FT_Int       stem_spacing;
++    FT_Int       stem_start;
++    FT_Int       stem_scaling;
++    FT_Int       stem_translating_only;
++    FT_Int       stem_translating;
++    float        brightness;
++    float        contrast;
++    FT_Bool      use_100;
++    FT_Bool      synth_stems;
++    FT_Bool      edge_detection;
++    FT_Bool      bearing_correction;
++    FT_Int       m;
++} Stem_Data;
++
++/*
++  Infinality settings
++ */
++typedef struct ftinf_s {
++    const char *name;
++    int autohint_horizontal_stem_darken_strength;
++    int autohint_snap_stem_height;
++    int autohint_increase_glyph_heights;
++    int autohint_vertical_stem_darken_strength;
++    int bold_embolden_x_value;
++    int bold_embolden_y_value;
++    int brightness;
++    int chromeos_style_sharpening_strength;
++    int contrast;
++    int filter_params[6];       /* 1st one used as existence flag */
++    int fringe_filter_strength;
++    float gamma_correction[2];
++    int global_embolden_x_value;
++    int global_embolden_y_value;
++    int grayscale_filter_strength;
++    int stem_alignment_strength;
++    int stem_fitting_strength;
++    int stem_snapping_sliding_scale;
++    int use_known_settings_on_selected_fonts;
++    int use_various_tweaks;
++    int windows_style_sharpening_strength;
++} ftinf_t;
++
++extern FT_Pos infinality_cur_width; /* defined in aflatin.c */
++
++extern const ftinf_t *ftinf;    /* active settings */
++
++extern void ftinf_fill_stem_values( Stem_Data *stem_values,
++                                    const char *family, int ppem, int use_known );
++extern void ftinf_get_bc( const char *family, int ppem,
++                          float *brightness, float *contrast );
++
++/* get values from environment (FIXME: maybe update with using user files) */
++extern void ftinf_env();
++
++#endif
+diff --git a/src/base/ftinf_rh.c b/src/base/ftinf_rh.c
+new file mode 100644
+index 0000000..4cd6f1a
+--- /dev/null
++++ b/src/base/ftinf_rh.c
+@@ -0,0 +1,628 @@
++/* ANSI-C code produced by gperf version 3.1 */
++/* Command-line: gperf ftinf_rh.gperf  */
++/* Computed positions: -k'1,$' */
++
++#if !((' ' == 32) && ('!' == 33) && ('"' == 34) && ('#' == 35) \
++      && ('%' == 37) && ('&' == 38) && ('\'' == 39) && ('(' == 40) \
++      && (')' == 41) && ('*' == 42) && ('+' == 43) && (',' == 44) \
++      && ('-' == 45) && ('.' == 46) && ('/' == 47) && ('0' == 48) \
++      && ('1' == 49) && ('2' == 50) && ('3' == 51) && ('4' == 52) \
++      && ('5' == 53) && ('6' == 54) && ('7' == 55) && ('8' == 56) \
++      && ('9' == 57) && (':' == 58) && (';' == 59) && ('<' == 60) \
++      && ('=' == 61) && ('>' == 62) && ('?' == 63) && ('A' == 65) \
++      && ('B' == 66) && ('C' == 67) && ('D' == 68) && ('E' == 69) \
++      && ('F' == 70) && ('G' == 71) && ('H' == 72) && ('I' == 73) \
++      && ('J' == 74) && ('K' == 75) && ('L' == 76) && ('M' == 77) \
++      && ('N' == 78) && ('O' == 79) && ('P' == 80) && ('Q' == 81) \
++      && ('R' == 82) && ('S' == 83) && ('T' == 84) && ('U' == 85) \
++      && ('V' == 86) && ('W' == 87) && ('X' == 88) && ('Y' == 89) \
++      && ('Z' == 90) && ('[' == 91) && ('\\' == 92) && (']' == 93) \
++      && ('^' == 94) && ('_' == 95) && ('a' == 97) && ('b' == 98) \
++      && ('c' == 99) && ('d' == 100) && ('e' == 101) && ('f' == 102) \
++      && ('g' == 103) && ('h' == 104) && ('i' == 105) && ('j' == 106) \
++      && ('k' == 107) && ('l' == 108) && ('m' == 109) && ('n' == 110) \
++      && ('o' == 111) && ('p' == 112) && ('q' == 113) && ('r' == 114) \
++      && ('s' == 115) && ('t' == 116) && ('u' == 117) && ('v' == 118) \
++      && ('w' == 119) && ('x' == 120) && ('y' == 121) && ('z' == 122) \
++      && ('{' == 123) && ('|' == 124) && ('}' == 125) && ('~' == 126))
++/* The character set is not based on ISO-646.  */
++#error "gperf generated tables don't work with this execution character set. Please report a bug to <bug-gnu-gperf@gnu.org>."
++#endif
++
++#line 9 "ftinf_rh.gperf"
++
++#include <ctype.h>
++static const struct sa_rules_s* _rules_get( const char*str, unsigned len );
++/* maximum key range = 82, duplicates = 0 */
++
++#ifdef __GNUC__
++__inline
++#else
++#ifdef __cplusplus
++inline
++#endif
++#endif
++static unsigned int
++_rules_hash (register const char *str, register unsigned int len)
++{
++  static const unsigned char asso_values[] =
++    {
++      85, 85, 85, 85, 85, 85, 85, 85, 85, 85,
++      85, 85, 85, 85, 85, 85, 85, 85, 85, 85,
++      85, 85, 85, 85, 85, 85, 85, 85, 85, 85,
++      85, 85, 85, 85, 85, 85, 85, 85, 85, 85,
++      85, 85, 85, 85, 85,  0, 85, 85, 85, 85,
++      85, 85, 85, 85, 85, 85, 85, 85, 85, 85,
++      85, 85, 85, 85, 85, 85, 85, 85, 85, 85,
++      85, 85, 85, 85, 85, 85, 85, 85, 85, 85,
++      85, 85, 85, 85, 85, 85, 85, 85, 85, 85,
++      85, 85, 85, 85, 85, 85, 85,  5, 45,  5,
++      35, 25, 35, 35, 50, 45, 85, 85,  0, 25,
++      40,  5,  0, 85, 50, 20, 20,  0, 10, 10,
++      85, 10, 85, 85, 85, 85, 85, 85, 85, 85,
++      85, 85, 85, 85, 85, 85, 85, 85, 85, 85,
++      85, 85, 85, 85, 85, 85, 85, 85, 85, 85,
++      85, 85, 85, 85, 85, 85, 85, 85, 85, 85,
++      85, 85, 85, 85, 85, 85, 85, 85, 85, 85,
++      85, 85, 85, 85, 85, 85, 85, 85, 85, 85,
++      85, 85, 85, 85, 85, 85, 85, 85, 85, 85,
++      85, 85, 85, 85, 85, 85, 85, 85, 85, 85,
++      85, 85, 85, 85, 85, 85, 85, 85, 85, 85,
++      85, 85, 85, 85, 85, 85, 85, 85, 85, 85,
++      85, 85, 85, 85, 85, 85, 85, 85, 85, 85,
++      85, 85, 85, 85, 85, 85, 85, 85, 85, 85,
++      85, 85, 85, 85, 85, 85, 85, 85, 85, 85,
++      85, 85, 85, 85, 85, 85
++    };
++  return len + asso_values[(unsigned char)str[len - 1]] + asso_values[(unsigned char)str[0]];
++}
++
++#ifdef __GNUC__
++__inline
++#if defined __GNUC_STDC_INLINE__ || defined __GNUC_GNU_INLINE__
++__attribute__ ((__gnu_inline__))
++#endif
++#endif
++const struct sa_rules_s *
++_rules_get (register const char *str, register unsigned int len)
++{
++  enum
++    {
++      TOTAL_KEYWORDS = 58,
++      MIN_WORD_LENGTH = 3,
++      MAX_WORD_LENGTH = 24,
++      MIN_HASH_VALUE = 3,
++      MAX_HASH_VALUE = 84
++    };
++
++  static const struct sa_rules_s wordlist[] =
++    {
++#line 15 "ftinf_rh.gperf"
++{   .name="---",
++    .synthesize_stems={on, 13, 13, end}
++},
++#line 253 "ftinf_rh.gperf"
++{   .name="ubuntu",
++    .always_use_100={on, 12, 13, 15, 15, end}
++},
++#line 31 "ftinf_rh.gperf"
++{   .name="arial",
++    .always_use_100={on, 0, maxp, end},
++    .edge_detection={on, 11, 11, 13, 13, end},
++    .spacing={on, 10, 11, 23, 25, 30, end},
++    .start={on, 11, 18, 23, 30, 30, end},
++    .stem_translating={on, 11, 32, end},
++    .stem_translating_only={on, 10, 16, 8, 32, 9, 32, 16, -24, end}
++},
++#line 87 "ftinf_rh.gperf"
++{   .name="corbel",
++    .stem_translating_only={on, 10, 16, end},
++    .stem_widths={on, 10, 21, maxp}
++},
++#line 71 "ftinf_rh.gperf"
++{   .name="canwell",
++    .stem_scaling={on, 13, 0, end}
++},
++#line 216 "ftinf_rh.gperf"
++{   .name="pragmata",
++    .always_use_100={on, 0, maxp, end}
++},
++#line 67 "ftinf_rh.gperf"
++{   .name="cantarell",
++    .stem_translating_only={on, 11, 0, 12, 0, end},
++    .stem_widths={on, 10, 22, maxp,}
++},
++#line 39 "ftinf_rh.gperf"
++{   .name="arimo",
++    .always_use_100={on, 0, maxp, end},
++    .stem_translating={on, 11, 32, end},
++    .stem_translating_only={on, 10, 8, 8, 32, 9, 32, end}
++},
++#line 207 "ftinf_rh.gperf"
++{   .name="optima",
++    .brightness={on, 0, -20, end},
++    .contrast={on, 0, 25, end},
++    .stem_scaling={on, 17, 1, end},
++    .stem_translating_only={on, 10, 0, 11, 0, 12, 0, end}
++},
++#line 63 "ftinf_rh.gperf"
++{   .name="candara",
++    .stem_scaling={on, 14, 1, 17, 1, end},
++    .stem_translating_only={on, 10, 16, end}
++},
++#line 77 "ftinf_rh.gperf"
++{   .name="comfortaa",
++    .stem_widths={on, 10, 19, 22, maxp},
++    .stem_scaling={on, 11, 0, end}
++},
++#line 161 "ftinf_rh.gperf"
++{   .name="liberation mono",
++    .always_use_100={on, 0, maxp, end}
++},
++#line 18 "ftinf_rh.gperf"
++{   .name="andale mono",
++    .always_use_100={on, 0, maxp, end},
++    .stem_scaling={on, 11, 1, end},
++    .stem_widths={on, 10, 21, maxp,}
++},
++#line 256 "ftinf_rh.gperf"
++{   .name="verdana",
++    .always_use_100={on, 0, 14, 16, maxp, end},
++    .stem_scaling={on, 12, 1, 15, 1, end},
++    .stem_translating_only={on, 8, 16, 15, 16, 14, 32, 18, 32, 19, 24, end}
++},
++#line 74 "ftinf_rh.gperf"
++{   .name="century gothic",
++    .stem_widths={on, 10, 22, maxp,}
++},
++#line 91 "ftinf_rh.gperf"
++{   .name="courier new",
++    .always_use_100={on, 12, 12, end},
++    .edge_detection={on, 10, 12, end},
++    .m={on, 13, 1, 14, 1, end}
++},
++#line 23 "ftinf_rh.gperf"
++{   .name="arial narrow",
++    .stem_widths={on, 10, 21, maxp,}
++},
++#line 185 "ftinf_rh.gperf"
++{   .name="luxi sans",
++    .always_use_100={on, 13, 13, end},
++    .stem_widths={on, 10, 17, sw2pv, maxp,}
++},
++#line 225 "ftinf_rh.gperf"
++{   .name="samba",
++    .stem_scaling={on, 11, 0, end}
++},
++#line 233 "ftinf_rh.gperf"
++{   .name="tahoma",
++    .always_use_100={on, 11, 11, 14, maxp, end},
++    .edge_detection={on, 11, 11, end},
++    .spacing={on, 10, 12, 18, 18, 30, end},
++    .start={on, 14, 17, 30, 100, 100, end},
++    .stem_translating={on, 11, 32, end},
++    .stem_translating_only={on, 7, 32, 8, 32, 9, 32, end},
++},
++#line 164 "ftinf_rh.gperf"
++{   .name="liberation sans narrow",
++    .stem_widths={on,10, 22, maxp,}
++},
++#line 81 "ftinf_rh.gperf"
++{   .name="consolas",
++    .always_use_100={on, 0, maxp, end},
++    .stem_translating_only={on, 8, 32, 9, 32, end},
++    .stem_widths={on, 10, 20, maxp,},
++    .stem_scaling={on, 11, 1, end}
++},
++#line 203 "ftinf_rh.gperf"
++{   .name="open sans",
++    .stem_translating_only={on, 10, 16, 9, 16, end},
++    .stem_widths={on, 10, 20, maxp,}
++},
++#line 167 "ftinf_rh.gperf"
++{   .name="liberation sans",
++    .edge_detection={on, 11, 11, end},
++    .stem_translating={on, 11, 32, end},
++    .stem_translating_only={on, 10, 8, 8, 32, 9, 32, end},
++    .stem_widths={on,10, 19, maxp,}
++},
++#line 193 "ftinf_rh.gperf"
++{   .name="monaco",
++    .always_use_100={on, 0, maxp, end}
++},
++#line 101 "ftinf_rh.gperf"
++{   .name="cousine",
++    .always_use_100={on, 0, maxp, end}
++},
++#line 176 "ftinf_rh.gperf"
++{   .name="lucida grande",
++    .stem_scaling={on, 13, 1, end},
++    .stem_translating_only={on, 13, 24, 14, 24, 8, 16, 9, 16, end},
++    .stem_widths={on, 10, 16, sw2pv, maxp},
++},
++#line 173 "ftinf_rh.gperf"
++{   .name="lucida console",
++    .always_use_100={on, 0, maxp, end}
++},
++#line 196 "ftinf_rh.gperf"
++{   .name="myriad pro",
++    .stem_scaling={on, 14, 1, 17, 1, end},
++    .stem_translating_only={on, 10, 16, 11, 0, 9, 16, end}
++},
++#line 26 "ftinf_rh.gperf"
++{   .name="arial unicode ms",
++    .always_use_100={on, 0, maxp, end},
++    .stem_translating={on, 11, 32, end},
++    .stem_translating_only={on, 10, 16, 8, 32, 9, 32, end}
++},
++#line 213 "ftinf_rh.gperf"
++{   .name="palatino linotype",
++    .edge_detection={on, 0, 100, end}
++},
++#line 181 "ftinf_rh.gperf"
++{   .name="lucida sans unicode",
++    .stem_translating_only={on, 13, 24, 14, 24, 8, 16, 9, 16, end},
++    .stem_widths={on,10, 16, sw2pv, maxp,}
++},
++#line 140 "ftinf_rh.gperf"
++{   .name="futura",
++    .stem_widths={on, 10, 14, sw2pv, maxp,}
++},
++#line 147 "ftinf_rh.gperf"
++{   .name="georgia",
++    .stem_translating_only={on, 13, 16, 14, 16, 15, 0, end}
++},
++#line 125 "ftinf_rh.gperf"
++{   .name="freemono",
++    .always_use_100={on, 0, maxp, end}
++},
++#line 200 "ftinf_rh.gperf"
++{   .name="nina",
++    .stem_scaling={on, 11, 0, 12, 0, 13, 0, end}
++},
++#line 121 "ftinf_rh.gperf"
++{   .name="essential pragmatapro",
++    .always_use_100={on, 0, maxp, end},
++    .m={on, 13, 0, 14, 0, end}
++},
++#line 247 "ftinf_rh.gperf"
++{   .name="trebuchet ms",
++    .always_use_100={on, 13, 13, end},
++    .stem_scaling={on, 13, 0, 17, 0, 20, 1, end},
++    .stem_translating_only={on, 10, 16, 11, 0, 8, 32, 9, 32, end},
++    .stem_widths={on, 10, 17, sw2pv, maxp,}
++},
++#line 114 "ftinf_rh.gperf"
++{   .name="droid sans mono",
++    .m={on, 12, 0, end}
++},
++#line 104 "ftinf_rh.gperf"
++{   .name="dejavu sans mono",
++    .always_use_100={on, 0, maxp, end},
++    .stem_translating_only={on, 7, 16, 8, 32, 9, 16, end}
++},
++#line 57 "ftinf_rh.gperf"
++{   .name="calibri",
++    .always_use_100={on, 23, maxp, end},
++    .stem_scaling={on, 15, 1, 17, 1, 18, 1, end},
++    .stem_translating_only={on, 10, 16, 15, 0, end},
++    .stem_widths={on, 1, 10, 19, maxp,}
++},
++#line 156 "ftinf_rh.gperf"
++{   .name="inconsolata",
++    .stem_scaling={on, 12, 1, 15, 1, end},
++    .stem_translating_only={on, 10, 24, 9, 32, end},
++    .stem_widths={on, 10, 23, maxp,},
++},
++#line 96 "ftinf_rh.gperf"
++{   .name="courier",
++    .always_use_100={on, 0, maxp, end},
++    .m={on, 13, 1, 14, 1, end},
++    .stem_translating_only={on, 13, 16, 15, 0, end}
++},
++#line 128 "ftinf_rh.gperf"
++{   .name="freesans",
++    .always_use_100={on, 0, maxp, end},
++    .edge_detection={on, 11, 11, 13, 13, end},
++    .spacing={on, 10, 12, 18, 18, 30, end},
++    .start={on, 10, 18, 18, 25, 30, end},
++    .stem_scaling={on, 16, 0, end},
++    .stem_translating={on, 11, 32, end},
++    .stem_translating_only={on, 10, 16, 9, 8, end}
++},
++#line 150 "ftinf_rh.gperf"
++{   .name="gill sans",
++    .stem_widths={on, 10, 17, sw2pv, maxp,}
++},
++#line 117 "ftinf_rh.gperf"
++{   .name="droid sans",
++    .always_use_100={on, 12, 12, 15, 15, end},
++    .stem_translating_only={on, 8, 16, 9, 16, end}
++},
++#line 108 "ftinf_rh.gperf"
++{   .name="dejavu sans",
++    .always_use_100={on, 10, 14, 16, 17, end},
++    .m={on, 12, 0, end},
++    .stem_scaling={on, 12, 1, end},
++    .stem_translating_only={on, 8, 16, 15, -20, end}
++},
++#line 219 "ftinf_rh.gperf"
++{   .name="raleway",
++    .stem_scaling={on, 15, 0, end}
++},
++#line 153 "ftinf_rh.gperf"
++{   .name="helvetica cy",
++    .stem_widths={on, 10, 23, maxp,}
++},
++#line 228 "ftinf_rh.gperf"
++{   .name="segoe ui",
++    .always_use_100={on, 11, 12, 14, 14, end},
++    .stem_translating_only={on, 10, 0, 7, 32, 8, 16, 9, 24, end},
++    .stem_widths={on, 10, 23, maxp,}
++},
++#line 48 "ftinf_rh.gperf"
++{   .name="bitstream vera sans mono",
++    .always_use_100={on, 0, maxp, end}
++},
++#line 241 "ftinf_rh.gperf"
++{   .name="times new roman",
++    .always_use_100={on, 14, 14, 16, 16, end},
++    .bearing_correction={0, 100, end},
++    .stem_scaling={on, 17, 1, end},
++    .stem_translating_only={on, 17, 8, end}
++},
++#line 222 "ftinf_rh.gperf"
++{   .name="rokkitt",
++    .stem_widths={on, 10, 21, maxp,}
++},
++#line 143 "ftinf_rh.gperf"
++{   .name="garamond",
++    .brightness={on, 0, -20, end},
++    .contrast={on, 0, 25, end}
++},
++#line 137 "ftinf_rh.gperf"
++{   .name="freeserif",
++    .stem_scaling={on, 13, 1, 17, 1, end}
++},
++#line 189 "ftinf_rh.gperf"
++{   .name="microsoft sans serif",
++    .always_use_100={on, 0, maxp, end},
++    .stem_translating_only={on, 10, 16, 8, 32, 9, 32, end}
++},
++#line 44 "ftinf_rh.gperf"
++{   .name="baskerville",
++    .brightness={on, 0, -20, end},
++    .contrast={on, 0, 25, end}
++},
++#line 51 "ftinf_rh.gperf"
++{   .name="bitstream vera sans",
++    .always_use_100={on, 10, 14, 16, 17, end},
++    .m={on, 12, 0, end},
++    .stem_scaling={on ,12, 1, end},
++    .stem_translating_only={on, 8, 16, end}
++}
++    };
++
++  if (len <= MAX_WORD_LENGTH && len >= MIN_WORD_LENGTH)
++    {
++      register int key = _rules_hash (str, len);
++
++      if (key <= MAX_HASH_VALUE && key >= MIN_HASH_VALUE)
++        {
++          register const struct sa_rules_s *resword;
++
++          switch (key - 3)
++            {
++              case 0:
++                resword = &wordlist[0];
++                goto compare;
++              case 3:
++                resword = &wordlist[1];
++                goto compare;
++              case 7:
++                resword = &wordlist[2];
++                goto compare;
++              case 8:
++                resword = &wordlist[3];
++                goto compare;
++              case 9:
++                resword = &wordlist[4];
++                goto compare;
++              case 10:
++                resword = &wordlist[5];
++                goto compare;
++              case 11:
++                resword = &wordlist[6];
++                goto compare;
++              case 12:
++                resword = &wordlist[7];
++                goto compare;
++              case 13:
++                resword = &wordlist[8];
++                goto compare;
++              case 14:
++                resword = &wordlist[9];
++                goto compare;
++              case 16:
++                resword = &wordlist[10];
++                goto compare;
++              case 17:
++                resword = &wordlist[11];
++                goto compare;
++              case 18:
++                resword = &wordlist[12];
++                goto compare;
++              case 19:
++                resword = &wordlist[13];
++                goto compare;
++              case 21:
++                resword = &wordlist[14];
++                goto compare;
++              case 23:
++                resword = &wordlist[15];
++                goto compare;
++              case 24:
++                resword = &wordlist[16];
++                goto compare;
++              case 26:
++                resword = &wordlist[17];
++                goto compare;
++              case 27:
++                resword = &wordlist[18];
++                goto compare;
++              case 28:
++                resword = &wordlist[19];
++                goto compare;
++              case 29:
++                resword = &wordlist[20];
++                goto compare;
++              case 30:
++                resword = &wordlist[21];
++                goto compare;
++              case 31:
++                resword = &wordlist[22];
++                goto compare;
++              case 32:
++                resword = &wordlist[23];
++                goto compare;
++              case 33:
++                resword = &wordlist[24];
++                goto compare;
++              case 34:
++                resword = &wordlist[25];
++                goto compare;
++              case 35:
++                resword = &wordlist[26];
++                goto compare;
++              case 36:
++                resword = &wordlist[27];
++                goto compare;
++              case 37:
++                resword = &wordlist[28];
++                goto compare;
++              case 38:
++                resword = &wordlist[29];
++                goto compare;
++              case 39:
++                resword = &wordlist[30];
++                goto compare;
++              case 41:
++                resword = &wordlist[31];
++                goto compare;
++              case 43:
++                resword = &wordlist[32];
++                goto compare;
++              case 44:
++                resword = &wordlist[33];
++                goto compare;
++              case 45:
++                resword = &wordlist[34];
++                goto compare;
++              case 46:
++                resword = &wordlist[35];
++                goto compare;
++              case 48:
++                resword = &wordlist[36];
++                goto compare;
++              case 49:
++                resword = &wordlist[37];
++                goto compare;
++              case 52:
++                resword = &wordlist[38];
++                goto compare;
++              case 53:
++                resword = &wordlist[39];
++                goto compare;
++              case 54:
++                resword = &wordlist[40];
++                goto compare;
++              case 58:
++                resword = &wordlist[41];
++                goto compare;
++              case 59:
++                resword = &wordlist[42];
++                goto compare;
++              case 60:
++                resword = &wordlist[43];
++                goto compare;
++              case 61:
++                resword = &wordlist[44];
++                goto compare;
++              case 62:
++                resword = &wordlist[45];
++                goto compare;
++              case 63:
++                resword = &wordlist[46];
++                goto compare;
++              case 64:
++                resword = &wordlist[47];
++                goto compare;
++              case 69:
++                resword = &wordlist[48];
++                goto compare;
++              case 70:
++                resword = &wordlist[49];
++                goto compare;
++              case 71:
++                resword = &wordlist[50];
++                goto compare;
++              case 72:
++                resword = &wordlist[51];
++                goto compare;
++              case 74:
++                resword = &wordlist[52];
++                goto compare;
++              case 75:
++                resword = &wordlist[53];
++                goto compare;
++              case 76:
++                resword = &wordlist[54];
++                goto compare;
++              case 77:
++                resword = &wordlist[55];
++                goto compare;
++              case 78:
++                resword = &wordlist[56];
++                goto compare;
++              case 81:
++                resword = &wordlist[57];
++                goto compare;
++            }
++          return 0;
++        compare:
++          {
++            register const char *s = resword->name;
++
++            if (*str == *s && !strcmp (str + 1, s + 1))
++              return resword;
++          }
++        }
++    }
++  return 0;
++}
++#line 261 "ftinf_rh.gperf"
++
++
++static const sa_rules_t*
++ftinf_rules( const char *name ){
++    if( name ){
++        enum {
++            max_wlen=31
++        };
++        char buf[max_wlen+1];
++        int len=strlen( name );
++        if( len <= max_wlen ){
++            const sa_rules_t *p;
++            int i;
++            for( i=0; i<len; ++i )
++                buf[i]=tolower( name[i] );
++            buf[len]='\0';
++            p=_rules_get( buf, len );
++            if( p ) return p;
++        }
++    }
++    return NULL;
++}
++/*
++   gperf --output-file=ftinf_rh.c ftinf_rh.gperf
++*/
+diff --git a/src/base/ftinf_rh.gperf b/src/base/ftinf_rh.gperf
+new file mode 100644
+index 0000000..e25f9b6
+--- /dev/null
++++ b/src/base/ftinf_rh.gperf
+@@ -0,0 +1,285 @@
++%struct-type
++%define slot-name name
++%enum
++%switch=1
++%readonly-tables
++%omit-struct-type
++%define lookup-function-name  _rules_get
++%define hash-function-name _rules_hash
++%{
++#include <ctype.h>
++static const struct sa_rules_s* _rules_get( const char*str, unsigned len );
++%}
++struct sa_rules_s;
++%%
++{   .name="---",
++    .synthesize_stems={on, 13, 13, end}
++},
++{   .name="andale mono",
++    .always_use_100={on, 0, maxp, end},
++    .stem_scaling={on, 11, 1, end},
++    .stem_widths={on, 10, 21, maxp,}
++},
++{   .name="arial narrow",
++    .stem_widths={on, 10, 21, maxp,}
++},
++{   .name="arial unicode ms",
++    .always_use_100={on, 0, maxp, end},
++    .stem_translating={on, 11, 32, end},
++    .stem_translating_only={on, 10, 16, 8, 32, 9, 32, end}
++},
++{   .name="arial",
++    .always_use_100={on, 0, maxp, end},
++    .edge_detection={on, 11, 11, 13, 13, end},
++    .spacing={on, 10, 11, 23, 25, 30, end},
++    .start={on, 11, 18, 23, 30, 30, end},
++    .stem_translating={on, 11, 32, end},
++    .stem_translating_only={on, 10, 16, 8, 32, 9, 32, 16, -24, end}
++},
++{   .name="arimo",
++    .always_use_100={on, 0, maxp, end},
++    .stem_translating={on, 11, 32, end},
++    .stem_translating_only={on, 10, 8, 8, 32, 9, 32, end}
++},
++{   .name="baskerville",
++    .brightness={on, 0, -20, end},
++    .contrast={on, 0, 25, end}
++},
++{   .name="bitstream vera sans mono",
++    .always_use_100={on, 0, maxp, end}
++},
++{   .name="bitstream vera sans",
++    .always_use_100={on, 10, 14, 16, 17, end},
++    .m={on, 12, 0, end},
++    .stem_scaling={on ,12, 1, end},
++    .stem_translating_only={on, 8, 16, end}
++},
++{   .name="calibri",
++    .always_use_100={on, 23, maxp, end},
++    .stem_scaling={on, 15, 1, 17, 1, 18, 1, end},
++    .stem_translating_only={on, 10, 16, 15, 0, end},
++    .stem_widths={on, 1, 10, 19, maxp,}
++},
++{   .name="candara",
++    .stem_scaling={on, 14, 1, 17, 1, end},
++    .stem_translating_only={on, 10, 16, end}
++},
++{   .name="cantarell",
++    .stem_translating_only={on, 11, 0, 12, 0, end},
++    .stem_widths={on, 10, 22, maxp,}
++},
++{   .name="canwell",
++    .stem_scaling={on, 13, 0, end}
++},
++{   .name="century gothic",
++    .stem_widths={on, 10, 22, maxp,}
++},
++{   .name="comfortaa",
++    .stem_widths={on, 10, 19, 22, maxp},
++    .stem_scaling={on, 11, 0, end}
++},
++{   .name="consolas",
++    .always_use_100={on, 0, maxp, end},
++    .stem_translating_only={on, 8, 32, 9, 32, end},
++    .stem_widths={on, 10, 20, maxp,},
++    .stem_scaling={on, 11, 1, end}
++},
++{   .name="corbel",
++    .stem_translating_only={on, 10, 16, end},
++    .stem_widths={on, 10, 21, maxp}
++},
++{   .name="courier new",
++    .always_use_100={on, 12, 12, end},
++    .edge_detection={on, 10, 12, end},
++    .m={on, 13, 1, 14, 1, end}
++},
++{   .name="courier",
++    .always_use_100={on, 0, maxp, end},
++    .m={on, 13, 1, 14, 1, end},
++    .stem_translating_only={on, 13, 16, 15, 0, end}
++},
++{   .name="cousine",
++    .always_use_100={on, 0, maxp, end}
++},
++{   .name="dejavu sans mono",
++    .always_use_100={on, 0, maxp, end},
++    .stem_translating_only={on, 7, 16, 8, 32, 9, 16, end}
++},
++{   .name="dejavu sans",
++    .always_use_100={on, 10, 14, 16, 17, end},
++    .m={on, 12, 0, end},
++    .stem_scaling={on, 12, 1, end},
++    .stem_translating_only={on, 8, 16, 15, -20, end}
++},
++{   .name="droid sans mono",
++    .m={on, 12, 0, end}
++},
++{   .name="droid sans",
++    .always_use_100={on, 12, 12, 15, 15, end},
++    .stem_translating_only={on, 8, 16, 9, 16, end}
++},
++{   .name="essential pragmatapro",
++    .always_use_100={on, 0, maxp, end},
++    .m={on, 13, 0, 14, 0, end}
++},
++{   .name="freemono",
++    .always_use_100={on, 0, maxp, end}
++},
++{   .name="freesans",
++    .always_use_100={on, 0, maxp, end},
++    .edge_detection={on, 11, 11, 13, 13, end},
++    .spacing={on, 10, 12, 18, 18, 30, end},
++    .start={on, 10, 18, 18, 25, 30, end},
++    .stem_scaling={on, 16, 0, end},
++    .stem_translating={on, 11, 32, end},
++    .stem_translating_only={on, 10, 16, 9, 8, end}
++},
++{   .name="freeserif",
++    .stem_scaling={on, 13, 1, 17, 1, end}
++},
++{   .name="futura",
++    .stem_widths={on, 10, 14, sw2pv, maxp,}
++},
++{   .name="garamond",
++    .brightness={on, 0, -20, end},
++    .contrast={on, 0, 25, end}
++},
++{   .name="georgia",
++    .stem_translating_only={on, 13, 16, 14, 16, 15, 0, end}
++},
++{   .name="gill sans",
++    .stem_widths={on, 10, 17, sw2pv, maxp,}
++},
++{   .name="helvetica cy",
++    .stem_widths={on, 10, 23, maxp,}
++},
++{   .name="inconsolata",
++    .stem_scaling={on, 12, 1, 15, 1, end},
++    .stem_translating_only={on, 10, 24, 9, 32, end},
++    .stem_widths={on, 10, 23, maxp,},
++},
++{   .name="liberation mono",
++    .always_use_100={on, 0, maxp, end}
++},
++{   .name="liberation sans narrow",
++    .stem_widths={on,10, 22, maxp,}
++},
++{   .name="liberation sans",
++    .edge_detection={on, 11, 11, end},
++    .stem_translating={on, 11, 32, end},
++    .stem_translating_only={on, 10, 8, 8, 32, 9, 32, end},
++    .stem_widths={on,10, 19, maxp,}
++},
++{   .name="lucida console",
++    .always_use_100={on, 0, maxp, end}
++},
++{   .name="lucida grande",
++    .stem_scaling={on, 13, 1, end},
++    .stem_translating_only={on, 13, 24, 14, 24, 8, 16, 9, 16, end},
++    .stem_widths={on, 10, 16, sw2pv, maxp},
++},
++{   .name="lucida sans unicode",
++    .stem_translating_only={on, 13, 24, 14, 24, 8, 16, 9, 16, end},
++    .stem_widths={on,10, 16, sw2pv, maxp,}
++},
++{   .name="luxi sans",
++    .always_use_100={on, 13, 13, end},
++    .stem_widths={on, 10, 17, sw2pv, maxp,}
++},
++{   .name="microsoft sans serif",
++    .always_use_100={on, 0, maxp, end},
++    .stem_translating_only={on, 10, 16, 8, 32, 9, 32, end}
++},
++{   .name="monaco",
++    .always_use_100={on, 0, maxp, end}
++},
++{   .name="myriad pro",
++    .stem_scaling={on, 14, 1, 17, 1, end},
++    .stem_translating_only={on, 10, 16, 11, 0, 9, 16, end}
++},
++{   .name="nina",
++    .stem_scaling={on, 11, 0, 12, 0, 13, 0, end}
++},
++{   .name="open sans",
++    .stem_translating_only={on, 10, 16, 9, 16, end},
++    .stem_widths={on, 10, 20, maxp,}
++},
++{   .name="optima",
++    .brightness={on, 0, -20, end},
++    .contrast={on, 0, 25, end},
++    .stem_scaling={on, 17, 1, end},
++    .stem_translating_only={on, 10, 0, 11, 0, 12, 0, end}
++},
++{   .name="palatino linotype",
++    .edge_detection={on, 0, 100, end}
++},
++{   .name="pragmata",
++    .always_use_100={on, 0, maxp, end}
++},
++{   .name="raleway",
++    .stem_scaling={on, 15, 0, end}
++},
++{   .name="rokkitt",
++    .stem_widths={on, 10, 21, maxp,}
++},
++{   .name="samba",
++    .stem_scaling={on, 11, 0, end}
++},
++{   .name="segoe ui",
++    .always_use_100={on, 11, 12, 14, 14, end},
++    .stem_translating_only={on, 10, 0, 7, 32, 8, 16, 9, 24, end},
++    .stem_widths={on, 10, 23, maxp,}
++},
++{   .name="tahoma",
++    .always_use_100={on, 11, 11, 14, maxp, end},
++    .edge_detection={on, 11, 11, end},
++    .spacing={on, 10, 12, 18, 18, 30, end},
++    .start={on, 14, 17, 30, 100, 100, end},
++    .stem_translating={on, 11, 32, end},
++    .stem_translating_only={on, 7, 32, 8, 32, 9, 32, end},
++},
++{   .name="times new roman",
++    .always_use_100={on, 14, 14, 16, 16, end},
++    .bearing_correction={0, 100, end},
++    .stem_scaling={on, 17, 1, end},
++    .stem_translating_only={on, 17, 8, end}
++},
++{   .name="trebuchet ms",
++    .always_use_100={on, 13, 13, end},
++    .stem_scaling={on, 13, 0, 17, 0, 20, 1, end},
++    .stem_translating_only={on, 10, 16, 11, 0, 8, 32, 9, 32, end},
++    .stem_widths={on, 10, 17, sw2pv, maxp,}
++},
++{   .name="ubuntu",
++    .always_use_100={on, 12, 13, 15, 15, end}
++},
++{   .name="verdana",
++    .always_use_100={on, 0, 14, 16, maxp, end},
++    .stem_scaling={on, 12, 1, 15, 1, end},
++    .stem_translating_only={on, 8, 16, 15, 16, 14, 32, 18, 32, 19, 24, end}
++},
++%%
++
++static const sa_rules_t*
++ftinf_rules( const char *name ){
++    if( name ){
++        enum {
++            max_wlen=31
++        };
++        char buf[max_wlen+1];
++        int len=strlen( name );
++        if( len <= max_wlen ){
++            const sa_rules_t *p;
++            int i;
++            for( i=0; i<len; ++i )
++                buf[i]=tolower( name[i] );
++            buf[len]='\0';
++            p=_rules_get( buf, len );
++            if( p ) return p;
++        }
++    }
++    return NULL;
++}
++/*
++   gperf --output-file=ftinf_rh.c ftinf_rh.gperf
++*/
+diff --git a/src/base/ftinf_sh.c b/src/base/ftinf_sh.c
+new file mode 100644
+index 0000000..7fc2222
+--- /dev/null
++++ b/src/base/ftinf_sh.c
+@@ -0,0 +1,465 @@
++/* ANSI-C code produced by gperf version 3.1 */
++/* Command-line: gperf ftinf_sh.gperf  */
++/* Computed positions: -k'1,$' */
++
++#if !((' ' == 32) && ('!' == 33) && ('"' == 34) && ('#' == 35) \
++      && ('%' == 37) && ('&' == 38) && ('\'' == 39) && ('(' == 40) \
++      && (')' == 41) && ('*' == 42) && ('+' == 43) && (',' == 44) \
++      && ('-' == 45) && ('.' == 46) && ('/' == 47) && ('0' == 48) \
++      && ('1' == 49) && ('2' == 50) && ('3' == 51) && ('4' == 52) \
++      && ('5' == 53) && ('6' == 54) && ('7' == 55) && ('8' == 56) \
++      && ('9' == 57) && (':' == 58) && (';' == 59) && ('<' == 60) \
++      && ('=' == 61) && ('>' == 62) && ('?' == 63) && ('A' == 65) \
++      && ('B' == 66) && ('C' == 67) && ('D' == 68) && ('E' == 69) \
++      && ('F' == 70) && ('G' == 71) && ('H' == 72) && ('I' == 73) \
++      && ('J' == 74) && ('K' == 75) && ('L' == 76) && ('M' == 77) \
++      && ('N' == 78) && ('O' == 79) && ('P' == 80) && ('Q' == 81) \
++      && ('R' == 82) && ('S' == 83) && ('T' == 84) && ('U' == 85) \
++      && ('V' == 86) && ('W' == 87) && ('X' == 88) && ('Y' == 89) \
++      && ('Z' == 90) && ('[' == 91) && ('\\' == 92) && (']' == 93) \
++      && ('^' == 94) && ('_' == 95) && ('a' == 97) && ('b' == 98) \
++      && ('c' == 99) && ('d' == 100) && ('e' == 101) && ('f' == 102) \
++      && ('g' == 103) && ('h' == 104) && ('i' == 105) && ('j' == 106) \
++      && ('k' == 107) && ('l' == 108) && ('m' == 109) && ('n' == 110) \
++      && ('o' == 111) && ('p' == 112) && ('q' == 113) && ('r' == 114) \
++      && ('s' == 115) && ('t' == 116) && ('u' == 117) && ('v' == 118) \
++      && ('w' == 119) && ('x' == 120) && ('y' == 121) && ('z' == 122) \
++      && ('{' == 123) && ('|' == 124) && ('}' == 125) && ('~' == 126))
++/* The character set is not based on ISO-646.  */
++#error "gperf generated tables don't work with this execution character set. Please report a bug to <bug-gnu-gperf@gnu.org>."
++#endif
++
++#line 9 "ftinf_sh.gperf"
++
++#include <ctype.h>
++static const struct ftinf_s* _settings_get( const char*str, unsigned len);
++/* maximum key range = 37, duplicates = 0 */
++
++#ifdef __GNUC__
++__inline
++#else
++#ifdef __cplusplus
++inline
++#endif
++#endif
++static unsigned int
++_settings_hash (register const char *str, register unsigned int len)
++{
++  static const unsigned char asso_values[] =
++    {
++      40, 40, 40, 40, 40, 40, 40, 40, 40, 40,
++      40, 40, 40, 40, 40, 40, 40, 40, 40, 40,
++      40, 40, 40, 40, 40, 40, 40, 40, 40, 40,
++      40, 40, 40, 40, 40, 40, 40, 40, 40, 40,
++      40, 40, 40, 40, 40, 40, 40, 40, 40, 13,
++       8, 30, 25, 20, 40, 10, 40, 40, 40, 40,
++      40, 40, 40, 40, 40, 40, 40, 40, 40, 40,
++      40, 40, 40, 40, 40, 40, 40, 40, 40, 40,
++      40, 40, 40, 40, 40, 40, 40, 40, 40, 40,
++      40, 40, 40, 40, 40, 40, 40,  5, 40,  0,
++       0,  0, 40, 40, 10,  0, 40, 40, 15,  5,
++      10,  0, 10, 40, 40,  0,  0,  0,  0,  0,
++       0,  0, 40, 40, 40, 40, 40, 40, 40, 40,
++      40, 40, 40, 40, 40, 40, 40, 40, 40, 40,
++      40, 40, 40, 40, 40, 40, 40, 40, 40, 40,
++      40, 40, 40, 40, 40, 40, 40, 40, 40, 40,
++      40, 40, 40, 40, 40, 40, 40, 40, 40, 40,
++      40, 40, 40, 40, 40, 40, 40, 40, 40, 40,
++      40, 40, 40, 40, 40, 40, 40, 40, 40, 40,
++      40, 40, 40, 40, 40, 40, 40, 40, 40, 40,
++      40, 40, 40, 40, 40, 40, 40, 40, 40, 40,
++      40, 40, 40, 40, 40, 40, 40, 40, 40, 40,
++      40, 40, 40, 40, 40, 40, 40, 40, 40, 40,
++      40, 40, 40, 40, 40, 40, 40, 40, 40, 40,
++      40, 40, 40, 40, 40, 40, 40, 40, 40, 40,
++      40, 40, 40, 40, 40, 40
++    };
++  return len + asso_values[(unsigned char)str[len - 1]] + asso_values[(unsigned char)str[0]];
++}
++
++#ifdef __GNUC__
++__inline
++#if defined __GNUC_STDC_INLINE__ || defined __GNUC_GNU_INLINE__
++__attribute__ ((__gnu_inline__))
++#endif
++#endif
++const struct ftinf_s *
++_settings_get (register const char *str, register unsigned int len)
++{
++  enum
++    {
++      TOTAL_KEYWORDS = 22,
++      MIN_WORD_LENGTH = 3,
++      MAX_WORD_LENGTH = 14,
++      MIN_HASH_VALUE = 3,
++      MAX_HASH_VALUE = 39
++    };
++
++  static const struct ftinf_s wordlist[] =
++    {
++#line 76 "ftinf_sh.gperf"
++{   .name="osx",
++    .autohint_horizontal_stem_darken_strength=10,
++    .autohint_vertical_stem_darken_strength=25,
++    .bold_embolden_x_value=16,
++    .brightness=10,
++    .contrast=20,
++    .filter_params={on, 3, 32, 38, 32, 3},
++    .gamma_correction={1000, 80},
++    .global_embolden_y_value=8,
++    .grayscale_filter_strength=25,
++},
++#line 37 "ftinf_sh.gperf"
++{   .name="ipad",
++    .filter_params={on, 0, 0, 100, 0, 0},
++    .gamma_correction={1000, 80},
++    .grayscale_filter_strength=100
++},
++#line 114 "ftinf_sh.gperf"
++{   .name="shove",
++    .autohint_horizontal_stem_darken_strength=10,
++    .autohint_increase_glyph_heights=true,
++    .autohint_snap_stem_height=100,
++    .autohint_vertical_stem_darken_strength=25,
++    .filter_params={on, 11, 22, 38, 22, 11},
++    .gamma_correction={0, 100},
++    .stem_alignment_strength=100,
++    .stem_fitting_strength=100,
++    .use_known_settings_on_selected_fonts=true,
++    .use_various_tweaks=true
++},
++#line 126 "ftinf_sh.gperf"
++{   .name="ubuntu",
++    .autohint_horizontal_stem_darken_strength=10,
++    .autohint_vertical_stem_darken_strength=25,
++    .brightness=-10,
++    .contrast=15,
++    .filter_params={on, 11, 22, 38, 22, 11},
++    .gamma_correction={1000, 80},
++    .use_various_tweaks=true
++},
++#line 27 "ftinf_sh.gperf"
++{   .name="classic",
++    .autohint_increase_glyph_heights=true,
++    .autohint_snap_stem_height=100,
++    .filter_params={on, 6, 25, 38, 25, 6},
++    .gamma_correction={0, 100},
++    .use_various_tweaks=true
++},
++#line 34 "ftinf_sh.gperf"
++{   .name="disabled",
++    .gamma_correction={0, 100},
++},
++#line 100 "ftinf_sh.gperf"
++{   .name="sharpened",
++    .autohint_horizontal_stem_darken_strength=10,
++    .autohint_increase_glyph_heights=true,
++    .autohint_snap_stem_height=100,
++    .autohint_vertical_stem_darken_strength=25,
++    .filter_params={on, 11, 22, 38, 22, 11},
++    .gamma_correction={0, 100},
++    .stem_alignment_strength=25,
++    .stem_fitting_strength=25,
++    .stem_snapping_sliding_scale=40,
++    .use_known_settings_on_selected_fonts=true,
++    .use_various_tweaks=true,
++    .windows_style_sharpening_strength=65
++},
++#line 42 "ftinf_sh.gperf"
++{   .name="infinality",
++    .autohint_horizontal_stem_darken_strength=10,
++    .autohint_increase_glyph_heights=true,
++    .autohint_snap_stem_height=100,
++    .autohint_vertical_stem_darken_strength=25,
++    .filter_params={on, 11, 22, 38, 22, 11},
++    .gamma_correction={0, 100},
++    .stem_alignment_strength=25,
++    .stem_fitting_strength=25,
++    .stem_snapping_sliding_scale=40,
++    .use_known_settings_on_selected_fonts=true,
++    .use_various_tweaks=true,
++    .windows_style_sharpening_strength=5
++},
++#line 15 "ftinf_sh.gperf"
++{   .name="custom",
++    .autohint_horizontal_stem_darken_strength=10,
++    .autohint_snap_stem_height=100,
++    .autohint_vertical_stem_darken_strength=25,
++    .filter_params={on, 8, 24, 48, 24, 8},
++    .gamma_correction={0, 100},
++    .stem_alignment_strength=75,
++    .stem_fitting_strength=50,
++    .stem_snapping_sliding_scale=30,
++    .use_known_settings_on_selected_fonts=true,
++    .use_various_tweaks=true
++},
++#line 180 "ftinf_sh.gperf"
++{   .name="vanilla",
++    .filter_params={on, 6, 25, 38, 25, 6},
++    .gamma_correction={0, 100},
++},
++#line 184 "ftinf_sh.gperf"
++{   .name="windows7light",
++    .autohint_horizontal_stem_darken_strength=10,
++    .autohint_snap_stem_height=100,
++    .autohint_vertical_stem_darken_strength=25,
++    .contrast=20,
++    .filter_params={on, 20, 25, 38, 25, 05},
++    .fringe_filter_strength=100,
++    .gamma_correction={1000, 160},
++    .stem_snapping_sliding_scale=30,
++    .use_known_settings_on_selected_fonts=true,
++    .use_various_tweaks=true,
++    .windows_style_sharpening_strength=100
++},
++#line 226 "ftinf_sh.gperf"
++{   .name="windowsxplight",
++    .autohint_horizontal_stem_darken_strength=10,
++    .autohint_snap_stem_height=100,
++    .autohint_vertical_stem_darken_strength=25,
++    .brightness=20,
++    .contrast=30,
++    .filter_params={on, 6, 25, 44, 25, 6},
++    .fringe_filter_strength=100,
++    .gamma_correction={1000, 120},
++    .stem_alignment_strength=15,
++    .stem_fitting_strength=15,
++    .stem_snapping_sliding_scale=30,
++    .use_known_settings_on_selected_fonts=true,
++    .use_various_tweaks=true,
++    .windows_style_sharpening_strength=65
++},
++#line 64 "ftinf_sh.gperf"
++{   .name="nudge",
++    .autohint_horizontal_stem_darken_strength=10,
++    .autohint_increase_glyph_heights=true,
++    .autohint_snap_stem_height=100,
++    .autohint_vertical_stem_darken_strength=25,
++    .filter_params={on, 11, 22, 38, 22, 11},
++    .gamma_correction={0, 100},
++    .stem_alignment_strength=25,
++    .stem_fitting_strength=15,
++    .stem_snapping_sliding_scale=30,
++    .use_various_tweaks=true,
++},
++#line 144 "ftinf_sh.gperf"
++{   .name="ultimate2",
++    .filter_params={on, 6, 22, 36, 22, 6},
++    .fringe_filter_strength=25,
++    .gamma_correction={0, 100},
++    .stem_alignment_strength=15,
++    .stem_fitting_strength=15,
++    .use_various_tweaks=true,
++    .windows_style_sharpening_strength=25
++},
++#line 197 "ftinf_sh.gperf"
++{   .name="windows7",
++    .filter_params={on, 20, 25, 42, 25, 06},
++    .fringe_filter_strength=100,
++    .autohint_horizontal_stem_darken_strength=10,
++    .autohint_vertical_stem_darken_strength=25,
++    .windows_style_sharpening_strength=65,
++    .gamma_correction={1000, 120},
++    .brightness=10,
++    .contrast=20,
++    .use_various_tweaks=true,
++    .autohint_snap_stem_height=100,
++    .use_known_settings_on_selected_fonts=true,
++},
++#line 210 "ftinf_sh.gperf"
++{   .name="windowsxp",
++    .autohint_horizontal_stem_darken_strength=10,
++    .autohint_snap_stem_height=100,
++    .autohint_vertical_stem_darken_strength=25,
++    .brightness=10,
++    .contrast=20,
++    .filter_params={on, 6, 25, 44, 25, 6},
++    .fringe_filter_strength=100,
++    .gamma_correction={1000, 120},
++    .stem_alignment_strength=15,
++    .stem_fitting_strength=15,
++    .stem_snapping_sliding_scale=30,
++    .use_known_settings_on_selected_fonts=true,
++    .use_various_tweaks=true,
++    .windows_style_sharpening_strength=65
++},
++#line 56 "ftinf_sh.gperf"
++{   .name="linux",
++    .autohint_horizontal_stem_darken_strength=10,
++    .autohint_snap_stem_height=100,
++    .autohint_vertical_stem_darken_strength=25,
++    .filter_params={on, 6, 25, 44, 25, 6},
++    .gamma_correction={0, 100},
++    .use_various_tweaks=true
++},
++#line 135 "ftinf_sh.gperf"
++{   .name="ultimate1",
++    .filter_params={on, 4, 22, 38, 22, 4},
++    .fringe_filter_strength=25,
++    .gamma_correction={0, 100},
++    .stem_alignment_strength=15,
++    .stem_fitting_strength=15,
++    .use_various_tweaks=true,
++    .windows_style_sharpening_strength=25
++},
++#line 87 "ftinf_sh.gperf"
++{   .name="push",
++    .autohint_horizontal_stem_darken_strength=10,
++    .autohint_increase_glyph_heights=true,
++    .autohint_snap_stem_height=100,
++    .autohint_vertical_stem_darken_strength=25,
++    .filter_params={on, 11, 22, 38, 22, 11},
++    .gamma_correction={0, 100},
++    .stem_alignment_strength=75,
++    .stem_fitting_strength=50,
++    .stem_snapping_sliding_scale=30,
++    .use_known_settings_on_selected_fonts=true,
++    .use_various_tweaks=true
++},
++#line 171 "ftinf_sh.gperf"
++{   .name="ultimate5",
++    .filter_params={on, 12, 28, 42, 28, 12},
++    .fringe_filter_strength=25,
++    .gamma_correction={0, 100},
++    .stem_alignment_strength=15,
++    .stem_fitting_strength=15,
++    .use_various_tweaks=true,
++    .windows_style_sharpening_strength=25
++},
++#line 162 "ftinf_sh.gperf"
++{   .name="ultimate4",
++    .filter_params={on, 10, 25, 37, 25, 10},
++    .fringe_filter_strength=25,
++    .gamma_correction={0, 100},
++    .stem_alignment_strength=15,
++    .stem_fitting_strength=15,
++    .use_various_tweaks=true,
++    .windows_style_sharpening_strength=25
++},
++#line 153 "ftinf_sh.gperf"
++{   .name="ultimate3",
++    .filter_params={on, 8, 24, 36, 24, 8},
++    .fringe_filter_strength=25,
++    .gamma_correction={0, 100},
++    .stem_alignment_strength=15,
++    .stem_fitting_strength=15,
++    .use_various_tweaks=true,
++    .windows_style_sharpening_strength=25
++}
++    };
++
++  if (len <= MAX_WORD_LENGTH && len >= MIN_WORD_LENGTH)
++    {
++      register int key = _settings_hash (str, len);
++
++      if (key <= MAX_HASH_VALUE && key >= MIN_HASH_VALUE)
++        {
++          register const struct ftinf_s *resword;
++
++          switch (key - 3)
++            {
++              case 0:
++                resword = &wordlist[0];
++                goto compare;
++              case 1:
++                resword = &wordlist[1];
++                goto compare;
++              case 2:
++                resword = &wordlist[2];
++                goto compare;
++              case 3:
++                resword = &wordlist[3];
++                goto compare;
++              case 4:
++                resword = &wordlist[4];
++                goto compare;
++              case 5:
++                resword = &wordlist[5];
++                goto compare;
++              case 6:
++                resword = &wordlist[6];
++                goto compare;
++              case 7:
++                resword = &wordlist[7];
++                goto compare;
++              case 8:
++                resword = &wordlist[8];
++                goto compare;
++              case 9:
++                resword = &wordlist[9];
++                goto compare;
++              case 10:
++                resword = &wordlist[10];
++                goto compare;
++              case 11:
++                resword = &wordlist[11];
++                goto compare;
++              case 12:
++                resword = &wordlist[12];
++                goto compare;
++              case 14:
++                resword = &wordlist[13];
++                goto compare;
++              case 15:
++                resword = &wordlist[14];
++                goto compare;
++              case 16:
++                resword = &wordlist[15];
++                goto compare;
++              case 17:
++                resword = &wordlist[16];
++                goto compare;
++              case 19:
++                resword = &wordlist[17];
++                goto compare;
++              case 21:
++                resword = &wordlist[18];
++                goto compare;
++              case 26:
++                resword = &wordlist[19];
++                goto compare;
++              case 31:
++                resword = &wordlist[20];
++                goto compare;
++              case 36:
++                resword = &wordlist[21];
++                goto compare;
++            }
++          return 0;
++        compare:
++          {
++            register const char *s = resword->name;
++
++            if (*str == *s && !strcmp (str + 1, s + 1))
++              return resword;
++          }
++        }
++    }
++  return 0;
++}
++#line 242 "ftinf_sh.gperf"
++
++
++static const ftinf_t*
++ftinf_settings( const char *name ){
++    if( name ){
++        enum {
++            max_wlen=31
++        };
++        char buf[max_wlen+1];
++        int len=strlen( name );
++        if( len <= max_wlen ){
++            const ftinf_t *p;
++            int i;
++            for( i=0; i<len; ++i )
++                buf[i]=tolower( name[i] );
++            buf[len]='\0';
++            p=_settings_get( buf, len );
++            if( p ) return p;
++        }
++    }
++    return NULL;
++}
++/*
++   gperf --output-file=ftinf_sh.c ftinf_sh.gperf
++*/
+diff --git a/src/base/ftinf_sh.gperf b/src/base/ftinf_sh.gperf
+new file mode 100644
+index 0000000..ba5fc0a
+--- /dev/null
++++ b/src/base/ftinf_sh.gperf
+@@ -0,0 +1,266 @@
++%struct-type
++%define slot-name name
++%enum
++%switch=1
++%readonly-tables
++%omit-struct-type
++%define lookup-function-name   _settings_get
++%define hash-function-name _settings_hash
++%{
++#include <ctype.h>
++static const struct ftinf_s* _settings_get( const char*str, unsigned len);
++%}
++struct ftinf_s;
++%%
++{   .name="custom",
++    .autohint_horizontal_stem_darken_strength=10,
++    .autohint_snap_stem_height=100,
++    .autohint_vertical_stem_darken_strength=25,
++    .filter_params={on, 8, 24, 48, 24, 8},
++    .gamma_correction={0, 100},
++    .stem_alignment_strength=75,
++    .stem_fitting_strength=50,
++    .stem_snapping_sliding_scale=30,
++    .use_known_settings_on_selected_fonts=true,
++    .use_various_tweaks=true
++},
++{   .name="classic",
++    .autohint_increase_glyph_heights=true,
++    .autohint_snap_stem_height=100,
++    .filter_params={on, 6, 25, 38, 25, 6},
++    .gamma_correction={0, 100},
++    .use_various_tweaks=true
++},
++{   .name="disabled",
++    .gamma_correction={0, 100},
++},
++{   .name="ipad",
++    .filter_params={on, 0, 0, 100, 0, 0},
++    .gamma_correction={1000, 80},
++    .grayscale_filter_strength=100
++},
++{   .name="infinality",
++    .autohint_horizontal_stem_darken_strength=10,
++    .autohint_increase_glyph_heights=true,
++    .autohint_snap_stem_height=100,
++    .autohint_vertical_stem_darken_strength=25,
++    .filter_params={on, 11, 22, 38, 22, 11},
++    .gamma_correction={0, 100},
++    .stem_alignment_strength=25,
++    .stem_fitting_strength=25,
++    .stem_snapping_sliding_scale=40,
++    .use_known_settings_on_selected_fonts=true,
++    .use_various_tweaks=true,
++    .windows_style_sharpening_strength=5
++},
++{   .name="linux",
++    .autohint_horizontal_stem_darken_strength=10,
++    .autohint_snap_stem_height=100,
++    .autohint_vertical_stem_darken_strength=25,
++    .filter_params={on, 6, 25, 44, 25, 6},
++    .gamma_correction={0, 100},
++    .use_various_tweaks=true
++},
++{   .name="nudge",
++    .autohint_horizontal_stem_darken_strength=10,
++    .autohint_increase_glyph_heights=true,
++    .autohint_snap_stem_height=100,
++    .autohint_vertical_stem_darken_strength=25,
++    .filter_params={on, 11, 22, 38, 22, 11},
++    .gamma_correction={0, 100},
++    .stem_alignment_strength=25,
++    .stem_fitting_strength=15,
++    .stem_snapping_sliding_scale=30,
++    .use_various_tweaks=true,
++},
++{   .name="osx",
++    .autohint_horizontal_stem_darken_strength=10,
++    .autohint_vertical_stem_darken_strength=25,
++    .bold_embolden_x_value=16,
++    .brightness=10,
++    .contrast=20,
++    .filter_params={on, 3, 32, 38, 32, 3},
++    .gamma_correction={1000, 80},
++    .global_embolden_y_value=8,
++    .grayscale_filter_strength=25,
++},
++{   .name="push",
++    .autohint_horizontal_stem_darken_strength=10,
++    .autohint_increase_glyph_heights=true,
++    .autohint_snap_stem_height=100,
++    .autohint_vertical_stem_darken_strength=25,
++    .filter_params={on, 11, 22, 38, 22, 11},
++    .gamma_correction={0, 100},
++    .stem_alignment_strength=75,
++    .stem_fitting_strength=50,
++    .stem_snapping_sliding_scale=30,
++    .use_known_settings_on_selected_fonts=true,
++    .use_various_tweaks=true
++},
++{   .name="sharpened",
++    .autohint_horizontal_stem_darken_strength=10,
++    .autohint_increase_glyph_heights=true,
++    .autohint_snap_stem_height=100,
++    .autohint_vertical_stem_darken_strength=25,
++    .filter_params={on, 11, 22, 38, 22, 11},
++    .gamma_correction={0, 100},
++    .stem_alignment_strength=25,
++    .stem_fitting_strength=25,
++    .stem_snapping_sliding_scale=40,
++    .use_known_settings_on_selected_fonts=true,
++    .use_various_tweaks=true,
++    .windows_style_sharpening_strength=65
++},
++{   .name="shove",
++    .autohint_horizontal_stem_darken_strength=10,
++    .autohint_increase_glyph_heights=true,
++    .autohint_snap_stem_height=100,
++    .autohint_vertical_stem_darken_strength=25,
++    .filter_params={on, 11, 22, 38, 22, 11},
++    .gamma_correction={0, 100},
++    .stem_alignment_strength=100,
++    .stem_fitting_strength=100,
++    .use_known_settings_on_selected_fonts=true,
++    .use_various_tweaks=true
++},
++{   .name="ubuntu",
++    .autohint_horizontal_stem_darken_strength=10,
++    .autohint_vertical_stem_darken_strength=25,
++    .brightness=-10,
++    .contrast=15,
++    .filter_params={on, 11, 22, 38, 22, 11},
++    .gamma_correction={1000, 80},
++    .use_various_tweaks=true
++},
++{   .name="ultimate1",
++    .filter_params={on, 4, 22, 38, 22, 4},
++    .fringe_filter_strength=25,
++    .gamma_correction={0, 100},
++    .stem_alignment_strength=15,
++    .stem_fitting_strength=15,
++    .use_various_tweaks=true,
++    .windows_style_sharpening_strength=25
++},
++{   .name="ultimate2",
++    .filter_params={on, 6, 22, 36, 22, 6},
++    .fringe_filter_strength=25,
++    .gamma_correction={0, 100},
++    .stem_alignment_strength=15,
++    .stem_fitting_strength=15,
++    .use_various_tweaks=true,
++    .windows_style_sharpening_strength=25
++},
++{   .name="ultimate3",
++    .filter_params={on, 8, 24, 36, 24, 8},
++    .fringe_filter_strength=25,
++    .gamma_correction={0, 100},
++    .stem_alignment_strength=15,
++    .stem_fitting_strength=15,
++    .use_various_tweaks=true,
++    .windows_style_sharpening_strength=25
++},
++{   .name="ultimate4",
++    .filter_params={on, 10, 25, 37, 25, 10},
++    .fringe_filter_strength=25,
++    .gamma_correction={0, 100},
++    .stem_alignment_strength=15,
++    .stem_fitting_strength=15,
++    .use_various_tweaks=true,
++    .windows_style_sharpening_strength=25
++},
++{   .name="ultimate5",
++    .filter_params={on, 12, 28, 42, 28, 12},
++    .fringe_filter_strength=25,
++    .gamma_correction={0, 100},
++    .stem_alignment_strength=15,
++    .stem_fitting_strength=15,
++    .use_various_tweaks=true,
++    .windows_style_sharpening_strength=25
++},
++{   .name="vanilla",
++    .filter_params={on, 6, 25, 38, 25, 6},
++    .gamma_correction={0, 100},
++},
++{   .name="windows7light",
++    .autohint_horizontal_stem_darken_strength=10,
++    .autohint_snap_stem_height=100,
++    .autohint_vertical_stem_darken_strength=25,
++    .contrast=20,
++    .filter_params={on, 20, 25, 38, 25, 05},
++    .fringe_filter_strength=100,
++    .gamma_correction={1000, 160},
++    .stem_snapping_sliding_scale=30,
++    .use_known_settings_on_selected_fonts=true,
++    .use_various_tweaks=true,
++    .windows_style_sharpening_strength=100
++},
++{   .name="windows7",
++    .filter_params={on, 20, 25, 42, 25, 06},
++    .fringe_filter_strength=100,
++    .autohint_horizontal_stem_darken_strength=10,
++    .autohint_vertical_stem_darken_strength=25,
++    .windows_style_sharpening_strength=65,
++    .gamma_correction={1000, 120},
++    .brightness=10,
++    .contrast=20,
++    .use_various_tweaks=true,
++    .autohint_snap_stem_height=100,
++    .use_known_settings_on_selected_fonts=true,
++},
++{   .name="windowsxp",
++    .autohint_horizontal_stem_darken_strength=10,
++    .autohint_snap_stem_height=100,
++    .autohint_vertical_stem_darken_strength=25,
++    .brightness=10,
++    .contrast=20,
++    .filter_params={on, 6, 25, 44, 25, 6},
++    .fringe_filter_strength=100,
++    .gamma_correction={1000, 120},
++    .stem_alignment_strength=15,
++    .stem_fitting_strength=15,
++    .stem_snapping_sliding_scale=30,
++    .use_known_settings_on_selected_fonts=true,
++    .use_various_tweaks=true,
++    .windows_style_sharpening_strength=65
++},
++{   .name="windowsxplight",
++    .autohint_horizontal_stem_darken_strength=10,
++    .autohint_snap_stem_height=100,
++    .autohint_vertical_stem_darken_strength=25,
++    .brightness=20,
++    .contrast=30,
++    .filter_params={on, 6, 25, 44, 25, 6},
++    .fringe_filter_strength=100,
++    .gamma_correction={1000, 120},
++    .stem_alignment_strength=15,
++    .stem_fitting_strength=15,
++    .stem_snapping_sliding_scale=30,
++    .use_known_settings_on_selected_fonts=true,
++    .use_various_tweaks=true,
++    .windows_style_sharpening_strength=65
++},
++%%
++
++static const ftinf_t*
++ftinf_settings( const char *name ){
++    if( name ){
++        enum {
++            max_wlen=31
++        };
++        char buf[max_wlen+1];
++        int len=strlen( name );
++        if( len <= max_wlen ){
++            const ftinf_t *p;
++            int i;
++            for( i=0; i<len; ++i )
++                buf[i]=tolower( name[i] );
++            buf[len]='\0';
++            p=_settings_get( buf, len );
++            if( p ) return p;
++        }
++    }
++    return NULL;
++}
++/*
++   gperf --output-file=ftinf_sh.c ftinf_sh.gperf
++*/
+diff --git a/src/base/ftinit.c b/src/base/ftinit.c
+index b65a91d..54c06f9 100644
+--- a/src/base/ftinit.c
++++ b/src/base/ftinit.c
+@@ -43,7 +43,9 @@
+ #include FT_INTERNAL_DEBUG_H
+ #include FT_MODULE_H
+ #include "basepic.h"
+-
++#ifdef FT_CONFIG_OPTION_INFINALITY_PATCHSET
++#include "ftinf.h"
++#endif
+ 
+   /*************************************************************************/
+   /*                                                                       */
+@@ -253,9 +255,13 @@
+     error = FT_New_Library( memory, alibrary );
+     if ( error )
+       FT_Done_Memory( memory );
+-    else
++    else {
+       FT_Add_Default_Modules( *alibrary );
+-
++#ifdef FT_CONFIG_OPTION_INFINALITY_PATCHSET
++      /* get Infinality settings */
++      ftinf_env();
++#endif
++    }
+     return error;
+   }
+ 
 diff --git a/src/base/ftlcdfil.c b/src/base/ftlcdfil.c
-index ff6f7e9..7b91443 100644
+index 5ee7e0a..9c9e9e4 100644
 --- a/src/base/ftlcdfil.c
 +++ b/src/base/ftlcdfil.c
-@@ -23,6 +23,9 @@
+@@ -22,7 +22,10 @@
+ #include FT_LCD_FILTER_H
  #include FT_IMAGE_H
  #include FT_INTERNAL_OBJECTS_H
- 
+-
 +#include <math.h>
 +#include <string.h>
 +#include <strings.h>
++#include "ftinf.h"
  
  #ifdef FT_CONFIG_OPTION_SUBPIXEL_RENDERING
  
-@@ -309,10 +312,53 @@
-                             { 0x00, 0x55, 0x56, 0x55, 0x00 };
-     /* the values here sum up to a value larger than 256, */
-     /* providing a cheap gamma correction                 */
+@@ -305,11 +308,36 @@
+   FT_Library_SetLcdFilter( FT_Library    library,
+                            FT_LcdFilter  filter )
+   {
 -    static const FT_Byte  default_filter[5] =
-+    static FT_Byte  default_filter[5] =
-                             { 0x10, 0x40, 0x70, 0x40, 0x10 };
-+#ifdef FT_CONFIG_OPTION_INFINALITY_PATCHSET 
-+    int checked_filter_params_env = 0;
- 
-+    if ( checked_filter_params_env == 0 )
+-                            { 0x08, 0x4d, 0x56, 0x4d, 0x08 };
+     static const FT_Byte  light_filter[5] =
+                             { 0x00, 0x55, 0x56, 0x55, 0x00 };
+-
++#ifndef FT_CONFIG_OPTION_INFINALITY_PATCHSET
++    static const FT_Byte  default_filter[5] =
++                            { 0x08, 0x4d, 0x56, 0x4d, 0x08 };
++#else
++    FT_Byte default_filter[5];
++    if( ftinf && ftinf->filter_params[0] )
 +    {
-+      char *filter_params = getenv( "INFINALITY_FT_FILTER_PARAMS" );
-+      if ( filter_params != NULL && strcmp( filter_params, "" ) != 0 )
-+      {
-+        float f1, f2, f3, f4, f5;
- 
-+        if ( strcasecmp( filter_params, "default" ) != 0 )
-+        {
-+          int args_assigned = 0;
-+          args_assigned = sscanf ( filter_params,
-+                                   "%f %f %f %f %f",
-+                                   &f1, &f2, &f3, &f4, &f5 );
-+
-+          if ( args_assigned == 5 )
-+          {
-+            if ( f1 + f2 + f3 + f4 + f5 > 5 )
-+            {
-+              /* Assume we were given integers instead of floats */
-+              /* 0 to 100 */
-+              default_filter[0] = (FT_Byte) ( f1 * 2.55f + 0.5f );
-+              default_filter[1] = (FT_Byte) ( f2 * 2.55f + 0.5f );
-+              default_filter[2] = (FT_Byte) ( f3 * 2.55f + 0.5f );
-+              default_filter[3] = (FT_Byte) ( f4 * 2.55f + 0.5f );
-+              default_filter[4] = (FT_Byte) ( f5 * 2.55f + 0.5f );
-+            }
-+            else
-+            {
-+              /* Assume we were given floating point values */
-+              /* 0 to 1.0 */
-+              default_filter[0] = (FT_Byte) ( f1 * 255.0f + 0.5f );
-+              default_filter[1] = (FT_Byte) ( f2 * 255.0f + 0.5f );
-+              default_filter[2] = (FT_Byte) ( f3 * 255.0f + 0.5f );
-+              default_filter[3] = (FT_Byte) ( f4 * 255.0f + 0.5f );
-+              default_filter[4] = (FT_Byte) ( f5 * 255.0f + 0.5f );
-+            }
-+          }
-+        }
-+      }
-+      checked_filter_params_env = 1;
++        const int *f=ftinf->filter_params;
++        /* Assume we were given integers [0-100] get them to [0-255] */
++        int val; /* 2611=2.55*1024 */
++        val=(f[1]*2611+512)>>10; if( val > 255 ) val=255;
++        default_filter[0] = (FT_Byte) val;
++        val=(f[2]*2611+512)>>10; if( val > 255 ) val=255;
++        default_filter[1] = (FT_Byte) val;
++        val=(f[3]*2611+512)>>10; if( val > 255 ) val=255;
++        default_filter[2] = (FT_Byte) val;
++        val=(f[4]*2611+512)>>10; if( val > 255 ) val=255;
++        default_filter[3] = (FT_Byte) val;
++        val=(f[5]*2611+512)>>10; if( val > 255 ) val=255;
++        default_filter[4] = (FT_Byte) val;
++    } else {
++        default_filter[0]=0x08;
++        default_filter[1]=0x4d;
++        default_filter[2]=0x56;
++        default_filter[3]=0x4d;
++        default_filter[4]=0x08;
 +    }
 +#endif
+ 
      if ( !library )
        return FT_THROW( Invalid_Library_Handle );
- 
 diff --git a/src/base/ftobjs.c b/src/base/ftobjs.c
-index 926ac0a..8a166a5 100644
+index ea40396..7156a0b 100644
 --- a/src/base/ftobjs.c
 +++ b/src/base/ftobjs.c
-@@ -67,6 +67,11 @@
+@@ -40,7 +40,9 @@
+ #ifdef FT_CONFIG_OPTION_MAC_FONTS
+ #include "ftbase.h"
+ #endif
+-
++#ifdef FT_CONFIG_OPTION_INFINALITY_PATCHSET
++#include "ftinf.h"
++#endif
+ 
+ #ifdef FT_DEBUG_LEVEL_TRACE
+ 
+@@ -78,6 +80,11 @@
  
  #define GRID_FIT_METRICS
  
@@ -518,7 +2626,7 @@ index 926ac0a..8a166a5 100644
  
    FT_BASE_DEF( FT_Pointer )
    ft_service_list_lookup( FT_ServiceDesc  service_descriptors,
-@@ -543,6 +548,25 @@
+@@ -554,6 +561,25 @@
    ft_lookup_glyph_renderer( FT_GlyphSlot  slot );
  
  
@@ -544,36 +2652,14 @@ index 926ac0a..8a166a5 100644
  #ifdef GRID_FIT_METRICS
    static void
    ft_glyphslot_grid_fit_metrics( FT_GlyphSlot  slot,
-@@ -601,8 +625,40 @@
+@@ -612,8 +638,18 @@
      FT_Bool       autohint = FALSE;
      FT_Module     hinter;
      TT_Face       ttface = (TT_Face)face;
 +#ifdef FT_CONFIG_OPTION_INFINALITY_PATCHSET
  
-+    int checked_use_various_tweaks_env = FALSE;
 +    FT_Bool use_various_tweaks = FALSE;
-+
-+    if ( !checked_use_various_tweaks_env )
-+    {
-+      char *use_various_tweaks_env =
-+        getenv( "INFINALITY_FT_USE_VARIOUS_TWEAKS" );
-+
-+      if ( use_various_tweaks_env != NULL )
-+      {
-+        if ( strcasecmp(use_various_tweaks_env, "default" ) != 0 )
-+        {
-+          if ( strcasecmp(use_various_tweaks_env, "true") == 0 )
-+            use_various_tweaks = TRUE;
-+          else if ( strcasecmp(use_various_tweaks_env, "1") == 0 )
-+            use_various_tweaks = TRUE;
-+          else if ( strcasecmp(use_various_tweaks_env, "on") == 0 )
-+            use_various_tweaks = TRUE;
-+          else if ( strcasecmp(use_various_tweaks_env, "yes") == 0 )
-+            use_various_tweaks = TRUE;
-+        }
-+      }
-+      checked_use_various_tweaks_env = 1;
-+    }
++    if( ftinf ) use_various_tweaks=ftinf->use_various_tweaks;
  
 +    /* Force autohint if no tt instructions */
 +    /* NOTE:  NEEDS TO BE RUN LATER IN CODE???? */
@@ -585,7 +2671,7 @@ index 926ac0a..8a166a5 100644
      if ( !face || !face->size || !face->glyph )
        return FT_THROW( Invalid_Face_Handle );
  
-@@ -690,6 +746,18 @@
+@@ -702,6 +738,18 @@
      {
        FT_AutoHinter_Interface  hinting;
  
@@ -604,7 +2690,7 @@ index 926ac0a..8a166a5 100644
  
        /* try to load embedded bitmaps first if available            */
        /*                                                            */
-@@ -735,6 +803,18 @@
+@@ -747,6 +795,18 @@
        if ( error )
          goto Exit;
  
@@ -623,39 +2709,41 @@ index 926ac0a..8a166a5 100644
        if ( slot->format == FT_GLYPH_FORMAT_OUTLINE )
        {
          /* check that the loaded outline is correct */
+@@ -4724,6 +4784,11 @@
+     /* That's ok now */
+     *alibrary = library;
+ 
++#ifdef FT_CONFIG_OPTION_INFINALITY_PATCHSET
++    /* get Infinality settings */
++    ftinf_env();
++#endif
++
+     return FT_Err_Ok;
+ 
+ #ifdef FT_CONFIG_OPTION_PIC
 diff --git a/src/base/ftoutln.c b/src/base/ftoutln.c
-index ef66b3c..c3e4c71 100644
+index 201ceab..4c8746d 100644
 --- a/src/base/ftoutln.c
 +++ b/src/base/ftoutln.c
-@@ -910,7 +910,34 @@
+@@ -29,7 +29,9 @@
+ #include FT_INTERNAL_CALC_H
+ #include FT_INTERNAL_DEBUG_H
+ #include FT_TRIGONOMETRY_H
+-
++#ifdef FT_CONFIG_OPTION_INFINALITY_PATCHSET
++#include "ftinf.h"
++#endif
+ 
+   /*************************************************************************/
+   /*                                                                       */
+@@ -910,7 +912,13 @@
      FT_Vector*  points;
      FT_Int      c, first, last;
      FT_Int      orientation;
-+#ifdef FT_CONFIG_OPTION_INFINALITY_PATCHSET 
-+    int checked_use_various_tweaks_env = 0;
++#ifdef FT_CONFIG_OPTION_INFINALITY_PATCHSET
 +    FT_Bool use_various_tweaks = FALSE;
++    if( ftinf ) use_various_tweaks=ftinf->use_various_tweaks;
  
-+    if ( checked_use_various_tweaks_env == 0 )
-+    {
-+      char *use_various_tweaks_env
-+        = getenv( "INFINALITY_FT_USE_VARIOUS_TWEAKS" );
-+      if ( use_various_tweaks_env != NULL )
-+      {
-+        if ( strcasecmp(use_various_tweaks_env, "default" ) != 0 )
-+        {
-+          if ( strcasecmp(use_various_tweaks_env, "true" ) == 0 )
-+            use_various_tweaks = TRUE;
-+          else if ( strcasecmp(use_various_tweaks_env, "1" ) == 0 )
-+            use_various_tweaks = TRUE;
-+          else if ( strcasecmp(use_various_tweaks_env, "on" ) == 0 )
-+            use_various_tweaks = TRUE;
-+          else if ( strcasecmp(use_various_tweaks_env, "yes" ) == 0 )
-+            use_various_tweaks = TRUE;
-+        }
-+      }
-+      checked_use_various_tweaks_env = 1;
-+    }
-+
 +    if ( use_various_tweaks )
 +      ystrength = FT_PIX_FLOOR ( ystrength );
 +#endif
@@ -663,43 +2751,33 @@ index ef66b3c..c3e4c71 100644
      if ( !outline )
        return FT_THROW( Invalid_Outline );
 diff --git a/src/base/ftsynth.c b/src/base/ftsynth.c
-index cd68533..62352e1 100644
+index cd68533..aa68c88 100644
 --- a/src/base/ftsynth.c
 +++ b/src/base/ftsynth.c
-@@ -93,7 +93,32 @@
+@@ -22,7 +22,9 @@
+ #include FT_INTERNAL_OBJECTS_H
+ #include FT_OUTLINE_H
+ #include FT_BITMAP_H
+-
++#ifdef FT_CONFIG_OPTION_INFINALITY_PATCHSET
++#include "ftinf.h"
++#endif
+ 
+   /*************************************************************************/
+   /*                                                                       */
+@@ -93,7 +95,10 @@
      FT_Face     face;
      FT_Error    error;
      FT_Pos      xstr, ystr;
-+#ifdef FT_CONFIG_OPTION_INFINALITY_PATCHSET 
-+    int checked_use_various_tweaks_env = 0;
+-
++#ifdef FT_CONFIG_OPTION_INFINALITY_PATCHSET
 +    FT_Bool use_various_tweaks = FALSE;
-+ 
-+    if ( checked_use_various_tweaks_env == 0 )
-+    {
-+      char *use_various_tweaks_env
-+        = getenv( "INFINALITY_FT_USE_VARIOUS_TWEAKS" );
-+      if ( use_various_tweaks_env != NULL )
-+      {
-+        if ( strcasecmp(use_various_tweaks_env, "default" ) != 0 )
-+        {
-+          if ( strcasecmp(use_various_tweaks_env, "true" ) == 0 )
-+            use_various_tweaks = TRUE;
-+          else if ( strcasecmp(use_various_tweaks_env, "1" ) == 0 )
-+            use_various_tweaks = TRUE;
-+          else if ( strcasecmp(use_various_tweaks_env, "on" ) == 0 )
-+            use_various_tweaks = TRUE;
-+          else if ( strcasecmp(use_various_tweaks_env, "yes" ) == 0 )
-+            use_various_tweaks = TRUE;
-+        }
- 
-+      }
-+      checked_use_various_tweaks_env = 1;
-+    }
++    if( ftinf ) use_various_tweaks=ftinf->use_various_tweaks;
 +#endif
  
      if ( !slot )
        return;
-@@ -111,8 +136,16 @@
+@@ -111,8 +116,16 @@
      ystr = xstr;
  
      if ( slot->format == FT_GLYPH_FORMAT_OUTLINE )
@@ -717,7 +2795,7 @@ index cd68533..62352e1 100644
      else /* slot->format == FT_GLYPH_FORMAT_BITMAP */
      {
        /* round to full pixels */
-@@ -150,6 +183,9 @@
+@@ -150,6 +163,9 @@
  
      slot->metrics.width        += xstr;
      slot->metrics.height       += ystr;
@@ -727,33 +2805,48 @@ index cd68533..62352e1 100644
      slot->metrics.horiAdvance  += xstr;
      slot->metrics.vertAdvance  += ystr;
      slot->metrics.horiBearingY += ystr;
+diff --git a/src/base/rules.mk b/src/base/rules.mk
+index 1852e08..f7ae0e6 100644
+--- a/src/base/rules.mk
++++ b/src/base/rules.mk
+@@ -41,6 +41,7 @@ BASE_SRC := $(BASE_DIR)/basepic.c  \
+             $(BASE_DIR)/ftcalc.c   \
+             $(BASE_DIR)/ftdbgmem.c \
+             $(BASE_DIR)/ftgloadr.c \
++            $(BASE_DIR)/ftinf.c    \
+             $(BASE_DIR)/ftobjs.c   \
+             $(BASE_DIR)/ftoutln.c  \
+             $(BASE_DIR)/ftpic.c    \
 diff --git a/src/smooth/ftsmooth.c b/src/smooth/ftsmooth.c
-index 3620550..a92e003 100644
+index 3620550..b5b3056 100644
 --- a/src/smooth/ftsmooth.c
 +++ b/src/smooth/ftsmooth.c
-@@ -26,102 +26,3575 @@
+@@ -26,6 +26,18 @@
  
  #include "ftsmerrs.h"
  
 +#ifdef FT_CONFIG_OPTION_INFINALITY_PATCHSET
 +#include <math.h>
 +#include FT_BITMAP_H
++#include <string.h>
 +#include <strings.h>
-+#include "../autofit/aflatin.h"
 +#include FT_OUTLINE_H
++#include "../base/ftinf.h"
 +
 +#define verbose FALSE
 +#define STVALUES if (verbose) \
 +  printf ( "scale:%f translate:%ld ", *scale_value, *translate_value );
 +#endif /* FT_CONFIG_OPTION_INFINALITY_PATCHSET */
-+
-+  /* initialize renderer -- init its raster */
-+  static FT_Error
-+  ft_smooth_init( FT_Renderer  render )
-+  {
-+    FT_Library  library = FT_MODULE_LIBRARY( render );
-+
-+
+ 
+   /* initialize renderer -- init its raster */
+   static FT_Error
+@@ -34,65 +46,2278 @@
+     FT_Library  library = FT_MODULE_LIBRARY( render );
+ 
+ 
+-    render->clazz->raster_class->raster_reset( render->raster,
+-                                               library->raster_pool,
+-                                               library->raster_pool_size );
 +    render->clazz->raster_class->raster_reset( render->raster,
 +                                               library->raster_pool,
 +                                               library->raster_pool_size );
@@ -1287,15 +3380,13 @@ index 3620550..a92e003 100644
 +    FT_Bitmap_Done( library, &new_bitmap );
 +  }
 +
-+
-+  int
++  static int
 +  pseudo_gamma ( int val, float value )
 +  {
-+    return 256 * ( 1.0 - pow( ( 1.0 - (float)val / 256.0 ), 1.0 / value ) );
++      return 256 * ( 1.0f - powf( ( 1.0f - val * (1.0f/256.0f) ), 1.0f / value ) );
 +  }
 +
-+
-+
++#if(0)
 +  static void
 +  _ft_bitmap_embolden  ( FT_Bitmap*      bitmap,
 +                         FT_UInt         strength,
@@ -1364,7 +3455,7 @@ index 3620550..a92e003 100644
 +      }
 +    }
 +  }
-+
++#endif
 +
 +  /* Fringe filter */
 +  static void
@@ -1585,346 +3676,12 @@ index 3620550..a92e003 100644
 +    }
 +  }
 +
-+
-+
-+  /*************************************************************************/
-+  /*                                                                       */
-+  /*                                                                       */
-+  /*                                                                       */
-+  /*                                                                       */
-+  /*                                                                       */
-+  /*                                                                       */
-+
-+
-+  typedef struct  SA_Rule_
-+  {
-+    const char  family[32];
-+    const int   ppem[5];
-+
-+  } SA_Rule;
-+
++/*
++  These need to be in sync with params inside ftinf.c
++  (not ideal but perhaps better than making these public)
++ */
 +#define STEM_WIDTH_2_PPEM 18
 +#define MAX_PPEM 100
-+
-+
-+
-+/* "Font name", {ppem where stem width becomes 1,
-+ *               ppem where stem width becomes 2... etc.} */
-+/* 100 means auto-calculate */
-+#define SNAPPING_STEM_WIDTHS_RULES_SIZE 21
-+  SA_Rule  SNAPPING_STEM_WIDTHS_Rules
-+    [SNAPPING_STEM_WIDTHS_RULES_SIZE] =
-+    {
-+      { "Andale Mono",          {10, 21, MAX_PPEM, MAX_PPEM, MAX_PPEM} },
-+      { "Arial Narrow",         {10, 21, MAX_PPEM, MAX_PPEM, MAX_PPEM} },
-+      { "Calibri",              {10, 19, MAX_PPEM, MAX_PPEM, MAX_PPEM} },
-+      { "Cantarell",            {10, 22, MAX_PPEM, MAX_PPEM, MAX_PPEM} },
-+      { "Century Gothic",       {10, 22, MAX_PPEM, MAX_PPEM, MAX_PPEM} },
-+      { "Comfortaa",            {10, 19, 22, MAX_PPEM, MAX_PPEM} },
-+      { "Consolas",             {10, 20, MAX_PPEM, MAX_PPEM, MAX_PPEM} },
-+      { "Corbel",               {10, 21, MAX_PPEM, MAX_PPEM, MAX_PPEM} },
-+      { "Futura",               {10, 14, STEM_WIDTH_2_PPEM, MAX_PPEM, MAX_PPEM} },
-+      { "Gill Sans",            {10, 17, STEM_WIDTH_2_PPEM, MAX_PPEM, MAX_PPEM} },
-+      { "Helvetica CY",         {10, 23, MAX_PPEM, MAX_PPEM, MAX_PPEM} },
-+      { "Inconsolata",          {10, 23, MAX_PPEM, MAX_PPEM, MAX_PPEM} },
-+      { "Liberation Sans Narrow", {10, 22, MAX_PPEM, MAX_PPEM, MAX_PPEM} },
-+      { "Liberation Sans",      {10, 19, MAX_PPEM, MAX_PPEM, MAX_PPEM} },
-+      { "Lucida Grande",        {10, 16, STEM_WIDTH_2_PPEM, MAX_PPEM, MAX_PPEM} },
-+      { "Lucida Sans Unicode",  {10, 16, STEM_WIDTH_2_PPEM, MAX_PPEM, MAX_PPEM} },
-+      { "Luxi Sans",            {10, 17, STEM_WIDTH_2_PPEM, MAX_PPEM, MAX_PPEM} },
-+      { "Open Sans",            {10, 20, MAX_PPEM, MAX_PPEM, MAX_PPEM} },
-+      { "Rokkitt",              {10, 21, MAX_PPEM, MAX_PPEM, MAX_PPEM} },
-+      { "Segoe UI",             {10, 23, MAX_PPEM, MAX_PPEM, MAX_PPEM} },
-+      { "Trebuchet MS",         {10, 17, STEM_WIDTH_2_PPEM, MAX_PPEM, MAX_PPEM} },
-+    };
-+
-+
-+/* "Font name", {ppem, scale_up=1|scale_down=0} */
-+#define SNAPPING_STEM_SCALING_RULES_SIZE 31
-+  SA_Rule  SNAPPING_STEM_SCALING_Rules
-+    [SNAPPING_STEM_SCALING_RULES_SIZE] =
-+    {
-+      { "Andale Mono", {11, 1,} },
-+      { "Bitstream Vera Sans", {12, 1,} },
-+      { "Calibri", {15, 1,} },
-+      { "Calibri", {17, 1,} },
-+      { "Calibri", {18, 1,} },
-+      { "Candara", {14, 1,} },
-+      { "Candara", {17, 1,} },
-+      { "Canwell", {13, 0,} },
-+      { "Comfortaa", {11, 0,} },
-+      { "Consolas", {11, 1,} },
-+      { "DejaVu Sans", {12, 1,} },
-+      { "Freesans", {16, 0,} },
-+      { "Freeserif", {13, 1,} },
-+      { "Freeserif", {17, 1,} },
-+      { "Inconsolata", {12, 1,} },
-+      { "Inconsolata", {15, 1,} },
-+      { "Lucida Grande", {13, 1,} },
-+      { "Myriad Pro", {14, 1,} },
-+      { "Myriad Pro", {17, 1,} },
-+      { "Nina", {11, 0,} },
-+      { "Nina", {12, 0,} },
-+      { "Nina", {13, 0,} },
-+      { "Optima", {17, 1,} },
-+      { "Raleway", {15, 0,} },
-+      { "Samba", {11, 0,} },
-+      { "Times New Roman", {17, 1,} },
-+      { "Trebuchet MS", {17, 0,} },
-+      { "Trebuchet MS", {13, 0,} },
-+      { "Trebuchet MS", {20, 1,} },
-+      { "Verdana", {12, 1,} },
-+      { "Verdana", {15, 1,} },
-+    };
-+
-+
-+/* "Font name", {ppem, scale_up=1|scale_down=0} */
-+#define SNAPPING_M_RULES_SIZE 9
-+  SA_Rule  SNAPPING_M_Rules
-+    [SNAPPING_M_RULES_SIZE] =
-+    {
-+      { "Courier New", {13, 1,} },
-+      { "Courier New", {14, 1,} },
-+      { "Courier", {13, 1,} },
-+      { "Courier", {14, 1,} },
-+      { "Droid Sans Mono", {12, 0,} },
-+      { "Bitstream Vera Sans", {12, 0,} },
-+      { "DejaVu Sans", {12, 0,} },
-+      { "Essential PragmataPro", {13, 0,} },
-+      { "Essential PragmataPro", {14, 0,} },
-+    };
-+
-+
-+/* "Font name", {ppem, ppem} */
-+#define SNAPPING_SYNTHESIZE_STEMS_RULES_SIZE 1
-+  SA_Rule  SNAPPING_SYNTHESIZE_STEMS_Rules
-+    [SNAPPING_SYNTHESIZE_STEMS_RULES_SIZE] =
-+    {
-+      { "---", {13, 13,} },
-+    };
-+
-+
-+/* "Font name", {ppem, ppem} */
-+#define SNAPPING_NO_BEARING_CORRECTION_RULES_SIZE 1
-+  SA_Rule  SNAPPING_NO_BEARING_CORRECTION_Rules
-+    [SNAPPING_NO_BEARING_CORRECTION_RULES_SIZE] =
-+    {
-+      { "Times New Roman", {0, 100,} },
-+    };
-+
-+
-+/* "Font name", {ppem, ppem} */
-+#define SNAPPING_EDGE_DETECTION_RULES_SIZE 8
-+  SA_Rule  SNAPPING_EDGE_DETECTION_Rules
-+    [SNAPPING_EDGE_DETECTION_RULES_SIZE] =
-+    {
-+      { "Tahoma", {11, 11,} },
-+      { "Courier New", {10, 12,} },
-+      { "Arial", {11, 11,} },
-+      { "Arial", {13, 13,} },
-+      { "Liberation Sans", {11, 11,} },
-+      { "FreeSans", {11, 11,} },
-+      { "FreeSans", {13, 13,} },
-+      { "Palatino Linotype", {0, 100,} },
-+    };
-+
-+/* "Font name", {ppem, translate_value} */
-+#define SNAPPING_STEM_TRANSLATING_RULES_SIZE 6
-+  SA_Rule  SNAPPING_STEM_TRANSLATING_Rules
-+    [SNAPPING_STEM_TRANSLATING_RULES_SIZE] =
-+    {
-+      { "Arial", {11, 32,} },
-+      { "Arial Unicode MS", {11, 32,} },
-+      { "FreeSans", {11, 32,} },
-+      { "Arimo", {11, 32,} },
-+      { "Liberation Sans", {11, 32,} },
-+      { "Tahoma", {11, 32,} },
-+    };
-+
-+/* "Font name", {ppem, translate_value} */
-+#define SNAPPING_STEM_TRANSLATING_ONLY_RULES_SIZE 74
-+  SA_Rule  SNAPPING_STEM_TRANSLATING_ONLY_Rules
-+    [SNAPPING_STEM_TRANSLATING_ONLY_RULES_SIZE] =
-+    {
-+      { "Arial Unicode MS", {10, 16,} },
-+      { "Arial Unicode MS", {8, 32,} },
-+      { "Arial Unicode MS", {9, 32,} },
-+      { "Arial", {10, 16,} },
-+      { "Arial", {8, 32,} },
-+      { "Arial", {9, 32,} },
-+      { "Arial", {16, -24,} },
-+      { "Arimo", {10, 8,} },
-+      { "Arimo", {8, 32,} },
-+      { "Arimo", {9, 32,} },
-+      { "Bitstream Vera Sans", {8, 16,} },
-+      { "Calibri", {10, 16,} },
-+      { "Calibri", {15, 0,} },
-+      { "Candara", {10, 16,} },
-+      { "Cantarell", {11, 0} },
-+      { "Cantarell", {12, 0} },
-+      { "Consolas", {8, 32,} },
-+      { "Consolas", {9, 32,} },
-+      { "Corbel", {10, 16,} },
-+      { "Courier", {13, 16,} },
-+      { "Courier", {15, 0,} },
-+      { "Dejavu Sans Mono", {7, 16,} },
-+      { "Dejavu Sans Mono", {8, 32,} },
-+      { "Dejavu Sans Mono", {9, 16,} },
-+      { "Dejavu Sans", {8, 16,} },
-+      { "Dejavu Sans", {15, -20,} },
-+      { "Droid Sans", {8, 16,} },
-+      { "Droid Sans", {9, 16,} },
-+      { "Freesans", {10, 16,} },
-+      { "Freesans", {9, 8,} },
-+      { "Georgia", {13, 16,} },
-+      { "Georgia", {14, 16,} },
-+      { "Georgia", {15, 0,} },
-+      { "Inconsolata", {10, 24,} },
-+      { "Inconsolata", {9, 32,} },
-+      { "Liberation Sans", {10, 8,} },
-+      { "Liberation Sans", {8, 32,} },
-+      { "Liberation Sans", {9, 32,} },
-+      { "Lucida Grande", {13, 24,} },
-+      { "Lucida Grande", {14, 24,} },
-+      { "Lucida Grande", {8, 16,} },
-+      { "Lucida Grande", {9, 16,} },
-+      { "Lucida Sans Unicode", {13, 24,} },
-+      { "Lucida Sans Unicode", {14, 24,} },
-+      { "Lucida Sans Unicode", {8, 16,} },
-+      { "Lucida Sans Unicode", {9, 16,} },
-+      { "Microsoft Sans Serif", {10, 16,} },
-+      { "Microsoft Sans Serif", {8, 32,} },
-+      { "Microsoft Sans Serif", {9, 32,} },
-+      { "Myriad Pro", {10, 16,} },
-+      { "Myriad Pro", {11, 0,} },
-+      { "Myriad Pro", {9, 16,} },
-+      { "Open Sans", {10, 16,} },
-+      { "Open Sans", {9, 16,} },
-+      { "Optima", {10, 0} },
-+      { "Optima", {11, 0} },
-+      { "Optima", {12, 0} },
-+      { "Segoe UI", {10, 0,} },
-+      { "Segoe UI", {7, 32,} },
-+      { "Segoe UI", {8, 16,} },
-+      { "Segoe UI", {9, 24,} },
-+      { "Tahoma", {7, 32,} },
-+      { "Tahoma", {8, 32,} },
-+      { "Tahoma", {9, 32,} },
-+      { "Times New Roman", {17, 8,} },
-+      { "Trebuchet MS", {10, 16,} },
-+      { "Trebuchet MS", {11, 0,} },
-+      { "Trebuchet MS", {8, 32,} },
-+      { "Trebuchet MS", {9, 32,} },
-+      { "Verdana", {8, 16,} },
-+      { "Verdana", {15, 16,} },
-+      { "Verdana", {14, 32,} },
-+      { "Verdana", {18, 32,} },
-+      { "Verdana", {19, 24,} },
-+    };
-+
-+
-+/* "Font name", {start ppem, end ppem} */
-+#define ALWAYS_USE_100_RULES_SIZE 46
-+  SA_Rule  ALWAYS_USE_100_Rules
-+    [ALWAYS_USE_100_RULES_SIZE] =
-+    {
-+      { "Andale Mono", {0, MAX_PPEM,} },
-+      { "Arial Unicode MS", {0, MAX_PPEM,} },
-+      { "Arial", {0, MAX_PPEM,} },
-+      { "Arimo", {0, MAX_PPEM,} },
-+      { "Bitstream Vera Sans Mono", {0, MAX_PPEM,} },
-+      { "Bitstream Vera Sans", {10, 14,} },
-+      { "Bitstream Vera Sans", {16, 17,} },
-+      { "Calibri", {23, MAX_PPEM,} },
-+      { "Consolas", {0, MAX_PPEM,} },
-+      { "Courier New", {12, 12,} },
-+      { "Courier", {0, MAX_PPEM,} },
-+      { "Cousine", {0, MAX_PPEM,} },
-+      { "DejaVu Sans Mono", {0, MAX_PPEM,} },
-+      { "DejaVu Sans", {10, 14,} },
-+      { "DejaVu Sans", {16, 17,} },
-+      { "Droid Sans", {12, 12,} },
-+      { "Droid Sans", {15, 15,} },
-+      { "FreeMono", {0, MAX_PPEM,} },
-+      { "FreeSans", {0, MAX_PPEM,} },
-+      { "Liberation Mono", {0, MAX_PPEM,} },
-+      { "Lucida Console", {0, MAX_PPEM,} },
-+      { "Luxi Sans", {13, 13,} },
-+      { "Microsoft Sans Serif", {0, MAX_PPEM,} },
-+      { "Monaco", {0, MAX_PPEM,} },
-+      { "Segoe UI", {11, 12,} },
-+      { "Segoe UI", {14, 14,} },
-+      { "Tahoma", {11, 11,} },
-+      { "Tahoma", {14, MAX_PPEM,} },
-+      { "Times New Roman", {14, 14,} },
-+      { "Times New Roman", {16, 16,} },
-+      { "Trebuchet MS", {13, 13,} },
-+      { "Ubuntu", {12, 13,} },
-+      { "Ubuntu", {15, 15,} },
-+      { "Verdana", {0, 14,} },
-+      { "Verdana", {16, MAX_PPEM,} },
-+      { "Pragmata", {0, MAX_PPEM,} },
-+      { "Essential PragmataPro", {0, MAX_PPEM,} },
-+    };
-+
-+
-+
-+
-+#define AUTOHINT_BRIGHTNESS_RULES_SIZE 3
-+  SA_Rule  BRIGHTNESS_Rules
-+    [AUTOHINT_BRIGHTNESS_RULES_SIZE] =
-+    {
-+      { "Baskerville", {0, -20,} },
-+      { "Garamond", {0, -20,} },
-+      { "Optima", {0, -20,} },
-+    };
-+
-+#define AUTOHINT_CONTRAST_RULES_SIZE 3
-+  SA_Rule  CONTRAST_Rules
-+    [AUTOHINT_CONTRAST_RULES_SIZE] =
-+    {
-+      { "Baskerville", {0, 25,} },
-+      { "Garamond", {0, 25,} },
-+      { "Optima", {0, 25,} },
-+    };
-+
-+#if 0
-+#define STEM_SPACING_RULES_SIZE 3
-+  SA_Rule  STEM_SPACING_Rules
-+    [STEM_SPACING_RULES_SIZE] =
-+    {
-+      { "Tahoma", {10, 12, 18, 18, 30} },
-+      { "Arial", {10, 11, 23, 25, 30} },
-+      { "Freesans", {10, 12, 18, 18, 30} },
-+    };
-+
-+#define STEM_START_RULES_SIZE 3
-+  SA_Rule  STEM_START_Rules
-+    [STEM_START_RULES_SIZE] =
-+    {
-+      { "Tahoma", {14, 17, 30, 100, 100} },
-+      { "Arial", {11, 18, 23, 30, 30} },
-+      { "Freesans", {10, 18, 18, 25, 30} },
-+    };
-+#endif
-+
-+  typedef struct  Stem_Data_
-+  {
-+    FT_Int       stem_width;
-+    FT_Int       stem_spacing;
-+    FT_Int       stem_start;
-+    FT_Int       stem_scaling;
-+    FT_Int       stem_translating_only;
-+    FT_Int       stem_translating;
-+    FT_Int       brightness;
-+    FT_Int       contrast;
-+    FT_Bool      use_100;
-+    FT_Bool      synth_stems;
-+    FT_Bool      edge_detection;
-+    FT_Bool      bearing_correction;
-+    FT_Int       m;
-+  } Stem_Data;
-+
 +
 +  typedef struct  Stem_Segment_
 +  {
@@ -1953,7 +3710,6 @@ index 3620550..a92e003 100644
 +    FT_Bool       generated;
 +  } Stem;
 +
-+
 +  static void
 +  swap_stem ( Stem* s1, Stem* s2 )
 +  {
@@ -1979,338 +3735,6 @@ index 3620550..a92e003 100644
 +    s2->zone   = s.zone;
 +    s2->generated = s.generated;
 +  }
-+
-+
-+  FT_LOCAL_DEF( void )
-+  sa_fill_known_stem_values (
-+                  FT_String*      family,
-+                  int             ppem,
-+                  FT_String*      style,
-+                  FT_UInt         num_stems,
-+                  Stem_Data*      known_stem_values )
-+  {
-+    FT_Int  i, j;
-+    if (verbose) printf("%s ", family);
-+
-+    i = 0;
-+    while ( i < SNAPPING_STEM_WIDTHS_RULES_SIZE )
-+    {
-+      if ( family                                    &&
-+           ( strcasecmp( SNAPPING_STEM_WIDTHS_Rules[i].family,
-+                         family ) == 0 ) )
-+      {
-+        j = 0;
-+        known_stem_values->stem_width = 1;
-+
-+        while (j < 4)
-+        {
-+          if ( SNAPPING_STEM_WIDTHS_Rules[i].ppem[j] == MAX_PPEM )
-+          {
-+            known_stem_values->stem_width = -1;  /* use default */
-+            j = 5;
-+            i = SNAPPING_STEM_WIDTHS_RULES_SIZE;
-+          }
-+          else if ( ppem < SNAPPING_STEM_WIDTHS_Rules[i].ppem[j] )
-+          {
-+            known_stem_values->stem_width = j;
-+            j = 5;
-+            i = SNAPPING_STEM_WIDTHS_RULES_SIZE;
-+          }
-+          j++;
-+        }
-+      }
-+      i++;
-+    }
-+
-+    i = 0;
-+    while ( i < SNAPPING_STEM_SCALING_RULES_SIZE )
-+    {
-+      if ( family                                    &&
-+           ( strcasecmp( SNAPPING_STEM_SCALING_Rules[i].family,
-+                         family ) == 0 ) )
-+      {
-+        known_stem_values->stem_scaling = -1;  /* default */
-+
-+        if ( ppem == SNAPPING_STEM_SCALING_Rules[i].ppem[0] )
-+        {
-+          known_stem_values->stem_scaling
-+            = SNAPPING_STEM_SCALING_Rules[i].ppem[1];
-+          i = SNAPPING_STEM_SCALING_RULES_SIZE;
-+        }
-+      }
-+      i++;
-+    }
-+
-+
-+    i = 0;
-+    while ( i < SNAPPING_M_RULES_SIZE )
-+    {
-+      if ( family                                                    &&
-+           ( strcasecmp( SNAPPING_M_Rules[i].family, family ) == 0 ) )
-+      {
-+        known_stem_values->m = -1;  /* default */
-+
-+        if ( ppem == SNAPPING_M_Rules[i].ppem[0] )
-+        {
-+          known_stem_values->m = SNAPPING_M_Rules[i].ppem[1];
-+          i = SNAPPING_M_RULES_SIZE;
-+        }
-+      }
-+      i++;
-+    }
-+
-+    i = 0;
-+    while ( i < SNAPPING_STEM_TRANSLATING_ONLY_RULES_SIZE )
-+    {
-+      if ( family                                                        &&
-+           ( strcasecmp( SNAPPING_STEM_TRANSLATING_ONLY_Rules[i].family,
-+                         family ) == 0 )                                 )
-+      {
-+        known_stem_values->stem_translating_only = -1024;  /* default */
-+
-+        if ( ppem == SNAPPING_STEM_TRANSLATING_ONLY_Rules[i].ppem[0] ||
-+               SNAPPING_STEM_TRANSLATING_ONLY_Rules[i].ppem[0] == 0  )
-+        {
-+          known_stem_values->stem_translating_only
-+            = SNAPPING_STEM_TRANSLATING_ONLY_Rules[i].ppem[1];
-+          i = SNAPPING_STEM_TRANSLATING_ONLY_RULES_SIZE;
-+        }
-+      }
-+      i++;
-+    }
-+
-+    i = 0;
-+    while ( i < SNAPPING_STEM_TRANSLATING_RULES_SIZE )
-+    {
-+      if ( family                                                   &&
-+           ( strcasecmp( SNAPPING_STEM_TRANSLATING_Rules[i].family,
-+                         family ) == 0 )                            )
-+      {
-+        known_stem_values->stem_translating = 0;  /* default */
-+
-+        if ( ppem == SNAPPING_STEM_TRANSLATING_Rules[i].ppem[0] ||
-+               SNAPPING_STEM_TRANSLATING_Rules[i].ppem[0] == 0  )
-+        {
-+          known_stem_values->stem_translating
-+            = SNAPPING_STEM_TRANSLATING_Rules[i].ppem[1];
-+          i = SNAPPING_STEM_TRANSLATING_RULES_SIZE;
-+        }
-+      }
-+      i++;
-+    }
-+
-+
-+    i = 0;
-+    while ( i < ALWAYS_USE_100_RULES_SIZE )
-+    {
-+      if ( family                                    &&
-+           ( strcasecmp( ALWAYS_USE_100_Rules[i].family, family ) == 0 ) )
-+      {
-+        known_stem_values->use_100 = FALSE;  /* default */
-+
-+        if ( ppem >= ALWAYS_USE_100_Rules[i].ppem[0] &&
-+             ppem <= ALWAYS_USE_100_Rules[i].ppem[1] )
-+        {
-+          known_stem_values->use_100 = TRUE;
-+          i = ALWAYS_USE_100_RULES_SIZE;
-+        }
-+      }
-+      i++;
-+    }
-+
-+
-+    i = 0;
-+    while ( i < SNAPPING_SYNTHESIZE_STEMS_RULES_SIZE )
-+    {
-+      if ( family                                                   &&
-+           ( strcasecmp( SNAPPING_SYNTHESIZE_STEMS_Rules[i].family,
-+                         family ) == 0 )                            )
-+      {
-+        known_stem_values->synth_stems = FALSE;  /* default */
-+
-+        if ( ppem >= SNAPPING_SYNTHESIZE_STEMS_Rules[i].ppem[0] &&
-+             ppem <= SNAPPING_SYNTHESIZE_STEMS_Rules[i].ppem[1] )
-+        {
-+          known_stem_values->synth_stems = TRUE;
-+          i = SNAPPING_SYNTHESIZE_STEMS_RULES_SIZE;
-+        }
-+      }
-+      i++;
-+    }
-+
-+
-+    i = 0;
-+    while ( i < SNAPPING_EDGE_DETECTION_RULES_SIZE )
-+    {
-+      if ( family                                                 &&
-+           ( strcasecmp( SNAPPING_EDGE_DETECTION_Rules[i].family,
-+                         family ) == 0 )                          )
-+      {
-+        known_stem_values->edge_detection = FALSE;  /* default */
-+
-+        if ( ppem >= SNAPPING_EDGE_DETECTION_Rules[i].ppem[0] &&
-+             ppem <= SNAPPING_EDGE_DETECTION_Rules[i].ppem[1] )
-+        {
-+          known_stem_values->edge_detection = TRUE;
-+          i = SNAPPING_EDGE_DETECTION_RULES_SIZE;
-+        }
-+      }
-+      i++;
-+    }
-+
-+
-+    i = 0;
-+    while ( i < SNAPPING_NO_BEARING_CORRECTION_RULES_SIZE )
-+    {
-+      if ( family                                                        &&
-+           ( strcasecmp( SNAPPING_NO_BEARING_CORRECTION_Rules[i].family,
-+                         family ) == 0 )                                 )
-+      {
-+        known_stem_values->bearing_correction = TRUE;  /* default */
-+
-+        if ( ppem >= SNAPPING_NO_BEARING_CORRECTION_Rules[i].ppem[0] &&
-+             ppem <= SNAPPING_NO_BEARING_CORRECTION_Rules[i].ppem[1] )
-+        {
-+          known_stem_values->bearing_correction = FALSE;
-+          i = SNAPPING_NO_BEARING_CORRECTION_RULES_SIZE;
-+        }
-+      }
-+      i++;
-+    }
-+
-+
-+#if 0
-+    i = 0;
-+    while ( i < AUTOHINT_BRIGHTNESS_RULES_SIZE )
-+    {
-+      if ( family                                    &&
-+           ( strcasecmp( BRIGHTNESS_Rules[i].family, family ) == 0 ) )
-+      {
-+        known_stem_values->brightness = 0.0;
-+
-+        if ( ppem == BRIGHTNESS_Rules[i].ppem[0] ||
-+             BRIGHTNESS_Rules[i].ppem[0] == 0    )
-+        {
-+          known_stem_values->brightness = BRIGHTNESS_Rules[i].ppem[1];
-+          i = AUTOHINT_BRIGHTNESS_RULES_SIZE;
-+        }
-+      }
-+      i++;
-+    }
-+
-+    i = 0;
-+    while ( i < AUTOHINT_CONTRAST_RULES_SIZE )
-+    {
-+      if ( family                                    &&
-+           ( strcasecmp( CONTRAST_Rules[i].family, family ) == 0 ) )
-+      {
-+        known_stem_values->contrast = 0.0;
-+
-+        if ( ppem == CONTRAST_Rules[i].ppem[0] ||
-+             CONTRAST_Rules[i].ppem[0] == 0    )
-+        {
-+          known_stem_values->contrast = CONTRAST_Rules[i].ppem[1];
-+          i = AUTOHINT_CONTRAST_RULES_SIZE;
-+        }
-+      }
-+      i++;
-+    }
-+
-+    for ( i = 0; i <= STEM_SPACING_RULES_SIZE; i++ )
-+    {
-+      if ( family                                    &&
-+           ( strcasecmp( STEM_SPACING_Rules[i].family, family ) == 0 ) )
-+      {
-+        j = 0;
-+        known_stem_values->stem_spacing = 2;  /* default */
-+
-+        while (j < 4)
-+        {
-+          if ( ppem < STEM_SPACING_Rules[i].ppem[j] )
-+          {
-+            known_stem_values->stem_spacing = j;
-+            j = 5;
-+          }
-+          j++;
-+        }
-+      }
-+    }
-+
-+
-+    for ( i = 0; i <= STEM_START_RULES_SIZE; i++ )
-+    {
-+      if ( family                                    &&
-+           ( strcasecmp( STEM_START_Rules[i].family, family ) == 0 ) )
-+      {
-+        j = 0;
-+        known_stem_values->stem_start = 1;  /* default */
-+
-+        while (j < 4)
-+        {
-+          if ( ppem < STEM_START_Rules[i].ppem[j] )
-+          {
-+            known_stem_values->stem_start = j;
-+            j = 5;
-+          }
-+          j++;
-+        }
-+      }
-+    }
-+#endif
-+  }
-+
-+
-+  FT_LOCAL_DEF( FT_Int )
-+  get_contrast ( FT_String*  family,
-+                 int         ppem )
-+  {
-+    FT_Int  i;
-+
-+
-+    if ( verbose )
-+      printf( "%s ", family );
-+
-+    i = 0;
-+    while ( i < AUTOHINT_CONTRAST_RULES_SIZE )
-+    {
-+      if ( family                                    &&
-+           ( strcasecmp( CONTRAST_Rules[i].family, family ) == 0 ) )
-+      {
-+        if ( ppem == CONTRAST_Rules[i].ppem[0] ||
-+             CONTRAST_Rules[i].ppem[0] == 0    )
-+          return CONTRAST_Rules[i].ppem[1];
-+      }
-+      i++;
-+    }
-+    return 0;
-+  }
-+
-+
-+  FT_LOCAL_DEF( FT_Int )
-+  get_brightness ( FT_String*  family,
-+                   int         ppem )
-+  {
-+    FT_Int  i;
-+
-+
-+    if ( verbose )
-+      printf("%s ", family);
-+
-+    i = 0;
-+    while ( i < AUTOHINT_BRIGHTNESS_RULES_SIZE )
-+    {
-+      if ( family                                    &&
-+           ( strcasecmp( BRIGHTNESS_Rules[i].family, family ) == 0 ) )
-+      {
-+        if ( ppem == BRIGHTNESS_Rules[i].ppem[0] ||
-+             BRIGHTNESS_Rules[i].ppem[0] == 0    )
-+          return BRIGHTNESS_Rules[i].ppem[1];
-+      }
-+      i++;
-+    }
-+    return 0;
-+  }
-+
 +
 +  /* Stem alignment for bitmaps;  A hack with very nice results */
 +  /* Ideally this could be implemented on the outline, prior to
@@ -2347,7 +3771,7 @@ index 3620550..a92e003 100644
 +    FT_Long         rightmost_point_not_extrema = 0;
 +    FT_Long         num_segments = 0;
 +    FT_Long         num_centers = 0;
-+    FT_Long         stem_centers[width * 256];
++    FT_Long         *stem_centers;
 +    FT_UInt         h;
 +    FT_ULong        valid_stems = 0, valid_possible_stems = 0;
 +    FT_Long         center, stem_matches, stem_matches_ledge;
@@ -2383,54 +3807,15 @@ index 3620550..a92e003 100644
 +    FT_Bool         strategy_fit_to_width = FALSE;
 +    /*FT_Bool         strategy_center_glyph = FALSE;*/
 +
-+    FT_Bool         has_serifs = FALSE;
-+    FT_Bool         autohinted = FALSE;
-+
 +    const FT_Int    MIN_PPEM = 7;
 +    /*const FT_Int    MAX_PPEM = 100;*/
 +    const FT_Int    MAX_STEMS = 3;
 +    FT_Int          ppem = 0;
 +
-+    FT_Bool         checked_use_known_settings_on_selected_fonts_env = FALSE;
-+    FT_Bool         use_known_settings_on_selected_fonts = FALSE;
-+
-+    FT_Pos          cur_width = infinality_cur_width;
-+
-+
-+    if ( cur_width )
-+    {
-+        autohinted = TRUE;
-+    }
++    Stem_Data       stem_data;
 +
 +    /* reset to default */
 +    *scale_value = 1.0;
-+
-+    if ( !checked_use_known_settings_on_selected_fonts_env )
-+    {
-+      char *use_known_settings_on_selected_fonts_env =
-+        getenv( "INFINALITY_FT_USE_KNOWN_SETTINGS_ON_SELECTED_FONTS" );
-+      if ( use_known_settings_on_selected_fonts_env != NULL )
-+      {
-+        if ( strcasecmp( use_known_settings_on_selected_fonts_env,
-+                         "default" ) != 0 )
-+        {
-+          if ( strcasecmp( use_known_settings_on_selected_fonts_env,
-+                           "true") == 0 )
-+            use_known_settings_on_selected_fonts = TRUE;
-+          else if ( strcasecmp( use_known_settings_on_selected_fonts_env,
-+                                "1") == 0 )
-+            use_known_settings_on_selected_fonts = TRUE;
-+          else if ( strcasecmp( use_known_settings_on_selected_fonts_env,
-+                                "on") == 0 )
-+            use_known_settings_on_selected_fonts = TRUE;
-+          else if ( strcasecmp( use_known_settings_on_selected_fonts_env,
-+                                "yes") == 0 )
-+            use_known_settings_on_selected_fonts = TRUE;
-+        }
-+      }
-+      checked_use_known_settings_on_selected_fonts_env = TRUE;
-+    }
-+
 +
 +    /* Simply return in odd cases where these don't seem to be set */
 +    /* Flash and some pdf viewers will crash otherwise */
@@ -2450,6 +3835,10 @@ index 3620550..a92e003 100644
 +
 +    ppem = slot->face->size->metrics.x_ppem;
 +
++    if ( ppem < 9 )
++      return;
++    if ( ppem > 20 )
++        strategy_use_m_control = TRUE;
 +
 +    /* only perform alignment on styles we know, that aren't bold or italic */
 +    /* perhaps detection could be added on those that are not set? */
@@ -2506,14 +3895,6 @@ index 3620550..a92e003 100644
 +    }
 +    else return;
 +
-+    if ( slot->face->family_name )
-+    {
-+      if ( strcasestr(slot->face->family_name, "Courier" ) ||
-+           strcasestr(slot->face->family_name, "Serif" )   ||
-+           strcasestr(slot->face->family_name, "Times" )   )
-+        has_serifs = TRUE;
-+    }
-+
 +    if ( mode != FT_RENDER_MODE_LCD )
 +    {
 +      columns_per_pixel = 1;
@@ -2524,49 +3905,21 @@ index 3620550..a92e003 100644
 +      /* There are issues with missing glyphs */
 +      return;
 +    }
-+    /* only look at top 3 for now */
-+    known_stem_values
-+      = (Stem_Data*) malloc ( columns_per_pixel * sizeof ( Stem_Data ) );
-+    known_stem_values->stem_spacing = -1;
-+    known_stem_values->stem_width = -1;
-+    known_stem_values->stem_start = -1;
-+    known_stem_values->stem_scaling = -1;
-+    known_stem_values->stem_translating_only = -1024;
-+    known_stem_values->stem_translating = 0;
-+    known_stem_values->brightness = 0;
-+    known_stem_values->contrast = 0;
-+    known_stem_values->use_100 = FALSE;
-+    known_stem_values->m = -1;
-+    known_stem_values->synth_stems = FALSE;
-+    known_stem_values->bearing_correction = TRUE;
 +
-+    if ( use_known_settings_on_selected_fonts )
++    known_stem_values=&stem_data;
++    if ( ftinf && ftinf->use_known_settings_on_selected_fonts )
 +    {
-+      sa_fill_known_stem_values ( slot->face->family_name,
-+                                  ppem, slot->face->style_name,
-+                                  valid_stems, known_stem_values );
-+      if ( verbose )
-+        printf ( "width:%d,spacing:%d,start:%d,scaling:%d,translate:%d ",
-+                 known_stem_values->stem_width,
-+                 known_stem_values->stem_spacing,
-+                 known_stem_values->stem_start,
-+                 known_stem_values->stem_scaling,
-+                 known_stem_values->stem_translating_only );
-+    }
-+
-+    /* translate value may be set for < 10 */
-+    if ( use_known_settings_on_selected_fonts             &&
-+         known_stem_values->stem_translating_only > -1024 )
-+    {
-+      *translate_value = known_stem_values->stem_translating_only;
-+      free ( known_stem_values );
-+      return;
-+    }
-+
-+    if ( use_known_settings_on_selected_fonts           &&
-+         known_stem_values->bearing_correction == FALSE )
-+      strategy_bearing_correction = FALSE;
-+
++      ftinf_fill_stem_values( known_stem_values, slot->face->family_name, ppem, TRUE );
++      /* translate value may be set for < 10 */
++      if (known_stem_values->stem_translating_only > -1024 )
++      {
++          *translate_value = known_stem_values->stem_translating_only;
++          return;
++      }
++      if( known_stem_values->bearing_correction == FALSE )
++          strategy_bearing_correction = FALSE;
++    } else
++        ftinf_fill_stem_values( known_stem_values, slot->face->family_name, ppem, FALSE );
 +
 +    if ( known_stem_values->use_100 ||
 +         known_stem_values->m >= 0  )
@@ -2578,42 +3931,24 @@ index 3620550..a92e003 100644
 +    if ( known_stem_values->edge_detection )
 +      strategy_also_use_edge_detection_for_stems = TRUE;
 +
-+    if ( ppem < 9 )
-+      return;
-+    if ( ppem > 20 )
-+      strategy_use_m_control = TRUE;
-+
 +    /* Allocate */
-+    segments
-+      = (Stem_Segment*) malloc( (1) * sizeof ( Stem_Segment ) );
-+    leftmost_segment
-+      = (Stem_Segment*) malloc( sizeof ( Stem_Segment ) );
-+    leftmost_segment_not_extrema
-+      = (Stem_Segment*) malloc( sizeof ( Stem_Segment ) );
-+    rightmost_segment
-+      = (Stem_Segment*) malloc( sizeof ( Stem_Segment ) );
-+    rightmost_segment_not_extrema
-+      = (Stem_Segment*) malloc( sizeof ( Stem_Segment ) );
++    segments = NULL;
++    leftmost_segment = (Stem_Segment*) malloc( 4*sizeof ( Stem_Segment ) );
++    leftmost_segment_not_extrema = leftmost_segment+1;
++    rightmost_segment = leftmost_segment+2;
++    rightmost_segment_not_extrema = leftmost_segment+3;
 +
-+    stems          = (Stem*) malloc ( MAX_STEMS * sizeof ( Stem ) );
-+    possible_stems = (Stem*) malloc ( MAX_STEMS * sizeof ( Stem ) );
-+    leftmost_stem  = (Stem*) malloc ( sizeof (Stem));
-+    rightmost_stem = (Stem*) malloc ( sizeof(Stem));
-+    centers        = (Stem_Center*) malloc ( (1) * sizeof ( Stem_Center ) );
++    stems          = (Stem*) malloc ( (2*MAX_STEMS+2) * sizeof ( Stem ) );
++    possible_stems = stems+MAX_STEMS;
++    leftmost_stem  = possible_stems+MAX_STEMS;
++    rightmost_stem = leftmost_stem + 1;
++    centers        = NULL;
 +
 +    if ( verbose )
 +      printf("\n");
 +
 +    /* Initialize */
-+    for ( xx = 0; xx < width * 256; xx += 1 )
-+      stem_centers[xx] = 0;
-+
-+    for ( xx = 0; xx < num_segments; xx += 1 )
-+    {
-+      segments[xx].x1 = 0;
-+      segments[xx].x2 = 0;
-+      segments[xx].y = 0;
-+    }
++    stem_centers=(FT_Long*)calloc( width * 256, sizeof(stem_centers[0]) );
 +
 +    rightmost_segment->x1 = 0;
 +    rightmost_segment->x2 = 0;
@@ -2636,9 +3971,10 @@ index 3620550..a92e003 100644
 +      /* Calculate various sums and stem widths of glyph */
 +      for ( xx = 0; xx < width; xx += 1 )
 +      {
-+        /* Reallocate */
-+        segments = (Stem_Segment*) realloc
-+          ( segments, ( num_segments + 1 ) * sizeof ( Stem_Segment ) );
++        /* Reallocate (in blocks of 64) */
++        if( num_segments % 64 == 0 )
++            segments = (Stem_Segment*) realloc
++                ( segments, ( num_segments + 64 ) * sizeof ( Stem_Segment ) );
 +
 +        /* if line is white, and now has color, it's the start of a stem */
 +        if ( current_value == 0 && line[xx] > 0 )
@@ -2663,9 +3999,10 @@ index 3620550..a92e003 100644
 +          stem_center_x = ( segments[num_segments].x2
 +                            + segments[num_segments].x1 ) / 2;
 +
-+          /* Reallocate */
-+          centers = (Stem_Center*) realloc
-+            ( centers, ( num_centers + 1 ) * sizeof ( Stem_Center ) );
++          /* Reallocate (in blocks of 32) */
++          if( num_centers % 32 == 0 )
++              centers = (Stem_Center*) realloc
++                  ( centers, ( num_centers + 32 ) * sizeof ( Stem_Center ) );
 +          centers[num_centers].x = stem_center_x;
 +          centers[num_centers].y = h;
 +          centers[num_centers].x1 = segments[num_segments].x1;
@@ -2772,13 +4109,13 @@ index 3620550..a92e003 100644
 +      /* but 1 or 2 with 3 stems needs to somehow get included */
 +      FT_Int deviation1 = 5;
 +      FT_Int deviation2=-1, requirement1 = 4, stem_match_requirement = 3;
-+      FT_Int best_height = 0, center_difference_in_height;
++      FT_Int center_difference_in_height;
 +      FT_Int center_difference_in_width, valid_center_average;
 +      FT_Int smallest_width_ledge, smallest_width_redge;
 +      FT_Int x1_difference_in_width, x2_difference_in_width;
-+      FT_Bool large_gap_found = FALSE, no_gap_found = FALSE;
-+      FT_Bool large_gap_found_ledge = FALSE, no_gap_found_ledge = FALSE;
-+      FT_Bool large_gap_found_redge = FALSE, no_gap_found_redge = FALSE;
++      FT_Bool no_gap_found = FALSE;
++      FT_Bool no_gap_found_ledge = FALSE;
++      FT_Bool no_gap_found_redge = FALSE;
 +      FT_Bool stem_detected = FALSE;
 +      FT_Int set_width_to, set_center_to;
 +
@@ -2805,7 +4142,6 @@ index 3620550..a92e003 100644
 +
 +      valid_center_average = 0;
 +
-+      large_gap_found = large_gap_found_ledge = large_gap_found_redge = FALSE;
 +      no_gap_found = no_gap_found_ledge = no_gap_found_redge = FALSE;
 +      stem_detected = FALSE;
 +
@@ -2867,7 +4203,6 @@ index 3620550..a92e003 100644
 +          if ( last_matching_center >= 0 &&
 +               abs( centers[last_matching_center].y
 +                      - centers[next_center].y ) >= (FT_Int)bitmap->rows / 2 )
-+            large_gap_found = TRUE;
 +
 +          /* try to find where matching centers are next to each other */
 +          if ( last_matching_center >= 0 &&
@@ -2901,7 +4236,6 @@ index 3620550..a92e003 100644
 +                 abs( centers[last_matching_ledge].y
 +                        - centers[next_center].y)
 +                   >= (FT_Int)bitmap->rows / 2       )
-+              large_gap_found_ledge = TRUE;
 +
 +            /* try to find where matching centers are next to each other */
 +            if ( last_matching_ledge >= 0               &&
@@ -2935,7 +4269,6 @@ index 3620550..a92e003 100644
 +            if ( last_matching_redge >= 0 &&
 +                 abs( centers[last_matching_redge].y
 +                       - centers[next_center].y ) >= (FT_Int)bitmap->rows / 2 )
-+              large_gap_found_redge = TRUE;
 +
 +            /* try to find where matching centers are next to each other */
 +            if ( last_matching_redge >= 0 &&
@@ -2952,9 +4285,6 @@ index 3620550..a92e003 100644
 +
 +      if ( stem_matches > 0 )
 +        valid_center_average /= stem_matches;
-+
-+      best_height = stem_matches;
-+
 +
 +      if ( ( stem_matches >= stem_match_requirement             ||
 +             ( ( (FT_Int)bitmap->rows <= 6 || ppem < 11 )   &&
@@ -2977,7 +4307,6 @@ index 3620550..a92e003 100644
 +      {
 +        stem_detected = TRUE;
 +        set_width_to  = centers[center].x2 - centers[center].x1;
-+        best_height   = stem_matches;
 +        set_center_to = centers[center].x;
 +      }
 +
@@ -2996,7 +4325,6 @@ index 3620550..a92e003 100644
 +        {
 +          stem_detected = TRUE;
 +          set_width_to  = smallest_width_ledge;
-+          best_height   = stem_matches_ledge;
 +          set_center_to = centers[center].x1 + set_width_to / 2;
 +          stem_matches  = stem_matches_ledge;
 +        }
@@ -3012,7 +4340,6 @@ index 3620550..a92e003 100644
 +        {
 +          stem_detected = TRUE;
 +          set_width_to  = smallest_width_redge;
-+          best_height   = stem_matches_redge;
 +          set_center_to = centers[center].x2 - set_width_to / 2;
 +          stem_matches  = stem_matches_redge;
 +        }
@@ -3021,8 +4348,7 @@ index 3620550..a92e003 100644
 +
 +      /*store and/or replace highest occurrences with 3 or more centers */
 +      /* because this matched, it will become the top dog regardless */
-+      if ( stem_detected )
-+      if ( stem_matches > possible_stems[0].height )
++      if ( stem_detected && (stem_matches > possible_stems[0].height) )
 +      {
 +        /* if this is the first stem just go ahead */
 +        if ( valid_possible_stems == 0 )
@@ -3251,23 +4577,45 @@ index 3620550..a92e003 100644
 +    /* sort stems in x direction */
 +    if ( valid_stems > 1 && stems[0].center > stems[1].center )
 +      swap_stem ( &stems[0], &stems[1] );
-+
+ 
+-    return 0;
+-  }
 +    if ( valid_stems == 0 && known_stem_values->stem_translating != 0 )
 +    {
 +      *translate_value += known_stem_values->stem_translating;
-+
+ 
 +      if ( strategy_use_strengths )
 +      {
 +        /* consider 1/2 pixel the max when strength is at 100%,
 +           unless translate is already greater than that */
 +        FT_Int strength_cutoff = 32;
-+
-+
+ 
+-  /* sets render-specific mode */
+-  static FT_Error
+-  ft_smooth_set_mode( FT_Renderer  render,
+-                      FT_ULong     mode_tag,
+-                      FT_Pointer   data )
+-  {
+-    /* we simply pass it to the raster */
+-    return render->clazz->raster_class->raster_set_mode( render->raster,
+-                                                         mode_tag,
+-                                                         data );
+-  }
+ 
+-  /* transform a given glyph image */
+-  static FT_Error
+-  ft_smooth_transform( FT_Renderer       render,
+-                       FT_GlyphSlot      slot,
+-                       const FT_Matrix*  matrix,
+-                       const FT_Vector*  delta )
+-  {
+-    FT_Error  error = FT_Err_Ok;
 +        if ( abs ( *translate_value ) > strength_cutoff)
 +          strength_cutoff = *translate_value;
-+
+ 
 +        max_strength = ( strength_cutoff * alignment_strength ) / 100;
-+
+ 
+-    if ( slot->format != render->glyph_format )
 +        if ( *translate_value < -max_strength )
 +          *translate_value = -max_strength;
 +        else if  ( *translate_value > max_strength )
@@ -3276,7 +4624,8 @@ index 3620550..a92e003 100644
 +    }
 +    else
 +    /* Start snapping */
-+    {
+     {
+-      error = FT_THROW( Invalid_Argument );
 +      FT_Int  center_offset;
 +      FT_Int  modulus;
 +      FT_Int  delta, delta2;
@@ -3407,7 +4756,7 @@ index 3620550..a92e003 100644
 +               < stems[main_stem].width * 2                            )
 +        {
 +          /* Possibly use 2 only when compatible widths is on? */
-+          FT_Int mod_factor = 2;  
++          FT_Int mod_factor = 2;
 +
 +          if ( verbose )
 +            printf ( "USING M CONTROL ");
@@ -3426,7 +4775,7 @@ index 3620550..a92e003 100644
 +            new_distance = distance_ceiling;
 +          /* NEED TO FIGURE OUT A WAY TO DETERMINE WHETHER
 +             THAT NUDGE IS UP OR DOWN */
-+          else if ( stem_distance + one_pixel * 2.6 >= advance_width && 
++          else if ( stem_distance + one_pixel * 2.6 >= advance_width &&
 +            stem_width < one_pixel * 1.25                            )
 +            new_distance = distance_ceiling;
 +
@@ -3478,7 +4827,7 @@ index 3620550..a92e003 100644
 +                    < stems[main_stem].width * 2                        )
 +        {
 +          /* Possibly use 2 only when compatible widths is on? */
-+          FT_Int mod_factor = 2;   
++          FT_Int mod_factor = 2;
 +
 +          if ( verbose )
 +            printf ("USING M CONTROL ");
@@ -3714,13 +5063,19 @@ index 3620550..a92e003 100644
 +            printf ( "TRANSLATING -64 " );
 +        }
 +      }
-+      goto Exit;
-+    }
-+
+       goto Exit;
+     }
+ 
+-    if ( matrix )
+-      FT_Outline_Transform( &slot->outline, matrix );
 +  Exit:
-+
+ 
+-    if ( delta )
+-      FT_Outline_Translate( &slot->outline, delta->x, delta->y );
 +#define transformed_point( point ) point * *scale_value + *translate_value * 12
-+
+ 
+-  Exit:
+-    return error;
 +    if ( strategy_correct_out_of_bounds_outlines )
 +    {
 +      /* Correct if outside bitmap */
@@ -3737,36 +5092,36 @@ index 3620550..a92e003 100644
 +    }
 +
 +    STVALUES
-+
-+    free ( segments );
-+    free ( leftmost_segment );
-+    free ( leftmost_segment_not_extrema );
-+    free ( rightmost_segment );
-+    free ( rightmost_segment_not_extrema );
-+    free ( known_stem_values );
-+    free ( stems );
-+    free ( possible_stems );
-+    free ( leftmost_stem );
-+    free ( rightmost_stem );
 +    free ( centers );
-+  }
-+
-+
++    free ( segments );
++    free ( stem_centers );
++    free ( stems );
++    free ( leftmost_segment );
+   }
+ 
+ 
+-  /* return the glyph's control box */
 +  /* Gamma correction */
-+  static void
+   static void
+-  ft_smooth_get_cbox( FT_Renderer   render,
+-                      FT_GlyphSlot  slot,
+-                      FT_BBox*      cbox )
 +  _ft_lcd_gamma_correction_correction ( FT_Bitmap*      bitmap,
 +                                        FT_Render_Mode  mode,
 +                                        FT_GlyphSlot    slot,
 +                                        float           gamma_correction_lt,
 +                                        float           gamma_correction_value )
-+  {
+   {
+-    FT_MEM_ZERO( cbox, sizeof ( *cbox ) );
 +    if ( gamma_correction_value != 1.0 )
 +    {
 +      FT_UInt   width  = (FT_UInt)bitmap->width;
 +      FT_UInt   height = (FT_UInt)bitmap->rows;
 +      FT_Byte*  line   = bitmap->buffer;
 +      float     ppem   = (float)slot->face->size->metrics.x_ppem;
-+
+ 
+-    if ( slot->format == render->glyph_format )
+-      FT_Outline_Get_CBox( &slot->outline, cbox );
 +
 +      if ( !slot->face || !slot->face->size ) return;
 +
@@ -3797,36 +5152,42 @@ index 3620550..a92e003 100644
 +          }
 +        }
 +    }
-+  }
-+
+   }
+ 
 +#endif
-+
-+  /* convert a slot's glyph image into a bitmap */
-+  static FT_Error
-+  ft_smooth_render_generic( FT_Renderer       render,
-+                            FT_GlyphSlot      slot,
-+                            FT_Render_Mode    mode,
-+                            const FT_Vector*  origin,
-+                            FT_Render_Mode    required_mode )
-+  {
-+    FT_Error     error;
+ 
+   /* convert a slot's glyph image into a bitmap */
+   static FT_Error
+@@ -103,25 +2328,162 @@
+                             FT_Render_Mode    required_mode )
+   {
+     FT_Error     error;
+-    FT_Outline*  outline = &slot->outline;
+-    FT_Bitmap*   bitmap  = &slot->bitmap;
+-    FT_Memory    memory  = render->root.memory;
 +    FT_Outline*  outline = NULL;
 +    FT_Outline*  outline_orig = NULL;
-+    FT_BBox      cbox;
+     FT_BBox      cbox;
+-    FT_Pos       x_shift = 0;
+-    FT_Pos       y_shift = 0;
+-    FT_Pos       x_left, y_top;
+-    FT_Pos       width, height, pitch;
 +    FT_Pos       width, height, pitch, ppem;
-+#ifndef FT_CONFIG_OPTION_SUBPIXEL_RENDERING
-+    FT_Pos       height_org, width_org;
-+#endif
+ #ifndef FT_CONFIG_OPTION_SUBPIXEL_RENDERING
+     FT_Pos       height_org, width_org;
+ #endif
 +    FT_Bitmap*   bitmap  = &slot->bitmap;
 +    FT_Memory    memory  = render->root.memory;
-+    FT_Int       hmul    = mode == FT_RENDER_MODE_LCD;
-+    FT_Int       vmul    = mode == FT_RENDER_MODE_LCD_V;
+     FT_Int       hmul    = mode == FT_RENDER_MODE_LCD;
+     FT_Int       vmul    = mode == FT_RENDER_MODE_LCD_V;
 +    FT_Pos       x_shift = 0;
 +    FT_Pos       y_shift = 0;
 +    FT_Pos       x_left, y_top;
-+
-+    FT_Raster_Params  params;
-+
+ 
+     FT_Raster_Params  params;
+ 
+-    FT_Bool  have_outline_shifted = FALSE;
+-    FT_Bool  have_buffer          = FALSE;
 +    FT_Bool  have_translated_origin = FALSE;
 +    FT_Bool  have_outline_shifted   = FALSE;
 +    FT_Bool  have_buffer            = FALSE;
@@ -3839,68 +5200,41 @@ index 3620550..a92e003 100644
 +
 +
 +    int          chromeos_style_sharpening_strength = 0;
-+    int          checked_chromeos_style_sharpening_strength = 0;
 +    int          alignment_strength = 0;
 +    int          fitting_strength = 0;
-+    FT_UInt      checked_alignment_strength = 0;
-+    FT_UInt      checked_fitting_strength = 0;
-+    FT_UInt      checked_fringe_filter_strength = 0;
 +    int          fringe_filter_strength = 0;
-+    FT_UInt      checked_grayscale_filter_strength = 0;
 +    int          grayscale_filter_strength = 0;
 +
-+    FT_UInt      checked_autohint_horizontal_stem_darken_strength = 0;
 +    int          autohint_horizontal_stem_darken_strength = 0;
-+
-+    FT_UInt      checked_autohint_vertical_stem_darken_strength = 0;
 +    int          autohint_vertical_stem_darken_strength = 0;
 +
 +    int          windows_style_sharpening_strength = 0;
-+    FT_UInt      checked_windows_style_sharpening_strength = 0;
 +    float        gamma_correction_value = 1;
 +    float        gamma_correction_lt = 0;
-+    FT_UInt      checked_gamma_correction_value = 0;
 +
 +    FT_Int       brightness_value = 0.0;
-+    FT_UInt      checked_brightness_value = 0;
-+
 +    FT_Int       contrast_value = 0.0;
-+    FT_UInt      checked_contrast_value = 0;
 +
 +    FT_Int       snapping_sliding_scale_value = 0;
-+    FT_UInt      checked_snapping_sliding_scale_value = 0;
 +
 +    FT_Int       global_embolden_x_value = 0;
-+    FT_UInt      checked_global_embolden_x_value = 0;
-+
 +    FT_Int       global_embolden_y_value = 0;
-+    FT_UInt      checked_global_embolden_y_value = 0;
 +
 +    FT_Int       bold_embolden_x_value = 0;
-+    FT_UInt      checked_bold_embolden_x_value = 0;
-+
 +    FT_Int       bold_embolden_y_value = 0;
-+    FT_UInt      checked_bold_embolden_y_value = 0;
 +
 +    FT_Byte      chromeos_cutoff;
 +    double       chromeos_gamma_value;
 +
 +    float        embolden_value = 0.0;
 +    FT_Bool      autohinted = FALSE;
-+
-+    FT_UInt      autohint_minimum_stem_height = 0;
-+    FT_UInt      checked_autohint_minimum_stem_height = 0;
-+
-+    int          checked_use_various_tweaks_env = 0;
 +    FT_Bool      use_various_tweaks = FALSE;
-+
-+    FT_Pos        cur_width = infinality_cur_width;
++    FT_Pos       cur_width = infinality_cur_width;
 +
 +    const FT_Int MIN_PPEM = 1;
 +    /*const FT_Int    MAX_PPEM = 100;    */
 +
-+    int checked_use_known_settings_on_selected_fonts_env = 0;
-+    FT_Bool use_known_settings_on_selected_fonts = FALSE;
++    FT_Bool use_known_settings_on_selected_fonts;
 +
 +    if ( slot->face                       &&
 +         slot->face->size                 &&
@@ -3913,269 +5247,59 @@ index 3620550..a92e003 100644
 +    {
 +        autohinted = TRUE;
 +    }
++    if( ftinf ){
++        const float *f=ftinf->gamma_correction;
 +
-+    if ( checked_use_known_settings_on_selected_fonts_env == 0 )
-+    {
-+      char *use_known_settings_on_selected_fonts_env =
-+        getenv( "INFINALITY_FT_USE_KNOWN_SETTINGS_ON_SELECTED_FONTS" );
-+      if ( use_known_settings_on_selected_fonts_env != NULL )
-+      {
-+        if ( strcasecmp( use_known_settings_on_selected_fonts_env,
-+                         "default" ) != 0 )
-+        {
-+          if ( strcasecmp( use_known_settings_on_selected_fonts_env,
-+                           "true" ) == 0 )
-+            use_known_settings_on_selected_fonts = TRUE;
-+          else if ( strcasecmp( use_known_settings_on_selected_fonts_env,
-+                                "1" ) == 0 )
-+            use_known_settings_on_selected_fonts = TRUE;
-+          else if ( strcasecmp( use_known_settings_on_selected_fonts_env,
-+                                "on" ) == 0 )
-+            use_known_settings_on_selected_fonts = TRUE;
-+          else if ( strcasecmp( use_known_settings_on_selected_fonts_env,
-+                                "yes" ) == 0 )
-+            use_known_settings_on_selected_fonts = TRUE;
-+        }
-+      }
-+      checked_use_known_settings_on_selected_fonts_env = 1;
-+    }
++        use_known_settings_on_selected_fonts=ftinf->use_known_settings_on_selected_fonts;
++        use_various_tweaks=ftinf->use_various_tweaks;
++        snapping_sliding_scale_value=ftinf->stem_snapping_sliding_scale;
 +
-+    if ( checked_use_various_tweaks_env == 0 )
-+    {
-+      char *use_various_tweaks_env
-+        = getenv( "INFINALITY_FT_USE_VARIOUS_TWEAKS" );
++        alignment_strength=ftinf->stem_alignment_strength;
++        if ( snapping_sliding_scale_value != 0 )
++            alignment_strength = sliding_scale(10, snapping_sliding_scale_value, alignment_strength, 100, ppem);
 +
-+      if ( use_various_tweaks_env != NULL )
-+      {
-+        if ( strcasecmp( use_various_tweaks_env, "default" ) != 0 )
-+        {
-+          if ( strcasecmp( use_various_tweaks_env, "true") == 0)
-+            use_various_tweaks = TRUE;
-+          else if ( strcasecmp( use_various_tweaks_env, "1") == 0)
-+            use_various_tweaks = TRUE;
-+          else if ( strcasecmp( use_various_tweaks_env, "on") == 0)
-+            use_various_tweaks = TRUE;
-+          else if ( strcasecmp( use_various_tweaks_env, "yes") == 0)
-+            use_various_tweaks = TRUE;
-+        }
-+      }
-+      checked_use_various_tweaks_env = 1;
-+    }
++        fitting_strength=ftinf->stem_fitting_strength;
++        if ( snapping_sliding_scale_value != 0 )
++            fitting_strength = sliding_scale(10, snapping_sliding_scale_value, fitting_strength, 100, ppem);
 +
-+    if ( checked_autohint_minimum_stem_height == 0 )
-+    {
-+      char *autohint_minimum_stem_height_env =
-+        getenv( "INFINALITY_FT_AUTOHINT_MINIMUM_STEM_WIDTH" );
++        chromeos_style_sharpening_strength=ftinf->chromeos_style_sharpening_strength;
 +
-+        if ( autohint_minimum_stem_height_env != NULL )
-+      {
-+        sscanf ( autohint_minimum_stem_height_env, "%u",
-+                 &autohint_minimum_stem_height );
-+
-+        if ( autohint_minimum_stem_height > 100 )
-+          autohint_minimum_stem_height = 100;
-+        else if ( autohint_minimum_stem_height < 0 )
-+          autohint_minimum_stem_height = 0;
-+      }
-+      checked_autohint_minimum_stem_height = 1;
-+    }
-+
-+    if ( checked_snapping_sliding_scale_value == 0 )
-+    {
-+      char *snapping_sliding_scale_env =
-+        getenv ( "INFINALITY_FT_STEM_SNAPPING_SLIDING_SCALE" );
-+
-+      if ( snapping_sliding_scale_env != NULL )
-+      {
-+        sscanf ( snapping_sliding_scale_env, "%d",
-+                 &snapping_sliding_scale_value );
-+
-+        if ( snapping_sliding_scale_value > MAX_PPEM )
-+          snapping_sliding_scale_value = 0;
-+        else if ( snapping_sliding_scale_value < 0 )
-+          snapping_sliding_scale_value = 0;
-+
-+        if (snapping_sliding_scale_value < 11 &&
-+            snapping_sliding_scale_value > 0  )
-+          snapping_sliding_scale_value = 11;
-+      }
-+      checked_snapping_sliding_scale_value = 1;
-+    }
-+
-+    if ( checked_alignment_strength == 0)
-+    {
-+      char *alignment_strength_env =
-+        getenv ( "INFINALITY_FT_STEM_ALIGNMENT_STRENGTH" );
-+
-+      if ( alignment_strength_env != NULL )
-+      {
-+        sscanf ( alignment_strength_env, "%d", &alignment_strength );
-+
-+        if ( alignment_strength > 100 )
-+          alignment_strength = 100;
-+        else if ( alignment_strength < 0 )
-+          alignment_strength = 0;
-+      }
-+
-+      if ( alignment_strength > 100 )
-+        alignment_strength = 100;
-+      checked_alignment_strength = 1;
-+
-+      if ( snapping_sliding_scale_value != 0 )
-+        alignment_strength = sliding_scale
-+          ( 10, snapping_sliding_scale_value, alignment_strength, 100, ppem );
-+    }
-+
-+    if ( checked_fitting_strength == 0 )
-+    {
-+      char *fitting_strength_env =
-+        getenv( "INFINALITY_FT_STEM_FITTING_STRENGTH" );
-+
-+        if ( fitting_strength_env != NULL )
-+      {
-+        sscanf ( fitting_strength_env, "%d", &fitting_strength );
-+
-+        if ( fitting_strength > 100 )
-+          fitting_strength = 100;
-+        else if ( fitting_strength < 0 )
-+          fitting_strength = 0;
-+      }
-+
-+      if ( fitting_strength > 100 )
-+        fitting_strength = 100;
-+
-+      checked_fitting_strength = 1;
-+
-+      if ( snapping_sliding_scale_value != 0 )
-+        fitting_strength = sliding_scale
-+          ( 10, snapping_sliding_scale_value, fitting_strength, 100, ppem );
-+    }
-+
-+    if ( checked_chromeos_style_sharpening_strength == 0 )
-+    {
-+      char *chromeos_style_sharpening_strength_env =
-+        getenv( "INFINALITY_FT_CHROMEOS_STYLE_SHARPENING_STRENGTH" );
-+      if ( chromeos_style_sharpening_strength_env != NULL )
-+      {
-+        sscanf ( chromeos_style_sharpening_strength_env, "%d",
-+                 &chromeos_style_sharpening_strength );
++        if ( ppem > 10 )
++            chromeos_style_sharpening_strength =
++                ( chromeos_style_sharpening_strength * ppem ) / 10;
 +
 +        if ( chromeos_style_sharpening_strength > 100 )
-+          chromeos_style_sharpening_strength = 100;
-+        else if ( chromeos_style_sharpening_strength < 0 )
-+          chromeos_style_sharpening_strength = 0;
-+      }
++            chromeos_style_sharpening_strength = 100;
 +
-+      if ( ppem > 10 )
-+        chromeos_style_sharpening_strength =
-+          ( chromeos_style_sharpening_strength * ppem ) / 10;
++        brightness_value=ftinf->brightness;
++        contrast_value=ftinf->contrast;
+ 
++        windows_style_sharpening_strength=ftinf->windows_style_sharpening_strength;
 +
-+      if ( chromeos_style_sharpening_strength > 100 )
-+        chromeos_style_sharpening_strength = 100;
-+      checked_chromeos_style_sharpening_strength = 1;
++        /* Decrease effect slightly to have a more linear increase in sharpness */
++        windows_style_sharpening_strength =
++            ( ( windows_style_sharpening_strength
++                * windows_style_sharpening_strength ) / 100
++              + windows_style_sharpening_strength ) / 2;
++
++        gamma_correction_lt = f[0];
++        gamma_correction_value = f[1] / 100.0f;
++
++        fringe_filter_strength=ftinf->fringe_filter_strength;
++        grayscale_filter_strength=ftinf->grayscale_filter_strength;
++
++        autohint_horizontal_stem_darken_strength=ftinf->autohint_horizontal_stem_darken_strength;
++        autohint_vertical_stem_darken_strength=ftinf->autohint_vertical_stem_darken_strength;
++
++        global_embolden_x_value=ftinf->global_embolden_x_value;
++        global_embolden_y_value=ftinf->global_embolden_y_value;
++
++        bold_embolden_x_value=ftinf->bold_embolden_x_value;
++        bold_embolden_y_value=ftinf->bold_embolden_y_value;
++    } else {
++        use_known_settings_on_selected_fonts=FALSE;
 +    }
 +
-+
-+    if ( checked_brightness_value == 0)
-+    {
-+      char *brightness_env = getenv( "INFINALITY_FT_BRIGHTNESS" );
-+      if ( brightness_env != NULL )
-+      {
-+        sscanf ( brightness_env, "%d", &brightness_value );
-+        if (brightness_value > 100 )
-+          brightness_value = 100;
-+        else if (brightness_value < -100 )
-+          brightness_value = 0;
-+      }
-+      checked_brightness_value = 1;
-+    }
-+
-+    if ( checked_contrast_value == 0)
-+    {
-+      char *contrast_env = getenv( "INFINALITY_FT_CONTRAST" );
-+      if ( contrast_env != NULL )
-+      {
-+        sscanf ( contrast_env, "%d", &contrast_value );
-+        if (contrast_value > 100 )
-+          contrast_value = 100;
-+        else if (contrast_value < -100 )
-+          contrast_value = 100;
-+      }
-+      checked_contrast_value = 1;
-+    }
- 
--  /* initialize renderer -- init its raster */
--  static FT_Error
--  ft_smooth_init( FT_Renderer  render )
--  {
--    FT_Library  library = FT_MODULE_LIBRARY( render );
-+    if ( checked_windows_style_sharpening_strength == 0)
-+    {
-+      char *windows_style_sharpening_strength_env =
-+        getenv( "INFINALITY_FT_WINDOWS_STYLE_SHARPENING_STRENGTH" );
- 
-+      if ( windows_style_sharpening_strength_env != NULL )
-+      {
-+        sscanf ( windows_style_sharpening_strength_env, "%d",
-+                 &windows_style_sharpening_strength );
- 
--    render->clazz->raster_class->raster_reset( render->raster,
--                                               library->raster_pool,
--                                               library->raster_pool_size );
-+        if ( windows_style_sharpening_strength > 100 )
-+          windows_style_sharpening_strength = 100;
-+        else if ( windows_style_sharpening_strength < 0 )
-+          windows_style_sharpening_strength = 0;
-+      }
-+      /* Decrease effect slightly to have a more linear increase in sharpness */
-+      windows_style_sharpening_strength =
-+        ( ( windows_style_sharpening_strength
-+            * windows_style_sharpening_strength ) / 100
-+          + windows_style_sharpening_strength ) / 2;
-+      checked_windows_style_sharpening_strength = 1;
-+    }
- 
--    return 0;
--  }
-+    if ( checked_gamma_correction_value == 0 )
-+    {
-+      char *gamma_correction_value_env =
-+        getenv( "INFINALITY_FT_GAMMA_CORRECTION" );
- 
-+        if ( gamma_correction_value_env != NULL )
-+      {
-+        float f1, f2;
- 
--  /* sets render-specific mode */
--  static FT_Error
--  ft_smooth_set_mode( FT_Renderer  render,
--                      FT_ULong     mode_tag,
--                      FT_Pointer   data )
--  {
--    /* we simply pass it to the raster */
--    return render->clazz->raster_class->raster_set_mode( render->raster,
--                                                         mode_tag,
--                                                         data );
--  }
-+        if ( strcasecmp( gamma_correction_value_env, "default" ) != 0 )
-+        {
-+          sscanf ( gamma_correction_value_env, "%f %f", &f1, &f2 );
-+          gamma_correction_lt = f1;
-+          gamma_correction_value = f2 / 100.0;
-+        }
-+        if ( gamma_correction_value < .01 ) gamma_correction_value = 1.0;
-+      }
-+      checked_gamma_correction_value = 1;
-+    }
- 
--  /* transform a given glyph image */
--  static FT_Error
--  ft_smooth_transform( FT_Renderer       render,
--                       FT_GlyphSlot      slot,
--                       const FT_Matrix*  matrix,
--                       const FT_Vector*  delta )
--  {
--    FT_Error  error = FT_Err_Ok;
 +    /* set gamma value to 1 if out of range */
 +    if ( slot->face                       &&
 +         slot->face->size                 &&
@@ -4186,182 +5310,7 @@ index 3620550..a92e003 100644
 +    }
 +    else
 +      gamma_correction_value = 1;
- 
- 
--    if ( slot->format != render->glyph_format )
-+    if ( checked_fringe_filter_strength == 0 )
-     {
--      error = FT_THROW( Invalid_Argument );
--      goto Exit;
-+      char *fringe_filter_strength_env =
-+        getenv( "INFINALITY_FT_FRINGE_FILTER_STRENGTH" );
-+      if ( fringe_filter_strength_env != NULL )
-+      {
-+        sscanf ( fringe_filter_strength_env, "%d", &fringe_filter_strength );
 +
-+        if ( fringe_filter_strength > 100 )
-+          fringe_filter_strength = 100;
-+        else if ( fringe_filter_strength < 0 )
-+          fringe_filter_strength = 0;
-+      }
-+      checked_fringe_filter_strength = 1;
-     }
- 
--    if ( matrix )
--      FT_Outline_Transform( &slot->outline, matrix );
- 
--    if ( delta )
--      FT_Outline_Translate( &slot->outline, delta->x, delta->y );
-+    if ( checked_grayscale_filter_strength == 0)
-+    {
-+      char *grayscale_filter_strength_env =
-+        getenv( "INFINALITY_FT_GRAYSCALE_FILTER_STRENGTH" );
-+      if ( grayscale_filter_strength_env != NULL )
-+      {
-+        sscanf ( grayscale_filter_strength_env, "%d",
-+                 &grayscale_filter_strength );
-+        if ( grayscale_filter_strength > 100 ) grayscale_filter_strength = 100;
-+        else if (grayscale_filter_strength < 0 ) grayscale_filter_strength = 0;
-+      }
-+      checked_grayscale_filter_strength = 1;
-+    }
- 
--  Exit:
--    return error;
--  }
- 
-+    if ( checked_autohint_horizontal_stem_darken_strength == 0)
-+    {
-+      char *autohint_horizontal_stem_darken_strength_env =
-+        getenv( "INFINALITY_FT_AUTOHINT_HORIZONTAL_STEM_DARKEN_STRENGTH" );
-+      if ( autohint_horizontal_stem_darken_strength_env != NULL )
-+      {
-+        sscanf ( autohint_horizontal_stem_darken_strength_env, "%d",
-+                 &autohint_horizontal_stem_darken_strength );
- 
--  /* return the glyph's control box */
--  static void
--  ft_smooth_get_cbox( FT_Renderer   render,
--                      FT_GlyphSlot  slot,
--                      FT_BBox*      cbox )
--  {
--    FT_MEM_ZERO( cbox, sizeof ( *cbox ) );
-+        if ( autohint_horizontal_stem_darken_strength > 100 )
-+          autohint_horizontal_stem_darken_strength = 100;
-+        else if ( autohint_horizontal_stem_darken_strength < 0 )
-+          autohint_horizontal_stem_darken_strength = 0;
-+      }
-+      checked_autohint_horizontal_stem_darken_strength = 1;
-+    }
- 
--    if ( slot->format == render->glyph_format )
--      FT_Outline_Get_CBox( &slot->outline, cbox );
--  }
-+    if ( checked_autohint_vertical_stem_darken_strength == 0)
-+    {
-+      char *autohint_vertical_stem_darken_strength_env =
-+        getenv( "INFINALITY_FT_AUTOHINT_VERTICAL_STEM_DARKEN_STRENGTH" );
-+      if ( autohint_vertical_stem_darken_strength_env != NULL )
-+      {
-+        sscanf ( autohint_vertical_stem_darken_strength_env, "%d",
-+                 &autohint_vertical_stem_darken_strength );
- 
-+        if ( autohint_vertical_stem_darken_strength > 100 )
-+          autohint_vertical_stem_darken_strength = 100;
-+        else if ( autohint_horizontal_stem_darken_strength < 0 )
-+          autohint_vertical_stem_darken_strength = 0;
-+      }
-+      checked_autohint_vertical_stem_darken_strength = 1;
-+    }
- 
--  /* convert a slot's glyph image into a bitmap */
--  static FT_Error
--  ft_smooth_render_generic( FT_Renderer       render,
--                            FT_GlyphSlot      slot,
--                            FT_Render_Mode    mode,
--                            const FT_Vector*  origin,
--                            FT_Render_Mode    required_mode )
--  {
--    FT_Error     error;
--    FT_Outline*  outline = &slot->outline;
--    FT_Bitmap*   bitmap  = &slot->bitmap;
--    FT_Memory    memory  = render->root.memory;
--    FT_BBox      cbox;
--    FT_Pos       x_shift = 0;
--    FT_Pos       y_shift = 0;
--    FT_Pos       x_left, y_top;
--    FT_Pos       width, height, pitch;
--#ifndef FT_CONFIG_OPTION_SUBPIXEL_RENDERING
--    FT_Pos       height_org, width_org;
--#endif
--    FT_Int       hmul    = mode == FT_RENDER_MODE_LCD;
--    FT_Int       vmul    = mode == FT_RENDER_MODE_LCD_V;
-+    if ( checked_global_embolden_x_value == 0)
-+    {
-+      char *global_embolden_x_env =
-+        getenv ( "INFINALITY_FT_GLOBAL_EMBOLDEN_X_VALUE" );
-+      if ( global_embolden_x_env != NULL )
-+      {
-+        sscanf ( global_embolden_x_env, "%d", &global_embolden_x_value );
- 
--    FT_Raster_Params  params;
-+        if ( global_embolden_x_value > 128 )
-+          global_embolden_x_value = 128;
-+        else if ( global_embolden_x_value < -128 )
-+          global_embolden_x_value = -128;
-+      }
-+      checked_global_embolden_x_value = 1;
-+    }
-+
-+    if ( checked_global_embolden_y_value == 0)
-+    {
-+      char *global_embolden_y_env =
-+        getenv ( "INFINALITY_FT_GLOBAL_EMBOLDEN_Y_VALUE" );
-+      if ( global_embolden_y_env != NULL )
-+      {
-+        sscanf ( global_embolden_y_env, "%d", &global_embolden_y_value );
-+        if ( global_embolden_y_value > 128 )
-+          global_embolden_y_value = 128;
-+        else if ( global_embolden_y_value < -128 )
-+          global_embolden_y_value = -128;
-+      }
-+      checked_global_embolden_y_value = 1;
-+    }
-+
-+
-+    if ( checked_bold_embolden_x_value == 0)
-+    {
-+      char *bold_embolden_x_env =
-+        getenv ( "INFINALITY_FT_BOLD_EMBOLDEN_X_VALUE" );
-+
-+        if ( bold_embolden_x_env != NULL )
-+      {
-+        sscanf ( bold_embolden_x_env, "%d", &bold_embolden_x_value );
-+        if (bold_embolden_x_value > 128 )
-+          bold_embolden_x_value = 128;
-+        else if (bold_embolden_x_value < -128 )
-+          bold_embolden_x_value = -128;
-+      }
-+      checked_bold_embolden_x_value = 1;
-+    }
-+
-+    if ( checked_bold_embolden_y_value == 0)
-+    {
-+      char *bold_embolden_y_env = getenv ( "INFINALITY_FT_BOLD_EMBOLDEN_Y_VALUE" );
-+
-+      if ( bold_embolden_y_env != NULL )
-+      {
-+        sscanf ( bold_embolden_y_env, "%d", &bold_embolden_y_value );
-+        if (bold_embolden_y_value > 128 )
-+          bold_embolden_y_value = 128;
-+        else if (bold_embolden_y_value < -128 )
-+          bold_embolden_y_value = -128;
-+      }
-+      checked_bold_embolden_y_value = 1;
-+    }
- 
--    FT_Bool  have_outline_shifted = FALSE;
--    FT_Bool  have_buffer          = FALSE;
 +    if( use_various_tweaks     &&
 +        slot->face             &&
 +        slot->face->style_name )
@@ -4374,14 +5323,14 @@ index 3620550..a92e003 100644
 +        chromeos_style_sharpening_strength = 0;
 +      }
 +    }
- 
++
 +    /*if (fitting_strength == 100) scale_value = 1.1;*/
 +
 +#endif
  
      /* check glyph image format */
      if ( slot->format != render->glyph_format )
-@@ -137,26 +3610,119 @@
+@@ -137,26 +2499,119 @@
        goto Exit;
      }
  
@@ -4514,7 +5463,7 @@ index 3620550..a92e003 100644
  
      width  = (FT_ULong)( cbox.xMax - cbox.xMin ) >> 6;
      height = (FT_ULong)( cbox.yMax - cbox.yMin ) >> 6;
-@@ -166,16 +3732,29 @@
+@@ -166,16 +2621,29 @@
      height_org = height;
  #endif
  
@@ -4546,7 +5495,7 @@ index 3620550..a92e003 100644
  #ifdef FT_CONFIG_OPTION_SUBPIXEL_RENDERING
  
      if ( slot->library->lcd_filter_func )
-@@ -185,33 +3764,25 @@
+@@ -185,33 +2653,25 @@
  
        if ( hmul )
        {
@@ -4587,59 +5536,62 @@ index 3620550..a92e003 100644
      /* Required check is (pitch * height < FT_ULONG_MAX),        */
      /* but we care realistic cases only.  Always pitch <= width. */
      if ( width > 0x7FFF || height > 0x7FFF )
-@@ -222,25 +3793,6 @@
+@@ -222,6 +2682,22 @@
        goto Exit;
      }
  
--    /* release old bitmap buffer */
--    if ( slot->internal->flags & FT_GLYPH_OWN_BITMAP )
--    {
--      FT_FREE( bitmap->buffer );
--      slot->internal->flags &= ~FT_GLYPH_OWN_BITMAP;
--    }
--
--    /* allocate new one */
--    if ( FT_ALLOC( bitmap->buffer, (FT_ULong)( pitch * height ) ) )
--      goto Exit;
--    else
--      have_buffer = TRUE;
--
--    slot->internal->flags |= FT_GLYPH_OWN_BITMAP;
--
--    slot->format      = FT_GLYPH_FORMAT_BITMAP;
--    slot->bitmap_left = (FT_Int)x_left;
--    slot->bitmap_top  = (FT_Int)y_top;
--
-     bitmap->pixel_mode = FT_PIXEL_MODE_GRAY;
-     bitmap->num_grays  = 256;
-     bitmap->width      = (unsigned int)width;
-@@ -248,11 +3800,22 @@
-     bitmap->pitch      = pitch;
- 
-     /* translate outline to render it into the bitmap */
--    if ( x_shift || y_shift )
++    bitmap->pixel_mode = FT_PIXEL_MODE_GRAY;
++    bitmap->num_grays  = 256;
++    bitmap->width      = (unsigned int)width;
++    bitmap->rows       = (unsigned int)height;
++    bitmap->pitch      = pitch;
++
++    /* translate outline to render it into the bitmap */
 +#ifdef FT_CONFIG_OPTION_INFINALITY_PATCHSET
 +    if ( align_called == 0 )
-     {
--      FT_Outline_Translate( outline, x_shift, y_shift );
--      have_outline_shifted = TRUE;
++    {
 +#endif
 +    FT_Outline_Translate( outline, -x_shift, -y_shift );
 +    have_outline_shifted = TRUE;
 +#ifdef FT_CONFIG_OPTION_INFINALITY_PATCHSET
-     }
++    }
 +#endif
-+
-+    if ( FT_ALLOC( bitmap->buffer, (FT_ULong)( pitch * height ) ) )
-+      goto Exit;
-+    else
-+      have_buffer = TRUE;
-+
-+    slot->internal->flags |= FT_GLYPH_OWN_BITMAP;
+     /* release old bitmap buffer */
+     if ( slot->internal->flags & FT_GLYPH_OWN_BITMAP )
+     {
+@@ -229,7 +2705,6 @@
+       slot->internal->flags &= ~FT_GLYPH_OWN_BITMAP;
+     }
  
+-    /* allocate new one */
+     if ( FT_ALLOC( bitmap->buffer, (FT_ULong)( pitch * height ) ) )
+       goto Exit;
+     else
+@@ -237,23 +2712,6 @@
+ 
+     slot->internal->flags |= FT_GLYPH_OWN_BITMAP;
+ 
+-    slot->format      = FT_GLYPH_FORMAT_BITMAP;
+-    slot->bitmap_left = (FT_Int)x_left;
+-    slot->bitmap_top  = (FT_Int)y_top;
+-
+-    bitmap->pixel_mode = FT_PIXEL_MODE_GRAY;
+-    bitmap->num_grays  = 256;
+-    bitmap->width      = (unsigned int)width;
+-    bitmap->rows       = (unsigned int)height;
+-    bitmap->pitch      = pitch;
+-
+-    /* translate outline to render it into the bitmap */
+-    if ( x_shift || y_shift )
+-    {
+-      FT_Outline_Translate( outline, x_shift, y_shift );
+-      have_outline_shifted = TRUE;
+-    }
+-
      /* set up parameters */
      params.target = bitmap;
-@@ -299,9 +3862,153 @@
+     params.source = outline;
+@@ -299,9 +2757,153 @@
      if ( error )
        goto Exit;
  
@@ -4722,9 +5674,9 @@ index 3620550..a92e003 100644
 +        if ( autohinted )
 +        {
 +          /* if forcibly set use that, otherwise make a good estimate */
-+          if ( slot->face && !_ft_bitmap_bc ( bitmap,
-+               (float)get_brightness( slot->face->family_name, ppem ) / 300.0,
-+               (float)get_contrast( slot->face->family_name, ppem ) / 300.0 ) )
++          float contrast, brightness;
++          ftinf_get_bc( slot->face->family_name, ppem, &brightness, &contrast);
++          if ( slot->face && !_ft_bitmap_bc ( bitmap, brightness, contrast ) )
 +          {
 +            FT_Bool is_fixed_name = FALSE;
 +
@@ -4741,7 +5693,7 @@ index 3620550..a92e003 100644
 +            /* Adjust brightness / contrast automatically based on stem width */
 +            if ( cur_width != 0 && cur_width < 30 )
 +              cur_width = 30;
-+ 
++
 +            if ( cur_width >= 30 && cur_width <= 60 )
 +            {
 +              float ppem_factor       = sliding_scale ( 5, 11, 0.0, 1.0, ppem );
@@ -4793,7 +5745,7 @@ index 3620550..a92e003 100644
  #else /* !FT_CONFIG_OPTION_SUBPIXEL_RENDERING */
  
      /* render outline into bitmap */
-@@ -359,6 +4066,20 @@
+@@ -359,6 +2961,20 @@
  
  #endif /* !FT_CONFIG_OPTION_SUBPIXEL_RENDERING */
  
@@ -4814,7 +5766,7 @@ index 3620550..a92e003 100644
      /* everything is fine; don't deallocate buffer */
      have_buffer = FALSE;
  
-@@ -366,7 +4087,9 @@
+@@ -366,7 +2982,9 @@
  
    Exit:
      if ( have_outline_shifted )
@@ -4826,10 +5778,10 @@ index 3620550..a92e003 100644
      {
        FT_FREE( bitmap->buffer );
 diff --git a/src/truetype/ttinterp.c b/src/truetype/ttinterp.c
-index d00a0f8..da05b5a 100644
+index 1c1d7de..bd37b44 100644
 --- a/src/truetype/ttinterp.c
 +++ b/src/truetype/ttinterp.c
-@@ -5801,6 +5801,7 @@
+@@ -5792,6 +5792,7 @@
  
        if ( exc->ignore_x_mode                                 &&
             exc->GS.freeVector.x != 0                          &&
@@ -4837,3 +5789,93 @@ index d00a0f8..da05b5a 100644
             !( exc->sph_tweak_flags & SPH_TWEAK_NORMAL_ROUND ) )
          control_value_cutin = 0;
      }
+diff --git a/src/base/ftinf_rh.c b/src/base/ftinf_rh.c
+index 4cd6f1a..606b567 100644
+--- a/src/base/ftinf_rh.c
++++ b/src/base/ftinf_rh.c
+@@ -1,5 +1,5 @@
+ /* ANSI-C code produced by gperf version 3.1 */
+-/* Command-line: gperf ftinf_rh.gperf  */
++/* Command-line: gperf --output-file=ftinf_rh.c ftinf_rh.gperf  */
+ /* Computed positions: -k'1,$' */
+ 
+ #if !((' ' == 32) && ('!' == 33) && ('"' == 34) && ('#' == 35) \
+@@ -612,13 +612,11 @@ ftinf_rules( const char *name ){
+         char buf[max_wlen+1];
+         int len=strlen( name );
+         if( len <= max_wlen ){
+-            const sa_rules_t *p;
+             int i;
+             for( i=0; i<len; ++i )
+                 buf[i]=tolower( name[i] );
+             buf[len]='\0';
+-            p=_rules_get( buf, len );
+-            if( p ) return p;
++            return _rules_get( buf, len );
+         }
+     }
+     return NULL;
+diff --git a/src/base/ftinf_rh.gperf b/src/base/ftinf_rh.gperf
+index e25f9b6..9fd8aab 100644
+--- a/src/base/ftinf_rh.gperf
++++ b/src/base/ftinf_rh.gperf
+@@ -269,13 +269,11 @@ ftinf_rules( const char *name ){
+         char buf[max_wlen+1];
+         int len=strlen( name );
+         if( len <= max_wlen ){
+-            const sa_rules_t *p;
+             int i;
+             for( i=0; i<len; ++i )
+                 buf[i]=tolower( name[i] );
+             buf[len]='\0';
+-            p=_rules_get( buf, len );
+-            if( p ) return p;
++            return _rules_get( buf, len );
+         }
+     }
+     return NULL;
+diff --git a/src/base/ftinf_sh.c b/src/base/ftinf_sh.c
+index 7fc2222..87d2ff8 100644
+--- a/src/base/ftinf_sh.c
++++ b/src/base/ftinf_sh.c
+@@ -1,5 +1,5 @@
+ /* ANSI-C code produced by gperf version 3.1 */
+-/* Command-line: gperf ftinf_sh.gperf  */
++/* Command-line: gperf --output-file=ftinf_sh.c ftinf_sh.gperf  */
+ /* Computed positions: -k'1,$' */
+ 
+ #if !((' ' == 32) && ('!' == 33) && ('"' == 34) && ('#' == 35) \
+@@ -449,13 +449,11 @@ ftinf_settings( const char *name ){
+         char buf[max_wlen+1];
+         int len=strlen( name );
+         if( len <= max_wlen ){
+-            const ftinf_t *p;
+             int i;
+             for( i=0; i<len; ++i )
+                 buf[i]=tolower( name[i] );
+             buf[len]='\0';
+-            p=_settings_get( buf, len );
+-            if( p ) return p;
++            return _settings_get( buf, len );
+         }
+     }
+     return NULL;
+diff --git a/src/base/ftinf_sh.gperf b/src/base/ftinf_sh.gperf
+index ba5fc0a..5f6e0ae 100644
+--- a/src/base/ftinf_sh.gperf
++++ b/src/base/ftinf_sh.gperf
+@@ -250,13 +250,11 @@ ftinf_settings( const char *name ){
+         char buf[max_wlen+1];
+         int len=strlen( name );
+         if( len <= max_wlen ){
+-            const ftinf_t *p;
+             int i;
+             for( i=0; i<len; ++i )
+                 buf[i]=tolower( name[i] );
+             buf[len]='\0';
+-            p=_settings_get( buf, len );
+-            if( p ) return p;
++            return _settings_get( buf, len );
+         }
+     }
+     return NULL;

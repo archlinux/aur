@@ -1,50 +1,81 @@
-# Maintainer: hadrons123 <piruthviraj@gmail.com>
-# Maintainer: Shanto <shanto@hotmail.com>
-# Maintainer: Maarten de Boer <maarten@ikfixjewebstek.nl>
-# Contributor: JIN Xiao-Yong <jinxiaoyong@gmail.com>
-# Contributor: Andre Fettouhi <A.Fettouhi@gmail.com>
+# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: JIN Xiao-Yong <jinxiaoyong@gmail.com>
+# Maintainer: bohoomil <@zoho.com>
 
-pkgname=freetype2-infinality
-pkgver=2.6
-pkgrel=2
-pkgdesc="TrueType font rendering library with infinality patch"
-arch=(i686 x86_64)
-license=('GPL')
-url="https://github.com/bohoomil/fontconfig-ultimate"
-depends=('zlib' 'bzip2' 'sh')
-optdepends=(
-	'fontconfig-infinality: Infinality package for fontconfig (required)'
-)
-conflicts=('freetype2')
-provides=("freetype2=$pkgver")
-options=('!libtool')
-install='install.sh'
-backup=('etc/profile.d/infinality-settings.sh')
-source=(
-	"http://downloads.sourceforge.net/sourceforge/freetype/freetype-${pkgver}.tar.bz2"
-	"infinality-settings.sh"
-	"01-freetype-2.6-enable-valid.patch"
-	"02-upstream-2015.08.24.patch.xz"
-	"03-infinality-2.6-2015.08.24.patch")
-sha256sums=('8469fb8124764f85029cc8247c31e132a2c5e51084ddce2a44ea32ee4ae8347e'
-            '21192ce47be46ccd44e8aeea99754d4e5e38cb52717f752d67c319c74fea2716'
-            '086c9874ba5217dab419ac03dbc5ad6480aaa67b3c9d802f7181d8a3e007f8eb'
-            '62eaa124f09916e237be994890178fb041b3648223f08429566df3a962971d8a'
-            '241de84ca25d7ff106a3ebd5121d12a315abe5a72771957bd674e8b2e41c97d2')
+pkgname=freetype2-infinality-ultimate
+pkgver=2.6.2
+pkgrel=1
+_patchrel=2015.12.05
+pkgdesc="TrueType font rendering library with Infinality patches and custom settings."
+arch=('armv7h' 'i686' 'x86_64')
+changelog=CHANGELOG
+license=('GPL' 'MIT')
+groups=('infinality-bundle')
+url="http://freetype.sourceforge.net"
+depends=('zlib' 'bzip2' 'sh' 'xorg-xrdb' 'libpng' 'harfbuzz')
+conflicts=('freetype2' 'freetype2-infinality')
+provides=("freetype2=$pkgver" 'freetype2-infinality' 'freetype2-infinality-ultimate')
+install='infinality.install'
+source=(http://downloads.sourceforge.net/sourceforge/freetype/freetype-${pkgver}.tar.bz2
+        "01-freetype-${pkgver}-enable-valid.patch"
+        "02-upstream-${_patchrel}.patch"
+        "03-infinality-${pkgver}-${_patchrel}.patch"
+         xft-settings.sh
+         infinality-settings.sh
+         infinality-settings-generic)
 
-build() {
-	cd "${srcdir}/freetype-${pkgver}"
-	
-	patch -Np1 -i ../01-freetype-2.6-enable-valid.patch
-	patch -Np1 -i ../02-upstream-2015.08.24.patch
-	patch -Np1 -i ../03-infinality-2.6-2015.08.24.patch
+sha1sums=('29c22b85b77cb22cf95c13e7062e21f39fe6b17a'
+          'abf7a8f726ad6359533651a8942636880febf9f6'
+          '319c377ef4e3f6bc2f52acb893c9b880ef9578b4'
+          'a19a000e778a0b29b0ef0623d566b12187b7f24a'
+          'a1859f2eacae2046a9ef705ac2bcc4bdf4fd9717'
+          '5624c40049a73f8c75d01537212b4c7040f1761f'
+          '4d219670cb9641b649f6ba0f2a799006f7c3c3c5')
 
-	./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc
-	make
+prepare() {
+  cd "freetype-${pkgver}"
+
+  patches=("01-freetype-${pkgver}-enable-valid.patch"
+           "02-upstream-${_patchrel}.patch"
+           "03-infinality-${pkgver}-${_patchrel}.patch")
+
+  # infinality & post release fixes
+  for patch in "${patches[@]}"; do
+    patch -Np1 -i ${srcdir}/"${patch}"
+  done
+
 }
 
+build() {
+  cd "freetype-${pkgver}"
+
+  ./configure \
+    --prefix=/usr \
+    --disable-static \
+    --with-harfbuzz \
+    --with-png
+
+  make
+}
+
+#check() {
+  #cd "freetype-${pkgver}"
+  #make -k check
+#}
+
 package() {
-	cd "${srcdir}/freetype-${pkgver}"
-	make DESTDIR="${pkgdir}" install
-	install -D -T "${srcdir}/infinality-settings.sh" "${pkgdir}/etc/profile.d/infinality-settings.sh"
+  cd "freetype-${pkgver}"
+
+  make DESTDIR="${pkgdir}" install
+
+  # freetype2 runtime settings
+  install -m755 -d "${pkgdir}/etc/X11/xinit/xinitrc.d"
+  install -m755 "${srcdir}/xft-settings.sh" \
+    "${pkgdir}/etc/X11/xinit/xinitrc.d/xft-settings.sh"
+
+  install -m755 -d "${pkgdir}/usr/share/doc/freetype2-infinality-ultimate"
+  install -m755 "${srcdir}/infinality-settings.sh" \
+    "${pkgdir}/usr/share/doc/freetype2-infinality-ultimate/infinality-settings.sh"
+  install -m755 "${srcdir}/infinality-settings-generic" \
+    "${pkgdir}/usr/share/doc/freetype2-infinality-ultimate/infinality-settings-generic"
 }
