@@ -2,7 +2,7 @@
 # Contributor: Francois Boulogne <fboulogne@april.org>
 
 pkgname=paperwork
-pkgver=0.2.5
+pkgver=0.3.0.1
 pkgrel=1
 pkgdesc='A tool to make papers searchable - scan & forget'
 arch=('any')
@@ -11,12 +11,13 @@ license=('GPL3')
 depends=('pygobject2-devel' 'pygtk' 'python2-pycountry'
          'python2-poppler' 'python2-pyinsane-git' 'python2-pyocr'
          'python2-levenshtein' 'python2-whoosh' 'python2-pyenchant'
-         'python2-joblib' 'python2-numpy' 'python2-scipy' 'python2-scikit-learn' 'python2-scikit-image'
-         'python2-gobject' 'python2-nltk' 'python2-termcolor' 'glade')
+         'python2-joblib' 'python2-numpy' 'python2-scipy' 'python2-scikit-learn'
+         'python2-scikit-image' 'python2-gobject' 'python2-nltk'
+         'python2-termcolor' 'python2-simplebayes' 'glade')
 makedepends=('python2' 'python2-setuptools')
 optdeps=('cuneiform: alternativer OCR')
 source=("https://github.com/jflesch/paperwork/archive/${pkgver}.zip")
-md5sums=('1750e51b081b425218d1a87eb14a0dc0')
+md5sums=('de4953d721f7c7ab9bc55f5226cedb5b')
 install=paperwork.install
 
 build() {
