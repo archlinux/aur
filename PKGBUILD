@@ -38,6 +38,7 @@ query-version() {
 }
 
 pkgver() {
+  cd "$_gitname"
   find -iname '*.json' -exec sed -n \
     's/.*"version"\s*:\s*"\([[:digit:].]*\)"\s*,.*/\1/p' \
     '{}' \; -quit 2>/dev/null | tr '\n' '.'
