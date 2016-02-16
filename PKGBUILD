@@ -1,6 +1,6 @@
 _name='zsh-autosuggestions'
 pkgname="${_name}-git"
-pkgver=v0.2.9
+pkgver=v0.2.9.r0.g0faa2b6
 pkgrel=1
 pkgdesc='Fish shell like fast/unobtrusive autosuggestions for zsh'
 url='https://github.com/tarruda/zsh-autosuggestions'
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
    cd "${srcdir}/${_name}"
-   git describe --tags
+   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
