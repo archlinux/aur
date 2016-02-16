@@ -3,7 +3,7 @@
 
 pkgname='google-authenticator-libpam-git'
 
-pkgver=r150.f0d1574
+pkgver=r173.43ab972
 pkgver() {
   cd "$srcdir/$pkgname"
   ( set -o pipefail
