@@ -2,8 +2,8 @@
 # Contributor: Giulio Guzzinati <guzzinati.giulio at gmail>
 
 pkgname=imagej
-pkgver=1.49o
-_pkgver=148
+pkgver=1.50g
+_pkgver=149
 pkgrel=1
 epoch=2
 pkgdesc="Image manipulation software for scientists"
@@ -19,8 +19,8 @@ source=("http://rsbweb.nih.gov/ij/download/zips/ij$_pkgver.zip"
         "imagej.desktop"
         "microscope.xpm")
 noextract=("ij$_pkgver.zip")
-md5sums=('57b5b52a5a6ce5a21f1553cf7a02b4a5'
-         'SKIP'
+md5sums=('a0998c0e6aec078a8f9681f5088c41f2'
+         'cf46d5ad93192317ef6545a73e91d497'
          '7dc3fd02120f699204b3d85a7e383082'
          '9d60878b6adad0e1895ce875bf299147'
          'e7a7cef1b44ad3a8752ba63885fd88fb')
