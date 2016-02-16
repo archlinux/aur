@@ -1,8 +1,8 @@
 # Maintainer: Fabien JUIF <fabien.juif@gmail.com>
 _application=shellshape
 pkgname=gnome-shell-extension-${_application}-git
-pkgrel=2
-pkgver=r306.839fe66
+pkgrel=1
+pkgver=r308.481d6d8
 license=('GPL3')
 pkgdesc="Tiling window manager extension for gnome-shell."
 url="http://gfxmonk.net/shellshape"
