@@ -4,14 +4,14 @@
 pkgbase=vbam
 pkgname=('vbam-sdl' 'vbam-gtk' 'vbam-wx')
 pkgver=2.0.0b1
-pkgrel=2
+pkgrel=3
 pkgdesc='Nintendo GameBoy Advance emulator'
 arch=('i686' 'x86_64')
 url='http://vba-m.com'
 license=('GPL2')
 depends=('sdl' 'sfml' 'zip')
-makedepends=('cmake' 'desktop-file-utils' 'ffmpeg' 'freetype2' 'imagemagick'
-             'glew' 'gtkglextmm' 'libjpeg' 'libpng' 'libsndfile' 'libxrandr'
+makedepends=('cmake' 'desktop-file-utils' 'freetype2' 'imagemagick' 'glew'
+             'gtkglextmm' 'libjpeg' 'libpng' 'libsndfile' 'libxrandr'
              'openal' 'subversion' 'wxgtk')
 makedepends_i686=('nasm')
 options=('!emptydirs')
@@ -34,7 +34,7 @@ build() {
               -DCMAKE_SKIP_RPATH='TRUE' \
               -DENABLE_GTK='TRUE' \
               -DENABLE_WX='TRUE' \
-              -DENABLE_FFMPEG='TRUE' \
+              -DENABLE_FFMPEG='FALSE' \
               -DENABLE_LINK='TRUE'"
 
   if [[ $CARCH == i686 ]]; then
@@ -71,7 +71,7 @@ install='vbam-gtk.install'
 }
 
 package_vbam-wx() {
-depends+=('ffmpeg' 'wxgtk')
+depends+=('wxgtk')
 conflicts=('vbam-gtk')
 install='vbam-wx.install'
 
