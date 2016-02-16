@@ -1,12 +1,12 @@
 # Maintainer: Michael Egger <gcarq@archlinux.info>
 pkgname=indicator-multiload
 pkgver=0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A System Load indicator for GTK 3."
 arch=('i686' 'x86_64')
 url="https://launchpad.net/indicator-multiload"
 license=('GPL')
-depends=('gtk3' 'gnome-common' 'libindicator-gtk3' 'libappindicator-gtk3')
+depends=('gtk3' 'gnome-common' 'libindicator-gtk3' 'libappindicator-gtk3' 'libgtop')
 makedepends=('gcc' 'make')
 options=('strip')
 install=indicator-multiload.install
