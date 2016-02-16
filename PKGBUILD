@@ -1,7 +1,7 @@
 # Maintainer: Danny Su <contact@dannysu.com>
 
 pkgname=duplicati-latest
-pkgver=2.0.0.98
+pkgver=2.0.0.99
 pkgrel=1
 pkgdesc='Free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers. Duplicati is open source software, written in mono and available for Windows, Linux, and Mac OS X.'
 arch=('i686' 'x86_64')
@@ -10,13 +10,13 @@ install=duplicati.install
 license=('LGPL')
 depends=('mono' 'gtk-sharp-2')
 optdepends=()
-source=("http://updates.duplicati.com/preview/duplicati-2.0.0.98_preview_2016-01-27.zip" duplicati_user.service)
+source=("http://updates.duplicati.com/preview/duplicati-2.0.0.99_preview_2016-02-15.zip" duplicati_user.service)
 
-sha1sums=('a05bdfa2faa9de9f2d98c265507868942f736d7d'
+sha1sums=('ee6fb18ee5cd2095bc176e78f08dcd4f83ef13df'
           'cf23e9cdc0f72d1b52288579f169c4476aa26a0f')
 
 package() {
-  rm "$srcdir/duplicati-2.0.0.98_preview_2016-01-27.zip"
+  rm "$srcdir/duplicati-2.0.0.99_preview_2016-02-15.zip"
 
   mkdir -p "$pkgdir/opt/duplicati-latest"
   cp -r . "$pkgdir/opt/duplicati-latest"
