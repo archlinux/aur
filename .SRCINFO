@@ -1,7 +1,7 @@
 pkgbase = python2-pyupcean
 	pkgdesc = PyUPC-EAN is a barcode library/module for python2.
-	pkgver = 2.7.11
-	pkgrel = 3
+	pkgver = 2.7.12
+	pkgrel = 1
 	url = https://github.com/GameMaker2k/PyUPC-EAN/
 	arch = any
 	license = BSD
@@ -10,11 +10,11 @@ pkgbase = python2-pyupcean
 	replaces = python2-upcean
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/GameMaker2k/PyUPC-EAN/archive/89387c87e84d678d4ae59760687d7d8d91bd6fb4.tar.gz
-	md5sums = 5d976a63199e0c4442a833c949233bd6
-	sha256sums = 14fc72f6f8fa7ddccb121f7d0a29b0043ee99a5e84759d406aee178d800d17cd
-	sha384sums = 022afc7845d2c5916c287520c2391166e07ef2175e1f829464662feaac7ad35bba62c9fd264905a197f9b71e5cfdff09
-	sha512sums = 8de80dd3bf5e37c3f373905369848300ab0ab52dc742dda4b3b97ff1a58b9aaa69524d4321bd842dc675625849dba659abdd77fa9d252c4adba89dbe38d3a905
+	source = https://github.com/GameMaker2k/PyUPC-EAN/archive/325a9a29e6030e6c15964a62c21cca21f2aed3e8.tar.gz
+	md5sums = aa90949f003146483e7438194bc6048f
+	sha256sums = 2ecccd82220cd307f938f21634cc6f47e6f9bd8c8c6098be8f150e2d8cb912d2
+	sha384sums = 5199fbd96911e13cf186fd90c782173339b39b9ef0bd72c80949a1919f88d8b7bdc25186545fb39761015d4cf22678f0
+	sha512sums = aee641664776a6dbcd13d8c21cb65e0cd5a9d969bce309299c2a5f59fce42b327867fc4303a4ca09e02d5b60d8141acf490fa14bc594477eed8939690f792aff
 
 pkgname = python2-pyupcean
 
