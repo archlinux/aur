@@ -1,8 +1,9 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=spirv-tools-git
+provides=('spirv-tools')
 pkgver=r436.dd8a661
-pkgrel=1
+pkgrel=2
 pkgdesc='API and commands for processing SPIR-V modules'
 url='https://github.com/KhronosGroup/SPIRV-Tools'
 arch=('i686' 'x86_64')
