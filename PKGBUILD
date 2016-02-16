@@ -58,9 +58,6 @@ package() {
   cp -a "${srcdir}/locales" "${pkgdir}/opt/${pkgname}/"
   cp -a "${srcdir}/node_modules" "${pkgdir}/opt/${pkgname}/"
   cp -a "${srcdir}/setup-images" "${pkgdir}/opt/${pkgname}/"
-  cp -a "${srcdir}/subtitles" "${pkgdir}/opt/${pkgname}/"
-  cp -a "${srcdir}/tpl" "${pkgdir}/opt/${pkgname}/"
-  cp -a "${srcdir}/web" "${pkgdir}/opt/${pkgname}/"
 
   # Link to program
   ln -s "/opt/${pkgname}/streamstudio" "${pkgdir}/usr/bin/streamstudio"
