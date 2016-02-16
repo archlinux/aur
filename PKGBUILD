@@ -1,7 +1,9 @@
 # Contributor: Chia-Wei Li <dreamcwli@gmail.com>
+# Contributor: Wei-Ning Huang <aitjcize@gmail.com>
+# Contributor: Yu-Shin Huang <hyslion AT gmail.com>
 
 pkgname=pcmanx-gtk2-git
-pkgver=20130709
+pkgver=717.ad0af3a
 pkgrel=1
 pkgdesc="A gtk+ based free BBS client"
 url="http://code.google.com/p/pcmanx-gtk2"
@@ -12,35 +14,28 @@ makedepends=('autoconf' 'automake' 'git' 'intltool')
 options=('!libtool')
 provides=('pcmanx-gtk2')
 conflicts=('pcmanx-gtk2')
+source=('git://github.com/pcman-bbs/pcmanx')
+md5sums=('SKIP')
+_gitname='pcmanx'
 
-_gitroot="https://code.google.com/p/pcmanx-gtk2/"
-_gitname="pcmanx-gtk2"
+pkgver() {
+    cd ${srcdir}/${_gitname}
+    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
 
-build() {
-    cd ${srcdir}
-
-    if [ -d $_gitname ]; then
-        (cd $_gitname && git pull origin)
-    else
-        git clone $_gitroot $_gitname
-        cd $_gitname
-    fi
-
-    msg "Git checkout done or server timeout"
-    msg "Starting make..."
+prepare() {
+    cd ${srcdir}/${_gitname}
 
     ./autogen.sh
-    ./configure --prefix=/usr --enable-iplookup || return 1
-    make || return 1
+    ./configure --prefix=/usr --enable-iplookup
+}
+
+build() {
+    cd ${srcdir}/${_gitname}
+    make
 }
 
 package() {
-    cd ${srcdir}/$_gitname
-    make DESTDIR=${pkgdir} install || return 1
-}
-
-post_upgrade() {
-    echo "To enable IP location lookup, you need to download"
-    echo "qqwry.dat (from eg. http://www.cz88.net/fox/) and"
-    echo "install it as ~/.pcmanx/qqwry.dat (case sensitive)."
+    cd ${srcdir}/${_gitname}
+    make DESTDIR=${pkgdir} install
 }
