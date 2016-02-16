@@ -1,7 +1,7 @@
 # Maintainer: Simon Hanna <simon dot hanna AT serve-me DOT info>
 
 pkgname=('python-django-crispy-forms' 'python2-django-crispy-forms')
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Provides DRY django forms"
 arch=(any)
@@ -9,29 +9,14 @@ url="https://github.com/maraujop/django-crispy-forms"
 license=('MIT')
 options=(!emptydirs)
 source=("https://github.com/maraujop/django-crispy-forms/archive/${pkgver}.tar.gz")
-sha256sums=('a790f85b917c93f3895cda6c36716e6ae749104ea9b44871400d94b82f879e0e')
+sha256sums=('dc20b4ce41cc352917a32042f763f7d450deee4b981521530ad8b71c8d13b78e')
 
 makedepends=('python-setuptools' 'python2-setuptools')
 checkdepends=('python-tox')
 
-prepare() {
-  cp -a django-crispy-forms-$pkgver{,-py2}
-}
-
-build() {
-  cd "$srcdir/django-crispy-forms-$pkgver"
-  python setup.py build
-
-  cd "$srcdir/django-crispy-forms-$pkgver-py2"
-  python2 setup.py build
-}
-
 check() {
   cd "$srcdir/django-crispy-forms-$pkgver"
-  tox -e py35-django18
-
-  cd "$srcdir/django-crispy-forms-$pkgver-py2"
-  tox -e py27-django18
+  tox -e py35-django19 py27-django19
 }
 
 package_python-django-crispy-forms() {
