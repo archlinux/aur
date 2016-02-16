@@ -1,0 +1,9 @@
+post_install() {
+
+  # Instructions to set-up unprivileged access
+  echo "==> To set up unprivileged access, follow"
+  echo "==> the instructions found at"
+  echo "==> https://github.com/ryanbinns/ttwatch#setup-for-unprivileged-access"
+  
+}
+# vim:set ts=2 sw=2 ft=sh et:
