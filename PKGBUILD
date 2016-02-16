@@ -1,14 +1,12 @@
-# $Id: PKGBUILD 231230 2015-02-10 18:55:25Z anatolik $
-# Maintainer (Arch): Tobias Powalowski <tpowa@archlinux.org>
-# Maintainer (Arch): Thomas Baechler <thomas@archlinux.org>
 # Maintainer: André Silva <emulatorman@parabola.nu>
 # Contributor: Luke Shumaker <lukeshu@sbcglobal.net>
 
+# Based on linux-manpages package
+
 pkgname=linux-libre-manpages
-_pkgver=4.1-gnu
+_pkgver=4.4-gnu
 
 _srcname=linux-${_pkgver%-*}
-_archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}
 pkgrel=1
 pkgdesc="Kernel hackers manual - Section 9 manpages that comes with the Linux-libre kernel"
@@ -16,11 +14,16 @@ arch=('any')
 url="http://linux-libre.fsfla.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl')
-replaces=('kernel26-manpages' 'kernel26-libre-manpages' 'linux-manpages')
-conflicts=('kernel26-manpages' 'kernel26-libre-manpages' 'linux-manpages')
-provides=('kernel26-manpages' 'kernel26-libre-manpages' "linux-manpages=${_archpkgver}")
-source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/linux-libre-${_pkgver}.tar.xz")
-sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324')
+replaces=('linux-manpages')
+conflicts=('linux-manpages')
+provides=('linux-manpages')
+source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/linux-libre-${_pkgver}.tar.xz"
+        "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/linux-libre-${_pkgver}.tar.xz.sign")
+sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
+            'SKIP')
+validpgpkeys=(
+              '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
+)
 
 build() {
   cd "${srcdir}/${_srcname}"
@@ -29,8 +32,6 @@ build() {
 
 package() {
   install -d "${pkgdir}/usr/share/man/man9/"
-  install "${srcdir}"/${_srcname}/Documentation/DocBook/man/*.9.gz \
-    "${pkgdir}/usr/share/man/man9/"
-
+  find "${srcdir}"/${_srcname}/Documentation/DocBook/man -type f -name *.9.gz -exec install {} "${pkgdir}/usr/share/man/man9/" \;
   find "${pkgdir}" -type f -exec chmod 644 {} \;
 }
