@@ -2,12 +2,12 @@
 
 pkgname="torque"
 pkgver=6.0.0.1
-pkgrel=1
+pkgrel=2
 buildnr="1449528029_21cc3d8"
 pkgdesc='An open source resource manager providing control over batch jobs and distributed compute nodes'
 arch=('i686' 'x86_64')
 url="http://www.adaptivecomputing.com/products/open-source/torque-resource-manager/"
-license=('PBS')
+license=('custom')
 depends=('openssh' 'libxml2' 'tk')
 makedepends=('make' 'gcc')
 backup=(var/spool/torque/server_name var/spool/torque/mom_priv/config var/spool/torque/serv_priv/{nodes,serverdb})
@@ -25,4 +25,6 @@ build() {
 package() {
 	cd "$srcdir/$pkgname-$pkgver-$buildnr"
 	make DESTDIR="$pkgdir/" install
+	# License
+	install -D -m644 "${srcdir}/$pkgname-$pkgver-$buildnr/"PBS_License.txt "${pkgdir}/usr/share/licenses/torque/PBS_License.txt"
 }
