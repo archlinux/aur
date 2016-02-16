@@ -1,7 +1,7 @@
 # Maintainer: Kazuki Przyborowski <kazukiprzyborowski[at]gmail[dot]com>
 pkgname=python-pyupcean
-pkgver=2.7.11
-pkgrel=3
+pkgver=2.7.12
+pkgrel=1
 pkgdesc="PyUPC-EAN is a barcode library/module for python3."
 arch=('any')
 url="https://github.com/GameMaker2k/PyUPC-EAN/"
