@@ -14,7 +14,7 @@ md5sums=('SKIP')
 depends=('bash' 'curl')
 builddepends=('git')
 optdepends=('gnupg: to verify signatures')
-conflict=('rust' 'rust-nightly' 'rust-nightly-bin' 'rust-beta-bin' 'rust-git')
+conflict=('rust' 'rust-nightly' 'rust-nightly-bin' 'rust-git' 'cargo' 'cargo-bin')
 provides=('rust' 'cargo')
 
 prepare() {
