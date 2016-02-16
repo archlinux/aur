@@ -2,26 +2,25 @@
 
 pkgbase=linux-rpi2
 _commit=0108373f573aa71e3f2bf48bdccafd09d478ecf5
-_srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
 _desc="Raspberry Pi 2"
 pkgver=4.1.17
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=('armv7h')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git')
 options=('!strip')
-source=("https://github.com/raspberrypi/linux/archive/${_commit}.tar.gz"
+source=("linux::git://github.com/raspberrypi/linux#commit=$_commit"
         'config.txt'
         'cmdline.txt')
-md5sums=('0767555c2df6efc19e6b905ae2deccf1'
+md5sums=('SKIP'
          '9a3c82da627b317ec79c37fd6afba569'
          '60bc3624123c183305677097bcd56212')
 
 prepare() {
-  cd "${srcdir}/${_srcname}"
+  cd "${srcdir}/linux"
 
   msg "Prepare to build"
   KERNEL=kernel7
@@ -37,7 +36,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${_srcname}"
+  cd "${srcdir}/linux"
 
   msg "Building!"
   make ${MAKEFLAGS} zImage modules dtbs
@@ -53,7 +52,7 @@ _package() {
   backup=('boot/config.txt' 'boot/cmdline.txt')
   replaces=('linux-raspberrypi-latest')
 
-  cd "${srcdir}/${_srcname}"
+  cd "${srcdir}/linux"
 
   KARCH=arm
 
@@ -104,7 +103,7 @@ _package-headers() {
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
-  cd "${srcdir}/${_srcname}"
+  cd "${srcdir}/linux"
   install -D -m644 Makefile \
     "${pkgdir}/usr/lib/modules/${_kernver}/build/Makefile"
   install -D -m644 kernel/Makefile \
