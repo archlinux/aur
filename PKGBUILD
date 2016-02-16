@@ -2,7 +2,7 @@
 
 pkgname=firefox-extension-ublock-origin
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An efficient blocker add-on for your browser. Fast, potent, and lean.'
 url=https://github.com/gorhill/uBlock
 arch=('any')
