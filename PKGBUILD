@@ -8,7 +8,7 @@
 
 pkgbase=handbrake-git
 pkgname=('handbrake-gtk-git' 'handbrake-cli-git')
-pkgver=r7018
+pkgver=r7024
 pkgrel=1
 pkgdesc="Multiplatform, multithreaded DVD to MPEG-4/H264/Theora converter"
 arch=('i686' 'x86_64')
@@ -39,7 +39,7 @@ build() {
 
   ./configure --force --build="build" --prefix=/usr \
 	      --disable-gtk-update-checks --launch-jobs=0 --fetch=curl \
-	      --disable-x265
+	      --enable-x265
 
   # Create build-specific temporary directory for ffmpeg
   install -d -m755 "build/build_tmp"
