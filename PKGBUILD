@@ -5,12 +5,13 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=dilay
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A 3D sculpting application that provides an intuitive workflow using a number of powerful modeling tool"
 arch=('i686' 'x86_64')
 url="http://abau.org/dilay/index.html"
 license=('GPL')
+makedepends=('gendesk')
 depends=('glm' 'qt5-base')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/abau/dilay/archive/${pkgver}.tar.gz")
 
@@ -31,4 +32,4 @@ package() {
 	install -Dm644 logoBg.svg "$pkgdir/usr/share/pixmaps/$pkgname.svg"
 }
 
-sha1sums=('5c4af7c6974e7c8a777ce45cefa9f5b43a3b4be2')
+sha1sums=('3eef34fcb3b76336d428bc37cfe66b592ad01776')
