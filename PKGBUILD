@@ -3,20 +3,20 @@
 pkgname=cmd-markdown
 _pkgname="${pkgname/-/_}"
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An enhanced Markdown editor with MathJax, flowchart & sequence-diagram support'
 arch=('x86_64' 'i686')
-url=('https://www.zybuluo.com/cmd')
+url='https://www.zybuluo.com/cmd'
 license=('custom')
-depends=('nss' 'gconf' 'libnotify' 'gtk2' 'alsa-lib' 'libxtst')
+depends=('nss' 'gconf' 'libnotify' 'gtk2' 'alsa-lib' 'libxtst' 'libudev.so.0')
 install="${pkgname}.install"
 source=("${pkgname}.desktop")
 source_x86_64=('http://static.zybuluo.com/cmd_markdown_linux64.tar.gz')
 source_i686=('http://static.zybuluo.com/cmd_markdown_linux32.tar.gz')
 md5sums=('c1596b758328bb4797d867dfdb7d2633')
-md5sums_x86_64=('024adc86966d8219a2fcc2706206606a')
-md5sums_i686=('169d1c24a85d98bf86562233cd67e11e')
-options=(!strip)
+md5sums_x86_64=('4d38b6773483db5d838a0cf6848ee34e')
+md5sums_i686=('1c04488287f325a5051878c7cb4aef4c')
+options=('!strip')
 
 if [ "$CARCH" == "x86_64" ]; then
     DIR="${_pkgname}_linux64"
@@ -31,11 +31,6 @@ prepare(){
 }
 
 package(){
-    if [ ! -e /usr/lib/libudev.so.0 ]; then
-        mkdir -p ${pkgdir}/usr/lib
-        ln -s /usr/lib/libudev.so "${pkgdir}/usr/lib/libudev.so.0"
-    fi
-
     mkdir -p "$pkgdir/usr/share/applications"
     install -Dm644 "${pkgname}.desktop" "$pkgdir/usr/share/applications/"
 
