@@ -1,5 +1,5 @@
 pkgname=hplip-raw-ledm
-pkgver=3.15.7
+pkgver=3.16.2
 pkgrel=1
 pkgdesc="HPLIP with patch for uncompressed scanning on LEDM-based peripherals"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ install=hplip.install
 source=(http://downloads.sourceforge.net/hplip/hplip-$pkgver.tar.gz{,.asc}
         disable_upgrade.patch
         hpscan-ledm-raw.patch)
-sha1sums=('f84e33b749ef34939c11b253767686c00ca2c30c'
+sha1sums=('28efa845832c77e7015442e7934fc01cc5c4b346'
           'SKIP'
           '2348bcbca0c52dc09cceb47ed13281a4ccb9d83e'
           '7e4b095d8bf9a0af9f0d035ca37691f733e271e0')
