@@ -7,12 +7,13 @@
 
 pkgname=vlock-original
 pkgver=2.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A small console locking program"
 url="http://cthulhu.c3d2.de/~toidinamai/vlock/vlock.html"
 arch=('i686' 'x86_64')
 license=('GPL2')
 depends=('pam')
+makedepends=('git')
 install=$pkgname.install
 source=("git+git://repo.or.cz/vlock.git#tag=vlock-${pkgver}")
 md5sums=('SKIP')
