@@ -2,7 +2,7 @@
 
 _pkgname=baikal
 pkgname=${_pkgname}-git
-pkgver=r522.3102b80%
+pkgver=r522.3102b80
 pkgrel=1
 pkgdesc="Baïkal is a Calendar+Contacts server"
 url="http://baikal-server.com/"
