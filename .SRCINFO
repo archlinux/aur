@@ -1,6 +1,6 @@
 pkgbase = python-flufl-lock
 	pkgdesc = NFS-safe file locking with timeouts for POSIX systems
-	pkgver = 2.3.1
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://launchpad.net/flufl.lock
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-flufl-lock
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/f/flufl.lock/flufl.lock-2.3.1.tar.gz
-	sha256sums = a693064d05fd92035989a6addbe92cbeb3291c11f5725ec3d381b2acb37c9079
+	source = https://pypi.python.org/packages/source/f/flufl.lock/flufl.lock-2.4.1.tar.gz
+	sha256sums = 72639aca3ef0379aef125c7346b042691c3452152843f301801b3c2ddcac1032
 
 pkgname = python-flufl-lock
 	depends = python
