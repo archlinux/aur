@@ -1,7 +1,7 @@
 # Maintainer: Jonathan la Cour <jon@lacour.me>
 # Contributor: Pieter Kokx <pieter@kokx.nl>
 pkgname=armory-git
-pkgver=v0.93.3.r4.g2a6fc53
+pkgver=v0.93.3.r8.g1c71901
 pkgrel=1
 pkgdesc="Full-featured Bitcoin wallet management application"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ optdepends=('bitcoin-daemon: Communicate with the Bitcoin network')
 install="${pkgname}.install"
 provides=('armory')
 conflicts=('armory')
-source=("$pkgname"::'git+https://github.com/etotheipi/BitcoinArmory.git'
+source=("$pkgname"::'git+https://github.com/goatpig/BitcoinArmory.git'
         'run-armory.sh'
         'makefile-01.patch')
 noextract=()
