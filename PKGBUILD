@@ -12,8 +12,8 @@ depends=('libusb' 'curl')
 makedepends=('git' 'curl' 'libusb' 'openssl')
 source=('ttwatch-git::git+https://github.com/ryanbinns/ttwatch.git'
 	'ttwatch-git.install')
-md5sums=('SKIP'
-         'b0aee8ee7a7e68d6ff056da4a72c7b72')
+sha256sums=('SKIP'
+            'c2583dfb88ae16e9349406f9e0025b20d54b0404bfd77c5d4555f11856ae2396')
 install="ttwatch-git.install"
 
 noextract=()
