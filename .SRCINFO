@@ -1,0 +1,13 @@
+pkgbase = spirv-tools-git
+	pkgver = r436.dd8a661
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	options = staticlibs
+	source = https://github.com/KhronosGroup/SPIRV-Tools
+	sha1sums = SKIP
+
+pkgname = spirv-tools-git
+
