@@ -32,7 +32,7 @@ package_vulkan-sdk() {
 
   # Tools
   install -dm755      "${pkgdir}"/usr/bin/
-  install -m644 bin/* "${pkgdir}"/usr/bin/
+  install -m755 bin/* "${pkgdir}"/usr/bin/
 
   # Layers
   install -dm755                          "${pkgdir}"/usr/share/vulkan/explicit_layer.d/
