@@ -1,15 +1,15 @@
 
 pkgname=jupyterhub
-pkgver=0.3.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Multi-user server for Jupyter notebooks "
 url="http://jupyter.org/"
 arch=(any)
 license=('BSD')
-depends=('ipython-notebook' 'python-jinja' 'python-simplepam' 'python-sqlalchemy' 'python-requests' 'nodejs-configurable-http-proxy')
+depends=('jupyter-notebook' 'python-jinja' 'python-simplepam' 'python-sqlalchemy' 'python-requests' 'nodejs-configurable-http-proxy')
 makedepends=('bower' 'npm')
 source=("https://github.com/jupyter/jupyterhub/archive/${pkgver}.tar.gz")
-md5sums=('9d07b21d558adddd4605cba81b75d9b2')
+md5sums=('9dcbec101e4e28065aafbac3672eb391')
 
 build() {
   cd "${srcdir}/jupyterhub-$pkgver"
