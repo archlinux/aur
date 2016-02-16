@@ -1,14 +1,14 @@
 _pkgname=cargo-clippy
 pkgname=$_pkgname-git
 pkgver=r18.c3f6ba5
-pkgrel=1
+pkgrel=2
 pkgdesc="A cargo subcommand that runs the clippy linter"
 url="https://github.com/arcnmx/cargo-clippy"
 depends=('cargo')
 provides=($_pkgname)
 arch=('i686' 'x86_64')
 license=('MIT')
-source=("$_pkgname::git+https://github.com/arcnmx/$_pkgname.git")
+source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -18,6 +18,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$_pkgname"
+	
 	if hash multirust 2>/dev/null; then
 		multirust run nightly cargo build --release
 	else
@@ -26,6 +27,11 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$_pkgname"
-	install -Dm755 "target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+	cd "$srcdir/$_pkgname/target/release"
+	
+	install -Dm755 "$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname"
+	install -d "$pkgdir/usr/lib/$_pkgname/deps"
+	install -m644 "deps/libclippy-"*.so "$pkgdir/usr/lib/$_pkgname/deps"
+	install -d "$pkgdir/usr/bin"
+	ln -s "/usr/lib/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 }
