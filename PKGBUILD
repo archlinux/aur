@@ -6,7 +6,7 @@
 
 pkgname=ufw-bzr
 _pkgname=ufw
-pkgver=898
+pkgver=928
 pkgrel=1
 pkgdesc="Uncomplicated and easy to use CLI tool for managing a netfilter firewall. Development branch."
 arch=('any')
@@ -40,7 +40,8 @@ prepare() {
   cd "$_pkgname"
 
 	# FS#28769 - move from /lib to /usr/lib
-  sed -e 's|/lib|/usr/lib|' -i setup.py
+  sed -i -e 's|/lib|/usr/lib|' \
+		-e 's|sbin|bin|g' setup.py
 }
 
 package() {
@@ -50,9 +51,9 @@ package() {
 	# FS#35458 - correct iptables location
   sed -e 's|sbin|bin|g' -i $pkgdir/usr/lib/python2.7/site-packages/ufw/*
 	
-	install -Dm644 $srcdir/$_pkgname.service $pkgdir/usr/lib/systemd/system/$_pkgname.service
-  chmod 644 $pkgdir/etc/ufw/*.rules $pkgdir/usr/lib/ufw/*.rules
+	install -Dm644 "$srcdir/$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
+ # chmod 644 "$pkgdir/etc/ufw/"*.rules "$pkgdir/usr/lib/ufw/"*.rules
   
-	install -Dm755 $pkgdir/usr/sbin/$_pkgname $pkgdir/usr/bin/$_pkgname
-	rm -rf $pkgdir/usr/sbin
+#	install -Dm755 "$pkgdir/usr/sbin/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+#	rm -rf $pkgdir/usr/sbin
 }
