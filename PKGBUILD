@@ -21,7 +21,7 @@ md5sums=('SKIP')
 optdepends=('rlwrap: nice line wrapping')
 
 pkgver() {
-    cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/Beluga"
     printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
