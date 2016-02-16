@@ -11,7 +11,7 @@ license=('MPL')
 depends=('gtk3' 'dconf' 'gsettings-desktop-schemas' 'vte3')
 optdepends=('libnautilus-extension: for "open with terminix" support in nautilus')
 install=terminix.install
-source_x86_64=(https://github.com/gnunn1/terminix/releases/download/$pkgver/terminix.zip)
+source_x86_64=(teminix-${pkgver}.zip::https://github.com/gnunn1/terminix/releases/download/$pkgver/terminix.zip)
 sha256sums_x86_64=('f333497e364353e99c563160c91f9902f18ca5cfbcc64cc59034f37d8773b24e')
 
 package() {
