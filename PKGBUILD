@@ -2,7 +2,7 @@
 pkgname=openstudio
 pkgver=1.10
 pkgrel=0
-_relvar='%%_relvar'
+_relvar='bc05249524'
 pkgdesc="Supports whole building energy modeling using EnergyPlus"
 arch=('x86_64')
 url="https://www.openstudio.net"
