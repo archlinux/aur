@@ -2,7 +2,7 @@
 # Maintainer: JIN Xiao-Yong <jinxiaoyong@gmail.com>
 # Maintainer: bohoomil <@zoho.com>
 
-pkgname=freetype2-infinality-ultimate
+pkgname=freetype2-infinality
 pkgver=2.6.2
 pkgrel=1
 _patchrel=2015.12.05
