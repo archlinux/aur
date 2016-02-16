@@ -9,7 +9,7 @@ url="https://github.com/dylanaraps/fetch"
 license=('MIT')
 provides=($_pkgname)
 conflicts=($_pkgname)
-depends=('bash' 'ncurses')
+depends=('bash' 'ncurses' 'wmctrl')
 optdepends=(
   'cmus: Current Song'
   'feh: Wallpaper Display'
@@ -18,7 +18,6 @@ optdepends=(
   'nitrogen: Wallpaper Display'
   'scrot: Take a screenshot'
   'w3m: Display Images'
-  'wmctrl: Accurate window manager detection'
   'xorg-xdpyinfo: Resolution Detection'
 )
 makedepends=('git')
