@@ -1,8 +1,9 @@
 # Maintainer: naelstrof <naelstrof@gmail.com>
 pkgname=maim-git
 _realname=maim
-pkgver=v3.4.43.r0.g2e5ed5b
+pkgver=v3.4.47.r0.gafc2724
 pkgrel=1
+provides=( 'maim' )
 conflicts=( 'maim' )
 pkgdesc="maim (make image) makes an image out of the given area on the given X screen. Defaults to the whole screen."
 arch=( 'i686' 'x86_64' )
