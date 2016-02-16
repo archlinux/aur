@@ -1,0 +1,3 @@
+*.pkg.*
+/Vulkan-Docs/
+/Vulkan-LoaderAndValidationLayers/
