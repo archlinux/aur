@@ -2,7 +2,7 @@
 
 pkgname=filteripdyn
 pkgver=0.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Filtering IP dyn with iptables"
 arch=('any')
 url="https://github.com/Chipsterjulien/filteripdyn"
@@ -68,4 +68,4 @@ package() {
         "$pkgdir"/usr/bin/$pkgname || return 1
 }
 
-sha512sums=('0730072c1a90b39659863e57f2846648193127a2adc38f78bcc2086da2550d126d7939e89ac6de515eb01b85aab1f47611f4a9620d6fff5305bbda2609d322e8')
+sha512sums=('548fe1f431dd03da488b7f1ed4a55489e3345f9023c89213ad7d312385be65d75c3b691a6dd3ee79fd824afbec9055fc5e89fb7904e12597e4fb97438ebc53cf')
