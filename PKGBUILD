@@ -2,7 +2,7 @@
 
 pkgname=vpaint-git
 pkgver=v1.6.r0.g85d499a
-pkgrel=1
+pkgrel=2
 pkgdesc='VPaint is an experimental vector graphics editor based on the Vector Animation Complex technology. (git version)'
 arch=('i686' 'x86_64')
 license=('MIT')
