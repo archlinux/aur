@@ -5,7 +5,7 @@
 
 pkgname="google-cloud-sdk"
 pkgver=96.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Contains tools and libraries that enable you to easily create and manage resources on Google Cloud Platform"
 url="https://cloud.google.com/sdk/"
 license=("Apache")
@@ -40,6 +40,11 @@ prepare() {
     msg2 "Latest upstream release: $_LATEST"
     msg2 "** Please flag out-of-date at https://aur.archlinux.org/packages/google-cloud-sdk"
   fi
+
+  # https://code.google.com/p/google-cloud-sdk/issues/detail?id=538
+  # -> "This issue will be fixed in the Cloud SDK 98.0.0 release."
+  cd "${srcdir}/${pkgname}"
+  sed -i "s/'google' in sys.modules/False/" bin/bootstrapping/setup.py 
 
 }
 
