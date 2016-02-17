@@ -3,7 +3,7 @@
 
 pkgname=kanboard
 pkgver=1.0.19
-pkgrel=3
+pkgrel=4
 pkgdesc='Simple visual task board'
 arch=('any')
 url='http://kanboard.net/'
@@ -22,9 +22,9 @@ sha256sums=('53d86c97068deb08763e337d3bb1ba42210397e248f6d1401605b3225a932ae4'
 package() {
     mkdir -p ${pkgdir}/usr/share/webapps
     cp -R ${srcdir}/${pkgname}-${pkgver} ${pkgdir}/usr/share/webapps/${pkgname}
-    install -D "${srcdir}/kanboard-apache.conf" ${pkgdir}/etc/webapps/${pkgname}
-    install -D "${srcdir}/kanboard-cron" ${pkgdir}/etc/cron.d
+    install -D "${srcdir}/kanboard-apache.conf" ${pkgdir}/etc/webapps/${pkgname}/kanboard-apache.conf
+    install -D "${srcdir}/kanboard-cron" ${pkgdir}/etc/cron.d/kanboard-cron
     cp ${pkgdir}/usr/share/webapps/${pkgname}/config.default.php ${pkgdir}/etc/webapps/${pkgname}/config.php
-    ln -s /etc/webapps/${pkgname}/config.php ${pkgname}/usr/share/webapps/${pkgname}/config.php
+    ln -s /etc/webapps/${pkgname}/config.php ${pkgdir}/usr/share/webapps/${pkgname}/config.php
 }
 
