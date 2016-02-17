@@ -2,11 +2,11 @@
 # Contributer: Serge Ziryukin <ftrvxmtrx@gmail.com>
 pkgname=split2flac-git
 _pkgname=split2flac
-pkgver=130.2bbf955
+pkgver=132.9e5f019
 pkgrel=1
 pkgdesc="Split flac/ape/wv/wav + cue sheet into separate tracks. Git version."
 arch=('any')
-url=("https://github.com/ftrvxmtrx/split2flac")
+url="https://github.com/ftrvxmtrx/split2flac"
 license=('MIT')
 depends=('cuetools' 'shntool' 'flac')
 makedepends=('git')
