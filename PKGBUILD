@@ -9,7 +9,7 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=3.0
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ depends=('alsa-lib' 'bzip2' 'celt' 'faac' 'fontconfig' 'frei0r-plugins' 'fribidi
          'libbluray' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libcl' 'libdc1394'
          'libfdk-aac' 'libgme' 'libiec61883' 'libmodplug' 'libpulse' 'libsoxr' 
          'libutvideo-git' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libwebp'
-         'libxv' 'mesa' 'openal' 'opencore-amr' 
+         'libxv' 'mesa' 'netcdf' 'openal' 'opencore-amr' 
          'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex' 'rtmpdump' 'shine'
          'twolame' 'v4l-utils' 'vid.stab' 'vo-amrwbenc' 'xvidcore' 
          'wavpack' 'zeromq' 'zlib' 'zvbi' 'libdcadec.so'
@@ -113,6 +113,7 @@ build() {
     --enable-libxvid \
     --enable-libzmq \
     --enable-libzvbi \
+    --enable-netcdf \
     --enable-nonfree \
     --enable-nvenc \
     --enable-openal \
