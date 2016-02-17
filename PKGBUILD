@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=svg-cleaner-git
 pkgver=v0.6.2.27.gb827305
-pkgrel=3
+pkgrel=4
 pkgdesc="Program for reducing size of svg images without loss"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/svgcleaner/"
@@ -27,6 +27,6 @@ build() {
 package() {
   cd "$srcdir"/"$_gitname"
   make INSTALL_ROOT="$pkgdir" install
-  # install -Dm755 bin/svgcleaner-cli "$pkgdir"/usr/bin/svgcleaner-cli
-  # install -Dm755 bin/svgcleaner-gui "$pkgdir"/usr/bin/svgcleaner-gui
+  install -Dm755 bin/svgcleaner-cli "$pkgdir"/usr/bin/svgcleaner-cli
+  install -Dm755 bin/svgcleaner-gui "$pkgdir"/usr/bin/svgcleaner-gui
 }
