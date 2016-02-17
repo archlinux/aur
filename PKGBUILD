@@ -9,7 +9,7 @@ url="https://github.com/dylanaraps/fetch"
 license=('MIT')
 provides=($_pkgname)
 conflicts=($_pkgname)
-depends=('bash' 'ncurses' 'wmctrl')
+depends=('bash' 'ncurses' 'xorg-xprop')
 optdepends=(
   'cmus: Current Song'
   'feh: Wallpaper Display'
