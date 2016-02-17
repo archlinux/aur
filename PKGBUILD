@@ -49,6 +49,10 @@ package() {
   install -Dm644 "${srcdir}/selectdir.html" "${pkgdir}/opt/${pkgname}/"
   install -Dm644 "${srcdir}/update.html" "${pkgdir}/opt/${pkgname}/"
   install -Dm644 "${srcdir}/warning.html" "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/VERSION" "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/gpl-2.0.txt" "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/1204.sh" "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/CHANGELOG" "${pkgdir}/opt/${pkgname}/"
 
   # Directories
   cp -a "${srcdir}/css" "${pkgdir}/opt/${pkgname}/"
@@ -58,6 +62,7 @@ package() {
   cp -a "${srcdir}/locales" "${pkgdir}/opt/${pkgname}/"
   cp -a "${srcdir}/node_modules" "${pkgdir}/opt/${pkgname}/"
   cp -a "${srcdir}/setup-images" "${pkgdir}/opt/${pkgname}/"
+  cp -a "${srcdir}/subtitles" "${pkgdir}/opt/${pkgname}/"
 
   # Link to program
   ln -s "/opt/${pkgname}/streamstudio" "${pkgdir}/usr/bin/streamstudio"
