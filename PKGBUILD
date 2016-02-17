@@ -2,8 +2,8 @@
 # Maintainer: Peter Strapp <peter at strapp.co.uk>
 
 pkgname=libqhy-git
-pkgver=20150917
-pkgrel=1
+pkgver=r78.218cc69
+pkgrel=2
 url="https://github.com/qhyccd-lzr/QHYCCD_Linux"
 license=(GPL2)
 arch=(i686 x86_64)
@@ -16,7 +16,7 @@ _gitname='QHYCCD_Linux'
 
 pkgver() {
   cd "$_gitname"
-  git show -s --format="%ci" HEAD | sed -e 's/-//g' -e 's/ .*//'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
