@@ -1,27 +1,82 @@
-# Maintainer: Benjamin Chrétien <chretien at lirmm dot fr>
-_name=tensorflow
+# Maintainer: Benjamin Chrétien <chretien dot b plus aur at gmail dot com>
+# Contributor: Pieter Robyns <pieter.robyns@uhasselt.be>
 pkgname=python2-tensorflow
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
-pkgdesc="Open source software library for numerical computation using data flow graphs"
 url="http://tensorflow.org"
-# TODO: add missing dependencies
-depends=('python2' 'python2-numpy' 'python2-protobuf3')
-makedepends=('python2' 'python2-pip')
 license=('Apache')
 arch=('x86_64')
-_filename="tensorflow-${pkgver}-cp27-none-linux_${CARCH}.whl"
-source=("https://storage.googleapis.com/tensorflow/linux/cpu/${_filename}")
-noextract=("${_filename}")
-if test "$CARCH" == x86_64 ; then
-  sha256sums=('dcc9e5b44dcd0457400db988bce5b95eb29e9179b1cd412cd31d1c17cefecb0d')
-fi
+pkgdesc="Open source software library for numerical computation using data flow graphs (Python 2)"
+depends=('python2' 'python2-numpy')
+optdepends=('cuda=7.5: GPU support'
+            'cudnn=3.0: GPU support')
+makedepends=('python2' 'python2-pip' 'python2-wheel' 'bazel' 'swig' 'bower' 'git')
+source=("https://github.com/tensorflow/tensorflow/archive/v${pkgver}.tar.gz"
+        "flags.patch")
+sha256sums=('43dd3051f947aa66e6fc09dac2f86a2efe2e019736bbd091c138544b86d717ce'
+            '513f634cc1cab44eb17204616617695ea23355462f918873678fcac1a95ae778')
+provides=('tensorflow')
+conflicts=('tensorflow' 'tensorflow-git')
 
-# TODO: add CUDA support
+_build_opts=""
+
+export PYTHON=python2
+
+prepare() {
+  cd "${srcdir}/tensorflow-${pkgver}"
+
+  # Set up some things for building
+  mkdir -p "${srcdir}/tmp-${PYTHON}"
+
+  # Fix compilation flags
+  patch -p1 < ../flags.patch
+
+  # Get submodules
+  if ( ! git rev-parse &> /dev/null); then
+    git init
+    rm -r google/protobuf
+    git submodule add --force https://github.com/google/protobuf.git google/protobuf \
+      -b d2c7fe6bc5d28b225f6202684574fe4ef9e3a3a8
+    git submodule update --init --recursive --force
+  fi
+
+  if (pacman -Q cuda &>/dev/null && pacman -Q cudnn &>/dev/null); then
+    msg2 "CUDA support enabled"
+    _build_opts="--config=cuda"
+    export TF_NEED_CUDA=1
+    export TF_UNOFFICIAL_SETTING=1
+    export CUDA_TOOLKIT_PATH=/opt/cuda
+    export CUDNN_INSTALL_PATH=/opt/cuda
+    # Adapt to your needs:
+    # export TF_CUDA_COMPUTE_CAPABILITIES="3.0,3.5"
+  else
+    msg2 "CUDA support disabled"
+    export TF_NEED_CUDA=0
+  fi
+}
+
+build() {
+  cd "${srcdir}/tensorflow-${pkgver}"
+
+  # Checks for CUDA-related paths
+  PYTHON_BIN_PATH=/usr/bin/${PYTHON} ./configure
+
+  msg2 "Running bazel build..."
+  bazel build -c opt \
+    --python2_path ${PYTHON} \
+    --package_path "/opt/bazel/base_workspace:${srcdir}/tensorflow-${pkgver}" \
+    ${_build_opts} \
+    //tensorflow/tools/pip_package:build_pip_package
+
+  msg2 "Building pip package..."
+  sed -i 's/python/python2/g' bazel-bin/tensorflow/tools/pip_package/build_pip_package
+  bazel-bin/tensorflow/tools/pip_package/build_pip_package "${srcdir}/tmp-${PYTHON}"
+}
 
 package() {
-  cd "${srcdir}"
-  _site_packages=$(python2 -c "import site; print(site.getsitepackages()[0])")
+  cd "${srcdir}/tensorflow-${pkgver}"
+
+  TMP_PKG=`find ${srcdir}/tmp-${PYTHON} -name "tensor*.whl"`
   pip2 install --ignore-installed --no-deps \
     --root=${pkgdir} \
     --install-option="--prefix=${pkgdir}/usr" \
@@ -29,8 +84,6 @@ package() {
     --install-option="--install-lib=${pkgdir}/${_site_packages}" \
     --install-option="--install-data=${pkgdir}/var/lib/${_name}" \
     --install-option="--root=${pkgdir}" \
-    ${srcdir}/${_filename}
-
-  # FIXME: solve this in the pip command...
-  rm -r "${pkgdir}/usr/lib/python2.7/site-packages/google"
+    ${TMP_PKG}
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
 }
