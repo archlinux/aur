@@ -46,11 +46,11 @@ install=$pkgname.install
 source=('http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip'
         "policytool32-$_jname.desktop"
         'OTN-Early-Adopter-License-Terms.txt')
-source_x86_64=("http://download.java.net/jdk$_major/archive/$_build/binaries/${_pkgname}-${_pkgver}-ea+${_build}_linux-x86_bin.tar.gz")
+source_x86_64=("http://www.java.net/download/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}-ea+${_build}_linux-x86_bin.tar.gz")
 md5sums=('b3c7031bc65c28c2340302065e7d00d3'
          '643277e142823bf695b0a6327d3ef963'
          'f09947a67691a2d78d20a3885889981c')
-md5sums_x86_64=('2e3ae47162e1fb102f9b18f104b59231')
+md5sums_x86_64=('58b25c93a6b91f14f02a3b36c366f41f')
 
 package() {
     cd ${_pkgname}1.${_major}.0
