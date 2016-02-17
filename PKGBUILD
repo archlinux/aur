@@ -9,16 +9,17 @@ url='https://www.silabs.com/products/mcu/Pages/simplicity-studio.aspx'
 license=('unknown')
 
 # should probably put something here but most dependencies are included
-depends=()
+depends_i386=(gtk2)
+depends_x86_64=(lib32-gtk2)
 
 options=('!strip')
 
 source=(http://www.silabs.com/Support%20Documents/Software/SimplicityStudio.tgz
         simplicitystudio.patch
         simplicitystudio)
-md5sums=('e5881c26d731343d11a1346968c5eb6b'
-         '8c316447fd415b6e3a87d8007ef7b9f7'
-         '1265c0dc95aeb697be38eea0ed1cdbc9')
+sha256sums=('5a32fe3d45a82f194541993a4c7c3a0dcf5bba7e6ec0e4e4792a2439c89ebee1'
+            '22dadf833916b51d85a04d50db595cb8446c9a9c1644e9dfab8e0875d8f9f906'
+            'ad55e8352d5d3d9cba50553086ca6d8b1d5072dc87b2763a79f34210f7bc2b5d')
 
 prepare() {
     cd "$srcdir/SimplicityStudio_v3"
