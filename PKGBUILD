@@ -14,8 +14,7 @@ sha1sums=('SKIP'
           'beaab6bfd4f3f219f295c4fbdc6300098ddeea2c'
           '437ece58e06c0bdab40ea4eb7fb0787ea8250150')
 depends=('glslang-git' 'spirv-tools')
-makedepends=('cmake' 'asciidoc' 'source-highlight')
-options=('zipman')
+makedepends=('cmake')
 
 _libver=1.0.3
 
