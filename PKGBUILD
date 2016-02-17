@@ -2,7 +2,7 @@
 # Contributor: Tom Richards <tom [at] tomrichards [dot] net>
 
 pkgname=caddy-git
-pkgver=r989.6e340cb
+pkgver=r1039.1cfd960
 pkgrel=1
 pkgdesc="A configurable, general-purpose HTTP/2 web server for any platform"
 arch=('any')
@@ -10,6 +10,7 @@ url="https://github.com/mholt/caddy"
 license=('Apache')
 install='caddy.install'
 conflicts=('caddy')
+provides=('caddy')
 makedepends=('go' 'curl' 'jq')
 source=('caddy.service')
 md5sums=('13772e64a93685262018194da32a6f1b')
