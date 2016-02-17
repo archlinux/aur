@@ -8,7 +8,7 @@ arch=('any')
 url='https://github.com/alucryd/pachooks'
 license=('BSD')
 depends=('pacman')
-_commit='dbe9fd5ffe6e9f2a189b47d9728e2048fd06b739'
+_commit='4f5cc1389e23c3c9b0995aef2b4656d337a73d6b'
 source=("git+https://github.com/alucryd/pachooks.git#commit=${_commit}")
 sha256sums=('SKIP')
 
