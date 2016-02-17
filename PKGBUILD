@@ -5,11 +5,12 @@
 
 pkgname=fmodex4.26.36
 pkgver=4.26.36
-pkgrel=3
+pkgrel=4
 pkgdesc="An advanced audio engine (version 4.26.36)"
 arch=('i686' 'x86_64')
 url="http://www.fmod.org/"
 license=('custom')
+provides=("fmodex=$pkgver")
 sha256sums=('b3a9bc8f385f69510df895eda68e8d7a7a8a4fa9eae040b880880a4ceea7f7ab')
 [ "$CARCH" = "x86_64" ] && {
 	_pkgarch=64
