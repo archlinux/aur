@@ -1,8 +1,8 @@
 # Maintainer: Tyler Langlois <ty |at| tjll |dot| net>
 
 pkgname=packetbeat
-pkgver=1.1.0
-pkgrel=3
+pkgver=1.1.1
+pkgrel=1
 pkgdesc='An open source network packet analyzer that ships data to Elasticsearch.'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="https://www.elastic.co/products/beats/$pkgname"
@@ -16,7 +16,7 @@ provides=('packetbeat')
 conflicts=('packetbeat-bin')
 source=("https://github.com/elastic/beats/archive/v$pkgver/beats-$pkgver.tar.gz"
         "$pkgname.service")
-sha256sums=('bba6c5d7d22959e90296d6d1dd7975c80250b491166a712cece72ee91165d25c'
+sha256sums=('5cf4751e6cd5199e6cef5b9d86ef62923901e659f4f15c70a4a9e007c32c4eb5'
             'e45629a37d5c305efa26e2b6a68561528762081681e547e312bb058cbff76125')
 
 prepare() {
