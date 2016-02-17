@@ -1,0 +1,7 @@
+post_install() {
+  echo "Users that want to play the game should be on group games."
+  echo "Run "sil --help" for commandline options."
+  echo "For example to get multiple windows run:"
+  echo ""sil -mx11 -- -n*" where * is the number of windows"
+  echo ""sil -mgcu" for curses"
+}
