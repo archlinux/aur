@@ -51,8 +51,8 @@ source=('http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip'
         "jvisualvm-$_jname.desktop"
         "policytool-$_jname.desktop"
         'OTN-Early-Adopter-License-Terms.txt')
-source_i686=("http://www.java.net/download/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}-ea+${_build}_linux-x86_bin.tar.gz")
-source_x86_64=("http://www.java.net/download/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}-ea+${_build}_linux-x64_bin.tar.gz")
+source_i686=("http://www.java.net/download/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}-ea+${_build}_linux-x86_bin.tar.gz")
+source_x86_64=("http://www.java.net/download/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}-ea+${_build}_linux-x64_bin.tar.gz")
 md5sums=('b3c7031bc65c28c2340302065e7d00d3'
          'ffc22a6191545b1a37d68987581f2ca7'
          '3af000b3c67545579cf3aceef93c9fc8'
