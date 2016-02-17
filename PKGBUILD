@@ -11,6 +11,7 @@ depends=('curl')
 makedepends=('git' 'make' 'clang' 'curl' 'libzip')
 source=("git+$url")
 md5sums=('SKIP')
+provides=('tldr')
 
 pkgver() {
   cd "$(basename $url)"
