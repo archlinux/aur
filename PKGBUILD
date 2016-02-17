@@ -1,12 +1,12 @@
 # Maintainer: mickele
 pkgname=opensees
 pkgver=2.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenSees, a software framework for developing applications to simulate the performance of structural and geotechnical systems subjected to earthquakes"
 arch=("i686" "x86_64")
 url="http://opensees.berkeley.edu/"
 depends=('tk>=8.6' 'openssl' 'libpng' 'mesa' 'lapack')
-makedepends=('svn')
+makedepends=('svn' 'gcc-fortran')
 options=()
 license=("custom")
 
