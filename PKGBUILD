@@ -1,7 +1,7 @@
 # Maintainer: Marcin Wieczorek marcin@marcin.co
 pkgname=screenshooter
 pkgver=5.30
-pkgrel=4
+pkgrel=5
 pkgdesc="Take a screenshot and share it with your friends"
 arch=('i686' 'x86_64')
 url="http://screenshooter.net/"
