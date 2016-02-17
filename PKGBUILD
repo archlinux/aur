@@ -15,7 +15,10 @@ source=("https://github.com/dalboris/vpaint/archive/v$pkgver.tar.gz")
 md5sums=('f9b36a571f6dceafefa66d8a71006163')
 
 prepare() {
-	gendesk -f --pkgname "$pkgname" --pkgdesc "$pkgdesc"
+	icotool -x -o $srcdir/vpaint.png $srcdir/$pkgname-$pkgver/src/Gui/images/VPaint.ico
+	gendesk -f --pkgname "$pkgname" --pkgdesc "Vector graphics editor" --name="VPaint" \
+            --comment "Start VPaint" --exec "$pkgname" --categories "Graphics"         \
+            --custom "Icon=/usr/share/pixmaps/vpaint.png"
 }
 
 build() {
@@ -33,5 +36,6 @@ package() {
 	mkdir -p "$pkgdir/usr/bin"
 
 	install -Dm755 "$srcdir/$pkgname-$pkgver/build/Gui/VPaint" "$pkgdir/usr/bin/vpaint"
+	install -Dm644 "$srcdir/vpaint.png" "$pkgdir/usr/share/pixmaps/vpaint.png"
 	install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
