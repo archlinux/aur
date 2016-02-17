@@ -2,8 +2,8 @@
 pkgbase=python-cloudpickle
 pkgname=('python-cloudpickle' 'python2-cloudpickle')
 _pyname=cloudpickle
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc='Extended pickling support for Python objects'
 arch=('any')
 url='https://github.com/cloudpipe/cloudpickle'
@@ -11,7 +11,7 @@ license=('BSD')
 makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('47376a2fa209283b5e6d05b36eecdb5a')
+md5sums=('d6c92acdfa253a50b2ef86a1b6443e39')
 
 prepare() {
   cd "${srcdir}/${_pyname}-${pkgver}"
