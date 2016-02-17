@@ -1,4 +1,5 @@
-# Maintainer: Yakir Sitbon <kingyes1[at]gmail[dot]com>
+# Maintainer: Sebastian Krebs <sebastian[at]krebs[dot]one>
+# Contributor: Yakir Sitbon <kingyes1[at]gmail[dot]com>
 # Contributor: Eduard Kracmar <edke.kraken[at]gmail[dot]com>
 # Contributor: D. Can Celasun <dcelasun[at]gmail[dot]com>
 # Contributor: Slava Volkov <sv99sv[at]gmail[dot]com>
@@ -8,7 +9,7 @@ pkgname=phpstorm-eap
 _pkgname=PhpStorm # Directory name in the tar file
 pkgbuild=144.4199.11
 pkgver=${pkgbuild}
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight and Smart PHP IDE. 30-day free trial."
 arch=('i686' 'x86_64')
 options=(!strip)
@@ -16,14 +17,12 @@ url="http://www.jetbrains.com/phpstorm/"
 license=('custom')
 depends=('java-environment>=8')
 source=(http://download.jetbrains.com/webide/PhpStorm-EAP-144.4199.11.tar.gz)
-#source=(http://download-ln.jetbrains.com/webide/PhpStorm-7.1.3.tar.gz)
 sha256sums=('f2a685a401f34ccbda08e307e6fb6084a8db74a069aad1482df44522074fb3a0')
 
 package() {
   cd ${srcdir}
   mkdir -p ${pkgdir}/opt/${pkgname} || return 1
   cp -R ${srcdir}/${_pkgname}-${pkgbuild}/* ${pkgdir}/opt/${pkgname} || return 1
-#  cp -R ${srcdir}/${_pkgname}-${pkgver}/* ${pkgdir}/opt/${pkgname} || return 1
   if [[ $CARCH = 'i686' ]]; then
      rm -f ${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux64.so
      rm -f ${pkgdir}/opt/${pkgname}/bin/fsnotifier64
@@ -56,6 +55,5 @@ EOF
   mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}/ || return 1
   install -m 644 ${startdir}/phpstorm-eap.desktop ${pkgdir}/usr/share/applications/
   install -m 644 ${pkgdir}/opt/${pkgname}/bin/webide.png ${pkgdir}/usr/share/pixmaps/phpstorm-eap.png
-  #install -m 644 ${srcdir}/${_pkgname}-${pkgbuild}/license/${_pkgname}_license.txt ${pkgdir}/usr/share/licenses/${pkgname}/${_pkgname}_license.txt
   ln -s /opt/$pkgname/bin/phpstorm.sh "$pkgdir/usr/bin/phpstorm-eap"
 }
