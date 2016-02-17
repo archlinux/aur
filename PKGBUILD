@@ -3,7 +3,7 @@
 
 pkgname=irssi-python
 pkgver=test3
-pkgrel=4
+pkgrel=5
 pkgdesc="Provides Python scripting support for Irssi"
 url="http://irssi.org/"
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ install='irssi-python.install'
 depends=('python2')
 license=('GPL2')
 
-source=('http://irssi.org/files/irssi-0.8.17.tar.gz' 
+source=('https://github.com/irssi-import/irssi/releases/download/0.8.17/irssi-0.8.17.tar.gz' 
         'https://github.com/downloads/danielrichman/irssi_rstatus/irssi-python-ac.tar.gz'
         'http://anti.teamidiot.de/static/nei/*/Code/Irssi/python-256color.diff')
 
