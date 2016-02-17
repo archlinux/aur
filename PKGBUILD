@@ -1,8 +1,8 @@
 pkgname='holo-ssh-keys'
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Holo plugin for provisioning SSH public keys to $HOME/.ssh/authorized_keys'
-arch=('any')
+arch=('i686' 'x86_64' 'armv7h')
 url='http://holocm.org'
 license=('GPL3')
 depends=(
