@@ -1,14 +1,14 @@
 # Maintainer: Lars Hagström <lars@foldspace.nu>
 pkgname=airtame-streamer
-pkgver=1.5.1
-pkgrel=3
+pkgver=1.7.0
+pkgrel=1
 pkgdesc="Stream your display to an airtame dongle."
 arch=('x86_64')
 url="http://www.airtame.com"
 license=('Proprietary')
 groups=()
 provides=("airtame-streamer")
-depends=("jsonrpc-c-git" "ffmpeg-compat")
+depends=("ffmpeg-compat")
 makedepends=("yasm")
 install=
 source=("https://downloads.airtame.com/application/ga/lin_x64/releases/deb/airtame-application_${pkgver}_amd64.deb"
@@ -17,7 +17,7 @@ source=("https://downloads.airtame.com/application/ga/lin_x64/releases/deb/airta
         "x264::git+git://git.videolan.org/x264.git#commit=6ee94dc898dc029553e308f1e76891ccefb3f0a7"
         "streamer.sh"
         "airtame-streamer.service")
-md5sums=('3e9c6e83bcfc1ac82ed33e90c87f876c'
+md5sums=('1d1e80a27e98cf6d6348b808c0f73a3a'
          'SKIP'
          'SKIP'
          'SKIP'
