@@ -40,7 +40,7 @@ optdepends=(
 makedepends=('git')
 # TODO: readd fpc
 checkdepends=(
-  'python-pytest' 'acl' 'binutils' 'bzip2' 'cdrkit' 'colord' 'cpio' 'diffutils' 'e2fsprogs' 'enjarify' 'java-environment' 'fontforge' 'gettext' 'ghc' 'gnupg'
+  'python-pytest' 'acl' 'binutils' 'bzip2' 'cdrkit' 'colord' 'cpio' 'diffutils' 'e2fsprogs' 'enjarify' 'java-environment>=8' 'fontforge' 'gettext' 'ghc' 'gnupg'
   'mono-tools' 'poppler' 'sqlite' 'squashfs-tools' 'tlsh' 'unzip' 'gzip' 'tar' 'vim' 'xz')
 provides=('diffoscope')
 conflicts=('diffoscope')
@@ -69,7 +69,7 @@ check() {
 
 package() {
   cd ${pkgname}
-  python setup.py install -O1 --root="${pkgdir}"
+  python setup.py install --skip-build -O1 --root="${pkgdir}"
   install -Dm 644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
 
