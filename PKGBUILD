@@ -9,20 +9,20 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=3.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
 url="http://ffmpeg.org/"
 license=('GPL' 'custom:UNREDISTRIBUTABLE')
 depends=('alsa-lib' 'bzip2' 'celt' 'faac' 'fontconfig' 'frei0r-plugins' 'fribidi' 
-         'gnutls' 'gsm' 'jack' 'ladspa' 'lame' 'libaacplus' 'libass' 'libavc1394' 
+         'gnutls' 'gsm' 'jack' 'ladspa' 'lame' 'libass' 'libavc1394' 
          'libbluray' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libcl' 'libdc1394'
          'libfdk-aac' 'libgme' 'libiec61883' 'libmodplug' 'libpulse' 'libsoxr' 
          'libutvideo-git' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libwebp'
          'libxv' 'mesa' 'openal' 'opencore-amr' 
          'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex' 'rtmpdump' 'shine'
-         'twolame' 'v4l-utils' 'vid.stab' 'vo-aacenc' 'vo-amrwbenc' 'xvidcore' 
+         'twolame' 'v4l-utils' 'vid.stab' 'vo-amrwbenc' 'xvidcore' 
          'wavpack' 'zeromq' 'zlib' 'zvbi' 'libdcadec.so'
          'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so' 'libx265.so'
          'snappy' 'openh264' 'xavs')
