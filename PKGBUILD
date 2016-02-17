@@ -1,11 +1,11 @@
-# Maintainer: Levente Polyak <levente[at]leventepolyak[dot]net>
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Mauro Andreolini <mauro.andreolini@unimore.it>
 
 pkgname=hash-identifier
 pkgver=1.1
-pkgrel=3
-pkgdesc="Identify the different types of hashes used to encrypt data and especially passwords"
-url="https://code.google.com/p/hash-identifier/"
+pkgrel=4
+pkgdesc='Identify the different types of hashes used to encrypt data and especially passwords'
+url='https://code.google.com/archive/p/hash-identifier/'
 arch=('any')
 license=('GPL3')
 depends=('python2')
@@ -14,11 +14,11 @@ sha512sums=('af889ebd84d2bd73c9a9623b5573bbb8a4cf5d3ffa6de75b272644905c4c1fa7e5b
 
 prepare() {
   sed -e "s|env python|env python2|" -i Hash_ID_v${pkgver}.py
-  sed -e 's|||g' -i Hash_ID_v${pkgver}.py
+  sed -e 's|\r||g' -i Hash_ID_v${pkgver}.py
 }
 
 package() {
-  install -Dm 755 Hash_ID_v${pkgver}.py "${pkgdir}/usr/bin/hash-id"
+  install -Dm 755 Hash_ID_v${pkgver}.py "${pkgdir}/usr/bin/hash-identifier"
 }
 
-# vim:set ts=2 sw=2 et:
+# vim: ts=2 sw=2 et:
