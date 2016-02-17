@@ -1,11 +1,11 @@
 pkgname=osvr-steamvr-git
-pkgver=v0.1.r4.ge2e4fc2
+pkgver=v0.1.r60.gf89a862
 pkgrel=1
 pkgdesc="Driver for allowing applications written against SteamVR to work with hardware and software running with the OSVR software framework."
 arch=(i686 x86_64)
 url="https://github.com/OSVR/SteamVR-OSVR"
 #license=('GPL')
-install=(osvr-steamvr.install)
+install=osvr-steamvr.install
 makedepends=('git' 'cmake')
 depends=('osvr-core-git' 'openvr-git') #TODO: add more deps
 source=("osvr-steamvr::git+https://github.com/OSVR/SteamVR-OSVR.git"
