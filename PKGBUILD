@@ -2,8 +2,8 @@
 
 pkgbase=reposurgeon
 pkgname=({cy,}reposurgeon)
-pkgver=3.33
-pkgrel=2
+pkgver=3.34
+pkgrel=1
 pkgdesc="Performs surgery on version control repositories."
 arch=('any')
 url="http://www.catb.org/esr/$pkgbase/"
@@ -18,12 +18,8 @@ optdepends=('bzr'
             'mercurial'
             'src'
             'subversion')
-source=("$url$pkgbase-$pkgver.tar.xz"
-        0001-Install-repocutter-along-with-the-other-tools.patch
-        0002-Run-repocutter-and-repomapper-with-Python-2.patch)
-sha256sums=('88a88d8fa0f612f5efc7ba5b2ca741713d260a250ada5b1ee01029436c08b571'
-            '700c76e85eee935f84d268b9cbec618f0cc973cee25f59aa388efac1b12343fb'
-            'd1547a1ba5a2e29859b9b1c05ac8a6bd1f96938c3c807ea94793cc734c587eb9')
+source=("$url$pkgbase-$pkgver.tar.xz")
+sha256sums=('dfa1211bca2063cc5d28d8f8b78c0e8776250dce45b1e797d03523150c5ebe86')
 
 prepare() {
   cd "$srcdir/$pkgbase-$pkgver"
@@ -54,7 +50,6 @@ build_cyreposurgeon() {
 package_reposurgeon() {
   cd "$srcdir/$pkgbase-$pkgver"
   make DESTDIR="$pkgdir" prefix=/usr install
-  install -m755 repomapper "$pkgdir/usr/bin"
 
   install -dm755 "$pkgdir/usr/share/emacs/site-lisp"
   install -Dm644 reposurgeon-mode.el "$pkgdir/usr/share/emacs/site-lisp"
