@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Name=jeveassets
+Icon=/usr/share/pixmaps/jeveassets.png
+Exec=/usr/bin/jeveassets.sh
