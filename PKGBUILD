@@ -8,8 +8,8 @@ license=('Apache')
 arch=('x86_64')
 pkgdesc="Open source software library for numerical computation using data flow graphs (Python 2)"
 depends=('python2' 'python2-numpy')
-optdepends=('cuda=7.5: GPU support'
-            'cudnn=3.0: GPU support')
+optdepends=('cuda: GPU support'
+            'cudnn: GPU support')
 makedepends=('python2' 'python2-pip' 'python2-wheel' 'bazel' 'swig' 'bower' 'git')
 source=("https://github.com/tensorflow/tensorflow/archive/v${pkgver}.tar.gz"
         "flags.patch")
