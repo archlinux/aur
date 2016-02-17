@@ -9,7 +9,7 @@
 
 _pack=video
 pkgname=octave-$_pack
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="A wrapper for ffmpeg's libavformat and libavcodec, implementing addframe, avifile, aviinfo and aviread."
 arch=(any)
@@ -25,7 +25,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("http://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('b193c9ce4720584cdcab920a1bb267b3')
+md5sums=('2575f2927e1911789e35635c21c05cbe')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
