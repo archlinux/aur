@@ -1,5 +1,5 @@
 obj-m	:= ia32_aout.o
-KDIR	:= /lib/modules/$(shell uname -r)/build
+KDIR	:= /usr/lib/modules/$(shell uname -r)/build
 PWD	:= $(shell pwd)
 
 all:
