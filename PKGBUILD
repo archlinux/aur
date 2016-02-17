@@ -1,8 +1,8 @@
 # Maintainer: Tyler Langlois <ty |at| tjll |dot| net>
 
 pkgname=filebeat
-pkgver=1.1.0
-pkgrel=3
+pkgver=1.1.1
+pkgrel=1
 pkgdesc='Collects, pre-processes, and forwards log files from remote sources'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url='https://www.elastic.co/products/beats'
@@ -18,8 +18,8 @@ source=("https://github.com/elastic/beats/archive/v$pkgver/beats-$pkgver.tar.gz"
         "$pkgname.install"
         "$pkgname.service"
         "$pkgname.sysusers")
-sha256sums=('bba6c5d7d22959e90296d6d1dd7975c80250b491166a712cece72ee91165d25c'
-            '9a31ad43b3f8f26a3c2c48715b9a887d59e180dfcefea080e1ad54a91986bcb0'
+sha256sums=('5cf4751e6cd5199e6cef5b9d86ef62923901e659f4f15c70a4a9e007c32c4eb5'
+            '337d78d9cb21745098c4cc75578f026e5a5819cd4d0575e3f4241f13370c0863'
             '1b668b67134dcbca41193f7987371c6e9ead9853f3ebcb54d5c80a9d0b9decf0'
             '33feb3690f8b31563cc1e2da557c2aa326501ce9ccd7e0a142036902bfdb05ff')
 
