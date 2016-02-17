@@ -1,7 +1,7 @@
 # Maintainer: tri <trile7 at gmail dot com>
 pkgname=xmeasure
 pkgver=0.0.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Pixel measurement (ruler) tool on linux"
 arch=('i686' 'x86_64')
 url="http://xmeasure.googlecode.com"
