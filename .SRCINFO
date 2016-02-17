@@ -1,7 +1,7 @@
 pkgbase = openlp
 	pkgdesc = Church presentation software.
 	pkgver = 2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://openlp.org/
 	install = openlp.install
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = openlp
 	optdepends = python-psycopg2: Use a postgresql database
 	source = https://get.openlp.org/2.4/OpenLP-2.4.tar.gz
 	source = openlp.sh
-	sha256sums = a6dbe189be45eb96fa2edc6f1497ff6275d2d0896515ad28a580f83242683248
+	sha256sums = 90d25c252e5d95f87729c9257b8bcc582e505fdaf397ce416fcbc98677efabc6
 	sha256sums = 19c2f3c622585bf308efc259013fb5518feaf8cf14b51613e1e71778fcc2e8cf
 
 pkgname = openlp
