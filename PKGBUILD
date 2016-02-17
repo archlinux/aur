@@ -1,16 +1,16 @@
 # Maintainer: Simon Doppler (dopsi) <dop.simon@gmail.com>
 pkgname=console-tdm
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Console display manager based on CDM'
 arch=('any')
 url='http://github.com/dopsi/console-tdm'
-license=('GPL')
+license=('GPL3')
 provides=('console-tdm')
 conflicts=('console-tdm')
 depends=('xorg-xinit')
 optdepends=('dialog: for curses UI')
-source=('https://github.com/dopsi/console-tdm/archive/v1.0.0.tar.gz')
+source=("https://github.com/dopsi/$pkgname/archive/v$pkgver.tar.gz")
 sha1sums=('SKIP')
 
 package() {
