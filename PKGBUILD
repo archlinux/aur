@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=sophia-git
-pkgver=r410.179c0cb
+pkgver=r414.45e2ca5
 pkgrel=1
 pkgdesc="Modern embeddable transactional key-value storage"
 arch=('any')
@@ -12,6 +12,7 @@ source=("git+$url")
 md5sums=('SKIP')
 options=('staticlibs')
 conflicts=('sophia')
+provides=('sophia')
 
 pkgver() {
   cd "$(basename $url)"
