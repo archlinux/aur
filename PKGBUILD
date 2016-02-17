@@ -3,8 +3,8 @@
 # Contributor: Lyman Li <lymanrb@gmail.com>
 
 pkgname=pcmanx-gtk2
-pkgver=1.2
-pkgrel=2
+pkgver=1.3
+pkgrel=1
 pkgdesc="A gtk+ based free BBS client"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/pcmanx-gtk2"
@@ -13,9 +13,9 @@ depends=('gtk2' 'libltdl')
 optdepends=('wget')
 makedepends=('autoconf' 'automake' 'intltool' 'pkg-config')
 options=('!libtool')
-source=(http://pcmanx-gtk2.googlecode.com/files/${pkgname}-${pkgver}.tar.xz
+source=(https://github.com/pcman-bbs/pcmanx/releases/download/1.3/${pkgname}-${pkgver}.tar.xz
     pcmanx.install)
-md5sums=('035d6743f2844db9488166536b186e91'
+md5sums=('9796c55ca5df674251be713a5019e3bc'
     '6374916400684c2db957be0250a4ca98')
 install=pcmanx.install
 
