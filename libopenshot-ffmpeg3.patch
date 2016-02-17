@@ -1,0 +1,96 @@
+From bb6102f46f80030c7149107d147f00dfc5ea563e Mon Sep 17 00:00:00 2001
+From: Jonathan Thomas <jonathan@openshot.org>
+Date: Thu, 7 Jan 2016 23:50:48 -0600
+Subject: [PATCH] Added support for newer versions of libav media library.
+
+---
+ cmake/Modules/FindFFmpeg.cmake | 12 ++++++------
+ include/FFmpegUtilities.h      | 17 +++++++++++++++++
+ 2 files changed, 23 insertions(+), 6 deletions(-)
+
+diff --git a/cmake/Modules/FindFFmpeg.cmake b/cmake/Modules/FindFFmpeg.cmake
+index 36ad9e0..4af6cc9 100644
+--- a/cmake/Modules/FindFFmpeg.cmake
++++ b/cmake/Modules/FindFFmpeg.cmake
+@@ -14,7 +14,7 @@ FIND_PATH( AVFORMAT_INCLUDE_DIR libavformat/avformat.h
+ 		   	$ENV{FFMPEGDIR}/include/
+ 		   	$ENV{FFMPEGDIR}/include/ffmpeg/ )
+ 
+-FIND_LIBRARY( AVFORMAT_LIBRARY avformat avformat-55
++FIND_LIBRARY( AVFORMAT_LIBRARY avformat avformat-55 avformat-57
+ 		   PATHS /usr/lib/
+ 		   	 /usr/lib/ffmpeg/
+ 		   	 $ENV{FFMPEGDIR}/lib/
+@@ -28,7 +28,7 @@ FIND_PATH( AVCODEC_INCLUDE_DIR libavcodec/avcodec.h
+ 		   	 $ENV{FFMPEGDIR}/include/
+ 		   	 $ENV{FFMPEGDIR}/include/ffmpeg/ )
+ 
+-FIND_LIBRARY( AVCODEC_LIBRARY avcodec avcodec-55
++FIND_LIBRARY( AVCODEC_LIBRARY avcodec avcodec-55 avcodec-57
+ 		   PATHS /usr/lib/
+ 		   	 /usr/lib/ffmpeg/
+ 		   	 $ENV{FFMPEGDIR}/lib/
+@@ -42,7 +42,7 @@ FIND_PATH( AVUTIL_INCLUDE_DIR libavutil/avutil.h
+ 		   	 $ENV{FFMPEGDIR}/include/
+ 		   	 $ENV{FFMPEGDIR}/include/ffmpeg/ )
+ 
+-FIND_LIBRARY( AVUTIL_LIBRARY avutil avutil-52
++FIND_LIBRARY( AVUTIL_LIBRARY avutil avutil-52 avutil-55
+ 		   PATHS /usr/lib/
+ 		   	 /usr/lib/ffmpeg/
+ 		   	 $ENV{FFMPEGDIR}/lib/
+@@ -56,7 +56,7 @@ FIND_PATH( AVDEVICE_INCLUDE_DIR libavdevice/avdevice.h
+ 		   	 $ENV{FFMPEGDIR}/include/
+ 		   	 $ENV{FFMPEGDIR}/include/ffmpeg/ )
+ 
+-FIND_LIBRARY( AVDEVICE_LIBRARY avdevice avdevice-55
++FIND_LIBRARY( AVDEVICE_LIBRARY avdevice avdevice-55 avdevice-56
+ 		   PATHS /usr/lib/
+ 		   	 /usr/lib/ffmpeg/
+ 		   	 $ENV{FFMPEGDIR}/lib/
+@@ -70,7 +70,7 @@ FIND_PATH( SWSCALE_INCLUDE_DIR libswscale/swscale.h
+ 		   	 $ENV{FFMPEGDIR}/include/
+ 		   	 $ENV{FFMPEGDIR}/include/ffmpeg/ )
+ 
+-FIND_LIBRARY( SWSCALE_LIBRARY swscale swscale-2
++FIND_LIBRARY( SWSCALE_LIBRARY swscale swscale-2 swscale-4
+ 		   PATHS /usr/lib/
+ 		   	 /usr/lib/ffmpeg/
+ 		   	 $ENV{FFMPEGDIR}/lib/
+@@ -84,7 +84,7 @@ FIND_PATH( AVRESAMPLE_INCLUDE_DIR libavresample/avresample.h
+ 		   	 $ENV{FFMPEGDIR}/include/
+ 		   	 $ENV{FFMPEGDIR}/include/ffmpeg/ )
+ 
+-FIND_LIBRARY( AVRESAMPLE_LIBRARY avresample avresample-2
++FIND_LIBRARY( AVRESAMPLE_LIBRARY avresample avresample-2 avresample-3
+ 		   PATHS /usr/lib/
+ 		   	 /usr/lib/ffmpeg/
+ 		   	 $ENV{FFMPEGDIR}/lib/
+diff --git a/include/FFmpegUtilities.h b/include/FFmpegUtilities.h
+index d90c37c..40000b7 100644
+--- a/include/FFmpegUtilities.h
++++ b/include/FFmpegUtilities.h
+@@ -81,6 +81,23 @@
+ 	#undef av_err2str
+ 	#define av_err2str(errnum) av_make_error_string(errnum).c_str()
+ 
++	// Define this for compatibility
++	#ifndef PixelFormat
++		#define PixelFormat AVPixelFormat
++    #endif
++	#ifndef PIX_FMT_RGBA
++		#define PIX_FMT_RGBA AV_PIX_FMT_RGBA
++    #endif
++	#ifndef PIX_FMT_NONE
++		#define PIX_FMT_NONE AV_PIX_FMT_NONE
++    #endif
++	#ifndef PIX_FMT_RGB24
++		#define PIX_FMT_RGB24 AV_PIX_FMT_RGB24
++	#endif
++	#ifndef PIX_FMT_YUV420P
++		#define PIX_FMT_YUV420P AV_PIX_FMT_YUV420P
++	#endif
++
+ 	#if LIBAVFORMAT_VERSION_MAJOR >= 55
+ 		#define AV_ALLOCATE_FRAME() av_frame_alloc()
+ 		#define AV_RESET_FRAME(av_frame) av_frame_unref(av_frame)
