@@ -1,12 +1,12 @@
 # Maintainer: Sonic-Y3k <sonic.y3k@googlemail.com>
 pkgname=plex-email
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="This script aggregates all new TV and movie releases for the past x days then writes to your web directory and sends out an email."
 arch=('any')
 url="https://github.com/jakewaldron/PlexEmail"
 license=('Apache')
-depends=('python2')
+depends=('python2' 'python2-requests')
 optdepends=('php-apache: to use the Apache web server')
 conflicts=('plex-email-git')
 provides=("plex-email")
