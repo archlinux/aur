@@ -4,10 +4,10 @@
 
 pkgname=shine
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Super fast fixed-point MP3 encoder'
 arch=('arm' 'i686' 'x86_64')
-url='https://github.com/savonet/shine'
+url=(https://github.com/savonet/shine)
 source="https://github.com/savonet/$pkgname/archive/$pkgver.tar.gz"
 license=(GPL2)
 depends=('glibc')
