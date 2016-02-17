@@ -2,7 +2,7 @@
 post_install() {
   cat << EOF
   If you are using [multilib], please install/upgrade
-  lib32-freetype2-infinality-ultimate, too.
+  lib32-freetype2-infinality, too.
 EOF
 }
 
@@ -12,7 +12,7 @@ post_upgrade() {
 
 post_remove() {
   cat << EOF
-  freetype2-infinality-ultimate was removed.
+  freetype2-infinality was removed.
 EOF
 }
 # vim:set ts=2 sw=2 et:
