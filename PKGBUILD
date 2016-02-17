@@ -29,7 +29,7 @@ package() {
 
 	# install config file
 	install -d "${pkgdir}/etc/plex-email"
-	install -Dm644 scripts/config.conf "${pkgdir}/etc/plex-email/"
+	install -Dm600 scripts/config.conf "${pkgdir}/etc/plex-email/"
 
         # install web files
 	install -d "${pkgdir}/usr/share/webapps/"
