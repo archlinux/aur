@@ -2,7 +2,7 @@
 # Wed Feb 03 18:38:24 UTC 2016
 pkgbase = nvidiux
 	pkgdesc = (En)Python interface for overlclock/underclock your nvidia gpu with proprietary driver | (Fr)Interface en pyqt pour overclocker/underclocker les gpu nvidia avec le pilote proprio"
-	pkgver = 1.2.1
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/RunGp/Nvidiux
 	arch = any
