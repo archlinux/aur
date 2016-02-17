@@ -2,8 +2,10 @@
 # Contributors:
 
 _fred=#tag=build01470
-#_fred=#branch=next
+_contrib=#tag=v50
 _wot=#tag=build0018
+_keyutils=#tag=v5025
+_upnp=#tag=10007
 
 pkgname=freenet
 pkgver=0.7.5.1470
@@ -47,9 +49,9 @@ noextract=('lzma465.tar.bz2'
 # here we have only java-commons-compress coming prebuilt by
 # the freenetproject, the rest we build ourselves
 source=("git+https://github.com/freenet/fred.git${_fred}"
-        "git+https://github.com/freenet/contrib.git"
-        "git+https://github.com/freenet/plugin-UPnP.git"
-        "git+https://github.com/freenet/plugin-KeyUtils.git"
+        "git+https://github.com/freenet/contrib.git${_contrib}"
+        "git+https://github.com/freenet/plugin-UPnP.git${_upnp}"
+        "git+https://github.com/freenet/plugin-KeyUtils.git${_keyutils}"
         "git+https://github.com/freenet/plugin-WebOfTrust.git${_wot}"
         "${url}/alpha/opennet/seednodes.fref"
         "IpToCountry.dat::http://software77.net/geo-ip/?DL=4"
