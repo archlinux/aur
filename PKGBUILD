@@ -2,8 +2,8 @@
 
 _pkgname=baikal
 pkgname=${_pkgname}-unstable
-pkgver=0.3.1.r3.g3102b80
-pkgrel=2
+pkgver=0.3.2.r0.gd9a4ef2
+pkgrel=1
 pkgdesc="Baïkal is a Calendar+Contacts server"
 url="http://baikal-server.com/"
 arch=('any')
