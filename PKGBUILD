@@ -7,7 +7,7 @@ pkgdesc="Interactive C++ interpreter built on the top of LLVM and Clang librarie
 arch=('i686' 'x86_64')
 url="https://root.cern.ch/cling"
 license=('custom:Cling Release License')
-makedepends=('cmake' 'libffi' 'git' 'python2' 'jupyter' 'python-pip')
+makedepends=('cmake' 'libffi' 'git' 'python' 'python2' 'jupyter')
 source=("llvm::git+http://root.cern.ch/git/llvm.git#branch=cling-patches"
 	"clang::git+http://root.cern.ch/git/clang.git#branch=cling-patches"
 	"cling::git+http://root.cern.ch/git/cling.git#branch=master"
