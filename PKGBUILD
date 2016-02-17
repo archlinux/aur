@@ -3,7 +3,7 @@
 pkgname=vis
 pkgver=0.1
 pkgrel=2
-pkgdesc='suckless vim like editor'
+pkgdesc='modern, legacy free, simple yet efficient vim-like editor'
 arch=('i686' 'x86_64')
 url='http://repo.or.cz/vis.git'
 depends=('ncurses' 'libtermkey' 'lua')
