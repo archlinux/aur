@@ -1,0 +1,16 @@
+--- Imaging-1.1.7/_imagingft.c.orig	2016-02-17 22:51:22.173689472 +0800
++++ Imaging-1.1.7/_imagingft.c	2016-02-17 22:53:45.743683886 +0800
+@@ -70,7 +70,13 @@
+     const char* message;
+ } ft_errors[] =
+ 
++#if defined(USE_FREETYPE_2_1)
++/* freetype 2.1 and newer */
++#include FT_ERRORS_H
++#else
++/* freetype 2.0 */
+ #include <freetype/fterrors.h>
++#endif
+ 
+ /* -------------------------------------------------------------------- */
+ /* font objects */

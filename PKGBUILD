@@ -9,7 +9,7 @@
 
 pkgname=python2-imaging
 pkgver=1.1.7
-pkgrel=12
+pkgrel=13
 pkgdesc="PIL. Provides image processing capabilities for python"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'armv6l')
 url="http://www.pythonware.com/products/pil/index.htm"
@@ -21,8 +21,16 @@ optdepends=('tk: for the ImageTK module'
 provides=("pil=${pkgver}")
 conflicts=('pil')
 replaces=('pil')
-source=(http://effbot.org/downloads/Imaging-${pkgver}.tar.gz)
-md5sums=('fc14a54e1ce02a0225be8854bfba478e')
+source=(http://effbot.org/downloads/Imaging-${pkgver}.tar.gz
+        ftheaders.patch)
+md5sums=('fc14a54e1ce02a0225be8854bfba478e'
+         '8e38bfc967145c5467b57f40ceed63e7')
+
+prepare() {
+  cd "${srcdir}/Imaging-${pkgver}"
+
+  patch -F 0 -N -p1 -i ../ftheaders.patch
+}
 
 build() {
   cd "${srcdir}/Imaging-${pkgver}"
