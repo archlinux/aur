@@ -52,7 +52,7 @@ pkgbase=linux-bfq
 pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _kernelname=-bfq
 _srcname=linux-4.4
-pkgver=4.4.1
+pkgver=4.4.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
@@ -76,7 +76,6 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch'
         'config' 'config.x86_64'
         '0004-sdhci-revert.patch'
-        '0006-tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch'
         '0007-4.4-revert-btrfs.patch'
         '0008-4.4-revert-xfs.patch')
         
@@ -98,11 +97,6 @@ prepare() {
     # https://bugzilla.kernel.org/show_bug.cgi?id=106541
         msg "Fixes #47778 sdhci broken on some boards"
         patch -Rp1 -i "${srcdir}/0004-sdhci-revert.patch"    
-        
-    ### Fixes #47805 kernel panics on platform modules
-    # https://bugzilla.kernel.org/show_bug.cgi?id=110751
-        msg "Fixes #47805 kernel panics on platform modules"
-        patch -Np1 -i "${srcdir}/0006-tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch" 
     
     ### Fix broken suspend from btrfs and xfs
         msg "Fix #47757"
@@ -457,7 +451,7 @@ package_linux-bfq-docs() {
 
 sha512sums=('13c8459933a8b80608e226a1398e3d1848352ace84bcfb7e6a4a33cb230bbe1ab719d4b58e067283df91ce5311be6d2d595fc8c19e2ae6ecc652499415614b3e'
             'SKIP'
-            'b117b6f88dd713a33691306e483d5c42bcf61091d91f7248e1537ac7f7b96380f5f7df81f399cecda13d9388ad7aa52ed2e6d46f7b27706d2f197b8e64c330b3'
+            '3222ddc913d14cd4b4ae999890afb580db9a79337dcd42876db6bbf08d351982bb1849fd97152915b570a3408ddd2be645e851736615f90ad8354244116ae12c'
             'SKIP'
             'bfd5d1a2d8f203e4d13914d311e8cc79b81695a41dc24179074cb05a5a9b5b0cc89a77062c6b8f79c850281aaa0d02dce40e23750aea7d1015f675c1cc024027'
             '275b7573adf648325ab950f8a8be7753f2efac0c4cd5030d31b0482fca0b9b9886c85dec989acde15eadf128366c250ecbd19d5527bfb41f472425fef43e93fd'
@@ -468,7 +462,6 @@ sha512sums=('13c8459933a8b80608e226a1398e3d1848352ace84bcfb7e6a4a33cb230bbe1ab71
             'd6714cbe5cdc19f6a92a32bc7bb84950c68194bc63946c42eefe6301d6f0fc43e9b318689292d1f1c9d177c57cac70c0fe6ea3338e2723473243676d3393a586'
             '7fd583ba714ad34d56d9dd5cd0ea330567b1587100aeef7f644242a273d33fb93b80ddc35661ac6a23a2babe961c0745722943ea5d6eab1eedd594c950387286'
             'be80d7ee558595d4b17b07a5a2b729d9a9503c963ec1b19bac6a87601eaefd28075aea7fb6d9c77e2e15e063fc6a8a2e8744bc1efe63e2a58b8c3ede0d89c821'
-            'a4580a922f8c1e26a4c41065e1690ee15a6ca8c096b329c2dde048ff11eef4c98348d9b4c87702862e0bf4cfaeff5122d4aca9d3b4085efc805068dd79c7f30c'
             '9ebfcb5bfa613bd6b2c2817d3487bd22c2fbbb5f686f68c28912813be141d584b33cc8d8f175ce7cf10ec686902f7336c966b04b00d6aa5409298f1474c58035'
             '321a4817ca9a7486f7bf212978e6eeab1481b31c37d35209d7062be7d9f360d5b1f26b2dc45a4c46879c2d14b4ed212b322ea91d0fb85f74d6c298a7cc2a3198')
             
