@@ -2,14 +2,14 @@
 
 pkgname=feeluown-git
 _pkgname=FeelUOwn
-pkgver=7.0a.4.g505a3c8
+pkgver=7.1a.1.gee5020c
 pkgrel=1
 epoch=1
 pkgdesc="个性化音乐服务 For Mac And Linux"
 arch=("any")
 url="https://github.com/cosven/FeelUOwn"
 license=('GPL3')
-depends=('python-pyqt5' 'python-xlib' 'python-requests' 'python-quamash' 'python-sqlalchemy' 'python-dbus' 'qt5-webkit' 'qt5-multimedia' 'xdg-utils')
+depends=('python-pyqt5' 'python-xlib' 'python-requests' 'python-quamash' 'python-sqlalchemy' 'python-dbus' 'qt5-webkit' 'qt5-multimedia' 'xdg-utils' 'python-yaml')
 optdepends=('vlc')
 makedepends=('git')
 provides=("feeluown")
