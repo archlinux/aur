@@ -4,7 +4,7 @@
 pkgname=('qtel')
 _pkgname=('svxlink')
 pkgver="15.11"
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'armv5h' 'armv6h' 'armv7h')
 url="http://sourceforge.net/projects/svxlink/"
 license=('GPL')
@@ -35,4 +35,5 @@ package(){
   rm -rf ${pkgdir}/usr/share/{doc,man,svxlink}
   rm -r ${pkgdir}/var
   rm -r ${pkgdir}/etc
+  mv ${pkgdir}/usr/lib64 ${pkgdir}/usr/lib
 }
