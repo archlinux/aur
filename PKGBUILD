@@ -3,7 +3,7 @@
 
 pkgname=kanboard
 pkgver=1.0.19
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple visual task board'
 arch=('any')
 url='http://kanboard.net/'
