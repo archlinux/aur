@@ -1,6 +1,6 @@
 pkgbase = terminus-cyrillic
 	pkgdesc = Terminus font with dv1 and ij1 patches applied
-	pkgver = 4.39
+	pkgver = 4.40
 	pkgrel = 1
 	url = http://sourceforge.net/projects/terminus-font/
 	install = terminus-cyrillic.install
@@ -13,8 +13,8 @@ pkgbase = terminus-cyrillic
 	depends = fontconfig
 	conflicts = terminus-font
 	replaces = xserver-terminus-fonts
-	source = http://downloads.sourceforge.net/project/terminus-font/terminus-font-4.39/terminus-font-4.39.tar.gz
-	md5sums = 1ec1bee67a1c017f349bc8558b2d4fa6
+	source = http://downloads.sourceforge.net/project/terminus-font/terminus-font-4.40/terminus-font-4.40.tar.gz
+	md5sums = 1e1df0d2c612c374ebe7966f90f04e0c
 
 pkgname = terminus-cyrillic
 
