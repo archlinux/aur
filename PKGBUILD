@@ -5,7 +5,7 @@
 pkgname=tachyon-opengl
 _pkgname=tachyon
 pkgver=0.99b6
-pkgrel=2
+pkgrel=3
 pkgdesc="Parallel ray tracer (used as part of Visual Molecular Dynamics), OpenGL-enabled"
 arch=('i686' 'x86_64')
 url="http://jedi.ks.uiuc.edu/~johns/raytracer/"
@@ -15,10 +15,12 @@ conflicts=('tachyon')
 options=(staticlibs)
 source=("http://jedi.ks.uiuc.edu/~johns/raytracer/files/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         "make_arch.patch"
-        "make_config.patch")
+        "make_config.patch"
+        "make_gl.patch")
 sha256sums=('f4dcaf9c76a4f49310f56254390f9611c22e353947a1745a8c623e8bc8119b97'
             '935553f4a0553505dc4db9c22635072d9cf238988e1dbeee2df52a01e0953a1a'
-            'c016bb5b0bc422c11bf53e93f7f9001fd742a53ab3d49affd1354bc3990391b3')
+            'c016bb5b0bc422c11bf53e93f7f9001fd742a53ab3d49affd1354bc3990391b3'
+            '0060bd52bad05e98a9709af4a84e758d17b376b4f7ab71e627f0aeeaf9e5f0e0')
 
 case "$CARCH" in
   "i686") _buildtype=linux-thr-ogl ;;
@@ -31,6 +33,8 @@ prepare() {
   patch -i "${srcdir}/make_arch.patch"
   # enable JPEG and PNG support, plus GCC atomics
   patch -i "${srcdir}/make_config.patch"
+  # fix location of OpenGL and X11 headers/libraries
+  patch -i "${srcdir}/make_gl.patch"
 }
 
 build() {

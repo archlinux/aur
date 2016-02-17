@@ -1,0 +1,26 @@
+diff --git a/unix/Make-opengl b/unix/Make-opengl
+index d9bd5b9..3b2eccb 100644
+--- a/unix/Make-opengl
++++ b/unix/Make-opengl
+@@ -9,8 +9,8 @@
+ #
+ # Generic Mesa OpenGL / GLX include and link specs, for most platforms
+ #
+-MESA_GLX_INCS = -I/usr/local/include
+-MESA_GLX_LIBS = -L/usr/local/lib -lMesaGL
++MESA_GLX_INCS = -I/usr/include
++MESA_GLX_LIBS = -L/usr/lib -L/usr/lib/mesa -lMesaGL
+ 
+ 
+ #
+@@ -37,8 +37,8 @@ HP_GLX_LIBS = -L/usr/lib/X11R6 -L/opt/graphics/OpenGL/lib -lGL -lX11 -lXext
+ #
+ # Linux OpenGL / GLX include and link specs
+ #
+-LINUX_GLX_INCS = -I/usr/X11R6/include
+-LINUX_GLX_LIBS = -L/usr/X11R6/lib -lGL -lX11
++LINUX_GLX_INCS = -I/usr/include
++LINUX_GLX_LIBS = -L/usr/lib -lGL -lX11
+ 
+ 
+ #
