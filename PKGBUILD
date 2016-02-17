@@ -2,15 +2,16 @@
 
 pkgname=pcp
 pkgver=3.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="System performance and analysis framework"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://pcp.io"
 license=('LGPL')
 depends=('python' 'avahi' 'systemtap' 'procps-ng')
-makedepends=('libmicrohttpd' 'cairo')
+makedepends=('libmicrohttpd' 'cairo' 'qt4')
 optdepends=('libmicrohttpd: support for pmwebd'
-            'cairo: support for pmwebd')
+            'cairo: support for pmwebd'
+	    'qt4: support for PCP-GUI and pmchart')
 install="pcp.install"
 source=("https://bintray.com/artifact/download/pcp/source/pcp-$pkgver.src.tar.gz"
         "pcp.install"
@@ -21,7 +22,7 @@ sha256sums=('c96615fd63b14931382c0937c80fbb0654cecfe01bfcc1c17b91800355fa9a88'
 
 build() {
 	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --without-qt
+	QMAKE=qmake-qt4 ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 	make
 }
 
