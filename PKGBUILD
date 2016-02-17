@@ -12,8 +12,6 @@ source=("sdk.run::https://vulkan.lunarg.com/pub/sdks/linux/latest"
 sha1sums=('869e60e46df3c1938d206158ec0591bf037cf83c'
           'beaab6bfd4f3f219f295c4fbdc6300098ddeea2c')
 depends=('glslang-git' 'spirv-tools')
-makedepends=('cmake' 'asciidoc' 'source-highlight')
-options=('zipman')
 
 _libver=${pkgver%.*}
 
