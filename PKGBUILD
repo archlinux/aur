@@ -2,13 +2,13 @@
 
 _pkgname=bumblebeed-resume
 pkgname=bumblebeed-resume-git
-pkgver=20160127
+pkgver=20160217
 pkgrel=1
 pkgdesc="Simple systemd service for restart bumblebeed service after resume"
 arch=('any')
 url="https://github.com/FadeMind/${_pkgname}"
 license=('GPL2')
-depends=('systemd' 'bumblebee')
+depends=('bash' 'bumblebee' 'coreutils' 'systemd'  )
 makedepends=('git')
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
@@ -21,4 +21,5 @@ pkgver() {
 
 package() {
     install -Dm644 "${srcdir}/${_pkgname}/${_pkgname}.service"  "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
-} 
+    install -Dm755 "${srcdir}/${_pkgname}/${_pkgname}"          "${pkgdir}/usr/bin/${_pkgname}"
+}
