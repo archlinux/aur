@@ -1,7 +1,7 @@
 pkgbase = fala
 	pkgdesc = Fala - A simple text reader
 	pkgver = 0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://sourceforge.net/projects/fala/
 	arch = i686
 	arch = x86_64

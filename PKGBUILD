@@ -2,7 +2,7 @@
 # Contributor: Lucas Saliés Brum <lucas@archlinux.com.br>
 pkgname=fala
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Fala - A simple text reader"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/fala/"
@@ -19,5 +19,9 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname"
   make || return 1
+}
+
+package() {
+  cd "$srcdir/$pkgname"
   make PREFIX=/usr DESTDIR="$pkgdir/" install
 }
