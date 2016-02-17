@@ -1,6 +1,6 @@
  
 pkgname=stremio-beta
-pkgver=3.5.7
+pkgver=3.5.8
 pkgrel=1
 pkgdesc="Watch instantly all the video content you enjoy in one place."
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=("http://dl.strem.io/Stremio${pkgver}.linux.tar.gz"
         "https://strem.io/favicon-32x32.png"
         "https://strem.io/favicon-96x96.png"
         "stremio-beta.desktop")
-md5sums=('43fe6026ecb31056ec6a8711ee3a88d7'
+md5sums=('33ec801af8e5861e0b500dc998bcfb87'
          '17a3ae27d06908138317c3a9b8d03898'
          'e3b38592637449733618d73b45293b09'
          'a9381ff162484cd8c847eaa364e51e62')
