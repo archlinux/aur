@@ -1,13 +1,13 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=svg-cleaner-git
 pkgver=v0.6.2.27.gb827305
-pkgrel=1
-pkgdesc="svg cleaner"
+pkgrel=2
+pkgdesc="Program for reducing size of svg images without loss"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/svgcleaner/"
 license=('GPL3')
 depends=('qt4' 'gtk-update-icon-cache')
-makedepends=('bzr')
+makedepends=('git')
 source=('git+https://github.com/RazrFalcon/SVGCleaner.git')
 md5sums=('SKIP')
 _gitname="SVGCleaner"
