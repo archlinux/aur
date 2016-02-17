@@ -1,0 +1,17 @@
+post_install() {
+	echo "#################################################"
+	echo "#                                               #"
+	echo "# Don't forget to update the plex-email config  #"
+	echo "# file in /opt/plex-email/config.conf           #"
+	echo "#                                               #"
+	echo "# To enable plex-email enable plex-email.timer  #"
+	echo "#                                               #"
+	echo "#################################################"
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+}

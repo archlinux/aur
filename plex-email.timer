@@ -1,0 +1,9 @@
+[Unit]
+Description=Run plex-email weekly
+
+[Timer]
+OnCalendar=Fri 18:00
+Persistent=true     
+ 
+[Install]
+WantedBy=timers.target
