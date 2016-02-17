@@ -15,12 +15,12 @@ pkgname=('zabbix3-server'
          'zabbix3-java-gateway'
          'zabbix3-proxy'
          'zabbix3-common')
-pkgver=3.0.0beta2
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Zabbix is an enterprise-class open source distributed monitoring solution."
 arch=('i686' 'x86_64')
 url='http://www.zabbix.com/'
-groups='zabbix'
+groups=('zabbix')
 license=('GPL2')
 source=("https://downloads.sourceforge.net/sourceforge/zabbix/zabbix-${pkgver}.tar.gz"
         "zabbix-common.logrotate" "zabbix.sysusers" "zabbix.tmpfiles.conf"
@@ -170,7 +170,7 @@ package_zabbix3-common() {
   install -D -m644 "${srcdir}/zabbix.sysusers"         "${pkgdir}/usr/lib/sysusers.d/zabbix-common.conf"
 }
 
-md5sums=('8606530aa8cfa525dcba952887e58f9b'
+md5sums=('fd4032444711ebb45e92b4cd54a354c6'
          '2550b61809e65b3506954605edc07066'
          '564022867b5bdfa3a98a4ed46ac97f47'
          'cfb62758de880609adb67d0c09d662c5'
