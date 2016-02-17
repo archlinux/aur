@@ -1,10 +1,33 @@
+pre_upgrade() {
+    echo "Close all sessions on your current kanboard instance"
+    echo "Kanboard database upgrades are automatic"
+    read -p "BACKUP YOUR KANBOARD DATABASE AND DATA DIRECTORY BEFORE UPGRADING!!!"
+}
 post_install() {
     echo 'To get started you need to:
+- INSTALL either php-sqlite, php-pgsql, or mariadb-clients and enable the correct database plugin in php.ini
 - Configure nginx or apache
+    * Example Apache and Nginx configs are located in /etc/webapps/kanboard
 - Enable the required database driver in /etc/php/php.ini (the default driver is sqlite)
 - OPTIONAL: Configure kanboard by editing /etc/webapps/kanboard/config.php
     This is required when using another DB driver than sqlite
     More info:
     * http://kanboard.net/documentation/mysql-configuration
-    * http://kanboard.net/documentation/postgresql-configuration'
+    * http://kanboard.net/documentation/postgresql-configuration
+- Configure the background tasks via cron
+    * Default cron config is located in /etc/webapps/kanboard, copy the file to /etc/cron.d
+    * http://kanboard.net/documentation/cronjob
+- Configure kanboard to send out emails
+    * http://kanboard.net/documentation/email-configuration
+- Configure URL Rewriting
+    * http://kanboard.net/documentation/nice-urls
+- Evaluate other config options as needed
+    * http://kanboard.net/documentation/config
+- Make sure your web server can write to kanboards data directory
+    * chown -R http:http /usr/share/webapps/kanboard/data'
+}
+post_upgrade() {
+echo 'Check /usr/share/webapps/kanboard/ChangeLog for major changes'
+echo 'Compare your current /etc/webapps/kanboard/config.php with the new /usr/share/webapps/kanboard/config.php.default for new or changed settings'
+echo 'Check your plugins' 
 }
