@@ -1,5 +1,5 @@
 src
 pkg
-000*BFQ*.patch
+*bfq.patch
 linux-*.tar.*
 patch-*.*

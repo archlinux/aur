@@ -5,7 +5,7 @@ pkgname=(linux-luca020400 linux-luca020400-headers linux-luca020400-docs)
 _kernelname=-luca020400
 _srcname=linux-4.4
 pkgver=4.4.1
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -24,9 +24,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'config'
         '0001-4.4-revert-btrfs.patch'
         '0001-4.4-revert-xfs.patch'
-        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-${_bfqkern}.patch"
-        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-for-${_bfqkern}.patch"
-        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqrel}-for.patch"
+        "0001-bfq.patch::${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-${_bfqkern}.patch"
+        "0002-bfq.patch::${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-for-${_bfqkern}.patch"
+        "0003-bfq.patch::${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqrel}-for.patch"
         'change-default-console-loglevel.patch'
         'enable_additional_cpu_optimizations_for_gcc.patch')
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
@@ -66,9 +66,9 @@ prepare() {
   patch -Np1 -i "${srcdir}/0001-4.4-revert-btrfs.patch"
 
   # bfq
-  patch -Np1 -i "${srcdir}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.4.0.patch"
-  patch -Np1 -i "${srcdir}/0002-block-introduce-the-BFQ-v7r11-I-O-sched-for-4.4.0.patch"
-  patch -Np1 -i "${srcdir}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-for.patch"
+  patch -Np1 -i "${srcdir}/0001-bfq.patch"
+  patch -Np1 -i "${srcdir}/0002-bfq.patch"
+  patch -Np1 -i "${srcdir}/0003-bfq.patch"
 
   # gcc cpu optimizations
   patch -Np1 -i "${srcdir}/enable_additional_cpu_optimizations_for_gcc.patch"
