@@ -9,9 +9,8 @@ arch=('any')
 url='https://thingspeak.com'
 license=('GNU GPLv3+')
 depends=('mariadb' 'xml2' 'libxslt' 'git' 'curl' 'ruby-bundler')
-source=("git://github.com/iobridge/${_gitname}" 'Gemfile.lock.patch')
-sha256sums=('SKIP'
-            '485557a42780867d931514acf4e6d9cf4de418085a7c18bce501578cddeded88')
+source=("git://github.com/greyltc/${_gitname}")
+sha256sums=('SKIP')
 
 PKGEXT='.pkg.tar'
 
@@ -20,10 +19,10 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd ${srcdir}/$_gitname/
-  patch -Np1 -i "${srcdir}/Gemfile.lock.patch"
-}
+#prepare() {
+#  cd ${srcdir}/$_gitname/
+#  patch -Np1 -i "${srcdir}/Gemfile.lock.patch"
+#}
 
 package() {
   cd ${srcdir}/$_gitname/
