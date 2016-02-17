@@ -4,15 +4,15 @@
 # Contributor: wangjiezhe <wangjiezhe AT yandex DOT com>
 
 pkgname=hoichess
-pkgver=0.16.1
-pkgrel=2
+pkgver=0.17.0
+pkgrel=1
 pkgdesc="Xboard compatible chess engine and xiangqi (Chinese chess) engine"
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="http://www.hoicher.de/hoichess"
 depends=()
 source=(${url}/download/${pkgname}-${pkgver}-gpl.tar.gz)
-md5sums=('6aa9561bb786b63c3833868a27b02493')
+md5sums=('4a4ba9302b9558d214758d7fecaaf5ca')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
