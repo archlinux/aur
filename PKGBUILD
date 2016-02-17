@@ -27,12 +27,12 @@ prepare() {
 
 package() {
   cd ${srcdir}/$_gitname/
-  bundle install --path ${pkgdir}/usr/lib || true
-  cp config/database.yml.example config/database.yml
+  #bundle install --path ${pkgdir}/usr/lib || true
+  #cp config/database.yml.example config/database.yml
   mkdir ${pkgdir}/opt
   cp -a ${srcdir}/$_gitname/ ${pkgdir}/opt
 
-  mkdir -p "$pkgdir/etc/profile.d"
-  RUBY_VER=$(basename ${pkgdir}/usr/lib/ruby/*)
-  echo "export PATH=/usr/lib/ruby/${RUBY_VER}/bin:"'$PATH' > "$pkgdir/etc/profile.d/thingspeak.sh"
+  #mkdir -p "$pkgdir/etc/profile.d"
+  #RUBY_VER=$(basename ${pkgdir}/usr/lib/ruby/*)
+  #echo "export PATH=/usr/lib/ruby/${RUBY_VER}/bin:"'$PATH' > "$pkgdir/etc/profile.d/thingspeak.sh"
 }
