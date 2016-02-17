@@ -2,7 +2,7 @@
 
 pkgname=vpaint
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc='VPaint is an experimental vector graphics editor based on the Vector Animation Complex technology.'
 arch=('i686' 'x86_64')
 license=('MIT')
