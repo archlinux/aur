@@ -3,10 +3,10 @@
 
 pkgname=split2flac
 pkgver=115
-pkgrel=3
+pkgrel=4
 pkgdesc="Split flac/ape/wv/wav + cue sheet into separate tracks."
 arch=('any')
-url=("https://github.com/ftrvxmtrx/split2flac")
+url="https://github.com/ftrvxmtrx/split2flac"
 license=('MIT')
 depends=('cuetools' 'shntool' 'flac')
 conflicts=('split2flac-git')
