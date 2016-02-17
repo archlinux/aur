@@ -1,27 +1,27 @@
+bumblebeed_enable() {
+    systemctl is-enabled bumblebeed-resume.service &> /dev/null
+    if [ $? -eq 0 ]; then
+        echo 'Service bumblebeed-resume is enabled already.'
+    else
+        echo 'Enabling bumblebeed-resume service...'
+        systemctl enable bumblebeed-resume.service &> /dev/null
+    fi
+}
+
 post_install() {
-	systemctl is-enabled bumblebeed-resume.service &> /dev/null
-	if [ $? -eq 0 ]; then
-            echo 'Service is enabled already'
-        else
-            echo 'Enabling service'
-            systemctl enable bumblebeed-resume.service &> /dev/null
-	fi
+    bumblebeed_enable	
 }
 
 post_upgrade() {
-	systemctl is-enabled bumblebeed-resume.service &> /dev/null
-	if [ $? -eq 0 ]; then
-            echo 'Service is enabled already'
-        else
-            echo 'Enabling service'
-            systemctl enable bumblebeed-resume.service &> /dev/null
-	fi
-	systemctl daemon-reload
+    bumblebeed_enable
+    echo 'Reloading systemd...'
+    systemctl daemon-reload
 }
 
 pre_remove() {
-	systemctl is-enabled bumblebeed-resume.service &> /dev/null
-	if [ $? -eq 0 ]; then
-            systemctl disable bumblebeed-resume.service &> /dev/null
-	fi
+    systemctl is-enabled bumblebeed-resume.service &> /dev/null
+    if [ $? -eq 0 ]; then
+        systemctl disable bumblebeed-resume.service &> /dev/null
+        echo 'Disabling bumblebeed-resume service...'
+    fi
 }
