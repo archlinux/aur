@@ -69,7 +69,6 @@ build() {
     //tensorflow/tools/pip_package:build_pip_package
 
   msg2 "Building pip package..."
-  sed -i 's/python/python2/g' bazel-bin/tensorflow/tools/pip_package/build_pip_package
   bazel-bin/tensorflow/tools/pip_package/build_pip_package "${srcdir}/tmp-${PYTHON}"
 }
 
