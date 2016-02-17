@@ -2,7 +2,7 @@
 
 pkgname=scaleway-cli
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage BareMetal Servers from Command Line"
 arch=('i686' 'x86_64')
 url="https://scaleway.com"
@@ -21,9 +21,20 @@ prepare() {
   GO15VENDOREXPERIMENT=1 GOPATH="$srcdir" go get -v -d
 }
 
+check() {
+  cd "$srcdir/src/github.com/scaleway/$pkgname"
+  GO15VENDOREXPERIMENT=1 GOPATH="$srcdir" \
+    go test -ldflags \
+    "-X github.com/scaleway/scaleway-cli/pkg/scwversion.GITCOMMIT=nogit" \
+    -i .//cmd/scw
+}
+
 build() {
   cd "$srcdir/src/github.com/scaleway/$pkgname"
-  GOPATH="$srcdir" make
+  GO15VENDOREXPERIMENT=1 GOPATH="$srcdir" \
+    go build -ldflags \
+    "-X github.com/scaleway/scaleway-cli/pkg/scwversion.GITCOMMIT=nogit" \
+    -o scw .//cmd/scw
 }
 
 package() {
