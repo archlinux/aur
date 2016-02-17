@@ -6,7 +6,7 @@
 
 pkgname=draftsight
 pkgver=2015SP3
-pkgrel=1
+pkgrel=2
 pkgdesc="Freeware CAD software for your DWG/DXF files."
 arch=('x86_64')
 url="http://www.3ds.com/products/draftsight/"
