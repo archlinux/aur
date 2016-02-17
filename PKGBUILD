@@ -9,7 +9,7 @@ url='https://www.silabs.com/products/mcu/Pages/simplicity-studio.aspx'
 license=('unknown')
 
 # should probably put something here but most dependencies are included
-depends_i386=(gtk2)
+depends_i686=(gtk2)
 depends_x86_64=(lib32-gtk2)
 
 options=('!strip')
