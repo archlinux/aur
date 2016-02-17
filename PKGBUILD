@@ -2,7 +2,7 @@
 
 pkgname=mongochef
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A free universal database tool for developers and database administrators"
 arch=('i686' 'x86_64')
 url="http://3t.io/mongochef/"
@@ -16,7 +16,7 @@ source_i686=("https://cdn.3t.io/mongochef/linux/${pkgver}/mongochef-linux-x86-di
 source_x86_64=("https://cdn.3t.io/mongochef/linux/${pkgver}/mongochef-linux-x64-dist.tar.gz")
 
 sha256sums=('a603fd54a34f8aa59a70580fd4321db24f439ceb746545f1cf6c0216f7f8169e' 
-'596d658ef927f74d041d514a32cb7380ffccc0309a74c297ad4827fa2b3ddbf1')
+'3ef9e38cfd7ab9e0f6e70cebd635f96a7bbaccf255de2c6ed4f7fd5a4aab3728')
 sha256sums_i686=('af7d29eeab7ad57f429ed9e1fccb0efd92ebd56b04c349756900141c31a514b7')
 sha256sums_x86_64=('246f5d72e4d23eb610564ea07b7faadb6f4dd44827e22e03428049f50248dc82')
 
