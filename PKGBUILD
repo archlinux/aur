@@ -1,6 +1,6 @@
 # Maintainer: Grigorii Horos <horosgrisa@gmail.com>
 
-_git=74c7a2172382e48c2bc5d392998ecbe390b3a52b
+_git=09940b998d125972efc2121b3e84063dfdaff70d
 _repo=papirus-suite
 pkgbase=papirus
 pkgname=(
@@ -22,7 +22,7 @@ pkgname=(
     'smplayer-theme-papirus'
     'libreoffice-style-papirus'
 )
-pkgver=20160216
+pkgver=20160217
 pkgrel=1
 arch=('any')
 url="https://github.com/varlesh/${_repo}"
@@ -30,7 +30,7 @@ license=('CCPL:by-sa')
 
 options=('!strip')
 source=("${_repo}-${pkgver}.tar.gz::${url}/archive/${_git}.tar.gz")
-sha256sums=('40dd7b04a5449881aca801351368c3dc396a405ce1fe643c0156ac95ee3b83e9')
+sha256sums=('2afa3f4616d53b1561b1f6776c79dc430b4eb9f88802f2af6cf99e6f39c23d66')
 
 package_papirus(){
     pkgdesc="Meta-package for modified and adaptive Papirus theme"
@@ -191,7 +191,7 @@ package_papirus-k3b-theme() {
 
 package_bomi-skin-papirus() {
     pkgdesc="Papirus theme for Bomi"
-    depends=('bomi')
+    depends=('bomi')z
     install -d ${pkgdir}/usr/share/bomi/skins
     cp -r ${srcdir}/${_repo}-${_git}/players-skins/bomi-skin/Papirus ${pkgdir}/usr/share/bomi/skins/
     install -D -m644  ${srcdir}/${_repo}-${_git}/players-skins/bomi-skin/Papirus/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
