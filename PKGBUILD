@@ -1,7 +1,7 @@
 # Maintainer: Dan Bright <productions at zaziork dot com>
 pkgname=python-iptceditor-gtk3-git
 pkgrel=1 # package release (reset to 1 when new package version released (pkgver)
-pkgver=0 # package version (increment when new application version released,  but overwritten on build with pkgver() method below)
+pkgver=0.3 # package version (increment when new application version released,  but overwritten on build with pkgver() method below)
 pkgdesc="NOTE: THIS IS BETA. USE AT YOUR OWN RISK. This is a python3 GTK3 wrapper for the EXIV2 application, which is used to read and edit IPTC (and other forms) of image metadata. It can handle bulk operations on directories of image files."
 arch=('any')
 url="https://github.com/ZWS2014/python-iptceditor-gtk3"
@@ -21,7 +21,7 @@ package() {
 mv $srcdir/python-iptceditor-gtk3/IptcEditor $srcdir/python-iptceditor-gtk3/IptcEditor-$pkgver
 cd "$srcdir/python-iptceditor-gtk3/IptcEditor-$pkgver"
 python setup.py install --root="$pkgdir/" --optimize=1
-install -Dm644 "$srcdir/python-iptceditor-gtk3/IptcEditor-$pkgver/IptcEditor/resources/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+install -Dm644 "$srcdir/python-iptceditor-gtk3/IptcEditor-$pkgver/IptcEditor/resources/python-iptceditor-gtk3.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 install -Dm644 "$srcdir/python-iptceditor-gtk3/IptcEditor-$pkgver/IptcEditor/resources/iptc_editor-256x256.png" "$pkgdir/usr/share/pixmaps/iptc_editor-256x256.png"
 }
 post_install() {
