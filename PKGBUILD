@@ -9,20 +9,21 @@ arch=('i686' 'x86_64')
 url="http://pecl.php.net/package/uploadprogress"
 license=('PHP')
 depends=('php')
-makedepends=('autoconf')
-source=("${_pkgname}-${pkgver}"::"git+https://git.php.net/repository/pecl/php/uploadprogress.git")
+makedepends=('php' 'git' 'autoconf')
+install=${_pkgname}.install
+source=("${_pkgname}"::"git+https://git.php.net/repository/pecl/php/uploadprogress.git")
 sha512sums=('SKIP')
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}"
   phpize
   ./configure
   make
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  make INSTALL_ROOT=${pkgdir} install
-  echo "extension=${_pkgname}.so" > "${_pkgname}.ini"
-  install -D -m644 "${_pkgname}.ini" "${pkgdir}/etc/php/conf.d/${_pkgname}.ini"
+  cd "${srcdir}/${_pkgname}"
+  echo ";extension=${_pkgname}.so" > ${_pkgname}.ini
+  install -Dm644 ${_pkgname}.ini "${pkgdir}/etc/php/conf.d/${_pkgname}.ini"
+  make install INSTALL_ROOT="${pkgdir}/"
 }

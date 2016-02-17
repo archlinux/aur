@@ -1,0 +1,3 @@
+post_install() {
+  echo "To enable uncomment ';extension=uploadprogress.so' in /etc/php/conf.d/uploadprogress.ini and restart httpd"
+}
