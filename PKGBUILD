@@ -1,5 +1,4 @@
-# Maintainer: dhead666 <myfoolishgames@gmail.com>
-# https://github.com/dhead666/archlinux-pkgbuilds
+# Maintainer: Arthur Borsboom <arthurborsboom@gmail.com>
 #
 # Contributor: BlackIkeEagle < ike DOT devolder AT gmail DOT com >
 # Contributor: DonVla <donvla@users.sourceforge.net>
@@ -12,6 +11,7 @@
 # Contributor: [vEX] <niechift.vex@gmail.com>
 # Contributor: Zeqadious <zeqadious@gmail.com>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: dhead666 <myfoolishgames@gmail.com>
 #
 # Original credits go to Edgar Hucek <gimli at dark-green dot com>
 # for his xbmc-vdpau-vdr PKGBUILD at https://archvdr.svn.sourceforge.net/svnroot/archvdr/trunk/archvdr/xbmc-vdpau-vdr/PKGBUILD
@@ -23,11 +23,11 @@ pkgbase=kodi-devel
 pkgname=('kodi-devel' 'kodi-devel-eventclients')
 _gitname=xbmc
 
-pkgver=16.0b2
+pkgver=16.0rc3
 _gitver=$pkgver-Jarvis
 
 _pkgsrcname=$_gitname-$_gitver
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://xbmc.org"
 license=('GPL' 'LGPL')
@@ -44,7 +44,7 @@ makedepends=(
 )
 
 source=("https://github.com/xbmc/xbmc/archive/$_gitver.tar.gz")
-sha256sums=('b71f41f0786cb0e47c3f97c9ee18260488bdbc9565e3b8014d9b6d000ca53d6c')
+sha256sums=('9e9062fef4a99112667f5e01bbdc10d0d0107c2aa3ed0405fec17f9fde01e443')
 
 _prefix='/usr'
 
