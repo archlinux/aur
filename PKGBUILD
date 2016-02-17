@@ -9,8 +9,8 @@
 
 _pack=mapping
 pkgname=octave-$_pack
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="Simple Mapping and GIS .shp file functions."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
@@ -25,7 +25,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("http://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('b4545c37b2191d6c397348e77a8db1c5')
+md5sums=('57e71a91c986dd378e8fc4f57844b368')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
