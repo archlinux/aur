@@ -2,7 +2,7 @@
 
 pkgname=filteripdyn
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Filtering IP dyn with iptables"
 arch=('any')
 url="https://github.com/Chipsterjulien/filteripdyn"
@@ -25,13 +25,19 @@ build() {
         mkdir -p .gopath/{bin,src}
         # export var
         export GOPATH=~/.gopath
-    fi
 
-    # Getting some libs
-    echo "Install go-logging"
-    go get github.com/op/go-logging
-    echo "Install viper"
-    go get github.com/spf13/viper
+        # Getting some libs
+        echo "Install go-logging"
+        go get github.com/op/go-logging
+        echo "Install viper"
+        go get github.com/spf13/viper
+    else
+        # Update some libs
+        echo "Update go-logging"
+        go get -u github.com/op/go-logging
+        echo "Update viper"
+        go get -u github.com/spf13/viper
+    fi
 
     cd "$_builddir"
 
@@ -62,4 +68,4 @@ package() {
         "$pkgdir"/usr/bin/$pkgname || return 1
 }
 
-sha512sums=('2f751f79a2bba96e876f41ac8c584e111321692a78a563a5127c020950c8ccc85c1d7dde8652fd899a81d4f5e7041e832e86508075e0bda0d289e45d3dd6e7ae')
+sha512sums=('0730072c1a90b39659863e57f2846648193127a2adc38f78bcc2086da2550d126d7939e89ac6de515eb01b85aab1f47611f4a9620d6fff5305bbda2609d322e8')
