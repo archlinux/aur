@@ -1,7 +1,7 @@
 # Maintainer: Sébastien Luttringer
 
 pkgname=agetpkg-git
-pkgver="$(git log --pretty=format:''|wc -l)"
+pkgver=20
 pkgrel=1
 pkgdesc='Archlinux Archive Get Package (Git version)'
 arch=('any')
@@ -10,9 +10,17 @@ license=('GPL2')
 makedepends=('git')
 depends=('python' 'python-xdg')
 conflicts=('agetpkg')
+provides=('agetpkg')
+source=("${pkgname}::git+${url}.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/$pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 package() {
-  cd "$startdir"
+  cd "$srcdir/$pkgname"
   install -Dm755 agetpkg "$pkgdir/usr/bin/agetpkg"
 }
 
