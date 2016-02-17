@@ -1,21 +1,21 @@
 # Maintainer: Eduardo Sánchez Muñoz
 
-pkgname=cling-git
-pkgver=r2795.7644a68
+pkgname=(cling-git cling-jupyter-git)
+pkgver=r2850.a754fcc
 pkgrel=1
 pkgdesc="Interactive C++ interpreter built on the top of LLVM and Clang libraries."
 arch=('i686' 'x86_64')
 url="https://root.cern.ch/cling"
 license=('custom:Cling Release License')
-depends=('libffi')
-makedepends=('cmake' 'libffi' 'git' 'python2')
-options=()
-conflicts=()
-provides=()
+makedepends=('cmake' 'libffi' 'git' 'python2' 'jupyter' 'python-pip')
 source=("llvm::git+http://root.cern.ch/git/llvm.git#branch=cling-patches"
 	"clang::git+http://root.cern.ch/git/clang.git#branch=cling-patches"
-	"cling::git+http://root.cern.ch/git/cling.git#branch=master")
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+	"cling::git+http://root.cern.ch/git/cling.git#branch=master"
+	"cling-jupyter-path.diff")
+sha256sums=('SKIP'
+	    'SKIP'
+	    'SKIP'
+	    '2d601fe5c75388a0c9e6cdbef6d15f356ea7b9957c9d56525becf247025a7ed2')
 
 pkgver() {
 	cd "$srcdir/cling"
@@ -30,6 +30,9 @@ prepare() {
 	if [ ! -h "$srcdir/llvm/tools/cling" ]; then
 		ln -s "$srcdir/cling" "$srcdir/llvm/tools/cling"
 	fi
+	
+	cd "$srcdir/cling"
+	git apply "$srcdir/cling-jupyter-path.diff"
 }
 
 build() {
@@ -54,7 +57,9 @@ build() {
 	make -C tools/cling
 }
 
-package() {
+package_cling-git() {
+	depends=('libffi')
+	
 	cd "$srcdir/cling-build"
 	make -C tools/clang DESTDIR="$pkgdir" install
 	make -C tools/cling DESTDIR="$pkgdir" install
@@ -63,4 +68,12 @@ package() {
 	ln -s "/opt/cling/bin/cling" "$pkgdir/usr/bin/cling"
 	
 	install -Dm644 "$srcdir/llvm/tools/cling/LICENSE.TXT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+package_cling-jupyter-git() {
+	depends=('cling-git' 'jupyter')
+	
+	cd "$srcdir/cling/tools/Jupyter/kernel"
+	python3 setup.py install --prefix=/usr --root="$pkgdir"
+	jupyter-kernelspec install --prefix="$pkgdir/usr" cling
 }
