@@ -4,7 +4,7 @@
 # Contributor: karol_007 <karol.blazewicz@gmail.com>
 
 pkgname=zabbix-agent
-pkgver=2.4.7
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Software designed for monitoring availability and performance of IT infrastructure components"
 arch=('i686' 'x86_64')
@@ -50,12 +50,11 @@ package() {
 	install -D -m 0644 $srcdir/zabbix-agentd.tmpfiles $pkgdir/usr/lib/tmpfiles.d/zabbix-agentd.conf
 }
 
-md5sums=('9f8aeb11d8415585f41c3f2f22566b78'
+md5sums=('fd4032444711ebb45e92b4cd54a354c6'
          '519372592b66392255bfbf24e9469748'
          'd7ef5c8a7a6352dabecb9105da63fc84'
          '9ce692356b4ac0a71595ce55fe3b44c1')
-sha1sums=('9090472e5f78fd828bf89d5558ceedd60db74443'
+sha1sums=('196bf600d0e19ddaa180382f2b8bc94b84100126'
           'dcd2331be84f7b795087c8427f5c92837f2cf4ff'
           'acfe6a783cad8f28e7f23a65189af9a7d22bb540'
           '8926befcb944732fd59a34c89b569d3fbef1ca9d')
-
