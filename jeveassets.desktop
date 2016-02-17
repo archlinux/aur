@@ -3,4 +3,4 @@ Type=Application
 Terminal=false
 Name=jeveassets
 Icon=/usr/share/pixmaps/jeveassets.png
-Exec=/usr/bin/jeveassets.sh
+Exec=/usr/bin/java -jar '/opt/jEveAssets/jeveassets.jar'

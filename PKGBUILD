@@ -2,30 +2,18 @@
 # Maintainer: Andre Bauer <novamoon@ts.3v.fi>
 pkgname=jeveassets
 pkgver=2.10.5
-pkgrel=2
-epoch=
+pkgrel=3
 pkgdesc="Out-of-game asset manager for Eve-Online, written in Java"
 arch=('any')
 url="http://eve.nikr.net/jeveasset"
 license=('GPL2')
-groups=()
 depends=('jdk7-openjdk' 'unzip')
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-changelog=
-install=
 source=("http://eve.nikr.net/jeveassets/jeveassets-2.10.5.zip"
-"$pkgname.sh" "$pkgname.desktop" "$pkgname.png")
+"$pkgname.desktop" "$pkgname.png" "$pkgname.sh")
 md5sums=('3fecd6861e609ebc574e6bb822e7a5f6'
-         '349f0b0edae2c5df570142d43071a7f1'
-         'ce151aef1f56dee1dc155f8dc14ffd4a'
-         '706a6b2856a3aa9e26952078534faa8d')
+         'fe76109bee617582dc94e35a572070d6'
+         '706a6b2856a3aa9e26952078534faa8d'
+         '349f0b0edae2c5df570142d43071a7f1')
 
 
 package() {
