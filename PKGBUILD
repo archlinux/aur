@@ -7,7 +7,7 @@ pkgdesc='VPaint is an experimental vector graphics editor based on the Vector An
 arch=('i686' 'x86_64')
 license=('MIT')
 depends=('qt4' 'glu' 'qt5-base' 'libxkbcommon-x11')
-makedepends=('gcc' 'git' 'make')
+makedepends=('gendesk' 'icoutils' 'git')
 url='http://www.vpaint.org'
 conflicts=('vpaint')
 provides=()
@@ -15,7 +15,10 @@ source=('vpaint-git::git+https://github.com/dalboris/vpaint.git')
 md5sums=('SKIP')
 
 prepare() {
-	gendesk -f --pkgname "$pkgname" --pkgdesc "$pkgdesc"
+	icotool -x -o $srcdir/vpaint.png $srcdir/$pkgname/src/Gui/images/VPaint.ico
+	gendesk -f --pkgname "$pkgname" --pkgdesc "Vector graphics editor" --name="VPaint" \
+            --comment "Start VPaint" --exec "$pkgname" --categories "Graphics"         \
+            --custom "Icon=/usr/share/pixmaps/vpaint.png"
 }
 
 pkgver() {
@@ -38,5 +41,6 @@ package() {
 	mkdir -p "$pkgdir/usr/bin"
 
 	install -Dm755 "$srcdir/$pkgname/build/Gui/VPaint" "$pkgdir/usr/bin/vpaint"
+	install -Dm644 "$srcdir/vpaint.png" "$pkgdir/usr/share/pixmaps/vpaint.png"
 	install -Dm644 "vpaint.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
