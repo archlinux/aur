@@ -6,7 +6,7 @@
 
 pkgname=draftsight
 pkgver=2015SP3
-pkgrel=2
+pkgrel=3
 pkgdesc="Freeware CAD software for your DWG/DXF files."
 arch=('x86_64')
 url="http://www.3ds.com/products/draftsight/"
@@ -31,7 +31,7 @@ depends=('desktop-file-utils'
 install='draftsight.install'
 source=("http://www.draftsight.com/download-linux-fedora"
         "draftsight.desktop")
-md5sums=('09b495cc90951625100a22c7f1f0960f'
+md5sums=('4076a388798e3cf3c7eee7774d842273'
          'cfda3b8675a93ccfb768873c1a873199')
 
 _pkgprefix='opt/dassault-systemes/DraftSight'
