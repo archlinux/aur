@@ -1,6 +1,6 @@
 pkgbase = vulkan
 	pkgver = 1.0.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.khronos.org/vulkan
 	arch = x86_64
 	license = MIT
@@ -20,6 +20,8 @@ pkgname = vulkan-loader
 
 pkgname = vulkan-sdk
 	pkgdesc = Vulkan SDK
+	depends = vulkan-headers
 	depends = vulkan-loader
+	optdepends = vulkan-man-pages
 	options = staticlibs
 

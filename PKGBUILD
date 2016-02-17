@@ -3,7 +3,7 @@
 pkgbase=vulkan
 pkgname=('vulkan-loader' 'vulkan-sdk')
 pkgver=1.0.3.1
-pkgrel=2
+pkgrel=3
 url='https://www.khronos.org/vulkan'
 arch=('x86_64')
 license=('MIT')
@@ -38,16 +38,11 @@ package_vulkan-loader() {
 
 package_vulkan-sdk() {
   pkgdesc='Vulkan SDK'
-  depends=("vulkan-loader")
-  #depends=("vulkan-loader=${pkgver}")
+  depends=('vulkan-headers' 'vulkan-loader')
+  optdepends=('vulkan-man-pages')
   options=('staticlibs')
 
   cd "${srcdir}"/sdk/"${pkgver}"/"${CARCH}"
-
-  # Headers
-  install -dm755                        "${pkgdir}"/usr/include/vulkan/
-  install -m644 include/vulkan/vulkan.h "${pkgdir}"/usr/include/vulkan/
-  install -m644 include/vulkan/vk_*     "${pkgdir}"/usr/include/vulkan/
 
   # Tools
   install -dm755            "${pkgdir}"/usr/bin/
@@ -63,10 +58,6 @@ package_vulkan-sdk() {
   install -dm755                       "${pkgdir}"/usr/lib/pkgconfig/
   install  -m644 "${srcdir}"/vulkan.pc "${pkgdir}"/usr/lib/pkgconfig/
   sed s/%{version}/${pkgver}/       -i "${pkgdir}"/usr/lib/pkgconfig/vulkan.pc
-
-  #TODO: Man Pages
-  #install -d        "${pkgdir}/usr/share/man/man3/"
-  #install -m644 *.3 "${pkgdir}/usr/share/man/man3/"
 
   #TODO: LICENSE
 }
