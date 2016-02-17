@@ -2,13 +2,12 @@
 
 pkgname=opera-developer
 pkgver=37.0.2142.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast and secure web browser and Internet suite - developer stream'
 arch=('x86_64' 'i686')
 url='http://www.opera.com/browser/'
 license=('custom:opera')
 depends=('alsa-lib' 'nss' 'gtk2' 'gconf' 'libxss' 'libxtst' 'desktop-file-utils')
-makedepends=('patchelf')
 optdepends=('curl: opera crash reporter and autoupdate checker'
 	'libnotify: native desktop notifications'
 	"${pkgname}-ffmpeg-codecs: support h.264 and mp3 codecs")
@@ -48,10 +47,6 @@ package() {
 		mv "${pkgname}" ../
 	)
 	rm -rf "${pkgdir}/usr/lib/"*-linux-gnu
-
-	# patch rpath in opera-developer binary
-	patchelf --set-rpath \$ORIGIN/lib_extra:\$ORIGIN/. \
-		"$pkgdir/usr/lib/$pkgname/$pkgname"
 
 	# set suid bit for Opera sandbox
 	chmod 4755 "${pkgdir}/usr/lib/${pkgname}/opera_sandbox"
