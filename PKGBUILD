@@ -2,7 +2,7 @@
 # Contributor: Benjamin van der Burgh <benjaminvdb@gmail.com>
 
 pkgname=octave-hg
-pkgver=4.1.0+21270.230e186e292d
+pkgver=4.1.0+21295.29a0e9e70879
 pkgrel=1
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
@@ -23,7 +23,7 @@ provides=("octave=4.1.0")
 install=octave.install
 source=('java-slackware.patch')
 md5sums=('cb5a497834876e68ad28160751afe4c1')
-options=('!emptydirs')
+options=('!emptydirs' '!makeflags')
 _hgroot=http://hg.savannah.gnu.org/hgweb/
 _hgrepo=octave
 
