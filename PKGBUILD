@@ -5,17 +5,17 @@ _postfixadminver=2.93
 pkgname=('zarafa-postfixadmin'
 	 'zarafa-postfixadmin-worker')
 groups=('zarafa')
-pkgver=0.10
+pkgver=0.11
 pkgrel=1
 pkgdesc="A web based interface used to manage mailboxes, virtual domains and aliases created for Zarafa-Server with DB-Plugin and Postfix"
 arch=('any')
 license=('GPL')
-url="https://git.pietma.com/pietma/${pkgname}"
+url="https://git.pietma.com/pietma/com-pietma-${pkgname}"
 depends=('php'
 	 'mysql'
 	 'zarafa-server')
 source=("postfixadmin-${_postfixadminver}.tar.gz::http://downloads.sourceforge.net/postfixadmin/postfixadmin-${_postfixadminver}.tar.gz"
-	"zarafa-postfixadmin-${pkgver}::git+https://git.pietma.com/pietma/${pkgname}.git#tag=v${pkgver}")
+	"zarafa-postfixadmin-${pkgver}::git+https://git.pietma.com/pietma/com-pietma-${pkgname}.git#tag=v${pkgver}")
 md5sums=('d9a0e19bdb3241411cac8446d511fdb4'
          'SKIP')
 
