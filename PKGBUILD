@@ -34,7 +34,7 @@ package_vulkan-loader() {
   ln -s             libvulkan.so."${_libver%%.*}" "${pkgdir}"/usr/lib/libvulkan.so
 
   # LICENSE
-  install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+  install -Dm644 "${srcdir}"/LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }
 
 package_vulkan-sdk() {
@@ -61,5 +61,5 @@ package_vulkan-sdk() {
   sed s/%{version}/${pkgver}/       -i "${pkgdir}"/usr/lib/pkgconfig/vulkan.pc
 
   # LICENSE
-  install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+  install -Dm644 "${srcdir}"/LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }
