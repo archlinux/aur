@@ -84,7 +84,7 @@ if [ "${_opt_Maintainer:=none}" = 'none' ]; then
   sleep 1
 fi
 
-_opt_VERSION='0.61'
+_opt_VERSION='0.62'
 _opt_AUR4='aur'
 
 # After August 8, these 3 time bomb lines can be removed and _opt_AUR4 can be gotten rid of altogether
@@ -642,8 +642,8 @@ _fn_findst_in_topords() {
               declare -f -F _getlinks >/dev/null || _getlinks() {
                 # We don't handle links split across line. We can easily improve on the Cthulhu madness: sed -e 's:\s\+$::g' -e 's:^\s\+::g' | tr '\n' ' ' | sed -e 's:<[^/]:\n&:g' | sed -e 's:\s\+$::g' |
                 case "${1}" in
-                l) grep -F 'href=' | grep -o '<[aA] .*href=.*>' | sed -e 's/<[aA] /\n<a /g' | sed -ne 's/^<a .*href=["'"'"']\{0,1\}\([^ \t"'"'"'>]*\).*$/\1/p' -e '/^$/d';;
-                t) grep -F 'href=' | grep -o '<[aA] .*href=.*>' | sed -e 's/<[aA] /\n<a /g' | sed -ne 's/^<a [^>]*>\([^<]*\)<.*$/\1/p' -e '/^$/d';;
+                l) grep -aF 'href=' | grep -ao '<[aA] .*href=.*>' | sed -e 's/<[aA] /\n<a /g' | sed -ne 's/^<a .*href=["'"'"']\{0,1\}\([^ \t"'"'"'>]*\).*$/\1/p' -e '/^$/d';;
+                t) grep -aF 'href=' | grep -ao '<[aA] .*href=.*>' | sed -e 's/<[aA] /\n<a /g' | sed -ne 's/^<a [^>]*>\([^<]*\)<.*$/\1/p' -e '/^$/d';;
                 f) cat;;
                 esac
               }
