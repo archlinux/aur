@@ -12,7 +12,7 @@ optdepends=('4suite')
 install=$pkgname.install
 source=($pkgname.tar.bz2::http://bitbucket.org/fredrik_corneliusson/$pkgname/get/d91da181993c.bz2
         $pkgname.desktop)
-sha256sums=('f9ab8dbedde7ba62af4aae56502027f1bb0af0c00c5d93b61d34a10d9a3330b3'
+sha256sums=('4109e5273cf50a09f53fb36b34f698234e137d9ebf08f3206faf01813108356f'
             '672bf984c3d12b3bf967d3980ea591c22c710f4a5bb80ffe33753f9d904238d5')
 
 package() {
