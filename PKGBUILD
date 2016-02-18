@@ -1,9 +1,9 @@
 # Maintainer: Carlo Cabanilla <carlo.cabanilla@gmail.com>
 pkgname=pertino
 pkgver=510.4573
-pkgrel=1
+pkgrel=2
 pkgdesc="Cloud-based VPN client"
-arch=x86_64
+arch=('x86_64')
 url="http://pertino.com/"
 license=('proprietary')
 depends=('dhclient')
