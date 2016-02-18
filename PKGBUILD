@@ -3,11 +3,11 @@
 _theme=petrichor
 _pkgname=lightdm-webkit-theme-${_theme}
 pkgname=${_pkgname}-git
-pkgver=r1.fc3c7e2
+pkgver=r2.729a2f6
 pkgrel=1
 pkgdesc="Simple and tidy theme for LightDM's webkit2 greeter"
 arch=('any')
-url="http://github.com/phillid/petrichor"
+url="https://sighup.nz/programming/petrichor/"
 license=("BSD")
 depends=('lightdm' 'lightdm-webkit-greeter')
 source=("${pkgname}::git+https://github.com/phillid/${_theme}.git")
