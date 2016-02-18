@@ -20,6 +20,7 @@ _skip_web_engine=true
 _static_build=false
 _build_from_head=false
 _local_qt5_repo="/opt/dev/src/qtproject/qt5"
+_wayland_compositor=true
 
 pkgver=5.6.0
 pkgrel=5
@@ -87,6 +88,10 @@ fi
 
 if $_build_from_head; then
   _device_configure_flags="$_device_configure_flags -skip qt3d -skip qtsystems -skip qttools -skip qtwebkit"
+fi
+
+if $_wayland_compositor; then
+  _device_configure_flags="$_device_configure_flags -skip qtwayland" 
 fi
 
 build() {
@@ -160,7 +165,6 @@ fi
     -no-xcb \
     \
     -skip qtscript \
-    -skip qtwayland \
     -skip qtquickcontrols2 \
     \
     -sysroot ${_sysroot} \
@@ -170,6 +174,7 @@ fi
 
   make || exit 1
 
+if $_wayland_compositor; then
   # regrettably required, as qtwayland barfs on shadow builds
   # as private header paths not included: no clue how to fix, bypassing
 
@@ -177,6 +182,7 @@ fi
   cd "${_bindir}/qtwayland"
   ${_bindir}/qtbase/bin/qmake CONFIG+=wayland-compositor || exit 1
   make || exit 1
+fi
 }
 
 create_install_script()
@@ -206,9 +212,11 @@ package() {
   cd "${_bindir}"
   INSTALL_ROOT="$pkgdir" make install || exit 1
 
+if $_wayland_compositor; then
   # regrettably required
   cd "${_bindir}/qtwayland"
   INSTALL_ROOT="$pkgdir" make install || exit 1
+fi
 
   # Qt is now installed to $pkgdir/$sysroot/$prefix
   # manually generate/decompose host/target
