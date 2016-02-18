@@ -10,7 +10,6 @@ url='https://github.com/andrewrk/libgroove'
 license=(MIT)
 depends=(sdl2 chromaprint libebur128)
 makedepends=(cmake yasm)
-conflicts=(libgroove-git)
 options=('strip')
 source=("https://github.com/andrewrk/libgroove/archive/${pkgver}.tar.gz")
 sha256sums=('76f68896f078a9613d420339ef887ca8293884ad2cd0fbc031d89a6af2993636')
