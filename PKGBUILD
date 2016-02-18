@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Peter Pickford <arch@netremedies.ca>
 # Contributor: Peter Pickford <arch@netremedies.ca>
 
 pkgname=vocp
