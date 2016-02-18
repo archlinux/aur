@@ -1,7 +1,7 @@
 pkgbase = aqualung
 	pkgdesc = High quality music player w/ gapless support
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://aqualung.jeremyevans.net/
 	arch = i686
 	arch = x86_64
