@@ -15,7 +15,7 @@ optdepends=('python-gobject: for GTK GUI'
 conflicts=('autokey' 'autokey-gtk' 'autokey-qt' 'autokey-data')
 license=('GPL3')
 arch=('any')
-source=('https://pypi.python.org/packages/source/a/autokey-py3/autokey-py3-0.93.4.tar.gz')
+source=(https://pypi.python.org/packages/source/a/autokey-py3/autokey-py3-0.93.4.tar.gz)
 sha256sums=('ccc2888675f5984942b78c1ea40985b08efc32214a9d0f96b7ad54ef842df1a1')
 install=$pkgname.install
 
