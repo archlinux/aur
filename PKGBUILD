@@ -4,7 +4,7 @@ pkgver=0.8.9
 pkgrel=1
 pkgdesc="A static website generator powered by Python & Django"
 url="http://hyde.github.io"
-depends=('python2' 'python-markdown' 'python2-django' 'python2-yaml'
+depends=('python2' 'python2-markdown' 'python2-django' 'python2-yaml'
          'python2-pyrss2gen' 'python2-cherrypy' 'python2-pygments'
          'python2-fswrap' 'python2-typogrify' 'python2-commando'
          'python2-smartypants')
