@@ -12,7 +12,7 @@ sha256sums=('SKIP')
 pkgver() {
 cd "$srcdir/python-iptceditor-gtk3/IptcEditor"
 #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-printf "%s.r%s" "$(cat VERSION.rst)" "$(git rev-parse --short HEAD)" # reading from included version file ensures version matches with the published PyPi package version
+printf "%s.r%s" "$(cat VERSION.rst)" "$(git rev-list --count HEAD)" # reading from included version file ensures version matches with the published PyPi package version
 }
 #prepare() {
 #}
