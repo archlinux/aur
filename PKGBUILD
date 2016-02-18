@@ -1,9 +1,8 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=spirv-tools-git
-provides=('spirv-tools')
-pkgver=r436.dd8a661
-pkgrel=2
+pkgver=r445.4d2f223
+pkgrel=1
 pkgdesc='API and commands for processing SPIR-V modules'
 url='https://github.com/KhronosGroup/SPIRV-Tools'
 arch=('i686' 'x86_64')
@@ -12,6 +11,8 @@ source=('git+https://github.com/KhronosGroup/SPIRV-Tools')
 sha1sums=('SKIP')
 makedepends=('cmake')
 options=('staticlibs')
+conflicts=('spirv-tools')
+provides=('spirv-tools')
 
 pkgver() {
   cd "${srcdir}"/SPIRV-Tools
