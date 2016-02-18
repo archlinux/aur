@@ -7,7 +7,7 @@ _pkgbase=systemd
 pkgbase=systemd-knock
 pkgname=('systemd-knock' 'libsystemd-knock' 'systemd-knock-sysvcompat')
 pkgver=228
-pkgrel=4
+pkgrel=4.1
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
@@ -18,8 +18,8 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
 options=('strip' 'debug')
 source=("git://github.com/systemd/systemd.git#tag=v$pkgver"
         #'0001-adds-TCP-Stealth-support-to-systemd.patch::https://gnunet.org/sites/default/files/systemd-knock-patch.diff'
-        "https://repo.parabola.nu/other/knock/patches/systemd/0001-adds-TCP-Stealth-support-to-systemd-221.patch"
-        "https://repo.parabola.nu/other/systemd-knock/splash-parabola.bmp"
+        "https://repo.parabola.nu/other/knock/patches/systemd/0001-adds-TCP-Stealth-support-to-systemd-221.patch"{,.sig}
+        "https://repo.parabola.nu/other/systemd/splash-parabola.bmp"{,.sig}
         'initcpio-hook-udev'
         'initcpio-install-systemd'
         'initcpio-install-udev'
@@ -28,13 +28,19 @@ source=("git://github.com/systemd/systemd.git#tag=v$pkgver"
         'gnu+linux.patch')
 md5sums=('SKIP'
          '936208db8995db77efbb388735f950af'
-         'db7c5e4aaa501c1af4301e011f4f5966'
+         'SKIP'
+         'f8253cd3c0f249591338fbb4c223d249'
+         'SKIP'
          '90ea67a7bb237502094914622a39e281'
          '976c5511b6493715e381f43f16cdb151'
          '1b3aa3a0551b08af9305d33f85b5c2fc'
          '36ee74767ac8734dede1cbd0f4f275d7'
          '9b9f4a58e4c4009bf5290c5b297600c3'
          'd37895215ef74e172c594aebe1ba23cb')
+validpgpkeys=(
+              '684D54A189305A9CC95446D36B888913DDB59515' # Márcio Silva
+              'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
+)
 
 prepare() {
   cd "$_pkgbase"
