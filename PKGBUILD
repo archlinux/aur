@@ -2,7 +2,7 @@
 
 pkgname=populatefs
 pkgver=r11.95cc98b
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for replacing genext2fs when creating ext4 images"
 arch=(x86_64)
 url="https://github.com/oskarirauta/populatefs"
@@ -19,7 +19,7 @@ pkgver() {
 
 build() {
 	cd ${pkgname}
-	make EXTRA_CFLAGS=-fPIC
+	make EXTRA_CFLAGS="-fPIC -DHAVE_GETOPT_H=1"
 }
 
 package() {
