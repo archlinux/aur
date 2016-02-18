@@ -10,7 +10,7 @@ license=('GPL3')
 makedepends=('git')
 depends=('python2' 'python2-sexpdata' 'python2-argparse' 'djvulibre' 'ocrodjvu' 'pdfbeads' 'pdftk-bin' 'ruby-iconv')
 optdepends=('jbig2enc-git: JBIG2 encoder provides much better PDF compression')
-source=('git+git://github.com/kcroker/dpsprep.git')
+source=(git+git://github.com/kcroker/dpsprep.git)
 md5sums=('SKIP')
 
 pkgver() {
