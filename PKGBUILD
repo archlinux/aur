@@ -16,13 +16,12 @@ source=("https://github.com/andrewrk/libgroove/archive/${pkgver}.tar.gz")
 sha256sums=('76f68896f078a9613d420339ef887ca8293884ad2cd0fbc031d89a6af2993636')
 
 prepare() {
-  cp "${srcdir}/${pkgname}-${pkgver}/example/libgroove.pc" "${srcdir}/"
-  for pattern in \
-      's|^libdir=$|libdir=/usr/lib|' \
-      's|^includedir=$|includedir=/usr/include/groove|' \
-      "s|^Version:$|Version: ${pkgver}|"
-    do sed -i "${pattern}" "${srcdir}/libgroove.pc"
-  done
+  sed \
+    -e 's|^libdir=$|libdir=/usr/lib|' \
+    -e 's|^includedir=$|includedir=/usr/include/groove|' \
+    -e "s|^Version:$|Version: ${pkgver}|" \
+    "${srcdir}/${pkgname}-${pkgver}/example/libgroove.pc" \
+    > "${srcdir}/libgroove.pc"
 }
 
 build() {
