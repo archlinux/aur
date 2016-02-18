@@ -20,5 +20,5 @@ build() {
 package() {
   cd $srcdir/$pkgname-$pkgver
   mkdir -p $pkgdir/usr/lib/pidgin
-  install -Dm644 gnome-keyring.so $pkgdir/usr/lib/pidgin
+  install -Dm644 $pkgname.so $pkgdir/usr/lib/pidgin
 }
