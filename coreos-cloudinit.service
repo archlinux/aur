@@ -1,0 +1,5 @@
+[Unit]
+Description=Cloudinit from EC2-style metadata
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/coreos-cloudinit --oem=ec2-compat
