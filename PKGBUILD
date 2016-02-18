@@ -9,7 +9,7 @@ arch=('any')
 license=('GPL')
 depends=('metasploit' 'java-environment')
 makedepends=('apache-ant' 'zip' 'unzip' 'subversion')
-provides=('armitage')
+conflicts=('armitage-svn')
 install='armitage.install'
 
 source=( 'http://www.fastandeasyhacking.com/download/armitage150813.tgz'
