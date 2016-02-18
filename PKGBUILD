@@ -4,7 +4,7 @@
 # Contributor: Stefan Clarke <fm0nk3y@yahoo.co.uk>
 
 pkgname=h264enc
-pkgver=10.4.6
+pkgver=10.4.7
 pkgrel=1
 pkgdesc="Advanced shell script for encoding DVDs or video files to the H.264 format using the encoding utility MEncoder from MPlayer."
 arch=('any')
@@ -31,4 +31,4 @@ package() {
   rm ${pkgdir}/usr/share/doc/h264enc/{uninstall,LICENSE}
 }
 
-sha1sums=('aa8b20f3a51e8b133c7fc908227f6e024d4e2849')
+sha1sums=('f10d8957306ed968c5b09662e6e5fad2f3feca37')
