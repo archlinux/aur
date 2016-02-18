@@ -1,0 +1,11 @@
+pkgbase = vim-vulkan
+	pkgdesc = Vim syntax highlighting for the Vulkan API
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=5335
+	arch = any
+	source = vulkan.vim::http://www.vim.org/scripts/download_script.php?src_id=24017
+	sha1sums = 1688cb5b6b9d11d4570167b93438f0ad0cb24b4e
+
+pkgname = vim-vulkan
+
