@@ -1,0 +1,6 @@
+output
+pkg
+src
+*.tar.gz
+*.tar.xz
+OpenSkyImager
