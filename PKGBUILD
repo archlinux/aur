@@ -18,7 +18,7 @@ source=(http://fossies.org/unix/misc/$pkgname$pkgver-Jun05.tar.gz
         mgetty@.service)
 md5sums=('4df2eb47bd6d5318d3d642572ab56e51'
          'eaa2b17d77ca099ebb7e92cf2006f6c1'
-         'd40de3f241a2851f091e0046cb7f28c0'
+         '2c26c665b94bffae2805e8e464cd1165'
          '5556e5e88c784e75acb14ab998d7eb1a'
          '4b73a5654db86a34a8dccdf5f55c699c'
          'cbc70329924235e8f2e6302c859d59a6')
