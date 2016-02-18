@@ -3,7 +3,7 @@
 
 pkgname=rust-racer
 _pkgname=racer
-pkgver=1.2.5
+pkgver=1.2.6
 pkgrel=1
 pkgdesc="Code completion for Rust"
 url="https://github.com/phildawes/racer"
@@ -12,7 +12,7 @@ makedepends=('cargo')
 arch=('i686' 'x86_64')
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$_pkgname/$pkgver/download")
-sha256sums=('cbd86d84f4fc3d17711e3003d0a52c01a699dce70b1992ccefa605fe9b0de7c8')
+sha256sums=('503ec18a94935cba0d61518f0e5083d6e1e83557d446ed4f1969a32712dc8cc5')
 
 build() {
   cd "$_pkgname-$pkgver"
