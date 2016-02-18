@@ -1,15 +1,15 @@
 # Maintainer: Alan Berndt <alan@eatabrick.org>
 pkgname=dcal
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="A generic calendar for X"
 url="http://dcal.eatabrick.org"
-license='MIT'
+license=('MIT')
 arch=('i686' 'x86_64')
 depends=('libx11')
 provides=('dcal')
-source=('https://github.com/bentglasstube/dcal/archive/v1.1.tar.gz')
-sha1sums=('2278bad1b01c9735c3bbfa5f2870ace6f0e9b447')
+source=('https://github.com/bentglasstube/dcal/archive/v1.2.tar.gz')
+sha1sums=('5684f67497c23202b45ca2826b10ec16276c0855')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
