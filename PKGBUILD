@@ -1,13 +1,13 @@
 # Mantainer maz-1 < ohmygod19993 at gmail dot com >
 pkgname=grub2-editor-frameworks
-pkgver=20151208.g1e4ae87
+pkgver=20160125.g8944771
 pkgrel=1
 pkgdesc="A KDE Control Module for configuring the GRUB2 bootloader. Unofficial KF5 port."
 arch=('i686' 'x86_64')
 url='https://github.com/maz-1/grub2-editor'
 license=('GPL')
-provides=grub2-editor
-conflicts=grub2-editor
+provides=(grub2-editor)
+conflicts=(grub2-editor)
 depends=('grub' 'hwinfo' 'imagemagick'
          'qt5-base'
          'kio' 'ki18n' 'kauth' 'kconfigwidgets' 'solid')
