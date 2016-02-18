@@ -16,7 +16,6 @@ source=("https://github.com/andrewrk/libgroove/archive/${pkgver}.tar.gz")
 sha256sums=('76f68896f078a9613d420339ef887ca8293884ad2cd0fbc031d89a6af2993636')
 
 prepare() {
-  mkdir "${srcdir}/${pkgname}-${pkgver}/build"
   cp "${srcdir}/${pkgname}-${pkgver}/example/libgroove.pc" "${srcdir}/"
   for pattern in \
       's|^libdir=$|libdir=/usr/lib|' \
@@ -27,6 +26,7 @@ prepare() {
 }
 
 build() {
+  mkdir -p "${srcdir}/${pkgname}-${pkgver}/build"
   cd "${srcdir}/${pkgname}-${pkgver}/build"
   cmake ../ -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
   make
