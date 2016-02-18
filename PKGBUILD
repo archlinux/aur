@@ -14,7 +14,7 @@ makedepends=('swig')
 source=("python-spams.patch"
         "svn+svn://scm.gforge.inria.fr/svnroot/spams-devel/trunk")
 
-md5sums=('e30d28e67a50f2eeb42f1c9de47706fe'
+md5sums=('200c0aa5cdd0af5a265e799e58ddd115'
          'SKIP')
 
 build() {

@@ -1,14 +1,14 @@
-diff -urBN trunka/swig/python/mkpy trunk/swig/python/mkpy
---- trunka/swig/python/mkpy	2014-05-26 18:13:21.929540835 -0500
-+++ trunk/swig/python/mkpy	2014-05-26 17:38:02.316161854 -0500
+diff -Naur trunka/swig/python/mkpy trunk/swig/python/mkpy
+--- trunka/swig/python/mkpy	2016-02-18 14:39:43.250176140 -0600
++++ trunk/swig/python/mkpy	2016-02-18 14:39:56.713436537 -0600
 @@ -10,8 +10,8 @@
      exec /cygdrive/c/MinGW/msys/1.0/bin/bash $0 $optx $*
  fi
  
 -INC="-I. -Ispams/linalg -Ispams/prox -Ispams/decomp -Ispams/dictLearn -I/usr/include/python2.7/"
 -INC_PYTHON=-I/usr/include/python2.6
-+INC="-I. -Ispams/linalg -Ispams/prox -Ispams/decomp -Ispams/dictLearn -I/usr/include/python3.4m/"
-+INC_PYTHON=-I/usr/include/python3.4m
++INC="-I. -Ispams/linalg -Ispams/prox -Ispams/decomp -Ispams/dictLearn -I/usr/include/python3.5m/"
++INC_PYTHON=-I/usr/include/python3.5m
  XCCFLAGS=""
  XLINKFLAGS=""
  # on MacOS, use following definition instead.
@@ -21,9 +21,9 @@ diff -urBN trunka/swig/python/mkpy trunk/swig/python/mkpy
  	[ $? -ne 0 ] && exit
      }
      if [ -e $nom.cpp ]; then
-diff -urBN trunka/swig/python/numpy.i trunk/swig/python/numpy.i
---- trunka/swig/python/numpy.i	2014-05-26 18:13:22.082874172 -0500
-+++ trunk/swig/python/numpy.i	2014-05-26 17:48:09.772841603 -0500
+diff -Naur trunka/swig/python/numpy.i trunk/swig/python/numpy.i
+--- trunka/swig/python/numpy.i	2016-02-18 14:39:43.250176140 -0600
++++ trunk/swig/python/numpy.i	2016-02-18 14:39:56.713436537 -0600
 @@ -107,9 +107,11 @@
      if (PyDict_Check(    py_obj)) return "dict"        ;
      if (PyList_Check(    py_obj)) return "list"        ;
@@ -36,15 +36,54 @@ diff -urBN trunka/swig/python/numpy.i trunk/swig/python/numpy.i
  
      return "unkown type";
    }
-diff -urBN trunka/swig/python/setup.py.in trunk/swig/python/setup.py.in
---- trunka/swig/python/setup.py.in	2014-05-26 18:13:21.926207502 -0500
-+++ trunk/swig/python/setup.py.in	2014-05-26 18:03:55.089528628 -0500
+diff -Naur trunka/swig/python/py_typemaps.i trunk/swig/python/py_typemaps.i
+--- trunka/swig/python/py_typemaps.i	2016-02-18 14:39:43.253509455 -0600
++++ trunk/swig/python/py_typemaps.i	2016-02-18 14:40:13.583345144 -0600
+@@ -64,13 +64,11 @@
+ %typemap(in,numinputs=0,fragment="NumPy_Fragments") (Vector<DATA_TYPE> **ARGOUT_VECTOR)
+ (Vector<DATA_TYPE>  *data_temp)
+ {
+-	# argout in
+	$1 = &data_temp;
+ }
+
+ %typemap(argout) (Vector<DATA_TYPE> **ARGOUT_VECTOR )
+ {
+-	  # test argout
+	  if(data_temp$argnum != NULL) {
+	    npy_intp n = data_temp$argnum->n();
+	    npy_intp dims[1] = {n};
+@@ -142,13 +140,11 @@
+ %typemap(in,numinputs=0,fragment="NumPy_Fragments") (Matrix<DATA_TYPE> **ARGOUT_MATRIX)
+ (Matrix<DATA_TYPE>  *data_temp)
+ {
+-	# argout in
+	$1 = &data_temp;
+ }
+
+ %typemap(argout) (Matrix<DATA_TYPE> **ARGOUT_MATRIX )
+ {
+-	  # test argout
+	  if(data_temp$argnum != NULL) {
+	    npy_intp m = data_temp$argnum->m();
+	    npy_intp n = data_temp$argnum->n();
+@@ -328,7 +324,6 @@
+ }
+ %typemap(argout) (SpMatrix<DATA_TYPE> **ARGOUT_SPMATRIX )
+ {
+-# test argout
+   if(data_temp$argnum != NULL) {
+     npy_intp m = data_temp$argnum->m();
+     npy_intp n = data_temp$argnum->n();
+diff -Naur trunka/swig/python/setup.py.in trunk/swig/python/setup.py.in
+--- trunka/swig/python/setup.py.in	2016-02-18 14:39:43.253509455 -0600
++++ trunk/swig/python/setup.py.in	2016-02-18 14:39:56.713436537 -0600
 @@ -7,7 +7,7 @@
  # includes numpy : package numpy.distutils , numpy.get_include()
  # python setup.py build --inplace
  # python setup.py install --prefix=dist, 
 -incs = ['.'] + map(lambda x: os.path.join('spams',x),[ 'linalg', 'prox', 'decomp', 'dictLearn']) + [numpy.get_include()] + ['/usr/include/python2.7/']
-+incs = ['.'] + [os.path.join('spams',x) for x in [ 'linalg', 'prox', 'decomp', 'dictLearn']] + [numpy.get_include()] + ['/usr/include/python3.4m/']
++incs = ['.'] + [os.path.join('spams',x) for x in [ 'linalg', 'prox', 'decomp', 'dictLearn']] + [numpy.get_include()] + ['/usr/include/python3.5m/']
  
  osname = distutils.util.get_platform()
  cc_flags = ['-fPIC', '-fopenmp']
