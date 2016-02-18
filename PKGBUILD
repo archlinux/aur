@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="http://mesa3d.org/"
 license=('LGPL')
 depends=('libdrm' 'dri2proto' 'glproto' 'libxxf86vm' 'libxdamage' 'expat>=2.0.1' 'libxmu' 'talloc' 'wayland')
-makedepends=('pkgconfig' 'imake' 'xorg-server-devel')
+makedepends=('pkgconfig' 'imake' 'xorg-server-devel' 'python2-mako' 'git')
 provides=("vulkan-i965=${_realver}")
 conflicts=('mesa-i965')
 source=("git://anongit.freedesktop.org/mesa/mesa#branch=vulkan")
