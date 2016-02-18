@@ -4,10 +4,10 @@
 pkgname=powerline-fonts
 _tag=2015-12-04
 pkgver=20151204
-pkgrel=1
+pkgrel=2
 depends=('fontconfig' 'xorg-font-utils')
-url=('https://github.com/powerline/fonts')
-license='CPL'
+url='https://github.com/powerline/fonts'
+license=('CPL')
 pkgdesc="Patched fonts for Powerline users"
 arch=('any')
 install="$pkgname.install"
