@@ -1,7 +1,7 @@
 # Maintainer: Crotok <crotok [at] mailbox [dot] org>
 
 pkgname=streamstudio-bin
-pkgver=2.9.2
+pkgver=2.9.3
 pkgrel=1
 pkgdesc="Provide a popcorntime clone for streaming movies directly from T411, Cpasbien, Songza, Twitch, Piratebay, Youtube and Dailymotion"
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ provides=('streamstudio')
 conflicts=('streamstudio')
 options=('!strip')
 install="streamstudio.install"
-sha1sums=('44955f573ae00b13d45c9124ed74f3528b279ac6'
+sha1sums=('a7c36c0badab773718e9b0fe1221b3b1cc7740dc'
           '31854b1a0a045efe9eabf3763c9c9b3f9092b523'
           '6797889bd842a5329d62120523f5b51a61eae244')
 
@@ -21,7 +21,7 @@ _platform='64'
 
 if [ "$CARCH" = 'i686' ]; then
   _platform='32'
-  sha1sums[0]='9570536ea74cb3f4557ccc3d75d676c299021476'
+  sha1sums[0]='d95601f9a07beee598808f6e2957b8c05737de87'
 fi
 
 source=("https://streamstudio.me/StreamStudio/streamstudio-${_platform}.zip"
@@ -30,6 +30,10 @@ source=("https://streamstudio.me/StreamStudio/streamstudio-${_platform}.zip"
 
 package() {
   cd "${srcdir}"
+
+  # Fix permissions
+  find . -type d -exec chmod 755 {} \; 
+  find . -type f -exec chmod 644 {} \;
 
   install -dm755 "${pkgdir}/opt/${pkgname}/"
   install -dm755 "${pkgdir}/usr/bin"
