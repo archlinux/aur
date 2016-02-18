@@ -22,7 +22,7 @@ package() {
 	install -Dm755 "${srcdir}"/amdctl-master/amdctl "${pkgdir}"/usr/bin/amdctl
 	mkdir "${pkgdir}"/etc/
 	mkdir "${pkgdir}"/etc/modules-load.d
-	touch "${pkgdir}"/etc/modules-load.d/tpc.conf
-	echo "cpuid" > "${pkgdir}"/etc/modules-load.d/tpc.conf
-	echo "msr" >> "${pkgdir}"/etc/modules-load.d/tpc.conf
+	touch "${pkgdir}"/etc/modules-load.d/amdctl.conf
+	echo "cpuid" > "${pkgdir}"/etc/modules-load.d/amdctl.conf
+	echo "msr" >> "${pkgdir}"/etc/modules-load.d/amdctl.conf
 }
