@@ -124,3 +124,23 @@ index 7206a09..b8505e0 100644
  
      // Some additional default folders (archive plugin)
      \$config['archive_mbox'] = 'Archive';
+--- a/share/templates/guam.sys.config.tpl 2016-02-18 21:09:16.817470574 +0100
++++ b/share/templates/guam.sys.config.tpl 2016-02-18 21:09:37.884137342 +0100
+@@ -26,7 +26,7 @@
+                             },
+                             {
+                                 tls_config, [
+-                                    { certfile, "/etc/pki/cyrus-imapd/cyrus-imapd.pem" }
++                                    { certfile, "/etc/ssl/private/localhost.pem" }
+                                 ]
+                             }
+                         ]
+@@ -43,7 +43,7 @@
+                             },
+                             {
+                                 tls_config, [
+-                                    { certfile, "/etc/pki/cyrus-imapd/cyrus-imapd.pem" }
++                                    { certfile, "/etc/ssl/private/localhost.pem" }
+                                 ]
+                             }
+                         ]
