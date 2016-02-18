@@ -1,8 +1,8 @@
 # Maintainer: Gregory Scheerlinck <gregory dot scheerlinck at gmail dot com>
 _npmname=arch-wiki-man
-_npmver=1.1.2
+_npmver=1.2.0
 pkgname=arch-wiki-man # All lowercase
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="The Arch Wiki as linux man pages"
 arch=(any)
@@ -12,7 +12,7 @@ depends=('nodejs' 'npm' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(98ff707df1c3cc25c20156d29ef3311e92923aa3)
+sha1sums=(df5d2347913949f2e55452476e19b72075d0dc5f)
 
 package() {
   cd $srcdir
