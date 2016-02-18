@@ -2,7 +2,7 @@
 # Contributor: Chad Voegele
 
 pkgname=python-spams-svn
-pkgver=20141221
+pkgver=20160218
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL3')
