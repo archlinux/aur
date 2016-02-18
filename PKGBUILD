@@ -3,14 +3,16 @@
 pkgname=atticmatic
 pkgver=0.1.7
 pkgrel=1
-pkgdesc="A simple Python wrapper script for the Attic backup software that initiates a backup and prunes any old backups according to a retention policy."
-arch=('i686' 'x86_64')
+pkgdesc="A simple Python wrapper script for the attic (and borg) backup software."
+arch=('any')
 url="http://torsion.org/atticmatic/"
-license=('GPLv3')
+license=('GPL3')
 depends=('attic')
 optdepends=('borgbackup')
 source=("https://torsion.org/hg/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('46e6f7e450a705fb13de628a1ce5d52548cf4da25b681bd2843f6a4345d82181')
+provides=('borgmatic')
+conflicts=('borgmatic')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
