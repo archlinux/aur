@@ -1,0 +1,10 @@
+--- autofs.service.old	2016-02-07 18:47:35.000000000 -0500
++++ autofs.service	2016-02-17 13:22:28.396669390 -0500
+@@ -1,6 +1,6 @@
+ [Unit]
+ Description=Automounts filesystems on demand
+-After=network.target ypbind.service sssd.service network-online.target
++After=network.target ypbind.service sssd.service network-online.target remote-fs.target
+ Wants=network-online.target
+ 
+ [Service]
