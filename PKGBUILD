@@ -4,7 +4,7 @@
 
 pkgbase=python-ipdb
 pkgname=(python-ipdb python2-ipdb)
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="IPython-enabled pdb"
 url="http://pypi.python.org/pypi/ipdb"
@@ -12,7 +12,7 @@ makedepends=('python-setuptools' 'python2-setuptools' 'ipython' 'ipython2')
 arch=("any")
 license=("GPL")
 source=("https://pypi.python.org/packages/source/i/ipdb/ipdb-${pkgver}.tar.gz")
-md5sums=('b6cf552fd772fb117c5cd96e337e4b68')
+md5sums=('6cf953a17d276bf56788392460585583')
 
 prepare() {
   cp -a ipdb-${pkgver}{,-py2}
