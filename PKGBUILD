@@ -1,7 +1,7 @@
 # Maintainer: Matheus de Alcantara <matheus.de.alcantara@gmail.com>
 
 pkgname=atom-editor-beta
-_pkgbeta=2
+_pkgbeta=4
 _pkgver=1.6.0
 pkgver="${_pkgver}.beta${_pkgbeta}"
 pkgrel=1
