@@ -6,6 +6,7 @@ pkgdesc='A kernel-based automounter for Linux. This version has a patch that fix
 arch=('i686' 'x86_64')
 url='http://freshmeat.net/projects/autofs'
 license=('GPL2')
+provides=('autofs')
 depends=('libxml2')
 makedepends=('libldap' 'krb5' 'kmod' 'sssd')
 optdepends=('krb5: for LDAP support'
