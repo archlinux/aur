@@ -20,6 +20,7 @@ pkgbase = vulkan-i965-git
 	depends = libxmu
 	depends = talloc
 	depends = wayland
+	depends = vulkan
 	provides = vulkan-i965=11.2
 	conflicts = mesa-i965
 	source = git://anongit.freedesktop.org/mesa/mesa#branch=vulkan
