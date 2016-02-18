@@ -1,41 +1,55 @@
-# Maintainer: Deon Spengler <deon.spengler@gmail.com>
-# Contributor: Dieter Rethmeyer <Dieter@rethmeyers.de>
-pkgname=mgetty
+# Maintainer: Peter Pickford <arch@netremedies.ca>
+# Contributor: Deon Spengler <deon.spengler@gmail.com> Dieter Rethmeyer <Dieter@rethmeyers.de>, Peter Pickford <arch@netremedies.ca>
+# derived from arch mgetty
+_origpkgname=mgetty
+pkgname=mgetty-vgetty
 pkgver=1.1.37
-pkgrel=5
-pkgdesc="Mgetty is a versatile program to handle all aspects of a modem under Unix."
+pkgrel=1
+pkgdesc="vgetty - voice extension to the mgetty+sendfax program."
 url="http://mgetty.greenie.net/"
 license=('GPL')
 arch=('i686' 'x86_64')
+install=mgetty.install
 depends=('glibc' 'logrotate' 'udev' 'netpbm')
 makedepends=('make')
-install=mgetty.install
-source=(http://fossies.org/unix/misc/$pkgname$pkgver-Jun05.tar.gz
-	    Makefile.patch
-	    config.patch
-	    policy.patch
-	    90-mgetty.rules
-        mgetty@.service)
+source=(http://fossies.org/unix/misc/$_origpkgname$pkgver-Jun05.tar.gz
+	config.patch
+	policy.patch
+        mgetty_cid.patch
+	90-mgetty.rules
+	vgetty@.service
+	faxrunqd@.service
+        mgetty.install
+	)
 md5sums=('4df2eb47bd6d5318d3d642572ab56e51'
-         'eaa2b17d77ca099ebb7e92cf2006f6c1'
-         '2c26c665b94bffae2805e8e464cd1165'
+         'fd02c6dd7374e78458840432660729f7'
          '5556e5e88c784e75acb14ab998d7eb1a'
+         'c160d250f98140ddc3818fef34e940b6'
          '4b73a5654db86a34a8dccdf5f55c699c'
-         'cbc70329924235e8f2e6302c859d59a6')
+         '3c1b50a8bebf9a2d6e4252fce79f4c34'
+         '9aa2b3ff3ff4daa5ed018d4fac8d86b4'
+         '8cb2c82dba8e8439832b021b175c83f5')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$_origpkgname-$pkgver
   cp policy.h-dist policy.h
-  patch -Np0 -i ../../config.patch
-  patch -Np0 -i ../../policy.patch
-  make
+  patch -Np0 -i ../../config.patch || return 1
+  patch -Np0 -i ../../policy.patch || return 1
+  patch -Np0 -i ../../mgetty_cid.patch || return 1
+  make clean 
+  make || return 1
+  make testdisk
+  make test
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$_origpkgname-$pkgver
+  # add directories needed by install
   mkdir -p $pkgdir/var/spool
-  make prefix=$pkgdir/usr spool=$pkgdir/var/spool CONFDIR=$pkgdir/etc/mgetty+sendfax FAX_OUT_USER=0 install
-  rm -f $pkgdir/usr/bin/g3topbm
+  mkdir -p $pkgdir/usr/share/man
+  make prefix=$pkgdir/usr spool=$pkgdir/var/spool CONFDIR=$pkgdir/etc/mgetty+sendfax FAX_OUT_USER=0 install install-vgetty|| return 1
   install -D -m644 $srcdir/90-mgetty.rules $pkgdir/etc/udev/rules.d/90-mgetty.rules
-  install -D -m644 $srcdir/mgetty@.service $pkgdir/usr/lib/systemd/system/mgetty@.service
+  install -D -m644 $srcdir/vgetty@.service $pkgdir/usr/lib/systemd/system/vgetty@.service
+  install -D -m644 $srcdir/faxrunqd@.service $pkgdir/usr/lib/systemd/system/faxrunqd@.service
+  rm -f $pkgdir/usr/bin/g3topbm
 }

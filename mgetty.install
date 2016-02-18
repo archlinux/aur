@@ -1,16 +1,21 @@
-post_install() {
-    /usr/bin/udevadm trigger
+#!/usr/bin/bash
 
+infodir=/usr/share/info
+filelist=( mgetty.info.gz )
+post_install() {
+    for file in ${filelist[@]}; do
+        install-info $infodir/$file $infodir/dir < /dev/null
+    done
+    /usr/bin/udevadm trigger
     if [ -z "`grep '^fax:' /etc/passwd`" ]; then
     useradd -u 51 -d /var/spool/fax -g root -s /usr/bin/nologin fax
     fi
-
     chown -R fax:root /var/spool/fax
     touch /var/log/sendfax.log
     chown fax.root /var/log/sendfax.log
     echo --- Please read notes: ---
     echo Please update files in /etc/mgetty+sendfax/ before starting daemon
-    echo Daemon is faxrunqd, add to /etc/rc.conf daemon list if you want to
+    echo enable and start faxrunqd@.service  vgetty@.service as needed
     echo ---------------------------
 }
 
@@ -18,3 +23,8 @@ post_remove() {
     userdel fax &> /dev/null
     /sbin/udevadm trigger
 }
+
+post_upgrade() {
+  post_install $1
+}
+

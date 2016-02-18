@@ -1,6 +1,6 @@
---- Makefile	2007-06-15 13:15:56.000000000 +0200
-+++ ../gepatcht/Makefile	2010-01-24 23:05:15.000000000 +0100
-@@ -102,7 +102,7 @@
+--- Makefile.orig	2010-06-05 02:48:22.000000000 -0700
++++ Makefile	2016-02-18 02:56:09.592419743 -0800
+@@ -109,7 +109,7 @@
  #	    USTAT	  - ustat(), no statfs etc.
  #
  #CFLAGS=-Wall -O2 -pipe -DSECUREWARE -DUSE_POLL
@@ -9,7 +9,7 @@
  #CFLAGS=-O -DSVR4
  #CFLAGS=-O -DSVR4 -DSVR42
  #CFLAGS=-O -DUSE_POLL
-@@ -164,7 +164,7 @@
+@@ -171,7 +171,7 @@
  #
  # if your systems doesn't have one, use the shell script that I provide
  # in "inst.sh" (taken from X11R5). Needed on IRIX5.2
@@ -18,7 +18,7 @@
  #INSTALL=install -c -o root -g wheel		# NeXT/BSD
  #INSTALL=/usr/ucb/install -c -o bin -g bin	# AIX, Solaris 2.x
  #INSTALL=installbsd -c -o bin -g bin		# OSF/1, AIX 4.1, 4.2
-@@ -172,7 +172,7 @@
+@@ -179,7 +179,7 @@
  #
  # prefix, where most (all?) of the stuff lives, usually /usr/local or /usr
  #
@@ -27,7 +27,7 @@
  #
  # prefix for all the spool directories (usually /usr/spool or /var/spool)
  #
-@@ -192,7 +192,7 @@
+@@ -199,7 +199,7 @@
  #
  # where the configuration files (*.config, aliases, fax.allow/deny) go to
  #
@@ -36,7 +36,33 @@
  #CONFDIR=/etc/default/
  #
  #
-@@ -275,7 +275,7 @@
+@@ -227,20 +227,20 @@
+ #
+ #
+ # Where section 1 manual pages should be placed
+-MAN1DIR=$(prefix)/man/man1
++MAN1DIR=$(prefix)/share/man/man1
+ #
+ # Where section 4 manual pages (mgettydefs.4) should be placed
+-MAN4DIR=$(prefix)/man/man4
++MAN4DIR=$(prefix)/share/man/man4
+ #
+ # Section 5 man pages (faxqueue.5)
+-MAN5DIR=$(prefix)/man/man5
++MAN5DIR=$(prefix)/share/man/man5
+ #
+ # Section 8 man pages (sendfax.8)
+-MAN8DIR=$(prefix)/man/man8
++MAN8DIR=$(prefix)/share/man/man8
+ #
+ # Where the GNU Info-Files are located
+ #
+-INFODIR=$(prefix)/info
++INFODIR=$(prefix)/share/info
+ #
+ #
+ # A shell that understands bourne-shell syntax
+@@ -282,7 +282,7 @@
  # please use the "mg.echo" program provided in the compat/ subdirectory.
  # Set ECHO="mg.echo" and INSTALL_MECHO to mg.echo
  #

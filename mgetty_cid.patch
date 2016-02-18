@@ -1,0 +1,224 @@
+diff -rupN ./cnd.c ../../old/mgetty-1.1.37/cnd.c
+--- ./cnd.c	2005-04-17 04:55:43.000000000 -0700
++++ ../../old/mgetty-1.1.37/cnd.c	2013-01-14 21:32:01.000000000 -0800
+@@ -170,7 +170,7 @@ cndfind _P1((str), char *str)
+ 		    p++;
+ 		}
+ 	    }
+-	    lprintf(L_JUNK, "CND: found: %s", *(cp->variable));
++	    lprintf(L_NOISE, "CND: found: %s", *(cp->variable));
+ 	    return;
+ 	}
+     }
+@@ -221,7 +221,7 @@ void process_rockwell_mesg _P0 (void)
+     }  
+     *p = 0;
+       
+-    lprintf(L_JUNK, "CND: caller ID: %s", CallerId);
++    lprintf(L_NOISE, "CND: caller ID: %s", CallerId);
+ }
+ 
+ /* lookup Caller ID in CNDFILE, decide upon answering or not */
+@@ -287,6 +287,7 @@ int cnd_call _P3((name, tty, dist_ring),
+ 		      tty, CallerId, CallName, dist_ring, CalledNr, CONSOLE );
+     lprintf( L_NOISE, "CND: program \"%s\"", program );
+ 
++    setup_environment();
+     rc = system(program);
+ 
+     if ( rc < 0 )
+diff -rupN ./conf_mg.c ../../old/mgetty-1.1.37/conf_mg.c
+--- ./conf_mg.c	2009-03-19 08:13:53.000000000 -0700
++++ ../../old/mgetty-1.1.37/conf_mg.c	2013-01-14 21:32:01.000000000 -0800
+@@ -85,6 +85,7 @@ struct conf_data_mgetty c = {
+ 	{ "rings", {1}, CT_INT, C_PRESET },
+ 	{ "msn-list", {(p_int) NULL}, CT_CHAT, C_EMPTY },
+ 	{ "get-cnd-chat", {0}, CT_CHAT, C_EMPTY },
++	{ "cid-program", {(p_int) NULL}, CT_STRING, C_EMPTY },
+ 	{ "cnd-program", {(p_int) NULL}, CT_STRING, C_EMPTY },
+ 	{ "answer-chat", {0}, CT_CHAT, C_EMPTY },
+ 	{ "answer-chat-timeout", {80}, CT_INT, C_PRESET },
+diff -rupN ./conf_mg.h ../../old/mgetty-1.1.37/conf_mg.h
+--- ./conf_mg.h	2005-11-24 08:57:58.000000000 -0800
++++ ../../old/mgetty-1.1.37/conf_mg.h	2013-01-14 21:32:01.000000000 -0800
+@@ -33,6 +33,7 @@ extern struct conf_data_mgetty {
+ 	rings_wanted,				/* number of RINGs */
+ 	msn_list,				/* ISDN MSNs (dist.ring) */
+ 	getcnd_chat,				/* get caller ID (for ELINK)*/
++	cid_program,				/* notify about caller ID */
+ 	cnd_program,				/* accept caller? */
+ 	answer_chat,				/* ATA...CONNECT...""...\n */
+ 	answer_chat_timeout,			/* longer as S7! */
+diff -rupN ./doc/mgetty.texi-in ../../old/mgetty-1.1.37/doc/mgetty.texi-in
+--- ./doc/mgetty.texi-in	2008-01-31 08:30:12.000000000 -0800
++++ ../../old/mgetty-1.1.37/doc/mgetty.texi-in	2013-01-14 21:32:01.000000000 -0800
+@@ -638,12 +638,20 @@ Some telephone companies provide a servi
+ your phone is ringing. Not all providers support it, and you'll have to
+ ask for it.
+ 
+-If your modem is able to retrieve callerid information, and @code{mgetty}
++Right now, Caller ID in @code{mgetty} works for most modem variants out there,
++ZyXEL, Rockwell, ELSA and isdn4linux among them.  
++
++If your modem is able to retrieve callerid information, @code{mgetty} can
++report that information by passing it as arguments to the @code{cid-program}
++statement in @file{mgetty.config}. You may point @code{cid-program} to a
++script that writes to a logfile, displays a popup on your terminal, etc.
++@code{cid-program} takes the same arguments as @code{cnd-program} (see below)
++but its exit code is ignored.
++
++In addition to the ability of reporting callerid information, if @code{mgetty}
+ is compiled with @code{CNDFILE} defined in @file{policy.h}, @code{mgetty}
+-can check the caller's number before answering the phone. (Right now, it
+-works for most variants out there, ZyXEL, Rockwell, ELSA and isdn4linux
+-among them).  If @code{CNDFILE} is undefined, or if the
+-file specified does not exist, all calls will be allowed.
++can check the caller's number before answering the phone. If @code{CNDFILE} is
++undefined, or if the file specified does not exist, all calls will be allowed.
+ 
+ One important thing: for most analog modems, you @strong{must} set the
+ number of RINGs to wait for to two (2) or higher (set @samp{rings 2} in
+@@ -1042,6 +1050,13 @@ if the static Caller ID selection in CND
+ or if you want to use the Caller ID data for other purposes (displaying,
+ for example).  @xref{Caller-ID}.
+ 
++@item @code{cid-program} @var{pathname}
++
++Specify a program to be run as soon as Caller ID information comes in
++(typically between 1st and 2nd ring). If Caller ID info is not available by
++the 3rd ring, still run the program (to report the time that the phone rang).
++This allows mgetty to behave like a caller-id box. @xref{Caller-ID}.
++
+ @item @code{answer-chat} @var{chat sequence}
+ 
+ This is the command sequence that is used to answer a phone call. Usually
+@@ -1489,11 +1504,11 @@ A sample command line might look like th
+ @BINDIR@/new_fax 0 "+49 89 3243328" 1 @FAX_SPOOL@/ff-01.a123
+ @end example
+ 
+-In addition, some environment variables are provide: @code{CALLER_ID},
++In addition, some environment variables are provided: @code{CALLER_ID},
+ @code{CALLER_NAME}, @code{CALLED_ID} (Caller ID and destination ISDN MSN,
+-if available and supported by your modem), and @code{DEVICE} (the full 
+-name of the tty device, if you want to process faxes differently 
+-depending on the line they came in).
++if available and supported by your modem), @code{CALL_DATE}, @code{CALL_TIME},
++and @code{DEVICE} (the full name of the tty device, if you want to process
++faxes differently depending on the line they came in).
+ 
+ Such a ``notify program'' could print out the fax, convert it into a MIME
+ metamail and send it away, display it in an X window (this a little bit
+diff -rupN ./login.c ../../old/mgetty-1.1.37/login.c
+--- ./login.c	2003-12-05 14:28:58.000000000 -0800
++++ ../../old/mgetty-1.1.37/login.c	2013-01-14 21:32:01.000000000 -0800
+@@ -373,6 +373,10 @@ void setup_environment _P0(void)
+ {
+     if ( *CallerId )
+ 	set_env_var( "CALLER_ID", CallerId );
++    if ( *CallDate )
++	set_env_var( "CALL_DATE", CallDate );
++    if ( *CallTime )
++	set_env_var( "CALL_TIME", CallTime );
+     if ( *CallName )
+ 	set_env_var( "CALLER_NAME", CallName );
+     if ( *CalledNr )
+diff -rupN ./mgetty.c ../../old/mgetty-1.1.37/mgetty.c
+--- ./mgetty.c	2009-03-19 08:14:28.000000000 -0700
++++ ../../old/mgetty-1.1.37/mgetty.c	2013-01-14 21:32:01.000000000 -0800
+@@ -279,6 +279,7 @@ int main _P2((argc, argv), int argc, cha
+     int		rings_wanted;
+     int		rings = 0;
+     int		dist_ring = 0;		/* type of RING detected */
++    boolean	cid_program_ran = FALSE;/* Only run cid_program once per call */
+ 
+ #if defined(_3B1_) || defined(MEIBE) || defined(sysV68)
+     extern struct passwd *getpwuid(), *getpwnam();
+@@ -548,6 +549,7 @@ int main _P2((argc, argv), int argc, cha
+ 	     */
+ 	    CallTime = CallName = CalledNr = "";	/* dirty */
+ 	    CallerId = "none";
++	    cid_program_ran = FALSE;
+ 	    clean_line( STDIN, 3);			/* let line settle */
+ 	    rmlocks();
+ 	    mgetty_state = St_waiting;
+@@ -738,14 +740,26 @@ int main _P2((argc, argv), int argc, cha
+ 
+ 	    while ( rings < rings_wanted )
+ 	    {
+-		if ( wait_for_ring( STDIN, c_chat(msn_list), 
+-			  ( c_bool(ringback) && rings == 0 )
+-				? c_int(ringback_time) : ring_chat_timeout,
+-			  ring_chat_actions, &what_action, 
+-			  &dist_ring ) == FAIL)
++		int w;
++
++		w = wait_for_ring( STDIN, c_chat(msn_list), 
++				   ( c_bool(ringback) && rings == 0 )
++				   ? c_int(ringback_time) : ring_chat_timeout,
++				   ring_chat_actions, &what_action, 
++				   &dist_ring );
++
++		/* Inform about Caller ID. If we haven't gotten the info by 3rd
++		 * ring, it's hopeless; just report that the phone rang. */
++		if ( c_isset(cid_program) && !cid_program_ran
++		     && (rings >= 2 || *CallName || strcmp(CallerId, "none")) )
+ 		{
+-		    break;		/* ringing stopped, or "action" */
++		    cnd_call( c_string(cid_program), Device, dist_ring );
++		    cid_program_ran = TRUE;
+ 		}
++
++		if ( w == FAIL )
++		    break;		/* ringing stopped, or "action" */
++
+ 		rings++;
+ 	    }
+ 
+diff -rupN ./mgetty.h ../../old/mgetty-1.1.37/mgetty.h
+--- ./mgetty.h	2006-01-01 09:13:18.000000000 -0800
++++ ../../old/mgetty-1.1.37/mgetty.h	2013-01-14 21:32:01.000000000 -0800
+@@ -296,6 +296,7 @@ void setup_environment _PROTO(( void ));
+ 
+ extern char *Connect;
+ extern char *CallerId;
++extern char *CallDate;
+ extern char *CallTime;
+ extern char *CallName;
+ extern char *CalledNr;
+diff -rupN ./ring.c ../../old/mgetty-1.1.37/ring.c
+--- ./ring.c	2009-03-19 08:13:43.000000000 -0700
++++ ../../old/mgetty-1.1.37/ring.c	2013-01-14 23:03:39.000000000 -0800
+@@ -329,8 +329,8 @@ boolean	got_dle;		/* for <DLE><char> eve
+ 	 * we count it as "RING" to be able to pick up immediately 
+ 	 * instead of waiting for the next "real" RING
+ 	 * (but don't do this for V253 DRON/DROF modems!)
+-	 */
+ 	if ( strncmp( buf, "NMBR", 4 ) == 0 && drox_count == 0 ) { break; }
++	 */
+ 
+ 	/* V.253 ring cadences */
+ 	if ( strncmp( buf, "DRON", 4 ) == 0 ||
+diff -rupN ./t/t_ring.c ../../old/mgetty-1.1.37/t/t_ring.c
+--- ./t/t_ring.c	2005-03-23 01:56:21.000000000 -0800
++++ ../../old/mgetty-1.1.37/t/t_ring.c	2014-04-21 00:51:40.140413257 -0700
+@@ -40,7 +40,7 @@ struct t_ring_tests { char * input;
+  {"RING 2\n", 1, 2, "" },
+  {"RING A\nRING B\nRING C\nRING\n", 4, 3, "" },
+  {"RING\n    FM:040404\n", 2, 0, "040404" },	/* ZyXEL + whitespc */
+- {"RING\nNMBR = 0555\nRING\n", 3, -1, "0555" },	/* Rockwell */
++ {"RING\nNMBR = 0555\nRING\n", 2, -1, "0555" },	/* Rockwell */
+  {"RING/0666\n", 1, 0, "" },			/* i4l - RING/to */
+  {"RING;707070\n",      1, 0, "707070" },	/* ELSA - RING;from */
+  {"RING;717171;999999\n", 1, 1, "717171" },	/* ELSA - RING;from;to */
+@@ -93,6 +93,11 @@ int mdm_read_byte( int fd, char * c )
+     return -1;
+ }
+ 
++/* fake setup_environment function */
++void setup_environment(void)
++{
++}
++
+ boolean virtual_ring = FALSE;
+ 
+ int main( int argc, char ** argv )

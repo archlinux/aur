@@ -1,0 +1,12 @@
+[Unit]
+Description=faxrunqd - daemon to send fax jobs queued by faxspool(1) to %I
+After=dev-%i.device network.target nss-lookup.target
+
+[Service]
+Type=idle
+PrivateTmp=true
+ExecStart=/usr/sbin/faxrunqd -u fax -l %I
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
