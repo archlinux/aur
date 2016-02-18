@@ -1,0 +1,8 @@
+#convert sound files and remove them
+post_install(){
+  /usr/local/vocp/bin/convert_sound.pl
+}
+post_remove(){
+  rm -rf /var/spool/voice/messages
+}
+
