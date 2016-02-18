@@ -2,7 +2,7 @@
 
 _gitname=codecrypt
 pkgname="${_gitname}-git"
-pkgver=1.7.3.r4.g2e0d738
+pkgver=1.7.3.r5.gdc277c6
 pkgrel=1
 pkgdesc='The post-quantum cryptography tool - git version'
 arch=('x86_64' 'i686')
