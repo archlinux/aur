@@ -1,6 +1,6 @@
 pkgname=pacaur-git
 pkgver=4.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An AUR helper that minimizes user interaction"
 arch=('any')
 url="https://github.com/rmarquis/pacaur"
@@ -50,7 +50,7 @@ package() {
   msgfmt ./po/it.po -o $pkgdir/usr/share/locale/it/LC_MESSAGES/pacaur.mo
   msgfmt ./po/ja.po -o $pkgdir/usr/share/locale/ja/LC_MESSAGES/pacaur.mo
   msgfmt ./po/pl.po -o $pkgdir/usr/share/locale/pl/LC_MESSAGES/pacaur.mo
-  msgfmt ./po/pl.po -o $pkgdir/usr/share/locale/pt/LC_MESSAGES/pacaur.mo
+  msgfmt ./po/pt.po -o $pkgdir/usr/share/locale/pt/LC_MESSAGES/pacaur.mo
   msgfmt ./po/ru.po -o $pkgdir/usr/share/locale/ru/LC_MESSAGES/pacaur.mo
   msgfmt ./po/tr.po -o $pkgdir/usr/share/locale/tr/LC_MESSAGES/pacaur.mo
 }
