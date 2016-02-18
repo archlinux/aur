@@ -3,7 +3,7 @@
 
 pkgname=libindi_3rdparty
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="3rd party drivers for INDI, a distributed control protocol designed to operate astronomical instrumentation"
 url="http://www.indilib.org/index.php?title=Main_Page"
 license=(LGPL2.1)
@@ -20,6 +20,7 @@ prepare() {
   sed -e 's|<ApogeeCam.h>|<libapogee/ApogeeCam.h>|' -i indi-apogee/apogee_ccd.h                       # Headers found in libapogee directory
   sed -e 's|<FindDeviceEthernet.h>|<libapogee/FindDeviceEthernet.h>|' -i indi-apogee/apogee_ccd.h     # Headers found in libapogee directory
   sed -e 's|<FindDeviceUsb.h>|<libapogee/FindDeviceUsb.h>|' -i indi-apogee/apogee_ccd.h               # Headers found in libapogee directory
+  sed -e 's|MODE="0666", GROUP="plugdev"|TAG+="uaccess"|' -i */*.rules                                # Obsolete plugdev -> uaccess tag
   sed -e 's|#add_subdirectory[(]indi-qhy[)]|add_subdirectory(indi-qhy)|' -i CMakeLists.txt            # Enable build of QHY INDI driver (despite it being "broken")
   cp CMakeLists.txt CMakeLists.txt.bak                                                                # Backup CMakeLists.txt. It's modified for first pass and restored for second pass.
   sed -e '/###/d' -i CMakeLists.txt                                                                   # Force all libraries to be built
