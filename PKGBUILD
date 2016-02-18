@@ -86,7 +86,8 @@ package_zarafa-postfixadmin-worker() {
 
     # usr
     cd ${srcdir}/zarafa-postfixadmin-${pkgver}/postfixadmin-worker
-    cp zarafa-postfixadmin-worker ${_destdir}
-
+    cp -r * ${_destdir}
+    rm -rf ${_destdir}/systemd
+    
     cp systemd/* ${_destdir_systemd}
 }
