@@ -1,0 +1,21 @@
+post_install() {
+  chown -R http:http /usr/share/webapps/cmsimple
+  chmod -R 755 /usr/share/webapps/cmsimple
+  echo '''
+  
+   NICE! :D
+  
+   CMSimple deployed at /usr/share/webapps/cmsimple
+
+   WARNING! Do not forget to make a VirtualHost or alias directory for you web-server
+
+   https://wiki.archlinux.org/index.php/Apache_HTTP_Server#Virtual_hosts
+
+  '''
+}
+
+post_upgrade() {
+   post_install
+}
+
+# vim:set ts=2 sw=2 et:
