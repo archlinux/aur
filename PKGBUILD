@@ -3,7 +3,7 @@
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=2.5.2
-pkgrel=1
+pkgrel=2
 _wwwpkgname=AdminLTE
 _wwwpkgver=1.0.0
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
@@ -70,6 +70,11 @@ prepare() {
   # since we don't directly install from git...
   sed -i '/<b>Pi-hole Version <\/b> /,+1d' "$srcdir"/$_wwwpkgname-$_wwwpkgver/index.php
   sed -i '/<div class="pull-right hidden-xs">/a<b>Pi-hole Version </b> '"$pkgver"'\n<b> - Web Interface Version </b>'"$_wwwpkgver"'' "$srcdir"/$_wwwpkgname-$_wwwpkgver/index.php
+
+  # (waiting official release) TEMPORARY host list manipulation follow commits f8897942f3e7e13335247af7a7ada666349a000f and
+  # c4fc2e089d78daef76a10fb60eb10f568013b956 due to excessive filtration and empty query result
+  sed -i '/http:\/\/securemecca.com\/Downloads\/hosts.txt/d' "$srcdir"/$_pkgname-$pkgver/adlists.default
+  sed -i '/https:\/\/hosts.neocities.org\//d' "$srcdir"/$_pkgname-$pkgver/adlists.default
 }
 
 package() {
