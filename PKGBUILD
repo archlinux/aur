@@ -9,18 +9,18 @@ url="http://weboob.org"
 license=('AGPL3')
 arch=('i686' 'x86_64' 'armv6h')
 depends=(
-    phonon-qt4
+    phonon-qt5
     python2-cssselect
     python2-dateutil
     python2-elementtidy
     python2-feedparser
+    python2-futures
     python2-gdata
     python2-html2text
     python2-imaging
     python2-lxml
     python2-mechanize
     python2-prettytable
-    python2-pyqt
     python2-pyqt5
     python2-pysqlite
     python2-requests
