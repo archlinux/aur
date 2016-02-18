@@ -16,7 +16,7 @@ conflicts=('atom-editor-bin' 'atom-editor-git' 'atom-editor-beta-bin' 'atom-edit
 install=atom.install
 source=("https://github.com/atom/atom/archive/v${_pkgver}-beta${_pkgbeta}.tar.gz"
         'atom-desktop.patch')
-sha256sums=('b9e81fb631bceecded1229f0799e6c3e0153dcfdb24fba4097333d44fe1ae86b'
+sha256sums=('bc3cd295a79325757f9b5d39e7c7cd39e1a78bc1dbb0fc472f23f6bd4fe41444'
             'b144dd1578528ca7f3d8d100db873eb32fbc4d801e45b2161d281629a32695a1')
 
 prepare() {
