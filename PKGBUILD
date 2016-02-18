@@ -11,6 +11,7 @@ replaces=('cloud-init' 'coreos-cloudinit' 'coreos-cloudinit-git')
 conflicts=('cloud-init' 'coreos-cloudinit' 'coreos-cloudinit-git')
 source=("$pkgname::git+$url" "coreos-cloudinit.service")
 sha256sums=('SKIP' '21e08ced41942ffb0ce8371f6efc6fa1c6941da777d8798ae03b7bfd9479bc1d')
+optdepends=('update-ssh-keys: ssh key management support')
 
 pkgver() {
   cd "$pkgname"
