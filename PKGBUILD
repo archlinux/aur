@@ -2,7 +2,7 @@
 
 pkgname=gincamalarm
 pkgver=0.0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Gin server to manage camera with motion"
 arch=('any')
 url="https://github.com/Chipsterjulien/gincamalarm"
@@ -25,17 +25,30 @@ build() {
         mkdir -p .gopath/{bin,src}
         # export var
         export GOPATH=~/.gopath
-    fi
 
-    # Getting some libs
-    echo "Install go-logging"
-    go get github.com/op/go-logging
-    echo "Install gin"
-    go get github.com/gin-gonic/gin
-    echo "Install viper"
-    go get github.com/spf13/viper
-    echo "Install gin-cors"
-    go get github.com/itsjamie/gin-cors
+        # Getting some libs
+        echo "Install go-logging"
+        go get github.com/op/go-logging
+        echo "Install gin"
+        go get github.com/gin-gonic/gin
+        echo "Install viper"
+        go get github.com/spf13/viper
+        echo "Install gin-cors"
+        go get github.com/itsjamie/gin-cors
+    
+    else
+
+        # Getting some libs
+        echo "Update go-logging"
+        go get github.com/op/go-logging
+        echo "Update gin"
+        go get github.com/gin-gonic/gin
+        echo "Update viper"
+        go get github.com/spf13/viper
+        echo "Update gin-cors"
+        go get github.com/itsjamie/gin-cors
+
+    fi
 
     cd "$_builddir"
 
@@ -58,7 +71,7 @@ package() {
     install -dm755 "$pkgdir"/var/log/$pkgname || return 1
 
     # gincamalarm.service
-    install -Dm644 cfg/"$pkgname".service \
+    install -Dm644 systemd/"$pkgname".service \
         "$pkgdir"/usr/lib/systemd/system/"$pkgname".service || return 1
 
     # gincamalarm binary
@@ -66,4 +79,4 @@ package() {
         "$pkgdir"/usr/bin/$pkgname || return 1
 }
 
-sha512sums=('1501ce4169b46a26d082ade7d3164343e08081e1feaebeab5ba48e515a3d24886fce058303ab2fefe70f540d940537677f4cb3da972d2fe73dcd3c3a65cd023c')
+sha512sums=('3f25da1c1b6ee61b8b4acb6d51fa93b4a49e53e746a6f753e36fb8c02c82ab29b7618c5c435fb849e3ab2a0c41274faa20f9e1a85a444f8668880efef516ae4e')
