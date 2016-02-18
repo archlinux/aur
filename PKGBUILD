@@ -11,6 +11,7 @@ arch=('i686' 'x86_64')
 license=('BSD')
 backup=()
 source=(git+https://github.com/numba/numba.git)
+makedepends=('git' 'cython' 'cython2')
 md5sums=('SKIP')
 
 _gitname=numba
@@ -29,7 +30,6 @@ package_python-numba-llvmlite-git() {
   replaces=('python-numba')
   conflicts=('python-numba-git' 'python-numba')  
   depends=('python' 'python-llvmlite' 'python-funcsigs')
-   makedepends=('git' 'cython')
 
   cd ${srcdir}/${_gitname}
   python setup.py install \
@@ -44,7 +44,6 @@ package_python2-numba-llvmlite-git() {
   provides=('python2-numba')
   replaces=('python2-numba')
   depends=('python2' 'python2-llvmlite' 'python2-funcsigs')
-  makedepends=('git' 'cython2')
   confilicts=('python2-numba-git' 'python2-numba')
 
   cd ${srcdir}/${_gitname}-py2
