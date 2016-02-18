@@ -5,7 +5,7 @@ _postfixadminver=2.93
 pkgname=('zarafa-postfixadmin'
 	 'zarafa-postfixadmin-worker')
 groups=('zarafa')
-pkgver=0.11
+pkgver=0.12
 pkgrel=1
 pkgdesc="A web based interface used to manage mailboxes, virtual domains and aliases created for Zarafa-Server with DB-Plugin and Postfix"
 arch=('any')
@@ -52,7 +52,7 @@ package_zarafa-postfixadmin() {
     # etc
     cp ${_destdir}/config.inc.php ${_destdir_etc}/config.example.php
 
-    # ZARAF-POSTFIXADMIN
+    # ZARAFA-POSTFIXADMIN
     ###
     cd ${srcdir}/zarafa-postfixadmin-${pkgver}/postfixadmin
     cp etc/config.local.php ${_destdir}
@@ -74,7 +74,7 @@ package_zarafa-postfixadmin() {
 }
 
 package_zarafa-postfixadmin-worker() {
-    # ZARAF-POSTFIXADMIN-WORKER
+    # ZARAFA-POSTFIXADMIN-WORKER
     ###
     _destdir=${pkgdir}/usr/share/${pkgname}
     _destdir_systemd=${pkgdir}/usr/lib/systemd/system
