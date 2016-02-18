@@ -2,10 +2,10 @@
 
 pkgname=ocaml-ocamlsdl
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 license=('LGPL2.1')
 arch=('i686' 'x86_64')
-pkgdesc=("OCaml interface to the SDL (Simple DirectMedia Layer) library")
+pkgdesc="OCaml interface to the SDL (Simple DirectMedia Layer) library"
 url="https://sourceforge.net/projects/ocamlsdl/"
 depends=('ocaml' 'ocaml-lablgl' 'sdl' 'sdl_ttf' 'sdl_image' 'sdl_mixer' 'sdl_gfx')
 makedepends=('ocaml-findlib')
