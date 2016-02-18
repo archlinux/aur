@@ -3,7 +3,7 @@
 pkgname=visual-studio-code-oss
 pkgdesc='Visual Studio Code for Linux, Open Source version'
 pkgver=0.10.8
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='https://code.visualstudio.com/'
 license=('MIT')
@@ -43,6 +43,10 @@ prepare() {
 
 build() {
     cd "${srcdir}/vscode-${pkgver}"
+
+    # npm 3.x flattens modules, which the package tasks can't handle yet
+    ./scripts/npm.sh install 'npm@2'
+    export PATH="${srcdir}/vscode-${pkgver}/node_modules/.bin:$PATH"
 
     ./scripts/npm.sh install
     gulp vscode-linux-${_vscode_arch}
