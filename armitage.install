@@ -1,0 +1,15 @@
+#!/bin/sh
+
+post_install() {
+   ln -s /opt/armitage/armitage /usr/bin/armitage
+   echo "
+====================================================================
+  Please refer to armitage's documentation for usage informations:
+  http://www.fastandeasyhacking.com/manual
+====================================================================
+"
+}
+
+pre_remove() {
+    rm -f /usr/bin/armitage
+}
