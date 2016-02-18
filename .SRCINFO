@@ -1,6 +1,6 @@
 pkgbase = girl
 	pkgdesc = GNOME Internet Radio Locator
-	pkgver = 6.0.0
+	pkgver = 8.0.1
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Girl
 	install = girl.install
@@ -12,8 +12,8 @@ pkgbase = girl
 	depends = totem
 	depends = streamripper
 	depends = desktop-file-utils
-	source = https://download.gnome.org/sources/girl/6.0/girl-6.0.0.tar.xz
-	sha256sums = 64df1348559b988d460971ec966b9ad1ccf2c277801cff07f4ce2696675cccaf
+	source = https://download.gnome.org/sources/girl/8.0/girl-8.0.1.tar.xz
+	sha256sums = a2fa78b0b9e61842f85c1ba371b6c61d20d48a3a2672a2e3871b2135bc177db2
 
 pkgname = girl
 
