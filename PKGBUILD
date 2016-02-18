@@ -12,6 +12,7 @@ depends=('dconf')
 makedepends=('git' 'gnome-common')
 source=("git+https://bitbucket.org/p91paul/backslide.git")
 md5sums=('SKIP')
+conflicts=('gnome-shell-extension-backslide-git')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
