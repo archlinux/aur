@@ -2,7 +2,7 @@
 
 pkgname='pipelight'
 pkgver=0.2.8.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A browser plugin which allows one to use windows only plugins inside Linux browser"
 url="https://launchpad.net/pipelight"
@@ -35,20 +35,18 @@ makedepends+=('cabextract' 'xz')
 #source=("https://bitbucket.org/mmueller2012/pipelight/get/v${pkgver%.*}-${pkgver##*.}.tar.bz2"
 #  "https://launchpad.net/pipelight/trunk/0.1/+download/pluginloader-prebuilt-v${pkgver%.*}-${pkgver##*.}.tar.gz")
 source=("https://bitbucket.org/mmueller2012/pipelight/get/v${pkgver}.tar.bz2"
-  "pluginloader-v${pkgver}.tar.gz::http://repos.fds-team.de/pluginloader/v${pkgver}/pluginloader.tar.gz"
+  "pluginloader-v${pkgver}.tar.gz::http://repos.fds-team.de/pluginloader/v${pkgver}/pluginloader.tar.gz")
 #  "pluginloader-v${pkgver}.tar.gz.sig::http://repos.fds-team.de/pluginloader/v${pkgver}/pluginloader.tar.gz.sig"
-  "gnupg_fix.patch")
 noextract=("pluginloader-v${pkgver}.tar.gz")
 
 md5sums=('6cd830fd80e46501b85fdccd059c240d'
-         '8c09e0efd38cb146947084fa16a0c7a3'
-         'ac561ff3cc7df2bc3805567780ed545c')
+         '8c09e0efd38cb146947084fa16a0c7a3')
 
 #validpgpkeys=(428B5197DE952586DA520298E49CC0415DC2D5CA) # Sebastian Lackner & Michael Mueller
 
 install=pipelight.install
 
-_srcdir=mmueller2012-pipelight-b7b5e5471d52/
+_srcdir=mmueller2012-pipelight-792e7a4885a6/
 
 #this changes the install location for the pipelight executables
 _prefix=/usr
@@ -64,7 +62,7 @@ prepare() {
     ln -sf ../pluginloader-v${pkgver}.tar.gz.sig .
   fi
 
-  patch -p1 < ../gnupg_fix.patch
+  #patch -p1 < ../gnupg_fix.patch
   pushd share/
 
   #in case you want to use 64bit wine, you would need this
