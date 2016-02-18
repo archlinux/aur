@@ -1,0 +1,25 @@
+From badbe55edfa5fe85333559961270ad7d29536ceb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Raimar=20B=C3=BChmann?= <raimar _at_ buehmann _dot de>
+Date: Thu, 18 Feb 2016 22:01:44 +0100
+Subject: [PATCH] fix creating turn message by using correct size
+
+---
+ src/protocol.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/protocol.c b/src/protocol.c
+index 0c5f3eb..0c00133 100644
+--- a/src/protocol.c
++++ b/src/protocol.c
+@@ -192,7 +192,7 @@ uint8_t anki_vehicle_msg_turn(anki_vehicle_msg_t *msg,
+ 
+     anki_vehicle_msg_turn_t *m = (anki_vehicle_msg_turn_t *)msg;
+     memset(m, 0, sizeof(anki_vehicle_msg_turn_t));
+-    m->size = ANKI_VEHICLE_MSG_BASE_SIZE;
++    m->size = ANKI_VEHICLE_MSG_C2V_TURN_SIZE;
+     m->msg_id = ANKI_VEHICLE_MSG_C2V_TURN;
+     m->type = (uint8_t)type;
+     m->trigger = (uint8_t)trigger;
+-- 
+2.7.1
+

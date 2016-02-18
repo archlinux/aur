@@ -1,7 +1,7 @@
 pkgbase = anki-drive-sdk-git
 	pkgdesc = C implementation of message protocols and data parsing to communicate with Anki Drive vehicles
-	pkgver = 0.2.0.r23.20141113
-	pkgrel = 2
+	pkgver = 0.3.0.r26.20160218
+	pkgrel = 1
 	url = https://github.com/anki/drive-sdk
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,9 @@ pkgbase = anki-drive-sdk-git
 	depends = readline
 	optdepends = bluez-utils: for command line tool hciconfig
 	source = anki-drive-sdk-git::git+https://github.com/anki/drive-sdk.git
+	source = fix-creating-turn-message-by-using-correct-size.patch
 	md5sums = SKIP
+	md5sums = dc52ebb3421760cb5b72d116a624ce16
 
 pkgname = anki-drive-sdk-git
 

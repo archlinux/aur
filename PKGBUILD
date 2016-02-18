@@ -1,8 +1,8 @@
 # Maintainer: Raimar Bühmann <raimar _at_ buehmann _dot_ de>
 
 pkgname=anki-drive-sdk-git
-pkgver=0.2.0.r23.20141113
-pkgrel=2
+pkgver=0.3.0.r26.20160218
+pkgrel=1
 pkgdesc="C implementation of message protocols and data parsing to communicate with Anki Drive vehicles"
 arch=('i686' 'x86_64')
 url="https://github.com/anki/drive-sdk"
@@ -10,8 +10,12 @@ license=('Apache')
 depends=('glib2' 'readline')
 optdepends=('bluez-utils: for command line tool hciconfig')
 makedepends=('cmake' 'gcc')
-source=("$pkgname::git+https://github.com/anki/drive-sdk.git")
-md5sums=('SKIP')
+source=(
+	"$pkgname::git+https://github.com/anki/drive-sdk.git"
+	'fix-creating-turn-message-by-using-correct-size.patch'
+)
+md5sums=('SKIP'
+         'dc52ebb3421760cb5b72d116a624ce16')
 pkgver() {
 	# remove ".r*.*" from package version
 	_pkgverTriple=$(echo $pkgver | sed "s/\.r.*//g")
@@ -22,6 +26,10 @@ pkgver() {
 	_commitTime=$(git show -s --format="%ci" | grep -o "....-..-.." | sed "s/-//g")
 	# add ".r*.*" from package version
 	echo "$_pkgverTriple.r$_commitCount.$_commitTime"
+}
+prepare() {
+	cd $pkgname
+	patch -Np1 -i ../fix-creating-turn-message-by-using-correct-size.patch
 }
 build() {
 	cd "$pkgname"
