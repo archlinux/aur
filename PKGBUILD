@@ -7,7 +7,7 @@ url="http://tensorflow.org"
 license=('Apache')
 arch=('x86_64')
 pkgdesc="Open source software library for numerical computation using data flow graphs (Python 2)"
-depends=('python2' 'python2-numpy')
+depends=('python2' 'python2-numpy' 'python2-protobuf3')
 optdepends=('cuda: GPU support'
             'cudnn: GPU support')
 makedepends=('python2' 'python2-pip' 'python2-wheel' 'bazel' 'swig' 'bower' 'git')
@@ -16,7 +16,7 @@ source=("https://github.com/tensorflow/tensorflow/archive/v${pkgver}.tar.gz"
 sha256sums=('43dd3051f947aa66e6fc09dac2f86a2efe2e019736bbd091c138544b86d717ce'
             '513f634cc1cab44eb17204616617695ea23355462f918873678fcac1a95ae778')
 provides=('tensorflow')
-conflicts=('tensorflow' 'tensorflow-git' 'python2-protobuf')
+conflicts=('tensorflow' 'tensorflow-git')
 
 _build_opts=""
 
@@ -75,6 +75,7 @@ build() {
 package() {
   cd "${srcdir}/tensorflow-${pkgver}"
 
+  _site_packages=$(${PYTHON} -c "import site; print(site.getsitepackages()[0])")
   TMP_PKG=`find ${srcdir}/tmp-${PYTHON} -name "tensor*.whl"`
   pip2 install --ignore-installed --no-deps \
     --root=${pkgdir} \
@@ -84,5 +85,9 @@ package() {
     --install-option="--install-data=${pkgdir}/var/lib/${_name}" \
     --install-option="--root=${pkgdir}" \
     ${TMP_PKG}
+
+  # FIXME: solve this protobuf conflict in the pip command
+  rm -r "${pkgdir}${_site_packages}/google"
+
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
 }
