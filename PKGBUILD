@@ -2,11 +2,11 @@
 pkgname=purple-gnome-keyring
 pkgver=0.7
 pkgrel=1
-pkgdesc="Purple / Pidgin plugin for Gnome-Keyring integration"
+pkgdesc="Purple (Pidgin / Finch) plugin for Gnome-Keyring integration"
 arch=(i686 x86_64)
 url="https://github.com/GRBurst/purple-gnome-keyring/"
 license=("GPLv3")
-depends=(pidgin libsecret gnome-keyring)
+depends=(libsecret libpurple glib2)
 source=(https://github.com/GRBurst/$pkgname/archive/${pkgver}.tar.gz)
 md5sums=('680d9b303fb25b756d005f854caffc17')
 sha1sums=('31d1568f03c290c20693e12a39d4eec1fb0894fb')
