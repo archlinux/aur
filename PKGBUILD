@@ -4,7 +4,7 @@ _svnname=gnustep-make
 pkgname=$_svnname-clang-svn
 epoch=1
 pkgver=r38389
-pkgrel=3
+pkgrel=4
 pkgdesc="The GNUstep make package, using Clang"
 arch=('any')
 url="http://www.gnustep.org/"
@@ -16,6 +16,7 @@ makedepends_i686=('gcc' 'clang')
 makedepends_x86_64=('gcc-multilib' 'lib32-clang')
 conflicts=('gnustep-make' 'gnustep-make-multilib-clang-svn')
 replaces=('gnustep-make-multilib-clang-svn')
+provides=('gnustep-make')
 options=('!emptydirs')
 source=("$_svnname::svn://svn.gna.org/svn/gnustep/tools/make/trunk/"
 	'arch'
