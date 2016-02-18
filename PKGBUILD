@@ -2,14 +2,13 @@
 
 pkgname=(python-numba-llvmlite-git python2-numba-llvmlite-git)
 pkgbase=python-numba-llvmlite-git
-pkgver=0.20.0.r151.g3b51e6a
+pkgver=0.22.1.r570.ge00bc55
 pkgrel=1
 pkgdesc="NumPy aware dynamic Python compiler using LLVMLITE, which is able to 
 work with LLVM 3.5, rather than LLVMPY."
 url="https://github.com/numba/numba"
 arch=('i686' 'x86_64')
 license=('BSD')
-depends=('python' 'python2' 'python-llvmlite' 'python2-llvmlite')
 makedepends=('git' 'cython' 'cython2')
 backup=()
 source=(git+https://github.com/numba/numba.git)
@@ -30,6 +29,7 @@ package_python-numba-llvmlite-git() {
   provides=('python-numba' )
   replaces=('python-numba')
   conflicts=('python-numba-git' 'python-numba')  
+  depends=('python' 'python-llvmlite' 'python-funcsigs')
 
   cd ${srcdir}/${_gitname}
   python setup.py install \
@@ -43,6 +43,7 @@ package_python-numba-llvmlite-git() {
 package_python2-numba-llvmlite-git() {
   provides=('python2-numba')
   replaces=('python2-numba')
+  depends=('python2' 'python2-llvmlite' 'python2-funcsigs')
   confilicts=('python2-numba-git' 'python2-numba')
 
   cd ${srcdir}/${_gitname}-py2
