@@ -3,7 +3,7 @@
 
 pkgname=pykolab
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Kolab Python Utilities'
 arch=('any')
 license=('GPL3')
@@ -84,7 +84,7 @@ package() {
     
     install -Dm0644 "${srcdir}/kolabd.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/kolabd.conf"
 
-    cp ${srcdir}/kolab-schema-3.2/* "${pkgdir}/usr/share/doc/kolab/"
+    cp ${srcdir}/kolab-schema-3.3/* "${pkgdir}/usr/share/doc/kolab/"
     
     rm ${pkgdir}/var/run -r
 }
