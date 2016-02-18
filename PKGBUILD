@@ -4,11 +4,11 @@
 # Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
 
 pkgname=avahi-nosystemd
-pkgver=0.6.32rc
+pkgver=0.6.32
 pkgrel=1
-_commit=bc4e85846991d0efca89add631c7cd16033f0bef
-pkgdesc='Multicast DNS-SD / Zeroconf Suite'
-url='http://www.avahi.org/'
+_commit=4f334990f692ce08ab4ea2eece695f1592f535b2
+pkgdesc='Service Discovery for Linux using mDNS/DNS-SD -- compatible with Bonjour'
+url='https://github.com/lathiat/avahi'
 license=('LGPL')
 arch=('i686' 'x86_64')
 options=('!emptydirs')
@@ -32,7 +32,7 @@ backup=('etc/avahi/hosts'
         'etc/avahi/services/sftp-ssh.service'
         'usr/lib/avahi/service-types.db'
         'usr/share/avahi/service-types')
-source=("git+https://github.com/heftig/avahi#commit=$_commit"
+source=("git+https://github.com/lathiat/avahi#tag=$_commit"
         avahi-daemon.rc
         avahi-dnsconfd.rc)
 sha1sums=('SKIP'
