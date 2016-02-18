@@ -1,0 +1,20 @@
+post_install() {
+  getent group guam >/dev/null 2>&1 || groupadd guam &>/dev/null
+  getent passwd guam >/dev/null 2>&1 || useradd -g guam -d /var/lib/guam -s /bin/false guam &>/dev/null
+  chmod -R a+r+w /var/log/guam
+  
+  chown guam:guam /var/log/guam
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  if getent passwd guam >/dev/null 2>&1; then
+	  userdel guam
+  fi  
+  if getent group guam >/dev/null 2>&1; then
+	  groupdel guam
+  fi  
+}
