@@ -1,8 +1,8 @@
 diff --git a/include/ClientGUI.py b/include/ClientGUI.py
-index 87d7f46..19ac337 100755
+index 95cf08c..e5b8850 100755
 --- a/include/ClientGUI.py
 +++ b/include/ClientGUI.py
-@@ -149,7 +149,7 @@ class FrameGUI( ClientGUICommon.FrameThatResizes ):
+@@ -154,7 +154,7 @@ class FrameGUI( ClientGUICommon.FrameThatResizes ):
          aboutinfo.SetVersion( str( HC.SOFTWARE_VERSION ) + ', using network version ' + str( HC.NETWORK_VERSION ) )
          aboutinfo.SetDescription( CC.CLIENT_DESCRIPTION )
          
@@ -11,7 +11,7 @@ index 87d7f46..19ac337 100755
          
          aboutinfo.SetLicense( license )
          
-@@ -280,7 +280,7 @@ class FrameGUI( ClientGUICommon.FrameThatResizes ):
+@@ -285,7 +285,7 @@ class FrameGUI( ClientGUICommon.FrameThatResizes ):
                              server_executable = server_executable.replace( 'pythonw', 'python' )
                              
                          
@@ -21,7 +21,7 @@ index 87d7f46..19ac337 100755
                      
                      time_waited = 0
 diff --git a/include/HydrusConstants.py b/include/HydrusConstants.py
-index d6082db..5156cdb 100755
+index 8164709..605ef04 100755
 --- a/include/HydrusConstants.py
 +++ b/include/HydrusConstants.py
 @@ -3,24 +3,9 @@ import sys
