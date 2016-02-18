@@ -3,7 +3,7 @@
 _pkgname=yaml-cpp
 pkgname=mingw-w64-${_pkgname}
 pkgver=0.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc="YAML parser and emitter in C++, written around the YAML 1.2 spec (mingw-w64)"
 url="https://github.com/jbeder/yaml-cpp"
 arch=('any')
@@ -18,31 +18,31 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
     cd $srcdir/${_pkgname}-release-$pkgver
-	unset LDFLAGS
-	for _arch in ${_architectures}; do
-		mkdir -p build-${_arch} && pushd build-${_arch}
-		${_arch}-cmake .. -DCMAKE_INSTALL_PREFIX=/usr/${_arch} -DBUILD_SHARED_LIBS=OFF
-		make
-		${_arch}-cmake .. -DCMAKE_INSTALL_PREFIX=/usr/${_arch} -DBUILD_SHARED_LIBS=ON
-		make
-		popd
+    unset LDFLAGS
+    for _arch in ${_architectures}; do
+        mkdir -p build-${_arch} && pushd build-${_arch}
+        ${_arch}-cmake .. -DCMAKE_INSTALL_PREFIX=/usr/${_arch} -DBUILD_SHARED_LIBS=OFF
+        make
+        ${_arch}-cmake .. -DCMAKE_INSTALL_PREFIX=/usr/${_arch} -DBUILD_SHARED_LIBS=ON
+        make
+        popd
     done
 }
 
 package() {
-	for _arch in ${_architectures}; do
-		cd "$srcdir/${_pkgname}-release-$pkgver/build-${_arch}"
+    for _arch in ${_architectures}; do
+        cd "$srcdir/${_pkgname}-release-$pkgver/build-${_arch}"
 
-		make DESTDIR=$pkgdir install
+        make DESTDIR=$pkgdir install
         
         install -Dm644 libyaml-cpp.a $pkgdir/usr/${_arch}/lib/libyaml-cpp.a
         
-		install -Dm644 yaml-cpp-config.cmake $pkgdir/usr/${_arch}/lib/cmake/${_pkgname}/yaml-cpp-config.cmake
-		install -Dm644 yaml-cpp-config-version.cmake $pkgdir/usr/${_arch}/lib/cmake/${_pkgname}/yaml-cpp-config-version.cmake
-		install -Dm644 yaml-cpp-targets.cmake $pkgdir/usr/${_arch}/lib/cmake/${_pkgname}/yaml-cpp-targets.cmake
+        install -Dm644 yaml-cpp-config.cmake $pkgdir/usr/${_arch}/lib/cmake/${_pkgname}/yaml-cpp-config.cmake
+        install -Dm644 yaml-cpp-config-version.cmake $pkgdir/usr/${_arch}/lib/cmake/${_pkgname}/yaml-cpp-config-version.cmake
+        install -Dm644 yaml-cpp-targets.cmake $pkgdir/usr/${_arch}/lib/cmake/${_pkgname}/yaml-cpp-targets.cmake
 
-		find "$pkgdir/usr/${_arch}" -name '*.exe' | xargs -rtl1 rm
-		find "$pkgdir/usr/${_arch}" -name '*.dll' | xargs -rtl1 ${_arch}-strip --strip-unneeded
-		find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs -rtl1 ${_arch}-strip -g
+        find "$pkgdir/usr/${_arch}" -name '*.exe' | xargs -rtl1 rm
+        find "$pkgdir/usr/${_arch}" -name '*.dll' | xargs -rtl1 ${_arch}-strip --strip-unneeded
+        find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs -rtl1 ${_arch}-strip -g
     done
 }
