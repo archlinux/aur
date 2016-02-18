@@ -7,7 +7,7 @@
 pkgname=glusterfs34
 _pkgname=glusterfs
 pkgver=3.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Is a cluster file-system capable of scaling to several peta-bytes. Version 3.4'
 arch=(i686 x86_64)
 url='http://www.gluster.org/'
@@ -52,6 +52,8 @@ package() {
 
   mkdir -p $pkgdir/usr/lib/tmpfiles.d
   echo "d /var/run/glusterfs 0755 root root -" >$pkgdir/usr/lib/tmpfiles.d/glusterfs.conf
+
+  chmod -x "$pkgdir/usr/lib/systemd/system/glusterd.service"
 
   install -D -m 644 \
     $srcdir/$_pkgname-$pkgver/{INSTALL,COPYING*} \
