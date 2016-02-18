@@ -1,5 +1,5 @@
 pkgname=wlc-git
-pkgver=r879.d3b04c5
+pkgver=r881.c902068
 pkgrel=1
 
 pkgdesc='wayland compositor library'
@@ -18,7 +18,7 @@ conflicts=('wlc')
 
 source=('git+https://github.com/Cloudef/wlc'
         'git+https://github.com/Cloudef/chck'
-        'git://anongit.freedesktop.org/wayland/wayland-protocols')
+        'git+https://anongit.freedesktop.org/git/wayland/wayland-protocols')
 
 sha1sums=('SKIP' 'SKIP' 'SKIP')
 
