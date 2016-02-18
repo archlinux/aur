@@ -22,7 +22,8 @@ optdepends=('blasphemer: Blasphemer (free Heretic) game data'
             'heretic1-wad: Heretic shareware game data'
             'hexen1-wad: Hexen demo game data'
             'strife0-wad: Strife shareware game data'
-            'urbanbrawl-wad: Urban Brawl: Action Doom 2 game data')
+            'urbanbrawl-wad: Urban Brawl: Action Doom 2 game data'
+            'kdebase-kdialog: Provides Qt based startup dialog support')
 source=(https://github.com/coelckers/gzdoom/archive/g${pkgver}.tar.gz
         gzdoom.desktop)
 sha256sums=('4cdfda4eedf5f748c80c0915e5d7bd8860c02d70600e9e82bb98e455883c1de0'
@@ -32,7 +33,7 @@ _sharedir=/usr/share/games/gzdoom
 
 build() {
   cd gzdoom-g$pkgver
-  cmake .
+  cmake -DCMAKE_CXX_FLAGS="$CXXFLAGS -DSHARE_DIR=\\\"$_sharedir\\\"" .
   make
 
   convert "src/win32/icon1.ico[2]" gzdoom.png
