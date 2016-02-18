@@ -3,7 +3,7 @@
 pkgname=termpix
 pkgver=0.0.1
 pkgrel=1
-pkgdesc=""
+pkgdesc="Draw images on an ANSI terminal"
 arch=('i686' 'x86_64')
 url="https://github.com/hopey-dishwasher/termpix"
 license=('Apache')
