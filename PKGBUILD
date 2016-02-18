@@ -1,7 +1,7 @@
 # Maintainer: Lubomir 'Kuci' Kucera <kuci24-at-gmail-dot-com>
 
 pkgname=gitlab-ci-multi-runner
-pkgver=1.0.1
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="The official GitLab CI runner written in Go"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -19,7 +19,7 @@ source=("${pkgname}-${pkgver}.tar.gz"::"https://gitlab.com/gitlab-org/gitlab-ci-
         "gitlab-runner.sysusers"
         "gitlab-runner.tmpfiles"
         "config.toml")
-sha512sums=('4920b00d6b995793f9d9ca92ad2dac9f0e0afc544e3a080e4ce41b333fd1971b05b6300cc1ad296b22fb2d5b734db0a5c9822f0b717bb09ba6bcf2cfd7a7389a'
+sha512sums=('bed302a1c53e745dce5c713d9f8b99ea513b8649ee9297863a1bcffd1297e5f7cf1305c6605efcdb619dc0f9db457905a33b30c9f90485173a0e7e7947d612ec'
             'SKIP'
             'd952618713a4ead9e8ac4d28bc5e3b1f9f0e7a36691d3abee40f73aa31d1b7dcff171c5ce62127b51ddf2c52ad490e7fa4bf0d928a3be793b813706588813535'
             'e0db2ecd45ba9472a9e9109b0254c12d1d27571fa28a01329dbd7f9aa32df33c1d8f1583a27a8105b1ee6e26e5ae5a6696248544f1f7a9d399271973d6a21fed'
