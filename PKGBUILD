@@ -3,10 +3,10 @@
 
 pkgname=smarty3
 pkgver=3.1.21
-pkgrel=1
+pkgrel=2
 pkgdesc='Smarty is a PHP template engine'
 url='http://www.smarty.net'
-license='LGPL'
+license=('LGPL')
 depends=('php>=5.2')
 arch=('any')
 source=("http://www.smarty.net/files/Smarty-${pkgver}.tar.gz")
