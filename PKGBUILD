@@ -1,17 +1,17 @@
-# Maintainer: ultraviolet <ultravioletnanokitty@gmail.com>
+# Maintainer: Saren <saren@wtako.net>
 
-pkgname=gnome-shell-extension-backslide-git
+pkgname=gnome-shell-extension-backslide-3.18-git
 _pkgname="backslide"
-pkgver=r93.7e36a49
-pkgrel=2
-pkgdesc="A GNOME Shell extension to cycle between wallpapers over time"
+pkgver=r94.2f24b1f
+pkgrel=1
+pkgdesc="A GNOME Shell extension to cycle between wallpapers over time. Supports gnome shell 3.14, 3.16 and 3.18."
 arch=('any')
-url="https://bitbucket.org/LukasKnuth/backslide"
+url="https://bitbucket.org/p91paul/backslide"
 license=('GPL3')
 depends=('dconf')
 makedepends=('git' 'gnome-common')
-source=("git+https://bitbucket.org/LukasKnuth/backslide.git" "0001-metadata.patch")
-md5sums=('SKIP' 'bfe7f9d72d99a9ef0f0e4e0207e3b358')
+source=("git+https://bitbucket.org/p91paul/backslide.git")
+md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -20,10 +20,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  # the metadata.json in git currently does not list 3.14 as a compatible
-  # gnome shell version. this version is compatible with the extension,
-  # however, so we patch metadata.json to include it.
-  patch -p1 "backslide@codeisland.org/metadata.json" < ../../0001-metadata.patch
+  # Patch no longer needed as the fork supports 3.14, 3.16 and 3.18. 
   glib-compile-schemas "backslide@codeisland.org/schemas/"
 }
 

@@ -1,9 +1,0 @@
---- ./metadata.json	2015-03-18 08:33:36.167269354 -0600
-+++ ./fixedmetadata.json	2015-03-18 08:36:14.875739469 -0600
-@@ -1,5 +1,5 @@
- {
--    "shell-version": ["3.10","3.12"],
-+    "shell-version": ["3.10","3.12","3.14","3.16"],
-     "uuid": "backslide@codeisland.org",
-     "name": "BackSlide",
-     "description": "Automatic background-image (wallpaper) slideshow for Gnome Shell",
