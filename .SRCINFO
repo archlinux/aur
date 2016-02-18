@@ -1,7 +1,7 @@
 pkgbase = rinetd
 	pkgdesc = internet redirection server
 	pkgver = 0.62
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.boutell.com/rinetd
 	arch = i686
 	arch = x86_64
