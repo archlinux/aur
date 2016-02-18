@@ -22,9 +22,15 @@ sha256sums=('288065a8b779b6a4f4acaa0332f2ebbfd022529f600e4bf70cd494d84860f6ac'
              '7869413529c5529b9a0f2bcaaa2be1480382c2f91eb505e43a4f9e1c1eab2d71')
 
 package() {
-  cd ${srcdir}
+  cd "${srcdir}/${pkgname}"
+  cat > armitage << EOF
+#!/bin/sh
+cd /opt/armitage
+source /etc/profile.d/metasploit.sh
+java -XX:+AggressiveHeap -XX:+UseParallelGC -jar armitage.jar $@
+EOF
   mkdir -p "${pkgdir}/opt/${pkgname}"
-  cp -ra "${pkgname}/" "${pkgdir}/opt/"
+  cp -ra "${srcdir}/${pkgname}/" "${pkgdir}/opt/"
   install -Dm644 "${srcdir}/armitage.desktop" "${pkgdir}/usr/share/applications/armigate.desktop"
   install -Dm644 "${srcdir}/metasploit.png" "${pkgdir}/usr/share/icons/metasploit.png"
   install -Dm755 "${srcdir}/metasploit.sh" "${pkgdir}/etc/profile.d/metasploit.sh"
