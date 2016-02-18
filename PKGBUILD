@@ -39,7 +39,7 @@ package() {
 
   install -d ${pkgdir}/etc/profile.d
   echo '#!/bin/bash
-export VK_ICD_FILENAMES="/opt/mesa-vulkan/etc/vulkan/icd.d/intel_icd.json:$VK_ICD_FILENAMES"
+export VK_ICD_FILENAMES="$VK_ICD_FILENAMES:/opt/mesa-vulkan/etc/vulkan/icd.d/intel_icd.json"
 ' > ${pkgdir}/etc/profile.d/mesa-vulkan.sh
   chmod +x ${pkgdir}/etc/profile.d/mesa-vulkan.sh
 }
