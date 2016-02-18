@@ -22,7 +22,7 @@ source=(http://fossies.org/unix/misc/$_origpkgname$pkgver-Jun05.tar.gz
         mgetty.install
 	)
 md5sums=('4df2eb47bd6d5318d3d642572ab56e51'
-         'fd02c6dd7374e78458840432660729f7'
+         '7eb629cac6ba2dce360a857f0e88c31f'
          '5556e5e88c784e75acb14ab998d7eb1a'
          'c160d250f98140ddc3818fef34e940b6'
          '4b73a5654db86a34a8dccdf5f55c699c'

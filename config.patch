@@ -1,5 +1,5 @@
---- Makefile.orig	2010-06-05 02:48:22.000000000 -0700
-+++ Makefile	2016-02-18 02:56:09.592419743 -0800
+--- ../../pp/mgetty-1.1.37/Makefile	2010-06-05 02:48:22.000000000 -0700
++++ Makefile	2016-02-18 06:19:34.596801007 -0800
 @@ -109,7 +109,7 @@
  #	    USTAT	  - ustat(), no statfs etc.
  #
@@ -26,6 +26,15 @@
 +prefix=/usr
  #
  # prefix for all the spool directories (usually /usr/spool or /var/spool)
+ #
+@@ -187,7 +187,7 @@
+ #
+ # where the mgetty + sendfax binaries live (used for "make install")
+ #
+-SBINDIR=$(prefix)/sbin
++SBINDIR=$(prefix)/bin
+ #
+ # where the user executable binaries live
  #
 @@ -199,7 +199,7 @@
  #
