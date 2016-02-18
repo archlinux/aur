@@ -8,7 +8,7 @@ url="http://www.boutell.com/rinetd"
 license=('GPL')
 source=(http://www.boutell.com/rinetd/http/$pkgname.tar.gz rinetd.service)
 md5sums=('28c78bac648971724c46f1a921154c4f'
-         '44bae2fd01ece120e9434be438e261ff')
+         '78ccfced2c67a274f2def601fddb15cd')
 
 build() {
   cd $srcdir/$pkgname
@@ -22,8 +22,8 @@ build() {
 package() {
   install -d $pkgdir/usr/bin
   install -m 700 $srcdir/rinetd/rinetd $pkgdir/usr/bin/
-  install -d $pkgdir/usr/man/man8
-  install -m 644 $srcdir/rinetd/rinetd.8 $pkgdir/usr/man/man8/
+  install -d $pkgdir/usr/share/man8
+  install -m 644 $srcdir/rinetd/rinetd.8 $pkgdir/usr/share/man8/
   install -d $pkgdir/usr/lib/systemd/system
   install -m 644 $srcdir/rinetd.service $pkgdir/usr/lib/systemd/system/
 }
