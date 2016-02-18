@@ -2,7 +2,7 @@
 # Contributor: flamelab <panosfilip@gmail.com>
 
 pkgname=slingshot-launcher-bzr
-pkgver=r621
+pkgver=r633
 pkgrel=1
 pkgdesc='The Pantheon Application Launcher'
 arch=('i686' 'x86_64')
