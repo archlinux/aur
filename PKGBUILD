@@ -2,8 +2,8 @@
 
 pkgname=roundcubemail-plugin-contextmenu
 pkgver=2.1.2
-pkgrel=1
-pkgdesc=('Contextmenus for various parts of Roundcube using commands from the toolbars')
+pkgrel=2
+pkgdesc='Contextmenus for various parts of Roundcube using commands from the toolbars'
 arch=('any')
 url='https://github.com/JohnDoh/Roundcube-Plugin-Context-Menu'
 license=('GPL3')
