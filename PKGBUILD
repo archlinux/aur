@@ -45,7 +45,7 @@ else
   _pkgname='urbackup-server'
 fi
 pkgname="${_pkgname}-git"
-pkgver=1.4.10.r23.g5b7ca39
+pkgver=1.4.12.r0.g4fcc0d7
 pkgrel=1
 pkgdesc='Client/Server network backup for Windows and Linux, builds server or client'
 arch=('i686' 'x86_64')
@@ -55,7 +55,7 @@ depends=('crypto++' 'fuse')
 makedepends=('python3' 'autoconf' 'git')
 provides=("${_pkgname}=${pkgver%.r*}")
 conflicts=("${_pkgname}")
-install=("${_pkgname}.install")
+install="${_pkgname}.install"
 _verwatch=("${url/http/https}/download.html" 'https://hndl\.urbackup\.org/Server/[0-9\.]\+/urbackup-server-\([0-9\.]\+\)\.tar\.gz' 'l')
 source=('git+https://github.com/uroni/urbackup_backend.git' 'git+https://github.com/uroni/urbackup_frontend_wx.git' 'urbackup-client.service')
 sha256sums=('SKIP'
@@ -181,8 +181,9 @@ prepare() {
 build() {
   set -u
   cd "${srcdir}/${_srcdir}"
-  make -s -j "$(nproc)"
-  make -s -j "$(nproc)" dist
+  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
+  make -s -j "${_nproc}"
+  make -s -j "${_nproc}" dist
   set +u
 }
 
