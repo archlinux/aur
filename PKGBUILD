@@ -1,8 +1,8 @@
 # Maintainer: Chipster Julien <julien dot chipster @ archlinux dot fr>
 
 pkgname=filteripdyn
-pkgver=0.0.1
-pkgrel=4
+pkgver=0.0.2
+pkgrel=1
 pkgdesc="Filtering IP dyn with iptables"
 arch=('any')
 url="https://github.com/Chipsterjulien/filteripdyn"
@@ -34,9 +34,9 @@ build() {
     else
         # Update some libs
         echo "Update go-logging"
-        go get -u github.com/op/go-logging
+        go get github.com/op/go-logging
         echo "Update viper"
-        go get -u github.com/spf13/viper
+        go get github.com/spf13/viper
     fi
 
     cd "$_builddir"
@@ -68,4 +68,4 @@ package() {
         "$pkgdir"/usr/bin/$pkgname || return 1
 }
 
-sha512sums=('548fe1f431dd03da488b7f1ed4a55489e3345f9023c89213ad7d312385be65d75c3b691a6dd3ee79fd824afbec9055fc5e89fb7904e12597e4fb97438ebc53cf')
+sha512sums=('825093b4cbe705bab42452790a593b136224f0cd2bad64976bc64cb469c5f6dcd2f04812e97c6c4a9de1387182804d4268f0099f33d7c864d8554bf475d66883')
