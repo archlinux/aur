@@ -4,7 +4,7 @@
 _realname=libkqueue
 pkgname=lib32-$_realname
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Userspace implementation of the kqueue kernel event notification mechanism found in FreeBSD and other BSD-based (32-bit)"
 url="https://github.com/mheily/libkqueue"
 arch=('x86_64')
@@ -20,6 +20,14 @@ build() {
 	export CC="gcc -m32"
 	export CXX="g++ -m32"
 	export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+
+	if [[ ! -f ./configure ]]; then
+		msg2 "Run 'libtoolize'..."
+		libtoolize
+
+		msg2 "Run 'autoreconf --install'..."
+		autoreconf --install
+	fi
 
 	msg2 "Run 'configure'..."
 	./configure --prefix=/usr --libdir=/usr/lib32 --disable-static
