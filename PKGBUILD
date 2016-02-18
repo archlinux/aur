@@ -2,14 +2,14 @@
 
 pkgname=terminix-git
 _pkgname=terminix
-pkgver=0.46.0.r1.28b5d8e
-pkgrel=1
+pkgver=0.46.0.r5.0487655
+pkgrel=2
 pkgdesc="A tiling terminal emulator based on GTK+ 3 (git master)"
 arch=('x86_64')
 url="http://github.com/gnunn1/terminix"
 license=('MPL')
 depends=('gtk3' 'dconf' 'gsettings-desktop-schemas' 'vte3')
-optdepends=('libnautilus-extension: for "open with terminix" support in nautilus')
+optdepends=('python2-nautilus: for "Open Terminix Here" support in nautilus')
 makedepends=('git' 'dmd' 'dub')
 provides=('terminix')
 conflicts=('terminix')
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  dub build --build=release
+  dub build --cache=local --build=release
   cd data/resources
   glib-compile-resources terminix.gresource.xml
 }
