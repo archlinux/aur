@@ -3,7 +3,7 @@
 
 pkgname=libgroove
 pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Library that provides decoding and encoding of audio on a playlist.'
 arch=(i686 x86_64)
 url='https://github.com/andrewrk/libgroove'
