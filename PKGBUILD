@@ -6,7 +6,7 @@ pkgdesc="i965 Anvil Vulkan Driver for Intel Ivy Bridge, Haswell, Broadwell and S
 arch=('i686' 'x86_64')
 url="http://mesa3d.org/"
 license=('LGPL')
-depends=('libdrm' 'dri2proto' 'glproto' 'libxxf86vm' 'libxdamage' 'expat>=2.0.1' 'libxmu' 'talloc' 'wayland' 'vulkan')
+depends=('libdrm' 'dri2proto' 'glproto' 'libxxf86vm' 'libxdamage' 'expat>=2.0.1' 'libxmu' 'talloc' 'wayland' 'vulkan-loader')
 makedepends=('pkgconfig' 'imake' 'xorg-server-devel' 'python2-mako' 'git')
 provides=("vulkan-i965=${_realver}")
 conflicts=('mesa-i965')
