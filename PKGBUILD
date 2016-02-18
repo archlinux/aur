@@ -1,15 +1,15 @@
 # Maintainer: Anish Bhatt anish [at] gatech [dot] edu
 
 pkgname='pipelight'
-pkgver=0.2.8
-pkgrel=3
+pkgver=0.2.8.2
+pkgrel=1
 epoch=1
 pkgdesc="A browser plugin which allows one to use windows only plugins inside Linux browser"
 url="https://launchpad.net/pipelight"
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1' 'MPL')
 
-depends=('wine-staging>=1.7.49' 'ttf-ms-fonts' 'wget' 'cabextract' 'unzip' 'gnupg')
+depends=('wine-staging>=1.9.2' 'ttf-ms-fonts' 'wget' 'cabextract' 'unzip' 'gnupg')
 if  [[ "$CARCH" == "x86_64" ]]; then
   depends+=('lib32-libsm' 'lib32-libgl')
 else
@@ -40,9 +40,8 @@ source=("https://bitbucket.org/mmueller2012/pipelight/get/v${pkgver}.tar.bz2"
   "gnupg_fix.patch")
 noextract=("pluginloader-v${pkgver}.tar.gz")
 
-md5sums=('9fcbc7019a49eb0c2f613eaba0e96df6'
-         '71b595924b8c8d91c830c2a897362ad2'
-#         'SKIP'
+md5sums=('6cd830fd80e46501b85fdccd059c240d'
+         '8c09e0efd38cb146947084fa16a0c7a3'
          'ac561ff3cc7df2bc3805567780ed545c')
 
 #validpgpkeys=(428B5197DE952586DA520298E49CC0415DC2D5CA) # Sebastian Lackner & Michael Mueller
