@@ -1,24 +1,24 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-core-git
-pkgver=20151221
-pkgrel=3
+pkgver=20160216
+pkgrel=1
 pkgdesc="Bitcoin Core headless P2P node"
 arch=('i686' 'x86_64')
 url="https://github.com/bitcoin/bitcoin"
 depends=('boost'
          'boost-libs'
-         'miniupnpc'
-         'openssl')
+         'zeromq')
 makedepends=('autoconf'
              'automake'
              'binutils'
-             'expect'
              'gcc'
              'git'
              'libtool'
+             'm4'
              'make'
              'pkg-config')
+optdepends=('miniupnpc: build with support for UPnP')
 license=('MIT')
 source=(git+https://github.com/bitcoin/bitcoin
         bitcoin.conf
@@ -26,7 +26,7 @@ source=(git+https://github.com/bitcoin/bitcoin
         bitcoin.service
         bitcoin-reindex.service)
 sha256sums=('SKIP'
-            '67c464e4314ab5f7234a091098a05706989394086e4ee21e1d9155b9d1421796'
+            'f581e8b24cb2b5d848b6a5e14b3f00f7b9efb5df66aaea8df05bbfb21665959a'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             '5e45f2ceaeb7bfa60aeb66ca4167068191eb4358af03f95ac70fd96d9b006349'
             '10ad0b8c356559886634eaf658992004045853ec26cddee143d16125cb75e8f1')
