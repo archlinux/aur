@@ -4,7 +4,7 @@
 
 pkgname=thermald
 _pkgname=thermal_daemon
-pkgver=1.5
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="The Linux Thermal Daemon program from 01.org"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ conflicts=('thermald')
 provides=('thermald')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         'modules-load-thermald.conf')
-sha512sums=('f6b74d7e81db23d8395f2a423651809b9493173f97013373b994146bed81af5a9272f7231a7eb509cd4fcf4f47f72997d9e2b2d09b427bfc3f213a062278d8cc'
+sha512sums=('b9f0bc4775376f15e63d06f171535e631f065d54da276a2910413bb2358434abbec3285c5cc1a41aa38389ebb2a702f1552308f89cf50fcb2e72fe93d1ead5fe'
             '3aff2d9cf1396f8dd165addfebfd1f7354051c6f7e1bfbd920fde05d402d9315eecc9bcbf19bd3f45b54b3cea6b421ba002b76540865f227e0a3d1ebdf655824')
 
 build() {
@@ -25,6 +25,7 @@ build() {
   ./autogen.sh
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
+              --localstatedir=/var \
               --sbindir=/usr/bin
   make
 }
