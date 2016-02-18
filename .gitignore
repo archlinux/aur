@@ -1,4 +1,4 @@
-src/
-pkg/
-*.tar.*
-libgroove/
+/libgroove-git-*
+/libgroove/
+/pkg/
+/src/
