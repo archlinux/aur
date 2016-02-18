@@ -27,7 +27,10 @@ prepare() {
 build() {
   mkdir -p "${srcdir}/${pkgname}-${pkgver}/build"
   cd "${srcdir}/${pkgname}-${pkgver}/build"
-  cmake ../ -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+  cmake \
+    -D CMAKE_BUILD_TYPE=Release \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    ..
   make
 }
 
