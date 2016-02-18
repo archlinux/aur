@@ -25,25 +25,18 @@ index 1fa43fb..794292a 100644
 diff --git a/share/templates/cyrus.conf.tpl b/share/templates/cyrus.conf.tpl
 --- a/share/templates/cyrus.conf.tpl
 +++ b/share/templates/cyrus.conf.tpl
-@@ -17,7 +17,7 @@
-     pop3s		cmd="pop3d -s" listen="pop3s" prefork=1
-     sieve		cmd="timsieved" listen="sieve" prefork=0
+@@ -13,11 +13,11 @@
  
--    ptloader    cmd="ptloader" listen="/var/lib/imap/ptclient/ptsock" prefork=0
-+    ptloader    cmd="ptloader" listen="/var/imap/ptclient/ptsock" prefork=0
+     sieve       cmd="timsieved" listen="sieve"                          prefork=0
  
-     # these are only necessary if receiving/exporting usenet via NNTP
-     #nntp		cmd="nntpd" listen="nntp" prefork=3
-@@ -25,10 +25,10 @@
+-    ptloader    cmd="ptloader"  listen="/var/lib/imap/ptclient/ptsock"  prefork=0
++    ptloader    cmd="ptloader"  listen="/var/imap/ptclient/ptsock"      prefork=0
  
-     # at least one LMTP is required for delivery
-     #lmtp		cmd="lmtpd" listen="lmtp" prefork=0
--    lmtpunix	cmd="lmtpd" listen="/var/lib/imap/socket/lmtp" prefork=1
-+    lmtpunix	cmd="lmtpd" listen="/var/imap/socket/lmtp" prefork=1
+-    lmtpunix    cmd="lmtpd"     listen="/var/lib/imap/socket/lmtp"      prefork=1
++    lmtpunix    cmd="lmtpd"     listen="/var/imap/socket/lmtp"          prefork=1
  
-     # this is only necessary if using notifications
--    notify	cmd="notifyd" listen="/var/lib/imap/socket/notify" proto="udp" prefork=1
-+    notify	cmd="notifyd" listen="/var/imap/socket/notify" proto="udp" prefork=1
+-    notify      cmd="notifyd"   listen="/var/lib/imap/socket/notify"    proto="udp" prefork=1
++    notify      cmd="notifyd"   listen="/var/imap/socket/notify"        proto="udp" prefork=1
  }
  
  EVENTS {

@@ -79,24 +79,16 @@ index 57b4023..d967e8a 100644
      fp.write("\n".join(annotations))
      fp.close()
  
-@@ -145,7 +145,7 @@ def execute(*args, **kw):
+@@ -145,6 +145,8 @@
+     imapservice = 'cyrus-imapd.service'
+     if os.path.isfile('/usr/lib/systemd/system/cyrus.service'):
+         imapservice = 'cyrus.service'
++    elif os.path.isfile('/usr/lib/systemd/system/cyrus-master.service'):
++        imapservice = 'cyrus-master.service'
+ 
      if os.path.isfile('/bin/systemctl'):
          subprocess.call(['systemctl', 'stop', 'saslauthd.service'])
-         subprocess.call(['systemctl', 'restart', 'kolab-saslauthd.service'])
--        subprocess.call(['systemctl', 'restart', 'cyrus-imapd.service'])
-+        subprocess.call(['systemctl', 'restart', 'cyrus-master.service'])
-     elif os.path.isfile('/sbin/service'):
-         subprocess.call(['service', 'saslauthd', 'stop'])
-         subprocess.call(['service', 'kolab-saslauthd', 'restart'])
-@@ -160,7 +160,7 @@ def execute(*args, **kw):
-     if os.path.isfile('/bin/systemctl'):
-         subprocess.call(['systemctl', 'disable', 'saslauthd.service'])
-         subprocess.call(['systemctl', 'enable', 'kolab-saslauthd.service'])
--        subprocess.call(['systemctl', 'enable', 'cyrus-imapd.service'])
-+        subprocess.call(['systemctl', 'enable', 'cyrus-master.service'])
-     elif os.path.isfile('/sbin/chkconfig'):
-         subprocess.call(['chkconfig', 'saslauthd', 'off'])
-         subprocess.call(['chkconfig', 'kolab-saslauthd', 'on'])
+
 diff --git a/pykolab/setup/setup_ldap.py b/pykolab/setup/setup_ldap.py
 index c805d20..1786438 100644
 --- a/pykolab/setup/setup_ldap.py
@@ -172,29 +164,11 @@ index 56109fe..b8f6485 100644
          }
  
      template_file = None
-@@ -438,7 +438,7 @@ result_format = "shared+%%s"
-     if os.path.isfile('/bin/systemctl'):
-         subprocess.call(['systemctl', 'restart', 'postfix.service'])
-         subprocess.call(['systemctl', 'restart', 'amavisd.service'])
--        subprocess.call(['systemctl', 'restart', 'clamd@amavisd.service'])
-+        subprocess.call(['systemctl', 'restart', 'clamd.service'])
-         subprocess.call(['systemctl', 'restart', 'wallace.service'])
-     elif os.path.isfile('/sbin/service'):
-         subprocess.call(['service', 'postfix', 'restart'])
-@@ -456,7 +456,7 @@ result_format = "shared+%%s"
-     if os.path.isfile('/bin/systemctl'):
-         subprocess.call(['systemctl', 'enable', 'postfix.service'])
-         subprocess.call(['systemctl', 'enable', 'amavisd.service'])
--        subprocess.call(['systemctl', 'enable', 'clamd@amavisd.service'])
-+        subprocess.call(['systemctl', 'enable', 'clamd.service'])
-         subprocess.call(['systemctl', 'enable', 'wallace.service'])
-     elif os.path.isfile('/sbin/chkconfig'):
-         subprocess.call(['chkconfig', 'postfix', 'on'])
 diff --git a/pykolab/setup/setup_mysql.py b/pykolab/setup/setup_mysql.py
 index 174cbc7..1e0d70f 100644
 --- a/pykolab/setup/setup_mysql.py
 +++ b/pykolab/setup/setup_mysql.py
-@@ -206,7 +206,7 @@ password='%s'
+@@ -208,7 +208,7 @@ password='%s'
          p2.communicate()
  
          conf.command_set('kolab_wap', 'sql_uri', 'mysql://kolab:%s@localhost/kolab' % (mysql_kolab_password))
@@ -229,19 +203,15 @@ diff --git a/pykolab/setup/setup_roundcube.py b/pykolab/setup/setup_roundcube.py
 index 6558989..fad35fa 100644
 --- a/pykolab/setup/setup_roundcube.py
 +++ b/pykolab/setup/setup_roundcube.py
-@@ -89,9 +89,9 @@ def execute(*args, **kw):
-             'conf': conf
-         }
- 
--    if os.access('/usr/share/roundcubemail/skins/enterprise/', os.R_OK):
-+    if os.access('/usr/share/webapps/roundcubemail/skins/enterprise/', os.R_OK):
-         rc_settings['skin'] = 'enterprise'
--    elif os.access('/usr/share/roundcubemail/skins/chameleon/', os.R_OK):
-+    elif os.access('/usr/share/webapps/roundcubemail/skins/chameleon/', os.R_OK):
-         rc_settings['skin'] = 'chameleon'
-     else:
-         rc_settings['skin'] = 'larry'
-@@ -140,13 +140,15 @@ def execute(*args, **kw):
+@@ -92,6 +92,7 @@
+     rc_paths = [
+             "/usr/share/roundcubemail/",
+             "/usr/share/roundcube/",
++            "/usr/share/webapps/roundcubemail/",
+             "/srv/www/roundcubemail/",
+             "/var/www/roundcubemail/"
+         ]
+@@ -157,13 +158,15 @@ def execute(*args, **kw):
                  fp = open('/etc/roundcubemail/%s' % (want_file), 'w')
              elif os.path.isdir('/etc/roundcube'):
                  fp = open('/etc/roundcube/%s' % (want_file), 'w')
@@ -258,12 +228,3 @@ index 6558989..fad35fa 100644
          directories.sort()
          for directory in directories:
              if directory.startswith("roundcubemail"):
-@@ -165,6 +167,8 @@ def execute(*args, **kw):
-         rcpath = '/usr/share/roundcubemail/'
-     elif os.path.isdir('/usr/share/roundcube'):
-         rcpath = '/usr/share/roundcube/'
-+    elif os.path.isdir('/usr/share/webapps/roundcubemail'):
-+        rcpath = '/usr/share/webapps/roundcubemail/'
-     else:
-         log.error(_("Roundcube installation path not found."))
-         return
