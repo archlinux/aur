@@ -1,7 +1,7 @@
 # Maintainer: Dan Bright <productions at zaziork dot com>
 pkgname=python-iptceditor-gtk3-git
 pkgrel=1 # package release (reset to 1 when new package version released (pkgver)
-pkgver=0.3 # package version (increment when new application version released,  but overwritten on build with pkgver() method below)
+pkgver=0.3.1.r0a175f8 # package version (increment when new application version released,  but overwritten on build with pkgver() method below)
 pkgdesc="NOTE: THIS IS BETA. USE AT YOUR OWN RISK. This is a python3 GTK3 wrapper for the EXIV2 application, which is used to read and edit IPTC (and other forms) of image metadata. It can handle bulk operations on directories of image files."
 arch=('any')
 url="https://github.com/ZWS2014/python-iptceditor-gtk3"
@@ -12,11 +12,10 @@ sha256sums=('SKIP')
 pkgver() {
 cd "$srcdir/python-iptceditor-gtk3/IptcEditor"
 #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-cat VERSION.rst # reading from included version file ensures version matches with the published PyPi package version
+printf "%s.r%s" "$(cat VERSION.rst)" "$(git rev-parse --short HEAD)" # reading from included version file ensures version matches with the published PyPi package version
 }
-prepare() {
-rm -rf .git LICENSE README.md
-}
+#prepare() {
+#}
 package() {
 mv $srcdir/python-iptceditor-gtk3/IptcEditor $srcdir/python-iptceditor-gtk3/IptcEditor-$pkgver
 cd "$srcdir/python-iptceditor-gtk3/IptcEditor-$pkgver"
