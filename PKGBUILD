@@ -37,9 +37,9 @@ build() {
   patch -Np0 -i ../../policy.patch || return 1
   patch -Np0 -i ../../mgetty_cid.patch || return 1
   make clean 
-  make || return 1
-  make testdisk
-  make test
+  make all vgetty || return 1
+  #make testdisk
+  #make test
 }
 
 package() {
