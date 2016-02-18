@@ -1,5 +1,5 @@
 pkgname=vulkan-i965-git
-pkgver=11.2.0_devel.78310.40c76d4
+pkgver=11.2.0_devel.78316.8c23392c
 _realver=11.2
 pkgrel=1
 pkgdesc="i965 Anvil Vulkan Driver for Intel Ivy Bridge, Haswell, Broadwell and Skylake GPUs."

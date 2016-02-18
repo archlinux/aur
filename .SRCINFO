@@ -1,6 +1,6 @@
 pkgbase = vulkan-i965-git
 	pkgdesc = i965 Anvil Vulkan Driver for Intel Ivy Bridge, Haswell, Broadwell and Skylake GPUs.
-	pkgver = 11.2.0_devel.78310.40c76d4
+	pkgver = 11.2.0_devel.78316.8c23392c
 	pkgrel = 1
 	url = http://mesa3d.org/
 	arch = i686
