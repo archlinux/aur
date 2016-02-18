@@ -1,23 +1,27 @@
 pkgbase = vulkan
 	pkgver = 1.0.3.1
 	pkgrel = 3
-	url = https://www.khronos.org/vulkan
+	url = https://www.khronos.org/vulkan/
 	arch = x86_64
 	license = MIT
-	depends = glslang-git
-	depends = spirv-tools
-	source = https://vulkan.lunarg.com/pub/sdks/linux/latest
+	source = sdk.run::https://vulkan.lunarg.com/pub/sdks/linux/latest
+	source = LICENSE.txt
 	source = vulkan.pc
 	sha1sums = 869e60e46df3c1938d206158ec0591bf037cf83c
+	sha1sums = c58af0a84d4b80048db22429125aa31d613f336d
 	sha1sums = beaab6bfd4f3f219f295c4fbdc6300098ddeea2c
 
 pkgname = vulkan-loader
 	pkgdesc = Vulkan ICD (installable client driver) loader
+	optdepends = glslang-git
+	optdepends = spirv-tools
 
 pkgname = vulkan-sdk
 	pkgdesc = Vulkan SDK
 	depends = vulkan-headers
 	depends = vulkan-loader
+	depends = glslang-git
+	depends = spirv-tools
 	optdepends = vulkan-man-pages
 	options = staticlibs
 
