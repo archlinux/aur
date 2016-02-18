@@ -20,14 +20,14 @@ conflicts=("doomrl-lq doomrl-ogg")
 
 case $CARCH in
   'i686')
-    source=("http://doom.chaosforge.org/file_download/33/doomrl-linux-i386-0997.tar.gz"
+    source=(http://doom.chaosforge.org/file_download/33/doomrl-linux-i386-0997.tar.gz
             "doomrl" "LICENSE")
     md5sums=('f1beebc47c63a768752ea66951799f45'
             '825cac701303cd5c61ec209e461219de'
             'eaa0c779f98be421bf34cd0c5800642a')
     __arch='i386' ;;
   'x86_64')
-    source=("http://doom.chaosforge.org/file_download/32/doomrl-linux-x64-0997.tar.gz"
+    source=(http://doom.chaosforge.org/file_download/32/doomrl-linux-x64-0997.tar.gz
             "doomrl" "LICENSE")
     md5sums=('7078b52000b91c468a0041ff667c4f81'
             '825cac701303cd5c61ec209e461219de'
