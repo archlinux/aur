@@ -16,7 +16,7 @@ source=("https://github.com/tensorflow/tensorflow/archive/v${pkgver}.tar.gz"
 sha256sums=('43dd3051f947aa66e6fc09dac2f86a2efe2e019736bbd091c138544b86d717ce'
             '513f634cc1cab44eb17204616617695ea23355462f918873678fcac1a95ae778')
 provides=('tensorflow')
-conflicts=('tensorflow' 'tensorflow-git')
+conflicts=('tensorflow' 'tensorflow-git' 'python2-protobuf')
 
 _build_opts=""
 
