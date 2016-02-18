@@ -4,12 +4,12 @@
 # Contributor: Douglas Soares de Andrade <douglas at archlinux dot org>
 
 pkgname=lib32-avahi
-pkgver=0.6.32rc
-pkgrel=5
-_commit=dbb07bea8d315b76f94b16e55a1c2b2cc8ddd91f
-pkgdesc='Multicast DNS-SD / Zeroconf Suite (32-bit)'
+pkgver=0.6.32
+pkgrel=1
+_commit=4f334990f692ce08ab4ea2eece695f1592f535b2
+pkgdesc='Service Discovery for Linux using mDNS/DNS-SD -- compatible with Bonjour (32-bit)'
 arch=('x86_64')
-url='http://git.0pointer.net/avahi.git'
+url='https://github.com/lathiat/avahi'
 license=('LGPL')
 depends=("${pkgname#lib32-}" 'expat' 'lib32-gdbm' 'lib32-glib2' 'lib32-libcap' 'lib32-libdaemon' 'lib32-libdbus')
 makedepends=('gcc-multilib' 'git' 'gobject-introspection' 'gtk-sharp-2' 'intltool' 'lib32-gtk2' 'lib32-gtk3' 'lib32-qt4'
@@ -18,7 +18,7 @@ optdepends=('lib32-gtk3: gtk3 bindings'
             'lib32-gtk2: gtk2 bindings'
             'lib32-qt4: qt4 bindings')
 options=(!emptydirs)
-source=("git+https://github.com/lathiat/avahi#commit=$_commit")
+source=("git+$url#tag=$_commit")
 sha256sums=('SKIP')
 
 
