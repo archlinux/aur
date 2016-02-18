@@ -1,0 +1,139 @@
+diff -ru ./DSP.xs ../../../vocp/src/vocp-0.9.3/prog/dependencies/Audio-DSP-0.02b/DSP.xs
+--- ./DSP.xs	2000-09-10 20:54:07.000000000 -0700
++++ ../../../vocp/src/vocp-0.9.3/prog/dependencies/Audio-DSP-0.02b/DSP.xs	2003-02-03 15:12:52.000000000 -0800
+@@ -9,6 +9,7 @@
+ #include <sys/soundcard.h>
+ 
+ #define AUDIO_FILE_BUFFER_SIZE 4096
++#define INTERNAL_BUFFER_SIZE 4096
+ 
+ static int
+ not_here(char *s)
+@@ -203,7 +204,7 @@
+         HV* construct      = newHV();
+         HV* thistash       = newHV();
+ 
+-        SV* buff           = newSViv(4096);    /* read/write buffer size */
++        SV* buff           = newSViv(INTERNAL_BUFFER_SIZE);    /* read/write buffer size */
+         SV* chan           = newSViv(1);       /* mono(1) or stereo(2) */
+         SV* data           = newSVpv("",0);    /* stored audio data */
+         SV* device         = newSVpv("/dev/dsp",8);
+@@ -251,7 +252,11 @@
+                 if (audio_fd < 0)
+                     croak("failed to open %s", audio_file);
+                 for (;;) {
+-                    status = read(audio_fd, audio_buff, AUDIO_FILE_BUFFER_SIZE);                    if (status == 0)
++					/* Mod by Pat Deegan (psychogenic.com) - probably overkill but it's nice to know what's in our
++					buffer... */
++					memset(audio_buff, 0, AUDIO_FILE_BUFFER_SIZE);
++                    status = read(audio_fd, audio_buff, AUDIO_FILE_BUFFER_SIZE);
++					if (status == 0)
+                         break;
+                     else
+                         sv_catpvn(data, audio_buff, status);
+@@ -638,6 +643,8 @@
+         }
+ 
+         for (;;) {
++			/* Mod by Pat Deegan (psychogenic.com) - using memset to clear buffer, overkill... */
++			memset(audio_buff, 0, AUDIO_FILE_BUFFER_SIZE);
+             status = read(audio_fd, audio_buff, AUDIO_FILE_BUFFER_SIZE);
+             if (status == 0)
+                 break;
+@@ -698,6 +705,7 @@
+         int status;
+         char buf[count];
+ 
++		memset(buf, 0, count);
+         status = read(fd, buf, count); /* record some sound */
+         if (status != count) {
+             hv_store(caller, "errstr", 6,
+@@ -730,6 +738,7 @@
+         int dlength = SvCUR(*hv_fetch(caller, "data", 4, 0));
+         int fd      = SvIV(*hv_fetch(caller, "file_indicator", 14, 0));
+         int mark    = SvIV(*hv_fetch(caller, "mark", 4, 0));
++		int remain;
+         int status;
+         char* data;
+ 
+@@ -738,6 +747,13 @@
+ 
+         data = SvPVX(*hv_fetch(caller, "data", 4, 0));
+ 
++		/* Mod by Pat Deegan (psychogenic.com) - make sure we don't write data that is located past
++		dlength (as this causes pops and crunchies at the end of play) */
++		remain = dlength - mark;
++		if (count > remain)
++			count = remain;
++		/* end of Pat Deegan mods */
++
+         status = write(fd, &data[mark], count);
+ 
+         /*** This just causes unnecessary problems...
+Only in ../../../vocp/src/vocp-0.9.3/prog/dependencies/Audio-DSP-0.02b: DSP.xs.diff
+Only in ../../../vocp/src/vocp-0.9.3/prog/dependencies/Audio-DSP-0.02b: Makefile.old
+Only in ../../../vocp/src/vocp-0.9.3/prog/dependencies/Audio-DSP-0.02b: out.test
+diff -ru ./README ../../../vocp/src/vocp-0.9.3/prog/dependencies/Audio-DSP-0.02b/README
+--- ./README	2000-09-10 18:41:43.000000000 -0700
++++ ../../../vocp/src/vocp-0.9.3/prog/dependencies/Audio-DSP-0.02b/README	2003-02-03 15:12:52.000000000 -0800
+@@ -1,6 +1,7 @@
+ Audio::DSP - Perl interface to *NIX digital audio device
+ 
+-Version 0.02
++Version 0.02 B - This version was patched by Pat Deegan for use with the
++VOCP IVR system (http://www.vocpsystem.com)
+ 
+ Description
+ 
+diff -ru ./test.pl ../../../vocp/src/vocp-0.9.3/prog/dependencies/Audio-DSP-0.02b/test.pl
+--- ./test.pl	2000-09-10 01:16:13.000000000 -0700
++++ ../../../vocp/src/vocp-0.9.3/prog/dependencies/Audio-DSP-0.02b/test.pl	2003-02-03 15:12:52.000000000 -0800
+@@ -13,6 +13,7 @@
+ #### construct, initialize ####
+ print "Initializing audio device... ";
+ my ($buf, $chan, $fmt, $rate) = (4096, 1, 8, 8192);
++#my ($buf, $chan, $fmt, $rate) = (4096, 1, 8, 8192);
+ my $dsp = new Audio::DSP(buffer   => $buf,
+                          channels => $chan,
+                          format   => $fmt,
+@@ -20,8 +21,10 @@
+ 
+ my $seconds = 2;
+ my $length  = ($chan * $fmt * $rate * $seconds) / 8;
++my $tryrate = 8000;
++$dsp->open();
+ 
+-$dsp->init() || die "not ok 2 (" . $dsp->errstr . ")\n";
++# $dsp->init() || die "not ok 2 (" . $dsp->errstr . ")\n";
+ print "ok 2\n";
+ 
+ #### read 2 seconds ####
+@@ -29,8 +32,8 @@
+ for (my $i = 0; $i < $length; $i += $buf) {
+     $dsp->read() || die "not okay 3 (" . $dsp->errstr . ")\n";
+ }
+-if ($dsp->datalen != 16384) {
+-    print "not ok 3 (" . $dsp->datalen . " bytes recorded\; should've been 16384\n";
++if ($dsp->datalen != $length) {
++    print "not ok 3 (" . $dsp->datalen . " bytes recorded\; should've been $length\n";
+ } else {
+     print "ok 3\n";
+ }
+@@ -38,10 +41,14 @@
+ #### load/play test file ####
+ print "Loading and playing test file... ";
+ $dsp->clear;
+-$dsp->audiofile('kazan.raw') || die "not okay 4 (" . $dsp->errstr . ")\n";
+-for (;;) {
+-    $dsp->write || last;
++$dsp->audiofile('out.test') || die "not okay 4 (" . $dsp->errstr . ")\n";
++while ($dsp->write)
++{
++;
+ }
++#for (;;) {
++#    $dsp->write || last;
++#}
+ print "ok 4\n";
+ 
+ #### close ####
