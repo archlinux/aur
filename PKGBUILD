@@ -3,13 +3,13 @@
 
 pkgname=terminix
 pkgver=0.46.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tiling terminal emulator based on GTK+ 3"
 arch=('x86_64')
 url="http://github.com/gnunn1/terminix"
 license=('MPL')
 depends=('gtk3' 'dconf' 'gsettings-desktop-schemas' 'vte3')
-optdepends=('libnautilus-extension: for "open with terminix" support in nautilus')
+optdepends=('python2-nautilus: for "Open Terminix Here" support in nautilus')
 install=terminix.install
 source_x86_64=(teminix-${pkgver}.zip::https://github.com/gnunn1/terminix/releases/download/$pkgver/terminix.zip)
 sha256sums_x86_64=('f333497e364353e99c563160c91f9902f18ca5cfbcc64cc59034f37d8773b24e')
