@@ -4,7 +4,7 @@ pkgbase=vulkan-git
 pkgname=('vulkan-loader-git' 'vulkan-sdk-git')
 pkgver=r4423.1affe90
 pkgrel=1
-url='https://www.khronos.org/vulkan'
+url='https://www.khronos.org/vulkan/'
 arch=('i686' 'x86_64')
 license=('MIT')
 source=('git+https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers'
@@ -13,7 +13,6 @@ source=('git+https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers'
 sha1sums=('SKIP'
           'beaab6bfd4f3f219f295c4fbdc6300098ddeea2c'
           '437ece58e06c0bdab40ea4eb7fb0787ea8250150')
-depends=('glslang-git' 'spirv-tools')
 makedepends=('cmake')
 
 _libver=1.0.3
@@ -60,6 +59,7 @@ package_vulkan-loader-git() {
   conflicts=('vulkan-loader')
   provides=("vulkan-loader")
   #provides=("vulkan-loader=${_libver}")
+  optdepends=('glslang-git' 'spirv-tools')
 
   cd "${srcdir}"/Vulkan-LoaderAndValidationLayers
 
@@ -75,7 +75,7 @@ package_vulkan-loader-git() {
 
 package_vulkan-sdk-git() {
   pkgdesc='Vulkan SDK'
-  depends=('vulkan-headers' 'vulkan-loader')
+  depends=('vulkan-headers' 'vulkan-loader' 'glslang-git' 'spirv-tools')
   optdepends=('vulkan-man-pages')
   conflicts=('vulkan-sdk')
   provides=('vulkan-sdk')
