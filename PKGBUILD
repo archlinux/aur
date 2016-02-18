@@ -2,7 +2,7 @@
 
 pkgname=visual-studio-code-oss
 pkgdesc='Visual Studio Code for Linux, Open Source version'
-pkgver=0.10.6
+pkgver=0.10.8
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://code.visualstudio.com/'
@@ -13,9 +13,13 @@ conflicts=('vscode-oss')
 provides=('vscode-oss')
 
 source=("https://github.com/Microsoft/vscode/archive/${pkgver}.tar.gz"
-        "${pkgname}.desktop")
-sha1sums=('4b979c5da74a450972cbefb31a0a166891d6d4d7'
-          '9ba4659068dc5a71b2bb30eb106872e525660e3f')
+        "${pkgname}.desktop"
+        'fix_omnisharp_ext.patch'
+        'product_json.patch')
+sha1sums=('fd74fcc6a16b19c11dc80620fdf2ea2eca7b3118'
+          'fba307396d3550beff64760bd7a6dec7e90ce0b9'
+          '59dbb5cd20fe1c63bd63a019bfac6d2f6ca9e7ee'
+          '4a7f41876a016ef8d969fb81c7b1b4bc7b1e026b')
 
 case "$CARCH" in
     i686)
@@ -30,6 +34,13 @@ case "$CARCH" in
         ;;
 esac
 
+prepare() {
+    cd "${srcdir}/vscode-${pkgver}"
+
+    patch -p1 -i "${srcdir}/fix_omnisharp_ext.patch"
+    patch -p1 -i "${srcdir}/product_json.patch"
+}
+
 build() {
     cd "${srcdir}/vscode-${pkgver}"
 
@@ -43,7 +54,7 @@ package() {
 
     # Include symlink in system bin directory
     install -m 0755 -d "${pkgdir}/usr/bin"
-    ln -s '/opt/VSCode-OSS/Code [OSS Build]' "${pkgdir}/usr/bin/${pkgname}"
+    ln -s '/opt/VSCode-OSS/Code - OSS' "${pkgdir}/usr/bin/${pkgname}"
 
     # Add .desktop file
     install -D -m644 "${srcdir}/${pkgname}.desktop" \

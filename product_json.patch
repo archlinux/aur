@@ -1,0 +1,19 @@
+diff -rupN a/product.json b/product.json
+--- a/product.json	2016-02-17 16:46:45.526013096 -0800
++++ b/product.json	2016-02-17 16:49:24.172684567 -0800
+@@ -6,5 +6,12 @@
+ 	"win32ShortcutName": "code-oss",
+ 	"licenseUrl": "https://github.com/Microsoft/vscode/blob/master/LICENSE.txt",
+ 	"darwinBundleIdentifier": "com.visualstudio.code.oss",
+-	"welcomePage": "http://go.microsoft.com/fwlink/?LinkId=723048"
+-}
+\ No newline at end of file
++	"welcomePage": "http://go.microsoft.com/fwlink/?LinkId=723048",
++	"quality": "stable",
++	"extensionsGallery": {
++		"serviceUrl": "https://marketplace.visualstudio.com/_apis/public/gallery",
++		"itemUrl": "https://marketplace.visualstudio.com/items"
++	},
++	"documentationUrl": "http://go.microsoft.com/fwlink/?LinkID=533484#vscode",
++	"releaseNotesUrl": "http://go.microsoft.com/fwlink/?LinkID=533483#vscode"
++}
