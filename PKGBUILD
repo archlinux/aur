@@ -9,13 +9,13 @@
 # Maintainer: Marco Melletti <melletti.marco@gmail.com>
 pkgname=uarm-git # '-bzr', '-git', '-hg' or '-svn'
 pkgver=v0.5.3.r26.3600cec
-pkgrel=3
+pkgrel=4
 pkgdesc="arm7tdmi based computer emulator with debugging tools"
 arch=('any')
 url="http://mellotanica.github.io/uARM/"
 license=('GPL')
 depends=('qt5-declarative' 'gcc' 'make' 'boost')
-optdepends=('python2: for uarm-readuarm header reader')
+optdepends=('python2: for uarm-readuarm header reader' 'arm-none-eabi-gcc: cross compiler for target architecture')
 makedepends=('git')
 backup=('etc/default/uarm')
 install=
