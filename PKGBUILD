@@ -7,6 +7,7 @@ arch=('i686' 'x86_64')
 url='http://freshmeat.net/projects/autofs'
 license=('GPL2')
 provides=('autofs')
+replaces=('autofs')
 depends=('libxml2')
 makedepends=('libldap' 'krb5' 'kmod' 'sssd')
 optdepends=('krb5: for LDAP support'
