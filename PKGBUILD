@@ -3,7 +3,7 @@
 
 pkgname=frankenwm-git
 _gitname="FrankenWM"
-pkgver=1.0.12
+pkgver=1.0.13
 pkgrel=1
 pkgdesc="Fast dynamic tiling window manager based on monsterwm-xcb"
 url="https://github.com/sulami/FrankenWM"
