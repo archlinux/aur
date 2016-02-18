@@ -1,0 +1,99 @@
+#!/bin/bash
+#STEAM DE - Script for starting Steam at login
+#Copyright (C) 2012  Thomaz de Oliveira dos Reis <thor27@gmail.com>
+#
+#This program is free software; you can redistribute it and/or
+#modify it under the terms of the GNU General Public License
+#as published by the Free Software Foundation; either version 2
+#of the License, or (at your option) any later version.
+#
+#This program is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#GNU General Public License for more details.
+#
+#You should have received a copy of the GNU General Public License
+#along with this program; if not, write to the Free Software
+#Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+function stop(){
+    #Stop all running steam process
+    killall steam.sh
+    killall steam
+    killall MainThrd
+    #If it doesn't stop, force it
+    killall -9 steam
+    killall -9 steam.sh
+    killall -9 MainThrd
+
+}
+
+function check_steam_window(){
+    wmctrl -l | tr -s " " | cut -f4- -d" " | grep '^Steam$'
+}
+
+function disable_joysticks() {
+    for dev in `find /dev/input -name js*`; do
+        # Get the name of the joystick model
+        name="`udevadm info --query=property --name=$dev | grep ID_VENDOR_ENC | cut -c15- -` `udevadm info --query=property --name=$dev | grep ID_MODEL_ENC | cut -c14- -`"
+        # Escape \ sequences
+        name="`echo -e "$name"`"
+        # Disable the joystick
+        xinput --list | grep "$name" | grep -Pwo "id=[0-9]*" | grep -Pwo "[0-9]*" | xargs xinput --disable
+    done
+}
+
+stop 
+
+# Start basic window manager and video settings
+xfwm4 --replace --daemon --compositor=off
+which nvidia-settings && nvidia-settings -l 
+which gnome-settings-daemon && gnome-settings-daemon &
+
+# Disable xinput for joysticks
+if [ -x /usr/bin/xinput ]; then
+    disable_joysticks
+fi
+
+#Reset variables
+unset prefix
+unset parameters
+unset program
+
+parameters='-tenfoot -enableremotecontrol'
+
+#Set optirun as prefix if available
+which optirun && prefix=optirun
+
+#Set primusrun as prefix if available
+which primusrun && prefix=vblank_mode=0 optirun -b primus 
+#Get full path of steam executable
+program=`which steam`
+
+export SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS=0
+
+# Disable DPMS and screen blanking 
+xset -dpms
+xset s off
+
+#Execute STEAM
+$prefix $program $parameters &
+PID=$!
+
+while ! check_steam_window
+do
+    sleep 0.5
+    if ! ps -p $PID
+    then
+        zenity --error --text "Ops! Steam had some trouble to run. That can be a problem with steam itself or with your configuration."
+        exit 1
+    fi
+done
+
+while check_steam_window
+do
+    sleep 10
+done
+
+#Exit steam nicely...
+steam -shutdown

@@ -1,0 +1,17 @@
+[Unit]
+Description = Starts instance of steam in big picture mode using xinit
+After = systemd-user-sessions.service network.target sound.target
+Conflicts=getty@tty7.service
+
+[Service]
+User = steam
+Group = steam
+PAMName = login
+Type = simple
+TTYPath = /dev/tty7
+ExecStart = /usr/bin/xinit /usr/bin/dbus-launch --exit-with-session /usr/bin/steam-de -- :0 -nolisten tcp vt7
+Restart = on-abort
+StandardInput = tty
+
+[Install]
+WantedBy = multi-user.target
