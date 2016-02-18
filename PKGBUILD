@@ -1,5 +1,5 @@
 # Maintainer: Melvin Vermeeren <mail@mel.vin>
-# Co-Maintainer: lanDury <gvankampen@xs4all.nl>
+# Co-Maintainer: IanDury <iandury@xs4all.nl>
 pkgname=openzwave-git
 _gitname="open-zwave"
 pkgver=r1238.b258e9e
