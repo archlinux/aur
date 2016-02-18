@@ -9,7 +9,7 @@
 # Maintainer: Marco Melletti <melletti.marco@gmail.com>
 pkgname=uarm-git # '-bzr', '-git', '-hg' or '-svn'
 pkgver=v0.5.3.r26.3600cec
-pkgrel=1
+pkgrel=2
 pkgdesc="arm7tdmi based computer emulator with debugging tools"
 arch=('any')
 url="http://mellotanica.github.io/uARM/"
