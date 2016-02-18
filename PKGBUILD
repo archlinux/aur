@@ -17,10 +17,25 @@ _sysroot=/mnt/pi
 
 # Options
 _skip_web_engine=true
+_static_build=false
+_build_from_head=false
+_local_qt5_repo="/opt/dev/src/qtproject/qt5"
+
+pkgver=5.6.0
+pkgrel=5
 
 # PKGBUILD
 _piver=2
 _pkgname=qt-sdk-raspberry-pi
+
+if $_static_build; then
+  _pkgname="${_pkgname}-static"
+fi
+
+if $_build_from_head; then
+  _pkgver=6.6.6
+fi
+
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 replaces=("${_pkgname}")
@@ -28,12 +43,10 @@ pkgname="${_pkgname}${_piver}"
 _packaginguser=$(whoami)
 _libspkgname="${pkgname}-target-libs"
 _mkspec="linux-rpi${_piver}-g++"
-pkgver=5.6.0
 _pkgver=${pkgver}-beta
 _baseprefix=/opt
 _installprefix=${_baseprefix}/${pkgname}-${_pkgver}
 _source_package_name=qt-everywhere-opensource-src-${_pkgver}
-pkgrel=5
 pkgdesc="Qt SDK for the Raspberry Pi${_piver}"
 arch=("x86_64")
 url="http://www.qt.io"
@@ -65,20 +78,34 @@ fi
 #end sanity check
 
 if $_skip_web_engine || [[ ${_piver} = "1" ]]; then
-  _device_configure_flags="-skip qtwebengine"
+  _device_configure_flags="$_device_configure_flags -skip qtwebengine"
+fi
+
+if $_static_build; then
+  _device_configure_flags="$_device_configure_flags -static"
+fi
+
+if $_build_from_head; then
+  _device_configure_flags="$_device_configure_flags -skip qt3d -skip qtsystems -skip qttools -skip qtwebkit"
 fi
 
 build() {
   local _srcdir="${srcdir}/${_source_package_name}"
   local _bindir="${_srcdir}-build"
+  local _mkspec_dir="${_srcdir}/qtbase/mkspecs/devices/${_mkspec}"
 
   # Qt tries to do the right thing and stores these, breaking cross compilation
   unset LDFLAGS
   unset CFLAGS
   unset CXXFLAGS
 
+if $_build_from_head; then
+  _srcdir="${_local_qt5_repo}"
+fi
+
   # Get our mkspec
-  cp -r "${srcdir}/mkspecs/${_mkspec}" ${_srcdir}/qtbase/mkspecs/devices
+  rm -Rf $_mkspec_dir
+  cp -r "${srcdir}/mkspecs/${_mkspec}" $_mkspec_dir
 
   mkdir -p ${_bindir}
   cd ${_bindir}
@@ -101,8 +128,9 @@ build() {
   local _reducerelocations="${_srcdir}/qtbase/config.tests/unix/bsymbolic_functions.test"
   sed -i "s/error/warning/" ${_reducerelocations} || exit 1
 
+  # No longer required as we explicitly set CFLAGS = foo in the mkspec
   # Work around our embarresing propensity to stomp on your own tailored build configuration
-  sed -i "s/O[23]/Os/"  ${_srcdir}/qtbase/mkspecs/common/gcc-base.conf || exit 1
+  # sed -i "s/O[23]/Os/"  ${_srcdir}/qtbase/mkspecs/common/gcc-base.conf || exit 1
 
   # end patch
 
