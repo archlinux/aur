@@ -9,8 +9,8 @@ url="https://github.com/meyerd/n2n"
 license=('GPL3')
 depends=('openssl' 'net-tools') #iproute2?
 makedepends=('git')
-provides=n2n
-conflicts=n2n
+provides=(n2n)
+conflicts=(n2n)
 source=('git+https://github.com/meyerd/n2n.git'
         'edge.conf.example'
         'edge.sh'
