@@ -1,22 +1,23 @@
 # Maintainer: Javier Torres <javitonino [at] gmail [dot] com>
 
 pkgname=kolab
-pkgver=3.4
-pkgrel=6
+pkgver=16
+pkgrel=1
 pkgdesc='Kolab Groupware solution meta-package'
 arch=('any')
 license=('AGPL3')
 makedepends=()
-depends=('chwala>=0.3.0'
-         'kolab-freebusy>=1.0.7' 
-         'irony>=0.3.0'
-         'kolab-syncroton>=2.3.1'
-         'kolab-webadmin>=3.2.6'
-         'pykolab>=0.7.11-2'
-         'cyrus-imapd-ldap>=2.5'
-         'roundcubemail-plugin-contextmenu>=2.1'
-         'roundcubemail-plugins-kolab>=3.2.7'
-         'roundcubemail-skin-chameleon>=0.3.5'
+depends=('chwala>=0.3.1'
+         'kolab-freebusy>=1.0.8' 
+         'irony>=0.3.1'
+         'kolab-syncroton>=2.3.2'
+         'kolab-webadmin>=3.2.10'
+         'pykolab>=0.8.0-3'
+         'guam>=0.7.1'
+         'cyrus-imapd-ldap>=2.5.7'
+         'roundcubemail-plugin-contextmenu>=2.1.2'
+         'roundcubemail-plugins-kolab>=3.2.10'
+         'roundcubemail-skin-chameleon>=0.3.7'
          'postfix'
          '389-ds-base'
          'mariadb'
