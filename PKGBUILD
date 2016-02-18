@@ -4,7 +4,7 @@ _svnname=gnustep-gui
 pkgname=$_svnname-clang-svn
 epoch=1
 pkgver=r38298
-pkgrel=2
+pkgrel=3
 pkgdesc="The GNUstep GUI class library, using Clang"
 arch=('i686' 'x86_64')
 url="http://www.gnustep.org/"
@@ -19,6 +19,7 @@ optdepends=('flite: enable speech server (need recompilation)'
 	'imagemagick: enable ImageMagick support (need recompilation)')
 conflicts=('gnustep-gui' 'gnustep-gui-svn' 'gnustep-gui-multilib-clang-svn')
 replaces=('gnustep-gui-multilib-clang-svn')
+provides=('gnustep-gui')
 options=('!emptydirs')
 source=("$_svnname::svn://svn.gna.org/svn/gnustep/libs/gui/trunk/")
 md5sums=('SKIP')
