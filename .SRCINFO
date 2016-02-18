@@ -1,0 +1,27 @@
+pkgbase = vulkan-i965-git
+	pkgdesc = i965 Anvil Vulkan Driver
+	pkgver = 11.2.0_devel.78310.40c76d4
+	pkgrel = 1
+	url = http://mesa3d.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = pkgconfig
+	makedepends = imake
+	makedepends = xorg-server-devel
+	depends = libdrm
+	depends = dri2proto
+	depends = glproto
+	depends = libxxf86vm
+	depends = libxdamage
+	depends = expat>=2.0.1
+	depends = libxmu
+	depends = talloc
+	depends = wayland
+	provides = vulkan-i965=11.0
+	conflicts = mesa-i965
+	source = git://anongit.freedesktop.org/mesa/mesa#branch=vulkan
+	md5sums = SKIP
+
+pkgname = vulkan-i965-git
+
