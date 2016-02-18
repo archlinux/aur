@@ -1,7 +1,7 @@
 # Maintainer: Fabien Devaux <fdev31@gmail.com>
 pkgname=aqualung
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="High quality music player w/ gapless support"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ optdepends=('liblrdf: LADSPA filters'
     "liboggz: Oggz speex support (playback)"
     "speex: Oggz speex support (playback)"
     "libmad: MPEG audio support (playback)"
-    "libmp3lame: MP3 audio support (encode)"
+    "lame: MP3 audio support (encode)"
     "libmodplug: MOD files support (playback .mod .s3m .xm .it ...)"
     "libmpcdec: Musepack support (playback)"
     "wavpack: WavPpack support (playback)"
