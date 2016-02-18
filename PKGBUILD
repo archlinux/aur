@@ -1,6 +1,6 @@
 pkgname=vulkan-i965-git
 pkgver=11.2.0_devel.78310.40c76d4
-_realver=11.0
+_realver=11.2
 pkgrel=1
 pkgdesc="i965 Anvil Vulkan Driver"
 arch=('i686' 'x86_64')
