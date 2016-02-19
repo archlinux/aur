@@ -1,7 +1,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=flatcam-git
 _pkgname=FlatCAM
-pkgver=8.4
+pkgver=r309.4e0fa74
 pkgrel=2
 pkgdesc="Generates CNC gcode from 2D PCB files (Gerber/Excellon/SVG)"
 arch=('any')
