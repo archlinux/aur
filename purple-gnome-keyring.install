@@ -3,3 +3,7 @@ post_install()
     echo -e "\e[32m-> In some cases you must restart the keyring daemon with: gnome-keyring-daemon --replace \e[39m"
 }
 
+post_upgrade() {
+    rm /usr/lib/pidgin/$2
+}
+
