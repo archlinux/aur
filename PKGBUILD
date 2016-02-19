@@ -1,8 +1,10 @@
-# AUR maintainer: Swyter <swyterzone+aur@gmail.com>
-# Original Linux porter: cfcohen <https://github.com/cfcohen>
+# AUR maintainer and creator: Swyter <swyterzone+aur@gmail.com>
+# GNOME thumbnailer info and sundry references down here:
 
-# For more info and discussion about the Linux version go here:
-# https://forums.taleworlds.com/index.php/topic,313683.0.html
+# https://tecnocode.co.uk/2013/10/21/writing-a-gnome-thumbnailer/
+# https://github.com/hadess/gnome-thumbnailer-skeleton
+# https://imagemagick.org/script/convert.php
+# https://stackoverflow.com/questions/16689557/convert-pdf-to-png-without-output-file-extension-using-imagemagick/16689602#16689602
 
 pkgname=gnome-dds-thumbnailer
 pkgdesc='View DirectDraw Surface textures in Nautilus and Nemo.'
