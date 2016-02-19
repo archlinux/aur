@@ -1,4 +1,7 @@
-# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
+# Original Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
+#
+# Copied from AUR3
+#
 
 pkgname=libkexiv2-frameworks-git
 pkgver=5.0.0.r751.335e133
@@ -7,22 +10,15 @@ pkgdesc='A wrapper around Exiv2 library to manipulate pictures metadata as EXIF 
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/kdegraphics/libs/libkexiv2'
 license=('LGPL')
-depends=('qt5-base'
-         'exiv2'
-         )
-makedepends=('extra-cmake-modules'
-             'kdoctools'
-             'git'
-             'python'
-             )
-conflicts=('libkexiv2')
+depends=('ktextwidgets' 'exiv2')
+makedepends=('git' 'extra-cmake-modules' 'kdoctools' 'python')
 source=('git://anongit.kde.org/libkexiv2#branch=frameworks')
 sha1sums=('SKIP')
 
 pkgver() {
   cd libkexiv2
-  _ver="$(cat CMakeLists.txt | grep -m3 -e KEXIV2_LIB_MAJOR_VERSION -e KEXIV2_LIB_MINOR_VERSION -e KEXIV2_LIB_PATCH_VERSION | cut -d '"' -f2 | paste -sd'.')"
-  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  _ver="$(cat CMakeLists.txt | grep -e KEXIV2_LIB_MAJOR_VERSION -e KEXIV2_LIB_MINOR_VERSION -e KEXIV2_LIB_PATCH_VERSION | head -n3 | cut -d '"' -f2)"
+  echo "$(echo ${_ver} | tr ' ' .).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
