@@ -1,7 +1,7 @@
 # Maintainer: Maarten van Gompel <proycon at anaproy dot nl>
 pkgname=frog
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Frog is an integration of memory-based natural language processing (NLP) modules developed for Dutch. It includes a tokenizer, part-of-speech tagger, lemmatizer, morphological analyser, named entity recognition, shallow parser and dependency parser."
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -16,7 +16,8 @@ md5sums=(61fe2dbd11056e864230a848f7f62520)
 
 build() {
   cd $srcdir/$pkgname-$pkgver
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --with-python=/usr/bin/python2
+  bash bootstrap.sh
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
   make
 }
 
