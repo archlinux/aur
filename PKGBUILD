@@ -2,8 +2,8 @@
 
 pkgname=mist-git
 _pkgname=mist
-pkgver=v0.3.8.r20.g902d764
-_pkgver=0-3-9
+pkgver=0.4.0.r1.g36ca1b1
+_pkgver=0-4-0
 pkgrel=1
 pkgdesc="Ethereum wallet for Ether accounts, wallets and smart contracts (includes Mist browser)."
 arch=('i686' 'x86_64')
@@ -39,8 +39,16 @@ optdepends=(
 )
 url="https://github.com/ethereum/mist"
 license=('GPL')
-source=("${pkgname}::git+https://github.com/ethereum/mist")
-sha256sums=("SKIP")
+source=(
+  "${pkgname}::git+https://github.com/ethereum/mist"
+  "mist.desktop"
+  "icon.png"
+)
+sha256sums=(
+  "SKIP"
+  "d044844dd8ef1fef2ced861e5a86bf0d9af1b06ade6965dab1f12dbc612da207"
+  "f9dfeddf9730ab693e3dc69d6dd0ad48525de1e40e1c8fb46ed081a3e7bd5f93"
+)
 
 pkgver() {
   cd ${srcdir}/${pkgname}
@@ -71,6 +79,10 @@ package() {
   msg2 'Installing Mist...'
   install -d "${pkgdir}/usr/share/mist"
   cp -a "${srcdir}/${pkgname}/dist_wallet/Ethereum-Wallet-linux-${_arch}-${_pkgver}/." "${pkgdir}/usr/share/${_pkgname}"
+  cp -a "${srcdir}/icon.png" "${pkgdir}/usr/share/mist"
+
+  install -d "${pkgdir}/usr/share/applications"
+  cp -a "${srcdir}/mist.desktop" "${pkgdir}/usr/share/applications"
 
   install -d "${pkgdir}/usr/bin"
   ln -s "/usr/share/${_pkgname}/Ethereum-Wallet" "${pkgdir}/usr/bin/mist"
