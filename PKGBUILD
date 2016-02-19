@@ -1,4 +1,5 @@
-# Maintainer: Ricardo Funke <ricardo [at] gmail [dot] com>
+# Maintainer: Pieter Goetschalckx <3.14.e.ter [at] gmail [dot] com>
+# Contributor: Ricardo Funke <ricardo [at] gmail [dot] com>
 # Contributor: Attila Bukor <r1pp3rj4ck [at] w4it [dot] eu>
 # Contributor: Iwan Timmer <irtimmer [at] gmail [dot] com>
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
@@ -10,69 +11,51 @@
 # Contributor: petterk <stifler3k [at] hotmail [dot] com>
 
 pkgname=popcorntime-bin
-pkgver=0.3.8.5
-_pkgver='0.3.8-5'
-pkgrel=5
-pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
-arch=('x86_64' 'i686')
-url="http://popcorntime.io/"
+_pkgname=popcorntime
+pkgver=0.3.9
+pkgrel=1
+pkgdesc="Stream movies and TV shows from torrents"
+arch=('i686' 'x86_64')
+url="https://popcorntime.sh"
 license=('GPL3')
-depends=('libnotify' 'desktop-file-utils' 'ttf-font' 'gconf' 'nss' 'libxtst' 'gtk2' 'alsa-lib')
-optdepends=('net-tools: necessary for the new vpn feature' 'ttf-liberation: open source ttf fonts')
-provides=('popcorntime')
+depends=('alsa-lib' 'gconf' 'gtk2' 'nss' 'ttf-font' 'libxtst' 'libnotify' 'desktop-file-utils')
+provides=('popcorntime' 'popcorn-time-ce')
 conflicts=('popcorntime')
 options=('!strip')
-install="popcorntime.install"
-sha1sums=('fcd6044861cfb78587d9b6e9590c0872144045c6'
-            'd2e56426a321faabd316ea0bc89b2fa2fb0dfa48'
-            '98cba5c0c979d37e601cc33cf3b562f106427d36')
+install=popcorntime.install
+[ "$CARCH" = "i686" ]   && _platform='Linux-32'
+[ "$CARCH" = "x86_64" ] && _platform='Linux-64'
+source=("https://get.popcorntime.sh/build/Popcorn-Time-${pkgver}-${_platform}.tar.xz"
+        "${_pkgname}.desktop")
+sha256sums=('27db5a11580204add3494f0274d170bad2fcba0c9e4461d408a20dcd10b4eadf'
+            '4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334')
 
-_platform='Linux-64'
-
-if [ "$CARCH" = 'i686' ]; then
-  _platform='Linux-32'
-  sha1sums[0]='ec994d8a0420857018aabf8555926b0a6d43a1f1'
-fi
-
-#source=("http://get.popcorntime.io/build/Popcorn-Time-${_pkgver}-${_platform}.tar.xz"
-#source=("http://web.archive.org/web/20150909191012/http://get.popcorntime.io/build/Popcorn-Time-${_pkgver}-${_platform}.tar.xz"
-source=("http://web.archive.org/web/20150909184516/http://128.199.107.206/build/Popcorn-Time-${_pkgver}-${_platform}.tar.xz"
-        "popcorntime.install"
-        "popcorntime.desktop")
+[ "$CARCH" = "i686" ]   && _platform=linux32
+[ "$CARCH" = "x86_64" ] && _platform=linux64
 
 package() {
-  cd "${srcdir}"
+  _bpath="${_platform}"
 
-  install -dm755 "${pkgdir}/opt/${pkgname}/"
+  install -dm755 "${pkgdir}/usr/share/${_pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
-  install -dm755 "${pkgdir}/usr/share"
 
   # Program
-  echo "${pkgdir}/opt/${pkgname}/"
-  install -Dm755 "${srcdir}/Popcorn-Time"	"${pkgdir}/opt/${pkgname}/"
-  install -Dm644 "${srcdir}/nw.pak"		"${pkgdir}/opt/${pkgname}/"
-  install -Dm644 "${srcdir}/libffmpegsumo.so"	"${pkgdir}/opt/${pkgname}/"
-#  install -Dm644 "${srcdir}/CHANGELOG.md"	"${pkgdir}/opt/${pkgname}/"
-  install -Dm644 "${srcdir}/icudtl.dat"		"${pkgdir}/opt/${pkgname}/"
-  install -Dm644 "${srcdir}/install"		"${pkgdir}/opt/${pkgname}/"
-#  install -Dm644 "${srcdir}/LICENSE.txt"	"${pkgdir}/opt/${pkgname}/"
-#  install -Dm644 "${srcdir}/package.json"	"${pkgdir}/opt/${pkgname}/"
-  install -Dm644 "${srcdir}/package.nw"		"${pkgdir}/opt/${pkgname}/"
-  install -Dm644 "${srcdir}/popcorntime.png"	"${pkgdir}/opt/${pkgname}/"
-#  install -Dm644 "${srcdir}/README.md"		"${pkgdir}/opt/${pkgname}/"
+  install -Dm755 "${_bpath}/Popcorn-Time" "${pkgdir}/usr/share/${_pkgname}/"
+  install -Dm644 "${_bpath}/"{icudtl.dat,libffmpegsumo.so,nw.pak,package.json} \
+    "${pkgdir}/usr/share/${_pkgname}/"
 
   # Directories
-  cp -a "${srcdir}/locales"			"${pkgdir}/opt/${pkgname}/"
-#  cp -a "${srcdir}/node_modules"		"${pkgdir}/opt/${pkgname}/"
-#  cp -a "${srcdir}/src"				"${pkgdir}/opt/${pkgname}/"
+  cp -a "${_bpath}/"{locales,node_modules,src} "${pkgdir}/usr/share/${_pkgname}/"
 
   # Link to program
-  ln -s "/opt/${pkgname}/Popcorn-Time" "${pkgdir}/usr/bin/popcorntime"
+  ln -s "/usr/share/${_pkgname}/Popcorn-Time" "${pkgdir}/usr/bin/${_pkgname}"
 
   # Desktop file
-  install -Dm644 "${srcdir}/popcorntime.desktop" "${pkgdir}/usr/share/applications/popcorntime.desktop"
+  install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
   # Icon
-  install -Dm644 "${srcdir}/popcorntime.png" "${pkgdir}/usr/share/pixmaps/popcorntime.png"
+  install -Dm644 "${_bpath}/src/app/images/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
 }
+
+# vim:set ts=2 sw=2 et:
 
