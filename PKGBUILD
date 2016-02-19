@@ -2,8 +2,8 @@
 # Former Maintainer: Christoph Drexler <chrdr at gmx dot at>
 
 pkgname=openfst
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 pkgdesc="Library for constructing, combining, optimizing, and searching weighted finite-state transducers (FSTs)"
 arch=('i686' 'x86_64')
 url="http://www.openfst.org/"
@@ -11,7 +11,7 @@ license=('APACHE')
 depends=('gcc-libs' 'glibc' 'python2')
 options=(!libtool)
 source=("http://openfst.cs.nyu.edu/twiki/pub/FST/FstDownload/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('01c2b810295a942fede5b711bd04bdc9677855c846fedcc999c792604e02177b')
+sha256sums=('d40724bc5641091063db632392e6561e9077d5e0d88ac106d5b30d8f1bcd9925')
 
 
 build() {
