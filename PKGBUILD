@@ -1,7 +1,7 @@
 # Maintainer: Ricardo Vieira <ricardo.vieira@tecnico.ulisboa.pt>
 
 pkgname=liquid-dsp-git
-pkgver=v1.2.0.r1208.baea5f9
+pkgver=v1.2.0.r1252.gd1031be
 pkgrel=1
 pkgdesc="Digital signal processing library for software-defined radios"
 arch=('x86_64')
@@ -23,7 +23,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
