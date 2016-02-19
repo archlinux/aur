@@ -3,7 +3,7 @@
 
 pkgname=batman-adv
 pkgver=2016.0
-pkgrel=1
+pkgrel=2
 pkgdesc='batman kernel module'
 arch=('i686' 'x86_64')
 url='http://www.open-mesh.net/'
@@ -38,5 +38,5 @@ package() {
   install -D -m644 README "${pkgdir}/usr/share/doc/batman-adv/README"
 }
 
-sha256sums=('86770fe5029251bb60e95b138311ae5317f30b1a62f104c92036b96c5dc24852'
+sha256sums=('7ff5d5e131b0c67deca00176349b62a98cc988df7fd2e90244f2ba288253ae64'
             '347599c02426a905690002885c277f91b82da2b29d3372348e5f02d03c435c37')
