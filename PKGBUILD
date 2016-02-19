@@ -9,7 +9,6 @@ url='http://nodejs.org/'
 license=('MIT')
 depends=('openssl' 'zlib' 'python2' 'gnuplot')
 provides=('nodejs' 'npm')
-optdepends=('npm: nodejs package manager')
 conflicts=('nodejs' 'npm')
 
 build() {
