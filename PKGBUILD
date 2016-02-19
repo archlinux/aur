@@ -5,7 +5,7 @@ pkgdesc="Cyrus account management"
 arch=("any")
 url="http://fusiondirectory.org/"
 license=("LGPL")
-depends=("fusiondirectory>=$pkgver" "fusiondirectory-plugin-mail>=$pkgver")
+depends=("fusiondirectory>=$pkgver" "fusiondirectory-plugin-systems>=$pkgver")
 
 install=fusiondirectory-plugin-cyrus.install
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
