@@ -2,8 +2,8 @@
 
 pkgname=terminix-git
 _pkgname=terminix
-pkgver=0.46.0.r5.0487655
-pkgrel=2
+pkgver=0.46.0.r8.cca9b4d
+pkgrel=1
 pkgdesc="A tiling terminal emulator based on GTK+ 3 (git master)"
 arch=('x86_64')
 url="http://github.com/gnunn1/terminix"
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  dub build --cache=local --build=release
+  dub build --build=release
   cd data/resources
   glib-compile-resources terminix.gresource.xml
 }
