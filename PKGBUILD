@@ -7,7 +7,7 @@
 
 pkgname=gnome-shell-extension-dash-to-dock-git
 pkgver=50
-pkgrel=1
+pkgrel=2
 pkgdesc="A gnome-shell extension that transforms the dash into an intellihide dock"
 arch=('any')
 url="https://micheleg.github.io/dash-to-dock/"
@@ -30,7 +30,7 @@ printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
 build() {
   cd "$_gitname"
-  make _build
+  make VERSION="$pkgver" _build
 }
 
 package() {
