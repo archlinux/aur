@@ -2,14 +2,14 @@
 _pkgname=yubioath-desktop
 pkgname=yubico-${_pkgname}-git
 pkgver=276
-pkgrel=1
+pkgrel=2
 pkgdesc="Crossplatform graphical user interface to generate one-time passwords."
 arch=('i686' 'x86_64')
 url="https://developers.yubico.com/yubioath-desktop/"
 license=('GPL')
 depends=('python2' 'pcsclite' 'ccid')
 makedepends=('git' 'python2-pyside' 'python2-pyscard-svn' 'python2-pbkdf2' 'python2-setuptools' 'python2-pyside-tools' 'python2-crypto' 'yubikey-personalization')
-source="git+https://github.com/Yubico/yubioath-desktop.git"
+source=("git+https://github.com/Yubico/yubioath-desktop.git")
 md5sums=('SKIP')
 
 pkgver() {
