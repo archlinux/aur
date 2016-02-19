@@ -1,7 +1,7 @@
 # Maintainer: Mirco Tischler <mt-ml at gmx dot de>
 
 pkgname=xdg-app
-pkgver=0.4.11
+pkgver=0.4.12
 pkgrel=1
 pkgdesc='An application deployment framework for desktop apps'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('git' 'docbook-xsl')
 _libglnxrev='d59a63e'
 install='xdg-app.install'
 source=("$url/releases/$pkgname-$pkgver.tar.xz")
-sha256sums=('f51c26061ee4fb9c08b86810d76c2f2861053ac642c383b71af7dd5064dfc302')
+sha256sums=('1186df10b598de159de4957f085aca4836e568f884f72a951de4f19ca4e09219')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
