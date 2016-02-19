@@ -51,37 +51,37 @@ _remove_static_objects_ipp=false
 ########################################
 
 _year='2016'
-_v_a='1'
-_v_b='150' 
+_v_a='2'
+_v_b='181' 
 
-_update='1'
+_update='2'
 
 pkgrel=2
 
 _sp=''
 
-_icc_ver='16.0.1' # intel-ccompxe-${_v_b}-${_icc_ver}.noarch.rpm
+_icc_ver='16.0.2' # intel-ccompxe-${_v_b}-${_icc_ver}.noarch.rpm
 #_openmp_ver='16.0.1' # intel-openmp-${_v_b}-${_openmp_ver}.${arch}.rpm
-_ipp_ver='9.0.1' # intel-ipp-ac-${_v_b}-${_ipp_ver}.${arch}.rpm
-_mpi_ver='5.1.1' # intel-mpi-${_v_b}-${_ipp_ver}.${arch}.rpm
-_mkl_ver='11.3.1' # intel-mkl-cluster-${_v_b}-${_mkl_ver}.${arch}.rpm
-_tbb_ver='4.4.1' # intel-tbb-${_v_b_}-${_tbb_ver}.noarch.rpm
+_ipp_ver='9.0.2' # intel-ipp-ac-${_v_b}-${_ipp_ver}.${arch}.rpm
+_mpi_ver='5.1.3' # intel-mpi-${_v_b}-${_ipp_ver}.${arch}.rpm
+_mkl_ver='11.3.2' # intel-mkl-cluster-${_v_b}-${_mkl_ver}.${arch}.rpm
+_tbb_ver='4.4.3' # intel-tbb-${_v_b_}-${_tbb_ver}.noarch.rpm
 #_gdb_ver='7.8.0' # intel-gdb-${_gdb_ver}-${_v_b}.x86_64.rpm
 #_gdb_gt_ver='7.6.0' # intel-gdb-gt-${_gdb_gt_ver}-{_v_b}.x86_64.rpm
-_vtune_ver='16.1.434111' # intel-vtune-amplifier-xe-${year}-*-${_vtune_ver}.${arch}.rpm
-_inspector_ver='16.1.435552' # intel-inspector-xe-${year}-*-${_inspector_ver}.${arch}.rpm
-_advisor_ver='16.1.435553' # intel-advisor-xe-${year}-*-${_advisor_ver}.${arch}.rpm
+_vtune_ver='16.2.444464' # intel-vtune-amplifier-xe-${year}-*-${_vtune_ver}.${arch}.rpm
+_inspector_ver='16.1.450824' # intel-inspector-xe-${year}-*-${_inspector_ver}.${arch}.rpm
+_advisor_ver='16.1.450722' # intel-advisor-xe-${year}-*-${_advisor_ver}.${arch}.rpm
 
 # Different version for docs
-_vtune_man_ver='1.1.434111'
-_inspector_man_ver='1.1.435552'
-_advisor_man_ver='1.10.435553'
+_vtune_man_ver='2.0.444464'
+_inspector_man_ver='1.2.450824'
+_advisor_man_ver='1.30.450722'
 
 
 
 pkgver=${_year}.${_icc_ver}.${_v_a}.${_v_b}
 
-_dir_nr='8365'
+_dir_nr='8676'
 
 options=(strip libtool staticlibs)
 
@@ -116,7 +116,7 @@ source=(
 
 
 sha256sums=(
-    'f5a3ab9fb581e19bf1bd966f7d40a11905e002a2bfae1c4a2140544288ca3e48'  # parallel_studio_xe_2016_update1.tgz
+    '280bf39c75d7f52f206759ca4d8b6334ab92d5970957b90f5aa286bb0aa8d65e'  # parallel_studio_xe_2016_update2.tgz
 	'75fcdfc246949341afddcf51b2037f606f25612a04c199ac1a743247aa7c4ea5'  # intel_compilers.sh
 	'624001bbd846f460d46f062acdf78a602c862aa9c956f3f7e4b0ec9d9b38d3fb'  # intel_vtune-amplifier-xe.sh
 	'292a9eea2c9a836ee9dc0d4ff28fc741d5548a3182e4f75aec7b93e1dd7b4f21'  # intel_advisor-xe.sh
@@ -124,7 +124,6 @@ sha256sums=(
 	'3f96dec03111e69d16bb363acf4d0570e8a9526c09e5e542a7558f1b26d043ef'  # intel-composer.install
 	'31ac4d0f30a93fe6393f48cb13761d7d1ce9719708c76a377193d96416bed884'  # intel-compiler-base.conf
 	'c165386ba33b25453d4f5486b7fefcdba7d31e156ad280cbdfa13ed924b01bef'  # intel-fortran.conf
-	#'976de24a127e1f43b1b2696ac3aef9fe03cb26b9bcf81126c73ffc751b2604d5'  # intel-gdb.conf
 	'99cc9683cc75934cc21bb5a09f6ad83365ee48712719bfd914de9444695eed13'  # intel-openmp.conf
 	'a856326362e9b80c19dc237cbf66bf3d96a69bd7ad1baff99ec9849f8208348c'  # intel-mkl.conf
 	'f32ad4fbaaab40001dc7a8b5cf06dcb9f1ec3cdf210eda3ea649fa15fbf4a93d'  # intel-mpi.conf

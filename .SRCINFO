@@ -1,7 +1,7 @@
 pkgbase = intel-parallel-studio-xe
 	pkgdesc = Intel C++ C and FORTRAN compiler - Intel Parallel Studio XE - Cluster Edition - icc icpc ifort ipp mkl mpi tbb
-	pkgver = 2016.16.0.1.1.150
-	pkgrel = 2
+	pkgver = 2016.16.0.2.2.181
+	pkgrel = 3
 	url = http://software.intel.com/en-us/articles/non-commercial-software-download/
 	arch = x86_64
 	license = custom
@@ -13,7 +13,7 @@ pkgbase = intel-parallel-studio-xe
 	options = strip
 	options = libtool
 	options = staticlibs
-	source = http://registrationcenter-download.intel.com/akdlm/irc_nas/8365/parallel_studio_xe_2016_update1.tgz
+	source = http://registrationcenter-download.intel.com/akdlm/irc_nas/8676/parallel_studio_xe_2016_update2.tgz
 	source = intel_compilers.sh
 	source = intel_vtune-amplifier-xe.sh
 	source = intel_advisor-xe.sh
@@ -32,7 +32,7 @@ pkgbase = intel-parallel-studio-xe
 	source = intel-mkl-th.conf
 	source = intel-tbb.install
 	source = EULA.txt
-	sha256sums = f5a3ab9fb581e19bf1bd966f7d40a11905e002a2bfae1c4a2140544288ca3e48
+	sha256sums = 280bf39c75d7f52f206759ca4d8b6334ab92d5970957b90f5aa286bb0aa8d65e
 	sha256sums = 75fcdfc246949341afddcf51b2037f606f25612a04c199ac1a743247aa7c4ea5
 	sha256sums = 624001bbd846f460d46f062acdf78a602c862aa9c956f3f7e4b0ec9d9b38d3fb
 	sha256sums = 292a9eea2c9a836ee9dc0d4ff28fc741d5548a3182e4f75aec7b93e1dd7b4f21
@@ -53,46 +53,46 @@ pkgbase = intel-parallel-studio-xe
 
 pkgname = intel-compiler-base
 	pkgdesc = Intel C/C++ compiler with Intel® OpenMP
-	pkgver = 2016.16.0.1.1.150
+	pkgver = 2016.16.0.2.2.181
 	install = intel-composer.install
 
 pkgname = intel-fortran-compiler
 	pkgdesc = Intel Fortran compiler
-	pkgver = 2016.16.0.1.1.150
+	pkgver = 2016.16.0.2.2.181
 	install = intel-composer.install
 	depends = intel-compiler-base
 
 pkgname = intel-ipp
 	pkgdesc = Intel Integrated Performance Primitives
-	pkgver = 2016.9.0.1.150
+	pkgver = 2016.9.0.2.181
 	install = intel-composer.install
 
 pkgname = intel-mkl
 	pkgdesc = Intel Math Kernel Library (Intel® MKL)
-	pkgver = 2016.11.3.1.150
+	pkgver = 2016.11.3.2.181
 	install = intel-mkl.install
 	backup = etc/intel-mkl-th.conf
 
 pkgname = intel-mpi
 	pkgdesc = Intel Message Passing Interface (Intel® MPI)
-	pkgver = 2016.5.1.1.150
+	pkgver = 2016.5.1.3.181
 	backup = etc/intel-mpi.conf
 	depends = intel-compiler-base
 
 pkgname = intel-tbb_psxe
 	pkgdesc = Intel Threading Building Blocks (Intel® TBB)
-	pkgver = 2016.4.4.1.150
+	pkgver = 2016.4.4.3.181
 	install = intel-tbb.install
 
 pkgname = intel-vtune-amplifier-xe
 	pkgdesc = Performance profiler for serial and parallel performance analysis
-	pkgver = 2016.16.1.434111.150
+	pkgver = 2016.16.2.444464.181
 	depends = pangox-compat
 
 pkgname = intel-inspector-xe
 	pkgdesc = Memory and thread debugger
-	pkgver = 2016.16.1.435552.150
+	pkgver = 2016.16.1.450824.181
 
 pkgname = intel-advisor-xe
 	pkgdesc = Threading design and prototyping tool for software architects
-	pkgver = 2016.16.1.435553.150
+	pkgver = 2016.16.1.450722.181
