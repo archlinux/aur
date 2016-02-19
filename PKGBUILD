@@ -93,43 +93,36 @@ cd addressbook/
         mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/addressbook/
         cp -a ./html/images/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/addressbook/
         cp -a ./html/getvcard.php ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/addressbook/
-        
+
       elif [ "addressbook" = "argonaut" ] ; then
         mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/addressbook/
-        cp -a ./html/images/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/addressbook/
-        
-      elif [ "addressbook" = "fax" ] ; then
-        mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/addressbook/
-        cp -a ./html/images/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/addressbook/
-        cp -a ./html/getfax.php ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/addressbook/
-        
+        cp -a ./html/themes/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/
+        cp -a ./html/getFAIstatus.php ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/addressbook/
+
       elif [ "addressbook" = "fusioninventory" ] ; then
         mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/
         mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/addressbook/
         cp -a ./html/collect.php ${pkgdir}/usr/share/webapps/fusiondirectory/html/
-        cp -a ./html/images/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/addressbook/
+        cp -a ./html/themes/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/
         cp -a ./html/plugins/inventory.css ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/addressbook/
 
-      elif [ "addressbook" = "ejbca" ] ; then
+      elif [ "addressbook" = "webservice" ] ; then
         mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/
-        cp -a ./html/themes/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/
+        cp -a ./html/jsonrpc.php ${pkgdir}/usr/share/webapps/fusiondirectory/html/
 
       else
-        # Directories
-        for cur_html in $(find ./html -mindepth 1 -maxdepth 1 -type d) ; do
+        # Images directory
+        if [[ -d ./html/images ]] ; then
           mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/addressbook/
-          html_line="$(echo ${cur_html} | sed "s#./html/##")" 
-          cp -a ./html/${html_line} ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/addressbook/
-        done
+          cp -a ./html/images/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/addressbook/
+        fi
 
-        # Files
-        for cur_html in $(find ./html -mindepth 1 -maxdepth 1 -type f) ; do
+        # Themes directory
+        if [[ -d ./html/themes ]] ; then
           mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/
-          html_line="$(echo ${cur_html} | sed "s#./html/##")" 
-          cp -a ./html/${html_line} ${pkgdir}/usr/share/webapps/fusiondirectory/html/
-        done
+          cp -a ./html/themes/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/
+        fi
       fi
-    fi
     
     
     # Include section
