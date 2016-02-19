@@ -14,7 +14,7 @@ install="plex-email.install"
 backup=("etc/plex-email/config.conf")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz" 'plex-email.service' 'plex-email.timer' 'apache.example.conf')
 sha256sums=('bb155a522506af45be2a4440b76a7b699c2bedca9f1f4a2d4dbf36b7f6402bf3'
-            'ae65e511241c0c7b696b084a6bf614085ba618a3e76af012896ef969818de325'
+            'b3ccb77b457fa61671356f3018d565e4e40e9a7f999df255245b905afc6b38fa'
             '71709fa4a62b50f9a2353dacedc3b63f11d3305fd6d3346de9bac48358dde801'
             'a0622fce81068e495a29928f93f3ba1f0e214111c8dd6370ae51cf6fc158c78c')
 
