@@ -1,34 +1,21 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
+# AUR maintainer: Swyter <swyterzone+aur@gmail.com>
+# Original Linux porter: cfcohen <https://github.com/cfcohen>
 
-# Maintainer: Your Name <youremail@domain.com>
+# For more info and discussion about the Linux version go here:
+# https://forums.taleworlds.com/index.php/topic,313683.0.html
+
 pkgname=openbrf
 pkgdesc='Mount&Blade resource editor by Marco Tarini.'
 pkgver=0.0.80
 pkgrel=1
-epoch=
-pkgdesc=""
 arch=('i686' 'x86_64')
-url=""
+url="https://forums.taleworlds.com/index.php?topic=72279.0"
 license=('GPL')
-groups=()
 depends=('qt4' 'glew' 'glu')
 makedepends=('icoutils' 'subversion' 'git')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
 install=openbrf.install
-changelog=
 source=('git+https://github.com/cfcohen/openbrf.git' 'svn://svn.code.sf.net/p/vcg/code/trunk/vcglib')
-noextract=()
 md5sums=('SKIP' 'SKIP')
-validpgpkeys=()
 
 pkgver()
 {
