@@ -46,6 +46,7 @@ package() {
         install -Dm0644 runescape.$size.png \
                         "$pkgdir"/usr/share/icons/hicolor/${size}x${size}/apps/runescape.png
     done
+    sed -i 's/^Icon=.*/Icon=runescape/' "$pkgdir"/usr/share/applications/runescape-launcher.desktop
     install -Dm0755 wrapper.sh "$pkgdir"/usr/bin/runescape-launcher
     install -Dm0644 copyright "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
