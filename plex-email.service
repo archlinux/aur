@@ -3,7 +3,7 @@ Description=plex-email Service
 
 [Service]
 GuessMainPID=no
-Type=simple
+Type=oneshot
 
 PermissionsStartOnly=true
 ExecStart=/usr/bin/python2 /opt/plex-email/plexEmail.py -c /etc/plex-email/config.conf
