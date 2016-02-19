@@ -10,7 +10,7 @@ depends=("fusiondirectory>=$pkgver")
 install=fusiondirectory-plugin-newsletter.install
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
 "http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-${pkgver}.tar.gz")
-md5sums=('abaa6fd4c73d1b51c4bac16f9be2bd0e' 'eac9f2a077e8569e615f4fb542a33b10')
+md5sums=('eac9f2a077e8569e615f4fb542a33b10' 'abaa6fd4c73d1b51c4bac16f9be2bd0e')
 
 package() {
 cd ./fusiondirectory-plugins-${pkgver}
