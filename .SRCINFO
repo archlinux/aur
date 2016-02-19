@@ -1,6 +1,6 @@
 pkgbase = lib32-gimp
 	pkgdesc = GNU Image Manipulation Program (32-bit)
-	pkgver = 2.8.14
+	pkgver = 2.8.16
 	pkgrel = 1
 	url = http://www.gimp.org/
 	arch = x86_64
@@ -13,7 +13,6 @@ pkgbase = lib32-gimp
 	depends = lib32-pango
 	depends = gimp
 	source = https://www.archlinux.org/packages/extra/i686/gimp/download/#gimp-i686.pkg.tar.xz
-	md5sums = SKIP
+	md5sums = 557c83fd5968c73e29163a7720528011
 
 pkgname = lib32-gimp
-
