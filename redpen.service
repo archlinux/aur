@@ -1,0 +1,12 @@
+[Unit]
+Description=RedPen is a proofreading tool
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/redpen-server start
+ExecStop=/usr/bin/redpen-server stop
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
