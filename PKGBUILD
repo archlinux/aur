@@ -1,7 +1,7 @@
 # Maintainer: Stunts <f.pinamartins@gmail.com>
 _pkgname=landslide
 pkgname=${_pkgname}-git
-pkgver=20121108
+pkgver=0.4.0.r392.g90b7345
 pkgrel=1
 pkgdesc="Generate html5 slideshow from Markdown or reStructuredText sources"
 arch=(any)
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd ${srcdir}/${_pkgname}
-  git log -1 --format='%cd' --date=short | tr -d --'-'
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

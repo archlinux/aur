@@ -1,6 +1,6 @@
 pkgbase = landslide-git
 	pkgdesc = Generate html5 slideshow from Markdown or reStructuredText sources
-	pkgver = 20121108
+	pkgver = 0.4.0.r392.g90b7345
 	pkgrel = 1
 	url = http://github.com/adamzap/landslide
 	arch = any
