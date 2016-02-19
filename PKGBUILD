@@ -1,6 +1,8 @@
 # Maintainer: Gertjan Halkes <arch at ghalkes dot nl>
+# Contributor: William Di Luigi <williamdiluigi@gmail.com>
+
 pkgname=libt3highlight
-pkgver=0.3.5
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="A syntax highlighting library."
 arch=('x86_64' 'i686')
@@ -18,7 +20,7 @@ install=''
 changelog=
 source=("http://os.ghalkes.nl/dist/$pkgname-$pkgver.tar.bz2")
 noextract=()
-md5sums=('f94e06aeae9f66807a7d7aeccd593610')
+md5sums=('663778fd88d279491d22ffff3e7a198b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
