@@ -6,7 +6,7 @@
 set -u
 _pkgname='progress'
 pkgname="${_pkgname}-git"
-pkgver=0.9.r0.g9fe09eb
+pkgver=0.13.r0.g8a61b10
 pkgrel=1
 _srcdir="${_pkgname}"
 pkgdesc='Shows running coreutils basic commands and displays stats'
@@ -19,7 +19,7 @@ makedepends+=('git')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 replaces=('cv')
-#_verwatch=("${url}/releases" "${url#*github.com}/archive/v\(.*\)\.tar\.gz" 'l')
+_verwatch=("${url}/releases" "${url#*github.com}/archive/v\(.*\)\.tar\.gz" 'l')
 source=("${_srcdir}::${url//https:/git:}")
 sha256sums=('SKIP')
 
