@@ -93,44 +93,38 @@ cd pureftpd/
         mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/pureftpd/
         cp -a ./html/images/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/pureftpd/
         cp -a ./html/getvcard.php ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/pureftpd/
-        
+
       elif [ "pureftpd" = "argonaut" ] ; then
         mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/pureftpd/
-        cp -a ./html/images/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/pureftpd/
-        
-      elif [ "pureftpd" = "fax" ] ; then
-        mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/pureftpd/
-        cp -a ./html/images/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/pureftpd/
-        cp -a ./html/getfax.php ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/pureftpd/
-        
+        cp -a ./html/themes/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/
+        cp -a ./html/getFAIstatus.php ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/pureftpd/
+
       elif [ "pureftpd" = "fusioninventory" ] ; then
         mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/
         mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/pureftpd/
         cp -a ./html/collect.php ${pkgdir}/usr/share/webapps/fusiondirectory/html/
-        cp -a ./html/images/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/pureftpd/
+        cp -a ./html/themes/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/
         cp -a ./html/plugins/inventory.css ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/pureftpd/
 
-      elif [ "pureftpd" = "ejbca" ] ; then
+      elif [ "pureftpd" = "webservice" ] ; then
         mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/
-        cp -a ./html/themes/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/
+        cp -a ./html/jsonrpc.php ${pkgdir}/usr/share/webapps/fusiondirectory/html/
 
       else
-        # Directories
-        for cur_html in $(find ./html -mindepth 1 -maxdepth 1 -type d) ; do
+        # Images directory
+        if [[ -d ./html/images ]] ; then
           mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/pureftpd/
-          html_line="$(echo ${cur_html} | sed "s#./html/##")" 
-          cp -a ./html/${html_line} ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/pureftpd/
-        done
+          cp -a ./html/images/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/pureftpd/
+        fi
 
-        # Files
-        for cur_html in $(find ./html -mindepth 1 -maxdepth 1 -type f) ; do
+        # Themes directory
+        if [[ -d ./html/themes ]] ; then
           mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/
-          html_line="$(echo ${cur_html} | sed "s#./html/##")" 
-          cp -a ./html/${html_line} ${pkgdir}/usr/share/webapps/fusiondirectory/html/
-        done
+          cp -a ./html/themes/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/
+        fi
       fi
     fi
-    
+
     
     # Include section
     if [ -d ./include ] ; then    
