@@ -1,0 +1,7 @@
+27.08.2015
+
+MikroLock 1.0
+
+-GUI: added translation hints
+-GUI: drag and drop disabled if multiple files are dragged
+-CLI: ignores own miniLock ID also in recipient list if -x is set
