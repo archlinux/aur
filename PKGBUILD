@@ -1,6 +1,6 @@
 # Maintainer: K1412 <jonathan@opensides.be>
 pkgname=fusiondirectory
-pkgver=1.0.9.3
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="FusionDirectory is a combination of system-administrator and end-user web interface, designed to handle LDAP based setups."
 arch=("any")
@@ -20,7 +20,7 @@ source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondire
         "fixes-pear-lib.patch"
         "fixes-headers.patch")
 
-md5sums=('d8e520cf5b3fbfea3daa90d5b012d58e'
+md5sums=('abaa6fd4c73d1b51c4bac16f9be2bd0e'
          "5f92d3e4378d0ea7fda7fa9c8b81d29e"
          "d2e3d7dedf5c436c6d7484dc049f3f7f"
          "0a78917932d864cbaefa0139f90c6ab0"
