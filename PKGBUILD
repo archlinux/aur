@@ -5,7 +5,7 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=scribus1.5
-pkgver=20546
+pkgver=21022
 pkgrel=1
 pkgdesc="A desktop publishing program - Version 1.5 svn"
 arch=('i686' 'x86_64')
