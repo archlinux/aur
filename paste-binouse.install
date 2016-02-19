@@ -1,0 +1,25 @@
+#! /bin/bash
+
+post_install(){
+  groupadd paste-binouse &>/dev/null
+  useradd -g paste-binouse -d /srv/paste-binouse/ -s /bin/false paste-binouse &>/dev/null
+  test -d /srv/paste-binouse || mkdir /srv/paste-binouse
+  chown paste-binouse:paste-binouse /srv/paste-binouse
+  chmod 700 /srv/paste-binouse
+  post_upgrade
+}
+
+post_upgrade(){
+  su --shell=/bin/bash \
+    --command="/usr/bin/paste-binouse-init /srv/paste-binouse" \
+    paste-binouse
+}
+
+post_remove(){
+  if getent passwd paste-binouse >/dev/null 2>&1; then
+    userdel paste-binouse
+  fi
+  if getent group paste-binouse >/dev/null 2>&1; then
+    groupdel paste-binouse
+  fi
+}

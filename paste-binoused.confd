@@ -1,0 +1,1 @@
+PASTE_BINOUSE_ARGS="-log-level info -capacity 1073741824 -max-clients 8 -max-paste-size 524288 -ms-sleep 100 -root /srv/paste-binouse -port 11013"
