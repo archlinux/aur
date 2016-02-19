@@ -4,7 +4,7 @@
 
 pkgname=runescape-launcher
 pkgver=2.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="RuneScape MMORPG – NXT client core"
 arch=(x86_64)
 license=(custom)
@@ -19,7 +19,7 @@ depends=(
     desktop-file-utils
 )
 conflicts=(runescape-launcher-nxt)
-replaces=(runescape-launcher-nxt)
+provides=(runescape-launcher-nxt)
 install=$pkgname.install
 source=("wrapper.sh"
         "runescape.16.png"
