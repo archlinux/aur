@@ -3,7 +3,7 @@
 # Submitter: Fredrik Tegenfeldt <fredrik.tegenfeldt@unige.ch>
 
 pkgname=slurm-llnl
-pkgver=15.08.7
+pkgver=15.08.8
 pkgrel=1
 pkgdesc="Simple Linux Utility for Resource Management"
 arch=('i686' 'x86_64')
