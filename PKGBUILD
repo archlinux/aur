@@ -2,7 +2,7 @@
 # Maintainer: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=gitbackup
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Mirror git repositories"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('python' 'git')
 makedepends=('python-setuptools')
 source=(https://pypi.python.org/packages/source/g/gitbackup/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('7465b5080a4a12626ed60a43820533bf04895c13e166811be93eb41c0df954b7')
+sha256sums=('37e1572e094d55009517d3f2b049349728af0278930874d2f44bdf9209944232')
 
 package() {
   cd "${pkgname}-${pkgver}"
