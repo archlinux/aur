@@ -1,12 +1,12 @@
 pkgname=vulkan-i965-git
-pkgver=11.2.0_devel.78316.8c23392c
+pkgver=11.2.0_devel.78322.698ea54
 _realver=11.2
 pkgrel=1
 pkgdesc="i965 Anvil Vulkan Driver for Intel Ivy Bridge, Haswell, Broadwell and Skylake GPUs."
 arch=('i686' 'x86_64')
 url="http://mesa3d.org/"
 license=('LGPL')
-depends=('libdrm' 'dri2proto' 'glproto' 'libxxf86vm' 'libxdamage' 'expat>=2.0.1' 'libxmu' 'talloc' 'wayland' 'vulkan-loader')
+depends=('libdrm' 'dri2proto' 'glproto' 'libxxf86vm' 'libxdamage' 'expat>=2.0.1' 'libxmu' 'talloc' 'wayland' 'vulkan-icd-loader')
 makedepends=('pkgconfig' 'imake' 'xorg-server-devel' 'python2-mako' 'git')
 provides=("vulkan-i965=${_realver}")
 conflicts=('mesa-i965')
@@ -38,7 +38,11 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   install -d "${pkgdir}/etc/vulkan/icd.d"
-  ln -s /opt/mesa-vulkan/etc/vulkan/icd.d/intel_icd.json "${pkgdir}/etc/vulkan/icd.d/intel_icd.json"
+  install -d "${pkgdir}/usr/share/vulkan/icd.d"
+  ln -s /opt/mesa-vulkan/etc/vulkan/icd.d/intel_icd.json "${pkgdir}/usr/share/vulkan/icd.d/intel_icd.json"
+
+  #TODO: Delete this as soon as extra/vulkan-icd-loader picks up the file
+  ln -s "${pkgdir}/usr/share/vulkan/icd.d/intel_icd.json" "${pkgdir}/etc/vulkan/icd.d/intel_icd.json"
 }
 
 pkgver() {
