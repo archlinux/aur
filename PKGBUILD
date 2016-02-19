@@ -93,41 +93,35 @@ cd alias/
         mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/alias/
         cp -a ./html/images/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/alias/
         cp -a ./html/getvcard.php ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/alias/
-        
+
       elif [ "alias" = "argonaut" ] ; then
         mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/alias/
-        cp -a ./html/images/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/alias/
-        
-      elif [ "alias" = "fax" ] ; then
-        mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/alias/
-        cp -a ./html/images/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/alias/
-        cp -a ./html/getfax.php ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/alias/
-        
+        cp -a ./html/themes/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/
+        cp -a ./html/getFAIstatus.php ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/alias/
+
       elif [ "alias" = "fusioninventory" ] ; then
         mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/
         mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/alias/
         cp -a ./html/collect.php ${pkgdir}/usr/share/webapps/fusiondirectory/html/
-        cp -a ./html/images/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/alias/
+        cp -a ./html/themes/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/
         cp -a ./html/plugins/inventory.css ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/alias/
 
-      elif [ "alias" = "ejbca" ] ; then
+      elif [ "alias" = "webservice" ] ; then
         mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/
-        cp -a ./html/themes/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/
+        cp -a ./html/jsonrpc.php ${pkgdir}/usr/share/webapps/fusiondirectory/html/
 
       else
-        # Directories
-        for cur_html in $(find ./html -mindepth 1 -maxdepth 1 -type d) ; do
+        # Images directory
+        if [[ -d ./html/images ]] ; then
           mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/alias/
-          html_line="$(echo ${cur_html} | sed "s#./html/##")" 
-          cp -a ./html/${html_line} ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/alias/
-        done
+          cp -a ./html/images/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/alias/
+        fi
 
-        # Files
-        for cur_html in $(find ./html -mindepth 1 -maxdepth 1 -type f) ; do
+        # Themes directory
+        if [[ -d ./html/themes ]] ; then
           mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/
-          html_line="$(echo ${cur_html} | sed "s#./html/##")" 
-          cp -a ./html/${html_line} ${pkgdir}/usr/share/webapps/fusiondirectory/html/
-        done
+          cp -a ./html/themes/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/
+        fi
       fi
     fi
     
