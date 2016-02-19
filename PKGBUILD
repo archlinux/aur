@@ -2,7 +2,7 @@
 # This PKGBUILD is maintained at https://github.com/winged/aur-packages
 
 pkgname=finja
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Index and find your stuff"
 arch=('any')
