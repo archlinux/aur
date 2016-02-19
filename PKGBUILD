@@ -1,6 +1,6 @@
 # Maintainer: insanengineer <insanengineer@gmail.com>
 pkgname=touchpad-disabler
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="This application will disable a laptops touchpad when a usb is plugged in and display a notification to the user."
 arch=('i686' 'x86_64')
