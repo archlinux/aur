@@ -108,6 +108,6 @@ sudo systemctl daemon-reload
 sudo systemctl start ibcontroller@fdemo.service
 sudo systemctl status ibcontroller@fdemo.service
 sudo systemctl stop ibcontroller@fdemo.service
-rm -f *.gz && mkaurball
+rm -f *.gz && mksrcinfo
 burp -c daemons *.gz
 ````
