@@ -1,9 +1,10 @@
 # Upstream: RuneScape Linux <noreply@jagex.com>
-# Maintainer: Mantas Mikulėnas <grawity@gmail.com>
+# Maintainer: Ivan Puntiy <ivan.puntiy-at-gmail>
+# Contributor: Mantas Mikulėnas <grawity@gmail.com>
 
-pkgname=runescape-launcher-nxt
+pkgname=runescape-launcher
 pkgver=2.0.6
-pkgrel=4
+pkgrel=5
 pkgdesc="RuneScape MMORPG – NXT client core"
 arch=(x86_64)
 license=(custom)
@@ -17,6 +18,8 @@ depends=(
     sdl2
     webkitgtk2
 )
+conflicts=(runescape-launcher-nxt)
+replaces=(runescape-launcher-nxt)
 source=("wrapper.sh"
         "runescape.16.png"
         "runescape.24.png"
