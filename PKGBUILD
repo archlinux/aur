@@ -2,11 +2,11 @@
 
 pkgname=runescape-launcher
 pkgver=2.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="RuneScape Game Client"
 arch=(x86_64)
 url="http://www.runescape.com/"
-license=('GPL')
+license=('unknown')
 depends=(
   glibc libcurl-compat libvorbis sdl2 webkitgtk2
   libpng12 glew1.10
