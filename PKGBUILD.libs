@@ -14,6 +14,7 @@ license=("LGPL3" "GPL3")
 source=()
 sha256sums=()
 options=('!strip')
+depends=("fontconfig" "wayland" "libxkbcommon" "gstreamer")
 
 package() {
     mv ${startdir}/topkg/* ${pkgdir}
