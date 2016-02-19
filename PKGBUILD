@@ -1,7 +1,7 @@
 # Maintainer: Lars Hagström <lars@teg>
 pkgname=airtame-cli-git
-pkgver=r43.f12f205
-pkgrel=2
+pkgver=r45.7411cb2
+pkgrel=1
 pkgdesc="The AIRTAME Command Line interface"
 arch=('i686' 'x86_64')
 url="http://www.airtame.com"

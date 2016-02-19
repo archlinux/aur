@@ -1,7 +1,7 @@
 pkgbase = airtame-cli-git
 	pkgdesc = The AIRTAME Command Line interface
-	pkgver = r43.f12f205
-	pkgrel = 2
+	pkgver = r45.7411cb2
+	pkgrel = 1
 	url = http://www.airtame.com
 	arch = i686
 	arch = x86_64
