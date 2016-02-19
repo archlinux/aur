@@ -1,19 +1,19 @@
 # Maintainer: Ben Alex <ben.alex@acegi.com.au>
 
 pkgname=ib-controller
-pkgver=2.14
-pkgrel=2
+pkgver=3.0
+pkgrel=1
 pkgdesc='Manages headless Interactive Brokers IB Gateway instances'
 arch=('any')
 url="https://github.com/ib-controller/ib-controller"
 license=('GPL3')
 depends=(ib-tws xorg-server-xvfb xorg-server gtk2 libxrender libxtst gsettings-desktop-schemas ttf-dejavu)
 
-source=('https://github.com/ib-controller/ib-controller/releases/download/2.14.0/IBController-2.14.0.zip'
+source=('https://github.com/ib-controller/ib-controller/releases/download/3.0.0/IBController-3.0.0.zip'
 	'fdemo.ini'
 	'edemo.ini'
 	'ibcontroller@.service')
-md5sums=('3255803a6be20c24ffb70b67da732263'
+md5sums=('78ab6fc3fef93925f38fe9ed0ecb668e'
          '8e8a058f3cecc490db9b1a5368624b06'
          '77d02d9b5cbcd1ad3f37d116f1f217e1'
          '27f21adc1f91fc5676949d97cf777b35')
