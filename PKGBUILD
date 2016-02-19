@@ -3,7 +3,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=heirloom-cvs
 pkgver=2014.07.15
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="The Heirloom Toolchest of standard UNIX utilities, derived from original UNIX tools."
 url="http://heirloom.sourceforge.net/tools.html"
@@ -42,7 +42,7 @@ prepare() {
 
 build() {
   cd "$srcdir/build"
-  make
+  make -j1
 }
 
 package() {
