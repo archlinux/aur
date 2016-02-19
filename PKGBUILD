@@ -2,7 +2,7 @@
  
 pkgname=foomatic-db-foo2zjs
 arch=('i686' 'x86_64')
-_snapdate=20150904
+_snapdate=20160212
 pkgver=${_snapdate}
 pkgrel=1
 epoch=3
@@ -12,18 +12,16 @@ depends=('perl' 'libxml2')
 conflicts=('foomatic-db-ppd' 'foomatic-db-hpijs' 'foomatic-db' 'foo2zjs-testing')
 provides=('foomatic-db-hpijs' 'foomatic-db')
 makedepends=('cups' 'perl' 'libxml2' 'enscript' 'perl' 'net-snmp' 'bash' 'bzr')
-source=(foomatic-db-foo2zjs::bzr+http://bzr.linuxfoundation.org/openprinting/foomatic/foomatic-db/)
+source=(foomatic-db-foo2zjs-$_snapdate.tar.gz::http://www.openprinting.org/download/foomatic/foomatic-db-current.tar.gz)
 url="http://www.linuxprinting.org/foomatic.html"
-md5sums=('SKIP')
+sha256sums=('c6e5b9ede01e0d928242f8817da9d58ce08ace19073082f9fddb2d20266db242')
 
 package() {
-   cd ${srcdir}/${pkgname}
-   bzr revno
-   echo $pkgver
+   cd ${srcdir}/foomatic-db-$_snapdate
    ./make_configure
    ./configure --prefix=/usr
    make DESTDIR=${pkgdir} install
-   install -v -Dm644 ${srcdir}/${pkgname}/COPYING ${pkgdir}/usr/share/licenses/${pkgname}/COPYING
+   install -v -Dm644 ${srcdir}/foomatic-db-$_snapdate/COPYING ${pkgdir}/usr/share/licenses/${pkgname}/COPYING
 
    # foo2zjs provides different versions of the following files
 
