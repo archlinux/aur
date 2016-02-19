@@ -3,7 +3,7 @@
 
 pkgname=rust-nightly
 pkgver=1.8.0_2016.02.19
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc='A safe, concurrent, practical language'
 url='http://www.rust-lang.org/'
@@ -11,11 +11,11 @@ license=('MIT' 'Apache')
 depends=('shared-mime-info')
 makedepends=('libffi' 'perl' 'python2' 'curl' 'clang')
 source=("http://static.rust-lang.org/dist/rustc-nightly-src.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('63942701b8f1e1b063d12bad7e90c4d77c354a427a27aa6e97d30896b84cc7b2')
 install=rust.install
 options=('!makeflags' 'staticlibs' '!strip' '!emptydirs')
-conflicts=('rust')
-provides=('rust')
+conflicts=('rust' 'cargo')
+provides=('rust' 'cargo')
 
 build() {
   cd rustc-nightly
