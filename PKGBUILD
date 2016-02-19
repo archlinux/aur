@@ -42,7 +42,7 @@ package() {
   ln -s /opt/mesa-vulkan/etc/vulkan/icd.d/intel_icd.json "${pkgdir}/usr/share/vulkan/icd.d/intel_icd.json"
 
   #TODO: Delete this as soon as extra/vulkan-icd-loader picks up the file
-  ln -s "${pkgdir}/usr/share/vulkan/icd.d/intel_icd.json" "${pkgdir}/etc/vulkan/icd.d/intel_icd.json"
+  ln -s /usr/share/vulkan/icd.d/intel_icd.json "${pkgdir}/etc/vulkan/icd.d/intel_icd.json"
 }
 
 pkgver() {
