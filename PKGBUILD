@@ -9,7 +9,7 @@ _pyverother="${_pyverother//${_pyver} /}"
 _pyverother="${_pyverother// /}"
 _pybase='pcapy'
 pkgname="${_pyver}-${_pybase}"
-pkgver='0.10.9'
+pkgver='0.10.10'
 pkgrel='1'
 pkgdesc='interfaces with the libpcap packet capture library'
 arch=('any')
@@ -19,7 +19,7 @@ makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 _srcdir="${_pybase}-${pkgver}"
 _verwatch=("${url}/releases" "${url#*github.com}/archive/\(.*\)\.tar\.gz" 'l')
 source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('4c2294361327d0d95ba8212dac067682f7703f1a7543730c44853cb10b76dbb6')
+sha256sums=('ec07b47853b088f10814727ca316a62438e572b4bbf956a1adf7206e8dec7268')
 
 build() {
   set -u
