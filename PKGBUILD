@@ -1,7 +1,7 @@
 # Maintainer: Julius Elias <JuliusE89@gmail.com>
 pkgname=purple-gnome-keyring
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Purple (Pidgin / Finch) plugin for Gnome-Keyring integration"
 arch=(i686 x86_64)
 url="https://github.com/GRBurst/purple-gnome-keyring/"
