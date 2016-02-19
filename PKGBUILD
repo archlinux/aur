@@ -1,7 +1,7 @@
 # Maintainer: Hexchain Tong <i at hexchain dot org>
 pkgname=tpm2.0-tools-git
 _pkgname=tpm2.0-tools
-pkgver=r20.d01e041
+pkgver=r43.e8150e4
 pkgrel=1
 pkgdesc="TPM (Trusted Platform Module) 2.0 tools based on TPM2.0-TSS"
 arch=('i686' 'x86_64')
@@ -12,6 +12,7 @@ makedepends=('git')
 depends=('tpm2.0-tss-git')
 source=('git+https://github.com/01org/tpm2.0-tools.git')
 md5sums=('SKIP')
+LDFLAGS=${LDFLAGS/,--as-needed/}
 
 pkgver() {
     cd "$srcdir/$_pkgname"
@@ -23,14 +24,13 @@ build() {
     ./bootstrap
     mkdir -p "$srcdir/build"
     cd "$srcdir/build"
-    "$srcdir/$_pkgname/configure" --prefix=/usr
+    "../$_pkgname/configure" --prefix=/usr --sbindir=/usr/bin --disable-static
     make
 }
 
 package() {
     cd "$srcdir/$_pkgname"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-    cd "$srcdir/build/sapi-tools"
-    find . -regex "./tpm2_[^.]*" -exec install -Dm755 -t "$pkgdir/usr/bin/" {} \;
+    cd "$srcdir/build"
+    make DESTDIR="$pkgdir" install
 }
