@@ -3,22 +3,22 @@
 
 pkgname=python-dask
 _pkgname=dask
-pkgver=0.7.6
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 pkgdesc="Minimal task scheduling abstraction"
 arch=('any')
 url="https://dask.readthedocs.org/"
 license=('BSD')
-depends=('python' 'python-numpy' 'python-dill' 'python-pandas' 'python-toolz' 'python-psutil' 'python-pyzmq' 'python-bcolz' 'python-cloudpickle')
+depends=('python' 'python-numpy' 'python-dill' 'python-pandas' 'python-toolz' 'python-psutil' 'python-pyzmq' 'python-bcolz' 'python-cloudpickle' 'python-partd')
 makedepends=('python-setuptools')
-checkdepends=('python-nose' 'python-pygraphviz') # python-cachey
+checkdepends=('python-pytest') # 'python-pygraphviz' 'python-cachey'
 source=(https://pypi.python.org/packages/source/d/dask/dask-$pkgver.tar.gz)
-sha256sums=('ff27419e059715907afefe6cbcc1f8c748855c7a93be25be211dabcb689cee3b')
+sha256sums=('3cc8ac74589b13c959c9f72bfc4092aed549da08987c0ba087a64abb5d129796')
 
-#check() {
-#  cd "$srcdir/$_pkgname-$pkgver"
-#  nosetests3
-#}
+check() {
+  cd "$srcdir/$_pkgname-$pkgver"
+  py.test
+}
 
 
 package(){
