@@ -1,8 +1,8 @@
 # Maintainer: Alexander Kobel <a-kobel@a-kobel.de>
 
 pkgname=mpsolve-git
-pkgver=3.1.4.r335.ga468e63
-pkgrel=4
+pkgver=3.1.4
+pkgrel=5
 pkgdesc="Multiprecision rootfinder for complex roots of univariate polynomials"
 url="http://numpi.dm.unipi.it/software/mpsolve"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ pkgver () {
 build () {
   cd ${srcdir}/MPSolve
   ./autogen.sh
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --disable-debug-build
   make
 }
 
