@@ -2,7 +2,7 @@
 
 pkgname=mpsolve
 pkgver=3.1.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Multiprecision rootfinder for complex roots of univariate polynomials"
 url="http://numpi.dm.unipi.it/software/mpsolve"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ sha256sums=('c6ea3774bbcb50865f65426761e398861bc448697c563bcd46e551c81c4f70ad')
 
 build () {
   cd ${srcdir}/${pkgname}-${pkgver}
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --disable-debug-build
   make
 }
 
