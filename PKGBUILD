@@ -1,7 +1,7 @@
 # Maintainer: Azuki <support@azukiapp.com>
 _pkgname='azk'
 pkgname=${_pkgname}-git
-pkgver=0.16.3
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="azk is a lightweight open source development environment orchestration tool. Instantly & safely run any environment on your local machine."
 arch=('x86_64')
