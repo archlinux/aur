@@ -1,0 +1,19 @@
+diff --git a/src/lib_aux.c b/src/lib_aux.c
+index 05fa6b1..c618094 100644
+--- a/src/lib_aux.c
++++ b/src/lib_aux.c
+@@ -346,9 +346,11 @@ LUALIB_API lua_State *luaL_newstate(void)
+ #if LJ_64
+ LUA_API lua_State *lua_newstate(lua_Alloc f, void *ud)
+ {
+-  UNUSED(f); UNUSED(ud);
+-  fputs("Must use luaL_newstate() for 64 bit target\n", stderr);
+-  return NULL;
++  /* Re-enable custom 64-bit allocators */
++  lua_State *L;
++  L = lj_state_newstate(f, ud);
++  if (L) G(L)->panic = panic;
++  return L;
+ }
+ #endif
+ 

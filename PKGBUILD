@@ -1,16 +1,17 @@
 pkgname=go-cross-luajit
 pkgver=2.1.0.beta1
-pkgrel=1
+pkgrel=2
 pkgdesc='Just-in-time compiler and drop-in replacement for Lua 5.1'
 arch=('x86_64')
 url='http://luajit.org/'
 license=('MIT')
 depends=('gcc-libs' 'go-cross') 
 makedepends=('git')
-source=(git+http://luajit.org/git/luajit-2.0.git#branch=v2.1 luajit.patch)
+source=(git+http://luajit.org/git/luajit-2.0.git#branch=v2.1 luajit.patch luajit-64bit-custom-allocators.diff)
 options=(staticlibs !strip)
 sha256sums=('SKIP'
-            '522b28febf6ea955e66cf859c8f39b76447e8faa49689e9ceac9fca217ea02f2')
+            '522b28febf6ea955e66cf859c8f39b76447e8faa49689e9ceac9fca217ea02f2'
+	    '10831c38000d00d9b757a2b128a9316f640d7ee1a1b8213c8353df2d33860025')
 
 build() { 
 	unset LDFLAGS
@@ -19,6 +20,7 @@ build() {
 	cd luajit-2.0
 
 	patch -p1 -i $srcdir/luajit.patch 
+	patch -p1 -i $srcdir/luajit-64bit-custom-allocators.diff 
 
 	make amalg CC="gcc -m32" CROSS=i686-w64-mingw32- TARGET_SYS=Windows BUILDMODE=static
 	mkdir -p ../output/lib/windows-386
