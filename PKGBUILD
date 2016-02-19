@@ -1,8 +1,8 @@
 # Maintainer: Chad "crossroads1112" Sharp <crossroads1112@riseup.net>
 pkgname=lumina-desktop
-pkgver=0.8.7
+pkgver=0.8.8
 pkgrel=1
-my_pkgrel=Release
+my_pkgrel=Release-p1
 pkgfullname="${pkgname%-*}-${pkgver}-${my_pkgrel}"
 pkgdesc="A Lightweight QT5 Desktop for FreeBSD"
 arch=('x86_64' 'i686')
@@ -15,7 +15,7 @@ conflicts=("lumina-de-git" "lumina-desktop-git" "insight-fm")
 provides=("${pkgname%-*}" "insight-fm")
 install="${pkgname%-*}.install"
 source=("https://github.com/pcbsd/lumina/archive/v${pkgver}-${my_pkgrel}.tar.gz")
-md5sums=('b02cf115bc922b2685191fd42c455168')
+md5sums=('449332ea59ff55cc1bfcc1a2c5edf1e2')
 
 
 build(){
