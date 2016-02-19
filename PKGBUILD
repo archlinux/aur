@@ -1,7 +1,7 @@
 # Contributor: Antonio Vázquez Blanco <antoniovazquezblanco@gmail.com>
 
 pkgname=firebird-nspire
-pkgver=0.11
+pkgver=0.30
 pkgrel=1
 pkgdesc='Community emulator of TI-Nspire calculators.'
 arch=('i686' 'x86_64')
@@ -11,11 +11,11 @@ license=()
 depends=()
 makedepends=('qt5-declarative')
 source=("$pkgname-$pkgver.tar.gz"::'https://github.com/nspire-emus/firebird/archive/v'$pkgver'.tar.gz')
-md5sums=('b9751c44ce5eb7badee23be22df81362')
+md5sums=('b441ef38da179a7e48c407d47d5cf294')
 
 build() {
   # Compile...
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/firebird-${pkgver}"
   mkdir -p build
   cd build
   qmake ..
@@ -24,6 +24,6 @@ build() {
 
 package() {
   # Install...
-  cd "${srcdir}/${pkgname}/build"
+  cd "${srcdir}/firebird-${pkgver}/build"
   INSTALL_ROOT="${pkgdir}" make install
 }

@@ -1,13 +1,13 @@
 pkgbase = firebird-nspire
 	pkgdesc = Community emulator of TI-Nspire calculators.
-	pkgver = 0.11
+	pkgver = 0.30
 	pkgrel = 1
 	url = http://github.com/nspire-emus/firebird
 	arch = i686
 	arch = x86_64
 	conflicts = nspire_emu
 	makedepends = qt5-declarative
-	source = https://github.com/nspire-emus/firebird/archive/v0.11.tar.gz
-	md5sums = b9751c44ce5eb7badee23be22df81362
+	source = https://github.com/nspire-emus/firebird/archive/v0.30.tar.gz
+	md5sums = b441ef38da179a7e48c407d47d5cf294
 
 pkgname = firebird-nspire
