@@ -10,7 +10,6 @@ arch=(x86_64)
 license=(custom)
 url="https://www.runescape.com/"
 depends=(
-    gcc-libs
     glew1.10
     libcurl-compat
     libpng12
