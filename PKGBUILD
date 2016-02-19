@@ -26,7 +26,7 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-  export PIONEER_DATA_DIR=/usr/share/pionee
+  export PIONEER_DATA_DIR=/usr/share/pioneer
   make DESTDIR="$pkgdir" install
   install -Dm644 "$srcdir/pioneer.desktop" "$pkgdir/usr/share/applications/pioneer.desktop"
   for icon in application-icon/pngs/*
