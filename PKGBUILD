@@ -20,7 +20,6 @@ pkgver() {
 prepare() {
   cd "${srcdir}"/vkcube
 
-  export 
   autoreconf -f -i -v
   ./configure --prefix=/usr
 
