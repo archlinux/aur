@@ -1,6 +1,6 @@
 pkgname=fusiondirectory-plugin-dns-schema
-pkgver=1.0.9.3
-pkgver=1.0.9.3
+pkgver=1.0.10
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="LDAP schema for FusionDirectory dns plugin"
 arch=('any')
@@ -11,7 +11,7 @@ depends=("fusiondirectory-schema>=$pkgver")
 
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
 "http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-${pkgver}.tar.gz")
-md5sums=('157f7397e273594ca55a55f76c31af54' 'd8e520cf5b3fbfea3daa90d5b012d58e')
+md5sums=('eac9f2a077e8569e615f4fb542a33b10' 'abaa6fd4c73d1b51c4bac16f9be2bd0e')
 
 package() {
 cd ./fusiondirectory-plugins-${pkgver}
