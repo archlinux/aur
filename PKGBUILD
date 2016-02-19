@@ -2,7 +2,7 @@
 
 pkgname=pacman-hook-dkms
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Install/remove dkms modules upon kernel upgrades/removals'
 arch=('any')
 url='https://github.com/alucryd/pachooks'
@@ -23,7 +23,7 @@ package() {
 
   install -dm 755 "${pkgdir}"/usr/share/libalpm/hooks{,.bin}
   install -m 644 hooks/dkms* "${pkgdir}"/usr/share/libalpm/hooks/
-  install -m 644 scripts/dkms* "${pkgdir}"/usr/share/libalpm/hooks.bin/
+  install -m 755 scripts/dkms* "${pkgdir}"/usr/share/libalpm/hooks.bin/
 
   install -dm 755 "${pkgdir}"/usr/share/licenses/pacman-hook-dkms
   install -m 644 README.pod "${pkgdir}"/usr/share/licenses/pacman-hook-dkms/
