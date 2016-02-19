@@ -7,7 +7,7 @@
 #
 
 pkgname=platformio
-pkgver=2.8.3
+pkgver=2.8.4
 pkgrel=1
 pkgdesc="A cross-platform code builder and library manager"
 arch=('any')
@@ -23,12 +23,14 @@ depends=('python2'
 optdepends=('energia: For MSP430 based projects'
             'arduino: For Arduino based projects')
 conflicts=('platformio-git')
-source=("https://github.com/platformio/platformio/archive/v${pkgver}.tar.gz")
-sha256sums=('b37cccd70281b9c1d597fc3c05c7a3524ccf8a83668a1172e4790d3b025961db')
+source=("https://github.com/platformio/platformio/archive/v${pkgver}.tar.gz"
+	"setup.patch")
+sha256sums=('6ff577167c12334126bf5554422c344cd4e2d331c73c231607b6626e53d69e6a'
+	    '536217552b06ef562469268a8f0115a31bf052308f891a228adf94e314ce3730')
 
 prepare() {
 	cd "platformio-$pkgver"
-	patch setup.py ${startdir}/setup.patch
+	patch -Np0 -i ${srcdir}/setup.patch
 }
 
 package() {
