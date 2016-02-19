@@ -1,4 +1,5 @@
 # Upstream: RuneScape Linux <noreply@jagex.com>
+# Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 
 pkgname=runescape-launcher-nxt
 pkgver=2.0.6
