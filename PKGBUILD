@@ -7,7 +7,7 @@
 
 pkgname=multipath-tools
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Multipath tools for Linux (including kpartx)'
 arch=('i686' 'x86_64')
 url="http://christophe.varoqui.free.fr/"
@@ -33,6 +33,8 @@ prepare() {
   sed -i 's|${prefix}/lib/udev|${prefix}/usr/lib/udev|g' Makefile.inc
   sed -i 's|/sbin|/usr/bin|g' Makefile.inc multipathd/multipathd.service
   sed -i '/Before/d' multipathd/multipathd.service
+  sed -i 's/lsystemd-daemon/lsystemd/g' libmultipath/Makefile
+  sed -i 's/lsystemd-daemon/lsystemd/g' multipathd/Makefile
 }
 
 build() {
