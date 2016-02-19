@@ -4,6 +4,6 @@ post_install()
 }
 
 post_upgrade() {
-    rm /usr/lib/pidgin/purple-gnome-keyring.so
+    rm -f /usr/lib/pidgin/purple-gnome-keyring.so
 }
 
