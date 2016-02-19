@@ -2,7 +2,7 @@
 
 pkgname=runescape-launcher-nxt
 pkgver=2.0.6
-pkgrel=3
+pkgrel=4
 pkgdesc="RuneScape MMORPG – NXT client core"
 arch=(x86_64)
 license=(custom)
@@ -11,6 +11,7 @@ depends=(
     gcc-libs
     glew1.10
     libcurl-compat
+    libpng12
     libvorbis
     sdl2
     webkitgtk2
