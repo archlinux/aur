@@ -1,5 +1,5 @@
 pkgname=fusiondirectory-plugin-developers
-pkgver=1.0.11
+pkgver=1.0.12
 pkgrel=1
 pkgdesc="Management plugin for developers"
 arch=("any")
@@ -10,7 +10,7 @@ depends=("fusiondirectory>=$pkgver")
 install=fusiondirectory-plugin-developers.install
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
 "http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-${pkgver}.tar.gz")
-md5sums=('e3b8df83899c46e3107c56e090e2f17b' '5046dccfdf0713f0ddd72dc076f615ee')
+md5sums=('b77d8739d6fa058d74e4ddd142072549' 'e36740e481a0878778e9b5c2e6d2ffba')
 
 package() {
 cd ./fusiondirectory-plugins-${pkgver}
