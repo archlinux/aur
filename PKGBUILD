@@ -3,8 +3,8 @@
 # Contributor: Mantas Mikulėnas <grawity@gmail.com>
 
 pkgname=runescape-launcher
-pkgver=2.0.6
-pkgrel=5
+pkgver=2.0.7
+pkgrel=1
 pkgdesc="RuneScape MMORPG – NXT client core"
 arch=(x86_64)
 license=(custom)
@@ -33,7 +33,7 @@ sha256sums=('a69a588d96cba03b9fcf13a7230a1a8e4f0591db5c241574924a8596c7cd615b'
             '2631c9237f40d9612e4da53c9f066ca48213069d04f643f3b51897d8e369e49e'
             '592ab440e04ed28a4684b94dea1262d7353291512e62180e80585ebaf5981bf3'
             '35ace263a49a53128290d14a8ad7038533ca8a5da83efa110c5998065b35d738')
-sha256sums_x86_64=('b59ef54de67abd362b6f32ae3a32a170470c51d2912780b6ae76fb0982dbacf0')
+sha256sums_x86_64=('63c3a628c1283ddc8671f10663b6f5ba8ed55c3d5cf64f67ed381e69b35aba1f')
 
 prepare() {
     bsdtar xf control.tar.gz
