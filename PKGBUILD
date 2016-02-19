@@ -4,8 +4,8 @@
 pkgbase=gvfs-nosystemd
 _pkgbase=gvfs
 pkgname=$pkgbase
-pkgver=1.26.2
-pkgrel=4
+pkgver=1.26.3
+pkgrel=1
 arch=(i686 x86_64)
 license=(LGPL)
 makedepends=(avahi dbus fuse intltool libarchive libcdio-paranoia libgphoto2 libimobiledevice
@@ -16,7 +16,7 @@ groups=(gnome)
 conflicts=($_pkgbase)
 provides=($_pkgbase=$pkgver)
 source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgbase/${pkgver:0:4}/$_pkgbase-$pkgver.tar.xz)
-sha256sums=('695b6e0f3de5ac2cb4d188917edef3f13299328150a2413f1a7131d9b2d48d18')
+sha256sums=('a70f75fa60d66f3f478c0c8aec43d0e43455a8cc75a4dfa8029e51c816401b4a')
 
 prepare() {
   cd "$_pkgbase-$pkgver"
