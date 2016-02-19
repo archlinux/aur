@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=0.4.0
+Name=Mist Browser
+Comment=Ethereum wallet for Ether accounts, wallets and smart contracts, including Mist browser
+Path=/usr/share/mist
+Exec=/usr/bin/mist
+Icon=/usr/share/mist/icon.png
+Terminal=false
+Categories=Internet;Other;
