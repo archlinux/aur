@@ -12,9 +12,7 @@ depends=(
     glew1.10
     libcurl-compat
     libvorbis
-    sd2_mixer
     sdl2
-    sdl2_gfx
     webkitgtk2
 )
 source_x86_64=("http://content.runescape.com/a=946/downloads/ubuntu/pool/non-free/r/runescape-launcher/runescape-launcher_${pkgver}_amd64.deb")
