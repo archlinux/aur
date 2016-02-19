@@ -1,7 +1,7 @@
 # Maintainer: Mathias Bragagia <youremail@domain.com>
 pkgname=kana-p
 pkgver=0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Lite desktop manager - use lightdm, awesome and compton - BETA"
 arch=('any')
 url="https://github.com/bragagia/kana-p"
@@ -103,7 +103,7 @@ depends=(
 	'ntfs-3g'
 	'gptfdisk'
 	'dosfstools'
-	'xsettingsd'
+	'xsettingsd-git'
 
 	'ntp'
 	'networkmanager-dispatcher-ntpd'
