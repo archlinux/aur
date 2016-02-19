@@ -1,12 +1,12 @@
 _pkgname=libav
 pkgname=$_pkgname-git-no-libs
-pkgver=v12_dev0.r2203.g69a6859
+pkgver=v12_dev0.r2370.gab9068c
 pkgrel=1
 pkgdesc='Open source audio and video processing tools'
 arch=('i686' 'x86_64')
 url='https://libav.org/'
 license=('LGPL')
-depends=('zlib' 'bzip2')
+depends=('zlib' 'bzip2' 'openssl')
 makedepends=('git' 'yasm')
 source=("$_pkgname"::'git://git.libav.org/libav.git')
 sha256sums=('SKIP')
@@ -22,7 +22,10 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
 
-  ./configure --prefix=/usr
+  ./configure \
+    --prefix=/usr \
+    --enable-openssl \
+    --enable-nonfree
 
   make
 }
