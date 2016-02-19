@@ -2,7 +2,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=batman-adv
-pkgver=2015.2
+pkgver=2016.0
 pkgrel=1
 pkgdesc='batman kernel module'
 arch=('i686' 'x86_64')
