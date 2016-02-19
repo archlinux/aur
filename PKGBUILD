@@ -1,6 +1,6 @@
 # Maintainer: Hexchain Tong <i at hexchain dot org>
 pkgname=tpm2.0-tss-git
-pkgver=r186.a7a73f8
+pkgver=r204.60ec042
 _pkgname=TPM2.0-TSS
 pkgrel=1
 pkgdesc="TPM (Trusted Platform Module) 2.0 Software Stack (TSS)"
@@ -20,7 +20,7 @@ pkgver() {
 build() {
     cd "$srcdir/$_pkgname"
     ./bootstrap
-    ./configure --prefix=/usr --sbindir=/usr/bin
+    ./configure --prefix=/usr --sbindir=/usr/bin --disable-static
     make
 }
 
