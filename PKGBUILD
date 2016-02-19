@@ -7,8 +7,7 @@ arch=("any")
 url="http://fusiondirectory.org/"
 license=("LGPL")
 
-depends=("fusiondirectory-schema>=$pkgver" "fusiondirectory-plugin-systems>=$pkgver" 
-"fusiondirectory-plugin-mail-schema>=$pkgver")
+depends=("fusiondirectory-schema>=$pkgver" "fusiondirectory-plugin-systems>=$pkgver")
 
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
 "http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-${pkgver}.tar.gz")
