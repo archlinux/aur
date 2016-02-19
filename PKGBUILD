@@ -4,7 +4,7 @@
 
 pkgname=('pidgin-hg' 'libpurple-hg' 'finch-hg')
 _hgname=pidgin
-pkgver=37398.a9aa2aa0b1b6
+pkgver=37576.3cf4744a9521
 pkgrel=1
 pkgdesc="Multi-protocol instant messaging client. Latest mercurial build."
 arch=('i686' 'x86_64')
@@ -13,10 +13,10 @@ license=('GPL')
 makedepends=('mercurial' 'python2' 'avahi' 'tk' 'ca-certificates' 'intltool'
              'tk' 'ca-certificates' 'intltool' 'networkmanager'
              'startup-notification' 'gtkspell' 'libxss' 'libsm'
-             'hicolor-icon-theme' 'dbus-glib' 'webkitgtk3' 'json-glib'
+             'hicolor-icon-theme' 'dbus-glib' 'webkitgtk' 'json-glib'
              'farstream' 'libsasl' 'libidn' 'dbus-glib' 'nss'
              'libgnome-keyring' 'gplugin')
-makedepends+=('libx11' 'python2')
+makedepends+=('libx11' 'python')
 options=('!libtool')
 source=('pidgin::hg+https://hg.pidgin.im/pidgin/main')
 sha256sums=('SKIP')
@@ -40,7 +40,7 @@ prepare() {
     --disable-doxygen \
     --enable-nm \
     --disable-kwallet \
-    --with-python=/usr/bin/python2 \
+    --with-python=/usr/bin/python \
     --with-system-ssl-certs=/etc/ssl/certs
 }
 
@@ -80,7 +80,7 @@ package_libpurple-hg() {
            'libgnome-keyring')
   optdepends=('avahi: Bonjour protocol support'
               'ca-certificates: SSL CA certificates'
-              'python2-dbus: for purple-remote and purple-url-handler'
+              'python-dbus: for purple-remote and purple-url-handler'
               'tk: Tcl/Tk scripting support')
   provides=('libpurple')
   conflicts=('libpurple')
