@@ -2,7 +2,7 @@
 pkgname=flatcam-git
 _pkgname=FlatCAM
 pkgver=r309.4e0fa74
-pkgrel=2
+pkgrel=1
 pkgdesc="Generates CNC gcode from 2D PCB files (Gerber/Excellon/SVG)"
 arch=('any')
 url="flatcam.org"
