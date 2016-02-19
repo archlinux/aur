@@ -1,5 +1,7 @@
 # Contributer: Donald Carr <sirspudd@gmail.com>
 
+# set -x
+
 # Documentation
 
 # Set up the pi for Qt compilation.
@@ -23,7 +25,7 @@ _local_qt5_repo="/opt/dev/src/qtproject/qt5"
 _wayland_compositor=true
 
 pkgver=5.6.0
-pkgrel=5
+pkgrel=6
 
 # PKGBUILD
 _piver=2
@@ -46,7 +48,7 @@ _libspkgname="${pkgname}-target-libs"
 _mkspec="linux-rpi${_piver}-g++"
 _pkgver=${pkgver}-beta
 _baseprefix=/opt
-_installprefix=${_baseprefix}/${pkgname}-${_pkgver}
+_installprefix=${_baseprefix}/${pkgname}
 _source_package_name=qt-everywhere-opensource-src-${_pkgver}
 pkgdesc="Qt SDK for the Raspberry Pi${_piver}"
 arch=("x86_64")
@@ -187,16 +189,11 @@ fi
 
 create_install_script()
 {
-  local _fully_qualified_install_script_template="${startdir}/_${install}"
+  local _install_script_location="${startdir}/${install}"
 
-  rm ${_fully_qualified_install_script}
-
-  # populate vars
-  echo "_piver=\"${_piver}\"" >> ${_fully_qualified_install_script}
-  echo "_qmakepath=\"${_installprefix}/bin/qmake\"" >> ${_fully_qualified_install_script}
-  echo "_sysroot=\"${_sysroot}\"" >> ${_fully_qualified_install_script}
-
-  cat ${_fully_qualified_install_script_template} >> ${_fully_qualified_install_script}
+  sed -i "s/libspiver/${_piver}/" ${_install_script_location} || exit 1
+  sed -i "s,libsqmakepath,${_installprefix}/bin/qmake," ${_install_script_location} || exit 1
+  sed -i "s,libssysroot,${_sysroot}," ${_install_script_location} || exit 1
 }
 
 package() {
@@ -230,10 +227,10 @@ fi
   cp ${startdir}/PKGBUILD.libs ${_libspkgbuild}
   mv "${pkgdir}/${_sysroot}/${_baseprefix}" ${_libspkgdir}
   # set correct libs version
-  sed -i "s/libspackagename/${_libspkgname}/" ${_libspkgbuild} || exit 1
-  sed -i "s/libspiversion/${_piver}/" ${_libspkgbuild} || exit 1
-
-  sed -i "s/6.6.6/${pkgver}/" ${_libspkgbuild} || exit 1
+  sed -i "s/libspkgrel/${pkgrel}/" ${_libspkgbuild} || exit 1
+  sed -i "s/libspkgver/${pkgver}/" ${_libspkgbuild} || exit 1
+  sed -i "s/libspkgname/${_libspkgname}/" ${_libspkgbuild} || exit 1
+  sed -i "s/libspiver/${_piver}/" ${_libspkgbuild} || exit 1
 
   mkdir -p ${_pkgprofiled}
   cp ${startdir}/qpi.sh ${_pkgprofiled} || exit 1
@@ -244,5 +241,5 @@ fi
 
   echo "the libs package for the Raspberry Pi${_piver} is in the ${_packaginguser} home directory awaiting deployment"
 
-  mv ${_libsdir}/${_libspkgname}-${pkgver}-1-any.pkg.tar.xz ${HOME}
+  mv ${_libsdir}/${_libspkgname}-${pkgver}-${pkgrel}-any.pkg.tar.xz ${startdir}
 }
