@@ -1,9 +1,10 @@
 # Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: Silvio Fricke <silvio.fricke@gmail.com>
 # Contributor: 2ion <dev@2ion.de>
 
 set -u
 pkgname='miller'
-pkgver='2.3.1'
+pkgver='3.4.0'
 pkgrel='1'
 pkgdesc="Miller is like sed, awk, cut, join, and sort for name-indexed data such as CSV"
 arch=('x86_64' 'i686')
@@ -14,7 +15,7 @@ makedepends=('make' 'gcc' 'flex' 'ctags' 'valgrind' 'asciidoc' 'autoconf')
 _verwatch=("${url}/releases" "${url#*github.com}/archive/v\(.*\)\.tar\.gz" 'l')
 _srcdir="${pkgname}-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('f3f2f3278d47599cc8c68c46d2d859138cf017a4a502471bf2ec83c0d2c70d3b')
+sha256sums=('ba33b1def394cf3f157200498b0bc2aed7decdef98c359d87f1bd8c57f39ea85')
 
 prepare() {
   set -u
