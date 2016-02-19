@@ -1,6 +1,6 @@
 pkgbase = spotify-beta
 	pkgdesc = A proprietary peer-to-peer music streaming service
-	pkgver = 1.0.19.106
+	pkgver = 1.0.23.93
 	pkgrel = 2
 	url = http://www.spotify.com
 	changelog = spotify.changelog
@@ -27,10 +27,10 @@ pkgbase = spotify-beta
 	source = spotify.desktop
 	sha256sums = af54f3b90cac46fa100b3f919a9225d10d847617d24aa9af3d832e7689f482c3
 	sha256sums = 44ae606a73613540922b06af6adc5c5a5e69c6151788902d26ffb08fe17187c2
-	source_x86_64 = http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.19.106.gb8a7150f_amd64.deb
-	sha256sums_x86_64 = be6b99329bb2fccdc9d77bc949dd463576fdb40db7f56195b4284bd348c470be
-	source_i686 = http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.19.106.gb8a7150f_i386.deb
-	sha256sums_i686 = 128b5d04dda8a052802fb9e664a996250569696fac359e94ea35043472f5dbcb
+	source_x86_64 = http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.23.93.gd6cfae15-30_amd64.deb
+	sha256sums_x86_64 = 99961ccd0b3d01ec28a96e158b4375fed6bb449913d34f6e03429b2d43f9db58
+	source_i686 = http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.23.93.gd6cfae15-5_i386.deb
+	sha256sums_i686 = e4e8ab10a2a4875632283870155068f7d140b23b5bbb9927f32b53b4002aa6fe
 
 pkgname = spotify-beta
 
