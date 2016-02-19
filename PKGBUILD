@@ -89,45 +89,39 @@ cd kolab2/
     
     # HTML section
     if [ -d ./html ] ; then
-      if [ "kolab" = "addressbook" ] ; then
-        mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/kolab/
-        cp -a ./html/images/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/kolab/
-        cp -a ./html/getvcard.php ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/kolab/
-        
-      elif [ "kolab" = "argonaut" ] ; then
-        mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/kolab/
-        cp -a ./html/images/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/kolab/
-        
-      elif [ "kolab" = "fax" ] ; then
-        mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/kolab/
-        cp -a ./html/images/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/kolab/
-        cp -a ./html/getfax.php ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/kolab/
-        
-      elif [ "kolab" = "fusioninventory" ] ; then
-        mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/
-        mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/kolab/
-        cp -a ./html/collect.php ${pkgdir}/usr/share/webapps/fusiondirectory/html/
-        cp -a ./html/images/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/kolab/
-        cp -a ./html/plugins/inventory.css ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/kolab/
+      if [ "kolab2" = "addressbook" ] ; then
+        mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/kolab2/
+        cp -a ./html/images/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/kolab2/
+        cp -a ./html/getvcard.php ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/kolab2/
 
-      elif [ "kolab" = "ejbca" ] ; then
-        mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/
+      elif [ "kolab2" = "argonaut" ] ; then
+        mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/kolab2/
         cp -a ./html/themes/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/
+        cp -a ./html/getFAIstatus.php ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/kolab2/
+
+      elif [ "kolab2" = "fusioninventory" ] ; then
+        mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/
+        mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/kolab2/
+        cp -a ./html/collect.php ${pkgdir}/usr/share/webapps/fusiondirectory/html/
+        cp -a ./html/themes/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/
+        cp -a ./html/plugins/inventory.css ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/kolab2/
+
+      elif [ "kolab2" = "webservice" ] ; then
+        mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/
+        cp -a ./html/jsonrpc.php ${pkgdir}/usr/share/webapps/fusiondirectory/html/
 
       else
-        # Directories
-        for cur_html in $(find ./html -mindepth 1 -maxdepth 1 -type d) ; do
+        # Images directory
+        if [[ -d ./html/images ]] ; then
           mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/kolab2/
-          html_line="$(echo ${cur_html} | sed "s#./html/##")" 
-          cp -a ./html/${html_line} ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/kolab2/
-        done
+          cp -a ./html/images/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/plugins/kolab2/
+        fi
 
-        # Files
-        for cur_html in $(find ./html -mindepth 1 -maxdepth 1 -type f) ; do
+        # Themes directory
+        if [[ -d ./html/themes ]] ; then
           mkdir -p ${pkgdir}/usr/share/webapps/fusiondirectory/html/
-          html_line="$(echo ${cur_html} | sed "s#./html/##")" 
-          cp -a ./html/${html_line} ${pkgdir}/usr/share/webapps/fusiondirectory/html/
-        done
+          cp -a ./html/themes/ ${pkgdir}/usr/share/webapps/fusiondirectory/html/
+        fi
       fi
     fi
     
