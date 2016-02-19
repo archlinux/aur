@@ -1,8 +1,8 @@
 pkgbase = popcorntime-git
-	pkgdesc = Stream movies from torrents. Skip the downloads. Launch, click, watch.
-	pkgver = r5335.da86004
+	pkgdesc = Stream movies and TV shows from torrents
+	pkgver = r5792.8c5a48a
 	pkgrel = 1
-	url = http://popcorntime.io
+	url = https://popcorntime.sh
 	install = popcorntime.install
 	arch = i686
 	arch = x86_64
@@ -17,16 +17,13 @@ pkgbase = popcorntime-git
 	depends = nss
 	depends = ttf-font
 	depends = libxtst
-	optdepends = net-tools: vpn.ht client
 	provides = popcorntime
 	conflicts = popcorntime
 	options = !strip
-	source = popcorntime.install
-	source = git+https://git.popcorntime.io/popcorntime/desktop.git
+	source = git+https://github.com/popcorn-official/popcorn-desktop.git
 	source = popcorntime.desktop
-	md5sums = efe872f41ed74a706308b4015e4fd82f
-	md5sums = SKIP
-	md5sums = 9608f35f4cc083a0c36b0f4ef275ab10
+	sha256sums = SKIP
+	sha256sums = 7e22d234a2e7dd1e632e094154c44b31be7f93962df93dd865f3775b8e644c05
 
 pkgname = popcorntime-git
 
