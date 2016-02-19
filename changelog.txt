@@ -1,26 +1,41 @@
-Version 2.2.16 - 19 Dec 2015
-- Update for changes to storiesonline.net site.
-- Set is_adult cookie for FimF on 'Get URLs from Page' if set in personal.ini.
-- Fix for hpfandom.net change so one-shot stories will work correctly.
-- Improvements to basic chapter_title_strip_pattern, add warning comments for same.
-- Update to BeautifulSoup 4.4.1 everywhere, remove included BS3. Effected parts:
-  ---- MOBI generation
-  ---- replace_br_with_p feature
-  ---- base_efiction adapters
-  ---- Most site adapters.
-- Strip <script> tags from HTML. Added for FimF, but applies to all sites.
-- Remove 'like' from XenForoForum chapter links in index post.
-- Make metadata lists unique even when keep_in_order_.
-- Change entities to actual utf8 chars in adapter_fanfictionjunkiesde.py.
-- Add keep_html_attrs feature - deprecates keep_style_attr and keep_title_attr.
-- Add replace_tags_with_spans feature.
-- Fix for yet another storiesonline.net site change. Thanks davidfor for
-  figuring it out for me.
-- New site mcstories.com. Thanks user39189!. Fair warning: mcstories.com is
-  titled "The Erotic Mind-Control Story Archive".
-- Fix for literotica.com. Thanks again to davidfor for figuring out the problem.
-- New centeredcat_to_characters pairingcat_to_characters_ships and
-  romancecat_to_characters_ships features for tthfanfic.org. These default to
-  'true', set them to false in your personal.ini if you want the old behavior.
-  See: http://www.mobileread.com/forums/showthread.php?p=3224924&postcount=829
-- Remove HTML comments when using replace_br_with_p.
+Version 2.2.18 - 18 Feb 2016
+- Fix for quotev.com change to story image.
+- Fix for tthfanfic.org author story list change. (Manifests as 'Adult
+  required'.)
+- Add byline site specific metadata for AO3.
+- Apply *_format ini option to date/time types. For calibre_* columns passed
+  in.
+- Change deprecated has_key() to has_attr() on BS objects.
+- Adding Word Count post-processing option, like Smarten Punct.
+- Fix for html5lib handling noscript oddly, noticed with fictionalley.org.
+- Fix fictionally.org description so calibre doesn't <code> it.
+- Add code for lazyload images in base_xenforoforum.
+- Correct outdated ini comment re *_filename.
+- Fix for replace_br_with_p(htmlheuristics) when author includes <>, thanks
+  Feynor!
+- Fix for portkey.org--Don't use cache on first hit in case added adult
+  cookie.
+- Add (partial) translations for Estonian and Norwegian Bokmål
+- Add automatic adding of unrecognized metadata in base_efiction. For
+  tgstorytime.com.
+- Fix 'In Progress' to 'In-Progress' in fanfiktion.de & ficbook.net like all
+  the others.
+- Fix for Calibre generated covers.
+- Adding Incomplete status state to adapter_storiesonlinenet
+- Add new AccessDenied exception for one line output in CLI.
+- Allow Pairing w/o Centered category -> chars in TtH.
+- Update translations.
+
+Version 2.2.17 - 18 Jan 2016
+- Fixes for problems with urlparse.parse_qs in adapters and new unique_list
+  with authorId. Also BS4 fixes to adapter_spikeluvercom.py
+- Adding additional metadata collection, potionsandsnitches &
+  walkingtheplankorg
+- Allow Anonymous author for quotev.com.
+- Skip (instead of error) if asked to UnNew non-FFF epubs.
+- Update translations.
+- Update base_xenforoforum for SV threadmark change.
+- Fix so ships_CHARS and sort_ships_splits work together.
+- Remove defunct sg1-heliopolis.com site after down for +1 month.
+- Update quotev.com adapter.
+- Fix for TtH Story-42 matching Story-421 while searching auth pages.
