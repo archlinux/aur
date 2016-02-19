@@ -18,7 +18,7 @@
 _sysroot=/mnt/pi
 
 # Options
-_skip_web_engine=true
+_skip_web_engine=false
 _static_build=false
 _build_from_head=false
 _local_qt5_repo="/opt/dev/src/qtproject/qt5"
