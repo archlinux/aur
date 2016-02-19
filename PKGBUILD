@@ -19,7 +19,7 @@ source=(
     "LICENSE::https://www.gnu.org/licenses/agpl.txt"
 )
 sha256sums=(
-    '3795d64d6e3905f33aff28b659010b03f78f4d25188871966ddcc68b3d871548'
+    '7380d773c85b970fb0bce6a06f7d88a92b3a2191efb3026ec53d379535dc32f1'
     '57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6'
 )
 
