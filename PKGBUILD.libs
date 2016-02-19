@@ -14,7 +14,8 @@ license=("LGPL3" "GPL3")
 source=()
 sha256sums=()
 options=('!strip')
-depends=("fontconfig" "wayland" "libxkbcommon" "gstreamer")
+# qtwebengine flac snappy libsrtp jsoncpp libvpx speex opus libxml2 libwebp icu
+depends=("fontconfig" "wayland" "libxkbcommon" "gstreamer" "flac" "snappy" "libsrtp" "jsoncpp" "libvpx" "speex" "opus" "libxml2" "libwebp" "icu")
 
 package() {
     mv ${startdir}/topkg/* ${pkgdir}
