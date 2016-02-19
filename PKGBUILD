@@ -7,7 +7,7 @@ pkgrel=4
 pkgdesc="RuneScape MMORPG – NXT client core"
 arch=(x86_64)
 license=(custom)
-uri="https://www.runescape.com/"
+url="https://www.runescape.com/"
 depends=(
     gcc-libs
     glew1.10
