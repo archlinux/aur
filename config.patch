@@ -1,0 +1,11 @@
+--- prog/bin/pvftomp3.orig	2003-02-03 15:12:52.000000000 -0800
++++ prog/bin/pvftomp3	2016-02-18 18:24:05.188636754 -0800
+@@ -28,7 +28,7 @@
+ # below since it depends on the application that you choose. "lame" is a very nice 
+ # free encoder that can be installed easily. At the time of writing, you could dowmnload
+ # it from www.mp3dev.org/mp3.
+-my $encoder = "/usr/local/bin/lame";
++my $encoder = "/usr/bin/lame";
+ my $encoderOptions = "  --silent --preset phon+ -h ";
+ 
+ my $pvftooldir = $VOCP::Vars::Defaults{'pvftooldir'} || "/usr/local/bin"; # Use full path to 'pvftoXXX' executables
