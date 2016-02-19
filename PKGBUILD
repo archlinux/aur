@@ -3,7 +3,7 @@
 pkgname=armitage
 pkgver=08.13.15
 pkgrel=2
-pkgdesc="A graphical cyber attack management tool for Metasploit"
+pkgdesc="Metasploit GUI Front ened written in java"
 url="http://www.fastandeasyhacking.com/"
 arch=('any')
 license=('GPL')
