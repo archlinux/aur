@@ -2,14 +2,14 @@
 _dbtype=mysql
 _pkgname=zabbix
 pkgname=${_pkgname}-server-${_dbtype}
-pkgver=2.4.7
-pkgrel=2
+pkgver=3.0.0
+pkgrel=1
 pkgdesc="Zabbix is an enterprise-class open source distributed monitoring solution."
 arch=("i686"
       "x86_64")
 url="http://www.zabbix.com/"
 license=("GPLv2")
-depends=("php"
+depends=("php>=5.4.0"
          "php-gd"
          "fping"
          "traceroute"
@@ -32,9 +32,9 @@ install="${_pkgname}-server.install"
 options=("emptydirs")
 source=("http://downloads.sourceforge.net/sourceforge/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "${_pkgname}-server.install")
-md5sums=("9f8aeb11d8415585f41c3f2f22566b78"
+md5sums=("fd4032444711ebb45e92b4cd54a354c6"
          "ff761cbdafa70b6c4b26a39b8115ac64")
-sha1sums=("9090472e5f78fd828bf89d5558ceedd60db74443"
+sha1sums=("196bf600d0e19ddaa180382f2b8bc94b84100126"
           "173b60c310ae9453a0e75429b0917ad8bbf31e6f")
 
 prepare() {
@@ -109,6 +109,7 @@ cat << EOL > "${srcdir}/${_pkgname}_traps.logrotate"
     compress
     missingok
     notifempty
+    su root root
     create 0644 zabbix zabbix
     sharedscripts
 }
@@ -141,6 +142,7 @@ build() {
     --with-${_dbtype} \
     --with-net-snmp \
     --with-openipmi \
+    --with-openssl \
     --with-libcurl \
     --with-libxml2 \
     --with-jabber \
