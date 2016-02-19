@@ -2,18 +2,19 @@
 
 pkgname=("python-keras-doc")
 _pkgname="keras"
-pkgver="0.3.0"
+pkgver="0.3.2"
 pkgrel="1"
 pkgdesc="Documentation and examples for python-keras"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/fchollet/keras"
 license=('MIT')
 makedepends=('mkdocs')
 source=("${_pkgname}.tar.gz::https://github.com/fchollet/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('35a57b3e782e954c8166c8e30704d540862c4bde2c1486b5616b5215dd82bd7b')
+sha256sums=('cd2cd768b039703eb9e4a9fac154588a4f36daad53f4c359c241333ee36af7cf')
 
 build() {
   cd "$srcdir/${_pkgname}-${pkgver}/docs"
+  python autogen.py
   mkdocs build
 }
 
