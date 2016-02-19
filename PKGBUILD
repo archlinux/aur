@@ -34,7 +34,7 @@ EOF
   install -Dm644 "${srcdir}/armitage.desktop" "${pkgdir}/usr/share/applications/armigate.desktop"
   install -Dm644 "${srcdir}/metasploit.png" "${pkgdir}/usr/share/icons/metasploit.png"
   install -Dm755 "${srcdir}/metasploit.sh" "${pkgdir}/etc/profile.d/metasploit.sh"
-  install -D644 "${srcdir}/database.yml" "${pkgdir}/usr/share/metasploit/database.yml.sample"
+  install -Dm644 "${srcdir}/database.yml" "${pkgdir}/usr/share/metasploit/database.yml.sample"
 }
 
 # vim:set ts=2 sw=2 et:
