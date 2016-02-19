@@ -3,7 +3,7 @@
 
 _npmname=brunch
 pkgname=nodejs-$_npmname
-pkgver=2.3.0
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="A lightweight approach to building HTML5 applications with emphasis on elegance and simplicity."
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz
         'LICENSE')
 noextract=($_npmname-$pkgver.tgz)
-sha1sums=('9907370f2a507f15a2414ac4ffaf5b197d6eb922'
+sha1sums=('2b9dafe2fd2700e823bf23a4a05e4fac73266549'
           '33743a055a6ce2165bde37eebca24f3c05ad9583')
 
 package() {
