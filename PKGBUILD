@@ -2,7 +2,7 @@
 
 pkgname=gincamalarm
 pkgver=0.0.4
-pkgrel=10
+pkgrel=11
 pkgdesc="Gin server to manage camera with motion"
 arch=('any')
 url="https://github.com/Chipsterjulien/gincamalarm"
@@ -16,6 +16,7 @@ install=gincamalarm.install
 _builddir="$pkgname-$pkgver"
 
 build() {
+    echo "Build dependencies"
     GOPATH_exist=1
     if [ -z $GOPATH ]; then
         # path don't exit
@@ -49,6 +50,7 @@ build() {
         #go get github.com/itsjamie/gin-cors
 
     fi
+    echo "End of dependencies"
 
     cd "$_builddir"
 
@@ -79,4 +81,4 @@ package() {
         "$pkgdir"/usr/bin/$pkgname || return 1
 }
 
-sha512sums=('d6a4a9b19ab5bc81d0e501f629581dd6f6db87f56f1f118478da7d1167884143c434b685b4078685b0b97c540055b9a1ea00c0bf97034a36b9561d9fa5695d78')
+sha512sums=('d10918442571c7f2761d12a650332be971b2a5a0c25e0efbb7508789240ab4797672e0d4417eeac1d8ee007b1ba4da40c20347f31f97aae48f6064bd9427c0e1')
