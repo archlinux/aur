@@ -4,8 +4,8 @@
 pkgname=(linux-luca020400 linux-luca020400-headers linux-luca020400-docs)
 _kernelname=-luca020400
 _srcname=linux-4.4
-pkgver=4.4.1
-pkgrel=4
+pkgver=4.4.2
+pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -31,11 +31,11 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'enable_additional_cpu_optimizations_for_gcc.patch')
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            'c0218043e61da3921cd14579ae4a8774a6fdad91667a9fdb851d0a35f62edb48'
+            '5c55d48ca6b2a9b89ed786e656ed17f9a86192eba6d209fa408e0bca8de57b9c'
             'SKIP'
             'e1195de2d0bebc1fc81d8ad887f4b30376fe7b428e59a587e0544c0b34a80b84'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            '35d9b90c8f30a7622bfdddefca4d5bd5e0c1e989f4b6490a2d4673e8599749bd'
+            'f10de08a3d9f16499bcd22155c0beb04b8690194b40742a8a48d24bceb633e53'
             '51586b733e9f178bebe577258b6057b035eded516ffe8bf8bbb26cb0b26c4958'
             'ffbfaa192d17bfc7c6293aa9a07efe57f65177051ae3d8033d5e45a7bca2e0ad'
             'd1cf14cc696b0f716454fe8eb9746383700889d5d22ad829611f0433cc77b4ce'
@@ -58,7 +58,9 @@ prepare() {
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
   for path_queue in `curl ${_stable_queue}/queue-4.4/series`; do
-    curl "${_stable_queue}/queue-4.4/$path_queue" | patch -Np1
+    if [[ $path_queue == *".patch"* ]]; then
+        curl "${_stable_queue}/queue-4.4/$path_queue" | patch -Np1
+    fi
   done
 
   # #47757 fix broken suspend from btrfs and xfs
