@@ -1,7 +1,9 @@
 # Maintainer: Gertjan Halkes <arch at ghalkes dot nl>
+# Contributor: William Di Luigi <williamdiluigi@gmail.com>
+
 pkgname=libt3widget
-pkgver=0.4.7
-pkgrel=2
+pkgver=0.5.1
+pkgrel=1
 pkgdesc="A C++ terminal dialog toolkit."
 arch=('x86_64' 'i686')
 url="http://os.ghalkes.nl/t3/$pkgname.html"
@@ -18,7 +20,7 @@ install=''
 changelog=
 source=("http://os.ghalkes.nl/dist/$pkgname-$pkgver.tar.bz2")
 noextract=()
-md5sums=('530a1f8bd912800f5cebcfb8801998eb')
+md5sums=('cec6ab1f641c20973270edb7176c0c5d')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
