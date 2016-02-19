@@ -16,9 +16,11 @@ depends=(
     libvorbis
     sdl2
     webkitgtk2
+    desktop-file-utils
 )
 conflicts=(runescape-launcher-nxt)
 replaces=(runescape-launcher-nxt)
+install=$pkgname.install
 source=("wrapper.sh"
         "runescape.16.png"
         "runescape.24.png"
