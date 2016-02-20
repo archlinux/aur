@@ -1,7 +1,7 @@
 pkgname=sph-lib-git
 _gitname=sph-lib
 pkgver=a641d33
-pkgrel=2
+pkgrel=3
 pkgdesc='set of over 80 guile scheme libraries'
 arch=(any)
 license=(gpl3)
@@ -20,5 +20,5 @@ pkgver() {
 package() {
   cd $_gitname
   chmod 755 -R "${pkgdir}"
-  ./exec/install "${pkgdir}"
+  ./exe/install "${pkgdir}"
 }
