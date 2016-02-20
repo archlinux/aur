@@ -1,7 +1,7 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=spice-vdagent
 pkgver=0.16.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Spice agent xorg client that enables copy and paste between client and X-session and more"
 arch=('i686' 'x86_64')
 url="http://www.spice-space.org/"
@@ -20,6 +20,9 @@ validpgpkeys=('94A9F75661F77A6168649B23A9D8C21429AC6C82')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
+
+  # libsystemd-login.so was deprecated with systemd 209
+  sed -i 's/libsystemd-login >=/libsystemd >=/' configure.ac
 
   # set udevrulesdir, since this is impossible with a flag
   sed -i 's/udevrulesdir = \/lib/udevrulesdir = \/usr\/lib/' Makefile.am
