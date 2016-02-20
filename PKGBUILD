@@ -8,20 +8,19 @@ pkgdesc="C/C++ lib that allows programmers to quickly add a light and intuitive 
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://anttweakbar.sourceforge.net"
 license=('zlib')
-makedepends=('unzip')
 depends=('gcc-libs' 'glu')
 source=("http://ufpr.dl.sourceforge.net/project/anttweakbar/AntTweakBar_116.zip")
 md5sums=('4349a13c0b5a493cf5b6b0757f3e7f0d')
 
 build() {
     cd "AntTweakBar"
-  
+
     make -C src
 }
 
 package() {
     cd "AntTweakBar"
-    
+
     install -Dm644 License.txt "$pkgdir/usr/share/licenses/$pkgname/License.txt"
     install -Dm755 lib/libAntTweakBar.so "${pkgdir}/usr/lib/libAntTweakBar.so"
     install -Dm644 include/AntTweakBar.h "${pkgdir}/usr/include/AntTweakBar.h"
