@@ -5,19 +5,19 @@
 # Contributor: Luigi Ranghetti <ggranga at gmail dot com>
  
 pkgname="osmc-installer-bin"
-pkgver="1.2.4"
+pkgver="1.2.5"
 pkgrel="1"
 pkgdesc="OSMC Installer allows you to install OSMC on a variety of devices."
 url="http://osmc.tv"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('glibc' 'gcc' 'qt4' 'gcc-libs' 'zlib')
+depends=('gksu' 'glibc' 'gcc' 'qt4' 'gcc-libs' 'zlib')
 provides=('osmc-installer')
 
 source_i686=("http://download.opensuse.org/repositories/home:/osmc/Debian_8.0/i386/osmc-installer_${pkgver//./}_i386.deb")
 source_x86_64=("http://download.opensuse.org/repositories/home:/osmc/Debian_8.0/amd64/osmc-installer_${pkgver//./}_amd64.deb")
-sha256sums_i686=('9a99f6555be7627de0923cd4f1e110dd4b81e3a9da75e1c5aca3154c6d059770')
-sha256sums_x86_64=('2284107a464bbb5eb470c235b48941a673ee39066edfc747c1a2b019993ea705')
+sha256sums_i686=('2267ad29b31469f7f66206d03e0689360fe8f7382378fa207f06ea7284dbc80c')
+sha256sums_x86_64=('afab8516164d9b093dc89700b0d7cf894f68ae579e91d9af279ea9152dd0eebc')
  
 package() {
     cd "${srcdir}"
