@@ -2,7 +2,7 @@
 
 pkgname=gincamalarm
 pkgver=0.0.4
-pkgrel=11
+pkgrel=12
 pkgdesc="Gin server to manage camera with motion"
 arch=('any')
 url="https://github.com/Chipsterjulien/gincamalarm"
@@ -41,13 +41,13 @@ build() {
 
         # Getting some libs
         echo "Update go-logging"
-        #go get github.com/op/go-logging
+        go get github.com/op/go-logging
         echo "Update gin"
-        #go get github.com/gin-gonic/gin
+        go get github.com/gin-gonic/gin
         echo "Update viper"
-        #go get github.com/spf13/viper
+        go get github.com/spf13/viper
         echo "Update gin-cors"
-        #go get github.com/itsjamie/gin-cors
+        go get github.com/itsjamie/gin-cors
 
     fi
     echo "End of dependencies"
@@ -81,4 +81,4 @@ package() {
         "$pkgdir"/usr/bin/$pkgname || return 1
 }
 
-sha512sums=('d10918442571c7f2761d12a650332be971b2a5a0c25e0efbb7508789240ab4797672e0d4417eeac1d8ee007b1ba4da40c20347f31f97aae48f6064bd9427c0e1')
+sha512sums=('21a08ac74b2853c1eeb612fa1a87edc8e85b29581eba3cd519343c8f53284c9f4c0543511874523b4599ae989d699b3abd33b1d025834079f335074128ce3cb6')
