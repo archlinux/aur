@@ -5,8 +5,8 @@
 # Contributor: Loui Chang <louipc dot ist at gmail company> (SPAMMERS!)
 
 pkgname=draftsight
-pkgver=2015SP3
-pkgrel=3
+pkgver=2016SP0
+pkgrel=1
 pkgdesc="Freeware CAD software for your DWG/DXF files."
 arch=('x86_64')
 url="http://www.3ds.com/products/draftsight/"
