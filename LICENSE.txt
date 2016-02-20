@@ -1,0 +1,7 @@
+LICENSE
+
+These contents are copyrighted works of Linux-HA Japan Project.
+
+These contents may be used solely for your personal, noncommercial purposes,
+
+and may not be modified or altered in any way.
