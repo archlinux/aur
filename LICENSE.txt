@@ -1,0 +1,12 @@
+LICENSE
+
+These contents are copyrighted works of Open Source Software Channel Project.
+
+These contents may be used only for gratuitous deliverables (computer program
+include applications, movie, cd/dvd etc) by personal or non corporate
+organization.
+
+These contents may not be used for any purposes by profit organaization for any
+reasons.
+
+These contents may not be modified or altered in any way.
