@@ -7,7 +7,7 @@
 #
 
 pkgname=emacs-git
-pkgver=25.1.50.r123464
+pkgver=25.1.50.r124944
 pkgrel=1
 pkgdesc="GNU Emacs. Master development branch."
 arch=('i686' 'x86_64')
