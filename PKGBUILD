@@ -2,7 +2,7 @@
 # Maintainer: Iru Cai <mytbk920423@gmail.com>
 
 pkgname=iridium
-pkgver=46.0
+pkgver=48.1
 pkgrel=1
 _launcher_ver=3
 pkgdesc="a free, open, and libre browser modification of the Chromium code base"
@@ -24,18 +24,25 @@ install=iridium.install
 source=(https://downloads.iridiumbrowser.de/source/iridium-browser-${pkgver}.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
+        chromium-use-non-versioned-icu-namespace.patch
         chromium-fix-print-preview-on-en_GB-locale.patch
         chromium-widevine.patch)
-sha256sums=('13783ef0325f6f6ff65ac2ceb546af549403975d76ee528cebe07a0e8a5383a2'
+sha256sums=('8f542ae1d3029c254c36dce5e540a6653700236be6808de6d3c29537e47a0725'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
+            'e4192446cc0ab6a5c540599c8a149f4f2208f0014da2786ada6c9544913d7426'
             '6fff45aafa31fb35a032b4e2175a341e08f9d2a9b37c5cf080c318180f558378'
             '379b746e187de28f80f5a7cd19edcfa31859656826f802a1ede054fcb6dfb221')
 
-# We can't build (P)NaCL on i686 because the toolchain is x86_64 only and the
-# instructions on how to build the toolchain from source don't work that well
-# (at least not from within the Chromium 39 source tree).
-# https://sites.google.com/a/chromium.org/dev/nativeclient/pnacl/building-pnacl-components-for-distribution-packagers
+# Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
+# Note: These are for Arch Linux use ONLY. For your own distribution, please
+# get your own set of keys. Feel free to contact foutrelis@archlinux.org for
+# more information.
+_google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
+_google_default_client_id=413772536636.apps.googleusercontent.com
+_google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
+
+# We don't build PNaCL in Iridium
 _build_nacl=0
 if [[ $CARCH == i686 ]]; then
   _build_nacl=0
@@ -49,6 +56,9 @@ prepare() {
 
   # https://code.google.com/p/chromium/issues/detail?id=541273
   #sed -i "/'target_name': 'libvpx'/s/libvpx/&_new/" build/linux/unbundle/libvpx.gyp
+
+  # https://codereview.chromium.org/1505763002
+  patch -Np1 -i ../chromium-use-non-versioned-icu-namespace.patch
 
   # https://code.google.com/p/chromium/issues/detail?id=480415
   patch -Np1 -i ../chromium-fix-print-preview-on-en_GB-locale.patch
@@ -114,7 +124,7 @@ build() {
     -Drelease_extra_cflags="$CFLAGS"
     -Dlibspeechd_h_prefix=speech-dispatcher/
     -Dffmpeg_branding=Chrome
-    -Dproprietary_codecs=1
+    -Dproprietary_codecs=0
     -Duse_gnome_keyring=0
     -Duse_system_bzip2=1
     -Duse_system_flac=1
