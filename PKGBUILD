@@ -11,8 +11,16 @@ license=('GPL3')
 depends=('python2')
 makedepends=('git')
 install='lazylibrarian.install'
-source=('git://github.com/DobyTang/LazyLibrarian.git' 'lazylibrarian.service')
-sha256sums=('SKIP' '5010608e99e0242ba7c74b401efed0968984fd9a0ba1b9995dca22d6b8da8519')
+source=(
+  'git://github.com/DobyTang/LazyLibrarian.git'
+  'lazylibrarian.service'
+  'lazylibrarian.sysusers'
+)
+sha256sums=(
+  'SKIP'
+  '5010608e99e0242ba7c74b401efed0968984fd9a0ba1b9995dca22d6b8da8519'
+  '94791f40c9997526304b8a18d63fd555b30871efbebbc647a4e020222967becd'
+)
 
 pkgver() {
   cd $_gitname
@@ -24,4 +32,5 @@ package() {
   cp -r "$srcdir/$_gitname" "${pkgdir}/opt/lazylibrarian"
 
   install -Dm644 "${srcdir}/lazylibrarian.service" "${pkgdir}/usr/lib/systemd/system/lazylibrarian.service"
+  install -Dm644 "${srcdir}/lazylibrarian.sysusers" "${pkgdir}/usr/lib/sysusers.d/lazylibrarian.conf"
 }
