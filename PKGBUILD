@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=freefem++-hg
-pkgver=3.44.r3640.9bbe96fa3bd7
+pkgver=3.44.r3644.c2a9541e43de
 _pkgver=3.44
 pkgrel=1
 pkgdesc='A PDE oriented language using the finite element method (Mercurial)'
@@ -48,7 +48,7 @@ build() {
     --enable-download \
     --with-mpi \
     --with-petsc=$srcdir/download/PETSc/petsc-3.5.2/arch-linux2-c-debug \
-    --disable-hpddm --disable-schwarz
+    --disable-hpddm --enable-schwarz
   make 
 }
 
@@ -59,7 +59,7 @@ check() {
 
 package() {
   cd "$srcdir/ff++"
-  make -d DESTDIR="$pkgdir" install
+  make -d DESTDIR="$pkgdir" install||true
   install -Dm644 examples++/freefem++.pref $pkgdir/etc/freefem++.pref
   find $pkgdir/usr/lib/ff++/ -name "*.h" -exec chmod o+r {} \;
   # remove unneeded files
