@@ -1,9 +1,9 @@
 diff -aur -bZwB cadabra2-git.old/client_server/CMakeLists.txt cadabra2-git/client_server/CMakeLists.txt
---- cadabra2-git.old/client_server/CMakeLists.txt	2016-02-02 13:19:27.734125137 -0500
-+++ cadabra2-git/client_server/CMakeLists.txt	2016-02-02 13:19:40.397385649 -0500
-@@ -29,7 +29,9 @@
- message("-- Found JSONCPP include dir: ${JSONCPP_INCLUDE_DIRS}")
+--- cadabra2-git.old/client_server/CMakeLists.txt	2016-02-20 07:47:46.407919420 -0500
++++ cadabra2-git/client_server/CMakeLists.txt	2016-02-20 07:48:29.464392244 -0500
+@@ -30,7 +30,9 @@
  message("-- Found JSONCPP library dir: ${JSONCPP_LIBRARY_DIRS}")
+ message("-- Found JSONCPP libraries  : ${JSONCPP_LIBRARIES}")
  include_directories("${Boost_INCLUDE_DIRS}" ${PYTHON_INCLUDE_DIR})
 +if(JSONCPP_INCLUDE_DIRS)
  include_directories("${JSONCPP_INCLUDE_DIRS}")
@@ -11,7 +11,7 @@ diff -aur -bZwB cadabra2-git.old/client_server/CMakeLists.txt cadabra2-git/clien
  pkg_check_modules(UUID uuid REQUIRED)
  include_directories("${UUID_INCLUDE_DIRS}")
  
-@@ -70,5 +72,6 @@
+@@ -71,5 +73,6 @@
  install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/cadabra-server DESTINATION bin)
  install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/cadabra2html DESTINATION bin)
  install(TARGETS cadabra_client LIBRARY DESTINATION "${INSTALL_LIB_DIR}")
@@ -19,8 +19,8 @@ diff -aur -bZwB cadabra2-git.old/client_server/CMakeLists.txt cadabra2-git/clien
  
  
 diff -aur -bZwB cadabra2-git.old/client_server/regexp_tester.cc cadabra2-git/client_server/regexp_tester.cc
---- cadabra2-git.old/client_server/regexp_tester.cc	2016-02-02 13:19:27.734125137 -0500
-+++ cadabra2-git/client_server/regexp_tester.cc	2016-02-02 13:19:37.057404853 -0500
+--- cadabra2-git.old/client_server/regexp_tester.cc	2016-02-20 07:47:46.407919420 -0500
++++ cadabra2-git/client_server/regexp_tester.cc	2016-02-20 07:48:29.464392244 -0500
 @@ -13,7 +13,8 @@
  	try {
  		std::regex match(argv[1]);
@@ -31,9 +31,878 @@ diff -aur -bZwB cadabra2-git.old/client_server/regexp_tester.cc cadabra2-git/cli
  			for(unsigned int i=0; i<res.size(); ++i) {
  				std::cout << i << ":\t |" << res[i] << "|" << std::endl;
  				}
+diff -aur -bZwB cadabra2-git.old/client_server/Snoop.cc cadabra2-git/client_server/Snoop.cc
+--- cadabra2-git.old/client_server/Snoop.cc	2016-02-20 07:47:46.407919420 -0500
++++ cadabra2-git/client_server/Snoop.cc	2016-02-20 07:48:49.864298793 -0500
+@@ -2,30 +2,28 @@
+ #include "Snoop.hh"
+ #include "SnoopPrivate.hh"
+ 
+-#include <iostream>
+-#include <string.h>
+-#include <regex>
+-#include <iostream>
+-#include <uuid/uuid.h>
+ #include <chrono>
+ #include <ctime>
+-#include <sys/utsname.h>
+-#include <stdint.h>
+-#include <jsoncpp/json/json.h>
++#include <iostream>
++#include <iostream>
++#include <json/json.h>
++#include <regex>
+ #include <set>
++#include <stdint.h>
++#include <string.h>
++#include <sys/utsname.h>
++#include <uuid/uuid.h>
+ 
+-
+-
+-#include <unistd.h>
+-#include <sys/types.h>
+ #include <pwd.h>
++#include <sys/types.h>
++#include <unistd.h>
+ 
+ #define BOOST_SPIRIT_THREADSAFE
+-#include <boost/property_tree/ptree.hpp>
+-#include <boost/property_tree/json_parser.hpp>
+ #include <boost/config.hpp>
+ #include <boost/program_options/detail/config_file.hpp>
+ #include <boost/program_options/parsers.hpp>
++#include <boost/property_tree/json_parser.hpp>
++#include <boost/property_tree/ptree.hpp>
+ 
+ using namespace snoop;
+ 
+@@ -35,37 +33,35 @@
+ snoop::Flush snoop::flush;
+ 
+ using u64_millis = std::chrono::duration<uint64_t, std::milli>;
+-static std::chrono::time_point<std::chrono::system_clock, u64_millis> u64_to_time(uint64_t timestamp) {
+-    return std::chrono::time_point<std::chrono::system_clock, u64_millis>{u64_millis{timestamp}};
++static std::chrono::time_point<std::chrono::system_clock, u64_millis>
++u64_to_time(uint64_t timestamp) {
++  return std::chrono::time_point<std::chrono::system_clock, u64_millis>{
++      u64_millis{timestamp}};
+ }
+ 
+-std::string safestring(const unsigned char *c)
+-	{
+-	if(c==0) return "";
+-	else     return std::string((const char *)c);
++std::string safestring(const unsigned char *c) {
++  if (c == 0)
++    return "";
++  else
++    return std::string((const char *)c);
+ 	}
+ 
+-Snoop::Snoop()
+-	: sync_immediately_(false)
+-	{
+-	impl=new SnoopImpl(this);
+-	}
++Snoop::Snoop() : sync_immediately_(false) { impl = new SnoopImpl(this); }
+ 
+ SnoopImpl::SnoopImpl(Snoop *s)
+-	: snoop_(s), db(0), insert_statement(0), id_for_uuid_statement(0), connection_is_open(false)
+-   {
+-   }
++    : snoop_(s), db(0), insert_statement(0), id_for_uuid_statement(0),
++      connection_is_open(false) {}
+ 
+-void Snoop::init(const std::string& app_name, const std::string& app_version, std::string server, std::string dbname)
+-   {
++void Snoop::init(const std::string &app_name, const std::string &app_version,
++                 std::string server, std::string dbname) {
+ 	impl->init(app_name, app_version, server, dbname);
+ 	}
+ 
+-void SnoopImpl::init(const std::string& app_name, const std::string& app_version, std::string server, std::string dbname)
+-   {
++void SnoopImpl::init(const std::string &app_name,
++                     const std::string &app_version, std::string server,
++                     std::string dbname) {
+ 	assert(app_name.size()>0);
+ 	
+-
+ 	if(db==0) { // Only initialise if database has not been opened before
+ 		this_app_.app_name=app_name;
+ 		this_app_.app_version=app_version;
+@@ -72,14 +68,17 @@
+ 		this_app_.pid = getpid();
+ 		struct utsname buf;
+ 		if(uname(&buf)==0) {
+-			this_app_.machine_id = std::string(buf.sysname)
+-				+", "+buf.nodename+", "+buf.release+", "+buf.version+", "+buf.machine+", "+buf.domainname;
++      this_app_.machine_id = std::string(buf.sysname) + ", " + buf.nodename +
++                             ", " + buf.release + ", " + buf.version + ", " +
++                             buf.machine + ", " + buf.domainname;
+ 			}
+ 
+ 		this_app_.user_id = get_user_uuid(app_name);
+ 
+-		auto duration =  std::chrono::high_resolution_clock::now().time_since_epoch();
+-		this_app_.create_millis = std::chrono::duration_cast<std::chrono::milliseconds>(duration).count();
++    auto duration =
++        std::chrono::high_resolution_clock::now().time_since_epoch();
++    this_app_.create_millis =
++        std::chrono::duration_cast<std::chrono::milliseconds>(duration).count();
+ 		
+ 		server_=server;
+ 
+@@ -92,21 +91,25 @@
+ 			dbname=logdir+"/"+app_name+".sql";
+ 			}
+ 		
+-		int ret = sqlite3_open_v2(dbname.c_str(), &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
++    int ret = sqlite3_open_v2(dbname.c_str(), &db,
++                              SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+ 		if(ret) {
+ 			throw std::logic_error("Cannot open database");
+ 			}
+ 		create_tables();
+ 
+-		// Turn off synchronous writes as they seriously degrade performance (by orders of magnitude)
++    // Turn off synchronous writes as they seriously degrade performance (by
++    // orders of magnitude)
+ 		// for our single-row inserts. See
+ 		// http://stackoverflow.com/questions/1711631/improve-insert-per-second-performance-of-sqlite?rq=1
+ 		// for more options to speed things up.
+ 
+ 		sqlite3_exec(db, "PRAGMA synchronous = OFF", NULL, NULL, NULL);
+ 
+-		// If this is a client, i.e. not a SnoopServer: obtain a uuid, start the websocket listener,
+-		// and sync with the remote server whatever has not yet been synced in previous runs.
++    // If this is a client, i.e. not a SnoopServer: obtain a uuid, start the
++    // websocket listener,
++    // and sync with the remote server whatever has not yet been synced in
++    // previous runs.
+ 		
+ 		if(this_app_.app_name!="SnoopServer") {
+ 			obtain_uuid();
+@@ -118,26 +121,29 @@
+ 		}
+    }
+ 
+-std::string Snoop::get_user_uuid(const std::string& appname) 
+-	{
++std::string Snoop::get_user_uuid(const std::string &appname) {
+ 	return impl->get_user_uuid(appname);
+ 	}
+ 
+-std::string SnoopImpl::get_user_uuid(const std::string& appname) 
+-	{
++std::string SnoopImpl::get_user_uuid(const std::string &appname) {
+ 	struct passwd *pw = getpwuid(getuid());
+ 	const char *homedir = pw->pw_dir;
+ 	std::string user_uuid="";
+ 
+-	std::string configpath=homedir + std::string("/.config/snoop/"+appname+".conf");
++  std::string configpath =
++      homedir + std::string("/.config/snoop/" + appname + ".conf");
+ 	std::ifstream config(configpath);
+ 	bool need_to_write=true;
+ 	if(config) {
+ 		std::set<std::string> options;
+ 		options.insert("user");
+ 
+-		for(boost::program_options::detail::config_file_iterator i(config, options), e ; i != e; ++i) {
+-			// FIXME: http://stackoverflow.com/questions/24701547/how-to-parse-boolean-option-in-config-file
++    for (boost::program_options::detail::config_file_iterator
++             i(config, options),
++         e;
++         i != e; ++i) {
++      // FIXME:
++      // http://stackoverflow.com/questions/24701547/how-to-parse-boolean-option-in-config-file
+ 			if(i->string_key=="user") {
+ 				user_uuid=i->value[0];
+ 				need_to_write=false;
+@@ -160,21 +166,16 @@
+ 			user_uuid=uuid_string;
+ 
+ 			config << "user = " << user_uuid << std::endl;
+-			}
+-		else {
++    } else {
+ 			std::cerr << "Snoop: cannot write " << configpath << std::endl;
+ 			}
+ 		}
+ 	return user_uuid;
+ 	}
+ 
+-void Snoop::set_sync_immediately(bool s)
+-	{
+-	sync_immediately_=s;
+-	}
++void Snoop::set_sync_immediately(bool s) { sync_immediately_ = s; }
+ 
+-void SnoopImpl::create_tables()
+-	{
++void SnoopImpl::create_tables() {
+ 	assert(db!=0);
+ 
+ 	std::lock_guard<std::mutex> lock(sqlite_mutex);
+@@ -191,8 +192,8 @@
+ 						 "app_name        text,"
+ 						 "app_version     text,"
+ 						 "user_id         text,"
+-						 "server_status   int);"
+-						 , NULL, NULL, &errmsg) != SQLITE_OK) {
++                       "server_status   int);",
++                   NULL, NULL, &errmsg) != SQLITE_OK) {
+ 		sqlite3_free(errmsg);
+ 		throw std::logic_error("Failed to create table runs");
+ 		}
+@@ -207,23 +208,24 @@
+ 						 "loc_method      text,"
+ 						 "type            text,"
+ 						 "message         text,"
+-						 "server_status   int);"
+-						 , NULL, NULL, &errmsg) != SQLITE_OK) {
++                       "server_status   int);",
++                   NULL, NULL, &errmsg) != SQLITE_OK) {
+ 		sqlite3_free(errmsg);
+ 		throw std::logic_error("Failed to create table logs");
+ 		}
+ 	}
+ 
+-void SnoopImpl::obtain_uuid()
+-	{
++void SnoopImpl::obtain_uuid() {
+ 	assert(db!=0);
+ 
+ 	std::lock_guard<std::mutex> lock(sqlite_mutex);
+ 
+ 	sqlite3_stmt *statement=0;
+ 	std::ostringstream ss;
+-//	ss << "select uuid from runs where pid=" << getpid() << " order by create_millis desc limit 1";
+-	ss << "select uuid from runs where id=" << getpid() << " order by create_millis desc limit 1";
++  //	ss << "select uuid from runs where pid=" << getpid() << " order by
++  // create_millis desc limit 1";
++  ss << "select uuid from runs where id=" << getpid()
++     << " order by create_millis desc limit 1";
+ 	
+ 	int res = sqlite3_prepare(db, ss.str().c_str(), -1, &statement, NULL);
+ 	if(res==SQLITE_OK) {
+@@ -231,12 +233,14 @@
+ 		if(ret==SQLITE_ROW) {
+ 			if(sqlite3_column_type(statement, 0)==SQLITE3_TEXT) 
+ 				this_app_.uuid=safestring(sqlite3_column_text(statement, 0));
+-			else throw std::logic_error("Database inconsistency for obtain_uuid");
++      else
++        throw std::logic_error("Database inconsistency for obtain_uuid");
+ 			}
+ 		}
+ 	sqlite3_finalize(statement);
+ 
+-	// Generate and insert a new uuid if there is no existing entry for the current pid.
++  // Generate and insert a new uuid if there is no existing entry for the
++  // current pid.
+ 
+ 	if(this_app_.uuid.size()==0) {
+ 		uuid_t nid;
+@@ -249,8 +253,7 @@
+ 		}
+ 	}
+ 
+-bool SnoopImpl::store_app_entry(Snoop::AppEntry& app)
+-	{
++bool SnoopImpl::store_app_entry(Snoop::AppEntry &app) {
+ 	assert(db!=0);
+ 
+ 	std::lock_guard<std::mutex> lock(sqlite_mutex);
+@@ -258,10 +261,11 @@
+ 	return store_app_entry_without_lock(app);
+ 	}
+ 
+-bool SnoopImpl::store_app_entry_without_lock(Snoop::AppEntry& app)
+-	{
++bool SnoopImpl::store_app_entry_without_lock(Snoop::AppEntry &app) {
+ 	sqlite3_stmt *statement=0;
+-	int res = sqlite3_prepare(db, "insert into runs (uuid, create_millis, receive_millis, pid, ip_address, machine_id, "
++  int res =
++      sqlite3_prepare(db, "insert into runs (uuid, create_millis, "
++                          "receive_millis, pid, ip_address, machine_id, "
+ 									  "app_name, app_version, user_id, server_status) "
+ 									  "values "
+ 									  "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
+@@ -272,10 +276,14 @@
+ 		sqlite3_bind_int64(statement,  2, app.create_millis);
+ 		sqlite3_bind_int64(statement,  3, app.receive_millis);
+ 		sqlite3_bind_int64(statement,  4, app.pid);
+-		sqlite3_bind_text(statement,   5, app.ip_address.c_str(), app.ip_address.size(), 0);
+-		sqlite3_bind_text(statement,   6, app.machine_id.c_str(), app.machine_id.size(), 0);
+-		sqlite3_bind_text(statement,   7, app.app_name.c_str(), app.app_name.size(), 0);
+-		sqlite3_bind_text(statement,   8, app.app_version.c_str(), app.app_version.size(), 0);
++    sqlite3_bind_text(statement, 5, app.ip_address.c_str(),
++                      app.ip_address.size(), 0);
++    sqlite3_bind_text(statement, 6, app.machine_id.c_str(),
++                      app.machine_id.size(), 0);
++    sqlite3_bind_text(statement, 7, app.app_name.c_str(), app.app_name.size(),
++                      0);
++    sqlite3_bind_text(statement, 8, app.app_version.c_str(),
++                      app.app_version.size(), 0);
+ 		sqlite3_bind_text(statement,   9, app.user_id.c_str(), app.user_id.size(), 0);
+ 		sqlite3_bind_int(statement,   10, app.server_status);
+ 		
+@@ -283,27 +291,28 @@
+ 		sqlite3_finalize(statement);
+ 
+ 		app.id = sqlite3_last_insert_rowid(db);
+-		}
+-	else {
++  } else {
+ 		throw std::logic_error("Failed to prepare insertion");
+ 		}
+ 
+ 	return false;
+ 	}
+ 
+-void SnoopImpl::store_log_entry(Snoop::LogEntry& log_entry)
+-	{
++void SnoopImpl::store_log_entry(Snoop::LogEntry &log_entry) {
+ 	assert(db!=0);
+ 	
+ 	std::lock_guard<std::mutex> lock(sqlite_mutex);
+ 
+ 	auto duration =  std::chrono::high_resolution_clock::now().time_since_epoch();
+-	log_entry.receive_millis   = std::chrono::duration_cast<std::chrono::milliseconds>(duration).count();
++  log_entry.receive_millis =
++      std::chrono::duration_cast<std::chrono::milliseconds>(duration).count();
+ 
+ 	int res=SQLITE_OK;
+ 	if(insert_statement==0) {
+-		res=sqlite3_prepare_v2(db, "insert into logs "
+-									  "(client_log_id, id, create_millis, receive_millis, loc_file, loc_line, loc_method, "
++    res = sqlite3_prepare_v2(db,
++                             "insert into logs "
++                             "(client_log_id, id, create_millis, "
++                             "receive_millis, loc_file, loc_line, loc_method, "
+ 									  " type, message, server_status) "
+ 									  "values "
+ 									  "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+@@ -315,11 +324,15 @@
+ 		sqlite3_bind_int(insert_statement,    2, log_entry.id);
+ 		sqlite3_bind_int64(insert_statement,  3, log_entry.create_millis);
+ 		sqlite3_bind_int64(insert_statement,  4, log_entry.receive_millis);
+-		sqlite3_bind_text(insert_statement,   5, log_entry.loc_file.c_str(), log_entry.loc_file.size(), 0);
++    sqlite3_bind_text(insert_statement, 5, log_entry.loc_file.c_str(),
++                      log_entry.loc_file.size(), 0);
+ 		sqlite3_bind_int(insert_statement,    6, log_entry.loc_line);
+-		sqlite3_bind_text(insert_statement,   7, log_entry.loc_method.c_str(), log_entry.loc_method.size(), 0);
+-		sqlite3_bind_text(insert_statement,   8, log_entry.type.c_str(),    log_entry.type.size(), 0);
+-		sqlite3_bind_text(insert_statement,   9, log_entry.message.c_str(), log_entry.message.size(), 0);
++    sqlite3_bind_text(insert_statement, 7, log_entry.loc_method.c_str(),
++                      log_entry.loc_method.size(), 0);
++    sqlite3_bind_text(insert_statement, 8, log_entry.type.c_str(),
++                      log_entry.type.size(), 0);
++    sqlite3_bind_text(insert_statement, 9, log_entry.message.c_str(),
++                      log_entry.message.size(), 0);
+ 		sqlite3_bind_int(insert_statement,   10, log_entry.server_status);
+ 		 
+ 		sqlite3_step(insert_statement);
+@@ -327,24 +340,26 @@
+ 		log_entry.log_id = sqlite3_last_insert_rowid(db);
+ 
+ 		sqlite3_reset(insert_statement);
+-		}
+-	else {
++  } else {
+ 		throw std::logic_error("Failed to insert log entry");
+ 		}
+ 	}
+ 
+-void SnoopImpl::start_websocket_client()
+-	{
++void SnoopImpl::start_websocket_client() {
+ 	using websocketpp::lib::bind;
+ 
+ 	wsclient.clear_access_channels(websocketpp::log::alevel::all);
+ 	wsclient.clear_error_channels(websocketpp::log::elevel::all);
+ 
+-	wsclient.set_open_handler(bind(&SnoopImpl::on_client_open, this, websocketpp::lib::placeholders::_1));
+-	wsclient.set_fail_handler(bind(&SnoopImpl::on_client_fail, this, websocketpp::lib::placeholders::_1));
+-	wsclient.set_close_handler(bind(&SnoopImpl::on_client_close, this, websocketpp::lib::placeholders::_1));
++  wsclient.set_open_handler(bind(&SnoopImpl::on_client_open, this,
++                                 websocketpp::lib::placeholders::_1));
++  wsclient.set_fail_handler(bind(&SnoopImpl::on_client_fail, this,
++                                 websocketpp::lib::placeholders::_1));
++  wsclient.set_close_handler(bind(&SnoopImpl::on_client_close, this,
++                                  websocketpp::lib::placeholders::_1));
+ 	wsclient.set_message_handler(bind(&SnoopImpl::on_client_message, this, 
+-												 websocketpp::lib::placeholders::_1, websocketpp::lib::placeholders::_2));
++                                    websocketpp::lib::placeholders::_1,
++                                    websocketpp::lib::placeholders::_2));
+ 	wsclient.init_asio();
+ 	wsclient.start_perpetual();
+ 
+@@ -352,7 +367,8 @@
+ 	websocketpp::lib::error_code ec;
+ 	connection = wsclient.get_connection(uri, ec);
+ 	if (ec) {
+-		 std::cerr << "Snoop: websocket connection error " << ec.message() << std::endl;
++    std::cerr << "Snoop: websocket connection error " << ec.message()
++              << std::endl;
+ 		return;
+ 		}
+ 
+@@ -362,13 +378,11 @@
+ 	wsclient_thread=std::thread([this]{ wsclient.run(); });
+ 	}
+ 
+-void Snoop::sync_with_server(bool from_wsthread)
+-	{
++void Snoop::sync_with_server(bool from_wsthread) {
+ 	impl->sync_with_server(from_wsthread);
+ 	}
+ 
+-void SnoopImpl::sync_with_server(bool from_wsthread)
+-	{
++void SnoopImpl::sync_with_server(bool from_wsthread) {
+ 	assert(server_.size()>0);
+ 
+ 	if(!from_wsthread)
+@@ -379,13 +393,11 @@
+ 	sync_logs_with_server(from_wsthread);
+ 	}
+ 
+-void Snoop::sync_runs_with_server(bool from_wsthread)
+-	{
++void Snoop::sync_runs_with_server(bool from_wsthread) {
+ 	impl->sync_runs_with_server(from_wsthread);
+ 	}
+ 
+-void SnoopImpl::sync_runs_with_server(bool from_wsthread)
+-	{
++void SnoopImpl::sync_runs_with_server(bool from_wsthread) {
+ 	if(!from_wsthread)
+ 		if(!connection_is_open) 
+ 			return;
+@@ -399,7 +411,8 @@
+ 	std::ostringstream ssc;
+ 	std::ostringstream pack;
+ 	pack << "{ \"run\": [";
+-	ssc << "select id, uuid, create_millis, receive_millis, pid, ip_address, machine_id, app_name, app_version, user_id, server_status "
++  ssc << "select id, uuid, create_millis, receive_millis, pid, ip_address, "
++         "machine_id, app_name, app_version, user_id, server_status "
+ 		 << "from runs where server_status=0";
+ 
+ 	int sres = sqlite3_prepare(db, ssc.str().c_str(), -1, &statement, NULL);
+@@ -410,11 +423,13 @@
+ 			int ret = sqlite3_step(statement);
+ 			switch(ret) {
+ 				case SQLITE_BUSY: 
+-					throw std::logic_error("Unexpected SQLITE_BUSY in sync_runs_with_server");
++        throw std::logic_error(
++            "Unexpected SQLITE_BUSY in sync_runs_with_server");
+ 					break;
+ 				case SQLITE_ROW: {
+ 					Snoop::AppEntry ae;
+-					// FIXME: isolate this in a separate function so we can fetch individual records more easily
++        // FIXME: isolate this in a separate function so we can fetch individual
++        // records more easily
+ 					ae.id               = sqlite3_column_int(statement, 0);
+ 					ae.uuid             = safestring(sqlite3_column_text(statement, 1));
+ 					ae.create_millis    = sqlite3_column_int64(statement, 2);
+@@ -426,8 +441,10 @@
+ 					ae.app_version      = safestring(sqlite3_column_text(statement, 8));
+ 					ae.user_id          = safestring(sqlite3_column_text(statement, 9));
+ 					ae.server_status    = sqlite3_column_int(statement, 10);
+-					if(!first) pack << ", \n";
+-					else       first=false;
++        if (!first)
++          pack << ", \n";
++        else
++          first = false;
+ 					pack << ae.to_json(false);
+ 					break;
+ 					}
+@@ -451,23 +468,21 @@
+ 	if(sres==SQLITE_OK) {
+ 		sqlite3_step(statement);
+ 		sqlite3_finalize(statement);
+-		}
+-	else {
++  } else {
+ 		sqlite3_finalize(statement);
+ 		return;
+ 		}
+ 
+ 	// Upload to the server.
+-	wsclient.send(our_connection_hdl, pack.str(), websocketpp::frame::opcode::text);
++  wsclient.send(our_connection_hdl, pack.str(),
++                websocketpp::frame::opcode::text);
+ 	}
+ 
+-void Snoop::sync_logs_with_server(bool from_wsthread)
+-	{
++void Snoop::sync_logs_with_server(bool from_wsthread) {
+ 	impl->sync_logs_with_server(from_wsthread);
+ 	}
+ 
+-void SnoopImpl::sync_logs_with_server(bool from_wsthread)
+-	{
++void SnoopImpl::sync_logs_with_server(bool from_wsthread) {
+ 	if(!from_wsthread)
+ 		if(!connection_is_open) 
+ 			return;
+@@ -481,7 +496,8 @@
+ 	std::ostringstream ssc;
+ 	std::ostringstream pack;
+ 	pack << "{ \"log\": [";
+-	ssc << "select log_id, client_log_id, id, create_millis, loc_file, loc_line, loc_method, type, message, server_status "
++  ssc << "select log_id, client_log_id, id, create_millis, loc_file, loc_line, "
++         "loc_method, type, message, server_status "
+ 		 << "from logs where server_status=0";
+ 
+ 	int sres = sqlite3_prepare(db, ssc.str().c_str(), -1, &statement, NULL);
+@@ -492,7 +508,8 @@
+ 			int ret = sqlite3_step(statement);
+ 			switch(ret) {
+ 				case SQLITE_BUSY: 
+-					throw std::logic_error("Unexpected SQLITE_BUSY in sync_runs_with_server");
++        throw std::logic_error(
++            "Unexpected SQLITE_BUSY in sync_runs_with_server");
+ 					break;
+ 				case SQLITE_ROW: {
+ 					Snoop::LogEntry le;
+@@ -507,8 +524,10 @@
+ 					le.type             = safestring(sqlite3_column_text(statement, 7));
+ 					le.message          = safestring(sqlite3_column_text(statement, 8));
+ 					le.server_status    = sqlite3_column_int(statement, 9);
+-					if(!first) pack << ", \n";
+-					else       first=false;
++        if (!first)
++          pack << ", \n";
++        else
++          first = false;
+ 					pack << le.to_json(false);
+ 					break;
+ 					}
+@@ -532,25 +551,26 @@
+ 	if(sres==SQLITE_OK) {
+ 		sqlite3_step(statement);
+ 		sqlite3_finalize(statement);
+-		}
+-	else {
++  } else {
+ 		sqlite3_finalize(statement);
+ 		return;
+ 		}
+ 
+ 	// Upload to the server.
+ 
+-	wsclient.send(our_connection_hdl, pack.str(), websocketpp::frame::opcode::text);
++  wsclient.send(our_connection_hdl, pack.str(),
++                websocketpp::frame::opcode::text);
+ 	}
+ 
+-std::vector<Snoop::AppEntry> SnoopImpl::get_app_registrations(std::string uuid_filter)
+-	{
++std::vector<Snoop::AppEntry>
++SnoopImpl::get_app_registrations(std::string uuid_filter) {
+ 	std::lock_guard<std::mutex> lock(sqlite_mutex);
+ 
+ 	sqlite3_stmt *statement=0;
+ 
+ 	std::ostringstream ssc;
+-	ssc << "select id, uuid, create_millis, receive_millis, pid, ip_address, machine_id, "
++  ssc << "select id, uuid, create_millis, receive_millis, pid, ip_address, "
++         "machine_id, "
+ 		"app_name, app_version, user_id, server_status from runs";
+ 	if(uuid_filter.size()>0) 
+ 		ssc << " where uuid=?";
+@@ -587,35 +607,34 @@
+ 					}
+ 				}
+ 			}
+-		}
+-	else throw std::logic_error("Failed to prepare statement for get_app_registrations");
++  } else
++    throw std::logic_error(
++        "Failed to prepare statement for get_app_registrations");
+ 
+ 	sqlite3_finalize(statement);
+ 
+ 	return entries;
+ 	}
+ 
+-void SnoopImpl::on_client_open(websocketpp::connection_hdl)
+-	{
+- 	// std::cerr << "Snoop: connection to " << server_  << " open " << std::this_thread::get_id() << std::endl;
++void SnoopImpl::on_client_open(websocketpp::connection_hdl) {
++  // std::cerr << "Snoop: connection to " << server_  << " open " <<
++  // std::this_thread::get_id() << std::endl;
+ 	sync_with_server(true);
+ 	connection_is_open=true;
+ 	// std::cerr << "Snoop: sync'ed with server" << std::endl;
+ 	}
+ 
+-void SnoopImpl::on_client_fail(websocketpp::connection_hdl)
+-	{
++void SnoopImpl::on_client_fail(websocketpp::connection_hdl) {
+ 	// std::cerr << "Snoop: connection failed" << std::endl;	
+ 	}
+ 
+-void SnoopImpl::on_client_close(websocketpp::connection_hdl)
+-	{
++void SnoopImpl::on_client_close(websocketpp::connection_hdl) {
+ 	connection_is_open=false;
+ 	// std::cerr << "Snoop: connection closed" << std::endl;	
+ 	}
+ 
+-void SnoopImpl::on_client_message(websocketpp::connection_hdl, WebsocketClient::message_ptr msg) 
+-	{
++void SnoopImpl::on_client_message(websocketpp::connection_hdl,
++                                  WebsocketClient::message_ptr msg) {
+ 	Json::Value  root;
+ 	Json::Reader reader;
+ 	if(!reader.parse( msg->get_payload(), root )) 
+@@ -637,7 +656,8 @@
+ 		ssc << "update logs set server_status=1 where log_id=?";
+ 		int ret = sqlite3_prepare(db, ssc.str().c_str(), -1, &statement, NULL);
+ 		if(ret!=SQLITE_OK) 
+-			throw std::logic_error("Failed to prepare statement for on_client_message");
++      throw std::logic_error(
++          "Failed to prepare statement for on_client_message");
+ 		
+ 		Json::Value entries=root["log_stored"];
+ 		for(auto entry: entries) {
+@@ -662,7 +682,8 @@
+ 		ssc << "update runs set server_status=1 where id=?";
+ 		int ret = sqlite3_prepare(db, ssc.str().c_str(), -1, &statement, NULL);
+ 		if(ret!=SQLITE_OK) 
+-			throw std::logic_error("Failed to prepare statement for on_client_message");
++      throw std::logic_error(
++          "Failed to prepare statement for on_client_message");
+ 		
+ 		Json::Value entries=root["app_stored"];
+ 		for(auto entry: entries) {
+@@ -674,18 +695,16 @@
+ 
+ 		sqlite3_exec(db, "END TRANSACTION", NULL, NULL, NULL);
+ 		}
+-	
+ 	}
+ 
+-
+-Snoop::~Snoop()
+-	{
+-	if(impl) delete impl;
++Snoop::~Snoop() {
++  if (impl)
++    delete impl;
+ 	}
+ 
+-SnoopImpl::~SnoopImpl()
+-   {
+-	if(db!=0) { // If the database is not open the wsclient won't be running either
++SnoopImpl::~SnoopImpl() {
++  if (db !=
++      0) { // If the database is not open the wsclient won't be running either
+ 		wsclient.stop();
+ 		wsclient_thread.join();
+ 		}
+@@ -702,14 +721,13 @@
+ 		}
+    }
+ 
+-
+-Snoop& Snoop::operator()(const std::string& type, std::string fl, int loc, std::string method) 
+-	{
++Snoop &Snoop::operator()(const std::string &type, std::string fl, int loc,
++                         std::string method) {
+ 	return impl->operator()(type, fl, loc, method);
+ 	}
+ 
+-Snoop& SnoopImpl::operator()(const std::string& type, std::string fl, int loc, std::string method) 
+-	{
++Snoop &SnoopImpl::operator()(const std::string &type, std::string fl, int loc,
++                             std::string method) {
+ 	std::lock_guard<std::mutex> lock(call_mutex);
+ 
+ 	assert(this_app_.app_name.size()>0);
+@@ -722,13 +740,9 @@
+ 	return *snoop_;
+ 	}
+ 
+-Snoop& Snoop::operator<<(const Flush& f)
+-	{
+-	return impl->operator<<(f);
+-	}
++Snoop &Snoop::operator<<(const Flush &f) { return impl->operator<<(f); }
+ 
+-Snoop& SnoopImpl::operator<<(const Flush&)
+-   {
++Snoop &SnoopImpl::operator<<(const Flush &) {
+ 	std::lock_guard<std::mutex> lock(call_mutex);
+ 
+ 	assert(this_app_.app_name.size()>0);
+@@ -736,7 +750,8 @@
+ 	// Fill in the remaining fields of the LogEntry to be stored/sent.
+ 
+ 	auto duration =  std::chrono::high_resolution_clock::now().time_since_epoch();
+-	auto millis   = std::chrono::duration_cast<std::chrono::milliseconds>(duration).count();
++  auto millis =
++      std::chrono::duration_cast<std::chrono::milliseconds>(duration).count();
+ 	this_log_.create_millis = millis;
+ 	this_log_.message       = snoop_->out_.str();
+ 	this_log_.server_status = 0;
+@@ -757,21 +772,18 @@
+    }
+ 
+ Snoop::LogEntry::LogEntry()
+-	: log_id(0), client_log_id(0), id(0), create_millis(0), receive_millis(0), loc_line(0), server_status(0)
+-	{
+-	}
++    : log_id(0), client_log_id(0), id(0), create_millis(0), receive_millis(0),
++      loc_line(0), server_status(0) {}
+ 
+-Snoop::LogEntry::LogEntry(int log_id_, int client_log_id_, int c1, const std::string& c1b,
+-								  uint64_t c2, uint64_t c2b, const std::string& c3, int c4, const std::string& c5,
++Snoop::LogEntry::LogEntry(int log_id_, int client_log_id_, int c1,
++                          const std::string &c1b, uint64_t c2, uint64_t c2b,
++                          const std::string &c3, int c4, const std::string &c5,
+ 								  const std::string& c6, const std::string& c7, int c8)
+ 	: log_id(log_id_), client_log_id(client_log_id_), id(c1), uuid(c1b), 
+-	  create_millis(c2), receive_millis(c2b), loc_file(c3), loc_line(c4), loc_method(c5), 
+-	  type(c6), message(c7), server_status(c8)
+-	{
+-	}
++      create_millis(c2), receive_millis(c2b), loc_file(c3), loc_line(c4),
++      loc_method(c5), type(c6), message(c7), server_status(c8) {}
+ 
+-std::string Snoop::LogEntry::to_json(bool human_readable) const
+-	{
++std::string Snoop::LogEntry::to_json(bool human_readable) const {
+ 	Json::Value json;
+ 	
+ 	json["log_id"]=log_id;
+@@ -779,18 +791,17 @@
+ 	json["id"]=id;
+ 	json["uuid"]=uuid;
+ 	if(human_readable) {	
+-		time_t tt = std::chrono::system_clock::to_time_t(u64_to_time(create_millis));
++    time_t tt =
++        std::chrono::system_clock::to_time_t(u64_to_time(create_millis));
+ 		tm utc_tm = *localtime(&tt);
+ 		std::ostringstream str;
+-		str << std::setfill('0') 
+-			 << std::setw(2) << utc_tm.tm_hour << ":" 
+-			 << std::setw(2) << utc_tm.tm_min << ":" 
+-			 << std::setw(2) << utc_tm.tm_sec;
++    str << std::setfill('0') << std::setw(2) << utc_tm.tm_hour << ":"
++        << std::setw(2) << utc_tm.tm_min << ":" << std::setw(2)
++        << utc_tm.tm_sec;
+ 		json["time"]=str.str();
+ 		str.str("");
+-		str << std::setw(2) << utc_tm.tm_mday << "/" 
+-			 << std::setw(2) << utc_tm.tm_mon+1 << "/" 
+-			 << std::setw(4) << utc_tm.tm_year+1900;
++    str << std::setw(2) << utc_tm.tm_mday << "/" << std::setw(2)
++        << utc_tm.tm_mon + 1 << "/" << std::setw(4) << utc_tm.tm_year + 1900;
+ 		json["date"]=str.str();
+ 		}
+ 	json["create_millis"]=(Json::UInt64)create_millis;
+@@ -809,57 +820,49 @@
+ 	}
+ 
+ Snoop::AppEntry::AppEntry()
+-	: id(0), create_millis(0), receive_millis(0), pid(0), server_status(0), connected(false)
+-	{
+-	}
++    : id(0), create_millis(0), receive_millis(0), pid(0), server_status(0),
++      connected(false) {}
+ 
+-Snoop::AppEntry::AppEntry(const std::string& uuid_, uint64_t create_millis_, uint64_t receive_millis_, pid_t pid_, 
+-								  const std::string& ip_address_, const std::string& machine_id_, 
+-								  const std::string& app_name_,   const std::string& app_version_,
+-								  const std::string& user_id_,
+-								  int server_status_)
+-	: uuid(uuid_), create_millis(create_millis_), receive_millis(receive_millis_), pid(pid_), ip_address(ip_address_),
++Snoop::AppEntry::AppEntry(const std::string &uuid_, uint64_t create_millis_,
++                          uint64_t receive_millis_, pid_t pid_,
++                          const std::string &ip_address_,
++                          const std::string &machine_id_,
++                          const std::string &app_name_,
++                          const std::string &app_version_,
++                          const std::string &user_id_, int server_status_)
++    : uuid(uuid_), create_millis(create_millis_),
++      receive_millis(receive_millis_), pid(pid_), ip_address(ip_address_),
+ 	  machine_id(machine_id_), app_name(app_name_), app_version(app_version_), 
+-			 user_id(user_id_), server_status(server_status_)
+-	{
+-	}
++      user_id(user_id_), server_status(server_status_) {}
+ 
+-std::string Snoop::AppEntry::to_json(bool human_readable) const
+-	{
++std::string Snoop::AppEntry::to_json(bool human_readable) const {
+ 	std::ostringstream str;
+-	str << "{ \"id\": " << id  
+-		 << ", \"uuid\": \"" << uuid << "\"";
++  str << "{ \"id\": " << id << ", \"uuid\": \"" << uuid << "\"";
+ 	if(human_readable) {	
+-		time_t tt = std::chrono::system_clock::to_time_t(u64_to_time(create_millis));
++    time_t tt =
++        std::chrono::system_clock::to_time_t(u64_to_time(create_millis));
+ 		tm utc_tm = *localtime(&tt);
+-		str << ", \"time\": \"" 
+-			 << std::setfill('0') 
+-			 << std::setw(2) << utc_tm.tm_hour << ":" 
+-			 << std::setw(2) << utc_tm.tm_min << ":" 
++    str << ", \"time\": \"" << std::setfill('0') << std::setw(2)
++        << utc_tm.tm_hour << ":" << std::setw(2) << utc_tm.tm_min << ":"
+ 			 << std::setw(2) << utc_tm.tm_sec << "\""
+-			 << ", \"date\": \""
+-			 << std::setw(2) << utc_tm.tm_mday << "/" 
+-			 << std::setw(2) << utc_tm.tm_mon+1 << "/" 
+-			 << std::setw(4) << utc_tm.tm_year+1900
+-			 << "\"";
++        << ", \"date\": \"" << std::setw(2) << utc_tm.tm_mday << "/"
++        << std::setw(2) << utc_tm.tm_mon + 1 << "/" << std::setw(4)
++        << utc_tm.tm_year + 1900 << "\"";
+ 		}
+ 	str << ", \"create_millis\": " << create_millis
+-		 << ", \"receive_millis\": " << receive_millis
+-		 << ", \"pid\": " << pid 
++      << ", \"receive_millis\": " << receive_millis << ", \"pid\": " << pid
+ 		 << ", \"ip_address\": \"" << ip_address << "\""
+ 		 << ", \"machine_id\": \"" << machine_id << "\""
+ 		 << ", \"app_name\": \"" << app_name << "\""
+ 		 << ", \"app_version\": \"" << app_version << "\""
+ 		 << ", \"user_id\": \"" << user_id << "\""
+ 		 << ", \"server_status\": " << server_status
+-		 << ", \"connected\": " << connected
+-		 << "}";
++      << ", \"connected\": " << connected << "}";
+ 
+ 	return str.str();
+ 	}
+ 
+-void Snoop::LogEntry::from_json(const Json::Value& entry) 
+-	{
++void Snoop::LogEntry::from_json(const Json::Value &entry) {
+ 	// FIXME: if info is missing, catch the exception.
+ 	log_id        = entry["log_id"].asInt();
+ 	id            = entry["id"].asInt();
+@@ -873,8 +876,7 @@
+ 	server_status = entry["server_status"].asInt();
+ 	}
+ 
+-void Snoop::AppEntry::from_json(const Json::Value& entry)
+-	{
++void Snoop::AppEntry::from_json(const Json::Value &entry) {
+ 	// FIXME: if info is missing, catch the exception.
+ 	id            = entry["id"].asInt();
+ 	uuid          = entry["uuid"].asString();
 diff -aur -bZwB cadabra2-git.old/core/CMakeLists.txt cadabra2-git/core/CMakeLists.txt
---- cadabra2-git.old/core/CMakeLists.txt	2016-02-02 13:19:27.737458452 -0500
-+++ cadabra2-git/core/CMakeLists.txt	2016-02-02 13:19:37.057404853 -0500
+--- cadabra2-git.old/core/CMakeLists.txt	2016-02-20 07:47:46.411252738 -0500
++++ cadabra2-git/core/CMakeLists.txt	2016-02-20 07:48:29.464392244 -0500
 @@ -19,7 +19,8 @@
  set(Boost_USE_MULTITHREADED ON)
  set(Boost_USE_STATIC_RUNTIME OFF)
@@ -44,7 +913,7 @@ diff -aur -bZwB cadabra2-git.old/core/CMakeLists.txt cadabra2-git/core/CMakeList
  
  if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
      if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS 3.5)
-@@ -150,11 +151,11 @@
+@@ -157,11 +158,11 @@
  #set(SETUP_PY_IN "${CMAKE_CURRENT_SOURCE_DIR}/setup.py.in")
  #set(SETUP_PY    "${CMAKE_CURRENT_BINARY_DIR}/setup.py")
  #configure_file(${SETUP_PY_IN} ${SETUP_PY})
@@ -59,27 +928,29 @@ diff -aur -bZwB cadabra2-git.old/core/CMakeLists.txt cadabra2-git/core/CMakeList
  
  message("-- Python site path at ${python_site_path}")
 diff -aur -bZwB cadabra2-git.old/core/PythonCdb.cc cadabra2-git/core/PythonCdb.cc
---- cadabra2-git.old/core/PythonCdb.cc	2016-02-02 13:19:27.737458452 -0500
-+++ cadabra2-git/core/PythonCdb.cc	2016-02-02 13:19:37.060738167 -0500
-@@ -4,6 +4,7 @@
- // make boost::python understand std::shared_ptr when compiled with clang.
- // http://stackoverflow.com/questions/13986581/using-boost-python-stdshared-ptr
+--- cadabra2-git.old/core/PythonCdb.cc	2016-02-20 07:47:46.411252738 -0500
++++ cadabra2-git/core/PythonCdb.cc	2016-02-20 07:48:29.464392244 -0500
+@@ -6,15 +6,13 @@
  
+ // This now works on both Linux and OS X El Capitan, but your mileage may vary. 
+ //
+-#ifdef __clang__
+-  #ifdef __linux__
 +namespace boost {
- #if not defined(get_pointer)
  template<typename T>
  T *get_pointer(std::shared_ptr<T> p)
-@@ -11,6 +12,7 @@
+ 		{
  		return p.get();
  		}
- #endif
+-  #endif
+-#endif
 +}
  
  #include "Parser.hh"
  #include "Exceptions.hh"
 diff -aur -bZwB cadabra2-git.old/frontend/common/CMakeLists.txt cadabra2-git/frontend/common/CMakeLists.txt
---- cadabra2-git.old/frontend/common/CMakeLists.txt	2016-02-02 13:19:27.747458394 -0500
-+++ cadabra2-git/frontend/common/CMakeLists.txt	2016-02-02 13:19:42.164042159 -0500
+--- cadabra2-git.old/frontend/common/CMakeLists.txt	2016-02-20 07:47:46.417919375 -0500
++++ cadabra2-git/frontend/common/CMakeLists.txt	2016-02-20 07:48:29.464392244 -0500
 @@ -25,8 +25,11 @@
  endif()
  
@@ -93,8 +964,8 @@ diff -aur -bZwB cadabra2-git.old/frontend/common/CMakeLists.txt cadabra2-git/fro
 +install(TARGETS texengine LIBRARY DESTINATION "${INSTALL_LIB_DIR}")
 +
 diff -aur -bZwB cadabra2-git.old/frontend/gtkmm/CMakeLists.txt cadabra2-git/frontend/gtkmm/CMakeLists.txt
---- cadabra2-git.old/frontend/gtkmm/CMakeLists.txt	2016-02-02 13:19:27.747458394 -0500
-+++ cadabra2-git/frontend/gtkmm/CMakeLists.txt	2016-02-02 13:19:37.060738167 -0500
+--- cadabra2-git.old/frontend/gtkmm/CMakeLists.txt	2016-02-20 07:47:46.421252693 -0500
++++ cadabra2-git/frontend/gtkmm/CMakeLists.txt	2016-02-20 07:48:29.464392244 -0500
 @@ -14,7 +14,9 @@
  link_directories(${GTKMM3_LIBRARY_DIRS})
  add_definitions(${GTKMM3_CFLAGS_OTHER})
@@ -106,8 +977,8 @@ diff -aur -bZwB cadabra2-git.old/frontend/gtkmm/CMakeLists.txt cadabra2-git/fron
  find_package(Boost 1.45.0 COMPONENTS system)
  set(Boost_USE_STATIC_LIBS OFF)
 diff -aur -bZwB cadabra2-git.old/frontend/gtkmm/NotebookWindow.cc cadabra2-git/frontend/gtkmm/NotebookWindow.cc
---- cadabra2-git.old/frontend/gtkmm/NotebookWindow.cc	2016-02-02 13:19:27.747458394 -0500
-+++ cadabra2-git/frontend/gtkmm/NotebookWindow.cc	2016-02-02 13:19:37.060738167 -0500
+--- cadabra2-git.old/frontend/gtkmm/NotebookWindow.cc	2016-02-20 07:47:46.421252693 -0500
++++ cadabra2-git/frontend/gtkmm/NotebookWindow.cc	2016-02-20 07:48:29.467725563 -0500
 @@ -25,7 +25,7 @@
  #ifdef __APPLE__
  	scale = 1.0;

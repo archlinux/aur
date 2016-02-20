@@ -1,6 +1,6 @@
 # Maintainer: Tarn Burton <twburton at gmail dot com>
 pkgname='cadabra2-git'
-pkgver=r400.4c18228
+pkgver=r446.7f7f3e5
 pkgrel=1
 pkgdesc="A computer algebra system designed specifically for the solution of problems encountered in field theory."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('python2-matplotlib' 'python2-mpmath' 'gtkmm3' 'jsoncpp' 'mathjax' 'boo
 makedepends=('cmake' 'gcc' 'boost')
 source=("$pkgname::git+https://github.com/kpeeters/cadabra2" "package.patch" "cadabra.desktop")
 md5sums=('SKIP'
-         'de3e1d9c888cadac972cfd4e2102ba64'
+         '72e07bc6f0e5782feb10f91886cc556e'
          '04718d712ef65dbe5513ae674cc6ec33')
 install=package.install
 
