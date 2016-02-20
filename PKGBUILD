@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 246530 2015-09-17 21:02:15Z foutrelis $
+# $Id: PKGBUILD 259907 2016-02-17 16:23:50Z anatolik $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Sébastien "Seblu" Luttringer <seblu@seblu.net>
 #pkgbase=qemu
@@ -7,11 +7,10 @@
 #         'qemu-block-iscsi'
 #         'qemu-block-rbd'
 #         'qemu-block-gluster'
-#         'qemu-guest-agent'
-#         'libcacard')
+#         'qemu-guest-agent')
 pkgname='qemu-minimal'
-pkgver=2.4.0
-pkgrel=4
+pkgver=2.5.0
+pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
 url='http://wiki.qemu.org/'
@@ -30,7 +29,7 @@ source=(http://wiki.qemu.org/download/${pkgname:0:-8}-${pkgver}.tar.bz2
         qemu.sysusers
         qemu-ga.service
         65-kvm.rules)
-md5sums=('186ee8194140a484a455f8e3c74589f4'
+md5sums=('f469f2330bbe76e3e39db10e9ac4f8db'
          '49778d11c28af170c4bebcc648b0ace1'
          '44ee242d758f9318c6a1ea1dae96aa3a'
          '33ab286a20242dda7743a900f369d68a')
@@ -124,12 +123,6 @@ package() {
   # https://bugs.archlinux.org/task/32565
   chmod u+s usr/lib/qemu/qemu-bridge-helper
 
-#  # remove libcacard files
-#  rm -r usr/include/cacard
-#  rm usr/lib/libcacard*
-#  rm usr/lib/pkgconfig/libcacard.pc
-#  rm usr/bin/vscclient
-#
 #  # remove splitted block modules
 #  rm usr/lib/qemu/block-{iscsi,rbd,gluster}.so
 
@@ -191,20 +184,7 @@ package_qemu-guest-agent() {
   depends=('glibc' 'gcc-libs' 'glib2')
 
   install -D qemu-${pkgver}/qemu-ga "${pkgdir}"/usr/bin/qemu-ga
-  install -D qemu-ga.service "${pkgdir}"/usr/lib/systemd/system/qemu-ga.service
+  install -Dm644 qemu-ga.service "${pkgdir}"/usr/lib/systemd/system/qemu-ga.service
 }
-
-package_libcacard() {
- pkgdesc='Common Access Card (CAC) Emulation'
- depends=('glibc' 'nss' 'nspr' 'glib2')
-
-  cd "${pkgdir}"
-  install -d usr/{bin,lib/pkgconfig,include/cacard}
-  cp -a "${srcdir}"/qemu-${pkgver}/libcacard/*.h usr/include/cacard/
-  cp -a "${srcdir}"/qemu-${pkgver}/libcacard.pc usr/lib/pkgconfig/
-  cp -a "${srcdir}"/qemu-${pkgver}/.libs/vscclient usr/bin/
-  cp -a "${srcdir}"/qemu-${pkgver}/.libs/libcacard.so* usr/lib/
-}
-
 
 # vim:set ts=2 sw=2 et:
