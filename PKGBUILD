@@ -2,7 +2,7 @@
 
 _pkgname=bumblebeed-resume
 pkgname=bumblebeed-resume-git
-pkgver=20160217
+pkgver=20160220
 pkgrel=1
 pkgdesc="Simple systemd service for restart bumblebeed service after resume"
 arch=('any')
