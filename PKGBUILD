@@ -19,6 +19,6 @@ pkgver() {
 
 package() {
   cd $_gitname
-  ./exec/install "${pkgdir}"
+  ./exe/install "${pkgdir}"
   chmod 755 -R "${pkgdir}"
 }
