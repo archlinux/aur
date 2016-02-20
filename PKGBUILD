@@ -4,18 +4,17 @@
 pkgbase=openxcom-git
 pkgname=('openxcom-git' 'openxcom-docs-git')
 _gitname=OpenXcom
-pkgver=1.0_1928_g4f40084
+pkgver=1.0_1977_gbe78b8a
 pkgrel=1
+pkgdesc="An open-source reimplementation of the famous X-COM game (git-version)"
 arch=('i686' 'x86_64')
 url="http://openxcom.org/"
 license=('GPL3')
 makedepends=('git' 'xmlto' 'docbook-xml' 'docbook-xsl' 'doxygen' 'sdl_mixer'
              'sdl_gfx' 'sdl_image' 'sdl' 'yaml-cpp' 'libgl' 'gcc-libs' 'glibc'
              'boost' 'glu' 'cmake' 'hicolor-icon-theme')
-source=(git+"https://github.com/SupSuper/${_gitname}.git"
-        "openxcom.sh")
-sha256sums=('SKIP'
-            'e30fa48364c66e510825f18e406381811ddffb78b5e8641e6a147b613f36cdc0')
+source=(git+"https://github.com/SupSuper/${_gitname}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd $_gitname
@@ -44,11 +43,6 @@ package_openxcom-git() {
   cd $_gitname
 
   make DESTDIR="$pkgdir" install
-
-  # Move actual binary
-  mv "$pkgdir/usr/bin/openxcom" "$pkgdir/usr/share/openxcom/common/openxcom"
-  # Install wrapper script
-  install -Dm755 "$srcdir/openxcom.sh" "$pkgdir/usr/bin/openxcom"
 }
 
 package_openxcom-docs-git() {
