@@ -1,0 +1,13 @@
+[Unit]
+Description=LazyLibrarian
+
+[Service]
+ExecStart=/usr/bin/python2 /opt/lazylibrarian/LazyLibrarian.py --daemon --config /opt/lazylibrarian/lazylibrarian.ini --datadir /opt/lazylibrarian/.lazylibrarian --nolaunch --quiet
+GuessMainPID=no
+Type=forking
+User=lazylibrarian
+Group=lazylibrarian
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
