@@ -2,8 +2,8 @@
 
 pkgname=sound-theme-lbr-writer
 pkgver=1.0
-pkgrel=1
-pkgdesc="Sound theme for Linux desktop made by Japanimation voice actor 'TANGE Sakura' and OpenSourceSoftwareChannel. This is made for cheering LibreOffice"
+pkgrel=2
+pkgdesc="Sound theme for Linux desktop made by Japanimation voice actor 'TADOKORO Azusa' and OpenSourceSoftwareChannel. This is made for cheering LibreOffice"
 arch=('any')
 url="https://www.oss-ch.jp/lbr/"
 license=('custom')
