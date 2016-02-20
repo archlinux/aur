@@ -4,14 +4,14 @@
 
 pkgname=nvidia-bl
 pkgver=0.17.3
-pkgrel=8
+pkgrel=9
 pkgdesc="Driver to adjust display backlight on modern mobile NVidia graphics adapters."
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('linux>=3.8')
 makedepends=('linux-headers')
 install=nvidia-bl.install
-backup=etc/modprobe.d/nvidia_bl.conf
+backup=('etc/modprobe.d/nvidia_bl.conf')
 url="https://launchpad.net/~mactel-support/+archive/ppa"
 source=('nvidia_bl.c'
         'Makefile'
