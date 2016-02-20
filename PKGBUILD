@@ -5,11 +5,11 @@
 pkgname=hop
 pkgver=3.0.0_rc9
 _pkgver=${pkgver//_/-}
-pkgrel=2
+pkgrel=3
 pkgdesc="Software Development Kit for the Web"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
-depends=('bigloo-devel')
+depends=('bigloo')
 install=hop.install
 url='http://hop.inria.fr'
 source=("ftp://ftp-sop.inria.fr/indes/fp/Hop/$pkgname-${_pkgver}.tar.gz" hop)
