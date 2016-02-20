@@ -4,9 +4,9 @@
 
 pkgname=basic256
 pkgver=1.1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Educational BASIC programming environment"
-arch=('i686 x86_64')
+arch=('i686' 'x86_64')
 url="http://www.basic256.org/"
 license=('GPL2')
 depends=('qt5-base' 'qt5-multimedia' 'qt5-webkit' 'qt5-serialport' 'sdl_mixer' 'espeak')
