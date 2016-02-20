@@ -1,0 +1,1870 @@
+diff --git a/AUTHORS b/AUTHORS
+index c97ec8c..b60fb17 100644
+--- a/AUTHORS
++++ b/AUTHORS
+@@ -15,6 +15,8 @@ LXPanel - Lightweight X11 desktop panel
+     Piotr Sipika <piotr.sipika@gmail.com>
+     Raimar Bühmann <raimar@buehmann.de>
+     Peter <ombalaxitabou@users.sf.net>
++    Balló György <ballogyor@gmail.com>
++    Rafał Mużyło <galtgendo@gmail.com>
+ 
+ [History]
+ LXPanel is a derivative work from fbpanel [1] written by Anatoly Asviyan,
+diff --git a/ChangeLog b/ChangeLog
+index 1390eac..ee5f7f3 100644
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -1,3 +1,8 @@
++* Fixed crash in taskbar plugin after number of desktops was updated.
++* Fixed incorrect panel geometry initialization.
++* Fixed crash with invalid size of icon in _NET_WM_ICON property.
++* Fixed memory leak on 'indicator' plugin destruction.
++
+ 0.8.1
+ -------------------------------------------------------------------------
+ * Improved OSS headers detection a bit.
+diff --git a/TODO b/TODO
+index 1675b4c..413bf75 100644
+--- a/TODO
++++ b/TODO
+@@ -1,6 +1,7 @@
+ * drag & drop plugins via middle button
+ * "Move" option in plugin context menu
+ * "lxpanelctl command ..."
++* LXPanelPluginInit::activatable flag to allow activation with hotkey
+ * drag & drop launchers (LauncherButton widget as "application/x-lxpanel-launcher")
+ * accessibility (keys-only; single-button-mouse; special devices)
+ * 'volumealsa' improvements
+@@ -18,3 +19,6 @@
+ * merge 'volume' into 'volumealsa' to have the same interface
+ * support custom timezone in the 'dclock'
+ * decide 'netstat' vs 'netstatus'
++* optional libnotify support (useful for battery and volume plugins)
++* pull improvements from Raspbian
++* add Most Recent support into 'menu' plugin
+diff --git a/configure.ac b/configure.ac
+index b1080f9..3f4880b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -34,10 +34,12 @@ AC_HELP_STRING([--enable-gtk3],[enable to use gtk-3.0 instead of gtk-2.0]),
+ esac],[])
+ 
+ if test "x$enable_gtk3" = "xyes" ; then
+-  pkg_modules="$pkg_modules gtk+-3.0 libfm-gtk3 >= 1.2.0 libwnck-3.0"
++  gtk_module="gtk+-3.0"
++  pkg_modules="$pkg_modules $gtk_module libfm-gtk3 >= 1.2.0 libwnck-3.0"
+   keybinder_module=keybinder-3.0
+ else
+-  pkg_modules="$pkg_modules gtk+-2.0 >= 2.18.0 libfm-gtk >= 1.2.0 libwnck-1.0"
++  gtk_module="gtk+-2.0 >= 2.18.0"
++  pkg_modules="$pkg_modules $gtk_module libfm-gtk >= 1.2.0 libwnck-1.0"
+   keybinder_module=keybinder
+ fi
+ 
+@@ -48,6 +50,7 @@ pkg_modules="$pkg_modules \
+ PKG_CHECK_MODULES(PACKAGE, [$pkg_modules])
+ AC_SUBST(PACKAGE_CFLAGS)
+ AC_SUBST(PACKAGE_LIBS)
++AC_SUBST(gtk_module)
+ 
+ PKG_CHECK_MODULES(KEYBINDER, [$keybinder_module])
+ AC_SUBST(KEYBINDER_CFLAGS)
+diff --git a/data/ui/netstatus.glade b/data/ui/netstatus.glade
+index fc956d3..8dc995a 100644
+--- a/data/ui/netstatus.glade
++++ b/data/ui/netstatus.glade
+@@ -8,7 +8,6 @@
+     <property name="window_position">center</property>
+     <property name="default_width">300</property>
+     <property name="type_hint">dialog</property>
+-    <property name="has_separator">False</property>
+     <child internal-child="vbox">
+       <object class="GtkVBox" id="dialog-vbox2">
+         <property name="visible">True</property>
+diff --git a/lxpanel.pc.in b/lxpanel.pc.in
+index db34490..81ce11c 100644
+--- a/lxpanel.pc.in
++++ b/lxpanel.pc.in
+@@ -6,6 +6,6 @@ pluginsdir=${pkglibdir}/plugins
+ 
+ Name: lxpanel
+ Description: A lightweight X11 desktop panel
+-Requires: glib-2.0 libfm
++Requires: @gtk_module@ libfm >= 1.2.0
+ Version: @VERSION@
+ Libs: -L${pkglibdir} -llxpanel
+diff --git a/plugins/batt/batt.c b/plugins/batt/batt.c
+index 42eda69..4c081fd 100644
+--- a/plugins/batt/batt.c
++++ b/plugins/batt/batt.c
+@@ -5,6 +5,7 @@
+  * Copyright (C) 2008 by Hong Jen Yee <pcman.tw@gmail.com>
+  * Copyright (C) 2009 by Juergen Hoetzel <juergen@archlinux.org>
+  * Copyright (C) 2014 by Andriy Grytsenko <andrej@rep.kiev.ua>
++ *               2015 Balló György <ballogyor@gmail.com>
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+@@ -33,7 +34,6 @@
+ /* FIXME:
+  *  Here are somethings need to be improvec:
+  *  1. Replace pthread stuff with gthread counterparts for portability.
+- *  3. Add an option to hide the plugin when AC power is used or there is no battery.
+  *  4. Handle failure gracefully under systems other than Linux.
+ */
+ 
+@@ -84,6 +84,7 @@ typedef struct {
+         wasCharging,
+         width,
+         hide_if_no_battery;
++    int battery_number;
+     sem_t alarmProcessLock;
+     battery* b;
+     gboolean has_ac_adapter;
+@@ -149,8 +150,8 @@ static gchar* make_tooltip(lx_battery* lx_b, gboolean isCharging)
+         int left_seconds = lx_b->b->seconds - 3600 * hours;
+         int minutes = left_seconds / 60;
+         tooltip = g_strdup_printf(
+-                _("Battery: %d%% charged, %d:%02d until full"),
+-                lx_b->b->percentage,
++                _("Battery %d: %d%% charged, %d:%02d until full"),
++                lx_b->battery_number, lx_b->b->percentage,
+                 hours,
+                 minutes );
+     } else {
+@@ -160,14 +161,14 @@ static gchar* make_tooltip(lx_battery* lx_b, gboolean isCharging)
+             int left_seconds = lx_b->b->seconds - 3600 * hours;
+             int minutes = left_seconds / 60;
+             tooltip = g_strdup_printf(
+-                    _("Battery: %d%% charged, %d:%02d left"),
+-                    lx_b->b->percentage,
++                    _("Battery %d: %d%% charged, %d:%02d left"),
++                    lx_b->battery_number, lx_b->b->percentage,
+                     hours,
+                     minutes );
+         } else {
+             tooltip = g_strdup_printf(
+-                    _("Battery: %d%% charged"),
+-                    100 );
++                    _("Battery %d: %d%% charged"),
++                    lx_b->battery_number, 100 );
+         }
+     }
+ 
+@@ -331,7 +332,7 @@ static int update_timout(lx_battery *lx_b) {
+         battery_free(lx_b->b);
+ 
+         /* maybe in the mean time a battery has been inserted. */
+-        lx_b->b = battery_get();
++        lx_b->b = battery_get(lx_b->battery_number);
+     }
+ 
+     update_display( lx_b, TRUE );
+@@ -396,6 +397,10 @@ static gint configureEvent(GtkWidget *widget, GdkEventConfigure *event,
+ static gint exposeEvent(GtkWidget *widget, GdkEventExpose *event, lx_battery *lx_b) {
+ 
+     ENTER;
++
++#if GTK_CHECK_VERSION(3, 0, 0)
++    cairo_set_source_rgb(cr, 0, 0, 0); // FIXME: set black color from the style
++#else
+     cairo_t *cr = gdk_cairo_create(gtk_widget_get_window(widget));
+     GtkStyle *style = gtk_widget_get_style(lx_b->drawingArea);
+ 
+@@ -403,11 +408,14 @@ static gint exposeEvent(GtkWidget *widget, GdkEventExpose *event, lx_battery *lx
+     cairo_clip(cr);
+ 
+     gdk_cairo_set_source_color(cr, &style->black);
++#endif
+     cairo_set_source_surface(cr, lx_b->pixmap, 0, 0);
+     cairo_paint(cr);
+ 
+     check_cairo_status(cr);
++#if !GTK_CHECK_VERSION(3, 0, 0)
+     cairo_destroy(cr);
++#endif
+ 
+     RET(FALSE);
+ }
+@@ -436,8 +444,10 @@ static GtkWidget * constructor(LXPanel *panel, config_setting_t *settings)
+ 
+     lx_b = g_new0(lx_battery, 1);
+ 
+-    /* get available battery */
+-    lx_b->b = battery_get ();
++    /* get requested battery */
++    if (config_setting_lookup_int(settings, "BatteryNumber", &tmp_int))
++        lx_b->battery_number = MAX(0, tmp_int);
++    lx_b->b = battery_get(lx_b->battery_number);
+ 
+     p = gtk_event_box_new();
+     lxpanel_plugin_set_data(p, lx_b, destructor);
+@@ -507,12 +517,17 @@ static GtkWidget * constructor(LXPanel *panel, config_setting_t *settings)
+ 
+     g_signal_connect (G_OBJECT (lx_b->drawingArea),"configure-event",
+           G_CALLBACK (configureEvent), (gpointer) lx_b);
++#if GTK_CHECK_VERSION(3, 0, 0)
++    g_signal_connect (G_OBJECT (lx_b->drawingArea), "draw",
++          G_CALLBACK(draw), (gpointer) lx_b);
++#else
+     g_signal_connect (G_OBJECT (lx_b->drawingArea), "expose-event",
+           G_CALLBACK (exposeEvent), (gpointer) lx_b);
++#endif
+ 
+     /* Apply more default options */
+     if (! lx_b->alarmCommand)
+-        lx_b->alarmCommand = g_strconcat("xmessage ", _("Battery low"), NULL);
++        lx_b->alarmCommand = g_strconcat("notify-send \"", _("Battery low"), "\" --icon=battery-caution", NULL);
+     if (! lx_b->backgroundColor)
+         lx_b->backgroundColor = g_strdup("black");
+     if (! lx_b->chargingColor1)
+@@ -599,6 +614,10 @@ static gboolean applyConfig(gpointer user_data)
+ 
+     lx_battery *b = lxpanel_plugin_get_data(user_data);
+ 
++    /* Update the battery we monitor */
++    battery_free(b->b);
++    b->b = battery_get(b->battery_number);
++
+     /* Update colors */
+     if (b->backgroundColor &&
+             gdk_color_parse(b->backgroundColor, &b->background))
+@@ -654,6 +673,9 @@ static gboolean applyConfig(gpointer user_data)
+     config_group_set_int(b->settings, "Size", b->thickness);
+     config_group_set_int(b->settings, "ShowExtendedInformation",
+                          b->show_extended_information);
++    config_group_set_int(b->settings, "BatteryNumber", b->battery_number);
++
++    update_display(b, TRUE);
+ 
+     RET(FALSE);
+ }
+@@ -676,6 +698,7 @@ static GtkWidget *config(LXPanel *panel, GtkWidget *p) {
+             "", panel_config_int_button_new(_("Size"), (int *)&b->thickness,
+                                             1, 50), CONF_TYPE_EXTERNAL,
+             _("Show Extended Information"), &b->show_extended_information, CONF_TYPE_BOOL,
++            _("Number of battery to monitor"), &b->battery_number, CONF_TYPE_INT,
+             NULL);
+ }
+ 
+diff --git a/plugins/batt/batt_sys.c b/plugins/batt/batt_sys.c
+index 96a56b5..3c2ccae 100644
+--- a/plugins/batt/batt_sys.c
++++ b/plugins/batt/batt_sys.c
+@@ -2,6 +2,7 @@
+  *      batt_sys.h
+  *
+  *      Copyright 2009 Juergen Hötzel <juergen@archlinux.org>
++ *                2015 Henry Gebhardt <hsggebhardt@googlemail.com>
+  *
+  * 	Parts shameless stolen and glibified from acpi package
+  * 	Copyright (C) 2001  Grahame Bowland <grahame@angrygoats.net>
+@@ -63,7 +64,7 @@ static gchar* parse_info_file(battery *b, char *sys_file)
+ {
+     char *buf = NULL;
+     gchar *value = NULL;
+-    GString *filename = g_string_new(ACPI_PATH_SYS_POWER_SUPPY);
++    GString *filename = g_string_new(ACPI_PATH_SYS_POWER_SUPPLY);
+ 
+     g_string_append_printf (filename, "/%s/%s", b->path, sys_file);
+ 
+@@ -148,7 +149,7 @@ static gboolean battery_inserted(gchar* path)
+     if (path == NULL)
+         return FALSE;
+ 
+-    GString *dirname = g_string_new(ACPI_PATH_SYS_POWER_SUPPY);
++    GString *dirname = g_string_new(ACPI_PATH_SYS_POWER_SUPPLY);
+     GDir *dir;
+ 
+     g_string_append_printf (dirname, "/%s/", path);
+@@ -286,29 +287,68 @@ battery* battery_update(battery *b)
+ }
+ 
+ 
+-battery *battery_get() {
++battery *battery_get(int battery_number) {
+     GError * error = NULL;
+     const gchar *entry;
+-    GDir * dir = g_dir_open( ACPI_PATH_SYS_POWER_SUPPY, 0, &error );
++    gchar *batt_name = NULL;
++    gchar *batt_path = NULL;
++    GDir * dir = g_dir_open( ACPI_PATH_SYS_POWER_SUPPLY, 0, &error );
+     battery *b = NULL;
++    int i;
++
+     if ( dir == NULL )
+     {
+         g_warning( "NO ACPI/sysfs support in kernel: %s", error->message );
+         return NULL;
+     }
++
++    /* Try the expected path in sysfs first */
++    batt_name = g_strdup_printf(ACPI_BATTERY_DEVICE_NAME "%d", battery_number);
++    batt_path = g_strdup_printf(ACPI_PATH_SYS_POWER_SUPPLY "/%s", batt_name);
++    if (g_file_test(batt_path, G_FILE_TEST_IS_DIR) == TRUE) {
++        b = battery_new();
++        b->path = g_strdup( batt_name);
++        battery_update ( b );
++
++        if (!b->type_battery) {
++            g_warning( "Not a battery: %s", batt_path );
++            g_free(b);
++            b = NULL;
++        }
++    }
++
++    g_free(batt_name);
++    g_free(batt_path);
++
++    if (b != NULL)
++        goto done;
++
++    /*
++     * We didn't find the expected path in sysfs.
++     * Walk the dir and blindly return n-th entry.
++     */
++    i = 0;
+     while ( ( entry = g_dir_read_name (dir) ) != NULL )
+     {
+         b = battery_new();
+         b->path = g_strdup( entry );
+         battery_update ( b );
+-        if ( b->type_battery == TRUE )
+-            break;
+-        /* ignore non-batteries */
+-        else {
+-            g_free(b);
+-            b = NULL;
++
++        /* We're looking for a battery with the selected ID */
++        if (b->type_battery == TRUE) {
++            if (i == battery_number)
++                break;
++            i++;
+         }
++        g_free(b);
++        b = NULL;
+     }
++    if (b != NULL)
++        g_warning( "Battery entry " ACPI_BATTERY_DEVICE_NAME "%d not found, using %s",
++            battery_number, b->path);
++    else
++        g_warning( "Battery %d not found", battery_number );
++done:
+     g_dir_close( dir );
+     return b;
+ }
+diff --git a/plugins/batt/batt_sys.h b/plugins/batt/batt_sys.h
+index ad2bdbe..b7d4163 100644
+--- a/plugins/batt/batt_sys.h
++++ b/plugins/batt/batt_sys.h
+@@ -25,7 +25,8 @@
+ 
+ 
+ #define BUF_SIZE 1024
+-#define ACPI_PATH_SYS_POWER_SUPPY   "/sys/class/power_supply"
++#define ACPI_PATH_SYS_POWER_SUPPLY  "/sys/class/power_supply"
++#define ACPI_BATTERY_DEVICE_NAME    "BAT"
+ #define MIN_CAPACITY	 0.01
+ #define MIN_PRESENT_RATE 0.01
+ #define BATTERY_DESC	"Battery"
+@@ -54,7 +55,7 @@ typedef struct battery {
+     int type_battery;
+ } battery;
+ 
+-battery *battery_get();
++battery *battery_get(int);
+ battery *battery_update( battery *b );
+ void battery_print(battery *b, int show_capacity);
+ gboolean battery_is_charging( battery *b );
+diff --git a/plugins/cpu/cpu.c b/plugins/cpu/cpu.c
+index 721aa9d..0d941d5 100644
+--- a/plugins/cpu/cpu.c
++++ b/plugins/cpu/cpu.c
+@@ -1,7 +1,18 @@
+-/**
++/*
+  * CPU usage plugin to lxpanel
+  *
+- * Copyright (c) 2008-2014 LxDE Developers, see the file AUTHORS for details.
++ * Copyright (C) 2006-2008 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
++ *               2006-2008 Jim Huang <jserv.tw@gmail.com>
++ *               2009 Marty Jack <martyj19@comcast.net>
++ *               2009 Jürgen Hötzel <juergen@archlinux.org>
++ *               2012 Rafał Mużyło <galtgendo@gmail.com>
++ *               2012-2013 Henry Gebhardt <hsggebhardt@gmail.com>
++ *               2013 Marko Rauhamaa <marko@pacujo.net>
++ *               2014 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *               2015 Rafał Mużyło <galtgendo@gmail.com>
++ *
++ * This file is a part of LXPanel project.
++ *
+  * Copyright (C) 2004 by Alexandre Pereira da Silva <alexandre.pereira@poli.usp.br>
+  *
+  * This program is free software; you can redistribute it and/or modify
+@@ -59,7 +70,11 @@ typedef struct {
+ static void redraw_pixmap(CPUPlugin * c);
+ static gboolean cpu_update(CPUPlugin * c);
+ static gboolean configure_event(GtkWidget * widget, GdkEventConfigure * event, CPUPlugin * c);
++#if !GTK_CHECK_VERSION(3, 0, 0)
+ static gboolean expose_event(GtkWidget * widget, GdkEventExpose * event, CPUPlugin * c);
++#else
++static gboolean draw(GtkWidget * widget, cairo_t * cr, CPUPlugin * c);
++#endif
+ 
+ static void cpu_destructor(gpointer user_data);
+ 
+@@ -207,22 +222,32 @@ static gboolean configure_event(GtkWidget * widget, GdkEventConfigure * event, C
+ }
+ 
+ /* Handler for expose_event on drawing area. */
++#if !GTK_CHECK_VERSION(3, 0, 0)
+ static gboolean expose_event(GtkWidget * widget, GdkEventExpose * event, CPUPlugin * c)
++#else
++static gboolean draw(GtkWidget * widget, cairo_t * cr, CPUPlugin * c)
++#endif
+ {
+     /* Draw the requested part of the pixmap onto the drawing area.
+      * Translate it in both x and y by the border size. */
+     if (c->pixmap != NULL)
+     {
++#if !GTK_CHECK_VERSION(3, 0, 0)
+         cairo_t * cr = gdk_cairo_create(gtk_widget_get_window(widget));
+         GtkStyle * style = gtk_widget_get_style(c->da);
+         gdk_cairo_region(cr, event->region);
+         cairo_clip(cr);
+         gdk_cairo_set_source_color(cr, &style->black);
++#else
++        cairo_set_source_rgb(cr, 0, 0, 0); // FIXME: use black color from style
++#endif
+         cairo_set_source_surface(cr, c->pixmap,
+               BORDER_SIZE, BORDER_SIZE);
+         cairo_paint(cr);
+         /* check_cairo_status(cr); */
++#if !GTK_CHECK_VERSION(3, 0, 0)
+         cairo_destroy(cr);
++#endif
+     }
+     return FALSE;
+ }
+@@ -251,7 +276,11 @@ static GtkWidget *cpu_constructor(LXPanel *panel, config_setting_t *settings)
+ 
+     /* Connect signals. */
+     g_signal_connect(G_OBJECT(c->da), "configure-event", G_CALLBACK(configure_event), (gpointer) c);
++    #if !GTK_CHECK_VERSION(3, 0, 0)
+     g_signal_connect(G_OBJECT(c->da), "expose-event", G_CALLBACK(expose_event), (gpointer) c);
++    #else
++    g_signal_connect(G_OBJECT(c->da), "draw", G_CALLBACK(draw), (gpointer) c);
++    #endif
+ 
+     /* Show the widget.  Connect a timer to refresh the statistics. */
+     gtk_widget_show(c->da);
+diff --git a/plugins/dclock.c b/plugins/dclock.c
+index 53f972f..57bf5b7 100644
+--- a/plugins/dclock.c
++++ b/plugins/dclock.c
+@@ -1,5 +1,16 @@
+-/**
+- * Copyright (c) 2006-2014 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2006-2008 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
++ *               2006 Jim Huang <jserv.tw@gmail.com>
++ *               2008 Fred Chien <fred@lxde.org>
++ *               2009 Ying-Chun Liu (PaulLiu) <grandpaul@gmail.com>
++ *               2009-2010 Marty Jack <martyj19@comcast.net>
++ *               2010 Julien Lavergne <julien.lavergne@gmail.com>
++ *               2012 Michael Rawson <michaelrawson76@gmail.com>
++ *               2012-2014 Henry Gebhardt <hsggebhardt@gmail.com>
++ *               2012 Piotr Sipika <Piotr.Sipika@gmail.com>
++ *               2014-2015 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/plugins/deskno/deskno.c b/plugins/deskno/deskno.c
+index e3bd1be..ebc6215 100644
+--- a/plugins/deskno/deskno.c
++++ b/plugins/deskno/deskno.c
+@@ -1,7 +1,12 @@
+-/**
++/*
+  * Desktop number plugin to lxpanel
+  *
+- * Copyright (c) 2008-2014 LxDE Developers, see the file AUTHORS for details.
++ * Copyright (C) 2006 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
++ *               2006 Jim Huang <jserv.tw@gmail.com>
++ *               2009 Marty Jack <martyj19@comcast.net>
++ *               2014 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+@@ -101,6 +106,30 @@ static gboolean deskno_button_press_event(GtkWidget * widget, GdkEventButton * e
+     return TRUE;
+ }
+ 
++/* Handler for scroll events on the plugin */
++static gboolean deskno_scrolled(GtkWidget * p, GdkEventScroll * ev, DesknoPlugin * dc)
++{
++    int desknum = get_net_current_desktop();
++    int desks = get_net_number_of_desktops();
++
++    switch (ev->direction) {
++        case GDK_SCROLL_DOWN:
++            desknum++;
++            break;
++        case GDK_SCROLL_UP:
++            desknum--;
++            break;
++        default:
++            return FALSE;
++    }
++
++    if (desknum < 0 || desknum >= desks)
++        return TRUE;
++
++    Xclimsg(GDK_ROOT_WINDOW(), a_NET_CURRENT_DESKTOP, desknum, 0, 0, 0, 0);
++    return TRUE;
++}
++
+ /* Plugin constructor. */
+ static GtkWidget *deskno_constructor(LXPanel *panel, config_setting_t *settings)
+ {
+@@ -135,6 +164,9 @@ static GtkWidget *deskno_constructor(LXPanel *panel, config_setting_t *settings)
+     g_signal_connect(G_OBJECT(fbev), "desktop-names", G_CALLBACK(deskno_redraw), (gpointer) dc);
+     g_signal_connect(G_OBJECT(fbev), "number-of-desktops", G_CALLBACK(deskno_redraw), (gpointer) dc);
+ 
++    gtk_widget_add_events(p, GDK_SCROLL_MASK);
++    g_signal_connect(G_OBJECT(p), "scroll-event", G_CALLBACK(deskno_scrolled), (gpointer) dc);
++
+     /* Initialize value and show the widget. */
+     deskno_redraw(NULL, dc);
+     gtk_widget_show_all(p);
+@@ -145,10 +177,12 @@ static GtkWidget *deskno_constructor(LXPanel *panel, config_setting_t *settings)
+ static void deskno_destructor(gpointer user_data)
+ {
+     DesknoPlugin * dc = (DesknoPlugin *) user_data;
++    GtkWidget * p = gtk_widget_get_parent(dc->label);
+ 
+     /* Disconnect signal from window manager event object. */
+     g_signal_handlers_disconnect_by_func(G_OBJECT(fbev), deskno_name_update, dc);
+     g_signal_handlers_disconnect_by_func(G_OBJECT(fbev), deskno_redraw, dc);
++    g_signal_handlers_disconnect_by_func(G_OBJECT(p), deskno_scrolled, dc);
+ 
+     /* Deallocate all memory. */
+     if (dc->desktop_labels != NULL)
+diff --git a/plugins/dirmenu.c b/plugins/dirmenu.c
+index 125b5e1..14ac92c 100644
+--- a/plugins/dirmenu.c
++++ b/plugins/dirmenu.c
+@@ -1,5 +1,13 @@
+-/**
+- * Copyright (c) 2006-2014 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2006-2008 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
++ *               2006 Jim Huang <jserv.tw@gmail.com>
++ *               2008 Fred Chien <fred@lxde.org>
++ *               2009-2010 Marty Jack <martyj19@comcast.net>
++ *               2010 Julien Lavergne <julien.lavergne@gmail.com>
++ *               2013 Henry Gebhardt <hsggebhardt@gmail.com>
++ *               2014 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/plugins/indicator/indicator.c b/plugins/indicator/indicator.c
+index c19d384..615aa02 100644
+--- a/plugins/indicator/indicator.c
++++ b/plugins/indicator/indicator.c
+@@ -93,6 +93,8 @@ static const gchar * indicator_env[] = {
+   NULL
+ };
+ 
++static void indicator_destructor(gpointer user_data);
++
+ static gint
+ name2order (const gchar * name, const gchar * hint) {
+   int i;
+@@ -739,7 +741,7 @@ static GtkWidget *indicator_constructor(LXPanel *panel, config_setting_t *settin
+ 
+     /* Allocate top level widget and set into Plugin widget pointer. */
+     p = gtk_event_box_new();
+-    lxpanel_plugin_set_data(p, indicator, g_free);
++    lxpanel_plugin_set_data(p, indicator, indicator_destructor);
+ 
+     gtk_rc_parse_string (
+         "style \"indicator-applet-style\"\n"
+@@ -791,13 +793,9 @@ static GtkWidget *indicator_constructor(LXPanel *panel, config_setting_t *settin
+ 
+     gtk_container_set_border_width(GTK_CONTAINER(indicator->menubar), 0);
+ 
+-    /* load 'em */
+-    indicator_load_modules(panel, p);
+-
+     return p;
+ }
+ 
+-#if 0
+ /* Plugin destructor. */
+ static void indicator_destructor(gpointer user_data)
+ {
+@@ -807,7 +805,6 @@ static void indicator_destructor(gpointer user_data)
+     g_object_unref(indicator->menubar);
+     g_free(indicator);
+ }
+-#endif
+ 
+ /* Callback when panel configuration changes. */
+ static void indicator_panel_configuration_changed(LXPanel *panel, GtkWidget *p)
+diff --git a/plugins/kbled/kbled.c b/plugins/kbled/kbled.c
+index 34165e0..511dad8 100644
+--- a/plugins/kbled/kbled.c
++++ b/plugins/kbled/kbled.c
+@@ -1,5 +1,12 @@
+-/**
+- * Copyright (c) 2006-2014 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2008 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
++ *               2008 Fred Chien <fred@lxde.org>
++ *               2009 Marty Jack <martyj19@comcast.net>
++ *               2012 Michael Rawson <michaelrawson76@gmail.com>
++ *               2012 Julien Lavergne <julien.lavergne@gmail.com>
++ *               2014 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/plugins/launchtaskbar.c b/plugins/launchtaskbar.c
+index 062e149..22d197f 100644
+--- a/plugins/launchtaskbar.c
++++ b/plugins/launchtaskbar.c
+@@ -1,5 +1,25 @@
+-/**
+- * Copyright (c) 2006-2014 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2006-2009 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
++ *               2006-2008 Jim Huang <jserv.tw@gmail.com>
++ *               2008 Fred Chien <fred@lxde.org>
++ *               2009 Andrew Lee <ajqlee@debian.org>
++ *               2009 Jürgen Hötzel <juergen@archlinux.org>
++ *               2009 Ying-Chun Liu (PaulLiu) <grandpaul@gmail.com>
++ *               2009-2010 Marty Jack <martyj19@comcast.net>
++ *               2010 Julien Lavergne <julien.lavergne@gmail.com>
++ *               2011-2014 Henry Gebhardt <hsggebhardt@gmail.com>
++ *               2012 Piotr Sipika <Piotr.Sipika@gmail.com>
++ *               2012-2014 Giuseppe Penone <giuspen@gmail.com>
++ *               2013 Vincenzo di Cicco <enzodicicco@gmail.com>
++ *               2013 Rouslan <rouslan-k@users.sourceforge.net>
++ *               2014-2015 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *               2014 Vladimír Pýcha <vpycha@gmail.com>
++ *               2014 Raimar Bühmann <raimar@buehmann.de>
++ *               2014 Andy Balaam <axis3x3@users.sf.net>
++ *               2015 Balló György <ballogyor@gmail.com>
++ *               2015 Rafał Mużyło <galtgendo@gmail.com>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+@@ -1909,6 +1929,7 @@ static void task_delete(LaunchTaskBarPlugin * tb, Task * tk, gboolean unlink, gb
+ 
+ /* Get a pixbuf from a pixmap.
+  * Originally from libwnck, Copyright (C) 2001 Havoc Pennington. */
++#if !GTK_CHECK_VERSION(3, 0, 0)
+ static GdkPixbuf * _wnck_gdk_pixbuf_get_from_pixmap(GdkScreen *screen, Pixmap xpixmap, int width, int height)
+ {
+     /* Get the drawable. */
+@@ -1958,6 +1979,50 @@ static GdkPixbuf * _wnck_gdk_pixbuf_get_from_pixmap(GdkScreen *screen, Pixmap xp
+         g_object_unref(G_OBJECT(drawable));
+     return retval;
+ }
++#else
++static GdkPixbuf * _wnck_gdk_pixbuf_get_from_pixmap(GdkScreen *screen, Pixmap xpixmap, int width, int height)
++{
++  cairo_surface_t *surface;
++  GdkPixbuf *pixbuf;
++  Display *xdisplay;
++  Window root_return;
++  XWindowAttributes attrs;
++
++  surface = NULL;
++  xdisplay = GDK_DISPLAY_XDISPLAY(gdk_display_get_default());
++
++
++  gdk_error_trap_push();
++
++  if (!XGetWindowAttributes (xdisplay, root_return, &attrs))
++    goto TRAP_POP;
++
++  if (attrs.depth == 1)
++    {
++      surface = cairo_xlib_surface_create_for_bitmap (xdisplay,
++                                                      xpixmap,
++                                                      attrs.screen,
++                                                      width,
++                                                      height);
++    }
++  else
++    {
++      surface = cairo_xlib_surface_create (xdisplay,
++                                           xpixmap,
++                                           attrs.visual,
++                                           width, height);
++    }
++
++  pixbuf = gdk_pixbuf_get_from_surface (surface, 0, 0, width, height);
++  cairo_surface_destroy (surface);
++
++TRAP_POP:
++  gdk_flush();
++  gdk_error_trap_pop();
++
++  return pixbuf;
++}
++#endif
+ 
+ /* Apply a mask to a pixbuf.
+  * Originally from libwnck, Copyright (C) 2001 Havoc Pennington. */
+@@ -2057,8 +2122,9 @@ static GdkPixbuf * get_wm_icon(Window task_win, guint required_width,
+                 gulong size = w * h;
+                 pdata += 2;
+ 
+-                /* Bounds check the icon. */
+-                if (pdata + size > pdata_end)
++                /* Bounds check the icon. Also check for invalid width and height,
++                   see http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=801319 */
++                if (size == 0 || w > 1024 || h > 1024 || pdata + size > pdata_end)
+                     break;
+ 
+                 /* Rare special case: the desired size is the same as icon size. */
+@@ -2800,6 +2866,9 @@ static void task_build_gui(LaunchTaskBarPlugin * tb, Task * tk)
+         gtk_widget_set_state(tk->button, GTK_STATE_NORMAL);
+     gtk_drag_dest_set(tk->button, 0, NULL, 0, 0);
+     gtk_drag_source_set(tk->button, GDK_BUTTON1_MASK, task_button_target_list, task_button_n_targets, GDK_ACTION_MOVE);
++#if GTK_CHECK_VERSION(3, 0, 0)
++    gtk_widget_add_events(tk->button, GDK_SCROLL_MASK);
++#endif
+ 
+     /* Connect signals to the button. */
+     g_signal_connect(tk->button, "button-press-event", G_CALLBACK(taskbar_button_press_event), (gpointer) tk);
+@@ -3348,6 +3417,8 @@ static void taskbar_make_menu(LaunchTaskBarPlugin * tb)
+     /* Deallocate old menu if present. */
+     if (tb->menu != NULL)
+         gtk_widget_destroy(tb->menu);
++    /* The pointer to menu became invalid, reset it now. */
++    tb->workspace_menu0 = NULL;
+ 
+     /* Allocate menu. */
+     GtkWidget * menu = gtk_menu_new();
+diff --git a/plugins/menu.c b/plugins/menu.c
+index dd738f8..37c8a3a 100644
+--- a/plugins/menu.c
++++ b/plugins/menu.c
+@@ -1,5 +1,18 @@
+-/**
+- * Copyright (c) 2006-2014 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2006-2010 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
++ *               2006-2008 Jim Huang <jserv.tw@gmail.com>
++ *               2008 Fred Chien <fred@lxde.org>
++ *               2009 Ying-Chun Liu (PaulLiu) <grandpaul@gmail.com>
++ *               2009-2010 Marty Jack <martyj19@comcast.net>
++ *               2010 Jürgen Hötzel <juergen@archlinux.org>
++ *               2010-2011 Julien Lavergne <julien.lavergne@gmail.com>
++ *               2012-2013 Henry Gebhardt <hsggebhardt@gmail.com>
++ *               2012 Michael Rawson <michaelrawson76@gmail.com>
++ *               2014 Max Krummenacher <max.oss.09@gmail.com>
++ *               2014 SHiNE CsyFeK <csyfek@users.sourceforge.net>
++ *               2014 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/plugins/monitors/monitors.c b/plugins/monitors/monitors.c
+index f491bf3..403930b 100644
+--- a/plugins/monitors/monitors.c
++++ b/plugins/monitors/monitors.c
+@@ -6,6 +6,12 @@
+  * A lot of code in this plugin comes from the CPU plugin (that only displays a
+  * CPU monitor), that is distributed under the following terms :
+  *
++ * Copyright (C) 2010 Cyril Roelandt <steap@users.sourceforge.net>
++ *               2012-2014 Henry Gebhardt <hsggebhardt@googlemail.com>
++ *               2012 Rafał Mużyło <galtgendo@gmail.com>
++ *               2014 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *               2015 Rafał Mużyło <galtgendo@gmail.com>
++ *
+  * <terms>
+  * Copyright (c) 2008-2014 LxDE Developers, see the file AUTHORS for details.
+  * Copyright (C) 2004 by Alexandre Pereira da Silva <alexandre.pereira@poli.usp.br>
+@@ -144,7 +150,11 @@ static void     mem_tooltip_update (Monitor *m);
+ 
+ 
+ static gboolean configure_event(GtkWidget*, GdkEventConfigure*, gpointer);
++#if !GTK_CHECK_VERSION(3, 0, 0)
+ static gboolean expose_event(GtkWidget *, GdkEventExpose *, Monitor *);
++#else
++static gboolean draw(GtkWidget *, cairo_t *, Monitor *);
++#endif
+ static void redraw_pixmap (Monitor *m);
+ 
+ /* Monitors functions */
+@@ -169,8 +179,13 @@ monitor_init(MonitorsPlugin *mp, Monitor *m, gchar *color)
+     /* Signals */
+     g_signal_connect(G_OBJECT(m->da), "configure-event",
+         G_CALLBACK(configure_event), (gpointer) m);
++#if !GTK_CHECK_VERSION(3, 0, 0)
+     g_signal_connect (G_OBJECT(m->da), "expose-event",
+         G_CALLBACK(expose_event), (gpointer) m);
++#else
++    g_signal_connect (G_OBJECT(m->da), "draw",
++        G_CALLBACK(draw), (gpointer) m);
++#endif
+     /* g_signal_connect(G_OBJECT(m->da), "button-press-event",
+                     G_CALLBACK(plugin_button_press_event), p); */
+ 
+@@ -465,22 +480,33 @@ configure_event(GtkWidget* widget, GdkEventConfigure* dummy, gpointer data)
+     return TRUE;
+ }
+ 
++#if !GTK_CHECK_VERSION(3, 0, 0)
+ static gboolean
+ expose_event(GtkWidget * widget, GdkEventExpose * event, Monitor *m)
++#else
++static gboolean
++draw(GtkWidget * widget, cairo_t * cr, Monitor *m)
++#endif
+ {
+     /* Draw the requested part of the pixmap onto the drawing area.
+      * Translate it in both x and y by the border size. */
+     if (m->pixmap != NULL)
+     {
++#if !GTK_CHECK_VERSION(3, 0, 0)
+         cairo_t *cr = gdk_cairo_create(gtk_widget_get_window(widget));
+         GtkStyle *style = gtk_widget_get_style(m->da);
+         gdk_cairo_region(cr, event->region);
+         cairo_clip(cr);
+         gdk_cairo_set_source_color(cr, &style->black);
++#else
++        cairo_set_source_rgb(cr, 0, 0, 0); // FIXME: set the color from style
++#endif
+         cairo_set_source_surface(cr, m->pixmap, BORDER_SIZE, BORDER_SIZE);
+         cairo_paint(cr);
+         check_cairo_status(cr);
++#if !GTK_CHECK_VERSION(3, 0, 0)
+         cairo_destroy(cr);
++#endif
+     }
+ 
+     return FALSE;
+diff --git a/plugins/netstat/devproc.c b/plugins/netstat/devproc.c
+index 3ffb7ac..7fa0c11 100644
+--- a/plugins/netstat/devproc.c
++++ b/plugins/netstat/devproc.c
+@@ -1,5 +1,9 @@
+-/**
+- * Copyright (c) 2008 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2008 Fred Chien <fred@lxde.org>
++ *               2012 Henry Gebhardt <hsggebhardt@gmail.com>
++ *               2014-2015 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/plugins/netstat/lxnm_client.c b/plugins/netstat/lxnm_client.c
+index 360aaa3..0b1ca9f 100644
+--- a/plugins/netstat/lxnm_client.c
++++ b/plugins/netstat/lxnm_client.c
+@@ -1,5 +1,8 @@
+-/**
+- * Copyright (c) 2008 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2008 Fred Chien <fred@lxde.org>
++ *               2012 Henry Gebhardt <hsggebhardt@gmail.com>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/plugins/netstat/netstat.c b/plugins/netstat/netstat.c
+index c712e87..f0764ad 100644
+--- a/plugins/netstat/netstat.c
++++ b/plugins/netstat/netstat.c
+@@ -1,5 +1,9 @@
+-/**
+- * Copyright (c) 2008-2014 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2008 Fred Chien <fred@lxde.org>
++ *               2012 Michael Rawson <michaelrawson76@gmail.com>
++ *               2014 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+@@ -193,7 +197,11 @@ wireless_menu(netdev_info *ni)
+ 
+             signal_quality = gtk_progress_bar_new();
+             gtk_widget_set_size_request(signal_quality, 100, -1);
++#if GTK_CHECK_VERSION(3, 0, 0)
++            gtk_orientable_set_orientation(GTK_ORIENTABLE(signal_quality), GTK_ORIENTATION_HORIZONTAL);
++#else
+             gtk_progress_bar_set_orientation(GTK_PROGRESS_BAR(signal_quality), GTK_PROGRESS_LEFT_TO_RIGHT);
++#endif
+             gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(signal_quality), quality_per);
+             gtk_box_pack_start(GTK_BOX(item_box), signal_quality, FALSE, FALSE, 0);
+ 
+diff --git a/plugins/netstat/passwd_gui.c b/plugins/netstat/passwd_gui.c
+index ba73150..83c02b0 100644
+--- a/plugins/netstat/passwd_gui.c
++++ b/plugins/netstat/passwd_gui.c
+@@ -1,5 +1,7 @@
+-/**
+- * Copyright (c) 2008 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2008 Fred Chien <fred@lxde.org>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/plugins/netstat/statusicon.c b/plugins/netstat/statusicon.c
+index 0b4fa31..83622e2 100644
+--- a/plugins/netstat/statusicon.c
++++ b/plugins/netstat/statusicon.c
+@@ -1,5 +1,7 @@
+-/**
+- * Copyright (c) 2008 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2008 Fred Chien <fred@lxde.org>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/plugins/netstat/wireless.c b/plugins/netstat/wireless.c
+index 1a35ff7..d0dfb65 100644
+--- a/plugins/netstat/wireless.c
++++ b/plugins/netstat/wireless.c
+@@ -1,5 +1,8 @@
+-/**
+- * Copyright (c) 2008 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2008 Fred Chien <fred@lxde.org>
++ *               2008 Jim Huang <jserv.tw@gmail.com>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/plugins/netstatus/netstatus-icon.c b/plugins/netstatus/netstatus-icon.c
+index 5e64689..33116ef 100644
+--- a/plugins/netstatus/netstatus-icon.c
++++ b/plugins/netstatus/netstatus-icon.c
+@@ -449,7 +449,11 @@ netstatus_icon_signal_changed (NetstatusIface *iface,
+ }
+ 
+ static void
++#if GTK_CHECK_VERSION(3, 0, 0)
++netstatus_icon_destroy (GtkWidget *widget)
++#else
+ netstatus_icon_destroy (GtkObject *widget)
++#endif
+ {
+   NetstatusIcon *icon = (NetstatusIcon *) widget;
+ 
+@@ -477,7 +481,11 @@ netstatus_icon_destroy (GtkObject *widget)
+ 
+   icon->priv->image = NULL;
+ 
++#if GTK_CHECK_VERSION(3, 0, 0)
++  GTK_WIDGET_CLASS (parent_class)->destroy (widget);
++#else
+   GTK_OBJECT_CLASS (parent_class)->destroy (widget);
++#endif
+ }
+ 
+ static GdkPixbuf *
+@@ -583,6 +591,7 @@ get_box_class (GtkOrientation orientation)
+   return g_type_class_peek(orientation == GTK_ORIENTATION_HORIZONTAL ? GTK_TYPE_HBOX : GTK_TYPE_VBOX);
+ }
+ 
++#if !GTK_CHECK_VERSION(3, 0, 0)
+ static void
+ netstatus_icon_size_request (GtkWidget      *widget,
+ 			     GtkRequisition *requisition)
+@@ -595,6 +604,8 @@ netstatus_icon_size_request (GtkWidget      *widget,
+   if (GTK_WIDGET_CLASS (klass)->size_request)
+     GTK_WIDGET_CLASS (klass)->size_request (widget, requisition);
+ }
++// FIXME: for GTK+ 3.0 make get_preferred_{width,height} callbacks!
++#endif
+ 
+ static void
+ netstatus_icon_size_allocate (GtkWidget     *widget,
+@@ -668,7 +679,9 @@ netstatus_icon_realize (GtkWidget *widget)
+   attributes.window_type = GDK_WINDOW_CHILD;
+   attributes.wclass = GDK_INPUT_OUTPUT;
+   attributes.visual = gtk_widget_get_visual (widget);
++#if !GTK_CHECK_VERSION(3, 0, 0)
+   attributes.colormap = gtk_widget_get_colormap (widget);
++#endif
+   attributes.event_mask = gtk_widget_get_events (widget) |
+                           GDK_BUTTON_MOTION_MASK         |
+                           GDK_BUTTON_PRESS_MASK          |
+@@ -677,7 +690,10 @@ netstatus_icon_realize (GtkWidget *widget)
+                           GDK_ENTER_NOTIFY_MASK          |
+                           GDK_LEAVE_NOTIFY_MASK;
+ 
+-  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL | GDK_WA_COLORMAP;
++  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
++#if !GTK_CHECK_VERSION(3, 0, 0)
++   attributes_mask |= GDK_WA_COLORMAP;
++#endif
+ 
+   window = gdk_window_new (gtk_widget_get_parent_window (widget), &attributes, attributes_mask);
+   gtk_widget_set_window (widget, window);
+@@ -797,7 +813,9 @@ static void
+ netstatus_icon_class_init (NetstatusIconClass *klass)
+ {
+   GObjectClass   *gobject_class   = (GObjectClass   *) klass;
++#if !GTK_CHECK_VERSION(3, 0, 0)
+   GtkObjectClass *gtkobject_class = (GtkObjectClass *) klass;
++#endif
+   GtkWidgetClass *widget_class    = (GtkWidgetClass *) klass;
+ 
+   parent_class = g_type_class_peek_parent (klass);
+@@ -809,9 +827,16 @@ netstatus_icon_class_init (NetstatusIconClass *klass)
+ 
+   gobject_class->finalize     = netstatus_icon_finalize;
+ 
++#if GTK_CHECK_VERSION(3, 0, 0)
++  widget_class->destroy = netstatus_icon_destroy;
++#else
+   gtkobject_class->destroy = netstatus_icon_destroy;
++#endif
+ 
++#if !GTK_CHECK_VERSION(3, 0, 0)
+   widget_class->size_request       = netstatus_icon_size_request;
++  // FIXME: for GTK+ 3.0 make get_preferred_{width,height} callbacks!
++#endif
+   widget_class->size_allocate      = netstatus_icon_size_allocate;
+   widget_class->realize            = netstatus_icon_realize;
+   widget_class->button_press_event = netstatus_icon_button_press_event;
+diff --git a/plugins/netstatus/netstatus.c b/plugins/netstatus/netstatus.c
+index 21e6216..f7bfde9 100644
+--- a/plugins/netstatus/netstatus.c
++++ b/plugins/netstatus/netstatus.c
+@@ -1,5 +1,8 @@
+-/**
+- * Copyright (c) 2006-2014 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2006-2009 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
++ *               2008 Fred Chien <fred@lxde.org>
++ *               2009 martyj19 <martyj19@comcast.net>
++ *               2014 Andriy Grytsenko <andrej@rep.kiev.ua>
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+@@ -118,7 +121,7 @@ netstatus_constructor(LXPanel *panel, config_setting_t *settings)
+         tmp = "eth0";
+     ns->iface = g_strdup(tmp);
+     if (!config_setting_lookup_string(settings, "configtool", &tmp))
+-        tmp = "network-admin --configure %i";
++        tmp = "nm-connection-editor";
+     ns->config_tool = g_strdup(tmp);
+ 
+     iface = netstatus_iface_new(ns->iface);
+diff --git a/plugins/pager.c b/plugins/pager.c
+index 7d309dc..09cf074 100644
+--- a/plugins/pager.c
++++ b/plugins/pager.c
+@@ -2,6 +2,7 @@
+  *
+  * Copyright (C) 2009 Dongxu Li <song6song@sourceforge.net>
+  *               2012 Julien Lavergne <gilir@ubuntu.com>
++ *               2014 Andriy Grytsenko <andrej@rep.kiev.ua>
+  *
+  * This file is part of lxpanel.
+  *
+diff --git a/plugins/separator.c b/plugins/separator.c
+index 0a7b792..6f4c1b3 100644
+--- a/plugins/separator.c
++++ b/plugins/separator.c
+@@ -1,5 +1,12 @@
+-/**
+- * Copyright (c) 2006-2014 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2006-2008 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
++ *               2006-2008 Jim Huang <jserv.tw@gmail.com>
++ *               2009 Marty Jack <martyj19@comcast.net>
++ *               2010 Julien Lavergne <julien.lavergne@gmail.com>
++ *               2013 Henry Gebhardt <hsggebhardt@gmail.com>
++ *               2014 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/plugins/space.c b/plugins/space.c
+index 0202759..af94031 100644
+--- a/plugins/space.c
++++ b/plugins/space.c
+@@ -1,5 +1,11 @@
+-/**
+- * Copyright (c) 2006-2014 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2006-2008 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
++ *               2006-2008 Jim Huang <jserv.tw@gmail.com>
++ *               2009 Marty Jack <martyj19@comcast.net>
++ *               2010 Julien Lavergne <julien.lavergne@gmail.com>
++ *               2014 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/plugins/thermal/thermal.c b/plugins/thermal/thermal.c
+index 27204fb..41bcfb1 100644
+--- a/plugins/thermal/thermal.c
++++ b/plugins/thermal/thermal.c
+@@ -1,8 +1,10 @@
+-/**
++/*
+  * Thermal plugin to lxpanel
+  *
+  * Copyright (C) 2007 by Daniel Kesler <kesler.daniel@gmail.com>
+- *               2014 by Andriy Grytsenko <andrej@rep.kiev.ua>
++ *               2014-2015 by Andriy Grytsenko <andrej@rep.kiev.ua>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+@@ -428,6 +430,7 @@ remove_all_sensors(thermal *th)
+ static void
+ check_sensors( thermal *th )
+ {
++    // FIXME: scan in opposite order
+     find_sensors(th, PROC_THERMAL_DIRECTORY, NULL, proc_get_temperature, proc_get_critical);
+     find_sensors(th, SYSFS_THERMAL_DIRECTORY, SYSFS_THERMAL_SUBDIR_PREFIX, sysfs_get_temperature, sysfs_get_critical);
+     if (th->numsensors == 0)
+@@ -563,9 +566,9 @@ static GtkWidget *config(LXPanel *panel, GtkWidget *p)
+             _("Normal color"), &th->str_cl_normal, CONF_TYPE_STR,
+             _("Warning1 color"), &th->str_cl_warning1, CONF_TYPE_STR,
+             _("Warning2 color"), &th->str_cl_warning2, CONF_TYPE_STR,
+-            _("Automatic sensor location"), &th->auto_sensor, CONF_TYPE_BOOL,
+-            _("Sensor"), &th->sensor, CONF_TYPE_STR,
+-            _("Automatic temperature levels"), &th->not_custom_levels, CONF_TYPE_BOOL,
++            _("Automatic sensor location"), &th->auto_sensor, CONF_TYPE_BOOL, // FIXME: if off, disable next one
++            _("Sensor"), &th->sensor, CONF_TYPE_STR, // FIXME: create a list to select instead
++            _("Automatic temperature levels"), &th->not_custom_levels, CONF_TYPE_BOOL, // FIXME: if off, disable two below
+             _("Warning1 temperature"), &th->warning1, CONF_TYPE_INT,
+             _("Warning2 temperature"), &th->warning2, CONF_TYPE_INT,
+             NULL);
+diff --git a/plugins/tray.c b/plugins/tray.c
+index 0b5a83b..3e66b81 100644
+--- a/plugins/tray.c
++++ b/plugins/tray.c
+@@ -1,7 +1,13 @@
+-/**
++/*
+  * System tray plugin to lxpanel
+  *
+- * Copyright (c) 2008-2014 LxDE Developers, see the file AUTHORS for details.
++ * Copyright (C) 2008-2009 Marty Jack <martyj19@comcast.net>
++ *               2009 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
++ *               2010-2013 Julien Lavergne <julien.lavergne@gmail.com>
++ *               2012-2013 Henry Gebhardt <hsggebhardt@gmail.com>
++ *               2014 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/plugins/volume/volume-impl.c b/plugins/volume/volume-impl.c
+index 962d939..8f7c893 100644
+--- a/plugins/volume/volume-impl.c
++++ b/plugins/volume/volume-impl.c
+@@ -1,6 +1,8 @@
+-/**
+- * Copyright (c) 2006, 2008 LxDE Developers,
+- * 	see the file AUTHORS for details.
++/*
++ * Copyright (C) 2006-2008 Jim Huang <jserv.tw@gmail.com>
++ *               2006 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/plugins/volume/volume.c b/plugins/volume/volume.c
+index 9a2f51e..df4d0ff 100644
+--- a/plugins/volume/volume.c
++++ b/plugins/volume/volume.c
+@@ -1,6 +1,11 @@
+-/**
+- * Copyright (c) 2006, 2008, 2014 LxDE Developers,
+- * 	see the file AUTHORS for details.
++/*
++ * Copyright (C) 2006-2008 Jim Huang <jserv.tw@gmail.com>
++ *               2006-2008 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
++ *               2008 Frank ENDRES <frank_endres@yahoo.fr>
++ *               2009 Marty Jack <martyj19@comcast.net>
++ *               2014 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/plugins/volumealsa/volumealsa.c b/plugins/volumealsa/volumealsa.c
+index 77d2782..5683be1 100644
+--- a/plugins/volumealsa/volumealsa.c
++++ b/plugins/volumealsa/volumealsa.c
+@@ -1,5 +1,13 @@
+-/**
+- * Copyright (c) 2008-2014 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2008 Fred Chien <fred@lxde.org>
++ *               2008 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
++ *               2009-2010 Marty Jack <martyj19@comcast.net>
++ *               2010-2012 Julien Lavergne <julien.lavergne@gmail.com>
++ *               2012 Henry Gebhardt <hsggebhardt@gmail.com>
++ *               2014 Peter <ombalaxitabou@users.sf.net>
++ *               2014-2015 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+@@ -704,6 +712,7 @@ static GtkWidget *volumealsa_configure(LXPanel *panel, GtkWidget *p)
+     config_setting_lookup_string(vol->settings, "MixerCommand", &command_line);
+     /* FIXME: support "needs terminal" for MixerCommand */
+     /* FIXME: selection for master channel! */
++    /* FIXME: selection for the device */
+     /* FIXME: configure buttons for each action (toggle volume/mixer/mute)! */
+     /* FIXME: allow bind multimedia keys to volume using libkeybinder */
+ 
+diff --git a/plugins/wincmd.c b/plugins/wincmd.c
+index a5b34b5..7cfd29c 100644
+--- a/plugins/wincmd.c
++++ b/plugins/wincmd.c
+@@ -1,5 +1,14 @@
+-/**
+- * Copyright (c) 2006-2014 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2006-2008 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
++ *               2006-2008 Jim Huang <jserv.tw@gmail.com>
++ *               2008 Fred Chien <fred@lxde.org>
++ *               2009-2010 Marty Jack <martyj19@comcast.net>
++ *               2012 Michael Rawson <michaelrawson76@gmail.com>
++ *               2012 Julien Lavergne <julien.lavergne@gmail.com>
++ *               2013 Henry Gebhardt <hsggebhardt@gmail.com>
++ *               2014 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/plugins/xkb/xkb-plugin.c b/plugins/xkb/xkb-plugin.c
+index c109c69..e630ea2 100644
+--- a/plugins/xkb/xkb-plugin.c
++++ b/plugins/xkb/xkb-plugin.c
+@@ -1,5 +1,11 @@
+-/**
+- * Copyright (c) 2010-2014 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2008 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
++ *               2009-2010 Marty Jack <martyj19@comcast.net>
++ *               2012-2013 Giuseppe Penone <giuspen@gmail.com>
++ *               2013 Henry Gebhardt <hsggebhardt@gmail.com>
++ *               2014 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/plugins/xkb/xkb.c b/plugins/xkb/xkb.c
+index d32ae92..b457f9d 100644
+--- a/plugins/xkb/xkb.c
++++ b/plugins/xkb/xkb.c
+@@ -1,5 +1,9 @@
+-/**
+- * Copyright (c) 2010 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2008 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
++ *               2009-2010 Marty Jack <martyj19@comcast.net>
++ *               2012-2013 Giuseppe Penone <giuspen@gmail.com>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 3ee0a94..ff8a3eb 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -60,7 +60,6 @@ if BUILD_PLUGIN_LOADER
+ DYNAMIC_FLAGS = -export-dynamic
+ endif
+ lxpanel_LDFLAGS = $(DYNAMIC_FLAGS)
+-lxpanel_DEPENDENCIES_EXTRA = $(BUILTIN_PLUGINS)
+ 
+ lxpanel_LDADD = \
+ 		liblxpanel.la \
+@@ -80,5 +79,10 @@ EXTRA_DIST = \
+ 	gtk-compat.h \
+ 	private.h
+ 
+-$(top_builddir)/plugins/libbuiltin_plugins.a: $(lxpanel_include_HEADERS)
+-	cd $(top_builddir)/plugins && $(MAKE) libbuiltin_plugins.a
++$(top_builddir)/plugins/libbuiltin_plugins.a: $(lxpanel_include_HEADERS) builtin-plugins-hook
++
++# re-check local modules so it is refreshed for lxpanel binary
++builtin-plugins-hook:
++	@cd $(top_builddir)/plugins && $(MAKE) libbuiltin_plugins.a
++
++.PHONY: builtin-plugins-hook
+diff --git a/src/conf.c b/src/conf.c
+index cf0ff35..fd41102 100644
+--- a/src/conf.c
++++ b/src/conf.c
+@@ -1,5 +1,8 @@
+ /*
+- * Copyright (c) 2014 LxDE Developers, see the file AUTHORS for details.
++ * Copyright (C) 2014 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *               2014 Henry Gebhardt <hsggebhardt@gmail.com>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/src/conf.h b/src/conf.h
+index 9a44054..ba6f09b 100644
+--- a/src/conf.h
++++ b/src/conf.h
+@@ -1,5 +1,7 @@
+ /*
+- * Copyright (c) 2014 LxDE Developers, see the file AUTHORS for details.
++ * Copyright (c) 2014 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/src/configurator.c b/src/configurator.c
+index bece9d4..504628b 100644
+--- a/src/configurator.c
++++ b/src/configurator.c
+@@ -1,6 +1,19 @@
+-/**
++/*
++ * Copyright (C) 2006-2010 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
++ *               2006-2008 Jim Huang <jserv.tw@gmail.com>
++ *               2008-2009 Fred Chien <fred@lxde.org>
++ *               2009 Ying-Chun Liu (PaulLiu) <grandpaul@gmail.com>
++ *               2009-2010 Marty Jack <martyj19@comcast.net>
++ *               2009 Ming-Ting Wei <mwei@lxde.org>
++ *               2010 Lajos Kamocsay <lajos@panka.com>
++ *               2010 Julien Lavergne <julien.lavergne@gmail.com>
++ *               2011-2014 Henry Gebhardt <hsggebhardt@gmail.com>
++ *               2012 Piotr Sipika <Piotr.Sipika@gmail.com>
++ *               2012 Rafał Mużyło <galtgendo@gmail.com>
++ *               2013 Rouslan <rouslan-k@users.sourceforge.net>
++ *               2014 Andriy Grytsenko <andrej@rep.kiev.ua>
+  *
+- * Copyright (c) 2006-2014 LxDE Developers, see the file AUTHORS for details.
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/src/dbg.c b/src/dbg.c
+index e18bbe8..0a88152 100644
+--- a/src/dbg.c
++++ b/src/dbg.c
+@@ -1,5 +1,9 @@
+-/**
+- * Copyright (c) 2006 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2006 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
++ *               2012 Henry Gebhardt <hsggebhardt@gmail.com>
++ *               2014 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/src/dbg.h b/src/dbg.h
+index 3539fff..c86b003 100644
+--- a/src/dbg.h
++++ b/src/dbg.h
+@@ -1,5 +1,9 @@
+-/**
+- * Copyright (c) 2006 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2006 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
++ *               2012 Henry Gebhardt <hsggebhardt@gmail.com>
++ *               2014 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/src/gtk-compat.h b/src/gtk-compat.h
+index e7bbae6..b1b182f 100644
+--- a/src/gtk-compat.h
++++ b/src/gtk-compat.h
+@@ -1,5 +1,7 @@
+-/**
+- * Copyright (c) 2014 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2014 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/src/gtk-run.c b/src/gtk-run.c
+index 0d5a635..ea1c141 100644
+--- a/src/gtk-run.c
++++ b/src/gtk-run.c
+@@ -1,6 +1,15 @@
+ /*
+  * gtk-run.c: Little application launcher
+- * Copyright (C) 2006 Hong Jen Yee (PCMan) pcman.tw(AT)gmail.com
++ * Copyright (C) 2006-2010 Hong Jen Yee (PCMan) pcman.tw(AT)gmail.com
++ *               2006-2008 Jim Huang <jserv.tw@gmail.com>
++ *               2008 Fred Chien <fred@lxde.org>
++ *               2009 Ying-Chun Liu (PaulLiu) <grandpaul@gmail.com>
++ *               2009-2010 Marty Jack <martyj19@comcast.net>
++ *               2012-2013 Henry Gebhardt <hsggebhardt@gmail.com>
++ *               2012 Piotr Sipika <Piotr.Sipika@gmail.com>
++ *               2014 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as
+diff --git a/src/icon-grid-old.c b/src/icon-grid-old.c
+index 7ca066f..37ccc07 100644
+--- a/src/icon-grid-old.c
++++ b/src/icon-grid-old.c
+@@ -1,5 +1,8 @@
+-/**
+- * Copyright (c) 2009 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2009-2010 Marty Jack <martyj19@comcast.net>
++ *               2009-2010 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
++ *               2014 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *               2014 Vladimír Pýcha <vpycha@gmail.com>
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/src/icon-grid-old.h b/src/icon-grid-old.h
+index aeb673c..a2667a5 100644
+--- a/src/icon-grid-old.h
++++ b/src/icon-grid-old.h
+@@ -1,5 +1,6 @@
+-/**
+- * Copyright (c) 2009 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2009 Marty Jack <martyj19@comcast.net>
++ *               2014 Vladimír Pýcha <vpycha@gmail.com>
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/src/icon-grid.c b/src/icon-grid.c
+index 7868c75..e5096a9 100644
+--- a/src/icon-grid.c
++++ b/src/icon-grid.c
+@@ -1,5 +1,9 @@
+-/**
+- * Copyright (c) 2009-2014 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2009-2010 Marty Jack <martyj19@comcast.net>
++ *               2009-2010 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
++ *               2014 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/src/icon-grid.h b/src/icon-grid.h
+index 0a61390..d0004a8 100644
+--- a/src/icon-grid.h
++++ b/src/icon-grid.h
+@@ -1,5 +1,7 @@
+-/**
+- * Copyright (c) 2009-2014 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2014 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/src/input-button.c b/src/input-button.c
+index 3462ca2..6bd0166 100644
+--- a/src/input-button.c
++++ b/src/input-button.c
+@@ -1,5 +1,7 @@
+ /*
+- * Copyright (c) 2014 LxDE Developers, see the file AUTHORS for details.
++ * Copyright (C) 2014 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/src/lxpanelctl.c b/src/lxpanelctl.c
+index 293c673..fb68183 100644
+--- a/src/lxpanelctl.c
++++ b/src/lxpanelctl.c
+@@ -1,5 +1,9 @@
+-/**
+- * Copyright (c) 2006 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2006 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
++ *               2006 Jim Huang <jserv.tw@gmail.com>
++ *               2009-2010 Marty Jack <martyj19@comcast.net>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/src/lxpanelctl.h b/src/lxpanelctl.h
+index a9181d1..6e8a6f9 100644
+--- a/src/lxpanelctl.h
++++ b/src/lxpanelctl.h
+@@ -1,5 +1,8 @@
+-/**
+- * Copyright (c) 2006 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2006 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
++ *               2010 Marty Jack <martyj19@comcast.net>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/src/main.c b/src/main.c
+index 73a190d..74b03c1 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -1,5 +1,21 @@
+-/**
+- * Copyright (c) 2006-2014 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2006-2010 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
++ *               2006-2008 Jim Huang <jserv.tw@gmail.com>
++ *               2008 Fred Chien <fred@lxde.org>
++ *               2009 Jürgen Hötzel <juergen@archlinux.org>
++ *               2009-2010 Marty Jack <martyj19@comcast.net>
++ *               2010 Lajos Kamocsay <lajos@panka.com>
++ *               2012 Piotr Sipika <Piotr.Sipika@gmail.com>
++ *               2012-2013 Henry Gebhardt <hsggebhardt@gmail.com>
++ *               2012 Jack Chen <speed.up08311990@gmail.com>
++ *               2012 Rafał Mużyło <galtgendo@gmail.com>
++ *               2012 Michael Rawson <michaelrawson76@gmail.com>
++ *               2012 Julien Lavergne <julien.lavergne@gmail.com>
++ *               2013 Rouslan <rouslan-k@users.sourceforge.net>
++ *               2013 peadaredwards <peadaredwards@users.sourceforge.net>
++ *               2014 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/src/menu-policy.c b/src/menu-policy.c
+index b4232a6..3a063b3 100644
+--- a/src/menu-policy.c
++++ b/src/menu-policy.c
+@@ -1,5 +1,9 @@
+-/**
+- * Copyright (c) 2009 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2009-2010 martyj19 <martyj19@comcast.net>
++ *               2009 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
++ *               2014 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/src/menu-policy.h b/src/menu-policy.h
+index 60e1a6e..31c6239 100644
+--- a/src/menu-policy.h
++++ b/src/menu-policy.h
+@@ -1,5 +1,8 @@
+-/**
+- * Copyright (c) 2009 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2009 martyj19 <martyj19@comcast.net>
++ *               2009 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/src/misc.c b/src/misc.c
+index 73dd245..06ffb6c 100644
+--- a/src/misc.c
++++ b/src/misc.c
+@@ -1,5 +1,16 @@
+-/**
+- * Copyright (c) 2006-2014 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2006-2010 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
++ *               2006-2008 Jim Huang <jserv.tw@gmail.com>
++ *               2008-2009 Fred Chien <fred@lxde.org>
++ *               2009 Ying-Chun Liu (PaulLiu) <grandpaul@gmail.com>
++ *               2009-2010 Marty Jack <martyj19@comcast.net>
++ *               2011 Julien Lavergne <julien.lavergne@gmail.com>
++ *               2012-2013 Henry Gebhardt <hsggebhardt@gmail.com>
++ *               2013 Rouslan <rouslan-k@users.sourceforge.net>
++ *               2014 SHiNE CsyFeK <csyfek@users.sourceforge.net>
++ *               2014 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/src/misc.h b/src/misc.h
+index dfa5d4a..f158a63 100644
+--- a/src/misc.h
++++ b/src/misc.h
+@@ -1,5 +1,12 @@
+-/**
+- * Copyright (c) 2006-2014 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2006-2010 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
++ *               2006-2008 Jim Huang <jserv.tw@gmail.com>
++ *               2008-2009 Fred Chien <fred@lxde.org>
++ *               2009 Marty Jack <martyj19@comcast.net>
++ *               2011-2013 Henry Gebhardt <hsggebhardt@gmail.com>
++ *               2014 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/src/panel.c b/src/panel.c
+index 940a919..b5daf37 100644
+--- a/src/panel.c
++++ b/src/panel.c
+@@ -1,5 +1,22 @@
+ /*
+- * Copyright (c) 2006-2014 LxDE Developers, see the file AUTHORS for details.
++ * Copyright (C) 2006-2010 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
++ *               2006-2008 Jim Huang <jserv.tw@gmail.com>
++ *               2008 Fred Chien <fred@lxde.org>
++ *               2009 Jürgen Hötzel <juergen@archlinux.org>
++ *               2009-2010 Marty Jack <martyj19@comcast.net>
++ *               2010 Lajos Kamocsay <lajos@panka.com>
++ *               2012 Piotr Sipika <Piotr.Sipika@gmail.com>
++ *               2012-2013 Henry Gebhardt <hsggebhardt@gmail.com>
++ *               2012 Jack Chen <speed.up08311990@gmail.com>
++ *               2012 Rafał Mużyło <galtgendo@gmail.com>
++ *               2012 Michael Rawson <michaelrawson76@gmail.com>
++ *               2012 Julien Lavergne <julien.lavergne@gmail.com>
++ *               2013 Rouslan <rouslan-k@users.sourceforge.net>
++ *               2013 peadaredwards <peadaredwards@users.sourceforge.net>
++ *               2014-2015 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *               2015 Rafał Mużyło <galtgendo@gmail.com>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+@@ -221,7 +238,12 @@ static void lxpanel_size_request(GtkWidget *widget, GtkRequisition *req)
+     Panel *p = panel->priv;
+     GdkRectangle rect;
+ 
++#if !GTK_CHECK_VERSION(3, 0, 0)
+     GTK_WIDGET_CLASS(lxpanel_parent_class)->size_request(widget, req);
++#else
++    GTK_WIDGET_CLASS(lxpanel_parent_class)->get_preferred_width(widget, &req->width, &req->width);
++    GTK_WIDGET_CLASS(lxpanel_parent_class)->get_preferred_height(widget, &req->height, &req->height);
++#endif
+ 
+     if (!p->visible)
+         /* When the panel is in invisible state, the content box also got hidden, thus always
+@@ -235,6 +257,38 @@ static void lxpanel_size_request(GtkWidget *widget, GtkRequisition *req)
+     req->height = rect.height;
+ }
+ 
++#if GTK_CHECK_VERSION(3, 0, 0)
++static void
++lxpanel_get_preferred_width (GtkWidget *widget,
++                             gint      *minimal_width,
++                             gint      *natural_width)
++{
++  GtkRequisition requisition;
++
++  lxpanel_size_request (widget, &requisition);
++
++  if (minimal_width)
++      *minimal_width = requisition.width;
++  if (natural_width)
++      *natural_width = requisition.width;
++}
++
++static void
++lxpanel_get_preferred_height (GtkWidget *widget,
++                              gint      *minimal_height,
++                              gint      *natural_height)
++{
++  GtkRequisition requisition;
++
++  lxpanel_size_request (widget, &requisition);
++
++  if (minimal_height)
++      *minimal_height = requisition.height;
++  if (natural_height)
++      *natural_height = requisition.height;
++}
++#endif
++
+ static void lxpanel_size_allocate(GtkWidget *widget, GtkAllocation *a)
+ {
+     LXPanel *panel = LXPANEL(widget);
+@@ -325,7 +379,12 @@ static void lxpanel_class_init(PanelToplevelClass *klass)
+     gtk_object_class->destroy = lxpanel_destroy;
+ #endif
+     widget_class->realize = lxpanel_realize;
++#if GTK_CHECK_VERSION(3, 0, 0)
++    widget_class->get_preferred_width = lxpanel_get_preferred_width;
++    widget_class->get_preferred_height = lxpanel_get_preferred_height;
++#else
+     widget_class->size_request = lxpanel_size_request;
++#endif
+     widget_class->size_allocate = lxpanel_size_allocate;
+     widget_class->configure_event = lxpanel_configure_event;
+     widget_class->style_set = lxpanel_style_set;
+@@ -799,7 +858,9 @@ static void _panel_update_background(LXPanel * p, gboolean enforce)
+ 
+     /* Redraw the top level widget. */
+     _panel_determine_background_pixmap(p);
++#if !GTK_CHECK_VERSION(3, 0, 0)
+     gdk_window_clear(gtk_widget_get_window(w));
++#endif
+     gtk_widget_queue_draw(w);
+ 
+     /* Loop over all plugins redrawing each plugin. */
+@@ -1629,6 +1690,12 @@ void panel_set_panel_configuration_changed(Panel *p)
+     _panel_set_panel_configuration_changed(p->topgwin);
+ }
+ 
++static inline void _update_orientation(Panel *p)
++{
++    p->orientation = (p->edge == EDGE_TOP || p->edge == EDGE_BOTTOM)
++                        ? GTK_ORIENTATION_HORIZONTAL : GTK_ORIENTATION_VERTICAL;
++}
++
+ static gboolean _panel_idle_reconfigure(gpointer widget)
+ {
+     LXPanel *panel;
+@@ -1642,15 +1709,13 @@ static gboolean _panel_idle_reconfigure(gpointer widget)
+     panel = LXPANEL(widget);
+     p = panel->priv;
+     previous_orientation = p->orientation;
+-    p->orientation = (p->edge == EDGE_TOP || p->edge == EDGE_BOTTOM)
+-        ? GTK_ORIENTATION_HORIZONTAL : GTK_ORIENTATION_VERTICAL;
++    _update_orientation(p);
+ 
+     /* either first run or orientation was changed */
+-    if (!p->initialized || previous_orientation != p->orientation)
++    if (previous_orientation != p->orientation)
+     {
+         panel_adjust_geometry_terminology(p);
+-        if (p->initialized)
+-            p->height = ((p->orientation == GTK_ORIENTATION_HORIZONTAL) ? PANEL_HEIGHT_DEFAULT : PANEL_WIDTH_DEFAULT);
++        p->height = ((p->orientation == GTK_ORIENTATION_HORIZONTAL) ? PANEL_HEIGHT_DEFAULT : PANEL_WIDTH_DEFAULT);
+         if (p->height_control != NULL)
+             gtk_spin_button_set_value(GTK_SPIN_BUTTON(p->height_control), p->height);
+         if ((p->widthtype == WIDTH_PIXEL) && (p->width_control != NULL))
+@@ -1775,6 +1840,7 @@ panel_parse_global(Panel *p, config_setting_t *cfg)
+         p->background_file = g_strdup(str);
+     config_setting_lookup_int(cfg, "iconsize", &p->icon_size);
+ 
++    _update_orientation(p);
+     panel_normalize_configuration(p);
+ 
+     return 1;
+diff --git a/src/panel.h.in b/src/panel.h.in
+index 84b921d..ff8a8d4 100644
+--- a/src/panel.h.in
++++ b/src/panel.h.in
+@@ -1,5 +1,14 @@
+-/**
+- * Copyright (c) 2006-2014 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2006-2010 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
++ *               2006-2008 Jim Huang <jserv.tw@gmail.com>
++ *               2008 Fred Chien <fred@lxde.org>
++ *               2009-2010 Marty Jack <martyj19@comcast.net>
++ *               2010 Lajos Kamocsay <lajos@panka.com>
++ *               2012 Piotr Sipika <Piotr.Sipika@gmail.com>
++ *               2012 Michael Rawson <michaelrawson76@gmail.com>
++ *               2013 Henry Gebhardt <hsggebhardt@gmail.com>
++ *               2013 Rouslan <rouslan-k@users.sourceforge.net>
++ *               2014 Andriy Grytsenko <andrej@rep.kiev.ua>
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/src/plugin.c b/src/plugin.c
+index d48aa35..8f7a198 100644
+--- a/src/plugin.c
++++ b/src/plugin.c
+@@ -1,5 +1,11 @@
+-/**
+- * Copyright (c) 2006-2014 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2006-2008 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
++ *               2006-2008 Jim Huang <jserv.tw@gmail.com>
++ *               2008 Fred Chien <fred@lxde.org>
++ *               2009-2010 Marty Jack <martyj19@comcast.net>
++ *               2014 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/src/plugin.h b/src/plugin.h
+index bf8428d..f3fb15a 100644
+--- a/src/plugin.h
++++ b/src/plugin.h
+@@ -1,5 +1,10 @@
+ /*
+- * Copyright (c) 2014 LxDE Developers, see the file AUTHORS for details.
++ * Copyright (C) 2006-2008 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
++ *               2006-2008 Jim Huang <jserv.tw@gmail.com>
++ *               2009-2010 Marty Jack <martyj19@comcast.net>
++ *               2014 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+diff --git a/src/private.h b/src/private.h
+index 432b873..65a5edd 100644
+--- a/src/private.h
++++ b/src/private.h
+@@ -1,5 +1,7 @@
+-/**
+- * Copyright (c) 2006-2014 LxDE Developers, see the file AUTHORS for details.
++/*
++ * Copyright (C) 2014-2015 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *
++ * This file is a part of LXPanel project.
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
