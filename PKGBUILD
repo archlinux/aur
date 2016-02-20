@@ -5,9 +5,9 @@ pkgver() {
   cd "$srcdir/$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgrel=1
+pkgrel=2
 pkgdesc="A serif based on the work of a famous Czech-American type designer of yesteryear."
-url=('https://github.com/theleagueof/fanwood')
+url='https://github.com/theleagueof/fanwood'
 arch=(any)
 depends=(fontconfig xorg-font-utils)
 source=("$pkgname::git://github.com/theleagueof/fanwood")
