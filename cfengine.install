@@ -1,19 +1,35 @@
+PREFIX=/var/cfengine
+
 post_install() {
 
- if [ ! -f /var/cfengine/ppkeys/localhost.priv ]; then
-  cf-key > /dev/null
+# generate a host key
+ if [ ! -f $PREFIX/ppkeys/localhost.priv ]; then
+  $PREFIX/bin/cf-key > /dev/null
  fi 
 
- if ! [ -f /var/cfengine/masterfiles/promises.cf ]; then
-  cp -R /usr/share/CoreBase/* /var/cfengine/masterfiles/
- fi
- 
- if ! [ -f /var/cfengine/bin/cf-promises ]; then
-  cd /var/cfengine/bin
-  ln -s /usr/bin/cf-* .
+# copy the stock policy for the new installations and create promies_validated
+ if ! [ -f $PREFIX/masterfiles/promises.cf ]; then
+  /bin/cp -R /usr/share/doc/cfengine/CoreBase/masterfiles/* $PREFIX/masterfiles/
+  $PREFIX/bin/cf-promises -T $PREFIX/masterfiles
  fi
 
- echo "Bootstrap cfengine with cf-agent --bootstrap <IP address of policy server>"
+# copy modules/packages (part of stock policy)
+ if ! [ -f $PREFIX/modules/packages ]; then
+   mkdir -p $PREFIX/modules/packages
+ fi
+ if cd /usr/share/doc/cfengine/CoreBase/modules/packages; then
+  for module in *; do
+    if ! [ -f $PREFIX/modules/packages/$module ]; then
+      cp $module $PREFIX/modules/packages
+    fi
+  done
+ fi
+ #if ! [ -f /var/cfengine/bin/cf-promises ]; then
+ # cd /var/cfengine/bin
+ # ln -s /usr/bin/cf-* .
+ #fi
+
+ echo -e "\nBootstrap cfengine with cf-agent --bootstrap <IP address of policy server>\n"
 
 }
 post_remove() {
