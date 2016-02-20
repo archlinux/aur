@@ -19,7 +19,7 @@ source=(
     "gitkraken.png"
     "eula.html"
 )
-md5sums=('6b569c6ad223f5a1a5a9963f436be36c'
+md5sums=('7b44d0604a4a9a547e3d8a2a706866f6'
          '765148843d302e15d80ddd0041efc957'
          'fcac914c0044d1e5831ce46b88c37ec5'
          'e9ba6663e5f1f92cae31beb0074e8c6c')
