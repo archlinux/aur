@@ -1,6 +1,6 @@
 # Maintainer: condy <condy0919[at]gmail[dot]com>
 pkgname=psysh
-pkgver=0.7.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="PsySH is a runtime developer console, interactive debugger and REPL for PHP."
 url="http://psysh.org"
