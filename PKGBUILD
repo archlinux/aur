@@ -1,19 +1,19 @@
-# Maintainer: Philippe Mongeau <ph.mongeau@gmail.com>
+# Maintainer: Sardelli Tommaso <lacappannadelloziotom [at] gmail [dot] com>
+# Contributor: Philippe Mongeau <ph.mongeau@gmail.com>
 
 pkgname=ympd-git
 _pkgname=ympd
-pkgver=1.2.3.r34.g7b05dc1
+pkgver=1.3.0.r0.gec008a4
 pkgrel=1
 pkgdesc="A standalone MPD Web GUI"
-arch=('i686' 'x86_64' 'armv6h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.ympd.org"
 license=('GPL2')
-depends=('glibc' 'libmpdclient')
+depends=('libmpdclient' 'openssl')
 makedepends=('cmake' 'git')
-optdepends=('openssl: SSL support in libwebsockets webserver')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-install=("${_pkgname}.install")
+install="${_pkgname}.install"
 backup=('etc/default/ympd')
 source=(
   "git+https://github.com/notandy/ympd.git"
