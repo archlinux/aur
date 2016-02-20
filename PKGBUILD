@@ -1,16 +1,18 @@
-# Maintainer: Alad Wenter <https://wiki.archlinux.org/index.php/Special:EmailUser/Alad>
+# Maintainer: Chris Wong <https://wiki.archlinux.org/index.php/Special:EmailUser/Lambda_Fairy>
 
 pkgname=xsettingsd-git
 pkgver=r79.b4999f5
-pkgrel=2
+pkgrel=3
 
 pkgdesc="xsettingsd is a daemon that implements the XSETTINGS specification."
 arch=('i686' 'x86_64')
-url="http://code.google.com/p/xsettingsd/"
+url="https://github.com/derat/xsettingsd"
 license=('custom:BSD')
 
 depends=('libx11')
 makedepends=('scons')
+provides=('xsettingsd')
+conflicts=('xsettingsd')
 source=("$pkgname::git://github.com/derat/xsettingsd")
 sha256sums=('SKIP')
 
