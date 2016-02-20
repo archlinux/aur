@@ -1,6 +1,6 @@
 pkgname=sescript-git
 _gitname=sescript
-pkgver=
+pkgver=0
 pkgrel=1
 pkgdesc='a scheme syntax to ecmascript and javascript compiler'
 arch=(any)
