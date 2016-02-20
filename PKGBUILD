@@ -3,25 +3,21 @@
 pkgbase=holland
 pkgname=('holland' 'holland-common' 'holland-mysqldump' 'holland-mysqllvm'
          'holland-pgdump' 'holland-xtrabackup')
-pkgver=1.0.10
-pkgrel=5
-changelog=holland.archlog
+pkgver=1.0.12
+pkgrel=1
 arch=('any')
 url="http://hollandbackup.org"
 license=('BSD' 'GPL2')
 options=('emptydirs')
 makedepends=('python2-setuptools')
 source=("http://hollandbackup.org/releases/stable/1.0/${pkgbase}-${pkgver}.tar.gz"
-        "holland.logrotate"
-        "holland-1.0.10-cursor.patch")
-md5sums=('3435350d5c9dd57102e8b0470cd636c0'
-         '5b2d292dc7e1139fde8ab9439b0464ee'
-         '765146149bd193c1deb57675695d4680')
+        "holland.logrotate")
+md5sums=('ad86805874f2a0e77da3b926a3deb2ee'
+         '5b2d292dc7e1139fde8ab9439b0464ee')
 
 prepare() {
   cd "${srcdir}"
   find -name setup.cfg -delete
-  patch -p0 < holland-1.0.10-cursor.patch
 }
 
 build() {
@@ -78,7 +74,6 @@ package_holland() {
     "${pkgdir}/usr/share/doc/holland/README.plugins"
   install -Dm0644 config/providers/README \
     "${pkgdir}/usr/share/doc/holland/README.providers"
-  install -Dm0644 CHANGES.txt "${pkgdir}/usr/share/doc/holland/CHANGES.txt"
   install -Dm0644 INSTALL "${pkgdir}/usr/share/doc/holland/INSTALL"
   install -Dm0644 README "${pkgdir}/usr/share/doc/holland/README"
   install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/holland/LICENSE"
