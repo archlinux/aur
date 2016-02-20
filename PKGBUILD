@@ -20,12 +20,12 @@ install=multipath-tools.install
 options=(!emptydirs)
 source=(http://christophe.varoqui.free.fr/multipath-tools/$pkgname-$pkgver.tar.bz2
 	blacklist-cciss-devices.patch)
-md5sums=('faf261d4cc717bf4c979557dc7bf5f52'
-         'c81422ccf5fd5ca6208dfbdd66ff323c')
+sha256sums=('f13cf1eb84e94e83b2019e68f7965526903c13e94246db43965d181668a0a6f9'
+            '415f90ea44e79a8d453eebdbca5fead6ac16f4ebcc3238f31a05b8014c2e8f0f')
 
 prepare() {
   cd  "${srcdir}/${pkgname}-${pkgver}"
-  patch -Np1 -i "${srcdir}/blacklist-cciss-devices.patch"
+  patch -p1 < "${srcdir}/blacklist-cciss-devices.patch"
 
   sed -i 's|/etc/udev/rules.d|/usr/lib/udev|g' Makefile.inc kpartx/Makefile kpartx/kpartx.rules
   sed -i 's|${prefix}/lib/udev|${prefix}/usr/lib/udev|g' Makefile.inc
