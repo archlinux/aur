@@ -3,7 +3,7 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=pycharm-eap
-_buildver=144.3891.17
+_buildver=144.4199.7
 _pkgver=5.1.0
 _eap="True"
 pkgver="${_pkgver}.${_buildver}"
@@ -19,13 +19,13 @@ conflicts=("pycharm-professional" "pycharm-pro-eap")
 groups=("development" "IDE" "editor" "jetbrains")
 
 if [[ "True" = "${_eap}" ]]; then
-	_srcfile="pycharm-professional-${_buildver}-custom-jdk-linux.tar.gz"
+	_srcfile="pycharm-professional-${_buildver}.tar.gz"
 	source=("http://download.jetbrains.com/python/${_srcfile}"
 			"${pkgname}.desktop")
 	sha256sums=($(wget -q "${source}.sha256" && cat "${_srcfile}.sha256" | cut -f1 -d" ")
 				"aa9573c177f5d4d3092b9dff2aef5b4c7d25ff9c2b044be222a0512dff759731")
 else
-	_srcfile="pycharm-professional-${_pkgver}-custom-jdk-linux.tar.gz"
+	_srcfile="pycharm-professional-${_pkgver}.tar.gz"
 	source=("http://download.jetbrains.com/python/${_srcfile}"
 			"${pkgname}.desktop")
 	sha256sums=($(wget -q "${source}.sha256" && cat "${_srcfile}.sha256" | cut -f1 -d" ")
