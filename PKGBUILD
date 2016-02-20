@@ -1,11 +1,11 @@
 pkgname=sescript-git
 _gitname=sescript
-pkgver=3d8cd12
+pkgver=
 pkgrel=1
 pkgdesc='a scheme syntax to ecmascript and javascript compiler'
 arch=(any)
 license=(GPL3)
-makedepends=(git gcc)
+makedepends=(git)
 depends=(guile sph-lib-git)
 provides=(sescript)
 source=("git://git.sph.mn/$_gitname")
