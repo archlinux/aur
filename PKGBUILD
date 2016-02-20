@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 
 pkgname=xen-docs
-pkgver=4.5.0
+pkgver=4.6.1
 pkgrel=1
 pkgdesc="Xen 4 (docs)"
 arch=('i686' 'x86_64')
@@ -19,4 +19,4 @@ package() {
   make DESTDIR=$pkgdir install-docs
 }
 
-md5sums=('9bac43d2419d05a647064d9253bb03fa')
+md5sums=('df2d854c3c90ffeefaf71e7f868fb326')
