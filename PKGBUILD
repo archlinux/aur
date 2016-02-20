@@ -1,5 +1,6 @@
-# Maintainer: Justin Dray <justin@dray.be>
-# Contributor:  Patrick McCarty <pnorcks at gmail dot com>
+# Maintainer:  Michael Lass <bevan@bi-co.net>
+# Contributor: Justin Dray <justin@dray.be>
+# Contributor: Patrick McCarty <pnorcks at gmail dot com>
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 # Contributor: Thomas S Hatch <thatch45 ar gmail dot com>
 # Contributor: Michael P <ptchinster@archlinux.us>
@@ -18,15 +19,12 @@ backup=('etc/multipath.conf')
 install=multipath-tools.install
 options=(!emptydirs)
 source=(http://christophe.varoqui.free.fr/multipath-tools/$pkgname-$pkgver.tar.bz2
-	buffer-overflows.patch
 	blacklist-cciss-devices.patch)
 md5sums=('faf261d4cc717bf4c979557dc7bf5f52'
-         '869942bdd31decc696f9cf4af24df65b'
          'c81422ccf5fd5ca6208dfbdd66ff323c')
 
 prepare() {
   cd  "${srcdir}/${pkgname}-${pkgver}"
-  patch -Np1 -i "${srcdir}/buffer-overflows.patch"
   patch -Np1 -i "${srcdir}/blacklist-cciss-devices.patch"
 
   sed -i 's|/etc/udev/rules.d|/usr/lib/udev|g' Makefile.inc kpartx/Makefile kpartx/kpartx.rules
