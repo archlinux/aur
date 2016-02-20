@@ -6,6 +6,7 @@ Packaging
 0.93_3.20160206-2
 * move directory from /opt/pokemonrevolutiononline to /opt/Pokemon Revolution
 * use our own *.svg icon.
+* gtk2 is now optional since we only need it for the screenselector plugin (i dont know this for sure..)
 
 0.93_3.20160206-1
 * PRO 0.93_3 - gogogo!

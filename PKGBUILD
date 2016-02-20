@@ -6,12 +6,13 @@ pkgdesc="A free-to-play, fan-made, MMO game that is predicated around the offici
 arch=('x86_64')
 url="http://pokemon-revolution-online.net"
 license=('custom')
-depends=('gtk2' 'gcc-libs-multilib')
+depends=('gcc-libs-multilib')
+optdepends=('gtk2: required for the Unity ScreenSelector plugin')
 changelog="change.log"
 source=('http://tiny.cc/PROLinux' 'net.pokemon-revolution-online.desktop' 'change.log' 'pokemonrevolution' 'copyright' 'pokemonrevolution.svg')
 md5sums=('ac29bdb95a865efc8f043fff5d9720cb'
          '3598d5900062503b4b6b5e43eff612a8'
-         '0a889fc12369da034cc1ff1f159d0d1f'
+         '17c1e76c812c75ab28b6a2fe7beb4638'
          '1b667f450341675b6b2c1750e034516c'
          '0efcd0393015ff149217f9ced4670513'
          '8446ead3097e1b87e3a63b667d956569')
