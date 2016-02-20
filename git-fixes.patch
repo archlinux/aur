@@ -1,0 +1,826 @@
+diff --git a/NEWS b/NEWS
+index 0d1c2a2..8d61c2c 100644
+--- a/NEWS
++++ b/NEWS
+@@ -1,3 +1,41 @@
++* Workarounded a bug in gtk_file_chooser_set_file() function (patch from
++    Simon Long).
++
++* Fixed single instance options cleanup that might affect next call.
++
++* Fixed wrong update of status text after folder update when there are
++    selected files in the folder.
++
++* Disabled using desktop background from the GTK+ style since there is
++    own color setting and changing the style may repaint the desktop.
++
++* Enforced desktop font update on the desktop resize with GTK+ 3.0.
++
++* Fixed items layout order to never be tried before desktop is realized.
++
++* Fixed item borders calculations when matching to pointer position.
++
++* Fixed forwarding events to root window, it could get unpaired events.
++
++* Fixed crash on too fast folder change with focus_previous=1.
++
++* Fixed stuck tooltip after click on the item.
++
++* Improved option to open folder in terminal, it should work with gvfs
++    paths that have resolvable local path as well.
++
++* Fixed incorrect file names rendering position on the desktop.
++
++* Fixed not working Connect to Server... dialog when non-anonymous user
++    is selected.
++
++* Fixed possible memory corruption in the Connect to Server... dialog.
++
++* Support explicit mention of scheme in the Server line of the Connect to
++    Server... dialog, not duplicate it if it's present. That includes the
++    https:// to fix support for secure WebDAV access as well.
++
++
+ Changes on 1.2.3 since 1.2.2:
+ 
+ * Disabled unrequested config save on changing dir if show_hidden changes.
+diff --git a/data/pcmanfm-desktop-pref.desktop.in b/data/pcmanfm-desktop-pref.desktop.in
+index ea78560..4f42849 100644
+--- a/data/pcmanfm-desktop-pref.desktop.in
++++ b/data/pcmanfm-desktop-pref.desktop.in
+@@ -7,4 +7,4 @@ Categories=Settings;GTK;DesktopSettings;X-LXDE-Settings;
+ Exec=pcmanfm --desktop-pref
+ StartupNotify=true
+ Terminal=false
+-NotShowIn=GNOME;XFCE;KDE;
++NotShowIn=GNOME;XFCE;KDE;MATE;
+diff --git a/data/ui/about.glade.in b/data/ui/about.glade.in
+index 3b40720..758fe00 100644
+--- a/data/ui/about.glade.in
++++ b/data/ui/about.glade.in
+@@ -6,7 +6,6 @@
+     <property name="border_width">5</property>
+     <property name="window_position">center-on-parent</property>
+     <property name="type_hint">dialog</property>
+-    <property name="has_separator">False</property>
+     <property name="program_name">PCManFM</property>
+     <property name="version">@VERSION@</property>
+     <property name="copyright" translatable="yes">Copyright (C) 2009 - 2014</property>
+diff --git a/src/connect-server.c b/src/connect-server.c
+index e6a05fd..31b597c 100644
+--- a/src/connect-server.c
++++ b/src/connect-server.c
+@@ -3,7 +3,7 @@
+  *
+  *      This file is a part of the PCManFM project.
+  *
+- *      Copyright 2013-2014 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
++ *      Copyright 2013-2016 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
+  *
+  *      This program is free software; you can redistribute it and/or modify
+  *      it under the terms of the GNU General Public License as published by
+@@ -46,7 +46,7 @@ static void on_response(GtkDialog *dialog, gint resp, ConnectDlg *dlg)
+     GString *str;
+     GtkTreeIter iter;
+     char *scheme = NULL;
+-    const char *text;
++    const char *text, *tmp;
+     FmPath *path;
+     int def_port, used_port;
+ 
+@@ -56,11 +56,6 @@ static void on_response(GtkDialog *dialog, gint resp, ConnectDlg *dlg)
+     {
+         /* make an URI from the data */
+         str = g_string_new(scheme);
+-        g_free(scheme);
+-        g_string_append(str, "://");
+-        if (gtk_toggle_button_get_active(dlg->user_user))
+-            g_string_append_printf(str, "%s@", gtk_entry_get_text(dlg->login_entry));
+-        g_string_append(str, gtk_entry_get_text(dlg->server_host));
+         if (strcmp(scheme, "sftp") == 0)
+             def_port = 22;
+         else if (strcmp(scheme, "ftp") == 0)
+@@ -69,6 +64,26 @@ static void on_response(GtkDialog *dialog, gint resp, ConnectDlg *dlg)
+             def_port = 80;
+         else
+             def_port = -1;
++        g_free(scheme);
++        /* let user explicitly enter scheme in the server field */
++        text = gtk_entry_get_text(dlg->server_host);
++        tmp = g_strstr_len(text, -1, "://");
++        if (tmp != NULL)
++        {
++            /* support secure webdav here, see SF #992 */
++            if (def_port == 80)
++                if (g_str_has_prefix(text, "https:") || g_str_has_prefix(text, "davs:"))
++                {
++                    if (gtk_spin_button_get_value(dlg->server_port) != 80.0)
++                        def_port = 443;
++                    g_string_assign(str, "davs");
++                }
++            text = tmp + 3; /* after :// */
++        }
++        g_string_append(str, "://");
++        if (gtk_toggle_button_get_active(dlg->user_user))
++            g_string_append_printf(str, "%s@", gtk_entry_get_text(dlg->login_entry));
++        g_string_append(str, text);
+         used_port = (int)gtk_spin_button_get_value(dlg->server_port);
+         if (def_port != used_port)
+             g_string_append_printf(str, ":%d", used_port);
+@@ -191,6 +206,26 @@ static void on_user_type(GtkToggleButton *user_anonymous, ConnectDlg *dlg)
+     gtk_widget_set_sensitive(dlg->ok, ready);
+ }
+ 
++static void on_login_entry(GtkEditable *editable, ConnectDlg *dlg)
++{
++    const char *text = gtk_entry_get_text(GTK_ENTRY(editable));
++    gboolean ready;
++
++    /* disable OK if entry is empty */
++    if (!text || !text[0])
++        ready = FALSE;
++    /* disable OK if type not selected */
++    else if (gtk_combo_box_get_active(dlg->server_type) == -1)
++        ready = FALSE;
++    /* enable OK if server host isn't empty */
++    else
++    {
++        text = gtk_entry_get_text(dlg->server_host);
++        ready = (text && text[0] != '\0');
++    }
++    gtk_widget_set_sensitive(dlg->ok, ready);
++}
++
+ void open_connect_dialog(GtkWindow *parent)
+ {
+     GtkBuilder *builder = gtk_builder_new();
+@@ -211,6 +246,7 @@ void open_connect_dialog(GtkWindow *parent)
+     g_signal_connect(dlg->user_anonymous, "toggled", G_CALLBACK(on_user_type), dlg);
+     dlg->user_user = GTK_TOGGLE_BUTTON(gtk_builder_get_object(builder, "user_user"));
+     dlg->login_entry = GTK_ENTRY(gtk_builder_get_object(builder, "login_entry"));
++    g_signal_connect(dlg->login_entry, "changed", G_CALLBACK(on_login_entry), dlg);
+     g_object_unref(builder);
+ 
+     pcmanfm_ref();
+diff --git a/src/desktop.c b/src/desktop.c
+index 36ffaf0..a56d89e 100644
+--- a/src/desktop.c
++++ b/src/desktop.c
+@@ -2,7 +2,7 @@
+  *      desktop.c
+  *
+  *      Copyright 2010 - 2012 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
+- *      Copyright 2012-2014 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
++ *      Copyright 2012-2015 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
+  *
+  *      This program is free software; you can redistribute it and/or modify
+  *      it under the terms of the GNU General Public License as published by
+@@ -203,7 +203,7 @@ static void calc_item_size(FmDesktop* desktop, FmDesktopItem* item, GdkPixbuf* i
+     }
+     item->icon_rect.x = item->area.x + (desktop->cell_w - item->icon_rect.width) / 2;
+     item->icon_rect.y = item->area.y + desktop->ypad + (fm_config->big_icon_size - item->icon_rect.height) / 2;
+-    item->icon_rect.height += desktop->spacing;
++    item->icon_rect.height += desktop->spacing; // FIXME: this is probably wrong
+ 
+     /* text label rect */
+     pango_layout_set_text(desktop->pl, NULL, 0);
+@@ -216,9 +216,9 @@ static void calc_item_size(FmDesktop* desktop, FmDesktopItem* item, GdkPixbuf* i
+ 
+     /* FIXME: RTL */
+     item->text_rect.x = item->area.x + (desktop->cell_w - rc2.width - 4) / 2;
+-    item->text_rect.y = item->area.y + desktop->ypad + fm_config->big_icon_size + desktop->spacing + rc2.y;
++    item->text_rect.y = item->area.y + desktop->ypad + fm_config->big_icon_size + desktop->spacing;
+     item->text_rect.width = rc2.width + 4;
+-    item->text_rect.height = rc2.height + 4;
++    item->text_rect.height = rc2.y + rc2.height + 4;
+     item->area.width = (desktop->cell_w + MAX(item->icon_rect.width, item->text_rect.width)) / 2;
+     item->area.height = item->text_rect.y + item->text_rect.height - item->area.y;
+ }
+@@ -1779,13 +1779,18 @@ _next_position_rtl:
+ static gboolean on_idle_layout(FmDesktop* desktop)
+ {
+     desktop->idle_layout = 0;
++    desktop->layout_pending = FALSE;
+     layout_items(desktop);
+     return FALSE;
+ }
+ 
+ static void queue_layout_items(FmDesktop* desktop)
+ {
+-    if(0 == desktop->idle_layout)
++    /* don't try to layout items until config is loaded,
++       this may be cause of the bug #927 on SF.net */
++    if (!gtk_widget_get_realized(GTK_WIDGET(desktop)))
++        desktop->layout_pending = TRUE;
++    else if (0 == desktop->idle_layout)
+         desktop->idle_layout = gdk_threads_add_idle((GSourceFunc)on_idle_layout, desktop);
+ }
+ 
+@@ -1824,7 +1829,7 @@ static void paint_item(FmDesktop* self, FmDesktopItem* item, cairo_t* cr, GdkRec
+ 
+     /* FIXME: do we need to cache this? */
+     text_x = item->area.x + (self->cell_w - self->text_w)/2 + 2;
+-    text_y = item->icon_rect.y + item->icon_rect.height + 2;
++    text_y = item->text_rect.y + 2;
+ 
+     if(item->is_selected || item == self->drop_hilight) /* draw background for text label */
+     {
+@@ -1888,7 +1893,7 @@ static void paint_item(FmDesktop* self, FmDesktopItem* item, cairo_t* cr, GdkRec
+ static void redraw_item(FmDesktop* desktop, FmDesktopItem* item)
+ {
+     GdkRectangle rect;
+-    gdk_rectangle_union(&item->icon_rect, &item->text_rect, &rect);
++    get_item_rect(item, &rect);
+     --rect.x;
+     --rect.y;
+     rect.width += 2;
+@@ -2860,7 +2865,7 @@ static void on_snap_to_grid(GtkAction* act, gpointer user_data)
+ 
+ static gboolean is_point_in_rect(GdkRectangle* rect, int x, int y)
+ {
+-    return rect->x < x && x < (rect->x + rect->width) && y > rect->y && y < (rect->y + rect->height);
++    return x >= rect->x && x < (rect->x + rect->width) && y >= rect->y && y < (rect->y + rect->height);
+ }
+ 
+ static FmDesktopItem* hit_test(FmDesktop* self, GtkTreeIter *it, int x, int y)
+@@ -2873,11 +2878,16 @@ static FmDesktopItem* hit_test(FmDesktop* self, GtkTreeIter *it, int x, int y)
+     model = GTK_TREE_MODEL(self->model);
+     if(model && gtk_tree_model_get_iter_first(model, it)) do
+     {
++        GdkRectangle icon_rect;
+         item = fm_folder_model_get_item_userdata(self->model, it);
+         /* we cannot drop dragged items onto themselves */
+         if (item->is_selected && self->dragging)
+             continue;
+-        if(is_point_in_rect(&item->icon_rect, x, y)
++        /* SF bug #963: icon_rect and text_rect may be not contiguous,
++           so let expand icon test area up to text_rect */
++        icon_rect = item->icon_rect;
++        icon_rect.height = item->text_rect.y - icon_rect.y;
++        if(is_point_in_rect(&icon_rect, x, y)
+          || is_point_in_rect(&item->text_rect, x, y))
+             return item;
+     }
+@@ -3224,6 +3234,13 @@ static void on_size_allocate(GtkWidget* w, GtkAllocation* alloc)
+     /* scale the wallpaper */
+     if(gtk_widget_get_realized(w))
+     {
++#if GTK_CHECK_VERSION(3, 0, 0)
++        /* bug SF#958: with GTK 3.8+ font is reset to default after realizing
++           so let enforce font description on it right away */
++        PangoFontDescription *font_desc = pango_font_description_from_string(self->conf.desktop_font);
++        pango_context_set_font_description(pc, font_desc);
++        pango_font_description_free(font_desc);
++#endif
+         /* bug #3614866: after monitor geometry was changed we need to redraw
+            the background invalidating all the cache */
+         _clear_bg_cache(self);
+@@ -3297,9 +3314,12 @@ static gboolean on_button_press(GtkWidget* w, GdkEventButton* evt)
+ 
+     if(evt->type == GDK_BUTTON_PRESS)
+     {
++        /* ignore another buttons while some is in progress */
++        if (self->button_pressed == 0)
++            self->button_pressed = evt->button;
+         if(evt->button == 1)  /* left button */
+         {
+-            self->button_pressed = TRUE;    /* store button state for drag & drop */
++            /* store button state for drag & drop */
+             self->drag_start_x = evt->x;
+             self->drag_start_y = evt->y;
+         }
+@@ -3392,10 +3412,15 @@ static gboolean on_button_press(GtkWidget* w, GdkEventButton* evt)
+         fm_folder_view_item_clicked(FM_FOLDER_VIEW(self), tp, clicked);
+         if(tp)
+             gtk_tree_path_free(tp);
++        /* SF bug #929: after click the tooltip is still set to the item name */
++        self->hover_item = NULL;
+     }
+     /* forward the event to root window */
+-    else if(evt->button != 1)
++    else if(evt->button != 1 && evt->button == self->button_pressed)
++    {
++        self->forward_pending = TRUE;
+         forward_event_to_rootwin(gtk_widget_get_screen(w), (GdkEvent*)evt);
++    }
+ 
+     if(! gtk_widget_has_focus(w))
+     {
+@@ -3408,10 +3433,6 @@ static gboolean on_button_press(GtkWidget* w, GdkEventButton* evt)
+ static gboolean on_button_release(GtkWidget* w, GdkEventButton* evt)
+ {
+     FmDesktop* self = (FmDesktop*)w;
+-    GtkTreeIter it;
+-    FmDesktopItem* clicked_item = hit_test(self, &it, evt->x, evt->y);
+-
+-    self->button_pressed = FALSE;
+ 
+     if(self->rubber_bending)
+     {
+@@ -3425,17 +3446,21 @@ static gboolean on_button_release(GtkWidget* w, GdkEventButton* evt)
+     }
+     else if(fm_config->single_click && evt->button == 1)
+     {
++        GtkTreeIter it;
++        FmDesktopItem* clicked_item = hit_test(self, &it, evt->x, evt->y);
+         if(clicked_item)
+-        {
+             /* left single click */
+             fm_launch_file_simple(GTK_WINDOW(w), NULL, clicked_item->fi, pcmanfm_open_folder, w);
+-            return TRUE;
+-        }
+     }
+ 
+     /* forward the event to root window */
+-    if(! clicked_item)
+-        forward_event_to_rootwin(gtk_widget_get_screen(w), (GdkEvent*)evt);
++    if (self->button_pressed == evt->button)
++    {
++        if (self->forward_pending)
++            forward_event_to_rootwin(gtk_widget_get_screen(w), (GdkEvent*)evt);
++        self->button_pressed = 0;
++        self->forward_pending = FALSE;
++    }
+ 
+     return TRUE;
+ }
+@@ -4205,6 +4230,9 @@ static void on_realize(GtkWidget* w)
+     FmDesktop* self = (FmDesktop*)w;
+     PangoFontDescription *font_desc;
+     PangoContext* pc;
++#if GTK_CHECK_VERSION(3, 0, 0)
++    char *css_data;
++#endif
+ 
+     GTK_WIDGET_CLASS(fm_desktop_parent_class)->realize(w);
+     gtk_window_set_skip_pager_hint(GTK_WINDOW(w), TRUE);
+@@ -4229,6 +4257,18 @@ static void on_realize(GtkWidget* w)
+     pc = gtk_widget_get_pango_context(w);
+     pango_context_set_font_description(pc, font_desc);
+     pango_font_description_free(font_desc);
++#if GTK_CHECK_VERSION(3, 0, 0)
++    css_data = g_strdup_printf("FmDesktop {\n"
++                                   "background-color: #%02x%02x%02x\n"
++                               "}",
++                               self->conf.desktop_bg.red/256,
++                               self->conf.desktop_bg.green/256,
++                               self->conf.desktop_bg.blue/256);
++    gtk_css_provider_load_from_data(self->css, css_data, -1, NULL);
++    g_free(css_data);
++#endif
++    if (self->layout_pending)
++        queue_layout_items(self);
+ }
+ 
+ static gboolean on_focus_in(GtkWidget* w, GdkEventFocus* evt)
+@@ -4589,6 +4629,44 @@ static FmJobErrorAction on_folder_error(FmFolder* folder, GError* err, FmJobErro
+ }
+ 
+ 
++#if !GTK_CHECK_VERSION(3, 0, 0)
++/* ---------------------------------------------------------------------
++   We should not follow background changes on the style so we create
++   a style class for the desktop with dummy set background operator.
++   For GTK+ 3.0 we add a style provider with high priority instead. */
++
++static void _dummy_set_background(GtkStyle *style, GdkWindow *window, GtkStateType state_type)
++{
++}
++
++#define FM_DESKTOP_TYPE_STYLE    (fm_desktop_style_get_type())
++
++typedef struct _FmDesktopStyle FmDesktopStyle;
++struct _FmDesktopStyle
++{
++    GtkStyle parent;
++};
++
++typedef struct _FmDesktopStyleClass FmDesktopStyleClass;
++struct _FmDesktopStyleClass
++{
++    GtkStyleClass parent_class;
++};
++
++G_DEFINE_TYPE(FmDesktopStyle, fm_desktop_style, GTK_TYPE_STYLE)
++
++static void fm_desktop_style_class_init(FmDesktopStyleClass *klass)
++{
++    GtkStyleClass *style_class = GTK_STYLE_CLASS(klass);
++
++    style_class->set_background = _dummy_set_background;
++}
++
++static void fm_desktop_style_init(FmDesktopStyle *self)
++{
++}
++#endif
++
+ /* ---------------------------------------------------------------------
+     FmDesktop class main handlers */
+ 
+@@ -4770,6 +4848,8 @@ static void fm_desktop_destroy(GtkObject *object)
+     }
+ 
+ #if GTK_CHECK_VERSION(3, 0, 0)
++    g_object_unref(self->css);
++
+     GTK_WIDGET_CLASS(fm_desktop_parent_class)->destroy(object);
+ #else
+     GTK_OBJECT_CLASS(fm_desktop_parent_class)->destroy(object);
+@@ -4778,6 +4858,16 @@ static void fm_desktop_destroy(GtkObject *object)
+ 
+ static void fm_desktop_init(FmDesktop *self)
+ {
++#if GTK_CHECK_VERSION(3, 0, 0)
++    self->css = gtk_css_provider_new();
++    gtk_style_context_add_provider(gtk_widget_get_style_context((GtkWidget*)self),
++                                   GTK_STYLE_PROVIDER(self->css),
++                                   GTK_STYLE_PROVIDER_PRIORITY_USER);
++#else
++    GtkStyle *style = g_object_new(FM_DESKTOP_TYPE_STYLE, NULL);
++    gtk_widget_set_style((GtkWidget*)self, style);
++    g_object_unref(style);
++#endif
+ }
+ 
+ /* we should have a constructor to handle parameters */
+@@ -5271,6 +5361,14 @@ static void on_bg_color_set(GtkColorButton *btn, FmDesktop *desktop)
+     gtk_color_button_get_color(btn, &new_val);
+     if (!gdk_color_equal(&desktop->conf.desktop_bg, &new_val))
+     {
++#if GTK_CHECK_VERSION(3, 0, 0)
++        char *css_data = g_strdup_printf("FmDesktop {\n"
++                                             "background-color: #%02x%02x%02x\n"
++                                         "}", new_val.red/256, new_val.green/256,
++                                         new_val.blue/256);
++        gtk_css_provider_load_from_data(desktop->css, css_data, -1, NULL);
++        g_free(css_data);
++#endif
+         desktop->conf.desktop_bg = new_val;
+         queue_config_save(desktop);
+         update_background(desktop, 0);
+@@ -5610,10 +5708,10 @@ void fm_desktop_preference(GtkAction *act, FmDesktop *desktop)
+                          G_CALLBACK(on_desktop_folder_set_toggled), data->chooser);
+         /* the desktop folder chooser dialog */
+         if (desktop->model)
+-            path_str = fm_path_to_str(fm_folder_model_get_folder_path(desktop->model));
++            path_str = fm_path_to_uri(fm_folder_model_get_folder_path(desktop->model));
+         else
+-            path_str = fm_path_to_str(fm_path_get_desktop());
+-        gtk_file_chooser_set_filename(data->chooser, path_str);
++            path_str = fm_path_to_uri(fm_path_get_desktop());
++        gtk_file_chooser_set_current_folder_uri(data->chooser, path_str);
+         g_free(path_str);
+         g_signal_connect(data->chooser, "file-set", G_CALLBACK(on_desktop_folder_set), data);
+         g_signal_connect(data->chooser, "selection-changed", G_CALLBACK(on_desktop_folder_set), data);
+diff --git a/src/desktop.h b/src/desktop.h
+index 8f130f7..1205d11 100644
+--- a/src/desktop.h
++++ b/src/desktop.h
+@@ -73,16 +73,21 @@ struct _FmDesktop
+     gint drag_start_x;
+     gint drag_start_y;
+     gboolean rubber_bending : 1;
+-    gboolean button_pressed : 1;
++    gboolean forward_pending : 1;
+     gboolean dragging : 1;
++    gboolean layout_pending : 1;
+     guint idle_layout;
+     FmDndSrc* dnd_src;
+     FmDndDest* dnd_dest;
+     guint single_click_timeout_handler;
++    guint button_pressed;
+     FmFolderModel* model;
+     guint cur_desktop;
+     gint monitor;
+     FmBackgroundCache *cache;
++#if GTK_CHECK_VERSION(3, 0, 0)
++    GtkCssProvider *css;
++#endif
+     /* interactive search subwindow */
+     GtkWidget *search_window;
+     GtkWidget *search_entry;
+diff --git a/src/main-win.c b/src/main-win.c
+index 1ae8f97..574a7d2 100644
+--- a/src/main-win.c
++++ b/src/main-win.c
+@@ -2,7 +2,7 @@
+  *      main-win.c
+  *
+  *      Copyright 2009 - 2012 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
+- *      Copyright 2012-2014 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
++ *      Copyright 2012-2015 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
+  *
+  *      This program is free software; you can redistribute it and/or modify
+  *      it under the terms of the GNU General Public License as published by
+@@ -319,12 +319,13 @@ static void update_file_menu(FmMainWin* win, FmPath *path)
+ {
+     GtkAction *act;
+     /* FmFolderView *fv = win->folder_view; */
++    gboolean can_term = pcmanfm_can_open_path_in_terminal(path);
+ 
+     act = gtk_ui_manager_get_action(win->ui, "/menubar/ToolMenu/Term");
+-    gtk_action_set_sensitive(act, path && fm_path_is_native(path));
++    gtk_action_set_sensitive(act, path && can_term);
+ #if FM_CHECK_VERSION(1, 2, 0)
+     act = gtk_ui_manager_get_action(win->ui, "/menubar/ToolMenu/Launch");
+-    gtk_action_set_sensitive(act, path && fm_path_is_native(path));
++    gtk_action_set_sensitive(act, path && can_term);
+ #endif
+     act = gtk_ui_manager_get_action(win->ui, "/menubar/GoMenu/Up");
+     gtk_action_set_sensitive(act, path && fm_path_get_parent(path));
+@@ -1142,10 +1143,14 @@ static void on_about(GtkAction* act, FmMainWin* win)
+ {
+     if(!about_dlg)
+     {
+-        GtkBuilder* builder = gtk_builder_new();
+         GString *comments = g_string_new(_("Lightweight file manager\n"));
++#if GTK_CHECK_VERSION(3, 10, 0)
++        GtkBuilder* builder = gtk_builder_new_from_file(PACKAGE_UI_DIR "/about.ui");
++#else
++        GtkBuilder* builder = gtk_builder_new();
+ 
+         gtk_builder_add_from_file(builder, PACKAGE_UI_DIR "/about.ui", NULL);
++#endif
+         about_dlg = GTK_ABOUT_DIALOG(gtk_builder_get_object(builder, "dlg"));
+ #if FM_CHECK_VERSION(1, 2, 0)
+         g_string_append_printf(comments, _("using LibFM ver. %s\n"), fm_version());
+@@ -1636,6 +1641,7 @@ static void update_statusbar(FmMainWin* win)
+     if(text)
+         gtk_statusbar_push(win->statusbar, win->statusbar_ctx, text);
+ 
++    gtk_statusbar_pop(win->statusbar, win->statusbar_ctx2);
+     text = fm_tab_page_get_status_text(page, FM_STATUS_TEXT_SELECTED_FILES);
+     if(text)
+         gtk_statusbar_push(win->statusbar, win->statusbar_ctx2, text);
+@@ -2108,7 +2114,12 @@ static void on_tab_page_status_text(FmTabPage* page, guint type, const char* sta
+         gtk_statusbar_pop(win->statusbar, win->statusbar_ctx);
+         if(status_text)
+             gtk_statusbar_push(win->statusbar, win->statusbar_ctx, status_text);
+-        break;
++        else
++            break; /* no updates are required */
++        if (fm_folder_view_get_n_selected_files(win->folder_view) == 0)
++            break;
++        /* otherwise put selection info on statusbar, continue with update */
++        status_text = fm_tab_page_get_status_text(page, FM_STATUS_TEXT_SELECTED_FILES);
+     case FM_STATUS_TEXT_SELECTED_FILES:
+         gtk_statusbar_pop(win->statusbar, win->statusbar_ctx2);
+         if(status_text)
+diff --git a/src/pcmanfm.c b/src/pcmanfm.c
+index 3867772..9be80f7 100644
+--- a/src/pcmanfm.c
++++ b/src/pcmanfm.c
+@@ -2,7 +2,7 @@
+  *      pcmanfm.c
+  *
+  *      Copyright 2009 - 2010 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
+- *      Copyright 2012-2014 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
++ *      Copyright 2012-2015 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
+  *
+  *      This program is free software; you can redistribute it and/or modify
+  *      it under the terms of the GNU General Public License as published by
+@@ -170,7 +170,6 @@ static void single_inst_cb(const char* cwd, int screen_num)
+         }
+     }
+     pcmanfm_run(screen_num);
+-    window_role = NULL; /* reset it for clients callbacks */
+ }
+ 
+ #if FM_CHECK_VERSION(1, 2, 0)
+@@ -276,7 +275,6 @@ int main(int argc, char** argv)
+     if(pcmanfm_run(gdk_screen_get_number(gdk_screen_get_default())))
+     {
+         first_run = FALSE;
+-        window_role = NULL; /* reset it for clients callbacks */
+         fm_volume_manager_init();
+ #if !GTK_CHECK_VERSION(3, 6, 0)
+         GDK_THREADS_ENTER();
+@@ -312,6 +310,28 @@ int main(int argc, char** argv)
+     return 0;
+ }
+ 
++static gboolean reset_options(void)
++{
++    show_desktop = FALSE;
++    desktop_off = FALSE;
++    desktop_pref = FALSE;
++    one_screen = FALSE;
++    g_free(set_wallpaper);
++    set_wallpaper = NULL;
++    g_free(wallpaper_mode);
++    wallpaper_mode = NULL;
++    show_pref = -1;
++    new_win = FALSE;
++#if FM_CHECK_VERSION(1, 0, 2)
++    find_files = FALSE;
++#endif
++    g_free(window_role);
++    window_role = NULL;
++    g_strfreev(files_to_open);
++    files_to_open = NULL;
++    return TRUE;
++}
++
+ gboolean pcmanfm_run(gint screen_num)
+ {
+     FmMainWin *win = NULL;
+@@ -329,10 +349,8 @@ gboolean pcmanfm_run(gint screen_num)
+             {
+                 fm_desktop_manager_init(one_screen ? screen_num : -1);
+                 desktop_running = TRUE;
+-                one_screen = FALSE;
+             }
+-            show_desktop = FALSE;
+-            return TRUE;
++            return reset_options();
+         }
+         else if(desktop_off)
+         {
+@@ -341,14 +359,13 @@ gboolean pcmanfm_run(gint screen_num)
+                 desktop_running = FALSE;
+                 fm_desktop_manager_finalize();
+             }
+-            desktop_off = FALSE;
++            reset_options();
+             return FALSE;
+         }
+         else if(show_pref > 0)
+         {
+             fm_edit_preference(GTK_WINDOW(desktop), show_pref - 1);
+-            show_pref = -1;
+-            return TRUE;
++            return reset_options();
+         }
+         else if(desktop == NULL)
+         {
+@@ -357,14 +374,14 @@ gboolean pcmanfm_run(gint screen_num)
+             {
+                 /* FIXME: add "on this X screen/monitor" into diagnostics */
+                 fm_show_error(NULL, NULL, _("Desktop manager is not active."));
++                reset_options();
+                 return FALSE;
+             }
+         }
+         else if(desktop_pref)
+         {
+             fm_desktop_preference(NULL, desktop);
+-            desktop_pref = FALSE;
+-            return TRUE;
++            return reset_options();
+         }
+         else if(wallpaper_mode || set_wallpaper)
+         {
+@@ -385,10 +402,8 @@ gboolean pcmanfm_run(gint screen_num)
+                             desktop->conf.wallpaper_mode = FM_WP_FIT;
+                     }
+                     wallpaper_changed = TRUE;
++                    set_wallpaper = NULL;
+                 }
+-                else
+-                    g_free(set_wallpaper);
+-                set_wallpaper = NULL;
+             }
+ 
+             if(wallpaper_mode)
+@@ -401,13 +416,12 @@ gboolean pcmanfm_run(gint screen_num)
+                     desktop->conf.wallpaper_mode = mode;
+                     wallpaper_changed = TRUE;
+                 }
+-                g_free(wallpaper_mode);
+-                wallpaper_mode = NULL;
+             }
+ 
+             if(wallpaper_changed)
+                 fm_desktop_wallpaper_changed(desktop);
+ 
++            reset_options();
+             return FALSE;
+         }
+     }
+@@ -450,9 +464,6 @@ gboolean pcmanfm_run(gint screen_num)
+         g_list_foreach(paths, (GFunc)fm_path_unref, NULL);
+         g_list_free(paths);
+         ret = (n_pcmanfm_ref >= 1); /* if there is opened window, return true to run the main loop. */
+-
+-        g_strfreev(files_to_open);
+-        files_to_open = NULL;
+     }
+     else
+     {
+@@ -489,8 +500,8 @@ gboolean pcmanfm_run(gint screen_num)
+     if (ret && find_files)
+         fm_launch_search_simple(GTK_WINDOW(win), NULL, NULL,
+                                 pcmanfm_open_folder, NULL);
+-    find_files = FALSE;
+ #endif
++    reset_options();
+     return ret;
+ }
+ 
+@@ -589,6 +600,20 @@ void pcmanfm_save_config(gboolean immediate)
+     }
+ }
+ 
++gboolean pcmanfm_can_open_path_in_terminal(FmPath* dir)
++{
++    GFile *gf;
++    char *wd;
++
++    if (fm_path_is_native(dir))
++        return TRUE;
++    gf = fm_path_to_gfile(dir);
++    wd = g_file_get_path(gf);
++    g_object_unref(gf);
++    g_free(wd);
++    return (wd != NULL);
++}
++
+ void pcmanfm_open_folder_in_terminal(GtkWindow* parent, FmPath* dir)
+ {
+ #if !FM_CHECK_VERSION(1, 2, 0)
+diff --git a/src/pcmanfm.h b/src/pcmanfm.h
+index f47f02e..507177c 100644
+--- a/src/pcmanfm.h
++++ b/src/pcmanfm.h
+@@ -45,6 +45,7 @@ gboolean pcmanfm_open_folder(GAppLaunchContext* ctx, GList* folder_infos, gpoint
+ char* pcmanfm_get_profile_dir(gboolean create);
+ void pcmanfm_save_config(gboolean immediate);
+ 
++gboolean pcmanfm_can_open_path_in_terminal(FmPath* dir);
+ void pcmanfm_open_folder_in_terminal(GtkWindow* parent, FmPath* dir);
+ 
+ G_END_DECLS
+diff --git a/src/tab-page.c b/src/tab-page.c
+index 7b71435..9a46cc9 100644
+--- a/src/tab-page.c
++++ b/src/tab-page.c
+@@ -1,7 +1,7 @@
+ //      fm-tab-page.c
+ //
+ //      Copyright 2011 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
+-//      Copyright 2012-2014 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
++//      Copyright 2012-2015 Andriy Grytsenko (LStranger) <andrej@rep.kiev.ua>
+ //
+ //      This program is free software; you can redistribute it and/or modify
+ //      it under the terms of the GNU General Public License as published by
+@@ -193,6 +193,12 @@ static void fm_tab_page_finalize(GObject *object)
+ 
+ static void free_folder(FmTabPage* page)
+ {
++    /* page might be just loaded so stop updating it in any case */
++    if(page->update_scroll_id)
++    {
++        g_source_remove(page->update_scroll_id);
++        page->update_scroll_id = 0;
++    }
+     if(page->folder)
+     {
+         g_signal_handlers_disconnect_by_func(page->folder, on_folder_start_loading, page);
+@@ -607,10 +613,15 @@ static void on_folder_start_loading(FmFolder* folder, FmTabPage* page)
+ static gboolean update_scroll(gpointer data)
+ {
+     FmTabPage* page = data;
+-    GtkScrolledWindow* scroll = GTK_SCROLLED_WINDOW(page->folder_view);
++    GtkScrolledWindow* scroll;
+ #if !FM_CHECK_VERSION(1, 0, 2)
+     const FmNavHistoryItem* item;
++#endif
+ 
++    if (g_source_is_destroyed(g_main_current_source()))
++        return FALSE;
++    scroll = GTK_SCROLLED_WINDOW(page->folder_view);
++#if !FM_CHECK_VERSION(1, 0, 2)
+     item = fm_nav_history_get_cur(page->nav_history);
+     /* scroll to recorded position */
+     gtk_adjustment_set_value(gtk_scrolled_window_get_vadjustment(scroll), item->scroll_pos);
+@@ -662,8 +673,9 @@ static void on_folder_finish_loading(FmFolder* folder, FmTabPage* page)
+ 
+     // fm_path_entry_set_path(entry, path);
+     /* delaying scrolling since drawing folder view is delayed */
+-    if(!page->update_scroll_id)
+-        page->update_scroll_id = gdk_threads_add_timeout(50, update_scroll, page);
++    if (page->update_scroll_id)
++        g_source_remove(page->update_scroll_id);
++    page->update_scroll_id = gdk_threads_add_timeout(50, update_scroll, page);
+ 
+     /* update status bar */
+     /* update status text */
+@@ -816,7 +828,7 @@ static void update_files_popup(FmFolderView* fv, GtkWindow* win,
+     for(l = fm_file_info_list_peek_head_link(files); l; l = l->next)
+         if(!fm_file_info_is_dir(l->data))
+             return; /* actions are valid only if all selected are directories */
+-        else if (!fm_file_info_is_native(l->data))
++        else if (!pcmanfm_can_open_path_in_terminal(fm_file_info_get_path(l->data)))
+             all_native = FALSE;
+     g_object_set_qdata_full(G_OBJECT(act_grp), popup_qdata,
+                             fm_file_info_list_ref(files),
+@@ -867,7 +879,7 @@ void _update_sidepane_popup(FmSidePane* sp, GtkUIManager* ui,
+                                  G_N_ELEMENTS(folder_menu_actions), win);
+     /* we use the same XML for simplicity */
+     gtk_ui_manager_add_ui_from_string(ui, folder_menu_xml, -1, NULL);
+-    if (!fm_file_info_is_native(file))
++    if (!pcmanfm_can_open_path_in_terminal(fm_file_info_get_path(file)))
+         gtk_action_set_visible(gtk_action_group_get_action(act_grp, "Term"), FALSE);
+ }
+ #endif
