@@ -33,6 +33,30 @@ build() {
   make
 }
 
+check() {
+  cat > libgroove-version.c <<EOF
+  #include <stdio.h>
+  #include <groove/groove.h>
+  int main() {
+      printf("%s\n", groove_version());
+      return 0;
+  }
+EOF
+
+  gcc \
+    -Wall \
+    -I "${srcdir}/${pkgname}-${pkgver}" \
+    -L "${srcdir}/${pkgname}-${pkgver}/build" \
+    $(pkg-config --libs libgroove.pc) \
+    -o libgroove-version \
+    libgroove-version.c
+
+  diff -u \
+    <(pkg-config --modversion libgroove.pc) \
+    <(LD_LIBRARY_PATH="${srcdir}/${pkgname}-${pkgver}/build" \
+      ./libgroove-version)
+}
+
 package() {
   make -C "${srcdir}/${pkgname}-${pkgver}/build" DESTDIR="${pkgdir}/" install
   install -Dm 644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" \
