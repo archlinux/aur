@@ -1,14 +1,15 @@
 [Desktop Entry]
 Comment[de_DE]=Das freie, Community getriebenes MMO, aus der Welt der offiziellen Pokémon-Spiele
 Comment=A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games
-Exec=/usr/bin/pokemonrevolutiononline
+Exec=GAMEEXECPATHSETBYPKGBUILD
 GenericName=Pokémon MMORPG
-Icon=GAMEICONPATH
-Name=Pokémon Revolution Online
-StartupNotify=true
+Icon=pokemonrevolution
+Name=Pokémon Revolution
+StartupNotify=false
 Terminal=false
 Type=Application
 Categories=Game;
+X-DBUS-StartupType=Unique
 Actions=Support;Rules;Community;Register;
 
 [Desktop Action Support]
