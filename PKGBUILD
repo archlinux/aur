@@ -1,16 +1,17 @@
 # Maintainer: Boohbah <boohbah at gmail.com>
 # Contributor: Mikkel Kroman <mk@maero.dk>
 # Contributor: AlexTalker <alextalker at openmailbox.org>
+# Contributor: Loui Chang <louipc.ist at gmail.com>
 
 pkgname=ricochet-git
-pkgver=1.0.4.r40.g666b686
+pkgver=1.1.2.r0.g6cfbcd0
 pkgrel=1
 pkgdesc="A peer-to-peer instant messaging system built on Tor hidden services (git version)"
 arch=('i686' 'x86_64')
 url="https://ricochet.im/"
 license=('custom')
 depends=('tor' 'qt5-translations' 'qt5-quickcontrols' 'qt5-quick1'
-         'qt5-declarative')
+         'qt5-declarative' 'qt5-multimedia')
 makedepends=('git' 'qt5-tools')
 conflicts=('ricochet')
 provides=('ricochet')
