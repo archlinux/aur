@@ -1,7 +1,7 @@
 #Maintainer:xgdgsc<xgdgsc@gmail.com>
 
 pkgname=rodeo
-pkgver=1.1.23
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A data science IDE for Python"
 url=https://www.yhat.com/products/rodeo
@@ -14,11 +14,11 @@ PKGEXT=.tar.gz
 
 if [[ $CARCH = i686 ]];then
   _arch=32
-  md5sums[0]=''
+  md5sums[0]='9cf2755e5c8662ecf58f5c3a2ed94029'
 
 else
   _arch=64
-  md5sums[0]='fc45af6bfce0ed7eb9d52bc55444a6a5'
+  md5sums[0]='3cc5ec19c1daec810c236136b2774c12'
 fi
 
 source=("http://rodeo-releases.s3.amazonaws.com/$pkgver/Rodeo-v$pkgver-linux_$_arch.zip" 'rodeo.install' 'logo.svg' 'rodeo.desktop')
