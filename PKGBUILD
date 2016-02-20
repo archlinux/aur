@@ -11,7 +11,7 @@ depends=('libgl' 'gstreamer0.10-good')
 source=("https://live.albiononline.com/clients/${pkgver}/albion-online-setup" "albiononline.desktop")
 
 options=(!strip docs libtool emptydirs !zipman staticlibs !upx)
-md5sums=('bb2000d8c5332c77bf609c9395733119'
+md5sums=('f5eef90454056e5f6e8954b46d6e3304'
          'cec7e1ad7f4f8acfc0628d0dd8d421e6')
 
 
