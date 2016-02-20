@@ -2,7 +2,7 @@
 
 _pkgname=moonlight
 pkgname=${_pkgname}-git
-pkgver=0.6.1.388.ec8b08a
+pkgver=0.7.1.0.465.056bf35
 pkgrel=1
 pkgdesc="Open source implementation of NVIDIA's GameStream, as used by the NVIDIA Shield"
 url="http://moonlight-stream.com"
@@ -17,7 +17,8 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
-  printf "%s.%s.%s" "$(git describe --tags --abbrev=0|cut -dv -f2)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.%s.%s" "$(git describe --tags --abbrev=0|cut -dv -f2|sed 's|\-|.|g')" \
+    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
