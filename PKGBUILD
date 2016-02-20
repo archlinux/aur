@@ -1,8 +1,9 @@
+# Maintainer: Mike Lenzen <lenzenmi@gmail.com>
 pkgname=ttf-jomolhari
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Dzongkha Font - Bhutanese style dbu-can OpenType font created by Christopher Fynn"
-url=('http://www.library.gov.bt/IT/fonts.html')
+url='http://www.library.gov.bt/IT/fonts.html'
 arch=(any)
 depends=(fontconfig xorg-font-utils)
 source=("http://www.library.gov.bt/IT/download/Jomolhari.zip" "OFL.txt")
