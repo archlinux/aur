@@ -10,7 +10,7 @@
 # -Steam patch, Crossover Hack version (see https://bugs.winehq.org/show_bug.cgi?id=39403 )
 
 pkgname=wine-gaming-nine
-pkgver=1.9.2
+pkgver=1.9.3
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
@@ -25,7 +25,7 @@ source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbas
         steam.patch
         wbemprox_query_v2.patch
         )
-sha1sums=('0caaea9075d73c2432aa7e91d77aaf79fcc3268a'
+sha1sums=('6c523dce596b07c1d714ec362b6b8a8e973036eb'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
           '0f4ac455436d5714a2cf0b537ed25f4fa5c1a7fd'
           'f3febb8836f38320742a546c667106608d4c4395'
@@ -61,7 +61,7 @@ _depends=(
 )
 
 makedepends=(autoconf ncurses bison perl fontforge flex
-  'gcc>=5.3.0-3'  'gcc-multilib>=5.3.0-3'
+  'gcc>=5.3.0-4'  'gcc-multilib>=5.3.0-4'
   giflib          lib32-giflib
   libpng          lib32-libpng
   gnutls          lib32-gnutls
@@ -142,9 +142,6 @@ prepare()
 
     sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
 
-    # These additional CPPFLAGS solve FS#27662 and FS#34195
-    export CPPFLAGS="${CPPFLAGS/-D_FORTIFY_SOURCE=2/} -D_FORTIFY_SOURCE=0"
-
     cd $srcdir
 
     # Get rid of old build dirs
@@ -165,7 +162,6 @@ build()
             --prefix=/usr \
             --libdir=/usr/lib \
             --with-x \
-            --without-gstreamer \
             --enable-win64 \
             --with-xattr \
             --with-d3dadapter \
@@ -187,14 +183,13 @@ build()
     ../$_winesrcdir/configure \
         --prefix=/usr \
         --with-x \
-        --without-gstreamer \
         --with-xattr \
         --disable-tests \
         --with-d3dadapter \
         "${_wine32opts[@]}"
 
     # These additional flags solve FS#23277
-    make CFLAGS+="-mstackrealign -mincoming-stack-boundary=2" CXXFLAGS+="-mstackrealign -mincoming-stack-boundary=2"
+    make
 }
 
 package()
