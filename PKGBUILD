@@ -2,7 +2,7 @@
 # Based on /var/abs/community/mythtv/PKGBUILD version 0.27.4
 
 pkgname=mythtv-git
-pkgver=v0.28.pre.r3405.g362170e
+pkgver=v0.28.pre.r3579.g606597a
 pkgrel=1
 pkgdesc='Free Open Source software digital video recorder (DVR) project'
 url='http://www.mythtv.org/'
@@ -27,12 +27,12 @@ optdepends=('glew: for GPU commercial flagging'
 conflicts=('mythtv')
 replaces=('mythtv')
 
+# Install file creates mythtv user - I don't think it needs to be in all these groups
 install='mythtv.install'
-#source=('git+ssh://e5550/home/martyg/Git/mythtv#tag=v0.28-b1'
 source=('git://github.com/MythTV/mythtv.git#branch=master'
 	'mythbackend.service')
 sha256sums=('SKIP'
-            'ed5ca54de26b7cd8a64e09626eed6e09f35d677daf88c530bb24cc4252bcce6d')
+            '77e542610204f5eb96d95f62363833ecdc79dce718561b22b3c91a789192411c')
 
 pkgver() {
   cd "$srcdir/mythtv/mythtv"
