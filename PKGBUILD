@@ -3,7 +3,7 @@
 
 pkgname=nginx-devel
 _pkgname=nginx
-pkgver=1.9.10
+pkgver=1.9.11
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server - development version'
 url="http://nginx.org"
@@ -146,7 +146,7 @@ ${_modulesURL[*]}
 )
 validpgpkeys=(
 )
-sha256sums=('fb14d76844cab0a5a0880768be28965e74f9956790f618c454ef6098e26631d9'
+sha256sums=('6a5c72f4afaf57a6db064bba0965d72335f127481c5d4e64ee8714e7b368a51f'
             '05fdc0c0483410944b988d7f4beabb00bec4a44a41bd13ebc9b78585da7d3f9b'
             '272907d3213d69dac3bd6024d6d150caa23cb67d4f121e4171f34ba5581f9e98'
             'e299680e919a97c7ec06b62e4fabc3b5ead837fe486a5f87260bd16d0b51e112'
