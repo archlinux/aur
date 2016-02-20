@@ -13,7 +13,7 @@
 pkgname=popcorntime-bin
 _pkgname=popcorntime
 pkgver=0.3.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Stream movies and TV shows from torrents"
 arch=('i686' 'x86_64')
 url="https://popcorntime.sh"
@@ -27,7 +27,7 @@ install=popcorntime.install
 [ "$CARCH" = "x86_64" ] && _platform='Linux-64'
 source=("https://get.popcorntime.sh/build/Popcorn-Time-${pkgver}-${_platform}.tar.xz"
         "${_pkgname}.desktop")
-sha256sums=('27db5a11580204add3494f0274d170bad2fcba0c9e4461d408a20dcd10b4eadf'
+sha256sums=('42f2c92c90717eb23f890d1ca42dd4210a48a4b9013f9ab8273b32b3e80c8a84'
             '4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334')
 
 [ "$CARCH" = "i686" ]   && _platform=linux32
