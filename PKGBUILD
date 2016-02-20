@@ -1,8 +1,8 @@
 # Maintainer: Johan Förberg <johan@forberg.se>
 pkgname=zstd-git
 _pkgname=zstd
-pkgver=v0.1.0.r0.g305c8c2
-pkgrel=2
+pkgver=v0.5.1.r0.gc580b75
+pkgrel=1
 pkgdesc='A fast and efficient compression algorithm.'
 arch=('i686' 'x86_64')
 url='https://github.com/Cyan4973/zstd'
@@ -14,7 +14,7 @@ conflicts=('zstd')
 provides=('zstd')
 source=('git://github.com/Cyan4973/zstd.git')
 noextract=()
-md5sums=('SKIP') 
+md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
@@ -29,7 +29,7 @@ build() {
 
 package() {
     cd "$srcdir/$_pkgname"
-    make DESTDIR="$pkgdir/" install
+    make PREFIX="/usr" DESTDIR="$pkgdir/" install
     install -D -m644 lib/LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
 
