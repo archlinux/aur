@@ -2,7 +2,7 @@
 
 pkgname=moonlight
 _gitname=${pkgname}-pc
-pkgver=0.7
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Open source implementation of NVIDIA's GameStream, as used by the NVIDIA Shield"
 url="http://moonlight-stream.com"
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('java-runtime' 'sh')
 makedepends=('apache-ant')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/moonlight-stream/${_gitname}/archive/v${pkgver}.tar.gz)
-sha512sums=('e5beef6f16add91d850f8cc73d714ab9820089dc4a9246e0e3db8abb01518d794cd5f1e31b49c61341aec6877bbc686665203b740b97b46c09c743d4f7e7e318')
+sha512sums=('74e592cb6428a6e72636d6e56741054a65bb2ca89210e72256e102047ac8f8b42841eda0bdc690189b93a648a5285df4daa4b3f8bf0a6b36b46c47a6f64b3ec0')
 
 prepare() {
   cd ${_gitname}-${pkgver}
