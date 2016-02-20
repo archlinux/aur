@@ -6,9 +6,10 @@
 # Contributor: Scias <shining [dot] scias [at] gmail [dot] com>
 # Contributor: darzki <darzki [at] o2 [dot] pl>
 # Contributor: N30N <archlinux [at] alunamation [dot] com>
+# Contributor: anthrit <anthrit [at] anthware [dot] com>
 
 pkgname=lwks
-pkgver=12.0.2
+pkgver=12.6.0
 pkgrel=1
 pkgdesc="Lightworks is a professional video editing suite"
 arch=('x86_64')
@@ -19,7 +20,7 @@ optdepends=('nvidia-utils: only for nVidia users')
 provides=('lightworks')
 conflicts=('lightworks')
 source=("http://www.lwks.com/dmpub/lwks-$pkgver-amd64.deb")
-sha256sums=('a6daf4ad7043d4dc9a0fcf78e572572ef85528ebe91dad72d700f466e01d37bc')
+sha256sums=('428d72570054b0f4287212d85a70c926b413407b5105a07bcf14cc578b5ebff1')
 
 package() {
 	msg2 "Extracting data.tar.gz"
