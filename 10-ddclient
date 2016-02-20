@@ -1,0 +1,9 @@
+#!/bin/bash
+case "$2" in
+    up)
+        systemctl start ddclient.service
+    ;;
+    down)
+        systemctl stop ddclient.service
+    ;;
+esac

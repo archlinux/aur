@@ -1,0 +1,6 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!10-ddclient
+!LICENSE
