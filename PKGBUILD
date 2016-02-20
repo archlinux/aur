@@ -12,12 +12,14 @@ depends=('mgetty-vgetty' 'perl-audio-dsp' 'perl-crypt-blowfish' 'perl-crypt-cbc'
 conflicts=('mgetty')
 makedepends=('make' 'perl')
 install='vocp.install'
-source=('http://prdownloads.sourceforge.net/vocp/VOCP-0.9.3.tar.bz2'
+source=( 'http://www.mirrorservice.org/sites/downloads.sourceforge.net/v/vo/vocp/VOCP/0.9.3/VOCP-0.9.3.tar.gz'
+#sourceforge is down :(
+#'http://prdownloads.sourceforge.net/vocp/VOCP-0.9.3.tar.bz2'
         'convert_sound.pl'
         'install_vocp.pl'
         'config.patch'
 	)
-md5sums=('1a570a1f5af11786b39f6aed4304b5c3'
+md5sums=('07cf78ff95fce34d75dfc641b134a349'
          'b6d69da8f3221d7d51e3be4d2c067c00'
          '3abd17fdd551aee139b8f40efd7a93a0'
          '0ac9ce4ef610f6f8b5d480d07c3a2891')
