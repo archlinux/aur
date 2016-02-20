@@ -2,11 +2,11 @@
 
 _pkgname=faba-icon-theme
 pkgname=${_pkgname}-git
-pkgver=294.ab92a4c
-pkgrel=2
+pkgver=303.6f1cea3
+pkgrel=1
 pkgdesc="This is the base icon set for Faba. It is designed with simplicity and compliance to standards in mind."
 arch=('any')
-url="http://mokaproject.com/faba-icon-theme/"
+url="http://snwh.org/moka/"
 license=('GPL3')
 depends=('gtk-update-icon-cache')
 makedepends=('git')
