@@ -9,7 +9,7 @@ license=('MPL')
 url="http://ftp.oops.org/pub/oops/libchardet"
 depends=('gcc-libs' 'bash')
 options=('!libtool')
-source=("ftp://ftp.oops.org/pub/oops/$pkgname/${pkgname}-${pkgver}.tar.bz2")
+source=("http://ftp.oops.org/pub/oops/$pkgname/${pkgname}-${pkgver}.tar.bz2")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
