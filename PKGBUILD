@@ -1,6 +1,6 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=mod_auth_gssapi
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Kerberos authentication module for the Apache HTTP Server"
 arch=(i686 x86_64)
@@ -9,7 +9,7 @@ license=(custom)
 depends=('apache>=2.4' 'krb5>=1.11')
 optdepends=('gss-ntlmssp: for NTLMSSP support')
 makedepends=('gss-ntlmssp')
-source=("git+https://github.com/modauthgssapi/mod_auth_gssapi.git#commit=ac31a91649cf02647697337cb531179cd05f562e")
+source=("git+https://github.com/modauthgssapi/mod_auth_gssapi.git#commit=faf9ee7750331a8db0a6f699949f7c5d62940f20")
 sha256sums=('SKIP')
 
 pkgver() {
