@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="Language and environment for statistical computing and graphics"
 arch=('i686' 'x86_64')
 license=('GPL')
-url=('http://www.r-project.org/')
+url='http://www.r-project.org/'
 depends=('blas' 'lapack' 'bzip2'  'libpng' 'libjpeg' 'libtiff'
          'ncurses' 'pcre' 'readline' 'zlib' 'perl' 'gcc-libs'
          'libxt' 'libxmu' 'pango' 'xz' 'desktop-file-utils' 'zip' 'unzip')
@@ -69,12 +69,12 @@ package() {
    sed -i "s|${pkgdir} ||" "${pkgdir}/usr/local/bin/R"
    # rm "${pkgdir}/usr/local/lib/R/bin/R"
    cd "${pkgdir}/usr/local/lib/R/bin"
-   
+
    #ln -s ../../../local/bin/R-devel
    #rename bin
-   mv "${pkgdir}/usr/local/bin/R" "${pkgdir}/usr/local/bin/R-devel" 
-   mv "${pkgdir}/usr/local/bin/Rscript" "${pkgdir}/usr/local/bin/Rscript-devel" 
-   
+   mv "${pkgdir}/usr/local/bin/R" "${pkgdir}/usr/local/bin/R-devel"
+   mv "${pkgdir}/usr/local/bin/Rscript" "${pkgdir}/usr/local/bin/Rscript-devel"
+
   # install some freedesktop.org compatibility
   install -Dm644 "${srcdir}/r.desktop" \
 	"${pkgdir}/usr/local/share/applications/r.desktop"
