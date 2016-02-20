@@ -2,8 +2,8 @@
 
 pkgname=sound-theme-sakura
 pkgver=1.0
-pkgrel=1
-pkgdesc="Sound theme for Linux desktop made by Japanimation voice actor 'MURAKAMI Rie' and Linux-HA JAPAN."
+pkgrel=2
+pkgdesc="Sound theme for Linux desktop made by Japanimation voice actor 'MURAKAMI Rie' and Linux-HA JAPAN. This is made for cheering Pacemaker"
 arch=('any')
 url="http://linux-ha.osdn.jp/wp/archives/212"
 license=('custom')
