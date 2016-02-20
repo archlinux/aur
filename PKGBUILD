@@ -12,7 +12,7 @@ depends=('python2')
 makedepends=('git')
 install='lazylibrarian.install'
 source=('git://github.com/DobyTang/LazyLibrarian.git' 'lazylibrarian.service')
-sha256sums=('SKIP' '4a22ec02c6001ba132aa1ebd91a0934eba605be38a6b7a8e3bdabbac6caead53')
+sha256sums=('SKIP' '5010608e99e0242ba7c74b401efed0968984fd9a0ba1b9995dca22d6b8da8519')
 
 pkgver() {
   cd $_gitname
