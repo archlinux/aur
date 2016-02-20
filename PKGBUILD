@@ -7,6 +7,9 @@ pkgrel=4
 arch=('i686' 'x86_64')
 url='http://phonon.kde.org/'
 license=('LGPL')
+depends=('gst-plugins-base')
+optdepends=('pulseaudio: PulseAudio support' 'gst-plugins-good: PulseAudio support and good codecs' 'gst-plugins-bad: additional codecs'
+	'gst-plugins-ugly: additional codecs' 'gst-libav: libav codec')
 makedepends=('gst-plugins-base' 'cmake' 'automoc4' 'phonon-qt4' 'phonon-qt5')
 source=("http://download.kde.org/stable/phonon/phonon-backend-gstreamer/${pkgver}/src/phonon-backend-gstreamer-${pkgver}.tar.xz"
         "phonon-gstreamer-gst15_include_dirs.patch")
@@ -46,8 +49,6 @@ build() {
 
 package_phonon-qt4-gstreamer() {
   pkgdesc="Phonon GStreamer backend for Qt4"
-  depends=('gst-plugins-base')
-  optdepends=('pulseaudio: PulseAudio support' 'gst-plugins-good: PulseAudio support')
   provides=('phonon-backend' 'phonon-qt4-backend')
   replaces=('phonon-gstreamer')
   conflicts=('phonon-gstreamer')
@@ -59,8 +60,6 @@ package_phonon-qt4-gstreamer() {
 
 package_phonon-qt5-gstreamer() {
   pkgdesc="Phonon GStreamer backend for Qt5"
-  depends=('gst-plugins-base')
-  optdepends=('pulseaudio: PulseAudio support' 'gst-plugins-good: PulseAudio support')
   provides=('phonon-qt5-backend')
   replaces=('phonon-gstreamer')
   conflicts=('phonon-gstreamer')
