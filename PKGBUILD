@@ -11,6 +11,7 @@ depends=('boost-libs' 'freeimage' 'freetype2' 'libxaw' 'libxrandr'
          'nvidia-cg-toolkit' 'zziplib' 'ois' 'glu' 'tinyxml')
 makedepends=('boost' 'cmake' 'doxygen' 'graphviz' 'ttf-dejavu' 'mesa' 'mercurial')
 provides=('ogre' 'ogre-docs')
+conflicts=('ogre' 'ogre-docs')
 _dir="OGRE"
 source=("hg+http://bitbucket.org/sinbad/ogre")
 sha512sums=('SKIP')
