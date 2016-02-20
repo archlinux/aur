@@ -5,7 +5,7 @@ _altname=$(printf ${pkgname%%-git})
 _gitname=smi2021
 _gitbranch=master
 _gitauthor=Manouchehri
-pkgver=r35.67bfab0
+pkgver=v0.0.1.r46.g61569ba
 pkgrel=1
 pkgdesc="EasyCap driver module"
 url="https://github.com/$_gitauthor/$_gitname"
@@ -17,7 +17,7 @@ sha512sums=('SKIP'
             '722128600bd982b1ff6af8e372e361d22ee872282aeab50b62d8769ad2ee08bb2c6612f59ba48736a26c2c47704a7e192af2746ac0746a074bc3aa242bffa712')
 arch=('any') # arch=('i686' 'x86_64')
 depends=('')
-makedepends=('git')
+makedepends=('git linux-headers')
 conflicts=("$_gitname" "$_altname")
 provides=("$_gitname" "$_altname")
 install=easycap-smi2021-modules.install
