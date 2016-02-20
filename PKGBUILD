@@ -3,7 +3,7 @@
 pkgname=opensmtpd-snapshot
 _pkgname=opensmtpd
 pkgver=201602131907p1
-pkgrel=1
+pkgrel=2
 pkgdesc='A FREE implementation of the server-side SMTP protocol. Latest snapshot.'
 arch=('i686' 'x86_64')
 url="http://www.opensmtpd.org/portable.html"
@@ -36,13 +36,8 @@ build() {
               --sysconfdir=/etc/mail \
               --sbindir=/usr/bin \
               --libexecdir=/usr/lib/smtpd \
-              --with-sock-dir=/run \
-              --with-privsep-path=/var/empty \
-              --with-privsep-user=_smtpd \
-              --with-queue-user=_smtpq \
-              --with-filter-user=_smtpf \
-              --with-pam \
-              --with-ca-file=/etc/ssl/certs/ca-certificates.crt
+              --with-path-CAfile=/etc/ssl/certs/ca-certificates.crt \
+              --with-table-db
   make
 }
 
@@ -50,6 +45,9 @@ package() {
   cd "$srcdir/${_pkgname}-${pkgver}"
 
   make DESTDIR="${pkgdir}/" install
+  ln -s /usr/bin/smtpctl "$pkgdir/usr/bin/makemap"
+  ln -s /usr/bin/smtpctl "$pkgdir/usr/bin/newaliases"
+  ln -s /usr/bin/smtpctl "$pkgdir/usr/bin/sendmail"
 
   install -Dm644 LICENSE   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
