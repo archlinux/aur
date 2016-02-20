@@ -2,7 +2,7 @@
 # Contributor: K0n24d <konrad AT knauber DOT net>
 pkgname=urbackup-server
 pkgver=1.4.12
-pkgrel=2
+pkgrel=3
 pkgdesc="Client Server backup system"
 arch=('i686' 'x86_64')
 url="http://www.urbackup.org/"
@@ -24,11 +24,11 @@ package() {
 
 	make DESTDIR=$pkgdir install
 
-	install -Dm755 "${srcdir}/${pkgname}-${pkgver}"/urbackup-server.service \
+	install -Dm644 "${srcdir}/${pkgname}-${pkgver}"/urbackup-server.service \
 		"${pkgdir}"/usr/lib/systemd/system/urbackup-server.service
-	install -Dm755 "${srcdir}/${pkgname}-${pkgver}"/urbackup-server-firewalld.xml \
+	install -Dm644 "${srcdir}/${pkgname}-${pkgver}"/urbackup-server-firewalld.xml \
 		"${pkgdir}"/usr/lib/firewalld/services/urbackup-server-firewalld.xml
-	install -Dm755 "${srcdir}/${pkgname}-${pkgver}"/logrotate_urbackup_srv \
+	install -Dm644 "${srcdir}/${pkgname}-${pkgver}"/logrotate_urbackup_srv \
 		"${pkgdir}"/etc/logrotate.d/urbackup_srv
 	install -D "${srcdir}/${pkgname}-${pkgver}"/docs/start_urbackup_server.1 \
 		"${pkgdir}"/usr/share/man/man1/start_urbackup_server.1
