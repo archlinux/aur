@@ -2,7 +2,7 @@
 
 _pkgname=openbazaard
 pkgname=${_pkgname}-git
-pkgver=759.0a6afa5
+pkgver=762.922cc80
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
 arch=(any)
@@ -34,25 +34,23 @@ depends=(
 makedepends=(git)
 source=("${_pkgname}::git+https://github.com/OpenBazaar/OpenBazaar-Server.git"
 	 ${_pkgname}.service
-	 ${_pkgname}.sh
-	patch
+	 ${_pkgname}.conf
 )
 install=${_pkgname}.install
 options=('!strip')
 provides=(${_pkgname})
 replaces=(${_pkgname})
+backup=('var/lib/openbazaard/ob.cfg '
+	'etc/conf.d/openbazaard.conf')
 
 package(){
-  cd $srcdir/${_pkgname}
-  
-  patch -Np1 -i ../patch
-  cd ..
+  cd $srcdir
 
   msg2 "Install systemd service"
   install -Dm644 $srcdir/${_pkgname}.service $pkgdir/usr/lib/systemd/system/${_pkgname}.service
 
-  msg2 "Install ${_pkgname} scripts"
-  install -Dm755 $srcdir/${_pkgname}.sh $pkgdir/usr/bin/${_pkgname}
+  msg2 "Install conf file"
+  install -Dm644 $srcdir/${_pkgname}.conf $pkgdir/etc/conf.d/${_pkgname}.conf
 
   install -dm755 $pkgdir/var/lib/
 
@@ -73,6 +71,5 @@ pkgver() {
 }
 
 md5sums=('SKIP'
-         '0f4eeb5eb8e59bde4cd71dfdad7fb5dc'
-         '9e4308f3a16fc6e8b8cc638db5d079b3'
-         'e7a3fc77ea5af1a8acb3520cba7d3a55')
+         'df247302f02ad1af79e009fa75ced4bc'
+         'da0bca5d508ddd18227300090f09b8b9')
