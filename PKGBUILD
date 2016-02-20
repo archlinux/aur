@@ -12,13 +12,13 @@ provides=('teamviewer')
 conflicts=('teamviewer-beta')
 depends_x86_64=(
 	'lib32-fontconfig'
-	'lib32-libpng12'
+	'lib32-libpng'
 	'lib32-libsm'
 	'lib32-libxinerama'
 	'lib32-libxrender')
 depends_i686=(
 	'fontconfig'
-	'libpng12'
+	'libpng'
 	'libsm'
 	'libxinerama'
 	'libxrender')
