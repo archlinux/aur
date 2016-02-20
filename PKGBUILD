@@ -7,7 +7,7 @@
 #
 
 pkgname=emacs25-git
-pkgver=25.0.50.r123621
+pkgver=25.0.91.r124424
 pkgrel=1
 pkgdesc="GNU Emacs. Version 25 development and maintenance branch."
 arch=('i686' 'x86_64')
