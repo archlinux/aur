@@ -2,7 +2,7 @@
 # Inspired by the netbeans-nightly PKGBUILD by Pavol Hluchy (Lopo) <lopo at losys dot eu>
 
 pkgname=openttd-opengfx-snapshot
-pkgver=0.5.2+s20150519
+pkgver=0.5.4+s20160110
 pkgrel=1
 pkgdesc='A free graphics set for openttd (latest snapshot release)'
 arch=('any')
