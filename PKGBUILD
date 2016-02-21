@@ -35,6 +35,6 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}/src"
-  make install DESTDIR="${pkgdir}" PREFIX=/usr
+  debug=no make install DESTDIR="${pkgdir}" PREFIX=/usr
   install -D ../UNLICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
