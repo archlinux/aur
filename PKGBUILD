@@ -7,7 +7,7 @@ replaces=('zarafa-server-arm')
 pkgver=7.2.1
 _pkgmajver=7.2
 _pkgrev=${pkgver}-51847
-pkgrel=11
+pkgrel=12
 pkgdesc="Open Source Groupware Solution"
 arch=('arm'
       'armv7h'
@@ -22,7 +22,7 @@ depends=("zarafa-libical>=7.2.0"
 	 'bison'
 	 'flex'
 	 'gettext'
-	 'gsoap'
+	 'gsoap=2.8.22'
 	 'boost=1.58.0'
          'curl'
          'icu=56.1'
