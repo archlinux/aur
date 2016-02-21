@@ -12,7 +12,7 @@ depends=(libgpg-error)
 provides=(libgcrypt15)
 conflicts=(libgcrypt15)
 
-_debver=deb7u3
+_debver=deb7u4
 _deburl="http://security.debian.org/debian-security/pool/updates/main/libg/libgcrypt11"
 
 if [ "${CARCH}" = "x86_64" ] ; then
@@ -24,10 +24,10 @@ else
 fi
 
 source=()
-md5sums_i686=('36e8b3e5c2a361aae823bd5753f84bec')
-md5sums_x86_64=('1f001aec0c9ec9fa785122fedb72bf7f')
 source_x86_64=(${_deburl}/libgcrypt11_${pkgver}-${pkgrel}+${_debver}_amd64.deb)
 source_i686=(${_deburl}/libgcrypt11_${pkgver}-${pkgrel}+${_debver}_i386.deb)
+md5sums_i686=('b31a8510f6414732ae530a3718a768e2')
+md5sums_x86_64=('05f7d141c15d49ee29dfd28503ec1f63')
 
 package() {
   ar vx $srcdir/${pkgname}_${pkgver}-${pkgrel}+${_debver}_${_arch}.deb
