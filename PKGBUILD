@@ -1,10 +1,10 @@
-# Maintainer: Severen Redwood <severen.redwood@gmail.com>
-# Report all package issues to `https://github.com/SShrike/arch-packages`
+# Maintainer: Severen Redwood <severen@shrike.me>
+# Report all package issues to `https://github.com/SShrike/pkgbuilds`
 
 _fontname="monoid"
 pkgname="ttf-${_fontname}"
 pkgver='0.61'
-pkgrel=1
+pkgrel=2
 pkgdesc='A customisable coding font'
 arch=('any')
 license=('MIT' 'custom:OFL')
