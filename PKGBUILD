@@ -7,7 +7,7 @@ pkgdesc="Jc_Gui is a frontend to jconvolver"
 arch=('any')
 url="https://github.com/zzzzrrr/jcgui"
 license=(GPL)
-depends=("cairo" "pango" "atk" "gtk2")
+depends=("cairo" "pango" "atk" "gtk2" "zita-resampler")
 source=("jcgui::git+https://github.com/zzzzrrr/jcgui.git")
 md5sums=('SKIP')
 
