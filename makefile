@@ -1,2 +1,2 @@
 all:
-	g++ A.0.2.2.cpp -o corrupt
+	g++ A.1.3.2.cpp -o corrupt -std=c++11
