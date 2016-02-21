@@ -4,7 +4,7 @@
 _pkgname=darling-dmg
 _github_addr=darlinghq/darling-dmg
 pkgname=$_pkgname-git
-pkgver=1.0.3.r1.g1548289
+pkgver=1.0.4.r1.gb7ce87b
 pkgrel=1
 epoch=1
 pkgdesc="FUSE module for .dmg files (containing an HFS+ filesystem)"
@@ -16,6 +16,7 @@ depends=('bzip2' 'fuse' 'icu' 'libxml2' 'openssl' 'zlib')
 makedepends=('cmake' 'git' 'boost')
 source=("$_pkgname"::"git+https://github.com/$_github_addr")
 sha256sums=('SKIP')
+conflicts=('darling-git')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
