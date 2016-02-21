@@ -1,6 +1,6 @@
 # Maintainer: Jacob Mischka <jacob@mischka.me>
 pkgname=brave
-pkgver=0.7.14dev
+pkgver=0.7.15dev
 pkgrel=1
 pkgdesc='Web browser that blocks ads and trackers by default.'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ makedepends=('npm')
 depends=('gtk2' 'nss' 'alsa-lib' 'libnotify' 'gconf' 'libxtst' 'desktop-file-utils')
 source=("https://github.com/brave/browser-laptop/archive/v${pkgver}.tar.gz"
 		"Brave.desktop")
-md5sums=('477efdc8eede49865312e88b908b2a3d'
+md5sums=('d43ce03461ab210b093891c77b2e81c2'
          '6919ccb899e04cf785696ff2a0172938')
 
 build() {
