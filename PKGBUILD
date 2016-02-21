@@ -1,3 +1,6 @@
+# Maintainer: Jelle van der Waa <jelle@archlinux.org>
+# Contributor: Jelle van der Waa <jelle@archlinux.org>
+
 pkgname=virglrenderer-git
 pkgver=0.4.1
 pkgrel=1
