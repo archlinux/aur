@@ -1,6 +1,6 @@
 # Contributor: ant32 <antreimer@gmail.com>
 pkgname=mingw-w64-postgresql-libs
-pkgver=9.4.5
+pkgver=9.5.1
 pkgrel=1
 pkgdesc="Libraries for use with PostgreSQL (mingw-w64)"
 arch=(any)
@@ -10,24 +10,15 @@ makedepends=(mingw-w64-configure libxml2)
 depends=(mingw-w64-gettext "mingw-w64-openssl>=1.0.0" mingw-w64-libxml2)
 options=(staticlibs !strip !buildflags)
 source=("http://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2"
-"postgresql-9.4.1-mingw-link.patch"
-"postgresql-9.4.1-pl-perl.patch"
-"postgresql-9.4.1-pl-python.patch"
-"postgresql-9.4.1-pl-tcl.patch")
-sha256sums=('b87c50c66b6ea42a9712b5f6284794fabad0616e6ae420cf0f10523be6d94a39'
-            '0f2b5c7edb48dd106900854c9323ca2d483054595c4cf8a5b796a1d536d22aad'
-            '86a12775cdf66cb174def103d6c7add095b473fd7f9038858e09564046d2b091'
-            '0aa6c34fa7a34c99ef9135dcee8d3f6de45ee14dd29b6a09106834e32dc6c883'
-            'a57b6e7500d2d3daa89162ef98f5e5cb9a082a2123b53f31b4060e774fd1a0c0')
+"postgresql-9.4.1-mingw-link.patch")
+sha256sums=('6b309d8506a39773a752ff074f47656e5424576ea090b04a24fe1725958c5bd2'
+            '0f2b5c7edb48dd106900854c9323ca2d483054595c4cf8a5b796a1d536d22aad')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
 	cd postgresql-$pkgver
 	patch -p1 -i ${srcdir}/postgresql-9.4.1-mingw-link.patch
-  patch -p1 -i ${srcdir}/postgresql-9.4.1-pl-perl.patch
-  patch -p1 -i ${srcdir}/postgresql-9.4.1-pl-python.patch
-  patch -p1 -i ${srcdir}/postgresql-9.4.1-pl-tcl.patch
 }
 
 build() {
