@@ -6,7 +6,7 @@ pkgver=6.2.2.6613
 pkgrel=2
 pkgdesc="A legacy 3D interface to view satellite images of Earth and other objects"
 arch=('i686' 'x86_64')
-url="http://www.google.com/earth"
+url="https://www.google.com/earth/index.html"
 license=('custom')
 depends=('desktop-file-utils' 'hicolor-icon-theme' 'ld-lsb' 'shared-mime-info' 'xdg-utils')
 depends_i686=('fontconfig' 'glu' 'libgl' 'libsm' 'libxrender' 'mesa')
@@ -65,9 +65,16 @@ package() {
   # Menu
   install -Dm644 $pkgname.menu "$pkgdir"/usr/share/menu/$pkgname.menu
 
-  # License
+  # Licenses (different countries redirect to different ones)
   install -d "$pkgdir"/usr/share/licenses/$pkgname/
-  curl -Ls $url/license.html -o "$pkgdir"/usr/share/licenses/$pkgname/license.html
+  curl -Ls https://www.google.com/intl/ALL/policies/terms/index.html \
+       -o "$pkgdir/usr/share/licenses/$pkgname/Google Terms of Service.html"
+  curl -Ls https://www.google.com/help/terms_maps.html \
+       -o "$pkgdir/usr/share/licenses/$pkgname/Google Earth Additional Terms of Service.html"
+  curl -Ls https://www.google.com/help/legalnotices_maps.html \
+       -o "$pkgdir/usr/share/licenses/$pkgname/Legal Notices for Google Earth and Google Earth APIs.html"
+  curl -Ls https://www.google.com/intl/ALL/policies/privacy/index.html \
+       -o "$pkgdir/usr/share/licenses/$pkgname/Google Privacy Policy.html"
 
   msg2 "Removing the duplicated images and .desktop..."
   rm "$pkgdir"/$_instdir/product_logo_*.png "$pkgdir"/$_instdir/${pkgname/6}.desktop
