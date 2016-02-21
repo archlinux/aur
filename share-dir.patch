@@ -1,0 +1,11 @@
+--- install.sh	2016-02-20 20:43:06.656969785 -0800
++++ install.sh.new	2016-02-20 20:45:30.987122334 -0800
+@@ -2,7 +2,7 @@
+ if [ $# -gt 0 ]
+ then
+ 	make clean
+-	make PARAMETER="-DDATA_FOLDER=\"\\\"$1/share/hase\\\"\"" NO_DEBUG=1
++	make PARAMETER="-DDATA_FOLDER=\"\\\"/usr/share/hase\\\"\"" NO_DEBUG=1
+ 	cp hase "$1/bin"
+ 	if [ ! -d "$1/share/hase" ]; then mkdir "$1/share/hase";fi
+ 	cp -r data "$1/share/hase"

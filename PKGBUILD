@@ -10,8 +10,8 @@ license=('GPL')
 depends=('sdl' 'sdl_image' 'sdl_mixer' 'sdl_net' 'sparrow3d')
 makedepends=('git')
 provides=('hase')
-source=("git+https://github.com/theZiz/hase.git" "sparrow-dyn.patch")
-md5sums=('SKIP' 'f71a4a3fb0569eaf3d66c818b1f8470c')
+source=("git+https://github.com/theZiz/hase.git" "sparrow-dyn.patch" "share-dir.patch")
+md5sums=('SKIP' 'f71a4a3fb0569eaf3d66c818b1f8470c' 'bf589b325d503d7b32037b607db65ff1')
 
 pkgver() {
 	cd "$srcdir"/hase
@@ -22,6 +22,8 @@ prepare() {
 	cd "$srcdir"/hase
 	# Patch hase to link against sparrow dynamically
 	patch -p1 -i "$srcdir"/sparrow-dyn.patch Makefile
+	# Patch so data directory is /usr/share/hase, instead of virtualenv directory
+	patch -p1 -i "$srcdir"/share-dir.patch install.sh
 }
 
 build() {
