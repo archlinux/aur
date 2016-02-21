@@ -109,7 +109,7 @@ package() {
     sed -e '/JavaWS/!s|Name=Java|Name=Java '"$_major"'|' \
         -e "s|Name=JavaWS|Name=JavaWS $_major|" \
         -e "s|Comment=Java|Comment=Java $_major|" \
-        -e "s|Exec=|&$_jvmdir/bin/|" \
+        -e "s|Exec=|Exec=$_jvmdir/bin/|" \
         -e "s|.png|-$_jname.png|" \
     -i jre/lib/desktop/applications/*
 
