@@ -1,7 +1,7 @@
 pkgname=argon2-git
 _gitname="phc-winner-argon2"
 pkgdesc="The password hash Argon2, winner of PHC"
-pkgver=20151206.r74.g6b66b7e
+pkgver=20151206.r108.gf4e7584
 pkgrel=1
 arch=('i686' 'x86_64')
 conflicts=("argon2")
@@ -21,7 +21,6 @@ pkgver() {
 build() {
 	cd $_gitname
 	make
-	make test
 }
 
 check() {
