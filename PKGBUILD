@@ -9,7 +9,7 @@
 pkgname=plex-media-server
 pkgver=0.9.15.3.1674
 _pkgsum=f46e7e6
-pkgrel=2
+pkgrel=3
 pkgdesc='Plex Media Server'
 arch=('arm' 'armv7h' 'i686' 'x86_64')
 url='https://plex.tv/'
