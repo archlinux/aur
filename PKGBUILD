@@ -19,5 +19,6 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver/source"
   make PREFIX=/usr DESTDIR="$pkgdir" install
+  mkdir "$pkgdir/etc"
   cp -a "$srcdir/$pkgname-$pkgver/config-files" "$pkgdir/etc/jconvolver"
 }
