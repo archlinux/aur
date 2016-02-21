@@ -1,7 +1,7 @@
 # Maintainer: Raimar Buehmann (raimar)
 
 pkgname=lxpanel-git
-pkgver=0.8.1.r2300.20160212
+pkgver=0.8.2.r2303.20160220
 pkgrel=1
 pkgdesc='Lightweight X11 desktop panel for LXDE'
 arch=('i686' 'x86_64')
