@@ -4,7 +4,7 @@
 pkgname=spotify
 pkgver=1.0.23.93
 _anotherpkgver=.gd6cfae15
-pkgrel=1
+pkgrel=2
 pkgdesc="A proprietary music streaming service"
 arch=('x86_64' 'i686')
 license=('custom:"Copyright (c) 2006-2010 Spotify Ltd"')
@@ -23,7 +23,7 @@ source_i686=("http://repository.spotify.com/pool/non-free/s/spotify-client/spoti
 md5sums_i686=('7544df3da236efe574b163a4fdb2b19d')
 
 depends=("alsa-lib>=1.0.14" "gconf" "gtk2" "glib2" "nss" "libsystemd" "libxtst" "libx11" "libxss" "libcurl-compat" "desktop-file-utils" "rtmpdump")
-optdepends=('ffmpeg-compat: Adds support for playback of local files'
+optdepends=('ffmpeg0.10: Adds support for playback of local files'
             'zenity: Adds support for importing local files'
 						)
 install=spotify.install
