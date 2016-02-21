@@ -214,7 +214,7 @@ commandLineInterface() {
         fi
     fi
     if [ -n "$DRY_RUN" ]; then
-        echo "NOTE: -d(--dry-run) is set, no operations will actually change anything"
+        echo "NOTE: -d(--dry-run) is set, operations wont do anything"
     fi
     if [ -n "$do_remove" ]; then
         echo "removing packages..."
