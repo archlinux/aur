@@ -4,8 +4,8 @@
 # Report all package issues to `https://github.com/SShrike/pkgbuilds`
 
 pkgname=gtkd-git
-pkgver=1199.98f9dc8
-pkgrel=3
+pkgver=r1244.b49250e
+pkgrel=1
 pkgdesc='D binding and OO wrapper of GTK+'
 url='http://gtkd.org'
 options=('staticlibs')
@@ -21,7 +21,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd GtkD
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  echo r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
