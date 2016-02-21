@@ -1,0 +1,56 @@
+diff --git a/configure.ac b/configure.ac
+index 957d231..5cc0c7e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -47,6 +47,11 @@ PKG_CHECK_MODULES(GTK, [$GTK_VERSION])
+ AC_SUBST(GTK_CFLAGS)
+ AC_SUBST(GTK_LIBS)
+ 
++AM_COND_IF([ENABLE_GTK2],
++    [PKG_CHECK_MODULES(LUNAR_CALENDAR, [lunar-calendar-2.0 >= 2.4.1])],
++    [PKG_CHECK_MODULES(LUNAR_CALENDAR, [lunar-calendar-3.0 >= 3.0.0])])
++AC_SUBST(LUNAR_CALENDAR_CFLAGS)
++AC_SUBST(LUNAR_CALENDAR_LIBS)
+ 
+ # Checks for header files.
+ AC_CHECK_HEADERS([iostream \
+diff --git a/src/Calendar.cpp b/src/Calendar.cpp
+index 285390a..c754d19 100644
+--- a/src/Calendar.cpp
++++ b/src/Calendar.cpp
+@@ -2,6 +2,7 @@
+ #include <sys/time.h>
+ 
+ #include <gtk/gtk.h>
++#include <lunar-calendar/lunar-calendar.h>
+ 
+ #include "Calendar.hpp"
+ #include "Config.hpp"
+@@ -33,13 +34,13 @@ void dayDoubleClickCb(GtkCalendar *calendar, gpointer cls)
+ 
+ Calendar::Calendar()
+ {
+-    widget = gtk_calendar_new();
++    widget = lunar_calendar_new();
+ 
+     Config* config = Config::getInstance();
+     g_object_set(widget,
+                  "show-heading", true,
+                  "show-day-names", true,
+-                 "show-details", false,
++                 "show-details", true,
+                  "show-week-numbers", config->show_week_numbers,
+                  NULL);
+     // Store today date to be able to jump to it.
+diff --git a/src/Makefile.am b/src/Makefile.am
+index fcf4357..7019835 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,5 +1,5 @@
+-AM_CPPFLAGS = @GTK_CFLAGS@
+-LIBS = @GTK_LIBS@
++AM_CPPFLAGS = @GTK_CFLAGS@ @LUNAR_CALENDAR_CFLAGS@
++LIBS = @GTK_LIBS@ @LUNAR_CALENDAR_LIBS@
+ 
+ bin_PROGRAMS = gsimplecal
+ gsimplecal_SOURCES = \
