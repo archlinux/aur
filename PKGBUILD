@@ -1,12 +1,12 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 pkgname=opendht-git
-pkgver=20160215
+pkgver=20160219
 pkgrel=1
 pkgdesc="A C++11 implementation of the Kademlia DHT (Distributed Hash Table)"
 arch=('i686' 'x86_64')
-depends=('gnutls' 'nettle' 'msgpack-c' 'readline')
-makedepends=('git')
+depends=('gnutls' 'nettle' 'readline')
+makedepends=('git' 'msgpack-c')
 url="https://github.com/savoirfairelinux/opendht"
 license=('GPL3')
 source=("git://github.com/savoirfairelinux/opendht")
