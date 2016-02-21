@@ -14,10 +14,14 @@ depends=('fuse' 'wxgtk>=3.0')
 makedepends=('nasm')
 install='veracrypt.install'
 
-source_x86_64=(	"https://archlinux.0ptr.de/mirrors/veracrypt/${pkgver}/${pkgname}_${pkgver}_amd64.tar.gz"
-		"https://archlinux.0ptr.de/mirrors/veracrypt/${pkgver}/${pkgname}_${pkgver}_amd64.tar.gz.sig")
-source_i686=(	"https://archlinux.0ptr.de/mirrors/veracrypt/${pkgver}/${pkgname}_${pkgver}_i386.tar.gz"
-		"https://archlinux.0ptr.de/mirrors/veracrypt/${pkgver}/${pkgname}_${pkgver}_i386.tar.gz.sig")
+source_x86_64=(	#"https://archlinux.0ptr.de/mirrors/veracrypt/${pkgver}/${pkgname}_${pkgver}_amd64.tar.gz"
+		#"https://archlinux.0ptr.de/mirrors/veracrypt/${pkgver}/${pkgname}_${pkgver}_amd64.tar.gz.sig")
+		"veracrypt_1.17_amd64.tar.gz::https://www.dropbox.com/s/n985f3vcmq5wsws/veracrypt_1.17_amd64.tar.gz?raw=1"
+		"veracrypt_1.17_amd64.tar.gz.sig::https://www.dropbox.com/s/052jhd3swziqfvu/veracrypt_1.17_amd64.tar.gz.sig?raw=1")
+source_i686=(	#"https://archlinux.0ptr.de/mirrors/veracrypt/${pkgver}/${pkgname}_${pkgver}_i386.tar.gz"
+		#"https://archlinux.0ptr.de/mirrors/veracrypt/${pkgver}/${pkgname}_${pkgver}_i386.tar.gz.sig")
+		"veracrypt_1.17_i386.tar.gz::https://www.dropbox.com/s/go6m9xi9h4kab2j/veracrypt_1.17_i386.tar.gz?raw=1"
+		"veracrypt_1.17_i386.tar.gz.sig::https://www.dropbox.com/s/z3oz7i2cgmqjce8/veracrypt_1.17_i386.tar.gz.sig?raw=1")
 #source=("${pkgname}_${pkgver}_Source.tar.bz2::http://sourceforge.net/projects/${pkgname}/files/${_pkgname} ${pkgver}/${pkgname}_${pkgver}_Source.tar.bz2/download"
 	#"${pkgname}_${pkgver}_Source.tar.bz2.sig::http://sourceforge.net/projects/${pkgname}/files/${_pkgname} ${pkgver}/${pkgname}_${pkgver}_Source.tar.bz2.sig/download"
 source=("no_makeself.patch"
