@@ -14,7 +14,7 @@ depends=("libringclient-git" "ring-daemon-git"
 makedepends=('git' 'cmake')
 provides=('ring-gnome-client' 'ring-gnome')
 conflicts=('ring-gnome-client' 'ring-gnome')
-source=("git+https://gerrit-ring.savoirfairelinux.com/ring-client-gnome")
+source=("git://github.com/savoirfairelinux/ring-client-gnome")
 sha256sums=('SKIP')
 install=ring-gnome-client.install
 
