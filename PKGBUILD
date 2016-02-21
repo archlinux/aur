@@ -12,8 +12,8 @@ url='http://www.oracle.com'
 license=('Oracle BSD License')
 makedepends=('wget')
 source_i686=("http://download.oracle.com/otn-pub/java/javafx_scenebuilder/2.0-b20/javafx_scenebuilder-2_0-linux-i586.tar.gz")
-source_x86_64=("http://download.oracle.com/otn-pub/java/javafx_scenebuilder/2.0-b20/javafx_scenebuilder-2_0-linux-x64.tar.gz")
 sha256sums_i686=('80212f7748c2671b89b6085000717c747851db004409dce3bb97f3a2aeb91cdd')
+source_x86_64=("http://download.oracle.com/otn-pub/java/javafx_scenebuilder/2.0-b20/javafx_scenebuilder-2_0-linux-x64.tar.gz")
 sha256sums_x86_64=('44f6d82fb2d35f3d6cdbb973bfc598f89716e43cc012bab507d1d8f472e7c62c')
 DLAGENTS=('http::/usr/bin/wget -c --no-check-certificate --no-cookies --header Cookie:\ oraclelicense=accept-securebackup-cookie %u')
 
