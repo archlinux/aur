@@ -1,6 +1,8 @@
-# Maintainer: Severen Redwood <severen.redwood@gmail.com>
+# Maintainer: Severen Redwood <severen@shrike.me>
 # Contributors: Dave Reisner <dreisner@archlinux.org>
 #               Matthias Blaicher <matthias@blaicher.com>
+# Report all package issues to `https://github.com/SShrike/pkgbuilds`
+
 pkgname=capnproto
 pkgver=0.5.3
 pkgrel=1
