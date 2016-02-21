@@ -14,14 +14,14 @@ source=("${pkgname}"::"git://github.com/nviennot/jd-core-java.git")
 sha256sums=('SKIP')
 
 build() {
-cd "${srcdir}/${pkgname}"
-./gradlew build
+    cd "${srcdir}/${pkgname}"
+    ./gradlew build
 }
 
 package() {
-cd "${srcdir}/${pkgname}/build/libs"
-install -Dm644 "${pkgname}-${pkgver}.jar" "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
-install -d "${pkgdir}/usr/bin"
-echo -e "#!/bin/sh\nexec java -jar /usr/share/java/${pkgname}/${pkgname}.jar" '"$@"' > "${pkgdir}/usr/bin/${pkgname}"
-chmod 755 "${pkgdir}/usr/bin/${pkgname}"
+    cd "${srcdir}/${pkgname}/build/libs"
+    install -Dm644 "${pkgname}-${pkgver}.jar" "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
+    install -d "${pkgdir}/usr/bin"
+    echo -e "#!/bin/sh\nexec java -jar /usr/share/java/${pkgname}/${pkgname}.jar" '"$@"' > "${pkgdir}/usr/bin/${pkgname}"
+    chmod 755 "${pkgdir}/usr/bin/${pkgname}"
 }
