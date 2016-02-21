@@ -26,7 +26,6 @@ provides=("java32-runtime=$_major" "java32-runtime-headless=$_major" "java32-web
           "java32-runtime-jre=$_major" "java32-runtime-headless-jre=$_major" "java32-web-start-jre=$_major")
 
 # Variables
-DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 _jname=${_pkgname}${_major}
 _jvmdir=/usr/lib32/jvm/java32-$_major-$_pkgname/jre
 
@@ -43,12 +42,10 @@ backup=("etc/java32-$_jname/i386/jvm.cfg"
         "etc/java32-$_jname/psfontj2d.properties"
         "etc/java32-$_jname/sound.properties")
 install=$pkgname.install
-source=('http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip'
-        "policytool32-$_jname.desktop"
+source=("policytool32-$_jname.desktop"
         'OTN-Early-Adopter-License-Terms.txt')
 source_x86_64=("http://www.java.net/download/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}-ea+${_build}_linux-x86_bin.tar.gz")
-md5sums=('b3c7031bc65c28c2340302065e7d00d3'
-         '643277e142823bf695b0a6327d3ef963'
+md5sums=('643277e142823bf695b0a6327d3ef963'
          'f09947a67691a2d78d20a3885889981c')
 md5sums_x86_64=('db7d8fa370ce1f0d19ca7a98e2f494eb')
 
@@ -133,9 +130,10 @@ package() {
     # things like 256-bit AES. Enabled by default in OpenJDK:
     # - http://suhothayan.blogspot.com/2012/05/how-to-install-java-cryptography.html
     # - http://www.eyrie.org/~eagle/notes/debian/jce-policy.html
-    install -m644 "$srcdir"/UnlimitedJCEPolicyJDK8/*.jar lib/security/
-    install -Dm644 "$srcdir"/UnlimitedJCEPolicyJDK8/README.txt \
+    install -m644 lib/security/unlimited_policy/*.jar lib/security/
+    install -Dm644 lib/security/unlimited_policy/README.txt \
                    "$pkgdir"/usr/share/doc/$pkgname/README_-_Java_JCE_Unlimited_Strength.txt
+	rm -r lib/security/unlimited_policy/
 
     msg2 "Enabling copy+paste in unsigned applets..."
     # Copy/paste from system clipboard to unsigned Java applets has been disabled since 6u24:
