@@ -1,6 +1,6 @@
 pkgbase = lxtask-git
 	pkgdesc = Task manager and system monitor for LXDE
-	pkgver = 0.1.6.r402.20150117
+	pkgver = 0.1.7.r409.20160221
 	pkgrel = 1
 	url = http://lxde.org/
 	arch = i686

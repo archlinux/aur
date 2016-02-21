@@ -1,7 +1,7 @@
 # Maintainer: Raimar Buehmann (raimar)
 
 pkgname=lxtask-git
-pkgver=0.1.6.r402.20150117
+pkgver=0.1.7.r409.20160221
 pkgrel=1
 pkgdesc="Task manager and system monitor for LXDE"
 arch=('i686' 'x86_64')
