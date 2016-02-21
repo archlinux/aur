@@ -26,7 +26,6 @@ provides=("java-runtime=$_major" "java-runtime-headless=$_major" "java-web-start
           "java-runtime-jre=$_major" "java-runtime-headless-jre=$_major" "java-web-start-jre=$_major" "java-environment-jdk=$_major")
 
 # Variables
-DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 _jname=${_pkgname}${_major}
 _jvmdir=/usr/lib/jvm/java-$_major-$_pkgname
 
@@ -45,16 +44,14 @@ backup=("etc/java-$_jname/amd64/jvm.cfg"
 [[ $CARCH = i686 ]] && backup[0]="etc/java-$_jname/i386/jvm.cfg"
 options=('!strip') # JDK debug-symbols
 install=$pkgname.install
-source=('http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip'
-        "jconsole-$_jname.desktop"
+source=("jconsole-$_jname.desktop"
         "jmc-$_jname.desktop"
         "jvisualvm-$_jname.desktop"
         "policytool-$_jname.desktop"
         'OTN-Early-Adopter-License-Terms.txt')
 source_i686=("http://www.java.net/download/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}-ea+${_build}_linux-x86_bin.tar.gz")
 source_x86_64=("http://www.java.net/download/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}-ea+${_build}_linux-x64_bin.tar.gz")
-md5sums=('b3c7031bc65c28c2340302065e7d00d3'
-         'ffc22a6191545b1a37d68987581f2ca7'
+md5sums=('ffc22a6191545b1a37d68987581f2ca7'
          '3af000b3c67545579cf3aceef93c9fc8'
          '003bb22b96f9b29f61de47190f843791'
          '419f27776d367e0c06c76dac6f6c3485'
@@ -156,9 +153,10 @@ package() {
     # things like 256-bit AES. Enabled by default in OpenJDK:
     # - http://suhothayan.blogspot.com/2012/05/how-to-install-java-cryptography.html
     # - http://www.eyrie.org/~eagle/notes/debian/jce-policy.html
-    install -m644 "$srcdir"/UnlimitedJCEPolicyJDK8/*.jar jre/lib/security/
-    install -Dm644 "$srcdir"/UnlimitedJCEPolicyJDK8/README.txt \
+    install -m644 lib/security/unlimited_policy/*.jar lib/security/
+    install -Dm644 lib/security/unlimited_policy/README.txt \
                    "$pkgdir"/usr/share/doc/$pkgname/README_-_Java_JCE_Unlimited_Strength.txt
+	rm -r lib/security/unlimited_policy/
 
     msg2 "Enabling copy+paste in unsigned applets..."
     # Copy/paste from system clipboard to unsigned Java applets has been disabled since 6u24:
