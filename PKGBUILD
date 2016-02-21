@@ -2,13 +2,13 @@
 
 pkgname=hib-dlagent-git
 _appname=hib-dlagent
-pkgver=0.7.5.g1be59e8
+pkgver=0.7.8.g4ffd7dd
 pkgrel=1
 pkgdesc='Tool to download Humble Indie Bundle binaries by file name'
 arch=('any')
 url='https://github.com/hagabaka/hib-dlagent'
 license=('GPL2')
-depends=('curl' 'python-humblebundle-git')
+depends=('curl' 'python-humblebundle')
 makedepends=('git')
 provides=("$_appname")
 conflicts=("$_appname")
