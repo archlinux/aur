@@ -1,4 +1,4 @@
-# Maintainer: zlsun <zlsun1995@gmail.com>
+# Maintainer: zlsun <zlsun1995 at gmail dot com>
 
 pkgname=yah3c
 pkgver=0.6
