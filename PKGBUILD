@@ -1,10 +1,10 @@
 # Maintainer: Colin Wallace <wallacoloo@gmail.com>
 
-pkgname=sparrow3d-git
+_pkgname=sparrow3d
+pkgname="$_pkgname-git"
 pkgver=820.143acbc
 pkgrel=1
 pkgdesc='A software renderer for different open handhelds like the gp2x, wiz, caanoo and pandora'
-provides=('sparrow3d')
 arch=('any')
 url='https://github.com/theZiz/sparrow3d'
 license=('LGPL')
