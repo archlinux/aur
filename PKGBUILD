@@ -1,5 +1,7 @@
-# Maintainer: Severen Redwood <severen.redwood@gmail.com>
+# Maintainer: Severen Redwood <severen@shrike.me>
 # Contributor: Robert Welin <robert.welin@gmail.com>
+# Report all package issues to `https://github.com/SShrike/pkgbuilds`
+
 pkgname=gtkd
 pkgver=3.1.4
 pkgrel=1
