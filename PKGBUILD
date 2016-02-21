@@ -30,7 +30,7 @@ check() {
 
 build() {
   cd "${srcdir}/${pkgname}/src"
-  make
+  debug=no make
 }
 
 package() {
