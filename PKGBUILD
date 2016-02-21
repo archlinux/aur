@@ -37,10 +37,13 @@ sha256sums_i686=('d104f77a4ac3db378e961c08d6460ea8e4256af6e67718c7b99427db990007
 sha256sums_x86_64=('29d4bd3cd1cf36298330d39792aa78e3e0a329306ed70a925dd5cecaa495d620')
 
 prepare() {
-  [[ $CARCH =~ arm* ]] && mkdir -p usr/lib/plexmediaserver && tar -xfz package.tgz -C usr/lib/plexmediaserver/
 
-  #Fix for SELinux and Grsecurity
-  [[ $CARCH != arm* ]] && execstack -c usr/lib/plexmediaserver/libgnsdk_dsp.so*
+case "$CARCH" in
+  arm*) mkdir -p usr/lib/plexmediaserver && tar -xfz package.tgz -C usr/lib/plexmediaserver/;;
+        #Fix for SELinux and Grsecurity
+     *) execstack -c usr/lib/plexmediaserver/libgnsdk_dsp.so*;;
+esac
+
 }
 
 package() {
