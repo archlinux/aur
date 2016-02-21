@@ -1,6 +1,6 @@
-diff -ru ./ChangeLog ../../../vocp/src/vocp-0.9.3/prog/dependencies/Modem-Vgetty-0.04/ChangeLog
+diff -ru ./ChangeLog ../../vocp/prog/dependencies//Modem-Vgetty-0.04/ChangeLog
 --- ./ChangeLog	1998-09-08 05:22:41.000000000 -0700
-+++ ../../../vocp/src/vocp-0.9.3/prog/dependencies/Modem-Vgetty-0.04/ChangeLog	2003-02-04 22:29:46.000000000 -0800
++++ ../../vocp/prog/dependencies//Modem-Vgetty-0.04/ChangeLog	2016-02-20 18:42:43.907834512 -0800
 @@ -1,7 +1,9 @@
 -$Id: ChangeLog,v 1.4 1998/09/08 12:22:41 kas Exp $
 +$Id: ChangeLog,v 1.2 2003/02/05 06:29:46 ceezed Exp $
@@ -12,10 +12,9 @@ diff -ru ./ChangeLog ../../../vocp/src/vocp-0.9.3/prog/dependencies/Modem-Vgetty
  Tue Sep 8 12:07:03 MET DST 1998 by kas 
  
  Added the description of the callme.pl script to the manpage.
-Only in .: examples
-diff -ru ./Makefile.PL ../../../vocp/src/vocp-0.9.3/prog/dependencies/Modem-Vgetty-0.04/Makefile.PL
+diff -ru ./Makefile.PL ../../vocp/prog/dependencies//Modem-Vgetty-0.04/Makefile.PL
 --- ./Makefile.PL	1998-07-10 11:41:51.000000000 -0700
-+++ ../../../vocp/src/vocp-0.9.3/prog/dependencies/Modem-Vgetty-0.04/Makefile.PL	2003-02-03 15:12:52.000000000 -0800
++++ ../../vocp/prog/dependencies//Modem-Vgetty-0.04/Makefile.PL	2016-02-20 18:42:43.907834512 -0800
 @@ -1,5 +1,5 @@
  #
 -# $Id: Makefile.PL,v 1.1 1998/07/10 18:41:51 kas Exp $
@@ -23,9 +22,9 @@ diff -ru ./Makefile.PL ../../../vocp/src/vocp-0.9.3/prog/dependencies/Modem-Vget
  #
  # Copyright (c) 1998 Jan "Yenya" Kasprzak <kas@fi.muni.cz>. All rights
  # reserved. This package is free software; you can redistribute it and/or
-diff -ru ./README ../../../vocp/src/vocp-0.9.3/prog/dependencies/Modem-Vgetty-0.04/README
+diff -ru ./README ../../vocp/prog/dependencies//Modem-Vgetty-0.04/README
 --- ./README	1998-09-08 05:22:41.000000000 -0700
-+++ ../../../vocp/src/vocp-0.9.3/prog/dependencies/Modem-Vgetty-0.04/README	2003-02-03 15:12:52.000000000 -0800
++++ ../../vocp/prog/dependencies//Modem-Vgetty-0.04/README	2016-02-20 18:42:43.907834512 -0800
 @@ -1,4 +1,11 @@
 -$Id: README,v 1.4 1998/09/08 12:22:41 kas Exp $
 +$Id: README,v 1.2 2003/02/03 21:26:16 ceezed Exp $
@@ -39,9 +38,9 @@ diff -ru ./README ../../../vocp/src/vocp-0.9.3/prog/dependencies/Modem-Vgetty-0.
  
  The Modem::Vgetty module is a Perl interface to the vgetty program,
  which can be used for communication with the voice modems. Vgetty
-diff -ru ./Vgetty.pm ../../../vocp/src/vocp-0.9.3/prog/dependencies/Modem-Vgetty-0.04/Vgetty.pm
+diff -ru ./Vgetty.pm ../../vocp/prog/dependencies//Modem-Vgetty-0.04/Vgetty.pm
 --- ./Vgetty.pm	1998-09-08 05:22:42.000000000 -0700
-+++ ../../../vocp/src/vocp-0.9.3/prog/dependencies/Modem-Vgetty-0.04/Vgetty.pm	2003-02-03 15:12:52.000000000 -0800
++++ ../../vocp/prog/dependencies//Modem-Vgetty-0.04/Vgetty.pm	2016-02-21 01:22:41.488108339 -0800
 @@ -1,5 +1,5 @@
  # 
 -# $Id: Vgetty.pm,v 1.13 1998/09/08 12:22:42 kas Exp $
@@ -67,7 +66,17 @@ diff -ru ./Vgetty.pm ../../../vocp/src/vocp-0.9.3/prog/dependencies/Modem-Vgetty
  	my $received = $self->receive || return undef;
  	for my $expected (@_) {
  		return $received if $received eq $expected;
-@@ -151,6 +151,7 @@
+@@ -133,8 +133,7 @@
+ # Initial chat
+ sub init {
+ 	my $self = shift;
+-#	$self->chat ('HELLO SHELL', 'HELLO VOICE PROGRAM', 'READY');
+-	$self->chat ('HELLO SHELL', 'HELLO VOICE PROGRAM');
++	$self->chat ('HELLO SHELL', 'HELLO VOICE PROGRAM', 'READY');
+ 
+         return $self;
+ }
+@@ -151,6 +150,7 @@
  
  sub shutdown {
  	my $self = shift;
@@ -75,7 +84,7 @@ diff -ru ./Vgetty.pm ../../../vocp/src/vocp-0.9.3/prog/dependencies/Modem-Vgetty
  	$self->chat ('', 'GOODBYE', 'GOODBYE SHELL');
  	$self->{IN}->close;
  	$self->{OUT}->close;
-@@ -159,7 +160,7 @@
+@@ -159,7 +159,7 @@
  
  sub DESTROY {
  	my $self = shift;
@@ -84,7 +93,7 @@ diff -ru ./Vgetty.pm ../../../vocp/src/vocp-0.9.3/prog/dependencies/Modem-Vgetty
  }
  
  sub enable_events {
-@@ -174,8 +175,8 @@
+@@ -174,8 +174,8 @@
  
  sub beep {
  	my $self = shift;
@@ -95,7 +104,7 @@ diff -ru ./Vgetty.pm ../../../vocp/src/vocp-0.9.3/prog/dependencies/Modem-Vgetty
  	$self->chat ('', "BEEP $freq $len", 'BEEPING');
  }
  
-@@ -281,7 +282,7 @@
+@@ -281,7 +281,7 @@
  	if ($dtmf eq '#') { # Stop the reading now.
  		$_readnum_in_timeout = 0;
  		$self->stop;
