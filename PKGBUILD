@@ -1,7 +1,7 @@
 # Maintainer: Aaron Fischer <mail@aaron-fischer.net>
 
 pkgname=dataexplorer
-pkgver=3.1.9
+pkgver=3.2.4
 pkgrel=1
 pkgdesc="Graphical tool to display data from various chargers/dischargers"
 url="http://savannah.nongnu.org/projects/dataexplorer"
@@ -34,17 +34,17 @@ noextract=("dataexplorer-$pkgver-src.tar.gz.sig"
            "40-SiliconLabs.rules"
            "40-SiliconLabs.rules.sig")
 
-md5sums=("27a2c3dd89b9a27612b3cfd22e881e4e"
-         "087c187cae1d07812a9c93aaca33f4f9"
+md5sums=("9afe534534dfcef5e7b83d742bb58908"
+         "c710045cfcd0022de37da70af1533cde"
 
          "d764227784c6b7b71d620e40c23ef358"
-         "b25ce68e3dda971e355436238389be18"
+         "adfb9ce356804d51c46fd0f97c66222d"
          "dbff88a8deaf759c253293b25488035c"
-         "2aa28a6211f186c93d11fcfefa565497"
+         "eaca424a102880d3668ff414020f99b8"
          "0cbcff52a6c8ce42102ffc49c1edfbb3"
-         "f7f9001d4842683f25ed6cf691d1b629"
+         "5fe007c4080ae4c25d130c8cccc7f391"
          "1bf0831d2640c50cf5c89fc84dfd7991"
-         "3e6e72dee1f9151be359f107cf69ff6a")
+         "704a4631806191441b685728809d70e8")
 
 build() {
   echo $pkgdir
