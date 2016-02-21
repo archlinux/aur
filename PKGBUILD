@@ -16,18 +16,18 @@ source=("$pkgname-$pkgver.tar.gz"::"http://github.com/lemonboy/$pkgname/archive/
 sha256sums=('fb464bffec5b7d0680009b43a95881e8c02ec07e84d6f7fb05206d666dc44bdb')
 
 prepare() {
-	cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-$pkgver"
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make
+    cd "$srcdir/$pkgname-$pkgver"
+    make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make PREFIX=/usr DESTDIR="$pkgdir" install
+    cd "$srcdir/$pkgname-$pkgver"
+    make PREFIX=/usr DESTDIR="$pkgdir" install
 
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
