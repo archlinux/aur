@@ -84,7 +84,7 @@ package() {
         -e "s|Name=.*|& (32-bit)|" \
         -e "s|Comment=Java|Comment=Java $_major|" \
         -e "s|Comment=.*|& (32-bit)|" \
-        -e "s|Exec=|&$_jvmdir/bin/|" \
+        -e "s|Exec=|Exec=$_jvmdir/bin/|" \
         -e "s|.png|32-$_jname.png|" \
     -i lib/desktop/applications/*
 
