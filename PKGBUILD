@@ -24,6 +24,7 @@ package_python2-nose2() {
   cd "$srcdir/nose2-$pkgver"
   install -D -m644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   python2 setup.py install --root="$pkgdir/" --optimize=1
+  rm "$pkgdir/usr/bin/nose2"
 }
 
 # vim:set ts=2 sw=2 et:
