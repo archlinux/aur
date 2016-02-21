@@ -25,7 +25,6 @@ provides=("java-runtime=$_major" "java-runtime-headless=$_major" "java-web-start
           "java-runtime-jre=$_major" "java-runtime-headless-jre=$_major" "java-web-start-jre=$_major")
 
 # Variables
-DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 _jname=${_pkgname}${_major}
 _jvmdir=/usr/lib/jvm/java-$_major-$_pkgname/jre
 
@@ -43,13 +42,11 @@ backup=("etc/java-$_jname/amd64/jvm.cfg"
         "etc/java-$_jname/sound.properties")
 [[ $CARCH = i686 ]] && backup[0]="etc/java-$_jname/i386/jvm.cfg"
 install=$pkgname.install
-source=('http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip'
-        "policytool-$_jname.desktop"
+source=("policytool-$_jname.desktop"
         'OTN-Early-Adopter-License-Terms.txt')
 source_i686=("http://www.java.net/download/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}-ea+${_build}_linux-x86_bin.tar.gz")
 source_x86_64=("http://www.java.net/download/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}-ea+${_build}_linux-x64_bin.tar.gz")
-md5sums=('b3c7031bc65c28c2340302065e7d00d3'
-         '855a74ddead31f8b30943ac1a7d3a7a6'
+md5sums=('855a74ddead31f8b30943ac1a7d3a7a6'
          'f09947a67691a2d78d20a3885889981c')
 md5sums_i686=('db7d8fa370ce1f0d19ca7a98e2f494eb')
 md5sums_x86_64=('fb7077b4747218948a7d832465518494')
@@ -136,9 +133,10 @@ package() {
     # things like 256-bit AES. Enabled by default in OpenJDK:
     # - http://suhothayan.blogspot.com/2012/05/how-to-install-java-cryptography.html
     # - http://www.eyrie.org/~eagle/notes/debian/jce-policy.html
-    install -m644 "$srcdir"/UnlimitedJCEPolicyJDK8/*.jar lib/security/
-    install -Dm644 "$srcdir"/UnlimitedJCEPolicyJDK8/README.txt \
+    install -m644 lib/security/unlimited_policy/*.jar lib/security/
+    install -Dm644 lib/security/unlimited_policy/README.txt \
                    "$pkgdir"/usr/share/doc/$pkgname/README_-_Java_JCE_Unlimited_Strength.txt
+	rm -r lib/security/unlimited_policy/
 
     msg2 "Enabling copy+paste in unsigned applets..."
     # Copy/paste from system clipboard to unsigned Java applets has been disabled since 6u24:
