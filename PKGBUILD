@@ -1,3 +1,4 @@
+# Maintainer: Vladislav Tyulbashev <vtyulb@vtyulb.ru>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: mosra <mosra@centrum.cz>
 
@@ -7,7 +8,7 @@
 pkgname=gcc47
 _ver=4.7
 pkgver=4.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNU Compiler Collection (4.7.x)"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
@@ -63,7 +64,7 @@ build() {
       --libdir=/usr/lib --libexecdir=/usr/lib \
       --mandir=/usr/share/man --infodir=/usr/share/info \
       --with-bugurl=https://bugs.archlinux.org/ \
-      --enable-languages=c,c++,fortran \
+      --enable-languages=c,c++ \
       --enable-shared --enable-threads=posix \
       --with-system-zlib --enable-__cxa_atexit \
       --disable-libunwind-exceptions --enable-clocale=gnu \
@@ -73,12 +74,15 @@ build() {
       --disable-ppl-version-check --disable-cloog-version-check \
       --enable-lto --enable-gold --enable-ld=default \
       --enable-plugin --with-plugin-ld=ld.gold \
+      --disable-libmudflap \
+      --disable-libquadmath \
+      --disable-libitm \
       --with-linker-hash-style=gnu \
       --disable-multilib --disable-libssp \
       --disable-build-with-cxx --disable-build-poststage1-with-cxx \
       --program-suffix=-${_ver} --enable-version-specific-runtime-libs \
       --enable-checking=release
-  make
+  make -j2
 }
 
 _check() {
