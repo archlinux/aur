@@ -9,9 +9,6 @@ arch=('any')
 url='http://cmsimple.org/'
 license=('GNU')
 depends=('php')
-optdepends=('apache: Web server to run wordpress'
-            'nginx: Web server to run wordpress'
-            'cherokee: Lightweight Web server to run wordpress')
 options=('emptydirs')
 install="$pkgname.install"
 source=("http://www.cmsimple.org/downloads_cmsimple40/CMSimple_$(echo $pkgver |sed s/'\.'/'-'/g).zip")
