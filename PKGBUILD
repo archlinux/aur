@@ -1,7 +1,7 @@
 pkgname=sph-lib-git
 pkgver=181
 pkgrel=1
-pkgdesc='set of over 80 guile scheme libraries'
+pkgdesc='set of more than 80 guile scheme libraries'
 arch=(any)
 license=(gpl3)
 makedepends=(git)
