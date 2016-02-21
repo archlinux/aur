@@ -4,7 +4,7 @@
 
 _gemname='confmacs'
 pkgname='confmacs-git'
-pkgver=24.fbc9036
+pkgver=r49.6c19333
 pkgrel=1
 pkgdesc='An Emacs configuration switcher.'
 arch=('any')
@@ -20,6 +20,7 @@ noextract=("$pkgname.gem")
 
 pkgver() {
   cd 'confmacs'
+  git checkout 'origin/develop'
   echo r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
