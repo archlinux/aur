@@ -23,12 +23,20 @@ options=('!emptydirs')
 install=$pkgname.install
 source=('googleearth'
         "$pkgname.desktop"
-        "$pkgname.menu")
+        "$pkgname.menu"
+        'Google-Terms-of-Service.html::https://www.google.com/intl/ALL/policies/terms/index.html'
+        'Google-Earth-Additional-Terms-of-Service.html::https://www.google.com/help/terms_maps.html'
+        'Legal-Notices-for-Google-Earth-and-Google-Earth-APIs.html::https://www.google.com/help/legalnotices_maps.html'
+        'Google-Privacy-Policy.html::https://www.google.com/intl/ALL/policies/privacy/index.html')
 source_i686=("http://ftp.kspu.ru/mint/packages/pool/import/g/googleearth/googleearth_$pkgver-r0_i386.deb")
 source_x86_64=("http://ftp.kspu.ru/mint/packages/pool/import/g/googleearth/googleearth_$pkgver-r0_amd64.deb")
-md5sums=('e5f591e3bd44743539722e019611b773'  # googleearth
-         'bfacc99dae6bc5ded73cd9b3bd2c9087'  # google-earth6.desktop
-         '3e87399f2051321102a59227e6d6ded7') # google-earth6.menu
+md5sums=('e5f591e3bd44743539722e019611b773'
+         'bfacc99dae6bc5ded73cd9b3bd2c9087'
+         '3e87399f2051321102a59227e6d6ded7'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
 md5sums_i686=('e38c0d806cf1d581213fb6f4f204ec9c')
 md5sums_x86_64=('bd1960eb3e2d061b319c3f38835840d7')
 
@@ -65,16 +73,15 @@ package() {
   # Menu
   install -Dm644 $pkgname.menu "$pkgdir"/usr/share/menu/$pkgname.menu
 
-  # Licenses (different countries redirect to different ones)
-  install -d "$pkgdir"/usr/share/licenses/$pkgname/
-  curl -Ls https://www.google.com/intl/ALL/policies/terms/index.html \
-       -o "$pkgdir/usr/share/licenses/$pkgname/Google Terms of Service.html"
-  curl -Ls https://www.google.com/help/terms_maps.html \
-       -o "$pkgdir/usr/share/licenses/$pkgname/Google Earth Additional Terms of Service.html"
-  curl -Ls https://www.google.com/help/legalnotices_maps.html \
-       -o "$pkgdir/usr/share/licenses/$pkgname/Legal Notices for Google Earth and Google Earth APIs.html"
-  curl -Ls https://www.google.com/intl/ALL/policies/privacy/index.html \
-       -o "$pkgdir/usr/share/licenses/$pkgname/Google Privacy Policy.html"
+  # Licenses
+  install -Dm644 'Google-Terms-of-Service.html' \
+      "$pkgdir/usr/share/licenses/$pkgname/Google-Terms-of-Service.html"
+  install -Dm644 'Google-Earth-Additional-Terms-of-Service.html' \
+      "$pkgdir/usr/share/licenses/$pkgname/Google-Earth-Additional-Terms-of-Service.html"
+  install -Dm644 'Legal-Notices-for-Google-Earth-and-Google-Earth-APIs.html' \
+      "$pkgdir/usr/share/licenses/$pkgname/Legal-Notices-for-Google-Earth-and-Google-Earth-APIs.html"
+  install -Dm644 'Google-Privacy-Policy.html' \
+      "$pkgdir/usr/share/licenses/$pkgname/Google-Privacy-Policy.html"
 
   msg2 "Removing the duplicated images and .desktop..."
   rm "$pkgdir"/$_instdir/product_logo_*.png "$pkgdir"/$_instdir/${pkgname/6}.desktop
