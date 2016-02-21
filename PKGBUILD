@@ -17,7 +17,7 @@ license=('Custom: Side Effects Software')
 depends=()
 makedepends=()
 options=('!strip')
-install=(houdini.install)
+install=houdini.install
 
 _gccver=$(gcc -dumpversion)
 _gccver=${_gccver%.[0-9]*}
