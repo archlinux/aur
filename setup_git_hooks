@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+echo '#!/bin/sh
+branch=$(git rev-parse --symbolic --abbrev-ref HEAD)
+if [ "master" == "$branch" ]; then
+    echo running pre-commit hook for aur
+    echo generating .SRCINFO
+    mksrcinfo
+    git add .SRCINFO
+fi
+' > .git/hooks/pre-commit
+chmod +x .git/hooks/pre-commit
