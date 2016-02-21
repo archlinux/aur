@@ -1,7 +1,7 @@
 # Maintainer: Vlad M. <vlad@archlinux.net>
 
 pkgname=elasticdump
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Import and export tools for Elasticsearch"
 arch=(any)
@@ -10,7 +10,7 @@ license=("Apache")
 depends=('nodejs')
 makedepends=('npm')
 source=("http://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('53e813a48583fb3621c35cc0f3288c9dfa791d84954fad1111f87b857c589a46')
+sha256sums=('911c7bfb85dbdf572763639cdf88e203fe5c17a82df64acb3682f13353492c7d')
 noextract=("$pkgname-$pkgver.tgz")
 
 package() {
