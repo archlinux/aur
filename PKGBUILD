@@ -1,13 +1,13 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=asciiportal-git
 pkgver=20150625
-pkgrel=1
+pkgrel=2
 pkgdesc="Text based puzzle game inspired by the popular video game."
 arch=('i686' 'x86_64')
 url="https://github.com/cymonsgames/ASCIIpOrtal"
 license=('GPL')
 depends=('sdl' 'sdl_mixer' 'pdcurses' 'yaml-cpp')
-makedepends=('git')
+makedepends=('git' 'boost')
 provides=('asciiportal')
 conflicts=('asciiportal' 'asciiportal-mod')
 source=("git://github.com/cymonsgames/ASCIIpOrtal.git")
