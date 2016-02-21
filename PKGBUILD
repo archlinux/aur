@@ -3,7 +3,7 @@
 # Contributor: Ilkka Laukkanen <ilkka.s.laukkanen@gmail.com>
 
 pkgname=landslide
-pkgver=1.1.1
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Generate html5 slideshow from Markdown or reStructuredText sources"
 arch=(any)
@@ -13,7 +13,7 @@ depends=('python2' 'python2-pygments' 'python2-markdown' 'python2-jinja' 'python
 makedepends=('python2-distribute')
 optdepends=('princexml')
 source=(http://pypi.python.org/packages/source/l/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('645934b5bf4926a27e4e7b8b3ddd8e0e')
+sha256sums=('6cde698b3d6b28f7bff3800a7d18cbde191c5facb0d1aa56134f97982ca0edc7')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

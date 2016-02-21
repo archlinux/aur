@@ -1,6 +1,6 @@
 pkgbase = landslide
 	pkgdesc = Generate html5 slideshow from Markdown or reStructuredText sources
-	pkgver = 1.1.1
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = http://github.com/adamzap/landslide
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = landslide
 	depends = python2-jinja
 	depends = python2-docutils
 	optdepends = princexml
-	source = http://pypi.python.org/packages/source/l/landslide/landslide-1.1.1.tar.gz
-	md5sums = 645934b5bf4926a27e4e7b8b3ddd8e0e
+	source = http://pypi.python.org/packages/source/l/landslide/landslide-1.1.3.tar.gz
+	sha256sums = 6cde698b3d6b28f7bff3800a7d18cbde191c5facb0d1aa56134f97982ca0edc7
 
 pkgname = landslide
 
