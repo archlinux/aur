@@ -3,13 +3,14 @@
 _gitname=attract
 _gitbranch=master
 pkgname=${_gitname}-git
-pkgver=1.6.2.49.6c3b9fc
+pkgver=2.0.0.rc1.r2
 pkgrel=1
 pkgdesc="A graphical front-end for command line emulators that hides the underlying operating system and is intended to be controlled with a joystick or gamepad."
 arch=('i686' 'x86_64')
 url="http://www.attractmode.org/"
 license=('GPL3')
 depends=('sfml' 'openal' 'ffmpeg' 'fontconfig' 'libxinerama' 'libarchive')
+makedepends=('git')
 conflicts=('attract')
 provides=('attract')
 replaces=('attractmode-git')
@@ -25,7 +26,8 @@ sha1sums=('SKIP'
 
 pkgver() {
 	cd "${_gitname}"
-	printf "%s" "$(git describe --long --tags | sed 's/v//g;s/\([^-]*-\)g/\1/;s/-/./g')"
+	tag=$(git describe --abbrev=0)
+	printf "%s.r%s\n" "$(echo ${tag} | sed 's/^v//;s/-/./g')" "$(git rev-list --count ${tag}..HEAD)"
 }
 
 build() {
