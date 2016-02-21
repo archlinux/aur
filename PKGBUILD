@@ -6,8 +6,8 @@ pkgver=4.6.1
 pkgrel=1
 pkgdesc='Very simple CMS for very simple content'
 arch=('any')
-url='http://wordpress.org/'
-license=('GPL')
+url='http://cmsimple.org/'
+license=('GNU')
 depends=('php')
 optdepends=('apache: Web server to run wordpress'
             'nginx: Web server to run wordpress'

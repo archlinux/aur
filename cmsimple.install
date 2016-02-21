@@ -1,4 +1,5 @@
 post_install() {
+
   chown -R http:http /usr/share/webapps/cmsimple
   chmod -R 755 /usr/share/webapps/cmsimple
   echo '''
@@ -11,11 +12,14 @@ post_install() {
 
    https://wiki.archlinux.org/index.php/Apache_HTTP_Server#Virtual_hosts
 
+   Or in apache, just Include the Alias provided by the package
+
   '''
 }
 
 post_upgrade() {
    post_install
 }
+
 
 # vim:set ts=2 sw=2 et:
