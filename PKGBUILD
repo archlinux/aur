@@ -5,7 +5,7 @@
 
 pkgname=('heimdall-nogui-git')
 _gitname="heimdall"
-pkgver=1.4.1.r21.gd0526a3
+pkgver=1.4.1.r25.ga59a290
 pkgrel=1
 pkgdesc="A cross-platform open-source utility to flash firmware (aka ROMs) onto Samsung Galaxy S devices."
 arch=('i686' 'x86_64')
@@ -29,9 +29,6 @@ pkgver() {
 prepare() {
   cd ${srcdir}/heimdall/
   patch -Np1 -i ${srcdir}/BridgeManager.patch
-
-  # https://github.com/Benjamin-Dobell/Heimdall/pull/287
-  git cherry-pick f789e25d85bdc8582ae0e4c9dabbb5ac0bbfd69c
 }
 
 build() {
