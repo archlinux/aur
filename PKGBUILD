@@ -71,9 +71,16 @@ package() {
     install -Dm644 "$pkgdir"/$_instdir/product_logo_$i.png "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/google-earth.png
   done
 
-  # The license (too many different ones to do this in "source=()")
-  install -d "$pkgdir"/usr/share/licenses/google-earth/
-  curl -Ls ${url/i*}/license.html -o "$pkgdir"/usr/share/licenses/google-earth/license.html
+  # Licenses (different countries redirect to different ones)
+  install -d "$pkgdir"/usr/share/licenses/$pkgname/
+  curl -Ls https://www.google.com/intl/ALL/policies/terms/index.html \
+       -o "$pkgdir/usr/share/licenses/$pkgname/Google Terms of Service.html"
+  curl -Ls https://www.google.com/help/terms_maps.html \
+       -o "$pkgdir/usr/share/licenses/$pkgname/Google Earth Additional Terms of Service.html"
+  curl -Ls https://www.google.com/help/legalnotices_maps.html \
+       -o "$pkgdir/usr/share/licenses/$pkgname/Legal Notices for Google Earth and Google Earth APIs.html"
+  curl -Ls https://www.google.com/intl/ALL/policies/privacy/index.html \
+       -o "$pkgdir/usr/share/licenses/$pkgname/Google Privacy Policy.html"
 
   msg2 "Removing the Debian-intended cron job and duplicated images..."
   rm -r "$pkgdir"/etc/cron.daily/ "$pkgdir"/$_instdir/product_logo_*.png
