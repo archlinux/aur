@@ -2,7 +2,7 @@
 Name=Powder Player
 GenericName=P2P player
 Comment=Hybrid between a Torrent Client and a Player 
-Exec=/usr/bin/powder
+Exec=/usr/bin/powder %U
 Icon=/opt/powder-player/icon.png
 Terminal=false
 Type=Application
