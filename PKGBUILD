@@ -3,7 +3,7 @@
 pkgname=jconvolver
 pkgver=0.9.2
 pkgrel=1
-pkgdesc="Jconvolver is a Convolution Engine for JACK"
+pkgdesc="Jconvolver is a Convolution Engine for JACK, examples installed in /etc/jconvolver"
 arch=('any')
 url="http://kokkinizita.linuxaudio.org/linuxaudio"
 license=(GPL)
@@ -19,4 +19,5 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver/source"
   make PREFIX=/usr DESTDIR="$pkgdir" install
+  cp -a "$srcdir/$pkgname-$pkgver/config-files" /etc/jconvolver
 }
