@@ -9,7 +9,7 @@
 pkgname=plex-media-server
 pkgver=0.9.15.3.1674
 _pkgsum=f46e7e6
-pkgrel=1
+pkgrel=2
 pkgdesc='Plex Media Server'
 arch=('arm' 'armv7h' 'i686' 'x86_64')
 url='https://plex.tv/'
@@ -37,7 +37,7 @@ sha256sums_i686=('d104f77a4ac3db378e961c08d6460ea8e4256af6e67718c7b99427db990007
 sha256sums_x86_64=('29d4bd3cd1cf36298330d39792aa78e3e0a329306ed70a925dd5cecaa495d620')
 
 prepare() {
-  [[ $CARCH =~ arm* ]] && mkdir -p usr/lib/plexmediaserver && tar -xf package.tgz -C usr/lib/plexmediaserver/
+  [[ $CARCH =~ arm* ]] && mkdir -p usr/lib/plexmediaserver && tar -xfz package.tgz -C usr/lib/plexmediaserver/
 
   #Fix for SELinux and Grsecurity
   [[ $CARCH != arm* ]] && execstack -c usr/lib/plexmediaserver/libgnsdk_dsp.so*
