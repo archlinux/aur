@@ -46,14 +46,14 @@ md5sums=('b8847cb867bdb3ff892149f0fd68f036'
 
 _instdir=/opt/google/earth/free/
 
-# Build() the baifaao.so
+# Build the baifaao.so
 if [[ $_attempt_fix = 1 ]]; then
-  # bin32?
-  if [[ $CARCH = x86_64 ]] && [[ $_64 != 1 ]]; then
-    _m32=-m32
-  fi
-
   build() {
+    # bin32?
+    if [[ $CARCH = x86_64 ]] && [[ $_64 != 1 ]]; then
+      _m32=-m32
+    fi
+
     gcc -I /usr/include/qt4/ $_m32 -O3 -fPIC --shared baifaao.cpp -o baifaao.so
   }
 fi
