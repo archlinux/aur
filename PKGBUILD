@@ -13,7 +13,7 @@ depends=('opendht' 'yaml-cpp' 'alsa-lib' 'libpulse' 'jack'
 makedepends=('git' 'boost' 'msgpack-c')
 provides=('ring-daemon')
 conflicts=('ring-daemon')
-source=("git+https://gerrit-ring.savoirfairelinux.com/ring-daemon")
+source=("git://github.com/savoirfairelinux/ring-daemon")
 md5sums=('SKIP')
 
 pkgver() {
