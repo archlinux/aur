@@ -5,8 +5,10 @@ url=http://www.anodynegame.com/
 license=('custom')
 pkgver=1.508
 pkgrel=2
-arch=(any)
+arch=(i686 x86_64)
 depends=('adobe-air-sdk')
+depends_i686=('alsa-plugins')
+depends_x86_64=('lib32-alsa-plugins')
 source=(hib://Anodyne_1_508_Linux-1378683147.zip
         air-generic-launcher.sh
         eula.txt)
