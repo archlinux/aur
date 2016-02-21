@@ -9,13 +9,13 @@ _x86_64_code=XZ5LUXZnCaQsycCaLFoymzccM68XFRwXyNX
 _api_url="https://api.pcloud.com/getpublinkdownload?code="
 pkgname=pcloud
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A QT-based pcloud sync client'
 arch=('i686' 'x86_64')
 url="https://www.pcloud.com"
 license=('unknown')
 makedepends=('jq')
-depends=('qt4')
+depends=('qt4' 'fuse')
 conflicts=('pcloud-git')
 replaces=('pcloud-git')
 source_i686=() # Placeholder
