@@ -1,7 +1,7 @@
 # Maintainer: Fabian <plusfabi[AT+thegoogleadress]>
 pkgname=pokemon-revolution-online
 pkgver=0.93_3.20160206
-pkgrel=2
+pkgrel=3
 pkgdesc="A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games."
 arch=('x86_64')
 url="http://pokemon-revolution-online.net"
@@ -11,8 +11,8 @@ optdepends=('gtk2: required for the Unity ScreenSelector plugin')
 changelog="change.log"
 source=('http://tiny.cc/PROLinux' 'net.pokemon-revolution-online.desktop' 'change.log' 'pokemonrevolution' 'copyright' 'pokemonrevolution.svg')
 md5sums=('ac29bdb95a865efc8f043fff5d9720cb'
-         '3598d5900062503b4b6b5e43eff612a8'
-         '17c1e76c812c75ab28b6a2fe7beb4638'
+         '3215173b6f1673d868e71f1d953ed9d2'
+         'c7e760f4392ba8d2a8fae456c1ae405d'
          '1b667f450341675b6b2c1750e034516c'
          '0efcd0393015ff149217f9ced4670513'
          '8446ead3097e1b87e3a63b667d956569')

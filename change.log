@@ -2,6 +2,8 @@ Game Changelog
 http://pokemon-revolution-online.net/Forum/viewtopic.php?f=14&t=4563
 
 Packaging
+0.93_3.20160206-2
+* remove that X-DBUS-StartupType in *.desktop
 
 0.93_3.20160206-2
 * move directory from /opt/pokemonrevolutiononline to /opt/Pokemon Revolution

@@ -9,7 +9,6 @@ StartupNotify=false
 Terminal=false
 Type=Application
 Categories=Game;
-X-DBUS-StartupType=Unique
 Actions=Support;Rules;Community;Register;
 
 [Desktop Action Support]
