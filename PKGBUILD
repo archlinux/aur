@@ -11,7 +11,7 @@ depends=("ring-daemon-git" "qt5-base")
 makedepends=('git' 'cmake')
 provides=('libringclient')
 conflicts=('libringclient')
-source=("git+https://gerrit-ring.savoirfairelinux.com/ring-lrc")
+source=("git://github.com/savoirfairelinux/ring-lrc")
 md5sums=('SKIP')
 
 pkgver() {
