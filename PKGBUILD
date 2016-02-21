@@ -18,9 +18,13 @@ pkgver() {
 	echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
-package() {
+build() {
 	cd "$srcdir"/sparrow3d
 	make dynamic
+}
+
+package() {
+	cd "$srcdir"/sparrow3d
 	mkdir -p "$pkgdir"/usr/{lib,include}
 	# Copy SOs
 	cp "$srcdir"/sparrow3d/{libsparrow3d.so,libsparrowNet.so,libsparrowSound.so} "$pkgdir"/usr/lib
