@@ -1,0 +1,37 @@
+pkgbase = vulkan-intel-git
+	pkgdesc = Intel's Vulkan mesa driver
+	pkgver = 11.2.0_devel.78310.40c76d4
+	pkgrel = 1
+	url = http://www.mesa3d.org
+	arch = x86_64
+	license = custom
+	makedepends = libdrm
+	makedepends = dri2proto
+	makedepends = glproto
+	makedepends = libxxf86vm
+	makedepends = libxdamage
+	makedepends = expat>=2.0.1
+	makedepends = libxmu
+	makedepends = talloc
+	makedepends = wayland
+	makedepends = pkgconfig
+	makedepends = imake
+	makedepends = xorg-server-devel
+	makedepends = python2-mako
+	makedepends = python
+	makedepends = git
+	depends = vulkan-icd-loader
+	depends = libgcrypt
+	depends = wayland
+	depends = libxcb
+	provides = vulkan-intel
+	conflicts = vulkan-intel
+	conflicts = vulkan-i965
+	conflicts = vulkan-i965-git
+	source = anvil::git://anongit.freedesktop.org/mesa/mesa#branch=vulkan
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = 7fdc119cf53c8ca65396ea73f6d10af641ba41ea1dd2bd44a824726e01c8b3f2
+
+pkgname = vulkan-intel-git
+
