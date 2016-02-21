@@ -1,0 +1,820 @@
+diff --git a/AUTHORS b/AUTHORS
+index c97ec8c..b60fb17 100644
+--- a/AUTHORS
++++ b/AUTHORS
+@@ -15,6 +15,8 @@ LXPanel - Lightweight X11 desktop panel
+     Piotr Sipika <piotr.sipika@gmail.com>
+     Raimar Bühmann <raimar@buehmann.de>
+     Peter <ombalaxitabou@users.sf.net>
++    Balló György <ballogyor@gmail.com>
++    Rafał Mużyło <galtgendo@gmail.com>
+ 
+ [History]
+ LXPanel is a derivative work from fbpanel [1] written by Anatoly Asviyan,
+diff --git a/configure.ac b/configure.ac
+index 106f219..3f4880b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -34,10 +34,12 @@ AC_HELP_STRING([--enable-gtk3],[enable to use gtk-3.0 instead of gtk-2.0]),
+ esac],[])
+ 
+ if test "x$enable_gtk3" = "xyes" ; then
+-  pkg_modules="$pkg_modules gtk+-3.0 libfm-gtk3 >= 1.2.0 libwnck-3.0"
++  gtk_module="gtk+-3.0"
++  pkg_modules="$pkg_modules $gtk_module libfm-gtk3 >= 1.2.0 libwnck-3.0"
+   keybinder_module=keybinder-3.0
+ else
+-  pkg_modules="$pkg_modules gtk+-2.0 >= 2.18.0 libfm-gtk >= 1.2.0 libwnck-1.0"
++  gtk_module="gtk+-2.0 >= 2.18.0"
++  pkg_modules="$pkg_modules $gtk_module libfm-gtk >= 1.2.0 libwnck-1.0"
+   keybinder_module=keybinder
+ fi
+ 
+@@ -48,6 +50,7 @@ pkg_modules="$pkg_modules \
+ PKG_CHECK_MODULES(PACKAGE, [$pkg_modules])
+ AC_SUBST(PACKAGE_CFLAGS)
+ AC_SUBST(PACKAGE_LIBS)
++AC_SUBST(gtk_module)
+ 
+ PKG_CHECK_MODULES(KEYBINDER, [$keybinder_module])
+ AC_SUBST(KEYBINDER_CFLAGS)
+diff --git a/data/ui/netstatus.glade b/data/ui/netstatus.glade
+index fc956d3..8dc995a 100644
+--- a/data/ui/netstatus.glade
++++ b/data/ui/netstatus.glade
+@@ -8,7 +8,6 @@
+     <property name="window_position">center</property>
+     <property name="default_width">300</property>
+     <property name="type_hint">dialog</property>
+-    <property name="has_separator">False</property>
+     <child internal-child="vbox">
+       <object class="GtkVBox" id="dialog-vbox2">
+         <property name="visible">True</property>
+diff --git a/lxpanel.pc.in b/lxpanel.pc.in
+index be761a6..81ce11c 100644
+--- a/lxpanel.pc.in
++++ b/lxpanel.pc.in
+@@ -6,6 +6,6 @@ pluginsdir=${pkglibdir}/plugins
+ 
+ Name: lxpanel
+ Description: A lightweight X11 desktop panel
+-Requires: gtk+-2.0 libfm >= 1.2.0
++Requires: @gtk_module@ libfm >= 1.2.0
+ Version: @VERSION@
+ Libs: -L${pkglibdir} -llxpanel
+diff --git a/plugins/batt/batt.c b/plugins/batt/batt.c
+index 4afb2c6..a9275f5 100644
+--- a/plugins/batt/batt.c
++++ b/plugins/batt/batt.c
+@@ -5,6 +5,7 @@
+  * Copyright (C) 2008 by Hong Jen Yee <pcman.tw@gmail.com>
+  * Copyright (C) 2009 by Juergen Hoetzel <juergen@archlinux.org>
+  * Copyright (C) 2014 by Andriy Grytsenko <andrej@rep.kiev.ua>
++ *               2015 Balló György <ballogyor@gmail.com>
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+@@ -33,7 +34,6 @@
+ /* FIXME:
+  *  Here are somethings need to be improvec:
+  *  1. Replace pthread stuff with gthread counterparts for portability.
+- *  3. Add an option to hide the plugin when AC power is used or there is no battery.
+  *  4. Handle failure gracefully under systems other than Linux.
+ */
+ 
+@@ -84,6 +84,7 @@ typedef struct {
+         wasCharging,
+         width,
+         hide_if_no_battery;
++    int battery_number;
+     sem_t alarmProcessLock;
+     battery* b;
+     gboolean has_ac_adapter;
+@@ -149,8 +150,8 @@ static gchar* make_tooltip(lx_battery* lx_b, gboolean isCharging)
+         int left_seconds = lx_b->b->seconds - 3600 * hours;
+         int minutes = left_seconds / 60;
+         tooltip = g_strdup_printf(
+-                _("Battery: %d%% charged, %d:%02d until full"),
+-                lx_b->b->percentage,
++                _("Battery %d: %d%% charged, %d:%02d until full"),
++                lx_b->battery_number, lx_b->b->percentage,
+                 hours,
+                 minutes );
+     } else {
+@@ -160,14 +161,14 @@ static gchar* make_tooltip(lx_battery* lx_b, gboolean isCharging)
+             int left_seconds = lx_b->b->seconds - 3600 * hours;
+             int minutes = left_seconds / 60;
+             tooltip = g_strdup_printf(
+-                    _("Battery: %d%% charged, %d:%02d left"),
+-                    lx_b->b->percentage,
++                    _("Battery %d: %d%% charged, %d:%02d left"),
++                    lx_b->battery_number, lx_b->b->percentage,
+                     hours,
+                     minutes );
+         } else {
+             tooltip = g_strdup_printf(
+-                    _("Battery: %d%% charged"),
+-                    100 );
++                    _("Battery %d: %d%% charged"),
++                    lx_b->battery_number, 100 );
+         }
+     }
+ 
+@@ -331,7 +332,7 @@ static int update_timout(lx_battery *lx_b) {
+         battery_free(lx_b->b);
+ 
+         /* maybe in the mean time a battery has been inserted. */
+-        lx_b->b = battery_get();
++        lx_b->b = battery_get(lx_b->battery_number);
+     }
+ 
+     update_display( lx_b, TRUE );
+@@ -393,9 +394,17 @@ static gint configureEvent(GtkWidget *widget, GdkEventConfigure *event,
+ }
+ 
+ 
++#if GTK_CHECK_VERSION(3, 0, 0)
++static gint draw(GtkWidget *widget, cairo_t *cr, lx_battery *lx_b) {
++#else
+ static gint exposeEvent(GtkWidget *widget, GdkEventExpose *event, lx_battery *lx_b) {
++#endif
+ 
+     ENTER;
++
++#if GTK_CHECK_VERSION(3, 0, 0)
++    cairo_set_source_rgb(cr, 0, 0, 0); // FIXME: set black color from the style
++#else
+     cairo_t *cr = gdk_cairo_create(gtk_widget_get_window(widget));
+     GtkStyle *style = gtk_widget_get_style(lx_b->drawingArea);
+ 
+@@ -403,11 +412,14 @@ static gint exposeEvent(GtkWidget *widget, GdkEventExpose *event, lx_battery *lx
+     cairo_clip(cr);
+ 
+     gdk_cairo_set_source_color(cr, &style->black);
++#endif
+     cairo_set_source_surface(cr, lx_b->pixmap, 0, 0);
+     cairo_paint(cr);
+ 
+     check_cairo_status(cr);
++#if !GTK_CHECK_VERSION(3, 0, 0)
+     cairo_destroy(cr);
++#endif
+ 
+     RET(FALSE);
+ }
+@@ -436,8 +448,10 @@ static GtkWidget * constructor(LXPanel *panel, config_setting_t *settings)
+ 
+     lx_b = g_new0(lx_battery, 1);
+ 
+-    /* get available battery */
+-    lx_b->b = battery_get ();
++    /* get requested battery */
++    if (config_setting_lookup_int(settings, "BatteryNumber", &tmp_int))
++        lx_b->battery_number = MAX(0, tmp_int);
++    lx_b->b = battery_get(lx_b->battery_number);
+ 
+     p = gtk_event_box_new();
+     lxpanel_plugin_set_data(p, lx_b, destructor);
+@@ -507,8 +521,13 @@ static GtkWidget * constructor(LXPanel *panel, config_setting_t *settings)
+ 
+     g_signal_connect (G_OBJECT (lx_b->drawingArea),"configure-event",
+           G_CALLBACK (configureEvent), (gpointer) lx_b);
++#if GTK_CHECK_VERSION(3, 0, 0)
++    g_signal_connect (G_OBJECT (lx_b->drawingArea), "draw",
++          G_CALLBACK(draw), (gpointer) lx_b);
++#else
+     g_signal_connect (G_OBJECT (lx_b->drawingArea), "expose-event",
+           G_CALLBACK (exposeEvent), (gpointer) lx_b);
++#endif
+ 
+     /* Apply more default options */
+     if (! lx_b->alarmCommand)
+@@ -599,6 +618,10 @@ static gboolean applyConfig(gpointer user_data)
+ 
+     lx_battery *b = lxpanel_plugin_get_data(user_data);
+ 
++    /* Update the battery we monitor */
++    battery_free(b->b);
++    b->b = battery_get(b->battery_number);
++
+     /* Update colors */
+     if (b->backgroundColor &&
+             gdk_color_parse(b->backgroundColor, &b->background))
+@@ -654,6 +677,9 @@ static gboolean applyConfig(gpointer user_data)
+     config_group_set_int(b->settings, "Size", b->thickness);
+     config_group_set_int(b->settings, "ShowExtendedInformation",
+                          b->show_extended_information);
++    config_group_set_int(b->settings, "BatteryNumber", b->battery_number);
++
++    update_display(b, TRUE);
+ 
+     RET(FALSE);
+ }
+@@ -676,6 +702,7 @@ static GtkWidget *config(LXPanel *panel, GtkWidget *p) {
+             "", panel_config_int_button_new(_("Size"), (int *)&b->thickness,
+                                             1, 50), CONF_TYPE_EXTERNAL,
+             _("Show Extended Information"), &b->show_extended_information, CONF_TYPE_BOOL,
++            _("Number of battery to monitor"), &b->battery_number, CONF_TYPE_INT,
+             NULL);
+ }
+ 
+diff --git a/plugins/batt/batt_sys.c b/plugins/batt/batt_sys.c
+index 64f5ce0..3c2ccae 100644
+--- a/plugins/batt/batt_sys.c
++++ b/plugins/batt/batt_sys.c
+@@ -64,7 +64,7 @@ static gchar* parse_info_file(battery *b, char *sys_file)
+ {
+     char *buf = NULL;
+     gchar *value = NULL;
+-    GString *filename = g_string_new(ACPI_PATH_SYS_POWER_SUPPY);
++    GString *filename = g_string_new(ACPI_PATH_SYS_POWER_SUPPLY);
+ 
+     g_string_append_printf (filename, "/%s/%s", b->path, sys_file);
+ 
+@@ -149,7 +149,7 @@ static gboolean battery_inserted(gchar* path)
+     if (path == NULL)
+         return FALSE;
+ 
+-    GString *dirname = g_string_new(ACPI_PATH_SYS_POWER_SUPPY);
++    GString *dirname = g_string_new(ACPI_PATH_SYS_POWER_SUPPLY);
+     GDir *dir;
+ 
+     g_string_append_printf (dirname, "/%s/", path);
+@@ -287,29 +287,68 @@ battery* battery_update(battery *b)
+ }
+ 
+ 
+-battery *battery_get() {
++battery *battery_get(int battery_number) {
+     GError * error = NULL;
+     const gchar *entry;
+-    GDir * dir = g_dir_open( ACPI_PATH_SYS_POWER_SUPPY, 0, &error );
++    gchar *batt_name = NULL;
++    gchar *batt_path = NULL;
++    GDir * dir = g_dir_open( ACPI_PATH_SYS_POWER_SUPPLY, 0, &error );
+     battery *b = NULL;
++    int i;
++
+     if ( dir == NULL )
+     {
+         g_warning( "NO ACPI/sysfs support in kernel: %s", error->message );
+         return NULL;
+     }
++
++    /* Try the expected path in sysfs first */
++    batt_name = g_strdup_printf(ACPI_BATTERY_DEVICE_NAME "%d", battery_number);
++    batt_path = g_strdup_printf(ACPI_PATH_SYS_POWER_SUPPLY "/%s", batt_name);
++    if (g_file_test(batt_path, G_FILE_TEST_IS_DIR) == TRUE) {
++        b = battery_new();
++        b->path = g_strdup( batt_name);
++        battery_update ( b );
++
++        if (!b->type_battery) {
++            g_warning( "Not a battery: %s", batt_path );
++            g_free(b);
++            b = NULL;
++        }
++    }
++
++    g_free(batt_name);
++    g_free(batt_path);
++
++    if (b != NULL)
++        goto done;
++
++    /*
++     * We didn't find the expected path in sysfs.
++     * Walk the dir and blindly return n-th entry.
++     */
++    i = 0;
+     while ( ( entry = g_dir_read_name (dir) ) != NULL )
+     {
+         b = battery_new();
+         b->path = g_strdup( entry );
+         battery_update ( b );
+-        if ( b->type_battery == TRUE )
+-            break;
+-        /* ignore non-batteries */
+-        else {
+-            g_free(b);
+-            b = NULL;
++
++        /* We're looking for a battery with the selected ID */
++        if (b->type_battery == TRUE) {
++            if (i == battery_number)
++                break;
++            i++;
+         }
++        g_free(b);
++        b = NULL;
+     }
++    if (b != NULL)
++        g_warning( "Battery entry " ACPI_BATTERY_DEVICE_NAME "%d not found, using %s",
++            battery_number, b->path);
++    else
++        g_warning( "Battery %d not found", battery_number );
++done:
+     g_dir_close( dir );
+     return b;
+ }
+diff --git a/plugins/batt/batt_sys.h b/plugins/batt/batt_sys.h
+index ad2bdbe..b7d4163 100644
+--- a/plugins/batt/batt_sys.h
++++ b/plugins/batt/batt_sys.h
+@@ -25,7 +25,8 @@
+ 
+ 
+ #define BUF_SIZE 1024
+-#define ACPI_PATH_SYS_POWER_SUPPY   "/sys/class/power_supply"
++#define ACPI_PATH_SYS_POWER_SUPPLY  "/sys/class/power_supply"
++#define ACPI_BATTERY_DEVICE_NAME    "BAT"
+ #define MIN_CAPACITY	 0.01
+ #define MIN_PRESENT_RATE 0.01
+ #define BATTERY_DESC	"Battery"
+@@ -54,7 +55,7 @@ typedef struct battery {
+     int type_battery;
+ } battery;
+ 
+-battery *battery_get();
++battery *battery_get(int);
+ battery *battery_update( battery *b );
+ void battery_print(battery *b, int show_capacity);
+ gboolean battery_is_charging( battery *b );
+diff --git a/plugins/cpu/cpu.c b/plugins/cpu/cpu.c
+index 3867e89..0d941d5 100644
+--- a/plugins/cpu/cpu.c
++++ b/plugins/cpu/cpu.c
+@@ -9,6 +9,7 @@
+  *               2012-2013 Henry Gebhardt <hsggebhardt@gmail.com>
+  *               2013 Marko Rauhamaa <marko@pacujo.net>
+  *               2014 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *               2015 Rafał Mużyło <galtgendo@gmail.com>
+  *
+  * This file is a part of LXPanel project.
+  *
+@@ -69,7 +70,11 @@ typedef struct {
+ static void redraw_pixmap(CPUPlugin * c);
+ static gboolean cpu_update(CPUPlugin * c);
+ static gboolean configure_event(GtkWidget * widget, GdkEventConfigure * event, CPUPlugin * c);
++#if !GTK_CHECK_VERSION(3, 0, 0)
+ static gboolean expose_event(GtkWidget * widget, GdkEventExpose * event, CPUPlugin * c);
++#else
++static gboolean draw(GtkWidget * widget, cairo_t * cr, CPUPlugin * c);
++#endif
+ 
+ static void cpu_destructor(gpointer user_data);
+ 
+@@ -217,22 +222,32 @@ static gboolean configure_event(GtkWidget * widget, GdkEventConfigure * event, C
+ }
+ 
+ /* Handler for expose_event on drawing area. */
++#if !GTK_CHECK_VERSION(3, 0, 0)
+ static gboolean expose_event(GtkWidget * widget, GdkEventExpose * event, CPUPlugin * c)
++#else
++static gboolean draw(GtkWidget * widget, cairo_t * cr, CPUPlugin * c)
++#endif
+ {
+     /* Draw the requested part of the pixmap onto the drawing area.
+      * Translate it in both x and y by the border size. */
+     if (c->pixmap != NULL)
+     {
++#if !GTK_CHECK_VERSION(3, 0, 0)
+         cairo_t * cr = gdk_cairo_create(gtk_widget_get_window(widget));
+         GtkStyle * style = gtk_widget_get_style(c->da);
+         gdk_cairo_region(cr, event->region);
+         cairo_clip(cr);
+         gdk_cairo_set_source_color(cr, &style->black);
++#else
++        cairo_set_source_rgb(cr, 0, 0, 0); // FIXME: use black color from style
++#endif
+         cairo_set_source_surface(cr, c->pixmap,
+               BORDER_SIZE, BORDER_SIZE);
+         cairo_paint(cr);
+         /* check_cairo_status(cr); */
++#if !GTK_CHECK_VERSION(3, 0, 0)
+         cairo_destroy(cr);
++#endif
+     }
+     return FALSE;
+ }
+@@ -261,7 +276,11 @@ static GtkWidget *cpu_constructor(LXPanel *panel, config_setting_t *settings)
+ 
+     /* Connect signals. */
+     g_signal_connect(G_OBJECT(c->da), "configure-event", G_CALLBACK(configure_event), (gpointer) c);
++    #if !GTK_CHECK_VERSION(3, 0, 0)
+     g_signal_connect(G_OBJECT(c->da), "expose-event", G_CALLBACK(expose_event), (gpointer) c);
++    #else
++    g_signal_connect(G_OBJECT(c->da), "draw", G_CALLBACK(draw), (gpointer) c);
++    #endif
+ 
+     /* Show the widget.  Connect a timer to refresh the statistics. */
+     gtk_widget_show(c->da);
+diff --git a/plugins/deskno/deskno.c b/plugins/deskno/deskno.c
+index 253a70a..ebc6215 100644
+--- a/plugins/deskno/deskno.c
++++ b/plugins/deskno/deskno.c
+@@ -106,6 +106,30 @@ static gboolean deskno_button_press_event(GtkWidget * widget, GdkEventButton * e
+     return TRUE;
+ }
+ 
++/* Handler for scroll events on the plugin */
++static gboolean deskno_scrolled(GtkWidget * p, GdkEventScroll * ev, DesknoPlugin * dc)
++{
++    int desknum = get_net_current_desktop();
++    int desks = get_net_number_of_desktops();
++
++    switch (ev->direction) {
++        case GDK_SCROLL_DOWN:
++            desknum++;
++            break;
++        case GDK_SCROLL_UP:
++            desknum--;
++            break;
++        default:
++            return FALSE;
++    }
++
++    if (desknum < 0 || desknum >= desks)
++        return TRUE;
++
++    Xclimsg(GDK_ROOT_WINDOW(), a_NET_CURRENT_DESKTOP, desknum, 0, 0, 0, 0);
++    return TRUE;
++}
++
+ /* Plugin constructor. */
+ static GtkWidget *deskno_constructor(LXPanel *panel, config_setting_t *settings)
+ {
+@@ -140,6 +164,9 @@ static GtkWidget *deskno_constructor(LXPanel *panel, config_setting_t *settings)
+     g_signal_connect(G_OBJECT(fbev), "desktop-names", G_CALLBACK(deskno_redraw), (gpointer) dc);
+     g_signal_connect(G_OBJECT(fbev), "number-of-desktops", G_CALLBACK(deskno_redraw), (gpointer) dc);
+ 
++    gtk_widget_add_events(p, GDK_SCROLL_MASK);
++    g_signal_connect(G_OBJECT(p), "scroll-event", G_CALLBACK(deskno_scrolled), (gpointer) dc);
++
+     /* Initialize value and show the widget. */
+     deskno_redraw(NULL, dc);
+     gtk_widget_show_all(p);
+@@ -150,10 +177,12 @@ static GtkWidget *deskno_constructor(LXPanel *panel, config_setting_t *settings)
+ static void deskno_destructor(gpointer user_data)
+ {
+     DesknoPlugin * dc = (DesknoPlugin *) user_data;
++    GtkWidget * p = gtk_widget_get_parent(dc->label);
+ 
+     /* Disconnect signal from window manager event object. */
+     g_signal_handlers_disconnect_by_func(G_OBJECT(fbev), deskno_name_update, dc);
+     g_signal_handlers_disconnect_by_func(G_OBJECT(fbev), deskno_redraw, dc);
++    g_signal_handlers_disconnect_by_func(G_OBJECT(p), deskno_scrolled, dc);
+ 
+     /* Deallocate all memory. */
+     if (dc->desktop_labels != NULL)
+diff --git a/plugins/launchtaskbar.c b/plugins/launchtaskbar.c
+index 8ad7ea1..22d197f 100644
+--- a/plugins/launchtaskbar.c
++++ b/plugins/launchtaskbar.c
+@@ -16,6 +16,8 @@
+  *               2014 Vladimír Pýcha <vpycha@gmail.com>
+  *               2014 Raimar Bühmann <raimar@buehmann.de>
+  *               2014 Andy Balaam <axis3x3@users.sf.net>
++ *               2015 Balló György <ballogyor@gmail.com>
++ *               2015 Rafał Mużyło <galtgendo@gmail.com>
+  *
+  * This file is a part of LXPanel project.
+  *
+@@ -1927,6 +1929,7 @@ static void task_delete(LaunchTaskBarPlugin * tb, Task * tk, gboolean unlink, gb
+ 
+ /* Get a pixbuf from a pixmap.
+  * Originally from libwnck, Copyright (C) 2001 Havoc Pennington. */
++#if !GTK_CHECK_VERSION(3, 0, 0)
+ static GdkPixbuf * _wnck_gdk_pixbuf_get_from_pixmap(GdkScreen *screen, Pixmap xpixmap, int width, int height)
+ {
+     /* Get the drawable. */
+@@ -1976,6 +1979,50 @@ static GdkPixbuf * _wnck_gdk_pixbuf_get_from_pixmap(GdkScreen *screen, Pixmap xp
+         g_object_unref(G_OBJECT(drawable));
+     return retval;
+ }
++#else
++static GdkPixbuf * _wnck_gdk_pixbuf_get_from_pixmap(GdkScreen *screen, Pixmap xpixmap, int width, int height)
++{
++  cairo_surface_t *surface;
++  GdkPixbuf *pixbuf;
++  Display *xdisplay;
++  Window root_return;
++  XWindowAttributes attrs;
++
++  surface = NULL;
++  xdisplay = GDK_DISPLAY_XDISPLAY(gdk_display_get_default());
++
++
++  gdk_error_trap_push();
++
++  if (!XGetWindowAttributes (xdisplay, root_return, &attrs))
++    goto TRAP_POP;
++
++  if (attrs.depth == 1)
++    {
++      surface = cairo_xlib_surface_create_for_bitmap (xdisplay,
++                                                      xpixmap,
++                                                      attrs.screen,
++                                                      width,
++                                                      height);
++    }
++  else
++    {
++      surface = cairo_xlib_surface_create (xdisplay,
++                                           xpixmap,
++                                           attrs.visual,
++                                           width, height);
++    }
++
++  pixbuf = gdk_pixbuf_get_from_surface (surface, 0, 0, width, height);
++  cairo_surface_destroy (surface);
++
++TRAP_POP:
++  gdk_flush();
++  gdk_error_trap_pop();
++
++  return pixbuf;
++}
++#endif
+ 
+ /* Apply a mask to a pixbuf.
+  * Originally from libwnck, Copyright (C) 2001 Havoc Pennington. */
+@@ -2819,6 +2866,9 @@ static void task_build_gui(LaunchTaskBarPlugin * tb, Task * tk)
+         gtk_widget_set_state(tk->button, GTK_STATE_NORMAL);
+     gtk_drag_dest_set(tk->button, 0, NULL, 0, 0);
+     gtk_drag_source_set(tk->button, GDK_BUTTON1_MASK, task_button_target_list, task_button_n_targets, GDK_ACTION_MOVE);
++#if GTK_CHECK_VERSION(3, 0, 0)
++    gtk_widget_add_events(tk->button, GDK_SCROLL_MASK);
++#endif
+ 
+     /* Connect signals to the button. */
+     g_signal_connect(tk->button, "button-press-event", G_CALLBACK(taskbar_button_press_event), (gpointer) tk);
+diff --git a/plugins/monitors/monitors.c b/plugins/monitors/monitors.c
+index 54a69a9..403930b 100644
+--- a/plugins/monitors/monitors.c
++++ b/plugins/monitors/monitors.c
+@@ -10,6 +10,7 @@
+  *               2012-2014 Henry Gebhardt <hsggebhardt@googlemail.com>
+  *               2012 Rafał Mużyło <galtgendo@gmail.com>
+  *               2014 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *               2015 Rafał Mużyło <galtgendo@gmail.com>
+  *
+  * <terms>
+  * Copyright (c) 2008-2014 LxDE Developers, see the file AUTHORS for details.
+@@ -149,7 +150,11 @@ static void     mem_tooltip_update (Monitor *m);
+ 
+ 
+ static gboolean configure_event(GtkWidget*, GdkEventConfigure*, gpointer);
++#if !GTK_CHECK_VERSION(3, 0, 0)
+ static gboolean expose_event(GtkWidget *, GdkEventExpose *, Monitor *);
++#else
++static gboolean draw(GtkWidget *, cairo_t *, Monitor *);
++#endif
+ static void redraw_pixmap (Monitor *m);
+ 
+ /* Monitors functions */
+@@ -174,8 +179,13 @@ monitor_init(MonitorsPlugin *mp, Monitor *m, gchar *color)
+     /* Signals */
+     g_signal_connect(G_OBJECT(m->da), "configure-event",
+         G_CALLBACK(configure_event), (gpointer) m);
++#if !GTK_CHECK_VERSION(3, 0, 0)
+     g_signal_connect (G_OBJECT(m->da), "expose-event",
+         G_CALLBACK(expose_event), (gpointer) m);
++#else
++    g_signal_connect (G_OBJECT(m->da), "draw",
++        G_CALLBACK(draw), (gpointer) m);
++#endif
+     /* g_signal_connect(G_OBJECT(m->da), "button-press-event",
+                     G_CALLBACK(plugin_button_press_event), p); */
+ 
+@@ -470,22 +480,33 @@ configure_event(GtkWidget* widget, GdkEventConfigure* dummy, gpointer data)
+     return TRUE;
+ }
+ 
++#if !GTK_CHECK_VERSION(3, 0, 0)
+ static gboolean
+ expose_event(GtkWidget * widget, GdkEventExpose * event, Monitor *m)
++#else
++static gboolean
++draw(GtkWidget * widget, cairo_t * cr, Monitor *m)
++#endif
+ {
+     /* Draw the requested part of the pixmap onto the drawing area.
+      * Translate it in both x and y by the border size. */
+     if (m->pixmap != NULL)
+     {
++#if !GTK_CHECK_VERSION(3, 0, 0)
+         cairo_t *cr = gdk_cairo_create(gtk_widget_get_window(widget));
+         GtkStyle *style = gtk_widget_get_style(m->da);
+         gdk_cairo_region(cr, event->region);
+         cairo_clip(cr);
+         gdk_cairo_set_source_color(cr, &style->black);
++#else
++        cairo_set_source_rgb(cr, 0, 0, 0); // FIXME: set the color from style
++#endif
+         cairo_set_source_surface(cr, m->pixmap, BORDER_SIZE, BORDER_SIZE);
+         cairo_paint(cr);
+         check_cairo_status(cr);
++#if !GTK_CHECK_VERSION(3, 0, 0)
+         cairo_destroy(cr);
++#endif
+     }
+ 
+     return FALSE;
+diff --git a/plugins/netstat/netstat.c b/plugins/netstat/netstat.c
+index d43ae36..f0764ad 100644
+--- a/plugins/netstat/netstat.c
++++ b/plugins/netstat/netstat.c
+@@ -197,7 +197,11 @@ wireless_menu(netdev_info *ni)
+ 
+             signal_quality = gtk_progress_bar_new();
+             gtk_widget_set_size_request(signal_quality, 100, -1);
++#if GTK_CHECK_VERSION(3, 0, 0)
++            gtk_orientable_set_orientation(GTK_ORIENTABLE(signal_quality), GTK_ORIENTATION_HORIZONTAL);
++#else
+             gtk_progress_bar_set_orientation(GTK_PROGRESS_BAR(signal_quality), GTK_PROGRESS_LEFT_TO_RIGHT);
++#endif
+             gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(signal_quality), quality_per);
+             gtk_box_pack_start(GTK_BOX(item_box), signal_quality, FALSE, FALSE, 0);
+ 
+diff --git a/plugins/netstatus/netstatus-icon.c b/plugins/netstatus/netstatus-icon.c
+index 5e64689..33116ef 100644
+--- a/plugins/netstatus/netstatus-icon.c
++++ b/plugins/netstatus/netstatus-icon.c
+@@ -449,7 +449,11 @@ netstatus_icon_signal_changed (NetstatusIface *iface,
+ }
+ 
+ static void
++#if GTK_CHECK_VERSION(3, 0, 0)
++netstatus_icon_destroy (GtkWidget *widget)
++#else
+ netstatus_icon_destroy (GtkObject *widget)
++#endif
+ {
+   NetstatusIcon *icon = (NetstatusIcon *) widget;
+ 
+@@ -477,7 +481,11 @@ netstatus_icon_destroy (GtkObject *widget)
+ 
+   icon->priv->image = NULL;
+ 
++#if GTK_CHECK_VERSION(3, 0, 0)
++  GTK_WIDGET_CLASS (parent_class)->destroy (widget);
++#else
+   GTK_OBJECT_CLASS (parent_class)->destroy (widget);
++#endif
+ }
+ 
+ static GdkPixbuf *
+@@ -583,6 +591,7 @@ get_box_class (GtkOrientation orientation)
+   return g_type_class_peek(orientation == GTK_ORIENTATION_HORIZONTAL ? GTK_TYPE_HBOX : GTK_TYPE_VBOX);
+ }
+ 
++#if !GTK_CHECK_VERSION(3, 0, 0)
+ static void
+ netstatus_icon_size_request (GtkWidget      *widget,
+ 			     GtkRequisition *requisition)
+@@ -595,6 +604,8 @@ netstatus_icon_size_request (GtkWidget      *widget,
+   if (GTK_WIDGET_CLASS (klass)->size_request)
+     GTK_WIDGET_CLASS (klass)->size_request (widget, requisition);
+ }
++// FIXME: for GTK+ 3.0 make get_preferred_{width,height} callbacks!
++#endif
+ 
+ static void
+ netstatus_icon_size_allocate (GtkWidget     *widget,
+@@ -668,7 +679,9 @@ netstatus_icon_realize (GtkWidget *widget)
+   attributes.window_type = GDK_WINDOW_CHILD;
+   attributes.wclass = GDK_INPUT_OUTPUT;
+   attributes.visual = gtk_widget_get_visual (widget);
++#if !GTK_CHECK_VERSION(3, 0, 0)
+   attributes.colormap = gtk_widget_get_colormap (widget);
++#endif
+   attributes.event_mask = gtk_widget_get_events (widget) |
+                           GDK_BUTTON_MOTION_MASK         |
+                           GDK_BUTTON_PRESS_MASK          |
+@@ -677,7 +690,10 @@ netstatus_icon_realize (GtkWidget *widget)
+                           GDK_ENTER_NOTIFY_MASK          |
+                           GDK_LEAVE_NOTIFY_MASK;
+ 
+-  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL | GDK_WA_COLORMAP;
++  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
++#if !GTK_CHECK_VERSION(3, 0, 0)
++   attributes_mask |= GDK_WA_COLORMAP;
++#endif
+ 
+   window = gdk_window_new (gtk_widget_get_parent_window (widget), &attributes, attributes_mask);
+   gtk_widget_set_window (widget, window);
+@@ -797,7 +813,9 @@ static void
+ netstatus_icon_class_init (NetstatusIconClass *klass)
+ {
+   GObjectClass   *gobject_class   = (GObjectClass   *) klass;
++#if !GTK_CHECK_VERSION(3, 0, 0)
+   GtkObjectClass *gtkobject_class = (GtkObjectClass *) klass;
++#endif
+   GtkWidgetClass *widget_class    = (GtkWidgetClass *) klass;
+ 
+   parent_class = g_type_class_peek_parent (klass);
+@@ -809,9 +827,16 @@ netstatus_icon_class_init (NetstatusIconClass *klass)
+ 
+   gobject_class->finalize     = netstatus_icon_finalize;
+ 
++#if GTK_CHECK_VERSION(3, 0, 0)
++  widget_class->destroy = netstatus_icon_destroy;
++#else
+   gtkobject_class->destroy = netstatus_icon_destroy;
++#endif
+ 
++#if !GTK_CHECK_VERSION(3, 0, 0)
+   widget_class->size_request       = netstatus_icon_size_request;
++  // FIXME: for GTK+ 3.0 make get_preferred_{width,height} callbacks!
++#endif
+   widget_class->size_allocate      = netstatus_icon_size_allocate;
+   widget_class->realize            = netstatus_icon_realize;
+   widget_class->button_press_event = netstatus_icon_button_press_event;
+diff --git a/src/panel.c b/src/panel.c
+index d68bd0d..b5daf37 100644
+--- a/src/panel.c
++++ b/src/panel.c
+@@ -14,6 +14,7 @@
+  *               2013 Rouslan <rouslan-k@users.sourceforge.net>
+  *               2013 peadaredwards <peadaredwards@users.sourceforge.net>
+  *               2014-2015 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *               2015 Rafał Mużyło <galtgendo@gmail.com>
+  *
+  * This file is a part of LXPanel project.
+  *
+@@ -237,7 +238,12 @@ static void lxpanel_size_request(GtkWidget *widget, GtkRequisition *req)
+     Panel *p = panel->priv;
+     GdkRectangle rect;
+ 
++#if !GTK_CHECK_VERSION(3, 0, 0)
+     GTK_WIDGET_CLASS(lxpanel_parent_class)->size_request(widget, req);
++#else
++    GTK_WIDGET_CLASS(lxpanel_parent_class)->get_preferred_width(widget, &req->width, &req->width);
++    GTK_WIDGET_CLASS(lxpanel_parent_class)->get_preferred_height(widget, &req->height, &req->height);
++#endif
+ 
+     if (!p->visible)
+         /* When the panel is in invisible state, the content box also got hidden, thus always
+@@ -251,6 +257,38 @@ static void lxpanel_size_request(GtkWidget *widget, GtkRequisition *req)
+     req->height = rect.height;
+ }
+ 
++#if GTK_CHECK_VERSION(3, 0, 0)
++static void
++lxpanel_get_preferred_width (GtkWidget *widget,
++                             gint      *minimal_width,
++                             gint      *natural_width)
++{
++  GtkRequisition requisition;
++
++  lxpanel_size_request (widget, &requisition);
++
++  if (minimal_width)
++      *minimal_width = requisition.width;
++  if (natural_width)
++      *natural_width = requisition.width;
++}
++
++static void
++lxpanel_get_preferred_height (GtkWidget *widget,
++                              gint      *minimal_height,
++                              gint      *natural_height)
++{
++  GtkRequisition requisition;
++
++  lxpanel_size_request (widget, &requisition);
++
++  if (minimal_height)
++      *minimal_height = requisition.height;
++  if (natural_height)
++      *natural_height = requisition.height;
++}
++#endif
++
+ static void lxpanel_size_allocate(GtkWidget *widget, GtkAllocation *a)
+ {
+     LXPanel *panel = LXPANEL(widget);
+@@ -341,7 +379,12 @@ static void lxpanel_class_init(PanelToplevelClass *klass)
+     gtk_object_class->destroy = lxpanel_destroy;
+ #endif
+     widget_class->realize = lxpanel_realize;
++#if GTK_CHECK_VERSION(3, 0, 0)
++    widget_class->get_preferred_width = lxpanel_get_preferred_width;
++    widget_class->get_preferred_height = lxpanel_get_preferred_height;
++#else
+     widget_class->size_request = lxpanel_size_request;
++#endif
+     widget_class->size_allocate = lxpanel_size_allocate;
+     widget_class->configure_event = lxpanel_configure_event;
+     widget_class->style_set = lxpanel_style_set;
+@@ -815,7 +858,9 @@ static void _panel_update_background(LXPanel * p, gboolean enforce)
+ 
+     /* Redraw the top level widget. */
+     _panel_determine_background_pixmap(p);
++#if !GTK_CHECK_VERSION(3, 0, 0)
+     gdk_window_clear(gtk_widget_get_window(w));
++#endif
+     gtk_widget_queue_draw(w);
+ 
+     /* Loop over all plugins redrawing each plugin. */

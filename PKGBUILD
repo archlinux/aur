@@ -5,8 +5,8 @@
 
 pkgname=lxpanel-gtk3
 _pkgname=lxpanel
-pkgver=0.8.1
-pkgrel=3
+pkgver=0.8.2
+pkgrel=1
 pkgdesc='Lightweight X11 desktop panel for LXDE (GTK+ 3 version)'
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -17,25 +17,21 @@ makedepends=('intltool' 'docbook-xml' 'docbook-xsl' 'wireless_tools')
 optdepends=('wireless_tools: netstat plugin')
 conflicts=($_pkgname)
 source=(http://downloads.sourceforge.net/lxde/$_pkgname-$pkgver.tar.xz
-        git-fixes.patch
-        0001-batt-plugin-Fix-with-GTK3.patch)
-sha256sums=('c657eb049a0f59e7b2d1ad6cb621c272833b765705c19089e48b3c248351b1e0'
-            '97895bbaf67231ea1e24f0ed98f434a124bcbbe8fd65a600447cc31e155b5c45'
-            '1b72f27d705c66a312315441bdd1faaf60b727fb5bff323b3a632f9c11faf421')
+        gtk3.patch)
+sha256sums=('516ac4c83494ee99b2a0d2466458519a9a2668272eeff6d2162af3683b634104'
+            'b2a0ea2f41cc65615255d044b2a9413fd1e8adf8ba70b7b742d0f3aee1d2d4f5')
 
 prepare() {
   cd $_pkgname-$pkgver
 
-  # Apply fixes from git
-  patch -Np1 -i ../git-fixes.patch
-  patch -Np1 -i ../0001-batt-plugin-Fix-with-GTK3.patch
+  # Port to GTK+ 3
+  patch -Np1 -i ../gtk3.patch
 
   # Disable pager plugin as it breaks panel layout with GTK+ 3
   # https://sourceforge.net/p/lxde/bugs/773/
   sed -i '/pager.c/d' plugins/Makefile.am
   sed -i '/STATIC_PAGER/d' src/private.h
   sed -i 's/libwnck-3.0//' configure.ac
-
   autoreconf -fi
 }
 
