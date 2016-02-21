@@ -1,4 +1,6 @@
-# Maintainer: Severen Redwood <severen.redwood@gmail.com>
+# Maintainer: Severen Redwood <severen@shrike.me>
+# Report all package issues to `https://github.com/SShrike/pkgbuilds`
+# Report all application issues to `https://github.com/SShrike/confmacs`
 
 _gemname='confmacs'
 pkgname='confmacs-git'
