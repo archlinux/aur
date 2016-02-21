@@ -1,14 +1,14 @@
 # Maintainer: Sven Schneider <archlinux.sandmann@googlemail.com>
 
 pkgname=libfreenect-git
-pkgver=v0.5.2.r8.gdcb2929
+pkgver=v0.5.3.r18.gec0b75d
 pkgrel=1
 pkgdesc="Drivers and libraries for the Xbox Kinect device on Linux"
 arch=('i686' 'x86_64')
 url="http://openkinect.org"
 license=('GPL')
-depends=('libusb' 'glu' 'freeglut' 'bash' 'python2')
-makedepends=('cmake' 'git' 'libxmu' 'python2-numpy')
+depends=('libusb' 'glu' 'freeglut' 'bash' 'python' 'python2')
+makedepends=('cmake' 'git' 'libxmu' 'cython' 'python-numpy' 'cython2' 'python2-numpy')
 optdepends=('opencv: support for python demos'
             'python2-matplotlib: support for python demos')
 provides=('libfreenect')
@@ -22,12 +22,6 @@ pkgver() {
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "${srcdir}/${pkgname}"
-
-  sed '/set(PYTHON_EXECUTABLE "python2")/d' -i CMakeLists.txt
-}
-
 build() {
   cd "${srcdir}/${pkgname}"
 
@@ -36,9 +30,7 @@ build() {
     -DBUILD_AUDIO=ON \
     -DBUILD_REDIST_PACKAGE=OFF \
     -DBUILD_OPENNI2_DRIVER=ON \
-    -DBUILD_PYTHON=ON \
-    -DPYTHON_EXECUTABLE=/usr/bin/python2 \
-    -DPython_ADDITIONAL_VERSIONS="2.7;2.6;2.5;2.4;2.3;2.2;2.1;2.0" .
+    -DBUILD_PYTHON=ON
 
   make
 }
