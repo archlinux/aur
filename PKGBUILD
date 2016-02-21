@@ -85,7 +85,7 @@ package() {
     done
 
     # Fix .desktop paths
-    sed -e "s|Exec=|&$_jvmdir/bin/|" \
+    sed -e "s|Exec=|Exec=$_jvmdir/bin/|" \
         -e "s|.png|-$_jname.png|" \
     -i lib/desktop/applications/*
 
