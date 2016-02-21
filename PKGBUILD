@@ -32,7 +32,7 @@ sha512sums=(
     'SKIP'
 )
 
-install='heka.install'
+install='install.sh'
 
 pkgver() {
     cd "${srcdir}/${srcname}"
