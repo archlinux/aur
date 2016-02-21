@@ -2,7 +2,7 @@
 # Contributor: Daniel Kirchner <daniel AT ekpyron DOT org>
 
 pkgname=mingw-w64-glfw
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="A free, open source, portable framework for OpenGL application development (mingw-w64)"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-cmake')
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
 source=(https://github.com/glfw/glfw/releases/download/${pkgver}/glfw-${pkgver}.zip)
-md5sums=('7d810be356637ff30a7a9ea9c1e1992d')
+md5sums=('8023327bfe979b3fe735e449e2f54842')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
