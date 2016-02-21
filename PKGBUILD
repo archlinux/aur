@@ -1,6 +1,8 @@
-# Maintainer: Severen Redwood <severen.redwood@gmail.com>
+# Maintainer: Severen Redwood <severen@shrike.me>
 # Contributors: TingPing <tingping@tingping.se>
 #               Diego Cano <elkano@blep.org>
+# Report all package issues to `https://github.com/SShrike/pkgbuilds`
+
 pkgname=gtkd-git
 pkgver=1199.98f9dc8
 pkgrel=3
