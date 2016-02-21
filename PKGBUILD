@@ -1,8 +1,8 @@
 # Maintainer: Sven Schneider <archlinux.sandmann@googlemail.com>
 
 pkgname=libfreenect
-pkgver=0.5.2
-pkgrel=2
+pkgver=0.5.3
+pkgrel=1
 pkgdesc="Drivers and libraries for the Xbox Kinect device on Linux"
 arch=('i686' 'x86_64')
 url="http://openkinect.org"
@@ -12,16 +12,12 @@ makedepends=('cmake' 'libxmu' 'python2-numpy')
 optdepends=('opencv: support for python demos'
             'python2-matplotlib: support for python demos')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/OpenKinect/libfreenect/archive/v${pkgver}.tar.gz)
-md5sums=('4d683cffe79f741aeb777cacaa88fd44')
-sha256sums=('91af5c09b7eae217c4be69234ae5a6371f24da8ff6986f98c2db19f1993f2a71')
-sha384sums=('e0723886adea009e290318ae59a9a7ea1ff82d2b369ed0646a58d59a6ce1bfa30b5eb7c66e0909ee48a6165ba74cfc79')
-sha512sums=('26224a8d4cb0c57ce058754d691631fa14fe4547b3a6b9afbcc9b0fd29577e7b767e65abcfff9bad72e32d1bb9723dd9fc3d41f076a0e0b1cf87b5855faf4b41')
+sha512sums=('bf5ac23b1ead3dec1d76868373b219a995d648b4da9b317655bc48fc641ec5d8ed5a02228a026c7c95d3c96cc5d5184152be3e5789959e23a332e38167cf7018')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   sed '/set(PYTHON_EXECUTABLE "python2")/d' -i CMakeLists.txt
-  sed 's/systemupdate\/FFFE07DF00000001/SystemUpdate\/FFFE07DF00000001/g' -i src/fwfetcher.py
 }
 
 build() {
