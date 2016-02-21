@@ -7,7 +7,7 @@
 
 pkgname=lxdm-consolekit
 _pkgname=lxdm
-pkgver=0.5.1
+pkgver=0.5.3
 pkgrel=1
 pkgdesc='LXDM with consolekit support enabled'
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ source=(http://downloads.sourceforge.net/lxdm/$_pkgname-$pkgver.tar.xz
         default-config.patch
         lxdm.pam
         Xsession)
-md5sums=('9e03ce5f6d303bc9b689732401934dc6'
+md5sums=('061caae432634e6db38bbdc84bc6ffa0'
          'd42d17443e544beee46a9ab47cb24b86'
          '06f54c141668495b1e600dc56d3cec1a'
          '6ceea02bf33f6d122365f83435f976ab')
