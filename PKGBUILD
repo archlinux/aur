@@ -28,7 +28,6 @@ provides=("java32-runtime=$_major" "java32-runtime-headless=$_major" "java32-web
           "java32-runtime-jre=$_major" "java32-runtime-headless-jre=$_major" "java32-web-start-jre=$_major" "java32-environment-jdk=$_major")
 
 # Variables
-DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 _jname=${_pkgname}${_major}
 _jvmdir=/usr/lib32/jvm/java32-$_major-$_pkgname
 
@@ -46,15 +45,13 @@ backup=("etc/java32-$_jname/i386/jvm.cfg"
         "etc/java32-$_jname/sound.properties")
 options=('!strip') # JDK debug-symbols
 install=$pkgname.install
-source=('http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip'
-        "jconsole32-$_jname.desktop"
+source=("jconsole32-$_jname.desktop"
         "jmc32-$_jname.desktop"
         "jvisualvm32-$_jname.desktop"
         "policytool32-$_jname.desktop"
         'OTN-Early-Adopter-License-Terms.txt')
 source_x86_64=("http://www.java.net/download/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}-ea+${_build}_linux-x86_bin.tar.gz")
-md5sums=('b3c7031bc65c28c2340302065e7d00d3'
-         'cae82f6fd99d9b5e60dca0e48f71cc3f'
+md5sums=('cae82f6fd99d9b5e60dca0e48f71cc3f'
          '766d4781f1610fbd2e5797709c373d2f'
          'bf32df4a5c6a82dceb0249cb815efe18'
          '05c7f59cdcec283bcccc63d1fdc40b72'
@@ -154,9 +151,10 @@ package() {
     # things like 256-bit AES. Enabled by default in OpenJDK:
     # - http://suhothayan.blogspot.com/2012/05/how-to-install-java-cryptography.html
     # - http://www.eyrie.org/~eagle/notes/debian/jce-policy.html
-    install -m644 "$srcdir"/UnlimitedJCEPolicyJDK8/*.jar lib/security/
-    install -Dm644 "$srcdir"/UnlimitedJCEPolicyJDK8/README.txt \
+    install -m644 lib/security/unlimited_policy/*.jar lib/security/
+    install -Dm644 lib/security/unlimited_policy/README.txt \
                    "$pkgdir"/usr/share/doc/$pkgname/README_-_Java_JCE_Unlimited_Strength.txt
+	rm -r lib/security/unlimited_policy/
 
     msg2 "Enabling copy+paste in unsigned applets..."
     # Copy/paste from system clipboard to unsigned Java applets has been disabled since 6u24:
