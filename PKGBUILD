@@ -4,8 +4,8 @@
 # Report all package issues to `https://github.com/SShrike/pkgbuilds`
 
 pkgname=capnproto-git
-pkgver=1337.1702050
-pkgrel=2
+pkgver=r1490.ee64a21
+pkgrel=1
 pkgdesc="Cap'n Proto serialization/RPC system"
 arch=('i686' 'x86_64')
 url="http://kentonv.github.io/capnproto/"
@@ -20,7 +20,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "capnproto"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  echo r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 prepare() {
