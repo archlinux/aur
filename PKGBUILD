@@ -1,34 +1,47 @@
+# Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=ring-gnome-git
-pkgver=98.66c50a3
-pkgrel=3
-pkgdesc="distributed and secured communications"
-license=('GPL')
-arch=('i686' 'x86_64')
-url="http://www.ring.cx/"
-depends=('libringclient' 'evolution-data-server' 'clutter-gtk' 'gnome-icon-theme-symbolic')
-makedepends=('cmake')
-install=('ring-gnome.install')
-source=("git+https://gerrit-ring.savoirfairelinux.com/ring-client-gnome")
-md5sums=('SKIP')
+pkgver=20160219
+pkgrel=2
+pkgdesc="The GNOME client for Ring (formerly known as SFLphone)"
+arch=("i686" "x86_64")
+url="http://ring.cx"
+license=('GPL3')
+groups=("ring")
+depends=("libringclient-git" "ring-daemon-git"
+         "gtk3" "dconf" "clutter" "clutter-gtk"
+         "qt5-base" "gnome-icon-theme-symbolic" "gtk-update-icon-cache" "desktop-file-utils"
+         "evolution-data-server" "libnotify")
+makedepends=('git' 'cmake')
+provides=('ring-gnome')
+conflicts=('ring-gnome-client-git' 'ring-gnome-client' 'ring-gnome')
+source=("git://github.com/savoirfairelinux/ring-client-gnome")
+sha256sums=('SKIP')
+install=ring-gnome.install
 
 pkgver() {
-  cd "$srcdir"/ring-client-gnome
-  echo $(git rev-list --count master).$(git rev-parse --short master)
-}
-
-prepare() {
-  cd "${srcdir}/ring-client-gnome"
-
+  cd "ring-client-gnome"
+  git log -1 --format="%cd" --date=short | sed "s|-||g"
 }
 
 build() {
-  cd "${srcdir}/ring-client-gnome"
-  cmake -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr .
+  cd "ring-client-gnome"
+
+  msg2 'Building...'
+  mkdir -p build
+  cd build
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
 package() {
-  cd "${srcdir}/ring-client-gnome"
+  cd "ring-client-gnome/build"
+
+  msg2 'Installing...'
   make DESTDIR="$pkgdir" install
+
+  msg2 'Cleaning up pkgdir...'
+  find "$pkgdir" -type d -name .git -exec rm -r '{}' +
+  find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }
+
+# vim:set ts=2 sw=2 et:
