@@ -1,0 +1,37 @@
+# Maintainer: Colin Wallace <wallacoloo@gmail.com>
+
+pkgname=hase-git
+pkgver=341.da32fd2
+pkgrel=1
+pkgdesc='Gravity artillery shooter game'
+arch=('any')
+url='http://ziz.gp2x.de/hase/'
+license=('GPL')
+depends=('sdl' 'sdl_image' 'sdl_mixer' 'sdl_net' 'sparrow3d')
+makedepends=('git')
+provides=('hase')
+source=("git+https://github.com/theZiz/hase.git" "sparrow-dyn.patch")
+md5sums=('SKIP' 'f71a4a3fb0569eaf3d66c818b1f8470c')
+
+pkgver() {
+	cd "$srcdir"/hase
+	echo $(git rev-list --count master).$(git rev-parse --short master)
+}
+
+prepare() {
+	cd "$srcdir"/hase
+	# Patch hase to link against sparrow dynamically
+	patch -p1 -i "$srcdir"/sparrow-dyn.patch Makefile
+}
+
+build() {
+	cd "$srcdir"/hase
+	make
+}
+
+package() {
+	cd "$srcdir"/hase
+	# Make directories that the install script expects to already exist
+	mkdir -p "$pkgdir"/usr/{bin,share,share/applications,share/pixmaps}
+	./install.sh "$pkgdir"/usr
+}
