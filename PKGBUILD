@@ -37,10 +37,10 @@ package() {
   install -m644 spirv.hpp11 "${pkgdir}"/usr/include/spirv/
 
   # Specification
-  install -dm755           "${pkgdir}"/usr/share/spir-v/specs/
-  install -m644 SPIRV.html "${pkgdir}"/usr/share/spir-v/specs/
-  install -dm755           "${pkgdir}"/usr/share/spir-v/specs/images/
-  install -m644 *.svg      "${pkgdir}"/usr/share/spir-v/specs/images/
+  install -dm755           "${pkgdir}"/usr/share/doc/spir-v/
+  install -m644 SPIRV.html "${pkgdir}"/usr/share/doc/spir-v/
+  install -dm755           "${pkgdir}"/usr/share/doc/spir-v/images/
+  install -m644 *.svg      "${pkgdir}"/usr/share/doc/spir-v/images/
 
   # License
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
