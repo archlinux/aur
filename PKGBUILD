@@ -16,6 +16,6 @@ sha256sums=('5f18e94e0ce2e5df89acc057fb8cd6a035b795566c79353cc29d7668c2af97a1')
 install="${pkgname}.install"
 
 package() {
-cd "${srcdir}/${pkgname}-${pkgver}"
-python3 setup.py install --prefix=/usr --root="$pkgdir"/ --optimize=1
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    python3 setup.py install --prefix=/usr --root="$pkgdir"/ --optimize=1
 }
