@@ -5,7 +5,7 @@ _python=python2
 _name=DisPass
 
 pkgname=$_python-dispass-git
-pkgver=20160209
+pkgver=20160219
 pkgrel=1
 pkgdesc="Generate and disperse/dispell passwords"
 depends=('python2' 'python2-pycommand')
