@@ -5,28 +5,28 @@
 # Maintainer: Hexchain Tong <i@hexchain.org>
 
 pkgname=coursera-dl-git
-_gitname=coursera
-pkgver=823.45bdcac
+_gitname=${pkgname/-git/}
+pkgver=0.5.2.r0.g38f190a
 pkgrel=1
 pkgdesc="Script for downloading Coursera.org videos and naming them"
 arch=('any')
-url="https://github.com/coursera-dl/coursera/"
-license=('GPL')
-depends=('python' 'python-beautifulsoup4' 'python-distribute' 'python-requests' 'python-six')
-optdepends=('python-html5lib: recommended for parsing pages')
+url="https://github.com/coursera-dl/coursera-dl/"
+license=('LGPL3')
+depends=('python' 'python-pyasn1' 'python-beautifulsoup4' 'python-distribute' 'python-requests' 'python-six')
 makedepends=('git')
+provides=('coursera-dl')
+conflicts=('coursera-dl')
 source=("git://github.com/coursera-dl/$_gitname.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd $_gitname
-  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 package() {
-  cd $_gitname
-  install -Dm755 ${pkgname%-*} "$pkgdir/usr/bin/${pkgname%-*}"
-  install -dm755 $_gitname "$pkgdir/usr/lib/python3.5/site-packages/$_gitname"
-  install -cm644 $_gitname/*.py "$pkgdir/usr/lib/python3.5/site-packages/$_gitname/"
+  cd "$srcdir/$_gitname"
+  python ./setup.py install -O1 --root="$pkgdir"
+  install -Dm755 coursera-dl "$pkgdir/usr/bin/coursera-dl"
 }
 
 # vim: set ts=2 sw=2 et:
