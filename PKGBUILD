@@ -1,7 +1,7 @@
 # Maintainer: Sven Schneider <archlinux.sandmann@googlemail.com>
 
 pkgname=ompl
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="The Open Motion Planning Library (OMPL) consists of many state-of-the-art sampling-based motion planning algorithms"
 arch=('i686' 'x86_64')
@@ -10,22 +10,26 @@ license=('BSD')
 depends=('boost-libs' 'python' 'python-matplotlib')
 makedepends=('boost' 'cmake')
 optdepends=('py++: Python binding'
-            'ode: Plan using the Open Dynamics Engine')
+            'ode: Plan using the Open Dynamics Engine'
+            'eigen: For an informed sampling technique')
 source=(https://bitbucket.org/ompl/ompl/downloads/${pkgname}-${pkgver}-Source.tar.gz)
-md5sums=('41dc3299459590a2076abfcd468adfe4')
-sha256sums=('9bb6242ca723ab49b31fc5ac343a580cb7e6229bcf876c503c235f4cdd75376b')
-sha384sums=('a3fb34167a049902db9dbf0d196a6fbd9104db21e014b1d052ef9b38f4d7050686aa1dac9645f6f60ad00bbe846b454c')
-sha512sums=('c61e61a59af4b86f72aa90e8f9534805b4e5b69723b3482d3a01df43ce1f6684f82c29d2e96dcaa72bc5da71d25c44c990de48702086383184db09bf395da7c1')
+sha512sums=('ad9331eb79d64ce61132511affc7a713611c55fbbf85c0092fa0ed5a210be3810ce181608f5c278eea56e5227914e24920dc5375e110972f22e6befaf4f199f8')
 
-build() {
+prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}-Source"
+
+  sed -e 's#\#include <boost/random/mersenne_twister.hpp>#\#include <boost/random/mersenne_twister.hpp>\n\#include <boost/type_traits/ice.hpp>#g' -i src/ompl/util/RandomNumbers.h
 
   rm -rf build
   mkdir build
-  cd build
+}
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}-Source/build"
 
   cmake -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DPYTHON_EXEC=/usr/bin/python2 \
     -DCMAKE_CXX_FLAGS=-D_POSIX_VERSION \
     -DOMPL_REGISTRATION=Off ..
@@ -33,9 +37,8 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/${pkgname}-${pkgver}-Source"
+  cd "${srcdir}/${pkgname}-${pkgver}-Source/build"
 
-  cd build
   #make test
 }
 
@@ -48,4 +51,3 @@ package() {
   cd build
   make DESTDIR=${pkgdir} install
 }
-
