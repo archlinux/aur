@@ -25,3 +25,5 @@ package() {
   cd ${srcdir}
   make prefix='/usr' DESTDIR="${pkgdir}/" install
 }
+
+# vim:set ts=2 sw=2 et:
