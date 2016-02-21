@@ -4,6 +4,5 @@ post_install() {
 }
 
 post_remove() {
-    userdel heka &>/dev/null
-    groupdel heka &>/dev/null
+    userdel heka >/dev/null
 }
