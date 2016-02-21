@@ -2,13 +2,13 @@
 # Maintainer: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=mate-tweak
-pkgver=3.5.5
+pkgver=3.5.6
 pkgrel=1
 pkgdesc="Tweak tool for MATE, a fork of mintDesktop"
 arch=('any')
 url="https://bitbucket.org/ubuntu-mate/mate-tweak"
 license=('GPL')
-depends=('gtk3' 'libnotify' 'mate-panel' 'python-configobj' 'python-gobject')
+depends=('gtk3' 'libnotify' 'mate-panel' 'python-configobj' 'python-gobject' 'python-psutil')
 makedepends=('git' 'python-distutils-extra' 'python-setuptools')
 source=("$pkgname-$pkgver::git+https://bitbucket.org/ubuntu-mate/$pkgname.git#tag=$pkgver")
 md5sums=('SKIP')
