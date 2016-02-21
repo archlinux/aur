@@ -133,7 +133,7 @@ package() {
     install -m644 lib/security/unlimited_policy/*.jar lib/security/
     install -Dm644 lib/security/unlimited_policy/README.txt \
                    "$pkgdir"/usr/share/doc/$pkgname/README_-_Java_JCE_Unlimited_Strength.txt
-	rm -r lib/security/unlimited_policy/
+    rm -r lib/security/unlimited_policy/
 
     msg2 "Enabling copy+paste in unsigned applets..."
     # Copy/paste from system clipboard to unsigned Java applets has been disabled since 6u24:
