@@ -2,7 +2,7 @@ pkgname=('heka')
 srcname='heka'
 pkgdesc='Data collection and processing made easy'
 pkgver='0.10.0'
-pkgrel='2'
+pkgrel='3'
 arch=('i686' 'x86_64')
 url="https://github.com/mozilla-services/${srcname}"
 license=('MPL2')
@@ -32,7 +32,7 @@ sha512sums=(
     'SKIP'
 )
 
-install='heka.install'
+install='install.sh'
 
 prepare() {
     cd "${srcdir}/${srcname}"

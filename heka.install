@@ -1,9 +1,0 @@
-post_install() {
-    groupadd --gid 533 heka &>/dev/null
-    useradd --uid 533 --gid 533 --home-dir / --shell /bin/false heka &>/dev/null
-}
-
-post_remove() {
-    getent passwd heka &>/dev/null && userdel heka >/dev/null
-    getent group heka &>/dev/null && groupdel heka >/dev/null
-}
