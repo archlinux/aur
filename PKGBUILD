@@ -38,10 +38,18 @@ options=('!emptydirs')
 install=$pkgname.install
 source=("google-earth-stable_${pkgver}_${_arch}.deb::https://dl.google.com/earth/client/current/google-earth-stable_current_${_arch}.deb"
         'googleearth'
-        'baifaao.cpp')
+        'baifaao.cpp'
+        'Google-Terms-of-Service.html::https://www.google.com/intl/ALL/policies/terms/index.html'
+        'Google-Earth-Additional-Terms-of-Service.html::https://www.google.com/help/terms_maps.html'
+        'Legal-Notices-for-Google-Earth-and-Google-Earth-APIs.html::https://www.google.com/help/legalnotices_maps.html'
+        'Google-Privacy-Policy.html::https://www.google.com/intl/ALL/policies/privacy/index.html')
 md5sums=('b8847cb867bdb3ff892149f0fd68f036'
          'e84f5d51ea3545c131d1794f89f6464a'
-         '598d579a1c3199c77850d86ba78f7b44')
+         '598d579a1c3199c77850d86ba78f7b44'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
 [[ $_arch = amd64 ]] && md5sums[0]='7bbba9d4d64f2a9b38752e259d849bda'
 
 _instdir=/opt/google/earth/free/
@@ -68,19 +76,19 @@ package() {
 
   # Icons
   for i in 16 22 24 32 48 64 128 256; do
-    install -Dm644 "$pkgdir"/$_instdir/product_logo_$i.png "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/google-earth.png
+    install -Dm644 "$pkgdir"/$_instdir/product_logo_$i.png \
+                   "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/google-earth.png
   done
 
-  # Licenses (different countries redirect to different ones)
-  install -d "$pkgdir"/usr/share/licenses/$pkgname/
-  curl -Ls https://www.google.com/intl/ALL/policies/terms/index.html \
-       -o "$pkgdir/usr/share/licenses/$pkgname/Google Terms of Service.html"
-  curl -Ls https://www.google.com/help/terms_maps.html \
-       -o "$pkgdir/usr/share/licenses/$pkgname/Google Earth Additional Terms of Service.html"
-  curl -Ls https://www.google.com/help/legalnotices_maps.html \
-       -o "$pkgdir/usr/share/licenses/$pkgname/Legal Notices for Google Earth and Google Earth APIs.html"
-  curl -Ls https://www.google.com/intl/ALL/policies/privacy/index.html \
-       -o "$pkgdir/usr/share/licenses/$pkgname/Google Privacy Policy.html"
+  # Licenses
+  install -Dm644 'Google-Terms-of-Service.html' \
+      "$pkgdir/usr/share/licenses/$pkgname/Google-Terms-of-Service.html"
+  install -Dm644 'Google-Earth-Additional-Terms-of-Service.html' \
+      "$pkgdir/usr/share/licenses/$pkgname/Google-Earth-Additional-Terms-of-Service.html"
+  install -Dm644 'Legal-Notices-for-Google-Earth-and-Google-Earth-APIs.html' \
+      "$pkgdir/usr/share/licenses/$pkgname/Legal-Notices-for-Google-Earth-and-Google-Earth-APIs.html"
+  install -Dm644 'Google-Privacy-Policy.html' \
+      "$pkgdir/usr/share/licenses/$pkgname/Google-Privacy-Policy.html"
 
   msg2 "Removing the Debian-intended cron job and duplicated images..."
   rm -r "$pkgdir"/etc/cron.daily/ "$pkgdir"/$_instdir/product_logo_*.png
