@@ -1,31 +1,31 @@
-# Maintainer: Robert Knauer <robert@privatdemail.net>
+# Maintainer: Tom Moore <t.moore01@gmail.com>
 
 _rtfm=n # you want documentation? (y / n)
 _other_agents=n # you want agents for other operating systems? (y / n)
 
 pkgname=check_mk
-pkgver=1.2.2p2
+pkgver=1.2.6p16
 pkgrel=1
-pkgdesc="A new general purpose Nagios-plugin for retrieving data."
+pkgdesc="A comprehensive IT monitoring solution in the tradition of Nagios"
 license=('GPL2')
 arch=('any')
-url="http://mathias-kettner.de/check_mk.html"
+url="http://mathias-kettner.com/check_mk.html"
 depends=('python2' 'nagios' 'nagios-plugins' 'xinetd' 'mod_python' 'apache')
 source=(
-  "http://mathias-kettner.de/download/${pkgname}-${pkgver}.tar.gz"
-  'files_shebang.txt'
-  'check_mk_templates.cfg.patch'
-  'index.py.patch'
-  'mkp.patch'
-  'check_mk.patch'
+  "https://mathias-kettner.de/support/${pkgver}/${pkgname}-${pkgver}.cre.tar.gz"
+  #'files_shebang.txt'
+  #'check_mk_templates.cfg.patch'
+  #'index.py.patch'
+  #'mkp.patch'
+  #'check_mk.patch'
 )
 sha256sums=(
-  '3ef638c0de39b015e02e7d60c0d612c0fcf516a7e4766ab836dc205d7330b15f'
-  '4eb6e74e1e0bda172e6e11de5087ed29409f2cc38292e32de131c6c3fd687411'
-  'f0bb81a195347ab0d46c8b34921021200f67f490fbe4be538e5d0c99b21e1400'
-  '7488ab4d5d5e0686f477a14456585015a9d2c9cdb3cdeea383507b70db8a060a'
-  'f68f4593e15010004b3abf1c8fd92638efd34c92e0a93e7810b3a972ce0bfee7'
-  'e577f3549b5f3a39e974aa9ab979c67722f8ef0a8bbb434cf6b1b5ca165fe473'
+  '102461b4ebba1ffa5620f9f2d21328a78183a537cf7bcb91e3e6c6db63bbadf7'
+#  '4eb6e74e1e0bda172e6e11de5087ed29409f2cc38292e32de131c6c3fd687411'
+#  'f0bb81a195347ab0d46c8b34921021200f67f490fbe4be538e5d0c99b21e1400'
+#  '7488ab4d5d5e0686f477a14456585015a9d2c9cdb3cdeea383507b70db8a060a'
+#  'f68f4593e15010004b3abf1c8fd92638efd34c92e0a93e7810b3a972ce0bfee7'
+#  'e577f3549b5f3a39e974aa9ab979c67722f8ef0a8bbb434cf6b1b5ca165fe473'
 )
 install="${pkgname}.install"
 
