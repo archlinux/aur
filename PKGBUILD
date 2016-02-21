@@ -1,6 +1,6 @@
 # Maintainer: Lukas Jirkovsky <l DOT jirkovsky AT gmail DOT com>
 pkgname=3delight
-pkgver=12.0.6
+pkgver=12.0.62
 pkgrel=1
 pkgdesc="Fast, high quality, RenderMan-compliant renderer"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('mesa' 'gtk2' 'libpng12' 'libxxf86vm')
 makedepends=('wget')
 DLAGENTS=('http::/usr/bin/wget --tries=3 --output-document=%o %u')
 source=("http://www.3delight.com/downloads/free/3delight-$pkgver-Linux-x86_64.tar.xz")
-md5sums=('deb20fa86ad09f634b30eb6ab0a5b733')
+md5sums=('e872b066a514d07f3fa75af5cb26d517')
 
 package() {
   cd "$srcdir"/$pkgname-$pkgver-Linux-x86_64
