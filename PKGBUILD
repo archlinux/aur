@@ -2,11 +2,11 @@
 
 pkgname=texlive-garamondx
 pkgver=1.099
-pkgrel=1
+pkgrel=2
 pkgdesc="URW Garamond No8 Adobe Type1 fonts from CTAN (for texlive)"
 arch=('any')
 license=('CUSTOM:alladin')
-url=("http://mirrors.ctan.org/install/fonts/garamondx.tds.zip")
+url=("http://www.ctan.org/tex-archive/fonts/crimson")
 depends=(texlive-core)
 install=$pkgname.install
 source=(http://mirrors.ctan.org/install/fonts/garamondx.tds.zip garamondx.maps)
