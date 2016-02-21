@@ -8,7 +8,7 @@ pkgdesc="This is seafile client for synchronizing your local files with seafile 
 arch=('i686' 'x86_64')
 url="https://github.com/haiwen/seafile-client/"
 license=('Apache')
-depends=('seafile-shared' 'qt4>=4.8.0' 'qtwebkit')
+depends=('seafile-shared' 'qt4>=4.8.0' 'qtwebkit' 'gtk-update-icon-cache')
 makedepends=("cmake" "seafile-shared>=${pkgver}" )
 options=('!libtool' '!emptydirs')
 conflicts=('seafile-client-qt5')
