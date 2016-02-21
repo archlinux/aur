@@ -13,7 +13,7 @@ provides=('streamstudio')
 conflicts=('streamstudio')
 options=('!strip')
 install="streamstudio.install"
-sha1sums=('a7c36c0badab773718e9b0fe1221b3b1cc7740dc'
+sha1sums=('2e1cdde99925cc22be23a2af4c27f0be5345766e'
           '31854b1a0a045efe9eabf3763c9c9b3f9092b523'
           '6797889bd842a5329d62120523f5b51a61eae244')
 
@@ -21,7 +21,7 @@ _platform='64'
 
 if [ "$CARCH" = 'i686' ]; then
   _platform='32'
-  sha1sums[0]='d95601f9a07beee598808f6e2957b8c05737de87'
+  sha1sums[0]='db1eaafa83c732b4a18df2dfcdfa10a9c7c0c48b'
 fi
 
 source=("https://streamstudio.me/StreamStudio/streamstudio-${_platform}.zip"
