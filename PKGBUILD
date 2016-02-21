@@ -2,7 +2,7 @@
 # Contributor: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 
 pkgname=python-colorlog
-pkgver=2.6.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="Log formatting with colors"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(python)
 makedepends=(python-setuptools)
 conflicts=(python-colorlog-git)
 source=("http://pypi.python.org/packages/source/c/colorlog/colorlog-${pkgver}.tar.gz")
-sha1sums=('8a05deaa52fc8233a9f0ea013a23a346feef41b7')
+sha1sums=('ba776d3fdec872a40070e0c40312022368f7ab2a')
 
 package() {
   cd "${srcdir}/colorlog-${pkgver}"
