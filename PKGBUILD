@@ -1,12 +1,13 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky AT gmail.com>
 pkgname=rawtherapee-git
-pkgver=2971.11d382d
+pkgver=3314.0b32f12
 pkgrel=1
 pkgdesc="RAW photo editor"
 arch=('i686' 'x86_64')
 url="http://www.rawtherapee.com/"
 license=('GPL3')
 depends=('fftw' 'gtkmm' 'libcanberra' 'libiptcdata' 'lcms2' 'desktop-file-utils' 'hicolor-icon-theme')
+optdepends=('gtk-engines: workaround theme bug under GNOME')
 makedepends=('cmake' 'git')
 provides=('rawtherapee')
 conflicts=('rawtherapee')
@@ -20,15 +21,16 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/rawtherapee"
+  mkdir -p "$srcdir/rawtherapee-build"
+  cd "$srcdir/rawtherapee-build"
 
-  cmake . \
+  cmake ../rawtherapee \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release
   make
 }
 
 package() {
-  cd "$srcdir/rawtherapee"
+  cd "$srcdir/rawtherapee-build"
   make DESTDIR="$pkgdir/" install
 }
