@@ -1,0 +1,7 @@
+*.pkg.*
+spirv.h
+spirv.hpp
+spirv.hpp11
+SPIRV.html
+Khronos_Dec14.svg
+SPIR_Nov14.svg
