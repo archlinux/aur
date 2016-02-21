@@ -104,7 +104,7 @@ package() {
     done
 
     # Fix .desktop paths
-    sed -e "s|Exec=|&$_jvmdir/jre/bin/|" \
+    sed -e "s|Exec=|Exec=$_jvmdir/jre/bin/|" \
         -e "s|.png|-$_jname.png|" \
     -i jre/lib/desktop/applications/*
 
