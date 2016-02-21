@@ -7,7 +7,7 @@
 
 _pkgname=archey3
 pkgname=${_pkgname}-git
-pkgver=161
+pkgver=165
 pkgrel=1
 pkgdesc="Python script to display system infomation alongside the Arch Linux logo."
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
 )
 conflicts=('archey' 'archey3')
 provides=('archey')
-source="git+https://github.com/bluepeppers/archey3.git"
+source=("git+https://github.com/bluepeppers/archey3.git")
 md5sums=('SKIP')
 
 pkgver() {
