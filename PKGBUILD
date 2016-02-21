@@ -3,9 +3,9 @@
 # Report all package issues to `https://github.com/SShrike/pkgbuilds`
 
 pkgname=gtkd
-pkgver=3.1.4
+pkgver=3.2.2
 pkgrel=1
-pkgdesc="A D binding and OO wrapper of GTK+"
+pkgdesc="D bindings for GTK+"
 arch=('i686' 'x86_64')
 url="http://gtkd.org"
 options=('staticlibs')
@@ -14,7 +14,7 @@ depends=('gtk3')
 makedepends=('dmd')
 optdepends=('pango' 'atk' 'gdk-pixbuf2' 'gtksourceview3' 'gstreamer')
 source=("http://gtkd.org/Downloads/sources/GtkD-${pkgver}.zip")
-md5sums=('e0897c4e12bb5f9fac6986c2131e2d86')
+md5sums=('2940d5f0b52f6388db8d4a4cca11a73a')
 
 build() {
   cd ${srcdir}
