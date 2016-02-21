@@ -12,11 +12,11 @@ depends=('xorg-font-utils' 'fontconfig')
 url='http://larsenwork.com/monoid/'
 source=(
   'https://cdn.rawgit.com/larsenwork/monoid/f16ff9058bb97eafd78d61d415dedefe2d092562/Monoid.zip'
-  'https://raw.githubusercontent.com/larsenwork/monoid/master/Readme.md'
+  'https://raw.githubusercontent.com/larsenwork/monoid/0abc451aaaa650198c065cd97aea4e7895931227/Readme.md'
 )
 md5sums=(
   '5d9163c0096077142e8d7f67d0ecc479'
-  'cb0b56ae7970def29f89e0aa2d9258ed'
+  '581d685bd80e176ca0936da15b1f3342'
 )
 install="${pkgname}.install"
 
