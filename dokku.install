@@ -42,6 +42,10 @@ post_install() {
 "
 }
 
+post_upgrade() {
+  post_install
+}
+
 pre_remove() {
   userdel dokku &>/dev/null || true
   groupdel dokku &>/dev/null || true
