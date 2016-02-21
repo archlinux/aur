@@ -47,11 +47,6 @@ else
     echo "Package creation failure"
     exit 2
   fi
-  NAMCAP=`namcap -m *.xz | grep -v bash`
-  if [ ! "$NAMCAP" == "" ]; then
-    echo "Namcap failed build: $NAMCAP"
-    exit 2
-  fi
   mksrcinfo
   echo "$SCRIPT_HOME/PKGBUILD updated for TWS ${VER}"
   exit 1
