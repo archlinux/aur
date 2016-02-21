@@ -6,18 +6,18 @@ pkgver=7.4.0
 pkgrel=2
 pkgdesc="System information tool like hardinfo, sysinfo"
 arch=('i686' 'x86_64')
-url="http://i-nex.linux.pl/"
+url="http://i-nex.linux.pl"
 license=('LGPL3')
-depends=('gambas3-runtime' 
-	 'gambas3-gb-image' 
-	 'gambas3-gb-form'
+depends=('gambas3-runtime'
+         'gambas3-gb-image'
+         'gambas3-gb-form'
          'gambas3-gb-desktop'
          'gambas3-gb-qt4'
          'gambas3-gb-desktop-x11'
-         'python2' 
+         'python2'
          'libcpuid-git'
-         'xorg-server-utils' 
-         'lsb-release' 
+         'xorg-server-utils'
+         'lsb-release'
          'curl')
 makedepends=('gambas3-devel' 'gcc' 'imagemagick')
 source=("https://github.com/eloaders/I-Nex/archive/${pkgver}.tar.gz")
@@ -25,35 +25,35 @@ sha256sums=('f7eb0a97d140ea85dc4e04972c5a34210c5a486310550ddc7d07cab5570dbbbe')
 provides=('i-nex-bzr' 'i-nex-dev' 'i-nex-git')
 conflicts=('i-nex-bzr' 'i-nex-dev' 'i-nex-git')
 backup=('etc/i-nex/Database/i2c/devices.json'
-	'etc/i-nex/Database/A6.json'
-	'etc/i-nex/Database/amd.json'
-	'etc/i-nex/Database/atom.json'
-	'etc/i-nex/Database/i3.json'
-	'etc/i-nex/Database/i5.json'
-	'etc/i-nex/Database/i7.json'
-	'etc/i-nex/Database/intel_Core_2_Duo.json'
-	'etc/i-nex/Database/intel.json'
-	'etc/i-nex/Database/Opteron.json'
-	'etc/i-nex/Database/Xeon.json')
+        'etc/i-nex/Database/A6.json'
+        'etc/i-nex/Database/amd.json'
+        'etc/i-nex/Database/atom.json'
+        'etc/i-nex/Database/i3.json'
+        'etc/i-nex/Database/i5.json'
+        'etc/i-nex/Database/i7.json'
+        'etc/i-nex/Database/intel_Core_2_Duo.json'
+        'etc/i-nex/Database/intel.json'
+        'etc/i-nex/Database/Opteron.json'
+        'etc/i-nex/Database/Xeon.json')
 prepare() {
-  cd "${srcdir}/I-Nex-${pkgver}"
-  sed -i 's|python3$|python2|' pastebinit
-  # make it dynamic
-  sed -i -e 's|^STATIC.*|STATIC = false|' i-nex.mk
-  sed -i -e 's|^UDEV_RULES_DIR.*|UDEV_RULES_DIR = /usr/lib/udev/rules.d|' i-nex.mk
-  cd "I-Nex"
-  autoreconf -i
+    cd "${srcdir}/I-Nex-${pkgver}"
+    sed -i 's|python3$|python2|' pastebinit
+    # make it dynamic
+    sed -i -e 's|^STATIC.*|STATIC = false|' i-nex.mk
+    sed -i -e 's|^UDEV_RULES_DIR.*|UDEV_RULES_DIR = /usr/lib/udev/rules.d|' i-nex.mk
+    cd "I-Nex"
+    autoreconf -i
 }
- 
+
 build() {
-  cd "${srcdir}/I-Nex-${pkgver}"
-  cd "I-Nex"
-  ./configure --prefix=/usr
-  cd ..
-  make
+    cd "${srcdir}/I-Nex-${pkgver}"
+    cd "I-Nex"
+    ./configure --prefix=/usr
+    cd ..
+    make
 }
- 
+
 package() {
-  cd "${srcdir}/I-Nex-${pkgver}"
-  make DESTDIR="$pkgdir/" install
+    cd "${srcdir}/I-Nex-${pkgver}"
+    make DESTDIR="${pkgdir}/" install
 }
