@@ -20,7 +20,7 @@ noextract=("$pkgname.gem")
 
 pkgver() {
   cd 'confmacs'
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  echo r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
