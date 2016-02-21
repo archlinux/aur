@@ -16,9 +16,9 @@ license=('custom:Oracle BSD')
 optdepends=("java-runtime>=$_major: Run the examples"
             "java-environment>=$_major: Compile and run the examples")
 options=('!strip')
-source=("http://download.java.net/jdk$_major/archive/$_build/binaries/javafx-${_pkgver}_linux-x86_demo.zip"
+source=("http://www.java.net/download/java/jdk$_major/archive/$_build/binaries/javafx-${_pkgver}_linux-x86_demo.zip"
         'OTN-Early-Adopter-License-Terms.txt')
-md5sums=('491bca0c2d10783264e3174d135805ef'
+md5sums=('9832c2106d214223099560c84716d710'
          'f09947a67691a2d78d20a3885889981c')
 
 package() {
