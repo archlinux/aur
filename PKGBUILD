@@ -1,11 +1,11 @@
 pkgname=postgresql-debversion
 pkgver=1.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Debian version number type for PostgreSQL"
 arch=('i686' 'x86_64')
 url="https://packages.debian.org/source/sid/postgresql-debversion"
 license=('GPL3')
-depends=('postgresql>9.4' 'postgresql<9.5' 'apt')
+depends=('postgresql>9.5' 'postgresql<9.6' 'apt')
 source=("http://httpredir.debian.org/debian/pool/main/p/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz")
 sha256sums=('baa7f0eeda937a6fd9024408965739dc390c20f86ad077d915ecaffd14664229')
 
