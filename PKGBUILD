@@ -2,20 +2,21 @@
 # Contributor: yetist <yetist@gmail.com>
 
 pkgname=lunar-date
-pkgver=2.4.0
-pkgrel=2
+pkgver=2.4.2
+pkgrel=1
 pkgdesc="Chinese lunar date library."
 arch=("i686" "x86_64")
 url="http://code.google.com/p/liblunar/"
 license=('GPL2')
 depends=('glib2>=2.12')
-makedepends=('intltool')
-source=("http://liblunar.googlecode.com/files/$pkgname-$pkgver.tar.gz")
-md5sums=('fe84d67b5a6d5a99927c80855c89ebd9')
+makedepends=('intltool' 'gtk-doc')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/yetist/$pkgname/archive/v$pkgver.tar.gz")
+md5sums=('94622dfaddbf68722d772a85902e2518')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
+  ./autogen.sh
   ./configure --prefix=/usr
   make || return 1
 }
