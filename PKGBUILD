@@ -29,7 +29,8 @@ build() {
 
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=Release \
+    -DWITH_Octave=OFF # disable octave, as it breaks build
 
   make
 }
