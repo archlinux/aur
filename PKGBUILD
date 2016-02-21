@@ -3,18 +3,18 @@
 
 pkgname=lxappearance-obconf-gtk3
 _pkgname=lxappearance-obconf
-pkgver=0.2.2
-pkgrel=3
+pkgver=0.2.3
+pkgrel=1
 pkgdesc='Plugin for LXAppearance to configure Openbox (GTK+ 3 version)'
 arch=('i686' 'x86_64')
 license=('GPL2')
 url='http://lxde.org/'
 groups=('lxde-gtk3')
-depends=('lxappearance-gtk3' 'openbox' 'libsm' 'libobrender.so')
+depends=('lxappearance-gtk3' 'openbox' 'libobrender.so')
 makedepends=('intltool')
 conflicts=($_pkgname)
 source=(http://downloads.sourceforge.net/lxde/$_pkgname-$pkgver.tar.xz)
-md5sums=('d958ac5514ba1707429ff6794ab59abf')
+md5sums=('ae0076d489aa786f5d573f7ff592a4ab')
 
 prepare() {
   cd $_pkgname-$pkgver
