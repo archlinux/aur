@@ -12,13 +12,13 @@ pkgbase = java32-common
 
 pkgname = java32-runtime-common
 	pkgdesc = Common files for 32-bit Java Runtime Environments
-	url = https://www.archlinux.org/packages/extra/any/java32-runtime-common/
+	url = https://www.archlinux.org/packages/extra/any/java-runtime-common/
 	install = java32-runtime-common.install
 	backup = etc/profile.d/jre32.sh
 	backup = etc/profile.d/jre32.csh
 
 pkgname = java32-environment-common
 	pkgdesc = Common files for 32-bit Java Development Kits
-	url = https://www.archlinux.org/packages/extra/any/java32-environment-common/
+	url = https://www.archlinux.org/packages/extra/any/java-environment-common/
 	depends = java32-runtime-common
 

@@ -17,7 +17,7 @@ sha256sums=('cc36abf878c488f5426a6ad5584874c0d7af53d4b6b0ff4d1fc9e28d34285278'
 
 package_java32-runtime-common() {
   pkgdesc='Common files for 32-bit Java Runtime Environments'
-  url="https://www.archlinux.org/packages/extra/any/${pkgname}/"
+  url="https://www.archlinux.org/packages/extra/any/java-runtime-common/"
   backup=('etc/profile.d/jre32.sh'
           'etc/profile.d/jre32.csh')
   install=${pkgname}.install
@@ -40,7 +40,7 @@ package_java32-runtime-common() {
 
 package_java32-environment-common() {
   pkgdesc='Common files for 32-bit Java Development Kits'
-  url="https://www.archlinux.org/packages/extra/any/${pkgname}/"
+  url="https://www.archlinux.org/packages/extra/any/java-environment-common/"
   depends=('java32-runtime-common')
 
   install -d "${pkgdir}/usr/bin/"
