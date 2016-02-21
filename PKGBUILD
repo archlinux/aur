@@ -11,7 +11,7 @@ depends=('ffmpeg' 'icu' 'jasper' 'libexif' 'libmng' 'libwebp' 'libxkbcommon-x11'
 	 'gtk-update-icon-cache')
 makedepends=('git' 'patch' 'libunity' 'libappindicator-gtk2')
 source=("tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v$pkgver"
-	"http://download.qt-project.org/official_releases/qt/${_qtver%.*}/$_qtver/single/qt-everywhere-opensource-src-$_qtver.tar.xz"
+	"http://download.qt.io/official_releases/qt/${_qtver%.*}/$_qtver/single/qt-everywhere-opensource-src-$_qtver.tar.xz"
 	"breakpad::git+https://chromium.googlesource.com/breakpad/breakpad"
 	"breakpad-lss::git+https://chromium.googlesource.com/linux-syscall-support"
 	"telegramdesktop.desktop"
