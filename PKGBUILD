@@ -3,14 +3,16 @@
 pkgname='vkcube-git'
 pkgdesc='Demo cube app for Vulkan'
 pkgver=r34.55ca5fb
-pkgrel=1
+pkgrel=2
 url='https://github.com/krh/vkcube'
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('vulkan-icd-loader' 'vulkan-i965-git' 'libpng' 'mesa')
-source=('git+https://github.com/krh/vkcube')
-sha1sums=('SKIP')
-makedepends=('git')
+depends=('vulkan-icd-loader' 'libpng' 'mesa')
+source=('git+https://github.com/krh/vkcube'
+  'fedora-fixes.diff')
+sha1sums=('SKIP'
+  '759aead188d3e45c7d2284280c1b98fd108f2dc1')
+makedepends=('git' 'vulkan-i965-git')
 
 pkgver() {
   cd "${srcdir}"/vkcube
@@ -20,12 +22,13 @@ pkgver() {
 prepare() {
   cd "${srcdir}"/vkcube
 
+  patch -p1 < ../fedora-fixes.diff
+
   autoreconf -f -i -v
   ./configure --prefix=/usr
-
+	
   # Temporary fix until Intel vulkan driver moves to /usr/
   sed -i.bak 's|DEFAULT_INCLUDES = -I.|DEFAULT_INCLUDES = -I. -I/opt/mesa-vulkan/include|g' Makefile
-  sed -i.bak 's|-lvulkan-1|-lvulkan -L/opt/mesa-vulkan/lib -lvulkan_intel|g' Makefile
 }
 
 build() {
@@ -37,16 +40,7 @@ build() {
 package() {
   cd "${srcdir}"/vkcube
 
-  install -dm755 "${pkgdir}"/opt/vkcube/bin
-  install  -m755 vkcube "${pkgdir}"/opt/vkcube/bin/vkcube
-
-  # Temporary fix until Intel vulkan driver moves to /usr/
-  # Since vulkan-i965-git libraries conflicts with mesa libraries we cannot add vulkan to library path system wide
-  # # install -dm755 "${pkgdir}"/etc/ld.so.conf.d  
-  # # echo '/opt/mesa-vulkan/lib' > "${pkgdir}"/etc/ld.so.conf.d/vkcube.conf
-
   install -dm755 "${pkgdir}"/usr/bin
-  echo 'env LD_LIBRARY_PATH=/opt/mesa-vulkan/lib:$LD_LYBRARY_PATH /opt/vkcube/bin/vkcube' > "${pkgdir}"/usr/bin/vkcube
-  chmod 755 "${pkgdir}"/usr/bin/vkcube 
+  install  -m755 vkcube "${pkgdir}"/usr/bin/vkcube
 }
 
