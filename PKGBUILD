@@ -3,26 +3,31 @@
 
 pkgbase=vbam
 pkgname=('vbam-sdl' 'vbam-gtk' 'vbam-wx')
-pkgver=2.0.0b1
-pkgrel=3
+pkgver=2.0.0b2
+pkgrel=1
 pkgdesc='Nintendo GameBoy Advance emulator'
 arch=('i686' 'x86_64')
 url='http://vba-m.com'
 license=('GPL2')
 depends=('sdl' 'sfml' 'zip')
-makedepends=('cmake' 'desktop-file-utils' 'freetype2' 'imagemagick' 'glew'
-             'gtkglextmm' 'libjpeg' 'libpng' 'libsndfile' 'libxrandr'
+makedepends=('cmake' 'desktop-file-utils' 'freetype2' 'git' 'glew' 'gtkglextmm'
+             'imagemagick' 'libjpeg' 'libpng' 'libsndfile' 'libxrandr'
              'openal' 'subversion' 'wxgtk')
 makedepends_i686=('nasm')
 options=('!emptydirs')
-source=("vbam::svn+http://svn.code.sf.net/p/vbam/code/trunk#revision=1465"
+source=('vbam::git+https://github.com/visualboyadvance-m/visualboyadvance-m.git#tag=VBA-M_Beta_2'
         'cxx11-fixes.patch')
 sha256sums=('SKIP'
             '610d770bfcea8da990cddc33c6360b572bc20683b216ab1e6f23424e9d494417')
 
 prepare() {
   cd vbam
+
   patch -Np1 -i ../cxx11-fixes.patch
+
+  if [[ -d build ]]; then
+    rm -rf build
+  fi
   mkdir build
 }
 
@@ -44,6 +49,7 @@ build() {
   fi
 
   CXXFLAGS+=' -std=c++11 -fpermissive'
+
   cmake .. ${_cmakeargs}
   make
 }
@@ -71,13 +77,14 @@ install='vbam-gtk.install'
 }
 
 package_vbam-wx() {
-depends+=('wxgtk')
+depends+=('desktop-file-utils' 'wxgtk')
 conflicts=('vbam-gtk')
 install='vbam-wx.install'
 
   cd vbam/build
 
   make DESTDIR="${pkgdir}" install
+  install -m 755 visualboyadvance-m "${pkgdir}"/usr/bin/
   rm -rf "${pkgdir}"/{etc,usr/{bin/vbam,share/man/man1/vbam.1}}
   find "${pkgdir}" -type f -regex .*gvbam.* -exec rm {} +
 }
