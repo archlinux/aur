@@ -13,7 +13,7 @@ post_install() {
             dokku
 
   chown dokku:dokku /var/dokku/
-  mkdir /var/dokku/.ssh/
+  mkdir -p /var/dokku/.ssh/
   touch /var/dokku/.ssh/authorized_keys
   chown -R dokku:dokku /var/dokku/.ssh/
   gpasswd -a dokku docker > /dev/null
