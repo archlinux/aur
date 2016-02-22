@@ -1,14 +1,14 @@
 # Maintener: Peter Karoly "Stone" JUHASZ <stone@midway.hu>
 pkgname=rinetd
 pkgver=0.62
-pkgrel=5
+pkgrel=6
 pkgdesc="internet redirection server"
 arch=('i686' 'x86_64')
 url="http://www.boutell.com/rinetd"
 license=('GPL')
 source=(http://www.boutell.com/rinetd/http/$pkgname.tar.gz rinetd.service)
 md5sums=('28c78bac648971724c46f1a921154c4f'
-         '78ccfced2c67a274f2def601fddb15cd')
+         'af12522780774cabdb3c9797aa0b55ab')
 
 build() {
   cd $srcdir/$pkgname
