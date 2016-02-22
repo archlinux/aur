@@ -1,7 +1,7 @@
 # Maintainer: Tobias Brox <t-arch@tobixen.no>
 pkgname=thrash-protect
 pkgver=0.11.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Simple-Stupid user-space program protecting a linux host from thrashing."
 url="https://github.com/tobixen/thrash-protect"
 arch=('any')
@@ -14,6 +14,7 @@ package() {
   mkdir -p "$pkgdir/usr/bin/"
   ln -s "$pkgdir/usr/bin/" "$pkgdir/usr/sbin"
   cd "$srcdir/$pkgname-$pkgver/"
+  rm "$pkgdir/usr/sbin"
   make PREFIX=$pkgdir/usr install
 }
 
