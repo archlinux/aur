@@ -15,12 +15,12 @@ source=('numix-themes-osx-git::git+https://github.com/samhorlbeck/Numix-OSX.git'
 md5sums=('SKIP')
 
 pkgver() {
-  cd numix-themes
+  cd numix-themes-osx-git
   printf "1.%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd numix-themes
+  cd numix-themes-osx-git
   install -dm 755 "${pkgdir}"/usr/share/themes/Numix-OSX
   rm -rf .git .gitignore
   cp -dr --no-preserve='ownership' * "${pkgdir}"/usr/share/themes/Numix-OSX/
