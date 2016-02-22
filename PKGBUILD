@@ -15,7 +15,7 @@ groups=('ninjaos')
 depends=('mkinitcpio' 'syslinux' 'parted' 'dosfstools' 'util-linux')
 optdepends=('hdparm: ATA Security erase command, future feature')
 install="${pkgname}.install"
-source=("${pkgname}.${pkgver}.tar.gz")
+source=(http://ninjaos.org/downloads/"${pkgname}.${pkgver}.tar.gz")
 sha256sums=('d405fbeb0a62442996fe3ae5f2d971498d8d86da4148146d7e13c8ab158506f3')
 package() {
     cd "${srcdir}/${pkgname}.${pkgver}"
