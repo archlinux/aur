@@ -10,7 +10,7 @@ url="http://vocp.psychogenic.net/index.php?mode=function"
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('mgetty-vgetty-git' 'perl-audio-dsp' 'perl-crypt-blowfish' 'perl-crypt-cbc' 'perl-mime-tools' 'perl-tk' 'perl-xml-mini' 'perl-modem-vgetty' 'lame' )
-conflicts=('mgetty' 'vocp')
+conflicts=('vocp')
 provides=('vocp')
 makedepends=('make' 'perl' 'git')
 install='vocp.install'
