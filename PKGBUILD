@@ -5,7 +5,7 @@
 #pkgbase=opencv
 pkgname=opencv-docs
 _realname=opencv
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Open Source Computer Vision Library docs"
 arch=('any')
@@ -15,8 +15,8 @@ depends=('')
 #makedepends=('cmake'  'python2-sphinx' 'texlive-bin' 'texlive-latexextra' 'texlive-fontsextra')
 makedepends=('cmake' 'python2-numpy' 'doxygen')
 
-source=("http://downloads.sourceforge.net/opencvlibrary/$_realname-$pkgver.zip")
-md5sums=('09004c275d8092cbdf5b61675cecd399')
+source=("http://downloads.sourceforge.net/opencvlibrary/opencv-unix/$pkgver/$_realname-$pkgver.zip")
+md5sums=('6082ee2124d4066581a7386972bfd52a')
 
 _cmakeopts=(
             '-D BUILD_DOCS=ON'
@@ -35,7 +35,7 @@ build() {
 package() {
   cd "$srcdir/$_realname-$pkgver"
   mkdir -p "$pkgdir/usr/share/doc/opencv/html"
-  
+
   cp -r doc/doxygen/html/* "$pkgdir/usr/share/doc/opencv/html/"
   #cp  "$srcdir/$_realname-$pkgver"/doc/*.pdf "$pkgdir/usr/share/doc/opencv/"
 
