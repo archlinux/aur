@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-lts
 _pkgbasever=4.1-gnu
-_pkgver=4.1.17-gnu
+_pkgver=4.1.18-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -59,7 +59,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0008-USB-armory-support.patch')
 sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
-            'e98e671651b038bf49079ba3bd34761a0da2c397a314b606e5150eb81719bd8d'
+            'fa4fb4382e95a85778e95f5e5fd8319052b8cae85297bd9cbc51409aeeabe19d'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -67,14 +67,14 @@ sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '2c0a885ad357f33a2798d75fede26ba21f45f2771eeee9ab8d1b9dde9318176d'
-            'f0bc5cb42ce335d5757ef38a2e7cecd0da5cc0271b70874afe78d8bff9f5557c'
+            '235a8cb8f79a38cfea0e74984b2b46b1921709a37c58f43db9dc837abcf4a469'
+            '0fbf6fc9105593aa821a79b653d57d1751f57a0169927765edee626ccdd3be3d'
             'e64cd7bf23e42a0db85e2d48a5af4fefacb26de5f517da8f268b18d1fc319769'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '38cf6bdf70dc070ff0b785937d99347bb91f8531ea2bcca50283c8923a184c6d'
             '3d3266bd082321dccf429cc2200d1a4d870d2031546f9f591b6dfbb698294808'
-            '0e232ac3fb70c0ceb9f9f1ede9cdc0f786eb8ba732f9404c903dd81db89fb27e'
+            'cca6aeba32f6bdf8f7f41396e4251a59b425c384ca207c876ea32da76a465304'
             'SKIP'
             '203b07cc241f2374d1e18583fc9940cc69da134f992bff65a8b376c717aa7ea7'
             '28fb8c937c2a0dc824ea755efba26ac5a4555f9a97d79f4e31f24b23c5eae59c'
