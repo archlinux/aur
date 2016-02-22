@@ -10,7 +10,6 @@ pkgver=${_major}u${_minor}
 pkgrel=1
 pkgdesc="Oracle Java Development Kit (v8) for ARMv7, ARMv6 and ARMv8 (64-bit)"
 arch=('armv6h' 'armv7h' 'aarch64')
-_carch=arm
 url=http://www.oracle.com/technetwork/java/javase/downloads/index.html
 license=('custom')
 depends=('ca-certificates-java' 'java-environment-common' 'java-runtime-common')
@@ -23,7 +22,7 @@ DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense
 _jname=${_pkgname}${_major}
 _jvmdir=/usr/lib/jvm/java-$_major-$_pkgname
 
-backup=("etc/java-$_jname/$_carch/jvm.cfg"
+backup=("etc/java-$_jname/arm/jvm.cfg"
         "etc/java-$_jname/images/cursors/cursors.properties"
         "etc/java-$_jname/management/jmxremote.access"
         "etc/java-$_jname/management/management.properties"
@@ -37,32 +36,25 @@ backup=("etc/java-$_jname/$_carch/jvm.cfg"
         "etc/java-$_jname/psfont.properties.ja"
         "etc/java-$_jname/psfontj2d.properties"
         "etc/java-$_jname/sound.properties")
+[[ $CARCH = aarch64 ]] && backup[0]="etc/java-$_jname/aarch64/jvm.cfg"
 options=('!strip') # JDK debug-symbols
-install=$_pkgname.install
-
+install=$pkgname.install
 source=("http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
         "jconsole-$_jname.desktop"
         "jmc-$_jname.desktop"
         "jvisualvm-$_jname.desktop"
         "policytool-$_jname.desktop")
-
 source_armv6h=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-arm32-vfp-hflt.tar.gz")
-
 source_armv7h=("$source_armv6h")
 source_aarch64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-arm64-vfp-hflt.tar.gz")
-
-
 md5sums=('b3c7031bc65c28c2340302065e7d00d3'
-		 'b4f0da18e03f7a9623cb073b65dde6c1'
-		 '8f0ebcead2aecad67fbd12ef8ced1503'
-		 'a4a21b064ff9f3c3f3fdb95edf5ac6f3'
-		 '98245ddb13914a74f0cc5a028fffddca')
-
-md5sums_armv8h=('400781c8919efc64be3c9749eee0588d')
-
-md5sums_armv6h=('841b00797123f309738fece4b6440fa1')
-
-md5sums_armv7h=("$md5sums_armv6h")
+         'b4f0da18e03f7a9623cb073b65dde6c1'
+         '8f0ebcead2aecad67fbd12ef8ced1503'
+         'a4a21b064ff9f3c3f3fdb95edf5ac6f3'
+         '98245ddb13914a74f0cc5a028fffddca')
+md5sums_armv6h=('d2fe8f45b4a5b0c780153492ce4b568e')
+md5sums_armv7h=('d2fe8f45b4a5b0c780153492ce4b568e')
+md5sums_aarch64=('38abd546a0ada36ae0c6f2ddf019aa78')
 
 package() {
     cd ${_pkgname}1.${_major}.0_${_minor}
@@ -142,27 +134,3 @@ package() {
         permission java.awt.AWTPermission \"accessClipboard\";" \
     -i "$pkgdir"/etc/java-$_jname/security/java.policy
 }
-md5sums=('b3c7031bc65c28c2340302065e7d00d3'
-         'b4f0da18e03f7a9623cb073b65dde6c1'
-         '8f0ebcead2aecad67fbd12ef8ced1503'
-         'a4a21b064ff9f3c3f3fdb95edf5ac6f3'
-         '98245ddb13914a74f0cc5a028fffddca')
-md5sums_armv6h=('609e9d089c970d38969a30fc8ef50d39')
-md5sums_armv7h=('609e9d089c970d38969a30fc8ef50d39')
-md5sums_aarch64=('ce3cee4a30b5d0a181afbe4fef242bae')
-md5sums=('b3c7031bc65c28c2340302065e7d00d3'
-         'b4f0da18e03f7a9623cb073b65dde6c1'
-         '8f0ebcead2aecad67fbd12ef8ced1503'
-         'a4a21b064ff9f3c3f3fdb95edf5ac6f3'
-         '98245ddb13914a74f0cc5a028fffddca')
-md5sums_armv6h=('609e9d089c970d38969a30fc8ef50d39')
-md5sums_armv7h=('609e9d089c970d38969a30fc8ef50d39')
-md5sums_aarch64=('ce3cee4a30b5d0a181afbe4fef242bae')
-md5sums=('b3c7031bc65c28c2340302065e7d00d3'
-         'b4f0da18e03f7a9623cb073b65dde6c1'
-         '8f0ebcead2aecad67fbd12ef8ced1503'
-         'a4a21b064ff9f3c3f3fdb95edf5ac6f3'
-         '98245ddb13914a74f0cc5a028fffddca')
-md5sums_armv6h=('d2fe8f45b4a5b0c780153492ce4b568e')
-md5sums_armv7h=('d2fe8f45b4a5b0c780153492ce4b568e')
-md5sums_aarch64=('38abd546a0ada36ae0c6f2ddf019aa78')
