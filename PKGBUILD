@@ -10,8 +10,8 @@ url='https://launchpad.net/pantheon-mail'
 license=('LGPL2.1')
 groups=('pantheon-unstable')
 depends=('desktop-file-utils' 'granite-bzr' 'gtksourceview3' 'libpeas'
-  'zeitgeist')
-makedepends=('bzr' 'cmake' 'gobject-introspection' 'vala' 'vte3' 'webkitgtk')
+  'zeitgeist' 'gmime')
+makedepends=('gmime' 'bzr' 'cmake' 'gobject-introspection' 'vala' 'vte3' 'webkitgtk')
 optdepends=('webkitgtk: Browser Preview extension')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
