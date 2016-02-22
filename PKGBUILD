@@ -3,15 +3,16 @@
 _python=python2
 _pkgname=python-efl
 pkgname=$_python-efl
-pkgver=1.16.0
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="${_python^} bindings for the Enlightenment Foundation Libraries"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('LGPL3' 'GPL3')
-depends=('elementary' "$_python-dbus")
+depends=('elementary-git' "$_python-dbus")
+#depends=('elementary' "$_python-dbus")  to be restored once main packages are updated
 source=("http://download.enlightenment.org/rel/bindings/python/$_pkgname-$pkgver.tar.xz")
-sha256sums=('3418ca7dc38f07bf610b9dcc7ce356bc8c45247a2100679bf840f640e2744e90')
+sha256sums=('9ea0fe0938bd4a970206b2b18f46f4d2a4fd1994e9b5f84af2d5f9fa98739179')
 
 build() {
   cd $_pkgname-$pkgver
