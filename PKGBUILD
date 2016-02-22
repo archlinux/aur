@@ -2,7 +2,7 @@
 
 pkgname=libnx
 pkgver=2.9.512
-pkgrel=1
+pkgrel=2
 pkgdesc='Nanex NxCore tape processing library'
 arch=('x86_64')
 url="http://nanex.net"
@@ -10,8 +10,8 @@ license=('custom')
 depends=('gcc-libs')
 
 source=('LICENSE'
-        'http://www.nanex.net/downloads/Linux/BETA/20151109.libnx.so.testing.tgz'
-	'http://www.nanex.net/downloads/Linux/BETA/20141216.NxCoreAPIDU.tgz')
+        'http://www.nanex.net/downloads/Linux/BETA/OLD/20151109.libnx.so.testing.tgz'
+	'http://www.nanex.net/downloads/Linux/BETA/OLD/20141216.NxCoreAPIDU.tgz')
 md5sums=('84bf6d4d8cf9e6597e8751dbe4f788f3'
          '674b616cae4bc0f1bf15690b0a119f18'
          '3bd43ad96641781079ad80e50197d876')
