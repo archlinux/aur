@@ -9,7 +9,7 @@ pkgdesc="VOCP is a complete messaging solution for voice modems, with voicemail,
 url="http://vocp.psychogenic.net/index.php?mode=function"
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('mgetty-vgetty' 'perl-audio-dsp' 'perl-crypt-blowfish' 'perl-crypt-cbc' 'perl-mime-tools' 'perl-tk' 'perl-xml-mini' 'perl-modem-vgetty' 'lame' )
+depends=('mgetty-vgetty-git' 'perl-audio-dsp' 'perl-crypt-blowfish' 'perl-crypt-cbc' 'perl-mime-tools' 'perl-tk' 'perl-xml-mini' 'perl-modem-vgetty' 'lame' )
 conflicts=('mgetty' 'vocp')
 provides=('vocp')
 makedepends=('make' 'perl' 'git')
