@@ -4,8 +4,8 @@
 
 pkgname=ecl-unicode
 _pkgname=ecl
-pkgver=13.5.1
-_pkgver=13.5
+pkgver=15.3.7
+_pkgver=15.3
 pkgrel=1
 pkgdesc="Embeddable Common Lisp (with unicode support)"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ provides=('common-lisp' 'ecl' 'cl-asdf')
 conflicts=('ecl')
 options=('!makeflags')
 source=("http://downloads.sourceforge.net/project/${_pkgname}s/${_pkgname}s/${_pkgver}/$_pkgname-${pkgver}.tgz")
-sha256sums=('f91c57ce065fe9748bc8104e191e4b2dcfe854d634315fe7800dd0a613472ca2')
+sha256sums=('2dc6ffbbf1e0a7b1323d49a991ba1f005127ca3e153651d91ba9e65bdaec948f')
 prepare() {
     cd "$srcdir/$_pkgname-$pkgver"
     ./configure --build=$CHOST \
