@@ -1,7 +1,7 @@
 # Maintainer: Markus Kitsinger (SwooshyCueb) <root@swooshalicio.us>
 pkgname=python-camel
 pkgver=v0.1.r11.g8e3abfe
-pkgrel=1
+pkgrel=2
 pkgdesc='Python serialization module'
 arch=(any)
 license=(ISC)
@@ -23,6 +23,6 @@ prepare () { # (Hopefully) temporary workaround to get python 3 builds to work
 package ()
 {
   cd "$srcdir/camel"
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+  python3 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 }
 
