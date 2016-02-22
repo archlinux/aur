@@ -2,7 +2,7 @@
 
 _pkgname=somoclu
 pkgname=${_pkgname}
-pkgver=1.6
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Massively parallel self-organizing maps: accelerate training on multicore CPUs, GPUs, and clusters"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ optdepends=(
 #install="${pkgname}.install"
 
 source=("https://github.com/peterwittek/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('e0907deefbc3b4e52c42644fa221587029292bff8b38fdbfd58fee3429726aca6b3e16a82d6b8472536456115ffbeacc509b2e616b46ed29c50571ff42ac75a2')
+sha512sums=('750ffc1af15484978dd22ddbad56679bf18414417fd6d969ef18289fdb63413fc522048a48a46d2e895875e2b4af65f4467bfc75c82c8c3911ff6c7213471e0c')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
