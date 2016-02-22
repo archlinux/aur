@@ -7,7 +7,6 @@ pkgdesc="Pseudo-3D shooter written completely in awk using raycasting technique 
 arch=('any')
 url="https://github.com/TheMozg/awk-raycaster"
 license=('GPL')
-depends=('gawk')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -22,9 +21,8 @@ pkgver() {
 }
 
 package() {
-  install -Dm755 launch.sh     "$pkgdir/usr/bin/awkaster"
-  cd "$_pkgname"
-  install -Dm644 awkaster.awk "$pkgdir/usr/share/$pkgname/awkaster.awk"
+  install -Dm755 launch.sh "$pkgdir/usr/bin/awkaster"
+  install -Dm644 "$_pkgname/awkaster.awk" "$pkgdir/usr/share/$pkgname/awkaster.awk"
 }
 
 # vim:set ts=2 sw=2 et:
