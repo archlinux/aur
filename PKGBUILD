@@ -7,8 +7,8 @@ pkgdesc="The DrumGizmo drumkit editor"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.drumgizmo.org/wiki/doku.php?id=getting_dgedit"
 license=('GPL')
-depends=('qt4' 'libsndfile' 'libao')
-makedepends=('git')
+depends=('qt4' 'libao' 'libsndfile')
+makedepends=('git' 'qt5-base')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+http://git.drumgizmo.org/dgedit.git")
