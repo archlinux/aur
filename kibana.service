@@ -5,7 +5,7 @@ After=elasticsearch.service
 [Service]
 User=nobody
 Group=elasticsearch
-Environment="NODE_ENV=production" "BABEL_CACHE_PATH=/tmp/kibana-babel-cache"
+Environment="NODE_ENV=production"
 ExecStart=/usr/bin/node /usr/lib/kibana/src/cli --quiet --config=/etc/elasticsearch/kibana/kibana.yml
 
 [Install]
