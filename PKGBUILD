@@ -2,12 +2,12 @@
 
 pkgname=elvish-git
 _pkgname=elvish
-pkgver=r1534.f9cdd8d
+pkgver=r1536.22be6e2
 pkgrel=1
 pkgdesc="A novel Unix shell."
 arch=('i686' 'x86_64')
 url="https://github.com/elves/elvish"
-license=('custom')
+license=('custom:2-clause BSD')
 makedepends=('git' 'go')
 source=("git+https://github.com/elves/elvish.git")
 md5sums=('SKIP')
