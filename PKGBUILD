@@ -1,24 +1,19 @@
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
-# Contributor: schuay <jakob.gruber@gmail.com>
-# Contributor: Mike Sampson <mike at sambodata dot com>
-# Contributor: William Rea <sillywilly@gmail.com>
-# Contributor: Archie <xMickael@ifrance.com>
+# Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
 
 pkgname=python2-vobject
-pkgver=0.8.1c
-pkgrel=5
+pkgver=0.9.0
+pkgrel=1
 pkgdesc='Module for parsing and generating vCard and vCalendar files'
 url='http://vobject.skyhouseconsulting.com'
 license=('Apache')
 arch=('any')
 depends=('python2-dateutil' 'python2-pyicu')
 makedepends=('python2-distribute')
-source=("http://vobject.skyhouseconsulting.com/vobject-$pkgver.tar.gz")
-sha256sums=('594113117f2017ed837c8f3ce727616f9053baa5a5463a7420c8249b8fc556f5')
+source=("https://github.com/eventable/vobject/archive/${pkgver}.tar.gz")
+sha256sums=('a9c6179351c00943de9ad4bb264e1fe66a91e9052a7c3d24485887c12026e0b6')
 
 package() {
   cd "vobject-$pkgver"
-
   python2 setup.py install --root="$pkgdir" --optimize=1
 }
 
