@@ -1,7 +1,7 @@
 # Maintener: Peter Karoly "Stone" JUHASZ <stone@midway.hu>
 pkgname=rinetd
 pkgver=0.62
-pkgrel=4
+pkgrel=5
 pkgdesc="internet redirection server"
 arch=('i686' 'x86_64')
 url="http://www.boutell.com/rinetd"
