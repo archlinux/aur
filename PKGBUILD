@@ -1,8 +1,8 @@
 # Maintainer: Morten Linderud <morten@linderud.pw>
 # Contributor: Andreas Krinke <andreas dot krinke at gmx dot de>
 pkgname=gephi
-pkgver=0.9.0
-pkgrel=2
+pkgver=0.9.1
+pkgrel=3
 pkgdesc="An interactive graph visualization and exploration platform"
 arch=('i686' 'x86_64')
 url="http://gephi.org"
@@ -10,8 +10,8 @@ license=('CDDL' 'GPL3')
 depends=('java-runtime' 'libxxf86vm' 'jdk8-openjdk')
 makedepends=()
 options=(!strip)
-source=("https://github.com/gephi/gephi/releases/download/v0.9.0/gephi-0.9.0-linux.tar.gz")
-sha256sums=('8e5e3289de31b31d736fb1f23c318d168ae18c2aa835b357375e259c6e2c8e8f')
+source=("https://github.com/gephi/gephi/releases/download/v$pkgver/gephi-$pkgver-linux.tar.gz")
+sha256sums=('f1d54157302df05a53b94e1518880c949c43ba4ab21e52d57f3edcbdaa06c7ee')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
