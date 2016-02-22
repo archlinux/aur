@@ -7,7 +7,6 @@ pkgdesc="an audio codec developed by Apple and supported on iPhone, iPad, most i
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://alac.macosforge.org/"
 license=('custom')
-depends=('gcc-libs')
 makedepends=('git')
 provides=("$_pkgname" "$_pkgname-svn" 'alacconvert' 'libalac')
 conflicts=("$_pkgname" "$_pkgname-svn" 'alacconvert' 'libalac')
