@@ -1,26 +1,33 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgbase=linux-rpi2
-_commit=0108373f573aa71e3f2bf48bdccafd09d478ecf5
 _kernelname=${pkgbase#linux}
 _desc="Raspberry Pi 2"
-pkgver=4.1.17
-pkgrel=2
-epoch=1
+pkgver=4.4
+_gitbranch="rpi-4.4.y"
+pkgrel=1
 arch=('armv7h')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git')
 options=('!strip')
-source=("linux::git://github.com/raspberrypi/linux#commit=$_commit"
+source=("https://github.com/raspberrypi/linux/archive/${_gitbranch}.tar.gz"
         'config.txt'
         'cmdline.txt')
-md5sums=('SKIP'
+md5sums=('b0426b89a2662851f7b446d97155f79c'
          '9a3c82da627b317ec79c37fd6afba569'
          '60bc3624123c183305677097bcd56212')
+_dirname=linux-${_gitbranch}
+
+#pkgver() {
+#  cd "${srcdir}/${_dirname}"
+#  KERNEL=kernel7
+#  make bcm2709_defconfig 2>&1 >/dev/null
+#  echo $(make kernelrelease)
+#}
 
 prepare() {
-  cd "${srcdir}/linux"
+  cd "${srcdir}/${_dirname}"
 
   msg "Prepare to build"
   KERNEL=kernel7
@@ -36,7 +43,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/linux"
+  cd "${srcdir}/${_dirname}"
 
   msg "Building!"
   make ${MAKEFLAGS} zImage modules dtbs
@@ -52,7 +59,7 @@ _package() {
   backup=('boot/config.txt' 'boot/cmdline.txt')
   replaces=('linux-raspberrypi-latest')
 
-  cd "${srcdir}/linux"
+  cd "${srcdir}/${_dirname}"
 
   KARCH=arm
 
@@ -103,7 +110,7 @@ _package-headers() {
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
-  cd "${srcdir}/linux"
+  cd "${srcdir}/${_dirname}"
   install -D -m644 Makefile \
     "${pkgdir}/usr/lib/modules/${_kernver}/build/Makefile"
   install -D -m644 kernel/Makefile \
