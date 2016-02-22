@@ -7,7 +7,6 @@ arch=('i686' 'x86_64')
 url="http://drawtiming.sourceforge.net/"
 license=('GPL2')
 depends=('imagemagick' 'ghostscript' 'cairo')
-makedepends=('subversion')
 source=("https://downloads.sourceforge.net/project/drawtiming/drawtiming/0.7.1/drawtiming-0.7.1.tar.gz"
         "https://downloads.sourceforge.net/project/drawtiming/drawtiming/0.7.1/drawtiming-0.7.1.tar.gz.asc"
         "0001-gcc43.patch"
