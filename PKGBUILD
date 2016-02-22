@@ -3,16 +3,15 @@
 _pkgname=lxqt-appswitcher
 pkgname=$_pkgname-git
 pkgver=r7.a59993d
-pkgrel=2
+pkgrel=3
 pkgdesc="Third party, more feature rich application switcher."
 arch=("i686" "x86_64")
 url="https://github.com/zjes/lxqt-appswitcher"
 license=("unknown")
 depends=("lxqt-globalkeys-git")
 makedepends=("git" "cmake")
-provides=("$_pkgname" "$_pkgname-git")
-conflicts=("$_pkgname" "$_pkgname-git")
-install=$pkgname.install
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=("git+https://github.com/zjes/lxqt-appswitcher.git")
 sha256sums=("SKIP")
 
