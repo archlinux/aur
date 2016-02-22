@@ -13,14 +13,14 @@ pkgname=('calligra-braindump-git'
          'calligra-stage-git'
          'calligra-words-git'
          'calligra-gemini-git')
-pkgver=r99515.ae439d4
+pkgver=r99647.05e6cff
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('FDL1.2' 'GPL2' 'LGPL')
 url='http://www.calligra-suite.org/'
 makedepends=('khtml' 'kross' 'kreport-git' 'kproperty-git' 'kdiagram-git' 'okular-frameworks-git' 'kxmlgui' 'qt5-webkit' 
              'kdelibs4support' 'poppler' 'qca-qt5' 'libvisio' 'libetonyek' 'kactivities' 'kio' 'ilmbase' 'lcms2'  'kxmlgui'
-             'marble' 'kcalcore' 'akonadi-contact' 'knotifyconfig' 'okular-frameworks-git' 'poppler-qt5' 'qt5-quick1' 'libodfgen' 'threadweaver')
+             'marble' 'kcalcore' 'akonadi-contact' 'knotifyconfig' 'okular-frameworks-git' 'poppler-qt5' 'qt5-quick1' 'libodfgen' 'threadweaver' 'boost' 'eigen')
 groups=('calligra-git')
 source=('calligra::git+git://anongit.kde.org/calligra')
 md5sums=('SKIP')
