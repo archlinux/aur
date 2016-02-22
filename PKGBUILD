@@ -71,6 +71,6 @@ check() {
 
 package() {
 	cd $srcdir/$_pkgname-$_ver
-	make INSTALL_PREFIX=$pkgdir MANDIR=$pkgdir/usr/share/man MANSUFFIX=ssl install
+	make DESTDIR=$pkgdir MANDIR=$pkgdir/usr/share/man MANSUFFIX=ssl install
 	install -D -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
