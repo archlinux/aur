@@ -9,7 +9,7 @@ url="https://github.com/bltavares/kickstart"
 license=('unknown')
 conflicts=( )
 options=( )
-source=("git+https://github.com/bltavares/kickstart.git")
+source=("${pkgname%-git}::git+https://github.com/bltavares/kickstart.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -18,7 +18,9 @@ pkgver() {
 }
 
 package() {
-  cd "${pkgname%-git}"
-  make PREFIX="${pkgdir}/usr" install
-  ln -s -f "/usr/share/kickstart/bin/kickstart" "${pkgdir}/usr/bin/kickstart"
+  install -d "${pkgdir}/usr/bin"
+  install -d "${pkgdir}/usr/share/kickstart"
+  
+  cp -r "${pkgname%-git}" "${pkgdir}/usr/share"
+  ln -s -f "/usr/share/kickstart/bin/kickstart" "$pkgdir/usr/bin/kickstart"
 }
