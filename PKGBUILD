@@ -1,12 +1,12 @@
-# $Id: PKGBUILD 258839 2016-02-03 14:33:04Z foutrelis $
+# $Id: PKGBUILD 259976 2016-02-18 19:46:35Z tpowa $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-c720       # Build kernel with a different name
 _srcname=linux-4.4
-pkgver=4.4.1
-pkgrel=2
+pkgver=4.4.2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -22,20 +22,18 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         'change-default-console-loglevel.patch'
         '0001-sdhci-revert.patch'
-        'tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch'
         '0001-4.4-revert-btrfs.patch'
         '0001-4.4-revert-xfs.patch')
 
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            'c0218043e61da3921cd14579ae4a8774a6fdad91667a9fdb851d0a35f62edb48'
+            '5c55d48ca6b2a9b89ed786e656ed17f9a86192eba6d209fa408e0bca8de57b9c'
             'SKIP'
             '56a56f6b0d8edaa6f58342ab9d54392503dfa6ca884a0b936cbf0206604758d2'
-            'e9871577683a2f68b40b5ffbc634615df56cc6b55622cd5c12f05c2217e55162'
+            'd40563a0cf3121b18c74c3abddf9e87c4bc6b068e9a9371f59a6d88792d1aa5f'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
-            'ab57037ecee0a425c612babdff47c831378bca0bff063a1308599989a350226d'
             '51586b733e9f178bebe577258b6057b035eded516ffe8bf8bbb26cb0b26c4958'
             'ffbfaa192d17bfc7c6293aa9a07efe57f65177051ae3d8033d5e45a7bca2e0ad')
 validpgpkeys=(
@@ -58,10 +56,6 @@ prepare() {
   # fixes #47778 sdhci broken on some boards
   # https://bugzilla.kernel.org/show_bug.cgi?id=106541
   patch -Rp1 -i "${srcdir}/0001-sdhci-revert.patch"
-
-  # fixes #47805 kernel panics on platform modules
-  # https://bugzilla.kernel.org/show_bug.cgi?id=110751
-  patch -Np1 -i "${srcdir}/tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch"
 
   # #47757 fix broken suspend from btrfs and xfs
   patch -Np1 -i "${srcdir}/0001-4.4-revert-xfs.patch"
@@ -98,7 +92,6 @@ prepare() {
   #make nconfig # new CLI menu for configuration
   #make xconfig # X-based configuration
   make oldconfig # using old config from previous kernel version
-  make nconfig
   # ... or manually edit .config
 
   # rewrite configuration
