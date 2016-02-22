@@ -1,4 +1,4 @@
-# Maintainer: Morris Jobke <hey@morrisjobke.de>
+# Maintainer: Morris Jobke <hey AT morrisjobke.de>
 # Maintainer: Martin Mlynář <nexus+arch@smoula.net>
 pkgname=dokku
 pkgver=0.4.14
@@ -14,6 +14,7 @@ depends=(
 	'sshcommand'
 	'herokuish'
 	'openbsd-netcat'
+	'gliderlabs-sigil'
 )
 
 source=(
