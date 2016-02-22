@@ -1,6 +1,6 @@
 pkgbase = finja
 	pkgdesc = Index and find your stuff
-	pkgver = 1.0.1
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = http://github.com/adfinis-sygroup/finja
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = finja
 	depends = python-binaryornot
 	provides = finja
 	conflicts = finja-git
-	source = https://pypi.python.org/packages/source/f/finja/finja-1.0.1.tar.gz
+	source = https://pypi.python.org/packages/source/f/finja/finja-1.0.4.tar.gz
 	source = LICENSE::https://www.gnu.org/licenses/agpl.txt
-	sha256sums = 3795d64d6e3905f33aff28b659010b03f78f4d25188871966ddcc68b3d871548
+	sha256sums = 2cb2151b283da39941cac0d683002ebf0e04e9e6f99f54fd59ab1fa964a8ab16
 	sha256sums = 57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6
 
 pkgname = finja
