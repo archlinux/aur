@@ -1,9 +1,9 @@
-# $Id: PKGBUILD 161326 2016-02-12 00:55:42Z foutrelis $
-# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
+# Maintainer: James Bunton <jamesbunton@delx.net.au>
+# Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Sebastien Piccand <sebcactus gmail com>
 
-pkgname=('handbrake' 'handbrake-cli')
+pkgname=('handbrake-fdkaac' 'handbrake-cli-fdkaac')
 pkgver=0.10.5
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('intltool' 'python2' 'yasm' 'wget' 'bzip2' 'gcc-libs' 'libnotify'
              'gst-plugins-base' 'gtk3' 'dbus-glib' 'fribidi' 'libass' 'lame'
              'fontconfig' 'freetype2' 'libxml2' 'libogg' 'libvorbis' 'cmake'
              'libtheora' 'libsamplerate' 'libbluray' 'x264' 'libx264'
-             'libdvdnav' 'librsvg' 'libgudev')
+             'libdvdnav' 'librsvg' 'libgudev' 'libfdk-aac')
 source=(https://handbrake.fr/mirror/HandBrake-$pkgver.tar.bz2)
 sha256sums=('fb9230dd121b456f6829d1d25ac8bbf76e503b51c4efc70f0a7fd2bb8607e2f0')
 
@@ -36,18 +36,20 @@ build() {
   ./configure \
     --prefix=/usr \
     --force \
-    --disable-gtk-update-checks
+    --disable-gtk-update-checks \
+    --enable-fdk
   cd build
   make
 }
 
-package_handbrake() {
+package_handbrake-fdkaac() {
   pkgdesc="Multithreaded video transcoder"
+  conflicts=('handbrake')
   depends=('bzip2' 'gcc-libs' 'gst-plugins-base' 'libnotify' 'dbus-glib'
            'fribidi' 'libass' 'lame' 'gtk3' 'fontconfig' 'freetype2' 'libxml2'
            'libogg' 'libvorbis' 'libtheora' 'libsamplerate' 'libbluray'
            'libx264' 'libdvdnav' 'librsvg' 'libgudev' 'desktop-file-utils'
-           'hicolor-icon-theme')
+           'hicolor-icon-theme' 'libfdk-aac')
   depends+=('libx264.so')
   optdepends=('gst-plugins-good: for video previews'
               'gst-libav: for video previews')
@@ -59,10 +61,12 @@ package_handbrake() {
   rm "$pkgdir/usr/bin/HandBrakeCLI"
 }
 
-package_handbrake-cli() {
+package_handbrake-cli-fdkaac() {
   pkgdesc="Multithreaded video transcoder (CLI)"
+  conflicts=('handbrake-cli')
   depends=('bzip2' 'gcc-libs' 'zlib' 'fribidi' 'libass' 'lame' 'libxml2'
-           'libtheora' 'libsamplerate' 'libbluray' 'libx264' 'libdvdnav')
+           'libtheora' 'libsamplerate' 'libbluray' 'libx264' 'libdvdnav'
+           'libfdk-aac')
   depends+=('libx264.so')
 
   cd "$srcdir/HandBrake-$pkgver/build"
