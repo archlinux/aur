@@ -11,7 +11,7 @@ depends=('gtk-engine-murrine')
 makedepends=('git')
 provides=('numix-themes-osx-git')
 conflicts=('numix-themes-osx-git')
-source=('numix-themes::git+https://github.com/samhorlbeck/Numix-OSX.git')
+source=('numix-themes-osx-git::git+https://github.com/samhorlbeck/Numix-OSX.git')
 md5sums=('SKIP')
 
 pkgver() {
