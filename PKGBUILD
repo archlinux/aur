@@ -8,7 +8,7 @@ url='https://github.com/forivall/aur-packages'
 license=('WTFPL')
 depends=('teamspeak3')
 source=('teamspeak3-install-addon')
-sha1sums=('c9d5eac3e63a50e4c0990f146101f0609c7b6a76')
+sha1sums=('37fd0ed23676d784b2c988aeda99d810719bbeff')
 
 package() {
   mkdir -p -- "$pkgdir/usr/bin"
