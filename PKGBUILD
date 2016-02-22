@@ -19,7 +19,7 @@ source=("https://github.com/HelloZeroNet/ZeroNet/archive/v$pkgver.tar.gz"
 md5sums=('879a0882fcbd3618020a78a56bb6597f'
          '1c2281156533c912e407cf64f6a57e96'
 	 '5ff9b2c9b8f913bf4fd29b61e61e2334')
-install=("zeronet.install")
+install="zeronet.install"
 backup=("etc/zeronet.conf")
 
 # Upstream uses camel case
