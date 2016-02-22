@@ -14,16 +14,6 @@ license=('PerlArtistic')
 source=($pkgname-$pkgver::git+https://github.com/MadcapJake/Test-Lab)
 sha256sums=('SKIP')
 
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  msg2 'Fixing META6.json...'
-  sed -i \
-      -e 's/test::Lab::Errors/Test::Lab::Errors/' \
-      -e '/Test::Lab::Experiment::Default/d' \
-      META6.json
-}
-
 check() {
   cd "$srcdir/$pkgname-$pkgver"
 
