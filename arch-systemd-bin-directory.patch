@@ -1,0 +1,60 @@
+diff -Naur ndjbdns-1.06.orig/etc/systemd/axfrdns.sysd ndjbdns-1.06/etc/systemd/axfrdns.sysd
+--- ndjbdns-1.06.orig/etc/systemd/axfrdns.sysd	2013-12-06 10:37:05.000000000 +0000
++++ ndjbdns-1.06/etc/systemd/axfrdns.sysd	2016-02-22 10:51:40.466666665 +0000
+@@ -7,7 +7,7 @@
+ [Service]
+ Restart=always
+ PIDFile=/var/run/axfrdns.pid
+-ExecStart=-PREFIX/sbin/axfrdns -D
++ExecStart=-PREFIX/bin/axfrdns -D
+ StandardInput=socket
+ 
+ [Install]
+diff -Naur ndjbdns-1.06.orig/etc/systemd/dnscache.sysd ndjbdns-1.06/etc/systemd/dnscache.sysd
+--- ndjbdns-1.06.orig/etc/systemd/dnscache.sysd	2013-08-24 10:13:17.000000000 +0000
++++ ndjbdns-1.06/etc/systemd/dnscache.sysd	2016-02-22 10:51:40.466666665 +0000
+@@ -7,7 +7,7 @@
+ [Service]
+ Restart=always
+ PIDFile=/var/run/dnscache.pid
+-ExecStart=PREFIX/sbin/dnscache
++ExecStart=PREFIX/bin/dnscache
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff -Naur ndjbdns-1.06.orig/etc/systemd/rbldns.sysd ndjbdns-1.06/etc/systemd/rbldns.sysd
+--- ndjbdns-1.06.orig/etc/systemd/rbldns.sysd	2013-08-24 10:13:22.000000000 +0000
++++ ndjbdns-1.06/etc/systemd/rbldns.sysd	2016-02-22 10:51:40.469999999 +0000
+@@ -7,7 +7,7 @@
+ [Service]
+ Restart=always
+ PIDFile=/var/run/rbldns.pid
+-ExecStart=PREFIX/sbin/rbldns
++ExecStart=PREFIX/bin/rbldns
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff -Naur ndjbdns-1.06.orig/etc/systemd/tinydns.sysd ndjbdns-1.06/etc/systemd/tinydns.sysd
+--- ndjbdns-1.06.orig/etc/systemd/tinydns.sysd	2013-08-24 10:13:28.000000000 +0000
++++ ndjbdns-1.06/etc/systemd/tinydns.sysd	2016-02-22 10:51:40.469999999 +0000
+@@ -7,7 +7,7 @@
+ [Service]
+ Restart=always
+ PIDFile=/var/run/tinydns.pid
+-ExecStart=PREFIX/sbin/tinydns
++ExecStart=PREFIX/bin/tinydns
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff -Naur ndjbdns-1.06.orig/etc/systemd/walldns.sysd ndjbdns-1.06/etc/systemd/walldns.sysd
+--- ndjbdns-1.06.orig/etc/systemd/walldns.sysd	2013-08-24 10:13:41.000000000 +0000
++++ ndjbdns-1.06/etc/systemd/walldns.sysd	2016-02-22 10:51:40.469999999 +0000
+@@ -7,7 +7,7 @@
+ [Service]
+ Restart=always
+ PIDFile=/var/run/walldns.pid
+-ExecStart=PREFIX/sbin/walldns
++ExecStart=PREFIX/bin/walldns
+ 
+ [Install]
+ WantedBy=multi-user.target
