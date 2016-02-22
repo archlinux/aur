@@ -7,7 +7,8 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.drumgizmo.org"
 license=('GPL')
 groups=('lv2-plugins')
-depends=('libsmf' 'jack' 'zita-resampler' 'libx11')
+depends=('libx11' 'libsmf' 'jack' 'expat')
+makedepends=('lv2')
 source=("http://www.drumgizmo.org/releases/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
 md5sums=('3c57db26c39dfea523d969faceea906d')
 
