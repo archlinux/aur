@@ -1,14 +1,14 @@
 pkgbase = fsl
 	pkgdesc = A comprehensive library of analysis tools for FMRI, MRI and DTI brain imaging data
-	pkgver = 5.0.8
+	pkgver = 5.0.9
 	pkgrel = 1
 	url = http://www.fmrib.ox.ac.uk/fsl/
 	arch = i686
 	arch = x86_64
 	license = custom
 	optdepends = fslview
-	source = http://www.fmrib.ox.ac.uk/fsldownloads/fsl-5.0.8-sources.tar.gz
-	sha1sums = c789fffcfcd6b11b9bd2c97b900a8b2cfc61b7cf
+	source = http://www.fmrib.ox.ac.uk/fsldownloads/fsl-5.0.9-sources.tar.gz
+	sha1sums = dc3c9b1129dff3be2d042237903b4c72d8ffca1a
 
 pkgname = fsl
 

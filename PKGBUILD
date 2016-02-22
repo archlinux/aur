@@ -1,7 +1,7 @@
 # Contributor: cornholio <vigo.the.unholy.carpathian@gmail.com>
 
 pkgname=fsl
-pkgver=5.0.8
+pkgver=5.0.9
 pkgrel=1
 pkgdesc="A comprehensive library of analysis tools for FMRI, MRI and DTI brain imaging data"
 arch=("i686" "x86_64")
@@ -10,7 +10,7 @@ license=(custom)
 depends=()
 makedepends=()
 optdepends=("fslview")
-sha1sums=('c789fffcfcd6b11b9bd2c97b900a8b2cfc61b7cf')
+md5sums=('5e38052b268dbc0fc09114615eff85c9')
 
 source=("http://www.fmrib.ox.ac.uk/fsldownloads/fsl-${pkgver}-sources.tar.gz")
 
