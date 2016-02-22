@@ -1,7 +1,8 @@
-# Maintainer: Alad Wenter <https://wiki.archlinux.org/index.php/Special:EmailUser/Alad>
+# Maintainer: Morten Linderud <morten@linderud.pw>
+# Contributor: Alad Wenter <https://wiki.archlinux.org/index.php/Special:EmailUser/Alad>
 
 pkgname=dmenu-extended
-pkgver=r191.f7b776b
+pkgver=r201.56b9f6f
 pkgrel=1
 
 pkgdesc='An extension to dmenu for quickly opening files and folders.'
@@ -16,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --tags | sed 's/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
