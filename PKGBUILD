@@ -2,7 +2,7 @@
 
 pkgname=mailpile-git
 pkgver=r4977.2438e49
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern, fast web-mail client with user-friendly encryption and privacy features."
 arch=('any')
 license=('AGPL3')

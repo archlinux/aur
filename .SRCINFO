@@ -1,19 +1,21 @@
 pkgbase = mailpile-git
-	pkgdesc = A modern, fast web-mail client with user-friendly encryption and privacy features.
-	pkgver = r4960.bdd1cf5
-	pkgrel = 1
-	url = http://www.mailpile.is
-	arch = any
-	license = AGPL3
-	depends = python2-pillow
-	depends = python2-lxml
-	depends = python2-jinja
-	depends = spambayes
-	depends = python2-pgpdump
-	provides = mailpile
-	conflicts = mailpile
-	source = git://github.com/pagekite/Mailpile.git
-	md5sums = SKIP
+        pkgdesc = A modern, fast web-mail client with user-friendly encryption and privacy features.
+        pkgver = r4977.2438e49
+        pkgrel = 2
+        url = http://www.mailpile.is
+        arch = any
+        license = AGPL3
+        depends = python2-pillow
+        depends = python2-lxml
+        depends = python2-jinja
+        depends = spambayes
+        depends = python2-pgpdump
+        provides = mailpile
+        conflicts = mailpile
+        source = git://github.com/pagekite/Mailpile.git
+        source = fix-rootdir.patch
+        md5sums = SKIP
+        md5sums = 777cd528c847876b6f720af8f21951db
 
 pkgname = mailpile-git
 
