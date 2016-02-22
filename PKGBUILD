@@ -55,7 +55,7 @@ prepare() {
   touch chrome/test/data/webui/i18n_process_css_test.html
 
   # https://code.google.com/p/chromium/issues/detail?id=541273
-  #sed -i "/'target_name': 'libvpx'/s/libvpx/&_new/" build/linux/unbundle/libvpx.gyp
+  sed -i "/'target_name': 'libvpx'/s/libvpx/&_new/" build/linux/unbundle/libvpx.gyp
 
   # https://codereview.chromium.org/1505763002
   patch -Np1 -i ../chromium-use-non-versioned-icu-namespace.patch
