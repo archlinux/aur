@@ -1,30 +1,38 @@
---- angle/src/libGLESv2.gypi.orig	2014-12-29 16:26:05.272220904 +0100
-+++ angle/src/libGLESv2.gypi	2014-12-29 16:27:33.694129236 +0100
-@@ -531,6 +531,12 @@
+--- angleproject/src/libEGL.gypi.orig	2015-07-10 11:42:08.230786800 +0300
++++ angleproject/src/libEGL.gypi	2015-07-10 11:44:01.168491900 +0300
+@@ -48,7 +48,16 @@
                  {
                      'msvs_enable_winphone' : '1',
                  }],
 +                ['TARGET=="win32"', {
-+                    'ldflags': [ '-Wl,--out-implib,libGLESv2.dll.a ../src/libGLESv2/libGLESv2_mingw32.def' ],
++                    'ldflags': [ '-Wl,--out-implib,libEGL.dll.a ../src/libEGL/libEGL.def' ],
++                }],
++                ['TARGET=="win64"', {
++                    'ldflags': [ '-Wl,--out-implib,libEGL.dll.a ../src/libEGL/libEGL.def' ],
++                }],
+             ],
++            'libraries': [
++                '-ldxguid -ld3d9 -lgdi32'
++            ]
+         },
+     ],
+ }
+--- angleproject/src/libGLESv2.gypi.orig	2015-07-10 11:41:58.223787600 +0300
++++ angleproject/src/libGLESv2.gypi	2015-07-10 11:44:36.585949800 +0300
+@@ -826,7 +826,16 @@
+                 {
+                     'msvs_enable_winphone' : '1',
+                 }],
++                ['TARGET=="win32"', {
++                    'ldflags': [ '-Wl,--out-implib,libGLESv2.dll.a ../src/libGLESv2/libGLESv2.def' ],
 +                }],
 +                ['TARGET=="win64"', {
 +                    'ldflags': [ '-Wl,--out-implib,libGLESv2.dll.a ../src/libGLESv2/libGLESv2.def' ],
 +                }],
              ],
-             'configurations':
-             {
---- angle/src/libEGL.gypi.orig	2014-12-29 16:27:51.546312626 +0100
-+++ angle/src/libEGL.gypi	2014-12-29 16:28:53.332947338 +0100
-@@ -146,6 +146,12 @@
-                         {
-                             'msvs_enable_winphone' : '1',
-                         }],
-+                        ['TARGET=="win32"', {
-+                            'ldflags': [ '-Wl,--out-implib,libEGL.dll.a ../src/libEGL/libEGL_mingw32.def' ],
-+                        }],
-+                        ['TARGET=="win64"', {
-+                            'ldflags': [ '-Wl,--out-implib,libEGL.dll.a ../src/libEGL/libEGL.def' ],
-+                        }],
-                     ],
-                     'includes': [ '../build/common_defines.gypi', ],
-                     'msvs_settings':
++            'libraries': [
++                '-ldxguid -ld3d9 -lgdi32'
++            ]
+         },
+     ],
+ }
