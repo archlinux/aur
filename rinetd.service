@@ -1,9 +1,10 @@
 [Unit]
 Description=ritned daemon
+After=network-online.target
 
 [Service]
 Type=forking
-PIDFile=/var/run/rinetd.pid
+PIDFile=/run/rinetd.pid
 ExecStart=/usr/bin/rinetd
 ExecReload=/bin/kill -HUP $MAINPID
 
