@@ -1,0 +1,14 @@
+pkgbase = bugjar
+	pkgdesc = A interactive graphical debugger for Python code.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://pybee.org/bugjar/
+	arch = any
+	license = BSD
+	depends = python2
+	depends = python2-tkreadonly
+	source = git://github.com/pybee/bugjar.git
+	sha256sums = SKIP
+
+pkgname = bugjar
+
