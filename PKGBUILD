@@ -2,7 +2,7 @@
 
 pkgname=elvish-git
 _pkgname=elvish
-pkgver=r1408.b86ff2e
+pkgver=r1530.92d34ec
 pkgrel=1
 pkgdesc="A novel Unix shell."
 arch=('i686' 'x86_64')
@@ -26,10 +26,11 @@ prepare() {
 }
 
 build() {
-    go get github.com/elves/elvish
+    cd "$GOPATH/src/github.com/elves/elvish"
+    make -j1
 }
 
 package() {
-    install -Dm755 "$srcdir/build/bin/elvish" -t "$pkgdir/usr/bin/"
+    install -Dm755 "$srcdir/build/bin/elvish"{,-stub} -t "$pkgdir/usr/bin/"
     install -Dm644 "$srcdir/$_pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
