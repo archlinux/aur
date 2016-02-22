@@ -1,12 +1,12 @@
 # Maintainer: Melvin Vermeeren <mail@mel.vin>
 pkgname=drawtiming
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool that converts ASCII to UML Timing Diagrams."
 arch=('i686' 'x86_64')
 url="http://drawtiming.sourceforge.net/"
 license=('GPL2')
-depends=('imagemagick' 'ghostscript' 'cairo')
+depends=('imagemagick' 'ghostscript')
 source=("https://downloads.sourceforge.net/project/drawtiming/drawtiming/0.7.1/drawtiming-0.7.1.tar.gz"
         "https://downloads.sourceforge.net/project/drawtiming/drawtiming/0.7.1/drawtiming-0.7.1.tar.gz.asc"
         "0001-gcc43.patch"
