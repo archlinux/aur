@@ -2,14 +2,14 @@
 # Maintainer: Cyberpunk <aur_linuxero@outlook.com>
 
 pkgname=sayonara-player
-pkgver=0.8.2_git0_20160214
-_pkgver=0.8.2-git0-20160214
+pkgver=0.8.2_git1_20160219
+_pkgver=0.8.2-git1-20160219
 pkgrel=1
 pkgdesc="Is a small, clear and fast audio player for Linux written in C++, supported by the Qt framework. It uses Gstreamer as audio backend."
 arch=('i686' 'x86_64')
 url="http://sayonara-player.com"
 license=('GPL3')
-depends=('qt5-base' 'taglib' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad')
+depends=('qt5-base' 'taglib' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'libmtp')
 optdepends=('lame' 'gst-plugins-ugly')
 makedepends=('cmake' 'qt5-tools')
 conflicts=('sayonara-player-svn')
@@ -28,4 +28,4 @@ package() {
 	cd build
         make DESTDIR="$pkgdir/" install
 }
-sha384sums=('09ab37ad2622fb26d850aa68e87aca5ca78a99950060d46aa465de825d6fdd294210b1c45982a04bf2d5da1fc999e13e')
+sha384sums=('27fc80ddff3ec11babde119ea4f75db52f674052199a336dc84636a35f9b3a9ba762b50a0218c0ca3e79d8d832d98723')
