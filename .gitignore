@@ -1,0 +1,7 @@
+*~
+\#*\#
+.\#*
+src/
+pkg/
+laptop-mode-tools
+*.pkg.tar.xz
