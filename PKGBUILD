@@ -5,9 +5,9 @@
 
 pkgname='influxdb'
 _gitname='influxdb'
-pkgver='0.10.0'
-branch='0.10.0'
-commit='b8bb32ecad9808ef00219e7d2469514890a0987a'
+pkgver='0.10.1'
+branch='0.10.1'
+commit='df902a4b077bb270984303b8e4f8a320e3954b40'
 pkgrel='1'
 epoch=
 pkgdesc='Scalable datastore for metrics, events, and real-time analytics'
@@ -31,7 +31,7 @@ source=("https://github.com/influxdb/influxdb/archive/$pkgtar"
         "$pkgname.install")
 changelog=
 noextract=("$pkgtar")
-md5sums=('6b3c80de417f18836c4193cd99da6baa'
+md5sums=('8b7de43c1355c98b536fa46cdd192af7'
          'SKIP'
          'SKIP')
 
