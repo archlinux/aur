@@ -1,5 +1,5 @@
 pkgname=telegram-desktop
-pkgver=0.9.24
+pkgver=0.9.26
 pkgrel=1
 _qtver=5.5.1
 pkgdesc='Official desktop version of Telegram messaging app.'
@@ -53,6 +53,7 @@ prepare() {
 		echo 'INCLUDEPATH += "/usr/lib/glib-2.0/include"'
 		echo 'INCLUDEPATH += "/usr/lib/gtk-2.0/include"'
 		echo 'INCLUDEPATH += "/usr/include/opus"'
+		echo 'LIBS += -lcrypto -lssl'
 	) >> "$srcdir/tdesktop/Telegram/Telegram.pro"
 }
 
