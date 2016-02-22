@@ -1,7 +1,7 @@
 # Maintainer: Wei-Ning Huang <aitjcize@gmail.com>
 pkgname=python-pytox-git
 _pkgname=PyTox
-pkgver=20151018
+pkgver=20160204
 pkgrel=1
 pkgdesc="Python binding for Project-Tox the skype replacement"
 arch=('i686' 'x86_64')
@@ -13,16 +13,16 @@ source=("git://github.com/aitjcize/${_pkgname}")
 sha256sums=("SKIP")
 
 pkgver() {
-  cd "$srcdir/$_gitname"
+  cd $_pkgname
   git log -1 --pretty='%cd' --date=short | tr -d '-'
 }
 
 build() {
-  cd ${_pkgname}
+  cd $_pkgname
   python setup.py build
 }
 
 package() {
-  cd ${_pkgname}
+  cd $_pkgname
   python setup.py install --root=${pkgdir}/ --optimize=1
 }
