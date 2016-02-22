@@ -3,7 +3,7 @@
 
 _pkgname=mutt
 pkgname="${_pkgname}-sidebar-hg"
-pkgver=r6556.87c46e1f6f8c
+pkgver=r6559.909cf6dd067c
 pkgrel=1
 pkgdesc="Mutt-hg package with sidebar patches"
 url="http://www.mutt.org/"
