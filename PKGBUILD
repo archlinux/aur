@@ -3,13 +3,14 @@
 pkgname=toggl-cli
 _majorver=0.2
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 _author=gabalese
 _maintainer=alexandre-mbm
 pkgdesc="Command line client for Toggl timekeeping"
 arch=('any')
 url="https://github.com/${_author}/${pkgname}"
 license=('MIT')
+conflicts=('toggl-bin')
 depends=('java-runtime')
 makedepends=()
 source=("https://github.com/${_author}/${pkgname}/releases/download/v${pkgver}/${pkgname}-${_majorver}.tar.gz")
