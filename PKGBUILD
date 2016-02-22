@@ -8,7 +8,7 @@
 
 pkgbase=linux-lts-tomoyo
 _srcname=linux-4.1
-pkgver=4.1.17
+pkgver=4.1.18
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -26,10 +26,10 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'SKIP'
-            '60e5c4fb93705a1e7d075d528975661303d3a87c522f731b69da2e00f3170b10'
+            'c69cbff479740d6bbd452d2264ba0afefa99ae51bb7ae52bfbde348ea8d8b20c'
             'SKIP'
-            '4f33208934694268c146b036e3a6e0688e8326740ca42754875c644e7aedd4c2'
-            '31fa759c3b91f4a0bed69112eaec9c3a5648905e25cb0986e61f535ec798b291'
+            'cbf851d69d0363a617664aabbc8124f57282a297d820ac87179f8e0aa53ec1b7'
+            '4c9ceb17f518d71e7fee48a6511f0d4475dc0d2139c13f6206818372795aec1c'
             '4e1fcb722d069ce8bf8c4e720e42a400a91b9aa73304d8a47e34814b5fd210db'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torvalds@linux-foundation.org>
