@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A novel Unix shell."
 arch=('i686' 'x86_64')
 url="https://github.com/elves/elvish"
-license=('BSD 2-clause')
+license=('custom')
 makedepends=('git' 'go')
 source=("git+https://github.com/elves/elvish.git")
 md5sums=('SKIP')
@@ -23,7 +23,6 @@ prepare() {
     mkdir -p build/src/github.com/elves
     ln -sf "$srcdir/$_pkgname" build/src/github.com/elves/
     export GOPATH="$srcdir/build"
-    mkdir -p "$GOPATH/bin"
 }
 
 build() {
