@@ -4,7 +4,7 @@
 
 pkgname=runescape-launcher
 pkgver=2.0.7
-pkgrel=2
+pkgrel=3
 pkgdesc="RuneScape MMORPG – NXT client core"
 arch=(x86_64)
 license=(custom)
@@ -17,6 +17,7 @@ depends=(
     sdl2
     webkitgtk2
     desktop-file-utils
+    gtk-update-icon-cache
 )
 conflicts=(runescape-launcher-nxt)
 provides=(runescape-launcher-nxt)
@@ -50,7 +51,7 @@ package() {
         install -Dm0644 runescape.$size.png \
                         "$pkgdir"/usr/share/icons/hicolor/${size}x${size}/apps/runescape.png
     done
-    sed -i 's/^Icon=.*/Icon=runescape/' "$pkgdir"/usr/share/applications/runescape-launcher.desktop
+    sed -i 's/^Icon=.*/Icon=runescape/;s/^Version=.*/Version=1.0/;s/^Catagories=/Categories=/' "$pkgdir"/usr/share/applications/runescape-launcher.desktop
     install -Dm0755 wrapper.sh "$pkgdir"/usr/bin/runescape-launcher
     install -Dm0644 copyright "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
