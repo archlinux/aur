@@ -7,6 +7,9 @@ pkgdesc="Docker powered mini-Heroku in around 100 lines of Bash."
 arch=(any)
 url="https://github.com/dokku/dokku"
 license=(MIT)
+makedepends=(
+	'plugn'
+)
 depends=(
 	'docker'
 	'nginx'
@@ -22,7 +25,7 @@ source=(
   "https://github.com/MorrisJobke/dokku/archive/arch-linux.zip"
   "${pkgname}.install"
 )
-sha256sums=('cc49617f5e1b87834a6f45517883a2b0e988bdb71ec2504ce73a040587ec9ce9'
+sha256sums=('7ac1f5aaaf7c2c600c53563fe479d2c3e4b2ccd178499ac25257a177bb7162cd'
             'cf71d82c16a4cc7a252eb8853a0ab2efea32d1f78c3f483778cbf7cd73d3b8eb')
 install=${pkgname}.install
 
