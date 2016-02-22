@@ -1,27 +1,31 @@
 # Maintainer: Salamandar <felix@piedallu.me>
 
 pkgname=livewallpaper
-pkgver=0.4.1
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="OpenGL powered animated wallpapers with configuration utility, autostart, and application indicator."
 arch=(any)
 url="https://launchpad.net/livewallpaper"
 license=('GPL3')
+makedepends=('intltool' 'xcftools' 'cmake')
 depends=('libgl' 'libpeas' 'libx11'
-        'python' 'python-numpy' 'python-cairo' 'python2-opengl'
+        'python' 'python-numpy' 'python-cairo' 'python-opengl'
         'gtk3' 'gobject-introspection' 'libappindicator-gtk3')
 
-makedepends=('intltool' 'xcftools')
 provides=('livewallpaper' 'livewallpaper-indicator' 'livewallpaper-config')
-source=(https://launchpad.net/livewallpaper/0.4/0.4.1/+download/livewallpaper-0.4.1.tar.gz)
-sha256sums=(9b1e386ce0aa0547d8ac9938a8d3f211cffd8b38496bf1972a99455d94bd2de6)
+source=(https://launchpad.net/livewallpaper/0.5/0.5.0/+download/livewallpaper-0.5.0.tar.gz)
+sha256sums=('f4ce97a721015b135eb675915eb306c1fb256e680d480fe13e4fe6ca81c7e04e')
 install=livewallpaper.install
+
+prepare() {
+    cd "$srcdir/$pkgname-$pkgver"
+    sed -i '/add_subdirectory(debian)/d' CMakeLists.txt
+}
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver/cmake"
-	sed -i "s/set(LIVEWALLPAPER_REQUIRES\
-/&\n\tx11/" ../CMakeLists.txt
 	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ../
+    make DESTDIR="$pkgdir/"
 }
 
 package() {
