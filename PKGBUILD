@@ -12,8 +12,8 @@ arch=('i686' 'x86_64')
 install=mgetty.install
 depends=('glibc' 'logrotate' 'udev' 'netpbm')
 makedepends=('make')
-conflicts=('mgetty')
-provides=('mgetty')
+conflicts=('mgetty-vgetty')
+provides=('mgetty-vgetty')
 source=('git+https://github.com/ppickfor/mgetty.git'
 	config.patch
 	90-mgetty.rules
