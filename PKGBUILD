@@ -1,10 +1,10 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=evrouter
 pkgver=0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="An Input Event Router for Linux"
 arch=('i686' 'x86_64')
-url="http://www.bedroomlan.org/~alexios/coding_evrouter.html"
+url="http://www.bedroomlan.org/projects/evrouter"
 license=('GPL2')
 depends=('libxtst')
 makedepends=('automake>=1.10.1')
