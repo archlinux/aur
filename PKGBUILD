@@ -2,7 +2,7 @@
 # Maintainer: Laurent Carlier <lordheavym@gmail.com>
 
 pkgname=vulkan-intel-git
-pkgver=11.2.0_devel.78310.40c76d4
+pkgver=11.2.0_devel.78334.f843aab
 pkgrel=1
 pkgdesc="Intel's Vulkan mesa driver"
 arch=(x86_64)
@@ -38,7 +38,7 @@ build() {
   make
 
   # fake installation
-  mkdir $srcdir/fakeinstall
+  mkdir -p $srcdir/fakeinstall
   make DESTDIR=${srcdir}/fakeinstall install
 }
 
