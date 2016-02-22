@@ -8,7 +8,7 @@ arch=('any')
 url="http://www.jwhitham.org/20kly/"
 license=('GPL')
 depends=('python2-pygame' 'glpk')
-provides=('lightyears')
+provides=('20kly')
 source=("http://www.jwhitham.org/$pkgname/lightyears-$pkgver.tar.bz2"
         '0001-fix.patch')
 md5sums=('1211f6c9f368e3d8053965b3e42dcdcd'
