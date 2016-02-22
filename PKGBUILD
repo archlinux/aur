@@ -20,7 +20,7 @@ makedepends=(
 )
 options=(!emptydirs)
 source=("${url}/archive/v${pkgver}.tar.gz")
-md5sums=('5d434c7aa174b8d4a1b76e01b8bcd2a1')
+md5sums=('53c27fe9e91d28143b8a5e056480fbe0')
 
 build() {
     cd "${pkgname}-${pkgver}"
