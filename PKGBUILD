@@ -9,10 +9,10 @@
 # Based on linux-grsec package
 
 pkgbase=linux-libre-grsec-knock
-_pkgbasever=4.3-gnu
-_pkgver=4.3.5-gnu
+_pkgbasever=4.4-gnu
+_pkgver=4.4.2-gnu
 _grsecver=3.1
-_timestamp=201602032209
+_timestamp=201602182048
 _knockpatchver=4.2_2
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
@@ -23,7 +23,7 @@ _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}.${_timestamp}
 pkgver=${_pkgver//-/_}.${_timestamp}
 pkgrel=1
-rcnrel=armv7-x1
+rcnrel=armv7-x5
 arch=('i686' 'x86_64' 'armv7h')
 url="https://wiki.parabola.nu/Grsecurity%2BKnock"
 license=('GPL2')
@@ -53,7 +53,8 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        '0001-disabling-primary-plane-in-the-noatomic-case.patch'
+        '0001-4.4-revert-btrfs.patch'
+        '0001-4.4-revert-xfs.patch'
         '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch'
         '0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
         # armv7h patches
@@ -68,11 +69,11 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0007-set-default-cubietruck-led-triggers.patch'
         '0008-USB-armory-support.patch'
         '0009-ARM-dts-dove-add-Dove-divider-clocks.patch')
-sha256sums=('1d280ae2730eb6c9b8c7e920cac2e8111c8db02c498db0c142860a84106cc169'
+sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'SKIP'
-            '37172f7a09e0c46af87f00010ea1b1ffdf498ef703590547bf9b336970085d03'
+            'f82d7a08ab1fc0d810a74ff294f7757af71fa7f90db0038aabbf086c8006ba78'
             'SKIP'
-            'b9302cb9fe2ccf091a3a3f97189195a1bdf8ea831fb08f3870378a4d4c9ee598'
+            '940c4465b43eeae5c5f7e5645f5ecd55e452ec4a56b7dfcc7357b5cce5745155'
             'SKIP'
             'c7c4ab580f00dca4114c185812a963e73217e6bf86406c240d669026dc3f98a4'
             'SKIP'
@@ -82,24 +83,25 @@ sha256sums=('1d280ae2730eb6c9b8c7e920cac2e8111c8db02c498db0c142860a84106cc169'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '76d15ea422e1dc4bf14af4e02eaa275a514a891991d3b06306d8df06044c5b29'
-            'e01a77ed063fe6835b948083943d5e118f0fa15014cc5600a89dc000c0a423b4'
-            '0021594878b17f3002ef1d89779ba22d6f49d0f5275a6415f5eb60709d3f9f70'
+            '64bce353c6da5c852f4b3b6331ddf5386a037fd91190645fe8883863078fe6bc'
+            '8b8b95e08dcfbda80f96574787b5f54773bc08587d7fccf14174a6d4aec7fcf8'
+            '5d412c1c1992979b37d4980cc8a930d806ed1cf05d5341cdeda27596800df718'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'abdd04bd6beecb7c961130a68d71e6332bd260462eeaa2f4f8e634de813dcc4d'
+            '51586b733e9f178bebe577258b6057b035eded516ffe8bf8bbb26cb0b26c4958'
+            'ffbfaa192d17bfc7c6293aa9a07efe57f65177051ae3d8033d5e45a7bca2e0ad'
             '61370b766e0c60b407c29d2c44b3f55fc352e9049c448bc8fcddb0efc53e42fc'
             '3d3266bd082321dccf429cc2200d1a4d870d2031546f9f591b6dfbb698294808'
-            '190dbde818baeb5a6fae46dbc937a8edd8dce92a05d0cdb8ef8a2cbd38c53fec'
+            '8345c20c1203f1581ac9c77972c219e1cf9f2d4d46a461f84ba8abad9c406505'
             'SKIP'
-            '2654680bc8f677f647bca6e2b367693bf73ffb2edc21e3757a329375355a335d'
-            '842e4f483fa36c0e7dbe18ad46d78223008989cce097e5bef1e14450280f5dfe'
-            '810697eec07faa60acb59b97df291e5f2e9428e86ae54e5ef90a6e4b2d0844ab'
-            'c743e41975260aab3176b6f473707c8d8371cb89575e1c128bddb3bd74030b8b'
-            'abc9593a479b9bb677112fa1d6502c8165d27d0854a712e1662374e4bafb96a0'
-            'd068215561ce769439901da0118e251c624de58fe414cc2166fbf972f76dd1a7'
-            'ac0fb2180560652f94bebb3c09baef3c34785b539cae541df175ebec6989d79c'
-            'c23c3bf29fd557fe2e9ca72e65cd0f1e790b771b4568d0732388d7d420cefd6a'
+            'a851312b26800a7e189b34547d5d4b2b62a18874f07335ac6f426c32b47c3817'
+            '486976f36e1919eac5ee984cb9a8d23a972f23f22f8344eda47b487ea91047f4'
+            '6dadc17ea56d93ec0f1d0c3c98c25a7863e9ba3c4af50dc411d630a1bcc98f08'
+            '9c5d6d035c9a7103f19804c2284291d461d4b848cccd3ec07272bde68ba29513'
+            '6644705cd73c55056b5fed91cfb3199c1114b088d96dbd3c29358cd49863aeba'
+            '08d0aa76393ea2d1a853d0ea9b02aa616224ac915473ab057bb98285212bc994'
+            '1cb502674bf7a1ea79b359d1613fe891ba37f6aa64f5f5eca309d46ba01ab417'
+            '05bf1d8f94feab06bdd9fd958bc9bde4d1249a0cdeb8d3d3e16e6fac6dc5baed'
             '5e1b8b1e9b3243a5ab315481c39b1b88f28923148659dcc0ac7ed78d9ba4f072')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
@@ -156,14 +158,14 @@ prepare() {
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
+  # #47757 fix broken suspend from btrfs and xfs
+  patch -Np1 -i "${srcdir}/0001-4.4-revert-xfs.patch"
+  patch -Np1 -i "${srcdir}/0001-4.4-revert-btrfs.patch"
+
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
-
-  # fix #46968
-  # hangs on older intel hardware
-  patch -Np1 -i "${srcdir}/0001-disabling-primary-plane-in-the-noatomic-case.patch"
 
   # make the radeon driver load without the firmwares
   # http://www.fsfla.org/pipermail/linux-libre/2015-August/003098.html
@@ -421,6 +423,11 @@ _package-headers() {
 
   # remove unneeded architectures
   find "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch -mindepth 1 -maxdepth 1 -type d -not -name "$KARCH" -exec rm -rf {} +
+
+  # remove a files already in docs package
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-01"
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-02"
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.select-break"
 }
 
 _package-docs() {
