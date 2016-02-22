@@ -2,9 +2,9 @@
 
 pkgname=python2-vobject
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Module for parsing and generating vCard and vCalendar files'
-url='http://vobject.skyhouseconsulting.com'
+url='https://eventable.github.io/vobject/'
 license=('Apache')
 arch=('any')
 depends=('python2-dateutil' 'python2-pyicu')
