@@ -14,8 +14,8 @@ package() {
   mkdir -p "$pkgdir/usr/bin/"
   ln -s "$pkgdir/usr/bin/" "$pkgdir/usr/sbin"
   cd "$srcdir/$pkgname-$pkgver/"
-  rm "$pkgdir/usr/sbin"
   make PREFIX=$pkgdir/usr install
+  rm "$pkgdir/usr/sbin"
 }
 
 
