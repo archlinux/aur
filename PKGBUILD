@@ -6,7 +6,7 @@
 pkgname=spotify-beta
 pkgver=1.0.23.93
 _anotherpkgver=gd6cfae15
-pkgrel=2
+pkgrel=3
 pkgdesc="A proprietary peer-to-peer music streaming service"
 arch=('x86_64' 'i686')
 license=('custom:"Copyright (c) 2006-2010 Spotify Ltd"')
@@ -60,5 +60,11 @@ package() {
         echo "Installing with KDE support"
         install -Dm644 "${srcdir}/spotify.protocol" "${pkgdir}/usr/share/kde4/services/spotify.protocol"
     fi
+
+    chmod 755 "${pkgdir}/usr"
+    chmod 755 "${pkgdir}/usr/bin"
+    chmod 755 "${pkgdir}/usr/share/doc"
+    chmod 755 "${pkgdir}/usr/share/spotify"
+    chmod 755 "${pkgdir}/usr/share/doc/spotify-client"
 }
 
