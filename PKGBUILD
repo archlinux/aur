@@ -1,7 +1,7 @@
 # Maintainer: Tarn Burton <twburton at gmail dot com>
 pkgname='pioneer'
 pkgver=20160214
-pkgrel=2
+pkgrel=1
 pkgdesc="A game of lonely space adventure"
 arch=('i686' 'x86_64')
 url="https://github.com/pioneerspacesim/pioneer"
