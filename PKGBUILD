@@ -12,7 +12,7 @@ _pfpatchlevel=33
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_basekernel}
 _pfrel=6
-pkgrel=1
+pkgrel=2
 _kernelname=-pf
 _pfpatchhome="http://pf.natalenko.name/sources/${_basekernel}/"
 _pfpatchname="patch-${_basekernel}${_kernelname}${_pfrel}"
@@ -796,9 +796,4 @@ sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
             'd7b39272e4ee7b11d4593f84179b09508b91232edf29f92667f5e5fc60162d6b'
             'a2a3a81e20ed3bbc0bed32c94ef7d0afd3164a34a3b681c17e3ae2ab2056d011'
             'b9b07391aecd9610b3f802bcd0d51dccc90f6b68a9f77349e57ea3c0580e96a8'
-            'a2789e82f980cb886ccea88d2d94e622ecde47b4eb006b94ceb6b944ed4c7833'
-            'feb2df1ee5925728902edd4dd0ce9ddb2f50acc9d4b8d16a74bbb64dbe357b6f'
-            '1c883047dccb8e0e9fcadd1c010e288483c250890131d6cfd62ea4c096102241'
-            'df7cd35f98869d128198b7161117b3cd40430fd946b620909a310763fc602241'
-            '125d96763f0357194b4345861df1f829eb7f56447d7b341c766c0eadceb41444'
-            'c818a23416125a0f1dcbe9c808607383d3a54d89afe5533aac3aa75adf0fdc78')
+            'a2789e82f980cb886ccea88d2d94e622ecde47b4eb006b94ceb6b944ed4c7833')
