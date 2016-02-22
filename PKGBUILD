@@ -1,28 +1,16 @@
 # Maintainer: Markus Kitsinger (SwooshyCueb) <root@swooshalicio.us>
 pkgname=python-camel
-pkgver=v0.1.r11.g8e3abfe
-pkgrel=2
+pkgver=v0.1.r12.g7e2c6b7
+pkgrel=1
 pkgdesc='Python serialization module'
 arch=(any)
 license=(ISC)
 url="https://github.com/eevee/camel"
 depends=(python-yaml)
-source=(git+https://github.com/eevee/camel.git)
+source=('git+https://github.com/eevee/camel.git#commit=7e2c6b7bf965c4e9d098d6c56594ca2c36b63aa8')
 sha512sums=('SKIP')
 
-pkgver() {
-  cd "$srcdir/camel"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare () { # (Hopefully) temporary workaround to get python 3 builds to work
-  cd "$srcdir/camel"
-  sed -i "s/—/-/g" README.txt
-}
-
-package ()
-{
+package () {
   cd "$srcdir/camel"
   python3 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 }
-
