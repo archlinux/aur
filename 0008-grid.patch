@@ -1,0 +1,88 @@
+Index: src/main.cc
+===================================================================
+--- src/main.cc	(revision 76)
++++ src/main.cc	(working copy)
+@@ -52,6 +52,7 @@
+     OPT_CELL_WIDTH,
+     OPT_FONT,
+     OPT_FONT_SIZE,
++    OPT_GRID,
+     OPT_HELP,
+     OPT_LINE_WIDTH,
+     OPT_OUTPUT,
+@@ -67,6 +68,7 @@
+   {"cell-width", required_argument, NULL, OPT_CELL_WIDTH},
+   {"font", required_argument, NULL, OPT_FONT},
+   {"font-size", required_argument, NULL, OPT_FONT_SIZE},
++  {"grid", no_argument, NULL, OPT_GRID},
+   {"help", no_argument, NULL, OPT_HELP},
+   {"line-width", required_argument, NULL, OPT_LINE_WIDTH},
+   {"output", required_argument, NULL, OPT_OUTPUT},
+@@ -110,6 +112,10 @@
+     case OPT_FONT_SIZE:
+       timing::vFontPointsize = atoi (optarg);
+       break;    
++    case 'g':
++    case OPT_GRID:
++      timing::draw_grid = true;
++      break;    
+     case 'h':
+     case OPT_HELP:
+       usage ();
+@@ -279,6 +285,9 @@
+        << "-l" << endl
+        << "--line-width" << endl
+        << "    Line width (pixels) [3]." << endl
++       << "-g" << endl
++       << "--grid" << endl
++       << "    Turn on grid." << endl
+        << endl
+        << "Consult the drawtiming(1) man page for details." << endl;
+ }
+Index: src/timing.cc
+===================================================================
+--- src/timing.cc	(revision 76)
++++ src/timing.cc	(working copy)
+@@ -18,6 +18,7 @@
+ // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ 
+ #include "timing.h"
++#include <string.h>
+ #include <map>
+ #include <fstream>
+ using namespace std;
+@@ -29,6 +30,7 @@
+ int timing::vCellHt = 32;
+ int timing::vCellW = 64;
+ string timing::vFont = "Helvetica";
++bool timing::draw_grid = false;
+ 
+ static int vCellHsep, vCellH, vCellHtxt, vCellHdel, vCellHtdel, vCellWtsep,
+             vCellWrm;
+@@ -611,6 +613,14 @@
+     y += vCellHt + vCellHdel * sig.maxdelays;
+   }
+ 
++  if(timing::draw_grid) {
++    int x = labelWidth + vCellWtsep;
++    for(int j; j <= d.maxlen; j++) {
++      gc.line(x,0,x,y);
++      x += vCellW;
++    }
++  }
++
+   // draw the smooth arrows indicating the triggers for signal changes
+   for (list<depdata>::const_iterator i = d.dependencies.begin ();
+        i != d.dependencies.end (); ++ i)
+Index: src/timing.h
+===================================================================
+--- src/timing.h	(revision 76)
++++ src/timing.h	(working copy)
+@@ -46,6 +46,7 @@
+ 
+   extern int vFontPointsize, vLineWidth, vCellHt, vCellW;
+   extern std::string vFont;
++  extern bool draw_grid;
+ 
+   class exception : public std::exception {
+   };

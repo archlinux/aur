@@ -1,0 +1,11 @@
+diff -ur drawtiming-0.7//src/timing.cc drawtiming-0.7_orig//src/timing.cc
+--- src/timing.cc	2008-05-18 02:09:56.000000000 +0200
++++ src/timing.cc	2008-08-15 12:05:19.000000000 +0200
+@@ -20,6 +20,7 @@
+ #include "timing.h"
+ #include <map>
+ #include <fstream>
++#include <cstring>
+ using namespace std;
+ using namespace timing;
+ using namespace Magick;

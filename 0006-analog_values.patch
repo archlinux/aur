@@ -1,0 +1,105 @@
+Index: src/timing.cc
+===================================================================
+--- src/timing.cc	(revision 76)
++++ src/timing.cc	(working copy)
+@@ -18,6 +18,7 @@
+ // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ 
+ #include "timing.h"
++#include "string.h"
+ #include <map>
+ #include <fstream>
+ using namespace std;
+@@ -61,21 +62,40 @@
+ sigvalue::sigvalue (const std::string &s, valuetype n) {
+   text = s;
+   type = n;
+-  if (type == UNDEF) {
+-    if (text == "0" || text == "false")
++  if (type == UNDEF) { 
++    if (text == "0" || text == "false") {
+       type = ZERO;
+-    else if (text == "1" || text == "true")
++      val = 0.0;
++    } else if (text == "1" || text == "true") {
+       type = ONE;
+-    else if (text == "pulse")
++      val = 1.0;
++    } else if (text == "pulse") {
+       type = PULSE;
+-    else if (text == "tick")
++      val  = 0.0;
++    } else if (text == "tick") {
+       type = TICK;
+-    else if (text == "X")
++      val  = 0.0;
++    } else if (text == "X") {
+       type = X;
+-    else if (text == "Z")
++      val = 0.5;
++    } else if (text == "Z") {
+       type = Z;
+-    else
+-      type = STATE;
++      val = 0.5;
++    } else {
++      float ana;
++      int n = sscanf(text.c_str(), "%f", &ana);
++      if(n > 0) {
++	val = ana;
++	if(text[text.length()-1] == 'S') {
++	  type = ANA_STEP;
++	} else {
++	  type = ANA;
++	}
++      } else {
++	type = STATE;
++	val = 0.5;
++      }
++    }
+   }
+ }
+ 
+@@ -84,6 +104,7 @@
+ sigvalue &sigvalue::operator= (const sigvalue &t) {
+   type = t.type;
+   text = t.text;
++  val  = t.val;
+   return *this;
+ }
+ 
+@@ -338,6 +359,16 @@
+ 			     const sigvalue &value) {
+ 
+   switch (value.type) {
++
++  case ANA:
++    gc.line(x, y + (int) (vCellH * (1.0 - last.val)), x+vCellW, y + (int) (vCellH * (1.0 - value.val)));
++    break;
++
++  case ANA_STEP:
++    gc.line(x, y + (int) (vCellH * (1.0 - last.val)), x, y + (int) (vCellH * (1.0 - value.val)));
++    gc.line(x, y + (int) (vCellH * (1.0 - value.val)), x+vCellW, y + (int) (vCellH * (1.0 - value.val)));
++    break;
++
+   case ZERO:
+     switch (last.type) {
+     default:
+Index: src/timing.h
+===================================================================
+--- src/timing.h	(revision 76)
++++ src/timing.h	(working copy)
+@@ -29,11 +29,12 @@
+ 
+ namespace timing {
+ 
+-  enum valuetype {UNDEF, ZERO, ONE, X, Z, PULSE, TICK, STATE};
++  enum valuetype {UNDEF, ZERO, ONE, X, Z, PULSE, TICK, STATE, ANA, ANA_STEP};
+ 
+   struct sigvalue {
+     valuetype type;
+     std::string text;
++    float val;
+     sigvalue (void);
+     sigvalue (const sigvalue &);
+     sigvalue (const std::string &s, valuetype n = UNDEF);

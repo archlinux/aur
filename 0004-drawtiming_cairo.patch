@@ -1,0 +1,672 @@
+? drawtiming_cairo.diff
+? ylwrap
+Index: configure.in
+===================================================================
+RCS file: /cvsroot/drawtiming/drawtiming/configure.in,v
+retrieving revision 1.7
+diff -u -r1.7 configure.in
+--- configure.in	5 May 2007 16:26:58 -0000	1.7
++++ configure.in	7 Jul 2007 09:44:10 -0000
+@@ -9,6 +9,8 @@
+ AC_CHECK_LIB(gnugetopt, getopt_long)
+ AC_CHECK_HEADERS(getopt.h)
+ 
++PKG_CHECK_MODULES([CAIROMM], [cairomm-1.0 >= 1.2.0])
++
+ # define Magick++ compile flags
+ MAGICK_CPPFLAGS=$(Magick++-config --cppflags)
+ MAGICK_CXXFLAGS=$(Magick++-config --cxxflags)
+Index: src/Makefile.am
+===================================================================
+RCS file: /cvsroot/drawtiming/drawtiming/src/Makefile.am,v
+retrieving revision 1.2
+diff -u -r1.2 Makefile.am
+--- src/Makefile.am	22 Sep 2004 18:31:50 -0000	1.2
++++ src/Makefile.am	7 Jul 2007 09:44:10 -0000
+@@ -1,9 +1,9 @@
+-AM_CXXFLAGS = @MAGICK_CPPFLAGS@ @MAGICK_CXXFLAGS@ -DYYDEBUG=1
++AM_CXXFLAGS = @MAGICK_CPPFLAGS@ @MAGICK_CXXFLAGS@ @CAIROMM_CFLAGS@ -DYYDEBUG=1
+ AM_YFLAGS = -d
+ 
+ bin_PROGRAMS = drawtiming
+ drawtiming_SOURCES = main.cc globals.h parser.yy scanner.ll timing.cc timing.h
+-drawtiming_LDADD = @MAGICK_LIBS@
++drawtiming_LDADD = @MAGICK_LIBS@ @CAIROMM_LIBS@
+ drawtiming_LDFLAGS = @MAGICK_LDFLAGS@
+ 
+ EXTRA_DIST = parser.h
+Index: src/main.cc
+===================================================================
+RCS file: /cvsroot/drawtiming/drawtiming/src/main.cc,v
+retrieving revision 1.7
+diff -u -r1.7 main.cc
+--- src/main.cc	5 May 2007 16:26:58 -0000	1.7
++++ src/main.cc	7 Jul 2007 09:44:10 -0000
+@@ -29,6 +29,10 @@
+ #define FLAG_PAGESIZE 1
+ #define FLAG_SCALE 2
+ #define FLAG_ASPECT 4
++#define FLAG_SVG 8
++#define FLAG_PS 16
++#define FLAG_PDF 32
++#define FLAG_CAIROPNG 64
+ 
+ extern FILE *yyin;
+ extern int yydebug;
+@@ -41,6 +45,7 @@
+ timing::data data;
+ timing::signal_sequence deps;
+ timing::diagram diagram;
++timing::cairodiagram cairodiagram;
+ string outfile;
+ int verbose = 0;
+ 
+@@ -58,7 +63,11 @@
+     OPT_SCALE,
+     OPT_PAGESIZE,
+     OPT_VERBOSE,
+-    OPT_VERSION
++    OPT_VERSION,
++    OPT_SVG,
++    OPT_PS,
++    OPT_PDF,
++    OPT_CAIROPNG
+ };
+ 
+ struct option opts[] = {
+@@ -74,6 +83,10 @@
+   {"pagesize", required_argument, NULL, OPT_PAGESIZE},
+   {"verbose", no_argument, NULL, OPT_VERBOSE},
+   {"version", no_argument, NULL, OPT_VERSION},
++  {"svg", no_argument, NULL, OPT_SVG},
++  {"ps", no_argument, NULL, OPT_PS},
++  {"pdf", no_argument, NULL, OPT_PDF},
++  {"cairopng", no_argument, NULL, OPT_CAIROPNG},
+   {0, 0, 0, 0}
+ };
+ #endif
+@@ -138,6 +151,18 @@
+     case OPT_CELL_WIDTH:
+       timing::vCellW = atoi (optarg);
+       break;    
++    case OPT_SVG:
++      flags |= FLAG_SVG;
++      break;    
++    case OPT_PS:
++      flags |= FLAG_PS;
++      break;    
++    case OPT_PDF:
++      flags |= FLAG_PDF;
++      break;    
++    case OPT_CAIROPNG:
++      flags |= FLAG_CAIROPNG;
++      break;    
+     }
+ 
+   if (optind >= argc) {
+@@ -183,14 +208,29 @@
+     if (outfile.empty ())
+       return 0;
+ 
+-    if (flags & FLAG_PAGESIZE)
+-      diagram.render (data, width, height, (flags & FLAG_ASPECT));
+-    else
+-      diagram.render (data, scale);
+- 
+-    Image img (Geometry (diagram.width, diagram.height), "white");
+-    img.draw (diagram);
+-    img.write (outfile);
++    if (flags & (FLAG_SVG | FLAG_PS | FLAG_PDF | FLAG_CAIROPNG)) {
++      if (flags & FLAG_PAGESIZE)
++	cairodiagram.set_scale (data, width, height, (flags & FLAG_ASPECT));
++      else
++	cairodiagram.set_scale (data, scale);
++      if (flags & FLAG_SVG)
++	cairodiagram.render_to_svg (data, outfile);
++      else if (flags & FLAG_PS)
++	cairodiagram.render_to_ps (data, outfile);
++      else if (flags & FLAG_PDF)
++	cairodiagram.render_to_pdf (data, outfile);
++      else if (flags & FLAG_CAIROPNG)
++	cairodiagram.render_to_png (data, outfile);
++    } else {
++      if (flags & FLAG_PAGESIZE)
++	diagram.render (data, width, height, (flags & FLAG_ASPECT));
++      else
++	diagram.render (data, scale);
++      
++      Image img (Geometry (diagram.width, diagram.height), "white");
++      img.draw (diagram);
++      img.write (outfile);
++    }
+   }
+   catch (Magick::Exception &err) {
+     cerr << "caught Magick++ exception: " << err.what () << endl;
+Index: src/timing.cc
+===================================================================
+RCS file: /cvsroot/drawtiming/drawtiming/src/timing.cc,v
+retrieving revision 1.9
+diff -u -r1.9 timing.cc
+--- src/timing.cc	5 May 2007 16:26:58 -0000	1.9
++++ src/timing.cc	7 Jul 2007 09:44:11 -0000
+@@ -677,3 +677,468 @@
+   push_back (DrawablePopGraphicContext ());
+ }
+ 
++// ------------------------------------------------------------
++
++cairodiagram::cairodiagram (void)
++	: m_xmin(numeric_limits<double>::max()),
++	  m_xmax(numeric_limits<double>::min()),
++	  m_ymin(numeric_limits<double>::max()),
++	  m_ymax(numeric_limits<double>::min()),
++	  m_xscale(1.0), m_yscale(1.0)
++{
++}
++
++cairodiagram::cairodiagram (const cairodiagram &d) {
++  *this = d;
++}
++
++// ------------------------------------------------------------
++
++cairodiagram &cairodiagram::operator= (const cairodiagram &d) {
++  m_xmin = d.m_xmin;
++  m_xmax = d.m_xmax;
++  m_ymin = d.m_ymin;
++  m_ymax = d.m_ymax;
++  m_xscale = d.m_xscale;
++  m_yscale = d.m_yscale;
++  return *this;
++}
++
++// ------------------------------------------------------------
++
++void cairodiagram::set_scale (const data &d, double scale) {
++  Cairo::RefPtr<Cairo::Surface> surface = Cairo::ImageSurface::create (Cairo::FORMAT_RGB24, 10, 10);
++  m_xmin = numeric_limits<double>::max ();
++  m_xmax = numeric_limits<double>::min ();
++  m_ymin = numeric_limits<double>::max ();
++  m_ymax = numeric_limits<double>::min ();
++  m_context = Cairo::Context::create (surface);
++  render_common (d);
++  m_context.clear ();
++  m_xscale = m_yscale = scale;
++}
++
++// ------------------------------------------------------------
++
++void cairodiagram::set_scale (const data &d, int w, int h, bool fixAspect) {
++  Cairo::RefPtr<Cairo::Surface> surface = Cairo::ImageSurface::create (Cairo::FORMAT_RGB24, 10, 10);
++  m_xmin = numeric_limits<double>::max ();
++  m_xmax = numeric_limits<double>::min ();
++  m_ymin = numeric_limits<double>::max ();
++  m_ymax = numeric_limits<double>::min ();
++  m_context = Cairo::Context::create (surface);
++  render_common (d);
++  m_context.clear ();
++
++  m_xscale = w / (double)max (0.1, m_xmax - m_xmin);
++  m_yscale = h / (double)max (0.1, m_ymax - m_ymin);
++
++  if (fixAspect) {
++      // to maintain aspect ratio, and fit the image:
++      m_xscale = m_yscale = min (m_xscale, m_yscale);
++  }
++}
++
++// ------------------------------------------------------------
++
++void cairodiagram::render_to_png (const data &d, const std::string& outfile) {
++  Cairo::RefPtr<Cairo::ImageSurface> surface = Cairo::ImageSurface::create (Cairo::FORMAT_RGB24,
++									    (int)ceil ((m_xmax - m_xmin) * m_xscale),
++									    (int)ceil ((m_ymax - m_ymin) * m_yscale));
++  m_context = Cairo::Context::create (surface);
++  m_context->translate (-m_xmin, -m_ymin);
++  m_context->scale (m_xscale, m_yscale);
++  render_common (d);
++  m_context.clear ();
++  surface->write_to_png(outfile);
++}
++
++// ------------------------------------------------------------
++
++void cairodiagram::render_to_svg (const data &d, const std::string& outfile) {
++  Cairo::RefPtr<Cairo::Surface> surface = Cairo::SvgSurface::create (outfile, (m_xmax - m_xmin) * m_xscale, (m_ymax - m_ymin) * m_yscale);
++  m_context = Cairo::Context::create (surface);
++  m_context->translate (-m_xmin, -m_ymin);
++  m_context->scale (m_xscale, m_yscale);
++  render_common (d);
++  m_context.clear ();
++}
++
++// ------------------------------------------------------------
++
++void cairodiagram::render_to_ps (const data &d, const std::string& outfile) {
++  Cairo::RefPtr<Cairo::Surface> surface = Cairo::PsSurface::create (outfile, (m_xmax - m_xmin) * m_xscale, (m_ymax - m_ymin) * m_yscale);
++  m_context = Cairo::Context::create (surface);
++  m_context->translate (-m_xmin, -m_ymin);
++  m_context->scale (m_xscale, m_yscale);
++  render_common (d);
++  m_context.clear ();
++}
++
++// ------------------------------------------------------------
++
++void cairodiagram::render_to_pdf (const data &d, const std::string& outfile) {
++  Cairo::RefPtr<Cairo::Surface> surface = Cairo::PdfSurface::create (outfile, (m_xmax - m_xmin) * m_xscale, (m_ymax - m_ymin) * m_yscale);
++  m_context = Cairo::Context::create (surface);
++  m_context->translate (-m_xmin, -m_ymin);
++  m_context->scale (m_xscale, m_yscale);
++  render_common (d);
++  m_context.clear ();
++}
++
++// ------------------------------------------------------------
++
++void cairodiagram::render_common (const data &d) {
++
++  vCellHsep = vCellHt / 8;
++  vCellH=vCellHt-vCellHsep;
++  vCellHtxt=vCellHt*3/4;
++  vCellHdel = vCellHt * 3/8;
++  vCellHtdel=vCellHt/4;
++  vCellWtsep=vCellW/4;
++  vCellWrm=vCellW/8;
++
++  m_context->select_font_face (vFont, Cairo::FONT_SLANT_NORMAL, Cairo::FONT_WEIGHT_NORMAL);
++  m_context->set_font_size (vFontPointsize);
++  m_context->set_line_width (vLineWidth);
++  m_context->set_source_rgb (0.0, 0.0, 0.0);
++
++
++  double labelWidth = label_width (d);
++
++  // draw a "scope-like" cairodiagram for each signal
++  map<signame,double> ypos;
++  double y = 0;
++  for (signal_sequence::const_iterator i = d.sequence.begin ();
++       i != d.sequence.end (); ++ i) {
++    const sigdata &sig = d.find_signal (*i);
++    render_text (vCellWrm, y + vCellHtxt, *i);
++    ypos[*i] = y;
++    double x = labelWidth + vCellWtsep;
++    sigvalue last;
++    for (value_sequence::const_iterator j = sig.data.begin ();
++	 j != sig.data.end (); ++ j) {
++      draw_transition (x, y, last, *j);
++      last = *j;
++      x += vCellW;
++    }
++    y += vCellHt + vCellHdel * sig.maxdelays;
++  }
++
++  // draw the smooth arrows indicating the triggers for signal changes
++  for (list<depdata>::const_iterator i = d.dependencies.begin (); 
++       i != d.dependencies.end (); ++ i)
++    draw_dependency (labelWidth + vCellWtsep + vCellWrm + vCellW * i->n_trigger,
++                     vCellHt/2 + ypos[i->trigger],
++		     labelWidth + vCellWtsep + vCellWrm + vCellW * i->n_effect,
++                     vCellHt/2 + ypos[i->effect]);
++
++  // draw the timing delay annotations
++  for (list<delaydata>::const_iterator i = d.delays.begin (); 
++       i != d.delays.end (); ++ i)
++    draw_delay (labelWidth + vCellWtsep + vCellWrm + vCellW * i->n_trigger,
++                vCellHt/2 + ypos[i->trigger],
++		labelWidth + vCellWtsep + vCellWrm + vCellW * i->n_effect,
++                vCellHt/2 + ypos[i->effect],
++		ypos[i->trigger] + vCellHt + vCellHdel * i->offset + vCellHtdel,
++                i->text);
++
++}
++
++// ------------------------------------------------------------
++// add text to the cairodiagram
++
++void cairodiagram::render_text (double xpos, double ypos, const string &text) {
++  m_context->save ();
++  m_context->set_line_width (1);
++  m_context->move_to (xpos, ypos);
++  Cairo::TextExtents te;
++  m_context->get_text_extents (text, te);
++  m_xmin = min (m_xmin, xpos);
++  m_xmax = max (m_xmax, xpos + te.width);
++  m_ymin = min (m_ymin, ypos);
++  m_ymax = max (m_ymax, ypos + te.height);
++  m_context->show_text (text);
++  m_context->restore ();
++}
++
++// ------------------------------------------------------------
++// render line
++
++void cairodiagram::render_line (double x1, double y1, double x2, double y2)
++{
++  m_context->move_to (x1, y1);
++  m_context->line_to (x2, y2);
++  stroke ();
++}
++
++// ------------------------------------------------------------
++// render polygon
++
++void cairodiagram::render_poly (double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4, bool fill)
++{
++  m_context->move_to (x1, y1);
++  m_context->line_to (x2, y2);
++  m_context->line_to (x3, y3);
++  m_context->line_to (x4, y4);
++  m_context->close_path ();
++  if (fill)
++    m_context->fill_preserve ();
++  stroke ();
++}
++
++// ------------------------------------------------------------
++// render bezier curve
++
++void cairodiagram::render_bezier (double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4)
++{
++  m_context->move_to (x1, y1);
++  m_context->curve_to (x2, y2, x3, y3, x4, y4);
++  stroke ();
++}
++
++// ------------------------------------------------------------
++// stroke (and destroy) the current path
++
++void cairodiagram::stroke (void) {
++  double x1, x2, y1, y2;
++  m_context->get_stroke_extents (x1, y1, x2, y2);
++  m_xmin = min (m_xmin, x1);
++  m_xmax = max (m_xmax, x2);
++  m_ymin = min (m_ymin, y1);
++  m_ymax = max (m_ymax, y2);
++  m_context->stroke ();
++}
++
++// ------------------------------------------------------------
++// calculate the required label width
++
++double cairodiagram::label_width (const data &d) const {
++  double labelWidth = 0.0;
++  Cairo::TextExtents te;
++
++  m_context->select_font_face (vFont, Cairo::FONT_SLANT_NORMAL, Cairo::FONT_WEIGHT_NORMAL);
++  m_context->set_font_size (vFontPointsize);
++  for (signal_sequence::const_iterator i = d.sequence.begin ();
++       i != d.sequence.end (); ++ i) {
++    m_context->get_text_extents (*i, te);
++    labelWidth = max (labelWidth, te.width);
++  }
++  return labelWidth;
++}
++
++// ------------------------------------------------------------
++
++void cairodiagram::draw_transition (double x, double y, const sigvalue &last,
++				    const sigvalue &value) {
++
++  switch (value.type) {
++  case ZERO:
++    switch (last.type) {
++    default:
++      render_line (x, y + vCellH, x + vCellW, y + vCellH);
++      break;
++
++    case ONE:
++      render_line (x, y + vCellHsep, x + vCellW/4, y + vCellH);
++      render_line (x + vCellW/4, y + vCellH, x + vCellW, y + vCellH);
++      break;
++    
++    case Z:
++      render_line (x, y + vCellHt/2, x + vCellW/4, y + vCellH);
++      render_line (x + vCellW/4, y + vCellH, x + vCellW, y + vCellH);
++      break;
++
++    case STATE:
++      render_line (x, y + vCellHsep, x + vCellW/4, y + vCellH);
++      render_line (x, y + vCellH, x + vCellW, y + vCellH);
++      break;
++    }
++    break;
++
++  case ONE:
++    switch (last.type) {
++    default:
++      render_line (x, y + vCellHsep, x + vCellW, y + vCellHsep);
++      break;
++
++    case ZERO:
++    case TICK:
++    case PULSE:
++      render_line (x, y + vCellH, x + vCellW/4, y + vCellHsep);
++      render_line (x + vCellW/4, y + vCellHsep, x + vCellW, y + vCellHsep);
++      break;
++
++    case Z:
++      render_line (x, y + vCellHt/2, x + vCellW/4, y + vCellHsep);
++      render_line (x + vCellW/4, y + vCellHsep, x + vCellW, y + vCellHsep);
++      break;
++
++    case STATE:
++      render_line (x, y + vCellH, x + vCellW/4, y + vCellHsep);
++      render_line (x, y + vCellHsep, x + vCellW, y + vCellHsep);
++      break;
++    }
++    break;
++
++  case TICK:
++  case PULSE:
++    switch (last.type) {
++    default:
++      render_line (x, y + vCellH, x + vCellW/4, y + vCellHsep);
++      render_line (x + vCellW/4, y + vCellHsep, x + vCellW/2, y + vCellHsep);
++      render_line (x + vCellW/2, y + vCellHsep, x + vCellW*3/4, y + vCellH);
++      render_line (x + vCellW*3/4, y + vCellH, x + vCellW, y + vCellH);
++      break;
++
++    case ONE:
++    case X:
++      render_line (x, y + vCellHsep, x + vCellW/2, y + vCellHsep);
++      render_line (x + vCellW/2, y + vCellHsep, x + vCellW*3/4, y + vCellH);
++      render_line (x + vCellW*3/4, y + vCellH, x + vCellW, y + vCellH);
++      break;
++
++    case Z:
++      render_line (x, y + vCellHt/2, x + vCellW/4, y + vCellHsep);
++      render_line (x + vCellW/4, y + vCellHsep, x + vCellW/2, y + vCellHsep);
++      render_line (x + vCellW/2, y + vCellHsep, x + vCellW*3/4, y + vCellH);
++      render_line (x + vCellW*3/4, y + vCellH, x + vCellW, y + vCellH);
++      break;
++
++    case STATE:
++      render_line (x, y + vCellH, x + vCellW/4, y + vCellHsep);
++      render_line (x, y + vCellHsep, x + vCellW/2, y + vCellHsep);
++      render_line (x + vCellW/2, y + vCellHsep, x + vCellW*3/4, y + vCellH);
++      render_line (x + vCellW*3/4, y + vCellH, x + vCellW, y + vCellH);
++      break;
++    }
++    break;
++  
++  case UNDEF:
++  case X:
++    for (int i = 0; i < 4; ++ i) {
++      render_line (x+i*(vCellW/4), y + vCellH,
++                               x+(i+1)*(vCellW/4), y + vCellHsep);
++      render_line (x+i*(vCellW/4), y + vCellHsep,
++                               x+(i+1)*(vCellW/4), y + vCellH);
++    }
++    break;
++  
++  case Z:
++    switch (last.type) {
++    default:
++      render_line (x, y + vCellHt/2, x + vCellW, y + vCellHt/2);
++      break;
++
++    case ZERO:
++    case TICK:
++    case PULSE:
++      render_line (x, y + vCellH, x + vCellW/4, y + vCellHt/2);
++      render_line (x + vCellW/4, y + vCellHt/2, x + vCellW, y + vCellHt/2);
++      break;
++
++    case ONE:
++      render_line (x, y + vCellHsep, x + vCellW/4, y + vCellHt/2);
++      render_line (x + vCellW/4, y + vCellHt/2, x + vCellW, y + vCellHt/2);
++      break;
++
++    case STATE:
++      render_line (x, y + vCellHsep, x + vCellW/8, y + vCellHt/2);
++      render_line (x, y + vCellH, x + vCellW/8, y + vCellHt/2);
++      render_line (x + vCellW/8, y + vCellHt/2, x + vCellW, y + vCellHt/2);
++      break;
++    }
++    break;
++  
++  case STATE:
++    switch (last.type) {
++    default:
++      if (value.text != last.text) {
++	render_line (x, y + vCellHsep, x + vCellW/4, y + vCellH);
++	render_line (x, y + vCellH, x + vCellW/4, y + vCellHsep);
++	render_line (x + vCellW/4, y + vCellHsep, x + vCellW, y + vCellHsep);
++	render_line (x + vCellW/4, y + vCellH, x + vCellW, y + vCellH);
++	render_text (x + vCellW/4, y + vCellHtxt, value.text);
++      }
++      else {
++	render_line (x, y + vCellHsep, x + vCellW, y + vCellHsep);
++	render_line (x, y + vCellH, x + vCellW, y + vCellH);
++      }
++      break;
++
++    case ZERO:
++    case TICK:
++    case PULSE:
++      render_line (x, y + vCellH, x + vCellW/4, y + vCellHsep);
++      render_line (x + vCellW/4, y + vCellHsep, x + vCellW, y + vCellHsep);
++      render_line (x, y + vCellH, x + vCellW, y + vCellH);
++      render_text (x + vCellW/4, y + vCellHtxt, value.text);
++      break;
++    
++    case ONE:
++      render_line (x, y + vCellHsep, x + vCellW/4, y + vCellH);
++      render_line (x + vCellW/4, y + vCellH, x + vCellW, y + vCellH);
++      render_line (x, y + vCellHsep, x + vCellW, y + vCellHsep);
++      render_text (x + vCellW/4, y + vCellHtxt, value.text);
++      break;
++    
++    case Z:
++      render_line (x, y + vCellW/4, x + vCellW/8, y + vCellH);
++      render_line (x, y + vCellW/4, x + vCellW/8, y + vCellHsep);
++      render_line (x + vCellW/8, y + vCellH, x + vCellW, y + vCellH);
++      render_line (x + vCellW/8, y + vCellHsep, x + vCellW, y + vCellHsep);
++      render_text (x + vCellW/8, y + vCellHtxt, value.text);
++      break;
++    }
++  }
++}
++
++// ------------------------------------------------------------
++
++void cairodiagram::draw_dependency (double x0, double y0, double x1, double y1) {
++  m_context->save ();
++  m_context->set_source_rgb (0.0, 0.0, 1.0);
++
++  if (x0 == x1) {
++    double w = vCellW*(1.0/20), h = vCellHt*(1.0/6), h2 = vCellHt*(1.0/10);
++
++    if (y0 < y1) {
++      y1 -= vCellHt*(1.0/4);
++      render_line (x0, y0, x1, y1);
++      render_poly (x1, y1, x1 - w, y1 - h, x1, y1 - h2, x1 + w, y1 - h, true);
++    }
++    else {
++      y1 += vCellHt*(1.0/4);
++      render_line (x0, y0, x1, y1);
++      render_poly (x1, y1, x1 - w, y1 + h, x1, y1 + h2, x1 + w, y1 + h, true);
++    }
++  }
++  else {
++    double h = vCellHt*(1.0/10), w1 = vCellW*(1.0/12), w2 = vCellW*(1.0/20);
++    x1 -= vCellW*(1.0/16);
++    render_bezier (x0, y0, (x0 + x1) / 2, y1, (x0 + x1) / 2, y1, x1, y1);
++    render_poly (x1, y1, x1 - w1, y1 - h, x1 - w2, y1, x1 - w1, y1 + h, true);
++  }
++
++  m_context->restore ();
++}
++
++// ------------------------------------------------------------
++
++void cairodiagram::draw_delay (double x0, double y0, double x1, double y1, double y2, 
++			       const string &text) {
++  m_context->save ();
++  m_context->set_source_rgb (0.0, 0.0, 1.0);
++
++  if (x0 == x1) 
++    render_line (x0, y0, x1, y1);
++  else {
++    render_text (x0 + vCellWtsep, y2 - vCellHt*(1.0/16), text);
++    render_line (x0, y0, x0, y2 + vCellHt*(1.0/8));
++    render_line (x1, y1, x1, y2 - vCellHt*(1.0/8));
++    render_line (x0, y2, x1, y2);
++    render_poly (x1, y2, x1 - vCellW*(1.0/12), y2 - vCellHt*(1.0/10), x1 - vCellW*(1.0/20), y2, x1 - vCellW*(1.0/12), y2 + vCellHt*(1.0/10), true);
++  }
++  m_context->restore ();
++}
++
+Index: src/timing.h
+===================================================================
+RCS file: /cvsroot/drawtiming/drawtiming/src/timing.h,v
+retrieving revision 1.8
+diff -u -r1.8 timing.h
+--- src/timing.h	5 May 2007 16:26:58 -0000	1.8
++++ src/timing.h	7 Jul 2007 09:44:11 -0000
+@@ -24,6 +24,7 @@
+ #include <iostream>
+ #include <exception>
+ #include <Magick++.h>
++#include <cairomm/cairomm.h>
+ 
+ namespace timing {
+ 
+@@ -123,6 +124,36 @@
+     void render (const data &d, int w, int h, bool fixAspect);
+   };
+ 
++  class cairodiagram {
++    void draw_transition (double x, double y, const sigvalue &last, const sigvalue &value);
++    void draw_dependency (double x0, double y0, double x1, double y1);
++    void draw_delay (double x0, double y0, double x1, double y1, double y2, const std::string &text);
++    double label_width (const data &d) const;
++    void render_text (double xpos, double ypos, const std::string &text);
++    void render_line (double x1, double y1, double x2, double y2);
++    void render_poly (double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4, bool fill);
++    void render_bezier (double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4);
++    void stroke (void);
++    void render_common (const data &d);
++
++    Cairo::RefPtr<Cairo::Surface> m_surface;
++    Cairo::RefPtr<Cairo::Context> m_context;
++    double m_xmin, m_xmax, m_ymin, m_ymax;
++    double m_xscale, m_yscale;
++
++  public:
++    cairodiagram (void);
++    cairodiagram (const cairodiagram &);
++    cairodiagram &operator= (const cairodiagram &);
++    void set_scale (const data &d, double scale);
++    void set_scale (const data &d, int w, int h, bool fixAspect);
++    void render_to_svg (const data &d, const std::string& outfile);
++    void render_to_ps (const data &d, const std::string& outfile);
++    void render_to_pdf (const data &d, const std::string& outfile);
++    void render_to_png (const data &d, const std::string& outfile);
++	  
++  };
++
+ };
+ 
+ std::ostream &operator<< (std::ostream &f, const timing::data &d);

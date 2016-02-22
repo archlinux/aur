@@ -1,0 +1,203 @@
+--- src/main.cc	2009-04-02 20:01:53.000000000 -0700
++++ src/main.cc	2010-03-31 16:30:41.213731000 -0700
+@@ -35,6 +35,7 @@
+ #define FLAG_PAGESIZE 1
+ #define FLAG_SCALE 2
+ #define FLAG_ASPECT 4
++#define FLAG_HIGHLIGHT_ROWS 8
+ 
+ extern FILE *yyin;
+ extern int yydebug;
+@@ -61,7 +62,8 @@
+     OPT_SCALE,
+     OPT_PAGESIZE,
+     OPT_VERBOSE,
+-    OPT_VERSION
++    OPT_VERSION,
++    OPT_HIGHLIGHT_ROWS
+ };
+ 
+ #ifdef HAVE_GETOPT_H
+@@ -79,6 +81,7 @@
+   {"pagesize", required_argument, NULL, OPT_PAGESIZE},
+   {"verbose", no_argument, NULL, OPT_VERBOSE},
+   {"version", no_argument, NULL, OPT_VERSION},
++  {"highlight-rows",no_argument, NULL, OPT_HIGHLIGHT_ROWS},
+   {0, 0, 0, 0}
+ };
+ #endif
+@@ -87,9 +90,9 @@
+     		       int width, int height, double scale)
+ {
+   if (flags & FLAG_PAGESIZE)
+-    render (gc, data, width, height, (flags & FLAG_ASPECT));
++    render (gc, data, width, height, (flags & FLAG_ASPECT),(flags & FLAG_HIGHLIGHT_ROWS));
+   else
+-    render (gc, data, scale);
++    render (gc, data, scale,(flags & FLAG_HIGHLIGHT_ROWS));
+ }
+ 
+ int main (int argc, char *argv[]) {
+@@ -151,7 +154,10 @@
+     case 'w':
+     case OPT_CELL_WIDTH:
+       timing::vCellW = atoi (optarg);
+-      break;    
++      break;
++    case OPT_HIGHLIGHT_ROWS:
++      flags |= FLAG_HIGHLIGHT_ROWS;
++      break;
+     }
+ 
+   if (optind >= argc) {
+@@ -274,6 +280,8 @@
+        << "-v" << endl
+        << "--verbose" << endl
+        << "    Increases the quantity of diagnostic output." << endl
++       << "--highlight-rows" << endl
++       << "    Whether rows should be highlighted different colors for readability." << endl
+        << "-c" << endl
+        << "--cell-height" << endl
+        << "    Height of the signal (pixels) [48]." << endl
+diff -u -r src/timing.cc src/timing.cc
+--- src/timing.cc	2009-04-02 20:02:21.000000000 -0700
++++ src/timing.cc	2010-03-31 16:47:16.117173000 -0700
+@@ -603,19 +603,34 @@
+   gc.font (vFont);
+   gc.point_size (vFontPointsize);
+   gc.stroke_width (vLineWidth);
+-  gc.stroke_color ("black");
++  
+ 
+   int labelWidth = label_width (d);
+ 
+   // draw a "scope-like" diagram for each signal
+   map<signame,int> ypos;
+   int y = 0;
++  const int num_row_colors = 4;
++  string row_colors[] = { "white","grey", "white","CornflowerBlue"};
++  int cur_row_color_idx = 0;
+   for (signal_sequence::const_iterator i = d.sequence.begin ();
+        i != d.sequence.end (); ++ i) {
+     const sigdata &sig = d.find_signal (*i);
+-    push_text (gc, vCellWrm, y + vCellHtxt, *i);
+     ypos[*i] = y;
+     int x = labelWidth + vCellWtsep;
++    if (gc.highlightRows) {
++      string cur_row_color = row_colors[cur_row_color_idx];
++      gc.stroke_color (cur_row_color);
++      gc.fill_color(cur_row_color);
++      gc.drawrect(0,y,x+sig.data.size()*vCellW,y+vCellHt);
++      gc.stroke_color ("black");
++      gc.fill_color("black");
++      cur_row_color_idx++;
++      cur_row_color_idx = cur_row_color_idx%num_row_colors;
++    }
++    push_text (gc, vCellWrm, y + vCellHtxt, *i);
+     sigvalue last;
+     for (value_sequence::const_iterator j = sig.data.begin ();
+ 	 j != sig.data.end (); ++ j) {
+@@ -649,24 +664,26 @@
+ 
+ // ------------------------------------------------------------
+ 
+-void timing::render (gc &gc, const data &d, double scale) {
++void timing::render (gc &gc, const data &d, double scale, bool highlightRows) {
+   int base_width, base_height;
+   base_size (d, base_width, base_height);
+ 
+   gc.width = (int)(scale * base_width);
+   gc.height = (int)(scale * base_height);
++  gc.highlightRows = highlightRows;
+ 
+   render_common (gc, d, scale, scale);
+ }
+ 
+ // ------------------------------------------------------------
+ 
+-void timing::render (gc &gc, const data &d, int w, int h, bool fixAspect) {
++void timing::render (gc &gc, const data &d, int w, int h, bool fixAspect, bool highlightRows) {
+   int base_width, base_height;
+   base_size (d, base_width, base_height);
+ 
+   gc.width = w;
+   gc.height = h;
++  gc.highlightRows = highlightRows;
+ 
+   double hscale = w / (double)base_width;
+   double vscale = h / (double)base_height;
+@@ -715,6 +732,10 @@
+   drawables.push_back (DrawableLine (x1, y1, x2, y2));
+ }
+ 
++void magick_gc::drawrect(int x1, int y1, int x2, int y2) {
++  drawables.push_back (DrawableRectangle (x1,y1,x2,y2));
++}
++
+ // ------------------------------------------------------------
+ 
+ void magick_gc::point_size (int size) {
+@@ -831,6 +852,17 @@
+   ps_text << "stroke\n";
+ }
+ 
++void postscript_gc::drawrect(int x1, int y1, int x2, int y2) {
++  std::list<Magick::Coordinate> points;
++  points.push_back (Magick::Coordinate (x1, y1));
++  points.push_back (Magick::Coordinate (x1, y2));
++  points.push_back (Magick::Coordinate (x2, y2));
++  points.push_back (Magick::Coordinate (x2, y1));
++  points.push_back (Magick::Coordinate (x1, y1));
++  
++  polygon (points);
++}
++
+ // ------------------------------------------------------------
+ 
+ void postscript_gc::point_size (int size) {
+diff -u -r src/timing.h src/timing.h
+--- src/timing.h	2009-04-02 20:02:40.000000000 -0700
++++ src/timing.h	2010-03-31 16:47:43.243827000 -0700
+@@ -125,6 +125,7 @@
+   class gc {
+   public:
+     int width, height;
++    bool highlightRows;
+ 
+     gc (void) : width(0), height(0) { }
+     virtual ~gc() { }
+@@ -142,6 +143,7 @@
+     virtual void stroke_color (const std::string &name) = 0;
+     virtual void stroke_width (int w) = 0;
+     virtual void text (int x, int y, const std::string &text) = 0;
++    virtual void drawrect (int x1, int y1, int x2, int y2) = 0;
+   };
+ 
+ #ifndef LITE
+@@ -156,6 +158,7 @@
+     void fill_opacity (int op);
+     void font (const std::string &name);
+     void line (int x1, int y1, int x2, int y2);
++    void drawrect (int x1, int y1, int x2, int y2);
+     void point_size (int size);
+     void polygon (const std::list<Magick::Coordinate> &points);
+     void pop (void);
+@@ -181,6 +184,7 @@
+     void fill_opacity (int op);
+     void font (const std::string &name);
+     void line (int x1, int y1, int x2, int y2);
++    void drawrect (int x1, int y1, int x2, int y2);
+     void point_size (int size);
+     void polygon (const std::list<Magick::Coordinate> &points);
+     void pop (void);
+@@ -196,8 +200,8 @@
+     static bool has_ps_ext (const std::string& filename);
+   };
+ 
+-  void render (gc &gc, const data &d, double scale);
+-  void render (gc &gc, const data &d, int w, int h, bool fixAspect);
++  void render (gc &gc, const data &d, double scale, bool highlightRows);
++  void render (gc &gc, const data &d, int w, int h, bool fixAspect,bool highlightRows);
+ };
+ 
+ std::ostream &operator<< (std::ostream &f, const timing::data &d);

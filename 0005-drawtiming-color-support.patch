@@ -1,0 +1,183 @@
+Index: trunk/drawtiming/doc/drawtiming.1
+===================================================================
+--- trunk/drawtiming/doc/drawtiming.1	(revision 67)
++++ trunk/drawtiming/doc/drawtiming.1	(working copy)
+@@ -30,6 +30,9 @@
+ .Op Fl -aspect
+ .Op Fl -cell-height Ar H
+ .Op Fl -cell-width Ar W
++.Op Fl -color-bg Ar Cbg
++.Op Fl -color-fg Ar Cfg
++.Op Fl -color-dep Ar Cdp
+ .Op Fl -font-size Ar pts
+ .Op Fl -line-width Ar W
+ .Fl -output Ar target
+@@ -60,7 +63,13 @@
+ .It Fl -cell-height Ar H
+ Height of the each signal in pixels. Default is 32.
+ .It Fl -cell-width Ar W
+-Width for the time unit in pixels. Defaults is 64.
++Width for the time unit in pixels. Default is 64.
++.It Fl -color-bg Ar Cbg
++Background color name. Default is white.
++.It Fl -color-fg Ar Cfg
++Foreground color name. Default is black.
++.It Fl -color-dep Ar Cdp
++Dependency color name. Default is blue.
+ .It Fl -font-size Ar pts
+ Font size in pts. Default is 18.
+ .It Fl -line-width Ar W
+Index: trunk/drawtiming/src/main.cc
+===================================================================
+--- trunk/drawtiming/src/main.cc	(revision 67)
++++ trunk/drawtiming/src/main.cc	(working copy)
+@@ -52,6 +52,9 @@
+     OPT_CELL_WIDTH,
+     OPT_FONT,
+     OPT_FONT_SIZE,
++	OPT_COLOR_BACKGROUND,
++	OPT_COLOR_FOREGROUND,
++	OPT_COLOR_DEPEND,
+     OPT_HELP,
+     OPT_LINE_WIDTH,
+     OPT_OUTPUT,
+@@ -65,6 +68,9 @@
+   {"aspect", no_argument, NULL, OPT_ASPECT},
+   {"cell-height", required_argument, NULL, OPT_CELL_HEIGHT},
+   {"cell-width", required_argument, NULL, OPT_CELL_WIDTH},
++  {"color-bg", required_argument, NULL, OPT_COLOR_BACKGROUND},
++  {"color-fg", required_argument, NULL, OPT_COLOR_FOREGROUND},
++  {"color-dep", required_argument, NULL, OPT_COLOR_DEPEND},
+   {"font", required_argument, NULL, OPT_FONT},
+   {"font-size", required_argument, NULL, OPT_FONT_SIZE},
+   {"help", no_argument, NULL, OPT_HELP},
+@@ -94,6 +100,15 @@
+     case OPT_CELL_HEIGHT:
+       timing::vCellHt = atoi (optarg);
+       break;
++	case OPT_COLOR_BACKGROUND:
++	  timing::vColor_Bg=optarg;
++	  break;
++	case OPT_COLOR_FOREGROUND:
++	  timing::vColor_Fg=optarg;
++	  break;
++	case OPT_COLOR_DEPEND:
++	  timing::vColor_Dep=optarg;
++	  break;
+     case OPT_FONT:
+       timing::vFont = optarg;
+       break;
+@@ -188,7 +203,7 @@
+     else
+       diagram.render (data, scale);
+  
+-    Image img (Geometry (diagram.width, diagram.height), "white");
++    Image img (Geometry (diagram.width, diagram.height), timing::vColor_Bg);
+     img.draw (diagram);
+     img.write (outfile);
+   }
+@@ -251,7 +266,13 @@
+        << "-w" << endl
+        << "--cell-width" << endl
+        << "    Width of the time unit (pixels) [64]." << endl
+-       << "--font <name>" << endl
++       << "--color-bg" << endl
++	   << "    Background color name [white]." << endl
++       << "--color-fg" << endl
++	   << "    Foreground color name [black]." << endl
++       << "--color-dep" << endl
++	   << "    Dependency ground color name [blue]." << endl
++	   << "--font <name>" << endl
+        << "    Font [Helvetica]" << endl
+        << "-f" << endl
+        << "--font-size" << endl
+Index: trunk/drawtiming/src/timing.cc
+===================================================================
+--- trunk/drawtiming/src/timing.cc	(revision 67)
++++ trunk/drawtiming/src/timing.cc	(working copy)
+@@ -27,6 +27,9 @@
+ int timing::vCellHt = 32;
+ int timing::vCellW = 64;
+ string timing::vFont = "Helvetica";
++string timing::vColor_Bg = "white";
++string timing::vColor_Fg = "black";
++string timing::vColor_Dep = "blue";
+ 
+ static int vCellHsep, vCellH, vCellHtxt, vCellHdel, vCellHtdel, vCellWtsep,
+             vCellWrm;
+@@ -338,7 +341,7 @@
+   push_back (DrawableFont (vFont, AnyStyle, 100, AnyStretch));
+   push_back (DrawablePointSize (vFontPointsize));
+   push_back (DrawableStrokeWidth(vLineWidth));
+-  push_back (DrawableStrokeColor ("black"));
++  push_back (DrawableStrokeColor (timing::vColor_Fg));
+ 
+   int labelWidth = label_width (d);
+ 
+@@ -605,7 +608,7 @@
+   list<Coordinate> shaft, head;
+ 
+   push_back (DrawablePushGraphicContext ());
+-  push_back (DrawableStrokeColor ("blue"));
++  push_back (DrawableStrokeColor (timing::vColor_Dep));
+ 
+   if (x0 == x1) {
+     int w = vCellW/20, h = vCellHt/6, h2 = vCellHt/10;
+@@ -613,7 +616,7 @@
+     if (y0 < y1) {
+       y1 -= vCellHt/4;
+       push_back (DrawableLine (x0, y0, x1, y1));
+-      push_back (DrawableFillColor ("blue"));
++      push_back (DrawableFillColor (timing::vColor_Dep));
+       head.push_back (Coordinate (x1, y1));
+       head.push_back (Coordinate (x1 - w, y1 - h));
+       head.push_back (Coordinate (x1, y1 - h2));
+@@ -623,7 +626,7 @@
+     else {
+       y1 += vCellHt/4;
+       push_back (DrawableLine (x0, y0, x1, y1));
+-      push_back (DrawableFillColor ("blue"));
++      push_back (DrawableFillColor (timing::vColor_Dep));
+       head.push_back (Coordinate (x1, y1));
+       head.push_back (Coordinate (x1 - w, y1 + h));
+       head.push_back (Coordinate (x1, y1 + h2));
+@@ -641,7 +644,7 @@
+     shaft.push_back (Coordinate ((x0 + x1) / 2, y1));
+     shaft.push_back (Coordinate (x1, y1));
+     push_back (DrawableBezier (shaft));
+-    push_back (DrawableFillColor ("blue"));
++    push_back (DrawableFillColor (timing::vColor_Dep));
+     head.push_back (Coordinate (x1, y1));
+     head.push_back (Coordinate (x1 - w1, y1 - h));
+     head.push_back (Coordinate (x1 - w2, y1));
+@@ -659,7 +662,7 @@
+   list<Coordinate> head;
+ 
+   push_back (DrawablePushGraphicContext ());
+-  push_back (DrawableStrokeColor ("blue"));
++  push_back (DrawableStrokeColor (timing::vColor_Dep));
+ 
+   if (x0 == x1) 
+     push_back (DrawableLine (x0, y0, x1, y1));
+@@ -668,7 +671,7 @@
+     push_back (DrawableLine (x0, y0, x0, y2 + vCellHt/8));
+     push_back (DrawableLine (x1, y1, x1, y2 - vCellHt/8));
+     push_back (DrawableLine (x0, y2, x1, y2));
+-    push_back (DrawableFillColor ("blue"));
++    push_back (DrawableFillColor (timing::vColor_Dep));
+     head.push_back (Coordinate (x1, y2));
+     head.push_back (Coordinate (x1 - vCellW/12, y2 - vCellHt/10));
+     head.push_back (Coordinate (x1 - vCellW/20, y2));
+Index: trunk/drawtiming/src/timing.h
+===================================================================
+--- trunk/drawtiming/src/timing.h	(revision 67)
++++ trunk/drawtiming/src/timing.h	(working copy)
+@@ -43,7 +43,7 @@
+   typedef std::list<sigvalue> value_sequence;
+ 
+   extern int vFontPointsize, vLineWidth, vCellHt, vCellW;
+-  extern std::string vFont;
++  extern std::string vFont, vColor_Bg, vColor_Fg, vColor_Dep;
+ 
+   class exception : public std::exception {
+   };

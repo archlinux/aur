@@ -1,0 +1,263 @@
+Index: src/main.cc
+===================================================================
+--- src/main.cc	(revision 76)
++++ src/main.cc	(working copy)
+@@ -57,6 +57,7 @@
+     OPT_OUTPUT,
+     OPT_SCALE,
+     OPT_PAGESIZE,
++    OPT_TRANSITION_PERCENT,
+     OPT_VERBOSE,
+     OPT_VERSION
+ };
+@@ -72,6 +73,7 @@
+   {"output", required_argument, NULL, OPT_OUTPUT},
+   {"scale", required_argument, NULL, OPT_SCALE},
+   {"pagesize", required_argument, NULL, OPT_PAGESIZE},
++  {"transition", required_argument, NULL, OPT_TRANSITION_PERCENT},
+   {"verbose", no_argument, NULL, OPT_VERBOSE},
+   {"version", no_argument, NULL, OPT_VERSION},
+   {0, 0, 0, 0}
+@@ -128,6 +130,10 @@
+       flags |= FLAG_PAGESIZE;
+       sscanf (optarg, "%dx%d", &width, &height);
+       break;
++    case 't':
++    case OPT_TRANSITION_PERCENT:
++      sscanf (optarg, "%f", &timing::vCellTrans);
++      break;
+     case 'x':
+     case OPT_SCALE:
+       flags |= FLAG_SCALE;
+Index: src/timing.cc
+===================================================================
+--- src/timing.cc	(revision 76)
++++ src/timing.cc	(working copy)
+@@ -18,6 +18,7 @@
+ // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ 
+ #include "timing.h"
++#include <string.h>
+ #include <map>
+ #include <fstream>
+ using namespace std;
+@@ -28,6 +29,7 @@
+ int timing::vLineWidth = 1;
+ int timing::vCellHt = 32;
+ int timing::vCellW = 64;
++float timing::vCellTrans = 0.25;
+ string timing::vFont = "Helvetica";
+ 
+ static int vCellHsep, vCellH, vCellHtxt, vCellHdel, vCellHtdel, vCellWtsep,
+@@ -337,6 +339,8 @@
+ static void draw_transition (gc &gc, int x, int y, const sigvalue &last,
+ 			     const sigvalue &value) {
+ 
++  int transW = (int) (vCellW * vCellTrans);
++
+   switch (value.type) {
+   case ZERO:
+     switch (last.type) {
+@@ -345,17 +349,17 @@
+       break;
+ 
+     case ONE:
+-      gc.line (x, y + vCellHsep, x + vCellW/4, y + vCellH);
+-      gc.line (x + vCellW/4, y + vCellH, x + vCellW, y + vCellH);
++      gc.line (x, y + vCellHsep, x + transW, y + vCellH);
++      gc.line (x + transW, y + vCellH, x + vCellW, y + vCellH);
+       break;
+     
+     case Z:
+-      gc.line (x, y + vCellHt/2, x + vCellW/4, y + vCellH);
+-      gc.line (x + vCellW/4, y + vCellH, x + vCellW, y + vCellH);
++      gc.line (x, y + vCellHt/2, x + transW/2, y + vCellH);
++      gc.line (x + transW/2, y + vCellH, x + vCellW, y + vCellH);
+       break;
+ 
+     case STATE:
+-      gc.line (x, y + vCellHsep, x + vCellW/4, y + vCellH);
++      gc.line (x, y + vCellHsep, x + transW, y + vCellH);
+       gc.line (x, y + vCellH, x + vCellW, y + vCellH);
+       break;
+     }
+@@ -370,17 +374,17 @@
+     case ZERO:
+     case TICK:
+     case PULSE:
+-      gc.line (x, y + vCellH, x + vCellW/4, y + vCellHsep);
+-      gc.line (x + vCellW/4, y + vCellHsep, x + vCellW, y + vCellHsep);
++      gc.line (x, y + vCellH, x + transW, y + vCellHsep);
++      gc.line (x + transW, y + vCellHsep, x + vCellW, y + vCellHsep);
+       break;
+ 
+     case Z:
+-      gc.line (x, y + vCellHt/2, x + vCellW/4, y + vCellHsep);
+-      gc.line (x + vCellW/4, y + vCellHsep, x + vCellW, y + vCellHsep);
++      gc.line (x, y + vCellHt/2, x + transW/2, y + vCellHsep);
++      gc.line (x + transW/2, y + vCellHsep, x + vCellW, y + vCellHsep);
+       break;
+ 
+     case STATE:
+-      gc.line (x, y + vCellH, x + vCellW/4, y + vCellHsep);
++      gc.line (x, y + vCellH, x + transW, y + vCellHsep);
+       gc.line (x, y + vCellHsep, x + vCellW, y + vCellHsep);
+       break;
+     }
+@@ -390,42 +394,45 @@
+   case PULSE:
+     switch (last.type) {
+     default:
+-      gc.line (x, y + vCellH, x + vCellW/4, y + vCellHsep);
+-      gc.line (x + vCellW/4, y + vCellHsep, x + vCellW/2, y + vCellHsep);
+-      gc.line (x + vCellW/2, y + vCellHsep, x + vCellW*3/4, y + vCellH);
+-      gc.line (x + vCellW*3/4, y + vCellH, x + vCellW, y + vCellH);
++      gc.line (x, y + vCellH, x + transW, y + vCellHsep);
++      gc.line (x + transW, y + vCellHsep, x + vCellW/2, y + vCellHsep);
++      gc.line (x + vCellW/2, y + vCellHsep, x + vCellW/2 + transW, y + vCellH);
++      gc.line (x + vCellW/2 + transW, y + vCellH, x + vCellW, y + vCellH);
+       break;
+ 
+     case ONE:
+     case X:
+       gc.line (x, y + vCellHsep, x + vCellW/2, y + vCellHsep);
+-      gc.line (x + vCellW/2, y + vCellHsep, x + vCellW*3/4, y + vCellH);
+-      gc.line (x + vCellW*3/4, y + vCellH, x + vCellW, y + vCellH);
++      gc.line (x + vCellW/2, y + vCellHsep, x + vCellW/2 + transW, y + vCellH);
++      gc.line (x + vCellW/2 + transW, y + vCellH, x + vCellW, y + vCellH);
+       break;
+ 
+     case Z:
+-      gc.line (x, y + vCellHt/2, x + vCellW/4, y + vCellHsep);
+-      gc.line (x + vCellW/4, y + vCellHsep, x + vCellW/2, y + vCellHsep);
+-      gc.line (x + vCellW/2, y + vCellHsep, x + vCellW*3/4, y + vCellH);
+-      gc.line (x + vCellW*3/4, y + vCellH, x + vCellW, y + vCellH);
++      gc.line (x, y + vCellHt/2, x + transW, y + vCellHsep);
++      gc.line (x + transW, y + vCellHsep, x + vCellW/2, y + vCellHsep);
++      gc.line (x + vCellW/2, y + vCellHsep, x + vCellW/2 + transW, y + vCellH);
++      gc.line (x + vCellW/2 + transW, y + vCellH, x + vCellW, y + vCellH);
+       break;
+ 
+     case STATE:
+-      gc.line (x, y + vCellH, x + vCellW/4, y + vCellHsep);
++      gc.line (x, y + vCellH, x + transW, y + vCellHsep);
+       gc.line (x, y + vCellHsep, x + vCellW/2, y + vCellHsep);
+-      gc.line (x + vCellW/2, y + vCellHsep, x + vCellW*3/4, y + vCellH);
+-      gc.line (x + vCellW*3/4, y + vCellH, x + vCellW, y + vCellH);
++      gc.line (x + vCellW/2, y + vCellHsep, x + vCellW/2 + transW, y + vCellH);
++      gc.line (x + vCellW/2 + transW, y + vCellH, x + vCellW, y + vCellH);
+       break;
+     }
+     break;
+   
+   case UNDEF:
+   case X:
+-    for (int i = 0; i < 4; ++ i) {
+-      gc.line (x+i*(vCellW/4), y + vCellH,
+-	       x+(i+1)*(vCellW/4), y + vCellHsep);
+-      gc.line (x+i*(vCellW/4), y + vCellHsep,
+-	       x+(i+1)*(vCellW/4), y + vCellH);
++    int n, w;
++    n = (int) (1.0 / vCellTrans); // calculate the number of transitions
++    w = (int) (vCellW / n);       // calculate the step size
++    for (int i = 0; i < n; ++ i) {
++      gc.line (x+i*vCellW/n, y + vCellH,
++	       x+(i+1)*vCellW/n, y + vCellHsep);
++      gc.line (x+i*vCellW/n, y + vCellHsep,
++	       x+(i+1)*vCellW/n, y + vCellH);
+     }
+     break;
+   
+@@ -438,19 +445,19 @@
+     case ZERO:
+     case TICK:
+     case PULSE:
+-      gc.line (x, y + vCellH, x + vCellW/4, y + vCellHt/2);
+-      gc.line (x + vCellW/4, y + vCellHt/2, x + vCellW, y + vCellHt/2);
++      gc.line (x, y + vCellH, x + transW/2, y + vCellHt/2);
++      gc.line (x + transW/2, y + vCellHt/2, x + vCellW, y + vCellHt/2);
+       break;
+ 
+     case ONE:
+-      gc.line (x, y + vCellHsep, x + vCellW/4, y + vCellHt/2);
+-      gc.line (x + vCellW/4, y + vCellHt/2, x + vCellW, y + vCellHt/2);
++      gc.line (x, y + vCellHsep, x + transW/2, y + vCellHt/2);
++      gc.line (x + transW/2, y + vCellHt/2, x + vCellW, y + vCellHt/2);
+       break;
+ 
+     case STATE:
+-      gc.line (x, y + vCellHsep, x + vCellW/8, y + vCellHt/2);
+-      gc.line (x, y + vCellH, x + vCellW/8, y + vCellHt/2);
+-      gc.line (x + vCellW/8, y + vCellHt/2, x + vCellW, y + vCellHt/2);
++      gc.line (x, y + vCellHsep, x + transW/2, y + vCellHt/2);
++      gc.line (x, y + vCellH, x + transW/2, y + vCellHt/2);
++      gc.line (x + transW/2, y + vCellHt/2, x + vCellW, y + vCellHt/2);
+       break;
+     }
+     break;
+@@ -459,11 +466,11 @@
+     switch (last.type) {
+     default:
+       if (value.text != last.text) {
+-	gc.line (x, y + vCellHsep, x + vCellW/4, y + vCellH);
+-	gc.line (x, y + vCellH, x + vCellW/4, y + vCellHsep);
+-	gc.line (x + vCellW/4, y + vCellHsep, x + vCellW, y + vCellHsep);
+-	gc.line (x + vCellW/4, y + vCellH, x + vCellW, y + vCellH);
+-	push_text (gc, x + vCellW/4, y + vCellHtxt, value.text);
++	gc.line (x, y + vCellHsep, x + transW, y + vCellH);
++	gc.line (x, y + vCellH, x + transW, y + vCellHsep);
++	gc.line (x + transW, y + vCellHsep, x + vCellW, y + vCellHsep);
++	gc.line (x + transW, y + vCellH, x + vCellW, y + vCellH);
++	push_text (gc, x + transW, y + vCellHtxt, value.text);
+       }
+       else {
+ 	gc.line (x, y + vCellHsep, x + vCellW, y + vCellHsep);
+@@ -474,25 +481,25 @@
+     case ZERO:
+     case TICK:
+     case PULSE:
+-      gc.line (x, y + vCellH, x + vCellW/4, y + vCellHsep);
+-      gc.line (x + vCellW/4, y + vCellHsep, x + vCellW, y + vCellHsep);
++      gc.line (x, y + vCellH, x + transW, y + vCellHsep);
++      gc.line (x + transW, y + vCellHsep, x + vCellW, y + vCellHsep);
+       gc.line (x, y + vCellH, x + vCellW, y + vCellH);
+-      push_text (gc, x + vCellW/4, y + vCellHtxt, value.text);
++      push_text (gc, x + transW, y + vCellHtxt, value.text);
+       break;
+     
+     case ONE:
+-      gc.line (x, y + vCellHsep, x + vCellW/4, y + vCellH);
+-      gc.line (x + vCellW/4, y + vCellH, x + vCellW, y + vCellH);
++      gc.line (x, y + vCellHsep, x + transW, y + vCellH);
++      gc.line (x + transW, y + vCellH, x + vCellW, y + vCellH);
+       gc.line (x, y + vCellHsep, x + vCellW, y + vCellHsep);
+-      push_text (gc, x + vCellW/4, y + vCellHtxt, value.text);
++      push_text (gc, x + transW, y + vCellHtxt, value.text);
+       break;
+     
+     case Z:
+-      gc.line (x, y + vCellW/4, x + vCellW/8, y + vCellH);
+-      gc.line (x, y + vCellW/4, x + vCellW/8, y + vCellHsep);
+-      gc.line (x + vCellW/8, y + vCellH, x + vCellW, y + vCellH);
+-      gc.line (x + vCellW/8, y + vCellHsep, x + vCellW, y + vCellHsep);
+-      push_text (gc, x + vCellW/8, y + vCellHtxt, value.text);
++      gc.line (x, y + transW, x + transW/2, y + vCellH);
++      gc.line (x, y + transW, x + transW/2, y + vCellHsep);
++      gc.line (x + transW/2, y + vCellH, x + vCellW, y + vCellH);
++      gc.line (x + transW/2, y + vCellHsep, x + vCellW, y + vCellHsep);
++      push_text (gc, x + transW/2, y + vCellHtxt, value.text);
+       break;
+     }
+   }
+Index: src/timing.h
+===================================================================
+--- src/timing.h	(revision 76)
++++ src/timing.h	(working copy)
+@@ -45,6 +45,7 @@
+   typedef std::list<sigvalue> value_sequence;
+ 
+   extern int vFontPointsize, vLineWidth, vCellHt, vCellW;
++  extern float vCellTrans;
+   extern std::string vFont;
+ 
+   class exception : public std::exception {

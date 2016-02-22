@@ -1,0 +1,62 @@
+Description: Fix typos and hyphenation
+Author: أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@sabily.org>
+Forwarded: yes
+--- a/doc/drawtiming.1
++++ b/doc/drawtiming.1
+@@ -56,7 +56,7 @@
+ .It Fl -pagesize Ar WidthxHeight
+ Scale the diagram to fit given image size.
+ .It Fl -aspect
+-Maintain fixed aspect ratio if --pagesize given.
++Maintain fixed aspect ratio if \-\-pagesize given.
+ .It Fl -cell-height Ar H
+ Height of the each signal in pixels. Default is 32.
+ .It Fl -cell-width Ar W
+@@ -101,23 +101,23 @@
+ changing its value.
+ .El
+ .Pp
+-Statements are seperated by the following symbols:
++Statements are separated by the following symbols:
+ .Bl -tag -width "-tD>"
+ .It ,
+-The comma seperator is used to seperate statements without
++The comma separator is used to separate statements without
+ affecting the dependency list or clock (ie: the next statement will
+ add to the dependency list).
+ .It ;
+-The semicolon seperator resets the list of dependencies without
++The semicolon separator resets the list of dependencies without
+ incrementing the clock
+ .It .
+-The period seperator resets the list of dependencies and
++The period separator resets the list of dependencies and
+ increments the clock.
+ .It =>
+-The "causes" seperator renders dependency arrows based on the
++The "causes" separator renders dependency arrows based on the
+ current list of dependencies and then resets the dependency list.
+ .It -tD>
+-The "delay" seperator renders a delay arrow from the last dependency
++The "delay" separator renders a delay arrow from the last dependency
+ with the annotation 
+ .Em tD .
+ .El
+@@ -173,7 +173,7 @@
+ value if their initial value is not given.  
+ .Pp
+ Independent signal transitions which occur simultaneously are normally
+-seperated by commas. Since signals aren't normally expected to change
++separated by commas. Since signals aren't normally expected to change
+ simultaneously, the initial state is a good example of this:
+ .Pp
+ .Dl POWER=0, FIRE=0, ARMED=0, LED=OFF, COUNT=N.
+@@ -194,7 +194,7 @@
+ .Pp
+ .Dl POWER=1 => LED=GREEN.
+ .Pp
+-For signal state changes with multiple dependencies, seperate the
++For signal state changes with multiple dependencies, separate the
+ dependencies with commas:
+ .Pp
+ .Dl FIRE, ARMED => LED=RED.
