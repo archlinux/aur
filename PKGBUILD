@@ -2,8 +2,8 @@
 # Contributor : Martin Wimpress <code@flexion.org>
 
 pkgname=anaconda2
-pkgver=2.4.1
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="Completely free enterprise-ready Python distribution for large-scale data processing, predictive analytics, and scientific computing."
 arch=('x86' 'x86_64')
 url="https://store.continuum.io/cshop/anaconda/"
@@ -14,17 +14,17 @@ source=("https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.r
         "installer_sh_x86_64.patch"
         "conda_install.patch")
 options=(!strip libtool)
-sha256sums=('2de682c96edf8cca2852071a84ff860025fbe8c502218e1995acd5ab47e8c9ac'
-            '933adf7382c1cec6ccb9fd7353af65cce930d633c9054baf92ab81f6d166cce8'
-            'a5d8453a4bcb212413787ca1d23a52646b1a3e2af4dd7976be1fede7eed8cf17'
-            '638396f9d6505c329dcf01867694776425b7df95125e014ffbd949617469600b')
+sha256sums=('e10abf459cde4a838bd6fc5ca03023c3401b81ad470627acde5a298d56715321'
+            '5cd27f17ac85831632a9992f68d88bf8955522f5d6351696a636100c2b1c5fa1'
+            'f75c754a1893aeb2c999e0a278faec0dadb03fc0a99500f2ce15390b9dce04cd'
+            '9d7f6fe1106a1c2c0727c0cca3c34861ef59de1f25a0702df9489595032d940e')
 _pythonver='2.7.11-0'
-_condaver='3.18.8'
+_condaver='3.19.1'
 
 _pkgarch=`uname -m`
 if [ "$CARCH" == "x86" ]; then
     _pkgarch="x86"
-    sha256sums[0]='2388cc714567afe7697bf43b4063ff0ea2150a71b9beb17f75bc7e4879d9bf28'
+    sha256sums[0]='4911047df51c46661f551d6022aee21a7e5d31df051d3433b8ff3ea3c2e771bb'
     source[0]="https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda2-${pkgver}-Linux-x86.sh"
 fi
 
@@ -40,6 +40,6 @@ package() {
     cd $prefix
     patch -p1 < $srcdir/conda_install.patch
     CONDA_INSTALL="$prefix/pkgs/conda-${_condaver}-py27_0/lib/python2.7/site-packages/conda/install.py"
-    $prefix/pkgs/python-${_pythonver}/bin/python -E $CONDA_INSTALL --prefix=$prefix --instdir=/opt/${pkgname} --pkgs-dir=$prefix/pkgs --link-all || exit 1
+    $prefix/pkgs/python-${_pythonver}/bin/python -E -s $CONDA_INSTALL --prefix=$prefix --instdir=/opt/${pkgname} --file=conda-meta/.ilan || exit 1
     install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
