@@ -1,0 +1,20 @@
+diff --git a/PirateScope b/PirateScope
+index c71203f..c9d1f6e 100755
+--- a/PirateScope
++++ b/PirateScope
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ # PirateScope - Oscilloscope script for Dangerous Prototypes' Bus Pirate
+ # Copyright (C) 2010 Tim Vaughan
+@@ -16,6 +16,9 @@
+ # You should have received a copy of the GNU General Public License
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
++import wxversion
++wxversion.select('2.8')
++
+ import wx
+ from wx.lib import plot
+ from wx.lib.wordwrap import wordwrap
