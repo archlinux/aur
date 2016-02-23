@@ -2,7 +2,7 @@
 
 _pkgname=qotd
 pkgname=$_pkgname-git
-pkgver=0.3.0_3_g6af5f4c.6af5f4c
+pkgver=0.3.0_5_g363e9da.363e9da
 pkgrel=1
 pkgdesc="A simple QOTD (quote of the day) daemon."
 arch=('any')
@@ -17,6 +17,7 @@ options=()
 install="$pkgname.install"
 source=("git+https://github.com/ammongit/$_pkgname.git")
 sha256sums=('SKIP')
+backup=('etc/qotd.conf' 'usr/share/qotd/quotes.txt')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
