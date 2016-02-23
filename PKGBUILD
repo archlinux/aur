@@ -10,11 +10,11 @@
 # Any suggestions welcome; please submit paches via Github:
 # https://github.com/alerque/aur/tree/master/git-annex-bin
 #
-# Warning: some builds not up-to-date: x86_64: 6.20160217, i686: 6.20160217, armv6h: 6.20160204
+# Warning: some builds not up-to-date: x86_64: 6.20160217, i686: 6.20160217, armv6h: 6.20160221
 
 
 pkgname=git-annex-bin
-pkgver=6.20160217
+pkgver=6.20160221
 pkgrel=1
 pkgdesc='Standalone precompiled version of git-annex with no Haskell dependencies, batteries included.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'arm')
@@ -54,7 +54,7 @@ _file_armv6h="git-annex-standalone-armel-${pkgver}.tar.gz"
 _url_armv6h="https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-armel.tar.gz"
 source_armv6h=("${_file_armv6h}::${_url_armv6h}"
                "${_file_armv6h}.sig::${_url_armv6h}.sig")
-sha256sums_armv6h=('6f0e6485b30c2045a550fcb8cb4ea3516cde1066a3976e1d4630e7091bdccd5f'
+sha256sums_armv6h=('e7091319203c39a4947c91b08ba942d159176510fe72bb3a3d9959a031f57575'
                    'SKIP')
 
 source_arm=(${source_armv6h[@]})
