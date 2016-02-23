@@ -1,4 +1,4 @@
-From 62db744f4cbdf50533f10595a0e0bf834f1f55ef Mon Sep 17 00:00:00 2001
+From bd42a8f1017b0b456ce8dc2fe0e8c2eb7fd3d2c7 Mon Sep 17 00:00:00 2001
 From: Donavan Lance <tusklahoma@gmail.com>
 Date: Mon, 2 Nov 2015 16:06:40 -0500
 Subject: [PATCH] Add multitouch support for Microsoft Type Cover 3
@@ -12,22 +12,23 @@ Maintainer: Donavan Lance <tusklahoma@gmail.com>
 
 Signed-off-by: Donavan Lance <tusklahoma@gmail.com>
 ---
- drivers/hid/hid-core.c          | 10 ++--------
+ drivers/hid/hid-core.c          |  8 ++------
  drivers/hid/hid-ids.h           |  4 ++++
- drivers/hid/hid-microsoft.c     |  6 ------
+ drivers/hid/hid-microsoft.c     |  8 --------
  drivers/hid/hid-multitouch.c    | 27 +++++++++++++++++++++++++++
  drivers/hid/usbhid/hid-quirks.c |  4 ++++
  5 files changed, 37 insertions(+), 14 deletions(-)
 
 diff --git a/drivers/hid/hid-core.c b/drivers/hid/hid-core.c
-index 70a11ac..5217ce6 100644
+index c6f7a69..45658e4 100644
 --- a/drivers/hid/hid-core.c
 +++ b/drivers/hid/hid-core.c
-@@ -724,12 +724,9 @@ static void hid_scan_collection(struct hid_parser *parser, unsigned type)
+@@ -724,13 +724,9 @@ static void hid_scan_collection(struct hid_parser *parser, unsigned type)
  		hid->group = HID_GROUP_SENSOR_HUB;
- 
+
  	if (hid->vendor == USB_VENDOR_ID_MICROSOFT &&
 -	    (hid->product == USB_DEVICE_ID_MS_TYPE_COVER_PRO_3 ||
+-	     hid->product == USB_DEVICE_ID_MS_TYPE_COVER_PRO_3_2 ||
 -	     hid->product == USB_DEVICE_ID_MS_TYPE_COVER_PRO_3_JP ||
 -	     hid->product == USB_DEVICE_ID_MS_TYPE_COVER_3 ||
 -	     hid->product == USB_DEVICE_ID_MS_POWER_COVER) &&
@@ -35,25 +36,26 @@ index 70a11ac..5217ce6 100644
  	    hid->group == HID_GROUP_MULTITOUCH)
 -		hid->group = HID_GROUP_GENERIC;
 +			hid->group = HID_GROUP_GENERIC;
- 
+
  	if ((parser->global.usage_page << 16) == HID_UP_GENDESK)
  		for (i = 0; i < parser->local.usage_index; i++)
-@@ -1927,9 +1924,6 @@ static const struct hid_device_id hid_have_special_driver[] = {
+@@ -1927,10 +1924,6 @@ static const struct hid_device_id hid_have_special_driver[] = {
  	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_DIGITAL_MEDIA_3K) },
  	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_WIRELESS_OPTICAL_DESKTOP_3_0) },
  	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_OFFICE_KB) },
 -	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_TYPE_COVER_PRO_3) },
+-	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_TYPE_COVER_PRO_3_2) },
 -	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_TYPE_COVER_PRO_3_JP) },
 -	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_TYPE_COVER_3) },
  	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_POWER_COVER) },
  	{ HID_USB_DEVICE(USB_VENDOR_ID_MONTEREY, USB_DEVICE_ID_GENIUS_KB29E) },
  	{ HID_USB_DEVICE(USB_VENDOR_ID_MSI, USB_DEVICE_ID_MSI_GT683R_LED_PANEL) },
 diff --git a/drivers/hid/hid-ids.h b/drivers/hid/hid-ids.h
-index f769208..1982896 100644
+index ac1feea..9e46b89 100644
 --- a/drivers/hid/hid-ids.h
 +++ b/drivers/hid/hid-ids.h
-@@ -681,6 +681,10 @@
- #define USB_DEVICE_ID_MS_TYPE_COVER_PRO_3    0x07dc
+@@ -688,6 +688,10 @@
+ #define USB_DEVICE_ID_MS_TYPE_COVER_PRO_3_2  0x07e2
  #define USB_DEVICE_ID_MS_TYPE_COVER_PRO_3_JP 0x07dd
  #define USB_DEVICE_ID_MS_TYPE_COVER_3    0x07de
 +#define USB_DEVICE_ID_MS_TYPE_COVER_3_2  0x07e2
@@ -61,17 +63,19 @@ index f769208..1982896 100644
 +#define USB_DEVICE_ID_MS_TYPE_COVER_4_2  0x07e8
 +#define USB_DEVICE_ID_MS_SURFACE_BOOK    0x07cd
  #define USB_DEVICE_ID_MS_POWER_COVER     0x07da
- 
+
  #define USB_VENDOR_ID_MOJO		0x8282
 diff --git a/drivers/hid/hid-microsoft.c b/drivers/hid/hid-microsoft.c
-index 9aa3515..3110927 100644
+index 77a2cf3..3110927 100644
 --- a/drivers/hid/hid-microsoft.c
 +++ b/drivers/hid/hid-microsoft.c
-@@ -276,12 +276,6 @@ static const struct hid_device_id ms_devices[] = {
+@@ -276,14 +276,6 @@ static const struct hid_device_id ms_devices[] = {
  		.driver_data = MS_NOGET },
  	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_COMFORT_MOUSE_4500),
  		.driver_data = MS_DUPLICATE_USAGES },
 -	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_TYPE_COVER_PRO_3),
+-		.driver_data = MS_HIDINPUT },
+-	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_TYPE_COVER_PRO_3_2),
 -		.driver_data = MS_HIDINPUT },
 -	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_TYPE_COVER_PRO_3_JP),
 -		.driver_data = MS_HIDINPUT },
@@ -79,15 +83,15 @@ index 9aa3515..3110927 100644
 -		.driver_data = MS_HIDINPUT },
  	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_POWER_COVER),
  		.driver_data = MS_HIDINPUT },
- 
+
 diff --git a/drivers/hid/hid-multitouch.c b/drivers/hid/hid-multitouch.c
-index 426b2f1..992a79e 100644
+index 3d664d0..5fcd5ce 100644
 --- a/drivers/hid/hid-multitouch.c
 +++ b/drivers/hid/hid-multitouch.c
-@@ -1274,6 +1274,33 @@ static const struct hid_device_id mt_devices[] = {
+@@ -1330,6 +1330,33 @@ static const struct hid_device_id mt_devices[] = {
  		MT_USB_DEVICE(USB_VENDOR_ID_ILITEK,
  			USB_DEVICE_ID_ILITEK_MULTITOUCH) },
- 
+
 +	/* Microsoft Type Cover 3 */
 +	{ .driver_data = MT_CLS_EXPORT_ALL_INPUTS,
 +		MT_USB_DEVICE(USB_VENDOR_ID_MICROSOFT,
@@ -119,11 +123,11 @@ index 426b2f1..992a79e 100644
  	{ .driver_data = MT_CLS_CONFIDENCE_MINUS_ONE,
  		MT_USB_DEVICE(USB_VENDOR_ID_ASUS,
 diff --git a/drivers/hid/usbhid/hid-quirks.c b/drivers/hid/usbhid/hid-quirks.c
-index 1dff8f0..905a7b2 100644
+index 94bb137..48c1d8d 100644
 --- a/drivers/hid/usbhid/hid-quirks.c
 +++ b/drivers/hid/usbhid/hid-quirks.c
-@@ -93,6 +93,10 @@ static const struct hid_blacklist {
- 	{ USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_TYPE_COVER_PRO_3, HID_QUIRK_NO_INIT_REPORTS },
+@@ -95,6 +95,10 @@ static const struct hid_blacklist {
+ 	{ USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_TYPE_COVER_PRO_3_2, HID_QUIRK_NO_INIT_REPORTS },
  	{ USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_TYPE_COVER_PRO_3_JP, HID_QUIRK_NO_INIT_REPORTS },
  	{ USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_TYPE_COVER_3, HID_QUIRK_NO_INIT_REPORTS },
 +	{ USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_TYPE_COVER_3_2, HID_QUIRK_NO_INIT_REPORTS },
@@ -133,6 +137,5 @@ index 1dff8f0..905a7b2 100644
  	{ USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_POWER_COVER, HID_QUIRK_NO_INIT_REPORTS },
  	{ USB_VENDOR_ID_MSI, USB_DEVICE_ID_MSI_GT683R_LED_PANEL, HID_QUIRK_NO_INIT_REPORTS },
  	{ USB_VENDOR_ID_NEXIO, USB_DEVICE_ID_NEXIO_MULTITOUCH_PTI0750, HID_QUIRK_NO_INIT_REPORTS },
--- 
+--
 2.5.0
-

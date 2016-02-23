@@ -3,8 +3,8 @@
 
 pkgbase=linux-surfacepro3
 _srcname=linux-4.4
-pkgver=4.4
-pkgrel=1
+pkgver=4.4.1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/matthewwardrop/linux-surfacepro3"
 license=('GPL2')
@@ -12,25 +12,39 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
+	'0001-sdhci-revert.patch'
+        'tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch'
+        '0001-4.4-revert-btrfs.patch'
+        '0001-4.4-revert-xfs.patch'
         'cam.patch'
-        'multitouch.patch')
+        'multitouch.patch'
+	'touchscreen_multitouch_fixes1.patch'
+	'touchscreen_multitouch_fixes2.patch')
 
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            'd402c67f5a7334ac9e242344055ef4ac63fe43a1d8f1cda82eddd59d7242a63e'
-            'ddeadf2910deb0803d4d4920c4dc7f07d3fb63bca564073aeb5f6181358f20d7'
+            'c0218043e61da3921cd14579ae4a8774a6fdad91667a9fdb851d0a35f62edb48'
+            'SKIP'
+            'fbbae1d873900e84d1b7ef00593fbb94fc79f078a34b22ee824bab8b0a92be64'
+            '756a168bbc3bb582f0df45b977c32af53658f21d62fe15171c9ac85f52d8852a'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'            
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
+            'ab57037ecee0a425c612babdff47c831378bca0bff063a1308599989a350226d'
+            '51586b733e9f178bebe577258b6057b035eded516ffe8bf8bbb26cb0b26c4958'
+            'ffbfaa192d17bfc7c6293aa9a07efe57f65177051ae3d8033d5e45a7bca2e0ad'
             'a6c5c5dc3fa3e35e9eb762c36c4596f889df7c52be8d0533d697e47786fdef32'
-            '225e349648b6b23e5a4e127088518af277cb1cbb14627020d2040492651552e8'
-            )
+            '15dab036d5595403a1faf13e0dbd5ddedfc1f7e9e855971b69f8012cb0bb8d58'
+            'cc78e8844d9ec4bd29cce392a3e4683061646e1ad7c100c4958a5cadabb25b52'
+            '34b4e00ffcf9efc43ab47444d14febb94432d340d0f1d5bcd56153879d1be113')
+
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -43,16 +57,43 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  #patch -p1 -i "${srcdir}/patch-${pkgver}"
+  patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
+  # revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=9faac7b95ea4f9e83b7a914084cc81ef1632fd91
+  # fixes #47778 sdhci broken on some boards
+  # https://bugzilla.kernel.org/show_bug.cgi?id=106541
+  patch -Rp1 -i "${srcdir}/0001-sdhci-revert.patch"
+
+  # fixes #47805 kernel panics on platform modules
+  # https://bugzilla.kernel.org/show_bug.cgi?id=110751
+  patch -Np1 -i "${srcdir}/tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch"
+
+  # #47757 fix broken suspend from btrfs and xfs
+  patch -Np1 -i "${srcdir}/0001-4.4-revert-xfs.patch"
+  patch -Np1 -i "${srcdir}/0001-4.4-revert-btrfs.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
-  
+
+  # This patch adds explicit support for Surface Pro 3 cameras.
+  patch -p1 -i "${srcdir}/cam.patch"
+
+  # This patch adds multitouch support for the surface pro 3
+  # keyboard cover.
+  if [[ $multitouch = 'y' ]]; then
+    patch -p1 -i "${srcdir}/multitouch.patch"
+  fi
+
+  # These patches work around buggy hardware implementations
+  # in the surface pro 3 touchscreen module.
+  patch -p1 -i "${srcdir}/touchscreen_multitouch_fixes1.patch"
+  patch -p1 -i "${srcdir}/touchscreen_multitouch_fixes2.patch"
+
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
   else
@@ -265,6 +306,11 @@ _package-headers() {
 
   # remove unneeded architectures
   rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
+
+  # remove a files already in linux-docs package
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-01"
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-02"
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.select-break"
 }
 
 _package-docs() {
