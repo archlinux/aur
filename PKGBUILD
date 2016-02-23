@@ -2,7 +2,7 @@
 
 pkgname=rocketchat-client
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The Ultimate Open Source Web Chat Platform"
 arch=('x86_64')
 license=('The MIT License (MIT)')
