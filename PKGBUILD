@@ -9,6 +9,8 @@ url="http://www.shashlik.io"
 license=('GPL')
 depends=('python' 'lib32-libgl')
 makedepends=('deb2targz')
+conflicts=('shashlik')
+provides=('shashlik')
 source=("http://static.davidedmundson.co.uk/shashlik/shashlik_${pkgver}.deb")
 sha256sums=('888c535a9ff2e8563712cbe0fa3a208ccb21f9f90d66a434fb4c40fce6404520')
  
