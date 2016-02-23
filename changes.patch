@@ -276,10 +276,10 @@ index 8ee2014..01425fc 100644
  def is_development_version(version):
      return "-" in version and not is_prerelease_version(version)
 diff --git a/src/fa/game_process.py b/src/fa/game_process.py
-index 331a785..250d284 100644
+index 9052f31..54666ff 100644
 --- a/src/fa/game_process.py
 +++ b/src/fa/game_process.py
-@@ -40,7 +40,17 @@ class GameProcess(QtCore.QProcess):
+@@ -41,7 +41,17 @@ class GameProcess(QtCore.QProcess):
  
              executable = os.path.join(config.Settings.get('game/bin/path'),
                                        "ForgedAlliance.exe")
