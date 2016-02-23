@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=QSyncthingTray
+Comment=Desktop wrapper for Syncthing
+Exec=QSyncthingTray %U
+Icon=qsyncthingtray
+StartupNotify=false
+Categories=Network;Internet;
+Type=Application
