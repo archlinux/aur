@@ -9,7 +9,7 @@ license=('AGPL')
 depends=('r')
 makedepends=('git' 'python2' 'cmake' 'r')
 install='accounts.install'
-backup='shiny-server.conf'
+backup=('shiny-server.conf')
 source=('shiny-server::git+https://github.com/rstudio/shiny-server.git' 
         'shiny-server.service')
 pkver(){
