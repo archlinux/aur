@@ -9,6 +9,7 @@ url='https://projects.kde.org/projects/frameworks/khtml'
 license=(LGPL)
 depends=(kparts-git kjs-git giflib)
 makedepends=(extra-cmake-modules-git git)
+optdepends=(java-environment)
 groups=(kf5-aids)
 conflicts=(khtml)
 provides=(khtml)
