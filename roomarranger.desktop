@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Room Arranger
+MimeType=application/com.roomarranger.project;application/com.roomarranger.object;
+GenericName=Design your room, office, appartment, house.
+Exec=rooarr_run.sh
+Path=/opt/rooarr-bin
+Icon=roomarranger-icon
+Type=Application
+Terminal=false
+Categories=Graphics;3D;Design
+StartupNotify=true
