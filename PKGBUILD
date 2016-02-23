@@ -18,14 +18,14 @@
 _sysroot=/mnt/pi
 
 # Options
-_skip_web_engine=false
+_skip_web_engine=true
 _static_build=false
 _build_from_head=false
 _local_qt5_repo="/opt/dev/src/qtproject/qt5"
 _wayland_compositor=true
 
 pkgver=5.6.0
-pkgrel=7
+pkgrel=8
 
 # PKGBUILD
 _piver=2
@@ -46,7 +46,7 @@ pkgname="${_pkgname}${_piver}"
 _packaginguser=$(whoami)
 _libspkgname="${pkgname}-target-libs"
 _mkspec="linux-rpi${_piver}-g++"
-_pkgver=${pkgver}-beta
+_pkgver=${pkgver}-rc
 _baseprefix=/opt
 _installprefix=${_baseprefix}/${pkgname}
 _source_package_name=qt-everywhere-opensource-src-${_pkgver}
@@ -56,8 +56,8 @@ url="http://www.qt.io"
 license=("LGPL3" "GPL3")
 depends=("qpi-toolchain" "qtcreator")
 makedepends=("git" "pkgconfig" "gcc")
-source=("git://github.com/sirspudd/mkspecs.git" "https://download.qt.io/development_releases/qt/5.6/${_pkgver}/single/${_source_package_name}.tar.gz")
-sha256sums=("SKIP" "d69103ec34b3775edfa47581b14ee9a20789d4b0d7d26220fb92f2cd32eb06f9")
+source=("git://github.com/sirspudd/mkspecs.git" "https://download.qt.io/development_releases/qt/5.6/${_pkgver}/single/${_source_package_name}.7z")
+sha256sums=("SKIP" "82ed4bc1bf7735747e1612f322f8723dfd84f05fa4dca9398863e6527a0c1971")
 options=('!strip')
 install=qpi.install
 _fully_qualified_install_script="${startdir}/${install}"
@@ -167,7 +167,6 @@ fi
     -no-xcb \
     \
     -skip qtscript \
-    -skip qtquickcontrols2 \
     \
     -sysroot ${_sysroot} \
     -device ${_mkspec} \
