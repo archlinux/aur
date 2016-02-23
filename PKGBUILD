@@ -1,7 +1,9 @@
+# Contributor: kaptoxic
+
 pkgname=cvassistant
 _pkgname=CVAssistant
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="CV Assistant helps you create specialized resumes in Word .docx format fast and easy."
 url='https://sourceforge.net/projects/cvassistant/?source=navbar'
 license=('GPL')
