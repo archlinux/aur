@@ -8,10 +8,10 @@ pkgdesc='KDE Plasma Workspace'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/kde/kde-workspace'
 license=(LGPL)
-depends=(qt5-tools kded libksysguard-git kjsembed-git knotifyconfig ktexteditor kde-cli-tools-git 
-kio-extras baloo milou-git libkscreen-git breeze-git kwin-git gpsd libqalculate khelpcenter xorg-xrdb 
-xorg-xsetroot xorg-xmessage xorg-xprop prison-frameworks kxmlrpcclient networkmanager-qt kscreenlocker-git)
-makedepends=(extra-cmake-modules git kdoctools)
+depends=(qt5-tools kded-git libksysguard-git kjsembed-git knotifyconfig-git ktexteditor-git kde-cli-tools-git 
+kio-extras baloo-git milou-git libkscreen-git breeze-git kwin-git gpsd libqalculate khelpcenter-git xorg-xrdb 
+xorg-xsetroot xorg-xmessage xorg-xprop prison-frameworks kxmlrpcclient-git networkmanager-qt kscreenlocker-git)
+makedepends=(extra-cmake-modules-git git kdoctools-git)
 optdepends=('plasma-workspace-wallpapers: additional wallpapers')
 conflicts=(plasma-workspace drkonqi kdebase-workspace)
 provides=(plasma-workspace drkonqi)
