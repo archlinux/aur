@@ -9,7 +9,7 @@ url='https://projects.kde.org/projects/kde/kde-workspace'
 license=(LGPL)
 depends=(libxkbfile libcanberra systemsettings-git ksysguard-git 
 powerdevil-git kmenuedit-git kinfocenter-git polkit-kde-agent-git kpeople-git qt5-graphicaleffects)
-makedepends=(xorg-server-devel xf86-input-synaptics extra-cmake-modules-git git kdoctools scim libibus)
+makedepends=(xorg-server-devel xf86-input-synaptics extra-cmake-modules-git git kdoctools-git scim libibus)
 optdepends=('plasma-nm-git: Network manager applet' 'scim: SCIM backend for kimpanel'
 	'fcitx: FCITX backend for kimpanel' 'libibus: IBUS backend for kimpanel')
 conflicts=(plasma-desktop kdebase-workspace kdebase-kdepasswd kcm-touchpad-frameworks)
