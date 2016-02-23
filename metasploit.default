@@ -12,4 +12,4 @@ PORT=55553
 
 # username and password to listen for
 RPC_USER=msf
-RPC_PASSWORD=admin
+RPC_PASSWORD=test
