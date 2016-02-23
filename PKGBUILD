@@ -8,8 +8,8 @@ arch=(i686 x86_64)
 url='https://projects.kde.org/projects/kde/kde-workspace'
 license=(LGPL)
 depends=(hicolor-icon-theme qt5-multimedia plasma-framework-git kcmutils-git knewstuff-git kinit-git kdecoration-git xcb-util-cursor 
-kscreenlocker-git kidletime libinput)
-makedepends=(extra-cmake-modules git kdoctools qt5-tools)
+kscreenlocker-git kidletime-git libinput)
+makedepends=(extra-cmake-modules-git git kdoctools-git qt5-tools)
 conflicts=(kwin kdebase-workspace)
 provides=(kwin)
 install=$pkgname.install
