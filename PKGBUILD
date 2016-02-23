@@ -1,8 +1,8 @@
 # Maintainer: Clément DEMOULINS <clement@archivel.fr>
 
 pkgname=vcsn
-pkgver=2.1
-pkgrel=2
+pkgver=2.2
+pkgrel=1
 pkgdesc="Finite state machine manipulation platform, consisting of a library and tools implemented on top of it."
 arch=('i686' 'x86_64')
 url="http://vaucanson.lrde.epita.fr/"
@@ -12,7 +12,7 @@ makedepends=('texlive-core' 'doxygen' 'python2-docutils')
 options=(!buildflags)
 
 source=("https://www.lrde.epita.fr/dload/vcsn/$pkgver/$pkgname-$pkgver.tar.xz")
-md5sums=('308e5a34de3ff1ff9f38c46bcfb434c5')
+md5sums=('48e479d34a047df4507d1e7b322bfb16')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
