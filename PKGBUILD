@@ -24,14 +24,10 @@ sha256sums=('2feb6dabdf836b8ca249e1d25ad8f995a92c725344f3b83139f18c5222932dba'
             '4b7f31aff45c6a572d54279531b7944567363d4c2bcd86d9c48887dc7da80a73')
 _srcpath=$pkgname-${pkgname/-*}-${pkgver//_/-}
 
-prepare() {
+build() {
   cd "$srcdir/$_srcpath"
   patch -Np1 -i "${srcdir}/start-by-icecast.patch"
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --with-openssl=/usr/bin/openssl
-}
-
-build() {
-  cd "$srcdir/$_srcpath"
   make 
 }
 
