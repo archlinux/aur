@@ -1,7 +1,7 @@
 # Maintainer: James An <james@jamesan.ca>
 
-pkgname=clover
-pkgver=3330
+pkgname=clover-efi
+pkgver=3346
 pkgrel=1
 pkgdesc="An EFI-based bootloader for BIOS-based computers to replace EDK2/Duet bootloader and enable OS X booting on non-Apple hardware."
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ depends=()
 makedepends=()
 options=('docs')
 install=
-source=('http://downloads.sourceforge.net/project/cloverefiboot/Bootable_ISO/CloverISO-3330.tar.lzma')
-md5sums=('bbfad748e9d066975dafe2aa2d590767')
+source=("http://downloads.sourceforge.net/project/cloverefiboot/Bootable_ISO/CloverISO-$pkgver.tar.lzma")
+md5sums=('f0947fd4476aae9f79abf635c774cf25')
 
 prepare() {
   if [ "$CARCH" == "x86_64" ]; then
@@ -21,7 +21,7 @@ prepare() {
     _arch=IA32
   fi
 
-  bsdtar -x --file "Clover-v2.3k-3330-$_arch.iso" EFI
+  bsdtar -x --file "Clover-v2.3k-$pkgver-$_arch.iso" EFI
 }
 
 package() {
@@ -30,5 +30,5 @@ package() {
 
   cp --archive EFI "$pkgdir/boot"
   rm --recursive "$pkgdir/boot/EFI/BOOT"
-  mv --force "$pkgdir/boot/EFI/${pkgname^^}/doc" "$pkgdir/usr/share/doc/$pkgname"
+  mv --force "$pkgdir/boot/EFI/CLOVER/doc" "$pkgdir/usr/share/doc/clover-efi"
 }
