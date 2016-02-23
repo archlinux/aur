@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/sonnet'
 license=('LGPL')
 depends=('qt5-base')
-makedepends=('extra-cmake-modules' 'qt5-tools' 'hunspell' 'aspell' 'hspell' 'git') # 'livvoikko'
+makedepends=('extra-cmake-modules-git' 'qt5-tools' 'hunspell' 'aspell' 'hspell' 'git') # 'livvoikko'
 optdepends=('hunspell: spell checking via hunspell' 'aspell: spell checking via aspell' 'hspell: spell checking for Hebrew')
  # 'libvoikko: spell checking for Finnish via Voikko')
 groups=('kf5')
