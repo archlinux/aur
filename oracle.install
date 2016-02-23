@@ -1,5 +1,5 @@
 post_install() {
-   
+
 	if [ -e `grep dba /etc/group` ]; then
 		echo
 		echo -n "creating group \"dba\" ..."
@@ -10,10 +10,10 @@ post_install() {
 
 	if [ -e `grep oracle /etc/passwd` ]; then
 		echo -n "creating user \"oracle\" ..."
-		useradd -g dba oracle
+		useradd -d /usr/lib/oracle -g dba -s /bin/false oracle
 		echo "done"
 		echo
-	fi 		 
+	fi
 
 	echo -n "change directory rights ..."
 	chown -R oracle:dba /usr/lib/oracle
@@ -24,14 +24,14 @@ post_install() {
 	chmod 6755 /usr/lib/oracle/product/11.2.0/xe/bin/oracle
 	echo "done"
 	echo
-	
+
 	if [ ! -d /etc/sysconfig ]; then
 		echo -n "creating /etc/sysconfig ..."
 		mkdir /etc/sysconfig
 		echo "done"
 		echo
 	fi
-	
+
 	if [ ! -d /var/log/oracle ]; then
 		echo -n "creating /var/log/oracle ..."
 		mkdir /var/log/oracle
@@ -64,34 +64,34 @@ post_remove() {
 		echo -n "remove user \"oracle\" ..."
 		userdel oracle
 		echo "done"
-	fi 
-   
+	fi
+
 	if [ `grep dba /etc/group` ]; then
 		echo -n "remove group \"dba\" ..."
 		groupdel dba
 		echo "done"
-	fi 
-		
+	fi
+
 	if [ -f /etc/rc.d/oracle-xe ]; then
 		echo -n "remove /etc/rc.d/oracle-xe ..."
 		rm /etc/rc.d/oracle-xe
-		echo "done"	
+		echo "done"
 	fi
-	
+
 	if [ -f /etc/oratab ]; then
 		echo -n "remove /etc/oratab ..."
 		rm /etc/oratab
-		echo "done"	
+		echo "done"
 	fi
-	
+
 	if [ -d /etc/sysconfig ]; then
-	
+
 		if [ -f /etc/sysconfig/oracle-xe ]; then
 			echo -n "remove /etc/sysconfig/oracle-xe ..."
 			rm -rf /etc/sysconfig/oracle-xe
 			echo "done"
 		fi
-		
+
 		if [ `ls /etc/sysconfig/|wc -l` -eq 0 ]; then
 			echo -n "remove /etc/sysconfig ..."
 			rm -rf /etc/sysconfig
@@ -103,17 +103,16 @@ post_remove() {
 		rm -rf /etc/default/oracle-xe
 		echo "done"
 	fi
-	
+
 	if [ -d /usr/lib/oracle ]; then
 		echo -n "remove /usr/lib/oracle ..."
 		rm -rf /usr/lib/oracle
 		echo "done"
 	fi
-	
+
 	if [ -d /var/log/oracle ]; then
 		echo -n "remove /var/log/oracle ..."
 		rm -rf /var/log/oracle
 		echo "done"
 	fi
 }
-

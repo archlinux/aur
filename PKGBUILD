@@ -7,7 +7,7 @@
 
 pkgname=oracle-xe
 pkgver=11.2.0_1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="a non free DBMS"
 url="http://www.oracle.com/"
 license=('custom')
