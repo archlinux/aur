@@ -2,13 +2,13 @@
 
 pkgname=youtube-dl-qt-git
 _gitname=youtube-dl-qt
-pkgver=81.g105b17e
+pkgver=82.g5e87881
 pkgrel=1
 pkgdesc="Qt frontend for youtube-dl"
 arch=('i686' 'x86_64')
 url="https://github.com/rrooij/youtube-dl-qt"
 license=('GPL3')
-depends=('qt5-base' 'youtube-dl')
+depends=('qt5-base' 'youtube-dl' 'hicolor-icon-theme')
 makedepends=('git' 'make')
 optdepends=('ffmpeg: for some youtube-dl functionality')
 provides=('youtube-dl-qt')
