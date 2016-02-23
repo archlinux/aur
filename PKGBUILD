@@ -1,8 +1,8 @@
 # Maintainer: darkfeline@felesatra.moe
 
 pkgname=non-mixer-git
-pkgver=1.1.0.r685.g18a299c
-pkgrel=2
+pkgver=1.1.0.r709.g1ef382f
+pkgrel=1
 pkgdesc="Jack audio mixer from the NON DAW"
 arch=('x86_64' 'i686')
 url="http://non.tuxfamily.org/"
