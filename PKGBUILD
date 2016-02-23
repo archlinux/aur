@@ -1,14 +1,15 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
-# Contributor: Michael Pusterhofer <pusterhofer at student dot tugraz dot at>
+# Contributor: Michael Pusterhofer <pusterhofer@student.tugraz.at>
 
 pkgname=vim-molokai
 pkgver=1.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Port of the monokai colorscheme for TextMate'
 arch=('any')
 url='http://www.vim.org/scripts/script.php?script_id=2340'
 license=('custom')
 depends=('vim')
+groups=('vim-plugins')
 source=("$pkgname.vim::http://www.vim.org/scripts/download_script.php?src_id=9750"
         'https://raw.githubusercontent.com/tomasr/molokai/master/LICENSE.md')
 md5sums=('fea8138fa815caa399f8b4fcf56bfe0e'
