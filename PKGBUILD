@@ -1,13 +1,14 @@
 # Maintainer: Henry-Joseph Audéoud <h.audeoud+aur@gmail.com>
 
 pkgname=20kly-git
-pkgver=2.0
+pkgver=baba06d
 pkgrel=1
 pkgdesc="20'000 Light Years Into Space game"
 arch=('any')
 url="http://www.jwhitham.org/20kly/"
 license=('GPL')
 depends=('python2-pygame' 'glpk')
+conflicts=('20kly')
 provides=('20kly')
 source=("git+https://github.com/20kly/20kly.git"
         '0001-fix.patch')
