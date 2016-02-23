@@ -3,7 +3,7 @@
 
 pkgname=apache-spark
 pkgver=1.6.0
-pkgrel=5
+pkgrel=6
 pkgdesc="fast and general engine for large-scale data processing"
 arch=('any')
 url="http://spark.apache.org"
@@ -15,7 +15,7 @@ install=apache-spark.install
 source=("http://d3kbcqa49mib13.cloudfront.net/spark-$pkgver.tgz"
         'apache-spark-standalone.service'
         'spark-env.sh')
- md5sums=('311883f4e50c4f6d1fe0b0147f660cc2'
+md5sums=('311883f4e50c4f6d1fe0b0147f660cc2'
          'bb7d8b85366e6f9cc0b2777eaea161a8'
          '0913001583e607849270090555dbd309')
 backup=('etc/apache-spark/spark-env.sh')
@@ -55,7 +55,7 @@ package() {
 
         mkdir -p $pkgdir/etc/profile.d
         echo '#!/bin/sh' > $pkgdir/etc/profile.d/apache-spark.sh
-        echo 'SPARK_HOME=$pkgdir/usr/share/apache-spark' >> $pkgdir/etc/profile.d/apache-spark.sh
+        echo 'SPARK_HOME=/usr/share/apache-spark' >> $pkgdir/etc/profile.d/apache-spark.sh
         echo 'export SPARK_HOME' >> $pkgdir/etc/profile.d/apache-spark.sh
         chmod 755 $pkgdir/etc/profile.d/apache-spark.sh
 
