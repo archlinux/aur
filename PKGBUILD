@@ -1,15 +1,16 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
-# Contributor: olantwin <olantwin at gmail dot com>
+# Contributor: olantwin <olantwin@gmail.com>
 
 pkgname=vim-airline
 pkgver=0.7
-pkgrel=3
+pkgrel=4
 pkgdesc='Lean & mean statusline/tabline for ViM'
 arch=('any')
 url='https://github.com/vim-airline/vim-airline'
 license=('MIT')
 depends=('vim-runtime')
 makedepends=('git')
+groups=('vim-plugins')
 #optdepends=('otf-powerline-symbols-git: Use the Powerline symbols')
 install='vimdoc.install'
 source=("git://github.com/vim-airline/$pkgname.git#tag=v$pkgver")
