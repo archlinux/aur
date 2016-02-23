@@ -167,6 +167,7 @@ fi
     -no-xcb \
     \
     -skip qtscript \
+    -skip qtenginio \
     \
     -sysroot ${_sysroot} \
     -device ${_mkspec} \
