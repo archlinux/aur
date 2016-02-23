@@ -4,7 +4,7 @@
 
 pkgname=logkeys-git
 _gitname="logkeys"
-pkgver=r40.78321c6
+pkgver=r62.c0a2971
 epoch=1
 pkgrel=1
 pkgdesc="Simple keylogger supporting also USB keyboards."
@@ -30,18 +30,20 @@ pkgver() {
 
 build() {
 	cd "$_gitname"
-	./configure --prefix=/usr --sysconfdir=/etc
+	./autogen.sh
+	cd "build"
+	../configure --prefix=/usr --sysconfdir=/etc
 	make
 }
 
 package() {
-	cd "$_gitname"
+	cd "$_gitname/build"
 	make prefix="$pkgdir/usr" sysconfdir="$pkgdir/etc" install
 
 	install -Dm0644 "$srcdir/logkeysd.conf" "$pkgdir/etc/conf.d/logkeysd"
 	install -Dm0644 "$srcdir/logkeys.service" "$pkgdir/usr/lib/systemd/system/logkeys.service"
 
-	cd "keymaps"
+	cd "../keymaps"
 	for filename in $(ls *.map); do
 		install -D -m 644 "${filename}" "${pkgdir}/usr/share/lkmaps/${filename}"
 	done
