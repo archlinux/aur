@@ -11,7 +11,7 @@ arch=('any')
 url="https://metacpan.org/release/${_cpan_name}"
 license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0' 'wxgtk' 'perl-module-pluggable') # Install perl-module-pluggable from AUR
-makedepends=()
+makedepends=('perl-module-build')
 options=(!emptydirs)
 source=("http://www.cpan.org/modules/by-module/${_cpan_name%%-*}/${_cpan_name}-${pkgver}.tar.gz"
         'https://rt.cpan.org/Ticket/Attachment/1400329/743429/wx-config-version-and-env.patch'
