@@ -8,7 +8,7 @@
 
 pkgname=mpd-dsd
 pkgver=0.19.12
-pkgrel=1
+pkgrel=2
 pkgdesc='Flexible, powerful, server-side application for playing music with DSD patches and Sox enabled'
 url='https://github.com/lintweaker/mpd-dsd-019'
 license=('GPL')
@@ -18,6 +18,7 @@ depends=('libao' 'ffmpeg' 'libmodplug' 'audiofile' 'libshout' 'libmad' 'curl' 'f
          'icu' 'libupnp' 'libnfs' 'libsamplerate' 'libsoxr' 'smbclient')
 optdepends=('sox-dsd-git')
 makedepends=('boost' 'doxygen' 'automake-1.14')
+conflicts=('mpd')
 validpgpkeys=('0392335A78083894A4301C43236E8A58C6DB4512')
 source=("http://www.musicpd.org/download/mpd/${pkgver%.*}/mpd-${pkgver}.tar.xz"{,.sig}
         'tmpfiles.d'
