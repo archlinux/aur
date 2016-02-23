@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=rawstudio-git
-pkgver=20150511.983bda1
+pkgver=20160223.b6bddc9
 pkgrel=1
 pkgdesc="Raw-image converter written in GTK2"
 arch=('i686' 'x86_64')
