@@ -1,7 +1,7 @@
 # Contributor: Sergio Tridente <tioduke (at) gmail (dot) com>
 
 pkgname=quartz
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="A richly featured, open source job scheduling library that can be integrated within virtually any Java application"
 arch=('any')
@@ -10,7 +10,7 @@ license=('APACHE')
 depends=('java-environment' 'log4j' 'slf4j')
 options=(!strip)
 source=(http://d2zwv9pap9ylyd.cloudfront.net/$pkgname-$pkgver-distribution.tar.gz)
-md5sums=('24d02d71a27ada1e41b2df822277d268')
+md5sums=('003b12181200690fb5936befd4ea46f5')
 
 package() {
   cd "$srcdir"/$pkgname-$pkgver/
