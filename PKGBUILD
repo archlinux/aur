@@ -4,7 +4,7 @@
 # Contributor: Thermionix <thermionix at gmail dot com>
 
 pkgname=navit
-pkgver=0.5.0_rc.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A modular turn-by-turn car navigation system"
 arch=('i686' 'x86_64' 'armv7h')
@@ -15,11 +15,11 @@ optdepends=('cegui>=0.5.0: OpenGL gui' 'quesoglc: OpenGL gui')
 makedepends=('cmake')
 options=('!libtool')
 install=navit.install
-source=(http://downloads.sourceforge.net/$pkgname/v${pkgver/_/-}.tar.gz)
-md5sums=('cb6ee913eea1fa06c90852e1dfbdcb94')
+source=(https://github.com/navit-gps/navit/archive/v${pkgver/_/-}.tar.gz)
+md5sums=('242f398e979a6b8c0f3c802b63435b68')
 
 build() {
-  cd "$srcdir/navit-gps-navit"*
+  cd "$srcdir/navit-${pkgver}"
 
   if [ $(grep -c '^SET(LIBDIR lib)' CMakeLists.txt) -ne 1 ]; then
     sed -i 's/^ENDIF (UNIX AND NOT ANDROID AND NOT APPLE)$/ENDIF (UNIX AND NOT ANDROID AND NOT APPLE)\nSET(LIB_DIR lib)/' CMakeLists.txt
@@ -29,12 +29,12 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr/ \
     -DCMAKE_LIBDIR=lib \
     -Dgraphics/opengl=TRUE \
-    -DSAMPLE_MAP=FALSE 
+    -DSAMPLE_MAP=FALSE
   make
 }
 
 package() {
-  cd "$srcdir/navit-gps-navit"*
+  cd "$srcdir/navit-${pkgver}"
   make DESTDIR=${pkgdir} install
 }
 
