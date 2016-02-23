@@ -7,7 +7,7 @@
 DLAGENTS=('http::/usr/bin/curl -d agree="We+luv+You" -fL -o %o %u')
 
 pkgname=netfabb-basic
-pkgver=6.4.0
+pkgver=7.2.0
 pkgrel=1
 pkgdesc="view and repair STL files"
 arch=('i686' 'x86_64')
@@ -16,15 +16,14 @@ license=('custom:freeware')
 depends=('gtk2' 'desktop-file-utils' 'hicolor-icon-theme')
 install='netfabb-basic.install'
 
-md5sums=('eaae92691b14c56185a8b62cb09f2006') # 32-bit
+md5sums=('8901e9ed2f93d64a298aa328d762b3d1') # 32-bit
 nARCH=32
 if [ "$CARCH" == x86_64 ] ; then
-   md5sums=('094c5aa7113016efbe182ab832de1a0c') # 64-bit
+   md5sums=('aaf88c0c54885e20f225f6d2805b8b10') # 64-bit
    depends[0]="lib32-gtk2"
    nARCH=64
 fi
-
-if [ -z "$pikey" ]; then
+if [ -z "$pikey" ] && [ ! -e "netfabb-basic_${pkgver}_linux${nARCH}.tar.gz" ] ; then
   msg "Fetching pikey"
   pikey=$(curl --data "operatinsystems=linux" --data "zusatz=-$pkgver-9" --data "disti=targz" --data "download${nARCH}=Download%20for%20PC%20${nARCH}-Bit"  "http://www.netfabb.com/downloadcenter.php?basic=1" | grep pikey)
   pikey="${pikey#*pikey=}"
@@ -32,8 +31,10 @@ if [ -z "$pikey" ]; then
   [ -z "$pikey" ] && error "Fetching pikey has failed" && exit 1
   msg2 "pikey: $pikey"
 fi
+source=("netfabb-basic_${pkgver}_linux${nARCH}.tar.gz::http://www.netfabb.com/download.php?pikey=${pikey}")
 
-source=("netfabb-basic_${pkgver}_linux${nARCH}.tar.gz::http://www.netfabb.com/download.php?pikey=${pikey}" "icons.tar.gz" "netfabb-basic.desktop")
+# Static content
+source+=("icons.tar.gz" "netfabb-basic.desktop")
 md5sums+=('a6d3336b9dc60f30f94c9415d578dd7a' '2ab8714cd64e4aaa49457b5bb553f420')
 
 
