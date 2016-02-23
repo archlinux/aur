@@ -1,0 +1,7 @@
+# Directories:
+pkg/
+src/
+
+# Binaries:
+*.xz
+*.zip
