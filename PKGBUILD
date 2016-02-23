@@ -3,8 +3,8 @@
 
 pkgname=miam-player
 pkgver=0.8.0
-pkgrel=1
-pkgdesc="Cross-platform open source music player built with Qt5, VLC and Taglib."
+pkgrel=2
+pkgdesc="Cross-platform open source music player built with Qt5, QTav and Taglib."
 arch=('i686' 'x86_64')
 url="http://www.miam-player.org/"
 license=('GPL3')
