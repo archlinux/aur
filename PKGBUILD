@@ -17,7 +17,7 @@ build() {
   cd ${srcdir}/${_pkgname}
   patch -p1 -i $srcdir/pro.diff
   
-  /usr/lib/qt5/bin/qmake 
+  qmake 
   make 
 }
 
