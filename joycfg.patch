@@ -1,0 +1,37 @@
+diff -uNr atari800.orig/src/joycfg.c atari800/src/joycfg.c
+--- atari800.orig/src/joycfg.c	2016-02-23 14:17:28.000000000 +0100
++++ atari800/src/joycfg.c	2016-02-23 14:24:09.282074155 +0100
+@@ -434,7 +434,7 @@
+   int i,no;
+   int bad=0;
+ 
+-  if ((fr=fopen("atari800.cfg","r"))==NULL)
++  if ((fr=fopen("atari800.cfg.libretro","r"))==NULL)
+   {
+     printf("Error opening configuration file.\n"
+            "Execute this utility from atari800 dir after configuring it!\n");
+@@ -494,9 +494,9 @@
+   char string[256];
+   int i;
+ 
+-  if ((fr=fopen("atari800.cfg","r"))==NULL)
++  if ((fr=fopen("atari800.cfg.libretro","r"))==NULL)
+   {
+-    printf("Error opening atari800.cfg!\n");
++    printf("Error opening atari800.cfg.libretro!\n");
+     return;
+   }
+   if ((fw=fopen("atari800.tmp","w"))==NULL)
+@@ -521,10 +521,10 @@
+   for (i=0;i<4;i++)
+     fprintf(fw,"JOYSTICK_%i=%s\n",i,joyparams[joytypes[i]]);
+   fclose(fw);
+-  if (rename("atari800.tmp","atari800.cfg")==0)
++  if (rename("atari800.tmp","atari800.cfg.libretro")==0)
+     printf("Configuration successfully saved.\n");
+   else
+-    printf("Error when renaming atari800.tmp to atari800.cfg!\n");
++    printf("Error when renaming atari800.tmp to atari800.cfg.libretro!\n");
+ }
+ /*------------------------------------------------------------------------*/
+ int main()
