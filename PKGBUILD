@@ -2,8 +2,8 @@
 
 pkgname=pi-hole-server
 _pkgname=pi-hole
-pkgver=2.5.2
-pkgrel=2
+pkgver=2.5.3
+pkgrel=1
 _wwwpkgname=AdminLTE
 _wwwpkgver=1.0.0
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
@@ -28,7 +28,7 @@ source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	whitelist.txt
 	blacklist.txt)
 
-md5sums=('47a6f79302cf9c8a596b9c61b4532b80'
+md5sums=('30dbf80661c93668f7215e2c708693dc'
          'a2ec5ea92cce506f0fc61cc0a8f2c527'
          '791c86996377ceca23d1459ea0fd5cd6'
          'fd607f890103e97e480d814a5dfbee5b'
@@ -70,11 +70,6 @@ prepare() {
   # since we don't directly install from git...
   sed -i '/<b>Pi-hole Version <\/b> /,+1d' "$srcdir"/$_wwwpkgname-$_wwwpkgver/index.php
   sed -i '/<div class="pull-right hidden-xs">/a<b>Pi-hole Version </b> '"$pkgver"'\n<b> - Web Interface Version </b>'"$_wwwpkgver"'' "$srcdir"/$_wwwpkgname-$_wwwpkgver/index.php
-
-  # (waiting official release) TEMPORARY host list manipulation follow commits f8897942f3e7e13335247af7a7ada666349a000f and
-  # c4fc2e089d78daef76a10fb60eb10f568013b956 due to excessive filtration and empty query result
-  sed -i '/http:\/\/securemecca.com\/Downloads\/hosts.txt/d' "$srcdir"/$_pkgname-$pkgver/adlists.default
-  sed -i '/https:\/\/hosts.neocities.org\//d' "$srcdir"/$_pkgname-$pkgver/adlists.default
 }
 
 package() {
