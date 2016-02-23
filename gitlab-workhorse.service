@@ -12,7 +12,7 @@ CapabilityBoundingSet=
 ProtectSystem=full
 ProtectHome=true
 NoNewPrivileges=true
-ExecStart=/usr/bin/gitlab-workhorse /var/lib/gitlab/repositories
+ExecStart=/usr/bin/gitlab-workhorse -authBackend http://127.0.0.1:8080 /var/lib/gitlab/repositories
 ExecStop=/usr/bin/kill -QUIT $MAINPID
 ExecReload=/usr/bin/kill -USR2 $MAINPID
 
