@@ -10,14 +10,14 @@ url="https://github.com/ammongit/$_pkgname"
 license=('GPL')
 depends=()
 makedepends=('git' 'gcc') # Also compatible with clang. Change CC in src/Makefile.
-optdepends=('systemd')
+optdepends=()
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=()
 install="$pkgname.install"
 source=("git+https://github.com/ammongit/$_pkgname.git")
 sha256sums=('SKIP')
-backup=('etc/qotd.conf' 'usr/share/qotd/quotes.txt')
+backup=('etc/qotd.conf')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
