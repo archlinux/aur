@@ -1,6 +1,6 @@
 # Maintainer: Stephen Martin <stephensrmmartin at gmail dot com>
 pkgname=shiny-server-git
-pkgver=20150608
+pkgver=20160223
 pkgrel=1
 pkgdesc="Open-source version of the shiny web development framework server"
 arch=('i686' 'x86_64')
