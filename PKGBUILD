@@ -1,18 +1,19 @@
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: Yanxiang Qian <scifi.org@gmail.com>
+# Contributor: kaptoxic
 
 pkgname=swarm
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source platform for agent-based models"
 arch=('i686' 'x86_64')
-url="http://www.swarm.org/index.php/Main_Page"
+url="http://www.swarm.org"
 license=('GPL')
-depends=('blt' 'hdf5' 'libpng12' 'libxpm' 'tk')
+depends=('hdf5' 'libpng12' 'libxpm' 'tk')
 makedepends=('chrpath' 'emacs' 'gcc-objc')
 options=('!libtool')
 install="${pkgname}.install"
-source=("http://ftp.swarm.org/pub/swarm/src/swarm/${pkgname}-${pkgver}.tar.gz")
+source=("http://download.savannah.gnu.org/releases/swarm/src/swarm/${pkgname}-${pkgver}.tar.gz")
 md5sums=('efbaea046dbe3cfffb95448af0d2f615')
 
 build() {
