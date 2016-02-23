@@ -2,9 +2,9 @@
 
 pkgname=drip-git
 pkgver=20151019
-pkgrel=2
+pkgrel=3
 pkgdesc="Drip is a launcher for the Java Virtual Machine that provides much faster startup times than the java command. The drip script is intended to be a drop-in replacement for the java command, only faster."
-license="GPL"
+license=('GPL')
 url='https://github.com/ninjudd/drip'
 arch=('i686' 'x86_64')
 provides=('drip')
