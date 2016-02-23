@@ -2,7 +2,7 @@
 # Maintainer: Iru Cai <mytbk920423@gmail.com>
 
 pkgname=iridium
-pkgver=48.1
+pkgver=48.2
 pkgrel=1
 _launcher_ver=3
 pkgdesc="a free, open, and libre browser modification of the Chromium code base"
@@ -27,7 +27,7 @@ source=(https://downloads.iridiumbrowser.de/source/iridium-browser-${pkgver}.tar
         chromium-use-non-versioned-icu-namespace.patch
         chromium-fix-print-preview-on-en_GB-locale.patch
         chromium-widevine.patch)
-sha256sums=('8f542ae1d3029c254c36dce5e540a6653700236be6808de6d3c29537e47a0725'
+sha256sums=('dfe5832086000f7a3b4878384a633ee96aa3e5dc88d8b1f8501f744f57f8162b'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             'e4192446cc0ab6a5c540599c8a149f4f2208f0014da2786ada6c9544913d7426'
