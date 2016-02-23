@@ -5,4 +5,4 @@ else
   CONFIG_DIR=$HOME/.multimc5
 fi
 mkdir -p $CONFIG_DIR
-LD_LIBRARY_PATH=/usr/lib/multimc5/bin /usr/lib/multimc5/bin/MultiMC -d $CONFIG_DIR
+LD_LIBRARY_PATH=/usr/lib/multimc5/bin /usr/lib/multimc5/bin/MultiMC -d $CONFIG_DIR $@
