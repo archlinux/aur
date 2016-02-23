@@ -1,16 +1,16 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=git-weave
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Weave a tarball sequence into a Git repository"
 arch=('any')
-depends=('git' 'python2')
+depends=('git' 'python')
 makedepends=('asciidoc')
 url="http://www.catb.org/esr/$pkgname/"
 license=('GPL2')
 source=("http://www.catb.org/esr/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('41dcb156f6de90317de58ae91c91ac7afd19158a2846762e0cacc57ad9d4803c')
+sha256sums=('0b20a041598d0e8ddfa632d34b832478329db7061e750fbf55edef1ebbbb569e')
 
 prepare() {
   cd "$pkgname-$pkgver"
