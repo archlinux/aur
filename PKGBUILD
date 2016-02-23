@@ -1,6 +1,6 @@
 # Maintainer: wicast <wicastchen at hotmail dot com>
 pkgname=picojson-git
-pkgver=v1.3.0.r6.gcc130fb
+pkgver=v1.3.0.r14.g13d3c0d
 pkgrel=1
 pkgdesc="a header-file-only, JSON parser serializer in C++"
 arch=(any)
@@ -26,5 +26,5 @@ check() {
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    make DESTDIR="$pkgdir/" install
+    make prefix="/usr" DESTDIR="$pkgdir/" install
 }
