@@ -236,7 +236,7 @@ fi
   sed -i "s,localpiprefix,${_installprefix}," ${_pkgprofiled}/qpi.sh || exit 1
 
   cd ${_libsdir}
-  runuser -l ${_packaginguser} -c 'makepkg -f' || exit 1
+  runuser -l ${_packaginguser} -c 'makepkg -d -f' || exit 1
 
   echo "the libs package for the Raspberry Pi${_piver} is in the ${_packaginguser} home directory awaiting deployment"
 
