@@ -137,7 +137,7 @@ fi
 
   # No longer required as we explicitly set CFLAGS = foo in the mkspec
   # Work around our embarresing propensity to stomp on your own tailored build configuration
-  # sed -i "s/O[23]/Os/"  ${_srcdir}/qtbase/mkspecs/common/gcc-base.conf || exit 1
+  sed -i "s/O[23]/Os/"  ${_srcdir}/qtbase/mkspecs/common/gcc-base.conf || exit 1
 
   # end patch
 
