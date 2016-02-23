@@ -6,8 +6,8 @@
 
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-sysvcompat-selinux')
-pkgver=228
-pkgrel=4
+pkgver=229
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 groups=('selinux')
@@ -37,25 +37,17 @@ md5sums=('SKIP'
 prepare() {
   cd "${pkgbase/-selinux}"
 
-  # sd-ndisc: drop RA packets from non-link-local addresses
-  # https://github.com/systemd/systemd/commit/3ccd31635353
-  # https://github.com/systemd/systemd/issues/1866
-  git cherry-pick -n 3ccd31635353
+  # networkd: FIONREAD is not reliable on some sockets
+  git cherry-pick -n 4edc2c9b6b5b921873eb82e58719ed4d9e0d69bf
 
-  # networkd: link - do not drop config for loopback device
-  # https://github.com/systemd/systemd/commit/e5d44b34cca3
-  # https://github.com/systemd/systemd/issues/2023
-  git cherry-pick -n e5d44b34cca3
+  # fix assertion failure in src/core/timer.c on bootup (FS#48197)
+  git cherry-pick -n 3f51aec8647fe13f4b1e46b2f75ff635403adf91
 
-  # virt: detect dmi before cpuid
-  # https://github.com/systemd/systemd/commit/050e65ada2e0
-  # https://github.com/systemd/systemd/issues/1993
-  git cherry-pick -n 050e65ada2e0
+  # fix udevd error checking from cg_unified() (FS#48188)
+  git cherry-pick -n 6d2353394fc33e923d1ab464c8f88df2a5105ffb
 
-  # logind: load SELinux labelling system
-  # https://github.com/systemd/systemd/commit/4b51966cf6c0
-  # https://github.com/systemd/systemd/pull/2508
-  git cherry-pick -n 4b51966cf6c0
+  # revert "core: resolve specifier in config_parse_exec()"
+  git cherry-pick -n bd1b973fb326e9b7587494fd6108e5ded46e9163
 
   ./autogen.sh
 }
@@ -71,7 +63,6 @@ build() {
       --sysconfdir=/etc \
       --enable-audit \
       --enable-lz4 \
-      --enable-compat-libs \
       --enable-gnuefi \
       --enable-selinux \
       --disable-ima \
@@ -172,10 +163,9 @@ package_systemd-selinux() {
 
 package_libsystemd-selinux() {
   pkgdesc="systemd client libraries with SELinux support"
-  depends=('glibc' 'libgcrypt' 'lz4' 'xz')
+  depends=('glibc' 'libcap' 'libgcrypt' 'lz4' 'xz')
   license=('GPL2')
-  provides=('libsystemd.so' 'libsystemd-daemon.so' 'libsystemd-id128.so'
-            'libsystemd-journal.so' 'libsystemd-login.so' 'libudev.so'
+  provides=('libsystemd.so' 'libudev.so'
             "${pkgname/-selinux}=${pkgver}-${pkgrel}")
   conflicts=("${pkgname/-selinux}")
 
