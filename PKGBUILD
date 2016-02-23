@@ -1,8 +1,8 @@
 # Maintainer: Bjoern Franke <bjo@nord-west.org>
 
 pkgname=xnconvert
-pkgver=1.66
-pkgrel=3
+pkgver=1.72
+pkgrel=1
 pkgdesc="A cross-platform batch image-converter and resizer with a powerful and ease of use experience."
 url="http://www.xnview.com/en/xnconvert/"
 
@@ -17,7 +17,7 @@ md5sums=('c02bde2c1a8cf6ba93d4e4ec14e1b7f7')
 
 if [ "$CARCH" = 'x86_64' ]; then
   source=(${pkgname}-${pkgver}.tgz::"http://download.xnview.com/XnConvert-linux-x64.tgz")
-md5sums=('242a815084801c1a2e28f5b190ca5b3b')
+md5sums=('00255779243321700f78681d277f7c13')
 
 fi
 
