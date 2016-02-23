@@ -2,8 +2,8 @@
 
 pkgname=pi-hole-standalone
 _pkgname=pi-hole
-pkgver=2.5.2
-pkgrel=2
+pkgver=2.5.3
+pkgrel=1
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch alteration for standalone PC.'
 arch=('any')
 license=('GPL2')
@@ -21,7 +21,7 @@ source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	whitelist.txt
 	blacklist.txt)
 
-md5sums=('47a6f79302cf9c8a596b9c61b4532b80'
+md5sums=('30dbf80661c93668f7215e2c708693dc'
          '925e5f23e36320ec13f55cff3f1bdcb7'
          'fa485f038d577c354068410ed1159d94'
          '1b2e808b699a6b58647641f12379f65d'
@@ -42,11 +42,6 @@ prepare() {
 
   # adlists.default is already there
   sed -i '/\$SUDO cp \/etc\/.pihole\/adlists.default \/etc\/pihole\/adlists.default/d' "$srcdir"/$_pkgname-$pkgver/gravity.sh
-
-  # (waiting official release) TEMPORARY host list manipulation follow commits f8897942f3e7e13335247af7a7ada666349a000f and
-  # c4fc2e089d78daef76a10fb60eb10f568013b956 due to excessive filtration and empty query result
-  sed -i '/http:\/\/securemecca.com\/Downloads\/hosts.txt/d' "$srcdir"/$_pkgname-$pkgver/adlists.default
-  sed -i '/https:\/\/hosts.neocities.org\//d' "$srcdir"/$_pkgname-$pkgver/adlists.default
 }
 
 package() {
