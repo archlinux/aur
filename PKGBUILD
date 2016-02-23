@@ -1,14 +1,14 @@
 # Maintainer: Janosch Dobler <janosch.dobler@gmx.de>
 pkgname=rebash
-pkgver=v0.1 # gets updated by pre-push hook
-pkgrel=1
+pkgver=auto # gets updated by pre-push hook
+pkgrel=auto # gets updated by pre-push hook
 pkgdesc="bash/shell library/framework"
 arch=('x86_64')
 url="https://github.com/jandob/rebash"
 license=('WTFPL')
 depends=('bash' 'sed' 'grep')
 makedepends=('git')
-source=('git+https://github.com/jandob/rebash.git')
+source=("git+https://github.com/jandob/rebash.git#tag=$pkgver")
 md5sums=('SKIP')
 
 package() {
