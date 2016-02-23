@@ -1,7 +1,7 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=libisds
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="Client library for accessing SOAP services of ISDS (Data Box Information System)"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://xpisar.wz.cz/libisds/"
 license=('LGPL')
 depends=('libxml2' 'expat')
 source=(http://xpisar.wz.cz/$pkgname/dist/$pkgname-$pkgver.tar.xz)
-sha256sums=('2d849357cb41eb6d5322ff92b1531a10f4fbc8c9f73b02de7f542a7e36dac1ef')
+sha256sums=('841137d91f8c3f87497c8c9802783361d7e41c487c0571ada4fc3a0020d059b3')
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
