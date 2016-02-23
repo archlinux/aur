@@ -3,6 +3,7 @@ pkg/
 src/
 
 # Ignore downloaded archives and signatures.
+date.h
 *.tar.xz
 *.tar.gz
 *.sig
