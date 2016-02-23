@@ -13,10 +13,10 @@
 # following line.                                                             #
 ###############################################################################
 
-API=15
+API=16
 
 pkgname=kodi-platform-git
-pkgver=r34.054a42f
+pkgver=r38.15edaf7
 pkgrel=1
 pkgdesc='Kodi platform support library'
 arch=('armv7h' 'i686' 'x86_64')
