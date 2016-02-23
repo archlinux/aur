@@ -2,7 +2,7 @@
 # Submitter: ClemensFMN
 
 pkgname=qucs-git
-pkgver=0.0.18.r772.g43a668c
+pkgver=0.0.18.r1207.g9d924ca
 pkgrel=1
 pkgdesc="An integrated circuit simulator with a graphical user interface. (qt4 git version)"
 arch=('x86_64' 'i686')
@@ -23,12 +23,12 @@ pkgver() {
 
 build() {
   cd $srcdir/qucs/qucs
-  ./autogen.sh
+  ./bootstrap
   ./configure --enable-maintainer-mode --prefix=/usr --with-mkadms=/usr/bin/admsXml
   make
 
   cd $srcdir/qucs/qucs-core
-  ./bootstrap.sh
+  ./bootstrap
   ./configure --enable-maintainer-mode --prefix=/usr --with-mkadms=/usr/bin/admsXml
   make
 }
