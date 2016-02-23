@@ -1,6 +1,6 @@
 # Maintainer: Tavian Barnes <tavianator@tavianator.com>
 pkgname=bfs
-pkgver=0.67
+pkgver=0.70
 pkgrel=1
 pkgdesc="A breadth-first version of find."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -16,8 +16,8 @@ backup=()
 options=()
 install=
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tavianator/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('9313cc28ee94fc0563fdf29032ed205c')
-sha256sums=('8978895fe627f5d264c80d25bbe8f7557fdb334b6e9994d5e60a1c427ea1f911')
+md5sums=('27b31c70b3fb847e6d086c93a782e1a3')
+sha256sums=('3c51459da0677c1c62a696d93010f863e2cec744f672e50d2d737ddcf84ca5c8')
 noextract=()
 
 build() {
@@ -32,6 +32,6 @@ check() {
 
 package() {
 	cd "${pkgname}-${pkgver}"
-	install -D -m755 bfs "${pkgdir}/usr/bin/bfs"
+	make install DESTDIR="${pkgdir}"
 	install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}"
 }
