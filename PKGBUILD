@@ -1,7 +1,7 @@
 # Maintainer: Julius Elias <JuliusE89@gmail.com>
 pkgname=purple-gnome-keyring
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Purple (Pidgin / Finch) plugin for Gnome-Keyring integration"
 arch=(i686 x86_64)
 url="https://github.com/GRBurst/purple-gnome-keyring/"
@@ -9,9 +9,9 @@ license=("GPLv3")
 depends=(libsecret libpurple gnome-keyring)
 install=$pkgname.install
 source=(https://github.com/GRBurst/$pkgname/archive/v${pkgver}.${pkgrel}.tar.gz)
-md5sums=('6bd0f95c2aaa0d97544a403cad47a23d')
-sha1sums=('eb0158ca349a51a454059ff7ffcc14691b83aa4d')
-sha512sums=('e5d7c2563dc5ca53d88cf2fdd24a5c42a9052103990102cc2f2fab58aebf24c01ddc73a470654c2cf60dbc315d8b43946ac2c6959dfacbadc6dfd6832eb695be')
+md5sums=('a9a97cdca9f37958252bc1c56fbae56b')
+sha1sums=('19ad020799d7f275e5c283abd589e762443e588c')
+sha512sums=('300594e215d6af67c40ec864a0695395eff13e3bc02f57a7c5870c7fdaeec1c312a3e0713d1dccc9c0cae269a8bfe42e83ef29e5f041af5092a8f3cf516a9fb0')
 
 build() {
   cd $srcdir/$pkgname-$pkgver.${pkgrel}
