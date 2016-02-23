@@ -13,11 +13,6 @@ version="${BASH_REMATCH[1]}"
 
 #regexp capture the previous version
 old_version=$(sed -rn 's/pkgver=([0-9\.]*)/\1/p' PKGBUILD)
-echo $old_version
-#regex_oldver="pkgver=([0-9\.]*)$"
-#pkbuild_content=`cat PKGBUILD`
-#[[ $pkbuild_content =~ $regex_oldver ]]
-#old_version="${BASH_REMATCH[1]}"
 
 read -p "Do you wish to update from version $old_version to version $version?" yn
 case $yn in

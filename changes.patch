@@ -312,7 +312,7 @@ index e7226f7..6aeb4fa 100644
      def doUpdate(self):
          """ The core function that does most of the actual update work."""
 diff --git a/src/util/__init__.py b/src/util/__init__.py
-index 39d8ebb..28bf36f 100644
+index 39d8ebb..f57f3d9 100644
 --- a/src/util/__init__.py
 +++ b/src/util/__init__.py
 @@ -7,6 +7,24 @@ from ctypes import *
@@ -335,24 +335,21 @@ index 39d8ebb..28bf36f 100644
 +    else:
 +        wine_prefix = os.path.join(os.path.expanduser("~"), ".wine")
 +    settings_file = settings.fileName()
-+    wine_use_optirun = settings.value("wine/use_optirun", False)
++    wine_use_optirun = settings.value("wine/use_optirun", False, type=bool)
 +
  from config import VERSION as VERSION_STRING
  
  LOGFILE_MAX_SIZE = 256 * 1024  #256kb should be enough for anyone
-@@ -15,7 +33,10 @@ LOGFILE_MAX_SIZE = 256 * 1024  #256kb should be enough for anyone
- UNITS_PREVIEW_ROOT = "http://content.faforever.com/faf/unitsDB/icons/big/"
+@@ -16,6 +34,8 @@ UNITS_PREVIEW_ROOT = "http://content.faforever.com/faf/unitsDB/icons/big/"
  
  #These are paths relative to the executable or main.py script
--COMMON_DIR = os.path.join(os.getcwd(), "res")
-+if WINDOWS:
-+  COMMON_DIR = os.path.join(os.getcwd(), "res")
-+else:
+ COMMON_DIR = os.path.join(os.getcwd(), "res")
++if not os.path.exists(COMMON_DIR) and not WINDOWS:
 +  COMMON_DIR = os.path.join("/usr", "share", "fafclient")
  
  # These directories are in Appdata (e.g. C:\ProgramData on some Win7 versions)
  if 'ALLUSERSPROFILE' in os.environ:
-@@ -58,12 +79,21 @@ REPO_DIR = os.path.join(APPDATA_DIR, "repo")
+@@ -58,12 +78,21 @@ REPO_DIR = os.path.join(APPDATA_DIR, "repo")
  if not os.path.exists(REPO_DIR):
      os.makedirs(REPO_DIR)
  
@@ -379,7 +376,7 @@ index 39d8ebb..28bf36f 100644
  
  DOWNLOADED_RES_PIX = {}
  DOWNLOADING_RES_PIX = {}
-@@ -161,11 +191,6 @@ __theme = None
+@@ -161,11 +190,6 @@ __theme = None
  __themedir = None
  
  
