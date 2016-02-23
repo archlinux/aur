@@ -1,14 +1,6 @@
 post_install() {
-	echo "IMPORTANT: In addition to the bundled CuraEngine, the host also"
-	echo "supports Slic3r and Skeinforge. These slicers are not bundled, so"
-	echo "need to install them according to their docs and then set the path"
-	echo "to them in Repetier-Host."
+  update-desktop-database -q
 }
 post_upgrade() {
-	echo "IMPORTANT: In addition to the bundled CuraEngine, the host also"
-	echo "supports Slic3r and Skeinforge. These slicers are not bundled anymore, so"
-	echo "need to install them according to their docs and then set the path"
-	echo "to them in Repetier-Host."
-	echo This is the version 1.0.6. It now features CuraEngine and has many changes to better work with multi-extruder setups and much more. After installing the new version, old versions might no longer run, unless you delete the registry entries under:
-	echo \$HOME/.mono/registry/CurrentUser/software/ repetierSoftware/repetier
+  update-desktop-database -q
 }
