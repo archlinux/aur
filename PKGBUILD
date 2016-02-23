@@ -1,5 +1,5 @@
 #
-# Maintainer: Carlos Familia <carlosfamilia@gmail.com>
+# Maintainer: Stephen Martin <stephenSRMMartin at gmail dot com>
 #
 # Note: Apache ant and java must be on the path for make to succeed.
 #       If either was installed as a dependency during the build, you
