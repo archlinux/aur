@@ -7,7 +7,7 @@
 #
 
 pkgname=emacs-git
-pkgver=25.1.50.r124944
+pkgver=25.1.50.r125104
 pkgrel=1
 pkgdesc="GNU Emacs. Master development branch."
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ makedepends=('git')
 conflicts=('emacs')
 provides=('emacs')
 install="$pkgname".install
-source=("$pkgname::git://git.savannah.gnu.org/emacs.git")
+source=("$pkgname::git+http://git.savannah.gnu.org/r/emacs.git")
 md5sums=('SKIP')
 
 pkgver() {
