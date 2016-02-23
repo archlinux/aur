@@ -1,6 +1,6 @@
 pkgbase = bdf-tewi-git
 	pkgdesc = Bitmap font
-	pkgver = 0.241.52b550c
+	pkgver = 0.281.dab6e6b
 	pkgrel = 1
 	url = https://github.com/lucy/tewi-font
 	install = bdf-tewi-git.install

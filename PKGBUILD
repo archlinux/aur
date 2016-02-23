@@ -2,7 +2,7 @@
 
 pkgname=bdf-tewi-git
 _gitname=tewi-font
-pkgver=0.241.52b550c
+pkgver=0.281.dab6e6b
 pkgrel=1
 pkgdesc='Bitmap font'
 arch=('any')
@@ -25,6 +25,7 @@ package() {
   install -d -m755 "$pkgdir/usr/share/fonts/misc/"
   install -m644 -t "$pkgdir/usr/share/fonts/misc/" \
     "tewi-bold-11.bdf" "tewi-medium-11.bdf" \
-    "tewi2a-bold-11.bdf" "tewi2a-medium-11.bdf" \
-    "tewifw-bold-11.bdf" "tewifw-medium-11.bdf"
+    "tewifw-bold-11.bdf" "tewifw-medium-11.bdf" \
+    "variant/tewi2a-bold-11.bdf" "variant/tewi2a-medium-11.bdf" \
+    "variant/tewii-bold-11.bdf" "variant/tewii-medium-11.bdf"
 }
