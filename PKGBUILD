@@ -5,7 +5,7 @@
 # 2) Check that sqlpp11 doesn't have a date.h that will overwrite /usr/include/sqlpp11/date.h
 pkgname=sqlpp11
 pkgver=0.35
-pkgrel=1
+pkgrel=2
 pkgdesc="A type safe embedded domain specific language for SQL queries and results in C++"
 arch=('any')
 url="https://github.com/rbock/sqlpp11"
