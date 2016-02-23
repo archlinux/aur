@@ -20,8 +20,8 @@ kill_process_shortcut=x
 
 _pkgname=htop
 pkgname=htop-vim-solarized-git
-pkgver=649.e906c0d
-pkgrel=3
+pkgver=809.797bcd0
+pkgrel=2
 pkgdesc="Interactive process viewer with solarized and vim keybindings patch"
 arch=('i686' 'x86_64')
 url="https://github.com/hishamhm/${_pkgname}"
@@ -37,9 +37,9 @@ source=("git+${url}.git"
         'solarized-colors.patch'
         'vim-keybindings-common.patch'
         )
-sha256sums=('SKIP'
-            '787042745bab62731ec14734d0bc3ae18e11dbb87cfed189942887a58f2cd6a7'
-            'c9cce4293820e8b61f27d70244fdf6c87633f3eab4169b9818c2130ed3d3a798'
+sha384sums=('SKIP'
+            'ebc4339ff3d5d43606d9f5e398832cb9382bfa175b30e36cfbcaf6112206c33ea0d42e39246e3a73785d3f584cf88214'
+            'ed66bbb01099872d740dae21da6c1bea76e150b66fd64e1d6771aef24fa16fb0dd95a4d4144ecde8d867da1b25a7ce24'
             )
 
 
@@ -48,11 +48,11 @@ if [[ "$kill_process_shortcut" == "d" ]]
 then
     msg2 "Using '$kill_process_shortcut' as the kill-process shortcut in htop"
     source+=('vim-keybindings-d-for-kill.patch')
-    sha256sums+=('b583caaab3fff1f28bd358f966ad33187a8f9bed607fec08607a030219db70d9')
+    sha384sums+=('4129c5563a287e2eaeeffca7d508309ac1dbc69d2fc3b00eb47b8450ae8acc35126cd78b2d268a491103463f6507b2a6')
 else  # default to $kill_process_shortcut = x
     msg2 "Using 'x' as the kill-process shortcut in htop"
     source+=('vim-keybindings-x-for-kill.patch')
-    sha256sums+=('dfdcd296508e725572f475308182d9a5d1a4cf7ae8c464f33b9907d92e243a09')
+    sha384sums+=('9817d55acfc4535c58a3b1c92e43cc752830121c69ae6d0cb088fd7074d8cecbad488dc7b84bae4d7c284b30c6989974')
 fi
 
 pkgver() {

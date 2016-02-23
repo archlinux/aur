@@ -1,8 +1,8 @@
 diff --git a/Action.c b/Action.c
-index 6c387de..e622a8c 100644
+index 3b3c3b0..2be7a76 100644
 --- a/Action.c
 +++ b/Action.c
-@@ -378,7 +378,7 @@ static Htop_Reaction actionRedraw() {
+@@ -382,7 +382,7 @@ static Htop_Reaction actionRedraw() {
  }
  
  static struct { const char* key; const char* info; } helpLeft[] = {
@@ -11,10 +11,10 @@ index 6c387de..e622a8c 100644
     { .key = " Digits: ", .info = "incremental PID search" },
     { .key = "   F3 /: ", .info = "incremental name search" },
     { .key = "   F4 \\: ",.info = "incremental name filtering" },
-@@ -405,11 +405,11 @@ static struct { const char* key; const char* info; } helpRight[] = {
-    { .key = "      a: ", .info = "set CPU affinity" },
+@@ -410,11 +410,11 @@ static struct { const char* key; const char* info; } helpRight[] = {
  #endif
-    { .key = "      i: ", .info = "set IO prority" },
+    { .key = "      e: ", .info = "show process environment" },
+    { .key = "      i: ", .info = "set IO priority" },
 -   { .key = "      l: ", .info = "list open files with lsof" },
 +   { .key = "      L: ", .info = "list open files with lsof" },
     { .key = "      s: ", .info = "trace syscalls with strace" },
@@ -25,7 +25,7 @@ index 6c387de..e622a8c 100644
     { .key = "  F10 q: ", .info = "quit" },
     { .key = NULL, .info = NULL }
  };
-@@ -521,6 +521,7 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -542,6 +542,7 @@ void Action_setBindings(Htop_Action* keys) {
     keys['I'] = actionInvertSortOrder;
     keys[KEY_F(6)] = actionExpandCollapseOrSortColumn;
     keys[KEY_F(18)] = actionExpandCollapseOrSortColumn;
@@ -33,7 +33,7 @@ index 6c387de..e622a8c 100644
     keys['<'] = actionSetSortColumn;
     keys[','] = actionSetSortColumn;
     keys['>'] = actionSetSortColumn;
-@@ -539,12 +540,11 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -560,12 +561,11 @@ void Action_setBindings(Htop_Action* keys) {
     keys['S'] = actionSetup;
     keys['C'] = actionSetup;
     keys[KEY_F(2)] = actionSetup;
@@ -48,7 +48,7 @@ index 6c387de..e622a8c 100644
     keys['U'] = actionUntagAll;
     keys['c'] = actionTagAllChildren;
 diff --git a/MainPanel.c b/MainPanel.c
-index 2e91a3c..7a8b2bd 100644
+index f9b45d6..630648b 100644
 --- a/MainPanel.c
 +++ b/MainPanel.c
 @@ -104,14 +104,14 @@ static HandlerResult MainPanel_eventHandler(Panel* super, int ch) {
@@ -69,7 +69,7 @@ index 2e91a3c..7a8b2bd 100644
           super->needsRedraw = true;
           return HANDLED;
 diff --git a/Panel.c b/Panel.c
-index 6540970..d213855 100644
+index 1c45714..395665c 100644
 --- a/Panel.c
 +++ b/Panel.c
 @@ -86,6 +86,8 @@ struct Panel_ {
@@ -161,10 +161,10 @@ index 6789770..22a0f3f 100644
  extern PanelClass Panel_class;
  
 diff --git a/README b/README
-index 3bc17a4..877cf20 100644
+index 1af7377..92a76be 100644
 --- a/README
 +++ b/README
-@@ -16,6 +16,44 @@ but we also have code for running under FreeBSD and Mac OS X
+@@ -17,6 +17,44 @@ but we also have code for running under FreeBSD and Mac OS X
  This software has evolved considerably over the years,
  and is reasonably complete, but there is always room for improvement.
  
@@ -186,7 +186,7 @@ index 3bc17a4..877cf20 100644
 +
 +    j
 +
-+  <C-u>      down 1/2 page
++  <C-d>      down 1/2 page
 +
 +  <C-f>      down 1 page
 +
@@ -206,14 +206,14 @@ index 3bc17a4..877cf20 100644
 +* 'l' can no longer be used to list open files, being replaced with 'L'
 +
 +
- Comparison between 'htop' and classic 'top'
+ Comparison between `htop` and classic `top`
  -------------------------------------------
  
 diff --git a/ScreenManager.c b/ScreenManager.c
-index df7431f..68d3953 100644
+index db3fdee..7c935bc 100644
 --- a/ScreenManager.c
 +++ b/ScreenManager.c
-@@ -272,7 +272,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
+@@ -279,7 +279,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
           continue;
        }
        case KEY_LEFT:
@@ -222,7 +222,7 @@ index df7431f..68d3953 100644
           if (!this->allowFocusChange)
              break;
           tryLeft:
-@@ -283,7 +283,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
+@@ -290,7 +290,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
              goto tryLeft;
           break;
        case KEY_RIGHT:

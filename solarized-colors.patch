@@ -1,8 +1,6 @@
-diff --git a/CRT.c b/CRT.c
-index 2ab20c2..e75813b 100644
 --- a/CRT.c
 +++ b/CRT.c
-@@ -181,7 +181,7 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
+@@ -183,7 +183,7 @@
        [LED_COLOR] = ColorPair(Green,Black),
        [TASKS_RUNNING] = A_BOLD | ColorPair(Green,Black),
        [PROCESS] = A_NORMAL,
@@ -11,7 +9,7 @@ index 2ab20c2..e75813b 100644
        [PROCESS_TAG] = A_BOLD | ColorPair(Yellow,Black),
        [PROCESS_MEGABYTES] = ColorPair(Cyan,Black),
        [PROCESS_BASENAME] = A_BOLD | ColorPair(Cyan,Black),
-@@ -193,7 +193,7 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
+@@ -195,7 +195,7 @@
        [PROCESS_THREAD] = ColorPair(Green,Black),
        [PROCESS_THREAD_BASENAME] = A_BOLD | ColorPair(Green,Black),
        [BAR_BORDER] = A_BOLD,
@@ -20,7 +18,7 @@ index 2ab20c2..e75813b 100644
        [SWAP] = ColorPair(Red,Black),
        [GRAPH_1] = A_BOLD | ColorPair(Cyan,Black),
        [GRAPH_2] = ColorPair(Cyan,Black),
-@@ -340,10 +340,10 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
+@@ -342,10 +342,10 @@
        [CPU_GUEST] = ColorPair(Cyan,White),
     },
     [COLORSCHEME_LIGHTTERMINAL] = {
@@ -34,7 +32,7 @@ index 2ab20c2..e75813b 100644
        [PANEL_HEADER_FOCUS] = ColorPair(Black,Green),
        [PANEL_HEADER_UNFOCUS] = ColorPair(Black,Green),
        [PANEL_SELECTION_FOCUS] = ColorPair(Black,Cyan),
-@@ -354,11 +354,11 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
+@@ -356,11 +356,11 @@
        [BATTERY] = ColorPair(Yellow,Black),
        [LARGE_NUMBER] = ColorPair(Red,Black),
        [METER_TEXT] = ColorPair(Blue,Black),
@@ -49,7 +47,7 @@ index 2ab20c2..e75813b 100644
        [PROCESS_TAG] = ColorPair(White,Blue),
        [PROCESS_MEGABYTES] = ColorPair(Blue,Black),
        [PROCESS_BASENAME] = ColorPair(Green,Black),
-@@ -370,7 +370,7 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
+@@ -372,7 +372,7 @@
        [PROCESS_THREAD] = ColorPair(Blue,Black),
        [PROCESS_THREAD_BASENAME] = A_BOLD | ColorPair(Blue,Black),
        [BAR_BORDER] = ColorPair(Blue,Black),
@@ -58,7 +56,7 @@ index 2ab20c2..e75813b 100644
        [SWAP] = ColorPair(Red,Black),
        [GRAPH_1] = A_BOLD | ColorPair(Cyan,Black),
        [GRAPH_2] = ColorPair(Cyan,Black),
-@@ -378,15 +378,15 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
+@@ -380,15 +380,15 @@
        [MEMORY_BUFFERS] = ColorPair(Cyan,Black),
        [MEMORY_BUFFERS_TEXT] = ColorPair(Cyan,Black),
        [MEMORY_CACHE] = ColorPair(Yellow,Black),
@@ -79,7 +77,7 @@ index 2ab20c2..e75813b 100644
        [HOSTNAME] = ColorPair(White,Black),
        [CPU_NICE] = ColorPair(Cyan,Black),
        [CPU_NICE_TEXT] = ColorPair(Cyan,Black),
-@@ -395,8 +395,8 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
+@@ -397,8 +397,8 @@
        [CPU_IOWAIT] = A_BOLD | ColorPair(Black, Black),
        [CPU_IRQ] = A_BOLD | ColorPair(Blue,Black),
        [CPU_SOFTIRQ] = ColorPair(Blue,Black),
@@ -90,7 +88,7 @@ index 2ab20c2..e75813b 100644
     },
     [COLORSCHEME_MIDNIGHT] = {
        [RESET_COLOR] = ColorPair(White,Blue),
-@@ -476,7 +476,7 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
+@@ -478,7 +478,7 @@
        [LED_COLOR] = ColorPair(Green,Black),
        [TASKS_RUNNING] = A_BOLD | ColorPair(Green,Black),
        [PROCESS] = ColorPair(Cyan,Black),
@@ -99,7 +97,7 @@ index 2ab20c2..e75813b 100644
        [PROCESS_TAG] = A_BOLD | ColorPair(Yellow,Black),
        [PROCESS_MEGABYTES] = A_BOLD | ColorPair(Green,Black),
        [PROCESS_BASENAME] = A_BOLD | ColorPair(Green,Black),
-@@ -553,7 +553,7 @@ void CRT_init(int delay, int colorScheme) {
+@@ -555,7 +555,7 @@
     
     for (int i = 0; i < LAST_COLORELEMENT; i++) {
        unsigned int color = CRT_colorSchemes[COLORSCHEME_DEFAULT][i];
