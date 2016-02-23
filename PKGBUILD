@@ -2,7 +2,8 @@
 
 pkgname="xxhash"
 _pkgname="xxHash"
-pkgver="r42"
+_pkgver="0.5.0"
+pkgver="v${_pkgver}"
 pkgrel="1"
 pkgdesc="Extremely fast non-cryptographic hash algorithm"
 url="https://github.com/Cyan4973/xxHash"
@@ -11,16 +12,16 @@ arch=('i686' 'x86_64')
 depends=('lib32-glibc' 'glibc')
 changelog="ChangeLog"
 source=("https://github.com/Cyan4973/xxHash/archive/${pkgver}.tar.gz")
-sha1sums=('196ecb63d818bda9fc5e3041bd517267fd58a7e3')
+sha1sums=('ccd51c862a6cab4bd772a0a8e99a0fd36d19229a')
 
 build() {
-    cd "${srcdir}/${_pkgname}-${pkgver}/"
+    cd "${srcdir}/${_pkgname}-${_pkgver}/"
 
-    make all
+    make
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}-${pkgver}/"
+    cd "${srcdir}/${_pkgname}-${_pkgver}/"
 
     install -D xxhsum "${pkgdir}/usr/bin/xxhsum"
     install -D xxh64sum "${pkgdir}/usr/bin/xxh64sum"
