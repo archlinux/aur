@@ -1,5 +1,9 @@
 # Maintainer: GI_Jack <iamjacksemail@hackermail.com>
 # pls note, this is a binary package.
+
+# please note systemd .service file is experimental. If anyone knows how to
+# improve, feel free to drop me a line
+
 pkgname=armitage
 pkgver=08.13.15
 pkgrel=3
