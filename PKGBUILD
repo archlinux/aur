@@ -6,8 +6,8 @@
 # Contributor: VuDu <vudu 'dot' curse 'at' gmail 'dot' com>
 
 pkgname=xnviewmp
-pkgver=0.76.1
-pkgrel=2
+pkgver=0.78
+pkgrel=1
 pkgdesc="An efficient multimedia viewer, browser and converter."
 url="http://www.xnview.com/en/xnviewmp/"
 
@@ -19,18 +19,14 @@ optdepends=('gvfs: support for moving files to trash')
 install='xnviewmp.install'
 
 source_i686=("http://download.xnview.com/XnViewMP-linux.tgz"
-	"http://www.xnview.com/beta/XnView-archx32.gz"
         "xnviewmp.desktop")
 
 source_x86_64=("http://download.xnview.com/XnViewMP-linux-x64.tgz"
-        "http://www.xnview.com/beta/XnView-archx64.gz"
         "xnviewmp.desktop")
-md5sums_x86_64=('52bc161bae44ace8391525a0cf4bf668'
-                'SKIP'
-                '24f44d5a881b94daf48775213a57e4ec')
+md5sums_x86_64=('6d15272d6dfbf790ebc9c6b469e438e0'
+				        '24f44d5a881b94daf48775213a57e4ec')
 md5sums_i686=('947e7f3c8d1d63109d8d6a7fb70bfedb'
-              'SKIP'
-              '24f44d5a881b94daf48775213a57e4ec')
+				      '24f44d5a881b94daf48775213a57e4ec')
 
 noextract=("http://www.xnview.com/beta/XnView-archx32.gz"
            "http://www.xnview.com/beta/XnView-archx64.gz")
