@@ -2,7 +2,7 @@
 
 pkgname=scribus1.5.1
 pkgver=preview
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop publishing program - version 1.5.1 preview"
 arch=('x86_64')
 url="http://www.scribus.net"
@@ -19,12 +19,12 @@ install=${pkgname}.install
 
 
 prepare() {
-  cd "$srcdir"/scribus-$pkgver/scribus/plugins/scriptplugin
+  cd "$srcdir"/scribus-1.5.1/scribus/plugins/scriptplugin
   find . -type f -name "*.py" -exec sed -i '1s+python$+python2+' {} \;
 }
 
 build() {
-  cd "$srcdir"/scribus-$pkgver
+  cd "$srcdir"/scribus-1.5.1
   cmake . -DCMAKE_INSTALL_PREFIX:PATH=/opt \
     -DCMAKE_SKIP_RPATH:BOOL=YES -DWANT_GRAPHICSMAGICK=1 \
     -DCMAKE_INCLUDE_PATH=/usr/include/python2.7 \
@@ -36,7 +36,7 @@ build() {
 package () {
   install -Dm644 scribus1.5.desktop \
 	  "$pkgdir"/opt/share/applications/$pkgname.desktop
-  cd "$srcdir"/scribus-$pkgver
+  cd "$srcdir"/scribus-1.5.1
   make DESTDIR="$pkgdir" install
     install -Dm644 COPYING "$pkgdir"/opt/share/licenses/$pkgname/COPYING
 }
