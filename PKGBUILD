@@ -2,13 +2,14 @@
 # Maintainer: Peter Strapp <peter at strapp.co.uk>
 
 pkgname=libqhy-git
-pkgver=r78.218cc69
-pkgrel=2
+pkgver=r77.1f33871
+pkgrel=1
+pkgdesc="SDK including firmware and drivers for QHY astronomy camaras."
 url="https://github.com/qhyccd-lzr/QHYCCD_Linux"
 license=(GPL2)
 arch=(i686 x86_64)
 depends=(libusb)
-makedepends=(cmake boost)
+makedepends=(cmake boost git)
 source=("git+https://github.com/qhyccd-lzr/QHYCCD_Linux.git")
 sha1sums=('SKIP')
 
