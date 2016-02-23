@@ -1,0 +1,14 @@
+--- a/CVAssistant.pro     2015-05-18 08:51:45.000000000 -0400
++++ b/CVAssistant.pro 2015-06-07 17:59:28.116803741 -0400
+@@ -18,8 +18,9 @@
+ 
+ pixmaps.path = /usr/share/pixmaps
+ pixmaps.files = pixmaps/*
+-pixmaps.extra = desktop-file-install cvassistant.desktop
+-INSTALLS += pixmaps
++desktop.path = /usr/share/applications
++desktop.files += cvassistant.desktop
++INSTALLS += pixmaps desktop
+ 
+ SOURCES += main.cpp\
+         mainwindow.cpp \
