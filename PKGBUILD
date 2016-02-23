@@ -6,7 +6,7 @@
 
 pkgname=crossover
 pkgver=15.0.1
-pkgrel=1
+pkgrel=2
 _pkgdebrel=1
 pkgdesc="Run Windows Programs on Linux"
 arch=('i686' 'x86_64')
@@ -46,6 +46,7 @@ optdepends_i686=(
     'libexif: Some applications need to parse EXIF and read their data tags.'
     'libgphoto2: Lets Windows applications access digital cameras.'
     'libldap: Lets Windows applications access LDAP servers.'
+    'libpulse: A featureful, general-purpose sound server (client library)'
     'libxcomposite: This is needed for most CAD-like applications and some games.'
     "libxinerama: This is needed if your display spans multiple screens. If your computer has a single screen then you don't need it."
     'libxml2: This library makes it possible for Windows applications read and write XML files.'
@@ -75,6 +76,7 @@ optdepends_x86_64=(
     'lib32-libdbus: This is needed for Windows applications to automatically detect CD-ROM and USB key insertion.'
     'lib32-libexif: (aur) Some applications need to parse EXIF and read their data tags.'
     'lib32-libldap: Lets Windows applications access LDAP servers.'
+    'lib32-libpulse: A featureful, general-purpose sound server (client library)'
     'lib32-gnutls: This is needed by applications that perform encryption or check online certificates.'
     'lib32-gsm: (aur) Lets Windows applications use the GSM codec for audio compression and decompression.'
     'lib32-gstreamer0.10: (aur) This is needed by some games and multimedia applications.'
