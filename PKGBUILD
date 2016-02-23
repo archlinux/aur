@@ -1,7 +1,7 @@
 # Maintainer: Mikkel Kroman <mk@maero.dk>
 
 pkgname=libantumbra
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Protocol library and tools for the Antumbra Glow"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('libusb')
 makedepends=('pkg-config')
 source=("https://github.com/TeamAntumbra/libantumbra/archive/${pkgver}.tar.gz"
         'glow-udev.rules')
-sha256sums=('57ec356d383c74a77d7b5a1af26a216199b5f9789c89f2217fdaddc2b12b6b00'
+sha256sums=('26f7db6325fe20d6feb3a895b5c0dd2af25eb2e5faab57ca3bf411e48dbc16fe'
             'f80a3d303b6c035c01f872a4f932724191ef867a950a07c15b88c75ccef6c8da')
 
 build() {
