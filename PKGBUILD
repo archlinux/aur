@@ -9,7 +9,7 @@ url='https://github.com/carnager/rofi-scripts'
 license=('GPL')
 depends=('rofi-git' 'surfraw')
 
-install=('rofi-surfraw.install')
+install=rofi-surfraw.install
 makedepends=('git')
 source=('git+http://github.com/carnager/rofi-scripts')
 
