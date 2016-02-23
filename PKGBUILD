@@ -15,7 +15,7 @@ optdepends=(
 )
 license=('GPL2')
 source=(
-  "https://github.com/synergy/synergy/archive/1.6.3-final.tar.gz"
+  "https://github.com/symless/synergy/archive/1.6.3-final.tar.gz"
   "${_pkgname}s_at.socket"
   "${_pkgname}s_at.service"
   'missing-include-fix.patch'
@@ -35,9 +35,9 @@ prepare() {
   patch -p1 < ../missing-include-fix.patch
 
   cd ext
-  unzip gmock-1.6.0.zip -d gmock-1.6.0
-  unzip gtest-1.6.0.zip -d gtest-1.6.0
-  unzip cryptopp562.zip -d cryptopp562
+  unzip -o gmock-1.6.0.zip -d gmock-1.6.0
+  unzip -o gtest-1.6.0.zip -d gtest-1.6.0
+  unzip -o cryptopp562.zip -d cryptopp562
 }
 
 build() {
