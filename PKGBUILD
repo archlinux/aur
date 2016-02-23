@@ -2,7 +2,7 @@
 
 pkgname='vkcube-git'
 pkgdesc='Demo cube app for Vulkan'
-pkgver=r39.2c68258
+pkgver=r41.1226eec
 pkgrel=1
 url='https://github.com/krh/vkcube'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('vulkan-icd-loader' 'libpng' 'mesa')
 source=('git+https://github.com/krh/vkcube')
 sha1sums=('SKIP')
-makedepends=('git' 'vulkan-intel')
+makedepends=('git' 'vulkan-headers' 'vulkan-intel')
 
 pkgver() {
   cd "${srcdir}"/vkcube
