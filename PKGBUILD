@@ -3,13 +3,13 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 
 pkgname=howl-editor-git
-pkgver=0.3.r425.gf0485c2
+pkgver=0.3.r431.g383ee2e
 pkgrel=1
 pkgdesc='General purpose, light-weight customizable editor'
 arch=('i686' 'x86_64')
 url='http://howl.io/'
 license=('MIT')
-depends=('gtk3' 'desktop-file-utils' 'coffee-script')
+depends=('gtk3' 'desktop-file-utils' 'coffee-script' 'python2')
 makedepends=('git' 'wget')
 provides=('howl-editor')
 conflicts=('howl-editor')
@@ -31,5 +31,6 @@ package() {
   cd howl/src
   make PREFIX=/usr DESTDIR="$pkgdir" install
   cd ..
-  install -Dm644 LICENSE.md $pkgdir/usr/share/licenses/$pkgname/LICENSE.md
+  install -Dm644 LICENSE.md "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.md
+  rm "$pkgdir"/usr/share/howl/bundles/python/misc/examples.py
 }
