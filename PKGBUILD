@@ -1,4 +1,4 @@
-
+# Maintainer: David Phillips <dbphillipsnz gmail>
 
 _script=make-anaglyph
 pkgname=gimp-plugin-${_script}
