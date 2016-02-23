@@ -13,10 +13,10 @@
 # following line.                                                             #
 ###############################################################################
 
-API=15
+API=16
 
 pkgname=kodi-addon-pvr-hts-git
-pkgver=r314.016b0b3
+pkgver=r502.3c673b5
 pkgrel=1
 _branch=Isengard
 pkgdesc='Tvheadend HTSP PVR client addon for Kodi'
