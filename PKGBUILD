@@ -1,7 +1,7 @@
 # Maintainer: Janosch Dobler <janosch.dobler@gmx.de>
 pkgname=rebash
-pkgver=0.2 # gets updated by pre-push hook
-pkgrel=1 # gets updated by pre-push hook
+pkgver=0.1
+pkgrel=1
 pkgdesc="bash/shell library/framework"
 arch=('x86_64')
 url="https://github.com/jandob/rebash"
