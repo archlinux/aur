@@ -2,8 +2,8 @@
 
 _pkgname=timezonedb
 pkgname="pecl-$_pkgname"
-pkgver=2015.4
-pkgrel=2
+pkgver=2016.1
+pkgrel=1
 pkgdesc="Timezone Database to be used with PHP's date and time functions"
 arch=('i686' 'x86_64')
 url="http://pecl.php.net/package/$_pkgname"
@@ -13,7 +13,7 @@ makedepends=('autoconf')
 #~ install=$pkgname.install
 source=(http://pecl.php.net/get/$_pkgname-$pkgver.tgz)
 #~ noextract=("$_pkgname-$pkgver.tgz")
-md5sums=('965459fee5cb73f81cbcda57c9da1ca6')
+md5sums=('40c4f1b465a5f899db97c06380b15a01')
 
 prepare() {
   cd $_pkgname-$pkgver
