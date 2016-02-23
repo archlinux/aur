@@ -18,9 +18,8 @@ _srcpath=$srcdir/$_pkgid
 build(){
 	cd $srcdir/$_pkgid
 	./configure --enable-shared \
-		--enable-64bit \
 		--prefix=/usr \
-		--cxx-common="-D_GLIBCXX_USE_CXX11_ABI=0 -march=native -mtune=native -Ofast -fPIC" 
+		--cxx-common="-D_GLIBCXX_USE_CXX11_ABI=0 -fPIC" 
 	make ${MAKEFLAGS}
 }
 
