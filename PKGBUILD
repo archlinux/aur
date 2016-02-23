@@ -13,10 +13,10 @@
 # following line.                                                             #
 ###############################################################################
 
-API=15
+API=16
 
 pkgname=kodi-addon-pvr-vdr-vnsi-git
-pkgver=r295.550a4a2
+pkgver=r381.7e11b85
 pkgrel=1
 _branch=Isengard
 pkgdesc='VDR VNSI PVR client addon for Kodi'
