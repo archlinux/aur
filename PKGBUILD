@@ -2,7 +2,7 @@
 pkgname=jasp-desktop-git
 _pkgname=jasp-desktop
 _buildname=jasp-build
-pkgver=v0.7.5Beta3.r0.g0e28d09
+pkgver=v0.7.5.r0.g7db237f
 pkgrel=1
 pkgdesc="JASP, a low fat alternative to SPSS, a delicious alternative to R."
 arch=('any')
@@ -12,9 +12,9 @@ depends=('qt5-base' 'r' 'libarchive' 'qt5-webkit' 'qt5-declarative' 'qt5-sensors
 makedepends=('git' 'qtchooser' 'r' 'gcc-fortran' 'boost')
 provides=('jasp' 'jasp-desktop')
 conflicts=('jasp' 'jasp-desktop')
-install=('jasp-desktop-git.install')
+install='jasp-desktop-git.install'
 options=('!strip')
-source=("$_pkgname::git+https://github.com/jasp-stats/$_pkgname.git#tag=v0.7.5Beta3" 
+source=("$_pkgname::git+https://github.com/jasp-stats/$_pkgname.git#tag=v0.7.5" 
 	"jasp-desktop.svg"
 	"include.patch"
 	"sem.patch")
@@ -74,5 +74,5 @@ EOF
 }
 md5sums=('SKIP'
          'bcaf403001283553bb63b72c268d0290'
-         'caf8356566041e51d124707fe44afedc'
-         '3f5c10570e9a195dc8008a86f72b0e5a')
+         '55f6dd36a413afa371fd112d3afa038e'
+         'c7381a233ac6c6d7f6ccd85434f93f41')

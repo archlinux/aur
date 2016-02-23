@@ -1,10 +1,10 @@
 diff --git a/JASP-Desktop/mainwindow.cpp b/JASP-Desktop/mainwindow.cpp
-index 147ee34..fdd4e08 100644
+index 14e56a9..5aed19c 100644
 --- a/JASP-Desktop/mainwindow.cpp
 +++ b/JASP-Desktop/mainwindow.cpp
-@@ -91,9 +91,7 @@ MainWindow::MainWindow(QWidget *parent) :
- 	ui->tabBar->setFocusPolicy(Qt::NoFocus);
- 	ui->tabBar->addTab("File");
+@@ -120,9 +120,7 @@ MainWindow::MainWindow(QWidget *parent) :
+ 	ui->tabBar->addTab("Variables"); // variables view
+ #endif
  	ui->tabBar->addTab("Common");
 -#ifndef __linux__
  	ui->tabBar->addOptionsTab(); // no SEM under linux for now
@@ -12,7 +12,23 @@ index 147ee34..fdd4e08 100644
  	ui->tabBar->addHelpTab();
  
  	connect(ui->tabBar, SIGNAL(currentChanged(int)), this, SLOT(tabChanged(int)));
-@@ -918,15 +916,11 @@ void MainWindow::updateMenuEnabledDisabledStatus()
+@@ -670,7 +668,6 @@ void MainWindow::tabChanged(int index)
+ 		ui->topLevelWidgets->setCurrentIndex(1);
+ 	}
+ #endif
+-#ifndef __linux__
+ 	else if (index == ui->tabBar->count() - 1)
+ 	{
+ 		if (_optionsForm == NULL)
+@@ -682,7 +679,6 @@ void MainWindow::tabChanged(int index)
+ 
+ 		ui->topLevelWidgets->setCurrentWidget(_optionsForm);
+ 	}
+-#endif
+ 	else
+ 	{
+ #ifdef QT_DEBUG  // if variables tab enabled
+@@ -988,15 +984,11 @@ void MainWindow::updateMenuEnabledDisabledStatus()
  
  void MainWindow::updateUIFromOptions()
  {
