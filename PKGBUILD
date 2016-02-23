@@ -7,7 +7,7 @@
 pkgname='rubymine-eap'
 _pkgname='RubyMine'
 _pkgver='8.5'
-_pkgbuild='144.3600.17'
+_pkgbuild='144.4199.20'
 pkgver="${_pkgver}_${_pkgbuild}"
 pkgrel='1'
 pkgdesc="Ruby and Rails IDE with the full stack of essential developer tools (EAP)"
@@ -16,10 +16,10 @@ options=('!strip')
 url="http://www.jetbrains.com/rubymine"
 license=('custom')
 depends=('java-runtime')
-source=(http://download.jetbrains.com/ruby/${_pkgname}-${_pkgbuild}-custom-jdk-linux.tar.gz
+source=(http://download.jetbrains.com/ruby/${_pkgname}-${_pkgbuild}.tar.gz
         rubymine-eap
         rubymine-eap.desktop)
-sha256sums=('e76cf5a140d266614584025ffa567e8c2c613574e851a7444a514c40321ba495'
+sha256sums=('61248f18a563189a17d1da701737b15f0b492fadf8eafe806e2f8a46c51561f5'
             '5907872548a4698c4a58a229296ff519031fba30b070257ff1a5e308faaff3c3'
             '772ff1c6599d414e02e862e03f1c7525cf69d3158f22674e5de751fa47df46c1')
 PKGEXT='.pkg.tar.gz' # prevent a time-consuming compression with xz
