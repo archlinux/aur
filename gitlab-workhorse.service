@@ -6,12 +6,15 @@ After=gitlab-unicorn.service
 [Service]
 User=gitlab
 Group=gitlab
-Type=forking
 WorkingDirectory=/usr/share/webapps/gitlab
 SyslogIdentifier=gitlab-workhorse
-PIDFile=/run/gitlab/workhorse.pid
-
-ExecStart=/usr/share/webapps/gitlab/bin/daemon_with_pidfile /run/gitlab/workhorse.pid /usr/bin/gitlab-workhorse -listenUmask 0 -listenNetwork unix -listenAddr /var/lib/gitlab/sockets/gitlab-workhorse.socket -authBackend http://127.0.0.1:8080 /var/lib/gitlab/repositories >> /var/log/gitlab/gitlab-workhorse.log 2>&1
+CapabilityBoundingSet=
+ProtectSystem=full
+ProtectHome=true
+NoNewPrivileges=true
+ExecStart=/usr/bin/gitlab-workhorse /var/lib/gitlab/repositories
+ExecStop=/usr/bin/kill -QUIT $MAINPID
+ExecReload=/usr/bin/kill -USR2 $MAINPID
 
 [Install]
 WantedBy=multi-user.target
