@@ -1,7 +1,7 @@
 # Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
 
 pkgname=devtodo-git
-pkgver=2.1.r18.gd90696a
+pkgver=2.1.r23.g249609b
 pkgrel=1
 pkgdesc="A hierarchical command-line task manager."
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ pkgver() {
 }
 
 prepare() {
-	GOPATH="$srcdir" go get github.com/droundy/goopt
+	GOPATH="$srcdir" go get gopkg.in/alecthomas/kingpin.v2
 }
 
 build() {
@@ -27,5 +27,6 @@ build() {
 
 package() {
 	cd devtodo2
+	mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/share/man"
 	make PREFIX="$pkgdir/usr" install
 }
