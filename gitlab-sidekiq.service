@@ -16,7 +16,7 @@ PIDFile=<HOMEDIR>/pids/sidekiq.pid
 CapabilityBoundingSet=
 PrivateTmp=true
 PrivateDevices=true
-ProtectSystem=full
+#ProtectSystem=full
 ProtectHome=true
 # NoNewPrivileges breaks gitlabs' email delivery if you
 # use postfix' sendmail wrapper. If you use an SMTP server

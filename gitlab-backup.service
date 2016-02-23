@@ -14,7 +14,7 @@ Environment=RAILS_ENV=production PATH=/opt/ruby2.1/bin:/usr/bin
 CapabilityBoundingSet=
 PrivateTmp=true
 PrivateDevices=true
-ProtectSystem=full
+#ProtectSystem=full
 ProtectHome=true
 NoNewPrivileges=true
 

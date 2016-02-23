@@ -6,7 +6,7 @@
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=gitlab
-pkgver=8.4.4
+pkgver=8.5.0
 pkgrel=1
 pkgdesc="Project management and code hosting application"
 arch=('i686' 'x86_64')
@@ -15,9 +15,10 @@ license=('MIT')
 depends=('ruby2.1' 'git>=1.7.10' 'ruby2.1-bundler>=1.5.2' 'gitlab-shell=2.6.10' 'openssh' 'redis>=2.8' 'libxslt' 'icu' 'nodejs')
 makedepends=('cmake')
 optdepends=(
-	'gitlab-workhorse=0.6.2: for http(s) access'
+	'gitlab-workhorse=0.6.4: for http(s) access'
 	'mariadb: database backend'
 	'postgresql>=9.1: database backend'
+	'mysql>=5.5.14: database backend'
 	'python2-docutils: reStructuredText markup language support'
 	'postfix: mail server in order to receive mail notifications'
 	)
@@ -47,10 +48,10 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/gitlabhq/gitlabhq/archive/v
 	nginx-ssl.conf.example
 	lighttpd.conf.example)
 install='gitlab.install'
-sha512sums=('fe8bd002ea164b384e25303e06ab6a6a97c89180a1898bc8a6d6bb07fcfda6be03a057ad7f92e4c192e0c10aa686b897fe18e864b36c314dcd7fee62dd6758bb'
-	'5dd7a940eee6a84095478af514dcc98c4fc6c4a214de1ddfa4a1e727d4ba34984d66d51affd7844ffebb75fed8f781b38a0da80fba6a5b8fa832948ab39b2249'
-	'2c9d8c650a1808d730bb0f6c45ea8fe2f354d56a5bea1da7eb17dc687ec06b731472af842f4cce0704bf738b5a88001a06e1907d18a35d363e88c4dd6f3e9c7d'
-	'c22439ee4cb34adf42de7619a2b83b02359cada38cbe99dd3031e6e72225ec4b2c2d6306331eadfc1c2044609b7a7e8bceddf7be213b5d4dbcaff86b35fe1ce7'
+sha512sums=('499d93767df9d3c9c4b68ac663846d49335bd989ee8e93a8d610cb6106900886913912443f908cd316424312df67658df5d6027fda9a5abd787572d4e23e14d1'
+	'cecc0a89f64775d086fbf2fb136cbaa8408da71f05d035fd56740571013d68bf27b9a90a0723be0d5de31d0888645c64302f58799aba045a30be0767c18ef12e'
+	'bd047716fd90c9607bf8fc5a28aab19d76d60afc87967fb00fe2d2b1fb47d26f92b0637c50eae6d63114cb04179e7c02be9d92a3f3bad0758dd1296921ef9ab4'
+	'729047848813e29361a77eb20e1a4ea296f57d4a44f87276531e20723ae6a3729cf864f01cc4f60ed90c430ec92666287b48b11457dc327ddf4300524c9fc50c'
 	'ba4266709079f57e4e3d0e37a46e4ba2cac793ce0a4ac18d2edfe0b7fed8104a3a75bdea2997404a8f363b8017f3be2792745bbdaebf0d09cf78f825a56b0928'
 	'c11d2c59da8325551a465227096e8d39b0e4bcd5b1db21565cf3439e431838c04bc00aa6f07f4d493f3f47fd6b4e25aeb0fe0fc1a05756064706bf5708c960ec'
 	'c519a51d31300074ea12594fbcc8e9610d991ef04b1dac94d93a2b201df3465999cc7c6ac7f3896e02b117c2366d61dea1ef2f6b9cd7b18998385a7f26e5700f'
