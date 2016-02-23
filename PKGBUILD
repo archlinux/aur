@@ -2,7 +2,7 @@
 
 _pkgname='pybind11'
 pkgname="${_pkgname}"
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc='A lightweight header-only library to create Python bindings of existing C++ code.'
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('python: to target bindings supporting python 3'
 makedepends=('python' 'python-setuptools')
 
 source=("https://github.com/wjakob/pybind11/archive/v${pkgver}.tar.gz")
-sha256sums=('f2ccc704b0e54aa3f76553f215e14c38c761af86ba8f4aae87cb1701f6fb6bb8')
+sha256sums=('80300aa9061ace3a5eb26d85ee98bc425ba989297d5d6a7dbdd09cabcbe58952')
 
 check() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
