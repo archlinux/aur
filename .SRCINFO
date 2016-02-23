@@ -1,6 +1,6 @@
 pkgbase = google-chrome-dev
 	pkgdesc = An attempt at creating a safer, faster, and more stable browser (Dev Channel). NOTE: If the md5sums don't match, don't post the makepkg output. Simply flag the package.
-	pkgver = 50.0.2652.0
+	pkgver = 50.0.2657.0
 	pkgrel = 1
 	url = https://www.google.com/chrome/index.html
 	install = google-chrome-dev.install
@@ -31,10 +31,10 @@ pkgbase = google-chrome-dev
 	provides = pepper-flash
 	options = !emptydirs
 	options = !strip
-	source = google-chrome-unstable_50.0.2652.0_amd64.deb::https://dl.google.com/linux/direct/google-chrome-unstable_current_amd64.deb
+	source = google-chrome-unstable_50.0.2657.0_amd64.deb::https://dl.google.com/linux/direct/google-chrome-unstable_current_amd64.deb
 	source = google-chrome-unstable
 	source = eula_text.html
-	md5sums = 62ac5ced12c02aa1d998ed397d976e1b
+	md5sums = a58034acc41d37047f384007004b5585
 	md5sums = 11b55a3fec7279db32b63e3a0b97dc01
 	md5sums = b7e752f549b215ac77f284b6486794b6
 
