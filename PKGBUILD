@@ -5,7 +5,7 @@
 
 pkgname=imapfilter
 pkgver=2.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A mail filtering utility for processing IMAP mailboxes"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/lefcha/imapfilter"
@@ -21,6 +21,9 @@ build() {
   # sometimes imapfilter doesn't compile with LDFLAG "--as-needed".
   # in that case, uncomment next line.
   # LDFLAGS="-Wl,--hash-style=gnu -Wl"
+
+  sed -i "s/MYCFLAGS =/MYCFLAGS=${CFLAGS}/" src/Makefile
+  sed -i "s/MYLDFLAGS =/MYLDFLAGS=${LDFLAGS}/" src/Makefile
 
   make PREFIX=/usr all
 }
