@@ -1,6 +1,6 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 pkgname=autorevision
-pkgver=1.13
+pkgver=1.14
 pkgrel=1
 pkgdesc="Extracts metadata about the head of a repository; useful for build scripts."
 arch=('any')
@@ -8,7 +8,7 @@ url="https://autorevision.github.io/"
 license=('BSD')
 makedepends=('asciidoc')
 source=(https://github.com/Autorevision/autorevision/releases/download/v%2F${pkgver}/autorevision-${pkgver}.tgz)
-sha256sums=('b2a5cd0e368b585f4e6a9414d632194b0de715185404f8cbe21645660fbcbcdf')
+sha256sums=('a2e141fa73153ccaa8e7fdf7ad62d935a133c93571c4bc2c68385525447a1140')
 
 build() {
   cd "$srcdir/$pkgname-${pkgver}"
