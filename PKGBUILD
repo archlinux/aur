@@ -50,6 +50,7 @@ package() {
   cd "$srcdir/$_gitname/tmp"
   make DESTDIR="$pkgdir/" install
   mkdir -p $pkgdir/usr/bin/
+  mkdir -p $pkgdir/etc/shiny-server/
   ln -s /usr/shiny-server/bin/shiny-server $pkgdir/usr/bin/shiny-server
   install -m 644 -D $srcdir/shiny-server.service $pkgdir/usr/lib/systemd/system/shiny-server.service
   install -m 644 -D $srcdir/$_gitname/config/default.config $pkgdir/etc/shiny-server/shiny-server.conf
