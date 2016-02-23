@@ -12,7 +12,6 @@ depends=('php-pear')
 makedepends=('autoconf')
 install=$pkgname.install
 source=(http://pecl.php.net/get/$_pkgname-$pkgver.tgz)
-#~ noextract=("$_pkgname-$pkgver.tgz")
 md5sums=('40c4f1b465a5f899db97c06380b15a01')
 
 prepare() {
@@ -39,19 +38,3 @@ package() {
   install -d "$pkgdir/etc/php/conf.d"
   echo ";extension=$_pkgname.so" > "$pkgdir/etc/php/conf.d/$_pkgname.ini"
 }
-
-#~ prepare() {
-  #~ local _temp_dir=$(pecl config-get temp_dir)
-  #~ mkdir -p $(dirname $_temp_dir)
-  #~ mkdir -p $pkgdir$_temp_dir
-  #~ ln -sf $pkgdir$_temp_dir $_temp_dir
-  #~ pecl bundle --destination=$_temp_dir "$_pkgname-$pkgver.tgz"
-#~ }
-
-#~ package() {
-  #~ pecl install --packagingroot=$pkgdir package.xml
-  #~ pecl install --offline --packagingroot=$pkgdir "$_pkgname-$pkgver.tgz"
-  #~ make INSTALL_ROOT=$pkgdir install
-  #~ install -d "$pkgdir/etc/php/conf.d"
-  #~ echo ";extension=$_pkgname.so" > "$pkgdir/etc/php/conf.d/$_pkgname.ini"
-#~ }
