@@ -2,12 +2,12 @@
 
 _basename=airwave
 pkgname=${_basename}-git
-pkgver=r69.282add2
+pkgver=r123.d263ca1
 pkgrel=1
-pkgdesc=("Airwave is a WINE-based VST bridge, that allows for the use of Windows 32- and 64-bit VST 2.4 audio plugins with Linux VST hosts")
+pkgdesc="Airwave is a WINE-based VST bridge, that allows for the use of Windows 32- and 64-bit VST 2.4 audio plugins with Linux VST hosts"
 arch=("i686" "x86_64")
 license=("MIT")
-url=("https://github.com/phantom-code/airwave")
+url="https://github.com/phantom-code/airwave"
 depends=("wine>=1.7" "qt5-base")
 makedepends=("git" "cmake>=2.8")
 
