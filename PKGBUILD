@@ -8,7 +8,7 @@
 #
 pkgname=rstudio-server-git
 _gitname="rstudio"
-pkgver=v0.99.636.r9.gfc78d32
+pkgver=v0.99.1080.r0.g78a049a
 pkgrel=1
 pkgdesc="A new integrated development environment (IDE) for R programming language"
 arch=('i686' 'x86_64')
@@ -54,16 +54,25 @@ build() {
 
 
 package() {
+# Install
   msg "Starting make and install..."
   cd "${srcdir}/$_gitname/build"
   make DESTDIR="$pkgdir" install
+# Extras (pam, var)
   msg "Install adittional files..."
   install -d "${pkgdir}/etc/pam.d"
   install -Dm 644 "${pkgdir}/usr/lib/rstudio-server/extras/pam/rstudio" "${pkgdir}/etc/pam.d/rstudio"
-  install -d "${pkgdir}/srv"
-  mv "${pkgdir}/usr/lib/rstudio-server/www" "${pkgdir}/srv/rstudio"
-  rm -rf "${pkgdir}/usr/lib/rstudio-server/extras"
+  # rstudio home directory
+  install -d "${pkgdir}/srv/rstudio"
+#  mv "${pkgdir}/usr/lib/rstudio-server/www" "${pkgdir}/srv/rstudio"
+#  rm -rf "${pkgdir}/usr/lib/rstudio-server/extras"
   install -d "${pkgdir}/etc/systemd/system"
   install -Dm 644 "${srcdir}/rstudio-server.service" "${pkgdir}/etc/systemd/system/rstudio-server.service"
   install -d "${pkgdir}/etc/rstudio"
+# vars
+mkdir -p ${pkgdir}/run/rstudio-server ${pkgdir}/lock/rstudio-server ${pkgdir}/var/log/rstudio-server ${pkgdir}/var/lib/rstudio-server
+# lns
+mkdir -p $pkgdir/usr/bin
+ln -s /usr/lib/rstudio-server/bin/rserver $pkgdir/usr/bin/rserver
+ln -s /usr/lib/rstudio-server/bin/rstudio-server $pkgdir/usr/bin/rstudio-server
 }
