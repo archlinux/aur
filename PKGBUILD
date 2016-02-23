@@ -12,7 +12,8 @@ pkgdesc="A comprehensive open source library for n-D Point Clouds and 3D geometr
 arch=('x86_64' 'i686')
 url='http://www.pointclouds.org'
 license=('BSD')
-depends=('boost' 'eigen' 'flann' 'vtk' 'qhull' 'qt5-base' 'glu' 'qt5-webkit' 'openmpi')
+depends=('boost' 'eigen' 'flann' 'vtk' 'qhull' 'qt5-base' 'glu' 'qt5-webkit'
+  'openmpi' 'python2' 'libxt')
 makedepends=('cmake' 'gl2ps')
 optdepends=('cuda' 'openni2' 'python-sphinx')
 source=("https://github.com/PointCloudLibrary/pcl/archive/pcl-${pkgver}.tar.gz"
