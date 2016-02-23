@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Miam Player
+GenericName=Music Player
+Exec=miam-player
+Icon=/usr/share/pixmaps/miam-player.png
+Categories=AudioVideo
