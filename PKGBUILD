@@ -7,7 +7,7 @@
 #
 
 pkgname=emacs25-git
-pkgver=25.0.91.r124424
+pkgver=25.0.91.r124452
 pkgrel=1
 pkgdesc="GNU Emacs. Version 25 development and maintenance branch."
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ makedepends=('git')
 conflicts=('emacs')
 provides=('emacs')
 install="$pkgname".install
-source=("$pkgname::git://git.savannah.gnu.org/emacs.git#branch=emacs-25")
+source=("$pkgname::git+http://git.savannah.gnu.org/r/emacs.git#branch=emacs-25")
 md5sums=('SKIP')
 
 pkgver() {
