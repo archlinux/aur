@@ -5,7 +5,7 @@
 
 pkgname=emacs-org-mode
 _srcname=org
-pkgver=8.3.3
+pkgver=8.3.4
 pkgrel=1
 pkgdesc="Emacs Org Mode"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('emacs')
 license=('GPL')
 install=emacs-org-mode.install
 source=("http://orgmode.org/$_srcname-$pkgver.tar.gz")
-sha256sums=('c560064ab9a52ac682ce452c62fee90113e67e9950b67e0ab1eaec405aad1eee')
+sha256sums=('e86d9ce32b26ee31c954c9a6210422c65ecbe89129003d426a7fa4b1a8864603')
 
 build() {
   cd "$_srcname-$pkgver"
