@@ -16,12 +16,6 @@ source=("$pkgname"::'https://github.com/minad/3delta.git')
 # Because the sources are not static, skip Git checksum:
 md5sums=('SKIP')
 
-pkgver() {
-  cd "$srcdir/$pkgname"
-  # Use the tag of the last commit
-  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
-}
-
 package() {
   cd "$srcdir/$pkgname"
   install -Dm755 "3delta" "$pkgdir/usr/bin/3delta"
