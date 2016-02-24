@@ -9,8 +9,8 @@ license=('APACHE')
 depends=('python-imaging' 'python2-scipy' 'python2-matplotlib' 'python2-pytables'
          'imagemagick' 'opencv' 'python2-beautifulsoup4')
 source=("https://github.com/tmbdev/ocropy/archive/v${pkgver}.tar.gz"
-        "fixcast.patch::https://github.com/dblN/ocropy/commit/0e54bae2ef640a163c107a16b425dfd5ac698622.patch"
-        "http://www.tmbdev.net/en-default.pyrnn.gz")
+        'fixcast.patch::https://github.com/tmbdev/ocropy/commit/0e54bae2ef640a163c107a16b425dfd5ac698622.patch'
+        'http://www.tmbdev.net/en-default.pyrnn.gz')
 md5sums=('622636a7dde7c304ec719b65cf885a86'
          'bec6823d44722a839513d6527bdcfb7e'
          'cedd140c7d7650e910f0550ad0f04727')
