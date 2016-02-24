@@ -2,7 +2,7 @@
 # Contributor: talavis <aur talavis eu>
 # Contributor: Bruno Vieira <mail@bmpvieira.com>
 pkgname=ugene
-pkgver=1.19.0
+pkgver=1.21.0
 pkgrel=1
 pkgdesc="A free cross-platform genome analysis suite."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://ugene.net/"
 license=('GPL')
 depends=('qt5-base' 'libxtst' 'glu' 'qtwebkit' 'desktop-file-utils' 'procps-ng' 'python' 'shared-mime-info')
 source=(${url}downloads/$pkgname-$pkgver.tar.gz)
-sha256sums=('ad9f94f5c53daa2ef5c5630d92a6f8ebe812fb1066a8bd08869830723f5c29a5')
+sha256sums=('baf979a1f2b133822748750266f68a010ed8f7ac424ff1cbb9da44decc403cf5')
 install=$pkgname.install
 
 build() {
