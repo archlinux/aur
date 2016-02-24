@@ -1,24 +1,24 @@
 pkgname=enpass-bin
 _pkgname=enpass
-pkgver=5.0.2
-pkgrel=4
+pkgver=5.0.4
+pkgrel=1
 pkgdesc="A multiplatform password manager"
 arch=('i686' 'x86_64')
 url="http://enpass.io/"
 license=('custom')
-depends=('libxss' 'lsof' 'libappindicator-gtk2')
+depends=('libxss' 'lsof')
 install=enpass-bin.install
 case $CARCH in
     'x86_64')
         _arch='amd64'
         sha256sums=(
-            '774db0dfe6eb3f51c098249952366210944672238d6f3aafced290ac0cee0416'
+            '6431c07ddfbc08ef7c49fa3593055eca4908b41e149c8b3130d37a597f6fccb1'
         )
         ;;
     'i686')
         _arch='i386'
         sha256sums=(
-            '672409d840733aceb95f6f20cf6799814546c48f699b4f9efd63b382db1ed3bd'
+            'd3c23d9a5f2ac280ec51c45731d89812bf0af425ea31c5e6f34a1e7e9d0995ee'
         )
         ;;
 esac
