@@ -13,7 +13,7 @@ sha512sums=('SKIP')
 
 pkgver() {
 	# Updating package version
-	cd ${srcdir}/${pkgbase}
+	cd "${srcdir}"/${pkgbase}
 	(
 		set -o pipefail
 		git describe --long --tags 2>/dev/null | sed -r 's/^v//;s/-/./g' ||
@@ -29,8 +29,8 @@ package_tomorrow-theme-vim-git() {
 	provides=("${pkgbase}-vim-git=${pkgver}")
 	
 	# Install vim colorscheme
-	mkdir -p ${pkgdir}/usr/share/vim/vimfiles
-	cp -R ${srcdir}/${pkgbase}/vim/colors ${pkgdir}/usr/share/vim/vimfiles/
+	mkdir -p "${pkgdir}"/usr/share/vim/vimfiles
+	cp -R "${srcdir}"/${pkgbase}/vim/colors "${pkgdir}"/usr/share/vim/vimfiles/
 }
 
 package_tomorrow-theme-qtcreator-git() {
@@ -40,17 +40,17 @@ package_tomorrow-theme-qtcreator-git() {
 	provides=("${pkgbase}-qtcreator-git=${pkgver}")
 	
 	# Install qtcreator style
-	mkdir -p ${pkgdir}/usr/share/qtcreator
-	cp -R ${srcdir}/${pkgbase}/QtCreator/styles ${pkgdir}/usr/share/qtcreator/
+	mkdir -p "${pkgdir}"/usr/share/qtcreator
+	cp -R "${srcdir}"/${pkgbase}/QtCreator/styles "${pkgdir}"/usr/share/qtcreator/
 }
 
 package_tomorrow-theme-gedit-git() {
 	pkgdesc='Tomorrow Theme for gedit. Development version.'
 	groups=("${pkgbase}-git")
 	optdepends=('gedit: to use this style')
-	provides=("${pkgbase}-qtcreator-git=${pkgver}")
+	provides=("${pkgbase}-gedit-git=${pkgver}")
 	
 	# Install gedit style
-	mkdir -p ${pkgdir}/usr/share/gtksourceview-3.0/styles
-	cp -R ${srcdir}/${pkgbase}/GEdit/*.xml ${pkgdir}/usr/share/gtksourceview-3.0/styles/
+	mkdir -p "${pkgdir}"/usr/share/gtksourceview-3.0/styles
+	cp -R "${srcdir}"/${pkgbase}/GEdit/*.xml "${pkgdir}"/usr/share/gtksourceview-3.0/styles/
 }
