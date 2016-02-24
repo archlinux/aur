@@ -1,0 +1,29 @@
+diff -Naur previous/src/configuration.c patch.previous/src/configuration.c
+--- previous/src/configuration.c	2016-02-22 10:13:54.149766936 -0800
++++ patch.previous/src/configuration.c	2016-02-22 19:43:31.024100388 -0800
+@@ -416,12 +416,9 @@
+ 	ConfigureParams.Sound.bEnableSound = true;
+ 
+ 	/* Set defaults for Rom */
+-    sprintf(ConfigureParams.Rom.szRom030FileName, "%s%cRev_1.0_v41.BIN",
+-            Paths_GetWorkingDir(), PATHSEP);
+-    sprintf(ConfigureParams.Rom.szRom040FileName, "%s%cRev_2.5_v66.BIN",
+-            Paths_GetWorkingDir(), PATHSEP);
+-    sprintf(ConfigureParams.Rom.szRomTurboFileName, "%s%cRev_3.3_v74.BIN",
+-            Paths_GetWorkingDir(), PATHSEP);
++    sprintf(ConfigureParams.Rom.szRom030FileName, "/usr/share/previous/Rev_1.0_v41.BIN");
++    sprintf(ConfigureParams.Rom.szRom040FileName, "/usr/share/previous/Rev_2.5_v66.BIN");
++    sprintf(ConfigureParams.Rom.szRomTurboFileName, "/usr/share/previous/Rev_3.3_v74.BIN");
+ 
+ 
+ 	/* Set defaults for System */
+@@ -451,8 +448,7 @@
+     ConfigureParams.Dimension.nMemoryBankSize[1] = 4;
+     ConfigureParams.Dimension.nMemoryBankSize[2] = 4;
+     ConfigureParams.Dimension.nMemoryBankSize[3] = 4;
+-    sprintf(ConfigureParams.Dimension.szRomFileName, "%s%cdimension_eeprom.bin",
+-            Paths_GetWorkingDir(), PATHSEP);
++    sprintf(ConfigureParams.Dimension.szRomFileName, "/usr/share/previous/dimension_eeprom.bin");
+ 
+ 	/* Initialize the configuration file name */
+ 	if (strlen(psHomeDir) < sizeof(sConfigFileName)-13)

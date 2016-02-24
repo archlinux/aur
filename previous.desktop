@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Previous
+Comment=NeXT 68k workstation emulator
+Type=Application
+Categories=Emulator;System Tools
+Exec=/usr/bin/Previous
+Icon=previous-app

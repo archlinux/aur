@@ -1,11 +1,11 @@
-diff -Nur previous-build.orig/src/CMakeLists.txt previous-build/src/CMakeLists.txt
---- previous-build.orig/src/CMakeLists.txt	2015-12-03 04:12:09.052293463 +0900
-+++ previous-build/src/CMakeLists.txt	2015-12-03 04:14:25.079342627 +0900
-@@ -126,7 +126,6 @@
+diff -Naur previous/src/CMakeLists.txt patch.previous/src/CMakeLists.txt
+--- previous/src/CMakeLists.txt	2016-02-22 10:13:54.036433610 -0800
++++ patch.previous/src/CMakeLists.txt	2016-02-22 10:18:49.316413453 -0800
+@@ -127,7 +127,6 @@
  	install(TARGETS Previous BUNDLE DESTINATION /Applications)
  else()
  	install(TARGETS Previous RUNTIME DESTINATION ${BINDIR})
 -	install(FILES Previous-icon.bmp DESTINATION ${DATADIR})
- 	file(GLOB TOS_IMG_FILE tos.img)
- 	if(TOS_IMG_FILE)
- 		install(FILES tos.img DESTINATION ${DATADIR})
+ 	install(FILES dimension_eeprom.bin DESTINATION ${BINDIR})
+ 	install(FILES Rev_1.0_v41.BIN DESTINATION ${BINDIR})
+ 	install(FILES Rev_2.5_v66.BIN DESTINATION ${BINDIR})
