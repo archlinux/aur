@@ -21,7 +21,7 @@ optdepends_x86_64=('lib32-catalyst-utils: For AMD Catalyst'
 makedepends=('pacman>=4.2.0')
 options=('!emptydirs')
 install=$pkgname.install
-source=('googleearth'
+source=('googleearth.sh'
         "$pkgname.desktop"
         "$pkgname.menu"
         'Google-Terms-of-Service.html::https://www.google.com/intl/ALL/policies/terms/index.html'
@@ -60,7 +60,7 @@ package() {
 
   msg2 "Moving stuff in place..."
   # Main script
-  install -m755 googleearth "$pkgdir"/$_instdir/
+  install -m755 googleearth.sh "$pkgdir"/$_instdir/googleearth
 
   # Desktop
   install -m644 $pkgname.desktop "$pkgdir"/usr/share/applications/
