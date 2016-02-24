@@ -37,7 +37,7 @@ makedepends=('pacman>=4.2.0')
 options=('!emptydirs')
 install=$pkgname.install
 source=("google-earth-stable_${pkgver}_${_arch}.deb::https://dl.google.com/earth/client/current/google-earth-stable_current_${_arch}.deb"
-        'googleearth'
+        'googleearth.sh'
         'baifaao.cpp'
         'Google-Terms-of-Service.html::https://www.google.com/intl/ALL/policies/terms/index.html'
         'Google-Earth-Additional-Terms-of-Service.html::https://www.google.com/help/terms_maps.html'
@@ -99,7 +99,7 @@ package() {
     install -m755 baifaao.so "$pkgdir"/$_instdir/
 
     # Preload it
-    install -m755 googleearth "$pkgdir"/$_instdir/
+    install -m755 googleearth.sh "$pkgdir"/$_instdir/googleearth
 
     # bin32?
     if [[ "$_m32" ]]; then
