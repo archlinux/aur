@@ -14,6 +14,11 @@ options=(!buildflags)
 source=("https://www.lrde.epita.fr/dload/vcsn/$pkgver/$pkgname-$pkgver.tar.xz")
 md5sums=('48e479d34a047df4507d1e7b322bfb16')
 
+check() {
+  cd "$srcdir/${_realname}"
+  ./tests/bin/vcsn python -c 'import vcsn; vcsn.B.expression("a").automaton()'
+}
+
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   ./configure --prefix="/usr" CXXFLAGS='-O3' CPPFLAGS='-DNDEBUG'
