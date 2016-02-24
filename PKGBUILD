@@ -2,7 +2,7 @@
 #Maintainer: mncarbone <mncarbone@gmail.com>
 pkgname=pseint
 pkgver=20160219
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for learning programming basis with a simple spanish pseudocode"
 arch=('i686' 'x86_64')
 url="http://pseint.sourceforge.net"
@@ -41,7 +41,7 @@ package() {
     echo "Name=PSeInt" >> $desktopfile
     echo "Comment=${pkgdesc}" >> $desktopfile
     echo "Comment[es]=Una herramienta para aprender las bases de la programación mediante pseudocodigo en español" >> $desktopfile
-    echo "Exec=/opt/${pkgname}/wxPSeint" >> $desktopfile
+    echo "Exec=${pkgname}" >> $desktopfile
     echo "Icon=/opt/${pkgname}/imgs/icon.svg" >> $desktopfile
     echo "Terminal=false" >> $desktopfile
     echo "Categories=Development;IDE;" >> $desktopfile
