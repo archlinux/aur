@@ -6,7 +6,7 @@ pkgrel=4
 pkgdesc="The powerful solution for graph visualization"
 url="http://www.informatik.uni-bremen.de/uDrawGraph/"
 arch=('i686' 'x86_64')
-license='CUSTOM'
+license=('custom')
 depends=('libx11')
 [ "$CARCH" = "x86_64" ] && depends=('lib32-libx11')
 source=("http://www.informatik.uni-bremen.de/uDrawGraph/download/uDrawGraph-$pkgver-0-linux-i386.tar.gz")
