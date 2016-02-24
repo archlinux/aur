@@ -47,13 +47,13 @@ done
 
 # Set Wine home
 if [[ ! $WINEPREFIX ]]; then
-  WINEPREFIX=~/.wine
+    WINEPREFIX=~/.wine
 fi
 
 # Symlink settings to ~/.googleearthpro
 if [[ ! -L ~/.googleearthpro ]]; then
-  ln -s $WINEPREFIX/drive_c/users/$USER/AppData/LocalLow/Google/GoogleEarth/ \
-        ~/.googleearthpro
+    ln -s $WINEPREFIX/drive_c/users/$USER/AppData/LocalLow/Google/GoogleEarth/ \
+          ~/.googleearthpro
 fi
 
 # Add path in Wine form (e.g. "z:/home/user/Desktop/lol.kml")
@@ -61,9 +61,9 @@ file=$(winepath -w "$@")
 
 # Launch app
 if [[ $quiet ]]; then
-  wine /opt/google/earth/pro-wine/googleearth.exe "$file" &>/dev/null
+    wine /opt/google/earth/pro-wine/googleearth.exe "$file" &>/dev/null
 elif [[ $verbose ]]; then
-  wine /opt/google/earth/pro-wine/googleearth.exe "$file"
+    wine /opt/google/earth/pro-wine/googleearth.exe "$file"
 else
-  WINEDEBUG=-all wine /opt/google/earth/pro-wine/googleearth.exe "$file"
+    WINEDEBUG=-all wine /opt/google/earth/pro-wine/googleearth.exe "$file"
 fi
