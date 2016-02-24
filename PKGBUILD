@@ -1,4 +1,5 @@
 # Maintainer: Ole Erik Brennhagen (elo@tuta.io)
+# Contributor: shinnova
 
 pkgname="indivisible-prototype"
 pkgver="1"
