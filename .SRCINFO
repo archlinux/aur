@@ -1,7 +1,7 @@
 pkgbase = python2-joe
 	pkgdesc = A .gitignore magician in your command line
 	pkgver = 0.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/karan/joe/
 	arch = any
 	license = MIT
