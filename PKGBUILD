@@ -2,7 +2,7 @@
 
 pkgname=agetpkg-git
 pkgver=2.r0.g56f5023
-pkgrel=5
+pkgrel=6
 pkgdesc='Archlinux Archive Get Package (Git version)'
 arch=('any')
 url='https://github.com/seblu/agetpkg'
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 package() {
