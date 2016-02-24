@@ -6,7 +6,7 @@ pkgbase = qtperf-git
 	arch = i686
 	arch = x86_64
 	license = custom
-	depends = qt4
+	depends = qt5-base
 	source = git+https://github.com/ChristophHaag/qtperf.git
 	md5sums = SKIP
 

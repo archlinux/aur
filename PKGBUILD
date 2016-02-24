@@ -9,7 +9,7 @@ pkgdesc="A tool to test Qt graphics performance"
 arch=('i686' 'x86_64')
 url="https://github.com/shuttie/qtperf"
 license=('custom')
-depends=('qt4')
+depends=('qt5-base')
 source=("git+https://github.com/ChristophHaag/qtperf.git")
 md5sums=('SKIP')
 
