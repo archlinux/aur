@@ -1,19 +1,19 @@
 # Maintainer: Alex Szczuczko <alex@szc.ca>
 
 pkgname=wasteland2 #-gog ???
-pkgver=2.2.0.4
+pkgver=2.3.0.5
 pkgrel=2
 pkgdesc="The Director's Cut of the sequel to an adventure in post-nuclear America"
 arch=("x86_64")
 url="https://wasteland.inxile-entertainment.com/store"
 license=("custom:commercial")
-depends=('glibc' 'glu' 'libx11' 'libxau' 'libxcb' 'libxcursor' 'libxdmcp' 'libxext' 'libxfixes' 'libxrandr' 'libxrender' 'libgl')
+depends=('glibc' 'glu' 'libx11' 'libxau' 'libxcb' 'libxcursor' 'libxdmcp' 'libxext' 'libxfixes' 'libxrandr' 'libxrender' 'libgl' 'pulseaudio')
 source=("${pkgname}.desktop"
         "gog_wasteland_2_director_s_cut_${pkgver}.sh::file://gog_wasteland_2_director_s_cut${pkgver}.sh")
 # bsdtar doesn't seem to like this .sh
 noextract=("gog_wasteland_2_director_s_cut_${pkgver}.sh")
 sha256sums=("1400b3e11c34cbfc57e3b5cba9501a3319ddb57f066d9d09bb7799a59fb0efc0"
-            "5746e6e66349de3505b329bd6949c1434ae43ec7b0d98790144903fa9b79e34a")
+            "50646ca22f72fbd0eaf4c64b36bd53a2eecc5117a9d21e60253799b81412c3d6")
 
 # Disable compression of the package
 PKGEXT='.pkg.tar'
