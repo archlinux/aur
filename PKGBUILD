@@ -26,3 +26,5 @@ package() {
     "${pkgdir}/${_gemdir}/gems/${_gemname}-${pkgver}/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
+# vim:set ts=2 sw=2 et:
