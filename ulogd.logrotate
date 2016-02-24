@@ -1,0 +1,10 @@
+/var/log/ulogd.log /var/log/ulogd.syslogemu {
+    missingok
+    notifempty
+    sharedscripts
+    create 0640 root root
+
+    postrotate
+        systemctl reload ulogd.service || true
+    endscript
+}
