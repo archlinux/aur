@@ -2,7 +2,7 @@
 # arg 2:  the old package version
 
 KERNEL_NAME=-rpi2
-KERNEL_VERSION=4.1.17-1-v7+
+KERNEL_VERSION=4.3.3-1-v7
 
 disable_cma() {
   if [[ -f /boot/config.txt && $(grep '^cma' /boot/config.txt) != '' ]]; then

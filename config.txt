@@ -127,3 +127,4 @@
 #over_voltage=6
 
 gpu_mem=64
+lcd_rotate=2

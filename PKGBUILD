@@ -3,19 +3,20 @@
 pkgbase=linux-rpi2
 _kernelname=${pkgbase#linux}
 _desc="Raspberry Pi 2"
-pkgver=4.4
-_gitbranch="rpi-4.4.y"
+pkgver=4.5
+_gitbranch="rpi-4.5.y"
 pkgrel=1
 arch=('armv7h')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git')
 options=('!strip')
+# TODO: rename the source tarball uniquely to avoid using old tarballs
 source=("https://github.com/raspberrypi/linux/archive/${_gitbranch}.tar.gz"
         'config.txt'
         'cmdline.txt')
-md5sums=('b0426b89a2662851f7b446d97155f79c'
-         '9a3c82da627b317ec79c37fd6afba569'
+md5sums=('SKIP'
+         '82c887b02ee64c80d351f5a3a3561217'
          '60bc3624123c183305677097bcd56212')
 _dirname=linux-${_gitbranch}
 
