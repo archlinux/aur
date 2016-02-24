@@ -1,7 +1,7 @@
 # Maintainer: justbrowsing <developer4linux+aur@gmail.com>
 pkgname=jbxkb
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A pygtk keyboard layout switcher tray applet (inspired by gxkb) for JustBrowsing"
 arch=('any')
 url="https://github.com/justbrowsing/jbxkb"
@@ -12,9 +12,9 @@ optdepends=('ibus-lite: Special input methods without python3 dependency'
 			'ibus-pinyin: Popular Chinese input method'
 			'ibus-skk: Popular Japanese input method')
 groups=("justbrowsing")
-source=("https://github.com/justbrowsing/jbxkb/archive/master.zip")
-md5sums=('4131ce5ac97ab0e802cdf20a15a3911a')
- 
+source=("https://github.com/justbrowsing/jbxkb/archive/master.tar.gz")
+md5sums=('8c4577a24576e31d7fa98ac6672a7fc6')
+
 package() {
   cd "$srcdir/${pkgname}-master"
 
