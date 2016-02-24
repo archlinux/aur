@@ -1,4 +1,4 @@
-# Maintainer: Jonne Haß <me@jhass.eu>
+# Contributor: Jonne Haß <me@jhass.eu>
 # Contributor: Thomas Dziedzic <gostrc@gmail.com>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: John Proctor <jproctor@prium.net>
