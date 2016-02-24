@@ -13,15 +13,13 @@ url="http://www.digikam.org/"
 makedepends=('kdepimlibs4' 'libkexiv2_4' 'libkdcraw4' 'libkipi4' 'libksane4' 'liblqr'
              'opencv' 'boost' 'libgpod' 'libkvkontakte' 'hugin' 'libgphoto2'
              'cmake' 'automoc4' 'doxygen' 'lensfun' 'imagemagick' 'eigen' 
-	     'libbaloo4' 'libpgf' 'libusb-compat' 'libkface4' 'libkgeomap4' 'libmediawiki' 'clang')
+	     'libbaloo4' 'libpgf' 'libusb-compat' 'libkface4' 'libkgeomap4' 'libmediawiki')
 source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
 	lensfun-0.3.2.patch::"https://quickgit.kde.org/?p=digikam.git&a=commitdiff&h=0f15998&o=plain")
 sha1sums=('08bbded5433e442dce8ac00eb301606ef0924e8c'
           'b2e262ea5060ad5ffd7d92d41a9badcea6e6c299')
 
 prepare() {
-# Fix compilation with clang
-  sed -e '/fno-tree-pre/d' -i $pkgname-$pkgver/core/CMakeLists.txt
 # Fix build with lensfun 0.3.2
   cd $pkgbase-$pkgver/core
   patch -p1 -i "$srcdir"/lensfun-0.3.2.patch
@@ -34,8 +32,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_SKIP_RPATH=ON \
-    -DBUILD_tests=OFF \
-    -DCMAKE_C_COMPILER=clang # Fix build with flex 2.6
+    -DBUILD_tests=OFF
   make
 }
 
