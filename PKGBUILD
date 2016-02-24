@@ -2,7 +2,7 @@
 # Former Maintainer: Christoph Drexler <chrdr at gmx dot at>
 
 pkgname=openfst
-pkgver=1.5.1
+pkgver=1.5.1.7
 pkgrel=1
 pkgdesc="Library for constructing, combining, optimizing, and searching weighted finite-state transducers (FSTs)"
 arch=('i686' 'x86_64')
@@ -10,12 +10,12 @@ url="http://www.openfst.org/"
 license=('APACHE')
 depends=('gcc-libs' 'glibc' 'python2')
 options=(!libtool)
-source=("http://openfst.cs.nyu.edu/twiki/pub/FST/FstDownload/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('d40724bc5641091063db632392e6561e9077d5e0d88ac106d5b30d8f1bcd9925')
+source=("http://openfst.cs.nyu.edu/twiki/bin/viewfile/FST/FstDownload?filename=${pkgname}-${pkgver/%.?/}.tar.gz;rev=${pkgver/*./}")
+sha256sums=('bb0c0e6cf8bed843c36f412f66abfd87604b3220773e4c25fd723a7a5759a3f2')
 
 
 build() {
-	cd ${srcdir}/${pkgname}-${pkgver}
+	cd ${srcdir}/${pkgname}-${pkgver/%.?/}
 
 	# Options according to http://openfst.cs.nyu.edu/twiki/bin/view/FST/ReadMe
 	OPTIONS="--prefix=/usr --disable-dependency-tracking"
@@ -35,7 +35,7 @@ build() {
 }
 
 package() {
-	cd ${srcdir}/${pkgname}-${pkgver}
+	cd ${srcdir}/${pkgname}-${pkgver/%.?/}
 	make DESTDIR=${pkgdir} install
 
 	install -dm755 "$pkgdir"/etc/ld.so.conf.d/
