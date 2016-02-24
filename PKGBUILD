@@ -6,7 +6,7 @@
 _pkgbasename=nvidia-utils-352
 pkgbase=lib32-$_pkgbasename
 pkgname=('lib32-nvidia-utils-352' 'lib32-nvidia-libgl-352' 'lib32-opencl-nvidia-352')
-pkgver=352.63
+pkgver=352.79
 pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
@@ -15,8 +15,8 @@ options=('!strip')
 
 _arch='x86'
 _pkg="NVIDIA-Linux-${_arch}-${pkgver}"
-source=("ftp://download.nvidia.com/XFree86/Linux-${_arch}/${pkgver}/${_pkg}.run")
-md5sums=('7882ecda1763504beb10af77a21b21c5')
+source=("http://download.nvidia.com/XFree86/Linux-${_arch}/${pkgver}/${_pkg}.run")
+md5sums=('8f5b2c809490e0ebec17b9074a5a8363')
 
 create_links() {
     # create soname links
