@@ -10,7 +10,7 @@
 #         'qemu-guest-agent')
 pkgname='qemu-minimal'
 pkgver=2.5.0
-pkgrel=1
+pkgrel=1.1
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
 url='http://wiki.qemu.org/'
@@ -19,7 +19,7 @@ url='http://wiki.qemu.org/'
 #             'libgl' 'libpulse' 'seabios' 'libcap-ng' 'libaio' 'libseccomp'
 #             'libiscsi' 'libcacard' 'spice' 'spice-protocol' 'python2'
 #             'usbredir' 'ceph' 'glusterfs' 'libssh2' 'lzo' 'snappy')
-makedepends=('libjpeg' 'glib2'
+makedepends=('pixman' 'libjpeg' 'glib2'
              'util-linux' 'curl' 'libsasl'
              'seabios' 'libcap-ng' 'libaio' 'libseccomp'
              'python2'
@@ -82,7 +82,7 @@ package() {
 #           'seabios' 'libcap' 'libcap-ng' 'libaio' 'libseccomp' 'libcacard'
 #           'spice' 'usbredir' 'lzo' 'snappy' 'gcc-libs' 'zlib' 'bzip2' 'nspr'
 #           'ncurses' 'libx11' 'libusb' 'libpulse' 'libssh2' 'curl')
-  depends=('glibc' 'libjpeg' 'glib2'
+  depends=('glibc' 'pixman' 'libjpeg' 'glib2'
          'util-linux' 'libsasl'
          'seabios' 'libcap' 'libcap-ng' 'libaio' 'libseccomp'
          'lzo' 'snappy' 'gcc-libs' 'zlib' 'bzip2' 'nspr'
