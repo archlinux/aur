@@ -9,9 +9,9 @@ license=("GPLv3")
 depends=(libsecret libpurple gnome-keyring)
 install=$pkgname.install
 source=(https://github.com/GRBurst/$pkgname/archive/v${pkgver}.${pkgrel}.tar.gz)
-md5sums=('9e776ca08e47bf6765125d98d0b58da5')
-sha1sums=('52d69e54ab4c1a9befbd28e17bd857fda44cdde1')
-sha512sums=('4d5876c84dc271115513bd500a9ff5e7812588d4809cddd47fa65809e3d4addbba6ce83276341c926901ce8abf105413f353a02e3adb4b085f45d627cfc91385')
+md5sums=('80aa1da26dec2743ac4e899d7829dbe2')
+sha1sums=('f3652c72a9d7f5923977efe02f9afde496817969')
+sha512sums=('0ca8ec7d4b92b888364e8fcab34a90705ba33ec04d16e71491af993d48bc331500fa560e527ebe65d79d018d2bda56db932b50b05b54d3713bb96f2be9636c4c')
 
 build() {
   cd $srcdir/$pkgname-$pkgver.${pkgrel}
