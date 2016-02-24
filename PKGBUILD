@@ -1,7 +1,7 @@
 # Maintainer: Tom X. Tobin <tomxtobin@tomxtobin.com>
 
 pkgname=rocker
-pkgver=1.1.1
+pkgver=1.1.2
 _pkgver=${pkgver//_/-}
 pkgrel=1
 pkgdesc="Docker build tool with additional features"
@@ -11,8 +11,8 @@ url="https://$vendor"
 license=('Apache')
 makedepends=('go')
 source=("https://$_vendor/archive/$_pkgver.zip")
-sha256sums=('462dcbc56d3c0d42df941f365b9c6c0c256a031949ebcb262ba85c79fc8da533')
-_git_commit="1c71c9a189873267d4f34bee3ae12b0e2be39718"
+sha256sums=('dfadf23bb8bed540d7bac25ba9ec2fade3cef15f25f9991b09409bc0e9fc5cbd')
+_git_commit="ec7c40b0d139303db89add1fbdde15d321142e53"
 _ldflags="\
 -X main.Version=$_pkgver \
 -X main.GitCommit=$_git_commit \
