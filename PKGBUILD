@@ -2,7 +2,7 @@
 
 _pkgname=pantheon-mail
 pkgname=$_pkgname-bzr
-pkgver=r1982
+pkgver=r1984
 pkgrel=1
 pkgdesc='The Pantheon mail client'
 arch=('i686' 'x86_64')
@@ -10,9 +10,9 @@ url='https://launchpad.net/pantheon-mail'
 license=('LGPL2.1')
 groups=('pantheon-unstable')
 depends=('desktop-file-utils' 'granite' 'gtksourceview3' 'libpeas'
-  'zeitgeist' 'gmime')
+  'zeitgeist' 'gmime' 'webkitgtk' 'gcr')
 makedepends=('gmime' 'bzr' 'cmake' 'gobject-introspection' 'vala' 'vte3' 'webkitgtk')
-optdepends=('webkitgtk: Browser Preview extension')
+optdepends=()
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 install="$_pkgname.install"
