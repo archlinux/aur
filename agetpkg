@@ -18,7 +18,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-'''Archlinux Archive Get Package'''
+'''Arch Linux Archive Get Package'''
 
 from argparse import ArgumentParser
 from collections import OrderedDict
@@ -38,8 +38,8 @@ from xdg.BaseDirectory import save_cache_path
 
 # magics
 NAME = "agetpkg"
-VERSION = "1"
-ARCHIVE_URL = "http://ala.seblu.net/packages/.all/"
+VERSION = "2"
+ARCHIVE_URL = "http://archive.archlinux.org/packages/.all/"
 INDEX_FILENAME = "index.0.xz"
 PKG_EXT = ".pkg.tar.xz"
 SIG_EXT = ".sig"

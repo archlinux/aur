@@ -1,7 +1,7 @@
 # Maintainer: Sébastien Luttringer
 
 pkgname=agetpkg-git
-pkgver=20
+pkgver=2
 pkgrel=1
 pkgdesc='Archlinux Archive Get Package (Git version)'
 arch=('any')
