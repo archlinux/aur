@@ -1,7 +1,7 @@
 # Maintainer: mar77i <mar77i at mar77i dot ch>
 pkgname="opennic-git"
-pkgver=20150507
-pkgrel=3
+pkgver=v0.1.r0.g89d6bc7
+pkgrel=1
 pkgdesc="opennic DNS service"
 arch=(any)
 url="https://github.com/mar77i/opennic"
@@ -10,7 +10,7 @@ depends=(curl)
 makedepends=(git)
 provides=(opennic)
 conflicts=(opennic)
-source=("git://github.com/mar77i/opennic")
+source=("https://github.com/mar77i/opennic.git")
 sha1sums=(SKIP)
 
 pkgver() {
