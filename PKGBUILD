@@ -8,8 +8,8 @@
 
 pkgname=blackmagic-decklink-sdk
 pkgver=10.5.4
-pkgrel=3
-pkgdesc="Blackmagic's DeckLink SDK"
+pkgrel=4
+pkgdesc="Blackmagic's DeckLink SDK (need to register and download from upstream URL)"
 arch=('any')
 url="https://www.blackmagicdesign.com/support/"
 license=('custom')
