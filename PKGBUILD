@@ -59,10 +59,6 @@ prepare() {
     fi
   done
 
-  # #47757 fix broken suspend from btrfs and xfs
-  patch -Np1 -i "${srcdir}/0001-4.4-revert-xfs.patch"
-  patch -Np1 -i "${srcdir}/0001-4.4-revert-btrfs.patch"
-
   # bfq
   patch -Np1 -i "${srcdir}/0001-bfq.patch"
   patch -Np1 -i "${srcdir}/0002-bfq.patch"
