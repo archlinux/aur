@@ -9,7 +9,7 @@
 
 pkgbase=linux-libre-xen
 _pkgbasever=4.4-gnu
-_pkgver=4.4.1-gnu
+_pkgver=4.4.2-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -39,7 +39,6 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        'tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch'
         '0001-sdhci-revert.patch'
         '0001-4.4-revert-btrfs.patch'
         '0001-4.4-revert-xfs.patch'
@@ -47,7 +46,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch')
 sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'SKIP'
-            'ed09b329d879bb758374b6a76acb841cdf63a6638720378657fb2b6eeed6b265'
+            'f82d7a08ab1fc0d810a74ff294f7757af71fa7f90db0038aabbf086c8006ba78'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -58,7 +57,6 @@ sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'f1a74fe347903b99289bb6fe722a69bdbc2aac1fa84fd80b3c77c26551bcf91c'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'ab57037ecee0a425c612babdff47c831378bca0bff063a1308599989a350226d'
             '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
             '51586b733e9f178bebe577258b6057b035eded516ffe8bf8bbb26cb0b26c4958'
             'ffbfaa192d17bfc7c6293aa9a07efe57f65177051ae3d8033d5e45a7bca2e0ad'
@@ -93,10 +91,6 @@ prepare() {
   # fixes #47778 sdhci broken on some boards
   # https://bugzilla.kernel.org/show_bug.cgi?id=106541
   patch -Rp1 -i "${srcdir}/0001-sdhci-revert.patch"
-
-  # fixes #47805 kernel panics on platform modules
-  # https://bugzilla.kernel.org/show_bug.cgi?id=110751
-  patch -Np1 -i "${srcdir}/tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch"
 
   # #47757 fix broken suspend from btrfs and xfs
   patch -Np1 -i "${srcdir}/0001-4.4-revert-xfs.patch"
