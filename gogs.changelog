@@ -1,3 +1,24 @@
+2015-02-24
+
+	* V0.8.43
+	Bug fix: Old activities still visible for repositories that lost access #2148
+	Bug fix: Issue references have bad links behind a reverse proxy sub-path #2229
+	Bug fix: Line breaks in email is not in HTML format #2332
+	Bug fix: Long webhook URL is truncated #2465
+	Bug fix: Multiple Webhooks with Slack type send wrong payloads #2485
+	Bug fix: Image path breaks when it contains space #2556
+	Bug fix: 500 when edit wiki after transfer the repository #2558
+	Bug fix: 500 after delete user when view releases #2596
+	Bug fix: Wrong avatar_url field in webhook payload #2630
+	Improvement: Able to config log path on install page #691
+	Improvement: Add default_branch field to repository object in webhooks #1059
+	Improvement: Display activities for close and reopen issues #1821
+	Improvement: Able to fork mirror repository #2505
+	Improvement: Highlight code blocks in issue page #2538
+	Features: Add config option [markdown] CUSTOM_URL_SCHEMES to allows Markdown render custom URL schemes #2406
+	Features: Support syntax highlight on diff view #2528
+	Features: Support convert mirror repository to regular type #2607
+
 2015-01-30
 
 	* V0.8.25
