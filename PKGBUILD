@@ -2,7 +2,7 @@
 
 pkgname=openshot-qt
 pkgver=2.0.6
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="an open-source, non-linear, next gen video editor, based on libopenshot."
 arch=('any')
