@@ -17,17 +17,15 @@ md5sums=('1047adaf29d2c948b68162d129a19fed')
 build()
 {
     cd "${pkgname}-${pkgver}"
+    rm -rf build
     mkdir build
-    meson . build
     cd build
+    meson --prefix /usr --buildtype release -Ddo-post-install=false ..
     ninja
 }
 
 package()
 {
-    cd "${pkgname}-${pkgver}"
-    cd build
-    mesonconf -Dprefix=/usr 
-    mesonconf -Dtype=release
+    cd "${pkgname}-${pkgver}"/build
     DESTDIR="$pkgdir" ninja install
 }
