@@ -25,15 +25,19 @@ md5sums=('53c27fe9e91d28143b8a5e056480fbe0')
 build() {
     cd "${pkgname}-${pkgver}"
 
-    cmake . -DPREFIX=/usr -DCMAKE_BUILD_TYPE=RELEASE
+    sed -i 's/_BSD_SOURCE/_DEFAULT_SOURCE/g' src/CMakeLists.txt
+
+    mkdir build
+    cd build
+    cmake ../src -DPREFIX=/usr -DCMAKE_BUILD_TYPE=RELEASE
     make
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
+    cd "${pkgname}-${pkgver}/build"
 
     make DESTDIR="${pkgdir}" install
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/"${pkgname}"/LICENSE"
+    install -Dm644 ../LICENSE "${pkgdir}/usr/share/licenses/"${pkgname}"/LICENSE"
 }
 
 # vim:set ts=4 sw=4 et:
