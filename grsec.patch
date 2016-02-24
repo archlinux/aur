@@ -1,0 +1,12 @@
+diff -urN a/src/wl/sys/wl_cfg80211_hybrid.h b/src/wl/sys/wl_cfg80211_hybrid.h
+--- a/src/wl/sys/wl_cfg80211_hybrid.h	2014-06-26 12:42:08.000000000 +0200
++++ b/src/wl/sys/wl_cfg80211_hybrid.h	2015-01-28 14:50:47.776470481 +0100
+@@ -116,7 +116,7 @@
+ 	struct ieee80211_channel channel;
+ };
+ 
+-struct wl_cfg80211_event_loop {
++struct __no_const wl_cfg80211_event_loop {
+ 	s32(*handler[WLC_E_LAST]) (struct wl_cfg80211_priv *wl, struct net_device *ndev,
+ 	                           const wl_event_msg_t *e, void *data);
+ };
