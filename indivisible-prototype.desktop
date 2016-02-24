@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Indivisible Prototype
+GenericName=Action/RPG prototype
+Exec=/opt/indivisible-prototype/Indivisible_Linux.i686-pc-linux-gnu
+Categories=Game
