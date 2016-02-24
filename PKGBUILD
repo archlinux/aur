@@ -1,7 +1,7 @@
 # Maintainer: argymeg <argymeg at gmail dot com>
 
 pkgname=firefox-beta
-pkgver=45.0b8
+pkgver=45.0b9
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Beta (build from source)"
 arch=('i686' 'x86_64')
@@ -25,13 +25,12 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/
         firefox-install-dir.patch
         vendor.js
         firefox-fixed-loading-icon.png)
-sha256sums=('b3b96d45b72f5e9d1c421653a0f3dffb7e63b33e1a9bea8b35f944749c41839a'
-            '85c9290580766426b8b07650fadd9bd19dcff2d23a5460d73809b2b262535886'
-            '2f2b2df5bce4a184727d5845aeb8a39bf70dde6d6101cc8966b88837cc824d05'
-            'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
-            '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
-            '68e3a5b47c6d175cc95b98b069a15205f027cab83af9e075818d38610feb6213')
-validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
+sha512sums=('02f93dd7ac63f361208805da0f9162d12ff54766573275b004ada26fc638bf610c4ca1febe493758cec5055777a6b09c08f91be3345b6825c3b18b326b0d2c3a'
+            'c72792b505031431282a3777bce6d3ee98fe68cc0faf8cadd84afe2b42921da52b9d8ad94e3324f0d0a09e8e298e3bcd2b527b08e92e2a0140434d7767efc422'
+            'dd9a563d6ad772ba440a45bbd0ee27943b319edcb785951e62cd4aefe0d33ded2acf9b63a2b15cec89ee184687c68a8d3a1cc06ec98f9a9251602f063fbaef14'
+            '266989b0c4a37254a40836a6193284a186230b48716907e4d249d73616f58382b258c41baa8c1ffc98d405f77bfafcd3438f749edcf391c7bd22185399adf4bd'
+            'd927e5e882115c780aa0d45034cb1652eaa191d95c15013639f9172ae734245caae070018465d73fdf86a01601d08c9e65f28468621422d799fe8451e6175cb7'
+            'd51119170cc8fb99c50610a8e5e94f38a31722c1c1a2260ca32d8e376732e30c8e1deac7d8c599348892e783fb4c75ce8c38bbd238282b0c9da21608d902ba28')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
