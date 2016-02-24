@@ -62,9 +62,12 @@ prepare() {
         --expression='s|@localstatedir@/log/kea-|@localstatedir@/log/|g' \
         --expression='s|@localstatedir@/log|@localstatedir@/log/@PACKAGE@|g' \
         '{}' '+'
+}
 
-    autoreconf --install
+build() {
+    cd "${srcdir}/${srcname}"
 
+    autoreconf --install --force --warnings='all'
     ./configure \
         --prefix='/usr' \
         --sbindir='${exec_prefix}/bin' \
@@ -74,10 +77,6 @@ prepare() {
         --with-dhcp-mysql \
         --with-dhcp-pgsql \
         --enable-generate-docs
-}
-
-build() {
-    cd "${srcdir}/${srcname}"
 
     make
 }
