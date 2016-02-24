@@ -3,8 +3,8 @@
 # Upstream: https://github.com/bitpay/copay
 
 pkgname=copay
-pkgver=1.8.2
-pkgrel=3
+pkgver=1.8.3
+pkgrel=1
 pkgdesc="Copay Bitcoin Wallet"
 #arch=('i686' 'x86_64')
 arch=('x86_64')
