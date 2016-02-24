@@ -16,8 +16,7 @@ _pkgprefix='/opt/brlcad'
 
 
 prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    patch --strip=0 "--input=${srcdir}/build.patch"
+    patch --strip=0 "--directory=${srcdir}/${pkgname}-${pkgver}" "--input=${srcdir}/build.patch"
 }
 
 
