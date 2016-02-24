@@ -19,11 +19,10 @@ pkgver() {
 
 build(){
 	cd $_gitname
-	sed "s/\-arch=[^ ]* //g" -i Makefile.am
+	sed "s/\-arch=compute_10 //g" -i Makefile.am
 	./autogen.sh
-	./configure --with-cuda=/opt/cuda \
-	--prefix=/usr
-	make
+	CFLAGS=-O2 ./configure --with-cuda=/opt/cuda  --prefix=/usr
+	make -j32
 }
 
 package() {
