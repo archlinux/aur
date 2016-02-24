@@ -3,7 +3,7 @@
 
 pkgname=anttweakbar
 pkgver=1.16
-pkgrel=6
+pkgrel=7
 pkgdesc="C/C++ lib that allows programmers to quickly add a light and intuitive GUI into graphic apps to interactively tweak their params"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://anttweakbar.sourceforge.net"
