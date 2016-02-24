@@ -1,8 +1,9 @@
 # Maintainer: ssf <punx69 at gmx dot net>
+# https://github.com/sixsixfive/Ivy/blob/master/dist/AUR/ivy-theme-git/PKGBUILD
 
 pkgbase=ivy-theme-git
-pkgname=('ivy-icon-theme')
-pkgver=2016.01.31.2003
+pkgname=('ivy-icon-theme' 'ivy-theme-base')
+pkgver=2016.02.24.1717
 pkgrel=1
 arch=("any")
 url="http://sixsixfive.deviantart.com/art/Ivy-112213849"
@@ -18,15 +19,15 @@ pkgver() {
 }
 
 build() {
-	cd "${pkgbase}"
+	cd "${pkgbase}"/icons
 	bash build.sh
-	_dirs="src .git"
+	_dirs="src .git dist"
 	for _dir in $_dirs;do
 		if [ -d $_dir ];then
 			rm -rf $_dir
 		fi
 	done
-	_files="build.sh README.md .sync.sh .synch-full.sh"
+	_files="build.sh README.md TODO .sync.sh .synch-full.sh"
 	for _file in $_files;do
 		if [ -f $_file ];then
 			rm -f $_file
@@ -36,12 +37,22 @@ build() {
 
 package_ivy-icon-theme() {
 	pkgname=("${pkgname}")
-	provides=("${pkgname}" "${pkgname}-git=${pkgver}")
-	conflicts=("${pkgname}" "${pkgname}-git<=${pkgver}")
-	replaces=("${pkgname}" "${pkgname}-git<=${pkgver}")
-	depends=('hicolor-icon-theme' 'tango-icon-theme')
-	pkgdesc="simple and colorful icon theme for X11 desktops!"
-	cd "${srcdir}"/"${pkgbase}"
+	provides=("${pkgname}=${pkgver}" "${pkgname}-git=${pkgver}")
+	conflicts=("${pkgname}<=${pkgver}" "${pkgname}-git<=${pkgver}")
+	replaces=("${pkgname}<=${pkgver}" "${pkgname}-git<=${pkgver}")
+	depends=('hicolor-icon-theme')
+	pkgdesc="Simple and icon theme for X11 desktops!"
 	mkdir -p "${pkgdir}"/usr/share/icons
-	cp -R "${srcdir}"/"${pkgbase}" "${pkgdir}"/usr/share/icons/Ivy
+	mv "${srcdir}"/"${pkgbase}"/icons/Ivy "${pkgdir}"/usr/share/icons
+}
+
+package_ivy-theme-base() {
+	pkgname=("${pkgname}")
+	provides=("${pkgname}=${pkgver}" "${pkgname}-git=${pkgver}")
+	conflicts=("${pkgname}<=${pkgver}" "${pkgname}-git<=${pkgver}")
+	replaces=("${pkgname}<=${pkgver}" "${pkgname}-git<=${pkgver}")
+	depends=('gtk2' 'gtk-engine-murrine')
+	pkgdesc="Simple theme for X11 desktops!"
+	mkdir -p "${pkgdir}"/usr/share/themes
+	mv "${srcdir}"/"${pkgbase}"/gui-base/Ivy "${pkgdir}"/usr/share/themes
 }
