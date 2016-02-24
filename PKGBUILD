@@ -90,6 +90,7 @@ build() {
    -DQT_HELP_GENERATOR:FILEPATH=/usr/lib/qt/bin/qhelpgenerator \
    -DQT_QMAKE_EXECUTABLE=qmake-qt5 \
    -DVISIT_BUILD_READER_CGNS:BOOL=ON \
+   -DPARAVIEW_INSTALL_DEVELOPMENT_FILES:BOOL=ON \
    ${cmake_system_flags} \
    ${cmake_system_python_flags} \
    ${ffmpeg_system_flags} \
