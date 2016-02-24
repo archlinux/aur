@@ -1,7 +1,7 @@
 # Contributor: Florian Walch <florian.walch@gmx.at>
 # Maintainer: Robin Baumgartner <robin@baumgartners.ch>
 pkgname=trytond
-pkgver=3.8.1
+pkgver=3.8.3
 _pkgdir=3.8
 pkgrel=1
 pkgdesc="A three-tiers high-level general purpose application platform (server application)"
@@ -21,7 +21,7 @@ install="trytond.install"
 source=("http://downloads.tryton.org/$_pkgdir/$pkgname-$pkgver.tar.gz"
         'trytond.install'
         'trytond.service')
-md5sums=('98442c7b6715e9f813774f1face2a4ec'
+md5sums=('5000aef75a016444eb082c906718f533'
          '768e68c01cb5913e36ea89c67fc98038'
          'b1535a8528dfd8f655624bf6faea6985')
 
