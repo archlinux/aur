@@ -9,10 +9,12 @@ url="https://wasteland.inxile-entertainment.com/store"
 license=("custom:commercial")
 depends=('glibc' 'glu' 'libx11' 'libxau' 'libxcb' 'libxcursor' 'libxdmcp' 'libxext' 'libxfixes' 'libxrandr' 'libxrender' 'libgl' 'pulseaudio')
 source=("${pkgname}.desktop"
+        "launch.sh"
         "gog_wasteland_2_director_s_cut_${pkgver}.sh::file://gog_wasteland_2_director_s_cut${pkgver}.sh")
 # bsdtar doesn't seem to like this .sh
 noextract=("gog_wasteland_2_director_s_cut_${pkgver}.sh")
 sha256sums=("1400b3e11c34cbfc57e3b5cba9501a3319ddb57f066d9d09bb7799a59fb0efc0"
+            "82a9de0502e5e48df2dbf589a952ccc60ab790978594d600c986e02f00443920"
             "50646ca22f72fbd0eaf4c64b36bd53a2eecc5117a9d21e60253799b81412c3d6")
 
 # Disable compression of the package
@@ -26,6 +28,7 @@ prepare() {
 package() {
     # Binaries
     install -Dm755 "$srcdir/Wasteland 2/game/WL2" "$pkgdir/opt/$pkgname/game/WL2"
+    install -m755 "$srcdir/launch.sh" "$pkgdir/opt/$pkgname/game/launch.sh"
 
     # Data
     # Hardlink files to save the disk space and time spent copying them (they are very large)
@@ -48,7 +51,7 @@ package() {
 
     # /bin
     install -m755 -d "$pkgdir/usr/bin/"
-    ln -s "/opt/$pkgname/game/WL2" "$pkgdir/usr/bin/$pkgname"
+    ln -s "/opt/$pkgname/game/launch.sh" "$pkgdir/usr/bin/$pkgname"
 
     # License
     install -m755 -d "$pkgdir/usr/share/licenses/$pkgname/"
