@@ -16,8 +16,8 @@ source=("https://github.com/raspberrypi/linux/archive/${_gitbranch}.tar.gz"
         'config.txt'
         'cmdline.txt')
 md5sums=('SKIP'
-         '82c887b02ee64c80d351f5a3a3561217'
-         '60bc3624123c183305677097bcd56212')
+         '57f668c03fea068a181b318cfe0fa499'
+         '0244ab7cb2e385a8efe9a7fba9bfcb48')
 _dirname=linux-${_gitbranch}
 
 #pkgver() {
