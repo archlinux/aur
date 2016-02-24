@@ -3,17 +3,17 @@
 
 _pkgbase="joe"
 pkgname="python2-${_pkgbase}"
-pkgver="0.0.5"
-pkgrel=3
+pkgver="0.0.7"
+pkgrel=1
 pkgdesc="A .gitignore magician in your command line"
 arch=('any')
 url="http://github.com/karan/joe/"
-license='MIT'
-depends=('python2' 'python2-docopt')
+license=('MIT')
+depends=('python2' 'python2-docopt' 'python2-git')
 provides=('joe')
-makedepends=('python2-setuptools' 'git')
-source=("git+https://github.com/karan/joe.git#tag=$pkgver")
-sha256sums=('SKIP')
+makedepends=('python2-setuptools')
+source=("https://github.com/karan/joe/archive/$pkgver.tar.gz")
+md5sums=('f10faf7246f3938870383559a0ac28a7')
 
 prepare(){
   cd "${srcdir}/${_pkgbase}"
