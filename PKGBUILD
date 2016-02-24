@@ -32,7 +32,10 @@ pkgver() {
 build() {
     cd "${srcdir}/${srcname}"
 
-    ./autogen.sh --prefix=/usr
+    gtkdocize
+    autoreconf --install --force --warnings='all'
+    ./configure --prefix='/usr'
+
     make
 }
 
