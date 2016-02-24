@@ -2,7 +2,7 @@
 pkgname=glslang-git
 _gitname=glslang
 pkgver=SPIRV99.130.g9d565d9
-pkgrel=1
+pkgrel=2
 pkgdesc='Khronos reference front-end for GLSL and ESSL, git version'
 arch=('x86_64' 'i686')
 url='http://www.khronos.org/opengles/sdk/tools/Reference-Compiler'
