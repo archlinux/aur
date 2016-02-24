@@ -1,8 +1,8 @@
 # Maintainer: Monika Schrenk <moni@random-access.org>
 
 pkgname=mongochef
-pkgver=3.4.0
-pkgrel=2
+pkgver=3.4.1
+pkgrel=1
 pkgdesc="A free universal database tool for developers and database administrators"
 arch=('i686' 'x86_64')
 url="http://3t.io/mongochef/"
@@ -17,8 +17,8 @@ source_x86_64=("https://cdn.3t.io/mongochef/linux/${pkgver}/mongochef-linux-x64-
 
 sha256sums=('a603fd54a34f8aa59a70580fd4321db24f439ceb746545f1cf6c0216f7f8169e' 
 '3ef9e38cfd7ab9e0f6e70cebd635f96a7bbaccf255de2c6ed4f7fd5a4aab3728')
-sha256sums_i686=('af7d29eeab7ad57f429ed9e1fccb0efd92ebd56b04c349756900141c31a514b7')
-sha256sums_x86_64=('246f5d72e4d23eb610564ea07b7faadb6f4dd44827e22e03428049f50248dc82')
+sha256sums_i686=('537260659af8f279221b7c43cdf3e7794040d9ddc8b4f103c1d71bb31127d52c')
+sha256sums_x86_64=('3ca2d0bfcf62bc34c4338aab2dd34e738a2fd1725c72665ddd79bc8edebf9694')
 
 prepare() {
   unzip -j ${srcdir}/${pkgname}-${pkgver}-linux-*-dist/lib/data-man-gui-1.0-SNAPSHOT.jar "t3/dataman/icons/mc-512.png" -d "./"
