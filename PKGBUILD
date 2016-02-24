@@ -1,60 +1,44 @@
 # Maintainer: Jenya Sovetkin <e dot sovetkin at gmail dot com>
 pkgname=shellinabox-git
-pkgver=2.14
-pkgrel=1
+pkgver=r397.0c8c295
+pkgrel=2
 pkgdesc="Implementation of a web server that can export arbitrary command line tools to a web based terminal emulator"
 arch=('any')
-url="https://code.google.com/p/shellinabox/"
+url="https://github.com/shellinabox/shellinabox"
 license=('GPL2')
-groups=()
-depends=()
-makedepends=('git' 'gcc')
+depends=('pam' 'openssl')
+makedepends=('git' 'gcc' 'autoconf' 'automake')
 provides=()
 conflicts=()
 replaces=()
 backup=()
 options=()
 install=
-source=('shellinabox@.service')
+source=('shellinabox@.service'
+        'git+https://github.com/shellinabox/shellinabox')
 noextract=()
-md5sums=('9778d64973cd9dd7cf2225cd9af0cd09') #generate with 'makepkg -g'
+md5sums=('9778d64973cd9dd7cf2225cd9af0cd09'
+         'SKIP')
 
-_gitroot=$url
 _gitname=shellinabox
 
 pkgver() {
-  #cd "$pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'  
+  cd "${srcdir}/${_gitname}"
+
+  # Get the version number.
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
 
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" 
-  fi
+package() {
+  cd "$srcdir/$_gitname"
 
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
+  autoreconf -i
 
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
-  #
-  # BUILD HERE
-  #
   export CPPFLAGS="${CPPFLAGS/-D_FORTIFY_SOURCE=2/}"
   ./configure  --prefix=/usr
   make
-}
 
-package() {
-  cd "$srcdir/$_gitname-build"
   make DESTDIR="$pkgdir/" install
   install -Dm655 "$srcdir/shellinabox@.service"  "$pkgdir/usr/lib/systemd/system/shellinabox@.service"
 }
