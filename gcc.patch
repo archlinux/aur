@@ -1,0 +1,5 @@
+906c906,907
+<                __builtin_popcount __builtin_clz
+---
+>                __builtin_popcount __builtin_clz __builtin_isnan __builtin_isinf __builtin_signbit
+>                __builtin_signbitf __builtin_signbitl __builtin_isinf_sign
