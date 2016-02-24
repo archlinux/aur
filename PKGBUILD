@@ -10,7 +10,7 @@ depends=(curl)
 makedepends=(git)
 provides=(opennic)
 conflicts=(opennic)
-source=("https://github.com/mar77i/opennic.git")
+source=("git+https://github.com/mar77i/opennic.git")
 sha1sums=(SKIP)
 
 pkgver() {
