@@ -2,7 +2,7 @@
 pkgname_=albert
 pkgname=${pkgname_}-git
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A DE agnostic omnilauncher."
 arch=('i686' 'x86_64')
 url="https://github.com/ManuelSchneid3r/${pkgname_}"
