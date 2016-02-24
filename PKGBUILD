@@ -7,8 +7,8 @@
 
 
 pkgname=gtk3-light
-pkgver=3.18.7
-pkgrel=2
+pkgver=3.18.8
+pkgrel=1
 pkgdesc="GTK3 without colord."
 arch=('i686' 'x86_64')
 url="http://www.gtk.org/"
@@ -24,23 +24,13 @@ options=('!docs') # Remove '!docs' if you want gtk3 docs
 backup=(etc/gtk-3.0/settings.ini)
 license=('LGPL')
 source=(https://download.gnome.org/sources/gtk+/${pkgver:0:4}/gtk+-$pkgver.tar.xz
-        0001-file-chooser-Avoid-a-crash.patch
-        0001-file-chooser-Use-the-right-model-when-getting-the-se.patch
         settings.ini)
-sha256sums=('a76e1cb0ac45ce5c2734f6778f2731a5c6a23d1ff6bd4db357774f014ee68820'
-            '36058e522839bcae775cbafef8d4ad21cba98265b5cf9e90d5b46b874ddbf79f'
-            '22c0272fdbb048ec8fe62d71bcb1ab6765050de3eb04e833ba7303750782d0a7'
+sha256sums=('1c53ef1bb55364698f7183ecd185b547f92f4a3a7abfafd531400232e2e052f8'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202')
 
 prepare() {
     cd gtk+-$pkgver
     NOCONFIGURE=1 ./autogen.sh
-
-    # https://bugzilla.gnome.org/show_bug.cgi?id=761209
-    patch -Np1 -i ../0001-file-chooser-Avoid-a-crash.patch
-
-    # https://bugzilla.gnome.org/show_bug.cgi?id=761757
-    patch -Np1 -i ../0001-file-chooser-Use-the-right-model-when-getting-the-se.patch
 }
 
 build() {
