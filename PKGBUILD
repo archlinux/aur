@@ -27,3 +27,5 @@ package() {
   install -D -m644 "${srcdir}/capnproto-c++-${pkgver}/LICENSE.txt" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
+# vim:set ts=2 sw=2 et:
