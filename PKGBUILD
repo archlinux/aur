@@ -3,10 +3,10 @@
 
 pkgname=cvechecker
 pkgver=3.6
-pkgrel=0
+pkgrel=1
 pkgdesc="a local CVE checker tool"
 arch=('i686' 'x86_64')
-url="http://cvechecker.sourceforge.net/"
+url="https://github.com/sjvermeu/cvechecker"
 license=('GPL')
 groups=('system')
 depends=('libconfig>=1.3' 'sqlite3' 'wget' 'libxslt')
@@ -20,6 +20,7 @@ install='cvechecker.install'
 source=()
 noextract=()
 md5sums=('e42482fa97bc9e73534fe37b45d1b1fb')
+
 source="https://raw.githubusercontent.com/wiki/sjvermeu/$pkgname/releases/$pkgname-$pkgver.tar.gz"
 
 

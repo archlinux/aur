@@ -8,3 +8,8 @@ post_install() {
 	chgrp -R cvechecker /var/cvechecker/* &>/dev/null
 	echo "umask 007" >> /var/cvechecker/.profile
 }
+
+post_remove() {
+	groupdel cvechecker &>/dev/null
+	userdel cvechecker &>/dev/null
+}
