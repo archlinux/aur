@@ -5,10 +5,10 @@ _rtkver=0.4.3
 _fftwver=3.3.4
 pkgname=meters-lv2
 pkgver=0.9.0
-pkgrel=1
-pkgdesc="Collection of LV2 plugins for audio-level metering"
+pkgrel=2
+pkgdesc="Collection of LV2 plug-ins for audio-level metering from x42"
 arch=('i686' 'x86_64')
-url="https://github.com/x42/meters.lv2"
+url="http://x42.github.io/meters.lv2/"
 license=('GPL')
 groups=('lv2-plugins')
 depends=('jack' 'lv2' 'pango')
@@ -18,7 +18,7 @@ optdepends=('jack: standalone jack client'
             'liblo: standalone jack client')
 # old names of this package
 provides=('lv2-meters' 'meters.lv2')
-conflicts=('lv2-meters' 'meters.lv2')
+conflicts=('lv2-meters' 'meters.lv2' 'x42-plugins')
 source=("$url/archive/v$pkgver.tar.gz"
         "http://www.fftw.org/fftw-${_fftwver}.tar.gz"
         "https://github.com/x42/robtk/archive/v$_rtkver.tar.gz")
