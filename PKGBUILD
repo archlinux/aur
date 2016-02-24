@@ -77,10 +77,10 @@ _package() {
   cp $_srcdir/config/database.yml{.example,}
 
   msg "Create secret token"
-  HOME=$_srcdir DB=$_db $_bundle exec $_rake generate:secret_token
+  HOME=$_srcdir RAILS_ENV=production DB=$_db $_bundle exec $_rake generate:secret_token
 
   msg "Precompile assets"
-  DB=$_db $_bundle exec $_rake assets:precompile
+  HOME=$_srcdir RAILS_ENV=production DB=$_db $_bundle exec $_rake assets:precompile
 
   rm $_srcdir/config/{diaspora,database}.yml
 
