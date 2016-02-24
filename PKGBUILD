@@ -1,28 +1,22 @@
 # Maintainer: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
 
 pkgname=populatefs
-pkgver=r11.95cc98b
-pkgrel=2
+pkgver=1.0
+pkgrel=1
 pkgdesc="Tool for replacing genext2fs when creating ext4 images"
 arch=(x86_64)
-url="https://github.com/oskarirauta/populatefs"
+url="https://github.com/lipnitsk/populatefs"
 license=('GPL')
 depends=('e2fsprogs')
-makedepends=('git')
-source=("git+${url}#branch=master")
-sha256sums=('SKIP')
-
-pkgver() {
-	cd ${pkgname}
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('e5845404188b5da3afb11229ecb38646cc1562b61400035774dbc237c3b706d2')
 
 build() {
-	cd ${pkgname}
+	cd ${pkgname}-${pkgver}
 	make EXTRA_CFLAGS="-fPIC -DHAVE_GETOPT_H=1"
 }
 
 package() {
-	cd ${pkgname}
-	make DESTDIR="$pkgdir/" install
+	cd ${pkgname}-${pkgver}
+	make DESTDIR="${pkgdir}/" install
 }
