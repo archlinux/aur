@@ -2,7 +2,7 @@
  
 pkgname=foomatic-db-foo2zjs
 arch=('i686' 'x86_64')
-_snapdate=20160212
+_snapdate=20160224
 pkgver=${_snapdate}
 pkgrel=1
 epoch=3
@@ -14,7 +14,7 @@ provides=('foomatic-db-hpijs' 'foomatic-db')
 makedepends=('cups' 'perl' 'libxml2' 'enscript' 'perl' 'net-snmp' 'bash' 'bzr')
 source=(foomatic-db-foo2zjs-$_snapdate.tar.gz::http://www.openprinting.org/download/foomatic/foomatic-db-current.tar.gz)
 url="http://www.linuxprinting.org/foomatic.html"
-sha256sums=('c6e5b9ede01e0d928242f8817da9d58ce08ace19073082f9fddb2d20266db242')
+sha256sums=('30bcd22607b206ab3f9a0773024dd4e845f82cc6e1adcbed84e4c986f17d6ab3')
 
 package() {
    cd ${srcdir}/foomatic-db-$_snapdate
