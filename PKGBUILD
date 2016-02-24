@@ -2,7 +2,7 @@
 pkgbase=diaspora-git
 _projectname=diaspora
 pkgname=('diaspora-mysql-git' 'diaspora-postgresql-git')
-pkgver=0.5.5.0.r633.g1302923
+pkgver=0.5.7.0.r889.g5e02dd0
 pkgrel=1
 pkgdesc="A distributed privacy aware social network (development head)"
 arch=('i686' 'x86_64')
@@ -86,10 +86,10 @@ _package() {
   cp $_srcdir/config/database.yml{.example,}
 
   msg "Create secret token"
-  HOME=$_srcdir $_bundle exec $_rake generate:secret_token
+  HOME=$_srcdir RAILS_ENV=production $_bundle exec $_rake generate:secret_token
 
   msg "Precompile assets"
-  DB=$_db $_bundle exec $_rake assets:precompile
+  HOME=$_srcdir RAILS_ENV=production $_bundle exec $_rake assets:precompile
 
   rm $_srcdir/config/{diaspora,database}.yml
 
