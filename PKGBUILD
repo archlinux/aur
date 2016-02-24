@@ -50,20 +50,16 @@ pkgver() {
         "$( git rev-parse --short 'HEAD' )"
 }
 
-prepare() {
+build() {
     cd "${srcdir}/${srcname}"
 
     ./configure \
-        --prefix=/usr \
+        --prefix='/usr' \
         --avformat-swscale \
         --enable-gpl \
         --enable-gpl3 \
-        --qt-libdir=/usr/lib \
-        --qt-includedir=/usr/include/qt
-}
-
-build() {
-    cd "${srcdir}/${srcname}"
+        --qt-libdir='/usr/lib' \
+        --qt-includedir='/usr/include/qt'
 
     make
 }
