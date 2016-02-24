@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url='http://labplot.sourceforge.net/'
 license=('GPL')
 depends=('kdebase-runtime' 'kde-cli-tools' 'gsl')
-makedepends=('cmake' 'extra-cmake-modules')
+makedepends=('cmake' 'extra-cmake-modules' 'kdoctools')
 source=("http://download.kde.org/stable/labplot/${pkgver}/src/labplot-kf5-${pkgver}.tar.xz")
 md5sums=('7ca4deb2a009f0da4349fda695a43788')
 
