@@ -2,7 +2,7 @@
 
 pkgname=wasteland2 #-gog ???
 pkgver=2.3.0.5
-pkgrel=2
+pkgrel=1
 pkgdesc="The Director's Cut of the sequel to an adventure in post-nuclear America"
 arch=("x86_64")
 url="https://wasteland.inxile-entertainment.com/store"
