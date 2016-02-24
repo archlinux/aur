@@ -1,15 +1,15 @@
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: mentallaxative <laxatives@gmail.com>
 
 pkgname=rubyroom
 pkgver=0.4
-pkgrel=3
+pkgrel=4
 pkgdesc='Ruby clone of the Whiteroom full-screen text editor'
 arch=('x86_64' 'i686')
 url='http://rubyroom.rubyforge.org/'
 license=('GPL2')
 depends=('ruby-gtk2')
-makdepends=('imagemagick' 'gendesk')
+makedepends=('imagemagick' 'gendesk' 'git')
 optdepends=('fortune-mod: for poetic inspiration')
 source=("git://github.com/xyproto/rubyroom.git#tag=$pkgver"
         "http://rubyroom.rubyforge.org/rubyroom.png")
