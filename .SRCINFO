@@ -1,7 +1,7 @@
 pkgbase = opensesame
 	pkgdesc = A graphical, open-source experiment builder for the social sciences, with ability to deploy on Android
 	pkgver = 3.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.cogsci.nl/software/opensesame
 	arch = any
 	license = GPL

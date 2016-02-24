@@ -2,12 +2,12 @@
 
 pkgname=opensesame
 pkgver=3.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical, open-source experiment builder for the social sciences, with ability to deploy on Android"
 arch=(any)
 url="http://www.cogsci.nl/software/opensesame"
 license=(GPL)
-makedepends='git'
+makedepends=('git')
 # This is a fairly minimal set of dependencies
 depends=('python2' 'python2-pygame' 'python2-pyqt4'
 'python2-qscintilla' 'python2-qprogedit>=3.0.0' 'python2-yaml'
