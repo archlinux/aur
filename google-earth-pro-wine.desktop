@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Google Earth Pro (Wine)
+GenericName=3D planet viewer
+Comment=Explore, search and discover the planet
+Exec=google-earth-pro-wine %f
+Terminal=false
+MultipleArgs=false
+Icon=google-earth-pro-wine
+Type=Application
+Categories=Application;Network
+MimeType=application/vnd.google-earth.kml+xml;application/vnd.google-earth.kmz;application/earthviewer;application/keyhole
+StartupWMClass=googleearth.exe
