@@ -1,8 +1,8 @@
 # Maintainer: Sébastien Luttringer
 
 pkgname=agetpkg-git
-pkgver=2
-pkgrel=1
+pkgver="$(git log --pretty=format:''|wc -l)"
+pkgrel=2
 pkgdesc='Archlinux Archive Get Package (Git version)'
 arch=('any')
 url='https://github.com/seblu/agetpkg'
@@ -13,11 +13,6 @@ conflicts=('agetpkg')
 provides=('agetpkg')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 package() {
   cd "$srcdir/$pkgname"
