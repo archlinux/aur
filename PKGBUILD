@@ -1,6 +1,6 @@
 # Maintainer: Vinson Chuong <vinsonchuong@gmail.com>
 pkgname=bash-common-environment
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc=Sets\ common\ environment\ variables\ for\ a\ Bash\ library\ on\ Linux
 arch=(any)
@@ -9,8 +9,8 @@ license=(MIT)
 depends=(bash-common-parse-options)
 makedepends=(clidoc)
 checkdepends=(bats-git)
-source=(https://github.com/vinsonchuong/bash-common-environment/archive/v0.0.2-1.tar.gz)
-md5sums=('91b3915c91016ecb71107aa5c1655718')
+source=(https://github.com/vinsonchuong/bash-common-environment/archive/v0.0.3-1.tar.gz)
+md5sums=("SKIP")
 build () 
 { 
     cd "${srcdir}/${pkgname}-${pkgver}-${pkgrel}";
