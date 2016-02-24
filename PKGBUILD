@@ -13,7 +13,7 @@ depends=('ghc>=6.8.2' 'udrawgraph>=3.1.1' 'tcl' 'tk' 'spass' 'eprover' 'darwin' 
 optdepends=('isabelle')
 provides=('hets')
 conflicts=('hets')
-sha1sums=('ebcc094736dba7336e049af040db3ae72df92f79')
+sha1sums=('c757665d9107bdfebd9024990128c0333edff405')
 
 source=("http://www.informatik.uni-bremen.de/~eugenk/archlinux-aur/hets/hets-${pkgver}.tar.gz")
 package() {
