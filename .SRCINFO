@@ -1,8 +1,8 @@
 pkgbase = cvechecker
 	pkgdesc = a local CVE checker tool
 	pkgver = 3.6
-	pkgrel = 0
-	url = http://cvechecker.sourceforge.net/
+	pkgrel = 1
+	url = https://github.com/sjvermeu/cvechecker
 	install = cvechecker.install
 	arch = i686
 	arch = x86_64
