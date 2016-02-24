@@ -9,11 +9,12 @@ license=('MIT')
 depends=('openmpi' 'libx11' 'zlib' 'libgl' 'imagemagick' 'openexr')
 makedepends=('subversion' 'cmake')
 provides=('manta')
-source=('all.patch')
-md5sums=('dd1faa5da3ec84a3db574ca7fe496f50')
+source=('manta-svn::svn+http://anonymous:@gforge.sci.utah.edu/svn/Manta/trunk'
+  'all.patch')
+md5sums=('SKIP'
+         'dd1faa5da3ec84a3db574ca7fe496f50')
 
 prepare() {
-  svn checkout --password '' http://anonymous@gforge.sci.utah.edu/svn/Manta/trunk $pkgname
   cd "$srcdir/$pkgname"
   patch -p1 -N < "$srcdir/all.patch"
   cd "$srcdir"
@@ -22,6 +23,7 @@ prepare() {
 }
 
 pkgver() {
+  # svn checkout --password '' http://anonymous@gforge.sci.utah.edu/svn/Manta/trunk $pkgname
   cd "$srcdir/$pkgname"
   local ver="$(svnversion)"
   printf "r%s" "${ver//[[:alpha:]]}"
