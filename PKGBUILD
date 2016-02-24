@@ -24,18 +24,11 @@ pkgver() {
         "$( git rev-parse --short 'HEAD' )"
 }
 
-prepare() {
-    cd "${srcdir}/${srcname}"
-
-    autoreconf --install
-
-    ./configure \
-        --prefix='/usr' \
-        --with-working-locale
-}
-
 build() {
     cd "${srcdir}/${srcname}"
+
+    autoreconf --install --force --warnings='all'
+    ./configure --prefix='/usr' --with-working-locale
 
     make
 }
