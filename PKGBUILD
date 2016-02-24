@@ -5,7 +5,7 @@
 pkgname=git-ssh-git
 _gitname=git-ssh
 pkgdesc="A wrapper around git to work with multiple SSH keys"
-pkgver=r20.c36210c
+pkgver=r32.01c3628
 pkgrel=1
 arch=('any')
 makedepends=('git')
