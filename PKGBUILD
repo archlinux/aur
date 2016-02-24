@@ -7,7 +7,6 @@ arch=( 'i686' 'x86_64' )
 url='https://github.com/LemonBoy/bar'
 license=( 'MIT' )
 depends=( 'libxcb' )
-makedepends=( 'git' )
 source=( "https://github.com/LemonBoy/bar/archive/v${pkgver}.tar.gz" )
 
 build() {
