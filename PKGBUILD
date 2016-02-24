@@ -3,22 +3,21 @@
 
 pkgname=ibus-lite
 _pkgname=ibus
-pkgver=1.5.7
-pkgrel=6
+pkgver=1.5.13
+pkgrel=1
 pkgdesc="ibus without python3"
 arch=('i686' 'x86_64')
 url="http://ibus.googlecode.com"
 license=('LGPL')
 depends=('libibus' 'dconf' 'gtk2' 'libnotify' 'iso-codes')
-makedepends=('intltool' 'gnome-common' 'gconf')
-optdepends=('vala: build vala bindings')
-provides=('ibus=1.5.7')
+makedepends=('intltool' 'gnome-common' 'gconf' 'vala')
+provides=("ibus=$pkgver")
 conflicts=('ibus')
 replaces=('ibus')
 options=('!emptydirs')
 install=ibus.install
-source="https://github.com/ibus/ibus/archive/1.5.7.tar.gz"
-md5sums=('98f57dbfca36b002b7b4df291f2f04cf')
+source=("https://github.com/ibus/ibus/archive/${pkgver}.tar.gz")
+md5sums=('5d80ef4ad6a88a1b3e048d894f1e56bf')
 
 build() {
   cd "$srcdir/ibus-$pkgver"
