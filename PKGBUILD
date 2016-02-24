@@ -5,7 +5,7 @@ pkgname=(linux-luca020400 linux-luca020400-headers linux-luca020400-docs)
 _kernelname=-luca020400
 _srcname=linux-4.4
 pkgver=4.4.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -22,8 +22,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.install'
         'linux.preset'
         'config'
-        '0001-4.4-revert-btrfs.patch'
-        '0001-4.4-revert-xfs.patch'
         "0001-bfq.patch::${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-${_bfqkern}.patch"
         "0002-bfq.patch::${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-for-${_bfqkern}.patch"
         "0003-bfq.patch::${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqrel}-for.patch"
@@ -36,8 +34,6 @@ sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'e1195de2d0bebc1fc81d8ad887f4b30376fe7b428e59a587e0544c0b34a80b84'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             'f10de08a3d9f16499bcd22155c0beb04b8690194b40742a8a48d24bceb633e53'
-            '51586b733e9f178bebe577258b6057b035eded516ffe8bf8bbb26cb0b26c4958'
-            'ffbfaa192d17bfc7c6293aa9a07efe57f65177051ae3d8033d5e45a7bca2e0ad'
             'd1cf14cc696b0f716454fe8eb9746383700889d5d22ad829611f0433cc77b4ce'
             'b17c3fb18c5b8c20a45a38198f293679ca6aef08d16f12cd816a5cfafac4b2c4'
             '69a21bc286a628128cfc4723558829cb6ff6c2d7c4dfd4468457898674187b25'
