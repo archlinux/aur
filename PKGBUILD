@@ -12,7 +12,7 @@ makedepends=('xdotool')
 options=('!strip')
 install=$pkgname.install
 source=("GoogleEarthProWin-$pkgver.exe::https://dl.google.com/earth/client/advanced/current/GoogleEarthProWin.exe"
-        'google-earth-pro-wine'
+        'google-earth-pro-wine.sh'
         'google-earth-pro-wine.desktop'
          google-earth-pro-wine_{16,24,32,48,128,256}.png
         'Google-Terms-of-Service.html::https://www.google.com/intl/ALL/policies/terms/index.html'
@@ -76,7 +76,7 @@ package() {
   wine uninstaller --remove $_guid
 
   msg2 "Installing launcher..."
-  install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
+  install -Dm755 $pkgname.sh "$pkgdir"/usr/bin/$pkgname
 
   msg2 "Installing .desktop..."
   install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
