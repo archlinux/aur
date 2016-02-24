@@ -9,6 +9,12 @@ license=( 'MIT' )
 depends=( 'libxcb' )
 source=( "https://github.com/LemonBoy/bar/archive/v${pkgver}.tar.gz" )
 
+conflicts=(
+	bar-aint-recursive
+	bar-aint-recursive-git
+	lemonbar-git
+)
+
 build() {
   cd "bar-${pkgver}"
   make
