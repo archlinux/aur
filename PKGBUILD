@@ -9,6 +9,7 @@ url='http://www.khronos.org/opengles/sdk/tools/Reference-Compiler'
 license=('GPL')
 depends=('gcc-libs')
 makedepends=('cmake' 'git')
+provides=('glslang')
 conflicts=('glslang')
 source=("git://github.com/KhronosGroup/glslang.git")
 sha256sums=('SKIP')
