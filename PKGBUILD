@@ -2,16 +2,16 @@
 
 pkgname=brave-browser-git
 _pkgname=browser-laptop
-pkgver=0.7.12dev.47
+pkgver=0.7.15dev.56
 pkgrel=1
 pkgdesc="A chromium-based web browser that stops ads and trackers by Brendan Eich and Co. Development master branch."
-arch=('i686' 'x86_64')
+arch=('x86_64') # No 32-bit electron-prebuilt for you!
 url="https://www.brave.com/"
 license=('custom')
 groups=('networking')
 depends=('gtk2' 'nss' 'alsa-lib' 'libnotify' 'gconf' 'libxtst' 'desktop-file-utils')
 optdepends=('cups: To use your printer.')
-makedepends=('git' 'npm')
+makedepends=('git' 'npm' 'xdg-utils')
 provides=('brave')
 conflicts=('brave')
 options=(!strip)
