@@ -1,9 +1,9 @@
 --- groovebasin/package.json	2015-10-17 17:01:36.899019880 +0300
 +++ groovebasin/package.json	2015-10-17 17:02:10.699091646 +0300
 @@ -22,7 +22,7 @@
-     "express": "~4.12.3",
+     "express": "~4.13.3",
      "findit2": "~2.2.3",
-     "googleapis": "~2.0.3",
+     "googleapis": "~2.1.6",
 -    "groove": "~2.3.3",
 +    "groove": "git://github.com/andrewrk/node-groove.git",
      "httpolyglot": "~0.1.1",

@@ -14,7 +14,7 @@ pkgdesc='Music player server with a web-based user interface inspired by Amarok 
 arch=('i686' 'x86_64')
 url='http://groovebasin.com/'
 license=(MIT)
-depends=(nodejs libgroove-git)
+depends=(nodejs libgroove)
 makedepends=(python2)
 provides=(nodejs-groovebasin)
 conflicts=(nodejs-groovebasin)
@@ -24,14 +24,12 @@ source=("$_pkgname"::"git+https://github.com/andrewrk/${_pkgname}#branch=libgroo
         groovebasin.sh
         groovebasin.json
         groovebasin.service
-        groovebasin-groove-git.patch
-        groovebasin-leveldown.patch)
+        groovebasin-groove-git.patch)
 sha256sums=('SKIP'
             '5169f64bbe305959d6c2c76f73b10c3a604586cb884c78e9b620e476f45132df'
             '55ec9f96e6ad4d8cf478f34a48a5ce98cf6150374b82cbc46cb07696370ee33d'
             'fca2b5d94cef9e5b70936bdb47c4a69724050d657fe72f471f989dce933a1caa'
-            '7bb219a4f5414400e39a6446f9facb020ef829a7ede97d914ed1fa74f8b89e38'
-            '58cc0446f16b488dbd054f4a5c918f4f08b3ef6f530a611c6fe6a95693e6955b')
+            '19729298fec852d741b85f7538438395b0ef7552b70eee8a1395d2ab30c28194')
 
 
 kgver() {
@@ -43,7 +41,6 @@ kgver() {
 prepare() {
   cd "${srcdir}/${_pkgname}"
   patch -fNp1 -i ../groovebasin-groove-git.patch
-  patch -fNp1 -i ../groovebasin-leveldown.patch
 }
 
 build() {

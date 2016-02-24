@@ -18,13 +18,11 @@ pkgbase = nodejs-groovebasin-git
 	source = groovebasin.json
 	source = groovebasin.service
 	source = groovebasin-groove-git.patch
-	source = groovebasin-leveldown.patch
 	sha256sums = SKIP
 	sha256sums = 5169f64bbe305959d6c2c76f73b10c3a604586cb884c78e9b620e476f45132df
 	sha256sums = 55ec9f96e6ad4d8cf478f34a48a5ce98cf6150374b82cbc46cb07696370ee33d
 	sha256sums = fca2b5d94cef9e5b70936bdb47c4a69724050d657fe72f471f989dce933a1caa
-	sha256sums = 7bb219a4f5414400e39a6446f9facb020ef829a7ede97d914ed1fa74f8b89e38
-	sha256sums = 58cc0446f16b488dbd054f4a5c918f4f08b3ef6f530a611c6fe6a95693e6955b
+	sha256sums = 19729298fec852d741b85f7538438395b0ef7552b70eee8a1395d2ab30c28194
 
 pkgname = nodejs-groovebasin-git
 
