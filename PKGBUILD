@@ -1,9 +1,9 @@
 # Maintainer: Alfredo Ramos <alfredo dot ramos at yandex dot com>
 
 pkgbase=tomorrow-theme
-pkgname=("${pkgbase}-vim-git" "${pkgbase}-qtcreator-git")
+pkgname=("${pkgbase}-vim-git" "${pkgbase}-qtcreator-git" "${pkgbase}-gedit-git")
 pkgver=r429.0e0d35a
-pkgrel=2
+pkgrel=3
 arch=('any')
 license=('MIT')
 url='https://github.com/chriskempson/tomorrow-theme'
@@ -42,4 +42,15 @@ package_tomorrow-theme-qtcreator-git() {
 	# Install qtcreator style
 	mkdir -p ${pkgdir}/usr/share/qtcreator
 	cp -R ${srcdir}/${pkgbase}/QtCreator/styles ${pkgdir}/usr/share/qtcreator/
+}
+
+package_tomorrow-theme-gedit-git() {
+	pkgdesc='Tomorrow Theme for gedit. Development version.'
+	groups=("${pkgbase}-git")
+	optdepends=('gedit: to use this style')
+	provides=("${pkgbase}-qtcreator-git=${pkgver}")
+	
+	# Install gedit style
+	mkdir -p ${pkgdir}/usr/share/gtksourceview-3.0/styles
+	cp -R ${srcdir}/${pkgbase}/GEdit/*.xml ${pkgdir}/usr/share/gtksourceview-3.0/styles/
 }
