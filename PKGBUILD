@@ -3,10 +3,10 @@
 _pkgbase=pecl-database-mysql
 pkgname=${_pkgbase}-git
 pkgver=r12.294ce3b
-pkgrel=1
+pkgrel=2
 pkgdesc='PECL MySQL - support mysql_* functions on PHP7'
 arch=('x86_64' 'i686')
-url=('http://www.php.net')
+url='http://www.php.net'
 license=('GPL')
 source=("git+https://github.com/php/pecl-database-mysql.git")
 depends=('php')
@@ -16,7 +16,7 @@ pkgver() {
   cd ${srcdir}/${_pkgbase}
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
 
