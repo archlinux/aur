@@ -7,7 +7,7 @@
 
 pkgname=paraview-manta
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Parallel Visualization Application using VTK (with MantaView plugin)'
 arch=('i686' 'x86_64')
 url='http://www.paraview.org'
