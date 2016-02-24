@@ -1,6 +1,4 @@
 post_install() {
-    EXTRAMODULES='extramodules-4.3-ARCH'
-    
     # Update module dependencies for all kernels
     for _kernel in $(cat /usr/lib/modules/extramodules-*/version); do
         depmod $_kernel
