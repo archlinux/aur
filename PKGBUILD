@@ -1,8 +1,8 @@
 # Maintainer: PitBall
 
 pkgname=nvidia-352-lts
-pkgver=352.63
-pkgrel=2
+pkgver=352.79
+pkgrel=1
 pkgdesc="NVIDIA drivers for linux-lts"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -15,8 +15,8 @@ install=nvidia-352-lts.install
 options=(!strip)
 source=("ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run"
         "ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-md5sums=('7882ecda1763504beb10af77a21b21c5'
-         'ce1ec67f875d434c212b859b582204c5')
+md5sums=('8f5b2c809490e0ebec17b9074a5a8363'                                              
+         'a9440d3f4b38c25ebb2ddf56739d404a')
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
