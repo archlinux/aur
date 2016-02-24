@@ -1,17 +1,17 @@
 pkgbase = python2-joe
 	pkgdesc = A .gitignore magician in your command line
-	pkgver = 0.0.5
-	pkgrel = 3
+	pkgver = 0.0.7
+	pkgrel = 1
 	url = http://github.com/karan/joe/
 	arch = any
 	license = MIT
 	makedepends = python2-setuptools
-	makedepends = git
 	depends = python2
 	depends = python2-docopt
+	depends = python2-git
 	provides = joe
-	source = git+https://github.com/karan/joe.git#tag=0.0.5
-	sha256sums = SKIP
+	source = https://github.com/karan/joe/archive/0.0.7.tar.gz
+	md5sums = f10faf7246f3938870383559a0ac28a7
 
 pkgname = python2-joe
 
