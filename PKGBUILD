@@ -2,7 +2,7 @@
 
 pkgname=brave-browser-git
 _pkgname=browser-laptop
-pkgver=0.7.15dev.56
+pkgver=0.7.16dev.1
 pkgrel=1
 pkgdesc="A chromium-based web browser that stops ads and trackers by Brendan Eich and Co. Development master branch."
 arch=('x86_64') # No 32-bit electron-prebuilt for you!
@@ -42,10 +42,7 @@ build() {
 package() {
   cd "$srcdir/$_pkgname"
 
-  case $CARCH in
-    'i686') _arch='x86';;
-    'x86_64') _arch='x64';;
-  esac;
+  _arch='x64'
 
   install -d -m0755 "$pkgdir"/opt
 
