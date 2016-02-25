@@ -2,7 +2,7 @@
 
 _pkgname=tqdm
 pkgname=python-${_pkgname}
-pkgver=1.0
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="Simple Python Progress Meter"
 arch=('any')
@@ -14,7 +14,7 @@ options=('!emptydirs')
 provides=('python2-tqdm')
 conflicts=('python2-tqdm')
 source=(https://pypi.python.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz)
-sha256sums=('d4972cfd62cf50bf88f20749b536258a3f48b31515dea3ad5edd5fe52e742c6c')
+sha512sums=('4d9e75f5affde1435f28b850d3f978dcd98a48e239350e9bcc0f03a013db1d5e66545bc519b8376f677eaa53f40225198519fa975c97e3e0e85cd4e7a38b74dd')
 
 package() {
 	 cd "${srcdir}/${_pkgname}-${pkgver}"
