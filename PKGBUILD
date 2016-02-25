@@ -4,10 +4,10 @@ pkgdesc="ROS - This package contains a C++ parser for the Unified Robot Descript
 url='http://ros.org/wiki/urdf'
 
 pkgname='ros-indigo-urdf'
-pkgver='1.11.8'
+pkgver='1.11.10'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-roscpp
@@ -17,7 +17,7 @@ ros_makedepends=(ros-indigo-roscpp
   ros-indigo-rosconsole-bridge
   ros-indigo-cmake-modules
   ros-indigo-pluginlib)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   urdfdom
   urdfdom-headers)
@@ -30,10 +30,16 @@ depends=(${ros_depends[@]}
   urdfdom
   urdfdom-headers)
 
-_tag=release/indigo/urdf/${pkgver}-${_pkgver_patch}
-_dir=urdf
-source=("${_dir}"::"git+https://github.com/ros-gbp/robot_model-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/urdf/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/robot_model-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="robot_model-release-release-indigo-urdf-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_model-release/archive/release/indigo/urdf/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('8b17f129f9bd62ba42a527d16c5ef68cc89c4fbcf01b5c570ce88c59895a49f9')
 
 build() {
   # Use ROS environment variables
