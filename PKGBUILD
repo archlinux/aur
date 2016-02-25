@@ -1,7 +1,7 @@
 # Maintainer: Jenya Sovetkin <e dot sovetkin at gmail dot com>
 pkgname=shellinabox-git
-pkgver=r397.0c8c295
-pkgrel=2
+pkgver=r399.f17bc26
+pkgrel=1
 pkgdesc="Implementation of a web server that can export arbitrary command line tools to a web based terminal emulator"
 arch=('any')
 url="https://github.com/shellinabox/shellinabox"
