@@ -1,0 +1,14 @@
+pkgbase = plosetup
+	pkgdesc = helper to set up loop devices for partitions in a disk image
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://zwizwa.be/darcs/pool/bin/plosetup
+	arch = any
+	license = Artistic2.0
+	makedepends = curl
+	noextract = http://zwizwa.be/darcs/pool/bin/plosetup
+	source = http://zwizwa.be/darcs/pool/bin/plosetup
+	md5sums = 2de1300fd8cfeab9ab2de105f5144bda
+
+pkgname = plosetup
+
