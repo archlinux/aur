@@ -2,7 +2,7 @@
 _pkgname="nzbmegasearch"
 pkgname="nzbmegasearch-git"
 pkgver=v0.46.r3.g24b5e5b
-pkgrel=1
+pkgrel=2
 pkgdesc="Aggregate automatically NZB search results. Easy. Quick. Clean."
 arch=(any)
 url="http://pillone.github.io/usntssearch"
@@ -14,21 +14,21 @@ source=("nzbmegasearch::git+https://github.com/pillone/usntssearch.git#branch=ma
         "nzbmegasearch.sh"
         "nzbmegasearch.install")
 md5sums=('SKIP'
-         'a2696d8993a85ec406f08f1eb6c0705e'
+         '4306737c089e52ec03500aa953f060d7'
          'dfb6224058ffefcb9f9043528fef1c8d'
-         'de4e5aeba564472f7024326c0b2b9c0e')
+         '40768a064264be83e605e209616f1e85')
 sha1sums=('SKIP'
-          '6637d42ae71b46d7c7d57afc99eac60d1482467b'
+          'b1f883a410c61b4d1d2b3c4cc2429f2dd4429e27'
           '08ee33416b1839427586a9bcb36f39b9c8779ffd'
-          '01f47661fee6f29ea6db2159d523fd7c2cc3289d')
+          '3a8e87f04bbd8dc06893bf6a3b1883d40838248f')
 sha256sums=('SKIP'
-            'fdadc1bf5256f0660b6a1bf380c006d47d68b2770375989f13bff5d4b3bd08e4'
+            '5ecfdaefbe5486962474a7a704e456f48564db2ec90c417ad831d530a5dd5cf1'
             'f865904bbeda3a4f049533f5920d05b5d27fb595013e6c3b7ce2c0b671f94924'
-            '44f7a52a8c4d706aebb49d99f103526b54acc3320d5206811badd73745281dfa')
+            'fdddb4047513fe9d16625cf50012c60eac6780d6278b1151e82cd7c541dc9b28')
 sha512sums=('SKIP'
-            'f8a49ce9d6e3948b3987aa890d555b0731c700bca3d8b64117d0c7eae4d96a19dcd4e637bec3788662c67f83886861b96b0d858d72e3847cf6d0ad5376611734'
+            '5c524246e5a0fb7f51cbc22f78d0ca2d620fd886128cfcd59aa82426272fb73523897b455071488f3291124e83590a254426c5d07611d540926ef62a8543a2ec'
             'e04f9cbac611b4daf8f7f96dffda354d8903c2500539d00ffb646f0da9fbb1ffdda6e8a8bf6846c69850e01fe7d31abffe1d5441b0699ec87cd777928a69ad7e'
-            'da285d15076fff83640c3d11587fa6f0f4abb3267ad1c8a083fdad2d98f0b9527843e6eb3c143f6a355ac7a39dd91c665138af4f57e6eb1d2f2b45b96113d773')
+            'f619d442a8d2884b24e5509e191bd8385804e91e76f764198fc928326581821effa7655c9915658c5b5cce942882c611b5e54de113bf867251e58ac90e2db570')
 
 pkgver() {
     cd "$_pkgname"
@@ -39,8 +39,17 @@ package() {
     cd "$srcdir"
 
     msg2 "Install NZBmegasearch to /opt/nzbmegasearch"
-    install -d -m 755 "${pkgdir}/opt/nzbmegasearch"
+    install -d -D -m 755 "${pkgdir}/opt/nzbmegasearch"
     cp -dpr --no-preserve=ownership "${srcdir}/nzbmegasearch/NZBmegasearch/"* "${pkgdir}/opt/nzbmegasearch"
+
+    msg2 "Install log directory to ~nzbmegasearch/logs"
+    rm -rf "${pkgdir}/opt/nzbmegasearch/logs"
+    install -d -D -m 755 "${pkgdir}/var/lib/nzbmegasearch/logs"
+    ln -s /var/lib/nzbmegasearch/logs "${pkgdir}/opt/nzbmegasearch/logs"
+
+    msg2 "Install custom_params.ini to ~nzbmegasearch/custom_params.ini"
+    rm -rf "${pkgdir}/opt/nzbmegasearch/custom_params.ini"
+    ln -s /var/lib/nzbmegasearch/custom_params.ini "${pkgdir}/opt/nzbmegasearch/custom_params.ini"
 
     msg2 "Install executable into /usr/bin"
     install -D -m 755 "${srcdir}/nzbmegasearch.sh" "${pkgdir}/usr/bin/nzbmegasearch"

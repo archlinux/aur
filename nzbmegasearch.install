@@ -14,9 +14,9 @@ post_install() {
     # Create/Update user
     if grep -q "^${user}:" /etc/passwd 2> /dev/null
     then
-        usermod -s "$shell" -c "$desc" -d "$home" -m -g "$group" "$user" &> /dev/null
+        usermod -s "$shell" -c "$desc" -d "$home" -g "$group" "$user" &> /dev/null
     else
-        useradd -m -s "$shell" -c "$desc" -d "$home" -g "$group" -r "$user" &> /dev/null
+        useradd -s "$shell" -c "$desc" -d "$home" -g "$group" -r "$user" &> /dev/null
     fi
 
     chown -R "${user}:${group}" "$home"
