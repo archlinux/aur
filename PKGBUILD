@@ -3,7 +3,7 @@
 pkgbase=python-braintree
 pkgname=(python-braintree python2-braintree)
 _pkgname=braintree
-pkgver=3.24.0
+pkgver=3.25.0
 pkgrel=1
 pkgdesc="Braintree Python Library"
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools' 'python-requests' 'python2-requests')
 checkdepends=('python-nose' 'python2-nose')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/braintree/braintree_python/archive/${pkgver}.tar.gz")
-sha512sums=('2feebd92bb865fd4b622ffb18ba30d4c05c396ec09df92a8456450594c59e5d024175779783e3c57ac256df2a2488090c8ef926a81f00bd41d24a03b3b087507')
+sha512sums=('3800195fbf8a023accb814d4f24554de086d263d5f6032135cf7d06a28255282722f117211fbe18a6ca0f64c61c16f07b621a3c2c6c6430daeb37e45907cbab4')
 
 prepare() {
   cp -a ${_pkgname}_python-$pkgver{,-py2}
