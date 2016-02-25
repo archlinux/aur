@@ -4,14 +4,14 @@ pkgdesc="ROS - robot_model contains packages for modeling various aspects of rob
 url='http://ros.org/wiki/robot_model'
 
 pkgname='ros-indigo-robot-model'
-pkgver='1.11.8'
+pkgver='1.11.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-kdl-parser
@@ -21,12 +21,19 @@ ros_depends=(ros-indigo-kdl-parser
   ros-indigo-urdf-parser-plugin
   ros-indigo-collada-parser
   ros-indigo-urdf)
-depends=(${ros_depends[@]})
+depends=(${ros_depends[@]}
+  liburdfdom-tools)
 
-_tag=release/indigo/robot_model/${pkgver}-${_pkgver_patch}
-_dir=robot_model
-source=("${_dir}"::"git+https://github.com/ros-gbp/robot_model-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/robot_model/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/robot_model-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="robot_model-release-release-indigo-robot_model-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_model-release/archive/release/indigo/robot_model/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('2e035c2e28fcc15bcaf676b5e75dab1c5bf47dd6f1e4435ec4532485ba95799d')
 
 build() {
   # Use ROS environment variables
