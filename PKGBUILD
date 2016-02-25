@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=lutris
-pkgver=0.3.7.2
+pkgver=0.3.7.3
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
@@ -14,7 +14,7 @@ depends=('desktop-file-utils' 'hicolor-icon-theme' 'polkit' 'xorg-xrandr'
 makedepends=('python2-setuptools')
 install='lutris.install'
 source=("http://download.opensuse.org/repositories/home:/strycore/Debian_8.0/lutris_${pkgver}.tar.gz")
-sha256sums=('4166a9f432ab1b1ece49ff5bfeccfdeef7b8e900ad56baee5945d549052b104a')
+sha256sums=('a07dc2e7d27bf5d593032c5eafd671b1e458b104abc4078c6d193d28ef297fc6')
 
 prepare() {
   cd lutris
