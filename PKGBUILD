@@ -4,7 +4,7 @@ pkgdesc="ROS - image_geometry contains C++ and Python libraries for interpreting
 url='http://www.ros.org/wiki/image_geometry'
 
 pkgname='ros-jade-image-geometry'
-pkgver='1.11.10'
+pkgver='1.11.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -12,7 +12,7 @@ license=('BSD')
 
 ros_makedepends=(ros-jade-sensor-msgs
   ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   opencv
   python2-numpy)
@@ -22,10 +22,16 @@ depends=(${ros_depends[@]}
   opencv
   python2-numpy)
 
-_tag=release/jade/image_geometry/${pkgver}-${_pkgver_patch}
-_dir=image_geometry
-source=("${_dir}"::"git+https://github.com/ros-gbp/vision_opencv-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/image_geometry/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/vision_opencv-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="vision_opencv-release-release-jade-image_geometry-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/vision_opencv-release/archive/release/jade/image_geometry/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('efdb16c07008533b5699cfc8f3f1ba1f5b002be81b928c1b31a1c4c60e7eaea8')
 
 build() {
   # Use ROS environment variables
