@@ -1,9 +1,9 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=mattersend
-pkgver=1.4
+pkgver=2.0
 pkgrel=1
-pkgdesc="CLI tool to send messages to the Incoming webhook of mattermost"
+pkgdesc="Library and CLI utility to send messages to mattermost's incoming webhooks"
 arch=(any)
 url="https://github.com/mtorromeo/mattersend"
 license=('BSD')
@@ -22,4 +22,4 @@ package() {
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('d5c7647a06cca3b3a57cb9ab821d5def19eced5586cf452aa22c7edf1e531ea6')
+sha256sums=('fd141b837ab528707490d258e2392ba1a3f117135fb2480339d952af3febfeca')
