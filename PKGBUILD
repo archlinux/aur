@@ -2,14 +2,14 @@
 
 pkgbase=reposurgeon
 pkgname=({cy,}reposurgeon)
-pkgver=3.34
+pkgver=3.35
 pkgrel=1
 pkgdesc="Performs surgery on version control repositories."
 arch=('any')
 url="http://www.catb.org/esr/$pkgbase/"
 license=('BSD')
-depends=('python2')
-makedepends=('cython2' 'asciidoc' 'xmlto')
+depends=('python')
+makedepends=('cython' 'asciidoc' 'xmlto')
 optdepends=('bzr'
             'cvs-fast-export'
             'darcs'
@@ -19,7 +19,7 @@ optdepends=('bzr'
             'src'
             'subversion')
 source=("$url$pkgbase-$pkgver.tar.xz")
-sha256sums=('dfa1211bca2063cc5d28d8f8b78c0e8776250dce45b1e797d03523150c5ebe86')
+sha256sums=('c8af962ed574387819502ee56cdadfe03e8953f09f3ff730de7e408ebeb5776b')
 
 prepare() {
   cd "$srcdir/$pkgbase-$pkgver"
