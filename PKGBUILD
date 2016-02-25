@@ -2,13 +2,14 @@
 # code adapted from: Meow < a.li.devtty at gmail dot com >
 
 pkgname=rstudio-desktop-preview-bin
-pkgver=0.99.878
-pkgrel=2
+pkgver=0.99.879
+pkgrel=1
 pkgdesc="A new integrated development environment (IDE) for R (binary version from RStudio official website)"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.rstudio.org/"
-depends=('r>=2.11.1' 'shared-mime-info' 'gstreamer0.10-base' 'patchelf')
+depends=('r' 'gstreamer0.10-base' 'hicolor-icon-theme' 'libxcomposite' 'libxslt' 'shared-mime-info' 'libxrandr' 'gtk2')
+makedepends=('patchelf')
 conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-bin')
 optdepends=('pandoc-bin'
 	    'pandoc-cabal'
@@ -16,8 +17,8 @@ optdepends=('pandoc-bin'
 provides=("rstudio-desktop-preview=${pkgver}")
 #options=(!strip)
 
-_x86md5=2b8fae049a2d5458107b9ed5e93aa6d9
-_x64md5=0fa7099868e60f5acdb0787ea9312468
+_x86md5=afde330661f9565445c522983c2caa8f
+_x64md5=64aa9c53f930d415e4a3dac019cf2c5f
 
 case "$CARCH" in
 	'i686')
