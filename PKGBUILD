@@ -4,7 +4,7 @@ pkgdesc="ROS - actionlib_msgs defines the common messages to interact with an ac
 url='http://wiki.ros.org/actionlib_msgs'
 
 pkgname='ros-jade-actionlib-msgs'
-pkgver='1.12.3'
+pkgver='1.12.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -13,7 +13,7 @@ license=('BSD')
 ros_makedepends=(ros-jade-message-generation
   ros-jade-catkin
   ros-jade-std-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-message-runtime
@@ -21,10 +21,16 @@ ros_depends=(ros-jade-message-runtime
   ros-jade-std-msgs)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/actionlib_msgs/${pkgver}-${_pkgver_patch}
-_dir=actionlib_msgs
-source=("${_dir}"::"git+https://github.com/ros-gbp/common_msgs-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/actionlib_msgs/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/common_msgs-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="common_msgs-release-release-jade-actionlib_msgs-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/common_msgs-release/archive/release/jade/actionlib_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('9bb1cfd8f1e6409659f7f861b2ba20ab965f62aabc90e1e3e8be01d69ccaefca')
 
 build() {
   # Use ROS environment variables
