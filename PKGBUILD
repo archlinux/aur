@@ -8,13 +8,13 @@
 # Contributor: Tobias Hunger <tobias dot hunger at gmail dot com>
 
 pkgname=qtcreator-git
-pkgver=v3.6.82
+pkgver=v3.6.0.r1561.gc3a1355
 pkgrel=1
 pkgdesc='Lightweight, cross-platform integrated development environment'
 arch=('i686' 'x86_64')
 url='http://wiki.qt.io/Category:Tools::QtCreator'
 license=('GPL')
-depends=('qt5-quick1' 'qt5-tools' 'qt5-quickcontrols')
+depends=('qt5-quick1' 'qt5-tools' 'qt5-quickcontrols' 'qt5-svg')
 makedepends=('git' 'mesa' 'clang')
 options=('docs')
 optdepends=('qt5-doc: for the integrated Qt documentation'
