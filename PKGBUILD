@@ -33,6 +33,7 @@ check() {
 
 package() {
 	cd $_pkgname
+	export PATH="$PATH:$pkgdir/usr/bin"
 	cargo install --root "$pkgdir/usr"
 	rm "$pkgdir/usr/.crates.toml"
 }
