@@ -1,6 +1,6 @@
 # Maintainer: Kai Michaelis <seu@panopticon.re>
 pkgname=panopticon-git
-pkgver=0.13.0.1066
+pkgver=0.13.0.1067
 pkgrel=1
 pkgdesc="A libre cross platform disassembler"
 arch=('x86_64' 'i686')
@@ -31,10 +31,17 @@ build() {
     cargo build --release
 }
 
+check() {
+	cd $pkgname
+	cargo test --release
+}
+
 package() {
-    install -d -m 755 "$pkgdir/usr/bin"
-    install -D -s -m 555 "$pkgname/target/release/qtpanopticon" "$pkgdir/usr/bin/qtpanopticon"
+	cd $pkgname
+	export PATH="$PATH:$pkgdir/usr/bin"
+	cargo install --root "$pkgdir/usr"
+	rm "$pkgdir/usr/.crates.toml"
 	install -m 755 -d "$pkgdir/usr/share/panopticon/qml"
-	cp -R "$pkgname/qt/res/"* "$pkgdir/usr/share/panopticon/qml"
+	cp -R "qt/res/"* "$pkgdir/usr/share/panopticon/qml"
 	chown -R root:root "$pkgdir/usr/share/panopticon/qml"
 }
