@@ -1,5 +1,5 @@
 pkgname=mentohust-git
-pkgver=rV4.0_alpha2_20_gfd0da07.
+pkgver=fd0da07
 pkgrel=1
 pkgdesc="A Ruijie V4 supplicant on Linux and MacOS"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ build()
 
 pkgver() {
     cd mentohust
-    printf "r%s.%s" "$(git describe --tag | sed 's/-/_/g')"
+    printf "%s" "$(git describe --always | sed 's/-/_/g')"
 }
 
 package()
