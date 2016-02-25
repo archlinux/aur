@@ -2,7 +2,7 @@
 
 _target=arm-linux-gnueabihf
 pkgname=$_target-gdb
-pkgver=7.10
+pkgver=7.11
 pkgrel=1
 pkgdesc='The GNU Debugger for the ARM hard float target'
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ depends=(xz ncurses expat python2 guile)
 makedepends=(texinfo)
 options=(!emptydirs)
 source=(http://ftp.gnu.org/gnu/gdb/gdb-$pkgver.tar.xz)
-sha256sums=('7ebdaa44f9786ce0c142da4e36797d2020c55fa091905ac5af1846b5756208a8')
+sha256sums=('7a434116cb630d77bb40776e8f5d3937bed11dea56bafebb4d2bc5dd389fe5c1')
 
 build() {
   cd gdb-$pkgver
