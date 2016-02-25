@@ -2,10 +2,11 @@
 
 pkgname=gnu-apl
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 url="http://www.gnu.org/software/apl/"
 pkgdesc="an (almost) complete implementation of ISO standard 13751"
 arch=('i686' 'x86_64')
+depends=('ncurses' 'postgresql-libs' 'gcc-libs' 'sqlite')
 license=('GPL3')
 source=("ftp://ftp.gnu.org/gnu/apl/apl-${pkgver}.tar.gz")
 md5sums=('7302a67330ebdc2224212a1639927bc8')
