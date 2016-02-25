@@ -24,12 +24,6 @@ pkgver() {
   git describe --tags | sed 's/v//; s/-/.r/; s/-g/./'
 }
 
-prepare() {
-  cd lutris
-
-  sed -i 's|^#!.*python$|#!/usr/bin/python2|' $(grep -rl '^#!.*python')
-}
-
 package() {
   cd lutris
 
