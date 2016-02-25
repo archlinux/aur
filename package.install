@@ -1,5 +1,7 @@
 post_install() {
-  xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+  gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+  update-desktop-database -q
+  mktexlsr
 }
 
 post_upgrade() {
