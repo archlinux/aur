@@ -3,7 +3,7 @@
 
 pkgname=monitoring-plugins
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugins for Icinga, Naemon, Nagios, Shinken, Sensu and other monitoring applications"
 arch=('i686' 'x86_64')
 url="http://www.monitoring-plugins.org"
@@ -25,7 +25,9 @@ md5sums=('4a210f7db012571ea58e214cef74f612')
 build() {
   cd $pkgname-$pkgver
 
-  ./configure --prefix=/usr --libexecdir=/usr/lib/monitoring-plugins
+  ./configure --prefix=/usr --libexecdir=/usr/lib/monitoring-plugins \
+    --with-ping-command='/usr/bin/ping -4 -n -U -w %d -c %d %s' \
+    --with-ping6-command='/usr/bin/ping -6 -n -U -w %d -c %d %s'
 
   make
 }
