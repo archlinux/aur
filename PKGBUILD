@@ -4,7 +4,7 @@ pkgdesc="ROS - This package holds the diagnostic messages which provide the stan
 url='http://wiki.ros.org/diagnostic_msgs'
 
 pkgname='ros-jade-diagnostic-msgs'
-pkgver='1.12.3'
+pkgver='1.12.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -13,17 +13,23 @@ license=('BSD')
 ros_makedepends=(ros-jade-message-generation
   ros-jade-catkin
   ros-jade-std-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-message-runtime
   ros-jade-std-msgs)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/diagnostic_msgs/${pkgver}-${_pkgver_patch}
-_dir=diagnostic_msgs
-source=("${_dir}"::"git+https://github.com/ros-gbp/common_msgs-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/diagnostic_msgs/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/common_msgs-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="common_msgs-release-release-jade-diagnostic_msgs-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/common_msgs-release/archive/release/jade/diagnostic_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('08ef69efe567a86cfd2d80e64d6c604524ee3a4acf8ddd9c7e8f66188ca22c6e')
 
 build() {
   # Use ROS environment variables
