@@ -2,15 +2,15 @@
 
 pkgname=webcamoid
 pkgver=7.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Webcamoid is a full featured webcam capture application."
 url='https://github.com/hipersayanX/webcamoid'
 license=('GPL')
 arch=('i686' 'x86_64' 'armv6h')
-depends=('qt5-quickcontrols' 'qt5-svg' 'ffmpeg' 'libpulse')
+depends=('qt5-quickcontrols' 'qt5-svg' 'libpulse' 'v4l-utils' 'ffmpeg')
 # Enable this lines if you want to use GStreamer instead of FFmpeg.
 # WARNING: GStreamer support is experimental.
-#depends=('qt5-quickcontrols' 'qt5-svg' 'libpulse' 'gst-plugins-base-libs')
+#depends=('qt5-quickcontrols' 'qt5-svg' 'libpulse' 'v4l-utils' 'gst-plugins-base-libs')
 optdepends=('v4l2loopback-dkms: Virtual camera support')
 #optdepends=('v4l2loopback-dkms: Virtual camera support'
 #            'gst-plugins-base'
