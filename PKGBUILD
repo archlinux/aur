@@ -1,7 +1,7 @@
 # Maintainer: Corey Mwamba <contact.me@coreymwamba.co.uk>
 
 pkgname=snd-gtk-alsa-cvs
-pkgver=15.9
+pkgver=16.3
 pkgrel=1
 pkgdesc="A sound editor with Alsa and GTK GUI. CVS version"
 arch=('i686' 'x86_64')
