@@ -1,6 +1,6 @@
 # Maintainer: Dicebot <public@dicebot.lv>
 pkgname=git-hub
-pkgver=0.9.0
+pkgver=0.10
 pkgrel=1
 pkgdesc="Git command line interface to GitHub"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('python2' 'git' 'bash-completion')
 makedepends=('python2-docutils')
 
 source=(
-    "git+https://github.com/sociomantic/git-hub.git#tag=v$pkgver"
+    "git+https://github.com/sociomantic-tsunami/git-hub.git#tag=v$pkgver"
 )
 
 sha1sums=(
