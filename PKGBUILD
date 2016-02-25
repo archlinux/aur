@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=wingide
-_wingver=5.1.9
+_wingver=5.1.10
 _wingrel=1
 pkgver=$_wingver.$_wingrel
 pkgrel=2
@@ -12,8 +12,8 @@ license=('custom')
 arch=('i686' 'x86_64')
 [ "$CARCH" = 'i686' ] && _pkgarch=i386
 [ "$CARCH" = 'x86_64' ] && _pkgarch=x86_64
-_wingpatch_x86_64=("completer-fix-5.1.9p1-all.tar" "fix-rep-compare-5.1.9p2-all.tar")
-_wingpatch_i686=("completer-fix-5.1.9p1-all.tar" "fix-rep-compare-5.1.9p2-all.tar")
+#_wingpatch_x86_64=()
+#_wingpatch_i686=()
 _patch_url_prefix=http://wingware.com/pub/$pkgname/$_wingver/patches/
 if [[ ! -z "$_wingpatch_x86_64" ]]; then
     _wingpatch_x86_64=( "${_wingpatch_x86_64[@]/#/$_patch_url_prefix}" )
@@ -25,10 +25,8 @@ source_x86_64=("http://wingware.com/pub/$pkgname/$_wingver/$pkgname-$_wingver-$_
 source_i686=("http://wingware.com/pub/$pkgname/$_wingver/$pkgname-$_wingver-$_wingrel-i386-linux.tar.gz" $_wingpatch_i686)
 depends=('hicolor-icon-theme' 'libpng' 'python2' 'xdg-utils')
 options=(!strip !emptydirs)
-md5sums_i686=('faa0e3886822334aa915fee36b8b6392'
-              '4715939cdbf494f4993b5e97ffacda55')
-md5sums_x86_64=('c02ef6cecd3394ed14947c49176b8fb1'
-                '4715939cdbf494f4993b5e97ffacda55')
+md5sums_i686=('b85ac4315ad4bc846e4fb52d6e23fa6a')
+md5sums_x86_64=('dc10ec69e4ae02af8fa895b46d780e41')
 install=${pkgname}.install
 
 prepare() {
