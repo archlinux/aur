@@ -3,6 +3,10 @@ Arch Linux packaging
 http://musicqueue.furcat.ca/
 
 =====
+Musicqueue can now be built against latest version of wxWidgets git
+=====
+
+=====
 KNOWN BUILD ISSUES
 =====
 "Wno-deprecated-declarations" is used to suppress overflowing cpp warnings
@@ -11,10 +15,6 @@ situation.
 
 gcc bug 65974 filed by wxWidgets maintainer:
 https://gcc.gnu.org/bugzilla/show_bug.cgi?id=65974
-
-Build Warning:
-src/ListView.cpp:595:35: warning: comparison of constant ‘-1’ with boolean expression is always true [-Wbool-compare]
-         if( ( m_LastDragOverAfter != wxNOT_FOUND ) && ( m_DragOverItem != wxNOT_FOUND ) )
 
 Build Warning:
 src/wxsqlite3/wxsqlite3.cpp:3706:7: warning: variable ‘rc’ set but not used [-Wunused-but-set-variable]
