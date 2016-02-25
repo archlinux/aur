@@ -4,10 +4,10 @@ pkgdesc="ROS - Transmission Interface."
 url='https://github.com/ros-controls/ros_control/wiki'
 
 pkgname='ros-indigo-transmission-interface'
-pkgver='0.9.3'
+pkgver='0.9.4'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('Modified BSD')
 
 ros_makedepends=(ros-indigo-roscpp
@@ -16,7 +16,7 @@ ros_makedepends=(ros-indigo-roscpp
   ros-indigo-hardware-interface
   ros-indigo-cmake-modules
   ros-indigo-pluginlib)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   tinyxml)
 
@@ -26,10 +26,16 @@ ros_depends=(ros-indigo-resource-retriever
 depends=(${ros_depends[@]}
   tinyxml)
 
-_tag=release/indigo/transmission_interface/${pkgver}-${_pkgver_patch}
-_dir=transmission_interface
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_control-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/transmission_interface/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_control-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_control-release-release-indigo-transmission_interface-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_control-release/archive/release/indigo/transmission_interface/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('bb03a6f784ffacc69ec179fe47192758018a66cb74f8b7e390f424837ee7fb6b')
 
 build() {
   # Use ROS environment variables
