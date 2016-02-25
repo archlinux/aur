@@ -1,1 +1,4 @@
 tqdm-*.tar.gz
+python-tqdm-*.log
+python-tqdm-*-any.pkg.tar.xz
+python2-tqdm-*-any.pkg.tar.xz
