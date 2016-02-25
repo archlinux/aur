@@ -4,7 +4,7 @@ pkgdesc="ROS - visualization_msgs is a set of messages used by higher level pack
 url='http://ros.org/wiki/visualization_msgs'
 
 pkgname='ros-indigo-visualization-msgs'
-pkgver='1.11.8'
+pkgver='1.11.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -14,7 +14,7 @@ ros_makedepends=(ros-indigo-message-generation
   ros-indigo-catkin
   ros-indigo-std-msgs
   ros-indigo-geometry-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-std-msgs
@@ -22,10 +22,16 @@ ros_depends=(ros-indigo-std-msgs
   ros-indigo-geometry-msgs)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/visualization_msgs/${pkgver}-${_pkgver_patch}
-_dir=visualization_msgs
-source=("${_dir}"::"git+https://github.com/ros-gbp/common_msgs-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/visualization_msgs/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/common_msgs-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="common_msgs-release-release-indigo-visualization_msgs-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/common_msgs-release/archive/release/indigo/visualization_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('62788f0229b286c73faf9097045312a0b38f56099783bc065e542a42b8960b43')
 
 build() {
   # Use ROS environment variables
