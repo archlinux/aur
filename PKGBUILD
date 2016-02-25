@@ -10,7 +10,7 @@ depends=('ncurses' 'postgresql-libs' 'gcc-libs' 'sqlite')
 license=('GPL3')
 source=("ftp://ftp.gnu.org/gnu/apl/apl-${pkgver}.tar.gz")
 md5sums=('7302a67330ebdc2224212a1639927bc8')
-install=('info.install')
+install='info.install'
 
 build() {
     cd "$srcdir/apl-$pkgver"
