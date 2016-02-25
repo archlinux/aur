@@ -3,7 +3,7 @@
 
 pkgbase=seventhsense
 pkgname=seventhsense
-pkgver=1.16.1
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="Lone wolf book player"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('curl' 'sdl_ttf' 'sdl_image' 'physfs')
 source=('SeventhSenseSource.zip::http://www.projectaon.org/staff/david/click/click.php?id=4'
         'seventhsense.desktop'
         'seventhsense.launcher')
-md5sums=('52208e4aa29c8f6b787fe98388cbfe15'
+md5sums=('3ce121358547a050ca5a50a6f0b88792'
          '6f144bfbf5110f5a237e6817d2972f47'
          '7ca36fe278b206e7ce57cfd5914776fd')
 
