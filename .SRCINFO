@@ -1,6 +1,6 @@
 pkgbase = blackchocobo
 	pkgdesc = Final Fantasy 7 Save Editor
-	pkgver = 1.9.83
+	pkgver = 1.9.90
 	pkgrel = 1
 	url = http://www.blackchocobo.com/
 	install = blackchocobo.install
@@ -9,8 +9,8 @@ pkgbase = blackchocobo
 	license = GPL3
 	depends = qt5-base
 	depends = openssl
-	source = http://downloads.sourceforge.net/project/blackchocobo/1.9/1.9.83/blackchocobo-1.9.83-src.tar.gz
-	md5sums = 5fc50223ba56cd78433c097cef391999
+	source = https://github.com/sithlord48/blackchocobo/archive/V1.9.90.tar.gz
+	md5sums = 03a4eec9c2d3e2fbaeba3a241a422805
 
 pkgname = blackchocobo
 
