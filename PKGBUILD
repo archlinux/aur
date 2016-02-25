@@ -3,8 +3,8 @@
 # Please report issues at https://github.com/jojosch/pkgbuilds
 
 pkgname=php-box
-pkgver=2.6.1
-pkgrel=2
+pkgver=2.7.0
+pkgrel=1
 pkgdesc="An application for building and managing Phars"
 url="https://github.com/box-project/box2"
 license=("MIT")
@@ -16,7 +16,7 @@ source=(
   "https://raw.github.com/box-project/box2/${pkgver}/LICENSE"
 )
 sha256sums=(
-  "abdadc1b1c79a60ac8aade62d9eea705d9a4bb69ea0e31e4592e6eb9489cb357"
+  "f7bd7ac6c6cd6d3ba0d87dc81ac9d1b6e8c9aa8a2a87a026bd182ec18edafc7e"
   "ba2dfc30b9659262549c839894838d9a1fe78ca533d0338cebc2f4f634b3bb12"
 )
 
