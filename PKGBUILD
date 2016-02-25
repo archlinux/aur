@@ -12,16 +12,16 @@ source=("https://github.com/mitchellh/gox/archive/v${pkgver}/${pkgname}-${pkgver
 sha256sums=('29dc6b689f670a5444cc54cd9111549ccb01501901bc9197d0e1325a35157802')
 
 prepare() {
-	GOPATH="${srcdir}" go get github.com/mitchellh/iochan
+	GOPATH="$srcdir" go get github.com/mitchellh/iochan
 }
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	GOPATH="${srcdir}" go build
+	cd $pkgname-$pkgver
+	GOPATH="$srcdir" go build
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	install -Dm755 "${pkgname}-${pkgver}" "${pkgdir}/usr/bin/gox"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	cd $pkgname-$pkgver
+	install -Dm755 $pkgname-$pkgver "$pkgdir"/usr/bin/$pkgname
+	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
