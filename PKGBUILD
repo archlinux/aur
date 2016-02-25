@@ -4,7 +4,7 @@
 
 pkgname=chrome-remote-desktop
 pkgver=49.0.2623.40
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows you to securely access your computer over the Internet through Chrome."
 url="https://chrome.google.com/webstore/detail/gbchcmhmhahfdphkhkmpfmihenigjmpp"
 arch=('i686' 'x86_64')
@@ -13,13 +13,13 @@ install=$pkgname.install
 depends=('python2' 'python2-psutil' 'gconf' 'gtk2' 'nss'
          'xorg-xdpyinfo' 'xorg-setxkbmap' 'xorg-server-xvfb' 'xorg-xauth' 'nano')
 
-_arch=i386
-[ "$CARCH" == x86_64 ] && _arch=amd64
-source=("https://dl.google.com/linux/direct/${pkgname}_current_${_arch}.deb"
-        "$pkgname.service"
+source_i686=("http://dl.google.com/linux/chrome-remote-desktop/deb/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver}_i386.deb")
+source_x86_64=("http://dl.google.com/linux/chrome-remote-desktop/deb/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver}_amd64.deb")
+source=("$pkgname.service"
         "crd")
-md5sums=('SKIP' 
-         '6f6083ff37f036f590702c7b1319445b'
+md5sums_i686=('bf9135f439fa4bfa1daf16e96c62d87a')
+md5sums_x86_64=('90cd272f1758617478380906f5cbc219')
+md5sums=('6f6083ff37f036f590702c7b1319445b'
          '5e9fa07e85d0d490de675bf258a0c511')
 
 pkgver() {
