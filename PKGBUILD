@@ -4,14 +4,14 @@ pkgdesc="ROS - common_msgs contains messages that are widely used by other ROS p
 url='http://www.ros.org/wiki/common_msgs'
 
 pkgname='ros-indigo-common-msgs'
-pkgver='1.11.8'
+pkgver='1.11.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-shape-msgs
@@ -25,10 +25,16 @@ ros_depends=(ros-indigo-shape-msgs
   ros-indigo-visualization-msgs)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/common_msgs/${pkgver}-${_pkgver_patch}
-_dir=common_msgs
-source=("${_dir}"::"git+https://github.com/ros-gbp/common_msgs-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/common_msgs/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/common_msgs-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="common_msgs-release-release-indigo-common_msgs-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/common_msgs-release/archive/release/indigo/common_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('346fc4b0659a844cea7249d0dfc7f8559bcb058018dc14ca0f82ed57a754d3e1')
 
 build() {
   # Use ROS environment variables
