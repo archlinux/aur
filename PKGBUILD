@@ -12,7 +12,7 @@ depends=(ruby ruby-mini_portile2)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('0ca0eaa562dfc0d75f696cc538193b636f0dc80d0920d2e6a978be49d3399610')
+sha256sums=('05f519aa80ed9b56c5a380d4f888005ef43da66fe666a48056b125decc510428')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
