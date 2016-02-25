@@ -2,7 +2,7 @@
 
 pkgname=masterpassword-cli-git
 pkgver=20150830.r927.8f1d897
-pkgrel=2
+pkgrel=3
 pkgdesc="CLI version of Master Password. (git-version)"
 
 arch=('any')
@@ -44,5 +44,5 @@ package() {
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
 
   cd "MasterPassword/C"
-  install -Dm755 "mpw" "$pkgdir/usr/bin/mpw"
+  /usr/bin/install -Dm755 "mpw" "$pkgdir/usr/bin/mpw"
 }
