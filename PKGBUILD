@@ -1,5 +1,5 @@
 pkgname=dnf
-_pkgver=1.1.6
+_pkgver=1.1.7
 _rpmrel=1
 pkgver=$_pkgver.$_rpmrel
 pkgrel=1
@@ -14,7 +14,7 @@ checkdepends=('python-nose')
 backup=("etc/$pkgname/automatic.conf"
         "etc/$pkgname/$pkgname.conf")
 source=("$url/archive/$pkgname-$_pkgver-$_rpmrel.tar.gz")
-md5sums=('8a9cd274a0f2dbb6f903ad9ca03e7b33')
+md5sums=('3b178a54abee5573164bf696b264408c')
 
 prepare() {
 	mv "$pkgname-$pkgname-$_pkgver-$_rpmrel" "$pkgname-$pkgver"
