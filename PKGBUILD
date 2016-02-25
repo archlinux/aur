@@ -4,14 +4,14 @@ pkgdesc="ROS - This package contains a C++ base class for URDF parsers."
 url='http://ros.org/wiki/urdf'
 
 pkgname='ros-indigo-urdf-parser-plugin'
-pkgver='1.11.8'
+pkgver='1.11.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   urdfdom-headers)
 
@@ -19,10 +19,16 @@ ros_depends=()
 depends=(${ros_depends[@]}
   urdfdom-headers)
 
-_tag=release/indigo/urdf_parser_plugin/${pkgver}-${_pkgver_patch}
-_dir=urdf_parser_plugin
-source=("${_dir}"::"git+https://github.com/ros-gbp/robot_model-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/urdf_parser_plugin/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/robot_model-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="robot_model-release-release-indigo-urdf_parser_plugin-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_model-release/archive/release/indigo/urdf_parser_plugin/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('6e1c2b71cf2887414dabde594c6400a927724f9f03d92034afdf87b9bffb3b96')
 
 build() {
   # Use ROS environment variables
