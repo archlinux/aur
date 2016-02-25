@@ -1,8 +1,8 @@
 ## Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=audiolinux
-pkgver=1.6
-pkgrel=3
+pkgver=1.7
+pkgrel=1
 pkgdesc="AudioLinux audiophile linux configuration files, scripts and shortcuts"
 arch=('x86_64')
 url="http://www.audio-linux.com"
@@ -27,9 +27,10 @@ optdepends=('linux-rt: The Linux-rt kernel and modules'
             'dff2dsf: Signalyst DFF to DSF command line conversion utility' 
             'deadbeef: A GTK+ audio player for GNU/Linux'
             'squeezelite-git: Lightweight headless squeezebox emulator'
-            'logitechmediaserver-git: Streaming audio server')
+            'logitechmediaserver-git: Streaming audio server'
+            'sox-dsd-git: SoX Resampler library dsd branch')
 source=('http://www.tophifi.it/ftp/packages/audiolinux.tar.gz')
-sha256sums=('3fa69e5bc19e662d54d007b9cea98dfb7dd18a641eda9fc4474c3fc6198d35cd')
+sha256sums=('05e2755cd40e7dd73182864f0f78fc6b1ac1f35230d1a17613a0d2e11f22fabb')
 
 package() {
   install -d "$pkgdir/opt/$pkgname"
