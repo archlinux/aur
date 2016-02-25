@@ -4,14 +4,14 @@ pkgdesc="ROS - common_msgs contains messages that are widely used by other ROS p
 url='http://wiki.ros.org/common_msgs'
 
 pkgname='ros-jade-common-msgs'
-pkgver='1.12.3'
+pkgver='1.12.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-actionlib-msgs
@@ -25,10 +25,16 @@ ros_depends=(ros-jade-actionlib-msgs
   ros-jade-diagnostic-msgs)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/common_msgs/${pkgver}-${_pkgver_patch}
-_dir=common_msgs
-source=("${_dir}"::"git+https://github.com/ros-gbp/common_msgs-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/common_msgs/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/common_msgs-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="common_msgs-release-release-jade-common_msgs-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/common_msgs-release/archive/release/jade/common_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('40994b56b2f0aad06bb249b86be64cc3134e6a4a0365702fdf4bee3da31306cf')
 
 build() {
   # Use ROS environment variables
