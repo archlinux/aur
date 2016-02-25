@@ -12,7 +12,7 @@ depends=('python2-matplotlib' 'python2-mpmath' 'gtkmm3' 'jsoncpp' 'mathjax' 'boo
 makedepends=('cmake' 'gcc' 'boost')
 source=("$pkgname::git+https://github.com/kpeeters/cadabra2" "package.patch" "cadabra.desktop")
 md5sums=('SKIP'
-         '72e07bc6f0e5782feb10f91886cc556e'
+         '1f7d7e0baa868d12e6eb53c7a594605c'
          '04718d712ef65dbe5513ae674cc6ec33')
 install=package.install
 
