@@ -4,7 +4,7 @@ pkgdesc="ROS - This contains CvBridge, which converts between ROS Image messages
 url='http://www.ros.org/wiki/cv_bridge'
 
 pkgname='ros-jade-cv-bridge'
-pkgver='1.11.10'
+pkgver='1.11.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -13,7 +13,7 @@ license=('BSD')
 ros_makedepends=(ros-jade-rosconsole
   ros-jade-sensor-msgs
   ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   opencv
   python2-numpy
@@ -28,10 +28,16 @@ depends=(${ros_depends[@]}
   boost
   python2)
 
-_tag=release/jade/cv_bridge/${pkgver}-${_pkgver_patch}
-_dir=cv_bridge
-source=("${_dir}"::"git+https://github.com/ros-gbp/vision_opencv-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/cv_bridge/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/vision_opencv-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="vision_opencv-release-release-jade-cv_bridge-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/vision_opencv-release/archive/release/jade/cv_bridge/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('b13e0d9e73ef0faaf4010e2cea0aedeceaf28097bf1a0a978b00718cf8524f71')
 
 build() {
   # Use ROS environment variables
