@@ -1,7 +1,7 @@
 pkgname=scaffolding-git
 pkgdesc="A new kind of terminal"
 pkgrel=1
-pkgver=0.1.0.79
+pkgver=0.1.0.97
 arch=('i686' 'x86_64')
 conflicts=("scaffolding")
 provides=("scaffolding")
@@ -22,7 +22,15 @@ build() {
 	cargo build --release
 }
 
+check() {
+	cd notty/scaffolding
+	cargo test --release
+}
+
 package() {
 	cd notty/scaffolding
-	install -D -m755 "${srcdir}/notty/scaffolding/target/release/scaffolding-terminal" "${pkgdir}/usr/bin/scaffolding"
+	rm echotest/ -r
+	export PATH="$PATH:$pkgdir/usr/bin"
+	cargo install --bin scaffolding-terminal --root "$pkgdir/usr"
+	rm "$pkgdir/usr/.crates.toml"
 }
