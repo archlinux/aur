@@ -4,7 +4,7 @@ pkgbase=grpc
 # PHP is disabled until https://github.com/grpc/grpc/issues/4337 is fixed
 #pkgname=('grpc' 'php-grpc')
 pkgname=('grpc')
-pkgver=0.12.0
+pkgver=0.13.0
 _pkgver=$(echo $pkgver | tr . _)
 pkgrel=1
 pkgdesc="A high performance, open source, general RPC framework that puts mobile and HTTP/2 first."
@@ -13,7 +13,7 @@ url='http://www.grpc.io/'
 license=('BSD')
 makedepends=('re2c' 'openssl' 'protobuf3' 'php')
 source=(https://github.com/$pkgname/$pkgname/archive/release-$_pkgver.tar.gz)
-md5sums=('ea20466d6871394ea71d6881d3af2d0f')
+md5sums=('f272d55b8ed4368bdc0d76ad27bfc2ad')
 
 build() {
   cd "$srcdir/$pkgname-release-$_pkgver"
