@@ -34,4 +34,5 @@ check() {
 package() {
 	cd $_pkgname
 	cargo install --root "$pkgdir/usr"
+	rm "$pkgdir/usr/.crates.toml"
 }
