@@ -4,7 +4,7 @@ pkgdesc="ROS - The Kinematics and Dynamics Library (KDL) defines a tree structur
 url='http://ros.org/wiki/kdl_parser'
 
 pkgname='ros-indigo-kdl-parser'
-pkgver='1.11.8'
+pkgver='1.11.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -17,7 +17,7 @@ ros_makedepends=(ros-indigo-roscpp
   ros-indigo-rosconsole
   ros-indigo-cmake-modules
   ros-indigo-urdf)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-rosconsole
@@ -26,10 +26,16 @@ ros_depends=(ros-indigo-rosconsole
   ros-indigo-orocos-kdl)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/kdl_parser/${pkgver}-${_pkgver_patch}
-_dir=kdl_parser
-source=("${_dir}"::"git+https://github.com/ros-gbp/robot_model-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/kdl_parser/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/robot_model-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="robot_model-release-release-indigo-kdl_parser-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_model-release/archive/release/indigo/kdl_parser/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('36453b1f5712345ecbb68780a4b5fb34f2baa71368e3cad7f31b2049422b963d')
 
 build() {
   # Use ROS environment variables
