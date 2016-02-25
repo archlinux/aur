@@ -3,7 +3,7 @@
 
 pkgname=pcspk
 pkgver=0.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A set of command line applications for using the PC speaker"
 arch=('i686' 'x86_64')
 url="https://github.com/przemoc/pcspk"
@@ -14,11 +14,13 @@ md5sums=('41b4e81c3c6c56e6171b746049a688a1')
 
 build() {
   cd $pkgname-$pkgver
-  make
+  ETCDIR=/etc make
 }
 
 package() {
   cd $pkgname-$pkgver
-  mkdir -p $pkgdir/usr/{s,}bin
-  make PREFIX=$pkgdir/usr install
+  mkdir -p "$pkgdir/usr/bin"
+  mkdir -p "$pkgdir/usr/share/doc/pcspk"
+  make PREFIX="$pkgdir/usr" SBINDIR="$pkgdir/usr/bin" install
+  install -Dm644 README "$pkgdir/usr/share/doc/pcspk/"
 }
