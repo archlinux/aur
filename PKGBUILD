@@ -1,11 +1,9 @@
-# Maintainer : Rob McCathie <korrode AT gmail>
-# Contributor: sumt <sumt at sci dot fi>
-
-pkgname=palemoon-atom-bin
-pkgver=26.1.0
+# Maintainer: sumt <sumt at sci dot fi>
+pkgname=palemoon-bin
+pkgver=26.1.1
 pkgrel=1
-pkgdesc="Open source web browser based on Firefox focusing on efficiency - i686 Intel Atom optimised version"
-arch=('i686')
+pkgdesc="Open source web browser based on Firefox focusing on efficiency."
+arch=('i686' 'x86_64')
 url="http://linux.palemoon.org/"
 license=('MPL' 'GPL' 'LGPL')
 depends=('gtk2' 'dbus-glib' 'desktop-file-utils' 'libxt' 'mime-types' 'nss' 'alsa-lib')
@@ -20,11 +18,12 @@ optdepends=('palemoon-i18n-default: language pack for system active language'
 provides=("palemoon=$pkgver")
 conflicts=('palemoon')
 install=palemoon.install
-options=('!strip')
-source=("http://linux.palemoon.org/files/atom/$pkgver/palemoon-$pkgver-atom.en-US.linux-i686.tar.bz2"
-        "palemoon.desktop")
-sha1sums=('711fd3a0aad4d23f46fb0cbe106551581a76031f'
-          'e8d4cbcd51326c337a2c901e7aff7b6c54043dec')
+source=(palemoon.desktop)
+source_i686=(http://linux.palemoon.org/files/$pkgver/palemoon-$pkgver.en-US.linux-i686.tar.bz2)
+source_x86_64=(http://linux.palemoon.org/files/$pkgver/palemoon-$pkgver.en-US.linux-x86_64.tar.bz2)
+md5sums=('62be30c3b4f4088c7f68d47df9121618')
+md5sums_i686=('bb4a3690fac192753d7777726d7dc5e2')
+md5sums_x86_64=('f7bf06061cd77dda706729bcb9cb5826')
 
 package() {
   install -d "$pkgdir"/usr/{bin,lib}
