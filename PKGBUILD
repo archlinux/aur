@@ -16,12 +16,6 @@ install='lutris.install'
 source=("https://lutris.net/releases/lutris_${pkgver}.tar.gz")
 sha256sums=('a07dc2e7d27bf5d593032c5eafd671b1e458b104abc4078c6d193d28ef297fc6')
 
-prepare() {
-  cd lutris
-
-  sed -i 's|^#!.*python$|#!/usr/bin/python2|' $(grep -rl '^#!.*python')
-}
-
 package() {
   cd lutris
 
