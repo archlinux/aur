@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains a tool for setting and publishing joint sta
 url='http://www.ros.org/wiki/joint_state_publisher'
 
 pkgname='ros-indigo-joint-state-publisher'
-pkgver='1.11.8'
+pkgver='1.11.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -13,7 +13,7 @@ license=('BSD')
 ros_makedepends=(ros-indigo-catkin
   ros-indigo-rospy
   ros-indigo-sensor-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   wxpython)
 
@@ -22,10 +22,16 @@ ros_depends=(ros-indigo-rospy
 depends=(${ros_depends[@]}
   wxpython)
 
-_tag=release/indigo/joint_state_publisher/${pkgver}-${_pkgver_patch}
-_dir=joint_state_publisher
-source=("${_dir}"::"git+https://github.com/ros-gbp/robot_model-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/joint_state_publisher/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/robot_model-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="robot_model-release-release-indigo-joint_state_publisher-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_model-release/archive/release/indigo/joint_state_publisher/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('601e95e51312da49dbb6d18b60ae55258f5fdb30c6bebca5b1d878db54f8ba03')
 
 build() {
   # Use ROS environment variables
