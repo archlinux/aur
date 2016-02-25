@@ -4,21 +4,21 @@
 # Contributor: olivier medoc <o_medoc___AT___yahoo___DOT___fr>
 pkgname=atlas-lapack
 pkgver=3.10.2
-_lapackver=3.5.0
-pkgrel=2
+_lapackver=3.6.0
+pkgrel=3
 pkgdesc="Complete LAPACK and BLAS implementation using optimised ATLAS routines"
 url="http://math-atlas.sourceforge.net/"
 depends=('gcc-libs')
 makedepends=('binutils' 'sed' 'gcc-fortran')
 arch=('i686' 'x86_64')
-conflicts=('blas' 'lapack' 'cblas')
-provides=("blas" "lapack=$_lapackver" 'cblas')
+conflicts=('blas' 'lapack' 'cblas' 'atlas-lapack-base')
+provides=("blas" "lapack=$_lapackver" 'cblas' 'atlas-lapack-base')
 license=('custom:blas' 'custom:lapack' 'custom:atlas')
 options=(!makeflags)
 install=$pkgname.install
 source=(http://www.netlib.org/lapack/lapack-$_lapackver.tgz http://downloads.sourceforge.net/math-atlas/atlas${pkgver}.tar.bz2 blas-license.txt atlas-license.txt makefile.shared.mt makefile.shared.st)
 noextract=(lapack-$_lapackver.tgz atlas$pkgver.tar.bz2)
-md5sums=('b1d3e3e425b2e44a06760ff173104bdf'
+md5sums=('f2f6c67134e851fe189bb3ca1fbb5101'
          'a4e21f343dec8f22e7415e339f09f6da'
          '38b6acb8ed5691d25863319d30a8b365'
          '4903eb06072dfbf94710691ccb6660bf'
