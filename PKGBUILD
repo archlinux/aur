@@ -2,7 +2,7 @@
 
 pkgname=masterpassword-cli
 pkgver=2.2
-pkgrel=3
+pkgrel=4
 pkgdesc="CLI version of Master Password."
 
 arch=('any')
@@ -33,5 +33,5 @@ build() {
 }
 
 package() {
-  install -Dm755 "mpw" "$pkgdir/usr/bin/mpw"
+  /usr/bin/install -Dm755 "mpw" "$pkgdir/usr/bin/mpw"
 }
