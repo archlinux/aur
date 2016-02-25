@@ -5,6 +5,8 @@
 pkgname=bugseverywhere-git
 _gitname="be"
 pkgver=1.5.r1671.4980830
+#pkgver=1.5.r1671.49808306c939de24acabc423024970a76055e52b
+_commit=$(echo "$pkgver" | cut -d'.' -f4)
 pkgrel=3
 epoch=2
 pkgdesc="A distributed bugtracker"
@@ -20,16 +22,16 @@ optdepends=(
 provides=('bugseverywhere')
 conflicts=('bugseverywhere' 'bugseverywhere-bzr')
 options=(!emptydirs)
-source=("$_gitname::git://gitorious.org/be/be.git")
-md5sums=('SKIP')
+source=("${pkgname}-${_commit}.tgz::https://gitorious.org/be/be?p=be:be.git;a=snapshot;h=${_commit};sf=tgz")
+md5sums=('b62b5ed6fd47f98acacde0d49a23a47d')
 
 pkgver() {
-  cd "$_gitname"
-  echo $(cat .be/version | sed 's/^.*v\([0-9\.]*\)/\1/').r$(git rev-list --count master).$(git rev-parse --short master)
+  cd "bebe-${_commit}"
+  echo "$(cat .be/version | sed 's/^.*v\([0-9\.]*\)/\1/').$(echo "$pkgver" | cut -d'.' -f3-4)"
 }
 
 build() {
-  cd "$_gitname"
+  cd "bebe-${_commit}"
   sed -i 's/	python /	python2 /' Makefile
   sed -i 's/	python /	python2 /' doc/Makefile
   make libbe/_version.py
@@ -37,7 +39,7 @@ build() {
 }
 
 package() {
-  cd "$_gitname"
+  cd "bebe-${_commit}"
   make RST2MAN=/usr/bin/rst2man2.py DOC=man INSTALL_OPTIONS="--prefix=${pkgdir}/usr" install
   install -Dm 644 misc/completion/be.bash "${pkgdir}"/usr/share/bash-completion/completions/be
   install -Dm 644 misc/completion/be.zsh "${pkgdir}"/usr/share/zsh/site-functions/_be
