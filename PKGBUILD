@@ -2,8 +2,8 @@
 
 pkgbase=bcc
 pkgname=('bcc' 'bcc-tools' 'python-bcc' 'python2-bcc')
-pkgver=0.1.7
-pkgrel=4
+pkgver=0.1.8
+pkgrel=1
 pkgdesc="BPF Compiler Collection"
 arch=('x86_64')
 url="https://github.com/iovisor/bcc"
@@ -11,19 +11,8 @@ license=('Apache')
 conflicts=('bcc-git')
 makedepends=('cmake' 'clang>=3.7.0' 'llvm>=3.7.0' 'flex' 'bison' 'python'
              'python2')
-source=("https://github.com/iovisor/${pkgname}/archive/v${pkgver}.tar.gz"
-        "cmake_version-cmake.patch"
-        "src_python_CMakeLists-txt.patch")
-sha256sums=('c8416778324de818c02dd33f33a6a0b9ad0fc941ee88ad002a09919ecaaccd16'
-           'SKIP'
-           'SKIP')
-
-prepare() {
-  cd "${srcdir}/${pkgbase}-${pkgver}"
-  # these two are already fixed in git, 0.1.8 release should have them
-  patch -p0 < "${srcdir}/cmake_version-cmake.patch"
-  patch -p0 < "${srcdir}/src_python_CMakeLists-txt.patch"
-}
+source=("https://github.com/iovisor/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('7535d0dec063454a858337dd07211ad2a207f8fa5665a3fad166f38415e50d70')
 
 build() {
   # make sure repetitive builds are clean
@@ -48,10 +37,15 @@ package_bcc() {
               'python-bcc: Python 3 bindings for BCC'
               'python2-bcc: Python 2 bindings for BCC')
 
-  # everything except the python bindings
+  # this installs the kitchen sink
   cd "${srcdir}/${pkgbase}-${pkgver}/build"
   make DESTDIR="${pkgdir}/" install
+
+  # these go in a split package python*-bcc
   rm -rf "${pkgdir}"/usr/lib/python*
+
+  # these go in a split package bcc-tools
+  rm -rf "${pkgdir}"/usr/share/bcc/{tools,man}
 }
 
 package_bcc-tools() {
@@ -61,15 +55,12 @@ package_bcc-tools() {
   optdepends=('python-bcc: Python 3 bindings for BCC'
               'python2-bcc: Python 2 bindings for BCC')
 
-  # https://github.com/iovisor/bcc/issues/291
-  mkdir -p "${pkgdir}/usr/share/${pkgbase}"
-  cp -a "${srcdir}/${pkgbase}-${pkgver}/tools" \
-    "${pkgdir}/usr/share/${pkgbase}/"
+  cd "${srcdir}/${pkgbase}-${pkgver}/build/tools"
+  make DESTDIR="${pkgdir}/" install
 
-  # these conflict with perf-tools for now as well
-  mkdir -p "${pkgdir}/usr/share/${pkgbase}/man"
-  cp -a "${srcdir}/${pkgbase}-${pkgver}/man/man8" \
-    "${pkgdir}/usr/share/${pkgbase}/man/"
+  cd "${srcdir}/${pkgbase}-${pkgver}/build/man"
+  make DESTDIR="${pkgdir}/" install
+
 }
 
 package_python-bcc() {
