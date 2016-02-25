@@ -18,7 +18,7 @@ RuntimeDirectoryMode=775
 CapabilityBoundingSet=
 PrivateTmp=true
 PrivateDevices=true
-#ProtectSystem=full
+ProtectSystem=full
 ProtectHome=true
 NoNewPrivileges=true
 

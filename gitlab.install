@@ -66,6 +66,10 @@ pre_upgrade() {
 	else
 		rm -f "${_datadir}/.gitlab_shell_secret"
 	fi
+
+	if [ \( -e "${_datadir}/builds" \) -a \( ! -L "${_datadir}/builds" \) -a \( ! -e "${_homedir}/builds" \) ]; then
+		mv "${_datadir}/builds" "${_homedir}/builds"
+	fi
 }
 
 post_upgrade() {

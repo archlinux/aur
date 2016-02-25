@@ -6,7 +6,7 @@
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=gitlab
-pkgver=8.5.0
+pkgver=8.5.1
 pkgrel=1
 pkgdesc="Project management and code hosting application"
 arch=('i686' 'x86_64')
@@ -48,14 +48,14 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/gitlabhq/gitlabhq/archive/v
 	nginx-ssl.conf.example
 	lighttpd.conf.example)
 install='gitlab.install'
-sha512sums=('499d93767df9d3c9c4b68ac663846d49335bd989ee8e93a8d610cb6106900886913912443f908cd316424312df67658df5d6027fda9a5abd787572d4e23e14d1'
-	'cecc0a89f64775d086fbf2fb136cbaa8408da71f05d035fd56740571013d68bf27b9a90a0723be0d5de31d0888645c64302f58799aba045a30be0767c18ef12e'
-	'bd047716fd90c9607bf8fc5a28aab19d76d60afc87967fb00fe2d2b1fb47d26f92b0637c50eae6d63114cb04179e7c02be9d92a3f3bad0758dd1296921ef9ab4'
-	'729047848813e29361a77eb20e1a4ea296f57d4a44f87276531e20723ae6a3729cf864f01cc4f60ed90c430ec92666287b48b11457dc327ddf4300524c9fc50c'
+sha512sums=('107fdeb139cfa7575a9d9c6d0cb27632dbc74b49a178378fd5ca2f7887c847cd5aee96d114f08d7c69ba3c912aaf4f3fed7c03494150819a02acf3edc07e383d'
+	'5dd7a940eee6a84095478af514dcc98c4fc6c4a214de1ddfa4a1e727d4ba34984d66d51affd7844ffebb75fed8f781b38a0da80fba6a5b8fa832948ab39b2249'
+	'2c9d8c650a1808d730bb0f6c45ea8fe2f354d56a5bea1da7eb17dc687ec06b731472af842f4cce0704bf738b5a88001a06e1907d18a35d363e88c4dd6f3e9c7d'
+	'c22439ee4cb34adf42de7619a2b83b02359cada38cbe99dd3031e6e72225ec4b2c2d6306331eadfc1c2044609b7a7e8bceddf7be213b5d4dbcaff86b35fe1ce7'
 	'ba4266709079f57e4e3d0e37a46e4ba2cac793ce0a4ac18d2edfe0b7fed8104a3a75bdea2997404a8f363b8017f3be2792745bbdaebf0d09cf78f825a56b0928'
 	'c11d2c59da8325551a465227096e8d39b0e4bcd5b1db21565cf3439e431838c04bc00aa6f07f4d493f3f47fd6b4e25aeb0fe0fc1a05756064706bf5708c960ec'
 	'c519a51d31300074ea12594fbcc8e9610d991ef04b1dac94d93a2b201df3465999cc7c6ac7f3896e02b117c2366d61dea1ef2f6b9cd7b18998385a7f26e5700f'
-	'7a0f649f030b24315cc97f23b704dd1879274304706cf1a1fa125772803a6e918a2fa249bed229b9384552a572452c56379c50f46d2fa8aa999dc71c1ee047e0'
+	'4fe532dabea64189bf25d271cccc11481b22451704e10efac01c7ca4ad76a532fce82088b5eea9546aa80c1141d716820bb23de81c9093dac87f70c94910fb02'
 	'a1f52d6ca36b32580062dede23ccdde5633238310b28c6c47deb2ce4496f4e5ffea0de2a49bcb1e0e38fc82b66b0cc91a5e86854716c7e848127769b43eb5067'
 	'122ac76000c6ff251eecd9438180352d4be16ec2330594d3a84382e152ef0f69f822be6fc64bdcd6d66c9c9200fc4784b15562a8ac47094f9bf7dd04068eca8b'
 	'403a53e9f8b1b337a47f388bc5bf1efb4c86d258f5df98b8adb1bff5db80c7eb0bbc0ec3a43657de53e735e8ae777c5f12bdc9282a352ce801c22e5cc20292f0'
@@ -146,7 +146,8 @@ package() {
 		"${pkgdir}/usr/share/doc/${pkgname}" \
 		"${pkgdir}${_homedir}/www" \
 		"${pkgdir}${_homedir}/satellites" \
-		"${pkgdir}${_datadir}/www"
+		"${pkgdir}${_datadir}/www" \
+		"${pkgdir}${_homedir}/builds"
 	ln -fs /run/gitlab "${pkgdir}${_homedir}/pids"
 	ln -fs /run/gitlab "${pkgdir}${_homedir}/sockets"
 	ln -fs ${_datadir}/log "${pkgdir}${_homedir}/log"
@@ -155,6 +156,7 @@ package() {
 
 	rm -rf "${pkgdir}${_datadir}/public/uploads" && ln -fs "${_homedir}/uploads" "${pkgdir}${_datadir}/public/uploads"
 	rm -rf "${pkgdir}${_datadir}/public/assets" && ln -fs "${_homedir}/assets" "${pkgdir}${_datadir}/public/assets"
+	rm -rf "${pkgdir}${_datadir}/builds" && ln -fs "${_homedir}/builds" "${pkgdir}${_datadir}/builds"
 	# We are using PrivateTmp=true to start unicorn, so this is safe:
 	rm -rf "${pkgdir}${_datadir}/tmp" && ln -fs /var/tmp "${pkgdir}${_datadir}/tmp"
 	rm -rf "${pkgdir}${_datadir}/log" && ln -fs "${_logdir}" "${pkgdir}${_datadir}/log"
