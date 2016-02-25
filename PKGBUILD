@@ -4,7 +4,7 @@ pkgdesc="ROS - geometry_msgs provides messages for common geometric primitives s
 url='http://ros.org/wiki/geometry_msgs'
 
 pkgname='ros-indigo-geometry-msgs'
-pkgver='1.11.8'
+pkgver='1.11.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -13,17 +13,23 @@ license=('BSD')
 ros_makedepends=(ros-indigo-message-generation
   ros-indigo-catkin
   ros-indigo-std-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-std-msgs
   ros-indigo-message-runtime)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/geometry_msgs/${pkgver}-${_pkgver_patch}
-_dir=geometry_msgs
-source=("${_dir}"::"git+https://github.com/ros-gbp/common_msgs-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/geometry_msgs/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/common_msgs-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="common_msgs-release-release-indigo-geometry_msgs-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/common_msgs-release/archive/release/indigo/geometry_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('884b72d176cbf2a335295ce47fff7f270b948339e37b69d00074a43027b2cbac')
 
 build() {
   # Use ROS environment variables
