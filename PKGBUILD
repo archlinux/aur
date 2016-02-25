@@ -1,29 +1,36 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
-pkgdesc="ROS - A library to access URDFs using the DOM model."
-url='http://wiki.ros.org/urdf'
+pkgdesc="ROS - Python implementation of the URDF parser."
+url='http://wiki.ros.org/urdf_parser_py'
 
 pkgname='ros-indigo-urdfdom-py'
-pkgver='0.3.0'
+pkgver='0.3.1'
 _pkgver_patch=1
 arch=('any')
-pkgrel=3
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   python2-catkin-pkg
   python2)
 
 ros_depends=(ros-indigo-catkin)
 depends=(${ros_depends[@]}
+  python2-lxml
   python2)
 
-_tag=release/indigo/urdfdom_py/${pkgver}-${_pkgver_patch}
-_dir=urdfdom_py
-source=("${_dir}"::"git+https://github.com/ros-gbp/urdfdom_py-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/urdfdom_py/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/urdfdom_py-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="urdfdom_py-release-release-indigo-urdfdom_py-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/urdfdom_py-release/archive/release/indigo/urdfdom_py/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('f59930b53943dab82db755333435316d7a567a0a691d76bb79ac221a5a9a9ac6')
 
 build() {
   # Use ROS environment variables
@@ -45,6 +52,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
