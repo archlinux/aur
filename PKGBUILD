@@ -4,7 +4,7 @@ pkgdesc="ROS - Interface for enforcing joint limits."
 url='https://github.com/ros-controls/ros_control/wiki'
 
 pkgname='ros-indigo-joint-limits-interface'
-pkgver='0.9.3'
+pkgver='0.9.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -14,7 +14,7 @@ ros_makedepends=(ros-indigo-rostest
   ros-indigo-hardware-interface
   ros-indigo-roscpp
   ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   urdfdom)
 
@@ -23,10 +23,16 @@ ros_depends=(ros-indigo-hardware-interface
 depends=(${ros_depends[@]}
   urdfdom)
 
-_tag=release/indigo/joint_limits_interface/${pkgver}-${_pkgver_patch}
-_dir=joint_limits_interface
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_control-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/joint_limits_interface/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_control-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_control-release-release-indigo-joint_limits_interface-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_control-release/archive/release/indigo/joint_limits_interface/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('4733ff32123026d19797a9fae14b20b8b7462c3f56fb0f5d8ac4edc1feb03293')
 
 build() {
   # Use ROS environment variables
