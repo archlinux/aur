@@ -1,14 +1,14 @@
 pkgbase = plosetup
 	pkgdesc = helper to set up loop devices for partitions in a disk image
-	pkgver = 1.0
-	pkgrel = 2
-	url = http://zwizwa.be/darcs/pool/bin/plosetup
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/fdev31/arch-plosetup/
 	arch = any
 	license = Artistic2.0
 	makedepends = curl
-	noextract = http://zwizwa.be/darcs/pool/bin/plosetup
-	source = http://zwizwa.be/darcs/pool/bin/plosetup
-	md5sums = 2de1300fd8cfeab9ab2de105f5144bda
+	noextract = https://github.com/fdev31/arch-plosetup/raw/1.1.2/plosetup
+	source = https://github.com/fdev31/arch-plosetup/raw/1.1.2/plosetup
+	md5sums = 152e43dd9159597a63e2016fe428cb7a
 
 pkgname = plosetup
 
