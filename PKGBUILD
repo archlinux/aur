@@ -4,7 +4,7 @@ pkgdesc="ROS - This package defines messages for defining robot trajectories."
 url='http://wiki.ros.org/trajectory_msgs'
 
 pkgname='ros-jade-trajectory-msgs'
-pkgver='1.12.3'
+pkgver='1.12.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -14,7 +14,7 @@ ros_makedepends=(ros-jade-catkin
   ros-jade-message-generation
   ros-jade-geometry-msgs
   ros-jade-std-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-message-runtime
@@ -23,10 +23,16 @@ ros_depends=(ros-jade-message-runtime
   ros-jade-std-msgs)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/trajectory_msgs/${pkgver}-${_pkgver_patch}
-_dir=trajectory_msgs
-source=("${_dir}"::"git+https://github.com/ros-gbp/common_msgs-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/trajectory_msgs/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/common_msgs-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="common_msgs-release-release-jade-trajectory_msgs-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/common_msgs-release/archive/release/jade/trajectory_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('2e4347904ab8625dee8668e31e53288a9c5e4000e52bb43b3ea0cf1003572537')
 
 build() {
   # Use ROS environment variables
