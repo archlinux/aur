@@ -4,17 +4,17 @@ pkgdesc="ROS - This package contains a C++ parser for the Collada robot descript
 url='http://ros.org/wiki/collada_parser'
 
 pkgname='ros-indigo-collada-parser'
-pkgver='1.11.8'
+pkgver='1.11.10'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-urdf-parser-plugin
   ros-indigo-catkin
   ros-indigo-roscpp
   ros-indigo-class-loader)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   collada-dom
   urdfdom-headers)
@@ -26,10 +26,16 @@ depends=(${ros_depends[@]}
   collada-dom
   urdfdom-headers)
 
-_tag=release/indigo/collada_parser/${pkgver}-${_pkgver_patch}
-_dir=collada_parser
-source=("${_dir}"::"git+https://github.com/ros-gbp/robot_model-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/collada_parser/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/robot_model-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="robot_model-release-release-indigo-collada_parser-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_model-release/archive/release/indigo/collada_parser/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('61fcad397100353ed9d724e12c5583466d244492863a5fcf0c0ae07eec1d74a2')
 
 build() {
   # Use ROS environment variables
