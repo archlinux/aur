@@ -4,7 +4,7 @@ pkgdesc="ROS - Hardware Interface base class."
 url='https://github.com/ros-controls/ros_control/wiki'
 
 pkgname='ros-indigo-hardware-interface'
-pkgver='0.9.3'
+pkgver='0.9.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -12,16 +12,22 @@ license=('BSD')
 
 ros_makedepends=(ros-indigo-roscpp
   ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-roscpp)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/hardware_interface/${pkgver}-${_pkgver_patch}
-_dir=hardware_interface
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_control-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/hardware_interface/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_control-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_control-release-release-indigo-hardware_interface-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_control-release/archive/release/indigo/hardware_interface/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('907086c381ddaa9b80222b71d3d3aca94b42070ccfd798fef02b7b6750769ea3')
 
 build() {
   # Use ROS environment variables
