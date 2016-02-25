@@ -4,10 +4,10 @@ pkgdesc="ROS - The controller manager."
 url='https://github.com/ros-controls/ros_control/wiki'
 
 pkgname='ros-indigo-controller-manager'
-pkgver='0.9.3'
+pkgver='0.9.4'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-controller-interface
@@ -17,7 +17,7 @@ ros_makedepends=(ros-indigo-controller-interface
   ros-indigo-hardware-interface
   ros-indigo-controller-manager-msgs
   ros-indigo-pluginlib)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-controller-interface
@@ -28,10 +28,16 @@ ros_depends=(ros-indigo-controller-interface
   ros-indigo-pluginlib)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/controller_manager/${pkgver}-${_pkgver_patch}
-_dir=controller_manager
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_control-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/controller_manager/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_control-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_control-release-release-indigo-controller_manager-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_control-release/archive/release/indigo/controller_manager/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('5abda06459877b80282388cb4405422694d300695950678200308b1dddb8087d')
 
 build() {
   # Use ROS environment variables
