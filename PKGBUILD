@@ -2,7 +2,7 @@
 # Contributor: Mikkel Kroman <mk@maero.dk>
 
 pkgname=crystal-git
-pkgver=0.12.0.r0.g90eaec1
+pkgver=0.12.0.r39.g72f11f6
 _last_release="0.12.0-1"
 pkgrel=1
 pkgdesc="The Crystal Programming Language"
@@ -18,9 +18,9 @@ optdepends=('shards: To make the crystal deps command work'
             'libxml2: For XML support')
 conflicts=('crystal')
 provides=('crystal')
-source=("git://github.com/manastech/crystal.git")
-source_x86_64+=("https://github.com/manastech/crystal/releases/download/${_last_release/-*/}/${pkgname/-git/}-$_last_release-linux-i686.tar.gz")
-source_x86_64+=("https://github.com/manastech/crystal/releases/download/${_last_release/-*/}/${pkgname/-git/}-$_last_release-linux-x86_64.tar.gz")
+source=("git://github.com/crystal-lang/crystal.git")
+source_x86_64+=("https://github.com/crystal-lang/crystal/releases/download/${_last_release/-*/}/${pkgname/-git/}-$_last_release-linux-i686.tar.gz")
+source_x86_64+=("https://github.com/crystal-lang/crystal/releases/download/${_last_release/-*/}/${pkgname/-git/}-$_last_release-linux-x86_64.tar.gz")
 
 pkgver() {
   cd "$srcdir/${pkgname/-git/}"
