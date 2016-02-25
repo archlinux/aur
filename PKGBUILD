@@ -4,14 +4,14 @@ pkgdesc="ROS - This package contains a C++ base class for URDF parsers."
 url='http://ros.org/wiki/urdf'
 
 pkgname='ros-jade-urdf-parser-plugin'
-pkgver='1.11.8'
+pkgver='1.11.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   urdfdom-headers)
 
@@ -19,10 +19,16 @@ ros_depends=()
 depends=(${ros_depends[@]}
   urdfdom-headers)
 
-_tag=release/jade/urdf_parser_plugin/${pkgver}-${_pkgver_patch}
-_dir=urdf_parser_plugin
-source=("${_dir}"::"git+https://github.com/ros-gbp/robot_model-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/urdf_parser_plugin/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/robot_model-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="robot_model-release-release-jade-urdf_parser_plugin-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_model-release/archive/release/jade/urdf_parser_plugin/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('a266b359adb2d5f4a566850d97157301fdc3d99085969debbfdb190fdbf25963')
 
 build() {
   # Use ROS environment variables
