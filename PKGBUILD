@@ -4,7 +4,7 @@ pkgdesc="ROS - This package holds the diagnostic messages which provide the stan
 url='http://ros.org/wiki/diagnostic_msgs'
 
 pkgname='ros-indigo-diagnostic-msgs'
-pkgver='1.11.8'
+pkgver='1.11.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -13,17 +13,23 @@ license=('BSD')
 ros_makedepends=(ros-indigo-message-generation
   ros-indigo-catkin
   ros-indigo-std-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-std-msgs
   ros-indigo-message-runtime)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/diagnostic_msgs/${pkgver}-${_pkgver_patch}
-_dir=diagnostic_msgs
-source=("${_dir}"::"git+https://github.com/ros-gbp/common_msgs-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/diagnostic_msgs/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/common_msgs-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="common_msgs-release-release-indigo-diagnostic_msgs-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/common_msgs-release/archive/release/indigo/diagnostic_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('aba7951fff8c3a127aeb70e65b9c57873432d27ba9e16399d27a17fb4257ccea')
 
 build() {
   # Use ROS environment variables
