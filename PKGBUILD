@@ -1,8 +1,8 @@
 # Maintainer: Patrick Wozniak <email@patwoz.de>
 
 pkgname=masterpassword-cli-git
-pkgver=20150830.r927.8f1d897
-pkgrel=3
+pkgver=20160225.r987.b4da801
+pkgrel=1
 pkgdesc="CLI version of Master Password. (git-version)"
 
 arch=('any')
