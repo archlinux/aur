@@ -31,6 +31,7 @@ check() {
 
 package() {
 	cd $_gitname
+	export PATH="$PATH:$pkgdir/usr/bin"
 	cargo install --root "$pkgdir/usr"
 	rm "$pkgdir/usr/.crates.toml"
 }
