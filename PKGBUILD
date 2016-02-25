@@ -4,7 +4,7 @@ pkgdesc="ROS - This package defines messages for commonly used sensors, includin
 url='http://ros.org/wiki/sensor_msgs'
 
 pkgname='ros-jade-sensor-msgs'
-pkgver='1.12.3'
+pkgver='1.12.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -14,7 +14,7 @@ ros_makedepends=(ros-jade-catkin
   ros-jade-message-generation
   ros-jade-geometry-msgs
   ros-jade-std-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-message-runtime
@@ -22,10 +22,16 @@ ros_depends=(ros-jade-message-runtime
   ros-jade-std-msgs)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/sensor_msgs/${pkgver}-${_pkgver_patch}
-_dir=sensor_msgs
-source=("${_dir}"::"git+https://github.com/ros-gbp/common_msgs-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/sensor_msgs/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/common_msgs-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="common_msgs-release-release-jade-sensor_msgs-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/common_msgs-release/archive/release/jade/sensor_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('a58a627095d4fd9a36885f356359f0ccc04e32d9fd8f54296288f574c75d0d68')
 
 build() {
   # Use ROS environment variables
