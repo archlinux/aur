@@ -2,7 +2,7 @@
 # Maintainer: pzl <alsoelp at gmail dot com>
 
 pkgname=jlink-debugger
-pkgver=2.14
+pkgver=2.14a
 pkgrel=1
 pkgdesc="Segger JLink debugger for Linux"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ groups=('jlink')
 depends=('qt4' 'jlink-software-and-documentation>=5.10n')
 source_x86_64=("JLinkDebugger_Linux_V${pkgver/./}_x86_64.tgz::https://download.segger.com/J-Link/J-LinkDebugger/JLinkDebugger_Linux_V${pkgver/./}_x86_64.tgz")
 source_i686=("JLinkDebugger_Linux_V${pkgver/./}_i686.tgz::https://download.segger.com/J-Link/J-LinkDebugger/JLinkDebugger_Linux_V${pkgver/./}_i386.tgz")
-md5sums_i686=('3a626e1b9bba3771c2c6140430bb78ed')
-md5sums_x86_64=('b0c2116b85d0b5447f2cdd789a4514f3')
+md5sums_i686=('be10c6483353934ab3cdbdd795fad1e6')
+md5sums_x86_64=('b325cf660a632dc6eed1cb607741efa9')
 url="https://www.segger.com/jlink-software.html"
 
 
@@ -35,7 +35,7 @@ package(){
     # Remove un-needed files
     find . -name ".svn" | xargs rm -rf
 
-    # Bulk copy everything
+    # Bulk copy everything except libs
     cp --preserve=mode -r JLinkDebugger Plugins Doc Config "${pkgdir}/opt/SEGGER/JLinkDebugger"
 
     # Create links where needed
