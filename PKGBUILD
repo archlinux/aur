@@ -1,4 +1,5 @@
 # Maintainer: Yardena Cohen <yardenack at gmail dot com>
+# Contributor: Matt Hamilton <m at tthamilton dot com>
 
 _pkgname=tqdm
 pkgname=(python-${_pkgname} python2-${_pkgname})
