@@ -1,0 +1,6 @@
+post_upgrade() {
+  if [ -f /etc/systemd/system/tftpd.service ]; then
+    echo ">>> TFTP server configuration has been moved to /etc/conf.d/tftpd."
+    echo "    Please update /etc/conf.d/tftpd and remove /etc/systemd/system/tftpd.service"
+  fi
+}

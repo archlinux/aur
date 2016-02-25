@@ -1,0 +1,100 @@
+diff -Nwrau tftp-hpa-5.2/tftpd/tftpd.c a/tftpd/tftpd.c
+--- tftp-hpa-5.2/tftpd/tftpd.c	2011-12-11 23:13:52.000000000 +0100
++++ a/tftpd/tftpd.c	2016-02-25 15:12:19.023457282 +0100
+@@ -49,6 +49,10 @@
+ #include <limits.h>
+ #include <syslog.h>
+
++#ifdef WITH_REGEX
++#include <regex.h>
++#endif
++
+ #include "common/tftpsubs.h"
+ #include "recvfrom.h"
+ #include "remap.h"
+@@ -110,6 +114,10 @@
+ struct formats;
+ #ifdef WITH_REGEX
+ static struct rule *rewrite_rules = NULL;
++
++static const char *selfdestruct_pattern;
++static regex_t selfdestruct_re;
++static int selfdestruct(const char *filename);
+ #endif
+
+ int tftp(struct tftphdr *, int);
+@@ -178,6 +186,19 @@
+
+     return rulep;
+ }
++
++static int selfdestruct(const char *filename)
++{
++    if (!selfdestruct_pattern) {
++        return 0;
++    }
++    const char *tmp = strchr(filename, '/');
++    if (tmp) {
++        filename = tmp + 1;
++    }
++
++    return !regexec(&selfdestruct_re, filename, 0, NULL, 0);
++}
+ #endif
+
+ /*
+@@ -324,6 +345,7 @@
+
+ enum long_only_options {
+     OPT_VERBOSITY	= 256,
++    OPT_SELFDESTRUCT_PATTERN,
+ };
+
+ static struct option long_options[] = {
+@@ -347,6 +369,8 @@
+     { "port-range",  1, NULL, 'R' },
+     { "map-file",    1, NULL, 'm' },
+     { "pidfile",     1, NULL, 'P' },
++    { "selfdestruct-pattern",
++                     1, NULL, OPT_SELFDESTRUCT_PATTERN },
+     { NULL, 0, NULL, 0 }
+ };
+ static const char short_options[] = "46cspvVlLa:B:u:U:r:t:T:R:m:P:";
+@@ -493,6 +517,19 @@
+             }
+             rewrite_file = optarg;
+             break;
++        case OPT_SELFDESTRUCT_PATTERN:
++            {
++                int errcode = regcomp(&selfdestruct_re, optarg,
++                                      REG_EXTENDED|REG_NOSUB);
++                if (errcode != 0) {
++                    char errbuf[BUFSIZ];
++                    regerror(errcode, &selfdestruct_re, errbuf, BUFSIZ);
++                    syslog(LOG_ERR, "Bad selfdestruct regex: %s\n", errbuf);
++                    exit(EX_CONFIG);
++                }
++                selfdestruct_pattern = optarg;
++            }
++            break;
+ #endif
+         case 'v':
+             verbosity++;
+@@ -1498,6 +1535,16 @@
+         }
+     }
+
++#ifdef WITH_REGEX
++    if (mode == RRQ && selfdestruct(filename)) {
++        syslog(LOG_NOTICE, "unlinking file %s\n", filename);
++        if (unlink(filename)) {
++            syslog(LOG_WARNING, "error unlinking \"%s\": %s\n",
++                   filename, strerror(errno));
++        }
++    }
++#endif
++
+     if (fstat(fd, &stbuf) < 0)
+         exit(EX_OSERR);         /* This shouldn't happen */
+
+

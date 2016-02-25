@@ -1,0 +1,9 @@
+[Unit]
+Description=hpa's original TFTP daemon
+Conflicts=tftpd.service
+
+[Socket]
+ListenDatagram=69
+
+[Install]
+WantedBy=sockets.target
