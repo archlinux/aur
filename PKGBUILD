@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains messages for defining shapes, such as simpl
 url='http://wiki.ros.org/shape_msgs'
 
 pkgname='ros-jade-shape-msgs'
-pkgver='1.12.3'
+pkgver='1.12.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -14,7 +14,7 @@ ros_makedepends=(ros-jade-catkin
   ros-jade-message-generation
   ros-jade-geometry-msgs
   ros-jade-std-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-message-runtime
@@ -22,10 +22,16 @@ ros_depends=(ros-jade-message-runtime
   ros-jade-std-msgs)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/shape_msgs/${pkgver}-${_pkgver_patch}
-_dir=shape_msgs
-source=("${_dir}"::"git+https://github.com/ros-gbp/common_msgs-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/shape_msgs/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/common_msgs-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="common_msgs-release-release-jade-shape_msgs-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/common_msgs-release/archive/release/jade/shape_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('002cd95dd363a84b89030980a4561c5de1532d1d3543a886ea4e15602922e432')
 
 build() {
   # Use ROS environment variables
