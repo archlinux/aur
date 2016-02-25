@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains a tool to convert Unified Robot Description
 url='http://ros.org/wiki/collada_urdf'
 
 pkgname='ros-jade-collada-urdf'
-pkgver='1.11.8'
+pkgver='1.11.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -19,7 +19,7 @@ ros_makedepends=(ros-jade-urdf
   ros-jade-collada-parser
   ros-jade-resource-retriever
   ros-jade-angles)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   assimp
   collada-dom
@@ -39,10 +39,16 @@ depends=(${ros_depends[@]}
   urdfdom
   urdfdom-headers)
 
-_tag=release/jade/collada_urdf/${pkgver}-${_pkgver_patch}
-_dir=collada_urdf
-source=("${_dir}"::"git+https://github.com/ros-gbp/robot_model-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/collada_urdf/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/robot_model-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="robot_model-release-release-jade-collada_urdf-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_model-release/archive/release/jade/collada_urdf/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('79924a9f0c4ff98866636b0ee9dc328aadd2e93d91b544e96a7ef4347dc92430')
 
 build() {
   # Use ROS environment variables
