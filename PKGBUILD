@@ -14,6 +14,7 @@ pkgdesc='Lightweight PDF and XPS viewer'
 arch=('i686' 'x86_64')
 url='http://mupdf.com'
 license=('AGPL3')
+conflicts=('mupdf')
 depends=('curl' 'desktop-file-utils' 'freetype2' 'jbig2dec' 'libjpeg' 'libxext'
          'openssl' 'openjpeg2' 'mesa' 'libgl' 'libxcursor' 'libxrandr'
 	 'libxinerama')
@@ -24,10 +25,10 @@ source=(http://mupdf.com/downloads/mupdf-${pkgver/_/}-source.tar.gz
         mupdf.desktop
         mupdf.xpm
         mupdf-1.5-openjpeg-2.1.0.patch)
-md5sums=('3205256d78d8524d67dd2a47c7a345fa'
-         '39b54f82a763aac54e352315a0ee9037'
-         'f3f35e7320bafde331250de1c99186a1'
-         '8e71587ad9b86e10c9144618ab43149b')
+sha256sums=('a2a3c64d8b24920f87cf4ea9339a25abf7388496440f13b37482d1403c33c206'
+         '70f632e22902ad4224b1d88696702b3ba4eb3c28eb7acf735f06d16e6884a078'
+         'a435f44425f5432c074dee745d8fbaeb879038ec1f1ec64f037c74662f09aca8'
+         '6ea44355ac1309cbd6605a8478e7245f2c0f17f61b30bb72d8ec79f65732452d')
 
 prepare() {
   cd $_pkgname-${pkgver/_/}-source
