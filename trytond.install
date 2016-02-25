@@ -2,17 +2,20 @@ post_install() {
   echo
   echo "Adding tryton group... "
   groupadd  tryton
-  echo
   echo "Adding tryton user... "
   useradd -c "Tryton Server Daemon" -g tryton -s /bin/false tryton
 
+  echo
   echo "Note:"
-  echo "==> Please don't forget to configure your PostgreSQL database for the program."
+  echo "- Tryton modules can be installed using pip2, e.g. 'pip2 install trytond-party'."
+  echo "- Configure Tryton using the config file /etc/trytond.conf."
+  echo "- See the Tryton documentation at http://doc.tryton.org for more information."
+  echo
 }
 
 post_remove() {
-  echo "Removing tryton system user... "
-  userdel tryton && echo "trytond [done]"
+  echo "Removing tryton user... "
+  userdel tryton
 }
 
 op=$1
