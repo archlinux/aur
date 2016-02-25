@@ -3,7 +3,8 @@
 
 pkgname=jlink-debugger
 pkgver=2.14a
-pkgrel=3
+pkgrel=4
+epoch=1
 pkgdesc="Segger JLink debugger for Linux"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -14,7 +15,7 @@ source_i686=("JLinkDebugger_Linux_V${pkgver/./}_i686.tgz::https://download.segge
 md5sums_i686=('be10c6483353934ab3cdbdd795fad1e6')
 md5sums_x86_64=('b325cf660a632dc6eed1cb607741efa9')
 url="https://www.segger.com/jlink-software.html"
-replaces=('jlink-debugger>=2.14')
+
 
 package(){
     if [ ${CARCH} = "i686" ]; then
