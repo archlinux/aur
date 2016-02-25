@@ -4,7 +4,7 @@ pkgdesc="ROS - This package allows you to publish the state of a robot to tf."
 url='http://wiki.ros.org/robot_state_publisher'
 
 pkgname='ros-indigo-robot-state-publisher'
-pkgver='1.11.0'
+pkgver='1.11.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -13,6 +13,7 @@ license=('BSD')
 ros_makedepends=(ros-indigo-kdl-parser
   ros-indigo-tf2-ros
   ros-indigo-roscpp
+  ros-indigo-rostest
   ros-indigo-rostime
   ros-indigo-orocos-kdl
   ros-indigo-catkin
@@ -21,13 +22,14 @@ ros_makedepends=(ros-indigo-kdl-parser
   ros-indigo-sensor-msgs
   ros-indigo-cmake-modules
   ros-indigo-tf)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   eigen3)
 
 ros_depends=(ros-indigo-kdl-parser
   ros-indigo-tf2-ros
   ros-indigo-roscpp
+  ros-indigo-tf-conversions
   ros-indigo-rostime
   ros-indigo-orocos-kdl
   ros-indigo-catkin
@@ -38,10 +40,16 @@ ros_depends=(ros-indigo-kdl-parser
 depends=(${ros_depends[@]}
   eigen3)
 
-_tag=release/indigo/robot_state_publisher/${pkgver}-${_pkgver_patch}
-_dir=robot_state_publisher
-source=("${_dir}"::"git+https://github.com/ros-gbp/robot_state_publisher-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/robot_state_publisher/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/robot_state_publisher-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="robot_state_publisher-release-release-indigo-robot_state_publisher-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_state_publisher-release/archive/release/indigo/robot_state_publisher/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('e307f31cd00c68a1f261c65cafb3bf69f9edbb23ae611135b7a5bb369b4fa06b')
 
 build() {
   # Use ROS environment variables
