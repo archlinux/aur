@@ -22,7 +22,7 @@ ros_depends=(ros-indigo-kdl-parser
   ros-indigo-collada-parser
   ros-indigo-urdf)
 depends=(${ros_depends[@]}
-  liburdfdom-tools)
+  urdfdom)
 
 # Git version (e.g. for debugging)
 # _tag=release/indigo/robot_model/${pkgver}-${_pkgver_patch}
