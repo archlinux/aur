@@ -1,7 +1,7 @@
 # Maintainer: Andrey Vihrov <andrey.vihrov at gmail.com>
 
 pkgname=svn-clean
-pkgver=r1162197
+pkgver=0.r1162197
 pkgrel=1
 pkgdesc="Wipe out unversioned files from Subversion working copy"
 arch=('any')
@@ -16,7 +16,7 @@ pkgver() {
   cd client-side
 
   local ver="$(svnversion -c "${pkgname}")"
-  printf "r%s" "${ver//[[:alpha:]]}"
+  printf "0.r%s" "${ver//[[:alpha:]]}"
 }
 
 build() {
