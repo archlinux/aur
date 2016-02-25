@@ -4,7 +4,7 @@
 _pkgbase="joe"
 pkgname="python2-${_pkgbase}"
 pkgver="0.0.7"
-pkgrel=2
+pkgrel=3
 pkgdesc="A .gitignore magician in your command line"
 arch=('any')
 url="http://github.com/karan/joe/"
@@ -12,6 +12,7 @@ license=('MIT')
 depends=('python2' 'python2-docopt' 'python2-git')
 provides=('joe')
 makedepends=('python2-setuptools')
+install=python2-joe.install
 source=("https://github.com/karan/joe/archive/${pkgver}.tar.gz")
 md5sums=('f10faf7246f3938870383559a0ac28a7')
 
