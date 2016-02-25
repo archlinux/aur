@@ -7,7 +7,6 @@ arch=(x86_64)
 url="www.scripps.edu/tainer/arvai/adxv.html"
 license=('GPL')
 depends=('libxt' 'mesa')
-makedepends=('')
 source=("http://www.scripps.edu/tainer/arvai/adxv/adxv_$pkgver/$pkgname.x86_64Centos5")
 
 package() {
