@@ -1,7 +1,7 @@
 #Maintainer: "Yannick LM <yannicklm1337 AT gmail DOT com>"
 
 pkgname=pycp
-pkgver="7.1"
+pkgver="7.2.1"
 pkgrel=1
 pkgdesc="cp and mv with a progressbar"
 url="http://github.com/yannicklm/pycp"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python' 'python-setuptools' 'help2man')
 source=("http://pypi.python.org/packages/source/p/pycp/pycp-${pkgver}.tar.gz")
-md5sums=('65a1ce3f035d109e947c1cb9a39732cc')
+md5sums=('1f5230b618c5dc616d7f3e96bb03f110')
 
 build() {
   cd ${srcdir}/pycp-${pkgver}
