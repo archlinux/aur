@@ -5,18 +5,19 @@
 
 pkgname=squeezelite-r2-git
 pkgver=v1.8.2.R2.r1.g681fc3d
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight headless squeezebox emulator - version r2'
 arch=('i686' 'x86_64' 'armv6h')
 url='http://www.marcoc1712.it/'
 license=(GPL3)
 depends=('alsa-lib')
-makedepends=('git' 'alsa-lib' 'faad2' 'flac' 'libmad' 'libvorbis' 'mpg123')
+makedepends=('git' 'alsa-lib' 'faad2' 'flac' 'libmad' 'libvorbis' 'mpg123' 'portaudio')
 optdepends=('faad2: Support for decoding AAC'
 	'flac: Support for decoding FLAC'
 	'libmad: Support for decoding MP3'
 	'libvorbis: Support for decoding Ogg Vorbis'
-	'mpg123: Support for decoding MP3')
+	'mpg123: Support for decoding MP3'
+	'portaudio: Use of binary using portaudio for output')
 provides=('squeezelite')
 conflicts=('squeezelite')
 source=('git+https://github.com/marcoc1712/squeezelite-R2')
@@ -29,6 +30,15 @@ pkgver() {
 
 build() {
 	cd squeezelite-R2/
+
+	unset LDFLAGS
+	sed -i '/LDFLAGS/s|$| -lm -lasound|' Makefile.pa
+
+	# build squeezelite-pa
+	make -f Makefile.pa
+
+	# clean up
+	make clean
 
 	# build squeezelite
 	make
