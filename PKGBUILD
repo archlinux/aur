@@ -7,8 +7,13 @@ pkgdesc="A Distributed, Highly Available, Datacenter-Aware Scheduler"
 arch=('i686' 'x86_64')
 url="https://www.nomadproject.io/"
 license=('MPL')
-depends=('glibc')
+depends=('glibc' 'ethtool')
 makedepends=('go' 'godep' 'git')
+optdepends=(
+	'docker'
+	'rkt'
+	'java-runtime-headless'
+)
 source=(https://github.com/hashicorp/nomad/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
 sha256sums=('b5e7520cdd542df14ae35778c066e296c41bb6aba8bf8286956f3005f407c486')
 
