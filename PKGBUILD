@@ -20,6 +20,10 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/GNS3/${pkgname}/archive
 md5sums=('474a0f35140eb1c67a9ef3dcc9b054fc'
          'ac6ba60be0a1cb7fc965d1a105e431d5')
 
+prepare() {
+  sed -i 's/gns3-net-converter>=1.3.0/gns3-converter>=1.2.0/g' ${srcdir}/${pkgname}-${pkgver}/setup.py
+}
+
 package() {
   cd ${srcdir}/${pkgname}-${pkgver}
   python setup.py install --root=${pkgdir} --optimize=1
