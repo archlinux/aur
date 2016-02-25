@@ -13,7 +13,7 @@ depends=('desktop-file-utils' 'hicolor-icon-theme' 'polkit' 'xorg-xrandr'
          'xdg-user-dirs')
 makedepends=('python2-setuptools')
 install='lutris.install'
-source=("http://download.opensuse.org/repositories/home:/strycore/Debian_8.0/lutris_${pkgver}.tar.gz")
+source=("https://lutris.net/releases/lutris_${pkgver}.tar.gz")
 sha256sums=('a07dc2e7d27bf5d593032c5eafd671b1e458b104abc4078c6d193d28ef297fc6')
 
 prepare() {
