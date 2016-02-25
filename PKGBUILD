@@ -4,7 +4,7 @@ pkgdesc="ROS - nav_msgs defines the common messages used to interact with the na
 url='http://ros.org/wiki/nav_msgs'
 
 pkgname='ros-indigo-nav-msgs'
-pkgver='1.11.8'
+pkgver='1.11.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -15,7 +15,7 @@ ros_makedepends=(ros-indigo-message-generation
   ros-indigo-actionlib-msgs
   ros-indigo-std-msgs
   ros-indigo-geometry-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-std-msgs
@@ -24,10 +24,16 @@ ros_depends=(ros-indigo-std-msgs
   ros-indigo-geometry-msgs)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/nav_msgs/${pkgver}-${_pkgver_patch}
-_dir=nav_msgs
-source=("${_dir}"::"git+https://github.com/ros-gbp/common_msgs-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/nav_msgs/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/common_msgs-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="common_msgs-release-release-indigo-nav_msgs-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/common_msgs-release/archive/release/indigo/nav_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('0b7b4238b4af8e01597b4fb3dbb322e0e921fef1c1d2c0012272173c064ef5fd')
 
 build() {
   # Use ROS environment variables
