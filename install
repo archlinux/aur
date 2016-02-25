@@ -1,0 +1,8 @@
+post_install() {
+  echo "Run scripts (for all required categories) in this order:"
+  echo "DeleteSamples.py, nzbTo*.py, Email.py, Logger.py"
+
+  # Uncomment the following lines when nzbget isn't run as root.
+  #mkdir -m 755 /usr/share/nzbget/ppscripts/logs
+  #chown -R nzbget:nzbget /usr/share/nzbget/{ppscripts,ppscripts/logs}
+}
