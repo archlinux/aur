@@ -2,7 +2,7 @@ pkgname=parity-git
 _pkgname=parity
 pkgdesc="Fast, light, robust Ethereum implementation"
 pkgrel=1
-pkgver=0.9.99.2261
+pkgver=0.9.99.2281
 arch=('i686' 'x86_64')
 conflicts=("parity")
 provides=("parity")
@@ -26,7 +26,12 @@ build() {
 	cargo build --release
 }
 
+check() {
+	cd $_pkgname
+	cargo test --release
+}
+
 package() {
 	cd $_pkgname
-	install -D -m755 "${srcdir}/${_pkgname}/target/release/parity" "${pkgdir}/usr/bin/parity"
+	cargo install --root "$pkgdir/usr"
 }
