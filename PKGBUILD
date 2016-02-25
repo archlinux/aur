@@ -4,16 +4,15 @@
 _pkgbase=r8101
 pkgname=r8101-dkms
 pkgver=1.027.00
-pkgrel=2
+pkgrel=3
 pkgdesc="r8101 realtek lan drivers (DKMS)"
 arch=('i686' 'x86_64')
 url="http://realtek.com.tw/"
 license=('GPL2')
-depends=('dkms')
+depends=('dkms>=2.2.0.3+git151023-5')
 optdepends=('ethtool: device configuration')
 provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
-install=${pkgname}.install
 
 source=("http://12244.wpc.azureedge.net/8012244/drivers/rtdrivers/cn/nic/0002-${_pkgbase}-${pkgver}.tar.bz2"
         'dkms.conf')
