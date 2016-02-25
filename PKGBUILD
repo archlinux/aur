@@ -1,10 +1,10 @@
-# Maintainer: Mario Finelli <mario dot finelli at yahoo dot com>
+# Maintainer: Mario Finelli <mario at finel dot li>
 # Contributor: Eduardo Leggiero <https://www.leggiero.uk/>
 # Contributor: Josh 'jheretic' King <josh at chambana dot net>
 # Contributor: James An <james@jamesan.ca>
 
 pkgname=drush
-pkgver=8.0.2
+pkgver=8.0.3
 pkgrel=1
 pkgdesc="Drush is a command line shell and Unix scripting interface for Drupal."
 arch=('any')
@@ -17,7 +17,7 @@ source=(
     "drush.install"
     "https://github.com/drush-ops/${pkgname}/archive/$pkgver.tar.gz")
 sha256sums=('e800601699e4b1ea0a0057fc91827b31fc8c5070f5014df2777396aabc7680ec'
-            'ad796ad33189d897213c1d0a11b539f6a752f63a9c4f17e343af5fcc895f6bbd')
+            'd089a5ea4d3aa56b2a8f62a201c1641143460236c1f1a57090236432bebcb64d')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
