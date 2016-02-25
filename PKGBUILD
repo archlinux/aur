@@ -4,7 +4,7 @@ pkgdesc="ROS - Messages and services for the controller manager."
 url='https://github.com/ros-controls/ros_control/wiki'
 
 pkgname='ros-indigo-controller-manager-msgs'
-pkgver='0.9.3'
+pkgver='0.9.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -13,17 +13,23 @@ license=('BSD')
 ros_makedepends=(ros-indigo-std-msgs
   ros-indigo-catkin
   ros-indigo-message-generation)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-std-msgs
   ros-indigo-message-runtime)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/controller_manager_msgs/${pkgver}-${_pkgver_patch}
-_dir=controller_manager_msgs
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_control-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/controller_manager_msgs/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_control-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_control-release-release-indigo-controller_manager_msgs-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_control-release/archive/release/indigo/controller_manager_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('026e0d759367ac81f5a6710a3ec03bb66269c4565ba6668abcfaa9998d39d721')
 
 build() {
   # Use ROS environment variables
