@@ -3,18 +3,25 @@
 # Contributor: Thomas Schneider <maxmusterm@gmail.com>
 # Contributor: Sebastien Binet <binet@lblbox>
 
-pkgbase=pypy-pip
-pkgname=(pypy-pip)
-pkgver=8.0.2
+pkgname=pypy-pip
+pkgver=8.0.3
 pkgrel=1
 pkgdesc="The PyPA recommended tool for installing Python packages"
 url="https://pip.pypa.io/"
 arch=('any')
 license=('MIT')
-source=(http://pypi.python.org/packages/source/p/pip/pip-${pkgver}.tar.gz)
-sha256sums=('46f4bd0d8dfd51125a554568d646fe4200a3c2c6c36b9f2d06d2212148439521')
+source=(
+    http://pypi.python.org/packages/source/p/pip/pip-${pkgver}.tar.gz{,.asc}
+)
+sha256sums=(
+    '30f98b66f3fe1069c529a491597d34a1c224a68640c82caf2ade5f88aa1405e8'
+    'SKIP'
+)
 # necessary due to a makepkg bug
 makedepends=('pypy-setuptools' 'pypy3-setuptools')
+validpgpkeys=(
+    '7C6B7C5D5E2B6356A926F04F6E3CBCE93372DCFA'  # Donald Stufft
+)
 
 executable_files=(
   __init__.py
