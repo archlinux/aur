@@ -4,13 +4,14 @@ pkgdesc="ROS - This package allows you to publish the state of a robot to tf."
 url='http://wiki.ros.org/robot_state_publisher'
 
 pkgname='ros-jade-robot-state-publisher'
-pkgver='1.12.0'
+pkgver='1.12.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-cmake-modules
+  ros-jade-rostest
   ros-jade-orocos-kdl
   ros-jade-kdl-parser
   ros-jade-roscpp
@@ -21,7 +22,7 @@ ros_makedepends=(ros-jade-cmake-modules
   ros-jade-sensor-msgs
   ros-jade-rosconsole
   ros-jade-rostime)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   eigen3)
 
@@ -34,14 +35,21 @@ ros_depends=(ros-jade-orocos-kdl
   ros-jade-tf
   ros-jade-sensor-msgs
   ros-jade-rosconsole
-  ros-jade-rostime)
+  ros-jade-rostime
+  ros-jade-tf-conversions)
 depends=(${ros_depends[@]}
   eigen3)
 
-_tag=release/jade/robot_state_publisher/${pkgver}-${_pkgver_patch}
-_dir=robot_state_publisher
-source=("${_dir}"::"git+https://github.com/ros-gbp/robot_state_publisher-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/robot_state_publisher/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/robot_state_publisher-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="robot_state_publisher-release-release-jade-robot_state_publisher-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_state_publisher-release/archive/release/jade/robot_state_publisher/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('a41afeb95820626906c6700e2bd0562cde5b2033ff2006013d0195e733ba6ef4')
 
 build() {
   # Use ROS environment variables
