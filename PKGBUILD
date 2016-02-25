@@ -4,7 +4,7 @@ pkgdesc="ROS - The opencv_apps package, most of code is taken from https://githu
 url='http://www.ros.org/'
 
 pkgname='ros-jade-opencv-apps'
-pkgver='1.11.10'
+pkgver='1.11.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -18,7 +18,7 @@ ros_makedepends=(ros-jade-nodelet
   ros-jade-image-transport
   ros-jade-std-srvs
   ros-jade-dynamic-reconfigure)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-cv-bridge
@@ -30,10 +30,16 @@ ros_depends=(ros-jade-cv-bridge
   ros-jade-dynamic-reconfigure)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/opencv_apps/${pkgver}-${_pkgver_patch}
-_dir=opencv_apps
-source=("${_dir}"::"git+https://github.com/ros-gbp/vision_opencv-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/opencv_apps/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/vision_opencv-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="vision_opencv-release-release-jade-opencv_apps-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/vision_opencv-release/archive/release/jade/opencv_apps/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('5919241088268163fa2825e815eda2b9d3ae336d65e106ae5d3f62a501d057f8')
 
 build() {
   # Use ROS environment variables
