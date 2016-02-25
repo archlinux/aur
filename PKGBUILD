@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains a tool for setting and publishing joint sta
 url='http://www.ros.org/wiki/joint_state_publisher'
 
 pkgname='ros-jade-joint-state-publisher'
-pkgver='1.11.8'
+pkgver='1.11.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -13,7 +13,7 @@ license=('BSD')
 ros_makedepends=(ros-jade-sensor-msgs
   ros-jade-catkin
   ros-jade-rospy)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   wxpython)
 
@@ -22,10 +22,16 @@ ros_depends=(ros-jade-sensor-msgs
 depends=(${ros_depends[@]}
   wxpython)
 
-_tag=release/jade/joint_state_publisher/${pkgver}-${_pkgver_patch}
-_dir=joint_state_publisher
-source=("${_dir}"::"git+https://github.com/ros-gbp/robot_model-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/joint_state_publisher/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/robot_model-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="robot_model-release-release-jade-joint_state_publisher-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_model-release/archive/release/jade/joint_state_publisher/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('1e6c6c6b15c3b8d42b9327f7c83eaf16ad9ef28ecd065c35054ba9efd31fa4bc')
 
 build() {
   # Use ROS environment variables
