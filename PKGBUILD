@@ -1,7 +1,7 @@
 # Maintainer: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=gns3-server
-pkgver=1.4.0
+pkgver=1.4.4
 pkgrel=1
 pkgdesc='GNS3 network simulator. Server package.'
 arch=('any')
@@ -16,12 +16,13 @@ optdepends=('dynamips: Cisco router emulator.'
             'iouyap: Bridge IOU to UDP, TAP and Ethernet.'
             'qemu: Used by GNS3 to run Cisco ASA, PIX and IDS.'
             'vpcs: Simple PC emulation for basic network operations.'
+            'ubridge: Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces.'
             'gns3-gui: graphical user interface for GNS3 server.'
 )
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/GNS3/${pkgname}/archive/v${pkgver}.tar.gz"
         "${pkgname}@.service")
-md5sums=('78f2758830f57337de5ff6c21f3b2c41'
+md5sums=('24b8335c2d8cf7c618e6437bd8098a55'
          'f602390385890dab14f68e5e0a8cac2d')
 
 package() {
