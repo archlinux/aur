@@ -1,0 +1,28 @@
+post_install() {
+    local user='nzbmegasearch'
+    local group='nzbmegasearch'
+    local desc='NZBmegasearch daemon user'
+    local home='/var/lib/nzbmegasearch'
+    local shell='/bin/false'
+
+    # Create group if it does not exist
+    if ! grep -q "^${group}" /etc/group &> /dev/null
+    then
+        groupadd -r "$group" &> /dev/null
+    fi
+
+    # Create/Update user
+    if grep -q "^${user}:" /etc/passwd 2> /dev/null
+    then
+        usermod -s "$shell" -c "$desc" -d "$home" -m -g "$group" "$user" &> /dev/null
+    else
+        useradd -m -s "$shell" -c "$desc" -d "$home" -g "$group" -r "$user" &> /dev/null
+    fi
+
+    chown -R "${user}:${group}" "$home"
+}
+
+post_upgrade() {
+    post_install $1
+}
+
