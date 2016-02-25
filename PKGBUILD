@@ -4,7 +4,7 @@ pkgdesc="ROS - This package defines messages for defining robot trajectories."
 url='http://ros.org/wiki/trajectory_msgs'
 
 pkgname='ros-indigo-trajectory-msgs'
-pkgver='1.11.8'
+pkgver='1.11.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -14,7 +14,7 @@ ros_makedepends=(ros-indigo-message-generation
   ros-indigo-catkin
   ros-indigo-std-msgs
   ros-indigo-geometry-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-rosbag-migration-rule
@@ -23,10 +23,16 @@ ros_depends=(ros-indigo-rosbag-migration-rule
   ros-indigo-geometry-msgs)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/trajectory_msgs/${pkgver}-${_pkgver_patch}
-_dir=trajectory_msgs
-source=("${_dir}"::"git+https://github.com/ros-gbp/common_msgs-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/trajectory_msgs/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/common_msgs-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="common_msgs-release-release-indigo-trajectory_msgs-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/common_msgs-release/archive/release/indigo/trajectory_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('2cd3d41754c973e165ef29b3c80bfcfceeb774b2cd568c0e374660edc9254fed')
 
 build() {
   # Use ROS environment variables
