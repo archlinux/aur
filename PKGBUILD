@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains a C++ parser for the Collada robot descript
 url='http://ros.org/wiki/collada_parser'
 
 pkgname='ros-jade-collada-parser'
-pkgver='1.11.8'
+pkgver='1.11.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -14,7 +14,7 @@ ros_makedepends=(ros-jade-urdf-parser-plugin
   ros-jade-class-loader
   ros-jade-roscpp
   ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   collada-dom
   urdfdom-headers)
@@ -26,10 +26,16 @@ depends=(${ros_depends[@]}
   collada-dom
   urdfdom-headers)
 
-_tag=release/jade/collada_parser/${pkgver}-${_pkgver_patch}
-_dir=collada_parser
-source=("${_dir}"::"git+https://github.com/ros-gbp/robot_model-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/collada_parser/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/robot_model-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="robot_model-release-release-jade-collada_parser-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_model-release/archive/release/jade/collada_parser/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('e9bbdc1d60455818e200e3b785e3286042e1e9660acf0f43c1da557993609dca')
 
 build() {
   # Use ROS environment variables
