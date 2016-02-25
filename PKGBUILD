@@ -7,7 +7,7 @@ license=( 'BSD' )
 pkgver=1.2.r57.g561fefc
 pkgrel=1
 arch=( 'any' )
-url='https://github.com/fbt/watchman-services'
+url='https://git.fleshless.org/watchman-services/about'
 
 provides=( 'watchman-sm-services' )
 conflicts=( 'watchman-sm-services' )
