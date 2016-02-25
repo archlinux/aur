@@ -2,7 +2,7 @@
 
 pkgname=brave-browser-git
 _pkgname=browser-laptop
-pkgver=0.7.16dev.1
+pkgver=0.7.16dev.3
 pkgrel=1
 pkgdesc="A chromium-based web browser that stops ads and trackers by Brendan Eich and Co. Development master branch."
 arch=('x86_64') # No 32-bit electron-prebuilt for you!
@@ -16,9 +16,9 @@ provides=('brave')
 conflicts=('brave')
 options=(!strip)
 install=$pkgname.install
-source=("git://github.com/brave/browser-laptop.git" 'brave-browser.desktop')
+source=("git://github.com/brave/browser-laptop.git" 'brave-browser-git.desktop')
 md5sums=('SKIP'
-         'f4f18f97af634fc60639591a9691ca0e')
+         '8ad47100f052e3b65e088f4733c4f24a')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -50,11 +50,11 @@ package() {
 
   install -d -m0755 "${pkgdir}/usr/bin"
 
-  ln -s "/opt/$pkgname/Brave" "${pkgdir}/usr/bin/brave-browser"
+  ln -s "/opt/$pkgname/Brave" "${pkgdir}/usr/bin/brave-browser-git"
 
-  install -D -m0644 "$startdir"/brave-browser.desktop "$pkgdir"/usr/share/applications/brave-browser.desktop
+  install -D -m0644 "$startdir"/brave-browser-git.desktop "$pkgdir"/usr/share/applications/brave-browser-git.desktop
 
-  install -D -m0644 "res/app.png" "$pkgdir"/usr/share/pixmaps/brave-browser.png
+  install -D -m0644 "res/app.png" "$pkgdir"/usr/share/pixmaps/brave-browser-git.png
 
   install -d -m0755 "$pkgdir"/usr/share/licenses/$pkgname
 
