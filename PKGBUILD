@@ -1,6 +1,6 @@
 # Maintainer: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
 pkgname=libcue-git
-pkgver=v2.0.0.r0.5e54a77
+pkgver=v2.0.1.r0.57ec834
 pkgrel=1
 pkgdesc="CUE Sheet Parser Library"
 arch=('i686' 'x86_64')
