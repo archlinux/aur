@@ -2,13 +2,13 @@
 
 _gemname=gpgme
 pkgname=ruby-$_gemname
-pkgver=2.0.11
+pkgver=2.0.12
 pkgrel=1
 pkgdesc='Ruby binding of GPGME.'
 arch=(i686 x86_64)
 url='http://github.com/ueno/ruby-gpgme'
 license=(LGPL-2.1+)
-depends=(ruby ruby-mini_portile)
+depends=(ruby ruby-mini_portile2)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
