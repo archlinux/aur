@@ -4,7 +4,7 @@
 
 pkgname=slack-desktop
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Slack Desktop (Beta) for Linux"
 arch=('i686' 'x86_64')
 url="https://slack.com/apps"
@@ -33,4 +33,5 @@ package() {
     install -dm755 ${pkgdir}/usr/share/licenses/${pkgname}
     mv ${pkgdir}/usr/share/slack/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}
     mv ${pkgdir}/usr/share/slack/LICENSES.chromium.html ${pkgdir}/usr/share/licenses/${pkgname}
+    ln -s ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE ${pkgdir}/usr/share/slack/resources/LICENSE
 }
