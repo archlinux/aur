@@ -2,26 +2,38 @@
 
 _pkgname=breeze-icons
 pkgname="${_pkgname}-git"
-pkgver=r866.43d9de1
+pkgver=5.19.0.r17.g8a31ac8
 pkgrel=1
 pkgdesc="Breeze icon themes for KDE Plasma. (GIT version)"
 arch=('any')
-url="https://github.com/NitruxSA/breeze-icon-theme"
+url="https://quickgit.kde.org/?p=${_pkgname}.git"
 license=('LGPL')
 groups=('kf5')
-makedepends=('git')
+makedepends=('extra-cmake-modules' 'qt5-base' 'git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+${url}.git")
+source=("${_pkgname}::git://anongit.kde.org/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver(){
     cd ${srcdir}/${_pkgname}
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --tags --long | sed -r -e 's,^[^0-9]*,,;s,([^-]*-g),r\1,;s,[-_],.,g'
+}
+
+prepare() {
+    mkdir -p build
+}
+
+build() {
+    cd build
+    cmake ../${_pkgname} \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+    make
 }
 
 package() {
-    install -d -m 755 ${pkgdir}/usr/share/icons/{breeze,breeze-dark}
-    cp -r ${srcdir}/${_pkgname}/Breeze/*        ${pkgdir}/usr/share/icons/breeze/
-    cp -r ${srcdir}/${_pkgname}/Breeze\ Dark/*  ${pkgdir}/usr/share/icons/breeze-dark/
+    cd build
+    make DESTDIR="$pkgdir" install
 }
