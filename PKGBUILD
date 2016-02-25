@@ -4,10 +4,10 @@ pkgdesc="ROS - This package contains a tool to convert Unified Robot Description
 url='http://ros.org/wiki/collada_urdf'
 
 pkgname='ros-indigo-collada-urdf'
-pkgver='1.11.8'
+pkgver='1.11.10'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-tf
@@ -19,7 +19,7 @@ ros_makedepends=(ros-indigo-tf
   ros-indigo-cmake-modules
   ros-indigo-collada-parser
   ros-indigo-urdf)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   assimp
   collada-dom
@@ -39,10 +39,16 @@ depends=(${ros_depends[@]}
   urdfdom
   urdfdom-headers)
 
-_tag=release/indigo/collada_urdf/${pkgver}-${_pkgver_patch}
-_dir=collada_urdf
-source=("${_dir}"::"git+https://github.com/ros-gbp/robot_model-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/collada_urdf/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/robot_model-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="robot_model-release-release-indigo-collada_urdf-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_model-release/archive/release/indigo/collada_urdf/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('798df3ce4fd3d6c0e5ee57c4970280b472a8820201085cd392261e3acc9e36e2')
 
 build() {
   # Use ROS environment variables
