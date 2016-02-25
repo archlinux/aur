@@ -4,7 +4,7 @@ pkgdesc="ROS - This package defines messages for commonly used sensors, includin
 url='http://ros.org/wiki/sensor_msgs'
 
 pkgname='ros-indigo-sensor-msgs'
-pkgver='1.11.8'
+pkgver='1.11.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -14,7 +14,7 @@ ros_makedepends=(ros-indigo-message-generation
   ros-indigo-catkin
   ros-indigo-std-msgs
   ros-indigo-geometry-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-std-msgs
@@ -22,10 +22,16 @@ ros_depends=(ros-indigo-std-msgs
   ros-indigo-geometry-msgs)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/sensor_msgs/${pkgver}-${_pkgver_patch}
-_dir=sensor_msgs
-source=("${_dir}"::"git+https://github.com/ros-gbp/common_msgs-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/sensor_msgs/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/common_msgs-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="common_msgs-release-release-indigo-sensor_msgs-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/common_msgs-release/archive/release/indigo/sensor_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('5cb0219a793f9d7b6fe73d8b755a7a9fcdb8b5e2fc6c974e19a6cd62114f08f5')
 
 build() {
   # Use ROS environment variables
