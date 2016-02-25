@@ -24,7 +24,13 @@ build() {
 	cargo build --no-default-features --features "hyper notify-rust" --release
 }
 
+check() {
+	cd $_gitname
+	cargo test --release
+}
+
 package() {
 	cd $_gitname
-	install -D -m755 "${srcdir}/${_gitname}/target/release/ydcv-rs" "${pkgdir}/usr/bin/ydcv"
+	cargo install --root "$pkgdir/usr"
+	rm "$pkgdir/usr/.crates.toml"
 }
