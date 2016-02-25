@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains messages for defining shapes, such as simpl
 url='http://ros.org/wiki/shape_msgs'
 
 pkgname='ros-indigo-shape-msgs'
-pkgver='1.11.8'
+pkgver='1.11.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -14,7 +14,7 @@ ros_makedepends=(ros-indigo-message-generation
   ros-indigo-catkin
   ros-indigo-std-msgs
   ros-indigo-geometry-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-std-msgs
@@ -22,10 +22,16 @@ ros_depends=(ros-indigo-std-msgs
   ros-indigo-geometry-msgs)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/shape_msgs/${pkgver}-${_pkgver_patch}
-_dir=shape_msgs
-source=("${_dir}"::"git+https://github.com/ros-gbp/common_msgs-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/shape_msgs/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/common_msgs-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="common_msgs-release-release-indigo-shape_msgs-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/common_msgs-release/archive/release/indigo/shape_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('5a029666f492b929743cb097d61273466cae073b05f1a91d8b4f9c9c2acbc8a0')
 
 build() {
   # Use ROS environment variables
