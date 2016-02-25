@@ -4,7 +4,7 @@ pkgdesc="ROS - Interface base class for controllers."
 url='https://github.com/ros-controls/ros_control/wiki'
 
 pkgname='ros-indigo-controller-interface'
-pkgver='0.9.3'
+pkgver='0.9.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -14,7 +14,7 @@ ros_makedepends=(ros-indigo-hardware-interface
   ros-indigo-pluginlib
   ros-indigo-roscpp
   ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-hardware-interface
@@ -22,10 +22,16 @@ ros_depends=(ros-indigo-hardware-interface
   ros-indigo-roscpp)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/controller_interface/${pkgver}-${_pkgver_patch}
-_dir=controller_interface
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_control-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/controller_interface/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_control-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_control-release-release-indigo-controller_interface-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_control-release/archive/release/indigo/controller_interface/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('092e0b0d47a595e690db640b37d41e32d531dda1562707ff38a755d30bde525b')
 
 build() {
   # Use ROS environment variables
