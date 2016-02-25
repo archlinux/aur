@@ -4,14 +4,14 @@ pkgdesc="ROS - robot_model contains packages for modeling various aspects of rob
 url='http://ros.org/wiki/robot_model'
 
 pkgname='ros-jade-robot-model'
-pkgver='1.11.8'
+pkgver='1.11.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-urdf
@@ -21,12 +21,19 @@ ros_depends=(ros-jade-urdf
   ros-jade-collada-parser
   ros-jade-resource-retriever
   ros-jade-collada-urdf)
-depends=(${ros_depends[@]})
+depends=(${ros_depends[@]}
+  urdfdom)
 
-_tag=release/jade/robot_model/${pkgver}-${_pkgver_patch}
-_dir=robot_model
-source=("${_dir}"::"git+https://github.com/ros-gbp/robot_model-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/robot_model/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/robot_model-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="robot_model-release-release-jade-robot_model-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_model-release/archive/release/jade/robot_model/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('77bf02a32566f729a0510a472c6f060d369ddaf51a08e3a232c949e8afd5c0fd')
 
 build() {
   # Use ROS environment variables
