@@ -3,7 +3,7 @@
 pkgname=trytond
 pkgver=3.8.3
 _pkgdir=3.8
-pkgrel=2
+pkgrel=3
 pkgdesc="A three-tiers high-level general purpose application platform (server application)"
 arch=('any')
 url="http://www.tryton.org/"
@@ -12,10 +12,10 @@ depends=('python2>=2.7' 'python2-lxml' 'python2-relatorio>=0.2.0'
          'python2-genshi>=0.5' 'python2-dateutil' 'python2-polib'
          'python2-sql')
 optdepends=('python2-psycopg2: support for PostgreSQL database'
-  'python-pywebdav: support for WebDAV feature'
-  'pydot: support for displaying workflow graphs'
-  'python-pytz: timezone support'
-  'pyopenssl: support for SSL connection')
+  'python2-pywebdav: support for WebDAV feature'
+  'python2-pydot: support for displaying workflow graphs'
+  'python2-pytz: timezone support'
+  'python2-pyopenssl: support for SSL connection')
 makedepends=('python2-distribute')
 backup=('etc/trytond.conf')
 install="trytond.install"
