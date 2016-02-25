@@ -4,7 +4,7 @@ pkgdesc="ROS - actionlib_msgs defines the common messages to interact with an ac
 url='http://ros.org/wiki/actionlib_msgs'
 
 pkgname='ros-indigo-actionlib-msgs'
-pkgver='1.11.8'
+pkgver='1.11.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -13,7 +13,7 @@ license=('BSD')
 ros_makedepends=(ros-indigo-message-generation
   ros-indigo-catkin
   ros-indigo-std-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-message-generation
@@ -21,10 +21,16 @@ ros_depends=(ros-indigo-message-generation
   ros-indigo-std-msgs)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/actionlib_msgs/${pkgver}-${_pkgver_patch}
-_dir=actionlib_msgs
-source=("${_dir}"::"git+https://github.com/ros-gbp/common_msgs-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/actionlib_msgs/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/common_msgs-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="common_msgs-release-release-indigo-actionlib_msgs-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/common_msgs-release/archive/release/indigo/actionlib_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('9f97c56691e69b5bf053171ee356d1084c080e58b4bc6efc63bb7b46303aac61')
 
 build() {
   # Use ROS environment variables
