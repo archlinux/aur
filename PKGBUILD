@@ -3,7 +3,7 @@
 
 pkgname=jlink-debugger
 pkgver=2.14a
-pkgrel=1
+pkgrel=2
 pkgdesc="Segger JLink debugger for Linux"
 arch=('i686' 'x86_64')
 license=('custom')
