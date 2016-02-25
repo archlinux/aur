@@ -8,7 +8,7 @@ pkgver=1.13.1
 _commit='9e21a7db78b709c0667d6419340cfc1a12e50a9f'
 pkgrel=1
 arch=( 'any' )
-url='https://github.com/fbt/watchman'
+url='https://gitlab.com/fbt/watchman'
 
 depends=( 'bash' )
 optdepends=( 'watchman-sm-services-git: example scripts that mostly work out of the box on arch' )
