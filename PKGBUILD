@@ -49,6 +49,7 @@ package() {
 	cd squeezelite-R2/
 
 	# Install binaries
+	install -Dm755 squeezelite-pa "${pkgdir}/usr/bin/squeezelite-pa"
 	install -Dm755 squeezelite-R2 "${pkgdir}/usr/bin/squeezelite-r2"
 	install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 	
