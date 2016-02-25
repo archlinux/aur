@@ -1,0 +1,12 @@
+--- evince-3.18.2/backend/pdf/ev-poppler.cc	2016-02-25 22:48:49.190027624 +0100
++++ evince-3.18.2/backend/pdf/ev-poppler.cc.new	2016-02-25 22:48:44.920027612 +0100
+@@ -20,6 +20,9 @@
+  */
+ 
+ #include "config.h"
++#ifndef G_OS_WIN32
++#include <io.h>
++#endif
+ 
+ #include <math.h>
+ #include <string.h>

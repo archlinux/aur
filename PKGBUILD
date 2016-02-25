@@ -3,8 +3,8 @@
 pkgbase=mingw-w64-evince-light
 _pkgbase=evince
 pkgname=mingw-w64-evince-light
-pkgver=3.16.1
-pkgrel=2
+pkgver=3.18.2
+pkgrel=1
 pkgdesc="GNOME document viewer ported for win32, built with pdf support"
 url="https://wiki.gnome.org/Apps/Evince"
 arch=('any')
@@ -31,8 +31,14 @@ provides=("${pkgbase}")
 options=('!strip' 'staticlibs' '!buildflags')
 
 install=${pkgbase}.install
-source=("http://ftp.gnome.org/pub/GNOME/sources/${_pkgbase}/${pkgver%.*}/${_pkgbase}-${pkgver}.tar.xz")
-sha256sums=('06ff75065b2a30cd588c402f6bd2ea88ee3166181805e0cc00bd54f71dbf6130')
+source=("http://ftp.gnome.org/pub/GNOME/sources/${_pkgbase}/${pkgver%.*}/${_pkgbase}-${pkgver}.tar.xz"
+        "ev_spawn.patch"
+        "ev_poppler.patch"
+)
+sha256sums=('42ad6c7354d881a9ecab136ea84ff867acb942605bcfac48b6c12e1c2d8ecb17'
+            '90d572fabbb33a91731807216c9ab57847b0a90f657b62c391a83e6510cfadcc'
+            '4b13bc32d7656e4011baf11d84b1e201e8b0b97c2ed9094fa6a2463eb6ba2629'
+           )
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -48,6 +54,9 @@ build()
   #  menus. Instead of using gio's API, it makes evince use the win32 API
   #  directly (ShellExecute).
   patch -p2 < ../../ev_spawn.patch
+
+  # Patch for missing include in ev-poppler.cc
+  patch -p1 < ../../ev_poppler.patch
 
   for _arch in ${_architectures}; do
     mkdir -p "build-${_arch}"

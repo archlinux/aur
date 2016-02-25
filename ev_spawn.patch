@@ -1,7 +1,6 @@
-diff -rupN evince-3.16.1/shell/ev-application.c src/evince-3.16.1/shell/ev-application.c
---- evince-3.16.1/shell/ev-application.c	2015-05-27 12:02:51.000000000 +0200
-+++ src/evince-3.16.1/shell/ev-application.c	2015-07-25 14:18:31.886559695 +0200
-@@ -44,6 +44,12 @@
+--- src/evince-3.18.2/shell/ev-application.c	2015-10-18 10:33:50.000000000 +0200
++++ src/evince-3.18.2/shell/ev-application.c.new	2016-02-25 23:14:16.900031829 +0100
+@@ -44,6 +44,13 @@
  #include "ev-media-player-keys.h"
  #endif /* ENABLE_DBUS */
  
@@ -11,10 +10,11 @@ diff -rupN evince-3.16.1/shell/ev-application.c src/evince-3.16.1/shell/ev-appli
 +#include <winuser.h>
 +#endif
 +
++
  struct _EvApplication {
  	GtkApplication base_instance;
  
-@@ -172,8 +178,12 @@ ev_spawn (const char     *uri,
+@@ -172,8 +179,12 @@
  	path = g_build_filename (BINDIR, "evince", NULL);
  #endif
  
@@ -27,78 +27,30 @@ diff -rupN evince-3.16.1/shell/ev-application.c src/evince-3.16.1/shell/ev-appli
  	
  	/* Page label */
  	if (dest) {
-@@ -212,34 +222,50 @@ ev_spawn (const char     *uri,
+@@ -212,7 +223,19 @@
  		break;
  	}
  
--	cmdline = g_string_free (cmd, FALSE);
--	app = g_app_info_create_from_commandline (cmdline, NULL, 0, &error);
- 
--	if (app != NULL) {
--                GList uri_list;
--                GList *uris = NULL;
--		GdkAppLaunchContext *ctx;
--
--		ctx = gdk_display_get_app_launch_context (gdk_screen_get_display (screen));
--		gdk_app_launch_context_set_screen (ctx, screen);
--		gdk_app_launch_context_set_timestamp (ctx, timestamp);
--
--                /* Some URIs can be changed when passed through a GFile
--                 * (for instance unsupported uris with strange formats like mailto:),
--                 * so if you have a textual uri you want to pass in as argument,
--                 * consider using g_app_info_launch_uris() instead.
--                 * See https://bugzilla.gnome.org/show_bug.cgi?id=644604
--                 */
--                if (uri) {
--                        uri_list.data = (gchar *)uri;
--                        uri_list.prev = uri_list.next = NULL;
--                        uris = &uri_list;
--                }
--		g_app_info_launch_uris (app, uris, G_APP_LAUNCH_CONTEXT (ctx), &error);
 +	#ifdef G_OS_WIN32
 +		g_string_append(cmd, " ");
 +		g_string_append(cmd, uri);
 +	#endif
 +
-+	cmdline = g_string_free (cmd, FALSE);
- 
--		g_object_unref (app);
--		g_object_unref (ctx);
+ 	cmdline = g_string_free (cmd, FALSE);
 +	#ifdef G_OS_WIN32
 +	{
 +		ShellExecute(NULL,"open",path,cmdline,"",SW_SHOWDEFAULT);
 +		fprintf(stderr, "INFO: Spawning evince process with command line '%s %s'\n",path,cmdline);
 +		g_free(path);
- 	}
++	}
 +	#else
-+		app = g_app_info_create_from_commandline (cmdline, NULL, 0, &error);
-+	
-+		if (app != NULL) {
-+	                GList uri_list;
-+	                GList *uris = NULL;
-+			GdkAppLaunchContext *ctx;
-+	
-+	
-+			ctx = gdk_display_get_app_launch_context (gdk_screen_get_display (screen));
-+			gdk_app_launch_context_set_screen (ctx, screen);
-+			gdk_app_launch_context_set_timestamp (ctx, timestamp);
-+	
-+	                /* Some URIs can be changed when passed through a GFile
-+	                 * (for instance unsupported uris with strange formats like mailto:),
-+	                 * so if you have a textual uri you want to pass in as argument,
-+	                 * consider using g_app_info_launch_uris() instead.
-+	                 * See https://bugzilla.gnome.org/show_bug.cgi?id=644604
-+	                 */
-+	                if (uri) {
-+	                        uri_list.data = (gchar *)uri;
-+	                        uri_list.prev = uri_list.next = NULL;
-+	                        uris = &uri_list;
-+	                }
-+			g_app_info_launch_uris (app, uris, G_APP_LAUNCH_CONTEXT (ctx), &error);
-+	
-+			g_object_unref (app);
-+			g_object_unref (ctx);
-+		}
+ 	app = g_app_info_create_from_commandline (cmdline, NULL, G_APP_INFO_CREATE_SUPPORTS_URIS, &error);
+ 
+ 	if (app != NULL) {
+@@ -240,6 +263,7 @@
+ 		g_object_unref (app);
+ 		g_object_unref (ctx);
+ 	}
 +	#endif
  
  	if (error != NULL) {
