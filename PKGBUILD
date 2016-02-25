@@ -20,7 +20,7 @@ source=("GoogleEarthProWin-$pkgver.exe::https://dl.google.com/earth/client/advan
         'Legal-Notices-for-Google-Earth-and-Google-Earth-APIs.html::https://www.google.com/help/legalnotices_maps.html'
         'Google-Privacy-Policy.html::https://www.google.com/intl/ALL/policies/privacy/index.html')
 md5sums=('b5c77900c789125378eadaba792b8a87'
-         'e9a7956d19d1a006c51dcc8560baa62e'
+         'de86a7976f6069b780d6612fa7e696dc'
          '9be557dbe2950f8adae14ed0b036a218'
          'ec5de2f7743a06a5b4acbbb853e03f9b'
          '392333988b71073344fd8b3094230ff1'
