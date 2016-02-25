@@ -52,8 +52,8 @@ pkgbase=linux-rt-bfq
 pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _kernelname=-rt-bfq
 _srcname=linux-4.4
-_pkgver=4.4.1
-_rtpatchver=rt6
+_pkgver=4.4.2
+_rtpatchver=rt7
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -81,7 +81,6 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'config' 'config.x86_64'
         'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch'
         '0004-sdhci-revert.patch'
-        '0006-tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch'
         '0007-4.4-revert-btrfs.patch'
         '0008-4.4-revert-xfs.patch')
         
@@ -106,11 +105,6 @@ prepare() {
     # https://bugzilla.kernel.org/show_bug.cgi?id=106541
         msg "Fixes #47778 sdhci broken on some boards"
         patch -Rp1 -i "${srcdir}/0004-sdhci-revert.patch"    
-        
-    ### Fixes #47805 kernel panics on platform modules
-    # https://bugzilla.kernel.org/show_bug.cgi?id=110751
-        msg "Fixes #47805 kernel panics on platform modules"
-        patch -Np1 -i "${srcdir}/0006-tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch"
         
     ### Fix broken suspend from btrfs and xfs
         msg "Fix #47757"
@@ -471,9 +465,9 @@ package_linux-rt-bfq-docs() {
 
 sha512sums=('13c8459933a8b80608e226a1398e3d1848352ace84bcfb7e6a4a33cb230bbe1ab719d4b58e067283df91ce5311be6d2d595fc8c19e2ae6ecc652499415614b3e'
             'SKIP'
-            'b117b6f88dd713a33691306e483d5c42bcf61091d91f7248e1537ac7f7b96380f5f7df81f399cecda13d9388ad7aa52ed2e6d46f7b27706d2f197b8e64c330b3'
+            '3222ddc913d14cd4b4ae999890afb580db9a79337dcd42876db6bbf08d351982bb1849fd97152915b570a3408ddd2be645e851736615f90ad8354244116ae12c'
             'SKIP'
-            'c6efdd48e7e0dd10c7b7892cc2524e23f8fcd0c60b31f07ab42ed06227f22cd554bbeea1a11133d74cab5c7c17a61c935ea4a9aa9cfc1c57b7f517eb6f10a85b'
+            '2ab9c7bdf2f5b43a74840a82f34f4a354c3a0c21407993ca1afc84b077f29a5a1e34079d70705a59f853e4c48665d763ffd379e3637c6dc8616cfafc517c6280'
             'SKIP'
             'bfd5d1a2d8f203e4d13914d311e8cc79b81695a41dc24179074cb05a5a9b5b0cc89a77062c6b8f79c850281aaa0d02dce40e23750aea7d1015f675c1cc024027'
             '275b7573adf648325ab950f8a8be7753f2efac0c4cd5030d31b0482fca0b9b9886c85dec989acde15eadf128366c250ecbd19d5527bfb41f472425fef43e93fd'
@@ -485,7 +479,6 @@ sha512sums=('13c8459933a8b80608e226a1398e3d1848352ace84bcfb7e6a4a33cb230bbe1ab71
             '56ce250e1b14b03b28dfdf03923ffd173d05edc5fe9dcf5daecd121370e618d62eb8448b930503d69989c9c7ee3e3d8b64768962e78f5a1d08ba1267405192df'
             '326dc571c072d4c47381852f16c00c8a7b27d11a5e6ff0f60f5e3a21d4a833c1e467dda1c2a5c04a6611af48bb6ef017f9183ea4ee578aab1a07e91e44d4e528'
             'be80d7ee558595d4b17b07a5a2b729d9a9503c963ec1b19bac6a87601eaefd28075aea7fb6d9c77e2e15e063fc6a8a2e8744bc1efe63e2a58b8c3ede0d89c821'
-            'a4580a922f8c1e26a4c41065e1690ee15a6ca8c096b329c2dde048ff11eef4c98348d9b4c87702862e0bf4cfaeff5122d4aca9d3b4085efc805068dd79c7f30c'
             '9ebfcb5bfa613bd6b2c2817d3487bd22c2fbbb5f686f68c28912813be141d584b33cc8d8f175ce7cf10ec686902f7336c966b04b00d6aa5409298f1474c58035'
             '321a4817ca9a7486f7bf212978e6eeab1481b31c37d35209d7062be7d9f360d5b1f26b2dc45a4c46879c2d14b4ed212b322ea91d0fb85f74d6c298a7cc2a3198')
             
