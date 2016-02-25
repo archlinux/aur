@@ -18,6 +18,14 @@ prepare() {
 	 cp -a "${srcdir}/${_pkgname}-${pkgver}"{,-py2}
 }
 
+build() {
+	 cd "${srcdir}/${_pkgname}-${pkgver}"
+    python setup.py build
+
+	 cd "${srcdir}/${_pkgname}-${pkgver}-py2"
+    python2 setup.py build
+}
+
 package_python-tqdm() {
 	 cd "${srcdir}/${_pkgname}-${pkgver}"
 	 python  setup.py install --root="${pkgdir}" --optimize=1
