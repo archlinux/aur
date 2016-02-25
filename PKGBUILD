@@ -4,16 +4,16 @@ pkgdesc="ROS - This package contains the description (mechanical, kinematic, vis
 url='http://ros.org/wiki/pr2_description'
 
 pkgname='ros-indigo-pr2-description'
-pkgver='1.11.13'
-_pkgver_patch=0
+pkgver='1.11.14'
+_pkgver_patch=1
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-indigo-convex-decomposition
   ros-indigo-ivcon
   ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-xacro)
@@ -21,14 +21,14 @@ depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/indigo/pr2_description/${pkgver}-${_pkgver_patch}
-# _dir=pr2_description
+# _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/pr2-gbp/pr2_common-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
 _dir="pr2_common-release-release-indigo-pr2_description-${pkgver}-${_pkgver_patch}"
-source=("https://github.com/pr2-gbp/pr2_common-release/archive/release/indigo/pr2_description/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1b44581a75f58babeea7b498d4c70614eaf4e6ce088ce381db264616d94dfda4')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/pr2-gbp/pr2_common-release/archive/release/indigo/pr2_description/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('9345977e40d25af371c25a4e3e937bed95e1bd70ea1fb5b275df08283a5fd0f4')
 
 build() {
   # Use ROS environment variables
