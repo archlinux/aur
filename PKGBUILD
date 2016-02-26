@@ -8,25 +8,25 @@
 _gtk3=true
 
 # try to build with PGO
-#_pgo=false
+_pgo=false
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
 pkgver=44.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://build.opensuse.org/package/show/mozilla:Factory/MozillaFirefox"
 depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
          'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
-	 'libvpx' 'icu'  'libevent' 'nss>=3.18.1' 'nspr>=4.10.6' 'hunspell' 
+	 'libvpx' 'icu'  'libevent' 'nss>=3.18.1' 'nspr>=4.10.6' 'hunspell'
+	 'ffmpeg'
 	 'sqlite' 'libnotify' 'kmozillahelper')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake'
-             'xorg-server-xvfb' 'libpulse' 'gst-plugins-base-libs' 'inetutils')
+             'xorg-server-xvfb' 'libpulse' 'inetutils')
 optdepends=('networkmanager: Location detection via available WiFi networks'
-	    'upower: Battery API'
-	    'ffmpeg: H264/AAC/MP3 decoding')
+	    'upower: Battery API' )
 provides=("firefox=${pkgver}")
 conflicts=('firefox')
 install=firefox.install
@@ -50,7 +50,20 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/
 	firefox-quicktime.patch
 )
 
+# Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
+# Note: These are for Arch Linux use ONLY. For your own distribution, please
+# get your own set of keys. Feel free to contact foutrelis@archlinux.org for
+# more information.
 _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
+_google_default_client_id=413772536636.apps.googleusercontent.com
+_google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
+
+# Mozilla API keys (see https://location.services.mozilla.com/api)
+# Note: These are for Arch Linux use ONLY. For your own distribution, please
+# get your own set of keys. Feel free to contact heftig@archlinux.org for
+# more information.
+_mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
+
 
 prepare() {
   cd $_pkgname-$pkgver
@@ -58,8 +71,17 @@ prepare() {
   cp "$srcdir/mozconfig" .mozconfig
 
   patch -Np1 -i "$srcdir/firefox-install-dir.patch"
-  echo -n "$_google_api_key" > google-api-key
 
+  
+  echo -n "$_google_api_key" >google-api-key
+  echo "ac_add_options --with-google-api-keyfile=\"$PWD/google-api-key\"" >>.mozconfig
+
+  echo -n "$_google_default_client_id $_google_default_client_secret" >google-oauth-api-key
+  echo "ac_add_options --with-google-oauth-api-keyfile=\"$PWD/google-oauth-api-key\"" >>.mozconfig
+
+  echo -n "$_mozilla_api_key" >mozilla-api-key
+  echo "ac_add_options --with-mozilla-api-keyfile=\"$PWD/mozilla-api-key\"" >>.mozconfig
+  
   # https://bugs.archlinux.org/task/41689
   patch -Np1 -i "$srcdir/rhbz-966424.patch"
 
@@ -166,7 +188,7 @@ package() {
 }
 
 sha256sums=('0bb28841a9268c50cbb239f759f16f55b3a624f679c68965158beaa0a83a2d9e'
-            '06819d7b40d86a24a35073cc637bff6dba5afc958d81685f3f5979b1bb8ed500'
+            '633084aa03336088e087f39eb55b212cc97b11d27a4b288a87f75148350be4dd'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'

@@ -46,8 +46,6 @@ ac_add_options --disable-debug-symbols
 ac_add_options --enable-optimize
 #ac_add_options --enable-debug-symbols
 
-ac_add_options --with-google-api-keyfile="$PWD/google-api-key"
-
 # PGO
 mk_add_options PROFILE_GEN_SCRIPT='EXTRA_TEST_ARGS=10 $(MAKE) -C $(MOZ_OBJDIR) pgo-profile-run'
 
