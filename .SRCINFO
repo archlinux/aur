@@ -1,7 +1,7 @@
 pkgbase = ttf-jomolhari
 	pkgdesc = Dzongkha Font - Bhutanese style dbu-can OpenType font created by Christopher Fynn
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.library.gov.bt/IT/fonts.html
 	install = ttf-jomolhari.install
 	arch = any
