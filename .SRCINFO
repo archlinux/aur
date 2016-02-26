@@ -1,7 +1,7 @@
 pkgbase = vdr-skindesigner
 	pkgdesc = Highly customizable native true color skin for the Video Disc Recorder
-	pkgver = 0.7.2
-	pkgrel = 2
+	pkgver = 0.8.6
+	pkgrel = 1
 	url = http://projects.vdr-developer.org/projects/skin-nopacity
 	install = vdr-skindesigner.install
 	arch = x86_64
@@ -36,10 +36,10 @@ pkgbase = vdr-skindesigner
 	replaces = skindesigner-tryouts
 	options = !emptydirs
 	backup = etc/vdr/conf.avail/50-skindesigner.conf
-	source = http://projects.vdr-developer.org/git/vdr-plugin-skindesigner.git/snapshot/vdr-plugin-skindesigner-0.7.2.tar.bz2
+	source = http://projects.vdr-developer.org/git/vdr-plugin-skindesigner.git/snapshot/vdr-plugin-skindesigner-0.8.6.tar.bz2
 	source = 99-skindesigner.conf
 	source = 50-skindesigner.conf
-	md5sums = 526871bed22a6e05e3c959b0a9ec7931
+	md5sums = 3955d8c0db1bfd116fb1d8e22efad8f9
 	md5sums = bab4227c649d778e4b05483535afda0b
 	md5sums = ebc6537bf0d3e604c59884ec408f7e9c
 
