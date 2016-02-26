@@ -3,7 +3,7 @@
 pkgname=keeweb-git
 _pkgname=keeweb
 pkgver=1.0.4.0.ga6e7afe
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop password manager compatible with KeePass databases."
 arch=('any')
 url="https://github.com/antelle/keeweb"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('electron' 'xdg-utils' 'sh')
 makedepends=('nodejs-grunt' 'npm')
 provides=("${_pkgname}" "${_pkgname}-desktop")
-conflicts=("${_pkgname}")
+conflicts=("${_pkgname}" "${_pkgname}-desktop")
 source=('git+https://github.com/antelle/keeweb.git')
 sha1sums=('SKIP')
 _desktop="${_pkgname}.desktop"
