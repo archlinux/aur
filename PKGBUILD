@@ -10,7 +10,8 @@ url="https://git.javispedro.com/cgit/topmenu-gtk.git/about/"
 license=('LGPL')
 depends=('gtk2')
 makedepends=('mate-panel' 'xfce4-panel')
-optdepends=('mate-panel: Topmenu Applet for MATE panel'
+optdepends=('gtk3: Module for GTK+ 3'
+            'mate-panel: Topmenu Applet for MATE panel'
             'xfce4-panel: Topmenu Applet for Xfce4 panel')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.xz::https://git.javispedro.com/cgit/$pkgname.git/snapshot/release_$pkgver.tar.xz"
@@ -24,17 +25,24 @@ prepare() {
 }
 
 build() {
-  cd release_$pkgver
+  # GTK+ 2 version
+  [ -d gtk2 ] || cp -r release_$pkgver gtk2
+  cd gtk2
   ./configure --prefix=/usr --libexecdir=/usr/lib/$pkgname
+  make
 
-  #https://bugzilla.gnome.org/show_bug.cgi?id=656231
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-
+  cd "$srcdir"
+  # GTK+ 3 version
+  [ -d gtk3 ] || cp -r release_$pkgver gtk3
+  cd gtk3
+  ./configure --prefix=/usr --libexecdir=/usr/lib/$pkgname
   make
 }
 
 package() {
-  cd release_$pkgver
+  cd gtk2
+  make DESTDIR="$pkgdir" install
+  cd "$srcdir/gtk3"
   make DESTDIR="$pkgdir" install
   install -D "$srcdir/topmenu.xinit" \
     "$pkgdir/etc/X11/xinit/xinitrc.d/41-topmenu-gtk-module.sh"
