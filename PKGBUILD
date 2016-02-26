@@ -14,7 +14,7 @@ install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/robint99/$_pkgname/archive/V$pkgver.tar.gz")
 md5sums=('20c70655ed935c33defb71247117ae2e')
 
-prepare() {
+build() {
   cd $_pkgname-$pkgver
   ./configure --prefix=/usr
   make
