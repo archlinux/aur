@@ -19,7 +19,7 @@ makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 _srcdir="${_pybase}-${pkgver}"
 _verwatch=("${url}/releases" "${url#*github.com}/archive/\(.*\)\.tar\.gz" 'l')
 source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('ec07b47853b088f10814727ca316a62438e572b4bbf956a1adf7206e8dec7268')
+sha256sums=('3447539a8516ae1908475641a80ffa12f6986a7635796fd4cf56b22780bb6e89')
 
 build() {
   set -u
