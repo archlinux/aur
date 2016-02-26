@@ -22,7 +22,8 @@ optdepends=('alsa-lib: for basic sound support'
             'ttf-font: fonts')
 makedepends=('pacman>=4.2.0')
 provides=("java-runtime=$_major" "java-runtime-headless=$_major" "java-web-start=$_major"
-          "java-runtime-jre=$_major" "java-runtime-headless-jre=$_major" "java-web-start-jre=$_major")
+          "java-runtime-jre=$_major" "java-runtime-headless-jre=$_major" "java-web-start-jre=$_major"
+          "java-openjfx=$_major")
 
 # Variables
 _jname=${_pkgname}${_major}
