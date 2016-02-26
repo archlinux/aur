@@ -6,50 +6,56 @@
 
 _pkgname=playonlinux5
 pkgname=$_pkgname-git
-pkgver=5.0.0.g4440f79
+pkgver=5.0.r1235.edcd1a7
 pkgrel=1
 epoch=1
-pkgdesc="GUI for managing Windows programs under linux"
+pkgdesc="GUI for managing Windows programs under linux (development version based on Java)"
+arch=('any')
 url="http://www.playonlinux.com/"
 license=('GPL')
-depends=('wine' 'maven' 'jdk8-openjdk' 'java-openjfx' 'gradle' 'java-gnome')
-arch=('any')
-provides='playonlinux5'
-conflicts='playonlinux5'
-source=("$_pkgname::git://github.com/PlayOnLinux/POL-POM-5.git")
+depends=('wine' 'gradle' 'maven' 'java-gnome' 'java-environment>=8' 'java-openjfx')
 options=(!strip)
-md5sums=('SKIP')
+source=("$_pkgname::git://github.com/PlayOnLinux/POL-POM-5.git"
+        'PlayOnLinux.desktop')
+md5sums=('SKIP'
+         '7fe925810fc7ec6d8745817b1c541e7b')
 
-basedir=$(pwd)
+pkgver() {
+  cd "$_pkgname"
 
-# No releases available yet
-# pkgver() {
-# 	cd "$_pkgname"
-# 	git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-# }
+  _ver=$(grep -m1 "<version>" pom.xml | cut -d ">" -f2 | cut -d "-" -f1)
+  _rev="$(git rev-list --count HEAD)"
+  _hash="$(git rev-parse --short HEAD)"
+
+  echo "${_ver}.r${_rev}.${_hash}"
+}
+
+build() {
+  cd "$_pkgname"
+
+  # Set environment
+  export JAVA_HOME="/usr/lib/jvm/default"
+
+  # Clean up
+  mvn clean
+
+  # Build
+  mvn package
+}
 
 package() {
-	cd "$srcdir/$_pkgname"
+  # Extract
+  install -d "$pkgdir/opt/"
+  bsdtar -xf "$_pkgname/phoenicis-dist/target/phoenicis-dist.zip"
+  cp -r phoenicis-dist/ "$pkgdir/opt/$_pkgname/"
 
-  mkdir -p $pkgdir/.m2
-  export MVN_REPO=$pkgdir/.m2
-  export PATH=$PATH:$M2_HOME/bin
-  export JAVA_HOME="/usr/lib/jvm/java-8-openjdk"
-  mvn="mvn -Dmaven.repo.local=$MVN_REPO"
+  # Launcher
+  install -d "$pkgdir/usr/bin/"
+  ln -s "/opt/$_pkgname/PlayOnLinux.sh" "$pkgdir/usr/bin/$_pkgname"
+  sed -i 's|$(dirname $0)|/opt/playonlinux5|' "$pkgdir/opt/$_pkgname/PlayOnLinux.sh"
 
-  $mvn clean
-  $mvn assembly:assembly
-
-	install -d "$pkgdir/opt/$_pkgname"
-	install -d "$pkgdir/usr/bin"
-	cp "$srcdir/$_pkgname/target/playonlinux-5.0-SNAPSHOT-jar-with-dependencies.jar" "$pkgdir/opt/$_pkgname/$_pkgname.jar"
-	rm -rf "$pkgdir/usr/share/$_pkgname/.git"
-
-	echo '#!/bin/bash' > "$pkgdir/usr/bin/$_pkgname"
-	echo "java -jar /opt/$_pkgname/$_pkgname.jar \"\$@\"" >> "$pkgdir/usr/bin/$_pkgname"
-	chmod +x "$pkgdir/usr/bin/$_pkgname"
-
-  install -D "$basedir/logo256.png" "$pkgdir/usr/share/icons/playonlinux5.png"
-	install -D -m644 "$basedir/PlayOnLinux.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
-	sed -i 's/ %F//g' "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  # Icon + Desktop
+  install -Dm644 "$srcdir/$_pkgname/phoenicis-javafx/target/classes/com/playonlinux/javafx/common/playonlinux.png" \
+                 "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+  install -Dm644 PlayOnLinux.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
