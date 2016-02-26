@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1
+Encoding=UTF-8
+Name=Le Littré Dictionary
+Comment=The great french dictionary of Émile Littré (Qt)
+Exec=littre
+Terminal=false
+Type=Application
+Icon=littre.png
+Categories=Office
+StartupNotify=False
+Name[fr]=Dictionnaire Le Littré
+
