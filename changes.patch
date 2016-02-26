@@ -262,8 +262,82 @@ index 8cf2380..41f252e 100644
 +        #package_dir={'fafclient':'src'}
 +    )
 +  
+diff --git a/src/__main__.py b/src/__main__.py
+index 7cc6586..cb52ecc 100644
+--- a/src/__main__.py
++++ b/src/__main__.py
+@@ -26,6 +26,7 @@ from PyQt4 import QtGui, uic
+ path = os.path.join(os.path.dirname(sys.argv[0]), "PyQt4.uic.widget-plugins")
+ uic.widgetPluginPath.append(path)
+ 
++
+ # Are we running from a frozen interpreter?
+ if getattr(sys, 'frozen', False):
+     os.chdir(os.path.dirname(sys.executable))
+@@ -37,8 +38,6 @@ else:
+     # We need to set the working directory correctly.
+ 
+ import util
+-util.COMMON_DIR = os.path.join(os.getcwd(), "res")
+-
+ import config
+ import platform
+ 
+diff --git a/src/chat/_chatwidget.py b/src/chat/_chatwidget.py
+index 53bab40..15d59be 100644
+--- a/src/chat/_chatwidget.py
++++ b/src/chat/_chatwidget.py
+@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
+ from PyQt4 import QtGui, QtCore
+ from PyQt4.QtNetwork import QNetworkAccessManager, QNetworkRequest
+ 
+-from config import Settings
++from config import Settings, VERSION
+ import util
+ import fa
+ 
+@@ -246,7 +246,7 @@ class ChatWidget(FormClass, BaseClass, SimpleIRCClient):
+         self.connection.privmsg('NickServ', 'register %s %s' % (util.md5text(self.client.password), self.client.email))
+ 
+     def on_version(self, c, e):
+-        self.connection.privmsg(e.source(), "Forged Alliance Forever " + util.VERSION_STRING)
++        self.connection.privmsg(e.source(), "Forged Alliance Forever " + VERSION)
+ 
+     def on_motd(self, c, e):
+         self.log_event(e)
+diff --git a/src/client/_clientwindow.py b/src/client/_clientwindow.py
+index 582233d..8c655d8 100644
+--- a/src/client/_clientwindow.py
++++ b/src/client/_clientwindow.py
+@@ -7,7 +7,7 @@ from PyQt4.QtNetwork import QAbstractSocket
+ import config
+ import connectivity
+ from base import Client
+-from config import Settings
++from config import Settings, VERSION
+ import chat
+ from client.player import Player
+ from client.players import Players
+@@ -212,7 +212,7 @@ class ClientWindow(FormClass, BaseClass):
+         self.setStyleSheet(util.readstylesheet("client/client.css"))
+         self.whatNewsView.setHtml("<body style='background-color: #000;'></body>")
+ 
+-        self.setWindowTitle("FA Forever " + util.VERSION_STRING)
++        self.setWindowTitle("FA Forever " + VERSION)
+ 
+         # Frameless
+         self.setWindowFlags(
+@@ -749,7 +749,7 @@ class ClientWindow(FormClass, BaseClass):
+     @QtCore.pyqtSlot()
+     def linkAbout(self):
+         dialog = util.loadUi("client/about.ui")
+-        dialog.version_label.setText("Version: {}".format(util.VERSION_STRING))
++        dialog.version_label.setText("Version: {}".format(VERSION))
+         dialog.exec_()
+ 
+     def saveWindow(self):
 diff --git a/src/config/version.py b/src/config/version.py
-index 8ee2014..01425fc 100644
+index 8ee2014..da6a1d9 100644
 --- a/src/config/version.py
 +++ b/src/config/version.py
 @@ -40,7 +40,7 @@ def call_git_describe():
@@ -275,6 +349,17 @@ index 8ee2014..01425fc 100644
  
  def is_development_version(version):
      return "-" in version and not is_prerelease_version(version)
+@@ -51,7 +51,9 @@ def is_prerelease_version(version):
+ 
+ def read_release_version():
+     try:
+-        f = open("RELEASE-VERSION", "r")
++        import util
++        import os.path
++        f = open(os.path.join(util.COMMON_DIR,"RELEASE-VERSION"), "r")
+ 
+         try:
+             version = f.readlines()[0]
 diff --git a/src/fa/game_process.py b/src/fa/game_process.py
 index 9052f31..54666ff 100644
 --- a/src/fa/game_process.py
@@ -298,37 +383,93 @@ index 9052f31..54666ff 100644
  
              logger.info("Running FA with info: " + str(info))
              logger.info("Running FA via command: " + command)
-diff --git a/src/fa/updater.py b/src/fa/updater.py
-index e7226f7..6aeb4fa 100644
---- a/src/fa/updater.py
-+++ b/src/fa/updater.py
-@@ -396,7 +396,7 @@ class Updater(QtCore.QObject):
-                 dst_file = os.path.join(dst_dir, file_)
-                 if not os.path.exists(dst_file):
-                     shutil.copy(src_file, dst_dir)
--                os.chmod(dst_file, stat.S_IWRITE)   # make all files we were considering writable, because we may need to patch them
-+                os.chmod(dst_file, stat.S_IWRITE | stat.S_IREAD)   # make all files we were considering writable, because we may need to patch them
+diff --git a/src/fa/maps.py b/src/fa/maps.py
+index 72606f6..b7f7f88 100644
+--- a/src/fa/maps.py
++++ b/src/fa/maps.py
+@@ -191,13 +191,18 @@ def folderForMap(mapname):
+     Returns the folder where the application could find the map
+     '''
+     if isBase(mapname):
+-        return os.path.join(getBaseMapsFolder(), mapname)
+-    
+-    if os.path.isdir(getUserMapsFolder()):
+-        for infile in os.listdir(getUserMapsFolder()) :
+-            if infile.lower() == mapname.lower(): 
+-                return os.path.join(getUserMapsFolder(), mapname)
++        mapsfolder = getBaseMapsFolder()
++    else:
++        mapsfolder = getUserMapsFolder()
  
-     def doUpdate(self):
-         """ The core function that does most of the actual update work."""
++    if not os.path.isdir(mapsfolder):
++        return None
++
++    for infile in os.listdir(mapsfolder):
++        if infile.lower() == mapname.lower():
++            result = os.path.join(mapsfolder, infile)
++            if os.path.isdir(result):
++                return result
+     return None
+ 
+ def getBaseMapsFolder():
+@@ -250,18 +255,13 @@ def __exportPreviewFromMap(mapname, positions=None):
+     largeExists = False
+     ddsExists = False
+     previews = {"cache":None, "tozip":list()}
+-    
+-    if os.path.isdir(mapname):
+-        mapdir = mapname
+-    elif os.path.isdir(os.path.join(getUserMapsFolder(), mapname)):
+-        mapdir = os.path.join(getUserMapsFolder(), mapname)
+-    elif os.path.isdir(os.path.join(getBaseMapsFolder(), mapname)):
+-        mapdir = os.path.join(getBaseMapsFolder(), mapname)
+-    else:
++
++    mapdir = folderForMap(mapname)
++    if not mapdir:
+         logger.debug("Can't find mapname in file system: " + mapname)
+         return previews
+         
+-    mapname = os.path.basename(mapdir).lower()
++    mapname = os.path.basename(mapdir)
+     mapfilename = os.path.join(mapdir, mapname.split(".")[0]+".scmap")
+     
+     mode = os.stat(mapdir)[0]
 diff --git a/src/util/__init__.py b/src/util/__init__.py
-index 39d8ebb..f57f3d9 100644
+index 39d8ebb..bc52869 100644
 --- a/src/util/__init__.py
 +++ b/src/util/__init__.py
-@@ -7,6 +7,24 @@ from ctypes import *
- def developer():
-     return sys.executable.endswith("python.exe")
+@@ -1,22 +1,43 @@
+ import sys
  
-+# Public settings object
-+# Stolen from Config because reasons
-+from config import _settings
-+settings = _settings
-+
+ import os
+-from ctypes import *
+ 
+ # Developer mode flag
+ def developer():
+-    return sys.executable.endswith("python.exe")
++    return "python" in sys.executable
+ 
+-from config import VERSION as VERSION_STRING
 +import platform
 +if platform.system() == "Windows":
 +    WINDOWS = True
 +else:
 +    WINDOWS = False
++
++#This data path is relative to the executable or main.py script
++COMMON_DIR = os.path.join(os.getcwd(), "res")
++if not os.path.exists(COMMON_DIR) and not WINDOWS:
++    # support a separation of the res folder into /usr/share/fafclient
++    COMMON_DIR = os.path.join("/usr", "share", "fafclient")
++
++# Public settings object
++# Stolen from Config because reasons
++from config import _settings
++settings = _settings
++
++# initialize wine settings for non Windows platforms
++if not WINDOWS:
 +    wine_exe = settings.value("wine/exe", "wine")
 +    if settings.contains("wine/prefix"):
 +        wine_prefix = settings.value("wine/prefix")
@@ -336,20 +477,19 @@ index 39d8ebb..f57f3d9 100644
 +        wine_prefix = os.path.join(os.path.expanduser("~"), ".wine")
 +    settings_file = settings.fileName()
 +    wine_use_optirun = settings.value("wine/use_optirun", False, type=bool)
-+
- from config import VERSION as VERSION_STRING
  
  LOGFILE_MAX_SIZE = 256 * 1024  #256kb should be enough for anyone
-@@ -16,6 +34,8 @@ UNITS_PREVIEW_ROOT = "http://content.faforever.com/faf/unitsDB/icons/big/"
  
- #These are paths relative to the executable or main.py script
- COMMON_DIR = os.path.join(os.getcwd(), "res")
-+if not os.path.exists(COMMON_DIR) and not WINDOWS:
-+  COMMON_DIR = os.path.join("/usr", "share", "fafclient")
  
+ UNITS_PREVIEW_ROOT = "http://content.faforever.com/faf/unitsDB/icons/big/"
+ 
+-#These are paths relative to the executable or main.py script
+-COMMON_DIR = os.path.join(os.getcwd(), "res")
+-
  # These directories are in Appdata (e.g. C:\ProgramData on some Win7 versions)
  if 'ALLUSERSPROFILE' in os.environ:
-@@ -58,12 +78,21 @@ REPO_DIR = os.path.join(APPDATA_DIR, "repo")
+     APPDATA_DIR = os.path.join(os.environ['ALLUSERSPROFILE'], "FAForever")
+@@ -58,32 +79,46 @@ REPO_DIR = os.path.join(APPDATA_DIR, "repo")
  if not os.path.exists(REPO_DIR):
      os.makedirs(REPO_DIR)
  
@@ -376,7 +516,44 @@ index 39d8ebb..f57f3d9 100644
  
  DOWNLOADED_RES_PIX = {}
  DOWNLOADING_RES_PIX = {}
-@@ -161,11 +190,6 @@ __theme = None
+ 
+ # This should be "My Documents" for most users. However, users with accents in their names can't even use these folders in Supcom
+ # so we are nice and create a new home for them in the APPDATA_DIR
+-try:
+-    os.environ['USERNAME'].decode('ascii')  # Try to see if the user has a wacky username
++if WINDOWS:
++    try:
++        os.environ['USERNAME'].decode('ascii')  # Try to see if the user has a wacky username
+ 
+-    import ctypes
+-    from ctypes.wintypes import MAX_PATH
++        import ctypes
++        from ctypes.wintypes import MAX_PATH
+ 
+-    dll = ctypes.windll.shell32
+-    buf = ctypes.create_unicode_buffer(MAX_PATH + 1)
+-    if dll.SHGetSpecialFolderPathW(None, buf, 0x0005, False):
+-        PERSONAL_DIR = (buf.value)
+-    else:
+-        raise StandardError
+-except:
+-    PERSONAL_DIR = os.path.join(APPDATA_DIR, "user")
++        dll = ctypes.windll.shell32
++        buf = ctypes.create_unicode_buffer(MAX_PATH + 1)
++        if dll.SHGetSpecialFolderPathW(None, buf, 0x0005, False):
++            PERSONAL_DIR = (buf.value)
++        else:
++            raise StandardError
++    except:
++        # wine points the "My Documents" folder to the users home directory on linux
++        PERSONAL_DIR = os.path.join(APPDATA_DIR, "user")
++else:
++    from os.path import expanduser
++    PERSONAL_DIR = expanduser("~")
+ 
+ #Ensure Application data directories exist
+ if not os.path.isdir(APPDATA_DIR):
+@@ -161,11 +196,6 @@ __theme = None
  __themedir = None
  
  
@@ -388,3 +565,38 @@ index 39d8ebb..f57f3d9 100644
  def clean_slate(path):
      if os.path.exists(path):
          logger.info("Wiping " + path)
+@@ -200,7 +230,8 @@ def setTheme(theme, restart=True):
+         test_dir = os.path.join(THEME_DIR, theme)
+         if os.path.isdir(test_dir):
+             version_file = os.path.join(THEME_DIR, theme, "version")
+-            if os.path.isfile(version_file) and (VERSION_STRING == open(version_file).read()):
++            from config import VERSION
++            if os.path.isfile(version_file) and (VERSION == open(version_file).read()):
+                 logger.info("Using theme: " + theme + " in directory " + test_dir)
+                 __themedir = test_dir
+                 __theme = theme
+diff --git a/src/util/crash.py b/src/util/crash.py
+index 47e232d..a675b12 100644
+--- a/src/util/crash.py
++++ b/src/util/crash.py
+@@ -2,9 +2,9 @@
+ import config
+ import traceback
+ import util
+-from config import Settings
++from config import Settings, VERSION
+ 
+-from . import APPDATA_DIR, PERSONAL_DIR, VERSION_STRING, LOG_FILE_FAF, \
++from . import APPDATA_DIR, PERSONAL_DIR, LOG_FILE_FAF, \
+     readlines
+ 
+ from PyQt4 import QtGui, QtCore
+@@ -46,7 +46,7 @@ class CrashDialog(QtGui.QDialog):
+         description = u""
+         try:
+             description += (u"\n**FAF Username:** " + CRASH_REPORT_USER)
+-            description += (u"\n**FAF Version:** " + VERSION_STRING)
++            description += (u"\n**FAF Version:** " + VERSION)
+             description += (u"\n**FAF Environment:** " + config.environment)
+             description += (u"\n**FAF Directory:** " + APPDATA_DIR)
+             description += (u"\n**FA Path:** " + str(util.settings.value("ForgedAlliance/app/path", None, type=str)))
