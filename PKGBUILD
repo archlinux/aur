@@ -12,7 +12,7 @@
 # You will also need to install osgearth or fcgi, respectively, before building.
 
 pkgname=qgis
-pkgver=2.12.3
+pkgver=2.14.0
 pkgrel=1
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats'
 url='http://qgis.org/'
@@ -22,16 +22,19 @@ depends=('qca-qt4' 'gdal' 'qwtpolar' 'gsl' 'spatialindex' 'icu'
          'python2-qscintilla-qt4' 'python2-sip' 'python2-psycopg2'
          python2-{httplib2,jinja,markupsafe,owslib,pygments,dateutil,pytz,six})
 makedepends=('cmake' 'txt2tags' 'perl')
-optdepends=('gpsbabel: GPS Tool plugin')
+optdepends=('gpsbabel: GPS Tool plugin'
+            'python2-pyspatialite: Processing plugin'
+            'python2-yaml: Processing plugin')
 install="$pkgname.install"
 source=("http://qgis.org/downloads/$pkgname-$pkgver.tar.bz2")
-md5sums=('f57ad5f04451d30032dbdd1836e0cb22')
+md5sums=('e58294f6abd70951be3fcb3162ff6bc8')
 
 prepare() {
   cd $pkgname-$pkgver
 
-  # Fixing shebang for .py files
+  # Fix references to "python"
   sed -i 's/\(env \|\/usr\/bin\/\)python$/&2/' $(find . -iname "*.py")
+  sed -i 's/python /python2 /' scripts/pyuic4-wrapper.sh
 
   # Remove mime types already defined by freedesktop.org
   sed -e '/type="image\/tiff"/,/<\/mime-type>/d' \
@@ -59,7 +62,7 @@ build() {
     -DCMAKE_SKIP_RPATH=TRUE \
     -DPYTHON_EXECUTABLE=/usr/bin/python2 \
     -DWITH_INTERNAL_QWTPOLAR=FALSE \
-    -DWITH_INTERNAL_{HTTPLIB2,JINJA2,MARKUPSAFE,OWSLIB,PYGMENTS,DATEUTIL,PYTZ,SIX}=FALSE \
+    -DWITH_INTERNAL_{HTTPLIB2,JINJA2,MARKUPSAFE,OWSLIB,PYGMENTS,DATEUTIL,PYTZ,YAML,NOSE2,SIX}=FALSE \
 #    -DWITH_SERVER=TRUE \
 #    -DWITH_GLOBE=TRUE
 
