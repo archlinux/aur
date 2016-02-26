@@ -1,7 +1,7 @@
 # Maintainer: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
 
 pkgname=oczssdguru
-pkgver=1.5.2144
+pkgver=1.5.2312
 pkgrel=1
 pkgdesc="A GUI based tool for managing OCZ’s SSD’s including firmware and BIOS updates."
 arch=('i686' 'x86_64')
@@ -22,12 +22,12 @@ source=("http://ocz.com/consumer/download/ssd-guru/SSDGuru_${pkgver}.tar.gz"
         "oczssdguru.png"
         "oczssdguru.desktop"
         "org.archlinux.pkexec.oczssdguru.policy")
-md5sums=('64b1c5830b8f2b76feec9bbb97beacb7'
+md5sums=('fab210f041e06f542dcc6681e3719933'
          'e25e656fc0264cb754394bc03dba261e'
          '5c04a46b8505846f61585216372d02bb'
          '054caff078ef6371b96a436993a9a4a5'
          '728991ff8eaaa9d323b794f9ee3956ff')
-sha512sums=('d28dd17a89f78152dee5b0d4b1ab7abf7a6c12696216561108e9b29047ff3f40ce9f0520bcee443aefa2327f4c11496a454f7731972fd7daf18eddf20458b96c'
+sha512sums=('9a965bf1be40ce8caeb3cf8fab876ac82e2516e78a5d5f6e2497690845a5034f7d70bfef07743fb873b3f47386f7a9b337e6ef93c2d99dcea1065de3b78e1c0a'
             'a8cc626ccf90c407c2686c815142d83489e2ab14e468011f6b35771979b99f913ff6c5a97761c50af21d80645d94b6e29cfa52f23efe4a53c7bc114be426ece4'
             '16936c5d9f018ed57e16565421ad9c3a248743f9e8eaeeac73e81524e6a34fe66843b86a23e045efeb1d48d9f0461ea555d050bdd7326329daddaddd0ef9c452'
             '124111b60da64afcef33c2d81add8f9b4a5edb9ba340880cbdfbb6224f7b378c7f2892c51311c22b258052fa41f208c8e51162f1d7886746db420c7054a14dca'
