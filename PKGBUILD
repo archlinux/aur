@@ -1,18 +1,18 @@
 # Maintainer: Andriy Yanko <andriy dot yanko at gmail dot com>
 pkgname=jakpod
-pkgver=2.82
+pkgver=2.83
 pkgrel=1
 pkgdesc='JakPod is based on Java and allows you to copy music and video files to your iPod.'
 arch=('any')
 url='http://www.jakpod.de'
 license=('custom')
 depends=('java-runtime')
-source=("jakpod-$pkgver.zip::http://www.jakpod.de/en/downloads/func-download/67/chk,1310a35ece04a2d587132f6db794794a/no_html,1/"
+source=("jakpod-$pkgver.zip::http://www.jakpod.de/en/downloads/func-download/69/chk,997275a3ad7eb41141505c97ca262cd1/no_html,1/"
         'jakpod.desktop'
         'jakpod.properties'
         'jakpod.sh'
 )
-md5sums=('3484d15faa6131a564466ce00e776efa'
+md5sums=('b2d83d0b576ef55a5db594981d88d90b'
          '890e4fc3bcc8d24d452772e1aa910223'
          '68d27e3876efaef150d1d1b252c7d4f7'
          '23af517369a793c8e1eafc4e6d1e425d')
