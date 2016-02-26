@@ -2,17 +2,18 @@
 
 pkgname="yagy"
 pkgver="1.0.1"
-_yacasver="1.3.6"
-pkgrel="1"
+_yacasver="1.4.0"
+pkgrel="2"
 pkgdesc="Yagy is a (yet another) Graphical user interface for Yacas, a (yet another) Computer Algebra System"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://yagy.sourceforge.net/"
 screenshot="http://a.fsdn.com/con/app/proj/yagy/screenshots/simple plots.png"
 license=('GPL2')
 depends=('qt5-base' 'qt5-webkit' 'qt5-svg' "yacas>=${_yacasver}")
-source=("http://yacas.sourceforge.net/backups/yacas-${_yacasver}.tar.gz"
+makedepends=('cmake')
+source=("https://github.com/grzegorzmazur/yacas/archive/v${_yacasver}.tar.gz"
         "http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('6c5e3b869c1b13d2f4d02d36da964e8d'
+md5sums=('80b86a586d8d56afdd6986686daf0f13'
          '29ce9bdb008d609012fb75fab3b20e63')
 
 build() {
@@ -21,12 +22,15 @@ build() {
 
   # Compile Yacas source
   cd yacas-${_yacasver}
-  ./makemake
-  ./configure --prefix=${srcdir}
+  [ -d build ] && rm -rf build
+  mkdir build
+  cd build
+  cmake .. \
+    -DCMAKE_INSTALL_PREFIX=${srcdir} \
+    -DCMAKE_BUILD_TYPE=Release || return 1
   make
-  make check
   make install
-  cd ..
+  cd ../..
 
   # Compile Yagy source
   [ -d build ] && rm -rf build
