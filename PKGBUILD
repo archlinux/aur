@@ -19,4 +19,10 @@ sha256sums=('ddbd66050b4597a0e4f1a2cb95af2b9bf3602caa23b953dd910e420a3100a080')
 
 package() {
   install -Dm0755 nomad "${pkgdir}/usr/bin/nomad"
+
+  for type in server client; do
+    install -Dm644 nomad-$type.service \
+      "$pkgdir"/usr/lib/systemd/system/nomad-$type.service
+    install -Dm644 nomad-$type.conf "$pkgdir"/etc/nomad/$type.conf
+  done
 }
