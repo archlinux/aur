@@ -25,7 +25,8 @@ optdepends=('eclipse: "Oracle Java Mission Control" plugins for Eclipse'
             'ttf-font: fonts')
 makedepends=('pacman>=4.2.0')
 provides=("java32-runtime=$_major" "java32-runtime-headless=$_major" "java32-web-start=$_major" "java32-environment=$_major"
-          "java32-runtime-jre=$_major" "java32-runtime-headless-jre=$_major" "java32-web-start-jre=$_major" "java32-environment-jdk=$_major")
+          "java32-runtime-jre=$_major" "java32-runtime-headless-jre=$_major" "java32-web-start-jre=$_major" "java32-environment-jdk=$_major"
+          "java32-openjfx=$_major")
 
 # Variables
 _jname=${_pkgname}${_major}
