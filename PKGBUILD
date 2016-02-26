@@ -2,13 +2,14 @@
 
 _plug=havsfunc
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=r21
-pkgrel=4
+pkgver=r22
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('any')
 url='http://forum.doom9.org/showthread.php?t=166582'
 license=('GPL')
-depends=('vapoursynth-plugin-addgrain-git'
+depends=('vapoursynth-plugin-adjust-git'
+         'vapoursynth-plugin-addgrain-git'
          'vapoursynth-plugin-awarpsharp2-git'
          'vapoursynth-plugin-bilateral-git'
          'vapoursynth-plugin-ctmf-git'
@@ -30,7 +31,7 @@ depends=('vapoursynth-plugin-addgrain-git'
          )
 makedepends=('git')
 source=("${_plug}-${pkgver}.tar.gz::https://github.com/HomeOfVapourSynthEvolution/havsfunc/archive/${pkgver}.tar.gz")
-sha1sums=('0d6ca515f61361f8b4d4b85a25d74ceaa116856f')
+sha1sums=('d5010d6eeb845829bfe2c151dd2f581851e7bb56')
 
 _sites_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
 
