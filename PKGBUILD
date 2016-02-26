@@ -8,20 +8,20 @@ _pybase='lshell'
 _pyverother='python python2 '
 _pyverother=(${_pyverother//${_pyver} /})
 pkgname="${_pyver}-${_pybase}"
-pkgver='0.9.17'
+pkgver='0.9.18'
 pkgrel='1'
 pkgdesc="Limited Shell, lets you restrict a user's environment to limited sets of commands, and more"
 arch=('any')
-license=('GPL')
 #url='http://lshell.ghantoos.org/'
 url="https://github.com/ghantoos/${_pybase}"
-backup=('etc/lshell.conf')
+license=('GPL')
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
+backup=('etc/lshell.conf')
 _srcdir="${_pybase}-${pkgver}"
 _verwatch=("${url}/releases" "${url#*github.com}/archive/\(.*\)\.tar\.gz" 'l')
 source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 #source=("${pkgname}-${pkgver}.tar.gz::https://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz/download")
-sha256sums=('e3ec1dad37e8da192604ee39f83d26acc8c8e8a227a8ba216e9caaa6abd7809d')
+sha256sums=('7ffb37bf7a1d8c63845939a2e916e45b9cd9f321daa6b3e4c8f680e3c50e8bbd')
 
 package() {
   set -u
