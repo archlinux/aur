@@ -12,7 +12,7 @@ pkgdesc='Parallel Visualization Application using VTK (with MantaView plugin)'
 arch=('i686' 'x86_64')
 url='http://www.paraview.org'
 license=('custom')
-depends=('qt5-tools' 'openmpi' 'python2' 'ffmpeg' 'boost' 'cgns'
+depends=('qtwebkit' 'openmpi' 'python2' 'ffmpeg' 'boost' 'cgns'
 	 'expat' 'freetype2' 'hdf5' 'libjpeg' 'libxml2' 'libtheora' 'libpng' 'libtiff' 'zlib' 'manta')
 makedepends=('cmake' 'mesa')
 optdepends=('python2-matplotlib: Needed to support equation rendering using MathText markup language'
@@ -85,10 +85,10 @@ build() {
    -DPARAVIEW_ENABLE_PYTHON:BOOL=ON \
    -DPARAVIEW_USE_MPI:BOOL=ON \
    -DPARAVIEW_USE_VISITBRIDGE:BOOL=ON \
-   -DPARAVIEW_QT_VERSION=5 \
-   -DVTK_QT_VERSION=5 \
-   -DQT_HELP_GENERATOR:FILEPATH=/usr/lib/qt/bin/qhelpgenerator \
-   -DQT_QMAKE_EXECUTABLE=qmake-qt5 \
+   -DPARAVIEW_QT_VERSION=4 \
+   -DVTK_QT_VERSION=4 \
+   -DQT_HELP_GENERATOR:FILEPATH=/usr/lib/qt4/bin/qhelpgenerator \
+   -DQT_QMAKE_EXECUTABLE=qmake-qt4 \
    -DVISIT_BUILD_READER_CGNS:BOOL=ON \
    -DPARAVIEW_INSTALL_DEVELOPMENT_FILES:BOOL=ON \
    ${cmake_system_flags} \
