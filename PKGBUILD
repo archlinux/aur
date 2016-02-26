@@ -4,7 +4,7 @@
 # Contributor: Justin Dray <justin@dray.be>
 
 pkgname="google-cloud-sdk"
-pkgver=97.0.0
+pkgver=98.0.0
 pkgrel=1
 pkgdesc="Contains tools and libraries that enable you to easily create and manage resources on Google Cloud Platform"
 url="https://cloud.google.com/sdk/"
@@ -20,13 +20,13 @@ options=('!strip' 'staticlibs')
 # 64bit
 source_x86_64=("https://dl.google.com/dl/cloudsdk/release/downloads/$pkgname-$pkgver-linux-x86_64.tar.gz"
                "profile.sh")
-sha1sums_x86_64=('4dcb1433aaea3b6947b535f08518b2c6ef2030ea'
+sha1sums_x86_64=('d6bb0cf253d68d2fafdff079ab9e7f1343a0a833'
                  '9c09e242b113e50e3f2fa05b6c6c7b0ff33b4b71')
 
 # 32bit
 source_i686=("https://dl.google.com/dl/cloudsdk/release/downloads/$pkgname-$pkgver-linux-x86.tar.gz"
              "profile.sh")
-sha1sums_i686=('22ba76bd4779338c22f416b9e6ca9e778589a918'
+sha1sums_i686=('3aacb02f237b147f298613a4cf05b9aa396a2766'
                '9c09e242b113e50e3f2fa05b6c6c7b0ff33b4b71')
 
 prepare() {
@@ -40,11 +40,6 @@ prepare() {
     msg2 "Latest upstream release: $_LATEST"
     msg2 "** Please flag out-of-date at https://aur.archlinux.org/packages/google-cloud-sdk"
   fi
-
-  # https://code.google.com/p/google-cloud-sdk/issues/detail?id=538
-  # -> "This issue will be fixed in the Cloud SDK 98.0.0 release."
-  cd "${srcdir}/${pkgname}"
-  sed -i "s/'google' in sys.modules/False/" bin/bootstrapping/setup.py 
 
 }
 
