@@ -5,23 +5,27 @@
 # some parts taken from PKGBUILD official ArchLinux
 
 pkgname=texmacs-qt
-pkgver=1.0.7.21
+pkgver=1.99.4
 pkgrel=1
 pkgdesc="WYSIWYG Qt4 editor and graphical frontend to various CASes"
 arch=('i686' 'x86_64')
 url='http://texmacs.org/'
 license=('GPL3')
-depends=('qt4' 'texlive-core' 'guile1.8' 'cairo' 'freetype2' 'imlib2'
-         'perl' 'python2' 'libxext'
+depends=('qt4' 'guile1.8' 'cairo' 'freetype2' 'imlib2'
+         'perl' 'python2' 'libxext' 'sqlite'
          'desktop-file-utils' 'shared-mime-info' 'gtk-update-icon-cache')
-optdepends=('gawk: conversion of some files'
-            'transfig: convert images using fig2ps')
+optdepends=('texlive-core'
+            'gawk: conversion of some files'
+            'transfig: convert images using fig2ps'
+            'ghostscript: rendering ps files'
+            'imagemagick: convert images'
+            'aspell: spell checking')
 conflicts=('texmacs')
 install=${pkgname}.install
 source=("http://www.texmacs.org/Download/ftp/tmftp/source/TeXmacs-$pkgver-src.tar.gz"
         'http://www.texmacs.org/Images/tm_gnu1b.png'
         'texmacs.desktop')
-md5sums=('a56e2f14761e9003471fd26d91058ef0'
+md5sums=('9a88ec97d7f6264ec6321828052773dc'
          '48c15c09000cc38728d847c3a8ffabc0'
          'a1856736b4defd6f3a46cf608b108ef1')
 
@@ -30,13 +34,13 @@ build() {
 
     sed -i 's/env python/env python2/' \
 	plugins/{mathematica/bin/realpath.py,python/bin/tm_python,sage/bin/tm_sage} \
-	TeXmacs/misc/inkscape_plugin/texmacs_reedit.py
-	sed -i 's/"python"/"python2"/' plugins/python/progs/init-python.scm
-	sed -i '/^LDPATH/d' src/makefile.in
-	sed -i -e 's/guile /guile1.8 /g' \
-	-e 's/guile-config/guile-config1.8/g' \
-	configure
+	TeXmacs/misc/inkscape_extension/texmacs_reedit.py
+    sed -i 's/"python"/"python2"/' plugins/python/progs/init-python.scm
+    sed -i '/^LDPATH/d' src/makefile.in
+    sed -i -e 's/"guile18"/"guile1.8"/g' configure
+    sed -i -e 's/guile18-config/guile-config1.8/g' configure
 
+    export LDFLAGS=-lz
     QMAKE=/usr/bin/qmake-qt4 \
     MOC=/usr/bin/moc-qt4 \
     UIC=/usr/bin/uic-qt4 \
@@ -47,6 +51,8 @@ build() {
 	--enable-optimize \
 	--with-freetype \
 	--with-imlib2 \
+	--enable-guile2=no \
+	--with-sqlite3=yes \
 	--with-qt
     make || return 1
 }
