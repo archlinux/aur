@@ -1,0 +1,18 @@
+pkgbase = vdr-pulsecontrol
+	pkgdesc = For controlling some pulseaudio properties
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/flensrocker/vdr-plugin-pulsecontrol
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	depends = libpulse
+	depends = vdr-api=2.2.0
+	source = https://github.com/flensrocker/vdr-plugin-pulsecontrol/releases/download/0.1.7/vdr-pulsecontrol-0.1.7.tgz
+	md5sums = bb9c3530cdeeb61a423c211ee3a26d30
+
+pkgname = vdr-pulsecontrol
+
