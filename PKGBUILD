@@ -2,8 +2,8 @@
 
 pkgname=visual-studio-code-oss
 pkgdesc='Visual Studio Code for Linux, Open Source version'
-pkgver=0.10.8
-pkgrel=2
+pkgver=0.10.9
+pkgrel=1
 arch=('i686' 'x86_64')
 url='https://code.visualstudio.com/'
 license=('MIT')
@@ -14,11 +14,11 @@ provides=('vscode-oss')
 
 source=("https://github.com/Microsoft/vscode/archive/${pkgver}.tar.gz"
         "${pkgname}.desktop"
-        'fix_omnisharp_ext.patch'
+        'fix_super.patch'
         'product_json.patch')
-sha1sums=('fd74fcc6a16b19c11dc80620fdf2ea2eca7b3118'
-          'fba307396d3550beff64760bd7a6dec7e90ce0b9'
-          '59dbb5cd20fe1c63bd63a019bfac6d2f6ca9e7ee'
+sha1sums=('94c6fa5db974d26e769e1f80a24f996424de7041'
+          '2039174831d5483050471d69e0765b684cbeeefe'
+          'd51635bd1e9568eb31224170b10d48154dcc2c8c'
           '4a7f41876a016ef8d969fb81c7b1b4bc7b1e026b')
 
 case "$CARCH" in
@@ -37,7 +37,7 @@ esac
 prepare() {
     cd "${srcdir}/vscode-${pkgver}"
 
-    patch -p1 -i "${srcdir}/fix_omnisharp_ext.patch"
+    patch -p1 -i "${srcdir}/fix_super.patch"
     patch -p1 -i "${srcdir}/product_json.patch"
 }
 
