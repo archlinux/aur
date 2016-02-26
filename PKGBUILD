@@ -13,7 +13,7 @@ _gtk3=true
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
 pkgver=44.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -88,7 +88,7 @@ prepare() {
      # fix gtk3 build
      sed -i 's|parent->group|gtk_window_get_group(const_cast<GtkWindow*>(parent))|g' \
 	 toolkit/xre/nsKDEUtils.cpp
-     echo 'ac_add_options --enable-default-toolkit=cairo-gtk3' >> "$srcdir"/mozconfig
+     echo 'ac_add_options --enable-default-toolkit=cairo-gtk3' >>.mozconfig
   fi
   # configure script misdetects the preprocessor without an optimization level
   # https://bugs.archlinux.org/task/34644
@@ -166,7 +166,7 @@ package() {
 }
 
 sha256sums=('0bb28841a9268c50cbb239f759f16f55b3a624f679c68965158beaa0a83a2d9e'
-            '2057537f5a1478d0718085e1e81138b99ac332a1e2f43d29261b08196d97b7a1'
+            '06819d7b40d86a24a35073cc637bff6dba5afc958d81685f3f5979b1bb8ed500'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
