@@ -24,10 +24,10 @@
 
 # PKGEXT='.pkg.tar.gz' # imho time to pack this pkg into tar.xz is too long, unfortunatelly yaourt got problems when ext is different from .pkg.tar.xz - V
 
-pkgname=catalyst-firepro
+pkgname=catalyst-firepro-compute
 pkgver=15.201.2401
 pkgrel=1
-pkgdesc="AMD/ATI beta drivers for FirePro/GL/MV brand cards. catalyst-hook + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport."
+pkgdesc="A copy of catalyst-firepro with libgl support removed."
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
@@ -39,8 +39,8 @@ optdepends=('qt4: to run ATi Catalyst Control Center (amdcccle)'
 	    'opencl-headers: headers necessary for OpenCL development'
 	    'acpid: acpi event support  / atieventsd'
 	    'linux-lts-headers: to build the fglrx module for the linux-lts kernel')
-conflicts=('libgl' 'catalyst' 'catalyst-daemon' 'catalyst-generator' 'catalyst-hook' 'catalyst-utils' 'libcl' 'catalyst-dkms' 'mesa-libgl' 'mesa-libgl-git')
-provides=('libgl' "libatical=${pkgver}" "catalyst=${pkgver}" "catalyst-libgl=${pkgver}" "catalyst-utils=${pkgver}" "catalyst-hook=${pkgver}" 'libcl' 'dri' 'libtxc_dxtn' 'mesa-libgl' 'mesa-libgl-git')
+conflicts=('catalyst' 'catalyst-daemon' 'catalyst-generator' 'catalyst-hook' 'catalyst-utils' 'libcl' 'catalyst-dkms')
+provides=("libatical=${pkgver}" "catalyst=${pkgver}" "catalyst-utils=${pkgver}" "catalyst-hook=${pkgver}" 'libcl' 'dri' 'libtxc_dxtn')
 
 if [ "${CARCH}" = "x86_64" ]; then
  warning "x86_64 system detected"
@@ -48,8 +48,8 @@ if [ "${CARCH}" = "x86_64" ]; then
   if [[ `cat /etc/pacman.conf | grep -c "#\[multilib]"` = 0 ]]; then
     warning "OK, lib32-catalyst-utils will be added to the package"
     depends+=('lib32-libxext' 'lib32-libdrm' 'lib32-libxinerama' 'lib32-mesa>=10.1.0-4')
-    conflicts+=('lib32-libgl' 'lib32-catalyst-utils' 'lib32-libcl' 'lib32-mesa-libgl' 'lib32-mesa-libgl-git')
-    provides+=('lib32-libgl' "lib32-catalyst-libgl=${pkgver}" "lib32-catalyst-utils=${pkgver}" 'lib32-dri' 'lib32-libtxc_dxtn' 'lib32-libcl' 'lib32-mesa-libgl' 'lib32-mesa-libgl-git')
+    conflicts+=('lib32-catalyst-utils' 'lib32-libcl')
+    provides+=("lib32-catalyst-utils=${pkgver}" 'lib32-dri' 'lib32-libtxc_dxtn' 'lib32-libcl')
       else
 	warning "lib32-catalyst-utils will NOT be added to the package"
   fi
@@ -178,8 +178,6 @@ package() {
       install -m755 *.so ${pkgdir}/usr/lib/xorg/modules
       install -m755 drivers/*.so ${pkgdir}/usr/lib/xorg/modules/drivers
       install -m755 linux/*.so ${pkgdir}/usr/lib/xorg/modules/linux
-      install -m755 extensions/fglrx/fglrx-libglx.so ${pkgdir}/usr/lib/xorg/modules/extensions/fglrx/fglrx-libglx.so
-      ln -snf /usr/lib/xorg/modules/extensions/fglrx/fglrx-libglx.so ${pkgdir}/usr/lib/xorg/modules/extensions/libglx.so
 
     # Controlcenter / libraries
       if [ "${CARCH}" = "i686" ]; then
@@ -217,28 +215,6 @@ package() {
       ln -snf libatiuki.so.1.0 ${pkgdir}/usr/lib/libatiuki.so.1
       ln -snf libatiuki.so.1.0 ${pkgdir}/usr/lib/libatiuki.so
       ln -snf libOpenCL.so.1 ${pkgdir}/usr/lib/libOpenCL.so
-
-      ln -snf /usr/lib/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib/fglrx/libGL.so.1.2.0
-      ln -snf /usr/lib/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib/fglrx/libGL.so.1
-      ln -snf /usr/lib/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib/fglrx/libGL.so
-      ln -snf /usr/lib/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib/libGL.so.1.2.0
-      ln -snf /usr/lib/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib/libGL.so.1
-      ln -snf /usr/lib/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib/libGL.so
-
-
-      # We have to provide symlinks to mesa, as catalyst doesn't ship them
-      ln -s /usr/lib/mesa/libEGL.so.1.0.0 ${pkgdir}/usr/lib/libEGL.so.1.0.0
-      ln -s libEGL.so.1.0.0	          ${pkgdir}/usr/lib/libEGL.so.1
-      ln -s libEGL.so.1.0.0               ${pkgdir}/usr/lib/libEGL.so
-
-      ln -s /usr/lib/mesa/libGLESv1_CM.so.1.1.0 ${pkgdir}/usr/lib/libGLESv1_CM.so.1.1.0
-      ln -s libGLESv1_CM.so.1.1.0	        ${pkgdir}/usr/lib/libGLESv1_CM.so.1
-      ln -s libGLESv1_CM.so.1.1.0               ${pkgdir}/usr/lib/libGLESv1_CM.so
-
-      ln -s /usr/lib/mesa/libGLESv2.so.2.0.0 ${pkgdir}/usr/lib/libGLESv2.so.2.0.0
-      ln -s libGLESv2.so.2.0.0               ${pkgdir}/usr/lib/libGLESv2.so.2
-      ln -s libGLESv2.so.2.0.0               ${pkgdir}/usr/lib/libGLESv2.so
-
 
       cd ${srcdir}/archive_files/common
       patch -Np2 -i ${srcdir}/arch-fglrx-authatieventsd_new.patch
@@ -369,28 +345,6 @@ package() {
 	ln -sf /usr/lib32/libatiuki.so.1.0	${pkgdir}/usr/lib32/libatiuki.so.1
 	ln -sf /usr/lib32/libatiuki.so.1.0	${pkgdir}/usr/lib32/libatiuki.so
 	ln -sf /usr/lib32/libOpenCL.so.1	${pkgdir}/usr/lib32/libOpenCL.so
-
-	ln -sf /usr/lib32/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib32/fglrx/libGL.so.1.2.0
-	ln -sf /usr/lib32/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib32/fglrx/libGL.so.1
-	ln -sf /usr/lib32/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib32/fglrx/libGL.so
-	ln -sf /usr/lib32/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib32/libGL.so.1.2.0
-	ln -sf /usr/lib32/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib32/libGL.so.1
-	ln -sf /usr/lib32/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib32/libGL.so
-
-
-      # We have to provide symlinks to lib32-mesa, as catalyst doesn't ship them
-	ln -s /usr/lib32/mesa/libEGL.so.1.0.0 ${pkgdir}/usr/lib32/libEGL.so.1.0.0
-	ln -s libEGL.so.1.0.0	              ${pkgdir}/usr/lib32/libEGL.so.1
-	ln -s libEGL.so.1.0.0                 ${pkgdir}/usr/lib32/libEGL.so
-
-	ln -s /usr/lib32/mesa/libGLESv1_CM.so.1.1.0 ${pkgdir}/usr/lib32/libGLESv1_CM.so.1.1.0
-	ln -s libGLESv1_CM.so.1.1.0	            ${pkgdir}/usr/lib32/libGLESv1_CM.so.1
-	ln -s libGLESv1_CM.so.1.1.0                 ${pkgdir}/usr/lib32/libGLESv1_CM.so
-
-	ln -s /usr/lib32/mesa/libGLESv2.so.2.0.0 ${pkgdir}/usr/lib32/libGLESv2.so.2.0.0
-	ln -s libGLESv2.so.2.0.0                 ${pkgdir}/usr/lib32/libGLESv2.so.2
-	ln -s libGLESv2.so.2.0.0                 ${pkgdir}/usr/lib32/libGLESv2.so
-
 
 	# OpenCL
 	install -m755 -d ${pkgdir}/etc/OpenCL/vendors
