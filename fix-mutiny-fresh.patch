@@ -1,0 +1,18 @@
+diff -Naur ubuntu-mate-settings-16.04.1.orig/usr/share/mate-panel/layouts/mutiny-fresh.panel ubuntu-mate-settings-16.04.1/usr/share/mate-panel/layouts/mutiny-fresh.panel
+--- ubuntu-mate-settings-16.04.1.orig/usr/share/mate-panel/layouts/mutiny-fresh.panel	2016-02-21 19:16:14.000000000 +0100
++++ ubuntu-mate-settings-16.04.1/usr/share/mate-panel/layouts/mutiny-fresh.panel	2016-02-26 04:51:48.024833424 +0100
+@@ -16,6 +16,14 @@
+ screen=0
+ size=24
+ 
++[objects/topmenu]
++applet-iid='TopMenuMatePanelAppletFactory::TopMenuMatePanelApplet'
++locked=true
++toplevel-id='top'
++position=48
++object-type='applet'
++panel-right-stick=false
++
+ [objects/notification-area]
+ applet-iid='NotificationAreaAppletFactory::NotificationArea'
+ locked=true
