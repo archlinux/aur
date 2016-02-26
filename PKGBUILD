@@ -35,7 +35,7 @@ build() {
   # GTK+ 3 version
   [ -d gtk3 ] || cp -r release_$pkgver gtk3
   cd gtk3
-  ./configure --prefix=/usr --libexecdir=/usr/lib/$pkgname
+  ./configure --prefix=/usr --libexecdir=/usr/lib/$pkgname --with-gtk=3
   make
 }
 
