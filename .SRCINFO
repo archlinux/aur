@@ -2,8 +2,8 @@
 # Fri Feb 12 05:30:53 UTC 2016
 pkgbase = gs-chrome-connector-git
 	pkgdesc = Native connector for extensions.gnome.org using chrome-gnome-shell
-	pkgver = 5.c2b35ef
-	pkgrel = 1
+	pkgver = 5.1_115.bc10252
+	pkgrel = 2
 	url = https://github.com/nE0sIghT/chrome-gnome-shell
 	install = gs-chrome-connector.install
 	arch = any
