@@ -63,7 +63,7 @@ package_vdr-xineliboutput() {
 
 package_xineliboutput-frontends() {
   pkgdesc="Xineliboutput frontends (vdr-fbfe and vdr-sxfe)"
-  depends=('dbus-glib' 'libcec' 'libxrandr' 'mesa' 'xine-lib' 'xineliboutput-xineplug')
+  depends=('dbus-glib' 'libxrandr' 'mesa' 'xine-lib' 'xineliboutput-xineplug')
   optdepends=('nvidia: Required for VDPAU decoding'
               'xorg-server: Required for software decoding')
   cd "${srcdir}/${_plugname}"

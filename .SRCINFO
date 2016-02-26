@@ -44,7 +44,6 @@ pkgname = vdr-xineliboutput
 pkgname = xineliboutput-frontends
 	pkgdesc = Xineliboutput frontends (vdr-fbfe and vdr-sxfe)
 	depends = dbus-glib
-	depends = libcec
 	depends = libxrandr
 	depends = mesa
 	depends = xine-lib
