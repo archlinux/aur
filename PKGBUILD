@@ -2,14 +2,17 @@
 
 pkgname=('python-ceilometerclient'
          'python2-ceilometerclient')
-pkgver='2.2.1'
+pkgver='2.3.0'
 pkgrel='1'
 pkgdesc='Python client library for Ceilometer'
 arch=('any')
 url='https://launchpad.net/python-ceilometerclient'
 license=('Apache')
 source=("https://pypi.python.org/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('3939d3853599cec2cdd8f1d1353c4e10f10536fa9c50d919836d3ad9c8e246ea')
+sha256sums=('a2a599619dee58bfc7715c8253ae9642053689d43f4f334ffc85285d56ef7596')
+
+makedepends=('python-setuptools'
+             'python2-setuptools')
 
 package_python-ceilometerclient() {
     depends=('python-pbr'
@@ -23,7 +26,6 @@ package_python-ceilometerclient() {
              'python-requests'
              'python-six'
              'python-stevedore')
-    makedepends=('python-setuptools')
     cd "${srcdir}/${pkgname}-${pkgver}"
     python setup.py \
         install \
@@ -43,7 +45,6 @@ package_python2-ceilometerclient() {
              'python2-requests'
              'python2-six'
              'python2-stevedore')
-    makedepends=('python-setuptools')
     cd "${srcdir}/python-ceilometerclient-${pkgver}"
     python2 setup.py \
         install \
