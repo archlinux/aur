@@ -33,5 +33,6 @@ package() {
 	cd $_gitname
 	export PATH="$PATH:$pkgdir/usr/bin"
 	cargo install --root "$pkgdir/usr"
+	mv "$pkgdir/usr/bin/ydcv-rs" "$pkgdir/usr/bin/ydcv"
 	rm "$pkgdir/usr/.crates.toml"
 }
