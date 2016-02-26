@@ -10,8 +10,8 @@ pkgdesc="An SSH2 extension for PHP"
 url="http://pecl.php.net/package/ssh2"
 license=('PHP')
 arch=('i686' 'x86_64')
-depends=('php' 'openssh')
-makedepends=('php' 'git')
+depends=('php>=7.0.0' 'openssh')
+makedepends=('php>=7.0.0' 'git')
 provides=('php-ssh')
 conflicts=('php-ssh')
 install=${_pkgname}.install
