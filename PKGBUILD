@@ -2,7 +2,7 @@
 
 pkgname=rkt-bin
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="App container runtime"
 arch=('x86_64')
 url="https://github.com/coreos/rkt"
@@ -13,7 +13,7 @@ replaces=('rocket')
 conflicts=('rocket')
 source=(
   "https://github.com/coreos/rkt/releases/download/v${pkgver}/rkt-v${pkgver}.tar.gz"
-  "https://github.com/coreos/rkt/releases/download/v${pkgver}/rkt-v${pkgver}.tar.gz.asc"
+  "https://github.com/coreos/rkt/releases/download/v${pkgver}/rkt-v${pkgver}.tar.gz.sig"
 )
 sha256sums=('SKIP' 'SKIP')
 validpgpkeys=('BECE2BD4B68D2071255A7A4E3689AD7F72EBB080')
