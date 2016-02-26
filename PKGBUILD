@@ -1,8 +1,8 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 pkgname=peek
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
-pkgdesc="Peek - animated GIF recorder"
+pkgdesc="An animated GIF recorder"
 arch=('i686' 'x86_64')
 url="https://github.com/phw/peek"
 license=('GPL3')
