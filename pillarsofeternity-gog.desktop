@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Icon=/usr/share/pixmaps/pillarsofeternity-gog.png
+Exec=/usr/bin/pillarsofeternity-gog
+Terminal=false
+StartupNotify=false
+
+Name=Pillars of Eternity
+Comment=A modern RPG in the style of classics like Baldur's Gate
+
+Categories=Game;
