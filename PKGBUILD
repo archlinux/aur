@@ -2,7 +2,7 @@
 
 _pkgname=pantheon-mail
 pkgname=$_pkgname-bzr
-pkgver=r1984
+pkgver=r1986
 pkgrel=1
 pkgdesc='The Pantheon mail client'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('LGPL2.1')
 groups=('pantheon-unstable')
 depends=('desktop-file-utils' 'granite' 'gtksourceview3' 'libpeas'
   'zeitgeist' 'gmime' 'webkitgtk' 'gcr')
-makedepends=('gmime' 'bzr' 'cmake' 'gobject-introspection' 'vala' 'vte3' 'webkitgtk')
+makedepends=('bzr' 'cmake' 'gobject-introspection' 'vala' 'vte3')
 optdepends=()
 provides=("$_pkgname")
 conflicts=("$_pkgname")
