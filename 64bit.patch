@@ -1,0 +1,18 @@
+--- des.h.orig	2016-02-26 21:31:07.204547590 +0100
++++ des.h	2016-02-26 21:32:19.964190512 +0100
+@@ -72,11 +72,14 @@
+ #endif
+ 
+ #include <stdio.h>
++#include <stdint.h>
+ 
+ /* If this is set to 'unsigned int' on a DEC Alpha, this gives about a
+  * %20 speed up (longs are 8 bytes, int's are 4). */
++/* On PCs with 64-bit Linux 'unsigned long' doesn't work, 'destest'
++ * fails. 'unsigned int' or 'uint32_t' is needed. */
+ #ifndef DES_LONG
+-#define DES_LONG unsigned long
++#define DES_LONG uint32_t
+ #endif
+ 
+ typedef unsigned char des_cblock[8];
