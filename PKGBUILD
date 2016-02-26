@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url='https://github.com/libratbag/libratbag'
 license=('MIT')
 depends=('glibc' 'libevdev' 'libudev.so' 'libratbag')
-makedepends=('chrpath' 'git' 'systemd')
+makedepends=('git' 'systemd')
 source=('git+https://github.com/libratbag/ratbagd.git')
 sha256sums=('SKIP')
 
