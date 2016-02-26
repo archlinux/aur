@@ -1,8 +1,8 @@
 # Maintainer: Piotr Rogoza <piotr dot r dot public at gmail dot com>
 
 pkgname=qtcam-git
-pkgver=34326dc8
-pkgrel=2
+pkgver=r10.34326dc8
+pkgrel=1
 pkgdesc='A free, Open Source Linux Webcamera Software with more than 10 image control settings'
 arch=('i686' 'x86_64')
 url='http://www.e-consystems.com/opensource-linux-webcam-software-application.asp'
@@ -33,26 +33,22 @@ sha256sums=('SKIP'
             'e185af699a218115b5b2b3223d6989e5abcb56293f3e19c4e57308a460c86834')
 _gitname='qtcam'
 prepare() {
-  cd "$srcdir"/$_gitname
-  patch -p1 -i "$srcdir"/codecid.patch
-  patch -p1 -i "$srcdir"/qml.patch
-  patch -p1 -i "$srcdir"/project.patch
+  cd $_gitname
+  patch -p1 -i "$srcdir/codecid.patch"
+  patch -p1 -i "$srcdir/qml.patch"
+  patch -p1 -i "$srcdir/project.patch"
 }
 pkgver() {
-  if [ -d "$srcdir"/$_gitname ]; then
-    cd "$srcdir"/$_gitname
-    git describe --always | sed 's|-|.|g'
-  fi
+  cd $_gitname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 build() {
-  cd "$srcdir"/$_gitname/src
-  msg2 "Starting make"
+  cd $_gitname/src
   qmake
   make
 }
 package() {
-  cd "$srcdir"/$_gitname/src
-  msg2 "Starting make install"
+  cd $_gitname/src
   make INSTALL_ROOT="$pkgdir" install
   install -dm755 "$pkgdir"/usr/share/qtcam/qml
   install -Dm644 "$srcdir"/qtcam.desktop "$pkgdir"/usr/share/applications/qtcam.desktop
