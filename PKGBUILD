@@ -1,30 +1,32 @@
-# Maintainer: jsteel <mail at jsteel dot org>
+# Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
+# Contributor: jsteel <mail at jsteel dot org>
 
-pkgname=php-ssh
+_pkgname=php-ssh
+pkgname=${_pkgname}
 pkgver=0.12
 pkgrel=1
 pkgdesc="An SSH2 extension for PHP"
 url="http://pecl.php.net/package/ssh2"
 license=('PHP')
 arch=('i686' 'x86_64')
-depends=('php' 'openssh')
-makedepends=('php')
-install=$pkgname.install
-source=(http://pecl.php.net/get/ssh2-$pkgver.tgz)
-md5sums=('409b91678a842bb0ff56f2cf018b9160')
+depends=('php<7.0.0' 'openssh')
+makedepends=('php<7.0.0' 'git')
+provides=('php-ssh')
+conflicts=('php-ssh')
+install=${_pkgname}.install
+source=("${pkgname}::git+https://git.php.net/repository/pecl/networking/ssh2.git")
+sha512sums=('SKIP')
 
 build() {
-  cd "$srcdir"/ssh2-$pkgver
-
+  cd "${srcdir}/${pkgname}"
   phpize
-
   ./configure --prefix=/usr --with-ssh2
-
   make
 }
 
 package() {
-  cd "$srcdir"/ssh2-$pkgver
-
-  make install INSTALL_ROOT="$pkgdir"/
+  cd "${srcdir}/${pkgname}"
+  echo ';extension=ssh2.so' > ssh2.ini
+  install -Dm644 ssh2.ini "${pkgdir}/etc/php/conf.d/ssh2.ini"
+  make install INSTALL_ROOT="${pkgdir}/"
 }
