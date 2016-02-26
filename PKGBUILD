@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('qt5-base' 'openssl') #Qt5)
 #optdepends=('otf-ipafont: font for displaying japanese')
 install=$pkgname.install
-source=("https://github.com/sithlord48/blackchocobo/archive/V1.9.90.tar.gz")
+source=("https://github.com/sithlord48/blackchocobo/archive/v1.9.90.tar.gz")
 md5sums=('03a4eec9c2d3e2fbaeba3a241a422805')
 
 build() {
