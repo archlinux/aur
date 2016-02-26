@@ -3,7 +3,7 @@
 pkgname=freefem++-hg
 pkgver=3.44.r3653.6a3a4a98b774
 _pkgver=3.44
-pkgrel=1
+pkgrel=2
 pkgdesc='A PDE oriented language using the finite element method (Mercurial)'
 arch=('i686' 'x86_64')
 url="http://www.freefem.org/ff++/index.htm"
@@ -52,10 +52,10 @@ build() {
   make 
 }
 
-check() {
-  cd "$srcdir/ff++"
-  make check || true
-}
+#check() {
+ # cd "$srcdir/ff++"
+ # make check || true
+#}
 
 package() {
   cd "$srcdir/ff++"
