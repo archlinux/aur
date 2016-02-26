@@ -1,7 +1,7 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=munge-git
-pkgver=1013.9bdf618
+pkgver=1037.384a319
 pkgrel=1
 pkgdesc="An authentication service for creating and validating credentials. It is designed to be highly scalable for use in an HPC cluster environment."
 arch=('i686' 'x86_64')
@@ -14,10 +14,8 @@ makedepends=('git')
 provides=('munge')
 conflicts=('munge')
 install=$pkgname.install
-source=("${pkgname}"::"git+https://github.com/dun/munge.git"
-	"arch_munge.init")
-md5sums=('SKIP'
-         '3cdaf129182a96e220c5c42ee3ac63fe')
+source=("${pkgname}"::"git+https://github.com/dun/munge.git")
+md5sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
@@ -41,17 +39,20 @@ package() {
 
 	make DESTDIR="$pkgdir" install
 
-	# install arch specific munge init and remove original one...
+	# Remove obsolete init script (Arch Linux uses SystemD)
 	rm -f $pkgdir/etc/init.d/munge
 	rmdir $pkgdir/etc/init.d
 
-	install -D -m755 ../arch_munge.init $pkgdir/etc/rc.d/munge
-
-	# /usr/sbin is deprecated in arch, hence using /usr/bin
+	# /usr/sbin is deprecated in Arch Linux
 	sed -i 's/\/usr\/sbin/\/usr\/bin/g' $pkgdir/usr/lib/systemd/system/munge.service
 
-	# /var/run/munge will be created in post install, see munge.install
-	# because it is bad practice to put package-files in /run
+	# It is bad practice to put package-files in /run
+	# The dir /var/run/munge will be created in post_install, see .install
 	rmdir $pkgdir/var/run/munge
 	rmdir $pkgdir/var/run
+
+	# Securing the installation (this is optional)
+	chmod 0700 /etc/munge
+	chmod 0711 /var/lib/munge
+	chmod 0700 /var/log/munge
 }
