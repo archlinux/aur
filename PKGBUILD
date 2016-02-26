@@ -3,7 +3,7 @@
 pkgname=keeweb-git
 _pkgname=keeweb
 pkgver=1.0.4.0.ga6e7afe
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop password manager compatible with KeePass databases."
 arch=('any')
 url="https://github.com/antelle/keeweb"
@@ -43,6 +43,7 @@ EOF
 
 build() {
     cd ${_pkgname}
+    sed -i 's/^.*"electron-builder".*$//;s/^.*"grunt-electron".*$//;s/postinstall/_pi/' package.json
     npm install
     grunt
 }
