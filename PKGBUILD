@@ -2,11 +2,11 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-epgsearch
-pkgver=1.0.1.beta5_12_ga908daa
+pkgver=1.0.1.beta5.r12.ga908daa
 _gitver=a908daa4c5c6edd6c560ed96939358b4352e9b42
 _vdrapi=2.2.0
 epoch=1
-pkgrel=2
+pkgrel=1
 pkgdesc="Searchtimer and replacement of the VDR program menu"
 url="http://winni.vdr-developer.org/epgsearch"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -14,6 +14,7 @@ license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 optdepends=('msmtp: To send notification mails (Simpler replacement for sendmail)'
             'ssmtp: To send notification mails (Another simpler replacement for sendmail)')
+makedepends=('git')
 _plugname=${pkgname//vdr-/}
 source=("git://projects.vdr-developer.org/vdr-plugin-$_plugname.git#commit=$_gitver"
         "50-$_plugname.conf")
@@ -33,9 +34,18 @@ md5sums=('SKIP'
          '9a936790ce844d011d8bbb3bf13ec336')
 
 pkgver() {
-  cd "${srcdir}/vdr-plugin-$_plugname"
-  git tag -a 1.0.1.beta5 -m 'Added Tag' 7fea7fca409bf75cba18ba5f07c4fe8a3bd72e75 2> /dev/null
-  git describe --tags | sed 's/-/_/g'
+  cd "${srcdir}/vdr-plugin-${_plugname}"
+  _last_release=1.0.1.beta5
+  _last_release_commit=7fea7fca409bf75cba18ba5f07c4fe8a3bd72e75
+
+  _count=$((`git rev-list --count HEAD` - `git rev-list --count $_last_release_commit`))
+  if [ $_count -gt 0 ]; then
+    printf "%s.r%s.g%s" $_last_release \
+      $_count \
+      `git rev-parse --short HEAD`
+  else
+    printf "%s" $_last_release
+  fi
 }
 
 prepare() {

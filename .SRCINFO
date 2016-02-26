@@ -1,7 +1,7 @@
 pkgbase = vdr-epgsearch
 	pkgdesc = Searchtimer and replacement of the VDR program menu
-	pkgver = 1.0.1.beta5_12_ga908daa
-	pkgrel = 2
+	pkgver = 1.0.1.beta5.r12.ga908daa
+	pkgrel = 1
 	epoch = 1
 	url = http://winni.vdr-developer.org/epgsearch
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = vdr-epgsearch
 	arch = armv6h
 	arch = armv7h
 	license = GPL2
+	makedepends = git
 	depends = gcc-libs
 	depends = vdr-api=2.2.0
 	optdepends = msmtp: To send notification mails (Simpler replacement for sendmail)
