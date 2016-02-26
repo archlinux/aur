@@ -3,12 +3,12 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=hyperion
 pkgver=0.1.42
-pkgrel=1
+pkgrel=2
 pkgdesc="Opensource 'AmbiLight' implementation"
 url="http://code.google.com/p/boblight/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
-depends=('libusbx' 'protobuf3' 'python' 'qt5-base')
+depends=('icu' 'libusbx' 'protobuf3' 'python' 'qt5-base')
 makedepends=('cmake' 'doxygen' 'git')
 source=("https://github.com/tvdzwan/$pkgname/archive/v$pkgver.tar.gz"
         "https://github.com/Kwiboo/hyperion/commit/0ce04b692b7c3e4414c46402c389215f7b0aac48.diff"

@@ -1,7 +1,7 @@
 pkgbase = hyperion
 	pkgdesc = Opensource 'AmbiLight' implementation
 	pkgver = 0.1.42
-	pkgrel = 1
+	pkgrel = 2
 	url = http://code.google.com/p/boblight/
 	arch = x86_64
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = hyperion
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = git
+	depends = icu
 	depends = libusbx
 	depends = protobuf3
 	depends = python
