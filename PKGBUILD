@@ -10,7 +10,7 @@ pkgdesc="Write an ISO file to multiple USB devices at once"
 arch=('i686' 'x86_64')
 url="http://blogs.gnome.org/hughsie/2015/01/02/introducing-gnome-multiwriter/"
 license=('GPL2')
-depends=('gtk3' 'udisks2' 'libcanberra' 'gobject-introspection' 'libgusb' 'libgudev')
+depends=('gtk3' 'udisks2' 'libcanberra' 'gobject-introspection')
 #TODO: Add docbook2x to makedepends, and fix resulting build errors
 makedepends=('intltool' 'gnome-common')
 source=(https://git.gnome.org/browse/gnome-multi-writer/snapshot/${_pkgname}_${_pkgver}.tar.xz)
