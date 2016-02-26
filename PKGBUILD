@@ -20,7 +20,8 @@ optdepends_x86_64=('lib32-alsa-lib: for basic sound support'
                    'ttf-font: fonts')
 makedepends_x86_64=('pacman>=4.2.0')
 provides=("java32-runtime=$_major" "java32-runtime-headless=$_major" "java32-web-start=$_major"
-          "java32-runtime-jre=$_major" "java32-runtime-headless-jre=$_major" "java32-web-start-jre=$_major")
+          "java32-runtime-jre=$_major" "java32-runtime-headless-jre=$_major" "java32-web-start-jre=$_major"
+          "java32-openjfx=$_major")
 
 # Variables
 DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
