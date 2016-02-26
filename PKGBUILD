@@ -1,8 +1,8 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=albiononline
-pkgver=20160219192627
-pkgrel=2
+pkgver=20160225110345
+pkgrel=1
 pkgdesc="The first true cross-platform Sandbox MMO"
 url="https://albiononline.com/"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('libgl' 'gstreamer0.10-good')
 source=("albion-online-setup-${pkgver}::https://live.albiononline.com/clients/${pkgver}/albion-online-setup" "albiononline.desktop")
 
 options=(!strip docs libtool emptydirs !zipman staticlibs !upx)
-md5sums=('f5eef90454056e5f6e8954b46d6e3304'
+md5sums=('c5f50fa5d3944d5f8e28f87c52b3c69d'
          'cec7e1ad7f4f8acfc0628d0dd8d421e6')
 
 
