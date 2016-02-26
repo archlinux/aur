@@ -3,7 +3,7 @@
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
 pkgname=gzdoom-2.1
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Doom source port based on ZDoom with an OpenGL renderer."
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ optdepends=('blasphemer: Blasphemer (free Heretic) game data'
             'kdebase-kdialog: Provides Qt based startup dialog support')
 source=(https://github.com/coelckers/gzdoom/archive/g${pkgver}.tar.gz
         gzdoom.desktop)
-sha256sums=('4cdfda4eedf5f748c80c0915e5d7bd8860c02d70600e9e82bb98e455883c1de0'
+sha256sums=('cdba2fcb2a74872512c8ee8d16102ff9d5eaf8e03a37764d21ca93f6b937afd1'
             '2a0b837ddc423d3a6be50f60735c55ee27cd26f58c42540b44aab395030b9cc4')
 
 _sharedir=/usr/share/games/gzdoom
