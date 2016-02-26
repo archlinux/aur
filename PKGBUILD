@@ -2,7 +2,7 @@
 
 _py="python2"
 pkgname=netzob-git
-pkgver=r3676.ab22feb
+pkgver=r3678.78fe862
 pkgrel=4
 HOLDVER=1
 pkgdesc="Netzob is an opensource tool which supports the expert in its operations of reverse engineering, evaluation and simulation of communication protocols. This package pulls the current version from master branch containing the current version."
