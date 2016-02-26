@@ -1,0 +1,21 @@
+diff -aur bwSyncAndShare.pristine/bwSyncAndShare-Client.sh bwSyncAndShare/bwSyncAndShare-Client.sh
+--- bwSyncAndShare.pristine/bwSyncAndShare-Client.sh	2015-12-01 16:30:53.000000000 +0100
++++ bwSyncAndShare/bwSyncAndShare-Client.sh	2016-02-25 22:18:23.317595574 +0100
+@@ -8,7 +8,7 @@
+ # CLIENT_INSTALL needs to point to the directory
+ # where the .jar file is located.
+ #
+-CLIENT_INSTALL=.
++CLIENT_INSTALL=/usr/share/bwSyncAndShare
+ 
+ #
+ # CLIENT_HOME sets the location where the client
+@@ -104,7 +104,7 @@
+ #
+ # Set command line to invoke program start
+ #
+-RUN_CMD="$CLIENT_INSTALL/jre/bin/java $JAVA_MEM -Duser.home=$CLIENT_HOME -cp $CP de.dal33t.Start"
++RUN_CMD="/usr/lib/jvm/java-8-jre/jre/bin/java $JAVA_MEM -Duser.home=$CLIENT_HOME -cp $CP de.dal33t.Start"
+ 
+ #
+ # Silent mode
