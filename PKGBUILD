@@ -2,9 +2,9 @@
 # Maintainer: pzl <alsoelp at gmail dot com>
 
 pkgname=jlink-debugger
-pkgver=2.14a
-pkgrel=4
-epoch=1
+pkgver=2.14b
+pkgrel=1
+epoch=0
 pkgdesc="Segger JLink debugger for Linux"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -12,8 +12,8 @@ groups=('jlink')
 depends=('qt4' 'jlink-software-and-documentation>=5.10n')
 source_x86_64=("JLinkDebugger_Linux_V${pkgver/./}_x86_64.tgz::https://download.segger.com/J-Link/J-LinkDebugger/JLinkDebugger_Linux_V${pkgver/./}_x86_64.tgz")
 source_i686=("JLinkDebugger_Linux_V${pkgver/./}_i686.tgz::https://download.segger.com/J-Link/J-LinkDebugger/JLinkDebugger_Linux_V${pkgver/./}_i386.tgz")
-md5sums_i686=('be10c6483353934ab3cdbdd795fad1e6')
-md5sums_x86_64=('b325cf660a632dc6eed1cb607741efa9')
+md5sums_i686=('c5c375d6441f74f9c5835d35c8083c88')
+md5sums_x86_64=('4b540278af09e16c87b7d82f02c82426')
 url="https://www.segger.com/jlink-software.html"
 
 
