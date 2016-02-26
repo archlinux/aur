@@ -8,11 +8,11 @@ url="http://cadabra.phi-sci.com/"
 license=('GPL')
 provides=('cadabra')
 conflicts=('cadabra2' 'cadabra' 'cadabra-git')
-depends=('python2-matplotlib' 'python2-mpmath' 'gtkmm3' 'jsoncpp' 'mathjax' 'boost-libs' 'gtk-update-icon-cache')
+depends=('python2-matplotlib' 'python2-mpmath' 'gtkmm3' 'jsoncpp' 'mathjax' 'boost-libs')
 makedepends=('cmake' 'gcc' 'boost')
 source=("$pkgname::git+https://github.com/kpeeters/cadabra2" "package.patch" "cadabra.desktop")
 md5sums=('SKIP'
-         '1f7d7e0baa868d12e6eb53c7a594605c'
+         'bae9fc577f0057f24ac51fca61aeac78'
          '04718d712ef65dbe5513ae674cc6ec33')
 install=package.install
 
@@ -22,10 +22,10 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-# prepare() {
-#   cd "${srcdir}/${pkgname}"
-#   patch -Np1 -i ../package.patch
-# }
+prepare() {
+ cd "${srcdir}/${pkgname}"
+ patch -Np1 -i ../package.patch
+}
 
 build() {
   cd $pkgname
