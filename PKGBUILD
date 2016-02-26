@@ -29,20 +29,19 @@ pkgrel=9
 
 # PKGBUILD
 _piver=2
-_pkgname=qt-sdk-raspberry-pi
+pkgname="qt-sdk-raspberry-pi${_piver}"
 
 if $_static_build; then
-  _pkgname="${_pkgname}-static"
+  pkgname="${pkgname}-static"
 fi
 
 if $_build_from_head; then
   _pkgver=6.6.6
 fi
 
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-replaces=("${_pkgname}")
-pkgname="${_pkgname}${_piver}"
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+replaces=("${pkgname}")
 _packaginguser=$(whoami)
 _libspkgname="${pkgname}-target-libs"
 _mkspec="linux-rpi${_piver}-g++"
@@ -232,9 +231,11 @@ fi
   sed -i "s/libspkgname/${_libspkgname}/" ${_libspkgbuild} || exit 1
   sed -i "s/libspiver/${_piver}/" ${_libspkgbuild} || exit 1
 
-  mkdir -p ${_pkgprofiled}
-  cp ${startdir}/qpi.sh ${_pkgprofiled} || exit 1
-  sed -i "s,localpiprefix,${_installprefix}," ${_pkgprofiled}/qpi.sh || exit 1
+  if ! ${_static_build}; then
+    mkdir -p ${_pkgprofiled}
+    cp ${startdir}/qpi.sh ${_pkgprofiled} || exit 1
+    sed -i "s,localpiprefix,${_installprefix}," ${_pkgprofiled}/qpi.sh || exit 1
+  fi
 
   cd ${_libsdir}
   runuser -l ${_packaginguser} -c 'makepkg -d -f' || exit 1
