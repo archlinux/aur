@@ -1,8 +1,8 @@
 # Maintainer: Chris Trotman <chris+aur@trotman.io>
 
 pkgname=terraform
-pkgver=0.6.11
-pkgrel=2
+pkgver=0.6.12
+pkgrel=1
 pkgdesc="Tool for building, changing, and versioning infrastructure safely and efficiently"
 url='http://www.terraform.io/'
 arch=('i686' 'x86_64')
