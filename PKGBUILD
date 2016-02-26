@@ -21,7 +21,7 @@ backup=('etc/enlightenment/sysactions.conf'
         'etc/xdg/menus/e-applications.menu')
 source=("https://github.com/JeffHoogland/moksha/archive/$pkgver.tar.gz")
 sha256sums=('f03601558902b9f9b286d85aa5da418dfa74acf3e3947992dcb131cc0e44994e')
-install=moksha.install'
+install='moksha.install'
 
 build() {
   cd $pkgname-$pkgver
