@@ -1,7 +1,7 @@
 pkgbase = otf-fanwood-git
 	pkgdesc = A serif based on the work of a famous Czech-American type designer of yesteryear.
 	pkgver = r1.cbaaed9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/theleagueof/fanwood
 	install = otf-fanwood-git.install
 	arch = any
