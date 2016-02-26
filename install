@@ -1,3 +1,0 @@
-post_install() {
-  echo "You need to add extension=ssh2.so to php.ini manually, then restart httpd"
-}
