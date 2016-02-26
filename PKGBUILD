@@ -3,7 +3,7 @@
 _pkgname=sisu
 pkgname=("${_pkgname}-git")
 pkgdesc="documents - structuring, publishing in multiple formats & search"
-pkgver=7.1.7.r0.gc716980
+pkgver=7.1.8.r0.geea0f68
 pkgver() {
   cd "${srcdir}/${pkgname}"
   echo $(git describe --long --tags | sed 's/^[ a-z_-]\+\([0-9.]\+\)/\1/;s/\([^-]*-g\)/r\1/;s/-/./g')
