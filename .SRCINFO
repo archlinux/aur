@@ -1,0 +1,21 @@
+pkgbase = libratbag
+	pkgdesc = A library to configure gaming mice
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/libratbag/libratbag
+	install = libratbag.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = chrpath
+	makedepends = git
+	makedepends = systemd
+	depends = glibc
+	depends = libevdev
+	depends = libudev.so
+	conflicts = libratbag-git
+	source = https://github.com/libratbag/libratbag/archive/v0.2.tar.gz
+	sha256sums = e812ffc2fb329f7c2218a0eaddbb7a48abd50efe03d0deb4a7c75ddb5322c502
+
+pkgname = libratbag
+
