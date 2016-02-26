@@ -22,7 +22,7 @@ build(){
 	sed "s/\-arch=compute_10 //g" -i Makefile.am
 	./autogen.sh
 	CFLAGS=-O2 ./configure --with-cuda=/opt/cuda  --prefix=/usr
-	make -j32
+	make
 }
 
 package() {
