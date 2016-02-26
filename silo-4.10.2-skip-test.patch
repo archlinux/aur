@@ -1,0 +1,20 @@
+--- tests/testsuite.at	2016-02-26 12:52:54.249108829 +0100
++++ tests/testsuite.at.new	2016-02-26 12:58:44.184478494 +0100
+@@ -242,7 +242,7 @@
+ AT_CLEANUP
+ AT_SETUP(write objects)
+ AT_KEYWORDS(python)
+-AT_CHECK(test -z "$PYTHON" -o -z "$BROWSER" && exit 77 || $VALGRIND testonehex `pwd`,,ignore,ignore)
++AT_CHECK(test false && exit 77 || $VALGRIND testonehex `pwd`,,ignore,ignore)
+ AT_CLEANUP
+ 
+ AT_BANNER(JSON (experimental))
+@@ -271,7 +271,7 @@
+ AT_CLEANUP
+ AT_SETUP(compression szip)
+ AT_KEYWORDS(compression)
+-AT_CHECK(test "$STARGS" != DB_HDF5 && exit 77 || $VALGRIND compression szip,,ignore,ignore)
++AT_CHECK(test false && exit 77 || $VALGRIND compression szip,,ignore,ignore)
+ AT_CHECK(test "$STARGS" != DB_HDF5 && exit 77 || $VALGRIND compression readonly,,ignore,ignore)
+ AT_CLEANUP
+ AT_SETUP(compression fpzip)
