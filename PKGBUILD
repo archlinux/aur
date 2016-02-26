@@ -3,10 +3,10 @@
 # Contributor: Bernhard Walle <bernhard.walle@gmx.de>
 pkgname=libmrss
 pkgver=0.19.2
-pkgrel=2
+pkgrel=3
 pkgdesc="C library for parsing, writing and creating RSS/ATOM files or streams"
 url="http://www.autistici.org/bakunin/libmrss/"
-license="LGPL2"
+license=("LGPL2")
 depends=('curl' 'libnxml')
 arch=('i686' 'x86_64')
 options=('!libtool')
