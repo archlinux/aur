@@ -4,7 +4,7 @@
 
 pkgname=libnxml
 pkgver=0.18.3
-pkgrel=2
+pkgrel=3
 pkgdesc="C library for parsing, writing and creating XML 1.0 and 1.1 files or streams"
 url="http://www.autistici.org/bakunin/libnxml/"
 license=('LGPL')
@@ -18,5 +18,9 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
   ./configure --prefix=/usr || return 1
   make || return 1
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install || return 1
 }
