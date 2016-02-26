@@ -19,10 +19,12 @@ pkgbase = popcorntime-bin
 	provides = popcorn-time-ce
 	conflicts = popcorntime
 	options = !strip
-	source = https://get.popcorntime.sh/build/Popcorn-Time-0.3.9-.tar.xz
 	source = popcorntime.desktop
-	sha256sums = 4316a066af9c8f4bcad8f2fa59b32750c051617631f25c04d0f655f5ed13823d
 	sha256sums = 4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334
+	source_i686 = https://get.popcorntime.sh/build/Popcorn-Time-0.3.9-Linux-32.tar.xz
+	sha256sums_i686 = 7793f41c7a9b1c2431ade59e5cf86a49b2286719292676bd93811bce691430e2
+	source_x86_64 = https://get.popcorntime.sh/build/Popcorn-Time-0.3.9-Linux-64.tar.xz
+	sha256sums_x86_64 = bfa3a62ed0008c5e79c7fa5982c53f184ba71ed18431ffed55bbb679dbd4c860
 
 pkgname = popcorntime-bin
 

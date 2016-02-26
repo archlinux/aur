@@ -13,7 +13,7 @@
 pkgname=popcorntime-bin
 _pkgname=popcorntime
 pkgver=0.3.9
-pkgrel=3
+pkgrel=4
 pkgdesc="Stream movies and TV shows from torrents"
 arch=('i686' 'x86_64')
 url="https://popcorntime.sh"
@@ -23,12 +23,12 @@ provides=('popcorntime' 'popcorn-time-ce')
 conflicts=('popcorntime')
 options=('!strip')
 install=popcorntime.install
-[ "$CARCH" = "i686" ]   && _platform='Linux-32'
-[ "$CARCH" = "x86_64" ] && _platform='Linux-64'
-source=("https://get.popcorntime.sh/build/Popcorn-Time-${pkgver}-${_platform}.tar.xz"
-        "${_pkgname}.desktop")
-sha256sums=('4316a066af9c8f4bcad8f2fa59b32750c051617631f25c04d0f655f5ed13823d'
-            '4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334')
+source=("${_pkgname}.desktop")
+source_i686=("https://get.popcorntime.sh/build/Popcorn-Time-${pkgver}-Linux-32.tar.xz")
+source_x86_64=("https://get.popcorntime.sh/build/Popcorn-Time-${pkgver}-Linux-64.tar.xz")
+sha256sums=('4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334')
+sha256sums_i686=('7793f41c7a9b1c2431ade59e5cf86a49b2286719292676bd93811bce691430e2')
+sha256sums_x86_64=('bfa3a62ed0008c5e79c7fa5982c53f184ba71ed18431ffed55bbb679dbd4c860')
 
 [ "$CARCH" = "i686" ]   && _platform=linux32
 [ "$CARCH" = "x86_64" ] && _platform=linux64
