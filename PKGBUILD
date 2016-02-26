@@ -4,8 +4,8 @@ _target=aarch64-linux-gnu
 pkgname=$_target-gcc
 pkgver=5.3.0
 _islver=0.15
-pkgrel=1
-#_snapshot=5-20150630
+pkgrel=2
+_snapshot=5-20160223
 pkgdesc='The GNU Compiler Collection - cross compiler for ARM64 target'
 arch=(i686 x86_64)
 url='http://gcc.gnu.org/'
@@ -16,10 +16,10 @@ options=(!emptydirs !strip staticlibs)
 conflicts=($_target-gcc-stage1 $_target-gcc-stage2)
 replaces=($_target-gcc-stage1 $_target-gcc-stage2)
 provides=($_target-gcc-stage1=$pkgver $_target-gcc-stage2=$pkgver)
-source=(ftp://gcc.gnu.org/pub/gcc/releases/gcc-$pkgver/gcc-$pkgver.tar.bz2
-        #ftp://gcc.gnu.org/pub/gcc/snapshots/$_snapshot/gcc-$_snapshot.tar.bz2
+source=(#ftp://gcc.gnu.org/pub/gcc/releases/gcc-$pkgver/gcc-$pkgver.tar.bz2
+        ftp://gcc.gnu.org/pub/gcc/snapshots/$_snapshot/gcc-$_snapshot.tar.bz2
         http://isl.gforge.inria.fr/isl-$_islver.tar.bz2)
-sha256sums=('b84f5592e9218b73dbae612b5253035a7b34a9a1f7688d2e1bfaaf7267d5c4db'
+sha256sums=('15a26f2996d93e8dd9166e213fb7abf9ecb612183e6357f97b650f8604c90406'
             '8ceebbf4d9a81afa2b4449113cee4b7cb14a687d7a549a963deb5e2a41458b6b')
 
 if [ -n "$_snapshot" ]; then
