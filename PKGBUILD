@@ -5,7 +5,7 @@
 pkgname=popcorntime-git
 _pkgname=popcorntime
 _gitname=popcorn-desktop
-pkgver=r5815.e4d2daf
+pkgver=r5833.1c51a7f
 pkgrel=1
 pkgdesc="Stream movies and TV shows from torrents"
 arch=('i686' 'x86_64')
@@ -37,7 +37,6 @@ prepare() {
 
 build() {
   cd "${_gitname}"
-  grunt themes
   gulp build -p ${_platform}
 }
 
