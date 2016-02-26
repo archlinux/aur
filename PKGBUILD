@@ -3,10 +3,10 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-hddarchive
 epoch=1
-pkgver=0.0.1_6_gd014d52
+pkgver=0.0.1.r6.gd014d52
 _gitver=d014d52dcb3790bd1ba38fe7b6fb0c4136364148
 _vdrapi=2.2.0
-pkgrel=8
+pkgrel=1
 pkgdesc="Brings the archive-hdd functionality to VDR."
 url="http://projects.vdr-developer.org/projects/show/plg-hddarchive"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -23,8 +23,17 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/vdr-plugin-${_plugname}"
-  git tag -a v0.0.1 -m 'Added Tag' edf6617c323c8ff173201531c10debf199b4dec5 2> /dev/null
-  git describe --tags | sed 's/-/_/g;s/v//'
+  _last_release=0.0.1
+  _last_release_commit=edf6617c323c8ff173201531c10debf199b4dec5
+
+  _count=$((`git rev-list --count HEAD` - `git rev-list --count $_last_release_commit`))
+  if [ $_count -gt 0 ]; then
+    printf "%s.r%s.g%s" $_last_release \
+      $_count \
+      `git rev-parse --short HEAD`
+  else
+    printf "%s" $_last_release
+  fi
 }
 
 prepare() {
