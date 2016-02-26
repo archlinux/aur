@@ -1,14 +1,43 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
-pkgname=gzdoom-git
-pkgver=2.1.pre.r1486.g86797b4
+# Build with the recommended fmodex version:
+_fmodex=4.26.36
+# Build with the currently installed fmodex version:
+#_fmodex=$(LC_ALL=C pacman -Q fmodex | grep -Po '(?<= ).+(?=-)')
+# Build without fmodex:
+#_fmodex=
+
+# Build with OpenAL:
+_openal=1
+# Build without OpenAL:
+#_openal=
+
+_name=gzdoom
+pkgname=${_name}-git
+pkgver=2.2pre.709.g6f28735
 pkgrel=1
-pkgdesc="Doom source port based on ZDoom with an OpenGL renderer (git version)."
+_label='GZDoom'
+_desc='Advanced Doom source port with OpenGL support'
+pkgdesc="${_desc} (git version)"
 arch=('i686' 'x86_64')
-url="http://forum.drdteam.org/viewforum.php?f=22"
-license=('custom')
-depends=('fluidsynth' 'fmodex4.26.36' 'glew' 'gtk2' 'gxmessage' 'sdl2')
-makedepends=('nasm' 'cmake' 'git' 'imagemagick' 'mesa')
+url='http://www.zdoom.org/'
+license=('BSD' 'custom:BUILD' 'custom:doom' 'custom:dumb' 'LGPL')
+depends=('fluidsynth'
+         ${_fmodex:+"fmodex=$_fmodex"}
+         'gtk2'
+         'gxmessage'
+         'libgl'
+         'libgme'
+         ${_openal:+'libsndfile'}
+         ${_openal:+'mpg123'}
+         ${_openal:+'openal'}
+         'sdl2')
+makedepends=('cmake'
+             'desktop-file-utils'
+             'git'
+             'imagemagick'
+             'xdg-utils')
+makedepends_i686=('nasm')
 optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'chexquest3-wad: Chex Quest 3 game data'
             'doom1-wad: Doom shareware game data'
@@ -18,64 +47,131 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'heretic1-wad: Heretic shareware game data'
             'hexen1-wad: Hexen demo game data'
             'strife0-wad: Strife shareware game data'
+            'square1-wad: The Adventures of Square, Episode 1 game data'
             'urbanbrawl-wad: Urban Brawl: Action Doom 2 game data')
-provides=('gzdoom')
-conflicts=('gzdoom')
-source=(gzdoom::git://github.com/coelckers/gzdoom.git \
-        doom-share-dir.patch \
-        stack-noexec.patch \
-        gzdoom.desktop)
+provides=("${_name}")
+conflicts=("${_name}")
+install=install
+source=("${_name}::git://github.com/coelckers/${_name}.git"
+        'desktop.template'
+        '0001-Mark-stack-as-not-executable-in-assembler-sources.patch'
+        '0002-Include-SHARE_DIR-in-IWADSearch.Directories.patch')
+_srcsubdir="${_name}"
 sha256sums=('SKIP'
-            '7fa660bdff8dd0aa9151173c2ddc9122e639d3b0a2c6f98573d37b92765bab7d'
-            'a23277cc90ef8bd720417b097609ede6f5054b252843742209f794e0d1306205'
-            '2a0b837ddc423d3a6be50f60735c55ee27cd26f58c42540b44aab395030b9cc4')
-
-_fmodver=4.26.36
-_libdir=/usr/lib/gzdoom
-_sharedir=/usr/share/games/gzdoom
+            'f2c58925238fe0d01e630527c8c4431681ccaec2d763ba075429b747d1a98a8c'
+            '52d03619b1e53d0d033eabc818661406a7b623918e81f6ca395e9ff2e9f77d2b'
+            '56ef41d8f96053886919a11a44a9e8080fbbee35e65631ad4aceb204a29b2ee6')
 
 pkgver() {
-  cd gzdoom
+    cd "${_srcsubdir}"
 
-  git describe --long --tags --match '[Gg]*' | sed -r 's/^[Gg]//;s/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long --tags --match '[Gg]*' | sed -r 's/^[Gg]//;s/([^-]*-g)/\1/;s/-/./g'
 }
 
 prepare() {
-  cd gzdoom
+    cd "${_srcsubdir}"
 
-  patch -p1 <"$srcdir/doom-share-dir.patch"
-  patch -p1 <"$srcdir/stack-noexec.patch"
-
-  sed -i "s|setPluginPath(progdir)|setPluginPath(\"$_libdir\")|" src/sound/fmodsound.cpp
+    local _file
+    for _file in "${source[@]}"; do
+        if [[ "${_file}" == *.patch ]]; then
+            patch -p1 <"${srcdir}/${_file}"
+        fi
+    done
 }
 
 build() {
-  cd gzdoom
+    cd "${_srcsubdir}"
 
-  cmake -DFMOD_INCLUDE_DIR=/usr/include/fmodex-$_fmodver \
-        -DFMOD_LIBRARY=/usr/lib/libfmodex-$_fmodver.so \
-        -DCMAKE_C_FLAGS="$CFLAGS -DSHARE_DIR=\\\"$_sharedir\\\"" \
-        -DCMAKE_CXX_FLAGS="$CXXFLAGS -DSHARE_DIR=\\\"$_sharedir\\\"" \
-        .
-  make
+    cat >"${_name}.sh" <<EOF
+#!/bin/sh
+exec /usr/lib/${_name}/${_name} "\$@"
+EOF
 
-  convert "src/win32/icon1.ico[2]" gzdoom.png
+    local _nofmod _noopenal _fmodincdir
+
+    if [[ -n "${_fmodex}" ]]; then
+        _nofmod=OFF
+
+        _fmodincdir="/usr/include/fmodex-${_fmodex}"
+        if [[ ! -e "${_fmodincdir}" ]]; then
+            _fmodincdir='/usr/include/fmodex'
+        fi
+    else
+        _nofmod=ON
+    fi
+
+    if [[ -n "${_openal}" ]]; then
+        _noopenal=OFF
+    else
+        _noopenal=ON
+    fi
+
+    cmake -DNO_FMOD=${_nofmod} \
+          -DNO_OPENAL=${_noopenal} \
+          -DGME_INCLUDE_DIR='/usr/include/gme' \
+          -DFMOD_INCLUDE_DIR="${_fmodincdir}" \
+          -DFMOD_LIBRARY="/usr/lib/libfmodex-${_fmodex}.so" \
+          -DFORCE_INTERNAL_GME=OFF \
+          -DCMAKE_C_FLAGS="$CFLAGS -DSHARE_DIR=\\\"/usr/share/${_name}\\\"" \
+          -DCMAKE_CXX_FLAGS="$CXXFLAGS -DSHARE_DIR=\\\"/usr/share/${_name}\\\"" \
+          .
+    make
+
+    sed -n '/\*\*-/,/\*\*-/p' 'src/version.h' >'bsd.txt'
+
+    cp "${srcdir}/desktop.template" "${_name}.desktop"
+    desktop-file-edit --set-name="${_label}" \
+                      --set-generic-name="${_desc}" \
+                      --set-icon="${_name}" \
+                      --set-key=Exec --set-value="${_name} %F" \
+                      "${_name}.desktop"
+
+    mkdir 'icons'
+    convert 'src/win32/icon1.ico[2]' 'icons/48.png'
+    convert 'src/win32/icon1.ico[3]' 'icons/32.png'
+    convert 'src/win32/icon1.ico[4]' 'icons/16.png'
 }
 
 package() {
-  cd gzdoom
+    cd "${_srcsubdir}"
 
-  install -Dm755 gzdoom "$pkgdir/usr/bin/gzdoom"
-  install -Dm755 liboutput_sdl.so "$pkgdir/$_libdir/liboutput_sdl.so"
-  install -Dm644 gzdoom.pk3 "$pkgdir/$_sharedir/gzdoom.pk3"
-  install -Dm644 brightmaps.pk3 "$pkgdir/$_sharedir/brightmaps.pk3"
-  install -Dm644 lights.pk3 "$pkgdir/$_sharedir/lights.pk3"
-  ln -s /usr/share/doom/doom.wad "$pkgdir/$_sharedir/freedoomu.wad"
-  ln -s /usr/share/doom/doom2.wad "$pkgdir/$_sharedir/freedoom.wad"
-  ln -s /usr/share/doom/hexen.wad "$pkgdir/$_sharedir/hexendemo.wad"
+    install -D "${_name}.sh" "${pkgdir}/usr/bin/${_name}"
 
-  install -Dm644 gzdoom.png "$pkgdir/usr/share/pixmaps/gzdoom.png"
-  install -Dm644 "$srcdir/gzdoom.desktop" "$pkgdir/usr/share/applications/gzdoom.desktop"
-  install -Dm644 docs/BUILDLIC.TXT "$pkgdir/usr/share/licenses/$pkgname/buildlic.txt"
-  install -Dm644 docs/doomlic.txt "$pkgdir/usr/share/licenses/$pkgname/doomlic.txt"
+    mkdir -p "${pkgdir}/usr/lib/${_name}"
+    install "${_name}" "${pkgdir}/usr/lib/${_name}/"
+    install -m644 "${_name}.pk3" "${pkgdir}/usr/lib/${_name}/"
+    if [[ -n "${_fmodex}" ]]; then
+        install 'liboutput_sdl.so' "${pkgdir}/usr/lib/${_name}/"
+    fi
+
+    mkdir -p "${pkgdir}/usr/share/${_name}"
+    install -m644 'brightmaps.pk3' "${pkgdir}/usr/share/${_name}/"
+    install -m644 'lights.pk3' "${pkgdir}/usr/share/${_name}/"
+    ln -s '/usr/share/doom/doom.wad' "${pkgdir}/usr/share/${_name}/freedoomu.wad"
+    ln -s '/usr/share/doom/doom2.wad' "${pkgdir}/usr/share/${_name}/freedoom.wad"
+    ln -s '/usr/share/doom/heretic.wad' "${pkgdir}/usr/share/${_name}/blasphemer.wad"
+    ln -s '/usr/share/doom/hexen.wad' "${pkgdir}/usr/share/${_name}/hexendemo.wad"
+
+    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -m644 'bsd.txt' "${pkgdir}/usr/share/licenses/${pkgname}/bsd.txt"
+    install -m644 'docs/BUILDLIC.TXT' "${pkgdir}/usr/share/licenses/${pkgname}/buildlic.txt"
+    install -m644 'docs/doomlic.txt' "${pkgdir}/usr/share/licenses/${pkgname}/doomlic.txt"
+    install -m644 'dumb/licence.txt' "${pkgdir}/usr/share/licenses/${pkgname}/dumb.txt"
+
+    desktop-file-install --dir="${pkgdir}/usr/share/applications" "${_name}.desktop"
+
+    mkdir -p "${pkgdir}/usr/share/icons/hicolor"
+    (
+        cd 'icons'
+        export XDG_DATA_DIRS="${pkgdir}/usr/share"
+
+        local _file
+        for _file in *.png; do
+            xdg-icon-resource install --noupdate \
+                                      --novendor \
+                                      --size "${_file%.png}" \
+                                      "${_file}" \
+                                      "${_name}"
+        done
+    )
 }
