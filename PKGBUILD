@@ -3,7 +3,7 @@
 pkgname=lifx-cli-git
 _pkgname="lifx-cli"
 pkgver=v1.1.r0.g7c935ca
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line interface for LIFX light bulbs written in Python 3"
 arch=(any)
 url="https://github.com/Rawa/lifx-cli"
@@ -11,7 +11,7 @@ provides=('lifx')
 license=('MIT')
 depends=(
   'python'
-  'python-pycurl'
+  'python-requests'
   'python-urllib3'
 )
 conflicts=('')
