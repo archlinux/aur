@@ -5,9 +5,9 @@
 
 pkgname=pidgin-opensteamworks
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A plugin to connect to Steam Friends/Steam IM (purple plugin). "
-url=("https://github.com/EionRobb/${pkgname}")
+url="https://github.com/EionRobb/${pkgname}"
 arch=('i686' 'x86_64')
 license=('GPL3')
 makedepends=('nss' 'libgnome-keyring')
