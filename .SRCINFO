@@ -14,6 +14,7 @@ pkgbase = gnome-multi-writer
 	depends = gtk3
 	depends = udisks2
 	depends = libcanberra
+	depends = gobject-introspection
 	source = https://git.gnome.org/browse/gnome-multi-writer/snapshot/GNOME_MULTI_WRITER_3_19_90.tar.xz
 	sha256sums = 0f09bdb544e4adee2649bb25ec2862cd185435b3a9fda2a456aca050f4c68d3e
 
