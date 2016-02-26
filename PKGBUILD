@@ -1,8 +1,8 @@
 # Maintainer: Grigorii Horos <horosgrisa@gmail.com>
 pkgname=feedreader-git
 pkgver=1.5
-pkgrel=3
-pkgdesc="A simple feedreader client for web services like Tiny Tiny RSS and in the future others."
+pkgrel=4
+pkgdesc="FeedReader is a modern desktop application designed to complement existing web-based RSS accounts."
 arch=('i686' 'x86_64')
 url="https://github.com/jangernert/FeedReader"
 license=('GPL3')
