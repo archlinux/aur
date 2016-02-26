@@ -8,7 +8,6 @@ pkgbase = libratbag
 	arch = x86_64
 	license = MIT
 	makedepends = chrpath
-	makedepends = git
 	makedepends = systemd
 	depends = glibc
 	depends = libevdev
