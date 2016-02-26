@@ -1,0 +1,14 @@
+[Unit]
+Description=Daemon to add docker containers to dnsmasq
+Requires=docker.service
+Requires=dnsmasq.service
+After=docker.service
+After=dnsmasq.service
+
+[Service]
+Type=idle
+ExecStart=/usr/bin/docker-dnsmasq daemon
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
