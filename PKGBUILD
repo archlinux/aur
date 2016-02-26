@@ -2,7 +2,7 @@
 # Contributor: Tom Richards <tom [at] tomrichards [dot] net>
 
 pkgname=caddy
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="A configurable, general-purpose HTTP/2 web server for any platform"
 arch=('i686' 'x86_64' 'armv6h')
@@ -11,14 +11,14 @@ license=('Apache')
 install='caddy.install'
 conflicts=('caddy-git')
 
-[ "$CARCH" = 'i686' ]   && _suffix='386'   && _md5='55787149e13a392313cc90ef06fbca86'
-[ "$CARCH" = 'x86_64' ] && _suffix='amd64' && _md5='947eaa98dd168832da04c1f4c2670e1a'
-[ "$CARCH" = 'armv6h' ] && _suffix='arm'   && _md5='5b1c6aab36e9a1e389386357a4110af1'
+[ "$CARCH" = 'i686' ]   && _suffix='386'   && _hash='0012f54d09ae6bad96f86554aad6eb2d7c1f08bb7d9a72fdf640a53b0542352a'
+[ "$CARCH" = 'x86_64' ] && _suffix='amd64' && _hash='497ddf916b1d38e5435c4bd996b89c208ecb6dc05cf447381e549d39a616db4b'
+[ "$CARCH" = 'armv6h' ] && _suffix='arm'   && _hash='7e9ad0171f9cdd78a95b35e19cc973b9a8108f391a3fafa4c05d4201248e4627'
 
 source=("https://github.com/mholt/caddy/releases/download/v$pkgver/caddy_linux_$_suffix.tar.gz"
         'caddy.service')
-md5sums=("$_md5"
-         '13772e64a93685262018194da32a6f1b')
+sha256sums=("${_hash}"
+            '244fa03febae623f1b10adfb6883a9573ba81747b8e535bb23101ab230ccbf95')
 
 package() {
   install -Dm755 "$srcdir/caddy" "$pkgdir/usr/bin/caddy"
