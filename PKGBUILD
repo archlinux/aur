@@ -10,7 +10,7 @@ url="http://code.google.com/p/boblight/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('libusbx' 'libxext' 'libxrender' 'mesa' 'portaudio')
-makedepends=('glu' 'svn')
+makedepends=('glu' 'subversion')
 source=("svn+https://boblight.googlecode.com/svn/trunk#revision=$_svnrev"
         "$pkgname.service")
 md5sums=('SKIP'
