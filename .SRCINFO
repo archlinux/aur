@@ -1,8 +1,8 @@
 pkgbase = yacas
 	pkgdesc = Yet another computer algebra system
-	pkgver = 1.3.6
+	pkgver = 1.4.0
 	pkgrel = 1
-	url = http://yacas.sourceforge.net/yacas.html
+	url = http://www.yacas.org/
 	install = yacas.install
 	arch = i686
 	arch = x86_64
@@ -16,12 +16,16 @@ pkgbase = yacas
 	optdepends = gnuplot
 	optdepends = lynx
 	optdepends = texmacs
-	source = http://yacas.sourceforge.net/backups/yacas-1.3.6.tar.gz
+	optdepends = fbreader: Reading EPUB manual
+	noextract = yacas.epub
+	source = https://github.com/grzegorzmazur/yacas/archive/v1.4.0.tar.gz
+	source = https://media.readthedocs.org/epub/yacas/latest/yacas.epub
 	source = yacas.desktop
 	source = yacas-docs.desktop
-	md5sums = 6c5e3b869c1b13d2f4d02d36da964e8d
+	md5sums = 80b86a586d8d56afdd6986686daf0f13
+	md5sums = SKIP
 	md5sums = 21d4cf6e7658aa0d7c4a0ed14c13f2e9
-	md5sums = 50cb74a345f1580a62047d376f6b54e3
+	md5sums = fff8c43f7ab3a77c6f6e181bc3e2687f
 
 pkgname = yacas
 
