@@ -1,6 +1,6 @@
 post_install() {
-    libtool --finish /usr/lib/evolution/plugins
-    libtool --finish /usr/lib/evolution-data-server/registry-modules
+    libtool --finish /usr/lib/evolution/plugins > /dev/null
+    libtool --finish /usr/lib/evolution-data-server/registry-modules > /dev/null
     glib-compile-schemas /usr/share/glib-2.0/schemas
 }
 

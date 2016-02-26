@@ -2,7 +2,7 @@
 _pkgname=evolution-rss
 pkgname=$_pkgname-git
 pkgver=0.3.95.r26.ga6fe830
-pkgrel=1
+pkgrel=2
 pkgdesc="RSS-Plugin for evolution"
 arch=(i686 x86_64)
 url="http://gnome.eu.org/evo/index.php/Evolution_RSS_Reader_Plugin"
