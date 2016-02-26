@@ -2,8 +2,8 @@
 
 _pkgname=greg
 pkgname=greg-git
-pkgver=0.4.5
-pkgrel=2
+pkgver=0.4.4.3
+pkgrel=3
 pkgdesc="A command-line podcast aggregator."
 arch=(any)
 url="https://github.com/manolomartinez/greg"
