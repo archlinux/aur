@@ -20,7 +20,7 @@ source=("GoogleEarthProWin-$pkgver.exe::https://dl.google.com/earth/client/advan
         'Legal-Notices-for-Google-Earth-and-Google-Earth-APIs.html::https://www.google.com/help/legalnotices_maps.html'
         'Google-Privacy-Policy.html::https://www.google.com/intl/ALL/policies/privacy/index.html')
 md5sums=('b5c77900c789125378eadaba792b8a87'
-         'de86a7976f6069b780d6612fa7e696dc'
+         'a5492ca9317d9f9f3a28f6e1c663676a'
          '9be557dbe2950f8adae14ed0b036a218'
          'ec5de2f7743a06a5b4acbbb853e03f9b'
          '392333988b71073344fd8b3094230ff1'
@@ -57,23 +57,19 @@ build() {
 
 package() {
   msg2 "Installing system-wide..."
-  [[ ! $WINEPREFIX ]] && WINEPREFIX=~/.wine
-  if [[ ! -d "$WINEPREFIX/drive_c/Program Files (x86)/" ]]; then
-    _winedir="$WINEPREFIX/drive_c/Program Files/"
-  else
-    _winedir="$WINEPREFIX/drive_c/Program Files (x86)/"
-  fi
+  # Program Files ((x86)) location
+  Program_Files=$(winepath -u "$(wine cmd.exe /c 'echo %ProgramFiles%' | tr -d '\r')")
 
   # Copy recursively
   install -d "$pkgdir"/opt/google/earth/
-  cp -r "$_winedir/Google/Google Earth Pro/client/" "$pkgdir"/opt/google/earth/pro-wine
+  cp -r "$Program_Files/Google/Google Earth Pro/client/" "$pkgdir"/opt/google/earth/pro-wine/
 
   msg2 "Cleaning up..."
   # Installation GUID
-  _guid=$(wine uninstaller --list | grep "Google Earth Pro" | cut -d "|" -f1)
+  _GUID=$(wine uninstaller --list | grep "Google Earth Pro" | cut -d "|" -f1)
 
   # Uninstall
-  wine uninstaller --remove $_guid
+  wine uninstaller --remove $_GUID
 
   msg2 "Installing launcher..."
   install -Dm755 $pkgname.sh "$pkgdir"/usr/bin/$pkgname

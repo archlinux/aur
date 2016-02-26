@@ -51,19 +51,22 @@ if [[ ! $WINEPREFIX ]]; then
 fi
 
 # Symlink settings to ~/.googleearthpro
-if [[ ! -L ~/.googleearthpro ]]; then
-    ln -s $WINEPREFIX/drive_c/users/$USER/AppData/LocalLow/Google/GoogleEarth/ \
-          ~/.googleearthpro
+# Windows registry queries not implemented yet: https://bugs.winehq.org/show_bug.cgi?id=24017
+ge_appdata_win=$(grep "CachePath" "$WINEPREFIX"/user.reg |& grep "GoogleEarth" |& cut -d '"' -f4)
+ge_appdata_lin=$(winepath -u "$ge_appdata_win")
+if [[ $(readlink ~/.googleearthpro != "$ge_appdata_lin") ]]; then
+    ln -sf "$ge_appdata_lin" ~/.googleearthpro
 fi
 
 # Add path in Wine form (e.g. "z:/home/user/Desktop/lol.kml")
 file=$(winepath -w "$@")
 
 # Launch app
+google_earth=/opt/google/earth/pro-wine/googleearth.exe
 if [[ $quiet ]]; then
-    wine /opt/google/earth/pro-wine/googleearth.exe "$file" &>/dev/null
+    wine $google_earth "$file" &>/dev/null
 elif [[ $verbose ]]; then
-    wine /opt/google/earth/pro-wine/googleearth.exe "$file"
+    wine $google_earth "$file"
 else
-    WINEDEBUG=-all wine /opt/google/earth/pro-wine/googleearth.exe "$file"
+    WINEDEBUG=-all wine $google_earth "$file"
 fi
