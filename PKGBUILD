@@ -1,15 +1,44 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
-pkgname=gzdoom1-git
-pkgver=1.9pre.r1275.g1db064b
+# Build with the recommended fmodex version:
+_fmodex=4.26.36
+# Build with the currently installed fmodex version:
+#_fmodex=$(LC_ALL=C pacman -Q fmodex | grep -Po '(?<= ).+(?=-)')
+# Build without fmodex:
+#_fmodex=
+
+# Build with OpenAL:
+_openal=1
+# Build without OpenAL:
+#_openal=
+
+_name=gzdoom
+pkgname=${_name}1-git
+pkgver=1.10pre.710.gb7d58f8
 pkgrel=1
-pkgdesc="Doom source port based on ZDoom with an OpenGL renderer (git legacy version)."
+_label='GZDoom'
+_desc='Advanced Doom source port with OpenGL support'
+pkgdesc="${_desc} (git legacy version)"
 arch=('i686' 'x86_64')
-url="http://www.osnanet.de/c.oelckers/gzdoom/"
-license=('custom')
-depends=('fluidsynth' 'fmodex4.26.36' 'glew' 'gtk2' 'gxmessage' 'sdl2')
-makedepends=('nasm' 'cmake' 'git' 'imagemagick' 'mesa')
-optdepends=('blasphemer: Blasphemer (free Heretic) game data'
+url='http://www.zdoom.org/'
+license=('BSD' 'custom:BUILD' 'custom:doom' 'custom:dumb' 'LGPL')
+depends=('fluidsynth'
+         ${_fmodex:+"fmodex=$_fmodex"}
+         'gtk2'
+         'gxmessage'
+         'libgl'
+         'libgme'
+         ${_openal:+'libsndfile'}
+         ${_openal:+'mpg123'}
+         ${_openal:+'openal'}
+         'sdl2')
+makedepends=('cmake'
+             'desktop-file-utils'
+             'git'
+             'imagemagick'
+             'xdg-utils')
+makedepends_i686=('nasm')
+optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'chexquest3-wad: Chex Quest 3 game data'
             'doom1-wad: Doom shareware game data'
             'freedoom: FreeDoom game data'
@@ -18,80 +47,131 @@ optdepends=('blasphemer: Blasphemer (free Heretic) game data'
             'heretic1-wad: Heretic shareware game data'
             'hexen1-wad: Hexen demo game data'
             'strife0-wad: Strife shareware game data'
+            'square1-wad: The Adventures of Square, Episode 1 game data'
             'urbanbrawl-wad: Urban Brawl: Action Doom 2 game data')
-provides=('gzdoom')
-conflicts=('gzdoom')
-source=(gzdoom::git://github.com/coelckers/gzdoom.git#branch=Branch_g1.8.07
-        git-c915049.patch
-        git-37321d1.patch
-        git-cab509c.patch
-        git-fb3bf0e.patch
-        config-update-fix.patch
-        doom-share-dir.patch
-        stack-noexec.patch
-        gzdoom.desktop)
+provides=("${_name}")
+conflicts=("${_name}")
+install=install
+source=("${_name}::git://github.com/coelckers/${_name}.git#branch=g1.x"
+        'desktop.template'
+        '0001-Mark-stack-as-not-executable-in-assembler-sources.patch'
+        '0002-Include-SHARE_DIR-in-IWADSearch.Directories.patch')
+_srcsubdir="${_name}"
 sha256sums=('SKIP'
-            '7bbe5aee7e66780f92d29e8b44417b6165828a610471811a3adae9085234cd12'
-            '48562c7a6110b19cdd4d795b5d28b5445243831533269f8bb25cc19ba67333ff'
-            '5150353839bc653282720b8e434b09930b2747d91115afdb1eda32daa6162f59'
-            'acb5a37bff36f866345c68b8b512bc3bb4c549d347020ea8e1f0c52b271049bc'
-            '4bc40d323e0b0d3f8a43f8cff8cd2ebe2963394069245de19e95ca25067ed933'
-            '7fa660bdff8dd0aa9151173c2ddc9122e639d3b0a2c6f98573d37b92765bab7d'
-            'a23277cc90ef8bd720417b097609ede6f5054b252843742209f794e0d1306205'
-            '2a0b837ddc423d3a6be50f60735c55ee27cd26f58c42540b44aab395030b9cc4')
-
-_fmodver=4.26.36
-_libdir=/usr/lib/gzdoom
-_sharedir=/usr/share/games/gzdoom
+            'f2c58925238fe0d01e630527c8c4431681ccaec2d763ba075429b747d1a98a8c'
+            '927465d3afcb32e3027ce3570880237b7ce6ea6e5454779db3e72891688f8cf2'
+            'cd3bf650cb6595c683506d973d1de80ddc50a4c96122f64bfce0d8c558020621')
 
 pkgver() {
-  cd gzdoom
+    cd "${_srcsubdir}"
 
-  git describe --long --tags --match 'G*' | sed -r 's/^G//;s/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long --tags --match '[Gg]*' | sed -r 's/^[Gg]//;s/([^-]*-g)/\1/;s/-/./g'
 }
 
 prepare() {
-  cd gzdoom
+    cd "${_srcsubdir}"
 
-  patch -p1 <"$srcdir"/git-c915049.patch
-  patch -p1 <"$srcdir"/git-37321d1.patch
-  patch -p1 <"$srcdir"/git-cab509c.patch
-  patch -p1 <"$srcdir"/git-fb3bf0e.patch
-
-  patch -p1 <"$srcdir/config-update-fix.patch"
-  patch -p1 <"$srcdir/doom-share-dir.patch"
-  patch -p1 <"$srcdir/stack-noexec.patch"
-
-  sed -i "s|setPluginPath(progdir)|setPluginPath(\"$_libdir\")|" src/sound/fmodsound.cpp
+    local _file
+    for _file in "${source[@]}"; do
+        if [[ "${_file}" == *.patch ]]; then
+            patch -p1 <"${srcdir}/${_file}"
+        fi
+    done
 }
 
 build() {
-  cd gzdoom
+    cd "${_srcsubdir}"
 
-  cmake -DFMOD_INCLUDE_DIR=/usr/include/fmodex-$_fmodver \
-        -DFMOD_LIBRARY=/usr/lib/libfmodex-$_fmodver.so \
-        -DCMAKE_C_FLAGS="$CFLAGS -DSHARE_DIR=\\\"$_sharedir\\\"" \
-        -DCMAKE_CXX_FLAGS="$CXXFLAGS -DSHARE_DIR=\\\"$_sharedir\\\"" \
-        .
-  make
+    cat >"${_name}.sh" <<EOF
+#!/bin/sh
+exec /usr/lib/${_name}/${_name} "\$@"
+EOF
 
-  convert "src/win32/icon1.ico[2]" gzdoom.png
+    local _nofmod _noopenal _fmodincdir
+
+    if [[ -n "${_fmodex}" ]]; then
+        _nofmod=OFF
+
+        _fmodincdir="/usr/include/fmodex-${_fmodex}"
+        if [[ ! -e "${_fmodincdir}" ]]; then
+            _fmodincdir='/usr/include/fmodex'
+        fi
+    else
+        _nofmod=ON
+    fi
+
+    if [[ -n "${_openal}" ]]; then
+        _noopenal=OFF
+    else
+        _noopenal=ON
+    fi
+
+    cmake -DNO_FMOD=${_nofmod} \
+          -DNO_OPENAL=${_noopenal} \
+          -DGME_INCLUDE_DIR='/usr/include/gme' \
+          -DFMOD_INCLUDE_DIR="${_fmodincdir}" \
+          -DFMOD_LIBRARY="/usr/lib/libfmodex-${_fmodex}.so" \
+          -DFORCE_INTERNAL_GME=OFF \
+          -DCMAKE_C_FLAGS="$CFLAGS -DSHARE_DIR=\\\"/usr/share/${_name}\\\"" \
+          -DCMAKE_CXX_FLAGS="$CXXFLAGS -DSHARE_DIR=\\\"/usr/share/${_name}\\\"" \
+          .
+    make
+
+    sed -n '/\*\*-/,/\*\*-/p' 'src/version.h' >'bsd.txt'
+
+    cp "${srcdir}/desktop.template" "${_name}.desktop"
+    desktop-file-edit --set-name="${_label}" \
+                      --set-generic-name="${_desc}" \
+                      --set-icon="${_name}" \
+                      --set-key=Exec --set-value="${_name} %F" \
+                      "${_name}.desktop"
+
+    mkdir 'icons'
+    convert 'src/win32/icon1.ico[2]' 'icons/48.png'
+    convert 'src/win32/icon1.ico[3]' 'icons/32.png'
+    convert 'src/win32/icon1.ico[4]' 'icons/16.png'
 }
 
 package() {
-  cd gzdoom
+    cd "${_srcsubdir}"
 
-  install -Dm755 gzdoom "$pkgdir/usr/bin/gzdoom"
-  install -Dm755 liboutput_sdl.so "$pkgdir/$_libdir/liboutput_sdl.so"
-  install -Dm644 gzdoom.pk3 "$pkgdir/$_sharedir/gzdoom.pk3"
-  install -Dm644 brightmaps.pk3 "$pkgdir/$_sharedir/brightmaps.pk3"
-  install -Dm644 lights.pk3 "$pkgdir/$_sharedir/lights.pk3"
-  ln -s /usr/share/doom/doom.wad "$pkgdir/$_sharedir/freedoomu.wad"
-  ln -s /usr/share/doom/doom2.wad "$pkgdir/$_sharedir/freedoom.wad"
-  ln -s /usr/share/doom/hexen.wad "$pkgdir/$_sharedir/hexendemo.wad"
+    install -D "${_name}.sh" "${pkgdir}/usr/bin/${_name}"
 
-  install -Dm644 gzdoom.png "$pkgdir/usr/share/pixmaps/gzdoom.png"
-  install -Dm644 "$srcdir/gzdoom.desktop" "$pkgdir/usr/share/applications/gzdoom.desktop"
-  install -Dm644 docs/BUILDLIC.TXT "$pkgdir/usr/share/licenses/$pkgname/buildlic.txt"
-  install -Dm644 docs/doomlic.txt "$pkgdir/usr/share/licenses/$pkgname/doomlic.txt"
+    mkdir -p "${pkgdir}/usr/lib/${_name}"
+    install "${_name}" "${pkgdir}/usr/lib/${_name}/"
+    install -m644 "${_name}.pk3" "${pkgdir}/usr/lib/${_name}/"
+    if [[ -n "${_fmodex}" ]]; then
+        install 'liboutput_sdl.so' "${pkgdir}/usr/lib/${_name}/"
+    fi
+
+    mkdir -p "${pkgdir}/usr/share/${_name}"
+    install -m644 'brightmaps.pk3' "${pkgdir}/usr/share/${_name}/"
+    install -m644 'lights.pk3' "${pkgdir}/usr/share/${_name}/"
+    ln -s '/usr/share/doom/doom.wad' "${pkgdir}/usr/share/${_name}/freedoomu.wad"
+    ln -s '/usr/share/doom/doom2.wad' "${pkgdir}/usr/share/${_name}/freedoom.wad"
+    ln -s '/usr/share/doom/heretic.wad' "${pkgdir}/usr/share/${_name}/blasphemer.wad"
+    ln -s '/usr/share/doom/hexen.wad' "${pkgdir}/usr/share/${_name}/hexendemo.wad"
+
+    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -m644 'bsd.txt' "${pkgdir}/usr/share/licenses/${pkgname}/bsd.txt"
+    install -m644 'docs/BUILDLIC.TXT' "${pkgdir}/usr/share/licenses/${pkgname}/buildlic.txt"
+    install -m644 'docs/doomlic.txt' "${pkgdir}/usr/share/licenses/${pkgname}/doomlic.txt"
+    install -m644 'dumb/licence.txt' "${pkgdir}/usr/share/licenses/${pkgname}/dumb.txt"
+
+    desktop-file-install --dir="${pkgdir}/usr/share/applications" "${_name}.desktop"
+
+    mkdir -p "${pkgdir}/usr/share/icons/hicolor"
+    (
+        cd 'icons'
+        export XDG_DATA_DIRS="${pkgdir}/usr/share"
+
+        local _file
+        for _file in *.png; do
+            xdg-icon-resource install --noupdate \
+                                      --novendor \
+                                      --size "${_file%.png}" \
+                                      "${_file}" \
+                                      "${_name}"
+        done
+    )
 }
