@@ -1,7 +1,7 @@
 # Maintainer: Moritz Lipp <mlq@pwmt.org>
 pkgname=asix-ax88179-dkms
-pkgver=1.14.2
-pkgrel=2
+pkgver=1.14.4
+pkgrel=1
 
 _dirname=AX88179_178A_LINUX_DRIVER_v${pkgver}_SOURCE
 _modname=ax88179_178a
@@ -12,18 +12,18 @@ url="http://www.asix.com.tw/products.php?op=pItemdetail&PItemID=131;71;112&PLine
 license=('GPL')
 depends=('dkms' 'linux-headers')
 install=${_modname}-dkms.install
-source=("http://www.asix.com.tw/FrootAttach/driver/AX88179_178A_LINUX_DRIVER_v${pkgver}_SOURCE.tar.gz"
+source=("http://www.asix.com.tw/FrootAttach/driver/AX88179_178A_LINUX_DRIVER_v${pkgver}_SOURCE.zip"
     "dkms.conf"
     "blacklist-${_modname}.conf"
     "${_modname}-dkms.conf"
     "${_modname}-dkms.install"
     "0001-No-date-time.patch"
 )
-md5sums=('6eff642a7dbe3e01a9f27f622bb86fc5'
+md5sums=('c4a54ab19292979f620df00315d69945'
          '514d0362d678e4ce67d40a6a23bbd8fd'
          'd6005a9e529a254e622b52c17134013f'
          '1f0152ac565eb09470fb8dfbb98433e2'
-         '24a755ddaa8111dd2ce0ad898ab9d3f3'
+         'ba73ad741be0e8757346aa7cf6b689c4'
          '6a7e1bd5ec3d1e77cde2c3e2d6d9ddea')
 
 prepare() {
