@@ -1,7 +1,7 @@
 pkgbase = vdr-tvguideng
 	pkgdesc = highly customizable 2D EPG viewer plugin.
-	pkgver = 0.1.5
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = http://projects.vdr-developer.org/projects/plg-tvguideng
 	arch = x86_64
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = vdr-tvguideng
 	depends = vdr-api=2.2.0
 	depends = vdr-skindesigner
 	backup = etc/vdr/conf.avail/50-tvguideng.conf
-	source = http://projects.vdr-developer.org/git/vdr-plugin-tvguideng.git/snapshot/vdr-plugin-tvguideng-0.1.5.tar.bz2
-	md5sums = 415cea445c57fee9e621bc555378e1ef
+	source = http://projects.vdr-developer.org/git/vdr-plugin-tvguideng.git/snapshot/vdr-plugin-tvguideng-0.2.0.tar.bz2
+	md5sums = e82312ea63e56292f7e88bdae66239ed
 
 pkgname = vdr-tvguideng
 
