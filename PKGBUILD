@@ -3,8 +3,8 @@
 _kernel=$(pacman -Qqo /usr/lib/modules/`uname -r` | grep linux | grep -v headers)
 _gitname=darling
 pkgname=$_gitname-git
-pkgver=1134.9f8521e
-pkgrel=16
+pkgver=1167.b3c7215
+pkgrel=17
 pkgdesc="A Darwin/OS X emulation layer for Linux"
 arch=('i686' 'x86_64')
 url="http://www.darlinghq.org"
@@ -14,22 +14,25 @@ depends_x86_64=('lib32-systemd' 'lib32-libffi' 'lib32-bzip2' 'lib32-libxslt')
 makedepends=('git' 'clang' 'bison' 'flex' "$_kernel-headers")
 install=$pkgname.install
 source=('git+https://github.com/darlinghq/darling.git'
-	'git+https://github.com/darlinghq/darling-appkit.git'
 	'git+https://github.com/darlinghq/darling-adv_cmds.git'
+	'git+https://github.com/darlinghq/darling-appkit.git'
 	'git+https://github.com/darlinghq/darling-awk.git'
 	'git+https://github.com/darlinghq/darling-bash.git'
 	'git+https://github.com/darlinghq/darling-bzip2.git'
 	'git+https://github.com/darlinghq/darling-cfnetwork.git'
 	'git+https://github.com/darlinghq/darling-compiler-rt.git'
 	'git+https://github.com/darlinghq/darling-corefoundation.git'
+	'git+https://github.com/darlinghq/darling-coretls.git'
 	'git+https://github.com/darlinghq/darling-curl.git'
 	'git+https://github.com/darlinghq/darling-dmg.git'
+	'git+https://github.com/darlinghq/darling-expat.git'
 	'git+https://github.com/darlinghq/darling-file_cmds.git'
 	'git+https://github.com/darlinghq/darling-foundation.git'
 	'git+https://github.com/darlinghq/darling-grep.git'
 	'git+https://github.com/darlinghq/darling-icu.git'
 	'git+https://github.com/darlinghq/darling-installer.git'
 	'git+https://github.com/darlinghq/darling-less.git'
+	'git+https://github.com/darlinghq/darling-libauto.git'
 	'git+https://github.com/darlinghq/darling-libcxx.git'
 	'git+https://github.com/darlinghq/darling-libcxxabi.git'
 	'git+https://github.com/darlinghq/darling-libdispatch.git'
@@ -37,18 +40,22 @@ source=('git+https://github.com/darlinghq/darling.git'
 	'git+https://github.com/darlinghq/darling-liblzma.git'
 	'git+https://github.com/darlinghq/darling-libobjc2.git'
 	'git+https://github.com/darlinghq/darling-libxml2.git'
+	'git+https://github.com/darlinghq/darling-libxpc.git'
 	'git+https://github.com/darlinghq/darling-libxslt.git'
 	'git+https://github.com/darlinghq/darling-nano.git'
 	'git+https://github.com/darlinghq/darling-openssl.git'
 	'git+https://github.com/darlinghq/darling-pcre.git'
+	'git+https://github.com/darlinghq/darling-python.git'
+	'git+https://github.com/darlinghq/darling-security.git'
 	'git+https://github.com/darlinghq/darling-shell_cmds.git'
+	'git+https://github.com/darlinghq/darling-sqlite.git'
 	'git+https://github.com/darlinghq/darling-text_cmds.git'
 	'git+https://github.com/darlinghq/darling-zip.git'
 	'git+https://github.com/darlinghq/darling-zlib.git')
 md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-	'SKIP' 'SKIP')
+	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
 	cd "$srcdir/$_gitname"
