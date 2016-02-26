@@ -2,12 +2,13 @@
 # Contributor: bmpvieira <mail AT bmpvieira DOT com>
 pkgname=structure
 pkgver=2.3.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Program for using multi-locus genotype data to investigate population structure."
 arch=('i686' 'x86_64')
 url="http://pritch.bsd.uchicago.edu/structure.html"
 license=('GPL')
-depends=('java-environment')
+depends=('java-runtime=8')
+makedepends=('java-environment')
 
 source=(http://pritchardlab.stanford.edu/structure_software/release_versions/v${pkgver}/structure_kernel_source.tar.gz
         http://pritchardlab.stanford.edu/structure_software/release_versions/v${pkgver}/structure_frontend_source.tar.gz
