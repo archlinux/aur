@@ -4,8 +4,8 @@ pkgname=nginx-mainline-waf
 _pkgname=nginx
 provides=('nginx')
 conflicts=('nginx')
-pkgver=1.9.11
-pkgrel=6
+pkgver=1.9.12
+pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline, Brotli
 Support, with Naxsi, Certificate Transparency, GeoIP (GeoIP Legacy) ,YubiKey Auth Support builtin and with Thread Pools.'
 arch=('i686' 'x86_64')
@@ -118,7 +118,7 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('76eb5853a1190e0cfc691aa21c545de3'
+md5sums=('0afe4a7e589a0de43b7b54aa055a4351'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -126,7 +126,7 @@ md5sums=('76eb5853a1190e0cfc691aa21c545de3'
          'SKIP'
          'ce9a06bcaf66ec4a3c4eb59b636e0dfd'
          '3441ce77cdd1aab6f0ab7e212698a8a7')
-sha1sums=('0666fd3ec16c6f98086952c0cd0e0da277e38c08'
+sha1sums=('5945a0701f0ee0755fd20643f755507996a3f7f3'
           'SKIP'
           'SKIP'
           'SKIP'
