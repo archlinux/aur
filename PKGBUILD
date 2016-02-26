@@ -1,6 +1,6 @@
 # Maintainer: Phil Ruffwind <rf@rufflewind.com>
 pkgname=gitit
-pkgver=0.12.0.1
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="A wiki backed by a git, darcs, or mercurial filestore"
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ depends=()
 optdepends=("git: git support" "mercurial: mercurial support")
 makedepends=(ghc cabal-install)
 source=(https://hackage.haskell.org/package/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('552996f2624ed08cd21a73303d666292f08a1294416d2811f9d57293c9e89506')
+sha256sums=('c2cf094e7553e1ad6eefe59b4b7d924fe42f31dd51545193b56bcd0596f57d73')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
