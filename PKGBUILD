@@ -14,7 +14,7 @@ pkgver() {
 
 pkgrel=1
 pkgdesc='PAM module for google authenticator app'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url='https://github.com/google/google-authenticator'
 license=('APACHE')
 depends=('pam')
