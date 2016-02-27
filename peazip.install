@@ -1,7 +1,7 @@
 post_install() {
-    ln -sf $HOME/.peazip/peazip /usr/bin/peazip
-    ln -sf $HOME/.peazip/res/pea /usr/bin/pea
-    ln -sf $HOME/.peazip/res/pealauncher /usr/bin/pealauncher
+    ln -sf /home/uncle/.peazip/peazip /usr/bin/peazip
+    ln -sf /home/uncle/.peazip/res/pea /usr/bin/pea
+    ln -sf /home/uncle/.peazip/res/pealauncher /usr/bin/pealauncher
     update-desktop-database -q
 }
 
