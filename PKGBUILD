@@ -1,7 +1,7 @@
 # Maintainer: Chris Morgan <me@chrismorgan.info>
 
 pkgname=princexml
-pkgver=10r4
+pkgver=10r7
 pkgrel=1
 pkgdesc="Convert HTML documents to PDF with CSS"
 arch=(i686 x86_64)
@@ -10,9 +10,9 @@ depends=(fontconfig libidn libxml2 ca-certificates-utils)
 license=(custom)
 if test "$CARCH" = "i686"
 then
-	md5sums=('165db0a887ed9dcf11c45b112ea8a82a')
+	sha256sums=('21c298cdc13fc5ff2fb6fe4c56087aabbccd7f55c134c2bfc3fa49c7ada3bac4')
 else
-	md5sums=('926459a17601d70ecfed3daaf048603c')
+	sha256sums=('3eb2f6e71530a99872c538c74b628c60a143447362a8032e55285cf7f5b340d6')
 fi
 source=(http://www.princexml.com/download/prince-${pkgver}-linux-generic-${CARCH}.tar.gz)
 
