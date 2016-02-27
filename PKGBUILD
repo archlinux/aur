@@ -4,7 +4,7 @@
 
 pkgname=libdes
 pkgver=4.04b
-pkgrel=3
+pkgrel=4
 pkgdesc="library for DES encryption"
 arch=('i686' 'x86_64')
 url="http://linux.maruhn.com/sec/libdes.html"
@@ -24,7 +24,8 @@ build() {
 }
 
 package() {
-  mkdir -p $pkgdir/usr/lib $pkgdir/usr/bin $pkgdir/usr/include $pkgdir/usr/share/man/man{1,3}
+  # do NOT include man3 (to avoid conflict with des_crypt.3)
+  mkdir -p $pkgdir/usr/lib $pkgdir/usr/bin $pkgdir/usr/include $pkgdir/usr/share/man/man1
   cd $srcdir/des
   make LIBDIR=$pkgdir/usr/lib BINDIR=$pkgdir/usr/bin INCDIR=$pkgdir/usr/include MANDIR=$pkgdir/usr/share/man install
 }
