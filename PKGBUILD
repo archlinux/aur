@@ -1,7 +1,7 @@
 # Maintainer: Sebastien Duthil <duthils@free.fr>
 
 pkgname=factorio-headless
-pkgver=0.12.20
+pkgver=0.12.24
 pkgrel=1
 pkgdesc="A 2D game about building and maintaining factories - Server version"
 arch=('x86_64')
