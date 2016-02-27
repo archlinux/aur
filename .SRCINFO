@@ -1,14 +1,14 @@
 pkgbase = weidu-bin
 	pkgdesc = A dialogue compiler for Infinity Engine games (precompiled binary)
-	pkgver = 238
+	pkgver = 239
 	pkgrel = 1
 	url = http://weidu.org
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	options = !strip
-	source = http://www.weidu.org/~thebigg/WeiDU-Linux-238.zip
-	md5sums = af186def723bd4cc5f8f6fb2cd8b0c98
+	source = http://www.weidu.org/~thebigg/WeiDU-Linux-239.zip
+	md5sums = 9159321f0b41bba6b7705faf58385949
 
 pkgname = weidu-bin
 
