@@ -6,8 +6,8 @@
 
 pkgname=mingw-w64-angleproject
 pkgver=2.1.r5571.7a533f7
-pkgrel=1
-pkgdesc='Angle project (mingw-w64)'
+pkgrel=2
+pkgdesc='ANGLE project (mingw-w64)'
 arch=('any')
 url='https://chromium.googlesource.com/angle/angle/+/master/README.md'
 license=('BSD')
@@ -17,9 +17,9 @@ options=('!strip' '!buildflags' 'staticlibs')
 source=('angleproject::git+https://chromium.googlesource.com/angle/angle#commit=7a533f7'
         'additional-mingw-header::git+https://github.com/Martchus/additional-mingw-header.git#commit=7a8f394'
         'angleproject-include-import-library-and-use-def-file.patch')
-md5sums=('SKIP'
-         'SKIP'
-         '966e40c3ffc2070ce413a7fda9b6aedc')
+sha256sums=('SKIP'
+            'SKIP'
+            '985a17541f2a4df6243cf817fd607f74619f995ff42f307ff95d6500f7f8fb64')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 #pkgver() {
@@ -37,7 +37,7 @@ prepare() {
   cp sysinclude/{versionhelpers,VersionHelpers}.h
 
   # remove .git directory to prevent: No rule to make target '../build-i686-w64-mingw32/.git/index', needed by 'out/Debug/obj/gen/angle/id/commit.h'.
-  rm -r .git
+  rm -fr .git
 
   # make sure an import library is created and the correct .def file is used during the build
   patch -p1 -i "${srcdir}/angleproject-include-import-library-and-use-def-file.patch"
