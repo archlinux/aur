@@ -8,8 +8,8 @@
 
 _pack=struct
 pkgname=octave-$_pack
-pkgver=1.0.11
-pkgrel=4
+pkgver=1.0.12
+pkgrel=1
 pkgdesc="Additional Structure manipulations functions."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
@@ -24,7 +24,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("http://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('5ff3236cca32c691b023944bac45c4fd')
+md5sums=('085a5d39303d0c300b4b969130201e7b')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
