@@ -5,8 +5,8 @@
 # SELinux Contributor: Nicky726 <Nicky726@gmail.com>
 
 pkgname=findutils-selinux
-pkgver=4.4.2
-pkgrel=6
+pkgver=4.6.0
+pkgrel=1
 pkgdesc="GNU utilities to locate files with SELinux support"
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -16,19 +16,10 @@ conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 url="http://www.gnu.org/software/findutils"
-# Remove GPG key as gnupg>=2.1.1 no longer supports PGP-2 keys
-source=("ftp://ftp.gnu.org/pub/gnu/findutils/${pkgname/-selinux}-${pkgver}.tar.gz"
-        "http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/sys-apps/${pkgname/-selinux}/files/${pkgname/-selinux}-${pkgver}-selinux.diff")
+source=(ftp://ftp.gnu.org/pub/gnu/findutils/${pkgname/-selinux}-${pkgver}.tar.gz)
 install=findutils.install
-sha1sums=('e8dd88fa2cc58abffd0bfc1eddab9020231bb024'
-          '96318be5586d324a13805da81907406a95c6514c')
-
-prepare() {
-  cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
-  # SELinux patch
-  patch -Np1 -i "${srcdir}/${pkgname/-selinux}-${pkgver}-selinux.diff"
-}
-
+sha1sums=('f18e8aaee3f3d4173a1f598001003be8706d28b0')
+#validpgpkeys=('A15B725964A95EE5') # James Youngman <james@youngman.org>
 build() {
   cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
 
@@ -37,6 +28,8 @@ build() {
   sed -i '/^SUBDIRS/s/locate//' Makefile.in
 
   ./configure --prefix=/usr
+  # don't build locate, but the docs want a file in there.
+  make -C locate dblocation.texi
   make
 }
 
