@@ -1,6 +1,6 @@
 # Maintainer: Michael Yang <ohmyarchlinux@gmail.com>
 pkgname=cpprestsdk-git
-pkgver=2.7.0.r1562.de610ba
+pkgver=2.8.0.r1568.9052811
 pkgrel=1
 pkgdesc="a cross-platform, modern, and asynchronous library that enables developers to access and author connected applications"
 arch=('i686' 'x86_64')
