@@ -5,7 +5,7 @@
 # Contributor: Zezadas
 
 pkgname=libselinux
-pkgver=2.4
+pkgver=2.5
 pkgrel=1
 pkgdesc="SELinux library and simple utilities"
 arch=('i686' 'x86_64' 'armv6h')
@@ -20,9 +20,9 @@ optdepends=('python2: python2 bindings'
 conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
 options=(!emptydirs)
-source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20150202/${pkgname}-${pkgver}.tar.gz"
+source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20160223/${pkgname}-${pkgver}.tar.gz"
         "libselinux.tmpfiles.d")
-sha256sums=('46043091f4c5ba4f43e8d3715f30d665a2d571c9126c1f03945c9ea4ed380f7b'
+sha256sums=('94c9e97706280bedcc288f784f67f2b9d3d6136c192b2c9f812115edba58514f'
             'afe23890fb2e12e6756e5d81bad3c3da33f38a95d072731c0422fbeb0b1fa1fc')
 
 prepare() {
