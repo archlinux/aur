@@ -1,6 +1,8 @@
+# Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
+
 _name=osm-gps-map
 pkgname=$_name-git
-pkgver=1.0.2.r28.gc24d08d
+pkgver=1.1.0.r7.gb7cc420
 pkgrel=1
 pkgdesc="Gtk+ widget for displaying OpenStreetMap tiles"
 arch=(i686 x86_64)
@@ -15,7 +17,7 @@ conflicts=($_name)
 
 pkgver() {
   cd $_name
-  git describe --long | sed -r "s/^${pkgname%-git}-//;s/([^-]*-g)/r\\1/;s/-/./g"
+  git describe --long | sed -r "s/^${_name}-//;s/([^-]*-g)/r\\1/;s/-/./g"
 }
 
 build() {
