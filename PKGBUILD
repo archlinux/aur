@@ -20,14 +20,14 @@ source=(http://downloadirpf.receita.fazenda.gov.br/irpf/2016/IRPF2016-1.0.zip
 		$pkgname)
  
 
-md5sums=('be1ff220abb97dae6468541716dba44b'
+md5sums=('cd2f77c0537070d167bd565671800c77'
          '8433a90404188a62cf93172ac6085813'
          '43d8c9617118578f03b2c4eeb1c72c57'
          '5c3f364ed6e30e8aac69ad4394deabba'
          '268c8018f98be22e77d8ca711140292a'
 		 '1393bb1d170a8aeaccfe0c2ee2c818cf')
  
-depends=('java-runtime>=6' 'hicolor-icon-theme' 'desktop-file-utils')
+depends=('java-runtime-common>=6' 'hicolor-icon-theme' 'desktop-file-utils')
 optdepends=('receitanet: Para envio do IRPF')
 install=$pkgname.install
  
