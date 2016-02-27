@@ -4,7 +4,7 @@
 # Contributor: Sergej Pupykin (pupykin <dot> s+arch <at> gmail <dot> com)
 
 pkgname=libsepol
-pkgver=2.4
+pkgver=2.5
 pkgrel=1
 pkgdesc="SELinux binary policy manipulation library"
 arch=('i686' 'x86_64' 'armv6h')
@@ -16,8 +16,8 @@ depends=('glibc')
 options=(staticlibs)
 conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
-source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20150202/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('299015d59932404c6b69d365fdecffe5c0e2f9c44e08b47286a4bfc02ee49659')
+source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20160223/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('2bdeec56d0a08b082b93b40703b4b3329cc5562152f7254d8f6ef6b56afe850a')
 
 build() {
   cd "${pkgname}-${pkgver}"
