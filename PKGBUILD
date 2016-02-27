@@ -1,7 +1,7 @@
 # Maintainer: dustball <sebastiansonne at hush dot com>
 
 pkgname=pypy3-pip
-pkgver=8.0.2
+pkgver=8.0.3
 pkgrel=1
 pkgdesc="An easy_install replacement for installing pypi python packages"
 url="http://www.pip-installer.org/"
@@ -26,5 +26,5 @@ package_pypy3-pip() {
 	  "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-md5sums=('3a73c4188f8dbad6a1e6f6d44d117eeb')
-sha256sums=('46f4bd0d8dfd51125a554568d646fe4200a3c2c6c36b9f2d06d2212148439521')
+md5sums=('8f000fc101e47f4f199fa29df1e0b0df')
+sha256sums=('30f98b66f3fe1069c529a491597d34a1c224a68640c82caf2ade5f88aa1405e8')
