@@ -4,16 +4,16 @@
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=lib32-libproxy
-pkgver=0.4.11
-pkgrel=2
+pkgver=0.4.12
+pkgrel=1
 pkgdesc='A library that provides automatic proxy configuration management'
 arch=('x86_64')
 url='http://libproxy.googlecode.com'
 license=('LGPL')
 depends=('lib32-gcc-libs' 'libproxy')
 makedepends=('cmake' 'gcc-multilib' 'lib32-zlib')
-source=("http://libproxy.googlecode.com/files/libproxy-${pkgver}.tar.gz")
-md5sums=('3cd1ae2a4abecf44b3f24d6639d2cd84')
+source=("https://github.com/libproxy/libproxy/archive/${pkgver}.tar.gz")
+md5sums=('258d89cc052e0a3c09aa1f42d7f93045')
 
 build() {
   cd libproxy-${pkgver}
