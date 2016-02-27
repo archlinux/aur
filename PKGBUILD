@@ -3,7 +3,7 @@
 pkgname=keeweb-git
 _pkgname=keeweb
 pkgver=1.0.4.0.ga6e7afe
-pkgrel=3
+pkgrel=4
 pkgdesc="Desktop password manager compatible with KeePass databases."
 arch=('any')
 url="https://github.com/antelle/keeweb"
@@ -12,8 +12,10 @@ depends=('electron' 'xdg-utils' 'sh')
 makedepends=('nodejs-grunt' 'npm')
 provides=("${_pkgname}" "${_pkgname}-desktop")
 conflicts=("${_pkgname}" "${_pkgname}-desktop")
-source=('git+https://github.com/antelle/keeweb.git')
-sha1sums=('SKIP')
+source=('git+https://github.com/antelle/keeweb.git'
+        'app.js.patch')
+sha1sums=('SKIP'
+          '1832bff0206d2434540f153f4fa2949bdad277df')
 _desktop="${_pkgname}.desktop"
 
 pkgver() {
@@ -45,7 +47,8 @@ build() {
     cd ${_pkgname}
     sed -i 's/^.*"electron-builder".*$//;s/^.*"grunt-electron".*$//;s/postinstall/_pi/' package.json
     npm install
-    grunt
+    grunt --force
+    patch ./electron/app.js < "${srcdir}/app.js.patch"
 }
 
 package() {

@@ -1,0 +1,3 @@
+155a156,157
+>     } else {
+>         Menu.setApplicationMenu(null);
