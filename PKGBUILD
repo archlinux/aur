@@ -2,7 +2,7 @@
 # Contributor: Nathan Kessler <nathant93 <at> gmail.com>
 
 pkgname=scheme48-hg
-pkgver=1.9T1634+.a44624256297+
+pkgver=1.9T1634+a44624256297+
 pkgrel=1
 pkgdesc="Scheme interpreter for experimentation from mercurial repo"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ _hgrepo="s48"
 
 pkgver() {
   cd "$_hgrepo"
-  printf "1.9T%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+  printf "1.9T%s%s" "$(hg identify -n)" "$(hg identify -i)"
 }
 
 prepare() {
