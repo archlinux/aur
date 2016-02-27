@@ -1,7 +1,7 @@
 # Forked off xlogin@.service
 
 [Unit]
-Description=Qt-compositor login for user %i
+Description=quint session for user %i
 After=x@vt7.service systemd-user-sessions.service
 Wants=x@vt7.service
 Conflicts=getty@tty7.service
@@ -11,7 +11,7 @@ User=%i
 WorkingDirectory=~
 TTYPath=/dev/tty7
 PAMName=login
-ExecStart=/opt/pi-compositor/pi-compositor
+ExecStart=/opt/quint/quint
 
 [Install]
 WantedBy=graphical.target
