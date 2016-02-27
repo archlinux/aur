@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=InterText editor
+GenericName=Text Editor
+Comment=Editor for aligned parallel texts
+Exec=InterText
+Icon=InterText
+Terminal=false
+Categories=Office;
