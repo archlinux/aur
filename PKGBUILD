@@ -1,6 +1,6 @@
 pkgbase=swift-development
 pkgname=(swift-development swift-lldb-development)
-_swiftver=DEVELOPMENT-SNAPSHOT-2016-02-08-a
+_swiftver=DEVELOPMENT-SNAPSHOT-2016-02-25-a
 pkgver=${_swiftver//-/.}
 pkgrel=1
 pkgdesc="The Swift programming language and debugger - latest development snapshot"
@@ -9,7 +9,12 @@ url="http://swift.org/"
 license=('apache')
 depends=('python2' 'libutil-linux' 'icu' 'libbsd' 'libedit' 'libxml2'
          'sqlite' 'ncurses')
-makedepends=('git' 'cmake' 'ninja' 'swig' 'clang>=3.6' 'python2-six')
+makedepends=('git' 'cmake' 'ninja' 'swig' 'clang>=3.6' 'python2-six'
+             # See https://llvm.org/bugs/show_bug.cgi?id=26580 and
+             # https://sourceware.org/bugzilla/show_bug.cgi?id=19612
+             # NOTE: Using gold doesn't completely work either, since gold
+             # isn't used to link the swift std libraries by default
+             'binutils<2.26')
 source=(
     "swift-${_swiftver}.tar.gz::https://github.com/apple/swift/archive/swift-${_swiftver}.tar.gz"
     "swift-llvm-${_swiftver}.tar.gz::https://github.com/apple/swift-llvm/archive/swift-${_swiftver}.tar.gz"
@@ -22,15 +27,15 @@ source=(
     "swift-corelibs-foundation-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-foundation/archive/swift-${_swiftver}.tar.gz"
     "swift-no-docs.patch"
 )
-sha256sums=('68d867bea4a2c13af60310d09fed1272eef33a9712f5283ff7feb6588d5d2f1c'
-            '0e9460c2201523e9df79753f542d1a7b9a288be971aa8db23cee16414f8467bd'
-            '715506f172a4bd03a5a09e8c161d17ae17e735baa2f9d7142651e516168e30c5'
-            'c80983f31096e1872d6b674ccd8c64cb6071c35b8ad0bfb5f72af4cf70a1a630'
-            'f229e6217d985fb0a80aaef187e4fdc2fea9a4cefc7a0fb365f6bca6d5184034'
-            '0e73731af8bcf8416b8162f765e27840cc12a66e43bd7f4be68808112a2ae9df'
-            '036379b55d9df9150e61e009fde5f5dd88f6e38624aa0a7ff826199c6cabd047'
-            '5fa849e65cbc28b8da5f3c213a7c8644f7c25a2fdd8c88515265776522b07fe4'
-            'efa5ce12806ca4cadcb84958a99329c9b15802dd1d6df88affd798bd0786fdd9'
+sha256sums=('6a384ff4921208a9aa73d898f7b2bf51bddfbfb26245e8fc5a7be1f02257c32a'
+            '40059e8a66980ca11688f2120aea1eb38518e52b6f47fe9195dcd1bb8e2cac83'
+            'f9fbead2f751c03ad00391d2f62227bd4a02ab5b40763b59ce102c8ee0adf08b'
+            '7f362a062d255a2111af03ece859292e64c60e8886387ffbf9da1c1e0ae71f82'
+            '0e8885fc95703fcc694da5ccbaff2937381a12940a878bbce3f9d8f452b31b47'
+            '06534afce6606c28c47aea3759817af870d58343a0b8f85ba29e18ceef00f782'
+            '8fe7a2f949c53c99956ab2ec7e6f6388e0aaf76ba8cc334a5e9c808214553609'
+            '7da4775f994cee564927b84c0c992969f75940ebdde72a6c94403278c2d8e126'
+            'db6a8ee6a380c6c2af8028d05297f9c817c05b6f8fc56f1c55cbb788ce4b912d'
             '1a8663c48a1a203d1825ae62a7e4191e4980a2dad461d4d88152221ad9e2171d')
 
 prepare() {
