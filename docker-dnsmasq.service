@@ -1,8 +1,6 @@
 [Unit]
 Description=Daemon to add docker containers to dnsmasq
 Requires=docker.service
-Requires=dnsmasq.service
-After=docker.service
 After=dnsmasq.service
 
 [Service]
