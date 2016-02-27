@@ -1,8 +1,8 @@
 # Maintainer: Sebastien Duthil <duthils@free.fr>
 
 pkgname=factorio
-pkgver=0.12.20
-pkgrel=2
+pkgver=0.12.24
+pkgrel=1
 pkgdesc="A 2D game about building and maintaining factories."
 arch=('i686' 'x86_64')
 url="http://www.factorio.com/"
