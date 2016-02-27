@@ -2,7 +2,7 @@
 
 pkgname=peazip-gtk2-portable
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="NATIVE 64-BIT GTK2 archiver utility, portable version with few dependencies"
 arch=(x86_64)
 url=http://www.peazip.org/peazip-linux-64.html
