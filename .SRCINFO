@@ -1,0 +1,30 @@
+pkgbase = seafile-client-bin
+	pkgdesc = Cloud storage client applet and cli from deb package
+	pkgver = 5.0.5
+	pkgrel = 1
+	url = http://www.seafile.com
+	arch = i386
+	arch = x86_64
+	license = GPL3
+	depends = glibc>=2.7
+	depends = curl>=7.16.2
+	depends = qt4>=4.8.0
+	depends = glib2>=2.31.8
+	depends = libevent>=2.0.10
+	depends = jansson>=2.1
+	depends = sqlite>=3.5.9
+	depends = openssl>=1.0.0
+	depends = libutil-linux>=2.16
+	depends = zlib>=1.1.4
+	conflicts = seafile-shared
+	conflicts = seafile-client
+	conflicts = libsearpc
+	conflicts = ccnet
+	conflicts = seafile-client-cli
+	source_i386 = https://bintray.com/artifact/download/seafile-org/seafile/seafile_5.0.5_i386.deb
+	md5sums_i386 = 1fd7314a43686771eda2de0a4e53b0aa
+	source_x86_64 = https://bintray.com/artifact/download/seafile-org/seafile/seafile_5.0.5_amd64.deb
+	md5sums_x86_64 = feb48fca36c801585d11d3934bd37f8d
+
+pkgname = seafile-client-bin
+
