@@ -10,7 +10,7 @@ pkgdesc='global versioned p2p merkledag file system'
 url="https://github.com/ipfs/$_pkgname"
 arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
-makedepends=('git' 'go')
+makedepends=('git' 'go' 'gx' 'gx-go')
 optdepends=('fuse: for mounting/advanced use'
             'bash-completion: bash completion support')
 provides=("$_pkgname")
@@ -31,14 +31,15 @@ prepare() {
 build() {
   # Required for go get
   export GOPATH="$srcdir"
-
-  cd "$srcdir"/src/github.com/ipfs/go-ipfs/cmd/ipfs
+  export PATH=$PATH:$GOPATH/bin
 
   msg2 'Installing dependencies...'
-  go get -v ./...
+  cd "$GOPATH"/src
+  go get -d -v github.com/ipfs/go-ipfs
 
   msg2 'Building binary...'
-  go install -v
+  cd "$GOPATH"/src/github.com/ipfs/go-ipfs
+  make install
 }
 
 package() {
