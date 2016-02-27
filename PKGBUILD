@@ -1,4 +1,4 @@
-# Maintainer: Rafael Reggiani Manzo <rr.manzo#gmail.com>
+# Maintainer: Rafael Reggiani Manzo <rr.manzo#protonmail.com>
 # Contributor: Jason St. John <jstjohn .. purdue . edu>
 # Contributor: Mikhail Kulemin <mihkulemin@gmail.com>
 # Contributor: Michael Pusterhofer <pusterhofer (at) student (dot) tugraz (dot) at>
@@ -6,7 +6,7 @@
 pkgname=opennebula
 _unstable_pkg=opennebula-unstable
 pkgver=4.14.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Virtual management infrastructure as a service (IaaS) toolkit for cloud computing (NOTE: Read the PKGBUILD!)"
 arch=('i686' 'x86_64')
 url='http://docs.opennebula.org/stable'
@@ -24,7 +24,8 @@ depends=('ruby>=1.8.7'
          'log4cpp>=1.0'
          'ruby-opennebula>=4.14.2'
          'ruby-sinatra'
-         'ruby-builder')
+         'ruby-builder'
+         'ruby-nokogiri')
 makedepends=('xmlrpc-c>=1.31'
              'pkgconfig'
              'scons>=0.98')
