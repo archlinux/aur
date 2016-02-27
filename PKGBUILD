@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=heirloom-doctools-git
-pkgver=150406.r109.g9fa6f63
+pkgver=160217
 pkgrel=1
 epoch=
 pkgdesc="The Heirloom Documentation Tools provide troff, nroff, and related utilities." 
@@ -51,13 +51,12 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   make install ROOT=$pkgdir install
-
   cd "LICENSE.d"
-  install -Dm0644 BERKELEY.LICENSE $pkgdir/usr/share/licenses/${pkgname}/BERKELEY.LICENSE
-  install -m0644 CALDERA.LICENSE $pkgdir/usr/share/licenses/${pkgname}/CALDERA.LICENSE
-  install -m0644 COPYING.LGPL $pkgdir/usr/share/licenses/${pkgname}/COPYING.LGPL
-  install -m0644 LPPL-1-0.LICENSE $pkgdir/usr/share/licenses/${pkgname}/LPPL-1-0.LICENSE
-  install -m0644 LUCENT.LICENSE $pkgdir/usr/share/licenses/${pkgname}/LUCENT.LICENSE
-  install -m0644 OPENSOLARIS.LICENSE $pkgdir/usr/share/licenses/${pkgname}/OPENSOLARIS.LICENSE
+  install -Dm0644 BERKELEY.LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/BERKELEY.LICENSE
+  install -m0644 CALDERA.LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/CALDERA.LICENSE
+  install -m0644 COPYING.LGPL $pkgdir/usr/share/licenses/${pkgname%-*}/COPYING.LGPL
+  install -m0644 LPPL-1-0.LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LPPL-1-0.LICENSE
+  install -m0644 LUCENT.LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LUCENT.LICENSE
+  install -m0644 OPENSOLARIS.LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/OPENSOLARIS.LICENSE
 }
 
