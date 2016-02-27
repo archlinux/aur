@@ -2,8 +2,8 @@
 pkgbase=python-bbcode
 pkgname=('python-bbcode' 'python2-bbcode')
 _pyname=bbcode
-pkgver=1.0.21
-pkgrel=2
+pkgver=1.0.22
+pkgrel=1
 pkgdesc='A pure python bbcode parser and formatter.'
 arch=('any')
 url='https://pypi.python.org/pypi/bbcode'
@@ -12,7 +12,7 @@ makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "LICENSE")
-md5sums=('ed5725fe323f8acd9197e71717e6ebef'
+md5sums=('f42fcbb57b8526d0a7c276297e83676b'
          'f013c3769d2db3f0f790d19978c5031d')
 
 prepare() {
