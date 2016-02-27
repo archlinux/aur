@@ -4,7 +4,7 @@ pkgdesc="ROS - Message and service data structures for interacting with Gazebo f
 url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-indigo-gazebo-msgs'
-pkgver='2.4.9'
+pkgver='2.4.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -18,7 +18,7 @@ ros_makedepends=(ros-indigo-geometry-msgs
   ros-indigo-catkin
   ros-indigo-message-generation
   ros-indigo-sensor-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-geometry-msgs
@@ -30,10 +30,16 @@ ros_depends=(ros-indigo-geometry-msgs
   ros-indigo-sensor-msgs)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/gazebo_msgs/${pkgver}-${_pkgver_patch}
-_dir=gazebo_msgs
-source=("${_dir}"::"git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/gazebo_msgs/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="gazebo_ros_pkgs-release-release-indigo-gazebo_msgs-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/indigo/gazebo_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('11906115381d0c69666d8fd759a94cf572836ccc574aebbcf56dfd991cf376ea')
 
 build() {
   # Use ROS environment variables
