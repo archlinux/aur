@@ -13,7 +13,7 @@ _pgo=false
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
 pkgver=44.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -21,8 +21,11 @@ url="https://build.opensuse.org/package/show/mozilla:Factory/MozillaFirefox"
 depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
          'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
 	 'libvpx' 'icu'  'libevent' 'nss>=3.18.1' 'nspr>=4.10.6' 'hunspell'
-	 'ffmpeg'
-	 'sqlite' 'libnotify' 'kmozillahelper')
+	 'sqlite' 'libnotify' 'kmozillahelper' 'ffmpeg' )
+if [ $_gtk3 ] ; then
+    depends+=('gtk3')
+fi
+
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake'
              'xorg-server-xvfb' 'libpulse' 'inetutils')
 optdepends=('networkmanager: Location detection via available WiFi networks'
