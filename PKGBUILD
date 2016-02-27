@@ -1,12 +1,12 @@
-# Maintainer: Sarkasper <echo a2FzcGVyLm1lbnRlbkBnbXguY29tCg== | base64 -d>
+# Maintener: Marco44 <cousinmarc at gmail dot com>
+# Contributor: Sarkasper <echo a2FzcGVyLm1lbnRlbkBnbXguY29tCg== | base64 -d>
 # Contributor: Christian Himpel <chressie at gmail dot com>
 # Contributor: Johannes Hanika  <hanatos at gmail dot com>
 # Contributor: Kevin Brubeck Unhammer <unhammer at member dot fsf dot org>
 # Contributor: orbisvicis <orbisvicis at gmail dot com>
-
 pkgname=darktable-git
 _gitname=darktable
-pkgver=release.0.9.3.10806.g5c68bb3
+pkgver=release.0.9.3.12354.g6d093c0
 pkgrel=1
 pkgdesc="A virtual lighttable and darkroom for photographers"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ url=http://www.darktable.org/
 license=('GPL3')
 depends=('exiv2>=0.18' 'intltool>=0.40' 'lcms2' 'lensfun>=0.2.3' 'libglade' 'dbus-glib'
 	 'curl' 'libgnome-keyring' 'libgphoto2' 'libusb-compat' 'openexr' 'sqlite' 'libxslt'
-	 'libsoup' 'gtk-engines' 'osm-gps-map-gtk3' 'pugixml')
+	 'libsoup' 'gtk-engines' 'osm-gps-map' 'pugixml')
 makedepends=(git 'intltool>=0.40' 'cmake' 'librsvg' 'flickcurl')
 optdepends=('librsvg' 'flickcurl: flickr upload')
 conflicts=(darktable)
