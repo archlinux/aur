@@ -1,7 +1,7 @@
 # Maintainer: Stefan Tatschner <rumpelsepp@sevenbyte.org>
 
 pkgname='cpy'
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="A replacement for [c]at with automatic syntax highlighting"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/rumpelsepp/c.py"
 license=('MIT')
 depends=('python' 'python-pygments')
 makedepends=('git' 'asciidoc')
-source=("$pkgname::git+https://github.com/rumpelsepp/c.py.git#commit=6612eb37a9a6bd8582230cbadf15f65e7d0d8fb7")
+source=("$pkgname::git+https://github.com/rumpelsepp/c.py.git#commit=e059149f49cdd48b05f865e949d4021d229addb8")
 sha256sums=('SKIP')
 
 build() {
