@@ -3,21 +3,24 @@
 
 pkgname=discord
 pkgver=0.1.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Discord linux App'
 arch=('i686' 'x86_64')
 url='https://github.com/XNBlank/discord-linux'
+provides=('discord')
+conflicts=('discord')
 license=('MIT')
-depends=('gtk2')
+depends=('gtk2' 'gconf')
+optdepends=('freetype2-infinality: If you have black screens with emojis install this.')
+
 
 source=('Discord.desktop')
-sha256sums=('0826f0a07a567d3d966563151329e3e155bf47da528f0698bd677cb46cc468de')
-
 source_i686=("https://github.com/XNBlank/discord-linux/archive/x86-${pkgver}.tar.gz")
-sha256sums_i686=('70bba92a003f31d6eb9ea2e1cdcdbcbd37cd4f6f0fe38561b162fe0b1906c970')
-
 source_x86_64=("https://github.com/XNBlank/discord-linux/archive/x64-${pkgver}.tar.gz")
+sha256sums=('0826f0a07a567d3d966563151329e3e155bf47da528f0698bd677cb46cc468de')
+sha256sums_i686=('70bba92a003f31d6eb9ea2e1cdcdbcbd37cd4f6f0fe38561b162fe0b1906c970')
 sha256sums_x86_64=('623cbabb05963f0bbd002a919ce5a5c85c134684d4f36037d13bd247b2233010')
+
 
 package() {
   case $CARCH in
