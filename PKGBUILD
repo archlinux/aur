@@ -4,7 +4,7 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.4
-pkgver=4.4.2
+pkgver=4.4.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -20,21 +20,17 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        '0001-sdhci-revert.patch'
-        '0001-4.4-revert-btrfs.patch'
-        '0001-4.4-revert-xfs.patch')
+        '0001-sdhci-revert.patch')
 
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            '5c55d48ca6b2a9b89ed786e656ed17f9a86192eba6d209fa408e0bca8de57b9c'
+            '4a24c79c40b2cb820ce9f22d44f31edcbde5971432753ab0289772946ed05b7b'
             'SKIP'
             'fbbae1d873900e84d1b7ef00593fbb94fc79f078a34b22ee824bab8b0a92be64'
             '756a168bbc3bb582f0df45b977c32af53658f21d62fe15171c9ac85f52d8852a'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
-            '51586b733e9f178bebe577258b6057b035eded516ffe8bf8bbb26cb0b26c4958'
-            'ffbfaa192d17bfc7c6293aa9a07efe57f65177051ae3d8033d5e45a7bca2e0ad')
+            '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -55,10 +51,6 @@ prepare() {
   # fixes #47778 sdhci broken on some boards
   # https://bugzilla.kernel.org/show_bug.cgi?id=106541
   patch -Rp1 -i "${srcdir}/0001-sdhci-revert.patch"
-
-  # #47757 fix broken suspend from btrfs and xfs
-  patch -Np1 -i "${srcdir}/0001-4.4-revert-xfs.patch"
-  patch -Np1 -i "${srcdir}/0001-4.4-revert-btrfs.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
