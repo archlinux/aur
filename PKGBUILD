@@ -1,19 +1,18 @@
 # Maintainer: argymeg <argymeg at gmail dot com>
 
 pkgname=firefox-beta
-pkgver=45.0b9
+pkgver=45.0b10
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Beta (build from source)"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://www.mozilla.org/firefox/"
 depends=('gtk2' 'gtk3' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
-         'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
+         'dbus-glib' 'alsa-lib' 'ffmpeg2.8' 'desktop-file-utils' 'hicolor-icon-theme'
          'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite' 'ttf-font')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf'
              'xorg-server-xvfb' 'libpulse' 'inetutils' 'rust')
 optdepends=('networkmanager: Location detection via available WiFi networks'
-            'ffmpeg: additional video and audio decoders'
             'upower: Battery API')
 provides=("firefox=$pkgver")
 conflicts=("firefox-beta-bin")            
@@ -25,7 +24,7 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/
         firefox-install-dir.patch
         vendor.js
         firefox-fixed-loading-icon.png)
-sha512sums=('02f93dd7ac63f361208805da0f9162d12ff54766573275b004ada26fc638bf610c4ca1febe493758cec5055777a6b09c08f91be3345b6825c3b18b326b0d2c3a'
+sha512sums=('cd290e9aac8949b18b2265b8b26aef180281407baaa764d3b23323fb2dff39a39326fa0aca87cc1a338bc16d1e7fdf00f4fe2b1b6fa7b5f2acf25aa66156fbad'
             'c72792b505031431282a3777bce6d3ee98fe68cc0faf8cadd84afe2b42921da52b9d8ad94e3324f0d0a09e8e298e3bcd2b527b08e92e2a0140434d7767efc422'
             'dd9a563d6ad772ba440a45bbd0ee27943b319edcb785951e62cd4aefe0d33ded2acf9b63a2b15cec89ee184687c68a8d3a1cc06ec98f9a9251602f063fbaef14'
             '266989b0c4a37254a40836a6193284a186230b48716907e4d249d73616f58382b258c41baa8c1ffc98d405f77bfafcd3438f749edcf391c7bd22185399adf4bd'
