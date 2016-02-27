@@ -5,7 +5,7 @@
 
 _gemname=sprockets-rails
 pkgname=ruby-$_gemname
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 pkgdesc='Sprockets Rails integration'
 arch=(any)
@@ -15,7 +15,7 @@ depends=(ruby ruby-sprockets ruby-actionpack ruby-activesupport)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('7dfb207064ecc90847ebdb297e5cc4baf0010a4d')
+sha1sums=('bec35a7d27f4e2433360ad7c2529523186224f4c')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
