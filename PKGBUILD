@@ -7,8 +7,8 @@
 
 pkgname=python2-kivy-git
 epoch=1
-pkgver=1.9.0-git
-pkgrel=1
+pkgver=1.9.0git
+pkgrel=2
 pkgdesc="A python2 module for developing multi-touch enabled media rich applications. Git version."
 arch=(i686 x86_64)
 url="http://kivy.org/"
