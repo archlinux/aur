@@ -1,4 +1,5 @@
-# Maintainer: Jeff Parent <jecxjo@sdf.lonestar.org>
+# Maintainer: Alex Talker < alextalker at openmailbox dot org >
+# pulsemixer-git code by Jeff Parent <jecxjo@sdf.lonestar.org>
 pkgname=pulsemixer
 pkgver=1.1.0
 pkgrel=1
