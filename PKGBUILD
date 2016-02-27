@@ -4,14 +4,14 @@ pkgdesc="ROS - Interface for using ROS with the Gazebo simulator."
 url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-indigo-gazebo-ros-pkgs'
-pkgver='2.4.9'
+pkgver='2.4.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD,LGPL,Apache 2.0')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-gazebo-plugins
@@ -19,10 +19,16 @@ ros_depends=(ros-indigo-gazebo-plugins
   ros-indigo-gazebo-msgs)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/gazebo_ros_pkgs/${pkgver}-${_pkgver_patch}
-_dir=gazebo_ros_pkgs
-source=("${_dir}"::"git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/gazebo_ros_pkgs/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="gazebo_ros_pkgs-release-release-indigo-gazebo_ros_pkgs-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/indigo/gazebo_ros_pkgs/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('33bde95ab2db86a143b540b2ced59112723328f2802e0e79e3ad50718bfddb21')
 
 build() {
   # Use ROS environment variables
