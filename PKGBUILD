@@ -15,14 +15,11 @@ options=('!makeflags')
 install=gnuplot.install
 conflicts=('gnuplot')
 provides=('gnuplot=5.1')
-source=('lua53_compat.patch')
-md5sums=('c84be2980e0d90037f20a5cf18f9868a')
 _cvsmod="gnuplot"
 _cvsroot=":pserver:anonymous:@gnuplot.cvs.sourceforge.net:/cvsroot/$_cvsmod"
 
 prepare() {
   cd "$srcdir/$_cvsmod"
-  patch -p1 < $srcdir/lua53_compat.patch
   sed -i 's+-fPIE+-fPIC+' configure.ac 
 }
 
