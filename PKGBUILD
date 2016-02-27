@@ -3,14 +3,14 @@
 # AUR dependencies: esound
 
 pkgname=xine-lib-hg
-pkgver=r12705.1f688d8f0cb3
-pkgrel=2
+pkgver=r12707.b748a9de57de
+pkgrel=1
 pkgdesc="A multimedia playback engine (Mercurial version with all possible libs)"
 arch=('i686' 'x86_64')
 url="https://www.xine-project.org/"
 license=('GPL2' 'LGPL')
 depends=(
-    'aalib' 'directfb' 'mesa' 'glu' 'libxinerama' 'libxvmc' 'libvdpau' 'libva'
+    'aalib' 'directfb' 'mesa' 'glu' 'libxinerama' 'libxvmc' 'libvdpau'
     'linuxtv-dvb-apps' 'gnome-vfs' 'smbclient' 'v4l-utils' 'vcdimager' 'libbluray'
     'ffmpeg' 'a52dec' 'faad2' 'gdk-pixbuf2' 'libjpeg-turbo' 'libdca' 'libmad'
     'libmodplug' 'libmpeg2' 'libmpcdec' 'libmng' 'libvpx' 'freetype2' 'fontconfig'
@@ -59,7 +59,7 @@ build() {
 	        --enable-xinerama \
 	        --enable-xvmc \
 	        --enable-vdpau \
-	        --enable-vaapi \
+	        --disable-vaapi \
 	        --enable-dvb \
 	        --enable-gnomevfs \
 	        --enable-samba \
@@ -109,6 +109,9 @@ build() {
 	        # --with-fusionsound
 	        # --with-linux-path=/usr/lib/modules/$(uname -r)/build
 	        # --with-libstk
+	        
+	        # NOTE:
+	        # --enable-vaapi doesn't work
 	
 	make
 }
