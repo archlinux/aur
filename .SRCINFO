@@ -1,18 +1,19 @@
 pkgbase = why3
-	pkgdesc = The next generation of the former software verification platform Why
-	pkgver = 0.85
+	pkgdesc = The next generation of the software verification platform Why
+	pkgver = 0.86.3
 	pkgrel = 1
-	url = http://why3.gforge.inria.fr/
+	url = http://why3.lri.fr/
 	arch = x86_64
 	arch = i686
-	license = GPL
+	license = LGPL
 	makedepends = ocaml
 	makedepends = ocaml-sqlite3
 	makedepends = lablgtk2
+	makedepends = ocaml-menhir
 	depends = gtksourceview2
-	depends = sqlite3
-	source = https://gforge.inria.fr/frs/download.php/34074/why3-0.85.tar.gz
-	md5sums = f6d36c0dc43fe75af148d92d76b15937
+	depends = sqlite
+	source = https://gforge.inria.fr/frs/download.php/35537/why3-0.86.3.tar.gz
+	sha512sums = f6df47c01094a9eda1a416ad1787a5f0601022f4889e6f557fca59bd3b59faa9887be3d33f051d10f21a2b5b43bc76c4f5a9f6d1904c07ecee7ceef836ec9b7a
 
 pkgname = why3
 
