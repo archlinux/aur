@@ -15,19 +15,19 @@ start)
 	;;
 stop)
 	echo ':: Resetting default PHC VIDs'
-	for i in /sys/devices/system/cpu/cpu*/cpufreq; do
-		[ -e "$i/phc_default_vids" -a -e "$i/phc_vids" ] && cp "$i"/phc_{default_,}vids
+	for i in /sys/devices/system/cpu/cpu*/cpufreq/phc_vids; do
+		cp "${i%vids}default_vids" "$i"
 	done
 	;;
 status)
 	check_off () {
-		for i in /sys/devices/system/cpu/cpu*/cpufreq; do
-			[ "$(< $i/phc_vids)" = "$(< $i/phc_default_vids)" ] || return;
+		for i in /sys/devices/system/cpu/cpu*/cpufreq/phc_vids; do
+			[ "$(< "$i")" = "$(< "${i%vids}default_vids")" ] || return;
 		done
 	}
 	check_on () {
 		for i in /sys/devices/system/cpu/cpu*/cpufreq/phc_vids; do
-			[[ "$(< $i)" =~ "$VIDS" ]] || return;
+			[[ "$(< "$i")" =~ "$VIDS" ]] || return;
 		done
 	}
 	echo -n 'PHC status: '
@@ -40,31 +40,6 @@ status)
 		echo 'unknown'
 	fi
 	;;
-setup)
-	echo ':: Removing old phc-intel modules'
-	echo
-	for i in /usr/lib/modules/*; do
-		if [ -f "$i/phc-intel.ko" -a ! -f "$i/version" ]; then
-			rm -f "$i/phc-intel.ko"
-			rmdir --ignore-fail-on-non-empty "$i"
-		elif [ -f "$i/extra/phc-intel.ko" -a ! -d "$i/kernel" ]; then
-			rm -f "$i/extra/phc-intel.ko"
-			rmdir -p --ignore-fail-on-non-empty "$i/extra"
-		fi
-	done
-	echo ':: Compiling new phc-intel module'
-	echo
-	cd /usr/src/phc-intel/
-	make
-	echo
-	echo ':: Installing new phc-intel module'
-	echo
-	make install
-	echo
-	echo ':: Cleaning up'
-	echo
-	make clean
-	;;
 set)
 	. /etc/default/phc-intel
 	[ -z "$VIDS" ] && exit
@@ -76,5 +51,5 @@ set)
 	done
 	;;
 *)
-	echo "usage: $0 {start|stop|status|setup|set}"
+	echo "usage: $0 {start|stop|status|set}"
 esac

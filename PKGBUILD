@@ -1,34 +1,39 @@
 # Maintainer: fs4000 <matthias_dienstbier[at]yahoo[dot]de>
-# Maintainer: trapanator <trap[at]trapanator[dot]com>
-# Maintainer: tomprogrammer <Thomas-Bahn[at]gmx[dot]net>
+# Contributor: trapanator <trap[at]trapanator[dot]com>
+# Contributor: tomprogrammer <Thomas-Bahn[at]gmx[dot]net>
 
 pkgname=phc-intel
-pkgver=0.3.2.12.19
+_phcver=0.3.2
+pkgver=$_phcver.12.19
 _realver=pack-rev19
-pkgrel=1
+pkgrel=2
 pkgdesc="frequency driver for Intel CPUs with undervolting feature"
 url="http://www.linux-phc.org"
 arch=('any')
 license=('GPL')
+depends=('dkms')
+optdepends=('linux-headers' 'linux-lts-headers')
 provides=('linux-phc')
-backup=(etc/default/phc-intel)
+backup=('etc/default/phc-intel')
 install=phc-intel.install
 source=(phc-intel-$_realver.tar.bz2::$url/forum/download/file.php?id=168
-        phc-intel.{default,sh,sleep,system-sleep})
+        phc-intel.{default,sh,sleep,system-sleep}
+        dkms.conf)
 sha256sums=('48e1e866e42cee5b80cabbbf62ca4d96f4cc6337f375bd2553c3a99bc595fbaa'
             'ce08a5a4107be1d5723f1f169d515e67b6c77893f3994fc2d0d2ccf611307ed3'
-            'c48fea46501c98c1f2aee0a49fd6abc68ac5a691bbdd3e3e41eb25dd2080c17f'
+            'b526f3e8e66f6495531f13f2e6867d3a07b2ec7a7c3b8aa061f22be1cd6e770f'
             '569b85988cb38380fec85c25688b76abc24a46601aa8f58eb24eaebf863eebef'
-            '2e17c90d7bfae8f5070e46388e95d443188eaa7beb5ffdd418a0da090f2e7557')
+            '2e17c90d7bfae8f5070e46388e95d443188eaa7beb5ffdd418a0da090f2e7557'
+            '7b44882a96eeb7c79dbb7fe5b1ff8cded68c2b6a374c95bdc5e08c414cfd3549')
 
 prepare() {
 	cd phc-intel-$_realver
-	sed -e 's,$(DESTDIR)/lib/modules/$(KERNELRELEASE)/extra$,$(DESTDIR)/usr/lib/modules/$(KERNELRELEASE)/extramodules,' \
-	    -e 's,^\tinstall -m 644 -o root -g root phc-intel.modprobe,#\tinstall -m 644 -o root -g root phc-intel.modprobe,' -i Makefile
+	sed -i 's,all: .prepare $(TARGET),all: $(TARGET)\n$(SOURCE): .prepare,' Makefile
 	sed -i 's,/sbin/modprobe phc-intel |,/sbin/modprobe phc-intel \&\& /usr/bin/phc-intel set |,' phc-intel.modprobe
 }
 
 package() {
+	install -Dm644 dkms.conf "$pkgdir/usr/src/phc-intel-$_phcver/dkms.conf"
 	install -Dm644 phc-intel.default "$pkgdir/etc/default/phc-intel"
 	install -Dm755 phc-intel.sh "$pkgdir/usr/bin/phc-intel"
 	install -Dm755 phc-intel.sleep "$pkgdir/usr/lib/pm-utils/sleep.d/00phc-intel"
@@ -36,6 +41,5 @@ package() {
 
 	cd phc-intel-$_realver
 	install -Dm644 phc-intel.modprobe "$pkgdir/usr/lib/modprobe.d/phc-intel.conf"
-	install -d "$pkgdir/usr/src/phc-intel/"
-	cp -R inc Makefile "$pkgdir/usr/src/phc-intel/"
+	cp -R inc Makefile "$pkgdir/usr/src/phc-intel-$_phcver/"
 }
