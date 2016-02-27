@@ -4,7 +4,7 @@ pkgdesc="ROS - gazebo_ros_control."
 url='http://ros.org/wiki/gazebo_ros_control'
 
 pkgname='ros-indigo-gazebo-ros-control'
-pkgver='2.4.9'
+pkgver='2.4.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -21,7 +21,7 @@ ros_makedepends=(ros-indigo-roscpp
   ros-indigo-transmission-interface
   ros-indigo-urdf
   ros-indigo-pluginlib)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   gazebo)
 
@@ -39,10 +39,16 @@ ros_depends=(ros-indigo-roscpp
 depends=(${ros_depends[@]}
   gazebo)
 
-_tag=release/indigo/gazebo_ros_control/${pkgver}-${_pkgver_patch}
-_dir=gazebo_ros_control
-source=("${_dir}"::"git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/gazebo_ros_control/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="gazebo_ros_pkgs-release-release-indigo-gazebo_ros_control-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/indigo/gazebo_ros_control/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('b9c7b2358e2e989b3776c39035cca1501b7de16a1b8feba58aa84b382376ebb6')
 
 build() {
   # Use ROS environment variables
