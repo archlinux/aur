@@ -3,14 +3,14 @@
 
 _srcname=plasma-pa
 pkgname=${_srcname}-git
-pkgver=r261.7362c57
-pkgrel=1
+pkgver=r322.d50ee61
+pkgrel=2
 pkgdesc='Volume applet for Plasma'
 arch=('i686' 'x86_64')
 url='http://quickgit.kde.org/?p=plasma-pa.git'
 license=('LGPL')
 depends=('pulseaudio' 'plasma-workspace')
-makedepends=('extra-cmake-modules' 'git' 'kdoctools')
+makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git')
 provides=('plasma-volume-control' 'plasma-pa')
 conflicts=('plasma-volume-control' 'plasma-volume-control-git' 'plasma-pa')
 source=('git://anongit.kde.org/plasma-pa.git')
