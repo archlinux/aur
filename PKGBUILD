@@ -2,14 +2,14 @@
 
 _pkgname=biboumi
 pkgname="$_pkgname-git"
-pkgver=r449.f03d1a1
+pkgver=r522.37fd6ff
 pkgrel=1
 pkgdesc="XMPP gateway to IRC"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://biboumi.louiz.org/"
 license=('ZLIB')
 depends=('expat' 'libidn' 'c-ares' 'botan')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'ruby-ronn')
 provides=("$_pkgname=1.99")
 conflicts=("$_pkgname")
 backup=("etc/$_pkgname/$_pkgname.cfg")
@@ -32,22 +32,11 @@ build() {
   make biboumi
 }
 
-# TODO: reenable that, by moving the Catch download in the source array.
-#check() {
-#  cd "$srcdir/$_pkgname/build"
-#  make check
-#}
-
 package() {
   cd "$srcdir/$_pkgname/build"
   make DESTDIR="$pkgdir/" install
 
   cd ..
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-  install -Dm644 unit/biboumi.service "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
   install -Dm644 doc/biboumi.1.md "$pkgdir/usr/share/doc/$_pkgname/$_pkgname.md"
-  install -Dm644 conf/biboumi.cfg "$pkgdir/etc/$_pkgname/$_pkgname.cfg"
-
-  # TODO: generate the manpage.
-  #install -Dm644 doc/biboumi.1 "$pkgdir/usr/share/man/man1/$_pkgname.1"
 }
