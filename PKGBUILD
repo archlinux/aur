@@ -2,10 +2,10 @@
 # Ported from the synergy-git AUR package
 
 _pkgname=synergy
-pkgname=$_pkgname-1.6
-pkgver=1.6.3
+pkgname=$_pkgname-free
+pkgver=1.4.18
 pkgrel=1
-pkgdesc='Synergy upstream 1.6 branch. 1.7.x is very unstable on Linux.'
+pkgdesc='Share mouse and keyboard among many computers. Free version.'
 url='http://synergy-foss.org'
 arch=('i686' 'x86_64')
 depends=('libxtst' 'qt5-base' 'avahi')
@@ -15,33 +15,27 @@ optdepends=(
 )
 license=('GPL2')
 source=(
-  "https://github.com/symless/synergy/archive/1.6.3-final.tar.gz"
+  "http://synergy-project.org/files/packages/synergy-1.4.18-r2250-Source.tar.gz?v31"
   "${_pkgname}s_at.socket"
   "${_pkgname}s_at.service"
-  'missing-include-fix.patch'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 sha512sums=(
-  '8af7a920cb38f0bf057f005d612317fc81f937f74bff49aaf85e95559548d8a85de968e5f55690382ac2e133e0e6c3ae61c94156fc97a8f075956a7803db0825'
+  '7d5e334c935f85db05c436c68dfe60e5fdf8daff7cbdd026dcf0f17d19c65d48335e5a0eb1aa606a2915cb8a460cd95c0fd84d52cf9b9910ed0d67e591f91630'
   'f9c124533dfd0bbbb1b5036b7f4b06f7f86f69165e88b9146ff17798377119eb9f1a4666f3b2ee9840bc436558d715cdbfe2fdfd7624348fae64871f785a1a62'
   'e85cc3452bb8ba8fcccb1857386c77eb1e4cabb149a1c492c56b38e1b121ac0e7d96c6fcbd3c9b522d3a4ae9d7a9974f4a89fc32b02a56f665be92af219e371c'
-  '679cc88794d2ef65325ef93f1034f465824efeb2f01521eda7050556c1200df31abf9b5d055b9438d24f040c234d37b74c489e4db6acbf15a2e7fec8e1da226d'
 )
 
 prepare() {
-  cd $_pkgname-1.6.3-final
-
-  patch -p1 < ../missing-include-fix.patch
-
-  cd ext
+  cd "${_pkgname}-${pkgver}-Source/ext"
   unzip -o gmock-1.6.0.zip -d gmock-1.6.0
   unzip -o gtest-1.6.0.zip -d gtest-1.6.0
   unzip -o cryptopp562.zip -d cryptopp562
 }
 
 build() {
-  cd $_pkgname-1.6.3-final
+  cd "${_pkgname}-${pkgver}-Source"
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr .
   make
@@ -56,7 +50,7 @@ package() {
   install -Dm644 ${_pkgname}s_at.service "$pkgdir/usr/lib/systemd/system/${_pkgname}s@.service"
   install -Dm644 ${_pkgname}s_at.socket "$pkgdir/usr/lib/systemd/system/${_pkgname}s@.socket"
 
-  cd $_pkgname-1.6.3-final
+  cd "${_pkgname}-${pkgver}-Source"
 
   # install binary
   install -Dm755 bin/$_pkgname "$pkgdir/usr/bin/$_pkgname"
