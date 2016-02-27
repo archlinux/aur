@@ -3,7 +3,7 @@
 _npmver=0.1.0
 pkgname=electronic-wechat-git
 _pkgname=electronic-wechat
-pkgver=0.1.18.ge77c778
+pkgver=0.1.38.g22802f2
 pkgrel=1
 pkgdesc="An Electron application for WeChat"
 arch=('any')
@@ -29,7 +29,6 @@ Name=Electronic WeChat
 Comment=A better WeChat client on Mac OS X and Linux.
 Exec=/usr/bin/${_pkgname}
 Icon=/usr/share/${_pkgname}/assets/icon.png
-Type=Application
 Categories=Network;InstantMessaging;Application;
 Terminal=false
 StartupNotify=true
