@@ -193,6 +193,9 @@ package_lib32-llvm-libs-svn() {
     install -m755 -d "${pkgdir}/usr/lib32/bfd-plugins"
     ln -s {/usr/lib32,"${pkgdir}/usr/lib32/bfd-plugins"}/LLVMgold.so
 
+    # Since r262066 lto.h is also installed, but we don't need it in the -libs package.
+    rm -rf "${pkgdir}/usr/include"
+
     # Must have a symlink that corresponds to the output of `llvm-config --version`.
     # Without it, some builds, e.g. Mesa, might fail for "lack of shared libraries".
     _sover="$(echo ${pkgver} | cut -d . -f -2)svn"
