@@ -21,6 +21,6 @@ pre_remove() {
 
 post_remove() {
   echo "Removing user and group ..."
-  getent passwd g13 > /dev/null 2>&1 && userdel g13
   getent group g13 > /dev/null 2>&1 && groupdel g13
+  getent passwd g13 > /dev/null 2>&1 && userdel g13
 }

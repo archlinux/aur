@@ -4,7 +4,7 @@
 pkgbase="g13"
 pkgname="g13-git"
 pkgver=20160120
-pkgrel=2
+pkgrel=3
 pkgdesc="Userspace driver for the Logitech G13 Keyboard"
 arch=('x86_64' 'i686')
 url="https://github.com/ecraven/g13"
@@ -33,8 +33,8 @@ prepare() {
   msg "Modifying udev 91-g13.rules ..."
   sed -r -i -e 's/MODE="0666"/MODE="0660", OWNER="g13", GROUP="g13"\n/' 91-g13.rules
   echo '
-# Other packages might already do this but uncomment if you get errors on uinput
-#KERNEL=="uinput", SUBSYSTEM=="misc", OPTIONS+="static_node=uinput", TAG+="uaccess"
+# Unncomment below (and reboot) on errors on uinput or keys not generating keypresses after binding
+#KERNEL=="uinput", SUBSYSTEM=="misc", OPTIONS+="static_node=uinput", TAG+="uaccess", GROUP="wheel"
 
 # Uncomment the following to start g13d as a systemd service when G13 is plugged in
 #ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="046d", ATTR{idProduct}=="c21c", RUN+="/usr/bin/systemctl start g13.service"
