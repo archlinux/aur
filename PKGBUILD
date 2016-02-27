@@ -4,7 +4,7 @@ _npmver=0.1.0
 pkgname=electronic-wechat-git
 _pkgname=electronic-wechat
 pkgver=0.1.38.g22802f2
-pkgrel=1
+pkgrel=2
 pkgdesc="An Electron application for WeChat"
 arch=('any')
 url="https://github.com/geeeeeeeeek/wechat-electron/"
@@ -21,14 +21,14 @@ pkgver() {
     git describe --tags | sed 's/^v//;s/-/./g'
 }
 
-build() {
+prepare() {
     cat > ${_desktop} << EOF
 [Desktop Entry]
 Type=Application
 Name=Electronic WeChat
 Comment=A better WeChat client on Mac OS X and Linux.
 Exec=/usr/bin/${_pkgname}
-Icon=/usr/share/${_pkgname}/assets/icon.png
+Icon=/usr/share/${_pkgname}/icon.png
 Categories=Network;InstantMessaging;Application;
 Terminal=false
 StartupNotify=true
@@ -37,15 +37,16 @@ EOF
 
     cat > "${_pkgname}.sh" << EOF
 #!/usr/bin/env sh
-electron /usr/share/${_pkgname}/src/main.js \$*
+cd /usr/share/${_pkgname}/
+electron ./ \$*
 EOF
-
 }
 
 package() {
     cd "${_pkgname}"
-    find ./{src,assets} -type f -exec install -Dm644 {} \
+    find ./src -type f -exec install -Dm644 {} \
         "${pkgdir}/usr/share/${_pkgname}/{}" \;
+    install -Dm644 ./{assets/icon.png,package.json} "${pkgdir}/usr/share/${_pkgname}/"
     install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
     install -Dm644 "${srcdir}/${_desktop}" "${pkgdir}/usr/share/applications/${_desktop}"
     install -Dm755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
