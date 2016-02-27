@@ -3,9 +3,9 @@ _gemname=homesick
 pkgname=${_gemname}
 pkgver=1.1.3
 pkgrel=1
-pkgdesc="A man's home is his castle. Never leave your dotfiles behind."
+pkgdesc="Your home directory is your castle. Don't leave your dotfiles behind."
 arch=(any)
-url="http://github.com/technicalpickles/homesick"
+url="https://github.com/technicalpickles/homesick"
 license=('MIT')
 depends=(ruby ruby-thor git)
 # well, rubygems is part of the ruby package nowadays, but *shrug*
