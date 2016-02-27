@@ -22,5 +22,5 @@ build() {
 
 package() {
   cd "${srcdir}"/visvis-$pkgver
-  python2 setup.py install --prefix=/usr --root="$pkgdir"
+  python setup.py install --prefix=/usr --root="$pkgdir"
 }
