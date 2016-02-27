@@ -3,10 +3,10 @@
 _kernel=$(pacman -Qqo /usr/lib/modules/`uname -r` | grep linux | grep -v headers)
 _gitname=darling
 pkgname=$_gitname-git
-pkgver=1167.b3c7215
+pkgver=1183.abf5770
 pkgrel=17
 pkgdesc="A Darwin/OS X emulation layer for Linux"
-arch=('i686' 'x86_64')
+arch=('x86_64') # Can only be built on x86_64 systems
 url="http://www.darlinghq.org"
 license=('GPL3')
 depends=('xz' 'fuse' 'libxml2' 'icu' 'openssl' 'lbzip2' 'zlib' 'libunwind' 'curl' 'systemd' 'libffi' 'bzip2' 'libxslt')
@@ -74,51 +74,43 @@ prepare() {
 	done
 
 	msg2 "Make build directories..."
-	mkdir -pv "build/i386"
-
-	if [[ $CARCH == "x86_64" ]]; then
-		mkdir -pv "build/x86-64"
-		sed -i 's/lib64/lib/' Toolchain-x86_64.cmake
-	else
-		sed -i 's/lib32/lib/' Toolchain-x86.cmake
-	fi
+	mkdir -pv "build/"{i386,x86-64}
+	sed -i 's/lib64/lib/' Toolchain-x86_64.cmake
 }
 
 build() {
+	# 32-bit build
 	cd "$srcdir/$_gitname/build/i386"
-
 	msg2 "Run 'cmake' for 32-bit build..."
 	LDFLAGS="${LDFLAGS//,--as-needed}" cmake ../.. -DCMAKE_TOOLCHAIN_FILE=../../Toolchain-x86.cmake -DCMAKE_INSTALL_PREFIX=/usr
-
 	msg2 "Run 'make' for 32-bit build..."
 	make
 
-	if [[ $CARCH == "x86_64" ]]; then
-		cd "$srcdir/$_gitname/build/x86-64"
+	# 64-bit build
+	cd "$srcdir/$_gitname/build/x86-64"
+	msg2 "Run 'cmake' for 64-bit build..."
+	LDFLAGS="${LDFLAGS//,--as-needed}" cmake ../.. -DCMAKE_TOOLCHAIN_FILE=../../Toolchain-x86_64.cmake -DCMAKE_INSTALL_PREFIX=/usr
+	msg2 "Run 'make' for 64-bit build..."
+	make
 
-		msg2 "Run 'cmake' for 64-bit build..."
-		LDFLAGS="${LDFLAGS//,--as-needed}" cmake ../.. -DCMAKE_TOOLCHAIN_FILE=../../Toolchain-x86_64.cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug
-
-		msg2 "Run 'make' for 64-bit build..."
-		make
-	fi
-
+	# Kernel module build
 	cd "$srcdir/$_gitname/src/lkm"
 	msg2 "Build Linux kernel module..."
 	make
 }
 
 package() {
+	# 32-bit install
 	cd "$srcdir/$_gitname/build/i386"
 	msg2 "Install 32-bit build..."
 	make DESTDIR="$pkgdir" install
 
-	if [[ $CARCH == "x86_64" ]]; then
-		cd "$srcdir/$_gitname/build/x86-64"
-		msg2 "Install 64-bit build..."
-		make DESTDIR="$pkgdir" install
-	fi
+	# 64-bit install
+	cd "$srcdir/$_gitname/build/x86-64"
+	msg2 "Install 64-bit build..."
+	make DESTDIR="$pkgdir" install
 
+	# Kernel module install
 	cd "$srcdir/$_gitname/src/lkm"
 	msg2 "Install Linux kernel module..."
 	make INSTALL_MOD_PATH="$pkgdir/usr" install
