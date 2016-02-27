@@ -3,13 +3,13 @@
 
 pkgname='xtables-addons'
 pkgver='2.10'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Xtables-addons is a set of additional extensions for the Xtables packet filter that is present in the Linux kernel'
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="http://${pkgname}.sourceforge.net"
 depends=('iptables' 'glibc' 'linux')
-makedepends=('linux-api-headers' 'linux-headers' 'libtool' 'gcc')
+makedepends=('linux-api-headers' 'linux-headers' 'libtool' 'gcc' 'pkg-config')
 conflicts=('xtables-addons-dkms')
 replaces=('xtables-addons-dkms')
 install="${pkgname}.install"
