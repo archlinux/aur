@@ -1,7 +1,7 @@
 # Maintainer: twilinx <twilinx@mesecons.net>
 
 pkgname=gtk3-typeahead
-pkgver=3.18.7
+pkgver=3.18.8
 pkgrel=1
 conflicts=(gtk3)
 provides=("gtk3=$pkgver")
@@ -17,9 +17,9 @@ makedepends=(gobject-introspection libcanberra gtk-doc)
 license=(LGPL)
 source=(https://download.gnome.org/sources/gtk+/${pkgver:0:4}/gtk+-$pkgver.tar.xz
     settings.ini typeahead.patch)
-sha256sums=('a76e1cb0ac45ce5c2734f6778f2731a5c6a23d1ff6bd4db357774f014ee68820'
+sha256sums=('1c53ef1bb55364698f7183ecd185b547f92f4a3a7abfafd531400232e2e052f8'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202'
-            '6d2189c1d41690064289e81e1be83c48b08cc53cdf93a96185b85bbf5524c861')
+            'd9db275d3c6e63b9587c99185ae4e370d8ae76e343196d218e19c148abd21762')
 
 prepare() {
     cd gtk+-$pkgver
