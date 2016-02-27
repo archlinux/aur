@@ -1,14 +1,14 @@
 pkgbase = gitbucket
 	pkgdesc = The easily installable Github clone written with Scala
-	pkgver = 3.11
+	pkgver = 3.12
 	pkgrel = 1
 	url = https://github.com/gitbucket/gitbucket
 	arch = any
 	license = Apache
 	depends = java-runtime
-	source = gitbucket-3.11.war::https://github.com/gitbucket/gitbucket/releases/download/3.11/gitbucket.war
+	source = gitbucket-3.12.war::https://github.com/gitbucket/gitbucket/releases/download/3.12/gitbucket.war
 	source = gitbucket.service
-	sha1sums = c8274ad4c1f31a2403f29c4ba5a3230cde298e2f
+	sha1sums = 81a9731a6530e404c1a7dc34e36e94e78a4d9d0d
 	sha1sums = c93c600608d7922f67f4a3036a944fefc48bf9e0
 
 pkgname = gitbucket
