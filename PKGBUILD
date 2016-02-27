@@ -3,8 +3,8 @@
 
 pkgname=receitanet
 pkgver=1.07
-pkgrel=2
-license='custom'
+pkgrel=3
+license=('custom')
 
 arch=(any)
 pkgdesc='Programa Oficial da Receita para envio do IRPF'
@@ -15,10 +15,10 @@ source=(http://www.receita.fazenda.gov.br/publico/programas/receitanet/receitane
         $pkgname.install)
         
 md5sums=('8c1d9e034f5a8bf87261aca9899256f2'
-         '3a34bb366934f7a08d66cfec9b1447cd'
+         '0482abdccc0286f64ed66981fcca8975'
          '9ffa35004b1cb3e108bb4221d630fc47')
 
-depends=('java-runtime>=6' 'hicolor-icon-theme' 'desktop-file-utils')
+depends=('java-runtime-common' 'hicolor-icon-theme' 'desktop-file-utils')
 install=$pkgname.install
 
 prepare() {
