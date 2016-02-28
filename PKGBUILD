@@ -11,7 +11,7 @@ license=('LGPL')
 depends=('pcsclite')
 backup=('etc/pam_pkcs11/pam_pkcs11.conf' 'etc/pam_pkcs11/subject_mapping' 'etc/pam_pkcs11/card_eventmgr.conf')
 source=("https://github.com/OpenSC/${pkgname}/archive/${pkgname}-${pkgver}.tar.gz")
-md5sums=('5ca42826b60ffcb574cc16b965f56b00')
+md5sums=('01ee707a3c89020341cfb9fce27f38c5')
 
 build() {
 	cd ${pkgname}-$pkgver
