@@ -1,17 +1,17 @@
 # Maintainer: Brendan MacDonell <macdonellba at gmail dot com>
 
 pkgname=s3ql
-pkgver=2.15
+pkgver=2.16
 pkgrel=1
 pkgdesc="A full-featured file system for online data storage."
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/nikratio/s3ql/overview"
 license=('GPL3')
 depends=('python' 'python-apsw' 'python-crypto' 'python-defusedxml' 'python-dugong>=3.2'
-         'python-llfuse>=0.40-3' 'python-requests')
+         'python-llfuse>=0.43' 'python-requests')
 makedepends=('gcc')
 source=(https://bitbucket.org/nikratio/s3ql/downloads/s3ql-$pkgver.tar.bz2)
-md5sums=('8a856f86b18b4a5887cf87345f052c3e')
+md5sums=('2025f88cbc048856ad350246c56ff138')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
