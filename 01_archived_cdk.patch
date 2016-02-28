@@ -1,0 +1,30 @@
+# HG changeset patch
+# User mitchell
+# Date 1454374126 18000
+#      Mon Feb 01 19:48:46 2016 -0500
+# Node ID ed7e01f448f250d1964ca126ee6a55c0aa34dd5b
+# Parent  18cdf7e7a36aa023954ad1cc731038c158d0081d
+Use an archived CDK version instead of the latest; src/Makefile
+Otherwise building Textadept from the source could break at any time.
+
+diff -r 18cdf7e7a36a -r ed7e01f448f2 src/Makefile
+--- a/src/Makefile	Mon Feb 01 19:47:44 2016 -0500
++++ b/src/Makefile	Mon Feb 01 19:48:46 2016 -0500
+@@ -391,7 +391,7 @@
+ luajit_tgz = LuaJIT-2.0.3.tar.gz
+ libluajit_tgz = libluajit_2.0.3.x86_64.tgz
+ gtdialog_zip = gtdialog_1.2.zip
+-cdk_tgz = cdk.tar.gz
++cdk_tgz = cdk-5.0-20150928.tgz
+ termkey_tgz = libtermkey-0.17.tar.gz
+ win32gtk_zip = gtk+-bundle_2.24.10-20120208_win32.zip
+ win32iconv_bin_zip = libiconv-bin-zip.php
+@@ -439,7 +439,7 @@
+ libluajit64: | $(libluajit_tgz) ; tar xzf $|
+ $(gtdialog_zip): ; wget $(gtdialog_url) -O $@
+ gtdialog: | $(gtdialog_zip) ; mkdir $@ && unzip -d $@ $| && mv $@/*/* $@
+-$(cdk_tgz): ; wget http://invisible-island.net/datafiles/release/$@
++$(cdk_tgz): ; wget http://invisible-mirror.net/archives/cdk/$@
+ cdk: cdk.patch | $(cdk_tgz)
+ 	mkdir $@ && tar xzf $| -C $@ && mv $@/*/* $@
+ 	mv $@/include/*.h $@
