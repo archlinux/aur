@@ -2,12 +2,13 @@
 _pkgname="htpc-manager"
 pkgname="htpc-manager-git"
 pkgver=0.11.0.r274.gcd983bf
-pkgrel=1
+pkgrel=2
 pkgdesc="A fully responsive interface to manage all your favorite software on your Htpc"
 arch=(any)
 url="http://htpc.io"
 license=('MIT')
 depends=('python2')
+backup=('/opt/htpc-manager/userdata')
 source=("htpc-manager::git+https://github.com/styxit/HTPC-Manager#branch=master"
         "htpc-manager.service")
 md5sums=('SKIP'
@@ -27,19 +28,14 @@ pkgver() {
 package() {
     cd "$srcdir"
 
-    msg2 "Install HTPC Manager to /opt/htpc-manager"
-    install -d -D -m 755 "${pkgdir}/opt/htpc-manager"
-    cp -dpr --no-preserve=ownership "${srcdir}/htpc-manager/"* "${pkgdir}/opt/htpc-manager"
+    msg2 "Install HTPC Manager to /opt/$_pkgname"
+    install -d -D -m 755 "${pkgdir}/opt/$_pkgname"
+    cp -dpr --no-preserve=ownership "${srcdir}/$_pkgname/"* "${pkgdir}/opt/$_pkgname"
 
     msg2 "Create userdata folder"
-    install -o http -g http -d -D -m 750 "${pkgdir}/opt/htpc-manager/userdata"
+    install -o http -g http -d -D -m 750 "${pkgdir}/opt/$_pkgname/userdata"
 
-    # msg2 "Install log directory to ~htpc-manager/logs"
-    # rm -rf "${pkgdir}/opt/htpc-manager/logs"
-    # install -d -D -m 755 "${pkgdir}/var/lib/htpc-manager/logs"
-    # ln -s /var/lib/htpc-manager/logs "${pkgdir}/opt/nzbmegasearch/logs"
-
-    msg2 "Install htpc-manager.service"
-    install -D -m 644 "${srcdir}/htpc-manager.service" "${pkgdir}/usr/lib/systemd/system/htpc-manager.service"
+    msg2 "Install $_pkgname.service"
+    install -D -m 644 "${srcdir}/$_pkgname.service" "${pkgdir}/usr/lib/systemd/system/$_pkgname.service"
 }
 
