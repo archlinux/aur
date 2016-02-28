@@ -1,20 +1,20 @@
 # Maintainer: Miguel Revilla <yo@miguelrevilla.com>
 # Contributor: Jeremy Sands <cto@jeremysands.com>
 pkgname=gentoo-bashrc
-pkgver=2013.0
+pkgver=2016.0
 pkgrel=1
 pkgdesc="This is Gentoo's BASHRC file, which has very nice color schemes."
 arch=('any')
 url="http://cnswww.cns.cwru.edu/~chet/bash/bashtop.html"
 license=('GPL')
 optdepends=('bash: Shell needed to make use of this package')
-source=('gentoo-bashrc-2013.0')
-md5sums=('3149b49f29fc9dceb660c4a87b40e8cf')
+source=("gentoo-bashrc-${pkgver}")
+md5sums=('38f9a4144ef4e437e1132ce57d3d77b2')
 install=${pkgname}.install
 
 package() {
 
-  install -D -m755 gentoo-bashrc-2013.0 "${pkgdir}"/usr/share/gentoo-bashrc/bashrc
+  install -D -m755 gentoo-bashrc-${pkgver} "${pkgdir}/usr/share/gentoo-bashrc/bashrc"
 
   msg "IMPORTANT!!"
   msg ""
