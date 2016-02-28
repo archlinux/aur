@@ -3,8 +3,8 @@
 _kernel=$(pacman -Qqo /usr/lib/modules/`uname -r` | grep linux | grep -v headers)
 _gitname=darling
 pkgname=$_gitname-git
-pkgver=1183.abf5770
-pkgrel=17
+pkgver=1188.1ab9cc2
+pkgrel=18
 pkgdesc="A Darwin/OS X emulation layer for Linux"
 arch=('x86_64') # Can only be built on x86_64 systems
 url="http://www.darlinghq.org"
@@ -28,6 +28,9 @@ source=('git+https://github.com/darlinghq/darling.git'
 	'git+https://github.com/darlinghq/darling-expat.git'
 	'git+https://github.com/darlinghq/darling-file_cmds.git'
 	'git+https://github.com/darlinghq/darling-foundation.git'
+	'git+https://github.com/darlinghq/darling-gnudiff.git'
+	'git+https://github.com/darlinghq/darling-gnutar.git'
+	'git+https://github.com/darlinghq/darling-gpatch.git'
 	'git+https://github.com/darlinghq/darling-grep.git'
 	'git+https://github.com/darlinghq/darling-icu.git'
 	'git+https://github.com/darlinghq/darling-installer.git'
@@ -55,7 +58,8 @@ source=('git+https://github.com/darlinghq/darling.git'
 md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+	'SKIP' 'SKIP')
 
 pkgver() {
 	cd "$srcdir/$_gitname"
