@@ -4,7 +4,7 @@
 
 pkgbase=pypy-setuptools
 pkgname=('pypy3-setuptools' 'pypy-setuptools')
-pkgver=20.1.1
+pkgver=20.2.2
 pkgrel=1
 epoch=1
 pkgdesc="Easily download, build, install, upgrade, and uninstall Python packages"
@@ -13,7 +13,7 @@ license=('PSF')
 makedepends=('pypy' 'pypy3')
 url="http://pypi.python.org/pypi/setuptools"
 source=("https://pypi.python.org/packages/source/s/setuptools/setuptools-${pkgver}.tar.gz")
-sha512sums=('72da2f5a4e07c14975b3e13246264cb4b9eb52bd6da22fce0ef0f0bb8d902249067e6c23bf263cda45de92a0cdb794f454dff95e52505045e03c7a6ab28cb2ca')
+sha512sums=('e74004e5755e1abd9e6efb94887c9124a36e67651e6e626424e96575cf8e84a258d48ee6fa8f0389f15de3bddcbcb0a690810dd46c358f85659ad6f20f905a2d')
 
 prepare() {
   cp -a setuptools-${pkgver}{,-pypy}
