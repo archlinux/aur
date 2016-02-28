@@ -6,7 +6,7 @@
 # The following guidelines are specific to BZR, GIT, HG and SVN packages.
 # Other VCS sources are not natively supported by makepkg yet.
 
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Your Name <ryexander@gmail.com>
 pkgname=silan-git
 pkgrel=1
 pkgver=v0.3.2.r4.gea0f418
