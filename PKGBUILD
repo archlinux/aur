@@ -2,16 +2,16 @@
 
 pkgname=frinfon
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimal Sinatra for Perl6"
 arch=('any')
 depends=('perl6' 'perl6-crust' 'perl6-router-boost')
 checkdepends=('perl')
 makedepends=('alacryd' 'git')
 groups=('perl6')
-url="https://github.com/shoichikaji/Frinfon"
+url="https://github.com/skaji/Frinfon"
 license=('PerlArtistic')
-source=($pkgname-$pkgver::git+https://github.com/shoichikaji/Frinfon)
+source=($pkgname-$pkgver::git+https://github.com/skaji/Frinfon)
 sha256sums=('SKIP')
 
 check() {
