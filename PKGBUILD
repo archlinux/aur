@@ -7,7 +7,7 @@
 pkgname=opencv-java
 _pkgbase=opencv
 pkgver=2.4.12.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Computer Vision Library - Java bindings"
 arch=('i686' 'x86_64')
 license=('BSD')
@@ -36,8 +36,14 @@ optdepends=(
 	'python2-numpy: Python 2.x interface'
 	)
 # Sources and checksums section
-source=("${_pkgbase}-${pkgver}.tar.gz::https://github.com/Itseez/opencv/archive/$pkgver.tar.gz")
-md5sums=('2496a4a4caf8fecfbfc294fbe6a814b0')
+source=(
+	"${_pkgbase}-${pkgver}.tar.gz::https://github.com/Itseez/opencv/archive/$pkgver.tar.gz"
+	opencv-ffmpeg3.patch
+	)
+md5sums=(
+	'2496a4a4caf8fecfbfc294fbe6a814b0'
+	'c752f3e83ebb021171fdd04aa7fb2e5a'
+	)
 
 # CMake flags
 _cmakeopts=('-D WITH_OPENCL=ON'
@@ -72,6 +78,9 @@ prepare() {
 	# Setting JAVA_HOME
 	msg2 "Setting JAVA_HOME variable"
 	export JAVA_HOME="/usr/lib/jvm/default"
+	# Patching OpenCV to support FFMpeg 3.0
+	cd $_pkgbase-$pkgver
+	patch -p1 -i ../opencv-ffmpeg3.patch
 }
 
 build() {
