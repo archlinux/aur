@@ -5,8 +5,8 @@
 _icon="default"
 
 pkgname=vuze-extreme-mod
-pkgver=5.7.0.0
-_ver=5700
+pkgver=5.7.1.1
+_ver=
 pkgrel=1
 pkgdesc="A modded version of the Vuze BitTorrent client with multiple spoofing capabilities"
 arch=('i686' 'x86_64')
@@ -20,11 +20,11 @@ provides=('vuze')
 options=('!strip')
 install=$pkgname.install
 source=("http://downloads.sourceforge.net/azureus/vuze/Vuze_${_ver}/Vuze_${_ver}_linux.tar.bz2"
-        'http://www.sb-innovation.de/attachments/f41/15971d1447696696-vuze-extreme-mod-sb-innovation-5-7-0-0-vpem_5701-00.zip'
+        'http://www.sb-innovation.de/attachments/f41/15971d1447696696-vuze-extreme-mod-sb-innovation-5.7.1.1-vpem_5701-00.zip'
          {blue,gray}_{16,32,64,128}.png)
 noextract=($(basename ${source[1]}))
-md5sums=('c847989c36ba37388129f18c376a4f99'
-         '7551af7405924bfc9034ba6f99cdf2bb'
+md5sums=('28a5f9164f91c11121e1bfa8a39aa9ea'
+         '1564e2a04df9b6b28c2f3b2123326f20'
          '5eba696cfcc430504706f476e13b2ade'
          'a4cae0c46a6ac56322753f96f52b8f74'
          '5eba696cfcc430504706f476e13b2ade'
