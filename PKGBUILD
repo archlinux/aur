@@ -9,8 +9,10 @@ pkgdesc="SoapySDR RTL-SDR Support Module"
 arch=('any')
 url="https://github.com/pothosware/SoapySDR"
 license=('MIT')
-depends=('soapysdr-git' 'rtl-sdr')
+depends=('soapysdr' 'rtl-sdr')
 makedepends=('git')
+provides=('soapyrtlsdr')
+conflicts=('soapyrtlsdr')
 source=(${pkgname}::"git+https://github.com/pothosware/SoapyRTLSDR.git")
 sha256sums=('SKIP')
 
