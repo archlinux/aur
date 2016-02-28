@@ -1,7 +1,7 @@
 # Maintainer: Philip Abernethy<chais.z3r0@gmail.com>
 pkgname=litwr
-pkgver=20160213
-pkgrel=2
+pkgver=20160228
+pkgrel=1
 pkgdesc="Life in the Woods Renaissance is a modpack for Minecraft."
 url="http://lifeinthewoods.ca"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPLv3')
 depends=('java-runtime>=7')
 
 source=("http://lifeinthewoods.getitfromhere.co.uk/downloads/LifeInTheWoodsRenaissanceLauncher.zip")
-sha512sums=('7a3e450bfacfefa65290a9d683989f1362edfb0d1d45cbae8bd4bceb271e72a6f27ad3b3e124dc8092e58c8732edead236a0ccc67927840e7466cc3253bdfa8b')
+sha512sums=('74a92ec228982860f528a8a5df7458f55d89ef454ee340781e7810464378b95bd0dd9e5d766aa3783539716b6572186b42a38dbf530dd4c7f0d07af001122989')
 
 package() {
 	install -d "${pkgdir}"/{opt/litwr,usr/{bin,share/{applications,licenses}}}
