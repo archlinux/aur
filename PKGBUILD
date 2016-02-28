@@ -21,7 +21,7 @@ makedepends=('git' 'python2' 'vala' 'gobject-introspection>=1.44.0')
 
 install=budgie-desktop.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/solus-project/budgie-desktop/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('2556a75220dfde4fd75e80a43a2d07575cea887ad0d4e169acb48e135707beac')
+sha256sums=('b01e7be9349cbc26cd77db74a0c138d21c31d8bad21a02b31828014b416256f7')
 
 build() {
 	cd "$srcdir"/$pkgname-$pkgver
