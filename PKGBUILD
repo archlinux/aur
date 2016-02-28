@@ -2,13 +2,14 @@
 
 pkgname=python2-tabulate
 pkgver=0.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Pretty-print tabular data in Python."
 arch=(any)
 url="https://bitbucket.org/astanin/python-tabulate"
 depends=('python2' 'python2-psutil')
 source=("https://pypi.python.org/packages/source/t/tabulate/tabulate-$pkgver.tar.gz")
 sha256sums=('9071aacbd97a9a915096c1aaf0dc684ac2672904cd876db5904085d6dac9810e')
+license=('MIT')
 
 build() {
   cd "$srcdir/tabulate-$pkgver"
