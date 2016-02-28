@@ -6,8 +6,8 @@
 
 pkgname=opencv-java
 _pkgbase=opencv
-pkgver=2.4.12.2
-pkgrel=2
+pkgver=2.4.12.3
+pkgrel=1
 pkgdesc="Open Source Computer Vision Library - Java bindings"
 arch=('i686' 'x86_64')
 license=('BSD')
@@ -36,8 +36,8 @@ optdepends=(
 	'python2-numpy: Python 2.x interface'
 	)
 # Sources and checksums section
-source=("${_pkgbase}-${pkgver}.zip::https://github.com/Itseez/opencv/archive/$pkgver.zip")
-md5sums=('5f7cde7f0bccd90542805ea20687fc8d')
+source=("${_pkgbase}-${pkgver}.tar.gz::https://github.com/Itseez/opencv/archive/$pkgver.tar.gz")
+md5sums=('2496a4a4caf8fecfbfc294fbe6a814b0')
 
 # CMake flags
 _cmakeopts=('-D WITH_OPENCL=ON'
@@ -101,7 +101,8 @@ package() {
 	# Create a symbolic link in /usr/share/java as Java apps written for Ubuntu may be looking there
 	mkdir -p "$pkgdir/usr/share/java/"
 	# Get the number in the Jar filename
-	_number=$(echo $pkgver | sed 's/\.//g')
+	#_number=$(echo $pkgver | sed 's/\.//g')
+	_number=$(echo $pkgver | sed 's/\.[0-9]$//' | sed 's/\.//g')
 	ln -s "/usr/share/opencv/java/opencv-$_number.jar" "$pkgdir/usr/share/java/opencv.jar"
 
 	# Removing the junk
