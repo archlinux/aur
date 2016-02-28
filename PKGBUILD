@@ -3,7 +3,7 @@
 _plug=havsfunc
 pkgname=vapoursynth-plugin-${_plug}
 pkgver=r22
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('any')
 url='http://forum.doom9.org/showthread.php?t=166582'
@@ -28,6 +28,8 @@ depends=('vapoursynth-plugin-adjust-git'
          'vapoursynth-plugin-sangnommod-git'
          'vapoursynth-plugin-scenechange'
          'vapoursynth-plugin-temporalsoften-git'
+         'vapoursynth-plugin-svpflow1'
+         'vapoursynth-plugin-svpflow2-bin'
          )
 makedepends=('git')
 source=("${_plug}-${pkgver}.tar.gz::https://github.com/HomeOfVapourSynthEvolution/havsfunc/archive/${pkgver}.tar.gz")
