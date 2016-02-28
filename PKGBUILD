@@ -7,7 +7,7 @@
 pkgname=opencv-java
 _pkgbase=opencv
 pkgver=2.4.12.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Open Source Computer Vision Library - Java bindings"
 arch=('i686' 'x86_64')
 license=('BSD')
@@ -88,7 +88,7 @@ build() {
 
 	cmake ${_cmakeopts[@]} .
 
-	make
+	make opencv_java
 }
 
 # Changed in order to save just Java files
