@@ -2,10 +2,10 @@
 # Co-Maintainer: Giancarlo Razzolini <grazzolini@gmail.com>
 pkgname='tinyssh'
 pkgver='20160201'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Small SSH server using NaCl / TweetNaCl'
 url='http://tinyssh.org'
-arch=('x86_64' 'i686' 'arm')
+arch=('x86_64' 'i686' 'arm' 'armv6h')
 license=('Public Domain')
 makedepends=('gcc' 'make')
 install='tinyssh.install'
