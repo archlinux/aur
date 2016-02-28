@@ -5,7 +5,7 @@ _postfixadminver=2.93
 pkgname=('zarafa-postfixadmin'
 	 'zarafa-postfixadmin-worker')
 groups=('zarafa')
-pkgver=0.12
+pkgver=0.15
 pkgrel=1
 pkgdesc="A web based interface used to manage mailboxes, virtual domains and aliases created for Zarafa-Server with DB-Plugin and Postfix"
 arch=('any')
@@ -85,7 +85,7 @@ package_zarafa-postfixadmin-worker() {
     install -dm755 ${_destdir_lib}
 
     # usr
-    cd ${srcdir}/zarafa-postfixadmin-${pkgver}/postfixadmin-worker
+    cd ${srcdir}/zarafa-postfixadmin-${pkgver}/worker
     cp -r * ${_destdir}
     rm -rf ${_destdir}/systemd
     
