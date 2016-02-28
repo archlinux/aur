@@ -3,8 +3,8 @@
 _pkgname=idos-timetable-browser
 pkgname="${_pkgname}"
 pkgver=1.27_lib2.5.0.1_date20150210
-pkgrel=1
-pkgdesc="Offline railway and other public transport timetable search engine by CHAPS."
+pkgrel=2
+pkgdesc="Offline railway and other public transport timetable search engine by CHAPS. (Czech language by default.)"
 arch=('i686' 'x86_64')
 url="http://www.chaps.cz/eng/download/idos"
 license=('custom')
@@ -20,11 +20,16 @@ makedepends=(
 
 optdepends=(
   "idos-timetable-data: For timetable data. (You need at least one to use the software.)"
-  "idos-timetable-lang-de: For German translation."
-  "idos-timetable-lang-en: For English translation."
+  "idos-timetable-lang-: For translations in other languages."
+  # "idos-timetable-lang-de: For German translation."
+  # "idos-timetable-lang-en: For English translation."
+  # "idos-timetable-lang-nl: For Dutch translation."
 )
 
-provides=()
+provides=(
+  "idos-timetable-lang-cz=${pkgver}"
+)
+
 replaces=()
 conflicts=()
 
