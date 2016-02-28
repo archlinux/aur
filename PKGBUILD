@@ -27,7 +27,7 @@ pkgver=16.0rc3
 _gitver=$pkgver-Jarvis
 
 _pkgsrcname=$_gitname-$_gitver
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://xbmc.org"
 license=('GPL' 'LGPL')
@@ -36,7 +36,7 @@ groups=('kodi-devel')
 makedepends=(
   'afpfs-ng' 'bluez-libs' 'boost' 'cmake' 'curl' 'cwiid' 'doxygen' 'git' 'glew'
   'gperf' 'hicolor-icon-theme' 'jasper' 'java-runtime' 'lame'  'libaacs' 'libass'
-  'libbluray' 'libcdio' 'kodi-devel-libcec' 'libgl' 'libmariadbclient' 'libmicrohttpd'
+  'libbluray' 'libcdio' 'libcrossguid-git' 'kodi-devel-libcec' 'libgl' 'libmariadbclient' 'libmicrohttpd'
   'libmodplug' 'libmpeg2' 'libnfs' 'libplist' 'libpulse' 'libsamplerate' 'libssh'
   'libva' 'libvdpau' 'libvorbis' 'libxrandr' 'libxslt' 'lzo' 'mesa' 'nasm' 'python2-pillow'
   'python2-simplejson' 'rtmpdump' 'sdl2' 'shairplay' 'smbclient' 'swig' 'taglib'
