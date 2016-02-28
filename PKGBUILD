@@ -1,23 +1,23 @@
-# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+# Maintainer: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 # Contributor: Geoffroy Carrier <geoffroy.carrier@aur.archlinux.org>
 # Contributor: rich_o <rich_o@lavabit.com>
 
 pkgname=subdl
 pkgver=1.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A command-line tool for downloading subtitles from opensubtitles.org"
 arch=('any')
-url="http://code.google.com/p/$pkgname/"
+url="https://github.com/akexakex/$pkgname"
 license=('GPL3')
 depends=('python2')
-source=(http://subdl.googlecode.com/files/$pkgname-$pkgver.zip)
-sha256sums=('883b28c5defdf654f9532cef7d33697c')
+makedepends=('git')
+source=(git+https://github.com/akexakex/subdl.git#commit=dd6ddb6)
+sha256sums=('SKIP')
 
 package() {
-  cd ${srcdir}
+  cd "${srcdir}"/$pkgname
 
   sed -i 's|usr/bin/python$|\02|' $pkgname
 
-  install -D -m755 $pkgname ${pkgdir}/usr/bin/$pkgname
+  install -Dm755 $pkgname "${pkgdir}"/usr/bin/$pkgname
 }
-sha256sums=('ba56d0f65ccce575295a65d1374f164d4f1cc69c874ae8593f5daa688562c154')
