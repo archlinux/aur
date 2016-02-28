@@ -1,7 +1,7 @@
 # Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
 pkgname=qwbfs
-pkgver=1.2.5
-pkgrel=2
+pkgver=1.2.6
+pkgrel=1
 pkgdesc="Cross platform WBFS file system manager"
 arch=('i686' 'x86_64')
 url="https://github.com/pasnox/qwbfsmanager"
@@ -10,8 +10,8 @@ license=('GPL2')
 depends=('qt5-base' 'hicolor-icon-theme')
 makedepends=('git')
 install=${pkgname}.install
-source=("qwbfs::git+https://github.com/pasnox/qwbfsmanager.git#tag=v1.2.5"
-        "fresh::git+https://github.com/pasnox/fresh.git#commit=cd735c55c54ca8917704d231022e1ed46c3b42a8"
+source=("qwbfs::git+https://github.com/pasnox/qwbfsmanager.git#tag=v1.2.6"
+        "fresh::git+https://github.com/pasnox/fresh.git#commit=264d665965c0f439bc91e7f51c31e2b76eea8753"
         "qmake-extensions::git+https://github.com/pasnox/qmake-extensions.git#commit=b60b99bccbfda40136c8aa1a54770543519feda8")
 sha1sums=('SKIP' 'SKIP' 'SKIP')
 
