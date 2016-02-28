@@ -2,8 +2,9 @@
 # Thanks to the maintainers and contributors of the mu binary package
 
 pkgname=mu-git
-pkgver=0.9.16
-pkgrel=3
+pkgver=v0.9.16.59.geab45dc
+pkgrel=2
+install=mu-git.install
 pkgdesc="mu and mu4e from git"
 arch=('i686' 'x86_64')
 url="http://www.djcbsoftware.nl/code/mu"
