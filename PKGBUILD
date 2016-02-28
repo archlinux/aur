@@ -1,9 +1,9 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname='irssi-xmpp-git'
 pkgdesc='irssi plugin to connect to the Jabber network (cdidier version)'
-pkgver=r0.52.26.g4df4194
-pkgrel=2
-arch=('arm' 'i686' 'x86_64')
+pkgver=v0.52.37.gbc6e1de
+pkgrel=1
+arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 license=('GPL2')
 url="https://github.com/cdidier/irssi-xmpp"
 depends=('loudmouth' 'irssi')
