@@ -1,0 +1,41 @@
+## arg 1:  the new package version
+pre_install() {
+    true
+}
+
+## arg 1:  the new package version
+post_install() {
+    echo ""
+    echo "If you use OpenRC and want to enable the service at boot, execute:"
+    echo "  rc-update add netcfg default"
+    echo ""
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+pre_upgrade() {
+    true
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+    true
+}
+
+## arg 1:  the old package version
+pre_remove() {
+    true
+}
+
+## arg 1:  the old package version
+post_remove() {
+    echo ""
+    echo "If you use OpenRC, remember to remove the service from the system startup with:"
+    echo "  rc-update -a delete netcfg"
+    echo ""
+    # if command -v rc-update > /dev/null; then
+    #   echo "Removing netcfg from OpenRC-startup ..."
+    #   rc-update -a delete netcfg || true
+    # fi
+}

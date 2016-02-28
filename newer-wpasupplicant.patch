@@ -1,0 +1,6 @@
+diff -rU0 netcfg-master.old/src/8021x netcfg-master.new/src/8021x
+--- netcfg-master.old/src/8021x 2013-08-08 02:34:14.000000000 +0200
++++ netcfg-master.new/src/8021x 2016-02-28 17:25:30.000000000 +0100
+@@ -65 +65 @@
+-    wpa_supplicant -B -P "$PIDFILE" -i "$INTERFACE" -D "$WPA_DRIVER" "$WPA_CONF" $WPA_OPTS
++    wpa_supplicant -B -P "$PIDFILE" -i "$INTERFACE" -D "$WPA_DRIVER" "$WPA_CONF" $WPA_OPTS > /dev/stderr

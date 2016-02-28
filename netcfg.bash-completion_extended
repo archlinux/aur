@@ -1,0 +1,49 @@
+# netcfg completion
+
+_netcfg ()
+{
+    local cur prev opts lopts cmds prfls
+
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+
+    opts="-l -c -u -r -R -d -D -a -v -h"
+    lopts="--help --version"
+    cmds="list current check-iface up reconnect iface-recon down iface-down all-down all-suspend"
+    prfls="$(find -L /etc/network.d/ -maxdepth 1 -type f -not -name '*~' -not -name '*.conf' -not -name '.*' -printf '%f\n')"
+
+    case "${prev}" in
+        -R|iface-recon|-D|iface-down)
+            COMPREPLY=( $( compgen -W "$(ls /run/network/interfaces/)" -- $cur ) )
+            return 0
+            ;;
+        -r|reconnect|-d|down)
+            COMPREPLY=( $( compgen -W "$(ls /run/network/profiles/)" -- $cur ) )
+            return 0
+            ;;
+        -c|check-iface|-u|up)
+            COMPREPLY=( $( compgen -W "${prfls}" -- $cur ) )
+            return 0
+            ;;
+    esac
+
+    case "${cur}" in
+        --*)
+            COMPREPLY=( $( compgen -W "${lopts}" -- $cur ) )
+            return 0
+            ;;
+        -*)
+            COMPREPLY=( $( compgen -W "${opts} ${lopts}" -- $cur ) )
+            return 0
+            ;;
+        *)
+            ((COMP_CWORD == 1)) && \
+                COMPREPLY=( $( compgen -W "${opts} ${lopts} ${cmds} ${prfls}" -- $cur ) )
+            ;;
+    esac
+
+    return 0
+}
+
+complete -F _netcfg netcfg

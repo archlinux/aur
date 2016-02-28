@@ -1,0 +1,33 @@
+#!/usr/bin/openrc-run
+# OpenRC init script to configure the network via netcfg
+
+## 'netcfg-daemon' configures netcfg profiles as specified in /etc/conf.d/netcfg
+
+_EXECUTABLE="/usr/bin/netcfg-daemon"
+
+depend() {
+  need localmount
+  after net.lo net.lo0 bootmisc
+  provide net
+  keyword -jail -prefix -vserver
+}
+
+start() {
+  ebegin "Setting up netcfg network profiles"
+  
+  "${_EXECUTABLE}" start
+  
+  eend "$?"
+}
+
+stop() {
+  ebegin "Deconfiguring netcfg network profiles"
+  
+  if netcfg-daemon status | grep -qvE '^netcfg\-daemon was not started'; then
+    "${_EXECUTABLE}" stop
+  else
+    echo "netcfg-daemon was not started."
+  fi
+  
+  eend "$?"
+}

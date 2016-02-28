@@ -1,0 +1,43 @@
+diff -U5 old/Makefile new/Makefile
+--- old/Makefile	2016-02-28 16:25:03.000000000 +0100
++++ new/Makefile	2016-02-28 16:25:15.000000000 +0100
+@@ -42,31 +42,28 @@
+ EXTRAS      = extra/iptables.hook     \
+               extra/logging.hook      \
+               extra/pm-utils.handler
+ 
+ EXAMPLES    = extra/examples/bonding                     \
++              extra/examples/bridge                      \
+               extra/examples/ethernet-dhcp               \
+-              extra/examples/ethernet-static             \
+               extra/examples/ethernet-iproute            \
++              extra/examples/ethernet-static             \
++              extra/examples/openvpn                     \
+               extra/examples/ppp                         \
+               extra/examples/pppoe                       \
+-              extra/examples/wireless-open               \
+-              extra/examples/wireless-wep                \
+-              extra/examples/wireless-wpa                \
+-              extra/examples/wireless-wpa-static         \
+-              extra/examples/wireless-wpa-configsection  \
+-              extra/examples/wireless-wpa-config         \
+               extra/examples/tunnel-he-ipv6              \
++              extra/examples/tuntap                      \
+               extra/examples/vlan-dhcp                   \
+               extra/examples/vlan-static                 \
+-              extra/examples/bridge                      \
+-              extra/examples/openvpn                     \
+-              extra/examples/tuntap                      \
+               extra/examples/wireless-open               \
+               extra/examples/wireless-wep                \
+               extra/examples/wireless-wep-string-key     \
+-              extra/examples/wireless-wpa-config
++              extra/examples/wireless-wpa                \
++              extra/examples/wireless-wpa-config         \
++              extra/examples/wireless-wpa-configsection  \
++              extra/examples/wireless-wpa-static
+ 
+ RCD         = rc.d/net-profiles       \
+               rc.d/net-rename         \
+               rc.d/net-auto-wired     \
+               rc.d/net-auto-wireless

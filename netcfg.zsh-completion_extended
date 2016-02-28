@@ -1,0 +1,52 @@
+#compdef netcfg
+local -a disp
+
+all_options() {
+    local _subcommands
+    _subcommands=('list:List all available profiles'
+                  'current:Report currently running profiles'
+                  'check-iface:Start the specified profile, only if its interface is not currently up'
+                  'up:Start the specified profile'
+                  'reconnect:Disconnect and reconnect the specified profile'
+                  'iface-recon:Reconnect profile active on specified interface'
+                  'down:Stop the specified profile'
+                  'iface-down:Stop the profile up on the specified interface'
+                  'all-down:Stop all connected profiles'
+                  'all-suspend:Suspend and store the name of all active profiles'
+                  'all-resume:Reconnect any profiles that have been suspended')
+
+    _path_files -W "/etc/network.d" -g "*(.)"
+    _describe 'subcommand' _subcommands
+}
+
+all_profiles() {
+    _path_files -W "/etc/network.d" -g "*(.)"
+}
+
+up_profiles() {
+    _files -W "/run/network/profiles"
+}
+
+up_ifaces() {
+    _files -W "/run/network/interfaces"
+}
+
+_arguments -C \
+'(- *)-l[List all available profiles]' \
+'(- *)-c[Start the specified profile, only if its interface is not currently up]:Network profile:all_profiles' \
+'(- *)-u[Start specified profile]:Network profile:all_profiles' \
+'(- *)-r[Disconnect and reconnect the specified profile]:Active profiles:up_profiles' \
+'(- *)-R[Reconnect profile active on specified interface]:Active interface:up_ifaces' \
+'(- *)-d[Take specified profile down]:Active profile:up_profiles' \
+'(- *)-D[Take down profile active on specified interface]:Active interface:up_ifaces' \
+'(- *)-a[Take all active profiles down]' \
+'(- *)*:All options:all_options'
+
+if [[ ${#words} == 3 ]]; then
+    case $words[2] in
+        'check-iface' | 'up')  all_profiles;;
+        'reconnect' | 'down')  up_profiles;;
+        'iface-recon' | 'iface-down')  up_ifaces;;
+    esac
+fi
+
