@@ -1,4 +1,5 @@
-# Maintainer: Ng Oon-Ee <ngoonee.talk@gmail.com>
+# Maintainer: Jeffrey Lin <anaveragehuman.0 at gmail dot com>
+# Contributor: Ng Oon-Ee <ngoonee.talk@gmail.com>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 # Contributor: Guillaume ALAUX <guillaume at alaux dot net>
 
