@@ -6,7 +6,7 @@ _icon="default"
 
 pkgname=vuze-extreme-mod
 pkgver=5.7.1.1
-_ver=
+_ver=5711
 pkgrel=1
 pkgdesc="A modded version of the Vuze BitTorrent client with multiple spoofing capabilities"
 arch=('i686' 'x86_64')
