@@ -22,7 +22,6 @@ int islower_ascii(unsigned cnum) {
     return cnum > 'Z';
 }
 
-
 char transpose(char c){
     unsigned cnum = (unsigned)c;
     unsigned offset = (unsigned)OFFSET;
@@ -52,7 +51,7 @@ int main(int argc, char **argv)
         }
         putchar('\n');
     } else {
-        while (EOF != fscanf(stdin, "%c", &c)) {
+        while ((c = getchar()) != EOF) {
             putchar(transpose(c));
         }
     }
