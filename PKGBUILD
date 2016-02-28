@@ -6,11 +6,11 @@ pkgver=0.6.8
 pkgrel=1
 pkgdesc='PAM module allows a X.509 certificate based user login'
 arch=('i686' 'x86_64')
-url='https://www.opensc-project.org/opensc/wiki/pam_pkcs11'
+url='https://github.com/OpenSC/pam_pkcs11'
 license=('LGPL')
 depends=('pcsclite')
 backup=('etc/pam_pkcs11/pam_pkcs11.conf' 'etc/pam_pkcs11/subject_mapping' 'etc/pam_pkcs11/card_eventmgr.conf')
-source=("http://downloads.sourceforge.net/opensc/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+source=("https://github.com/OpenSC/${pkgname}/archive/${pkgname}-${pkgver}.tar.gz")
 md5sums=('5ca42826b60ffcb574cc16b965f56b00')
 
 build() {
