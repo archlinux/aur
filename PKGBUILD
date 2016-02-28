@@ -13,8 +13,10 @@ source=("svpflow1-src-${pkgver}.zip::http://www.svp-team.com/files/gpl/svpflow1-
 sha1sums=('7e32bec0c45895b6770ce814f040757f71e145a5')
 
 build() {
+  [ "${CARCH}" = "i686" ] && _config="CONFIG+=X32"
+
   cd svpflow1-src/svpflow1
-  qmake-qt5
+  qmake-qt5 ${_config}
   make release
 }
 
