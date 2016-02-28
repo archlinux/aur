@@ -17,10 +17,10 @@ install=isight-firmware-tools.install
 build() {
     cd ${srcdir}/${pkgname}-${pkgver}
     ./configure --prefix=/usr --sysconfdir=/etc
-    make || return 1
+    make
 }
 
 package() {
     cd ${srcdir}/${pkgname}-${pkgver}
-    make DESTDIR=${pkgdir} install || return 1
+    make DESTDIR=${pkgdir} install
 }
