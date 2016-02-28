@@ -13,7 +13,7 @@ pkgname=linux-lts310
 true && pkgname=(linux-lts310 linux-lts310-headers)
 _kernelname=-lts310
 _srcname=linux-3.10
-pkgver=3.10.96
+pkgver=3.10.97
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org"
@@ -33,7 +33,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         '0002_asmlinkage.patch')
 sha256sums=('df27fa92d27a9c410bfe6c4a89f141638500d7eadcca5cce578954efc2ad3544'
             'SKIP'
-            '3b4a759bb2197a22658ac5638fff9d2fbd4951f97c283d08944a4c0ad03ed39f'
+            '242f7bc6212411a3d15919bebab3a6fc119e4e340b8eb4065598a5b962a3590f'
             'SKIP'
             'd7fada52453d12a24af9634024c36792697f97ce0bc6552939cd7b2344d00cd9'
             'abd98bed3e743ba60809fe54a1a5c6b46b9f401844b0beef8da1708b1fe8196b'
