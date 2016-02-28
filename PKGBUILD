@@ -3,13 +3,13 @@
 
 pkgname=makedepend
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Create dependencies in Makefiles"
 arch=('i686' 'x86_64')
 url="http://www.linuxfromscratch.org/blfs/view/7.4/x/makedepend.html"
 license=('custom')
 depends=('splint')
-makedepends=('autoconf' 'automake' 'make' 'pkg-config')
+makedepends=('autoconf' 'automake' 'm4' 'make' 'pkg-config' 'xorg-util-macros')
 source=(http://xorg.freedesktop.org/archive/individual/util/makedepend-1.0.5.tar.gz)
 sha256sums=('503903d41fb5badb73cb70d7b3740c8b30fe1cc68c504d3b6a85e6644c4e5004')
 
