@@ -27,8 +27,8 @@ source=("${_pkgname}.desktop")
 source_i686=("https://get.popcorntime.sh/build/Popcorn-Time-${pkgver}-Linux-32.tar.xz")
 source_x86_64=("https://get.popcorntime.sh/build/Popcorn-Time-${pkgver}-Linux-64.tar.xz")
 sha256sums=('4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334')
-sha256sums_i686=('7793f41c7a9b1c2431ade59e5cf86a49b2286719292676bd93811bce691430e2')
-sha256sums_x86_64=('bfa3a62ed0008c5e79c7fa5982c53f184ba71ed18431ffed55bbb679dbd4c860')
+sha256sums_i686=('3678e52f3a808c57ef492cf51ca43320408bd8ba7780fbb623abb63ca8d37ad6')
+sha256sums_x86_64=('9b92566d3eea3eeb3529ca1e59d6a86a904706e5b83e4bc8b20477ced90d10ad')
 
 [ "$CARCH" = "i686" ]   && _platform=linux32
 [ "$CARCH" = "x86_64" ] && _platform=linux64
