@@ -6,7 +6,7 @@
 pkgname=('tlp-pmu')
 _pkgname=tlp
 pkgver=0.8
-pkgrel=2
+pkgrel=3
 pkgdesc='Advanced Power Management for Linux, with pm-utils support'
 depends=('hdparm' 'iw' 'pciutils' 'rfkill' 'usbutils' 'util-linux' 'pm-utils')
 optdepends=('acpi_call: Sandy Bridge and newer ThinkPad battery functions'
@@ -19,7 +19,7 @@ optdepends=('acpi_call: Sandy Bridge and newer ThinkPad battery functions'
 conflicts=('laptop-mode-tools' 'tlp')
 provides=($_pkgname)
 backup=('etc/default/tlp')
-install=("$pkgname.install")
+install="$pkgname.install"
 arch=('any')
 url='http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html'
 license=('GPL2' 'GPL3')
