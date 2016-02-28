@@ -1,12 +1,12 @@
 # Maintainer: cth451 <cth451@gmail.com>
 pkgname=flatplat-theme
 pkgver=v20151025
-pkgrel=3
+pkgrel=4
 pkgdesc="A Material Design-like flat theme for GTK3, GTK2, Metacity, and GNOME-Shell. This package does not contains chrome skin extension."
 arch=('any')
 url="https://github.com/nana-4/Flat-Plat"
 license=('GPL')
-depends=('librsvg' 'gtk-engine-murrine' 'gnome-session>=3.14')
+depends=('gtk3>=3.18')
 optdepends=()
 provides=('flatplat-theme')
 conflicts=('flatplat-theme-git')
