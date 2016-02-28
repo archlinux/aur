@@ -1,0 +1,13 @@
+## arg 1:  the new package version
+post_install() {
+  echo "   If you use pm-utils, hibernate-script AUTOMATICALLY takes"
+  echo "   over all suspend configuration. Please edit/delete the config"
+  echo "   in /etc/pm/config.d/use_hibernate_script to prevent this"
+  echo "   behaviour. Non pm-utils users are not affected."
+}
+
+post_upgrade() {
+  post_install
+}
+
+# vim:set ts=2 sw=2 et:
