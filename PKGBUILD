@@ -1,8 +1,8 @@
 # Maintainer: Patrizio Bekerle <patrizio at bekerle dot com>
 
 pkgname=qownnotes
-pkgver=1.0.8
-tag="da04783b81e7a6af12033564fd8cfa7dfe186b3e"
+pkgver=1.0.9
+tag="4ee2086211644d9a6556bfefd96a7af4629e8a01"
 pkgrel=1
 pkgdesc="Open source notepad and todo list manager with markdown support and ownCloud integration"
 arch=('i686' 'x86_64')
