@@ -3,7 +3,7 @@
 pkgname=fcitx-qt5
 pkgver=1.0.5
 pkgrel=1
-pkgdesc="Qt5 IM Module for Fcitx"a
+pkgdesc="Qt5 IM Module for Fcitx"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/fcitx"
 license=('GPL')
