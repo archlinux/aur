@@ -4,7 +4,7 @@ pkgdesc="ROS - Message and service data structures for interacting with Gazebo f
 url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-jade-gazebo-msgs'
-pkgver='2.5.1'
+pkgver='2.5.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -18,7 +18,7 @@ ros_makedepends=(ros-jade-geometry-msgs
   ros-jade-catkin
   ros-jade-trajectory-msgs
   ros-jade-std-srvs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-geometry-msgs
@@ -30,10 +30,16 @@ ros_depends=(ros-jade-geometry-msgs
   ros-jade-std-srvs)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/gazebo_msgs/${pkgver}-${_pkgver_patch}
-_dir=gazebo_msgs
-source=("${_dir}"::"git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/gazebo_msgs/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="gazebo_ros_pkgs-release-release-jade-gazebo_msgs-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/jade/gazebo_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('b246a19f4a3fe23f97ffdd0bfe6e85816ddf3f83280857feb7635ede8055d1c2')
 
 build() {
   # Use ROS environment variables
