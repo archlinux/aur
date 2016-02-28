@@ -13,20 +13,21 @@ optdepends=('sane' 'gimp>=2.0.0')
 makedepends=('rpmextract')
 options=('emptydirs')
 source=("http://gdlp01.c-wss.com/gds/0/0100005520/01/scangearmp-mg3500series-2.20-1-rpm.tar.gz")
-md5sums=('78aca903bc0281be1e79a0bc276c7f15')
+sha256sums=('0fe5b7827b11d52754fc25ed26836b09342b588289b7b87ec2335ff7b9f179f6')
 
 package() {
-  if [ "${CARCH}" = 'x86_64' ]; then
-    rpmfile=$(find "$srcdir" -name $pkgcommon-$pkgver*${CARCH}*.rpm)
-  elif [ "${CARCH}" = 'i686' ]; then
-    rpmfile=$(find "$srcdir" -name $pkgcommon-$pkgver*i386*.rpm)
-  fi
-  cd $pkgdir
-  rpmextract.sh $rpmfile
-  mv usr/lib64 usr/lib
-  mv usr/local/share/* usr/share/
-  mkdir usr/bin
-  mv usr/local/bin/* usr/bin/
-  rm -rf usr/local
-  chmod 664 $pkgdir/usr/lib/bjlib/canon_mfp_net.ini
+    if [ "${CARCH}" = 'x86_64' ]; then
+        rpmfile=$(find "${srcdir}" -name $pkgcommon-${pkgver}*${CARCH}*.rpm)
+    elif [ "${CARCH}" = 'i686' ]; then
+        rpmfile=$(find "${srcdir}" -name $pkgcommon-${pkgver}*i386*.rpm)
+    fi
+
+    cd ${pkgdir}
+    rpmextract.sh ${rpmfile}
+    mv usr/lib64 usr/lib
+    mv usr/local/share/* usr/share/
+    mkdir usr/bin
+    mv usr/local/bin/* usr/bin/
+    rm -rf usr/local
+    chmod 664 ${pkgdir}/usr/lib/bjlib/canon_mfp_net.ini
 }
