@@ -1,7 +1,7 @@
 # Maintainer: Felix Laurie von Massenbach <felix@erbridge.co.uk>
 pkgname=amulet
 pkgver=1.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Lua-based audio / visual toolkit for small-scope games and experimentation"
 arch=('x86_64')
 url="http://www.amulet.xyz/"
@@ -24,5 +24,5 @@ package() {
     install -d -m755 "${pkgdir}/usr/bin"
     ln -s "${pkgdir}/usr/share/${pkgname}/amulet" "${pkgdir}/usr/bin/${pkgname}"
 
-    install -D -m644 amulet_license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.pdf"
+    install -D -m644 amulet_license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
