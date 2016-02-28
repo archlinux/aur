@@ -1,7 +1,7 @@
 # Maintainer: Egor Kovetskiy <e.kovetskiy@office.ngs.ru>
 pkgname='vim-git'
 provides=('vim')
-pkgver=1.b60dc1b
+pkgver=1.1c39102
 pkgrel=1
 pkgdesc="VIM: Vi IMproved"
 arch=('i686' 'x86_64')
@@ -9,13 +9,14 @@ url="http://github.com/vim/vim"
 license=('GPL')
 depends=('gpm' 'ruby' 'lua' 'python2' 'python' 'acl')
 optdepends=()
+conflicts=('vim')
 backup=()
 options=()
 source=("git://github.com/vim/vim.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
+    cd "vim"
     echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
