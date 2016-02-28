@@ -1,9 +1,10 @@
 [Desktop Entry]
 Name=Cadabra
+GenericName=Cadabra computer algebra system
 Comment=A computer algebra system designed specifically for the solution of problems encountered in field theory.
 Path=/usr/share/cadabra2/
 Exec=cadabra-gtk
 Icon=cadabra
 Terminal=false
 Type=Application
-Categories=Education;
+Categories=Math;Science;Education;
