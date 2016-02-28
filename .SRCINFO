@@ -1,6 +1,6 @@
 pkgbase = kdeplasma-applets-cwp
 	pkgdesc = Customizable weather plasmoid
-	pkgver = 1.12.0
+	pkgver = 1.12.1
 	pkgrel = 1
 	url = http://kde-look.org/content/show.php?content=98925
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = kdeplasma-applets-cwp
 	makedepends = cmake
 	makedepends = automoc4
 	depends = kdelibs
-	source = http://kde-look.org/CONTENT/content-files/98925-cwp-1.12.0.tar.bz2
-	md5sums = b05d9dec29a73629ae7fb07ac718bc2b
+	source = http://kde-look.org/CONTENT/content-files/98925-cwp-1.12.1.tar.bz2
+	md5sums = 7d13388dc415b84c4d9265599527bb5
 
 pkgname = kdeplasma-applets-cwp
 

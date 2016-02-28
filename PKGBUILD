@@ -3,7 +3,7 @@
 
 pkgname=kdeplasma-applets-cwp
 _pkgname=cwp
-pkgver=1.12.0
+pkgver=1.12.1
 pkgrel=1
 pkgdesc="Customizable weather plasmoid"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('kdelibs')
 makedepends=('cmake' 'automoc4')
 source=("http://kde-look.org/CONTENT/content-files/98925-$_pkgname-$pkgver.tar.bz2")
-md5sums=('b05d9dec29a73629ae7fb07ac718bc2b')
+md5sums=('d7d13388dc415b84c4d9265599527bb5')
 
 build() {
   cd "$srcdir"
