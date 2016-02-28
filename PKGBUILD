@@ -1,12 +1,12 @@
 # Maintainer: Daniel Albers <daniel@lbe.rs>
-# Contributo: dhead666 <myfoolishgames@gmail.com>
+# Contributor: dhead666 <myfoolishgames@gmail.com>
 # https://github.com/AlD/archlinux
 
 pkgname=kodi-addon-pvr-hts
 pkgbase=${pkgname}
 _gitname=pvr.hts
-pkgver=2.1.18
-_gitver=branch=Isengard
+pkgver=2.2.14
+_gitver=branch=Jarvis
 pkgrel=1
 pkgdesc='Tvheadend HTSP PVR client addon for Kodi'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
