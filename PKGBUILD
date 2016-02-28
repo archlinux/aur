@@ -10,7 +10,7 @@ url="https://gitlab.mister-muffin.de/josch/img2pdf"
 license=('LGPL3')
 depends=('python' 'python-pillow')
 makedepends=('git' 'python-setuptools')
-conflicts=("${pkgname%-*}")
+conflicts=("${pkgname%-*}" "python-${pkgname%-*}")
 provides=("${pkgname%-*}=${pkgver}")
 options=(!emptydirs)
 source=("git+http://gitlab.mister-muffin.de/josch/img2pdf.git")
@@ -34,5 +34,5 @@ build() {
 package() {
 	cd "${srcdir}/${pkgname%-*}"
 
-	python setup.py install --prefix=/usr --root="$pkgdir" #--optimize=1
+	python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 }
