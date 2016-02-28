@@ -1,7 +1,7 @@
 # Maintainer: PitBall
 
 pkgname=ryzom-client
-pkgver=0.12.0.r7330
+pkgver=0.12.0.r7346
 pkgrel=1
 pkgdesc="Ryzom is a Free to Play MMORPG .This version is for playing on an official server"
 arch=('i686' 'x86_64')
@@ -16,7 +16,9 @@ _hg_name='ryzomcore'
 install=install                                     #branch=compatibility
 source=( "hg+https://bitbucket.org/ryzom/${_hg_name}#branch=compatibility-develop"
          'ryzom.sh' 'findlua53bind.patch')
-md5sums=('SKIP' 'a5ca7dfae7b9073f78cd1b0b7380755f' 'b5b01746543648f646421f190759a886')
+md5sums=('SKIP'
+         'ff3b18f0c9149ef5a8b7ab74bcb5a59e'
+         'b5b01746543648f646421f190759a886')
 
 
 pkgver() {

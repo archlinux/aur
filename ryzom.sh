@@ -1,6 +1,10 @@
 #!/bin/sh
 if groups | grep games > /dev/null 2>&1 ; then 
+  #sync data files	
   ryzom_sync 
+  #update default config file
+  cp /etc/ryzom/client_default.cfg ~/.ryzom/client_default.cfg
+  #run game
   exec ryzom_client
   
 else 
