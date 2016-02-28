@@ -1,8 +1,8 @@
-# Maintainer: Sandor Nagy <sanya868-at-gmail-dot-com>
+# Maintainer: Sandor Nagy <sandor-dot-nagy-at-kdemail-dot-net>
 # Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
 
 pkgname=android-support
-pkgver=r23.1.1
+pkgver=r23.2
 pkgrel=1
 pkgdesc='Android Support Package'
 arch=('any')
@@ -11,8 +11,8 @@ license=('custom')
 depends=('android-sdk')
 options=('!strip')
 source=("http://dl-ssl.google.com/android/repository/support_${pkgver}.zip" 'source.properties')
-sha1sums=('1e623251b3c111bd2ec8c03dc34edfaadb2e24bf'
-          '99d1a02642126cee2f776c613ee6ec537158e031')
+sha1sums=('888574a30310ce6d786388b1086cc09d10d9e879'
+          'f4466e04b6c97800c274180a168ac13fea4a5afd')
 
 package() {
   mkdir -p "${pkgdir}/opt/android-sdk/extras/android/"
