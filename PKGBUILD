@@ -5,7 +5,7 @@
 pkgdesc="Standalone systemd libs (including -compat)"
 pkgname=( 'libsystemd-standalone' 'libsystemd-login' 'libsystemd-journal' 'libsystemd-id128' 'libsystemd-daemon' 'libsystemd-udev' )
 pkgver=229
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 license=('GPL2' 'LGPL2.1' 'MIT')
@@ -15,7 +15,7 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gobject-introspection' 'gperf'
 options=('strip')
 source=( "https://github.com/systemd/systemd/archive/v${pkgver}.tar.gz" )
 
-conflicts=( 'systemd' 'libsystemd' )
+conflicts=( 'libsystemd' )
 
 build() {
   cd "systemd-$pkgver"
