@@ -162,6 +162,7 @@ arch=('any')
 url='http://www.microsoft.com/typography/fonts/product.aspx?PID=161'
 license=('custom')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-mkfontscale' 'xorg-mkfontdir')
+optdepends=('ttf-office-2007-fonts')
 makedepends=() #'fontforge') # 'cabextract')
 if [ "${_opt_GetFontName}" -ne 0 ]; then
   makedepends+=('perl' 'perl-font-ttf')
@@ -169,7 +170,6 @@ fi
 if [ "${_opt_ConvertTTC}" -ne 0 ]; then
   makedepends+=('fontforge')
 fi
-optdepends=('ttf-office-2007-fonts')
 provides=('ttf-font' 'ttf-ms-fonts' 'ttf-tahoma' 'ttf-vista-fonts')
 conflicts=('ttf-ms-fonts' 'ttf-tahoma' 'ttf-vista-fonts' 'ttf-ms-win8' 'ttf-win7-fonts-autodownload')
 install="${pkgbase}.install"
@@ -189,6 +189,7 @@ sha256sums=('096cdd18e26b2b3d8cf0b3ec6a1ffb5b0eaae0fcc2105e3c145f19037a42d467'
             '0524fe42951adc3a7eb870e32f0920313c71f170c859b5f770d82b4ee111e970')
 PKGEXT='.pkg.tar' # because XZ compression is awfully slow
 PKGEXT='.pkg.tar.gz' # XZ takes 8 minutes. TGZ takes 3 minutes. TAR takes the same and is double the space. With no TTC conversion TGZ is less than a minute.
+#export BUILDDIR='/tmp/makepkg'
 
 # See sums for font name and known versions.
 _fonts=(
@@ -246,26 +247,26 @@ unset _fnts_latinsf
 # These are the optimal fonts.
 # _fonts and _fnt256sums must be in the same order. _fnt256sumsx can be in any order.
 _fnt256sums=(
-  '97dcf78fe226789fd413eabce2bda89a2f8a9182da216ea43b1fe0bacbbe9f0a' #   1 arial.ttf     en-US Version 5.20 Arial
-  '8ca5dcaf6589267dc6f842e614ad0fe2e42374b23efe87d89b991bd860f671e2' #   2 arialbd.ttf   en-US Version 5.20 Arial Bold
-  '9d5031d3e374ac7db5a93c4e38db62206c17f2c97bd98b657b316d4442ebbe6c' #   3 ariali.ttf    en-US Version 5.20 Arial Italic
-  'cce71e42d5a7dc20f48b3ce29f17e1d8a3363064b676086984345c9664f612c7' #   4 arialbi.ttf   en-US Version 5.20 Arial Bold Italic
+  '1d071ea275a34d2b0308a7bcb8284a5ea3f916e676ba148a4dad75c918d94860' #   1 arial.ttf     en-US Version 5.22 Arial
+  '421cdf9718843cbb6cb45b4854f6e0b291674424508efd9616611ae48cfe27a2' #   2 arialbd.ttf   en-US Version 5.22 Arial Bold
+  '0e0fdb339a08b6e55862e84006d3524e1a116c07e1e51938a59ec67813553002' #   3 ariali.ttf    en-US Version 5.22 Arial Italic
+  'a7c8a1ebc598f1984ec1214afc88fcbbf55ffeed18da33eb4f8b290578acdc2e' #   4 arialbi.ttf   en-US Version 5.22 Arial Bold Italic
   'da6bd53ea1f8259e41b198d75e187676c6355086ea8cb3cb0e1690d5237f82a4' #   5 comic.ttf     en-US Version 5.00 Comic Sans MS
   '8f5d4ac83aeee7dc1361585883ef59304edcfc57f4996be51e74aa3a07c5aa30' #   6 comicbd.ttf   en-US Version 5.00 Comic Sans MS Bold
-  'c5e7cee4b77caf5ed5f1ffd7510fdb66d32109c6861b4a481b93b9166df03534' #   7 cour.ttf      en-US Version 5.11 Courier New
-  '89cff1ff9e59a661ba947500e9c242506e2dbf36c0417783dea8b762e13da704' #   8 courbd.ttf    en-US Version 5.11 Courier New Bold
-  'd9c60f6e55128b775b25f8e26b20b486c1a4de56f1d55348d5ab6200d9471b06' #   9 couri.ttf     en-US Version 5.11 Courier New Italic
-  '5d51cebc9151f377f52b39cd34da80f9179236b1ba4f261ae4023c077114e27b' #  10 courbi.ttf    en-US Version 5.11 Courier New Bold Italic
+  'b5343cdbefd73fd9cddd0e6d0779d76336e3dd61683e50a5ed031a104de20a53' #   7 cour.ttf      en-US Version 5.13 Courier New
+  'acf1f44a209518a76df17fb35fd6c0494d613d70aef4ccab52e8f7daffca1c44' #   8 courbd.ttf    en-US Version 5.13 Courier New Bold
+  'b02c8a85e12079cd4750385b3c87102039838ef3546ea34bb0175106b8d77289' #   9 couri.ttf     en-US Version 5.13 Courier New Italic
+  'ee94513c6fd0482a8dca4e147689a175ae055e95e41ec87392cde84424828b2c' #  10 courbi.ttf    en-US Version 5.13 Courier New Bold Italic
   '29eaa6d65d0f1508d2d550d5ddf4e7e3a4e23cf13b376ff93140a8a6115b2f82' #  11 gabriola.ttf  en-US Version 5.92 Gabriola
   '46a57e3971f92d2359759f1cf0cc6706def7010a145786cf15c199e44ef9b061' #  12 georgia.ttf   en-US Version 5.00 Georgia
   '0537ac91f425795dda88d1a8ea66ae59f7357e5eb0c37309621003770c6ae160' #  13 georgiab.ttf  en-US Version 5.00 Georgia Bold
   'd691381f2476ed5ee1e80475a430b4864bf31fd46132b270eec1ce2672b4f8a2' #  14 georgiai.ttf  en-US Version 5.00 Georgia Italic
   '15f287c3345c2e64c2a2da053789dc0eef09ae0fc82a193ca64164b41d3565fe' #  15 georgiaz.ttf  en-US Version 5.00 Georgia Bold Italic
   'd9d7f0b973c131b0b7923a726f6f1de964b1073ec982106a027c3db53cf02633' #  16 impact.ttf    en-US Version 5.00 Impact
-  '2f19540795c149eb4b1789167d5e796ae6114f663573958bb95045f7904cd66e' #  17 times.ttf     en-US Version 5.20 Times New Roman
-  '0ae11b9575d35e4f0efbc575a41f1d80cf5a34e1bc826a41b08e2d0a45332bb0' #  18 timesbd.ttf   en-US Version 5.20 Times New Roman Bold
-  'e5aeafebac177223192e49697b07ed0972cf30c92b1d2df420d0b8c27a5bc81c' #  19 timesi.ttf    en-US Version 5.20 Times New Roman Italic
-  'ee2c22ded32c648f160b069e4f80a3e620ff58b14491f9e267bb67284b6df890' #  20 timesbi.ttf   en-US Version 5.20 Times New Roman Bold Italic
+  '850d14d1ffa949a4cb2b94b4d105045a6bb6e0c06c94887b53cb193b3a28aed3' #  17 times.ttf     en-US Version 5.22 Times New Roman
+  '781ea55ae0f2c10531ef8c9475fbbdeb64d502050cdca9adc2bf63e587ddee3e' #  18 timesbd.ttf   en-US Version 5.22 Times New Roman Bold
+  'd3b21031a560715c4d397e56c5174ffbaf1c94e643d09ea37bc6264424bf3f84' #  19 timesi.ttf    en-US Version 5.22 Times New Roman Italic
+  '48ae0efba1251a215f6ef5b5f451e2fbab5b07d523eb330dca53fdef5de1b8e8' #  20 timesbi.ttf   en-US Version 5.22 Times New Roman Bold Italic
   'b69a5b33e997c3bc55f35dde8267cb93fe5fbdc3ecbc23b1d987602a9fd2b1f2' #  21 trebuc.ttf    en-US Version 5.00 Trebuchet MS
   '7fea7f91f1140721bd7837a36ed2b1c856215f3ac08e6d2eb29c1afe235d0900' #  22 trebucbd.ttf  en-US Version 5.00 Trebuchet MS Bold
   '3f1d76cbf72de8cf7afbb6c4f3fcce5e5e89b92c8647310908aa42c44bd29b5c' #  23 trebucit.ttf  en-US Version 5.00 Trebuchet MS Italic
@@ -276,26 +277,26 @@ _fnt256sums=(
   'bf2eb7af0acdedaf1984fe2e68c1eb5dcf69798c4161100272d086701e6b10cf' #  28 verdanaz.ttf  en-US Version 5.03 Verdana Bold Italic
   '1161ce511c44eb5464a4f8144aaf3eb965a50ed66957ad7d38e497ab9d958e5a' #  29 webdings.ttf  en-US Version 5.00 Webdings
   'd7c38355bd52f52e043ed904f3463d476925300d1bdca9e842b28077ca3549b8' #  30 wingding.ttf  en-US Version 5.00 Wingdings
-  '512d4a4dbf465349132dc0530b5efdbb4baaae10e940a081f5f2e783a7b3675d' #  31 sylfaen.ttf   en-US Version 5.01 Sylfaen
+  '18bba295099328afa56726198a0b69d3ed74548ac5a6ba6a3ce8abd375b4b0c6' #  31 sylfaen.ttf   en-US Version 5.02 Sylfaen
   'bffdc2fd675d9af414824ae84d8456504542480afb34fbc6bfd6903656c4f854' #  32 symbol.ttf    en-US Version 5.00 Symbol
-  '22fd74688605ec98e38dc39b32299655298cc54faba8e88461e783220c1f9261' #  33 calibri.ttf   en-US Version 5.73 Calibri
+  '0d3628edf3d2f2b6e583eec2e8171800c9c5773ec259a7774c923980361cb738' #  33 calibri.ttf   en-US Version 5.74 Calibri
   '853709c6521f9b211343a3e2b92c62a4a01074ded478b67fb88ad9d27c9f3e19' #  34 calibril.ttf  en-US Version 2.10 Calibri Light
-  'b518f026be8d5a1c85bd32707a5ea946cfd3ace4a0a3fa39a2cb485e6803f334' #  35 calibrib.ttf  en-US Version 5.73 Calibri Bold
-  'fd65027a491504dd3e10c43d40e07a3c7cc142d6606ceea882694738989664a7' #  36 calibrii.ttf  en-US Version 5.73 Calibri Italic
+  '9d7e17a498ac1917bae5cd03f8b47f905fb00c777420e2cc336f77dd5195aa06' #  35 calibrib.ttf  en-US Version 5.74 Calibri Bold
+  'c28b1a2f7f65685882858a6dad3d31519bd64acaa4665c289190c3382db5f835' #  36 calibrii.ttf  en-US Version 5.74 Calibri Italic
   '93798d1047507741959132e544bfc4a071ef060a59b71c76c1a7b684944acdab' #  37 calibrili.ttf en-US Version 2.10 Calibri Light Italic
-  'ed66ec4546db15af63a0a85c2253b616de422eae0ac3cd72232116a5e4e7ee41' #  38 calibriz.ttf  en-US Version 5.73 Calibri Bold Italic
-  'd675f6efa6f39c92585a0499901593c2df7a1b61cdb6bf4185e3833f83b0106e' #  39 cambria.ttc   en-US Version 5.96 Cambria; Cambria Math
-  '2613006fb72ac39d2629cc10dc4046191981bf3c0796addd4a728003271e018f' #  40 cambriab.ttf  en-US Version 5.96 Cambria Bold
-  '71e671f7048248bba725729cd5e5f3b1378950bbfc9e592ad15af71df0780607' #  41 cambriai.ttf  en-US Version 5.96 Cambria Italic
-  '2582aed03c3370a8fad2e9f93b4b4d30a0b1bafa61c51bf23b8d5f65a1ad53de' #  42 cambriaz.ttf  en-US Version 5.96 Cambria Bold Italic
+  '8071d1c1731a134a015994f9eb5f7249037a059c1d1e9b97dc818d933bcc82c5' #  38 calibriz.ttf  en-US Version 5.74 Calibri Bold Italic
+  'ff5524832f7b6899f5a10df0f37bf2ff31d7de8d1671891ef7c2d1c2689e37c8' #  39 cambria.ttc   en-US Version 5.97 Cambria; Cambria Math
+  'f244387440d55d70fbe18e3f5d2b3c265adbffcf184a9ded44618a900ccfc77b' #  40 cambriab.ttf  en-US Version 5.97 Cambria Bold
+  '44fc1461cce2d02c8f54495135abee357c78ae118584da5471d815294d01220c' #  41 cambriai.ttf  en-US Version 5.97 Cambria Italic
+  'f5583a61bea5801dbfbde0b700c37c180250d2c073c8ff1df4983253f142ca44' #  42 cambriaz.ttf  en-US Version 5.97 Cambria Bold Italic
   'f4cc0c11780a2d94cd6b74ed54fa657f26677013028c956ecb40da81c6b59b9e' #  43 candara.ttf   en-US Version 5.61 Candara
   'f959e0709a770094814199e49b0441b13e2bb075475b7ed2125ead7841ff2215' #  44 candarab.ttf  en-US Version 5.61 Candara Bold
   'da786a0df49cd2f45a9a8dc67120ec534e4624bf168829947bb08c4f937c21ad' #  45 candarai.ttf  en-US Version 5.61 Candara Italic
   'c2017a26bbd51775376baa93ba63095ba90a955c0eb93bbe44b9e73e0958fd73' #  46 candaraz.ttf  en-US Version 5.61 Candara Bold Italic
-  '45c14a49e0ba2edc00b72afad9a930cad5c1b9a93323b239a8c308efc5a65e8e' #  47 consola.ttf   en-US Version 5.22 Consolas
-  '5c27a540c51a0e60b2caa4e9f6c9164fde89a9fdc560747bfa1658f6e556cf61' #  48 consolab.ttf  en-US Version 5.22 Consolas Bold
-  '18db132c539323badaf0e1c9ceffa497e1996946a8faac26cc5fbe6fc8233314' #  49 consolai.ttf  en-US Version 5.22 Consolas Italic
-  'fc9e9f0b6ae6d068b01e1511e475b508e15799529f53679f1e927f5418040c3f' #  50 consolaz.ttf  en-US Version 5.22 Consolas Bold Italic
+  '2036a839a4c99ac494ae103a69555bbce38eb815ad3bce422c308cc33dcb5b30' #  47 consola.ttf   en-US Version 5.24 Consolas
+  '5471a23f674e09edc271c0829ff6d5e8135bc55e2a544cd6d8d10fd41215154b' #  48 consolab.ttf  en-US Version 5.24 Consolas Bold
+  'beacce7a8f56aab6217f1c26b670a51b879ca56392c3d55a5a6bf13654ea2e62' #  49 consolai.ttf  en-US Version 5.24 Consolas Italic
+  '63ad9676906ad8347a3183b20113b77585f1a6f284d4f703e65682e7c69c20df' #  50 consolaz.ttf  en-US Version 5.24 Consolas Bold Italic
   '28401ef53647e4e68f2c2bda54856fe90d9afb1cf4072bf4ea9cf6b380c09d4c' #  51 constan.ttf   en-US Version 5.90 Constantia
   '11a7a1c6b1b4028cd7e55f60a9773ecc7d39b66b8f82f5b7c6fbf8a4fdfcf94e' #  52 constanb.ttf  en-US Version 5.90 Constantia Bold
   'be0306e2040aeeed8bf228524071f4b941d28cbdd3ff413a9db07d1da9213ec9' #  53 constani.ttf  en-US Version 5.90 Constantia Italic
@@ -307,30 +308,65 @@ _fnt256sums=(
   'f4df4d6d1a69d24e08da2ad2f45203b4c7147ddaa5187ccd73087903ca36d177' #  59 lucon.ttf     en-US Version 5.00 Lucida Console
   '6dab274b36928bc76b5002eac90a52f2450d07b9327be95acf2bea1e56e4e1da' #  60 ariblk.ttf    en-US Version 5.06 Arial Black
   'b9ed2bf08381f8b763673504d82b27c6e029156c73cede54e551e59fe8e940da' #  61 l_10646.ttf   en-US Version 5.00 Lucida Sans Unicode
-  '3027a64f6b544fc80d0172f7d1db7cf051a656a60cc94c3ca88bd1683f4fd19a' #  62 micross.ttf   en-US Version 5.20 Microsoft Sans Serif
+  '0b5a39493f49e11aca659af70b622b7bb88e348d308c033f2d0fc4794c3289be' #  62 micross.ttf   en-US Version 5.21 Microsoft Sans Serif
   'bec3fd1fbcbfabe94b59bbebb8618b7d64e1871815be27e2666f2717def466af' #  63 pala.ttf      en-US Version 5.00 Palatino Linotype
   'b760ebf6227ce40ee184d5163b59ee3d72a3572e5147b74393e98b2c4f2fcde0' #  64 palab.ttf     en-US Version 5.00 Palatino Linotype Bold
   'aeb3b444f8bc2fa61deb8879b7a86913015e21db808dc79732856fdcbda13fbf' #  65 palai.ttf     en-US Version 5.00 Palatino Linotype Italic
   '71d04fbf6ed563c3c69266e9a0ccedbe089d3738d43afec16eb681c7e519c9ff' #  66 palabi.ttf    en-US Version 5.00 Palatino Linotype Bold Italic
-  'c3f0abde735307640d9900244ddbc7b5f2a706361a86d2bfc5004c9a8cd3b7f6' #  67 tahoma.ttf    en-US Version 5.20 Tahoma
-  '7eee934f4ca580ac07d78aeed7257a65314b3b93a9c9f6edf6f33d92ad5ddd30' #  68 tahomabd.ttf  en-US Version 5.20 Tahoma Bold
+  '8ff8a56987a92d2cddca6a0f18cc9d35213607d91e561e29cce95c54a9e8cf6c' #  67 tahoma.ttf    en-US Version 5.21 Tahoma
+  '383d2832c28fe1dfa981f08bbf1510d8f772e1e7622d7aaca9e4a446a5a9f134' #  68 tahomabd.ttf  en-US Version 5.21 Tahoma Bold
   '2d648599fc7acacb024ab08a0720a62e2f2cc070ff19582eb9b5c824e1515ecb' #  69 framd.ttf     en-US Version 5.01 Franklin Gothic Medium
   '68f1597a57a071f291449e66c888c1b86ad617d8eb18da52c7c2dbdf781ddc2f' #  70 framdit.ttf   en-US Version 5.00 Franklin Gothic Medium Italic
   'ecf3f898c2970377f7853ff7d7dd973e069bb8fd6264a36c01fff56ee28af701' #  71 segoepr.ttf   en-US Version 5.02 Segoe Print
   'f1b950b4ffbcd71c581ecdaea184b789e1dbbc43da6391c790c096812b20f769' #  72 segoeprb.ttf  en-US Version 5.02 Segoe Print Bold
   '8f6328619340426b2c985f6fd305bb64d164b20b20a5b493a21533761bd5d631' #  73 segoesc.ttf   en-US Version 5.00 Segoe Script
   'abf76b314ca2432ab718a74a4028bb7707073cb0d50643547c59f41a540b66a5' #  74 segoescb.ttf  en-US Version 5.00 Segoe Script Bold
-  '4217e96cf586f27ca5dc7e5a2e45826340f6af0f91bdbd2ffc4a694724591736' #  75 segoeui.ttf   en-US Version 5.11 Segoe UI
-  '65ceeab23f1bec915558cecb189accdd637d5036e9f7afb635ffef0b1dfa08b3' #  76 segoeuib.ttf  en-US Version 5.11 Segoe UI Bold
-  '42ba0659e5b9349fcf0ff299a3a69e5d3ff9b161a18ce41817dd217aeb5bba1e' #  77 segoeuii.ttf  en-US Version 5.11 Segoe UI Italic
+  '1e1975d9d7cff9ac9ddb197126be3d8202cc8e6cfbbeb1c793ab5240f0e95ea1' #  75 segoeui.ttf   en-US Version 5.12 Segoe UI
+  'a1aa13688858bce5ea32d45c1438e74c77b99ceff5645c2a546bc2ce5a9f8456' #  76 segoeuib.ttf  en-US Version 5.12 Segoe UI Bold
+  '8d97797f633cabf41fa5e854a7683387d6f71a5993d34edfdc363937eb05b25c' #  77 segoeuii.ttf  en-US Version 5.12 Segoe UI Italic
   '5cea1f3385b7d2e8930533d6b1c721d0916806035995fc681f02b548fdad38ea' #  78 segoeuil.ttf  en-US Version 5.00 Segoe UI Light
-  '6c9700922e14f899cf732eded07afa4e5b8e640c762408f96eba76efb88d4989' #  79 segoeuiz.ttf  en-US Version 5.11 Segoe UI Bold Italic
+  '210d410c953811902c5e3b92cbb1f16b243006b80cfb185c2c0dc522486a139f' #  79 segoeuiz.ttf  en-US Version 5.12 Segoe UI Bold Italic
   '7b61fca63da26e45444402f42ce068b29244d9d3d351e86796df7ca0a94df63c' #  80 seguisb.ttf   en-US Version 5.00 Segoe UI Semibold
   'e2c74ae156f0886f580bc77ceeff46988c32924ec1436710de23a6767819da99' #  81 seguisym.ttf  en-US Version 5.01 Segoe UI Symbol
 )
 
 # Any mismatch in the above table will be searched against all of the following.
 _fnt256sumsx=(
+# Fonts replaced by optional update KB3102429 2016-01-19: Update that supports Azerbaijani Manat and Georgian Lari currency symbols in Windows
+# We leave these fonts in as non optimal because people are turning optional updates off due to Microsoft polluting optional updates with GWX and telemetry.
+  '97dcf78fe226789fd413eabce2bda89a2f8a9182da216ea43b1fe0bacbbe9f0a' #   1 arial.ttf     en-US Version 5.20 Arial
+  '8ca5dcaf6589267dc6f842e614ad0fe2e42374b23efe87d89b991bd860f671e2' #   2 arialbd.ttf   en-US Version 5.20 Arial Bold
+  '9d5031d3e374ac7db5a93c4e38db62206c17f2c97bd98b657b316d4442ebbe6c' #   3 ariali.ttf    en-US Version 5.20 Arial Italic
+  'cce71e42d5a7dc20f48b3ce29f17e1d8a3363064b676086984345c9664f612c7' #   4 arialbi.ttf   en-US Version 5.20 Arial Bold Italic
+  'c5e7cee4b77caf5ed5f1ffd7510fdb66d32109c6861b4a481b93b9166df03534' #   7 cour.ttf      en-US Version 5.11 Courier New
+  '89cff1ff9e59a661ba947500e9c242506e2dbf36c0417783dea8b762e13da704' #   8 courbd.ttf    en-US Version 5.11 Courier New Bold
+  'd9c60f6e55128b775b25f8e26b20b486c1a4de56f1d55348d5ab6200d9471b06' #   9 couri.ttf     en-US Version 5.11 Courier New Italic
+  '5d51cebc9151f377f52b39cd34da80f9179236b1ba4f261ae4023c077114e27b' #  10 courbi.ttf    en-US Version 5.11 Courier New Bold Italic
+  '2f19540795c149eb4b1789167d5e796ae6114f663573958bb95045f7904cd66e' #  17 times.ttf     en-US Version 5.20 Times New Roman
+  '0ae11b9575d35e4f0efbc575a41f1d80cf5a34e1bc826a41b08e2d0a45332bb0' #  18 timesbd.ttf   en-US Version 5.20 Times New Roman Bold
+  'e5aeafebac177223192e49697b07ed0972cf30c92b1d2df420d0b8c27a5bc81c' #  19 timesi.ttf    en-US Version 5.20 Times New Roman Italic
+  'ee2c22ded32c648f160b069e4f80a3e620ff58b14491f9e267bb67284b6df890' #  20 timesbi.ttf   en-US Version 5.20 Times New Roman Bold Italic
+  '512d4a4dbf465349132dc0530b5efdbb4baaae10e940a081f5f2e783a7b3675d' #  31 sylfaen.ttf   en-US Version 5.01 Sylfaen
+  '22fd74688605ec98e38dc39b32299655298cc54faba8e88461e783220c1f9261' #  33 calibri.ttf   en-US Version 5.73 Calibri
+  'b518f026be8d5a1c85bd32707a5ea946cfd3ace4a0a3fa39a2cb485e6803f334' #  35 calibrib.ttf  en-US Version 5.73 Calibri Bold
+  'fd65027a491504dd3e10c43d40e07a3c7cc142d6606ceea882694738989664a7' #  36 calibrii.ttf  en-US Version 5.73 Calibri Italic
+  'ed66ec4546db15af63a0a85c2253b616de422eae0ac3cd72232116a5e4e7ee41' #  38 calibriz.ttf  en-US Version 5.73 Calibri Bold Italic
+  'd675f6efa6f39c92585a0499901593c2df7a1b61cdb6bf4185e3833f83b0106e' #  39 cambria.ttc   en-US Version 5.96 Cambria; Cambria Math
+  '2613006fb72ac39d2629cc10dc4046191981bf3c0796addd4a728003271e018f' #  40 cambriab.ttf  en-US Version 5.96 Cambria Bold
+  '71e671f7048248bba725729cd5e5f3b1378950bbfc9e592ad15af71df0780607' #  41 cambriai.ttf  en-US Version 5.96 Cambria Italic
+  '2582aed03c3370a8fad2e9f93b4b4d30a0b1bafa61c51bf23b8d5f65a1ad53de' #  42 cambriaz.ttf  en-US Version 5.96 Cambria Bold Italic
+  '45c14a49e0ba2edc00b72afad9a930cad5c1b9a93323b239a8c308efc5a65e8e' #  47 consola.ttf   en-US Version 5.22 Consolas
+  '5c27a540c51a0e60b2caa4e9f6c9164fde89a9fdc560747bfa1658f6e556cf61' #  48 consolab.ttf  en-US Version 5.22 Consolas Bold
+  '18db132c539323badaf0e1c9ceffa497e1996946a8faac26cc5fbe6fc8233314' #  49 consolai.ttf  en-US Version 5.22 Consolas Italic
+  'fc9e9f0b6ae6d068b01e1511e475b508e15799529f53679f1e927f5418040c3f' #  50 consolaz.ttf  en-US Version 5.22 Consolas Bold Italic
+  '3027a64f6b544fc80d0172f7d1db7cf051a656a60cc94c3ca88bd1683f4fd19a' #  62 micross.ttf   en-US Version 5.20 Microsoft Sans Serif
+  'c3f0abde735307640d9900244ddbc7b5f2a706361a86d2bfc5004c9a8cd3b7f6' #  67 tahoma.ttf    en-US Version 5.20 Tahoma
+  '7eee934f4ca580ac07d78aeed7257a65314b3b93a9c9f6edf6f33d92ad5ddd30' #  68 tahomabd.ttf  en-US Version 5.20 Tahoma Bold
+  '4217e96cf586f27ca5dc7e5a2e45826340f6af0f91bdbd2ffc4a694724591736' #  75 segoeui.ttf   en-US Version 5.11 Segoe UI
+  '65ceeab23f1bec915558cecb189accdd637d5036e9f7afb635ffef0b1dfa08b3' #  76 segoeuib.ttf  en-US Version 5.11 Segoe UI Bold
+  '42ba0659e5b9349fcf0ff299a3a69e5d3ff9b161a18ce41817dd217aeb5bba1e' #  77 segoeuii.ttf  en-US Version 5.11 Segoe UI Italic
+  '6c9700922e14f899cf732eded07afa4e5b8e640c762408f96eba76efb88d4989' #  79 segoeuiz.ttf  en-US Version 5.11 Segoe UI Bold Italic
+
 # Older fonts from the Windows 7.1 DVD.
   '001bb08e859d4db7814902119412a14713b0c45e89cbc429bb3f5e6af14815e0' #   1 arial.ttf     en-US Version 5.06 Arial
   'b27f2fb5da01910f925955c81a50c944e2147346a4ac41dfefdc5895d40a091f' #   2 arialbd.ttf   en-US Version 5.06 Arial Bold
@@ -1121,10 +1157,10 @@ _fn_fontcheck() {
       _mismatch=$((${_mismatch}+1))
       _mismatchar+=("${_fnt}")
       if [ "${_opt_SkipMissing}" -eq 2 ]; then
-        ln -sf "../${_fnt}" "${srcdir}/${_fnt}"
+        ln -sf "${startdir}/${_fnt}" "${srcdir}/${_fnt}"
       fi
     else
-      ln -sf "../${_fnt}" "${srcdir}/${_fnt}"
+      ln -sf "${startdir}/${_fnt}" "${srcdir}/${_fnt}"
     fi
   done
   if [ "${_mismatch}" -gt 0 ]; then
@@ -1155,7 +1191,7 @@ _fn_fontcheck() {
     echo 'Any missing files must be supplied and editing of the PKGBUILD may be required.'
     echo 'Edit the PKGBUILD for instructions and changes.'
     echo 'The necessity for user intervention makes this PKGBUILD not compatible with'
-    echo '1 step package installers like packer.'
+    echo '1 step package installers like packer or yaourt.'
     set +u
     false
   fi
@@ -1206,8 +1242,7 @@ build() {
     false
   fi
   set -u
-  local _fontdir="${srcdir}/.."
-  cd "${_fontdir}"
+  cd "${startdir}"
   _fn_gencopy
   _fn_fontlower
   _fn_fontpatch
