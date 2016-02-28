@@ -1,7 +1,7 @@
 # Maintainer: Yoann Ono Dit Biot <yoann.onoditbiot@gmail.com>
 pkgname=pydio-sync
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Pydio synchronisation client"
 arch=('i686' 'x86_64')
 url="https://pyd.io"
