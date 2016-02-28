@@ -4,7 +4,7 @@ pkgdesc="ROS - Robot-independent Gazebo plugins for sensors, motors and dynamic 
 url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-jade-gazebo-plugins'
-pkgver='2.5.1'
+pkgver='2.5.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -35,7 +35,7 @@ ros_makedepends=(ros-jade-rosgraph-msgs
   ros-jade-sensor-msgs
   ros-jade-rosconsole
   ros-jade-rospy)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   gazebo)
 
@@ -66,12 +66,16 @@ ros_depends=(ros-jade-rosgraph-msgs
 depends=(${ros_depends[@]}
   gazebo)
 
-_tag=release/jade/gazebo_plugins/${pkgver}-${_pkgver_patch}
-#Fix for Gazebo 7
-_dir=gazebo_plugins/gazebo_plugins
-_commit=a1c01ba821bc8ba1ef8f2a1356934f1345a19861
-source=("${_dir}"::"git+https://github.com/ros-simulation/gazebo_ros_pkgs.git"#commit=${_commit})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/gazebo_plugins/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="gazebo_ros_pkgs-release-release-jade-gazebo_plugins-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/jade/gazebo_plugins/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('44098a3b03d64bf1274908c6d530a70ec8e7d8619ee02f676cb6d3b68733adb6')
 
 build() {
   # Use ROS environment variables
