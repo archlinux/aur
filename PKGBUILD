@@ -2,14 +2,14 @@
 # Contributor: Brandon Invergo <brandon@invergo.net>
 
 pkgname=img2pdf-git
-pkgver=0.1.6.r23.gfdee171
+pkgver=0.2.0.r20.gc158585
 pkgrel=1
 pkgdesc="Losslessly convert images to PDF without unnecessarily increasing file size by re-encoding JPEG files."
 arch=('any')
 url="https://gitlab.mister-muffin.de/josch/img2pdf"
 license=('LGPL3')
-depends=('python2' 'python2-pillow')
-makedepends=('git' 'python2-setuptools')
+depends=('python' 'python-pillow')
+makedepends=('git' 'python-setuptools')
 conflicts=("${pkgname%-*}")
 provides=("${pkgname%-*}=${pkgver}")
 options=(!emptydirs)
@@ -19,8 +19,7 @@ md5sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/${pkgname%-*}"
 
-	git_ver=`git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'`
-	echo "${git_ver/#${git_ver:0:5}/${pkgver:0:5}}"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -29,11 +28,11 @@ build() {
 	msg "GIT checkout done or server timeout"
 	msg "Starting setup.py..."
 
-	python2 setup.py build
+	python setup.py build
 }
 
 package() {
 	cd "${srcdir}/${pkgname%-*}"
 
-	python2 setup.py install --prefix=/usr --root="$pkgdir" #--optimize=1
+	python setup.py install --prefix=/usr --root="$pkgdir" #--optimize=1
 }
