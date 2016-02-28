@@ -1,7 +1,7 @@
 # Maintainer: Michael Duell <michael.duell@rub.de> PGP-Fingerprint: FF8C D50E 66E9 5491 F30C  B75E F32C 939C 5566 FF77
 pkgname=rot13
 pkgver=2
-pkgrel=4
+pkgrel=5
 pkgdesc="Converts text with ROT13 from STDIN to STDOUT or text given as arguments."
 arch=('i686' 'x86_64')
 license=('WTFPL')
@@ -17,4 +17,4 @@ package() {
     install -d "${pkgdir}/usr/bin/"
     install -m755 rot13 "${pkgdir}/usr/bin/rot13"
 }
-sha384sums=('8938f6701512e7155dc0a917ef584e0454c29cbcd8e7ed1853dd22929637de0db90161c8e5e32f96dd894854bc031cfc')
+sha384sums=('9fd1dc60052d20e3c0675cedb2865e6cd5b7c4f1a9ceef724f2bbcd518ae25121731af9b1a47cd9ba74f2fc7ea9c37b5')

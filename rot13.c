@@ -25,6 +25,7 @@ int islower_ascii(unsigned cnum) {
 char transpose(char c){
     unsigned cnum = (unsigned)c;
     unsigned offset = (unsigned)OFFSET;
+    
     if ((cnum | LOWER_CASE_BIT) - OFFSET < ALPHABET_SIZE) {
         if (!islower_ascii(cnum)) {
             offset -= LOWER_CASE_BIT;
