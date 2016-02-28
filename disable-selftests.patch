@@ -1,0 +1,12 @@
+diff -aur package.pristine/Makefile package.new/Makefile
+--- package.pristine/Makefile	2016-02-27 23:50:38.634747140 +0100
++++ package.new/Makefile	2016-02-27 23:50:54.757843032 +0100
+@@ -69,7 +69,7 @@
+ adt/hashs.lo adt/hashs.o: ltcompile adt/hashs.c include/bglibs/adt_common.h
+ 	./ltcompile adt/hashs.c
+ 
+-all: sysdeps.h libraries programs man selftests
++all: sysdeps.h libraries programs man
+ 
+ base64/asc2bin.lo base64/asc2bin.o: ltcompile base64/asc2bin.c include/bglibs/base64.h include/bglibs/str.h sysdeps.h
+ 	./ltcompile base64/asc2bin.c
