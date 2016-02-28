@@ -28,6 +28,8 @@ depends=('vapoursynth-plugin-adjust-git'
          'vapoursynth-plugin-sangnommod-git'
          'vapoursynth-plugin-scenechange'
          'vapoursynth-plugin-temporalsoften-git'
+         'vapoursynth-plugin-svpflow1'
+         'vapoursynth-plugin-svpflow2-bin'
          )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
