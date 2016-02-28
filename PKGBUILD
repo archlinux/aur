@@ -1,11 +1,12 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=hledger-git
-pkgver=20151116
+pkgver=20160222
 pkgrel=1
 pkgdesc="The hledger command-line and web-based accounting tool"
 arch=('i686' 'x86_64')
-makedepends=('git' 'haskell-stack' 'ncurses')
+depends=('ncurses')
+makedepends=('git' 'haskell-stack')
 url="http://hledger.org"
 license=('GPL3')
 options=('strip')
@@ -58,4 +59,7 @@ package() {
   msg2 'Installing...'
   mkdir -p "$pkgdir/usr/bin"
   stack --local-bin-path "$pkgdir/usr/bin" install
+
+  msg2 'Cleaning up pkgdir...'
+  find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }
