@@ -27,9 +27,6 @@ source=("${pkgname%-git}::git+https://github.com/x42/silan.git")
 noextract=()
 md5sums=('SKIP')
 
-# Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
-# a description of each element in the source array.
-
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
   ( set -o pipefail
