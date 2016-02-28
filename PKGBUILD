@@ -33,7 +33,7 @@ package() {
   alacryd install
 
   msg2 'Removing redundant precomp file dependencies...'
-  _precomp=($(pacman -Qqg perl6 | pacman -Qql - | grep precomp))
+  _precomp=($(pacman -Qqg perl6 | pacman -Qql - | grep -E 'dist|precomp|short' || true))
   for _pc in "${_precomp[@]}"; do
     [[ -f "$pkgdir/$_pc" ]] && rm -f "$pkgdir/$_pc"
   done
