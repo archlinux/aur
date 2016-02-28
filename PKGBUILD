@@ -10,7 +10,7 @@ url="https://gitlab.mister-muffin.de/josch/img2pdf"
 license=('LGPL3')
 depends=('python' 'python-pillow')
 makedepends=('git' 'python-setuptools')
-conflicts=("${pkgname%-*}<0.2" "${pkgname%-*}" "python-${pkgname%-*}")
+conflicts=("${pkgname%-*}" "python-${pkgname%-*}")
 provides=("${pkgname%-*}=${pkgver}")
 options=(!emptydirs)
 source=("git+http://gitlab.mister-muffin.de/josch/img2pdf.git")
