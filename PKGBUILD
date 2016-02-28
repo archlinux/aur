@@ -1,17 +1,17 @@
 # Maintainer: Brendan MacDonell <macdonellba at gmail dot com>
 
 pkgname=python-llfuse
-pkgver=0.41.1
+pkgver=0.43
 pkgrel=1
 pkgdesc="A set of Python bindings for the low level FUSE API."
-arch=('i686' 'x86_64')
+arch=('armv7h' 'i686' 'x86_64')
 url="https://bitbucket.org/nikratio/python-llfuse/"
 license=('LGPL3')
 depends=('python' 'python-setuptools' 'fuse')
 makedepends=('pkg-config')
 options=(!emptydirs)
 source=(https://bitbucket.org/nikratio/python-llfuse/downloads/llfuse-${pkgver}.tar.bz2)
-md5sums=('89496c1c6b9a4c3cc9a46c3cd6506433')
+md5sums=('f3d92839eecc567daa35028a92b7da71')
 
 build() {
   cd ${srcdir}/llfuse-${pkgver}
