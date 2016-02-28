@@ -4,7 +4,7 @@ pkgdesc="ROS - Provides ROS plugins that offer message and service publishers fo
 url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-jade-gazebo-ros'
-pkgver='2.5.1'
+pkgver='2.5.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -22,7 +22,7 @@ ros_makedepends=(ros-jade-rosgraph-msgs
   ros-jade-tf
   ros-jade-std-srvs
   ros-jade-geometry-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   gazebo
   tinyxml)
@@ -41,10 +41,16 @@ depends=(${ros_depends[@]}
   gazebo
   tinyxml)
 
-_tag=release/jade/gazebo_ros/${pkgver}-${_pkgver_patch}
-_dir=gazebo_ros
-source=("${_dir}"::"git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/gazebo_ros/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="gazebo_ros_pkgs-release-release-jade-gazebo_ros-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/jade/gazebo_ros/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('63cf6b96363036f9647aba08a7f4adfe0948ee23fd2e2a26ca6511302818f760')
 
 build() {
   # Use ROS environment variables
