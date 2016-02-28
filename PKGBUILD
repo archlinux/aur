@@ -3,7 +3,7 @@
 _plug=svpflow1
 pkgname=vapoursynth-plugin-${_plug}
 pkgver=4.0.0.128
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('i686' 'x86_64')
 url='https://www.svp-team.com/wiki/Plugins:_SVPflow'
