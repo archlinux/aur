@@ -14,7 +14,7 @@ url="https://github.com/kodi-pvr/$_gitname"
 license=('GPL')
 groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'libplatform')
-depends=('kodi')
+depends=('kodi>=16.0')
 source=("git+https://github.com/kodi-pvr/${_gitname}.git#${_gitver}")
 md5sums=('SKIP')
 
