@@ -2,8 +2,8 @@
 # Contributor: Zeph <zeph33@gmail.com>
 
 pkgname=pamac-patched-headerbar
-pkgver=3.0.0
-_pkgver=3.0.0
+pkgver=3.0.1
+_pkgver=3.0.1
 pkgrel=1
 # This is the release package so the below _gitcommit variable should (usually) be commented out.
 #_gitcommit="d8e9826ab0b84bdb6f4b6c0dcc4ce1461bf04595"
@@ -29,8 +29,8 @@ else
   source=("pamac-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz" headerbar.patch)
 fi
 
-sha256sums=('e1806ea77d23dbb91c56ea70c0a7279d3bcaa25989f84f360900cf39e5e93b94'
-            '54cff747371a1dda8dbed253419bd8e2df7c90bf47069504c831ef7143fba524')
+sha256sums=('3b5ef55d7ba46dfe96bad0d3b596effb0568fbeaae110c45d23fe95142afff4e'
+            'fb9e8d967c7f5955e3dafd8ab2aaae86d55acd3c73336e582ed0bd3d92f1a39a')
 
 prepare() {
   if [ "$_gitcommit" != "" ]; then
