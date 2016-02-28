@@ -1,0 +1,3 @@
+#!/bin/sh
+#cd /usr/share/irpf
+java -server -Xms128M -Xmx512M -jar /usr/share/leao/PgdCarneLeao.jar
