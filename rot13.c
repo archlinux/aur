@@ -16,13 +16,19 @@
 #define ALPHABET_SIZE 26
 #define LOWER_CASE_BIT 32
 #define ROTATION 13
+#define OFFSET 'a'
+
+int islower_ascii(unsigned cnum) {
+    return cnum > 'Z';
+}
+
 
 char transpose(char c){
     unsigned cnum = (unsigned)c;
-    unsigned offset = (unsigned)'A';
-    if ((cnum | LOWER_CASE_BIT) - 'a' < ALPHABET_SIZE) {
-        if (cnum > 'Z') {
-            offset |= LOWER_CASE_BIT;
+    unsigned offset = (unsigned)OFFSET;
+    if ((cnum | LOWER_CASE_BIT) - OFFSET < ALPHABET_SIZE) {
+        if (!islower_ascii(cnum)) {
+            offset -= LOWER_CASE_BIT;
         }
         cnum -= offset;
         cnum += ROTATION;
