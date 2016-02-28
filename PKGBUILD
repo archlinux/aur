@@ -3,7 +3,7 @@
 pkgbase=python-django-taggit
 pkgname=(python-django-taggit python2-django-taggit)
 _pkgname=django-taggit
-pkgver=0.16.3
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="Simple tagging application for Django"
 arch=('any')
@@ -11,7 +11,7 @@ url="http://github.com/alex/django-taggit/"
 license=('BSD')
 makedepends=('python2-django' 'python-django')
 source=(http://pypi.python.org/packages/source/d/$_pkgname/$_pkgname-$pkgver.tar.gz)
-md5sums=('d33d451d4117ca63311b10ec0b601e9e')
+md5sums=('93c2cef739334a4ae47414926b0d0965')
 
 check() {
   cd "${srcdir}"/$_pkgname-$pkgver
