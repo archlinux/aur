@@ -9,10 +9,10 @@ pkgver=2.0_beta7
 _pkgver="NixNote2%20-%20Beta%207"
 _beta_release="beta7"
 pkgrel=2
-pkgdesc="Formerly called nevernote, nixnote is a clone of Evernote designed to run on Linux."
-url="http://www.sourceforge.net/projects/nevernote/"
+pkgdesc="Formerly called nevernote, nixnote is a clone of Evernote designed to run on Linux"
+url="http://www.sourceforge.net/projects/nevernote"
 arch=('x86_64' 'i686')
-license=('GPL')
+license=('GPL2')
 depends=('mimetex' 'opencv' 'poppler-qt4' 'qt4' 'sqlite' 'tidyhtml' 'qtwebkit' 'libcurl-compat')
 provides=('nixnote2')
 conflicts=('nixnote' 'nixnote2-git')
@@ -25,6 +25,6 @@ source_i686=("http://download2.polytechnic.edu.na/pub4/sourceforge/n/ne/nevernot
 sha256sums_i686=('c32c8cda51867c582e0ba765270d92d01b6e5e980cac48bd015cdf4234396a30')
 
 package() {
-cp -R "${srcdir}/nixnote2/usr" "${pkgdir}/"
-install -D -m644 nixnote2.desktop ${pkgdir}/usr/share/applications/nixnote2.desktop
+    cp -R "${srcdir}/nixnote2/usr" "${pkgdir}/"
+    install -D -m644 nixnote2.desktop ${pkgdir}/usr/share/applications/nixnote2.desktop
 }
