@@ -3,16 +3,16 @@
 
 pkgbase=artwork-maia
 pkgname=('artwork-maia' 'maia-icon-theme' 'plasma5-themes-maia' 'sddm-maia-theme' 'maia-wallpaper')
-pkgver=ba7d79c
+pkgver=deea19f
 pkgrel=1
-_gitcommit=ba7d79c5836c19981c4d49bdf04b1403826d4efb
+_gitcommit=deea19f587c6f7c41d4a1c8c18c068a21654876b
 url='https://github.com/manjaro/artwork-maia/'
 arch=('any')
 license=('LGPL')
 makedepends=('extra-cmake-modules' 'plasma-framework' 'git')
 
 source=("maia-$pkgver-$pkgrel.tar.gz::$url/archive/$_gitcommit.tar.gz")
-sha256sums=('e856a67f2d2138b2be364de86ad51b8630aa12ea1f4471d04f83643c00db9935')
+sha256sums=('072b3f19dcdc5632b5afbd838f846dfbc012ae31a8207ca1c43bd1329f97d814')
 
 pkg_ver() {
   git rev-parse --short HEAD
