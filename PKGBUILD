@@ -14,12 +14,12 @@ source=("https://github.com/Dman95/SASM/archive/v${pkgver}.tar.gz")
 sha256sums=('32c9c59f721b9c613ec45ddf7e03fba7a850a7a03b288f7781823537433fd66c')
 
 build() {
-cd "${srcdir}/SASM-${pkgver}"
-qmake PREFIX="${pkgdir}/usr"
-make
+    cd "${srcdir}/SASM-${pkgver}"
+    qmake PREFIX="${pkgdir}/usr"
+    make
 }
 
 package() {
-cd "${srcdir}/SASM-${pkgver}"
-make install
+    cd "${srcdir}/SASM-${pkgver}"
+    make install
 }
