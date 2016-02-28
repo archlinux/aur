@@ -3,9 +3,9 @@ pkgver=181
 pkgrel=1
 pkgdesc='set of more than 80 guile scheme libraries'
 arch=(any)
-license=(gpl3)
+license=(gpl3+)
 makedepends=(git)
-depends=(guile)
+depends=("guile>=2")
 provides=(sph-lib)
 conflicts=(sph-lib)
 source=("$pkgname::git://git.sph.mn/sph-lib#branch=stable")
