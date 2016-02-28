@@ -1,24 +1,23 @@
 pkgname=sescript-git
-_gitname=sescript
-pkgver=0
+pkgver=31
 pkgrel=1
 pkgdesc='a scheme syntax to ecmascript and javascript compiler'
 arch=(any)
-license=(GPL3)
+license=(gpl3+)
 makedepends=(git)
-depends=(guile sph-lib-git)
+depends=("guile>=2" sph-lib)
 provides=(sescript)
-source=("git://git.sph.mn/$_gitname")
+conflicts=(sescript)
+source=("$pkgname::git://git.sph.mn/sescript#branch=stable")
 url="http://sph.mn"
 md5sums=(SKIP)
 
 pkgver() {
-  cd $_gitname
-  git log -n 1 --pretty=format:"%h"
+  cd $pkgname
+  git rev-list --count HEAD
 }
 
 package() {
-  cd $_gitname
+  cd $pkgname
   ./exe/install "${pkgdir}"
-  chmod 755 -R "${pkgdir}"
 }
