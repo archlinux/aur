@@ -9,7 +9,7 @@
 _pkgname=mupdf
 pkgname=${_pkgname}-nojs
 pkgver=1.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight PDF and XPS viewer'
 arch=('i686' 'x86_64')
 url='http://mupdf.com'
@@ -39,8 +39,9 @@ prepare() {
 }
 
 build() {
-  CFLAGS+=' -fPIC'
-  CXXFLAGS+=' -fPIC'
+  CFLAGS+=' -fPIC -fPIE -fstack-protector-all -D_FORTIFY_SOURCE=2'
+  CXXFLAGS+=' -fPIC -fPIE -fstack-protector-all -D_FORTIFY_SOURCE=2'
+  LDFLAGS+=' -pie'
 
   cd $_pkgname-${pkgver/_/}-source
   make build=release CURL_LIBS='-lcurl -lpthread'
