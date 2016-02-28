@@ -1,25 +1,24 @@
-pkgname=sph-dg-git
-_gitname=sph-dg
-pkgver=71b1d03
-pkgrel=1
-pkgdesc='generic graph database for guile'
 arch=(any)
-license=(GPL3)
-makedepends=(git sph-sc-git)
-depends=(guile sph-lib-git liblmdb)
-provides=(sph-dg)
-source=("git://git.sph.mn/$_gitname")
-url="http://sph.mn/content/2faf"
+conflicts=(sph-dg)
+depends=("guile>=2" sph-lib liblmdb)
+license=(gpl3+)
+makedepends=(git gcc sph-sc)
 md5sums=(SKIP)
+pkgdesc='generic graph database for guile'
+pkgname=sph-dg-git
+pkgrel=1
+pkgver=38
+provides=(sph-dg)
+source=("$pkgname::git://git.sph.mn/sph-dg#branch=stable")
+url="http://sph.mn/content/2faf"
 
 pkgver() {
-  cd $_gitname
-  git log -n 1 --pretty=format:"%h"
+  cd $pkgname
+  git rev-list --count HEAD
 }
 
 package() {
-  cd $_gitname
-  chmod 755 -R "${pkgdir}"
-  ./exec/compile
-  ./exec/install "${pkgdir}"
+  cd $pkgname
+  ./exe/compile
+  ./exe/install "${pkgdir}"
 }
