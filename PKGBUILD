@@ -12,7 +12,7 @@ license=('Apache')
 # See: http://www.gazebosim.org/tutorials?tut=install_from_source&cat=install
 depends=('boost>=1.40.0' 'curl>=4.0' 'freeglut' 'freeimage>=3.0'
          'intel-tbb>=3.0' 'libccd>=1.4' 'libltdl>=2.4.2' 'libtar>=1.2' 'libxml2>=2.7.7'
-         'ogre' 'protobuf>=2.3.0' 'qt4' 'sdformat>=4.0.0' 'ignition-math>=2' 'ignition-transport'
+         'ogre' 'protobuf>=2.3.0' 'qt4' 'qtwebkit' 'sdformat>=4.0.0' 'ignition-math>=2' 'ignition-transport'
          'tinyxml>=2.6.2' 'tinyxml2')
 optdepends=('bullet>=2.82: Bullet support'
             'cegui>=0.8.3: Design custom graphical interfaces'
