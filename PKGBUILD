@@ -4,11 +4,12 @@
 # Contributor: Pieter Kokx <pieter $at$ kokx $dot$ .nl>
 
 pkgname=whatpulse
-pkgver=2.6.3
+pkgver=2.7
 pkgrel=1
 pkgdesc="Measures your keyboard, mouse and application usage, network traffic and uptime."
 arch=('i686' 'x86_64')
 url=http://www.whatpulse.org
+# I have yet to find the actual licence, but alternatively: it's basically freeware
 license=(custom:whatpulse_tos)
 install="$pkgname.install"
 depends=(qt4)
@@ -20,8 +21,8 @@ source=('whatpulse.desktop')
 source_i686=("http://static.whatpulse.org/files/whatpulse-linux-32bit-$pkgver.tar.gz")
 source_x86_64=("http://static.whatpulse.org/files/whatpulse-linux-64bit-$pkgver.tar.gz")
 sha256sums=('9ad42960f0a8b538f1d98fea1ced9b2a97ef59aadca50d0382efdb71434572b7')
-sha256sums_i686=('cb21df5785686530c8c029af90e9fc2c81a776424f51d4a8ee8be2cc4c2f6fde')
-sha256sums_x86_64=('1268bb51e697f2f76938401953f421c50fb295cb5de77116d4ccbe84e099f047')
+sha256sums_i686=('aa47fcb6a4f71fdc492c2a8e489d51fa1bb5d873d01423cd6600b5ac371a793d')
+sha256sums_x86_64=('12a469da60561e3fa920703b2326dff2475a443c7c99eee6ee62b69f2a57f01a')
 
 package() {
     cd $srcdir/
