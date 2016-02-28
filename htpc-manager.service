@@ -1,0 +1,12 @@
+[Unit]
+Description=A fully responsive interface to manage all your favorite software on your Htpc
+After=network.target
+
+[Service]
+Type=simple
+User=http
+Group=http
+ExecStart=/usr/bin/python2.7 /opt/htpc-manager/Htpc.py
+
+[Install]
+WantedBy=multi-user.target
