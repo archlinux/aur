@@ -1,12 +1,16 @@
 # $Id$
 # Maintainer: David McFarland <corngood@gmail.com>
 
+_suffix=vulkan-beta
 pkgbase=nvidia-vulkan-beta
 pkgname=(nvidia-vulkan-beta nvidia-vulkan-beta-dkms
     nvidia-vulkan-beta-utils nvidia-vulkan-beta-libgl opencl-nvidia-vulkan-beta)
+if [[ $CARCH == "x86_64" ]]; then
+    pkgname+=(lib32-nvidia-vulkan-beta-utils lib32-nvidia-vulkan-beta-libgl lib32-opencl-nvidia-vulkan-beta)
+fi
 pkgver=355.00.28
 _extramodules=extramodules-4.4-ARCH
-pkgrel=3
+pkgrel=4
 pkgdesc="NVIDIA drivers for linux (vulkan beta)"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -237,4 +241,91 @@ package_nvidia-vulkan-beta-utils() {
     ln -s nvidia "${pkgdir}/usr/share/doc/nvidia-utils"
 
     create_links
+}
+
+package_lib32-opencl-nvidia-vulkan-beta() {
+    pkgdesc="OpenCL implemention for NVIDIA (32-bit)"
+    depends=('lib32-libcl' 'lib32-zlib' 'lib32-gcc-libs')
+    optdepends=('opencl-headers: headers necessary for OpenCL development')
+    cd "${_pkg}/32"
+
+    # OpenCL
+    install -D -m755 "libnvidia-compiler.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-compiler.so.${pkgver}"
+    install -D -m755 "libnvidia-opencl.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-opencl.so.${pkgver}" 
+
+    create_links
+
+    mkdir -p "${pkgdir}/usr/share/licenses"
+    ln -s $_pkgbasename "${pkgdir}/usr/share/licenses/lib32-opencl-nvidia"
+}
+
+package_lib32-nvidia-vulkan-beta-libgl() {
+    pkgdesc="NVIDIA drivers libraries symlinks (32-bit)"
+    depends=('lib32-nvidia-vulkan-beta-utils')
+    conflicts=('lib32-libgl')
+    provides=('lib32-libgl')
+    cd "${_pkg}/32"
+
+    mkdir -p "${pkgdir}/usr/lib32"
+    ln -s "/usr/lib32/nvidia/libGL.so.${pkgver}" "${pkgdir}/usr/lib32/libGL.so.${pkgver}"
+    ln -s "libGL.so.${pkgver}" "${pkgdir}/usr/lib32/libGL.so.1"
+    ln -s "libGL.so.${pkgver}" "${pkgdir}/usr/lib32/libGL.so"
+
+    ln -s "/usr/lib32/nvidia/libEGL.so.1" "${pkgdir}/usr/lib32/libEGL.so.1"
+    ln -s "libEGL.so.1" "${pkgdir}/usr/lib32/libEGL.so.${pkgver}"
+    ln -s "libEGL.so.1" "${pkgdir}/usr/lib32/libEGL.so"
+
+    ln -s "/usr/lib32/nvidia/libGLESv1_CM.so.${pkgver}" "${pkgdir}/usr/lib32/libGLESv1_CM.so.${pkgver}"
+    ln -s "libGLESv1_CM.so.${pkgver}" "${pkgdir}/usr/lib32/libGLESv1_CM.so.1"
+    ln -s "libGLESv1_CM.so.${pkgver}" "${pkgdir}/usr/lib32/libGLESv1_CM.so"
+
+    ln -s "/usr/lib32/nvidia/libGLESv2.so.${pkgver}" "${pkgdir}/usr/lib32/libGLESv2.so.${pkgver}"
+    ln -s "libGLESv2.so.${pkgver}" "${pkgdir}/usr/lib32/libGLESv2.so.2"
+    ln -s "libGLESv2.so.${pkgver}" "${pkgdir}/usr/lib32/libGLESv2.so"
+
+    mkdir -p "${pkgdir}/usr/share/licenses"
+    ln -s $_pkgbasename "${pkgdir}/usr/share/licenses/lib32-nvidia-libgl"
+}
+
+package_lib32-nvidia-vulkan-beta-utils() {
+    pkgdesc="NVIDIA drivers utilities (32-bit)"
+    depends=('lib32-zlib' 'lib32-gcc-libs')
+    optdepends=('lib32-opencl-nvidia')
+    cd "${_pkg}/32"
+
+    # OpenGL libraries
+    install -D -m755 "libGL.so.${pkgver}" "${pkgdir}/usr/lib32/nvidia/libGL.so.${pkgver}"
+    install -D -m755 "libEGL.so.1" "${pkgdir}/usr/lib32/nvidia/libEGL.so.1"
+    install -D -m755 "libEGL_nvidia.so.0" "${pkgdir}/usr/lib32/libEGL_nvidia.so.0"
+    install -D -m755 "libGLESv1_CM.so.${pkgver}" "${pkgdir}/usr/lib32/nvidia/libGLESv1_CM.so.${pkgver}"
+    install -D -m755 "libGLESv2.so.${pkgver}" "${pkgdir}/usr/lib32/nvidia/libGLESv2.so.${pkgver}"
+    install -D -m755 "libOpenGL.so.0" "${pkgdir}/usr/lib32/libOpenGL.so.0"
+    install -D -m755 "libGLdispatch.so.0" "${pkgdir}/usr/lib32/libGLdispatch.so.0"
+
+    # OpenGL core library
+    install -D -m755 "libnvidia-glcore.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-glcore.so.${pkgver}"
+    install -D -m755 "libnvidia-eglcore.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-eglcore.so.${pkgver}"
+    install -D -m755 "libnvidia-glsi.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-glsi.so.${pkgver}"
+
+    # misc
+    install -D -m755 "libnvidia-ifr.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-ifr.so.${pkgver}"
+    install -D -m755 "libnvidia-fbc.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-fbc.so.${pkgver}"
+    install -D -m755 "libnvidia-encode.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-encode.so.${pkgver}"
+    install -D -m755 "libnvidia-ml.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-ml.so.${pkgver}"
+
+    # VDPAU
+    install -D -m755 "libvdpau_nvidia.so.${pkgver}" "${pkgdir}/usr/lib32/vdpau/libvdpau_nvidia.so.${pkgver}"
+
+    # nvidia-tls library
+    install -D -m755 "tls/libnvidia-tls.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-tls.so.${pkgver}"
+
+    # CUDA
+    install -D -m755 "libcuda.so.${pkgver}" "${pkgdir}/usr/lib32/libcuda.so.${pkgver}"
+    install -D -m755 "libnvcuvid.so.${pkgver}" "${pkgdir}/usr/lib32/libnvcuvid.so.${pkgver}"
+
+    create_links
+
+    rm -rf "${pkgdir}"/usr/{include,share,bin}
+    mkdir -p "${pkgdir}/usr/share/licenses"
+    ln -s $_pkgbasename "${pkgdir}/usr/share/licenses/${pkgname}"
 }
