@@ -74,7 +74,7 @@ _opt_Optimal=0 # Default 0
 # were used to create the package. Some fonts may have been updated by Office
 # or Windows Update. I've captured alternate sums for as many fonts
 # as I can find. Should you find some fonts that aren't in the various sums
-# arrays the package won't build. First look through the sums arrays.
+# arrays, the package won't build. First look through the sums arrays.
 # If you've found a font source that I haven't then fix the sums. Otherwise
 # find a better font source.
 
@@ -83,11 +83,12 @@ _opt_Optimal=0 # Default 0
 #  - On any mismatch a sums file PKGBUILD.tmp is generated automatically
 #    unless you elect for optimal fonts.
 #  - Copy and paste the sums from PKGBUILD.tmp into this file, replacing
-#    the existing _fnt256sums=(...) array or adding to the _fnt256sumsx array.
+#    the existing _fnt256sums=(...) array or adding differences to the
+#    _fnt256sumsx array.
 #  - If you want optimal fonts, replace the faulty fonts from the sources
 #    noted as optimal.
 
-# Consider sending me the sums so they can be added to the PKGBUILD. Include
+# Consider sending me any new sums so they can be added to the PKGBUILD. Include
 # the source for verification.
 
 set -u
@@ -122,6 +123,9 @@ source=('license.rtf' 'FONTVER.pl'
 )
 sha256sums=('096cdd18e26b2b3d8cf0b3ec6a1ffb5b0eaae0fcc2105e3c145f19037a42d467'
             '32d534a6f469c8fc5613fcc5cc0934670da470036a94aa21c6f73c2a0f1ab19e')
+PKGEXT='.pkg.tar' # because XZ compression is awfully slow
+PKGEXT='.pkg.tar.gz' # XZ takes 8 minutes. TGZ takes 3 minutes. TAR takes the same and is double the space. With no TTC conversion TGZ is less than a minute.
+#export BUILDDIR='/tmp/makepkg'
 
 # See sums for font name and known versions.
 _fonts=(
@@ -615,23 +619,33 @@ REM REM out or remove the previous 5 lines to enable this BAT file.
 REM We did the hard part by picking all the files. You do the easy part by
 REM editing the following to match to your environment.
 
+REM Somtimes this must be run as admin because some fonts don't have the right permissions.
+
 REM You can use this to copy fonts from a running Windows to a Samba share
-SET MYSHARE=\\\\192.168.1.10\\_INCO\\TTFONTS
+SET MYSHARE=\\\\192.168.1.10\\_INCO\\TTFONTS-${pkgname}
 REM How about a folder on your desktop
-REM SET MYSHARE=%USERPROFILE%\\Desktop\\TTFONTS
+REM SET MYSHARE=%USERPROFILE%\\Desktop\\TTFONTS-${pkgname}
 REM How about to your flash drive
-REM SET MYSHARE=G:\\TTFONTS
+REM SET MYSHARE=G:\\TTFONTS-${pkgname}
 MKDIR "%MYSHARE%"
 EOF
+    local _fontno=0
+    local _fontodo=0
     local _fnt
     for _fnt in "${_fonts[@]}"; do
       local _fntl="${_fnt,,}"
-      if [[ ! "${_fntl}" =~ .tt[fc]$ ]]; then
+      if [[ ! "${_fntl}" == *.tt[fc] ]]; then
         echo "Fonts array not a font ${_fnt}"
         rm -f '_COPY.BAT'
         set +u
         false
       fi
+      _fontno=$((${_fontno}+1))
+      if [ "${_fontodo}" -le 0 ]; then
+        _fontodo=24
+        echo "ECHO ${_fontno}" >> "_COPY.BAT"
+      fi
+      _fontodo=$((${_fontodo}-1))
       [ -s "${_fnt,,}" ] && echo -n "REM " >> "_COPY.BAT"
       echo 'COPY "%WINDIR%\FONTS\'"${_fnt}"'" "%MYSHARE%\'"${_fnt,,}"'"' >> '_COPY.BAT'
     done
@@ -688,13 +702,13 @@ EOF
       _fnt="${_fnt,,}"
       local _vers
       local _fail=1
-      if [ "${_opt_GetFontName}" -ne 0 ] && [[ "${_fnt}" =~ .tt[fc]$ ]]; then
+      if [ "${_opt_GetFontName}" -ne 0 ] && [[ "${_fnt}" == *.tt[fc] ]]; then
         _fail=0
         _vers="$(./FONTVER.pl "${_fnt}")" || _fail=$?
       fi
       if [ "${_fail}" -ne 0 ]; then
         _vers="$(sed -ne 's:^.*\(Version [0-9\.]\+\).*$:\1:p' "${_fnt}" | head -n1)"
-        #if [[ "${_fnt}" =~ .tt[fc]$ ]]; then
+        #if [[ "${_fnt}" == *.tt[fc] ]]; then
         #  _vers="${_vers} ${_ttc_names[${_fnt}]:-}"
         #fi
       fi
@@ -758,10 +772,10 @@ _fn_fontcheck() {
       _mismatch=$((${_mismatch}+1))
       _mismatchar+=("${_fnt}")
       if [ "${_opt_SkipMissing}" -eq 2 ]; then
-        ln -sf "../${_fnt}" "${srcdir}/${_fnt}"
+        ln -sf "${startdir}/${_fnt}" "${srcdir}/${_fnt}"
       fi
     else
-      ln -sf "../${_fnt}" "${srcdir}/${_fnt}"
+      ln -sf "${startdir}/${_fnt}" "${srcdir}/${_fnt}"
     fi
   done
   if [ "${_mismatch}" -gt 0 ]; then
@@ -792,7 +806,7 @@ _fn_fontcheck() {
     echo 'Any missing files must be supplied and editing of the PKGBUILD may be required.'
     echo 'Edit the PKGBUILD for instructions and changes.'
     echo 'The necessity for user intervention makes this PKGBUILD not compatible with'
-    echo '1 step package installers like packer.'
+    echo '1 step package installers like packer or yaourt.'
     set +u
     false
   fi
@@ -843,8 +857,7 @@ build() {
     false
   fi
   set -u
-  local _fontdir="${srcdir}/.."
-  cd "${_fontdir}"
+  cd "${startdir}"
   _fn_gencopy
   _fn_fontlower
   _fn_fontpatch
@@ -852,7 +865,7 @@ build() {
   rm -f 'PKGBUILD.tmp'
 
   # The TTC is now selectable in LibreOffice and XFCE Terminal so no more conversion.
-  # The new conversion code doesn't miss Cambria Math
+  # This is the old conversion code. The new conversion code in package() doesn't miss Cambria Math
   #cd "${srcdir}"
   #if [ -s 'cambria.ttc' ]; then
   #  # cambria.ttc is a TrueType Collection (TTC) which causes problems with
@@ -863,6 +876,8 @@ build() {
   set +u
 }
 
+# This package function is only used by font packages that do not have a pkgbase like ttf-office-2007.
+# It is not used in packages with splits ttf-win7-fonts or ttf-ms-win8.
 package() {
   set -u
   cd "${srcdir}"
@@ -874,7 +889,7 @@ package() {
     local _fntno
     for _fntno in "${!_fonts[@]}"; do
       _fnt="${_fonts[${_fntno}]}"
-      if [[ "${_fnt}" =~ .ttc$ ]]; then
+      if [[ "${_fnt}" == *.ttc ]]; then
         _ttcs_to_extract+=("${_fnt}")
         _fonts[${_fntno}]=''
       fi
