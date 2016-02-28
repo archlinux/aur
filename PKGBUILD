@@ -4,7 +4,7 @@
 # Maintainer: N. I. - izmntuk
 pkgname=dar
 pkgver=2.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A full featured command-line backup tool, short for Disk ARchive'
 arch=('i686' 'x86_64')
 url='http://dar.linux.free.fr/'
@@ -19,7 +19,12 @@ options=('!libtool')
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	## --enable-threadar: EXPERIMENTAL multithread support
-	./configure --prefix=/usr --sysconfdir=/etc --disable-dar-static --disable-static --disable-upx --disable-build-html
+	if [[ "${CARCH}" == x86_64 ]];then
+		EXTRA_OPTIONS="--enable-mode=64"
+	elif [[ "${CARCH}" == i686 ]];then
+		EXTRA_OPTIONS="--enable-mode=32"
+	fi
+	./configure --prefix=/usr --sysconfdir=/etc --disable-dar-static --disable-static --disable-upx --disable-build-html ${EXTRA_OPTIONS}
 	make
 }
 
