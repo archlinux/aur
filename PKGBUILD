@@ -2,7 +2,7 @@
  
 pkgname=shashlik-bin
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="run Android applications on a standard Linux desktop"
 arch=('any')
 url="http://www.shashlik.io"
