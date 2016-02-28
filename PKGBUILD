@@ -4,7 +4,7 @@ _kernel=$(pacman -Qqo /usr/lib/modules/`uname -r` | grep linux | grep -v headers
 _gitname=darling
 pkgname=$_gitname-git
 pkgver=1188.1ab9cc2
-pkgrel=18
+pkgrel=19
 pkgdesc="A Darwin/OS X emulation layer for Linux"
 arch=('x86_64') # Can only be built on x86_64 systems
 url="http://www.darlinghq.org"
@@ -15,6 +15,7 @@ makedepends=('git' 'clang' 'bison' 'flex' "$_kernel-headers")
 install=$pkgname.install
 source=('git+https://github.com/darlinghq/darling.git'
 	'git+https://github.com/darlinghq/darling-adv_cmds.git'
+	'git+https://github.com/darlinghq/darling-apr.git'
 	'git+https://github.com/darlinghq/darling-appkit.git'
 	'git+https://github.com/darlinghq/darling-awk.git'
 	'git+https://github.com/darlinghq/darling-bash.git'
@@ -59,7 +60,7 @@ md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-	'SKIP' 'SKIP')
+	'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
 	cd "$srcdir/$_gitname"
