@@ -2,16 +2,16 @@
 
 pkgname=perl6-http-tinyish
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="perl6 port of HTTP::Tinyish"
 arch=('any')
 depends=('curl' 'perl6' 'perl6-file-temp')
 checkdepends=('perl')
 makedepends=('alacryd' 'git')
 groups=('perl6')
-url="https://github.com/shoichikaji/perl6-HTTP-Tinyish"
+url="https://github.com/skaji/perl6-HTTP-Tinyish"
 license=('PerlArtistic')
-source=($pkgname-$pkgver::git+https://github.com/shoichikaji/perl6-HTTP-Tinyish)
+source=($pkgname-$pkgver::git+https://github.com/skaji/perl6-HTTP-Tinyish)
 sha256sums=('SKIP')
 
 check() {
