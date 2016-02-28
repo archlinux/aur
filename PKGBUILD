@@ -1,24 +1,24 @@
 pkgname=sph-pack-git
-_gitname=sph-pack
-pkgver=e43ba6d
+pkgver=20
 pkgrel=1
 pkgdesc="free software file packaging solution. compounding/compression/encryption and the rerverse with only one standard file format per task"
 arch=(any)
 license=(gpl3)
 makedepends=(git)
-provides=(pack)
-depends=(sph-lib-git tar xz scrypt)
+provides=(sph-pack)
+depends=(sph-lib tar xz)
+optdepends=(scrypt)
 conflicts=(sph-pack)
-source=("git://sph.mn/sph-pack")
+source=("$pkgname::git://git.sph.mn/sph-pack#branch=stable")
 url="http://sph.mn"
 md5sums=(SKIP)
 
 pkgver() {
-  cd $_gitname
-  git log -n 1 --pretty=format:"%h"
+  cd $pkgname
+  git rev-list --count HEAD
 }
 
 package() {
-  cd $_gitname
-  ./exec/install "$pkgdir"
+  cd $pkgname
+  ./exe/install "$pkgdir"
 }
