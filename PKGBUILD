@@ -2,11 +2,11 @@
 
 pkgname=bing-wallpaper-git
 pkgver=r22
-pkgrel=1
+pkgrel=2
 pkgdesc="Change wallpaper from Bing daily"
 arch=(any)
 license=('GPL3')
-depends=('curl')
+depends=('curl' 'bc')
 optdepends=('xorg-xrandr: for xfce4 support'
             'xfconf: for xfce4 support')
 makedepends=('git')
