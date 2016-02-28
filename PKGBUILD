@@ -1,7 +1,7 @@
 # Maintainer: Michael Duell <michael.duell@rub.de> PGP-Fingerprint: FF8C D50E 66E9 5491 F30C  B75E F32C 939C 5566 FF77
 pkgname=rot13
 pkgver=2
-pkgrel=3
+pkgrel=4
 pkgdesc="Converts text with ROT13 from STDIN to STDOUT or text given as arguments."
 arch=('i686' 'x86_64')
 license=('WTFPL')

@@ -19,7 +19,7 @@
 #define OFFSET 'a'
 
 int islower_ascii(unsigned cnum) {
-    return cnum > 'Z';
+    return cnum >= OFFSET;
 }
 
 char transpose(char c){
