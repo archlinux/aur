@@ -2,13 +2,12 @@
 _pkgname="htpc-manager"
 pkgname="htpc-manager-git"
 pkgver=0.11.0.r274.gcd983bf
-pkgrel=2
+pkgrel=3
 pkgdesc="A fully responsive interface to manage all your favorite software on your Htpc"
 arch=(any)
 url="http://htpc.io"
 license=('MIT')
 depends=('python2')
-backup=('/opt/htpc-manager/userdata')
 source=("htpc-manager::git+https://github.com/styxit/HTPC-Manager#branch=master"
         "htpc-manager.service")
 md5sums=('SKIP'
