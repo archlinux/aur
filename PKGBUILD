@@ -1,4 +1,4 @@
-# Maintener: Marco44 <cousinmarc at gmail dot com>
+# Maintainer: Marco44 <cousinmarc at gmail dot com>
 # Contributor: Sarkasper <echo a2FzcGVyLm1lbnRlbkBnbXguY29tCg== | base64 -d>
 # Contributor: Christian Himpel <chressie at gmail dot com>
 # Contributor: Johannes Hanika  <hanatos at gmail dot com>
@@ -6,7 +6,7 @@
 # Contributor: orbisvicis <orbisvicis at gmail dot com>
 pkgname=darktable-git
 _gitname=darktable
-pkgver=release.0.9.3.12354.g6d093c0
+pkgver=release.2.1.0.r644.g6dadfb4
 pkgrel=1
 pkgdesc="A virtual lighttable and darkroom for photographers"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $_gitname
-  git describe --always | sed 's|-|.|g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
