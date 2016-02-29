@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Jedi Knight III: Jedi Academy
+Comment=Jedi Knight III: Jedi Academy Single Player Linux Port
+Icon=jedi-academy-linux-bin
+Exec=/opt/jedi-academy-linux-bin/jasp
+Path=
+Terminal=false
+StartupNotify=false
+Categories=Game
