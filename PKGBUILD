@@ -3,13 +3,13 @@
 
 pkgname=boost-build-nightly
 pkgver=20140102
-pkgrel=1
+pkgrel=2
 pkgdesc="Boost build system, Nightly build"
 arch=('any')
 url="http://www.boost.org/doc/tools/build/"
 license=('custom:boost')
 depends=('lib32-glibc' 'python')
-conflicts=('boost-build')
+conflicts=('boost' 'boost-build')
 source=("http://www.boost.org/LICENSE_1_0.txt")
 md5sums=('e4224ccaecb14d942c71d31bef20d78c')
 
@@ -26,7 +26,7 @@ package() {
 
         msg "Downloading..."
         wget -N ${BD_SRC_URI}
-        
+
         msg "Extracting..."
         bsdtar -x -f ${BD_SRC}
 

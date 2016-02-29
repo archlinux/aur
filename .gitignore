@@ -1,0 +1,4 @@
+src/
+pkg/
+*.tar.xz
+LICENSE_1_0.txt
