@@ -18,7 +18,7 @@ pkgbase = corebird
 	depends = libsoup>=2.4
 	depends = json-glib
 	depends = intltool>=0.40
-	depends = gstreamer
+	depends = gstreamer>=1.6
 	depends = gst-plugins-good
 	depends = gst-plugins-bad
 	depends = gst-libav
