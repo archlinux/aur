@@ -1,0 +1,10 @@
+[Unit]
+Description=Leapcast
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/leapcast --name %H
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
