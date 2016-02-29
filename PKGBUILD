@@ -1,15 +1,15 @@
 # Maintainer: Brandon Giesing <brandon@giesing.cf>
 
 pkgname=jackett
-pkgver=0.7.181
+pkgver=0.7.184
 pkgrel=1
 pkgdesc='User any tracker with Sonarr'
 arch=('any')
 license=('GPL')
 url='https://github.com/Jackett/Jackett'
 depends=('mono' 'curl')
-source=('https://github.com/Jackett/Jackett/releases/download/v0.7.181/Jackett.Binaries.Mono.tar.gz' 'jackett.service')
-md5sums=('08562170cea6e3cf2e6a90ce3e367972'
+source=('https://github.com/Jackett/Jackett/releases/download/v0.7.184/Jackett.Binaries.Mono.tar.gz' 'jackett.service')
+md5sums=('b8242f41973d64cb8a3e6b55d3b4f602'
          '5983ba69e0289be2c27ce9423df408ab')
 install=$pkgname.install
 
