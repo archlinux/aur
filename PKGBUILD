@@ -2,7 +2,7 @@
 # vim: set expandtab ts=2 sw=2:
 
 pkgname=gx
-pkgver=0.3.0
+pkgver=0.4.0.r0.gb82b91b
 pkgrel=1
 epoch=
 pkgdesc="Packaging tool built around the distributed, content addressed filesystem IPFS. It aims to be flexible, powerful and simple."
@@ -14,8 +14,7 @@ optdepends=('gx-go: gx packaing module for go')
 source=("git+${url}.git")
 md5sums=('SKIP')
 
-pkgver_DISABLED() {
-  # Renable after tags are placed in the repo.
+pkgver() {
   cd "$srcdir/$pkgname"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
