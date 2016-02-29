@@ -8,7 +8,7 @@
 
 pkgname=emacs24-git
 pkgver=24.5.50.r116792
-pkgrel=5
+pkgrel=6
 pkgdesc="GNU Emacs. Official git stable 24 branch."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -20,7 +20,8 @@ makedepends=('git')
 conflicts=('emacs')
 provides=('emacs')
 install="$pkgname".install
-source=("$pkgname::git+http://git.savannah.gnu.org/r/emacs.git#branch=emacs-24")
+source=("$pkgname::git://git.savannah.gnu.org/emacs.git#branch=emacs-24")
+#source=("$pkgname::git+http://git.savannah.gnu.org/r/emacs.git#branch=emacs-24")
 md5sums=('SKIP')
 
 pkgver() {
