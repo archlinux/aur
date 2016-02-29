@@ -17,7 +17,7 @@ API=16
 
 pkgname=kodi-addon-pvr-hts-git
 pkgver=r502.3c673b5
-pkgrel=1
+pkgrel=2
 _branch=Isengard
 pkgdesc='Tvheadend HTSP PVR client addon for Kodi'
 arch=('armv7h' 'i686' 'x86_64')
@@ -31,9 +31,11 @@ source=("${pkgname}::git+https://github.com/kodi-pvr/pvr.hts.git")
 md5sums=('SKIP')
 
 case "$API" in
-  15)  source[0]="${pkgname}::git+https://github.com/kodi-pvr/pvr.hts.git#branch=Isengard" ;;
-  16)  source[0]="${pkgname}::git+https://github.com/kodi-pvr/pvr.hts.git#branch=Jarvis" ;;
-  99)  ;;
+  15)  depends+=('libplatform-legacy')
+       source[0]="${pkgname}::git+https://github.com/kodi-pvr/pvr.hts.git#branch=Isengard" ;;
+  16)  depends+=('libplatform-legacy')
+       source[0]="${pkgname}::git+https://github.com/kodi-pvr/pvr.hts.git#branch=Jarvis" ;;
+  99)  depends+=('libplatform') ;;
   *)   error "Unknown API version. Follow instructions in PKGBUILD." && false
 esac
 
