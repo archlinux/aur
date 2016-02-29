@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Jedi Knight II: Jedi Outcast
+Comment=Jedi Knight II: Jedi Outcast Single Player Linux Port
+Icon=jedi-outcast-linux-bin
+Exec=/opt/jedi-outcast-linux-bin/jk2sp
+Path=
+Terminal=false
+StartupNotify=false
+Categories=Game
