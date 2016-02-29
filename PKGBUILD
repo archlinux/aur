@@ -12,15 +12,15 @@
 ### the software) then please do email me or post an AUR comment.
 
 pkgname=tile-world
-pkgver=1.3.0
-pkgrel=3
+pkgver=1.3.2
+pkgrel=1
 pkgdesc="Emulation of the game Chip's Challenge"
 arch=('i686' 'x86_64')
 url="http://www.muppetlabs.com/~breadbox/software/tworld/"
 license=('GPL')
 depends=('sdl')
-source=("http://www.muppetlabs.com/~breadbox/pub/software/tworld/tworld-$pkgver-CCLP2.tar.gz")
-md5sums=('100311f324b00a13649148448a20dc29')
+source=("http://www.muppetlabs.com/~breadbox/pub/software/tworld/tworld-$pkgver.tar.gz")
+md5sums=('d12e84f14f206068a1a4a025b07bb825')
 
 build() {
   cd "$srcdir"/tworld-$pkgver
