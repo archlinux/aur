@@ -32,7 +32,8 @@ prepare() {
   patch -p1 < ../flags.patch
 
   # Get submodules
-  if ( ! git rev-parse &> /dev/null); then
+  if [ ! -e "${srcdir}/tensorflow-${pkgver}/.git" ]; then
+    msg2 "Initializing protobuf submodule..."
     git init
     rm -r google/protobuf
     git submodule add --force https://github.com/google/protobuf.git google/protobuf \
