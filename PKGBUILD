@@ -1,7 +1,6 @@
 # Maintainer: Chris Höppner <me@mkaito.com>
-_pkgname=dasht
-pkgname=$_pkgname-git
-pkgver=1.1.0.r1.g02e96d7
+pkgname=dasht
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="API documentation in your terminal"
 arch=(any)
@@ -9,18 +8,19 @@ url="https://github.com/sunaku/dasht"
 license=('ISC')
 depends=('bash' 'sqlite' 'wget' 'socat' 'w3m')
 makedepends=('git')
-source=('git+https://github.com/sunaku/dasht.git')
-md5sums=('SKIP')
+conflicts=('dasht-git')
+source=('https://github.com/sunaku/dasht/archive/v1.1.0.tar.gz')
+sha1sums=('0ca7eb74a96a11e486533a04245eeda722f80dd7')
 
-pkgver() {
-    cd "$srcdir/$_pkgname"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
+# pkgver() {
+#     cd "$srcdir/$_pkgname"
+#     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+# }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/dasht-git/LICENSE
-  cd "$srcdir/$_pkgname/bin"
+  cd "$srcdir/$pkgname-$pkgver/bin"
   install -Dm755 -t $pkgdir/usr/bin *
 }
 
