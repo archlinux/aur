@@ -1,12 +1,12 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor rtfreedman (rob<d0t>til<d0t>freedman<aT>gmail<d0t>com
 # 
-## enable/disable gnome help files; adds makedepends+='yelp-tools'
+## enable/disable gnome help files; adds makedepends+='yelp-tools' and depends+='yelp'
 _build_gnome_help="no" # yes|no
 
 pkgname=easytag-git
 _gitname=easytag
-pkgver=2.4.2.r0.g4a99576
+pkgver=2.4.2.r5.g3dbfd06
 pkgrel=1
 pkgdesc="Utility for viewing and editing tags for most audio formats - git version"
 arch=('i686' 'x86_64')
@@ -17,6 +17,7 @@ makedepends=('git' 'intltool' 'appdata-tools' 'autoconf-archive')
 ## depends on building gnome help files
 if [ "$_build_gnome_help" = 'yes' ]; then
   echo -e "\n>>>\n>>> Build with GNOME help files\n>>>\n"
+  depends+=('yelp')
   makedepends+=('yelp-tools')
 fi
 
@@ -38,9 +39,9 @@ prepare() {
   ## disable-gnome-help-files
   if [ "$_build_gnome_help" != 'yes' ]; then
     echo -e "\n>>>\n>>> Build without GNOME help files\n>>>\n"
-	sed -i 's@= help po@= po@' Makefile.am
-	sed -e'/help\/Makefile/d' -e 's/AC_MSG_ERROR(\[yelp-tools/AC_MSG_WARN([yelp-tools/' -i configure.ac
-	rm -fr help/
+    sed -i 's@= help po@= po@' Makefile.am
+  	sed -e'/help\/Makefile/d' -e 's/AC_MSG_ERROR(\[yelp-tools/AC_MSG_WARN([yelp-tools/' -i configure.ac
+    rm -fr help/
   fi
   ## add git rev to version
   sed "s/(\[EasyTAG\], \[\([0-9]\).\([0-9]\).\([0-9]\)\],/(\[EasyTAG\], [\1.\2.\3-$(git rev-list --count master).$(git rev-parse --short master)], /" -i configure.ac
