@@ -12,11 +12,7 @@ Configuration file is /etc/conf.d/squeezelite
   
 The default configuration is
   
-card=iec958:CARD=Audio,DEV=0
-audio=
-buffers=
-upsample=vL
-rate=88200-96000
+parameters="-o iec958:CARD=Audio,DEV=0"
 
 ========================================================================
 "

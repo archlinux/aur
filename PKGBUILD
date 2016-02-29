@@ -5,7 +5,7 @@
 
 pkgname=squeezelite-r2-git
 pkgver=v1.8.2.R2.r1.g681fc3d
-pkgrel=4
+pkgrel=5
 pkgdesc='Lightweight headless squeezebox emulator - version r2'
 arch=('i686' 'x86_64' 'armv6h')
 url='http://www.marcoc1712.it/'
