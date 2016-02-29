@@ -1,14 +1,14 @@
 pkgbase = scale2x
 	pkgdesc = Bitmap scaling algorithm that improves the resolution of a PNG
-	pkgver = 3.1
+	pkgver = 3.2
 	pkgrel = 1
 	url = http://scale2x.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = libpng>=1.4
-	source = http://downloads.sourceforge.net/sourceforge/scale2x/scale2x-3.1.tar.gz
-	md5sums = a1c6d2bda4360d13432e60b6e6ecbb5a
+	source = https://github.com/amadvance/scale2x/releases/download/v3.2/scale2x-3.2.tar.gz
+	md5sums = e047693762b52b563a24d16d6a98b04b
 
 pkgname = scale2x
 
