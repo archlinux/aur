@@ -1,0 +1,16 @@
+pkgbase = lua-cqueues-git
+	pkgdesc = Asynchronous networking, threading, and notification framework for Lua.
+	pkgver = 20150907
+	pkgrel = 1
+	url = https://github.com/wahern/cqueues
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = m4
+	depends = openssl
+	source = git+https://github.com/wahern/cqueues.git#branch=master
+	md5sums = SKIP
+
+pkgname = lua-cqueues-git
+
