@@ -2,12 +2,12 @@
 
 pkgname=bot-sentry
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bot Sentry is a Pidgin plugin to prevent Instant Message spam."
 arch=('x86_64')
 url="https://sourceforge.net/projects/pidgin-bs/"
 license=('GPL')
-depends=('pidgin' 'libpurple' 'glibc')
+depends=('pidgin' 'libpurple' 'glibc' 'intltool>=0.35.0')
 source=( "https://downloads.sourceforge.net/project/pidgin-bs/$pkgname/$pkgver/$pkgname-$pkgver.tar.bz2")
 
 md5sums=('81ed178b982fbaa176c96da792464e43')
