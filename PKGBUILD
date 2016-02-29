@@ -7,8 +7,8 @@ arch=(any)
 url="https://github.com/IntelRealSense/librealsense"
 license=('Apache')
 makedepends=()
-depends=('glfw>=3',
-	'libusb',
+depends=('glfw>=3'
+	'libusb'
 	'qtcreator')
 changelog=''
 source=("https://github.com/IntelRealSense/librealsense/archive/v${pkgver}.tar.gz")
@@ -25,4 +25,5 @@ package() {
   install -m644 -d $pkgdir/lib/$pkgname/ $pkgdir/include/$pkgname/
   cp -r lib/* $pkgdir/lib/$pkgname/
   cp -r include/$pkgname/* $pkgdir/include/$pkgname/
+  install -m644 config/99-realsense-libusb.rules /etc/udev/rules.d/
 }
