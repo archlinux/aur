@@ -2,7 +2,7 @@
 
 pkgname=microchip-pic32-legacy-plib
 pkgver=1.00
-pkgrel=2
+pkgrel=3
 pkgdesc="Microchip's PIC32 peripheral support libraries."
 arch=('any')
 url=http://www.microchip.com/pagehandler/en-us/devtools/mplabxc/home.html?tab=t2
