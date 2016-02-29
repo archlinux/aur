@@ -2,7 +2,7 @@
 
 pkgbase='swift'
 pkgname=('swift-im' 'swiften')
-pkgver=3.0rc3
+pkgver=3.0
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='XMPP client written in C++ with Qt and Swiften'
@@ -11,7 +11,7 @@ license=('GPL3')
 makedepends=('python2' 'openssl' 'boost' 'qt5-base' 'qt5-multimedia'
              'qt5-webkit' 'qt5-x11extras' 'qt5-tools')
 source=("http://swift.im/downloads/releases/$pkgbase-$pkgver/$pkgbase-$pkgver.tar.gz")
-sha256sums=('6aa1409886b1e9ed3145860f97e5549d93f76753817c0fde1c52ff1e1191e89c')
+sha256sums=('8aa490431190294e62a9fc18b69ccc63dd0f561858d7d0b05c9c65f4d6ba5397')
 
 # Those options need to be consistent between each scons invocation.
 _scons_options='max_jobs=1 optimize=1 debug=0 swiften_dll=1'
