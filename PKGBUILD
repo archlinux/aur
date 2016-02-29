@@ -7,7 +7,7 @@ pkgdesc="Creates /usr/lib/libudev.so.0 -> /usr/lib/libudev.so symlink"
 arch=('any')
 url="http://www.dartlang.org/dartium"
 license=('BSD')
-conflicts=('chromium-browser-bin', 'libudev0')
+conflicts=('chromium-browser-bin' 'libudev0')
 provides=('libudev0')
 
 package(){
