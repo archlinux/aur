@@ -28,21 +28,24 @@ md5sums=('ff68834eee875bcf367422c67673207c'
          'fef6fadd0739ae03ff71ba61025be207'
          'cab358c32dd0d4d2463e60ee2996f658'
          '54438e0c47cc5083e0a4376688b46092'
-         '59bf34cc34f61fc36824620bf5e7f2fd')
+         'aa1603e6c4090bfcf3177cb59b15bae8')
+
+_game="minecraft"
+_server_root="/srv/minecraft"
 
 package() {
-	install -Dm644 minecraftd.conf              "${pkgdir}/etc/conf.d/minecraft"
-	install -Dm755 minecraftd.sh                "${pkgdir}/usr/bin/minecraftd"
-	install -Dm644 minecraftd.service           "${pkgdir}/usr/lib/systemd/system/minecraftd.service"
-	install -Dm644 minecraftd-backup.service    "${pkgdir}/usr/lib/systemd/system/minecraftd-backup.service"
-	install -Dm644 minecraftd-backup.timer      "${pkgdir}/usr/lib/systemd/system/minecraftd-backup.timer"
+	install -Dm644 minecraftd.conf              "${pkgdir}/etc/conf.d/${_game}"
+	install -Dm755 minecraftd.sh                "${pkgdir}/usr/bin/${_game}d"
+	install -Dm644 minecraftd.service           "${pkgdir}/usr/lib/systemd/system/${_game}d.service"
+	install -Dm644 minecraftd-backup.service    "${pkgdir}/usr/lib/systemd/system/${_game}d-backup.service"
+	install -Dm644 minecraftd-backup.timer      "${pkgdir}/usr/lib/systemd/system/${_game}d-backup.timer"
 	install -Dm644 minecraft_server.${pkgver}.jar "${pkgdir}/srv/minecraft/minecraft_server.${pkgver}.jar"
 	ln -s "minecraft_server.${pkgver}.jar" "${pkgdir}/srv/minecraft/minecraft_server.jar"
 
 	# Link the log files
 	mkdir -p "${pkgdir}/var/log/"
-	ln -s "/srv/minecraft/logs" "${pkgdir}/var/log/minecraft" #&>/dev/null
+	ln -s "${_server_root}/logs" "${pkgdir}/var/log/${_game}"
 
 	# Give the group write permissions and set user or group ID on execution
-	chmod g+ws "${pkgdir}/srv/minecraft"
+	chmod g+ws "${pkgdir}${_server_root}"
 }

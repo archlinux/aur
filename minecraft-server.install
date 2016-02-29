@@ -1,3 +1,4 @@
+_game="minecraft"
 _user="minecraft"
 _server_root="/srv/minecraft"
 
@@ -18,8 +19,8 @@ post_install() {
 
 	echo -e "\e[34;1m==>\e[39;1m NOTE: The world data is stored under ${_server_root} and the server runs \e[0m"
 	echo -e "\e[34;1m==>\e[39;1m as ${_user} user to increase security. \e[0m"
-	echo -e "\e[34;1m==>\e[39;1m NOTE: Use the minecraft script under /usr/bin/minecraftd to start, stop or backup the server \e[0m"
-	echo -e "\e[34;1m==>\e[39;1m and the configuration file under /etc/conf.d/minecraft to adjust it to your liking. \e[0m"
+	echo -e "\e[34;1m==>\e[39;1m NOTE: Use the ${_game} script under /usr/bin/${_game}d to start, stop or backup the server \e[0m"
+	echo -e "\e[34;1m==>\e[39;1m and the configuration file under /etc/conf.d/${_game} to adjust it to your liking. \e[0m"
 	echo -e "\e[34;1m==>\e[39;1m NOTE: For the server to start you have to accept the EULA in ${_server_root}/eula.txt \e[0m"
 	echo -e "\e[34;1m==>\e[39;1m which is generated after the first server start. \e[0m"
 }
@@ -27,26 +28,26 @@ post_install() {
 post_upgrade() {
 	chown -R ${_user}:${_user} "${_server_root}"
 
-	if [[ -f /etc/conf.d/minecraft.pacnew ]]; then
+	if [[ -f /etc/conf.d/${_game}.pacnew ]]; then
 		echo -e "\e[34;1m==>\e[39;1m NOTE: There was a new change on how backup files are handled! Unfortunately this makes \e[0m"
 		echo -e "\e[34;1m==>\e[39;1m old backups incompatible with the newly implemeted restore feature. Bare in mind that no data is lost \e[0m"
 		echo -e "\e[34;1m==>\e[39;1m neither are those backups useless. They just will not work with the restore capability of the management script. \e[0m"
-		echo -e "\e[34;1m==>\e[39;1m NOTE: Please merge the new configuration file into /etc/conf.d/minecraft by e.g. using pacdiff. \e[0m"
+		echo -e "\e[34;1m==>\e[39;1m NOTE: Please merge the new configuration file into /etc/conf.d/${_game} by e.g. using pacdiff. \e[0m"
 	fi
 }
 
 pre_remove() {
-	echo -e "\e[34;1m==>\e[39;1m Stopping and disabling minecraftd... \e[0m"
-	systemctl stop minecrafd.service
-	systemctl disable minecraftd.service
+	echo -e "\e[34;1m==>\e[39;1m Stopping and disabling ${_game}d... \e[0m"
+	systemctl stop ${_game}d.service
+	systemctl disable ${_game}d.service
 
-	/usr/bin/minecraftd stop > /dev/null
+	/usr/bin/${_game}d stop > /dev/null
 }
 
 post_remove() {
 	# Notifying the user of kept dirs
 	[[ -d "${_server_root}" ]] && chown -R root:root "${_server_root}" && echo -e "\e[34;1m==>\e[39;1m NOTE: Game saves in ${_server_root} were kept on your system.\e[0m"
-	[[ -f "/etc/conf.d/minecraft" ]] && echo -e "\e[34;1m==>\e[39;1m NOTE: Your configuration file /etc/conf.d/minecraft was kept on your system.\e[0m"
+	[[ -f "/etc/conf.d/${_game}" ]] && echo -e "\e[34;1m==>\e[39;1m NOTE: Your configuration file /etc/conf.d/${_game} was kept on your system.\e[0m"
 
 	echo -e "\e[34;1m==>\e[39;1m Removing ${_user} system user and group... \e[0m"
 	if getent passwd ${_user} >/dev/null 2>&1; then

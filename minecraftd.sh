@@ -32,7 +32,7 @@ declare -r game="minecraft"
 [[ ! -z "${IDLE_IF_TIME}" ]]      && declare -r IDLE_IF_TIME=${IDLE_IF_TIME} || IDLE_IF_TIME="1200"
 
 # Variables passed over the command line will always override the one from a config file
-source /etc/conf.d/minecraft || echo "Could not source /etc/conf.d/minecraft"
+source /etc/conf.d/${game} || echo "Could not source /etc/conf.d/${game}"
 
 # Check whether sudo is needed at all
 if [[ $(whoami) == ${GAME_USER} ]]; then
