@@ -5,7 +5,7 @@
 
 pkgname=squeezelite-r2-git
 pkgver=v1.8.2.R2.r1.g681fc3d
-pkgrel=3
+pkgrel=4
 pkgdesc='Lightweight headless squeezebox emulator - version r2'
 arch=('i686' 'x86_64' 'armv6h')
 url='http://www.marcoc1712.it/'
@@ -20,8 +20,10 @@ optdepends=('faad2: Support for decoding AAC'
 	'portaudio: Use of binary using portaudio for output')
 provides=('squeezelite')
 conflicts=('squeezelite')
-source=('git+https://github.com/marcoc1712/squeezelite-R2')
-sha256sums=('SKIP')
+source=('git+https://github.com/marcoc1712/squeezelite-R2' "squeezelite@.service" "squeezelite" )
+sha256sums=('SKIP' 'SKIP' 'SKIP')
+backup=('etc/conf.d/squeezelite')
+install=squeezelite.install
 
 pkgver() {
   cd squeezelite-R2/
@@ -46,11 +48,14 @@ build() {
 }
 
 package() {
+        install -Dm644 "squeezelite" "$pkgdir/etc/conf.d/squeezelite"
+	install -Dm644 "squeezelite@.service" "$pkgdir/usr/lib/systemd/system/squeezelite@.service"
+	
 	cd squeezelite-R2/
 
 	# Install binaries
-	install -Dm755 squeezelite-pa "${pkgdir}/usr/bin/squeezelite-pa"
-	install -Dm755 squeezelite-R2 "${pkgdir}/usr/bin/squeezelite-r2"
+	install -Dm755 squeezelite-R2-pa "${pkgdir}/usr/bin/squeezelite-pa"
+	install -Dm755 squeezelite-R2 "${pkgdir}/usr/bin/squeezelite"
 	install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 	
 }

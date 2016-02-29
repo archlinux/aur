@@ -1,0 +1,23 @@
+post_install() {
+  echo "
+========================================================================
+
+To start squeezelite, you can do manually or starting the corresponding systemd service
+  # systemctl start squeezelite@<user>
+
+To enable squeezelite at boot:
+  # systemctl enable squeezelite@<user>
+  
+Configuration file is /etc/conf.d/squeezelite
+  
+The default configuration is
+  
+card=iec958:CARD=Audio,DEV=0
+audio=
+buffers=
+upsample=vL
+rate=88200-96000
+
+========================================================================
+"
+}

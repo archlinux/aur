@@ -1,0 +1,14 @@
+[Unit]
+Description=Squeezelite Service
+After=network.target
+
+[Service]
+User=%I
+Type=simple
+EnvironmentFile=/etc/conf.d/squeezelite
+ExecStart=/usr/bin/squeezelite -o ${card} -a ${audio} -b ${buffers} -u ${upsample}  -r ${rate}
+RestartSec=5
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
