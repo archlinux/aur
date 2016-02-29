@@ -1,5 +1,14 @@
 [Desktop Entry]
-Name=FlatCAM
+Categories=Development
+Comment=
 Exec=flatcam
+Comment=Generates CNC gcode from 2D PCB files (Gerber/Excellon/SVG)\n
 Icon=flatcam
+MimeType=
+Name=FlatCAM
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
 Type=Application
+
