@@ -3,13 +3,13 @@
 _py="python2"
 pkgname=netzob-git
 pkgver=r3678.78fe862
-pkgrel=4
+pkgrel=5
 HOLDVER=1
 pkgdesc="Netzob is an opensource tool which supports the expert in its operations of reverse engineering, evaluation and simulation of communication protocols. This package pulls the current version from master branch containing the current version."
 arch=('i686' 'x86_64')
 url="http://netzob.org"
 license=('GPL3')
-depends=("impacket" "${_py}" "${_py}-numpy" "${_py}-sphinx" "${_py}-pcapy" "${_py}-bitarray" "${_py}-babel" "${_py}-netaddr")
+depends=("impacket" "${_py}" "${_py}-numpy" "${_py}-sphinx" "${_py}-pcapy" "${_py}-bitarray" "${_py}-babel" "${_py}-netaddr" "${_py}-bintrees")
 makedepends=("git" "${_py}-setuptools" "${_py}-mock")
 conflicts=('netzob')
 options=(!emptydirs)
