@@ -1,0 +1,14 @@
+[Unit]
+Description=TeamTalk 5 server daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/tt5srv -nd -c /etc/teamtalk/tt5srv.xml -l /var/log/teamtalk/tt5srv.log
+Type=simple
+User=teamtalk
+Group=teamtalk
+StandardOutput=syslog
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target

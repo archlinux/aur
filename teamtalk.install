@@ -1,0 +1,32 @@
+# arg 1:  the new package version
+post_install() {
+  # Make sure the group and user "teamtalk" exists on this system and have the correct values
+  if getent group teamtalk &> /dev/null ; then
+    groupmod -g 885 -n teamtalk teamtalk &> /dev/null
+  else
+    groupadd -g 885 teamtalk &> /dev/null
+  fi
+
+  if getent passwd teamtalk &> /dev/null ; then
+    usermod -s /bin/false -c "teamtalk server user" -d /var/lib/tt5srv -u 885 -g teamtalk teamtalk &> /dev/null
+  else
+    useradd -m -s /bin/false -c "teamtalk server user" -d /var/lib/tt5srv -u 885 -g teamtalk -r teamtalk &> /dev/null
+  fi
+  # create the logs folder
+  install -do885 -g885 -m0755 /var/log/teamtalk
+  # create the config folder
+  install -do885 -g885 -m0755 /etc/teamtalk
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+    post_install $1
+}
+
+# arg 1:  the old package version
+pre_remove() {
+    userdel teamtalk &> /dev/null
+    groupdel teamtalk &> /dev/null || /bin/true
+    rm -rf /var/log/teamtalk/ /etc/teamtalk/ &> /dev/null || /bin/true
+}
