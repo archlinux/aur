@@ -2,7 +2,7 @@
 _xsnowver=1.42
 _pkgname=xsnow-comp-patch
 pkgname=$_pkgname-git
-pkgver=10
+pkgver=12
 pkgrel=1
 pkgdesc="Compositor-friendly patch for Xsnow"
 arch=('i686' 'x86_64')
@@ -23,8 +23,9 @@ pkgver() {
 }
 
 prepare() {
-	cd "$srcdir/xsnow-$_xsnowver"
-	patch -p1 -i "$srcdir/xsnow-comp-patch/xsnow-comp.patch"
+  cd "$srcdir/xsnow-$_xsnowver"
+  rm -f PATCH_LICENSE
+  patch -p1 -i "$srcdir/xsnow-comp-patch/xsnow-comp.patch"
 }
 
 build() {
