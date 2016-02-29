@@ -15,7 +15,7 @@ post_install() {
   echo "Please add /var/lib/baikal to open_basedir in your /etc/php.ini."
   echo
   echo "You also need to set up your webserver for baikal, there are example"
-  echo "configs for Apache/nginx in /usr/share/doc/baikal."
+  echo "configs for Apache/nginx at http://sabre.io/baikal/install/."
   echo
   echo "After that, navigate to your baikal instance to complete the setup."
   echo
@@ -25,8 +25,12 @@ post_install() {
 }
 
 post_upgrade() {
-  if [[ $2 < '0.2.7-5' ]]; then
+  if [[ $(vercmp $2 '0.2.7-5') == -1 ]]; then
     echo "Please add /var/lib/baikal to open_basedir in your /etc/php.ini."
+  fi
+  if [[ $(vercmp $2 0.3.0) == -1 ]]; then
+    touch /var/lib/baikal/ENABLE_INSTALL
+    echo "Navigate to your baikal instance to complete the upgrade."
   fi
 }
 
