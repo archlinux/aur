@@ -22,7 +22,6 @@ makedepends=('git' 'python2-setuptools' )
 provides=('hyperspy')
 conflicts=('hyperspy')
 
-# install=
 source=('git://github.com/hyperspy/hyperspy.git')
 md5sums=('SKIP')
 
