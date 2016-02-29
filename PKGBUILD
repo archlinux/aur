@@ -2,12 +2,12 @@
 # Contributor: Marco Pompili <marcs.pompili at gmail dot com>
 
 pkgname=openframeworks
-pkgver=0.9.0
-pkgrel=2
+pkgver=0.9.2
+pkgrel=1
 pkgdesc="openFrameworks is an open source C++ toolkit for creative coding."
 url="http://openframeworks.cc/"
 arch=('x86_64' 'i686')
-license='MIT'
+license=('MIT')
 depends=('make' 'pkg-config' 'gcc' 'openal' 'python-lxml' 'glew' 'freeglut'
 'freeimage' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad'
 'gst-plugins-ugly' 'gst-libav' 'opencv' 'libxcursor' 'assimp' 'boost' 'mpg123' 'rtaudio')
@@ -21,7 +21,7 @@ _name="of_v${pkgver}_${_arch}_release"
 
 source=("http://www.openframeworks.cc/versions/v${pkgver}/${_name}.tar.gz" "of-make-workspace")
 
-[[ "$CARCH" == "i686" ]] && md5sums=("4573107c7324e061043462e6efe5f85c") || md5sums=("96b1076fdcac679ff1888542851c175c")
+[[ "$CARCH" == "i686" ]] && md5sums=("c90cf6bf2653cfbeb08b6cfcce688cf7") || md5sums=("7f3a60f7603745f64946a62254393e0a")
 
 md5sums+=("594d0a3c82e0451f7b7fb353e3b658c6")
 
