@@ -5,7 +5,7 @@
 pkgdesc="Standalone systemd libs (including -compat)"
 pkgname=( 'libsystemd-standalone' 'libsystemd-login' 'libsystemd-journal' 'libsystemd-id128' 'libsystemd-daemon' 'libsystemd-udev' )
 pkgver=229
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 license=('GPL2' 'LGPL2.1' 'MIT')
@@ -27,7 +27,6 @@ build() {
 package_libsystemd-standalone() {
   install='libsystemd.install'
   provides=( 'libsystemd.so' 'libsystemd' )
-  conflicts=( 'libsystemd' )
 
   cd "$srcdir/systemd-${pkgver}"
   install -Dm644 .libs/libsystemd.so.0.14.0 "${pkgdir}/usr/lib/libsystemd.so.0.14.0"
