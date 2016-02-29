@@ -1,6 +1,6 @@
 # Maintainer: Grigorii Horos <horosgrisa@gmail.com>
 
-_git=4da8c4265b13c778a4d7dbca25ee8e1241940859
+_git=a79802a658bf29fcec6a0043fb0674f4da99a74a
 _repo=papirus-suite
 pkgbase=papirus
 pkgname=(
@@ -22,7 +22,7 @@ pkgname=(
     'smplayer-theme-papirus'
     'libreoffice-style-papirus'
 )
-pkgver=20160218
+pkgver=20160301
 pkgrel=1
 arch=('any')
 url="https://github.com/varlesh/${_repo}"
