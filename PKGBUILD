@@ -15,11 +15,12 @@ optdepends=('acpi_call: Sandy Bridge and newer ThinkPad battery functions'
             'smartmontools: Display S.M.A.R.T. data in tlp-stat'
             'tp_smapi: ThinkPad battery functions'
             'x86_energy_perf_policy: Set energy versus performance policy on x86 processors'
-            'openrc-core: for using openrc tlp service')
+          # 'openrc-core: for using openrc tlp service'
+)
 conflicts=('laptop-mode-tools' 'tlp')
 provides=($_pkgname)
 backup=('etc/default/tlp')
-install=("$pkgname.install")
+install="$pkgname.install"
 arch=('any')
 url='http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html'
 license=('GPL2' 'GPL3')
