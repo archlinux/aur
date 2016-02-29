@@ -1,0 +1,22 @@
+# Mon Feb 29 09:01:27 UTC 2016
+pkgbase = brother-mfc-l8650cdw
+	pkgdesc = LPR and CUPS driver for the Brother MFC-L8650CDW
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
+	install = brother-mfc-l8650cdw.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = tcsh
+	depends = deb2targz
+	depends = perl
+	depends = a2ps
+	depends = lib32-libcups
+	source = http://download.brother.com/welcome/dlf101088/mfcl8650cdwlpr-1.1.2-1.i386.deb
+	source = http://download.brother.com/welcome/dlf101089/mfcl8650cdwcupswrapper-1.1.2-1.i386.deb
+	sha256sums = 3c9367b144c067f1c9e51b974f8c1e23a1294aa6fd572d4aa229af15ca066e10
+	sha256sums = 2437531477231ec1c9833725e69882d82c2cfb42d7e17e535619d767733e7515
+
+pkgname = brother-mfc-l8650cdw
+
