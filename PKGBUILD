@@ -1,19 +1,21 @@
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=lambdanative
-pkgver=1.0.5
-pkgrel=2
+pkgver=1.0.7
+pkgrel=1
 pkgdesc='Write mobile applications in Scheme'
 arch=('x86_64' 'i686')
 url='https://github.com/part-cw/lambdanative'
 license=('custom')
 depends=('android-sdk' 'android-ndk' 'gambit-c' 'zip')
-#source=("git://github.com/part-cw/lambdanative.git#tag=v$pkgver")
-source=("git://github.com/part-cw/lambdanative.git#commit=98b70e")
+makedepends=('setconf')
+#source=("git://github.com/part-cw/lambdanative.git#commit=98b70e")
+source=("git://github.com/part-cw/lambdanative.git#tag=v$pkgver")
 md5sums=('SKIP')
 
 prepare() {
   cd lambdanative
+
   cp SETUP.template SETUP
   setconf SETUP ANDROIDSDK /opt/android-sdk
   setconf SETUP ANDROIDNDK /opt/android-ndk
