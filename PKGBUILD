@@ -3,12 +3,12 @@
 pkgbase='swift'
 pkgname=('swift-im' 'swiften')
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc='XMPP client written in C++ with Qt and Swiften'
 url="http://swift.im/"
 license=('GPL3')
-makedepends=('python2' 'openssl' 'boost' 'qt5-base' 'qt5-multimedia'
+makedepends=('python2' 'openssl' 'boost' 'qt5-multimedia'
              'qt5-webkit' 'qt5-x11extras' 'qt5-tools')
 source=("http://swift.im/downloads/releases/$pkgbase-$pkgver/$pkgbase-$pkgver.tar.gz")
 sha256sums=('8aa490431190294e62a9fc18b69ccc63dd0f561858d7d0b05c9c65f4d6ba5397')
@@ -24,8 +24,9 @@ build() {
 
 package_swift-im() {
   pkgdesc='XMPP client written in C++ with Qt and Swiften'
-  depends=("swiften=$pkgver" 'qt5-base' 'qt5-multimedia' 'qt5-webkit' 'qt5-x11extras')
+  depends=("swiften=$pkgver" 'qt5-multimedia' 'qt5-webkit' 'qt5-x11extras' 'libxss' 'hicolor-icon-theme')
   optdepends=('qt5-svg: for SVG avatars')
+  install="$pkgname.install"
 
   cd "$srcdir/$_directory"
   ./scons $_scons_options SWIFT_INSTALLDIR="$pkgdir/usr/" "$pkgdir/usr/"
@@ -33,7 +34,7 @@ package_swift-im() {
 
 package_swiften() {
   pkgdesc='XMPP library written in C++ with Boost'
-  depends=('boost-libs')
+  depends=('boost-libs' 'libxml2' 'libidn' 'avahi' 'openssl')
 
   cd "$srcdir/$_directory"
   ./scons $_scons_options SWIFTEN_INSTALLDIR="$pkgdir/usr/" "$pkgdir/usr/"
