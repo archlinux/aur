@@ -23,11 +23,11 @@ pkgbase=kodi-devel
 pkgname=('kodi-devel' 'kodi-devel-eventclients')
 _gitname=xbmc
 
-pkgver=16.0rc3
+pkgver=16.0
 _gitver=$pkgver-Jarvis
 
 _pkgsrcname=$_gitname-$_gitver
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://xbmc.org"
 license=('GPL' 'LGPL')
@@ -44,7 +44,7 @@ makedepends=(
 )
 
 source=("https://github.com/xbmc/xbmc/archive/$_gitver.tar.gz")
-sha256sums=('9e9062fef4a99112667f5e01bbdc10d0d0107c2aa3ed0405fec17f9fde01e443')
+sha256sums=('0421ea1337cdee674f8a36d995f54152b5ddc4100e53410b3aeeb3b3f7d53946')
 
 _prefix='/usr'
 
