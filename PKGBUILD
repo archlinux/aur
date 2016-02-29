@@ -2,10 +2,10 @@
 
 pkgname=g2clib
 pkgver=1.4.0
-pkgrel=5
+pkgrel=6
 pkgdesc="GRIB2 encoder/decoder (C version)"
 url="http://www.nco.ncep.noaa.gov/pmb/codes/GRIB2"
-license="custom:NWS"
+license=("custom:NWS")
 arch=('i686' 'x86_64')
 provides=(g2clib)
 dependes=(jasper libpng)
