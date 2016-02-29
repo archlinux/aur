@@ -11,6 +11,7 @@ depends=('glibc' 'libevdev' 'libudev.so' 'libratbag>=0.2')
 makedepends=('git' 'systemd>=227')
 source=("https://github.com/libratbag/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('ebe49e42e5347c61c8474aae53b55319c3b7a70f3b2efa7c6f4c1d83aa26a9b5')
+conflicts=('ratbag-git')
 
 build() {
     cd ${pkgname}-${pkgver}

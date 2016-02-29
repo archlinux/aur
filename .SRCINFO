@@ -12,6 +12,7 @@ pkgbase = ratbagd
 	depends = libevdev
 	depends = libudev.so
 	depends = libratbag>=0.2
+	conflicts = ratbag-git
 	source = https://github.com/libratbag/ratbagd/archive/0.0.1.tar.gz
 	sha256sums = ebe49e42e5347c61c8474aae53b55319c3b7a70f3b2efa7c6f4c1d83aa26a9b5
 
