@@ -1,7 +1,7 @@
 # Maintainer: Chris Höppner <me@mkaito.com>
 _pkgname=dasht
 pkgname=$_pkgname-git
-pkgver=r35.02c9c58
+pkgver=1.1.0.r1.g02e96d7
 pkgrel=1
 pkgdesc="API documentation in your terminal"
 arch=(any)
@@ -14,10 +14,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    ( set -o pipefail
-      git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-          printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
