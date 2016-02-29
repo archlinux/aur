@@ -13,7 +13,7 @@ makedepends=('cmake' 'gcc' 'boost<1.60.0')
 source=("$pkgname::git+https://github.com/kpeeters/cadabra2" "package.patch" "cadabra.desktop")
 md5sums=('SKIP'
          'bae9fc577f0057f24ac51fca61aeac78'
-         '04718d712ef65dbe5513ae674cc6ec33')
+         'ae0a847eb30b8ef1e3af5f3e67ecc8b4')
 install=package.install
 
 
