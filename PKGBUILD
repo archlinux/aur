@@ -1,20 +1,21 @@
+# CPAN Name  : XML-NamespaceFactory
 # Contributor: Anonymous
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-xml-namespacefactory'
-pkgver='1.00'
+pkgver='1.02'
 pkgrel='1'
-pkgdesc="Simple factory objects for SAX namespaced names"
+pkgdesc="Simple factory objects for SAX namespaced names."
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl')
+depends=('perl>=0')
 makedepends=()
-url='http://search.cpan.org/dist/XML-NamespaceFactory'
-source=('http://search.cpan.org/CPAN/authors/id/P/PE/PERIGRIN/XML-NamespaceFactory-1.00.tar.gz')
-md5sums=('7690c6c95ef3f26e5279f456ed6b3cf0')
-sha512sums=('91371892136314d45749c31023ff1c9f19437d2508c33532ec6436968fbabeb42e75efb7bacc3c26503989368d1f5ed7e7e8b194fb3f157df5cd00b601020686')
-_distdir="XML-NamespaceFactory-1.00"
+url='https://metacpan.org/release/XML-NamespaceFactory'
+source=('http://search.cpan.org/CPAN/authors/id/P/PE/PERIGRIN/XML-NamespaceFactory-1.02.tar.gz')
+md5sums=('38917352898dc8fdbe9243b11113d416')
+sha512sums=('c9fe4fc8f34034373bf205962940c45f7f01c8763e8aaea37af5c1e3d7d1aab4520c7d35f3d521e4209acc12eb3427d727dba3399f1978cc6ba02271b9e35482')
+_distdir="XML-NamespaceFactory-1.02"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,6 +40,7 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
+
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
