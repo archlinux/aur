@@ -1,13 +1,13 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Jake <ja.ke@posteo.de>
 pkgname=flatcam-git
 _pkgname=FlatCAM
-pkgver=r309.4e0fa74
+pkgver=r336.3280427
 pkgrel=1
 pkgdesc="Generates CNC gcode from 2D PCB files (Gerber/Excellon/SVG)"
 arch=('any')
-url="flatcam.org"
+url="http://flatcam.org"
 license=('MIT')
-depends=('python2-simplejson' 'python2-pyqt4' 'python2-scipy' 'python2-matplotlib' 'python2-shapely' 'python2-rtree' 'python2-svg.path')
+depends=('tk' 'python2-simplejson' 'python2-pyqt4' 'python2-scipy' 'python2-matplotlib' 'python2-shapely' 'python2-rtree' 'python2-svg.path')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -16,7 +16,7 @@ source=("git+https://bitbucket.org/jpcgt/flatcam.git"
 		"$pkgname.desktop")
 md5sums=('SKIP'
          '80700f0bb07c959dc3019d9664472387'
-         'e6496ad0b956d83fbe0e28a3b94e6c4f')
+         '75964eb8fb5d9fbb3da848edbf52af7a')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
