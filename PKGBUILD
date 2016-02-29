@@ -3,12 +3,13 @@
 
 pkgname=boost-build
 pkgver=1.60
-pkgrel=1
+pkgrel=2
 pkgdesc="Boost.Build makes it easy to build C++ projects, everywhere."
 arch=('any')
 url="http://www.boost.org/build/"
 license=('custom:boost')
 depends=('boost' 'gcc' 'python')
+conflicts=('boost' 'boost-build-nightly')
 source=("https://github.com/boostorg/build/archive/boost-${pkgver}.0.tar.gz"
         "http://www.boost.org/LICENSE_1_0.txt")
 md5sums=('987767d1e22e34e5b90e54ff6b526f40'
