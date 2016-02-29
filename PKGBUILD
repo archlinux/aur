@@ -15,10 +15,10 @@ _dejavu_font_dir="/usr/share/fonts/TTF"
 _gs_font_dir="/usr/share/fonts/Type1"
 _windows_font_dir="/usr/share/fonts/WindowsFonts"
 _srcname="ImageMagick"
-_srcver="6.9.3-5"
+_srcver="6.9.3-6"
 pkgname=imagemagick-full
 pkgver="$(echo ${_srcver} | tr '-' '.')"
-pkgrel=4
+pkgrel=1
 pkgdesc="An image viewing/manipulation program (Q32 HDRI with all libs and features)"
 arch=('i686' 'x86_64')
 url="http://www.imagemagick.org/"
@@ -45,7 +45,7 @@ backup=("etc/ImageMagick-${pkgver%%.*}/coder.xml"
         "etc/ImageMagick-${pkgver%%.*}/type-windows.xml")
 options=('!docs' 'libtool' '!emptydirs')
 source=("http://www.imagemagick.org/download/${_srcname}-${_srcver}.tar.xz")
-sha256sums=('1546ae5717eaab221e0613393d78a0862e6d37869b1d1d54ccee3c62275837bf')
+sha256sums=('519b14a5f58f5b55a61bebd378aff63176d8c2e9d1eb23ee332d2cc73d11943f')
 
 build() {
 	cd "$_srcname"-"$_srcver"
