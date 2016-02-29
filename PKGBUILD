@@ -2,6 +2,7 @@
 
 pkgname=('peercoin-qt' 'ppcoind')
 pkgbase=peercoin
+_gitname=ppcoin
 pkgver=0.4.2
 pkgrel=1
 pkgdesc="Peercoin wallet client."
@@ -20,12 +21,12 @@ sha256sums=('d1217b40f8b9933b4e824eb4a6f9bfefce6e793f3cafdcf32420c9d7b7049125'
             '5123ec91ad8b304f46c53f49b52ffd1e41c66c3df40c23209128ce2761f7c079')
 
 prepare() {
-	cd "$srcdir/peercoin-${pkgver}ppc"
+	cd "$srcdir/${_gitname}-${pkgver}ppc"
 	patch -p1 -i ../upnp-1.9.patch
 }
 
 build() {
-	cd "$srcdir/ppcoin-${pkgver}ppc"
+	cd "$srcdir/${_gitname}-${pkgver}ppc"
 
 	## make qt gui
 	qmake-qt4 USE_QRCODE=1 USE_UPNP=1 USE_SSL=1 \
@@ -34,7 +35,6 @@ build() {
 	make
 
 	## make ppcoind
-	#cd "$srcdir/peercoin"
   	make -f makefile.unix USE_UPNP=1 USE_SSL=1 -e PIE=1 -C src
 }
 
@@ -49,7 +49,7 @@ package_peercoin-qt() {
 	install -Dm644 ${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	install -Dm644 peercoin-qt@.service "${pkgdir}/usr/lib/systemd/system/peercoin-qt@.service"
 
-	cd "$srcdir/peercoin-${pkgver}ppc"
+	cd "$srcdir/${_gitname}-${pkgver}ppc"
 	install -Dm755 ppcoin-qt "${pkgdir}/usr/bin/peercoin-qt"
 	#install -Dm644 COPYING "${pkgdir}/usr/share/licenses/peercoin/COPYING"
 	install -Dm644 "src/qt/res/icons/ppcoin.png" "${pkgdir}/usr/share/pixmaps/peercoin.png"
@@ -64,8 +64,8 @@ package_ppcoind() {
 	pkgdesc="Official implementation of Peercoin, the sustainable and secure cryptocurrency alternative to Bitcoin - daemon."
 
 	install -Dm644 ppcoind@.service "$pkgdir/usr/lib/systemd/system/ppcoind@.service"
-	install -Dm644 "$srcdir/peercoin-${pkgver}ppc/COPYING" "$pkgdir/usr/share/licenses/peercoin/COPYING"
+	install -Dm644 "$srcdir/${_gitname}-${pkgver}ppc/COPYING" "$pkgdir/usr/share/licenses/peercoin/COPYING"
 
-	cd "$srcdir/peercoin-${pkgver}ppc"
+	cd "$srcdir/${_gitname}-${pkgver}ppc"
 	install -Dm755 "src/ppcoind" "$pkgdir/usr/bin/ppcoind"
 }
