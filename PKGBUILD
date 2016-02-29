@@ -15,8 +15,6 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gobject-introspection' 'gperf'
 options=('strip')
 source=( "https://github.com/systemd/systemd/archive/v${pkgver}.tar.gz" )
 
-conflicts=( 'libsystemd' )
-
 build() {
   cd "systemd-$pkgver"
 
@@ -29,6 +27,7 @@ build() {
 package_libsystemd-standalone() {
   install='libsystemd.install'
   provides=( 'libsystemd.so' 'libsystemd' )
+  conflicts=( 'libsystemd' )
 
   cd "$srcdir/systemd-${pkgver}"
   install -Dm644 .libs/libsystemd.so.0.14.0 "${pkgdir}/usr/lib/libsystemd.so.0.14.0"
