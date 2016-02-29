@@ -3,10 +3,10 @@
 _pkgname=ttf-timetable
 pkgname="${_pkgname}"
 pkgver=1.32.r20160226
-pkgrel=1
+pkgrel=3
 pkgdesc="Font with train timetable symbols, used by the offline timetable by CHAPS (IDOS, Timetable-Browser) or INPROP (CP, ELIS) (also retailed by České Dráhy or ŽSR)."
 arch=('any')
-url="http://www.chaps.cz/eng/download/idos#kotvaprg"
+url="http://chaps.cz/eng/download/idos/zip#kotvaprg"
 license=('custom')
 
 depends=(
@@ -17,8 +17,8 @@ depends=(
 )
 
 makedepends=(
-  "unrar"
   "fontconfig"
+  "unzip"
   "xorg-mkfontscale"
   "xorg-mkfontdir"
   "xorg-xset"
@@ -31,14 +31,16 @@ conflicts=()
 install='tt.install'
 
 source=(
-  "http://ttakt.chaps.cz/TTAktual/Win/TTFONT.EXE"
+  "ttfont.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/TTFONT.ZIP"
+  "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
   "license-dummy.txt"
   "info.url"
   "${install}"
 )
 
 sha256sums=(
-  "048d6bbe8f62fdb14c2608a40e8671c73a496563bebd0e2816edeca005f9ea4c"
+  "8438e249c4112ac1acda4610a5fc37fd0032b5ca8e48eb86214d5560449c7931"
+  "e904d167ccdcfb2743f4cfd596aaa9dce8b751fb5c8315b972b42b7cbb3189e6"
   "c6bb216055d3670d3100b7a74e04ce0644030f365f4349a09e630ef60fbcb9a4"
   "4c021678394399056573ae7f85779a7fde86f0c70fec6e64f6e1a379195ef4da"
   "6a00ba2e7e0e7610dd4a4a064716bcf368b4269f75046aee585208dd3d6a998f"
@@ -72,22 +74,16 @@ pkgver() {
   return ${_exitcode}
 }
 
-prepare() {
-  _unpackeddir="${srcdir}"
-  cd "${_unpackeddir}"
-  msg "Extracting font from RAR-archive ..."
-  unrar x -xInstFont.exe TTFONT.EXE
-}
-
 package() {
   _unpackeddir="${srcdir}"
   cd "${_unpackeddir}"
 
-  install -D -m644 "${_fontfile}" "${pkgdir}/usr/share/fonts/timetable/TT.ttf"
+  install -D -m644 "${_unpackeddir}/${_fontfile}" "${pkgdir}/usr/share/fonts/timetable/TT.ttf"
   ln -s TT.ttf "${pkgdir}/usr/share/fonts/timetable/tt.ttf"
   ln -s TT.ttf "${pkgdir}/usr/share/fonts/timetable/timetable.ttf"
   
   install -D -m644 info.url "${pkgdir}/usr/share/doc/${pkgname}/info.url"
 
   install -D -m644 license-dummy.txt "${pkgdir}/usr/share/licenses/${pkgname}/copying.txt"
+  install -D -m644 "${srcdir}/IDOS-Licence.pdf" "${pkgdir}/usr/share/licenses/${pkgname}/IDOS-Licence.pdf"
 }
