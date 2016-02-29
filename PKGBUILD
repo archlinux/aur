@@ -52,8 +52,8 @@ pkgbase=linux-rt-bfq
 pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _kernelname=-rt-bfq
 _srcname=linux-4.4
-_pkgver=4.4.2
-_rtpatchver=rt7
+_pkgver=4.4.3
+_rtpatchver=rt9
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -80,9 +80,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch'
         'config' 'config.x86_64'
         'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch'
-        '0004-sdhci-revert.patch'
-        '0007-4.4-revert-btrfs.patch'
-        '0008-4.4-revert-xfs.patch')
+        '0004-sdhci-revert.patch')
         
 prepare() {
     cd ${_srcname}
@@ -104,12 +102,7 @@ prepare() {
     # fixes #47778 sdhci broken on some boards
     # https://bugzilla.kernel.org/show_bug.cgi?id=106541
         msg "Fixes #47778 sdhci broken on some boards"
-        patch -Rp1 -i "${srcdir}/0004-sdhci-revert.patch"    
-        
-    ### Fix broken suspend from btrfs and xfs
-        msg "Fix #47757"
-        patch -Np1 -i "${srcdir}/0007-4.4-revert-btrfs.patch"
-        patch -Np1 -i "${srcdir}/0008-4.4-revert-xfs.patch"    
+        patch -Rp1 -i "${srcdir}/0004-sdhci-revert.patch"        
     
     ### set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
     # remove this when a Kconfig knob is made available by upstream
@@ -465,9 +458,9 @@ package_linux-rt-bfq-docs() {
 
 sha512sums=('13c8459933a8b80608e226a1398e3d1848352ace84bcfb7e6a4a33cb230bbe1ab719d4b58e067283df91ce5311be6d2d595fc8c19e2ae6ecc652499415614b3e'
             'SKIP'
-            '3222ddc913d14cd4b4ae999890afb580db9a79337dcd42876db6bbf08d351982bb1849fd97152915b570a3408ddd2be645e851736615f90ad8354244116ae12c'
+            '8477ecd07d06bc6c6d75dc95027920e1f41128fa8a6b382377d7a0a64ccbca719a464ef64397a3715e7ffe400640c6590ab5da691690472d1f9311ed82041d50'
             'SKIP'
-            '2ab9c7bdf2f5b43a74840a82f34f4a354c3a0c21407993ca1afc84b077f29a5a1e34079d70705a59f853e4c48665d763ffd379e3637c6dc8616cfafc517c6280'
+            '1e0a4f94bc2d80f734cfec7dba95ca5b9d2d027dea203805089915a28c4a87d5a1b019236a997eee2dfaca254023bed6f73f6fbd8b8a28abf9fc2a935435a859'
             'SKIP'
             'bfd5d1a2d8f203e4d13914d311e8cc79b81695a41dc24179074cb05a5a9b5b0cc89a77062c6b8f79c850281aaa0d02dce40e23750aea7d1015f675c1cc024027'
             '275b7573adf648325ab950f8a8be7753f2efac0c4cd5030d31b0482fca0b9b9886c85dec989acde15eadf128366c250ecbd19d5527bfb41f472425fef43e93fd'
@@ -478,9 +471,7 @@ sha512sums=('13c8459933a8b80608e226a1398e3d1848352ace84bcfb7e6a4a33cb230bbe1ab71
             '756a5c5ec2db9153d0f749c4f358501d78743ab6f7538c7c127aad0a6a0bd21364f15315689f4ccd8c7b559e4cebefdfb8bb55ee90aabe3d0bd5a3d5f00703c7'
             '56ce250e1b14b03b28dfdf03923ffd173d05edc5fe9dcf5daecd121370e618d62eb8448b930503d69989c9c7ee3e3d8b64768962e78f5a1d08ba1267405192df'
             '326dc571c072d4c47381852f16c00c8a7b27d11a5e6ff0f60f5e3a21d4a833c1e467dda1c2a5c04a6611af48bb6ef017f9183ea4ee578aab1a07e91e44d4e528'
-            'be80d7ee558595d4b17b07a5a2b729d9a9503c963ec1b19bac6a87601eaefd28075aea7fb6d9c77e2e15e063fc6a8a2e8744bc1efe63e2a58b8c3ede0d89c821'
-            '9ebfcb5bfa613bd6b2c2817d3487bd22c2fbbb5f686f68c28912813be141d584b33cc8d8f175ce7cf10ec686902f7336c966b04b00d6aa5409298f1474c58035'
-            '321a4817ca9a7486f7bf212978e6eeab1481b31c37d35209d7062be7d9f360d5b1f26b2dc45a4c46879c2d14b4ed212b322ea91d0fb85f74d6c298a7cc2a3198')
+            'be80d7ee558595d4b17b07a5a2b729d9a9503c963ec1b19bac6a87601eaefd28075aea7fb6d9c77e2e15e063fc6a8a2e8744bc1efe63e2a58b8c3ede0d89c821')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
