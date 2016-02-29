@@ -9,13 +9,14 @@ arch=('any')
 url="https://github.com/lkl/linux/blob/master/Documentation/lkl.txt"
 license=('GPL2')
 depends=('mingw-w64-crt' 'mingw-w64-winpthreads')
-makedepends=('bc' 'python2' 'git' 'mingw-w64-configure' 'mingw-w64-gcc')
+makedepends=('bc' 'python' 'git' 'mingw-w64-configure' 'mingw-w64-gcc' 'mingw-w64-binutils-weak')
 options=('!buildflags' 'staticlibs')
 source=('git+git://github.com/lkl/linux.git')
 sha256sums=('SKIP')
 
 export LC_ALL=C
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures="i686-w64-mingw32" 
+# x86_64-w64-mingw32 : not yet supported Win64 LLP64, long bit size errors in Linux source
 
 pkgver() {
   cd "${srcdir}/${_srcname}"
@@ -27,11 +28,6 @@ prepare() {
   cd "${srcdir}/${_srcname}"
   cd tools
   # apply patches or something
-  msg "set python2 as default"
-  rm -rf bin
-  mkdir -p bin
-  ln -s /usr/bin/python2 bin/python
-  export PATH="${srcdir}/${_srcname}"/tools/bin:"${PATH}"
 }
 
 build() {
