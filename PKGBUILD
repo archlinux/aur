@@ -3,9 +3,9 @@
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=2.5.3
-pkgrel=1
+pkgrel=2
 _wwwpkgname=AdminLTE
-_wwwpkgver=1.0.0
+_wwwpkgver=1.1.3
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
 arch=('any')
 license=('GPL2')
@@ -29,7 +29,7 @@ source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	blacklist.txt)
 
 md5sums=('30dbf80661c93668f7215e2c708693dc'
-         'a2ec5ea92cce506f0fc61cc0a8f2c527'
+         'bca9867ebc3f93e92a522c4968d8fb56'
          '791c86996377ceca23d1459ea0fd5cd6'
          'fd607f890103e97e480d814a5dfbee5b'
          '06bb49cf66cc1db8be5e476a54b1e933'
@@ -67,9 +67,12 @@ prepare() {
   sed -i 's|/usr/local/bin/|/usr/bin/|' "$srcdir"/$_wwwpkgname-$_wwwpkgver/index.php
   sed -i 's|/usr/local/bin/|/usr/bin/|' "$srcdir"/$_wwwpkgname-$_wwwpkgver/api.php
 
+  # change log location in admin php interface
+  sed -i 's|/var/log/pihole.log|/run/log/pihole.log|' "$srcdir"/$_wwwpkgname-$_wwwpkgver/data.php
+
   # since we don't directly install from git...
-  sed -i '/<b>Pi-hole Version <\/b> /,+1d' "$srcdir"/$_wwwpkgname-$_wwwpkgver/index.php
-  sed -i '/<div class="pull-right hidden-xs">/a<b>Pi-hole Version </b> '"$pkgver"'\n<b> - Web Interface Version </b>'"$_wwwpkgver"'' "$srcdir"/$_wwwpkgname-$_wwwpkgver/index.php
+  sed -i '/<b>Pi-hole Version <\/b> /,+1d' "$srcdir"/$_wwwpkgname-$_wwwpkgver/footer.php
+  sed -i '/<div class="pull-right hidden-xs">/a<b>Pi-hole Version </b> '"$pkgver"'\n<b> - Web Interface Version </b>'"$_wwwpkgver"'' "$srcdir"/$_wwwpkgname-$_wwwpkgver/footer.php
 }
 
 package() {
