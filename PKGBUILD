@@ -1,8 +1,7 @@
-# Maintainer: Brent Saner <brent (dot) saner (at) gmail (dot) com>
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
 pkgname=dumpet
 pkgver=2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A tool for debugging El Torito boot images."
 arch=('i686' 'x86_64')
 url="https://fedorahosted.org/dumpet/"
