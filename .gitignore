@@ -2,7 +2,6 @@
 src/
 pkg/
 binutils-*.tar.bz2
-binutils-gdb/
 *.sig
 *.sign
 *.part

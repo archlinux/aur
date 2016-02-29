@@ -6,26 +6,24 @@
 
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-binutils
-pkgver=2.25.1
-pkgrel=3
-_commit=2bd25930
+pkgver=2.26
+pkgrel=2
+_commit=a4496709
 pkgdesc="A set of programs to assemble and manipulate binary and object files (${_target})"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/binutils/"
 license=('GPL')
-depends=('glibc>=2.22' 'zlib')
+depends=('glibc>=2.23' 'zlib')
 options=('staticlibs' '!distcc' '!ccache')
-source=(ftp://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.bz2)
-source=(git://sourceware.org/git/binutils-gdb.git#commit=${_commit}
-        binutils-e9c1bdad.patch)
-md5sums=('SKIP'
-         'eb3aceaab8ed26e06d505f82beb30f8f')
+source=(#git://sourceware.org/git/binutils-gdb.git#commit=${_commit}
+        http://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.bz2
+        binutils-${_commit}.patch)
+md5sums=(#'SKIP'
+         '64146a0faa3b411ba774f47d41de239f'
+         '75d2258beeec4b7446db839a0ea615ae')
 
 prepare() {
-  cd ${srcdir}/binutils-gdb
-
-  # https://sourceware.org/bugzilla/show_bug.cgi?id=16992
-  patch -p1 -i ${srcdir}/binutils-e9c1bdad.patch
+  cd binutils-${pkgver}
 
   # hack! - libiberty configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
@@ -34,9 +32,9 @@ prepare() {
 }
 
 build() {
-  cd ${srcdir}/binutils-build
+  cd binutils-build
 
-  ${srcdir}/binutils-gdb/configure --prefix=/usr \
+  ../binutils-${pkgver}/configure --prefix=/usr \
       --program-prefix=${_target}- \
       --with-lib-path=/usr/lib/binutils/${_target} \
       --with-local-prefix=/usr/lib/${_target} \
@@ -54,18 +52,18 @@ build() {
 }
 
 check() {
-  cd ${srcdir}/binutils-build
-
+  cd binutils-build
+  
   # unset LDFLAGS as testsuite makes assumptions about which ones are active
   # ignore failures in gold testsuite...
   make -k LDFLAGS="" check || true
 }
 
 package() {
-  cd ${srcdir}/binutils-build
+  cd binutils-build
   make prefix=${pkgdir}/usr tooldir=${pkgdir}/usr install
 
   # Remove unwanted files
   rm -rf ${pkgdir}/usr/share
-  rm -f ${pkgdir}/usr/bin/{ar,as,ld,nm,objdump,ranlib,strip,objcopy}
+  rm -f ${pkgdir}/usr/bin/{ar,as,ld,nm,objdump,ranlib,readelf,strip,objcopy}
 }
