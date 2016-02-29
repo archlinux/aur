@@ -1,0 +1,20 @@
+pkgbase = sterm
+	pkgdesc = A simple terminal emulator based on the VTE library
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/flocke/sterm
+	install = sterm.install
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = pkg-config
+	depends = glib2
+	depends = gtk3
+	depends = pango
+	depends = vte3
+	conflicts = sterm-git
+	source = sterm-0.1.0.tar.gz::https://github.com/flocke/sterm/archive/v0.1.0.tar.gz
+	md5sums = 676fb06b2b3055d135d5e0e6d03db74d
+
+pkgname = sterm
+
