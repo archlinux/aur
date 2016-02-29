@@ -9,6 +9,7 @@ url="https://github.com/sunaku/dasht"
 license=('ISC')
 depends=('bash' 'sqlite' 'wget' 'socat' 'w3m')
 makedepends=('git')
+conflicts=('dasht')
 source=('git+https://github.com/sunaku/dasht.git')
 md5sums=('SKIP')
 
