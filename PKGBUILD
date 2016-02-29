@@ -5,7 +5,7 @@
 _pkgname=wwwoffle
 pkgname="${_pkgname}-svn"
 # _pkgver=2.9i
-pkgver=2.9j.r2212
+pkgver=2.9j.r2219
 pkgrel=1
 pkgdesc="Simple caching proxy server with special features (request, recursive fetch, ...) for use with dial-up internet links. Includes startup scripts for OpenRC, System V init, systemd."
 arch=('i686' 'x86_64' 'arm' 'arm64')
@@ -32,7 +32,11 @@ conflicts=(
   "${_pkgname}-systemd"
 )
 
-backup=('etc/wwwoffle/wwwoffle.conf')
+backup=(
+  'etc/wwwoffle'
+  'etc/wwwoffle/wwwoffle.conf'
+)
+
 install="${_pkgname}.install"
 
 _svnurl="http://gedanken.org.uk/svn/wwwoffle/trunk"
