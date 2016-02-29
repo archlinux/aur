@@ -2,18 +2,19 @@
 # vim: set expandtab ts=2 sw=2:
 
 pkgname=gx-go
-pkgver=0.2.0
+pkgver=0.3.0.r0.g68d91f3
 pkgrel=1
 epoch=
 pkgdesc="A tool to use with the gx package manager for packages written in go."
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/whyrusleeping/$pkgname"
 license=('MIT')
+depends=('gx')
 makedepends=('git' 'go')
 source=("git+${url}.git")
 md5sums=('SKIP')
 
-pkgver_DISABLED() {
+pkgver() {
   # Renable after tags are placed in the repo.
   cd "$srcdir/$pkgname"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
