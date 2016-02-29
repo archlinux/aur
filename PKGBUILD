@@ -1,16 +1,17 @@
 # Maintainer: Carlos Silva <r3pek@r3pek.org
 
 pkgname=ratbagd-git
-pkgver=r66.8a8379c
+pkgver=r69.d6116e0
 pkgrel=1
 pkgdesc='ratbagd is a system daemon to introspect and modify configurable mice'
 arch=('i686' 'x86_64')
-url='https://github.com/libratbag/libratbag'
+url='https://github.com/libratbag/ratbagd'
 license=('MIT')
-depends=('glibc' 'libevdev' 'libudev.so' 'libratbag')
-makedepends=('git' 'systemd')
+depends=('glibc' 'libevdev' 'libudev.so' 'libratbag>=0.2')
+makedepends=('git' 'systemd>=227')
 source=('git+https://github.com/libratbag/ratbagd.git')
 sha256sums=('SKIP')
+conflicts=('ratbagd')
 
 pkgver() {
   cd ratbagd
