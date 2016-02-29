@@ -2,7 +2,7 @@
 
 pkgname=radeon-profile-daemon-git
 pkgver=20160124
-pkgrel=1
+pkgrel=2
 pkgdesc="System daemon for radeon-profile"
 url="http://github.com/marazmista/radeon-profile-daemon"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('qt5-base' 'xf86-video-ati' 'radeon-profile')
 provides=('radeon-profile-daemon')
 replaces=('radeon-profile-daemon')
-source=('git://github.com/marazmista/radeon-profile-daemon.git')
+source=('git+https://github.com/marazmista/radeon-profile-daemon.git')
 sha256sums=('SKIP')
  
 build() {
