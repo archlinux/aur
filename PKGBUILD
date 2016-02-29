@@ -2,7 +2,7 @@
 
 _pkgname=setbfree
 pkgname="${_pkgname}-git"
-pkgver=0.8.0.28.g437629e
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="A DSP tonewheel organ emulator"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ license=('GPL')
 depends=('desktop-file-utils' 'ftgl' 'gtk-update-icon-cache' 'jack' 'pango'
          'ttf-bitstream-vera')
 makedepends=('libicns' 'lv2')
-conflicts="${_pkgname}"
-provides="${_pkgname}"
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
 install="$_pkgname.install"
 source=("$_pkgname::git+https://github.com/pantherb/setBfree.git"
         'x42-whirl.desktop')
