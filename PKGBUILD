@@ -5,7 +5,7 @@
 # Contributor: Artem Sheremet <dot_doom_at_gmail_dot_com>
 
 pkgname=sky
-pkgver=2.0.462
+pkgver=2.0.464
 pkgrel=1
 pkgdesc="Lync & Skype for business on Linux"
 
@@ -32,7 +32,7 @@ makedepends=('binutils' 'chrpath')
 source_x86_64=("http://tel.red/linux/sky_ubuntu64_v${pkgver}.deb")
 #source_i686=("http://tel.red/linux/sky_ubuntu32_v${pkgver}.deb")
 
-sha256sums_x86_64=('2c24aad9bf863766cb92ae50b9ac29184051c2509cdda8c615b977c7d8e8f051')
+sha256sums_x86_64=('e22c054390bc26b37c943c337362de69fac337c4eea4ff3cb5dac2babf66b597')
 
 package() {
     cd "${srcdir}"
