@@ -1,7 +1,7 @@
 # Maintainer: Daniel Haß <aur@hass.onl>
 _pkgname=jesus
 pkgname=$_pkgname-git
-pkgver=81af4d4
+pkgver=544.0c04880
 pkgrel=1
 pkgdesc="A filemanager build with elementary"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/$_pkgname"
 
-  git rev-parse --short HEAD
+  echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
