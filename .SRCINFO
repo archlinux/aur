@@ -1,6 +1,6 @@
 pkgbase = trizen
 	pkgdesc = Trizen's AUR Package Manager: A lightweight wrapper for AUR.
-	pkgver = 129.bd29514
+	pkgver = 131.ef24b20
 	pkgrel = 1
 	url = https://github.com/trizen/trizen
 	arch = any

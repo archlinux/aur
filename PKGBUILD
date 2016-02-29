@@ -1,7 +1,7 @@
 # Maintainer: Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
 
 pkgname=trizen
-pkgver=129.bd29514
+pkgver=131.ef24b20
 pkgrel=1
 pkgdesc="Trizen's AUR Package Manager: A lightweight wrapper for AUR."
 arch=('any')
