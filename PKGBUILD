@@ -22,7 +22,7 @@ build() {
 package() {
 
   cd $srcdir/$pkgname-$pkgver/
-  install -m644 -d $pkgdir/lib/$pkgname/ $pkgdir/include/$pkgname/
-  cp -r lib/* $pkgdir/lib/$pkgname/
-  cp -r include/$pkgname/* $pkgdir/include/$pkgname/
+  install -m644 -d $pkgdir/usr/lib/$pkgname/ $pkgdir/usr/include/$pkgname/
+  cp -r lib/* $pkgdir/usr/lib/$pkgname/
+  cp -r include/$pkgname/* $pkgdir/usr/include/$pkgname/
 }
