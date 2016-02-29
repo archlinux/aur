@@ -25,5 +25,4 @@ package() {
   install -m644 -d $pkgdir/lib/$pkgname/ $pkgdir/include/$pkgname/
   cp -r lib/* $pkgdir/lib/$pkgname/
   cp -r include/$pkgname/* $pkgdir/include/$pkgname/
-  install -m644 config/99-realsense-libusb.rules $pkgdir/etc/udev/rules.d/
 }
