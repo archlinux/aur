@@ -3,7 +3,7 @@
 
 pkgname=kalu-kde
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Upgrade notifier w/ AUR support, watched (AUR) packages, news; supports autohide in KDE's panel"
 arch=('i686' 'x86_64')
 url="http://jjacky.com/kalu"
@@ -19,7 +19,8 @@ conflicts=(${pkgname%-kde})
 
 build() {
   cd "$srcdir/${pkgname%-kde}-$pkgver"
-  ./configure --prefix=/usr --enable-status-notifier
+  ./configure --prefix=/usr --enable-status-notifier \
+    --with-url-aur-prefix='https://aur.archlinux.org/rpc/?v=5&type=info'
   make
 }
 
