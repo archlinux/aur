@@ -2,7 +2,7 @@
 
 pkgname=radeon-profile-git
 pkgver=20160124
-pkgrel=1
+pkgrel=2
 pkgdesc="App for display info about radeon card"
 url="http://github.com/marazmista/radeon-profile"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ optdepends=('radeon-profile-daemon: system daemon for reading card info'
 	'xf86-video-ati: radeon open source driver')
 provides=('radeon-profile')
 replaces=('radeon-profile')
-source=('git://github.com/marazmista/radeon-profile.git')
+source=('git+https://github.com/marazmista/radeon-profile.git')
 sha256sums=('SKIP')
  
 build() {
