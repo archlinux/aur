@@ -3,7 +3,7 @@
 pkgbase=mpv
 pkgname=mpv-light
 pkgver=0.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Video player based on MPlayer/mplayer2, with selection of features.'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -46,9 +46,9 @@ build() {
     --disable-rubberband \
     --disable-vapoursynth \
     --disable-vapoursynth-lazy \
-    --disable-libswresample \
-    --enable-libavresample \
-    --disable-libavdevice \
+    --enable-libswresample \
+    --disable-libavresample \
+    --enable-libavdevice \
     --disable-oss-audio \
     --disable-rsound \
     --disable-jack \
