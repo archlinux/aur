@@ -4,7 +4,7 @@
 
 pkgname=geth
 pkgver=1.3.4
-pkgrel=3
+pkgrel=1
 pkgdesc="The go-ethereum commandline client (geth cli)."
 arch=('x86_64')
 depends=(
