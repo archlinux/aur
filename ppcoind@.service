@@ -1,0 +1,18 @@
+[Unit]
+Description=Peercoin Daemon
+After=network.target 
+
+[Service]
+User=%i
+Group=users
+Type=simple
+Restart=on-failure
+ExecStart=/usr/bin/ppcoind
+## security
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=full
+NoNewPrivileges=true
+
+[Install]
+WantedBy=default.target

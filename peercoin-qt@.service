@@ -1,0 +1,21 @@
+[Unit]
+Description=Peercoin-qt
+After=network.target
+After=graphical.target
+
+[Service]
+User=%i
+Group=users
+Type=simple
+Restart=on-failure
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=%h/.Xauthority
+ExecStart=/usr/bin/ppcoin-qt
+## security
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=full
+NoNewPrivileges=true
+
+[Install]
+WantedBy=default.target

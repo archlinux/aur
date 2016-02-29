@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Peercoin
+Comment=Core wallet for Peercoin P2P Cryptocurrency
+Exec=/usr/bin/peercoin-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/peercoin.png
+MimeType=x-scheme-handler/peercoin;
+Categories=Application;Network;
