@@ -1,8 +1,8 @@
 # Maintainer: Peter Hoeg <firstname at lastname dot com>
 
 pkgname=appc
-pkgver=0.6.1
-pkgrel=0
+pkgver=0.7.4
+pkgrel=1
 pkgdesc="App container tools"
 arch=('x86_64')
 url="https://github.com/appc/spec"
@@ -10,7 +10,7 @@ license=(apache)
 makedepends=('go')
 provides=('appc')
 source=("https://github.com/appc/spec/archive/v${pkgver}.tar.gz")
-sha1sums=('834dca9f63821195c7a0fca1444aa151ee5f5783')
+sha1sums=('7946ceb6a0764d5ac209928f0abcdfa07a02dace')
 
 build() {
   cd "spec-${pkgver}"
