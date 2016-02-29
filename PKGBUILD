@@ -2,7 +2,7 @@
 
 _pkgname=openbazaard
 pkgname=${_pkgname}-git
-pkgver=799.3379a0b
+pkgver=835.51b1e55
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
 arch=(any)
@@ -70,4 +70,4 @@ pkgver() {
 
 md5sums=('SKIP'
          'df247302f02ad1af79e009fa75ced4bc'
-         'da0bca5d508ddd18227300090f09b8b9')
+         'd66496060ae2a28c6f755a1fb29e3f37')
