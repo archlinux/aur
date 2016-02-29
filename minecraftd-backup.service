@@ -4,7 +4,10 @@ After=local-fs.target
 
 [Service]
 Type=forking
+EnvironmentFile=/etc/conf.d/minecraft
 ExecStart=/usr/bin/minecraftd backup
+USER=$MC_USER
+GROUP=$MC_USER
 
 [Install]
 WantedBy=multi-user.target

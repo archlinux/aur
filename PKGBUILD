@@ -1,15 +1,17 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 # Contributer: Philip Abernethy <chais.z3r0@gmail.com>
+# Contributer: sowieso <sowieso@dukun.de>
 
 pkgname=minecraft-server
-pkgver=1.8.9
-pkgrel=4
+pkgver=1.9
+pkgrel=1
 pkgdesc="Minecraft server unit files, script, and jar"
 arch=('any')
 url="http://minecraft.net/"
 license=('custom')
 depends=('java-runtime-headless' 'screen' 'sudo' 'bash')
-optdepends=('tar: needed in order to create world backups')
+optdepends=("tar: needed in order to create world backups"
+	"netcat: required in order to suspend an idle server")
 conflicts=('minecraft-server-systemd' 'minecraft-canary')
 options=(!strip)
 install=${pkgname}.install
@@ -21,12 +23,12 @@ source=("https://s3.amazonaws.com/Minecraft.Download/versions/${pkgver}/minecraf
 	"minecraftd.conf"
 	"minecraftd.sh")
 noextract=("minecraft_server.${pkgver}.jar")
-md5sums=('3acbaef956308c805e8e2d0a03a737e9'
-         '2cf6cdf65e0ed6aa6d452943b1e84357'
+md5sums=('ff68834eee875bcf367422c67673207c'
+         'f75c76446f96311563e87fc688148501'
          'fef6fadd0739ae03ff71ba61025be207'
-         '5ed78e366146e47f8498347e93ad5423'
-         '9f56e2a4f435e642a0b183c6bff5c206'
-         'dcf4f4b4de06c6ff3b5445539c4e3d42')
+         'cab358c32dd0d4d2463e60ee2996f658'
+         '54438e0c47cc5083e0a4376688b46092'
+         '59bf34cc34f61fc36824620bf5e7f2fd')
 
 package() {
 	install -Dm644 minecraftd.conf              "${pkgdir}/etc/conf.d/minecraft"
