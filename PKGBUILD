@@ -1,7 +1,7 @@
 # Maintainer: jjacky
 pkgname=kalu
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Upgrade notifier w/ AUR support, watched (AUR) packages, news"
 arch=('i686' 'x86_64')
 url="http://jjacky.com/kalu"
@@ -15,7 +15,8 @@ sha1sums=('bfe228e1ad758ae9818a0f9fd74bfcaa208480d1')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr \
+    --with-url-aur-prefix='https://aur.archlinux.org/rpc/?v=5&type=info'
   make
 }
 
