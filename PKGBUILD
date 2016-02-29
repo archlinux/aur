@@ -10,7 +10,7 @@ if [[ $CARCH == "x86_64" ]]; then
 fi
 pkgver=355.00.28
 _extramodules=extramodules-4.4-ARCH
-pkgrel=4
+pkgrel=5
 pkgdesc="NVIDIA drivers for linux (vulkan beta)"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -148,7 +148,7 @@ package_nvidia-vulkan-beta-utils() {
     depends=('xorg-server')
     optdepends=('gtk2: nvidia-settings'
                 'xorg-server-devel: nvidia-xconfig'
-                'opencl-nvidia-vulkan-test: OpenCL support')
+                'opencl-nvidia-vulkan-beta: OpenCL support')
     install="nvidia-utils.install"
     cd "${_pkg}"
 
