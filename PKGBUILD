@@ -4,14 +4,14 @@
 pkgname=actor-messenger-bin
 
 # Version
-pkgver=0.1.1
+pkgver=0.9.4
 pkgrel=1
 #epoch=
 
 # Generic
 pkgdesc="Actor Messenger"
 arch=('i686' 'x86_64')
-url="https://app.actor.im/"
+url="https://actor.im/"
 license=('MIT')
 #groups=()
 
@@ -29,20 +29,20 @@ depends=('gconf')
 # Others
 #backup=()
 #options=()
-#install=modelio
-#changelog=changelog
+#install=actor
+changelog=changelog
 
 # Sources
-source=("actor-messenger.desktop" "icon.png")
-source_i686=("https://actor.im/lin32")
-source_x86_64=("https://actor.im/lin64")
+source=("actor-messenger.desktop")
+source_i686=("https://dl.bintray.com/actor/apps/Actor-0.9.4-Linux-x86.zip")
+source_x86_64=("https://dl.bintray.com/actor/apps/Actor-0.9.4-Linux-x64.zip")
 #noextract=()
 #validpgpkeys=()
 
 # Integrity
-md5sums=('SKIP' 'SKIP')
-md5sums_i686=('49693dbc826039efbafc594b1339ec14')
-md5sums_x86_64=('7068a2d64a5c27a0b2d2b5dc928db422')
+md5sums=('SKIP')
+md5sums_i686=('943e210c89a0eb5541a3e226a771c38b')
+md5sums_x86_64=('8b08dc3b85ae39e81309fe1fad6108e6')
 #sha1sums=()
 #sha256sums=()
 
@@ -69,6 +69,5 @@ elif [[ "$CARCH" == "x86_64" ]]; then
     mv "$srcdir/Actor-linux-x64" "$srcdir/actor-messenger"
 fi
     cp -r "$srcdir/actor-messenger" "$pkgdir/opt"
-    install -Dm755 "$srcdir/icon.png" "$pkgdir/opt/actor-messenger/"
     ln -s "/opt/actor-messenger/Actor" "${pkgdir}/usr/bin/actor"
 }
