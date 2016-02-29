@@ -1,19 +1,26 @@
 pkgname=cgal-ipelets
-pkgver=4.6
-pkgrel=3
-ipever=7.1.9           # too bad no way to determine this automatically
-_pkgid=34705
+pkgver=4.7
+pkgrel=1
+ipever=7.2.1
 pkgdesc="Ipelets from CGAL"
 arch=('i686' 'x86_64')
 url="http://www.cgal.org"
-source=(http://gforge.inria.fr/frs/download.php/$_pkgid/CGAL-$pkgver.tar.xz)
+source=(https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-${pkgver}/CGAL-${pkgver}.tar.xz
+        no-skeleton.patch)
 depends=('cgal' 'ipe')
 makedepends=('cmake' 'boost' 'cgal' 'ipe')
 license=('GPL' 'QPL')
 
+prepare() {
+  # Remove this once we switch to CGAL 4.8 (it's a problem with Boost)
+  cd "$srcdir/CGAL-$pkgver/demo/CGAL_ipelets"
+  patch < $srcdir/no-skeleton.patch
+}
+
 build() {
   cd "$srcdir/CGAL-$pkgver/demo/CGAL_ipelets"
-  cmake . -DWITH_IPE_7=ON
+  cmake .
+  cmake . -DCMAKE_CXX_FLAGS="-std=c++11"        # putting it in the first line won't work (system-wide CGAL settings will override this choice)
   make
 }
 
@@ -22,4 +29,5 @@ package() {
   cp "$srcdir/CGAL-$pkgver/demo/CGAL_ipelets/"*.so "$pkgdir/usr/lib/ipe/$ipever/ipelets/"
   cp "$srcdir/CGAL-$pkgver/demo/CGAL_ipelets/lua/"* "$pkgdir/usr/lib/ipe/$ipever/ipelets/"
 }
-md5sums=('65fa7e17cd654ef68da47df608000007')
+md5sums=('623d91fb2ab0a35049dc6098a0f235cc'
+         'f9e230e8c7f787f9eeccb2ed302dca66')
