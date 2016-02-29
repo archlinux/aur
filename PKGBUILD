@@ -4,9 +4,9 @@
 # Contributor: Manolis Tzanidakis
 pkgname=ucspi-tcp
 pkgver=0.88
-pkgrel=5
+pkgrel=6
 pkgdesc="Easy-to-use command-line tools for building TCP client-server applications."
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h')
 url="http://cr.yp.to/ucspi-tcp.html"
 license=('public-domain')
 depends=('glibc')
