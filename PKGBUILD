@@ -2,8 +2,8 @@
 
 _pkgname=dexed-vst
 pkgname="${_pkgname}-git"
-pkgver=0.9.0.r112.39d3c28
-pkgrel=2
+pkgver=0.9.1.r127.3d95dff
+pkgrel=1
 pkgdesc="A VST plugin synth closely modelled on the Yamaha DX7"
 arch=('i686' 'x86_64')
 url="http://asb2m10.github.io/dexed/"
