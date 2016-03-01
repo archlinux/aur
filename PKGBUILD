@@ -1,6 +1,5 @@
 # Maintainer: Morten Linderud <morten@linderud.pw>
 _npmname=how2
-_npmver=1.0.8
 pkgname=nodejs-how2
 pkgver=1.0.8
 pkgrel=2
@@ -10,8 +9,8 @@ url="https://github.com/santinic/how2"
 license=(MIT)
 depends=('nodejs' 'npm')
 optdepends=()
-source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
-noextract=($_npmname-$_npmver.tgz)
+source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
+noextract=($_npmname-$pkgver.tgz)
 sha256sums=('1b2a2c6044ee68b82a0f075a1ba6aea7af3b47bfab165734f6e51f9a897f0490')
 
 
@@ -20,5 +19,5 @@ package() {
   local _npmdir="$pkgdir/usr/lib/node_modules/"
   mkdir -p "$_npmdir"
   cd "$_npmdir"
-  npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
+  npm install -g --prefix "$pkgdir/usr" $_npmname@$pkgver
 }
