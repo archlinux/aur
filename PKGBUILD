@@ -3,8 +3,8 @@
 # Contributor: Mark Harviston infinull@gmail.com
 # Contributor: BlackEagle < ike DOT devolder AT gmail DOT com >
 pkgname=jslint
-pkgver=0.9.5
-pkgrel=2
+pkgver=0.9.6
+pkgrel=1
 pkgdesc="Command-line JSLint, installed through npm"
 arch=('any')
 url="https://github.com/reid/node-jslint"
@@ -13,7 +13,7 @@ depends=('nodejs')
 makedepends=('npm')
 options=(!emptydirs)
 source=("https://github.com/reid/node-jslint/archive/v$pkgver.tar.gz")
-sha256sums=("26d92ed40fe4587121f93d74e648df41daefdea880b5c95db1a8c3ab26e08b91")
+sha256sums=("519741839f0a27bdaf41ec8a073c9512db1632d00e64f4ca9d5d02d0eb5ea42f")
 
 package() {
   cd "$srcdir/node-$pkgname-$pkgver"
