@@ -2,7 +2,7 @@
 # Contributer:  Quan Guo <guotsuan@gmail.com>
 arch=(i686 x86_64)
 pkgname=eminent-git
-pkgver=2016.02.23.gaab818a
+pkgver=2016.03.01.g007c20a
 pkgrel=1
 pkgdesc="Effortless wmii-style dynamic tagging for the awesome window manager version 3.5 or later, second iteration"
 license=('GPL')
