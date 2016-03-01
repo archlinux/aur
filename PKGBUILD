@@ -3,8 +3,9 @@
 
 _suffix=vulkan-beta
 pkgbase=nvidia-vulkan-beta
-pkgname=(nvidia-vulkan-beta nvidia-vulkan-beta-dkms
-    nvidia-vulkan-beta-utils nvidia-vulkan-beta-libgl opencl-nvidia-vulkan-beta)
+pkgname=nvidia-vulkan-beta
+#pkgname=nvidia-vulkan-beta-dkms
+pkgname+=(nvidia-vulkan-beta-utils nvidia-vulkan-beta-libgl opencl-nvidia-vulkan-beta)
 if [[ $CARCH == "x86_64" ]]; then
     pkgname+=(lib32-nvidia-vulkan-beta-utils lib32-nvidia-vulkan-beta-libgl lib32-opencl-nvidia-vulkan-beta)
 fi
