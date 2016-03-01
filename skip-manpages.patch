@@ -1,0 +1,26 @@
+From 4c06d8fa0a107a03638045f5e0bd0ec11013e70b Mon Sep 17 00:00:00 2001
+From: Mathieu Malaterre <mathieu.malaterre@gmail.com>
+Date: Tue, 9 Feb 2016 21:18:31 +0100
+Subject: [PATCH] Add a way to skip manpages for users
+
+---
+ Utilities/doxygen/CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/Utilities/doxygen/CMakeLists.txt b/Utilities/doxygen/CMakeLists.txt
+index 4ddbbcf..dc32e07 100644
+--- a/Utilities/doxygen/CMakeLists.txt
++++ b/Utilities/doxygen/CMakeLists.txt
+@@ -225,6 +225,7 @@ ${CMAKE_CURRENT_BINARY_DIR}/latex/Makefile
+   endif()
+ endif()
+ 
++if(NOT GDCM_DOCUMENTATION_SKIP_MANPAGES)
+ set(MANPAGES_XML
+     gdcm2pnm
+     gdcm2vtk
+@@ -302,3 +303,4 @@ install(FILES
+ else()
+   message(WARNING "Cannot build man page from docbook (need an XSL processor)")
+ endif()
++endif() #NOT GDCM_DOCUMENTATION_SKIP_MANPAGES
