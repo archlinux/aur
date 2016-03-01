@@ -3,20 +3,18 @@
 
 pkgname=steel
 pkgver=1.3
-_pkgver=1.0-14ec81fbffba79ba2bb663b4966af1d0e1b93e3f      # for libsteel
-pkgrel=1
+pkgrel=3
 pkgdesc='Command line password manager.'
 arch=('i686' 'x86_64')
 url='https://www.steelpasswordmanager.org'
 license=('GPL')
 depends=('libsteel')
 makedepends=('git')
-source=("$pkgname::git+https://gitlab.com/Rosvall/steel.git#tag=v$pkgver" "https://gitlab.com/Rosvall/libsteel/repository/archive.zip?ref=v1.0")
-sha256sums=('SKIP'
-            '2892843e6c9a47f761e77cd41e9f1a9d14c4b28489a99364202e2712070138bb')
+source=(https://github.com/nrosvall/libsteel/archive/v1.0.tar.gz https://github.com/nrosvall/steel/archive/v1.3.tar.gz)
+sha256sums=('1f041badbb0a02034dc2f183141c8ea17cf86ae0cc02917b6cd07ab821edb26a'
+            'de2e094aed6db512b2249d7d06c3a5283addda645feed026d05920f1eaffdaae')
 
 prepare() {
-  ln -s "$srcdir"/lib$pkgname-v$_pkgver libsteel
   cd "$srcdir/$pkgname"
   sed -i -e '/^override/d' \
          -e 's/^\(PREFIX=\/usr\)\/local/\1/' \
