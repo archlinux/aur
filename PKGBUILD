@@ -15,6 +15,7 @@ source=(http://download.gna.org/${pkgname}/${pkgname}-${pkgver}.tar.gz{,.sig})
 md5sums=('02644cc4cd02301e0b503a332eb2f0b5'
          'SKIP')
 validpgpkeys=('923973B07FB83A747B06146C9CC3E9AF16358427')
+install=${pkgname}.install
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
