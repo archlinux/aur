@@ -1,83 +1,75 @@
-# Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
+# Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
+# Previous Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 # Adapted for dp1 version by Semyon Maryasin <simeon@maryasin.name>
 # Adapted for beta12/release by Adam Goldsmith <contact@adamgoldsmith.name>
 # vim: ft=sh
 
 pkgname=pebble-sdk
-pkgver=3.7
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="Pebble SDK, used to develop applications and watchfaces for the Pebble Smartwatch."
 url="https://developer.getpebble.com/2/getting-started/"
 arch=('i386' 'x86_64')
-license=('custom' 'MIT')
+license=('MIT')
 install='pebble-sdk.install'
-depends=('arm-none-eabi-gcc' 'arm-none-eabi-newlib' 'arm-none-eabi-binutils'
-         'libpng12'
-         'python2-freetype-py'
-         'python2-sh'
-         'python2-libpebble2-git'
-         'python2-enum34'
+depends=('python2'
+		 'python2-libpebble2-git'
+		 'python2-enum34'
          'python2-httplib2'
          'python2-oauth2client'
-         'python2-progressbar'
+         'python2-progressbar2-old'
          'python2-pyasn1'
          'python2-pyasn1-modules'
          'python2-pypng'
-		 'python2-pyqrcode'
+         'python2-pyqrcode'
          'python2-requests'
          'python2-rsa'
+         'python2-pyserial'
          'python2-six'
          'python2-websocket-client'
          'python2-wheel'
-         'python2-colorama'
-         'python2-pyserial'
-         'python2-gevent'
-         'python2-gevent-websocket'
-         'python2-greenlet'
-         'python2-peewee'
-         'python2-pygeoip'
-         'python2-dateutil'
-         'python2-wsgiref')
-optdepends=('qemu: Emulator support'
-            'dtc: Emulator support')
-conflicts=('pebble-sdk-beta')
-source=("http://assets.getpebble.com.s3-website-us-east-1.amazonaws.com/sdk2/PebbleSDK-${pkgver/_/-}.tar.gz"
-        'pebble-sdk.install'
-        'pflashFix.patch'
-        'analyticsFix.patch'
-		'buildFix.patch'
-        'pebble.sh')
-sha1sums=('dddd890ea709dd51d73d046aaf4014d3c0bfcc39'
-          '7ea5244f828e682d073434078569fab62a1ad996'
-          '050db72f8259daac7bd0605369677e69ecca7821'
-          'b0988936c15f98202fc13323a21452794acdbbde'
-          'dfa24b631be575d8dce5ee6045a87ede4c0ac9e3'
-          'af0c0deb6e474318a4dc81442d39d9d8befc9685')
-options=('staticlibs' '!strip')
+         'python2-colorama')
+optdepends=('python2-virtualenv: Required for installing SDK'
+            'arm-none-eabi-gcc: Required for installing SDK'
+            'arm-none-eabi-newlib: Required for installing SDK'
+			'libpng12: Emulator support'
+            'dtc: Emulator support'
+			'python2-pypkjs-git: Emulator support')
+conflicts=('pebble-sdk-beta' 'pebble-tool-git')
+source_i386=("https://s3.amazonaws.com/assets.getpebble.com/pebble-tool/pebble-sdk-${pkgver}-linux32.tar.bz2")
+source_x86_64=("https://s3.amazonaws.com/assets.getpebble.com/pebble-tool/pebble-sdk-${pkgver}-linux64.tar.bz2")
+source=('phonesim_path.patch')
+sha1sums=('231b04c03ea4ec1f49eee94ac0caa84021210caa')
+sha1sums_i386=('6afb9a34d8706e2aa3e87715a1465b11eb987c8f')
+sha1sums_x86_64=('88da19a77cb3f33bba9c4dfcd27ec5f65effa6cb')
+
+if [ "$CARCH" == "x86_64" ]
+then
+  folder="pebble-sdk-${pkgver}-linux64"
+else
+  folder="pebble-sdk-${pkgver}-linux32"
+fi
 
 prepare() {
-  cd "$srcdir/PebbleSDK-${pkgver//_/-}"
-  # patch phone emulator files to make qemu_micro_flash be accessed readonly
-  patch -p0 -i "$srcdir/pflashFix.patch"
+  cd "$srcdir/${folder}"
 
-  # patch analytics NO_TRACKING path
-  patch -p0 -i "$srcdir/analyticsFix.patch"
+  #Patch location of phonesim.py
+  patch -p0 -i "$srcdir/phonesim_path.patch"
 
-  # fix for broken python2/3 detection
-  patch -p0 -i "$srcdir/buildFix.patch"
-
-  # Unpack waf
-  cd Pebble
-  python2 ./waf 2>/dev/null || true
+  #Disable strict dependency version checks
+  cd "pebble-tool"
+  sed -i 's/==.*$//' requirements.txt
+  sed -i 's/==.*'\'',$/'\'',/' setup.py
+  sed -i 's/==.*'\'')$/'\'')/' setup.py
 }
 
 package() {
-  install -dm755 "$pkgdir/opt/pebble"
   install -dm755 "$pkgdir/usr/bin"
-  cd "$srcdir/PebbleSDK-${pkgver//_/-}"
-  cp -R Pebble Examples Documentation version.txt README.txt pebble-tool "$pkgdir/opt/pebble"
-  cp "$srcdir/pebble.sh" "$pkgdir/usr/bin/pebble"
-  touch "$pkgdir/opt/pebble/NO_TRACKING"
+  cd "${folder}"
+  install -m755 "bin/pebble" "bin/qemu-pebble" "$pkgdir/usr/bin"
+
+  cd pebble-tool
+  python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:

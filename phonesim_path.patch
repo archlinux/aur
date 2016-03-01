@@ -1,0 +1,11 @@
+--- pebble-tool/pebble_tool/sdk/emulator.py	2016-02-08 16:14:26.000000000 -0500
++++ pebble-tool/pebble_tool/sdk/emulator.py	2016-03-01 12:31:08.239737483 -0500
+@@ -286,7 +286,7 @@
+         return path
+ 
+     def _spawn_pypkjs(self):
+-        phonesim_bin = os.environ.get('PHONESIM_PATH', 'phonesim.py')
++        phonesim_bin = '/usr/bin/phonesim.py'
+         layout_file = os.path.join(sdk_manager.path_for_sdk(self.version), 'pebble', self.platform, 'qemu',
+                                    "layouts.json")
+ 
