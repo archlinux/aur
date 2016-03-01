@@ -1,7 +1,7 @@
 # Maintainer: Rich Li <rich@dranek.com>
 pkgname='python2-xarray'
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.7.1
+pkgrel=1
 pkgdesc="N-D labeled arrays and datasets in Python"
 url="http://xarray.pydata.org"
 arch=('any')
