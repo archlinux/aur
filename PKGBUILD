@@ -2,10 +2,10 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-play
-pkgver=0.0.14_21_g8035264
+pkgver=0.1.14.r21.g8035264
 _gitver=8035264d471f75407222a48f2fa707795e25d461
 _vdrapi=2.2.0
-pkgrel=14
+pkgrel=1
 pkgdesc="Mediaplayer plugin for VDR and X11"
 url="http://projects.vdr-developer.org/projects/plg-play"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -23,8 +23,17 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/vdr-plugin-$_plugname"
-  git tag -a 0.0.14 -m 'Added Tag' eb4b8437553ff7666eceadd09c6cb9dd8255380e 2> /dev/null
-  git describe --tags | sed 's/-/_/g'
+  _last_release=0.1.14
+  _last_release_commit=eb4b8437553ff7666eceadd09c6cb9dd8255380e
+
+  _count=$((`git rev-list --count HEAD` - `git rev-list --count $_last_release_commit`))
+  if [ $_count -gt 0 ]; then
+    printf "%s.r%s.g%s" $_last_release \
+      $_count \
+      `git rev-parse --short HEAD`
+  else
+    printf "%s" $_last_release
+  fi
 }
 
 prepare() {
