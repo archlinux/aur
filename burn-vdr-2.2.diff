@@ -1,0 +1,11 @@
+--- burn-0.2.2/jobs.c	2011-10-04 18:25:45.000000000 +0200
++++ jobs.c	2016-02-11 20:15:44.682898748 +0100
+@@ -263,7 +263,7 @@
+ 	std::string recording::get_graft_point() const
+ 	{
+ 		return proctools::format("{0}={1}")
+-			   % m_fileName.substr(std::string(VideoDirectory).length())
++		  % m_fileName.substr(std::string(cVideoDirectory::Name()).length())
+ 			   % m_fileName;
+ 	}
+ 
