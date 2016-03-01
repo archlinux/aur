@@ -1,7 +1,7 @@
 pkgbase = caffe
 	pkgdesc = Neural network toolkit
 	pkgver = rc2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/BVLC/caffe
 	arch = i686
 	arch = x86_64
