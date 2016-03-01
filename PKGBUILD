@@ -13,7 +13,7 @@ source=("http://www.styluslabs.com/write/write${pkgver}.tar.gz"
         "Write.desktop")
 md5sums=('56e7af77784bdcc006b60ecffed8e938'
          'fafaef86844ead59b3837a5909bf780f'
-         'be9d3bf8a1f4df8526120456f51da1bb')
+         'eddac9bb586cab9610eb72e030578622')
 
 package() {
   install -Dm755 "$srcdir/Write/Write" "$pkgdir/usr/bin/write_stylus"
