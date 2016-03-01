@@ -2,7 +2,7 @@
 # Fri Dec 11 04:30:15 UTC 2015
 pkgbase = stm32cubef4
 	pkgdesc = Embedded software for STM32 F4 series
-	pkgver = 1.10.0
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = http://www.st.com/web/catalog/tools/FM147/CL1794/SC961/SS1743/LN1897/PF259243
 	arch = any
