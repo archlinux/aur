@@ -1,6 +1,6 @@
 # Maintainer: Christoph Bayer <chrbayer@criby.de>
 
-_rev=r01
+_rev=r03
 _sdkver=5.0
 _sdkint=21
 pkgname=android-armv7a-eabi-system-image-${_sdkint}
@@ -13,7 +13,7 @@ license=('custom')
 depends=("android-platform-${_sdkint}")
 options=('!strip')
 source=("http://dl.google.com/android/repository/sys-img/android/sysimg_arm-${_sdkint}_${_rev}.zip")
-sha1sums=('74a74b89a06ffba03448ccdfbb414c49026e660c')
+sha1sums=('0b2e21421d29f48211b5289ca4addfa7f4c7ae5a')
 
 package() {
   mkdir -p "${pkgdir}/opt/android-sdk/system-images/android-${_sdkint}/default"
