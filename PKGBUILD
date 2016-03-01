@@ -1,8 +1,8 @@
 # Maintainer: Ian Brunelli <ian@brunelli.me>
 
 pkgname=aurupbot
-pkgver=1.3
-pkgrel=2
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="A script to automatically maintain your VCS-based AUR packages for you"
 arch=(any)
 license=(GPL2)
@@ -10,14 +10,8 @@ url=https://github.com/brunelli/aurupbot
 depends=(curl git namcap pkgbuild-introspection)
 optdepends=("libnotify: send desktop notifications"
             "s-nail: send reports using the mail command")
-source=("changelog.patch" "$url/archive/v$pkgver.tar.gz")
-sha256sums=("4ef2ca3ab311ed82040cf6ad08a1b66fe626f0c42da3ce722443f93df6fd642d"
-            "de2e094aed6db512b2249d7d06c3a5283addda645feed026d05920f1eaffdaae")
-
-prepare() {
-  cd "${srcdir}/$pkgname-$pkgver/"
-  patch -Np1 -i "../changelog.patch"
-}
+source=("$url/archive/v$pkgver.tar.gz")
+sha256sums=("0158ffd9f7eb7ab5a1fe3ae6d0743a15ef5cea8f93e2741344bacb17f892edaa")
 
 package() {
   mkdir -p "$pkgdir/usr/bin"
