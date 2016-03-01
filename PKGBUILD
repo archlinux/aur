@@ -1,7 +1,7 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=radare2-bindings
-pkgver=0.9.9
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Language bindings of the radare2 api for valabind and friends"
 url="http://radare.org"
@@ -19,10 +19,10 @@ build() {
   ./configure --prefix=/usr --enable=ctypes --enable=python
   make
 }
- 
+
 package() {
   cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
 }
- 
+
 # vim: ts=2 sw=2 et:
