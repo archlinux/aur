@@ -20,7 +20,7 @@ _CLANG_DIRNAME="clang+llvm-${_CLANG_VERSION}-x86_64-linux-gnu-ubuntu-14.04"
 _CLANG_FILENAME="${_CLANG_DIRNAME}.tar.xz"
 
 pkgname=vim-youcompleteme-git
-pkgver=1591.96f0d94
+pkgver=1709.94ec3ed
 pkgver() {
   cd "YouCompleteMe"
   echo $(git rev-list --count master).$(git rev-parse --short master)
@@ -32,7 +32,7 @@ arch=('i686' 'x86_64')
 url='http://valloric.github.com/YouCompleteMe/'
 license=('GPL3')
 groups=('vim-plugins')
-depends=('mono' 'nodejs' 'python2' 'rust' 'vim')
+depends=('mono' 'nodejs' 'python2' 'python2-future' 'rust' 'vim')
 # use system's libclang on non-x86_64 architectures
 [[ "${CARCH}" != 'x86_64' ]] && depends+=('clang')
 makedepends=('cargo' 'cmake' 'git' 'go' 'make' 'mono' 'npm')
@@ -126,7 +126,7 @@ build() {
   mkdir -p "$srcdir/ycmd_build"
   cd "$srcdir/ycmd_build"
   cmake -G "Unix Makefiles" -D${_COMPLETER}=1 . "$srcdir/YouCompleteMe/third_party/ycmd/cpp"
-  make ycm_support_libs
+  make ycm_core
 
   msg2 'Building OmniSharp completer...' # BuildOmniSharp()
   cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer"
@@ -163,7 +163,7 @@ package() {
     "$pkgdir/usr/share/vim/vimfiles"
   cp -r "$srcdir/YouCompleteMe/third_party/"{pythonfutures,requests-futures,retries} \
     "$pkgdir/usr/share/vim/vimfiles/third_party"
-  cp -r "$srcdir/YouCompleteMe/third_party/ycmd/"{ycmd,ycm_client_support.so,ycm_core.so,check_core_version.py,CORE_VERSION} \
+  cp -r "$srcdir/YouCompleteMe/third_party/ycmd/"{ycmd,ycm_core.so,check_core_version.py,CORE_VERSION} \
     "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd"
 
   if [[ "${_COMPLETER}" == "USE_CLANG_COMPLETER" ]]; then
