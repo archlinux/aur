@@ -14,6 +14,7 @@ optdepends=(
     'lvm2: for lvm2 support'
     'thin-provisioning-tools: for thin provisioning support'
     'btrfs-progs: for btrfs support'
+    'linux-user-ns-enabled: kernel with CONFIG_USER_NS enabled'
 )
 source=(
     "https://github.com/lxc/$pkgname/archive/$pkgname-$pkgver.tar.gz"
