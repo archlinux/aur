@@ -38,8 +38,8 @@ package() {
   install -dm 755 "${pkgdir}"/usr/lib/{modules/${_extramodules},modules-load.d}
   install -m 644 acpi_call.ko "${pkgdir}"/usr/lib/modules/${_extramodules}
   gzip "${pkgdir}"/usr/lib/modules/${_extramodules}/acpi_call.ko
-  echo acpi_call > "${pkgdir}"/usr/lib/modules-load.d/acpi_call.conf
+  echo acpi_call > "${pkgdir}"/usr/lib/modules-load.d/${pkgname}.conf
 
-  install -dm 755 "${pkgdir}"/usr/share/acpi_call
-  cp -dr --no-preserve='ownership' {examples,support} "${pkgdir}"/usr/share/acpi_call/
+  install -dm 755 "${pkgdir}"/usr/share/${pkgname}
+  cp -dr --no-preserve='ownership' {examples,support} "${pkgdir}"/usr/share/${pkgname}/
 }

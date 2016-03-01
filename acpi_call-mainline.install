@@ -1,5 +1,5 @@
 post_install() {
-  _extramodules=extramodules-4.5-mainlline
+  _extramodules=extramodules-4.5-mainline
   depmod $(cat /usr/lib/modules/${_extramodules}/version)
 }
 
