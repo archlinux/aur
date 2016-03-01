@@ -6,12 +6,12 @@ pkgver=0.1.4_37_gc55f43f
 epoch=1
 _gitver=c55f43f413dff8740f99d684e8879835d4409920
 _vdrapi=2.2.0
-pkgrel=9
+pkgrel=10
 pkgdesc="automatic advertisement detection"
 url="http://projects.vdr-developer.org/projects/plg-markad"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
-depends=('ffmpeg' "vdr-api=${_vdrapi}")
+depends=('ffmpeg2.8' "vdr-api=${_vdrapi}")
 makedepends=('git')
 _plugname=${pkgname//vdr-/}
 source=("git://projects.vdr-developer.org/vdr-plugin-markad.git#commit=$_gitver"
@@ -34,12 +34,12 @@ prepare() {
 
 build() {
   cd "${srcdir}/vdr-plugin-${_plugname}"
-  make
+  PKG_CONFIG_PATH="/usr/lib/ffmpeg2.8/pkgconfig" make
 }
 
 package() {
   cd "${srcdir}/vdr-plugin-${_plugname}"
-  make DESTDIR="$pkgdir" install
+  PKG_CONFIG_PATH="/usr/lib/ffmpeg2.8/pkgconfig" make DESTDIR="$pkgdir" install
 
   #Move the logofiles to the right place and add a symlink to workaround patching.
   mkdir -p "$pkgdir/usr/share"
