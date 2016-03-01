@@ -19,16 +19,16 @@
 # THE SOFTWARE.
 
 pkgname=irccd
-pkgver=1.1.6
+pkgver=2.0.0
 pkgrel=1
 epoch=
 pkgdesc="IRC client daemon"
 arch=('i686' 'x86_64')
 url="http://projects.malikania.fr/irccd/"
-license=('custom')
+license=('custom:ISC')
 groups=()
 depends=('libxdg-basedir' 'libircclient')
-makedepends=('cmake' 'libircclient')
+makedepends=('mercurial' 'cmake' 'openssl')
 checkdepends=()
 optdepends=()
 provides=()
@@ -37,25 +37,25 @@ replaces=()
 backup=("etc/irccd.conf" "etc/irccdctl.conf")
 options=()
 changelog="ChangeLog"
-source=("http://releases.malikania.fr/$pkgname/$pkgname-$pkgver-source.tar.gz")
+source=("http://releases.malikania.fr/$pkgname/$pkgname-$pkgver.tar.xz")
 noextract=()
-md5sums=('aae1c36c453a69add58ff5c31de997e6')
+md5sums=('a85ba5aa169935ed2a45a468a03d7b63')
 
 build() {
-	cd $srcdir/$pkgname-$pkgver-source
+	cd $srcdir/$pkgname-$pkgver
 	mkdir _build
 	cd _build
-	cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr" -DETCDIR=../etc -DMANDIR=share/man -DDOCDIR=share/doc/irccd -DMODDIR=share/irccd/plugins
+	cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX='/usr' -DWITH_CONFDIR='../etc' -DWITH_MANDIR='share/man' -DWITH_DOCDIR='share/doc/irccd' -DWITH_PLUGINDIR='share/irccd/plugins'
 	make
 }
 
 package() {
-	cd $srcdir/$pkgname-$pkgver-source/_build
+	cd $srcdir/$pkgname-$pkgver/_build
 	make DESTDIR="$pkgdir" install
 
 	cd ..
 	mkdir -p $pkgdir/usr/share/licenses/$pkgname
-	cp LICENSE $pkgdir/usr/share/licenses/$pkgname/
+	cp LICENSE.md $pkgdir/usr/share/licenses/$pkgname/LICENSE
 	
 	# Copy systemd unit
 	mkdir -p $pkgdir/usr/lib/systemd/system/
