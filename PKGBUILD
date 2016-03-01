@@ -251,6 +251,7 @@ package_lib32-opencl-nvidia-vulkan-beta() {
     pkgdesc="OpenCL implemention for NVIDIA (32-bit)"
     depends=('lib32-libcl' 'lib32-zlib' 'lib32-gcc-libs')
     optdepends=('opencl-headers: headers necessary for OpenCL development')
+    conflicts=('lib32-opencl-nvidia')
     cd "${_pkg}/32"
 
     # OpenCL
