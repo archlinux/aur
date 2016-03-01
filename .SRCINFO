@@ -1,0 +1,27 @@
+pkgbase = srs
+	pkgdesc = High performance RTMP Server
+	pkgver = 2.0release
+	pkgrel = 1
+	url = https://github.com/dr4g0nsr/srs
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = GPL
+	makedepends = zlib
+	makedepends = libtool
+	makedepends = unzip
+	makedepends = gcc
+	makedepends = net-tools
+	makedepends = make
+	makedepends = python
+	makedepends = patch
+	makedepends = autoconf
+	optdepends = logrotate
+	conflicts = srs-server-dev
+	options = docs
+	backup = usr/conf/srs.conf
+	source = https://github.com/dr4g0nsr/srs/archive/2.0release.zip
+	md5sums = SKIP
+
+pkgname = srs
+
