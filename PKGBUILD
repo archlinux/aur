@@ -3,15 +3,17 @@
 
 pkgbase=python-grab
 pkgname=('python-grab' 'python2-grab')
-pkgver=0.6.29
+pkgver=0.6.30
 pkgrel=1 
 pkgdesc="Web Scraping Framework"
 arch=('any')
 url="https://pypi.python.org/pypi/grab"
 license=('MIT')
-makedepends=('python' 'python2')
+makedepends=('python-pycurl' 'python2-pycurl' 'python-lxml' 'python2-lxml'
+			 'python-selection' 'python2-selection'
+			 'python-six' 'python2-six' 'python-weblib'	'python2-weblib' 'python-user_agent' 'python2-user_agent')
 source=(https://pypi.python.org/packages/source/g/grab/grab-${pkgver}.tar.gz)
-sha256sums=('9d34e6a9d7885a8c2635bbdbd029a231a5c6f1762b28be02c430cbdf1a05437d')
+sha256sums=('29ebb1e8b26cf15adb2381f01ba6c4eaad3dbd509e1218245a4534b2b94b33a3')
 
 build() {
   cd $srcdir
@@ -27,13 +29,11 @@ check() {
 }
 
 package_python-grab() {
-  depends=('python' 'python-pycurl' 'python-lxml' 'python-selection' 'python-six' 'python-weblib>=0.1.10')
   cd "$srcdir/grab-$pkgver"
   python3 setup.py install --root "${pkgdir}" --optimize=1
 }
 
 package_python2-grab() {
-  depends=('python2' 'python2-pycurl' 'python2-lxml' 'python2-selection' 'python2-six' 'python2-weblib>=0.1.10')
   cd "$srcdir/grab2-$pkgver"
   python2 setup.py install --root "${pkgdir}" --optimize=1
 }
