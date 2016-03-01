@@ -1,11 +1,12 @@
 # Maintainer: Leonard de Ruijter <alderuijter@gmail.com>
 pkgname=('teamtalk')
 pkgver=5.1.1
-pkgrel=1
+pkgrel=2
         pkgdesc='a software conferencing system server which enables a group of people to collaborate and share information using voice and video'
 arch=('x86_64')
         depends=('gcc-libs')
         install="${pkgname}.install"
+backup=("etc/${pkgname}/tt5srv.xml")
 license=('custom')
 url='http://www.bearware.dk'
 source=("http://bearware.dk/${pkgname}/v${pkgver}/${pkgname}-v${pkgver}-centos7-${arch}.tgz"
