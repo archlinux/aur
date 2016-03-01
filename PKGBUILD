@@ -23,8 +23,17 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/skin-flatplus"
-  git tag -a 0.5.1 -m 'Added Tag' e03133d00c19982f609dc124cee71f1f6b59e32b 2> /dev/null
-  git describe --tags | sed 's/-/_/g'
+  _last_release=0.5.1
+  _last_release_commit=e03133d00c19982f609dc124cee71f1f6b59e32b
+
+  _count=$((`git rev-list --count HEAD` - `git rev-list --count $_last_release_commit`))
+  if [ $_count -gt 0 ]; then
+    printf "%s.r%s.g%s" $_last_release \
+      $_count \
+      `git rev-parse --short HEAD`
+  else
+    printf "%s" $_last_release
+  fi
 }
 
 prepare() {
