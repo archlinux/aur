@@ -4,7 +4,7 @@
 _gitname=zulucrypt
 _build=build
 pkgname=${_gitname}-git
-pkgver=4.7.6.73.g7987675
+pkgver=4.7.7
 pkgrel=1
 pkgdesc="a cli and gui frontend to cryptsetup."
 arch=('x86_64' 'i686')
@@ -14,7 +14,7 @@ depends=('cryptsetup' 'qt5-base' 'libpwquality' 'libsecret')
 makedepends=('cmake' 'git')
 provides=(${_gitname})
 conflicts=(${_gitname})
-optdepends=('kdeutils-kwalletmanager: retrieve volume keys from kde kwallet')
+optdepends=('kwalletmanager: retrieve volume keys from kde kwallet')
 options=('!buildflags')
 
 # The git repo is detected by the 'git:' or 'git+' beginning. The branch
