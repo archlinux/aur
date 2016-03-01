@@ -1,0 +1,33 @@
+diff -aur -bZwB modglue-1.19.old/examples/Makefile.in modglue-1.19/examples/Makefile.in
+--- modglue-1.19.old/examples/Makefile.in	2016-03-01 13:57:49.750193921 -0500
++++ modglue-1.19/examples/Makefile.in	2016-03-01 13:59:07.515018161 -0500
+@@ -2,7 +2,7 @@
+ all: periodic multi_io use_wget #periodic_modglue #multi_io
+
+ %.o: %.cc
+-	@CXX@ @CFLAGS@ -I@top_srcdir@/include `pkg-config modglue --cflags` -c -o $@ $<
++	@CXX@ @CXXFLAGS@ -I@top_srcdir@/include `pkg-config modglue --cflags` -c -o $@ $<
+
+ use_wget: use_wget.o
+ 	@CXX@ -o use_wget -L../src `pkg-config modglue --libs` use_wget.o
+diff -aur -bZwB modglue-1.19.old/src/Makefile.in modglue-1.19/src/Makefile.in
+--- modglue-1.19.old/src/Makefile.in	2016-03-01 13:57:49.750193921 -0500
++++ modglue-1.19/src/Makefile.in	2016-03-01 13:58:35.595774407 -0500
+@@ -20,7 +20,7 @@
+
+ LTRELEASE = `echo ${RELEASE} | sed -e "s/\./:/g"`
+
+-CPHASE = ${LIBTOOL} --tag=CXX --mode=compile @CXX@ -c @CFLAGS@
++CPHASE = ${LIBTOOL} --tag=CXX --mode=compile @CXX@ -c @CXXFLAGS@
+ LPHASE = ${LIBTOOL} --tag=CXX --mode=link @CXX@ -version-info ${LTRELEASE} -rpath @prefix@@libdir@ @LIBS@
+ #LPHASE = ${LIBTOOL} --tag=CXX --mode=link @CXX@ -version-info ${LTRELEASE} @LIBS@
+ MPHASE = ${LIBTOOL} --tag=CXX --mode=link @CXX@
+@@ -46,7 +46,7 @@
+ 	${CPHASE} ${TIMESTAMP} -I@top_srcdir@/include `pkg-config sigc++-2.0 --cflags` $<
+
+ %.o: %.cc
+-	@CXX@ -c ${TIMESTAMP} -D"USE_UTIL_H=@USE_UTIL_H@" -I@top_srcdir@/include `pkg-config sigc++-2.0 --cflags` $<
++	@CXX@ -c @CXXFLAGS@ ${TIMESTAMP} -D"USE_UTIL_H=@USE_UTIL_H@" -I@top_srcdir@/include `pkg-config sigc++-2.0 --cflags` $<
+
+ libmid.la: mid.lo
+ 	${LPHASE} -o libmid.la $<
