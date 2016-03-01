@@ -3,7 +3,7 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 
 pkgname=howl-editor-git
-pkgver=0.3.r442.gb9b1f06
+pkgver=0.3.r444.g8ac27e6
 pkgrel=1
 pkgdesc='General purpose, light-weight customizable editor'
 arch=('i686' 'x86_64')
@@ -11,6 +11,7 @@ url='http://howl.io/'
 license=('MIT')
 depends=('gtk3' 'desktop-file-utils' 'coffee-script' 'python2')
 makedepends=('git' 'wget')
+optdepends=('ruby: for running some scripts')
 provides=('howl-editor')
 conflicts=('howl-editor')
 install=howl-editor.install
