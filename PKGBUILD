@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emscripten-git
-pkgver=1.36.0.2.g81bb6af
+pkgver=1.36.0.24.g91a21a2
 pkgrel=1
 pkgdesc="LLVM-to-JavaScript compiler"
 arch=('i686' 'x86_64')
@@ -11,7 +11,8 @@ license=('custom')
 depends=('nodejs' 'python2' 'python')
 makedepends=('git' 'cmake' 'clang' 'libxml2')
 optdepends=('java-environment: for using clojure'
-	    'gcc-go: for using llvm-go, go may also work')
+	    'gcc-go: for using llvm-go, go may also work'
+	    'ruby: for running some scripts')
 conflicts=('emscripten')
 provides=('emscripten')
 source=('git://github.com/kripken/emscripten.git#branch=incoming'
