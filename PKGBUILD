@@ -23,6 +23,8 @@ package() {
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/dasht-git/LICENSE
   cd "$srcdir/$_pkgname/bin"
   install -Dm755 -t $pkgdir/usr/bin *
+  cd "$srcdir/$_pkgname/man/man1"
+  install -Dm755 -t $pkgdir/usr/share/man/man1 *
 }
 
 # Local Variables:
