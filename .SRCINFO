@@ -9,6 +9,7 @@ pkgbase = vdr-mpv
 	arch = armv6h
 	arch = armv7h
 	license = AGPL3
+	makedepends = git
 	depends = mpv
 	depends = vdr-api=2.2.0
 	backup = etc/vdr/conf.avail/50-mpv.conf

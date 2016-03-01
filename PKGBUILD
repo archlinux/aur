@@ -11,6 +11,7 @@ url="http://projects.vdr-developer.org/projects/plg-mpv"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('AGPL3')
 depends=('mpv' "vdr-api=${_vdrapi}")
+makedepends=('git')
 _plugname=${pkgname//vdr-/}
 source=("git://projects.vdr-developer.org/vdr-plugin-mpv.git#commit=$_commit"
         "50-${pkgname//vdr-/}.conf")
