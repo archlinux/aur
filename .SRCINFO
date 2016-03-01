@@ -1,7 +1,7 @@
 pkgbase = corebird
 	pkgdesc = Native Gtk+ Twitter Client
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/baedert/corebird
 	install = corebird.install
 	arch = i686
@@ -19,6 +19,7 @@ pkgbase = corebird
 	depends = json-glib
 	depends = intltool>=0.40
 	depends = gstreamer>=1.6
+	depends = gst-plugins-base
 	depends = gst-plugins-good
 	depends = gst-plugins-bad
 	depends = gst-libav
