@@ -3,7 +3,7 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="'open' digital satellite receiver and timer controlled video disk recorder"
 url="http://tvdr.de/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -47,7 +47,7 @@ md5sums=('8853f64c0fc3d41ffd3b4bfc6f0a14b7'
          '3565ca5ad9be5c75f66478f0796b120d'
          'dd20f932b846b5f50ac455b65e9432ad'
          '7cad811b4ac5ee6c0b5496d006f1e0ee'
-         '1b81ba1063c3da92efd94b6251cdf65a'
+         '64979737d26758a75dda488b323c293c'
          '59ce04d1d01bf92bf6cfc0b74223191c')
 
 prepare() {
@@ -66,6 +66,7 @@ prepare() {
 
   sed -i '/define DEPRECATED_VIDEOSYSTEM/d' device.h
   sed -i '/define DEPRECATED_VDR_CHARSET_OVERRIDE/d' vdr.c
+  sed -i 's/libsystemd-daemon/libsystemd/g' Makefile
 }
 
 build() {
