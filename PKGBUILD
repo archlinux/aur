@@ -1,6 +1,6 @@
 # Maintainer: Oliver Rümpelein <oli_r@fg4f.de>
 pkgname=mergerfs
-pkgver=2.11.0
+pkgver=2.12.0
 pkgrel=1
 pkgdesc="Another FUSE union filesystem"
 arch=('i686' 'x86_64')
@@ -9,20 +9,20 @@ license=('MIT')
 depends=(fuse)
 options=(!emptydirs)
 source=("https://github.com/trapexit/mergerfs/archive/${pkgver}.tar.gz")
-md5sums=('7e0eccc113a330c1016b14cd7cd1e17a')
-sha256sums=('750742093c884c837182cf540d61d2efc0ce443f3ef8f3c27f3e74f9f754139d')
-sha512sums=('0c082264cb1ad13ab0d6dc44b4f86152c487547dc31a0d98e72ba11db0232b04332736f2d0ffca28659f37186d51fe2c941bb41fee783f5f05242f9c3ac04f81')
+md5sums=('ae40b29e398a2e91e1fd5b0b1b8fcedd')
+sha256sums=('17a53516909c9c72a9a168392da7eedb8fc4a74bb5dbfe37593835fbc6262e8b')
+sha512sums=('7008411ade054baa3c982591ab6b595f00549d6b53d5e5a039b8fff3ba86995018c1f407d36a2f4b3cbd2794d3215202529ddb617676ea7b2679a9fa48edb73e')
 
 build() {
-	cd ./"${pkgname}-${pkgver}" || exit
-	make DESTDIR="${pkgdir}" PREFIX="/usr" SBINDIR="/usr/bin"
+    cd ./"${pkgname}-${pkgver}" || exit
+    make DESTDIR="${pkgdir}" PREFIX="/usr" SBINDIR="/usr/bin"
 }
 
 package()
 {
-	cd "${srcdir}/${pkgname}-${pkgver}" || exit
-	mkdir -p "${pkgdir}"/usr/{share,bin}
-	mkdir -p "${pkgdir}"/usr/share/licenses/mergerfs
-	make DESTDIR=${pkgdir} PREFIX=/usr SBINDIR="/usr/bin" install
-	install  -m 644 LICENSE "${pkgdir}/usr/share/licenses/mergerfs/LICENSE"
+    cd "${srcdir}/${pkgname}-${pkgver}" || exit
+    mkdir -p "${pkgdir}"/usr/{share,bin}
+    mkdir -p "${pkgdir}"/usr/share/licenses/mergerfs
+    make DESTDIR=${pkgdir} PREFIX=/usr SBINDIR="/usr/bin" install
+    install -m 644 LICENSE "${pkgdir}/usr/share/licenses/mergerfs/LICENSE"
 }
