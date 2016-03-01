@@ -2,12 +2,12 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 pkgname=spek
 pkgver=0.8.3
-pkgrel=2
+pkgrel=3
 pkgdesc='An acoustic spectrum analyser.'
 arch=('any')
 url='http://spek.cc/'
 license=('GPL3')
-depends=('desktop-file-utils' 'ffmpeg' 'wxgtk')
+depends=('desktop-file-utils' 'ffmpeg2.8' 'wxgtk')
 makedepends=('intltool')
 install=install
 source=("https://github.com/alexkay/spek/archive/v$pkgver.tar.gz")
@@ -16,6 +16,7 @@ sha512sums=('a4b54746316d295574bc963e650728b23b3730ee6bcc8d78b043a5678baac70a0e8
 build()
 {
 	cd "spek-$pkgver"
+	export PKG_CONFIG_PATH='/usr/lib/ffmpeg2.8/pkgconfig'
 	./autogen.sh
 	./configure --prefix=/usr
 	make
