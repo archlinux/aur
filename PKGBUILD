@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-pck
 _pkgbasever=4.4-gnu
-_pkgver=4.4.2-gnu
+_pkgver=4.4.3-gnu
 _pckpatchver=pck1
 
 _replacesarchkernel=('linux-zen')
@@ -61,9 +61,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0009-ARM-dts-dove-add-Dove-divider-clocks.patch')
 sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'SKIP'
-            'f82d7a08ab1fc0d810a74ff294f7757af71fa7f90db0038aabbf086c8006ba78'
+            '1c67293bf85fef5e479965ee0e1d0281a7391bb29ada5479da93aead82bd6aa2'
             'SKIP'
-            'bfdc498e4f2a39905b26f61275e7763f406bf55c76b253a11efa441862e395dd'
+            '221317e292ac274a98478f3a2614c8c0834885aad168de18255b6676251e048f'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -76,7 +76,7 @@ sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             '8566ab2fb29be8c8f89f45051812d7ca545e84541d0d51af74fbf18c436e458d'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '989d87384f448e942fa8656f6c4ce7212670fdfbf5dde567ad9f31ec6e316976'
+            '613e30849135843d150bcfc0c751205d6d8ba8887634a86234e4db6a2548312e'
             'SKIP'
             'a851312b26800a7e189b34547d5d4b2b62a18874f07335ac6f426c32b47c3817'
             '486976f36e1919eac5ee984cb9a8d23a972f23f22f8344eda47b487ea91047f4'
