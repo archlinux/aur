@@ -49,8 +49,8 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_gitname"
-  make
+#  cd "$srcdir/$_gitname"
+  cd "$srcdir/"
   install -Dm 755 Hasklock "$pkgdir/usr/bin/$_gitname"
 #make DESTDIR="${pkgdir}" install
 }
