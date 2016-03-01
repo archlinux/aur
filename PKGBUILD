@@ -3,10 +3,10 @@
 
 pkgname=acpi_call-git-dkms
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="kernel module that enables calls to ACPI methods through /proc/acpi/call. e.g. to turn off discrete graphics card in a dual graphics environment (like NVIDIA Optimus)"
 arch=('i686' 'x86_64')
-url=("http://github.com/mkottman/acpi_call")
+url='http://github.com/mkottman/acpi_call'
 license=('GPL')
 depends=('dkms')
 makedepends=('git')
