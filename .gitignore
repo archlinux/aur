@@ -1,0 +1,5 @@
+/pkg/
+/src/
+/write*.tar.gz
+/eula.docx
+*.pkg.tar
