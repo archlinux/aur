@@ -29,7 +29,7 @@ prepare() {
 
 package() {
   install -dm755 "${pkgdir}/usr/share"
-  cp -dr --no-preserve='ownership' $_pkgname "${pkgdir}/usr/share/"
+  cp -dr --no-preserve='ownership,mode' $_pkgname "${pkgdir}/usr/share/"
   install -Dm755 "${srcdir}/2dt" "${pkgdir}/usr/bin/${_pkgname}"
 }
 
