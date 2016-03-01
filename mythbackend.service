@@ -10,7 +10,7 @@ User=mythtv
 ExecStart=/usr/bin/mythbackend --loglevel notice
 ExecStop=/usr/bin/mythshutdown --setscheduledwakeup
 #ExecStop=/usr/bin/mythshutdown --shutdown
-Restart=on-failure
+#Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
