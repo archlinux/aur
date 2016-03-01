@@ -23,14 +23,14 @@ pkgname=(
     'libreoffice-style-papirus'
 )
 pkgver=20160301
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/varlesh/${_repo}"
 license=('CCPL:by-sa')
 
 options=('!strip')
 source=("${_repo}-${pkgver}.tar.gz::${url}/archive/${_git}.tar.gz")
-sha256sums=('fe302507a82ca312d17abf94c466078c85ecf8a6a2c094b0ee089a1120b86073')
+sha256sums=('f5b0b77d5617d83d3aa1e7c9b76c8098e352fff1b76982be0b57f431e6e1c5ce')
 
 package_papirus(){
     pkgdesc="Meta-package for modified and adaptive Papirus theme"
