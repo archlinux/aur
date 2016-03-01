@@ -2,10 +2,10 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-dvbapi
-pkgver=2.2.1
+pkgver=2.2.2
 epoch=1
 _vdrapi=2.2.0
-pkgrel=2
+pkgrel=1
 pkgdesc="A bridge between VDR and OScam."
 url="https://github.com/manio/vdr-plugin-dvbapi"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -15,7 +15,7 @@ makedepends=('git')
 _plugname=${pkgname//vdr-/}
 source=("https://github.com/manio/vdr-plugin-dvbapi/archive/v$pkgver.tar.gz")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-sha256sums=('1586fcbc043e6bb74bf9715f4821570558d907e5bfd768ce12b532972998beda')
+sha256sums=('86c00b7235952a6b49321efd6c931f0c97885475c9bdc81b0b35236fc7ec7f20')
 
 build() {
   cd "${srcdir}/vdr-plugin-${_plugname}-${pkgver}"

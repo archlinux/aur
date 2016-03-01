@@ -1,7 +1,7 @@
 pkgbase = vdr-dvbapi
 	pkgdesc = A bridge between VDR and OScam.
-	pkgver = 2.2.1
-	pkgrel = 2
+	pkgver = 2.2.2
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/manio/vdr-plugin-dvbapi
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = vdr-dvbapi
 	depends = libdvbcsa
 	depends = vdr-api=2.2.0
 	backup = etc/vdr/conf.avail/50-dvbapi.conf
-	source = https://github.com/manio/vdr-plugin-dvbapi/archive/v2.2.1.tar.gz
-	sha256sums = 1586fcbc043e6bb74bf9715f4821570558d907e5bfd768ce12b532972998beda
+	source = https://github.com/manio/vdr-plugin-dvbapi/archive/v2.2.2.tar.gz
+	sha256sums = 86c00b7235952a6b49321efd6c931f0c97885475c9bdc81b0b35236fc7ec7f20
 
 pkgname = vdr-dvbapi
 
