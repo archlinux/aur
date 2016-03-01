@@ -1,6 +1,6 @@
 # Maintainer : Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
 
-_compile=0 # Default 0
+_compile=1 # Default 0
 # 0=Use prebuilt debian vlc-plugin-fluidsynth package
 # 1=Download vlc stable git source and compile vlc fluidsynth plugin standalone.
 
@@ -50,6 +50,8 @@ prepare() {
 		# Patch
 		sed -i -e 's:truetype/freefont:TTF:g' modules/text_renderer/freetype.c
 		sed -i -e 's:truetype/ttf-dejavu:TTF:g' modules/visualization/projectm.cpp
+		sed -i -e 's:libavcodec >= 57.10.100:libavcodec >= 57.99:g' configure.ac
+		sed -i -e 's:libavutil < 55:libavutil < 55.99:g' configure.ac
 		sed -i -e 's:5.6.0:5.7.0:g;s:5.5.0:5.6.0:g' configure.ac
 	fi
 }
