@@ -20,14 +20,14 @@
 
 pkgname=irccd-hg
 pkgver=63.768bf62890f8
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="IRC client daemon"
 arch=('i686' 'x86_64')
 url="http://projects.malikania.fr/irccd/"
 license=('custom:ISC')
 groups=()
-depends=('libxdg-basedir' 'libircclient')
+depends=()
 makedepends=('mercurial' 'cmake' 'openssl')
 checkdepends=()
 optdepends=()
