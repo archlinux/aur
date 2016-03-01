@@ -26,8 +26,17 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/vdr-plugin-$_plugname"
-  git tag -a 0.6.1 -m 'Added Tag' 40704cdcbc012e15e9e814d8fe64303f13988f56 2> /dev/null
-  git describe --tags | sed 's/-/_/g'
+  _last_release=0.6.1
+  _last_release_commit=40704cdcbc012e15e9e814d8fe64303f13988f56
+
+  _count=$((`git rev-list --count HEAD` - `git rev-list --count $_last_release_commit`))
+  if [ $_count -gt 0 ]; then
+    printf "%s.r%s.g%s" $_last_release \
+      $_count \
+      `git rev-parse --short HEAD`
+  else
+    printf "%s" $_last_release
+  fi
 }
 
 prepare() {
