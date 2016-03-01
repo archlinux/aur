@@ -4,8 +4,8 @@
 # Contributor: Mika Fischer <mika.fischer@zoopnet.de>
 
 pkgname=squeezelite-r2-git
-pkgver=v1.8.2.R2.r1.g681fc3d
-pkgrel=5
+pkgver=1.8.2.R2.r1.g681fc3d
+pkgrel=1
 pkgdesc='Lightweight headless squeezebox emulator - version r2'
 arch=('i686' 'x86_64' 'armv6h')
 url='http://www.marcoc1712.it/'
@@ -27,7 +27,7 @@ install=squeezelite.install
 
 pkgver() {
   cd squeezelite-R2/
-  git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/\(//g;s/\)//g'
+  git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g;s/\(//g;s/\)//g'
 }
 
 build() {
@@ -43,7 +43,8 @@ build() {
 	make clean
 
 	# build squeezelite
-	make
+	make CFLAGS='-Wall -fPIC -O2 -DLINUX -DALSA -DDSD -DFFMPEG -DRESAMPLE -DVISEXPORT'
+
 
 }
 
