@@ -5,8 +5,8 @@
 
 _zipname="GeckoCIRCUITS"
 pkgname="geckocircuits"
-pkgver=1.72.b51
-pkgrel=2
+pkgver=1.72.b54
+pkgrel=1
 pkgdesc="Powerful Circuit Simulator developed by PES/ETH Zürich"
 arch=('any')
 options=('!strip')
@@ -16,7 +16,7 @@ depends=('java-environment>=6')
 makedepends=('imagemagick')
 provides=("${pkgname}")
 source=("http://www.gecko-simulations.com/downloads/${_zipname}.zip")
-sha256sums=('0779a3e71ae62111f439298c781846cd1affa86f91a2bf6014d2780e0d1a0000')
+sha256sums=('63c3eae22f4a1028490acaecac46fec4d6b5fd850c9873d7b49b6dde80fc1b12')
 
 _geckocircuits_desktop="[Desktop Entry]
 Encoding=UTF-8
@@ -57,3 +57,5 @@ package() {
     mkdir -p ${pkgdir}/usr/bin
     ln -s /opt/${pkgname}/geckocircuits.sh ${pkgdir}/usr/bin/geckocircuits
 }
+
+# vim:set ts=4 sw=2 ft=sh et:
