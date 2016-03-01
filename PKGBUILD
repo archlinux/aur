@@ -1,9 +1,9 @@
 # Maintainer: Roberto Valentini <valantin89[at]gmail[dot]com>
 
 pkgname=ipmiview
-pkgver=2.10.2
+pkgver=2.11.0
 _pkgname=IPMIView
-_pkgrev=20150203
+_pkgrev=20151223
 _pkgver=${_pkgver}_${_pkgrev}
 pkgrel=1
 pkgdesc="Supermicro IPMI tool"
@@ -19,7 +19,7 @@ license=('custom:"Super Micro Computer"')
 url="http://www.supermicro.com/products/nfo/ipmi.cfm"
 source=("ftp://ftp.supermicro.com/utility/IPMIView/Linux/${_pkgname}_V${pkgver}_bundleJRE_Linux_${_pkgarch}_${_pkgrev}.tar.gz"
         "ipmiview.desktop")
-sha256sums=('577ccc48e7d70325ef2f922a0784acdcf72fe6bded8e195a47efa03da6db4b74'
+sha256sums=('41040c92a5a345a349b71949255e2744be509bbb0b185b44bd51c4d3229069e7'
             '41d5fa089912ee10d476a0f6aa3c12765861c1a71cf4f811efaf2e47c4ce9351')
 
 package() {
