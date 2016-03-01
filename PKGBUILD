@@ -3,7 +3,7 @@
 # Contributor: Antonio Rojas
 
 pkgname=ksysguard
-pkgver=5.5.4
+pkgver=5.5.5
 pkgrel=1
 pkgdesc='Track and control the processes running in your system'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ conflicts=('kdebase-workspace')
 groups=('plasma')
 install="${pkgname}.install"
 source=("http://download.kde.org/stable/plasma/${pkgver}/$pkgname-$pkgver.tar.xz")
-md5sums=('36158a670305ecd8ef29415448917d5a')
+md5sums=('dfcacb15d7a354d1685db95e9e13feed')
 
 prepare() {
   mkdir -p build
