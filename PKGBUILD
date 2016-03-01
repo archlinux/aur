@@ -1,6 +1,6 @@
 # Maintainer: Grigorii Horos <horosgrisa@gmail.com>
 
-_git=a79802a658bf29fcec6a0043fb0674f4da99a74a
+_git=3270d3b4c6ecac4274b1dbf9f06fdc53f6361c39
 _repo=papirus-suite
 pkgbase=papirus
 pkgname=(
@@ -23,14 +23,14 @@ pkgname=(
     'libreoffice-style-papirus'
 )
 pkgver=20160301
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://github.com/varlesh/${_repo}"
 license=('CCPL:by-sa')
 
 options=('!strip')
 source=("${_repo}-${pkgver}.tar.gz::${url}/archive/${_git}.tar.gz")
-sha256sums=('f5b0b77d5617d83d3aa1e7c9b76c8098e352fff1b76982be0b57f431e6e1c5ce')
+sha256sums=('d7bb4edba06704a1395714866ff2874bbf28fc0fda8274d531b871a0308cb104')
 
 package_papirus(){
     pkgdesc="Meta-package for modified and adaptive Papirus theme"
