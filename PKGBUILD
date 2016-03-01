@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Python implementation of PebbleKit JS"
 arch=('i686' 'x86_64')
 url="https://github.com/pebble/pypkjs"
-license=('GPL')
+license=('MIT')
 depends=('python2'
          'python2-libpebble2-git'
          'python2-backports.ssl_match_hostname'
