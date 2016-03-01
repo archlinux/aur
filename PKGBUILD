@@ -39,8 +39,8 @@ package() {
 	install -Dm644 minecraftd.service           "${pkgdir}/usr/lib/systemd/system/${_game}d.service"
 	install -Dm644 minecraftd-backup.service    "${pkgdir}/usr/lib/systemd/system/${_game}d-backup.service"
 	install -Dm644 minecraftd-backup.timer      "${pkgdir}/usr/lib/systemd/system/${_game}d-backup.timer"
-	install -Dm644 minecraft_server.${pkgver}.jar "${pkgdir}/srv/minecraft/minecraft_server.${pkgver}.jar"
-	ln -s "minecraft_server.${pkgver}.jar" "${pkgdir}/srv/minecraft/minecraft_server.jar"
+	install -Dm644 minecraft_server.${pkgver}.jar "${pkgdir}${_server_root}/minecraft_server.${pkgver}.jar"
+	ln -s "minecraft_server.${pkgver}.jar" "${pkgdir}${_server_root}/minecraft_server.jar"
 
 	# Link the log files
 	mkdir -p "${pkgdir}/var/log/"
