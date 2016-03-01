@@ -4,7 +4,7 @@
 pkgname=vdr-cecremote
 pkgver=1.3.1
 _vdrapi=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Receive and send commands via CEC"
 url="http://uli-eckhardt.de/vdr"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
