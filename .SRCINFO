@@ -14,9 +14,7 @@ pkgbase = kodi-addon-pvr-vdr-vnsi
 	makedepends = libplatform
 	depends = kodi
 	source = git+https://github.com/kodi-pvr/pvr.vdr.vnsi.git#commit=7e11b853637ec436e30e4ac826de6ee87c303482
-	source = 96daf6c2d483b760d5a8a0d80aa6759af1bfdc70.diff
 	md5sums = SKIP
-	md5sums = 9091c2a74932df833277bb776e6f55d7
 
 pkgname = kodi-addon-pvr-vdr-vnsi
 

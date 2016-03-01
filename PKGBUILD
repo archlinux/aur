@@ -11,14 +11,12 @@ license=('GPL2')
 pkgdesc="PVR add-on for XBMC to add VDR as a TV/PVR Backend"
 depends=('kodi')
 makedepends=('cmake' 'git' 'kodi-platform' 'libplatform')
-source=("git+https://github.com/kodi-pvr/pvr.vdr.vnsi.git#commit=$_gitver"
-        "96daf6c2d483b760d5a8a0d80aa6759af1bfdc70.diff")
-md5sums=('SKIP'
-         '9091c2a74932df833277bb776e6f55d7')
+source=("git+https://github.com/kodi-pvr/pvr.vdr.vnsi.git#commit=$_gitver")
+md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/pvr.vdr.vnsi/pvr.vdr.vnsi"
-  grep '  version' addon.xml.in | cut -d'"' -f2
+  grep '  version' addon.xml | cut -d'"' -f2
 }
 
 prepare() {
