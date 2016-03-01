@@ -3,10 +3,10 @@
 pkgname=python2-dpkt
 _pkgname=dpkt
 pkgver=1.8.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="This is a Python library for interacting with and creating packets."
 arch=('i686' 'x86_64')
-url=("https://github.com/kbandla/dpkt")
+url="https://github.com/kbandla/dpkt"
 license=('custom')
 depends=('python2')
 source=("https://pypi.python.org/packages/source/d/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
