@@ -15,6 +15,7 @@ pkgbase = zulucrypt-git
 	depends = libpwquality
 	depends = libsecret
 	optdepends = kwalletmanager: retrieve volume keys from kde kwallet
+	depends = libxkbcommon-x11
 	provides = zulucrypt
 	conflicts = zulucrypt
 	options = !buildflags
