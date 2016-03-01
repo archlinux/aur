@@ -1,8 +1,9 @@
-# Maintainer: Vlad M. <vlad@archlinux.net>
+# Maintainer: Alexandre B. <alexandre.bury@gmail.com>
+# Contributor: Vlad M. <vlad@archlinux.net>
 
 pkgname=rusti-git
 _pkgname=rusti
-pkgver=r121.13b5940
+pkgver=r164.9d77720
 pkgrel=1
 pkgdesc="REPL for Rust"
 url="https://github.com/murarth/rusti"
@@ -27,6 +28,8 @@ build() {
 }
 
 package() {
-  install -Dm755 "$srcdir/$_pkgname/target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-  install -Dm644 "$srcdir/$_pkgname/"{LICENSE-APACHE,LICENSE-MIT} "$pkgdir/usr/share/licenses/$pkgname/"
+  install -D -m755 "$srcdir/$_pkgname/target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
+  install -D -m644 "$srcdir/$_pkgname/"{LICENSE-APACHE,LICENSE-MIT} "$pkgdir/usr/share/licenses/$pkgname/"
 }
+
