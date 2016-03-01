@@ -9,7 +9,7 @@ url="https://github.com/BVLC/caffe"
 license=('BSD')
 groups=('base-devel')
 depends=('atlas-lapack-base' 'hdf5' 'opencv' 'boost' 'protobuf' 'google-glog'
-		 'gflags' 'leveldb' 'snappy' 'lmdb')
+		 'gflags' 'leveldb' 'snappy' 'lmdb' 'xz>=5')
 makedepends=('git' 'cmake')
 optdepends=('cuda: for GPU support')
 source=("https://github.com/BVLC/$pkgname/archive/$pkgver.tar.gz")
