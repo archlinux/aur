@@ -3,7 +3,7 @@
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=2.5.3
-pkgrel=2
+pkgrel=3
 _wwwpkgname=AdminLTE
 _wwwpkgver=1.1.3
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
@@ -31,13 +31,13 @@ source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 md5sums=('30dbf80661c93668f7215e2c708693dc'
          'bca9867ebc3f93e92a522c4968d8fb56'
          '791c86996377ceca23d1459ea0fd5cd6'
-         'fd607f890103e97e480d814a5dfbee5b'
-         '06bb49cf66cc1db8be5e476a54b1e933'
-         '29aab2a7cdc82097b719935c01698777'
-         '564f47c5cfab0a1b7b010ddbcf8e3b84'
+         'cba1675593bb43c94a35aabe8a210efa'
+         'fc7852b5deb952335c0ebbf4ee61cb8c'
+         '5fce8b696b1d82050d87a3f8f19c0aea'
+         '008d6cb6a8ea389d22cbb969c62b0c80'
          '09a4bb7aef7bbe1a1f4c6c85c1fd48b4'
          'd42a864f88299998f8233c0bc0dd093d'
-         '0a4921a2f655c5f178460aed0d6df068'
+         '7b9925a4516d91cd4282f181a4b4e473'
          '291d3c95e445fe65caf40c3605efd186'
          'd41d8cd98f00b204e9800998ecf8427e'
          'd41d8cd98f00b204e9800998ecf8427e')
@@ -53,7 +53,7 @@ prepare() {
   sed -i '/\$SUDO cp \/etc\/.pihole\/adlists.default \/etc\/pihole\/adlists.default/d' "$srcdir"/$_pkgname-$pkgver/gravity.sh
 
   # change log location in admin php interface and scripts
-  sed -i 's|/var/log/pihole.log|/run/log/pihole.log|' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
+  sed -i 's|/var/log/pihole.log|/run/log/pihole/pihole.log|' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
 
   # original toilet is in aur, enter figlet
   sed -i 's|		toilet -f small -F gay Pi-hole|		figlet Pi-hole|' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
@@ -68,7 +68,7 @@ prepare() {
   sed -i 's|/usr/local/bin/|/usr/bin/|' "$srcdir"/$_wwwpkgname-$_wwwpkgver/api.php
 
   # change log location in admin php interface
-  sed -i 's|/var/log/pihole.log|/run/log/pihole.log|' "$srcdir"/$_wwwpkgname-$_wwwpkgver/data.php
+  sed -i 's|/var/log/pihole.log|/run/log/pihole/pihole.log|' "$srcdir"/$_wwwpkgname-$_wwwpkgver/data.php
 
   # since we don't directly install from git...
   sed -i '/<b>Pi-hole Version <\/b> /,+1d' "$srcdir"/$_wwwpkgname-$_wwwpkgver/footer.php

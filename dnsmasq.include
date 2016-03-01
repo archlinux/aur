@@ -1,5 +1,5 @@
 addn-hosts=/etc/pihole/gravity.list
 cache-size=10000
 log-queries
-log-facility=/run/log/pihole.log
+log-facility=/run/log/pihole/pihole.log
 log-async

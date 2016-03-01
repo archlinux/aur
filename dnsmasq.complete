@@ -37,7 +37,7 @@ cache-size=10000
 # For debugging purposes, log each DNS query as it passes through
 # dnsmasq.
 log-queries
-log-facility=/run/log/pihole.log
+log-facility=/run/log/pihole/pihole.log
 
 # Normally responses which come from /etc/hosts and the DHCP lease
 # file have Time-To-Live set as zero, which conventionally means
