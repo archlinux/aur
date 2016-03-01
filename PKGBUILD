@@ -1,8 +1,8 @@
 # Maintainer: Morten Linderud <morten@linderud.pw>
 _npmname=how2
 pkgname=nodejs-how2
-pkgver=1.0.8
-pkgrel=2
+pkgver=1.0.9
+pkgrel=1
 pkgdesc="how2 finds the simplest way to do something in a unix shell. It's like man, but you can query it in natural language:"
 arch=(any)
 url="https://github.com/santinic/how2"
@@ -11,7 +11,7 @@ depends=('nodejs' 'npm')
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('1b2a2c6044ee68b82a0f075a1ba6aea7af3b47bfab165734f6e51f9a897f0490')
+sha256sums=('0b8717606540d5fbb025e3cd3ceecf10ed96184a6fadb7b598a909fa7f8397fb')
 
 
 package() {
