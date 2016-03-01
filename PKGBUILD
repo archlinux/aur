@@ -1,7 +1,7 @@
 # Maintainer: Isaac True <isaac.true@gmail.com>
 
 pkgname=stm32cubef4
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="Embedded software for STM32 F4 series"
 arch=('any')
@@ -26,7 +26,7 @@ changelog=
 source=('stm32cubef4.zip::http://www.st.com/st-web-ui/static/active/en/st_prod_software_internet/resource/technical/software/firmware/stm32cubef4.zip'
 		'LICENSE')
 noextract=()
-sha512sums=('227400b61cfe86ee34d18ef7f4acca5d9f2b585dfd1e32e2569c33a23ec4dc3fb0c3053d870a6272205cd96d33ec6f5aeb3e808e913cacf18f6ed598bc20deb3'
+sha512sums=('ea029652d12ff0012c28bafa5ad82770f9d34bd478f078472204e613f330e98121f16ae8f818d2b9a075b80dd0ee170eeec3a62e564d68210e22474e48941d87'
             'ebb2626eee93b15f5633f8271898e2b4ed737141d9fe9fe84633a81cbe9bfccdeec5d3a7390c0bac017f1711531b6692f08047973c99c84a642771ee9edba310')
 package() {
 	install -d "$pkgdir"/opt/"$pkgname"
