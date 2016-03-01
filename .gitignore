@@ -1,0 +1,5 @@
+/pypkjs/
+/pkg/
+/src/
+*.pkg.tar
+
