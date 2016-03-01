@@ -1,3 +1,4 @@
+# Maintainer: Tarn Burton <twburton at gmail dot com>
 # Contributor: Dariusz 'quasi' Panchyrz <quasi@aur.archlinux.org>
 
 pkgname=conlie
@@ -7,9 +8,9 @@ pkgdesc="A Computer algebra package for Lie group computations"
 arch=('i686' 'x86_64')
 url="http://www-math.univ-poitiers.fr/~maavl/LiE/"
 license=('LGPL')
-depends=(readline)
-install=$pkgname.install
-source=(http://www-math.univ-poitiers.fr/~maavl/LiE/conLiE.tar.gz lie lie.1)
+depends=('sh')
+install="$pkgname.install"
+source=("http://www-math.univ-poitiers.fr/~maavl/LiE/conLiE.tar.gz" 'lie' 'lie.1')
 md5sums=('2e98f252364d43557a322ea7eb677944'
          'd4f5ad8b87479ef93734eee6d1629190'
          'a47060395617ed656eaccde1a9e9ee93')
