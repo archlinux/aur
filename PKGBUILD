@@ -53,6 +53,7 @@ build() {
 package_nvidia-vulkan-beta() {
     pkgdesc="NVIDIA drivers for linux"
     depends=('linux>=4.4' 'linux<4.5' "nvidia-vulkan-beta-utils=${pkgver}" 'libgl')
+    conflicts=(nvidia nvidia-dkms nvidia-vulkan-beta-dkms)
     install=nvidia.install
 
     install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia.ko" \
@@ -74,7 +75,7 @@ package_nvidia-vulkan-beta-dkms() {
     depends=('dkms' "nvidia-vulkan-beta-utils=$pkgver")
     optdepends=('linux-headers: Build the module for Arch kernel'
                 'linux-lts-headers: Build the module for LTS Arch kernel')
-    conflicts+=('nvidia-vulkan-beta')
+    conflicts=(nvidia nvidia-dkms nvidia-vulkan-beta)
     install=nvidia-dkms.install
 
     cd ${_pkg}
@@ -96,6 +97,7 @@ package_opencl-nvidia-vulkan-beta() {
     pkgdesc="OpenCL implemention for NVIDIA"
     depends=('libcl' 'zlib')
     optdepends=('opencl-headers: headers necessary for OpenCL development')
+    conflicts=(opencl-nvidia)
     cd "${_pkg}"
 
     # OpenCL
@@ -150,6 +152,7 @@ package_nvidia-vulkan-beta-utils() {
     optdepends=('gtk2: nvidia-settings'
                 'xorg-server-devel: nvidia-xconfig'
                 'opencl-nvidia-vulkan-beta: OpenCL support')
+    conflicts=(nvidia-utils libglvnd)
     install="nvidia-utils.install"
     cd "${_pkg}"
 
@@ -292,6 +295,7 @@ package_lib32-nvidia-vulkan-beta-utils() {
     pkgdesc="NVIDIA drivers utilities (32-bit)"
     depends=('lib32-zlib' 'lib32-gcc-libs')
     optdepends=('lib32-opencl-nvidia')
+    conflicts=(lib32-nvidia-utils lib32-libglvnd)
     cd "${_pkg}/32"
 
     # OpenGL libraries
