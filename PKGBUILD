@@ -3,7 +3,7 @@
 _kernel=$(pacman -Qqo /usr/lib/modules/`uname -r` | grep linux | grep -v headers)
 _gitname=darling
 pkgname=$_gitname-git
-pkgver=1192.c931b5b
+pkgver=1195.2ad7ce5
 pkgrel=1
 pkgdesc="A Darwin/OS X emulation layer for Linux"
 arch=('x86_64') # Can only be built on x86_64 systems
@@ -27,6 +27,7 @@ source=('git+https://github.com/darlinghq/darling.git'
 	'git+https://github.com/darlinghq/darling-curl.git'
 	'git+https://github.com/darlinghq/darling-dmg.git'
 	'git+https://github.com/darlinghq/darling-expat.git'
+	'git+https://github.com/darlinghq/darling-file.git'
 	'git+https://github.com/darlinghq/darling-file_cmds.git'
 	'git+https://github.com/darlinghq/darling-foundation.git'
 	'git+https://github.com/darlinghq/darling-gnudiff.git'
@@ -36,6 +37,7 @@ source=('git+https://github.com/darlinghq/darling.git'
 	'git+https://github.com/darlinghq/darling-icu.git'
 	'git+https://github.com/darlinghq/darling-installer.git'
 	'git+https://github.com/darlinghq/darling-less.git'
+	'git+https://github.com/darlinghq/darling-libarchive.git'
 	'git+https://github.com/darlinghq/darling-libauto.git'
 	'git+https://github.com/darlinghq/darling-libcxx.git'
 	'git+https://github.com/darlinghq/darling-libcxxabi.git'
