@@ -1,38 +1,28 @@
 # Maintainer: aksr <aksr at t-com dot me>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
+
 pkgname=otf-libertinus-git
-pkgver=r252.ee27ebc
+pkgver=6.2_9_gee27ebc
 pkgrel=1
-epoch=
-pkgdesc="Libertinus font family"
+pkgdesc="The Libertinus font family, A fork of the Linux Libertine and Linux Biolinum fonts with bugfixes and an OpenType math companion."
 arch=('any')
 url="https://github.com/khaledhosny/libertinus"
-license=('custom:OFL' 'GPL')
-groups=()
+license=('custom: OFL')
 depends=('fontconfig' 'xorg-font-utils')
-makedepends=('git')
-optdepends=()
-checkdepends=()
-provides=()
-conflicts=('otf-libertinus')
-replaces=('otf-libertinus')
-backup=()
-options=()
-changelog=
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 install=otf.install
-source=("$pkgname::git+https://github.com/khaledhosny/libertinus.git")
-noextract=()
+source=("$pkgname::git://github.com/khaledhosny/libertinus.git")
 md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/-/_/g'
 }
 
 package() {
   cd "$srcdir/$pkgname"
-  for i in *.otf; do
-    install -Dm644 $i $pkgdir/usr/share/fonts/OTF/$i
-  done
-  install -Dm644 OFL.txt $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
+  find -name '*.otf' -execdir install -Dm644 {} "${pkgdir}/usr/share/fonts/OTF/{}" \;
+  install -Dm644 OFL.txt "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
 
