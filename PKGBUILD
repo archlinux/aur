@@ -5,7 +5,7 @@ _ver=1.0.2g
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 #pkgver=$_ver
-pkgrel=1
+pkgrel=2
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('i686' 'x86_64')
 url='https://www.openssl.org'
@@ -17,10 +17,12 @@ backup=('etc/ssl/openssl.cnf')
 source=("https://www.openssl.org/source/${pkgname}-${_ver}.tar.gz"
         "https://www.openssl.org/source/${pkgname}-${_ver}.tar.gz.asc"
         'no-rpath.patch'
+        'ssl3-test-failure.patch'
         'ca-dir.patch')
 md5sums=('f3c710c045cdee5fd114feb69feba7aa'
          'SKIP'
          'dc78d3d06baffc16217519242ce92478'
+         '62fc492252edd3283871632bb77fadbe'
          '3bf51be3a1bbd262be46dc619f92aa90')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491')
 
@@ -29,6 +31,10 @@ prepare() {
 
 	# remove rpath: http://bugs.archlinux.org/task/14367
 	patch -p0 -i $srcdir/no-rpath.patch
+
+	# disable a test that fails when ssl3 is disabled
+	patch -p1 -i $srcdir/ssl3-test-failure.patch
+
 	# set ca dir to /etc/ssl by default
 	patch -p0 -i $srcdir/ca-dir.patch
 }
@@ -46,7 +52,7 @@ build() {
 
 	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
 	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib \
-		shared zlib ${optflags} \
+		shared zlib no-ssl3 no-ssl3-method ${optflags} \
 		"${openssltarget}" \
 		"-Wa,--noexecstack ${CPPFLAGS} ${CFLAGS} ${LDFLAGS}"
 
