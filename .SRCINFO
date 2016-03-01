@@ -1,6 +1,6 @@
 pkgbase = packer-combined
 	pkgdesc = Extended bash wrapper for pacman and aur see packer --help for extra features
-	pkgver = 20150808_1444
+	pkgver = 20160301_1458
 	pkgrel = 1
 	url = https://bitbucket.org/replabrobin/packer
 	arch = any
