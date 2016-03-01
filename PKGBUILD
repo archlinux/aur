@@ -3,8 +3,8 @@
 
 pkgname=urxvt-resize-font-git
 _gitname=urxvt-resize-font
-pkgver=4.5336d3f
-pkgrel=2
+pkgver=10.2bbde29
+pkgrel=1
 pkgdesc='An urxvt plugin to adjust the font size on the fly'
 arch=('any')
 url="https://github.com/simmel/urxvt-resize-font"
