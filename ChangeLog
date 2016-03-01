@@ -1,4 +1,7 @@
 2016-03-01 Pierre Choffet <peuc@wanadoo.fr>
+	* 2.0.0-2 :
+	Remove useless mercurial dependency
+	
 	* 2.0.0-1 :
 	Upstream update to 2.0.0
 
