@@ -21,7 +21,7 @@ source=(http://download.jetbrains.com/ruby/${_pkgname}-${_pkgbuild}.tar.gz
         rubymine-eap.desktop)
 sha256sums=('5435fa69a365645db25d60a72656b52e774f2469e40f271ad32b6f414b926d69'
             '5907872548a4698c4a58a229296ff519031fba30b070257ff1a5e308faaff3c3'
-            '772ff1c6599d414e02e862e03f1c7525cf69d3158f22674e5de751fa47df46c1')
+            'bcb9d042247f8595befddca2feec3188350a0d89ba31ee6d4dd2c18ca4b854fc')
 PKGEXT='.pkg.tar.gz' # prevent a time-consuming compression with xz
 
 package() {

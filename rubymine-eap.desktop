@@ -1,7 +1,7 @@
 [Desktop Entry]
-Version=8.0
+Version=8.5
 Name=RubyMine Kusunoki EAP
-Icon=rubymine
+Icon=rubymine-eap
 GenericName=Ruby and Rails IDE with the full stack of essential developer tools
 Comment=Ruby and Rails IDE with the full stack of essential developer tools
 Exec=/usr/bin/rubymine-eap
