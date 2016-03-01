@@ -17,12 +17,12 @@ source=("https://github.com/c0mm0ner/ewsgateway/archive/v1.0.1.tar.gz")
 md5sums=('0848ad12589943294e0acbdca30b2b21')
 
 build() {
-	cd $srcdir/$pkgname/
+	cd $srcdir/$pkgname-$pkgver/
 	mv $pkgname.py $pkgname
 }
 
 package() {
-  cd $srcdir/$pkgname/
+  cd $srcdir/$pkgname-$pkgver/
   install -m755 -D $pkgname $pkgdir/usr/bin/$pkgname
   install -m644 -D COPYING $pkgdir/usr/share/licenses/$pkgname/LICENSE
   install -m644 -D README $pkgdir/usr/share/doc/$pkgname/README
