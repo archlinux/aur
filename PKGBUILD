@@ -13,10 +13,10 @@ conflicts=('pcc-cvs')
 source=("http://pcc.ludd.ltu.se/ftp/pub/pcc-releases/${pkgname}-${pkgver}.tgz"
 	"license")
 md5sums=('1c0f22440753075d64f9f2c6ed0e8278'
-	'51f6cc02b26af53f26cfe87494ca5c87')
+         '51f6cc02b26af53f26cfe87494ca5c87')
 
 build() {
-	cd ${srcdir}/${pkgname}-${pkgver}
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	./configure \
 	--prefix=/usr \
@@ -26,10 +26,10 @@ build() {
 }
 
 package(){
-	cd ${srcdir}/${pkgname}-${pkgver}
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	make DESTDIR=${pkgdir} install
+	make DESTDIR="${pkgdir}" install
 
-	mv ${pkgdir}/usr/share/man/man1/cpp.1 ${pkgdir}/usr/share/man/man1/pcpp.1
-	install -D -m0644 ../license ${pkgdir}/usr/share/licenses/${pkgname}/license
+	mv "${pkgdir}/usr/share/man/man1/cpp.1" "${pkgdir}/usr/share/man/man1/pcpp.1"
+	install -D -m0644 ../license "${pkgdir}/usr/share/licenses/${pkgname}/license"
 }
