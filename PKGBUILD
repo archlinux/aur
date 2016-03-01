@@ -45,12 +45,12 @@ build() {
   #
 #./autogen.sh
 #  ./configure --prefix=/usr
-  make 
+#  make 
 }
 
 package() {
 #  cd "$srcdir/$_gitname"
-  cd "$srcdir/"
+#  cd "$srcdir/"
   install -Dm 755 Hasklock "$pkgdir/usr/bin/$_gitname"
 #make DESTDIR="${pkgdir}" install
 }
