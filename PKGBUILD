@@ -1,7 +1,9 @@
 # Maintainer: argymeg <argymeg at gmail dot com>
 
 pkgname=firefox-beta
-pkgver=45.0b10
+pkgver=45.0rc1
+_realpkgver=45.0
+_rcbuild=1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Beta (build from source)"
 arch=('i686' 'x86_64')
@@ -18,13 +20,13 @@ provides=("firefox=$pkgver")
 conflicts=("firefox-beta-bin")            
 install=firefox-beta.install
 options=('!emptydirs' '!makeflags')
-source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
+source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/candidates/$_realpkgver-candidates/build$_rcbuild/source/firefox-$_realpkgver.source.tar.xz
         mozconfig
         firefox-beta.desktop
         firefox-install-dir.patch
         vendor.js
         firefox-fixed-loading-icon.png)
-sha512sums=('cd290e9aac8949b18b2265b8b26aef180281407baaa764d3b23323fb2dff39a39326fa0aca87cc1a338bc16d1e7fdf00f4fe2b1b6fa7b5f2acf25aa66156fbad'
+sha512sums=('314251b7d0be1466f9f6b4d8910aabd64ba9d81afeb33ab5a19f692bd3d769ac220ebaced39b516383119febc53cb3d08a01636089a488ae01ae97b29dfcd506'
             'c72792b505031431282a3777bce6d3ee98fe68cc0faf8cadd84afe2b42921da52b9d8ad94e3324f0d0a09e8e298e3bcd2b527b08e92e2a0140434d7767efc422'
             'dd9a563d6ad772ba440a45bbd0ee27943b319edcb785951e62cd4aefe0d33ded2acf9b63a2b15cec89ee184687c68a8d3a1cc06ec98f9a9251602f063fbaef14'
             '266989b0c4a37254a40836a6193284a186230b48716907e4d249d73616f58382b258c41baa8c1ffc98d405f77bfafcd3438f749edcf391c7bd22185399adf4bd'
@@ -47,7 +49,7 @@ _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
 
 prepare() {
-  cd firefox-$pkgver
+  cd firefox-$_realpkgver
 
   cp ../mozconfig .mozconfig
   patch -Np1 -i ../firefox-install-dir.patch
@@ -77,7 +79,7 @@ prepare() {
 }
 
 build() {
-  cd firefox-$pkgver
+  cd firefox-$_realpkgver
 
   export PATH="$srcdir/path:$PATH"
   export PYTHON="/usr/bin/python2"
@@ -88,7 +90,7 @@ build() {
 }
 
 package() {
-  cd firefox-$pkgver
+  cd firefox-$_realpkgver
   make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
   mkdir "$pkgdir"/opt/firefox-beta
   mv "$pkgdir"/opt/firefox/* "$pkgdir"/opt/firefox-beta/
