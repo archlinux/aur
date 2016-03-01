@@ -1,6 +1,6 @@
 # Maintainer : Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
 
-_compile=1 # Default 0
+_compile=0
 # 0=Use prebuilt debian vlc-plugin-fluidsynth package
 # 1=Download vlc stable git source and compile vlc fluidsynth plugin standalone.
 
