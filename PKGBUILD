@@ -2,10 +2,10 @@
 pkgname=kav
 pkgver=0.1
 pkgrel=1
-pkgdesc="kav"
+pkgdesc="Antivirus scanner from kaspersky rescue disk"
 url="http://www.foo.tld"
 arch=('x86_64' 'i686')
-license=('GPL3')
+license=('custom')
 depends=()
 optdepends=()
 makedepends=('squashfs-tools')
