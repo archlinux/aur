@@ -4,13 +4,13 @@
 
 pkgname=httping
 pkgver=2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A 'ping'-like tool for http-requests"
 arch=(i686 x86_64)
 depends=("openssl")
 optdepends=("ncurses"
             "fftw")
-url=('http://www.vanheusden.com/httping/')
+url='http://www.vanheusden.com/httping/'
 license=('GPL')
 source=("http://www.vanheusden.com/httping/${pkgname}-${pkgver}.tgz")
 md5sums=('3b4d003276c1346c32629b65262dfd1e')
