@@ -1,13 +1,13 @@
-# Maintainer: AsamK <asmak ät gmx de>
+# Maintainer: AsamK <asamk ät gmx de>
 
 pkgname=textsecure-cli
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Provides a commandline and dbus interface for secure Signal/TextSecure messaging."
 arch=('any')
 url="https://github.com/AsamK/textsecure-cli"
 license=('GPL3')
-depends=('java-runtime' 'libmatthew-unix-java')
+depends=('java-runtime' 'libmatthew-unix-java' 'java-commons-logging' 'java-commons-io')
 makedepends=('java-environment' 'gradle')
 source=("https://github.com/AsamK/${pkgname}/archive/v${pkgver}.tar.gz"
         "${pkgname}.sh"
@@ -15,7 +15,7 @@ source=("https://github.com/AsamK/${pkgname}/archive/v${pkgver}.tar.gz"
         "${pkgname}.tmpfiles.conf")
 install="${pkgname}.install"
 sha256sums=('19e4c66c5699e4a7cc2213c0df56ed3240ada49507c6b670133b33f2e6ccf760'
-            '7c85aec83be668d64d336d0dd60f867647e256cafb5e599af94180a2c7c07391'
+            '6a0229a91b87d4b2fd44e30b67feb972e4e24dc22c80eabd04aa007b68d190bf'
             'e4560cafef512e59935d1562f05dd55b04f6b2ead6bf2a888dc6f9ec5b342758'
             '31a16ec54fbdef581695b797d03c47b5618030de9b9fa26c3d3fcfc476ad30b8')
 
@@ -23,16 +23,16 @@ build() {
 	cd "${srcdir}"
 	cd "${pkgname}-${pkgver}"
 
-	gradle installDist
+	gradle --no-daemon installDist
 }
 
 package() {
 	install -m755 -d "${pkgdir}/usr/share/java/${pkgname}" \
-	                  "${pkgdir}/usr/bin" \
-	                  "${pkgdir}/usr/lib/systemd/system/" \
-	                  "${pkgdir}/usr/lib/sysusers.d/" \
-	                  "${pkgdir}/usr/lib/tmpfiles.d/" \
-	                  "${pkgdir}/etc/dbus-1/system.d/"
+	                 "${pkgdir}/usr/bin" \
+	                 "${pkgdir}/usr/lib/systemd/system/" \
+	                 "${pkgdir}/usr/lib/sysusers.d/" \
+	                 "${pkgdir}/usr/lib/tmpfiles.d/" \
+	                 "${pkgdir}/etc/dbus-1/system.d/"
 
 	cd "${srcdir}"
 
@@ -48,5 +48,8 @@ package() {
 
 	cd "build/install/${pkgname}"
 
+	rm -f lib/unix-*.jar
+	rm -f lib/commons-logging-*.jar
+	rm -f lib/commons-io-*.jar
 	install -m644 lib/*.jar "${pkgdir}/usr/share/java/${pkgname}/"
 }
