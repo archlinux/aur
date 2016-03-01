@@ -10,7 +10,7 @@ url="https://forums.uberent.com/threads/streams-pte-and-experimental-builds.5896
 license=('MIT')
 depends=("python-pycurl")
 conflicts=("planetary-annihilation")
-source=("git+ssh://git@github.com/pa-pyrus/papatcher.git"
+source=("https://github.com/pa-pyrus/papatcher.git"
         "PA.sh")
 md5sums=('SKIP'
          'a06eed75eb032d8a03b25d92b8abebd1')
