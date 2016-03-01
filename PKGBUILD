@@ -30,6 +30,7 @@ prepare() {
 package() {
   install -dm755 "${pkgdir}/usr/share"
   cp -dr --no-preserve='ownership,mode' $_pkgname "${pkgdir}/usr/share/"
+  chmod 755 "${pkgdir}/usr/share/${_pkgname}/2dt.exe"
   install -Dm755 "${srcdir}/2dt" "${pkgdir}/usr/bin/${_pkgname}"
 }
 
