@@ -3,6 +3,9 @@
 _pkgname=greg
 pkgname=greg-git
 pkgver=0.4.4.3
+pkgver() { 
+    cd "$pkgname" git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' 
+}
 pkgrel=3
 pkgdesc="A command-line podcast aggregator."
 arch=(any)
