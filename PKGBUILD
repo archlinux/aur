@@ -98,6 +98,7 @@ package_opencl-nvidia-vulkan-beta() {
     depends=('libcl' 'zlib')
     optdepends=('opencl-headers: headers necessary for OpenCL development')
     conflicts=(opencl-nvidia)
+    provides=(opencl-nvidia)
     cd "${_pkg}"
 
     # OpenCL
@@ -252,6 +253,7 @@ package_lib32-opencl-nvidia-vulkan-beta() {
     depends=('lib32-libcl' 'lib32-zlib' 'lib32-gcc-libs')
     optdepends=('opencl-headers: headers necessary for OpenCL development')
     conflicts=('lib32-opencl-nvidia')
+    provides=('lib32-opencl-nvidia')
     cd "${_pkg}/32"
 
     # OpenCL
