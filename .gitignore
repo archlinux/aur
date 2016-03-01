@@ -1,4 +1,5 @@
-pkg
-src
-acpi_call-mainline-*.pkg.tar.xz
-acpi_call-mainline-*.tar.gz
+*
+!.gitignore
+!.PKGBUILD
+!.SRCINFO
+!acpi_call-mainline.install

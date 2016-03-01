@@ -1,5 +1,5 @@
-# $Id: PKGBUILD 159993 2016-02-02 18:20:59Z tpowa $
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Lev Lybin <aur@devtrue.net>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: mortzu <me@mortzu.de>
 # Contributor: fnord0 <fnord0@riseup.net>
 
@@ -43,5 +43,3 @@ package() {
   install -dm 755 "${pkgdir}"/usr/share/acpi_call
   cp -dr --no-preserve='ownership' {examples,support} "${pkgdir}"/usr/share/acpi_call/
 }
-
-# vim: ts=2 sw=2 et:
