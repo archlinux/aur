@@ -2,12 +2,12 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=thepackage
 pkgver=1.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Package Manager for theOS"
 arch=("x86_64")
 url="https://github.com/vicr123/thepackage"
 license=('GPL2')
-depends=('qt5-base' 'xdg-utils')
+depends=('qt5-base' 'xdg-utils' 'wget' 'package-query')
 makedepends=('qtchooser' 'git')
 source=("$pkgname-$pkgver"::'git+https://github.com/vicr123/thepackage#branch=master')
 md5sums=('SKIP')
