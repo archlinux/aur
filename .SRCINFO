@@ -1,0 +1,17 @@
+pkgbase = 2dtiler-bin
+	pkgdesc = Interactive viewer for periodic tilings of all three two-dimensional geometries
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://ab.inf.uni-tuebingen.de/software/2dtiler/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	provides = 2dtiler
+	conflicts = 2dtiler
+	source = http://ab.inf.uni-tuebingen.de/software/2dtiler/2dtiler20.zip
+	source = 2dt
+	sha256sums = 88d28b6486b9b455a9da876460d6e4ba62c96430874e5031e8cbb65ca2c63e1f
+	sha256sums = ffb944968f751a6ed052ff04f1052a632fec3a4db23916ab1228de2be481e032
+
+pkgname = 2dtiler-bin
+

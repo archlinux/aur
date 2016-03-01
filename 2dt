@@ -1,0 +1,4 @@
+#!/usr/bin/sh
+cd /usr/share/2dtiler
+./2dt.exe $*
+
