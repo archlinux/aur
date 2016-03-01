@@ -1,3 +1,4 @@
+# Maintainer: Tarn Burton <twburton at gmail dot com>
 # Contributor: Dariusz 'quasi' Panchyrz <quasi@aur.archlinux.org>
 
 pkgname=cadabra
@@ -8,8 +9,8 @@ arch=('i686' 'x86_64')
 url="http://cadabra.phi-sci.com/"
 license=('GPL')
 depends=('conlie' 'modglue' 'gmp' 'pcre') # for gui: 'gtkmm' 'dvipng' 'texlive' 'breqn' http://www.ctan.org/pkg/breqn
-install=$pkgname.install
-source=(http://cadabra.phi-sci.com/$pkgname-$pkgver.tar.gz)
+install="$pkgname.install"
+source=("http://cadabra.phi-sci.com/$pkgname-$pkgver.tar.gz")
 md5sums=('cee8ae23c169958aba09b64e4ea479ce')
 
 
