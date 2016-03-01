@@ -1,12 +1,12 @@
 # Maintainer: Chrysostomus @forum.manjaro.org
 
 pkgname=pacli
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
-pkgdesc="An interactive pacman interface using pmenu"
+pkgdesc="An interactive pacman interface using fzf"
 arch=(any)
 url="https://github.com/Chrysostomus/$pkgname"
-license=MIT
+license=(MIT)
 depends=('bash'
 	'downgrade'
 	'pacman'
