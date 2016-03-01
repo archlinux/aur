@@ -11,7 +11,7 @@ if [[ $CARCH == "x86_64" ]]; then
 fi
 pkgver=355.00.28
 _extramodules=extramodules-4.4-ARCH
-pkgrel=6
+pkgrel=7
 pkgdesc="NVIDIA drivers for linux (vulkan beta)"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
