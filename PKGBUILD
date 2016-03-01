@@ -28,7 +28,6 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/${pkgname%%-*}"
 	# Patch
-	sed -i -e 's:truetype/freefont:TTF:g' modules/text_renderer/freetype.c
 	sed -i -e 's:truetype/ttf-dejavu:TTF:g' modules/visualization/projectm.cpp
 }
 
@@ -53,7 +52,6 @@ build() {
 				--enable-ncurses \
 				--enable-realrtsp \
 				--enable-aa \
-				--enable-vcdx \
 				--enable-upnp \
 				--enable-opus \
 				--enable-sftp \
