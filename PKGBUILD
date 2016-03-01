@@ -3,7 +3,7 @@
 _npmver=0.1.0
 pkgname=electronic-wechat-git
 _pkgname=electronic-wechat
-pkgver=0.1.42.g9c90149
+pkgver=1.0.2.g39a7b5a
 pkgrel=1
 pkgdesc="An Electron application for WeChat"
 arch=('any')
