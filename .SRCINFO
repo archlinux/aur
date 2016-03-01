@@ -1,12 +1,12 @@
 pkgbase = kav
-	pkgdesc = kav
+	pkgdesc = Antivirus scanner from kaspersky rescue disk
 	pkgver = 0.1
 	pkgrel = 1
 	url = http://www.foo.tld
 	install = kav.install
 	arch = x86_64
 	arch = i686
-	license = GPL3
+	license = custom
 	makedepends = squashfs-tools
 	source = http://rescuedisk.kaspersky-labs.com/rescuedisk/updatable/kav_rescue_10.iso
 	source = kav.desktop
