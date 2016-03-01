@@ -1,0 +1,32 @@
+pre_install() {
+	mkdir /tmp/ext3mount
+}
+
+post_install() {
+mount /opt/kav/ext3fs.img /tmp/ext3mount
+mkdir /opt/kav/rootfs
+cp -af /tmp/ext3mount/* /opt/kav/rootfs/
+umount /tmp/ext3mount
+echo export DISPLAY=:0 >> /opt/kav/rootfs/etc/bash/bashrc
+echo kav.exe >> /opt/kav/rootfs/etc/bash/bashrc
+echo exit >> /opt/kav/rootfs/etc/bash/bashrc
+mkdir /opt/kav/rootfs/discs/D:
+rm /opt/kav/ext3fs.img
+rmdir /tmp/ext3mount
+}
+
+pre_upgrade() {
+	rm -rf /opt/kav/rootfs
+}
+
+
+#post_upgrade() {
+#}
+
+pre_remove() {
+	echo 
+}
+
+post_remove() {
+	rm -rf /opt/kav
+}

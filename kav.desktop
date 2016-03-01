@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Kaspersky
+GenericName=Antivirus
+Comment=Kaspersky antivirus scanner
+Exec=gksu /usr/bin/kav || kdesu /usr/bin/kav
+Icon=kav
+Categories=System;
+
+
+
