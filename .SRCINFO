@@ -1,7 +1,7 @@
 pkgbase = vdr-vdrboblight
 	pkgdesc = Boblight with data from softhddevice
-	pkgver = 0.0.6
-	pkgrel = 7
+	pkgver = 0.0.7
+	pkgrel = 1
 	url = http://projects.vdr-developer.org/projects/plg-boblight
 	arch = x86_64
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = vdr-vdrboblight
 	conflicts = vdr-boblight
 	replaces = vdr-boblight
 	backup = etc/vdr/conf.avail/50-vdrboblight.conf
-	source = vdr-plugin-boblight-0.0.6.tar.gz::http://www.vdr-portal.de/index.php?page=Attachment&attachmentID=37154
-	md5sums = 688acb760958646a8a1abe8607eaf2e0
+	source = https://projects.vdr-developer.org/git/vdr-plugin-boblight.git/snapshot/vdr-plugin-boblight-0.0.7.tar.bz2
+	md5sums = 2123b6b95bc48a190633297b38de6f25
 
 pkgname = vdr-vdrboblight
 
