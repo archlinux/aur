@@ -3,7 +3,7 @@
 
 pkgname=orfeo-toolbox
 pkgver=5.2
-minorver=0
+minorver=1
 pkgrel=1
 pkgdesc="ORFEO Toolbox (OTB) is an open source library of image processing algorithms"
 arch=(x86_64 i686)
@@ -25,7 +25,8 @@ changelog=
 source=(https://www.orfeo-toolbox.org/packages/OTB-$pkgver.$minorver.tar.gz
 		git://github.com/jmichel-otb/GKSVM.git)
 noextract=()
-md5sums=('08ac6145e6e159acfd7de209de26e999'
+
+md5sums=('c9f8d269d0861214d31743233a30042f'
          'SKIP')
 
 _gitname="GKSVM"
