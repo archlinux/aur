@@ -4431,11 +4431,11 @@ index 0000000..17f8cb4
 +    uint8_t        chacha_buffer[FILL_BUFFER];
 +    uint16_t       poly_buffer_used;
 +    uint16_t       chacha_used;
++    poly1305_state poly_state;
 +#ifdef CHAPOLY_x86_64_ASM
 +    void (*poly1305_init_ptr)(poly1305_state *, const uint8_t *);
 +    void (*poly1305_update_ptr)(poly1305_state *, const uint8_t *, size_t);
 +    void (*poly1305_finish_ptr)(poly1305_state *, uint8_t *);
-+    poly1305_state poly_state;
 +    #define poly_init aead_ctx->poly1305_init_ptr
 +    #define poly_update poly1305_update_wrapper
 +    #define poly_finish poly1305_finish_wrapper
