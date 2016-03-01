@@ -7,7 +7,7 @@
 # SELinux Contributor: Nicky726 <Nicky726@gmail.com>
 
 pkgname=openssh-selinux
-pkgver=7.1p2
+pkgver=7.2p1
 pkgrel=1
 pkgdesc='Free version of the SSH connectivity tools with SELinux support'
 url='http://www.openssh.org/portable.html'
@@ -29,7 +29,7 @@ source=("ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${pkgname/-selinux}-
         'sshd.socket'
         'sshd.conf'
         'sshd.pam')
-sha1sums=('9202f5a2a50c8a55ecfb830609df1e1fde97f758' 'SKIP'
+sha1sums=('d30a6fd472199ab5838a7668c0c5fd885fb8d371' 'SKIP'
           'cc1ceec606c98c7407e7ac21ade23aed81e31405'
           '6a0ff3305692cf83aca96e10f3bb51e1c26fccda'
           'ec49c6beba923e201505f5669cea48cad29014db'
@@ -38,8 +38,6 @@ sha1sums=('9202f5a2a50c8a55ecfb830609df1e1fde97f758' 'SKIP'
           'd93dca5ebda4610ff7647187f8928a3de28703f3')
 
 backup=('etc/ssh/ssh_config' 'etc/ssh/sshd_config' 'etc/pam.d/sshd')
-
-install=install
 
 build() {
 	cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
