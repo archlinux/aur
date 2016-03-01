@@ -15,7 +15,7 @@ pkgname=('zabbix3-server'
          'zabbix3-java-gateway'
          'zabbix3-proxy'
          'zabbix3-common')
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Zabbix is an enterprise-class open source distributed monitoring solution."
 arch=('i686' 'x86_64')
@@ -80,7 +80,7 @@ build() {
 
 package_zabbix3-server() {
   pkgdesc="Enterprise-class Monitoring Platform - server"
-  _common_depends=('zabbix3-common' 'curl' 'openssl' 'libxml2' 'libssh2' 'net-snmp')
+  _common_depends=("zabbix3-common=${pkgver}-${pkgrel}" 'curl' 'openssl' 'libxml2' 'libssh2' 'net-snmp')
   [[ $DB_TYPE = "mysql" ]]      && depends=(${_common_depends[@]} 'libmariadbclient') # unixodbc, openipmi
   [[ $DB_TYPE = "postgresql" ]] && depends=(${_common_depends[@]} 'postgresql-libs')
   [[ $DB_TYPE = "sqlite3" ]]    && depends=(${_common_depends[@]} 'sqlite')
@@ -103,7 +103,7 @@ package_zabbix3-server() {
 
 package_zabbix3-agent() {
   pkgdesc="Enterprise-class Monitoring Platform - agent"
-  depends=('zabbix3-common' 'curl' 'openssl')
+  depends=("zabbix3-common=${pkgver}-${pkgrel}" 'curl' 'openssl')
   backup=('etc/zabbix/zabbix_agentd.conf')
   replaces=('zabbix-agent' 'zabbix-agentd' 'zabbix-sender')
 
@@ -122,7 +122,7 @@ package_zabbix3-agent() {
 package_zabbix3-java-gateway() {
   pkgdesc="Enterprise-class Monitoring Platform - Java gateway"
   arch=('any')
-  depends=('zabbix3-common' 'java-environment-openjdk' 'java-runtime-headless')
+  depends=("zabbix3-common=${pkgver}-${pkgrel}" 'java-environment-openjdk' 'java-runtime-headless')
   backup=('etc/zabbix/zabbix_java_gateway.conf')
   replaces=('zabbix-java-gateway')
 
@@ -147,7 +147,7 @@ package_zabbix3-php-frontend() {
 
 package_zabbix3-proxy() {
   pkgdesc="Enterprise-class Monitoring Platform - proxy"
-  _common_depends=('zabbix3-common' 'curl' 'openssl' 'libxml2' 'net-snmp')
+  _common_depends=("zabbix3-common=${pkgver}-${pkgrel}" 'curl' 'openssl' 'libxml2' 'net-snmp')
   [[ $DB_TYPE = "mysql" ]]      && depends=(${_common_depends[@]} 'libmariadbclient') # unixodbc, openipmi
   [[ $DB_TYPE = "postgresql" ]] && depends=(${_common_depends[@]} 'postgresql-libs')
   [[ $DB_TYPE = "sqlite3" ]]    && depends=(${_common_depends[@]} 'sqlite')
@@ -170,7 +170,7 @@ package_zabbix3-common() {
   install -D -m644 "${srcdir}/zabbix.sysusers"         "${pkgdir}/usr/lib/sysusers.d/zabbix-common.conf"
 }
 
-md5sums=('fd4032444711ebb45e92b4cd54a354c6'
+md5sums=('890d9eec69304ad552959fabe0a5d122'
          '2550b61809e65b3506954605edc07066'
          '564022867b5bdfa3a98a4ed46ac97f47'
          'cfb62758de880609adb67d0c09d662c5'
