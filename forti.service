@@ -4,3 +4,4 @@ Description=forticlient systemd
 [Service]
 ExecStart=/usr/lib/forti/forti.expect
 EnvironmentFile=/etc/forti.conf
+RemainAfterExit=true
