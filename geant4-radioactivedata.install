@@ -3,7 +3,7 @@
 _varname='G4RADIOACTIVEDATA'
 _packagename='geant4-radioactivedata'
 _foldername='RadioactiveDecay'
-_dataversion=4.3
+_dataversion=4.3.1
 
 _add() {
     echo "export ${_varname}=/usr/share/${_packagename}/${_foldername}${_dataversion}" >> /etc/profile.d/geant4.sh
