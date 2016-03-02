@@ -15,7 +15,7 @@
 
 pkgname=zabbix-server
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Software designed for monitoring availability and performance of IT infrastructure components"
 arch=('i686' 'x86_64')
 url="http://www.zabbix.com"
