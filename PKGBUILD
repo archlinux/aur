@@ -1,7 +1,7 @@
 # Maintainer: mlq <mlq@pwmt.org>
 
 pkgname=termbox-git
-pkgver=0730826
+pkgver=r224.e51755b
 pkgrel=1
 pkgdesc="termbox library (ncurses alternative)"
 arch=('i686' 'x86_64')
@@ -30,8 +30,7 @@ package() {
 
 pkgver() {
   cd "$_gitname"
-  local ver="$(git describe --long --always)"
-  printf "%s" "${ver//-/.}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 # vim:set ts=2 sw=2 et:
