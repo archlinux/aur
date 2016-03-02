@@ -9,7 +9,7 @@ pkgbase = darling-mach-git
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = linux-ck-sandybridge-headers
+	makedepends = linux-headers
 	source = git+https://github.com/darlinghq/darling.git
 	md5sums = SKIP
 
