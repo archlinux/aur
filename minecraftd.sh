@@ -131,12 +131,13 @@ server_start() {
 		fi
 	else
 		# Though IDLE_SERVER is not set to true it could still be running and just have not noticed that the
-		# server was started, e.g. by manually triggering server_start again. Therefore reset the idle daemon.
+		# server was started, e.g. by manually triggering server_start again. Reset the idle daemon in this case.
 		${SUDO_CMD} screen -S "${IDLE_SESSION_NAME}" -Q select . > /dev/null
 		if [[ $? -eq 0 ]]; then
 			${SUDO_CMD} screen -S "${IDLE_SESSION_NAME}" -X quit
+			sleep 0.1
+			${SUDO_CMD} screen -dmS "${IDLE_SESSION_NAME}" /bin/bash -c "${myname} idle_server_daemon"
 		fi
-		${SUDO_CMD} screen -dmS "${IDLE_SESSION_NAME}" /bin/bash -c "${myname} idle_server_daemon"
 	fi
 }
 
