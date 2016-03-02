@@ -1,34 +1,44 @@
-# Maintainer: Reventlov <contact+aur@volcanis.me>
+# Maintainer: Jean Lucas <jean at 4ray dot co>
+# Contributor: Reventlov <contact+aur at volcanis dot me>
+
 pkgname=searx-git
-pkgver=v0.7.0.r212.gf2cbefe
-pkgrel=1
+pkgver=v0.8.1.r100.g308613e
+pkgrel=2
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
-url="https://searx.0x2a.tk/"
+url="http://searx.me"
 license=('AGPL')
 depends=('python2-flask' 'python2-flask-babel' 'python2-requests' 'python2-lxml' 'python2-yaml' 'python2-dateutil' 'python2-pygments' 'python2-certifi' 'python2-pyasn1-modules' 'python2-ndg-httpsclient')
 makedepends=('git')
-backup=('usr/lib/python2.7/site-packages/searx/settings.yml')
 install=searx.install
-source=("$pkgname"::'git+https://github.com/asciimoo/searx.git' 'searx.install' 'searx.service')
-noextract=()
-md5sums=('SKIP'
-         '2d63214f114f131a0ca2d93aa5dafee2'
-         '591625748fdd1b1ad1fe11c8ae8931b5')
+backup=('usr/lib/python2.7/site-packages/searx/settings.yml')
+source=('git+https://github.com/asciimoo/searx.git'
+        'searx.install'
+        'searx.service')
+sha512sums=('SKIP'
+            '47d9b0509b0ac637d6bd0aa44213115e974bb3c943f2bce513732648bcea4616bf9fa550ef7d8fbaa580980793a2d8b69a9342d6a6e31604164e75f246fc3107'
+            '07fbd0675c1bd05022bc79a3f7eb591d6f8276c1347beb6f99901014f01fd9c19638e8c4c8565b2ca248161d71ce8999474f5f1bc1b26494c6f4b63bfd07ab76')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd $srcdir/searx
+
   ( set -o pipefail
-  git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
-package() {
-  msg "Starting build..."
-  cd "$srcdir/$pkgname"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
-  install -Dm644 ../searx.service "${pkgdir}"/usr/lib/systemd/system/searx.service
-  rm  "$pkgdir/usr/lib/python2.7/site-packages/README.rst"
-}
 
-# vim:set ts=2 sw=2 et:
+package() {
+  cd $srcdir/searx
+
+  sed -i 's/certifi==2015.11.20.1/certifi==2016.2.28/' requirements.txt
+  sed -i 's/pygments==2.0.2/pygments==2.1.1/' requirements.txt
+  sed -i 's/python-dateutil==2.4.2/python-dateutil==2.5.0/' requirements.txt
+
+  python2 setup.py install --root=$pkgdir --optimize=1
+  
+  mv $pkgdir/usr/lib/python2.7/site-packages/{README.rst,searx/}
+  mv $pkgdir/usr/lib/python2.7/site-packages/{tests,searx/}
+
+  install -Dm 644 ../searx.service $pkgdir/usr/lib/systemd/system/searx.service
+}
