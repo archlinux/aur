@@ -1,7 +1,7 @@
 # Maintainer: Charles Heywood <charles@hashbang.sh>
 pkgname=lua-cqueues-git
-pkgver=20150907 # As per latest release as of 29 Feb. 2016
-pkgrel=1
+pkgver=r845.7595820 # As per latest release as of 29 Feb. 2016
+pkgrel=2
 pkgdesc="Asynchronous networking, threading, and notification framework for Lua."
 arch=('i686' 'x86_64')
 url="https://github.com/wahern/cqueues"
@@ -28,7 +28,7 @@ build() {
 package() {
   cd "$srcdir/cqueues"
   for version in ${_luaversions[@]}; do
-    make DESTDIR="$pkgdir/" install${version}
+    make prefix="$pkgdir/usr" install${version}
   done
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
