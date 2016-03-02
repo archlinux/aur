@@ -1,0 +1,9 @@
+[Unit]
+Description=ClamFS
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/clamfs /etc/clamav/clamfs.xml
+
+[Install]
+WantedBy=multi-user.target
