@@ -1,19 +1,30 @@
 # Maintainer: Chris <christopher.r.mullins g-mail>
 
 pkgname=lightscreen
-pkgver=2.0
-pkgrel=1
+pkgver=2.1
+pkgrel=2
 pkgdesc='Simple tool to automate the tedious process of saving and cataloging screenshots'
 arch=('i686' 'x86_64')
 url='http://lightscreen.com.ar/'
-depends=('qt4')
+depends=('qt5-base'
+         'qt5-declarative'
+         'qt5-xmlpatterns'
+         'qt5-multimedia'
+         'qt5-x11extras')
 license=('GPL')
-source=("lightscreen-$pkgver.tar.gz::https://github.com/ckaiser/Lightscreen/archive/v$pkgver.tar.gz")
-sha512sums=('b2ce92eb1f09ef447d407ea64c9b5658223230bf91def1327acebd83e343aa94385d7b1c48dcb8ae0be90bf6eb8133d4781e7cb5f5b5934f017af8ffa1133112')
+source=("lightscreen-$pkgver.tar.gz::https://github.com/ckaiser/Lightscreen/archive/v$pkgver.tar.gz"
+        "fix_optionsdialog_include.patch")
+sha512sums=('c824970c789c2d3ab3410522a95e773dd34689dc3b144a28e555e4a4e332730be5931d103dcae28292776b69137b33ddc937e98128a909c70580caeeed322e15'
+            'c4ea7c0be83b989c1b971eb8b73686ffe52467d0d2e6d21ebb6e700961626612388411d9984df8d0a1c0748196db0ec4f9da125b398d4668e97e0566a1b20606')
+
+prepare() {
+  cd "${srcdir}"/"Lightscreen-${pkgver}"
+  patch -Np0 -i ../../fix_optionsdialog_include.patch
+}
 
 build() {
   cd "Lightscreen-$pkgver"
-  qmake-qt4
+  qmake-qt5
   make
 }
 
