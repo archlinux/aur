@@ -7,6 +7,7 @@ Requires=mongodb.service
 User=nobody
 PIDFile=/run/graylog/server.pid
 ExecStart=/usr/bin/java -Djava.net.preferIPv6Addresses=true -Djava.library.path=/usr/lib/graylog/lib/sigar -jar /usr/lib/graylog/server.jar server -f /etc/graylog/server/server.conf -p /run/graylog/server.pid
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
