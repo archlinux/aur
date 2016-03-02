@@ -57,14 +57,10 @@ package()
   for _arch in ${_architectures}; do
     cd "${srcdir}/libxml2-${pkgver}/build-${_arch}"
     make install DESTDIR="${pkgdir}"
-
-    ${_arch}-strip --strip-all "${pkgdir}"/usr/${_arch}/bin/*.exe
+    rm -r "${pkgdir}"/usr/${_arch}/share
+    rm "${pkgdir}"/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
     ${_arch}-strip --strip-debug "${pkgdir}"/usr/${_arch}/lib/*.a
-
-    # Remove documentation
-    rm -r "${pkgdir}"/usr/${_arch}/share
-    
   done
 }
 
