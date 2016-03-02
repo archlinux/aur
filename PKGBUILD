@@ -5,12 +5,12 @@ _ver=1.0.2g
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 #pkgver=$_ver
-pkgrel=2
+pkgrel=3
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('i686' 'x86_64')
 url='https://www.openssl.org'
 license=('custom:BSD')
-depends=('zlib' 'perl')
+depends=('perl')
 optdepends=('ca-certificates')
 options=('!makeflags')
 backup=('etc/ssl/openssl.cnf')
@@ -52,7 +52,7 @@ build() {
 
 	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
 	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib \
-		shared zlib no-ssl3 no-ssl3-method ${optflags} \
+		shared no-ssl3-method ${optflags} \
 		"${openssltarget}" \
 		"-Wa,--noexecstack ${CPPFLAGS} ${CFLAGS} ${LDFLAGS}"
 
