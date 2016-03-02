@@ -1,10 +1,11 @@
-# Maintainer = Anty <anty_fab at hotmail dot fr>
+# Maintainer = Carsten Feuls <archlinux@carstenfeuls.de>
+# ex-Maintainer: Anty <anty_fab at hotmail dot fr>
 # ex-Maintainer: Evan Anderson <evananderson@thelinuxman.us>
 
 _gitname=grub-btrfs
 pkgname=$_gitname-git
-pkgver=v1.7.r6.g4388c33-1
-pkgrel=1
+pkgver=1.7.2.r0.g52ab9db
+pkgrel=2
 pkgdesc="grub-btrfs, Include btrfs snapshots at boot options. (grub menu)"
 arch=('any')
 url="https://github.com/Antynea/grub-btrfs"
