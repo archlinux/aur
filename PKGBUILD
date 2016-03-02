@@ -37,8 +37,8 @@ source=("https://github.com/OpenBazaar/OpenBazaar-Server/archive/v$pkgver.tar.gz
 )
 install=${pkgname}.install
 options=('!strip')
-provides=('${pkgname}')
-replaces=('${pkgname}-git')
+provides=('openbazaard')
+replaces=('openbazaard-git')
 backup=('var/lib/openbazaard/ob.cfg '
 	'etc/conf.d/openbazaard.conf')
 _srcfolder=OpenBazaar-Server-$pkgver
