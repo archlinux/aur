@@ -1,8 +1,8 @@
 # Maintainer: Andrew Krasichkov <buglloc _ at _ yandex _ dot _ru>
 
 pkgname=brick
-pkgver=0.2.9.34
-pkgrel=2
+pkgver=0.2.10.34
+pkgrel=1
 pkgdesc="An open source Bitrix24 messenger client"
 arch=('i686' 'x86_64')
 url="https://github.com/buglloc/brick"
@@ -13,7 +13,7 @@ conflicts=("brick-git" "mesa-demos")
 makedepends=("p7zip" "cmake")
 install=${pkgname}.install
 source=("https://github.com/buglloc/brick/archive/v${pkgver}.tar.gz")
-sha256sums=("924da8a1dc4f4cd12c1ac2ec16e1c562af99dadc849b39e58c8c5a7768d8f7ee")
+sha256sums=("98be29132e531639cf0d6348e770c04ea13b69a42a3f7f0ba904e7ce96a1a106")
 source_x86_64=("https://github.com/buglloc/cef-builds/raw/0d15971961fda87682bd5e067cdcf5450e72b6b8/libs/cef-x86_64.tar.gz")
 sha256sums_x86_64=("5edf8e04ffb6acbcb88c26b3d4fcae9020d18967c9c4b9d3afa32530354e883d")
 source_i686=("https://github.com/buglloc/cef-builds/raw/0d15971961fda87682bd5e067cdcf5450e72b6b8/libs/cef-i686.tar.gz")
