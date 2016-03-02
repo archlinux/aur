@@ -2,7 +2,7 @@
 
 _pkgname=openbazaar
 pkgname=${_pkgname}-git
-pkgver=2102.9df5bcc
+pkgver=2301.5dbca08
 pkgrel=1
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon"
 arch=(any)
@@ -14,12 +14,11 @@ source=(
 	"${_pkgname}::git+https://github.com/OpenBazaar/OpenBazaar-Client.git"
 	"${_pkgname}.sh"
         "${_pkgname}.desktop"
-        "${_pkgname}.png"
 )
 install=${_pkgname}.install
 options=('!strip')
-provides=(${_pkgname})
-replaces=(${_pkgname})
+provides=('openbazaar')
+replaces=('openbazaar')
 
 build(){
   cd $srcdir/${_pkgname}
@@ -41,7 +40,7 @@ msg2 "Installing execution script"
   rm -rf $pkgdir/opt/${_pkgname}/{.git*,.eslint*,.travis*}
 
 msg2 "Installing icons and desktop menu entry"
-  install -Dm644 $srcdir/${_pkgname}.png "$pkgdir"/usr/share/icons/hicolor/128x128/apps/openbazaar.png
+  install -Dm644 $srcdir/${_pkgname}/imgs/icon.png "$pkgdir"/usr/share/pixmaps/openbazaar.png
   install -Dm644 $srcdir/${_pkgname}.desktop "$pkgdir"/usr/share/applications/openbazaar.desktop
 }
 
@@ -52,5 +51,4 @@ pkgver() {
 
 md5sums=('SKIP'
          '2f915aa854435ce7cd1dfca4eccd0112'
-         'a528a6284cbdf4e901af319ca3bb68d9'
-         '71fc6ef0cc128dc1d00eff33c12c66cb')
+         'dbca9273e9fc18a7aa5d1c395508fe60')
