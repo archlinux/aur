@@ -2,13 +2,13 @@
 # Contributor: Julien MISCHKOWITZ <wain@archlinux.fr>
  
 pkgname=yaourt-git
-pkgver=1.6
+pkgver=1.8
 pkgrel=1
 pkgdesc="A pacman wrapper with extended features and AUR support"
 arch=('any')
 url="http://www.archlinux.fr/yaourt-en/"
 license=('GPL')
-depends=('package-query-git' 'pacman>=4.1')
+depends=('package-query-git' 'pacman>=5.0')
 makedepends=('git')
 optdepends=('aurvote: vote for your favorite AUR packages'
 			'customizepkg: automatically modify PKGBUILD during install/upgrade'
