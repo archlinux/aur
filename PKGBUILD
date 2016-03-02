@@ -3,6 +3,9 @@
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Christian Storm <Christian.Storm@gmx.de>
 
+# This PKGBUILD is maintained on github:
+# https://github.com/michaellass/AUR
+
 pkgname=jabref
 pkgver=3.2
 pkgrel=2
