@@ -1,0 +1,21 @@
+pkgbase = samhain
+	pkgdesc = file integrity / intrusion detection system
+	pkgver = 4.1.2
+	pkgrel = 1
+	url = http://www.la-samhna.de/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = openssl
+	makedepends = procps-ng
+	source = http://www.la-samhna.de/samhain/samhain-current.tar.gz
+	source = PKGBUILD.sig
+	source = PKGBUILD
+	validpgpkeys = CB6E213A349B8DF9E96B622AC3F4FFCF3EAE8697
+	validpgpkeys = EF6CEF54701A0AFDB86AF4C31AAD26C80F571F6C
+	sha512sums = 0dcb89b7a11b0aaef7b306360857c64b505651b526f7c3030ac7186f1c334c745df7b544e16fa9edac260156b1fa32d44e2276cf2476807d0ea0c011d05c9e4f
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = samhain
