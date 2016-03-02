@@ -1,8 +1,9 @@
+/* See LICENSE file for copyright and license details. */
 #define CWD "cwd: "
 #define CURSR " > "
 #define EMPTY "   "
 
-int mtimeorder = 0; /* Set to 1 to sort by time in the default case */
+int mtimeorder = 0; /* Set to 1 to sort by time modified */
 int idletimeout = 0; /* Screensaver timeout in seconds, 0 to disable */
 char *idlecmd = "rain"; /* The screensaver program */
 
@@ -31,8 +32,6 @@ struct key bindings[] = {
 	/* Filter */
 	{ '/',            SEL_FLTR },
 	{ '&',            SEL_FLTR },
-	/* Filter as you type */
-	{ '?',            SEL_TYPE },
 	/* Next */
 	{ 'j',            SEL_NEXT },
 	{ KEY_DOWN,       SEL_NEXT },
@@ -57,12 +56,16 @@ struct key bindings[] = {
 	{ '$',            SEL_END },
 	/* Change dir */
 	{ 'c',            SEL_CD },
+	{ '~',            SEL_CDHOME },
+	/* Toggle hide .dot files */
+	{ '.',            SEL_TOGGLEDOT },
 	/* Toggle sort by time */
 	{ 't',            SEL_MTIME },
 	{ CONTROL('L'),   SEL_REDRAW },
 	/* Run command */
-	{ '!',            SEL_RUN,    "sh" },
-	{ 'z',            SEL_RUN,    "top" },
+	{ 'z',            SEL_RUN, "top" },
+	{ '!',            SEL_RUN, "sh", "SHELL" },
 	/* Run command with argument */
-	{ 'e',            SEL_RUNARG, "vi" },
+	{ 'e',            SEL_RUNARG, "vi", "EDITOR" },
+	{ 'p',            SEL_RUNARG, "less", "PAGER" },
 };
