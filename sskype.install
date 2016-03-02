@@ -1,0 +1,16 @@
+post_install() {
+  useradd -U -G audio,video -k /etc/default/sskype -m -s /sbin/nologin _skype
+  echo "Special setup required for Pulse Audio:"
+  echo "(many thanks to kurnevsky)"
+  echo "add 'load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1'"
+  echo "to ~/.pulse/default.pa"
+  echo ""
+  echo "If you are upgrading from a version that worked without pulse,"
+  echo "completely uninstall skype-secure before installing it."
+}
+
+post_remove() {
+  killall -u _skype
+  sleep 3
+  userdel -r _skype
+}
