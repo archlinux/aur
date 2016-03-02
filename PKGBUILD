@@ -4,11 +4,10 @@
 
 pkgbase=systemd-git
 pkgname=('systemd-git' 'libsystemd-git' 'systemd-sysvcompat-git')
-pkgver=228.r54.g0c203f1-1
-pkgrel=1
+pkgver=228.r54.g0c203f1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
-conflicts=
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'intltool' 'iptables' 'kmod' 'libcap' 'libidn' 'libgcrypt'
              'libmicrohttpd' 'libxslt' 'util-linux' 'linux-api-headers'
