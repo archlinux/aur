@@ -2,7 +2,7 @@
 
 pkgname=obs-service-set_version
 _pkgver=0.5.3
-pkgver=${_pkgver}.r77
+pkgver="${_pkgver}.r77"
 pkgrel=1
 pkgdesc="Version Service for the OpenSUSE Build Service (OBS)"
 arch=('any')
@@ -20,5 +20,5 @@ pkgver() {
 
 package() {
 	cd "${srcdir}/${pkgname}"
-	make DESTDIR=${pkgdir} PREFIX=/usr install 
+	make DESTDIR="${pkgdir}" PREFIX=/usr install 
 }
