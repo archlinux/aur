@@ -1,12 +1,14 @@
 # Maintainer: Markus Kitsinger (SwooshyCueb) <root@swooshalicio.us>
 pkgname=python2-camel-git
 pkgver=v0.1.r13.g13b7a26
-pkgrel=1
+pkgrel=2
 pkgdesc='Python serialization module'
 arch=(any)
 license=(ISC)
 url="https://github.com/eevee/camel"
 depends=(python2-yaml)
+conflicts=('python2-camel')
+provides=('python2-camel')
 source=(git+https://github.com/eevee/camel.git)
 sha512sums=('SKIP')
 
