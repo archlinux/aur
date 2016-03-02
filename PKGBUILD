@@ -2,16 +2,16 @@
 # Contributor : speps <speps at aur dot archlinux dot org>
 
 pkgname=distrho-vst-git
-pkgver=r336.7bcbc9b
-pkgrel=2
-pkgdesc="Distrho VST Audio Plugins, using the JUCE Toolkit"
+pkgver=r337.75bbdc9
+pkgrel=1
+pkgdesc="DISTRHO VST audio plugins ports"
 arch=('i686' 'x86_64')
 url="http://distrho.sourceforge.net/"
 license=('GPL' 'LGPL')
 depends=('freetype2' 'alsa-lib' 'libxext')
 makedepends=('premake3' 'git' 'libxinerama' 'libxrender' 'libxcursor' 'steinberg-vst36')
-provides=("${pkgname}")
-conflicts=("${pkgname}" "distrho-vst" "distrho-plugins-vst-git")
+provides=("${pkgname%-*}")
+conflicts=("${pkgname%-*}" "distrho-vst-git" "distrho-plugins-vst-git")
 source=("${pkgname}::git://github.com/DISTRHO/DISTRHO-Ports")
 md5sums=('SKIP')
 
@@ -28,7 +28,8 @@ build() {
 }
 
 package() {
-	cd "$pkgname"
-	install -d bin/vst/ "$pkgdir"/usr/lib/vst/
-	cp -a bin/vst/. "$pkgdir"/usr/lib/vst/
+	cd "$pkgname"/bin/vst
+  for i in *; do
+    install -D "$i" ""$pkgdir"/usr/lib/vst/$i"
+  done
 }
