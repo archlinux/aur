@@ -8,7 +8,7 @@ pkgdesc="A webkit2 greeter for LightDM"
 arch=('i686' 'x86_64')
 url="https://github.com/antergos/lightdm-webkit2-greeter"
 license=('GPL3')
-source=("${pkgname}-${pkgver}::git+https://github.com/antergos/${pkgname}.git"
+source=("${pkgname}-${pkgver}::git+https://github.com/antergos/${pkgname}.git#branch=2.0.0"
 		"https://antergos.com/antergos-wallpapers-0.6.zip")
 groups=('system')
 makedepends=('gnome-doc-utils' 'gobject-introspection' 'intltool' 'gnome-common' 'exo' 'git')
@@ -17,15 +17,14 @@ depends=('lightdm' 'webkit2gtk>=2.10' 'webkit2gtk<2.12' 'gtk-engines'
 provides=('lightdm-webkit-greeter' 'lightdm-webkit-theme-antergos=2.3.2')
 conflicts=('lightdm-webkit-greeter' 'lightdm-webkit-theme-antergos')
 replaces=('lightdm-webkit-greeter' 'lightdm-webkit-theme-antergos<2.2.4')
-install=greeter.install
 backup=("etc/lightdm/${pkgname}.conf")
 md5sums=('SKIP'
          'c996d26914e71897019c33854b0ae634')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	git checkout 2.0.0
 	git submodule init && git submodule update
+	
 	LIBS+="-ljavascriptcoregtk-4.0" \
 		./autogen.sh \
 			--prefix=/usr \
@@ -41,7 +40,8 @@ build() {
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	make DESTDIR=$pkgdir install 
+	make DESTDIR="${pkgdir}" install 
+	
 	cp -dpr --no-preserve=ownership \
 		"${srcdir}/antergos-wallpapers-${_bgver}" \
 		"${pkgdir}/usr/share/lightdm-webkit/themes/antergos/wallpapers"
