@@ -1,6 +1,6 @@
 pkgbase=swift-development
 pkgname=(swift-development swift-lldb-development)
-_swiftver=DEVELOPMENT-SNAPSHOT-2016-02-25-a
+_swiftver=DEVELOPMENT-SNAPSHOT-2016-03-01-a
 pkgver=${_swiftver//-/.}
 pkgrel=1
 pkgdesc="The Swift programming language and debugger - latest development snapshot"
@@ -9,7 +9,7 @@ url="http://swift.org/"
 license=('apache')
 depends=('python2' 'libutil-linux' 'icu' 'libbsd' 'libedit' 'libxml2'
          'sqlite' 'ncurses')
-makedepends=('git' 'cmake' 'ninja' 'swig' 'clang>=3.6' 'python2-six'
+makedepends=('git' 'cmake' 'ninja' 'swig' 'clang>=3.6' 'python2-six' 'perl'
              # See https://llvm.org/bugs/show_bug.cgi?id=26580 and
              # https://sourceware.org/bugzilla/show_bug.cgi?id=19612
              # NOTE: Using gold doesn't completely work either, since gold
@@ -25,17 +25,19 @@ source=(
     "swift-package-manager-${_swiftver}.tar.gz::https://github.com/apple/swift-package-manager/archive/swift-${_swiftver}.tar.gz"
     "swift-corelibs-xctest-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-xctest/archive/swift-${_swiftver}.tar.gz"
     "swift-corelibs-foundation-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-foundation/archive/swift-${_swiftver}.tar.gz"
+    "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
     "swift-no-docs.patch"
 )
-sha256sums=('6a384ff4921208a9aa73d898f7b2bf51bddfbfb26245e8fc5a7be1f02257c32a'
-            '40059e8a66980ca11688f2120aea1eb38518e52b6f47fe9195dcd1bb8e2cac83'
-            'f9fbead2f751c03ad00391d2f62227bd4a02ab5b40763b59ce102c8ee0adf08b'
-            '7f362a062d255a2111af03ece859292e64c60e8886387ffbf9da1c1e0ae71f82'
-            '0e8885fc95703fcc694da5ccbaff2937381a12940a878bbce3f9d8f452b31b47'
-            '06534afce6606c28c47aea3759817af870d58343a0b8f85ba29e18ceef00f782'
-            '8fe7a2f949c53c99956ab2ec7e6f6388e0aaf76ba8cc334a5e9c808214553609'
-            '7da4775f994cee564927b84c0c992969f75940ebdde72a6c94403278c2d8e126'
-            'db6a8ee6a380c6c2af8028d05297f9c817c05b6f8fc56f1c55cbb788ce4b912d'
+sha256sums=('8af4d4a1eed2084520a5b320668e0ba328068f12b3751f880869442b2cbdb313'
+            '8640340e20a1367a28b8457b38cbd3d036d6f714f7ceaf872b073078eb984280'
+            '10242a391a0aad00982310cceb17b523e631e1e4c6ddd415839d4dde0f6dcd39'
+            'dc12005b49b9702d994c5bcc3ce8dbd08762857d86ded7c3780ae391507261ea'
+            'a9c787264b58c00c335b242deb6ef9939510282295cf805315ac11c8b43cb6ef'
+            'b7379613e079679e5ee1fc023badf659041ec9630fed4827fdec80316584c9a3'
+            '26e9ad151bcf8d73c52f16b64e11e20ce18e6a6f410590915393c84c97aaabd1'
+            'cd42bc7c9d72a2f6212d265066a890135ff7225322fc078f8ed0eba4214a0fee'
+            'fc269fd6b47067af45809a5c7a116f334bf04f2ef2849dff3ae1ab7ea8dd197e'
+            '7fe7045f04e8fd442b9536fa3dff7dad36a7d1e08a5ad36abbf97015ba1fdf1b'
             '1a8663c48a1a203d1825ae62a7e4191e4980a2dad461d4d88152221ad9e2171d')
 
 prepare() {
@@ -56,12 +58,11 @@ prepare() {
          xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
 
     # Use directory names which build-script expects
-    for sdir in llvm clang lldb cmark llbuild corelibs-xctest corelibs-foundation; do
-        if [[ "$sdir" =~ ^corelibs- ]]; then
-            ln -sf swift-${sdir}-swift-${_swiftver} swift-${sdir}
-        else
-            ln -sf swift-${sdir}-swift-${_swiftver} ${sdir}
-        fi
+    for sdir in llvm clang lldb cmark llbuild; do
+        ln -sf swift-${sdir}-swift-${_swiftver} ${sdir}
+    done
+    for sdir in corelibs-xctest corelibs-foundation integration-tests; do
+        ln -sf swift-${sdir}-swift-${_swiftver} swift-${sdir}
     done
     ln -sf swift-swift-${_swiftver} swift
     ln -sf swift-package-manager-swift-${_swiftver} swiftpm
