@@ -14,10 +14,11 @@ source=("https://github.com/OpenSC/${pkgname}/archive/${pkgname}-${pkgver}.tar.g
 md5sums=('01ee707a3c89020341cfb9fce27f38c5')
 
 build() {
-	cd ${pkgname}-$pkgver
-	./configure --prefix=/usr \
+    cd ${pkgname}-${pkgname}-${pkgver}
+    ./bootstrap
+    ./configure --prefix=/usr \
     --sysconfdir=/etc \
-		--with-ldap=no \
+    --with-ldap=no \
     --without-docbook \
     --disable-static
 #    --disable-debug # build is broken
@@ -25,8 +26,8 @@ build() {
 }
 
 package() {
-	cd ${pkgname}-$pkgver
-  make DESTDIR="${pkgdir}" install
+    cd ${pkgname}-$pkgver
+    make DESTDIR="${pkgdir}" install
 
-  install -d "${pkgdir}"/etc/pam_pkcs11/{cacerts,crls}
+    install -d "${pkgdir}"/etc/pam_pkcs11/{cacerts,crls}
 }
