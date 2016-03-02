@@ -1,8 +1,8 @@
 # Maintainer: Darshit Shah <darnir@gmail.com>
 
 pkgname=libpsl
-pkgver=0.12.0
-pkgrel=2
+pkgver=0.13.0
+pkgrel=1
 pkgdesc="A Publix Suffic List library"
 arch=('i686' 'x86_64')
 url="https://github.com/rockdaboot/libpsl"
@@ -37,4 +37,4 @@ package() {
 }
 
 # vim: ts=2:sw=2:et
-md5sums=('752d4ba864c5c9e34dde4074f2071727')
+md5sums=('fd99a6d7cc629faba1cb0633eaf73898')
