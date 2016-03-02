@@ -2,7 +2,7 @@
 # Maintainer: Ido Rosen <ido@kernel.org>
 
 pkgname=fix8
-pkgver=1.3.2
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="Open Source C++ FIX Engine"
 arch=('x86_64')
@@ -17,9 +17,8 @@ optdepends=('hiredis: Redis message persistence'
 provides=('fix8')
 conflicts=('fix8-git')
 options=('!libtool' 'staticlibs' '!strip')
-source=("git+https://github.com/fix8/${pkgname}.git#tag=${pkgver}"
-        "fix-seqedit-poconet-dependency.patch")
-sha512sums=('SKIP' 'SKIP')
+source=("git+https://github.com/fix8/${pkgname}.git#tag=${pkgver}")
+sha512sums=('SKIP')
 
 #pkgver() {
 #  cd "${srcdir}/${pkgname}"
@@ -27,11 +26,11 @@ sha512sums=('SKIP' 'SKIP')
 #  #printf "0.%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 #}
 
-prepare() {
-  cd "${srcdir}/${pkgname}"
-
-  patch -p1 -i "${srcdir}/fix-seqedit-poconet-dependency.patch"
-}
+#prepare() {
+#  cd "${srcdir}/${pkgname}"
+#
+#  patch -p1 -i "${srcdir}/fix-seqedit-poconet-dependency.patch"
+#}
 
 build() {
   cd "${srcdir}/${pkgname}"
