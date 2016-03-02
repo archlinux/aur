@@ -23,12 +23,12 @@ _channel=stable
 source=("google-chrome-${_channel}_${pkgver}_amd64.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_amd64.deb"
         'google-chrome-stable'
         'eula_text.html')
-md5sums=('4fc58c6da74c6fed6889b0e4c2eca35f'
-         '149e09d5f8c64ca4eea0da757e142529'
+md5sums=('149e09d5f8c64ca4eea0da757e142529'
+         '99fa93d5e7fb5d622cef0f9621f3ffa3'
          'b7e752f549b215ac77f284b6486794b6')
 
 package() {
-  msg2 "Extracting the data.tar.lzma..."
+  msg2 "Extracting the data.tar.xz..."
   bsdtar -xf data.tar.xz -C "$pkgdir/"
 
   msg2 "Moving stuff in place..."
