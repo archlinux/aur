@@ -1,8 +1,3 @@
- bfd/cofflink.c        | 14 +++++++++++---
- gas/ChangeLog         |  5 +++++
- gas/config/obj-coff.c |  1 +
- 4 files changed, 22 insertions(+), 3 deletions(-)
-
 diff --git a/bfd/cofflink.c b/bfd/cofflink.c
 index 8f76b4d..f9b591a 100644
 --- a/bfd/cofflink.c
@@ -35,7 +30,6 @@ index 8f76b4d..f9b591a 100644
  		{
  		  unsigned long indx;
  
-
 diff --git a/gas/config/obj-coff.c b/gas/config/obj-coff.c
 index c0a3f1f..ac2310c 100644
 --- a/gas/config/obj-coff.c
@@ -48,5 +42,5 @@ index c0a3f1f..ac2310c 100644
  	    }
  	  else
  	    {
- 	    
- 	    
+-- 
+2.1.0

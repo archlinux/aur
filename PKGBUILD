@@ -26,9 +26,9 @@ source=('git://sourceware.org/git/binutils-gdb.git'
 	"gas-aux-nt-weak-externals.patch"
 	"objcopy-weak-nt-externals2local.patch")
 md5sums=('SKIP'
-         'd861dd1ecfc4049bf46b53a565dc6b89'
-         'e4a89dbe759293d62ca0206223340d24'
-         '4bdea67da7b9c8e0d8ca1dd5f94dcef6')
+         '4f6bb38f90a69f63c936ff0013c0079c'
+         'fb01f7c69fd4031faa05de1242166895'
+         '2d9afb0ba78b010b3dcfe724572ec693')
          
 pkgver() {
    cd ${srcdir}/binutils-gdb
