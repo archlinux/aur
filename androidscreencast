@@ -1,0 +1,3 @@
+#!/bin/bash
+
+javaws /usr/local/lib/java/androidscreencast.jnlp
