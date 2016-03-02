@@ -1,4 +1,5 @@
-# Maintainer: Vlad M. <vlad@archlinux.net>
+# Maintainer: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
+# Contributor: Vlad M. <vlad@archlinux.net>
 # Contributor: Attila Bukor <r1pp3rj4ck [at] w4it [dot] eu>
 # Contributor: Hugo Osvaldo Barrera <hugo@barrera.io>
 # Contributor: xantares <xantares09@hotmail.com>
@@ -7,72 +8,77 @@
 # Contributor: Ricardo Band <me [at] xengi [dot] de>
 
 pkgname=popcorntime
-pkgver=0.3.8.5
-_pkgver=v0.3.8-5
-pkgrel=2
+pkgver=0.3.9
+pkgrel=1
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=('i686' 'x86_64')
-url="http://popcorntime.io/"
+url="http://popcorntime.sh/"
 license=('GPL3')
-makedepends=('git'
-             'bower'
-             'nodejs-grunt-cli'
-             'npm')
-depends=('alsa-lib'
-         'gconf'
-         'gtk2'
-         'libnotify'
-         'libxtst'
-         'nss'
-         'ttf-font')
+makedepends=(
+	'bower'
+	'nodejs-grunt-cli'
+	'npm'
+)
+depends=(
+	'alsa-lib'
+	'gconf'
+	'gtk2'
+	'libnotify'
+	'libxtst'
+	'nss'
+	'ttf-font'
+)
 optdepends=('net-tools: vpn.ht client')
 options=('!strip')
 install="popcorntime.install"
-_commit_hash="9d0b6efe81f5a0a005e244115a94139a62a76459"
-_gitname="desktop-${_pkgver}-${_commit_hash}"
-_nw_ver=0.12.2
+# Needed variables for sources downloads
+_commit_hash="7d66143b05813b6541be37a767be4e06f323249f"
+_pkgname="popcorn-desktop"
+source=(
+	"${_pkgname}_${pkgver}.zip::https://github.com/popcorn-official/popcorn-desktop/archive/${_commit_hash}.zip"
+	"popcorntime.desktop"
+)
+sha256sums=('2e8eb0882fad29e1b8c0175eee9af4f84bc644c5df143e030ef3a0843b5abf7f'
+            '4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334')
 
+# Useful variables for builds
+_srcdir="${_pkgname}-${_commit_hash}"
 _platform=linux64
 if [ "$CARCH" = 'i686' ]; then
   _platform=linux32
 fi
+_bpath="${_srcdir}/build/Popcorn-Time/${_platform}"
 
-source=("desktop-${_pkgver}.tar.bz2::https://git.popcorntime.io/popcorntime/desktop/repository/archive.tar.bz2?ref=${_pkgver}"
-        "popcorntime.desktop")
-sha256sums=('b4980fc2ba7ffd53fbf7463b09d39a9f14a8b138708e3fb7f36a0939a3184190'
-            '4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334')
-
+# Building the package
 prepare() {
-  cd "${_gitname}"
+	cd "${_srcdir}"
 
-  export PYTHON=/usr/bin/python2
+	#export PYTHON=/usr/bin/python2
 
-  npm install
+	# Hacky way to only build
+	sed 's/gulp start/gulp build/g' -i package.json
+
+	npm install
 }
 
 build() {
-  cd "${_gitname}"
+	cd "${_srcdir}"
 
-  grunt bower_clean
-  grunt css
-  grunt nodewebkit || grunt nodewebkit
+	npm start
 }
 
 package() {
-  _bpath="${_gitname}/build/releases/Popcorn-Time/${_platform}/Popcorn-Time"
+	cd "${srcdir}/${_bpath}"
 
-  install -dm755 "${pkgdir}/usr/lib/${pkgname}"
-  install -dm755 "${pkgdir}/usr/bin"
+	mkdir -p "${pkgdir}/usr/share/${pkgname}"
+	mkdir -p "${pkgdir}/usr/bin"
 
-  install -Dm755 "${_bpath}/Popcorn-Time" "${pkgdir}/usr/lib/${pkgname}/"
-  install -Dm644 "${_bpath}/nw.pak" "${pkgdir}/usr/lib/${pkgname}/"
-  install -Dm644 "${_bpath}/libffmpegsumo.so" "${pkgdir}/usr/lib/${pkgname}/"
-  install -Dm644 "${_gitname}/build/cache/${_platform}/${_nw_ver}/icudtl.dat" "${pkgdir}/usr/lib/${pkgname}/"
+	find . -type f -exec install -D {} ${pkgdir}/usr/share/${pkgname}/{} \;
 
-  mkdir -p "${pkgdir}/usr/bin"
-  ln -s "/usr/lib/${pkgname}/Popcorn-Time" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm644 "${srcdir}/${_srcdir}/src/app/images/icon.png" "${pkgdir}/usr/share/pixmaps/popcorntime.png"
+	chmod +x "${pkgdir}/usr/share/${pkgname}/Popcorn-Time"
 
-  install -Dm644 "popcorntime.desktop" "${pkgdir}/usr/share/applications/popcorntime.desktop"
+	ln -s "/usr/share/${pkgname}/Popcorn-Time" "${pkgdir}/usr/bin/${pkgname}"
 
-  install -Dm644 "${_gitname}/src/app/images/icon.png" "${pkgdir}/usr/share/pixmaps/popcorntime.png"
+	install -Dm644 "${srcdir}/popcorntime.desktop" "${pkgdir}/usr/share/applications/popcorntime.desktop"
 }
