@@ -1,0 +1,18 @@
+pkgbase = pypy-six
+	pkgdesc = Python 2 and 3 compatibility utilities (build for pypy)
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/six/
+	arch = any
+	license = MIT
+	makedepends = pypy
+	makedepends = pypy3
+	source = http://pypi.python.org/packages/source/s/six/six-1.10.0.tar.gz
+	md5sums = 34eed507548117b2ab523ab14b2f8b55
+
+pkgname = pypy-six
+	depends = pypy
+
+pkgname = pypy3-six
+	depends = pypy3
+
