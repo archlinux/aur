@@ -3,8 +3,8 @@
 # Remove the --enable-openmp flag below if you do not want parallelization.
 
 pkgname=python2-graph-tool
-pkgver=2.12
-pkgrel=2
+pkgver=2.13
+pkgrel=1
 pkgdesc='A Python module for manipulation and statistical analysis of graphs'
 arch=('i686' 'x86_64')
 url='http://projects.skewed.de/graph-tool/'
@@ -17,13 +17,10 @@ optdepends=('graphviz: graph layout'
 'python2-matplotlib: graph drawing')
 options=(!libtool)
 source=("http://downloads.skewed.de/graph-tool/graph-tool-$pkgver.tar.bz2")
-sha256sums=('ac5fdd65cdedb568302d302b453fe142b875f23e3500fe814a73c88db49993a9')
+sha256sums=('8a4ab48518cbdec41b2e2a8151eb563fe837361d84d77896fa7b24dc64c81e8b')
 
 prepare() {
   cd "$srcdir/graph-tool-$pkgver"
-  find -type f -print0 | xargs -0 sed -i 's/ placeholders:/ std::placeholders:/g'
-  # Remove information about the source directory, which is temporary.
-  sed -i '/AC_DEFINE_UNQUOTED(\[PACKAGE_SOURCE_DIR\].*)/d' configure.ac
   autoconf
   ./configure --enable-openmp --prefix=/usr --docdir="/usr/share/doc/$pkgname" PYTHON=python2
 }
