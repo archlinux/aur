@@ -1,7 +1,7 @@
 # Maintainer: Charles Heywood <charles@hashbang.sh>
 pkgname=lua-ossl-git
 pkgver=rel.20140328.r185.gdac0e48
-pkgrel=2
+pkgrel=3
 pkgdesc="Most comprehensive OpenSSL module in the Lua universe."
 arch=('i686' 'x86_64')
 url="https://github.com/wahern/luaossl"
@@ -27,7 +27,7 @@ build() {
 package() {
   cd "$srcdir/luaossl"
   for version in ${_luaversions[@]}; do
-    make DESTDIR="$pkgdir/" install${version}
+    make prefix="$pkgdir/usr" install${version}
   done
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
