@@ -1,0 +1,23 @@
+pkgbase = pypy-camel
+	pkgdesc = Python serialization module (build for pypy)
+	pkgver = v0.1.r12.g7e2c6b7
+	pkgrel = 1
+	url = https://github.com/eevee/camel
+	arch = any
+	license = ISC
+	makedepends = pypy3
+	makedepends = pypy
+	makedepends = pypy3-yaml
+	makedepends = pypy-yaml
+	depends = python2-yaml
+	source = git+https://github.com/eevee/camel.git#commit=7e2c6b7bf965c4e9d098d6c56594ca2c36b63aa8
+	sha512sums = SKIP
+
+pkgname = pypy-camel
+	depends = pypy-yaml
+	depends = pypy
+
+pkgname = pypy3-camel
+	depends = pypy3-yaml
+	depends = pypy3
+
