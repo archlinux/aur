@@ -1,15 +1,15 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=python-numba
-pkgver=0.23.1
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="NumPy aware dynamic Python compiler using LLVM"
 url="http://numba.pydata.org/"
 arch=('i686' 'x86_64')
 license=('BSD')
-depends=('python-llvmlite>=0.6.0' 'python-llvmlite<0.9.0')
+depends=('python-llvmlite>=0.9.0' 'python-llvmlite<0.10.0')
 makedepends=('cython')
-source=("https://pypi.python.org/packages/source/n/numba/numba-$pkgver.tar.gz")
-md5sums=('a95d04533d254b5222a2b157066577e5')
+source=("https://github.com/numba/numba/archive/$pkgver.tar.gz")
+md5sums=('7ccd13107fd9219eb31a0e51c8279160')
 
 build() {
   cd "$srcdir/numba-$pkgver"
