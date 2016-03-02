@@ -1,5 +1,5 @@
 pkgname=rover
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Simple file browser for the terminal.'
 arch=('i686' 'x86_64')
@@ -7,7 +7,7 @@ url='https://github.com/lecram/rover'
 license=('custom:Public Domain')
 depends=('ncurses')
 source=("https://github.com/lecram/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('f80c982cc7ebe873527f3725ec10a1288fecc8e5b5095d63415b6c261c10c2f4')
+sha256sums=('4437321d37f3e552e8abd19ad3d391a4e08472b584179b45d3d1a3a5c24db57b')
 
 build() {
 	cd "$pkgname-$pkgver"
