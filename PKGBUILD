@@ -1,0 +1,17 @@
+# Maintainer: Davide Iosca <dvdios [at] aol [dot] com>
+
+pkgname='gtksourceview3-highlight-cython'
+pkgdesc='Cython syntax highlighting for gtksourceview'
+pkgver=20141009
+pkgrel=1
+url='https://wiki.gnome.org/action/show/Projects/GtkSourceView/LanguageDefinitions'
+arch=('any')
+license=('GPL')
+depends=('gtksourceview3')
+source=('cython.lang::https://wiki.gnome.org/Projects/GtkSourceView/LanguageDefinitions?action=AttachFile&do=get&target=cython.lang')
+sha1sums=('296fea1142bdaa69a72241c6a5986bdc764fe75d')
+
+package() {
+  install -m644 -D cython.lang "${pkgdir}/usr/share/gtksourceview-3.0/language-specs/cython.lang"
+}
+
