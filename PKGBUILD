@@ -1,10 +1,10 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=skribilo-git
-pkgver=v0.9.3r978
+pkgver=v0.9.3_1_gdfcdee7r979
 pkgrel=1
-pkgdesc=""
+pkgdesc="The Ultimate Document Programming Framework from git"
 arch=('any')
-url="The Ultimate Document Programming Framework from git"
+url="http://www.nongnu.org/skribilo/"
 license=('GPL')
 depends=('bash')
 makedepends=('git' 'guile-reader-git' 'ploticus')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_gitname"
-  printf "%sr%s" $(git describe --tags) $(git rev-list --count HEAD)
+  printf "%sr%s" $(git describe --tags|tr - _) $(git rev-list --count HEAD)
 }
 
 build() {
