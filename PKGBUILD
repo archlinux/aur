@@ -1,12 +1,12 @@
 # Maintainer: Chrysostomus @forum.manjaro.org
 
 pkgname=bmenu
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=4
 pkgdesc="Simple system menu for commandline"
 arch=(any)
 url="https://github.com/Chrysostomus/$pkgname"
-license=MIT
+license=(MIT)
 depends=('awk'
 	'bash'
 	'elinks'
