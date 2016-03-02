@@ -1,10 +1,9 @@
 pkgbase = google-chrome
-	pkgdesc = An attempt at creating a safer, faster, and more stable browser (Stable Channel). NOTE: If the md5sums don't match, don't post the makepkg output. Simply flag the package.
+	pkgdesc = An attempt at creating a safer, faster, and more stable browser (Stable Channel)
 	pkgver = 49.0.2623.75
 	pkgrel = 1
 	url = https://www.google.com/chrome/index.html
 	install = google-chrome.install
-	arch = i686
 	arch = x86_64
 	license = custom:chrome
 	makedepends = pacman>=4.2.0
@@ -32,14 +31,12 @@ pkgbase = google-chrome
 	provides = pepper-flash
 	options = !emptydirs
 	options = !strip
+	source = google-chrome-stable_49.0.2623.75_amd64.deb::https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 	source = google-chrome-stable
 	source = eula_text.html
+	md5sums = 4fc58c6da74c6fed6889b0e4c2eca35f
 	md5sums = 149e09d5f8c64ca4eea0da757e142529
 	md5sums = b7e752f549b215ac77f284b6486794b6
-	source_i686 = google-chrome-stable_49.0.2623.75_i386.deb::https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb
-	md5sums_i686 = 895e877b9bfe5da05a061369c2078626
-	source_x86_64 = google-chrome-stable_49.0.2623.75_amd64.deb::https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-	md5sums_x86_64 = 4fc58c6da74c6fed6889b0e4c2eca35f
 
 pkgname = google-chrome
 
