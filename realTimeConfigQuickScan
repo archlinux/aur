@@ -1,0 +1,5 @@
+#!/bin/bash
+
+set -e
+cd /usr/share/realtimeconfigquickscan
+exec perl ./realTimeConfigQuickScan.pl
