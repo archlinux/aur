@@ -16,12 +16,19 @@ md5sums=('e1528c48d3b2340b6c3ee83cfb427820'
          'a672569c2caab2cc855cc7df1c9536d8'
          '4fd3f09866fb4bd20098f1da5d011a42')
 
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -Np1 -i "${srcdir}/scancache.cxx.patch"
+}
+
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -Np1 -i "${srcdir}/scancache.cxx.patch" || return 1
-
   ./configure --prefix=/usr
-  make || return 1
+  make
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
   # copy sample config file
