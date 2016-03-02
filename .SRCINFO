@@ -1,0 +1,16 @@
+pkgbase = lua-cqueues-git
+	pkgdesc = Most comprehensive OpenSSL module in the Lua universe.
+	pkgver = rel.20140328.r185.gdac0e48
+	pkgrel = 1
+	url = https://github.com/wahern/luaossl
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = m4
+	makedepends = openssl
+	source = git+https://github.com/wahern/luaossl.git#branch=master
+	md5sums = SKIP
+
+pkgname = lua-cqueues-git
+
