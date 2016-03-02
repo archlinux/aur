@@ -28,6 +28,11 @@ sha256sums=('d8794c22229afdeb698dae5908b7b2b3880e075b19be38e0b296bb28f4555163'
 sha256sums_x86_64=('7088096fb001695784f65606b145522f37bae7630b7b77bb7ee1a8a0b5eff120')
 sha256sums_i686=('9a92d844305a6a38f9fa09df170e9780112211e4d43f0a8bca30595f61fa8caf')
 
+# VMware bundles old versions of openssl. Usually we can use system openssl.
+# If things break because VMware relies on legacy or buggy code you can use
+# bundled openssl.
+_USE_BUNDLED_OPENSSL=0
+
 # We need these functions for the Gentoo eclass...
 ebegin() {
 	echo -n "Begin ${1}: "
@@ -65,16 +70,26 @@ prepare() {
 		sed -i -e 's/libudev.so.0/libudev.so.1/' "${FILE}"
 
 		# even openssl 1.0.[12].x has library file names ending in .so.1.0.0
-		sed -i -e 's/libssl.so.1.0.1/libssl.so.1.0.0/' \
-			-e 's/libssl.so.1.0.2/libssl.so.1.0.0/' \
-			-e 's/libcrypto.so.1.0.1/libcrypto.so.1.0.0/' \
-			-e 's/libcrypto.so.1.0.2/libcrypto.so.1.0.0/' \
-			"${FILE}"
+		if [ ${_USE_BUNDLED_OPENSSL:=0} -eq 0 ]; then
+			sed -i -e 's/libssl.so.1.0.1/libssl.so.1.0.0/' \
+				-e 's/libssl.so.1.0.2/libssl.so.1.0.0/' \
+				-e 's/libcrypto.so.1.0.1/libcrypto.so.1.0.0/' \
+				-e 's/libcrypto.so.1.0.2/libcrypto.so.1.0.0/' \
+				"${FILE}"
+		else
+			# Some files link against openssl 1.0.1...
+			# Use the bundled version there.
+			sed -i -e 's/libssl.so.1.0.1/libssl.so.1.0.2/' \
+				-e 's/libcrypto.so.1.0.1/libcrypto.so.1.0.2/' \
+				"${FILE}"
+		fi
 	done
 
 	# now that we fixed dynamic linking let's remove binary libs
 	# we create symlinks in package() function
-	rm -f "${srcdir}"/extract/vmware-horizon-pcoip/pcoip/lib/vmware/lib{crypto,ssl}.so.1.0.[12]
+	if [ ${_USE_BUNDLED_OPENSSL:=0} -eq 0 ]; then
+		rm -f "${srcdir}"/extract/vmware-horizon-pcoip/pcoip/lib/vmware/lib{crypto,ssl}.so.1.0.[12]
+	fi
 }
 
 package_vmware-horizon-client() {
@@ -115,8 +130,10 @@ package_vmware-horizon-pcoip() {
 	cp -a pcoip/lib/ "${pkgdir}/usr/lib"
 	cp -a pcoip/bin/ "${pkgdir}/usr/bin"
 
-	ln -sf ../../lib/libcrypto.so.1.0.0 "${pkgdir}/usr/lib/vmware/libcrypto.so.1.0.0"
-	ln -sf ../../lib/libssl.so.1.0.0 "${pkgdir}/usr/lib/vmware/libssl.so.1.0.0"
+	if [ ${_USE_BUNDLED_OPENSSL:=0} -eq 0 ]; then
+		ln -sf ../../lib/libcrypto.so.1.0.0 "${pkgdir}/usr/lib/vmware/libcrypto.so.1.0.0"
+		ln -sf ../../lib/libssl.so.1.0.0 "${pkgdir}/usr/lib/vmware/libssl.so.1.0.0"
+	fi
 }
 
 package_vmware-horizon-rtav() {
