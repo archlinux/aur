@@ -3,7 +3,7 @@
 
 pkgname=cadabra
 pkgver=1.33
-pkgrel=3
+pkgrel=4
 pkgdesc="Cadabra is a computer algebra system (CAS)"
 arch=('i686' 'x86_64')
 url="http://cadabra.phi-sci.com/"
@@ -12,7 +12,7 @@ depends=('conlie' 'modglue' 'gmp' 'pcre') # for gui: 'gtkmm' 'dvipng' 'texlive' 
 install="$pkgname.install"
 source=("http://cadabra.phi-sci.com/$pkgname-$pkgver.tar.gz" "package.patch")
 md5sums=('cee8ae23c169958aba09b64e4ea479ce'
-         '4e7d46604748a7f5df1ad982115d969b')
+         'c3ed39abb74ec433ce38ba99b7a60d4a')
 
 prepare() {
  cd "$srcdir/$pkgname-$pkgver"

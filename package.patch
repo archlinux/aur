@@ -1,6 +1,6 @@
 diff -aur -bZwB cadabra-1.33.old/gui/Makefile.in cadabra-1.33/gui/Makefile.in
---- cadabra-1.33.old/gui/Makefile.in	2016-03-01 15:20:41.350168657 -0500
-+++ cadabra-1.33/gui/Makefile.in	2016-03-01 15:20:46.286725541 -0500
+--- cadabra-1.33.old/gui/Makefile.in	2016-03-02 07:13:04.277941346 -0500
++++ cadabra-1.33/gui/Makefile.in	2016-03-02 07:13:08.864580761 -0500
 @@ -14,7 +14,7 @@
  TIMESTAMP = -D"RELEASE=\"${RELEASE}\"" -D"DATETIME=\"`date | sed -e 's/  / /'`\"" -DHOSTNAME=\"`hostname`\"
  
@@ -20,8 +20,8 @@ diff -aur -bZwB cadabra-1.33.old/gui/Makefile.in cadabra-1.33/gui/Makefile.in
  
  include .depend
 diff -aur -bZwB cadabra-1.33.old/src/Makefile.in cadabra-1.33/src/Makefile.in
---- cadabra-1.33.old/src/Makefile.in	2016-03-01 15:20:41.353501917 -0500
-+++ cadabra-1.33/src/Makefile.in	2016-03-01 15:20:46.286725541 -0500
+--- cadabra-1.33.old/src/Makefile.in	2016-03-02 07:13:04.277941346 -0500
++++ cadabra-1.33/src/Makefile.in	2016-03-02 07:13:08.864580761 -0500
 @@ -27,7 +27,7 @@
  
  
@@ -49,9 +49,21 @@ diff -aur -bZwB cadabra-1.33.old/src/Makefile.in cadabra-1.33/src/Makefile.in
  		done
  
  include .depend
+diff -aur -bZwB cadabra-1.33.old/src/manipulator.cc cadabra-1.33/src/manipulator.cc
+--- cadabra-1.33.old/src/manipulator.cc	2016-03-02 07:13:04.277941346 -0500
++++ cadabra-1.33/src/manipulator.cc	2016-03-02 07:14:09.617682321 -0500
+@@ -283,7 +283,7 @@
+ 	if(getline_precut_buffer.size()==0 || getline_was_eof) {
+ 		std::string input_now;
+ 		getline_was_eof=false;
+-		if(std::getline(str, input_now)==false)
++		if(std::getline(str, input_now).fail())
+ 			return false;
+ 		getline_precut_buffer+=input_now;
+ 		}
 diff -aur -bZwB cadabra-1.33.old/src/manipulator.hh cadabra-1.33/src/manipulator.hh
---- cadabra-1.33.old/src/manipulator.hh	2016-03-01 15:20:41.353501917 -0500
-+++ cadabra-1.33/src/manipulator.hh	2016-03-01 15:21:52.291923925 -0500
+--- cadabra-1.33.old/src/manipulator.hh	2016-03-02 07:13:04.277941346 -0500
++++ cadabra-1.33/src/manipulator.hh	2016-03-02 07:13:08.864580761 -0500
 @@ -21,17 +21,17 @@
  #ifndef manipulator_hh_
  #define manipulator_hh_
@@ -88,23 +100,7 @@ diff -aur -bZwB cadabra-1.33.old/src/manipulator.hh cadabra-1.33/src/manipulator
  /// between streams, feeds data to the parser, and calls the algorithm objects
  /// to perform action on the expression tree.
  class manipulator : public sigc::trackable {
-@@ -92,11 +92,13 @@
- 		/// automatically call handle_input to start parsing.
- 		bool receive_command(modglue::ipipe&);
- 
--		/// Set the prompt to the indicated string. Should be called before the entry points
-+  /// Set the prompt to the indicated string. Should be called before the entry
-+  /// points
- 		/// handle_input or receive_command are called.
- 		void set_prompt(const std::string&);
- 		
--		/// Display the prompt. Used when a prompt is needed before any input handling takes
-+  /// Display the prompt. Used when a prompt is needed before any input handling
-+  /// takes
- 		/// place.
- 		void print_prompt() const;
- 
-@@ -109,15 +111,18 @@
+@@ -109,15 +109,18 @@
  
  		std::stack<std::istream *> streamstack;
  
@@ -126,17 +122,7 @@ diff -aur -bZwB cadabra-1.33.old/src/manipulator.hh cadabra-1.33/src/manipulator
  		/// in the global cmdline_arguments vector.
  		void replace_cmdline_args(std::string& oneline);
  
-@@ -131,7 +136,8 @@
- 		bool              is_whitespace_(const std::string& str) const;
- 
- 		/// Activate all '@' nodes. The returned iterator points inside the
--		/// expression which has to be printed (though not necessarily to the top node), 
-+  /// expression which has to be printed (though not necessarily to the top
-+  /// node),
- 		/// or to expressions.end() if the expression has been removed.
- 		exptree::iterator handle_active_nodes_(exptree::iterator);  
- 		nset_t::iterator  collect_labels_(exptree&, exptree::iterator);
-@@ -140,7 +146,8 @@
+@@ -140,7 +143,8 @@
  		exptree::iterator apply_post_default_rules_(exptree::iterator);
  		void              extract_properties_(exptree::iterator);
  		exptree::iterator run_procedure(exptree::iterator, long);
@@ -146,3 +132,25 @@ diff -aur -bZwB cadabra-1.33.old/src/manipulator.hh cadabra-1.33/src/manipulator
  		std::string       texify(const std::string&) const;
  
  		/// Class to hold information about a dynamically added algorithm class.
+Only in cadabra-1.33/src: manipulator.hh.orig
+diff -aur -bZwB cadabra-1.33.old/src/modules/substitute.cc cadabra-1.33/src/modules/substitute.cc
+--- cadabra-1.33.old/src/modules/substitute.cc	2016-03-02 07:13:04.277941346 -0500
++++ cadabra-1.33/src/modules/substitute.cc	2016-03-02 07:13:56.064395400 -0500
+@@ -876,7 +876,7 @@
+ 					}
+ 				std::string nm=*to_->name + fnd->first.begin()->name->substr(from_->name->size());
+ 				nset_t::iterator to_it=name_set.insert(nm).first;
+-				to_rename.insert(std::make_pair(to_it, fnd->second));
++				to_rename.insert(index_map_t::value_type((const exptree)to_it, fnd->second));
+ 				}
+ 			++fnd;
+ 			}
+@@ -885,7 +885,7 @@
+ 		std::pair<index_map_t::iterator, index_map_t::iterator> eq=ind_free.equal_range(exptree(from_));
+ 		index_map_t::iterator fnd=eq.first;
+ 		while(fnd!=eq.second) {
+-			to_rename.insert(std::make_pair(to_->name, fnd->second));
++			to_rename.insert(index_map_t::value_type((const exptree)to_->name, fnd->second));
+ 			++fnd;
+ 			}
+ 		}
