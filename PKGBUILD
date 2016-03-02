@@ -9,6 +9,7 @@ pkgdesc="Darling's Linux kernel module (darling-mach)"
 arch=('x86_64') # Can only be built on x86_64 systems
 url="http://www.darlinghq.org"
 license=('GPL3')
+groups=('darling-git')
 makedepends=('git' "$_kernel-headers")
 install=$pkgname.install
 source=('git+https://github.com/darlinghq/darling.git')
