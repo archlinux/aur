@@ -1,0 +1,11 @@
+post_upgrade() {
+	depmod -a
+	if lsmod | grep mxu11x0 > /dev/null ; then
+	  rmmod mxu11x0
+	fi
+	modprobe mxu11x0
+}
+
+post_install() {
+	post_upgrade
+}
