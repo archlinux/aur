@@ -2,7 +2,7 @@
 
 pkgname=obs-service-recompress
 _pkgver=0.3.1
-pkgver=${_pkgver}.r14
+pkgver="${_pkgver}.r14"
 pkgrel=1
 pkgdesc="Compression Service for the OpenSUSE Build Service (OBS)"
 arch=('any')
@@ -20,5 +20,5 @@ pkgver() {
 
 package() {
 	cd "${srcdir}/${pkgname}"
-	make DESTDIR=${pkgdir} PREFIX=/usr install 
+	make DESTDIR="${pkgdir}" PREFIX=/usr install 
 }
