@@ -38,5 +38,5 @@ package() {
     cd "$srcdir/$pkgname"
     install -Dm755 msi-keyboard "$pkgdir/usr/bin/msi-keyboard"
     install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-    install -Dm644 99-msi.rules "$pkgdir/etc/udev/rules.d/99-msi.rules"
+    install -Dm644 99-msi.rules "$pkgdir/usr/lib/udev/rules.d/99-msi.rules"
 }
