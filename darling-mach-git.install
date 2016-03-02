@@ -1,0 +1,22 @@
+_depmod() {
+	for kernel in $(ls -d /lib/modules/*); do
+		if [[ -n $(pacman -Qo $kernel | awk '/linux/ && /headers/') ]]; then
+			echo -n "Running depmod for Linux $(basename $kernel)... "
+			depmod $(basename $kernel) && echo "Done."
+		fi
+	done
+}
+
+post_install() {
+	_depmod
+	echo -e "Before using darling, you must to load \033[1mdarling-mach\033[0m kernel module."
+}
+
+post_upgrade() {
+	_depmod
+	echo -e "You must to reload \033[1mdarling-mach\033[0m kernel module to use new version."
+}
+
+post_remove() {
+	_depmod
+}
