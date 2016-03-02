@@ -5,12 +5,12 @@ pkgrel="1"
 pkgdesc="obd scan and diagnostics"
 arch=('i686' 'x86_64')
 url="http://www.obdautodoctor.com/"
-license="LGPL3"
+license=('LGPL3')
 
 source_i686=("http://cdn.obdautodoctor.com/${pkgname}_${pkgver}_i386.tar.gz")
 source_x86_64=("http://cdn.obdautodoctor.com/${pkgname}_${pkgver}_amd64.tar.gz")
-md5sums_i686=('888f3cc55467ba6440b47c6eab9b411e')
-md5sums_x86_64=('0ec6b23f98319d298c10d10615e67576')
+md5sums_i686=('4cbca291eb5ab3577c306ab1e803a655')
+md5sums_x86_64=('394d7783508545a2eb5b036bd6ac9a9d')
 
 optdepends=("bluez: for bluetooth support")
 
