@@ -14,8 +14,8 @@
 
 pkgname=mpv-legacy-af-git
 _gitname=mpv
-pkgver="0.15.0+7"
-_gitchangerange=0af5335..f0b15ad
+pkgver="0.16.0+1"
+_gitchangerange=f0b15ad..a888f08
 pkgrel=1
 epoch=1
 pkgdesc='Video player based on MPlayer/mplayer2. This version retains the legacy HRTF and bs2b audio filters.'
