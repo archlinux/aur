@@ -2,6 +2,9 @@
 # Contributor: Tom Billiet <mouse256@gmail.com>
 # Contributor: Olivier Duclos <olivier.duclos@gmail.com>
 
+# This PKGBUILD is maintained on github:
+# https://github.com/michaellass/AUR
+
 pkgname=cnijfilter-mp630
 pkgver=3.00
 pkgrel=2
