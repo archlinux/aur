@@ -3,7 +3,7 @@
 
 _gemname=activesupport
 pkgname=ruby-$_gemname-4.1
-pkgver=4.1.14.1
+pkgver=4.1.14.2
 pkgrel=1
 pkgdesc='A toolkit of support libraries and Ruby core extensions extracted from the Rails framework.'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby ruby-i18n ruby-json ruby-tzinfo ruby-minitest ruby-thread_safe)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('8041b8ecf018a72cabeca80bda7c0c8e037671f99d0cfba418442a598d1866405c59b14704ecc1da84046b39ebcf0eea9fe2996bd99ae721ff69bf4af3131ef0')
+sha512sums=('14cd3ff2dfb7f20e355d1ee79fcb96f1507b2bc62714b786ec92d3c614b390ea5d2e3bee72ef5e568ef6f1abe5879673b3d055b3e46d5b0eff55e3f61d85f88e')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
