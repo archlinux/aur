@@ -6,6 +6,9 @@
 # Contributor: Michael P <ptchinster@archlinux.us>
 # Contributor: Matt Heagney <matt@heagney.com>
 
+# This PKGBUILD is maintained on github:
+# https://github.com/michaellass/AUR
+
 pkgname=multipath-tools
 pkgver=0.5.0
 pkgrel=4
