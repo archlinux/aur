@@ -1,8 +1,8 @@
 # Maintainer: Philipp Schmitt <philipp@schmitt.co>
 # GitHub: https://github.com/pschmitt/aur-pagekite
 pkgname=pagekite
-pkgver=0.5.6d
-pkgrel=5
+pkgver=0.5.8d
+pkgrel=1
 pkgdesc='Python implementation of the PageKite remote front-end protocols.'
 arch=('any')
 url='http://pagekite.org'
@@ -12,7 +12,7 @@ provides=('pagekite')
 conflicts=('python2-pagekite')
 options=(!emptydirs zipman)
 source=("https://pagekite.net/pk/src/$pkgname-$pkgver.tar.gz")
-md5sums=('2e1982c3fc9dc9461e7b1e24ffffe468')
+md5sums=('8f8606775c31d3d63a1bffe968fa09f6')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
