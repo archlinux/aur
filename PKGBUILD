@@ -13,7 +13,6 @@ url="https://github.com/Antergos/${pkgname}"
 license=('GPL')
 depends=('lightdm-webkit-greeter')
 confilcts=('lightdm-webkit2-greeter')
-install=theme.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Antergos/${pkgname}/archive/${_pkgver}.tar.gz"
 		"http://antergos.com/antergos-wallpapers-${_bgver}.zip")
 md5sums=('b92e0b7b0f34dd2b60f89a62ca3bf4ae'
@@ -26,7 +25,9 @@ build() {
 
 package() {
 	cd "${srcdir}/${pkgname}-${_pkgver}"
+	
 	install -dm755 "${pkgdir}/usr/share/lightdm-webkit/themes"
+	
 	cp -dpr --no-preserve=ownership "${srcdir}/antergos-wallpapers-${_bgver}" wallpapers
 	cp -dpr --no-preserve=ownership \
 		"${srcdir}/${pkgname}-${_pkgver}" \
