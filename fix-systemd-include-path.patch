@@ -1,0 +1,22 @@
+--- config.m4.orig	2014-03-07 21:05:05.000000000 +0100
++++ config.m4	2016-03-02 20:01:42.177226326 +0100
+@@ -4,8 +4,8 @@
+ 
+ if test "$PHP_SYSTEMD" != "no"; then
+ 
+-  SEARCH_PATH="/usr /usr/local"
+-  SEARCH_FOR="/include/sd-journal.h"
++  SEARCH_PATH="/usr /usr/local /usr/include"
++  SEARCH_FOR="systemd/sd-journal.h"
+ 
+   SYSTEMD_DIR=
+ 
+@@ -32,7 +32,7 @@
+ 
+   PHP_ADD_INCLUDE($SYSTEMD_DIR/include)
+ 
+-  LIBNAME=systemd-journal
++  LIBNAME=systemd
+   LIBSYMBOL=sd_journal_sendv
+ 
+   if test "x$PHP_LIBDIR" = "x"; then
