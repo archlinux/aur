@@ -1,0 +1,11 @@
+--- crowd-greeter/src/crowd-greeter.vala	2016-03-01 23:33:43.002273000 +0900
++++ crowd-greeter/src/crowd-greeter.vala.qq	2016-03-02 00:00:11.858662644 +0900
+@@ -705,7 +705,7 @@
+         add_events (Gdk.EventMask.BUTTON_PRESS_MASK | Gdk.EventMask.POINTER_MOTION_MASK | Gdk.EventMask.KEY_PRESS_MASK);
+ 
+         var user_list = LightDM.UserList.get_instance ();
+-        string[] models = { "Imp" };//, "Revenant" };
++        string[] models = { "Revenant" };//, "Imp" };
+         var model_index = 0;
+         foreach (var user in user_list.users)
+         {
