@@ -5,7 +5,7 @@ pkgdesc="MIT Uncertainty Quantification Library"
 license=('MIT')
 arch=('i686' 'x86_64')
 url="http://muq.mit.edu/"
-depends=('boost-libs' 'nlopt' 'hdf5' 'sundials' 'flann' 'nlopt')
+depends=('boost-libs' 'nlopt' 'python2' 'sundials' 'flann' 'nlopt')
 makedepends=('cmake' 'eigen')
 source=("https://bitbucket.org/mituq/muq/downloads/MUQ-v${pkgver}.tar.gz")
 sha1sums=('f164c996ce3232da526d6f9f30b8348f38a113cd')
@@ -21,6 +21,10 @@ prepare() {
 
   # removed in master ?
   sed -i "s|tridiagonal_qr_step<Eigen::ColMajor>|tridiagonal_qr_step|g" MUQ/Utilities/LanczosEigenSolver.h
+
+  sed -i "s|\${CMAKE_INSTALL_PREFIX}/CMake|lib/cmake|g" CMakeLists.txt
+
+  sed -i "s|execute_process(COMMAND python|execute_process(COMMAND python2|g" CMakeLists.txt
 }
 
 build() {
@@ -37,4 +41,6 @@ build() {
 package() {
   cd MUQ
   make DESTDIR="$pkgdir" install
+  install -d "$pkgdir"/usr/share/licenses/${pkgname}
+  install -m644 license.txt "$pkgdir"/usr/share/licenses/${pkgname}
 }
