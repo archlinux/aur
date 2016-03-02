@@ -2,7 +2,7 @@
 
 pkgname=obs-service-tar_scm
 _pkgver=0.5.3
-pkgver=${_pkgver}.r213
+pkgver="${_pkgver}.r213"
 pkgrel=1
 pkgdesc="Source Service for the OpenSUSE Build Service (OBS)"
 arch=('any')
@@ -24,5 +24,5 @@ pkgver() {
 
 package() {
 	cd "${srcdir}/${pkgname}"
-	make DESTDIR=${pkgdir} PREFIX=/usr install 
+	make DESTDIR="${pkgdir}" PREFIX=/usr install 
 }
