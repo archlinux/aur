@@ -2,7 +2,7 @@
 # Contributor: Amish
 
 pkgname=geoip-citydata
-pkgver=20160211
+pkgver=20160302
 pkgrel=1
 pkgdesc="City database for geoip IP location lookups"
 depends=('geoip')
