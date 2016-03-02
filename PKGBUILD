@@ -8,7 +8,7 @@ pkgname=google-chrome
 pkgver=49.0.2623.75
 pkgrel=1
 pkgdesc="An attempt at creating a safer, faster, and more stable browser (Stable Channel)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://www.google.com/chrome/index.html"
 license=('custom:chrome')
 depends=('alsa-lib' 'desktop-file-utils' 'flac' 'gconf' 'gtk2' 'harfbuzz' 'harfbuzz-icu' 'hicolor-icon-theme'
@@ -20,14 +20,12 @@ provides=('google-chrome' 'pepper-flash')
 options=('!emptydirs' '!strip')
 install=$pkgname.install
 _channel=stable
-source=('google-chrome-stable'
+source=("google-chrome-${_channel}_${pkgver}_amd64.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_amd64.deb"
+        'google-chrome-stable'
         'eula_text.html')
-source_i686=("google-chrome-${_channel}_${pkgver}_i386.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_i386.deb")
-source_x86_64=("google-chrome-${_channel}_${pkgver}_amd64.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_amd64.deb")
-md5sums=('149e09d5f8c64ca4eea0da757e142529'
+md5sums=('4fc58c6da74c6fed6889b0e4c2eca35f'
+         '149e09d5f8c64ca4eea0da757e142529'
          'b7e752f549b215ac77f284b6486794b6')
-md5sums_i686=('895e877b9bfe5da05a061369c2078626')
-md5sums_x86_64=('4fc58c6da74c6fed6889b0e4c2eca35f')
 
 package() {
   msg2 "Extracting the data.tar.lzma..."
