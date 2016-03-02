@@ -1,0 +1,14 @@
+pkgbase = lua-basexx-git
+	pkgdesc = Lua base2, base16, base32, base64, and base85 decoding and encoding.
+	pkgver = v0.1.0.r26.g14faa9d
+	pkgrel = 1
+	url = https://github.com/aiq/basexx
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/aiq/basexx.git#branch=master
+	md5sums = SKIP
+
+pkgname = lua-basexx-git
+
