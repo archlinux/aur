@@ -3,12 +3,12 @@
 _pkgname=yakuake-l10n-bin
 pkgname="${_pkgname}-git"
 pkgver=20160127
-pkgrel=1
+pkgrel=2
 pkgdesc="Language packs for Yakuake KF5 GIT AUR release"
 arch=('any')
 url="https://github.com/FadeMind/${_pkgname}"
 license=('GPL')
-depends=('yakuake-frameworks-git')
+depends=('yakuake-git')
 makedepends=('git')
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
