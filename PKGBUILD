@@ -3,7 +3,7 @@
 pkgname=moksha
 pkgver=0.2.0
 pkgrel=1
-pkgdesc="A fork of the E17 window manager"
+pkgdesc="A fork of the E17 window manager used by Bodhi Linux."
 arch=('i686' 'x86_64')
 url="http://mokshadesktop.org"
 license=('BSD')
