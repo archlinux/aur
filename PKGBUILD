@@ -1,7 +1,7 @@
 # Maintainer: Charles Heywood <charles@hashbang.sh>
-pkgname=lua-cqueues-git
+pkgname=lua-ossl-git
 pkgver=rel.20140328.r185.gdac0e48
-pkgrel=1
+pkgrel=2
 pkgdesc="Most comprehensive OpenSSL module in the Lua universe."
 arch=('i686' 'x86_64')
 url="https://github.com/wahern/luaossl"
