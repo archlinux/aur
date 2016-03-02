@@ -1,6 +1,6 @@
 pkgbase = systemd-git
 	pkgver = 227.r255.g931c7fe
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.freedesktop.org/wiki/Software/systemd
 	arch = i686
 	arch = x86_64
