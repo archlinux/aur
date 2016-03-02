@@ -1,77 +1,49 @@
 #Maintainer: M0Rf30
 
 pkgname=openbazaar
-pkgver=0.5.0
+pkgver=1.0.6
 pkgrel=1
-pkgdesc="Decentralized marketplace for instantly trading with anyone using Bitcoin"
+pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon"
 arch=(any)
 url="http://openbazaar.org"
 license=('MIT')
-depends=(
-	    curl
-           #gnupg1
-	    jquery
-            python2-bitcoin
-            python2-dnschain
-            python2-gnupg-hg
-            python2-ipy
-            python2-miniupnpc
-            python2-obelisk
-            python2-pillow
-            python2-psutil
-            python2-pycountry
-            python2-pyee
-            python2-pyelliptic
-            python2-pystun
-            python2-qrcode
-            python2-requests
-            python2-rfc3986
-            python2-tornado
+depends=(electron openbazaard)
+makedepends=(git npm)
+source=(
+	"https://github.com/OpenBazaar/OpenBazaar-Client/archive/v$pkgver.tar.gz"
+	"$pkgname.sh"
+        "$pkgname.desktop"
 )
-optdepends=('pybitmessage: Send and receive messages to anyone on the bitmessage network')
-source=(https://github.com/OpenBazaar/OpenBazaar/archive/v${pkgver}.tar.gz
-	$pkgname.service
-	$pkgname.sh
-        $pkgname.conf
-	#gnupg1.patch
-)
-backup=('etc/openbazaar.conf')
 install=$pkgname.install
 options=('!strip')
-conflicts=($pkgname-git)
+provides=('openbazaar')
+replaces=('openbazaar-git')
+_srcfolder=OpenBazaar-Client-$pkgver
 
-package(){
-  cd $srcdir/OpenBazaar-$pkgver
-
-  # msg2 "Patch against Gnupg2"
-  # patch -Np1 -i ../gnupg1.patch
-
-   msg2 "Install systemd service"
-   install -Dm644 $srcdir/$pkgname.service $pkgdir/usr/lib/systemd/system/$pkgname.service
-
-   msg2 "Install $pkgname sample conf in /etc/$pkgname.conf"
-   install -Dm644 $srcdir/$pkgname.conf $pkgdir/etc/$pkgname.conf
-
-   msg2 "Install $pkgname scripts"
-   install -Dm755 $srcdir/$pkgname.sh $pkgdir/usr/bin/$pkgname
-
-   msg2 "Create folder for user $pkgname"
-   cd installers/ubuntu
-   cat build | head -n -2 > create_folders
-   python2 create_folders
-   install -dm755 $pkgdir/var/lib/
-
-   cp -r output/usr/share/$pkgname $pkgdir/var/lib/
-   cp -r $srcdir/OpenBazaar-$pkgver/rudp $pkgdir/var/lib/$pkgname
-
-   msg2 "Jquery symlink"
-   ln -s -r /usr/share/jquery/jquery.min.js $pkgdir/var/lib/$pkgname/html/vendors
-
-   msg2 "Python2 bytecode generation"
-   cd $pkgdir/var/lib/$pkgname/ && python2 -m compileall .
+build(){
+  cd $srcdir/${_srcfolder}
+  npm install --production
 }
 
-md5sums=('a593fb885847b7f4ac27a717c191179f'
-         '1d1e3933c4fd26f565e47f475eede2b4'
-         '87ad334f35bce82931151fa94c06bab1'
-         '0741fc4c68e499b10cbf272f27efd3a0')
+package(){
+
+msg2 "Installing Openbazaar data"
+  install -dm755 $pkgdir/opt/
+  cp -r $srcdir/${_srcfolder} $pkgdir/opt/openbazaar
+
+msg2 "Symlinking to allow gui to automatically call daemon"
+  ln -sr /var/lib/openbazaard $pkgdir/opt/$pkgname/OpenBazaar-Server
+
+msg2 "Installing execution script"
+  install -Dm755 $srcdir/$pkgname.sh $pkgdir/usr/bin/$pkgname
+
+  rm -rf $pkgdir/opt/$pkgname/{.git*,.eslint*,.travis*}
+
+msg2 "Installing icons and desktop menu entry"
+  install -Dm644 $srcdir/${_srcfolder}/imgs/icon.png "$pkgdir"/usr/share/pixmaps/openbazaar.png
+  install -Dm644 $srcdir/$pkgname.desktop "$pkgdir"/usr/share/applications/openbazaar.desktop
+}
+
+md5sums=('b5cbc19c9a2b5f9c10adb883b7c72777'
+         '2f915aa854435ce7cd1dfca4eccd0112'
+         'dbca9273e9fc18a7aa5d1c395508fe60')
