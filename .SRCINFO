@@ -1,0 +1,13 @@
+pkgbase = lua-fifo-git
+	pkgdesc = FIFO library for Lua
+	pkgver = r38.3023e5f
+	pkgrel = 1
+	url = https://github.com/daurnimator/fifo.lua
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	source = git+https://github.com/daurnimator/fifo.lua.git#branch=master
+	md5sums = SKIP
+
+pkgname = lua-fifo-git
+
