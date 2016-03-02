@@ -11,7 +11,7 @@ pkgdesc="Control your monitor by software using the DDC/CI protocol"
 arch=('i686' 'x86_64')
 url="http://ddccontrol.sourceforge.net/"
 license=('GPL')
-depends=('pciutils' 'ddccontrol-db-git' 'perl-xml-parser')
+depends=('pciutils' 'ddccontrol-db-git' 'perl-xml-parser' 'libxml2')
 source=("http://downloads.sourceforge.net/${pkgbase}/${pkgbase}-${pkgver}.tar.bz2"
         "org.ddccontrol.pkexec.gddccontrol.policy")
 options=('!libtool')
