@@ -1,7 +1,7 @@
 #Maintainer: Iwan Timmer <irtimmer@gmail.com>
 
 pkgname=runc
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="Container CLI tools"
 depends=('glibc')
@@ -10,7 +10,7 @@ arch=('x86_64' 'i686')
 source=("https://github.com/opencontainers/runc/archive/v$pkgver.tar.gz")
 url="http://runc.io/"
 license=("APACHE")
-sha256sums=('4d446cc796e32376f9227f7f2c2a05645874e063010cde1618b30a552caba7e0')
+sha256sums=('2eceec063264f65ed40729432638e73f996fc6a8994591d6f96bb82596dcb2cb')
 
 prepare() {
     cd $srcdir/runc-$pkgver
