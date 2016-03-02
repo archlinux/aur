@@ -4,10 +4,10 @@
 pkgname=nusmv
 _pkgname=NuSMV
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A new symbolic model checker"
 arch=('i686' 'x86_64')
-url="http://nusmv.irst.itc.it/$_pkgname/"
+url="http://nusmv.fbk.eu/index.html"
 license=('LGPL2.1')
 depends=('libxml2')
 makedepends=('cmake' 'python2' 'ghostscript' 'texlive-latexextra')
@@ -28,6 +28,7 @@ package() {
     cd "$srcdir/$_pkgname-$pkgver/$_pkgname/build"
 
     make DESTDIR="$pkgdir/" install
+    find "$pkgdir" -type f -name "*.a" -print0 | xargs -0 rm
 
     # Lowercase symlink
     ln -s "/usr/bin/NuSMV" "$pkgdir/usr/bin/$pkgname"
