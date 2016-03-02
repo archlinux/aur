@@ -3,15 +3,15 @@
 
 pkgname=pianoteq-standard-trial-bin
 pkgver=5.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Virtual piano instrument using physical modelling synthesis. Both standalone and plugin versions."
 arch=('i686' 'x86_64')
 url="https://www.pianoteq.com/pianoteq5"
 license=('custom')
 depends=('alsa-lib' 'freetype2' 'libxext')
 makedepends=('gendesk' 'wget' 'p7zip')
-provides=("${pkgname}")
-conflicts=("${pkgname}")
+provides=("${pkgname%-*}")
+conflicts=("${pkgname%-*}" "pianoteq-standard-trial-bin")
 source=('https://www.pianoteq.com/images/logo/pianoteq_icon_128.png')
 sha256sums=('94ee64cf6688a49d74f0bf70d811e7466abac103feeab17496a89f828afcc6d3')
 
@@ -33,28 +33,34 @@ prepare(){
 	# Extract:
  	7z x $_downfname
 	# Generate Desktop Entry:
-	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='Pianoteq 5' --categories 'Audio;Sequencer;Midi;AudioVideoEditing;Music;AudioVideo;'
+	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='Pianoteq 5' --exec='Pianoteq\ 5' --categories 'Audio;Sequencer;Midi;AudioVideoEditing;Music;AudioVideo;'
 }
 
 package(){
-	# Target Directories:
- 	mkdir -p $pkgdir/usr/bin
- 	mkdir -p $pkgdir/usr/lib/vst
-	mkdir -p $pkgdir/usr/lib/lv2
 	# Define architecture specific file directory:
-  	if [[ "$CARCH" == i686 ]]; then
+  if [[ "$CARCH" == i686 ]]; then
 		archdir=i386
  	else
 		archdir=amd64
 	fi
 	# Install program files:
-    	install -Dm755 "$srcdir/Pianoteq 5/$archdir/Pianoteq 5" "$pkgdir/usr/bin/$pkgname"
-    	install -Dm755 "$srcdir/Pianoteq 5/$archdir/Pianoteq 5.so" "$pkgdir/usr/lib/vst/$pkgname.so"
-	cp -ar "$srcdir/Pianoteq 5/$archdir/Pianoteq 5.lv2" "$pkgdir/usr/lib/lv2/$pkgname.lv2"
+	install -Dm 755 "$srcdir/Pianoteq 5/$archdir/Pianoteq 5" "$pkgdir/usr/bin/Pianoteq 5"
+  install -Dm 755 "$srcdir/Pianoteq 5/$archdir/Pianoteq 5.so" "$pkgdir/usr/lib/vst/Pianoteq 5.so"
+  cd "$srcdir/Pianoteq 5/$archdir/Pianoteq 5.lv2"
+  for i in *; do
+    install -D "$i" "$pkgdir/usr/lib/lv2/Pianoteq 5.lv2/$i"
+  done
+  cd $srcdir
 	# Install desktop launcher:
-  	install -Dm644 "$srcdir/pianoteq_icon_128.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
-  	install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm 644 "$srcdir/pianoteq_icon_128.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  install -Dm 644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/${pkgname%-*}.desktop"
 	# Install the license:
-	mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-	install -m644 Pianoteq\ 5/*Licence* "$pkgdir/usr/share/licenses/$pkgname/"
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+	install -m 644 Pianoteq\ 5/*Licence* "$pkgdir/usr/share/licenses/$pkgname/"
+  # Install the Documentation:
+  install -D "Pianoteq 5/README_LINUX.txt" "$pkgdir/usr/share/doc/${pkgname%-*}/README_LINUX.txt"
+  cd "$srcdir/Pianoteq 5/Documentation"
+  for i in *; do
+    install -D "$i" "$pkgdir/usr/share/doc/${pkgname%-*}/$i"
+  done
 }
