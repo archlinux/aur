@@ -1,7 +1,7 @@
 # Maintainer: Miodrag Tokić
 
 pkgname=watson
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='A wonderful CLI to track your time!'
 arch=('any')
@@ -17,11 +17,10 @@ backup=()
 options=(!emptydirs)
 
 source=("https://github.com/TailorDev/Watson/archive/${pkgver}.tar.gz")
-sha256sums=('de7190f8cb304004b096be1b5992eb826306da75cbaa04fd588ab113c08e0250')
+sha256sums=('4b0a0083349447ecb72e0d1579755a955025daa564965397c78c6c3b2533f8fe')
 
 build() {
     cd "$srcdir/Watson-${pkgver}"
-    sed -i '/pytest-runner/d' requirements.txt
     python setup.py build
 }
 
