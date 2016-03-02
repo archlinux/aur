@@ -2,6 +2,9 @@
 # Contributor: BlackIkeEagle <ike DOT devolder AT gmail DOT com>
 # Contributor: Cedric Girard <girard.cedric@gmail.com>
 
+# This PKGBUILD is maintained on github:
+# https://github.com/michaellass/AUR
+
 pkgname=libplatform-legacy
 pkgver=1.0.10
 pkgrel=2
