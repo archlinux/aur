@@ -3,17 +3,17 @@
 pkgname=perl-file-trash-freedesktop
 _lastauthor=P/PE/PERLANCAR
 _pkgname=File-Trash-FreeDesktop
-pkgver=0.17
+pkgver=0.18
 pkgrel=1
 pkgdesc='freedesktop.org trash specification'
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-file-remove' 'perl-log-any' 'perl-file-homedir' 'perl-sys-filesystem' 'perl-sys-filesystem-mountpoint' 'perl-file-moreutil' 'perl-list-moreutils')
+depends=('perl-file-remove' 'perl-log-any' 'perl-file-homedir' 'perl-sys-filesystem' 'perl-sys-filesystem-mountpoint' 'perl-file-moreutil' 'perl-list-moreutils' 'perl-log-any-iflog')
 checkdepends=('perl-file-slurp-tiny' 'perl-file-chdir' 'perl-test-exception')
 url="https://metacpan.org/release/${_pkgname}"
 source=(https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
-sha512sums=('fec17a927da6c2d5240206315c565a3de8c7a7f98ff2535f1423d7ce5407ce062462ddfa4df7650b22a5805461950949599b44d3389cbbe44e7f12d61eb00600')
+sha512sums=('9ee5eb422fd57a5a6afaebc3159b68be8e2d5d565bab6a3b38b0b16ca9bc76da3f9ac052942ed5c8c68b9ee92741f9a909e035955115a83e7707373de29a1bc9')
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
