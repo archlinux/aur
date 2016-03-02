@@ -8,7 +8,7 @@ url='http://www.moxa.com/product/usb_to_serial_converters.htm'
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('linux')
-makedepends=('linux-headers make git')
+makedepends=('linux-headers' 'make' 'git')
 source=("https://github.com/ellysh/mxu11x0.git"
         "install"
         "mxu11x0.conf" )
