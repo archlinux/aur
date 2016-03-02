@@ -3,7 +3,7 @@
 pkgname=perl-datetime-format-rfc3339
 _lastauthor=I/IK/IKEGAMI
 _pkgname=DateTime-Format-RFC3339
-pkgver=v1.0.5
+pkgver=v1.2.0
 pkgrel=1
 pkgdesc="Parse and format RFC3339 datetime strings"
 arch=('any')
@@ -11,9 +11,9 @@ license=('CC0_1_0')
 options=('!emptydirs')
 depends=('perl-datetime')
 makedepends=('perl-extutils-makemaker')
-url="http://search.cpan.org/dist/${_pkgname}/"
-source=(http://search.cpan.org/CPAN/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
-sha256sums=('f7f35242b7c857bb4007a69dcbb3baed8c01e50c8d18449c978e9443cdfaee12')
+url="https://metacpan.org/release/${_pkgname}"
+source=(https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
+sha256sums=('136ee1224c31c6e017692a9f5e56fdb4f70a95f46aec3ad855d3783de35a0df7')
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
