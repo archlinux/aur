@@ -2,13 +2,13 @@
 _pkgname=ti
 pkgname=ti-git
 pkgver=r137.39cfe91
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple command line time tracker"
 arch=('any')
 url="http://ti.sharats.me/"
 license=('MIT')
 groups=()
-depends=('python-yaml' 'python-colorama')
+depends=('python2' 'python2-yaml' 'python2-colorama')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -23,6 +23,11 @@ md5sums=('SKIP')
 pkgver() {
 	cd "$srcdir/${pkgname%}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd "$srcdir/${pkgname%}"
+    sed -i 's/env python$/env python2/' bin/ti
 }
 
 package() {
