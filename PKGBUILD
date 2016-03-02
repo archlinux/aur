@@ -3,16 +3,16 @@
 _kernel=$(pacman -Qqo /usr/lib/modules/`uname -r` | grep linux | grep -v headers)
 _gitname=darling
 pkgname=$_gitname-git
-pkgver=1195.2ad7ce5
-pkgrel=2
+pkgver=1197.b37d736
+pkgrel=1
 pkgdesc="A Darwin/OS X emulation layer for Linux"
 arch=('x86_64') # Can only be built on x86_64 systems
 url="http://www.darlinghq.org"
 license=('GPL3')
-depends=('xz' 'fuse' 'libxml2' 'icu' 'openssl' 'lbzip2' 'zlib' 'libunwind' 'curl' 'systemd' 'libffi' 'bzip2' 'libxslt')
+groups=('darling-git')
+depends=('darling-mach-git' 'xz' 'fuse' 'libxml2' 'icu' 'openssl' 'lbzip2' 'zlib' 'libunwind' 'curl' 'systemd' 'libffi' 'bzip2' 'libxslt')
 depends_x86_64=('lib32-systemd' 'lib32-libffi' 'lib32-bzip2' 'lib32-libxslt')
-makedepends=('git' 'clang' 'bison' 'flex' "$_kernel-headers")
-install=$pkgname.install
+makedepends=('git' 'clang' 'bison' 'flex')
 source=('git+https://github.com/darlinghq/darling.git')
 md5sums=('SKIP')
 
@@ -47,11 +47,6 @@ build() {
 	LDFLAGS="${LDFLAGS//,--as-needed}" cmake ../.. -DCMAKE_TOOLCHAIN_FILE=../../Toolchain-x86_64.cmake -DCMAKE_INSTALL_PREFIX=/usr
 	msg2 "Run 'make' for 64-bit build..."
 	make
-
-	# Kernel module build
-	cd "$srcdir/$_gitname/src/lkm"
-	msg2 "Build Linux kernel module..."
-	make
 }
 
 package() {
@@ -64,9 +59,4 @@ package() {
 	cd "$srcdir/$_gitname/build/x86-64"
 	msg2 "Install 64-bit build..."
 	make DESTDIR="$pkgdir" install
-
-	# Kernel module install
-	cd "$srcdir/$_gitname/src/lkm"
-	msg2 "Install Linux kernel module..."
-	make INSTALL_MOD_PATH="$pkgdir/usr" install
 }
