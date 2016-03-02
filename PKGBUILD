@@ -2,7 +2,7 @@
 pkgname=adapta-gtk-theme
 pkgver='3.18.8+git20160301'
 pkgrel=1
-pkgdesc="Button An adaptive Gtk+ theme based on Material Design Guidelines."
+pkgdesc="An adaptive Gtk+ theme based on Material Design Guidelines."
 arch=(any)
 url="https://github.com/tista500/Adapta"
 license=('GPL2')
