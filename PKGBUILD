@@ -3,7 +3,7 @@
 pkgname=perl-datetime-format-atom
 _lastauthor=I/IK/IKEGAMI
 _pkgname=DateTime-Format-Atom
-pkgver=v1.0.2
+pkgver=v1.2.0
 pkgrel=1
 pkgdesc="Parse and format Atom datetime strings"
 arch=('any')
@@ -11,9 +11,9 @@ license=('CC0_1_0')
 options=('!emptydirs')
 depends=('perl-datetime-format-rfc3339')
 makedepends=('perl-extutils-makemaker')
-url="http://search.cpan.org/dist/${_pkgname}/"
-source=(http://search.cpan.org/CPAN/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
-sha256sums=('3707b1aa56d9b548a71982efdd6d379759e727265bc234dfc05246923f669070')
+url="https://metacpan.org/release/${_pkgname}/"
+source=(https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
+sha256sums=('f9b78572d2505c24359a5f5adf201fd63f9f6f560d5a29d3f54e6587a61630b8')
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
