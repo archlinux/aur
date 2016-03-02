@@ -1,7 +1,7 @@
 pkgbase = pkgbuilder
 	pkgdesc = A Python AUR helper/library.
-	pkgver = 4.2.4
-	pkgrel = 2
+	pkgver = 4.2.5
+	pkgrel = 1
 	url = https://github.com/Kwpolska/pkgbuilder
 	arch = any
 	license = BSD
@@ -13,8 +13,8 @@ pkgbase = pkgbuilder
 	depends = rsync
 	depends = git
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/p/pkgbuilder/pkgbuilder-4.2.4.tar.gz
-	md5sums = 96af4d0cc41ae92a7411567dda7e9657
+	source = https://pypi.python.org/packages/source/p/pkgbuilder/pkgbuilder-4.2.5.tar.gz
+	md5sums = 8679c3628be64dccc44039dd9fdd0e5a
 
 pkgname = pkgbuilder
 
