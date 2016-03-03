@@ -3,7 +3,7 @@
 pkgbase = obd-auto-doctor
 	pkgdesc = obd scan and diagnostics
 	pkgver = 3.0.8
-	pkgrel = 2
+	pkgrel = 1
 	url = http://www.obdautodoctor.com/
 	arch = i686
 	arch = x86_64
