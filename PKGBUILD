@@ -1,7 +1,7 @@
 # Maintainer: Sven Karsten Greiner <sven@sammyshp.de>
 
 pkgname=atlas-maps-bin
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Map and navigation application using offline vector maps"
 arch=('any')
@@ -12,7 +12,7 @@ provides=('atlas-maps')
 conflicts=('atlas-maps')
 source=("http://www.talent.gr/public/atlas/atlas-${pkgver}.zip"
         "atlas-maps.sh")
-md5sums=('162d1fb2f73e1ff6fc2f91f3070606f0'
+md5sums=('01e6cbbcd29c6b1a9d8451d3339f0ede'
          '509caab1fb6ad3990e87890a5dfb7d81')
 
 package() {
