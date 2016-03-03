@@ -2,7 +2,7 @@
 
 _pkgname=openbazaar
 pkgname=${_pkgname}-git
-pkgver=2301.5dbca08
+pkgver=2312.f600414
 pkgrel=1
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon"
 arch=(any)
@@ -32,7 +32,7 @@ msg2 "Installing Openbazaar data"
   cp -r $srcdir/${_pkgname} $pkgdir/opt/
 
 msg2 "Symlinking to allow gui to automatically call daemon"
-  ln -sr /var/lib/openbazaard $pkgdir/opt/${_pkgname}/OpenBazaar-Server
+  ln -sr /var/lib/openbazaard $pkgdir/opt/OpenBazaar-Server
 
 msg2 "Installing execution script"
   install -Dm755 $srcdir/${_pkgname}.sh $pkgdir/usr/bin/${_pkgname}
