@@ -29,14 +29,14 @@ build() {
   msg "Starting build..."
   for f in *.psf; do
   echo "compress $f"
-  tar czf ${f}.tar.gz $f
+  gzip $f
 done
 }
 
 package() {
   msg "Starting install..."
   cd "$srcdir/$_pkgname"
-  for f in *.psf.tar.gz; do
+  for f in *.psf.gz; do
       install -D -m644 "$f" "${pkgdir}/usr/share/kbd/consolefonts/$f"
 done
 }
