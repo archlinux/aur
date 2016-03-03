@@ -8,7 +8,7 @@ pkgdesc="A webkit2 greeter for LightDM"
 arch=('i686' 'x86_64')
 url="https://github.com/antergos/lightdm-webkit2-greeter"
 license=('GPL3')
-source=("${pkgname}-${pkgver}::git+https://github.com/antergos/${pkgname}.git#branch=2.0.0"
+source=("${pkgname}-${pkgver}::git+https://github.com/antergos/${pkgname}.git#tag=2.0.0"
 		"https://antergos.com/antergos-wallpapers-0.6.zip")
 groups=('system')
 makedepends=('gnome-doc-utils' 'gobject-introspection' 'intltool' 'gnome-common' 'exo' 'git')
