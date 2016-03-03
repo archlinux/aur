@@ -2,17 +2,17 @@
 
 _gitname=i3lock-color
 pkgname="$_gitname-git"
-pkgver=r137.8dc9350
+pkgver=r232.b332ce6
 pkgrel=1
 pkgdesc="An improved screenlocker based upon XCB and PAM with color configuration support"
 arch=('i686' 'x86_64')
-url="https://github.com/eBrnd/i3lock-color"
+url="https://github.com/Arcaena/i3lock-color"
 license=('MIT')
 depends=('xcb-util-image' 'xcb-util-keysyms' 'pam' 'libev' 'libx11' 'cairo')
 provides=('i3lock')
 conflicts=('i3lock')
 makedepends=('git')
-source=("git+https://github.com/eBrnd/$_gitname.git")
+source=("git+https://github.com/Arcaena/$_gitname.git")
 md5sums=('SKIP')
 
 pkgver() {

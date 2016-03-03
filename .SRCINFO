@@ -1,8 +1,8 @@
 pkgbase = i3lock-color-git
 	pkgdesc = An improved screenlocker based upon XCB and PAM with color configuration support
-	pkgver = r137.8dc9350
+	pkgver = r232.b332ce6
 	pkgrel = 1
-	url = https://github.com/eBrnd/i3lock-color
+	url = https://github.com/Arcaena/i3lock-color
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = i3lock-color-git
 	depends = cairo
 	provides = i3lock
 	conflicts = i3lock
-	source = git+https://github.com/eBrnd/i3lock-color.git
+	source = git+https://github.com/Arcaena/i3lock-color.git
 	md5sums = SKIP
 
 pkgname = i3lock-color-git
