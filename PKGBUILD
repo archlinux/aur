@@ -2,8 +2,8 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=mist
-pkgver=0.4.0
-_pkgver=0-4-0
+pkgver=0.5.0
+_pkgver=0-5-0
 pkgrel=1
 pkgdesc="Ethereum wallet for Ether accounts, wallets and smart contracts (includes Mist browser)."
 arch=('i686' 'x86_64')
@@ -38,8 +38,8 @@ source=(
   "icon.png"
 )
 sha256sums=(
-  "36d598840ddde5fe0b58fb0daa1abb1a4b1eac649c21a6b2f7a748a6ccbca8ed"
-  "72fb57f5f9ab23ac53549f557861e3041ea68f8b185467f87513d20f13eb764e"
+  "d33446f611f95976a11ad3c110d275cd3a3ce641d343a542add579b525fb7ce2"
+  "53feafc2fd77b62b85309297a8d35945a60f088db7b216e87c4c325e3ff587f8"
   "d044844dd8ef1fef2ced861e5a86bf0d9af1b06ade6965dab1f12dbc612da207"
   "f9dfeddf9730ab693e3dc69d6dd0ad48525de1e40e1c8fb46ed081a3e7bd5f93"
 )
@@ -59,7 +59,6 @@ package() {
 
   install -d "${pkgdir}/usr/share/applications"
   cp -a "${srcdir}/mist.desktop" "${pkgdir}/usr/share/applications"
-
 
   install -d "${pkgdir}/usr/bin"
   ln -s "/usr/share/${pkgname}/Ethereum-Wallet" "${pkgdir}/usr/bin/mist"
