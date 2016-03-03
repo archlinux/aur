@@ -2,7 +2,7 @@
 # Maintainer: Laurent Carlier <lordheavym@gmail.com>
 
 pkgname=vulkan-intel-git
-pkgver=11.2.0_devel.78334.f843aab
+pkgver=11.3.0_devel.78825.98cdce1
 pkgrel=1
 pkgdesc="Intel's Vulkan mesa driver"
 arch=(x86_64)
