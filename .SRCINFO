@@ -1,0 +1,26 @@
+pkgbase = telepathy-gabble-cisco
+	pkgdesc = A Jabber/XMPP connection manager for Telepathy, patched to connect to Cisco Jabber servers
+	pkgver = 0.18.3
+	pkgrel = 1
+	url = http://telepathy.freedesktop.org
+	install = telepathy-gabble.install
+	arch = i686
+	arch = x86_64
+	groups = telepathy
+	license = LGPL2.1
+	makedepends = libxslt
+	makedepends = python2
+	depends = telepathy-glib
+	depends = libsoup
+	depends = libnice
+	depends = sqlite
+	provides = telepathy-gabble
+	conflicts = telepathy-gabble
+	options = !emptydirs
+	source = http://telepathy.freedesktop.org/releases/telepathy-gabble/telepathy-gabble-0.18.3.tar.gz
+	source = cisco-jabber-workaround.patch
+	md5sums = 40f2fbabc4e6e147258c83ed697f2fcf
+	md5sums = 23b47ce24f3701133cf806c06d73e79d
+
+pkgname = telepathy-gabble-cisco
+

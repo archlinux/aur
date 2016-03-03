@@ -1,0 +1,12 @@
+--- telepathy-gabble-0.18.3.orig/lib/ext/wocky/wocky/wocky-c2s-porter.c
++++ telepathy-gabble-0.18.3/lib/ext/wocky/wocky/wocky-c2s-porter.c
+@@ -857,6 +857,9 @@ check_spoofing (WockyC2SPorter *self,
+     {
+       if (stanza_is_from_server (self, nfrom))
+         goto finally;
++      /* that's buggy Cisco jabber */
++      if (/* is_tls(self) && */ g_str_has_prefix(from, "privacy-cm."))
++        goto finally;
+     }
+ 
+   /* If we sent an IQ to the server itself, allow it to
