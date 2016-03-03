@@ -1,11 +1,6 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Benjamin Auder <benjamin.a@mailoo.org>
 pkgname=fuse-zip
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 epoch=
 pkgdesc="FUSE file system to navigate, extract, create and modify ZIP and
@@ -26,7 +21,7 @@ options=()
 install=
 changelog=
 source=("https://bitbucket.org/agalanin/fuse-zip/downloads/$pkgname-$pkgver.tar.gz" "Makefile.patch")
-md5sums=('a8fd601f79e8567780ea70a6aa7bf303'
+md5sums=('673a351e4116d5576a92d62d21208afe'
          'a03002585136591f3c99331108104449')
 noextract=()
 validpgpkeys=()
