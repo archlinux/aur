@@ -4,7 +4,7 @@
 # Contributor: David Manouchehri <manouchehri@riseup.net>
 
 pkgname=nomachine
-pkgver=5.1.7
+pkgver=5.1.9
 pkgrel_i686=7
 pkgrel_x86_64=6
 pkgrel=1
@@ -16,9 +16,9 @@ arch=('x86_64' 'i686')
 options=('!strip')
 conflicts=('nxmanager nxwebplayer nxserver nxnode nxclient')
 depends=('bash')
-sha512sums_x86_64=('1da70714fe9c365f38c6e95344ea16d3d7842d4e5fabbdca996459adea41038670760ffaecac21e7e128dcde48ddaf7d4c864959fe8b9e014f0908fdb12fb655')
+sha512sums_x86_64=('64b83613d36797c3f6e9a09ac16f6764e3af2cd3f0fda0a54dbeeff36a7e6d410b878fba23475b505b54483700c5cc74e23d2fb4e9186cfdd45db7f17c651574')
 source_x86_64=("http://download.nomachine.com/download/5.1/Linux/${pkgname}_${pkgver}_${pkgrel_x86_64}_x86_64.tar.gz")
-sha512sums_i686=('c1f7fbe5c65fb8bfd424ec11cf66a5bdc25883beb18d311b4a2cc942266322ff0c3c1569ce8b037e998dbdd32f3a9957fe27ad75b728c06942a3ee04e1907184')
+sha512sums_i686=('b11c0c57bce403cc89b82996a188008dca568569902cfeaf0a3fa600b86a438f952bef78e1a74eb31facece53a88c9922ca92673b81dbfab66e25d4b7e6610cb')
 source_i686=("http://download.nomachine.com/download/5.1/Linux/${pkgname}_${pkgver}_${pkgrel_i686}_i686.tar.gz")
 install=nomachine.install
 
