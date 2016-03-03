@@ -68,7 +68,7 @@ package() {
               'qemu-block-iscsi-git: iSCSI block support'
               'qemu-block-rbd-git: RBD block support'
               'qemu-block-gluster-git: glusterfs block support')
-  conflicts=('qemu' 'kvm' 'kvm-git' 'qemu-spice' 'seabios' 'seabios-git')
+  conflicts=('qemu' 'qemu-git' 'qemu-minimal' 'kvm' 'kvm-git' 'qemu-spice' 'seabios' 'seabios-git')
   provides=('qemu' 'qemu-kvm' 'qemu-spice' 'seabios' 'seabios-git')
 
   options=(!strip)
