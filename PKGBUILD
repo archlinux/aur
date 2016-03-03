@@ -1,7 +1,7 @@
 pkgname=pacutils-git
 pkgdesc='alpm front-end tools'
 url='https://github.com/andrewgregory/pacutils'
-pkgver=0.0.363
+pkgver=0.3.0
 pkgrel=1
 arch=('i686' 'x86_64')
 depends=('pacman>=5.0')
@@ -16,8 +16,7 @@ sha1sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    echo "0.0.$(git rev-list --count HEAD)"
-    #git describe --tags | sed 's/^v//; s/-/./g'
+    git describe --tags | sed 's/^v//; s/-/./g'
 }
 
 prepare() {
