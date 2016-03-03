@@ -1,6 +1,6 @@
 # Maintainer: Michal Krenek (Mikos) <m.krenek@gmail.com>
 pkgname=gr-dsd-git
-pkgver=r56.d2f0270
+pkgver=r58.6a7e293
 pkgrel=1
 pkgdesc="GNU Radio block for Digital Speech Decoder (DSD)"
 arch=('i686' 'x86_64')
@@ -23,7 +23,9 @@ build() {
     cmake . \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DPYTHON_EXECUTABLE=/usr/bin/python2
+        -DPYTHON_EXECUTABLE=/usr/bin/python2 \
+        -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
+        -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so
     make
 }
 
