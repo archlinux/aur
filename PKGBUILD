@@ -1,13 +1,13 @@
 # Maintainer: zaps166 <spaz16@wp.pl>
 
 pkgname=qmplay2-git
-pkgver=16.02.18
+pkgver=16.03.03
 pkgrel=1
 pkgdesc='QMPlay2 is a video and audio player which can play most formats and codecs (Qt5)'
 arch=('i686' 'x86_64' 'armv7' 'armv6' 'armv5')
 url='http://qt-apps.org/content/show.php/QMPlay2?content=153339'
 license=('LGPL')
-depends=('qt5-base' 'qt5-x11extras' 'ffmpeg' 'libass' 'libgl' 'libva' 'libxv' 'alsa-lib' 'libcdio' 'taglib' 'libcddb' 'libpulse' 'libgme' 'libsidplayfp')
+depends=('qt5-base' 'qt5-x11extras' 'ffmpeg' 'libass' 'libgl' 'libva' 'libxv' 'alsa-lib' 'libcdio' 'taglib' 'libcddb' 'libpulse' 'libgme' 'libsidplayfp' 'xdg-utils')
 optdepends=('pulseaudio' 'youtube-dl')
 conflicts=('qmplay2')
 provides=('qmplay2')
