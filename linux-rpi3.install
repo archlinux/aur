@@ -2,7 +2,7 @@
 # arg 2:  the old package version
 
 KERNEL_NAME=-rpi3
-KERNEL_VERSION=4.5.0-rc5-4-v7
+KERNEL_VERSION=4.1.18-4-v7
 
 post_install () {
   # updating module dependencies
