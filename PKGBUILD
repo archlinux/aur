@@ -28,7 +28,7 @@ prepare() {
   msg "Prepare to build"
   KERNEL=kernel7
   make bcm2709_defconfig
-  scripts/kconfig/merge_config.sh -r .config ../config.overrides
+  #scripts/kconfig/merge_config.sh -r .config ../config.overrides
 
   # hack to force the VC4 because it's not sticking above:
   #echo "CONFIG_DRM_VC4=y" >> .config
