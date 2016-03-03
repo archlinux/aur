@@ -1,7 +1,7 @@
 pkgbase = paper-gtk-theme-git
 	pkgdesc = A modern desktop theme suite. Its design is mostly flat with a minimal use of shadows for depth.
-	pkgver = 179.6a5f14c
-	pkgrel = 2
+	pkgver = 188.617a6b1
+	pkgrel = 1
 	url = http://samuelhewitt.com/paper/theme
 	arch = any
 	license = GPL3
@@ -13,4 +13,3 @@ pkgbase = paper-gtk-theme-git
 	md5sums = SKIP
 
 pkgname = paper-gtk-theme-git
-

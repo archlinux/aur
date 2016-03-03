@@ -3,8 +3,8 @@
 
 pkgname=paper-gtk-theme-git
 _pkgname=paper-gtk-theme
-pkgver=179.6a5f14c
-pkgrel=2
+pkgver=188.617a6b1
+pkgrel=1
 pkgdesc="A modern desktop theme suite. Its design is mostly flat with a minimal use of shadows for depth."
 arch=('any')
 url="http://samuelhewitt.com/paper/theme"
