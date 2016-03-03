@@ -75,7 +75,7 @@
  } else {
      MROversion <- paste(Revo.version$major, Revo.version$minor, sep=".")
 -	msg <- "No performance acceleration libraries were detected. To take advantage of \nthe available processing power, also install MKL for MRO %s. Visit \nhttp://go.microsoft.com/fwlink/?LinkID=698301 for more details."
-+	msg <- "No performance acceleration libraries were detected. To take advantage of \nthe available processing power, also install MKL for MRO %s. Visit \nhttps://aur.archlinux.org/packages/revomath/ and/or http://go.microsoft.com/fwlink/?LinkID=698301 for more details."
++	msg <- "No performance acceleration libraries were detected. To take advantage of \nthe available processing power, also install MKL for MRO %s. Visit \nhttps://aur.archlinux.org/packages/revomath/ and/or\nhttp://go.microsoft.com/fwlink/?LinkID=698301 for more details."
  	if (!quiet){
          message(sprintf(msg, MROversion))
  	}
