@@ -1,6 +1,6 @@
 pkgbase = python-django-browserid
 	pkgdesc = A library that integrates BrowserID authentication into Django
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/mozilla/django-browserid
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-django-browserid
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	options = !emptydirs
-	source = https://github.com/mozilla/django-browserid/archive/v2.0.0.tar.gz
-	sha256sums = 768c71e94bed9936ebe67247ee0b3cd0c70fe71b0c4be9856834717894d94c7b
+	source = https://github.com/mozilla/django-browserid/archive/v2.0.1.tar.gz
+	sha256sums = 28f3937309b2f0a35fd7360bb7511de4705d67216a00142e2f47940a0c7a8b9f
 
 pkgname = python-django-browserid
 	depends = python-django
