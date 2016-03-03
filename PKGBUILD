@@ -4,7 +4,7 @@
 pkgname='zeronet-git'
 _gitname='ZeroNet'
 _gitroot='https://github.com/HelloZeroNet/ZeroNet.git'
-pkgver=0.3.5.r26.g5b821c4
+pkgver=0.3.6
 pkgrel=1
 arch=('any')
 url="https://zeronet.io/"
@@ -31,8 +31,8 @@ options=(!strip) # attempt to strip binaries fromA dependent libs fial
 pkgver() {
   cd "$srcdir/$_gitname"
 
-  # Most recent unannotated tag reachable from last commit without 'v' prefix
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  # Extract version and revision from src/Config.py and append commit
+  echo -n $(grep -oP '(?<=self.version = ").+(?=")' src/Config.py).r$(grep -oP '(?<=self.rev = )\w+$' src/Config.py).g$(git rev-parse --short HEAD)
 }
 
 build() {
