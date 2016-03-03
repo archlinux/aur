@@ -3,7 +3,7 @@
 _mod=rev_161_mod
 pkgname=geepro
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Willem Programmer software for GNU/Linux"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/geepro"
