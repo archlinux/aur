@@ -1,0 +1,13 @@
+post_install() {
+  KERNEL_VERSION=4.0-aufs_friendly
+  depmod $(cat /usr/lib/modules/extramodules-$KERNEL_VERSION/version)
+  echo 'Note: you may need to manually load the loop module before the aufs module.'
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  post_install
+}
