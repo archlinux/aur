@@ -1,8 +1,8 @@
 # Maintainer: Patrizio Bekerle <patrizio at bekerle dot com>
 
 pkgname=qownnotes
-pkgver=1.1.3
-tag="db26e71bcebb532eb4999eafb1472019cc08f566"
+pkgver=1.1.3.1
+tag="a9c052bd4f75cfddff54425b88b5a0aee4b51d9f"
 pkgrel=1
 pkgdesc="Open source notepad and todo list manager with markdown support and ownCloud integration"
 arch=('i686' 'x86_64')
@@ -10,19 +10,21 @@ url='http://www.qownnotes.org/'
 license=('GPL2')
 groups=('qownnotes')
 depends=('qt5-base' 'qt5-svg' 'qt5-script' 'openssl')
-makedepends=('gcc' 'git' 'qt5-tools')
-provides=("${pkgname%-*}")
-conflicts=("${pkgname%-*}")
+makedepends=('base-devel' 'git' 'qt5-tools')
 source=("git://github.com/pbek/QOwnNotes.git#tag=$tag")
 md5sums=('SKIP')
 
-build() {
+prepare() {
     cd "${srcdir}/QOwnNotes"
     git submodule update --init
     cd src
 
     echo "#define VERSION \"${pkgver}\"" > version.h
     echo "#define RELEASE \"AUR\"" > release.h
+}
+
+build() {
+    cd "${srcdir}/QOwnNotes/src"
 
     qmake
     make
