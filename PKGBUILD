@@ -4,7 +4,7 @@
 # Contributor: Frederic Bezies <fredbezies@gmail.com>
 # Contributor: Sébastien "Seblu" Luttringer <seblu@seblu.net>
 
-pkgbase=qemu-git
+pkgbase=qemu-minimal-git
 _gitname=qemu
 pkgname=('qemu-git')
 pkgver=2.5.0.r44344.6e378dd
