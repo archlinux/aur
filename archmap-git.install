@@ -1,0 +1,11 @@
+post_install() {
+	cat <<EOF
+==> Copy the template config from /usr/share/doc/archmap.conf to /etc
+==> and edit the paths. Enable and start archmap.timer to generate a
+==> new map every 24 hours.
+EOF
+}
+
+post_upgrade() {
+	post_install
+}
