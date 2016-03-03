@@ -3,8 +3,8 @@
 _pkgname=rxvt-unicode
 _gitname=$_pkgname
 pkgname=${_pkgname}-24bit
-pkgver=r3550.7c3c5e4
-pkgrel=2
+pkgver=r3552.6287157
+pkgrel=1
 arch=('i686' 'x86_64')
 url='http://github.com/spudowiar/rxvt-unicode/tree/24bit'
 license=('GPL')
