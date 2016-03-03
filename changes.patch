@@ -263,7 +263,7 @@ index 8cf2380..41f252e 100644
 +    )
 +  
 diff --git a/src/__main__.py b/src/__main__.py
-index 7cc6586..cb52ecc 100644
+index 7cc6586..1e40dd4 100644
 --- a/src/__main__.py
 +++ b/src/__main__.py
 @@ -26,6 +26,7 @@ from PyQt4 import QtGui, uic
@@ -283,8 +283,19 @@ index 7cc6586..cb52ecc 100644
  import config
  import platform
  
+@@ -52,7 +51,9 @@ def excepthook(exc_type, exc_value, traceback_object):
+     sys.excepthook = excepthook_original
+ 
+     logger.error("Uncaught exception", exc_info=(exc_type, exc_value, traceback_object))
+-    dialog = util.CrashDialog((exc_type, exc_value, traceback_object))
++    from util.crash import CrashDialog
++
++    dialog = CrashDialog((exc_type, exc_value, traceback_object))
+     answer = dialog.exec_()
+ 
+     if answer == QtGui.QDialog.Rejected:
 diff --git a/src/chat/_chatwidget.py b/src/chat/_chatwidget.py
-index 53bab40..15d59be 100644
+index 99dae35..9cef9e6 100644
 --- a/src/chat/_chatwidget.py
 +++ b/src/chat/_chatwidget.py
 @@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
@@ -296,8 +307,8 @@ index 53bab40..15d59be 100644
  import util
  import fa
  
-@@ -246,7 +246,7 @@ class ChatWidget(FormClass, BaseClass, SimpleIRCClient):
-         self.connection.privmsg('NickServ', 'register %s %s' % (util.md5text(self.client.password), self.client.email))
+@@ -251,7 +251,7 @@ class ChatWidget(FormClass, BaseClass, SimpleIRCClient):
+         self.autoJoin(self.crucialChannels)
  
      def on_version(self, c, e):
 -        self.connection.privmsg(e.source(), "Forged Alliance Forever " + util.VERSION_STRING)
@@ -306,7 +317,7 @@ index 53bab40..15d59be 100644
      def on_motd(self, c, e):
          self.log_event(e)
 diff --git a/src/client/_clientwindow.py b/src/client/_clientwindow.py
-index 582233d..8c655d8 100644
+index 8e933eb..863c630 100644
 --- a/src/client/_clientwindow.py
 +++ b/src/client/_clientwindow.py
 @@ -7,7 +7,7 @@ from PyQt4.QtNetwork import QAbstractSocket
@@ -361,10 +372,10 @@ index 8ee2014..da6a1d9 100644
          try:
              version = f.readlines()[0]
 diff --git a/src/fa/game_process.py b/src/fa/game_process.py
-index 9052f31..54666ff 100644
+index 9052f31..6260763 100644
 --- a/src/fa/game_process.py
 +++ b/src/fa/game_process.py
-@@ -41,7 +41,17 @@ class GameProcess(QtCore.QProcess):
+@@ -41,7 +41,15 @@ class GameProcess(QtCore.QProcess):
  
              executable = os.path.join(config.Settings.get('game/bin/path'),
                                        "ForgedAlliance.exe")
@@ -373,9 +384,7 @@ index 9052f31..54666ff 100644
 +            if util.WINDOWS:
 +                command = '"' + executable + '" ' + " ".join(arguments)
 +            else:
-+                command = util.wine_exe + ' "' + executable + '" ' + " ".join(arguments)
-+                if util.wine_use_optirun:
-+                    command = "optirun " + command
++                command = util.wine_cmd_prefix + " " + util.wine_exe + ' "' + executable + '" ' + " ".join(arguments)
 +                if util.wine_prefix:
 +                    wine_env = QtCore.QProcessEnvironment.systemEnvironment()
 +                    wine_env.insert("WINEPREFIX", util.wine_prefix)
@@ -436,10 +445,10 @@ index 72606f6..b7f7f88 100644
      
      mode = os.stat(mapdir)[0]
 diff --git a/src/util/__init__.py b/src/util/__init__.py
-index 39d8ebb..bc52869 100644
+index 39d8ebb..6b6ed4c 100644
 --- a/src/util/__init__.py
 +++ b/src/util/__init__.py
-@@ -1,22 +1,43 @@
+@@ -1,22 +1,42 @@
  import sys
  
  import os
@@ -470,13 +479,12 @@ index 39d8ebb..bc52869 100644
 +
 +# initialize wine settings for non Windows platforms
 +if not WINDOWS:
-+    wine_exe = settings.value("wine/exe", "wine")
++    wine_exe = settings.value("wine/exe", "wine", type=str)
++    wine_cmd_prefix = settings.value("wine/cmd_prefix", "", type=str)
 +    if settings.contains("wine/prefix"):
-+        wine_prefix = settings.value("wine/prefix")
++        wine_prefix = str(settings.value("wine/prefix", type=str))
 +    else:
 +        wine_prefix = os.path.join(os.path.expanduser("~"), ".wine")
-+    settings_file = settings.fileName()
-+    wine_use_optirun = settings.value("wine/use_optirun", False, type=bool)
  
  LOGFILE_MAX_SIZE = 256 * 1024  #256kb should be enough for anyone
  
@@ -489,7 +497,7 @@ index 39d8ebb..bc52869 100644
  # These directories are in Appdata (e.g. C:\ProgramData on some Win7 versions)
  if 'ALLUSERSPROFILE' in os.environ:
      APPDATA_DIR = os.path.join(os.environ['ALLUSERSPROFILE'], "FAForever")
-@@ -58,32 +79,46 @@ REPO_DIR = os.path.join(APPDATA_DIR, "repo")
+@@ -58,32 +78,46 @@ REPO_DIR = os.path.join(APPDATA_DIR, "repo")
  if not os.path.exists(REPO_DIR):
      os.makedirs(REPO_DIR)
  
@@ -553,7 +561,7 @@ index 39d8ebb..bc52869 100644
  
  #Ensure Application data directories exist
  if not os.path.isdir(APPDATA_DIR):
-@@ -161,11 +196,6 @@ __theme = None
+@@ -161,11 +195,6 @@ __theme = None
  __themedir = None
  
  
@@ -565,7 +573,7 @@ index 39d8ebb..bc52869 100644
  def clean_slate(path):
      if os.path.exists(path):
          logger.info("Wiping " + path)
-@@ -200,7 +230,8 @@ def setTheme(theme, restart=True):
+@@ -200,7 +229,8 @@ def setTheme(theme, restart=True):
          test_dir = os.path.join(THEME_DIR, theme)
          if os.path.isdir(test_dir):
              version_file = os.path.join(THEME_DIR, theme, "version")
@@ -575,6 +583,12 @@ index 39d8ebb..bc52869 100644
                  logger.info("Using theme: " + theme + " in directory " + test_dir)
                  __themedir = test_dir
                  __theme = theme
+@@ -605,5 +635,3 @@ def datetostr(d):
+ def now():
+     return _dateDummy.now()
+ 
+-from crash import CrashDialog
+-
 diff --git a/src/util/crash.py b/src/util/crash.py
 index 47e232d..a675b12 100644
 --- a/src/util/crash.py
