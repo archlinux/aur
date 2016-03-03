@@ -20,14 +20,14 @@ _mod3ver=1.2.0
 pkgname=nginx-mainline-mod4679
 pkgver=1.9.12
 pkgrel=2
-pkgdesc="lightweight HTTP server, statically linked against BoringSSL,with ngx_http_google_filter_module,nginx-ct."
+pkgdesc="lightweight HTTP server, statically linked against OpenSSL(Cloudflare's patch),with ngx_http_google_filter_module,nginx-ct."
 arch=('i686' 'x86_64')
 
-depends=('pcre' 'zlib' 'pam' 'gd' 'hardening-wrapper' 'libxslt' 'go')
+depends=('pcre' 'zlib' 'pam' 'gd' 'hardening-wrapper' 'libxslt')
 makedepends=(
 	'libxslt'
 	'gd'
-	'git'
+    'git'
 	'cmake'
 )
 
@@ -46,12 +46,12 @@ backup=("${_conf_path}/nginx.conf"
 	"${_conf_path}/uwsgi_params"
 	"etc/logrotate.d/nginx")
 
-source=( "nginx.conf"
+source=("nginx.conf"
 		"nginx.logrotate"
 		"nginx.service"
 		"http://nginx.org/download/nginx-$pkgver.tar.gz"
-		"openssl.patch"
-		"git+https://boringssl.googlesource.com/boringssl"
+		"https://github.com/openssl/openssl/archive/OpenSSL_1_0_2-stable.zip"
+        "https://github.com/cloudflare/sslconfig/files/153850/openssl__chacha20_poly1305_1_0_2g.patch.zip"
         "${_mod1}-${_mod1ver}.tar.gz::https://github.com/cuber/${_mod1}/archive/${_mod1ver}.tar.gz"
         "${_mod2}-${_mod2ver}.tar.gz::https://github.com/yaoweibin/${_mod2}/archive/v${_mod2ver}.tar.gz"
         "${_mod3}-${_mod3ver}.tar.gz::https://github.com/grahamedgecombe/${_mod3}/archive/v${_mod3ver}.tar.gz"
@@ -61,8 +61,8 @@ sha256sums=('8d8e314da10411b29157066ea313fc080a145d2075df0c99a1d500ffc7e8b7d1'
             'adcf6507abb2d4edbc50bd92f498ba297927eed0460d71633df94f79637aa786'
             '225228970d779e1403ba4314e3cd8d0d7d16f8c6d48d7a22f8384db040eb0bdf'
             '1af2eb956910ed4b11aaf525a81bc37e135907e7127948f9179f5410337da042'
-            'dc1ea1a0323759d49a7dc2c6173811bda319c36aa4a14b775d6f589fe9c6a4c2'
-            'SKIP'
+            'f1edb84de021eaa51e1fbc20f932d9545514ca90c855d89fddb6bed93c55d2bf'
+            'c7854b4cb988cb11e3984b035e07dd0537afd55d2b2ef566712448284af3ef1f'
             '9cd68c8e092efb1a419e1087bb9ca23aab1ff8650c400c0aa815d461d79385de'
             'ed4ddbcf0c434f4a1e97b61251a63ace759792764bd5cb79ff20efe348db8db3'
             '63e6dcb16a7860520513598ff67bdcd3e978b5fcd96d63b2afb08a0cfd29f232')
@@ -71,10 +71,9 @@ build() {
 	local _src_dir="${srcdir}/${_pkgname}-${pkgver}"
 
 	export CFLAGS="-Wno-error -fPIC"
-	cd ${srcdir}/boringssl
-	mkdir build && cd build && cmake ../ && make && cd ${srcdir}/boringssl
-	mkdir -p .openssl/lib && cd .openssl && ln -s ../include . && cd ../
-	cp ${srcdir}/boringssl/build/crypto/libcrypto.a ${srcdir}/boringssl/build/ssl/libssl.a .openssl/lib && cd ..
+	cd ${srcdir}/
+    mv openssl-OpenSSL_1_0_2-stable openssl
+    cd openssl && patch -p1 < ../openssl__chacha20_poly1305_1_0_2g.patch
 
 	cd $_src_dir
 
@@ -94,7 +93,7 @@ build() {
 		--user=${_user} \
 		--group=${_group} \
 		--with-ipv6 \
-		--with-openssl=../boringssl \
+		--with-openssl=../openssl \
 		--with-threads \
 		--with-http_ssl_module \
 		--with-http_gzip_static_module \
@@ -106,9 +105,6 @@ build() {
         --add-module=../${_mod1}-${_mod1ver} \
         --add-module=../${_mod2}-${_mod2ver} \
         --add-module=../${_mod3}-${_mod3ver}
-
-	touch ${srcdir}/boringssl/.openssl/include/openssl/ssl.h
-	patch -p0 < ../openssl.patch
 
 	make
 }
