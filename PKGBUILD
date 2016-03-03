@@ -1,8 +1,8 @@
 # Maintainer zml <zml@aoeu.xyz>
 # Contributor: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 pkgname=yourkit
-_version=2015
-_build=15086
+_version=2016.02
+_build=29
 pkgver=${_version}b${_build}
 pkgrel=1
 pkgdesc="Java CPU and memory profiler."
@@ -15,8 +15,8 @@ optdepends=('intellij-idea-community-edition: A Java IDE that integrates with Yo
             'netbeans: A Java IDE that integrates with Yourkit')
 options=(!strip)
 install=${pkgname}.install
-source=(http://www.yourkit.com/download/yjp-${_version}-build-${_build}-linux.tar.bz2)
-sha256sums=('21714192d8e6b96e888358d4c281e207ec764a2862fe66d1d09f5413f6baa385')
+source=(http://www.yourkit.com/download/yjp-${_version}-b${_build}-linux.tar.bz2)
+sha256sums=('72aa766c253bbaa8d18a78ef095eac1e800a4901b041fb5a63d4562cb0266ad1')
 
 build() {
   msg2 "Generate scripts for /usr/bin..."
@@ -41,7 +41,7 @@ EOF
 package() {
   msg2 "Install the assembly at /opt/${pkgname}..."
   install -dm755                                      "${pkgdir}/opt/${pkgname}"
-  cp -a "${srcdir}"/yjp-${_version}-build-${_build}/* "${pkgdir}/opt/${pkgname}"
+  cp -a "${srcdir}"/yjp-${_version}/* "${pkgdir}/opt/${pkgname}"
 
   msg2 "Install an executable at /usr/bin/${pkgname}..."
   install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
