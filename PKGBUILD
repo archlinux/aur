@@ -6,7 +6,7 @@
 
 pkgname=fd
 pkgver=3.01b
-pkgrel=4
+pkgrel=5
 pkgdesc="Ncurses file and directory management tool"
 arch=('i686' 'x86_64')
 url="http://hp.vector.co.jp/authors/VA012337/soft/fd/"
@@ -14,7 +14,7 @@ license=('custom')
 depends=('ncurses')
 makedepends=('sed')
 optdepends=(unzip lha p7zip tar)
-backup=etc/$pkgname/fd2rc
+backup=("etc/$pkgname/fd2rc")
 options=(!emptydirs)
 source=(http://hp.vector.co.jp/authors/VA012337/soft/fd/FD-$pkgver.tar.gz)
 md5sums=('3c3668bef7924e689943a2cca5ff414d')
