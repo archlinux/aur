@@ -5,6 +5,7 @@ pkgbase = mandelbulber-opencl
 	url = http://mandelbulber.com/
 	arch = any
 	license = GPL3
+	makedepends = opencl-headers
 	depends = libjpeg-turbo
 	depends = ocl-icd
 	depends = gtk2

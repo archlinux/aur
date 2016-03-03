@@ -8,6 +8,7 @@ arch=('any')
 url="http://mandelbulber.com/"
 license=('GPL3')
 depends=('libjpeg-turbo' 'ocl-icd' 'gtk2')
+makedepends=('opencl-headers')
 provides=('mandelbulber')
 conflicts=('mandlebulber')
 source=("${pkgname}::http://iweb.dl.sourceforge.net/project/mandelbulber/${pkgname}-${pkgver}-${pkgrel}.orig.tar.gz")
