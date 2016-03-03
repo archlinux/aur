@@ -7,8 +7,8 @@
 
 pkgname=nginx-pam
 _pkgname=nginx
-pkgver=1.8.0
-pkgrel=2
+pkgver=1.8.1
+pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server with added pam directives'
 arch=('i686' 'x86_64')
 url='http://nginx.org'
@@ -32,7 +32,7 @@ source=(https://github.com/stogh/ngx_http_auth_pam_module/archive/v1.4.tar.gz
         service
         logrotate)
 md5sums=('a5c0fb3af7158297c1457739947b9b0c'
-	 '3ca4a37931e9fa301964b8ce889da8cb'
+         '2e91695074dbdfbf1bcec0ada9fda462'
          'SKIP'
          '80cc5f267dfc737484f653d8b48ac6cd'
          '4ddf076f128cd1738e0c0bba493903bb')
