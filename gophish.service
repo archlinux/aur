@@ -1,0 +1,13 @@
+[Unit]
+Description=Gophish
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/gophish
+ExecStart=/opt/gophish/gophish
+SuccessExitStatus=2
+
+[Install]
+WantedBy=multi-user.target
+

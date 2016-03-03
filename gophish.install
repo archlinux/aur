@@ -1,0 +1,5 @@
+post_install() {
+  echo "default username: admin"
+  echo "default password: gophish"
+}
+
