@@ -1,11 +1,12 @@
 pkgname=pacutils-git
 pkgdesc='alpm front-end tools'
 url='https://github.com/andrewgregory/pacutils'
-pkgver=0.0.328
+pkgver=0.0.363
 pkgrel=1
 arch=('i686' 'x86_64')
 depends=('pacman>=5.0')
 makedepends=('git')
+conflicts=('pacutils')
 provides=("pacutils=$pkgver")
 license=('MIT')
 source=("$pkgname::git://github.com/andrewgregory/pacutils.git"
