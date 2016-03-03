@@ -9,7 +9,7 @@ pkgdesc="A memory-based, optional-persistence naïve bayesian text classifier."
 arch=('i686' 'x86_64')
 url="https://github.com/hickeroar/simplebayes"
 license=('MIT')
-makedepends=('python' 'python2')
+makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
 changelog="ChangeLog"
 source=("${_pkgname}.tar.gz::https://github.com/hickeroar/${_pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('71cb029768bd25c172bdb3bd37174d42f872da92c33329ec736c3748ffa3b4a7')
@@ -35,13 +35,13 @@ build() {
 }
 
 package_python2-simplebayes() {
-  depends=('python2' 'python2-setuptools')
+  depends=('python2')
   cd "$srcdir/${_pkgname}-${pkgver}-py2"
   python2 setup.py install --root="$pkgdir"/ --optimize=1
 }
 
 package_python-simplebayes() {
-  depends=('python' 'python-setuptools')
+  depends=('python')
   cd "$srcdir/${_pkgname}-${pkgver}"
   python setup.py install --root="$pkgdir"/ --optimize=1
 }
