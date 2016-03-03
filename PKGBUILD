@@ -1,8 +1,8 @@
 # Maintainer: Tom <reztho@archlinux.org>
 # Based on a contribution of: bitwave
 pkgname=textadept
-pkgver=8.5
-pkgrel=2
+pkgver=8.6
+pkgrel=1
 pkgdesc="A fast, minimalist, and remarkably extensible cross-platform text editor"
 arch=('i686' 'x86_64')
 url="http://foicica.com/textadept/"
@@ -12,9 +12,8 @@ makedepends=('mercurial' 'gendesk')
 provides=("$pkgname")
 conflicts=('textadept-bin')
 replaces=('textadept-bin')
-source=("hg+http://foicica.com/hg/textadept#tag=${pkgname}_$pkgver"
-        'http://foicica.com/textadept/download/textadept_LATEST.modules.zip'
-        '01_archived_cdk.patch')
+source=("hg+http://foicica.com/hg/textadept#revision=f27778cd1d49"
+        'http://foicica.com/textadept/download/textadept_LATEST.modules.zip')
 
 prepare() {
   gendesk -n --pkgname "$pkgname" --pkgdesc "$pkgdesc"
@@ -22,7 +21,6 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname/src"
-  patch -p2 < "$srcdir/01_archived_cdk.patch"
   unset MAKEFLAGS
   unset CXXFLAGS
   unset CFLAGS
@@ -68,5 +66,4 @@ package() {
 }
 
 md5sums=('SKIP'
-         '04fd95585e5e762aaf03117814a0044e'
-         '89241523210b7c39d3a5fdc8d8c06a55')
+         '5adecf21c7c91216bc85f43b329be380')
