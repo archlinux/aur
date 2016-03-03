@@ -6,7 +6,7 @@ pkgbase=linux-rc       # Build kernel with a different name
 _srcname=linux-4.4.3
 pkgver=4.4.4rc1
 _patchname=patch-4.4.4-rc1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -97,7 +97,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
+  pkgdesc="The release candidate kernel and modules"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
@@ -156,7 +156,7 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
+  pkgdesc="Header files and scripts for building modules for the linux-rc kernel"
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
