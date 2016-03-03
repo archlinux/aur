@@ -2,7 +2,7 @@
 
 pkgname=letsencrypt-git
 _pkgname=letsencrypt
-pkgver=4743.355563e
+pkgver=5704.f2390ed
 pkgrel=1
 pkgdesc="A tool to automatically receive and install X.509 certificates to enable TLS on servers. The client will interoperate with the Let’s Encrypt CA which will be issuing browser-trusted certificates for free."
 arch=('any')
