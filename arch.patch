@@ -1,0 +1,87 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9c7e4d4..113b24c 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -22,8 +22,8 @@
+ PROJECT(Ovito)
+ 
+ # Make sure we have a recent version of CMake.
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.12 FATAL_ERROR)
+-CMAKE_POLICY(VERSION 2.8.12)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.1 FATAL_ERROR)
++CMAKE_POLICY(VERSION 3.1)
+ CMAKE_POLICY(SET CMP0023 OLD)
+ IF(NOT CMAKE_VERSION VERSION_LESS "3")
+ 	CMAKE_POLICY(SET CMP0026 OLD)	# Suppress warning when reading the LOCATION target property.
+@@ -62,13 +62,7 @@ SET(OVITO_PLUGINS_LIST "")
+ ENABLE_TESTING()
+ 
+ # Enable C++11 standard.
+-IF(NOT MSVC)
+-	IF(CMAKE_COMPILER_IS_GNUCXX)
+-	    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+-	ELSE()
+-    	SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+-	ENDIF()
+-ENDIF()
++SET(CMAKE_CXX_STANDARD 11) 
+ 
+ IF(APPLE)
+ 	SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++ -Wno-invalid-offsetof")
+@@ -193,7 +187,7 @@ FIND_PACKAGE(ZLIB REQUIRED)
+ 
+ # Find the Boost library.
+ IF(OVITO_BUILD_PLUGIN_PYSCRIPT)
+-	LIST(APPEND Boost_REQUIRED_COMPONENTS python)
++	LIST(APPEND Boost_REQUIRED_COMPONENTS python3)
+ ENDIF()
+ IF(OVITO_BUILD_PLUGIN_CRYSTALANALYSIS)
+ 	LIST(APPEND Boost_REQUIRED_COMPONENTS system thread)
+diff --git a/cmake/FindQScintilla.cmake b/cmake/FindQScintilla.cmake
+index db6439b..8d82763 100644
+--- a/cmake/FindQScintilla.cmake
++++ b/cmake/FindQScintilla.cmake
+@@ -3,7 +3,7 @@
+ #  QScintilla_INCLUDE_DIRS - the include directories needed
+ #  QScintilla_LIBRARIES - libraries needed
+ 
+-FIND_PATH(QSCINTILLA_INCLUDE_DIR NAMES Qsci/qsciscintilla.h PATH_SUFFIXES qt5)
++FIND_PATH(QSCINTILLA_INCLUDE_DIR NAMES Qsci/qsciscintilla.h PATH_SUFFIXES qt qt5)
+ FIND_LIBRARY(QSCINTILLA_LIBRARY NAMES qsciscintilla qt5scintilla2)
+ 
+ SET(QScintilla_INCLUDE_DIRS ${QSCINTILLA_INCLUDE_DIR})
+diff --git a/src/plugins/pyscript/CMakeLists.txt b/src/plugins/pyscript/CMakeLists.txt
+index 325895a..3ad50a6 100644
+--- a/src/plugins/pyscript/CMakeLists.txt
++++ b/src/plugins/pyscript/CMakeLists.txt
+@@ -46,7 +46,7 @@ SET(SourceFiles
+ 
+ OVITO_STANDARD_PLUGIN(PyScript
+ 	SOURCES PyScript.cpp ${SourceFiles}
+-	LIB_DEPENDENCIES ${PYTHON_LIBRARIES} ${Boost_PYTHON_LIBRARY} ${QScintilla_LIBRARIES}
++	LIB_DEPENDENCIES ${PYTHON_LIBRARIES} ${Boost_PYTHON3_LIBRARY} ${QScintilla_LIBRARIES}
+ 	PYTHON_WRAPPERS "${CMAKE_CURRENT_SOURCE_DIR}/python/"
+ )
+ 
+@@ -54,7 +54,7 @@ OVITO_STANDARD_PLUGIN(PyScript
+ TARGET_INCLUDE_DIRECTORIES(PyScript PUBLIC ${PYTHON_INCLUDE_PATH})
+ 
+ # Dependency on Python and Boost.Python library should be transitive.
+-TARGET_LINK_LIBRARIES(PyScript PUBLIC ${PYTHON_LIBRARIES} ${Boost_PYTHON_LIBRARY})
++TARGET_LINK_LIBRARIES(PyScript PUBLIC ${PYTHON_LIBRARIES} ${Boost_PYTHON3_LIBRARY})
+ 
+ # Add QScintilla include directory.
+ TARGET_INCLUDE_DIRECTORIES(PyScript PRIVATE ${QScintilla_INCLUDE_DIRS})
+diff --git a/src/plugins/pyscript/binding/FileIOBinding.cpp b/src/plugins/pyscript/binding/FileIOBinding.cpp
+index eca8278..5442d38 100644
+--- a/src/plugins/pyscript/binding/FileIOBinding.cpp
++++ b/src/plugins/pyscript/binding/FileIOBinding.cpp
+@@ -65,6 +65,8 @@ BOOST_PYTHON_MODULE(PyScriptFileIO)
+ 	};
+ 	converter::registry::push_back(convertible_QUrl, construct_QUrl, type_id<QUrl>());
+ 
++	boost::python::register_ptr_to_python<OORef<FileImporter>>();
++
+ 	ovito_abstract_class<FileImporter, RefTarget>()
+ 		.add_property("fileFilter", &FileImporter::fileFilter)
+ 		.add_property("fileFilterDescription", &FileImporter::fileFilterDescription)
