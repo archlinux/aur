@@ -9,8 +9,8 @@ arch=('i686' 'x86_64')
 url="https://pypi.python.org/pypi/$_pkgname"
 license=('MIT')
 depends=('python2-pytest' 'python2-werkzeug')
-source=("https://pypi.python.org/packages/source/p/${_pkgname}/${_pkgname}-${pkgver}.zip")
-md5sums=('f233e9701798e1d6430c4f8a67c8a8b3')
+source=("https://pypi.python.org/packages/source/p/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+md5sums=('641c6c6cbdae58cbcc62a25e398d15e1')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
