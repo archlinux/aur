@@ -47,9 +47,13 @@ prepare() {
 
 	source "${srcdir}/vmware-bundle.eclass"
 
-	for bundle in ${pkgname[@]}; do
+	for bundle in "${pkgname[@]}"; do
 	        vmware-bundle_extract-bundle-component "${srcdir}/${pkgbase}-${pkgver}-${_build}-${CARCH}.bundle" "${bundle}" "${srcdir}/extract/${bundle}"
 	done
+}
+
+build() {
+	cd "${srcdir}/extract/"
 
 	# This is a dirty hack, but it works.
 	# Change dynamic section in ELF files to fix dynamic linking.
@@ -59,30 +63,34 @@ prepare() {
 	#	libssl.so.1.0.2 -> libssl.so.1.0.0
 	#	libcrypto.so.1.0.1 -> libcrypto.so.1.0.0
 	#	libcrypto.so.1.0.2 -> libcrypto.so.1.0.0
-	for FILE in $(find "${srcdir}/extract/" -type f); do
-		# executables and libraries only
-		file --mime "${FILE}" | egrep -q "(application/x-(executable|sharedlib)|text/x-shellscript)" || continue
 
-		# make executable
-		chmod +x "${FILE}"
+	for bundle in "${pkgname[@]}"; do
+		for FILE in $(find "${bundle}" -type f); do
+			# executables and libraries only
+			file --mime "${FILE}" | egrep -q "(application/x-(executable|sharedlib)|text/x-shellscript)" || continue
 
-		# link against libudev.so.1
-		sed -i -e 's/libudev.so.0/libudev.so.1/' "${FILE}"
+			# make executable
+			chmod +x "${FILE}"
 
-		# even openssl 1.0.[12].x has library file names ending in .so.1.0.0
-		if [ ${_USE_BUNDLED_OPENSSL:=0} -eq 0 ]; then
-			sed -i -e 's/libssl.so.1.0.1/libssl.so.1.0.0/' \
-				-e 's/libssl.so.1.0.2/libssl.so.1.0.0/' \
-				-e 's/libcrypto.so.1.0.1/libcrypto.so.1.0.0/' \
-				-e 's/libcrypto.so.1.0.2/libcrypto.so.1.0.0/' \
-				"${FILE}"
-		else
-			# Some files link against openssl 1.0.1...
-			# Use the bundled version there.
-			sed -i -e 's/libssl.so.1.0.1/libssl.so.1.0.2/' \
-				-e 's/libcrypto.so.1.0.1/libcrypto.so.1.0.2/' \
-				"${FILE}"
-		fi
+			# ELF executables and libraries only
+			file --mime "${FILE}" | egrep -q "application/x-(executable|sharedlib)" || continue
+
+			# link against libudev.so.1
+			sed -i -e 's/libudev.so.0/libudev.so.1/' "${FILE}"
+
+			# even openssl 1.0.[12].x has library file names ending in .so.1.0.0
+			if [ ${_USE_BUNDLED_OPENSSL:=0} -eq 0 -o "${bundle}" = 'vmware-horizon-client' ]; then
+				sed -i -e 's/libssl.so.1.0.[12]/libssl.so.1.0.0/' \
+					-e 's/libcrypto.so.1.0.[12]/libcrypto.so.1.0.0/' \
+					"${FILE}"
+			else
+				# Some files link against openssl 1.0.1...
+				# Use the bundled version there.
+				sed -i -e 's/libssl.so.1.0.1/libssl.so.1.0.2/' \
+					-e 's/libcrypto.so.1.0.1/libcrypto.so.1.0.2/' \
+					"${FILE}"
+			fi
+		done
 	done
 
 	# now that we fixed dynamic linking let's remove binary libs
