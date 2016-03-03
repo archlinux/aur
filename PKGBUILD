@@ -36,8 +36,8 @@ package() {
    # There is no setup.py shipped, so brute-force copy
    cp -a "$srcdir/$_pkgarchive/." "$pkgdir/opt/zeronet/"
 
-   install -D "$srcdir/zeronet.conf" "$pkgdir/etc/zeronet.conf"
-   install -D "$srcdir/zeronet.service" "$pkgdir/usr/lib/systemd/system/zeronet.service"
+   install -D -m644 "$srcdir/zeronet.conf" "$pkgdir/etc/zeronet.conf"
+   install -D -m644 "$srcdir/zeronet.service" "$pkgdir/usr/lib/systemd/system/zeronet.service"
 
    install -D -m644 "$srcdir/$_pkgarchive/LICENSE" "$pkgdir/usr/share/licenses/$_pkgarchive/LICENSE"
 }
