@@ -5,7 +5,7 @@ _kernelname=${pkgbase#linux}
 _desc="Raspberry Pi 3"
 pkgver=4.1
 _gitbranch="rpi-4.1.y"
-pkgrel=4
+pkgrel=1
 arch=('armv7h')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -17,7 +17,7 @@ source=("https://github.com/raspberrypi/linux/archive/${_gitbranch}.tar.gz"
         'cmdline.txt'
 	'config.overrides')
 md5sums=('SKIP'
-         'ebc271a1c85969083067a58010cb4a3e'
+         '64f12256020bd3f13069defe0ee06c14'
          '0244ab7cb2e385a8efe9a7fba9bfcb48'
          '52d6ecfbfbd617c05324d0e6cd2d7d18')
 _dirname=linux-${_gitbranch}
@@ -28,10 +28,7 @@ prepare() {
   msg "Prepare to build"
   KERNEL=kernel7
   make bcm2709_defconfig
-  scripts/kconfig/merge_config.sh -r .config ../config.overrides
-
-  # hack to force the VC4 because it's not sticking above:
-  #echo "CONFIG_DRM_VC4=y" >> .config
+  #scripts/kconfig/merge_config.sh -r .config ../config.overrides
 
   # add pkgrel to extraversion
   sed -ri "s|^(EXTRAVERSION =)(.*)|\1 \2-${pkgrel}|" Makefile
