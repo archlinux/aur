@@ -1,5 +1,5 @@
-# $Id$
-# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
+# Maintainer: Daniel Milde <daniel at milde dot cz>
+
 pkgname=webmin
 pkgver=1.780
 pkgrel=1
