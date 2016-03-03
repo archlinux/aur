@@ -1,4 +1,5 @@
 # Maintainer: Vladislav Tyulbashev <vtyulb@vtyulb.ru>
+# Contributor: 12qu <jrmcornish@gmail.com>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: mosra <mosra@centrum.cz>
 
@@ -29,6 +30,7 @@ else
 fi
 
 build() {
+  export LD_PRELOAD=/usr/lib/libstdc++.so.6
   cd ${srcdir}/${_basedir}
 
   # Do not install libiberty
