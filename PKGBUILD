@@ -3,8 +3,8 @@
 # Parts adapted from: Muflone/freeoffice@aur
 
 pkgname=softmaker-office-2016-bin
-pkgver=2016.749
-pkgrel=4
+pkgver=2016.752
+pkgrel=1
 pkgdesc="Softmaker Office 2016, proprietary office suite; word processing, spreadsheets, presentations"
 url="http://softmaker.com"
 arch=('x86_64' 'i686')
@@ -22,14 +22,14 @@ source=("http://www.softmaker.net/down/softmaker-office-${pkgver//./-}.tgz"
         "planmaker-2016.desktop"
         "presentations-2016.desktop"
         "textmaker-2016.desktop")
-md5sums=('60864e4b50f0c9231c513cdefdcb6431'
+md5sums=('1f9e0e7d83c59d369e619b870d225e62'
          '5e698160b69670b71ca1306457e95fe0'
          '57766d7d252f42ce3bcb2ecc28dd97e9'
          'eb2bde093b83afb2b4cd5c479531d4fb'
          '60bab207799f6f92192d158840f3e5aa'
          '86b058133c52201abd98a2594849e77e'
          'b0cb162e83fb4f186b1fb458f12ddc00')
-sha512sums=('0d97c2dabde423d533b087dc3f3cbabb62ffed9a46108218177c8a1dca11443007d8e5533ed8d5eec871b7b2ac62c34438a42c1d684002dc21df58f3b49774a2'
+sha512sums=('556867c8f783192b9dcdce7aae6c7b5c42bc86d14bafb15a7a8df192be9e3f4bacd866c81bffc2efefe903d3397e2a10b3e4436956386459414adf81f35d8c53'
             '47e08e91734692b77d17999ce32b974a7f3cede5082f0884b2d1546d6ce7204bfcf67d713de9148398834aca28626d033855703fa3e0e375879fb085a89a2251'
             '44d7c55d69a1de7b665a507808618dc9ac81b8938f73cf63ad74cde6725d151e9322b4b25b48798d9f0c76d955e52de6fb97ef86b1c7c2adea56bc95dcd65c82'
             '504a95d3a6c129608a81b7bcd5e382fc3b542f02ca950dfc6aba1761664721cad51d304613adf6ea5c92ccc5b94a32f12bc2843925cd624de58986f3d71f5770'
