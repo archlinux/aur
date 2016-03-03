@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=48.0.2564.116
+pkgver=49.0.2623.75
 pkgrel=1
 _launcher_ver=3
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
@@ -26,14 +26,10 @@ install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
-        chromium-use-non-versioned-icu-namespace.patch
-        chromium-fix-print-preview-on-en_GB-locale.patch
         chromium-widevine.patch)
-sha256sums=('6a1eb9b4c853f15eeec0a55af7ac3b41835f0fc592ba6c0a500873cb12a84d0f'
+sha256sums=('a4fd4c85b12b021789d8afc33b27555396e47d9f67c8a062ee3609c4d6b582f5'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
-            'e4192446cc0ab6a5c540599c8a149f4f2208f0014da2786ada6c9544913d7426'
-            '6fff45aafa31fb35a032b4e2175a341e08f9d2a9b37c5cf080c318180f558378'
             '4660344789c45c9b9e52cb6d86f7cb6edb297b39320d04f6947e5216d6e5f64c')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -61,12 +57,6 @@ prepare() {
 
   # https://code.google.com/p/chromium/issues/detail?id=541273
   sed -i "/'target_name': 'libvpx'/s/libvpx/&_new/" build/linux/unbundle/libvpx.gyp
-
-  # https://codereview.chromium.org/1505763002
-  patch -Np1 -i ../chromium-use-non-versioned-icu-namespace.patch
-
-  # https://code.google.com/p/chromium/issues/detail?id=480415
-  patch -Np1 -i ../chromium-fix-print-preview-on-en_GB-locale.patch
 
   # Enable support for the Widevine CDM plugin
   # libwidevinecdm.so is not included, but can be copied over from Chrome
@@ -146,6 +136,7 @@ build() {
     -Dusb_ids_path=/usr/share/hwdata/usb.ids
     -Duse_mojo=0
     -Duse_gconf=0
+    -Duse_sysroot=0
     -Denable_hangout_services_extension=1
     -Denable_widevine=1
     -Ddisable_fatal_linker_warnings=1
