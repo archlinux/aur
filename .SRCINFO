@@ -16,7 +16,7 @@ pkgbase = geth-git
 	conflicts = geth-git
 	conflicts = go-ethereum
 	conflicts = go-ethereum-git
-	source = geth-git::git+https://github.com/ethereum/go-ethereum.git
+	source = geth-git::git+https://github.com/ethereum/go-ethereum.git#branch=develop
 	sha256sums = SKIP
 
 pkgname = geth-git

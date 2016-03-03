@@ -15,7 +15,7 @@ conflicts=(
   'go-ethereum-git'
 )
 provides=('geth')
-source=("${pkgname}::git+https://github.com/ethereum/go-ethereum.git")
+source=("${pkgname}::git+https://github.com/ethereum/go-ethereum.git#branch=develop")
 sha256sums=('SKIP')
 
 pkgver() {
