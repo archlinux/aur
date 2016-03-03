@@ -9,9 +9,9 @@ pkgname+=(nvidia-vulkan-beta-utils nvidia-vulkan-beta-libgl opencl-nvidia-vulkan
 if [[ $CARCH == "x86_64" ]]; then
     pkgname+=(lib32-nvidia-vulkan-beta-utils lib32-nvidia-vulkan-beta-libgl lib32-opencl-nvidia-vulkan-beta)
 fi
-pkgver=355.00.28
+pkgver=355.00.29
 _extramodules=extramodules-4.4-ARCH
-pkgrel=8
+pkgrel=1
 pkgdesc="NVIDIA drivers for linux (vulkan beta)"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -20,8 +20,8 @@ license=('custom')
 options=(!strip)
 source_i686=("NVIDIA-Linux-x86-${pkgver}.run::https://developer.nvidia.com/linux32bit")
 source_x86_64=("NVIDIA-Linux-x86_64-${pkgver}.run::https://developer.nvidia.com/linux64bit")
-md5sums_i686=('976b573d63fe649dd383396b74a1e9f5')
-md5sums_x86_64=('ba5223c5210ec78c0857678e013517be')
+md5sums_i686=('1c6178b96fafd01e0e7378d79d154a1b')
+md5sums_x86_64=('39016e6d14d60a3b321219aa9fefdddf')
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}"
