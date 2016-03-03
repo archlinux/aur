@@ -1,9 +1,9 @@
 # Maintainer: Wyatt J. Brown <sushidudeteam@gmail.com>
 pkgname=rice
 pkgver=r20.3c2efcd
-pkgrel=4
+pkgrel=5
 pkgdesc='A dump of scripts that are used for fun/rice, as seen on TV^H^H the internet.'
-arch=('any')
+arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/janbrennen/rice'
 license=('custom:Public Domain')
 depends=('lua')
@@ -17,7 +17,7 @@ build()
 	if [ -z "$CC" ]; then
 		CC=gcc
 	fi
-	$CC $CPPFLAGS $CFLAGS -lpthread hack.exe.c -o hack.exe.out
+	$CC $CFLAGS $CPPFLAGS -lpthread hack.exe.c -o hack.exe.out
 }
 
 package()
