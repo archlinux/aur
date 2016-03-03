@@ -1,7 +1,7 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
  
 pkgname=shashlik-bin
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="run Android applications on a standard Linux desktop"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'lib32-libgl' 'kdebase-kdialog')
 conflicts=('shashlik')
 provides=('shashlik')
 source=("http://static.davidedmundson.co.uk/shashlik/shashlik_${pkgver}.deb")
-sha256sums=('9f5392c1687f532369f1df98fe89588c8c1d8217e23e497af329ba8d25e74641')
+sha256sums=('a0a9daaeea0436ec8bd90b97112694974f7cf121d5a54083244488ff2d86dbaa')
  
 package() {
   cd "${srcdir}"
