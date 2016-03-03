@@ -55,7 +55,7 @@ build() {
               --disable-gtk --enable-linux-aio --enable-seccomp \
               --localstatedir=/var \
               --enable-tpm \
-              --enable-modules --enable-curl
+              --enable-modules
   make V=99
 }
 
