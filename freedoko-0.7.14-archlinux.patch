@@ -45,9 +45,23 @@
  
  # release
 
---- Makefile	2016-01-23 13:53:55.114589724 +0100
-+++ Makefile	2016-01-23 13:58:40.984322735 +0100
-@@ -303,8 +303,7 @@
+--- Makefile	2016-03-03 09:37:30.163436058 +0100
++++ Makefile	2016-03-03 09:40:36.958111227 +0100
+@@ -289,22 +289,11 @@
+ ifeq ($(OPERATING_SYSTEM), Linux)
+ .PHONY: install
+ install :
+-	$(MAKE) \
+-	  --always-make \
+-	  "USE_UI_TEXT=false" \
+-	  "USE_UI_GTKMM=true" \
+-	  "USE_NETWORK=true" \
+-	  "CXXFLAGS=-Wall -Werror -Wno-parentheses -pipe -Os -std=c++11" \
+-	  "CPPFLAGS=-DRELEASE -DVERSION_DESCRIPTION='\"$(OPERATING_SYSTEM_NAME) binary\"' -DPUBLIC_DATA_DIRECTORY_VALUE='\"$(DATA_DIRECTORY)\"' -DMANUAL_DIRECTORY_VALUE='\"$(HELP_DIRECTORY)/manual\"'" \
+-	  -C src \
+-	  $(PROGRAM)
+-	$(MAKE) -C src strip
+ #	Copying the program
  	echo "Copying the program"
  	mkdir -p $(DESTDIR)$(BIN_DIRECTORY)
  	cp src/FreeDoko $(DESTDIR)$(BIN_DIRECTORY)
@@ -57,7 +71,7 @@
  	cd $(DESTDIR)$(BIN_DIRECTORY) && ln -sf FreeDoko freedoko
  #	Copying the data files
  	echo "Copying the data files"
-@@ -321,15 +320,13 @@
+@@ -321,15 +310,13 @@
  	a2x -f manpage doc/freedoko.asciidoc
  	mkdir -p $(DESTDIR)$(MAN_DIRECTORY)
  	cp doc/freedoko.6 $(DESTDIR)$(MAN_DIRECTORY)/
@@ -100,6 +114,35 @@
 +	chmod -R o-rwx,g+rX,g-w,+rX $(DESTDIR)$(HELP_DIRECTORY)
  	cd $(DESTDIR)$(DATA_DIRECTORY) && ln -sf $(HELP_DIRECTORY)/ doc
  endif
+
+--- src/Makefile.local.template	2016-03-03 09:44:06.736272619 +0100
++++ src/Makefile.local.template	2016-03-03 09:46:38.268785905 +0100
+@@ -2,6 +2,8 @@
+ # Just rename it to 'Makefile.local' to get rid of the make error
+ 
+ include $(DEPTH)/../Makefile.version
++include $(DEPTH)/../Makefile.os
++include $(DEPTH)/../Makefile.install.directories
+ 
+ # which modules to use (see Makefile.modules)
+ # thread support -- experimental
+@@ -28,13 +30,13 @@
+ 
+ 
+ # Where is the directory with the public data?
+-CPPFLAGS += -DPUBLIC_DATA_DIRECTORY_VALUE='"../data"'
++CPPFLAGS += -DPUBLIC_DATA_DIRECTORY_VALUE='"$(DATA_DIRECTORY)"'
+ 
+ # Where is the directory with the manual?
+-#CPPFLAGS += -DMANUAL_DIRECTORY_VALUE='"../manual"'
++CPPFLAGS += -DMANUAL_DIRECTORY_VALUE='"$(HELP_DIRECTORY)/manual"'
+ 
+ # a description for the version information
+-CPPFLAGS += -DVERSION_DESCRIPTION='"self compiled"'
++CPPFLAGS += -DVERSION_DESCRIPTION='"$(OPERATING_SYSTEM_NAME) binary"'
+ 
+ # no debugging (speeds up the program but does not check for errors)
+ #CPPFLAGS += -DDEBUG_NO
  
 --- bin/FreeDoko.desktop	2016-01-23 13:55:07.632168568 +0100
 +++ bin/FreeDoko.desktop	2016-01-23 14:00:16.109500816 +0100
