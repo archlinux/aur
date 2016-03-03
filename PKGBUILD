@@ -1,6 +1,6 @@
 # Maintainer: Christoph Vigano <mail@cvigano.de>
 pkgname=ikiwiki
-pkgver=3.20150614
+pkgver=3.20160121
 pkgrel=1
 pkgdesc="wiki/blog compiler"
 arch=(any)
@@ -11,7 +11,7 @@ source=("http://ftp.de.debian.org/debian/pool/main/i/${pkgname}/${pkgname}_${pkg
 backup=("etc/ikiwiki/wikilist")
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
 
   # Install module into the vendor directories
   sed -i -e 's/sbin/bin/g' Makefile.PL
@@ -21,7 +21,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
 
   make install DESTDIR="$pkgdir"
 
@@ -31,4 +31,4 @@ package() {
   #RST plugin docutils hack
   sed -i 's/env python/python2/' "$pkgdir"/usr/lib/ikiwiki/plugins/rst
 }
-md5sums=('3321e52b0700bca6c68b991468fc8572')
+md5sums=('627976bce7c92456cde52302a3a61efb')
