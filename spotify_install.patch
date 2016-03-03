@@ -1,0 +1,21 @@
+--- ext/clementine-spotifyblob/CMakeLists.txt	2016-03-03 21:42:28.483811815 +0100
++++ ext/clementine-spotifyblob/CMakeLists.txt.new	2016-03-03 21:42:56.237145560 +0100
+@@ -62,18 +62,3 @@
+           RUNTIME DESTINATION bin
+   )
+ endif(NOT APPLE)
+-
+-if(LINUX)
+-  # Versioned name of the blob
+-  if(CMAKE_SIZEOF_VOID_P EQUAL 4)
+-    set(SPOTIFY_BLOB_ARCH 32)
+-  else(CMAKE_SIZEOF_VOID_P EQUAL 4)
+-    set(SPOTIFY_BLOB_ARCH 64)
+-  endif(CMAKE_SIZEOF_VOID_P EQUAL 4)
+-
+-  install(
+-    FILES ${CMAKE_BINARY_DIR}/clementine-spotifyblob
+-    DESTINATION ${CMAKE_BINARY_DIR}/spotify/version${SPOTIFY_BLOB_VERSION}-${SPOTIFY_BLOB_ARCH}bit/
+-    RENAME blob
+-  )
+-endif(LINUX)

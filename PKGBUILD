@@ -26,8 +26,9 @@ optdepends=(
 )
 
 url="http://www.clementine-player.org/"
-source=('git+https://github.com/clementine-player/Clementine.git#branch=qt5')
-sha256sums=('SKIP')
+source=('git+https://github.com/clementine-player/Clementine.git#branch=qt5'
+        'spotify_install.patch')
+sha256sums=('SKIP' '05a438fb445790200258c536d396a6bda9df38a9b775d5259421376ec1878786')
 
 provides=('clementine')
 conflicts=('clementine' 'clementine-lxqt' 'clementine-git')
@@ -39,11 +40,13 @@ pkgver() {
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
+prepare() {
   cd Clementine
   git revert -n 170c64cd8bef9df2ea88dd4f72eec641c250bcfd
-  cd ../
+  patch -Np0 -i ../spotify_install.patch
+}
 
+build() {
   mkdir -p build
   cd build
 
