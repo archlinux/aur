@@ -1,0 +1,12 @@
+[Unit]
+Description=Simple web client for spotify connect
+Documentation=https://github.com/chukysoria/spotify-connect-web
+After=network.target
+
+[Service]
+User=%i
+ExecStart=/usr/bin/python2 /usr/lib/spotify-connect-web/main.py --key ${HOME}/.config/spotify-connect-web/spotify_appkey.key --credentials ${HOME}/.config/spotify-connect-web/credentials.json --bitrate 320 --name "SpotifyConnectWeb"
+#Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

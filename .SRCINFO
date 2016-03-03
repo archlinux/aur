@@ -1,0 +1,31 @@
+pkgbase = spotify-connect-web
+	pkgdesc = Simple Web client for accessing Spotify connect api (Raspberry Pi 2)
+	pkgver = r57.ef8430d
+	pkgrel = 1
+	url = https://github.com/chukysoria/spotify-connect-web
+	install = spotify-connect-web.install
+	arch = armv7h
+	license = unknown
+	makedepends = git
+	depends = python2-flask
+	depends = python2-flask-bootstrap
+	depends = python2-pyalsaaudio
+	depends = python2-gevent
+	depends = python2-cffi
+	depends = python2-pycparser
+	depends = python2
+	provides = spotify-connect-web
+	conflicts = spotify-connect-web
+	source = git+https://github.com/chukysoria/spotify-connect-web#branch=master
+	source = https://github.com/sashahilton00/spotify-connect-resources/raw/master/armhf%20version/libspotify_embedded_shared.so
+	source = spotify-connect-web@.service
+	source = spotify-connect-web.install
+	source = 0001-Fix-0.8.patch
+	sha256sums = SKIP
+	sha256sums = 05a1d441fee75bae6d6b8c94538389e232bea79133cda673e780ca3b97e6a95d
+	sha256sums = 44f94e2e9cfc2fad0a1e3318a222d0e461af3d2c70579ca95491593de5a08b9b
+	sha256sums = 876ca4593670c1ca9b968e93413b90f51b4d10c325a7dbb313052037e6a9888c
+	sha256sums = 5cf33136d33b756e9ed55f92d579d4056df3338b58977d058e29b6c63865fba6
+
+pkgname = spotify-connect-web
+

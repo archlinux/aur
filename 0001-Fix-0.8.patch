@@ -1,0 +1,25 @@
+From 1595b61cee8c5c9df1105f33e3709d6efae41c38 Mon Sep 17 00:00:00 2001
+From: oschwede <oschwede@pi.local>
+Date: Thu, 3 Mar 2016 17:12:27 +0100
+Subject: [PATCH 1/1] Fix 0.8
+
+---
+ console_callbacks.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/console_callbacks.py b/console_callbacks.py
+index cfe3448..a013c6d 100644
+--- a/console_callbacks.py
++++ b/console_callbacks.py
+@@ -48,7 +48,7 @@ class AlsaSink:
+                 pcm = alsa.PCM(
+                     type = alsa.PCM_PLAYBACK,
+                     mode = alsa.PCM_NORMAL,
+-                    card = self._args.device)
++                    card = str(self._args.device))
+ 
+                 pcm.setchannels(CHANNELS)
+                 pcm.setrate(RATE)
+-- 
+2.7.2
+

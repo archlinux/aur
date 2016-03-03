@@ -1,0 +1,26 @@
+
+post_upgrade() {
+	# compile cffi
+	cd /usr/lib/spotify-connect-web/
+        python2 -c "from connect_ffi import ffi, lib"
+
+	systemctl daemon-reload
+}
+
+# arg 1:  the new package version
+post_install() {
+	
+	# do something here
+	echo "Choose a user to run spotify-connect-web as."
+	echo "Obtain a binary appkey from https://developer.spotify.com/my-account/keys and put it into users home under ~/.config/spotify-connect-web/"
+	echo "Start via: systemctl start spotify-connect-web@username"
+	echo "Login to spotify on localhost:4000"
+	echo "Login has to be done only once, a binary credential blob is used afterwards (~/.config/spotify-connect-web/credentials.json)"
+
+	post_upgrade
+}
+
+pre_remove(){
+	systemctl stop spotify-connect-web@*.service
+	rm -rf /usr/lib/spotify-connect-web/__pycache__
+}
