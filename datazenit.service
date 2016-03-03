@@ -1,0 +1,11 @@
+[Unit]
+Description=MySQL and PostgreSQL GUI
+Documentation=https://datazenit.com/
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/datazenit
+
+[Install]
+WantedBy=multi-user.target
