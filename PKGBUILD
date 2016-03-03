@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=inox
-pkgver=48.0.2564.82
+pkgver=48.0.2564.116
 pkgrel=1
 _launcher_ver=3
 pkgdesc="Chromium Spin-off to enhance privacy by disabling data transmission to Google"
@@ -14,9 +14,9 @@ url="http://www.chromium.org/"
 license=('BSD')
 depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss' 'icu'
          'libexif' 'libgcrypt' 'ttf-font' 'systemd' 'dbus' 'flac' 'snappy'
-         'pciutils' 'libpulse' 'harfbuzz' 'libsecret'
+         'pciutils' 'libpulse' 'harfbuzz' 'libsecret' 'libvpx' 
          'perl' 'perl-file-basedir' 'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('python2' 'python2-ply' 'gperf' 'yasm' 'mesa' 'ninja')
+makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'libvpx')
 makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
@@ -47,7 +47,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-new-avatar-menu.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-first-run-behaviour.patch)
 
-sha256sums=('cda64bf427d01bae7d45863812edcd7fa43176238ec07c7752e42afd3e1714fd'
+sha256sums=('6a1eb9b4c853f15eeec0a55af7ac3b41835f0fc592ba6c0a500873cb12a84d0f'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             'ff3f939a8757f482c1c5ba35c2c0f01ee80e2a2273c16238370081564350b148'
             'e4192446cc0ab6a5c540599c8a149f4f2208f0014da2786ada6c9544913d7426'
