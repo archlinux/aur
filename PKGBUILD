@@ -4,7 +4,7 @@ pkgbase="python-simplebayes"
 pkgname=("python-simplebayes" "python2-simplebayes")
 _pkgname="simplebayes"
 pkgver="1.5.7"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A memory-based, optional-persistence naïve bayesian text classifier."
 arch=('i686' 'x86_64')
 url="https://github.com/hickeroar/simplebayes"
@@ -35,13 +35,13 @@ build() {
 }
 
 package_python2-simplebayes() {
-  depends=('python2')
+  depends=('python2' 'python2-setuptools')
   cd "$srcdir/${_pkgname}-${pkgver}-py2"
   python2 setup.py install --root="$pkgdir"/ --optimize=1
 }
 
 package_python-simplebayes() {
-  depends=('python')
+  depends=('python' 'python-setuptools')
   cd "$srcdir/${_pkgname}-${pkgver}"
   python setup.py install --root="$pkgdir"/ --optimize=1
 }
