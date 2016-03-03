@@ -2,7 +2,7 @@
 # Contributor: Nikita Sivakov <cryptomaniac.512@gmail.com>
 
 pkgname=vim-pydyn-xclip
-pkgver=7.4.1294
+pkgver=7.4.1386
 _versiondir=74
 pkgrel=1
 pkgdesc='Vi Improved with dynamic python (python/dyn, python3/dyn) and clipboard support'
@@ -85,3 +85,6 @@ package() {
   install -Dm644 runtime/doc/uganda.txt \
     "${pkgdir}"/usr/share/licenses/${pkgname}/license.txt
 }
+sha1sums=('5a16a08693059eb17dbce5cb9add7cb43b1f7c2f'
+          '15ebf3f48693f1f219fe2d8edb7643683139eb6b'
+          '94f7bb87b5d06bace86bc4b3ef1372813b4eedf2')
