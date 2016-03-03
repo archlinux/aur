@@ -8,16 +8,18 @@
 _ibus_mozc="yes"
 ## If you will be using uim, uncomment below.
 #_uim_mozc="yes"
-## If applying patch for uim-mozc fails, try to uncomment below.
-_kill_kill_line="yes"
-## This will disable the 'kill-line' feature of uim-mozc.
 
 ## If you will be using mozc.el on Emacs, uncomment below.
 #_emacs_mozc="yes"
 
+## If you want to use 'kill-line' feature of uim, uncomment below.
+#_kill_line="yes"
+## NOTE: This option affects only for uim users.
+##       Bcause this applies a patch to original mozc source,
+##       there is a possibility to fail depends on the mozc version.
+
 ## ニコニコ大百科IME辞書 (NICONICOPEDIA IME dictionary, see below)
 #_NICODIC="true"
-
 
 #***********************************************************************
 # License information:
@@ -125,7 +127,7 @@ mozcver() {
 
 
 pkgver() {
-  printf "%s.%s" `mozcver` "${_utdicver}"
+  printf "%s.%s" $_mozcver "${_utdicver}"
 }
 
 
@@ -147,13 +149,13 @@ prepare() {
     ./generate-mozc-ut.sh
   msg "Done."
 
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-`pkgver`"
 
   # uim-mozc
   if [[ "$_uim_mozc" == "yes" ]]; then
     cp -rf "${srcdir}/uim-mozc-${_uimmozcrev}/uim" unix/
     # kill-line patch
-    if [[ "$_kill_kill_line" != "yes" ]]; then
+    if [[ "$_kill_line" == "yes" ]]; then
       patch -p0 -i "${srcdir}/uim-mozc-${_uimmozcrev}/mozc-kill-line.diff"
     fi
     # Extract license part of uim-mozc
