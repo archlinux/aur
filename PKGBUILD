@@ -19,7 +19,7 @@ sha512sums=('c824970c789c2d3ab3410522a95e773dd34689dc3b144a28e555e4a4e332730be59
 
 prepare() {
   cd "${srcdir}"/"Lightscreen-${pkgver}"
-  patch -Np0 -i ../../fix_optionsdialog_include.patch
+  patch -Np0 -i ../fix_optionsdialog_include.patch
 }
 
 build() {
