@@ -20,13 +20,13 @@ md5sums=('f7f40bbd9d07b1c9906b3a88cbab36f0'
 build() {
   cd "$srcdir/geepro"
 
-  ./waf configure --prefix="$pkgdir/usr"
-  ./waf build
+  python2 waf configure --prefix="$pkgdir/usr"
+  python2 waf build
 }
 
 package() {
   cd "$srcdir/geepro"
-  ./waf install
+  python2 waf install
   # Copy icon and .desktop file
   mkdir -p "$pkgdir/usr/share/pixmaps"
   cp gui-gtk/icons/logo.xpm "$pkgdir/usr/share/pixmaps/geepro.xpm"
