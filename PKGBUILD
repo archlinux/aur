@@ -5,9 +5,9 @@ pkgname=kodi-addon-pvr-mythtv-git
 pkgver=r532.84b0b6b
 pkgrel=1
 if [ -z "$API" ]; then
-  error "No API Version Defined.  15 = Isengard, 16 = Jarvis, 99 = git master"
-  exit 1
+  error "No API Version Defined, defaulting to 16.  15 = Isengard, 16 = Jarvis, 99 = git master"
 fi
+API=${API:-16}
 
 _branch=$(
   case "${API}" in

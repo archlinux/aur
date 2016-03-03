@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-pvr-mythtv-git
 	pkgdesc = MythTV PVR client addon for Kodi
-	pkgver = r434.95b43c0
+	pkgver = r532.84b0b6b
 	pkgrel = 1
 	url = https://github.com/kodi-pvr/pvr.hts
 	arch = armv7h
@@ -10,11 +10,12 @@ pkgbase = kodi-addon-pvr-mythtv-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = kodi-platform-git
-	depends = kodi>=15.0
+	depends = kodi>=16.0
+	depends = kodi<17.0
 	provides = kodi-addon-pvr-mythtv
 	conflicts = kodi-addon-pvr-mythtv
 	conflicts = kodi-pvr-addons
-	source = kodi-addon-pvr-mythtv-git::git+https://github.com/kodi-pvr/pvr.mythtv.git#branch=Isengard
+	source = kodi-addon-pvr-mythtv-git::git+https://github.com/kodi-pvr/pvr.mythtv.git#branch=Jarvis
 	md5sums = SKIP
 
 pkgname = kodi-addon-pvr-mythtv-git
