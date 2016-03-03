@@ -1,0 +1,20 @@
+[Unit]
+Description=Ppcoin Daemon
+After=network.target
+Requires=tor.service
+
+[Service]
+User=%i
+Group=users
+Type=simple
+Restart=on-failure
+RestartSec=15
+ExecStart=/usr/bin/ppcoind -proxy=127.0.0.1:9050
+## security
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=full
+NoNewPrivileges=true
+
+[Install]
+WantedBy=default.target
