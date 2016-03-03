@@ -12,7 +12,7 @@ depends=('radare2' 'python2' 'python')
 makedepends=('valabind')
 options=('!emptydirs')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/radare/${pkgname}/archive/${pkgver}.tar.gz)
-sha512sums=('e7bd499c1c8403815ef50ffa29ae119db0fce7e33ade41f06c9c534581f2645476ac63003fa985eadd82dc60fe1cc534de1f92d5eba6f17e3d2c748e4a7f7760')
+sha512sums=('29e9ea88666c0c2b1d75c80dfb203ba8bf8b7af9236d34452f7e2d59d21a6f31cd90f8302f28d6823299d5a5123e57ed7e6560e5cd0136f854bd4002075594c5')
 
 build() {
   cd ${pkgname}-${pkgver}
