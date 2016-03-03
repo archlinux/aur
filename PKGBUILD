@@ -1,7 +1,7 @@
 # Maintainer: Simon Hanna <simon dot hanna AT serve-me DOT info>
 
 pkgname=('python-nose2' 'python2-nose2')
-pkgver=0.6.1
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="The next generation of nicer testing for python"
 arch=(any)
@@ -9,7 +9,7 @@ url="https://github.com/nose-devs/nose2"
 license=('BSD')
 options=(!emptydirs)
 source=("https://github.com/nose-devs/nose2/archive/${pkgver}.tar.gz")
-sha256sums=('2afcd6684ffa5d1dbeead3bcb4bda6cbc0b95d2c505df64e15b3b242081d6753')
+sha256sums=('a40b16589afb31cbe9502456aa8e45af6e5f560813d5ae6ac83469c6317a4194')
 makedepends=('python-setuptools' 'python2-setuptools')
 
 package_python-nose2() {
