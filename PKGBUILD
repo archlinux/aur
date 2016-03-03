@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ruby-starscope
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="Smart code searching and indexing"
 arch=('any')
@@ -15,7 +15,7 @@ depends=('ruby'
          'ruby-rkelly-remix'
          'ruby-sourcemap')
 source=(https://rubygems.org/downloads/${pkgname#*-}-${pkgver}.gem)
-sha256sums=('91a95572bb0f2bf063d45a9cf2268c964537975341697e253fe58c5aa622183b')
+sha256sums=('b7d876cdfc73dc65b311898a0c18812ad453fad422504307f5c1feb459f8738a')
 noextract=("${pkgname#*-}-${pkgver}.gem")
 provides=('ruby-starscope' 'starscope')
 conflicts=('starscope')
