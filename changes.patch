@@ -263,7 +263,7 @@ index 8cf2380..41f252e 100644
 +    )
 +  
 diff --git a/src/__main__.py b/src/__main__.py
-index 7cc6586..1e40dd4 100644
+index 7cc6586..7127372 100644
 --- a/src/__main__.py
 +++ b/src/__main__.py
 @@ -26,6 +26,7 @@ from PyQt4 import QtGui, uic
@@ -274,23 +274,23 @@ index 7cc6586..1e40dd4 100644
  # Are we running from a frozen interpreter?
  if getattr(sys, 'frozen', False):
      os.chdir(os.path.dirname(sys.executable))
-@@ -37,8 +38,6 @@ else:
+@@ -37,8 +38,7 @@ else:
      # We need to set the working directory correctly.
  
  import util
 -util.COMMON_DIR = os.path.join(os.getcwd(), "res")
 -
++import util.crash
  import config
  import platform
  
-@@ -52,7 +51,9 @@ def excepthook(exc_type, exc_value, traceback_object):
+@@ -52,7 +52,8 @@ def excepthook(exc_type, exc_value, traceback_object):
      sys.excepthook = excepthook_original
  
      logger.error("Uncaught exception", exc_info=(exc_type, exc_value, traceback_object))
 -    dialog = util.CrashDialog((exc_type, exc_value, traceback_object))
-+    from util.crash import CrashDialog
 +
-+    dialog = CrashDialog((exc_type, exc_value, traceback_object))
++    dialog = util.crash.CrashDialog((exc_type, exc_value, traceback_object))
      answer = dialog.exec_()
  
      if answer == QtGui.QDialog.Rejected:
@@ -317,7 +317,7 @@ index 99dae35..9cef9e6 100644
      def on_motd(self, c, e):
          self.log_event(e)
 diff --git a/src/client/_clientwindow.py b/src/client/_clientwindow.py
-index 8e933eb..863c630 100644
+index 8e933eb..fe317cf 100644
 --- a/src/client/_clientwindow.py
 +++ b/src/client/_clientwindow.py
 @@ -7,7 +7,7 @@ from PyQt4.QtNetwork import QAbstractSocket
@@ -329,7 +329,15 @@ index 8e933eb..863c630 100644
  import chat
  from client.player import Player
  from client.players import Players
-@@ -212,7 +212,7 @@ class ClientWindow(FormClass, BaseClass):
+@@ -36,6 +36,7 @@ import logging
+ logger = logging.getLogger(__name__)
+ 
+ import util
++import util.crash
+ import secondaryServer
+ 
+ import json
+@@ -212,7 +213,7 @@ class ClientWindow(FormClass, BaseClass):
          self.setStyleSheet(util.readstylesheet("client/client.css"))
          self.whatNewsView.setHtml("<body style='background-color: #000;'></body>")
  
@@ -338,7 +346,7 @@ index 8e933eb..863c630 100644
  
          # Frameless
          self.setWindowFlags(
-@@ -749,7 +749,7 @@ class ClientWindow(FormClass, BaseClass):
+@@ -749,7 +750,7 @@ class ClientWindow(FormClass, BaseClass):
      @QtCore.pyqtSlot()
      def linkAbout(self):
          dialog = util.loadUi("client/about.ui")
