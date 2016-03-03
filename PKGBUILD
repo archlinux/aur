@@ -7,7 +7,7 @@ pkgname=libevhtp
 pkgver=1.2.10
 
 #The release number for the arch package, as fixes are added to the PKGBUILD, the release number will increase
-pkgrel=1
+pkgrel=2
 
 # The description of the package, should be about 80 characters long (one line)
 pkgdesc="A more flexible replacement for libevent's httpd API."
@@ -38,7 +38,7 @@ provides=()
 options=('staticlibs')
 
 source=("https://github.com/ellzey/libevhtp/archive/${pkgver}.zip")
-sha256sums=('32f28292d9b8a3fead4da07e6a4d0e4d8c316585616c3d60d491cdd3271d93e4')
+sha256sums=('9af608c08fb33e69832b789c158544be6141dfbf25bfb9dca2e3d62786d0e731')
 
 build () {
 	cd "$srcdir/$pkgname-$pkgver"
