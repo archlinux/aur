@@ -5,11 +5,11 @@ pkgname=('python-pycalverter'
 	 'python2-pycalverter')
 pkgdesc="Python Calendar Converter"
 pkgver=1.6.1
-pkgrel=1
-url="https://pypi.python.org/pypi/pyCalverter"
+pkgrel=2
+url="https://bitbucket.org/bayazee/pycalverter/overview"
 license=('GPLv2')
 arch=('any')
-source="https://pypi.python.org/packages/source/p/pyCalverter/pyCalverter-${pkgver}.tar.gz"
+source=("https://pypi.python.org/packages/source/p/pyCalverter/pyCalverter-${pkgver}.tar.gz")
 md5sums=('effad7428a5d9902965ad2c0d80152ee')
 
 package_python-pycalverter(){
