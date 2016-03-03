@@ -2,7 +2,7 @@
 # Thanks to Adria Arrufat <swiftscythe@gmail.com>
 
 pkgname=clementine-qt5-git
-pkgver=1.2.3.r1504.gf770030
+pkgver=1.2.3.r1505.gabc6370
 pkgrel=1
 pkgdesc="Experimental Qt5 version of Clementine, a modern music player and library organiser."
 arch=('i686' 'x86_64')
@@ -30,8 +30,8 @@ source=('git+https://github.com/clementine-player/Clementine.git#branch=qt5')
 sha256sums=('SKIP')
 
 provides=('clementine')
-conflicts=('clementine clementine-lxqt clementine-git')
-replaces=('clementine clementine-lxqt clementine-git')
+conflicts=('clementine' 'clementine-lxqt' 'clementine-git')
+replaces=('clementine' 'clementine-lxqt' 'clementine-git')
 
 
 pkgver() {
@@ -51,7 +51,7 @@ build() {
   # Add -DCMAKE_BUILD_TYPE=Release if you're an adventurer
   cmake "../Clementine" \
     -DCMAKE_INSTALL_PREFIX=/usr
-  make 
+  make
 }
 
 package(){
