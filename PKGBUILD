@@ -6,7 +6,7 @@
 
 pkgname=gnash-git
 _gitname=gnash
-pkgver=0.8.11.r22339.g62cfdfe
+pkgver=0.8.11.r22358.g9229f6f
 pkgrel=1
 pkgdesc="The GNU SWF Player based on GameSWF - git development version"
 arch=('i686' 'x86_64')
