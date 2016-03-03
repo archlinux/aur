@@ -2,7 +2,7 @@
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 
 pkgname=yoshimi
-pkgver=1.3.8.1
+pkgver=1.3.9
 pkgrel=1
 pkgdesc="a fork of the ZynAddSubFX software systhesizer"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ depends=('jack' 'fltk' 'fftw' 'mxml' 'cairo' 'lv2')
 makedepends=('cmake' 'boost' 'mesa')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Yoshimi/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('fb3631812144fb354e3ccd8681c3be08')
-sha256sums=('71312f269bcafa18bd8289ae440b7acad04abc2059b8ae906a1aa4373256c13d')
+md5sums=('72a698ae7dd0eb94de8104d857e4722d')
+sha256sums=('386fff21f5bbcf8165fd3623c4a9857f13571ffc2cdf54f5b6d89bd6f179e085')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/src" 
@@ -29,4 +29,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-
