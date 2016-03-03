@@ -1,7 +1,7 @@
 # Maintainer: Maxim Andersson <thesilentboatman@gmail.com>
 
 pkgname=gnome-shell-extension-dynamic-top-bar
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="Extension that make the top bar transparent when no window is maximized"
 arch=('any')
