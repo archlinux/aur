@@ -9,7 +9,7 @@ pkgver=49.0.2623.75
 pkgrel=1
 pkgdesc="An attempt at creating a safer, faster, and more stable browser (Beta Channel)"
 arch=('x86_64')
-url="https://www.google.com/chrome/index.html"
+url="https://www.google.com/chrome"
 license=('custom:chrome')
 depends=('alsa-lib' 'desktop-file-utils' 'flac' 'gconf' 'gtk2' 'harfbuzz' 'harfbuzz-icu' 'hicolor-icon-theme'
          'icu' 'libpng' 'libxss' 'libxtst' 'nss' 'opus' 'snappy' 'speech-dispatcher' 'ttf-font' 'xdg-utils')
@@ -21,11 +21,11 @@ options=('!emptydirs' '!strip')
 install=$pkgname.install
 _channel=beta
 source=("google-chrome-${_channel}_${pkgver}_amd64.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_amd64.deb"
-        'google-chrome-beta'
-        'eula_text.html')
+        "$url/browser/privacy/eula_text.html"
+        'google-chrome-beta')
 md5sums=('e2ed725c60fca190f11ab4cfd87aa400'
-         'ca16d5162eed85b1ba4e6b9fc37f9e35'
-         'b7e752f549b215ac77f284b6486794b6')
+         'SKIP'
+         'ca16d5162eed85b1ba4e6b9fc37f9e35')
 
 package() {
   msg2 "Extracting the data.tar.xz..."
