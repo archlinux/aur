@@ -20,7 +20,7 @@ sha512sums=('3d3abcaa84b23b0a689d1ba530bd65408e220cce2461b10ff5c0dd07a67fc0ccb29
 
 prepare() {
  cd "${srcdir}"/${pkgname}-${pkgver}
- patch -Np1 -i ../../skip-manpages.patch
+ patch -Np1 -i ../skip-manpages.patch
 }
 
 build() {
