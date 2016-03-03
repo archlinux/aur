@@ -1,5 +1,6 @@
-# Maintainer: Iru Cai <mytbk920423@gmail>
-# Maintainer: Tim Van den Langenbergh <tmt_vdl@gmx.com>
+# Contributor: Abdel-Rahman Abdel-Rahman <abodyxplay1@gmail.com>
+# Contributor: Iru Cai <mytbk920423@gmail.com>
+# Contributor: Tim Van den Langenbergh <tmt_vdl@gmx.com>
 # Contributor: Omar Botta <omarbotta@gnulinuxlibre.net>
 # Contributor: Carlos Sanchez <cargabsj175@vegnux.org.ve>
 # Contributor: Frederic Bezies <fredbezies@gmail.com>
