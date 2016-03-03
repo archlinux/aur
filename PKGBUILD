@@ -12,6 +12,7 @@ depends=('python2>=2.7.10'
                 'python2-gevent'
                 'python2-msgpack'
                 )
+optdepends=('tor>=0.2.7.6: anonymity')
 makedepends=('git')
 license=('GPL2')
 pkgdesc="Decentralized websites using Bitcoin crypto and the BitTorrent network."
