@@ -2,8 +2,8 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=plasma-meta
-pkgver=5.5
-pkgrel=1
+pkgver=5.6
+pkgrel=0.1
 pkgdesc='Meta package to install KDE Plasma'
 arch=(any)
 url='https://www.archlinux.org/'
@@ -19,7 +19,6 @@ depends=(bluedevil
          ksshaskpass
          kwrited
          oxygen
-         oxygen-cursors
          plasma-desktop
          plasma-nm
          plasma-workspace-wallpapers
