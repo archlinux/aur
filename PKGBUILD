@@ -9,7 +9,7 @@ pkgver=50.0.2657.0
 pkgrel=1
 pkgdesc="An attempt at creating a safer, faster, and more stable browser (Dev Channel)"
 arch=('x86_64')
-url="https://www.google.com/chrome/index.html"
+url="https://www.google.com/chrome"
 license=('custom:chrome')
 depends=('alsa-lib' 'desktop-file-utils' 'flac' 'gconf' 'gtk2' 'harfbuzz' 'harfbuzz-icu' 'hicolor-icon-theme'
          'icu' 'libpng' 'libxss' 'libxtst' 'nss' 'opus' 'snappy' 'speech-dispatcher' 'ttf-font' 'xdg-utils')
@@ -21,11 +21,11 @@ options=('!emptydirs' '!strip')
 install=$pkgname.install
 _channel=unstable
 source=("google-chrome-${_channel}_${pkgver}_amd64.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_amd64.deb"
-        'google-chrome-unstable'
-        'eula_text.html')
+        "$url/browser/privacy/eula_text.html"
+        'google-chrome-unstable')
 md5sums=('a58034acc41d37047f384007004b5585'
-         '11b55a3fec7279db32b63e3a0b97dc01'
-         'b7e752f549b215ac77f284b6486794b6')
+         'SKIP'
+         '11b55a3fec7279db32b63e3a0b97dc01')
 
 ## Previous build (also see: /var/cache/pacman/pkg/google-chrome-dev-*):
 #source[0]=('http://mirror.glendaleacademy.org/chrome/pool/main/g/google-chrome-unstable/google-chrome-unstable_50.0.2652.0-1_amd64.deb')
