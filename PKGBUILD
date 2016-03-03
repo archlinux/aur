@@ -41,7 +41,7 @@ package_ivy-icon-theme() {
 	conflicts=("${pkgname}<=${pkgver}" "${pkgname}-git<=${pkgver}")
 	replaces=("${pkgname}<=${pkgver}" "${pkgname}-git<=${pkgver}")
 	depends=('hicolor-icon-theme')
-	pkgdesc="Simple and icon theme for X11 desktops!"
+	pkgdesc="Classic and simple icon theme"
 	mkdir -p "${pkgdir}"/usr/share/icons
 	mv "${srcdir}"/"${pkgbase}"/icons/Ivy "${pkgdir}"/usr/share/icons
 }
@@ -52,7 +52,8 @@ package_ivy-theme-base() {
 	conflicts=("${pkgname}<=${pkgver}" "${pkgname}-git<=${pkgver}")
 	replaces=("${pkgname}<=${pkgver}" "${pkgname}-git<=${pkgver}")
 	depends=('gtk2' 'gtk-engine-murrine')
-	pkgdesc="Simple theme for X11 desktops!"
+	optdepends=('xfwm4' 'marco')
+	pkgdesc="Classic GUI theme"
 	mkdir -p "${pkgdir}"/usr/share/themes
-	mv "${srcdir}"/"${pkgbase}"/gui-base/Ivy "${pkgdir}"/usr/share/themes
+	mv "${srcdir}"/"${pkgbase}"/gui/base/Ivy "${pkgdir}"/usr/share/themes
 }
