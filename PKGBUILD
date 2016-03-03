@@ -12,7 +12,7 @@ depends=('python2>=2.6'
          'djvulibre>=3.5.22'
          'minidjvu>=0.8'
          'python2-configargparse'
-         'python2-pyxmpp'
+         'python2-xmp-toolkit'
          'python2-exiv2>=0.3')
 source=("https://pypi.python.org/packages/source/d/didjvu/$pkgname-$pkgver.tar.gz"
         "https://pypi.python.org/packages/source/d/didjvu/$pkgname-$pkgver.tar.gz.asc")
