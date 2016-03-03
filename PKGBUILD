@@ -18,7 +18,7 @@ makedepends=('git' 'npm')
 conflicts=('atom-editor-bin' 'atom-editor-git')
 install=atom.install
 source=("https://github.com/atom/atom/archive/v${pkgver}.tar.gz")
-sh4256sums=('7fc9bff949f2e02a4b71be1a9e15cc41b050cc3d3d2a19494f76d87e197725a7')
+sha256sums=('7fc9bff949f2e02a4b71be1a9e15cc41b050cc3d3d2a19494f76d87e197725a7')
 
 prepare() {
   cd "atom-$pkgver"
