@@ -1,6 +1,6 @@
 diff -aur -bZwB cadabra-1.33.old/gui/Makefile.in cadabra-1.33/gui/Makefile.in
---- cadabra-1.33.old/gui/Makefile.in	2016-03-02 07:13:04.277941346 -0500
-+++ cadabra-1.33/gui/Makefile.in	2016-03-02 07:13:08.864580761 -0500
+--- cadabra-1.33.old/gui/Makefile.in	2016-03-03 07:02:23.193184730 -0500
++++ cadabra-1.33/gui/Makefile.in	2016-03-03 07:02:28.039825701 -0500
 @@ -14,7 +14,7 @@
  TIMESTAMP = -D"RELEASE=\"${RELEASE}\"" -D"DATETIME=\"`date | sed -e 's/  / /'`\"" -DHOSTNAME=\"`hostname`\"
  
@@ -20,8 +20,8 @@ diff -aur -bZwB cadabra-1.33.old/gui/Makefile.in cadabra-1.33/gui/Makefile.in
  
  include .depend
 diff -aur -bZwB cadabra-1.33.old/src/Makefile.in cadabra-1.33/src/Makefile.in
---- cadabra-1.33.old/src/Makefile.in	2016-03-02 07:13:04.277941346 -0500
-+++ cadabra-1.33/src/Makefile.in	2016-03-02 07:13:08.864580761 -0500
+--- cadabra-1.33.old/src/Makefile.in	2016-03-03 07:02:23.196518046 -0500
++++ cadabra-1.33/src/Makefile.in	2016-03-03 07:02:28.039825701 -0500
 @@ -27,7 +27,7 @@
  
  
@@ -50,8 +50,8 @@ diff -aur -bZwB cadabra-1.33.old/src/Makefile.in cadabra-1.33/src/Makefile.in
  
  include .depend
 diff -aur -bZwB cadabra-1.33.old/src/manipulator.cc cadabra-1.33/src/manipulator.cc
---- cadabra-1.33.old/src/manipulator.cc	2016-03-02 07:13:04.277941346 -0500
-+++ cadabra-1.33/src/manipulator.cc	2016-03-02 07:14:09.617682321 -0500
+--- cadabra-1.33.old/src/manipulator.cc	2016-03-03 07:02:23.196518046 -0500
++++ cadabra-1.33/src/manipulator.cc	2016-03-03 07:02:28.039825701 -0500
 @@ -283,7 +283,7 @@
  	if(getline_precut_buffer.size()==0 || getline_was_eof) {
  		std::string input_now;
@@ -62,80 +62,20 @@ diff -aur -bZwB cadabra-1.33.old/src/manipulator.cc cadabra-1.33/src/manipulator
  		getline_precut_buffer+=input_now;
  		}
 diff -aur -bZwB cadabra-1.33.old/src/manipulator.hh cadabra-1.33/src/manipulator.hh
---- cadabra-1.33.old/src/manipulator.hh	2016-03-02 07:13:04.277941346 -0500
-+++ cadabra-1.33/src/manipulator.hh	2016-03-02 07:13:08.864580761 -0500
-@@ -21,17 +21,17 @@
- #ifndef manipulator_hh_
- #define manipulator_hh_
- 
--#include "storage.hh"
- #include "algorithm.hh"
- #include "display.hh"
--#include <string>
--#include <map>
--#include <iostream>
-+#include "storage.hh"
+--- cadabra-1.33.old/src/manipulator.hh	2016-03-03 07:02:23.196518046 -0500
++++ cadabra-1.33/src/manipulator.hh	2016-03-03 07:03:56.486018858 -0500
+@@ -30,7 +30,7 @@
  #include <fstream>
--#include <utility>
--#include <stack>
+ #include <utility>
+ #include <stack>
 -#include <sigc++/object.h>
-+#include <iostream>
-+#include <map>
- #include <modglue/pipe.hh>
 +#include <sigc++/sigc++.h>
-+#include <stack>
-+#include <string>
-+#include <utility>
+ #include <modglue/pipe.hh>
  
  // These are initiated in main.cc
- extern std::ostream     *real_txtout;
-@@ -65,8 +65,8 @@
- 		exit_exception();
- };
- 
--
--/// Singleton object which pulls in data from the input streams, handles switching
-+/// Singleton object which pulls in data from the input streams, handles
-+/// switching
- /// between streams, feeds data to the parser, and calls the algorithm objects
- /// to perform action on the expression tree.
- class manipulator : public sigc::trackable {
-@@ -109,15 +109,18 @@
- 
- 		std::stack<std::istream *> streamstack;
- 
--		void output_comment(const std::string& comment) const; // wrap in xml nodes if necessary
-+  void output_comment(
-+      const std::string &comment) const; // wrap in xml nodes if necessary
- 		void output_status() const;
- 		void read_program_file();
- 
--		/// Cleans up the stream at the top of streamstack. If it derives from ifstream,
-+  /// Cleans up the stream at the top of streamstack. If it derives from
-+  /// ifstream,
- 		/// will call close on it as well. Pops the stream off the stack.
- 		void cleanup_stream();
- 
--		/// Replace \\argv[n] in the input with the n-th command line argument as stored
-+  /// Replace \\argv[n] in the input with the n-th command line argument as
-+  /// stored
- 		/// in the global cmdline_arguments vector.
- 		void replace_cmdline_args(std::string& oneline);
- 
-@@ -140,7 +143,8 @@
- 		exptree::iterator apply_post_default_rules_(exptree::iterator);
- 		void              extract_properties_(exptree::iterator);
- 		exptree::iterator run_procedure(exptree::iterator, long);
--		bool              handle_external_commands_(exptree::iterator&, exptree::iterator, exptree::iterator&);
-+  bool handle_external_commands_(exptree::iterator &, exptree::iterator,
-+                                 exptree::iterator &);
- 		std::string       texify(const std::string&) const;
- 
- 		/// Class to hold information about a dynamically added algorithm class.
-Only in cadabra-1.33/src: manipulator.hh.orig
 diff -aur -bZwB cadabra-1.33.old/src/modules/substitute.cc cadabra-1.33/src/modules/substitute.cc
---- cadabra-1.33.old/src/modules/substitute.cc	2016-03-02 07:13:04.277941346 -0500
-+++ cadabra-1.33/src/modules/substitute.cc	2016-03-02 07:13:56.064395400 -0500
+--- cadabra-1.33.old/src/modules/substitute.cc	2016-03-03 07:02:23.196518046 -0500
++++ cadabra-1.33/src/modules/substitute.cc	2016-03-03 07:02:28.039825701 -0500
 @@ -876,7 +876,7 @@
  					}
  				std::string nm=*to_->name + fnd->first.begin()->name->substr(from_->name->size());

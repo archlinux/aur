@@ -12,7 +12,7 @@ depends=('conlie' 'modglue' 'gmp' 'pcre') # for gui: 'gtkmm' 'dvipng' 'texlive' 
 install="$pkgname.install"
 source=("http://cadabra.phi-sci.com/$pkgname-$pkgver.tar.gz" "package.patch")
 md5sums=('cee8ae23c169958aba09b64e4ea479ce'
-         'c3ed39abb74ec433ce38ba99b7a60d4a')
+         '3346f2dcc00c4879417329e8bdfe350d')
 
 prepare() {
  cd "$srcdir/$pkgname-$pkgver"
