@@ -1,7 +1,7 @@
 # Maintainer: Madara <majetree@yandex.ru>
 
 pkgname=pixiecore
-pkgver=15.12.20.1943
+pkgver=16.02.28.2053
 pkgrel=1
 epoch=
 pkgdesc="PXE booting for people in a hurry"
