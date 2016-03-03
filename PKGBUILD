@@ -3,8 +3,8 @@
 
 pkgname=kodi-addon-pvr-iptvsimple-git
 _gitname=pvr.iptvsimple
-pkgver=r74.23defeb
-pkgrel=2
+pkgver=r76.ae9bc1d
+pkgrel=1
 pkgdesc='IPTV Simple PVR client addon for Kodi'
 arch=('i686' 'x86_64')
 url="https://github.com/kodi-pvr/${_gitname}"
@@ -14,7 +14,7 @@ makedepends=('cmake' 'git' 'kodi-platform-git')
 provides=('kodi-addon-pvr-iptvsimple');
 conflicts=('kodi-addon-pvr-iptvsimple');
 depends=('kodi')
-source=("git+https://github.com/kodi-pvr/${_gitname}.git#branch=Isengard")
+source=("git+https://github.com/kodi-pvr/${_gitname}.git#branch=Jarvis")
 md5sums=('SKIP')
 
 pkgver() {
