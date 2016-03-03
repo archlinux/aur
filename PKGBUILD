@@ -3,9 +3,9 @@
 # Contributor: Phillip Fynan <pfynan@gmail.com>
 # Maintainer: Peter Sutton <foxxy@foxdogstudios.com>
 
-_pkgver_year=2015
-_pkgver_month=04
-_pkgver_day=17
+_pkgver_year=2016
+_pkgver_month=02
+_pkgver_day=08
 
 pkgname=abcmidi
 pkgver="${_pkgver_year}${_pkgver_month}${_pkgver_day}"
@@ -16,9 +16,9 @@ license=('GPL')
 depends=('glibc')
 makedepends=('unzip')
 changelog=ChangeLog
-source=("http://ifdo.pugmarks.com/~seymour/runabc/abcMIDI-${_pkgver_year}-${_pkgver_month}-${_pkgver_day}.zip")
+source=("http://ifdo.pugmarks.com/~seymour/runabc/abcMIDI-${_pkgver_year}.${_pkgver_month}.${_pkgver_day}.zip")
 arch=(i686 x86_64)
-sha256sums=('764a5ff1d0d6de5289156b76028b025d2f03b8d7bfaeb459c71b82b04cdb0682')
+sha256sums=('e9c07721b41dc1aa4e492fd8682ad6ca9a60558098816c68811f544e84549b36')
 
 build() {
     cd $srcdir/abcmidi
