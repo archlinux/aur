@@ -1,11 +1,12 @@
 # Maintainer: Boohbah <boohbah at gmail.com>
+# Contributor: Petron <i at jingbei.li>
 
 pkgname=opensmile
 pkgver=2.2rc1
 pkgrel=1
 pkgdesc="A fast, real-time (audio) feature extraction utility for automatic speech, music and paralinguistic recognition research"
 arch=('i686' 'x86_64')
-url="http://opensmile.sourceforge.net/"
+url="http://www.audeering.com/research/opensmile"
 license=('GPL')
 depends=('portaudio')
 options=('!makeflags')
@@ -23,6 +24,8 @@ build() {
 package() {
   cd "openSMILE-$pkgver"
   make DESTDIR="$pkgdir" install
+  mkdir -p "$pkgdir/usr/share/$pkgname"
+  cp -a config "$pkgdir/usr/share/$pkgname"
 }
 
 # vim:set ts=2 sw=2 et:
