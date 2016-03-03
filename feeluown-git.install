@@ -1,0 +1,3 @@
+post_remove() {
+    echo 'The config files under ~/.FeelUOwn should be removed manually by yourself.'
+}
