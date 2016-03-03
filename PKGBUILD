@@ -6,7 +6,7 @@
 
 pkgname=gkrellm
 pkgver=2.3.5
-pkgrel=6
+pkgrel=7
 pkgdesc="System monitor package for GTK2"
 arch=('x86_64' 'i686')
 url="http://gkrellm.srcbox.net/"
