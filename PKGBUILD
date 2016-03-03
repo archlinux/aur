@@ -25,6 +25,7 @@ pkgdesc="Another UnionFS implementation"
 arch=('i686' 'x86_64')
 url="http://aufs.sourceforge.net/"
 license=('GPL2')
+provides=('aufs')
 replaces=('aufs2' 'aufs3')
 conflicts=('aufs2' 'aufs3')
 install='aufs.install'
