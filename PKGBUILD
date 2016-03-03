@@ -2,7 +2,7 @@
 
 pkgname=openbazaar
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon"
 arch=(any)
 url="http://openbazaar.org"
@@ -32,7 +32,7 @@ msg2 "Installing Openbazaar data"
   cp -r $srcdir/${_srcfolder} $pkgdir/opt/openbazaar
 
 msg2 "Symlinking to allow gui to automatically call daemon"
-  ln -sr /var/lib/openbazaard $pkgdir/opt/$pkgname/OpenBazaar-Server
+  ln -sr /var/lib/openbazaard $pkgdir/opt/OpenBazaar-Server
 
 msg2 "Installing execution script"
   install -Dm755 $srcdir/$pkgname.sh $pkgdir/usr/bin/$pkgname
