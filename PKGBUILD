@@ -2,9 +2,9 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 pkgname=spek
 pkgver=0.8.3
-pkgrel=3
+pkgrel=4
 pkgdesc='An acoustic spectrum analyser.'
-arch=('any')
+arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='http://spek.cc/'
 license=('GPL3')
 depends=('desktop-file-utils' 'ffmpeg2.8' 'wxgtk')
