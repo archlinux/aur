@@ -5,7 +5,7 @@ _kernelname=${pkgbase#linux}
 _desc="Raspberry Pi 3"
 pkgver=4.5
 _gitbranch="rpi-4.5.y"
-pkgrel=3
+pkgrel=4
 arch=('armv7h')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -21,13 +21,6 @@ md5sums=('SKIP'
          '0244ab7cb2e385a8efe9a7fba9bfcb48'
          '52d6ecfbfbd617c05324d0e6cd2d7d18')
 _dirname=linux-${_gitbranch}
-
-#pkgver() {
-#  cd "${srcdir}/${_dirname}"
-#  KERNEL=kernel7
-#  make bcm2709_defconfig 2>&1 >/dev/null
-#  echo $(make kernelrelease)
-#}
 
 prepare() {
   cd "${srcdir}/${_dirname}"
@@ -63,7 +56,7 @@ _package() {
   provides=('kernel26' "linux=${pkgver}" )
   conflicts=('kernel26' 'linux' 'linux-raspberrypi')
   install=${pkgname}.install
-  backup=('boot/config.txt' 'boot/cmdline.txt')
+  #backup=('boot/config.txt' 'boot/cmdline.txt')
   replaces=('linux-raspberrypi-latest')
 
   cd "${srcdir}/${_dirname}"
