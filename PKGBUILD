@@ -59,10 +59,14 @@ build() {
 	# Change dynamic section in ELF files to fix dynamic linking.
 	# Make sure the length is not changed!
 	#	libudev.so.0 -> libudev.so.1
-	#	libssl.so.1.0.1 -> libssl.so.1.0.0
-	#	libssl.so.1.0.2 -> libssl.so.1.0.0
-	#	libcrypto.so.1.0.1 -> libcrypto.so.1.0.0
-	#	libcrypto.so.1.0.2 -> libcrypto.so.1.0.0
+	#
+	# for system openssl:
+	#	libssl.so.1.0.[12] -> libssl.so.1.0.0
+	#	libcrypto.so.1.0.[12] -> libcrypto.so.1.0.0
+	#
+	# for bundled openssl - we use uncommon name to make sure no other application will care:
+	#	libssl.so.1.0.[12] -> libssl-vmw.so
+	#	libcrypto.so.1.0.[12] -> libcrypto-vmw.so
 
 	for bundle in "${pkgname[@]}"; do
 		for FILE in $(find "${bundle}" -type f); do
@@ -84,19 +88,25 @@ build() {
 					-e 's/libcrypto.so.1.0.[12]/libcrypto.so.1.0.0/' \
 					"${FILE}"
 			else
-				# Some files link against openssl 1.0.1...
+				# Some files link against openssl...
 				# Use the bundled version there.
-				sed -i -e 's/libssl.so.1.0.1/libssl.so.1.0.2/' \
-					-e 's/libcrypto.so.1.0.1/libcrypto.so.1.0.2/' \
+				sed -i -e 's/libssl.so.1.0.[12]/libssl-vmw.so\x0\x0/' \
+					-e 's/libcrypto.so.1.0.[12]/libcrypto-vmw.so\x0\x0/' \
 					"${FILE}"
 			fi
 		done
 	done
 
-	# now that we fixed dynamic linking let's remove binary libs
-	# we create symlinks in package() function
+	# now that we fixed dynamic linking...
+	# ... let's finish the hack
 	if [ ${_USE_BUNDLED_OPENSSL:=0} -eq 0 ]; then
-		rm -f "${srcdir}"/extract/vmware-horizon-pcoip/pcoip/lib/vmware/lib{crypto,ssl}.so.1.0.[12]
+		rm -f "${srcdir}"/extract/vmware-horizon-pcoip/pcoip/lib/vmware/lib{crypto,ssl}.so.1.0.2
+
+		ln -sf ../../lib/libcrypto.so.1.0.0 "${pkgdir}"/extract/vmware-horizon-pcoip/pcoip/lib/vmware/libcrypto.so.1.0.0
+		ln -sf ../../lib/libssl.so.1.0.0 "${pkgdir}"/extract/vmware-horizon-pcoip/pcoip/lib/vmware/libssl.so.1.0.0
+	else
+		rename -- '.so.1.0.2' '-vmw.so' \
+			"${srcdir}"/extract/vmware-horizon-pcoip/pcoip/lib/vmware/lib{crypto,ssl}.so.1.0.2
 	fi
 }
 
@@ -137,11 +147,6 @@ package_vmware-horizon-pcoip() {
 	mkdir -p "${pkgdir}/usr/"
 	cp -a pcoip/lib/ "${pkgdir}/usr/lib"
 	cp -a pcoip/bin/ "${pkgdir}/usr/bin"
-
-	if [ ${_USE_BUNDLED_OPENSSL:=0} -eq 0 ]; then
-		ln -sf ../../lib/libcrypto.so.1.0.0 "${pkgdir}/usr/lib/vmware/libcrypto.so.1.0.0"
-		ln -sf ../../lib/libssl.so.1.0.0 "${pkgdir}/usr/lib/vmware/libssl.so.1.0.0"
-	fi
 }
 
 package_vmware-horizon-rtav() {
