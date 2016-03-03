@@ -1,6 +1,6 @@
 pkgbase = python-err
 	pkgdesc = A plugin based chatbot designed to be easily deployable, extensible and maintainable.
-	pkgver = 3.2.1
+	pkgver = 3.2.3
 	pkgrel = 1
 	url = http://errbot.net
 	arch = any
@@ -23,8 +23,8 @@ pkgbase = python-err
 	optdepends = python-tox-git: TOX backend
 	optdepends = python-irc: IRC backend
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/e/errbot/errbot-3.2.1.tar.gz
-	sha256sums = 4a45eebf36a8e50aaa88ff76876b14045306917340d274ab0a9c58f9d172c2fe
+	source = https://pypi.python.org/packages/source/e/errbot/errbot-3.2.3.tar.gz
+	sha256sums = bed7c6bd2a00e2cb679559f30839065e5f56b92fc67acc17dd684b0501e21934
 
 pkgname = python-err
 
