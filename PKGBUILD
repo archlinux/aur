@@ -2,7 +2,7 @@
 
 pkgname=feeluown-git
 _pkgname=FeelUOwn
-pkgver=8.0a
+pkgver=8.0a.0.g1d8de88
 pkgrel=1
 epoch=1
 pkgdesc="个性化音乐服务 For Mac And Linux"
@@ -21,7 +21,7 @@ _desktop="${_pkgname}.desktop"
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    git describe --tags | sed 's/^v//;s/release./r/;s/-/./g'
+    git describe --tags --long | sed 's/^v//;s/release./r/;s/-/./g'
 }
 
 build() {
