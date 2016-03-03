@@ -5,7 +5,7 @@
 pkgname=pstate-frequency-git
 _gitname=pstate-frequency
 pkgdesc="Easily control Intel p-state driver (git version)"
-pkgver=2.0.5.r583.2ecd331
+pkgver="3.0.0".r624.343ab41
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('git')
@@ -13,7 +13,7 @@ depends=('coreutils' 'grep')
 optdepends=('x86_energy_perf_policy: For the x86_energy_perf_policy-sleep.service')
 provides=('pstate-frequency')
 conflicts=('pstate-frequency')
-license=('GPLv2')
+license=('MIT')
 url="https://github.com/pyamsoft/pstate-frequency.git"
 
 ##
@@ -30,7 +30,7 @@ sha256sums=(
 pkgver() {
   cd "${srcdir}/${_gitname}"
 
-  printf "%s.r%s.%s" "$(awk -F '=' '{if (/^VERSION:=/) {print $2}}' 'config.mk')" \
+  printf "%s.r%s.%s" "$(awk -F '=' '{if (/^readonly version=/) {print $2}}' "${_gitname}")" \
                 "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -45,15 +45,6 @@ prepare() {
   # enable the line to allow for editing the config.mk file
   #
   # make DESTDIR="${pkgdir}" edit
-
-  make DESTDIR="${pkgdir}" options
-}
-
-build() {
-  cd "${srcdir}/${_gitname}"
-
-  make DESTDIR="${pkgdir}" clean
-  make DESTDIR="${pkgdir}" bin
 }
 
 package() {
