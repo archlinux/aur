@@ -2,19 +2,25 @@
 
 _pyname=vmprof
 pkgname=python-$_pyname
-pkgver=0.2.3
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="Python's vmprof client"
 url='https://pypi.python.org/pypi/vmprof'
 depends=('python-click' 'python-six' 'libdwarf' 'libelf' 'libunwind')
+checkdepends=('python-pytest')
 license=('MIT')
 arch=('i686' 'x86_64')
 source=("https://pypi.python.org/packages/source/${_pyname:0:1}/$_pyname/$_pyname-$pkgver.tar.gz")
-md5sums=('f07959d94466dfe92fd65f63d4f906ef')
+md5sums=('2c2f9571dc4e18a581ab4474f3fbc6dd')
 
 build() {
   cd $srcdir/$_pyname-$pkgver
   python setup.py build
+}
+
+check() {
+  cd $srcdir/$_pyname-$pkgver
+  py.test tests
 }
 
 package() {
