@@ -5,8 +5,8 @@
 # Maintainer: Crocomo <crocomo@gmx.net>
 
 pkgname=sispmctl
-pkgver=3.1
-pkgrel=2
+pkgver=4.0
+pkgrel=1
 pkgdesc="Enabling the use of the Gembird SIS-PM Silver Shield device family"
 arch=('i686' 'x86_64')
 url="http://sispmctl.sourceforge.net/"
@@ -14,7 +14,7 @@ license=('GPL')
 depends=('libusb-compat')
 makedepends=('pkgconfig')
 source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz)
-md5sums=('24693cae30d77c957f34cfb2c8159661')
+md5sums=('b66b62dd4068b95b5a7652120d864ff8')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
