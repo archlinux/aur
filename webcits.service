@@ -1,5 +1,5 @@
 [Unit]
-Description=Citadel/UX Groupware
+Description=Citadel/UX Groupware web interface over ssl
 
 [Service]
 ExecStart=/usr/local/webcit/webcit -d -s -p2443

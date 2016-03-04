@@ -1,8 +1,8 @@
 [Unit]
-Description=Citadel/UX Groupware
+Description=Citadel/UX Groupware web interface
 
 [Service]
-ExecStart=/usr/local/webcit/webcit -d -p2000
+ExecStart=/usr/webcit/webcit -d -p2000
 Type=forking
 
 [Install]
