@@ -7,12 +7,12 @@
 # Contributor: al.janitor <al.janitor [at] sdf [dot] org>
 
 pkgname=metasploit-git
-pkgver=4.11.4.34771.a611fff
+pkgver=4.11.12.37348.8b32f22
 pkgrel=1
 epoch=1
 pkgdesc="An advanced open-source platform for developing, testing, and using exploit code"
 url='http://www.metasploit.com/'
-arch=('any')
+arch=('i686' 'x86_64')
 license=('BSD')
 depends=('ruby' 'libpcap' 'postgresql-libs' 'ruby-bundler' 'sqlite' 'git')
 optdepends=(
@@ -22,7 +22,6 @@ optdepends=(
 provides=('metasploit')
 conflicts=('metasploit')
 options=('!strip')
-install="metasploit.install"
 source=(${pkgname}::git+https://github.com/rapid7/metasploit-framework.git)
 sha512sums=('SKIP')
 
@@ -34,6 +33,12 @@ pkgver() {
     "$(git rev-parse --short HEAD)"
 }
 
+build() {
+  cd ${pkgname}
+  bundle install -j"$(nproc)" --no-cache --deployment
+  find vendor/bundle/ruby/*/gems/robots-* -exec chmod o+r '{}' \;
+}
+
 package() {
   cd ${pkgname}
 
@@ -42,7 +47,7 @@ package() {
 
   for f in "${pkgdir}"/opt/${pkgname}/msf*; do
     local _msffile="${pkgdir}/usr/bin/`basename "${f}"`"
-    echo "BUNDLE_GEMFILE=/opt/${pkgname}/Gemfile bundle exec ruby /opt/${pkgname}/`basename "${f}"` \"\$@\"" > ${_msffile}
+    echo -e "#!/bin/sh\nBUNDLE_GEMFILE=/opt/${pkgname}/Gemfile bundle exec ruby /opt/${pkgname}/`basename "${f}"` \"\$@\"" > ${_msffile}
     chmod 755 ${_msffile}
   done
 
