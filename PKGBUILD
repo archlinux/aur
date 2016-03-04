@@ -45,20 +45,20 @@ backup=("etc/java32-$_jname/i386/jvm.cfg"
         "etc/java32-$_jname/sound.properties")
 options=('!strip') # JDK debug-symbols
 install=$pkgname.install
-source=("http://download.oracle.com/otn-pub/java/jce_policy/$_major/jce_policy-$_major.zip"
-        'javaws-launcher'
+source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.bin"
+        "http://download.oracle.com/otn-pub/java/jce_policy/$_major/jce_policy-$_major.zip"
         "jconsole32-$_jname.desktop"
         "jmc32-$_jname.desktop"
         "jvisualvm32-$_jname.desktop"
-        "policytool32-$_jname.desktop")
-source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.bin")
-md5sums=('b20f9d6ed14e55d73a5ed204bca01e7a'
-         '45c15a6b4767288f2f745598455ea2bf'
+        "policytool32-$_jname.desktop"
+        'javaws-launcher')
+md5sums=('3269370b7c34e6cbfed8785d3d0c5cbd'
+         'b20f9d6ed14e55d73a5ed204bca01e7a'
          '8e3fb5f39a1c24945fdb9315f9743263'
          'be4ebc20e7acd60e195231c36db4a8cf'
          'eaaf5c10579336af3474ccb23dce2911'
-         '3adcb5783ffaa18c3480ddfa0569dce2')
-md5sums_x86_64=('3269370b7c34e6cbfed8785d3d0c5cbd')
+         '3adcb5783ffaa18c3480ddfa0569dce2'
+         '45c15a6b4767288f2f745598455ea2bf')
 
 package() {
     msg2 "Extracting the .bin"
