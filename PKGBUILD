@@ -3,7 +3,7 @@
 
 pkgname=rust-racer-git
 _pkgname=racer
-pkgver=1.0.0.r138.gb9750c3
+pkgver=1.2.5.r2.gba363c1
 pkgrel=1
 pkgdesc="Code completion for Rust"
 url="https://github.com/phildawes/racer"
