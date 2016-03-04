@@ -12,7 +12,7 @@
 # update and just generally don't seem to care much.
 pkgname=synergy
 pkgver=1.7.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="http://synergy-foss.org"
 arch=('i686' 'x86_64')
