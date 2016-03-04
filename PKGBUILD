@@ -4,13 +4,13 @@
 pkgname=nemo-terminal
 pkgver=2.8.1
 _mintrel=rosa
-pkgrel=3
+pkgrel=4
 pkgdesc="An embedded terminal for Nemo, the Cinnamon file manager."
 arch=('any')
 url="https://github.com/linuxmint/nemo-extensions"
 license=('GPL2')
 groups=('nemo-extensions')
-depends=('nemo-python' 'vte290' 'gobject-introspection-runtime')
+depends=('nemo-python' 'vte3' 'gobject-introspection-runtime')
 optdepends=("python2-xdg: Integration with freedesktop.org standards")
 install="${pkgname}.install"
 
