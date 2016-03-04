@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=dg
-pkgver=1.1.0.20151115
-_commit=c9aeb8adcec1546aeaa82b7aeba7aad563079ed9
+pkgver=1.1.0.20160303
+_commit=6f97648e74fb0e952107bf7aa9f30d0276b2bd47
 pkgrel=1
 pkgdesc="A simple language that compiles to CPython bytecode"
 arch=('any')
