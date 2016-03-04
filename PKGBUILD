@@ -16,14 +16,15 @@ sha1sums=('2896529b7041e37b4feefd7cf906879dfcd288f8')
 prepare()
 {
   cd "${srcdir}/tribler"
-  # tribler fails if run from /usr/share/tribler
-  sed -i "s|cd |#cd|g" debian/bin/tribler
+  cat > tribler <<EOF
+#!/bin/sh
+python2 -m Tribler.Main.tribler
+EOF
 }
 
 build () {
   cd "${srcdir}/tribler"
   python2 setup.py build
-
 }
 
 package() {
@@ -37,6 +38,6 @@ package() {
   install -m644 Tribler/Main/Build/Ubuntu/tribler.desktop "${pkgdir}"/usr/share/applications
   install -m644 Tribler/Main/Build/Ubuntu/tribler.xpm "${pkgdir}"/usr/share/pixmaps
   install -m644 Tribler/Main/Build/Ubuntu/tribler_big.xpm "${pkgdir}"/usr/share/pixmaps
-  install -m755 debian/bin/tribler "${pkgdir}"/usr/bin
+  install -m755 tribler "${pkgdir}"/usr/bin
 }
 
