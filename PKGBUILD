@@ -3,7 +3,7 @@
 
 pkgname=finja-git
 _pkgname=finja-git
-pkgver=0.r116.ce7e4dd
+pkgver=0.r179.2ad0f16
 pkgrel=1
 pkgdesc="Index and find your stuff"
 arch=('any')
@@ -12,7 +12,10 @@ url='http://github.com/adfinis-sygroup/finja'
 depends=('python'
          'python-six'
          'python-binaryornot'
+         'python-chardet'
+         'sqlite3'
          )
+
 conflicts=()
 provides=('finja' 'finja-git')
 makedepends=()
