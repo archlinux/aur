@@ -2,7 +2,7 @@
 
 pkgname=nodejs-lts-bin
 pkgver=4.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Evented I/O for V8 javascript'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://nodejs.org/'
@@ -29,13 +29,17 @@ build() {
                     ;;
     esac
 
-    # Downloading the right archive
-    curl https://nodejs.org/dist/v$pkgver/node-v$pkgver-linux-$suffix.tar.gz > node.tar.gz
+    msg "Downloading from https://nodejs.org/dist/v$pkgver/node-v$pkgver-linux-$suffix.tar.xz"
 
-    tar -xf node.tar.gz
+    # Downloading the right archive
+    curl https://nodejs.org/dist/v$pkgver/node-v$pkgver-linux-$suffix.tar.xz > node.tar.xz
+
+    tar -xf node.tar.xz
+    mv node-v$pkgver-linux-$suffix node
+    cd node
 
     msg 'Fixing for python2 name'
-    find -type f -exec sed \
+    find lib/ include/ -type f -exec sed \
         -e 's_^#!/usr/bin/env python$_&2_' \
         -e 's_^\(#!/usr/bin/python2\).[45]$_\1_' \
         -e 's_^#!/usr/bin/python$_&2_' \
@@ -45,7 +49,7 @@ build() {
 }
 
 package() {
-    cd node-v$pkgver-linux-*
+    cd node
     install -d $pkgdir/usr/share/licenses/nodejs-lts-bin
     cp -R bin/ include/ lib/ share/ $pkgdir/usr/
     cp LICENSE $pkgdir/usr/share/licenses/nodejs-lts-bin
