@@ -3,7 +3,7 @@
 
 pkgbase=grails
 pkgname=('grails' 'grails-docs')
-pkgver=3.1.1
+pkgver=3.1.3
 pkgrel=1
 pkgdesc='Groovy on rails, web framework'
 url='http://grails.org/'
@@ -18,15 +18,13 @@ options=('!emptydirs')
 noextract=("${pkgname[1]}-${pkgver}.zip")
 source=(${pkgname[0]}-${pkgver}.zip::https://github.com/grails/grails-core/releases/download/v${pkgver}/grails-${pkgver}.zip
         ${pkgname[1]}-${pkgver}.zip::https://github.com/grails/grails-doc/releases/download/v${pkgver}/grails-docs-${pkgver}.zip)
-sha512sums=('cb2f46af30842b4edcdf3b604afc0c90bfea0462381fbe6e106434956effc4eaa93963cc7e10bb624712c8ae3968ecd723223d3ebbb7826bd7e72fde6076eade'
-            'e72f686c54ee58d222e7e89660c92531e75e89cd2ca6d29ca450e78ef7d9f5c0fb8ffcb1aa441128c681dfdc786272f755aea7efb9fc7df15f93a0370a49fdad')
+sha512sums=('4b3f96863e8af34e088e2aa99877fa55188d6a361e325c0f88cf5b0b304289bb8d055969de48efd399c553fca85585b55019f67789c7d7aa57a05439d10ae5b7'
+            'd3397efa00f40158ecb58be04e3c3671f8448caa5433c9c2648754eba63bd4f158884941fc15236ad12b8fdbf6efdbb5b414cc63acc16464a3f17ba409704a1e')
 
 prepare() {
   cd ${pkgbase}-${pkgver}
-
   # profile.d script
   echo 'export GRAILS_HOME=/usr/share/grails' > "${srcdir}/${pkgbase}.profile"
-
   # set APP_HOME
   setconf bin/grails APP_HOME /usr/share/grails
 }
@@ -39,7 +37,7 @@ package_grails() {
   install -d "${pkgdir}/usr/share/pixmaps"
   cp -r . "${pkgdir}/usr/share/${pkgname}"
   install -Dm 755 bin/grails "${pkgdir}/usr/bin/grails"
-  cp media/icons/*.png "${pkgdir}/usr/share/pixmaps/"
+  cp media/icons/*.png "${pkgdir}/usr/share/pixmaps"
   install -Dm 755 "${srcdir}/${pkgbase}.profile" "${pkgdir}/etc/profile.d/${pkgname}.sh"
 
   # clean up
