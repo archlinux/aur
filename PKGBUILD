@@ -1,15 +1,15 @@
 # Maintainer: Chris Höppner <me@mkaito.com>
 pkgname=armok-vision
-pkgver=0.7.2
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A 3d realtime visualizer for Dwarf Fortress"
 arch=('i686' 'x86_64')
 url="https://github.com/JapaMala/armok-vision"
 license=('MIT')
 depends=('dfhack=0.40.24_r5-1' 'dwarffortress=0.40.24-5')
-source=("$pkgname-$pkgver.zip::https://github.com/JapaMala/armok-vision/releases/download/v0.7.2/Armok.Vision.0.7.2.Linux.zip"
+source=("$pkgname-$pkgver.zip::https://github.com/JapaMala/armok-vision/releases/download/v0.8.0/Armok.Vision.0.8.0.Linux.zip"
        "armok-vision")
-md5sums=('c31d7bf9ce52546bcb380b67e061ecbc'
+md5sums=('433c181ae0b897918cd9996a479f8df1'
          '76daf6967fcc4cc51e04ef14ab665200')
 
 package() {
