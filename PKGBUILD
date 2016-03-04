@@ -2,7 +2,7 @@
 
 _gitname=wget
 pkgname=${_gitname}2-git
-pkgver=0.0.r641.gaf65860
+pkgver=0.0.r644.g650f59c
 pkgrel=1
 pkgdesc="Updated version of popular Wget tool"
 arch=('i686' 'x86_64')
