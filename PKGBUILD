@@ -2,6 +2,7 @@
 
 pkgbase=(virtualbox-think-modules)
 pkgname=(virtualbox-think-host-modules virtualbox-think-guest-modules)
+pkgdesc='Host and guest  kernel modules for VirtualBox running under linux-think'
 pkgver=5.0.14
 pkgrel=4
 arch=('i686' 'x86_64')
@@ -32,7 +33,7 @@ build() {
 package_virtualbox-think-host-modules() {
 	#_Hpkgdesc='Host kernel modules for VirtualBox running under linux-think.'
 	#pkgdesc="${_Hpkgdesc}"
-	pkgdesc='Host kernel modules for VirtualBox running under linux-think.'
+	pkgdesc='Host kernel modules for VirtualBox running under linux-think'
 	provides=("virtualbox-host-modules")
 	depends=('linux-think>=4.4' 'linux-think<4.5')
 	conflicts=('virtualbox-ck-modules' 'virtualbox-ck-host-modules-atom' 'virtualbox-ck-host-modules-barcelona' 'virtualbox-ck-host-modules-bulldozer' 'virtualbox-ck-host-modules-corex' 'virtualbox-ck-host-modules-core2' 'virtualbox-ck-host-modules-haswell' 'virtualbox-ck-host-modules-broadwell' 'virtualbox-ck-host-modules-ivybridge' 'virtualbox-ck-host-modules-kx' 'virtualbox-ck-host-modules-k10' 'virtualbox-ck-host-modules-nehalem' 'virtualbox-ck-host-modules-p4' 'virtualbox-ck-host-modules-piledriver' 'virtualbox-ck-host-modules-pentm' 'virtualbox-ck-host-modules-sandybridge' 'virtualbox-ck-host-modules-silvermont')
@@ -47,7 +48,7 @@ package_virtualbox-think-host-modules() {
 package_virtualbox-think-guest-modules() {
 	#_Gpkgdesc='Guest kernel modules for VirtualBox running under linux-think.'
 	#pkgdesc="${_Gpkgdesc}"
-	pkgdesc='Guest kernel modules for VirtualBox running under linux-think.'
+	pkgdesc='Guest kernel modules for VirtualBox running under linux-think'
 	license=('GPL')
 	provides=("virtualbox-guest-modules")
 	depends=('linux-think>=4.4' 'linux-think<4.5')
