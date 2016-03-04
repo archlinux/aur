@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Lau <arch _at_ slau _dot_ info>
 pkgname="liblogcpp"
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple, intuitive and highly customizable LGPL library for logging with C++."
 arch=('x86_64' 'i386' 'armv6h' 'armv7h')
 url="https://github.com/nullptrT/liblogcpp"
@@ -21,7 +21,7 @@ prepare() {
 build() {
 	cd "$srcdir/build"
 	
-	cmake -DCMAKE_INSTALL_PREFIX:PATH="$pkgdir/usr" \
+	cmake -DCMAKE_INSTALL_PREFIX:PATH="/usr" \
 		-DLOGCPP_INSTALL_LIBS=ON \
 		-DLOGCPP_ENABLE_QT_SUPPORT=ON \
 		"../liblogcpp-$pkgver"
@@ -31,6 +31,6 @@ build() {
 	
 package() {
 	cd "$srcdir/build"
-	make install
+	make DESTDIR="${pkgdir}" install
 }
 
