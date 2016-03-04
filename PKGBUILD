@@ -2,7 +2,7 @@
 # Baseado no PKGBUILD feito por Lara Maia <lara@craft.net.br>
  
 pkgname=irpf
-pkgver=2016.0.0
+pkgver=2016.1.1
 pkgrel=1
 license=('custom')
  
@@ -11,7 +11,7 @@ pkgdesc='Programa Oficial da Receita para elaboração do IRPF'
 url='http://www.receita.fazenda.gov.br'
  
 
-source=(http://downloadirpf.receita.fazenda.gov.br/irpf/2016/IRPF2016-1.0.zip
+source=(http://downloadirpf.receita.fazenda.gov.br/irpf/2016/IRPF2016-1.1.zip
 
         Copyright
         $pkgname.png
@@ -20,7 +20,7 @@ source=(http://downloadirpf.receita.fazenda.gov.br/irpf/2016/IRPF2016-1.0.zip
 		$pkgname)
  
 
-md5sums=('cd2f77c0537070d167bd565671800c77'
+md5sums=('3c1af085035e558be73a5c80ffd400bc'
          '56a8372f7b4e1e1e51a6fff6255365d4'
          '43d8c9617118578f03b2c4eeb1c72c57'
          '5c3f364ed6e30e8aac69ad4394deabba'
