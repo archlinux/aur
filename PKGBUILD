@@ -12,7 +12,7 @@ makedepends=('git' 'cmake' 'gcc' 'qt5-base' 'qt5-script' 'qt5-svg' 'qt5-imagefor
 conflicts=('ovito')
 md5sums=('SKIP'
          '62da09e6ad21c387c2fbb894945bc027'
-         '46be7d4aa5302fe476e494929df8f63d'
+         'fd586e8be62a8674d069dc4d1f89f7d9'
          'effe0ad5950f6e18e0bd49677039b27c')
 source=('ovito'::'git+http://git.code.sf.net/p/ovito/git' 
         'arch.patch'

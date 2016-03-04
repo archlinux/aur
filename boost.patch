@@ -641,19 +641,18 @@ index 4dc60f5..a9aefd6 100755
  		.add_property("currentSet", make_function(&DataSetContainer::currentSet, return_value_policy<ovito_object_reference>()), &DataSetContainer::setCurrentSet)
  		.def("fileNew", &DataSetContainer::fileNew)
 diff --git a/src/plugins/pyscript/binding/FileIOBinding.cpp b/src/plugins/pyscript/binding/FileIOBinding.cpp
-index eca8278..fca9131 100644
+index eca8278..e1ad08f 100644
 --- a/src/plugins/pyscript/binding/FileIOBinding.cpp
 +++ b/src/plugins/pyscript/binding/FileIOBinding.cpp
-@@ -65,6 +65,8 @@ BOOST_PYTHON_MODULE(PyScriptFileIO)
+@@ -65,6 +65,7 @@ BOOST_PYTHON_MODULE(PyScriptFileIO)
  	};
  	converter::registry::push_back(convertible_QUrl, construct_QUrl, type_id<QUrl>());
  
 +	boost::python::register_ptr_to_python<OORef<FileImporter>>(); 
-+	boost::python::register_ptr_to_python<OORef<FileImporter>>();
  	ovito_abstract_class<FileImporter, RefTarget>()
  		.add_property("fileFilter", &FileImporter::fileFilter)
  		.add_property("fileFilterDescription", &FileImporter::fileFilterDescription)
-@@ -87,17 +89,20 @@ BOOST_PYTHON_MODULE(PyScriptFileIO)
+@@ -87,17 +88,20 @@ BOOST_PYTHON_MODULE(PyScriptFileIO)
  		.def("urlFromUserInput", &FileManager::urlFromUserInput)
  	;
  
