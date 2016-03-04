@@ -8,7 +8,7 @@
 # The build script generates and updates the pkgver and _kernel* variables.
 #
 pkgname="spl-utils-git"
-pkgver=0.6.5.4_r0_g6e5e068_4.4.1_2
+pkgver=0.6.5.4_r0_g6e5e068_4.4.3_1
 pkgrel=1
 license=('GPL')
 pkgdesc="Solaris Porting Layer kernel module support files."
