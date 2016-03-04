@@ -41,7 +41,6 @@ fi
 
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-replaces=("${pkgname}")
 _packaginguser=$(whoami)
 _libspkgname="${pkgname}-target-libs"
 _mkspec="linux-rpi${_piver}-g++"
