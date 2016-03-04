@@ -1,46 +1,46 @@
-# Maintainer: Bjonnh <bjonnh-arch@bjonnh.net>
+# Contributor: Florian Bruhin <archlinux.org@the-compiler.org>
+# Contributor: Bjonnh <bjonnh-arch@bjonnh.net>
 # Based on the tt-rss PKGBUILD
-# Contributor:  Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
+# Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 # Contributor: Clément Démoulins <clement@archivel.fr>
 # Contributor: David Rosenstrauch <darose@darose.net>
 # Contributor: Erik Mank <erik@braindisorder.org>
 
 pkgname=tt-rss-git
-_gitname=Tiny-Tiny-RSS
-pkgver=1.3.0.r4196.g0c4c0ab
+epoch=1
+pkgver=r7938.9232283
 pkgrel=1
 pkgdesc='Web-based news feed (RSS/Atom) aggregator (Git version)'
-arch=('any')
-url='http://tt-rss.org/redmine/'
-license=('GPL')
-depends=('php')
-makeodepends=('git')
+arch=(any)
+url='http://tt-rss.org/'
+license=(GPL)
+backup=(etc/webapps/tt-rss/config.php)
+depends=(php)
 conflicts=('tt-rss')
-provide=('tt-rss')
-optdepends=('mysql' 'postgresql' 'php-curl')
-install=tt-rss.install
-source=("$_gitname"::'git://github.com/gothfox/Tiny-Tiny-RSS.git'
+provides=('tt-rss')
+optdepends=('mysql'
+            'postgresql'
+            'php-gd: for coloured feed badges')
+makedepends=('git')
+options=('!strip')
+source=('git+https://tt-rss.org/gitlab/fox/tt-rss.git'
         service)
 sha256sums=('SKIP'
-            '8c33ab29cdb2eda25724e738ed04cb472a7fec0a9edca45729f29b17c46e55df')
-options=(!strip)
+            'c9eb3acb18ab15562e3c3b8f1e3092f5699f5281fc40e04400615469aa39f217')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
-  # Use the tag of the last commit
-  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  cd tt-rss
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$srcdir/$_gitname"
-  _instdir="$pkgdir"/usr/share/webapps/$pkgname
+  cd tt-rss
+  _instdir="$pkgdir"/usr/share/webapps/tt-rss
 
   install -d "$_instdir"
   cp -ra * "$_instdir/"
-  rm -rf "$_instdir"/debian
 
-  install -d "$pkgdir"/etc/webapps/tt-rss
-  install -gm640 -g http config.php-dist "$pkgdir"/etc/webapps/tt-rss/config.php-dist
+  install -Dm640 -g http config.php-dist "$pkgdir"/etc/webapps/tt-rss/config.php
   ln -s /etc/webapps/tt-rss/config.php "$_instdir"/config.php
 
   install -d "$pkgdir"/var/lib/tt-rss

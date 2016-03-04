@@ -1,13 +1,12 @@
 [Unit]
 Description=Tiny Tiny RSS feeds update daemon
-After=network.target
-After=mysqld.service
-After=postgresql.service
+After=network.target mysqld.service postgresql.service
 
 [Service]
-ExecStart=/usr/bin/php /usr/share/webapps/tt-rss-git/update.php --daemon
+ExecStart=/usr/bin/php /usr/share/webapps/tt-rss/update.php --daemon
 User=http
-StandardOutput=syslog
+StandardOutput=null
+StandardError=syslog
 
 [Install]
 WantedBy=multi-user.target
