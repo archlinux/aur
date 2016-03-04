@@ -14,7 +14,7 @@ optdepends=('mongodb: as indexer database'
 makedepends=('go')
 install=camlistore.install
 source=(
-  https://github.com/bradfitz/$pkgname/archive/$pkgver.tar.gz
+  https://github.com/camlistore/$pkgname/archive/$pkgver.tar.gz
   camlistore.service
 )
 sha256sums=(
