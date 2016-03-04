@@ -2,7 +2,7 @@
 # Maintainer: pzl <alsoelp at gmail dot com>
 
 pkgname=jlink-software-and-documentation
-pkgver=5.10p
+pkgver=5.10q
 pkgrel=1
 pkgdesc="Segger JLink software & documentation pack for Linux"
 arch=('i686' 'x86_64')
@@ -11,10 +11,8 @@ groups=('jlink')
 depends=('glibc')
 source_x86_64=("JLink_Linux_${pkgver/./}_x86_64.tgz::https://www.segger.com/jlink-software.html?step=1&file=JLinkLinuxTGZ64_${pkgver/./}")
 source_i686=("JLink_Linux_${pkgver/./}_i686.tgz::https://www.segger.com/jlink-software.html?step=1&file=JLinkLinuxTGZ32_${pkgver/./}")
-source=('99-jlink.rules.patch')
-md5sums=('5e76e4b585db917d45b58a5be51b357d')
-md5sums_i686=('fbd705fd8d611cf95014eff8faeebba3')
-md5sums_x86_64=('c6399d64f4afcedca21cb81555c3f8be')
+md5sums_i686=('4450fc249cf8643bf51a542b7dd608da')
+md5sums_x86_64=('a03195784b3ffbdc3965626e031a0224')
 install=$pkgname.install
 url="https://www.segger.com/jlink-software.html"
 conflicts=("j-link-software-and-documentation")
@@ -28,10 +26,6 @@ prepare() {
     else
         mv JLink_Linux_V${pkgver/./}_x86_64 JLink
     fi
-
-    # Remove `BUS!="usb"` from udev rules. BUS isn't valid anymore
-    cd ${srcdir}/JLink
-    patch -uN 99-jlink.rules ../99-jlink.rules.patch
 }
 
 package(){
@@ -64,5 +58,4 @@ package(){
 
     # nrfjprog hardcoded libjlinkarm.so* to be in /opt/SEGGER/JLink (will be fixed in later versions)
     ln -s "/usr/lib/libjlinkarm.so.${pkgver:0:1}" "${pkgdir}/opt/SEGGER/JLink/libjlinkarm.so.${pkgver:0:1}"
-
 }
