@@ -2,9 +2,9 @@
 
 pkgname=mist-git
 _pkgname=mist
-pkgver=0.4.0.r5.g0ac211f
-_pkgver=0-4-0
-pkgrel=2
+pkgver=0.5.1.r0.g75d28b3
+_pkgver=0-5-1
+pkgrel=1
 pkgdesc="Ethereum wallet for Ether accounts, wallets and smart contracts (includes Mist browser)."
 arch=('i686' 'x86_64')
 depends=(
@@ -52,7 +52,7 @@ sha256sums=(
 
 pkgver() {
   cd ${srcdir}/${pkgname}
-  git checkout -q develop
+  git checkout -q wallet
   git pull -q
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
@@ -60,7 +60,7 @@ pkgver() {
 build() {
   msg2 'Building Mist...'
   cd ${srcdir}/${pkgname}
-  git checkout develop
+  git checkout wallet
   git pull
   git submodule update --init
   npm install electron-prebuilt
@@ -71,14 +71,14 @@ build() {
 }
 
 package() {
-  _arch="ia32"
+  _arch="32"
   if [ "${CARCH}" = "x86_64" ]; then
-    _arch="x64"
+    _arch="64"
   fi
 
   msg2 'Installing Mist...'
   install -d "${pkgdir}/usr/share/mist"
-  cp -a "${srcdir}/${pkgname}/dist_wallet/Ethereum-Wallet-linux-${_arch}-${_pkgver}/." "${pkgdir}/usr/share/${_pkgname}"
+  cp -a "${srcdir}/${pkgname}/dist_wallet/Ethereum-Wallet-linux${_arch}-${_pkgver}/." "${pkgdir}/usr/share/${_pkgname}"
   install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/mist"
 
   install -d "${pkgdir}/usr/share/applications"
