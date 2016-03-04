@@ -1,6 +1,6 @@
 pkgname=enpass-bin
 _pkgname=enpass
-pkgver=5.0.4.1
+pkgver=5.0.5
 pkgrel=1
 pkgdesc="A multiplatform password manager"
 arch=('i686' 'x86_64')
@@ -12,13 +12,13 @@ case $CARCH in
     'x86_64')
         _arch='amd64'
         sha256sums=(
-            '1d5646f86f63ed72568f1a3c2651dd8c5f27a35d7b78b07aea206ea216d67e1a'
+            'cd413cb9170fc2d777d30a68103c9758059c4ce00beebd513b0773eadf2f9acc'
         )
         ;;
     'i686')
         _arch='i386'
         sha256sums=(
-            'a154c0c77566e57701fea1d91c8041d492fbdf71213226db9fe74ea1ed9147f4'
+            'b196897e7dcb7f183bdcf82d0a03f2a97746efb6c51798db03a9587f21fec6db'
         )
         ;;
 esac
