@@ -17,18 +17,18 @@ source=("$_gitname::git://git.citadel.org/appl/gitroot/citadel.git#tag=$_gittag"
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/citadel"
+  cd "$srcdir/$_gitname"
   git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/citadel/libcitadel"
+  cd "$srcdir/$_gitname/libcitadel"
   ./bootstrap
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/citadel/libcitadel"
+  cd "$srcdir/$_gitname/libcitadel"
   make DESTDIR="$pkgdir" install
 }
