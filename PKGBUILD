@@ -9,7 +9,7 @@ pkgdesc='C++ library and Python bindings for detecting language from UTF8 text, 
 arch=('i686' 'x86_64')
 url='https://github.com/mikemccand/chromium-compact-language-detector'
 license=('BSD3')
-depends=('cld2-svn' 'python')
+depends=('cld2-git' 'python')
 makedepends=('git')
 provides=("python-${_pkgname}=0.2")
 replaces=('python-cld2-hg')
