@@ -6,7 +6,7 @@
 pkgname=hifi-interface-git
 pkgver=r39957.f21815e
 pkgrel=1
-pkgdesc="High Fidelity is an open, decentralized virtual world using sensors to control avatars and dynamically assigned devices as servers. (git - master)"
+pkgdesc="High Fidelity is an open, decentralized virtual world using sensors to control avatars and dynamically assigned devices as servers (git - master)"
 arch=('i686' 'x86_64')
 url="https://github.com/highfidelity/hifi"
 license=('Apache2')
