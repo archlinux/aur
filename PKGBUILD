@@ -6,13 +6,12 @@
 
 pkgname=crossover
 pkgver=15.0.1
-pkgrel=2
+pkgrel=3
 _pkgdebrel=1
 pkgdesc="Run Windows Programs on Linux"
 arch=('i686' 'x86_64')
 url="http://www.codeweavers.com"
 license=('custom:CrossOver Linux License Grant')
-changelog="CHANGELOG"
 makedepends=('tar')
 install=${pkgname}.install
 replaces=('crossover-games' 'crossover-pro' 'crossover-standard')
@@ -133,9 +132,6 @@ package() {
         -e 's!;;"PrivateLinux64NSPluginDirs" = ""!"PrivateLinux64NSPluginDirs" = "${MOZ_PLUGIN_PATH}"!' \
         -e 's!;;"ProductPackage" = ""!"ProductPackage" = "Converted from .deb to pacman."!' \
         -i ${pkgdir}/opt/cxoffice/etc/cxoffice.conf
-
-    # Changelog for pacman -Qc
-    gzip -dfc ${pkgdir}/opt/cxoffice/doc/changelog.Debian.gz > ${startdir}/CHANGELOG
 
     # place license in correct directory
     install -D -m644 ${pkgdir}/opt/cxoffice/doc/license.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
