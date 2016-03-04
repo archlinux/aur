@@ -1,0 +1,13 @@
+diff --git a/citadel/modules/calendar/serv_calendar.c b/citadel/modules/calendar/serv_calendar.c
+index 1504fcc..7e57b66 100644
+--- a/citadel/modules/calendar/serv_calendar.c
++++ b/citadel/modules/calendar/serv_calendar.c
+@@ -2586,7 +2586,7 @@ CTDL_MODULE_INIT(calendar)
+ 	{
+ 
+ 		/* Tell libical to return errors instead of aborting if it gets bad data */
+-		icalerror_errors_are_fatal = 0;
++		icalerror_set_errors_are_fatal(0);
+ 
+ 		/* Use our own application prefix in tzid's generated from system tzdata */
+ 		icaltimezone_set_tzid_prefix("/citadel.org/");

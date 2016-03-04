@@ -6,7 +6,7 @@ pre_install() {
 ## arg 1:  the new package version
 post_install() {
 	echo "run 'systemctl start citadel'"
-	echo "then run '/usr/local/citadel/setup' to configure citadel"
+	echo "then run '/usr/citadel/setup' to configure citadel"
 }
 
 ## arg 1:  the new package version

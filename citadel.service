@@ -2,7 +2,7 @@
 Description=Citadel/UX Groupware
 
 [Service]
-ExecStart=/usr/local/citadel/citserver -d
+ExecStart=/usr/citadel/citserver -d
 Type=forking
 
 [Install]
