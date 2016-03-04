@@ -25,10 +25,10 @@ _local_qt5_repo="/opt/dev/src/qtproject/qt5"
 _wayland_compositor=true
 
 pkgver=5.6.0
-pkgrel=9
+pkgrel=10
 
 # PKGBUILD
-_piver=2
+_piver=1
 pkgname="qt-sdk-raspberry-pi${_piver}"
 
 if $_static_build; then
@@ -41,7 +41,6 @@ fi
 
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-replaces=("${pkgname}")
 _packaginguser=$(whoami)
 _libspkgname="${pkgname}-target-libs"
 _mkspec="linux-rpi${_piver}-g++"
