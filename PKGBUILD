@@ -1,12 +1,12 @@
 pkgname=osvr-oculus-rift-git
-pkgver=v0.1.r27.g9c3ed24
-pkgrel=2
+pkgver=v0.1.r80.gf69fb4e
+pkgrel=1
 pkgdesc="A plugin for OSVR that provides access to Oculus Rift trackers from OSVR applications."
 arch=(i686 x86_64)
 url="https://github.com/OSVR/OSVR-Oculus-Rift"
 #license=('GPL')
 makedepends=('git' 'cmake' 'osvr-core-git' 'oculus-rift-sdk')
-source=("osvr-oculus-rift::git+https://github.com/OSVR/OSVR-Oculus-Rift.git#branch=no-vrpn-required"
+source=("osvr-oculus-rift::git+https://github.com/OSVR/OSVR-Oculus-Rift.git"
     "Findjsoncpp.cmake")
 
 pkgver() {
@@ -35,9 +35,13 @@ package() {
   cd osvr-oculus-rift-build
   make DESTDIR="$pkgdir/" install
   
-  install -d "$pkgdir/usr/share/osvr/sample-configs/"
-  #mv "$pkgdir/usr/bin/"*"/" "$pkgdir/usr/share/osvr"
-  install "$srcdir/osvr-oculus-rift/com_osvr_OculusRift.json" "$pkgdir/usr/share/osvr/sample-configs/"
+  install -d "$pkgdir/usr/share/osvrcore/sample-configs/"
+  install "$srcdir/osvr-oculus-rift/com_osvr_OculusRift.json" "$pkgdir/usr/share/osvrcore/sample-configs/"
+  cp "$srcdir/osvr-oculus-rift/osvr_server_config.oculusrift.sample.json" "$pkgdir/usr/share/osvrcore/sample-configs/"
+
+  #set absolute path for display config supplied by osvr-core. May or may not be necessary.
+  sed -i "s;displays/Oculus_Rift_DK2.json;/usr/share/osvrcore/displays/Oculus_Rift_DK2.json;g" "$pkgdir"/usr/share/osvrcore/sample-configs/osvr_server_config.oculusrift.sample.json
+
   mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib" || true
 }
 
