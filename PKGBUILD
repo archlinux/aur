@@ -12,7 +12,7 @@ provides=('albert')
 conflicts=('albert-git')
 source=(https://github.com/ManuelSchneid3r/albert/archive/v${pkgver}.tar.gz)
 noextract=()
-md5sums=('5964aa53e826e3419ca0e0ee55c75fe7')
+md5sums=('eb838cdee7a28c6afbc6827d70aaa074')
 
 build() {
   [[ -d "${srcdir}/${pkgname}-${pkgver}/build" ]]\
