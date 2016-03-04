@@ -12,7 +12,7 @@ depends=("php")
 source=('http://www.dbninja.com/download/dbninja.tar.gz'
 		"service")
 md5sums=("81df97958467776051507f82a680efde"
-		"SKIP")
+		"b2d701072978a6c09293b6d78d0ccf1a")
 
 install="install"
 
