@@ -7,7 +7,7 @@
 
 _pkgname=thg
 pkgname=tortoisehg-hg
-pkgver=3.4.1.17796
+pkgver=3.7.1.17982
 pkgrel=1
 pkgdesc="Mercurial GUI front end"
 arch=('i686' 'x86_64')
@@ -28,7 +28,8 @@ md5sums=('SKIP'
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   # Version string will be similar to 2.7.2.14004
-  echo $(hg parents --template {latesttag}).$(hg identify -n)
+  # Use the last tag when latesttag returns a list of tags
+  echo $(hg parents --template '{word(-1,latesttag,":")}').$(hg identify -n)
 }
 
 build() {
