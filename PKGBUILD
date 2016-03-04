@@ -2,7 +2,7 @@
 # Contributor: Reventlov <contact+aur at volcanis dot me>
 
 pkgname=searx-git
-pkgver=v0.8.1.r100.g308613e
+pkgver=v0.8.1.109.gfee556c
 pkgrel=2
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
@@ -32,7 +32,7 @@ package() {
   cd $srcdir/searx
 
   sed -i 's/certifi==2015.11.20.1/certifi==2016.2.28/' requirements.txt
-  sed -i 's/pygments==2.0.2/pygments==2.1.1/' requirements.txt
+  sed -i 's/pygments==2.0.2/pygments==2.1.3/' requirements.txt
   sed -i 's/python-dateutil==2.4.2/python-dateutil==2.5.0/' requirements.txt
 
   python2 setup.py install --root=$pkgdir --optimize=1
