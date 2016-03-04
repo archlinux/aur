@@ -4,8 +4,8 @@ pkgname=linux-xps13
 true && pkgname=(linux-xps13 linux-xps13-headers)
 _kernelname=-xps13
 _srcname=linux-4.4
-pkgver=4.4.1
-pkgrel=2
+pkgver=4.4.3
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/gunzy83/linux-xps13-aur"
 license=('GPL2')
@@ -20,23 +20,17 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux-xps13.preset'
         'change-default-console-loglevel.patch'
         '0001-sdhci-revert.patch'
-        'tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch'
-        '0001-4.4-revert-btrfs.patch'
-        '0001-4.4-revert-xfs.patch'
         'xps13.patch')
 
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            'c0218043e61da3921cd14579ae4a8774a6fdad91667a9fdb851d0a35f62edb48'
+            '4a24c79c40b2cb820ce9f22d44f31edcbde5971432753ab0289772946ed05b7b'
             'SKIP'
             'fbbae1d873900e84d1b7ef00593fbb94fc79f078a34b22ee824bab8b0a92be64'
             '756a168bbc3bb582f0df45b977c32af53658f21d62fe15171c9ac85f52d8852a'
             'bf7ccd0ca928dc47b7e2a87d08d8f19faafbb21ff957e22f1ee78a180961047e'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
-            'ab57037ecee0a425c612babdff47c831378bca0bff063a1308599989a350226d'
-            '51586b733e9f178bebe577258b6057b035eded516ffe8bf8bbb26cb0b26c4958'
-            'ffbfaa192d17bfc7c6293aa9a07efe57f65177051ae3d8033d5e45a7bca2e0ad'
             'f7723d4a2e07da82b3698fb4edb5cf1ca0ccbbc3e789247118fcb7a44d89cdf2')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -56,14 +50,6 @@ prepare() {
   # fixes #47778 sdhci broken on some boards
   # https://bugzilla.kernel.org/show_bug.cgi?id=106541
   patch -Rp1 -i "${srcdir}/0001-sdhci-revert.patch"
-
-  # fixes #47805 kernel panics on platform modules
-  # https://bugzilla.kernel.org/show_bug.cgi?id=110751
-  patch -Np1 -i "${srcdir}/tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch"
-
-  # #47757 fix broken suspend from btrfs and xfs
-  patch -Np1 -i "${srcdir}/0001-4.4-revert-xfs.patch"
-  patch -Np1 -i "${srcdir}/0001-4.4-revert-btrfs.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
