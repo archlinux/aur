@@ -3,7 +3,7 @@
 
 pkgname=searx-git
 pkgver=v0.8.1.109.gfee556c
-pkgrel=2
+pkgrel=3
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
 url="http://searx.me"
