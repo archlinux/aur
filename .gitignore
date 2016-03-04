@@ -1,0 +1,9 @@
+*.bak
+*.pkg.*
+*.src.*
+*.swp
+mini.c/
+pacutils/
+pkg/
+src/
+tap.c/
