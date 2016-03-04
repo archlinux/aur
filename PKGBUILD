@@ -2,21 +2,21 @@
 
 _pkgname=vdirsyncer
 pkgname=python-${_pkgname}-git
-pkgver=0.9.0.r1.g27345ad
+pkgver=0.9.0.r42.g3eee5a5
 pkgrel=1
 pkgdesc="Synchronize CalDAV and CardDAV."
 arch=('i686' 'x86_64')
 url="https://github.com/untitaker/vdirsyncer"
 license=('MIT')
-depends=("python-click>=5.0"
-         "python-click-log" "python-click-threading"
+depends=("python-click>=5.0" "python-click-log" "python-click-threading"
          "python-lxml>=3.1"
-         "python-requests-toolbelt>=0.5.0" "python-atomicwrites"
-         "python-keyring" "python-requests-oauthlib")
-makedepends=("git" "python-sphinx")
-checkdepends=("python-pytest-xprocess" "python-pytest-localserver"
-             "python-werkzeug"
-             "python-hypothesis" "python-pytest-subtesthack")
+         "python-requests>2.9.0" "python-requests-toolbelt>=0.5.0" "python-requests-oauthlib"
+         "python-atomicwrites>=0.1.6"
+         "python-keyring")
+makedepends=("git" "python-setuptools"
+             "python-sphinx" 'python-sphinx_rtd_theme')
+checkdepends=("python-hypothesis>=3"
+              "python-pytest" "python-pytest-localserver" "python-pytest-subtesthack" "python-pytest-xprocess")
 source=("git://github.com/untitaker/${_pkgname}.git")
 sha256sums=('SKIP')
 conflicts=("python-vdirsyncer" "vdirsyncer")
