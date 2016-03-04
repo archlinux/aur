@@ -1,4 +1,5 @@
 # Maintainer: David Parrish <daveparrish@gmail.com>
+# Co-Maintainer: Afri 5chdn <aur@cach.co>
 
 pkgname=geth-git
 pkgver=v0.9.39.r714.gd45f01d
