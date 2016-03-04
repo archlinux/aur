@@ -4,7 +4,7 @@ pkgname=jwm-session-git
 _pkgname=jwm-session
 pkgver=0.2
 _pkgver=r02
-pkgrel=2
+pkgrel=3
 pkgdesc="JWM XSession file, exec file and configuration files."
 arch=('any')
 url="https://github.com/BlackCodec/jwm-session/tree/master"
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('jwm')
 optdepends=('jwmappmenugen-git: perl based menu generator' 
             'menugenerator: python based menu generator (default)')
-source="https://github.com/BlackCodec/jwm-session/archive/$_pkgver.zip"
+source=("https://github.com/BlackCodec/$_pkgname/archive/$_pkgver.zip")
 md5sums=('093cdf356bf601e8cbbe2c0d59cada8d')
 
 package() {
