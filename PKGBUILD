@@ -28,7 +28,7 @@ arch=('any')
 url="https://github.com/varlesh/${_pkgname}"
 license=('CCPL:by-sa')
 options=()
-makedepends=('git')
+makedepends=('git' 'gtk-update-icon-cache' 'xdg-utils')
 depends=()
 conflicts=('papirus')
 source=("${_pkgname}::git+${url}.git")
@@ -42,6 +42,7 @@ pkgver(){
 package_bomi-skin-papirus-git() {
     pkgdesc="Papirus theme for Bomi"
     options=()
+    makedepends=('git')
     depends=('bomi')
     optdepends=()
     conflicts=('bomi-skin-papirus')
@@ -54,6 +55,7 @@ package_bomi-skin-papirus-git() {
 package_libreoffice-papirus-theme-git() {
     pkgdesc="Papirus theme for Libreoffice"
     options=()
+    makedepends=('git')
     depends=()
     optdepends=('libreoffice' 'libreoffice-fresh-rpm')
     conflicts=('libreoffice-style-papirus' 'libreoffice-papirus-theme' 'libreoffice-fresh-rpm-papirus-theme')
@@ -88,6 +90,7 @@ package_papirus-git() {
 package_papirus-aurorae-theme-git() {
     pkgdesc="Papirus decorations for Kwin"
     options=()
+    makedepends=('git')
     depends=('kwin')
     optdepends=()
     conflicts=('papirus-aurorae-theme')
@@ -100,6 +103,7 @@ package_papirus-aurorae-theme-git() {
 package_papirus-color-scheme-git() {
     pkgdesc="Papirus color scheme for KDE"
     options=()
+    makedepends=('git')
     depends=('plasma-desktop')
     optdepends=()
     conflicts=('papirus-color-scheme')
@@ -111,6 +115,7 @@ package_papirus-color-scheme-git() {
 package_papirus-gtk-theme-git() {
     pkgdesc="Papirus GTK theme for KDE"
     options=()
+    makedepends=('git')
     depends=('gtk-engine-murrine' 'gtk2' 'gtk3')
     optdepends=()
     conflicts=('papirus-gtk-theme')
@@ -123,9 +128,9 @@ package_papirus-gtk-theme-git() {
 package_papirus-icon-theme-gtk-git() {
     pkgdesc="Papirus icon theme for GTK"
     options=('!strip')
+    makedepends=('git' 'gtk-update-icon-cache' 'xdg-utils')
     install='papirus-git.install'
     depends=()
-    makedepends=('gtk-update-icon-cache' 'xdg-utils')
     optdepends=()
     conflicts=('papirus-gtk-icon-theme' 'papirus-gtk-icon-theme-git' 'papirus-icon-theme-gtk')
     install -dm755 ${pkgdir}/usr/share/icons
@@ -137,9 +142,9 @@ package_papirus-icon-theme-gtk-git() {
 package_papirus-icon-theme-kde-git() {
     pkgdesc="Papirus icon theme for KDE"
     options=('!strip')
+    makedepends=('git' 'gtk-update-icon-cache' 'xdg-utils')
     install='papirus-git.install'
     depends=()
-    makedepends=('gtk-update-icon-cache' 'xdg-utils')
     optdepends=()
     conflicts=('papirus-icon-theme' 'papirus-icon-theme-kde' 'papirus-icon-theme-git')
     install -dm755 ${pkgdir}/usr/share/{icons,apps/amarok/icons/papirus{,-black-panel,-dark}}
@@ -154,6 +159,7 @@ package_papirus-icon-theme-kde-git() {
 package_papirus-k3b-theme-git() {
     pkgdesc="Papirus theme for K3B"
     options=()
+    makedepends=('git')
     depends=('k3b')
     install -dm755 ${pkgdir}/usr/share/{k3b/pics,apps/k3b/pics}
     cp -r ${srcdir}/${_pkgname}/kde-pack/k3b-themes/* ${pkgdir}/usr/share/k3b/pics/
@@ -165,6 +171,7 @@ package_papirus-k3b-theme-git() {
 package_papirus-kmail-theme-git() {
     pkgdesc="Papirus theme for Kmail"
     options=()
+    makedepends=('git')
     depends=('kmail')
     optdepends=()
     conflicts=('papirus-kmail-theme')
@@ -177,6 +184,7 @@ package_papirus-kmail-theme-git() {
 package_papirus-konsole-colorscheme-git() {
     pkgdesc="Papirus colorscheme for Konsole"
     options=()
+    makedepends=('git')
     depends=('konsole')
     optdepends=()
     conflicts=('papirus-konsole-colorscheme')
@@ -188,6 +196,7 @@ package_papirus-konsole-colorscheme-git() {
 package_papirus-plasma-theme-git() {
     pkgdesc="Papirus plasma theme for KDE"
     options=()
+    makedepends=('git')
     depends=('plasma-desktop')
     optdepends=()
     conflicts=('plasma-theme-papirus')
@@ -201,6 +210,7 @@ package_papirus-plasma-theme-git() {
 package_papirus-qtcurve-theme-git() {
     pkgdesc="Papirus decorations for QtCurve"
     options=()
+    makedepends=('git')
     depends=('qtcurve-gtk2' 'qtcurve-qt4' 'qtcurve-qt5' 'qtcurve-utils' 'lib32-qtcurve-gtk2' 'lib32-qtcurve-qt4' 'lib32-qtcurve-utils')
     optdepends=()
     conflicts=('papirus-qtcurve-theme')
@@ -212,6 +222,7 @@ package_papirus-qtcurve-theme-git() {
 package_papirus-smplayer-theme-git() {
     pkgdesc="Papirus theme for SMPlayer"
     options=()
+    makedepends=('git')
     depends=('smplayer')
     conflicts=('papirus-smplayer-theme')
     install -Dm644 -t "${pkgdir}/usr/share/smplayer/themes/Papirus/"        ${srcdir}/${_pkgname}/players-skins/smplayer-themes/Papirus/*
@@ -223,6 +234,7 @@ package_papirus-smplayer-theme-git() {
 package_papirus-vlc-theme-git() {
     pkgdesc="Papirus theme for VLC Media Player"
     options=()
+    makedepends=('git')
     depends=('vlc')
     conflicts=('papirus-vlc-theme')
     install -Dm644 -t "${pkgdir}/usr/share/vlc/skins2/" ${srcdir}/${_pkgname}/players-skins/vlc-skins/*.vlt
@@ -233,6 +245,7 @@ package_papirus-vlc-theme-git() {
 package_papirus-yakuake-theme-git() {
     pkgdesc="Papirus theme for Yakuake"
     options=()
+    makedepends=('git')
     depends=()
     optdepends=('yakuake' 'yakuake-frameworks-git')
     conflicts=('papirus-yakuake-theme' 'yakuake-skin-papirus' 'yakuake-skin-papirus-dark' 'yakuake-skin-papirus-dark-frameworks' 'yakuake-skin-papirus-frameworks')
