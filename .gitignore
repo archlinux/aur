@@ -1,0 +1,6 @@
+pkg/
+src/
+gtklick-*.tar.gz
+gtklick-*-*.src.tar.gz
+gtklick-*-*.pkg.tar.xz
+.AURINFO
