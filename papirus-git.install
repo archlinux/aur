@@ -1,0 +1,15 @@
+icon-cache-refresh() {
+    for d in papirus papirus-black-panel papirus-dark
+    do
+        xdg-icon-resource forceupdate --theme $d &> /dev/null
+        gtk-update-icon-cache -q -t -f /usr/share/icons/$d
+    done
+}
+
+post_install() {
+    icon-cache-refresh
+}
+
+post_upgrade() {
+    icon-cache-refresh
+}
