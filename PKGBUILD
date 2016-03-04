@@ -1,8 +1,8 @@
 # Maintainer: Patrizio Bekerle <patrizio at bekerle dot com>
 
 pkgname=qownnotes
-pkgver=1.1.3.2
-tag="12834cb4aa3c509caf05c0093af68c2340ace49a"
+pkgver=1.1.3.3
+tag="ded663e88ba4d88d57b7eb25e674499376c30436"
 pkgrel=1
 pkgdesc="Open source notepad and todo list manager with markdown support and ownCloud integration"
 arch=('i686' 'x86_64')
@@ -11,16 +11,22 @@ license=('GPL2')
 groups=('qownnotes')
 depends=('qt5-base' 'qt5-svg' 'qt5-script' 'openssl')
 makedepends=('git' 'qt5-tools')
-source=("git://github.com/pbek/QOwnNotes.git#tag=$tag")
-md5sums=('SKIP')
+source=("git://github.com/pbek/QOwnNotes.git#tag=$tag"
+        "git://github.com/pbek/qmarkdowntextedit.git"
+        "git://github.com/pbek/qt-piwik-tracker.git")
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP')
 
 prepare() {
     cd "${srcdir}/QOwnNotes"
-    git submodule update --init
-    cd src
 
-    echo "#define VERSION \"${pkgver}\"" > version.h
-    echo "#define RELEASE \"AUR\"" > release.h
+    git config submodule.src/editor/libs/qmarkdowntextedit.url "$srcdir/qmarkdowntextedit"
+    git config submodule.src/editor/libs/qt-piwik-tracker.url "$srcdir/qt-piwik-tracker"
+    git submodule update --init
+
+    echo "#define VERSION \"${pkgver}\"" > src/version.h
+    echo "#define RELEASE \"AUR\"" > src/release.h
 }
 
 build() {
