@@ -2,11 +2,11 @@
 # Based on heirloom-mailx PKGBUILD
 
 pkgname=s-nail-git
-pkgver=14.8.5_x1_g40785bc
+pkgver=14.8.6_x12_g778f90c
 pkgrel=1
 pkgdesc="Commandline utility for sending and receiving email"
 arch=('i686' 'x86_64')
-url="http://sdaoden.users.sourceforge.net/code.html#s-nail"
+url="https://www.sdaoden.eu/code.html#s-nail"
 license=('custom:BSD')
 depends=('krb5' 'libidn' 'openssl')
 makedepends=('git')
@@ -14,7 +14,7 @@ optdepends=('smtp-forwarder: alternatives for sending mail')
 provides=('mailx' 'heirloom-mailx')
 conflicts=('mailx' 'heirloom-mailx')
 backup=('etc/mail.rc')
-source=("git+https://gitlab.com/sdaoden/s-nail.git")
+source=("git+https://git.sdaoden.eu/scm/s-nail.git")
 sha1sums=('SKIP')
 
 pkgver() {
@@ -35,7 +35,7 @@ build() {
 
 	make PREFIX=/usr \
 	     SYSCONFDIR=/etc \
-	     SYSCONFRC=/etc/mail.rc \
+	     SYSCONFRC=mail.rc \
 	     LIBEXECDIR=/usr/lib \
 	     MAILSPOOL=/var/spool/mail \
 	     WANT_AUTOCC=0 \
