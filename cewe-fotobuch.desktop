@@ -1,8 +1,10 @@
 [Desktop Entry]
 Type=Application
 Name=CeWe Fotobuch
+Name[de]=CeWe Fotobuch
 Comment=Offline client for cewe.de service
 Exec=cewe-fotobuch
-Icon=cewe-fotobuch
+Icon=hps-16523
 StartupNotify=true
 Categories=Graphics;Photography;
+MimeType=application/x-hps-mcf

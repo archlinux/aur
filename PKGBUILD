@@ -3,7 +3,7 @@
 
 pkgname=cewe-fotobuch
 pkgver=6.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="an offline client for creating photobooks, uploading and ordering them at cewe.de"
 url="http://www.cewe.de/"
 license=("custom:eula")
@@ -14,7 +14,7 @@ source=("http://dls.photoprintit.de/download/Data/16523/hps/setup_Mein_CEWE_FOTO
 "cewe-fotobuch.desktop")
 install=cewe-fotobuch.install
 md5sums=('9197c2551c471da202de3f0652eba324'
-         '481ac82e95881d2878da3973d29095f6')
+         'ebc303204c0aecab97ecd53627f7eb7d')
 
 _KEYACCID=16523
 _CLIENTID=18
@@ -31,9 +31,20 @@ build() {
 #	done
 }
 package() {
-	mkdir -p $pkgdir/usr/{share/$pkgname,bin}
-        cd $srcdir
+	# put icons and mimetype in the right place
+	export XDG_UTILS_INSTALL_MODE=system
+	export XDG_DATA_DIRS="$pkgdir/usr/share:"
+	mkdir -p $pkgdir/usr/{share/$pkgname,bin,share/icons/hicolor,share/mime/packages}
+
+	cd $srcdir
+	# don't install broken desktop file or put it on current user's desktop
+	sed -i 's/createDesktopShortcuts();/#createDesktopShortcuts();/' ./install.pl
+
 	./install.pl --installDir=$pkgdir/usr/share/cewe-fotobuch --workingDir=$srcdir -k -v
+
+	# remove unneeded mime cache files (leave directories)
+	rm $pkgdir/usr/share/mime/* &> /dev/null || true
+
 #	# copy EULA
 #	install -D -m644 $srcdir/EULA.txt $pkgdir/usr/share/$pkgname/EULA.txt || return 1
         # create startup script
