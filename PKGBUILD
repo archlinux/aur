@@ -4,7 +4,7 @@
 pkgname=mist
 pkgver=0.5.0
 _pkgver=0-5-0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ethereum wallet for Ether accounts, wallets and smart contracts (includes Mist browser)."
 arch=('i686' 'x86_64')
 depends=(
@@ -55,10 +55,10 @@ package() {
   msg2 'Installing Mist...'
   install -d "${pkgdir}/usr/share/${pkgname}"
   cp -a "${srcdir}/Ethereum-Wallet-linux${_arch}-${_pkgver}/." "${pkgdir}/usr/share/${pkgname}"
-  cp -a "${srcdir}/icon.png" "${pkgdir}/usr/share/${pkgname}"
+  install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/${pkgname}"
 
   install -d "${pkgdir}/usr/share/applications"
-  cp -a "${srcdir}/mist.desktop" "${pkgdir}/usr/share/applications"
+  install -Dm644 "${srcdir}/mist.desktop" "${pkgdir}/usr/share/applications"
 
   install -d "${pkgdir}/usr/bin"
   ln -s "/usr/share/${pkgname}/Ethereum-Wallet" "${pkgdir}/usr/bin/mist"
