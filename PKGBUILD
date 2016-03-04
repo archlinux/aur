@@ -25,7 +25,7 @@ _local_qt5_repo="/opt/dev/src/qtproject/qt5"
 _wayland_compositor=true
 
 pkgver=5.6.0
-pkgrel=9
+pkgrel=10
 
 # PKGBUILD
 _piver=2
