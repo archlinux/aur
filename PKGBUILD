@@ -6,7 +6,7 @@ arch=('i686' 'x86_64')
 url="https://developers.yubico.com/yubikey-piv-manager/"
 license=('GPL')
 depends=('python2' 'yubico-piv-tool>=1.1.0' 'python2-pyside' 'python2-crypto')
-source="https://developers.yubico.com/yubikey-piv-manager/Releases/yubikey-piv-manager-1.1.1.tar.gz"
+source=("https://developers.yubico.com/yubikey-piv-manager/Releases/yubikey-piv-manager-1.1.1.tar.gz")
 md5sums=('922c1ec7ff7702f24d1c63f0e8d1f9a3')
 
 package() {
