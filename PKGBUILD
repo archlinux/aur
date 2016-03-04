@@ -4,9 +4,10 @@
 # Contributor: spooky <spookyh+arch@gmail.com>
 # Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 # Contributor: Florent Peterschmitt <florent@peterschmitt.fr>
+# Contributor: Christian Schwarz <me et cschwarz punkt com>
 
 pkgname=apt-cacher-ng
-pkgver=0.8.9
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A caching proxy specialized for package files."
 url="http://www.unix-ag.uni-kl.de/~bloch/acng/"
@@ -16,12 +17,15 @@ depends=('zlib' 'bzip2' 'fuse' 'xz' 'openssl')
 makedepends=('cmake')
 source=("http://ftp.debian.org/debian/pool/main/a/apt-cacher-ng/apt-cacher-ng_${pkgver}.orig.tar.xz"
         'acng.conf.patch'
-        'apt-cacher-ng.service.patch')
+        'apt-cacher-ng.service.patch'
+        'apt-cacher-ng.tmpfile'
+)
 
 backup=('etc/apt-cacher-ng/acng.conf')
-md5sums=('bfc8034c7b372e680473523ae2be8dee'
+md5sums=('ad1bdb0df13023fd34c88888ae4c45c6'
          '180e14417a70642a53c77bcb6a7b7292'
-         '9645bdcd30a6b0ddc956c2a48c7a27ff')
+         '9645bdcd30a6b0ddc956c2a48c7a27ff'
+         '29979b8064ff52aa24017b42c37e6bfb')
 
 install=apt-cacher-ng.install
 
@@ -56,6 +60,7 @@ package() {
   install -D -m644 ${srcdir}/${pkgname}-${pkgver}/builddir/systemd/apt-cacher-ng.conf ${pkgdir}/usr/lib/tmpfiles.d/apt-cacher-ng.conf
   mkdir -p ${pkgdir}/var/log/apt-cacher-ng
   mkdir -p ${pkgdir}/var/cache/apt-cacher-ng
+
 }
 
 
