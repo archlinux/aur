@@ -1,10 +1,10 @@
 # Maintainer: Vyacheslav Konovalov <vyachkonovalov@gmail.com>
 
 pkgname=robomongo
-pkgver=0.9.0_rc6
-_ref='33e27917eed2711cac4e57686647557948a37318'
+pkgver=0.9.0_rc7
+_ref='2b7a8ca14e80284ce2e9a01015b5dbd90209f533'
 _pkgname=$pkgname-${_ref}
-pkgrel=2
+pkgrel=1
 pkgdesc='Shell-centric cross-platform open source MongoDB management tool'
 arch=('i686' 'x86_64')
 url="http://robomongo.org/"
@@ -12,11 +12,11 @@ license=('GPLv3')
 depends=('qt5-base' 'pcre' 'qjson')
 makedepends=('git' 'scons' 'cmake')
 conflicts=('robomongo-bin')
-source=('git://github.com/paralect/robomongo-shell.git#branch=roboshell-v3.2'
+source=('git+https://github.com/paralect/robomongo-shell.git#branch=roboshell-v3.2'
         "https://github.com/paralect/robomongo/archive/${_ref}.tar.gz"
         'robomongo.desktop')
 sha256sums=('SKIP'
-            'ed6a2d0380ddb09a5e13b8c2e487019073cda98a4ef5d8b86f932238aa7c017c'
+            '51d282431aa29502632b7b52913e74a6aae3c20d38b9a2e88222897caf6a6ae8'
             'bdd63f5d4bd35dd865a0164f285d19555e4ecafb2d11d01f67bdb86bd730a13d')
 
 build() {
