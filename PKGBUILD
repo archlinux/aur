@@ -2,7 +2,7 @@
 
 _pkgname=papyros-terminal
 pkgname=${_pkgname}-git
-pkgver=0.1.1.r10.gdddab22
+pkgver=0.1.1.r13.g4767e55
 pkgrel=1
 pkgdesc="The terminal app for Papyros"
 arch=("i686" "x86_64")
