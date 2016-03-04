@@ -1,7 +1,7 @@
-# Maintainer: crystaly <crystaly@posteo.de>
+# Maintainer: crystaly <crystaly [ at ] posteo [ dot ] de>
 pkgname=spotify-connect-web
 pkgver=r57.ef8430d
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Web client for accessing Spotify connect api (Raspberry Pi 2)"
 arch=('armv7h')
 url="https://github.com/chukysoria/spotify-connect-web"
@@ -23,7 +23,7 @@ source=('git+https://github.com/chukysoria/spotify-connect-web#branch=master'
 noextract=()
 sha256sums=('SKIP'
             '05a1d441fee75bae6d6b8c94538389e232bea79133cda673e780ca3b97e6a95d'
-            '44f94e2e9cfc2fad0a1e3318a222d0e461af3d2c70579ca95491593de5a08b9b'
+            '94fd0aea7fd436764d68edb1c6089e805a83f47296a9f903e9640fa0529a2d04'
             '876ca4593670c1ca9b968e93413b90f51b4d10c325a7dbb313052037e6a9888c'
             '5cf33136d33b756e9ed55f92d579d4056df3338b58977d058e29b6c63865fba6')
 
