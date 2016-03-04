@@ -9,15 +9,16 @@
 
 pkgname=popcorntime
 pkgver=0.3.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=('i686' 'x86_64')
 url="http://popcorntime.sh/"
 license=('GPL3')
 makedepends=(
+	'npm'
 	'bower'
 	'nodejs-grunt-cli'
-	'npm'
+	'gulp'
 )
 depends=(
 	'alsa-lib'
@@ -32,21 +33,19 @@ optdepends=('net-tools: vpn.ht client')
 options=('!strip')
 install="popcorntime.install"
 # Needed variables for sources downloads
-_commit_hash="7d66143b05813b6541be37a767be4e06f323249f"
+_commit_hash="39a1eecc324acb375cc440897f58c3cc7ddeae91"
 _pkgname="popcorn-desktop"
 source=(
-	"${_pkgname}_${pkgver}.zip::https://github.com/popcorn-official/popcorn-desktop/archive/${_commit_hash}.zip"
+	"${_pkgname}_${pkgver}.tar.gz::https://github.com/popcorn-official/popcorn-desktop/archive/${_commit_hash}.tar.gz"
 	"popcorntime.desktop"
 )
-sha256sums=('2e8eb0882fad29e1b8c0175eee9af4f84bc644c5df143e030ef3a0843b5abf7f'
+sha256sums=('c6d6970dba10597eceb65c87393a54685220901de7d306f22b209761b8d92681'
             '4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334')
 
 # Useful variables for builds
+[ "$CARCH" = "i686" ]   && _platform=linux32
+[ "$CARCH" = "x86_64" ] && _platform=linux64
 _srcdir="${_pkgname}-${_commit_hash}"
-_platform=linux64
-if [ "$CARCH" = 'i686' ]; then
-  _platform=linux32
-fi
 _bpath="${_srcdir}/build/Popcorn-Time/${_platform}"
 
 # Building the package
