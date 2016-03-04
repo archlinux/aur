@@ -2,7 +2,7 @@
 # Contributor: Gimmeapill <gimmeapill at gmail dot com>
 _pkgbasename=sequencer64
 pkgname=${_pkgbasename}-git
-pkgver=0.9.9.16.r0.ge5884ae
+pkgver=0.9.9.18.r4.g6dd88af
 pkgrel=1
 pkgdesc="A live-looping MIDI sequencer"
 arch=('i686' 'x86_64')
@@ -34,7 +34,7 @@ package() {
 
     make DESTDIR="${pkgdir}" install
 
-    install -v -D -m 0644 "debian/${_pkgbasename%64}24.xpm" "${pkgdir}/usr/share/pixmaps/${_pkgbasename}.xpm"
+    install -v -D -m 0644 "debian/${_pkgbasename}.xpm" "${pkgdir}/usr/share/pixmaps/${_pkgbasename}.xpm"
     install -v -D -m 0644 "debian/${_pkgbasename}.desktop" "${pkgdir}/usr/share/applications/${_pkgbasename}.desktop"
 }
 
