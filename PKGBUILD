@@ -2,7 +2,7 @@
 
 pkgname=vagrant-substrate-git
 _pkgname=vagrant-installers
-pkgver=524.64c5261
+pkgver=526.6bb2e80
 pkgrel=1
 pkgdesc="Substrate layer for Vagrant"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://vagrantup.com"
 license=('MIT')
 provides=('vagrant-substrate')
 conflicts=('vagrant-substrate')
-options=('!emptydirs')
+options=('!emptydirs' '!makeflags')
 makedepends=('git' 'puppet' 'chrpath' 'wget')
 depends=('lzo')
 source=(git://github.com/mitchellh/$_pkgname.git
@@ -34,6 +34,10 @@ prepare() {
   # Use $srcdir for the working directory
   sed -i "s:/vagrant-substrate:$srcdir/$_pkgname/vagrant-substrate:" \
     hiera/common.yaml
+
+  # Use latest openssl
+  sed -i 's/openssl-1.0.2e.tar.gz/openssl-1.0.2g.tar.gz/' \
+    modules/openssl/manifests/init.pp
 
   # Don't create a zip of the substrate
   sed -i '48,50d' modules/vagrant_substrate/manifests/init.pp
