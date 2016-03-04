@@ -12,7 +12,7 @@
 # update and just generally don't seem to care much.
 pkgname=synergy
 pkgver=1.7.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="http://synergy-foss.org"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ optdepends=(
   'qt5-base: gui support'
   'openssl: encryption support'
 )
-source=(synergy-${pkgver}.tar.gz::https://github.com/synergy/synergy/archive/v${pkgver}-stable.tar.gz
+source=(synergy-${pkgver}.tar.gz::https://github.com/symless/synergy/archive/v${pkgver}-stable.tar.gz
         synergys_at.socket
         synergys_at.service
         fix-incompetence.patch
