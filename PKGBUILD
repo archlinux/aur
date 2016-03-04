@@ -3,7 +3,7 @@
 
 pkgname=sphinxbase
 pkgver=5prealpha
-pkgrel=3
+pkgrel=4
 pkgdesc='Common library for sphinx speech recognition.'
 url='http://cmusphinx.sourceforge.net/'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('bison' 'swig')
 depends=('lapack' 'libpulse' 'libsamplerate') #not sure if libsamplerate is needed
 source=("http://downloads.sourceforge.net/project/cmusphinx/${pkgname}/${pkgver}/$pkgname-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/cmusphinx/sphinxbase/master/LICENSE")
-md5sums=('a6e1e258d1124f59fa8c8a53fc9313f5'
+md5sums=('ea27ea80bc14b96ad0a55fd5c94025d5'
          '469fd92fa8cd1d4ca7ee0fe7435af689')
 options=('!libtool')
 
