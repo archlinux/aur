@@ -1,27 +1,26 @@
 # Maintainer: Dmitry Kharitonov <darksab0r@gmail.com>
 # Contributor: Enrico Bacis <enrico.bacis@gmail.com>
 pkgname=edx-downloader-git
-pkgver=r558.053fbc0
-pkgrel=3
+pkgname_git=edx-dl
+pkgver=r567.64ecd9a
+pkgrel=1
 pkgdesc='A simple tool to download video lectures from edx.org.'
 arch=('any')
-url='https://github.com/shk3/edx-downloader'
+url='https://github.com/coursera-dl/edx-dl'
 license=('LGPL3')
 makedepends=('git' 'pandoc')
 depends=('python' 'python-beautifulsoup4' 'youtube-dl' 'python-six' 'python-html5lib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
-source=(req-html5lib.patch)
-sha256sums=('bf4c762d46fe9e7a15402dbba9f0ab617d19f2349b6c801f49f77167fa23414e')
-
-# it downloads 20MB of useless pack files
-#source=("${pkgname%-git}::git://github.com/shk3/edx-downloader.git")
-#md5sums=('SKIP')
+source=('edx-dl::git+https://github.com/coursera-dl/edx-dl.git#branch=master'
+        'req-html5lib.patch')
+sha256sums=('SKIP'
+            'bf4c762d46fe9e7a15402dbba9f0ab617d19f2349b6c801f49f77167fa23414e')
 
 pkgver() {
   msg "Downloading git repository..."
-  git clone https://github.com/shk3/edx-downloader.git "$srcdir/${pkgname%-git}"
+  git clone https://github.com/coursera-dl/edx-dl.git "$srcdir/${pkgname%-git}"
 
   cd "$srcdir/${pkgname%-git}"
   ( set -o pipefail
@@ -31,12 +30,12 @@ pkgver() {
 }
 
 prepare() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${pkgname_git%-git}"
   patch -p0 -i ../req-html5lib.patch
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${pkgname_git%-git}"
   #install -D -m 755 edx-dl.py "${pkgdir}/usr/bin/edx-downloader"
   pandoc --from=markdown --to=rst --output=README.rst README.md
   python setup.py install --root="$pkgdir/" --optimize=1
