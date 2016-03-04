@@ -3,8 +3,8 @@
 # Contributor: 網軍總司令
 
 pkgname=librime
-pkgver=1.2.20151217
-_commit=d4015e5ba806e41a67c1b59628eeb63cf3531904
+pkgver=1.2.20160226
+_commit=df4192cc0980b21bc45f4eb142ba24cfa78a50e0
 pkgrel=1
 pkgdesc="Rime input method engine"
 arch=('i686' 'x86_64')
