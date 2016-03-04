@@ -3,7 +3,7 @@
 _pkgbasename=distrho-lv2
 pkgname=${_pkgbasename}-git
 pkgver=r336.7bcbc9b
-pkgrel=3
+pkgrel=4
 pkgdesc="Distrho LV2 Audio Plugins, using the JUCE Toolkit"
 arch=('i686' 'x86_64')
 url="http://distrho.sourceforge.net/"
