@@ -2,7 +2,7 @@
 # Updated by Manuel Conzelmann, changed to non-branded software
 
 pkgname=cewe-fotobuch
-pkgver=6.1.2
+pkgver=6.1.3
 pkgrel=1
 pkgdesc="an offline client for creating photobooks, uploading and ordering them at cewe.de"
 url="http://www.cewe.de/"
@@ -13,7 +13,7 @@ arch=('i686' 'x86_64')
 source=("http://dls.photoprintit.de/download/Data/16523/hps/setup_Mein_CEWE_FOTOBUCH.tgz" 
 "cewe-fotobuch.desktop")
 install=cewe-fotobuch.install
-md5sums=('2f1fef23268249ea1744a6265571a756'
+md5sums=('9197c2551c471da202de3f0652eba324'
          '481ac82e95881d2878da3973d29095f6')
 
 _KEYACCID=16523
