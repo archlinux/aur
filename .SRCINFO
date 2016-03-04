@@ -46,18 +46,18 @@ pkgbase = bin32-jdk-devel
 	backup = etc/java32-jdk9/psfont.properties.ja
 	backup = etc/java32-jdk9/psfontj2d.properties
 	backup = etc/java32-jdk9/sound.properties
+	source = http://www.java.net/download/java/jdk9/archive/108/binaries/jdk-9-ea+108_linux-x86_bin.tar.gz
 	source = jconsole32-jdk9.desktop
 	source = jmc32-jdk9.desktop
 	source = jvisualvm32-jdk9.desktop
 	source = policytool32-jdk9.desktop
 	source = OTN-Early-Adopter-License-Terms.txt
+	md5sums = 0faa753d7cfaf55be0a083a118a384c0
 	md5sums = cae82f6fd99d9b5e60dca0e48f71cc3f
 	md5sums = 766d4781f1610fbd2e5797709c373d2f
 	md5sums = bf32df4a5c6a82dceb0249cb815efe18
 	md5sums = 05c7f59cdcec283bcccc63d1fdc40b72
 	md5sums = f09947a67691a2d78d20a3885889981c
-	source_x86_64 = http://www.java.net/download/java/jdk9/archive/108/binaries/jdk-9-ea+108_linux-x86_bin.tar.gz
-	md5sums_x86_64 = 0faa753d7cfaf55be0a083a118a384c0
 
 pkgname = bin32-jdk-devel
 
