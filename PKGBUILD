@@ -46,18 +46,18 @@ backup=("etc/java32-$_jname/i386/jvm.cfg"
         "etc/java32-$_jname/sound.properties")
 options=('!strip') # JDK debug-symbols
 install=$pkgname.install
-source=("http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
+source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.tar.gz"
+        "http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
         "jconsole32-$_jname.desktop"
         "jmc32-$_jname.desktop"
         "jvisualvm32-$_jname.desktop"
         "policytool32-$_jname.desktop")
-source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.tar.gz")
-md5sums=('b3c7031bc65c28c2340302065e7d00d3'
+md5sums=('5e73453a8b6fda591d99820eae293594'
+         'b3c7031bc65c28c2340302065e7d00d3'
          '30d35416b403c621fb02d0dc0b115c05'
          '9dfed511010a54eb377b692638d17585'
          '915f23fd70bb5a6bbfbd7160a35ab035'
          '65d3a4147634b7cf0923caafed7edda4')
-md5sums_x86_64=('5e73453a8b6fda591d99820eae293594')
 
 package() {
     cd ${_pkgname}1.${_major}.0_${_minor}
