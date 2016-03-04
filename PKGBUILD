@@ -43,12 +43,12 @@ backup=("etc/java32-$_jname/i386/jvm.cfg"
         "etc/java32-$_jname/psfontj2d.properties"
         "etc/java32-$_jname/sound.properties")
 install=$pkgname.install
-source=("policytool32-$_jname.desktop"
+source=("http://www.java.net/download/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}-ea+${_build}_linux-x86_bin.tar.gz"
+        "policytool32-$_jname.desktop"
         'OTN-Early-Adopter-License-Terms.txt')
-source_x86_64=("http://www.java.net/download/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}-ea+${_build}_linux-x86_bin.tar.gz")
-md5sums=('643277e142823bf695b0a6327d3ef963'
+md5sums=('c74d9793a1bdada05a5eb59d694c8049'
+         '643277e142823bf695b0a6327d3ef963'
          'f09947a67691a2d78d20a3885889981c')
-md5sums_x86_64=('c74d9793a1bdada05a5eb59d694c8049')
 
 package() {
     cd ${_pkgname}1.${_major}.0
