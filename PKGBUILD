@@ -2,12 +2,13 @@
 
 pkgname=flowblade
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="a multitrack non-linear video editor for Linux"
 arch=('any')
 url="https://github.com/jliljebl/flowblade"
 license=('GPL')
 depends=( 'ffmpeg' 'pygtk' 'mlt-python-bindings' 'ladspa' 'sox' 'frei0r-plugins' 'python2-dbus' 'python2-gnomevfs' 'python2-gobject' 'python2-numpy' 'python2-imaging')
+optdepends=('gmic: for advanced image manipulation functions')
 conflicts=('flowblade-hg' 'flowblade-git')
 provides=('flowblade')
 
