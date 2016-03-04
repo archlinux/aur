@@ -34,4 +34,5 @@ package() {
   cd ..
   install -Dm644 LICENSE.md "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.md
   rm "$pkgdir"/usr/share/howl/bundles/python/misc/examples.py
+  rmdir "$pkgdir"/usr/share/howl/bundles/{tomorrow-themes,monokai-themes,solarized-themes}
 }
