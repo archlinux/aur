@@ -11,9 +11,13 @@ depends=('python' 'zlib' 'tachyon' 'qscintilla-qt5' 'cgal')
 makedepends=('git' 'cmake' 'gcc' 'qt5-base' 'qt5-script' 'qt5-svg' 'qt5-imageformats')
 conflicts=('ovito')
 md5sums=('SKIP'
-         'df2e7eb73038d9ad6abe1a7805513d77')
+         '62da09e6ad21c387c2fbb894945bc027'
+         '46be7d4aa5302fe476e494929df8f63d'
+         'effe0ad5950f6e18e0bd49677039b27c')
 source=('ovito'::'git+http://git.code.sf.net/p/ovito/git' 
-        'arch.patch')
+        'arch.patch'
+        'boost.patch'
+        'ffmpeg.patch')
 _gitname="ovito"
 
 pkgver() {
@@ -24,6 +28,8 @@ pkgver() {
 prepare() {
   cd $srcdir/$_gitname
   patch -p1 -i $srcdir/arch.patch 
+  patch -p1 -i $srcdir/boost.patch 
+  patch -p1 -i $srcdir/ffmpeg.patch 
 }
 
 build() {

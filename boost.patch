@@ -1,0 +1,854 @@
+diff --git a/src/plugins/crystalanalysis/scripting/PythonInterface.cpp b/src/plugins/crystalanalysis/scripting/PythonInterface.cpp
+index 7687f19..83ceaba 100755
+--- a/src/plugins/crystalanalysis/scripting/PythonInterface.cpp
++++ b/src/plugins/crystalanalysis/scripting/PythonInterface.cpp
+@@ -45,6 +45,7 @@ BOOST_PYTHON_MODULE(CrystalAnalysis)
+ {
+ 	docstring_options docoptions(true, false);
+ 
++	boost::python::register_ptr_to_python<OORef<ConstructSurfaceModifier>>();
+ 	ovito_class<ConstructSurfaceModifier, AsynchronousParticleModifier>(
+ 			":Base class: :py:class:`ovito.modifiers.Modifier`\n\n"
+ 			"Constructs the geometric surface of a solid made of point-like particles. The modifier generates "
+@@ -96,6 +97,7 @@ BOOST_PYTHON_MODULE(CrystalAnalysis)
+ 	;
+ 
+ 	{
++		boost::python::register_ptr_to_python<OORef<DislocationAnalysisModifier>>();
+ 		scope s = ovito_class<DislocationAnalysisModifier, StructureIdentificationModifier>(
+ 				":Base class: :py:class:`ovito.modifiers.Modifier`\n\n"
+ 				"This analysis modifier extracts all dislocations in a crystal and converts them to continuous line segments. "
+@@ -164,6 +166,7 @@ BOOST_PYTHON_MODULE(CrystalAnalysis)
+ 		;
+ 	}
+ 
++	boost::python::register_ptr_to_python<OORef<ElasticStrainModifier>>();
+ 	ovito_class<ElasticStrainModifier, StructureIdentificationModifier>(
+ 			":Base class: :py:class:`ovito.modifiers.Modifier`\n\n"
+ 			"This modifier computes the atomic-level elastic strain and deformation gradient tensors in crystalline systems. "
+@@ -224,6 +227,7 @@ BOOST_PYTHON_MODULE(CrystalAnalysis)
+ 				":Default: sqrt(8/3)\n")
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<SmoothDislocationsModifier>>();
+ 	ovito_class<SmoothDislocationsModifier, Modifier>()
+ 		.add_property("smoothingEnabled", &SmoothDislocationsModifier::smoothingEnabled, &SmoothDislocationsModifier::setSmoothingEnabled)
+ 		.add_property("smoothingLevel", &SmoothDislocationsModifier::smoothingLevel, &SmoothDislocationsModifier::setSmoothingLevel)
+@@ -231,17 +235,21 @@ BOOST_PYTHON_MODULE(CrystalAnalysis)
+ 		.add_property("linePointInterval", &SmoothDislocationsModifier::linePointInterval, &SmoothDislocationsModifier::setLinePointInterval)
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<SmoothSurfaceModifier>>();
+ 	ovito_class<SmoothSurfaceModifier, Modifier>()
+ 		.add_property("smoothingLevel", &SmoothSurfaceModifier::smoothingLevel, &SmoothSurfaceModifier::setSmoothingLevel)
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<CAImporter>>();
+ 	ovito_class<CAImporter, FileSourceImporter>()
+ 		.add_property("loadParticles", &CAImporter::loadParticles, &CAImporter::setLoadParticles)
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<CAExporter>>();
+ 	ovito_class<CAExporter, ParticleExporter>()
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<DislocationDisplay>>();
+ 	ovito_class<DislocationDisplay, DisplayObject>(
+ 			":Base class: :py:class:`ovito.vis.Display`\n\n"
+ 			"Controls the visual appearance of dislocation lines extracted by a :py:class:`~ovito.modifier.DislocationAnalysisModifier`. "
+@@ -275,6 +283,7 @@ BOOST_PYTHON_MODULE(CrystalAnalysis)
+ 				":Default: ``False``\n")
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<DislocationNetworkObject>>();
+ 	ovito_class<DislocationNetworkObject, DataObject>(
+ 			":Base class: :py:class:`ovito.data.DataObject`\n\n"
+ 			"This data object types stores the network of dislocation lines extracted by a :py:class:`~ovito.modifiers.DislocationAnalysisModifier`."
+diff --git a/src/plugins/mesh/scripting/PythonInterface.cpp b/src/plugins/mesh/scripting/PythonInterface.cpp
+index e125985..3bc9cb1 100755
+--- a/src/plugins/mesh/scripting/PythonInterface.cpp
++++ b/src/plugins/mesh/scripting/PythonInterface.cpp
+@@ -33,6 +33,7 @@ BOOST_PYTHON_MODULE(Mesh)
+ {
+ 	docstring_options docoptions(true, false);
+ 
++	boost::python::register_ptr_to_python<OORef<VTKFileImporter>>();
+ 	ovito_class<VTKFileImporter, FileSourceImporter>()
+ 	;
+ }
+diff --git a/src/plugins/netcdf/PythonInterface.cpp b/src/plugins/netcdf/PythonInterface.cpp
+index ffe25eb..e31fd75 100755
+--- a/src/plugins/netcdf/PythonInterface.cpp
++++ b/src/plugins/netcdf/PythonInterface.cpp
+@@ -32,6 +32,7 @@ BOOST_PYTHON_MODULE(NetCDFPlugin)
+ {
+ 	docstring_options docoptions(true, false);
+ 
++	boost::python::register_ptr_to_python<OORef<NetCDFImporter>>();
+ 	ovito_class<NetCDFImporter, ParticleImporter>()
+ 		.add_property("customColumnMapping", make_function(&NetCDFImporter::customColumnMapping, return_value_policy<copy_const_reference>()), &NetCDFImporter::setCustomColumnMapping)
+ 		.add_property("useCustomColumnMapping", &NetCDFImporter::useCustomColumnMapping, &NetCDFImporter::setUseCustomColumnMapping)
+diff --git a/src/plugins/particles/scripting/ExporterBinding.cpp b/src/plugins/particles/scripting/ExporterBinding.cpp
+index aaa72fe..a2426a6 100755
+--- a/src/plugins/particles/scripting/ExporterBinding.cpp
++++ b/src/plugins/particles/scripting/ExporterBinding.cpp
+@@ -49,6 +49,7 @@ BOOST_PYTHON_MODULE(ParticlesExporter)
+ 	;
+ 	python_to_container_conversion<OutputColumnMapping>();
+ 
++	boost::python::register_ptr_to_python<OORef<ParticleExporter>>();
+ 	ovito_abstract_class<ParticleExporter, FileExporter>()
+ 		.add_property("outputFilename", make_function(&ParticleExporter::outputFilename, return_value_policy<copy_const_reference>()), &ParticleExporter::setOutputFilename)
+ 		.add_property("exportAnimation", &ParticleExporter::exportAnimation, &ParticleExporter::setExportAnimation)
+@@ -60,23 +61,28 @@ BOOST_PYTHON_MODULE(ParticlesExporter)
+ 		.add_property("everyNthFrame", &ParticleExporter::everyNthFrame, &ParticleExporter::setEveryNthFrame)
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<IMDExporter>>();
+ 	ovito_class<IMDExporter, ParticleExporter>()
+ 		.add_property("columns", make_function(&IMDExporter::columnMapping, return_value_policy<copy_const_reference>()), &IMDExporter::setColumnMapping)
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<POSCARExporter>>();
+ 	ovito_class<POSCARExporter, ParticleExporter>()
+ 	;
+ 
+ 	{
++		boost::python::register_ptr_to_python<OORef<LAMMPSDataExporter>>();
+ 		scope s = ovito_class<LAMMPSDataExporter, ParticleExporter>()
+ 			.add_property("atomStyle", &LAMMPSDataExporter::atomStyle, &LAMMPSDataExporter::setAtomStyle)
+ 		;
+ 	}
+ 
++	boost::python::register_ptr_to_python<OORef<LAMMPSDumpExporter>>();
+ 	ovito_class<LAMMPSDumpExporter, ParticleExporter>()
+ 		.add_property("columns", make_function(&LAMMPSDumpExporter::columnMapping, return_value_policy<copy_const_reference>()), &LAMMPSDumpExporter::setColumnMapping)
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<XYZExporter>>();
+ 	ovito_class<XYZExporter, ParticleExporter>()
+ 		.add_property("columns", make_function(&XYZExporter::columnMapping, return_value_policy<copy_const_reference>()), &XYZExporter::setColumnMapping)
+ 		.add_property("subFormat", &XYZExporter::subFormat, &XYZExporter::setSubFormat)
+@@ -87,6 +93,7 @@ BOOST_PYTHON_MODULE(ParticlesExporter)
+ 		.value("Extended", XYZExporter::ExtendedFormat)
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<FHIAimsExporter>>();
+ 	ovito_class<FHIAimsExporter, ParticleExporter>()
+ 	;
+ }
+diff --git a/src/plugins/particles/scripting/ImporterBinding.cpp b/src/plugins/particles/scripting/ImporterBinding.cpp
+index 58be4a1..4d2a6fb 100755
+--- a/src/plugins/particles/scripting/ImporterBinding.cpp
++++ b/src/plugins/particles/scripting/ImporterBinding.cpp
+@@ -76,20 +76,24 @@ BOOST_PYTHON_MODULE(ParticlesImporter)
+ 	};
+ 	converter::registry::push_back(convertible_InputColumnMapping, construct_InputColumnMapping, boost::python::type_id<InputColumnMapping>());
+ 
++	boost::python::register_ptr_to_python<OORef<ParticleImporter>>();
+ 	ovito_abstract_class<ParticleImporter, FileImporter>()
+ 		.add_property("multiple_frames", &ParticleImporter::isMultiTimestepFile, &ParticleImporter::setMultiTimestepFile)
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<XYZImporter>>();
+ 	ovito_class<XYZImporter, ParticleImporter>()
+ 		.add_property("columns", make_function(&XYZImporter::columnMapping, return_value_policy<copy_const_reference>()), &XYZImporter::setColumnMapping)
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<LAMMPSTextDumpImporter>>();
+ 	ovito_class<LAMMPSTextDumpImporter, ParticleImporter>()
+ 		.add_property("customColumnMapping", make_function(&LAMMPSTextDumpImporter::customColumnMapping, return_value_policy<copy_const_reference>()), &LAMMPSTextDumpImporter::setCustomColumnMapping)
+ 		.add_property("useCustomColumnMapping", &LAMMPSTextDumpImporter::useCustomColumnMapping, &LAMMPSTextDumpImporter::setUseCustomColumnMapping)
+ 	;
+ 
+ 	{
++		boost::python::register_ptr_to_python<OORef<LAMMPSDataImporter>>();
+ 		scope s = ovito_class<LAMMPSDataImporter, ParticleImporter>()
+ 			.add_property("atomStyle", &LAMMPSDataImporter::atomStyle, &LAMMPSDataImporter::setAtomStyle)
+ 		;
+@@ -107,28 +111,36 @@ BOOST_PYTHON_MODULE(ParticlesImporter)
+ 		;
+ 	}
+ 
++	boost::python::register_ptr_to_python<OORef<LAMMPSBinaryDumpImporter>>();
+ 	ovito_class<LAMMPSBinaryDumpImporter, ParticleImporter>()
+ 		.add_property("columns", make_function(&LAMMPSBinaryDumpImporter::columnMapping, return_value_policy<copy_const_reference>()), &LAMMPSBinaryDumpImporter::setColumnMapping)
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<CFGImporter>>();
+ 	ovito_class<CFGImporter, ParticleImporter>()
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<IMDImporter>>();
+ 	ovito_class<IMDImporter, ParticleImporter>()
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<ParcasFileImporter>>();
+ 	ovito_class<ParcasFileImporter, ParticleImporter>()
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<PDBImporter>>();
+ 	ovito_class<PDBImporter, ParticleImporter>()
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<POSCARImporter>>();
+ 	ovito_class<POSCARImporter, ParticleImporter>()
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<FHIAimsImporter>>();
+ 	ovito_class<FHIAimsImporter, ParticleImporter>()
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<FHIAimsLogFileImporter>>();
+ 	ovito_class<FHIAimsLogFileImporter, ParticleImporter>()
+ 	;
+ }
+diff --git a/src/plugins/particles/scripting/ModifierBinding.cpp b/src/plugins/particles/scripting/ModifierBinding.cpp
+index 53f25fc..1f1ac91 100755
+--- a/src/plugins/particles/scripting/ModifierBinding.cpp
++++ b/src/plugins/particles/scripting/ModifierBinding.cpp
+@@ -66,12 +66,15 @@ using namespace PyScript;
+ 
+ BOOST_PYTHON_MODULE(ParticlesModify)
+ {
++	boost::python::register_ptr_to_python<OORef<ParticleModifier>>();
+ 	ovito_abstract_class<ParticleModifier, Modifier>()
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<AsynchronousParticleModifier>>();
+ 	ovito_abstract_class<AsynchronousParticleModifier, ParticleModifier>()
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<AssignColorModifier>>();
+ 	ovito_class<AssignColorModifier, ParticleModifier>(
+ 			":Base class: :py:class:`ovito.modifiers.Modifier`\n\n"
+ 			"Assigns a uniform color to all selected particles. "
+@@ -86,6 +89,7 @@ BOOST_PYTHON_MODULE(ParticlesModify)
+ 	;
+ 
+ 	{
++		boost::python::register_ptr_to_python<OORef<ColorCodingModifier>>();
+ 		scope s = ovito_class<ColorCodingModifier, ParticleModifier>(
+ 				":Base class: :py:class:`ovito.modifiers.Modifier`\n\n"
+ 				"Colors particles based on the values of an arbitrary particle property."
+@@ -133,25 +137,33 @@ BOOST_PYTHON_MODULE(ParticlesModify)
+ 			.add_property("keepSelection", &ColorCodingModifier::keepSelection, &ColorCodingModifier::setKeepSelection)
+ 		;
+ 
++		boost::python::register_ptr_to_python<OORef<ColorCodingGradient>>();
+ 		ovito_abstract_class<ColorCodingGradient, RefTarget>()
+ 			.def("valueToColor", pure_virtual(&ColorCodingGradient::valueToColor))
+ 		;
+ 
++		boost::python::register_ptr_to_python<OORef<ColorCodingHSVGradient>>();
+ 		ovito_class<ColorCodingHSVGradient, ColorCodingGradient>(nullptr, "Rainbow")
+ 		;
++		boost::python::register_ptr_to_python<OORef<ColorCodingGrayscaleGradient>>();
+ 		ovito_class<ColorCodingGrayscaleGradient, ColorCodingGradient>(nullptr, "Grayscale")
+ 		;
++		boost::python::register_ptr_to_python<OORef<ColorCodingHotGradient>>();
+ 		ovito_class<ColorCodingHotGradient, ColorCodingGradient>(nullptr, "Hot")
+ 		;
++		boost::python::register_ptr_to_python<OORef<ColorCodingJetGradient>>();
+ 		ovito_class<ColorCodingJetGradient, ColorCodingGradient>(nullptr, "Jet")
+ 		;
++		boost::python::register_ptr_to_python<OORef<ColorCodingBlueWhiteRedGradient>>();
+ 		ovito_class<ColorCodingBlueWhiteRedGradient, ColorCodingGradient>(nullptr, "BlueWhiteRed")
+ 		;
++		boost::python::register_ptr_to_python<OORef<ColorCodingImageGradient>>();
+ 		ovito_class<ColorCodingImageGradient, ColorCodingGradient>(nullptr, "Image")
+ 			.def("loadImage", &ColorCodingImageGradient::loadImage)
+ 		;
+ 	}
+ 
++	boost::python::register_ptr_to_python<OORef<AmbientOcclusionModifier>>();
+ 	ovito_class<AmbientOcclusionModifier, AsynchronousParticleModifier>(
+ 			":Base class: :py:class:`ovito.modifiers.Modifier`\n\n"
+ 			"Performs a quick lighting calculation to shade particles according to the degree of occlusion by other particles. ")
+@@ -173,6 +185,7 @@ BOOST_PYTHON_MODULE(ParticlesModify)
+ 				":Default: 3\n")
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<DeleteParticlesModifier>>();
+ 	ovito_class<DeleteParticlesModifier, ParticleModifier>(
+ 			":Base class: :py:class:`ovito.modifiers.Modifier`\n\n"
+ 			"This modifier deletes the selected particles. It has no parameters.",
+@@ -180,6 +193,7 @@ BOOST_PYTHON_MODULE(ParticlesModify)
+ 			"DeleteSelectedParticlesModifier")
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<ShowPeriodicImagesModifier>>();
+ 	ovito_class<ShowPeriodicImagesModifier, ParticleModifier>(
+ 			":Base class: :py:class:`ovito.modifiers.Modifier`\n\n"
+ 			"This modifier replicates all particles to display periodic images of the system.")
+@@ -220,12 +234,14 @@ BOOST_PYTHON_MODULE(ParticlesModify)
+ 				":Default: ``True``\n")
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<WrapPeriodicImagesModifier>>();
+ 	ovito_class<WrapPeriodicImagesModifier, ParticleModifier>(
+ 			":Base class: :py:class:`ovito.modifiers.Modifier`\n\n"
+ 			"This modifier maps particles located outside the simulation cell back into the box by \"wrapping\" their coordinates "
+ 			"around at the periodic boundaries of the simulation cell. This modifier has no parameters.")
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<ComputePropertyModifier>>();
+ 	ovito_class<ComputePropertyModifier, ParticleModifier>(
+ 			":Base class: :py:class:`ovito.modifiers.Modifier`\n\n"
+ 			"Evaluates a user-defined math expression to compute the values of a particle property."
+@@ -271,23 +287,27 @@ BOOST_PYTHON_MODULE(ParticlesModify)
+ 				":Default: 3.0\n")
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<FreezePropertyModifier>>();
+ 	ovito_class<FreezePropertyModifier, ParticleModifier>()
+ 		.add_property("source_property", make_function(&FreezePropertyModifier::sourceProperty, return_value_policy<copy_const_reference>()), &FreezePropertyModifier::setSourceProperty)
+ 		.add_property("destination_property", make_function(&FreezePropertyModifier::destinationProperty, return_value_policy<copy_const_reference>()), &FreezePropertyModifier::setDestinationProperty)
+ 		.def("take_snapshot", &FreezePropertyModifier::takePropertySnapshot)
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<ClearSelectionModifier>>();
+ 	ovito_class<ClearSelectionModifier, ParticleModifier>(
+ 			":Base class: :py:class:`ovito.modifiers.Modifier`\n\n"
+ 			"This modifier clears the particle selection by deleting the ``\"Selection\"`` particle property. "
+ 			"It has no parameters.")
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<InvertSelectionModifier>>();
+ 	ovito_class<InvertSelectionModifier, ParticleModifier>(
+ 			":Base class: :py:class:`ovito.modifiers.Modifier`\n\n"
+ 			"This modifier inverts the particle selection. It has no parameters.")
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<ManualSelectionModifier>>();
+ 	ovito_class<ManualSelectionModifier, ParticleModifier>()
+ 		.def("resetSelection", &ManualSelectionModifier::resetSelection)
+ 		.def("selectAll", &ManualSelectionModifier::selectAll)
+@@ -296,6 +316,7 @@ BOOST_PYTHON_MODULE(ParticlesModify)
+ 	;
+ 
+ 	{
++		boost::python::register_ptr_to_python<OORef<ExpandSelectionModifier>>();
+ 		scope s = ovito_class<ExpandSelectionModifier, ParticleModifier>(
+ 				":Base class: :py:class:`ovito.modifiers.Modifier`\n\n"
+ 				"Expands the current particle selection by selecting particles that are neighbors of already selected particles.")
+@@ -332,6 +353,7 @@ BOOST_PYTHON_MODULE(ParticlesModify)
+ 		;
+ 	}
+ 
++	boost::python::register_ptr_to_python<OORef<SelectExpressionModifier>>();
+ 	ovito_class<SelectExpressionModifier, ParticleModifier>(
+ 			":Base class: :py:class:`ovito.modifiers.Modifier`\n\n"
+ 			"This modifier selects particles based on a user-defined Boolean expression."
+@@ -347,6 +369,7 @@ BOOST_PYTHON_MODULE(ParticlesModify)
+ 				"A string with a Boolean expression. The syntax is documented in OVITO's user manual.")
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<SelectParticleTypeModifier>>();
+ 	ovito_class<SelectParticleTypeModifier, ParticleModifier>(
+ 			":Base class: :py:class:`ovito.modifiers.Modifier`\n\n"
+ 			"Selects all particles of a certain type (or types)."
+@@ -372,6 +395,7 @@ BOOST_PYTHON_MODULE(ParticlesModify)
+ 				":Default: ``set([])``\n")
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<SliceModifier>>();
+ 	ovito_class<SliceModifier, ParticleModifier>(
+ 			":Base class: :py:class:`ovito.modifiers.Modifier`\n\n"
+ 			"Deletes or selects particles based on a plane in three-dimensional space.")
+@@ -405,6 +429,7 @@ BOOST_PYTHON_MODULE(ParticlesModify)
+ 				":Default: ``False``\n")
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<AffineTransformationModifier>>();
+ 	ovito_class<AffineTransformationModifier, ParticleModifier>(
+ 			":Base class: :py:class:`ovito.modifiers.Modifier`\n\n"
+ 			"Applies an affine transformation to particles and/or the simulation cell."
+@@ -463,6 +488,7 @@ BOOST_PYTHON_MODULE(ParticlesModify)
+ 	;
+ 
+ 	{
++		boost::python::register_ptr_to_python<OORef<BinAndReduceModifier>>();
+ 		scope s = ovito_class<BinAndReduceModifier, ParticleModifier>(
+ 				":Base class: :py:class:`ovito.modifiers.Modifier`\n\n"
+ 				"This modifier applies a reduction operation to a property of the particles within a spatial bin. "
+@@ -545,10 +571,12 @@ BOOST_PYTHON_MODULE(ParticlesModify)
+ 		;
+ 	}
+ 
++	boost::python::register_ptr_to_python<OORef<StructureIdentificationModifier>>();
+ 	ovito_abstract_class<StructureIdentificationModifier, AsynchronousParticleModifier>()
+ 	;
+ 
+ 	{
++		boost::python::register_ptr_to_python<OORef<BondAngleAnalysisModifier>>();
+ 		scope s = ovito_class<BondAngleAnalysisModifier, StructureIdentificationModifier>(
+ 				":Base class: :py:class:`ovito.modifiers.Modifier`\n\n"
+ 				"Performs the bond-angle analysis described by Ackland & Jones to classify the local "
+@@ -606,6 +634,7 @@ BOOST_PYTHON_MODULE(ParticlesModify)
+ 	}
+ 
+ 	{
++		boost::python::register_ptr_to_python<OORef<CommonNeighborAnalysisModifier>>();
+ 		scope s = ovito_class<CommonNeighborAnalysisModifier, StructureIdentificationModifier>(
+ 				":Base class: :py:class:`ovito.modifiers.Modifier`\n\n"
+ 				"Performs the common neighbor analysis (CNA) to classify the structure of the local neighborhood "
+@@ -695,6 +724,7 @@ BOOST_PYTHON_MODULE(ParticlesModify)
+ 	}
+ 
+ 	{
++		boost::python::register_ptr_to_python<OORef<IdentifyDiamondModifier>>();
+ 		scope s = ovito_class<IdentifyDiamondModifier, StructureIdentificationModifier>(
+ 				":Base class: :py:class:`ovito.modifiers.Modifier`\n\n"
+ 				"This analysis modifier finds atoms that are arranged in a cubic or hexagonal diamond lattice."
+@@ -746,6 +776,7 @@ BOOST_PYTHON_MODULE(ParticlesModify)
+ 
+ 
+ 	{
++		boost::python::register_ptr_to_python<OORef<CreateBondsModifier>>();
+ 		scope s = ovito_class<CreateBondsModifier, AsynchronousParticleModifier>(
+ 				":Base class: :py:class:`ovito.modifiers.Modifier`\n\n"
+ 				"Creates bonds between nearby particles. The modifier outputs its computation results as a :py:class:`~ovito.data.Bonds` data object.")
+@@ -768,6 +799,7 @@ BOOST_PYTHON_MODULE(ParticlesModify)
+ 		;
+ 	}
+ 
++	boost::python::register_ptr_to_python<OORef<CentroSymmetryModifier>>();
+ 	ovito_class<CentroSymmetryModifier, AsynchronousParticleModifier>(
+ 			":Base class: :py:class:`ovito.modifiers.Modifier`\n\n"
+ 			"Computes the centro-symmetry parameter (CSP) of each particle."
+@@ -779,6 +811,7 @@ BOOST_PYTHON_MODULE(ParticlesModify)
+ 				":Default: 12\n")
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<ClusterAnalysisModifier>>();
+ 	ovito_class<ClusterAnalysisModifier, AsynchronousParticleModifier>(
+ 			":Base class: :py:class:`ovito.modifiers.Modifier`\n\n"
+ 			"Groups particles into clusters."
+@@ -794,6 +827,7 @@ BOOST_PYTHON_MODULE(ParticlesModify)
+ 				"Thus, you have to call :py:meth:`ovito.ObjectNode.compute` first to ensure that this information is up to date. ")
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<CoordinationNumberModifier>>();
+ 	ovito_class<CoordinationNumberModifier, AsynchronousParticleModifier>(
+ 			":Base class: :py:class:`ovito.modifiers.Modifier`\n\n"
+ 			"Computes coordination numbers of particles and the radial distribution function (RDF) of the system."
+@@ -807,6 +841,7 @@ BOOST_PYTHON_MODULE(ParticlesModify)
+ 		.add_property("rdf_y", make_function(&CoordinationNumberModifier::rdfY, return_internal_reference<>()))
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<CalculateDisplacementsModifier>>();
+ 	ovito_class<CalculateDisplacementsModifier, ParticleModifier>(
+ 			":Base class: :py:class:`ovito.modifiers.Modifier`\n\n"
+ 			"Computes the displacement vectors of particles based on a separate reference configuration. "
+@@ -860,6 +895,7 @@ BOOST_PYTHON_MODULE(ParticlesModify)
+ 				"\n")
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<HistogramModifier>>();
+ 	ovito_class<HistogramModifier, ParticleModifier>(
+ 			":Base class: :py:class:`ovito.modifiers.Modifier`\n\n"
+ 			"Generates a histogram from the values of a particle property. "
+@@ -902,11 +938,13 @@ BOOST_PYTHON_MODULE(ParticlesModify)
+ 		.add_property("histogramData", make_function(&HistogramModifier::histogramData, return_internal_reference<>()))
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<ScatterPlotModifier>>();
+ 	ovito_class<ScatterPlotModifier, ParticleModifier>()
+ 		.add_property("xAxisProperty", make_function(&ScatterPlotModifier::xAxisProperty, return_value_policy<copy_const_reference>()), &ScatterPlotModifier::setXAxisProperty)
+ 		.add_property("yAxisProperty", make_function(&ScatterPlotModifier::yAxisProperty, return_value_policy<copy_const_reference>()), &ScatterPlotModifier::setYAxisProperty)
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<AtomicStrainModifier>>();
+ 	ovito_class<AtomicStrainModifier, AsynchronousParticleModifier>(
+ 			":Base class: :py:class:`ovito.modifiers.Modifier`\n\n"
+ 			"Computes the atomic strain tensors of particles based on a separate reference configuration. "
+@@ -977,6 +1015,7 @@ BOOST_PYTHON_MODULE(ParticlesModify)
+ 				"Thus, you have to call :py:meth:`ovito.ObjectNode.compute` first to ensure that this information is up to date. ")
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<WignerSeitzAnalysisModifier>>();
+ 	ovito_class<WignerSeitzAnalysisModifier, AsynchronousParticleModifier>(
+ 			":Base class: :py:class:`ovito.modifiers.Modifier`\n\n"
+ 			"Performs the Wigner-Seitz cell analysis to identify point defects in crystals. "
+@@ -1036,6 +1075,7 @@ BOOST_PYTHON_MODULE(ParticlesModify)
+ 				"Thus, you have to call :py:meth:`ovito.ObjectNode.compute` first to ensure that this information is up to date. ")
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<VoronoiAnalysisModifier>>();
+ 	ovito_class<VoronoiAnalysisModifier, AsynchronousParticleModifier>(
+ 			":Base class: :py:class:`ovito.modifiers.Modifier`\n\n"
+ 			"Computes the atomic volumes and coordination numbers using a Voronoi tessellation of the particle system."
+diff --git a/src/plugins/particles/scripting/PythonInterface.cpp b/src/plugins/particles/scripting/PythonInterface.cpp
+index d2d7067..09f5c8d 100755
+--- a/src/plugins/particles/scripting/PythonInterface.cpp
++++ b/src/plugins/particles/scripting/PythonInterface.cpp
+@@ -176,6 +176,7 @@ BOOST_PYTHON_MODULE(Particles)
+ 	converter::registry::push_back(convertible_ParticlePropertyReference, construct_ParticlePropertyReference, boost::python::type_id<ParticlePropertyReference>());
+ 
+ 	{
++		boost::python::register_ptr_to_python<OORef<ParticlePropertyObject>>();
+ 		scope s = ovito_abstract_class<ParticlePropertyObject, DataObject>(
+ 				":Base class: :py:class:`ovito.data.DataObject`\n\n"
+ 				"A data object that stores the values of a single particle property.",
+@@ -297,6 +298,7 @@ BOOST_PYTHON_MODULE(Particles)
+ 		;
+ 	}
+ 
++	boost::python::register_ptr_to_python<OORef<ParticleTypeProperty>>();
+ 	ovito_abstract_class<ParticleTypeProperty, ParticlePropertyObject>(
+ 			":Base class: :py:class:`ovito.data.ParticleProperty`\n\n"
+ 			"A special :py:class:`ParticleProperty` that stores a list of :py:class:`ParticleType` instances in addition "
+@@ -324,6 +326,7 @@ BOOST_PYTHON_MODULE(Particles)
+ 		.staticmethod("setDefaultParticleRadius")
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<SimulationCellObject>>();
+ 	ovito_class<SimulationCellObject, DataObject>(
+ 			":Base class: :py:class:`ovito.data.DataObject`\n\n"
+ 			"Stores the geometry and the boundary conditions of the simulation cell."
+@@ -346,6 +349,7 @@ BOOST_PYTHON_MODULE(Particles)
+ 	;
+ 
+ 	{
++		boost::python::register_ptr_to_python<OORef<BondsObject>>();
+ 		scope s = ovito_class<BondsObject, DataObject>(
+ 				":Base class: :py:class:`ovito.data.DataObject`\n\n"
+ 				"This data object stores a list of bonds between pairs of particles. "
+@@ -385,6 +389,7 @@ BOOST_PYTHON_MODULE(Particles)
+ 		;
+ 	}
+ 
++	boost::python::register_ptr_to_python<OORef<ParticleType>>();
+ 	ovito_class<ParticleType, RefTarget>(
+ 			"Stores the properties of a particle type or atom type."
+ 			"\n\n"
+@@ -405,6 +410,7 @@ BOOST_PYTHON_MODULE(Particles)
+ 	python_to_container_conversion<QVector<ParticleType*>>();
+ 
+ 	{
++		boost::python::register_ptr_to_python<OORef<ParticleDisplay>>();
+ 		scope s = ovito_class<ParticleDisplay, DisplayObject>(
+ 				":Base class: :py:class:`ovito.vis.Display`\n\n"
+ 				"Controls the visual appearance of particles.")
+@@ -440,6 +446,7 @@ BOOST_PYTHON_MODULE(Particles)
+ 	}
+ 
+ 	{
++		boost::python::register_ptr_to_python<OORef<VectorDisplay>>();
+ 		scope s = ovito_class<VectorDisplay, DisplayObject>(
+ 				":Base class: :py:class:`ovito.vis.Display`\n\n"
+ 				"Controls the visual appearance of vectors (arrows).")
+@@ -484,6 +491,7 @@ BOOST_PYTHON_MODULE(Particles)
+ 		;
+ 	}
+ 
++	boost::python::register_ptr_to_python<OORef<SimulationCellDisplay>>();
+ 	ovito_class<SimulationCellDisplay, DisplayObject>(
+ 			":Base class: :py:class:`ovito.vis.Display`\n\n"
+ 			"Controls the visual appearance of :py:class:`~ovito.data.SimulationCellObject` data objects.")
+@@ -502,6 +510,7 @@ BOOST_PYTHON_MODULE(Particles)
+ 				":Default: ``(0, 0, 0)``\n")
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<SurfaceMeshDisplay>>();
+ 	ovito_class<SurfaceMeshDisplay, DisplayObject>(
+ 			":Base class: :py:class:`ovito.vis.Display`\n\n"
+ 			"Controls the visual appearance of a surface mesh computed by the :py:class:`~ovito.modifiers.ConstructSurfaceModifier`.")
+@@ -531,6 +540,7 @@ BOOST_PYTHON_MODULE(Particles)
+ 				":Default: ``True``\n")
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<BondsDisplay>>();
+ 	ovito_class<BondsDisplay, DisplayObject>(
+ 			":Base class: :py:class:`ovito.vis.Display`\n\n"
+ 			"Controls the visual appearance of particle bonds. An instance of this class is attached to every :py:class:`~ovito.data.Bonds` data object.")
+@@ -556,6 +566,7 @@ BOOST_PYTHON_MODULE(Particles)
+ 				":Default: ``True``\n")
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<SurfaceMesh>>();
+ 	ovito_class<SurfaceMesh, DataObject>(
+ 			":Base class: :py:class:`ovito.data.DataObject`\n\n"
+ 			"This data object stores the surface mesh computed by a :py:class:`~ovito.modifiers.ConstructSurfaceModifier`. "
+@@ -660,6 +671,7 @@ BOOST_PYTHON_MODULE(Particles)
+ 	}
+ 
+ 	{
++		boost::python::register_ptr_to_python<OORef<BondPropertyObject>>();
+ 		scope s = ovito_abstract_class<BondPropertyObject, DataObject>(
+ 				":Base class: :py:class:`ovito.data.DataObject`\n\n"
+ 				"A data object that stores the values of a bond property.",
+@@ -717,6 +729,7 @@ BOOST_PYTHON_MODULE(Particles)
+ 		;
+ 	}
+ 
++	boost::python::register_ptr_to_python<OORef<BondTypeProperty>>();
+ 	ovito_abstract_class<BondTypeProperty, BondPropertyObject>(
+ 			":Base class: :py:class:`ovito.data.BondProperty`\n\n"
+ 			"A special :py:class:`BondProperty` that stores a list of :py:class:`BondType` instances in addition "
+@@ -734,6 +747,7 @@ BOOST_PYTHON_MODULE(Particles)
+ 		.add_property("bondTypes", make_function(&BondTypeProperty::bondTypes, return_internal_reference<>()))
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<BondType>>();
+ 	ovito_class<BondType, RefTarget>(
+ 			"Stores the properties of a bond type."
+ 			"\n\n"
+diff --git a/src/plugins/pyscript/binding/AnimationBinding.cpp b/src/plugins/pyscript/binding/AnimationBinding.cpp
+index db12e64..f5ce9d5 100644
+--- a/src/plugins/pyscript/binding/AnimationBinding.cpp
++++ b/src/plugins/pyscript/binding/AnimationBinding.cpp
+@@ -58,6 +58,7 @@ BOOST_PYTHON_MODULE(PyScriptAnimation)
+ 		.def(self != TimeInterval())
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<AnimationSettings>>();
+ 	ovito_class<AnimationSettings, RefTarget>(
+ 			"Stores animation-related settings of the current :py:attr:`~ovito.DataSet`. You can access "
+ 			"an instance of this class through the dataset's :py:attr:`~ovito.DataSet.anim` attribute."
+diff --git a/src/plugins/pyscript/binding/AppBinding.cpp b/src/plugins/pyscript/binding/AppBinding.cpp
+index 4dc60f5..a9aefd6 100755
+--- a/src/plugins/pyscript/binding/AppBinding.cpp
++++ b/src/plugins/pyscript/binding/AppBinding.cpp
+@@ -87,10 +87,12 @@ BOOST_PYTHON_MODULE(PyScriptApp)
+ 		.def("__ne__", &OvitoObject__ne__)
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<RefMaker>>();
+ 	ovito_abstract_class<RefMaker, OvitoObject>()
+ 		.add_property("dataset", make_function(&RefMaker::dataset, return_value_policy<ovito_object_reference>()))
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<RefTarget>>();
+ 	ovito_abstract_class<RefTarget, RefMaker>()
+ 		.def("isReferencedBy", &RefTarget::isReferencedBy)
+ 		.def("deleteReferenceObject", &RefTarget::deleteReferenceObject)
+@@ -99,6 +101,7 @@ BOOST_PYTHON_MODULE(PyScriptApp)
+ 				static_cast<int (*)(RefTarget& target)>([](RefTarget& t) { return t.dependents().size(); }))
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<DataSet>>();
+ 	ovito_abstract_class<DataSet, RefTarget>(
+ 			"A container object holding all data associated with an OVITO program session. "
+ 			"It provides access to the scene data, the viewports, the current selection, and the animation settings. "
+@@ -126,6 +129,7 @@ BOOST_PYTHON_MODULE(PyScriptApp)
+ 		.def("saveToFile", &DataSet::saveToFile)
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<DataSetContainer>>();
+ 	ovito_abstract_class<DataSetContainer, RefMaker>()
+ 		.add_property("currentSet", make_function(&DataSetContainer::currentSet, return_value_policy<ovito_object_reference>()), &DataSetContainer::setCurrentSet)
+ 		.def("fileNew", &DataSetContainer::fileNew)
+diff --git a/src/plugins/pyscript/binding/FileIOBinding.cpp b/src/plugins/pyscript/binding/FileIOBinding.cpp
+index eca8278..fca9131 100644
+--- a/src/plugins/pyscript/binding/FileIOBinding.cpp
++++ b/src/plugins/pyscript/binding/FileIOBinding.cpp
+@@ -65,6 +65,8 @@ BOOST_PYTHON_MODULE(PyScriptFileIO)
+ 	};
+ 	converter::registry::push_back(convertible_QUrl, construct_QUrl, type_id<QUrl>());
+ 
++	boost::python::register_ptr_to_python<OORef<FileImporter>>(); 
++	boost::python::register_ptr_to_python<OORef<FileImporter>>();
+ 	ovito_abstract_class<FileImporter, RefTarget>()
+ 		.add_property("fileFilter", &FileImporter::fileFilter)
+ 		.add_property("fileFilterDescription", &FileImporter::fileFilterDescription)
+@@ -87,17 +89,20 @@ BOOST_PYTHON_MODULE(PyScriptFileIO)
+ 		.def("urlFromUserInput", &FileManager::urlFromUserInput)
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<FileSourceImporter>>();
+ 	ovito_abstract_class<FileSourceImporter, FileImporter>()
+ 		.def("requestReload", &FileSourceImporter::requestReload)
+ 		.def("requestFramesUpdate", &FileSourceImporter::requestFramesUpdate)
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<FileExporter>>();
+ 	ovito_abstract_class<FileExporter, RefTarget>()
+ 		.add_property("fileFilter", &FileExporter::fileFilter)
+ 		.add_property("fileFilterDescription", &FileExporter::fileFilterDescription)
+ 		.def("exportToFile", &FileExporter::exportToFile, FileExporter_exportToFile_overloads())
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<FileSource>>();
+ 	ovito_class<FileSource, CompoundObject>(
+ 			":Base class: :py:class:`ovito.data.DataCollection`\n\n"
+ 			"This object serves as a data source for modification pipelines and is responsible for reading the input data from one or more external files."
+diff --git a/src/plugins/pyscript/binding/RenderingBinding.cpp b/src/plugins/pyscript/binding/RenderingBinding.cpp
+index 4a9e56d..f21c478 100644
+--- a/src/plugins/pyscript/binding/RenderingBinding.cpp
++++ b/src/plugins/pyscript/binding/RenderingBinding.cpp
+@@ -55,6 +55,7 @@ BOOST_PYTHON_MODULE(PyScriptRendering)
+ 	;
+ 
+ 	{
++		boost::python::register_ptr_to_python<OORef<RenderSettings>>();
+ 		scope s = ovito_class<RenderSettings, RefTarget>(
+ 				"Stores settings and parameters for rendering images and movies."
+ 				"\n\n"
+@@ -122,10 +123,12 @@ BOOST_PYTHON_MODULE(PyScriptRendering)
+ 		;
+ 	}
+ 
++	boost::python::register_ptr_to_python<OORef<SceneRenderer>>();
+ 	ovito_abstract_class<SceneRenderer, RefTarget>()
+ 		.add_property("isInteractive", &SceneRenderer::isInteractive)
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<StandardSceneRenderer>>();
+ 	ovito_class<StandardSceneRenderer, SceneRenderer>(
+ 			"The standard OpenGL-based renderer."
+ 			"\n\n"
+@@ -139,9 +142,11 @@ BOOST_PYTHON_MODULE(PyScriptRendering)
+ 				":Default: 3")
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<NonInteractiveSceneRenderer>>();
+ 	ovito_abstract_class<NonInteractiveSceneRenderer, SceneRenderer>()
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<DisplayObject>>();
+ 	ovito_abstract_class<DisplayObject, RefTarget>(
+ 			"Abstract base class for display setting objects that control the visual appearance of data. "
+ 			":py:class:`DataObjects <ovito.data.DataObject>` may be associated with an instance of this class, which can be accessed via "
+@@ -155,6 +160,7 @@ BOOST_PYTHON_MODULE(PyScriptRendering)
+ 				":Default: ``True``\n")
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<TriMeshDisplay>>();
+ 	ovito_class<TriMeshDisplay, DisplayObject>()
+ 		.add_property("color", make_function(&TriMeshDisplay::color, return_value_policy<copy_const_reference>()), &TriMeshDisplay::setColor)
+ 		.add_property("transparency", &TriMeshDisplay::transparency, &TriMeshDisplay::setTransparency)
+diff --git a/src/plugins/pyscript/binding/SceneBinding.cpp b/src/plugins/pyscript/binding/SceneBinding.cpp
+index 36eae84..0ecdd23 100644
+--- a/src/plugins/pyscript/binding/SceneBinding.cpp
++++ b/src/plugins/pyscript/binding/SceneBinding.cpp
+@@ -74,6 +74,7 @@ BOOST_PYTHON_MODULE(PyScriptScene)
+ 		.add_property("objects", make_function(&PipelineFlowState::objects, return_internal_reference<>()))
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<DataObject>>();
+ 	ovito_abstract_class<DataObject, RefTarget>(
+ 			"Abstract base class for all data objects."
+ 			"\n\n"
+@@ -92,6 +93,7 @@ BOOST_PYTHON_MODULE(PyScriptScene)
+ 	;
+ 	register_ptr_to_python<VersionedOORef<DataObject>>();
+ 
++	boost::python::register_ptr_to_python<OORef<CompoundObject>>();
+ 	ovito_class<CompoundObject, DataObject>(
+ 			"A data collection is a dictionary-like container that can store an arbitrary number of data objects. "
+ 			"OVITO knows various types of data objects, e.g."
+@@ -219,6 +221,7 @@ BOOST_PYTHON_MODULE(PyScriptScene)
+ 			"For *extended XYZ* files, the attributes dictionary contains all key/value pairs found in the comment line of the input file.\n")
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<Modifier>>();
+ 	ovito_abstract_class<Modifier, RefTarget>(
+ 			"This is the base class for all modifiers in OVITO.")
+ 		.add_property("enabled", &Modifier::isEnabled, &Modifier::setEnabled,
+@@ -232,6 +235,7 @@ BOOST_PYTHON_MODULE(PyScriptScene)
+ 		.def("isApplicableTo", &Modifier::isApplicableTo)
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<ModifierApplication>>();
+ 	ovito_class<ModifierApplication, RefTarget>()
+ 		.def(init<DataSet*, Modifier*>())
+ 		.add_property("modifier", make_function(&ModifierApplication::modifier, return_value_policy<ovito_object_reference>()))
+@@ -239,6 +243,7 @@ BOOST_PYTHON_MODULE(PyScriptScene)
+ 		.add_property("objectNodes", &ModifierApplication::objectNodes)
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<PipelineObject>>();
+ 	ovito_class<PipelineObject, DataObject>()
+ 		.add_property("source_object", make_function(&PipelineObject::sourceObject, return_value_policy<ovito_object_reference>()), &PipelineObject::setSourceObject)
+ 		.add_property("modifierApplications", make_function(&PipelineObject::modifierApplications, return_internal_reference<>()))
+@@ -247,6 +252,7 @@ BOOST_PYTHON_MODULE(PyScriptScene)
+ 		.def("removeModifier", &PipelineObject::removeModifier)
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<SceneNode>>();
+ 	ovito_abstract_class<SceneNode, RefTarget>()
+ 		.add_property("name", make_function(&SceneNode::name, return_value_policy<copy_const_reference>()), &SceneNode::setName)
+ 		.add_property("displayColor", make_function(&SceneNode::displayColor, return_value_policy<copy_const_reference>()), &SceneNode::setDisplayColor)
+@@ -262,6 +268,7 @@ BOOST_PYTHON_MODULE(PyScriptScene)
+ 		.def("worldBoundingBox", make_function(&SceneNode::worldBoundingBox, return_value_policy<copy_const_reference>()))
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<ObjectNode>>();
+ 	ovito_class<ObjectNode, SceneNode>(
+ 			"Manages a data source, a modification pipeline, and the output of the pipeline."
+ 			"\n\n"
+@@ -287,11 +294,13 @@ BOOST_PYTHON_MODULE(PyScriptScene)
+ 		.def("waitUntilReady", &ObjectNode::waitUntilReady, ObjectNode_waitUntilReady_overloads())
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<SceneRoot>>();
+ 	ovito_class<SceneRoot, SceneNode>()
+ 		.def("getNodeByName", make_function(&SceneRoot::getNodeByName, return_value_policy<ovito_object_reference>()))
+ 		.def("makeNameUnique", &SceneRoot::makeNameUnique)
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<SelectionSet>>();
+ 	ovito_class<SelectionSet, RefTarget>()
+ 		.add_property("size", &SelectionSet::size)
+ 		.add_property("empty", &SelectionSet::empty)
+@@ -305,6 +314,7 @@ BOOST_PYTHON_MODULE(PyScriptScene)
+ 		.def("setNode", &SelectionSet::setNode)
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<PythonScriptModifier>>();
+ 	ovito_class<PythonScriptModifier, Modifier>(
+ 			":Base class: :py:class:`ovito.modifiers.Modifier`\n\n"
+ 			"A modifier that executes a Python script function which computes the output of the modifier. "
+diff --git a/src/plugins/pyscript/binding/ViewportBinding.cpp b/src/plugins/pyscript/binding/ViewportBinding.cpp
+index 3797b47..801e5df 100644
+--- a/src/plugins/pyscript/binding/ViewportBinding.cpp
++++ b/src/plugins/pyscript/binding/ViewportBinding.cpp
+@@ -38,6 +38,7 @@ BOOST_PYTHON_MODULE(PyScriptViewport)
+ 	docstring_options docoptions(true, false);
+ 
+ 	{
++		boost::python::register_ptr_to_python<OORef<Viewport>>();
+ 		scope s = ovito_class<Viewport, RefTarget>(
+ 				"A viewport defines the view on the three-dimensional scene. "
+ 				"\n\n"
+@@ -134,6 +135,7 @@ BOOST_PYTHON_MODULE(PyScriptViewport)
+ 		.def_readwrite("inverseProjectionMatrix", &ViewProjectionParameters::inverseProjectionMatrix)
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<ViewportConfiguration>>();
+ 	ovito_class<ViewportConfiguration, RefTarget>(
+ 			"Manages the viewports in OVITO's main window."
+ 			"\n\n"
+@@ -159,8 +161,10 @@ BOOST_PYTHON_MODULE(PyScriptViewport)
+ 		.add_property("viewports", make_function(&ViewportConfiguration::viewports, return_internal_reference<>()))
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<ViewportOverlay>>();
+ 	ovito_abstract_class<ViewportOverlay, RefTarget>();
+ 
++	boost::python::register_ptr_to_python<OORef<CoordinateTripodOverlay>>();
+ 	ovito_class<CoordinateTripodOverlay, ViewportOverlay>(
+ 			"Displays a coordinate tripod in the rendered image of a viewport. "
+ 			"You can attach an instance of this class to a viewport by adding it to the viewport's "
+@@ -195,6 +199,7 @@ BOOST_PYTHON_MODULE(PyScriptViewport)
+ 				":Default: 0.4\n")
+ 	;
+ 
++	boost::python::register_ptr_to_python<OORef<PythonViewportOverlay>>();
+ 	ovito_class<PythonViewportOverlay, ViewportOverlay>(
+ 			"This overlay type can be attached to a viewport to run a Python script every time an "
+ 			"image of the viewport is rendered. The Python script can execute arbitrary drawing commands to "
+diff --git a/src/plugins/tachyon/scripting/PythonInterface.cpp b/src/plugins/tachyon/scripting/PythonInterface.cpp
+index 6b474dd..41fdd96 100755
+--- a/src/plugins/tachyon/scripting/PythonInterface.cpp
++++ b/src/plugins/tachyon/scripting/PythonInterface.cpp
+@@ -33,6 +33,7 @@ BOOST_PYTHON_MODULE(Tachyon)
+ {
+ 	docstring_options docoptions(true, false);
+ 
++	boost::python::register_ptr_to_python<OORef<TachyonRenderer>>();
+ 	ovito_class<TachyonRenderer, NonInteractiveSceneRenderer>(
+ 			"This is the software-based raytracing renderer of OVITO."
+ 			"\n\n"

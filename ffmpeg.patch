@@ -1,0 +1,31 @@
+commit c4f39096ecebf48f396ce5129a81cf84a8e12265
+Author: Jan Oliver Oelerich <jan.oliver.oelerich@physik.uni-marburg.de>
+Date:   Fri Mar 4 11:06:41 2016 +0100
+
+    changes needed for ffmpeg 3.0
+
+diff --git a/src/core/utilities/io/video/VideoEncoder.cpp b/src/core/utilities/io/video/VideoEncoder.cpp
+index 22164f5..3585e7f 100755
+--- a/src/core/utilities/io/video/VideoEncoder.cpp
++++ b/src/core/utilities/io/video/VideoEncoder.cpp
+@@ -145,9 +145,9 @@ void VideoEncoder::openFile(const QString& filename, int width, int height, int
+ 	_codecContext->time_base.num = _videoStream->time_base.num = 1;
+ 	_codecContext->gop_size = 12;	// Emit one intra frame every twelve frames at most.
+ 	if(qstrcmp(outputFormat->name, "gif") != 0)
+-		_codecContext->pix_fmt = PIX_FMT_YUV420P;
++		_codecContext->pix_fmt = AV_PIX_FMT_YUV420P;
+ 	else
+-		_codecContext->pix_fmt = PIX_FMT_RGB24;
++		_codecContext->pix_fmt = AV_PIX_FMT_RGB24;
+ 
+ 	// Some formats want stream headers to be separate.
+ 	if(_formatContext->oformat->flags & AVFMT_GLOBALHEADER)
+@@ -256,7 +256,7 @@ void VideoEncoder::writeFrame(const QImage& image)
+ 	QImage finalImage = image.convertToFormat(QImage::Format_RGB32);
+ 
+ 	// Create conversion context.
+-	_imgConvertCtx = sws_getCachedContext(_imgConvertCtx, videoWidth, videoHeight, PIX_FMT_BGRA,
++	_imgConvertCtx = sws_getCachedContext(_imgConvertCtx, videoWidth, videoHeight, AV_PIX_FMT_BGRA,
+ 			videoWidth, videoHeight, _codecContext->pix_fmt, SWS_BICUBIC, NULL, NULL, NULL);
+ 	if(!_imgConvertCtx)
+ 		throw Exception(tr("Cannot initialize SWS conversion context to convert video frame."));
