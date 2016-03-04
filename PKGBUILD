@@ -1,9 +1,9 @@
 # Maintainer: Christian Schwarz <me@cschwarz.com>
 pkgbase=servefile
 pkgname=servefile
-pkgver=v0.4.3
-_commit="6b85d23752c7edce0dc2f4edd5e3ad22d7bbed17"
-pkgrel=2
+pkgver=v0.4.4
+_commit="a0b8ae49329cd992fdd1adad159c7d252ea579d3"
+pkgrel=1
 pkgdesc="Serve or receive files from shell via a small HTTP server"
 arch=('any')
 url="http://seba-geek.de/stuff/servefile/"
