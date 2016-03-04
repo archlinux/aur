@@ -4,9 +4,9 @@
 pkgname=nemo-image-converter
 pkgver=2.8.0
 _mintrel=rosa
-pkgrel=1
-pkgdesc="An embedded terminal for Nemo, the Cinnamon file manager."
-arch=('any')
+pkgrel=2
+pkgdesc="nemo extension to mass resize or rotate images"
+arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/nemo-extensions"
 license=('GPL2')
 groups=('nemo-extensions')
