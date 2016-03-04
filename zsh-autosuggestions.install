@@ -1,7 +1,4 @@
 post_install() {
     echo "==> To use zsh autosuggestions, include the following snippet in your .zshrc:
-    source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-    # Add history-substring-search-* widgets to list of widgets that clear the autosuggestion
-    ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(history-substring-search-up history-substring-search-down)"
+    source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 }
