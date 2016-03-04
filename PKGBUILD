@@ -44,12 +44,12 @@ backup=("etc/java32-$_jname/i386/jvm.cfg"
         "etc/java32-$_jname/psfontj2d.properties"
         "etc/java32-$_jname/sound.properties")
 install=$pkgname.install
-source=("http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
+source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.tar.gz"
+        "http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
         "policytool32-$_jname.desktop")
-source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.tar.gz")
-md5sums=('b3c7031bc65c28c2340302065e7d00d3'
+md5sums=('9f2831a2810225e2a46fc68d9b0cfbbb'
+         'b3c7031bc65c28c2340302065e7d00d3'
          '271b97a9b95d809a99999ec5fb74313c')
-md5sums_x86_64=('9f2831a2810225e2a46fc68d9b0cfbbb')
 
 package() {
     cd ${_pkgname}1.${_major}.0_${_minor}
