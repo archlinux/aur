@@ -14,8 +14,8 @@ source=("http://static.rust-lang.org/dist/rustc-nightly-src.tar.gz")
 sha256sums=('SKIP')
 install=rust.install
 options=('!makeflags' 'staticlibs' '!strip' '!emptydirs')
-conflicts=('rust')
-provides=('rust')
+conflicts=('rust' 'cargo')
+provides=('rust' 'cargo')
 
 build() {
   cd rustc-nightly
