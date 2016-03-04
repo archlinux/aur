@@ -19,6 +19,10 @@ pkgver() {
   cd "$_gitname"
   printf "%sr%s" $(git describe --tags|tr - _) $(git rev-list --count HEAD)
 }
+pkgver() {
+  cd "$_gitname"
+  printf "%sr%s" $(git describe --tags|tr - _) $(git rev-list --count HEAD)
+}
 
 build() {
   cd "$srcdir"/"$_gitname"
