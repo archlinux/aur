@@ -2,7 +2,7 @@
 # Contributor: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani at gmail dot com>
 
 pkgname=krita-git
-pkgver=3.0.89.r39303.a627798
+pkgver=3.0.89.r39892.f2aeb4c
 pkgrel=1
 pkgdesc="A free digital painting application. Digital Painting, Creative Freedom!. (GIT Version)"
 arch=('i686' 'x86_64')
@@ -29,12 +29,13 @@ makedepends=('extra-cmake-modules'
              'ki18n'
              'kitemviews'
              'kwindowsystem'
+             'imagemagick'
              )
 provides=('krita')
-conflicts=('krita')
-install=krita-git.install
+conflicts=('krita' 'calligra-krita')
 source=('git://anongit.kde.org/krita.git')
 sha1sums=('SKIP')
+install=krita-git.install
 
 pkgver() {
   cd krita
@@ -44,6 +45,15 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+
+  msg2 "Stripping PNG's"
+  export IFS=$'\n'
+  for i in $(find . -name '*.png' -type f); do
+    mogrify "${i}" &> /dev/null
+  done
+  export IFS=' '
+  
+  sed 's|if (!isnan(value))|if (!std::isnan(value))|' -i krita/libs/widgets/KoUnitDoubleSpinBox.cpp
 }
 
 build() {
@@ -60,4 +70,9 @@ build() {
 
 package() {
   make -C build DESTDIR="${pkgdir}" install
+  rm -fr "${pkgdir}/usr/lib/qt/plugins/imageformats/kimg_kra.so"
+  rm -fr "${pkgdir}/usr/lib/qt/plugins/imageformats/kimg_ora.so"
+  rm -fr "${pkgdir}/usr/share/kservices5/qimageioplugins/kra.desktop"
+  rm -fr "${pkgdir}/usr/share/kservices5/qimageioplugins/ora.desktop"
+
 }
