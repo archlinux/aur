@@ -4,7 +4,7 @@ _npmname=instant-markdown-d
 _npmver=0.1.0
 pkgname=vim-instant-markdown
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Instant Markdown previews from vim in a browser"
 arch=(any)
 license=(unknown)
@@ -26,7 +26,7 @@ package() {
   cd "$pkgdir/usr/lib/node_modules/"
   npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
 
-  cp "$srcdir/instant-markdown.vim" "$pkgdir/usr/share/vim/vimfiles/after/"
+  cp "$srcdir/instant-markdown.vim" "$pkgdir/usr/share/vim/vimfiles/after/ftplugin/markdown"
 }
 
 # vim: set ts=2 sw=2
