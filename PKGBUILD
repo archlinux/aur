@@ -24,7 +24,7 @@ md5sums=('SKIP'
          'ce32349cd9f646d41bb444c6cb47a033')
 
 pkgver() {
-  cd "$srcdir/citadel"
+  cd "$srcdir/$_gitname"
   git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
@@ -34,14 +34,14 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/citadel/citadel"
+  cd "$srcdir/$_gitname/citadel"
   ./bootstrap
   ./configure --prefix=/usr/citadel
   make
 }
 
 package() {
-  cd "$srcdir/citadel/citadel"
+  cd "$srcdir/$_gitname/citadel"
   make DESTDIR="$pkgdir" install
   install -Dm644 "$srcdir/citadel.service" "$pkgdir/usr/lib/systemd/system/citadel.service"	
 }
