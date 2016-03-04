@@ -3,7 +3,7 @@
 
 _pkgname=qml-material
 pkgname=${_pkgname}-git
-pkgver=0.2.0.r11.g8705651
+pkgver=0.2.0.r13.g4af0e33
 pkgrel=1
 pkgdesc="A UI framework for QtQuick implementing Material Design"
 arch=("i686" "x86_64")
