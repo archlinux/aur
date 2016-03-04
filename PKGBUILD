@@ -13,10 +13,25 @@ makedepends=('python2-setuptools')
 source=("https://github.com/Tribler/tribler/releases/download/v${pkgver}/Tribler-v${pkgver}.tar.xz")
 sha1sums=('2896529b7041e37b4feefd7cf906879dfcd288f8')
 
+prepare()
+{
+  cd "${srcdir}/tribler"
+  # tribler fails if run from /usr/share/tribler
+  sed -i "s|cd |#cd|g" debian/bin/tribler
+}
+
+build () {
+  cd "${srcdir}/tribler"
+  python2 setup.py build
+
+}
+
 package() {
   cd "${srcdir}/tribler"
+  python2 setup.py install --root=${pkgdir}
   install -d "${pkgdir}"/usr/{bin,share/tribler}
   cp -r Tribler "${pkgdir}"/usr/share/tribler
+  find "${pkgdir}"/usr/share/tribler -name "*.py" -delete
   install -m644 logger.conf "${pkgdir}"/usr/share/tribler/
   install -d "${pkgdir}"/usr/share/{applications,pixmaps}
   install -m644 Tribler/Main/Build/Ubuntu/tribler.desktop "${pkgdir}"/usr/share/applications
