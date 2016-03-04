@@ -28,5 +28,6 @@ pre_remove() {
 
 ## arg 1:  the old package version
 post_remove() {
-	:;
+	echo "residual files may remain in /usr/citadel directory";
+	echo "run 'rm -rf /usr/citadel' if you want to remove them"
 }
