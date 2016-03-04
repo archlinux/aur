@@ -6,8 +6,8 @@ After=local-fs.target
 Type=forking
 EnvironmentFile=/etc/conf.d/minecraft
 ExecStart=/usr/bin/minecraftd backup
-USER=$MC_USER
-GROUP=$MC_USER
+USER=minecraft
+GROUP=minecraft
 
 [Install]
 WantedBy=multi-user.target

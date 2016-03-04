@@ -4,11 +4,10 @@ After=local-fs.target network.target
 
 [Service]
 Type=forking
-EnvironmentFile=/etc/conf.d/minecraft
 ExecStart=/usr/bin/minecraftd start
 ExecStop=/usr/bin/minecraftd stop
-USER=$MC_USER
-GROUP=$MC_USER
+USER=minecraft
+GROUP=minecraft
 
 [Install]
 WantedBy=multi-user.target

@@ -4,7 +4,7 @@
 
 pkgname=minecraft-server
 pkgver=1.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Minecraft server unit files, script, and jar"
 arch=('any')
 url="http://minecraft.net/"
@@ -24,9 +24,9 @@ source=("https://s3.amazonaws.com/Minecraft.Download/versions/${pkgver}/minecraf
 	"minecraftd.sh")
 noextract=("minecraft_server.${pkgver}.jar")
 md5sums=('ff68834eee875bcf367422c67673207c'
-         'f75c76446f96311563e87fc688148501'
+         '09e94951d2c2fcf5afab890cdd51dacb'
          'fef6fadd0739ae03ff71ba61025be207'
-         'cab358c32dd0d4d2463e60ee2996f658'
+         '53f7e807bd53f32be2f0c6c06b249f63'
          '54438e0c47cc5083e0a4376688b46092'
          '4f11b1efd6941ea894ca0497824201cf')
 
