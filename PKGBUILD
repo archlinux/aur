@@ -16,18 +16,23 @@ source=("git+https://github.com/Arcaena/$_gitname.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_gitname}"
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    cd "${srcdir}/${_gitname}"
+    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cd "${srcdir}/${_gitname}"
+    sed -i 's| -m 644 i3lock-color.1.gz $(MANDIR)| -Dm 644 i3lock-color.1.gz $(DESTDIR)$(MANDIR)|' Makefile
 }
 
 build() {
-cd "${srcdir}/${_gitname}"
-make
+    cd "${srcdir}/${_gitname}"
+    make
 }
 
 package() {
-cd "${srcdir}/${_gitname}"
-make DESTDIR="$pkgdir" install
-install -Dm644 i3lock.1 ${pkgdir}/usr/share/man/man1/i3lock.1
-install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${_gitname}/LICENSE
+    cd "${srcdir}/${_gitname}"
+    make MANDIR="${pkgdir}/usr/share/man" DESTDIR="$pkgdir" install
+    install -Dm644 i3lock-color.1.gz "${pkgdir}/usr/share/man/man1/i3lock-color.1.gz"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE"
 }
