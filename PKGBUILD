@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=emacs-ess-git
-pkgver=15.09.147.g7776edd
+pkgver=15.09.148.g1d72696
 pkgrel=1
 pkgdesc="Emacs Speaks Statistics: A Universal Interface for \
  Statistical Analysis - git-version"
