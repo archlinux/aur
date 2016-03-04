@@ -1,16 +1,23 @@
 # Maintainer: Lauri Niskanen <ape@ape3000.com>
+# Contributor: sekret
 
 pkgname=dsp-git
 _pkgname=dsp
-pkgver=204.aad6f78
+pkgver=210.0c73363
 pkgrel=1
 pkgdesc="An audio processing program with an interactive mode"
-arch=('any')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/bmc0/${_pkgname}"
 license=('ISC')
-depends=('ladspa')
-makedepends=('git')
-
+makedepends=('git' 'fftw' 'libsndfile' 'ffmpeg' 'alsa-lib' 'libao' 'libmad' 'libpulse' 'ladspa')
+optdepends=('fftw: For resample and fir effects'
+            'libsndfile: For sndfile input/output support'
+            'ffmpeg: For ffmpeg input support'
+            'alsa-lib: For alsa input/output support'
+            'libao: For ao output support'
+            'libmad: For mp3 input support'
+            'libpulse: For PulseAudio input/ouput support'
+            'ladspa: For building the LADSPA frontend')
 source=(${_pkgname}::"git+https://github.com/bmc0/${_pkgname}.git")
 md5sums=('SKIP')
 
@@ -25,6 +32,7 @@ build() {
 }
 
 package() {
-	make -C "${srcdir}/${_pkgname}" DESTDIR="${pkgdir}" install
+	cd "${srcdir}/${_pkgname}"
+	make DESTDIR="${pkgdir}" install
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
