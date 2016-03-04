@@ -44,13 +44,13 @@ backup=("etc/java-$_jname/amd64/jvm.cfg"
 [[ $CARCH = i686 ]] && backup[0]="etc/java-$_jname/i386/jvm.cfg"
 install=$pkgname.install
 source=("http://download.oracle.com/otn-pub/java/jce_policy/$_major/jce_policy-$_major.zip"
-        'javaws-launcher'
-        "policytool-$_jname.desktop")
+        "policytool-$_jname.desktop"
+        'javaws-launcher')
 source_i686=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.bin")
 source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-x64.bin")
 md5sums=('b20f9d6ed14e55d73a5ed204bca01e7a'
-         '45c15a6b4767288f2f745598455ea2bf'
-         '1ae1bd8b6f12af6c30a2558a39da0fe4')
+         '1ae1bd8b6f12af6c30a2558a39da0fe4'
+         '45c15a6b4767288f2f745598455ea2bf')
 md5sums_i686=('1d8001ef61a2e3a11fe7b9eec9f08948')
 md5sums_x86_64=('4a4569126f05f525f48bacf761f7185c')
 
