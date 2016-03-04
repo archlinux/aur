@@ -1,5 +1,5 @@
 pkgname=osvr-steamvr-git
-pkgver=v0.1.r60.gf89a862
+pkgver=v0.1.r84.g124f42a
 pkgrel=1
 pkgdesc="Driver for allowing applications written against SteamVR to work with hardware and software running with the OSVR software framework."
 arch=(i686 x86_64)
@@ -25,9 +25,6 @@ prepare() {
 
   mkdir -p "$srcdir/osvr-steamvr-build"
   cp "$srcdir/Findjsoncpp.cmake" "$srcdir/osvr-steamvr/cmake"
-
-  #Why?
-  sed -i 's,"make_unique_impl.h","vendor/libcxx/include/make_unique_impl.h",g' "$srcdir/osvr-steamvr/make_unique.h"
 }
 
 build() {
