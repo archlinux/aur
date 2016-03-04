@@ -1,0 +1,17 @@
+--- a/configure.ac	2015-11-26 14:38:10.000000000 +0500
++++ b/configure.ac	2016-03-04 19:00:03.395406767 +0500
+@@ -935,11 +935,11 @@
+ 		AC_MSG_ERROR([not found (try --with-systemdsystemunitdir)])
+ 	fi
+ 
+-	PKG_CHECK_MODULES(systemd_daemon, [libsystemd-daemon])
++	PKG_CHECK_MODULES(systemd_daemon, [libsystemd])
+ 	AC_SUBST(systemd_daemon_CFLAGS)
+ 	AC_SUBST(systemd_daemon_LIBS)
+ 
+-	PKG_CHECK_MODULES(systemd_journal, [libsystemd-journal])
++	PKG_CHECK_MODULES(systemd_journal, [libsystemd])
+ 	AC_SUBST(systemd_journal_CFLAGS)
+ 	AC_SUBST(systemd_journal_LIBS)
+ fi
+
