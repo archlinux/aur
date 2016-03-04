@@ -1,0 +1,11 @@
+[Unit]
+Description=Advanced web-based application for MySQL database administration and development
+After=network.target
+
+[Service]
+User=nobody
+Group=nobody
+ExecStart=/usr/bin/php -n -d extension=mysqli.so -S 127.0.30.36:8080 -t /usr/share/webapps/dbninja
+
+[Install]
+WantedBy=multi-user.target
