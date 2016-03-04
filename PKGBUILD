@@ -2,8 +2,8 @@
 
 pkgname=rapidlauncher-git
 _pkgname=RapidLauncher
-pkgrel=2
-pkgver=r95.44bc2f9-1
+pkgrel=3
+pkgver=r95.44bc2f9
 pkgdesc="Rapid Launcher is an application launcher that is supposed to be fast and relatively lightweight."
 arch=('i686' 'x86_64')
 url="https://github.com/echo-devim/RapidLauncher"
