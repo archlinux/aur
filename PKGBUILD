@@ -1,7 +1,7 @@
 # Maintainer: Christian Schwarz <me@cschwarz.com>
 pkgbase=python-yoctopuce
 pkgname=("python-yoctopuce" "python2-yoctopuce")
-pkgver=1.10.21816
+pkgver=1.10.22936
 pkgrel=1
 pkgdesc="Yoctopuce Python API"
 arch=('any')
@@ -10,7 +10,7 @@ license=('unknown')
 makedepends=('python-setuptools' 'python2-setuptools')
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/y/yoctopuce/yoctopuce-$pkgver.tar.gz")
-md5sums=("ff246bacbc10f672e6b23f342d282326")
+md5sums=('f97ad6bc34a140044298ecac57370829')
 
 package_python-yoctopuce() {
   depends=("python")
