@@ -3,13 +3,13 @@
 pkgname=jwmappmenugen-git
 _pkgname=jwmappmenugen
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple menu generator for the Joe's Window Manager based on fbmenugen."
 arch=('any')
 url="https://github.com/BlackCodec/jwmappmenugen/tree/master"
 license=('GPL')
 depends=('perl>=5.14.0' 'jwm' 'perl-data-dump' 'perl-linux-desktopfiles>=0.08')
-source="https://github.com/BlackCodec/jwmappmenugen/archive/master.zip"
+source=("https://github.com/BlackCodec/$_pkgname/archive/master.zip")
 md5sums=('0fca326d9daba9c8ed4a43aedd9bb490')
 
 package() {
