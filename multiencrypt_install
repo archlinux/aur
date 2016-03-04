@@ -33,7 +33,9 @@ passphrase once and tries  to reuse it for all the devices. If it fails on one
 device, it asks for a password again.
 
 Devices are specified on the kernel command line:
-cryptdevices=device1:dmname1[:options1];device2:dmname2[:options2];...
+cryptdevices="device1:dmname1[:options1];device2:dmname2[:options2];..."
+
+Don't forget the quotes here, otherwise it will not work correctly.
 
 Options are optional and separated by commata (,). Currently only one option is
 supported:
@@ -42,8 +44,8 @@ allow-discards	adds --allow-discards to cryptsetup (see man 8 cryptsetup)
 Unlocking via keyfile is currently not supported.
 
 You will be prompted for the password at runtime.  This means you must have a
-keyboard available to input it, and you may need the keymap hook as well to
-ensure that the keyboard is using the layout you expect.
+keyboard available to enter it, and you may need the keymap hook as well to
+ensure that the keyboard is using the layout you are expecting.
 HELPEOF
 }
 
