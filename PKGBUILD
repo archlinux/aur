@@ -1,6 +1,6 @@
 # Maintainer: Manuel Schneider  <manuelschneid3r at googles mail>
 pkgname=albert
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="A DE agnostic omnilauncher."
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}/build"
   cmake ".." \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=Debug
   make
 }
 
