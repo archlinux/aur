@@ -3,7 +3,7 @@
 
 _pkgname=openssl
 pkgname=${_pkgname}-chacha20
-_ver=1.0.2f
+_ver=1.0.2g
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 #pkgver=$_ver
@@ -22,12 +22,12 @@ source=("https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz"
 	"https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz.asc"
 	'no-rpath.patch'
 	'ca-dir.patch'
-	'openssl__chacha20_poly1305_cf.patch')
-sha256sums=('932b4ee4def2b434f85435d9e3e19ca8ba99ce9a065a61524b429a9d5e9b2e9c'
+	'openssl__chacha20_poly1305_draft_and_rfc_ossl102g.patch')
+sha256sums=('b784b1b3907ce39abf4098702dade6365522a253ad1552e267a9a0e89594aa33'
 	'SKIP'
 	'754d6107a306311e15a1db6a1cc031b81691c8b9865e8809ac60ca6f184c957c'
 	'9e8126f3a748f4c1d6fe34d4436de72b16a40e97a6d18234d2e88caa179d50c4'
-	'cc320a8c0cdb5c723da53d78afd32d1da1d5bc6650c9fb301e164c45738ea0b7')
+	'09a2e88f95d8cd12bd9c23cd87554ab700fb1625a848c0502951849fb1d564fc')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491')
 
 prepare() {
@@ -38,8 +38,8 @@ prepare() {
 	# set ca dir to /etc/ssl by default
 	patch -p0 -i $srcdir/ca-dir.patch
 	# Cloudflare patch
-	# https://github.com/cloudflare/sslconfig/blob/master/patches/openssl__chacha20_poly1305_cf.patch
-	patch -p1 -i $srcdir/openssl__chacha20_poly1305_cf.patch
+	# https://github.com/cloudflare/sslconfig/blob/master/patches/openssl__chacha20_poly1305_draft_and_rfc_ossl102g.patch
+	patch -p1 -i $srcdir/openssl__chacha20_poly1305_draft_and_rfc_ossl102g.patch
 }
 
 build() {
