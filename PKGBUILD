@@ -27,8 +27,6 @@ depends=('pcre' 'zlib' 'pam' 'gd' 'hardening-wrapper' 'libxslt')
 makedepends=(
 	'libxslt'
 	'gd'
-    'git'
-	'cmake'
 )
 
 url="http://nginx.org"
@@ -51,7 +49,7 @@ source=("nginx.conf"
 		"nginx.service"
 		"http://nginx.org/download/nginx-$pkgver.tar.gz"
 		"https://github.com/openssl/openssl/archive/OpenSSL_1_0_2-stable.zip"
-        "https://github.com/cloudflare/sslconfig/files/153850/openssl__chacha20_poly1305_1_0_2g.patch.zip"
+        "https://github.com/cloudflare/sslconfig/raw/master/patches/openssl__chacha20_poly1305_draft_and_rfc_ossl102g.patch"
         "${_mod1}-${_mod1ver}.tar.gz::https://github.com/cuber/${_mod1}/archive/${_mod1ver}.tar.gz"
         "${_mod2}-${_mod2ver}.tar.gz::https://github.com/yaoweibin/${_mod2}/archive/v${_mod2ver}.tar.gz"
         "${_mod3}-${_mod3ver}.tar.gz::https://github.com/grahamedgecombe/${_mod3}/archive/v${_mod3ver}.tar.gz"
@@ -61,8 +59,8 @@ sha256sums=('8d8e314da10411b29157066ea313fc080a145d2075df0c99a1d500ffc7e8b7d1'
             'adcf6507abb2d4edbc50bd92f498ba297927eed0460d71633df94f79637aa786'
             '225228970d779e1403ba4314e3cd8d0d7d16f8c6d48d7a22f8384db040eb0bdf'
             '1af2eb956910ed4b11aaf525a81bc37e135907e7127948f9179f5410337da042'
-            'f1edb84de021eaa51e1fbc20f932d9545514ca90c855d89fddb6bed93c55d2bf'
-            'c7854b4cb988cb11e3984b035e07dd0537afd55d2b2ef566712448284af3ef1f'
+            '92b58a778f2fbe4af718beef60b0a36f16e1ce7548c006fa2c679dd6c551cb6e'
+            '09a2e88f95d8cd12bd9c23cd87554ab700fb1625a848c0502951849fb1d564fc'
             '9cd68c8e092efb1a419e1087bb9ca23aab1ff8650c400c0aa815d461d79385de'
             'ed4ddbcf0c434f4a1e97b61251a63ace759792764bd5cb79ff20efe348db8db3'
             '63e6dcb16a7860520513598ff67bdcd3e978b5fcd96d63b2afb08a0cfd29f232')
@@ -71,9 +69,10 @@ build() {
 	local _src_dir="${srcdir}/${_pkgname}-${pkgver}"
 
 	export CFLAGS="-Wno-error -fPIC"
+
 	cd ${srcdir}/
     mv openssl-OpenSSL_1_0_2-stable openssl
-    cd openssl && patch -p1 < ../openssl__chacha20_poly1305_1_0_2g.patch
+    cd openssl && patch -p1 < ../openssl__chacha20_poly1305_draft_and_rfc_ossl102g.patch
 
 	cd $_src_dir
 
@@ -104,7 +103,7 @@ build() {
 		--with-stream \
         --add-module=../${_mod1}-${_mod1ver} \
         --add-module=../${_mod2}-${_mod2ver} \
-        --add-module=../${_mod3}-${_mod3ver}
+        --add-module=../${_mod3}-${_mod3ver} \
 
 	make
 }
