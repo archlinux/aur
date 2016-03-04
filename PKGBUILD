@@ -103,7 +103,7 @@ build() {
 		--with-stream \
         --add-module=../${_mod1}-${_mod1ver} \
         --add-module=../${_mod2}-${_mod2ver} \
-        --add-module=../${_mod3}-${_mod3ver} \
+        --add-module=../${_mod3}-${_mod3ver}
 
 	make
 }
