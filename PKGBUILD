@@ -44,14 +44,14 @@ backup=("etc/java32-$_jname/i386/jvm.cfg"
         "etc/java32-$_jname/psfontj2d.properties"
         "etc/java32-$_jname/sound.properties")
 install=$pkgname.install
-source=("http://download.oracle.com/otn-pub/java/jce_policy/$_major/jce_policy-$_major.zip"
-        'javaws-launcher'
-        "policytool32-$_jname.desktop")
-source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.bin")
-md5sums=('b20f9d6ed14e55d73a5ed204bca01e7a'
-         '45c15a6b4767288f2f745598455ea2bf'
-         'a95f75efd82036a440f14cd7f09ac1fc')
-md5sums_x86_64=('1d8001ef61a2e3a11fe7b9eec9f08948')
+source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.bin"
+        "http://download.oracle.com/otn-pub/java/jce_policy/$_major/jce_policy-$_major.zip"
+        "policytool32-$_jname.desktop"
+        'javaws-launcher')
+md5sums=('1d8001ef61a2e3a11fe7b9eec9f08948'
+         'b20f9d6ed14e55d73a5ed204bca01e7a'
+         'a95f75efd82036a440f14cd7f09ac1fc'
+         '45c15a6b4767288f2f745598455ea2bf')
 
 package() {
     msg2 "Extracting the .bin"
