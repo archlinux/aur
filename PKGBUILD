@@ -3,7 +3,7 @@
 
 _pkgname=papyros-files
 pkgname=${_pkgname}-git
-pkgver=0.0.4.r46.g38cf33d
+pkgver=0.1.r0.g69e2185
 pkgrel=1
 pkgdesc="The file manager for Papyros"
 arch=("i686" "x86_64")
