@@ -1,5 +1,5 @@
 pkgname=jrebel
-pkgver=6.3.0
+pkgver=6.4.0
 pkgrel=1
 pkgdesc="JRebel is a JVM-plugin that makes it possible for Java developers to instantly see any code change made to an app without redeploying."
 url="http://zeroturnaround.com/software/jrebel/"
@@ -20,7 +20,7 @@ source=("$_pkgfile::$_downloadurl"
         "$pkgname.sh"
         "$pkgname.csh")
 
-md5sums=('bd7ee9a196f11a33dec28d02e8a06e02'
+md5sums=('e375ae2afaecf6ef7aec036fc3546210'
          '3acd6fe2b66cc18c74d15fff985bac33'
          '4f7cfc0ab796d6de2da1c650247fe3d1')
 
@@ -34,7 +34,7 @@ package() {
   rm bin/*.cmd
 
   msg2 "Moving stuff in place"
-  mv 3rd-party-licenses-jrebel.txt License.txt License-until-2013.txt readme.txt "$pkgdir/usr/share/licenses/$pkgname/"
+  mv 3rd-party-licenses-jrebel.txt License.txt readme.txt "$pkgdir/usr/share/licenses/$pkgname/"
   mv * "$pkgdir/opt/$pkgname"
 
   msg2 "Installing scripts"
