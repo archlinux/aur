@@ -6,7 +6,7 @@
 
 pkgname=saga-gis
 _pkgname=saga
-pkgver=2.2.4
+pkgver=2.2.5
 pkgrel=1
 pkgdesc="A Geographic Information System (GIS) software with immense capabilities for geodata processing and analysis."
 url="http://www.saga-gis.org"
@@ -23,16 +23,18 @@ optdepends=('opencv'
             'vigra'
             'liblas'
             'libharu')
-source=("http://iweb.dl.sourceforge.net/project/saga-gis/SAGA%20-%202.2/SAGA%20${pkgver}/saga-${pkgver}.tar.gz")
-md5sums=('f8f56c5e1d0a47d73f4cdb9ae5b45a5a')
+source=("http://iweb.dl.sourceforge.net/project/saga-gis/SAGA%20-%202.2/SAGA%20${pkgver}/saga_${pkgver}.tar.gz")
+md5sums=('1553a967e8859d13bb8878f06a4ea549')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  aclocal
-  autoheader
-  libtoolize
-  automake --add-missing
+  #rm aclocal.m4 
+  #aclocal
+  #autoheader
+  #libtoolize
+  #automake --add-missing
+  
   autoreconf -i
 
   ./configure --prefix=/usr \
