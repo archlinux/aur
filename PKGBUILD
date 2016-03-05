@@ -1,8 +1,8 @@
 # Maintainer: Brendan Abolivier <brendan@archlinux.info>
 
 pkgname=nodejs-lts-bin
-pkgver=4.3.1
-pkgrel=2
+pkgver=4.3.2
+pkgrel=1
 pkgdesc='Evented I/O for V8 javascript'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://nodejs.org/'
