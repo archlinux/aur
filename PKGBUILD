@@ -6,7 +6,7 @@ _pkgname=wwwoffle
 pkgname="${_pkgname}-svn"
 # _pkgver=2.9i
 pkgver=2.9j.r2220
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple caching proxy server with special features (request, recursive fetch, ...) for use with dial-up internet links. Includes startup scripts for OpenRC, System V init, systemd."
 arch=('i686' 'x86_64' 'arm' 'arm64')
 url="http://www.gedanken.org.uk/software/wwwoffle/"
@@ -161,7 +161,7 @@ package() {
   
   ### Install the software.
   make DESTDIR="${pkgdir}" install
-  mv "${pkgdir}/etc/wwwoffle.conf" "${pkgdir}/etc/wwwoffle.conf.template"
+  mv "${pkgdir}/etc/wwwoffle/wwwoffle.conf" "${pkgdir}/etc/wwwoffle/wwwoffle.conf.template"
   
   ### Move documentation into the place we want it.
   mkdir -p "${pkgdir}/usr/share"
