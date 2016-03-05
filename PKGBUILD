@@ -37,9 +37,6 @@ package() {
 	./install.pl $update --installDir=$_installDir -k -v
 	install -D -m644 $srcdir/EULA.txt $pkgdir/usr/share/licenses/$pkgname/EULA.txt
 
-	# remove unneeded mime cache files (leave directories)
-	rm $pkgdir/usr/share/mime/* &> /dev/null || true
-
         # create startup script
 	cat > $pkgdir/usr/bin/cewe-fotobuch <<-EOF
 		#!/usr/bin/bash
@@ -54,4 +51,8 @@ package() {
 	# create desktop shortcut
 	install -D -m644 $_installDir/Resources/keyaccount/32.xpm $pkgdir/usr/share/pixmaps/cewe-fotobuch.xpm && \
 	install -D -m644 $srcdir/cewe-fotobuch.desktop $pkgdir/usr/share/applications/cewe-fotobuch.desktop
+
+	# remove unneeded mime cache files and installation logs
+	rm -d $pkgdir/usr/share/mime/application/* $pkgdir/usr/share/mime/* \
+		$_installDir/.log/* $_installDir/.log &> /dev/null || true
 }
