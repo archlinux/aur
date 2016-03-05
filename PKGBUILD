@@ -8,19 +8,18 @@ url="http://www.sourcefabric.org/en/airtime"
 license=('GPL3')
 groups=()
 depends=('php' 'php-gd' 'php-pear' 'zendframework' 'php-pgsql' 'php-apcu' 'php-apcu-bc'
-         'python' 'pyhton-virtualenv' 'python-pip'
+         'python' 'python-virtualenv' 'python-pip'
          'ocaml-soundtouch' 'ocaml-taglib' 'ocaml-ao' 'ocaml-mad' 'ocaml-camomile'
          'ecasound' 'portaudio' 'libsamplerate' 'vo-aacenc'
          'patch'
-         'mpg123' 'vorbisgain' 'pwgen' 'vorbis-tools' 'silan' 'lsof'
-         'libpulse' 'fadd2' 'alsa-utils'
+         'mpg123' 'vorbisgain' 'pwgen' 'vorbis-tools' 'silan-git' 'lsof'
+         'libpulse' 'alsa-utils'
          'liquidsoap'
          'coreutils' 'sudo'
          'curl'
          'opus' 'flac' 'lame'
          'multitail'
          'perl'
-         'ssl-cert'
          'tar>=1.22' 'unzip' 'gzip>=1.3.12')
 optdepends=('rabbitmq: localy hosted rabbitmq server'
             'postgresql: localy hosted Database server'
