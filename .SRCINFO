@@ -1,0 +1,14 @@
+pkgbase = firefox-extension-new-tab-override
+	pkgdesc = Brings back the ability to change the page which is shown when opening a new tab
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = https://addons.mozilla.org/en-US/firefox/addon/new-tab-override/
+	arch = any
+	license = MIT
+	depends = firefox
+	noextract = new_tab_override_browsernewtaburl_replacement-2.3.1-fx.xpi
+	source = https://addons.cdn.mozilla.net/user-media/addons/626810/new_tab_override_browsernewtaburl_replacement-2.3.1-fx.xpi
+	sha256sums = c698058bdce1d3305f66c14ec5af46fd5cdbf4e0861b859ae6770ba1e2a2e892
+
+pkgname = firefox-extension-new-tab-override
+
