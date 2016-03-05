@@ -1,7 +1,7 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=sardi-icons
-pkgver=5.0
-pkgrel=6
+pkgver=5.1
+pkgrel=2
 pkgdesc="Sardi is an icon theme build upon ardis icons but has outgrown its roots > 18 iconsets"
 arch=('any')
 url="http://sourceforge.net/projects/sardi"
@@ -22,6 +22,7 @@ package() {
   cp -dr --no-preserve='ownership' Sardi\ Flat\ Orange "${pkgdir}"/usr/share/icons/
   cp -dr --no-preserve='ownership' Sardi\ Flexible "${pkgdir}"/usr/share/icons/
   cp -dr --no-preserve='ownership' Sardi\ Ghost "${pkgdir}"/usr/share/icons/
+  cp -dr --no-preserve='ownership' Sardi\ Ghost\ Flexible "${pkgdir}"/usr/share/icons/
   cp -dr --no-preserve='ownership' Sardi\ Grey "${pkgdir}"/usr/share/icons/
   cp -dr --no-preserve='ownership' Sardi\ Mono "${pkgdir}"/usr/share/icons/
   cp -dr --no-preserve='ownership' Sardi\ Mono\ Mint-X-Grey "${pkgdir}"/usr/share/icons/
