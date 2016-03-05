@@ -2,7 +2,7 @@
 
 pkgname=mendeleydesktop-dev
 pkgshortname=mendeleydesktop
-pkgver=1.16_dev4
+pkgver=1.16
 pkgrel=1
 pkgdesc="Academic software for managing and sharing research papers (desktop client)"
 url=https://www.mendeley.com/release-notes/development/
@@ -15,11 +15,11 @@ md5sums=('' '44c54032370c2a7cbc6667af6d19acf7')
 
 if [[ $CARCH = i686 ]];then
   _arch=i486
-  md5sums[0]='03ee87de57cda126092b21d1f09083be'
+  md5sums[0]='59012d6798d0e0b202ae89075dd3cbb7'
 
 else
   _arch=$CARCH
-  md5sums[0]='45d382b86819a28ae6a5e681a14d04ce'
+  md5sums[0]='85660bd624b86270e8ace75adacbad66'
 fi
 
 if which gconftool-2 &>/dev/null;then
