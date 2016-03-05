@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('gnome-shell')
 install=${pkgname}.install
 source=("https://github.com/AMDG2/GnomeShell_DynamicTopBar/archive/${pkgver}.tar.gz")
-sha256sums=('768bead77b311066c514c1599a3b917650e7f60407fcc2ef1a46049d72138e25')
+sha256sums=('8369dcac9c7bd0cb0a360c8bf4dcea3b9bc3a4d92aa88206b8cccdef13232fe9')
 
 package() {
   _uuid='dynamicTopBar@gnomeshell.feildel.fr'
