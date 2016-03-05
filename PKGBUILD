@@ -42,12 +42,12 @@ pkgver(){
 package_bomi-skin-papirus-git() {
     pkgdesc="Papirus theme for Bomi"
     options=()
-    makedepends=('findutils' 'git')
+    makedepends=('git')
     depends=('bomi')
     optdepends=()
     conflicts=('bomi-skin-papirus')
-    cd ${srcdir}/${_pkgname}/players-skins/bomi-skin/
-    find * -type f -exec install -Dm 644 '{}' "${pkgdir}/usr/share/bomi/skins/{}" \;
+    install -dm755 ${pkgdir}/usr/share/bomi/skins
+    cp -r ${srcdir}/${_pkgname}/players-skins/bomi-skin/Papirus ${pkgdir}/usr/share/bomi/skins/
 }
 
 package_libreoffice-papirus-theme-git() {
@@ -88,7 +88,7 @@ package_papirus-git() {
 package_papirus-aurorae-theme-git() {
     pkgdesc="Papirus decorations for Kwin (git version)"
     options=()
-    makedepends=('findutils' 'git')
+    makedepends=('git')
     depends=('kwin')
     optdepends=()
     conflicts=('papirus-aurorae-theme')
@@ -99,7 +99,7 @@ package_papirus-aurorae-theme-git() {
 package_papirus-color-scheme-git() {
     pkgdesc="Papirus color scheme for KDE (git version)"
     options=()
-    makedepends=('findutils' 'git')
+    makedepends=('git')
     depends=('plasma-desktop')
     optdepends=()
     conflicts=('papirus-color-scheme')
@@ -109,37 +109,36 @@ package_papirus-color-scheme-git() {
 package_papirus-gtk-theme-git() {
     pkgdesc="Papirus GTK theme for KDE (git version)"
     options=()
-    makedepends=('findutils' 'git')
+    makedepends=('git')
     depends=('gtk-engine-murrine' 'gtk2' 'gtk3')
     optdepends=()
     conflicts=('papirus-gtk-theme')
-    cd ${srcdir}/${_pkgname}/kde-pack/gtk-themes/
-    find * -type f -exec install -Dm 644 '{}' "${pkgdir}/usr/share/themes/{}" \;
+    install -dm755 ${pkgdir}/usr/share/themes
+    cp -r ${srcdir}/${_pkgname}/kde-pack/gtk-themes/papirus* ${pkgdir}/usr/share/themes/
 }
 
 package_papirus-icon-theme-gtk-git() {
     pkgdesc="Papirus icon theme for GTK (git version)"
     options=('!strip')
-    makedepends=('findutils' 'git' 'gtk-update-icon-cache' 'xdg-utils')
+    makedepends=('git' 'gtk-update-icon-cache' 'xdg-utils')
     install='papirus-git.install'
     depends=()
     optdepends=()
     conflicts=('papirus-gtk-icon-theme' 'papirus-gtk-icon-theme-git' 'papirus-icon-theme-gtk')
-    cd ${srcdir}/${_pkgname}/gtk-icons/
-    find * -type f -exec install -Dm 644 '{}' "${pkgdir}/usr/share/icons/{}" \;
+    install -dm755 ${pkgdir}/usr/share/icons
+    cp -r ${srcdir}/${_pkgname}/gtk-icons/Papirus* ${pkgdir}/usr/share/icons/
 }
 
 package_papirus-icon-theme-kde-git() {
     pkgdesc="Papirus icon theme for KDE (git version)"
     options=('!strip')
-    makedepends=('findutils' 'git' 'gtk-update-icon-cache' 'xdg-utils')
+    makedepends=('git' 'gtk-update-icon-cache' 'xdg-utils')
     install='papirus-git.install'
     depends=()
     optdepends=()
     conflicts=('papirus-icon-theme' 'papirus-icon-theme-kde' 'papirus-icon-theme-git')
-    cd ${srcdir}/${_pkgname}/kde-pack/icons/
-    find * -type f -exec install -Dm 644 '{}' "${pkgdir}/usr/share/icons/{}" \;
-    install -dm755 ${pkgdir}/usr/share/apps/amarok/icons/papirus{,-black-panel,-dark}
+    install -dm755 ${pkgdir}/usr/share/{icons,apps/amarok/icons/papirus{,-black-panel,-dark}}
+    cp -r ${srcdir}/${_pkgname}/kde-pack/icons/papirus*                                  ${pkgdir}/usr/share/icons/
     cp -r ${srcdir}/${_pkgname}/kde-pack/icons/papirus/extra-icons/amarok/*              ${pkgdir}/usr/share/apps/amarok/icons/papirus/
     cp -r ${srcdir}/${_pkgname}/kde-pack/icons/papirus-black-panel/extra-icons/amarok/*  ${pkgdir}/usr/share/apps/amarok/icons/papirus-black-panel/
     cp -r ${srcdir}/${_pkgname}/kde-pack/icons/papirus-dark/extra-icons/amarok/*         ${pkgdir}/usr/share/apps/amarok/icons/papirus-dark/
@@ -150,20 +149,20 @@ package_papirus-k3b-theme-git() {
     options=()
     makedepends=('git')
     depends=('k3b')
-    cd ${srcdir}/${_pkgname}/kde-pack/k3b-themes/
-    find * -type f -exec install -Dm 644 '{}' "${pkgdir}/usr/share/k3b/pics/{}" \;
-    find * -type f -exec install -Dm 644 '{}' "${pkgdir}/usr/share/apps/k3b/pics/{}" \;
+    install -dm755 ${pkgdir}/usr/share/{k3b/pics,apps/k3b/pics}
+    cp -r ${srcdir}/${_pkgname}/kde-pack/k3b-themes/* ${pkgdir}/usr/share/k3b/pics/
+    cp -r ${srcdir}/${_pkgname}/kde-pack/k3b-themes/* ${pkgdir}/usr/share/apps/k3b/pics/
 }
 
 package_papirus-kmail-theme-git() {
     pkgdesc="Papirus theme for Kmail (git version)"
     options=()
-    makedepends=('findutils' 'git')
+    makedepends=('git')
     depends=('kmail')
     optdepends=()
     conflicts=('papirus-kmail-theme')
-    cd ${srcdir}/${_pkgname}/kde-pack/kmail-theme/
-    find * -type f -exec install -Dm 644 '{}' "${pkgdir}/usr/share/messageviewer/themes/{}" \;
+    install -dm755 ${pkgdir}/usr/share/messageviewer/themes
+    cp -r ${srcdir}/${_pkgname}/kde-pack/kmail-theme/papirus* ${pkgdir}/usr/share/messageviewer/themes/
 }
 
 package_papirus-konsole-colorscheme-git() {
@@ -179,14 +178,13 @@ package_papirus-konsole-colorscheme-git() {
 package_papirus-plasma-theme-git() {
     pkgdesc="Papirus plasma theme for KDE (git version)"
     options=()
-    makedepends=('findutils' 'git')
+    makedepends=('git')
     depends=('plasma-desktop')
     optdepends=()
     conflicts=('papirus-look-and-feel' 'plasma-theme-papirus')
-    cd ${srcdir}/${_pkgname}/kde-pack/plasma-themes/
-    find * -type f -exec install -Dm 644 '{}' "${pkgdir}/usr/share/plasma/desktoptheme/{}" \;
-    cd ${srcdir}/${_pkgname}/kde-pack/look-and-feel/
-    find * -type f -exec install -Dm 644 '{}' "${pkgdir}/usr/share/plasma/look-and-feel/{}" \;
+    install -dm755 ${pkgdir}/usr/share/plasma/{desktoptheme,look-and-feel}
+    cp -r ${srcdir}/${_pkgname}/kde-pack/plasma-themes/papirus* ${pkgdir}/usr/share/plasma/desktoptheme/
+    cp -r ${srcdir}/${_pkgname}/kde-pack/look-and-feel/* ${pkgdir}/usr/share/plasma/look-and-feel/
 }
 
 package_papirus-qtcurve-theme-git() {
@@ -221,9 +219,9 @@ package_papirus-vlc-theme-git() {
 package_papirus-yakuake-theme-git() {
     pkgdesc="Papirus theme for Yakuake (git version)"
     options=()
-    makedepends=('findutils' 'git')
+    makedepends=('git')
     depends=('yakuake')
     conflicts=('papirus-yakuake-theme' 'yakuake-skin-papirus' 'yakuake-skin-papirus-dark' 'yakuake-skin-papirus-dark-frameworks' 'yakuake-skin-papirus-frameworks')
-    cd ${srcdir}/${_pkgname}/kde-pack/yakuake-skins/
-    find * -type f -exec install -Dm 644 '{}' "${pkgdir}/usr/share/yakuake/skins/{}" \;
+    install -dm755 ${pkgdir}/usr/share/{apps/yakuake/skins,yakuake/skins}
+    cp -r ${srcdir}/${_pkgname}/kde-pack/yakuake-skins/papirus* ${pkgdir}/usr/share/yakuake/skins/
 }
