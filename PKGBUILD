@@ -1,5 +1,5 @@
 pkgname=mingw-w64-gtk2
-pkgver=2.24.29
+pkgver=2.24.30
 pkgrel=1
 pkgdesc="GTK+ is a multi-platform toolkit (v2) (mingw-w64)"
 arch=(any)
@@ -19,7 +19,7 @@ depends=(
   'mingw-w64-gdk-pixbuf2>=2.21.0')
 options=(!strip !buildflags staticlibs)
 source=("https://download.gnome.org/sources/gtk+/${pkgver%.*}/gtk+-${pkgver}.tar.xz")
-sha256sums=("0741c59600d3d810a223866453dc2bbb18ce4723828681ba24aa6519c37631b8")
+sha256sums=("0d15cec3b6d55c60eac205b1f3ba81a1ed4eadd9d0f8e7c508bc7065d0c4ca50")
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
