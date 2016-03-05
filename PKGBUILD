@@ -4,7 +4,7 @@
 
 pkgname=firefox-extension-omnisidebar-git
 pkgver=1.6.11
-pkgrel=1
+pkgrel=2
 pkgdesc='A firefox add-on designed to provide more control over the behavior of the sidebar.'
 url='https://github.com/Quicksaver/OmniSidebar'
 arch=('any')
@@ -38,7 +38,6 @@ query-version() {
 
 
 pkgver() {
-  cd $_gitname
   sparql '<urn:mozilla:install-manifest> em:version ?x' | tr - .
   echo -n .
 printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
