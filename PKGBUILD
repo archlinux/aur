@@ -1,11 +1,11 @@
 pkgname=rhvoice-git
-pkgver=20160215
+pkgver=20160217
 pkgrel=1
 pkgdesc="free and open source speech synthesizer for Russian language"
 arch=('i686' 'x86_64')
 url="https://github.com/Olga-Yakovleva/RHVoice"
 license=('GPL3')
-depends=('expat' 'pcre' 'sox' 'libunistring' 'python2' 'portaudio' 'glibmm')
+depends=('expat' 'pcre' 'libunistring' 'python2' 'portaudio' 'glibmm')
 makedepends=('scons' 'gcc')
 optdepends=('alsa-utils: for using aplay')
 provides=('rhvoice')
@@ -33,6 +33,10 @@ cat << EOF | patch "$srcdir/$_gitname/SConstruct"
 <         env.AppendUnique(CXXFLAGS=["-std=c++03"])
 ---
 >         env.AppendUnique(CXXFLAGS=["-std=c++11"])
+212c212
+< #        has_giomm=conf.CheckPKG("giomm-2.4")
+---
+>         has_giomm=conf.CheckPKG("giomm-2.4")
 EOF
     cd "$srcdir/$_gitname"
 
@@ -43,7 +47,7 @@ package() {
   echo "Installing package"
   cd "$srcdir/$_gitname"
   mkdir -p ${pkgdir}{/usr/bin/,/etc/RHVoice,/usr/lib/,/usr/include,/usr/share/RHVoice,/usr/lib/speech-dispatcher-modules}
-#  install -D build/linux/service/RHVoice{-service,-client} "${pkgdir}/usr/bin/"
+  install -D build/linux/service/RHVoice{-service,-client} "${pkgdir}/usr/bin/"
   install -D build/linux/test/RHVoice-test "${pkgdir}/usr/bin/"
   install -D build/linux/sd_module/sd_rhvoice "${pkgdir}/usr/lib/speech-dispatcher-modules/"
   install -D -m 644 config/RHVoice.conf "${pkgdir}/etc/RHVoice/"
