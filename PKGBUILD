@@ -6,7 +6,7 @@
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=amule-remote-tools
-pkgver=10871
+pkgver=10874
 pkgrel=1
 pkgdesc="aMule Remote Tools CLI and GUI"
 arch=('i686' 'x86_64')
@@ -14,12 +14,17 @@ url="http://www.amule.org"
 license=('GPL')
 conflicts=('amule')
 depends=('wxgtk2.8' 'geoip')
-makedepends=('crypto++')
-source=("http://amule.sourceforge.net/tarballs/aMule-SVN-r${pkgver}.tar.bz2")
-md5sums=('f3c666b6fa518a3e6e2c21670c243292')
+makedepends=('crypto++' 'git')
+source=("git://repo.or.cz/amule.git#tag=amule-svn-r$pkgver")
+md5sums=('SKIP')
+
+prepare() {
+  cd amule
+  sed -e 's|wx-config|wx-config-2.8|g' -i configure
+}
 
 build() {
-  cd "${srcdir}/aMule-SVN-r${pkgver}"
+  cd amule
 
   ./configure --prefix=/usr \
               --mandir=/usr/share/man \
@@ -49,7 +54,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/aMule-SVN-r${pkgver}"
+  cd amule
 
   make DESTDIR=${pkgdir} install
 }
