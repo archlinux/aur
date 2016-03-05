@@ -27,10 +27,14 @@ package() {
 	mkdir -p $_installDir $pkgdir/usr/{bin,share/icons/hicolor,share/mime/packages}
 
 	cd $srcdir
-	# don't install broken desktop file or put it on current user's desktop
-	sed -i 's/createDesktopShortcuts();/#createDesktopShortcuts();/' ./install.pl
+	# don't put broken desktop file on current user's desktop; don't burble and dish out wrong information
+	sed -i 's/createDesktopShortcuts();/#createDesktopShortcuts();/;
+		s/^printf(\$TRANSLATABLE\[\(12\|4\)\],/print("\\n");#/' ./install.pl
 
-	./install.pl --installDir=$_installDir --workingDir=$srcdir -k -v
+	# don't show EULA/ask for confirmation if cewe-fotobuch is already installed
+	which cewe-fotobuch &>/dev/null && update='--update'
+
+	./install.pl $update --installDir=$_installDir -k -v
 
 	# remove unneeded mime cache files (leave directories)
 	rm $pkgdir/usr/share/mime/* &> /dev/null || true
