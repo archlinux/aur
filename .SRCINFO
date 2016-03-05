@@ -1,6 +1,6 @@
 pkgbase = visual-grep
 	pkgdesc = A GTK 3 based GUI for grep
-	pkgver = 0.21
+	pkgver = 0.30
 	pkgrel = 1
 	url = http://github.com/gnunn1/vgrep
 	arch = x86_64
