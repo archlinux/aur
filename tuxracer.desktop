@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=0.61
+Type=Application
+Name=Tux Racer
+GenericName=Arcade Game
+Comment=Original penguin racing game
+Icon=tuxracer
+
+Exec=tuxracer
+Terminal=false
+StartupNotify=false
+
+Categories=Game;ArcadeGame;
+Keywords=game;tux;3D;penguin;race;arcade;
