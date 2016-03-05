@@ -4,7 +4,7 @@
 
 _pkgname=avidemux
 pkgname=avidemux-2.6
-pkgver=2.6.11
+pkgver=2.6.12
 pkgrel=1
 pkgdesc="A graphical tool to edit video (filter/re-encode/split)"
 arch=(i686 x86_64)
@@ -17,7 +17,7 @@ conflicts=('avidemux' 'avidemux-cli' 'avidemux-gtk' 'avidemux-qt' 'avidemux-git'
 provides=($pkgname=$pkgver)
 options=('!makeflags')
 source=(https://dl.dropboxusercontent.com/u/26513012/"$_pkgname"_"$pkgver".tar.gz)
-sha512sums=('623944125e46ed1d9e8f5a18dd4094f40a2ca20e40dc6be644533cc8f99318fa062094e351be6fe5a769d93ec651d82c52774ac97bcc669d74afecac69c8d2c8')
+sha512sums=('ca5a03eae6bb583d20499da68400645cc7b66c27255fc77f18ffe311d3d27eaaf3ca813aff25a54934d76fe5d10d9fb48b2ad30d662377764f3ec1b620d5a824')
 
 build() {
     cd $srcdir/"$_pkgname"_"$pkgver"
