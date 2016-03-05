@@ -2,13 +2,13 @@
 # Contributor: Max Rosin <archlinux at maxrosin dot com>
 pkgname=info-beamer-git
 _gitname=info-beamer
-pkgver=217.8309433
-pkgrel=1
+pkgver=243.ac815b1
+pkgrel=2
 pkgdesc="Allows you to develop interactive information displays using the Lua programming language."
 arch=('i686' 'x86_64')
-url="http://info-beamer.org/"
+url="https://info-beamer.com/opensource"
 license=('BSD')
-depends=('ffmpeg' 'lua51' 'libevent' 'glfw' 'devil' 'glew' 'ftgl')
+depends=('ffmpeg2.8' 'lua51' 'libevent' 'glfw' 'devil' 'glew' 'ftgl')
 makedepends=('git')
 source=('git+https://github.com/dividuum/info-beamer.git')
 sha256sums=('SKIP')
@@ -23,6 +23,9 @@ prepare() {
   sed -i 's/-lglfw3/-lglfw/g' Makefile
   sed -i 's/GL\/glfw.h/GLFW\/glfw3.h/g' font.c
   sed -i 's/GL\/glfw.h/GLFW\/glfw3.h/g' shader.c
+  sed -i 's/#define _BSD_SOURCE/#define _DEFAULT_SOURCE/g' vnc.c main.c
+  sed -i 's/-I\/usr\/include\/ffmpeg/-I\/usr\/include\/ffmpeg2.8/g' Makefile
+  sed -i 's/avcodec_alloc_frame/av_frame_alloc/g' video.c
 }
 
 build() {
