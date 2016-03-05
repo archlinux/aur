@@ -1,6 +1,6 @@
 pkgbase = aufs-util
 	pkgdesc = Another Unionfs Implementation that supports NFS branches
-	pkgver = 20150426
+	pkgver = 20160301
 	pkgrel = 1
 	url = http://aufs.sourceforge.net/
 	arch = i686
