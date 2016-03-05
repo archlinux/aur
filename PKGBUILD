@@ -1,7 +1,7 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-covolunablu-gaming       # Build kernel with a different name
 _srcname=linux-4.4
-pkgver=4.4.1
+pkgver=4.4.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -25,9 +25,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         'change-default-console-loglevel.patch'
         '0001-sdhci-revert.patch'
-        'tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch'
-        '0001-4.4-revert-btrfs.patch'
-        '0001-4.4-revert-xfs.patch'
         "http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.4.0-v7r11/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.4.0.patch"
         "http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.4.0-v7r11/0002-block-introduce-the-BFQ-v7r11-I-O-sched-for-4.4.0.patch"
         "http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.4.0-v7r11/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-for.patch"
@@ -35,16 +32,13 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            'c0218043e61da3921cd14579ae4a8774a6fdad91667a9fdb851d0a35f62edb48'
+            '9061d8f57cc25d760387c4e6b7d5cceacaa808e8784a3e478012e7c2949853c8'
             'SKIP'
             '931914bdf174b32cb09be2cc07890f1219f78705856b909656c11ea4db013a60'
             '14a909cd5b6139d0290319ff4130d9ea9067645c27e922fdcbfdf02f1af716b6'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
-            'ab57037ecee0a425c612babdff47c831378bca0bff063a1308599989a350226d'
-            '51586b733e9f178bebe577258b6057b035eded516ffe8bf8bbb26cb0b26c4958'
-            'ffbfaa192d17bfc7c6293aa9a07efe57f65177051ae3d8033d5e45a7bca2e0ad'
             'd1cf14cc696b0f716454fe8eb9746383700889d5d22ad829611f0433cc77b4ce'
             'b17c3fb18c5b8c20a45a38198f293679ca6aef08d16f12cd816a5cfafac4b2c4'
             '69a21bc286a628128cfc4723558829cb6ff6c2d7c4dfd4468457898674187b25'
@@ -70,14 +64,6 @@ prepare() {
   # fixes #47778 sdhci broken on some boards
   # https://bugzilla.kernel.org/show_bug.cgi?id=106541
   patch -Rp1 -i "${srcdir}/0001-sdhci-revert.patch"
-
-  # fixes #47805 kernel panics on platform modules
-  # https://bugzilla.kernel.org/show_bug.cgi?id=110751
-  patch -Np1 -i "${srcdir}/tpmdd-devel-v3-base-platform-fix-binding-for-drivers-without-probe-callback.patch"
-
-  # #47757 fix broken suspend from btrfs and xfs
-  patch -Np1 -i "${srcdir}/0001-4.4-revert-xfs.patch"
-  patch -Np1 -i "${srcdir}/0001-4.4-revert-btrfs.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
