@@ -41,7 +41,7 @@ package() {
 	cat > $pkgdir/usr/bin/cewe-fotobuch <<-EOF
 		#!/usr/bin/bash
 		cd ${_installDir#$pkgdir}
-		./cewe-fotobuch "\$@"
+		KDEHOME=\$HOME/.kde4 exec ./cewe-fotobuch "\$@"
 	EOF
         chmod 755 $pkgdir/usr/bin/cewe-fotobuch
 
