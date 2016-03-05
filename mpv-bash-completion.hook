@@ -1,0 +1,18 @@
+[Trigger]
+
+Operation   = Install
+Operation   = Upgrade
+Type        = Package
+Target      = mpv
+Target      = mpv-*
+
+[Action]
+
+Description = mpv-bash-completion: updating the completion function
+When        = PostTransaction
+Exec        = /bin/bash -c '/usr/lib/mpv-bash-completion/generate >/etc/bash_completion.d/mpv 2>/dev/null'
+Depends     = bash
+Depends     = coreutils
+Depends     = sed
+
+# vim: filetype=dosini
