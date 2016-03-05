@@ -7,7 +7,7 @@
 
 pkgname=mozilla-extension-gnome-keyring-git
 pkgver=0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Mozilla extension to store passwords and form logins in gnome-keyring."
 arch=(any)
 url='https://github.com/swick/moz-gnome-keyring-integration'
@@ -44,7 +44,6 @@ query-version() {
 
 
 pkgver() {
-  cd $_gitname
   sparql '<urn:mozilla:install-manifest> em:version ?x' | tr - .
   echo -n .
 printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
