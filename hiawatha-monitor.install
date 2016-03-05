@@ -1,0 +1,4 @@
+post_install(){
+	echo "Don't forget to enable the systemd Timers!"
+  echo "systemctl enable hiawatha-monitor_delete_old_logs.timer hiawatha-monitor_fetch_webserver_logs.timer hiawatha-monitor_send_reports.timer"
+}
