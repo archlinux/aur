@@ -11,7 +11,6 @@ pkgname=('zarafa-webapp'
 	 'zarafa-webapp-folderwidgets'
 	 'zarafa-webapp-gmaps'
 	 'zarafa-webapp-oauthlib'
-	 'zarafa-webapp-pdfbox'
 	 'zarafa-webapp-pimfolder'
 	 'zarafa-webapp-quickitems'
 	 'zarafa-webapp-titlecounter'
@@ -22,7 +21,7 @@ pkgname=('zarafa-webapp'
 groups=('zarafa')
 pkgver=2.1.2
 _pkgrel=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='WebApp for Zarafa'
 arch=('any')
 url='http://www.zarafa.com/'
@@ -40,7 +39,7 @@ source=("webapp-${pkgver}.tar.gz::http://download.zarafa.com/community/final/Web
 	"zarafa-webapp.install"
 	"compress-static")
 md5sums=('231a0ceb064c9c213de6dcdd2b7ae732'
-         'b64d0a12ff31cac4357ba8bb4cbfb6f8'
+         'fa930c1df0c132dd9edbbe7004452851'
          '1bdab5b1e4473c1b0f6ce2e5c8f1da61'
          '7adcf5e023718421a5e8e07e5e9a2480'
          'cc8143c1fa12911a17578c1e775225fe'
@@ -173,10 +172,6 @@ package_zarafa-webapp-gmaps() {
 }
 
 package_zarafa-webapp-oauthlib() {
-    package_plugin ${pkgname//zarafa-webapp-/}
-}
-
-package_zarafa-webapp-pdfbox() {
     package_plugin ${pkgname//zarafa-webapp-/}
 }
 
