@@ -3,7 +3,7 @@
 
 pkgname=ethereum-git
 pkgver=v1.2.1.r0.g1ae1c2d
-pkgrel=1
+pkgrel=2
 pkgdesc="Ethereum decentralised consensus-based deterministic transaction resolution platform (C++ toolkit, full webthree-umbrella, latest unstable git version)"
 arch=('i686' 'x86_64')
 depends=('argtable'
@@ -19,7 +19,7 @@ depends=('argtable'
          'libmicrohttpd'
          'miniupnpc'
          'ncurses'
-         'ocl-icd'
+         'libcl'
          'opencl-headers'
          'openssl'
          'python2'
