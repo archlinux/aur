@@ -3,7 +3,7 @@
 pkgbase=viennarna
 pkgname=('viennarna' 'python2-rna' 'perl-rna')
 pkgver=2.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="RNA Secondary Structure Prediction and Comparison"
 arch=('x86_64' 'i686')
 license=('Custom')
@@ -64,6 +64,9 @@ package_viennarna() {
   cd ../misc
   make DESTDIR="${pkgdir}" install
   cd ..
+
+  # install pkg-config file
+  install -Dm644 RNAlib2.pc "$pkgdir/usr/lib/pkgconfig/RNAlib2.pc"
 
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
