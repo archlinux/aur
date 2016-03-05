@@ -6,17 +6,18 @@ pkgdesc="A filemanager build with elementary"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD')
-depends=('elementary-git')
+depends=('elementary-fresh')
 makedepends=('git' 'cmake' 'check')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("git://git.enlightenment.org/devs/bu5hm4n/${_pkgname}.git")
 sha256sums=('SKIP')
+_stablebranch='efl-1.17-stable'
 
 pkgver() {
   cd "$srcdir/$_pkgname"
 
-  git checkout efl-1.17-stable > /dev/null
+  git checkout $_stablebranch > /dev/null
 
   echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
@@ -24,7 +25,7 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
 
-  git checkout efl-1.17-stable
+  git checkout $_stablebranch
 
   cmake . -DCMAKE_INSTALL_PREFIX:PATH=/usr/ -DCMAKE_INSTALL_LIBDIR=/usr/lib
 
