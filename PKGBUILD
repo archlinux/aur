@@ -1,16 +1,17 @@
 # Maintainer: Romain Gautier <romain dot gautier at nimamoh dot com>
 pkgname=kotlinc
-pkgver=1.0.0_rc
-pkgrel=1036
+pkgver=1.0.0
+pkgrel=1
+epoch=1455484440
 pkgdesc="Kotlin compiler"
 arch=('any')
-url="https://github.com/JetBrains/kotlin/releases/tag/build-1.0.0-rc-1036"
+url="https://github.com/JetBrains/kotlin/releases/tag/build-1.0.0"
 license=('apache')
 groups=()
 depends=('java-environment>=6' 'bash')
 
-source=("https://github.com/JetBrains/kotlin/releases/download/build-1.0.0-rc-1036/kotlin-compiler-1.0.0-rc-1036.zip")
-sha256sums=("8d72ff925678a2172fbbefcb6f0c5a195a300dccf240e5add16c3e8d86e13d67")
+source=("https://github.com/JetBrains/kotlin/releases/download/build-1.0.0/kotlin-compiler-1.0.0.zip")
+sha256sums=("fedd9904611262b89e9f479ba36616bc9b6eac5f1121229fb663eb3296aae536")
 
 package() {
   cd "$srcdir"
