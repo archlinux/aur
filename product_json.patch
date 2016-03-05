@@ -1,8 +1,14 @@
 diff -rupN a/product.json b/product.json
---- a/product.json	2016-02-17 16:46:45.526013096 -0800
-+++ b/product.json	2016-02-17 16:49:24.172684567 -0800
-@@ -6,5 +6,12 @@
- 	"win32ShortcutName": "code-oss",
+--- a/product.json	2016-03-07 19:00:33.090653030 -0800
++++ b/product.json	2016-03-07 19:06:18.877223136 -0800
+@@ -1,10 +1,23 @@
+ {
+ 	"nameShort": "Code - OSS",
+-	"nameLong": "Code - OSS",
++	"nameLong": "Visual Studio Code - OSS",
+ 	"applicationName": "code-oss",
+ 	"dataFolderName": ".vscode-oss",
+ 	"win32MutexName": "vscodeoss",
  	"licenseUrl": "https://github.com/Microsoft/vscode/blob/master/LICENSE.txt",
  	"darwinBundleIdentifier": "com.visualstudio.code.oss",
 -	"welcomePage": "http://go.microsoft.com/fwlink/?LinkId=723048"
@@ -12,8 +18,14 @@ diff -rupN a/product.json b/product.json
 +	"quality": "stable",
 +	"extensionsGallery": {
 +		"serviceUrl": "https://marketplace.visualstudio.com/_apis/public/gallery",
++		"cacheUrl": "https://vscode.blob.core.windows.net/gallery/index",
 +		"itemUrl": "https://marketplace.visualstudio.com/items"
 +	},
 +	"documentationUrl": "http://go.microsoft.com/fwlink/?LinkID=533484#vscode",
-+	"releaseNotesUrl": "http://go.microsoft.com/fwlink/?LinkID=533483#vscode"
++	"releaseNotesUrl": "http://go.microsoft.com/fwlink/?LinkID=533483#vscode",
++	"twitterUrl": "http://go.microsoft.com/fwlink/?LinkID=533687",
++	"requestFeatureUrl": "http://go.microsoft.com/fwlink/?LinkID=533482",
++	"reportIssueUrl": "http://go.microsoft.com/fwlink/?LinkId=534872",
++	"privacyStatementUrl": "http://go.microsoft.com/fwlink/?LinkID=528096&clcid=0x409",
++	"commit": "97d4ad1c55a82369f65078406ed770e8a34055fc"
 +}
