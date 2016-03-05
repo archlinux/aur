@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 259082 2016-02-11 22:45:23Z foutrelis $
+# $Id: PKGBUILD 260304 2016-02-27 14:13:56Z alucryd $
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor : Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
@@ -6,18 +6,17 @@
 pkgname=firefox-gtk2
 _pkgname=firefox
 pkgver=44.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://www.mozilla.org/firefox/"
 depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
-         'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
+         'dbus-glib' 'alsa-lib' 'ffmpeg2.8' 'desktop-file-utils' 'hicolor-icon-theme'
          'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite' 'ttf-font')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf'
              'xorg-server-xvfb' 'libpulse' 'inetutils')
 optdepends=('networkmanager: Location detection via available WiFi networks'
-            'ffmpeg: H264/AAC/MP3 decoding'
             'upower: Battery API')
 install=firefox.install
 options=('!emptydirs' '!makeflags')
