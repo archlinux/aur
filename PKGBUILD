@@ -1,7 +1,7 @@
 # Maintainer: Jens John <dev@2ion.de>
 pkgname=mpv-bash-completion-git
 pkgver=0.16.0+1
-epoch=4
+epoch=5
 pkgrel=1
 pkgdesc="Bash completion for the mpv video player"
 arch=('any')
@@ -31,11 +31,6 @@ pkgver() {
   cd "$srcdir/${pkgname%-git}"
   local _mpv_pkg_ver=$(_mpv_package_version)
   printf "%s" "${_mpv_pkg_ver%-*}"
-}
-
-check() {
-  cd "$srcdir/${pkgname%-git}"
-  bash -n "$_completioncommand"
 }
 
 package() {
