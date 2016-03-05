@@ -1,0 +1,35 @@
+diff -aur info-beamer/video.c info-beamer.patched/video.c
+--- info-beamer/video.c 2016-03-04 19:40:01.074477127 +0100
++++ info-beamer.patched/video.c 2016-03-04 19:40:40.991262568 +0100
+@@ -64,9 +64,9 @@
+     if (video->scaler)
+         sws_freeContext(video->scaler);
+     if (video->raw_frame)
+-        av_free(video->raw_frame);
++        av_frame_free(&video->raw_frame);
+     if (video->scaled_frame)
+-        av_free(video->scaled_frame);
++        av_frame_free(&video->scaled_frame);
+ 
+     if (video->codec_context)
+         avcodec_close(video->codec_context);
+@@ -78,7 +78,7 @@
+ 
+ static int video_open(video_t *video, const char *filename) {
+     video->finished = 0;
+-    video->format = PIX_FMT_RGB24;
++    video->format = AV_PIX_FMT_RGB24;
+ 
+     if (avformat_open_input(&video->format_context, filename, NULL, NULL) ||
+             avformat_find_stream_info(video->format_context, NULL) < 0) {
+@@ -143,8 +143,8 @@
+     fprintf(stderr, INFO("fps: %lf\n"), video->fps);
+ 
+     /* Get framebuffers */
+-    video->raw_frame = avcodec_alloc_frame();
+-    video->scaled_frame = avcodec_alloc_frame();
++    video->raw_frame = av_frame_alloc();
++    video->scaled_frame = av_frame_alloc();
+ 
+     if (!video->raw_frame || !video->scaled_frame) {
+         fprintf(stderr, ERROR("cannot preallocate frames\n"));

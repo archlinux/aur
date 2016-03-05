@@ -3,15 +3,17 @@
 pkgname=info-beamer-git
 _gitname=info-beamer
 pkgver=243.ac815b1
-pkgrel=2
+pkgrel=3
 pkgdesc="Allows you to develop interactive information displays using the Lua programming language."
 arch=('i686' 'x86_64')
 url="https://info-beamer.com/opensource"
 license=('BSD')
-depends=('ffmpeg2.8' 'lua51' 'libevent' 'glfw' 'devil' 'glew' 'ftgl')
+depends=('ffmpeg' 'lua51' 'libevent' 'glfw' 'devil' 'glew' 'ftgl')
 makedepends=('git')
-source=('git+https://github.com/dividuum/info-beamer.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/dividuum/info-beamer.git'
+        'ffmpeg_2.9.patch')
+sha256sums=('SKIP'
+            '695713eb1f806ffc8f50cf44575fb071350f11f2b2f456c3fca53e07a560c657')
 
 pkgver() {
   cd $_gitname
@@ -24,8 +26,7 @@ prepare() {
   sed -i 's/GL\/glfw.h/GLFW\/glfw3.h/g' font.c
   sed -i 's/GL\/glfw.h/GLFW\/glfw3.h/g' shader.c
   sed -i 's/#define _BSD_SOURCE/#define _DEFAULT_SOURCE/g' vnc.c main.c
-  sed -i 's/-I\/usr\/include\/ffmpeg/-I\/usr\/include\/ffmpeg2.8/g' Makefile
-  sed -i 's/avcodec_alloc_frame/av_frame_alloc/g' video.c
+  patch -Np1 -i ../ffmpeg_2.9.patch
 }
 
 build() {
