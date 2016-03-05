@@ -1,6 +1,6 @@
 pkgname=python2-rosdep
 pkgver=0.11.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line tool for installing system dependencies on a variety of platforms."
 url="http://ros.org/doc/api/rosdep2/html/"
 arch=('any')
@@ -11,6 +11,7 @@ makedepends=('python2-distribute' 'python2-setuptools')
 
 source=("https://pypi.python.org/packages/source/r/rosdep/rosdep-${pkgver}.tar.gz")
 sha256sums=('e4f31d4d0245798b1bc5fb16a111456ea308d9fb7b1f2d202d0fea8475c88bb8')
+provides=(rosdep)
 
 build() {
   cd "$srcdir/rosdep-${pkgver}"
