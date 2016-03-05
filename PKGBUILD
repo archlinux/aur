@@ -4,7 +4,7 @@ _pkgname=('smime')
 pkgname=("zarafa-webapp-${_pkgname}")
 groups=('zarafa')
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Smime plugin for Zarafa Webapp'
 arch=('any')
 source=("https://download.zarafa.com/community/final/WebApp/plugins/SMIME%201.0/fedora-21/x86_64/zarafa-webapp-plugins-smime-1.0-31.1.noarch.rpm"
@@ -36,6 +36,8 @@ package() {
     ln -s /etc/webapps/zarafa-webapp/plugins/${_pkgname}/config.php ${pkgdir}/usr/share/webapps/zarafa-webapp/plugins/${_pkgname}/config.php
 
     ## perform settings
+    # convert windows line break to unix: http://stackoverflow.com/questions/11680815/removing-windows-newlines-on-linux-sed-vs-awk
+    sed -i -e $'s/\r//' ${pkgdir}/etc/webapps/zarafa-webapp/plugins/${_pkgname}/config.php
     sed -i -e "s/\(PLUGIN_SMIME_CIPHER', \)\(.*\)\();$\)/\1OPENSSL_CIPHER_AES_256_CBC\3/" ${pkgdir}/etc/webapps/zarafa-webapp/plugins/${_pkgname}/config.php
 #    sed -i -e "s/\(PLUGIN_SMIME_CACERTS', \)\(.*\)\();$\)/\1\\'/etc/ssl/certs\\'\3/" ${pkgdir}/etc/webapps/zarafa-webapp/plugins/${_pkgname}/config.php
 
