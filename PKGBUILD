@@ -6,7 +6,7 @@
 pkgbase='firefox-theme-adwaita-git'
 pkgname=('firefox-theme-gnome-git' 'firefox-extension-gnome-theme-tweak-git')
 pkgver=42.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Adwaita theme for Firefox (Matches the default Gnome Shell theme)"
 url="https://github.com/gnome-integration-team/firefox-gnome"
 arch=('any')
@@ -42,7 +42,6 @@ query-version() {
 }
 
 pkgver() {
-  cd "$_gitname"
   find -iname '*.json' -exec sed -n \
     's/.*"version"\s*:\s*"\([[:digit:].]*\)"\s*,.*/\1/p' \
     '{}' \; -quit 2>/dev/null | tr '\n' '.'
