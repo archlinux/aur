@@ -3,7 +3,7 @@
 
 _pkgname=mumble
 pkgname=${_pkgname}-jack
-pkgver=1.2.14
+pkgver=1.2.15
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Mumble with support for JACK"
@@ -16,7 +16,7 @@ install=mumble.install
 url="http://mumble.info/"
 source=("https://github.com/mumble-voip/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         "http://sourceforge.net/p/mumble/patches/_discuss/thread/1bfdbda2/a90e/attachment/mumble-jack-support.patch")
-md5sums=('129262444c4ab8e469014d3c163549a0'
+md5sums=('3052ed64d1f4d4e5bf60095df53c7758'
          '03d89f5f4265de696505211984b969a0')
 
 prepare() {
