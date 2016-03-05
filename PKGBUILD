@@ -1,14 +1,11 @@
-# Contributor: Johannes Dewender  arch at JonnyJD dot net
-# Contributor: Konrad <konrad AT knauber DOT name>
-# Contributor: Luka Perkov <archlinux <at> lukaperkov <dOt> net>
-# Contributor: Fernando M <f <at> beford.net>
-# Author: Wintershade <Wintershade AT google mail DOT com>
+# Maintainer: Maxim Vasilchuk <mvasilchuk AT google mail DOT com>
+# Author: Maxim Vasilchuk <mvasilchuk AT google mail DOT com>
 
 pkgname=yasem-git
 _pkgname=yasem
 pkgver=0.1
 _pkgver=$pkgver
-pkgrel=25
+pkgrel=27
 pkgdesc="IPTV STB emulator"
 arch=('i686' 'x86_64' 'armv7h')
 url=("https://github.com/mvasilchuk/yasem")
