@@ -4,7 +4,7 @@ _pkgname=('mdm')
 pkgname=("zarafa-webapp-${_pkgname}")
 groups=('zarafa')
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Mdm plugin for Zarafa Webapp'
 arch=('any')
 source=("https://download.zarafa.com/community/final/WebApp/plugins/MDM%201.0/fedora-22/zarafa-webapp-plugins-mdm-1.0.1453470163.f6c94a8-34.2.noarch.rpm"
@@ -20,7 +20,7 @@ md5sums=('87c70369dbda5974c8c4aa6589f71f15'
 
 package() {
     # plugin
-    cd ${srcdir}/usr/share/zarafa-webapp/plugins/mdm
+    cd ${srcdir}/usr/share/zarafa-webapp/plugins/${_pkgname}
     mkdir -p ${pkgdir}/usr/share/webapps/zarafa-webapp/plugins/${_pkgname}/
     cp -R * ${pkgdir}/usr/share/webapps/zarafa-webapp/plugins/${_pkgname}/
     rm -f ${pkgdir}/usr/share/webapps/zarafa-webapp/plugins/${_pkgname}/config.php
