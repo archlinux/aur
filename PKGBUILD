@@ -12,7 +12,7 @@ source=("http://downloads.sourceforge.net/project/sardi/${pkgname}-${pkgver}-${p
 sha256sums=('SKIP')
 
 package() {
-cd ${pkgname}-${pkgver}-${pkgrel}
+cd src/${pkgname}-${pkgver}-${pkgrel}
 
 
   install -dm 755 "${pkgdir}"/usr/share/icons
