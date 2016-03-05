@@ -2,11 +2,13 @@
 
 pkgname=hiawatha-monitor
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The Hiawatha Monitor is a monitoring tool for the Hiawatha webserver. It can be used to keep track of the performance and security of all your Hiawatha webservers via one single interface."
 arch=('any')
 url="https://www.hiawatha-webserver.org/monitor"
 license=('custom')
+backup=('usr/share/webapps/hiawatha-monitor/settings'
+        'usr/share/webapps/hiawatha-monitor/database')
 source=("https://www.hiawatha-webserver.org/files/monitor-${pkgver}.tar.gz"
         'https://raw.githubusercontent.com/hsleisink/monitor/master/LICENSE'
         'https://raw.githubusercontent.com/Wabuo/PKGBUILD/master/hiawatha-monitor/hiawatha_monitor.conf'
