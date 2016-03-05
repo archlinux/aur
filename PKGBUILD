@@ -6,7 +6,7 @@ _pkgname=wwwoffle
 pkgname="${_pkgname}-svn"
 # _pkgver=2.9i
 pkgver=2.9j.r2220
-pkgrel=2
+pkgrel=4
 pkgdesc="Simple caching proxy server with special features (request, recursive fetch, ...) for use with dial-up internet links. Includes startup scripts for OpenRC, System V init, systemd."
 arch=('i686' 'x86_64' 'arm' 'arm64')
 url="http://www.gedanken.org.uk/software/wwwoffle/"
@@ -33,8 +33,8 @@ conflicts=(
 )
 
 backup=(
-  'etc/wwwoffle'
   'etc/wwwoffle/wwwoffle.conf'
+  'etc/wwwoffle/wwwoffle.conf.template'
 )
 
 install="${_pkgname}.install"
@@ -58,7 +58,7 @@ sha256sums=(
   '0d5bfcd1e348f6bdad042f780b2ea8a235314d5750a66ae008a0ea391bc5cc11'
   '04fd88f2a100e3ff9a96da6a70e58457252722cbf6350ffdbf08f17e62b64869'
   '47f3df8ed05888452c00f8246f97456a4c55499b67e59c40da272b0e7fb1f2df'
-  '87eb11ad6e43eb9ac866806e413b187196d2d3b9383de76139d4e4ff71ffe855'
+  '1b5ac98fff7a5c7b32439410cffdbdd8224c19fe8ca02db948d1a4430de793fd'
 )
 
 _pgmver() {
@@ -158,11 +158,10 @@ build() {
 package() {
   _unpackeddir="${srcdir}/${_pkgname}"
   cd "${_unpackeddir}"
-  
+
   ### Install the software.
   make DESTDIR="${pkgdir}" install
-  mv "${pkgdir}/etc/wwwoffle/wwwoffle.conf" "${pkgdir}/etc/wwwoffle/wwwoffle.conf.template"
-  
+
   ### Move documentation into the place we want it.
   mkdir -p "${pkgdir}/usr/share"
   mv -v "${pkgdir}/usr/doc" "${pkgdir}/usr/share/doc"
@@ -175,13 +174,14 @@ package() {
   install -D -m755 "${srcdir}/initscript_sysvinit" "${pkgdir}/etc/rc.d/wwwoffle"
   install -D -m755 "${srcdir}/initscript_openrc" "${pkgdir}/etc/init.d/wwwoffle"
   install -D -m644 "${srcdir}/initscript_systemd" "${pkgdir}/usr/lib/systemd/system/wwwoffle.service"
-  
+
   ### Install a default initscript configuration file (for openrc and sysvinit only; for systemd user has to manually edit the systemd service file).
   install -D -m644 "${srcdir}/conf_d_wwwoffle" "${pkgdir}/etc/conf.d/wwwoffle"
 
   ### Change config such that wwwoffle runs as user wwwoffle and group wwwoffle. (Adding user and group is handled by the ${install}-script.)
-  sed -i -e 's/^#run-uid.*/ run-uid           = wwwoffle/' \
-    "${pkgdir}/etc/wwwoffle/wwwoffle.conf"
-  sed -i -e 's/^#run-gid.*/ run-gid           = wwwoffle/' \
-    "${pkgdir}/etc/wwwoffle/wwwoffle.conf"
+  sed -i -e 's/^#run-uid.*/ run-uid           = wwwoffle/' "${pkgdir}/etc/wwwoffle/wwwoffle.conf"
+  sed -i -e 's/^#run-gid.*/ run-gid           = wwwoffle/' "${pkgdir}/etc/wwwoffle/wwwoffle.conf"
+
+  ### Move config into final place (such that it is not automatically used, but user actually has to do some manual work).
+  mv "${pkgdir}/etc/wwwoffle/wwwoffle.conf" "${pkgdir}/etc/wwwoffle/wwwoffle.conf.template"
 }
