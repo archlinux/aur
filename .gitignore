@@ -3,3 +3,4 @@
 !.SRCINFO
 !PKGBUILD
 !psensor.install
+!psensor-libmicrohttpd.patch
