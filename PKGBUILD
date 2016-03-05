@@ -2,8 +2,8 @@
 # Contributer: Serge Ziryukin <ftrvxmtrx@gmail.com>
 
 pkgname=split2flac
-pkgver=115
-pkgrel=4
+pkgver=122
+pkgrel=1
 pkgdesc="Split flac/ape/wv/wav + cue sheet into separate tracks."
 arch=('any')
 url="https://github.com/ftrvxmtrx/split2flac"
@@ -26,7 +26,7 @@ optdepends=('aacgain-cvs:      to adjust gain in m4a'
 'vorbisgain:   ogg vorbis volume normalization'
 'wavpack:      to split WV')
 source=("https://github.com/ftrvxmtrx/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('7f52f1e34fc1cf62720f16d59e2e56302c2466b811fe9819a5ebd9272ed71747')
+sha256sums=('96dd53c92935ae6cb1650bf92f989658d7909b691bbec12b639736f79f5b639c')
 
 package () {
 	cd "$pkgname-$pkgver"
