@@ -1,21 +1,21 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=4kyoutubetomp3
-pkgver=2.12.0.1585
+pkgver=3.0.0.1616 
 pkgrel=1
 pkgdesc="Extract audio from YouTube, Vimeo, Facebook and other online video hosting services."
 arch=('i686' 'x86_64')
 url="http://www.4kdownload.com/products/product-youtubetomp3"
 license=('custom:eula')
-depends=('qt5-script' 'portaudio' 'ffmpeg')
+depends=('qt5-script' 'portaudio' 'ffmpeg2.8')
 source=("${pkgname}.desktop"
         "${pkgname}.png")
 source_i686=("http://downloads.4kdownload.com/app/${pkgname}_${pkgver%.*.*}_i386.tar.bz2")
 source_x86_64=("http://downloads.4kdownload.com/app/${pkgname}_${pkgver%.*.*}_amd64.tar.bz2")
 sha256sums=('386dfa4085efcd9403c4387c7be4dd0f9762c726555b5ebd0126dcd225bcf828'
             'b25f830bb1fe559ea9f0b35cc9eb8ab75e2e40d09b8755f937451f5ddeeec2fd')
-sha256sums_i686=('bbbb132e7d1423353a4c1a725bbcf6a024f38e351e2c62ff6eb58a3f52af651a')
-sha256sums_x86_64=('c00a22a3fa61bd032ec4314b8a7ccda2969f98b75d903673601491a96d90984e')
+sha256sums_i686=('e937d5938a3b394892658c10c608490b71697700d6b633393a8a7ce608d4fa70')
+sha256sums_x86_64=('925e2f341bd3415b3411bb035aaca97b10c77fc1abf1e92f1810418588f22beb')
 
 package() {
   # Install desktop file
