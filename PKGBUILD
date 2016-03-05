@@ -47,5 +47,6 @@ package() {
   install -Dm755  $srcdir/main/dede $pkgdir/usr/bin/dede
   install -Dm755 $srcdir/caffe_dd/src/caffe_dd/.build_release/lib/* $pkgdir/usr/lib
 
-  cp -r $srcdir/templates $srcdir/caffe_dd/src/caffe_dd/{data,docs,examples,models,python,scripts} $pkgdir
+  mkdir $pkgdir/usr/share/$pkgname
+  cp -r $srcdir/templates $srcdir/caffe_dd/src/caffe_dd/{data,docs,examples,models,python,scripts} $pkgdir/usr/share/$pkgname
 }
