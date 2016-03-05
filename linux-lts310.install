@@ -7,6 +7,10 @@ post_install () {
 	depmod ${KERNEL_VERSION}
 	echo ">>> Generating initial ramdisk, using mkinitcpio.  Please wait..."
 	mkinitcpio -p linux${KERNEL_NAME}
+	echo ""
+	echo ">>> The package maintainer would like feedback about which version"
+	echo ">>> of GCC4 is best for building this kernel."
+	echo ">>> Feedback on the AUR page would be appreciated."
 }
 
 post_upgrade() {
@@ -29,6 +33,10 @@ post_upgrade() {
 		echo ">>> The repository support thread can be found at:"
 		echo ">>> https://bbs.archlinux.org/viewtopic.php?id=187339"
 	fi
+	echo ""
+	echo ">>> The package maintainer would like feedback about which version"
+	echo ">>> of GCC4 is best for building this kernel."
+	echo ">>> Feedback on the AUR page would be appreciated."
 }
 
 post_remove() {
