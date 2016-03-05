@@ -6,7 +6,7 @@
 
 pkgname=mintcoin-daemon-git
 _gitname=mintcoin
-pkgver=r130.da098b2
+pkgver=r175.59f8575
 pkgrel=1
 pkgdesc="Mintcoin is a peer-to-peer network-based digital currency (git version)."
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ depends=('boost-libs>=1.46' 'openssl')
 makedepends=('git' 'make' 'boost')
 provides=('mintcoin-daemon')
 conflicts=('mintcoin')
-source=('git://github.com/MintcoinCommunity/mintcoin.git')
+source=('git://github.com/MintcoinCommunity/mintcoin.git#branch=2.0')
 md5sums=('SKIP')
 
 pkgver() {
@@ -24,10 +24,16 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  # fix for build
+  cd "$srcdir/$_gitname/src"
+  sed -i $srcdir/$_gitname/src/init.cpp -e 's/#if ! USE_IPV6/#ifndef USE_IPV6/' 
+}
+
 build() {
   # make mintcoind daemon
   cd "$srcdir/$_gitname/src"
-  make -f makefile.unix USE_UPNP= mintcoind
+  make -f makefile.unix mintcoind
 }
 
 package() {
