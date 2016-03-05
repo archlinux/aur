@@ -4,7 +4,7 @@
 # Contributor: Sebastien Binet <binet@lblbox>
 
 pkgname=pypy-pip
-pkgver=8.0.3
+pkgver=8.1.0
 pkgrel=1
 pkgdesc="The PyPA recommended tool for installing Python packages"
 url="https://pip.pypa.io/"
@@ -14,7 +14,7 @@ source=(
     http://pypi.python.org/packages/source/p/pip/pip-${pkgver}.tar.gz{,.asc}
 )
 sha256sums=(
-    '30f98b66f3fe1069c529a491597d34a1c224a68640c82caf2ade5f88aa1405e8'
+    'd8faa75dd7d0737b16d50cd0a56dc91a631c79ecfd8d38b80f6ee929ec82043e'
     'SKIP'
 )
 # necessary due to a makepkg bug
