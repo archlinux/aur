@@ -8,7 +8,7 @@ pkgdesc="Boost.Build makes it easy to build C++ projects, everywhere."
 arch=('any')
 url="http://www.boost.org/build/"
 license=('custom:boost')
-depends=('boost' 'gcc' 'python')
+depends=('gcc' 'python')
 conflicts=('boost' 'boost-build-nightly')
 source=("https://github.com/boostorg/build/archive/boost-${pkgver}.0.tar.gz"
         "http://www.boost.org/LICENSE_1_0.txt")
