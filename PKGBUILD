@@ -1,7 +1,7 @@
 # Maintainer: Det
 pkgname=beyond-compare
-pkgver=4.1.3
-_build=20814
+pkgver=4.1.4
+_build=20978
 pkgrel=1
 pkgdesc="Compare files and folders, merge changes, synchronize files, and generate reports"
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ source=('LICENSE')
 source_i686=("$url/bcompare-${pkgver}.${_build}_i386.deb")
 source_x86_64=("$url/bcompare-${pkgver}.${_build}_amd64.deb")
 md5sums=('9eeda8a80922a529bd3a8db7a03ad8b0')
-md5sums_i686=('e0983dfe7c3dab0b1ce32719d705c6fa')
-md5sums_x86_64=('b2c09aa1a40f1f385931f94779ddbb3e')
+md5sums_i686=('6edb71fed605c6af686dfe5737238ff6')
+md5sums_x86_64=('5f7c1f06d918a82def1b19dcaea9239d')
 
 package() {
   # Extract archive
