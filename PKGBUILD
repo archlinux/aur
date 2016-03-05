@@ -71,7 +71,7 @@ package() {
   # web frontend
   mkdir -p "${pkgdir}/usr/share/airtime"
   cp -r airtime_mvc "${pkgdir}/usr/share/airtime"
-  cp -r pyhton_apps "${pkgdir}/usr/share/airtime"
+  cp -r python_apps "${pkgdir}/usr/share/airtime"
   cp -r utils "${pkgdir}/usr/share/airtime"
   chmod -R 755 "${pkgdir}/usr/share/airtime"
 
