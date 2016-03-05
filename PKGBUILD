@@ -2,9 +2,9 @@
 # Contributor: catwell <catwell@archlinux.us>
 pkgname=sig2dot
 pkgver=0.35
-pkgrel=1
+pkgrel=2
 pkgdesc="Generates a graph of all of the signature relationships in a GPG/PGP keyring"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://www.chaosreigns.com/code/sig2dot/" 
 license=('GPL')
 depends=('perl')
