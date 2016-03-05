@@ -3,7 +3,7 @@
 
 pkgname=ethereum
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Ethereum decentralised consensus-based deterministic transaction resolution platform (C++ toolkit, full webthree-umbrella)"
 arch=('i686' 'x86_64')
 depends=(
@@ -20,7 +20,7 @@ depends=(
   'libmicrohttpd'
   'miniupnpc'
   'ncurses'
-  'ocl-icd'
+  'libcl'
   'opencl-headers'
   'openssl'
   'python2'
