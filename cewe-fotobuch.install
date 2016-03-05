@@ -1,19 +1,22 @@
 post_install() {
-  echo '--------------------------------------------------'
-  echo 'You *MUST* read and agree to the license stored in'
-  echo '/usr/share/cewe-fotobuch/EULA.txt before'
-  echo 'you start using it'
-  echo '--------------------------------------------------'
+	cat <<-EOF
+	---------------------------------------------------
+	Mein CEWE FOTOBUCH ist ein Produkt und Eigentum der
+	CEWE Stiftung & Co. KGaA. Die Nutzungsbedingen sind
+	in /usr/share/licenses/cewe-fotobuch/EULA.txt.
+	WENN SIE DIESE SOFTWARE INSTALLIEREN, ERKLÄREN SIE
+	SICH MIT DEN BEDINGUNGEN DIESES LIZENZABKOMMENS
+	EINVERSTANDEN
+	---------------------------------------------------
+	EOF
 
-  update-mime-database /usr/share/mime &> /dev/null
-  update-desktop-database &> /dev/null
-  /bin/true
+	update-mime-database /usr/share/mime &> /dev/null
+	update-desktop-database &> /dev/null
 }
 
 post_upgrade() {
   update-mime-database /usr/share/mime &> /dev/null
   update-desktop-database &> /dev/null
-/bin/true
 }
 
 pre_remove() {
@@ -23,5 +26,4 @@ pre_remove() {
 post_remove() {
   update-mime-database /usr/share/mime &> /dev/null
   update-desktop-database &> /dev/null
-  /bin/true
 }

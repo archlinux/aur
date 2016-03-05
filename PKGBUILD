@@ -35,12 +35,10 @@ package() {
 	which cewe-fotobuch &>/dev/null && update='--update'
 
 	./install.pl $update --installDir=$_installDir -k -v
+	install -D -m644 $srcdir/EULA.txt $pkgdir/usr/share/licenses/$pkgname/EULA.txt
 
 	# remove unneeded mime cache files (leave directories)
 	rm $pkgdir/usr/share/mime/* &> /dev/null || true
-
-#	# copy EULA
-#	install -D -m644 $srcdir/EULA.txt $pkgdir/usr/share/$pkgname/EULA.txt || return 1
 
         # create startup script
 	cat > $pkgdir/usr/bin/cewe-fotobuch <<-EOF
