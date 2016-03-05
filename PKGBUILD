@@ -1,25 +1,26 @@
 # Maintainer: synapse84 <synapse84 at gmail dot com>
 
 pkgname=mumble-snapshot
-pkgver=1.3.0_941_gcffa565
+pkgver=1.3.0_969_gbc12e8e
 pkgrel=1
-pkgdesc="A high quality voice chat program. (snapshot build)"
+pkgdesc="A high quality voice chat program."
 arch=('i686' 'x86_64')
 url="http://mumble.info/"
 license=('BSD')
-depends=('qt5-base' 'qt5-svg' 'opus' 'speex' 'libpulse' 'avahi' 'protobuf')
+depends=('qt5-base' 'qt5-svg' 'opus' 'speex' 'libpulse' 'avahi' 'protobuf' 'speech-dispatcher')
 makedepends=('boost' 'qt5-tools')
+optdepends=('espeak: speech synthesizer')
 provides=('mumble')
 conflicts=('mumble')
 install=mumble.install
 source=("http://mumble.info/snapshot/mumble-${pkgver//_/\~}~snapshot.tar.gz")
-sha256sums=('5b4d6e83c38a797a150fc0124f2821d24a54a0720f7cad2e44050631a97dffe1')
+sha256sums=('67b9e18c843be6ebc7da6023f93c55a509c52c2513b573bcac79326bdaa3aee6')
 
 build() {
     cd $srcdir/mumble-${pkgver//_/\~}~snapshot
 
     qmake-qt5 main.pro \
-      CONFIG+="bundled-celt no-bundled-opus no-bundled-speex no-g15 no-xevie no-server no-embed-qt-translations no-update no-speechd" \
+      CONFIG+="bundled-celt no-bundled-opus no-bundled-speex no-g15 no-xevie no-server no-embed-qt-translations no-update" \
       DEFINES+="PLUGIN_PATH=/usr/lib/mumble"
 
     make release
