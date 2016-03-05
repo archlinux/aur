@@ -1,27 +1,30 @@
-# Maintainer: Daniel Haß <aur@hass.onl>
 _pkgname=jesus
 pkgname=$_pkgname-git
-pkgver=544.0c04880
+pkgver=548.2cb8f11
 pkgrel=1
 pkgdesc="A filemanager build with elementary"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD')
-depends=('elementary-git')
+depends=('elementary-fresh')
 makedepends=('git' 'cmake' 'check')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("git://git.enlightenment.org/devs/bu5hm4n/jesus.git")
+source=("git://git.enlightenment.org/devs/bu5hm4n/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
+
+  git checkout efl-1.17-stable > /dev/null
 
   echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
   cd "$srcdir/$_pkgname"
+
+  git checkout efl-1.17-stable
 
   cmake . -DCMAKE_INSTALL_PREFIX:PATH=/usr/ -DCMAKE_INSTALL_LIBDIR=/usr/lib
 
@@ -37,3 +40,4 @@ package() {
   install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
+
