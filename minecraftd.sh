@@ -6,7 +6,7 @@ declare -r game="minecraft"
 
 # General rule for the variable-naming-schema:
 # Variables in capital letters may be passed through the command line others not.
-# Avoid altering any of those later in the code since they may be readonly.
+# Avoid altering any of those later in the code since they may be readonly (IDLE_SERVER is an exception!)
 
 # You may use this script for any game server of your choice, just alter the config file
 [[ ! -z "${SERVER_ROOT}" ]]  && declare -r SERVER_ROOT=${SERVER_ROOT}   || SERVER_ROOT="/srv/${game}"
@@ -25,7 +25,7 @@ declare -r game="minecraft"
 [[ ! -z "${JAVA_PARMS}" ]] && declare -r JAVA_PARMS=${JAVA_PARMS} || JAVA_PARMS="-Xmx${MAXHEAP} -Xms${MINHEAP} -XX:ParallelGCThreads=${THREADS}"
 
 # System parameters for the control script
-[[ ! -z "${IDLE_SERVER}" ]]       && declare -r IDLE_SERVER=${IDLE_SERVER}   || IDLE_SERVER="false"
+[[ ! -z "${IDLE_SERVER}" ]]       && tmp_IDLE_SERVER=${IDLE_SERVER}   || IDLE_SERVER="false"
 [[ ! -z "${IDLE_SESSION_NAME}" ]] && declare -r IDLE_SESSION_NAME=${IDLE_SESSION_NAME} || IDLE_SESSION_NAME="idle_server"
 [[ ! -z "${GAME_PORT}" ]]         && declare -r GAME_PORT=${GAME_PORT}       || GAME_PORT="25565"
 [[ ! -z "${CHECK_PLAYER_TIME}" ]] && declare -r CHECK_PLAYER_TIME=${CHECK_PLAYER_TIME} || CHECK_PLAYER_TIME="30"
@@ -33,6 +33,9 @@ declare -r game="minecraft"
 
 # Variables passed over the command line will always override the one from a config file
 source /etc/conf.d/${game} || echo "Could not source /etc/conf.d/${game}"
+
+# Preserve the content of IDLE_SERVER without making it readonly
+[[ ! -z ${tmp_IDLE_SERVER} ]] && IDLE_SERVER=${tmp_IDLE_SERVER}
 
 # Check whether sudo is needed at all
 if [[ $(whoami) == ${GAME_USER} ]]; then
@@ -74,21 +77,31 @@ idle_server_daemon() {
 	no_player=0
 
 	while true; do
+		# Retry in ${CHECK_PLAYER_TIME} seconds
+		sleep ${CHECK_PLAYER_TIME}
+
 		screen -S "${SESSION_NAME}" -Q select . > /dev/null
 		if [[ $? -eq 0 ]]; then
 			# Game server is up and running
 			screen -S "${SESSION_NAME}" -X stuff "`printf \"list\r\"`"
 			# The "player_delimiter" in awk print needs to be 6 for the spigot server
 			# since the according information is contained in the 6th not in th 4th column
-			if [[ -z $(tail -n 1 "${LOGPATH}/latest.log" | awk '{ print $4 }') ]]; then
+			if [[ $? -eq 0 && -z $(tail -n 1 "${LOGPATH}/latest.log" | awk '{ print $4 }') ]]; then
 				# No player was seen on the server through list
 				no_player=$((no_player + CHECK_PLAYER_TIME))
 				# Stop the game server if no player was active for at least ${IDLE_IF_TIME}
-				[[ "${no_player}" -ge "${IDLE_IF_TIME}" ]] && IDLE_SERVER="false" ${myname} stop
+				if [[ "${no_player}" -ge "${IDLE_IF_TIME}" ]]; then
+					IDLE_SERVER="false" ${myname} stop
+
+					# Game server is down, listen on port ${GAME_PORT} for incoming connections
+					sleep 1
+					echo "Netcat is listening on port ${GAME_PORT} for incoming connections..."
+					${NETCAT_CMD} -v -l -p ${GAME_PORT}
+					[[ $? -eq 0 ]] && echo "Netcat caught an connection. The server is coming up again...."
+					IDLE_SERVER="false" ${myname} start
+				fi
 			else
 				no_player=0
-				# Retry in ${CHECK_PLAYER_TIME} seconds
-				sleep ${CHECK_PLAYER_TIME}
 			fi
 		else
 			# Game server is down, listen on port ${GAME_PORT} for incoming connections
@@ -96,7 +109,6 @@ idle_server_daemon() {
 			${NETCAT_CMD} -v -l -p ${GAME_PORT}
 			echo "Netcat caught an connection. The server is coming up again...."
 			IDLE_SERVER="false" ${myname} start
-			sleep ${CHECK_PLAYER_TIME}
 		fi
 	done
 }
@@ -123,20 +135,13 @@ server_start() {
 		# Start the idle server daemon
 		${SUDO_CMD} screen -S "${IDLE_SESSION_NAME}" -Q select . > /dev/null
 		if [[ $? -eq 0 ]]; then
-			echo "An idles server screen session called ${IDLE_SESSION_NAME} is already running. Please close it first."
+			${SUDO_CMD} screen -S "${IDLE_SESSION_NAME}" -X quit
+			sleep 0.5
+			${SUDO_CMD} screen -dmS "${IDLE_SESSION_NAME}" /bin/bash -c "${myname} idle_server_daemon"
 		else
 			echo -en "Starting idle server daeomon... "
 			${SUDO_CMD} screen -dmS "${IDLE_SESSION_NAME}" /bin/bash -c "${myname} idle_server_daemon"
 			echo -e "\e[39;1m done\e[0m"
-		fi
-	else
-		# Though IDLE_SERVER is not set to true it could still be running and just have not noticed that the
-		# server was started, e.g. by manually triggering server_start again. Reset the idle daemon in this case.
-		${SUDO_CMD} screen -S "${IDLE_SESSION_NAME}" -Q select . > /dev/null
-		if [[ $? -eq 0 ]]; then
-			${SUDO_CMD} screen -S "${IDLE_SESSION_NAME}" -X quit
-			sleep 0.1
-			${SUDO_CMD} screen -dmS "${IDLE_SESSION_NAME}" /bin/bash -c "${myname} idle_server_daemon"
 		fi
 	fi
 }
@@ -216,7 +221,7 @@ server_restart() {
 	${SUDO_CMD} screen -S "${SESSION_NAME}" -Q select . > /dev/null
 	if [[ $? -eq 0 ]]; then
 		server_stop
-		sleep 0.1
+		sleep 0.5
 		server_start
 	else
 		server_start
@@ -337,7 +342,7 @@ server_command() {
 
 	${SUDO_CMD} screen -S "${SESSION_NAME}" -Q select . > /dev/null
 	if [[ $? -eq 0 ]]; then
-		sleep 0.1s &
+		sleep 0.2s &
 		sleep_pid=$!
 		game_command "$@" &
 		tail -f --pid=${sleep_pid} -n 0 "${LOGPATH}/latest.log"
