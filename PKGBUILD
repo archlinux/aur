@@ -9,12 +9,12 @@
 
 pkgname=stepmania
 pkgver=5.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc='A free dance and rhythm game (was previously sm-ssc)'
 url='http://www.stepmania.com/'
 license=('MIT')
 arch=(i686 x86_64)
-depends=('gtk2' 'libmad' 'mesa' 'glew' 'libpng' 'libvorbis' 'ffmpeg')
+depends=('gtk2' 'libmad' 'mesa' 'glew' 'libpng' 'libvorbis')
 replaces=('sm-ssc')
 makedepends=('pkgconfig' 'yasm' 'cmake')
 install='stepmania.install'
@@ -27,7 +27,7 @@ sha512sums=('e066ac27932e795078a3a9b1073f280f10f140b2dd776f12efdc469d327d13c2fcc
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/Build"
-  cmake -D WITH_SYSTEM_FFMPEG=ON ..
+  cmake -D WITH_SYSTEM_FFMPEG=Off ..
   make
 }
 
