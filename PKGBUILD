@@ -6,7 +6,7 @@
 
 pkgname=courier-imap
 pkgver=4.16.2
-pkgrel=1
+pkgrel=2
 pkgdesc="IMAP(s)/POP3(s) Server"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -58,7 +58,7 @@ package() {
   make DESTDIR=${pkgdir} install
 
   # cleanup - provided by courier-maildrop
-  rm ${pkgdir}/usr/bin/{deliverquota,maildirmake}
+  rm ${pkgdir}/usr/bin/{deliverquota,maildirmake,makedat}
   rm ${pkgdir}/usr/share/man/man1/maildirmake*
   rm ${pkgdir}/usr/share/man/man8/deliverquota*
   find ${pkgdir} -name '*\.a' -exec -rm -f {} \;
