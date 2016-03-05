@@ -1,0 +1,23 @@
+pkgbase = openmalaria
+	pkgdesc = A simulator of malaria epidemiology and control.
+	pkgver = 36.0
+	pkgrel = 1
+	url = https://github.com/SwissTPH/openmalaria
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = boost
+	makedepends = cmake
+	makedepends = python2
+	makedepends = xsd
+	makedepends = zlib
+	depends = gcc-libs-multilib
+	depends = gsl
+	depends = xerces-c
+	source = https://github.com/SwissTPH/openmalaria/archive/schema-36.0.tar.gz
+	source = openmalaria.sh
+	sha256sums = 9b5b6c8383b02b36a9f08d43e79da633518000c485b3505d370f6fe7c0b34152
+	sha256sums = 3b4e42e0d5663485737a4d658df62e7e4901b059ca3bd19f4883158e49a2652c
+
+pkgname = openmalaria
+
