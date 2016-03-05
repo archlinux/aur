@@ -16,46 +16,40 @@ install=cewe-fotobuch.install
 md5sums=('9197c2551c471da202de3f0652eba324'
          'ebc303204c0aecab97ecd53627f7eb7d')
 
-_KEYACCID=16523
-_CLIENTID=18
+_installDir=/usr/share/$pkgname
 
-
-build() {
-	cd $srcdir
-#	# download list of links
-#	wget -O url_list.txt "http://dls.photoprintit.de/download/Data/${_KEYACCID}/hps/${_CLIENTID}-index-$pkgver.txt" || return 1
-#	echo "Downloading and extracting files.."
-#	for url in $(awk -F\; '{print $1}' url_list.txt|egrep -v "dll|cewe|setup_Mueller|setup_Fotostar|setup_Meine_CeWe_Fotowelt_de|setup_Moj_CeWe"); do
-#		wget "http://dls.photoprintit.de/$url" || return 1
-#		unzip -o -d $srcdir $(basename $url) || return 1
-#	done
-}
 package() {
 	# put icons and mimetype in the right place
 	export XDG_UTILS_INSTALL_MODE=system
 	export XDG_DATA_DIRS="$pkgdir/usr/share:"
-	mkdir -p $pkgdir/usr/{share/$pkgname,bin,share/icons/hicolor,share/mime/packages}
+
+	_installDir=$pkgdir$_installDir
+	mkdir -p $_installDir $pkgdir/usr/{bin,share/icons/hicolor,share/mime/packages}
 
 	cd $srcdir
 	# don't install broken desktop file or put it on current user's desktop
 	sed -i 's/createDesktopShortcuts();/#createDesktopShortcuts();/' ./install.pl
 
-	./install.pl --installDir=$pkgdir/usr/share/cewe-fotobuch --workingDir=$srcdir -k -v
+	./install.pl --installDir=$_installDir --workingDir=$srcdir -k -v
 
 	# remove unneeded mime cache files (leave directories)
 	rm $pkgdir/usr/share/mime/* &> /dev/null || true
 
 #	# copy EULA
 #	install -D -m644 $srcdir/EULA.txt $pkgdir/usr/share/$pkgname/EULA.txt || return 1
+
         # create startup script
-	(echo "#!/bin/bash
-	cd /usr/share/$pkgname
-	./cewe-fotobuch \"\$@\"") > $pkgdir/usr/bin/cewe-fotobuch
+	cat > $pkgdir/usr/bin/cewe-fotobuch <<-EOF
+		#!/usr/bin/bash
+		cd ${_installDir#$pkgdir}
+		./cewe-fotobuch "\$@"
+	EOF
         chmod 755 $pkgdir/usr/bin/cewe-fotobuch
+
         # utf-8 and space in executable filenames is generally a bad idea
-	cd $pkgdir/usr/share/$pkgname
+	cd $_installDir
         mv "Mein CEWE FOTOBUCH" "cewe-fotobuch"
 	# create desktop shortcut
-	install -D -m644 $pkgdir/usr/share/$pkgname/Resources/keyaccount/32.xpm $pkgdir/usr/share/pixmaps/cewe-fotobuch.xpm && \
-	install -D -m644 $srcdir/cewe-fotobuch.desktop $pkgdir/usr/share/applications/cewe-fotobuch.desktop || return 1
+	install -D -m644 $_installDir/Resources/keyaccount/32.xpm $pkgdir/usr/share/pixmaps/cewe-fotobuch.xpm && \
+	install -D -m644 $srcdir/cewe-fotobuch.desktop $pkgdir/usr/share/applications/cewe-fotobuch.desktop
 }
