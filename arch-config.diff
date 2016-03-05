@@ -1,16 +1,3 @@
-diff -up src/xrdp-git/instfiles/pam.d/xrdp-sesman.orig src/xrdp-git/instfiles/pam.d/xrdp-sesman
---- src/xrdp-git/instfiles/pam.d/xrdp-sesman.orig	2015-12-04 06:23:08.000000000 -0700
-+++ src/xrdp-git/instfiles/pam.d/xrdp-sesman	2015-12-04 06:23:12.000000000 -0700
-@@ -1,5 +1,5 @@
- #%PAM-1.0
--@include common-auth
--@include common-account
--@include common-session
--@include common-password
-+auth include system-auth
-+account include system-auth
-+password include system-auth
-+session include system-auth
 diff -up src/xrdp-git/instfiles/xrdp.service.orig src/xrdp-git/instfiles/xrdp.service
 --- src/xrdp-git/instfiles/xrdp.service.orig	2015-12-04 06:23:12.000000000 -0700
 +++ src/xrdp-git/instfiles/xrdp.service	2015-12-04 06:28:25.000000000 -0700
