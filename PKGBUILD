@@ -1,7 +1,7 @@
 # Maintainer: Jens John <dev@2ion.de>
 pkgname=mpv-bash-completion-git
 pkgver=0.16.0+1
-epoch=5
+epoch=6
 pkgrel=1
 pkgdesc="Bash completion for the mpv video player"
 arch=('any')
@@ -35,7 +35,7 @@ pkgver() {
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  install -Dm644 "${_completioncommand}" "${pkgdir}/etc/bash_completion.d/${_completioncommand}"
+  install -dm755 "${pkgdir}/etc/bash_completion.d"
   install -Dm755 gen.sh "${pkgdir}/usr/lib/mpv-bash-completion/generate"
   cd "$srcdir"
   install -Dm644 mpv-bash-completion.hook "${pkgdir}/usr/share/libalpm/hooks/mpv-bash-completion.hook"
