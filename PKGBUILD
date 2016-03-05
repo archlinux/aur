@@ -2,7 +2,7 @@
 
 pkgname=xsettingsd-git
 pkgver=r79.b4999f5
-pkgrel=3
+pkgrel=4
 
 pkgdesc="xsettingsd is a daemon that implements the XSETTINGS specification."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/derat/xsettingsd"
 license=('custom:BSD')
 
 depends=('libx11')
-makedepends=('scons')
+makedepends=('git' 'scons')
 provides=('xsettingsd')
 conflicts=('xsettingsd')
 source=("$pkgname::git://github.com/derat/xsettingsd")
