@@ -1,0 +1,17 @@
+pkgbase = papyrus
+	pkgdesc = Graphical editing tool for UML based on eclipse.
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = http://www.eclipse.org/papyrus/
+	arch = i686
+	arch = x86_64
+	license = EPL
+	makedepends = tar
+	depends = java-runtime
+	source_i686 = http://ftp.snt.utwente.nl/pub/software/eclipse//modeling/mdt/papyrus/rcp/mars/1.1.3/papyrus-mars-1.1.3-linux32.tar.gz
+	md5sums_i686 = c9c4a1d743ded0e221ccaf66826c97bf
+	source_x86_64 = http://ftp.snt.utwente.nl/pub/software/eclipse//modeling/mdt/papyrus/rcp/mars/1.1.3/papyrus-mars-1.1.3-linux64.tar.gz
+	md5sums_x86_64 = 1a7781a582036b7d07acbdf9d4dee9ed
+
+pkgname = papyrus
+
