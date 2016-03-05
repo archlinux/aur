@@ -31,7 +31,7 @@ wheel==0.24.0
 import awscli
 
 
-requires = ['botocore==1.4.0',
+requires = ['botocore==1.4.1',
             'colorama>=0.2.5,<=0.3.3',
             'docutils>=0.10',
             'rsa>=3.1.2,<=3.3.0',
@@ -50,7 +50,7 @@ else
 pkgname="${_pyver}-${_pybase}-git"
 _pyverother='python'
 fi
-pkgver=1.10.9.r3376.g449c0c0
+pkgver=1.10.10.r3392.g29339e4
 # Generally when this version changes, the version of botocore also changes
 pkgrel=1
 pkgdesc='Universal Command Line Interface for Amazon Web Services awscli'
@@ -59,7 +59,7 @@ url="https://github.com/aws/${_pybase}"
 license=('Apache') # Apache License 2.0
 _pydepends=( # See setup.py, README.rst, and requirements.txt for version dependencies
   "${_pyver}-bcdoc"           # AUR
-  "${_pyver}-botocore>=1.4.0" # AUR == would make upgrades from AUR impossible. See below.
+  "${_pyver}-botocore>=1.4.1" # AUR == would make upgrades from AUR impossible. See below.
   #"${_pyver}-colorama"{">=0.2.5","<=0.3.3"}   # COM
   "${_pyver}-colorama>=0.2.5"   # COM requested by phw
   #"${_pyver}-rsa-3.1.2"{">=3.1.2","<=3.3.0"} # AUR
@@ -86,7 +86,7 @@ depends=("${_pyver}" "${_pydepends[@]}")
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 options=('!emptydirs' '!strip')
 source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('3e082d02289695bc7cd88da19e2d5702caa2bbf81c4d5738350680eace254595')
+sha256sums=('6aef55a1d5a7601a191943d3a2cb2438a46279bf267812cd9a5800e8df1bd6d3')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pybase}"
