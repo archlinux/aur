@@ -1,6 +1,6 @@
---- Makefile.orig	2016-01-10 11:15:35.126733492 +0100
-+++ Makefile	2016-01-10 11:21:31.034859116 +0100
-@@ -28,13 +28,6 @@
+--- /tmp/bcftools-1.3/Makefile	2015-12-15 22:58:35.000000000 +0100
++++ /tmp/makepkg/bcftools/src/bcftools-1.3/Makefile	2016-03-05 11:24:58.512091814 +0100
+@@ -28,18 +28,8 @@
  
  all: $(PROG) $(TEST_PROG)
  
@@ -12,9 +12,15 @@
 -TABIX  = $(HTSDIR)/tabix
 -
  CC       = gcc
- CPPFLAGS =
- CFLAGS   = -g -Wall -Wc++-compat -O2
-@@ -48,7 +41,7 @@
+-CPPFLAGS =
+-CFLAGS   = -g -Wall -Wc++-compat -O2
+-LDFLAGS  =
+-LIBS     =
++CFLAGS   := -g -Wall -Wc++-compat -O2 $(CFLAGS)
+ 
+ OBJS     = main.o vcfindex.o tabix.o \
+            vcfstats.o vcfisec.o vcfmerge.o vcfquery.o vcffilter.o filter.o vcfsom.o \
+@@ -48,7 +38,7 @@
             vcfcnv.o HMM.o vcfplugin.o consensus.o ploidy.o version.o \
             ccall.o em.o prob1.o kmin.o # the original samtools calling
  
@@ -23,7 +29,7 @@
  GSL_LIBS       =
  
  # The polysomy command is not compiled by default because it brings dependency
-@@ -57,7 +50,7 @@
+@@ -57,7 +47,7 @@
  ifdef USE_GPL
      EXTRA_CPPFLAGS += -DUSE_GPL
      OBJS += polysomy.o peakfit.o
@@ -32,7 +38,7 @@
  endif
  
  prefix      = /usr/local
-@@ -101,11 +94,11 @@
+@@ -101,11 +91,11 @@
  .c.o:
  	$(CC) $(CFLAGS) $(EXTRA_CPPFLAGS) $(CPPFLAGS) -c -o $@ $<
  
@@ -48,7 +54,7 @@
  
  
  # Plugin rules
-@@ -136,20 +129,20 @@
+@@ -136,20 +126,20 @@
  filter_h = filter.h $(htslib_vcf_h)
  ploidy_h = ploidy.h $(htslib_regidx_h)
  prob1_h = prob1.h $(htslib_vcf_h) $(call_h)
@@ -75,7 +81,7 @@
  vcfnorm.o: vcfnorm.c $(htslib_vcf_h) $(htslib_synced_bcf_reader_h) $(htslib_faidx_h) $(bcftools_h) rbuf.h
  vcfquery.o: vcfquery.c $(htslib_vcf_h) $(htslib_synced_bcf_reader_h) $(htslib_vcfutils_h) $(bcftools_h) $(filter_h) $(convert_h)
  vcfroh.o: vcfroh.c $(roh_h)
-@@ -157,22 +150,22 @@
+@@ -157,22 +147,22 @@
  vcfsom.o: vcfsom.c $(htslib_vcf_h) $(htslib_synced_bcf_reader_h) $(htslib_vcfutils_h) $(bcftools_h)
  vcfstats.o: vcfstats.c $(htslib_vcf_h) $(htslib_synced_bcf_reader_h) $(htslib_vcfutils_h) $(htslib_faidx_h) $(bcftools_h)
  vcfview.o: vcfview.c $(htslib_vcf_h) $(htslib_synced_bcf_reader_h) $(htslib_vcfutils_h) $(bcftools_h) $(filter_h)
@@ -105,7 +111,7 @@
  version.o: version.h version.c
  
  test/test-rbuf.o: test/test-rbuf.c rbuf.h
-@@ -180,8 +173,8 @@
+@@ -180,8 +170,8 @@
  test/test-rbuf: test/test-rbuf.o
  	$(CC) $(LDFLAGS) -o $@ $^ -lm $(LIBS)
  
