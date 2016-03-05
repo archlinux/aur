@@ -35,12 +35,12 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-# build() {
-#   cd "$srcdir"
-#   sed -i s/find.*Eigen.*// $pkgname/CMakeLists.txt
-#   cmake $pkgname -DEIGEN3_INCLUDE_DIR=/usr/include/eigen3
-#   make
-# }
+build() {
+  cd "$srcdir"
+  sed -i s/find.*Eigen.*// $pkgname/CMakeLists.txt
+  cmake $pkgname -DEIGEN3_INCLUDE_DIR=/usr/include/eigen3
+  make
+}
 
 package() {
   mkdir $pkgdir/usr/lib -p
