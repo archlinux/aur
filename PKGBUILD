@@ -28,8 +28,8 @@ md5sums=('710da077a39ed0c88c25daf930c16299'
          '11b55a3fec7279db32b63e3a0b97dc01')
 
 ## Previous build (also see: /var/cache/pacman/pkg/google-chrome-dev-*):
-#source[0]=('http://mirror.glendaleacademy.org/chrome/pool/main/g/google-chrome-unstable/google-chrome-unstable_50.0.2657.0-1_amd64.deb')
-#md5sums[0]=('a58034acc41d37047f384007004b5585')
+#source[0]='http://mirror.glendaleacademy.org/chrome/pool/main/g/google-chrome-unstable/google-chrome-unstable_50.0.2657.0-1_amd64.deb'
+#md5sums[0]='a58034acc41d37047f384007004b5585'
 
 package() {
   msg2 "Extracting the data.tar.xz..."
