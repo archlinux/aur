@@ -8,7 +8,7 @@ _name=youtube-dl
 _branch=master
 
 pkgname=$_name-git
-pkgver=2016.02.23.bf4b3b6
+pkgver=2016.03.05.845817a
 pkgrel=1
 
 pkgdesc='A small command-line program to download videos from YouTube.com and a few more sites - git version'
