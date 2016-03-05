@@ -4,7 +4,7 @@
 
 pkgname=firefox-extension-beyond-australis-git
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A Firefox add-on to improve the feeling of using the new Australis theme.'
 url='https://github.com/Quicksaver/The-Fox--Only-Better'
 arch=('any')
@@ -39,7 +39,6 @@ query-version() {
 
 
 pkgver() {
-  cd $_gitname
   sparql '<urn:mozilla:install-manifest> em:version ?x' | tr - .
   echo -n .
 printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
