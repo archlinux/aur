@@ -4,7 +4,7 @@
 
 pkgname=mozilla-extension-gnotifier-git
 pkgver=1.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Add-on for Firefox and Thunderbird to enable integration with GNOME native notification system.'
 url='https://github.com/mkiol/GNotifier'
 arch=('any')
@@ -38,7 +38,6 @@ query-version() {
 }
 
 pkgver() {
-  cd "$_gitname"
   find -iname '*.json' -exec sed -n \
     's/.*"version"\s*:\s*"\([[:digit:].]*\)"\s*,.*/\1/p' \
     '{}' \; -quit 2>/dev/null | tr '\n' '.'
