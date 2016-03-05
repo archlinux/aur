@@ -4,7 +4,7 @@
 
 pkgname=emacs-pretest
 _pkgname=emacs
-pkgver=25.0.91
+pkgver=25.0.92
 pkgrel=1
 pkgdesc="The extensible, customizable, self-documenting real-time display editor -- pretest version"
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ depends=('librsvg' 'gpm' 'giflib' 'libxpm' 'libotf' 'm17n-lib' 'gtk3' 'hicolor-i
 install=$pkgname.install
 provides=('emacs')
 conflicts=('emacs')
-source=(ftp://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$pkgver$_rc.tar.xz{,.sig})
-whirlpoolsums=('2d136d7f0e814d5dcffed614d850c03d3653f53a9d1d8e3aa4f7d94f2bc91e528ff63efd2376f42e91285770558fa1ddf375a570618b6fdb2b3fd9a64423b2ad'
+source=(ftp://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$pkgver.tar.xz{,.sig})
+whirlpoolsums=('26f937b8cd8bd87f61636f6193af9eecba9430cd01821015767c8800b9ad7ba61834215a8f8f382ae3eb0e60667fd10d94947980866b555028f24582f3a3dc8b'
                'SKIP')
 validpgkkeys=('28D3BED851FDF3AB57FEF93C233587A47C207910')
 
