@@ -5,7 +5,7 @@ After=network.target
 
 [Service]
 User=%i
-ExecStart=/usr/bin/python2 /usr/lib/spotify-connect-web/main.py --key ${HOME}/.config/spotify-connect-web/spotify_appkey.key --credentials ${HOME}/.config/spotify-connect-web/credentials.json --bitrate 320 --name "SpotifyConnectWeb" --dbrange 50
+ExecStart=/usr/bin/python2 /usr/lib/spotify-connect-web/main.py --key ${HOME}/.config/spotify-connect-web/spotify_appkey.key --credentials ${HOME}/.config/spotify-connect-web/credentials.json --bitrate 320 --name "SpotifyConnectWeb" --dbrange 50 -d
 #Restart=on-failure
 
 [Install]
