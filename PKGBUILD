@@ -3,8 +3,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-js2-mode-git
-pkgver=20160124
-pkgrel=2
+pkgver=20160305
+pkgrel=1
 pkgdesc="An improved JavaScript mode for GNU Emacs"
 arch=('any')
 url="https://github.com/mooz/js2-mode"
