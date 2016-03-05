@@ -6,7 +6,7 @@
 
 pkgname=python32
 pkgver=3.2.6
-pkgrel=1
+pkgrel=2
 _pybasever=3.2
 pkgdesc="Next generation of the python high-level scripting language"
 arch=('i686' 'x86_64')
@@ -16,9 +16,12 @@ depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib')
 makedepends=('tk' 'sqlite' 'valgrind')
 optdepends=('tk: for tkinter' 'sqlite')
 changelog=ChangeLog
-source=("http://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz" "readline-6.3.patch")
+source=("http://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz"
+        "readline-6.3.patch"
+        "openssl-1.0.2g.patch")
 sha256sums=('1d12b501819fd26afafbf8459be1aa279b56f032b4c15412de0a713ce0de7bdc'
-            'fbd8a517726ec5d84e33e7f39bf721e3b0d08471d0cf905b830327b8aa959cc4')
+            'fbd8a517726ec5d84e33e7f39bf721e3b0d08471d0cf905b830327b8aa959cc4'
+            '707078f2efe9548fb6c512160013f1b155830c5842553ee664ce426ad5c065cc')
 
 build() {
   cd "${srcdir}/Python-${pkgver}"
@@ -26,6 +29,9 @@ build() {
   # patch readline module to work with readline >= 6.3
   # http://bugs.python.org/issue20374
   patch -p1 -i $srcdir/readline-6.3.patch
+
+  # SSLv3 is disabled by default since OpenSSL 1.0.2g
+  patch -p1 -i $srcdir/openssl-1.0.2g.patch
 
   # FS#23997
   sed -i -e "s|^#.* /usr/local/bin/python|#!/usr/bin/python|" Lib/cgi.py

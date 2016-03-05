@@ -1,0 +1,13 @@
+--- a/Modules/_ssl.c	2016-03-06 04:25:54.076238343 +0800
++++ b/Modules/_ssl.c	2016-03-06 04:27:39.789568626 +0800
+@@ -1512,8 +1512,10 @@
+     PySSL_BEGIN_ALLOW_THREADS
+     if (proto_version == PY_SSL_VERSION_TLS1)
+         ctx = SSL_CTX_new(TLSv1_method());
++#ifndef OPENSSL_NO_SSL3
+     else if (proto_version == PY_SSL_VERSION_SSL3)
+         ctx = SSL_CTX_new(SSLv3_method());
++#endif
+ #ifndef OPENSSL_NO_SSL2
+     else if (proto_version == PY_SSL_VERSION_SSL2)
+         ctx = SSL_CTX_new(SSLv2_method());
