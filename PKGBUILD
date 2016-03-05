@@ -2,7 +2,7 @@
 
 pkgname=albiononline
 pkgver=20160303171523
-pkgrel=1
+pkgrel=2
 pkgdesc="The first true cross-platform Sandbox MMO"
 url="https://albiononline.com/"
 arch=('x86_64')
@@ -15,6 +15,7 @@ md5sums=('da460c988d20247316f993ad150a5203'
          'cec7e1ad7f4f8acfc0628d0dd8d421e6')
 
 PKGEXT='.pkg.tar'
+BUILDDIR=/var/tmp/makepkg
 
 package() {
   mkdir -p "${pkgdir}/opt/albiononline"
