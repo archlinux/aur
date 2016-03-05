@@ -9,10 +9,11 @@ arch=('i686' 'x86_64')
 url="https://obsproject.com"
 license=('GPL2')
 depends=('ffmpeg' 'jansson' 'libxinerama' 'libxkbcommon-x11'
-         'qt5-x11extras')
+         'qt5-x11extras' 'curl' 'hicolor-icon-theme')
 makedepends=('cmake' 'libfdk-aac' 'libxcomposite' 'x264')
 optdepends=('libfdk-aac: FDK AAC codec support'
             'libxcomposite: XComposite capture support')
+install=$pkgname.install
 source=(https://github.com/jp9000/obs-studio/archive/$pkgver.tar.gz)
 md5sums=('466208339f3b60905345f262b4e7e37b')
 
