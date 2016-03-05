@@ -35,18 +35,19 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
-  cd "$srcdir"
-  sed -i s/find.*Eigen.*// $pkgname/CMakeLists.txt
-  cmake $pkgname -DEIGEN3_INCLUDE_DIR=/usr/include/eigen3
-  make
-}
+# build() {
+#   cd "$srcdir"
+#   sed -i s/find.*Eigen.*// $pkgname/CMakeLists.txt
+#   cmake $pkgname -DEIGEN3_INCLUDE_DIR=/usr/include/eigen3
+#   make
+# }
 
 package() {
   mkdir $pkgdir/usr/lib -p
   install -Dm755  $srcdir/main/dede $pkgdir/usr/bin/dede
   install -Dm755 $srcdir/caffe_dd/src/caffe_dd/.build_release/lib/* $pkgdir/usr/lib
 
-  mkdir $pkgdir/usr/share/$pkgname
+  mkdir $pkgdir/usr/share/$pkgname -p
   cp -r $srcdir/templates $srcdir/caffe_dd/src/caffe_dd/{data,docs,examples,models,python,scripts} $pkgdir/usr/share/$pkgname
+  ln -s $pkgdir/usr/share/$pkgname ~/.deepdetect
 }
