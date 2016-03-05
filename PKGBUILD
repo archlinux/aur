@@ -1,6 +1,6 @@
 # Maintainer: Romain Schmitz <slopjong [[at]] hackerspace [[dot]] lu>
 pkgname=erwiz
-pkgver=(0.9.0)
+pkgver=0.9.0
 pkgrel=3
 pkgdesc="A lightweight tool to convert text-based entity-relationship models to images."
 arch=('i686' 'x86_64')
