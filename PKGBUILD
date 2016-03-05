@@ -30,12 +30,12 @@ package() {
 	
 	cp -r opt usr "$pkgdir"
 	
-	if [ ! -a "/usr/lib/libudev.so.0" ]
-	then
-	echo "libudev.so.0 was created"
-	mkdir "$pkgdir/usr/lib"
-	ln -s /usr/lib/libudev.so "$pkgdir/usr/lib/libudev.so.0"
-	fi
+#	if [ ! -a "/usr/lib/libudev.so.0" ]
+#	then
+#	echo "libudev.so.0 was created"
+#	mkdir "$pkgdir/usr/lib"
+#	ln -s /usr/lib/libudev.so "$pkgdir/usr/lib/libudev.so.0"
+#	fi
 	
 	#echo 'NOTE: After install run chmod 4755 /opt/yandex/browser-beta/yandex_browser-sandbox as root.'
 	
