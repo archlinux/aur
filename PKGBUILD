@@ -11,7 +11,7 @@ if [[ $CARCH == "x86_64" ]]; then
 fi
 pkgver=355.00.29
 _extramodules=extramodules-4.4-ARCH
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA drivers for linux (vulkan beta)"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -101,13 +101,9 @@ package_opencl-nvidia-vulkan-beta() {
     provides=(opencl-nvidia)
     cd "${_pkg}"
 
-    # OpenCL
     install -D -m644 nvidia.icd "${pkgdir}/etc/OpenCL/vendors/nvidia.icd"
     install -D -m755 "libnvidia-compiler.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-compiler.so.${pkgver}"
     install -D -m755 "libnvidia-opencl.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-opencl.so.${pkgver}"
-
-    # Vulkan
-    install -D -m644 nvidia_icd.json "${pkgdir}/etc/vulkan/icd.d/nvidia_icd.json"
 
     create_links
 
@@ -145,6 +141,8 @@ package_nvidia-vulkan-beta-libgl() {
 
     mkdir -p "${pkgdir}/usr/share/licenses"
     ln -s nvidia "${pkgdir}/usr/share/licenses/nvidia-libgl"
+
+    install -D -m644 nvidia_icd.json "${pkgdir}/etc/vulkan/icd.d/nvidia_icd.json"
 }
 
 package_nvidia-vulkan-beta-utils() {
