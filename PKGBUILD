@@ -10,7 +10,7 @@ arch=('any')
 url="http://opendesktop.org/content/show.php?content=169026"
 license=('GPL')
 depends=('yakuake')
-source=("${_pkgname}.tar.gz::http://opendesktop.org/CONTENT/content-files/169026-${_pkgname}.tar.gz")
+source=("${_pkgname}.tar.gz::https://opendesktop.org/CONTENT/content-files/169026-${_pkgname}.tar.gz")
 sha256sums=('0ccf4904014fd40303ab19a0c2b671cca2bc9d625c5448da9be73a072d5cd968')
 
 package() {
