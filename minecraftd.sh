@@ -93,7 +93,7 @@ idle_server_daemon() {
 		else
 			# Game server is down, listen on port ${GAME_PORT} for incoming connections
 			echo "Netcat is listening on port ${GAME_PORT} for incoming connections..."
-			${NETCAT_CMD} -v -l ${GAME_PORT}
+			${NETCAT_CMD} -v -l -p ${GAME_PORT}
 			echo "Netcat caught an connection. The server is coming up again...."
 			IDLE_SERVER="false" ${myname} start
 			sleep ${CHECK_PLAYER_TIME}

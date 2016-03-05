@@ -6,8 +6,8 @@ After=local-fs.target network.target
 Type=forking
 ExecStart=/usr/bin/minecraftd start
 ExecStop=/usr/bin/minecraftd stop
-USER=minecraft
-GROUP=minecraft
+User=minecraft
+Group=minecraft
 
 [Install]
 WantedBy=multi-user.target
