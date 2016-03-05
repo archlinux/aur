@@ -12,6 +12,7 @@ source=("https://download.zarafa.com/community/final/WebApp/plugins/MDM%201.0/fe
 backup=("etc/webapps/zarafa-webapp/plugins/${_pkgname}/config.php")
 license=('AGPL3')
 depends=('zarafa-webapp'
+	 'z-push'
 	 'php<7'
 	 'php-fpm<7')
 md5sums=('87c70369dbda5974c8c4aa6589f71f15'
