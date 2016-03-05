@@ -4,12 +4,13 @@
 _pkgname=grub2-theme-breeze
 pkgname="${_pkgname}-git"
 pkgver=r17.9610d5b
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimalistic GRUB theme inspired by Breeze"
 arch=('any')
 url="https://github.com/gustawho/${_pkgname}"
 license=('CCPL:by-sa')
 depends=('grub')
+conflicts=('breeze-grub')
 install=${pkgname}.install
 source=("git+${url}.git")
 sha256sums=('SKIP')
