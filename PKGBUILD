@@ -12,29 +12,13 @@ source=("http://downloads.sourceforge.net/project/sardi/${pkgname}-${pkgver}-${p
 sha256sums=('SKIP')
 
 package() {
-#cd src/${pkgname}-${pkgver}-${pkgrel}
 
-
+package() {
   install -dm 755 "${pkgdir}"/usr/share/icons
-  cp -dr --no-preserve='ownership' Sardi "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' Sardi\ Faenza\ Black "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' Sardi\ Flat "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' Sardi\ Flat\ Black "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' Sardi\ Flat\ Majestic "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' Sardi\ Flat\ Orange "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' Sardi\ Flexible "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' Sardi\ Ghost "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' Sardi\ Ghost\ Flexible "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' Sardi\ Grey "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' Sardi\ Mono "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' Sardi\ Mono\ Mint-X-Grey "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' Sardi\ Mono\ Numix "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' Sardi\ Mono\ Numix\ Grey "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' Sardi\ Mono\ Orange "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' Sardi\ Mono\ Vertexed "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' Sardi\ Orange "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' Sardi\ Red "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' Sardi\ Vertexed "${pkgdir}"/usr/share/icons/
+
+  cp -r "${srcdir}/${pkgname}-${pkgver}-${pkgrel}/" "${pkgdir}/usr/share/icons/"
+}
+
   
 }
 
