@@ -3,8 +3,8 @@
 _npmver=0.1.0
 pkgname=electronic-wechat-git
 _pkgname=electronic-wechat
-pkgver=1.0.6.g19896de
-pkgrel=2
+pkgver=1.0.25.gb43c562
+pkgrel=1
 pkgdesc="An Electron application for WeChat"
 arch=('any')
 url="https://github.com/geeeeeeeeek/wechat-electron/"
@@ -46,7 +46,6 @@ package() {
     cd "${_pkgname}"
     find ./{src,assets} -type f -exec install -Dm644 {} \
         "${pkgdir}/usr/share/${_pkgname}/{}" \;
-    ln -s "/usr/share/${_pkgname}/assets/icon.png" "${pkgdir}/usr/share/${_pkgname}/"
     install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
     install -Dm644 "${srcdir}/${_desktop}" "${pkgdir}/usr/share/applications/${_desktop}"
     install -Dm755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
