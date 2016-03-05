@@ -6,7 +6,7 @@
 
 pkgname=mintcoin-daemon-git
 _gitname=mintcoin
-pkgver=r175.59f8575
+pkgver=2.0.2.r0.g59f8575
 pkgrel=1
 pkgdesc="Mintcoin is a peer-to-peer network-based digital currency (git version)."
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${_gitname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
