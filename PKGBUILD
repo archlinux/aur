@@ -2,7 +2,7 @@
 
 pkgname=python-rosdep
 pkgver=0.11.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Package manager abstraction tool for ROS."
 url="http://wiki.ros.org/rosdep"
 depends=('python' 'python-catkin-pkg'  'python-rospkg' 'python-rosdistro' 'python-yaml')
@@ -15,8 +15,7 @@ sha256sums=('e4f31d4d0245798b1bc5fb16a111456ea308d9fb7b1f2d202d0fea8475c88bb8')
 
 conflicts=(python2-rosdep)
 
-# This is not ideal, but should not break Groovy/Hydro dependencies for now...
-provides=(python2-rosdep)
+provides=(rosdep)
 
 build() {
     cd $srcdir/rosdep-$pkgver
