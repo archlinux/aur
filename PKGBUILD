@@ -48,6 +48,7 @@ package() {
   install -Dm755 $srcdir/caffe_dd/src/caffe_dd/.build_release/lib/* $pkgdir/usr/lib
 
   mkdir $pkgdir/usr/share/$pkgname -p
-  cp -r $srcdir/templates $srcdir/caffe_dd/src/caffe_dd/{data,docs,examples,models,python,scripts} $pkgdir/usr/share/$pkgname
-  ln -s $pkgdir/usr/share/$pkgname ~/.deepdetect
+  # cp -r $srcdir/templates $srcdir/caffe_dd/src/caffe_dd/{data,docs,examples,models,python,scripts} $pkgdir/usr/share/$pkgname
+  cp -r $srcdir/$pkgname/{clients,datasets,demo,examples,templates} $pkgdir/usr/share/$pkgname
+  ln -s $pkgdir/usr/share/$pkgname ~/deepdetect
 }
