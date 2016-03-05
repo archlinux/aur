@@ -2,7 +2,7 @@
 pkgname="liblogcpp"
 pkgver=1.8.0
 pkgrel=1
-pkgdesc="A simple, intuitive and highly customizable LGPL library for logging with C++."
+pkgdesc="A intuitive and highly customizable LGPL library for logging with C++."
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 url="https://github.com/nullptrT/liblogcpp"
 license=('LGPL2.1')
