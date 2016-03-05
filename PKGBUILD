@@ -12,7 +12,8 @@ source=("http://downloads.sourceforge.net/project/sardi/${pkgname}-${pkgver}-${p
 sha256sums=('SKIP')
 
 package() {
-cd sardi-icons
+cd ${pkgname}-${pkgver}-${pkgrel}
+
 
   install -dm 755 "${pkgdir}"/usr/share/icons
   cp -dr --no-preserve='ownership' Sardi "${pkgdir}"/usr/share/icons/
