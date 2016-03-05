@@ -5,24 +5,27 @@
 
 pkgname=gog-shovel-knight
 pkgver=2.6.0.8
-pkgrel=1
-_gamename=${pkgname#gog-}
-_gamename_=${_gamename//-/_}
-
+pkgrel=2
 pkgdesc='Yacht Club Games'
 arch=("i686" "x86_64")
 url='http://www.gog.com/game/shovel_knight'
 license=('custom:commercial')
 depends=('sdl2')
 groups=('games')
-source=("gogdownloader://${_gamename_}/en3installer4" "${pkgname}.desktop")
-sha512sums=('455cbb79d232c6cda3aec402553497a87fb897b9b3e0575e0e018e1439581c09b3bc2d171c7238ef3259dcd4768fe1534d4dc80df91771b884185c501784c1cd'
+source=("gog://${pkgname//-/_}_${pkgver}.sh" "${pkgname}.desktop")
+sha512sums=('455cbb79d232c6cda3aec402553497a87fb897b9b3e0575e0e018e1439581c09b3bc2d171c7238ef3259dcd4768fe1534d4dc80df91771b884185c501784c1cd'            
             'a30a86d218c1249aef5e4f8116d90b61913c74a0bb0629ef1a04c3736d2a3d1960d6b28d562aa83bbc49383594c55de346f9e1893e222e50bba6ebe0d8cd43fc')
 
-# Register lgogdownloader as a download agent
-DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
+# You need to download the gog.com installer file manually or with lgogdownloader.
+DLAGENTS+=("gog::/usr/bin/echo %u - This is is not a real URL, you need to download the GOG file manually to \"$PWD\" or 
+setup a gog:// DLAGENT. Read this PKGBUILD for more information.")
 
-makedepends=("lgogdownloader>=2.25")
+# If you want to use lgogdownloader
+# DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
+# source=("gogdownloader://shovel-knight/en3installer4" "${pkgname}.desktop")
+
+# Prevent compressing final package
+PKGEXT='.pkg.tar'
 
 prepare(){
     cd "$srcdir/data/noarch"
@@ -52,4 +55,4 @@ package() {
     install -Dm 644 "${srcdir}/${pkgname}.desktop" \
         "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm 755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-} 
+}
