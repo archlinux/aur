@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 package() {
 
   install -dm 755 "${pkgdir}"/usr/share/icons
-  cp -dr --no-preserve='ownership' "${srcdir}/${pkgname}-${pkgver}-${pkgrel}/" "${pkgdir}/usr/share/icons/"
+  cp -r --no-preserve='ownership' "${srcdir}/${pkgname}-${pkgver}-${pkgrel}/*" "${pkgdir}/usr/share/icons/"
 }
 
 
