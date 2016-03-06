@@ -26,8 +26,8 @@ optdepends=('rabbitmq: localy hosted rabbitmq server'
             'apache: Apache webserver (webserver needed)'
             'nginx: Nginx webserver (webserver needed)')
 makedepends=('git' 'python' 'python-setuptools')
-provides=("${pkgname}")
-conflicts=("${pkgname}")
+provides=("airtime")
+conflicts=()
 replaces=()
 backup=('etc/airtime/airtime.conf'
         'etc/airtime/airtime.ini'
@@ -37,7 +37,7 @@ backup=('etc/airtime/airtime.conf'
         'etc/logrotate.d/airtime-php')
 options=()
 install=airtime.install
-source=("${pkgname}.tar.gz::https://github.com/sourcefabric/airtime/archive/airtime-${pkgver}.tar.gz"
+source=("airtime.tar.gz::https://github.com/sourcefabric/airtime/archive/airtime-${pkgver}.tar.gz"
         'airtime-media-monitor.service'
         'airtime-liquidsoap.service'
         'airtime-playout.service'
@@ -50,11 +50,11 @@ sha256sums=('ba3ed67f1a60032e1624a021fffa4bb11d9055ddc4c3773b40f334854adf6930'
             'a95e7236ab741140cafdd987cf485395de6b997ad1241411c8e7fa731dfaa137')
 
 prepare() {
-	cd "$srcdir/${pkgname}/python_apps"
-  2to3 -w api_clients
-  2to3 -w media-monitor
-  2to3 -w pypo
-  2to3 -w std_err_override
+	cd "$srcdir/"
+  2to3 -w "airtime/python_apps/api_clients"
+  2to3 -w "airtime/python_apps/media-monitor"
+  2to3 -w "airtime/python_apps/pypo"
+  2to3 -w "airtime/python_apps/std_err_override"
 }
 #
 # build() {
@@ -74,27 +74,27 @@ package() {
 
   # web frontend
   mkdir -p "${pkgdir}/usr/share/airtime"
-  cp -r "${pkgname}/airtime_mvc" "${pkgdir}/usr/share/airtime"
-  cp -r "${pkgname}/python_apps" "${pkgdir}/usr/share/airtime"
-  cp -r "${pkgname}/utils" "${pkgdir}/usr/share/airtime"
+  cp -r "airtime/airtime_mvc" "${pkgdir}/usr/share/airtime"
+  cp -r "airtime/python_apps" "${pkgdir}/usr/share/airtime"
+  cp -r "airtime/utils" "${pkgdir}/usr/share/airtime"
   chmod -R 755 "${pkgdir}/usr/share/airtime"
 
   mkdir -p "${pkgdir}/usr/share/doc/airtime/examples/"
-  cp -r "${pkgname}/widgets" "${pkgdir}/usr/share/doc/${pkgname}/examples/"
-  chmod -R 755 "${pkgdir}/usr/share/doc/${pkgname}/examples/"
-  install -D -m644 "${pkgname}/CREDITS" "${pkgdir}/usr/share/doc/${pkgname}/CREDITS"
-  install -D -m644 "${pkgname}/README" "${pkgdir}/usr/share/doc/${pkgname}/README"
-  install -D -m644 "${pkgname}/changelog" "${pkgdir}/usr/share/doc/${pkgname}/changelog"
+  cp -r "airtime/widgets" "${pkgdir}/usr/share/doc/airtime/examples/"
+  chmod -R 755 "${pkgdir}/usr/share/doc/airtime/examples/"
+  install -D -m644 "airtime/CREDITS" "${pkgdir}/usr/share/doc/airtime/CREDITS"
+  install -D -m644 "airtime/README" "${pkgdir}/usr/share/doc/airtime/README"
+  install -D -m644 "airtime/changelog" "${pkgdir}/usr/share/doc/airtime/changelog"
 
-  install -D -m644 "${pkgname}/LICENSE" "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
-  install -D -m644 "${pkgname}/LICENSE_3RD_PARTY" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE_3RD_PARTY"
+  install -D -m644 "airtime/LICENSE" "${pkgdir}/usr/share/doc/airtime/LICENSE"
+  install -D -m644 "airtime/LICENSE_3RD_PARTY" "${pkgdir}/usr/share/licenses/airtime/LICENSE_3RD_PARTY"
 
   install -D -m644 "airtime.tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/airtime.conf"
 
   mkdir -p "${pkgdir}/var/tmp/airtime/show-recorder/"
 
-  install -D -m644 "${pkgname}/airtime_mvc/build/airtime-php.logrotate" "${pkgdir}/etc/logrotate.d/airtime-php"
-  install -D -m644 "${pkgname}/python_apps/pypo/liquidsoap/airtime-liquidsoap.logrotate" "${pkgdir}/etc/logrotate.d/airtime-liquidsoap"
+  install -D -m644 "airtime/airtime_mvc/build/airtime-php.logrotate" "${pkgdir}/etc/logrotate.d/airtime-php"
+  install -D -m644 "airtime/python_apps/pypo/liquidsoap/airtime-liquidsoap.logrotate" "${pkgdir}/etc/logrotate.d/airtime-liquidsoap"
 
   mkdir -p "${pkgdir}/var/log/airtime"
   chmod -R a+x "${pkgdir}/var/log/airtime"
@@ -106,10 +106,10 @@ package() {
 
   mkdir -p "${pkgdir}/etc/airtime"
 
-  install -D -m 755 "${pkgname}/installer/php/airtime.ini" "${pkgdir}/etc/airtime"
-  install -D -m 755 "${pkgname}/installer/apache/airtime-vhost" "${pkgdir}/etc/airtime/apache.vhost.tpl"
-  install -D -m 755 "${pkgname}/installer/apache/airtime-vhost-2.4" "${pkgdir}/etc/airtime/apache24.vhost.tpl"
-  install -D -m 755 "${pkgname}/airtime_mvc/build/airtime.example.conf" "${pkgdir}/etc/airtime/airtime.conf"
+  install -D -m 755 "airtime/installer/php/airtime.ini" "${pkgdir}/etc/airtime"
+  install -D -m 755 "airtime/installer/apache/airtime-vhost" "${pkgdir}/etc/airtime/apache.vhost.tpl"
+  install -D -m 755 "airtime/installer/apache/airtime-vhost-2.4" "${pkgdir}/etc/airtime/apache24.vhost.tpl"
+  install -D -m 755 "airtime/airtime_mvc/build/airtime.example.conf" "${pkgdir}/etc/airtime/airtime.conf"
 
   chown -R ${web_user}:${web_user} "${pkgdir}/etc/airtime"
 
@@ -118,13 +118,13 @@ package() {
   install -D -m 755 airtime-playout.service "${pkgdir}/usr/lib/systemd/system"
 
   # python apps
-  python "${pkgname}/python_apps/std_err_override/setup.py" install \
+  python "airtime/python_apps/std_err_override/setup.py" install \
       --root="${pkgdir}/" --optimize=1 --install-scripts=/usr/bin
-  python "${pkgname}/python_apps/api_clients/setup.py" install \
+  python "airtime/python_apps/api_clients/setup.py" install \
       --root="${pkgdir}/" --optimize=1 --install-scripts=/usr/bin
-  python "${pkgname}/python_apps/media-monitor/setup.py" install \
+  python "airtime/python_apps/media-monitor/setup.py" install \
       --root="${pkgdir}/" --optimize=1 --install-scripts=/usr/bin
-  python "${pkgname}/python_apps/pypo/setup.py" install \
+  python "airtime/python_apps/pypo/setup.py" install \
       --root="${pkgdir}/" --optimize=1 --install-scripts=/usr/bin
 
 
