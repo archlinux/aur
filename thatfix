@@ -1,0 +1,11 @@
+--- src/trunk/dm2_alsa/Makefile	    2016-03-07 00:15:59.527131488 +0900
++++ src/trunk/dm2_alsa/Makefile     2016-03-07 00:25:03.905962760 +0900
+@@ -14,7 +14,7 @@
+ install: default
+ 	mkdir -p $(IDIR)
+ 	install dm2.ko $(IDIR)
+-	depmod -a
++	#depmod -a
+ 
+ uninstall:
+ 	rm $(IDIR)/dm2.ko
