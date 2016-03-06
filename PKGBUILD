@@ -15,7 +15,7 @@ source=("http://www.spice-space.org/download/releases/$pkgname-$pkgver.tar.bz2"{
         'spice-vdagentd.conf.d')
 sha256sums=('5b951646e0bd996afda2d063e706fa2aad2655af5bdd1b6525260ab50be30f7d'
             'SKIP'
-            '03e0cc9e0f0e2afb3fc99846b8eb1fcb0698955833c67a40a6692c7df4df2d12')
+            '7e17b0b30213ed528ba1c206ccaeff340685699cd84901162f40763c50d4a071')
 validpgpkeys=('94A9F75661F77A6168649B23A9D8C21429AC6C82')
 
 prepare() {
