@@ -4,5 +4,5 @@ Type=Application
 Encoding=UTF-8
 Name=SolarWolf-widescreen
 Exec=/usr/bin/solarwolf
-Icon=/usr/share/pixmaps/solarwolf.png
+Icon=/usr/share/solarwolf/data/ship-big.png
 Categories=Application;Game;ArcadeGame

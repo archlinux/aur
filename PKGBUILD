@@ -4,7 +4,7 @@
 
 pkgname=solarwolf-widescreen
 pkgver=1.5
-pkgrel=4
+pkgrel=5
 arch=('any')
 pkgdesc="Scramble through 60 levels collecting space boxes while dodging obstacles. Widescreen fork."
 url="http://posor.hostingkunde.de/solarwolf/solarwolf.htm"
@@ -12,12 +12,11 @@ depends=('python2-pygame')
 provides=('solarwolf')
 conflicts=('solarwolf')
 license=('LGPL')
-source=("http://posor.hostingkunde.de/solarwolf/solarwolf_we.tar.bz2"
-        solarwolf-wide.desktop)
+source=("http://posor.hostingkunde.de/solarwolf/solarwolf_we.tar.bz2" "solarwolf-wide.desktop")
 md5sums=('41858897fbe0ad39c9152ec6c10d503c'
-         '8c5a88274360238cb970bc451c6873df')
+         'e34408ed2b0325f46d0956dbcf77bfd6')
 
-build() {
+prepare() {
   cd "$srcdir/solarwolf"
   sed -i 's|/usr/share/games/solarwolf|/usr/share/solarwolf|g' solarwolf.py
   sed -i 's|/usr/lib/games/solarwolf|/usr/lib/solarwolf|g' solarwolf.py
