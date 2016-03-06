@@ -5,8 +5,8 @@ pkgdesc='2D physics simulation'
 _gitname=('planeworld')
 pkgname=('planeworld-git')
 provides=('planeworld=0.0.1')
-pkgver=0.306.db2642c
-pkgrel=1
+pkgver=0.307.f66b647
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://planeworld.org/"
@@ -34,7 +34,7 @@ build() {
 
 	cd "${srcdir}/build"
 
-	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr "../${_gitname}"
+	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr "../${_gitname}"
 
 	make
 	
