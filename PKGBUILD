@@ -1,5 +1,5 @@
 pkgname=update-ssh-keys
-pkgver=0.0.1
+pkgver=r21.206b3aa
 pkgrel=1
 pkgdesc="SSH Key helper binary from github.com/coreos/update-ssh-keys"
 arch=('x86_64')
@@ -13,8 +13,9 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --long | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+
 
 build() {
   cd "$pkgname"
