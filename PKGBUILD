@@ -3,11 +3,11 @@
 
 pkgname=easy_spice
 pkgver=0.6.8
-pkgrel=4
+pkgrel=5
 arch=('i686' 'x86_64')
-pkgdesc="Electronic circuit simulator (SPICE frontend, using gschem for schematics and ngspice as simulator)"
+pkgdesc="Electronic circuit simulator. SPICE frontend, using gschem for schematics and ngspice as simulator"
 url="http://easy-spice.sourceforge.net/"
-license="GPL"
+license=("GPL")
 depends=('geda-gaf' 'gtk2' 'ngspice' 'xterm')
 source=(http://downloads.sourceforge.net/sourceforge/easy-spice/$pkgname-$pkgver.tar.gz)
 md5sums=('6ffaab8c2dcdfc30ecdca52f3c8bcded')
