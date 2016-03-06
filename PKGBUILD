@@ -5,7 +5,7 @@ _module="${_name#python-}"
 _cmd="${_module%client}"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="2.7.0"
+pkgver="3.0.0"
 pkgrel="1"
 pkgdesc="OpenStack Object Storage API Client Library"
 arch=("any")
@@ -13,7 +13,7 @@ url="https://github.com/openstack/${_name}"
 license=("Apache")
 makedepends=("python-pbr" "python2-pbr")
 source=("https://tarballs.openstack.org/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('013f3d8296f5b4342341e086e95c4a1fc85a24caa22a9bcc7de6716b20de2a55')
+sha256sums=('824b8f204c5a7764de51795256e4175fdcd655ae4df85b8ae6e6ea9ec0b41f68')
 
 prepare() {
     cp -a "${srcdir}/${_name}-${pkgver}" "${srcdir}/${_name}-${pkgver}-python2"
