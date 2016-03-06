@@ -2,7 +2,7 @@
 
 pkgname=hiawatha-monitor
 pkgver=1.4
-pkgrel=3
+pkgrel=4
 pkgdesc="The Hiawatha Monitor is a monitoring tool for the Hiawatha webserver. It can be used to keep track of the performance and security of all your Hiawatha webservers via one single interface."
 arch=('any')
 url="https://www.hiawatha-webserver.org/monitor"
@@ -59,7 +59,7 @@ package() {
   install -D -m644 "${srcdir}/hiawatha_monitor.conf" "${pkgdir}/etc/webapps/${pkgname}/hiawatha_monitor.conf"
 
   cp -a ./monitor/* "${pkgdir}/usr/share/webapps/${pkgname}"
-  cp ./*{.service,.timer} "${pkgdir}/etc/systemd/system/"
+  cp ./*{.service,.timer} "${pkgdir}/usr/lib/systemd/system/"
 
   ln -s "/usr/share/webapps/${pkgname}/settings" "${pkgdir}/etc/webapps/${pkgname}/settings"
 }
