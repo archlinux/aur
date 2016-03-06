@@ -4,8 +4,8 @@ _pkgname=('desktopnotifications')
 pkgname=("zarafa-webapp-${_pkgname}")
 groups=('zarafa')
 pkgver=1.0
-pkgrel=1
-pkgdesc='Delayeddelivery plugin for Zarafa Webapp'
+pkgrel=2
+pkgdesc='Desktopnotifications plugin for Zarafa Webapp'
 arch=('any')
 source=("https://download.zarafa.com/community/final/WebApp/2.1.2/fedora-22/zarafa-webapp-desktopnotifications-1.0-13.1.noarch.rpm"
 	"compress-static")
