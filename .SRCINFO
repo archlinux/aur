@@ -5,6 +5,7 @@ pkgbase = python-zipstream
 	url = https://github.com/allanlei/python-zipstream
 	arch = any
 	license = GPL3
+	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	options = !emptydirs
 	source = https://github.com/allanlei/python-zipstream/archive/v1.1.3.tar.gz
