@@ -1,7 +1,8 @@
 # Maintainer: Fabian Zaremba <fabian at youremail dot eu>
 pkgname=imageplay-git
 _reponame=ImagePlay
-pkgver=6.0.0.beta.3.r8.g1080014
+_binary=imageplay
+pkgver=6.0.0.r3.g4a81026
 pkgrel=1
 pkgdesc="ImagePlay is a rapid prototyping application for image processing"
 arch=('i686' 'x86_64')
@@ -43,6 +44,6 @@ mkdir "$pkgdir/opt"
 cp -ar "$srcdir/${_reponame}/_bin/Release/linux"  "$pkgdir/opt/${_reponame}"
 
 mkdir -p "$pkgdir/usr/bin"
-ln -s "/opt/${_reponame}/${_reponame}"  "$pkgdir/usr/bin/${_reponame}"
+ln -s "/opt/${_reponame}/${_binary}"  "$pkgdir/usr/bin/${_binary}"
 
 }
