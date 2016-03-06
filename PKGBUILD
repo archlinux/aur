@@ -2,7 +2,7 @@
 
 pkgbase=notepadqq-src
 pkgname=notepadqq
-pkgver=0.50.6
+pkgver=0.51.0
 pkgrel=1
 pkgdesc='Notepad++-like editor for Linux'
 arch=('i686' 'x86_64')
@@ -21,8 +21,7 @@ prepare() {
   cd $pkgname
 
   git config submodule.src/editor/libs/codemirror.url "$srcdir/CodeMirror"
-  git submodule init
-  git submodule update
+  git submodule update --init
 }
 
 build() {
