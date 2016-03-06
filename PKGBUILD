@@ -1,7 +1,7 @@
 # Maintainer: Patrick McCarty <pnorcks at gmail dot com>
 
 pkgname=cve-check-tool
-pkgver=5.2
+pkgver=5.6.2
 pkgrel=1
 pkgdesc="Automated tool for checking known (public) CVEs"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('curl' 'json-glib' 'libxml2' 'sqlite')
 makedepends=('check')
 source=(https://github.com/ikeydoherty/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz)
-sha256sums=('779163a613b187007a1a2cd120658d5a3e5e419a02e618b593f7e84f362f10a0')
+sha256sums=('104d47047965aa8dcae801807cdabf25603113502873f856dd4511232af96ad2')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
