@@ -1,23 +1,24 @@
 pkgname=osdlyrics-pedrohlc
-provides=osdlyrics
+provides=(osdlyrics)
 conflicts=(osdlyrics 'osdlyrics-git' 'osdlyrics-abiehaf')
 pkgver=0.4.4
-pkgrel=0
+pkgrel=1
 pkgdesc="A lyric show compatible with various media players + experimental ViewLyrics source + bug fixes"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/osd-lyrics/"
 license=('GPL3')
 depends=('gtk2' 'dbus-glib' 'curl' 'libnotify' 'libmpd' 'xmms2'
          'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('intltool')
+makedepends=('intltool' 'python2')
 install=$pkgname.install
-source=("${provides}::git+git://github.com/PedroHLC/osdlyrics.git#branch=master")
+source=("${provides}::git+git://github.com/PedroHLC/osdlyrics.git#branch=legacy-dev")
 md5sums=('SKIP')
 
 build()
 {
     cd "$srcdir/$provides"
 
+    PYTHON=/usr/bin/python2
     ./autogen.sh
     ./configure --prefix=/usr
     make
