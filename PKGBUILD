@@ -2,10 +2,10 @@
 
 pkgname=perl6-config-toml
 pkgver=0.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="TOML parser for Perl 6"
 arch=('any')
-depends=('perl6')
+depends=('perl6' 'perl6-crane')
 checkdepends=('perl')
 makedepends=('alacryd' 'git')
 groups=('perl6')
@@ -34,7 +34,7 @@ package() {
   alacryd install
 
   msg2 'Removing redundant precomp file dependencies...'
-  _precomp=($(pacman -Qqg perl6 | pacman -Qql - | grep -E 'dist|precomp|short' || true))
+  _precomp=($(pacman -Qqg perl6 | pacman -Qql - | grep -E 'dist|precomp' || true))
   for _pc in "${_precomp[@]}"; do
     [[ -f "$pkgdir/$_pc" ]] && rm -f "$pkgdir/$_pc"
   done
