@@ -10,14 +10,14 @@ url="https://github.com/allanlei/${pkgbase}"
 license=('GPL3')
 groups=()
 depends=()
-makedepends=('python2-setuptools')
+makedepends=('python-setuptools' 'python2-setuptools')
 options=(!emptydirs)
 source=("${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('69116ade494c3138f9fa7e877906d4996af5f440e88e9ffebe0948683b38ef23')
 
 package_python-zipstream() {
       cd "$srcdir/${pkgbase}-${pkgver}"
-      python2 setup.py install --root="$pkgdir/" --optimize=1
+      python setup.py install --root="$pkgdir/" --optimize=1
     }
 
 package_python2-zipstream() {
