@@ -15,8 +15,10 @@ if [[ ! -d "$HOME/.$pkgname" ]]; then
 
     cp -rn /opt/"$pkgname"/df_linux/data/init "$HOME/.$pkgname/df_linux/data/init"
     cp -rn /opt/"$pkgname"/df_linux/raw "$HOME/.$pkgname/df_linux/raw"
+    cp -rn /opt/"$pkgname"/df_linux/dfhack-config \
+      "$HOME/.$pkgname/df_linux/dfhack-config"
 
-    for link in libs stonesense dfhack-config ; do
+    for link in libs stonesense ; do
         ln -s /opt/"$pkgname"/df_linux/$link\
           "$HOME/.$pkgname/df_linux/$link"
     done
