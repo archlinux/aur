@@ -2,11 +2,11 @@
 
 pkgname=wmdf
 pkgver=1.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Dockapp for monitoring disk space on partitions."
 #url="http://dockapps.windowmaker.org/file.php/id/175"
 url="http://web.archive.org/web/20121031043853/http://dockapps.windowmaker.org/file.php/id/175"
-license="GPL"
+license=("GPL")
 #depends=('libxpm' 'net-snmp')
 arch=('i686' 'x86_64')
 #source=("http://dockapps.windowmaker.org/download.php/id/359/$pkgname-0.$pkgver.tar.gz")
