@@ -1,8 +1,8 @@
 # Maintainer: Zeph <zeph33@gmail.com>
 
 pkgname=python2-pysvn
-pkgver=1.7.10
-pkgrel=2
+pkgver=1.8.0
+pkgrel=1
 pkgdesc="Python2 SVN Extension."
 arch=('any')
 url="http://pysvn.tigris.org"
@@ -12,12 +12,11 @@ depends=('python2>=2.7' 'subversion' 'apr' 'expat' 'neon' 'openssl')
 conflicts=('pysvn<=1.7.4-3' 'pysvn-py2')
 replaces=('pysvn-py2')
 provides=('pysvn-py2')
-source=("http://pysvn.barrys-emacs.org/source_kits/pysvn-$pkgver.tar.gz" 'svn1.9.patch')
-md5sums=('bf7527591d5086bd6d01cdc0d09a076e' 'cca4189218e968f4ceebdfa3fc14cd09')
+source=("http://pysvn.barrys-emacs.org/source_kits/pysvn-$pkgver.tar.gz" )
+md5sums=('3999a7680f4d3c4d3bddfc45edf65788')
 
 build() {
 	cd $srcdir/pysvn-$pkgver/Source
-  patch -p1 -i $srcdir/svn1.9.patch
   python2 setup.py configure || return 1
   make || return 1
 }
