@@ -118,13 +118,13 @@ package() {
   install -D -m 755 airtime-playout.service "${pkgdir}/usr/lib/systemd/system"
 
   # python apps
-  python2 "${pkgname}/python_apps/std_err_override/setup.py" install \
+  python "${pkgname}/python_apps/std_err_override/setup.py" install \
       --root="${pkgdir}/" --optimize=1 --install-scripts=/usr/bin
-  python2 "${pkgname}/python_apps/api_clients/setup.py" install \
+  python "${pkgname}/python_apps/api_clients/setup.py" install \
       --root="${pkgdir}/" --optimize=1 --install-scripts=/usr/bin
-  python2 "${pkgname}/python_apps/media-monitor/setup.py" install \
+  python "${pkgname}/python_apps/media-monitor/setup.py" install \
       --root="${pkgdir}/" --optimize=1 --install-scripts=/usr/bin
-  python2 "${pkgname}/python_apps/pypo/setup.py" install \
+  python "${pkgname}/python_apps/pypo/setup.py" install \
       --root="${pkgdir}/" --optimize=1 --install-scripts=/usr/bin
 
 
