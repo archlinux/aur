@@ -7,13 +7,13 @@
 
 pkgname=nvidia-rt
 pkgver=361.28
-_extramodules=extramodules-4.1-rt
-pkgrel=1
+_extramodules=extramodules-4.4-rt
+pkgrel=2
 pkgdesc="NVIDIA drivers for linux-rt"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-rt>=4.1' 'linux-rt<4.2' "nvidia-utils=${pkgver}" 'libgl')
-makedepends=('linux-rt-headers>=4.1' 'linux-rt-headers<4.2')
+depends=('linux-rt>=4.4' 'linux-rt<4.5' "nvidia-utils=${pkgver}" 'libgl')
+makedepends=('linux-rt-headers>=4.4' 'linux-rt-headers<4.5')
 license=('custom')
 options=(!strip)
 install=nvidia-rt.install
