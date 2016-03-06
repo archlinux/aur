@@ -11,7 +11,7 @@ license=('GPL')
 url="http://www.gnu.org/software/automake"
 groups=('base-devel')
 depends=('perl' 'bash')
-provides="automake=1.14"
+provides=("automake=1.14")
 install=automake.install
 source=(ftp://ftp.gnu.org/gnu/$_realname/$_realname-$pkgver.tar.gz)
 md5sums=('d052a3e884631b9c7892f2efce542d75')
