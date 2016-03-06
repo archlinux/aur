@@ -6,7 +6,7 @@ _ver=1.0.2g
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 #pkgver=$_ver
-pkgrel=2
+pkgrel=3
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security with ChaCha20 support (32-bit)'
 arch=('x86_64')
 url='https://www.openssl.org'
@@ -54,7 +54,7 @@ build() {
 	fi
 
 	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
-	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib \
+	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib32 \
 		shared zlib ${optflags} \
 		"${openssltarget}" \
 		"-Wa,--noexecstack ${CPPFLAGS} ${CFLAGS} ${LDFLAGS}"
