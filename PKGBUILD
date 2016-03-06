@@ -1,7 +1,7 @@
 # Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 # Contributor: Sonic-Y3k <sonic.y3k@googlemail.com>
 
-pkgbase=python2-pefile
+pkgbase=python-pefile
 pkgname=('python-pefile' 'python2-pefile')
 pkgver=2016.3.4
 pkgrel=1
