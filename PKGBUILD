@@ -4,7 +4,7 @@
 pkgbase=python-pefile
 pkgname=('python-pefile' 'python2-pefile')
 pkgver=2016.3.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Python PE parsing module"
 arch=('any')
 url="https://github.com/erocarrera/pefile"
@@ -30,10 +30,16 @@ package_python-pefile() {
   depends=('python' 'python-future')
   cd "$srcdir/pefile-$pkgver"
   python setup.py install --root "${pkgdir}" --optimize=1
+  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
 
 package_python2-pefile() {
   depends=('python2' 'python2-future')
   cd "$srcdir/pefile2-$pkgver"
   python2 setup.py install --root "${pkgdir}" --optimize=1
+  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
+
+# vim:set et sw=2 ts=2 tw=79:
