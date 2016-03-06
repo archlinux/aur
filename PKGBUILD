@@ -7,39 +7,43 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt             # Build kernel with a different name
-_srcname=linux-4.1
-_pkgver=4.1.15
-_rtpatchver=rt17
+_srcname=linux-4.4
+_pkgver=4.4.3
+_rtpatchver=rt9
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
-source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar."{xz,sign}
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}."{xz,sign}
-        "https://www.kernel.org/pub/linux/kernel/projects/rt/4.1/patch-${_pkgver}-${_rtpatchver}.patch."{xz,sign}
+source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.xz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.sign"
+        "https://www.kernel.org/pub/linux/kernel/projects/rt/4.4/patch-${_pkgver}-${_rtpatchver}.patch.xz"
+        "https://www.kernel.org/pub/linux/kernel/projects/rt/4.4/patch-${_pkgver}-${_rtpatchver}.patch.sign"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset"
         'change-default-console-loglevel.patch'
-        'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch'
-        'CVE-2016-0728.patch')
+        '0001-sdhci-revert.patch'
+        'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch')
 
-sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
+
+sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            '0ffca8557f1aa191da2f2260ad279c9cc858e6308a8af8a76f7ca3d3c0540344'
+            '4a24c79c40b2cb820ce9f22d44f31edcbde5971432753ab0289772946ed05b7b'
             'SKIP'
-            '5113ad6af15bf2db1031038acdec96f924a3d34f37541360cf1aa04208346b9d'
+            '11656950d144149af95bdb4d7d31a9fbdbe514d9634885efc868794f18df6b27'
             'SKIP'
-            'deb34489d21e0a20483f52738622244589051eb698e7924eb3ddfd5f004d5f1f'
-            'fd235f5d73d1b8b93653e9fdeee9c0eca318dddfb2570f9b14b70f3540b8d832'
+            'e3129f704cf59f4ba3ad074504b007e47a591b9b2a3b2a2869b7c381ff880afb'
+            'dd9e0be59672bba6e7a9572f6794139a19bf43d8e64785681a14cb2abea88a67'
             '2abb6e506e4a687723d6a6dc21703f5d2b42a8956fbc3313e3da2b03c718c80d'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '7a42d16108eb9a8eacadef3603527fa1beab857cc4db3bd228858488fb1f3fda'
-            '03bed5b1c6ef34a917e218a46d38cd1347c5ab5693131996113c6cad275dc4e9')
+            '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
+            '7a42d16108eb9a8eacadef3603527fa1beab857cc4db3bd228858488fb1f3fda')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -63,18 +67,22 @@ prepare() {
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
+  # revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=9faac7b95ea4f9e83b7a914084cc81ef1632fd91
+  # fixes #47778 sdhci broken on some boards
+  # https://bugzilla.kernel.org/show_bug.cgi?id=106541
+  msg "0001-sdhci-revert.patch"
+  patch -Rp1 -i "${srcdir}/0001-sdhci-revert.patch"
+
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
+  msg "change-default-console-loglevel.patch"
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
   # A patch to fix a problem that ought to be fixed in the NVIDIA source code.
   # Stops X from hanging on certain NVIDIA cards
   msg "fix-race-in-PR-wait-for-completion-simple-wait-code_Nvidia-RT.patch"
   patch -p1 -i "${srcdir}/fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch"
-
-  msg "CVE-2016-0728.patch"
-  patch -p1 -i "${srcdir}/CVE-2016-0728.patch"
 
   msg "All patches have successfully been applied"
 
@@ -121,9 +129,6 @@ _package() {
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
-  provides=("kernel26${_kernelname}=${_pkgver}")
-  conflicts=("kernel26${_kernelname}")
-  replaces=("kernel26${_kernelname}")
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install="${pkgbase}.install"
 
@@ -180,9 +185,6 @@ _package() {
 
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
-  provides=("kernel26${_kernelname}-headers=${_pkgver}")
-  conflicts=("kernel26${_kernelname}-headers")
-  replaces=("kernel26${_kernelname}-headers")
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
@@ -296,13 +298,15 @@ _package-headers() {
 
   # remove unneeded architectures
   rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
+  
+  # remove a files already in linux-docs package
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-01"
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-02"
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.select-break"
 }
 
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
-  provides=("kernel26${_kernelname}-docs=${_pkgver}")
-  conflicts=("kernel26${_kernelname}-docs")
-  replaces=("kernel26${_kernelname}-docs")
 
   cd "${srcdir}/${_srcname}"
 
