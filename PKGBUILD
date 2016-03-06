@@ -5,7 +5,7 @@
 
 pkgname=non-daw-git
 _gitname=non
-pkgver=0.r1820.88fe7e7
+pkgver=0.r1823.3946d39
 pkgrel=1
 pkgdesc="A modular Digital Audio Workstation system - Git version."
 arch=('i686' 'x86_64')
