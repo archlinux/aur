@@ -1,0 +1,8 @@
+pre_remove() {
+	rm -f /usr/local/bin/turris-spectator
+	rmdir /usr/local/bin/ 
+	rm -f -r /usr/local/share/pixmaps/spectator.png
+	rmdir /usr/local/share/pixmaps/ 
+	rm -f -r /usr/local/share/applications/spectator.desktop
+	rmdir /usr/local/share/applications/
+}
