@@ -3,7 +3,7 @@
 # Contributor: Juri Grabowski <archlinux-aur at juri-grabowski dot de>
 
 pkgname=blogc
-pkgver=0.5.1
+pkgver=0.7.6
 pkgrel=0
 pkgdesc="blogc is a blog compiler. It converts source files and templates into blog/website resources"
 arch=('any')
@@ -12,8 +12,7 @@ license=('BSD 3 clause license')
 depends=()
 options=('!emptydirs')
 source=("https://github.com/blogc/blogc/releases/download/v${pkgver}/blogc-${pkgver}.tar.gz")
-md5sums=('8eb26fb36197eae494c5292a9edc0771')
-
+md5sums=('a46de00685edb1c1b542a240adf38f20')
 
 build() {
   cd  $srcdir/blogc-$pkgver
