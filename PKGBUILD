@@ -10,16 +10,14 @@ url="https://github.com/antergos/lightdm-webkit2-greeter"
 license=('GPL3')
 source=("${pkgname}-${pkgver}::git+https://github.com/antergos/${pkgname}.git#tag=2.0.0"
 		"https://antergos.com/antergos-wallpapers-0.6.zip")
-groups=('system')
 makedepends=('gnome-doc-utils' 'gobject-introspection' 'intltool' 'gnome-common' 'exo' 'git')
-depends=('lightdm' 'webkit2gtk>=2.10' 'webkit2gtk<2.12' 'gtk-engines'
-		'gtk3>=3.18' 'gtk3<3.20' 'dbus-glib')
+depends=('lightdm' 'webkit2gtk>=2.10' 'webkit2gtk<2.12' 'gtk3>=3.18' 'gtk3<3.20')
 provides=('lightdm-webkit-greeter' 'lightdm-webkit-theme-antergos=2.3.2')
 conflicts=('lightdm-webkit-greeter' 'lightdm-webkit-theme-antergos')
 replaces=('lightdm-webkit-greeter' 'lightdm-webkit-theme-antergos<2.2.4')
 backup=("etc/lightdm/${pkgname}.conf")
 md5sums=('SKIP'
-         'c996d26914e71897019c33854b0ae634')
+		'c996d26914e71897019c33854b0ae634')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
@@ -45,4 +43,6 @@ package() {
 	cp -dpr --no-preserve=ownership \
 		"${srcdir}/antergos-wallpapers-${_bgver}" \
 		"${pkgdir}/usr/share/lightdm-webkit/themes/antergos/wallpapers"
+
+	chmod -R a+r "${pkgdir}/usr/share/lightdm-webkit/themes/antergos/wallpapers" 
 }
