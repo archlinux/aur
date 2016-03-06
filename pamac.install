@@ -1,0 +1,18 @@
+post_install() {
+  gtk-update-icon-cache /usr/share/icons/hicolor
+  update-desktop-database -q
+  update-mime-database usr/share/mime > /dev/null 2>&1
+  printf '==> The polkit-gnome agent is no longer autostarted by default\n'
+  printf '    except in GNOME Flashback.\n'
+  printf '    For Xfce, LXDE etc., 'lxsession' is the suggested lightweight alternative.\n'
+  printf '    See https://wiki.archlinux.org/index.php/Polkit#Authentication_agents\n'
+  printf '    for more details.\n'
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  post_install
+}
