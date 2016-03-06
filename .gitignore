@@ -1,5 +1,5 @@
-pkg
-src
-cloudstation-*.pkg.tar.xz
-cloudstation-*.src.tar.gz
-synology-cloud-station-*.deb
+*
+!PKGBUILD
+!.SRCINFO
+!*.install
+!.gitignore
