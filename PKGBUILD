@@ -7,7 +7,7 @@ depends=('libxpm')
 license=('GPL')
 source=("http://archive.ubuntu.com/ubuntu/pool/universe/w/$pkgname/${pkgname}_${pkgver}.orig.tar.gz")
 md5sums=('0ca9bda2fcdccedfb5045b0017d9f60e')
-url=("http://packages.ubuntu.com/trusty/wmmemload")
+url="http://packages.ubuntu.com/trusty/wmmemload"
 
 prepare() {
   cd ${pkgname}-${pkgver}
