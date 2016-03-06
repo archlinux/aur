@@ -12,7 +12,7 @@ url="https://github.com/viniciuschiele/flask-apscheduler"
 license=('Apache')
 makedepends=('python2-setuptools' 'python-setuptools')
 source=("https://pypi.python.org/packages/source/${_pipname:0:1}/$_pipname/$_pipname-$pkgver.tar.gz")
-md5sums=('b619a21332536ecf6992c6323e7cddd9')
+md5sums=('e26a2116f25d23bd61094130a2cd82d0')
 
 
 prepare() {
