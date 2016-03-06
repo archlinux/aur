@@ -32,7 +32,7 @@ source_x86_64=("https://github.com/bitcoinclassic/bitcoinclassic/releases/downlo
 							 "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/0.11.2/COPYING"
 							 "bitcoin.conf")
 noextract=(bitcoin-$_ver-linux*.tar.gz)
-md5sums_i686=('6e53d422be03c4694a046b6a13fbbf81'
+md5sums_i686=('7647477343116b9d1f41af83c0ddf1fb'
               '0aa8db6ac0e58ccbe85d0fe4923fb39e'
               '0aae5f0110179e8e1d588530bcce5d2a'
               '1f72f650f0d8e76fbaf86fd5809e73b2'
@@ -41,7 +41,7 @@ md5sums_i686=('6e53d422be03c4694a046b6a13fbbf81'
               '62981ec22f92add684406addc5e4d03a'
               'fb8504ceaf8aa25d43eefc5f90abfa06'
               'aee806a767f350dab8bfb39db0ee0e18')
-md5sums_x86_64=('91aca9095b22b1991ef8f75eb99c790f'
+md5sums_x86_64=('50f9362cb8e91cfb82a6fea48b1c37f2'
                 '0aa8db6ac0e58ccbe85d0fe4923fb39e'
                 '0aae5f0110179e8e1d588530bcce5d2a'
                 '1f72f650f0d8e76fbaf86fd5809e73b2'
@@ -50,7 +50,7 @@ md5sums_x86_64=('91aca9095b22b1991ef8f75eb99c790f'
                 '62981ec22f92add684406addc5e4d03a'
                 'fb8504ceaf8aa25d43eefc5f90abfa06'
                 'aee806a767f350dab8bfb39db0ee0e18')
-sha256sums_i686=('7446263df3764cbc0fc5ba9fc6eb3dd921b94bd787f8195c177a7927ae7d6c07'
+sha256sums_i686=('05d4b11b46ebae557f747674f59603a625a11e7e62cb78e1c50825b7e2ebd734'
                  'b65b377c0d9ecae9eea722843bca0add6bdb7e50929a7e1f751b79b6621c6073'
                  'ad880c8459ecfdb96abe6a4689af06bdd27906e0edcd39d0915482f2da91e722'
                  '829d5d38c8c3145b6debcb569bfa75acdfcfab5d914495b56ceb4d02060f130f'
@@ -59,7 +59,7 @@ sha256sums_i686=('7446263df3764cbc0fc5ba9fc6eb3dd921b94bd787f8195c177a7927ae7d6c
                  '9acf7f46052f6e508af4f38be4574f34bf0f57d2cf462f072606d3f177b4c957'
                  '8973ffc8689564898d52b54dc27d3cacf7aa3b61d6fcc390da40e773ad7dffed'
                  '938f4265e238cbc038ebee9cb93076a8ba0ae94708ac7b7379385b1f8d019676')
-sha256sums_x86_64=('258a74c3e7fb13ab0a31fdeea6c243ba956c372e9c8c69473ce0fd79876bfb9a'
+sha256sums_x86_64=('3f4eb95a832c205d1fe3b3f4537df667f17f3a6be61416d11597feb666bde4ca'
                    'b65b377c0d9ecae9eea722843bca0add6bdb7e50929a7e1f751b79b6621c6073'
                    'ad880c8459ecfdb96abe6a4689af06bdd27906e0edcd39d0915482f2da91e722'
                    '829d5d38c8c3145b6debcb569bfa75acdfcfab5d914495b56ceb4d02060f130f'
