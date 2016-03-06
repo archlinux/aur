@@ -20,7 +20,8 @@ depends=(python gtk2 glu sdl_image libsndfile sdl_ttf glew tk
 optdepends=('lib32-nvidia-utils: If you have nvidia graphics'
            'lib32-catalyst-utils: If you have ATI graphics'
            'lib32-alsa-lib: for alsa sound'
-           'lib32-libpulse: for pulse sound')
+           'lib32-libpulse: for pulse sound'
+           'java-environment: for announcement filter')
 
 optdepends+=("dwarftherapist-git: call dwarftherapist through gui"
             "soundsense: call soundsense through gui")
