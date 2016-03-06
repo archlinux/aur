@@ -4,7 +4,7 @@ _pkgname=('delayeddelivery')
 pkgname=("zarafa-webapp-${_pkgname}")
 groups=('zarafa')
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Delayeddelivery plugin for Zarafa Webapp'
 arch=('any')
 source=("https://download.zarafa.com/community/final/WebApp/2.1.2/fedora-22/zarafa-webapp-plugins-delayeddelivery-1.0-56.1.noarch.rpm"
@@ -12,7 +12,6 @@ source=("https://download.zarafa.com/community/final/WebApp/2.1.2/fedora-22/zara
 backup=("etc/webapps/zarafa-webapp/plugins/${_pkgname}/config.php")
 license=('AGPL3')
 depends=('zarafa-webapp'
-	 'z-push'
 	 'php<7'
 	 'php-fpm<7')
 md5sums=('538d405022102d8d00a899200a6a3369'
