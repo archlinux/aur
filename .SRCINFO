@@ -1,6 +1,6 @@
 pkgbase = criterion
 	pkgdesc = A KISS, non-intrusive unit testing framework for C and C++
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = http://github.com/Snaipe/criterion.git
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = criterion
 	depends = glibc
 	depends = pcre
 	depends = gettext
-	source = criterion::git://github.com/Snaipe/criterion.git#tag=v2.2.0
+	source = criterion::git://github.com/Snaipe/criterion.git#tag=v2.2.1
 	md5sums = SKIP
 
 pkgname = criterion
