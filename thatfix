@@ -1,0 +1,55 @@
+--- src/pt3/Makefile	2016-01-13 04:14:31.405761427 +0900
++++ src/pt3/Makefile.fixed	2016-01-13 04:21:07.879130219 +0900
+@@ -3,8 +3,12 @@
+ EXTRA_CFLAGS += -Wformat=2
+ KVER ?= `uname -r`
+ 
++ifndef DESTDIR
++  DESTDIR := /
++endif
++
+ KBUILD = /lib/modules/$(KVER)/build
+-INSTALL_DIR = /lib/modules/$(KVER)/kernel/drivers/video
++INSTALL_DIR = $(DESTDIR)/usr/lib/modules/$(KVER)/kernel/drivers/video
+ 
+ all: ${TARGET}
+ 
+--- src/pt3/Makefile	2016-01-13 04:25:10.472789571 +0900
++++ src/pt3/Makefile.fixed	2016-01-13 04:28:25.939069217 +0900
+@@ -38,7 +38,7 @@
+ 
+ dkms: $(TARGET)
+ 	if [ -d /etc/udev/rules.d -a ! -f /etc/udev/rules.d/99-pt3.rules ] ; then \
+-		install -m 644 etc/99-pt3.rules /etc/udev/rules.d ; \
++		install -m 644 $(DESTDIR)/etc/99-pt3.rules $(DESTDIR)/etc/udev/rules.d ; \
+ 	fi
+ 
+ install: uninstall dkms
+--- src/pt3/Makefile	2016-01-13 04:30:13.494371342 +0900
++++ src/pt3/Makefile.fixed	2016-01-13 04:33:14.093162149 +0900
+@@ -44,7 +44,7 @@
+ install: uninstall dkms
+ 	install -d $(INSTALL_DIR)
+ 	install -m 644 $(TARGET) $(INSTALL_DIR)
+-	depmod -a $(KVER)
++	#depmod -a $(KVER)
+ 
+ install_compress: install
+ 	. $(KBUILD)/.config ; \
+@@ -55,4 +55,4 @@
+ 	elif [ $$CONFIG_DECOMPRESS_GZIP = "y" ] ; then \
+ 		gzip  -9 $(INSTALL_DIR)/$(TARGET); \
+ 	fi
+-	depmod -a $(KVER)
++	#depmod -a $(KVER)
+--- src/pt3/Makefile	2016-03-06 12:27:17.166340836 +0900
++++ src/pt3/Makefile.morefix	2016-03-06 12:35:27.716812866 +0900
+@@ -34,7 +34,7 @@
+ 	fi
+ 
+ uninstall:
+-	rm -vf $(INSTALL_DIR)/$(TARGET)* /etc/udev/rules.d/99-pt3.rules
++	rm -vf $(INSTALL_DIR)/$(TARGET)* $(DESTDIR)/etc/udev/rules.d/99-pt3.rules
+ 
+ dkms: $(TARGET)
+ 	if [ -d /etc/udev/rules.d -a ! -f /etc/udev/rules.d/99-pt3.rules ] ; then \
