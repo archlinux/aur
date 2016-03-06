@@ -1,5 +1,5 @@
 pkgname=coreos-cloudinit-git
-pkgver=1.9.0.r3.g8fa2641
+pkgver=1.9.2.r0.g6e9109e
 pkgrel=1
 pkgdesc="coreos-cloudinit"
 arch=('x86_64')
@@ -10,7 +10,7 @@ provides=('coreos-cloudinit')
 replaces=('cloud-init' 'coreos-cloudinit' 'coreos-cloudinit-git')
 conflicts=('cloud-init' 'coreos-cloudinit' 'coreos-cloudinit-git')
 source=("$pkgname::git+$url" "coreos-cloudinit.service")
-sha256sums=('SKIP' '21e08ced41942ffb0ce8371f6efc6fa1c6941da777d8798ae03b7bfd9479bc1d')
+sha256sums=('SKIP' 'b2fc8da498f3a87e4ba3ea6422cb006f1195e0281b2b062a6b2805b3c035fcb2')
 optdepends=('update-ssh-keys: ssh key management support')
 
 pkgver() {
