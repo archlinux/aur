@@ -1,6 +1,6 @@
 # Maintainer: Testudo Aquatilis <testudo.aquatilis@posteo.de>
 pkgname=irmpc
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 epoch=
 pkgdesc="Lets you control MPD via LIRC"
