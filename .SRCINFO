@@ -1,0 +1,27 @@
+pkgbase = python-pydirl
+	pkgdesc = quick file sharing solution
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/ael-code/pydirl
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = https://github.com/ael-code/pydirl/archive/v0.1.2.tar.gz
+	sha256sums = ae493eada022b33e2d0dc57eeceac3cd898441e434c835b30f4b94ba5db69109
+
+pkgname = python-pydirl
+	depends = python-gevent
+	depends = python-flask
+	depends = python-click
+	depends = python-zipstream
+	depends = python-flask-bootstrap
+
+pkgname = python2-pydirl
+	depends = python2-gevent
+	depends = python2-flask
+	depends = python2-click
+	depends = python2-zipstream
+	depends = python2-flask-bootstrap
+
