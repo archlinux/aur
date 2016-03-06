@@ -12,7 +12,7 @@ depends=('php' 'php-gd' 'php-pear' 'zendframework' 'php-pgsql' 'php-apcu' 'php-a
          'ocaml-soundtouch' 'ocaml-taglib' 'ocaml-ao' 'ocaml-mad' 'ocaml-camomile'
          'ecasound' 'portaudio' 'libsamplerate' 'vo-aacenc'
          'patch'
-         'mpg123' 'vorbisgain' 'pwgen' 'vorbis-tools' 'silan-git' 'lsof'
+         'mpg123' 'vorbisgain' 'pwgen' 'vorbis-tools' 'silan' 'lsof'
          'libpulse' 'alsa-utils'
          'liquidsoap'
          'coreutils' 'sudo'
