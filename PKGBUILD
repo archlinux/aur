@@ -15,7 +15,7 @@
 
 pkgname=zabbix-server
 pkgver=3.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Software designed for monitoring availability and performance of IT infrastructure components"
 arch=('i686' 'x86_64')
 url="http://www.zabbix.com"
@@ -96,11 +96,11 @@ package() {
 }
 
 md5sums=('890d9eec69304ad552959fabe0a5d122'
-         '9b9f8575c1f43e5c993c83a37f4580dc'
+         '1881e6a0a9683745f07ab86e14b3f37e'
          '7200c01662be3a1d364c280ff2a818ac'
          '9ce692356b4ac0a71595ce55fe3b44c1')
 sha1sums=('2e4e870bc3359f594d2d661f7e1fe9e8163ef79e'
-          'a645c438874928a78f40b7f31e10a69a32d8779c'
+          'fccab5531dd8aab043ad2c0906597a28d3cdc9a4'
           '7db689838d1f7985b75f91fb319227c3211bab7d'
           '8926befcb944732fd59a34c89b569d3fbef1ca9d')
 
