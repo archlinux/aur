@@ -1,0 +1,17 @@
+--- CMakeLists.txt.old	2016-02-21 14:50:18.710034624 -0500
++++ CMakeLists.txt	2016-02-21 14:50:52.823366613 -0500
+@@ -6,12 +6,12 @@
+     add_subdirectory (Dfusion)
+ endif()
+ 
+-OPTION(BUILD_STONESENSE "Build stonesense (needs a checkout first)." OFF)
++OPTION(BUILD_STONESENSE "Build stonesense (needs a checkout first)." ON)
+ if(BUILD_STONESENSE)
+     add_subdirectory (stonesense)
+ endif()
+ 
+-OPTION(BUILD_ISOWORLD "Build isoworld (needs a checkout first)." OFF)
++OPTION(BUILD_ISOWORLD "Build isoworld (needs a checkout first)." OFF)
+ if(BUILD_ISOWORLD)
+     add_subdirectory (isoworld)
+     IF(UNIX)

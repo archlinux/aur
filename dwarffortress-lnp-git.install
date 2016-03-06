@@ -1,0 +1,14 @@
+post_install() {
+  xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+  echo 'Installed. Run lnp to launch.'
+  echo 'You may have to delete ~/.dwarffortress-lnp-git to get latest version (you will have to manually back up saves)'
+  echo 'Refer to ~./dwarffortress-lnp-git/LNP/ for local LNP base directory'
+  echo 'Optional utilites can be installed by adding a symlink to /opt/dwarffortress-lnp-git/LNP/utilities'
+  echo 'If you run into issues, try examining ~/.dwarffortress-lnp-git/df_linux/distro_specific_fixes.sh for distro related problems.'
+}
+
+post_upgrade() {
+  post_install "$1"
+}
+
+# vim:set ts=2 sw=2 et:

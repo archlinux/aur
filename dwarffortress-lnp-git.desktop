@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Lazy Newb Pack
+Comment=An launcher for Dwarf Fortress and related utilities
+Exec=lnp
+Icon=lnp
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Categories=Game;

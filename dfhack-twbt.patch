@@ -1,0 +1,12 @@
+--- CMakeLists.custom.txt.old	2016-02-21 00:27:31.328461633 -0500
++++ CMakeLists.custom.txt	2016-02-21 00:28:19.798459722 -0500
+@@ -1,3 +1,9 @@
+ # You can add custom plugins here to avoid touching plugins/CMakeLists.txt,
+ # This can be useful if you've made modifications to that file and try to
+ # switch between branches that have also made modifications to it.
++
++OPTION(BUILD_TWBT "Build df-twbt." ON)
++if(BUILD_TWBT)
++    add_subdirectory (df-twbt)
++endif()
++

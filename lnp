@@ -1,0 +1,57 @@
+#!/bin/sh
+#export SDL_DISABLE_LOCK_KEYS=1 # Work around for bug in Debian/Ubuntu SDL patch.
+#export SDL_VIDEO_CENTERED=1    # Centre the screen.  Messes up resizing.
+
+pkgname=dwarffortress-lnp-git #set by PKGBUILD
+
+if [[ ! -d "$HOME/.$pkgname" ]]; then
+    mkdir -p "$HOME/.$pkgname/df_linux/data"
+    mkdir -p "$HOME/.$pkgname/LNP"
+    #ln -s "/opt/$pkgname/python-lnp" "$HOME/.$pkgname/python-lnp"
+    cp -rn "/opt/$pkgname/python-lnp" "$HOME/.$pkgname/"
+
+    ln -s  "$HOME/.$pkgname/python-lnp/launch.py" "$HOME/.$pkgname/PyLNP"
+    cp -n /opt/"$pkgname"/startlnp "$HOME/.$pkgname/startlnp"
+
+    cp -rn /opt/"$pkgname"/df_linux/data/init "$HOME/.$pkgname/df_linux/data/init"
+    cp -rn /opt/"$pkgname"/df_linux/raw "$HOME/.$pkgname/df_linux/raw"
+
+    for link in libs stonesense dfhack-config ; do
+        ln -s /opt/"$pkgname"/df_linux/$link\
+          "$HOME/.$pkgname/df_linux/$link"
+    done
+
+    mkdir -p "$HOME/.$pkgname/df_linux/hack"
+    for link in libdfhack.so liblua.so libprotobuf-lite.so libruby.so \
+      libdfhack-client.so; do
+        ln -s /opt/"$pkgname"/df_linux/hack/$link\
+          "$HOME/.$pkgname/df_linux/hack/$link"
+    done
+
+    for link in binpatch dfhack-run libs lua plugins raw ruby symbols.xml ; do
+        ln -s /opt/"$pkgname"/df_linux/hack/$link \
+          "$HOME/.$pkgname/df_linux/hack/$link"
+    done
+
+    cp -rn /opt/"$pkgname"/df_linux/hack/scripts \
+      "$HOME/.$pkgname/df_linux/hack/scripts"
+
+    cp -rn /opt/"$pkgname"/LNP "$HOME/.$pkgname/"
+
+fi
+
+
+for copyfile in df dfhack dfhack-run dfhack.init distro_fixes.sh \
+  ; do
+    cp -n /opt/"$pkgname"/df_linux/$copyfile \
+      "$HOME/.$pkgname/df_linux/$copyfile"
+done
+
+for link in announcement art dipscript help index initial_movies movies \
+  shader.fs shader.vs sound speech ; do
+    cp -rn /opt/"$pkgname"/df_linux/data/$link "$HOME/.$pkgname/df_linux/data/$link"
+done
+
+cd "$HOME/.$pkgname"
+exec ./startlnp "$@"
+
