@@ -1,0 +1,37 @@
+From 73ec16b4dbc468cd700b927f949f1aece1c0065c Mon Sep 17 00:00:00 2001
+From: Anatol Pomozov <anatol.pomozov@gmail.com>
+Date: Sat, 5 Mar 2016 20:47:08 -0800
+Subject: [PATCH 1/2] iteflash: Initialize variable that later used in the
+ function
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Latest GCC gives compiler error:
+  util/iteflash.c: In function ‘verify_flash’:
+  util/iteflash.c:927:9: error: ‘res’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+    return res;
+           ^
+
+Change-Id: I184d8673020552797fd54bb98ee582a63debbf16
+Signed-off-by: Anatol Pomozov <anatol.pomozov@gmail.com>
+---
+ util/iteflash.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/util/iteflash.c b/util/iteflash.c
+index 62bf8b8..3a0e225 100644
+--- a/util/iteflash.c
++++ b/util/iteflash.c
+@@ -885,7 +885,7 @@ int write_flash(struct ftdi_context *ftdi, const char *filename,
+ int verify_flash(struct ftdi_context *ftdi, const char *filename,
+ 		uint32_t offset)
+ {
+-	int res;
++	int res = 0;
+ 	int file_size;
+ 	FILE *hnd;
+ 	uint8_t *buffer  = malloc(flash_size);
+-- 
+2.7.2
+
