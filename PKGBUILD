@@ -8,7 +8,7 @@ pkgdesc="Old icons of the FVWM-Project."
 source=("http://www.fvwm.org/generated/icon_download/fvwm_icons-$pkgver.tar.gz")
 url="http://www.fvwm.org"
 md5sums=('c6d98849680a1c306067aa085519e46c')
-license="GPL"
+license=("GPL")
 
 package() {
   cd "$srcdir/fvwm_icons-$pkgver"
