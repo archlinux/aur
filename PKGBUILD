@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  ulimit -n 3072
+  ulimit -n 4096
   php /usr/bin/composer install --no-dev
   php -d phar.readonly=Off /usr/bin/php-box build
 }
