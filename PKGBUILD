@@ -2,10 +2,10 @@
 
 pkgname=wmdia
 pkgver=1.04
-pkgrel=2
+pkgrel=3
 pkgdesc="Dockapp to show pictures, films, webcam."
 url="http://wmdia.sourceforge.net/"
-license="AGPLv3"
+license=("AGPLv3")
 depends=('libxcb' 'xcb-util' 'xcb-util-wm')
 optdepends=('imagemagick: for showing pictures'
             'mplayer: for playing movies'
