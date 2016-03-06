@@ -2,7 +2,7 @@
 
 pkgname=emacs-xwidget-git
 pkgver=25.1.50.r124337
-pkgrel=1
+pkgrel=2
 pkgdesc="The famous editor from xwidget_mvp branch"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -63,6 +63,4 @@ package() {
   chmod 775 "$pkgdir"/var/games
   chmod 775 "$pkgdir"/var/games/emacs
   chmod 664 "$pkgdir"/var/games/emacs/*
-  # and another perm fix
-  chmod o+r $pkgdir/usr/lib/emacs/$_mainver/x86_64-unknown-linux-gnu/update-game-score
 }
