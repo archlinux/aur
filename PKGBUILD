@@ -11,7 +11,7 @@ pkgdesc="A library that helps you create bindings between C++ and Lua"
 arch=('i686' 'x86_64')
 url="http://www.rasterbar.com/products/luabind.html"
 license=('MIT')
-makedepends=('unzip' 'boost')
+makedepends=('unzip' 'boost' 'boost-build')
 depends=('lua' 'gcc-libs')
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         "luabind_boost.patch"
