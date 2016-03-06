@@ -3,7 +3,7 @@
 
 pkgname=dm2-alsa
 pkgver=r651
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Mixman DM2 ALSA driver'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url='https://sourceforge.net/projects/dm2linux/'
 license=('GPL2')
 depends=('alsa-lib')
 makedepends=('svn')
-provides=('${pkgname}'='${pkgver}')
+provides=("${pkgname}"="${pkgver}")
 install=dm2-alsa.install
 source=('svn+svn://svn.code.sf.net/p/dm2linux/code/trunk'
         thatfix)
