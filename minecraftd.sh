@@ -92,15 +92,20 @@ idle_server_daemon() {
 				# Stop the game server if no player was active for at least ${IDLE_IF_TIME}
 				if [[ "${no_player}" -ge "${IDLE_IF_TIME}" ]]; then
 					IDLE_SERVER="false" ${myname} stop
-
-					# Game server is down, listen on port ${GAME_PORT} for incoming connections
-					sleep 1
+					# Wait for game server to go down
+					for i in {1..90}; do
+						screen -S "${SESSION_NAME}" -Q select . > /dev/null
+						[[ $? -eq 1 ]] && break
+						[[ $i -eq 90 ]] && echo -e "\e[39;1m An error occured while trying to reset the idle_server! \e[0m"
+						sleep 0.1
+					done
+					# Listen on port ${GAME_PORT} for incoming connections
 					echo "Netcat is listening on port ${GAME_PORT} for incoming connections..."
 					${NETCAT_CMD} -v -l -p ${GAME_PORT}
 					[[ $? -eq 0 ]] && echo "Netcat caught an connection. The server is coming up again...."
 					IDLE_SERVER="false" ${myname} start
 				fi
-			else
+			elif [[ $? -eq 0 ]]; then
 				no_player=0
 			fi
 		else
@@ -136,8 +141,13 @@ server_start() {
 		${SUDO_CMD} screen -S "${IDLE_SESSION_NAME}" -Q select . > /dev/null
 		if [[ $? -eq 0 ]]; then
 			${SUDO_CMD} screen -S "${IDLE_SESSION_NAME}" -X quit
-			sleep 0.5
-			${SUDO_CMD} screen -dmS "${IDLE_SESSION_NAME}" /bin/bash -c "${myname} idle_server_daemon"
+			# Restart as soon as the idle_server_daemon has shut down completely
+			for i in {1..30}; do
+				${SUDO_CMD} screen -S "${IDLE_SESSION_NAME}" -Q select . > /dev/null
+				[[ $? -eq 1 ]] && ${SUDO_CMD} screen -dmS "${IDLE_SESSION_NAME}" /bin/bash -c "${myname} idle_server_daemon" && break
+				[[ $i -eq 30 ]] && echo -e "\e[39;1m An error occured while trying to reset the idle_server! \e[0m"
+				sleep 0.1
+			done
 		else
 			echo -en "Starting idle server daeomon... "
 			${SUDO_CMD} screen -dmS "${IDLE_SESSION_NAME}" /bin/bash -c "${myname} idle_server_daemon"
@@ -178,7 +188,14 @@ server_stop() {
 			sleep 1
 		done
 		game_command stop
-		echo -e "\e[39;1m done\e[0m"
+
+		# Finish as soon as the server has shut down completely
+		for i in {1..30}; do
+			${SUDO_CMD} screen -S "${SESSION_NAME}" -Q select . > /dev/null
+			[[ $? -eq 1 ]] && echo -e "\e[39;1m done\e[0m" && break
+			[[ $i -eq 30 ]] && echo -e "\e[39;1m ERROR\e[0m"
+			sleep 0.1
+		done
 	else
 		echo "The corresponding screen session for ${SESSION_NAME} was already dead."
 	fi
@@ -221,7 +238,6 @@ server_restart() {
 	${SUDO_CMD} screen -S "${SESSION_NAME}" -Q select . > /dev/null
 	if [[ $? -eq 0 ]]; then
 		server_stop
-		sleep 0.5
 		server_start
 	else
 		server_start
