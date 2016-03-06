@@ -2,7 +2,7 @@
 # Contributor: Reventlov <contact+aur at volcanis dot me>
 
 pkgname=searx-git
-pkgver=v0.8.1.109.gfee556c
+pkgver=v0.8.1.r112.ge893d94
 pkgrel=1
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
