@@ -5,7 +5,7 @@ pkgver=57352
 pkgrel=4
 pkgdesc="AeroClone tehme for GTK2"
 url="http://gnome-look.org/content/show.php/Aero-clone?content=${pkgver}"
-license="GNU/GPL"
+license=("GNU/GPL")
 arch=('any')
 source=("http://gnome-look.org/CONTENT/content-files/${pkgver}-${_pkgname}.tar.gz")
 md5sums=('465f3c4e440ec14c86e9830366b8b889')
