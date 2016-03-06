@@ -3,7 +3,7 @@
 
 _pkgname=drupalconsole
 pkgname=${_pkgname}-git
-pkgver=0.10.6.r117.g46383aa
+pkgver=0.10.12.r53.gbc01b5d
 pkgrel=1
 pkgdesc="The Drupal Console is a suite of tools that you run on a command line interface (CLI) to generate boilerplate code and interact with a Drupal 8 installation."
 arch=('any')
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  ulimit -n 3072
+  ulimit -n 4096
   php /usr/bin/composer install --no-dev
   php -d phar.readonly=Off /usr/bin/php-box build
 }
