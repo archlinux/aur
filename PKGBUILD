@@ -4,7 +4,7 @@
 
 pkgname=gpmdp
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An electron wrapper for Google Play Music"
 arch=('i686' 'x86_64')
 url="http://www.googleplaymusicdesktopplayer.com"
