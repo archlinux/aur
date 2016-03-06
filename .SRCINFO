@@ -1,0 +1,15 @@
+pkgbase = gpmdp
+	pkgdesc = An electron wrapper for Google Play Music
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = http://www.googleplaymusicdesktopplayer.com
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libgnome-keyring
+	depends = lsb-release
+	source = https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-/releases/download/3.0.0/google-play-music-desktop-player_3.0.0_linux_amd64.deb
+	md5sums = f8f9e80f31ebdff6bc04f3413cb6f087
+
+pkgname = gpmdp
+
