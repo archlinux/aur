@@ -1,6 +1,6 @@
-diff -ru gnupg-2.1.10/configure gnupg-2.1.10-patched/configure
---- gnupg-2.1.10/configure	2015-12-04 10:57:06.000000000 +0100
-+++ gnupg-2.1.10-patched/configure	2016-01-26 14:55:11.000000000 +0100
+diff -ru gnupg-2.1.11/configure gnupg-2.1.11-patched/configure
+--- gnupg-2.1.11/configure	2016-01-26 13:54:50.000000000 +0100
++++ gnupg-2.1.11-patched/configure	2016-03-06 18:34:29.190228228 +0100
 @@ -2861,7 +2861,7 @@
  
  ac_config_headers="$ac_config_headers config.h"
@@ -10,9 +10,9 @@ diff -ru gnupg-2.1.10/configure gnupg-2.1.10-patched/configure
  
  # Find a good install program.  We prefer a C program (faster),
  # so one script is as good as another.  But avoid the broken or
-diff -ru gnupg-2.1.10/configure.ac gnupg-2.1.10-patched/configure.ac
---- gnupg-2.1.10/configure.ac	2015-12-04 10:55:19.000000000 +0100
-+++ gnupg-2.1.10-patched/configure.ac	2016-01-26 14:55:11.000000000 +0100
+diff -ru gnupg-2.1.11/configure.ac gnupg-2.1.11-patched/configure.ac
+--- gnupg-2.1.11/configure.ac	2016-01-26 10:36:37.000000000 +0100
++++ gnupg-2.1.11-patched/configure.ac	2016-03-06 18:34:29.190228228 +0100
 @@ -19,7 +19,7 @@
  
  # Process this file with autoconf to produce a configure script.
@@ -22,7 +22,7 @@ diff -ru gnupg-2.1.10/configure.ac gnupg-2.1.10-patched/configure.ac
  
  # To build a release you need to create a tag with the version number
  # (git tag -s gnupg-2.n.m) and run "./autogen.sh --force".  Please
-@@ -234,7 +234,7 @@
+@@ -241,7 +241,7 @@
                large_secmem=$enableval, large_secmem=no)
  AC_MSG_RESULT($large_secmem)
  if test "$large_secmem" = yes ; then
@@ -31,10 +31,11 @@ diff -ru gnupg-2.1.10/configure.ac gnupg-2.1.10-patched/configure.ac
  else
     SECMEM_BUFFER_SIZE=32768
  fi
-diff -ru gnupg-2.1.10/g10/keygen.c gnupg-2.1.10-patched/g10/keygen.c
---- gnupg-2.1.10/g10/keygen.c	2015-12-04 10:53:27.000000000 +0100
-+++ gnupg-2.1.10-patched/g10/keygen.c	2016-01-26 14:55:11.000000000 +0100
-@@ -1560,7 +1560,7 @@
+Only in gnupg-2.1.11-patched: configure.ac.orig
+diff -ru gnupg-2.1.11/g10/keygen.c gnupg-2.1.11-patched/g10/keygen.c
+--- gnupg-2.1.11/g10/keygen.c	2016-01-26 10:36:37.000000000 +0100
++++ gnupg-2.1.11-patched/g10/keygen.c	2016-03-06 18:38:32.848387838 +0100
+@@ -1557,7 +1557,7 @@
    int err;
    char *keyparms;
    char nbitsstr[35];
@@ -43,11 +44,14 @@ diff -ru gnupg-2.1.10/g10/keygen.c gnupg-2.1.10-patched/g10/keygen.c
  
    assert (is_RSA(algo));
  
-@@ -2054,6 +2054,7 @@
- 
-     case PUBKEY_ALGO_RSA:
-       min=1024;
-+      max = (opt.flags.large_rsa ? 14336 : 4096);
+@@ -2048,6 +2048,10 @@
+       def=255;
+       max=441;
        break;
++
++    case PUBKEY_ALGO_RSA:
++      max=(opt.flags.large_rsa?14336:4096);
++      break;
      }
  
+   tty_printf(_("%s keys may be between %u and %u bits long.\n"),

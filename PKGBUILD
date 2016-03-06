@@ -6,7 +6,7 @@
 
 pkgname=gnupg-large-rsa
 _pkgname=gnupg
-pkgver=2.1.10
+pkgver=2.1.11
 pkgrel=1
 pkgdesc='Complete and free implementation of the OpenPGP standard - with fixes to make large RSA keys really work (and even bigger keys)'
 url='http://www.gnupg.org/'
@@ -22,9 +22,9 @@ validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6'
               '031EC2536E580D8EA286A9F22071B08A33BD3F06'
               'D238EA65D64C67ED4C3073F28A861B1C7EFD60D9')
 source=("ftp://ftp.gnupg.org/gcrypt/${_pkgname}/${_pkgname}-${pkgver}.tar.bz2"{,.sig} "${pkgname}-${pkgver}.patch")
-sha1sums=('4aa2594d2d364fe7708a9739ae7cebd251e536c4'
+sha1sums=('4af2032a60ff22e322b1c5b270d6d2228f59a3a'
           'SKIP'
-          '30085cda67ae46528bc51373bae1e46d105191c7'
+          'be64ecc1d3ff9c6ef4e58cf82825f39e23816b9'
          )
 
 install=install
@@ -46,10 +46,8 @@ build() {
 		--sysconfdir=/etc \
 		--sbindir=/usr/bin \
 		--libexecdir=/usr/lib/gnupg \
-		--enable-maintainer-mode \
         --enable-symcryptrun \
         --enable-large-secmem
-
 	make
 }
 
