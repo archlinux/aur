@@ -1,12 +1,13 @@
 pkgbase = spectator-git
 	pkgdesc = Desktop application to monitor router Turris
 	pkgver = v0.6.r45.gbe39a5b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.labs.nic.cz/turris/spectator
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = sudo
 	depends = qt5-base
 	depends = qt5-translations
 	source = spectator-git::git+https://gitlab.labs.nic.cz/turris/spectator.git
