@@ -5,11 +5,11 @@
 
 pkgname=cputnik
 pkgver=0.2.0
-pkgrel=8
+pkgrel=9
 pkgdesc="Dockapp showing a simple CPU and memory monitor."
 #url="http://dockapps.windowmaker.org/file.php/id/273"
 url="http://web.archive.org/web/20121031043853/http://dockapps.windowmaker.org/file.php/id/273"
-license="GPL"
+license=("GPL")
 depends=('libxpm')
 optdepends=('xorg-xkill: for right click - killing apps by window'
             'gnome-system-monitor: for left click - start system monitor')
