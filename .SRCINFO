@@ -1,0 +1,17 @@
+pkgbase = python-pysmartdl
+	pkgdesc = A Smart Download Manager for Python
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = https://github.com/iTaybb/pySmartDL/
+	arch = any
+	license = Public Domain
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
+	source = https://pypi.python.org/packages/source/p/pySmartDL/pySmartDL-1.2.4.tar.gz
+	md5sums = 4935dab07663b2f78ead0544af11bf2b
+
+pkgname = python2-pysmartdl
+	depends = python2-futures
+
+pkgname = python-pysmartdl
+
