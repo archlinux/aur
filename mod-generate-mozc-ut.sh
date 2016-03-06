@@ -5,7 +5,7 @@
 sed -i \
     -e 's/ruby \(.*\)/ruby -EUTF-8 \1 || exit 1/g' \
     generate-mozc-ut.sh \
-    edict-katakanago/generate-katakanago.sh
+    edict-katakana-english/generate-katakanago.sh
 
 sed -i \
     -e 's/^\(MOZCVER=.*\|DICVER=.*\|NICODIC=.*\)/#&/' \
@@ -25,6 +25,6 @@ sed -i \
 sed -i \
     -e '/# get edict/,+1d' \
     -e 's|gzip -d edict.gz|ln -sf \.\./\.\./edict-${DICVER} edict|' \
-    edict-katakanago/generate-katakanago.sh
+    edict-katakana-english/generate-katakanago.sh
 
-sed -i '71s/s\[5\]/& != "" and &/' chimei/get-entries.rb 
+sed -i '71s/s\[5\]/& != "" and &/' chimei/get-chimei-entries.rb
