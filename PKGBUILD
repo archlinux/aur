@@ -1,11 +1,11 @@
-# Maintainer: Benjamin Chrétien <chretien dot b plus aur at gmail dot com>
+# Maintainer: v01d <nospam@gmail.com>
 # Contributor: Yuxin Wu <ppwwyyxxc@gmail.com>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: hauptmech
 # Contributor: figo.zhang
 # Contributor: lubosz
 
-pkgname=pcl
+pkgname=pcl-no-examples
 pkgver=1.8.0rc1
 pkgrel=1
 pkgdesc="A comprehensive open source library for n-D Point Clouds and 3D geometry processing"
@@ -20,6 +20,8 @@ source=("https://github.com/PointCloudLibrary/pcl/archive/pcl-${pkgver}.tar.gz"
         "vtk7.patch")
 sha256sums=('18ff4519026a7885d2fd0ee1d06939a7755e83e082840e4929fb2883948e5142'
             'eaf5f90ded00d47ae8fbb34c3cc8878e694f44b684038a9c593c432035a0b2c1')
+conflicts=(pcl)
+provides=(pcl)
 
 prepare() {
   cd "${srcdir}/pcl-pcl-${pkgver}"
@@ -46,7 +48,7 @@ prepare() {
     -DBUILD_apps_in_hand_scanner=ON \
     -DBUILD_apps_modeler=ON \
     -DBUILD_apps_point_cloud_editor=OFF \
-    -DBUILD_examples=ON \
+    -DBUILD_examples=OFF \
     -DBUILD_global_tests=OFF \
     -DBUILD_surface_on_nurbs=ON \
     -DBUILD_CUDA=ON \
