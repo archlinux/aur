@@ -5,7 +5,7 @@ pkgname=('vmware-horizon-client' 'vmware-horizon-pcoip' 'vmware-horizon-rtav' 'v
 pkgver=3.5.0
 _build=2999900
 _cart='CART15Q3'
-pkgrel=3
+pkgrel=4
 pkgdesc='VMware Horizon Client connect to VMware Horizon virtual desktop'
 arch=('i686' 'x86_64')
 url='https://my.vmware.com/web/vmware/info/slug/desktop_end_user_computing/vmware_horizon_clients/3_0'
@@ -31,7 +31,7 @@ sha256sums_i686=('9a92d844305a6a38f9fa09df170e9780112211e4d43f0a8bca30595f61fa8c
 # VMware bundles old versions of openssl. Usually we can use system openssl.
 # If things break because VMware relies on legacy or buggy code you can use
 # bundled openssl.
-_USE_BUNDLED_OPENSSL=0
+_USE_BUNDLED_OPENSSL=1
 
 # We need these functions for the Gentoo eclass...
 ebegin() {
