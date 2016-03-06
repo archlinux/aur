@@ -1,6 +1,6 @@
 # Maintainer: Dustin Falgout <dustin@antergos.com>
 
-pkgname=obs-service-tar_scm
+pkgname=obs-service-tar_scm-git
 _pkgver=0.5.3
 pkgver="${_pkgver}.r213"
 pkgrel=1
