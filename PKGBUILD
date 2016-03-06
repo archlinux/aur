@@ -2,7 +2,7 @@
 
 pkgname=8192cu-dkms
 pkgver=v4.0.2_9000
-pkgrel=9
+pkgrel=10
 pkgdesc="Driver for Realtek RTL8188CUS (8188C, 8192C) chipset wireless cards"
 arch=('any')
 url="http://www.realtek.com.tw/"
@@ -10,7 +10,6 @@ license=('GPL')
 depends=('dkms')
 replaces=('dkms-8192cu')
 conflicts=("8192cu" "rt8192cu" "dkms-8192cu")
-install=${pkgname}.install
 options=(!strip)
 _pkgname="8192cu"
 source=("https://dl.dropboxusercontent.com/u/54784933/$_pkgname-$pkgver.tar.gz"

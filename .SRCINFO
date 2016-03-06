@@ -3,9 +3,8 @@
 pkgbase = 8192cu-dkms
 	pkgdesc = Driver for Realtek RTL8188CUS (8188C, 8192C) chipset wireless cards
 	pkgver = v4.0.2_9000
-	pkgrel = 9
+	pkgrel = 10
 	url = http://www.realtek.com.tw/
-	install = 8192cu-dkms.install
 	arch = any
 	license = GPL
 	depends = dkms
