@@ -1,0 +1,13 @@
+post_install() {
+  echo "
+
+
+
+    DeepDetect was installed in /usr/share/deepdetect-git.
+
+    You can symlink it to any place, e.g.:
+
+      ln -s /usr/share/deepdetect-git ~/deepdetect
+
+  "
+}

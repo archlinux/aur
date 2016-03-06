@@ -22,12 +22,14 @@ depends=(
 'leveldb'
 'snappy'
 'lmdb'
+'python'
 )
-makedepends=('git' 'gcc')
+makedepends=('git' 'gcc' 'make' 'cmake')
 optdepends=('cuda: GPL processing')
-provides=('dede')
+provides=()
 source=("$pkgname::git+https://github.com/beniz/deepdetect.git")
 md5sums=('SKIP')
+install=$pkgname.install
 
 
 pkgver() {
@@ -36,19 +38,18 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir"
   sed -i s/find.*Eigen.*// $pkgname/CMakeLists.txt
-  cmake $pkgname -DEIGEN3_INCLUDE_DIR=/usr/include/eigen3
+  mkdir $srcdir/$pkgname/build
+  cd $srcdir/$pkgname/build
+  cmake .. -DEIGEN3_INCLUDE_DIR=/usr/include/eigen3
   make
+  for f in `find $srcdir -name "*.py"`; do
+    sed -i s/env\ python$/env\ python2/ $f;
+  done
 }
 
 package() {
-  mkdir $pkgdir/usr/lib -p
-  install -Dm755  $srcdir/main/dede $pkgdir/usr/bin/dede
-  install -Dm755 $srcdir/caffe_dd/src/caffe_dd/.build_release/lib/* $pkgdir/usr/lib
-
-  mkdir $pkgdir/usr/share/$pkgname -p
-  # cp -r $srcdir/templates $srcdir/caffe_dd/src/caffe_dd/{data,docs,examples,models,python,scripts} $pkgdir/usr/share/$pkgname
-  cp -r $srcdir/$pkgname/{clients,datasets,demo,examples,templates} $pkgdir/usr/share/$pkgname
-  ln -s $pkgdir/usr/share/$pkgname ~/deepdetect
+  mkdir  $pkgdir/usr/{lib,share,bin}/$pkgname -p
+  cp -r  $srcdir/$pkgname/* $pkgdir/usr/share/$pkgname
+  rm -rf $pkgdir/usr/share/$pkgname/$pkgname
 }
