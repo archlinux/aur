@@ -3,8 +3,8 @@
 _theme=petrichor
 _pkgname=lightdm-webkit-theme-${_theme}
 pkgname=${_pkgname}-git
-pkgver=r9.51d13af
-pkgrel=2
+pkgver=r14.b4607e0
+pkgrel=1
 pkgdesc="Simple and tidy theme for LightDM's webkit2 greeter"
 arch=('any')
 url="https://sighup.nz/programming/petrichor/"
@@ -20,10 +20,5 @@ pkgver() {
 
 package () {
 	cd "${srcdir}/${pkgname}"
-
-	mkdir -p "${pkgdir}/usr/share/lightdm-webkit/themes/${_theme}"
-	for f in index.{html,theme} petrichor.{js,css} bg.jpg iec5009.svg drop-down.svg ; do
-		cp "${f}" "${pkgdir}/usr/share/lightdm-webkit/themes/${_theme}/"
-	done
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	make install DESTDIR="${pkgdir}"
 }
