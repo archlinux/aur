@@ -1,7 +1,7 @@
 # Maintainer: Amiad Bareli <amiad@hatul.info>
 
 pkgname=scratch2
-_ver=443
+_ver=444
 pkgver="2.0.$_ver"
 pkgrel=1
 pkgdesc="With Scratch, you can program your own interactive stories, games, and animations"
@@ -12,7 +12,7 @@ depends=('adobe-air' 'libxt' 'libxtst')
 depends_x86_64+=('lib32-libxt' 'lib32-libxtst')
 makedepends=('unzip')
 source=("https://scratch.mit.edu/scratchr2/static/sa/Scratch-$_ver.air" "$pkgname.desktop" "$pkgname.png")
-sha1sums=('9f8917c72a2af2db5897611ec13775998d913ccc'
+sha1sums=('97ea2a841d450131289ba0a6c46f21752bf5532b'
 			'1f38f3a41cd256f3d34fc2dbefcc290681160109'
 			'bfca77daa1a9079f2197d98509ca4a33b3246df1')
 noextract=("Scratch-$_ver.air")
