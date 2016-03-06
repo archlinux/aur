@@ -1,8 +1,8 @@
 # Maintainer: Daniel Nagy <danielnagy at gmx de>
 
 pkgname=libbitcoin
-pkgver=2.8.0
-pkgrel=3
+pkgver=2.11.0
+pkgrel=1
 pkgdesc="asynchronous C++ library for Bitcoin"
 arch=('i686' 'x86_64')
 url="https://github.com/libbitcoin/libbitcoin/"
@@ -13,7 +13,7 @@ depends=('boost' 'openssl' 'curl' 'icu')
 depends+=('secp256k1-git')
 makedepends=()
 source=( "$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz" )
-sha256sums=('47753bc3723d89e2ff4856a481429cdffd8a13f6870f66a495d5a6db4239d191')
+sha256sums=('5e17044108ee89d73f8277f056b2adc979a4f9767ca553ee7244bf394295edd2')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

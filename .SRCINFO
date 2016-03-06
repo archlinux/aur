@@ -1,7 +1,7 @@
 pkgbase = libbitcoin
 	pkgdesc = asynchronous C++ library for Bitcoin
-	pkgver = 2.8.0
-	pkgrel = 3
+	pkgver = 2.11.0
+	pkgrel = 1
 	url = https://github.com/libbitcoin/libbitcoin/
 	arch = i686
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = libbitcoin
 	depends = curl
 	depends = icu
 	depends = secp256k1-git
-	source = libbitcoin-2.8.0.tar.gz::https://github.com/libbitcoin/libbitcoin/archive/v2.8.0.tar.gz
-	sha256sums = 47753bc3723d89e2ff4856a481429cdffd8a13f6870f66a495d5a6db4239d191
+	source = libbitcoin-2.11.0.tar.gz::https://github.com/libbitcoin/libbitcoin/archive/v2.11.0.tar.gz
+	sha256sums = 5e17044108ee89d73f8277f056b2adc979a4f9767ca553ee7244bf394295edd2
 
 pkgname = libbitcoin
 
