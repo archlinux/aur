@@ -11,7 +11,7 @@ optdepends=('python2-discid: CD-Lookup feature'
 makedepends=('git')
 provides=('picard')
 conflicts=('picard' 'picard-qt' 'picard-bzr')
-source=('git://github.com/musicbrainz/picard.git')
+source=('git://github.com/metabrainz/picard.git')
 md5sums=('SKIP')
 install='install'
 
