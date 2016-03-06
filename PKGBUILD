@@ -50,6 +50,7 @@ build() {
 
 package() {
   mkdir  $pkgdir/usr/{lib,share,bin}/$pkgname -p
-  cp -r  $srcdir/$pkgname/* $pkgdir/usr/share/$pkgname
-  rm -rf $pkgdir/usr/share/$pkgname/$pkgname
+  install -Dm755 $srcdir/$pkgname/build/main/dede $pkgdir/usr/bin/dede
+  install -Dm755 $srcdir/$pkgname/build/caffe_dd/src/caffe_dd/build/lib/* $pkgdir/usr/lib
+  cp -r  $srcdir/$pkgname $pkgdir/usr/share
 }
