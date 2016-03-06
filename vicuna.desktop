@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=VicuñaUploader
+Terminal=false
+Name=Vicuna
+Exec=vicuna
+Type=Application
+Icon=vicuna
