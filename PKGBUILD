@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-counterparty-lib
-pkgver=9.53.0
+pkgver=9.54.0
 pkgrel=1
 pkgdesc="Counterparty Protocol Reference Implementation"
 arch=('any')
@@ -29,8 +29,8 @@ groups=('counterparty')
 url="https://github.com/CounterpartyXCP/counterparty-lib"
 license=('MIT')
 options=('!emptydirs')
-source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/CounterpartyXCP/counterparty-lib/tar.gz/$pkgver)
-sha256sums=('69bcef882e790ea31ea751238dda98c44cc05296df5e3ef01ad4738e28c08657')
+source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/CounterpartyXCP/counterparty-lib/tar.gz/v$pkgver)
+sha256sums=('5038dc973c4bed599f98450e1c6aa40421ae08a79336d6cf535a301aac39fdc6')
 
 build() {
   cd "$srcdir/${pkgname#python-}-$pkgver"
