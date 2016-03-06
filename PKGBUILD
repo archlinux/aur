@@ -3,8 +3,8 @@
 
 pkgname=dm2-alsa
 pkgver=r651
-pkgrel=2
-epoch=1
+pkgrel=3
+epoch=0
 pkgdesc='Mixman DM2 ALSA driver'
 arch=('i686' 'x86_64')
 url='https://sourceforge.net/projects/dm2linux/'
