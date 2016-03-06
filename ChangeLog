@@ -1,9 +1,14 @@
-2015-02-01 Christopher Arndt <chris@chrisarndt.de>
+2016-03-06 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 2.6.9-7 :
+	add patch to remove SSLv3 support in _ssl module (removed in OpenSSL)
+
+2015-02-01 Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 	* 2.6.9-6 :
 	add patch for mhlib test failure (issue #7759)
 
-2014-09-04 Christopher Arndt <chris@chrisarndt.de>
+2014-09-04 Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 	* 2.6.9-5 :
 	add arm architecture
@@ -12,14 +17,14 @@
 	Add warning and abort build in 'check' function when run as root, since
 	this triggers several test failures
 
-2014-06-21 Christopher Arndt <chris@chrisarndt.de>
+2014-06-21 Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 	* 2.6.9-4 :
 	add patch for test_distutils for http://bugs.python.org/issue10126
 	source package and .AURINFO are now generated with mkaurball
 	fix version number variable substitution in provides
 
-2014-04-25 Christopher Arndt <chris@chrisarndt.de>
+2014-04-25 Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 	* 2.6.9-3 :
 	re-enable 'make test' in check function
@@ -28,7 +33,7 @@
 	add patch for failure in test_sqlite with sqlite >= 3.8.4
 	add prepare function for applying patches
 
-2014-04-18 Christopher Arndt <chris@chrisarndt.de>
+2014-04-18 Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 	* 2.6.9-2 :
 	no pattern substitution in variables in source URL for correct
@@ -36,7 +41,7 @@
 	fix .AURINFO to include pkgrel in package version
 	.AURINFO is now generated automatically and not included in sources
 
-2014-04-16 Christopher Arndt <chris@chrisarndt.de>
+2014-04-16 Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 	* 2.6.9-1 :
 	update to upstream version 2.6.9

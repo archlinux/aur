@@ -1,0 +1,14 @@
+diff -ur a/Modules/_ssl.c b/Modules/_ssl.c
+--- a/Modules/_ssl.c	2013-10-29 16:04:38.000000000 +0100
++++ b/Modules/_ssl.c	2016-03-06 07:01:17.303345390 +0100
+@@ -300,8 +300,10 @@
+     PySSL_BEGIN_ALLOW_THREADS
+     if (proto_version == PY_SSL_VERSION_TLS1)
+         self->ctx = SSL_CTX_new(TLSv1_method()); /* Set up context */
++#ifndef OPENSSL_NO_SSL3
+     else if (proto_version == PY_SSL_VERSION_SSL3)
+         self->ctx = SSL_CTX_new(SSLv3_method()); /* Set up context */
++#endif
+ #ifndef OPENSSL_NO_SSL2
+     else if (proto_version == PY_SSL_VERSION_SSL2)
+         self->ctx = SSL_CTX_new(SSLv2_method()); /* Set up context */

@@ -1,10 +1,10 @@
-# Maintainer:  Christopher Arndt <aur -at- chrisarndt -dot- de>
+# Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 # Contributor: Rémy Oudompheng <remy@archlinux.org>
 # Contributor: Chris McDonald <xwraithanx@gmail.com>
 
 pkgname=python26
 pkgver=2.6.9
-pkgrel=6
+pkgrel=7
 _pybasever=2.6
 pkgdesc="Legacy version Python 2.6 of the high-level scripting language"
 arch=('i686' 'x86_64' 'arm')
@@ -26,6 +26,7 @@ source=(http://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz
         python-2.6-pyexpat-segfault.patch
         python-2.6-readline-6.3.patch
         python-2.6-sqlite-test.patch
+        python-2.6-ssl-nosslv3.patch
         python-2.6-tkinter-86.patch
         python-2.6-whichdb-gdbm-1.9.patch)
 sha256sums=('cae7bb995006ea5b703d9d28446f694894c441fe4bfb95d561c0ac908cd06e41'
@@ -39,6 +40,7 @@ sha256sums=('cae7bb995006ea5b703d9d28446f694894c441fe4bfb95d561c0ac908cd06e41'
             '2aea683887955e59c6cff227a0d63aee3991571b7207a97d5985ba9ebd69e983'
             '5cc38033f7b7f7d6a25e63e14e9ae2de71bdf9106049e1cbad666bfe26d9cb7b'
             '9c01e3bb264eaf6444b76ba6f5265d79bda234b5542fe3d2b478628412186c1e'
+            '15bcbd12b6b103db67d828dbf50e22965dc3037297a88616725188b6576d25bb'
             'dbbc72d9c71c065fe3700af4322a130d5c5c459b6ee512f66e7e5eb9e4971171'
             'e0dc2156ca821eaaada49cf5e1e301fc828215288aae648a6e7e4d4da1b38050')
 
@@ -67,6 +69,8 @@ prepare() {
   # http://bugs.python.org/issue20901
   patch -Np1 -i ${srcdir}/python-2.6-sqlite-test.patch
 
+  patch -Np1 -i ${srcdir}/python-2.6-ssl-nosslv3.patch
+
   patch -Np1 -i ${srcdir}/python-2.6-tkinter-86.patch
 
   # http://bugs.python.org/issue13007
@@ -82,6 +86,7 @@ build() {
   cd "${srcdir}/Python-${pkgver}"
 
   export OPT="${CFLAGS}"
+  export CPPFLAGS="-DOPENSSL_NO_SSL3"
   ./configure --prefix=/usr \
     --enable-shared \
     --enable-ipv6 \
