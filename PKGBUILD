@@ -3,7 +3,7 @@
 _pkgname=ino
 pkgname=${_pkgname}-git
 pkgver=20140415
-pkgrel=2
+pkgrel=3
 pkgdesc="Command line toolkit for working with Arduino hardware. Works with Arduino 1.5"
 arch=('any')
 url="http://inotool.org/"
@@ -16,7 +16,7 @@ depends=('arduino'
          'python2-configobj'
          'python2-ordereddict'
          'python2-configargparse'
-         'python2-glob2'
+         'python-glob2-git'
         )
 makedepends=('git'
              'python2-sphinx'
