@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-lucid-git
-pkgver=25.1.50.r124253
+pkgver=25.1.50.r125286
 pkgrel=1
 pkgdesc="GNU Emacs. Official git master."
 arch=('i686' 'x86_64')
@@ -60,5 +60,4 @@ package() {
   chmod 775 "$pkgdir"/var/games/emacs
   chmod 664 "$pkgdir"/var/games/emacs/*
   chown -R root:games "$pkgdir"/var/games
-  chmod o+r $pkgdir/usr/lib/emacs/$_mainver/x86_64-unknown-linux-gnu/update-game-score
 }
