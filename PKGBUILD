@@ -3,8 +3,8 @@
 # Contributor: Alistair Dutton <kelveden at gmail.com>
 
 pkgname=eclipse-checkstyle
-pkgver=6.14.0
-_buildtime=201601142217
+pkgver=6.16.0
+_buildtime=201603042325
 pkgrel=1
 pkgdesc="Checkstyle plugin for Eclipse IDE"
 arch=('any')
@@ -13,8 +13,8 @@ license=('LGPL2.1')
 depends=('eclipse>=4.5.0')
 options=('!strip')
 # http://sourceforge.net/projects/eclipse-cs/files/latest/download?source=files
-source=("download.zip::http://downloads.sourceforge.net/project/eclipse-cs/Eclipse%20Checkstyle%20Plug-in/${pkgver}/net.sf.eclipsecs-updatesite_${pkgver}.${_buildtime}-bin.zip")
-sha256sums=('38fcf3513a3d1dbd431a49fb4b4afe50811f97c497823d4ae1bc473b72e0cb0c')
+source=("download.zip::http://downloads.sourceforge.net/project/eclipse-cs/Eclipse%20Checkstyle%20Plug-in/${pkgver}/net.sf.eclipsecs-updatesite_${pkgver}.${_buildtime}.zip")
+sha256sums=('2b6cb9cbdfbf52790ddfeb656c6803bb55a697f01e6057325fffa3923abbd067')
 
 package() {
   _dest=${pkgdir}/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse
