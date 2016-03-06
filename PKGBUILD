@@ -106,16 +106,16 @@ package() {
 
   mkdir -p "${pkgdir}/etc/airtime"
 
-  install -D -m 755 "${_pkgsrc_name}/installer/php/airtime.ini" "${pkgdir}/etc/airtime"
+  install -D -m 755 "${_pkgsrc_name}/installer/php/airtime.ini" "${pkgdir}/etc/airtime/airtime.ini"
   install -D -m 755 "${_pkgsrc_name}/installer/apache/airtime-vhost" "${pkgdir}/etc/airtime/apache.vhost.tpl"
   install -D -m 755 "${_pkgsrc_name}/installer/apache/airtime-vhost-2.4" "${pkgdir}/etc/airtime/apache24.vhost.tpl"
   install -D -m 755 "${_pkgsrc_name}/airtime_mvc/build/airtime.example.conf" "${pkgdir}/etc/airtime/airtime.conf"
 
   chown -R ${web_user}:${web_user} "${pkgdir}/etc/airtime"
 
-  install -D -m 755 airtime-media-monitor.service "${pkgdir}/usr/lib/systemd/system"
-  install -D -m 755 airtime-liquidsoap.service "${pkgdir}/usr/lib/systemd/system"
-  install -D -m 755 airtime-playout.service "${pkgdir}/usr/lib/systemd/system"
+  install -D -m 755 airtime-media-monitor.service "${pkgdir}/usr/lib/systemd/system/airtime-media-monitor.service"
+  install -D -m 755 airtime-liquidsoap.service "${pkgdir}/usr/lib/systemd/system/airtime-liquidsoap.service"
+  install -D -m 755 airtime-playout.service "${pkgdir}/usr/lib/systemd/system/airtime-playout.service"
 
   # python apps
   python "${_pkgsrc_name}/python_apps/std_err_override/setup.py" install \
