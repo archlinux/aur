@@ -5,9 +5,9 @@ pkgver=1.4
 pkgrel=3
 pkgdesc='Classic first person shooter, shareware episode data'
 arch=(any)
-url="http://ftp.3drealms.com/wolf3d/index.html"
+url="https://3drealms.com/catalog/wolfenstein-3d_25/"
 license=('custom')
-source=('ftp://ftp.3drealms.com/share/1wolf14.zip')
+source=('ftp://ftp.gamers.org/pub/games/wolf3d/official/1wolf14.zip')
 md5sums=('a29432cd4a5184d552d8e5da8f80a531')
 makedepends=('dynamite-git')
 
