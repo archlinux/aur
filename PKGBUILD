@@ -2,10 +2,10 @@
 
 pkgname=mediterranean-gtk-themes-git
 pkgver=v2.03.0.1.r30.g1c33164
-pkgrel=1
+pkgrel=2
 pkgdesc="The Mediterranean family of GTK+2/3 themes"
 arch=('any')
-url=(https://github.com/rbrito/mediterranean-gtk-themes)
+url="https://github.com/rbrito/mediterranean-gtk-themes"
 license=('GPL3')
 optdepends=('gtk-engines: For GTK2 support'
             'gtk-engine-murrine: for GTK2 support'
