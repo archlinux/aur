@@ -8,34 +8,28 @@
 # Contributor: evr <evanroman at gmail>
 
 pkgname=agedu
-pkgver=20150422
-_pkghash=3922ffe
+pkgver=20160302
+_pkghash=a05fca7
 pkgrel=1
 pkgdesc="Track down wasted disk space"
-arch=(i686 x86_64 armv6h)
+arch=('i686' 'x86_64')
 url="http://www.chiark.greenend.org.uk/~sgtatham/agedu/"
-license=('mit')
-depends=('gcc-libs')
-
-source=("http://www.chiark.greenend.org.uk/~sgtatham/$pkgname/$pkgname-$pkgver.$_pkghash.tar.gz"
-        'LICENSE')
+license=('MIT')
+depends=('glibc')
+source=("http://www.chiark.greenend.org.uk/~sgtatham/$pkgname/$pkgname-$pkgver.$_pkghash.tar.gz")
 # SKIP because the upstream server changes the file all the time.
 # That is a very strange behaviour... but I can't find anything suspect
-md5sums=('SKIP'
-         'add724d40e3f60ec98edadf497ec62e0')
+md5sums=('SKIP')
 
 build() {
-    cd $pkgname-$pkgver.$_pkghash
-
-    ./configure --prefix=/usr
-
-    make
+  cd "$srcdir/$pkgname-$pkgver.$_pkghash"
+  ./mkauto.sh
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-	cd $pkgname-$pkgver.$_pkghash
-
-	make DESTDIR="$pkgdir" install
-
-	install -Dm655 "$srcdir"/LICENSE "$pkgdir"/usr/share/licenses/agedu/LICENSE
+  cd "$srcdir/$pkgname-$pkgver.$_pkghash"
+  make DESTDIR="$pkgdir" install
+  install -Dm644 LICENCE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
