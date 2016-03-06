@@ -1,18 +1,24 @@
 # Contributor: kusakata <shohei atmark kusakata period com>
-# Maintainer: Samuel Walladge <swalladge at gmail dot com>
+# Maintainer: Samuel Walladge <samuel at swalladge dot id dot au>
 
 pkgname=openspades
 pkgver=0.0.12
-pkgrel=3
+pkgrel=4
 pkgdesc="A clone of Voxlap Ace of Spades 0.75"
 arch=('i686' 'x86_64')
-url="https://sites.google.com/a/yvt.jp/openspades/"
+url="http://openspades.yvt.jp/"
 license=('GPL3')
 depends=('curl' 'desktop-file-utils' 'glew' 'hicolor-icon-theme' 'mesa' 'openal' 'sdl2' 'sdl2_image')
 makedepends=('cmake' 'wget' 'unzip')
 install=openspades.install
-source=("https://github.com/yvt/openspades/archive/v${pkgver}.tar.gz")
-md5sums=('4f459b9e6c6243d2dd8983eb3752b4e4')
+source=("https://github.com/yvt/openspades/archive/v${pkgver}.tar.gz" "openspades.patch")
+md5sums=('4f459b9e6c6243d2dd8983eb3752b4e4'
+         'f8b429ee14d92598fd684fcf4ce3097e')
+
+prepare() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -p1 -i ${srcdir}/openspades.patch
+}
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
