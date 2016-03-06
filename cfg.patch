@@ -1,0 +1,17 @@
+diff -uNr atari800.orig/src/cfg.c atari800/src/cfg.c
+--- atari800.orig/src/cfg.c	2016-02-23 14:28:55.247008447 +0100
++++ atari800/src/cfg.c	2016-02-23 14:29:07.360269454 +0100
+@@ -68,11 +68,11 @@
+ /* If another default path config path is defined use it
+    otherwise use the default one */
+ #ifndef DEFAULT_CFG_NAME
+-#define DEFAULT_CFG_NAME ".atari800.cfg"
++#define DEFAULT_CFG_NAME ".atari800.cfg.libretro"
+ #endif
+ 
+ #ifndef SYSTEM_WIDE_CFG_FILE
+-#define SYSTEM_WIDE_CFG_FILE "/etc/atari800.cfg"
++#define SYSTEM_WIDE_CFG_FILE "/etc/atari800.cfg.libretro"
+ #endif
+ 
+ static char rtconfig_filename[FILENAME_MAX];
