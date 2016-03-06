@@ -6,16 +6,20 @@
 
 pkgname=luabind
 pkgver=0.9.1
-pkgrel=5
+pkgrel=6
 pkgdesc="A library that helps you create bindings between C++ and Lua"
 arch=('i686' 'x86_64')
 url="http://www.rasterbar.com/products/luabind.html"
 license=('MIT')
-makedepends=('unzip' 'boost' 'boost-build')
-depends=('lua51' 'gcc-libs')
+makedepends=('unzip' 'boost')
+depends=('lua' 'gcc-libs')
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         "luabind_boost.patch"
-	"boost_1.57.patch")
+	      "boost_1.57.patch")
+
+md5sums=('8a323fb51d07dad5cfdb12c432793d55'
+         'd62ae6fc635300bc659df9dbb587ac53'
+         '92450a08bc1eed7957109a6c712b1d45')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
@@ -24,7 +28,8 @@ build() {
   patch -Np1 -i ${srcdir}/boost_1.57.patch
 
   # build luabind
-  export LUA_PATH=/usr/include/lua51
+  # export LUA_PATH=/usr/include/lua51
+  # export LUA_PATH=/usr/include/lua52
   b2 release --prefix=${pkgdir}/usr/ link=static,shared
 }
 
@@ -37,7 +42,3 @@ package() {
   install -Dm644 ${srcdir}/${pkgname}-${pkgver}/LICENSE \
       ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
-
-md5sums=('8a323fb51d07dad5cfdb12c432793d55'
-         'd62ae6fc635300bc659df9dbb587ac53'
-         '92450a08bc1eed7957109a6c712b1d45')
