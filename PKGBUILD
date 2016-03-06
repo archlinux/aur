@@ -4,8 +4,9 @@
 pkgdesc='Noise library for 2D data'
 _gitname=('libnoise2d')
 pkgname=('libnoise2d-git')
+provides=('libnoise2d')
 pkgver=0.14.98c9d72
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('GPL')
 url="https://github.com/planeworld/libnoise2d"
@@ -33,7 +34,7 @@ build() {
 
 	cd "${srcdir}/build"
 
-	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr "../${_gitname}"
+	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr "../${_gitname}"
 
 	make
 	
