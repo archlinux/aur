@@ -2,7 +2,7 @@
 [Desktop Entry]
 Categories=Audio;Player;Qt;
 Comment=UPnP audio Control Point
-Exec=export LANG=C; /opt/eezUPnP/CP
+Exec=bash -c "export LANG=C; /opt/eezUPnP/CP"
 GenericName=UPnP audio Control Point
 Icon=/opt/eezUPnP/icon.xpm
 Name=eezUPnP
