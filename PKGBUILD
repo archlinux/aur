@@ -8,7 +8,7 @@
 # 4. cp -va "VST3 SDK/." ~/SDKs/vstsdk2.4
 
 pkgname=radium
-pkgver=3.6.5
+pkgver=3.6.6
 pkgrel=1
 pkgdesc="A graphical music editor. A next generation tracker."
 arch=('i686' 'x86_64')
@@ -35,13 +35,11 @@ makedepends=(
 )
 options=(!strip)
 source=("https://github.com/kmatheussen/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('de8d632b2ab6975f9a1218f96caeaa48')
+md5sums=('3f6f000ec7a38b9483de439079886a78')
 
 build() {
     cd "${pkgname}-${pkgver}"
     make packages
-    # Backport patch from master, remove after release > 3.6.5
-    sed -i '198i#define R_ASSERT_NON_RELEASE2(a, returnvalue)' common/nsmtracker.h
     BUILDTYPE=RELEASE ./build_linux.sh
 }
 
