@@ -6,14 +6,14 @@
 
 pkgname=rofi-git
 _gitname=rofi
-pkgver=0.15.12.r5.gcb09512
+pkgver=0.15.12.r259.gb13bff6
 pkgrel=1
 pkgdesc="A window switcher, run dialog and dmenu replacement"
 arch=('i686' 'x86_64')
 url="https://davedavenport.github.io/rofi/"
 license=('MIT')
-depends=('cairo' 'freetype2' 'libx11' 'libxdg-basedir' 'libxinerama' 'pango'
-         'startup-notification')
+depends=('cairo' 'freetype2' 'libx11' 'libxcb' 'libxdg-basedir' 'libxkbcommon'
+  'libxkbcommon-x11' 'pango' 'startup-notification' 'xcb-util' 'xcb-util-wm')
 optdepends=('i3-wm: use as a window switcher')
 makedepends=('git')
 provides=('rofi')
@@ -28,6 +28,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_gitname"
+  git submodule update --init
   autoreconf --install
 
   # Default compiler = clang, which can be a problem if using hardening-wrapper
