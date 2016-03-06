@@ -2,7 +2,7 @@
 pkgbase=python-pyroma
 pkgname=('python-pyroma' 'python2-pyroma')
 _pyname=pyroma
-pkgver=2.0.0
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Test your project's packaging friendliness"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools'
              'python-docutils' 'python2-docutils')
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('5d6181884d4a53756f6e2e55b81ad3b4')
+md5sums=('b9143971350f99fc44d91ba79adaccdb')
 
 prepare() {
   cd "${srcdir}/${_pyname}-${pkgver}"
