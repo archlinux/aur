@@ -25,7 +25,7 @@ optdepends=('rabbitmq: localy hosted rabbitmq server'
             'postgresql: localy hosted Database server'
             'apache: Apache webserver (webserver needed)'
             'nginx: Nginx webserver (webserver needed)')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python' 'python-setuptools')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 replaces=()
