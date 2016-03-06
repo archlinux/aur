@@ -6,7 +6,6 @@ pkgname=('zarafa-webapp'
 	 'zarafa-webapp-browsercompatibility'
 	 'zarafa-webapp-clockwidget'
 	 'zarafa-webapp-contactfax'
-	 'zarafa-webapp-extbox'
 	 'zarafa-webapp-files'
 	 'zarafa-webapp-folderwidgets'
 	 'zarafa-webapp-gmaps'
@@ -21,7 +20,7 @@ pkgname=('zarafa-webapp'
 groups=('zarafa')
 pkgver=2.1.2
 _pkgrel=2.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='WebApp for Zarafa'
 arch=('any')
 url='http://www.zarafa.com/'
@@ -152,10 +151,6 @@ package_zarafa-webapp-clockwidget() {
 }
 
 package_zarafa-webapp-contactfax() {
-    package_plugin ${pkgname//zarafa-webapp-/}
-}
-
-package_zarafa-webapp-extbox() {
     package_plugin ${pkgname//zarafa-webapp-/}
 }
 
