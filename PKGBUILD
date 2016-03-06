@@ -17,7 +17,8 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'gstreamer0.10-bad-plugins'
             'gstreamer0.10-good-plugins'
             'gstreamer0.10-ugly-plugins')
-conflicts=('palemoon', 'palemoon-privacy')
+conflicts=('palemoon')
+provides=('palemoon', 'firefox')
 install=palemoon.install
 source=(git+"https://github.com/MoonchildProductions/Pale-Moon"
         palemoon.desktop
