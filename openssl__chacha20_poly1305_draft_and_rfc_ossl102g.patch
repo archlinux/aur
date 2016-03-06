@@ -27,6 +27,7 @@ Subject: [PATCH] Implementation of draft and RFC versions of CHACHA20-POLY1305
  ssl/ssl_ciph.c                               |  60 +-
  ssl/ssl_locl.h                               |   2 +
  ssl/tls1.h                                   |  28 +
+ test/Makefile                                |  17 +-
  23 files changed, 4655 insertions(+), 54 deletions(-)
  create mode 100644 crypto/chacha20poly1305/Makefile
  create mode 100644 crypto/chacha20poly1305/asm/chacha20_avx.pl
@@ -4430,11 +4431,11 @@ index 0000000..17f8cb4
 +    uint8_t        chacha_buffer[FILL_BUFFER];
 +    uint16_t       poly_buffer_used;
 +    uint16_t       chacha_used;
-+    poly1305_state poly_state;
 +#ifdef CHAPOLY_x86_64_ASM
 +    void (*poly1305_init_ptr)(poly1305_state *, const uint8_t *);
 +    void (*poly1305_update_ptr)(poly1305_state *, const uint8_t *, size_t);
 +    void (*poly1305_finish_ptr)(poly1305_state *, uint8_t *);
++    poly1305_state poly_state;
 +    #define poly_init aead_ctx->poly1305_init_ptr
 +    #define poly_update poly1305_update_wrapper
 +    #define poly_finish poly1305_finish_wrapper
@@ -5144,6 +5145,83 @@ index 7e237d0..fb0c981 100644
  # define TLS_CT_RSA_SIGN                 1
  # define TLS_CT_DSS_SIGN                 2
  # define TLS_CT_RSA_FIXED_DH             3
+diff --git a/test/Makefile b/test/Makefile
+index b180971..554d536 100644
+--- a/test/Makefile
++++ b/test/Makefile
+@@ -71,6 +71,7 @@
+ VERIFYEXTRATEST=	verify_extra_test
+ CLIENTHELLOTEST=	clienthellotest
+ SSLV2CONFTEST = 	sslv2conftest
++CHAPOLYTEST=	chapolytest
+ 
+ TESTS=		alltests
+ 
+@@ -84,7 +85,7 @@
+ 	$(EVPTEST)$(EXE_EXT) $(EVPEXTRATEST)$(EXE_EXT) $(IGETEST)$(EXE_EXT) $(JPAKETEST)$(EXE_EXT) $(SRPTEST)$(EXE_EXT) \
+ 	$(ASN1TEST)$(EXE_EXT) $(V3NAMETEST)$(EXE_EXT) $(HEARTBEATTEST)$(EXE_EXT) \
+ 	$(CONSTTIMETEST)$(EXE_EXT) $(VERIFYEXTRATEST)$(EXE_EXT) \
+-	$(CLIENTHELLOTEST)$(EXE_EXT) $(SSLV2CONFTEST)$(EXE_EXT)
++	$(CLIENTHELLOTEST)$(EXE_EXT) $(SSLV2CONFTEST)$(EXE_EXT) $(CHAPOLYTEST)$(EXE_EXT)
+ 
+ # $(METHTEST)$(EXE_EXT)
+ 
+@@ -98,7 +99,7 @@
+ 	$(BFTEST).o  $(SSLTEST).o  $(DSATEST).o  $(EXPTEST).o $(RSATEST).o \
+ 	$(EVPTEST).o $(EVPEXTRATEST).o $(IGETEST).o $(JPAKETEST).o $(ASN1TEST).o $(V3NAMETEST).o \
+ 	$(HEARTBEATTEST).o $(CONSTTIMETEST).o $(VERIFYEXTRATEST).o \
+-	$(CLIENTHELLOTEST).o  $(SSLV2CONFTEST).o
++	$(CLIENTHELLOTEST).o  $(SSLV2CONFTEST).o $(CHAPOLYTEST).o
+ 
+ SRC=	$(BNTEST).c $(ECTEST).c  $(ECDSATEST).c $(ECDHTEST).c $(IDEATEST).c \
+ 	$(MD2TEST).c  $(MD4TEST).c $(MD5TEST).c \
+@@ -109,7 +110,7 @@
+ 	$(BFTEST).c  $(SSLTEST).c $(DSATEST).c   $(EXPTEST).c $(RSATEST).c \
+ 	$(EVPTEST).c $(EVPEXTRATEST).c $(IGETEST).c $(JPAKETEST).c $(SRPTEST).c $(ASN1TEST).c \
+ 	$(V3NAMETEST).c $(HEARTBEATTEST).c $(CONSTTIMETEST).c $(VERIFYEXTRATEST).c \
+-	$(CLIENTHELLOTEST).c  $(SSLV2CONFTEST).c
++	$(CLIENTHELLOTEST).c  $(SSLV2CONFTEST).c $(CHAPOLYTEST).c
+ 
+ EXHEADER= 
+ HEADER=	testutil.h $(EXHEADER)
+@@ -145,7 +146,7 @@
+ 	@(cd ..; $(MAKE) DIRS=apps all)
+ 
+ alltests: \
+-	test_des test_idea test_sha test_md4 test_md5 test_hmac \
++	test_des test_idea test_sha test_md4 test_md5 test_hmac test_chapoly \
+ 	test_md2 test_mdc2 test_wp \
+ 	test_rmd test_rc2 test_rc4 test_rc5 test_bf test_cast test_aes \
+ 	test_rand test_bn test_ec test_ecdsa test_ecdh \
+@@ -366,6 +367,10 @@
+ 	@echo $(START) $@
+ 	../util/shlib_wrap.sh ./$(SSLV2CONFTEST)
+ 
++test_chapoly: $(CHAPOLYTEST)$(EXE_EXT)
++	@echo "Test ChaCha20 and Poly1305"
++	../util/shlib_wrap.sh ./$(CHAPOLYTEST)
++
+ lint:
+ 	lint -DLINT $(INCLUDES) $(SRC)>fluff
+ 
+@@ -546,6 +551,9 @@
+ $(SSLV2CONFTEST)$(EXE_EXT): $(SSLV2CONFTEST).o
+ 	@target=$(SSLV2CONFTEST) $(BUILD_CMD)
+ 
++$(CHAPOLYTEST)$(EXE_EXT): $(CHAPOLYTEST).o
++	@target=$(CHAPOLYTEST); $(BUILD_CMD)
++
+ #$(AESTEST).o: $(AESTEST).c
+ #	$(CC) -c $(CFLAGS) -DINTERMEDIATE_VALUE_KAT -DTRACE_KAT_MCT $(AESTEST).c
+ 
+@@ -614,6 +622,7 @@
+ constant_time_test.o: ../crypto/constant_time_locl.h ../e_os.h
+ constant_time_test.o: ../include/openssl/e_os2.h
+ constant_time_test.o: ../include/openssl/opensslconf.h constant_time_test.c
++chapolytest.o: ../include/openssl/chacha20poly1305.h chapolytest.c
+ destest.o: ../include/openssl/des.h ../include/openssl/des_old.h
+ destest.o: ../include/openssl/e_os2.h ../include/openssl/opensslconf.h
+ destest.o: ../include/openssl/ossl_typ.h ../include/openssl/safestack.h
 -- 
 2.5.0
 
