@@ -13,7 +13,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/jo"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -33,5 +33,5 @@ build() {
 package() {
   cd "$srcdir/jo"
   install -Dm755 jo "$pkgdir/usr/bin/jo"
-  install -Dm644 jo.1 "$pkgdir/usr/usr/share/man/man1/jo.1"
+  install -Dm644 jo.1 "$pkgdir/usr/share/man/man1/jo.1"
 }
