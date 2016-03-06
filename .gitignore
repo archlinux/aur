@@ -1,5 +1,5 @@
 *
 !.gitignore
-!.PKGBUILD
+!PKGBUILD
 !.SRCINFO
 !acpi_call-mainline.install
