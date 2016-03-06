@@ -4,7 +4,7 @@ _pkgname=('spellchecker')
 pkgname=("zarafa-webapp-${_pkgname}")
 groups=('zarafa')
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Spellchecker plugin for Zarafa Webapp'
 arch=('any')
 source=("https://download.zarafa.com/community/final/WebApp/2.1.2/fedora-22/zarafa-webapp-plugins-spell-1.0-21.1.noarch.rpm"
@@ -15,12 +15,14 @@ source=("https://download.zarafa.com/community/final/WebApp/2.1.2/fedora-22/zara
 	"https://download.zarafa.com/community/final/WebApp/2.1.2/fedora-22/zarafa-webapp-plugins-spell-es-1.0-3.1.noarch.rpm"
 	"https://download.zarafa.com/community/final/WebApp/2.1.2/fedora-22/zarafa-webapp-plugins-spell-fr-1.0-1.2.noarch.rpm"
 	"https://download.zarafa.com/community/final/WebApp/2.1.2/fedora-22/zarafa-webapp-plugins-spell-nl-1.0-21.3.noarch.rpm"
-	"compress-static")
+	"compress-static"
+	"zarafa-webapp-spellcheck.ini")
 backup=("etc/webapps/zarafa-webapp/plugins/${_pkgname}/config.php")
 license=('AGPL3')
 depends=('zarafa-webapp'
 	 'php<7'
-	 'php-fpm<7')
+	 'php-fpm<7'
+	 'php-enchant<7')
 md5sums=('c6da926fed446a8b80abe68e7cfcbcba'
          '0851cee43fb59dafe3795a0380cf37ff'
          'aa83cf83017d2cacd5725dc966f3a366'
@@ -29,7 +31,8 @@ md5sums=('c6da926fed446a8b80abe68e7cfcbcba'
          '7f471b216bca3ae09ea1ad71983f5d23'
          '68336fdd31147a2727d15b6cf93a6bb8'
          '3d9fb645869b7a8d2360fd8354c5abaf'
-         'd737d82dfab24adc516c001238a4119f')
+         'd737d82dfab24adc516c001238a4119f'
+         'f93ad13e69cf5bf9be0b53473cc0d196')
 
 package() {
     # plugin
@@ -55,4 +58,8 @@ package() {
 
     ## config examples      
     cp ${pkgdir}/etc/webapps/zarafa-webapp/plugins/${_pkgname}/config.php ${pkgdir}/etc/webapps/zarafa-webapp/plugins/${_pkgname}/config.example.php
+
+    ## php 
+    mkdir -p ${pkgdir}/etc/php/conf.d
+    cp ${srcdir}/${pkgname}.ini ${pkgdir}/etc/php/conf.d
 }
