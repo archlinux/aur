@@ -5,7 +5,7 @@ _module="${_name#python-}"
 _cmd="${_module%client}"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="4.0.0"
+pkgver="4.1.1"
 pkgrel="1"
 pkgdesc="CLI and Client Library for OpenStack Networking"
 arch=("any")
@@ -13,7 +13,7 @@ url="https://github.com/openstack/${_name}"
 license=("Apache")
 makedepends=("python-pbr>=1.8" "python2-pbr>=1.8")
 source=("https://tarballs.openstack.org/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('13f4255b698bfcb19acbc8b2550ea10fd41f64e39b7951f0f2af8bec4f077191')
+sha256sums=('4d5c60358272174afb019d68940f67ddad09367b2e6210e3206d19566777c293')
 
 prepare() {
     cd "${srcdir}/${_name}-${pkgver}"
@@ -24,12 +24,12 @@ package_python-neutronclient() {
     depends=(
         "python-pbr>=1.6"
         "python-cliff>=1.15.0"
-        "python-debtcollector>=0.3.0"
+        "python-debtcollector>=1.2.0"
         "python-iso8601>=0.1.9"
         "python-netaddr>=0.7.12"
-        "python-oslo-i18n>=1.5.0"
+        "python-oslo-i18n>=2.1.0"
         "python-oslo-serialization>=1.10.0"
-        "python-oslo-utils>=3.2.0"
+        "python-oslo-utils>=3.5.0"
         "python-os-client-config>=1.13.1"
         "python-keystoneauth1>=2.1.0"
         "python-requests>=2.8.1"
@@ -46,12 +46,12 @@ package_python2-neutronclient() {
     depends=(
         "python2-pbr>=1.6"
         "python2-cliff>=1.15.0"
-        "python2-debtcollector>=0.3.0"
+        "python2-debtcollector>=1.2.0"
         "python2-iso8601>=0.1.9"
         "python2-netaddr>=0.7.12"
-        "python2-oslo-i18n>=1.5.0"
+        "python2-oslo-i18n>=2.1.0"
         "python2-oslo-serialization>=1.10.0"
-        "python2-oslo-utils>=3.2.0"
+        "python2-oslo-utils>=3.5.0"
         "python2-os-client-config>=1.13.1"
         "python2-keystoneauth1>=2.1.0"
         "python2-requests>=2.8.1"
