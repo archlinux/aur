@@ -3,10 +3,10 @@
 
 pkgname=wmnd
 pkgver=0.4.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Dockapp for monitoring network interfaces."
 url="http://www.thregr.org/~wavexx/software/wmnd/"
-license="GPL"
+license=("GPL")
 depends=('libxpm' 'net-snmp')
 arch=('i686' 'x86_64')
 source=(http://www.thregr.org/~wavexx/software/wmnd/releases/$pkgname-$pkgver.tar.gz)
