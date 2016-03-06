@@ -27,9 +27,8 @@ package() {
 	mkdir -p $_installDir $pkgdir/usr/{bin,share/icons/hicolor,share/mime/packages}
 
 	cd $srcdir
-	# don't put broken desktop file on current user's desktop; don't burble and dish out wrong information
-	sed -i 's/createDesktopShortcuts();/#createDesktopShortcuts();/;
-		s/^printf(\$TRANSLATABLE\[\(12\|4\)\],/print("\\n");#/' ./install.pl
+	# don't clear screen, install broken desktop file, or burble
+	sed -i 's/^\(system("clear"\|createDesktopShortcuts(\|printf(\$TRANSLATABLE\).*;//' install.pl
 
 	# don't show EULA/ask for confirmation if cewe-fotobuch is already installed
 	which cewe-fotobuch &>/dev/null && update='--update'
@@ -57,4 +56,5 @@ package() {
 	# remove unneeded mime cache files and installation logs
 	rm -d $pkgdir/usr/share/mime/application/* $pkgdir/usr/share/mime/* \
 		$_installDir/.log/* $_installDir/.log &> /dev/null || true
+	echo
 }
