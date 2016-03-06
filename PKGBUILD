@@ -2,9 +2,9 @@
 pkgname=python-py3sensors-hg
 pkgver=r15.0cf96f4e2cfe
 pkgrel=1
-pkgdesc=('Python bindings for libsensors.so from the lm-sensors project')
+pkgdesc="Python bindings for libsensors.so from the lm-sensors project"
 arch=('any')
-url=('https://bitbucket.org/gleb_zhulik/py3sensors')
+url="https://bitbucket.org/gleb_zhulik/py3sensors"
 license=('GPL')
 depends=('python' 'lm_sensors')
 makedepends=('mercurial')
