@@ -52,6 +52,8 @@ package() {
 	install -D -m644 $_installDir/Resources/keyaccount/32.xpm $pkgdir/usr/share/pixmaps/cewe-fotobuch.xpm && \
 	install -D -m644 $srcdir/cewe-fotobuch.desktop $pkgdir/usr/share/applications/cewe-fotobuch.desktop
 
+	# adjust product name in mimetype comment
+	sed -i 's/Mein CEWE FOTOBUCH/CeWe Fotobuch/' $pkgdir/usr/share/mime/packages/*
 	# remove unneeded mime cache files and installation logs
 	rm -d $pkgdir/usr/share/mime/application/* $pkgdir/usr/share/mime/* \
 		$_installDir/.log/* $_installDir/.log &> /dev/null || true
