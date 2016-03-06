@@ -3,18 +3,18 @@
 
 pkgname=workbench
 _pkgname=WorkBench
-pkgver=1.6.10
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Subversion client written in python."
 arch=('i686' 'x86_64')
 url="http://pysvn.tigris.org/"
 license=('APACHE')
 install=workbench.install
-depends=('python2-pysvn>=1.7.10' 'wxpython2.8')
+depends=('python2-pysvn>=1.8.0' 'wxpython')
 source=(http://pysvn.barrys-emacs.org/source_kits/$_pkgname-$pkgver.tar.gz \
   workbench \
   workbench.desktop)
-md5sums=('d261dcd7ea010dfaa66860a7edcd7fe3'
+md5sums=('aed0cc35a87c6dd287ad6a1a2fcf5b06'
          '53bfd152b2c12ab2ead9b2d3f01c4f45'
          '671568d7cf11a327e21f2b3f89a80495')
 
