@@ -9,7 +9,7 @@ pkgdesc="An electron wrapper for Google Play Music"
 arch=('i686' 'x86_64')
 url="http://www.googleplaymusicdesktopplayer.com"
 source=("https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-")
-depends=('libgnome-keyring' 'lsb-release')
+depends=('libgnome-keyring' 'lsb-release' 'alsa-lib' 'libnotify' 'nodejs' 'npm')
 license=('MIT')
 
 case $CARCH in

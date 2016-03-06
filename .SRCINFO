@@ -8,6 +8,10 @@ pkgbase = gpmdp
 	license = MIT
 	depends = libgnome-keyring
 	depends = lsb-release
+	depends = alsa-lib
+	depends = libnotify
+	depends = nodejs
+	depends = npm
 	source = https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-/releases/download/3.0.0/google-play-music-desktop-player_3.0.0_linux_amd64.deb
 	md5sums = f8f9e80f31ebdff6bc04f3413cb6f087
 
