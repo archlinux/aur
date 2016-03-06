@@ -42,7 +42,8 @@ build() {
   mkdir $srcdir/$pkgname/build
   cd $srcdir/$pkgname/build
   cmake .. -DEIGEN3_INCLUDE_DIR=/usr/include/eigen3
-  make -j $((`nproc` -1))
+  make
+  # -j $((`nproc` -1))
   for f in `find $srcdir -name "*.py"`; do
     sed -i s/env\ python$/env\ python2/ $f;
   done
