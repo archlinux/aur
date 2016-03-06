@@ -1,7 +1,7 @@
 # Maintainer: Vlad M. <vlad@archlinux.net>
 
 pkgname=nyaovim
-pkgver=0.0.18
+pkgver=0.0.19
 pkgrel=1
 pkgdesc="Neovim frontend built on Electron"
 arch=(any)
@@ -10,7 +10,7 @@ license=("MIT")
 depends=('nodejs' 'libnotify')
 makedepends=('npm')
 source=("http://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('8461bd78555b91114bea3cd553e2d38ee7baa56e7fef4566017f99b95c3558c6')
+sha256sums=('cd29cee59ef904da12bb3789b391cc28fac22a7936f205d07ecdea6ee53324e0')
 noextract=("$pkgname-$pkgver.tgz")
 
 package() {
