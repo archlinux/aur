@@ -2,9 +2,8 @@
 # Contributor: drakkan <nicola.murino@gmail.com>
 
 pkgname=kdsoap
-_basename="KDSoap"
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc='Qt-based client-side and server-side SOAP component'
 license=('GPL3' 'LGPL' 'custom')
 arch=('x86_64' 'i686')
@@ -12,25 +11,17 @@ url='https://github.com/KDAB/KDSoap'
 depends=('qt5-base')
 conflicts=('kdsoap-qt4')
 makedepends=('python2' 'git')
-source=("git+https://github.com/KDAB/KDSoap.git")
-md5sums=('SKIP')
-
-prepare() {
-  cd "$_basename" 
-  git checkout kdsoap-1.4
-  git submodule update --init
-  python2 autogen.py -release -shared -prefix /usr
-  sed -i 's/include($$KDSOAPDIR\/kdwsdl2cpp.pri)/include($$KDSOAPDIR\/share\/doc\/KDSoap\/kdwsdl2cpp.pri)/g' kdsoap.pri
-}
+source=("https://github.com/KDAB/KDSoap/releases/download/kdsoap-${pkgver}/kdsoap-${pkgver}.tar.gz")
+sha256sums=('da46eb676d7b05393bddf8c78c0dc8256419d61f34e10c2951d9855f2b78d4e6')
 
 build() {
-  cd "$_basename" 
+  cd "$pkgname-$pkgver"
   ./configure.sh -release -shared -prefix /usr
   make 
 }
 
 package() {
-  cd "$_basename" 
+  cd "$pkgname-$pkgver"
   make INSTALL_ROOT="${pkgdir}" install
 }
 
