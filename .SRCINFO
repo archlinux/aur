@@ -1,7 +1,7 @@
 pkgbase = otf-latinmodern-math
 	pkgdesc = The Latin Modern Math (LM Math) font
-	pkgver = 1.958
-	pkgrel = 3
+	pkgver = 1.959
+	pkgrel = 1
 	url = http://www.gust.org.pl/projects/e-foundry/lm-math
 	install = otf.install
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = otf-latinmodern-math
 	depends = fontconfig
 	depends = xorg-fonts-encodings
 	depends = xorg-font-utils
-	source = http://www.gust.org.pl/projects/e-foundry/lm-math/download/latinmodern-math-1958.zip
-	md5sums = 52c43bfc5d820e8b6e3398d0cf290380
+	source = http://www.gust.org.pl/projects/e-foundry/lm-math/download/latinmodern-math-1959.zip
+	md5sums = bc82f6d4184ec0ea3ba2c0798e6be719
 
 pkgname = otf-latinmodern-math
 
