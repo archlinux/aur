@@ -1,0 +1,5 @@
+*.xz
+*.xz.sig
+/pkg
+/src
+
