@@ -1,7 +1,7 @@
 # Maintainer: Manuel Schneider  <manuelschneid3r at googles mail>
 pkgname_=albert
 pkgname=${pkgname_}-git
-pkgver=0.8.1
+pkgver=0.8.1.r6.g17f47c1
 pkgrel=1
 pkgdesc="A DE agnostic omnilauncher."
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ pkgver() {
 build() {
   [[ -d "${pkgname_}/build" ]] || mkdir "${pkgname_}/build"
   cd "${pkgname_}/build"
-  cmake .. -DCMAKE_INSTALL_PREFIX=/home/manuel/local -DCMAKE_BUILD_TYPE=Debug
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug
   make
 }
 
