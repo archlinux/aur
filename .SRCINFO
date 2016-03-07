@@ -1,8 +1,8 @@
 pkgbase = caitsith-lkm
 	pkgdesc = CaitSith LKM-based LSM version
-	pkgver = 0.1_20151111
+	pkgver = 0.1_20160214
 	pkgrel = 1
-	url = http://caitsith.sourceforge.jp/
+	url = http://caitsith.osdn.jp/
 	install = caitsith-lkm.install
 	arch = i686
 	arch = x86_64
@@ -11,11 +11,12 @@ pkgbase = caitsith-lkm
 	depends = linux
 	depends = ncurses
 	optdepends = caitsith-tools
-	noextract = caitsith-patch-0.1-20151111.tar.gz
-	source = http://sourceforge.jp/frs/redir.php?m=jaist&f=/caitsith/55464/caitsith-patch-0.1-20151111.tar.gz
-	source = http://sourceforge.jp/frs/redir.php?m=jaist&f=/caitsith/55464/caitsith-patch-0.1-20151111.tar.gz.asc
-	sha256sums = af8646b8e03fb49545930561645406309b77e969170d4cb3659acc22dee73c4d
-	sha256sums = 9a31867f10c9c216429b1ac1d0b82e9ba173bc95c5cd17dc1e157771ba2d2405
+	noextract = caitsith-patch-0.1-20160214.tar.gz
+	source = http://sourceforge.jp/frs/redir.php?m=jaist&f=/caitsith/55464/caitsith-patch-0.1-20160214.tar.gz
+	source = http://sourceforge.jp/frs/redir.php?m=jaist&f=/caitsith/55464/caitsith-patch-0.1-20160214.tar.gz.asc
+	validpgpkeys = 43C83369623D7AD3A96C2FC7425F128D0C64F52A
+	sha256sums = 5fa641d6681321a38c7f7c0f363ec4ea4db6d9870114d47a58e1ec0e256d848d
+	sha256sums = bde46fd448566997929ece6082654c47eb4fb55e5a042a3c952cc72931a71210
 
 pkgname = caitsith-lkm
 
