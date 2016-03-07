@@ -4,7 +4,7 @@
 
 pkgname=gazebo
 pkgver=7.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64')
 url="http://gazebosim.org/"
@@ -16,7 +16,7 @@ depends=('boost>=1.40.0' 'curl>=4.0' 'freeglut' 'freeimage>=3.0'
          'tinyxml>=2.6.2' 'tinyxml2')
 optdepends=('bullet>=2.82: Bullet support'
             'cegui>=0.8.3: Design custom graphical interfaces'
-            'ffmpeg>=0.8.3: Playback movies on textured surfaces'
+            'ffmpeg: Playback movies on textured surfaces'
             'gdal: Digital elevation terrains support'
             'libdart>=3.0: DART support'
             'libspnav: space navigator joystick support'
@@ -26,11 +26,17 @@ optdepends=('bullet>=2.82: Bullet support'
             'urdfdom: Load URDF files')
 makedepends=('cmake' 'doxygen' 'pkg-config>=0.26')
 install="${pkgname}.install"
-source=("http://osrf-distributions.s3.amazonaws.com/gazebo/releases/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('74413e18d812abb3398af3124dc24e009af27e1f81c26d9698aaee39d213f888')
+source=("http://osrf-distributions.s3.amazonaws.com/gazebo/releases/${pkgname}-${pkgver}.tar.bz2"
+        "ffmpeg.patch")
+sha256sums=('74413e18d812abb3398af3124dc24e009af27e1f81c26d9698aaee39d213f888'
+            '28511deeb68f20ef4616e1ad6ae9876e318b3958b7e9c4c9042dc0fad0183d4f')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+
+  # See: https://bitbucket.org/osrf/gazebo/commits/df5f96a6695f8dbe8d05bb885aed2913a09170b9
+  patch -p1 -i ${srcdir}/ffmpeg.patch
+
   mkdir -p build && cd build
 
   # Note: we skip unit tests (else set to TRUE)
