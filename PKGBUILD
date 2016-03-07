@@ -3,7 +3,7 @@
 pkgbase=regilo
 pkgname=('regilo-lib' 'regilo')
 pkgver=2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple C++ library for controlling the Neato XV robot and the Hokuyo scanner"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/branoholy/regilo"
@@ -35,7 +35,7 @@ build() {
 
 package_regilo() {
 	pkgdesc="A simple C++ library for controlling the Neato XV robot and the Hokuyo scanner - development headers"
-	depends=('boost>=1.54' 'regilo-lib=$pkgver')
+	depends=('boost>=1.54' "regilo-lib=$pkgver")
 
 	cd regilo-$pkgver/builds/$pkgname
 	make DESTDIR="$pkgdir/" install

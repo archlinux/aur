@@ -27,7 +27,7 @@ pkgbase = regilo
 pkgname = regilo
 	pkgdesc = A simple C++ library for controlling the Neato XV robot and the Hokuyo scanner - development headers
 	depends = boost>=1.54
-	depends = regilo-lib=$pkgver
+	depends = regilo-lib=2.2
 
 pkgname = regilo-lib
 	pkgdesc = A simple C++ library for controlling the Neato XV robot and the Hokuyo scanner - runtime libraries
