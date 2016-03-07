@@ -1,0 +1,375 @@
+commit 6d08abab737ce39822b4bbb710164f9724203828
+Author: Daniel M. Capella <polyzen@archlinux.info>
+Date:   Mon Mar 7 16:26:48 2016 -0500
+
+    blah
+
+diff --git a/oauth2client/appengine.py b/oauth2client/appengine.py
+index 00fe985..f273de1 100644
+--- a/oauth2client/appengine.py
++++ b/oauth2client/appengine.py
+@@ -35,18 +35,18 @@ from google.appengine.ext import db
+ from google.appengine.ext import webapp
+ from google.appengine.ext.webapp.util import login_required
+ from google.appengine.ext.webapp.util import run_wsgi_app
+-from oauth2client import GOOGLE_AUTH_URI
+-from oauth2client import GOOGLE_REVOKE_URI
+-from oauth2client import GOOGLE_TOKEN_URI
+-from oauth2client import clientsecrets
+-from oauth2client import util
+-from oauth2client import xsrfutil
+-from oauth2client.client import AccessTokenRefreshError
+-from oauth2client.client import AssertionCredentials
+-from oauth2client.client import Credentials
+-from oauth2client.client import Flow
+-from oauth2client.client import OAuth2WebServerFlow
+-from oauth2client.client import Storage
++from oauth2client1412 import GOOGLE_AUTH_URI
++from oauth2client1412 import GOOGLE_REVOKE_URI
++from oauth2client1412 import GOOGLE_TOKEN_URI
++from oauth2client1412 import clientsecrets
++from oauth2client1412 import util
++from oauth2client1412 import xsrfutil
++from oauth2client1412.client import AccessTokenRefreshError
++from oauth2client1412.client import AssertionCredentials
++from oauth2client1412.client import Credentials
++from oauth2client1412.client import Flow
++from oauth2client1412.client import OAuth2WebServerFlow
++from oauth2client1412.client import Storage
+ 
+ # TODO(dhermes): Resolve import issue.
+ # This is a temporary fix for a Google internal issue.
+@@ -58,7 +58,7 @@ except ImportError:
+ 
+ logger = logging.getLogger(__name__)
+ 
+-OAUTH2CLIENT_NAMESPACE = 'oauth2client#ns'
++OAUTH2CLIENT1412_NAMESPACE = 'oauth2client#ns'
+ 
+ XSRF_MEMCACHE_ID = 'xsrf_secret_key'
+ 
+@@ -125,7 +125,7 @@ def xsrf_secret_key():
+   Returns:
+     The secret key.
+   """
+-  secret = memcache.get(XSRF_MEMCACHE_ID, namespace=OAUTH2CLIENT_NAMESPACE)
++  secret = memcache.get(XSRF_MEMCACHE_ID, namespace=OAUTH2CLIENT1412_NAMESPACE)
+   if not secret:
+     # Load the one and only instance of SiteXsrfSecretKey.
+     model = SiteXsrfSecretKey.get_or_insert(key_name='site')
+@@ -133,7 +133,7 @@ def xsrf_secret_key():
+       model.secret = _generate_new_xsrf_secret_key()
+       model.put()
+     secret = model.secret
+-    memcache.add(XSRF_MEMCACHE_ID, secret, namespace=OAUTH2CLIENT_NAMESPACE)
++    memcache.add(XSRF_MEMCACHE_ID, secret, namespace=OAUTH2CLIENT1412_NAMESPACE)
+ 
+   return str(secret)
+ 
+diff --git a/oauth2client/client.py b/oauth2client/client.py
+index 1d6cf42..31042bb 100644
+--- a/oauth2client/client.py
++++ b/oauth2client/client.py
+@@ -35,17 +35,17 @@ import six
+ from six.moves import urllib
+ 
+ import httplib2
+-from oauth2client import clientsecrets
+-from oauth2client import GOOGLE_AUTH_URI
+-from oauth2client import GOOGLE_DEVICE_URI
+-from oauth2client import GOOGLE_REVOKE_URI
+-from oauth2client import GOOGLE_TOKEN_URI
+-from oauth2client import util
++from oauth2client1412 import clientsecrets
++from oauth2client1412 import GOOGLE_AUTH_URI
++from oauth2client1412 import GOOGLE_DEVICE_URI
++from oauth2client1412 import GOOGLE_REVOKE_URI
++from oauth2client1412 import GOOGLE_TOKEN_URI
++from oauth2client1412 import util
+ 
+ HAS_OPENSSL = False
+ HAS_CRYPTO = False
+ try:
+-  from oauth2client import crypt
++  from oauth2client1412 import crypt
+   HAS_CRYPTO = True
+   if crypt.OpenSSLVerifier is not None:
+     HAS_OPENSSL = True
+@@ -1317,7 +1317,7 @@ def _get_well_known_file():
+ def _get_application_default_credential_from_file(filename):
+   """Build the Application Default Credentials from file."""
+ 
+-  from oauth2client import service_account
++  from oauth2client1412 import service_account
+ 
+   # read the credentials from the file
+   with open(filename) as file_obj:
+@@ -1371,13 +1371,13 @@ def _raise_exception_for_reading_json(credential_file,
+ 
+ 
+ def _get_application_default_credential_GAE():
+-  from oauth2client.appengine import AppAssertionCredentials
++  from oauth2client1412.appengine import AppAssertionCredentials
+ 
+   return AppAssertionCredentials([])
+ 
+ 
+ def _get_application_default_credential_GCE():
+-  from oauth2client.gce import AppAssertionCredentials
++  from oauth2client1412.gce import AppAssertionCredentials
+ 
+   return AppAssertionCredentials([])
+ 
+diff --git a/oauth2client/clientsecrets.py b/oauth2client/clientsecrets.py
+index 08a1702..ba8c2c6 100644
+--- a/oauth2client/clientsecrets.py
++++ b/oauth2client/clientsecrets.py
+@@ -149,7 +149,7 @@ def loadfile(filename, cache=None):
+     JSON contents is validated only during first load. Cache hits are not
+     validated.
+   """
+-  _SECRET_NAMESPACE = 'oauth2client:secrets#ns'
++  _SECRET_NAMESPACE = 'oauth2client1412:secrets#ns'
+ 
+   if not cache:
+     return _loadfile(filename)
+diff --git a/oauth2client/devshell.py b/oauth2client/devshell.py
+index a33de87..c4bd882 100644
+--- a/oauth2client/devshell.py
++++ b/oauth2client/devshell.py
+@@ -17,7 +17,7 @@
+ import json
+ import os
+ 
+-from oauth2client import client
++from oauth2client1412 import client
+ 
+ 
+ DEVSHELL_ENV = 'DEVSHELL_CLIENT_PORT'
+diff --git a/oauth2client/django_orm.py b/oauth2client/django_orm.py
+index 65c5d20..1f2b5e2 100644
+--- a/oauth2client/django_orm.py
++++ b/oauth2client/django_orm.py
+@@ -20,12 +20,12 @@ the Django datastore.
+ 
+ __author__ = 'jcgregorio@google.com (Joe Gregorio)'
+ 
+-import oauth2client
++import oauth2client1412
+ import base64
+ import pickle
+ 
+ from django.db import models
+-from oauth2client.client import Storage as BaseStorage
++from oauth2client1412.client import Storage as BaseStorage
+ 
+ class CredentialsField(models.Field):
+ 
+@@ -42,7 +42,7 @@ class CredentialsField(models.Field):
+   def to_python(self, value):
+     if value is None:
+       return None
+-    if isinstance(value, oauth2client.client.Credentials):
++    if isinstance(value, oauth2client1412.client.Credentials):
+       return value
+     return pickle.loads(base64.b64decode(value))
+ 
+@@ -67,7 +67,7 @@ class FlowField(models.Field):
+   def to_python(self, value):
+     if value is None:
+       return None
+-    if isinstance(value, oauth2client.client.Flow):
++    if isinstance(value, oauth2client1412.client.Flow):
+       return value
+     return pickle.loads(base64.b64decode(value))
+ 
+diff --git a/oauth2client/file.py b/oauth2client/file.py
+index 9d0ae7f..e7c73e5 100644
+--- a/oauth2client/file.py
++++ b/oauth2client/file.py
+@@ -23,8 +23,8 @@ __author__ = 'jcgregorio@google.com (Joe Gregorio)'
+ import os
+ import threading
+ 
+-from oauth2client.client import Credentials
+-from oauth2client.client import Storage as BaseStorage
++from oauth2client1412.client import Credentials
++from oauth2client1412.client import Storage as BaseStorage
+ 
+ 
+ class CredentialsFileSymbolicLinkError(Exception):
+diff --git a/oauth2client/gce.py b/oauth2client/gce.py
+index fc3bd77..79f0512 100644
+--- a/oauth2client/gce.py
++++ b/oauth2client/gce.py
+@@ -23,9 +23,9 @@ import json
+ import logging
+ from six.moves import urllib
+ 
+-from oauth2client import util
+-from oauth2client.client import AccessTokenRefreshError
+-from oauth2client.client import AssertionCredentials
++from oauth2client1412 import util
++from oauth2client1412.client import AccessTokenRefreshError
++from oauth2client1412.client import AssertionCredentials
+ 
+ logger = logging.getLogger(__name__)
+ 
+diff --git a/oauth2client/keyring_storage.py b/oauth2client/keyring_storage.py
+index cda1d9a..d7f7f6f 100644
+--- a/oauth2client/keyring_storage.py
++++ b/oauth2client/keyring_storage.py
+@@ -23,8 +23,8 @@ import threading
+ 
+ import keyring
+ 
+-from oauth2client.client import Credentials
+-from oauth2client.client import Storage as BaseStorage
++from oauth2client1412.client import Credentials
++from oauth2client1412.client import Storage as BaseStorage
+ 
+ 
+ class Storage(BaseStorage):
+diff --git a/oauth2client/locked_file.py b/oauth2client/locked_file.py
+index af92398..b5d1b07 100644
+--- a/oauth2client/locked_file.py
++++ b/oauth2client/locked_file.py
+@@ -39,7 +39,7 @@ import logging
+ import os
+ import time
+ 
+-from oauth2client import util
++from oauth2client1412 import util
+ 
+ logger = logging.getLogger(__name__)
+ 
+diff --git a/oauth2client/multistore_file.py b/oauth2client/multistore_file.py
+index f4ba4a7..0da1e14 100644
+--- a/oauth2client/multistore_file.py
++++ b/oauth2client/multistore_file.py
+@@ -52,10 +52,10 @@ import logging
+ import os
+ import threading
+ 
+-from oauth2client.client import Credentials
+-from oauth2client.client import Storage as BaseStorage
+-from oauth2client import util
+-from oauth2client.locked_file import LockedFile
++from oauth2client1412.client import Credentials
++from oauth2client1412.client import Storage as BaseStorage
++from oauth2client1412 import util
++from oauth2client1412.locked_file import LockedFile
+ 
+ logger = logging.getLogger(__name__)
+ 
+diff --git a/oauth2client/old_run.py b/oauth2client/old_run.py
+index 51db69b..93c9742 100644
+--- a/oauth2client/old_run.py
++++ b/oauth2client/old_run.py
+@@ -25,10 +25,10 @@ import webbrowser
+ import gflags
+ from six.moves import input
+ 
+-from oauth2client import client
+-from oauth2client import util
+-from oauth2client.tools import ClientRedirectHandler
+-from oauth2client.tools import ClientRedirectServer
++from oauth2client1412 import client
++from oauth2client1412 import util
++from oauth2client1412.tools import ClientRedirectHandler
++from oauth2client1412.tools import ClientRedirectServer
+ 
+ 
+ FLAGS = gflags.FLAGS
+diff --git a/oauth2client/service_account.py b/oauth2client/service_account.py
+index d1d1d89..400c494 100644
+--- a/oauth2client/service_account.py
++++ b/oauth2client/service_account.py
+@@ -26,10 +26,10 @@ from pyasn1.codec.ber import decoder
+ from pyasn1_modules.rfc5208 import PrivateKeyInfo
+ import rsa
+ 
+-from oauth2client import GOOGLE_REVOKE_URI
+-from oauth2client import GOOGLE_TOKEN_URI
+-from oauth2client import util
+-from oauth2client.client import AssertionCredentials
++from oauth2client1412 import GOOGLE_REVOKE_URI
++from oauth2client1412 import GOOGLE_TOKEN_URI
++from oauth2client1412 import util
++from oauth2client1412.client import AssertionCredentials
+ 
+ 
+ class _ServiceAccountCredentials(AssertionCredentials):
+diff --git a/oauth2client/tools.py b/oauth2client/tools.py
+index 2caa134..e0141f9 100644
+--- a/oauth2client/tools.py
++++ b/oauth2client/tools.py
+@@ -32,8 +32,8 @@ from six.moves import BaseHTTPServer
+ from six.moves import urllib
+ from six.moves import input
+ 
+-from oauth2client import client
+-from oauth2client import util
++from oauth2client1412 import client
++from oauth2client1412 import util
+ 
+ 
+ _CLIENT_SECRETS_MESSAGE = """WARNING: Please configure OAuth 2.0
+@@ -239,8 +239,8 @@ def message_if_missing(filename):
+   return _CLIENT_SECRETS_MESSAGE % filename
+ 
+ try:
+-  from oauth2client.old_run import run
+-  from oauth2client.old_run import FLAGS
++  from oauth2client1412.old_run import run
++  from oauth2client1412.old_run import FLAGS
+ except ImportError:
+   def run(*args, **kwargs):
+     raise NotImplementedError(
+diff --git a/oauth2client/xsrfutil.py b/oauth2client/xsrfutil.py
+index 5739dcf..039a3b2 100644
+--- a/oauth2client/xsrfutil.py
++++ b/oauth2client/xsrfutil.py
+@@ -26,7 +26,7 @@ import hmac
+ import time
+ 
+ import six
+-from oauth2client import util
++from oauth2client1412 import util
+ 
+ 
+ # Delimiter character
+diff --git a/setup.py b/setup.py
+index 66e619f..14fab22 100644
+--- a/setup.py
++++ b/setup.py
+@@ -31,7 +31,7 @@ if (3, 1) <= sys.version_info < (3, 3):
+ from setuptools import setup
+ 
+ packages = [
+-    'oauth2client',
++    'oauth2client1412',
+ ]
+ 
+ install_requires = [
+@@ -44,16 +44,16 @@ install_requires = [
+ 
+ long_desc = """The oauth2client is a client library for OAuth 2.0."""
+ 
+-import oauth2client
+-version = oauth2client.__version__
++import oauth2client1412
++version = oauth2client1412.__version__
+ 
+ setup(
+-    name="oauth2client",
++    name="oauth2client1412",
+     version=version,
+     description="OAuth 2.0 client library",
+     long_description=long_desc,
+     author="Google Inc.",
+-    url="http://github.com/google/oauth2client/",
++    url="http://github.com/polyzen/oauth2client/",
+     install_requires=install_requires,
+     packages=packages,
+     license="Apache 2.0",
