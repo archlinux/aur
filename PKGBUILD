@@ -24,6 +24,7 @@ sha256sums=(
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
+  echo "$pkgver" > VERSION
 	go run make.go
 }
 
