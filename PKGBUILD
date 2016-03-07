@@ -1,8 +1,8 @@
 # Maintainer: Darshit Shah <darnir@gmail.com>
 
-_gitname=wget
-pkgname=${_gitname}2-git
-pkgver=0.0.r644.g650f59c
+_gitname=wget2
+pkgname=${_gitname}-git
+pkgver=0.0.r647.g0ff0a43
 pkgrel=1
 pkgdesc="Updated version of popular Wget tool"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ optdepends=("ca-certificates: HTTPS Downloads")
 makedepends=('git' 'rsync')
 provides=('wget2')
 conflicts=('wget2')
-source=("git://git.savannah.gnu.org/${_gitname}.git#branch=wget2"
+source=("git://git.savannah.gnu.org/wget/${_gitname}.git"
         "git://git.savannah.gnu.org/gnulib.git")
 md5sums=('SKIP' 'SKIP')
 
