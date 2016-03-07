@@ -1,4 +1,4 @@
-    pkgbase = trayer-srg-git
+pkgbase = trayer-srg-git
 	pkgdesc = trayer fork with multi monitor support, cleaned up codebase and other fancy stuff (git-version)
 	pkgver = r107.a5a0766
 	pkgrel = 1
@@ -9,7 +9,8 @@
 	depends = gtk2
 	provides = trayer
 	conflicts = trayer
-	source = git://github.com/sargon/trayer-srg-git.git
+	source = trayer-srg::git+http://github.com/sargon/trayer-srg.git
 	md5sums = SKIP
-    pkgname = trayer-srg-git
+
+pkgname = trayer-srg-git
 
