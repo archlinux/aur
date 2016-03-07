@@ -10,13 +10,12 @@ license=("custom:eula")
 depends=('libx11' 'libjpeg' 'curl' 'wget')
 makedepends=('unzip')
 arch=('i686' 'x86_64')
-source=("http://dls.photoprintit.de/download/Data/16523/hps/setup_Mein_CEWE_FOTOBUCH.tgz" 
-"cewe-fotobuch.desktop")
+source=("http://dls.photoprintit.de/download/Data/16523/hps/setup_Mein_CEWE_FOTOBUCH.tgz")
 install=cewe-fotobuch.install
-md5sums=('9197c2551c471da202de3f0652eba324'
-         'ebc303204c0aecab97ecd53627f7eb7d')
+md5sums=('9197c2551c471da202de3f0652eba324')
 
 _installDir=/usr/share/$pkgname
+_productRename='CEWE Fotobuch'
 
 package() {
 	# put icons and mimetype in the right place
@@ -24,7 +23,7 @@ package() {
 	export XDG_DATA_DIRS="$pkgdir/usr/share:"
 
 	_installDir=$pkgdir$_installDir
-	mkdir -p $_installDir $pkgdir/usr/{bin,share/icons/hicolor,share/mime/packages}
+	mkdir -p $_installDir $pkgdir/usr/{bin,share/icons/hicolor,share/mime/packages,share/applications}
 
 	cd $srcdir
 	# don't clear screen, install broken desktop file, or burble
@@ -35,24 +34,34 @@ package() {
 
 	./install.pl $update --installDir=$_installDir -k -v
 	install -D -m644 $srcdir/EULA.txt $pkgdir/usr/share/licenses/$pkgname/EULA.txt
+        # pixmap for legacy customised mimetypes
+	install -D -m644 $_installDir/Resources/keyaccount/32.xpm $pkgdir/usr/share/pixmaps/cewe-fotobuch.xpm
 
-        # create startup script
+	# create startup script and desktop file
 	cat > $pkgdir/usr/bin/cewe-fotobuch <<-EOF
 		#!/usr/bin/bash
 		cd ${_installDir#$pkgdir}
 		KDEHOME=\$HOME/.kde4 exec ./cewe-fotobuch "\$@"
 	EOF
-        chmod 755 $pkgdir/usr/bin/cewe-fotobuch
+	cat > $pkgdir/usr/share/applications/cewe-fotobuch.desktop <<-EOF
+		[Desktop Entry]
+		Type=Application
+		Name=$_productRename
+		Comment=Offline client for cewe.de service
+		Exec=cewe-fotobuch
+		Icon=hps-16523
+		StartupNotify=true
+		Categories=Graphics;Photography;
+		MimeType=application/x-hps-mcf
+	EOF
+	chmod 755 $pkgdir/usr/bin/cewe-fotobuch $pkgdir/usr/share/applications/cewe-fotobuch.desktop
 
         # utf-8 and space in executable filenames is generally a bad idea
 	cd $_installDir
         mv "Mein CEWE FOTOBUCH" "cewe-fotobuch"
-	# create desktop shortcut
-	install -D -m644 $_installDir/Resources/keyaccount/32.xpm $pkgdir/usr/share/pixmaps/cewe-fotobuch.xpm && \
-	install -D -m644 $srcdir/cewe-fotobuch.desktop $pkgdir/usr/share/applications/cewe-fotobuch.desktop
 
 	# adjust product name in mimetype comment
-	sed -i 's/Mein CEWE FOTOBUCH/CeWe Fotobuch/' $pkgdir/usr/share/mime/packages/*
+	sed -i "s/Mein CEWE FOTOBUCH/$_productRename/" $pkgdir/usr/share/mime/packages/*
 	# remove unneeded mime cache files and installation logs
 	rm -d $pkgdir/usr/share/mime/application/* $pkgdir/usr/share/mime/* \
 		$_installDir/.log/* $_installDir/.log &> /dev/null || true

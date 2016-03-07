@@ -13,9 +13,7 @@ pkgbase = cewe-fotobuch
 	depends = curl
 	depends = wget
 	source = http://dls.photoprintit.de/download/Data/16523/hps/setup_Mein_CEWE_FOTOBUCH.tgz
-	source = cewe-fotobuch.desktop
 	md5sums = 9197c2551c471da202de3f0652eba324
-	md5sums = ebc303204c0aecab97ecd53627f7eb7d
 
 pkgname = cewe-fotobuch
 
