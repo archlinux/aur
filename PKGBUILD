@@ -1,7 +1,7 @@
 # Maintainer: zaps166 <spaz16@wp.pl>
 
 pkgname=qmplay2-git
-pkgver=16.03.03
+pkgver=16.03.07
 pkgrel=1
 pkgdesc='QMPlay2 is a video and audio player which can play most formats and codecs (Qt5)'
 arch=('i686' 'x86_64' 'armv7' 'armv6' 'armv5')
@@ -24,7 +24,7 @@ pkgver()
 build()
 {
 	cd $srcdir/QMPlay2
-	QT_SUFFIX=-qt5 NOTERM=1 SYSTEM_BUILD=1 ./compile_unix 0
+	QT_SUFFIX=-qt5 SYSTEM_BUILD=1 ./compile_unix 0
 }
 
 package()
