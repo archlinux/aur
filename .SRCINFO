@@ -1,0 +1,35 @@
+pkgbase = mwptools-git
+	pkgdesc = mission planner for MSP
+	pkgver = r672.946adec
+	pkgrel = 1
+	url = https://github.com/stronnag/mwptools.git
+	install = mwptools.install
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPLv2
+	makedepends = git
+	depends = ruby
+	depends = gtk3
+	depends = gdl
+	depends = libchamplain
+	depends = clutter
+	depends = vala
+	depends = bluez
+	depends = espeak
+	depends = libgudev
+	depends = gstreamer0.10
+	depends = gtk2
+	depends = cairo
+	depends = pango
+	depends = libxml2
+	depends = blackbox-tools-git
+	provides = mwptools
+	conflicts = mwptools
+	source = mwptools::git+https://github.com/stronnag/mwptools.git
+	sha512sums = SKIP
+
+pkgname = mwptools-git
+
