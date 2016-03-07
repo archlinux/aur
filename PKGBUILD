@@ -31,13 +31,13 @@ sha256sums=('85ec56dbeb89a951295cdf4f39bf38e515f900d35e06d4a8081b114d1520789d'
             'afc334dfe1f1eb9e557ae01771b0f774c8fc578115e1698462ab670d1b0a213a')
 
 prepare() {
-  cd "${pkgbase}-${pkgver}"
+  cd "${_pkgbase}-${pkgver}"
   # FS#47151
   patch -Np1 -i ../Fix-XineramaQueryScreens-for-reverse-prime.patch
 }
 
 build() {
-  cd "${pkgbase}-${pkgver}"
+  cd "${_pkgbase}-${pkgver}"
   ./configure --prefix=/usr \
       --enable-ipv6 \
       --enable-dri \
@@ -93,7 +93,7 @@ package_xorg-server-common-rpi() {
   provides=('xorg-server-common')
   conflicts=('xorg-server-common')
 
-  cd "${pkgbase}-${pkgver}"
+  cd "${_pkgbase}-${pkgver}"
   install -m755 -d "${pkgdir}/usr/share/licenses/xorg-server-common"
   install -m644 COPYING "${pkgdir}/usr/share/licenses/xorg-server-common"
   
@@ -115,9 +115,9 @@ package_xorg-server-rpi() {
   provides=('X-ABI-VIDEODRV_VERSION=20' 'X-ABI-XINPUT_VERSION=22.1' 'X-ABI-EXTENSION_VERSION=9.0' 'x-server' 'xorg-server')
   conflicts=('nvidia-utils<=331.20' 'glamor-egl' 'xf86-video-modesetting' 'xorg-server')
   replaces=('glamor-egl' 'xf86-video-modesetting')
-  install=xorg-server.install
+  install=xorg-server-rpi.install
 
-  cd "${pkgbase}-${pkgver}"
+  cd "${_pkgbase}-${pkgver}"
   make DESTDIR="${pkgdir}" install
   
   # distro specific files must be installed in /usr/share/X11/xorg.conf.d
@@ -147,7 +147,7 @@ package_xorg-server-xephyr-rpi() {
   provides=('xorg-server-xephyr')
   conflicts=('xorg-server-xephyr')
 
-  cd "${pkgbase}-${pkgver}/hw/kdrive"
+  cd "${_pkgbase}-${pkgver}/hw/kdrive"
   make DESTDIR="${pkgdir}" install
 
   install -m755 -d "${pkgdir}/usr/share/licenses/xorg-server-xephyr"
@@ -160,7 +160,7 @@ package_xorg-server-xvfb-rpi() {
   provides=('xorg-server-xvfb')
   conflicts=('xorg-server-xvfb')
 
-  cd "${pkgbase}-${pkgver}/hw/vfb"
+  cd "${_pkgbase}-${pkgver}/hw/vfb"
   make DESTDIR="${pkgdir}" install
 
   install -m755 "${srcdir}/xvfb-run" "${pkgdir}/usr/bin/"
@@ -176,7 +176,7 @@ package_xorg-server-xnest-rpi() {
   provides=('xorg-server-xnest')
   conflicts=('xorg-server-xnest')
 
-  cd "${pkgbase}-${pkgver}/hw/xnest"
+  cd "${_pkgbase}-${pkgver}/hw/xnest"
   make DESTDIR="${pkgdir}" install
 
   install -m755 -d "${pkgdir}/usr/share/licenses/xorg-server-xnest"
@@ -189,7 +189,7 @@ package_xorg-server-xdmx-rpi() {
   provides=('server-xdmx-rpi')
   conflicts=('server-xdmx-rpi')
 
-  cd "${pkgbase}-${pkgver}/hw/dmx"
+  cd "${_pkgbase}-${pkgver}/hw/dmx"
   make DESTDIR="${pkgdir}" install
 
   install -m755 -d "${pkgdir}/usr/share/licenses/xorg-server-xdmx"
@@ -202,7 +202,7 @@ package_xorg-server-xwayland-rpi() {
   provides=('xorg-server-xwayland')
   conflicts=('xorg-server-xwayland')
 
-  cd "${pkgbase}-${pkgver}/hw/xwayland"
+  cd "${_pkgbase}-${pkgver}/hw/xwayland"
   make DESTDIR="${pkgdir}" install
 
   install -m755 -d "${pkgdir}/usr/share/licenses/xorg-server-xwayland"
@@ -221,7 +221,7 @@ package_xorg-server-devel-rpi() {
   provides=('xorg-server-devel')
   conflicts=('xorg-server-devel')
 
-  cd "${pkgbase}-${pkgver}"
+  cd "${_pkgbase}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
   rm -rf "${pkgdir}/usr/bin"
