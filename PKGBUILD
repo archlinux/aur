@@ -4,12 +4,12 @@
 pkgname=tvheadend-atsc-epg-git
 _gitname='tvheadend'
 pkgver=4.1.r475.g92b5af3
-pkgrel=1
+pkgrel=2
 pkgdesc="TV streaming server for Linux (with PSIP ATSC EPG Grabber)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://tvheadend.org/"
 license=('GPL3')
-depends=('avahi' 'openssl' 'python2' 'uriparser' 'ffmpeg')
+depends=('avahi' 'openssl' 'python2' 'uriparser' 'ffmpeg2.8')
 makedepends=('git')
 optdepends=('xmltv: For an alternative source of programme listings')
 provides=('tvheadend')
@@ -29,7 +29,8 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_gitname}"
-    ./configure --prefix=/usr --mandir=/usr/share/man/man1 --python=python2 --release --enable-libsystemd_daemon
+    PKG_CONFIG_PATH="/usr/lib/ffmpeg2.8/pkgconfig" \
+    ./configure --prefix=/usr --mandir=/usr/share/man/man1 --python=python2 --release
     make
 }
 
