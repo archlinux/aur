@@ -11,8 +11,6 @@ depends=('python2>=2.7.10'
 		)
 license=('GPL2')
 pkgdesc="Decentralized websites using Bitcoin crypto and the BitTorrent network."
-provides=(zeronet)
-conflicts=(zeronet zeronet-git)
 source=("https://github.com/HelloZeroNet/ZeroNet/archive/v$pkgver.tar.gz"
         "zeronet.conf"
         "zeronet.service")
