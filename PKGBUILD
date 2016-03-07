@@ -3,14 +3,16 @@
 
 pkgname=tmux-cssh-git
 pkgver=1.0.6.0.r7.g2175073
-pkgrel=1
+pkgrel=2
 pkgdesc="TMUX with a \"ClusterSSH\"-like behaviour"
 arch=('any')
 url="https://github.com/dennishafemann/tmux-cssh"
 license=('Apache')
 depends=('tmux')
 makedepends=('git')
-source=('git+https://github.com/dennishafemann/tmux-cssh.git')
+provides=('tmux-cssh')
+conflicts=('tmux-cssh')
+source=(git+https://github.com/dennishafemann/tmux-cssh.git)
 md5sums=('SKIP')
 
 pkgver() {
