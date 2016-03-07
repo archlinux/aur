@@ -1,4 +1,4 @@
-# Maintainer: CrocoDuck <crocoduck.oducks@gmail.com>
+# Maintainer: CrocoDuck <crocoduck dot oducks at gmail dot com>
 # Contributor: Giancarlo Bianchi <giancarlobianchi76@gmail.com>
 
 pkgname=realtimeconfigquickscan-git
@@ -18,25 +18,21 @@ source=("${pkgname%-*}"::"git://github.com/raboof/realtimeconfigquickscan"
 md5sums=('SKIP' '45847f5cbc4880b6e724fa4fafbdc3c7' '8e3ff9238a56c66fb2f50f4f36259a95')
 
 package() {
-
   cd ${pkgname%-*}
   # Install Script Files:
   # *.pm files
   for i in *.pm; do
-    install -Dm 755 "$i" "$pkgdir/usr/share/${pkgname%-*}/$i"
+	install -Dm 755 "$i" "$pkgdir/usr/share/${pkgname%-*}/$i"
   done
   # *.pl files
   for i in *.pl; do
-    install -Dm 755 "$i" "$pkgdir/usr/share/${pkgname%-*}/$i"
+    	install -Dm 755 "$i" "$pkgdir/usr/share/${pkgname%-*}/$i"
   done
-
   # Install doc files:
   install -D COPYING  "$pkgdir/usr/share/doc/${pkgname%-*}/COPYING"
   install -D README.md  "$pkgdir/usr/share/doc/${pkgname%-*}/README.md"
-
   # Install Executable scripts:
   cd "$srcdir"
   install -Dm 755 realTimeConfigQuickScan "$pkgdir/usr/bin/realTimeConfigQuickScan"
   install -Dm 755 QuickScan "$pkgdir/usr/bin/QuickScan"
-
 }
