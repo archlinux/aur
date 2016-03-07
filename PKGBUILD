@@ -29,7 +29,7 @@ pkgver() {
 build() {
     cd ${srcdir}/${pkgname}
     _DISABLE_EXTENSIONS="--disable-caja --disable-nemo"
-    ./autogen.sh --with-gtk=3.0 --prefix="/usr" $_DISABLE_EXTENSIONS
+    ./autogen.sh --prefix="/usr" $_DISABLE_EXTENSIONS
     make
 }
 
