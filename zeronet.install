@@ -8,7 +8,12 @@ post_install() {
     # Don't run thesre operations automatically, because they are security-sensitive
     echo ">>> Default mode is clearnet+Tor. Give zeronet permissions to configure hidden service:"
     echo ">>>   sudo usermod -a -G tor zeronet"
-    echo ">>>   sudo chmod g+x /var/lib/tor && sudo chmod g+r /var/lib/tor/control_auth_cookie"
+    echo ">>>   sudo mkdir -m 750 /var/run/tor && sudo chown tor:tor /var/run/tor"
+    echo ">>> Add/edit the following options in /etc/tor/torrc:"
+    echo ">>>   CookieAuth 1"
+    echo ">>>   CookieAuthentication 1"
+    echo ">>>   CookieAuthFileGroupReadable 1"
+    echo ">>>   CookieAuthFile /var/run/tor/control_auth_cookie"
     echo ">>> Run daemon and check status:"
     echo ">>>   sudo systemctl start zeronet"
     echo ">>>   sudo systemctl status zeronet"
