@@ -1,14 +1,14 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=ja2-stracciatella-git
-pkgver=7404.12d8987
+pkgver=7498.5135575
 pkgrel=1
 pkgdesc="Jagged Alliance 2 Stracciatella project with a goal of improving JA2"
 arch=('i686' 'x86_64')
-url="https://bitbucket.org/gennady/ja2-stracciatella"
+url="https://github.com/ja2-stracciatella/ja2-stracciatella"
 license=('custom')
 depends=('sdl' 'gcc-libs')
 makedepends=('git')
-source=('git+https://bitbucket.org/gennady/ja2-stracciatella.git')
+source=('git+https://github.com/ja2-stracciatella/ja2-stracciatella.git')
 md5sums=('SKIP')
 
 pkgver() {
