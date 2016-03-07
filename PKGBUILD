@@ -7,7 +7,8 @@ pkgrel=1
 pkgdesc="A kernel module for Realtek 8812au network cards with dkms support"
 url="https://github.com/gnab/rtl8812au"
 license=("GPL")
-arch=('i686' 'x86_64')
+arch=('any')
+makedepends=('git')
 depends=('dkms')
 source=("git+https://github.com/gnab/rtl8812au.git"
         "dkms.conf")
