@@ -1,9 +1,9 @@
-# Maintainer: CrocoDuck <crocoduck.oducks@gmail.com>
+# Maintainer: CrocoDuck <crocoduck dot oducks at gmail dot com>
 # Contributor: Simon Thorpe <simon@hivetechnology.com.au>
 
 pkgname=pianoteq-standard-trial-bin
 pkgver=5.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Virtual piano instrument using physical modelling synthesis. Both standalone and plugin versions."
 arch=('i686' 'x86_64')
 url="https://www.pianoteq.com/pianoteq5"
@@ -38,29 +38,29 @@ prepare(){
 
 package(){
 	# Define architecture specific file directory:
-  if [[ "$CARCH" == i686 ]]; then
+ 	 if [[ "$CARCH" == i686 ]]; then
 		archdir=i386
  	else
 		archdir=amd64
 	fi
 	# Install program files:
 	install -Dm 755 "$srcdir/Pianoteq 5/$archdir/Pianoteq 5" "$pkgdir/usr/bin/Pianoteq 5"
-  install -Dm 755 "$srcdir/Pianoteq 5/$archdir/Pianoteq 5.so" "$pkgdir/usr/lib/vst/Pianoteq 5.so"
-  cd "$srcdir/Pianoteq 5/$archdir/Pianoteq 5.lv2"
-  for i in *; do
-    install -D "$i" "$pkgdir/usr/lib/lv2/Pianoteq 5.lv2/$i"
-  done
-  cd $srcdir
+	install -Dm 755 "$srcdir/Pianoteq 5/$archdir/Pianoteq 5.so" "$pkgdir/usr/lib/vst/Pianoteq 5.so"
+	cd "$srcdir/Pianoteq 5/$archdir/Pianoteq 5.lv2"
+	for i in *; do
+		install -D "$i" "$pkgdir/usr/lib/lv2/Pianoteq 5.lv2/$i"
+  	done
+  	cd $srcdir
 	# Install desktop launcher:
-  install -Dm 644 "$srcdir/pianoteq_icon_128.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
-  install -Dm 644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/${pkgname%-*}.desktop"
+  	install -Dm 644 "$srcdir/pianoteq_icon_128.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  	install -Dm 644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/${pkgname%-*}.desktop"
 	# Install the license:
-  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  	install -d "$pkgdir/usr/share/licenses/$pkgname"
 	install -m 644 Pianoteq\ 5/*Licence* "$pkgdir/usr/share/licenses/$pkgname/"
-  # Install the Documentation:
-  install -D "Pianoteq 5/README_LINUX.txt" "$pkgdir/usr/share/doc/${pkgname%-*}/README_LINUX.txt"
-  cd "$srcdir/Pianoteq 5/Documentation"
-  for i in *; do
-    install -D "$i" "$pkgdir/usr/share/doc/${pkgname%-*}/$i"
-  done
+  	# Install the Documentation:
+  	install -D "Pianoteq 5/README_LINUX.txt" "$pkgdir/usr/share/doc/${pkgname%-*}/README_LINUX.txt"
+  	cd "$srcdir/Pianoteq 5/Documentation"
+  	for i in *; do
+    		install -D "$i" "$pkgdir/usr/share/doc/${pkgname%-*}/$i"
+  	done
 }
