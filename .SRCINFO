@@ -8,6 +8,8 @@ pkgbase = sflock-git
 	license = MIT
 	makedepends = git
 	depends = libxext
+	source = git+https://github.com/benruijl/sflock.git
+	sha256sums = SKIP
 
 pkgname = sflock-git
 
