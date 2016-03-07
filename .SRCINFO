@@ -1,0 +1,22 @@
+pkgbase = xed
+	pkgdesc = gtk3 pluma fork. Maintained by Linux Mint developers.
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/linuxmint/xed
+	install = xed.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = mate-common
+	makedepends = iso-codes
+	depends = gtksourceview3
+	depends = enchant
+	depends = desktop-file-utils
+	depends = libsm
+	conflicts = xed-git
+	source = https://github.com/linuxmint/xed/archive/1.0.3.tar.gz
+	md5sums = 2c0ada079023f0b6b2f7af10c4f5166d
+
+pkgname = xed
+
