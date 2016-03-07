@@ -2,7 +2,7 @@
 
 pkgname=camlistore
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Camlistore (Content-Addressable Multi-Layer Indexed Storage) is your personal storage system for life.'
 arch=('i686' 'x86_64')
 url='https://camlistore.org/'
@@ -23,9 +23,9 @@ sha256sums=(
 )
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
   echo "$pkgver" > VERSION
-	go run make.go
+  go run make.go
 }
 
 package() {
