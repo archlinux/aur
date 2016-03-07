@@ -8,4 +8,3 @@ Type=Application
 StartupNotify=true
 Categories=GNOME;GTK;Utility;
 MimeType=text/plain;
-Name[en_US]=google-play-music-desktop-player.desktop
