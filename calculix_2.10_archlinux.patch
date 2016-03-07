@@ -1,9 +1,9 @@
-diff -ur CalculiX_orig/ccx_2.9/src/Makefile CalculiX/ccx_2.8/src/Makefile
---- CalculiX_orig/ccx_2.9/src/Makefile
-+++ CalculiX/ccx_2.9/src/Makefile
+diff -ur CalculiX_orig/ccx_2.10/src/Makefile CalculiX/ccx_2.10/src/Makefile
+--- CalculiX_orig/ccx_2.19/src/Makefile
++++ CalculiX/ccx_2.10/src/Makefile
 @@ -2,2 +2,2 @@ 
--CFLAGS = -Wall -O3  -I ../../../SPOOLES.2.2 -DARCH="Linux" -DSPOOLES -DARPACK -DMATRIXSTORAGE
-+CFLAGS = -Wall -O3  -I /usr/include/spooles -DARCH="Linux" -DSPOOLES -DARPACK -DMATRIXSTORAGE
+-CFLAGS = -Wall -O3 -fopenmp -I ../../../SPOOLES.2.2 -DARCH="Linux" -DSPOOLES -DARPACK -DMATRIXSTORAGE
++CFLAGS = -Wall -O3 -fopenmp -I /usr/include/spooles -DARCH="Linux" -DSPOOLES -DARPACK -DMATRIXSTORAGE
  FFLAGS = -Wall -O3 -fopenmp
 @@ -21,6 +21,1 @@
 -DIR=../../../SPOOLES.2.2
@@ -13,9 +13,9 @@ diff -ur CalculiX_orig/ccx_2.9/src/Makefile CalculiX/ccx_2.8/src/Makefile
 -	../../../ARPACK/libarpack_INTEL.a \
 -       -lpthread -lm -lc
 +LIBS = -lpthread -lm -lc -lspooles -larpack -lblas
-diff -ur CalculiX_orig/cgx_2.9/src/Makefile CalculiX/cgx_2.8/src/Makefile
---- CalculiX_orig/cgx_2.9/src/Makefile
-+++ CalculiX/cgx_2.9/src/Makefile
+diff -ur CalculiX_orig/cgx_2.10/src/Makefile CalculiX/cgx_2.10/src/Makefile
+--- CalculiX_orig/cgx_2.10/src/Makefile
++++ CalculiX/cgx_2.10/src/Makefile
 @@ -1,14 +1,8 @@
  CFLAGS = -O3 -Wall \
    -I./ \
@@ -37,20 +37,20 @@ diff -ur CalculiX_orig/cgx_2.9/src/Makefile CalculiX/cgx_2.8/src/Makefile
 @@ -59,1 +53,1 @@
 - ../../libSNL/src/*.cpp
 +# ../../libSNL/src/*.cpp
-diff -ur CalculiX_orig/cgx_2.9/src/cgx.h CalculiX/cgx_2.8/src/cgx.h
---- CalculiX_orig/cgx_2.9/src/cgx.h
-+++ CalculiX/cgx_2.9/src/cgx.h
+diff -ur CalculiX_orig/cgx_2.10/src/cgx.h CalculiX/cgx_2.10/src/cgx.h
+--- CalculiX_orig/cgx_2.10/src/cgx.h
++++ CalculiX/cgx_2.10/src/cgx.h
 @@ -81,8 +81,8 @@
  #elif defined AFLIB
--  #define     HELPFILE        {"/usr/local/CalculiX/cgx_2.9/doc/cgx/cgx.html",\
--    "/usr/local/CalculiX/ccx_2.9/doc/ccx/ccx.html",\
--    "/usr/local/CalculiX/cgx_2.9/doc/aflib/aflib.pdf"}
+-  #define     HELPFILE        {"/usr/local/CalculiX/cgx_2.10/doc/cgx/cgx.html",\
+-    "/usr/local/CalculiX/ccx_2.10/doc/ccx/ccx.html",\
+-    "/usr/local/CalculiX/cgx_2.10/doc/aflib/aflib.pdf"}
 +  #define     HELPFILE        {"/usr/share/doc/cgx/cgx.html",\
 +    "/usr/share/doc/doc/ccx/ccx.html",\
 +    "/usr/share/doc/doc/aflib/aflib.pdf"}
  #else
--  #define     HELPFILE        {"/usr/local/CalculiX/cgx_2.9/doc/cgx/cgx.html",\
--    "/usr/local/CalculiX/ccx_2.9/doc/ccx/ccx.html"}
+-  #define     HELPFILE        {"/usr/local/CalculiX/cgx_2.10/doc/cgx/cgx.html",\
+-    "/usr/local/CalculiX/ccx_2.10/doc/ccx/ccx.html"}
 +  #define     HELPFILE        {"/usr/share/doc/cgx/cgx.html",\
 +    "/usr/share/doc/ccx/ccx.html"}
  #endif
