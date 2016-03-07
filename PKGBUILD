@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=fotoxx
-pkgver=16.03
+pkgver=16.03.1
 pkgrel=1
 
 pkgdesc="A program for improving image files made with a digital camera"
@@ -13,7 +13,7 @@ makedepends=('xdg-utils')
 optdepends=('mashup: for composing pages to print from within fotoxx' 
   'brasero: for burning')
 source=("http://www.kornelix.net/downloads/tarballs/$pkgname-$pkgver.tar.gz")
-md5sums=('115f9befc671200467dfc3d6345a538f')
+md5sums=('a7f2503a4b17855680e0b5b60def27ee')
 install=fotoxx.install
 
 prepare() {
