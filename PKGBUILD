@@ -7,7 +7,7 @@ pkgbase=${pkgname}
 _gitname=pvr.hts
 pkgver=2.2.14
 _gitver=branch=Jarvis
-pkgrel=1
+pkgrel=2
 pkgdesc='Tvheadend HTSP PVR client addon for Kodi'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/kodi-pvr/$_gitname"
