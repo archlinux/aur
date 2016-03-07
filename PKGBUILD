@@ -1,8 +1,10 @@
 # Maintainer: Eli Schwartz <eschwartz93@gmail.com>
 # Contributor: Thiago Perrotta <echo dGhpYWdvcGVycm90dGE5NUBnbWFpbC5jb20K | base64 -d >
 
+# All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
+
 pkgname=lastpass-cli-git
-pkgver=0.6.0.r25.gf2acef6
+pkgver=0.9.0.r4.gb5e4f4e
 pkgrel=1
 pkgdesc="LastPass command line interface tool (git version)"
 arch=('i686' 'x86_64')
@@ -17,7 +19,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
-    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
