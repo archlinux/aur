@@ -2,8 +2,8 @@
 # Contributor: Zeph <zeph33@gmail.com>
 
 pkgname=pamac-patched-headerbar
-pkgver=3.0.1
-_pkgver=3.0.1
+pkgver=3.2.0
+_pkgver=3.2.0
 pkgrel=1
 # This is the release package so the below _gitcommit variable should (usually) be commented out.
 #_gitcommit="d8e9826ab0b84bdb6f4b6c0dcc4ce1461bf04595"
@@ -29,7 +29,7 @@ else
   source=("pamac-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz" headerbar.patch)
 fi
 
-sha256sums=('3b5ef55d7ba46dfe96bad0d3b596effb0568fbeaae110c45d23fe95142afff4e'
+sha256sums=('13c5eaaa0b1302e59542a6ca922f305ee5312c017763d05eb7b21d484a40b152'
             'fb9e8d967c7f5955e3dafd8ab2aaae86d55acd3c73336e582ed0bd3d92f1a39a')
 
 prepare() {
@@ -54,27 +54,7 @@ build() {
 
 package() {
   cd "$srcdir/pamac-$pkgver"
-
-  mkdir -p "${pkgdir}/usr/share/icons/hicolor"
-  cp -r "data/icons/"* "${pkgdir}/usr/share/icons/hicolor"
-  cp -r "po/locale" "${pkgdir}/usr/share"
-  install -Dm744 "src/pamac-daemon" "${pkgdir}/usr/bin/pamac-daemon"
-  install -Dm755 "src/pamac-manager" "${pkgdir}/usr/bin/pamac-manager"
-  install -Dm755 "src/pamac-updater" "${pkgdir}/usr/bin/pamac-updater"
-  install -Dm755 "src/pamac-tray" "${pkgdir}/usr/bin/pamac-tray"
-  install -Dm755 "src/pamac-refresh" "${pkgdir}/usr/bin/pamac-refresh"
-  install -Dm755 "src/pamac-install" "${pkgdir}/usr/bin/pamac-install"
-  install -Dm644 "data/applications/pamac-tray.desktop" "${pkgdir}/etc/xdg/autostart/pamac-tray.desktop"
-  install -Dm644 "data/applications/pamac-manager.desktop" "${pkgdir}/usr/share/applications/pamac-manager.desktop"
-  install -Dm644 "data/applications/pamac-updater.desktop" "${pkgdir}/usr/share/applications/pamac-updater.desktop"
-  install -Dm644 "data/applications/pamac-install.desktop" "${pkgdir}/usr/share/applications/pamac-install.desktop"
-  install -Dm644 "data/config/pamac.conf" "${pkgdir}/etc/pamac.conf"
-  install -Dm644 "data/dbus/org.manjaro.pamac.conf" "${pkgdir}/etc/dbus-1/system.d/org.manjaro.pamac.conf"
-  install -Dm644 "data/dbus/org.manjaro.pamac.service" "${pkgdir}/usr/share/dbus-1/system-services/org.manjaro.pamac.service"
-  install -Dm644 "data/systemd/pamac.service" "${pkgdir}/usr/lib/systemd/system/pamac.service"
-  install -Dm744 "data/networkmanager/99_update_pamac_tray" "${pkgdir}/etc/NetworkManager/dispatcher.d/99_update_pamac_tray"
-  install -Dm644 "data/polkit/org.manjaro.pamac.policy" "${pkgdir}/usr/share/polkit-1/actions/org.manjaro.pamac.policy"
-  install -Dm644 "data/mime/x-alpm-package.xml" "${pkgdir}/usr/share/mime/packages/x-alpm-package.xml"
+  make prefix="$pkgdir"/usr sysconfdir="$pkgdir"/etc install
 }
 
 # vim:set ts=2 sw=2 et:
