@@ -5,14 +5,23 @@ post_install() {
   echo 'you start using it'
   echo '--------------------------------------------------'
 
-  chmod 775 /usr/share/cewe-fotobuch
+  update-mime-database /usr/share/mime &> /dev/null
+  update-desktop-database &> /dev/null
   /bin/true
 }
 
 post_upgrade() {
+  update-mime-database /usr/share/mime &> /dev/null
+  update-desktop-database &> /dev/null
 /bin/true
 }
 
 pre_remove() {
 /bin/true
+}
+
+post_remove() {
+  update-mime-database /usr/share/mime &> /dev/null
+  update-desktop-database &> /dev/null
+  /bin/true
 }
