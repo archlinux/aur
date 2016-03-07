@@ -1,12 +1,12 @@
 # Maintainer: Earendil <earendil AT veryfast DOT biz>
 # Contributor: Corelli <corelli AT sent DOT com>
 # Contributor: danyf90 <daniele.formichelli AT gmail DOT com>
-# Contributor: Papajoker <papajoker [at] archlinux [dot] info>
+# Contributor: Papajoker <papajoke [at] archlinux [dot] info>
 
 _name=firefox
 _channel=developer
 pkgname="${_name}-${_channel}-fr"
-pkgver=46.0a2
+pkgver=47.0a2
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, developer build - French"
 url="http://www.mozilla.org/firefox/developer"
