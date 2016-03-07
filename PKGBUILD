@@ -4,7 +4,7 @@
 
 _pkgname=rtl8812au
 pkgname=$_pkgname-rpi-dkms-git
-pkgver=VERSION
+pkgver=0.r54.21af4bf
 pkgrel=1
 pkgdesc="Realtek 802.11n WLAN Adapter Linux driver for rtl8812au (patched for the Raspberry Pi)"
 arch=('armv7h')
