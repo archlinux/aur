@@ -1,6 +1,6 @@
 # Maintainer: Daniel Milde <daniel at milde dot cz>
 pkgname=pecl-http
-pkgver=2.5.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Extended HTTP Support"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('BSD')
 depends=('php' 'pecl-raphf' 'pecl-propro')
 makedepends=('autoconf')
 source=(http://pecl.php.net/get/pecl_http-${pkgver}.tgz)
-sha256sums=('068fff6dcf161a91c9abff6f70a924e540e44d63e5224f5c1191b8c89b7ddc89')
+sha256sums=('710aaadf6cd0c93e1de21d77855c6b2f851e9fd41f84f1c508b113e5060a46df')
 install=http.install
 
 build() {
