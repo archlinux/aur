@@ -1,0 +1,5 @@
+src/
+pkg/
+*.swp
+*.tar.xz
+hexdino/
