@@ -1,8 +1,8 @@
 # Maintainer: Moviuro <moviuro+archlinux@gmail.com>
 
 pkgname=butter
-pkgver=9
-pkgrel=2
+pkgver=10
+pkgrel=1
 pkgdesc="butter is a btrfs snapshot manager"
 arch=('any')
 license=('custom:WTFPL')
@@ -11,26 +11,10 @@ depends=('bash' 'btrfs-progs')
 optdepends=('systemd: human-friendly escaped names')
 backup=('etc/butterrc')
 source=("https://github.com/moviuro/butter/archive/${pkgver}.tar.gz")
-sha256sums=('1b850ffd989426dd2a2e2af3f66dab74f99bb9c1b37e0cad3f776cbac641d085')
+sha256sums=('658b2a8e64e212f50103b176dd1dc9e2b99bea1fa185dff6b7494a7aa3672dd9')
 
 package() {
-  install -Dm 0555 "${srcdir}/${pkgname}-${pkgver}/butter" \
-                   "${pkgdir}/usr/bin/butter"
-
-  install -dm 0755 "${pkgdir}/usr/lib/butter"
-
-  install -m  0444 "${srcdir}/${pkgname}-${pkgver}/lib-btr/"* \
-                   "${pkgdir}/usr/lib/butter"
-
-  install -Dm 0644 "${srcdir}/${pkgname}-${pkgver}/butterrc" \
-                   "${pkgdir}/etc/butterrc"
-
-  install -Dm 0444 "${srcdir}/${pkgname}-${pkgver}/butter.8" \
-                   "${pkgdir}/usr/share/man/man8/butter.8"
-
-  install -Dm 0444 "${srcdir}/${pkgname}-${pkgver}/butterrc.5" \
-                   "${pkgdir}/usr/share/man/man5/butterrc.5"
-
-  install -Dm 0444 "${srcdir}/${pkgname}-${pkgver}/LICENSE" \
-                   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd ${srcdir}/${pkgname}-${pkgver}
+  make PREFIX=${pkgdir}/usr ETCDIR=${pkgdir}/etc MANDIR=${pkgdir}/usr/share/man \
+    LICENSEDIR=${pkgdir}/usr/share/licenses install
 }
