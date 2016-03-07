@@ -11,11 +11,11 @@ NATIVE_OPTIMIZATIONS=n
 
 
 pkgname=powder-toy
-_sver=90
-_mver=2
-_build=322
+_sver=91
+_mver=0
+_build=324
 pkgver=${_sver}.${_mver}
-pkgrel=4
+pkgrel=1
 pkgdesc="Desktop version of the classic falling sand physics sandbox, simulates air pressure, velocity & heat!"
 arch=(i686 x86_64)
 depends=('sdl' 'lua52' 'fftw' 'bzip2' 'zlib')
@@ -23,7 +23,7 @@ makedepends=('python2' 'scons')
 url="http://powdertoy.co.uk/"
 license=('GPL3')
 source=(http://github.com/FacialTurd/The-Powder-Toy/archive/v${_sver}.${_mver}.${_build}.tar.gz
-	${pkgname}.desktop ${pkgname}.png lua-5.2-arch.patch)
+	${pkgname}.desktop ${pkgname}.png)
 
 prepare() {
   cd "${srcdir}/The-Powder-Toy-${_sver}.${_mver}.${_build}"
@@ -32,7 +32,6 @@ prepare() {
   #Also I do not know the logic behind the generated snapshotids.
   sed 's|//#define I|#define I|' -i src/Config.h
 
-  patch --binary -p0 -i ../lua-5.2-arch.patch
 }
 
 build() {
@@ -57,7 +56,8 @@ build() {
 
   msg2 "building powder with options with following extra flags ${_xarch} --${_ssever} ${_native}"
   scons --lin ${_xarch} --release --${_ssever} ${_native} --save-version=${_sver} \
-	--minor-version=${_mver} --build-number=${_build} ${MAKEFLAGS}
+	--minor-version=${_mver} --build-number=${_build} ${MAKEFLAGS} \
+    --lua52
 
   mv build/{powder*,binary}
 }
@@ -68,7 +68,6 @@ package() {
   install -Dm 644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
 
-md5sums=('0eec9ce14da705b1525e9c641460cc2c'
+md5sums=('ae877df14a7a5167008e864a64a74bb7'
          '8901d334c53c04738cbd3518c80fa37c'
-         'bb40bf9c2fa3982e2872b5d32de3b006'
-         '6d17fa966ac45f42e51eb574bcd08881')
+         'bb40bf9c2fa3982e2872b5d32de3b006')
