@@ -5,7 +5,7 @@ pkgname=gogs
 _pkgname=${pkgname}
 pkgver=0.9.0
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc="Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://gogs.io/"
@@ -84,7 +84,7 @@ build() {
 
   msg2 "Build program"
   go fix
-  go build -x -tags='sqlite'
+  go build -x -tags='sqlite tidb pam cert'
 }
 
 package() {
