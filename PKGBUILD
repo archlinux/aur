@@ -2,6 +2,7 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgbase=xorg-server-rpi
+_pkgbase=xorg-server
 pkgname=('xorg-server-rpi' 'xorg-server-xephyr-rpi' 'xorg-server-xdmx-rpi' 'xorg-server-xvfb-rpi' 'xorg-server-xnest-rpi' 'xorg-server-xwayland-rpi' 'xorg-server-common-rpi' 'xorg-server-devel-rpi')
 pkgver=1.18.1
 pkgrel=3
@@ -16,7 +17,7 @@ makedepends=('pixman' 'libx11' 'mesa' 'mesa-libgl' 'xf86driproto' 'xcmiscproto' 
              'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'glproto' 'dri2proto' 'libgcrypt' 'libepoxy'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms' 'dri3proto'
              'libxshmfence' 'libunwind')
-source=(${url}/releases/individual/xserver/${pkgbase}-${pkgver}.tar.bz2{,.sig}
+source=(${url}/releases/individual/xserver/${_pkgbase}-${pkgver}.tar.bz2{,.sig}
         xvfb-run
         xvfb-run.1
         Fix-XineramaQueryScreens-for-reverse-prime.patch)
