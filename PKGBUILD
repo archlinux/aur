@@ -3,7 +3,7 @@
 
 pkgname=realtimeconfigquickscan-git
 pkgver=r16.c362fbb
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux configuration checker for systems to be used for real-time audio"
 arch=('any')
 url="https://github.com/raboof/realtimeconfigquickscan"
