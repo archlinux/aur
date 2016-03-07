@@ -24,13 +24,21 @@ package_python-recommonmark() {
   depends=('python-docutils')
 
   cd "${srcdir}/recommonmark-$pkgver"
-  python setup.py install --root=${pkgdir}
+  python setup.py install --root="${pkgdir}"
 }
 
 package_python2-recommonmark() {
   depends=('python2-docutils')
 
   cd "${srcdir}/recommonmark-$pkgver"
-  python2 setup.py install --root=${pkgdir}
+  python2 setup.py install --root="${pkgdir}"
+  mv "${pkgdir}"/usr/bin/cm2html "${pkgdir}"/usr/bin/cm2html2
+  mv "${pkgdir}"/usr/bin/cm2latex "${pkgdir}"/usr/bin/cm2latex2
+  mv "${pkgdir}"/usr/bin/cm2man "${pkgdir}"/usr/bin/cm2man2
+  mv "${pkgdir}"/usr/bin/cm2pseudoxml "${pkgdir}"/usr/bin/cm2pseudoxml2
+  mv "${pkgdir}"/usr/bin/cm2xetex "${pkgdir}"/usr/bin/cm2xetex2
+  mv "${pkgdir}"/usr/bin/cm2xml "${pkgdir}"/usr/bin/cm2xml2
+
 }
+
 
