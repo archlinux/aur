@@ -13,7 +13,7 @@ optdepends=('python-gobject: GUI support'
 makedepends=('git')
 options=('!strip')
 install=numix-folders.install
-source=("numix-folders::git+https://github.com/numixproject/numix-folders")
+source=("git+https://github.com/numixproject/numix-folders")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -23,7 +23,6 @@ pkgver() {
 
 prepare() {
   cd numix-folders
-  rm -rf .git LICENSE README.md
   echo "TryExec=gksudo" >> numix-folders.desktop
 }
 

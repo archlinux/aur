@@ -11,7 +11,7 @@ pkgbase = numix-folders-git
 	optdepends = python-gobject: GUI support
 	optdepends = gksu: GUI support
 	options = !strip
-	source = numix-folders::git+https://github.com/numixproject/numix-folders
+	source = git+https://github.com/numixproject/numix-folders
 	sha256sums = SKIP
 
 pkgname = numix-folders-git
