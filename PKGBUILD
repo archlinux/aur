@@ -2,10 +2,10 @@
 # Contributor: AndyRTR <andyrtr@archlinux.org>
 
 pkgname=gsdjvu
-pkgver=1.7
-_gsver=9.14
+pkgver=1.9
+_gsver=9.18
 _fontsver=8.11
-pkgrel=4
+pkgrel=1
 pkgdesc="Very efficient way of converting PostScript and PDF documents into DjVu"
 arch=(i686 x86_64)
 # This program mixes GPL and CPL licensed codes, so the binaries are not redistributable.
@@ -19,9 +19,9 @@ source=("http://downloads.sourceforge.net/sourceforge/djvu/gsdjvu-$pkgver.tar.gz
 noextract=("ghostscript-${_gsver}.tar.bz2"
 	"ghostscript-fonts-std-${_fontsver}.tar.gz")
 options=('!libtool' '!makeflags')
-md5sums=('e0e278b6a99cde6634a2f5f4ee7a7eca'
-         '75f2e8ab8891d052ade9b64eb4eb5294'
-         '6865682b095f8c4500c54b285ff05ef6')
+sha1sums=('f98eed58ecc161ade57a5c067277b2e9d631b2b3'
+          '388fea50a38e422a4c6ff27c184491bf5ecb96e1'
+          '2a7198e8178b2e7dba87cb5794da515200b568f5')
 
 build() {
     cd "$pkgname-$pkgver"
