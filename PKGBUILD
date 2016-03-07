@@ -1,7 +1,7 @@
 #Maintainer: M0Rf30
 
 pkgname=openbazaard
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
 arch=(any)
@@ -63,6 +63,6 @@ package(){
   rm -rf $pkgdir/var/lib/${pkgname}/{.git*,.eslint*,.travis*}
 }
 
-md5sums=('15e848fb389ee4b04fb231c3e1ce7948'
+md5sums=('a81d28c6aea9701effcd48c41bf382fe'
          'df247302f02ad1af79e009fa75ced4bc'
          'd66496060ae2a28c6f755a1fb29e3f37')
