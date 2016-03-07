@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /usr/share/gochiusearch/Gochiusearch.exe
+exec mono /usr/share/gochiusearch/Gochiusearch.exe

@@ -1,7 +1,7 @@
 # Maintainer: Jiachen Yang <farseerfc@gmail.com>
 pkgname=gochiusearch
 pkgver=1.1.5902.28922
-pkgrel=1
+pkgrel=2
 pkgdesc="Search by image of gochiusa"
 arch=(any)
 url="https://github.com/ksasao/Gochiusearch"
@@ -11,7 +11,7 @@ makedepends=('git')
 source=("gochiusearch::git+https://github.com/ksasao/Gochiusearch.git#commit=5370cb326177f3e15cdbcf07ecc52fb80eb56c82"
         "gochiusearch.sh")
 sha512sums=('SKIP'
-            '5c0b0fe8ecf0d1c876ed8eb7d9df7a67480145f9f197bfa79cc836ad9b60b5c09a2a1724425773450a1b9c575f2b7d2e8db5f1ad38dfe3c823fa155245c419e7')
+            'f92c35a18c1c040d63ea5cfb371511d476a20a9a0560b3068c2f0da78d46ea2a72b3e33160571b83223942f3d6f78befe29d2b677b8023a0c9265759d718f6a8')
 
 build() {
   cd "$srcdir/gochiusearch/src/"
