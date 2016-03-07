@@ -1,6 +1,6 @@
 pkgname=sflock-git
-pkgver=r18.5785cfa
-pkgrel=1
+pkgver=r19.1bda0e6
+pkgrel=2
 pkgdesc="A simple screen locker for X"
 arch=('i686' 'x86_64')
 url="https://github.com/benruijl/sflock"
