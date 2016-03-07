@@ -1,7 +1,7 @@
 # Maintainer: grimi <grimi at poczta dot fm>
 
 pkgname=libxmp
-pkgver=4.3.11
+pkgver=4.3.12
 pkgrel=1
 pkgdesc="Library that supports over 90 module formats (Amiga, Atari, ..)"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://xmp.sourceforge.net/"
 license=('GPL')
 depends=('glibc')
 source=("http://download.sourceforge.net/project/xmp/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('70d97730ea39144b1ee0421275130674')
+md5sums=('3ab8ebbb15af8931bf953c0594be306e')
 
 build() {
   cd $pkgname-$pkgver
