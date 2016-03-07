@@ -13,8 +13,8 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/kodi-pvr/$_gitname"
 license=('GPL')
 groups=('kodi-addons')
-makedepends=('cmake' 'kodi-platform' 'libplatform')
-depends=('kodi>=16.0')
+makedepends=('cmake' 'kodi-platform' 'libplatform-legacy')
+depends=('kodi')
 source=("git+https://github.com/kodi-pvr/${_gitname}.git#${_gitver}")
 md5sums=('SKIP')
 
