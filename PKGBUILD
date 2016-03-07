@@ -15,7 +15,9 @@ install=google-play-music-desktop-player-git.install
 source=("git+https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-.git"
         "google-play-music-desktop-player.desktop"
         "google-play-music-desktop-player-git.install")
-md5sums=('SKIP')
+md5sums=('SKIP'
+         '5a1341649aec0a93ff0f893cadc118f3'
+         'e297b473f8fd1b6f26642da1d7206123')
 
 pkgver() {
   cd "$srcdir/$_name"
