@@ -3,15 +3,18 @@
 pkgname=google-play-music-desktop-player-git
 _name=Google-Play-Music-Desktop-Player-UNOFFICIAL-
 pkgver=3.0.0.45.gba5539f
-pkgrel=1
+pkgrel=3
 pkgdesc="A beautiful cross platform Desktop Player for Google Play Music."
 arch=('i686' 'x86_64')
 url="http://www.googleplaymusicdesktopplayer.com"
 license=('MIT')
-depends=('libappindicator-gtk3')
+depends=('libnotify' 'alsa-lib' 'gconf' 'gtk2' 'nss')
 makedepends=('nodejs' 'electron' 'npm' 'git')
 optdepends=('gnome-keyring' 'lsb-release')
-source=("git+https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-.git")
+install=google-play-music-desktop-player-git.install
+source=("git+https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-.git"
+        "google-play-music-desktop-player.desktop"
+        "google-play-music-desktop-player-git.install")
 md5sums=('SKIP')
 
 pkgver() {
@@ -32,10 +35,10 @@ package() {
   cd "$pkgdir"
 
   # remarks: is there a way to keep npm from building for both architectures?
-  if [ $CARCH="x86_64" ]
+  if [ $CARCH = "x86_64" ]
   then
     dist_dir="$srcdir/$_name/dist/Google Play Music Desktop Player-linux-x64"
-  elif [ $CARCH="i686" ]
+  elif [ $CARCH = "i686" ]
   then
     dist_dir="$srcdir/$_name/dist/Google Play Music Desktop Player-linux-ia32"
   fi
@@ -54,14 +57,5 @@ package() {
   # link binary
   ln -s "/usr/share/google-play-music-desktop-player/Google Play Music Desktop Player" "usr/bin/google-play-music-desktop-player"
   # create desktop entry
-  echo "[Desktop Entry]
-Name=Google Play Music Desktop Player
-Comment=An electron wrapper for Google Play Music
-GenericName=Google Play Music Desktop Player
-Exec=google-play-music-desktop-player %U
-Icon=google-play-music-desktop-player
-Type=Application
-StartupNotify=true
-Categories=GNOME;GTK;Utility;
-MimeType=text/plain;" > usr/share/applications/google-play-music-desktop-player.desktop
+  cp $srcdir/google-play-music-desktop-player.desktop usr/share/applications/
 }
