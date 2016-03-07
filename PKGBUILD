@@ -3,8 +3,8 @@
 # Contributor: kusakata <shohei atmark kusakata period com>
 
 pkgname=openspades-git
-pkgver=0.0.12.84.g355d1f2
-pkgrel=2
+pkgver=0.0.12.86.g86de403
+pkgrel=3
 pkgdesc="A clone of Voxlap Ace of Spades 0.75 (git version)"
 arch=('i686' 'x86_64')
 url="https://github.com/yvt/openspades"
@@ -14,17 +14,8 @@ makedepends=('cmake' 'git' 'unzip' 'wget')
 provides=('openspades')
 conflicts=('openspades')
 install=openspades.install
-source=("$pkgname"::'git+https://github.com/yvt/openspades.git'
-        'openspades.patch')
-md5sums=('SKIP'
-         'f8b429ee14d92598fd684fcf4ce3097e')
-
-prepare() {
-  # Note: this being the git version, possibly soon be fixed/modified upstream and patch becomes obsolete/invalid
-  #       if patching or building with this patch fails, please notify the package maintainer
-  cd "${srcdir}/${pkgname}"
-  patch -p1 -i ${srcdir}/openspades.patch 
-}
+source=("$pkgname"::'git+https://github.com/yvt/openspades.git')
+md5sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
