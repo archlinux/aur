@@ -3,7 +3,7 @@
 pkgname=xed-git
 pkgver=1.0.3.r8.g057e2aa
 pkgrel=1
-pkgdesc="git version - gtk3 gedit fork. Maintained by Linux Mint developers."
+pkgdesc="git version - gtk3 pluma fork. Maintained by Linux Mint developers."
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('gtksourceview3' 'enchant' 'desktop-file-utils' 'libsm')
