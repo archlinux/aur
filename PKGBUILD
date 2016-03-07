@@ -1,26 +1,28 @@
-# Maintainer: Daniel Nagy <danielnagy at gmx de>
+# Maintainer: eolianoe <eolianoe [at] gmail [DoT] com>
+# Contributor: Daniel Nagy <danielnagy at gmx de>
 # Contributor: grimsock <lord.grimsock at gmail dot com>
 # Contributor: Alucryd <alucryd at gmail dot com>
 
 _pkgname=testng
 pkgname=java-${_pkgname}
-pkgver=6.9.4
-pkgrel=3
+pkgver=6.9.10
+pkgrel=1
 pkgdesc='A testing framework inspired from JUnit and NUnit'
 arch=('any')
 url='http://testng.org/doc/index.html'
 license=('APACHE')
-depends=('java-runtime-common')
-makedepends=("maven")
-source=("https://github.com/cbeust/testng/archive/testng-${pkgver}.zip")
-md5sums=('0f9f67d68e9786fd2d6c6c871ffe6241')
+depends=("java-runtime=7")
+makedepends=("maven" "java-environment=7")
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/cbeust/testng/archive/${pkgver}.tar.gz")
+sha256sums=('2155f0461f6b80433781968b9465627f877ea579086cb4149ca68e5e711d8127')
 
 build() {
-  cd "${srcdir}/${_pkgname}-${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  export JAVA_HOME=/usr/lib/jvm/java-7-openjdk
   mvn package
 }
 
 package() {
-  install -Dm644 "${srcdir}/${_pkgname}-${_pkgname}-$pkgver/target/${_pkgname}-${pkgver}.jar" \
+  install -Dm644 "${srcdir}/${_pkgname}-$pkgver/target/${_pkgname}-${pkgver}-SNAPSHOT.jar" \
     "${pkgdir}/usr/share/java/${_pkgname}/${_pkgname}-${pkgver}.jar"
 }
