@@ -1,9 +1,10 @@
 # $Id$
+# Maintainer: Grey Christoforo <my first name [at] my last name [dot] net>
 
 pkgname=dvdisaster-alpha
 _pkgname=dvdisaster
-pkgver=0.79.3
-pkgrel=2
+pkgver=0.79.5
+pkgrel=1
 pkgdesc="Provides a margin of safety against data loss on CD and DVD media caused by aging or scratches"
 arch=('i686' 'x86_64')
 url="http://www.dvdisaster.com/"
@@ -13,15 +14,12 @@ conflicts=(${_pkgname})
 provides=(${_pkgname})
 options=('!makeflags')
 install=dvdisaster.install
-source=(http://dvdisaster.net/downloads/${_pkgname}-${pkgver}.tar.bz2 buildFix.patch)
-sha1sums=('cfa5c16d75036081b2856f1e84d04ca0f35c2656'
-          'a1028bbe87e7f54a4f24c2a686cdf45890f9069d')
+source=(http://dvdisaster.net/downloads/${_pkgname}-${pkgver}.tar.bz2)
+sha1sums=('23ccf697031280adb5bc3e17a0d5def0421fc28d')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
   sed -i 's/dvdisaster48/dvdisaster/' contrib/dvdisaster.desktop
-  # generated with: diff -Naur dvdisaster-0.79.3 dvdisaster-0.79.3.new > buildFix.patch
-  patch -p1 < ../buildFix.patch
 }
 
 build() {
