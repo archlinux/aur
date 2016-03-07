@@ -13,6 +13,7 @@ dependencies=('python3' 'python-flask' 'python-requests')
 makedepends=('git')
 source=("git+https://github.com/faerbit/campus-ics-feed.git")
 md5sums=("SKIP")
+install="campus-ics-feed-git.install"
 
 pkgver() {
     cd "$srcdir/$_pkgname"
