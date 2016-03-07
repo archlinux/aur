@@ -5,7 +5,7 @@
 
 pkgbase=linux-git
 _srcname=linux
-pkgver=4.5rc6.r0.gfc77dbd
+pkgver=4.5rc7.r0.gf6cede5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -19,7 +19,7 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git'
         "${pkgbase}.preset")
 sha256sums=('SKIP'
             'd402c67f5a7334ac9e242344055ef4ac63fe43a1d8f1cda82eddd59d7242a63e'
-            'de1c20e4b75ea88e61f9296a89e156f4eaa8e44abee3a0d707927d5f86cf3125'
+            '752b1b7ec8fea86a6e10d49c64523a0500397a2a8e00a704333ff39ba4ae2e3f'
             '95fcfdfcb9d540d1a1428ce61e493ddf2c2a8ec96c8573deeadbb4ee407508c7')
 
 _kernelname=${pkgbase#linux}
