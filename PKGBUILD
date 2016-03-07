@@ -19,7 +19,7 @@ depends=('nodejs')
 makedepends=('git' 'npm') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("$pkgname")
 conflicts=("$pkgname" 'gpmdp')
-source=($gitname::'git+https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-.git#branch=master')
+source=($_gitname::'git+https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-.git#branch=master')
 md5sums=('SKIP')
 pkgver() {
     cd "$srcdir/$_gitname"
