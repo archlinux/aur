@@ -1,4 +1,19 @@
-2015-02-24
+2016-03-07
+
+	* V0.9.0
+	Bug fix: Panic when close issue through commit message #2697
+	Bug fix: Panic when create issue with two or more labels using SQLite3 #2700
+	Improvement: Able to test mail settings in admin panel #1531
+	Improvement: Improve issue lable readability #2033
+	Improvement: Add config options for Git operation timeout #2653 #2701 #2704
+	Improvement: Able to delete current avatar of user and organization
+	Features: More refined collaboration access rights #1146
+	Features: Able to create pull requests between branches in same repository #1597
+	Features: Able to checkout pull requests locally #1655
+	Features: Able to delete Wiki page and entire data #2183
+	Others: Add Finnish support
+
+2016-02-24
 
 	* V0.8.43
 	Bug fix: Old activities still visible for repositories that lost access #2148
@@ -19,7 +34,7 @@
 	Features: Support syntax highlight on diff view #2528
 	Features: Support convert mirror repository to regular type #2607
 
-2015-01-30
+2016-01-30
 
 	* V0.8.25
 	Bug fix: Pull request can not change branch when both sides are organizations #2014
