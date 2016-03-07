@@ -1,0 +1,14 @@
+diff -rupN a/extensions/json/server/src/jsonParser.ts b/extensions/json/server/src/jsonParser.ts
+--- a/extensions/json/server/src/jsonParser.ts	2016-02-26 09:16:56.627621647 -0800
++++ b/extensions/json/server/src/jsonParser.ts	2016-02-26 09:17:12.304288787 -0800
+@@ -418,9 +418,9 @@ export class StringASTNode extends ASTNo
+ 	public value: string;
+ 
+ 	constructor(parent: ASTNode, name: string, isKey: boolean, start: number, end?: number) {
++		super(parent, 'string', name, start, end);
+ 		this.isKey = isKey;
+ 		this.value = '';
+-		super(parent, 'string', name, start, end);
+ 	}
+ 
+ 	public getValue(): any {
