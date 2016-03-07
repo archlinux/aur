@@ -105,6 +105,8 @@ build() {
         --add-module=../${_mod2}-${_mod2ver} \
         --add-module=../${_mod3}-${_mod3ver}
 
+    touch ${srcdir}/openssl/.openssl/include/openssl/ssl.h
+
 	make
 }
 
