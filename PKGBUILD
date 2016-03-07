@@ -1,4 +1,4 @@
-# Maintainer: Javier Tia <javier dot tia at gmail dot com>
+# Maintainer: Javier Tiá <javier dot tia at gmail dot com>
 
 pkgname=libmill
 pkgver=1.8
