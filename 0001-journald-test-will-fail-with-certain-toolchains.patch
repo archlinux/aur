@@ -1,0 +1,26 @@
+From fa629e87eea5ac43abe5bedbfb46af6546b9083c Mon Sep 17 00:00:00 2001
+From: Donald Carr <sirspudd@gmail.com>
+Date: Mon, 7 Mar 2016 18:49:57 -0800
+Subject: [PATCH] journald test will fail with certain toolchains
+
+which don't include default system paths
+
+Change-Id: I58043a9c9569e091fac18934cb1a2484cb9f61e2
+---
+ config.tests/unix/journald/journald.pro | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/config.tests/unix/journald/journald.pro b/config.tests/unix/journald/journald.pro
+index ea76564..59f920b 100644
+--- a/config.tests/unix/journald/journald.pro
++++ b/config.tests/unix/journald/journald.pro
+@@ -7,4 +7,6 @@ packagesExist(libsystemd): \
+ else: \
+     PKGCONFIG_PRIVATE += libsystemd-journal
+ 
++# toolchain does not include usr include by default
++INCLUDEPATH *= /usr/include
+ CONFIG -= qt
+-- 
+2.7.2
+

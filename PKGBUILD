@@ -25,7 +25,7 @@ _local_qt5_repo="/opt/dev/src/qtproject/qt5"
 _wayland_compositor=true
 
 pkgver=5.6.0
-pkgrel=10
+pkgrel=11
 
 # PKGBUILD
 _piver=2
@@ -79,7 +79,7 @@ fi
 #end sanity check
 
 if $_static_build || $_skip_web_engine || [[ ${_piver} = "1" ]]; then
-  _device_configure_flags="$_device_configure_flags -skip qtwebengine"
+  _device_configure_flags="$_device_configure_flags -skip qtwebengine -no-icu"
 fi
 
 if $_static_build; then
@@ -91,13 +91,14 @@ if $_build_from_head; then
 fi
 
 if $_wayland_compositor; then
-  _device_configure_flags="$_device_configure_flags -skip qtwayland" 
+  _device_configure_flags="$_device_configure_flags -skip qtwayland"
 fi
 
 build() {
   local _srcdir="${srcdir}/${_source_package_name}"
+  local _basedir="${_srcdir}/qtbase"
   local _bindir="${_srcdir}-build"
-  local _mkspec_dir="${_srcdir}/qtbase/mkspecs/devices/${_mkspec}"
+  local _mkspec_dir="${_basedir}/mkspecs/devices/${_mkspec}"
 
   # Qt tries to do the right thing and stores these, breaking cross compilation
   unset LDFLAGS
@@ -108,17 +109,14 @@ if $_build_from_head; then
   _srcdir="${_local_qt5_repo}"
 fi
 
+  cd ${_srcdir}
+
   # Get our mkspec
   rm -Rf $_mkspec_dir
   cp -r "${srcdir}/mkspecs/${_mkspec}" $_mkspec_dir
 
-  mkdir -p ${_bindir}
-  cd ${_bindir}
-
-  # skipping due to build issues: qtquickcontrols2
   # skipping on principle: qtscript xcb
-  # skipping because of the target in question: widgets qtwebchannel
-  # TODO: qtwebengine, a little bulky but useful
+  # skipping because of the target in question: widgets
 
   # Too bleeding big
   # -developer-build \
@@ -127,22 +125,33 @@ fi
   # Chromium requires python2 to be the system python on your build host
   # I literally symlink /usr/bin/python to /usr/bin/python2 on arch
 
-  # patch
+  # build qtwebengine with our mkspec
   local _webenginefileoverride="${_srcdir}/qtwebengine/tools/qmake/mkspecs/features/functions.prf"
   sed -i "s/linux-clang/linux*/" ${_webenginefileoverride} || exit 1
-  local _reducerelocations="${_srcdir}/qtbase/config.tests/unix/bsymbolic_functions.test"
+
+  # hard coded off, so we have to hard code it on
+  local _reducerelocations="${_basedir}/config.tests/unix/bsymbolic_functions.test"
   sed -i "s/error/warning/" ${_reducerelocations} || exit 1
 
-  # No longer required as we explicitly set CFLAGS = foo in the mkspec
   # Work around our embarresing propensity to stomp on your own tailored build configuration
-  sed -i "s/O[23]/Os/"  ${_srcdir}/qtbase/mkspecs/common/gcc-base.conf || exit 1
+  sed -i "s/O[23]/Os/"  ${_basedir}/mkspecs/common/gcc-base.conf || exit 1
+
+  # incorporate journald fix
+  local _patch_dir=${startdir}
+  cd ${_basedir}
+  patch -p1 < ${_patch_dir}/0001-Search-for-libsystemd-first-fall-back-to-libsystemd-.patch
+  patch -p1 < ${_patch_dir}/0001-journald-test-will-fail-with-certain-toolchains.patch
 
   # end patch
+
+  mkdir -p ${_bindir}
+  cd ${_bindir}
 
   # Breaks in qtwayland
   # -qtnamespace Pi \
 
   ${_srcdir}/configure \
+    -v \
     -qreal float \
     -release \
     -silent \
@@ -158,7 +167,7 @@ fi
     -prefix ${_installprefix} \
     -opengl es2 \
     -egl \
-    -no-icu \
+    -journald \
     \
     -no-widgets \
     -make libs \
@@ -238,8 +247,6 @@ fi
 
   cd ${_libsdir}
   runuser -l ${_packaginguser} -c 'makepkg -d -f' || exit 1
-
-  echo "the libs package for the Raspberry Pi${_piver} is in the ${_packaginguser} home directory awaiting deployment"
 
   mv ${_libsdir}/${_libspkgname}-${pkgver}-${pkgrel}-any.pkg.tar.xz ${startdir}
 }
