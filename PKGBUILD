@@ -21,7 +21,7 @@ depends=(
 
 optdepends=(
             'perl-term-readline-gnu: for better STDIN support'
-            'pkgbuild-introspection-git: support edit of PKGBUILD'
+            'pkgbuild-introspection: support edit of PKGBUILD'
            )
 
 source=('git://github.com/trizen/trizen.git')
