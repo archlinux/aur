@@ -1,9 +1,9 @@
 # Maintainer Musikolo <musikolo {at} hotmail [dot] com>
 
 pkgname=plasma5-applets-system-panel
-pkgver=1.0.0
+pkgver=1.1.0
 pkgdesc="Plasma5 applet that displays a panel with a set of system actions"
-pkgrel=2
+pkgrel=1
 arch=(i686 x86_64)
 url="http://kde-apps.org/content/show.php?content=175309"
 license=(GPL3)
