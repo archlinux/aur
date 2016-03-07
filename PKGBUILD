@@ -1,7 +1,7 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=munge-git
-pkgver=1039.af42a45
+pkgver=1040.1d12405
 pkgrel=1
 pkgdesc="An authentication service for creating and validating credentials. It is designed to be highly scalable for use in an HPC cluster environment."
 arch=('i686' 'x86_64')
@@ -42,9 +42,6 @@ package() {
 	# Remove obsolete init script (Arch Linux uses SystemD)
 	rm -f $pkgdir/etc/init.d/munge
 	rmdir $pkgdir/etc/init.d
-
-	# /usr/sbin is deprecated in Arch Linux
-	sed -i 's/\/usr\/sbin/\/usr\/bin/g' $pkgdir/usr/lib/systemd/system/munge.service
 
 	# It is bad practice to put package-files in /run
 	# The dir /var/run/munge will be created in post_install, see .install
