@@ -7,8 +7,8 @@ pkgdesc="TagSpaces is an open source personal data manager. It helps you organiz
 arch=("i686" "x86_64")
 url="http://tagspaces.org"
 license=("AGPL")
-depends=("node-webkit" "npm")
-makedepends=("gendesk")
+depends=("node-webkit")
+makedepends=("gendesk" "npm")
 sha256sums=('00665595b6b2b63b7792271219ac88808bcc5b2cd41cbefd59af7e92b8010d6c'
             '5b7605288e221a852a9d7138efbccf15ca524607074b663527ce32e159a49596')
 source=("https://github.com/uggrock/tagspaces/archive/v${pkgver}.tar.gz"
