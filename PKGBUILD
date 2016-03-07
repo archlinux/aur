@@ -71,7 +71,9 @@ prepare() {
   get_gopm "$GOPATH/src/${_gourl}/.gopmfile" "$GOPATH/src"
 
 #  msg2 "Download missing dependencies"
-#  go_get golang.org/x/crypto "$GOPATH/src/golang.org/x/crypto"
+#  go_get github.com/go-xorm/tidb "$GOPATH/src/github.com/go-xorm/tidb"
+#  go_get github.com/ngaut/log "$GOPATH/src/github.com/ngaut/log"
+#  go_get github.com/pingcap/tidb "$GOPATH/src/github.com/pingcap/tidb"
 
   # Execute patch
   msg2 "Execute patches"
@@ -84,7 +86,7 @@ build() {
 
   msg2 "Build program"
   go fix
-  go build -x -tags='sqlite tidb pam cert'
+  go build -x -tags='sqlite pam cert'
 }
 
 package() {
