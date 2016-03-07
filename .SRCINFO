@@ -1,6 +1,6 @@
 pkgbase = pecl-raphf
 	pkgdesc = Resource and persistent handles factory
-	pkgver = 1.0.4
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = http://pecl.php.net/package/raphf
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = pecl-raphf
 	license = BSD
 	makedepends = autoconf
 	depends = php
-	source = http://pecl.php.net/get/raphf-1.0.4.tgz
-	md5sums = e5e7e5c3954a5fd31c034c347f22c4a5
+	source = http://pecl.php.net/get/raphf-2.0.0.tgz
+	md5sums = bc465eb5caa9d0f09cced121a8ac2e8e
 
 pkgname = pecl-raphf
 

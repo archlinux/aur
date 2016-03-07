@@ -1,6 +1,6 @@
 # Contributor: Daniel Milde <info@milde.cz>
 pkgname=pecl-raphf
-pkgver=1.0.4
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Resource and persistent handles factory"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('BSD')
 depends=('php')
 makedepends=('autoconf')
 source=(http://pecl.php.net/get/raphf-${pkgver}.tgz)
-md5sums=('e5e7e5c3954a5fd31c034c347f22c4a5')
+md5sums=('bc465eb5caa9d0f09cced121a8ac2e8e')
 
 build() {
   cd ${srcdir}/raphf-${pkgver}
