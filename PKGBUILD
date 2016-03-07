@@ -1,9 +1,9 @@
-# Maintainer: CrocoDuck <crocoduck.oducks@gmail.com>
+# Maintainer: CrocoDuck <crocoduck dot oducks at gmail dot com>
 # Contributor : speps <speps at aur dot archlinux dot org>
 
 pkgname=distrho-vst-git
 pkgver=r337.75bbdc9
-pkgrel=1
+pkgrel=2
 pkgdesc="DISTRHO VST audio plugins ports"
 arch=('i686' 'x86_64')
 url="http://distrho.sourceforge.net/"
@@ -29,7 +29,7 @@ build() {
 
 package() {
 	cd "$pkgname"/bin/vst
-  for i in *; do
-    install -D "$i" ""$pkgdir"/usr/lib/vst/$i"
-  done
+	for i in *; do
+		install -D "$i" ""$pkgdir"/usr/lib/vst/$i"
+	done
 }
