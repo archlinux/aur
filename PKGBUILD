@@ -70,7 +70,7 @@ build() {
   make DESTDIR=${srcdir}/fakeinstall install
 }
 
-package_libva-mesa-driver() {
+package_libva-mesa-driver-rpi() {
   pkgdesc="VA-API implementation for gallium"
   depends=('libdrm' 'libx11' 'llvm-libs' 'expat' 'elfutils')
   provides=('libva-mesa-driver')
@@ -83,7 +83,7 @@ package_libva-mesa-driver() {
   install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/libva-mesa-driver/"
 }
                
-package_mesa() {
+package_mesa-rpi() {
   pkgdesc="an open-source implementation of the OpenGL specification"
   depends=('libdrm' 'wayland' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'systemd' 'elfutils' 
            'libomxil-bellagio' 'expat' 'libgcrypt' 'libtxc_dxtn' 'llvm-libs')
@@ -123,7 +123,7 @@ package_mesa() {
   install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/mesa/"
 }
 
-package_mesa-libgl() {
+package_mesa-libgl-rpi() {
   pkgdesc="Mesa 3-D graphics library"
   depends=('mesa')
   provides=('libgl' 'mesa-libgl')
