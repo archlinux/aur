@@ -1,4 +1,0 @@
-post_install() {
-    echo "==> For instructions on how to activate the plugin see:"
-    echo "==> <https://github.com/nurupo/vlc-pause-click-plugin/tree/master/vlc-2.2.x%2B#usage>"
-}
