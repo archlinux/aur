@@ -3,23 +3,22 @@
 # Contributor: Dany Martineau <dany.luc.martineau at gmail.com>
 # Contributor: Dylon Edwards <deltaecho@archlinux.us>
 pkgname=kcm-wacomtablet
-pkgver=2.1.0
-pkgrel=2
+pkgver=3.0.0~beta1
+pkgrel=1
 pkgdesc="KDE GUI for the Wacom Linux Drivers"
 arch=('i686' 'x86_64')
 url="http://kde-apps.org/content/show.php/wacom+tablet?content=114856"
 license=('GPL2')
-depends=('kdebase-workspace' 'xf86-input-wacom')
-makedepends=('cmake' 'automoc4')
-source=("http://kde-apps.org/CONTENT/content-files/114856-wacomtablet-${pkgver}.tar.xz" \
-        "set_cmake_min_req.patch")
-md5sums=('fb2f3eefa6ac7e3c7b07a42ea4f6624c'
-         '74f33a2c84571709b6a2c703826ab493')
+depends=('plasma-framework' 'xf86-input-wacom')
+makedepends=('git' 'cmake' 'extra-cmake-modules' 'kdoctools' 'kdelibs4support')
+source=("http://kde-apps.org/CONTENT/content-files/114856-wacomtablet-${pkgver}.tar.xz")
+md5sums=('95d1d29063d6de2ab0881c33e8eacb05')
 
 prepare() {
   cd "$srcdir/wacomtablet-$pkgver"
 
-  patch -Np1 <  "$srcdir/set_cmake_min_req.patch"
+  sed -i "s|(MacroOptionalAddSubdirectory)|(ECMOptionalAddSubdirectory)|" CMakeLists.txt
+  sed -i "s|macro_optional_add_subdirectory|ECM_OPTIONAL_ADD_SUBDIRECTORY|" CMakeLists.txt
 }
 
 build() {
@@ -27,7 +26,8 @@ build() {
 
   cmake . \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=Release \
+    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
   make
 }
 
