@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Simple webserver which serves the ICS calendar file from FH Aachen Campus"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.org/faerbit/campus-ics-feed"
-backup=("etc/${_pkgname}.conf")
+backup=("etc/${_pkgname}.ini")
 license=('MIT')
 dependencies=('python3' 'python-flask' 'python-requests')
 makedepends=('git')
@@ -24,8 +24,8 @@ package() {
     # License
     install -D -m644 LICENSE.md "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
     # Configuration
-    install -D -m640 example.ini "$pkgdir/etc/${_pkgname}.conf"
-    chown root:http "$pkgdir/etc/${_pkgname}.conf"
+    install -D -m640 example.ini "$pkgdir/etc/${_pkgname}.ini"
+    chown root:http "$pkgdir/etc/${_pkgname}.ini"
     # Webapp
     install -D -m644 server.py "$pkgdir/usr/share/webapps/${_pkgname}/server.py"
     chown -R root:http "$pkgdir/usr/share/webapps/${_pkgname}"
