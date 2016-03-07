@@ -2,7 +2,7 @@
 # Contributor: Sébastien Piccand <sebcactus gmail com>
 pkgname=sudoku-savant
 pkgver=1.3
-pkgrel=4
+pkgrel=5
 pkgdesc="A GUI application to solve and generate sudoku puzzles through logical means"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/sudoku-savant/"
@@ -11,7 +11,7 @@ depends=('gtk2')
 #source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.bz2)
 source=(http://www.mirrorservice.org/sites/downloads.sourceforge.net/s/su/sudoku-savant/\
 sudoku-savant/sudoku-savant-1.3/sudoku-savant-1.3.tar.bz2)
-md5sums=('668e77f35c6e8106da860a88c71f3c73')
+sha1sums=('6bbe3e0038457fb8f66bec340653c73ca109f990')
 
 prepare() {
 	cd "$srcdir"/$pkgname-$pkgver
@@ -25,7 +25,7 @@ prepare() {
 
 build() {
 	cd "$srcdir"/$pkgname-$pkgver
-	./configure --prefix=/usr
+	CXXFLAGS="-D_GLIBCXX_USE_CXX11_ABI=0" ./configure --prefix=/usr
 	make
 }
 
