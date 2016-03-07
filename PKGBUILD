@@ -1,8 +1,8 @@
 # Maintainer: Peter Krauß <ptrxyz@gmail.com>
 
-pkgname=trayer-srg
+pkgname=trayer-srg-git
 _gitname=trayer-srg
-pkgver=r106.fcb92d6
+pkgver=r107.a5a0766
 pkgrel=1
 pkgdesc="trayer fork with multi monitor support, cleaned up codebase and other fancy stuff (git-version)"
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ depends=('gtk2')
 makedepends=('git')
 provides=('trayer')
 conflicts=('trayer')
-source=("git://github.com/sargon/trayer-srg.git")
+source=("trayer-srg::git+http://github.com/sargon/trayer-srg.git")
 md5sums=("SKIP")
 
 pkgver() {
