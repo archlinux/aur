@@ -1,8 +1,8 @@
 # Maintainer: Ingo Bürk <admin at airblader dot de>
 # Contributor: Vivien Didelot <vivien+aur@didelot.org>
 pkgname=i3blocks-gaps-git
-pkgver=1.2.r66.g55c9832
-pkgrel=2
+pkgver=1.4.r18.gf0fab94
+pkgrel=1
 pkgdesc='Define blocks for your i3bar status line'
 arch=('i686' 'x86_64')
 url="https://github.com/Airblader/i3blocks-gaps"
