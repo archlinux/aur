@@ -7,14 +7,14 @@
 
 pkgname=paraview
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Parallel Visualization Application using VTK'
 arch=('i686' 'x86_64')
 url='http://www.paraview.org'
 license=('custom')
-depends=('qt5-tools' 'openmpi' 'python2' 'ffmpeg-compat' 'boost' 'cgns'
+depends=('qt5-tools' 'openmpi' 'python2' 'ffmpeg2.8' 'boost' 'cgns' 'glew'
 	 'expat' 'freetype2' 'hdf5' 'libjpeg' 'libxml2' 'libtheora' 'libpng' 'libtiff' 'zlib')
-makedepends=('cmake' 'mesa')
+makedepends=('cmake' 'mesa' 'gcc-fortran')
 optdepends=('python2-matplotlib: Needed to support equation rendering using MathText markup language'
 	        'python2-numpy: Needed for using some filters such as "Python Calculator"')
 source=("http://paraview.org/files/v${pkgver:0:3}/ParaView-v${pkgver}-source.tar.gz"
@@ -49,7 +49,7 @@ build() {
   # flags to enable system libs
   # add PROTOBUF when http://www.vtk.org/Bug/view.php?id=13656 gets fixed
   local cmake_system_flags=""
-  for lib in EXPAT FREETYPE HDF5 JPEG LIBXML2 OGGTHEORA PNG TIFF ZLIB; do
+  for lib in EXPAT FREETYPE GLEW HDF5 JPEG LIBXML2 OGGTHEORA PNG TIFF ZLIB; do
     cmake_system_flags+="-DVTK_USE_SYSTEM_${lib}:BOOL=ON "
   done
 
@@ -57,13 +57,12 @@ build() {
    local cmake_system_python_flags="-DPYTHON_EXECUTABLE:PATH=/usr/bin/python2 \
    	 -DPYTHON_INCLUDE_DIR:PATH=/usr/include/python2.7 -DPYTHON_LIBRARY:PATH=/usr/lib/libpython2.7.so"
 
-   # flags to use ffmpeg-compat instead of ffmpeg until
-   # http://paraview.org/Bug/view.php?id=14215 gets fixed
-   local ffmpeg_compat_flags="-DFFMPEG_INCLUDE_DIR:PATH=/usr/include/ffmpeg-compat \
-   	 -DFFMPEG_avcodec_LIBRARY=/usr/lib/ffmpeg-compat/libavcodec.so \
-   	 -DFFMPEG_avformat_LIBRARY=/usr/lib/ffmpeg-compat/libavformat.so \
-   	 -DFFMPEG_avutil_LIBRARY=/usr/lib/ffmpeg-compat/libavutil.so \
-   	 -DFFMPEG_swscale_LIBRARY=/usr/lib/ffmpeg-compat/libswscale.so"
+   # flags to use ffmpeg2.8
+   local ffmpeg_compat_flags="-DFFMPEG_INCLUDE_DIR:PATH=/usr/include/ffmpeg2.8 \
+   	 -DFFMPEG_avcodec_LIBRARY=/usr/lib/ffmpeg2.8/libavcodec.so \
+   	 -DFFMPEG_avformat_LIBRARY=/usr/lib/ffmpeg2.8/libavformat.so \
+   	 -DFFMPEG_avutil_LIBRARY=/usr/lib/ffmpeg2.8/libavutil.so \
+   	 -DFFMPEG_swscale_LIBRARY=/usr/lib/ffmpeg2.8/libswscale.so"
 
    # enable when http://paraview.org/Bug/view.php?id=12852 gets fixed:
    #-DCMAKE_SKIP_RPATH:BOOL=YES \
@@ -84,6 +83,7 @@ build() {
    -DQT_HELP_GENERATOR:FILEPATH=/usr/lib/qt/bin/qhelpgenerator \
    -DQT_QMAKE_EXECUTABLE=qmake-qt5 \
    -DVISIT_BUILD_READER_CGNS:BOOL=ON \
+   -DVTK_RENDERING_BACKEND:STRING=OpenGL2 \
    ${cmake_system_flags} \
    ${cmake_system_python_flags} \
    ${ffmpeg_compat_flags} \
