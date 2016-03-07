@@ -1,8 +1,8 @@
-# Maintainde by SplitFire (split7fire at yandex.ru)
+# Maintained by SplitFire (split7fire at yandex.ru)
 
 pkgname=xcursor-chameleon-anthracite
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Chameleon X Cursor Theme (anthracite flavour)"
 arch=('any')
 url="http://www.kde-look.org/content/show.php?content=38459"
