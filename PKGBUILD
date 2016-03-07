@@ -4,9 +4,9 @@
 
 
 pkgname=kokua-secondlife
-pkgver=3.8.6.37336
-_pkgver=3_8_6_37336
-_pkgprever=3.8.6
+pkgver=4.0.1.37934
+_pkgver=4_0_1_37934
+_pkgprever=4.0.1
 
 pkgrel=1
 pkgdesc="An Open Source third party viewer for Second Life® (secondlife), only."
@@ -18,31 +18,26 @@ optdepends=('libpulse: for PulseAudio support' 'alsa-lib: for ALSA support' 'nvi
 replaces=('kokua-bin')
 conflicts=('kokua-bin')
 
-#http://sourceforge.net/projects/kokua.team-purple.p/files/Kokua-${_pkgprever}/Kokua_${_pkgver}_${CARCH}.tar.bz2"
-source_i686=("http://bitbucket.org/kokua/downloads/downloads/Kokua_${_pkgver}_i686.tar.bz2"
+#http://bitbucket.org/kokua/downloads/downloads/Kokua_${_pkgver}_i686.tar.bz2"
+source_i686=("http://sourceforge.net/projects/kokua.team-purple.p/files/Kokua-${_pkgprever}/Kokua_${_pkgver}_i686.tar.txz"
+
              'kokua-secondlife.desktop'
              'kokua-secondlife.launcher')
         
-#"http://sourceforge.net/projects/kokua.team-purple.p/files/Kokua-${_pkgprever}/Kokua_64_${_pkgver}_${CARCH}.tar.bz2"
-source_x86_64=("http://bitbucket.org/kokua/downloads/downloads/Kokua_64_${_pkgver}_x86_64.tar.bz2"
+#"http://bitbucket.org/kokua/downloads/downloads/Kokua_64_${_pkgver}_x86_64.tar.bz2"
+
+source_x86_64=("http://sourceforge.net/projects/kokua.team-purple.p/files/Kokua-${_pkgprever}/Kokua_64_${_pkgver}_x86_64.tar.txz"
 		'kokua-secondlife.desktop'
 		'kokua-secondlife.launcher')
 
-md5sums_i686=('4ae59494ed6d1bea5ae4a1a888e0d850'
+md5sums_i686=('3201aa127045d3af0c2c75b04fc827bf'
               '3893a2c8ae9cb8e2adb4d7c47750029b'
               'e12fd7bd333f4f810dec66f1be17c71c')
-md5sums_x86_64=('279538f9636c538fa4af72231fc02952'
+md5sums_x86_64=('4f1033c19199b35eb0f5b556a958666e'
                 '3893a2c8ae9cb8e2adb4d7c47750029b'
                 'e12fd7bd333f4f810dec66f1be17c71c')
 
 package() {
-# Workaround for http://sourceforge.net/p/team-purple/kokua/tickets/380/
-if [ "$CARCH" = "i686" ]; then
-    rm Kokua_${_pkgver}_$CARCH/lib/lib{pango,harfbuzz,gdk_pixbuf}*
-elif [ "$CARCH" = "x86_64" ]; then
-    rm Kokua_64_${_pkgver}_$CARCH/lib64/lib{pango,harfbuzz,gdk_pixbuf}*
-fi
-
 cd $srcdir
   
 # Rename Data Directory
