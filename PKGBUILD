@@ -20,7 +20,7 @@ _CLANG_DIRNAME="clang+llvm-${_CLANG_VERSION}-x86_64-linux-gnu-ubuntu-14.04"
 _CLANG_FILENAME="${_CLANG_DIRNAME}.tar.xz"
 
 pkgname=vim-youcompleteme-git
-pkgver=1709.94ec3ed
+pkgver=1747.381b213
 pkgver() {
   cd "YouCompleteMe"
   echo $(git rev-list --count master).$(git rev-parse --short master)
@@ -32,27 +32,29 @@ arch=('i686' 'x86_64')
 url='http://valloric.github.com/YouCompleteMe/'
 license=('GPL3')
 groups=('vim-plugins')
-depends=('mono' 'nodejs' 'python2' 'python2-future' 'rust' 'vim')
+depends=('mono' 'nodejs' 'python2' 'rust' 'vim')
 # use system's libclang on non-x86_64 architectures
 [[ "${CARCH}" != 'x86_64' ]] && depends+=('clang')
 makedepends=('cargo' 'cmake' 'git' 'go' 'make' 'mono' 'npm')
-source=('git+https://github.com/Valloric/YouCompleteMe.git'
-        'git+https://github.com/kennethreitz/requests.git'
-        'git+https://github.com/ross/requests-futures.git'
-        'git+https://github.com/Valloric/ycmd.git'
-        'git+https://github.com/bewest/argparse.git'
-        'git+https://github.com/bottlepy/bottle.git'
-        'git+https://github.com/slezica/python-frozendict.git'
-        'git+https://github.com/davidhalter/jedi.git'
-        'git+https://github.com/vheon/JediHTTP.git'
-        'git+https://github.com/Pylons/waitress.git'
-        'git+https://github.com/nsf/gocode.git'
-        'git+https://github.com/Manishearth/godef.git'
-        'git+https://github.com/nosami/OmniSharpServer.git'
-        'git+https://github.com/icsharpcode/NRefactory.git'
-        'git+https://github.com/jbevain/cecil.git'
-        'git+https://github.com/jwilm/racerd.git')
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+source=('git+https://github.com/Valloric/YouCompleteMe.git' #ycm
+        'git+https://github.com/ross/requests-futures.git'  #ycm
+        'git+https://github.com/Valloric/ycmd.git'          #ycm
+        'git+https://github.com/kennethreitz/requests.git'  #ycmd
+        'git+https://github.com/bewest/argparse.git'        #ycmd
+        'git+https://github.com/bottlepy/bottle.git'        #ycmd
+        'git+https://github.com/slezica/python-frozendict.git'    #ycmd
+        'git+https://github.com/PythonCharmers/python-future.git' #ycmd
+        'git+https://github.com/vheon/JediHTTP.git'               #ycmd
+        'git+https://github.com/davidhalter/jedi.git'             #jediHTTP
+        'git+https://github.com/Pylons/waitress.git'              #ycmd,jediHTTP
+        'git+https://github.com/nsf/gocode.git'                   #ycmd
+        'git+https://github.com/Manishearth/godef.git'            #ycmd
+        'git+https://github.com/nosami/OmniSharpServer.git'       #ycmd
+        'git+https://github.com/icsharpcode/NRefactory.git'       #OmniSharpServer
+        'git+https://github.com/jbevain/cecil.git'                #OmniSharpServer
+        'git+https://github.com/jwilm/racerd.git'                 #ycmd
+        )
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
             'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 if [[ "${CARCH}" == 'x86_64' ]]; then
   # use bundled libclang on x86_64
@@ -89,6 +91,7 @@ prepare() {
   git config submodule.third_party/argparse.url "$srcdir/argparse"
   git config submodule.third_party/bottle.url "$srcdir/bottle"
   git config submodule.third_party/frozendict.url "$srcdir/python-frozendict"
+  git config submodule.third_party/python-future.url "$srcdir/python-future"
   git config submodule.third_party/JediHTTP.url "$srcdir/JediHTTP"
   git config submodule.third_party/waitress.url "$srcdir/waitress"
   git config submodule.third_party/gocode.url "$srcdir/gocode"
@@ -173,7 +176,7 @@ package() {
       "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/clang_includes"
   fi
 
-  cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/"{argparse,bottle,frozendict,JediHTTP,requests,tern_runtime,waitress} \
+  cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/"{argparse,bottle,frozendict,JediHTTP,python-future,requests,tern_runtime,waitress} \
     "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/third_party"
 
   cp    "$srcdir/YouCompleteMe/third_party/ycmd/third_party/gocode/gocode" \
