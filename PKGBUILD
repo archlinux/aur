@@ -1,14 +1,14 @@
 # Maintainer: Your Name <ryexander@gmail.com>
 pkgname=airtime
 pkgver=2.5.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open broadcast software for scheduling and station management."
 arch=('i686' 'x86_64')
 url="http://www.sourcefabric.org/en/airtime"
 license=('GPL3')
 groups=()
 depends=('php' 'php-gd' 'php-pear' 'zendframework' 'php-pgsql' 'php-apcu' 'php-apcu-bc'
-         'python' 'python-virtualenv' 'python-pip'
+         'python2' 'python2-virtualenv' 'python2-pip'
          'ocaml-soundtouch' 'ocaml-taglib' 'ocaml-ao' 'ocaml-mad' 'ocaml-camomile'
          'ecasound' 'portaudio' 'libsamplerate' 'vo-aacenc'
          'patch'
@@ -25,7 +25,7 @@ optdepends=('rabbitmq: localy hosted rabbitmq server'
             'postgresql: localy hosted Database server'
             'apache: Apache webserver (webserver needed)'
             'nginx: Nginx webserver (webserver needed)')
-makedepends=('git' 'python' 'python-setuptools')
+makedepends=('git' 'python2' 'python2-setuptools')
 provides=("airtime")
 conflicts=()
 replaces=()
@@ -52,10 +52,7 @@ sha256sums=('ba3ed67f1a60032e1624a021fffa4bb11d9055ddc4c3773b40f334854adf6930'
 
 prepare() {
 	cd "$srcdir/${_pkgsrc_name}"
-  2to3 -w "python_apps/api_clients"
-  2to3 -w "python_apps/media-monitor"
-  2to3 -w "python_apps/pypo"
-  2to3 -w "python_apps/std_err_override"
+  grep -rl '/usr/bin/python' 'python_apps' 'utils' | xargs  sed -i "s%/usr/bin/python%/usr/bin/python2%g"
 }
 #
 # build() {
@@ -118,13 +115,13 @@ package() {
   install -D -m 755 airtime-playout.service "${pkgdir}/usr/lib/systemd/system/airtime-playout.service"
 
   # python apps
-  python "${_pkgsrc_name}/python_apps/std_err_override/setup.py" install \
+  python2 "${_pkgsrc_name}/python_apps/std_err_override/setup.py" install \
       --root="${pkgdir}/" --optimize=1 --install-scripts=/usr/bin
-  python "${_pkgsrc_name}/python_apps/api_clients/setup.py" install \
+  python2 "${_pkgsrc_name}/python_apps/api_clients/setup.py" install \
       --root="${pkgdir}/" --optimize=1 --install-scripts=/usr/bin
-  python "${_pkgsrc_name}/python_apps/media-monitor/setup.py" install \
+  python2 "${_pkgsrc_name}/python_apps/media-monitor/setup.py" install \
       --root="${pkgdir}/" --optimize=1 --install-scripts=/usr/bin
-  python "${_pkgsrc_name}/python_apps/pypo/setup.py" install \
+  python2 "${_pkgsrc_name}/python_apps/pypo/setup.py" install \
       --root="${pkgdir}/" --optimize=1 --install-scripts=/usr/bin
 
 
