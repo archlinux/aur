@@ -5,15 +5,15 @@
 
 pkgbase=python-pysrt
 pkgname=(python-pysrt python2-pysrt)
-pkgver=1.0.1
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Python parser for SubRip (srt) files"
 arch=('any')
 url="https://github.com/byroot/pysrt"
 license=('GPL3')
 makedepends=('python-setuptools' 'python2-setuptools' 'python-chardet' 'python2-chardet')
 source=("https://pypi.python.org/packages/source/p/pysrt/pysrt-${pkgver}.tar.gz")
-md5sums=('2ba064c33026bac4b528063f67bd8ebc')
+md5sums=('223da1e3bc9a67de1a2e3cfaa7d9264d')
 
 prepare() {
   cp -a pysrt-$pkgver{,-py2}
