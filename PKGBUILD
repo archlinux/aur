@@ -1,7 +1,7 @@
 # Maintainer: fsckd <fsckdaemon at gmail dot com>
 
 pkgname=jo-git
-pkgver=r26.4f74287
+pkgver=r31.5d73898
 pkgrel=1
 pkgdesc='A shell command to create JSON'
 arch=('i686' 'x86_64')
@@ -14,12 +14,6 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/jo"
   printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$srcdir/jo"
-  # won't build in Arch otherwise
-  sed -i 's/^\(CFLAGS\)=/\1+=/' Makefile
 }
 
 build() {
