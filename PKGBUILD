@@ -3,19 +3,25 @@
 
 pkgname=cewe-fotobuch
 pkgver=6.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="an offline client for creating photobooks, uploading and ordering them at cewe.de"
 url="http://www.cewe.de/"
 license=("custom:eula")
 depends=('libx11' 'libjpeg' 'curl' 'wget')
 makedepends=('unzip')
 arch=('i686' 'x86_64')
-source=("http://dls.photoprintit.de/download/Data/16523/hps/setup_Mein_CEWE_FOTOBUCH.tgz")
+source=("http://dls.photoprintit.de/download/Data/16523/hps/setup_Mein_CEWE_FOTOBUCH.tgz"
+	'updater.pl')
 install=cewe-fotobuch.install
-md5sums=('9197c2551c471da202de3f0652eba324')
+md5sums=('9197c2551c471da202de3f0652eba324'
+         '4df55a80124dc8555edf799bd566c5de')
 
 _installDir=/usr/share/$pkgname
 _productRename='CEWE Fotobuch'
+
+pkgver() {
+	grep 'my $HPS_VER' $srcdir/install.pl | grep -Po '[\d\.]+'
+}
 
 package() {
 	# put icons and mimetype in the right place
@@ -31,8 +37,11 @@ package() {
 
 	# don't show EULA/ask for confirmation if cewe-fotobuch is already installed
 	which cewe-fotobuch &>/dev/null && update='--update'
+	# keep packages unless updating from within application
+	[[ -z "$_UPDATING" ]] && keepPackages='-k' || update='--upgrade'
 
-	./install.pl $update --installDir=$_installDir -k -v
+	./install.pl $update $keepPackages --installDir=$_installDir -v
+	install -m644 -b updater.pl $_installDir/updater.pl
 	install -D -m644 $srcdir/EULA.txt $pkgdir/usr/share/licenses/$pkgname/EULA.txt
         # pixmap for legacy customised mimetypes
 	install -D -m644 $_installDir/Resources/keyaccount/32.xpm $pkgdir/usr/share/pixmaps/cewe-fotobuch.xpm
