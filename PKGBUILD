@@ -1,28 +1,26 @@
 # Maintainer: josephgbr <rffontenelle@gmail.com>
 
 pkgname=teeworlds-ddnet
-pkgver=9.1
-pkgrel=2
+pkgver=9.2
+pkgrel=1
 pkgdesc="A customized version by DDRaceNetwork of this 2D shooting game"
 arch=('i686' 'x86_64')
-url="http://ddnet.tw"
+url="https://ddnet.tw"
 license=('custom')
 depends=('alsa-lib' 'glu' 'sdl' 'freetype2' 'openssl098')
 makedepends=('gendesk' 'unzip')
 provides=('teeworlds')
 conflicts=('teeworlds')
          # PNG converted from DDNet.ico from https://github.com/ddnet/ddnet
-source=(teeworlds-ddnet.png
-        "$url/skins/zip/database.zip")
+source=(teeworlds-ddnet.png)
 source_i686=("$url/downloads/DDNet-$pkgver-linux_x86.tar.gz"
              "$url/downloads/GraphicsTools-linux_x86.tar.gz")
 source_x86_64=("$url/downloads/DDNet-$pkgver-linux_x86_64.tar.gz"
                "$url/downloads/GraphicsTools-linux_x86_64.tar.gz")
-md5sums=('41465eb3a4ecf2e7f7afe5a5f0c84386'
-         'SKIP')
-md5sums_i686=('83f94cb8622ebf7c90cc58318a45fae7'
+md5sums=('41465eb3a4ecf2e7f7afe5a5f0c84386')
+md5sums_i686=('360999bdcbe4a44798aef0acfb9f4238'
               '566354c3b4510b032af7d891381ee711')
-md5sums_x86_64=('01cc3930abd203d970b5abaa64c6b558'
+md5sums_x86_64=('22f9211764e7cb4683d8a22f3cecb4a8'
                 'fc32ca52ae9be02f68b6c257153dbd37')
 noextract=('database.zip')
 
@@ -33,11 +31,10 @@ prepare() {
   gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" \
     --name 'Teeworlds' --categories 'Game;ArcadeGame'
   
-  # Unzip latest collection of the Skin Database from DDNet site
-  # See: http://ddnet.tw/skins/
-  rm -fR database.dir
+  # Skin database. See more in https://ddnet.tw/skins/
+  rm -fR database.zip database.dir
+  curl -O "$url/skins/zip/database.zip"
   unzip -q database.zip
-  rm -fR database.zip
 }
 
 package() {
@@ -54,13 +51,13 @@ package() {
   install -Dm755 ../tileset_borderfix "$pkgdir"/usr/bin/tileset_borderfix
   install -Dm755 ../tileset_borderrem "$pkgdir"/usr/bin/tileset_borderrem
   install -Dm755 ../tileset_borderset "$pkgdir"/usr/bin/tileset_borderset
-
+  
     # Install data files
   mkdir -p "$pkgdir"/usr/share/teeworlds/data
   cp -r data/* "$pkgdir"/usr/share/teeworlds/data
   
     # Install skins provided by Skins Database
-  cp "$srcdir"/database.dir/* "$pkgdir"/usr/share/teeworlds/data/skins/
+  cp ../database.dir/* "$pkgdir"/usr/share/teeworlds/data/skins/
   find "$pkgdir"/usr/share/teeworlds/data/skins/ -type f -exec chmod 644 {} \;
   
     # Install desktop and icon files
