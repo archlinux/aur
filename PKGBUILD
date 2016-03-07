@@ -4,7 +4,7 @@
 # Contributor: Malte Rabenseifner <malte@zearan.de> 
 
 pkgname=murmur-ice
-pkgver=1.2.14
+pkgver=1.2.15
 pkgrel=1
 pkgdesc="The voice chat application server for Mumble"
 arch=('i686' 'x86_64')
@@ -45,7 +45,7 @@ package() {
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
 
-# vim: sw=2:ts=2 et:
-md5sums=('129262444c4ab8e469014d3c163549a0'
+md5sums=('3052ed64d1f4d4e5bf60095df53c7758'
          'eddea4cdbd0bde4b960a67e16b5d5478'
          'd27a9adcd7561859e7b033046729bc0e')
+# vim: sw=2:ts=2 et:
