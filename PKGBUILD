@@ -6,9 +6,9 @@
 
 pkgname=lib32-rtmpdump
 _pkgname=rtmpdump
-pkgver=2.4.r96.fa8646d
-pkgrel=1
 epoch=1
+pkgver=2.4.r96.fa8646d
+pkgrel=2
 pkgdesc='Tool to download rtmp streams (lib32)'
 arch=('x86_64')
 url='http://rtmpdump.mplayerhq.hu/'
