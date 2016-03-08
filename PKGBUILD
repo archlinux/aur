@@ -20,6 +20,11 @@ provides=('nctelegram')
 source=("git+https://github.com/Nanoseb/ncTelegram.git")
 md5sums=('SKIP')
 
+pkgver() {
+  cd "$_gitname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 package() {
 	cd "$_gitname"
 	python setup.py install --root=${pkgdir}
