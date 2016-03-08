@@ -1,7 +1,7 @@
 pkgbase = moc_notify-git
 	pkgdesc = Notifier for 'Music On Console' using libnotify.
 	pkgver = 1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/daltomi/moc_notify
 	install = moc_notify-git.install
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = moc_notify-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = gcc
+	makedepends = pkg-config
 	depends = libnotify
 	optdepends = moc: Music on Console
 	source = moc_notify-git.install

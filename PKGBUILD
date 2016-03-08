@@ -3,14 +3,14 @@
 pkgbase=moc_notify-git
 pkgname=$pkgbase
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Notifier for 'Music On Console' using libnotify."
 arch=('i686' 'x86_64')
 url='https://github.com/daltomi/moc_notify'
 license=('GPL3')
 depends=('libnotify')
 optdepends=('moc: Music on Console')
-makedepends=('git' 'cmake' 'gcc')
+makedepends=('git' 'cmake' 'gcc' 'pkg-config')
 _gitroot=$url.git
 _gitname=moc_notify
 
