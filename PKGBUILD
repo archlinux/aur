@@ -6,12 +6,12 @@
 _gemname=actionpack
 pkgname=ruby-$_gemname
 pkgver=4.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Web-flow and rendering framework putting the VC in MVC (part of Rails).'
 arch=(any)
 url='http://www.rubyonrails.org'
 license=(MIT)
-depends=(ruby ruby-activesupport ruby-rack ruby-rack-test ruby-actionview)
+depends=(ruby ruby-activesupport ruby-rack ruby-rack-test ruby-actionview ruby-rails-html-sanitizer)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
