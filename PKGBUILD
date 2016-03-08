@@ -1,7 +1,7 @@
 # Maintainer: PitBall
 
 pkgname=ryzom-client
-pkgver=0.12.0.r7346
+pkgver=0.12.0.r7388
 pkgrel=1
 pkgdesc="Ryzom is a Free to Play MMORPG .This version is for playing on an official server"
 arch=('i686' 'x86_64')
@@ -15,11 +15,9 @@ provides=('libnel' 'ryzom' 'ryzomcore')
 _hg_name='ryzomcore'
 install=install                                     #branch=compatibility
 source=( "hg+https://bitbucket.org/ryzom/${_hg_name}#branch=compatibility-develop"
-         'ryzom.sh' 'findlua53bind.patch')
+         'ryzom.sh')
 md5sums=('SKIP'
-         'ff3b18f0c9149ef5a8b7ab74bcb5a59e'
-         'b5b01746543648f646421f190759a886')
-
+         '7f9befd9b4f864938648880375ff423e')
 
 pkgver() {
   cd "$_hg_name"
@@ -38,7 +36,6 @@ prepare() {
     mkdir -p $srcdir/$_hg_name/build
     cd $srcdir/$_hg_name
 
-    patch -Np0 -i $srcdir/findlua53bind.patch
     sed '/o_xml.h/i#include <libxml/tree.h>' -i \
          code/nel/include/nel/logic/logic_state.h 
 
