@@ -3,7 +3,7 @@
  
 pkgname=irpf
 pkgver=2016.1.1
-pkgrel=1
+pkgrel=2
 license=('custom')
  
 arch=(any)
@@ -27,7 +27,7 @@ md5sums=('3c1af085035e558be73a5c80ffd400bc'
          '268c8018f98be22e77d8ca711140292a'
 		 '1393bb1d170a8aeaccfe0c2ee2c818cf')
  
-depends=('java-runtime-common' 'hicolor-icon-theme' 'desktop-file-utils')
+depends=('jre8-openjdk' 'hicolor-icon-theme' 'desktop-file-utils')
 optdepends=('receitanet: Para envio do IRPF')
 install=$pkgname.install
  
