@@ -1,0 +1,188 @@
+# $Id: PKGBUILD 261080 2016-03-06 10:49:04Z pierre $
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: Pierre Schmitz <pierre@archlinux.de>
+# Contributor: Antonio Orefice <kokokork@gmail.com>
+
+pkgname=qt4-revert80e3108
+pkgver=4.8.7
+pkgrel=7
+arch=('i686' 'x86_64')
+url='http://www.qt.io'
+license=('GPL3' 'LGPL' 'FDL' 'custom')
+pkgdesc='A cross-platform application and UI framework'
+depends=('libtiff' 'libpng' 'sqlite' 'ca-certificates' 'dbus'
+        'fontconfig' 'libgl' 'libxrandr' 'libxv' 'libxi' 'alsa-lib'
+        'xdg-utils' 'hicolor-icon-theme' 'desktop-file-utils' 'libmng')
+makedepends=('postgresql-libs' 'mariadb' 'unixodbc' 'cups' 'gtk2' 'libfbclient'
+             'mesa')
+optdepends=('qtchooser: set the default Qt toolkit'
+            'postgresql-libs: PostgreSQL driver'
+            'libmariadbclient: MariaDB driver'
+            'unixodbc: ODBC driver'
+            'libfbclient: Firebird/iBase driver'
+            'libxinerama: Xinerama support'
+            'libxcursor: Xcursor support'
+            'libxfixes: Xfixes support'
+            'icu: Unicode support'
+            'sni-qt: StatusNotifierItem (AppIndicators) support')
+install="${pkgname}.install"
+replaces=('qt<=4.8.4')
+conflicts=('qt')
+_pkgfqn="qt-everywhere-opensource-src-${pkgver}"
+source=("http://download.qt.io/official_releases/qt/4.8/${pkgver}/${_pkgfqn}.tar.gz"
+        'qtconfig-qt4.desktop' 'assistant-qt4.desktop' 'designer-qt4.desktop'
+        'linguist-qt4.desktop' 'qdbusviewer-qt4.desktop'
+        'improve-cups-support.patch'
+        'moc-boost-workaround.patch'
+        'kubuntu_14_systemtrayicon.diff'
+        'kde4-settings.patch'
+        'glib-honor-ExcludeSocketNotifiers-flag.diff'
+        'disable-sslv3.patch'
+        'l-qclipboard_fix_recursive.patch'
+        'l-qclipboard_delay.patch'
+		'revert_80e3108.patch'
+		)
+md5sums=('d990ee66bf7ab0c785589776f35ba6ad'
+         'a16638f4781e56e7887ff8212a322ecc'
+         '8a28b3f52dbeb685d4b69440b520a3e1'
+         '9727c406c240990870c905696a8c5bd1'
+         '0e384663d3dd32abe35f5331c4147569'
+         'b859c5673e5098c39f72b2252947049e'
+         'c439c7731c25387352d8453ca7574971'
+         'da387bde22ae1c446f12525d2a31f070'
+         'a523644faa8f98a73f55c4aa23c114a6'
+         '66dfea63916c8dbf47b23cb012ffdccc'
+         '85679531c8a7310317adfb7002d9f99a'
+         '1803ab6313df762d807678e58fc85f53'
+         '009de09b4e589a7770fba74405656c99'
+         'addc5e88d538ee55e17bd49ba337ca67'
+         '81d3526edfd0be9aa21f56cff7cfc10f')
+
+prepare() {
+  cd ${_pkgfqn}
+
+  # (FS#28381) (KDEBUG#180051)
+  patch -p1 -i "${srcdir}"/improve-cups-support.patch
+
+  # QTBUG#22829
+  patch -p1 -i "${srcdir}"/moc-boost-workaround.patch
+
+  # http://blog.martin-graesslin.com/blog/2014/06/where-are-my-systray-icons/
+  patch -p1 -i "${srcdir}"/kubuntu_14_systemtrayicon.diff
+
+  # FS#45106
+  patch -p0 -i "${srcdir}"/kde4-settings.patch
+
+  # fixes for LibreOffice from the upstream Qt bug tracker FS#46436, FS#41648, FS#39819
+  # https://bugreports.qt.io/browse/QTBUG-37380
+  patch -p1 -i "${srcdir}"/glib-honor-ExcludeSocketNotifiers-flag.diff
+  # https://bugreports.qt.io/browse/QTBUG-34614
+  patch -p0 -i "${srcdir}"/l-qclipboard_fix_recursive.patch
+  # https://bugreports.qt.io/browse/QTBUG-38585
+  patch -p0 -i "${srcdir}"/l-qclipboard_delay.patch
+
+  # React to OpenSSL's OPENSSL_NO_SSL3 define
+  patch -p1 -i "${srcdir}"/disable-sslv3.patch
+
+  # https://bugreports.qt.io/browse/QTBUG-46778
+  patch -p1 -i "${srcdir}"/revert_80e3108.patch
+
+  sed -i "s|-O2|${CXXFLAGS}|" mkspecs/common/{g++,gcc}-base.conf
+  sed -i "/^QMAKE_LFLAGS_RPATH/s| -Wl,-rpath,||g" mkspecs/common/gcc-base-unix.conf
+  sed -i "/^QMAKE_LFLAGS\s/s|+=|+= ${LDFLAGS}|g" mkspecs/common/gcc-base.conf
+
+  cp mkspecs/common/linux{,32}.conf
+  sed -i "/^QMAKE_LIBDIR\s/s|=|= /usr/lib32|g" mkspecs/common/linux32.conf
+  sed -i "s|common/linux.conf|common/linux32.conf|" mkspecs/linux-g++-32/qmake.conf
+}
+
+build() {
+  export QT4DIR="${srcdir}"/${_pkgfqn}
+  export LD_LIBRARY_PATH=${QT4DIR}/lib:${LD_LIBRARY_PATH}
+
+  cd ${_pkgfqn}
+
+  ./configure -confirm-license -opensource \
+    -prefix /usr \
+    -bindir /usr/lib/qt4/bin \
+    -headerdir /usr/include/qt4 \
+    -docdir /usr/share/doc/qt4 \
+    -plugindir /usr/lib/qt4/plugins \
+    -importdir /usr/lib/qt4/imports \
+    -datadir /usr/share/qt4 \
+    -translationdir /usr/share/qt4/translations \
+    -sysconfdir /etc/xdg \
+    -examplesdir /usr/share/doc/qt4/examples \
+    -demosdir /usr/share/doc/qt4/demos \
+    -plugin-sql-{psql,mysql,sqlite,odbc,ibase} \
+    -system-sqlite \
+    -no-phonon \
+    -no-phonon-backend \
+    -no-webkit \
+    -graphicssystem raster \
+    -openssl-linked \
+    -nomake demos \
+    -nomake examples \
+    -nomake docs \
+    -silent \
+    -no-rpath \
+    -optimized-qmake \
+    -no-reduce-relocations \
+    -dbus-linked \
+    -no-openvg
+  make
+}
+
+package() {
+    cd ${_pkgfqn}
+    make INSTALL_ROOT="${pkgdir}" install
+
+    # install missing icons and desktop files
+    install -D -m644 src/gui/dialogs/images/qtlogo-64.png \
+      "${pkgdir}"/usr/share/icons/hicolor/64x64/apps/qt4logo.png
+    install -D -m644 tools/assistant/tools/assistant/images/assistant.png \
+      "${pkgdir}"/usr/share/icons/hicolor/32x32/apps/assistant-qt4.png
+    install -D -m644 tools/assistant/tools/assistant/images/assistant-128.png \
+      "${pkgdir}"/usr/share/icons/hicolor/128x128/apps/assistant-qt4.png
+    install -D -m644 tools/designer/src/designer/images/designer.png \
+      "${pkgdir}"/usr/share/icons/hicolor/128x128/apps/designer-qt4.png
+    for icon in tools/linguist/linguist/images/icons/linguist-*-32.png ; do
+      size=$(echo $(basename ${icon}) | cut -d- -f2)
+      install -D -m644 ${icon} \
+          "${pkgdir}"/usr/share/icons/hicolor/${size}x${size}/apps/linguist-qt4.png
+    done
+    install -D -m644 tools/qdbus/qdbusviewer/images/qdbusviewer.png \
+      "${pkgdir}"/usr/share/icons/hicolor/32x32/apps/qdbusviewer-qt4.png
+    install -D -m644 tools/qdbus/qdbusviewer/images/qdbusviewer-128.png \
+      "${pkgdir}"/usr/share/icons/hicolor/128x128/apps/qdbusviewer-qt4.png
+
+    install -d "${pkgdir}"/usr/share/applications
+    install -m644 "${srcdir}"/{assistant,designer,linguist,qtconfig,qdbusviewer}-qt4.desktop \
+      "${pkgdir}"/usr/share/applications/
+
+    # Useful symlinks for cmake and configure scripts
+    install -d "${pkgdir}"/usr/bin
+    for b in "${pkgdir}"/usr/lib/qt4/bin/*; do
+      ln -s /usr/lib/qt4/bin/$(basename $b) "${pkgdir}"/usr/bin/$(basename $b)-qt4
+    done
+
+    # install license addition
+    install -D -m644 LGPL_EXCEPTION.txt \
+      ${pkgdir}/usr/share/licenses/${pkgname}/LGPL_EXCEPTION.txt
+
+    # Fix wrong libs path in pkgconfig files
+    find "${pkgdir}/usr/lib/pkgconfig" -type f -name '*.pc' \
+      -exec perl -pi -e "s, -L${srcdir}/?\S+,,g" {} \;
+
+    # Fix wrong bins path in pkgconfig files
+    find "${pkgdir}/usr/lib/pkgconfig" -type f -name '*.pc' \
+      -exec sed -i 's|/usr/bin/|/usr/lib/qt4/bin/|g' {} \;
+
+    # Fix wrong path in prl files
+    find "${pkgdir}/usr/lib" -type f -name '*.prl' \
+      -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d;s/\(QMAKE_PRL_LIBS =\).*/\1/' {} \;
+
+    # The TGA plugin is broken (FS#33568)
+    rm "${pkgdir}"/usr/lib/qt4/plugins/imageformats/libqtga.so
+}
