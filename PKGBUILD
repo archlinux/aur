@@ -2,12 +2,12 @@
 
  
 pkgname=leao
-pkgver=2016.0.0
-pkgrel=1
+pkgver=2016.1.0
+pkgrel=2
 license=('custom')
  
 arch=(any)
-pkgdesc='O Carnê-leão é a tributação do Imposto sobre a Renda das Pessoas Físicas, sob a forma do recolhimento mensal obrigatório, pelo contribuinte, pessoa física, residente no Brasil, que receber rendimentos de outra pessoa física ou do exterior.'
+pkgdesc='O Carnê-leão é o programa para a tributação do Imposto sobre a Renda das Pessoas Físicas, sob a forma do recolhimento mensal obrigatório, pelo contribuinte, pessoa física, residente no Brasil, que receber rendimentos de outra pessoa física ou do exterior.'
 url='http://www.receita.fazenda.gov.br'
  
 
@@ -24,7 +24,7 @@ md5sums=('4a1f49ba72a511a1fedb0e9856ae91db'
          'b0a5c911f4a3ce472699aa8b81d21b3d'
 		 'c5f9c5c6d9acd1d0db7effb401f4e685')
  
-depends=('java-runtime-common' 'hicolor-icon-theme' 'desktop-file-utils')
+depends=('jre8-openjdk' 'hicolor-icon-theme' 'desktop-file-utils')
 optdepends=('receitanet: Para envio do IRPF')
 install=$pkgname.install
  
