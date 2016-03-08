@@ -3,7 +3,7 @@
 
 pkgname=lilypond-devel
 pkgver=2.19.37
-pkgrel=1
+pkgrel=2
 pkgdesc="An automated music engraving system (development version)"
 arch=('i686' 'x86_64')
 url="http://lilypond.org/"
@@ -18,7 +18,9 @@ makedepends=('fontforge'
              'gsfonts-cyr' # from boohomil's infinality-bundle-fonts repo
              't1utils'
 	     'ghostscript'
-             'texlive-core>=2011.23170')
+             'texlive-core>=2011.23170'
+	     'tex-gyre-fonts'
+)
 optdepends=('netpbm: building HTML documentation'
             'imagemagick: building HTML documentation'
             'ttf-kochi-substitute: building HTML documentation'
