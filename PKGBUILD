@@ -2,7 +2,7 @@
 
 _plug=fmtconv
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=r17
+pkgver=r18
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url='http://forum.doom9.org/showthread.php?t=166504'
 license=('custom:WTFPL')
 depends=('vapoursynth')
 source=("http://ldesoras.free.fr/src/vs/${_plug}-${pkgver}.zip")
-sha1sums=('1fcf9321a754c66494d4e6fe69e42599bfe8df7c')
+sha1sums=('d7af1d95b8c37adc7e2fb6a59a751933355a882f')
 
 prepare() {
   rm -fr src/VapourSynth.h
@@ -21,7 +21,10 @@ prepare() {
 
 build() {
   cd build/unix
-  CPPFLAGS+=" $(pkg-config --cflags vapoursynth)" ./configure --libdir=/usr/lib/vapoursynth
+  CPPFLAGS+=" $(pkg-config --cflags vapoursynth)" \
+  ./configure \
+    --prefix=/usr \
+    --libdir=/usr/lib/vapoursynth
   make
 }
 
