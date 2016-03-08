@@ -1,6 +1,6 @@
 *.pkg.tar
 *.pkg.tar.xz
 *.tar.xz
-albion-online-setup*
+albion-online-setup
 pkg/
 src/
