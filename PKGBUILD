@@ -4,7 +4,7 @@
 _pkgname=ice
 pkgname=ice-ssb
 pkgver=5.1.8
-pkgrel=3
+pkgrel=1
 pkgdesc='a simple Site Specific Browser for Firefox, Chromium and Google Chrome from "Peppermint OS" Project'
 url='https://github.com/peppermintos/ice'
 arch=(any)
