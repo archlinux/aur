@@ -1,8 +1,8 @@
 pkgbase = allin1
 	pkgdesc = All in one monitoring dockapplet
 	pkgver = 0.5.0
-	pkgrel = 2
-	url = http://www.ismprofessional.net/pascucci/?p=15
+	pkgrel = 3
+	url = http://sourceforge.net/projects/allinone
 	changelog = changelog
 	arch = i686
 	arch = x86_64

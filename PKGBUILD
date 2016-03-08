@@ -1,10 +1,10 @@
 # Maintainer: Daniel YC Lin <dlin.tw at gmail.com>
 pkgname=allin1
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="All in one monitoring dockapplet"
 url="http://sourceforge.net/projects/allinone"
-license="GPL"
+license=("GPL")
 arch=('i686' 'x86_64')
 depends=('libxpm')
 source=(http://downloads.sf.net/sourceforge/allinone/Allin1/$pkgname-$pkgver.tar.gz \
