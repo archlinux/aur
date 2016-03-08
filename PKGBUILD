@@ -4,10 +4,10 @@ pkgdesc="ROS - This package contains the ROS bindings for the tf2 library, for b
 url='http://www.ros.org/wiki/tf2_ros'
 
 pkgname='ros-indigo-tf2-ros'
-pkgver='0.5.12'
+pkgver='0.5.13'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-rosgraph
@@ -22,7 +22,7 @@ ros_makedepends=(ros-indigo-rosgraph
   ros-indigo-catkin
   ros-indigo-message-filters
   ros-indigo-tf2)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-rosgraph
@@ -38,10 +38,16 @@ ros_depends=(ros-indigo-rosgraph
   ros-indigo-tf2)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/tf2_ros/${pkgver}-${_pkgver_patch}
-_dir=tf2_ros
-source=("${_dir}"::"git+https://github.com/ros-gbp/geometry_experimental-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/tf2_ros/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/geometry_experimental-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="geometry_experimental-release-release-indigo-tf2_ros-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry_experimental-release/archive/release/indigo/tf2_ros/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('e345673567d17b226f490545a987389d7fad5b85bc43e355529f82e85ce24f1b')
 
 build() {
   # Use ROS environment variables
