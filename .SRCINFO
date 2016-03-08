@@ -1,0 +1,26 @@
+pkgbase = od-automotive-odcantools-git
+	pkgdesc = Open Source Development Architecture for Virtual, Networked, and Cyber-Physical System Infrastructures.
+	pkgver = v3.0.1
+	pkgrel = 1
+	url = http://opendavinci.cse.chalmers.se/www/
+	arch = any
+	license = GPL
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = git
+	makedepends = make
+	depends = od-automotive-libcanmessagemapping-git
+	depends = freeglut
+	depends = qt4
+	depends = opencv
+	depends = boost
+	depends = qwt5
+	depends = jdk8-openjdk
+	depends = apache-ant
+	depends = junit
+	provides = od-automotive-odcantools-git
+	source = git://github.com/se-research/OpenDaVINCI.git
+	md5sums = SKIP
+
+pkgname = od-automotive-odcantools-git
+
