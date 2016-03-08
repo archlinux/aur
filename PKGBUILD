@@ -4,14 +4,14 @@
 
 pkgname=gimp-plugin-registry
 pkgver=7.20141204
-pkgrel=3
+pkgrel=4
 debrel=0wily3~ppa
 debrepo=https://launchpad.net/~otto-kesselgulasch/+archive/ubuntu/gimp/+files
 pkgdesc="Repository of optional extensions for GIMP"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/~otto-kesselgulasch/+archive/ubuntu/gimp"
 license=('GPL')
-depends=('anaconda>=2.5.0' 'bash-completion' 'desktop-file-utils' 'fftw' 'gcc-libs>=4.9' 'gdk-pixbuf2>=2.22.0' 'gimp>=2.6' 'glew1.10>=1.10.0' 'glib2>=2.37.3' 'glibc>=2.14' 'glu' 'gtk2>=2.14.0' 'gtkglext' 'hicolor-icon-theme' 'lapack' 'lcms2>=2.7' 'libgl' 'liblqr>=0.4.0' 'libtiff>=4.0.3' 'xdg-utils')
+depends=('bash-completion' 'desktop-file-utils' 'fftw' 'gcc-libs>=4.9' 'gdk-pixbuf2>=2.22.0' 'gimp>=2.6' 'glew1.10>=1.10.0' 'glib2>=2.37.3' 'glibc>=2.14' 'glu' 'gtk2>=2.14.0' 'gtkglext' 'hicolor-icon-theme' 'lapack' 'lcms2>=2.7' 'libgl' 'liblqr>=0.4.0' 'libtiff>=4.0.3' 'xdg-utils')
 optdepends=('adobe-icc: ICC profiles from Adobe')
 provides=('gimp-elsamuko-plugins' 'gimp-fix-ca' 'gimp-plugin-fblur' 'gimp-plugin-layerfx' 'gimp-plugin-lqr' 'gimp-plugin-normalmap' 'gimp-plugin-resynthesizer-git' 'gimp-plugin-saveforweb' 'gimp-plugin-wavelet-decompose' 'gimp-plugin-wavelet-denoise' 'gimp-refocus')
 conflicts=('gimp-elsamuko-plugins' 'gimp-fix-ca' 'gimp-plugin-fblur' 'gimp-plugin-layerfx' 'gimp-plugin-lqr' 'gimp-plugin-normalmap' 'gimp-plugin-resynthesizer-git' 'gimp-plugin-saveforweb' 'gimp-plugin-wavelet-decompose' 'gimp-plugin-wavelet-denoise' 'gimp-refocus')
