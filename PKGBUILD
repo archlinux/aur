@@ -4,14 +4,14 @@ pkgdesc="ROS - Geometry Library."
 url='http://www.ros.org/wiki/geometry'
 
 pkgname='ros-indigo-geometry'
-pkgver='1.11.7'
+pkgver='1.11.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-kdl-conversions
@@ -21,10 +21,16 @@ ros_depends=(ros-indigo-kdl-conversions
   ros-indigo-tf-conversions)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/geometry/${pkgver}-${_pkgver_patch}
-_dir=geometry
-source=("${_dir}"::"git+https://github.com/ros-gbp/geometry-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/geometry/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/geometry-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="geometry-release-release-indigo-geometry-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry-release/archive/release/indigo/geometry/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('86f0f093d01ce5956ce97d7a82f8c5016b4556af31de6d179a22a65abb518ed3')
 
 build() {
   # Use ROS environment variables
