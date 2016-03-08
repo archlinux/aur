@@ -1,0 +1,20 @@
+pkgbase = st-xresources-git
+	pkgdesc = Simple terminal with Xresources support
+	pkgver = r4.8a8358d
+	pkgrel = 1
+	url = https://github.com/dcat/st-xresources
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = ncurses
+	depends = libxft
+	depends = libxext
+	provides = st-xresources-git
+	conflicts = st
+	source = git://github.com/dcat/st-xresources
+	source = config.h
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = st-xresources-git
+
