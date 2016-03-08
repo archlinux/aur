@@ -4,6 +4,7 @@ pkgbase = od-automotive-libcanmessagemapping-git
 	pkgrel = 1
 	url = http://opendavinci.cse.chalmers.se/www/
 	arch = any
+	groups = opendavinci-git
 	license = GPL
 	makedepends = cmake
 	makedepends = gcc
