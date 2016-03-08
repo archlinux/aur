@@ -2,7 +2,7 @@
 pkgname=eiffelstudio-bin
 _major=15
 _minor=12
-_build=98308
+_build=98497
 pkgver=${_major}.${_minor}.${_build}
 pkgrel=1
 pkgdesc="IDE for the Eiffel programming language (opensource edition)"
@@ -15,10 +15,11 @@ conflicts=("eiffelstudio")
 options=("staticlibs")
 source=("estudio.profile")
 md5sums=("babf4e2957285cad811ae51e03e5cbd9")
+sha256sums=('3b5f56cf15ad160284ba49db0928b2fff5132cfbc56f7c3c1ac7289ee5bc93fc')
 source_x86_64=("http://downloads.sourceforge.net/project/eiffelstudio/EiffelStudio%20${_major}.${_minor}/Build_${_build}/Eiffel_${_major}.${_minor}_gpl_${_build}-linux-x86-64.tar.bz2")
-md5sums_x86_64=("d338aff0a5dde3faba621d188b44bb6e")
+sha256sums_x86_64=('df4400a1a8cbe541aee6035aa69ba2f2fc85afe142bc2db4f69520e86d553c35')
 source_i686=("http://downloads.sourceforge.net/project/eiffelstudio/EiffelStudio%20${_major}.${_minor}/Build_${_build}/Eiffel_${_major}.${_minor}_gpl_${_build}-linux-x86.tar.bz2")
-md5sums_i686=("b8785f96f737a4be46d6e0b14760f717")
+sha256sums_i686=('73c370de7f9ec2b97e40ff5772ed7e1a2f260f9777c7b6732214e307283364ec')
 
 prepare() {
 	# remove windows files and folders
