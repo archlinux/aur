@@ -1,0 +1,16 @@
+pkgbase = perl-sys-meminfo
+	pkgdesc = Perl extension for return the total amount of physical memory
+	pkgver = 0.98
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Sys-MemInfo
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SC/SCRESTO/Sys-MemInfo-0.98.tar.gz
+	md5sums = a5636cf6ae8f1b32253b3ca6fa63653b
+	sha512sums = 06f3d5d5678832c688dae6b50392cfe549a105359be5d868d020bbb34839216ded7138cac1788d398330deaf260789e91a7a2c3f4998af1ddedf33006c31e1d4
+
+pkgname = perl-sys-meminfo
+

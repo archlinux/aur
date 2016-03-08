@@ -1,0 +1,50 @@
+# Contributor: Francesco Di Battista <teme.[nospace]84 -_AT_- the domain name google offers a mail service at ending in dot com>
+# Generator  : CPANPLUS::Dist::Arch 1.25
+
+pkgname='perl-sys-meminfo'
+pkgver='0.98'
+pkgrel='1'
+pkgdesc="Perl extension for return the total amount of physical memory"
+arch=('any')
+license=('PerlArtistic' 'GPL')
+options=('!emptydirs')
+depends=('perl')
+makedepends=()
+url='http://search.cpan.org/dist/Sys-MemInfo'
+source=('http://search.cpan.org/CPAN/authors/id/S/SC/SCRESTO/Sys-MemInfo-0.98.tar.gz')
+md5sums=('a5636cf6ae8f1b32253b3ca6fa63653b')
+sha512sums=('06f3d5d5678832c688dae6b50392cfe549a105359be5d868d020bbb34839216ded7138cac1788d398330deaf260789e91a7a2c3f4998af1ddedf33006c31e1d4')
+_distdir="Sys-MemInfo-0.98"
+
+build() {
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+      PERL_AUTOINSTALL=--skipdeps                            \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+      MODULEBUILDRC=/dev/null
+
+    cd "$srcdir/$_distdir"
+    /usr/bin/perl Makefile.PL
+    make
+  )
+}
+
+check() {
+  cd "$srcdir/$_distdir"
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+    make test
+  )
+}
+
+package() {
+  cd "$srcdir/$_distdir"
+  make install
+
+  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+}
+
+# Local Variables:
+# mode: shell-script
+# sh-basic-offset: 2
+# End:
+# vim:set ts=2 sw=2 et:
