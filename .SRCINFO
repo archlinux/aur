@@ -16,7 +16,9 @@ pkgbase = imunes-git
 	depends = xterm
 	provides = imunes
 	source = git+https://github.com/imunes/imunes.git
+	source = 0001-PKGBUILD-compat.patch
 	sha1sums = SKIP
+	sha1sums = 4d68f7f685222a23bb7d54d5cff78aa2da628135
 
 pkgname = imunes-git
 
