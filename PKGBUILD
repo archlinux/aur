@@ -1,8 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoinxt
-pkgver=0.11D
-pkgrel=3
+pkgver=0.11E
+pkgrel=1
 pkgdesc="BitcoinXT headless P2P node"
 arch=('i686' 'x86_64')
 url="https://bitcoinxt.software"
@@ -11,21 +11,16 @@ depends=('boost'
          'curl'
          'miniupnpc'
          'openssl')
-makedepends=('autoconf'
-             'automake'
-             'binutils'
-             'expect'
-             'gcc'
-             'libtool'
-             'make'
-             'pkg-config')
+makedepends=(
+         'expect'
+)
 license=('MIT')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/bitcoinxt/bitcoinxt/tar.gz/v$pkgver
         bitcoin.conf
         bitcoin.logrotate
         bitcoin.service
         bitcoin-reindex.service)
-sha256sums=('66b4bd52ed8b97e28da46ac552396c40853a9d7f765063603552e1cf118a2227'
+sha256sums=('b5f67a9cc80dfab7c98165b0ba2347152d0c24f6b615f2263e12d52b5f4b9b25'
             '67c464e4314ab5f7234a091098a05706989394086e4ee21e1d9155b9d1421796'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             '5e45f2ceaeb7bfa60aeb66ca4167068191eb4358af03f95ac70fd96d9b006349'
