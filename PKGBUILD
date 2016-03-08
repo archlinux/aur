@@ -21,7 +21,8 @@ sha512sums=('ca5a03eae6bb583d20499da68400645cc7b66c27255fc77f18ffe311d3d27eaaf3c
 
 build() {
     cd $srcdir/"$_pkgname"_"$pkgver"
-    bash bootStrap.bash   --enable-qt5
+    sed -i -e 's/-j 2/-j 1/g' bootStrap.bash
+    bash bootStrap.bash   --without-gtk --enable-qt5
     sed -i -e 's/avidemux2_gtk/avidemux3_qt5/g' "$_pkgname"2.desktop
     sed -i -e 's/avidemux2/avidemux/g' "$_pkgname"2.desktop
 }
@@ -29,7 +30,6 @@ build() {
 package() {
     cd $srcdir/"$_pkgname"_"$pkgver"/install
     cp -R usr/ "$pkgdir"/
-
     cd $srcdir/"$_pkgname"_"$pkgver"
     install -Dm644 "$_pkgname"_icon.png "$pkgdir"/usr/share/pixmaps/avidemux.png
     install -Dm644 "$_pkgname"2.desktop "$pkgdir"/usr/share/applications/avidemux.desktop
