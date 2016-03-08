@@ -14,7 +14,7 @@ source=("linux::git://github.com/raspberrypi/linux#branch=rpi-${_branch}.y"
         'config.txt'
         'cmdline.txt')
 md5sums=('SKIP'
-         '57f668c03fea068a181b318cfe0fa499'
+         'e44f530b3d333b98ad376872cdbbf823'
          '0244ab7cb2e385a8efe9a7fba9bfcb48')
 _dirname=linux-${_branch}
 _kernelname=${pkgbase#linux}
