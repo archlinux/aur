@@ -1,0 +1,17 @@
+diff --git a/pom.xml b/pom.xml
+index 3590837..fe04dae 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -69,9 +69,9 @@
+         <fnaOutputFile>stdout</fnaOutputFile>
+         <fnaOutputFormat>plaso</fnaOutputFormat>
+         <logLevel>info</logLevel>
+-        <logDirectory>./logs</logDirectory>
+-        <library.directory>./lib</library.directory>
+-        <config.directory>./conf</config.directory>
++        <logDirectory>/var/log/rubanetra</logDirectory>
++        <library.directory>/usr/share/rubanetra/lib</library.directory>
++        <config.directory>/etc/rubanetra</config.directory>
+         <native.lib.classpath>/usr/lib</native.lib.classpath>
+ 
+         <!-- general settings -->

@@ -1,0 +1,29 @@
+pkgbase = rubanetra
+	pkgdesc = A rule-based network traffic analysis Java framework.
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://gitlab.swerk.priv.at/stefan/rubanetra
+	arch = any
+	license = GPL3
+	makedepends = maven
+	depends = java-environment
+	depends = libpcap
+	backup = etc/rubanetra/rubanetra.conf
+	backup = etc/rubanetra/logback.xml
+	backup = etc/rubanetra/DefaultKnowledgeBase/at.jku.fim.rubanetra.drools.rules/00.Basic.Metadata.drl
+	backup = etc/rubanetra/DefaultKnowledgeBase/at.jku.fim.rubanetra.drools.rules/01.Basic.Output.drl
+	backup = etc/rubanetra/DefaultKnowledgeBase/at.jku.fim.rubanetra.drools.rules/02.Basic.Http.drl
+	backup = etc/rubanetra/DefaultKnowledgeBase/at.jku.fim.rubanetra.drools.rules/03.Basic.Tls.drl
+	backup = etc/rubanetra/DefaultKnowledgeBase/at.jku.fim.rubanetra.drools.rules/04.Derived.Https.drl
+	backup = etc/rubanetra/DefaultKnowledgeBase/at.jku.fim.rubanetra.drools.rules/05.Basic.Icmp.drl
+	backup = etc/rubanetra/DefaultKnowledgeBase/at.jku.fim.rubanetra.drools.rules/06.Application.OpenSSH.drl
+	backup = etc/rubanetra/DefaultKnowledgeBase/at.jku.fim.rubanetra.drools.rules/07.Application.Dropbox.drl
+	backup = etc/rubanetra/DefaultKnowledgeBase/at.jku.fim.rubanetra.drools.rules/08.Application.SpiderOak.drl
+	backup = etc/rubanetra/DefaultKnowledgeBase/at.jku.fim.rubanetra.drools.rules/09.Application.Skype.drl
+	source = https://gitlab.swerk.priv.at/stefan/rubanetra/repository/archive.tar.gz?ref=0.0.6
+	source = rubanetra-0.0.6.usr.install.patch
+	sha256sums = 3cb868a63202f4cb305634c0b285a398a6c2311b77741821f1217d3fac0e3bd5
+	sha256sums = e588ef2d33c32055927f106b5cc7320eaf8fc502228f572450519feb6d768000
+
+pkgname = rubanetra
+
