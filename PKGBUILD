@@ -3,7 +3,7 @@
 
 pkgname=jlink-debugger
 pkgver=2.14d
-pkgrel=1
+pkgrel=2
 epoch=3
 pkgdesc="Segger JLink debugger for Linux"
 arch=('i686' 'x86_64')
@@ -37,7 +37,7 @@ package(){
     find . -name ".svn" | xargs rm -rf
 
     # Bulk copy everything except libs
-    cp --preserve=mode -r JLinkDebugger Plugins Doc Config "${pkgdir}/opt/SEGGER/JLinkDebugger"
+    cp --preserve=mode -r JLinkDebugger Plugins Doc Config Lib "${pkgdir}/opt/SEGGER/JLinkDebugger"
 
     # Create links where needed
     ln -s /opt/SEGGER/JLinkDebugger/Doc/License.txt "${pkgdir}/usr/share/licenses/${pkgname}/"
