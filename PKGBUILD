@@ -5,6 +5,7 @@
 # Contributor: Antonio Orefice <kokokork@gmail.com>
 
 pkgname=qt4-revert80e3108
+_pkgname=qt4
 pkgver=4.8.7
 pkgrel=7
 arch=('i686' 'x86_64')
@@ -26,7 +27,7 @@ optdepends=('qtchooser: set the default Qt toolkit'
             'libxfixes: Xfixes support'
             'icu: Unicode support'
             'sni-qt: StatusNotifierItem (AppIndicators) support')
-install="${pkgname}.install"
+install="${_pkgname}.install"
 replaces=('qt<=4.8.4')
 conflicts=('qt')
 _pkgfqn="qt-everywhere-opensource-src-${pkgver}"
