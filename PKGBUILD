@@ -3,7 +3,7 @@
 pkgbase=linux-rpi2-default-git
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 _branch=4.1
-_desc="Raspberry Pi 2"
+_desc="Raspberry Pi 2 from the default git branch"
 pkgrel=1
 arch=('armv7h')
 url="http://www.kernel.org/"
