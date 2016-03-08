@@ -5,8 +5,8 @@
 # Contributor: jellysheep <max DOT mail AT dameweb DOT de>
 
 pkgname=mingw-w64-angleproject
-pkgver=2.1.r5571.7a533f7
-pkgrel=2
+pkgver=2.1.r5624.8047c0d
+pkgrel=1
 pkgdesc='ANGLE project (mingw-w64)'
 arch=('any')
 url='https://chromium.googlesource.com/angle/angle/+/master/README.md'
@@ -14,12 +14,16 @@ license=('BSD')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc' 'git' 'gyp-git' 'python')
 options=('!strip' '!buildflags' 'staticlibs')
-source=('angleproject::git+https://chromium.googlesource.com/angle/angle#commit=7a533f7'
+source=('angleproject::git+https://chromium.googlesource.com/angle/angle#commit=8047c0d'
         'additional-mingw-header::git+https://github.com/Martchus/additional-mingw-header.git#commit=7a8f394'
-        'angleproject-include-import-library-and-use-def-file.patch')
+        'angleproject-include-import-library-and-use-def-file.patch'
+        'libEGL_mingw32.def'
+        'libGLESv2_mingw32.def')
 sha256sums=('SKIP'
             'SKIP'
-            '985a17541f2a4df6243cf817fd607f74619f995ff42f307ff95d6500f7f8fb64')
+            'e369cad08c921968714ee4edc2c6abe9bd928af41ff728634e5a7c5f096a05d2'
+            'fb04f30b904760d32c4c0b733d0a0b44359855db1fde9e7f5ca7d0b8b1be3e56'
+            'b1fa5f9a6f88eb67c2c3d9889df040b0f858d2acfc931320dc4350efa291c927')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 #pkgver() {
@@ -35,6 +39,10 @@ prepare() {
   mkdir sysinclude
   cp ../additional-mingw-header/{d3d11sdklayers,dxgi1_2,versionhelpers,d3d10_1,sdkddkver,d3d11,dcomp,dcomptypes,dcompanimation}.h sysinclude/
   cp sysinclude/{versionhelpers,VersionHelpers}.h
+
+  # provide 32-bit versions of *.def files
+  cp ../libEGL_mingw32.def src/libEGL/
+  cp ../libGLESv2_mingw32.def src/libGLESv2/
 
   # remove .git directory to prevent: No rule to make target '../build-i686-w64-mingw32/.git/index', needed by 'out/Debug/obj/gen/angle/id/commit.h'.
   rm -fr .git
