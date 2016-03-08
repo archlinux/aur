@@ -3,7 +3,7 @@
 
 pkgname=python2-neovim-git
 _pkgname=python2-neovim-git
-pkgver=0.1.0.r1.gdea5427
+pkgver=0.1.3.r0.g720b3d5
 pkgrel=1
 pkgdesc="Python client to neovim, git version. Use this to keep up with neovim-git"
 arch=('any')
@@ -41,7 +41,6 @@ pkgver() {
 package() {
   cd "$_pkgname"
   python2 setup.py install --root="$pkgdir" --optimize=1
-  mv "$pkgdir/usr/bin/pynvim" "$pkgdir/usr/bin/pynvim2"
   install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
