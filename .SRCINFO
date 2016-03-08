@@ -1,7 +1,7 @@
 pkgbase = teamviewer
 	pkgdesc = All-In-One Software for Remote Support and Online Meetings
 	pkgver = 11.0.53191
-	pkgrel = 2.2
+	pkgrel = 2.3
 	url = http://www.teamviewer.com
 	install = teamviewer.install
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = teamviewer
 	options = !strip
 	source_i686 = https://download.teamviewer.com/download/version_11x/teamviewer_11.0.53191_i386.deb
 	depends_i686 = fontconfig
-	depends_i686 = libpng
+	depends_i686 = libpng12
 	depends_i686 = libsm
 	depends_i686 = libxinerama
 	depends_i686 = libxrender
