@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Unreal Tournament
+GenericName=Classic Shooter
+Comment=Unreal Tournament GOTY Edition
+Exec=/usr/bin/ut
+Icon=ut
+Type=Application
+Categories=Application;Game;ActionGame;
+StartupNotify=true
+Terminal=false
+Encoding=UTF-8
+Version=1.0
