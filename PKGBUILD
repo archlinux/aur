@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains a set of conversion functions to convert co
 url='http://www.ros.org/wiki/tf_conversions'
 
 pkgname='ros-indigo-tf-conversions'
-pkgver='1.11.7'
+pkgver='1.11.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -16,7 +16,7 @@ ros_makedepends=(ros-indigo-geometry-msgs
   ros-indigo-catkin
   ros-indigo-cmake-modules
   ros-indigo-tf)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   eigen3)
 
@@ -28,10 +28,16 @@ ros_depends=(ros-indigo-kdl-conversions
 depends=(${ros_depends[@]}
   eigen3)
 
-_tag=release/indigo/tf_conversions/${pkgver}-${_pkgver_patch}
-_dir=tf_conversions
-source=("${_dir}"::"git+https://github.com/ros-gbp/geometry-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/tf_conversions/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/geometry-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="geometry-release-release-indigo-tf_conversions-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry-release/archive/release/indigo/tf_conversions/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('7ca9ed74037b09317c4f3f999e75403ecf0f3561af64a9549a928828cf869f5f')
 
 build() {
   # Use ROS environment variables
