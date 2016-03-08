@@ -3,7 +3,6 @@
 pkgname=libspkgname
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-replaces=("${pkgname}")
 pkgver=libspkgver
 pkgrel=libspkgrel
 pkgdesc="Qt ${pkgver} libs cross compiled for the Raspberry Pi libspiversion"
