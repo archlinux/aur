@@ -1,7 +1,7 @@
 # Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=bitcoin-classic-git
-pkgver=v0.11.2.cl1.b2.r12.g3a60b0e
+pkgver=v0.12.0cl1.r2.gd10f990
 pkgrel=1
 pkgdesc='Bitcoin Classic versions of Bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt, most recent stable branch, w/GUI and wallet'
 arch=('i686' 'x86_64')
@@ -12,9 +12,8 @@ makedepends=('boost' 'automoc4' 'qrencode' 'miniupnpc' 'protobuf')
 provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 install=bitcoin-qt.install
-source=('git+https://github.com/bitcoinclassic/bitcoinclassic.git#branch=0.11.2')
+source=('git+https://github.com/bitcoinclassic/bitcoinclassic.git#branch=0.12')
 sha256sums=('SKIP')
-sha512sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/bitcoinclassic"
@@ -25,7 +24,7 @@ build() {
 	cd "$srcdir/bitcoinclassic"
 
 	msg2 'Building...'
-  CXXFLAGS="$CXXFLAGS -DBOOST_VARIANT_USE_RELAXED_GET_BY_DEFAULT=1 -UUPNPDISCOVER_SUCCESS"
+  CXXFLAGS="$CXXFLAGS -DBOOST_VARIANT_USE_RELAXED_GET_BY_DEFAULT=1"
 	./autogen.sh
 	./configure --prefix=/usr --with-incompatible-bdb --with-gui=qt4
   make -j$(nproc)
