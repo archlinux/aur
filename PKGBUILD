@@ -2,7 +2,7 @@
 _pkgname=nctelegram
 _gitname=ncTelegram
 pkgname=${_pkgname}-git
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="A ncurse Telegram client developed in Python"
 arch=('any')
@@ -11,18 +11,14 @@ license=('GPL3')
 depends=('python' 'telegram-cli-git' 'python-urwid')
 makedepends=('git' 'python-distribute')
 optdepends=(
-'libnotify: library to display notifications',
+'libnotify: library to display notifications'
 'libcaca: library to display inline images'
+'ttf-symbola: font for emoji'
 )
 conflicts=('nctelegram')
 provides=('nctelegram')
 source=("git+https://github.com/Nanoseb/ncTelegram.git")
 md5sums=('SKIP')
-
-#pkgver() {
-#	cd ${_pkgname}
-#    git rev-list --count HEAD
-#}
 
 package() {
 	cd "$_gitname"
