@@ -7,7 +7,7 @@ cd /opt/idos-timetable
 
 helparg=''
 case "$1" in
-  "-h"|"-help"|"--help")
+  "-h"|"-help"|"--help"|'/?')
     helparg="/?"
     shift
   ;;
