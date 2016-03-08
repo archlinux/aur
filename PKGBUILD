@@ -4,30 +4,38 @@ pkgdesc="ROS - tf2_geometry_msgs."
 url='http://www.ros.org/wiki/tf2_ros'
 
 pkgname='ros-indigo-tf2-geometry-msgs'
-pkgver='0.5.12'
+pkgver='0.5.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-tf2-ros
-  ros-indigo-catkin
+  ros-indigo-geometry-msgs
   ros-indigo-orocos-kdl
-  ros-indigo-tf2
-  ros-indigo-geometry-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+  ros-indigo-catkin
+  ros-indigo-python-orocos-kdl
+  ros-indigo-tf2)
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-tf2-ros
+  ros-indigo-python-orocos-kdl
   ros-indigo-orocos-kdl
   ros-indigo-tf2
   ros-indigo-geometry-msgs)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/tf2_geometry_msgs/${pkgver}-${_pkgver_patch}
-_dir=tf2_geometry_msgs
-source=("${_dir}"::"git+https://github.com/ros-gbp/geometry_experimental-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/tf2_geometry_msgs/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/geometry_experimental-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="geometry_experimental-release-release-indigo-tf2_geometry_msgs-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry_experimental-release/archive/release/indigo/tf2_geometry_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('132576aede9c9c8f92bbabfa9813ef75555358f4e142906dd8a09b162786504f')
 
 build() {
   # Use ROS environment variables
