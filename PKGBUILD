@@ -1,11 +1,12 @@
 # Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=bitcoin-classic
-pkgver=v0.11.2.cl1
-_vertemp=${pkgver%.*}
+pkgver=v0.12.0cl1
+_vertemp=${pkgver%c*}
 _ver=${_vertemp#v}
-pkgrel=2
-pkgdesc='Official Bitcoin Classic binaries: bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt with auto setup of RPC SSL'
+_gitver=${_ver%.*}
+pkgrel=1
+pkgdesc='Official Bitcoin Classic binaries: bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt'
 arch=('i686' 'x86_64')
 url="https://bitcoinclassic.com/"
 license=('MIT')
@@ -14,85 +15,70 @@ provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 install=bitcoin-qt.install
 source_i686=("https://github.com/bitcoinclassic/bitcoinclassic/releases/download/$pkgver/bitcoin-$_ver-linux32.tar.gz"
-             "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_ver/contrib/debian/bitcoin-qt.desktop"
-						 "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_ver/share/pixmaps/bitcoin128.png"
-						 "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_ver/contrib/debian/manpages/bitcoind.1"
-             "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/0.11.2/contrib/debian/manpages/bitcoin-cli.1"
-             "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/0.11.2/contrib/debian/manpages/bitcoin-qt.1"
-             "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_ver/contrib/debian/manpages/bitcoin.conf.5"
-						 "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/0.11.2/COPYING"
-						 "bitcoin.conf")
+             "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/bitcoin-qt.desktop"
+						 "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/share/pixmaps/bitcoin128.png"
+						 "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/manpages/bitcoind.1"
+             "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/manpages/bitcoin-cli.1"
+             "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/manpages/bitcoin-qt.1"
+             "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/manpages/bitcoin.conf.5"
+						 "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/COPYING")
 source_x86_64=("https://github.com/bitcoinclassic/bitcoinclassic/releases/download/$pkgver/bitcoin-$_ver-linux64.tar.gz"
-               "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_ver/contrib/debian/bitcoin-qt.desktop"
-							 "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_ver/share/pixmaps/bitcoin128.png"
-							 "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_ver/contrib/debian/manpages/bitcoind.1"
-               "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/0.11.2/contrib/debian/manpages/bitcoin-cli.1"
-               "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/0.11.2/contrib/debian/manpages/bitcoin-qt.1"
-							 "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_ver/contrib/debian/manpages/bitcoin.conf.5"
-							 "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/0.11.2/COPYING"
-							 "bitcoin.conf")
-noextract=(bitcoin-$_ver-linux*.tar.gz)
-md5sums_i686=('7647477343116b9d1f41af83c0ddf1fb'
+               "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/bitcoin-qt.desktop"
+							 "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/share/pixmaps/bitcoin128.png"
+							 "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/manpages/bitcoind.1"
+               "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/manpages/bitcoin-cli.1"
+               "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/manpages/bitcoin-qt.1"
+							 "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/manpages/bitcoin.conf.5"
+							 "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/COPYING")
+md5sums_i686=('4560541b12af93ad81b49032dc731bf9'
               '0aa8db6ac0e58ccbe85d0fe4923fb39e'
               '0aae5f0110179e8e1d588530bcce5d2a'
-              '1f72f650f0d8e76fbaf86fd5809e73b2'
-              '5982de61dec5a2b0632e7235af04d412'
-              '29d251c3399f497cda973f6a3e06b322'
-              '62981ec22f92add684406addc5e4d03a'
-              'fb8504ceaf8aa25d43eefc5f90abfa06'
-              'aee806a767f350dab8bfb39db0ee0e18')
-md5sums_x86_64=('50f9362cb8e91cfb82a6fea48b1c37f2'
+              'a7f496d6996a60a20c2ef025da65773a'
+              '2bfcee41b958f1c4ff9968669236fe3a'
+              'ca3af56933093fd074423eea32c1d650'
+              '844dd4c73f9837a6d4fc7db44d67104e'
+              'b44a28f73a201403cabb5e0a49e6d1e6')
+md5sums_x86_64=('0bc38d581956e8f9217f2feacc374142'
                 '0aa8db6ac0e58ccbe85d0fe4923fb39e'
                 '0aae5f0110179e8e1d588530bcce5d2a'
-                '1f72f650f0d8e76fbaf86fd5809e73b2'
-                '5982de61dec5a2b0632e7235af04d412'
-                '29d251c3399f497cda973f6a3e06b322'
-                '62981ec22f92add684406addc5e4d03a'
-                'fb8504ceaf8aa25d43eefc5f90abfa06'
-                'aee806a767f350dab8bfb39db0ee0e18')
-sha256sums_i686=('05d4b11b46ebae557f747674f59603a625a11e7e62cb78e1c50825b7e2ebd734'
+                'a7f496d6996a60a20c2ef025da65773a'
+                '2bfcee41b958f1c4ff9968669236fe3a'
+                'ca3af56933093fd074423eea32c1d650'
+                '844dd4c73f9837a6d4fc7db44d67104e'
+                'b44a28f73a201403cabb5e0a49e6d1e6')
+sha256sums_i686=('d4e90c85d683b8145603ba87dad6471eaa2d07ea064a75a824a7f397d7b00f73'
                  'b65b377c0d9ecae9eea722843bca0add6bdb7e50929a7e1f751b79b6621c6073'
                  'ad880c8459ecfdb96abe6a4689af06bdd27906e0edcd39d0915482f2da91e722'
-                 '829d5d38c8c3145b6debcb569bfa75acdfcfab5d914495b56ceb4d02060f130f'
-                 '321c67742faf093c3d7a0dddef58adc942e85eddb34a9202755945f8997e0f13'
-                 '47ecf202c41cafc90f15db67bdeb9d448cf6c20f96745fcad7bdfc24b5c21ff9'
-                 '9acf7f46052f6e508af4f38be4574f34bf0f57d2cf462f072606d3f177b4c957'
-                 '8973ffc8689564898d52b54dc27d3cacf7aa3b61d6fcc390da40e773ad7dffed'
-                 '938f4265e238cbc038ebee9cb93076a8ba0ae94708ac7b7379385b1f8d019676')
-sha256sums_x86_64=('3f4eb95a832c205d1fe3b3f4537df667f17f3a6be61416d11597feb666bde4ca'
+                 '7d090ddd485c36d4fae5e6627388c5550f824fd498d5fd958ec999857fff7b28'
+                 '52e104ba55d5f564c849a72c67b27c9ec3b1dea6e6dbf931f4ae30d182e9a135'
+                 '60a3396e98c24f0599c997edd2c34c414414fffbde84bbe0e4573435dc5bb417'
+                 '7f4021e34d52c321f679b548fcf6d55b4da30077b7aed392976f048ab88dcdd1'
+                 '44c9d9ad9237f8dafd4633a51535fa75c0b28690043f5279f4976504c917966d')
+sha256sums_x86_64=('e69614c073ee981168127614811a685f32108471a80d22a145b9e9a0def7d278'
                    'b65b377c0d9ecae9eea722843bca0add6bdb7e50929a7e1f751b79b6621c6073'
                    'ad880c8459ecfdb96abe6a4689af06bdd27906e0edcd39d0915482f2da91e722'
-                   '829d5d38c8c3145b6debcb569bfa75acdfcfab5d914495b56ceb4d02060f130f'
-                   '321c67742faf093c3d7a0dddef58adc942e85eddb34a9202755945f8997e0f13'
-                   '47ecf202c41cafc90f15db67bdeb9d448cf6c20f96745fcad7bdfc24b5c21ff9'
-                   '9acf7f46052f6e508af4f38be4574f34bf0f57d2cf462f072606d3f177b4c957'
-                   '8973ffc8689564898d52b54dc27d3cacf7aa3b61d6fcc390da40e773ad7dffed'
-                   '938f4265e238cbc038ebee9cb93076a8ba0ae94708ac7b7379385b1f8d019676')
+                   '7d090ddd485c36d4fae5e6627388c5550f824fd498d5fd958ec999857fff7b28'
+                   '52e104ba55d5f564c849a72c67b27c9ec3b1dea6e6dbf931f4ae30d182e9a135'
+                   '60a3396e98c24f0599c997edd2c34c414414fffbde84bbe0e4573435dc5bb417'
+                   '7f4021e34d52c321f679b548fcf6d55b4da30077b7aed392976f048ab88dcdd1'
+                   '44c9d9ad9237f8dafd4633a51535fa75c0b28690043f5279f4976504c917966d')
 
 package() {
-  msg2 "Extracting and installing binaries..."
-  bsdtar -C "$pkgdir" -xf bitcoin-*-linux*.tar.gz
-  mv $pkgdir/bitcoin-* "$pkgdir/usr"
-  rm $pkgdir/usr/bin/test_*
+  msg2 "Installing binaries..."
+  for i in -cli d -qt -tx; do install -Dm 755 $srcdir/bitcoin-$_ver/bin/bitcoin$i \
+  $pkgdir/usr/bin/bitcoin$i; done
 
   msg2 'Installing license...'
-  install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dm 644 "COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 
   msg2 "Installing man pages..."
-  install -Dm644 "$srcdir/bitcoind.1" -t "$pkgdir/usr/share/man/man1"
+  install -Dm 644 "$srcdir/bitcoind.1" -t "$pkgdir/usr/share/man/man1"
   install -Dm 644 "$srcdir/bitcoin-cli.1" -t "$pkgdir/usr/share/man/man1"
   install -Dm 644 "$srcdir/bitcoin-qt.1" -t "$pkgdir/usr/share/man/man1"
-  install -Dm644 "$srcdir/bitcoin.conf.5" -t "$pkgdir/usr/share/man/man5"
-
-#  msg2 'Installing bitcoin.conf if one does not already exist...'
-#  [[ ! -e "$HOME/.bitcoin/bitcoin.conf" ]] && install -Dm 600 "$srcdir/bitcoin.conf" \
-#	-t "$pkgdir$HOME/.bitcoin"
-
-#  msg2 "Placing proper home directory location in .install file..."
-#	sed -i "s|\$HOME|$HOME|g" $startdir/bitcoin-qt.install
+  install -Dm 644 "$srcdir/bitcoin.conf.5" -t "$pkgdir/usr/share/man/man5"
 
 	msg2 'Installing icon...'
-	install -Dm644 "$srcdir/bitcoin128.png" "$pkgdir/usr/share/pixmaps/bitcoin128.png"
+	install -Dm 644 "$srcdir/bitcoin128.png" "$pkgdir/usr/share/pixmaps/bitcoin128.png"
 
 	msg2 'Installing desktop file...'
 	mv "$srcdir/bitcoin-qt.desktop" "$srcdir/bitcoin.desktop"

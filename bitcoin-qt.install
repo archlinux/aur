@@ -1,6 +1,4 @@
 post_install() {
-#    _mkrpcpass
-#    [[ ! -e "$HOME/.bitcoin/server.pem" ]] && _mkssl
     update-desktop-database -q
     printf "%b\n" "$bitcoin"
 }
@@ -14,53 +12,6 @@ post_remove() {
     update-desktop-database -q
 }
 
-# ------------------------------------------------------------------------------
-# helper function for enabling SSL in bitcoin-core
-# ------------------------------------------------------------------------------
-
-_mkssl() {
-  echo -n "Enabling SSL..." # https://en.bitcoin.it/wiki/Enabling_SSL_on_original_client_daemon
-  openssl genrsa -out $HOME/.bitcoin/server.pem 2048
-  expect <<EOF | perl -ne 'print if /-----BEGIN\sCERTIFICATE-----/../-----END\sCERTIFICATE-----/' > $HOME/.bitcoin/server.cert
-    spawn openssl req -new -x509 -nodes -sha1 -days 3650 -key $HOME/.bitcoin/server.pem
-    expect "Country*" {
-      send "\r"
-    }
-    expect "State*" {
-      send "\r"
-    }
-    expect "Locality*" {
-      send "\r"
-    }
-    expect "Organization*" {
-      send "\r"
-    }
-    expect "Organizational*" {
-      send "\r"
-    }
-    expect "Common*" {
-      send "\r"
-    }
-    expect "Email*" {
-      send "\r"
-    }
-    expect eof
-EOF
-  echo "done"
-}
-
-# ------------------------------------------------------------------------------
-# helper function for writing secure, random RPC password to bitcoin.conf
-# ------------------------------------------------------------------------------
-
-_mkrpcpass() {
-  # create password
-  _rpc_password=$(bash -c 'tr -dc a-zA-Z0-9 < /dev/urandom | head -c32 && echo')
-
-  #write to bitcoin.conf
-  sed -i "s/rpcpassword=secret/rpcpassword=$_rpc_password/g" $HOME/.bitcoin/bitcoin.conf
-}
-
 read -d '' bitcoin <<'EOF'
 ########################################################################
 ########################################################################
@@ -68,17 +19,17 @@ read -d '' bitcoin <<'EOF'
 ##  Bitcoin Classic                                                   ##
 ##  ____________                                                      ##
 ##                                                                    ##
-##    In order to secure RPC, you should create a bitcoin.conf        ##
-##  file in "~/.bitcoin" to configure RPC, at least containing        ##
-##  the following lines:                                              ##
-##                                                                    ##
-##    rpcallowip=127.0.0.1                                            ##
-##    rpcuser=bitcoin                                                 ##
-##    rpcpassword=Your_long_secret_password_here                      ##
-##                                                                    ##
-##    OR                                                              ##
-##                                                                    ##
-##    server=0                                                        ##
+##  New to 0.12, when no -rpcpassword is specified, the daemon now    ##
+##  uses a special 'cookie' file for authentication. This file is     ##
+##  generated with random content when the daemon starts, and deleted ##
+##  when it exits. Its contents are used as authentication token.     ##
+##  Read access to this file controls who can access through RPC. By  ##
+##  default it is stored in the data directory but its location can   ##
+##  be overridden with the option -rpccookiefile. This is similar to  ##
+##  Tor's CookieAuthentication.                                       ##
+##  see:  https://www.torproject.org/docs/tor-manual.html.en          ##
+##  This allows running bitcoind without having to do any manual      ##
+##  configuration.                                                    ##
 ##                                                                    ##
 ########################################################################
 ########################################################################
