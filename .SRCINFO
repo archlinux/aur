@@ -1,0 +1,16 @@
+pkgbase = cpustat
+	pkgdesc = High Frequency Performance Measurements for Linux
+	pkgver = 20160308
+	pkgrel = 1
+	url = https://github.com/uber-common/cpustat
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = linux
+	options = !strip
+	options = !emptydirs
+
+pkgname = cpustat
+
