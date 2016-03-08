@@ -1,14 +1,8 @@
-commit 3600f9b81b7987d4f777d6218e23e7b2764878ae
-Author: Alexey Korop <avkorop@i.ua>
-Date:   Tue Mar 31 20:30:28 2015 +0300
-
-    strict_skip_taskbar
-
 diff --git a/openbox/config.c b/openbox/config.c
-index 5d2408f..81b542c 100644
+index dad5d1b..0e0d1f9 100644
 --- a/openbox/config.c
 +++ b/openbox/config.c
-@@ -49,6 +49,7 @@ StrutPartial config_margins;
+@@ -48,6 +48,7 @@ StrutPartial config_margins;
  gchar   *config_theme;
  gboolean config_theme_keepborder;
  guint    config_theme_window_list_icon_size;
@@ -16,17 +10,17 @@ index 5d2408f..81b542c 100644
  
  gchar   *config_title_layout;
  
-@@ -735,6 +736,8 @@ static void parse_theme(xmlNodePtr node, gpointer d)
-             config_theme_window_list_icon_size = 16;
+@@ -719,6 +720,8 @@ static void parse_theme(xmlNodePtr node, gpointer d)
          else if (config_theme_window_list_icon_size > 96)
              config_theme_window_list_icon_size = 96;
+     }
 +    if ((n = obt_xml_find_node(node, "strictSkipTaskbar")))
 +        config_theme_strict_skip_taskbar = obt_xml_node_bool(n);
-     }
  
      for (n = obt_xml_find_node(node, "font");
+          n;
 diff --git a/openbox/config.h b/openbox/config.h
-index e70ccab..45f8adf 100644
+index 96a66cf..4e6e88e 100644
 --- a/openbox/config.h
 +++ b/openbox/config.h
 @@ -152,6 +152,8 @@ extern gchar *config_title_layout;

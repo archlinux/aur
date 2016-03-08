@@ -1,8 +1,8 @@
 # Maintainer: Alexey Korop <akorop@ukr.net>
 
 pkgname=openbox_eui
-pkgver=2015.11.06
-pkgrel=2
+pkgver=2016.03.08
+pkgrel=1
 pkgdesc='Highly configurable and lightweight X11 window manager'
 arch=('i686' 'x86_64')
 url='http://openbox.org'
@@ -50,7 +50,7 @@ md5sums=(
          '3718f41d8573d5d2a4cf04536562b93a'
          '6579e6898e3195fb6877e356b2092bba'
          'fabc9f22ebdda17649b7c98fd8fc4d81'
-         'e6a16b0be7eac066976fc56ed0bd1b27'
+         'b480d2825212fa73d9444453e36ed661'
          '5556e7accb519b922b2d07bc0bb67447'
          '1ea5cf52cc72fd7b18f50798d1458baf'
          'e2e2480a2dfe13e93de5fa88c17eaa77'
