@@ -1,7 +1,7 @@
 pkgbase = cewe-fotobuch
 	pkgdesc = an offline client for creating photobooks, uploading and ordering them at cewe.de
 	pkgver = 6.1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.cewe.de/
 	install = cewe-fotobuch.install
 	arch = i686
@@ -12,8 +12,11 @@ pkgbase = cewe-fotobuch
 	depends = libjpeg
 	depends = curl
 	depends = wget
+	conflicts = cewe-fotoservice
 	source = http://dls.photoprintit.de/download/Data/16523/hps/setup_Mein_CEWE_FOTOBUCH.tgz
+	source = updater.pl
 	md5sums = 9197c2551c471da202de3f0652eba324
+	md5sums = 4df55a80124dc8555edf799bd566c5de
 
 pkgname = cewe-fotobuch
 
