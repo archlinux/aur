@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains generic definitions of geometric shapes and
 url='http://ros.org/wiki/geometric_shapes'
 
 pkgname='ros-indigo-geometric-shapes'
-pkgver='0.4.3'
+pkgver='0.4.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -18,7 +18,7 @@ ros_makedepends=(ros-indigo-shape-msgs
   ros-indigo-cmake-modules
   ros-indigo-octomap
   ros-indigo-visualization-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   qhull
   assimp
@@ -40,10 +40,16 @@ depends=(${ros_depends[@]}
   console-bridge
   qhull)
 
-_tag=release/indigo/geometric_shapes/${pkgver}-${_pkgver_patch}
-_dir=geometric_shapes
-source=("${_dir}"::"git+https://github.com/ros-gbp/geometric_shapes-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/geometric_shapes/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/geometric_shapes-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="geometric_shapes-release-release-indigo-geometric_shapes-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometric_shapes-release/archive/release/indigo/geometric_shapes/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('89811f43cff5bc0f4389a0abf0dc923fcec8f66b8beed7cb23c5fa48c8030065')
 
 build() {
   # Use ROS environment variables
