@@ -1,13 +1,13 @@
 pkgbase = gimp-plugin-registry
 	pkgdesc = Repository of optional extensions for GIMP
 	pkgver = 7.20141204
-	pkgrel = 2
+	pkgrel = 3
 	url = https://launchpad.net/~otto-kesselgulasch/+archive/ubuntu/gimp
 	install = gimp-plugin-registry.install
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = anaconda>=8c
+	depends = anaconda>=2.5.0
 	depends = bash-completion
 	depends = desktop-file-utils
 	depends = fftw
