@@ -1,0 +1,14 @@
+--- ./extensions/GUI/CCControlExtension/CCControlUtils.cpp	2016-02-28 22:02:18.206802375 -0400
++++ ./extensions/GUI/CCControlExtension/CCControlUtilsPatched.cpp	2016-03-06 16:33:17.555909367 -0400
+@@ -24,6 +24,11 @@ THE SOFTWARE.
+ 
+ #include "CCControlUtils.h"
+ 
++#if ( CC_TARGET_PLATFORM == CC_PLATFORM_LINUX )
++#include "math.h"
++using std::isnan;
++#endif
++
+ NS_CC_EXT_BEGIN
+ 
+ Sprite* ControlUtils::addSpriteToTargetWithPosAndAnchor(const char* spriteName, Node * target, Vec2 pos, Vec2 anchor)
