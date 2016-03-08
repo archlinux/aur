@@ -3,11 +3,11 @@
 pkgbase='regilo'
 pkgname=('regilo' 'regilo-lib')
 pkgver='2.3'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A simple C++ library for controlling the Neato XV robot and the Hokuyo scanner'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/branoholy/regilo'
-license='GPL3'
+license=('GPL3')
 makedepends=('cmake>=2.8' 'boost>=1.54')
 source=("https://github.com/branoholy/regilo/archive/v$pkgver/regilo-$pkgver.tar.gz"
        "https://github.com/branoholy/regilo/releases/download/v$pkgver/regilo-$pkgver.tar.gz.sig")
