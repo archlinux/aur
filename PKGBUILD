@@ -2,7 +2,7 @@
 
 pkgname=nodejs-pegjs
 _npmname=pegjs
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 depends=('nodejs')
 pkgdesc="Parser generator for JavaScript"
@@ -19,3 +19,4 @@ package() {
   #license
   install -Dm644 "$pkgdir"/usr/lib/node_modules/pegjs/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
+
