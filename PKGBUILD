@@ -4,10 +4,10 @@ pkgdesc="ROS - tf is a package that lets the user keep track of multiple coordin
 url='http://www.ros.org/wiki/tf'
 
 pkgname='ros-indigo-tf'
-pkgver='1.11.7'
+pkgver='1.11.8'
 _pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-tf2-ros
@@ -22,7 +22,7 @@ ros_makedepends=(ros-indigo-tf2-ros
   ros-indigo-sensor-msgs
   ros-indigo-message-filters
   ros-indigo-tf2)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-tf2-ros
@@ -38,10 +38,16 @@ ros_depends=(ros-indigo-tf2-ros
 depends=(${ros_depends[@]}
   graphviz)
 
-_tag=release/indigo/tf/${pkgver}-${_pkgver_patch}
-_dir=tf
-source=("${_dir}"::"git+https://github.com/ros-gbp/geometry-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/tf/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/geometry-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="geometry-release-release-indigo-tf-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry-release/archive/release/indigo/tf/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('f08824367a4b3c00ea4058dfd9e56afc82bfce7ea552842efa6acf007c8cd226')
 
 build() {
   # Use ROS environment variables
