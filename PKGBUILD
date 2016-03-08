@@ -4,7 +4,7 @@
 
 pkgname=gimp-plugin-registry
 pkgver=7.20141204
-pkgrel=5
+pkgrel=6
 debrel=0wily3~ppa
 debrepo=https://launchpad.net/~otto-kesselgulasch/+archive/ubuntu/gimp/+files
 pkgdesc="Repository of optional extensions for GIMP"
@@ -31,5 +31,5 @@ source=("${debrepo}/${pkgname}_${pkgver}-${debrel}_${_debarch}.deb")
 
 package() {
       msg2 "Installing "$pkgname"..."
-      tar xzvf data.tar.xz -C "${pkgdir}"/
+      tar xvf data.tar.xz -C "${pkgdir}"/
 }
