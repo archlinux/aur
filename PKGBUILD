@@ -1,13 +1,13 @@
 # Maintainer: Tom Hacohen <tom@stosb.com>
 pkgname=acme-tiny-wrapper
 pkgver=0.1.0
-pkgrel=0
+pkgrel=1
 pkgdesc="A wrapper around acme-tiny for easier certificate generation"
 url="https://github.com/tasn/acme-tiny-wrapper"
 depends=('bash' 'acme-tiny')
 license=('MIT')
 arch=('any')
-source=("git+git://github.com/tasn/acme-tiny-wrapper.git")
+source=("git+git://github.com/tasn/acme-tiny-wrapper.git#tag=v$pkgver")
 md5sums=('SKIP')
 
 package() {
