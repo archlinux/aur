@@ -4,17 +4,17 @@ pkgdesc="ROS - tf2 is the second generation of the transform library, which lets
 url='http://www.ros.org/wiki/tf2'
 
 pkgname='ros-indigo-tf2'
-pkgver='0.5.12'
+pkgver='0.5.13'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-tf2-msgs
   ros-indigo-catkin
   ros-indigo-rostime
   ros-indigo-geometry-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   console-bridge)
 
@@ -24,10 +24,16 @@ ros_depends=(ros-indigo-tf2-msgs
 depends=(${ros_depends[@]}
   console-bridge)
 
-_tag=release/indigo/tf2/${pkgver}-${_pkgver_patch}
-_dir=tf2
-source=("${_dir}"::"git+https://github.com/ros-gbp/geometry_experimental-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/tf2/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/geometry_experimental-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="geometry_experimental-release-release-indigo-tf2-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry_experimental-release/archive/release/indigo/tf2/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('e144f5342e1e757d2c3c15cb323fd0779f5b2b6c5837ad55512a3c26587bc939')
 
 build() {
   # Use ROS environment variables
