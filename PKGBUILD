@@ -1,7 +1,7 @@
 # Maintainer: Anton Löfgren <anton.lofgren@gmail.com>
 pkgname=spotifile
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="FUSE file system for Spotify"
 arch=(x86_64)
@@ -17,7 +17,7 @@ install=
 changelog=
 source=("https://github.com/catharsis/$pkgname/archive/v$pkgver.tar.gz")
 noextract=()
-md5sums=(094fbc1dcd64abb3ae90f672e2fca518)
+md5sums=(63c8f1cb5ae5a92b07b0aca8ed286d10)
 validpgpkeys=()
 
 build() {
