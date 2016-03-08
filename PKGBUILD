@@ -2,7 +2,7 @@
 # Maintainer: Martin Mlynář <nexus+arch@smoula.net>
 pkgname=dokku
 pkgver=0.4.14
-pkgrel=2
+pkgrel=3
 pkgdesc="Docker powered mini-Heroku in around 100 lines of Bash."
 arch=(any)
 url="https://github.com/dokku/dokku"
@@ -18,14 +18,15 @@ depends=(
 	'herokuish'
 	'openbsd-netcat'
 	'gliderlabs-sigil'
+	'lsb-release'
 )
 
 source=(
 #  "https://github.com/dokku/dokku/archive/v${pkgver}.zip"
-  "https://github.com/MorrisJobke/dokku/archive/arch-linux.zip"
+  "https://github.com/MorrisJobke/dokku/archive/v0.4.14-arch-linux.zip"
   "${pkgname}.install"
 )
-sha256sums=('7ac1f5aaaf7c2c600c53563fe479d2c3e4b2ccd178499ac25257a177bb7162cd'
+sha256sums=('41894fc85399c6cf6d03e6cb15c2291dfc7fb83cfafd15fddcf28754effd0444'
             'cf71d82c16a4cc7a252eb8853a0ab2efea32d1f78c3f483778cbf7cd73d3b8eb')
 install=${pkgname}.install
 
