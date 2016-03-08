@@ -1,7 +1,7 @@
 pkgbase = gimp-plugin-registry
 	pkgdesc = Repository of optional extensions for GIMP
 	pkgver = 7.20141204
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/~otto-kesselgulasch/+archive/ubuntu/gimp
 	install = gimp-plugin-registry.install
 	arch = i686
@@ -19,10 +19,10 @@ pkgbase = gimp-plugin-registry
 	depends = glibc>=2.14
 	depends = glu
 	depends = gtk2>=2.14.0
-	depends = gtkgltext
+	depends = gtkglext
 	depends = hicolor-icon-theme
 	depends = lapack
-	depends = lcms2-git>=20110628
+	depends = lcms2>=2.7
 	depends = libgl
 	depends = liblqr>=0.4.0
 	depends = libtiff>=4.0.3
