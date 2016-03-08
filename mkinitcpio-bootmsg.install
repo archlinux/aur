@@ -1,0 +1,13 @@
+post_install() {
+	cat <<INSTALLEOF
+	To use this hook, add "bootmsg" to the "HOOKS" section in "/etc/mkinitcpio.conf".
+	Then customize /etc/bootmsg.conf to your preference and rebuild the initramfs.
+INSTALLEOF
+}
+
+post_remove() {
+	cat <<REMOVEEOF
+	Remove "bootmsg" from the "HOOKS" section in "/etc/mkinitcpio.conf" and rebuild
+	the initramfs.
+REMOVEEOF
+}
