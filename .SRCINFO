@@ -1,0 +1,12 @@
+pkgbase = sys161
+	pkgdesc = A synthetic hardware platform designed specifically for use in CS161.
+	pkgver = 2.0.8
+	pkgrel = 1
+	url = http://www.eecs.harvard.edu/~mdw/course/cs161/handouts/sys161/
+	arch = x86_64
+	license = custom
+	source = http://os161.eecs.harvard.edu/download/sys161-2.0.8.tar.gz
+	md5sums = 1edad9cc363819c58d3178ed93e2fe0a
+
+pkgname = sys161
+
