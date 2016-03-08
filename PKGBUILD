@@ -35,8 +35,8 @@ package() {
 	# don't clear screen, install broken desktop file, or burble
 	sed -i 's/^\(system("clear"\|createDesktopShortcuts(\|printf(\$TRANSLATABLE\).*;//' install.pl
 
-	# don't show EULA/ask for confirmation if cewe-fotobuch is already installed
-	which cewe-fotobuch &>/dev/null && update='--update'
+	# don't show EULA/ask for confirmation if package is already installed
+	which $pkgname &>/dev/null && update='--update'
 	# keep packages unless updating from within application
 	[[ -z "$_UPDATING" ]] && keepPackages='-k' || update='--upgrade'
 
@@ -44,30 +44,30 @@ package() {
 	install -m644 -b updater.pl $_installDir/updater.pl
 	install -D -m644 $srcdir/EULA.txt $pkgdir/usr/share/licenses/$pkgname/EULA.txt
         # pixmap for legacy customised mimetypes
-	install -D -m644 $_installDir/Resources/keyaccount/32.xpm $pkgdir/usr/share/pixmaps/cewe-fotobuch.xpm
+	install -D -m644 $_installDir/Resources/keyaccount/32.xpm $pkgdir/usr/share/pixmaps/$pkgname.xpm
 
 	# create startup script and desktop file
-	cat > $pkgdir/usr/bin/cewe-fotobuch <<-EOF
+	cat > $pkgdir/usr/bin/$pkgname <<-EOF
 		#!/usr/bin/bash
 		cd ${_installDir#$pkgdir}
-		KDEHOME=\$HOME/.kde4 exec ./cewe-fotobuch "\$@"
+		KDEHOME=\$HOME/.kde4 exec ./$pkgname "\$@"
 	EOF
-	cat > $pkgdir/usr/share/applications/cewe-fotobuch.desktop <<-EOF
+	cat > $pkgdir/usr/share/applications/$pkgname.desktop <<-EOF
 		[Desktop Entry]
 		Type=Application
 		Name=$_productRename
 		Comment=Offline client for cewe.de service
-		Exec=cewe-fotobuch
+		Exec=$pkgname
 		Icon=hps-16523
 		StartupNotify=true
 		Categories=Graphics;Photography;
 		MimeType=application/x-hps-mcf
 	EOF
-	chmod 755 $pkgdir/usr/bin/cewe-fotobuch $pkgdir/usr/share/applications/cewe-fotobuch.desktop
+	chmod 755 $pkgdir/usr/bin/$pkgname $pkgdir/usr/share/applications/$pkgname.desktop
 
         # utf-8 and space in executable filenames is generally a bad idea
 	cd $_installDir
-        mv "Mein CEWE FOTOBUCH" "cewe-fotobuch"
+        mv "Mein CEWE FOTOBUCH" "$pkgname"
 
 	# adjust product name in mimetype comment
 	sed -i "s/Mein CEWE FOTOBUCH/$_productRename/" $pkgdir/usr/share/mime/packages/*
