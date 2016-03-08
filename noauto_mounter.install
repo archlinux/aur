@@ -1,0 +1,9 @@
+post_install() {
+	echo "
+##########################################
+# Be sure to enable and start the timer:
+sudo systemctl enable noauto_mounter.timer
+sudo systemctl start noauto_mounter.timer
+##########################################
+"
+}

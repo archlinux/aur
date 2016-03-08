@@ -1,0 +1,25 @@
+# Maintainer: longranger <longranger dot 406 at gmail dot com>
+pkgname="noauto_mounter"
+pkgver=0.3.r0.g0beb498
+pkgrel=1
+pkgdesc="auto mount local and nfs noauto fstab mounts"
+arch=('x86_64')
+url="https://github.com/longranger/noauto_mounter"
+license=('GPL')
+depends=()
+makedepends=('git')
+source=("${pkgname}-${pkgver}"::'git://github.com/longranger/noauto_mounter')
+md5sums=('SKIP')
+install='noauto_mounter.install'
+
+pkgver() {
+	cd "$pkgname-${pkgver}"
+	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+package() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	install -Dm755 noauto_mounter "${pkgdir}"/usr/bin/noauto_mounter
+	install -Dm755 noauto_mounter.timer "${pkgdir}"/usr/lib/systemd/system/noauto_mounter.timer
+	install -Dm755 noauto_mounter.service "${pkgdir}"/usr/lib/systemd/system/noauto_mounter.service
+}
