@@ -3227,7 +3227,6 @@ CONFIG_IIO=m
 # CONFIG_MMA9553 is not set
 # CONFIG_MXC4005 is not set
 # CONFIG_STK8312 is not set
-# CONFIG_STK8BA50 is not set
 
 #
 # Analog to digital converters
