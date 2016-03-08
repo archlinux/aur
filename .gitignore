@@ -1,4 +1,12 @@
-/csvkit-*.tar.[gx]z
+# Package created by makepkg
+/csvkit-git-*.xz
+
+# Cloned by makepkg
 /csvkit/
+/agate/
+/agate-excel/
+/agate-dbf/
+
+# Created by makepkg
 /src/
 /pkg/

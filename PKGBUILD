@@ -4,16 +4,39 @@
 
 pkgname=csvkit-git
 pkgver=0.9.1.r280.g48f9602
-pkgrel=1
+pkgrel=2
 pkgdesc="A suite of utilities for converting to and working with CSV."
 arch=('any')
 url="http://csvkit.readthedocs.org"
 license=('MIT')
 makedepends=('git')
-depends=('python' 'python-xlrd>=0.9.2' 'python-dateutil>=2.0' 'python-sqlalchemy>=0.9.3' 'python-openpyxl>=2.0.3' 'python-six>=1.6.1')
-makedepends=('git' 'python-setuptools')
-md5sums=('SKIP')
-source=('csvkit::git://github.com/wireservice/csvkit.git')
+depends=(
+    'python'
+    'python-xlrd>=0.9.4' # for csvkit and agate
+    'python-dateutil>=2.2'
+    'python-sqlalchemy>=0.9.3'
+    'python-openpyxl>=2.0.3' # for csvkit and agate
+    'python-six>=1.6.1' # for csvkit and agate
+    'python-isodate>=0.5.4' # for agate
+    'python-parsedatetime>=1.5' # for agate
+    'python-pytimeparse>=1.1.5' #for agate
+)
+makedepends=(
+    'git'
+    'python-setuptools'
+)
+md5sums=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+)
+source=(
+    'csvkit::git://github.com/wireservice/csvkit.git'
+    'agate::git://github.com/wireservice/agate.git'
+    'agate-excel::git://github.com/wireservice/agate-excel.git'
+    'agate-dbf::git://github.com/wireservice/agate-dbf.git'
+)
 
 pkgver() {
   cd "$srcdir/csvkit"
@@ -31,5 +54,18 @@ build() {
 package() {
   cd "$srcdir/csvkit"
   python setup.py install --root="$pkgdir/"
+
+  cd "$srcdir/agate"
+  python setup.py install --root="$pkgdir/"
+
+  cd "$srcdir/agate-excel"
+  python setup.py install --root="$pkgdir/"
+
+  cd "$srcdir/agate-dbf"
+  python setup.py install --root="$pkgdir/"
+
+  test -d "$srcdir/tmp" || mkdir "$srcdir/tmp"
+  #chmod +r "$pkgdir"
+  TMPDIR="$srcdir/tmp" pip install 'Babel>=2.0' dbfread --root "$pkgdir/"
 }
 
