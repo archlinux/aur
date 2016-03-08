@@ -7,7 +7,7 @@ arch=('any')
 url="https://gitlab.swerk.priv.at/stefan/rubanetra"
 license=('GPL3')
 groups=()
-depends=('java-environment'
+depends=('jdk8-openjdk'
          'libpcap')
 makedepends=('maven')
 checkdepends=()
