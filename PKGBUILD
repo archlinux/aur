@@ -12,10 +12,12 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git')
 options=('!strip')
 source=("linux::git://github.com/raspberrypi/linux#branch=rpi-${_branch}.y"
         'config.txt'
-        'cmdline.txt')
+        'cmdline.txt'
+	'config.overrides')
 md5sums=('SKIP'
          'e44f530b3d333b98ad376872cdbbf823'
-         '0244ab7cb2e385a8efe9a7fba9bfcb48')
+         '0244ab7cb2e385a8efe9a7fba9bfcb48'
+         '52d6ecfbfbd617c05324d0e6cd2d7d18')
 _dirname=linux-${_branch}
 _kernelname=${pkgbase#linux}
 pkgver=4.5.0_rc7_1_v7+
@@ -28,6 +30,9 @@ prepare() {
   msg "Prepare to build"
   KERNEL=kernel7
   make bcm2709_defconfig
+
+  # override some .config settings
+  scripts/kconfig/merge_config.sh -r .config ../config.overrides
 
   # add pkgrel to extraversion
   sed -ri "s|^(EXTRAVERSION =)(.*)|\1 \2-${pkgrel}|" Makefile
