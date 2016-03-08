@@ -1,6 +1,6 @@
 # Maintainer: Jonas Kahler <jonas@derkahler.de>
 pkgname=od-datastructuregenerator-git
-pkgver=v3.0.1.4.g0ff539b
+pkgver=v3.0.1
 pkgrel=1
 pkgdesc="Open Source Development Architecture for Virtual, Networked, and Cyber-Physical System Infrastructures."
 arch=('any')
