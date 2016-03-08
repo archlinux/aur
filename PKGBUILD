@@ -2,12 +2,12 @@
 
 pkgname=winusb
 pkgver=1.0.11
-pkgrel=3
+pkgrel=4
 pkgdesc='Simple tool to create a usb stick installer for Windows (Vista and above)'
 arch=('i686' 'x86_64')
 url="http://en.congelli.eu/prog_info_winusb.html"
 license=('GPL3')
-depends=('wxgtk' 'grub' 'ntfs-3g' 'gksu' 'parted')
+depends=('wxgtk' 'grub' 'ntfs-3g' 'gksu' 'parted' 'webkitgtk2')
 makedepends=('diffutils')
 source=("ftp://ftp.ru.debian.org/gentoo-distfiles/distfiles/${pkgname}-${pkgver}.tar.gz"
         'findFile.patch')
