@@ -1,37 +1,80 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
-pkgname=slade
-pkgver=3.1.0.4
+_name=slade
+pkgname=${_name}
+pkgver=3.1.1
 pkgrel=1
-pkgdesc="SLADE3 Doom editor."
+pkgdesc='SLADE3 Doom editor'
 arch=('i686' 'x86_64')
-url="http://slade.mancubus.net/"
+url='http://slade.mancubus.net/'
 license=('GPL')
-depends=('fluidsynth' 'freeimage' 'ftgl' 'libmodplug' 'sfml' 'wxgtk>=3.0')
-makedepends=('cmake' 'imagemagick' 'zip')
-source=(https://github.com/sirjuddington/SLADE/archive/$pkgver.tar.gz
-        slade.desktop)
-sha256sums=('f643174975b2e7cd5c54be75a319a128f703231115f2ceba34ef0b9718d5fb8e'
-            '5d619cdae8a993b07bb72aed54c7e814db48e66aac61a809dd2c5ab1373cd811')
+depends=('bzip2'
+         'desktop-file-utils'
+         'fluidsynth'
+         'freeimage'
+         'freetype2'
+         'ftgl'
+         'glew'
+         'gtk2'
+         'libgl'
+         'sfml'
+         'wxgtk>=3.0'
+         'xdg-utils'
+         'zlib')
+makedepends=('cmake'
+             'imagemagick'
+             'zip')
+install='install'
+source=("https://github.com/sirjuddington/SLADE/archive/${pkgver}.tar.gz"
+        "${_name}.desktop")
+_srcsubdir="SLADE-${pkgver}"
+sha256sums=('da7efc529823772b561a2405dbbc8b59467f3dfc98b9d753af9b1836d3a97529'
+            'e69d6e0da523c5d649bd51316fa827175b5858cb91b4ad311b2f0d0dedd8b9bb')
 
-_srcsubdir=SLADE-$pkgver
+prepare() {
+    cd "${_srcsubdir}"
+
+    cmake -DCMAKE_CXX_FLAGS=-DNDEBUG \
+          -DCMAKE_INSTALL_PREFIX=/usr \
+          .
+}
 
 build() {
-  cd $_srcsubdir
+    cd "${_srcsubdir}"
 
-  cmake -DCMAKE_CXX_FLAGS=-DNDEBUG \
-        .
-  make
+    make
 
-  convert "slade.ico[0]" slade.png
+    mkdir -p 'icons'
+    convert 'dist/res/slade.ico[0]' 'icons/128.png'
+    convert 'dist/res/slade.ico[1]' 'icons/16.png'
+    convert 'dist/res/slade.ico[2]' 'icons/24.png'
+    convert 'dist/res/slade.ico[3]' 'icons/256.png'
+    convert 'dist/res/slade.ico[4]' 'icons/32.png'
+    convert 'dist/res/slade.ico[5]' 'icons/40.png'
+    convert 'dist/res/slade.ico[6]' 'icons/48.png'
+    convert 'dist/res/slade.ico[7]' 'icons/64.png'
 }
 
 package() {
-  cd $_srcsubdir
+    cd "${_srcsubdir}"
 
-  install -Dm755 slade "$pkgdir/usr/bin/slade"
-  install -Dm644 slade.pk3 "$pkgdir/usr/share/slade3/slade.pk3"
+    make install DESTDIR="${pkgdir}"
 
-  install -Dm644 slade.png "$pkgdir/usr/share/pixmaps/slade.png"
-  install -Dm644 "$srcdir/slade.desktop" "$pkgdir/usr/share/applications/slade.desktop"
+    desktop-file-install --dir="${pkgdir}/usr/share/applications" \
+                         "${srcdir}/${_name}.desktop"
+
+    mkdir -p "${pkgdir}/usr/share/icons/hicolor"
+    (
+        cd 'icons'
+        export XDG_DATA_DIRS="${pkgdir}/usr/share"
+
+        local _file
+        for _file in *.png; do
+            xdg-icon-resource install --noupdate \
+                                      --novendor \
+                                      --size "${_file%.png}" \
+                                      "${_file}" \
+                                      "${_name}"
+        done
+    )
 }
