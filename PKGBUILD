@@ -6,12 +6,12 @@
 pkgname=bvi
 pkgver=1.4.0
 _pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A display-oriented editor for binary files operate like 'vi' editor"
 url="http://bvi.sourceforge.net"
 arch=(i686 x86_64)
 depends=('ncurses')
-license="GPL"
+license=("GPL")
 source=('http://downloads.sourceforge.net/sourceforge/bvi/'$pkgname-$_pkgver'.src.tar.gz')
 
 build ()

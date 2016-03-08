@@ -1,7 +1,7 @@
 pkgbase = bvi
 	pkgdesc = A display-oriented editor for binary files operate like 'vi' editor
 	pkgver = 1.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://bvi.sourceforge.net
 	arch = i686
 	arch = x86_64
