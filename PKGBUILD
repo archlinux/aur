@@ -25,7 +25,7 @@ _local_qt5_repo="/opt/dev/src/qtproject/qt5"
 _wayland_compositor=true
 
 pkgver=5.6.0
-pkgrel=11
+pkgrel=12
 
 # PKGBUILD
 _piver=2
@@ -116,7 +116,6 @@ fi
   cp -r "${srcdir}/mkspecs/${_mkspec}" $_mkspec_dir
 
   # skipping on principle: qtscript xcb
-  # skipping because of the target in question: widgets
 
   # Too bleeding big
   # -developer-build \
@@ -169,7 +168,6 @@ fi
     -egl \
     -journald \
     \
-    -no-widgets \
     -make libs \
     -no-xcb \
     \
