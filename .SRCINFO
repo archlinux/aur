@@ -1,9 +1,10 @@
 pkgbase = od-datastructuregenerator-git
 	pkgdesc = Open Source Development Architecture for Virtual, Networked, and Cyber-Physical System Infrastructures.
-	pkgver = v3.0.1.4.g0ff539b
+	pkgver = v3.0.1
 	pkgrel = 1
 	url = http://opendavinci.cse.chalmers.se/www/
 	arch = any
+	groups = opendavinci-git
 	license = GPL
 	makedepends = cmake
 	makedepends = gcc
