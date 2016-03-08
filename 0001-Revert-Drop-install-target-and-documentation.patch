@@ -1,0 +1,90 @@
+From e64d123386aabf9884dccabce197855aa7338ddd Mon Sep 17 00:00:00 2001
+From: Anatol Pomozov <anatol.pomozov@gmail.com>
+Date: Tue, 8 Mar 2016 08:45:34 -0800
+Subject: [PATCH] Revert "Drop "install" target and documentation."
+
+This reverts commit 7c1cd2e5cd3f3d1193ee375b46cfd8afaccb89f7.
+---
+ Makefile  | 25 ++++++++++++++++++++++++-
+ README.md | 11 ++++++++---
+ 2 files changed, 32 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index d93efea..8476bd1 100644
+--- a/Makefile
++++ b/Makefile
+@@ -23,6 +23,13 @@ PREFIX		?= arm-none-eabi
+ STYLECHECK      := scripts/checkpatch.pl
+ STYLECHECKFLAGS := --no-tree -f --terse --mailback
+ 
++DESTDIR		?= /usr/local
++
++INCDIR		:= $(DESTDIR)/$(PREFIX)/include
++LIBDIR		:= $(DESTDIR)/$(PREFIX)/lib
++SHAREDIR	:= $(DESTDIR)/$(PREFIX)/share/libopencm3/scripts
++INSTALL		:= install
++
+ space:=
+ space+=
+ SRCLIBDIR:= $(subst $(space),\$(space),$(realpath lib))
+@@ -64,6 +71,22 @@ $(LIB_DIRS): $(IRQ_DEFN_FILES:=.genhdr)
+ lib: $(LIB_DIRS)
+ 	$(Q)true
+ 
++install: lib
++	@printf "  INSTALL headers\n"
++	$(Q)$(INSTALL) -d $(INCDIR)/libopencm3
++	$(Q)$(INSTALL) -d $(INCDIR)/libopencmsis
++	$(Q)$(INSTALL) -d $(LIBDIR)
++	$(Q)$(INSTALL) -d $(SHAREDIR)
++	$(Q)cp -r include/libopencm3/* $(INCDIR)/libopencm3
++	$(Q)cp -r include/libopencmsis/* $(INCDIR)/libopencmsis
++	@printf "  INSTALL libs\n"
++	$(Q)$(INSTALL) -m 0644 lib/*.a $(LIBDIR)
++	@printf "  INSTALL ldscripts\n"
++	$(Q)$(INSTALL) -m 0644 lib/*.ld $(LIBDIR)
++	$(Q)$(INSTALL) -m 0644 lib/efm32/*/*.ld $(LIBDIR)
++	@printf "  INSTALL scripts\n"
++
++
+ html doc:
+ 	$(Q)$(MAKE) -C doc html
+ 
+@@ -106,4 +129,4 @@ genlinktests: $(LDTESTS:.data=.ldtest)
+ 	fi;
+ 
+ 
+-.PHONY: build lib $(LIB_DIRS) doc clean generatedheaders cleanheaders stylecheck genlinktests
++.PHONY: build lib $(LIB_DIRS) install doc clean generatedheaders cleanheaders stylecheck genlinktests
+diff --git a/README.md b/README.md
+index 938d5e2..ff331aa 100644
+--- a/README.md
++++ b/README.md
+@@ -136,9 +136,13 @@ https://github.com/libopencm3/libopencm3-examples
+ Installation
+ ------------
+ 
+-Simply pass -I and -L flags to your own project.  See the libopencm3-examples
+-repository for an example of using this library as a git submodule, the most
+-popular method of use.
++    $ make install
++
++This will install the library into `/usr/local`. (permissions permitting)
++
++If you want to install it elsewhere, use the following syntax:
++
++    $ make DESTDIR=/opt/libopencm3 install
+ 
+ It is strongly advised that you do not attempt to install this library to any
+ path inside your toolchain itself.  While this means you don't have to include
+@@ -147,6 +151,7 @@ linker from picking the right versions of libraries.  Common symptoms are
+ hardfaults caused by branches into arm code.  You can use `arm-none-eabi-objdump`
+ to check for this in your final elf.  You have been warned.
+ 
++
+ Coding style and development guidelines
+ ---------------------------------------
+ 
+-- 
+2.7.2
+
