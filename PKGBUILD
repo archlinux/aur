@@ -1,7 +1,7 @@
 # Maintainer: fsckd <fsckdaemon at gmail dot com>
 
 pkgname=jo-git
-pkgver=r31.5d73898
+pkgver=r57.9bf9f45
 pkgrel=1
 pkgdesc='A shell command to create JSON'
 arch=('i686' 'x86_64')
@@ -20,10 +20,9 @@ pkgver() {
 
 build() {
   cd "$srcdir/jo"
+  autoreconf -vi
+  ./configure
   make jo
-  # man page may already be made
-  # if it isn't, add pandoc to makedeps and:
-  # make jo.1
 }
 
 package() {
