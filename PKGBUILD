@@ -4,7 +4,7 @@ pkgdesc="ROS - self_test."
 url='http://www.ros.org/wiki/self_test'
 
 pkgname='ros-indigo-self-test'
-pkgver='1.8.8'
+pkgver='1.8.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -15,7 +15,7 @@ ros_makedepends=(ros-indigo-rostest
   ros-indigo-roscpp
   ros-indigo-diagnostic-msgs
   ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-diagnostic-updater
@@ -23,10 +23,16 @@ ros_depends=(ros-indigo-diagnostic-updater
   ros-indigo-diagnostic-msgs)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/self_test/${pkgver}-${_pkgver_patch}
-_dir=self_test
-source=("${_dir}"::"git+https://github.com/ros-gbp/diagnostics-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/self_test/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/diagnostics-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="diagnostics-release-release-indigo-self_test-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/diagnostics-release/archive/release/indigo/self_test/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('9e65d929223164102eab265935b351f96021e16643d1233591c2612b5b318326')
 
 build() {
   # Use ROS environment variables
