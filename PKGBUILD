@@ -5,7 +5,7 @@
 
 pkgname=mingw-w64-qt5-base-opengl
 pkgver=5.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform application and UI framework (mingw-w64)"
 arch=(i686 x86_64)
 url="https://www.qt.io/"
@@ -252,8 +252,15 @@ build() {
     # fix include directory of dbus
     qt_configure_args+=" $(${_arch}-pkg-config --cflags-only-I dbus-1 --cflags)"
 
-    isOpenGL && qt_configure_args+=' -opengl desktop'
-    isStatic && qt_configure_args+=' -opengl no'
+    if isStatic; then
+      qt_configure_args+=' -opengl no'
+    elif isOpenGL; then
+      qt_configure_args+=' -opengl desktop'
+    else
+      # GL_GLEXT_PROTOTYPES must be defined to enable declarations GLES functions
+      qt_configure_args+=' -DGL_GLEXT_PROTOTYPES'
+    fi
+    # TODO: allow dynamic OpenGL configuration
 
     unset PKG_CONFIG_PATH
 
