@@ -1,7 +1,5 @@
-fahrplan-*.tar.gz
-fahrplan-*.tar.xz
 pkg
 src
 LICENSE
 finja-*.tar.gz
-finja-1.0.2-1-any.pkg.tar
+finja-*.pkg.*
