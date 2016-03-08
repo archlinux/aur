@@ -2,11 +2,11 @@
 # Maintainer: Branislav Holý <branoholy@gmail.com>
 pkgname='regilo-visual'
 pkgver='2.3'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A visualization program for the Regilo library'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/branoholy/regilo'
-license='GPL3'
+license=('GPL3')
 makedepends=('cmake>=2.8' 'boost>=1.54' 'regilo=2.3')
 depends=('boost-libs>=1.54' 'wxgtk>=3.0' 'regilo-lib=2.3')
 source=("https://github.com/branoholy/regilo/archive/v$pkgver/regilo-$pkgver.tar.gz"
