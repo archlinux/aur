@@ -1,7 +1,7 @@
 # Maintainer: fsckd <fsckdaemon at gmail dot com>
 
 pkgname=jo-git
-pkgver=r57.9bf9f45
+pkgver=0.6.r0.g9bf9f45
 pkgrel=1
 pkgdesc='A shell command to create JSON'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/jo"
-  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
