@@ -1,7 +1,7 @@
 # maintainer : fenugrec
 # contributors : xantares,  icarus 
 pkgname=freediag
-pkgver=1.06
+pkgver=1.07
 pkgrel=1
 pkgdesc="OBD-II vehicle diagnostic software and (mostly) J1978 compliant scan tool."
 arch=('i686' 'x86_64')
@@ -9,9 +9,10 @@ url="http://freediag.sourceforge.net/"
 license=('GPL')
 makedepends=('cmake')
 depends=('glibc')
-optdepends=('fltk: needed for scangui front-end')
+optdepends=('fltk: needed for scangui front-end'
+		'readline: better CLI')
 source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/1.0/$pkgname-$pkgver-src.tar.gz")
-sha256sums=('dcd0ece685db9248d816a43a86d6aba3512d458f177ad80a7c07f75845d2ac44')
+sha256sums=('7249ea20f24f141d6b7dbb40703232f51de97ecff1c303ef6ed30d44c30ba7e6')
 
 build() {
   cd "$pkgname-$pkgver-src"
