@@ -1,23 +1,12 @@
-From b64fcf0e8557552aa5c193bb20a6a89975528027 Mon Sep 17 00:00:00 2001
-From: Robin Nehls <nehls@mi.fu-berlin.de>
-Date: Thu, 19 Nov 2015 16:18:42 +0100
-Subject: [PATCH] PKGBUILD compat
-
----
- GNUmakefile | 13 +++++++------
- 1 file changed, 7 insertions(+), 6 deletions(-)
-
-diff --git a/GNUmakefile b/GNUmakefile
-index 56647ba..beab352 100644
---- a/GNUmakefile
-+++ b/GNUmakefile
+--- a/GNUmakefile	2016-02-29 13:33:22.915518271 +0100
++++ b/GNUmakefile	2016-02-29 13:47:39.938826378 +0100
 @@ -1,4 +1,5 @@
  PREFIX = /usr/local
 +REALPREFIX = /usr/local
  LIBDIR = lib/imunes
  IMUNESDIR = $(PREFIX)/$(LIBDIR)
  CONFIGDIR = $(IMUNESDIR)/config
-@@ -11,6 +12,7 @@ NORMAL_ICONSDIR = $(ICONSDIR)/normal
+@@ -12,6 +13,7 @@
  SMALL_ICONSDIR = $(ICONSDIR)/small
  TINY_ICONSDIR = $(ICONSDIR)/tiny
  BINDIR = $(PREFIX)/bin
@@ -25,21 +14,23 @@ index 56647ba..beab352 100644
  IMUNESDATE = `date +"%Y%m%d"`
  IMUNESVER = 1.0
  TARBALL_DIR = imunes_$(IMUNESDATE)
-@@ -47,19 +49,19 @@ info:
+@@ -50,21 +52,21 @@
  
  all: install
  
--install: uninstall
-+install:
+-install: uninstall netgraph
++install: netgraph
  	mkdir -p $(IMUNESDIR)
  	cp $(BASEFILES) $(IMUNESDIR)
- 	sh scripts/update_version.sh
+ 	ROOTDIR=$(PREFIX) sh scripts/update_version.sh
  	mkdir -p $(BINDIR)
  
  	sed -e "s,set LIBDIR \"\",set LIBDIR $(LIBDIR)," \
 -	    -e "s,set ROOTDIR \".\",set ROOTDIR $(PREFIX)," \
 +	    -e "s,set ROOTDIR \".\",set ROOTDIR $(REALPREFIX)," \
  	    imunes.tcl > $(IMUNESDIR)/imunes.tcl
+ 
+ 	cp helpers.tcl $(IMUNESDIR)
  
  	sed -e "s,LIBDIR=\"\",LIBDIR=$(LIBDIR)," \
 -	    -e "s,ROOTDIR=\".\",ROOTDIR=$(PREFIX)," \
@@ -49,7 +40,7 @@ index 56647ba..beab352 100644
  	    imunes > $(BINDIR)/imunes
  	chmod 755 $(BINDIR)/imunes
  
-@@ -80,7 +82,7 @@ endif
+@@ -85,7 +87,7 @@
  
  	for file in $(VROOT); do \
  	    sed -e "s,LIBDIR=\"\",LIBDIR=$(LIBDIR)," \
@@ -58,14 +49,3 @@ index 56647ba..beab352 100644
  		$${file} > $(IMUNESDIR)/$${file}; \
  	    chmod 755 $(IMUNESDIR)/$${file}; \
  	done ;
-@@ -149,7 +151,6 @@ endif
- 
- tarball:
- 	rm -f ../$(TARBALL_DIR).tar.gz
--
- 	mkdir -p ../$(TARBALL_DIR)
- 	cp $(FILES) $(BINARIES) $(VROOT) Makefile imunes imunes.tcl ../$(TARBALL_DIR)
- 
--- 
-2.6.2
-
