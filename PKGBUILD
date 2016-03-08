@@ -6,12 +6,12 @@ _gitrev=210
 _gitver=9c69e092
 _fullname="$pkgname-$pkgver.$_gitrev-$_gitver"
 _webclientver=3263b2f # Set in CMakeModules/WebClientVariables.cmake
-pkgrel=2
+pkgrel=3
 pkgdesc='Next generation Plex Desktop Client'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='https://github.com/plexinc/plex-media-player'
-depends=('mpv' 'qt5-webengine>=5.6' 'libcec')
+depends=('mpv' 'qt5-webengine>=5.6' 'libcec' 'sdl2')
 makedepends=('cmake')
 install='plex-media-player.install'
 source=("$_fullname.tar.gz::https://github.com/plexinc/plex-media-player/archive/v${pkgver}.${_gitrev}-${_gitver}.tar.gz"
@@ -33,6 +33,14 @@ prepare() {
 	# This isn't necessary and fails
 	sed -i 's|file(WRITE ${QTROOT}/bin/qt.conf ${QTCONFCONTENT})||' \
 	       CMakeModules/QtConfiguration.cmake
+
+	# Fix two errors: https://github.com/plexinc/plex-media-player/issues/256
+	sed -i 's|list(REMOVE_DUPLICATES QT5_CFLAGS)|list(APPEND QT5_CFLAGS -fPIC)|' \
+	       CMakeModules/QtConfiguration.cmake
+
+	# Fix enabling SDL2 input
+	sed -i 's|set(DL_FOUND)|set(DL_FOUND TRUE)|' \
+	       CMakeModules/FindDL.cmake
 
 	# Use our downloaded copy of web-client
 	mkdir -p build/src
