@@ -4,7 +4,7 @@ pkgdesc="ROS - Small lib to transform sensor_msgs with tf."
 url='http://www.ros.org/wiki/tf2_ros'
 
 pkgname='ros-indigo-tf2-sensor-msgs'
-pkgver='0.5.12'
+pkgver='0.5.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -15,21 +15,28 @@ ros_makedepends=(ros-indigo-cmake-modules
   ros-indigo-tf2-ros
   ros-indigo-tf2
   ros-indigo-sensor-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   eigen3)
 
 ros_depends=(ros-indigo-cmake-modules
   ros-indigo-tf2-ros
+  ros-indigo-python-orocos-kdl
   ros-indigo-tf2
   ros-indigo-sensor-msgs)
 depends=(${ros_depends[@]}
   eigen3)
 
-_tag=release/indigo/tf2_sensor_msgs/${pkgver}-${_pkgver_patch}
-_dir=tf2_sensor_msgs
-source=("${_dir}"::"git+https://github.com/ros-gbp/geometry_experimental-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/tf2_sensor_msgs/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/geometry_experimental-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="geometry_experimental-release-release-indigo-tf2_sensor_msgs-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry_experimental-release/archive/release/indigo/tf2_sensor_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('75a56958d5773248bd9d130c835990c18d861a7eb246fa98aa790a57a38045ef')
 
 build() {
   # Use ROS environment variables
