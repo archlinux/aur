@@ -5,8 +5,8 @@
 
 _gemname=rails
 pkgname=ruby-$_gemname
-pkgver=4.2.5.2
-pkgrel=2
+pkgver=4.2.6
+pkgrel=1
 pkgdesc='Full-stack web application framework.'
 arch=(any)
 url='http://www.rubyonrails.org'
@@ -16,7 +16,7 @@ depends=(ruby ruby-activesupport ruby-actionpack ruby-actionview ruby-activemode
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('0a0c4b44a6a40680deffd7abe6fe1ad4c4adcd77')
+sha1sums=('ca802d5ecf54f085866c473d71e74c7ddf11410e')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
