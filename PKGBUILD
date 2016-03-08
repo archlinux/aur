@@ -3,7 +3,7 @@
 
 pkgname=receitanet
 pkgver=1.07
-pkgrel=3
+pkgrel=4
 license=('custom')
 
 arch=(any)
@@ -18,7 +18,7 @@ md5sums=('8c1d9e034f5a8bf87261aca9899256f2'
          '0482abdccc0286f64ed66981fcca8975'
          '9ffa35004b1cb3e108bb4221d630fc47')
 
-depends=('java-runtime-common' 'hicolor-icon-theme' 'desktop-file-utils')
+depends=('jre8-openjdk' 'hicolor-icon-theme' 'desktop-file-utils')
 install=$pkgname.install
 
 prepare() {
