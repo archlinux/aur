@@ -2,7 +2,7 @@
 
 _realname=CPU-X
 pkgname=cpu-x-git
-pkgver=2.91.0.r0.16a5f27
+pkgver=2.91.0.r83.g7d45def
 pkgrel=1
 pkgdesc="A Free software that gathers information on CPU, motherboard and more (like CPU-Z)"
 arch=('i686' 'x86_64')
@@ -13,12 +13,14 @@ makedepends=('cmake' 'nasm')
 provides=('cpu-x')
 conflicts=('cpu-x')
 options=('debug')
+install=$pkgname.install
 source=("git+https://github.com/X0rg/CPU-X.git")
 md5sums=('SKIP')
 
 pkgver() {
 	cd "$_realname"
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	v=$(grep "VERSION" CMakeLists.txt | sed -n 2p | awk '{ print $2 }')
+	git describe --long --tags | sed -e "s/^v//;s/2.2.2/$v/;s/\([^-]*-g\)/r\1/;s/-/./g"
 }
 
 prepare() {
