@@ -47,9 +47,9 @@ package() {
 	# don't show EULA/ask for confirmation if package is already installed
 	which $pkgname &>/dev/null && update='--update'
 	# keep packages unless updating from within application
-	[[ -z "$_UPDATING" ]] && keepPackages='-k'
+	[[ -z "$_UPDATING" ]] && update='-k --upgrade'
 
-	./install.pl $update $keepPackages --installDir=$_installDir -v
+	./install.pl $update --installDir=$_installDir -v
 	install -m644 -b updater.pl $_installDir/updater.pl
 	install -D -m644 $srcdir/EULA.txt $pkgdir/usr/share/licenses/$pkgname/EULA.txt
         # pixmap for legacy customised mimetypes
