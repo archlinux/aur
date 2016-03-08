@@ -1,5 +1,5 @@
 pkgname=qoobar
-pkgver=1.6.8
+pkgver=1.6.9.1
 pkgrel=1
 pkgdesc="Qoobar - Audio Tagger for Classical Music"
 arch=('i686' 'x86_64')
@@ -7,11 +7,11 @@ url="http://qoobar.sourceforge.net"
 license=('GPL')
 depends=('qt5-base' 'gstreamer' 'flac' 'libdiscid' 'enca' 'shntool')
 source=("http://downloads.sourceforge.net/sourceforge/qoobar/qoobar-${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('335599660806c8600c919ca194ebe8cb')
+md5sums=('1c666dc58d634fb86e53aef231d01b67')
 
 build() {
   cd  "$srcdir/${pkgname}-${pkgver}"
-  qmake qoobar.pro PREFIX=/usr
+  qmake PREFIX=/usr
   make
 }
 
