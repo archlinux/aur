@@ -5,7 +5,7 @@
 
 _gemname=activemodel
 pkgname=ruby-$_gemname
-pkgver=4.2.5.2
+pkgver=4.2.6
 pkgrel=1
 pkgdesc='A toolkit for building modeling frameworks (part of Rails).'
 arch=(any)
@@ -15,7 +15,7 @@ depends=(ruby ruby-activesupport ruby-builder)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('84af62e888830fd6616cc984bc06da3f87ef12b5')
+sha1sums=('7dc2c0e48ee4124f436c1b0c963e7ca582a5a125')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
