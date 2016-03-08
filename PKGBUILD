@@ -7,12 +7,12 @@
 
 pkgname=paraview
 pkgver=5.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Parallel Visualization Application using VTK'
 arch=('i686' 'x86_64')
 url='http://www.paraview.org'
 license=('custom')
-depends=('qt5-tools' 'openmpi' 'python2' 'ffmpeg2.8' 'boost' 'cgns' 'glew'
+depends=('qt5-tools' 'openmpi' 'python2' 'ffmpeg' 'boost' 'cgns' 'glew'
 	 'expat' 'freetype2' 'hdf5' 'libjpeg' 'libxml2' 'libtheora' 'libpng' 'libtiff' 'zlib')
 makedepends=('cmake' 'mesa' 'gcc-fortran')
 optdepends=('python2-matplotlib: Needed to support equation rendering using MathText markup language'
@@ -21,21 +21,27 @@ source=("http://paraview.org/files/v${pkgver:0:3}/ParaView-v${pkgver}-source.tar
 	    'paraview.png'
 	    'paraview.desktop'
 	    'paraview_32bit.patch'
-	    '0001-find_hdf5.patch')
+	    '0001-find_hdf5.patch'
+	    'ffmpeg3_compat.patch')
 sha1sums=('909da124e13a385ce4bfb5afd4d0089aa5271904'
           'a2dff014e1235dfaa93cd523286f9c97601d3bbc'
           '1f94c8ff79bb2bd2c02d6b403ea1f4599616531b'
 	  'c25134330c582371e1009b51445cdb435144b53f'
-	  '3f8701c349194cff12f5d1104fbc070a52dd3da1')
+	  '3f8701c349194cff12f5d1104fbc070a52dd3da1'
+	  'a78177f8dd6dedd9ad189fa12730ec53c7d02508')
 
 prepare() {
   cd "${srcdir}/ParaView-v${pkgver}-source"
 
   patch -p1 -i ../paraview_32bit.patch
-  
+
   # Find HDF before the check (for NetCDF)
   patch "VTK/ThirdParty/netcdf/vtknetcdf/CMakeLists.txt" \
     "../0001-find_hdf5.patch"
+    
+  cd "${srcdir}/ParaView-v${pkgver}-source/VTK"
+  
+  patch -p1 -i ../../ffmpeg3_compat.patch
 
   
   rm -rf "${srcdir}/build"
@@ -58,11 +64,11 @@ build() {
    	 -DPYTHON_INCLUDE_DIR:PATH=/usr/include/python2.7 -DPYTHON_LIBRARY:PATH=/usr/lib/libpython2.7.so"
 
    # flags to use ffmpeg2.8
-   local ffmpeg_compat_flags="-DFFMPEG_INCLUDE_DIR:PATH=/usr/include/ffmpeg2.8 \
-   	 -DFFMPEG_avcodec_LIBRARY=/usr/lib/ffmpeg2.8/libavcodec.so \
-   	 -DFFMPEG_avformat_LIBRARY=/usr/lib/ffmpeg2.8/libavformat.so \
-   	 -DFFMPEG_avutil_LIBRARY=/usr/lib/ffmpeg2.8/libavutil.so \
-   	 -DFFMPEG_swscale_LIBRARY=/usr/lib/ffmpeg2.8/libswscale.so"
+   local ffmpeg_compat_flags="-DFFMPEG_INCLUDE_DIR:PATH=/usr/include/ \
+   	 -DFFMPEG_avcodec_LIBRARY=/usr/lib/libavcodec.so \
+   	 -DFFMPEG_avformat_LIBRARY=/usr/lib/libavformat.so \
+   	 -DFFMPEG_avutil_LIBRARY=/usr/lib/libavutil.so \
+   	 -DFFMPEG_swscale_LIBRARY=/usr/lib/libswscale.so"
 
    # enable when http://paraview.org/Bug/view.php?id=12852 gets fixed:
    #-DCMAKE_SKIP_RPATH:BOOL=YES \
