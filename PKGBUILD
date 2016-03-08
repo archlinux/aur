@@ -12,7 +12,7 @@ _gitroot='https://github.com/Steveice10/bannertool.git'
 _gitname='bannertool'
 
 source=("${_gitname}::git+${_gitroot}"
-        "buildtools::git+https://github.com/Steveice10/buildtools")
+        "buildtools::git+https://github.com/Steveice10/buildtools.git")
 
 pkgver() {
     cd "$srcdir/$_gitname"
