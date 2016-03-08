@@ -1,0 +1,24 @@
+## arg 1:  the new package version
+post_install() {
+  getent passwd oml2 >/dev/null && getent group oml2 >/dev/null && exit 0
+  echo ">>> Creating oml2 user and group and setting permissions..."
+  getent group oml2 >/dev/null || usr/sbin/groupadd -g 137 oml2
+  getent passwd oml2 >/dev/null || usr/sbin/useradd -c 'OML2 daemon' -u 137 -g oml2 -d '/var/oml2' -s /bin/bash oml2
+  mkdir -p /var/oml2
+  chown oml2:oml2 /var/oml2
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  post_install
+}
+
+## arg 1:  the old package version
+pre_remove() {
+  getent passwd oml2 >/dev/null && usr/sbin/userdel oml2 &>/dev/null
+  rm -rf /var/oml2
+  (getent group oml2 >/dev/null && usr/sbin/groupdel oml2 &>/dev/null) || /bin/true
+}
+
+# vim:set ts=2 sw=2 et:

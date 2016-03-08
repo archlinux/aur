@@ -1,0 +1,32 @@
+# Do not make modifications to this file, as they may not survive update.
+# Instead, copy it to /etc/systemd/system/, and modify it there; then, run
+#  sudo systemctl reenable oml2-server.service
+# That modified copy will override the parameters here.
+#
+# See systemd(1) for details.
+#
+[Unit]
+Description=OML2 measurements collection server
+After=network.target
+# SQLite3 backend (and logs)
+RequiresMountsFor=/var
+
+# Uncomment the following lines when using the PostgreSQL backend
+#Requires=postgresql.service
+#After=postgresql.service
+
+[Service]
+Type=simple
+# This creates SQLite3 databases in /var/oml2, use
+#	"--data-dir=DIR"
+# to override.
+#
+# See oml2-server(1) for details.
+ExecStart=/usr/bin/oml2-server -l 3003 --logfile=/var/log/oml2-server.log --user=oml2 --group=oml2
+
+# Add the following to the ExecStart line to enable and configure the PostgreSQL
+# backend
+#--backend=postgresql --pg-host=localhost --pg-port=5432 --pg-user=oml2 --pg-pass=correcthorsebatterystaple
+
+[Install]
+WantedBy=multi-user.target
