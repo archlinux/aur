@@ -1,7 +1,7 @@
 # Maintainer: lukas <lukas <dot> graetz <at> web <dot>  de>
 # Maintainer: Graham Edgecombe <graham@grahamedgecombe.com>
 pkgname=cfr
-pkgver=0_113
+pkgver=0_115
 pkgrel=1
 pkgdesc='Another Java decompiler'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('java-runtime')
 source=("http://www.benf.org/other/cfr/cfr_${pkgver}.jar"
         'cfr' 'LICENSE')
 noextract=("cfr_${pkgver}.jar")
-md5sums=('167828a87ea6541cb5a24bd4725befb3'
+md5sums=('3a0b55f3a290de912134b48202a7d70f'
          'd0f7cff1f51f2b25139e4855bf0520ee'
          '023543479a311ba82f63192d82d4ef92')
 
