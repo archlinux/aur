@@ -32,6 +32,7 @@ source=(
 'utf8-menu-accelerators.diff'
 'topmenu_kbd_group_local.patch'
 'strict_skip_taskbar.patch'
+'uniconify.patch'
 'menu.xml'
 'rc.xml'
 'install'
@@ -50,6 +51,7 @@ md5sums=(
          '6579e6898e3195fb6877e356b2092bba'
          'fabc9f22ebdda17649b7c98fd8fc4d81'
          'e6a16b0be7eac066976fc56ed0bd1b27'
+         '5556e7accb519b922b2d07bc0bb67447'
          '1ea5cf52cc72fd7b18f50798d1458baf'
          'e2e2480a2dfe13e93de5fa88c17eaa77'
          'da62476c79a186e0313578963b2ee637'
@@ -91,6 +93,8 @@ build() {
   patch -p1 < ../topmenu_kbd_group_local.patch
  echo  strict_skip_taskbar
   patch -p1 < ../strict_skip_taskbar.patch
+ echo  uniconify.patch
+  patch -p1 < ../uniconify.patch
  ./bootstrap
   ./configure --prefix=/usr \
     --with-x \

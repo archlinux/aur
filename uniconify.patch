@@ -1,0 +1,65 @@
+diff --git a/Makefile.am b/Makefile.am
+index 2d4a0ff..67fb868 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -211,6 +211,7 @@ openbox_openbox_SOURCES = \
+ 	openbox/actions/fullscreen.c \
+ 	openbox/actions/growtoedge.c \
+ 	openbox/actions/iconify.c \
++	openbox/actions/uniconify.c \
+ 	openbox/actions/if.c \
+ 	openbox/actions/kill.c \
+ 	openbox/actions/layer.c \
+diff --git a/openbox/actions/all.c b/openbox/actions/all.c
+index 07fa51f..8755f64 100644
+--- a/openbox/actions/all.c
++++ b/openbox/actions/all.c
+@@ -20,6 +20,7 @@ void action_all_startup(void)
+     action_raiselower_startup();
+     action_unfocus_startup();
+     action_iconify_startup();
++    action_uniconify_startup();
+     action_fullscreen_startup();
+     action_maximize_startup();
+     action_moveresizeto_startup();
+diff --git a/openbox/actions/all.h b/openbox/actions/all.h
+index fc6917e..356f752 100644
+--- a/openbox/actions/all.h
++++ b/openbox/actions/all.h
+@@ -21,6 +21,7 @@ void action_lower_startup(void);
+ void action_raiselower_startup(void);
+ void action_unfocus_startup(void);
+ void action_iconify_startup(void);
++void action_uniconify_startup(void);
+ void action_fullscreen_startup(void);
+ void action_maximize_startup(void);
+ void action_moveresizeto_startup(void);
+diff --git a/openbox/actions/uniconify.c b/openbox/actions/uniconify.c
+new file mode 100644
+index 0000000..e68981d
+--- /dev/null
++++ b/openbox/actions/uniconify.c
+@@ -0,0 +1,23 @@
++#include "openbox/actions.h"
++#include "openbox/client.h"
++
++static gboolean run_func(ObActionsData *data, gpointer options);
++
++void action_uniconify_startup(void)
++{
++    actions_register("UnIconify",
++                     NULL, NULL,
++                     run_func);
++}
++
++/* Always return FALSE because its not interactive */
++static gboolean run_func(ObActionsData *data, gpointer options)
++{
++    if (data->client) {
++        actions_client_move(data, TRUE);
++        client_iconify(data->client, FALSE, TRUE, FALSE);
++        actions_client_move(data, FALSE);
++    }
++
++    return FALSE;
++}
