@@ -3,12 +3,12 @@
 _gemname=rails-html-sanitizer
 pkgname=ruby-$_gemname
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='HTML sanitization for Rails applications'
 arch=(any)
 url='https://github.com/rails/rails-html-sanitizer'
 license=(MIT)
-depends=(ruby ruby-bundler ruby-minitest ruby-rails-dom-testing ruby-rake)
+depends=(ruby ruby-loofah)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
