@@ -9,10 +9,11 @@ url='http://openbox.org'
 conflicts=('openbox')
 provides=('openbox' 'libobrender.so')
 license=('GPL')
-makedepends=(binutils git patch libtool automake autoconf m4 make pkg-config gcc fakeroot docbook-to-man)
+makedepends=(binutils git patch libtool automake autoconf m4 make pkg-config gcc fakeroot)
+
 depends=('startup-notification' 'libxml2' 'libxinerama' 'libxrandr'
          'libxcursor' 'pango' 'imlib2' 'librsvg' 'libsm')
-optdepends=('kdebase-workspace: for the KDE/Openbox xsession'
+optdepends=('plasma-workspace: for the KDE/Openbox xsession'
             'python2-xdg: for the openbox-xdg-autostart script')
 groups=('lxde')
 backup=('etc/xdg/openbox/menu.xml' 'etc/xdg/openbox/rc.xml'
