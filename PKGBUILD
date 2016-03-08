@@ -1,14 +1,14 @@
 # Maintainer: longranger <longranger dot 406 at gmail dot com>
 pkgname="noauto_mounter"
 pkgver=0.5.r1.gd60c78c
-pkgrel=1
+pkgrel=2
 pkgdesc="auto mount local and nfs noauto fstab mounts"
 arch=('x86_64')
 url="https://github.com/longranger/noauto_mounter"
 license=('GPL')
 depends=()
 makedepends=('git')
-source=("${pkgname}-${pkgver}"::'git://github.com/longranger/noauto_mounter')
+source=("${pkgname}-${pkgver}"::'git://github.com/longranger/noauto_mounter.git')
 md5sums=('SKIP')
 install='noauto_mounter.install'
 
