@@ -7,7 +7,7 @@
 # https://www.blackmagicdesign.com/support
 
 pkgname=blackmagic-decklink-sdk
-pkgver=10.6.1
+pkgver=10.6.2
 pkgrel=1
 pkgdesc="Blackmagic's DeckLink SDK (need to register and download from upstream URL)"
 arch=('any')
@@ -17,7 +17,7 @@ provides=('decklink-sdk')
 conflicts=('decklink-sdk')
 source=("file://Blackmagic_DeckLink_SDK_${pkgver}.zip"
         "LICENSE")
-sha256sums=('8be4bb1107175f035f6a31e3488e752cfca1c04de5e810cc3b542bd6d8d537a2'
+sha256sums=('56c7f586f17779a68009b031413ee3e162a8e9f700cdc82901fe001e8f006753'
             'cc90e53ac2ef2442d2d0adfe9214119baa31ec080e75c3b087365efdbccc23df')
 
 package() {
