@@ -4,7 +4,7 @@
 PKGNAMESHORT=musicqueue
 pkgname=${PKGNAMESHORT}-git
 pkgver=0.3.9
-pkgrel=5
+pkgrel=6
 pkgdesc='Lightweight music player'
 arch=('i686' 'x86_64')
 url='http://musicqueue.furcat.ca/'
