@@ -1,0 +1,29 @@
+post_install() {
+	cat <<-EOF
+	---------------------------------------------------
+	OnlineFotoservice ist ein Produkt und Eigentum der
+	CEWE Stiftung & Co. KGaA. Die Nutzungsbedingen sind
+	in /usr/share/licenses/cewe-fotoservice/EULA.txt.
+	WENN SIE DIESE SOFTWARE INSTALLIEREN, ERKLÄREN SIE
+	SICH MIT DEN BEDINGUNGEN DIESES LIZENZABKOMMENS
+	EINVERSTANDEN
+	---------------------------------------------------
+	EOF
+
+	update-mime-database /usr/share/mime &> /dev/null
+	update-desktop-database &> /dev/null
+}
+
+post_upgrade() {
+  update-mime-database /usr/share/mime &> /dev/null
+  update-desktop-database &> /dev/null
+}
+
+pre_remove() {
+/bin/true
+}
+
+post_remove() {
+  update-mime-database /usr/share/mime &> /dev/null
+  update-desktop-database &> /dev/null
+}

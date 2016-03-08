@@ -1,0 +1,22 @@
+pkgbase = cewe-fotoservice
+	pkgdesc = an offline client for creating photobooks and other photo products and ordering them at cewe.de or partners
+	pkgver = 6.1.3
+	pkgrel = 3
+	url = http://www.cewe.de/
+	install = cewe-fotoservice.install
+	arch = i686
+	arch = x86_64
+	license = custom:eula
+	makedepends = unzip
+	depends = libx11
+	depends = libjpeg
+	depends = curl
+	depends = wget
+	conflicts = cewe-fotobuch
+	source = http://dls.photoprintit.de/download/Data/6822/hps/setup_OnlineFotoservice.tgz
+	source = updater.pl
+	md5sums = 8214336fcc74db7af5062cbc3c9c7d6b
+	md5sums = e3dd576cdb9af15468206a9bb4c5eb50
+
+pkgname = cewe-fotoservice
+
