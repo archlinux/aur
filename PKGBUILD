@@ -23,7 +23,7 @@ pkgver=4.1.19_1_v7+
 prepare() {
   cd linux
 
-  make mrproper
+  #make mrproper
 
   msg "Prepare to build"
   KERNEL=kernel7
