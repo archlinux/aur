@@ -9,6 +9,7 @@ license=('GPL')
 depends=('od-libopendavinci-git' 'freeglut' 'qt4' 'opencv' 'boost' 'qwt5' 'jdk8-openjdk' 'apache-ant' 'junit')
 makedepends=('cmake' 'gcc' 'git' 'make')
 provides=('od-supercomponent-git')
+groups=('opendavinci-git')
 source=('git://github.com/se-research/OpenDaVINCI.git')
 noextract=()
 md5sums=('SKIP') #autofill using updpkgsums
