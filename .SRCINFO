@@ -1,6 +1,6 @@
 pkgbase = od-automotive-candatastructuregenerator-git
 	pkgdesc = Open Source Development Architecture for Virtual, Networked, and Cyber-Physical System Infrastructures.
-	pkgver = v3.0.0.7.g439a84f
+	pkgver = v3.0.1
 	pkgrel = 1
 	url = http://opendavinci.cse.chalmers.se/www/
 	arch = any
