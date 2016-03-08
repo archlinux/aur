@@ -5,10 +5,9 @@ set -e
 _pi_ver=2
 pkgname="qcec"
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 provides=("$pkgname")
 conflicts=("$pkgname")
-replaces=("$pkgname")
 pkgdesc="Qt CEC keyboard plugin for the Raspberry Pi"
 arch=("any")
 url="http://www.github.com/sirspudd/qcec"
