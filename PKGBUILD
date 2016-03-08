@@ -7,7 +7,7 @@
 
 pkgname=oracle-xe
 pkgver=11.2.0_1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="a non free DBMS"
 url="http://www.oracle.com/"
 license=('custom')
@@ -28,8 +28,8 @@ source=('manual://download/file/from/oracle/page/oracle-xe-11.2.0-1.0.x86_64.rpm
        )
 DLAGENTS+=('manual::/usr/bin/echo The source file for this package needs to be downloaded manually, since it requires a login and is not redistributable.;/usr/bin/echo Please visit http://www.oracle.com/technetwork/database/database-technologies/express-edition/downloads/index.html.; exit 1;')
 md5sums=('dd7881a55569d890241f11cd0eeb7d48'
-         '52787ddc5b4c326f333b0a250bb458fa'
-         '5dfe9321cb6db2547de95c58546309f8'
+         'cff2a6dbbbbf4d3454c05970183cc1b8'
+         '6dd1d97571b823e8f682f290edeb9e7b'
          'e558d7dcb9e455f8cb03db8638832774'
          '5a3eaff3cb867d97cd250f04fe372ae7'
          '4d4a2e1bcc29b9c1fd197b42ccc4e0ac'
