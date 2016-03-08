@@ -1,0 +1,15 @@
+pkgbase = python2-drawnow
+	pkgdesc = MATLAB-like drawnow
+	pkgver = 0.71.2
+	pkgrel = 1
+	url = https://github.com/stsievert/python-drawnow
+	arch = any
+	license = MIT
+	depends = python2
+	depends = python2-matplotlib
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/d/drawnow/drawnow-0.71.2.tar.gz
+	md5sums = a8588fc4435590b6942e31101c71741c
+
+pkgname = python2-drawnow
+
