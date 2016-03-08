@@ -3,8 +3,7 @@
 # https://aur.archlinux.org/packages/poco/
 
 pkgname=libpoco-basic
-_pkgver_main=1.6.1
-pkgver=${_pkgver_main}
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="C++ class libraries for network-centric, portable applications, basic edition"
 arch=('i686' 'x86_64')
@@ -14,15 +13,14 @@ depends=('pcre' 'expat')
 conflicts=('poco' 'poco-devel' 'poco-git')
 makedepends=('gcc' 'make')
 source=(
-	${url}/releases/poco-${_pkgver_main}/poco-${pkgver}.tar.gz
-	RegularExpression.h.patch
+	${url}/releases/poco-${pkgver}/poco-${pkgver}.tar.gz
+#	RegularExpression.h.patch
 )
-sha256sums=('f92cff3af013950f10e88eb89c3401209b099edf798b44d496f0432de7658504'
-            'af43ef3b60f4bfba49071d6393fa22311d65277ff05d335c3fe29283b3c04222')
+sha256sums=('583b00117a3cba8842c10a04675cabe5c3e0abc0a02a52c3d6431ea03a93320d')
 prepare() {
 	# apply patch for static build
 	cd poco-$pkgver
-	patch Foundation/include/Poco/RegularExpression.h < ../RegularExpression.h.patch
+#	patch Foundation/include/Poco/RegularExpression.h < ../RegularExpression.h.patch
 }
 
 build() {
