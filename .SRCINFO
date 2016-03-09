@@ -8,7 +8,6 @@ pkgbase = nvidia-full-beta
 	arch = x86_64
 	license = custom:NVIDIA
 	makedepends = linux-headers
-	makedepends = pacman>=4.2.0
 	options = !strip
 	source = 20-nvidia.conf
 	md5sums = 2640eac092c220073f0668a7aaff61f7
