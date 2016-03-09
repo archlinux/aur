@@ -8,14 +8,13 @@ pkgbase = nvidia-full-beta-all
 	arch = x86_64
 	license = custom:NVIDIA
 	makedepends = linux-headers
-	makedepends = pacman>=4.2.0
 	options = !strip
 	source = 20-nvidia.conf
 	md5sums = 2640eac092c220073f0668a7aaff61f7
 	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/361.28/NVIDIA-Linux-x86-361.28.run
 	md5sums_i686 = d4fc7fcf1204a46f15733d7cc2711ad2
 	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/361.28/NVIDIA-Linux-x86_64-361.28.run
-	md5sums_x86_64 = 16a583d074a83c1a3ef926e9c59d4349
+	md5sums_x86_64 = 8799b9a29ea1ef72feb739f1d8290728
 
 pkgname = nvidia-full-beta-all
 	pkgdesc = Full NVIDIA drivers' package for all kernels on the system (drivers and shared utilities and libraries) (beta version)
