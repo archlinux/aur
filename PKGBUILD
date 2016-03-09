@@ -5,7 +5,7 @@
 # Contributor: magedon <magedon.zt@gmail.com>
 
 pkgname=bin32-firefox
-pkgver=44.0.2
+pkgver=45.0
 pkgrel=1
 pkgdesc="Firefox 32bit for Arch 64 bit (en-US)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=('bin32-firefox-i18n: i18n support'
             'lib32-ffmpeg: extra codec support (x264)')
 source=("https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/linux-$_arch/en-US/firefox-$pkgver.tar.bz2"
         'firefox32.desktop' 'firefox32-safe.desktop' 'mozplugin.patch')
-md5sums=('7ba4c9a1a4934f9cc2353accf12f2f6d'
+md5sums=('925c16c0a20c2d5e6f379a408c51b476'
          '467b7e46030ee36d7a0e0752d0fa5480'
          '9957b560418ad4baf6c6a0d015df2b15'
          '8ef4b2a15b9d5e9d5bd5df323dbf012f')
