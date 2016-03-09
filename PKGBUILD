@@ -1,8 +1,8 @@
 # Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=hqplayer
-_debpkgver=3.13.1-43_amd64
-pkgver=3.13.1
+_debpkgver=hqplayer_3.13.2-44_amd64
+pkgver=3.13.2
 pkgrel=1
 pkgdesc="The high-end upsampling multichannel software HD-audio player"
 arch=('x86_64')
