@@ -1,0 +1,13 @@
+pkgbase = newns
+	pkgdesc = A utility to spawn processes in new namespaces
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://web.mit.edu/luto/www/linux/nnp/newns.c
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	source = http://web.mit.edu/luto/www/linux/nnp/newns.c
+	md5sums = b1e28e026185382d9aa14c296ffd748c
+
+pkgname = newns
+
