@@ -10,7 +10,7 @@ license=('custom')
 depends=('')
 makedepends=('git' 'wget')
 conflicts=("${pkgname%-*}")
-provides=("${pkgname%-*}=${pkgver}")
+provides=("${pkgname%-*}=${pkgver:0:5}")
 options=(!emptydirs)
 source=("git+https://github.com/basil00/gull.git")
 md5sums=('SKIP')
@@ -18,6 +18,12 @@ md5sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/${pkgname%-*}"
 	git describe --long --tags | sed 's/^v/3./;s/.win//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	cd "${srcdir}/${pkgname%-*}/src/"
+	mv Gull.cpp gull.cpp
+	sed -i -e 's/Gull/gull/g' Makefile
 }
 
 build() {
@@ -28,5 +34,5 @@ build() {
 package() {
 	cd "${srcdir}/${pkgname%-*}"
 	install -m644 -D LICENSE ${pkgdir}/usr/share/licences/${pkgname%-*}/LICENSE
-	install -Dm0755 ./src/Gull ${pkgdir}/usr/bin/gull
+	install -Dm0755 ./src/gull ${pkgdir}/usr/bin/gull
 }
