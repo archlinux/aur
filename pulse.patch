@@ -1,0 +1,19 @@
+--- chuck-1.3.5.2/src/RtAudio/RtAudio.cpp
++++ chuck-1.3.5.2/src/RtAudio/RtAudio.cpp
+@@ -5663,7 +5663,7 @@
+         if ( result < 0 ) break;
+         if ( subdevice < 0 ) break;
+         if ( nDevices == device ) {
+-          sprintf( name, "hw:%d,%d", card, subdevice );
++          sprintf( name, "pulse" );
+           snd_ctl_close( chandle );
+           goto foundDevice;
+         }
+@@ -5711,6 +5711,7 @@
+ 
+   snd_pcm_t *phandle;
+   int openMode = SND_PCM_ASYNC;
++  printf( "pcm name %s\n", name );
+   result = snd_pcm_open( &phandle, name, stream, openMode );
+   if ( result < 0 ) {
+     if ( mode == OUTPUT )
