@@ -3,13 +3,13 @@
 pkgname=xed-git
 pkgver=1.0.3.r8.g057e2aa
 pkgrel=1
-pkgdesc="git version - gtk3 pluma fork. Maintained by Linux Mint developers."
+pkgdesc="A small and lightweight text editor. X-Apps Project (git version)."
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('gtksourceview3' 'enchant' 'desktop-file-utils' 'libsm')
 makedepends=('git' 'gnome-common' 'iso-codes')
 provides=($_pkgname)
-conflicts=('xed')
+conflicts=('xed' $_pkgname)
 url='https://github.com/linuxmint/xed'
 install=xed.install
 
@@ -23,7 +23,9 @@ pkgver() {
 
 build() {
     cd ${srcdir}/${pkgname}
-    ./autogen.sh --with-gtk=3.0 --prefix="/usr"
+    ./autogen.sh --with-gtk=3.0 --prefix="/usr" \
+         --localstatedir="/var" \
+         --libexecdir="/usr/lib/xed"
     make
 }
 
