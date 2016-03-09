@@ -1,6 +1,6 @@
 pkgbase = zotero
 	pkgdesc = Zotero Standalone. Is a free, easy-to-use tool to help you collect, organize, cite, and share your research sources.
-	pkgver = 4.0.28
+	pkgver = 4.0.29.2
 	pkgrel = 1
 	url = http://www.zotero.org/download
 	install = zotero.install
@@ -12,9 +12,9 @@ pkgbase = zotero
 	depends = gtk2
 	depends = gcc-libs
 	depends = nss
-	source = http://download.zotero.org/standalone/4.0.28/Zotero-4.0.28_linux-i686.tar.bz2
+	source = http://download.zotero.org/standalone/4.0.29.2/Zotero-4.0.29.2_linux-x86_64.tar.bz2
 	source = zotero.desktop
-	md5sums = a5cb40b79b26dbe4fb29b8e9fdb61a9f
+	md5sums = 179cf64505b14e29099b55d37a06c6aa
 	md5sums = f227abe95940abd63367716928c6e379
 
 pkgname = zotero
