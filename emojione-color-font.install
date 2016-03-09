@@ -1,0 +1,23 @@
+configs=(35-emojione-color-font.conf)
+
+post_install() {
+  pushd etc/fonts/conf.d > /dev/null
+  for config in "${configs[@]}"; do
+    ln -sf ../conf.avail/${config} .
+  done
+  popd > /dev/null
+  fc-cache -s
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  pushd etc/fonts/conf.d > /dev/null
+  for config in "${configs[@]}"; do
+    rm -f ${config}
+  done
+  popd > /dev/null
+  fc-cache -s
+}
