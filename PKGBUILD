@@ -1,7 +1,8 @@
 # Maintainer: Quentin Retornaz <quentin dot retornaz at yahoo dot fr>
+
 pkgname=fossamail-bin
 pkgver=25.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source, Mozilla Thunderbird-based mail, news and chat client based on the Pale Moon browser core."
 arch=('i686' 'x86_64')
 url="http://www.fossamail.org/"
@@ -13,9 +14,9 @@ install=fossamail.install
 source=(fossamail.desktop)
 source_i686=(https://github.com/iPotable/FossaMailBinaries/raw/master/FossaMail-${pkgver}.en-US.linux-i686.tar.bz2)
 source_x86_64=(https://github.com/iPotable/FossaMailBinaries/raw/master/FossaMail-${pkgver}.en-US.linux-x86_64.tar.bz2)
-sha1sums=('6d19278e2af83290c83cc063b6447476b5f58fd8')
-sha1sums_i686=('1e799ffbddd56d1acbbf905763ed0eebc32c161d')
-sha1sums_x86_64=('c73187744613591ae16625a447ab3d51bb1c56c1')
+sha256sums=('4d7b71a153f662abaab5f85fa8371c674d58aaffbaabc428b0b56359be8caacd')
+sha256sums_i686=('7b4ae9081bc623072ecf08caee578f5e76cb6bc5cfb218cee94603724b66cd01')
+sha256sums_x86_64=('422ca75395e47df9eeee721b47b5cb4be25cde4f29345815c9456acc1927a823')
 
 package() {
   install -d "$pkgdir"/usr/{bin,lib}
