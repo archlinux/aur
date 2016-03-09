@@ -1,5 +1,5 @@
 pkgbase = lastpass
-	pkgdesc = The Universal LastPass installer for Firefox, Chrome, and Opera. NOTE: If the md5sums don't match, don't post the makepkg output. Simply flag the package.
+	pkgdesc = The Universal LastPass installer for Firefox, Chrome, and Opera
 	pkgver = 4.0.0
 	pkgrel = 9
 	url = https://lastpass.com
