@@ -24,7 +24,7 @@ makedepends=('subversion'
 source=("qmc2::svn://svn.code.sf.net/p/qmc2/code/trunk")
 sha1sums=('SKIP')
 
-_buildopts="PREFIX=/usr MAN_DIR=/usr/share/man QMAKE=/usr/bin/qmake-qt5 LRELEASE=/usr/bin/lrelease-qt5 LUPDATE=/usr/bin/lupdate-qt5 OPENGL=1 JOYSTICK=1 SDL=2 LIBARCHIVE=1 WIP=0 CCACHE=1"
+_buildopts="PREFIX=/usr MAN_DIR=/usr/share/man QMAKE=/usr/bin/qmake-qt5 LRELEASE=/usr/bin/lrelease-qt5 LUPDATE=/usr/bin/lupdate-qt5 JOYSTICK=1 SDL=2 LIBARCHIVE=1 WIP=0 CCACHE=1"
 
 pkgver() {
   cd qmc2
