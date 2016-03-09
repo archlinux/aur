@@ -20,8 +20,6 @@ md5sums=('SKIP'
 pkgver() {
 	cd "${srcdir}/${pkgname%-*}"
 	printf "%s.r%s.%s" "${pkgver:0:5}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-#	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-#	git describe --long --tags | sed 's/^v/3./;s/.win//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
