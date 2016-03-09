@@ -5,7 +5,7 @@ pkgver=5.0.47
 pkgrel=1
 pkgdesc="Xtreme Download Manager is a powerful tool to increase download speed up-to 500%, save videos from video sharing sites and integration with ANY browser."
 arch=('i686' 'x86_64')
-url="http://http://xdman.sourceforge.net/"
+url="http://xdman.sourceforge.net/"
 depends=('java-runtime')
 license=('GPL')
 
