@@ -1,0 +1,107 @@
+--- mozilla-esr38.bak/browser/branding/official/pref/firefox-branding.js	2015-10-27 10:35:06.279469072 +0100
++++ mozilla-esr38/browser/branding/official/pref/firefox-branding.js	2015-10-27 11:45:37.837884736 +0100
+@@ -3,7 +3,7 @@
+  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+ 
+ pref("startup.homepage_override_url","");
+-pref("startup.homepage_welcome_url","");
++pref("startup.homepage_welcome_url","about:blank");
+ // Interval: Time between checks for a new version (in seconds)
+ pref("app.update.interval", 43200); // 12 hours
+ // The time interval between the downloading of mar file chunks in the
+--- mozilla-esr38.bak/services/healthreport/healthreport-prefs.js	2015-10-27 10:35:06.443469088 +0100
++++ mozilla-esr38/services/healthreport/healthreport-prefs.js	2015-10-27 11:57:35.057955188 +0100
+@@ -18,9 +18,9 @@
+ pref("datareporting.healthreport.pendingDeleteRemoteData", false);
+ 
+ // Health Report is enabled by default on all channels.
+-pref("datareporting.healthreport.uploadEnabled", true);
++pref("datareporting.healthreport.uploadEnabled", false);
+ 
+-pref("datareporting.healthreport.service.enabled", true);
++pref("datareporting.healthreport.service.enabled", false);
+ pref("datareporting.healthreport.service.loadDelayMsec", 10000);
+ pref("datareporting.healthreport.service.loadDelayFirstRunMsec", 60000);
+ 
+--- mozilla-esr38.bak/browser/app/profile/firefox.js	2015-10-27 10:35:06.353469080 +0100
++++ mozilla-esr38/browser/app/profile/firefox.js	2015-10-27 11:51:27.217919055 +0100
+@@ -267,12 +267,12 @@
+ #endif
+ 
+ // At startup, check if we're the default browser and prompt user if not.
+-pref("browser.shell.checkDefaultBrowser", true);
++pref("browser.shell.checkDefaultBrowser", false);
+ pref("browser.shell.shortcutFavicons",true);
+ 
+ // 0 = blank, 1 = home (browser.startup.homepage), 2 = last visited page, 3 = resume previous browser session
+ // The behavior of option 3 is detailed at: http://wiki.mozilla.org/Session_Restore
+-pref("browser.startup.page",                1);
++pref("browser.startup.page",                0);
+ pref("browser.startup.homepage",            "chrome://branding/locale/browserconfig.properties");
+ 
+ pref("browser.slowStartup.notificationDisabled", false);
+@@ -442,7 +442,7 @@
+ // Tabbed browser
+ pref("browser.tabs.closeWindowWithLastTab", true);
+ pref("browser.tabs.insertRelatedAfterCurrent", true);
+-pref("browser.tabs.warnOnClose", true);
++pref("browser.tabs.warnOnClose", false);
+ pref("browser.tabs.warnOnCloseOtherTabs", true);
+ pref("browser.tabs.warnOnOpen", true);
+ pref("browser.tabs.maxOpenBeforeWarn", 15);
+@@ -1629,7 +1629,7 @@
+ pref("browser.newtab.preload", true);
+ 
+ // Remembers if the about:newtab intro has been shown
+-pref("browser.newtabpage.introShown", false);
++pref("browser.newtabpage.introShown", true);
+ 
+ // Toggles the content of 'about:newtab'. Shows the grid when enabled.
+ pref("browser.newtabpage.enabled", true);
+--- mozilla-esr38.bak/modules/libpref/init/all.js	2015-10-27 10:35:06.654469109 +0100
++++ mozilla-esr38/modules/libpref/init/all.js	2015-10-27 11:57:53.203956970 +0100
+@@ -29,7 +29,7 @@
+ 
+ pref("general.config.obscure_value", 13); // for MCD .cfg files
+ 
+-pref("general.warnOnAboutConfig", true);
++pref("general.warnOnAboutConfig", false);
+ 
+ // maximum number of dated backups to keep at any time
+ pref("browser.bookmarks.max_backups",       5);
+@@ -449,7 +449,7 @@
+ #if defined(XP_WIN) || defined(XP_MACOSX)
+ pref("media.mediasource.enabled", true);
+ #else
+-pref("media.mediasource.enabled", false);
++pref("media.mediasource.enabled", true);
+ #endif
+ 
+ #ifdef RELEASE_BUILD
+@@ -2312,7 +2312,7 @@
+ // Player ("Shockwave for Director"). To hide all plugins from enumeration, use
+ // the empty string "" to match no plugin names. To allow all plugins to be
+ // enumerated, use the string "*" to match all plugin names.
+-pref("plugins.enumerable_names", "*");
++pref("plugins.enumerable_names", "");
+ 
+ // The default value for nsIPluginTag.enabledState (STATE_ENABLED = 2)
+ pref("plugin.default.state", 2);
+@@ -3400,7 +3400,7 @@
+ 
+ // Middle-mouse handling
+ pref("middlemouse.paste", true);
+-pref("middlemouse.contentLoadURL", true);
++pref("middlemouse.contentLoadURL", false);
+ pref("middlemouse.openNewWindow", true);
+ pref("middlemouse.scrollbarPosition", true);
+ 
+@@ -3712,7 +3712,7 @@
+ 
+ // Satchel (Form Manager) prefs
+ pref("browser.formfill.debug",            false);
+-pref("browser.formfill.enable",           true);
++pref("browser.formfill.enable",           false);
+ pref("browser.formfill.expire_days",      180);
+ pref("browser.formfill.saveHttpsForms",   true);
+ pref("browser.formfill.agedWeight",       2);

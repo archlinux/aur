@@ -1,0 +1,181 @@
+--- mozilla-esr38.bak/browser/modules/DirectoryLinksProvider.jsm	2015-10-01 22:55:45.276046367 +0200
++++ mozilla-esr38/browser/modules/DirectoryLinksProvider.jsm	2015-10-01 22:57:17.964047568 +0200
+@@ -33,16 +33,16 @@
+ const DIRECTORY_LINKS_TYPE = "application/json";
+ 
+ // The preference that tells whether to match the OS locale
+-const PREF_MATCH_OS_LOCALE = "intl.locale.matchOS";
++const PREF_MATCH_OS_LOCALE = "";
+ 
+ // The preference that tells what locale the user selected
+-const PREF_SELECTED_LOCALE = "general.useragent.locale";
++const PREF_SELECTED_LOCALE = "";
+ 
+ // The preference that tells where to obtain directory links
+-const PREF_DIRECTORY_SOURCE = "browser.newtabpage.directory.source";
++const PREF_DIRECTORY_SOURCE = "";
+ 
+ // The preference that tells where to send click/view pings
+-const PREF_DIRECTORY_PING = "browser.newtabpage.directory.ping";
++const PREF_DIRECTORY_PING = "";
+ 
+ // The preference that tells if newtab is enhanced
+ const PREF_NEWTAB_ENHANCED = "browser.newtabpage.enhanced";
+@@ -108,30 +108,6 @@
+    * @return  the selected locale or "en-US" if none is selected
+    */
+   get locale() {
+-    let matchOS;
+-    try {
+-      matchOS = Services.prefs.getBoolPref(PREF_MATCH_OS_LOCALE);
+-    }
+-    catch (e) {}
+-
+-    if (matchOS) {
+-      return Services.locale.getLocaleComponentForUserAgent();
+-    }
+-
+-    try {
+-      let locale = Services.prefs.getComplexValue(PREF_SELECTED_LOCALE,
+-                                                  Ci.nsIPrefLocalizedString);
+-      if (locale) {
+-        return locale.data;
+-      }
+-    }
+-    catch (e) {}
+-
+-    try {
+-      return Services.prefs.getCharPref(PREF_SELECTED_LOCALE);
+-    }
+-    catch (e) {}
+-
+     return "en-US";
+   },
+ 
+@@ -188,43 +164,6 @@
+   },
+ 
+   _fetchAndCacheLinks: function DirectoryLinksProvider_fetchAndCacheLinks(uri) {
+-    // Replace with the same display locale used for selecting links data
+-    uri = uri.replace("%LOCALE%", this.locale);
+-
+-    let deferred = Promise.defer();
+-    let xmlHttp = new XMLHttpRequest();
+-
+-    let self = this;
+-    xmlHttp.onload = function(aResponse) {
+-      let json = this.responseText;
+-      if (this.status && this.status != 200) {
+-        json = "{}";
+-      }
+-      OS.File.writeAtomic(self._directoryFilePath, json, {tmpPath: self._directoryFilePath + ".tmp"})
+-        .then(() => {
+-          deferred.resolve();
+-        },
+-        () => {
+-          deferred.reject("Error writing uri data in profD.");
+-        });
+-    };
+-
+-    xmlHttp.onerror = function(e) {
+-      deferred.reject("Fetching " + uri + " results in error code: " + e.target.status);
+-    };
+-
+-    try {
+-      xmlHttp.open("GET", uri);
+-      // Override the type so XHR doesn't complain about not well-formed XML
+-      xmlHttp.overrideMimeType(DIRECTORY_LINKS_TYPE);
+-      // Set the appropriate request type for servers that require correct types
+-      xmlHttp.setRequestHeader("Content-Type", DIRECTORY_LINKS_TYPE);
+-      xmlHttp.send();
+-    } catch (e) {
+-      deferred.reject("Error fetching " + uri);
+-      Cu.reportError(e);
+-    }
+-    return deferred.promise;
+   },
+ 
+   /**
+@@ -232,30 +171,6 @@
+    * @return promise resolved immediately if no download needed, or upon completion
+    */
+   _fetchAndCacheLinksIfNecessary: function DirectoryLinksProvider_fetchAndCacheLinksIfNecessary(forceDownload=false) {
+-    if (this._downloadDeferred) {
+-      // fetching links already - just return the promise
+-      return this._downloadDeferred.promise;
+-    }
+-
+-    if (forceDownload || this._needsDownload) {
+-      this._downloadDeferred = Promise.defer();
+-      this._fetchAndCacheLinks(this._linksURL).then(() => {
+-        // the new file was successfully downloaded and cached, so update a timestamp
+-        this._lastDownloadMS = Date.now();
+-        this._downloadDeferred.resolve();
+-        this._downloadDeferred = null;
+-        this._callObservers("onManyLinksChanged")
+-      },
+-      error => {
+-        this._downloadDeferred.resolve();
+-        this._downloadDeferred = null;
+-        this._callObservers("onDownloadFail");
+-      });
+-      return this._downloadDeferred.promise;
+-    }
+-
+-    // download is not needed
+-    return Promise.resolve();
+   },
+ 
+   /**
+@@ -309,51 +224,6 @@
+     }
+     catch (ex) {}
+ 
+-    // Only send pings when enhancing tiles with an endpoint and valid action
+-    let invalidAction = PING_ACTIONS.indexOf(action) == -1;
+-    if (!newtabEnhanced || pingEndPoint == "" || invalidAction) {
+-      return Promise.resolve();
+-    }
+-
+-    let actionIndex;
+-    let data = {
+-      locale: this.locale,
+-      tiles: sites.reduce((tiles, site, pos) => {
+-        // Only add data for non-empty tiles
+-        if (site) {
+-          // Remember which tiles data triggered the action
+-          let {link} = site;
+-          let tilesIndex = tiles.length;
+-          if (triggeringSiteIndex == pos) {
+-            actionIndex = tilesIndex;
+-          }
+-
+-          // Make the payload in a way so keys can be excluded when stringified
+-          let id = link.directoryId;
+-          tiles.push({
+-            id: id || site.enhancedId,
+-            pin: site.isPinned() ? 1 : undefined,
+-            pos: pos != tilesIndex ? pos : undefined,
+-            score: Math.round(link.frecency / PING_SCORE_DIVISOR) || undefined,
+-            url: site.enhancedId && "",
+-          });
+-        }
+-        return tiles;
+-      }, []),
+-    };
+-
+-    // Provide a direct index to the tile triggering the action
+-    if (actionIndex !== undefined) {
+-      data[action] = actionIndex;
+-    }
+-
+-    // Package the data to be sent with the ping
+-    let ping = new XMLHttpRequest();
+-    ping.open("POST", pingEndPoint + (action == "view" ? "view" : "click"));
+-    ping.send(JSON.stringify(data));
+-
+-    // Use this as an opportunity to potentially fetch new links
+-    return this._fetchAndCacheLinksIfNecessary();
+   },
+ 
+   /**
