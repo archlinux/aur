@@ -10,7 +10,7 @@ pkgname=cewe-fotobuch
 conflicts=(cewe-fotoservice)
 pkgdesc="an offline client for creating photobooks, uploading and ordering them at cewe.de"
 md5sums=('9197c2551c471da202de3f0652eba324'
-         '4df55a80124dc8555edf799bd566c5de')
+         '422a405d520e18ef9afade2e7c24440b')
 
 ##########################################
 # remaining code shared with cewe-fotoservice

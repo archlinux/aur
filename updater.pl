@@ -20,6 +20,7 @@ system("wget https://aur.archlinux.org/cgit/aur.git/snapshot/$pkgName.tar.gz -O 
 system("tar -xvf $pkgName.tar.gz");
 
 chdir($pkgName);
+system("mv '$installer' ./");
 system('_UPDATING=1 makepkg --install --clean --skipchecksums');
 
 print "\nSie können dieses Fenster jetzt schließen.\n";
