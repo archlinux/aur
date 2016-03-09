@@ -1,7 +1,7 @@
 #Maintainer: Unknown
 
 pkgname=i2pd
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Simplified C++ implementation of I2P client"
 arch=('i686' 'x86_64')
@@ -56,7 +56,6 @@ package(){
   chmod -R o= $pkgdir/var/lib/i2pd
 }
 
-md5sums=('c3e16974f7e689fe9d97115c51b5f0ff'
+md5sums=('c903156c7ac6a0d6b053670a55271bf5'
          '224068c31e48084645763408ebae83af'
          'acda29e5b46a0c9fade734a6a467b381')
-
