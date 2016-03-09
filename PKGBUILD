@@ -15,7 +15,6 @@ depends=('alsa-lib' 'desktop-file-utils' 'flac' 'gconf' 'gtk2' 'harfbuzz' 'harfb
          'icu' 'libpng' 'libxss' 'libxtst' 'nss' 'opus' 'snappy' 'speech-dispatcher' 'ttf-font' 'xdg-utils')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
             'ttf-liberation: fix fonts for some PDFs')
-makedepends=('pacman>=4.2.0')
 provides=('google-chrome' 'pepper-flash')
 options=('!emptydirs' '!strip')
 install=$pkgname.install
