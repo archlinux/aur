@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-text-csv-xs'
-pkgver='1.21'
+pkgver='1.22'
 pkgrel='1'
 pkgdesc="comma-separated values manipulation routines"
 arch=('i686' 'x86_64')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=()
 url='https://metacpan.org/release/Text-CSV_XS'
-source=('http://search.cpan.org/CPAN/authors/id/H/HM/HMBRAND/Text-CSV_XS-1.21.tgz')
-md5sums=('892e0b43def9f1c05ddfd63038b20382')
-sha512sums=('f207e2f300e3db0a310c0219c3eb6446e3be02a906810b81c7471c53c4f12646be3c0795ec5517d0c2a74dd71b88e70f42cb508797c25609ff41b00f2acc6f25')
-_distdir="Text-CSV_XS-1.21"
+source=('http://search.cpan.org/CPAN/authors/id/H/HM/HMBRAND/Text-CSV_XS-1.22.tgz')
+md5sums=('05b8fd5fc9f9bc90f3889a146a1da523')
+sha512sums=('a324a5db928b11e197650841a837787f010e1a2d990f55855edce9ae3b30fe75429f464a95775b7c706d84cc654c132f69a24eb610422db008f31d593e320fe8')
+_distdir="Text-CSV_XS-1.22"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
