@@ -3,8 +3,8 @@
 
 pkgname=visit-build
 _pkgname=visit
-pkgver=2.10.0
-_pkgver=2_10_0
+pkgver=2.10.1
+_pkgver=${pkgver//./_}
 pkgrel=1
 pkgdesc="Interactive parallel visualization and graphical analysis tool (built with build_visit)."
 arch=('i686' 'x86_64')
@@ -19,8 +19,8 @@ source=("https://portal.nersc.gov/svn/${_pkgname}/trunk/releases/${pkgver}/build
         "visit.sh"
         'no_extract_visit.patch'
         'qt5-qpa.patch')
-sha256sums=('63dc4baed14b753abbd2717e958e189f56c99d573d87e034d1304cf2a1d76dc0'
-            'ed3d514bc90eaf9c79d00b3f75fbe73437c16296a89451db531d0707c6d806bc'
+sha256sums=('2834839aebe1301bf3426621463bbd85c0c2b25dbe8e235ba9ad511d57a3106c'
+            '6b53dea89a241fd03300a7a3a50c0f773e2fb8458cd3ad06816e9bd2f0337cd8'
             'd07a11e67ad646579fbc341f30e1eb63ebd38a5fbdd4f3ea36e8f460419028da'
             'fe8ffacc194689bf5f3165a4cc54b0ef49371b34ef68dd952b5a828a82364108'
             'a523dd42c61ccd6743f23d35e63518c4dd33a465fa024e4431f002932464f26b')
@@ -35,11 +35,11 @@ prepare(){
     "${srcdir}/build_${_pkgname}${_pkgver}"
 
   # Build directory
-  rm -rf -- "${srcdir}/build"
+  #rm -rf -- "${srcdir}/build"
   mkdir -p "${srcdir}/build"
 
   # Thirdparty libs
-  rm -rf -- "${srcdir}/thirdparty"
+  #rm -rf -- "${srcdir}/thirdparty"
   mkdir -p "${srcdir}/thirdparty"
 
   # Do not re-extract the visit source code
