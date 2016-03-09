@@ -24,7 +24,7 @@ build() {
 
 package() {
   install -Dm644 dkms.conf "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
-  install -Dm644 mxu11x0.conf "${pkgdir}/usr/lib/modules-load.d/mxu11x0.conf"
+  install -Dm644 mxu11x0.conf "${pkgdir}/etc/modules-load.d/mxu11x0.conf"
   sed -e "s/@_PKGBASE@/${_pkgbase}/" \
       -e "s/@PKGVER@/${pkgver}/" \
       -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
