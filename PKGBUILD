@@ -1,7 +1,7 @@
 # Maintainer: Yves Hoppe <info@yveshoppe.de>
 
 pkgname=calypso
-pkgver=1.2.7
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Manage your Wordpress.com and Jetpack-enabled sites in one place"
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ depends=()
 conflicts=()
 install=$pkgname.install
 
-md5sums=('41de9438ecca07098031c356e0507f0a')
+md5sums=('180894acdefbc80bc72fa85eba13abfd')
 
 source=(https://public-api.wordpress.com/rest/v1.1/desktop/linux/download?type=deb)
 
