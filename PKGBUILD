@@ -7,15 +7,14 @@
 
 pkgname=python2-kivy-git
 epoch=1
-pkgver=1.9.0git
-pkgrel=2
+pkgver=1.9.1.234.g1025429
+pkgrel=1
 pkgdesc="A python2 module for developing multi-touch enabled media rich applications. Git version."
 arch=(i686 x86_64)
 url="http://kivy.org/"
 license=('MIT')
 source=("git://github.com/kivy/kivy.git")
-depends=('python2-pygame' 'python2-opengl' 'python2-pillow'
-         'gstreamer0.10-python' 'cython2-kivy' 'mtdev')
+depends=('sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'cython2-kivy' 'mtdev')
 optdepends=('python2-twisted: networking framework integration')
 provides=('python2-kivy' 'kivy')
 conflicts=('python2-kivy' 'kivy' 'kivy-git')
