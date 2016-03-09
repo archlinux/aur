@@ -94,38 +94,6 @@
 
 # for more options see http://elinux.org/RPi_config.txt
 
-## Some over clocking settings, governor already set to ondemand
-
-##None
-#arm_freq=700
-#core_freq=250
-#sdram_freq=400
-#over_voltage=0
-
-##Modest
-#arm_freq=800
-#core_freq=300
-#sdram_freq=400
-#over_voltage=0
-
-##Medium
-#arm_freq=900
-#core_freq=333
-#sdram_freq=450
-#over_voltage=2
-
-##High
-#arm_freq=950
-#core_freq=450
-#sdram_freq=450
-#over_voltage=6
-
-##Turbo
-#arm_freq=1000
-#core_freq=500
-#sdram_freq=500
-#over_voltage=6
-
 #gpu_mem=64
 lcd_rotate=2
 
