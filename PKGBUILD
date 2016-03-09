@@ -2,19 +2,19 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-yaml-libyaml'
-pkgver='0.59'
+pkgver='0.62'
 pkgrel='1'
 pkgdesc="Perl YAML Serialization using XS and libyaml"
-arch=('i686' 'x86_64')
+arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=5.8.1' 'libyaml')
+depends=('perl')
 makedepends=()
 url='https://metacpan.org/release/YAML-LibYAML'
-source=('http://search.cpan.org/CPAN/authors/id/I/IN/INGY/YAML-LibYAML-0.59.tar.gz')
-md5sums=('733e63b743088781eb8cad6477cd4905')
-sha512sums=('0c0bdbd7d93352b1e60f41f185f2947b163a9ea7074945c933850a3d165f75dd202403406f9e355e78535ae7d1726f2328dc006af7a01a6f30c48999013da3bc')
-_distdir="YAML-LibYAML-0.59"
+source=('http://search.cpan.org/CPAN/authors/id/T/TI/TINITA/YAML-LibYAML-0.62.tar.gz')
+md5sums=('e8e0ba8c9f589c809ee04bb526ae03d7')
+sha512sums=('05d2fa1e656034da0c903a267037a08855040843dc6ec68d91e99df5c64f6896d29be0d170b5c08c0d601a1c87b595c90786a7ff1a12a33fa2bfff21f86aec81')
+_distdir="YAML-LibYAML-0.62"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
