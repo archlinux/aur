@@ -2,11 +2,11 @@
 
 _pkgbase_=oxygen
 pkgname=${_pkgbase_}-cursors-extra
-pkgver=5.4.3
+pkgver=5.5.5
 pkgrel=1
 pkgdesc="KDE's Oxygen mouse cursor theme - the extra flavours"
-arch=("any")
 url="https://projects.kde.org/projects/kde/workspace/oxygen"
+arch=("any")
 license=("LGPL")
 makedepends=('cmake' 'automoc4' 'inkscape' 'libltdl' 'xorg-xcursorgen')
 optdepends=("oxygen-cursors: contains the default Oxygen cursor colours")
@@ -44,4 +44,4 @@ package() {
 	done
 }
 
-sha1sums=('e466c8e0ec0cb79d70f5382715c7c8a1c608c394')
+sha1sums=('b9a625d790a3d87e6cbe2cda12872f3f968d662f')
