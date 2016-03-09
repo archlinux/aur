@@ -1,0 +1,6 @@
+*.zip
+*.xz
+pkg
+src
+LICENSE-CC-BY.txt
+README.md
