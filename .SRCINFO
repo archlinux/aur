@@ -14,7 +14,7 @@ pkgbase = openresty_luarocks
 	optdepends = mercurial: for fetching sources from mercurial repositories
 	optdepends = cmake: for building rocks that use the cmake build system
 	options = !makeflags
-	source = http://keplerproject.github.io/luarocks/releases/luarocks-2.2.2.tar.gz
+	source = http://keplerproject.github.io/luarocks/releases/luarocks-2.3.0.tar.gz
 	sha256sums = 4f0427706873f30d898aeb1dfb6001b8a3478e46a5249d015c061fe675a1f022
 
 pkgname = openresty_luarocks
