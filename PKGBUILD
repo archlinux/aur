@@ -5,7 +5,7 @@ _build=20978
 pkgrel=1
 pkgdesc="Compare files and folders, merge changes, synchronize files, and generate reports"
 arch=('i686' 'x86_64')
-url="http://www.scootersoftware.com/"
+url="http://www.scootersoftware.com"
 license=('non-free')
 depends=('desktop-file-utils' 'gdk-pixbuf2' 'gtk2' 'qt4')
 options=('!strip')
@@ -36,6 +36,9 @@ package() {
   # Dolphin
   install -Dm755 "$pkgdir"/opt/$pkgname/ext/bcompare_ext_kde.$_arch.so \
            "$pkgdir"/usr/lib/kde4/bcompare_ext_kde.so
+  # .desktop for Dolphin
+  install -Dm644 "$pkgdir"/opt/$pkgname/ext/bcompare_ext_kde.desktop \
+           "$pkgdir"/usr/share/kde4/services/bcompare_ext_kde.desktop
   # Nautilus
   install -Dm755 "$pkgdir"/opt/$pkgname/ext/bcompare-ext-nautilus.$_arch.so \
            "$pkgdir"/usr/lib/nautilus/extensions-3.0/bcompare-ext-nautilus.so 
@@ -48,10 +51,6 @@ package() {
   # Caja
   install -Dm755 "$pkgdir"/opt/$pkgname/ext/bcompare-ext-caja.$_arch.so \
            "$pkgdir"/usr/lib/caja/extensions-2.0/bcompare-ext-caja.so
-
-  # Desktop
-  install -Dm644 "$pkgdir"/opt/$pkgname/ext/bcompare_ext_kde.desktop \
-           "$pkgdir"/usr/share/kde4/services/bcompare_ext_kde.desktop
 
   # License
   install -Dm644 LICENSE \
