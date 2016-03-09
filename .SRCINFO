@@ -16,7 +16,7 @@ pkgbase = cewe-fotoservice
 	source = http://dls.photoprintit.de/download/Data/6822/hps/setup_OnlineFotoservice.tgz
 	source = updater.pl
 	md5sums = 8214336fcc74db7af5062cbc3c9c7d6b
-	md5sums = e3dd576cdb9af15468206a9bb4c5eb50
+	md5sums = 422a405d520e18ef9afade2e7c24440b
 
 pkgname = cewe-fotoservice
 
