@@ -1,7 +1,7 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-core
-pkgver=113.24.00
+pkgver=113.24.02
 pkgrel=1
 license=('Apache')
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('ocaml-findlib' 'opam')
 source=("https://ocaml.janestreet.com/ocaml-core/$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/${pkgname#ocaml-}-${pkgver}.tar.gz"
         "libdir.patch")
 options=('!strip')
-md5sums=('90aa987056d18d8be2600bc1dd0d71de'
+md5sums=('dca84e2fe387ef193ee584f043dae6ee'
          '7f0a951f1ac87385272ea7a6dd58762a')
 
 prepare() {
