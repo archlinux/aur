@@ -248,15 +248,15 @@ Index: dev.vivid/content/common/sandbox_linux/bpf_gpu_policy_linux.cc
  }
 Index: dev.vivid/chrome/browser/about_flags.cc
 ===================================================================
---- dev.vivid.orig/chrome/browser/about_flags.cc	2015-06-02 15:12:59.295303719 -0400
-+++ dev.vivid/chrome/browser/about_flags.cc	2015-06-02 15:12:59.292303758 -0400
-@@ -1072,7 +1072,7 @@
-      "disable-accelerated-video-decode",
-      IDS_FLAGS_ACCELERATED_VIDEO_DECODE_NAME,
-      IDS_FLAGS_ACCELERATED_VIDEO_DECODE_DESCRIPTION,
--     kOsMac | kOsWin | kOsCrOS,
-+     kOsAll,
-      SINGLE_DISABLE_VALUE_TYPE(switches::kDisableAcceleratedVideoDecode),
+--- chromium-50.0.2652.0/chrome/browser/about_flags.cc	2016-02-17 00:01:07.000000000 +0100
++++ chromium-50.0.2652.0/chrome/browser/about_flags.cc.new	2016-02-17 18:41:33.115828319 +0100
+@@ -859,7 +859,7 @@
+         "disable-accelerated-video-decode",
+         IDS_FLAGS_ACCELERATED_VIDEO_DECODE_NAME,
+         IDS_FLAGS_ACCELERATED_VIDEO_DECODE_DESCRIPTION,
+-        kOsMac | kOsWin | kOsCrOS,
++        kOsAll,
+         SINGLE_DISABLE_VALUE_TYPE(switches::kDisableAcceleratedVideoDecode),
      },
  #if defined(USE_ASH)
 Index: dev.vivid/content/common/gpu/media/vaapi_wrapper.cc

@@ -8,8 +8,8 @@
 ## -- Build options -- ##
 #########################
 
-_use_clang=0           # Use clang compiler (system). Results in faster build and smaller chromium.
-_use_bundled_clang=0   # Use bundled clang compiler (needs build). NOTE: if use this option , '_use_clang' need set to 1
+_use_clang=1           # Use clang compiler (system). Results in faster build and smaller chromium.
+_use_bundled_clang=1   # Use bundled clang compiler (needs build). NOTE: if use this option , '_use_clang' need set to 1
 _use_ccache=0          # Use ccache when build
 _use_pax=0             # Set 1 to change PaX permisions in executables NOTE: only use if use PaX environment
 _use_gtk3=1            # If set 1, then build with GTK3 support, if set 0, then build with GTK2
@@ -18,7 +18,7 @@ _use_gtk3=1            # If set 1, then build with GTK3 support, if set 0, then 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=50.0.2633.3
+pkgver=50.0.2661.18
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -26,7 +26,7 @@ arch=('i686' 'x86_64')
 url='http://www.chromium.org'
 license=('BSD')
 depends=('desktop-file-utils'
-         'icu'
+         #'icu'
          'jsoncpp'
          #'libsrtp'
          'libwebp'
@@ -63,8 +63,8 @@ makedepends=('libexif'
              'imagemagick'
              )
 makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
-optdepends=('chromium-pepper-flash-dev: PPAPI Flash Player (Dev Channel)'
-            'chromium-widevine-dev: Widevine plugin (eg: Netflix) (Dev Channel)'
+optdepends=('chromium-pepper-flash-dev: PPAPI Flash Player (Dev Channel) (64bits only)'
+            'chromium-widevine-dev: Widevine plugin (eg: Netflix) (Dev Channel) (64bits only)'
             #
             'kdebase-kdialog: Needed for file dialogs in KDE4'
             'kwalletmanager4: Needed for storing passwords in KWallet in KDE4'
@@ -81,15 +81,13 @@ source=("https://commondatastorage.googleapis.com/chromium-browser-official/chro
         'chromium-dev.xml'
         'chromium-dev.svg'
         # Patch form Gentoo
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-jinja-r7.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-ffmpeg-r2.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-snapshot-toolchain-r1.patch'
         # Misc Patches
-        'enable_vaapi_on_linux-r3.diff'
+        'enable_vaapi_on_linux-r4.diff'
+        'chromium-system-jinja-r9.patch'
         # Patch from crbug (chromium bugtracker)
         'chromium-widevine-r0.patch' # https://crbug.com/473866
-        'gtk2_ui.patch' # http://crbug.com/575038
-        'https://codereview.chromium.org/download/issue1644893002_1.diff' # http://crbug.com/571943
         )
 sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?marker=chromium-${pkgver}.tar.x | awk -v FS='<td>"' -v RS='"</td>' '$0=$2' | head -n1)"
           "$(curl -sL "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes" | grep sha1 | cut -d " " -f3)"
@@ -98,16 +96,14 @@ sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?m
           '2b98c549332e7337307ce287e150930cfc1dfa5f'
           '336976cb66bf8df71fc7f2e92aa723891b6efb53'
           # Patch form Gentoo
-          'c24d14029714d2295f3220a7173a5a7362f578a2'
+          #'c24d14029714d2295f3220a7173a5a7362f578a2'
           '450cd81653499eb50f0f7df1b0d4d1c1620365a5'
           '7b9c1a7e0e581413dbebb0e894f68ce2f2ba0e6a'
           # Misc Patches
-          'aab4fa1f9aad1a80fdb35545eb74739a240fe0ae'
+          '1a03daacbbf46777738f81968f9796612a6c9217'
+          '1063521b4e3bf1bb25b666ef7423968886fe055c'
           # Patch from crbug (chromium bugtracker)
           'fa9ff0ff9049784b4a1ec37292530ae61aece610'
-          '9d3e97a19b8468050df92366671ecce00a55a3dc'
-          '3558f4cbf74d6de346a4a8d2fa824e9690ecf9e7'
-
           )
 options=('!strip')
 install=chromium-dev.install
@@ -232,6 +228,7 @@ _necesary=('base/third_party/dmg_fp'
            'third_party/devscripts'
            'third_party/dom_distiller_js'
            'third_party/dom_distiller_js/dist/proto_gen/third_party/dom_distiller_js'
+           'third_party/ffmpeg' # http://crbug.com/588423
            'third_party/fips181'
            'third_party/flot'
            'third_party/google_input_tools'
@@ -239,6 +236,7 @@ _necesary=('base/third_party/dmg_fp'
            'third_party/google_input_tools/third_party/closure_library/third_party/closure'
            'third_party/hunspell'
            'third_party/iccjpeg'
+           'third_party/icu' # https://crbug.com/584920 and https://crbug.com/592268
            'third_party/jstemplate'
            'third_party/khronos'
            'third_party/leveldatabase'
@@ -259,10 +257,10 @@ _necesary=('base/third_party/dmg_fp'
            'third_party/lss'
            'third_party/lzma_sdk'
            'third_party/mesa'
-           'third_party/mojo'
            'third_party/modp_b64'
            'third_party/mt19937ar'
            'third_party/npapi'
+           'third_party/openh264' # http://crbug.com/588423 (?)
            'third_party/openmax_dl'
            'third_party/opus'
            'third_party/ots'
@@ -319,7 +317,7 @@ _flags=("-Dclang=${_use_clang}"
         "-Dgoogle_api_key=${_google_api_key}"
         "-Dgoogle_default_client_id=${_google_default_client_id}"
         "-Dgoogle_default_client_secret=${_google_default_client_secret}"
-        '-Dicu_use_data_file_flag=0'
+        '-Dicu_use_data_file_flag=1' # https://crbug.com/592268
         '-Dlibspeechd_h_prefix=speech-dispatcher/'
         "-Dlinux_link_gnome_keyring=${_use_gnome_keyring}"
         "-Dlinux_link_gsettings=${_use_gnome}"
@@ -375,12 +373,13 @@ fi
 # -Duse_system_opus=1        | https://code.google.com/p/webrtc/issues/detail?id=3077
 # -Duse_system_sqlite=1      | https://crbug.com/22208
 # -Duse_system_ssl=1         | https://crbug.com/58087
-# -Duse_system_libsrtp       | https://crbug.com/501318
-# -Duse_system_libvpx=0      | https://crbug.com/494939
+# -Duse_system_libsrtp=1     | https://crbug.com/501318
+# -Duse_system_libvpx=1      | https://crbug.com/494939
 # -Duse_system_re2=1         | https://bugs.gentoo.org/show_bug.cgi?id=571156
-# -Duse_system_protobuf=0    | https://bugs.gentoo.org/show_bug.cgi?id=525560
+# -Duse_system_protobuf=1    | https://bugs.gentoo.org/show_bug.cgi?id=525560
+# -Duse_system_icu=1         | https://crbug.com/584920 and https://crbug.com/592268
 # NOTE
-# -Duse_system_openssl=1     | Use if use BoringSSL instead of SSL
+# -Duse_system_openssl=0     | Set to 1 if use BoringSSL instead of SSL
 # -Duse_system_libevent=0    | Need older version (<2.x.x)
 # -Duse_system_v8=0          | Possible broken in API/ABI if use a differen version
 # -Duse_system_libxnvctrl=0  | Because not exist in Arch (and not all users use nvidia blob drivers)
@@ -389,7 +388,7 @@ _use_system=('-Duse_system_expat=1'
              '-Duse_system_flac=1'
              '-Duse_system_fontconfig=1'
              '-Duse_system_harfbuzz=1'
-             '-Duse_system_icu=1'
+             '-Duse_system_icu=0'
              '-Duse_system_jsoncpp=1'
              '-Duse_system_libevent=0'
              '-Duse_system_libexif=1'
@@ -439,33 +438,26 @@ prepare() {
 
   msg2 "Patching the sources"
   # Patch sources from Gentoo
-  patch -p0 -i "${srcdir}/chromium-system-jinja-r7.patch"
   patch -p1 -i "${srcdir}/chromium-system-ffmpeg-r2.patch"
   patch -p0 -i "${srcdir}/chromium-snapshot-toolchain-r1.patch"
 
   # Misc Patches:
-  patch -p1 -i "${srcdir}/enable_vaapi_on_linux-r3.diff"
+  patch -p1 -i "${srcdir}/enable_vaapi_on_linux-r4.diff"
+  patch -p0 -i "${srcdir}/chromium-system-jinja-r9.patch"
 
   # Patch from crbug (chromium bugtracker)
-  # http://crbug.com/575038
-  patch -p1 -i "${srcdir}/gtk2_ui.patch"
-
   # https://crbug.com/473866
   patch -p0 -i "${srcdir}/chromium-widevine-r0.patch"
   sed 's|@WIDEVINE_VERSION@|The Cake Is a Lie|g' -i "third_party/widevine/cdm/stub/widevine_cdm_version.h"
 
-  # http://crbug.com/571943
-  patch -p1 -i "${srcdir}/issue1644893002_1.diff"
-
   ##
-
   # Fix libpng errors
   pushd chrome/app/theme &> /dev/null
+  export IFS=$'\n'
   for i in $(find . -name '*.png' -type f); do
-    convert -strip "${i}" "${i}.fixed"
-    rm "${i}"
-    mv "${i}.fixed" "${i}"
+    mogrify "${i}" &> /dev/null
   done
+  export IFS=' '
   popd &> /dev/null
 
   # Make it possible to remove third_party/adobe
@@ -560,7 +552,7 @@ build() {
   fi
 
   # Build all with ninja
-  ninja -C out/Release -v pdf chrome chrome_sandbox chromedriver widevinecdmadapter clearkeycdm
+  LC_ALL=C ninja -C out/Release -v pdf chrome chrome_sandbox chromedriver widevinecdmadapter clearkeycdm
 
   # Pax-mark again
   if [ "${_use_pax}" = "1" ]; then
@@ -586,6 +578,7 @@ package() {
   for i in libwidevinecdmadapter libclearkeycdm; do
     install -Dm755 "${i}.so" "${pkgdir}/usr/lib/chromium-dev/${i}.so"
   done
+  install -Dm644 icudtl.dat "${pkgdir}/usr/lib/chromium-dev/icudtl.dat" # https://crbug.com/584920 and https://crbug.com/592268
   install -Dm644 natives_blob.bin "${pkgdir}/usr/lib/chromium-dev/natives_blob.bin"
   install -Dm644 snapshot_blob.bin "${pkgdir}/usr/lib/chromium-dev/snapshot_blob.bin"
 
