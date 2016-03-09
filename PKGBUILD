@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 depends=('linux')
 makedepends=('linux-headers' 'make' 'git')
-conflicts=('moxa-uport11x0')
+conflicts=('moxa-uport11x0-git-dkms')
 source=("https://github.com/ellysh/mxu11x0.git"
         "install"
         "mxu11x0.conf" )
