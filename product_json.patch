@@ -1,0 +1,29 @@
+diff -rupN a/product.json b/product.json
+--- a/product.json	2016-03-09 09:32:26.286492275 -0800
++++ b/product.json	2016-03-09 09:31:46.926493755 -0800
+@@ -1,10 +1,21 @@
+ {
+ 	"nameShort": "Code - OSS",
+-	"nameLong": "Code - OSS",
++	"nameLong": "Visual Studio Code - OSS",
+ 	"applicationName": "code-oss",
+ 	"dataFolderName": ".vscode-oss",
+ 	"win32MutexName": "vscodeoss",
+ 	"licenseUrl": "https://github.com/Microsoft/vscode/blob/master/LICENSE.txt",
+ 	"darwinBundleIdentifier": "com.visualstudio.code.oss",
+-	"welcomePage": "http://go.microsoft.com/fwlink/?LinkId=723048"
+-}
+\ No newline at end of file
++	"welcomePage": "http://go.microsoft.com/fwlink/?LinkId=723048",
++	"extensionsGallery": {
++		"serviceUrl": "https://marketplace.visualstudio.com/_apis/public/gallery",
++		"cacheUrl": "https://vscode.blob.core.windows.net/gallery/index",
++		"itemUrl": "https://marketplace.visualstudio.com/items"
++	},
++	"documentationUrl": "http://go.microsoft.com/fwlink/?LinkID=533484#vscode",
++	"twitterUrl": "http://go.microsoft.com/fwlink/?LinkID=533687",
++	"requestFeatureUrl": "http://go.microsoft.com/fwlink/?LinkID=533482",
++	"reportIssueUrl": "http://go.microsoft.com/fwlink/?LinkId=534872",
++	"privacyStatementUrl": "http://go.microsoft.com/fwlink/?LinkID=528096&clcid=0x409",
++	"commit": "@commit@"
++}

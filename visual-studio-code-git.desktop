@@ -1,0 +1,7 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Visual Studio Code (Open Source)
+Exec="/opt/VSCode-OSS/code-oss" %F
+Icon=/opt/VSCode-OSS/resources/app/resources/linux/code.png
+Type=Application
+Categories=Development;
