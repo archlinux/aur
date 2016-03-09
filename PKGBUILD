@@ -13,12 +13,12 @@ source=('docker-rpm-builder::git+https://github.com/alanfranz/docker-rpm-builder
 md5sums=('SKIP')
 
 pkgver() {
-	cd docker-rpm-builder-git
+	cd docker-rpm-builder
 	git describe --long --tags | sed -r 's/-([0-9,a-g,A-G]{7}.*)//' | sed 's/-/./'
 }
 
 build() {
-	cd docker-rpm-builder-git
+	cd docker-rpm-builder
 	make
 }
 
