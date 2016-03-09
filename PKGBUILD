@@ -1,0 +1,40 @@
+# Maintainer : Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
+
+pkgname=firenzina-git
+pkgver=2.4.1.r40.17c9150
+pkgrel=1
+pkgdesc="Firenzina ${pkgver:0:5} xTreme is a free, open-source UCI chess engine, a derivative of Fire 2.2 xTreme"
+arch=('i686' 'x86_64')
+url="https://github.com/Censor/Firenzina"
+license=('GPL')
+depends=('')
+makedepends=('git')
+conflicts=("${pkgname%-*}")
+provides=("${pkgname%-*}=${pkgver}")
+options=(!emptydirs)
+source=("git+https://github.com/Censor/${pkgname%-*}.git"
+	"makefile.patch")
+md5sums=('SKIP'
+	 "44f3e93f6ba92567161596903091ae21")
+
+pkgver() {
+	cd "${srcdir}/${pkgname%-*}"
+	printf "%s.r%s.%s" "${pkgver:0:5}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+#	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+#	git describe --long --tags | sed 's/^v/3./;s/.win//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	cd "${srcdir}/${pkgname%-*}/src/"
+	patch -Np1 -i "${srcdir}/makefile.patch"
+}
+
+build() {
+	cd "${srcdir}/${pkgname%-*}/src/"
+	make
+}
+
+package() {
+	cd "${srcdir}/${pkgname%-*}/src/"
+	install -Dm0755 ${pkgname%-*} ${pkgdir}/usr/bin/${pkgname%-*}
+}

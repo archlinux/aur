@@ -1,0 +1,175 @@
+--- a/Makefile	2014-08-25 22:16:25.000000000 +0300
++++ b/Makefile	2016-03-09 17:05:43.000000000 +0200
+@@ -1,99 +1,80 @@
+-#
+ # Makefile
+-#
+-
+-LIBS = 
+-NDK = /android/ndk
+-SYSROOT = $(NDK)/platforms/android-8/arch-arm
+-CC = $(NDK)/toolchains/arm-linux-androideabi-4.8/prebuilt/windows-x86_64/bin/arm-linux-androideabi-gcc --sysroot=$(SYSROOT)
+-
+-
+-default: firenzina
+-
+-OFILES = main.o \
+-                    50move.o \
+-                    all_node.o \
+-                    arrays.o \
+-                    benchmark.o \
+-                    control.o \
+-                    cut_node.o \
+-                    endgame.o \
+-                    evaluation.o \
+-                    exclude_node.o \
+-                    hash_init.o \
+-                    hash_use.o \
+-                    init.o \
+-                    input.o \
+-                    low_depth.o \
+-                    magic_mult.o \
+-                    make_move.o \
+-                    material_value.o \
+-                    mem_handler.o \
+-                    mobility.o \
+-                    move_gen.o \
+-                    next_move.o \
+-                    ok_move.o \
+-                    pawn_eval.o \
+-                    pv_node.o \
+-                    qsearch.o \
+-                    qsearch_pv.o \
+-                    robbo_cache.o \
+-                    robbo_comp.o \
+-                    robbo_count.o \
+-                    robbo_decomp.o \
+-                    robbo_glue.o \
+-                    robbo_init.o \
+-                    robbo_init_IO.o \
+-                    robbo_suffix.o \
+-                    robbo_triple.o \
+-                    robbo_triple_disk.o \
+-                    robbo_triple_init.o \
+-                    robbo_triple_value.o \
+-                    robbo_utility.o \
+-                    root_analysis.o \
+-                    root_multipv.o \
+-                    root_node.o \
+-                    search.o \
+-                    SEE.o \
+-                    set_position.o \
+-                    signals.o \
+-                    slab_memory.o \
+-                    SMP.o \
+-                    SMP_init.o \
+-                    SMP_search.o \
+-                    static.o \
+-                    top_analysis.o \
+-                    top_node.o \
+-                    unmake_move.o \
+-                    utility.o \
+-                    cpu-features.o \
++# Firenzina 2.x xTreme
+ 
++CC       = gcc
++CFLAGS   = -g -w -s -DNDEBUG -DHAVE_STRUCT_TIMESPEC -static \
++	   -march=native -O2 -pipe -fomit-frame-pointer \
++	   -Wfatal-errors -DHasPreFetch -DRobboBase
++LDFLAGS  = -lpthread
++
++# "-DRobboBases" = for RobboBase support 
++
++default  : firenzina
++
++OBJECTS  = main.o \
++	   50move.o \
++	   all_node.o \
++	   arrays.o \
++	   benchmark.o \
++	   control.o \
++	   cut_node.o \
++	   endgame.o \
++	   evaluation.o \
++	   exclude_node.o \
++	   hash_init.o \
++	   hash_use.o \
++	   init.o \
++	   input.o \
++	   low_depth.o \
++	   magic_mult.o \
++	   make_move.o \
++	   material_value.o \
++	   mem_handler.o \
++	   mobility.o \
++	   move_gen.o \
++	   next_move.o \
++	   ok_move.o \
++	   pawn_eval.o \
++	   pv_node.o \
++	   qsearch.o \
++	   qsearch_pv.o \
++	   robbo_cache.o \
++	   robbo_comp.o \
++	   robbo_count.o \
++	   robbo_decomp.o \
++	   robbo_glue.o \
++	   robbo_init.o \
++	   robbo_init_IO.o \
++	   robbo_suffix.o \
++	   robbo_triple.o \
++	   robbo_triple_disk.o \
++	   robbo_triple_init.o \
++	   robbo_triple_value.o \
++	   robbo_utility.o \
++	   root_analysis.o \
++	   root_multipv.o \
++	   root_node.o \
++	   search.o \
++	   SEE.o \
++	   set_position.o \
++	   signals.o \
++	   slab_memory.o \
++	   SMP.o \
++	   SMP_init.o \
++	   SMP_search.o \
++	   static.o \
++	   top_analysis.o \
++	   top_node.o \
++	   unmake_move.o \
++	   utility.o
+ 
+ $(OFILES): 
+ 
+-firenzina:  $(OFILES)
+-	$(CC) -o firenzina $(OFILES)  $(LIBS) 
+-
+-clean:
+-	rm -f *.o  firenzina
+-
+-.c.o:   main.c
+-	$(CC) -c -g $*.c  -Wall -w -pipe  -s -std=c99 -DNDEBUG -DHAVE_STRUCT_TIMESPEC -Ofast -static  \
+-                      -flto -fwhole-program -finline-functions -fprefetch-loop-arrays  \
+-                      -Wfatal-errors -mtune=arm7 -DHasPreFetch -DRobboBases \
+-
+-
+-
+-# for popcount (AMD)          =   -march=amdfam10 -mtune=amdfam10 -mpopcnt -DHasPopCNT
+-# for popcount (INTEL)        =   -msse4.2 -march=corei7 -mtune=corei7 -mpopcnt -DHasPopCNT
+-
+-# for RobboBase support       =  -DRobboBases
+-
+-# for SSE cpus (and above)    =  -DHasPreFetch -msse
+-
+-
+-
+-
+-
++firenzina: $(OBJECTS)
++	   $(CC) $(OBJECTS) -o firenzina $(LDFLAGS)
+ 
++clean    :
++	   rm -f *.o firenzina
+ 
++.c.o     : main.c
++	   $(CC) -c $(CFLAGS) $*.c
