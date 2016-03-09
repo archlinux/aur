@@ -1,20 +1,21 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.27
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-rpc-xml'
-pkgver='0.78'
-pkgrel='2'
+pkgver='0.79'
+pkgrel='1'
 pkgdesc="A set of classes for core data, message and XML handling"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-xml-parser>=2.31' 'perl-libwww' 'perl-xml-libxml' 'perl-net-server')
+depends=('perl-xml-parser>=2.31' 'perl-libwww' 'perl' 'perl-xml-libxml')
 makedepends=()
-url='http://search.mcpan.org/dist/RPC-XML'
-source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJRAY/RPC-XML-0.78.tar.gz')
-md5sums=('6a4519dbc5130d872c13a7a23309f36b')
-sha512sums=('160c5e699d3de78fe61a2d7a307e094261054cc4936d2b909fd0d29af77ca57aa76cd62f421a714c39feb1b46f1d81b9561551884dfb7e4dc6ab560c8e3e2822')
-_distdir="RPC-XML-0.78"
+optdepends=('perl-net-server: Net::Server support')
+url='https://metacpan.org/release/RPC-XML'
+source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJRAY/RPC-XML-0.79.tar.gz')
+md5sums=('64fb3a4a597574b97ea5c989edffb21d')
+sha512sums=('541ee3abf4e44cff68a2b7b7c4f78095e8e4ec479d72b52d300503bc1688f64fd01a0ff3c2cdf8e18573d19af0bae467ac68befe7ad8756e6287ed494a50ce26')
+_distdir="RPC-XML-0.79"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +40,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
