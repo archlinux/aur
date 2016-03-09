@@ -9,7 +9,7 @@
 # TODO split packages? nimbus/supervisor/ui ?
 
 pkgname=storm
-pkgver=0.9.5
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Distributed and fault-tolerant realtime computation system'
 arch=('any')
@@ -34,7 +34,7 @@ source=(${_closest}/${_app_path}
         systemd_sysusers.d_storm.conf
         systemd_tmpfiles.d_storm.conf)
 
-sha256sums=('2e8337126de8d1e180abe77fb81af7c971f8c4b2dad94e446ac86c0f02ba3fb2'
+sha256sums=('066d1f5343333efd9187d7b850047cf9b3f63d885811e9fdd6e50f949b432f62'
             'c94799f4b459f5218faf1da57936baeb4c32b9542a1ba0aacdd637bf2f3aaf05'
             '00780ee4cea3bb7a282a548f41b8964d5e392776f9d687ebea89cd49ed5742e3'
             '0d8958786538714da86ccf3f23cb668fa017530f8858aea2b7325ffe1af66cd1'
@@ -58,15 +58,16 @@ package() {
   install -D -m 644 ${srcdir}/zookeeper_zoo.cfg \
     "${pkgdir}/etc/zookeeper/zookeeper-${pkgname}/zoo.cfg"
 
-  cp -r bin/storm "${pkgdir}${_app_home}/bin/"
+  cp -r bin/storm bin/storm.py "${pkgdir}${_app_home}/bin/"
   sed -i "1s|^#!/usr/bin/python$|#!/usr/bin/python2|" \
-    "${pkgdir}${_app_home}/bin/storm"
+    "${pkgdir}${_app_home}/bin/storm.py"
   ln -s ${_app_home}/bin/storm "${pkgdir}/usr/bin/storm"
 
   cp -r lib/* "${pkgdir}/usr/share/java/${pkgname}"
   ln -s ../java/${pkgname} "${pkgdir}${_app_home}/lib"
 
-  cp -r examples external logback public RELEASE "${pkgdir}${_app_home}"
+  cp -r examples external log4j2 public README.markdown SECURITY.md \
+    "${pkgdir}${_app_home}"
 
   ln -s /var/log/${pkgname} "${pkgdir}${_app_home}/logs"
 
