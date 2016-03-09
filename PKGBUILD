@@ -1,11 +1,11 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=moarvm-git
-pkgver=20160208
+pkgver=20160309
 pkgrel=1
 pkgdesc="6model-based VM for NQP and Rakudo Perl6"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
-depends=('dyncall' 'libatomic_ops' 'libuv' 'llvm')
+depends=('dyncall' 'libatomic_ops' 'libtommath' 'libuv' 'llvm')
 makedepends=('clang' 'git' 'make' 'perl' 'pkg-config')
 groups=('perl6')
 url="https://github.com/MoarVM/MoarVM"
@@ -41,12 +41,9 @@ build() {
     --compiler=clang \
     --has-dyncall \
     --has-libatomic_ops \
+    --has-libtommath \
     --has-libuv \
     --optimize
-    # Note that the bundled libtommath has patches that have been sent
-    # upstream, but aren't in any released version; 0.42 will compile
-    # but causes slight bugs. (credit: flussence)
-    #--has-libtommath
   make
 }
 
@@ -57,7 +54,7 @@ package() {
   make DESTDIR="$pkgdir" install
 
   msg2 'Cleaning up pkgdir...'
-  rm -rf "$pkgdir/usr/include/libuv"
+  rm -rf "$pkgdir/usr/include/"{libtommath,libuv}
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
   find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }
