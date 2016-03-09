@@ -1,21 +1,20 @@
 pkgbase = droidcam
-	pkgdesc = A tool for using your android device as a wireless/usb webcam
-	pkgver = 4.1
-	pkgrel = 2
-	url = http://www.dev47apps.com/
-	install = droidcam.install
-	arch = i686
-	arch = x86_64
-	license = custom
-	makedepends = linux-headers
-	depends = bluez-libs
-	depends = gtk2
-	optdepends = v4l-utils: Userspace tools and conversion library for Video 4 Linux
-	optdepends = xf86-video-v4l: X.org v4l video driver
-	options = !strip
-	source = droidcam.desktop
-	source = http://www.dev47apps.com/files/41/droidcam-v4l2-.tar.gz
-	sha1sums = f85b3f34f98908bd1327df0ea0e650dcbdcb07e9
+    pkgdesc = A tool for using your android device as a wireless/usb webcam
+    pkgver = 6.0
+    pkgrel = 3
+    url = http://www.dev47apps.com/
+    install = droidcam.install
+    arch = x86_64
+    license = custom
+    makedepends = linux-headers
+    depends = bluez-libs
+    depends = gtk2
+    optdepends = v4l-utils: Userspace tools and conversion library for Video 4 Linux
+    optdepends = xf86-video-v4l: X.org v4l video driver
+    options = !strip
+    source = droidcam.desktop
+    source = http://www.dev47apps.com/files/41/droidcam-v4l2-.tar.gz
+    sha1sums = f85b3f34f98908bd1327df0ea0e650dcbdcb07e9
 
 pkgname = droidcam
 
