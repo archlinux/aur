@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
 depends=("nvidia-utils-beta>=$pkgver" 'libgl')
-makedepends=('linux-headers' 'pacman>=4.2.0')
+makedepends=('linux-headers')
 provides=('nvidia')
 conflicts=('nvidia-96xx' 'nvidia-173xx' 'nvidia')
 options=('!strip')
@@ -23,10 +23,8 @@ case "$CARCH" in
 esac
 
 # Source
-source=()
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/NVIDIA-Linux-x86_64-$pkgver-no-compat32.run")
-md5sums=()
 md5sums_i686=('d4fc7fcf1204a46f15733d7cc2711ad2')
 md5sums_x86_64=('8799b9a29ea1ef72feb739f1d8290728')
 
