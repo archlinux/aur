@@ -17,7 +17,6 @@ optdepends=('ffmpeg: H264/AAC/MP3 decoding'
             'libpulse: PulseAudio driver'
             'networkmanager: Location detection via available WiFi networks'
             'upower: Battery API')
-makedepends=('pacman>=4.2.0')
 provides=("firefox=$pkgver")
 install=$pkgname.install
 source=("$pkgname.desktop"

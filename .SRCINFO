@@ -9,7 +9,6 @@ pkgbase = firefox-beta-bin
 	license = MPL
 	license = GPL
 	license = LGPL
-	makedepends = pacman>=4.2.0
 	depends = alsa-lib
 	depends = dbus-glib
 	depends = desktop-file-utils
