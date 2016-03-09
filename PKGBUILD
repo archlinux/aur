@@ -3,7 +3,7 @@
 # Contributor: Scott Lawrence <bytbox@gmail.com>
 # Contributor: Guillaume ALAUX <guillaume at alaux dot net>
 pkgname=zookeeper
-pkgver=3.4.7
+pkgver=3.4.8
 pkgrel=1
 pkgdesc='Open-source server which enables highly reliable distributed coordination'
 arch=('any')
@@ -15,8 +15,7 @@ backup=(etc/zookeeper/configuration.xsl
         etc/zookeeper/zoo.cfg)
 install=install_zookeeper.sh
 
-_apache_cgi="http://www.apache.org/dyn/closer.cgi"
-_closest=$(curl "${_apache_cgi}?asjson=1" | tr -d '\n ' | sed -r 's/.*"preferred":"(.+)".*/\1/')
+_closest="https://archive.apache.org/dist/"
 _app_path="/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"
 source=(${_closest}/${_app_path}
         systemd_zookeeper.service
@@ -24,7 +23,7 @@ source=(${_closest}/${_app_path}
         systemd_sysusers.d_zookeeper.conf
         systemd_tmpfiles.d_zookeeper.conf)
 
-sha256sums=('2e043e04c4da82fbdb38a68e585f3317535b3842c726e0993312948afcc83870'
+sha256sums=('f10a0b51f45c4f64c1fe69ef713abf9eb9571bc7385a82da892e83bb6c965e90'
             'b59e0641de1951ad149ca39df5b5ec37dc6229f1aa987b0ed9d7e82e570be9ed'
             'a3fd2566648f57c0cdd75cd48b7b60fa55eb59ee67dd716de1e1aa6a57823b88'
             'e863b63650c15a8823cfb2b507c375c999a71cda24805062de36af0250de5daa'
