@@ -14,7 +14,7 @@ source=("https://firenzina.wikispaces.com/file/view/Firenzina_2-4-3_sources.zip/
 	"makefile.patch")
 
 md5sums=('3a20edf1dc4269210e6ce036e00d1aac'
-	 "0d7b3d1f5d2d339dc7685587786ec5ac")
+	 "2ad6ba5dea0920f34242c3df09fa959a")
 
 prepare() {
 	cd "${srcdir}/Firenzina_2-4-3/Firenzina/"
@@ -28,5 +28,5 @@ build() {
 
 package() {
 	cd "${srcdir}/Firenzina_2-4-3/Firenzina/"
-	install -Dm0755 fire ${pkgdir}/usr/bin/$pkgname
+	install -Dm0755 $pkgname ${pkgdir}/usr/bin/$pkgname
 }
