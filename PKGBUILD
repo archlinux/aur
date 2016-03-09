@@ -1,21 +1,21 @@
-# Contributor: chimeracoder <dev@chimeracoder.net>
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-syntax-keyword-junction'
-pkgver='0.003007'
+pkgver='0.003008'
 pkgrel='1'
 pkgdesc="Perl6 style Junction operators in Perl5"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-sub-exporter-progressive>=0.001006' 'perl-syntax>=0')
+depends=('perl-sub-exporter-progressive>=0.001006' 'perl-syntax')
 makedepends=()
 checkdepends=('perl-test-requires>=0.07')
-url='http://search.cpan.org/dist/Syntax-Keyword-Junction'
-source=('http://search.cpan.org/CPAN/authors/id/F/FR/FREW/Syntax-Keyword-Junction-0.003007.tar.gz')
-md5sums=('a47d97ae6f129f654690ab82c8c717d1')
-sha512sums=('512c6f931269fd30409cbbe2e90794eb0b47713ec7c5dde86c89678b785311a4adb64976a7336a29823e36f8afa412bf0d316bcb0949df894fd1a52b09a4ae39')
-_distdir="Syntax-Keyword-Junction-0.003007"
+url='https://metacpan.org/release/Syntax-Keyword-Junction'
+source=('http://search.cpan.org/CPAN/authors/id/F/FR/FREW/Syntax-Keyword-Junction-0.003008.tar.gz')
+md5sums=('c20b4f6aa92c30808c8efaecc9463911')
+sha512sums=('e09229bf28e4af240088de3836cd666273d2b6be18148c5e7955b6c0509e18392e39e28d4d6c6a52bc52cd19ce47a7ca5138187b9103562ca9fa0eeeaa33a98c')
+_distdir="Syntax-Keyword-Junction-0.003008"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
