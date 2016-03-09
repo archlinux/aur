@@ -53,7 +53,7 @@ pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _kernelname=-rt-bfq
 _srcname=linux-4.4
 _pkgver=4.4.4
-_rtpatchver=rt10
+_rtpatchver=rt11
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -460,7 +460,7 @@ sha512sums=('13c8459933a8b80608e226a1398e3d1848352ace84bcfb7e6a4a33cb230bbe1ab71
             'SKIP'
             'c206af7803cb0915fbe2bd27ed33282452db3fbd3070c73e4c7147443efd3c7588fb3be12d0abc08742381fbe892190602b29147684630aa9e6ff5e9efa49dbc'
             'SKIP'
-            '07c14b6ff6ceb68a7167896770f23588d008a334df822c47f6b22266cb7ad4fcc8a407046bf91c36f457d47308fa96387f0bb2db1894465f9ba4140831740068'
+            'fe2df5f4a3fe86feb68d2f81e8cb969f9f425d4c8e34da1ace8aa54c4bb3f1e5ccc3622990f385be526116228adbc2dadc62eb1ed61101d2a437bb413257df64'
             'SKIP'
             'bfd5d1a2d8f203e4d13914d311e8cc79b81695a41dc24179074cb05a5a9b5b0cc89a77062c6b8f79c850281aaa0d02dce40e23750aea7d1015f675c1cc024027'
             '275b7573adf648325ab950f8a8be7753f2efac0c4cd5030d31b0482fca0b9b9886c85dec989acde15eadf128366c250ecbd19d5527bfb41f472425fef43e93fd'
