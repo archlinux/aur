@@ -19,7 +19,7 @@ post_install() {
     note "The launcher is called: 'bcompare'"
     note "Beyond Compare context menus work for:
           - Nautilus
-          - Dolphin (only dolphin4)
+          - Dolphin (KDE4)
           - Thunar
           - Nemo
           - Caja"
