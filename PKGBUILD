@@ -5,9 +5,10 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Alexej Magura <agm2819*gmail*>
 # Contributor: Joel Klinghed <the_jk@yahoo.com>
+# Contributor: Paweł Tomak <pawel@tomak.eu>
 
 pkgname=pike
-pkgver=8.0.164
+pkgver=8.0.182
 pkgrel=1
 pkgdesc='Dynamic programming language with a syntax similar to Java and C'
 arch=('x86_64' 'i686')
@@ -15,8 +16,8 @@ url='http://pike.lysator.liu.se/'
 license=('GPL2' 'LGPL' 'MPL')
 depends=('gtksourceview2' 'sane' 'libzip' 'libmysqlclient' 'gtkglarea' 'nettle')
 makdepends=('nettle')
-source=("http://pike.lysator.liu.se/pub/pike/latest-stable/Pike-v$pkgver.tar.gz")
-sha256sums=('fb1fe218d330258ea6930c2060e304999c54c30b7cb30c9f9d5eb4d974c3c258')
+source=("http://pike.lysator.liu.se/pub/pike/all/$pkgver/Pike-v$pkgver.tar.gz")
+sha256sums=('327335fa19bf40def0374a8f38a09bd236c5802264dc1880290955b51ef1f2a0')
 
 build() {
   cd "Pike-v$pkgver"
