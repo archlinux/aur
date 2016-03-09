@@ -56,7 +56,7 @@ sha256sums=(
     'SKIP'
     'SKIP'
     '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48'
-    'e27576d05ca886e3a20382858129c37d72437ae9e29bf390db09e9d8083feff7'
+    '1327265148994e6afc9e61f6648d9e5942cdecfa777c53d3cf7881e9cacaa8eb'
 )
 
 #
