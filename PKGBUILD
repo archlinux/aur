@@ -11,7 +11,7 @@ if [[ $CARCH == "x86_64" ]]; then
 fi
 pkgver=355.00.29
 _extramodules=extramodules-4.4-ARCH
-pkgrel=2
+pkgrel=3
 pkgdesc="NVIDIA drivers for linux (vulkan beta)"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -142,7 +142,7 @@ package_nvidia-vulkan-beta-libgl() {
     mkdir -p "${pkgdir}/usr/share/licenses"
     ln -s nvidia "${pkgdir}/usr/share/licenses/nvidia-libgl"
 
-    install -D -m644 nvidia_icd.json "${pkgdir}/etc/vulkan/icd.d/nvidia_icd.json"
+    install -D -m644 nvidia_icd.json "${pkgdir}/usr/share/vulkan/icd.d/nvidia_icd.json"
 }
 
 package_nvidia-vulkan-beta-utils() {
