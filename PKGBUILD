@@ -8,11 +8,10 @@ pkgrel=2
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
-makedepends=('pacman>=4.2.0')
 options=('!strip')
 _pkg="NVIDIA-Linux-x86-$pkgver"
-source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/$_pkg.run")
-md5sums_x86_64=('d4fc7fcf1204a46f15733d7cc2711ad2')
+source=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/$_pkg.run")
+md5sums=('d4fc7fcf1204a46f15733d7cc2711ad2')
 
 _create_links() {
   # create missing soname links
