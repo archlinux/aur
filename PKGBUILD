@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-config-autoconf'
-pkgver='0.310'
+pkgver='0.311'
 pkgrel='1'
 pkgdesc="A module to implement some of AutoConf macros in pure perl."
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-capture-tiny')
-makedepends=('sed' 'gawk' 'grep' 'bison' 'pkg-config' 'flex')
-url='http://search.mcpan.org/dist/Config-AutoConf'
-source=('http://search.mcpan.org/CPAN/authors/id/R/RE/REHSACK/Config-AutoConf-0.310.tar.gz')
-md5sums=('456749ec964dceb5ae405650bc6e4f1c')
-sha512sums=('c4d3dfdf908663a0917d5a51b581119696444ab3987fdb8cc5ef942f11b47f1063f7ff133b308fc3d7d0a0ed53e2186d9a7a1d2148208b140a8cb005d20cbae2')
-_distdir="Config-AutoConf-0.310"
+makedepends=('bison' 'flex' 'gawk' 'grep' 'pkg-config' 'sed')
+url='https://metacpan.org/release/Config-AutoConf'
+source=('http://search.cpan.org/CPAN/authors/id/R/RE/REHSACK/Config-AutoConf-0.311.tar.gz')
+md5sums=('fa19f46bbd5bb0bd23ee41e8fd7b533f')
+sha512sums=('36ab86fdf2ede03c3e5dc0ba77a80ac19441aeaed2d51a1469d14f8c433fb0908f938d0d33d9e9fd34b978f97b96481596fa3c4c49a7d2960c8132d2f4cd5e20')
+_distdir="Config-AutoConf-0.311"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
