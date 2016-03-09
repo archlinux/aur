@@ -18,3 +18,23 @@ pkgbase = receitanet
 
 pkgname = receitanet
 
+pkgbase = receitanet
+	pkgdesc = Programa Oficial da Receita para envio do IRPF
+	pkgver = 1.07
+	pkgrel = 5
+	url = http://www.receita.fazenda.gov.br
+	install = receitanet.install
+	arch = any
+	license = custom
+	depends = jre8-openjdk
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	source = http://www.receita.fazenda.gov.br/publico/programas/receitanet/receitanet-1.07-1.noarch.rpm
+	source = Copyright
+	source = receitanet.install
+	md5sums = 8c1d9e034f5a8bf87261aca9899256f2
+	md5sums = 0482abdccc0286f64ed66981fcca8975
+	md5sums = 17eef2df7ac4d55d1a7fd436ca89a6fc
+
+pkgname = receitanet
+
