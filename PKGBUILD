@@ -72,15 +72,15 @@ _bldtype=Release
 #_bldtype=Debug
 
 _mozcrev=2628af6995dbbbb9ccdb52d1160db1dbd5ed3bae
-_utdicver=20160125
+_utdicver=20160303
 _zipcoderel=201602
 _uimmozcrev=321.3ea28b1
 
 pkgbase=mozc-ut
 pkgname=mozc-ut
 true && pkgname=('mozc-ut')
-pkgver=2.17.2313.102.20160125
-pkgrel=2
+pkgver=2.17.2313.102.20160303
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc_01.html"
 license=('BSD' 'GPL' 'CC-BY-SA' 'custom')
@@ -95,12 +95,12 @@ source=(
   mod-generate-mozc-ut.sh
 )
 sha1sums=('SKIP'
-          'c0e7d8e9d2a3dcc41effda4901f5142820565bf5'
-          '701737f457cd0a1832ff5e6ed961cf1d6317d5b7'
+          '4db23b05c9a7d6a6fbc57f5714f2ce58b12d582f'
+          'a56267cdf87b5ea48c378107da180f45b7beb46a'
           'e0ba18e67c1be8e3cfb8ecb30760597b215da255'
           '5cc2c2811e2a57ebaf671d09d727a86009f7f846'
           '4ba7faa2ebecb4ad52e05d92d7d18abae327a4fc'
-          '3b525b6802251c07d8cb3f67815c59a4d896c6fe')
+          'fd9b79fc4b81703549b266afe55b6b1598722d1b')
 
 
 if [[ "$_ibus_mozc" == "yes" ]]; then
@@ -140,6 +140,13 @@ prepare() {
 
   git submodule update --init --recursive
 
+  # Generate zip code seed
+  msg "Generating zip code seed..."
+  python2 src/dictionary/gen_zip_code_seed.py \
+    --zip_code="${srcdir}/x-ken-all.csv" --jigyosyo="${srcdir}/JIGYOSYO.CSV" \
+    >> src/data/dictionary_oss/dictionary09.txt
+  msg "Done."
+
   cd "${srcdir}/mozcdic-ut-${_utdicver}"
 
   _mozcver=`mozcver`
@@ -162,13 +169,6 @@ prepare() {
     head -n 32 unix/uim/mozc.cc > unix/uim/LICENSE
 
   fi
-
-  # Generate zip code seed
-  msg "Generating zip code seed..."
-  python2 dictionary/gen_zip_code_seed.py \
-    --zip_code="${srcdir}/x-ken-all.csv" --jigyosyo="${srcdir}/JIGYOSYO.CSV" \
-    >> data/dictionary_oss/dictionary09.txt
-  msg "Done."
 
   # Extract liccense part of mozc
   head -n 29 server/mozc_server.cc > LICENSE
