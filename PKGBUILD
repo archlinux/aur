@@ -2,17 +2,29 @@
 
 pkgbase=qmc2-svn
 pkgname=('qmc2-common-svn' 'qmc2-sdlmame-svn' 'qmc2-arcade-svn')
-pkgver=0.56.6904
+pkgver=0.62.7449
 pkgrel=1
 pkgdesc="Qt based UNIX MAME frontend supporting SDLMAME. (SVN version)"
-url="http://qmc2.arcadehits.net/wordpress/"
+url='http://qmc2.arcadehits.net/wordpress'
 license=('GPL')
 arch=('i686' 'x86_64')
-makedepends=('subversion' 'rsync' 'mesa' 'qt5-declarative' 'qt5-webkit' 'qt5-multimedia' 'qt5-script' 'sdl' 'java-environment')
+makedepends=('subversion'
+             'rsync'
+             'mesa'
+             'qt5-declarative'
+             'qt5-webkit'
+             'qt5-multimedia'
+             'qt5-script'
+             'qt5-xmlpatterns'
+             'sdl2'
+             'java-environment'
+             'wget'
+             'ccache'
+             )
 source=("qmc2::svn://svn.code.sf.net/p/qmc2/code/trunk")
 sha1sums=('SKIP')
 
-_buildopts="CTIME=0 OPENGL=1 PREFIX=/usr MAN_DIR=/usr/share/man QMAKE=/usr/bin/qmake-qt5 LRELEASE=/usr/bin/lrelease-qt5 LUPDATE=/usr/bin/lupdate-qt5"
+_buildopts="PREFIX=/usr MAN_DIR=/usr/share/man QMAKE=/usr/bin/qmake-qt5 LRELEASE=/usr/bin/lrelease-qt5 LUPDATE=/usr/bin/lupdate-qt5 OPENGL=1 JOYSTICK=1 SDL=2 LIBARCHIVE=1 WIP=0 CCACHE=1"
 
 pkgver() {
   cd qmc2
@@ -23,8 +35,6 @@ pkgver() {
 build() {
   msg2 "Build QMC2"
   make -C qmc2 ${_buildopts} all arcade tools man
-  msg2 "build Template_Sync"
-  (cd qmc2/tools/template_sync; qmake-qt5; make)
   msg2 "build QMC2 Options Editor"
   (cd qmc2/tools/qmc2_options_editor_java; sh build.sh)
 }
@@ -32,19 +42,20 @@ build() {
 package_qmc2-common-svn() {
   pkgdesc='Qt based UNIX MAME frontend. Core files, included qCHDman GUI. (SVN version)'
   arch=('i686' 'x86_64')
-  depends=('qt5-script' 'java-environment')
+  depends=('qt5-script'
+           'java-environment'
+           )
   conflicts=('qmc2')
   provides=("qmc2-common-svn=${pkgver}")
   optdepends=('qmc2-sdlmame-svn: Frontend for SDLMAME'
-              'qmc2-arcade-svn: Arcade frontend for SDLMAME')
+              'qmc2-arcade-svn: Arcade frontend for SDLMAME'
+              )
 
   make -C qmc2 ${_buildopts} DESTDIR="${pkgdir}" install tools-install arcade-install man-install
 
   # Cleanup
   rm -fr "${pkgdir}/usr/bin/"qmc2-{arcade,sdlmame}
   rm -fr "${pkgdir}/usr/share/applications/"qmc2-{arcade,sdlmame}.desktop
-
-  install -Dm755 qmc2/tools/template_sync/template_sync "${pkgdir}/usr/bin/template_sync"
 
   pushd qmc2/tools/qmc2_options_editor_java &> /dev/null
   find . -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/qmc2/qmc2_options_editor_java/{}" \;
@@ -62,7 +73,13 @@ package_qmc2-common-svn() {
 
 package_qmc2-sdlmame-svn() {
   pkgdesc='Qt based UNIX MAME frontend for SDLMAME. (SVN version)'
-  depends=("qmc2-common-svn=${pkgver}" 'sdl' 'qt5-webkit' 'qt5-multimedia')
+  depends=("qmc2-common-svn=${pkgver}"
+           'sdl2'
+           'libarchive'
+           'qt5-webkit'
+           'qt5-multimedia'
+           'qt5-xmlpatterns'
+           )
   optdepends=('sdlmame: A port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support')
   arch=('i686' 'x86_64')
 
@@ -78,7 +95,11 @@ package_qmc2-sdlmame-svn() {
 
 package_qmc2-arcade-svn() {
   pkgdesc='Qt based UNIX MAME Arcade frontend for SDLMAME. (SVN version)'
-  depends=("qmc2-common-svn=${pkgver}" 'sdl' 'qt5-declarative')
+  depends=("qmc2-common-svn=${pkgver}"
+           'sdl2'
+           'libarchive'
+           'qt5-declarative'
+           )
   optdepends=('sdlmame: A port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support')
   arch=('i686' 'x86_64')
 
