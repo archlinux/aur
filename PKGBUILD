@@ -20,7 +20,7 @@ source=("http://chuck.cs.princeton.edu/release/files/chuck-$pkgver.tgz")
 sha256sums=('e900b8545ffcb69c6d49354b18c43a9f9b8f789d3ae822f34b408eaee8d3e70b')
 
 build() {
-    patch -p0 --binary -i "$startdir/patch"
+    patch -p0 --binary -i "$startdir/pulse.patch"
     make -C "chuck-$pkgver/src" linux-alsa
 }
 
