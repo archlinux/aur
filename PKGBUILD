@@ -28,5 +28,5 @@ package() {
 	make PREFIX=$pkgdir/opt/docker-rpm-builder install
 	mkdir -p $pkgdir/usr/bin
 	ln -s /opt/docker-rpm-builder/bin/docker-rpm-builder $pkgdir/usr/bin/docker-rpm-builder
-	sed -i 's/\/tmp\/yaourt-tmp-daniel\/aur-docker-rpm-builder-git\/src\/docker-rpm-builder\/devenv/\/opt\/docker-rpm-builder/' $pkgdir/opt/docker-rpm-builder/bin/docker-rpm-builder
+	sed -i 's/\/tmp\/yaourt-tmp-daniel\/aur-docker-rpm-builder-git\/src\/docker-rpm-builder\/devenv/\/opt\/docker-rpm-builder/' $pkgdir/opt/docker-rpm-builder/bin/activate
 }
