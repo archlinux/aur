@@ -27,5 +27,5 @@ diff -rupN a/product.json b/product.json
 +	"requestFeatureUrl": "http://go.microsoft.com/fwlink/?LinkID=533482",
 +	"reportIssueUrl": "http://go.microsoft.com/fwlink/?LinkId=534872",
 +	"privacyStatementUrl": "http://go.microsoft.com/fwlink/?LinkID=528096&clcid=0x409",
-+	"commit": "97d4ad1c55a82369f65078406ed770e8a34055fc"
++	"commit": "5b5f4db87c10345b9d5c8d0bed745bcad4533135"
 +}
