@@ -1,0 +1,22 @@
+pkgbase = python-numdifftools
+	pkgdesc = A suite of tools written in _Python to solve automatic numerical differentiation problems in one or more variables.
+	pkgver = 0.9.14
+	pkgrel = 1
+	url = https://github.com/pbrod/numdifftools/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
+	depends = python-numpydoc
+	options = !libtool
+	source = https://pypi.python.org/packages/source/N/Numdifftools/numdifftools-0.9.14.zip
+	sha1sums = d99930a9389ff23c044c8b4e7499d76201d8040b
+
+pkgname = python2-numdifftools
+	optdepends = 
+
+pkgname = python-numdifftools
+	depends = python-numpydoc
+	optdepends = 
+
