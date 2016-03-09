@@ -13,19 +13,19 @@ source=('docker-rpm-builder::git+https://github.com/alanfranz/docker-rpm-builder
 md5sums=('SKIP')
 
 pkgver() {
-	cd $pkgname
+	cd docker-rpm-builder-git
 	git describe --long --tags | sed -r 's/-([0-9,a-g,A-G]{7}.*)//' | sed 's/-/./'
 }
 
 build() {
-	cd $pkgname
+	cd docker-rpm-builder-git
 	make
 }
 
 package() {
-	cd $pkgname
-	mkdir -p $pkgdir/opt/$pkgname
-	make PREFIX=$pkgdir/opt/$pkgname install
+	cd docker-rpm-builder
+	mkdir -p $pkgdir/opt/docker-rpm-builder
+	make PREFIX=$pkgdir/opt/docker-rpm-builder install
 	mkdir -p $pkgdir/usr/bin
 	ln -s /opt/docker-rpm-builder/bin/docker-rpm-builder $pkgdir/usr/bin/docker-rpm-builder
 }
