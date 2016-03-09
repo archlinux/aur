@@ -15,7 +15,7 @@ source=("linux::git://github.com/raspberrypi/linux#branch=rpi-${_branch}.y"
         'cmdline.txt'
 	'config.overrides')
 md5sums=('SKIP'
-         'e44f530b3d333b98ad376872cdbbf823'
+         'cf4603b0f054a07fdf794f440f8abb18'
          '0244ab7cb2e385a8efe9a7fba9bfcb48'
          '52d6ecfbfbd617c05324d0e6cd2d7d18')
 _dirname=linux-${_branch}

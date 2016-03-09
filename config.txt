@@ -132,9 +132,8 @@ lcd_rotate=2
 mask_gpu_interrupt0=0x400   # VPU shouldn't handle V3D interrupts
 avoid_warnings=2            # VPU shouldn't smash our display setup.
 
-#dtoverlay=vc4-kms-v3d
+dtoverlay=vc4-kms-v3d
 #dtoverlay=rpi-ft5406
 
-avoid_warnings=2
 #disable_overscan=1
 #dtoverlay=rpi-backlight
