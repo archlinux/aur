@@ -9,7 +9,6 @@ pkgbase = thunderbird-beta-bin
 	license = GPL
 	license = LGPL
 	license = MPL
-	makedepends = pacman>=4.2.0
 	depends = alsa-lib
 	depends = cairo
 	depends = dbus-glib

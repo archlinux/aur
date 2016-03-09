@@ -15,7 +15,6 @@ depends=('alsa-lib' 'cairo' 'dbus-glib' 'desktop-file-utils' 'fontconfig' 'freet
          'gtk2' 'hicolor-icon-theme' 'libnotify' 'libpng' 'libvpx' 'libxt' 'mime-types' 'nss' 'pixman'
          'sqlite' 'startup-notification')
 optdepends=('libcanberra: for sound support')
-makedepends=('pacman>=4.2.0')
 provides=("thunderbird=$pkgver")
 conflicts=('thunderbird-beta')
 install=$pkgname.install
