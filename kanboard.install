@@ -1,7 +1,7 @@
 pre_upgrade() {
     echo "Close all sessions on your current kanboard instance"
     echo "Kanboard database upgrades are automatic"
-    read -p "BACKUP YOUR KANBOARD DATABASE AND DATA DIRECTORY BEFORE UPGRADING!!!"
+    echo "BACKUP YOUR KANBOARD DATABASE AND DATA DIRECTORY BEFORE UPGRADING!!!"
 }
 post_install() {
     echo 'To get started you need to:
