@@ -1,9 +1,75 @@
-diff -aur -bZwB cadabra2-git.old/core/cadabra2 cadabra2-git/core/cadabra2
---- cadabra2-git.old/core/cadabra2	2016-02-26 06:27:12.961190308 -0500
-+++ cadabra2-git/core/cadabra2	2016-02-26 06:27:35.641019653 -0500
+diff -aur -bZwB -x .git cadabra2-git.old/core/cadabra2 cadabra2-git/core/cadabra2
+--- cadabra2-git.old/core/cadabra2	2016-03-09 06:27:14.913479977 -0500
++++ cadabra2-git/core/cadabra2	2016-03-09 06:27:21.173460323 -0500
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  #
  # \ingroup pythoncore
  #
+diff -aur -bZwB -x .git cadabra2-git.old/frontend/gtkmm/NotebookWindow.cc cadabra2-git/frontend/gtkmm/NotebookWindow.cc
+--- cadabra2-git.old/frontend/gtkmm/NotebookWindow.cc	2016-03-09 06:27:14.920146624 -0500
++++ cadabra2-git/frontend/gtkmm/NotebookWindow.cc	2016-03-09 06:27:21.173460323 -0500
+@@ -25,20 +25,15 @@
+ #ifdef __APPLE__
+ 	scale = 1.0;
+ #else
+-	settings_gnome    = Gio::Settings::create("org.gnome.desktop.interface");
+-	settings_cinnamon = Gio::Settings::create("org.cinnamon.desktop.interface");
+-	double scale_gnome    = settings_gnome->get_double("text-scaling-factor");
+-	double scale_cinnamon = settings_cinnamon->get_double("text-scaling-factor");
+-	scale = std::max(scale_gnome, scale_cinnamon);
++	settings = Gio::Settings::create((strcmp(std::getenv("DESKTOP_SESSION"), "cinnamon") == 0) ? "org.cinnamon.desktop.interface" : "org.gnome.desktop.interface");
++	scale = settings->get_double("text-scaling-factor");
+ #endif
+ 	engine.latex_packages.push_back("breqn");
+ 	engine.latex_packages.push_back("hyperref");
+ 	engine.set_scale(scale);
+ 
+ #ifndef __APPLE__
+-	settings_gnome->signal_changed().connect(
+-		sigc::mem_fun(*this, &NotebookWindow::on_text_scaling_factor_changed));
+-	settings_cinnamon->signal_changed().connect(
++	settings->signal_changed().connect(
+ 		sigc::mem_fun(*this, &NotebookWindow::on_text_scaling_factor_changed));
+ #endif
+ 
+@@ -1178,9 +1173,7 @@
+ void NotebookWindow::on_text_scaling_factor_changed(const std::string& key)
+ 	{
+ 	if(key=="text-scaling-factor") {
+-		double scale_gnome    = settings_gnome->get_double("text-scaling-factor");
+-		double scale_cinnamon = settings_cinnamon->get_double("text-scaling-factor");
+-		scale = std::max(scale_gnome, scale_cinnamon);
++		scale = settings->get_double("text-scaling-factor");
+ 		std::cout << "cadabra-client: text-scaling-factor = " << scale << std::endl;
+ 		engine.set_scale(scale);
+ 		engine.invalidate_all();
+diff -aur -bZwB -x .git cadabra2-git.old/frontend/gtkmm/NotebookWindow.hh cadabra2-git/frontend/gtkmm/NotebookWindow.hh
+--- cadabra2-git.old/frontend/gtkmm/NotebookWindow.hh	2016-03-09 06:27:14.920146624 -0500
++++ cadabra2-git/frontend/gtkmm/NotebookWindow.hh	2016-03-09 06:27:33.753419200 -0500
+@@ -176,7 +176,7 @@
+ 			// Styling through CSS
+ 			void                           setup_css_provider();
+ 			Glib::RefPtr<Gtk::CssProvider> css_provider;
+-			Glib::RefPtr<Gio::Settings>    settings_gnome, settings_cinnamon;
++			Glib::RefPtr<Gio::Settings>    settings;
+ 			void on_text_scaling_factor_changed(const std::string& key);
+ 
+ 			int last_configure_width;
+diff -aur -bZwB -x .git cadabra2-git.old/web2/CMakeLists.txt cadabra2-git/web2/CMakeLists.txt
+--- cadabra2-git.old/web2/CMakeLists.txt	2016-03-09 06:27:14.923479946 -0500
++++ cadabra2-git/web2/CMakeLists.txt	2016-03-09 06:27:21.176793646 -0500
+@@ -24,6 +24,12 @@
+                    ARGS    --segment ${CNBDIR}/for_previous_users.cnb ${HTMLOUTDIR}/for_previous_users.html 
+                    COMMENT "Creating for_previous_users.html")
+ 
++add_custom_command(OUTPUT  ${HTMLOUTDIR}/scalar_manipulations.html
++                 DEPENDS ${CNBDIR}/scalar_manipulations.cnb ${DC}
++                 COMMAND cadabra2html
++                 ARGS    --segment ${CNBDIR}/scalar_manipulations.cnb ${HTMLOUTDIR}/scalar_manipulations.html
++                 COMMENT "Creating scalar_manipulations.html")
++
+ add_custom_command(OUTPUT  ${HTMLOUTDIR}/schwarzschild.html 
+                    DEPENDS ${CNBDIR}/schwarzschild.cnb ${DC}
+                    COMMAND cadabra2html 
