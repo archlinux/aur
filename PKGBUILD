@@ -47,6 +47,7 @@ build() {
   /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
 
   # Build project
+  # TODO: report test issue upstream
   cmake ${srcdir}/${_dir} \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
@@ -55,6 +56,7 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
+        -DCATKIN_ENABLE_TESTING=OFF \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
