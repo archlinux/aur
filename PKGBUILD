@@ -33,7 +33,6 @@ if [[ $CARCH = i686 ]] || [[ $_arch = amd64 ]]; then
   optdepends=('catalyst-utils: For AMD Catalyst'
               'nvidia-utils: For the NVIDIA driver')
 fi
-makedepends=('pacman>=4.2.0')
 options=('!emptydirs')
 install=$pkgname.install
 source=("google-earth-stable_${pkgver}_${_arch}.deb::https://dl.google.com/earth/client/current/google-earth-stable_current_${_arch}.deb"

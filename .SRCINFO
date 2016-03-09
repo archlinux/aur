@@ -7,7 +7,6 @@ pkgbase = google-earth
 	arch = i686
 	arch = x86_64
 	license = custom:earth
-	makedepends = pacman>=4.2.0
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
 	depends = ld-lsb>=3-5
