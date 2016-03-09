@@ -24,7 +24,7 @@ source=("xdm.desktop"
         "xdman"
         "icon.png")
 
-md5sums=('b45d521f7614101ae01131d6e83fc231'
+md5sums=('64255d61841fc2edb0c041d74c037396'
          'b13a41ca08969f5f18ab421d1ecceb8c'
          'b4f527e7b9f5a884cdffd4d38612170b')
 
