@@ -18,7 +18,6 @@ optdepends_i686=('catalyst-utils: For AMD Catalyst'
                  'nvidia-utils: For the NVIDIA driver')
 optdepends_x86_64=('lib32-catalyst-utils: For AMD Catalyst'
                    'lib32-nvidia-utils: For the NVIDIA driver')
-makedepends=('pacman>=4.2.0')
 options=('!emptydirs')
 install=$pkgname.install
 source=('googleearth.sh'
