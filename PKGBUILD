@@ -1,16 +1,16 @@
 pkgname=python2-pysnmp
 _tarname=pysnmp
 pkgver=4.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform, pure-Python SNMP engine implementation (for Python 2)"
 arch=(any)
 url="http://pysnmp.sourceforge.net/"
 license=('BSD')
 depends=('python2' 'python2-pyasn1')
 optdepends=('python2-pycrypto: SNMPv3 support')
-source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz)
-md5sums=('7720b7cf3913e26192eb6300012a232e')
-sha256sums=('368508d691a21dd8f45ef6ebe8c208e4e272c2d7b3b16c29e31df9207812e23f')
+source=(http://downloads.sourceforge.net/project/$_tarname/$_tarname/$pkgver/$_tarname-$pkgver.tar.gz)
+md5sums=('d6cf420d7683a2da97c43e9398042b9c')
+sha256sums=('a24c1835a9c0fee7a8b29891650e5531ab0ceac25036129de1c03dc4b76e6129')
 
 package() {
   cd "$srcdir/$_tarname-$pkgver"
