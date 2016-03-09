@@ -1,0 +1,18 @@
+[Unit]
+Description=Namecoin Daemon (reindex)
+Conflicts=namecoin.service
+After=network.target
+
+[Service]
+User=namecoin
+Group=namecoin
+ExecStart=/usr/bin/namecoind -daemon=0                       \
+                            -conf=/etc/namecoin/namecoin.conf \
+                            -datadir=/srv/namecoin          \
+                            -reindex                        \
+                            -pid=/run/namecoind.pid
+ExecReload=/usr/bin/kill -HUP $MAINPID
+ExecStop=/usr/bin/namecoind stop
+
+[Install]
+WantedBy=multi-user.target

@@ -1,58 +1,101 @@
 # Maintainer: M0Rf30
 
 pkgname=namecoin-core
-pkgver=0.3.80
-pkgrel=2
-pkgdesc="Namecoin Core headless P2P node"
+pkgver=0.12.0
+pkgrel=1
+pkgdesc="namecoin Core headless P2P node"
 arch=('i686' 'x86_64')
-url="http://namecoin.info/"
-depends=('boost' 'boost-libs' 'miniupnpc' 'openssl')
-makedepends=('autoconf' 'automake' 'binutils' 'expect' 'gcc' 'libtool' 'make' 'pkg-config' 'yasm')
+url="https://namecoin.org"
+depends=('boost'
+         'boost-libs'
+         'zeromq')
+makedepends=('autoconf'
+             'automake'
+             'binutils'
+             'gcc'
+             'libtool'
+             'm4'
+             'make'
+             'pkg-config')
+optdepends=('miniupnpc: build with support for UPnP')
 license=('MIT')
-source=(https://github.com/namecoin/namecoin/archive/nc${pkgver}.tar.gz
+source=(${pkgname%-core}-$pkgver.tar.gz::https://codeload.github.com/namecoin/namecoin-core/tar.gz/v$pkgver
         namecoin.conf
         namecoin.logrotate
         namecoin.service
-        Makefile)
+        namecoin-reindex.service)
 backup=('etc/namecoin/namecoin.conf'
         'etc/logrotate.d/namecoin')
 provides=('namecoin-cli' 'namecoin-daemon' 'namecoin-tx')
-conflicts=('namecoin-cli' 'namecoind' 'namecoin-daemon' 'namecoin-qt' 'namecoin-tx')
+conflicts=('namecoin-cli' 'namecoin-daemon' 'namecoin-qt' 'namecoin-tx')
 install=namecoin.install
 
 build() {
-  cd "$srcdir/${pkgname%-core}-nc$pkgver"
+  cd "$srcdir/${pkgname}-$pkgver"
 
-  msg 'Building...'
-  cd src 
-  cp $srcdir/Makefile .
-  make namecoind
+  msg2 'Building...'
+  ./autogen.sh
+  ./configure \
+    --prefix=/usr \
+    --sbindir=/usr/bin \
+    --libexecdir=/usr/lib/namecoin \
+    --sysconfdir=/etc \
+    --sharedstatedir=/usr/share/namecoin \
+    --localstatedir=/var/lib/namecoin \
+    --enable-hardening \
+    --with-gui=no \
+    --disable-wallet \
+    --with-gnu-ld
+  make
 }
 
 package() {
-  cd "$srcdir/${pkgname%-core}-nc$pkgver"
-  
-  msg 'Installing license...'
-  install -Dm 644 COPYING "$pkgdir/usr/share/licenses/${pkgname%-core}/COPYING"
+  cd "$srcdir/${pkgname}-$pkgver"
 
-  msg 'Installing namecoin...'
-  install -Dm 775 src/namecoind "$pkgdir/usr/bin/namecoind"
+  msg2 'Installing license...'
+  install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/${pkgname%-core}"
 
-  msg 'Installing namecoin.conf...'
-  install -Dm 600 "$srcdir/namecoin.conf" "$pkgdir/etc/namecoin/namecoin.conf"
+  msg2 'Installing man pages...'
+  install -Dm 644 contrib/debian/manpages/namecoind.1 \
+    -t "$pkgdir/usr/share/man/man1"
+  install -Dm 644 contrib/debian/manpages/namecoin-cli.1 \
+    -t "$pkgdir/usr/share/man/man1"
+  install -Dm 644 contrib/debian/manpages/namecoin.conf.5 \
+    -t "$pkgdir/usr/share/man/man5"
 
-  msg 'Installing namecoin.service...'
-  install -Dm 644 "$srcdir/namecoin.service" "$pkgdir/usr/lib/systemd/system/namecoin.service"
+  msg2 'Installing documentation...'
+  install -dm 755 "$pkgdir/usr/share/doc/namecoin"
+  for _doc in \
+    $(find doc -maxdepth 1 -type f -name "*.md" -printf '%f\n') \
+    release-notes; do
+      cp -dpr --no-preserve=ownership doc/$_doc \
+        "$pkgdir/usr/share/doc/namecoin/$_doc"
+  done
 
-  msg 'Installing namecoin.logrotate...'
+  msg2 'Installing namecoin...'
+  make DESTDIR="$pkgdir" install
+
+  msg2 'Installing namecoin.conf...'
+  install -Dm 600 "$srcdir/namecoin.conf" -t "$pkgdir/etc/namecoin"
+
+  msg2 'Installing namecoin.service...'
+  install -Dm 644 "$srcdir/namecoin.service" -t "$pkgdir/usr/lib/systemd/system"
+  install -Dm 644 "$srcdir/namecoin-reindex.service" \
+    -t "$pkgdir/usr/lib/systemd/system"
+
+  msg2 'Installing namecoin.logrotate...'
   install -Dm 644 "$srcdir/namecoin.logrotate" "$pkgdir/etc/logrotate.d/namecoin"
 
-  msg 'Cleaning up pkgdir...'
+  msg2 'Installing bash completion...'
+  install -Dm 644 contrib/namecoind.bash-completion \
+    "$pkgdir/usr/share/bash-completion/completions/namecoind"
+
+  msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }
 
-md5sums=('450402d3bcd07fbd3a671336d9cb2e7b'
-         '020bfdfe192bd21b84964c1e90ae4450'
+md5sums=('887e618fa025e98e1c7d6f88facadee2'
+         '85dbcf29d1dade4df781a95c6b502220'
          '2ca92d94c329bf54b8df70f22c27ba98'
-         '1186c6c80cb488e0809a4977ec92399b'
-         '701197b708dbb6b5d7568f77ae46f3bb')
+         'd4694928d3e62f9215ce641663564eee'
+         '1f3e4182d57987e4f42962cd2da94661')

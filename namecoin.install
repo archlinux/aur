@@ -1,14 +1,20 @@
+_bc_user=namecoin
+_bc_group=namecoin
+
 post_install() {
   _mkuser
-  _mkssl
-  chown -R namecoin:namecoin /etc/namecoin /srv/namecoin
-  printf "$namecoin\n"
+  # disable Copy-On-Write (btrfs directories only)
+  for _dir in /srv/namecoin; do
+    _is_btrfs "$_dir" && _disable_cow "$_dir"
+  done
+  chown -R $_bc_user:$_bc_group /etc/namecoin /srv/namecoin
+  printf "%b\n" "$namecoin"
 }
 
 post_upgrade() {
   _mkuser
-  chown -R namecoin:namecoin /etc/namecoin /srv/namecoin
-  printf "$namecoin\n"
+  chown -R $_bc_user:$_bc_group /etc/namecoin /srv/namecoin
+  printf "%b\n" "$namecoin"
 }
 
 post_remove() {
@@ -16,58 +22,79 @@ post_remove() {
   rm -rf /srv/namecoin
 }
 
+
+# ------------------------------------------------------------------------------
+# helper functions for creating namecoin-core user / group
+# ------------------------------------------------------------------------------
+
 _mkuser() {
-  getent passwd namecoin &>/dev/null || {
+  getent passwd $_bc_user &>/dev/null || {
     echo -n "Creating namecoin user... "
-    grep -E "^namecoin:" /etc/group >/dev/null || groupadd namecoin
-    useradd -m -d /etc/namecoin -g namecoin -s /usr/bin/nologin namecoin 2>/dev/null
+    grep -E "^$_bc_group:" /etc/group >/dev/null || groupadd $_bc_group
+    useradd -m -d /etc/namecoin -g $_bc_group -s /usr/bin/nologin $_bc_user 2>/dev/null
     echo "done"
   }
 }
 
 _rmuser() {
   echo -n "Removing namecoin user... "
-  userdel -rf namecoin 2>/dev/null
+  userdel -rf $_bc_user 2>/dev/null
   echo "done"
 }
 
-_mkssl() {
-  echo -n "Enabling SSL..."
-  mkdir -p /{etc,srv}/namecoin
-  openssl genrsa -out /etc/namecoin/server.pem 2048
-  expect <<EOF | perl -ne 'print if /-----BEGIN\sCERTIFICATE-----/../-----END\sCERTIFICATE-----/' > /etc/namecoin/server.cert
-    spawn openssl req -new -x509 -nodes -sha1 -days 3650 -key /etc/namecoin/server.pem
-    expect "Country*" {
-      send "\r"
-    }
-    expect "State*" {
-      send "\r"
-    }
-    expect "Locality*" {
-      send "\r"
-    }
-    expect "Organization*" {
-      send "\r"
-    }
-    expect "Organizational*" {
-      send "\r"
-    }
-    expect "Common*" {
-      send "\r"
-    }
-    expect "Email*" {
-      send "\r"
-    }
-    expect eof
-EOF
-  echo "done"
+
+# ------------------------------------------------------------------------------
+# helper functions for disabling btrfs Copy-On-Write (CoW)
+# https://wiki.archlinux.org/index.php/Btrfs#Copy-On-Write_.28CoW.29
+# ------------------------------------------------------------------------------
+
+# check if dir is btrfs
+_is_btrfs() {
+  if [[ $(findmnt --target $1 --output FSTYPE --noheadings) == 'btrfs' ]]; then
+    return 0
+  else
+    return 1
+  fi
 }
+
+# disable btrfs CoW
+_chattrify() {
+  # original dir, with trailing slash stripped if it exists
+  _orig_dir=$( echo "$1" | sed 's@/$@@' )
+
+  # if original dir exists, back it up
+  [[ -d "$1" ]] && mv "$1" "${_orig_dir}"_old
+
+  # re-make original dir
+  mkdir -p "$1"
+
+  # set permissions on re-made dir
+  chmod "$2" "$1"
+
+  # disable btrfs CoW on re-made dir
+  chattr +C "$1"
+
+  # recursive copy to restore backed up dir while maintaining disabled CoW
+  [[ -d "${_orig_dir}"_old ]] \
+    && find "${_orig_dir}"_old -mindepth 1 -maxdepth 1 -exec cp -R '{}' "$1" \;
+
+  # set ownership on re-made dir
+  chown -R $3:$4 "$1"
+
+  # purge backed up dir
+  [[ -d "${_orig_dir}"_old ]] && rm -rf "${_orig_dir}"_old
+}
+
+_disable_cow() {
+  _chattrify "$1" "700" "$_bc_user" "$_bc_group"
+}
+
 
 read -d '' namecoin <<'EOF'
 ########################################################################
 ########################################################################
 ##                                                                    ##
-##  Namecoin Core                                                      ##
+##  namecoin Core                                                      ##
 ##  ____________                                                      ##
 ##                                                                    ##
 ##  To start namecoin-core:                                            ##
@@ -79,13 +106,12 @@ read -d '' namecoin <<'EOF'
 ##      $ mkdir -p ~/.namecoin                                         ##
 ##      $ cat > ~/.namecoin/namecoin.conf <<'EOF'                       ##
 ##      rpcconnect=127.0.0.1                                          ##
-##      rpcport=8336                                                  ##
+##      rpcport=8332                                                  ##
 ##      rpcuser=namecoin                                               ##
 ##      rpcpassword=secret                                            ##
-##      rpcssl=1                                                      ##
 ##      EOF                                                           ##
 ##                                                                    ##
-##      $ namecoind getmininginfo                                      ##
+##      $ namecoin-cli getmininginfo                                   ##
 ##                                                                    ##
 ##  Config:        /etc/namecoin/namecoin.conf                          ##
 ##  Blockchain:    /srv/namecoin                                       ##
