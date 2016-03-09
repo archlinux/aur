@@ -1,7 +1,7 @@
 # Maintainer:  system <nymously.ano@gmail.com>
 pkgname=openresty_luarocks
 _pkgname=luarocks
-pkgver=2.2.2
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Deployment and management system for Openresty Luajit 2.1 modules"
 arch=('any')
@@ -12,7 +12,8 @@ install=
 options=('!makeflags')
 source=(http://keplerproject.github.io/luarocks/releases/luarocks-$pkgver.tar.gz)
 noextract=()
-sha256sums=( '4f0427706873f30d898aeb1dfb6001b8a3478e46a5249d015c061fe675a1f022')
+sha256sums=( '68e38feeb66052e29ad1935a71b875194ed8b9c67c2223af5f4d4e3e2464ed97' )
+
 optdepends=('cvs: for fetching sources from CVS repositories'
             'git: for fetching sources from git repositories'
             'mercurial: for fetching sources from mercurial repositories'
@@ -22,9 +23,11 @@ build() {
   cd "$srcdir/$_pkgname-$pkgver"
   ./configure --prefix=/opt/openresty/luajit \
     --with-lua=/opt/openresty/luajit/ \
-    --lua-suffix=jit-2.1.0-alpha \
+    --lua-suffix=jit-2.1.0-beta1 \
+    --force-config \
+    --lua-version=5.1 \
     --with-lua-include=/opt/openresty/luajit/include/luajit-2.1
-  make
+  make build
 }
 
 package() {
