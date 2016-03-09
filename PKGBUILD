@@ -2,8 +2,8 @@
 # Contributor: Filippo Squillace <sqoox85@gmail.com>
 
 pkgname=visit
-pkgver=2.10.0
-_pkgver=2_10_0
+pkgver=2.10.1
+_pkgver=${pkgver//./_}
 pkgrel=1
 pkgdesc="Interactive parallel visualization and graphical analysis tool."
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ source=("https://portal.nersc.gov/svn/${pkgname}/trunk/releases/${pkgver}/${pkgn
         "visit.sh"
         "visit_FindIceT.patch"
         "visit_frontendlauncher.patch")
-sha256sums=('ed3d514bc90eaf9c79d00b3f75fbe73437c16296a89451db531d0707c6d806bc'
+sha256sums=('6b53dea89a241fd03300a7a3a50c0f773e2fb8458cd3ad06816e9bd2f0337cd8'
             'd07a11e67ad646579fbc341f30e1eb63ebd38a5fbdd4f3ea36e8f460419028da'
             '2e7b0be6ad5bc6c0f0568b91f79149f081c2a9bded58223e4347fcf513aa206a'
             '75179bcdcc5881b12e417f402e52b14598ae2f85ea1f78702ce1dc95c9b5198f')
@@ -79,7 +79,7 @@ prepare(){
 
   # Out of source build
   cd "${srcdir}"
-  rm -rf -- build
+  #rm -rf -- build
   mkdir -p -- build
 }
 
@@ -93,7 +93,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX:PATH=/opt/${pkgname} \
     -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ \
     -DVISIT_FORTRAN:BOOL=ON -DVISIT_GFORTRAN_DIR=/usr -DCMAKE_Fortran_COMPILER=gfortran \
-    -DVISIT_PARALLEL:BOOL=ON -DVISIT_MPI_COMPILER=mpicc \
+    -DVISIT_PARALLEL:BOOL=ON -DVISIT_MPI_COMPILER=mpicc -DVISIT_MPI_FORTRAN_COMPILER=mpifort \
     -DVISIT_CGNS_DIR:PATH=/usr \
     -DVISIT_GDAL_DIR:PATH=/usr \
     -DVISIT_HDF5_DIR:PATH=/usr \
