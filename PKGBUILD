@@ -2,7 +2,7 @@
 
 _pkgname=powder-player
 pkgname=${_pkgname}-bin
-pkgver=0.97
+pkgver=0.98
 pkgrel=1
 pkgdesc="Hybrid between a Torrent Client and a Player (torrent streaming)"
 arch=('x86_64')
@@ -40,5 +40,5 @@ package() {
   install -Dm644 powder.desktop "${pkgdir}/usr/share/applications/powder.desktop"
 }
 
-md5sums=('d325c71b935dbef98580262a6afac34b'
+md5sums=('9f63d643ffd975aa47f01567922a2e6b'
          '66421e98741918dad1c48038aa6db2e5')
