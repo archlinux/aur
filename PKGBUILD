@@ -21,14 +21,14 @@ pkgver() {
 }
 
 package() {
-  cd "$_gitname"
-  install -D git-hooks "$pkgdir"/usr/bin/git-hooks
-  install -D README.md "$pkgdir"/usr/share/doc/git-hooks/README.md
-  install -D LICENSE "$pkgdir"/usr/share/licenses/git-hooks-git/LICENSE
+    cd "$_gitname"
+    install -D git-hooks "$pkgdir"/usr/bin/git-hooks
+    install -D README.md "$pkgdir"/usr/share/doc/git-hooks/README.md
+    install -D LICENSE "$pkgdir"/usr/share/licenses/git-hooks-git/LICENSE
 
-  mkdir -p "$pkgdir"/usr/share/git-hooks
-  install-hooks-from git_hooks
-  install-hooks-from contrib
+    mkdir -p "$pkgdir"/usr/share/git-hooks
+    install-hooks-from git_hooks
+    install-hooks-from contrib
 }
 
 install-hooks-from() {
