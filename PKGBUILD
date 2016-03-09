@@ -16,8 +16,16 @@ url='http://pike.lysator.liu.se/'
 license=('GPL2' 'LGPL' 'MPL')
 depends=('gtksourceview2' 'sane' 'libzip' 'libmysqlclient' 'gtkglarea' 'nettle')
 makdepends=('nettle')
-source=("http://pike.lysator.liu.se/pub/pike/all/$pkgver/Pike-v$pkgver.tar.gz")
-sha256sums=('327335fa19bf40def0374a8f38a09bd236c5802264dc1880290955b51ef1f2a0')
+source=("http://pike.lysator.liu.se/pub/pike/all/$pkgver/Pike-v$pkgver.tar.gz"
+        "pike-disable_libdir_reset-0.patch")
+sha256sums=('327335fa19bf40def0374a8f38a09bd236c5802264dc1880290955b51ef1f2a0'
+            '311916764ab9485899c603bbe51ef7b8d9b453c7e0f160ec5bcedcacf8a0ce3d')
+
+prepare() {
+  cd "Pike-v$pkgver"
+
+  patch -p1 -i ../pike-disable_libdir_reset-0.patch
+}
 
 build() {
   cd "Pike-v$pkgver"
