@@ -8,6 +8,11 @@ arch=('i686' 'x86_64')
 url="http://www.scootersoftware.com"
 license=('non-free')
 depends=('desktop-file-utils' 'gdk-pixbuf2' 'gtk2' 'qt4')
+optdepends=('dolphinpart4: for use with KDE4 Dolphin'
+            'nautilus: for use with GNOME Nautilus'
+            'thunar: for use with Xfce Thunar'
+            'nemo: for use with Cinnamon Nemo'
+            'caja: for use with MATE Caja')
 options=('!strip')
 install=$pkgname.install
 source=('LICENSE')
