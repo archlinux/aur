@@ -1,21 +1,21 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-mongodb'
-pkgver='0.708.0.0'
+pkgver='1.2.3'
 pkgrel='1'
 pkgdesc="Official MongoDB Driver for Perl"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('glibc>=2.20' 'perl' 'perl-authen-scram' 'perl-boolean' 'perl-data-dump' 'perl-datetime>=0.78' 'perl-datetime-tiny' 'perl-json' 'perl-moose' 'perl-namespace-clean' 'perl-safe-isa' 'perl-syntax-keyword-junction' 'perl-throwable' 'perl-tie-ixhash' 'perl-try-tiny')
+depends=('glibc>=2.22' 'perl' 'perl-authen-scram' 'perl-boolean>=0.25' 'perl-class-xsaccessor' 'perl-datetime>=0.78' 'perl-json-maybexs' 'perl-moo>=2' 'perl-namespace-clean' 'perl-path-tiny>=0.054' 'perl-safe-isa' 'perl-tie-ixhash' 'perl-try-tiny' 'perl-type-tiny' 'perl-type-tiny-xs' 'perl-config-autoconf')
 makedepends=()
-checkdepends=('perl-test-deep>=0.111' 'perl-test-fatal' 'perl-test-warn')
-url='http://search.mcpan.org/dist/MongoDB'
-source=('http://search.mcpan.org/CPAN/authors/id/M/MO/MONGODB/MongoDB-v0.708.0.0.tar.gz')
-md5sums=('72dfd57225f2d0cabdb2ce668473d0da')
-sha512sums=('1bc623d45e885953d51fcefda8efe2e1fa20b507ef3fda77dac40aa3009f7bd0290c75413dc9ef1f026776dbb1c06b77950842bc2d05d310aad694403130be72')
-_distdir="MongoDB-v0.708.0.0"
+checkdepends=('perl-test-deep>=0.111' 'perl-test-fatal')
+url='https://metacpan.org/release/MongoDB'
+source=('http://search.cpan.org/CPAN/authors/id/M/MO/MONGODB/MongoDB-v1.2.3.tar.gz')
+md5sums=('3112816c4012f25049ad9faa1a267262')
+sha512sums=('c79a272966a280158cef68a143a747821464afc7cb9ae31647492cf4c27782ffeab27cd7c51011c3e38a8c5fd0c5ebf3c55aa3569fc8d881225f1653314345fa')
+_distdir="MongoDB-v1.2.3"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -40,7 +40,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
