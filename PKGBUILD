@@ -7,7 +7,7 @@ pkgdesc='KDE Plasma Desktop'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/kde/kde-workspace'
 license=(LGPL)
-depends=(libxkbfile libcanberra systemsettings-git ksysguard-git 
+depends=(libxkbfile libcanberra systemsettings-git ksysguard-git kactivities-stats-git
 powerdevil-git kmenuedit-git kinfocenter-git polkit-kde-agent-git kpeople-git qt5-graphicaleffects packagekit-qt5)
 makedepends=(xorg-server-devel xf86-input-synaptics extra-cmake-modules-git git kdoctools-git scim libibus boost)
 optdepends=('plasma-nm-git: Network manager applet' 'scim: SCIM backend for kimpanel'
