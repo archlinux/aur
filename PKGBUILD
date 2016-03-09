@@ -1,20 +1,21 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-tree-simple'
-pkgver='1.18'
+pkgver='1.26'
 pkgrel='1'
 pkgdesc="A simple tree object"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
-makedepends=('perl-test-exception>=0.15')
-url='http://search.cpan.org/dist/Tree-Simple'
-source=('http://search.cpan.org/CPAN/authors/id/S/ST/STEVAN/Tree-Simple-1.18.tar.gz')
-md5sums=('70462938108a8b8658b1b1d2f12dbeab')
-sha512sums=('f5918a865667db84800a5ff1a423c118f6e41c1b1930eb323d4afdaaf8a9da5554a0ac85eced3d1b9635065ff045f4ff6aab874c26771b8b4d36511fcc941ac0')
-_distdir="Tree-Simple-1.18"
+makedepends=()
+checkdepends=('perl-test-exception>=0.15')
+url='https://metacpan.org/release/Tree-Simple'
+source=('http://search.cpan.org/CPAN/authors/id/R/RS/RSAVAGE/Tree-Simple-1.26.tgz')
+md5sums=('a8a1de42927e11f88afb02706386e39d')
+sha512sums=('0cc4ac630d1ccbbc0fa0cea6fa7304ccb6ee950e319acdd41154c71f05c98e939bb47d0a45bbe56c79caadbbeed2fe9c2b93da966cfb559443499ef69f8ba3e6')
+_distdir="Tree-Simple-1.26"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +40,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
