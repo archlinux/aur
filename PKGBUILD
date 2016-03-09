@@ -31,8 +31,11 @@ source=(http://llvm.org/releases/$pkgver/llvm-$pkgver.src.tar.xz{,.sig}
         http://llvm.org/releases/$pkgver/lldb-$pkgver.src.tar.xz{,.sig}
         llvm-3.7.0-link-tools-against-libLLVM.patch
         llvm-3.7.0-export-more-symbols.patch
+        clang-3.7.0-add-gcc-abi-tag-support.patch
         clang-tools-extra-3.7.0-install-clang-query.patch
         lldb-3.7.0-avoid-linking-to-libLLVM.patch
+        0001-New-MSan-mapping-layout-llvm-part.patch
+        0001-New-MSan-mapping-layout-compiler-rt-part.patch
         llvm-Config-llvm-config.h)
 sha256sums=('be7794ed0cec42d6c682ca8e3517535b54555a3defabec83554dbc74db545ad5'
             'SKIP'
@@ -46,8 +49,11 @@ sha256sums=('be7794ed0cec42d6c682ca8e3517535b54555a3defabec83554dbc74db545ad5'
             'SKIP'
             'cf9c8b4d70b4547eda162644658c5c203c3139fcea6c75003b6cd7dc11a8cccc'
             'a1c9f36b97c639666ab6a1bd647a08a027e93e3d3cfd6f5af9c36e757599ce81'
+            '5ed52d54612829402b63bc500bfefae75b3dc444a1524849c26cadf7e0ae4b7d'
             '3abf85430c275ecb8dbb526ecb82b1c9f4b4f782a8a43b5a06d040ec0baba7e7'
             '2d53b6ed4c7620eeade87e7761b98093a0434801ddd599056daed7881141fb01'
+            'c5f4e329143bef36b623ba5daf311b5a73fa99ab05fed4ba506c1c3bc4cf5ee7'
+            'f44e8fe3cef9b6f706d651f443922261e1dcf53bcaabdd0ac7edb1758e4bc44d'
             '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48')
 validpgpkeys=('11E521D646982372EB577A1F8F0871F202119294'
               'B6C8F98282B944E3B0D5C2530FC3042E345AD05D')
@@ -72,12 +78,20 @@ prepare() {
   # https://llvm.org/bugs/show_bug.cgi?id=24157
   patch -Np2 -i ../llvm-3.7.0-export-more-symbols.patch
 
+  # https://llvm.org/bugs/show_bug.cgi?id=23529
+  # http://reviews.llvm.org/D12834
+  patch -d tools/clang -Np0 <../clang-3.7.0-add-gcc-abi-tag-support.patch
+
   # https://llvm.org/bugs/show_bug.cgi?id=24046
   # Upstreamed - http://reviews.llvm.org/D13206
   patch -d tools/clang/tools/extra -Np1 <../clang-tools-extra-3.7.0-install-clang-query.patch
 
   # https://llvm.org/bugs/show_bug.cgi?id=24953
   patch -d tools/lldb -Np1 <../lldb-3.7.0-avoid-linking-to-libLLVM.patch
+
+  # https://llvm.org/bugs/show_bug.cgi?id=24155
+  patch -Np1 -i ../0001-New-MSan-mapping-layout-llvm-part.patch
+  patch -d projects/compiler-rt -Np1 <../0001-New-MSan-mapping-layout-compiler-rt-part.patch
 
   # Use Python 2
   find tools/lldb -name Makefile -exec sed -i 's/python-config/python2-config/' {} +
@@ -98,9 +112,11 @@ build() {
     -DLLVM_LINK_LLVM_DYLIB=ON \
     -DLLVM_ENABLE_RTTI=ON \
     -DLLVM_ENABLE_FFI=ON \
+    -DLLVM_BUILD_TESTS=ON \
     -DLLVM_BUILD_DOCS=ON \
     -DLLVM_ENABLE_SPHINX=ON \
     -DLLVM_ENABLE_DOXYGEN=OFF \
+    -DSPHINX_WARNINGS_AS_ERRORS=OFF \
     -DFFI_INCLUDE_DIR=$(pkg-config --variable=includedir libffi) \
     -DLLVM_BINUTILS_INCDIR=/usr/include \
     ..
@@ -112,6 +128,13 @@ build() {
   sed -i '/\(clang\|lldb\)\/cmake_install.cmake/d' tools/cmake_install.cmake
   sed -i '/extra\/cmake_install.cmake/d' tools/clang/tools/cmake_install.cmake
   sed -i '/compiler-rt\/cmake_install.cmake/d' projects/cmake_install.cmake
+}
+
+check() {
+  cd "$srcdir/llvm-$pkgver.src/build"
+  make check
+  make check-clang || warning \
+    'Ignoring Clang test failures caused by name mangling differences'
 }
 
 package_llvm-split() {
@@ -266,6 +289,12 @@ package_clang-tools-extra-split() {
   cd "$srcdir/llvm-$pkgver.src"
 
   make -C build/tools/clang/tools/extra DESTDIR="$pkgdir" install
+
+  # Use Python 2
+  sed -i \
+    -e 's|env python$|&2|' \
+    -e 's|/usr/bin/python$|&2|' \
+    "$pkgdir"/usr/share/clang/{clang-tidy-diff,run-clang-tidy}.py
 
   install -Dm644 tools/clang/tools/extra/LICENSE.TXT \
     "$pkgdir/usr/share/licenses/clang-tools-extra/LICENSE"
