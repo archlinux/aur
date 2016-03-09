@@ -1,0 +1,14 @@
+--- git-hooks	2016-03-09 08:15:21.789661336 +0100
++++ git-hooks	2016-03-09 08:15:08.707175377 +0100
+@@ -52,9 +52,9 @@
+     level="${2}"
+     find --help 2>&1 | grep -- '-L' 2>/dev/null >/dev/null
+     if [ $? -eq 1 ] ; then
+-        find "${path}/" -mindepth ${level} -maxdepth ${level} -perm +111 -type f 2>/dev/null | grep -v "^.$" | sort
++        find "${path}/" -mindepth ${level} -maxdepth ${level} -perm /111 -type f 2>/dev/null | grep -v "^.$" | sort
+     else
+-        find -L "${path}/" -mindepth ${level} -maxdepth ${level} -perm +111 -type f 2>/dev/null | grep -v "^.$" | sort
++        find -L "${path}/" -mindepth ${level} -maxdepth ${level} -perm /111 -type f 2>/dev/null | grep -v "^.$" | sort
+     fi
+ }
+ 
