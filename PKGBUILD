@@ -61,7 +61,10 @@ prepare() {
 build() {
   cd v8
 
-  build/gyp_v8 -Dv8_enable_i18n_support=1 -Duse_system_icu=1 -Dconsole=readline -Dcomponent=shared_library -Dv8_target_arch=$V8_ARCH -Dwerror= -f ninja
+  build/gyp_v8 -Dv8_enable_i18n_support=1 \
+  -Duse_system_icu=1 -Dconsole=readline \
+  -Dcomponent=shared_library -Dv8_target_arch=$V8_ARCH -Dwerror= -f ninja \
+  -Dlinux_use_bundled_gold=0
 
   ninja -C out/Release all # or target 'v8 d8' if you do not need tests
 }
