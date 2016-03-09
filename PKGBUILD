@@ -8,7 +8,6 @@ pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
-makedepends=('pacman>=4.2.0')
 options=('!strip')
 
 # Installer name
