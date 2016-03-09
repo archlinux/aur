@@ -2,19 +2,18 @@
 # Previous maintainer: Elena ``of Valhalla'' Grandi <elena.valhalla@gmail.com>
 
 pkgname=python2-numpydoc
-pkgver=0.5
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Sphinx extension to support docstrings in Numpy format"
 arch=('any')
-url="http://projects.scipy.org/numpy/browser/trunk/doc/sphinxext"
+url="https://github.com/numpy/numpy/tree/master/doc"
 license=('BSD')
 depends=('python2' 'python2-sphinx')
-conflicts=(python-numpydoc)
 backup=()
 options=(!emptydirs)
 install=
 source=(http://pypi.python.org/packages/source/n/numpydoc/numpydoc-$pkgver.tar.gz)
-sha256sums=('93f050bceb52489d92f85c346981f1962c867c01f233d3252894ceae5cb48d34')
+md5sums=('5f1763c44e613850d56ba1b1cf1cb146')
 
 package() {
 
