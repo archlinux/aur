@@ -15,5 +15,9 @@ REMOVEEOF
 }
 
 post_upgrade() {
-    post_install
+    cat<<INSTALLEOF
+    This release introduces a desktop alert script, in /usr/bin/chkboot-desktopalert.
+    Include this script in your desktop environment or window manager initialization
+    scripts to get a graphical warning of when your boot files are modified.
+INSTALLEOF
 }
