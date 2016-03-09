@@ -14,18 +14,17 @@ arch=('x86_64' 'i686')
 url='http://chuck.cs.princeton.edu/'
 license=('GPL')
 depends=('gcc-libs' 'libsndfile')
-conflicts=('chuck')
-source=("http://chuck.cs.princeton.edu/release/files/$pkgname-$pkgver.tgz")
+source=("http://chuck.cs.princeton.edu/release/files/chuck-$pkgver.tgz")
 sha256sums=('e900b8545ffcb69c6d49354b18c43a9f9b8f789d3ae822f34b408eaee8d3e70b')
 
 build() {
-    make -C "$pkgname-$pkgver/src" linux-alsa
+    make -C "chuck-$pkgver/src" linux-alsa
 }
 
 package() {
-    cd "$pkgname-$pkgver/src"
+    cd "chuck-$pkgver/src"
 
-    install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
-    install -d "$pkgdir/usr/share/doc/$pkgname"
-    cp -r ../examples "$pkgdir/usr/share/doc/$pkgname"
+    install -Dm755 "chuck" "$pkgdir/usr/bin/chuck"
+    install -d "$pkgdir/usr/share/doc/chuck"
+    cp -r ../examples "$pkgdir/usr/share/doc/chuck"
 }
