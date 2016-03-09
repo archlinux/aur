@@ -6,7 +6,6 @@ pkgbase = google-chrome-beta
 	install = google-chrome-beta.install
 	arch = x86_64
 	license = custom:chrome
-	makedepends = pacman>=4.2.0
 	depends = alsa-lib
 	depends = desktop-file-utils
 	depends = flac
