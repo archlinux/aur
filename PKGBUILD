@@ -12,15 +12,11 @@ depends=('linux')
 makedepends=('dkms' 'make' 'git')
 conflicts=('moxa-uport11x0-git')
 source=("https://github.com/ellysh/mxu11x0.git"
-        "install"
         "dkms.conf"
         "mxu11x0.conf"  )
 sha256sums=('SKIP'
-            'd53916cbb5423019aa9afef654bc2bdd67df963efa199723a3bc8c76fe955517'
             '5061f16520a52fd74e48ecfe2bcaf90abf260bed4c826fca8342fe12fba70571'
             'a80410b68b562c731e80419eb77849766c0acaf4882d84dfe5d865221d3f3a76')
-
-install=install
 
 build() {
   git clone https://github.com/ellysh/mxu11x0.git
