@@ -1,6 +1,8 @@
-#Maintainer: Unknown
+#Maintainer: M0Rf30
+#Contributor: kurych
 
 pkgname=i2pd
+_pkgname=i2pd
 pkgver=2.5.0
 pkgrel=1
 pkgdesc="Simplified C++ implementation of I2P client"
@@ -8,54 +10,63 @@ arch=('i686' 'x86_64')
 url="https://github.com/PurpleI2P/i2pd"
 license=('BSD')
 depends=('boost-libs' 'miniupnpc' 'openssl' 'zlib')
-makedepends=('boost' 'cmake')
+makedepends=('boost')
 source=(https://github.com/PurpleI2P/${pkgname}/archive/${pkgver}.tar.gz
 	i2pd.service
 	i2pd.tmpfiles.conf)
 install=i2pd.install
-backup=(var/lib/i2pd/i2pd.conf
-        var/lib/i2pd/tunnels.cfg)
-conflicts=('i2pd')
+backup=(etc/i2pd/i2pd.conf
+        etc/i2pd/tunnels.cfg)
+conflicts=('i2pd-git')
 
 build() {
-  mkdir -p build.tmp
-  cd build.tmp
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DWITH_LIBRARY=OFF -DWITH_UPNP=ON ../$pkgname-$pkgver/build
-  make
+  cd $srcdir/$pkgname-$pkgver
+  CXXFLAGS="-Wall -O2 -fstack-protector-strong" USE_UPNP=1 make
 }
 
 package(){
-  cd build.tmp
-  make DESTDIR=$pkgdir install
+        _bin_dest=usr/bin
+        _conf_dest=etc/${_pkgname}
+        _home_dest=var/lib/${_pkgname}
+        _share_dest=usr/share
 
-  rm -r $pkgdir/usr/src  
-  rm $pkgdir/usr/LICENSE  
-  rm $pkgdir/usr/lib/libi2pd.a  
+  install -Dm755 $srcdir/$pkgname-$pkgver/i2pd "$pkgdir/${_bin_dest}/i2pd"
 
   install -Dm0644 $srcdir/i2pd.service $pkgdir/usr/lib/systemd/system/i2pd.service
   install -Dm0644 $srcdir/i2pd.tmpfiles.conf $pkgdir/usr/lib/tmpfiles.d/i2pd.conf
-  install -Dm0644 $srcdir/$pkgname-$pkgver/debian/i2pd.conf $pkgdir/var/lib/i2pd/i2pd.conf
-  install -Dm0644 $srcdir/$pkgname-$pkgver/debian/tunnels.conf $pkgdir/var/lib/i2pd/tunnels.cfg
-  install -Dm0644 $srcdir/$pkgname-$pkgver/debian/subscriptions.txt $pkgdir/var/lib/i2pd/subscriptions.txt
+
+  install -Dm0644 $srcdir/$pkgname-$pkgver/debian/i2pd.conf $pkgdir/${_conf_dest}/i2pd.conf
+  install -Dm0644 $srcdir/$pkgname-$pkgver/debian/tunnels.conf $pkgdir/${_conf_dest}/tunnels.cfg
+  install -Dm0644 $srcdir/$pkgname-$pkgver/debian/subscriptions.txt $pkgdir/${_conf_dest}/subscriptions.txt
+
+  install -d -m0750 $pkgdir/${_home_dest}
+  ln -s /${_conf_dest}/i2pd.conf $pkgdir/${_home_dest}/i2pd.conf
+  ln -s /${_conf_dest}/tunnels.cfg $pkgdir/${_home_dest}/tunnels.cfg
+  ln -s /${_conf_dest}/subscriptions.txt $pkgdir/${_home_dest}/subscriptions.txt
 
   cd $srcdir/$pkgname-$pkgver/contrib
-  _dest="$pkgdir/var/lib/$pkgname"
+  _dest="$pkgdir/${_share_dest}/${_pkgname}"
   find ./certificates -type d -exec install -d {} ${_dest}/{} \;
   find ./certificates -type f -exec install -Dm644 {} ${_dest}/{} \;
+  ln -s /${_share_dest}/${_pkgname}/certificates $pkgdir/${_home_dest}/certificates
 
   # license
-  install -Dm644 $srcdir/$pkgname-$pkgver/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 $srcdir/$pkgname-$pkgver/LICENSE "$pkgdir/${_share_dest}/licenses/${_pkgname}/LICENSE"
 
   # docs
-  install -Dm644 $srcdir/$pkgname-$pkgver/README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm644 $srcdir/$pkgname-$pkgver/docs/configuration.md "$pkgdir/usr/share/doc/$pkgname/configuration.md"
+  _dest="$pkgdir/${_share_dest}/doc/${_pkgname}"
+  install -Dm644 $srcdir/$pkgname-$pkgver/README.md "${_dest}/README.md"
+  install -Dm644 $srcdir/$pkgname-$pkgver/docs/configuration.md "${_dest}/configuration.md"
+#  install -Dm644 $srcdir/$pkgname-$pkgver/docs/family.md "${_dest}/family.md"
+  install -Dm644 $srcdir/$pkgname-$pkgver/docs/config_opts_after_2.3.0.md "${_dest}/config_opts_after_2.3.0.md"
 
   #man
-  install -Dm644 $srcdir/$pkgname-$pkgver/debian/i2pd.1 "$pkgdir/usr/share/man/man1/i2pd.1"
+  install -Dm644 $srcdir/$pkgname-$pkgver/debian/i2pd.1 "$pkgdir/${_share_dest}/man/man1/i2pd.1"
 
-  chmod -R o= $pkgdir/var/lib/i2pd
+  chmod -R o= $pkgdir/${_home_dest}
 }
 
 md5sums=('c903156c7ac6a0d6b053670a55271bf5'
          '224068c31e48084645763408ebae83af'
          'acda29e5b46a0c9fade734a6a467b381')
+
