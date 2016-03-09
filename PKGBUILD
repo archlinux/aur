@@ -7,7 +7,7 @@ pkgname=kafka
 # but do not remove the Scala jar as the Kafka tarball is compiled against it
 # and __not__ against the one from the Scala package
 _scalaver=2.11
-_appver=0.9.0.0
+_appver=0.9.0.1
 pkgver=${_scalaver}_${_appver}
 _pkgver=${pkgver/_/-}
 pkgrel=1
@@ -35,7 +35,7 @@ source=(${_closest}/${_app_path}
         systemd_sysusers.d_kafka.conf
         systemd_tmpfiles.d_kafka.conf)
 
-sha256sums=('6e20a86cb1c073b83cede04ddb2e92550c77ae8139c4affb5d6b2a44447a4028'
+sha256sums=('db28f4d5a9327711013c26632baed8e905ce2f304df89a345f25a6dfca966c7a'
             '00780ee4cea3bb7a282a548f41b8964d5e392776f9d687ebea89cd49ed5742e3'
             'e1a5ad12c4f0873740f4c34817bd6733a9b1541c68f2bb3aab3ac1be591f1fde'
             'dc1f3f94662339bcfb5cd4d058c06431f0e3d37e59f8c66a870e8fb02d9b5079'
