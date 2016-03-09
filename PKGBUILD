@@ -5,7 +5,7 @@
 pkgbase=digikam
 pkgname=('digikam' 'kipi-plugins')
 pkgver=4.14.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -32,7 +32,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_SKIP_RPATH=ON \
-    -DBUILD_tests=OFF
+    -DBUILD_tests=OFF \
+    -DENABLE_OPENCV3=ON
   make
 }
 
