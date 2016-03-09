@@ -1,8 +1,8 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.28
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-time-parsedate'
-pkgver='2013.1113'
+pkgver='2015.103'
 pkgrel='1'
 pkgdesc="date parsing both relative and absolute"
 arch=('any')
@@ -10,11 +10,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
-url='http://search.mcpan.org/dist/Time-ParseDate'
-source=('http://search.mcpan.org/CPAN/authors/id/M/MU/MUIR/modules/Time-ParseDate-2013.1113.tar.gz')
-md5sums=('53c0de57d10af5021f653afe728ba700')
-sha512sums=('1c68a1fda18ba5844683b1264d254daee851569917aa97ed41a760d8e9d83d97c5a8696860137648cd7fdc93b029c6b973af67e9a264d61777c427ed6fa45b02')
-_distdir="Time-ParseDate-2013.1113"
+url='https://metacpan.org/release/Time-ParseDate'
+source=('http://search.cpan.org/CPAN/authors/id/M/MU/MUIR/modules/Time-ParseDate-2015.103.tar.gz')
+md5sums=('9143d075278857d21c77467d26f1603b')
+sha512sums=('3c5bf09198289a889e606c806fbb225e729fa1a0af6d04056b75c4c61110e6135fce0eccd8c58a2f1db364d7d624b417f4960bdfa376d2fb9b16ecf090879fd0')
+_distdir="Time-ParseDate-2015.103"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
