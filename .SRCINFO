@@ -6,6 +6,21 @@ pkgbase = bin32-jre6
 	install = bin32-jre6.install
 	arch = x86_64
 	license = custom
+	depends = ca-certificates-java
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = java32-runtime-common
+	depends = lib32-glibc
+	depends = lib32-libjpeg-turbo
+	depends = lib32-lcms2
+	depends = lib32-libxrender
+	depends = lib32-libxtst
+	depends = lib32-nss
+	depends = shared-mime-info
+	depends = xdg-utils
+	optdepends = lib32-alsa-lib: for basic sound support
+	optdepends = lib32-gtk2: for Gtk+ look and feel (desktop)
+	optdepends = ttf-font: fonts
 	provides = java32-runtime=6
 	provides = java32-runtime-headless=6
 	provides = java32-web-start=6
@@ -35,22 +50,6 @@ pkgbase = bin32-jre6
 	md5sums = b20f9d6ed14e55d73a5ed204bca01e7a
 	md5sums = a95f75efd82036a440f14cd7f09ac1fc
 	md5sums = 45c15a6b4767288f2f745598455ea2bf
-	depends_x86_64 = ca-certificates-java
-	depends_x86_64 = desktop-file-utils
-	depends_x86_64 = hicolor-icon-theme
-	depends_x86_64 = java32-runtime-common
-	depends_x86_64 = lib32-glibc
-	depends_x86_64 = lib32-libjpeg-turbo
-	depends_x86_64 = lib32-lcms2
-	depends_x86_64 = lib32-libxrender
-	depends_x86_64 = lib32-libxtst
-	depends_x86_64 = lib32-nss
-	depends_x86_64 = shared-mime-info
-	depends_x86_64 = xdg-utils
-	optdepends_x86_64 = lib32-alsa-lib: for basic sound support
-	optdepends_x86_64 = lib32-gtk2: for Gtk+ look and feel (desktop)
-	optdepends_x86_64 = ttf-font: fonts
-	makedepends_x86_64 = pacman>=4.2.0
 
 pkgname = bin32-jre6
 
