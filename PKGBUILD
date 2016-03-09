@@ -3,7 +3,7 @@
 pkgbase='regilo'
 pkgname=('regilo' 'regilo-lib')
 pkgver='2.3'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='A simple C++ library for controlling the Neato XV robot and the Hokuyo scanner'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/branoholy/regilo'
@@ -22,14 +22,21 @@ sha512sums=('5c0818934e02eb8c67bca209a7521cfc207581d0e6c69f94340a033dc3c37b348f4
 validpgpkeys=('D25809BF3563AA56A12B0F4D545EDD46FBAC61E6')
 
 build() {
-	cd regilo-$pkgver
+	cd $pkgbase-$pkgver
+
 	mkdir -p builds/regilo && cd builds/regilo
 	cmake -Dbuild-library:bool=on -Dinstall-headers:bool=on -Dexample:bool=on -DCMAKE_INSTALL_PREFIX=/usr ../..
-	make
-	
-	cd ../..
-	mkdir -p builds/regilo-lib && cd builds/regilo-lib
+
+	mkdir -p ../regilo-lib && cd ../regilo-lib
 	cmake -Dinstall-library:bool=on -DCMAKE_INSTALL_PREFIX=/usr ../..
+	rm -r CMakeFiles/regilo.dir/src CMakeFiles/regilo.dir/gen
+	ln -s ../../../regilo/CMakeFiles/regilo.dir/src/ CMakeFiles/regilo.dir/src
+	ln -s ../../../regilo/CMakeFiles/regilo.dir/gen/ CMakeFiles/regilo.dir/gen
+
+	cd ../regilo
+	make
+
+	cd ../regilo-lib
 	make
 }
 
