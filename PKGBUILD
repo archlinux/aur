@@ -28,8 +28,10 @@ pkgver() {
 
 build() {
     cd ${srcdir}/${pkgname}
-    _DISABLE_EXTENSIONS="--disable-caja --disable-nemo"
-    ./autogen.sh --prefix="/usr" $_DISABLE_EXTENSIONS
+    ./autogen.sh --prefix="/usr" \
+         --localstatedir="/var" \
+         --libexecdir="/usr/lib/xreader" \
+        --disable-caja --disable-nemo
     make
 }
 
