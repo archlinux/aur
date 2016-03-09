@@ -10,7 +10,7 @@ license=('GPL')
 depends=('')
 makedepends=('git')
 conflicts=("${pkgname%-*}")
-provides=("${pkgname%-*}=${pkgver}")
+provides=("${pkgname%-*}=${pkgver:0:5}")
 options=(!emptydirs)
 source=("git+https://github.com/Censor/${pkgname%-*}.git"
 	"makefile.patch")
