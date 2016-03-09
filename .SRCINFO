@@ -1,0 +1,20 @@
+pkgbase = python-algopy
+	pkgdesc = A tool for Algorithmic Differentiation (AD) and Taylor polynomial approximations.
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = http://packages.python.org/algopy/
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
+	options = !libtool
+	source = https://pypi.python.org/packages/source/a/algopy/algopy-0.5.3.zip
+	sha1sums = 4ebb09d8cf1b11c69d02c4d6c8806462831037d4
+
+pkgname = python2-algopy
+	optdepends = 
+
+pkgname = python-algopy
+	depends = python-numpydoc
+	optdepends = 
+
