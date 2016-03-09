@@ -3,9 +3,9 @@
 
 pkgname=chromium-pepper-flash-dev
 pkgver=21.0.0.172
-pkgrel=1
+pkgrel=2
 pkgdesc="Google Chrome's Pepper Flash plugin for Chromium (Dev Channel)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://www.google.com/chrome'
 license=('custom:chrome')
 optdepends=('pulseaudio-alsa: For PulseAudio users')
@@ -14,30 +14,17 @@ provides=('chromium-pepper-flash')
 options=('!emptydirs' '!strip')
 source=('https://www.google.com/chrome/intl/en/eula_text.html')
 sha1sums=('1ffba5152cb749300a016efec909b828eba9a64a')
-#-i686
-_metadata_i686="$(curl -sL "https://dl.google.com/linux/chrome/rpm/stable/i386/repodata/other.xml.gz" | gzip -df)"
-_rpm_ver_i686="$(echo "${_metadata_i686}" | grep -m1 -e unstable | awk -v FS='ver="' -v RS='" ' '$0=$2')"
-_rpm_rel_i686="$(echo "${_metadata_i686}" | grep -m1 -e unstable | awk -v FS='rel="' -v RS='"/' '$0=$2')"
-_rpm_sha1sum_i686="$(echo "${_metadata_i686}" | grep -m1 -e unstable | awk -v FS='pkgid="' -v RS='" ' '$0=$2')"
-source_i686=("http://dl.google.com/linux/chrome/rpm/stable/i386/google-chrome-unstable-${_rpm_ver_i686}-${_rpm_rel_i686}.i386.rpm")
-sha1sums_i686=("${_rpm_sha1sum_i686}")
-#-x86_64
-_metadata_x86_64="$(curl -sL "https://dl.google.com/linux/chrome/rpm/stable/x86_64/repodata/other.xml.gz" | gzip -df)"
-_rpm_ver_x86_64="$(echo "${_metadata_x86_64}" | grep -m1 -e unstable | awk -v FS='ver="' -v RS='" ' '$0=$2')"
-_rpm_rel_x86_64="$(echo "${_metadata_x86_64}" | grep -m1 -e unstable | awk -v FS='rel="' -v RS='"/' '$0=$2')"
-_rpm_sha1sum_x86_64="$(echo "${_metadata_x86_64}" | grep -m1 -e unstable | awk -v FS='pkgid="' -v RS='" ' '$0=$2')"
-source_x86_64=("http://dl.google.com/linux/chrome/rpm/stable/x86_64/google-chrome-unstable-${_rpm_ver_x86_64}-${_rpm_rel_x86_64}.x86_64.rpm")
-sha1sums_x86_64=("${_rpm_sha1sum_x86_64}")
+_metadata="$(curl -sL "https://dl.google.com/linux/chrome/rpm/stable/x86_64/repodata/other.xml.gz" | gzip -df)"
+_rpm_ver="$(echo "${_metadata}" | grep -m1 -e unstable | awk -v FS='ver="' -v RS='" ' '$0=$2')"
+_rpm_rel="$(echo "${_metadata}" | grep -m1 -e unstable | awk -v FS='rel="' -v RS='"/' '$0=$2')"
+_rpm_sha1sum="$(echo "${_metadata}" | grep -m1 -e unstable | awk -v FS='pkgid="' -v RS='" ' '$0=$2')"
+source+=("http://dl.google.com/linux/chrome/rpm/stable/x86_64/google-chrome-unstable-${_rpm_ver}-${_rpm_rel}.x86_64.rpm")
+sha1sums+=("${_rpm_sha1sum}")
 install=chromium-pepper-flash-dev.install
-noextract=("google-chrome-unstable-${_rpm_ver_i686}-${_rpm_rel_i686}.i386.rpm"
-           "google-chrome-unstable-${_rpm_ver_x86_64}-${_rpm_rel_x86_64}.x86_64.rpm")
+noextract=("google-chrome-unstable-${_rpm_ver}-${_rpm_rel}.x86_64.rpm")
 
 pkgver() {
-  if [ "${CARCH}" = "i686" ]; then
-  bsdtar -xf "google-chrome-unstable-${_rpm_ver_i686}-${_rpm_rel_i686}.i386.rpm" opt/google/chrome*/PepperFlash
-  elif [ "${CARCH}" = "x86_64" ]; then
-  bsdtar -xf "google-chrome-unstable-${_rpm_ver_x86_64}-${_rpm_rel_x86_64}.x86_64.rpm" opt/google/chrome*/PepperFlash
-  fi
+  bsdtar -xf "google-chrome-unstable-${_rpm_ver}-${_rpm_rel}.x86_64.rpm" opt/google/chrome*/PepperFlash
   echo "$(cat opt/google/chrome-unstable/PepperFlash/manifest.json | grep version | cut -d '"' -f4)"
 }
 
