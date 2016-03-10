@@ -10,7 +10,7 @@ license=('GPL')
 depends=('grub')
 install=${pkgname}.install
 source=("grub.hook")
-sha512sums=('995babe0658b31ded08d356fb3dcc31d95b2a3b500c65260773838825928b0fbf08b508dbe6ecc12b6b9d51e2d897ac3ee881edf68a2175fd169e554bfe54910')
+sha512sums=('e71d0b4f529095abc665cca450593831c2598810c607f848347e8cf843b447128d8af69c0bed8c1e26a7ee90f7154f072e85a023e4f7fe1378571a6b54de3691')
 
 package() {
   install -m755 -d "${pkgdir}/etc/pacman.d/hooks"
