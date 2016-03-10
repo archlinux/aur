@@ -2,7 +2,7 @@
 # Contributor: Nikita Sivakov <cryptomaniac.512@gmail.com>
 
 pkgname=vim-pydyn-xclip
-pkgver=7.4.1386
+pkgver=7.4.1529
 _versiondir=74
 pkgrel=1
 pkgdesc='Vi Improved with dynamic python (python/dyn, python3/dyn) and clipboard support'
