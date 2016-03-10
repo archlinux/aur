@@ -4,12 +4,13 @@
 
 pkgname=cloudabi-clang
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Symlinks for the clang toolchain for CloudABI."
 url='http://clang.llvm.org/'
 arch=('any')
 depends=(
 	'clang>=3.7'
+	'cloudabi-binutils'
 )
 license=(custom:LLVM)
 
