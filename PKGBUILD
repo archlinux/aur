@@ -1,12 +1,12 @@
-# Maintainer: %s <%s>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=guile-wm-git
 pkgver=r116.1e3114c
-pkgrel=1
+pkgrel=2
 pkgdesc="Windowmanagement environment for guile"
 arch=('any')
 url="http://www.markwitmer.com/guile-xcb/guile-wm.html"
 license=('GPL')
-depends=('guile')
+depends=('guile-xcb')
 makedepends=('git')
 provides=('guile-wm')
 conflicts=('guile-wm')
