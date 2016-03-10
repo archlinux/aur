@@ -52,7 +52,7 @@ pkgbase=linux-bfq
 pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _kernelname=-bfq
 _srcname=linux-4.4
-pkgver=4.4.4
+pkgver=4.4.5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
@@ -442,12 +442,12 @@ package_linux-bfq-docs() {
     rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 }
 
-sha512sums=('13c8459933a8b80608e226a1398e3d1848352ace84bcfb7e6a4a33cb230bbe1ab719d4b58e067283df91ce5311be6d2d595fc8c19e2ae6ecc652499415614b3e'                                                  
-            'SKIP'                                                                                                                                                                              
-            'c206af7803cb0915fbe2bd27ed33282452db3fbd3070c73e4c7147443efd3c7588fb3be12d0abc08742381fbe892190602b29147684630aa9e6ff5e9efa49dbc'                                                  
-            'SKIP'                                                                                                                                                                              
-            'bfd5d1a2d8f203e4d13914d311e8cc79b81695a41dc24179074cb05a5a9b5b0cc89a77062c6b8f79c850281aaa0d02dce40e23750aea7d1015f675c1cc024027'                                                  
-            '275b7573adf648325ab950f8a8be7753f2efac0c4cd5030d31b0482fca0b9b9886c85dec989acde15eadf128366c250ecbd19d5527bfb41f472425fef43e93fd'                                                  
+sha512sums=('13c8459933a8b80608e226a1398e3d1848352ace84bcfb7e6a4a33cb230bbe1ab719d4b58e067283df91ce5311be6d2d595fc8c19e2ae6ecc652499415614b3e'
+            'SKIP'
+            '230309a3642f4794eaa3727627c8ac79724e26947064a1b4b71d8abb4990e9e2f88cb381afe6e7074429f7e0cf1a20311198c427357c4d74293e5d44cf6a1980'
+            'SKIP'
+            'bfd5d1a2d8f203e4d13914d311e8cc79b81695a41dc24179074cb05a5a9b5b0cc89a77062c6b8f79c850281aaa0d02dce40e23750aea7d1015f675c1cc024027'
+            '275b7573adf648325ab950f8a8be7753f2efac0c4cd5030d31b0482fca0b9b9886c85dec989acde15eadf128366c250ecbd19d5527bfb41f472425fef43e93fd'
             '9defbcaca7ec7c849c67f1907be32c75638300d012e41d540f3d35ce13aff8561dfb68f31389096ab1c3d5b64631e682352458046af1e8af5abe085a1f59d9a1'
             '62fdd5c0a060a051b64093d71fbb028781061ccb7a28c5b06739a0b24dac0945740d9b73ff170784f60005a589774bcc14f56523ec51557eb3a677f726ec34cf'
             '607c0fa70375bff2f51387c4984e6f2da18c786a58281ab5c28f6b49c6da22578832afa96503f26a18575ffed677b2f9522a822b5db856b76c4144dd5b59ff6b'
