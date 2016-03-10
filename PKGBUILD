@@ -5,7 +5,7 @@
 # Contributor: jellysheep <max DOT mail AT dameweb DOT de>
 
 pkgname=mingw-w64-angleproject
-pkgver=2.1.r5624.8047c0d
+pkgver=2.1.r5637.0e49e6b
 pkgrel=1
 pkgdesc='ANGLE project (mingw-w64)'
 arch=('any')
@@ -14,16 +14,18 @@ license=('BSD')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc' 'git' 'gyp-git' 'python')
 options=('!strip' '!buildflags' 'staticlibs')
-source=('angleproject::git+https://chromium.googlesource.com/angle/angle#commit=8047c0d'
+source=('angleproject::git+https://chromium.googlesource.com/angle/angle#commit=0e49e6b'
         'additional-mingw-header::git+https://github.com/Martchus/additional-mingw-header.git#commit=7a8f394'
         'angleproject-include-import-library-and-use-def-file.patch'
         'libEGL_mingw32.def'
-        'libGLESv2_mingw32.def')
+        'libGLESv2_mingw32.def'
+        'entry_points_shader.cpp')
 sha256sums=('SKIP'
             'SKIP'
-            'e369cad08c921968714ee4edc2c6abe9bd928af41ff728634e5a7c5f096a05d2'
+            '895c62846e6784dcc33171523a452cb474010d3fc9e7c351c27b8add4e9930ab'
             'fb04f30b904760d32c4c0b733d0a0b44359855db1fde9e7f5ca7d0b8b1be3e56'
-            'b1fa5f9a6f88eb67c2c3d9889df040b0f858d2acfc931320dc4350efa291c927')
+            'b1fa5f9a6f88eb67c2c3d9889df040b0f858d2acfc931320dc4350efa291c927'
+            'ad347c9732f8897497aa51b8969a0e01cd8cd4ebb9a0e873a2ff47c210f1d46c')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 #pkgver() {
@@ -43,11 +45,16 @@ prepare() {
   # provide 32-bit versions of *.def files
   cp ../libEGL_mingw32.def src/libEGL/
   cp ../libGLESv2_mingw32.def src/libGLESv2/
+  
+  # provide a file to export symbols declared in ShaderLang.h as part of libGLESv2.dll
+  # (required to build Qt WebKit which uses shader interface)
+  cp ../entry_points_shader.cpp src/libGLESv2/
 
   # remove .git directory to prevent: No rule to make target '../build-i686-w64-mingw32/.git/index', needed by 'out/Debug/obj/gen/angle/id/commit.h'.
   rm -fr .git
 
-  # make sure an import library is created and the correct .def file is used during the build
+  # make sure an import library is created, the correct .def file is used during the build
+  # and entry_points_shader.cpp is compiled
   patch -p1 -i "${srcdir}/angleproject-include-import-library-and-use-def-file.patch"
 
   # executing .bat scripts on Linux is a no-go so make this a no-op
