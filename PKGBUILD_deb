@@ -1,0 +1,24 @@
+# Maintainer: James Crompton <donjaime@freenet.de>
+# you can use this if you have a local version of the deb package from an ubuntu install/recovery medium
+
+pkgname=bt-dw1560-firmware
+pkgver=1.0
+pkgrel=1
+pkgdesc="Bluetooth firmware for Dell DW1560 802.11ac (Broadcom BCM4352) adapter"
+arch=(any)
+url=""
+license=('proprietary')
+provides=(bt-dw1560-firmware)
+source=("${pkgname}_${pkgver}_all.deb")
+md5sums=('0d44ecdfdb679ba35f9c09f2047dbb66')
+
+package() {
+  cd "$srcdir"
+  tar -xf data.tar.xz
+
+  install -D -m644 "$srcdir/usr/share/bt-dw1560/firmware/fw-0a5c_216f.hcd" "$pkgdir/usr/lib/firmware/brcm/BCM20702A0-0a5c-216f.hcd"
+  ln -sr "$pkgdir/usr/lib/firmware/brcm/BCM20702A0-0a5c-216f.hcd" "$pkgdir/usr/lib/firmware/brcm/BCM20702A1-0a5c-216f.hcd"
+  install -D -t "$pkgdir/usr/share/doc/bt-dw1560-firmware/" "$srcdir/usr/share/doc/bt-dw1560-firmware/"*
+}
+
+

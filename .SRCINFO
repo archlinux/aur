@@ -1,0 +1,14 @@
+pkgbase = bt-dw1560-firmware
+	pkgdesc = Bluetooth firmware for Dell DW1560 802.11ac (Broadcom BCM4352) adapter
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = proprietary
+	makedepends = cabextract
+	makedepends = bluez-utils
+	provides = bt-dw1560-firmware
+	source = http://download.windowsupdate.com/d/msdownload/update/driver/drvs/2014/07/20662520_6c535fbfa9dca0d07ab069e8918896086e2af0a7.cab
+	md5sums = e7163c3e02906f075bac01a5489feacb
+
+pkgname = bt-dw1560-firmware
+
