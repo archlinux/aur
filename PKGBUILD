@@ -3,7 +3,7 @@
 
 pkgname=pumpa
 pkgver=0.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple pump.io client written in C++ and Qt"
 arch=('i686' 'x86_64')
 url="http://pumpa.branchable.com"
