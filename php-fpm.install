@@ -1,0 +1,9 @@
+post_install() {
+	if [[ ! -d run/php55-fpm ]]; then
+		usr/bin/systemd-tmpfiles --create php55-fpm.conf
+	fi
+}
+
+post_upgrade() {
+	post_install
+}
