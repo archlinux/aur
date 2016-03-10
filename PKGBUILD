@@ -16,13 +16,15 @@ source=("https://pypi.python.org/packages/source/S/SwampDragon/SwampDragon-${pkg
         "fiximport-import_module.patch"
         "fiximport-get_model.patch"
         "fiximport-model_tools.patch"
-        "fiximport-import_module2.patch")
+        "fiximport-import_module2.patch"
+        "fixversion-requires.patch")
 sha256sums=('8011141f7949bf1d16255d72d526ec751ab2e331c76f8d9dfbe99754a3b4ea94'
             'e6dda7a2f334343acadd30a8516e1bfb00293f5465e640dccccd836cf634bc70'
             '4ff2865fca78cac4dc3f1d83cabffeebb1c78db205457461569440455d375e8b'
             '9ea5e3e196d8d1f444c59f246994ca3bad3200c2a25ce5796e887741fe78c1e4'
             '2dd5797ceea5adff7b537d679372defea0ac4bf5e4afb5141b5c4d463c92e7eb'
-            'c5e94331f96b17b8f5513a331d79d995770626c998d2980d6f6caa068e43a532')
+            'c5e94331f96b17b8f5513a331d79d995770626c998d2980d6f6caa068e43a532'
+            'd6d2e5915c35f25635391705e84df5eff91b916543d89e32b8a99e6523ce2728')
 
 prepare() {
     cd "${srcdir}/${_module}-${pkgver}"

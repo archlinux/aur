@@ -1,0 +1,9 @@
+diff -aur SwampDragon-0.4.2.2.o/SwampDragon.egg-info/requires.txt SwampDragon-0.4.2.2/SwampDragon.egg-info/requires.txt
+--- SwampDragon-0.4.2.2.o/SwampDragon.egg-info/requires.txt	2016-03-09 22:19:56.588410448 -0800
++++ SwampDragon-0.4.2.2/SwampDragon.egg-info/requires.txt	2016-03-09 22:20:48.202915520 -0800
+@@ -1,4 +1,4 @@
+-Django >= 1.6, < 1.9
++Django >= 1.6
+ Tornado >= 3.2.2
+ sockjs-tornado >= 1.0.0
+ tornado-redis >= 2.4.18
