@@ -2,7 +2,7 @@ pkgname=ensime-server
 pkgver=0.9.10
 _scalaver=2.11
 _kind=SNAPSHOT
-pkgrel=7
+pkgrel=8
 pkgdesc="ENSIME server"
 url="https://github.com/ensime/ensime-server"
 arch=("x86_64" "i686")
@@ -25,7 +25,7 @@ package() {
     mkdir -p "${pkgdir}/usr/bin" && cat <<SHELL > "${pkgdir}/usr/bin/ensime-server"
 #!/bin/sh
 
-exec /usr/bin/java -Densime.config=\${1:-.}/.ensime -cp /usr/lib/jvm/default/lib/tools.jar:/usr/share/scala/lib/scala-library.jar:/usr/lib/ensime/${_jarfile} org.ensime.server.Server
+exec /usr/bin/java -Densime.config=\${1:-.}/.ensime -cp /usr/lib/jvm/default/lib/tools.jar:/usr/share/scala/lib/scala-library.jar:/usr/share/scala/lib/scala-compiler.jar:/usr/share/scala/lib/scalap.jar:/usr/lib/ensime/${_jarfile} org.ensime.server.Server
 SHELL
     chmod 0755 "${pkgdir}/usr/bin/ensime-server"
 
