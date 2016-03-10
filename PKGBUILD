@@ -1,7 +1,7 @@
 # Maintainer: longranger <longranger dot 406 at gmail dot com>
 pkgname="noauto_mounter"
-pkgver=0.5.r1.gd60c78c
-pkgrel=2
+pkgver=0.5.r3.g05f3ce2
+pkgrel=1
 pkgdesc="auto mount local and nfs noauto fstab mounts"
 arch=('x86_64')
 url="https://github.com/longranger/noauto_mounter"
