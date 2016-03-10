@@ -14,8 +14,8 @@ post_install() {
     More info:
     * http://kanboard.net/documentation/mysql-configuration
     * http://kanboard.net/documentation/postgresql-configuration
-- Configure the background tasks via cron
-    * Default cron config is located in /etc/webapps/kanboard, copy the file to /etc/cron.d
+- Configure the background tasks via a crontab job
+    * Example crontab config is located in /etc/webapps/kanboard
     * http://kanboard.net/documentation/cronjob
 - Configure kanboard to send out emails
     * http://kanboard.net/documentation/email-configuration
