@@ -2,7 +2,7 @@
 
 pkgname=python2-django-haystack
 _pkgname=django-haystack
-pkgver=2.1.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='Modular search for Django.'
 arch=(any)
@@ -11,7 +11,7 @@ license=(BSD)
 depends=(python2-django)
 makedepends=(python2-setuptools)
 source=(https://github.com/toastdriven/${_pkgname}/archive/v${pkgver}.tar.gz)
-md5sums=(122b82d1fcb9eea90c2c77fb0929e042)
+md5sums=(43450b7230caa600255f3a4592fda883)
 
 build() {
   cd ${_pkgname}-${pkgver}
