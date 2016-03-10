@@ -2,7 +2,7 @@
 # Contributor: Marco Pompili <marcs.pompili at gmail dot com>
 
 pkgname=openframeworks
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="openFrameworks is an open source C++ toolkit for creative coding."
 url="http://openframeworks.cc/"
@@ -21,7 +21,7 @@ _name="of_v${pkgver}_${_arch}_release"
 
 source=("http://www.openframeworks.cc/versions/v${pkgver}/${_name}.tar.gz" "of-make-workspace")
 
-[[ "$CARCH" == "i686" ]] && md5sums=("c90cf6bf2653cfbeb08b6cfcce688cf7") || md5sums=("7f3a60f7603745f64946a62254393e0a")
+[[ "$CARCH" == "i686" ]] && md5sums=("5b9a6cf3e8ba372eba59a13cb403ea00") || md5sums=("95c5f436a66489ed1ca460bf593bdbe1")
 
 md5sums+=("594d0a3c82e0451f7b7fb353e3b658c6")
 
