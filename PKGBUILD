@@ -1,7 +1,7 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=thefile
-pkgver=1.0
+pkgver=2.0
 pkgrel=0
 pkgdesc="File Manager for theOS"
 arch=("x86_64")
