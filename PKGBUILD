@@ -1,18 +1,18 @@
-# $Id: PKGBUILD 260304 2016-02-27 14:13:56Z alucryd $
+# $Id: PKGBUILD 261246 2016-03-09 17:05:36Z heftig $
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor : Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-gtk2
 _pkgname=firefox
-pkgver=44.0.2
-pkgrel=2
+pkgver=45.0
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://www.mozilla.org/firefox/"
 depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
-         'dbus-glib' 'alsa-lib' 'ffmpeg2.8' 'desktop-file-utils' 'hicolor-icon-theme'
+         'dbus-glib' 'alsa-lib' 'ffmpeg' 'desktop-file-utils' 'hicolor-icon-theme'
          'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite' 'ttf-font')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf'
              'xorg-server-xvfb' 'libpulse' 'inetutils')
@@ -27,14 +27,14 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/
         firefox.desktop
         firefox-install-dir.patch
         vendor.js
-        firefox-quicktime.patch
+        firefox-symbolic.svg
         firefox-fixed-loading-icon.png)
-sha256sums=('0bb28841a9268c50cbb239f759f16f55b3a624f679c68965158beaa0a83a2d9e'
+sha256sums=('36ab0f09b1b1df071a8aafa673c6286d99c18dc06cecbb70d1bb2021fbf379f1'
             'e75e13807e5f210dde53b785e25c8a5345d7bb459f857355b7b87bffc24b312b'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
-            '6b731ca36e7688aeb24685da702e0af0475e6671072fc96464fbbed49d0bbd50'
+            'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             '68e3a5b47c6d175cc95b98b069a15205f027cab83af9e075818d38610feb6213')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 
@@ -55,9 +55,6 @@ _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
 prepare() {
   cd $_pkgname-$pkgver
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1244523
-  patch -Np1 -i ../firefox-quicktime.patch
 
   cp ../mozconfig .mozconfig
   patch -Np1 -i ../firefox-install-dir.patch
@@ -115,6 +112,8 @@ package() {
     "$pkgdir/usr/share/icons/hicolor/192x192/apps/firefox.png"
   install -Dm644 browser/branding/official/content/about-logo@2x.png \
     "$pkgdir/usr/share/icons/hicolor/384x384/apps/firefox.png"
+  install -Dm644 ../firefox-symbolic.svg \
+    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/firefox-symbolic.svg"
 
   install -Dm644 ../firefox.desktop \
     "$pkgdir/usr/share/applications/firefox.desktop"
