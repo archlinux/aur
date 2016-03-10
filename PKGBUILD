@@ -45,6 +45,7 @@ build() {
 package() {
   cd "${srcdir}/${_gitname}"
   make -j1 prefix="$pkgdir/usr" install
-  
+
+  # TODO: generate docs, too
   rm "$pkgdir/usr/share/info/dir"
 }
