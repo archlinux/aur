@@ -3,8 +3,8 @@
 pkgbase=python-nikola-git
 _pyname=nikola
 _gitname=nikola
-pkgname=('python-nikola-git' 'python2-nikola-git' 'python-nikola-doc-git')
-pkgver=7.7.5.r0.g7638ac8
+pkgname=('python-nikola-git' 'python-nikola-doc-git')
+pkgver=7.7.7.r0.gd1f0c18
 pkgrel=1
 pkgdesc='A modular, fast, simple, static website generator. (git version)'
 arch=('any')
@@ -16,12 +16,7 @@ makedepends=('git'
              'python-docutils' 'python-mako' 'python-unidecode' 'python-lxml'
              'python-yapsy>=1.11.223' 'python-pyrss2gen' 'python-dateutil' 'python-logbook'
              'python-blinker' 'python-natsort' 'python-setuptools'
-             'python-requests' 'python-husl'
-             'python2' 'python2-doit' 'python2-pygments' 'python2-pillow'
-             'python2-docutils' 'python2-mako' 'python2-unidecode' 'python2-lxml'
-             'python2-yapsy>=1.11.223' 'python2-pyrss2gen' 'python2-dateutil' 'python2-logbook'
-             'python2-blinker' 'python2-natsort' 'python2-setuptools'
-             'python2-requests' 'python2-husl')
+             'python-requests' 'python-husl')
 source=("git+https://github.com/getnikola/${_gitname}.git")
 md5sums=('SKIP')
 
@@ -58,32 +53,6 @@ package_python-nikola-git() {
   cd "${srcdir}/${_gitname}"
   python3 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
   ln -s ${_pyname} "${pkgdir}/usr/bin/${_pyname}3"
-  rm -rf "${pkgdir}/usr/share"
-}
-
-package_python2-nikola-git() {
-  depends=('python2' 'python2-doit' 'python2-pygments' 'python2-pillow'
-           'python2-docutils' 'python2-mako' 'python2-unidecode' 'python2-lxml'
-           'python2-yapsy>=1.11.223' 'python2-pyrss2gen' 'python2-dateutil' 'python2-logbook'
-           'python2-blinker' 'python2-natsort' 'python2-setuptools'
-           'python2-requests' 'python2-husl')
-  optdepends=('python2-markdown: for Markdown support'
-              'python2-jinja: for Jinja2 themes'
-              'python2-pyphen>=0.9.1: for hyphenation'
-              'python2-pygal=1.7.0: for SVG graph plotting'
-              'python2-typogrify>=2.0.4: for typographical enhancements'
-              'python2-webassets: for bundling assets'
-              'ipython2-notebook: for ipynb support'
-              'ipython2: for ipynb support'
-              'python2-ghp-import>=0.4.1: for uploading to GitHub Pages'
-              'python2-micawber: for embedding media in posts'
-              'python2-phpserialize: for WordPress imports'
-              'python2-ws4py: for nikola auto'
-              'python2-watchdog: for nikola auto')
-  conflicts=('python2-nikola')
-  cd "${srcdir}/${_gitname}2"
-  python2 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
-  mv "${pkgdir}/usr/bin/${_pyname}" "${pkgdir}/usr/bin/${_pyname}2"
   rm -rf "${pkgdir}/usr/share"
 }
 
