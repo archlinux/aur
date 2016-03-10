@@ -21,7 +21,7 @@
 
 pkgname="auto-07p"
 pkgver="0.9.1"
-pkgrel="43"
+pkgrel="44"
 pkgdesc="Software for continuation and bifurcation problems in ordinary differential equations. Release 07P. Environment variables controlling build (default to 'no', see PKGBUILD): _BUILD_DOC, _WITH_PLAUT04, _PLAUT04_WITH_QT, AUTO_DEBUG, _WITH_OPENMP, _WITH_MPI."
 arch=('i686' 'x86_64')
 url='http://cmvl.cs.concordia.ca/auto/'
@@ -45,7 +45,7 @@ optdepends=(
             "soxt: For PLAUT04 plotting interface (enable compilation of 'plaut04' by setting the environment variable '_WITH_PLAUT04' to 'yes')."
             "soqt: For PLAUT04 plotting interface (enable compilation of 'plaut04' by setting the environment variable '_WITH_PLAUT04' to 'yes'). ('soqt' can be used instead of 'soxt'. If using 'soqt', set '_PLAUT04_WITH_QT' to 'yes'.)" 
             "coin: For plaut04 plotting interface (enable compilation of 'plaut04' by setting the environment variable '_WITH_PLAUT04' to 'yes')."
-#             "inventor: For plaut04 plotting interface (enable compilation of 'plaut04' by setting the environment variable '_WITH_PLAUT04' to 'yes'). ('inventor' can be used instead of 'coin', but 'coin' (Coin3D) is recommended (see AUTO documentation).)"
+            "inventor: For plaut04 plotting interface (enable compilation of 'plaut04' by setting the environment variable '_WITH_PLAUT04' to 'yes'). ('inventor' can be used instead of 'coin', but 'coin' (Coin3D) is recommended (see AUTO documentation).)"
             "openmpi: For MPI message passing (parallel computation). To build, set the environment variable '_WITH_OPENMP' to 'yes'."
             "texlive-bin: For compiling the manual (enable compilation of documentation by setting the environment variable '_BUILD_DOC' to 'yes')."
             "transfig: For compiling the manual (enable manual compiling in PKGBUILD (enable compilation of documentation by setting the environment variable '_BUILD_DOC' to 'yes'))."
