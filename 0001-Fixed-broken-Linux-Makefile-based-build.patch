@@ -1,0 +1,107 @@
+From eea4ef611110f34f184b8d49d1832beb2e0f5cec Mon Sep 17 00:00:00 2001
+From: ronys <ronys@pwsafe.org>
+Date: Tue, 8 Mar 2016 22:11:35 +0200
+Subject: [PATCH] Fixed broken Linux Makefile-based build
+
+Which required supporting point revisions correctly.
+---
+ Makefile.linux                 |  3 ++-
+ src/ui/wxWidgets/Makefile      | 10 +++++++---
+ src/ui/wxWidgets/about.cpp     |  2 +-
+ src/ui/wxWidgets/pwsafeapp.cpp |  2 --
+ src/ui/wxWidgets/version.cpp   | 18 ++++++++++++------
+ 5 files changed, 22 insertions(+), 13 deletions(-)
+
+diff --git a/Makefile.linux b/Makefile.linux
+index 5762a47..6acf069 100644
+--- a/Makefile.linux
++++ b/Makefile.linux
+@@ -2,7 +2,8 @@
+ # Toplevel Makefile for Linux build of PasswordSafe
+ 
+ export VER_MAJOR := 0
+-export VER_MINOR := 98.1
++export VER_MINOR := 98
++export VER_REV := 1
+ export VER_SPECIAL := BETA
+ 
+ # Since we use wxWidgets 3.x, while many distros still provide 2.8
+diff --git a/src/ui/wxWidgets/Makefile b/src/ui/wxWidgets/Makefile
+index b8e4ed5..9bd3cd8 100644
+--- a/src/ui/wxWidgets/Makefile
++++ b/src/ui/wxWidgets/Makefile
+@@ -240,9 +240,13 @@ $(DEPDIR)/%.d: %.cpp version.h
+ 	$(RM) $@.$$$$
+ 
+ version.h: always
+-	@../../../Misc/mkversion.pl MAJOR=$(VER_MAJOR) MINOR=$(VER_MINOR) SPECIAL=$(VER_SPECIAL) \
+-     version.in $@
+-
++ifdef VER_REV
++	@../../../Misc/mkversion.pl MAJOR=$(VER_MAJOR) MINOR=$(VER_MINOR) REV=$(VER_REV) \
++															SPECIAL=$(VER_SPECIAL) version.in $@
++else
++	@../../../Misc/mkversion.pl MAJOR=$(VER_MAJOR) MINOR=$(VER_MINOR) \
++															SPECIAL=$(VER_SPECIAL) version.in $@
++endif
+ -include $(SOURCES:%.cpp=$(DEPDIR)/%.d)
+ 
+ 
+diff --git a/src/ui/wxWidgets/about.cpp b/src/ui/wxWidgets/about.cpp
+index 6742a39..a101136 100644
+--- a/src/ui/wxWidgets/about.cpp
++++ b/src/ui/wxWidgets/about.cpp
+@@ -328,7 +328,7 @@ void CAbout::CheckNewVersion()
+   }
+   stringT latest;
+   if (status == CheckVersion::UP2DATE) {
+-    CheckVersion cv(MAJORVERSION, MINORVERSION, 0);
++    CheckVersion cv(MAJORVERSION, MINORVERSION, REVISION);
+     status = cv.CheckLatestVersion(latest_xml, latest);
+   }
+   m_newVerStatus->Clear();
+diff --git a/src/ui/wxWidgets/pwsafeapp.cpp b/src/ui/wxWidgets/pwsafeapp.cpp
+index fcf17f4..27c9e95 100644
+--- a/src/ui/wxWidgets/pwsafeapp.cpp
++++ b/src/ui/wxWidgets/pwsafeapp.cpp
+@@ -274,8 +274,6 @@ bool PwsafeApp::OnInit()
+   wxFileSystem::AddHandler(new wxArchiveFSHandler);
+ 
+   SetAppName(pwsafeAppName);
+-  m_core.SetApplicationNameAndVersion(tostdstring(pwsafeAppName),
+-                                      DWORD((MINORVERSION << 16) | MAJORVERSION));
+   PWSprefs::SetReporter(&aReporter);
+   PWScore::SetReporter(&aReporter);
+   PWScore::SetAsker(&anAsker);
+diff --git a/src/ui/wxWidgets/version.cpp b/src/ui/wxWidgets/version.cpp
+index cc9e726..d3af576 100644
+--- a/src/ui/wxWidgets/version.cpp
++++ b/src/ui/wxWidgets/version.cpp
+@@ -17,12 +17,18 @@
+ #endif
+ 
+ const wxString pwsafeAppName(APPNAME);
+-#ifndef _DEBUG
+-const wxString pwsafeVersionString = wxString::Format(wxString(_T("v%d.%d (%ls) %ls")),
+-                                                      MAJORVERSION, MINORVERSION,
+-                                                      _T(VCS_VERSION), SPECIALBUILD);
++#ifdef _DEBUG
++const wchar_t *debstr = L"[debug] ";
++#else
++const wchar_t *debstr = L"";
++#endif
++
++#if defined(REVISION) && (REVISION != 0)
++const wxString pwsafeVersionString = wxString::Format(wxString(_T("v%d.%d.%d (%ls) %ls%ls")),
++                                                      MAJORVERSION, MINORVERSION, REVISION,
++                                                      _T(VCS_VERSION), debstr, SPECIALBUILD);
+ #else
+-const wxString pwsafeVersionString = wxString::Format(wxString(_T("v%d.%d (%ls) [debug] %ls")),
++const wxString pwsafeVersionString = wxString::Format(wxString(_T("v%d.%d (%ls) %ls%ls")),
+                                                       MAJORVERSION, MINORVERSION,
+-                                                      _T(VCS_VERSION), SPECIALBUILD);
++                                                      _T(VCS_VERSION), debstr, SPECIALBUILD);
+ #endif
+-- 
+2.7.2
+
