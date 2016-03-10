@@ -9,7 +9,7 @@ url="http://picard.musicbrainz.org/plugins/"
 license=('GPL')
 depends=('picard')
 conflicts=('picard-git<=1.3')
-source=(git+https://github.com/musicbrainz/picard-plugins.git)
+source=(git+https://github.com/metabrainz/picard-plugins.git)
 md5sums=('SKIP')
 
 pkgver() {
