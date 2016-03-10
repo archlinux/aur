@@ -1,5 +1,5 @@
 pkgname=dpluzz
-pkgver=1.5.5
+pkgver=1.5.6
 pkgrel=1
 pkgdesc="Software to retrieve videos from French website pluzz"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python2' 'pygtk' 'vte' 'mplayer' 'python2-beautifulsoup3' 'python2-bea
 optdepends=()
 conflicts=()
 source=("https://launchpad.net/~yoggic/+archive/dpluzz/+files/dpluzz_$pkgver%7Eubuntu14.04_amd64.deb")
-md5sums=('d29e3ada866e33a7034bba1aca9c157d')
+md5sums=('8732ab7d1bb64326b8f15acd9a658bcb')
 
 build(){
    cd "${srcdir}"
@@ -25,6 +25,3 @@ package(){
    cd "${srcdir}"
    mv usr/ ${pkgdir}/
 }
-
-
-
