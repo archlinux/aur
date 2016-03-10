@@ -1,6 +1,6 @@
 pkgbase = fortune-mod-all-en
 	pkgdesc = Meta package for all English fortunes
-	pkgver = 10
+	pkgver = 11
 	pkgrel = 1
 	url = http://en.wikipedia.org/wiki/Fortune_%28Unix%29
 	arch = i686

@@ -1,12 +1,12 @@
 # Maintainer: Mike Cooper <mythmon@gmail.com>
 
 pkgname=fortune-mod-all-en
-pkgver=10
+pkgver=11
 pkgrel=1
 pkgdesc="Meta package for all English fortunes"
 arch=('i686' 'x86_64')
 license=('None')
-url=('http://en.wikipedia.org/wiki/Fortune_%28Unix%29')
+url='http://en.wikipedia.org/wiki/Fortune_%28Unix%29'
 depends=(
   'fortune-mod'
   'fortune-mod-2brokegirls'
