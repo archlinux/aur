@@ -4,7 +4,7 @@ pkgbase=(virtualbox-think-modules)
 pkgname=(virtualbox-think-host-modules virtualbox-think-guest-modules)
 pkgdesc='Host and guest  kernel modules for VirtualBox running under linux-think'
 pkgver=5.0.14
-pkgrel=4
+pkgrel=6
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
 license=('GPL')
@@ -24,10 +24,10 @@ build() {
 	echo "dkms_tree='$srcdir/dkms'" > dkms.conf
 	# build host modules
 	msg2 'Host modules'
-	dkms --dkmsframework dkms.conf build "vboxhost/$pkgver" -k "$_kernver"
+	dkms --dkmsframework dkms.conf build "vboxhost/$pkgver"_OSE -k "$_kernver"
 	# build guest modules
 	msg2 'Guest modules'
-	dkms --dkmsframework dkms.conf build "vboxguest/$pkgver" -k "$_kernver"
+	dkms --dkmsframework dkms.conf build "vboxguest/$pkgver"_OSE -k "$_kernver"
 }
 
 package_virtualbox-think-host-modules() {
@@ -39,7 +39,7 @@ package_virtualbox-think-host-modules() {
 	conflicts=('virtualbox-ck-modules' 'virtualbox-ck-host-modules-atom' 'virtualbox-ck-host-modules-barcelona' 'virtualbox-ck-host-modules-bulldozer' 'virtualbox-ck-host-modules-corex' 'virtualbox-ck-host-modules-core2' 'virtualbox-ck-host-modules-haswell' 'virtualbox-ck-host-modules-broadwell' 'virtualbox-ck-host-modules-ivybridge' 'virtualbox-ck-host-modules-kx' 'virtualbox-ck-host-modules-k10' 'virtualbox-ck-host-modules-nehalem' 'virtualbox-ck-host-modules-p4' 'virtualbox-ck-host-modules-piledriver' 'virtualbox-ck-host-modules-pentm' 'virtualbox-ck-host-modules-sandybridge' 'virtualbox-ck-host-modules-silvermont')
 	install=host.install
 	install -dm755 "$pkgdir/usr/lib/modules/$_extramodules"
-	cd "dkms/vboxhost/$pkgver/$_kernver/$CARCH/module"
+	cd "dkms/vboxhost/$pkgver"_OSE"/$_kernver/$CARCH/module"
 	install -m644 * "$pkgdir/usr/lib/modules/$_extramodules"
 	find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
 	sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='$_extramodules'/" "$startdir/host.install"
@@ -56,7 +56,7 @@ package_virtualbox-think-guest-modules() {
 	install=guest.install
 
 	install -dm755 "$pkgdir/usr/lib/modules/$_extramodules"
-	cd "dkms/vboxguest/$pkgver/$_kernver/$CARCH/module"
+	cd "dkms/vboxguest/$pkgver"_OSE"/$_kernver/$CARCH/module"
 	install -m644 * "$pkgdir/usr/lib/modules/$_extramodules"
 	find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
 	sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='$_extramodules'/" "$startdir/guest.install"
