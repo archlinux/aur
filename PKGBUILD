@@ -1,14 +1,13 @@
 # Maintainer: Weitian Leung <weitianleung[at]gmail[dot]com>
 
 pkgname=bing-wallpaper-git
-pkgver=r22
-pkgrel=2
+pkgver=r25
+pkgrel=1
 pkgdesc="Change wallpaper from Bing daily"
 arch=(any)
 license=('GPL3')
 depends=('curl' 'bc')
-optdepends=('xorg-xrandr: for xfce4 support'
-            'xfconf: for xfce4 support')
+optdepends=('xfconf: for xfce4 support')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/marguerite/linux-bing-wallpaper.git"
         'bing-wallpaper-autostart.sh'
