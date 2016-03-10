@@ -8,7 +8,6 @@ pkgdesc="A full-featured MySQL management tool written in PHP."
 arch=('any')
 license=('Apache', 'GPL')
 depends=('php')
-conflicts=('adminer-git')
 optdepends=('mysql' 'apache' 'postgresql' 'sqlite')
 url="https://www.adminer.org"
 install=${pkgname}.install
@@ -21,9 +20,12 @@ sha256sums=('f3d2c8d2119cccf4d84d32ad2662300eecda62ffba7304505e563e192b5a10ef'
 
 package() {
     cd "$srcdir"
-    install -Dm0644 "${pkgname}-${pkgver}.php" "$pkgdir/usr/share/webapps/$pkgname/index.php"
+    install -Dm0644 "${pkgname}-${pkgver}.php" \
+        "$pkgdir/usr/share/webapps/$pkgname/index.php"
 
-    # TODO: I don't really like this. What if someone is using nginx for example? Or doesn't care to
-    # have any configuration installed at all. Consider removing.
-    install -Dm0644 "httpd-${pkgname}.conf" "$pkgdir/etc/httpd/conf/extra/httpd-${pkgname}.conf"
+    # TODO: I don't really like this. What if someone is using nginx, for
+    # example? Or doesn't care to have any configuration installed at all.
+    # Consider removing.
+    install -Dm0644 "httpd-${pkgname}.conf" \
+        "$pkgdir/etc/httpd/conf/extra/httpd-${pkgname}.conf"
 }
