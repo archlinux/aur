@@ -1,0 +1,14 @@
+pkgbase = android-armv7a-eabi-system-image-14
+	pkgdesc = Android ARM EABI v7a System Image, API-14
+	pkgver = 4.0.0_r02
+	pkgrel = 1
+	url = http://developer.android.com/sdk/index.html
+	arch = any
+	license = custom
+	depends = android-platform-14
+	options = !strip
+	source = http://dl-ssl.google.com/android/repository/sys-img/android/sysimg_armv7a-14_r02.zip
+	sha1sums = d8991b0c06b18d7d6ed4169d67460ee1add6661b
+
+pkgname = android-armv7a-eabi-system-image-14
+
