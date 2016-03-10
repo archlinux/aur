@@ -16,7 +16,7 @@ source=(http://www.receita.fazenda.gov.br/publico/programas/receitanet/receitane
         
 md5sums=('8c1d9e034f5a8bf87261aca9899256f2'
          '0482abdccc0286f64ed66981fcca8975'
-         '17eef2df7ac4d55d1a7fd436ca89a6fc')
+         '339dcd1387350f6eb9ebb9f944f6b616')
 
 depends=('jre8-openjdk' 'hicolor-icon-theme' 'desktop-file-utils')
 install=$pkgname.install
