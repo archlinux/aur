@@ -5,7 +5,7 @@ _pkgver=1.3
 pkgrel=1
 pkgdesc="plugins from picard-plugins repository (except contrib)"
 arch=('any')
-url="http://picard.musicbrainz.org/plugins/"
+url="https://picard.musicbrainz.org/plugins/"
 license=('GPL')
 depends=('picard')
 conflicts=('picard-git<=1.3')
