@@ -1,7 +1,7 @@
 pkgbase = spotify-stable
 	pkgdesc = A proprietary music streaming service. Version recommended by Spotify. See URL.
 	pkgver = 0.9.17
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.spotify.com/download/linux/
 	install = spotify-stable.install
 	arch = x86_64
