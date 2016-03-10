@@ -5,10 +5,10 @@
 # we have a script that toggles the LED key(so you can bind to it with your
 # keyboard settings. There is also an /etc/default/ option that sets the default
 # state of the backlight after login. So far, we cannot set the backlight
-# without X, or at the login screen. Contrib is welcome
+# without X, or at the login screen. Contrib is welcome.
 
 pkgname=coolmaster-keyboard
-pkgver=3
+pkgver=4
 pkgrel=1
 pkgdesc="Control the backlight for Coolmaster Dominator keyboards"
 url="http://aur.archlinux.org"
@@ -21,9 +21,9 @@ source=("90-coolmaster-keyboard.sh"
         "coolmaster_keyboard"
         "keyboard_led_toggle.sh"
 )
-sha256sums=('84e9af948178a4f3a4054f87a17adf0f5ba23845b4a0a98900344c261612ef66'
-            '5949356d3a44ba4d5431c9ff461e9f6cc1e0b89ae8fc9c29d8b9f4aeec0dd230'
-            '168f733e8308e7e711264f798ccb742456e0c2131841c471620b9e32fbc3f4c9')
+sha256sums=('e34f8f969fe47809c3bc3f263f3fc592f816c1a0187ef37d32c414477d718a83'
+            '7132b4c49badde6faef71a38091ac07a626c14c207c2f6c45c483fe9d814e0e0'
+            'b1530f6056dfa28d72eadf78df50cd9736e0ff95241434719a2636d0fe775213')
 
 package() {
   cd "${srcdir}"

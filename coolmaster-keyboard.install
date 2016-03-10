@@ -1,12 +1,18 @@
 #!/bin/bash
 post_install(){
     cat << EOF
-This package contains a series of scripts for controlling the backlight on the
-Coolmaster Dominator keyboard.
 
-configuration is at: /etc/default/coolmaster_keyboard
+This package controls the backlight for coolmaster dominator keyboards. In
+windows this is done with the scroll lock key. This package is a work around
+we have a script that toggles the LED key(so you can bind to it with your
+keyboard settings. There is also an /etc/default/ option that sets the default
+state of the backlight after login. So far, we cannot set the backlight
+without X, or at the login screen. Contrib is welcome.
+
+configuration is in: /etc/default/coolmaster_keyboard
 
 To toggle the backlight: use /usr/bin/keyboard_led_toggle.sh
+you can bind this to a key in your window manager's keyboar settingse.
 EOF
 }
 
