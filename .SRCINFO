@@ -1,6 +1,6 @@
 pkgbase = xt7-player-mpv
 	pkgdesc = Aims to be an 'almost complete' but usable mpv gui
-	pkgver = 0.12.381
+	pkgver = 0.16.384
 	pkgrel = 2
 	url = http://xt7-player.sourceforge.net/xt7forum/
 	arch = any
