@@ -3,7 +3,7 @@
 pkgname=('python-django-swampdragon')
 _module='SwampDragon'
 pkgver='0.4.2.2'
-pkgrel=7
+pkgrel=8
 pkgdesc="Combines the power of Django and Tornado for real-time web applications"
 url="http://swampdragon.net"
 depends=('python' 'python-tornado' 'python-django' 'python-redis' 'python-dateutil'
