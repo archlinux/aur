@@ -3,7 +3,7 @@
 pkgbase = grub-hook
 	pkgdesc = Pacman hook to update GRUB after a kernel update
 	pkgver = 2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.archlinux.org/index.php/User:Allan/Pacman_Hooks
 	install = grub-hook.install
 	arch = any

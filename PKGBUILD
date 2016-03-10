@@ -2,7 +2,7 @@
 
 pkgname=grub-hook
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Pacman hook to update GRUB after a kernel update"
 arch=('any')
 url="https://wiki.archlinux.org/index.php/User:Allan/Pacman_Hooks"
@@ -17,6 +17,6 @@ sha512sums=('aafa69a759035167d38e47161f623f863af70e05cdea3edc218e198406a2392bfa2
 package() {
   install -m755 -d "${pkgdir}/etc/pacman.d/hooks"
   install -m644 "${srcdir}/grub.hook" "${pkgdir}/etc/pacman.d/hooks/grub.hook"
-  install -m644 "${srcdir}/grub.sh" "${pkgdir}/etc/pacman.d/hooks/grub.sh"
+  install -m755 "${srcdir}/grub.sh" "${pkgdir}/etc/pacman.d/hooks/grub.sh"
 }
 
