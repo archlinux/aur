@@ -1,6 +1,6 @@
 # Maintainer: Janosch Dobler <janosch.dobler@gmx.de>
 pkgname=rebash
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="bash/shell library/framework"
 arch=('x86_64')
