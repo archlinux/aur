@@ -3,30 +3,34 @@
 # Contributor : Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
+# This package binaries are built using the aur firefox-gtk2 PKGBUILD.
+
 pkgname=firefox-gtk2-bin
-pkgver=44.0.2
-pkgrel=3
+pkgver=45.0
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://www.mozilla.org/firefox/"
 depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
-         'dbus-glib' 'alsa-lib' 'ffmpeg2.8' 'desktop-file-utils' 'hicolor-icon-theme'
+         'dbus-glib' 'alsa-lib' 'ffmpeg' 'desktop-file-utils' 'hicolor-icon-theme'
          'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite' 'ttf-font')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'upower: Battery API')
 install=firefox.install
 options=('!emptydirs' '!makeflags')
-provides=("firefox=${pkgver}")
+provides=("firefox=${pkgver}-${pkgrel}")
 conflicts=("firefox")
 source=(firefox.desktop
-        vendor.js)
+        vendor.js
+        firefox-symbolic.svg)
 source_i686=(https://github.com/iPotable/firefox-gtk2-bin-archlinux/raw/master/firefox-${pkgver}.en-US.linux-i686.tar.bz2)
 source_x86_64=(https://github.com/iPotable/firefox-gtk2-bin-archlinux/raw/master/firefox-${pkgver}.en-US.linux-x86_64.tar.bz2)
 sha256sums=('c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
-            '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4')
-sha256sums_i686=('f5577ca4aff2a04d56aefb625b54d77ca3f9199735a6ad413fe965811e176e9d')
-sha256sums_x86_64=('c577d771ed744e0d0932b4040f9fb2cda0ff85a93f594479441ead2c955737d5')
+            '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
+            'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9')
+sha256sums_i686=('9311ba5d22c7329d178828c6c705f0698007c1857de2368205ac4612a2adf809')
+sha256sums_x86_64=('d22f69853c91a46d2d8a04805e342a23ab7d0a082e6720a788645f4734154492')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 
 package() {
@@ -42,6 +46,8 @@ package() {
   done
   install -Dm644 "$srcdir/firefox/browser/icons/mozicon128.png" \
     "$pkgdir/usr/share/icons/hicolor/128x128/apps/firefox.png"
+  install -Dm644 firefox-symbolic.svg \
+    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/firefox-symbolic.svg"
 
   install -Dm644 firefox.desktop \
     "$pkgdir/usr/share/applications/firefox.desktop"
