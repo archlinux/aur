@@ -1,6 +1,6 @@
 pkgbase = python-nikola
 	pkgdesc = A modular, fast, simple, static website generator.
-	pkgver = 7.7.6
+	pkgver = 7.7.7
 	pkgrel = 1
 	url = https://getnikola.com/
 	arch = any
@@ -22,26 +22,9 @@ pkgbase = python-nikola
 	makedepends = python-setuptools
 	makedepends = python-requests
 	makedepends = python-husl
-	makedepends = python2
-	makedepends = python2-doit
-	makedepends = python2-pygments
-	makedepends = python2-pillow
-	makedepends = python2-docutils
-	makedepends = python2-mako
-	makedepends = python2-unidecode
-	makedepends = python2-lxml
-	makedepends = python2-yapsy>=1.11.223
-	makedepends = python2-pyrss2gen
-	makedepends = python2-dateutil
-	makedepends = python2-logbook
-	makedepends = python2-blinker
-	makedepends = python2-natsort
-	makedepends = python2-setuptools
-	makedepends = python2-requests
-	makedepends = python2-husl
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/N/Nikola/nikola-7.7.6.tar.gz
-	md5sums = 556973218f8223e0e7f9587046ca0b46
+	source = https://pypi.python.org/packages/source/N/Nikola/nikola-7.7.7.tar.gz
+	md5sums = 8038963dc5edd947150cee6d5c6ebd36
 
 pkgname = python-nikola
 	depends = python
@@ -75,39 +58,6 @@ pkgname = python-nikola
 	optdepends = python-ws4py: for nikola auto
 	optdepends = python-watchdog: for nikola auto
 	conflicts = python-nikola-git
-
-pkgname = python2-nikola
-	depends = python2
-	depends = python2-doit
-	depends = python2-pygments
-	depends = python2-pillow
-	depends = python2-docutils
-	depends = python2-mako
-	depends = python2-unidecode
-	depends = python2-lxml
-	depends = python2-yapsy>=1.11.223
-	depends = python2-pyrss2gen
-	depends = python2-dateutil
-	depends = python2-logbook
-	depends = python2-blinker
-	depends = python2-natsort
-	depends = python2-setuptools
-	depends = python2-requests
-	depends = python2-husl
-	optdepends = python2-markdown: for Markdown support
-	optdepends = python2-jinja: for Jinja2 themes
-	optdepends = python2-pyphen>=0.9.1: for hyphenation
-	optdepends = python2-pygal=1.7.0: for SVG graph plotting
-	optdepends = python2-typogrify>=2.0.4: for typographical enhancements
-	optdepends = python2-webassets: for bundling assets
-	optdepends = ipython2-notebook: for ipynb support
-	optdepends = ipython2: for ipynb support
-	optdepends = python2-ghp-import>=0.4.1: for uploading to GitHub Pages
-	optdepends = python2-micawber: for embedding media in posts
-	optdepends = python2-phpserialize: for WordPress imports
-	optdepends = python2-ws4py: for nikola auto
-	optdepends = python2-watchdog: for nikola auto
-	conflicts = python2-nikola-git
 
 pkgname = python-nikola-doc
 	pkgdesc = Nikola documentation, license and man page
