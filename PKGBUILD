@@ -6,7 +6,7 @@ pkgdesc="A filemanager build with elementary"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD')
-depends=('elementary-fresh')
+depends=('elementary')
 makedepends=('git' 'cmake' 'check')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
