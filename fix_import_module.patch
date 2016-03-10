@@ -1,0 +1,58 @@
+diff -aur SwampDragon-0.4.2.2.old/swampdragon/__init__.py SwampDragon-0.4.2.2/swampdragon/__init__.py
+--- SwampDragon-0.4.2.2.old/swampdragon/__init__.py	2015-05-13 13:03:45.000000000 -0700
++++ SwampDragon-0.4.2.2/swampdragon/__init__.py	2016-03-09 16:57:40.710113036 -0800
+@@ -8,7 +8,10 @@
+     Returns urls for each route handler
+     """
+     from django.conf import settings
+-    from django.utils.importlib import import_module
++    try:
++        from importlib import import_module
++    except ImportError:
++        from django.utils.importlib import import_module
+     imported_routers = []
+     urls = []
+     for app in settings.INSTALLED_APPS:
+diff -aur SwampDragon-0.4.2.2.old/swampdragon/sessions/sessions.py SwampDragon-0.4.2.2/swampdragon/sessions/sessions.py
+--- SwampDragon-0.4.2.2.old/swampdragon/sessions/sessions.py	2014-10-13 10:48:32.000000000 -0700
++++ SwampDragon-0.4.2.2/swampdragon/sessions/sessions.py	2016-03-09 16:57:45.376586772 -0800
+@@ -1,6 +1,9 @@
+ from .redis_session_store import RedisSessionStore
+ from django.conf import settings
+-from django.utils.importlib import import_module
++try:
++    from importlib import import_module
++except ImportError:
++    from django.utils.importlib import import_module
+ 
+ 
+ session_store = None
+diff -aur SwampDragon-0.4.2.2.old/swampdragon/swampdragon_server.py SwampDragon-0.4.2.2/swampdragon/swampdragon_server.py
+--- SwampDragon-0.4.2.2.old/swampdragon/swampdragon_server.py	2015-05-05 04:05:59.000000000 -0700
++++ SwampDragon-0.4.2.2/swampdragon/swampdragon_server.py	2016-03-09 16:57:42.996685171 -0800
+@@ -1,6 +1,9 @@
+ import django
+ from django.conf import settings
+-from django.utils.importlib import import_module
++try:
++    from importlib import import_module
++except ImportError:
++    from django.utils.importlib import import_module
+ from tornado import web, ioloop
+ from sockjs.tornado import SockJSRouter
+ from swampdragon import discover_routes, load_field_deserializers, VERSION
+diff -aur SwampDragon-0.4.2.2.old/swampdragon/testing/dragon_testcase.py SwampDragon-0.4.2.2/swampdragon/testing/dragon_testcase.py
+--- SwampDragon-0.4.2.2.old/swampdragon/testing/dragon_testcase.py	2015-05-05 04:05:59.000000000 -0700
++++ SwampDragon-0.4.2.2/swampdragon/testing/dragon_testcase.py	2016-03-09 16:57:48.639785173 -0800
+@@ -5,7 +5,10 @@
+ from swampdragon.connections.mock_connection import TestConnection
+ from django.test import TestCase
+ from django.conf import settings
+-from django.utils.importlib import import_module
++try:
++    from importlib import import_module
++except ImportError:
++    from django.utils.importlib import import_module
+ from sockjs.tornado import SockJSRouter
+ from tornado import web
+ from swampdragon.settings_provider import SettingsHandler
