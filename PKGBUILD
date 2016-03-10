@@ -4,7 +4,7 @@
 pkgname=(linux-luca020400 linux-luca020400-headers linux-luca020400-docs)
 _kernelname=-luca020400
 _srcname=linux-4.4
-pkgver=4.4.4
+pkgver=4.4.5
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -29,7 +29,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'enable_additional_cpu_optimizations_for_gcc.patch')
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            '9061d8f57cc25d760387c4e6b7d5cceacaa808e8784a3e478012e7c2949853c8'
+            'a570680ad5624eff0687c74d652158cbd9ec92fdd177ac5ff812988a24d54ab5'
             'SKIP'
             'e1195de2d0bebc1fc81d8ad887f4b30376fe7b428e59a587e0544c0b34a80b84'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
