@@ -1,17 +1,3 @@
-Index: include/clang/Basic/AttrDocs.td
-===================================================================
---- include/clang/Basic/AttrDocs.td
-+++ include/clang/Basic/AttrDocs.td
-@@ -2160,6 +2160,9 @@
- }
- 
- def AbiTagsDocs : Documentation {
-+  // It it not function only attribute but creating special creating special
-+  // category for this abi_tag attribute only seems overkill, eh.
-+  let Category = DocCatFunction;
-   let Content = [{
- The ``abi_tag`` attribute can be applied to a function, variable, class or
- inline namespace declaration to modify the mangled name of the entity. It gives
 Index: lib/AST/ItaniumMangle.cpp
 ===================================================================
 --- lib/AST/ItaniumMangle.cpp
