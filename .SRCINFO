@@ -1,0 +1,15 @@
+pkgbase = prosody-mod-auth-dovecot
+	pkgdesc = Prosody authentication plugin which uses Dovecot as the backend
+	pkgver = 2014_03_28
+	pkgrel = 1
+	url = https://modules.prosody.im/mod_auth_dovecot.html
+	arch = any
+	license = MIT
+	depends = prosody
+	source = https://hg.prosody.im/prosody-modules/raw-file/cb74e4ab13f0/mod_auth_dovecot/auth_dovecot/mod_auth_dovecot.lua
+	source = https://hg.prosody.im/prosody-modules/raw-file/cb74e4ab13f0/mod_auth_dovecot/auth_dovecot/sasl_dovecot.lib.lua
+	md5sums = d2314ee5fd6913d505fd5429244a1aa8
+	md5sums = 14eb927b9c92801d7005c119a4acc079
+
+pkgname = prosody-mod-auth-dovecot
+
