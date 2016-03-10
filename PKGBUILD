@@ -2,7 +2,7 @@ pkgname=ensime-server
 pkgver=0.9.10
 _scalaver=2.11
 _kind=SNAPSHOT
-pkgrel=9
+pkgrel=10
 pkgdesc="ENSIME server"
 url="https://github.com/ensime/ensime-server"
 arch=("x86_64" "i686")
@@ -25,7 +25,21 @@ package() {
     mkdir -p "${pkgdir}/usr/bin" && cat <<SHELL > "${pkgdir}/usr/bin/ensime-server"
 #!/bin/sh
 
-exec /usr/bin/java -Densime.config=\${1:-.}/.ensime -cp /usr/lib/jvm/default/lib/tools.jar:/usr/share/scala/lib/scala-library.jar:/usr/share/scala/lib/scala-compiler.jar:/usr/share/scala/lib/scalap.jar:/usr/lib/ensime/${_jarfile} org.ensime.server.Server
+PROJECT_DIR="\${1:-.}"
+SWANK_PORT="\$2"
+HTTP_PORT="\$3"
+
+mkdir -p "\${PROJECT_DIR}"/.ensime_cache
+
+if test -n "\${SWANK_PORT}"; then
+    echo -n "\${SWANK_PORT}" > "\${PROJECT_DIR}"/.ensime_cache/port
+fi
+
+if test -n "\${HTTP_PORT}"; then
+    echo -n "\${HTTP_PORT}" > "\${PROJECT_DIR}"/.ensime_cache/http
+fi
+
+exec /usr/bin/java -Densime.config="\${PROJECT_DIR}"/.ensime -cp /usr/lib/jvm/default/lib/tools.jar:/usr/share/scala/lib/scala-library.jar:/usr/share/scala/lib/scala-compiler.jar:/usr/share/scala/lib/scalap.jar:/usr/lib/ensime/${_jarfile} org.ensime.server.Server
 SHELL
     chmod 0755 "${pkgdir}/usr/bin/ensime-server"
 
@@ -36,11 +50,8 @@ Description=ENSIME user server for %i directory
 [Service]
 Type=simple
 EnvironmentFile=-%I/.ensime_cache/ports.conf
-ExecStartPre=/usr/bin/mkdir -p %I/.ensime_cache
-ExecStartPre=/usr/bin/rm -f %I/.ensime_cache/http %I/.ensime_cache/port
-ExecStartPre=/bin/sh -c "test -z \${HTTP_PORT} || (echo -n \${HTTP_PORT} > %I/.ensime_cache/http)"
-ExecStartPre=/bin/sh -c "test -z \${SWANK_PORT} || (echo -n \${SWANK_PORT} > %I/.ensime_cache/port)"
-ExecStart=/usr/bin/ensime-server %I
+ExecStartPre=-/usr/bin/rm -f %I/.ensime_cache/http %I/.ensime_cache/port
+ExecStart=/usr/bin/ensime-server %I \${SWANK_PORT} \${HTTP_PORT}
 
 [Install]
 WantedBy=default.target
