@@ -1,0 +1,16 @@
+pkgbase = x11fs-git
+	pkgdesc = A tool for manipulating X windows
+	pkgver = r24.9cd04ef
+	pkgrel = 1
+	url = https://github.com/sdhand/x11fs
+	arch = i686
+	arch = x86_64
+	license = BSD-3
+	depends = libxcb
+	depends = fuse
+	provides = x11fs
+	source = git://github.com/sdhand/x11fs
+	md5sums = SKIP
+
+pkgname = x11fs-git
+
