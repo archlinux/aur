@@ -1,8 +1,8 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=thepackage
-pkgver=1.0
-pkgrel=1
+pkgver=2.0
+pkgrel=0
 pkgdesc="Package Manager for theOS"
 arch=("x86_64")
 url="https://github.com/vicr123/thepackage"
