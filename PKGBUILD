@@ -3,7 +3,7 @@
 pkgname=('python-django-swampdragon')
 _module='SwampDragon'
 pkgver='0.4.2.2'
-pkgrel=8
+pkgrel=9
 pkgdesc="Combines the power of Django and Tornado for real-time web applications"
 url="http://swampdragon.net"
 depends=('python' 'python-tornado' 'python-django' 'python-redis' 'python-dateutil'
@@ -32,6 +32,7 @@ prepare() {
     patch -p1 < ../fiximport-get_model.patch
     patch -p1 < ../fiximport-model_tools.patch
     patch -p1 < ../fiximport-import_module2.patch
+    patch -p1 < ../fixversion-requires.patch
 }
             
 package() {
