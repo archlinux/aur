@@ -1,0 +1,68 @@
+Only in SwampDragon-0.4.2.2.new: build
+diff -aur SwampDragon-0.4.2.2/swampdragon/serializers/object_map.py SwampDragon-0.4.2.2.new/swampdragon/serializers/object_map.py
+--- SwampDragon-0.4.2.2/swampdragon/serializers/object_map.py	2015-05-05 14:27:11.000000000 -0700
++++ SwampDragon-0.4.2.2.new/swampdragon/serializers/object_map.py	2016-03-10 00:46:02.347962131 -0800
+@@ -1,5 +1,18 @@
+-from django.db.models.fields.related import ReverseSingleRelatedObjectDescriptor, SingleRelatedObjectDescriptor, \
+-    ForeignRelatedObjectsDescriptor, ManyRelatedObjectsDescriptor, ReverseManyRelatedObjectsDescriptor
++try:
++    # bis 1.8.x
++    from django.db.models.fields.related import ReverseSingleRelatedObjectDescriptor
++    from django.db.models.fields.related import ManyRelatedObjectsDescriptor
++    from django.db.models.fields.related import ReverseManyRelatedObjectsDescriptor
++    from django.db.models.fields.related import ForeignRelatedObjectsDescriptor
++    from django.db.models.fields.related import SingleRelatedObjectDescriptor
++    pre19syntax = True
++except:
++    # ab 1.9.0
++    from django.db.models.fields.related import ForwardManyToOneDescriptor
++    from django.db.models.fields.related import ManyToManyDescriptor
++    from django.db.models.fields.related import ReverseManyToOneDescriptor
++    from django.db.models.fields.related import ReverseOneToOneDescriptor
++    pre19syntax = False
+ 
+ 
+ def _construct_graph(parent_type, child_type, via, is_collection, property_name):
+@@ -37,12 +50,18 @@
+         if _serializer_is_ignored(serializer, related_serializer, ignore_serializer_pairs):
+             continue
+ 
+-        field_type = getattr(serializer_instance.opts.model, field_name)
+-        is_fk = isinstance(field_type, ReverseSingleRelatedObjectDescriptor)
+-        is_o2o = isinstance(field_type, SingleRelatedObjectDescriptor)
+-        is_reverse_fk = isinstance(field_type, ForeignRelatedObjectsDescriptor)
+-        is_m2m = isinstance(field_type, ManyRelatedObjectsDescriptor)
+-        is_reverse_m2m = isinstance(field_type, ReverseManyRelatedObjectsDescriptor)
++        if pre19syntax:
++            is_fk = isinstance(field_type, ReverseSingleRelatedObjectDescriptor)
++            is_o2o = isinstance(field_type, SingleRelatedObjectDescriptor)
++            is_reverse_fk = isinstance(field_type, ForeignRelatedObjectsDescriptor)
++            is_m2m = isinstance(field_type, ManyRelatedObjectsDescriptor)
++            is_reverse_m2m = isinstance(field_type, ReverseManyRelatedObjectsDescriptor)
++        else:
++            is_fk = isinstance(field_type, ForwardManyToOneDescriptor)
++            is_o2o = isinstance(field_type, ReverseOneToOneDescriptor)
++            is_reverse_fk = isinstance(field_type, ReverseManyToOneDescriptor)
++            is_m2m = isinstance(field_type, ManyToManyDescriptor) and not field_type.reverse
++            is_reverse_m2m = isinstance(field_type, ManyToManyDescriptor) and field_type.reverse
+ 
+         if is_fk:
+             # Django 1.8:
+diff -aur SwampDragon-0.4.2.2/SwampDragon.egg-info/requires.txt SwampDragon-0.4.2.2.new/SwampDragon.egg-info/requires.txt
+--- SwampDragon-0.4.2.2/SwampDragon.egg-info/requires.txt	2016-03-10 00:47:50.446772425 -0800
++++ SwampDragon-0.4.2.2.new/SwampDragon.egg-info/requires.txt	2016-03-09 23:25:25.383596727 -0800
+@@ -3,4 +3,4 @@
+ sockjs-tornado >= 1.0.0
+ tornado-redis >= 2.4.18
+ redis >= 2.8
+-python-dateutil >= 2.2
+\ No newline at end of file
++python-dateutil >= 2.2
+diff -aur SwampDragon-0.4.2.2/SwampDragon.egg-info/top_level.txt SwampDragon-0.4.2.2.new/SwampDragon.egg-info/top_level.txt
+--- SwampDragon-0.4.2.2/SwampDragon.egg-info/top_level.txt	2015-05-13 13:05:03.000000000 -0700
++++ SwampDragon-0.4.2.2.new/SwampDragon.egg-info/top_level.txt	2016-03-09 23:25:25.383596727 -0800
+@@ -1,3 +1,3 @@
++deprecated_runtests
+ swampdragon
+ tests
+-deprecated_runtests
