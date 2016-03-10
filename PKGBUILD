@@ -20,12 +20,10 @@ sha256sums=('f3d2c8d2119cccf4d84d32ad2662300eecda62ffba7304505e563e192b5a10ef'
             'ea21b95da1a2f66d26849160f3257823254663144e6b3b506c35160b70c7b3bd')
 
 package() {
-  _instdir=$pkgdir/usr/share/webapps/$pkgname
-  mkdir -p ${_instdir} $pkgdir/etc/webapps/$pkgname $pkgdir/etc/httpd/conf/extra
+    cd "$srcdir"
+    install -Dm0644 "${pkgname}-${pkgver}.php" "$pkgdir/usr/share/webapps/$pkgname/index.php"
 
-  install -D -m644 $srcdir/${pkgname}-${pkgver}.php $_instdir/index.php
-
-  cp $pkgdir/etc/webapps/$pkgname/apache.example.conf $pkgdir/etc/httpd/conf/extra/httpd-${pkgname}.conf
-#  echo "Include conf/extra/httpd-${pkgname}.conf" >> $pkgdir/etc/httpd/conf/httpd.conf
-
+    # TODO: I don't really like this. What if someone is using nginx for example? Or doesn't care to
+    # have any configuration installed at all. Consider removing.
+    install -Dm0644 "httpd-${pkgname}.conf" "$pkgdir/etc/httpd/conf/extra/httpd-${pkgname}.conf"
 }
