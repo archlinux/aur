@@ -7,13 +7,13 @@
 
 pkgname=yabause-qt
 pkgver=0.9.14
-pkgrel=2
+pkgrel=3
 pkgdesc='A Sega Saturn emulator'
 arch=('i686' 'x86_64')
 url="http://yabause.org/"
 license=('GPL')
-depends=('freeglut' 'openal' 'qt4' 'sdl')
-makedepends=('cmake' 'glu')
+depends=('freeglut' 'openal' 'qt5-base' 'sdl')
+makedepends=('cmake' 'glu' 'libxmu')
 conflicts=('yabause-gtk')
 source=("http://downloads.sourceforge.net/yabause/yabause-${pkgver}.tar.gz"
         'rwx.patch')
