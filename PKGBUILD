@@ -3,37 +3,33 @@
 
 pkgname=transmission-remote-gui-gtk2
 _pkgname=transgui
-pkgver=5.0.1
-pkgrel=2
+pkgver=5.2.0
+pkgrel=1
 pkgdesc='Cross platform remote GUI for the Transmission daemon'
 arch=(i686 x86_64)
-url='http://code.google.com/p/transmisson-remote-gui/'
+url='https://github.com/leonsoft-kras/transmisson-remote-gui'
 license=(GPL2)
 depends=(gtk2 desktop-file-utils)
 makedepends=(lazarus unzip)
 provides=(transmission-remote-gui)
 conflicts=(transmission-remote-gui-qt4 transmission-remote-gui-svn transmission-remote-gui)
 install=transmission-remote-gui.install
-source=(http://transmisson-remote-gui.googlecode.com/files/${_pkgname}-${pkgver}-src.zip
-       ${_pkgname}.desktop
-       fix_cannot_execte_on_open.patch)
-md5sums=(471ed1f3f75a0ebcc9d3a0cb72f2a61c
-         cf55fd5a681d9b34a1f9c7d91b74d121
-         d2f40c9e7e7b86cdfa9c2e2135f18bd6)
+source=(https://github.com/leonsoft-kras/transmisson-remote-gui/archive/v${pkgver}.zip
+        ${_pkgname}.desktop)
+md5sums=(c38ef3c65bbd2c0fe0828b8673707b2a
+         c0504cb6d4e970892ac7be9206c787b5)
 _ws=gtk2
 
 build() {
   mkdir ${srcdir}/config
-  cd ${srcdir}/TransGUI
-  # moonman's fix
-  cp ${srcdir}/fix_cannot_execte_on_open.patch .
-  patch -p1 < fix_cannot_execte_on_open.patch
+  cd ${srcdir}/transmisson-remote-gui-${pkgver}
+
   lazbuild ${_pkgname}.lpi --lazarusdir=/usr/lib/lazarus --widgetset=${_ws} \
     --primary-config-path=${srcdir}/config
 }
 
 package() {
-  cd ${srcdir}/TransGUI
+  cd ${srcdir}/transmisson-remote-gui-${pkgver}
 
   install -D -m 755 units/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
 
