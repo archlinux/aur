@@ -3,7 +3,7 @@ Operation = Install
 Operation = Upgrade
 Operation = Remove
 Type = Package
-Target = linux linux-lts linux-zen linux-grsec linux-ck linux-aufs_friendly linux-apparmor linux-bfs linux-chromebook linux-eee-ck linux-fbcondecor linux-git linux-ice linux-libre linux-libre-lts linux-libre-grsec linux-libre-rt linux-libre-xen linux-lqx linux-lts34 linux-lts310 linux-lts312 linux-mainline linux-mptcp kernel-netbook linux-pax linux-pf linux-tresor linux-lts-tresor linux-vfio linux-vfio-lts
+Target = linux, linux-lts, linux-zen, linux-grsec, linux-ck, linux-aufs_friendly, linux-apparmor, linux-bfs, linux-chromebook, linux-eee-ck, linux-fbcondecor, linux-git, linux-ice, linux-libre, linux-libre-lts, linux-libre-grsec, linux-libre-rt, linux-libre-xen, linux-lqx, linux-lts34, linux-lts310, linux-lts312, linux-mainline, linux-mptcp, kernel-netbook, linux-pax, linux-pf, linux-tresor, linux-lts-tresor, linux-vfio, linux-vfio-lts
 
 [Action]
 Description = Updating GRUB Config
