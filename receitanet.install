@@ -14,8 +14,8 @@ post_upgrade() {
 }
 
 pre_remove() {
-	java -jar '/opt/share/receitanet/lib/util-instalador.jar' -limpar systemRoot br/gov/serpro/receitanet/suite
-	java -jar '/opt/share/receitanet/lib/util-instalador.jar' -limpar systemRoot br/gov/serpro/receitanet
+	java -jar '/usr/share/receitanet/lib/util-instalador.jar' -limpar systemRoot br/gov/serpro/receitanet/suite
+	java -jar '/usr/share/receitanet/lib/util-instalador.jar' -limpar systemRoot br/gov/serpro/receitanet
 }
 
 post_remove() {
