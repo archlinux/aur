@@ -102,6 +102,8 @@ package() {
   install -m755 -t "$pkgdir/usr/bin/" src/main/festival
   install -m755 -t "$pkgdir/usr/bin/" src/main/festival_client
   install -m755 -t "$pkgdir/usr/bin/" examples/{benchmark,dumpfeats,durmeanstd,latest,make_utts,powmeanstd,run-festival-script,saytime,scfg_parse_text,text2pos,text2wave}
+  install -m755 -t "$pkgdir/usr/bin/" lib/etc/Linux/audsp
+  install -m755 -t "$pkgdir/usr/bin/" lib/etc/email_filter
 
   #libraries
   install -m755 src/lib/libFestival.so.* "$pkgdir"/usr/lib/
@@ -113,6 +115,7 @@ package() {
 
   mkdir -p "$pkgdir"/usr/share/festival
   cp -aR lib/* "$pkgdir"/usr/share/festival
+  rm -rf "$pkgdir"/usr/share/festival/etc
   rm -fv $(find "$pkgdir"/usr/share/festival -name Makefile)
   rm -fv $(find "$pkgdir"/usr/bin -name Makefile)
 
