@@ -1,0 +1,14 @@
+pkgbase = android-platform-14
+	pkgdesc = Android SDK Platform, API-14
+	pkgver = 4.0.2_r04
+	pkgrel = 1
+	url = http://developer.android.com/sdk/index.html
+	arch = any
+	license = custom
+	depends = android-sdk
+	options = !strip
+	source = http://dl-ssl.google.com/android/repository/android-14_r04.zip
+	sha1sums = d4f1d8fbca25225b5f0e7a0adf0d39c3d6e60b3c
+
+pkgname = android-platform-14
+
