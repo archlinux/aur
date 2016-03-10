@@ -39,5 +39,5 @@ Target = linux-vfio-lts
 Description = Updating GRUB Config
 Depends = grub
 When = PostTransaction
-Exec = 'grub-mkconfig -o /boot/grub/grub.cfg'
+Exec = etc/pacman.d/hooks/grub.sh
 
