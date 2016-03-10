@@ -1,12 +1,12 @@
 pkgbase = jo
 	pkgdesc = JSON output from a shell
-	pkgver = 0.6
+	pkgver = 0.7
 	pkgrel = 1
 	url = https://github.com/jpmens/jo
 	arch = any
 	license = GPL2
-	source = https://github.com/jpmens/jo/releases/download/v0.6/jo-0.6.tar.gz
-	md5sums = 01eafffc4427ef2955afe0f0e30bece9
+	source = https://github.com/jpmens/jo/releases/download/v0.7/jo-0.7.tar.gz
+	md5sums = 4cfe59a03e8ce21105c93f1c74bdba09
 
 pkgname = jo
 
