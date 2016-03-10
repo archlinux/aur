@@ -1,161 +1,17 @@
-Index: docs/ItaniumMangleAbiTags.rst
+Index: include/clang/Basic/AttrDocs.td
 ===================================================================
---- /dev/null
-+++ docs/ItaniumMangleAbiTags.rst
-@@ -0,0 +1,90 @@
-+========
-+Abi Tags
-+========
-+
-+Introduction
-+============
-+
-+This text tries to describe gcc semantic for mangling "abi_tag" attributes
-+described in https://gcc.gnu.org/onlinedocs/gcc/C_002b_002b-Attributes.html
-+
-+There is no guarantee the following rules are correct, complete or make sense
-+in any way as they were determined empirically by experiments with gcc5.
-+
-+Declaration
-+===========
-+
-+Abi tags are declared in an abi_tag attribute and can be applied to a
-+function, variable, class or inline namespace declaration. The attribute takes
-+one or more strings (called tags); the order does not matter.
-+
-+See https://gcc.gnu.org/onlinedocs/gcc/C_002b_002b-Attributes.html for
-+details.
-+
-+Tags on an inline namespace are called "implicit tags", all other tags are
-+"explicit tags".
-+
-+Mangling
-+========
-+
-+All tags that are "active" on a <unqualified-name> are emitted after the
-+<unqualified-name>, before <template-args> or <discriminator>, and are part of
-+the same <substitution> the <unqualified-name> is.
-+
-+They are mangled as:
-+
-+    <abi-tags> ::= <abi-tag>*   # sort by name
-+    <abi-tag> ::= B <tag source-name>
-+
-+Example:
-+
-+    __attribute__((abi_tag("test")))
-+    void Func();
-+
-+    gets mangled as: _Z4FuncB4testv (prettified as `Func[abi:test]()`)
-+
-+Active tags
-+===========
-+
-+A namespace has never any active tags; for types (class / struct / union /
-+enum) the explicit tags are the active tags.
-+
-+For variables and functions the active tags are the explicit tags plus any
-+"required tags" which are not in the "available tags" set:
-+
-+    derived-tags := (required-tags - available-tags)
-+    active-tags := explicit-tags + derived-tags
-+
-+Required tags for a function
-+============================
-+
-+If a function is used as a local scope for another name, and is part of
-+another function as local scope, it doesn't have any required tags.
-+
-+If a function is used as a local scope for a guard variable name, it doesn't
-+have any required tags.
-+
-+Otherwise the function requires any implicit or explicit tag used in the name
-+for the return type.
-+
-+Required tags for a variable
-+============================
-+
-+A variable requires any implicit or explicit tag used in its type.
-+
-+Available tags
-+==============
-+
-+All tags used in the prefix and in the template arguments for a name are
-+available; for functions also all  tags from the <bare-function-type> (which
-+might include the return type for template functions) are available.
-+
-+For <local-name>s all active tags used in the local part (<function-
-+encoding>) are available, but not implicit tags which were not active!
-+
-+Implicit and explicit tags used in the <unqualified-name> for a function (as
-+in the type of a cast operator) are NOT available.
-+
-+Example: a cast operator to std::string (which is
-+std::__cxx11::basic_string<...>) will use 'cxx11' as active tag, as it is
-+required from the return type `std::string` but not available.
-Index: include/clang/Basic/Attr.td
-===================================================================
---- include/clang/Basic/Attr.td
-+++ include/clang/Basic/Attr.td
-@@ -358,6 +358,14 @@
- // Attributes begin here
- //
+--- include/clang/Basic/AttrDocs.td
++++ include/clang/Basic/AttrDocs.td
+@@ -2160,6 +2160,9 @@
+ }
  
-+def AbiTag : Attr {
-+  let Spellings = [GCC<"abi_tag">];
-+  let Args = [VariadicStringArgument<"Tags">];
-+  let Subjects = SubjectList<[Struct, Var, Function, Namespace], ErrorDiag,
-+                             "ExpectedStructClassVariableFunctionMethodOrInlineNamespace">;
-+  let Documentation = [Undocumented];
-+}
-+
- def AddressSpace : TypeAttr {
-   let Spellings = [GNU<"address_space">];
-   let Args = [IntArgument<"AddressSpace">];
-Index: include/clang/Basic/DiagnosticSemaKinds.td
-===================================================================
---- include/clang/Basic/DiagnosticSemaKinds.td
-+++ include/clang/Basic/DiagnosticSemaKinds.td
-@@ -2477,7 +2477,8 @@
-   "variables, functions and classes|Objective-C protocols|"
-   "functions and global variables|structs, unions, and typedefs|structs and typedefs|"
-   "interface or protocol declarations|kernel functions|non-K&R-style functions|"
--  "variables, enums, fields and typedefs|functions, methods, enums, and classes}1">,
-+  "variables, enums, fields and typedefs|functions, methods, enums, and classes|"
-+  "structs, classes, variables, functions, methods and inline namespaces}1">,
-   InGroup<IgnoredAttributes>;
- def err_attribute_wrong_decl_type : Error<warn_attribute_wrong_decl_type.Text>;
- def warn_type_attribute_wrong_type : Warning<
-@@ -4195,6 +4196,15 @@
- def err_redefinition_extern_inline : Error<
-   "redefinition of a 'extern inline' function %0 is not supported in "
-   "%select{C99 mode|C++}1">;
-+def err_attr_abi_tag_only_on_inline_namespace :
-+  Error<"abi_tag attribute only allowed on inline namespaces">;
-+def err_attr_abi_tag_only_on_named_namespace :
-+  Error<"abi_tag attribute only allowed on named namespaces">;
-+def err_abi_tag_on_redeclaration :
-+  Error<"cannot add abi_tag attribute in redeclaration">;
-+def err_new_abi_tag_on_redeclaration :
-+  Error<"abi_tag %0 missing in original declaration">;
-+
- 
- def note_deleted_dtor_no_operator_delete : Note<
-   "virtual destructor requires an unambiguous, accessible 'operator delete'">;
-Index: include/clang/Sema/AttributeList.h
-===================================================================
---- include/clang/Sema/AttributeList.h
-+++ include/clang/Sema/AttributeList.h
-@@ -895,7 +895,8 @@
-   ExpectedKernelFunction,
-   ExpectedFunctionWithProtoType,
-   ExpectedVariableEnumFieldOrTypedef,
--  ExpectedFunctionMethodEnumOrClass
-+  ExpectedFunctionMethodEnumOrClass,
-+  ExpectedStructClassVariableFunctionMethodOrInlineNamespace
- };
- 
- }  // end namespace clang
+ def AbiTagsDocs : Documentation {
++  // It it not function only attribute but creating special creating special
++  // category for this abi_tag attribute only seems overkill, eh.
++  let Category = DocCatFunction;
+   let Content = [{
+ The ``abi_tag`` attribute can be applied to a function, variable, class or
+ inline namespace declaration to modify the mangled name of the entity. It gives
 Index: lib/AST/ItaniumMangle.cpp
 ===================================================================
 --- lib/AST/ItaniumMangle.cpp
@@ -169,19 +25,19 @@ Index: lib/AST/ItaniumMangle.cpp
  
    /// The "structor" is the top-level declaration being mangled, if
    /// that's not a template specialization; otherwise it's the pattern
-@@ -263,6 +265,167 @@
+@@ -263,15 +265,176 @@
  
    } FunctionTypeDepth;
  
 +  // abi_tag is a gcc attribute, taking one or more strings called "tags".
 +  //
-+  // the goal is to annotage against which version of a library an object was
++  // The goal is to annotate against which version of a library an object was
 +  // build and to be able to provide backwards compatibility ("dual abi").
 +  //
-+  // for this the emitted mangled names have to be different, while you don't
++  // For this the emitted mangled names have to be different, while you don't
 +  // want the user to have to use different names in the source.
 +  //
-+  // the abi_tag can be present on Struct, Var and Function  declarations as
++  // The abi_tag can be present on Struct, Var and Function  declarations as
 +  // "explicit" tag, and on inline Namespace as "implicit" tag. Explicit tags
 +  // are always emitted after the unqualified name, and (implicit) tags on
 +  // namespace are not.
@@ -219,61 +75,65 @@ Index: lib/AST/ItaniumMangle.cpp
 +
 +  typedef SmallVector<StringRef, 4> AbiTagList;
 +
-+  // state to gather all implicit and explicit tags used in a mangled name.
-+  // must always have an instance of this while emitting any name to keep
++  // State to gather all implicit and explicit tags used in a mangled name.
++  // Must always have an instance of this while emitting any name to keep
 +  // track.
 +  //
-+  // TODO(abitags): how to handle substituted names? they should add the tags used in
++  // FIXME: how to handle substituted names? They should add the tags used in
 +  // the substitution to the list of available tags.
 +  class AbiTagState final {
-+  public:
-+    //! all abi tags used implicitly or explicitly
++    //! All abi tags used implicitly or explicitly
 +    std::set<StringRef> UsedAbiTags;
-+    //! all explicit abi tags (i.e. not from namespace)
++    //! All explicit abi tags (i.e. not from namespace)
 +    std::set<StringRef> EmittedAbiTags;
 +
-+    AbiTagState* &LinkHead;
-+    AbiTagState *Parent{nullptr};
++    AbiTagState *&LinkHead;
++    AbiTagState *Parent{ nullptr };
 +
-+    bool LinkActive{false};
++    bool LinkActive{ false };
 +
-+    explicit AbiTagState(AbiTagState* &linkHead)
-+      : LinkHead(linkHead) {
++  public:
++    explicit AbiTagState(AbiTagState *&linkHead) : LinkHead(linkHead) {
 +      Parent = LinkHead;
 +      LinkHead = this;
 +      LinkActive = true;
 +    }
 +
 +    // no copy, no move
-+    AbiTagState(AbiTagState const&) = delete;
-+    AbiTagState& operator=(AbiTagState const&) = delete;
++    AbiTagState(AbiTagState const &) = delete;
++    AbiTagState &operator=(AbiTagState const &) = delete;
 +
-+    ~AbiTagState() {
-+      pop();
-+    }
++    ~AbiTagState() { pop(); }
 +
 +    void pop() {
-+      if (!LinkActive) return;
++      if (!LinkActive)
++        return;
 +
-+      assert(LinkHead == this && "abi tag link head must point to us on destruction");
++      assert(LinkHead == this &&
++             "abi tag link head must point to us on destruction");
 +      LinkActive = false;
 +      if (Parent) {
 +        Parent->UsedAbiTags.insert(UsedAbiTags.begin(), UsedAbiTags.end());
-+        Parent->EmittedAbiTags.insert(EmittedAbiTags.begin(), EmittedAbiTags.end());
++        Parent->EmittedAbiTags.insert(EmittedAbiTags.begin(),
++                                      EmittedAbiTags.end());
 +      }
 +      LinkHead = Parent;
 +    }
 +
-+    void write(raw_ostream &Out, const NamedDecl *ND, const AbiTagList *AdditionalAbiTags) {
++    void write(raw_ostream &Out, const NamedDecl *ND,
++               const AbiTagList *AdditionalAbiTags) {
 +      ND = cast<NamedDecl>(ND->getCanonicalDecl());
 +
 +      if (dyn_cast<FunctionDecl>(ND) || dyn_cast<VarDecl>(ND)) {
-+        // assert(AdditionalAbiTags && "function and variables need a list of additional abi tags");
++        // assert(AdditionalAbiTags && "function and variables need a list of
++        // additional abi tags");
 +      } else {
-+        assert(!AdditionalAbiTags && "only function and variables need a list of additional abi tags");
-+        if (const auto* NS = dyn_cast<NamespaceDecl>(ND)) {
-+          if (const auto* AbiTag = NS->getAttr<AbiTagAttr>()) {
-+            for (const auto& Tag: AbiTag->tags()) {
++        assert(
++            !AdditionalAbiTags &&
++            "only function and variables need a list of additional abi tags");
++        if (const auto *NS = dyn_cast<NamespaceDecl>(ND)) {
++          if (const auto *AbiTag = NS->getAttr<AbiTagAttr>()) {
++            for (const auto &Tag : AbiTag->tags()) {
 +              UsedAbiTags.insert(Tag);
 +            }
 +          }
@@ -283,8 +143,8 @@ Index: lib/AST/ItaniumMangle.cpp
 +      }
 +
 +      AbiTagList TagList;
-+      if (const auto* AbiTag = ND->getAttr<AbiTagAttr>()) {
-+        for (const auto& Tag: AbiTag->tags()) {
++      if (const auto *AbiTag = ND->getAttr<AbiTagAttr>()) {
++        for (const auto &Tag : AbiTag->tags()) {
 +          UsedAbiTags.insert(Tag);
 +          // AbiTag->tags() is sorted and has no duplicates
 +          TagList.push_back(Tag);
@@ -292,7 +152,7 @@ Index: lib/AST/ItaniumMangle.cpp
 +      }
 +
 +      if (AdditionalAbiTags) {
-+        for (const auto& Tag: *AdditionalAbiTags) {
++        for (const auto &Tag : *AdditionalAbiTags) {
 +          UsedAbiTags.insert(Tag);
 +          if (std::find(TagList.begin(), TagList.end(), Tag) == TagList.end()) {
 +            // don't insert duplicates
@@ -306,53 +166,63 @@ Index: lib/AST/ItaniumMangle.cpp
 +      writeSortedUniqueAbiTags(Out, TagList);
 +    }
 +
-+  protected:
-+    template<typename TagList>
-+    void writeSortedUniqueAbiTags(raw_ostream &Out, TagList const& AbiTags) {
-+      for (const auto& Tag: AbiTags) {
++    const std::set<StringRef> &getUsedAbiTags() const { return UsedAbiTags; }
++    void setUsedAbiTags(const std::set<StringRef> &AbiTags) {
++      UsedAbiTags = AbiTags;
++    }
++
++    const std::set<StringRef> &getEmittedAbiTags() const {
++      return EmittedAbiTags;
++    }
++
++  private:
++    template <typename TagList>
++    void writeSortedUniqueAbiTags(raw_ostream &Out, TagList const &AbiTags) {
++      for (const auto &Tag : AbiTags) {
 +        EmittedAbiTags.insert(Tag);
 +        Out << "B";
 +        Out << Tag.size();
 +        Out << Tag;
 +      }
 +    }
-+  } *AbiTags = nullptr;
-+  AbiTagState AbiTagsRoot{AbiTags};
-+
-+  struct TemporaryDisableDerivedAbiTags {
-+    bool& StateRef;
-+    bool OldState;
-+
-+    TemporaryDisableDerivedAbiTags(bool& State, bool Disable = true)
-+    : StateRef(State) {
-+      OldState = StateRef;
-+      StateRef = Disable;
-+    }
-+    TemporaryDisableDerivedAbiTags(TemporaryDisableDerivedAbiTags const&) = delete;
-+    ~TemporaryDisableDerivedAbiTags() {
-+      StateRef = OldState;
-+    }
 +  };
++
++  AbiTagState *AbiTags = nullptr;
++  AbiTagState AbiTagsRoot{ AbiTags };
 +
    llvm::DenseMap<uintptr_t, unsigned> Substitutions;
  
    ASTContext &getASTContext() const { return Context.getASTContext(); }
-@@ -285,6 +448,10 @@
+ 
+ public:
+   CXXNameMangler(ItaniumMangleContextImpl &C, raw_ostream &Out_,
+-                 const NamedDecl *D = nullptr)
+-    : Context(C), Out(Out_), Structor(getStructor(D)), StructorType(0),
+-      SeqID(0) {
++                 const NamedDecl *D = nullptr, bool NullOut_ = false)
++    : Context(C), Out(Out_), NullOut(NullOut_),  Structor(getStructor(D)),
++      StructorType(0), SeqID(0) {
+     // These can't be mangled without a ctor type or dtor type.
+     assert(!D || (!isa<CXXDestructorDecl>(D) &&
+                   !isa<CXXConstructorDecl>(D)));
+@@ -285,6 +448,11 @@
      : Context(C), Out(Out_), Structor(getStructor(D)), StructorType(Type),
        SeqID(0) { }
  
 +  CXXNameMangler(CXXNameMangler &Outer, llvm::raw_null_ostream &Out_)
-+    : Context(Outer.Context), Out(Out_), NullOut(true), Structor(Outer.Structor), StructorType(Outer.StructorType),
-+      SeqID(Outer.SeqID) { }
++      : Context(Outer.Context), Out(Out_), NullOut(true),
++        Structor(Outer.Structor), StructorType(Outer.StructorType),
++        SeqID(Outer.SeqID) {}
 +
  #if MANGLE_CHECKER
    ~CXXNameMangler() {
      if (Out.str()[0] == '\01')
-@@ -298,18 +465,21 @@
+@@ -298,14 +466,18 @@
  #endif
    raw_ostream &getStream() { return Out; }
  
 +  void disableDerivedAbiTags() { DisableDerivedAbiTags = true; }
++  static bool shouldHaveAbiTags(ItaniumMangleContextImpl &C, const VarDecl *VD);
 +
    void mangle(const NamedDecl *D);
    void mangleCallOffset(int64_t NonVirtual, int64_t Virtual);
@@ -360,45 +230,47 @@ Index: lib/AST/ItaniumMangle.cpp
    void mangleNumber(int64_t Number);
    void mangleFloat(const llvm::APFloat &F);
 -  void mangleFunctionEncoding(const FunctionDecl *FD);
-+  void mangleFunctionEncoding(const FunctionDecl *FD, bool ExcludeUnqualifiedName = false);
++  void mangleFunctionEncoding(const FunctionDecl *FD,
++                              bool ExcludeUnqualifiedName = false);
    void mangleSeqID(unsigned SeqID);
 -  void mangleName(const NamedDecl *ND);
 +  void mangleName(const NamedDecl *ND, bool ExcludeUnqualifiedName = false);
    void mangleType(QualType T);
    void mangleNameOrStandardSubstitution(const NamedDecl *ND);
    
- private:
-+  void writeAbiTags(const NamedDecl *ND, const AbiTagList *AdditionalAbiTags = nullptr);
- 
-   bool mangleSubstitution(const NamedDecl *ND);
-   bool mangleSubstitution(QualType T);
-@@ -336,31 +506,49 @@
+@@ -336,31 +508,53 @@
                              DeclarationName name,
                              unsigned KnownArity = UnknownArity);
  
 -  void mangleName(const TemplateDecl *TD,
+-                  const TemplateArgument *TemplateArgs,
+-                  unsigned NumTemplateArgs);
+-  void mangleUnqualifiedName(const NamedDecl *ND) {
+-    mangleUnqualifiedName(ND, ND->getDeclName(), UnknownArity);
 +  void mangleFunctionEncodingBareType(const FunctionDecl *FD);
 +
 +  void mangleNameWithAbiTags(const NamedDecl *ND,
 +                             const AbiTagList *AdditionalAbiTags,
 +                             bool ExcludeUnqualifiedName);
 +  void mangleTemplateName(const TemplateDecl *TD,
-+                  const AbiTagList *AdditionalAbiTags,
-+                  bool ExcludeUnqualifiedName,
-                   const TemplateArgument *TemplateArgs,
-                   unsigned NumTemplateArgs);
--  void mangleUnqualifiedName(const NamedDecl *ND) {
--    mangleUnqualifiedName(ND, ND->getDeclName(), UnknownArity);
-+  void mangleUnqualifiedName(const NamedDecl *ND, const AbiTagList *AdditionalAbiTags) {
-+    mangleUnqualifiedName(ND, ND->getDeclName(), UnknownArity, AdditionalAbiTags);
++                          const AbiTagList *AdditionalAbiTags,
++                          bool ExcludeUnqualifiedName,
++                          const TemplateArgument *TemplateArgs,
++                          unsigned NumTemplateArgs);
++  void mangleUnqualifiedName(const NamedDecl *ND,
++                             const AbiTagList *AdditionalAbiTags) {
++    mangleUnqualifiedName(ND, ND->getDeclName(), UnknownArity,
++                          AdditionalAbiTags);
    }
    void mangleUnqualifiedName(const NamedDecl *ND, DeclarationName Name,
 -                             unsigned KnownArity);
 -  void mangleUnscopedName(const NamedDecl *ND);
 -  void mangleUnscopedTemplateName(const TemplateDecl *ND);
 -  void mangleUnscopedTemplateName(TemplateName);
-+                             unsigned KnownArity, const AbiTagList *AdditionalAbiTags);
-+  void mangleUnscopedName(const NamedDecl *ND, const AbiTagList *AdditionalAbiTags);
++                             unsigned KnownArity,
++                             const AbiTagList *AdditionalAbiTags);
++  void mangleUnscopedName(const NamedDecl *ND,
++                          const AbiTagList *AdditionalAbiTags);
 +  void mangleUnscopedTemplateName(const TemplateDecl *ND,
 +                                  const AbiTagList *AdditionalAbiTags);
 +  void mangleUnscopedTemplateName(TemplateName,
@@ -432,30 +304,46 @@ Index: lib/AST/ItaniumMangle.cpp
    void mangleTemplatePrefix(TemplateName Template);
    bool mangleUnresolvedTypeOrSimpleId(QualType DestroyedType,
                                        StringRef Prefix = "");
-@@ -411,6 +599,10 @@
+@@ -411,6 +605,15 @@
    void mangleTemplateParameter(unsigned Index);
  
    void mangleFunctionParam(const ParmVarDecl *parm);
 +
-+  std::set<StringRef> getTagsFromPrefixAndTemplateArguments(const NamedDecl *ND);
++  void writeAbiTags(const NamedDecl *ND,
++                    const AbiTagList *AdditionalAbiTags = nullptr);
++
++  std::set<StringRef>
++  getTagsFromPrefixAndTemplateArguments(const NamedDecl *ND);
++
 +  AbiTagList makeAdditionalTagsForFunction(const FunctionDecl *FD);
 +  AbiTagList makeAdditionalTagsForVariable(const VarDecl *VD);
  };
  
  }
-@@ -461,6 +653,11 @@
+@@ -454,13 +657,22 @@
+       while (!DC->isNamespace() && !DC->isTranslationUnit())
+         DC = getEffectiveParentContext(DC);
+     if (DC->isTranslationUnit() && D->getFormalLinkage() != InternalLinkage &&
++        !CXXNameMangler::shouldHaveAbiTags(*this, VD) &&
+         !isa<VarTemplateSpecializationDecl>(D))
+       return false;
+   }
+ 
    return true;
  }
  
-+void CXXNameMangler::writeAbiTags(const NamedDecl *ND, const AbiTagList *AdditionalAbiTags) {
++void CXXNameMangler::writeAbiTags(const NamedDecl *ND,
++                                  const AbiTagList *AdditionalAbiTags) {
 +  assert(AbiTags && "require AbiTagState");
-+  if (AbiTags) AbiTags->write(Out, ND, DisableDerivedAbiTags ? nullptr : AdditionalAbiTags);
++  if (AbiTags)
++    AbiTags->write(Out, ND,
++                   DisableDerivedAbiTags ? nullptr : AdditionalAbiTags);
 +}
 +
  void CXXNameMangler::mangle(const NamedDecl *D) {
    // <mangled-name> ::= _Z <encoding>
    //            ::= <data name>
-@@ -476,14 +673,28 @@
+@@ -476,14 +688,31 @@
      mangleName(cast<FieldDecl>(D));
  }
  
@@ -463,20 +351,23 @@ Index: lib/AST/ItaniumMangle.cpp
 -  // <encoding> ::= <function name> <bare-function-type>
 -  mangleName(FD);
 -
-+void CXXNameMangler::mangleFunctionEncoding(const FunctionDecl *FD, bool ExcludeUnqualifiedName) {
++void CXXNameMangler::mangleFunctionEncoding(const FunctionDecl *FD,
++                                            bool ExcludeUnqualifiedName) {
    // Don't mangle in the type if this isn't a decl we should typically mangle.
 -  if (!Context.shouldMangleDeclName(FD))
 +  if (!Context.shouldMangleDeclName(FD)) {
-+    mangleNameWithAbiTags(FD, /* AdditionalAbiTags */ nullptr, ExcludeUnqualifiedName);
++    mangleNameWithAbiTags(FD, /* AdditionalAbiTags */ nullptr,
++                          ExcludeUnqualifiedName);
      return;
 +  }
 +
 +  // <encoding> ::= <function name> <bare-function-type>
  
-+  if (ExcludeUnqualifiedName)
-+  {
-+    // running makeAdditionalTagsForFunction would loop, don't need it here anyway
-+    mangleNameWithAbiTags(FD, /* AdditionalAbiTags */ nullptr, ExcludeUnqualifiedName);
++  if (ExcludeUnqualifiedName) {
++    // running makeAdditionalTagsForFunction would loop, don't need it here
++    // anyway
++    mangleNameWithAbiTags(FD, /* AdditionalAbiTags */ nullptr,
++                          ExcludeUnqualifiedName);
 +  } else {
 +    AbiTagList AdditionalAbiTags = makeAdditionalTagsForFunction(FD);
 +    mangleNameWithAbiTags(FD, &AdditionalAbiTags, ExcludeUnqualifiedName);
@@ -489,17 +380,20 @@ Index: lib/AST/ItaniumMangle.cpp
    if (FD->hasAttr<EnableIfAttr>()) {
      FunctionTypeDepthState Saved = FunctionTypeDepth.push();
      Out << "Ua9enable_ifI";
-@@ -587,7 +798,21 @@
+@@ -587,7 +816,24 @@
    return nullptr;
  }
  
 -void CXXNameMangler::mangleName(const NamedDecl *ND) {
-+// must not be run from mangleLocalName for the <entity name> as it would loop otherwise.
-+void CXXNameMangler::mangleName(const NamedDecl *ND, bool ExcludeUnqualifiedName) {
++// Must not be run from mangleLocalName for the <entity name> as it would loop
++// otherwise.
++void CXXNameMangler::mangleName(const NamedDecl *ND,
++                                bool ExcludeUnqualifiedName) {
 +  if (!ExcludeUnqualifiedName) {
 +    if (const VarDecl *VD = dyn_cast<VarDecl>(ND)) {
 +      AbiTagList VariableAdditionalAbiTags = makeAdditionalTagsForVariable(VD);
-+      mangleNameWithAbiTags(VD, &VariableAdditionalAbiTags, ExcludeUnqualifiedName);
++      mangleNameWithAbiTags(VD, &VariableAdditionalAbiTags,
++                            ExcludeUnqualifiedName);
 +      return;
 +    }
 +  }
@@ -512,7 +406,7 @@ Index: lib/AST/ItaniumMangle.cpp
    //  <name> ::= <nested-name>
    //         ::= <unscoped-name>
    //         ::= <unscoped-template-name> <template-args>
-@@ -603,7 +828,7 @@
+@@ -603,7 +849,7 @@
      while (!DC->isNamespace() && !DC->isTranslationUnit())
        DC = getEffectiveParentContext(DC);
    else if (GetLocalClassDecl(ND)) {
@@ -521,7 +415,7 @@ Index: lib/AST/ItaniumMangle.cpp
      return;
    }
  
-@@ -613,76 +838,88 @@
+@@ -613,76 +859,93 @@
      // Check if we have a template.
      const TemplateArgumentList *TemplateArgs = nullptr;
      if (const TemplateDecl *TD = isTemplate(ND, TemplateArgs)) {
@@ -545,7 +439,8 @@ Index: lib/AST/ItaniumMangle.cpp
    }
  
 -  mangleNestedName(ND, DC);
-+  mangleNestedName(ND, DC, AdditionalAbiTags, /* NoFunction */ false, ExcludeUnqualifiedName);
++  mangleNestedName(ND, DC, AdditionalAbiTags, /* NoFunction */ false,
++                   ExcludeUnqualifiedName);
  }
 -void CXXNameMangler::mangleName(const TemplateDecl *TD,
 -                                const TemplateArgument *TemplateArgs,
@@ -565,12 +460,14 @@ Index: lib/AST/ItaniumMangle.cpp
      mangleTemplateArgs(TemplateArgs, NumTemplateArgs);
    } else {
 -    mangleNestedName(TD, TemplateArgs, NumTemplateArgs);
-+    mangleNestedName(TD, AdditionalAbiTags, ExcludeUnqualifiedName, TemplateArgs, NumTemplateArgs);
++    mangleNestedName(TD, AdditionalAbiTags, ExcludeUnqualifiedName,
++                     TemplateArgs, NumTemplateArgs);
    }
  }
  
 -void CXXNameMangler::mangleUnscopedName(const NamedDecl *ND) {
-+void CXXNameMangler::mangleUnscopedName(const NamedDecl *ND, const AbiTagList *AdditionalAbiTags) {
++void CXXNameMangler::mangleUnscopedName(const NamedDecl *ND,
++                                        const AbiTagList *AdditionalAbiTags) {
    //  <unscoped-name> ::= <unqualified-name>
    //                  ::= St <unqualified-name>   # ::std::
  
@@ -582,8 +479,8 @@ Index: lib/AST/ItaniumMangle.cpp
  }
  
 -void CXXNameMangler::mangleUnscopedTemplateName(const TemplateDecl *ND) {
-+void CXXNameMangler::mangleUnscopedTemplateName(const TemplateDecl *ND,
-+                                                const AbiTagList *AdditionalAbiTags) {
++void CXXNameMangler::mangleUnscopedTemplateName(
++    const TemplateDecl *ND, const AbiTagList *AdditionalAbiTags) {
    //     <unscoped-template-name> ::= <unscoped-name>
    //                              ::= <substitution>
    if (mangleSubstitution(ND))
@@ -592,7 +489,8 @@ Index: lib/AST/ItaniumMangle.cpp
    // <template-template-param> ::= <template-param>
 -  if (const auto *TTP = dyn_cast<TemplateTemplateParmDecl>(ND))
 +  if (const auto *TTP = dyn_cast<TemplateTemplateParmDecl>(ND)) {
-+    assert(!AdditionalAbiTags && "template template param cannot have abi tags"); // TODO(abitags)
++    assert(!AdditionalAbiTags &&
++           "template template param cannot have abi tags");
      mangleTemplateParameter(TTP->getIndex());
 -  else
 -    mangleUnscopedName(ND->getTemplatedDecl());
@@ -604,8 +502,8 @@ Index: lib/AST/ItaniumMangle.cpp
  }
  
 -void CXXNameMangler::mangleUnscopedTemplateName(TemplateName Template) {
-+void CXXNameMangler::mangleUnscopedTemplateName(TemplateName Template,
-+                                                const AbiTagList *AdditionalAbiTags) {
++void CXXNameMangler::mangleUnscopedTemplateName(
++    TemplateName Template, const AbiTagList *AdditionalAbiTags) {
    //     <unscoped-template-name> ::= <unscoped-name>
    //                              ::= <substitution>
    if (TemplateDecl *TD = Template.getAsTemplateDecl())
@@ -615,7 +513,8 @@ Index: lib/AST/ItaniumMangle.cpp
    if (mangleSubstitution(Template))
      return;
  
-+  assert(!AdditionalAbiTags && "dependent template name cannot have abi tags"); // TODO(abitags)
++  assert(!AdditionalAbiTags &&
++         "dependent template name cannot have abi tags");
 +
    DependentTemplateName *Dependent = Template.getAsDependentTemplateName();
    assert(Dependent && "Not a dependent template name?");
@@ -628,7 +527,7 @@ Index: lib/AST/ItaniumMangle.cpp
    addSubstitution(Template);
  }
  
-@@ -841,14 +1078,16 @@
+@@ -841,14 +1104,16 @@
      else
        Out << "sr";
      mangleSourceName(qualifier->getAsNamespace()->getIdentifier());
@@ -645,7 +544,7 @@ Index: lib/AST/ItaniumMangle.cpp
      break;
  
    case NestedNameSpecifier::TypeSpec:
-@@ -883,6 +1122,7 @@
+@@ -883,6 +1148,7 @@
        Out << "sr";
  
      mangleSourceName(qualifier->getAsIdentifier());
@@ -653,7 +552,7 @@ Index: lib/AST/ItaniumMangle.cpp
      break;
    }
  
-@@ -928,7 +1168,8 @@
+@@ -928,7 +1194,8 @@
  
  void CXXNameMangler::mangleUnqualifiedName(const NamedDecl *ND,
                                             DeclarationName Name,
@@ -663,7 +562,7 @@ Index: lib/AST/ItaniumMangle.cpp
    unsigned Arity = KnownArity;
    //  <unqualified-name> ::= <operator-name>
    //                     ::= <ctor-dtor-name>
-@@ -947,6 +1188,7 @@
+@@ -947,6 +1214,7 @@
          Out << 'L';
  
        mangleSourceName(II);
@@ -671,33 +570,35 @@ Index: lib/AST/ItaniumMangle.cpp
        break;
      }
  
-@@ -986,6 +1228,7 @@
+@@ -986,6 +1254,7 @@
        assert(FD->getIdentifier() && "Data member name isn't an identifier!");
  
        mangleSourceName(FD->getIdentifier());
-+      // TODO(abitags): not emitting abi tags: internal name anyway
++      // Not emitting abi tags: internal name anyway
        break;
      }
  
-@@ -1006,6 +1249,9 @@
+@@ -1006,6 +1275,10 @@
        assert(D->getDeclName().getAsIdentifierInfo() &&
               "Typedef was not named!");
        mangleSourceName(D->getDeclName().getAsIdentifierInfo());
 +      assert(!AdditionalAbiTags && "Type cannot have additional abi tags");
-+      // explicit abi tags are still possible; take from underlying type, not from typedef.
++      // explicit abi tags are still possible; take from underlying type, not
++      // from typedef.
 +      writeAbiTags(TD, nullptr);
        break;
      }
  
-@@ -1015,6 +1261,7 @@
+@@ -1015,6 +1288,8 @@
      // <lambda-sig> ::= <parameter-type>+   # Parameter types or 'v' for 'void'.
      if (const CXXRecordDecl *Record = dyn_cast<CXXRecordDecl>(TD)) {
        if (Record->isLambda() && Record->getLambdaManglingNumber()) {
-+        assert(!AdditionalAbiTags && "Lambda type cannot have additional abi tags");
++        assert(!AdditionalAbiTags &&
++               "Lambda type cannot have additional abi tags");
          mangleLambda(Record);
          break;
        }
-@@ -1026,6 +1273,7 @@
+@@ -1026,11 +1301,13 @@
        if (UnnamedMangle > 1)
          Out << UnnamedMangle - 2;
        Out << '_';
@@ -705,7 +606,15 @@ Index: lib/AST/ItaniumMangle.cpp
        break;
      }
  
-@@ -1058,6 +1306,7 @@
+-    // Get a unique id for the anonymous struct.
+-    unsigned AnonStructId = Context.getAnonymousStructId(TD);
++    // Get a unique id for the anonymous struct. If it is not a real output
++    // ID doesn't matter so use fake one.
++    unsigned AnonStructId = NullOut ? 0 : Context.getAnonymousStructId(TD);
+ 
+     // Mangle it as a source name in the form
+     // [n] $_<id>
+@@ -1058,6 +1335,7 @@
        // Otherwise, use the complete constructor name. This is relevant if a
        // class with a constructor is declared within a constructor.
        mangleCXXCtorType(Ctor_Complete);
@@ -713,7 +622,7 @@ Index: lib/AST/ItaniumMangle.cpp
      break;
  
    case DeclarationName::CXXDestructorName:
-@@ -1069,6 +1318,7 @@
+@@ -1069,6 +1347,7 @@
        // Otherwise, use the complete destructor name. This is relevant if a
        // class with a destructor is declared within a destructor.
        mangleCXXDtorType(Dtor_Complete);
@@ -721,7 +630,7 @@ Index: lib/AST/ItaniumMangle.cpp
      break;
  
    case DeclarationName::CXXOperatorName:
-@@ -1084,6 +1334,7 @@
+@@ -1084,6 +1363,7 @@
    case DeclarationName::CXXConversionFunctionName:
    case DeclarationName::CXXLiteralOperatorName:
      mangleOperatorName(Name, Arity);
@@ -729,7 +638,7 @@ Index: lib/AST/ItaniumMangle.cpp
      break;
  
    case DeclarationName::CXXUsingDirective:
-@@ -1100,7 +1351,9 @@
+@@ -1100,7 +1380,9 @@
  
  void CXXNameMangler::mangleNestedName(const NamedDecl *ND,
                                        const DeclContext *DC,
@@ -740,12 +649,13 @@ Index: lib/AST/ItaniumMangle.cpp
    // <nested-name> 
    //   ::= N [<CV-qualifiers>] [<ref-qualifier>] <prefix> <unqualified-name> E
    //   ::= N [<CV-qualifiers>] [<ref-qualifier>] <template-prefix> 
-@@ -1120,30 +1373,35 @@
+@@ -1120,30 +1402,36 @@
    // Check if we have a template.
    const TemplateArgumentList *TemplateArgs = nullptr;
    if (const TemplateDecl *TD = isTemplate(ND, TemplateArgs)) {
 -    mangleTemplatePrefix(TD, NoFunction);
-+    mangleTemplatePrefix(TD, AdditionalAbiTags, NoFunction, ExcludeUnqualifiedName);
++    mangleTemplatePrefix(TD, AdditionalAbiTags, NoFunction,
++                         ExcludeUnqualifiedName);
      mangleTemplateArgs(*TemplateArgs);
    }
    else {
@@ -780,7 +690,7 @@ Index: lib/AST/ItaniumMangle.cpp
    // <local-name> := Z <function encoding> E <entity name> [<discriminator>]
    //              := Z <function encoding> E s [<discriminator>]
    // <local-name> := Z <function encoding> E d [ <parameter number> ] 
-@@ -1155,15 +1413,25 @@
+@@ -1155,15 +1443,26 @@
  
    Out << 'Z';
  
@@ -800,19 +710,20 @@ Index: lib/AST/ItaniumMangle.cpp
 +    else
 +      mangleFunctionEncoding(cast<FunctionDecl>(DC));
 +
-+    // implicit abi tags (from namespace) are not available in the following
++    // Implicit ABI tags (from namespace) are not available in the following
 +    // entity; reset to actually emitted tags, which are available.
-+    localAbiTags.UsedAbiTags = localAbiTags.EmittedAbiTags;
++    localAbiTags.setUsedAbiTags(localAbiTags.getEmittedAbiTags());
 +  }
  
    Out << 'E';
  
-+  TemporaryDisableDerivedAbiTags TemporyDisable(DisableDerivedAbiTags, getStructor(dyn_cast<NamedDecl>(D)) != Structor);
++  // GCC 5.3.0 doesn't emit derived abi tags for but that seems to be a bug
++  // that is fixed in trunk.
 +
    if (RD) {
      // The parameter number is omitted for the last parameter, 0 for the 
      // second-to-last parameter, 1 for the third-to-last parameter, etc. The 
-@@ -1188,13 +1456,17 @@
+@@ -1188,13 +1487,17 @@
      // Mangle the name relative to the closest enclosing function.
      // equality ok because RD derived from ND above
      if (D == RD)  {
@@ -828,12 +739,12 @@ Index: lib/AST/ItaniumMangle.cpp
      } else {
        const NamedDecl *ND = cast<NamedDecl>(D);
 -      mangleNestedName(ND, getEffectiveDeclContext(ND), true /*NoFunction*/);
-+      mangleNestedName(ND, getEffectiveDeclContext(ND),
-+                       AdditionalAbiTags, true /*NoFunction*/, ExcludeUnqualifiedName);
++      mangleNestedName(ND, getEffectiveDeclContext(ND), AdditionalAbiTags,
++                       true /*NoFunction*/, ExcludeUnqualifiedName);
      }
    } else if (const BlockDecl *BD = dyn_cast<BlockDecl>(D)) {
      // Mangle a block in a default parameter; see above explanation for
-@@ -1211,30 +1483,35 @@
+@@ -1211,30 +1514,37 @@
        }
      }
  
@@ -872,17 +783,19 @@ Index: lib/AST/ItaniumMangle.cpp
  void CXXNameMangler::mangleBlockForPrefix(const BlockDecl *Block) {
    if (GetLocalClassDecl(Block)) {
 -    mangleLocalName(Block);
-+    mangleLocalName(Block, /* AdditionalAbiTags */ nullptr, /* ExcludeUnqualifiedName */ false);
++    mangleLocalName(Block, /* AdditionalAbiTags */ nullptr,
++                    /* ExcludeUnqualifiedName */ false);
      return;
    }
    const DeclContext *DC = getEffectiveDeclContext(Block);
    if (isLocalContainerContext(DC)) {
 -    mangleLocalName(Block);
-+    mangleLocalName(Block, /* AdditionalAbiTags */ nullptr, /* ExcludeUnqualifiedName */ false);
++    mangleLocalName(Block, /* AdditionalAbiTags */ nullptr,
++                    /* ExcludeUnqualifiedName */ false);
      return;
    }
    manglePrefix(getEffectiveDeclContext(Block));
-@@ -1245,10 +1522,11 @@
+@@ -1245,10 +1555,11 @@
    if (Decl *Context = Block->getBlockManglingContextDecl()) {
      if ((isa<VarDecl>(Context) || isa<FieldDecl>(Context)) &&
          Context->getDeclContext()->isRecord()) {
@@ -897,7 +810,7 @@ Index: lib/AST/ItaniumMangle.cpp
        }
      }
    }
-@@ -1281,7 +1559,7 @@
+@@ -1281,7 +1592,7 @@
        if (const IdentifierInfo *Name
              = cast<NamedDecl>(Context)->getIdentifier()) {
          mangleSourceName(Name);
@@ -906,7 +819,7 @@ Index: lib/AST/ItaniumMangle.cpp
        }
      }
    }
-@@ -1364,11 +1642,11 @@
+@@ -1364,11 +1675,11 @@
    // Check if we have a template.
    const TemplateArgumentList *TemplateArgs = nullptr;
    if (const TemplateDecl *TD = isTemplate(ND, TemplateArgs)) {
@@ -920,7 +833,7 @@ Index: lib/AST/ItaniumMangle.cpp
    }
  
    addSubstitution(ND);
-@@ -1379,27 +1657,30 @@
+@@ -1379,27 +1690,30 @@
    //                   ::= <template-param>
    //                   ::= <substitution>
    if (TemplateDecl *TD = Template.getAsTemplateDecl())
@@ -957,11 +870,7 @@ Index: lib/AST/ItaniumMangle.cpp
    // <template-prefix> ::= <prefix> <template unqualified-name>
    //                   ::= <template-param>
    //                   ::= <substitution>
-@@ -1411,10 +1692,12 @@
- 
-   // <template-template-param> ::= <template-param>
-   if (const auto *TTP = dyn_cast<TemplateTemplateParmDecl>(ND)) {
-+    // TODO(abitags): ???
+@@ -1414,7 +1728,8 @@
      mangleTemplateParameter(TTP->getIndex());
    } else {
      manglePrefix(getEffectiveDeclContext(ND), NoFunction);
@@ -971,7 +880,7 @@ Index: lib/AST/ItaniumMangle.cpp
    }
  
    addSubstitution(ND);
-@@ -1458,6 +1741,7 @@
+@@ -1458,6 +1773,7 @@
      // <name> ::= <nested-name>
      mangleUnresolvedPrefix(Dependent->getQualifier());
      mangleSourceName(Dependent->getIdentifier());
@@ -979,7 +888,7 @@ Index: lib/AST/ItaniumMangle.cpp
      break;
    }
  
-@@ -1550,16 +1834,19 @@
+@@ -1550,16 +1866,19 @@
  
    case Type::Typedef:
      mangleSourceName(cast<TypedefType>(Ty)->getDecl()->getIdentifier());
@@ -999,7 +908,7 @@ Index: lib/AST/ItaniumMangle.cpp
      break;
  
    case Type::TemplateSpecialization: {
-@@ -1578,6 +1865,7 @@
+@@ -1578,6 +1897,7 @@
          goto unresolvedType;
  
        mangleSourceName(TD->getIdentifier());
@@ -1007,7 +916,7 @@ Index: lib/AST/ItaniumMangle.cpp
        break;
      }
  
-@@ -1609,16 +1897,19 @@
+@@ -1609,16 +1929,19 @@
    case Type::InjectedClassName:
      mangleSourceName(
          cast<InjectedClassNameType>(Ty)->getDecl()->getIdentifier());
@@ -1027,7 +936,18 @@ Index: lib/AST/ItaniumMangle.cpp
      mangleTemplateArgs(DTST->getArgs(), DTST->getNumArgs());
      break;
    }
-@@ -2641,7 +2932,11 @@
+@@ -2081,7 +2404,9 @@
+   case BuiltinType::Id:
+ #include "clang/AST/BuiltinTypes.def"
+   case BuiltinType::Dependent:
+-    llvm_unreachable("mangling a placeholder type");
++    if (!NullOut)
++      llvm_unreachable("mangling a placeholder type");
++    break;
+   case BuiltinType::ObjCId:
+     Out << "11objc_object";
+     break;
+@@ -2641,7 +2966,11 @@
  
  void CXXNameMangler::mangleType(const TemplateSpecializationType *T) {
    if (TemplateDecl *TD = T->getTemplateName().getAsTemplateDecl()) {
@@ -1040,36 +960,56 @@ Index: lib/AST/ItaniumMangle.cpp
    } else {
      if (mangleSubstitution(QualType(T, 0)))
        return;
-@@ -2688,6 +2983,7 @@
-   Out << 'N';
-   manglePrefix(T->getQualifier());
-   mangleSourceName(T->getIdentifier());
-+  // writeAbiTags(T); // TODO(abitags)
-   Out << 'E';
- }
+@@ -2967,12 +3296,14 @@
+   case Expr::PseudoObjectExprClass:
+   case Expr::AtomicExprClass:
+   {
+-    // As bad as this diagnostic is, it's better than crashing.
+-    DiagnosticsEngine &Diags = Context.getDiags();
+-    unsigned DiagID = Diags.getCustomDiagID(DiagnosticsEngine::Error,
+-                                     "cannot yet mangle expression type %0");
+-    Diags.Report(E->getExprLoc(), DiagID)
+-      << E->getStmtClassName() << E->getSourceRange();
++    if (!NullOut) {
++      // As bad as this diagnostic is, it's better than crashing.
++      DiagnosticsEngine &Diags = Context.getDiags();
++      unsigned DiagID = Diags.getCustomDiagID(DiagnosticsEngine::Error,
++                                       "cannot yet mangle expression type %0");
++      Diags.Report(E->getExprLoc(), DiagID)
++        << E->getStmtClassName() << E->getSourceRange();
++    }
+     break;
+   }
  
-@@ -4115,6 +4411,76 @@
+@@ -4115,6 +4446,97 @@
    Substitutions[Ptr] = SeqID++;
  }
  
-+std::set<StringRef> CXXNameMangler::getTagsFromPrefixAndTemplateArguments(const NamedDecl *ND) {
++std::set<StringRef>
++CXXNameMangler::getTagsFromPrefixAndTemplateArguments(const NamedDecl *ND) {
 +  llvm::raw_null_ostream NullOutStream;
 +  CXXNameMangler TrackPrefixAndTemplateArguments(*this, NullOutStream);
 +
 +  if (const FunctionDecl *FD = dyn_cast<FunctionDecl>(ND)) {
-+    TrackPrefixAndTemplateArguments.mangleFunctionEncoding(FD, /* ExcludeUnqualifiedName */ true);
++    TrackPrefixAndTemplateArguments.mangleFunctionEncoding(
++        FD, /* ExcludeUnqualifiedName */ true);
 +  } else {
-+    TrackPrefixAndTemplateArguments.mangleName(ND, /* ExcludeUnqualifiedName */ true);
++    TrackPrefixAndTemplateArguments.mangleName(
++        ND, /* ExcludeUnqualifiedName */ true);
 +  }
 +
-+  return std::move(TrackPrefixAndTemplateArguments.AbiTagsRoot.UsedAbiTags);
++  return std::move(
++      TrackPrefixAndTemplateArguments.AbiTagsRoot.getUsedAbiTags());
 +}
 +
-+CXXNameMangler::AbiTagList CXXNameMangler::makeAdditionalTagsForFunction(const FunctionDecl *FD) {
++CXXNameMangler::AbiTagList
++CXXNameMangler::makeAdditionalTagsForFunction(const FunctionDecl *FD) {
 +  // when derived abi tags are disabled there is no need to make any list
-+  if (DisableDerivedAbiTags) return AbiTagList();
++  if (DisableDerivedAbiTags)
++    return AbiTagList();
 +
-+  std::set<StringRef> ImplicitlyAvailableTags = getTagsFromPrefixAndTemplateArguments(FD);
++  std::set<StringRef> ImplicitlyAvailableTags =
++      getTagsFromPrefixAndTemplateArguments(FD);
 +  std::set<StringRef> ReturnTypeTags;
 +
 +  {
@@ -1077,17 +1017,19 @@ Index: lib/AST/ItaniumMangle.cpp
 +    CXXNameMangler TrackReturnTypeTags(*this, NullOutStream);
 +    TrackReturnTypeTags.disableDerivedAbiTags();
 +
-+    const FunctionProtoType *Proto = cast<FunctionProtoType>(FD->getType()->getAs<FunctionType>());
++    const FunctionProtoType *Proto =
++        cast<FunctionProtoType>(FD->getType()->getAs<FunctionType>());
 +    TrackReturnTypeTags.FunctionTypeDepth.enterResultType();
 +    TrackReturnTypeTags.mangleType(Proto->getReturnType());
 +    TrackReturnTypeTags.FunctionTypeDepth.leaveResultType();
 +
-+    ReturnTypeTags = std::move(TrackReturnTypeTags.AbiTagsRoot.UsedAbiTags);
++    ReturnTypeTags =
++        std::move(TrackReturnTypeTags.AbiTagsRoot.getUsedAbiTags());
 +  }
 +
 +  AbiTagList AdditionalAbiTags;
 +
-+  for (const auto& Tag: ReturnTypeTags) {
++  for (const auto &Tag : ReturnTypeTags) {
 +    if (ImplicitlyAvailableTags.count(Tag) == 0)
 +      AdditionalAbiTags.push_back(Tag);
 +  }
@@ -1095,11 +1037,14 @@ Index: lib/AST/ItaniumMangle.cpp
 +  return AdditionalAbiTags;
 +}
 +
-+CXXNameMangler::AbiTagList CXXNameMangler::makeAdditionalTagsForVariable(const VarDecl *VD) {
++CXXNameMangler::AbiTagList
++CXXNameMangler::makeAdditionalTagsForVariable(const VarDecl *VD) {
 +  // when derived abi tags are disabled there is no need to make any list
-+  if (DisableDerivedAbiTags) return AbiTagList();
++  if (DisableDerivedAbiTags)
++    return AbiTagList();
 +
-+  std::set<StringRef> ImplicitlyAvailableTags = getTagsFromPrefixAndTemplateArguments(VD);
++  std::set<StringRef> ImplicitlyAvailableTags =
++      getTagsFromPrefixAndTemplateArguments(VD);
 +  std::set<StringRef> VariableTypeTags;
 +
 +  {
@@ -1109,12 +1054,13 @@ Index: lib/AST/ItaniumMangle.cpp
 +
 +    TrackVariableType.mangleType(VD->getType());
 +
-+    VariableTypeTags = std::move(TrackVariableType.AbiTagsRoot.UsedAbiTags);
++    VariableTypeTags =
++        std::move(TrackVariableType.AbiTagsRoot.getUsedAbiTags());
 +  }
 +
 +  AbiTagList AdditionalAbiTags;
 +
-+  for (const auto& Tag: VariableTypeTags) {
++  for (const auto &Tag : VariableTypeTags) {
 +    if (ImplicitlyAvailableTags.count(Tag) == 0)
 +      AdditionalAbiTags.push_back(Tag);
 +  }
@@ -1122,14 +1068,23 @@ Index: lib/AST/ItaniumMangle.cpp
 +  return AdditionalAbiTags;
 +}
 +
++bool CXXNameMangler::shouldHaveAbiTags(ItaniumMangleContextImpl &C,
++                                       const VarDecl *VD) {
++  llvm::raw_null_ostream NullOutStream;
++  CXXNameMangler TrackAbiTags(C, NullOutStream, nullptr, true);
++  TrackAbiTags.mangle(VD);
++  return TrackAbiTags.AbiTagsRoot.getUsedAbiTags().size();
++}
++
  //
  
  /// Mangles the name of the declaration D and emits that name to the given
-@@ -4216,6 +4582,7 @@
+@@ -4216,6 +4638,8 @@
    //  <special-name> ::= GV <object name>       # Guard variable for one-time
    //                                            # initialization
    CXXNameMangler Mangler(*this, Out);
-+  Mangler.disableDerivedAbiTags(); // GCC: doesn't emit derived abi tags for guard variables
++  // GCC 5.3.0 doesn't emit derived abi tags for but that seems to be a bug
++  // that is fixed in trunk.
    Mangler.getStream() << "_ZGV";
    Mangler.mangleName(D);
  }
@@ -1137,108 +1092,179 @@ Index: lib/Sema/SemaDeclAttr.cpp
 ===================================================================
 --- lib/Sema/SemaDeclAttr.cpp
 +++ lib/Sema/SemaDeclAttr.cpp
-@@ -4615,6 +4615,66 @@
-       Attr.getRange(), S.Context, Attr.getAttributeSpellingListIndex()));
+@@ -4667,10 +4667,6 @@
+   D->addAttr(::new (S.Context)
+              AbiTagAttr(Attr.getRange(), S.Context, Tags.data(), Tags.size(),
+                         Attr.getAttributeSpellingListIndex()));
+-
+-  // FIXME: remove this warning as soon as mangled part is ready.
+-  S.Diag(Attr.getRange().getBegin(), diag::warn_attribute_ignored)
+-        << Attr.getName();
  }
  
-+static void handleAbiTagAttr(Sema &S, Decl *D,
-+                             const AttributeList &Attr) {
-+  const auto *NS = dyn_cast<NamespaceDecl>(D);
-+
-+  if (!checkAttributeAtLeastNumArgs(S, Attr, NS ? 0 : 1))
-+    return;
-+
-+  SmallVector<StringRef, 4> Tags;
-+
-+  for (unsigned I = 0, E = Attr.getNumArgs(); I != E; ++I) {
-+    StringRef Tag;
-+
-+    if (!S.checkStringLiteralArgumentAttr(Attr, I, Tag))
-+      return;
-+
-+    Tags.push_back(Tag);
-+  }
-+
-+  if (NS && !NS->isInline()) {
-+    S.Diag(Attr.getLoc(), diag::err_attr_abi_tag_only_on_inline_namespace);
-+    return;
-+  }
-+  if (NS && NS->isAnonymousNamespace()) {
-+    S.Diag(Attr.getLoc(), diag::err_attr_abi_tag_only_on_named_namespace);
-+    return;
-+  }
-+  if (NS && Attr.getNumArgs() == 0) {
-+      Tags.push_back(NS->getName());
-+  }
-+
-+  // store tags sorted and without duplicates
-+  std::sort(Tags.begin(), Tags.end());
-+  Tags.erase(std::unique(Tags.begin(), Tags.end()), Tags.end());
-+
-+  const auto *CD = D->getCanonicalDecl();
-+  if (CD != D) {
-+    // redeclarations must not add new abi tags, or abi tags in the first place
-+    const auto *OldAbiTagAttr = D->getAttr<AbiTagAttr>();
-+    if (nullptr == OldAbiTagAttr) {
-+      S.Diag(Attr.getLoc(), diag::err_abi_tag_on_redeclaration);
-+      S.Diag(CD->getLocation(), diag::note_previous_definition);
-+      return;
-+    }
-+    for (const auto& NewTag: Tags) {
-+      if (std::find(OldAbiTagAttr->tags_begin(),
-+                    OldAbiTagAttr->tags_end(),
-+                    NewTag) == OldAbiTagAttr->tags_end()) {
-+        S.Diag(Attr.getLoc(), diag::err_new_abi_tag_on_redeclaration) << NewTag;
-+        S.Diag(OldAbiTagAttr->getLocation(), diag::note_previous_definition);
-+        return;
-+      }
-+    }
-+    return;
-+  }
-+
-+  D->addAttr(::new (S.Context) AbiTagAttr(Attr.getRange(), S.Context,
-+                                          Tags.data(), Tags.size(),
-+                                          Attr.getAttributeSpellingListIndex()));
-+}
-+
  static void handleARMInterruptAttr(Sema &S, Decl *D,
-                                    const AttributeList &Attr) {
-   // Check the attribute arguments.
-@@ -5637,6 +5697,9 @@
-   case AttributeList::AT_Thread:
-     handleDeclspecThreadAttr(S, D, Attr);
-     break;
-+  case AttributeList::AT_AbiTag:
-+    handleAbiTagAttr(S, D, Attr);
-+    break;
- 
-   // Thread safety attributes:
-   case AttributeList::AT_AssertExclusiveLock:
-Index: test/SemaCXX/attr-abi-tag-syntax.cpp
+Index: test/CodeGenCXX/mangle-abi-tag.cpp
 ===================================================================
 --- /dev/null
++++ test/CodeGenCXX/mangle-abi-tag.cpp
+@@ -0,0 +1,124 @@
++// RUN: %clang_cc1 %s -emit-llvm -triple %itanium_abi_triple -o - | FileCheck %s
++
++struct __attribute__((abi_tag("A", "B"))) A { };
++
++struct B: A { };
++
++template<class T>
++
++struct C {
++};
++
++struct D { A* p; };
++
++template<class T>
++struct __attribute__((abi_tag("C", "D"))) E {
++};
++
++struct __attribute__((abi_tag("A", "B"))) F { };
++
++A a1;
++// CHECK: @_Z2a1B1AB1B =
++
++__attribute__((abi_tag("C", "D")))
++A a2;
++// CHECK: @_Z2a2B1AB1BB1CB1D =
++
++B a3;
++// CHECK: @a3 =
++
++C<A> a4;
++// CHECK: @_Z2a4B1AB1B =
++
++D a5;
++// CHECK: @a5 =
++
++E<int> a6;
++// CHECK: @_Z2a6B1CB1D =
++
++E<A> a7;
++// CHECK: @_Z2a7B1AB1BB1CB1D =
++
++template<>
++struct E<float> {
++  static float a8;
++};
++float E<float>::a8;
++// CHECK: @_ZN1EB1CB1DIfE2a8E =
++
++template<>
++struct E<F> {
++  static bool a9;
++};
++bool E<F>::a9;
++// CHECK: @_ZN1EB1CB1DI1FB1AB1BE2a9E =
++
++struct __attribute__((abi_tag("A", "B"))) A10 {
++  virtual ~A10() {}
++} a10;
++// vtable
++// CHECK: @_ZTV3A10B1AB1B =
++// typeinfo
++// CHECK: @_ZTI3A10B1AB1B =
++
++// Local variables from f9.
++// f9()::L::foo[abi:C][abi:D]()::a[abi:A][abi:B]
++// CHECK-DAG: @_ZZZ2f9vEN1L3fooB1CB1DEvE1aB1AB1B =
++// guard variable for f9()::L::foo[abi:C][abi:D]()::a[abi:A][abi:B]
++// CHECK-DAG: @_ZGVZZ2f9vEN1L3fooB1CB1DEvE1aB1AB1B =
++
++__attribute__ ((abi_tag("C", "D")))
++void* f1() {
++  return 0;
++}
++// CHECK: define {{.*}} @_Z2f1B1CB1Dv(
++
++__attribute__ ((abi_tag("C", "D")))
++A* f2() {
++  return 0;
++}
++// CHECK: define {{.*}} @_Z2f2B1AB1BB1CB1Dv(
++
++B* f3() {
++  return 0;
++}
++// CHECK: define {{.*}} @_Z2f3v(
++
++C<A>* f4() {
++  return 0;
++}
++// CHECK: define {{.*}} @_Z2f4B1AB1Bv(
++
++D* f5() {
++  return 0;
++}
++// CHECK: define {{.*}} @_Z2f5v(
++
++E<char>* f6() {
++  return 0;
++}
++// CHECK: define {{.*}} @_Z2f6B1CB1Dv(
++
++E<A>* f7() {
++  return 0;
++}
++// CHECK: define {{.*}} @_Z2f7B1AB1BB1CB1Dv(
++
++void f8(E<A>*) {
++}
++// CHECK: define {{.*}} @_Z2f8P1EB1CB1DI1AB1AB1BE(
++
++inline void f9() {
++  struct L {
++    static E<int>* foo() {
++      static A10 a;
++      return 0;
++    }
++  };
++  L::foo();
++}
++void f9_test() {
++  f9();
++}
++// f9()::L::foo[abi:C][abi:D]()
++// CHECK: define linkonce_odr %struct.E* @_ZZ2f9vEN1L3fooB1CB1DEv(
+Index: test/SemaCXX/attr-abi-tag-syntax.cpp
+===================================================================
+--- test/SemaCXX/attr-abi-tag-syntax.cpp
 +++ test/SemaCXX/attr-abi-tag-syntax.cpp
-@@ -0,0 +1,20 @@
-+// RUN: %clang_cc1 -std=c++11 -fsyntax-only -verify %s
-+
-+namespace N1 {
-+
-+namespace __attribute__((__abi_tag__)) {} // \
-+  // expected-error {{abi_tag attribute only allowed on inline namespaces}}
-+
-+namespace N __attribute__((__abi_tag__)) {} // \
-+  // expected-error {{abi_tag attribute only allowed on inline namespaces}}
-+
-+}
-+
-+namespace N2 {
-+
-+inline namespace __attribute__((__abi_tag__)) {} // \
-+  // expected-error {{abi_tag attribute only allowed on named namespaces}}
-+
-+inline namespace N __attribute__((__abi_tag__)) {}
-+
-+}
+@@ -16,28 +16,18 @@
+ // expected-warning@-1 {{'abi_tag' attribute on anonymous namespace ignored}}
+ 
+ inline namespace N __attribute__((__abi_tag__)) {}
+-// FIXME: remove this warning as soon as attribute fully supported.
+-// expected-warning@-2 {{'__abi_tag__' attribute ignored}}
+ 
+ } // namespcace N2
+ 
+ __attribute__((abi_tag("B", "A"))) extern int a1;
+-// FIXME: remove this warning as soon as attribute fully supported.
+-// expected-warning@-2 {{'abi_tag' attribute ignored}}
+ 
+ __attribute__((abi_tag("A", "B"))) extern int a1;
+ // expected-note@-1 {{previous declaration is here}}
+-// FIXME: remove this warning as soon as attribute fully supported.
+-// expected-warning@-3 {{'abi_tag' attribute ignored}}
+ 
+ __attribute__((abi_tag("A", "C"))) extern int a1;
+ // expected-error@-1 {{'abi_tag' C missing in original declaration}}
+-// FIXME: remove this warning as soon as attribute fully supported.
+-// expected-warning@-3 {{'abi_tag' attribute ignored}}
+ 
+ extern int a2;
+ // expected-note@-1 {{previous declaration is here}}
+ __attribute__((abi_tag("A")))extern int a2;
+ // expected-error@-1 {{cannot add 'abi_tag' attribute in a redeclaration}}
+-// FIXME: remove this warning as soon as attribute fully supported.
+-// expected-warning@-3 {{'abi_tag' attribute ignored}}
 Index: test/SemaCXX/attr-abi-tag.cpp
 ===================================================================
 --- /dev/null

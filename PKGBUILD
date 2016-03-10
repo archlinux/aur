@@ -21,7 +21,7 @@ pkgname=(
 )
 _pkgname='llvm'
 
-pkgver=3.9.0svn_r262975
+pkgver=3.9.0svn_r263109
 pkgrel=1
 
 arch=('i686' 'x86_64')
@@ -47,7 +47,7 @@ source=(
     'clang-tools-extra::svn+http://llvm.org/svn/llvm-project/clang-tools-extra/trunk'
     'compiler-rt::svn+http://llvm.org/svn/llvm-project/compiler-rt/trunk'
     'llvm-Config-llvm-config.h'
-    'D12834-add-gcc-abi_tag-support.patch'
+    'D18035-add-gcc-abi_tag-support-mangler-part.patch'
 )
 
 sha256sums=(
@@ -56,7 +56,7 @@ sha256sums=(
     'SKIP'
     'SKIP'
     '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48'
-    '1327265148994e6afc9e61f6648d9e5942cdecfa777c53d3cf7881e9cacaa8eb'
+    '22b63faa49848339a95a0b152240c84dea3d012015e59efe649816022448fe9d'
 )
 
 #
@@ -133,7 +133,9 @@ prepare() {
 
     # https://llvm.org/bugs/show_bug.cgi?id=23529
     # http://reviews.llvm.org/D12834
-    patch -N -p0 -d tools/clang -i "${srcdir}/D12834-add-gcc-abi_tag-support.patch"
+    # http://reviews.llvm.org/D17567
+    # http://reviews.llvm.org/D18035
+    patch -N -p0 -d tools/clang -i "${srcdir}/D18035-add-gcc-abi_tag-support-mangler-part.patch"
 
     mkdir -p "${srcdir}/build"
 }
