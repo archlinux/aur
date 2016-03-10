@@ -5,7 +5,7 @@ pkgver=1.11.0
 pkgrel=1
 pkgdesc="Solver for nonlinear least squares problems"
 arch=('i686' 'x86_64')
-url="https://code.google.com/p/ceres-solver/"
+url="http://ceres-solver.org/"
 license=('LGPL')
 makedepends=('gcc-libs' 'cmake')
 depends=('google-glog>=0.3.4' 'eigen>=3.2.7'
@@ -25,7 +25,7 @@ build() {
   mkdir -p ./build
   cd ./build
   cmake ${_cmakeopts[@]} ../
-  make -j9
+  make
 }
 
 package ()
