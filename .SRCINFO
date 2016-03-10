@@ -10,7 +10,7 @@ pkgbase = grub-hook
 	license = GPL
 	depends = grub
 	source = grub.hook
-	sha512sums = e71d0b4f529095abc665cca450593831c2598810c607f848347e8cf843b447128d8af69c0bed8c1e26a7ee90f7154f072e85a023e4f7fe1378571a6b54de3691
+	sha512sums = 510bcb135556676748f38d30bd52e686fc6a3aad9d851a91b22ab9d64da308fdf0cdd53092499d3a8585bc595713ef5d36156fb280e7cfb3906c26bbdabf73f1
 
 pkgname = grub-hook
 
