@@ -1,7 +1,7 @@
 pkgbase = distrho-vst-git
 	pkgdesc = DISTRHO VST audio plugins ports
 	pkgver = r337.75bbdc9
-	pkgrel = 2
+	pkgrel = 3
 	url = http://distrho.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = distrho-vst-git
 	conflicts = distrho-vst
 	conflicts = distrho-vst-git
 	conflicts = distrho-plugins-vst-git
-	source = distrho-vst-git::git://github.com/DISTRHO/DISTRHO-Ports
+	source = distrho-vst::git://github.com/DISTRHO/DISTRHO-Ports
 	md5sums = SKIP
 
 pkgname = distrho-vst-git
