@@ -105,7 +105,7 @@ package() {
 
   #libraries
   install -m755 src/lib/libFestival.so.* "$pkgdir"/usr/lib/
-  ln -sf libFestival.so.2.1.0 "$pkgdir"/usr/lib/libFestival.so
+  ln -sf libFestival.so.2.4.0 "$pkgdir"/usr/lib/libFestival.so
 
   #headers
   install -dm755 "$pkgdir"/usr/include/festival
