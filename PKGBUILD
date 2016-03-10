@@ -1,7 +1,7 @@
 # Maintainer: mkzero <me [at] linux-web-development [dot] de>
 pkgname=yakyak-git
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop client for Google Hangouts"
 arch=('x86_64' 'i686')
 url="https://github.com/yakyak/yakyak"
@@ -27,7 +27,7 @@ sha256sums_x86_64=('3475f41619c0764ddaae968c8b600365ef25fe6a66b4b046050c3020bc68
 noextract=("electron-v${_electron_version}-linux-${_arch}.zip")
 
 pkgver() {
-  cd "$srcdir$pkgname"
+  cd "$srcdir/yakyak"
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
