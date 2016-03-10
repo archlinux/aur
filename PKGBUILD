@@ -1,8 +1,8 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=backblaze-b2-git
-pkgver=r167.245ce9d
-pkgrel=2
+pkgver=r257.a132718
+pkgrel=1
 pkgdesc="Backblaze B2 Command Line Client."
 arch=('any')
 url="https://www.backblaze.com/b2/cloud-storage.html"
@@ -20,14 +20,15 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
+build() {
     cd "$srcdir/B2_Command_Line_Tool"
-    sed -i 's:^#!/usr/bin/env python$:#!/usr/bin/env python2:' b2
+    python2 setup.py build
 }
 
 package() {
     cd "$srcdir/B2_Command_Line_Tool"
-    install -Dm0755 b2 "$pkgdir/usr/bin/b2"
+    python2 setup.py install --root="$pkgdir" --optimize=1
+
     install -Dm0644 contrib/bash_completion/b2 "$pkgdir/etc/bash_completion.d/b2"
     install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/backblaze-b2/LICENSE"
 }
