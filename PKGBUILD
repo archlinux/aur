@@ -1,7 +1,7 @@
 # Maintainer: longranger <longranger dot 406 at gmail dot com>
 pkgname="noauto_mounter"
 pkgver=0.5.r3.g05f3ce2
-pkgrel=1
+pkgrel=2
 pkgdesc="auto mount local and nfs noauto fstab mounts"
 arch=('x86_64')
 url="https://github.com/longranger/noauto_mounter"
@@ -20,6 +20,6 @@ pkgver() {
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	install -Dm755 noauto_mounter "${pkgdir}"/usr/bin/noauto_mounter
-	install -Dm755 noauto_mounter.timer "${pkgdir}"/usr/lib/systemd/system/noauto_mounter.timer
-	install -Dm755 noauto_mounter.service "${pkgdir}"/usr/lib/systemd/system/noauto_mounter.service
+	install -Dm644 noauto_mounter.timer "${pkgdir}"/usr/lib/systemd/system/noauto_mounter.timer
+	install -Dm644 noauto_mounter.service "${pkgdir}"/usr/lib/systemd/system/noauto_mounter.service
 }

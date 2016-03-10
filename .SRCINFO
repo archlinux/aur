@@ -1,7 +1,7 @@
 pkgbase = noauto_mounter
 	pkgdesc = auto mount local and nfs noauto fstab mounts
 	pkgver = 0.5.r3.g05f3ce2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/longranger/noauto_mounter
 	install = noauto_mounter.install
 	arch = x86_64
