@@ -23,17 +23,6 @@ package() {
 
   install -D -m644 $srcdir/${pkgname}-${pkgver}.php $_instdir/index.php
 
-  # It's similar to phpMyAdmin
-  cat >$pkgdir/etc/webapps/$pkgname/apache.example.conf <<EOF
-	Alias /${pkgname} "/usr/share/webapps/${pkgname}"
-	<Directory "/usr/share/webapps/${pkgname}">
-		AllowOverride All
-		Options FollowSymlinks
-		Require all granted
-		php_admin_value open_basedir "/srv/:/tmp/:/usr/share/webapps/:/etc/webapps:/usr/share/pear/"
-	</Directory>
-EOF
-
   cp $pkgdir/etc/webapps/$pkgname/apache.example.conf $pkgdir/etc/httpd/conf/extra/httpd-${pkgname}.conf
 #  echo "Include conf/extra/httpd-${pkgname}.conf" >> $pkgdir/etc/httpd/conf/httpd.conf
 

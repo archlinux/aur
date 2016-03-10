@@ -3,3 +3,4 @@
 !PKGBUILD
 !.SRCINFO
 !adminer.install
+!httpd-adminer.conf
