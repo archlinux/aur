@@ -1,7 +1,7 @@
 pkgbase = iraf-bin
 	pkgdesc = Image Reduction and Analysis Facility
 	pkgver = 2.16
-	pkgrel = 8
+	pkgrel = 9
 	url = http://iraf.noao.edu/
 	install = iraf-bin.install
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = iraf-bin
 	depends = ncurses
 	depends = tcl
 	depends = libtinfo
+	depends = ncurses5-compat-libs
 	provides = iraf
 	conflicts = iraf
 	noextract = iraf.lnux.x86.tar.gz
