@@ -5,7 +5,7 @@
 pkgbase=python-msmbuilder
 pkgname=('python2-msmbuilder' 'python-msmbuilder')
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A python package which implements a series of statistical models for high-dimensional time-series'
 url='http://msmbuilder.org/'
 license=("LGPL")
@@ -28,21 +28,25 @@ prepare() {
   cp -a msmbuilder-${pkgver} msmbuilder-py2-${pkgver}
 }
 
-build() {
-  msg2 "Building msmbuilder - Python2"
-  cd "${srcdir}/msmbuilder-py2-${pkgver}"
-  python2 setup.py build
-
-  msg2 "Building msmbuilder - Python3"
-  cd "${srcdir}/msmbuilder-${pkgver}"
-  python setup.py build
-}
+#build() {
+#  msg2 "Building msmbuilder - Python2"
+#  cd "${srcdir}/msmbuilder-py2-${pkgver}"
+#  python2 setup.py build
+#
+#  msg2 "Building msmbuilder - Python3"
+#  cd "${srcdir}/msmbuilder-${pkgver}"
+#  python setup.py build
+#}
 
 package_python-msmbuilder() {
   depends=('python-mdtraj' 'python-cvxopt' 'python-scikit-learn')
-  optdepends=()
-  msg2 "Installing msmbuilder python3"
+  optdepends=('python-mdtraj')
+
   cd "${srcdir}/msmbuilder-${pkgver}"
+  msg2 "Building msmbuilder - Python3"
+  python setup.py build
+
+  msg2 "Installing msmbuilder python3"
   python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
 
   # Remove left over directories from distribute utils.
@@ -51,9 +55,13 @@ package_python-msmbuilder() {
 
 package_python2-msmbuilder() {
   depends=('python2-mdtraj' 'python2-cvxopt' 'python2-scikit-learn')
-  optdepends=()
-  msg2 "Installing msmbuilder python2"
+  optdepends=('python2-mdtraj')
+
   cd "${srcdir}/msmbuilder-py2-${pkgver}"
+  msg2 "Building msmbuilder - Python2"
+  python2 setup.py build
+
+  msg2 "Installing msmbuilder python2"
   python2 setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
 
   # Remove left over directories from distribute utils.
