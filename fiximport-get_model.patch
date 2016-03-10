@@ -1,0 +1,13 @@
+diff -aur SwampDragon-0.4.2.2.o/swampdragon/model_tools.py SwampDragon-0.4.2.2/swampdragon/model_tools.py
+--- SwampDragon-0.4.2.2.o/swampdragon/model_tools.py	2015-04-09 06:07:04.000000000 -0700
++++ SwampDragon-0.4.2.2/swampdragon/model_tools.py	2016-03-09 17:19:28.698739267 -0800
+@@ -1,4 +1,8 @@
+-from django.db.models.loading import get_model as get_django_model
++try:
++    from django.apps import apps
++    get_django_model = apps.get_model
++except ImportError:
++    from django.db.models.loading import get_model as get_django_model
+ 
+ 
+ def get_property(obj, field):
