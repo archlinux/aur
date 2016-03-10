@@ -2,7 +2,7 @@ pkgname=ensime-server
 pkgver=0.9.10
 _scalaver=2.11
 _kind=SNAPSHOT
-pkgrel=8
+pkgrel=9
 pkgdesc="ENSIME server"
 url="https://github.com/ensime/ensime-server"
 arch=("x86_64" "i686")
@@ -35,8 +35,11 @@ Description=ENSIME user server for %i directory
 
 [Service]
 Type=simple
+EnvironmentFile=-%I/.ensime_cache/ports.conf
 ExecStartPre=/usr/bin/mkdir -p %I/.ensime_cache
 ExecStartPre=/usr/bin/rm -f %I/.ensime_cache/http %I/.ensime_cache/port
+ExecStartPre=/bin/sh -c "test -z \${HTTP_PORT} || (echo -n \${HTTP_PORT} > %I/.ensime_cache/http)"
+ExecStartPre=/bin/sh -c "test -z \${SWANK_PORT} || (echo -n \${SWANK_PORT} > %I/.ensime_cache/port)"
 ExecStart=/usr/bin/ensime-server %I
 
 [Install]
