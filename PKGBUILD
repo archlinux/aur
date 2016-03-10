@@ -16,7 +16,7 @@ package() {
   cp -r $srcdir/Trimmomatic/ $pkgdir/opt/
 
   mkdir -p "${pkgdir}/usr/bin/"
-  execmd=("exec java -jar $pkgdir/opt/Trimmomatic/trimmomatic-$pkgver.jar"' "$@"')
+  execmd=("exec java -jar /opt/Trimmomatic/trimmomatic-$pkgver.jar"' "$@"')
   echo $execmd > $pkgdir/opt/Trimmomatic/trimmomatic
   chmod 755 $pkgdir/opt/Trimmomatic/trimmomatic
   ln -s "/opt/Trimmomatic/trimmomatic" "${pkgdir}/usr/bin"
