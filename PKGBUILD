@@ -1,7 +1,7 @@
-# Maintainer: Javier Tia <javier.tia at gmail dot com>
+# Maintainer: Javier Tiá <javier.tia at gmail dot com>
 
 pkgname=lib32-libtins
-pkgver=3.3
+pkgver=3.4
 pkgrel=1
 pkgdesc="A high-level, multiplatform C++ network packet sniffing and crafting library (32-bit) version"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
   "0001-Set-where-find-and-install-32-bits-libraries.patch"
 )
 
-sha256sums=('a2d9b8a4dd0b2a4d0d1924d2b2b03ea76a7ceb241f91c6a7ed262a1a7d64d94d'
+sha256sums=('b94935b5fb40668ce5acb87d4f26970b47bfa25ba5f34aeaab70d8a422a9b192'
             'cda02bbdf6edf95b6adaef57b1c4122dae26932c8ff4465e00183b0403a85e34')
 
 prepare() {
