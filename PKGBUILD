@@ -4,12 +4,12 @@
 pkgname=gnupg1
 pkgname_=gnupg
 pkgver=1.4.20
-pkgrel=4
+pkgrel=5
 pkgdesc="GNU Privacy Guard - a PGP replacement tool"
 arch=('i686' 'x86_64' 'armv6h')
 license=('GPL3')
 depends=('zlib' 'bzip2' 'libldap>=2.4.18' 'libusb-compat' 'curl>=7.16.2' 'readline>=6.0.00')
-source=("ftp://ftp.gnupg.org/gcrypt/gnupg/$pkgname_-$pkgver.tar.bz2"{,.sig})
+source=("https://gnupg.org/ftp/gcrypt/gnupg/$pkgname_-$pkgver.tar.bz2"{,.sig})
 install=gnupg.install
 url="http://www.gnupg.org/"
 sha1sums=('cbc9d960e3d8488c32675019a79fbfbf8680387e'
