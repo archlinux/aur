@@ -1,14 +1,14 @@
 # Maintainer:  Michael Kogan <michael dot kogan at gmx dot net>
 
 pkgname=geomspace
-pkgver=0.13
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="A browser for geometric (i.e. Euclidean, Riemann, Minkowski) spaces"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/geomspace/"
 license=('GPL')
 depends=('libxpm' 'mesa' 'fltk')
-source=(http://downloads.sourceforge.net/project/$pkgname/$pkgver/GeomSpace-$pkgver-src.tar.gz \
+source=(http://downloads.sourceforge.net/project/$pkgname/0.13/GeomSpace-$pkgver-src.tar.gz \
 	http://downloads.sourceforge.net/project/$pkgname/Theory/UniformGeomSpace-2010.11.02-en.pdf \
 	http://sourceforge.net/projects/geomspace/files/Models/5Cubes.gmsp
 	http://sourceforge.net/projects/geomspace/files/Models/5Tetra.gmsp
@@ -16,7 +16,7 @@ source=(http://downloads.sourceforge.net/project/$pkgname/$pkgver/GeomSpace-$pkg
 	geomspace.png \
 	geomspace.desktop \
 	linux.mk)
-md5sums=('4c709d41e1347de9b12024cd9fafb36d'
+md5sums=('822c6732db58fd844413fa001ef690fb'
 			'14560f6f2cba975be1ba8d047b5acec5'
 			'205c728191134d15cd5053e37c30a454'
 			'520350c4ab6aa1385f75028d22e769be'
