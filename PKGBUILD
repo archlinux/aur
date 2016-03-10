@@ -1,10 +1,11 @@
-# Maintainer: ant32 <antreimer@gmail.com>
+# Maintainer: Martchus <martchus@gmx.net>
+# Contributor: ant32 <antreimer@gmail.com>
 # Contributor: Filip Brcic <brcha@gna.org>
 
 _qt_module=qtwebkit
 pkgname=mingw-w64-qt5-webkit
 pkgver=5.5.1
-pkgrel=1
+pkgrel=2
 arch=(any)
 pkgdesc="Classes for a WebKit2 based implementation and a new QML API (mingw-w64)"
 depends=('mingw-w64-qt5-base'
@@ -28,11 +29,6 @@ url="https://www.qt.io/"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 groups=(mingw-w64-qt mingw-w64-qt5)
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
-        qt5-angleproject-dont-use-winflex.patch
-        qt5-qtwebkit-angle-build-fix.patch
-        qt5-qtwebkit-commit-5742b32.patch
-        qt5-qtwebkit-commit-b8c97e702.patch
-        qt5-qtwebkit-disable-3d-graphics-support.patch
         qt5-qtwebkit-dont-depend-on-icu.patch
         qt5-qtwebkit-enable-pkgconfig-support-for-win32-target.patch
         qt5-qtwebkit-fix-compatibility-with-latest-angle.patch
@@ -42,24 +38,17 @@ source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/sub
         qtwebkit-dont-use-bundled-angle-libraries.patch
         qtwebkit-opensource-src-5.0.1-debuginfo.patch
         revert-qt4-unicode-removal.patch
-        webkit-commit-142567.patch
         webkit-commit-151422.patch)
 md5sums=('681328edb539b8fa3a273b38c90b3e31'
-         '445ada3000f0cc1279204b7a3efc3b4c'
-         'bc1943fb276964f710b4e9f5f08bb2ec'
-         '645c05f212fcd9f310798f7eacd9abd4'
-         '87458f3ebb61bf598e4fce10ab1ccbb7'
-         'b227653519ee0ea5d388bd58a21b6d66'
          'ce7d257e2b5b94fe3affd98f52d99d09'
          'ac574de962545d6a9e975b4db63c3e09'
-         '7038206bfef2aea594f10af3bda90220'
+         '4ad37c7d4dda8e77bb0a25c671f79adc'
          '228f28df2b10e417a325176f7878ebe1'
          '680fe925113911f6b6c36946d7294cbd'
          '18b21fd8e9517f48db7748544d2aa92f'
          'f452210683386f9c28f04d7dea0ecfc7'
          '6aba6468efafb64943887079e258b799'
          '4e374836f26853b4d82be0e87aa584a5'
-         'eaac9af299b50c2f03f4c322123e6e62'
          'c36fe581e0f3b61cef19415782b257ca')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -79,7 +68,7 @@ prepare() {
   # Make sure the bundled copy of the ANGLE library isn't used
   patch -p1 -b -i ../qtwebkit-dont-use-bundled-angle-libraries.patch
 
-  # qtwebkit depends on qtbase with ICU support.
+  # qt5-webkit depends on qt5-base with ICU support.
   # As ICU support in qtbase also introduces over 20MB of additional dependency
   # bloat (and the qtbase libraries itself are only 13MB) the decision was made
   # to build qtbase without ICU support.
@@ -103,8 +92,8 @@ prepare() {
   # in the Qt5WebKit.dll shared library)
   patch -p0 -b -i ../qt5-qtwebkit-workaround-build-breakage-after-svn-commit-136242.patch
 
-  # smaller debuginfo s/-g/-g1/ (debian uses -gstabs) to avoid 4gb size limit
-  patch -p1 -b -i ../qtwebkit-opensource-src-5.0.1-debuginfo.patch 
+  # Smaller debuginfo s/-g/-g1/ (debian uses -gstabs) to avoid 4gb size limit
+  patch -p1 -b -i ../qtwebkit-opensource-src-5.0.1-debuginfo.patch
 
   # Revert commit 151422 to fix a build failure which happens because we're not using ICU
   patch -p1 -R -b -i ../webkit-commit-151422.patch
@@ -127,8 +116,13 @@ build() {
     # from system ANGLE can be included
     export CPATH=/usr/$_arch/include:/usr/$_arch/include/GLSLANG
 
+    # SH_GLSL_OUTPUT has been renamed to SH_GLSL_COMPATIBILITY_OUTPUT
+    # in the latest ANGLE version so I just add a definition for backward compatibility
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-qmake-qt5 QMAKE_CXXFLAGS+=-Wno-c++0x-compat ../WebKit.pro
+    ${_arch}-qmake-qt5 \
+      QMAKE_CXXFLAGS+=-Wno-c++0x-compat \
+      DEFINES+=SH_GLSL_OUTPUT=SH_GLSL_COMPATIBILITY_OUTPUT \
+      ../WebKit.pro
     make
     popd
   done
