@@ -7,4 +7,3 @@ MimeType=application/x-bittorrent;x-scheme-handler/magnet;
 StartupNotify=false
 Categories=AudioVideo;Video;Network;Player;P2P;
 Type=Application
-Name[it_IT]=popcorntime-ce.desktop
