@@ -1,26 +1,26 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=python-pymediainfo
-pkgver=1.4.1
+pkgver=2.0
 pkgrel=1
 pkgdesc='A Python wrapper around the MediaInfo command line utility'
 arch=('any')
 url='https://github.com/paltman/pymediainfo'
 license=('MIT')
-depends=('mediainfo' 'python-beautifulsoup4' 'python-six')
-makedepends=('git' 'python-setuptools')
+depends=('mediainfo' 'python-setuptools')
+makedepends=('git')
 _commit='8c26bf0b93f684f6ec4649dc7f64c6b90f30fc22'
-source=("git+https://github.com/paltman/pymediainfo.git#commit=${_commit}")
-sha256sums=('SKIP')
+source=("pymediainfo-${pkgver}.tar.gz::https://github.com/sbraz/pymediainfo/archive/v${pkgver}.tar.gz")
+sha256sums=('7605850f67f88724aac3d995028dbfec30d760e6ea3c7dd554447f37a1b7de8c')
 
 build() {
-  cd pymediainfo
+  cd pymediainfo-${pkgver}
 
   python setup.py build
 }
 
 package(){
-  cd pymediainfo
+  cd pymediainfo-${pkgver}
 
   python setup.py install --root="${pkgdir}" --optimize='1'
 
