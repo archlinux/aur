@@ -2,7 +2,7 @@
 # Contributor: Edgar Kalkowski <eMail@edgar-kalkowski.de>
 pkgname=texlive-frakturx
 pkgver=20070103
-pkgrel=2
+pkgrel=3
 pkgdesc="Base package for typesetting Fraktur fonts with LaTeX. You will need at least one font package."
 arch=('any')
 url='http://www.gaehrken.de/fraktur'
