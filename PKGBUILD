@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=libratbag-git
-pkgver=r453.e514da8
+pkgver=0.3.r18.765ee6c
 pkgrel=1
 pkgdesc='A library to configure gaming mice'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd libratbag
 
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git describe | sed 's/^v//; s/-/.r/; s/-g/./'
 }
 
 build() {
