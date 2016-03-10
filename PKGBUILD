@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.0.6.r441.e1eb075
+pkgver=0.0.0.6.r551.4c133ab
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=('x86_64')
@@ -17,13 +17,17 @@ source=('git+https://github.com/RPCS3/rpcs3.git'
         'git+https://github.com/RPCS3/rsx_program_decompiler.git'
         'git+https://github.com/kobalicek/asmjit.git#commit=b0dad1a'
         'git+https://github.com/Microsoft/GSL.git'
+        'git+https://github.com/KhronosGroup/glslang.git'
+        'git+https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers.git'
         'rpcs3-system-libs.patch')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '0180072e040f7d523a8abfbe79c14d3a149c06f2225ccb385ba4ef354401b70f')
+            'SKIP'
+            'SKIP'
+            '892f75551e2335e1614451da43b48a927469f3b5242467f1dd3cdcc64b0bbbc6')
 
 pkgver() {
   cd rpcs3
@@ -40,11 +44,13 @@ prepare() {
 
   cd ../rpcs3
 
-  git submodule init asmjit GSL rsx_program_decompiler
+  git submodule init asmjit GSL rsx_program_decompiler Vulkan/{glslang,Vulkan-LoaderAndValidationLayers}
   git config submodule.asmjit.url ../asmjit
   git config submodule.GSL.url ../GSL
   git config submodule.rsx_program_decompiler.url ../rsx_program_decompiler
-  git submodule update asmjit GSL rsx_program_decompiler
+  git config submodule.glslang.url ../glslang
+  git config submodule.Vulkan-LoaderAndValidationLayers ../Vulkan-LoaderAndValidationLayers
+  git submodule update asmjit GSL rsx_program_decompiler Vulkan/{glslang,Vulkan-LoaderAndValidationLayers}
 
   patch -Np1 -i ../rpcs3-system-libs.patch
 

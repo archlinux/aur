@@ -1,7 +1,7 @@
 diff -rupN rpcs3.orig/rpcs3/CMakeLists.txt rpcs3/rpcs3/CMakeLists.txt
---- rpcs3.orig/rpcs3/CMakeLists.txt	2016-01-30 11:08:58.161216499 +0100
-+++ rpcs3/rpcs3/CMakeLists.txt	2016-01-30 11:11:35.080246499 +0100
-@@ -105,7 +105,7 @@ ${GLEW_INCLUDE_DIR}
+--- rpcs3.orig/rpcs3/CMakeLists.txt	2016-03-10 09:08:26.365542973 +0100
++++ rpcs3/rpcs3/CMakeLists.txt	2016-03-10 09:09:54.883975645 +0100
+@@ -105,14 +105,13 @@ ${GLEW_INCLUDE_DIR}
  ${wxWidgets_INCLUDE_DIRS}
  ${OPENAL_INCLUDE_DIR}
  ${LLVM_INCLUDE_DIRS}
@@ -10,9 +10,16 @@ diff -rupN rpcs3.orig/rpcs3/CMakeLists.txt rpcs3/rpcs3/CMakeLists.txt
  "${RPCS3_SRC_DIR}"
  "${RPCS3_SRC_DIR}/Loader"
  "${RPCS3_SRC_DIR}/Crypto"
-@@ -142,10 +142,6 @@ endif()
- 
- link_directories("${RPCS3_SRC_DIR}/../asmjit/" "${RPCS3_SRC_DIR}/../minidx12/")
+ "${RPCS3_SRC_DIR}/.."
+ "${RPCS3_SRC_DIR}/../asmjit/src/asmjit"
+ "${RPCS3_SRC_DIR}/../glm"
+-"${RPCS3_SRC_DIR}/../libpng"
+ "${RPCS3_SRC_DIR}/../GSL/include"
+ "${RPCS3_SRC_DIR}/../rsx_program_decompiler/rsx_decompiler"
+ "${RPCS3_SRC_DIR}/../rsx_program_decompiler/shader_code"
+@@ -148,10 +147,6 @@ link_directories(
+ "${RPCS3_SRC_DIR}/../minidx12/"
+ )
  
 -if(MSVC OR NOT WIN32)
 -	link_directories("${RPCS3_SRC_DIR}/../ffmpeg/${PLATFORM_ARCH}/lib")
@@ -21,16 +28,27 @@ diff -rupN rpcs3.orig/rpcs3/CMakeLists.txt rpcs3/rpcs3/CMakeLists.txt
  get_property(dirs DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY INCLUDE_DIRECTORIES)
  foreach(dir ${dirs})
    message(STATUS "dir='${dir}'")
-@@ -189,10 +185,10 @@ if(WIN32) # I'm not sure we need all of
+@@ -195,10 +190,10 @@ if(WIN32) # I'm not sure we need all of
  else()
  	if(LLVM_FOUND)
- 		target_link_libraries(rpcs3  asmjit.a  ${wxWidgets_LIBRARIES} ${OPENAL_LIBRARY} ${GLEW_LIBRARY} ${OPENGL_LIBRARIES})
--		target_link_libraries(rpcs3  libavformat.a libavcodec.a libavutil.a libswresample.a libswscale.a ${ZLIB_LIBRARIES} ${LLVM_LIBS} ${ADDITIONAL_LIBS})
-+		target_link_libraries(rpcs3  libavformat.so libavcodec.so libavutil.so libswresample.so libswscale.so ${ZLIB_LIBRARIES} ${LLVM_LIBS} ${ADDITIONAL_LIBS})
+ 		target_link_libraries(rpcs3  asmjit.a ${wxWidgets_LIBRARIES} ${OPENAL_LIBRARY} ${GLEW_LIBRARY} ${OPENGL_LIBRARIES})
+-		target_link_libraries(rpcs3  libavformat.a libavcodec.a libavutil.a libswresample.a libswscale.a png16_static ${ZLIB_LIBRARIES} ${LLVM_LIBS} ${ADDITIONAL_LIBS} ${vulkan} ${glslang})
++		target_link_libraries(rpcs3  libavformat.so libavcodec.so libavutil.so libswresample.so libswscale.so libpng16.so ${ZLIB_LIBRARIES} ${LLVM_LIBS} ${ADDITIONAL_LIBS} ${vulkan} ${glslang})
  	else()
- 		target_link_libraries(rpcs3  asmjit.a  ${wxWidgets_LIBRARIES} ${OPENAL_LIBRARY} ${GLEW_LIBRARY} ${OPENGL_LIBRARIES})
--		target_link_libraries(rpcs3  libavformat.a libavcodec.a libavutil.a libswresample.a libswscale.a ${ZLIB_LIBRARIES} ${ADDITIONAL_LIBS})
-+		target_link_libraries(rpcs3  libavformat.so libavcodec.so libavutil.so libswresample.so libswscale.so ${ZLIB_LIBRARIES} ${ADDITIONAL_LIBS})
+ 		target_link_libraries(rpcs3  asmjit.a ${wxWidgets_LIBRARIES} ${OPENAL_LIBRARY} ${GLEW_LIBRARY} ${OPENGL_LIBRARIES})
+-		target_link_libraries(rpcs3  libavformat.a libavcodec.a libavutil.a libswresample.a libswscale.a png16_static ${ZLIB_LIBRARIES} ${ADDITIONAL_LIBS} ${vulkan} ${glslang})
++		target_link_libraries(rpcs3  libavformat.so libavcodec.so libavutil.so libswresample.so libswscale.so libpng16.so ${ZLIB_LIBRARIES} ${ADDITIONAL_LIBS} ${vulkan} ${glslang})
      endif()
  endif()
  
+diff -rupN rpcs3.orig/CMakeLists.txt rpcs3/CMakeLists.txt
+--- rpcs3.orig/CMakeLists.txt	2016-03-10 09:12:46.227711381 +0100
++++ rpcs3/CMakeLists.txt	2016-03-10 09:12:55.870883134 +0100
+@@ -16,7 +16,6 @@ set(PNG_SHARED OFF CACHE BOOL "Build sha
+ set(PNG_TESTS  OFF CACHE BOOL "Build tests." FORCE)
+ 
+ add_subdirectory( asmjit )
+-add_subdirectory( libpng )
+ # TODO: do real installation, including copying directory structure
+ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE "${PROJECT_BINARY_DIR}/bin")
+ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG "${PROJECT_BINARY_DIR}/bin")
