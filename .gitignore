@@ -1,4 +1,4 @@
-phpstorm*
-PhpStorm*
+*.tar.gz
+*.xz
 src/
 pkg/

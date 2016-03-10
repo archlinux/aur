@@ -7,7 +7,7 @@
 
 pkgname=phpstorm-eap
 _pkgname=PhpStorm # Directory name in the tar file
-pkgbuild=145.184.39
+pkgbuild=145.256.26
 pkgver=${pkgbuild}
 pkgrel=1
 pkgdesc="Lightweight and Smart PHP IDE. 30-day free trial."
@@ -16,44 +16,20 @@ options=(!strip)
 url="http://www.jetbrains.com/phpstorm/"
 license=('custom')
 depends=('java-environment>=8')
-source=(http://download.jetbrains.com/webide/PhpStorm-EAP-145.184.39.tar.gz)
-sha256sums=('f4d9aadef92818b82ee1071513f9030782a2d6a1d3121d0c8dc0e08dda473ceb')
+source=(http://download.jetbrains.com/webide/PhpStorm-EAP-145.256.26.tar.gz
+	phpstorm-eap.desktop)
+sha256sums=('f51648a0ea7c55f1d602e02a14442d7db171682a81c15b5caf197a469b92adc1'
+	'479e6ac16424df02ce1610da9eec8cc73a84cac7912e60661d4092954142933e')
 
 package() {
-  cd ${srcdir}
-  mkdir -p ${pkgdir}/opt/${pkgname} || return 1
-  cp -R ${srcdir}/${_pkgname}-${pkgbuild}/* ${pkgdir}/opt/${pkgname} || return 1
-  if [[ $CARCH = 'i686' ]]; then
-     rm -f ${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux64.so
-     rm -f ${pkgdir}/opt/${pkgname}/bin/fsnotifier64
-  fi
-  if [[ $CARCH = 'x86_64' ]]; then
-     rm -f ${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux.so
-     rm -f ${pkgdir}/opt/${pkgname}/bin/fsnotifier
-  fi
-
-(
-cat <<EOF
-[Desktop Entry]
-Version=${pkgver}
-Type=Application
-Name=PhpStorm-EAP
-Exec="/opt/${pkgname}/bin/phpstorm.sh" %f
-Icon=phpstorm-eap
-Comment=Lightweight and Smart PHP IDE 30-day free trial
-GenericName=Lightweight and Smart PHP IDE
-Categories=Development;IDE;
-Terminal=false
-StartupNotify=true
-StartupWMClass=jetbrains-phpstorm
-EOF
-) > ${startdir}/${pkgname}.desktop
-
-  mkdir -p ${pkgdir}/usr/bin/ || return 1
-  mkdir -p ${pkgdir}/usr/share/applications/ || return 1
-  mkdir -p ${pkgdir}/usr/share/pixmaps/ || return 1
-  mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}/ || return 1
-  install -m 644 ${startdir}/phpstorm-eap.desktop ${pkgdir}/usr/share/applications/
-  install -m 644 ${pkgdir}/opt/${pkgname}/bin/webide.png ${pkgdir}/usr/share/pixmaps/phpstorm-eap.png
+  install -d -m 755 ${pkgdir}/opt/
+  install -d -m 755 ${pkgdir}/usr/bin/
+  install -d -m 755 ${pkgdir}/usr/share/applications/
+  install -d -m 755 ${pkgdir}/usr/share/pixmaps/
+  
+  cp -R ${srcdir}/${_pkgname}-${pkgbuild} ${pkgdir}/opt/${pkgname}
+  
   ln -s /opt/$pkgname/bin/phpstorm.sh "$pkgdir/usr/bin/phpstorm-eap"
+  install -D -m 644 ${srcdir}/${pkgname}.desktop ${pkgdir}/usr/share/applications/
+  install -D -m 644 ${pkgdir}/opt/${pkgname}/bin/webide.png ${pkgdir}/usr/share/pixmaps/phpstorm-eap.png
 }
