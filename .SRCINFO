@@ -1,0 +1,16 @@
+pkgbase = libfap
+	pkgdesc = Finnish APRS Parser, re-implemented as a C library
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://pakettiradio.net/libfap/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv7l
+	arch = aarch64
+	license = GPL
+	source = http://www.pakettiradio.net/downloads/libfap/1.5/libfap-1.5.tar.gz
+	md5sums = 5cd58386eb0a7b2b65f25ae13783e404
+
+pkgname = libfap
+
