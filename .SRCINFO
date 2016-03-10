@@ -1,8 +1,9 @@
 pkgbase = wickr-bin
 	pkgdesc = Wickr messenger
 	pkgver = 2.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wickr.com
+	install = wickr-bin.install
 	arch = x86_64
 	license = Proprietary
 	depends = libutil-linux
@@ -49,7 +50,9 @@ pkgbase = wickr-bin
 	depends = libx264
 	options = !strip
 	source = https://dls.wickr.com/Downloads/wickr-me_2.6.0_amd64.deb
+	source = wickr-bin.install
 	md5sums = 5bc94a9634f25630d5171d056e0fa137
+	md5sums = ab8afb848c5382aba9a9b6c828e56c1b
 
 pkgname = wickr-bin
 
