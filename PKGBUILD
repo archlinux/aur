@@ -1,7 +1,7 @@
 # Maintainer: Your Name <ryexander@gmail.com>
 pkgname=airtime
 pkgver=2.5.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Open broadcast software for scheduling and station management."
 arch=('i686' 'x86_64')
 url="http://www.sourcefabric.org/en/airtime"
@@ -71,63 +71,70 @@ prepare() {
 # }
 
 package() {
-	cd "$srcdir/"
+  	cd "$srcdir/"
 
-  web_user=http
+    web_user=http
 
-  # web frontend
-  mkdir -p "${pkgdir}/usr/share/airtime"
-  cp -r "${_pkgsrc_name}/airtime_mvc" "${pkgdir}/usr/share/airtime"
-  cp -r "${_pkgsrc_name}/python_apps" "${pkgdir}/usr/share/airtime"
-  cp -r "${_pkgsrc_name}/utils" "${pkgdir}/usr/share/airtime"
-  chmod -R 755 "${pkgdir}/usr/share/airtime"
+    # web frontend
+    mkdir -p "${pkgdir}/usr/share/airtime"
+    cp -r "${_pkgsrc_name}/airtime_mvc" "${pkgdir}/usr/share/airtime"
+    cp -r "${_pkgsrc_name}/python_apps" "${pkgdir}/usr/share/airtime"
+    cp -r "${_pkgsrc_name}/utils" "${pkgdir}/usr/share/airtime"
+    chmod -R 755 "${pkgdir}/usr/share/airtime"
 
-  mkdir -p "${pkgdir}/usr/share/doc/airtime/examples/"
-  cp -r "${_pkgsrc_name}/widgets" "${pkgdir}/usr/share/doc/airtime/examples/"
-  chmod -R 755 "${pkgdir}/usr/share/doc/airtime/examples/"
-  install -D -m644 "${_pkgsrc_name}/CREDITS" "${pkgdir}/usr/share/doc/airtime/CREDITS"
-  install -D -m644 "${_pkgsrc_name}/README" "${pkgdir}/usr/share/doc/airtime/README"
-  install -D -m644 "${_pkgsrc_name}/changelog" "${pkgdir}/usr/share/doc/airtime/changelog"
+    mkdir -p "${pkgdir}/usr/share/doc/airtime/examples/"
+    cp -r "${_pkgsrc_name}/widgets" "${pkgdir}/usr/share/doc/airtime/examples/"
+    chmod -R 755 "${pkgdir}/usr/share/doc/airtime/examples/"
+    install -D -m644 "${_pkgsrc_name}/CREDITS" "${pkgdir}/usr/share/doc/airtime/CREDITS"
+    install -D -m644 "${_pkgsrc_name}/README" "${pkgdir}/usr/share/doc/airtime/README"
+    install -D -m644 "${_pkgsrc_name}/changelog" "${pkgdir}/usr/share/doc/airtime/changelog"
 
-  install -D -m644 "${_pkgsrc_name}/LICENSE" "${pkgdir}/usr/share/doc/airtime/LICENSE"
-  install -D -m644 "${_pkgsrc_name}/LICENSE_3RD_PARTY" "${pkgdir}/usr/share/licenses/airtime/LICENSE_3RD_PARTY"
+    install -D -m644 "${_pkgsrc_name}/LICENSE" "${pkgdir}/usr/share/doc/airtime/LICENSE"
+    install -D -m644 "${_pkgsrc_name}/LICENSE_3RD_PARTY" "${pkgdir}/usr/share/licenses/airtime/LICENSE_3RD_PARTY"
 
-  install -D -m644 "airtime.tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/airtime.conf"
-  install -D -m644 "${_pkgsrc_name}/airtime_mvc/build/airtime-php.logrotate" "${pkgdir}/etc/logrotate.d/airtime-php"
-  install -D -m644 "${_pkgsrc_name}/python_apps/pypo/liquidsoap/airtime-liquidsoap.logrotate" "${pkgdir}/etc/logrotate.d/airtime-liquidsoap"
+    install -D -m644 "airtime.tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/airtime.conf"
+    install -D -m644 "${_pkgsrc_name}/airtime_mvc/build/airtime-php.logrotate" "${pkgdir}/etc/logrotate.d/airtime-php"
+    install -D -m644 "${_pkgsrc_name}/python_apps/pypo/liquidsoap/airtime-liquidsoap.logrotate" "${pkgdir}/etc/logrotate.d/airtime-liquidsoap"
 
-  mkdir -p "${pkgdir}/var/tmp/airtime/show-recorder/"
+    mkdir -p "${pkgdir}/var/tmp/airtime/show-recorder/"
 
-  mkdir -p "${pkgdir}/var/log/airtime"
-  chmod -R a+x "${pkgdir}/var/log/airtime"
-  chown -R ${web_user}:${web_user} "${pkgdir}/var/log/airtime"
+    mkdir -p "${pkgdir}/var/log/airtime"
 
-  mkdir -p "${pkgdir}/var/tmp/airtime"
-  chmod -R a+x "${pkgdir}/var/tmp/airtime"
-  chown -R ${web_user}:${web_user} "${pkgdir}/var/tmp/airtime"
 
-  mkdir -p "${pkgdir}/etc/airtime"
 
-  install -D -m 755 "${_pkgsrc_name}/installer/php/airtime.ini" "${pkgdir}/etc/airtime/airtime.ini"
-  install -D -m 755 "${_pkgsrc_name}/installer/apache/airtime-vhost" "${pkgdir}/etc/airtime/apache.vhost.tpl"
-  install -D -m 755 "${_pkgsrc_name}/installer/apache/airtime-vhost-2.4" "${pkgdir}/etc/airtime/apache24.vhost.tpl"
-  install -D -m 755 "${_pkgsrc_name}/airtime_mvc/build/airtime.example.conf" "${pkgdir}/etc/airtime/airtime.conf"
+    mkdir -p "${pkgdir}/var/tmp/airtime"
 
-  chown -R ${web_user}:${web_user} "${pkgdir}/etc/airtime"
 
-  install -D -m 755 airtime-media-monitor.service "${pkgdir}/usr/lib/systemd/system/airtime-media-monitor.service"
-  install -D -m 755 airtime-liquidsoap.service "${pkgdir}/usr/lib/systemd/system/airtime-liquidsoap.service"
-  install -D -m 755 airtime-playout.service "${pkgdir}/usr/lib/systemd/system/airtime-playout.service"
 
-  # python apps
-  python2 "${_pkgsrc_name}/python_apps/std_err_override/setup.py" install \
-      --root="${pkgdir}/" --optimize=1 --install-scripts=/usr/bin
-  python2 "${_pkgsrc_name}/python_apps/api_clients/setup.py" install \
-      --root="${pkgdir}/" --optimize=1 --install-scripts=/usr/bin
-  python2 "${_pkgsrc_name}/python_apps/media-monitor/setup.py" install \
-      --root="${pkgdir}/" --optimize=1 --install-scripts=/usr/bin
-  python2 "${_pkgsrc_name}/python_apps/pypo/setup.py" install \
-      --root="${pkgdir}/" --optimize=1 --install-scripts=/usr/bin
+    mkdir -p "${pkgdir}/etc/airtime"
+
+    install -D -m 755 "${_pkgsrc_name}/installer/php/airtime.ini" "${pkgdir}/etc/airtime/airtime.ini"
+    install -D -m 755 "${_pkgsrc_name}/installer/apache/airtime-vhost" "${pkgdir}/etc/airtime/apache.vhost.tpl"
+    install -D -m 755 "${_pkgsrc_name}/installer/apache/airtime-vhost-2.4" "${pkgdir}/etc/airtime/apache24.vhost.tpl"
+    install -D -m 755 "${_pkgsrc_name}/airtime_mvc/build/airtime.example.conf" "${pkgdir}/etc/airtime/airtime.conf"
+
+
+
+    install -D -m 755 airtime-media-monitor.service "${pkgdir}/usr/lib/systemd/system/airtime-media-monitor.service"
+    install -D -m 755 airtime-liquidsoap.service "${pkgdir}/usr/lib/systemd/system/airtime-liquidsoap.service"
+    install -D -m 755 airtime-playout.service "${pkgdir}/usr/lib/systemd/system/airtime-playout.service"
+
+    # python apps
+    python2 "${_pkgsrc_name}/python_apps/std_err_override/setup.py" install \
+        --root="${pkgdir}/" --optimize=1 --install-scripts=/usr/bin
+    python2 "${_pkgsrc_name}/python_apps/api_clients/setup.py" install \
+        --root="${pkgdir}/" --optimize=1 --install-scripts=/usr/bin
+    python2 "${_pkgsrc_name}/python_apps/media-monitor/setup.py" install \
+        --root="${pkgdir}/" --optimize=1 --install-scripts=/usr/bin
+    python2 "${_pkgsrc_name}/python_apps/pypo/setup.py" install \
+        --root="${pkgdir}/" --optimize=1 --install-scripts=/usr/bin
+
+    chmod -R a+x "${pkgdir}/var/tmp/airtime"
+    chmod -R a+x "${pkgdir}/var/log/airtime"
+
+    chown -R ${web_user}:${web_user} "${pkgdir}/var/tmp/airtime"
+    chown -R ${web_user}:${web_user} "${pkgdir}/var/log/airtime"
+    chown -R ${web_user}:${web_user} "${pkgdir}/etc/airtime"
 
 
 }
