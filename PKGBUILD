@@ -1,3 +1,4 @@
+# Maintainer: Tudor Roman <xenogenesis at openmailbox dot org>
 pkgname=st-xresources-git
 pkgver=r4.8a8358d
 pkgrel=1
