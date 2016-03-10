@@ -13,8 +13,10 @@ md5sums=('SKIP')
 
 package() {
     mkdir -p "${pkgdir}/usr/lib/rebash"
+    mkdir -p "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}"/rebash/* "${pkgdir}/usr/lib/rebash/"
     chmod 755 "${pkgdir}"/usr/lib/rebash/doc_test.sh
-    ln -s "${pkgdir}"/usr/lib/rebash/doc_test.sh "${pkgdir}/usr/bin/rebash-doc-test"
-    ln -s "${pkgdir}"/usr/lib/rebash/documentation.sh "${pkgdir}/usr/bin/rebash-documentation"
+    chmod 755 "${pkgdir}"/usr/lib/rebash/documentation.sh
+    ln -sT /usr/lib/rebash/doc_test.sh "${pkgdir}/usr/bin/rebash-doc-test"
+    ln -sT /usr/lib/rebash/documentation.sh "${pkgdir}/usr/bin/rebash-documentation"
 }
