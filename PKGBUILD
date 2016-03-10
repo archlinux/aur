@@ -1,7 +1,7 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=whatmp3-git
 _gitname=whatmp3
-pkgver=79.cdec193
+pkgver=106.a8f8c50
 pkgrel=1
 pkgdesc="A small Python script that accepts a list of directories containing FLAC files as arguments and converts them to MP3 with the specified options. It can optionally create a torrent file."
 url="http://logik.li/projects/whatmp3/"
@@ -28,7 +28,7 @@ pkgver() {
 
 package() {
   cd $_gitname
-  install -D whatmp3 ${pkgdir}/usr/bin/whatmp3
+  make PREFIX=/usr DESTDIR="$pkgdir/" install
 }
 
 # vim:set ts=2 sw=2 et:
