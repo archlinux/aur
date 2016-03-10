@@ -9,7 +9,7 @@ license=('GPL3')
 groups=()
 depends=('php' 'php-gd' 'php-pear' 'zendframework' 'php-pgsql' 'php-apcu' 'php-apcu-bc'
          'python2' 'python2-virtualenv' 'python2-pip'
-         'python2-configobj' 'python2-anyjson'
+         'python2-configobj' 'python2-anyjson' 'python2-amqplib'
          'python2-argparse' 'python2-configobj' 'python2-docopt'
          'python2-kombu' 'python2-mutagen' 'python2-poster'
          'python2-pydispatcher' 'python2-pyinotify' 'python2-pytz'
