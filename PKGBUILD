@@ -55,7 +55,7 @@ _srcname=linux-4.4
 _pkgver=4.4.4
 _rtpatchver=rt11
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
@@ -79,7 +79,6 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux-rt-bfq.preset'
         'change-default-console-loglevel.patch'
         'config' 'config.x86_64'
-        'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch'
         '0004-sdhci-revert.patch')
         
 prepare() {
@@ -92,11 +91,6 @@ prepare() {
     ### Add rt patch
         msg "Add rt patch"
         patch -Np1 -i "${srcdir}/patch-${_pkgver}-${_rtpatchver}.patch" 
- 
-    ### A patch to fix a problem that ought to be fixed in the NVIDIA source code.
-    # Stops X from hanging on certain NVIDIA cards
-        msg "Fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch"
-        patch -p1 -i "${srcdir}/fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch"
         
     ### Revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=9faac7b95ea4f9e83b7a914084cc81ef1632fd91
     # fixes #47778 sdhci broken on some boards
@@ -470,7 +464,6 @@ sha512sums=('13c8459933a8b80608e226a1398e3d1848352ace84bcfb7e6a4a33cb230bbe1ab71
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
             '756a5c5ec2db9153d0f749c4f358501d78743ab6f7538c7c127aad0a6a0bd21364f15315689f4ccd8c7b559e4cebefdfb8bb55ee90aabe3d0bd5a3d5f00703c7'
             '56ce250e1b14b03b28dfdf03923ffd173d05edc5fe9dcf5daecd121370e618d62eb8448b930503d69989c9c7ee3e3d8b64768962e78f5a1d08ba1267405192df'
-            '326dc571c072d4c47381852f16c00c8a7b27d11a5e6ff0f60f5e3a21d4a833c1e467dda1c2a5c04a6611af48bb6ef017f9183ea4ee578aab1a07e91e44d4e528'
             'be80d7ee558595d4b17b07a5a2b729d9a9503c963ec1b19bac6a87601eaefd28075aea7fb6d9c77e2e15e063fc6a8a2e8744bc1efe63e2a58b8c3ede0d89c821')
             
 validpgpkeys=(
