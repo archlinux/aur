@@ -1,13 +1,14 @@
 ## Maintainer: peerchemist <peerchemist@protonmail.ch>
 
-pkgname=('peercoin-qt' 'ppcoind')
+pkgname=('peercoin-qt' 'peercoind')
 pkgbase=peercoin
 _gitname=ppcoin
 pkgver=0.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Peercoin wallet client."
 makedepends=('boost' 'miniupnpc' 'openssl')
 depends=('boost-libs' 'openssl' 'miniupnpc')
+replaces=("ppcoin-daemon" "ppcoin-qt" "ppcoind")
 arch=('x86_64' 'i686')
 url='peercoin.net'
 license=('MIT')
@@ -16,8 +17,8 @@ source=(https://github.com/ppcoin/ppcoin/archive/v${pkgver}ppc.tar.gz
         upnp-1.9.patch
         peercoin-qt@.service
         peercoin-qt-tor@.service
-        ppcoind@.service
-        ppcoind-tor@.service)
+        peercoind@.service
+        peercoind-tor@.service)
 sha256sums=('60c12c0cde3f52f714ec6ba3656da2a39838761cb05c2ec8b21bacd33b268760'
             '6cb18e19847bbf4066920dbbf4371ddf07409392408fc6d079487e8759ea322e'
             '3060917f8e327002da842534265392a1849239ec5049f25c1ae8a81c3952e7b1'
@@ -53,27 +54,28 @@ package_peercoin-qt() {
 	install=peercoin.install
 
 	install -Dm644 ${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-	install -Dm644 peercoin-qt@.service "${pkgdir}/usr/lib/systemd/system/peercoin-qt@.service"
-	install -Dm644 $pkgname-tor@.service "${pkgdir}/usr/lib/systemd/system/pkgname-tor@.service"
+	install -Dm644 $pkgname@.service "${pkgdir}/usr/lib/systemd/system/$pkgname@.service"
+	install -Dm644 $pkgname-tor@.service "${pkgdir}/usr/lib/systemd/system/$pkgname-tor@.service"
 
 	cd "$srcdir/${_gitname}-${pkgver}ppc"
-	install -Dm755 ppcoin-qt "${pkgdir}/usr/bin/peercoin-qt"
+	install -Dm755 ppcoin-qt "${pkgdir}/usr/bin/$pkgname"
 	#install -Dm644 COPYING "${pkgdir}/usr/share/licenses/peercoin/COPYING"
 	install -Dm644 "src/qt/res/icons/ppcoin.png" "${pkgdir}/usr/share/pixmaps/peercoin.png"
 	
 }
 
-package_ppcoind() {
+package_peercoind() {
 	
 	makedepends=('boost' 'gcc' 'make' 'openssl' 'miniupnpc')
 	depends=('boost-libs' 'miniupnpc')
 	optdepeneds=('systemd' 'tor')
 	pkgdesc="Official implementation of Peercoin, the sustainable and secure cryptocurrency alternative to Bitcoin - daemon."
+	install=peercoin.install
 
-	install -Dm644 ppcoind@.service "$pkgdir/usr/lib/systemd/system/ppcoind@.service"
+	install -Dm644 $pkgname@.service "$pkgdir/usr/lib/systemd/system/$pkgname@.service"
 	install -Dm644 $pkgname-tor@.service "$pkgdir/usr/lib/systemd/system/$pkgname-tor@.service"
 	install -Dm644 "$srcdir/${_gitname}-${pkgver}ppc/COPYING" "$pkgdir/usr/share/licenses/peercoin/COPYING"
 
 	cd "$srcdir/${_gitname}-${pkgver}ppc"
-	install -Dm755 "src/ppcoind" "$pkgdir/usr/bin/ppcoind"
+	install -Dm755 "src/ppcoind" "$pkgdir/usr/bin/$pkgname"
 }
