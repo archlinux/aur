@@ -3,10 +3,10 @@
 _pyname=vmprof
 pkgname=python-$_pyname
 pkgver=0.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Python's vmprof client"
 url='https://pypi.python.org/pypi/vmprof'
-depends=('python-click' 'python-six' 'libdwarf' 'libelf' 'libunwind')
+depends=('python-six' 'libdwarf' 'libelf' 'libunwind')
 checkdepends=('python-pytest')
 license=('MIT')
 arch=('i686' 'x86_64')
@@ -20,6 +20,7 @@ build() {
 
 check() {
   cd $srcdir/$_pyname-$pkgver
+  python setup.py build_ext --inplace
   py.test tests
 }
 
