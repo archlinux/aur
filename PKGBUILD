@@ -20,7 +20,7 @@ md5sums=('SKIP'
          '52d6ecfbfbd617c05324d0e6cd2d7d18')
 _dirname=linux-${_branch}
 _kernelname=${pkgbase#linux}
-pkgver=4.1.19_1_v7+
+pkgver=4.1.19_1_v7+.3f98f2c
 
 prepare() {
   cd linux
