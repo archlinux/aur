@@ -4,14 +4,14 @@
 
 pkgname=mysql-docs
 pkgver=5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Set of HTML documentation for MySQL"
 arch=('any')
 url="http://dev.mysql.com/doc/"
 license=('GPL')
 options=('docs')
 source=("http://downloads.mysql.com/docs/refman-${pkgver}-en.html-chapter.tar.gz")
-md5sums=('e3eba7716f6571d928eb2e68d26b4445')
+md5sums=('c83fc58927a592ea80753009babece37')
 
 package() {
   install -d ${pkgdir}/usr/share/doc/mysql
