@@ -4,11 +4,10 @@
 # Contributor: Andrew Brouwers
 # Contributor: ponsfoot @ AUR
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
-# Contributor: David Spicer <azleifel at gmail dot com>
 
 pkgbase=handbrake-git
 pkgname=('handbrake-gtk-git' 'handbrake-cli-git')
-pkgver=r7055
+pkgver=r7059
 pkgrel=1
 pkgdesc="Multiplatform, multithreaded DVD to MPEG-4/H264/Theora converter"
 arch=('i686' 'x86_64')
@@ -37,7 +36,7 @@ prepare() {
 build() {
   cd "$srcdir"/"$_gitname"
 
-  ./configure --force --build="build" --prefix=/usr \
+  ./configure --force --build="build" --prefix=/usr  --enable-fdk \
 	      --disable-gtk-update-checks --launch-jobs=0 --fetch=curl \
 	      --enable-x265
 
