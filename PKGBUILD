@@ -21,7 +21,7 @@
 
 pkgname="auto-07p"
 pkgver="0.9.1"
-pkgrel="41"
+pkgrel="42"
 pkgdesc="Software for continuation and bifurcation problems in ordinary differential equations. Release 07P. Environment variables controlling build (default to 'no', see PKGBUILD): _BUILD_DOC, _WITH_PLAUT04, _PLAUT04_WITH_QT, AUTO_DEBUG, _WITH_OPENMP, _WITH_MPI."
 arch=('i686' 'x86_64')
 url='http://cmvl.cs.concordia.ca/auto/'
@@ -192,7 +192,7 @@ build()
   cd "${_extractdir}" || exit 11
 
   if [ "y${_WITH_PLAUT04}" == "yyes" ]; then
-    if ["y${_PLAUT04_WITH_QT}" == "yyes" ]; then
+    if [ "y${_PLAUT04_WITH_QT}" == "yyes" ]; then
       _plaut04_qt_config="--enable-plaut04-qt" # Use 'soqt'.
     else
       _plaut04_qt_config="--disable-plaut04-qt" # Use 'soxt'.
