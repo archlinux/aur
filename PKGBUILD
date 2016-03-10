@@ -3,7 +3,7 @@
 
 pkgname=openttd-jgrpp-git
 _installname=openttd
-pkgver=1.5.2rc1+r27508+p0.11.0+r23.b87957c
+pkgver=1.5.2rc1+r27518+p0.12.0+r13.def2403
 pkgrel=1
 pkgdesc="OpenTTD with JGR's patch pack"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ optdepends=('openttd-opengfx: free graphics'
 _gitname=OpenTTD-patches
 
 # If you want the latest *stable* release of the patch pack, uncomment this line:
-# _fragment="#tag=jgrpp-0.11.0"
+# _fragment="#tag=jgrpp-0.12.0"
 
 source=("git+https://github.com/JGRennison/$_gitname.git$_fragment"
         "http://finger.openttd.org/tags.txt")
