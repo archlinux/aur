@@ -1,5 +1,6 @@
 post_upgrade() {
   if [ -z /usr/lib/initcpio/install/grub ] ; then
+  /usr/bin/false
   else
   rm -rf /usr/lib/initcpio/install/grub
   fi
@@ -8,6 +9,7 @@ post_upgrade() {
 
 post_remove() {
   if [ -z /usr/lib/initcpio/install/grub ] ; then
+  /usr/bin/false
   else
   rm -rf /usr/lib/initcpio/install/grub
   fi
