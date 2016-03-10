@@ -1,0 +1,32 @@
+pkgbase = pcb-git
+	pkgdesc = Interactive printed circuit board editor
+	pkgver = 20160310
+	pkgrel = 1
+	url = http://pcb.geda-project.org/
+	install = pcb.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = bison
+	makedepends = flex
+	makedepends = git
+	makedepends = intltool
+	makedepends = tk
+	depends = gtkglext
+	depends = gd
+	depends = gts
+	optdepends = tk: additional tools
+	optdepends = tcl: additional tools
+	optdepends = perl: additional tools
+	optdepends = desktop-file-utils: desktop integration
+	provides = pcb
+	conflicts = pcb
+	source = git://git.geda-project.org/pcb.git
+	source = fix-gts-search-missing-libm.patch
+	md5sums = SKIP
+	md5sums = 85ba1f0766697fdec313aa4d84f11d99
+
+pkgname = pcb-git
+
