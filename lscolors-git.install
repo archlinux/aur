@@ -1,0 +1,9 @@
+function post_install() {
+  echo "  To enable the colors, add the following line to your shell"
+  echo "  start-up script (e.g. ~/.bashrc):"
+  echo '    eval `dircolors -b /usr/share/LS_COLORS`'
+}
+
+function post_upgrade() {
+  post_install
+}
