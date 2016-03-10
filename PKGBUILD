@@ -15,8 +15,8 @@ conflicts=('popcorntime' 'popcorntime-bin' 'popcorntime-git')
 options=('!strip')
 install="popcorntime-ce.install"
 sha1sums=('ee6a1b9314cbcb8eeabe76e9d6928f8c0bee4f42'
-	'48fe37180e9dfed60da82fc67d023b0004f3f1c7'
-	'bf7c94bef131003ea940c78d053c536433e34cf5')
+          '48fe37180e9dfed60da82fc67d023b0004f3f1c7'
+          '98cba5c0c979d37e601cc33cf3b562f106427d36')
 
 _platform='64bit'
 
