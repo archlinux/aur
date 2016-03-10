@@ -37,18 +37,18 @@ makedepends=(
              'gcc'
             )
 optdepends=(
-            "python2-matplotlib: For python interface."
-            "ipython2: For python interface."
-            "lesstif: For GUI94 and PLAUT04."
-            "openmotif: For GUI94 and PLAUT04. ('openmotif' can be used instead of 'lesstif')"
-            "xterm: For PLAUT plotting interface."
-            "soxt: For PLAUT04 plotting interface (enable compilation of 'plaut04' by setting the environment variable '_WITH_PLAUT04' to 'yes')."
-            "soqt: For PLAUT04 plotting interface (enable compilation of 'plaut04' by setting the environment variable '_WITH_PLAUT04' to 'yes'). ('soqt' can be used instead of 'soxt'. If using 'soqt', set '_PLAUT04_WITH_QT' to 'yes'.)" 
-            "coin: For plaut04 plotting interface (enable compilation of 'plaut04' by setting the environment variable '_WITH_PLAUT04' to 'yes')."
-            "inventor: For plaut04 plotting interface (enable compilation of 'plaut04' by setting the environment variable '_WITH_PLAUT04' to 'yes'). ('inventor' can be used instead of 'coin', but 'coin' (Coin3D) is recommended (see AUTO documentation).)"
-            "openmpi: For MPI message passing (parallel computation). To build, set the environment variable '_WITH_OPENMP' to 'yes'."
-            "texlive-bin: For compiling the manual (enable compilation of documentation by setting the environment variable '_BUILD_DOC' to 'yes')."
-            "transfig: For compiling the manual (enable manual compiling in PKGBUILD (enable compilation of documentation by setting the environment variable '_BUILD_DOC' to 'yes'))."
+#             "python2-matplotlib: For python interface."
+#             "ipython2: For python interface."
+#             "lesstif: For GUI94 and PLAUT04."
+#             "openmotif: For GUI94 and PLAUT04. ('openmotif' can be used instead of 'lesstif')"
+#             "xterm: For PLAUT plotting interface."
+#             "soxt: For PLAUT04 plotting interface (enable compilation of 'plaut04' by setting the environment variable '_WITH_PLAUT04' to 'yes')."
+#             "soqt: For PLAUT04 plotting interface (enable compilation of 'plaut04' by setting the environment variable '_WITH_PLAUT04' to 'yes'). ('soqt' can be used instead of 'soxt'. If using 'soqt', set '_PLAUT04_WITH_QT' to 'yes'.)" 
+#             "coin: For plaut04 plotting interface (enable compilation of 'plaut04' by setting the environment variable '_WITH_PLAUT04' to 'yes')."
+#             "inventor: For plaut04 plotting interface (enable compilation of 'plaut04' by setting the environment variable '_WITH_PLAUT04' to 'yes'). ('inventor' can be used instead of 'coin', but 'coin' (Coin3D) is recommended (see AUTO documentation).)"
+#             "openmpi: For MPI message passing (parallel computation). To build, set the environment variable '_WITH_OPENMP' to 'yes'."
+#             "texlive-bin: For compiling the manual (enable compilation of documentation by setting the environment variable '_BUILD_DOC' to 'yes')."
+#             "transfig: For compiling the manual (enable manual compiling in PKGBUILD (enable compilation of documentation by setting the environment variable '_BUILD_DOC' to 'yes'))."
             )  ### Note: Some of these are optional at build time, but once a feature is build in (by './configure' automatically detecting the corresponding libraries), the packages are required to actual run AUTO, so they are _no_ optdepends for the binary package, just for the source.
 license=(
          'BSD'
