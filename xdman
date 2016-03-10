@@ -1,2 +1,2 @@
 #!/bin/sh
-java -jar /usr/share/java/xdm/xdm.jar
+java -jar /usr/share/java/xdm/xdman.jar

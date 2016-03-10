@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Terminal=false
+Exec=java -jar /usr/share/java/xdm/xdman.jar
+Name=Xtreme Download Manager
+Comment=Powerfull download accelarator and video downloader
+Categories=Network;
+Icon=/usr/share/pixmaps/xdman.png
