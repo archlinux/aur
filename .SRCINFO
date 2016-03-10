@@ -1,32 +1,21 @@
 pkgbase = python-msmbuilder
 	pkgdesc = A python package which implements a series of statistical models for high-dimensional time-series
 	pkgver = 3.3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://msmbuilder.org/
 	arch = i686
 	arch = x86_64
 	license = LGPL
-	makedepends = python-mdtraj
-	makedepends = python2-mdtraj
-	makedepends = python2-setuptools
 	makedepends = python-setuptools
+	depends = python-mdtraj
+	depends = python-cvxopt
+	depends = python-scikit-learn
+	optdepends = python-numpydoc: XXX
 	options = !libtool
 	source = https://github.com/msmbuilder/msmbuilder/archive/3.3.1.tar.gz
 	source = patch.i0.c
 	sha1sums = fcb5ad6fabb5aead4c78d3fed782665d090c0caa
 	sha1sums = f0129777e7f9fb28074b86d47d6bb8b94f763063
 
-pkgname = python2-msmbuilder
-	depends = python2-mdtraj
-	depends = python2-cvxopt
-	depends = python2-scikit-learn
-	depends = python2-numpydoc
-	optdepends = 
-
 pkgname = python-msmbuilder
-	depends = python-mdtraj
-	depends = python-cvxopt
-	depends = python-scikit-learn
-	depends = python-numpydoc
-	optdepends = 
 
