@@ -3,7 +3,7 @@
 pkgname=nvidia-think
 pkgver=361.28
 _extramodules=extramodules-4.4-think
-pkgrel=4
+pkgrel=5
 pkgdesc="NVIDIA drivers for linux-think kernel"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
