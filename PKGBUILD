@@ -28,7 +28,8 @@ source=("http://www.cstr.ed.ac.uk/downloads/${provides}/${pkgver}/${provides}-${
 	'festival-shared-build.patch'
 	'festival-2.1-hts21compat.patch'
 	'festival-2.1-hts21compat-config.patch'
-        'festival-2.4-compat.patch')
+	'festival-2.4-compat.patch'
+	'festival-pulseaudio.patch')
 sha256sums=('1e47f293e0857ffde2bccead97947c040ea0b35ea12dd5796edb51583e5e5d84'
             'fbc2482c443919aa79d2e599d6a5faee4e793df55a79ef377f1dc7e8ba237010'
             'c19430919bca45d5368cd4c82af6153fbcc96a487ebd30b78b5f3c08718b7c07'
@@ -40,7 +41,8 @@ sha256sums=('1e47f293e0857ffde2bccead97947c040ea0b35ea12dd5796edb51583e5e5d84'
             '9dd97abd02e1fe78f0eaf83a22a1be896e19246700e0bfa2860e0025f0d58c42'
             'e218aa005dcaa03e39a1d6c026efccab7a2f288dc09e3ceb1ec4786d16f3f295'
             '10b32baf49638199aee0b3687ff9dd34e44b12812c0d55ddf52dc212891f11b4'
-            '146bc3aa86862478a32ea994da7e72963f0d08c267a179209eb91a7b46e61c14')
+            '146bc3aa86862478a32ea994da7e72963f0d08c267a179209eb91a7b46e61c14'
+            '2c353cdeb34804516f54acbc792918a57f35bdbd8cda5f6c8c8b928c94ad750d')
 
 prepare() {
   patch -Np0 -i ${srcdir}/speechconfig.patch
@@ -53,7 +55,9 @@ prepare() {
   patch -Np0 -i ${srcdir}/festival-2.1-hts21compat.patch
   patch -Np0 -i ${srcdir}/festival-2.1-hts21compat-config.patch
 
-  patch -Np0 -i "$srcdir/festival-2.4-compat.patch"
+  patch -Np0 -i ${srcdir}/festival-2.4-compat.patch
+
+  patch -Np1 -d ${srcdir}/speech_tools -i ${srcdir}/festival-pulseaudio.patch
 
   # Avoid make failure on making scripts and docs
   sed -i "s#examples bin doc#examples#" festival/Makefile

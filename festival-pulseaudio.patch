@@ -1,0 +1,290 @@
+@@ -, +, @@ 
+    Add PulseAudio output
+--- a/audio/Makefile	
++++ a/audio/Makefile	
+@@ -44,7 +44,7 @@ LOCAL_DEFAULT_LIBRARY = estbase
+ H = audioP.h
+ CPPSRCS = gen_audio.cc nas.cc esd.cc sun16audio.cc voxware.cc  \
+           mplayer.cc win32audio.cc irixaudio.cc os2audio.cc \
+-          macosxaudio.cc linux_sound.cc
++          macosxaudio.cc linux_sound.cc pulseaudio.cc
+ 
+ SRCS = $(CPPSRCS)
+ OBJS = $(CPPSRCS:.cc=.o)
+--- a/audio/audioP.h	
++++ a/audio/audioP.h	
+@@ -40,6 +40,7 @@ 
+ #define __AUDIOP_H__
+ 
+ int play_nas_wave(EST_Wave &inwave, EST_Option &al);
++int play_pulse_wave(EST_Wave &inwave, EST_Option &al);
+ int play_esd_wave(EST_Wave &inwave, EST_Option &al);
+ int play_sun16_wave(EST_Wave &inwave, EST_Option &al);
+ int play_voxware_wave(EST_Wave &inwave, EST_Option &al);
+@@ -49,6 +50,7 @@ int play_irix_wave(EST_Wave &inwave, EST_Option &al);
+ int play_macosx_wave(EST_Wave &inwave, EST_Option &al);
+ 
+ int record_nas_wave(EST_Wave &inwave, EST_Option &al);
++int record_pulse_wave(EST_Wave &inwave, EST_Option &al);
+ int record_esd_wave(EST_Wave &inwave, EST_Option &al);
+ int record_sun16_wave(EST_Wave &inwave, EST_Option &al);
+ int record_voxware_wave(EST_Wave &inwave, EST_Option &al);
+--- a/audio/gen_audio.cc	
++++ a/audio/gen_audio.cc	
+@@ -89,6 +89,8 @@ int play_wave(EST_Wave &inwave, EST_Option &al)
+     {
+ 	if (nas_supported)
+ 	    protocol = "netaudio";  // the default protocol
++	else if (pulse_supported)
++	    protocol = "pulseaudio";
+ 	else if (esd_supported)
+ 	    protocol = "esdaudio";
+ 	else if (sun16_supported)
+@@ -111,6 +113,8 @@ int play_wave(EST_Wave &inwave, EST_Option &al)
+ 
+     if (upcase(protocol) == "NETAUDIO")
+ 	return play_nas_wave(*toplay,al);
++    else if (upcase(protocol) == "PULSEAUDIO")
++	return play_pulse_wave(*toplay,al);
+     else if (upcase(protocol) == "ESDAUDIO")
+ 	return play_esd_wave(*toplay,al);
+     else if (upcase(protocol) == "SUNAUDIO")
+@@ -246,6 +250,8 @@ EST_String options_supported_audio(void)
+ 	audios += " netaudio";
+     else if (esd_supported)
+ 	audios += " esdaudio";
++    if (pulse_supported)
++	audios += " pulseaudio";
+     if (sun16_supported)
+ 	audios += " sun16audio";
+     if (freebsd16_supported)
+@@ -286,8 +292,10 @@ int record_wave(EST_Wave &wave, EST_Option &al)
+     {
+ 	if (nas_supported)
+ 	    protocol = "netaudio";  // the default protocol
++	else if (pulse_supported)
++	    protocol = "pulseaudio";
+ 	else if (esd_supported)
+-	    protocol = "esdaudio";  // the default protocol
++	    protocol = "esdaudio";
+ 	else if (sun16_supported)
+ 	    protocol = "sun16audio";
+ 	else if (freebsd16_supported)
+@@ -306,6 +314,8 @@ int record_wave(EST_Wave &wave, EST_Option &al)
+ 
+     if (upcase(protocol) == "NETAUDIO")
+ 	return record_nas_wave(wave,al);
++    else if (upcase(protocol) == "PULSEAUDIO")
++	return record_pulse_wave(wave,al);
+     else if (upcase(protocol) == "ESDAUDIO")
+         return record_esd_wave(wave,al);
+     else if (upcase(protocol) == "SUN16AUDIO")
+--- a/audio/pulseaudio.cc	
++++ a/audio/pulseaudio.cc	
+@@ -0,0 +1,134 @@ 
++/*************************************************************************/
++/*                                                                       */
++/*                Centre for Speech Technology Research                  */
++/*                     University of Edinburgh, UK                       */
++/*                      Copyright (c) 1997,1998                          */
++/*                            Red Hat, Inc.                              */
++/*                         Copyright (c) 2008                            */
++/*                        All Rights Reserved.                           */
++/*                                                                       */
++/*  Permission is hereby granted, free of charge, to use and distribute  */
++/*  this software and its documentation without restriction, including   */
++/*  without limitation the rights to use, copy, modify, merge, publish,  */
++/*  distribute, sublicense, and/or sell copies of this work, and to      */
++/*  permit persons to whom this work is furnished to do so, subject to   */
++/*  the following conditions:                                            */
++/*   1. The code must retain the above copyright notice, this list of    */
++/*      conditions and the following disclaimer.                         */
++/*   2. Any modifications must be clearly marked as such.                */
++/*   3. Original authors' names are not deleted.                         */
++/*   4. The authors' names are not used to endorse or promote products   */
++/*      derived from this software without specific prior written        */
++/*      permission.                                                      */
++/*                                                                       */
++/*  THE UNIVERSITY OF EDINBURGH AND THE CONTRIBUTORS TO THIS WORK        */
++/*  DISCLAIM ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING      */
++/*  ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT   */
++/*  SHALL THE UNIVERSITY OF EDINBURGH NOR THE CONTRIBUTORS BE LIABLE     */
++/*  FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    */
++/*  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN   */
++/*  AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION,          */
++/*  ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF       */
++/*  THIS SOFTWARE.                                                       */
++/*                                                                       */
++/*************************************************************************/
++/*                Author :  Michal Schmidt                               */
++/*                Date   :  November 2008                                */
++/*-----------------------------------------------------------------------*/
++/*  Optional support for PulseAudio                                      */
++/*=======================================================================*/
++
++#include "EST_Wave.h"
++#include "EST_Option.h"
++#include "audioP.h"
++
++#ifdef SUPPORT_PULSE
++
++#include <pulse/simple.h>
++#include <pulse/error.h>
++
++int pulse_supported = TRUE;
++const static char *err_prefix = "Pulseaudio: ";
++
++static int transfer_pulse_wave(EST_Wave &inwave, EST_Option &al, int record)
++{
++    short *waveform;
++    int num_samples;
++    int err, pa_ret;
++    int ret = -1;
++    pa_simple *s = NULL;
++    pa_sample_spec ss;
++
++    ss.format   = PA_SAMPLE_S16NE;
++    ss.channels = 1;
++    ss.rate     = inwave.sample_rate();
++
++    waveform    = inwave.values().memory();
++    num_samples = inwave.num_samples();
++
++    s = pa_simple_new(NULL,           // Use the default server.
++	"Festival",                   // Our application's name.
++	record ? PA_STREAM_RECORD : PA_STREAM_PLAYBACK,
++	NULL,                         // Use the default device.
++	record ? "Record" : "Speech", // Description of our stream.
++	&ss,                // Our sample format.
++	NULL,               // Use default channel map
++	NULL,               // Use default buffering attributes.
++	&err);
++
++    if (!s) {
++	cerr << err_prefix << pa_strerror(err) << endl;
++	goto finish;
++    }
++
++    pa_ret = record ?
++	pa_simple_read (s, waveform, num_samples*sizeof(short), &err) :
++	pa_simple_write(s, waveform, num_samples*sizeof(short), &err);
++
++    if (pa_ret < 0) {
++	cerr << err_prefix << pa_strerror(err) << endl;
++	goto finish;
++    }
++
++    if (!record && pa_simple_drain(s, &err) < 0) {
++	cerr << err_prefix << pa_strerror(err) << endl;
++	goto finish;
++    }
++
++    ret = 1;
++finish:
++    if (s)
++	pa_simple_free(s);
++    return ret;
++}
++
++int play_pulse_wave(EST_Wave &inwave, EST_Option &al)
++{
++	return transfer_pulse_wave(inwave, al, 0);
++}
++
++int record_pulse_wave(EST_Wave &inwave, EST_Option &al)
++{
++	return transfer_pulse_wave(inwave, al, 1);
++}
++
++#else
++int pulse_supported = FALSE;
++
++int play_pulse_wave(EST_Wave &inwave, EST_Option &al)
++{
++    (void)inwave;
++    (void)al;
++    cerr << "Audio: pulse not compiled in this version" << endl;
++    return -1;
++}
++
++int record_pulse_wave(EST_Wave &inwave, EST_Option &al)
++{
++    (void)inwave;
++    (void)al;
++    cerr << "Audio: pulse not compiled in this version" << endl;
++    return -1;
++}
++
++#endif
+--- a/config/config.in	
++++ a/config/config.in	
+@@ -79,6 +79,9 @@ OPTIMISE_sigpr = 3
+ ## NCD's network audio system, This is recommended.
+ # INCLUDE_MODULES += NAS_AUDIO
+ 
++## PulseAudio sound server
++# INCLUDE_MODULES += PULSE_AUDIO
++
+ ## Elightenment Sound Demon, for KDE etc.
+ # INCLUDE_MODULES += ESD_AUDIO
+ 
+--- a/config/modules/Makefile	
++++ a/config/modules/Makefile	
+@@ -41,7 +41,7 @@ RULESETS = efence.mak dmalloc.mak debugging.mak \
+ 	psola_tm.mak editline.mak tcl.mak \
+ 	freebsd16_audio.mak irix_audio.mak linux16_audio.mak \
+ 	sun16_audio.mak win32_audio.mak macosx_audio.mak \
+ 	mplayer_audio.mak nas_audio.mak esd_audio.mak \
+-	siod_python.mak
++	siod_python.mak pulse_audio.mak
+ 
+ FILES = Makefile descriptions $(RULESETS) 
+ 
+--- a/config/modules/pulse_audio.mak	
++++ a/config/modules/pulse_audio.mak	
+@@ -0,0 +1,9 @@ 
++## Definitions for PulseAudio
++
++INCLUDE_PULSE_AUDIO=1
++
++MOD_DESC_PULSE_AUDIO=PulseAudio support
++
++AUDIO_DEFINES += -DSUPPORT_PULSE
++AUDIO_INCLUDES += -I$(PULSE_INCLUDE)
++MODULE_LIBS += -L$(PULSE_LIB) -lpulse-simple
+--- a/config/project.mak	
++++ a/config/project.mak	
+@@ -60,7 +60,7 @@ MODULE_DIRECTORY = $(TOP)
+ # List of all known modules
+ 
+ DISTRIBUTED_MODULES = \
+-	NAS_AUDIO ESD_AUDIO NATIVE_AUDIO MPLAYER_AUDIO \
++	NAS_AUDIO PULSE_AUDIO ESD_AUDIO NATIVE_AUDIO MPLAYER_AUDIO \
+ 	EDITLINE \
+ 	SIOD WAGON SCFG WFST OLS \
+ 	JAVA JAVA_CPP JAVA_MEDIA \
+--- a/config/systems/default.mak	
++++ a/config/systems/default.mak	
+@@ -61,6 +61,12 @@ NAS_INCLUDE = /usr/X11R6/include
+ NAS_LIB = /usr/X11R6/lib
+ 
+ ###########################################################################
++## Where to find PulseAudio
++
++PULSE_INCLUDE = /usr/local/include
++PULSE_LIB = /usr/local/lib
++
++###########################################################################
+ ## Where to find Enlightenment Speech Demon
+ 
+ ESD_INCLUDE = /usr/local/include
+--- a/include/EST_audio.h	
++++ a/include/EST_audio.h	
+@@ -43,6 +43,7 @@ 
+ #include "EST_Option.h"
+ 
+ extern int nas_supported;
++extern int pulse_supported;
+ extern int esd_supported;
+ extern int sun16_supported;
+ extern int freebsd16_supported;
