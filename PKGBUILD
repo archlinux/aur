@@ -1,9 +1,9 @@
+# Maintainer: Vlad M. <vlad@archlinux.net>
 # Maintainer: Félix Saparelli <aur@passcod.name>
 # Contributor: KokaKiwi <kokakiwi@kokakiwi.net>
-# CAUTION: Will not even build if an existing rust is in PATH
 
 pkgname=multirust
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A tool for managing multiple Rust installations"
 arch=('any')
