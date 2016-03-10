@@ -1,6 +1,6 @@
 pkgname=python34
 pkgver=3.4.4
-pkgrel=1
+pkgrel=2
 _pybasever=3.4
 _pymajver=3
 pkgdesc="Major release 3.4 of the Python high-level programming language"
@@ -34,7 +34,7 @@ prepare() {
 build() {
   cd "${srcdir}/Python-${pkgver}"
 
-  ./configure --prefix=/usr \
+  CFLAGS=-DOPENSSL_NO_SSL2 ./configure --prefix=/usr \
               --enable-shared \
               --with-threads \
               --with-computed-gotos \
