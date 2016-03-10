@@ -46,7 +46,8 @@ prepare() {
 pkgver() {
   cd linux
   RELEASE=$(make kernelrelease)
-  echo ${RELEASE//[-]/_}
+  RELEASE=${RELEASE//[-]/_}
+  printf "%s.%s" "$RELEASE" "$(git rev-parse --short HEAD)"
 }
 
 build() {
