@@ -1,18 +1,18 @@
 pkgname=ensime-server
 pkgver=0.9.10
-_scalaver=2.11.6
+_scalaver=2.11
 _kind=SNAPSHOT
-pkgrel=5
+pkgrel=6
 pkgdesc="ENSIME server"
 url="https://github.com/ensime/ensime-server"
 arch=("x86_64" "i686")
-license="custom"
+license=("custom")
 depends=("java-environment-jdk")
 _jarfile="ensime_${_scalaver}-${pkgver}-${_kind}-assembly.jar"
 source=("http://ensime.typelevel.org/${_jarfile}")
 noextract=("${_jarfile}")
-md5sums=('a40de1ec974ad6181f6d4cbe25b29ad0')
-sha256sums=('517bf1567e281fcbedd8aaa7298259fada77249df8c661c502a00b2c469deb40')
+md5sums=('27ff38cf0d5ffe830cc9b17127ebb470')
+sha256sums=('7a0ee8e81deb2a13fb41dbb819efc6bdaf9ba9c57fc4c28351b78cc67fd0f4e2')
 
 build() {
     echo ""
