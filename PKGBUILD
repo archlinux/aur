@@ -1,7 +1,7 @@
 # Author: Javier Tiá <javier dot tia at gmail dot com>
 
 pkgname=complexity
-pkgver=1.9
+pkgver=1.10
 pkgrel=1
 pkgdesc="Measure complexity of C source"
 url="http://www.gnu.org/software/complexity/"
@@ -10,7 +10,7 @@ depends=('autogen')
 makedepends=('autoconf' 'automake' 'gcc')
 arch=('i686' 'x86_64')
 source=("http://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('aa5fd44d2db2ea1d4e3aa323d0f6b7f35cb58898d50ca256138ec6b24b39d2a2')
+sha256sums=('6d378a3ef9d68938ada2610ce32f63292677d3b5c427983e8d72702167a22053')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
