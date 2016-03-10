@@ -1,0 +1,15 @@
+diff -aur SwampDragon-0.4.2.2.o/swampdragon/__init__.py SwampDragon-0.4.2.2/swampdragon/__init__.py
+--- SwampDragon-0.4.2.2.o/swampdragon/__init__.py	2016-03-09 20:31:38.594893907 -0800
++++ SwampDragon-0.4.2.2/swampdragon/__init__.py	2016-03-09 20:35:06.439553525 -0800
+@@ -30,7 +30,10 @@
+ 
+ def load_field_deserializers():
+     from django.conf import settings
+-    from django.utils.importlib import import_module
++    try:
++        from importlib import import_module
++    except ImportError:
++        from django.utils.importlib import import_module
+     imported_deserializers = []
+     for app in settings.INSTALLED_APPS:
+         try:
