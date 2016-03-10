@@ -1,3 +1,16 @@
-post_install() {
-  echo "Please add 'grub' to the HOOKs array in /etc/mkinitcpio.conf (last position)."
+post_upgrade() {
+  if [ -z /usr/lib/initcpio/install/grub ] ; then
+  else
+  rm -rf /usr/lib/initcpio/install/grub
+  fi
+  echo "Please remove 'grub' to the HOOKs array in /etc/mkinitcpio.conf with pacman hooks it's unnecessary."
 }
+
+post_remove() {
+  if [ -z /usr/lib/initcpio/install/grub ] ; then
+  else
+  rm -rf /usr/lib/initcpio/install/grub
+  fi
+  echo "Please remove 'grub' to the HOOKs array in /etc/mkinitcpio.conf."
+}
+
