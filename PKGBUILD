@@ -5,25 +5,23 @@
 pkgbase=cloudabi-linux
 _srcname=linux-cloudabi
 pkgver=4.5.0rc1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/NuxiNL/linux"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 source=(
-  'https://github.com/NuxiNL/linux/archive/cloudabi.tar.gz'
+  'https://github.com/NuxiNL/linux/archive/4f2e7416a497dd1626068c73fe7f59fa8e0e6950.tar.gz'
   'config.x86_64'
   'linux.preset'
 )
 
-sha256sums=(
-  'SKIP'
-  '756a168bbc3bb582f0df45b977c32af53658f21d62fe15171c9ac85f52d8852a'
-  'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-)
+sha512sums=('451cd3309baa728277f6200385fd4c697d6e2b57eb730fb17139b2b619d8137ae4dc308c990840aafc455dcaa26ebe0849e9b5b2b63fe444762f5091b1ba770f'
+            '1375eb24d45b04cdf3a861a5ae264c2a9d9eeb78f7b4043e9069e5a38ec12c3005a0df1ec7338b38f8337b8b304408e73d46422710dce1cc0b397d3c25855280'
+            '5fe243dea17fdb71edc7098e0e1938beb7f2d851bd2be3981c4ef3d617aaad81ff1cb4c84689082472ebd13b721e849ad2214aefb9ffe40ec3d76abfd40b87ad')
 
-_kernelname=${pkgbase#linux}
+_kernelname="-cloudabi"
 
 prepare() {
   cd "${srcdir}/${_srcname}"
@@ -73,7 +71,7 @@ _package() {
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
-  backup=("etc/mkinitcpio.d/${pkgbase}.preset")
+  backup=("etc/mkinitcpio.d/linux$_kernelname.preset")
   install=linux.install
 
   cd "${srcdir}/${_srcname}"
@@ -87,7 +85,7 @@ _package() {
 
   mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
-  cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
+  cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-linux$_kernelname"
 
   # set correct depmod command for install
   cp -f "${startdir}/${install}" "${startdir}/${install}.pkg"
@@ -98,13 +96,13 @@ _package() {
     -i "${startdir}/${install}"
 
   # install mkinitcpio preset file for kernel
-  install -D -m644 "${srcdir}/linux.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  install -D -m644 "${srcdir}/linux.preset" "${pkgdir}/etc/mkinitcpio.d/linux$_kernelname.preset"
   sed \
-    -e "1s|'linux.*'|'${pkgbase}'|" \
-    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
-    -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgbase}.img\"|" \
-    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
-    -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+    -e "1s|'linux.*'|'linux$_kernelname'|" \
+    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-linux$_kernelname\"|" \
+    -e "s|default_image=.*|default_image=\"/boot/initramfs-linux$_kernelname.img\"|" \
+    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-linux$_kernelname-fallback.img\"|" \
+    -i "${pkgdir}/etc/mkinitcpio.d/linux$_kernelname.preset"
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
