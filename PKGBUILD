@@ -5,14 +5,13 @@
 pkgbase=python-msmbuilder
 pkgname=('python2-msmbuilder' 'python-msmbuilder')
 pkgver=3.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A python package which implements a series of statistical models for high-dimensional time-series'
 url='http://msmbuilder.org/'
 license=("LGPL")
 arch=('i686' 'x86_64')
-depends=('python-numpydoc')
-#depends=('python2-numpydoc' 'python-numpydoc')
-makedepends=('python2-setuptools' 'python-setuptools')
+depends=()
+makedepends=('python-mdtraj' 'python2-mdtraj' 'python2-setuptools' 'python-setuptools')
 options=('!libtool')
 source=("https://github.com/msmbuilder/msmbuilder/archive/${pkgver}.tar.gz"
         "patch.i0.c")
@@ -28,19 +27,10 @@ prepare() {
   cp -a msmbuilder-${pkgver} msmbuilder-py2-${pkgver}
 }
 
-#build() {
-#  msg2 "Building msmbuilder - Python2"
-#  cd "${srcdir}/msmbuilder-py2-${pkgver}"
-#  python2 setup.py build
-#
-#  msg2 "Building msmbuilder - Python3"
-#  cd "${srcdir}/msmbuilder-${pkgver}"
-#  python setup.py build
-#}
-
 package_python-msmbuilder() {
-  depends=('python-mdtraj' 'python-cvxopt' 'python-scikit-learn')
-  optdepends=('python-mdtraj')
+  depends=('python-mdtraj' 'python-cvxopt' 'python-scikit-learn' 'python-numpydoc')
+  makedepends=('python-setuptools')
+  optdepends=()
 
   cd "${srcdir}/msmbuilder-${pkgver}"
   msg2 "Building msmbuilder - Python3"
@@ -54,8 +44,9 @@ package_python-msmbuilder() {
 }
 
 package_python2-msmbuilder() {
-  depends=('python2-mdtraj' 'python2-cvxopt' 'python2-scikit-learn')
-  optdepends=('python2-mdtraj')
+  depends=('python2-mdtraj' 'python2-cvxopt' 'python2-scikit-learn' 'python2-numpydoc')
+  makedepends=('python2-setuptools')
+  optdepends=()
 
   cd "${srcdir}/msmbuilder-py2-${pkgver}"
   msg2 "Building msmbuilder - Python2"
