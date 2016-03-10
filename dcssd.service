@@ -1,0 +1,6 @@
+[Unit]
+Description=Server for injecting CSS into chrome/chromium
+StopWhenUnneeded=true
+
+[Service]
+ExecStart=/usr/bin/dcssd
