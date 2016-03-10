@@ -3,7 +3,7 @@
 pkgname=purple-facebook-git
 _gitname="purple-facebook"
 pkgrel=1
-pkgver=92885e0456ed.r1.g04f1edd
+pkgver=92885e0456ed.r2.g1af1f6f
 pkgdesc="A purple (pidgin, finch, ...) plugin for Facebook chat, based on the new Facebook 
 Messenger 
 protocol"
