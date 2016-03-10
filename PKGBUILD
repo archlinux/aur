@@ -4,7 +4,7 @@
 
 _pkgname=enlightenment
 pkgname=$_pkgname-fresh
-pkgver=0.20.5
+pkgver=0.20.6
 pkgrel=1
 pkgdesc="Enlightenment window manager - updated stable version"
 arch=('i686' 'x86_64')
@@ -15,14 +15,14 @@ depends=('elementary-fresh' 'xcb-util-keysyms' 'hicolor-icon-theme' 'pixman' 'me
 makedeps=('make')
 optdepends=('connman: network module'
             'acpid: power events on laptop lid close'
-	    'geoip-database: geolocation module')
+            'geoip-database: geolocation module')
 provides=('notification-daemon' "$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 backup=('etc/enlightenment/sysactions.conf'
         'etc/xdg/menus/e-applications.menu')
 source=(http://download.enlightenment.org/rel/apps/${_pkgname}/$_pkgname-$pkgver.tar.xz)
 install=enlightenment.install
-sha256sums=('22749584d2fdf62d5a63c64dd9e57a1e318837a48f10fb9cdd2097769aa802d0')
+sha256sums=('f21fbace15b8ea0e47c7aeb16a3f4d1e8a41cb85bc0035491091518b0ca55085')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
