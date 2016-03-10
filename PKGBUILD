@@ -4,15 +4,15 @@
 
 pkgname=doublecmd-gtk2-alpha-bin
 _pkgname=doublecmd
-pkgver=0.7.0.svn.r6635
-_pkgver=0.7.0~0+svn6635
+pkgver=0.7.0.svn.r6671
+_pkgver=0.7.0~0+svn6671
 pkgrel=1
 pkgdesc="Double Commander is a cross platform open source file manager with two panels side by side. It is inspired by Total Commander and features some new ideas."
 arch=('i686' 'x86_64')
 url='http://doublecmd.sourceforge.net'
 # https://launchpad.net/~alexx2000/+archive/doublecmd-svn
 depends=('gtk2')
-optdepends=('lua: scripting' 'p7zip: support for 7zip archives' 'libunrar: support for rar archives'
+optdepends=('lua51: scripting' 'p7zip: support for 7zip archives' 'libunrar: support for rar archives'
             'pmount: mount removable devices' 'imagemagick: speed up thumbnail view' 'ffmpegthumbnailer: video thumbnails')
 install="doublecmd.install"
 provides=('doublecmd')
@@ -30,11 +30,11 @@ source_i686+=(${_url}/i386/${_pkgname}-gtk_${_pkgver}_i386.deb
         ${_url}/i386/${_pkgname}-plugins_${_pkgver}_i386.deb)
 source_x86_64+=(${_url}/amd64/${_pkgname}-gtk_${_pkgver}_amd64.deb
         ${_url}/amd64/${_pkgname}-plugins_${_pkgver}_amd64.deb)
-sha256sums=('85fe453baa4f38cfe98aac45a262baab951475083235377c23503c81dcb9f2a2')
-sha256sums_i686=('96c1881a39d6bd0e22c173b612a703ecce308284a1cef3d382c637edd92af1c5'
-                 'f79cbcc8fbcd5efffdec43250e09273ad389a88b3cb45736759a41866325f1ef')
-sha256sums_x86_64=('eaccc8d6b318e23d34a7e524345154f8d76e9974a3a39494651f914b4ef937df'
-                   'fed7d56dec5b14f246f0ad23e87058c24f39e9710374e2c19eeb3756a18c12fc')
+sha256sums=('81df793a94fed8475091f5167ff53e865dbfecac0868bc372f9030c59b65d64b')
+sha256sums_i686=('a0b8e80f2a5a506205f3cd2c370529bc3167a9cf313e7c95efbb5e8f37233343'
+                 '1110e83593c3aa33b361cef3bb4a743f51922fe574c7853c95abfa99101cea1b')
+sha256sums_x86_64=('3c21154efcaab9087cc2f1a3b304409385f0cc8abf52da39d779fc5e97acf8bc'
+                   '4be1d4f5f9f2faa5a5922da7dfc2feead9d8fd7cbc4c018e22958f48c8d79edd')
 
 package() {
     msg2 "Extracting files..."
