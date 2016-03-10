@@ -38,6 +38,6 @@ Target = linux-vfio-lts
 [Action]
 Description = Updating GRUB Config
 Depends = grub
-When = PosTransaction
+When = PostTransaction
 Exec = 'grub-mkconfig -o /boot/grub/grub.cfg'
 
