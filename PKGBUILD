@@ -1,9 +1,9 @@
-#Submitter: Gustavo Alvarez <sl1pkn07@gmaul.com>
-#Maintainer: Darshit Shah <darnir@gmail.com>
+# Submitter: Gustavo Alvarez <sl1pkn07@gmaul.com>
+# Maintainer: Darshit Shah <darnir@gmail.com>
 
 pkgname=python-pyftpdlib
-pkgver=1.4.0
-pkgrel=4
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="Python FTP server library"
 arch=('any')
 url="https://github.com/giampaolo/pyftpdlib"
@@ -11,7 +11,7 @@ license=('MIT')
 source=("https://github.com/giampaolo/pyftpdlib/archive/release-${pkgver}.tar.gz")
 depends=('python')
 optdepends=("python-pyopenssl: required for SSL/TLS connections"
-            "python-sendfile: required for using the sendfile() call")
+            "python-sendfile: required for using the sendfile call")
 md5sums=('43ef0dd20d65443d296dc27f128a6998')
 
 build(){
