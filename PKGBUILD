@@ -3,10 +3,10 @@
 
 pkgname=saxon-he
 _major=9.7
-_minor=0.3
+_minor=0.4
 pkgver=${_major}.${_minor}
 _pkgver=$(echo $pkgver | tr . -)
-pkgrel=2
+pkgrel=1
 pkgdesc="XSLT 2.0 / XPath 2.0 and 3.0 / XQuery 1.0 and 3.0 processor for Java - Home Edition"
 url="http://saxon.sourceforge.net/"
 license=('MPL')
@@ -17,7 +17,7 @@ conflicts=('java-saxon')
 source=("http://sourceforge.net/projects/saxon/files/Saxon-HE/${_major}/SaxonHE${_pkgver}J.zip"
         saxon-xslt.sh
         saxon-xquery.sh)
-md5sums=('021e4f116cf29ea25e8d3815545e32ed'
+md5sums=('8a215487d306cd909e9bcd28c126518e'
          '4197e2b5278a02e0aa7d383d9dc4f11d'
          '1a37078990f913ce7c37eb3a1bd39283')
 
