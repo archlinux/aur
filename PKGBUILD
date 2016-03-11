@@ -2,7 +2,7 @@
 
 pkgname=('cozy-management')
 _module='cozy_management'
-pkgver='0.0.18'
+pkgver='0.0.19'
 pkgrel=1
 pkgdesc="Module to help self hosted cozy management"
 url="https://github.com/cozy/python_cozy_management"
