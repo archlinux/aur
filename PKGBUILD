@@ -4,7 +4,7 @@
 pkgname=virtualbox-bin
 pkgver=5.0.16
 _build=105871
-pkgrel=1
+pkgrel=2
 pkgdesc='Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)'
 arch=('i686' 'x86_64')
 url='http://virtualbox.org/'
@@ -147,6 +147,19 @@ INSTALL_DIR='$_installdir'
 # VirtualBox version
 INSTALL_VER='$pkgver'
 INSTALL_REV='$_build'
+EOF
+
+  # Write modules-load.d configuration to ensure that modules are loaded at boot
+  install -D -m 0644 /dev/null "$pkgdir/etc/modules-load.d/virtualbox.conf"
+  cat > "$pkgdir/etc/modules-load.d/virtualbox.conf" <<EOF
+# Load virtualbox kernel modules at boot.
+# This file was installed by the virtualbox-bin AUR package
+
+# Base module
+vboxdrv
+
+# Host-based network
+vboxnetadp
 EOF
 
   # Register into DKMS
