@@ -1,4 +1,4 @@
 pkg
 src
 htop
-*.tar.xz
+*.pkg.tar

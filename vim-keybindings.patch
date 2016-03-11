@@ -1,5 +1,5 @@
 diff --git a/Action.c b/Action.c
-index 4ef06f4..cfbb073 100644
+index 3fc2217..09670fe 100644
 --- a/Action.c
 +++ b/Action.c
 @@ -382,7 +382,7 @@ static Htop_Reaction actionRedraw() {
@@ -11,7 +11,7 @@ index 4ef06f4..cfbb073 100644
     { .key = " Digits: ", .info = "incremental PID search" },
     { .key = "   F3 /: ", .info = "incremental name search" },
     { .key = "   F4 \\: ",.info = "incremental name filtering" },
-@@ -402,7 +402,7 @@ static struct { const char* key; const char* info; } helpRight[] = {
+@@ -403,7 +403,7 @@ static struct { const char* key; const char* info; } helpRight[] = {
     { .key = "  Space: ", .info = "tag process" },
     { .key = "      c: ", .info = "tag process and its children" },
     { .key = "      U: ", .info = "untag all processes" },
@@ -19,11 +19,11 @@ index 4ef06f4..cfbb073 100644
 +   { .key = "   F9 x: ", .info = "kill process/tagged processes" },
     { .key = "   F7 ]: ", .info = "higher priority (root only)" },
     { .key = "   F8 [: ", .info = "lower priority (+ nice)" },
- #if (HAVE_LIBHWLOC || HAVE_NATIVE_AFFINITY)
-@@ -410,11 +410,11 @@ static struct { const char* key; const char* info; } helpRight[] = {
+ #if (HAVE_LIBHWLOC || HAVE_LINUX_AFFINITY)
+@@ -411,11 +411,11 @@ static struct { const char* key; const char* info; } helpRight[] = {
  #endif
     { .key = "      e: ", .info = "show process environment" },
-    { .key = "      i: ", .info = "set IO prority" },
+    { .key = "      i: ", .info = "set IO priority" },
 -   { .key = "      l: ", .info = "list open files with lsof" },
 +   { .key = "      L: ", .info = "list open files with lsof" },
     { .key = "      s: ", .info = "trace syscalls with strace" },
@@ -34,7 +34,7 @@ index 4ef06f4..cfbb073 100644
     { .key = "  F10 q: ", .info = "quit" },
     { .key = NULL, .info = NULL }
  };
-@@ -542,6 +542,7 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -543,6 +543,7 @@ void Action_setBindings(Htop_Action* keys) {
     keys['I'] = actionInvertSortOrder;
     keys[KEY_F(6)] = actionExpandCollapseOrSortColumn;
     keys[KEY_F(18)] = actionExpandCollapseOrSortColumn;
@@ -42,7 +42,7 @@ index 4ef06f4..cfbb073 100644
     keys['<'] = actionSetSortColumn;
     keys[','] = actionSetSortColumn;
     keys['>'] = actionSetSortColumn;
-@@ -550,7 +551,7 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -551,7 +552,7 @@ void Action_setBindings(Htop_Action* keys) {
     keys['q'] = actionQuit;
     keys['a'] = actionSetAffinity;
     keys[KEY_F(9)] = actionKill;
@@ -51,7 +51,7 @@ index 4ef06f4..cfbb073 100644
     keys[KEY_RECLICK] = actionExpandOrCollapse;
     keys['+'] = actionExpandOrCollapse;
     keys['='] = actionExpandOrCollapse;
-@@ -560,12 +561,11 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -561,12 +562,11 @@ void Action_setBindings(Htop_Action* keys) {
     keys['S'] = actionSetup;
     keys['C'] = actionSetup;
     keys[KEY_F(2)] = actionSetup;
@@ -87,7 +87,7 @@ index f9b45d6..630648b 100644
           super->needsRedraw = true;
           return HANDLED;
 diff --git a/Panel.c b/Panel.c
-index dd94cea..568513e 100644
+index 1c45714..395665c 100644
 --- a/Panel.c
 +++ b/Panel.c
 @@ -86,6 +86,8 @@ struct Panel_ {
@@ -228,10 +228,10 @@ index 1af7377..92a76be 100644
  -------------------------------------------
  
 diff --git a/ScreenManager.c b/ScreenManager.c
-index a33d342..4cab2a3 100644
+index db3fdee..7c935bc 100644
 --- a/ScreenManager.c
 +++ b/ScreenManager.c
-@@ -295,7 +295,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
+@@ -279,7 +279,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
           continue;
        }
        case KEY_LEFT:
@@ -240,7 +240,7 @@ index a33d342..4cab2a3 100644
           if (!this->allowFocusChange)
              break;
           tryLeft:
-@@ -306,7 +306,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
+@@ -290,7 +290,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
              goto tryLeft;
           break;
        case KEY_RIGHT:
