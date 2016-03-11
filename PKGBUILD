@@ -2,11 +2,12 @@
 
 pkgname=icmptunnel-git
 pkgver=r58.7a1a5a8
-pkgrel=1
+pkgrel=2
 pkgdesc="Transparently tunnel your IP traffic through ICMP echo and reply packets."
 arch=('i686' 'x86_64')
 url="https://github.com/DhavalKapil/icmptunnel"
 license=('MIT')
+depends=('net-tools')
 makedepends=('git')
 provides=('icmptunnel')
 conflicts=('icmptunnel')
