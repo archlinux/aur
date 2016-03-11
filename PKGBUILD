@@ -2,7 +2,7 @@
 
 pkgname=icmptunnel-git
 pkgver=r58.7a1a5a8
-pkgrel=2
+pkgrel=3
 pkgdesc="Transparently tunnel your IP traffic through ICMP echo and reply packets."
 arch=('i686' 'x86_64')
 url="https://github.com/DhavalKapil/icmptunnel"
@@ -15,8 +15,9 @@ source=('git://github.com/DhavalKapil/icmptunnel.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/icmptunnel"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/icmptunnel"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" \
+        "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -26,14 +27,14 @@ prepare() {
 }
 
 build(){
-  cd "$srcdir/icmptunnel"
-  make
+    cd "$srcdir/icmptunnel"
+    make
 }
 
 package(){
-  cd "$srcdir/icmptunnel"
-  install -Dm0755 icmptunnel "$pkgdir"/usr/bin/icmptunnel 
+    cd "$srcdir/icmptunnel"
+    install -Dm0755 icmptunnel "$pkgdir"/usr/bin/icmptunnel
 
-  install -Dm0755 client.sh "$pkgdir"/usr/bin/icmptunnel-client
-  install -Dm0755 server.sh "$pkgdir"/usr/bin/icmptunnel-server
+    install -Dm0755 client.sh "$pkgdir"/usr/bin/icmptunnel-client
+    install -Dm0755 server.sh "$pkgdir"/usr/bin/icmptunnel-server
 }
