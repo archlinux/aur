@@ -5,18 +5,17 @@
 _pkgname=testng
 pkgname=java-${_pkgname}-doc
 pkgver=6.9.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Documentation for TestNG'
 arch=('any')
 url='http://testng.org/doc/index.html'
 license=('APACHE')
-makedepends=("maven" "java-environment>=7")
+makedepends=("maven" "java-environment")
 source=("https://github.com/cbeust/testng/archive/${pkgver}.zip")
 sha1sums=('2835b4a7604d9df18b14cc4f82b94d18be390022')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  export JAVA_HOME=/usr/lib/jvm/default
   mvn javadoc:javadoc
   rm target/site/apidocs/javadoc.sh
   rm target/site/apidocs/options
