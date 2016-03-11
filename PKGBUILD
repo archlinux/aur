@@ -24,8 +24,8 @@ sha256sums=('SKIP'
             'SKIP'
             '895c62846e6784dcc33171523a452cb474010d3fc9e7c351c27b8add4e9930ab'
             'fb04f30b904760d32c4c0b733d0a0b44359855db1fde9e7f5ca7d0b8b1be3e56'
-            'b1fa5f9a6f88eb67c2c3d9889df040b0f858d2acfc931320dc4350efa291c927'
-            'ad347c9732f8897497aa51b8969a0e01cd8cd4ebb9a0e873a2ff47c210f1d46c')
+            '3186d913a5fb483d2ae568068453e494d52df8f3f23f09d16afbbf916a63e4a4'
+            '8441bb532296485e5ed736d978c80339246d54540655d40ca3b5f3f30098b616')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 #pkgver() {
