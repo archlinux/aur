@@ -2,7 +2,7 @@
 # Contributer: Griffin Smith <wildgriffin [at] gmail [dot] com>
 # Contributor: Bill Durr <billyburly [at] gmail [dot] com>
 pkgname=crashplan-pro
-pkgver=4.5.2
+pkgver=4.6.0
 pkgrel=1
 pkgdesc="An business online/offsite backup solution"
 url="http://www.crashplan.com/business"
@@ -16,7 +16,7 @@ install=crashplan-pro.install
 source=(http://download1.us.code42.com/installs/linux/install/CrashPlanPRO/CrashPlanPRO_${pkgver}_Linux.tgz
         crashplan-pro
         crashplan-pro.service)
-sha256sums=('bc0431ed094c65643e8b2d25f2e5f15484c4c48a80b97da8c8183afe2be05895'
+sha256sums=('32877ccde9a721a54a976e4983f5ba8c80b8b05bae927f05570edbcb53626a5a'
             'b306d7da0dd41341512ce80ddcfb21bff8a9bb73ab5018696e69d08b89f7f1b6'
             'd8667e149439e4c6f35779a6d04ce5215530049579011eb1db5feb2d6976420e')
 
