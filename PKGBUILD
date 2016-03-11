@@ -2,9 +2,9 @@
 # Contributor: Frank Phillips <frankalso[at]gmail[dot]com>
 pkgname=fatrace
 pkgver=0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Reports file access events from all running processes."
-arch=('any')
+arch=('i686' 'x86_64')
 url="http://launchpad.net/fatrace"
 license=('GPL')
 depends=('python' 'powertop')
