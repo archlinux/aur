@@ -2,10 +2,10 @@
 
 pkgname=perl6-shell-command
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Common shell command replacements"
 arch=('any')
-depends=('perl6' 'perl6-file-find')
+depends=('perl6' 'perl6-file-find' 'perl6-file-which')
 checkdepends=('perl')
 makedepends=('alacryd' 'git')
 groups=('perl6')
@@ -28,7 +28,7 @@ package() {
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 
   msg2 'Installing documentation...'
-  install -Dm 644 README -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 
   msg2 'Installing...'
   install -dm 755 "$pkgdir/usr/share/perl6/vendor"
