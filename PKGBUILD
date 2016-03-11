@@ -1,6 +1,6 @@
 # Maintainer: James W. Barnett <jbarnet4 at tulane dot edu>
 pkgname=snap-pac
-pkgver=0.1
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Hooks and scripts for automating snapper snapshots on pacman transactions"
 arch=(any)
@@ -10,7 +10,7 @@ depends=(snapper)
 source=(${url}/archive/${pkgver}.tar.gz
         snap-pac.install)
 install="snap-pac.install"
-md5sums=('90a6687f9c070111cb256947f593f43f'
+md5sums=('d599ab01d2790f10cf68c97b23b205f8'
          'f830e3edf41a94a012fc2877f07acdfb')
 
 package() {
