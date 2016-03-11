@@ -33,9 +33,6 @@ package() {
         error "MODELLER is only available for i386 and x86_64!" ;;
     esac
 
-    # Change directory permisssions
-    find . -type d -exec chmod 755 {} +
-
     # Installing Modeller files
     install -dm755 "$pkgdir/$_MODINSTALL/"{bin,lib} "$pkgdir/usr/include"
     cp -a README INSTALLATION modlib src "$pkgdir/$_MODINSTALL"
@@ -81,4 +78,8 @@ package() {
     done
     ln -s "$_MODINSTALL/lib/$_EXECUTABLE_TYPE/python2.5/_modeller.so" "$pkgdir/usr/lib/python2.7/site-packages/_modeller.so"
     ln -s "$_MODINSTALL/lib/$_EXECUTABLE_TYPE/python3.3/_modeller.so" "$pkgdir/usr/lib/python3.5/site-packages/_modeller.so"
+
+    # Adjust directory permisssions and ownership
+    find "$pkgdir" -type d -exec chmod 755 {} +
+    find "$pkgdir" -exec chown --no-dereference 0:0 {} +
 }
