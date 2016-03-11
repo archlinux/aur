@@ -1,8 +1,8 @@
 pkgbase=python-sphinxcontrib-plantuml
 pkgname=(python-sphinxcontrib-plantuml python2-sphinxcontrib-plantuml)
 _pyname=sphinxcontrib-plantuml
-pkgver=0.6
-pkgrel=2
+pkgver=0.7
+pkgrel=1
 arch=(any)
 pkgdesc="Sphinx 'plantuml' extension"
 url='https://pypi.python.org/pypi/sphinxcontrib-plantuml'
@@ -32,4 +32,4 @@ package_python2-sphinxcontrib-plantuml() {
   python2 setup.py install --root="$pkgdir" --optimize=1
 }
 
-sha256sums=('a88c5fa6ba5a4ed6150cde3cd1635e3c9fe7f17a99bf16777947dece59287072')
+sha256sums=('9b33b30ceb3a53c8af3291d66b902821a4b81117f37d2250a8ac05e270be3e04')
