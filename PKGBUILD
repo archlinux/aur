@@ -29,11 +29,11 @@ _aleph_ver_major=$(echo "$pkgver" | cut -d "." -f 1)
 _aleph_url_root="http://download.lulzbot.com/Software/Cura/Packages/Cura_${_aleph_ver_major}"
 
 if [ "$CARCH" == x86_64 ]; then
-	source+=(${_aleph_url_root}/cura_${pkgver}-8bed_amd64.deb)
-	sha1sums+=('458528f3e1ea5033d0a2efdc10c9108184791a15')
+    source+=(${_aleph_url_root}/cura_${pkgver}-8bed_amd64.deb)
+    sha1sums+=('458528f3e1ea5033d0a2efdc10c9108184791a15')
 elif [ "$CARCH" == i686 ]; then
-	source+=(${_aleph_url_root}/cura_${pkgver}-8bed_i386.deb)
-	sha1sums+=('fd6ed10d0b4fea59129be2596c044021ca94c648')
+    source+=(${_aleph_url_root}/cura_${pkgver}-8bed_i386.deb)
+    sha1sums+=('fd6ed10d0b4fea59129be2596c044021ca94c648')
 fi
 
 source+=(arch_aleph_patch.diff)
@@ -45,8 +45,8 @@ prepare()
     # where all the essentials reside within the debian package
     tar zxf "${srcdir}/data.tar".gz -C "${srcdir}"
 
-	# remove python-power since we have it in the deps:
-	rm -rv "${srcdir}"/usr/share/cura/power/
+    # remove python-power since we have it in the deps:
+    rm -rv "${srcdir}"/usr/share/cura/power/
     rm -rv "${srcdir}"/usr/share/cura/Cura/util/Power
 
     # Apply the patchset, which mainly changes any ambiguous references
@@ -56,5 +56,5 @@ prepare()
 
 package()
 {
-	cp -r "${srcdir}"/usr "${pkgdir}"/usr
+    cp -r "${srcdir}"/usr "${pkgdir}"/usr
 }
