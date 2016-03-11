@@ -10,9 +10,9 @@
 
 pkgbase=linux-libre-rt
 _pkgbasever=4.4-gnu
-_pkgver=4.4.3-gnu
+_pkgver=4.4.4-gnu
 _rtbasever=4.4
-_rtpatchver=rt9
+_rtpatchver=rt11
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -35,8 +35,8 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz.sign"
         "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz"
         "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz.sign"
-        "http://www.kernel.org/pub/linux/kernel/projects/rt/${_rtbasever}/patch-${_pkgver%-*}-${_rtpatchver}.patch.xz"
-        "http://www.kernel.org/pub/linux/kernel/projects/rt/${_rtbasever}/patch-${_pkgver%-*}-${_rtpatchver}.patch.sign"
+        "http://www.kernel.org/pub/linux/kernel/projects/rt/${_rtbasever}/older/patch-${_pkgver%-*}-${_rtpatchver}.patch.xz"
+        "http://www.kernel.org/pub/linux/kernel/projects/rt/${_rtbasever}/older/patch-${_pkgver%-*}-${_rtpatchver}.patch.sign"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm"
@@ -64,9 +64,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0009-ARM-dts-dove-add-Dove-divider-clocks.patch')
 sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'SKIP'
-            '1c67293bf85fef5e479965ee0e1d0281a7391bb29ada5479da93aead82bd6aa2'
+            '5b52578afb3bab7a50748e9b8e26bd9df851b3dcfbb55079d2abf3d3ad46aaff'
             'SKIP'
-            '11656950d144149af95bdb4d7d31a9fbdbe514d9634885efc868794f18df6b27'
+            '819505e059c12bc3c37bb38011fa3c2fa7c554a29bbdd7a02b473a1ec2757c4f'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
