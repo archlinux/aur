@@ -5,7 +5,7 @@
 
 _zipname="GeckoCIRCUITS"
 pkgname="geckocircuits"
-pkgver=1.72.b54
+pkgver=1.72.b55
 pkgrel=1
 pkgdesc="Powerful Circuit Simulator developed by PES/ETH Zürich"
 arch=('any')
@@ -16,7 +16,7 @@ depends=('java-environment>=6')
 makedepends=('imagemagick')
 provides=("${pkgname}")
 source=("http://www.gecko-simulations.com/downloads/${_zipname}.zip")
-sha256sums=('63c3eae22f4a1028490acaecac46fec4d6b5fd850c9873d7b49b6dde80fc1b12')
+sha256sums=('0057f86cbc0958dacb50996f5a58e2664b60873208f8a490267fcc83513f09c4')
 
 _geckocircuits_desktop="[Desktop Entry]
 Encoding=UTF-8
