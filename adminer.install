@@ -1,17 +1,17 @@
-TEXT='
-If you want to access adminer interface by your apache server, run following command as root:\n
-echo "Include conf/extra/httpd-adminer.conf" >> /etc/httpd/conf/httpd.conf\n\n
+read -r -d '' MESSAGE << EOM
+If you use apache and want to enable the adminer interface just run the
+following command as root:
 
-And restart your apache running "rc.d restart httpd"\n
-Or (if you are using systemd) "systemctl restart httpd"\n\n
+echo "Include conf/extra/httpd-adminer.conf" >> /etc/httpd/conf/httpd.conf
 
-After you can browse adminer on http://localhost/adminer\n';
-
+Restart apache (systemctl restart httpd) and then you can access adminer on
+http://localhost/adminer.
+EOM
 
 post_install() {
-	echo -e $TEXT;
+	echo -e "$MESSAGE";
 }
 
 post_upgrade() {
-	echo -e $TEXT;
+	echo -e "$MESSAGE";
 }
