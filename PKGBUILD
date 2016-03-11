@@ -2,7 +2,7 @@
 # Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
 
 pkgname=android-support
-pkgver=r23.2
+pkgver=r23.2.1
 pkgrel=1
 pkgdesc='Android Support Package'
 arch=('any')
@@ -11,8 +11,8 @@ license=('custom')
 depends=('android-sdk')
 options=('!strip')
 source=("http://dl-ssl.google.com/android/repository/support_${pkgver}.zip" 'source.properties')
-sha1sums=('888574a30310ce6d786388b1086cc09d10d9e879'
-          'f4466e04b6c97800c274180a168ac13fea4a5afd')
+sha1sums=('41121bbc412c2fce0be170d589d20cfa3e78e857'
+          '43f89b499226845fccb75bd3deab57fb16a18153')
 
 package() {
   mkdir -p "${pkgdir}/opt/android-sdk/extras/android/"
