@@ -1,7 +1,7 @@
 # Maintainer: Daniel Sandman <revoltism@gmail.com>
 
 pkgname=systemd-manager-git
-pkgver=0
+pkgver=r29.724a5e2
 pkgrel=1
 pkgdesc="A program written with RUST that allow the user to manage their systemd services via a GTK3 GUI."
 arch=('i686' 'x86_64')
