@@ -2,7 +2,7 @@
 
 pkgname=abricotine-bin
 _binname=Abricotine
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A markdown editor with inline preview"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ provides=('abricotine')
 conflicts=('abricotine')
 source_i686=("https://github.com/brrd/${_binname}/releases/download/${pkgver}/${_binname}-linux-ia32.zip")
 source_x86_64=("https://github.com/brrd/${_binname}/releases/download/${pkgver}/${_binname}-linux-x64.zip")
-sha256sums_i686=('be91a67d6a7b6c51963d0723e5464c2b350d23278028161f004b76748e387e60')
-sha256sums_x86_64=('db4189d97dabee6f9394338a104f1ddeb169c5f80bf8afdea0dbe80c209cad08')
+sha256sums_i686=('475dcf07adcc2bf76a68b3bb48b6460071038c577daf38413b5a99f532c01dfc')
+sha256sums_x86_64=('702c9255d10abc273e7b43c53f6d71c256b4984dcdb47e07a1a7b11617cec257')
 
 package() {
   cd "${srcdir}/${_binname}-linux-"*
