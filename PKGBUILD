@@ -15,9 +15,12 @@ depends=('glib2')
 optdepends=('python: python support'
             'python2: python2 support')
 backup=("etc/$pkgname/config.py")
-source=("http://www.salilab.org/modeller/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('62d31d27d437cf48458a997f977caab4')
-sha512sums=('5d3dba6134a9583d269ae0df93b05e536a753e00568c1a5562cf1e28bff07eb31185404f4a8b355832096aeb7ea320307e7ec620fc09e56c026c8143c3e4104a')
+source=("http://www.salilab.org/modeller/$pkgver/$pkgname-$pkgver.tar.gz"
+        "LICENSE")
+md5sums=('62d31d27d437cf48458a997f977caab4'
+         '241257feba9f2242ff445a18acab391f')
+sha512sums=('5d3dba6134a9583d269ae0df93b05e536a753e00568c1a5562cf1e28bff07eb31185404f4a8b355832096aeb7ea320307e7ec620fc09e56c026c8143c3e4104a'
+            '5ac8aeb58148a5ad387d3f2730036bd91a8e5bd6cb921dd2d2601df533fd7d6b5355f4fdc172926e76036f845873ad0d0718d1b5d13db50ade2ee5707df00c7a')
 
 package() {
     _MODINSTALL="/usr/lib/modeller"
@@ -78,6 +81,9 @@ package() {
     done
     ln -s "$_MODINSTALL/lib/$_EXECUTABLE_TYPE/python2.5/_modeller.so" "$pkgdir/usr/lib/python2.7/site-packages/_modeller.so"
     ln -s "$_MODINSTALL/lib/$_EXECUTABLE_TYPE/python3.3/_modeller.so" "$pkgdir/usr/lib/python3.5/site-packages/_modeller.so"
+
+    # install license
+    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # Adjust directory permisssions and ownership
     find "$pkgdir" -type d -exec chmod 755 {} +
