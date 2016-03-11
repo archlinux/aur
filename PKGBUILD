@@ -4,7 +4,7 @@
 
 pkgname=shinken
 pkgver=2.4.3
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source Nagios like tool, redesigned and rewritten from scratch. Its main goal is to meet today's system monitoring requirements while still following compatibility to Nagios"
 arch=('any')
 url='http://www.shinken-monitoring.org/'
@@ -120,7 +120,7 @@ package() {
     cd "$srcdir/shinken-${pkgver}"
 
     mkdir -p "$pkgdir/usr/lib/python2.7/site-packages/"
-    cp -r build/lib/shinken $pkgdir/usr/lib/python2.7/site-packages/
+    cp -r build/lib/shinken "$pkgdir/usr/lib/python2.7/site-packages/"
 
     mkdir -p "$pkgdir/etc/default"
     cp -r etc/ "$pkgdir/etc/shinken/"
