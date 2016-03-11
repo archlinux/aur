@@ -3,8 +3,8 @@
 _pkgname=pingfs
 pkgname="${_pkgname}-git"
 pkgver=20150802.rg9b5de0d
-pkgrel=1
-pkgdesc="'True cloud storage' -- a filesystem where the data is stored only in the Internet itself, as ICMP Echo packets (pings) travelling from you to remote servers and back again. (Use with care. It's only for hackvalue, not for productive use.)"
+pkgrel=2
+pkgdesc="'True cloud storage' -- a fuse filesystem where the data is stored only in the Internet itself, as ICMP Echo packets (pings) travelling from you to remote servers and back again. (Use with care. It's only for hackvalue, not for productive use.)"
 arch=('i686' 'x86_64' 'arm' 'arm64')
 url="http://code.kryo.se/pingfs/"
 license=('other')
