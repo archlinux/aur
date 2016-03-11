@@ -1,22 +1,21 @@
 # Maintainer: Edison Ibañez <edison@openmailbox.org>
 
-pkgname=pilas-engine
-my_pkgname=pilas
-pkgver=1.4.1
+pkgname=python2-rows
+_pkgname=rows
+pkgver=0.1.1
 pkgrel=1
-pkgdesc="Un motor para hacer videojuegos de manera sencilla en Python.  An engine to make games in an easy way with Python."
+pkgdesc="A common, beautiful interface to tabular data, no matter the format"
 arch=('any')
-depends=('python2' 'python2-setuptools' 'python2-pyqt4' 'box2d' 'python2-pybox2d' 'python2-pygame')
+depends=('python2' 'python2-unicodecsv' 'python2-click' 'python2-requests' 'python2-lxml' 'python2-xlrd' 'python2-xlwt' 'python2-openpyxl')
 makedepends=('mercurial')
-conflicts=('pilas-hg' 'pilas-git', 'pilas-engine-git')
-license=('LGPL')
-url="http://www.pilas-engine.com.ar"
+license=('GPLv3')
+url="https://github.com/turicas/rows"
 
-source=("https://github.com/hugoruscitti/${my_pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('0ac1bfdc3c727d23dc25568f91dd02a1')
+source=("https://github.com/turicas/${_pkgname}/archive/v${pkgver}.tar.gz")
 
 package() {
-    cd $srcdir/$my_pkgname-$pkgver
+    cd $srcdir/$_pkgname-$pkgver
     python2 setup.py build
     python2 setup.py install --prefix=/usr --root "${pkgdir}" || return 1
 }
+md5sums=('a1bc82f02bda5a1f33139d11b1ecdac8')
