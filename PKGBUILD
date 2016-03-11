@@ -1,7 +1,7 @@
 # Maintainer: Nicolas F. <aur@fratti.ch>
 pkgname=snowmix
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.5.1
+pkgrel=1
 pkgdesc="Dynamic audio and video feed mixer"
 arch=('i686' 'x86_64')
 url="https://snowmix.sourceforge.net"
@@ -11,19 +11,9 @@ makedepends=('autoconf' 'automake' 'libtool' 'pkg-config' 'awk')
 depends=('openbsd-netcat' 'cairo' 'pango' 'gst-libav' 'sdl' 'freeglut' 'libpng'
          'tcl' 'bwidget' 'glu')
 source=("https://downloads.sourceforge.net/sourceforge/snowmix/Snowmix-$pkgver.tar.gz"
-        "snowmix.sh"
-        "fix-tcldir.patch"
-        "fix-ini-data.patch")
-sha256sums=('f5e6f250c04ff553470fca8cb22b59dbb54afd45a989b98b1ba51302886d3870'
-            'fce726356bb10aafa30aff1beebb8750159e45c356091330eb3566866a78383c'
-            'd4d35a310aa28f0ac0a399305cd86e35fecab7520e74364acbbb2e18a2b53908'
-            '96f2c7d82e59728b14d1506440a8a76086b458eb515f02c642e5d43e914865d3')
-
-prepare() {
-  cd "Snowmix-$pkgver"
-  patch -p0 -i "$srcdir"/fix-tcldir.patch
-  patch -p0 -i "$srcdir"/fix-ini-data.patch
-}
+        "snowmix.sh")
+sha256sums=('0f39911243741f9c64a1994c7a0523db41e2e6e24efacd634d0d1f33c9c3e7bd'
+            'fce726356bb10aafa30aff1beebb8750159e45c356091330eb3566866a78383c')
 
 build() {
   cd "Snowmix-$pkgver"
