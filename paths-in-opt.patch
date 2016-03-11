@@ -1,5 +1,5 @@
 diff --git a/include/ClientGUI.py b/include/ClientGUI.py
-index 95cf08c..e5b8850 100755
+index a446b8a..869ce54 100755
 --- a/include/ClientGUI.py
 +++ b/include/ClientGUI.py
 @@ -154,7 +154,7 @@ class FrameGUI( ClientGUICommon.FrameThatResizes ):
@@ -21,7 +21,7 @@ index 95cf08c..e5b8850 100755
                      
                      time_waited = 0
 diff --git a/include/HydrusConstants.py b/include/HydrusConstants.py
-index 8164709..605ef04 100755
+index fd6131e..1c3a677 100755
 --- a/include/HydrusConstants.py
 +++ b/include/HydrusConstants.py
 @@ -3,24 +3,9 @@ import sys
@@ -51,8 +51,8 @@ index 8164709..605ef04 100755
 +BIN_DIR = "/opt/hydrus/bin"
  DB_DIR = os.path.join( BASE_DIR, 'db' )
  CLIENT_ARCHIVES_DIR = os.path.join( DB_DIR, 'client_archives' )
- CLIENT_FILES_DIR = os.path.join( DB_DIR, 'client_files' )
-@@ -29,12 +14,16 @@ CLIENT_THUMBNAILS_DIR = os.path.join( DB_DIR, 'client_thumbnails' )
+ CLIENT_CACHE_DIR = os.path.join( DB_DIR, 'client_cache' )
+@@ -30,12 +15,16 @@ CLIENT_THUMBNAILS_DIR = os.path.join( DB_DIR, 'client_thumbnails' )
  SERVER_THUMBNAILS_DIR = os.path.join( DB_DIR, 'server_thumbnails' )
  CLIENT_UPDATES_DIR = os.path.join( DB_DIR, 'client_updates' )
  SERVER_UPDATES_DIR = os.path.join( DB_DIR, 'server_updates' )
