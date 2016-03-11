@@ -8,17 +8,17 @@
 # The build script generates and updates the pkgver and _kernel* variables.
 #
 pkgname="zfs-git"
-pkgver=0.6.5.4_r0_g1ffc4c1_4.4.3_1
+pkgver=0.6.5.5_r0_g504ff59_4.4.5_1
 pkgrel=1
 license=('CDDL')
 
 # Used incase the i686 and x86_64 linux packages get out of sync with the
 # PKGREL. This occurred on January 31, 2014 where i686 was versioned at
 # 3.12.9-1 and x86_64 was versioned at 3.12.9-2.
-_kernel_version_x32="4.4.3-1"
-_kernel_version_x32_full="4.4.3-1"
-_kernel_version_x64="4.4.3-1"
-_kernel_version_x64_full="4.4.3-1"
+_kernel_version_x32="4.4.5-1"
+_kernel_version_x32_full="4.4.5-1"
+_kernel_version_x64="4.4.5-1"
+_kernel_version_x64_full="4.4.5-1"
 
 if [[ $CARCH == "i686" ]]; then
     _kernel_version=${_kernel_version_x32}
@@ -33,7 +33,7 @@ depends=("spl-git" "zfs-utils-git" "linux=${_kernel_version}")
 makedepends=("git" "linux-headers=${_kernel_version}")
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/zfs.git#commit=1ffc4c15")
+source=("git+https://github.com/zfsonlinux/zfs.git#commit=504ff597")
 groups=("archzfs-git")
 md5sums=('SKIP')
 replaces=("zfs")
