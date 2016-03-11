@@ -7,6 +7,9 @@ post_install() {
   done
   popd > /dev/null
   fc-cache -s
+  echo "Please review /var/share/licenses/emoji-one-color-font/LICENSE.md for the attribution requirements when using this font."
+  echo "SVG in OpenType (colour) fonts are currently only supported by Mozilla software. Other software will fallback to B&W glyphs."
+
 }
 
 post_upgrade() {
