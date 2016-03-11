@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=perl6-inline-perl5
-pkgver=0.3
+pkgver=0.5
 pkgrel=1
 pkgdesc="Use Perl 5 code in a Perl 6 program"
 arch=('i686' 'x86_64')
