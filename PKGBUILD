@@ -25,6 +25,11 @@ pkgver() {
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd $pkgname
+  sed -i 's|^\(ExecStart.*\) $DAEMON_OPTS|\1 -F/etc/sslh.conf|' scripts/systemd.sslh.service
+}
+
 build() {
   cd $pkgname
   make VERSION=\"v$pkgver\" USELIBCAP=1 USELIBCONFIG=1 USESYSTEMD=1
