@@ -66,7 +66,7 @@ md5sums=('0afe4a7e589a0de43b7b54aa055a4351'
 	 '845cab784b50f1666bbf89d7435ac7af'
 	 '79031b58828462dec53a9faed9ddb36a'
 	 '6696dc228a567506bca3096b5197c9db'
-         'SKIP')
+	 'SKIP')
 
 build() {
   local _src_dir="${srcdir}/nginx-$_nginx_ver"
