@@ -2,7 +2,7 @@
 
 pkgname=cgo-git
 pkgver=0.r40.gc1ed336
-pkgrel=1
+pkgrel=2
 pkgdesc='A terminal gopher client'
 arch=('i686' 'x86_64')
 url='https://github.com/kieselsteini/cgo'
@@ -15,9 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd cgo
-	printf '0.r%s.g%s' \
-		$(git rev-list --count HEAD) \
-		$(git rev-parse --short HEAD)
+	printf '0.r%s.g%s' $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 build() {
@@ -28,7 +26,7 @@ build() {
 package() {
 	cd cgo
 	make DESTDIR="$pkgdir" PREFIX=/usr install
-	install -Dm644 cgo.c "$pkgdir/usr/share/licences/cgo-git/cgo.c"
+	install -Dm644 cgo.c "$pkgdir/usr/share/licenses/cgo-git/cgo.c"
 	install -Dm644 cgo.1 "$pkgdir/usr/share/man/man1/cgo.1"
 	install -Dm644 cgorc "$pkgdir/usr/share/doc/cgo-git/cgorc"
 }

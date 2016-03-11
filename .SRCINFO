@@ -1,7 +1,7 @@
 pkgbase = cgo-git
 	pkgdesc = A terminal gopher client
 	pkgver = 0.r40.gc1ed336
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kieselsteini/cgo
 	arch = i686
 	arch = x86_64
