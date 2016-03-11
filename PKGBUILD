@@ -1,8 +1,8 @@
 # Maintainer: James W. Barnett <jbarnet4 at tulane dot edu>
 pkgname=snap-pac
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
-pkgdesc="Hooks and scripts for automating snapper snapshots on pacman transactions"
+pkgdesc="Make pacman automatically use snapper to create pre/post snapshots like openSUSE's YaST"
 arch=(any)
 url="https://github.com/wesbarnett/snap-pac"
 license=('LGPL')
@@ -10,7 +10,7 @@ depends=(snapper)
 source=(${url}/archive/${pkgver}.tar.gz
         snap-pac.install)
 install="snap-pac.install"
-md5sums=('d599ab01d2790f10cf68c97b23b205f8'
+md5sums=('1c72f8e0d5ccc61ab4e14907346af282'
          'f830e3edf41a94a012fc2877f07acdfb')
 
 package() {
