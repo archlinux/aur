@@ -4,7 +4,7 @@
 # Adapted/copied from netbeans-cpp 6.9.1 (Thanks wimvdh)
 pkgname=netbeans-cpp
 pkgver=8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Netbeans IDE development platform - C/C++ only"
 arch=('i686' 'x86_64')
 url="https://netbeans.org/"
@@ -20,8 +20,8 @@ source_x86_64=(netbeans-$pkgver-cpp-linux.sh::http://download.netbeans.org/netbe
 source_i686=(netbeans-$pkgver-cpp-linux.sh::http://download.netbeans.org/netbeans/$pkgver/final/bundles/netbeans-$pkgver-cpp-linux-x86.sh)
 source=(netbeans.desktop)
 md5sums=('eb9c35b558997f62a52bddad16dba248')
-md5sums_i686=('0a4025cf877347b5f48707fdda238255')
-md5sums_x86_64=('3a437c52d22dd068545e55171cbcf7fa')
+md5sums_i686=('3c3d7f2ac6a2e5a4fa380611aac3a6c5')
+md5sums_x86_64=('0d58114beabc57b134abeaf9c66adbf7')
 
 package() {
   mkdir -p $pkgdir/usr/share/netbeans
