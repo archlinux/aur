@@ -1,0 +1,22 @@
+pkgbase = hyper-bin
+	pkgdesc = A hypervisor-agnostic Docker runtime
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://hyper.sh
+	arch = any
+	license = Apache
+	makedepends = rpmextract
+	depends = automake
+	depends = cpio
+	depends = device-mapper
+	depends = sqlite
+	depends = qemu
+	source = hyper-0.5.rpm::https://s3.amazonaws.com/hyper-install/hyper-0.5-1.fc23.x86_64.rpm
+	source = hyperstart-0.5.rpm::https://s3.amazonaws.com/hyper-install/hyperstart-0.5-1.fc23.x86_64.rpm
+	md5sums = efc2c8e6945673ff0048a3b0fa579231
+	md5sums = 6a1c80a26ecc96fa2bfbc81a613c5482
+
+pkgname = hyper-bin
+
+pkgname = hyperstart-bin
+
