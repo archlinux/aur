@@ -1,0 +1,25 @@
+
+pre_install() {
+    return
+}
+
+post_install() {
+    return
+}
+
+pre_upgrade() {
+    return
+}
+
+post_upgrade() {
+    return
+}
+
+pre_remove() {
+    /usr/bin/rm -v /etc/snapper/.snap-pac-pre
+    echo "NOTE: No post snapshot will be performed for this transaction, since you are removing the pacman hooks."
+}
+
+post_remove() {
+    return
+}
