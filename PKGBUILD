@@ -6,7 +6,7 @@
 
 pkgname=v8
 pkgver=4.9.330
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and modern Javascript engine used in Google Chrome."
 arch=("i686" "x86_64")
 url="https://code.google.com/p/v8/"
@@ -82,6 +82,7 @@ package() {
 
   install -Dm755 out/Release/d8 $pkgdir/usr/lib/v8/d8
   install -Dm644 out/Release/natives_blob.bin $pkgdir/usr/lib/v8/natives_blob.bin
+  install -Dm644 out/Release/snapshot_blob.bin $pkgdir/usr/lib/v8/snapshot_blob.bin
   install -Dm755 out/Release/lib/libv8.so $pkgdir/usr/lib/v8/libv8.so
   ln -s v8/libv8.so $pkgdir/usr/lib/libv8.so
   install -Dm755 $srcdir/d8 $pkgdir/usr/bin/d8
