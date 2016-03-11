@@ -5,13 +5,13 @@
 
 pkgname=ghost
 pkgver=0.7.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open, simple blogging platform"
 arch=('any')
 url="http://ghost.org"
 license=('MIT')
 makedepends=('unzip')
-depends=('nodejs>=0.12' 'npm')
+depends=('nodejs>=0.12' 'npm' 'python')
 backup=('srv/ghost/config.js')
 install=ghost.install
 source=(https://ghost.org/zip/$pkgname-$pkgver.zip
