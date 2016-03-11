@@ -32,19 +32,17 @@ prepare() {
 
 build() {
     cd "$pkgname"
-    HOME="$srcdir/install"  ./bootstrap.pl
+    RAKUDO_PREFIX="$srcdir/install/" ./bootstrap.pl
 }
 
 package() {
-    mkdir -p "$pkgdir/usr/share/perl6/"
+    # Move the installation into /usr/share/perl6/vendor
+    mkdir -p "$pkgdir/usr/share/perl6"
+    cp -r "$srcdir/install/site/" "$pkgdir/usr/share/perl6"
+    mv "$pkgdir/usr/share/perl6/site" "$pkgdir/usr/share/perl6/vendor"
 
-    # Move the installation into +/usr/share/perl6/vendor
-    _perl6dir=$(HOME="$srcdir/install" perl6 -e "put CompUnit::RepositoryRegistry.repository-for-name('home')" | cut -d'#' -f2-);
-    cp -rT "$_perl6dir" "$pkgdir/usr/share/perl6/vendor"
-
-    # Remove the panda repo files. Vendor is not writable.
-    cd "$pkgdir/usr/share/perl6/"
-    rm -d vendor/repo.lock vendor/panda/state vendor/panda
+    # Remove the lockfile, vendor is not a writable repo.
+    rm "$pkgdir/usr/share/perl6/vendor/repo.lock"
 
     # Make symlinks to the panda binaries
     mkdir -p "$pkgdir/usr/bin"
