@@ -10,7 +10,7 @@
 # -Steam patch, Crossover Hack version (see https://bugs.winehq.org/show_bug.cgi?id=39403 )
 
 pkgname=wine-gaming-nine
-pkgver=1.9.4
+pkgver=1.9.5
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
@@ -25,7 +25,7 @@ source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbas
         steam.patch
         wbemprox_query_v2.patch
         )
-sha1sums=('679d51220b9cf86eee04bbf5f69d42415e5d004a'
+sha1sums=('1caa585b63f21a68835226c2c201deda8d9c5093'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
           '0f4ac455436d5714a2cf0b537ed25f4fa5c1a7fd'
           'f3febb8836f38320742a546c667106608d4c4395'
@@ -87,6 +87,7 @@ makedepends=(autoconf ncurses bison perl fontforge flex
   dri2proto
   dri3proto
   xf86driproto
+  pkg-config
 )
 
 optdepends=(
@@ -109,7 +110,8 @@ optdepends=(
   libva           lib32-libva
   gtk3            lib32-gtk3
   cups
-  samba           dosbox
+  samba
+  dosbox
 )
 
 if [[ $CARCH == i686 ]]; then
