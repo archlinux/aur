@@ -4,7 +4,7 @@
 # We're getting this from Debian Stable (Jessie)
 
 _debname=iceweasel
-_debver=38.6.1esr
+_debver=38.7.0esr
 _debrel=1~deb8u1
 _debrepo=http://security.debian.org/debian-security/pool/updates/main/i/
 
@@ -21,22 +21,22 @@ provides=("$_debname"="$_debver")
 depends=('gtk2' 'icu' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'alsa-lib' 'libnotify' 'desktop-file-utils' 'hicolor-icon-theme' 'libvpx' 'libevent' 'nss' 'hunspell' 'sqlite')
 
 optdepends=('iceweasel-sync: Speed up Iceweasel using tmpfs'
-	    'mozplugger: A Mozilla & Firefox multimedia plugin.'
-	    'mozilla-searchplugins: extra search plugins'
-	    'iceweasel-extension-archsearch: Iceweasel Arch search engines (AUR, Pkgs, BBS, Wiki, etc.)'
+            'mozplugger: A Mozilla & Firefox multimedia plugin.'
+            'mozilla-searchplugins: extra search plugins'
+            'iceweasel-extension-archsearch: Iceweasel Arch search engines (AUR, Pkgs, BBS, Wiki, etc.)'
             'iceweasel-extension-archforumsearch-it: Iceweasel search engines for Arch Linux Italian forum'
-	    'gst-libav: h.264 video'
-	    'gst-plugins-good: h.264 video'
-	    'networkmanager: Location detection via available WiFi networks')
+            'gst-libav: h.264 video'
+            'gst-plugins-good: h.264 video'
+            'networkmanager: Location detection via available WiFi networks')
 
 install=iceweasel.install
 
  if [ "$CARCH" = "x86_64" ]; then
     _debarch=amd64
-    sha256sums=('e998c499a33abb034cace55659a3eb4b099381da3d6d165da68fea1e13d617b2')
+    sha256sums=('4c24364aab9351313bf38353cb2813f62e7d9197a5d4a799850227b1762e95c7')
 else
     _debarch=i386
-    sha256sums=('4404ab3dfddc8a6ea5c5a2816e7ae7be7d906c69e0a41b4f5982067cefefdec2')
+    sha256sums=('7dcd297eb8c1175da237374a9e5ebb99866621a615740556cf1ceac4ef2c22de')
  fi
 
 source=("${_debrepo}/${_debname}/${_debname}_${_debver}-${_debrel}_${_debarch}.deb")
