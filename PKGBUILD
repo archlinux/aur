@@ -4,17 +4,15 @@
 
 pkgname=cloudabi-utils
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="a number of libraries and utilities that can be used to easily start CloudABI programs"
 arch=('x86_64' 'aarch64')
 url='https://github.com/NuxiNL/cloudabi-utils'
 license=('GPL')
 depends=('glibc' 'libyaml')
 makedepends=('cmake')
-source=("https://github.com/NuxiNL/cloudabi-utils/archive/v$pkgver.tar.gz")
-sha512sums=(
-	'5409323c51b52440c665e355f7cde76024f4140fea8e5482a5c46927120ab97ed7b770cb2ebc587397f07b30f424072ed6548ca94aaaa28929473368315fc28c'
-)
+source=("https://nuxi.nl/distfiles/$pkgname/$pkgname-$pkgver.tar.xz")
+sha512sums=('fcfbbe5fa3e75d21f8fa4bd3988221ac4704ea6c6ed0f98abea40c04de7604c2f362ebfce835c3c9e0cf0e49c1fb8ae1d824dfce48b6c7f9842f0487ea742fc3')
 
 prepare() {
 	mkdir -p "$srcdir/build"
