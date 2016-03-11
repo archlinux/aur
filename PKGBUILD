@@ -1,13 +1,13 @@
 # Maintainer: webstrand <webstrand at gmail dot com>
 pkgname=perl6-panda
-pkgver=2015.12.r0.g4709e93
+pkgver=2016.02.r0.g5f3781d
 pkgrel=1
 pkgdesc="Perl 6 module manager."
 arch=('any')
 url="http://moarvm.com/"
 license=(MIT)
-depends=("rakudo>=2015.12")
-source=("$pkgname::git+https://github.com/tadzik/panda.git#tag=2015.12"
+depends=("rakudo>=2016.02")
+source=("$pkgname::git+https://github.com/tadzik/panda.git#tag=2016.02"
         "PERL6LIB_bootstrap.patch")
 sha512sums=('SKIP'
             'f4bf18b5f25c809e275a98db69310328e600694722c3f6a7da0ed28e473f6432566bb8b820d1e770bcf0b7083be69913ca6331da8d8d8c107dda4c609bc52837')
