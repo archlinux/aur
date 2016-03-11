@@ -2,7 +2,7 @@
 # Contributor: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani at gmail dot com>
 
 pkgname=krita-git
-pkgver=3.0.89.r39914.f04e55f
+pkgver=3.0.89.r40008.e05682d
 pkgrel=1
 pkgdesc="A free digital painting application. Digital Painting, Creative Freedom!. (GIT Version)"
 arch=('i686' 'x86_64')
@@ -52,8 +52,6 @@ prepare() {
     mogrify "${i}" &> /dev/null
   done
   export IFS=' '
-
-  sed 's|if (!isnan(value))|if (!std::isnan(value))|' -i krita/libs/widgets/KoUnitDoubleSpinBox.cpp
 }
 
 build() {
