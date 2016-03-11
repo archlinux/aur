@@ -1,7 +1,5 @@
-# Contributor: Kozec <kozec at kozec dot com>
-
 pkgname=lombok-eclipse
-pkgver=1.16.6
+pkgver=1.16.8
 pkgrel=1
 pkgdesc="Project Lombok integrated to Eclipse installation"
 arch=("any")
@@ -24,4 +22,4 @@ package() {
 	cp "$srcdir"/lombok-api.jar "$pkgdir"/usr/lib/eclipse
 }
 
-sha256sums=('e0a471be03e1e6b02bf019480cec7a3ac9801702bf7bf62f15d077ad4df8dd5d')
+sha256sums=('fe32b29b7b33eb2b19866cbc5345c59c9984a6036cc396856a04c0d09f99ea68')
