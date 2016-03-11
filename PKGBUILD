@@ -2,17 +2,17 @@
 # Contributor: Michael Pusterhofer <pusterhofer at student dot tugraz dot at>
 
 pkgname=vim-r
-pkgver=1.2.8
+pkgver=1.2.9
 pkgrel=1
 pkgdesc="Improves Vim's support for editing R code and integrates Vim with R"
 arch=('any')
 url="http://www.vim.org/scripts/script.php?script_id=2628"
 license=('unknown')
-depends=('vim' 'r-vimcom=1.2_8' 'tmux')
+depends=('vim' 'r-vimcom=1.2_9' 'tmux')
 optdepends=('pandoc: render output from markup files'
             'vim-csv: inspect data.frames and matrices')
-source=("${pkgname}-${pkgver}.vmb::http://www.vim.org/scripts/download_script.php?src_id=24027")
-sha256sums=('e5b35893dbbc16f345d307f969a295083e78dfe8fc4322d2d619f259e0bcb0e9')
+source=("${pkgname}-${pkgver}.vmb::http://www.vim.org/scripts/download_script.php?src_id=24089")
+sha256sums=('0d8912456bb7544c9f48206813ab7a2d6d7dc97863d3e2066ebdfe40edd2a52c')
 
 package() {
   mkdir -p "${pkgdir}/usr/share/vim/vimfiles"
