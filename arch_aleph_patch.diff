@@ -1,0 +1,54 @@
+diff -Naur old/usr/bin/cura new/usr/bin/cura
+--- old/usr/bin/cura	2015-08-11 23:04:07.000000000 +0200
++++ new/usr/bin/cura	2016-03-11 13:05:27.629762151 +0100
+@@ -1,2 +1,3 @@
+-#!/bin/sh
+-PYTHONPATH=$PYTHONPATH:/usr/share/cura/ /usr/bin/python /usr/share/cura/cura.py "$@"
++#!/bin/bash
++PYTHONPATH=$PYTHONPATH:/usr/share/cura/ /usr/bin/python2 /usr/share/cura/cura.py "$@"
++
+diff -Naur old/usr/share/applications/cura.desktop new/usr/share/applications/cura.desktop
+--- old/usr/share/applications/cura.desktop	2015-08-11 23:04:07.000000000 +0200
++++ new/usr/share/applications/cura.desktop	2016-03-11 13:03:55.201620044 +0100
+@@ -3,7 +3,7 @@
+ Name=Cura
+ Comment=Cura
+ Icon=/usr/share/cura/resources/images/c.png
+-Exec=/usr/bin/python /usr/share/cura/cura.py
++Exec=/usr/bin/python2 /usr/share/cura/cura.py
+ Path=/usr/share/cura/
+ StartupNotify=true
+ Terminal=false
+diff -Naur old/usr/share/cura/Cura/cura.py new/usr/share/cura/Cura/cura.py
+--- old/usr/share/cura/Cura/cura.py	2015-10-28 14:16:04.000000000 +0100
++++ new/usr/share/cura/Cura/cura.py	2016-03-11 13:06:25.808592243 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ """
+ This page is in the table of contents.
+ ==Overview==
+diff -Naur old/usr/share/cura/Cura/util/pymclevel/mce.py new/usr/share/cura/Cura/util/pymclevel/mce.py
+--- old/usr/share/cura/Cura/util/pymclevel/mce.py	2015-08-11 23:04:07.000000000 +0200
++++ new/usr/share/cura/Cura/util/pymclevel/mce.py	2016-03-11 13:08:27.256148959 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ import mclevelbase
+ import mclevel
+ import infiniteworld
+diff -Naur old/usr/share/cura/cura.py new/usr/share/cura/cura.py
+--- old/usr/share/cura/cura.py	2015-12-11 22:15:26.000000000 +0100
++++ new/usr/share/cura/cura.py	2016-03-11 13:03:55.204953309 +0100
+@@ -1,8 +1,9 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ import os, sys
+ 
+-sys.path.insert(1, os.path.dirname(__file__))
++sys.path.insert(1, "/usr/share/cura")
++os.chdir("/usr/share/cura")
+ 
+ try:
+ 	import OpenGL
