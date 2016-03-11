@@ -3,13 +3,13 @@
 pkgbase = python-efl
 	pkgdesc = Python bindings for the Enlightenment Foundation Libraries
 	pkgver = 1.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.enlightenment.org
 	arch = i686
 	arch = x86_64
 	license = LGPL3
 	license = GPL3
-	depends = elementary-git
+	depends = elementary
 	depends = python-dbus
 	source = http://download.enlightenment.org/rel/bindings/python/python-efl-1.17.0.tar.xz
 	sha256sums = 9ea0fe0938bd4a970206b2b18f46f4d2a4fd1994e9b5f84af2d5f9fa98739179
