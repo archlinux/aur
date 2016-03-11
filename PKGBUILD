@@ -4,7 +4,7 @@
 
 pkgname=shinken
 pkgver=2.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source Nagios like tool, redesigned and rewritten from scratch. Its main goal is to meet today's system monitoring requirements while still following compatibility to Nagios"
 arch=('any')
 url='http://www.shinken-monitoring.org/'
@@ -119,41 +119,41 @@ build() {
 package() {
     cd "$srcdir/shinken-${pkgver}"
 
-    mkdir -p $pkgdir/usr/lib/python2.7/site-packages/
+    mkdir -p "$pkgdir/usr/lib/python2.7/site-packages/"
     cp -r build/lib/shinken $pkgdir/usr/lib/python2.7/site-packages/
 
-    mkdir -p $pkgdir/etc/default
-    cp -r etc/ $pkgdir/etc/shinken/
+    mkdir -p "$pkgdir/etc/default"
+    cp -r etc/ "$pkgdir/etc/shinken/"
 
-    cp $srcdir/default $pkgdir/etc/default/shinken
+    cp "$srcdir/default" "$pkgdir/etc/default/shinken"
 
-    mkdir -p $pkgdir/usr/bin
+    mkdir -p "$pkgdir/usr/bin"
     BINFILES=`ls bin/shinken* | grep -v "\.py$"`
     for binfile in $BINFILES ; do
-        cp $binfile $pkgdir/usr/bin
+        cp $binfile "$pkgdir/usr/bin"
     done
 
-    install -dm0755 $pkgdir/var/lib/shinken/rw
-    cp -r cli doc inventory modules share libexec $pkgdir/var/lib/shinken/
+    install -dm0755 "$pkgdir/var/lib/shinken/rw"
+    cp -r cli doc inventory modules share libexec "$pkgdir/var/lib/shinken/"
 
-    mkdir -p $pkgdir/usr/share/man/man1/
-    gzip -c doc/build/man/shinken.1 > $pkgdir/usr/share/man/man1/shinken.1.gz
+    mkdir -p "$pkgdir/usr/share/man/man1/"
+    gzip -c doc/build/man/shinken.1 > "$pkgdir/usr/share/man/man1/shinken.1.gz"
 
     # logrotate
-    install -Dm0644 $srcdir/shinken.logrotate "$pkgdir/etc/logrotate.d/shinken"
+    install -Dm0644 "$srcdir/shinken.logrotate" "$pkgdir/etc/logrotate.d/shinken"
     # log dir
-    install -dDm0750 $pkgdir/var/log/shinken
+    install -dDm0750 "$pkgdir/var/log/shinken"
 
     # systemd
-    install -Dm0644 $srcdir/shinken.tmpfiles $pkgdir/usr/lib/tmpfiles.d/shinken.conf
+    install -Dm0644 "$srcdir/shinken.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/shinken.conf"
     for service in arbiter poller reactionner scheduler broker receiver; do
-        install -Dm0644 $srcdir/shinken-${service}.service $pkgdir/usr/lib/systemd/system/shinken-${service}.service
+        install -Dm0644 "$srcdir/shinken-${service}.service" "$pkgdir/usr/lib/systemd/system/shinken-${service}.service"
     done
 
     # cleanup
-    rm -r $pkgdir/etc/shinken/sample*
-    rm $pkgdir/etc/shinken/dev.cfg
-    rm -r $pkgdir/etc/shinken/certs/
+    rm -r "$pkgdir/etc/shinken/sample"*
+    rm "$pkgdir/etc/shinken/dev.cfg"
+    rm -r "$pkgdir/etc/shinken/certs/"
 }
 
 sha256sums=('393f28c6887bcbacab597f78903e961fbc8ed63a62d486e4783f3bfe50c51400'
