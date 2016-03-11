@@ -1,32 +1,47 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
-_pypiname=mimerender
-pkgbase=python-$_pypiname
-pkgname=(python-$_pypiname python2-$_pypiname)
-pkgver=0.5.5
-pkgrel=2
+pkgbase=python-mimerender
+pkgname=(python-mimerender python2-mimerender)
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="Transparently select a render function for an HTTP request handler's result"
 arch=('any')
 url="https://github.com/martinblech/mimerender"
 license=('MIT')
-makedepends=('python-mimeparse' 'python2-mimeparse' 'python-setuptools' 'python2-setuptools')
-source=("$_pypiname-$pkgver.tar.gz::https://github.com/martinblech/$_pypiname/archive/v$pkgver.tar.gz")
-sha512sums=('e0788a6844bf189712b9107dd8f411af5e6b710e9d1e35d65d0ae43a058e4f81d3b6842ead70ba644080350788c493e01c38e139d0f505c52581e50cfe3ed789')
+makedepends=('python-mimeparse' 'python2-mimeparse' 'python-setuptools' 'python2-setuptools' 'git')
+source=("git+https://github.com/martinblech/mimerender.git#tag=v$pkgver")
+sha512sums=('SKIP')
 
 prepare() {
-  cp -a $_pypiname-$pkgver{,-py2}
+  cp -a mimerender{,-py2}
+}
+
+build() {
+  cd "$srcdir"/mimerender
+  python setup.py build
+
+  cd "$srcdir"/mimerender-py2
+  python2 setup.py build
+}
+
+check() {
+  cd "$srcdir"/mimerender
+  python src/test.py
+
+  cd "$srcdir"/mimerender-py2
+  python2 src/test.py
 }
 
 package_python-mimerender() {
   depends=('python-mimeparse')
 
-  cd $_pypiname-$pkgver
+  cd mimerender
   python setup.py install -O1 --root "$pkgdir"
 }
 
 package_python2-mimerender() {
   depends=('python2-mimeparse')
 
-  cd $_pypiname-$pkgver-py2
+  cd mimerender-py2
   python2 setup.py install -O1 --root "$pkgdir"
 }
