@@ -5,12 +5,12 @@
 #
 pkgname="pushbullet-indicator"
 pkgver="0.6.0"
-pkgrel="3"
+pkgrel="4"
 pkgdesc="An indicator for working with PushBullet."
 arch=('i686' 'x86_64')
 url="http://www.atareao.es/tag/pushbullet-indicator/"
 license=('GPL3')
-depends=('python' 'shared-mime-info' 'python-beautifulsoup4' 'python-jinja' 'python-pillow' 'python-requests' 'pushbullet-commons')
+depends=('libappindicator-gtk3' 'python' 'shared-mime-info' 'python-beautifulsoup4' 'python-jinja' 'python-pillow' 'python-requests' 'pushbullet-commons')
 makedepends=('python2-distutils-extra' 'python2-polib')
 provides=("${pkgname}")
 source=("https://launchpad.net/~atareao/+archive/ubuntu/atareao/+files/${pkgname}_${pkgver}-0extras14.04.1.tar.gz")
