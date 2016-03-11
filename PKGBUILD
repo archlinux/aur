@@ -1,7 +1,7 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=bettercap
-pkgver=1.4.5
+pkgver=1.4.6
 pkgrel=1
 pkgdesc='Complete, modular, portable and easily extensible MITM framework'
 url='https://github.com/evilsocket/bettercap'
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('ruby' 'ruby-network_interface' 'ruby-pcaprub' 'ruby-packetfu' 'ruby-colorize' 'ruby-net-dns') # 'ruby-rubydns'
 options=('!emptydirs')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/evilsocket/bettercap/archive/v${pkgver}.tar.gz)
-sha512sums=('be0e13972ea92ebc7d7edc584a5decc97f26a12583bae8b29e5105efacbda786cde0e386bd2b8101aaeb3a7b87e8c948d8a367dcf56855b72c702d449bdbd0b2')
+sha512sums=('2c68934643fbeac49cbc8967530272748f70f7cb2b4fea9cb4f321aaf731e88151044ff8aa832f1327b3bd6a85cb196de4e622a99bb36b129a81e2dd3391ecd4')
 
 build() {
   cd ${pkgname}-${pkgver}
