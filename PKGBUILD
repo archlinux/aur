@@ -18,10 +18,10 @@ build() {
   echo "dkms_tree='$srcdir/dkms'" > dkms.conf
   # build host modules
   msg2 'Host modules'
-  dkms --dkmsframework dkms.conf build "vboxhost/${pkgver}" -k "${_kernver}"
+  dkms --dkmsframework dkms.conf build "vboxhost/${pkgver}_OSE" -k "${_kernver}"
   # build guest modules
   msg2 'Guest modules'
-  dkms --dkmsframework dkms.conf build "vboxguest/${pkgver}" -k "${_kernver}"
+  dkms --dkmsframework dkms.conf build "vboxguest/${pkgver}_OSE" -k "${_kernver}"
 }
 
 package_virtualbox-luca020400-host-modules() {
@@ -30,7 +30,7 @@ package_virtualbox-luca020400-host-modules() {
   depends=('linux-luca020400>=4.4')
   install=host.install
 
-  cd "dkms/vboxhost/${pkgver}/${_kernver}/$CARCH/module"
+  cd "dkms/vboxhost/${pkgver}_OSE/${_kernver}/$CARCH/module"
   install -dm755 "$pkgdir/usr/lib/modules/${_extramodules}"
   install -m644 * "$pkgdir/usr/lib/modules/${_extramodules}"
   find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
@@ -43,7 +43,7 @@ package_virtualbox-luca020400-guest-modules() {
   depends=('linux-luca020400>=4.4')
   install=guest.install
 
-  cd "dkms/vboxguest/${pkgver}/${_kernver}/$CARCH/module"
+  cd "dkms/vboxguest/${pkgver}_OSE/${_kernver}/$CARCH/module"
   install -dm755 "$pkgdir/usr/lib/modules/${_extramodules}"
   install -m644 * "$pkgdir/usr/lib/modules/${_extramodules}"
   find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
