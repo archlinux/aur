@@ -6,7 +6,7 @@
 
 pkgname=modeller
 pkgver=9.16
-pkgrel=1
+pkgrel=2
 pkgdesc="3D Structure Homology Modeller"
 arch=('i686' 'x86_64')
 url="http://salilab.org/modeller/"
@@ -23,7 +23,7 @@ sha512sums=('5d3dba6134a9583d269ae0df93b05e536a753e00568c1a5562cf1e28bff07eb3118
             '5ac8aeb58148a5ad387d3f2730036bd91a8e5bd6cb921dd2d2601df533fd7d6b5355f4fdc172926e76036f845873ad0d0718d1b5d13db50ade2ee5707df00c7a')
 
 package() {
-    _MODINSTALL="/usr/lib/modeller"
+    _MODINSTALL="/usr/lib/$pkgname"
 
     cd "$pkgname-$pkgver"
 
