@@ -1,6 +1,6 @@
 pkgbase = php-apache25
 	pkgdesc = Apache 2.5 SAPI for PHP
-	pkgver = 5.6.10
+	pkgver = 7.0.4
 	pkgrel = 1
 	url = http://www.php.net
 	arch = i686
@@ -15,10 +15,12 @@ pkgbase = php-apache25
 	makedepends = xz
 	depends = php
 	depends = apache=2.5
-	source = http://www.php.net/distributions/php-5.6.10.tar.xz
+	source = https://www.php.net/distributions/php-7.0.4.tar.xz
+	source = https://www.php.net/distributions/php-7.0.4.tar.xz.asc
 	source = apache.conf
-	md5sums = 4631ef265253d2f496b3574d297f26ed
-	md5sums = dec2cbaad64e3abf4f0ec70e1de4e8e9
+	sha256sums = 584e0e374e357a71b6e95175a2947d787453afc7f9ab7c55651c10491c4df532
+	sha256sums = SKIP
+	sha256sums = ebc0af1ef3a6baccb013d0ccb29923895a7b22ff2d032e3bba802dc6328301ce
 
 pkgname = php-apache25
 
