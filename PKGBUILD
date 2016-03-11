@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bamboo
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Perl6 dependency manager (bundler)"
 arch=('any')
