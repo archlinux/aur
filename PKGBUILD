@@ -1,7 +1,7 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 pkgname=rmilter
 pkgver=1.7.5
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Another sendmail milter for different mail checks."
 arch=('x86_64' 'i686')
