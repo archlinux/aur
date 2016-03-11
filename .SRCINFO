@@ -1,7 +1,7 @@
 pkgbase = sky
 	pkgdesc = Lync & Skype for business on Linux
 	pkgver = 2.0.467
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tel.red
 	install = sky.install
 	arch = x86_64
