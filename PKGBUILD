@@ -1,9 +1,10 @@
-# Maintainer: Vlad M. <vlad@archlinux.net>
+# Contributor: Vlad M. <vlad@archlinux.net>
 # Contributor: issue <issue at archlinux dot info>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=rust-racer-git
 _pkgname=racer
-pkgver=1.2.5.r2.gba363c1
+pkgver=1.2.5.r3.gc4c3ab8
 pkgrel=1
 pkgdesc="Code completion for Rust"
 url="https://github.com/phildawes/racer"
@@ -14,7 +15,7 @@ provides=('rust-racer')
 conflicts=('rust-racer')
 replaces=('racer-git')
 arch=('i686' 'x86_64')
-license=('MIT')
+license=('custom:MIT')
 md5sums=('SKIP')
 install=$pkgname.install
 source=("git+https://github.com/phildawes/$_pkgname.git")
@@ -26,7 +27,7 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  cargo build --release
+  cargo build --release --verbose
 }
 
 package() {
