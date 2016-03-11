@@ -1,8 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=panda
-pkgver=0.1
-pkgrel=2
+pkgver=2016.02
+pkgrel=1
 pkgdesc="Perl6 module installer"
 arch=('any')
 depends=('curl'
