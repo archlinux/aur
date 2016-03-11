@@ -37,10 +37,19 @@ package() {
     find . -type d -exec chmod 755 {} +
 
     # Installing Modeller files
-    mkdir -p "$pkgdir/$_MODINSTALL/"{bin,lib}
-    cp -R README INSTALLATION doc examples modlib src "$pkgdir/$_MODINSTALL"
-    cp -R bin/*.top bin/lib "bin/mod${pkgver}_${_EXECUTABLE_TYPE}" "$pkgdir/$_MODINSTALL/bin"
-    cp -R "lib/$_EXECUTABLE_TYPE" "$pkgdir/$_MODINSTALL/lib"
+    install -dm755 "$pkgdir/$_MODINSTALL/"{bin,lib} "$pkgdir/usr/include"
+    cp -a README INSTALLATION modlib src "$pkgdir/$_MODINSTALL"
+    mv "$pkgdir/$_MODINSTALL/src/include" "$pkgdir/usr/include/$pkgname"
+    ln -s "/usr/include/$pkgname" "$pkgdir/$_MODINSTALL/src/include"
+
+    cp -a bin/*.top bin/lib "bin/mod${pkgver}_${_EXECUTABLE_TYPE}" "$pkgdir/$_MODINSTALL/bin"
+    cp -a "lib/$_EXECUTABLE_TYPE" "$pkgdir/$_MODINSTALL/lib"
+
+    install -dm755 "$pkgdir/usr/share/doc/$pkgname"
+    cp -a doc examples "$pkgdir/usr/share/doc/$pkgname/"
+    mv "$pkgdir/usr/share/doc/$pkgname/"{doc,html}
+    ln -s "/usr/share/doc/$pkgname/html" "$pkgdir/$_MODINSTALL/doc"
+    ln -s "/usr/share/doc/$pkgname/examples" "$pkgdir/$_MODINSTALL/examples"
 
     # Creating Modeller startup scripts
     sed -r "s|(EXECUTABLE_TYPE[0-9v]+)=x+|\1=$_EXECUTABLE_TYPE|;s|(MODINSTALL[0-9v]+)=x+|\1=\"$_MODINSTALL\"|" \
