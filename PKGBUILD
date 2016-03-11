@@ -4,7 +4,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-esr
-pkgver=38.6.1
+pkgver=45.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=('i686' 'x86_64')
@@ -24,10 +24,10 @@ provides=(firefox)
 conflicts=(firefox)
 install=firefox.install
 options=('!emptydirs' '!makeflags')
-source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.bz2
+source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz
         mozconfig firefox.desktop firefox-install-dir.patch vendor.js
         firefox-fixed-loading-icon.png)
-sha256sums=('91174d0118ac7178b5902bd6e82743b4eab5d567ec6431abebf4da093ffbd0ff'
+sha256sums=('0f46f6c2e6b4f7efea2cd688c27b154a2f000cf5a7e5cb676def8a6dbf3839a0'
             'ffcb2a0ba2ed08f74931a11043717391ef380234cadccc6f0c13f1186ad80e8b'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
@@ -42,7 +42,7 @@ validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 
 prepare() {
-  cd mozilla-esr${pkgver%%.*}
+  cd firefox-${pkgver}esr
 
   cp ../mozconfig .mozconfig
   patch -Np1 -i ../firefox-install-dir.patch
@@ -66,7 +66,7 @@ prepare() {
 }
 
 build() {
-  cd mozilla-esr${pkgver%%.*}
+  cd firefox-${pkgver}esr
 
   export PATH="$srcdir/path:$PATH"
   export PYTHON="/usr/bin/python2"
@@ -77,7 +77,7 @@ build() {
 }
 
 package() {
-  cd mozilla-esr${pkgver%%.*}
+  cd firefox-${pkgver}esr
   make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
 
   install -Dm644 ../vendor.js "$pkgdir/usr/lib/firefox-esr/browser/defaults/preferences/vendor.js"
