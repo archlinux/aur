@@ -1,7 +1,7 @@
 # Maintainer: Nicolas F. <aur@fratti.ch>
 pkgname=snowmix
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Dynamic audio and video feed mixer"
 arch=('i686' 'x86_64')
 url="https://snowmix.sourceforge.net"
@@ -25,7 +25,7 @@ build() {
   automake --add-missing
 
   ./configure --prefix=/usr --enable-snowmixosmesa --enable-snowmixx11 \
-              --enable-snowmixglu --enable-snowmixgui
+              --enable-snowmixglu --enable-snowmixglut --enable-snowmixgui
   export SNOWMIX="/usr/lib/Snowmix-$pkgver"
   make
 }
