@@ -2,8 +2,8 @@
 # Contrubutor: raininja <raijin@rai.ninja>
 
 pkgname=slimjet
-pkgver=7.0.7.0
-pkgrel=1
+pkgver=8.0.4.0
+pkgrel=2
 pkgdesc="Fast, smart and powerful browser based on Blink"
 arch=('i686' 'x86_64')
 url="http://www.slimjet.com"
@@ -16,10 +16,10 @@ makedepends=('pacman>=4.2.0')
 provides=('slimjet' 'pepper-flash')
 options=('!emptydirs' '!strip')
 _channel=release
-source_i686=("${pkgname}_i386.deb::http://www.slimjet.com/${_channel}/${pkgname}_i386.deb")
-source_x86_64=("${pkgname}_amd64.deb::http://www.slimjet.com/{$_channel}/${pkgname}_amd64.deb")
-sha512sums_i686=('73978e36581872978cfabca9f6f67f6a5137085900f387317eebed3e8b357223732bb2479e0f7aa904559b1f552d37e1002e7eff0c34ae615f7127be28bb427f')
-sha512sums_x86_64=('cd29ec708e4c8dd25b3f6cb9d261cebc7bdc6daa28a0f794361cbe1073a8722ef9a801fd6ba40fba9bb20ec9b1d5224ff87de4e38ce2caa44ee3d50823629b2d')
+source_i686=("${pkgname}-${pkgver}_i386.deb::http://www.slimjet.com/${_channel}/${pkgname}_i386.deb")
+source_x86_64=("${pkgname}-${pkgver}_amd64.deb::http://www.slimjet.com/{$_channel}/${pkgname}_amd64.deb")
+sha512sums_i686=('f11d4f5387753d3fd71f8df3609bedbba9f528f267159b54692fd31d5df80ae6415309bd243d652da781f2cb0564f023ca48c9e6857dc3275320785828605631')
+sha512sums_x86_64=('ad7ef76cf52dd866c9e69219d8e52935616a742be515c646c735d9a7f613ac1a065e189ee23675a64adebea52c5dec34f4a732995be138df9df3533a1bea8ae0')
 
 package() {
     msg2 "Extracting the data.tar.lzma..."
