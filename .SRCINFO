@@ -1,11 +1,10 @@
 pkgbase = python2-rows
 	pkgdesc = A common, beautiful interface to tabular data, no matter the format
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/turicas/rows
 	arch = any
 	license = GPLv3
-	makedepends = mercurial
 	depends = python2
 	depends = python2-unicodecsv
 	depends = python2-click

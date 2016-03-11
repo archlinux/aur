@@ -3,11 +3,10 @@
 pkgname=python2-rows
 _pkgname=rows
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A common, beautiful interface to tabular data, no matter the format"
 arch=('any')
 depends=('python2' 'python2-unicodecsv' 'python2-click' 'python2-requests' 'python2-lxml' 'python2-xlrd' 'python2-xlwt' 'python2-openpyxl')
-makedepends=('mercurial')
 license=('GPLv3')
 url="https://github.com/turicas/rows"
 
