@@ -26,17 +26,18 @@
 
 ## Update the PKGBUILD
 
-* Update PKGBUILD
-* Update source file hashes
+* Update PKGBUILD  
+  [Package version for git repositories](https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git) should be in the form `[VERSION].r[REVISION].[HASH]`. Since the docker-gc repository does not tag releases check `version.txt` for the current version and append the appropriate revision and hash manually or by running `printf "%s.r%s.%s" "$(cat version.txt)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"` in the repository root.
+* Update source file hashes  
   `updpkgsums`
-* Update the .SRCINFO
+* Update the .SRCINFO  
   `mksrcinfo`
-* Build the package
+* Build the package  
   `makepkg -src`
-* Check package
+* Check package  
   `namcap docker-gc-*.pkg.tar.xz`
-* Test-install package
+* Test-install package  
   `pacman -U docker-gc-*.pkg.tar.xz`
-* Remove tmp files
+* Remove tmp files  
   `rm docker-gc`
   `rm docker-gc-*.pkg.tar.xz`
