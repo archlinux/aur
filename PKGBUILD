@@ -11,7 +11,7 @@ license=('custom')
 depends=('perl')
 makedepends=('git')
 conlicts=('itop')
-source="git+https://github.com/kargig/itop.git"
+source=("git+https://github.com/kargig/itop.git")
 #source=("git://github.com/kargig/$pkgname.git")
 sha256sums=('SKIP')
 
