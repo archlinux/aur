@@ -1,0 +1,22 @@
+pkgbase = fgallery
+	pkgdesc = a modern, minimalist javascript photo gallery
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = https://www.thregr.org/~wavexx/software/fgallery/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = fbida
+	depends = imagemagick
+	depends = lcms
+	depends = perl>=5.14
+	depends = perl-json
+	depends = perl-image-exiftool
+	depends = zip
+	optdepends = pngcrush
+	optdepends = p7zip
+	source = git+https://github.com/wavexx/fgallery.git
+	sha256sums = SKIP
+
+pkgname = fgallery
+
