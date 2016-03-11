@@ -3,25 +3,19 @@
 pkgbase=python-traits
 pkgname=('python2-traits' 'python-traits')
 pkgver=4.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Explicitly typed attributes for Python"
 arch=('i686' 'x86_64')
 url="https://github.com/enthought/traits"
 license=('BSD')
 makedepends=('python-setuptools' 'python-numpy' 'python2-setuptools' 'python2-numpy')
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/enthought/traits/archive/${pkgver}.tar.gz")
+source=("traits-${pkgver}.tar.gz::https://github.com/enthought/traits/archive/${pkgver}.tar.gz")
 md5sums=('b77b08837afd20c1254e5d94369712cd')
 
 prepare() {
   cd "$srcdir"
   cp -a traits-${pkgver} traits-py2-${pkgver}
-  cd traits-py2-${pkgver}
-
-  sed -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
-      -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
-      -e "s|#![ ]*/bin/env python$|#!/usr/bin/env python2|" \
-      -i $(find . -name '*.py')
 }
 
 build() {
