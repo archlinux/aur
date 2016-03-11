@@ -1,34 +1,36 @@
 # Maintainer: Mustafa Gezen <mustiigezen@gmail.com>
 pkgname=("zx-git")
 srcname="zx"
-pkgver="1.0"
-pkgrel="1"
+pkgver=r23.1457726512.fa04baf
+pkgrel=1
 pkgdesc="i3 scratchpad manager"
 arch=("any")
 url="https://github.com/mstg/zx"
 license=('MIT')
-depends=("glib2")
+depends=("glib2" "i3ipc-glib-git")
 makedepends=("libxcb")
-provides=("zx")
-conflicts=("zx")
-source=("http://github.com/mstg/zx/archive/v$pkgver.tar.gz")
+source=("${srcname}::git+https://github.com/mstg/zx.git")
 sha512sums=("SKIP")
 
-build() {
-  if [ ! -n "$(pacman -Qs i3ipc-glib-git)" ]; then
-    curl -L -O https://aur.archlinux.org/cgit/aur.git/snapshot/i3ipc-glib-git.tar.gz
-    tar -xvf i3ipc-glib-git.tar.gz
-    cd i3ipc-glib-git
-    makepkg -sri
-    cd ..
-  fi
+pkgver() {
+  cd "${srcdir}/${srcname}"
 
-  cd "zx-$pkgver"
+  printf 'r%s.%s.%s\n' \
+      "$( git rev-list --count 'HEAD' )" \
+      "$( git log --max-count='1' --pretty='format:%ct' )" \
+      "$( git rev-parse --short 'HEAD' )"
+}
+
+build() {
+  cd "${srcdir}/${srcname}"
+  autoreconf --install --force --warnings='all'
+  ./configure --prefix='/usr'
+
   make
 }
 
 package() {
-  cd "zx-$pkgver"
+  cd "${srcdir}/${srcname}"
 
-  sudo make install
+  make DESTDIR="${pkgdir}" install
 }
