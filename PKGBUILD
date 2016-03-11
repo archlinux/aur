@@ -1,7 +1,7 @@
 # Maintainer: Dan Printzell <me@vild.io>
 
 pkgname=('workspace-d')
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Wraps dcd, dfmt and dscanner to one unified environment managed by dub"
 arch=('i686' 'x86_64')
