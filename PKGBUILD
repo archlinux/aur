@@ -5,7 +5,7 @@
 pkgname=spideroak-one
 _PkgName=SpiderOakONE
 pkgver=6.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Secure file backup, sync and sharing client. This provides the client for SpiderOakONE."
 arch=('i686' 'x86_64')
 url="https://spideroak.com/"
@@ -25,7 +25,7 @@ source_i686=("spideroakone_${pkgver}_i386.deb::https://spideroak.com/getbuild?pl
 sha256sums_i686=('50fd7d442291bb9ec64d51308444c83b7d76d55bafcc3e9f5d3009e6a49eee0f')
 
 package() {
-tar -zxvf "${srcdir}"/data.tar.gz -C "$pkgdir"/
+tar -zxf "${srcdir}"/data.tar.gz -C "$pkgdir"/
 
 install -Dm644 "$srcdir"/terms.txt "$pkgdir"/usr/share/licenses/$pkgname/terms.txt
 
