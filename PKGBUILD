@@ -15,9 +15,7 @@ source=("http://github.com/mstg/zx/archive/v$pkgver.tar.gz")
 sha512sums=("SKIP")
 
 build() {
-  i3ipc_installed=`pacman -Qs i3ipc-glib-git`
-
-  if [ ! -n "$i3ipc_installed" ]; then
+  if [ ! -n "$(pacman -Qs i3ipc-glib-git)" ]; then
     curl -L -O https://aur.archlinux.org/cgit/aur.git/snapshot/i3ipc-glib-git.tar.gz
     tar -xvf i3ipc-glib-git.tar.gz
     cd i3ipc-glib-git
