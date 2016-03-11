@@ -1,13 +1,13 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=xiphos-git
 pkgver=r3889
-pkgrel=1
+pkgrel=2
 pkgdesc="A Bible study tool -- git version"
 arch=('i686' 'x86_64')
 url="http://xiphos.org"
 license=('GPL')
 depends=('webkitgtk' 'libgsf' 'gconf' 'sword' 'gtkhtml4' 'biblesync')
-makedepends=('gnome-common' 'gnome-doc-utils' 'intltool' 'subversion')
+makedepends=('gnome-common' 'gnome-doc-utils' 'intltool' 'git')
 provides=('gnomesword' 'xiphos')
 conflicts=('gnomesword' 'xiphos')
 install=$pkgname.install
