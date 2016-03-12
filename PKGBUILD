@@ -2,7 +2,7 @@
 
 pkgname=php-imagick
 _extname=imagick
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="PHP extension for IMagick"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('php>=5.4.0' 'imagemagick>=6.5.3')
 backup=("etc/php/conf.d/${_extname}.ini")
 install="php-${_extname}.install"
 source=("http://pecl.php.net/get/${_extname}-${pkgver}.tgz")
-md5sums=('3790ce247afb5365f23a264d4c3bd6b7')
+md5sums=('cc4f119a5f27b582f0f10e61451e266f')
 
 build() {
   cd "${_extname}-${pkgver}"
