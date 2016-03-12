@@ -2,7 +2,7 @@
 
 pkgname=python-flask-httpauth
 _pyname=Flask-HTTPAuth
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Simple extension that provides Basic and Digest HTTP authentication for Flask routes"
 arch=('any')
@@ -12,8 +12,8 @@ url="https://github.com/miguelgrinberg/Flask-HTTPAuth"
 license=('MIT')
 options=(!emptydirs)
 source=(https://pypi.python.org/packages/source/F/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('97959816cdf2091526b7511443a9e6d8')
-sha256sums=('8da3f2cd15aa189c55ffec3dc42041324dd63b3b267c1d0a30de24093dcaba8b')
+md5sums=('46f892d4f3f44756e0f86aa04770de9e')
+sha256sums=('61983e350206d4d4c266974a74a740053aa3ef2ccd6dc39235490efde4ca0921')
 
 build() {
   cd "$srcdir/$_pyname-$pkgver"
