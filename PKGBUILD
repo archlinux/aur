@@ -18,7 +18,7 @@ depends=('alsa-lib' 'avahi' 'boost-libs' 'curl' 'expat' 'freetype2' 'fribidi'
          'libxext' 'libxrandr' 'lzo' 'pcre' 'python2' 'sdl' 'sdl_image'
          'sdl_mixer' 'sqlite' 'smbclient' 'taglib' 'tinyxml' 'yajl' 'zlib')
 makedepends=('boost' 'cmake' 'doxygen' 'ffmpeg-compat' 'git' 'java-environment'
-             'libcec' 'libplist' 'libshairport' 'nasm' 'swig' 'unzip' 'zip')
+             'libcec' 'libplist' 'shairplay' 'nasm' 'swig' 'unzip' 'zip' 'shairplay')
 optdepends=('libplist: AirPlay support'
             'libshairport: AirPlay support'
             'libcec: Pulse-Eight USB-CEC adapter support'
