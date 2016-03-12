@@ -6,5 +6,5 @@ Exec=google-play-music-desktop-player %U
 Icon=google-play-music-desktop-player
 Type=Application
 StartupNotify=true
-Categories=GNOME;GTK;Utility;
+Categories=GNOME;GTK;Multimedia;
 MimeType=text/plain;

@@ -2,7 +2,7 @@
 
 pkgname=google-play-music-desktop-player-git
 _name=Google-Play-Music-Desktop-Player-UNOFFICIAL-
-pkgver=3.0.0.98.g0ca9fb0
+pkgver=3.0.1.13.g3597d50
 pkgrel=1
 pkgdesc="A beautiful cross platform Desktop Player for Google Play Music."
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ source=("git+https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player
         "google-play-music-desktop-player.desktop"
         "google-play-music-desktop-player-git.install")
 md5sums=('SKIP'
-         '8ceb2313c080233d93b3fc2fe6f9514f'
+         '377409fe129d5c93f4edf7e598a6e67f'
          'e297b473f8fd1b6f26642da1d7206123')
 
 pkgver() {
