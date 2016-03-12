@@ -3,9 +3,9 @@
 
 pkgname=libenglab-dsp
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Englab toolbox for digital signal processing"
-url="http://www.englab.org/"
+url="https://sourceforge.net/projects/englab/"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('libsndfile' 'audiere' 'libenglab' 'fftw')
