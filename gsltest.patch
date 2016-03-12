@@ -1,0 +1,15 @@
+diff -Naur libenglab-0.3.0.orig/build/deps/gsl.sh libenglab-0.3.0.new/build/deps/gsl.sh
+--- libenglab-0.3.0.orig/build/deps/gsl.sh	2016-03-12 18:56:02.195318306 +0100
++++ libenglab-0.3.0.new/build/deps/gsl.sh	2016-03-12 18:56:55.818309160 +0100
+@@ -32,9 +32,9 @@
+ 
+ # Required gsl version
+ # Installed version major must be equal to $__GSL_VER_MAJOR
+-__GSL_VER_MAJOR=1
++__GSL_VER_MAJOR=2
+ # Installed version minor must be greater or equal to $__GSL_VER_MIROR
+-__GSL_VER_MINOR=8
++__GSL_VER_MINOR=1
+ 
+ $ECHO -n "Checking to see if a valid gsl library is installed... "
+ 
