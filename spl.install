@@ -1,26 +1,5 @@
 post_install() {
-    dkms add spl/${1%%[_-]*}
     check_hostid
-    cat << EOF
-==> To build and install your modules run: dkms install spl/${1%%[_-]*} -k [KERNEL]
-==> To do this automatically at startup run: systemctl enable dkms.service
-EOF
-}
-
-pre_upgrade() {
-    if [ "${1%%[-_]*}" != "${2%%[-_]*}"  ]; then
-        pre_remove "$2"
-    fi
-}
-
-post_upgrade() {
-    if [ "${1%%[-_]*}" != "${2%%[-_]*}"  ]; then
-        post_install "$1"
-    fi
-}
-
-pre_remove() {
-    [ -n "${1%%[_-]*}" ] && dkms remove spl/${1%%[_-]*} --all -q || true
 }
 
 check_hostid() {
