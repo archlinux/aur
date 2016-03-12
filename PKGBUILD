@@ -2,7 +2,7 @@
 
 pkgname=pt3-drv
 pkgver=2009.03.07
-pkgrel=1
+pkgrel=2
 install=pt3-drv.install
 pkgdesc="Japanese Driver for Earthsoft PT3 cards"
 arch=('i686' 'x86_64')

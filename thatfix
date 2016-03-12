@@ -21,7 +21,7 @@
  dkms: $(TARGET)
  	if [ -d /etc/udev/rules.d -a ! -f /etc/udev/rules.d/99-pt3.rules ] ; then \
 -		install -m 644 etc/99-pt3.rules /etc/udev/rules.d ; \
-+		install -m 644 $(DESTDIR)/etc/99-pt3.rules $(DESTDIR)/etc/udev/rules.d ; \
++		install -m 644 etc/99-pt3.rules $(DESTDIR)/etc/udev/rules.d ; \
  	fi
  
  install: uninstall dkms
