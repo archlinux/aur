@@ -1,25 +1,26 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
-_pkgname=asus-nb-wmi-reload
 pkgname=asus-nb-wmi-reload-git
-pkgver=20160126
+pkgver=20160312
 pkgrel=1
-pkgdesc="A systemd service for reload ASUS NB WMI Driver after resume"
+pkgdesc="Systemd service for reload Asus Notebooks WMI Hotkey Driver after resume for restoring light on WLAN LED"
 arch=('any')
-url="https://github.com/FadeMind/${_pkgname}"
+url="https://github.com/FadeMind/${pkgname/-git/}"
 license=('GPL2')
-depends=('bash' 'kmod' 'sudo' 'systemd')
+depends=('bash' 
+         'kmod' 
+         'systemd')
 makedepends=('git')
-source=("${_pkgname}::git+${url}.git")
+source=("${pkgname/-git/}::git+${url}.git")
 sha256sums=('SKIP')
-install="${_pkgname}.install"
+install="${pkgname/-git/}.install"
 
 pkgver() {
-    cd ${srcdir}/${_pkgname}
+    cd ${pkgname/-git/}
     git log -1 --format="%cd" --date=short | tr -d '-'
 }
 
 package() {
-    install -Dm644 "${srcdir}/${_pkgname}/${_pkgname}.service"  "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
-    install -Dm755 "${srcdir}/${_pkgname}/${_pkgname}"          "${pkgdir}/usr/bin/${_pkgname}"
-} 
+    install -Dm644 "${pkgname/-git/}/${pkgname/-git/}.service"  "${pkgdir}/usr/lib/systemd/system/${pkgname/-git/}.service"
+    install -Dm755 "${pkgname/-git/}/${pkgname/-git/}"          "${pkgdir}/usr/bin/${pkgname/-git/}"
+}
