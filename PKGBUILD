@@ -3,12 +3,12 @@
 # Contributor: Manuel Mendez <mmendez534@gmail.com>
 pkgname=zgrviewer
 pkgver=0.10.0
-pkgrel=1
-arch=(i686 x86_64)
+pkgrel=2
+arch=(any)
 pkgdesc="A 2.5D graph visualizer that displays graphs specified in the AT&T GraphViz DOT language"
 url="http://zvtm.sourceforge.net/zgrviewer.html"
 license=('LGPL')
-depends=('java-runtime' 'graphviz')
+depends=('java-environment' 'graphviz')
 makedepends=('unzip')
 source=(http://downloads.sourceforge.net/zvtm/${pkgname}-${pkgver}.zip zgrv defaultconfig zgrviewer.install)
 install="${pkgname}.install"
@@ -34,7 +34,7 @@ package()
   
   # jars
   unzip ${pkgname}-${pkgver}.zip
-  cd ${pkgname}
+  cd ${pkgname}-${pkgver}
   mkdir ${pkgdir}/opt/${pkgname}/target
   mkdir ${pkgdir}/opt/${pkgname}/plugins
   install -m644 target/*.jar ${pkgdir}/opt/${pkgname}/target
