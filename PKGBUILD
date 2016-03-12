@@ -16,7 +16,7 @@
 
 pkgname=ffmpeg-full-git
 pkgver=N.79015.g4aea2c7
-pkgrel=1
+pkgrel=2
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
 url="http://www.ffmpeg.org/"
@@ -32,7 +32,7 @@ depends=(
     'vid.stab' 'vo-amrwbenc' 'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265'
     'libxcb' 'xvidcore' 'zimg' 'zeromq' 'zvbi' 'openal' 'libva' 'libdrm' 'libva-intel-driver'
     'libmfx-git' 'opencl-headers' 'ocl-icd' 'libvdpau' 'mesa' 'openssl' 'xavs' 'nvidia-sdk'
-    'blackmagic-decklink-sdk'
+    'blackmagic-decklink-sdk' 'jdk8-openjdk'
 )
 optdepends_x86_64=('intel-media-sdk: for Intel QSV support (experimental)')
 makedepends=('git' 'yasm')
@@ -72,7 +72,9 @@ build() {
 	
 	./configure \
 	        --prefix=/usr \
-	        --extra-cflags="-I/usr/include/nvidia-sdk" \
+	        --extra-cflags="-I/usr/include/nvidia-sdk \
+	                        -I/usr/lib/jvm/java-8-openjdk/include \
+	                        -I/usr/lib/jvm/java-8-openjdk/include/linux" \
 	        --extra-ldflags="-Wl,-rpath -Wl,/opt/intel/mediasdk/lib64" \
 	        \
 	        --enable-rpath \
@@ -92,6 +94,7 @@ build() {
 	        --enable-gcrypt \
 	        --enable-gmp \
 	        --enable-gnutls \
+	        --enable-jni \
 	        --enable-ladspa \
 	        --enable-libass \
 	        --enable-libbluray \
@@ -154,6 +157,7 @@ build() {
 	        --enable-libzmq \
 	        --enable-libzvbi \
 	        --enable-decklink \
+	        --enable-mediacodec \
 	        --enable-netcdf \
 	        --enable-nvenc \
 	        --enable-openal \
