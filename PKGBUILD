@@ -1,20 +1,20 @@
-# Maintainer: Javier Tia <javier dot tia at gmail dot com>
+# Maintainer: Javier Tiá <javier dot tia at gmail dot com>
 
 _name=tldr
 pkgname=tldr-cpp-client
-pkgver=1.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='C++ client for tldr: a simplified and community-driven man pages'
 arch=('i686' 'x86_64')
 url='https://github.com/tldr-pages/tldr-cpp-client'
-depends=('curl')
+depends=('curl' 'libzip')
 makedepends=('clang')
 license=('MIT')
 provides=("${_name}=${pkgver}")
 conflicts=('nodejs-tldr')
 replaces=('nodejs-tldr')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('fccd9c3fd516d7a3cfce16130e3f784947c89b2e2484e6d8c0a943b709bb6286')
+sha256sums=('eed26fd5471963d63708e5142388d47f4619649070839dbfe1c46c7842975138')
 
 build() {
   make -C "${srcdir}/${pkgname}-${pkgver}/src"
