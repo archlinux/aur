@@ -1,7 +1,7 @@
 # Maintainer: Ethan Madison (aur<at>ethanmad<dot>com)
 
 pkgname=pia-tools
-pkgver=0.9.8.0
+pkgver=1.0
 pkgrel=1
 pkgdesc="OpenVPN hook for privateinternetaccess.com"
 arch=("any")
@@ -21,7 +21,9 @@ package() {
     install -Dm644 pia-tools-update.timer "${pkgdir}/usr/lib/systemd/system/pia-tools-update.timer"
     install -Dm644 pia_common "${pkgdir}/etc/openvpn/pia/pia_common"
     install -Dm755 pia-up "${pkgdir}/etc/openvpn/pia/pia-up"
-    install -Dm755 pia-up "${pkgdir}/etc/openvpn/pia/pia-down"
+    install -Dm755 pia-down "${pkgdir}/etc/openvpn/pia/pia-down"
+    install -Dm755 pia-up "${pkgdir}/etc/openvpn/pia/pia-up.custom.sample"
+    install -Dm755 pia-down "${pkgdir}/etc/openvpn/pia/pia-down.custom.sample"
     # Activate the ovpn update service
     install -d -m755 "${pkgdir}/usr/lib/systemd/system/multi-user.target.wants"
     ln -s ../pia-tools-update.timer "${pkgdir}/usr/lib/systemd/system/multi-user.target.wants/pia-tools-update.timer"
