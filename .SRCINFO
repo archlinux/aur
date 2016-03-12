@@ -1,0 +1,25 @@
+pkgbase = poco-git
+	pkgdesc = C++ class libraries for network-centric, portable applications, complete edition
+	pkgver = 1.7.0.r0.gf28591b
+	pkgrel = 1
+	url = http://www.pocoproject.org/
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = custom:boost
+	makedepends = git
+	makedepends = cmake
+	makedepends = chrpath
+	depends = libmariadbclient
+	depends = openssl
+	depends = unixodbc
+	depends = expat
+	depends = sqlite
+	provides = poco
+	conflicts = poco
+	source = git+https://github.com/pocoproject/poco.git#branch=master
+	sha256sums = SKIP
+
+pkgname = poco-git
+
