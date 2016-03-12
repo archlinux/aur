@@ -18,9 +18,9 @@ depends=('alsa-lib' 'avahi' 'boost-libs' 'curl' 'expat' 'freetype2' 'fribidi'
          'libxext' 'libxrandr' 'lzo' 'pcre' 'python2' 'sdl' 'sdl_image'
          'sdl_mixer' 'sqlite' 'smbclient' 'taglib' 'tinyxml' 'yajl' 'zlib')
 makedepends=('boost' 'cmake' 'doxygen' 'ffmpeg-compat' 'git' 'java-environment'
-             'libcec' 'libplist' 'shairplay' 'nasm' 'swig' 'unzip' 'zip' 'shairplay')
+             'libcec' 'libplist' 'nasm' 'swig' 'unzip' 'zip' 'shairplay')
 optdepends=('libplist: AirPlay support'
-            'libshairport: AirPlay support'
+            'shairplay: AirPlay support'
             'libcec: Pulse-Eight USB-CEC adapter support'
             'pulseaudio: PulseAudio support')
 source=("https://github.com/RasPlex/OpenPHT/archive/v${pkgver}-${_pkghash}.tar.gz"
