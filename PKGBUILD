@@ -26,7 +26,7 @@ makedepends=('git'
              )
 sha1sums=('SKIP'
           '077e146596f6e31254675a1e0771ddcc05084f03'
-          'b4a4103dc922cbadf18fd1a74b4fa695a5a95235'
+          'f0ce3c0c3297cbb07f211a6ff2a0237823e0c9cd'
           )
 install=megasync-git.install
 
@@ -62,5 +62,5 @@ package() {
   cd src/MEGASync
   install -Dm755 megasync "${pkgdir}/usr/bin/megasync"
   install -Dm644 "${srcdir}/megasync.desktop" "${pkgdir}/usr/share/applications/megasync.desktop"
-  install -Dm644 "${srcdir}/mega.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/mega.svg"
+  install -Dm644 "${srcdir}/mega.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/mega.svg"
 }
