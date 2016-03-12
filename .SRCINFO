@@ -1,7 +1,7 @@
 pkgbase = canon-pixma-mg5200-complete
 	pkgdesc = Complete stand alone driver set (printing and scanning) for Canon Pixma MG5200 series (MG5250 etc.)
 	pkgver = 3.40
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.canon-europe.com/Support/Consumer_Products/products/Fax__Multifunctionals/InkJet/PIXMA_MG_series/PIXMA_MG5250.aspx
 	install = canon-pixma-mg5200-complete.install
 	arch = i686
