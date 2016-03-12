@@ -2,7 +2,7 @@
 # Maintainer: Martin Mlynář <nexus+arch@smoula.net>
 pkgname=dokku
 pkgver=0.4.14
-pkgrel=3
+pkgrel=4
 pkgdesc="Docker powered mini-Heroku in around 100 lines of Bash."
 arch=(any)
 url="https://github.com/dokku/dokku"
@@ -34,7 +34,7 @@ package() {
   cd "${srcdir}/"
 
   #cd "$pkgname"
-  cd "dokku-arch-linux"
+  cd "dokku-0.4.14-arch-linux"
   CORE_PLUGINS_PATH="${pkgdir}/var/lib/dokku/core-plugins/"
   PLUGINS_PATH="${pkgdir}/var/lib/dokku/plugins/"
   install -Dm755 dokku "${pkgdir}/usr/bin/dokku"
