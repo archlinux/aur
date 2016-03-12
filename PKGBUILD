@@ -11,7 +11,7 @@ makedepends=('python2-setuptools')
 license=('LGPL')
 arch=('any')
 source=("https://pypi.python.org/packages/source/c/cozy-management/cozy_management-${pkgver}.tar.gz")
-md5sums=('e188da6b318d0f2e88b677cbf9f6ceb2')
+md5sums=('9f12623672a2a13facd204a375eac330')
 
 package() {
     cd "${srcdir}/${_module}-${pkgver}"
