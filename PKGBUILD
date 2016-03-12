@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=maya-calendar-bzr
-pkgver=r882
+pkgver=r891
 pkgrel=1
 pkgdesc='The Pantheon Calendar'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('cairo' 'clutter' 'clutter-gtk' 'evolution-data-server' 'folks'
          'gdk-pixbuf2' 'geocode-glib' 'glib2' 'glibc' 'gtk3' 'libchamplain'
          'libgee' 'libical' 'libnotify' 'libsoup'
          'libgranite.so')
-makedepends=('bzr' 'cmake' 'vala')
+makedepends=('bzr' 'cmake' 'intltool' 'vala')
 install='maya-calendar.install'
 source=('maya-calendar::bzr+lp:maya')
 sha256sums=('SKIP')
