@@ -12,7 +12,7 @@ makedepends=('boost' 'automoc4' 'qrencode' 'miniupnpc' 'protobuf')
 provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 install=bitcoin-qt.install
-source=('git+https://github.com/gandrewstone/BitcoinUnlimited.git#branch=0.11cfg_stats'
+source=('git+https://github.com/BitcoinUnlimited/BitcoinUnlimited.git#branch=0.11cfg_stats'
 				'bitcoin-qt.install')
 sha256sums=('SKIP'
             'ebf7090ca1202e2c2ccd1aa5bb03e6ac911c458141a1cedda9b41f9c26c2602c')
@@ -28,7 +28,7 @@ build() {
   cd "$srcdir/BitcoinUnlimited"
 
 	msg2 'Building...'
-  CXXFLAGS="$CXXFLAGS -DBOOST_VARIANT_USE_RELAXED_GET_BY_DEFAULT=1 -UUPNPDISCOVER_SUCCESS"
+  CXXFLAGS="$CXXFLAGS -DBOOST_VARIANT_USE_RELAXED_GET_BY_DEFAULT=1"
 	./autogen.sh
 	./configure --prefix=/usr --with-incompatible-bdb --with-gui=qt4
   make -j$(nproc)
