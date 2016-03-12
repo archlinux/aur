@@ -1,12 +1,11 @@
 #
 # Maintainer: Iacopo Isimbaldi <isiachi@rhye.it>
-# Contributor: bjin <bjin1990 at gmail dot com>
 #
 
 pkgbase="zfs-dkms"
 pkgname=("zfs-dkms" "zfs-utils")
-pkgver=0.6.5.4
-pkgrel=4
+pkgver=0.6.5.5
+pkgrel=1
 license=('CDDL')
 makedepends=("spl-dkms=${pkgver}")
 arch=("i686" "x86_64")
@@ -15,9 +14,9 @@ source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${pkgver}/zfs-$
         "zfs.bash-completion-r1"
         "zfs.initcpio.install"
         "zfs.initcpio.hook")
-sha256sums=('780862ec2301ccace412a324787e9df762cff6046e73e2ac0ebdce9e2bd59b0f'
+sha256sums=('4f5cac060c087f088f8b4e1f43cb7aacd0b97f4a4b3df852fe600aad0a03a262'
             'b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540'
-            '70930eee5b0f55ba587220b9530170d91ef1eea98a37de9ae38f963dee410b3a'
+            '1e20071fa61a33874505dae0f2d71bb560f43e7faaea735cbde770ea10c133df'
             '250f1232c464a81cc9c8b8ee05f21d752ebeebbc8614fae1c6d0bc600e816ac1')
 
 build() {
