@@ -1,11 +1,11 @@
-# Maintainer: Josh Dye <josh.jpenguin@gmail.com>
+# Maintainer: Jeff Keyte <jeff@keyte.me>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Daniel Wallace <daniel.wallace@gatech.edu>
 
 pkgname=openpht
-pkgver=1.5.1.508
-_pkghash=67218541
-pkgrel=2
+pkgver=1.5.2.514
+_pkghash=310d4f7e
+pkgrel=3
 pkgdesc='OpenPHT is a community driven fork of Plex Home Theater '
 arch=('i686' 'x86_64')
 url='https://github.com/RasPlex/OpenPHT/'
@@ -25,7 +25,7 @@ optdepends=('libplist: AirPlay support'
             'pulseaudio: PulseAudio support')
 source=("https://github.com/RasPlex/OpenPHT/archive/v${pkgver}-${_pkghash}.tar.gz"
         'plexhometheater.sh')
-sha256sums=('4fd3d382adbbc3ce00a5ce96b0393eb75a4f09a12a6de25a96338e0f271e9744'
+sha256sums=('137da57bf9a0ad9f2b464cae327c85f2842a04d00f2adfa12616c3f22cbcf19f'
             'dc6bd394c07a2ececbb2f8c53cb54afd5d78f7c00a0b34acab3e71217da085fb')
 
 prepare() {
