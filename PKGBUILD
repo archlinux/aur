@@ -19,6 +19,7 @@ depends=(
 	'openbsd-netcat'
 	'gliderlabs-sigil'
 	'lsb-release'
+	'bind-tools'
 )
 
 source=(
@@ -38,7 +39,8 @@ package() {
 
   install -Dm755 dokku "${pkgdir}/usr/bin/dokku"
 
+  mkdir -p "${pkgdir}/var/lib/dokku/core-plugins/available"
   cp -r plugins/* "${pkgdir}/var/lib/dokku/core-plugins/available"
-  find plugins/ -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | while read plugin; do touch "${pkgdir}/var/lib/dokku/core-plugins/available/$$plugin/.core"; done
+  find plugins/ -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | while read plugin; do touch "${pkgdir}/var/lib/dokku/core-plugins/available/${plugin}/.core"; done
 
 }
