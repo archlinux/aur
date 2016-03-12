@@ -32,6 +32,6 @@ pkgver() {
 
 package() {
   cd $pkgname
-  make DESTDIR="$pkgdir" install
+  make install
   install -D -m644 LICENSE.md "$pkgdir/usr/share/licenses/neofetch/LICENSE.md"
 }
