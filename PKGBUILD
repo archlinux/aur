@@ -5,7 +5,7 @@
 
 pkgbase=linux-selinux
 _srcname=linux-4.4
-pkgver=4.4.3
+pkgver=4.4.5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -26,7 +26,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            '4a24c79c40b2cb820ce9f22d44f31edcbde5971432753ab0289772946ed05b7b'
+            'a570680ad5624eff0687c74d652158cbd9ec92fdd177ac5ff812988a24d54ab5'
             'SKIP'
             '87dcca2025cd2eab16e130e4d1f4a69cb1516eb12935d7e29c98a07196ecd291'
             'a0e993a465290325e0b7c432358066d16f766d8580f9337de20fa92bb658e994'
