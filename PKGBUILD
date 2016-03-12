@@ -35,22 +35,6 @@ package() {
 
   #cd "$pkgname"
   cd "dokku-0.4.14-arch-linux"
-  CORE_PLUGINS_PATH="${pkgdir}/var/lib/dokku/core-plugins/"
-  PLUGINS_PATH="${pkgdir}/var/lib/dokku/plugins/"
-  install -Dm755 dokku "${pkgdir}/usr/bin/dokku"
 
-  mkdir -p ${CORE_PLUGINS_PATH} ${PLUGINS_PATH}
-  test -d ${CORE_PLUGINS_PATH}/enabled || PLUGIN_PATH=${CORE_PLUGINS_PATH} plugn init
-  test -d ${PLUGINS_PATH}/enabled || PLUGIN_PATH=${PLUGINS_PATH} plugn init
-  find plugins/ -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | while read plugin; do \
-    rm -Rf ${CORE_PLUGINS_PATH}/available/$plugin && \
-    rm -Rf ${PLUGINS_PATH}/available/$plugin && \
-    rm -rf ${CORE_PLUGINS_PATH}/$plugin && \
-    rm -rf ${PLUGINS_PATH}/$plugin && \
-    cp -R plugins/$plugin ${CORE_PLUGINS_PATH}/available && \
-    ln -s ${CORE_PLUGINS_PATH}/available/$plugin ${PLUGINS_PATH}/available; \
-    find "$pkgdir"/var/lib/dokku/ -xtype l -delete;\
-    PLUGIN_PATH=${CORE_PLUGINS_PATH} plugn enable $plugin ;\
-    PLUGIN_PATH=${PLUGINS_PATH} plugn enable $plugin ;\
-    done
+  install -Dm755 dokku "${pkgdir}/usr/bin/dokku"
 }
