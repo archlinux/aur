@@ -1,8 +1,8 @@
 # Contributor: Sara <sara at archlinux dot us>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=minmad-git
-pkgver=0.r20.ddc0a28
-pkgrel=2
+pkgver=0.r27.e4aed5c
+pkgrel=1
 epoch=
 pkgdesc="A small libmad/oss mp3 player."
 arch=('i686' 'x86_64')
@@ -44,5 +44,6 @@ package() {
   cd "$srcdir/$pkgname"
   install -Dm755 minmad $pkgdir/usr/bin/minmad
   install -Dm644 ../minmad.1 $pkgdir/usr/share/man/man1/minmad.1
+  install -Dm644 README $pkgdir/usr/share/doc/${pkgname%-*}/minmad.1
 }
 
