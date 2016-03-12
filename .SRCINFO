@@ -1,7 +1,7 @@
 pkgbase = factorio-headless
 	pkgdesc = A 2D game about building and maintaining factories - Server version
 	pkgver = 0.12.26
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.factorio.com/
 	arch = x86_64
 	license = custom: commercial
@@ -9,7 +9,7 @@ pkgbase = factorio-headless
 	conflicts = factorio-demo
 	conflicts = factorio-experimental
 	source = LICENSE
-	source = factorio_headless_x64_0.12.26.tar.gz::http://www.factorio.com/download-headless/stable
+	source = factorio_headless_x64_0.12.26.tar.gz::http://www.factorio.com/get-download/0.12.26/headless/linux64
 	sha256sums = 67ec2f88afff5d7e0ca5fd3301b5d98655269c161a394368fa0ec49fbc0c0e21
 	sha256sums = a7891432c675cc9ac3577c627e348d5f0aca9c06478a659a4e703f5813c79dad
 
