@@ -1,7 +1,7 @@
 # Maintainer: Chrysostomus @forum.manjaro.org
 
 pkgname=pacli
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
 pkgdesc="An interactive pacman interface using fzf"
 arch=(any)
