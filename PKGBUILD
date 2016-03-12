@@ -3,7 +3,7 @@
 # and takes a fortnight to download
 pkgname=miller-git
 pkgver=3.4.0
-pkgrel=2
+pkgrel=3
 epoch=2
 pkgdesc="Miller is like sed, awk, cut, join, and sort for name-indexed data such as CSV"
 arch=('x86_64' 'i686')
@@ -15,10 +15,6 @@ provides=('miller')
 conflicts=('miller-git')
 source=(https://github.com/johnkerl/miller/archive/master.zip)
 md5sums=('SKIP')
-
-pkgver() {
-  printf "%s+%s" "$pkgver" "$(date +%Y%m%d)"
-}
 
 prepare() {
   cd "$srcdir/miller-master"

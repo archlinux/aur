@@ -1,7 +1,7 @@
 pkgbase = miller-git
 	pkgdesc = Miller is like sed, awk, cut, join, and sort for name-indexed data such as CSV
 	pkgver = 3.4.0
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 2
 	url = https://github.com/johnkerl/miller
 	arch = x86_64
