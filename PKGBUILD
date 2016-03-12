@@ -50,7 +50,7 @@ build() {
     -DENABLE_PYTHON='TRUE' \
     -DPYTHON_EXEC='/usr/bin/python2' \
     -DUSE_INTERNAL_FFMPEG='TRUE'
-  make
+  make -j2
 }
 
 package() {
