@@ -35,11 +35,15 @@ md5sums=('7986bdc2fe6027d4c9216f7f5791e718'
 
 prepare() {
   cd $pkgname-$pkgver
-  shopt -s nullglob
-  for _p in "$srcdir"/*.patch; do
-    msg2 "Applying ${_p##*/}"
-    patch -p 1 -i "$_p"
+  # apply patch from the source array (should be a pacman feature)
+  local filename
+  for filename in "${source[@]}"; do
+    if [[ "$filename" =~ \.patch$ ]]; then
+      msg2 "Applying patch $filename"
+      patch -p1 -i "$srcdir/$filename"
+    fi
   done
+  :
 }
 
 build() {
