@@ -4,7 +4,7 @@
 pkgname=mist
 pkgver=0.5.1
 _pkgver=0-5-1
-pkgrel=1
+pkgrel=2
 pkgdesc="Ethereum wallet for Ether accounts, wallets and smart contracts (includes Mist browser)."
 arch=('i686' 'x86_64')
 depends=(
@@ -17,16 +17,20 @@ depends=(
   'readline'
 )
 provides=(
+  'geth'
   'mist'
   'libnode'
 )
 conflicts=(
+  'geth'
+  'geth-git'
+  'go-ethereum'
+  'go-ethereum-git'
   'mist-git'
   'libnode'
   'libnode-git'
 )
 optdepends=(
-  'geth: The go-ethereum commandline client.'
   'ethereum: The cpp-ethereum commandline client.'
 )
 url="https://github.com/ethereum/mist"
@@ -61,7 +65,10 @@ package() {
   install -Dm644 "${srcdir}/mist.desktop" "${pkgdir}/usr/share/applications"
 
   install -d "${pkgdir}/usr/bin"
+  chmod +x "/usr/share/${pkgname}/Ethereum-Wallet"
+  chmod +x "/usr/share/${pkgname}/resources/node/geth/geth"
   ln -s "/usr/share/${pkgname}/Ethereum-Wallet" "${pkgdir}/usr/bin/mist"
+  ln -s "/usr/share/${pkgname}/resources/node/geth/geth" "${pkgdir}/usr/bin/geth"
 
   install -Dm644 "${pkgdir}/usr/share/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   rm "${pkgdir}/usr/share/${pkgname}/LICENSE"
