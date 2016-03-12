@@ -7,16 +7,16 @@
 
 pkgname=canon-pixma-mg5200-complete
 pkgver=3.40
-pkgrel=3
+pkgrel=4
 pkgdesc="Complete stand alone driver set (printing and scanning) for Canon Pixma MG5200 series (MG5250 etc.)"
 url='http://www.canon-europe.com/Support/Consumer_Products/products/Fax__Multifunctionals/InkJet/PIXMA_MG_series/PIXMA_MG5250.aspx'
 arch=('i686' 'x86_64')
 license=('custom')
 install="${pkgname}.install"
 if [[ ${CARCH} = 'x86_64' ]]; then
-  depends=('lib32-popt' 'lib32-libpng12' 'lib32-libusb-compat' 'lib32-libtiff4' 'lib32-libxml2' 'lib32-gtk2')
+  depends=('lib32-popt' 'lib32-libpng12' 'lib32-libusb-compat' 'lib32-libtiff4' 'lib32-libxml2' 'lib32-gtk2' 'cups')
 elif [[ ${CARCH} = 'i686' ]]; then
-  depends=('popt' 'libpng12' 'libusb-compat' 'libtiff4' 'libxml2' 'gtk2')
+  depends=('popt' 'libpng12' 'libusb-compat' 'libtiff4' 'libxml2' 'gtk2' 'cups')
 fi
 makedepends=('deb2targz' 'sed')
 source=('http://files.canon-europe.com/files/soft40259/Software/MG5200series-printer_driver.tar'
