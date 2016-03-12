@@ -1,14 +1,16 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=aegisub-git
-pkgver=3.2.2.r165.ba9f5a7
+pkgver=3.2.2.r277.26fea0e
 pkgrel=1
 pkgdesc='A general-purpose subtitle editor with ASS/SSA support'
 arch=('i686' 'x86_64')
 url='http://www.aegisub.org'
 license=('GPL' 'BSD')
-depends=('boost-libs' 'desktop-file-utils' 'ffms2' 'fftw' 'hunspell' 'wxgtk')
-makedepends=('boost' 'git' 'intltool' 'mesa')
+depends=('alsa-lib' 'boost-libs' 'desktop-file-utils' 'fftw' 'fontconfig'
+         'gcc-libs' 'glibc' 'hunspell' 'icu' 'libgl' 'wxgtk' 'zlib'
+         'libass.so' 'libffms2.so')
+makedepends=('boost' 'git' 'intltool' 'lua' 'mesa')
 optdepends=('libpulse: Pulseaudio backend'
             'openal: OpenAL backend'
             'oss: OSS backend'
