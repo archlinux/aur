@@ -4,8 +4,7 @@
 # Copyright (C) 2012 Alessio Sergi <al3hex at gmail dot com>
 # modified 2012 for tor-browser (Max Roder <maxroder at web dot de>)
 # modified 2014 by Yardena Cohen <yardenack at gmail dot com>
-# modified 2015 for tor-messenger (shapow <echo c2hhcG93QDRyYXkuY28K \
-# | base64 -d>)
+# modified 2015, 2016 for tor-messenger (Jean Lucas <jean at 4ray dot co>)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,9 +22,9 @@
 set -e
 
 # filled by the PKGBUILD
-NAME='tor-messenger-bin'
-VERSION='0.1.0b4'
-LANGUAGE="en-US"
+NAME='tor-messenger'
+VERSION='REPL_VERSION'
+LANGUAGE="REPL_LANGUAGE"
 
 ARCH=$(getconf LONG_BIT)
 
