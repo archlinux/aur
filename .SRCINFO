@@ -1,0 +1,31 @@
+pkgbase = molprobity-git
+	pkgdesc = All-atom structure validation for macromolecular crystallography
+	pkgver = r1013.ee5bdd4
+	pkgrel = 1
+	url = http://molprobity.biochem.duke.edu/
+	arch = any
+	license = BSD
+	makedepends = python2
+	makedepends = git
+	makedepends = subversion
+	makedepends = curl
+	makedepends = tar
+	makedepends = make
+	makedepends = gawk
+	depends = python
+	depends = php
+	depends = lib32-libxext
+	depends = java-environment
+	depends = ucsf-chimera
+	depends = lib32-gcc-libs
+	depends = boost-libs
+	depends = tcsh
+	depends = lib32-libxt
+	provides = molprobity-git
+	conflicts = molprobity-git
+	options = !strip
+	source = molprobity-git::git+https://github.com/rlabduke/MolProbity#branch=molprobity_4.2
+	md5sums = SKIP
+
+pkgname = molprobity-git
+
