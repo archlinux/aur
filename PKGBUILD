@@ -16,9 +16,9 @@ source=(license.html::https://www.google.com/chrome/browser/privacy/eula_text.ht
 sha1sums=('1ffba5152cb749300a016efec909b828eba9a64a')
 if [ "$CARCH" == i686 ]; then
         source+=(http://docs.volcanis.me/.pepper-flash/i686/libpepflashplayer.so)
-        sha1sums+=('c8a46d0cb890b08e87032c0ef679f647204143aa')
+        sha1sums+=('')
         source+=(http://docs.volcanis.me/.pepper-flash/i686/manifest.json)
-        sha1sums+=('1ba67aaecf91a632c796d3715ec14ed8e964d7c8')
+        sha1sums+=('')
 elif [ "$CARCH" == x86_64 ]; then
         source+=(http://docs.volcanis.me/.pepper-flash/x86_64/libpepflashplayer.so)
         sha1sums+=('1f1412d0a12c76498dd8e0f67b9a11dca235c47b')
