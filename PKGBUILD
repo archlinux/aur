@@ -9,7 +9,7 @@ _pkgname=android-qt5
 pkgname=${_pkgname}-${android_arch}
 pkgver=5.5.1
 _pkgver=5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt 5 for Android"
 arch=('i686' 'x86_64')
 url='https://www.qt.io'
@@ -112,6 +112,7 @@ build() {
         -no-warnings-are-errors \
         -qt-zlib \
         -qt-freetype \
+        -no-sql-psql \
         -android-arch ${android_arch} \
         -android-ndk-platform android-21
 
