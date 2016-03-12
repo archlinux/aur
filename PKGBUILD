@@ -14,7 +14,7 @@ url="http://eco.senritu.net/ubuntu13-10-pt3-epgrec/"
 source=(git+https://github.com/m-tsudo/pt3.git
         thatfix)
 sha256sums=('SKIP'
-            'b5f56cfaa69b455f4e87129bbcc5a3359dcee6bbca4e1f08f8e06be9704c3183')
+            '3b2410392b65e058eaf9f1190f0e4365e56f55d9592d35f26a5680ae1c6d7a06')
 
 #pkgver() {
 #	# remove ".r*.*" from package version
