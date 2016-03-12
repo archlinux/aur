@@ -1,5 +1,5 @@
 pkgname=mingw-w64-opencv
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Open Source Computer Vision Library (mingw-w64)"
 arch=('any')
@@ -9,20 +9,20 @@ options=('!buildflags' 'staticlibs' '!strip')
 depends=('mingw-w64-crt' 'mingw-w64-jasper' 'mingw-w64-libpng' 'mingw-w64-libjpeg-turbo' 'mingw-w64-libtiff' 'mingw-w64-zlib' 'mingw-w64-openexr' 'mingw-w64-libwebp')
 makedepends=('mingw-w64-cmake')
 source=("https://github.com/Itseez/opencv/archive/${pkgver}.tar.gz")
-md5sums=('e6c72f54f7127161b371ef798f34d5c9')
+md5sums=('70e1dd07f0aa06606f1bc0e3fa15abd3')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 _cmakeopts=('-DCMAKE_SKIP_RPATH=ON'
-            '-DENABLE_SSE=0'
-            '-DENABLE_SSE2=0'
             '-DCMAKE_BUILD_TYPE=Release'
             '-DBUILD_TESTS=OFF'
+            '-DBUILD_PERF_TESTS=OFF'
             '-DBUILD_DOCS=OFF'
+            '-DBUILD_opencv_apps=OFF'
             '-DWITH_FFMPEG=OFF'
             '-DWITH_OPENCL=OFF'
-            '-DINSTALL_C_EXAMPLES=0'
-            '-DINSTALL_PYTHON_EXAMPLES=0'
+            '-DINSTALL_C_EXAMPLES=OFF'
+            '-DINSTALL_PYTHON_EXAMPLES=OFF'
             '-DBUILD_ZLIB=OFF'
             '-DBUILD_TIFF=OFF'
             '-DBUILD_JASPER=OFF'
@@ -36,10 +36,10 @@ _cmakeopts=('-DCMAKE_SKIP_RPATH=ON'
 prepare() {
   cd "$srcdir/opencv-$pkgver"
 
-  # no clue how to fix this one properly
-  grep -lr LDBL_EPSILON . | xargs sed -i "s|LDBL_EPSILON|1.08420217248550443401e-19L|g"
-  grep -lr DBL_EPSILON . | xargs sed -i "s|DBL_EPSILON|2.2204460492503131E-16|g"
-  grep -lr FLT_EPSILON . | xargs sed -i "s|FLT_EPSILON|1.19209290E-07F|g"
+  # error: ‘DBL_EPSILON’ was not declared in this scope
+  grep -lr LDBL_EPSILON .| grep -v gch$ | xargs sed -i "s|LDBL_EPSILON|1.08420217248550443401e-19L|g"
+  grep -lr DBL_EPSILON . | grep -v gch$ | xargs sed -i "s|DBL_EPSILON|2.2204460492503131E-16|g"
+  grep -lr FLT_EPSILON . | grep -v gch$ | xargs sed -i "s|FLT_EPSILON|1.19209290E-07F|g"
 
 }
 
@@ -65,14 +65,11 @@ package() {
 #     make DESTDIR="$pkgdir" install
     cd "$srcdir/opencv-$pkgver/build-${_arch}"
     make DESTDIR="$pkgdir" install
-    install -d "$pkgdir"/usr/${_arch}/share/opencv
-    install -m644 "$pkgdir"/usr/${_arch}/*.cmake "$pkgdir"/usr/${_arch}/share/opencv
-    install -m644 "$pkgdir"/usr/${_arch}/LICENSE "$pkgdir"/usr/${_arch}/share/opencv
+    rm -r  "$pkgdir"/usr/${_arch}/share/
     install -d "$pkgdir"/usr/${_arch}/lib/pkgconfig
     install -m644 "$srcdir"/opencv-$pkgver/build-${_arch}/unix-install/opencv.pc \
       "$pkgdir"/usr/${_arch}/lib/pkgconfig/
     rm "$pkgdir"/usr/${_arch}/LICENSE
-    rm "$pkgdir"/usr/${_arch}/*.cmake
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
