@@ -1,17 +1,12 @@
-From 23a6dbb62a0347a5791335bb195baedd94045923 Mon Sep 17 00:00:00 2001
+From 57c9e313694e518302a2e54cde6183ee30099e90 Mon Sep 17 00:00:00 2001
 From: Jurgen Kramer <gtmkramer@xs4all.nl>
-Date: Mon, 11 Jan 2016 12:21:06 +0100
-Subject: [PATCH] Add native DSD support to MPD 0.19 using DSD_U8 and
- DSD_U32_BE sample formats.
-
-See https://github.com/lintweaker/xmos-native-dsd for more info.
-
-Jurgen Kramer
+Date: Tue, 8 Mar 2016 18:10:36 +0100
+Subject: [PATCH] Update MPD native DSD patch to MPD 0.19.13
 
 Signed-off-by: Jurgen Kramer <gtmkramer@xs4all.nl>
 ---
  Makefile.am                             |  5 ++-
- README-DSD                              | 52 +++++++++++++++++++++++
+ README-DSD                              | 51 ++++++++++++++++++++++
  configure.ac                            |  2 +-
  src/AudioFormat.cxx                     |  4 +-
  src/AudioFormat.hxx                     | 18 +++++++-
@@ -28,7 +23,7 @@ Signed-off-by: Jurgen Kramer <gtmkramer@xs4all.nl>
  src/pcm/PcmFormat.cxx                   | 10 ++++-
  src/pcm/PcmMix.cxx                      |  6 ++-
  src/pcm/Volume.cxx                      |  6 ++-
- 18 files changed, 330 insertions(+), 21 deletions(-)
+ 18 files changed, 329 insertions(+), 21 deletions(-)
  create mode 100644 README-DSD
  create mode 100644 src/pcm/PcmDsdNative.cxx
  create mode 100644 src/pcm/PcmDsdNative.hxx
@@ -58,10 +53,10 @@ index 307fcba..e905003 100644
  
 diff --git a/README-DSD b/README-DSD
 new file mode 100644
-index 0000000..d896020
+index 0000000..d859472
 --- /dev/null
 +++ b/README-DSD
-@@ -0,0 +1,52 @@
+@@ -0,0 +1,51 @@
 +[31-jan-15]
 +This version of MPD 0.19 has been enhancend with DSD native playback options.
 +DSD output using DoP is mutually exclusive with native DSD playback. 
@@ -75,9 +70,8 @@ index 0000000..d896020
 +
 +dop	"no"
 +
-+Native DSD playback requires ALSA driver and ALSA library support. The ALSA
-+library needs patching (ALSA lib <= 1.0.28). A version with the needed DSD_U32_BE sample
-+format is not released yet. See: https://github.com/lintweaker/xmos-native-dsd
++Native DSD playback requires ALSA driver (i.e. linux kernel) and ALSA library
++support (ALSA lib >= 1.0.28). See: https://github.com/lintweaker/xmos-native-dsd
 +
 +Add the following configuration to the appropriate audio_output section(s) of your mpd configuration file (e.g.
 +/etc/mpd.conf):
@@ -115,14 +109,14 @@ index 0000000..d896020
 +
 +
 diff --git a/configure.ac b/configure.ac
-index 107b45a..c7079c2 100644
+index 39f2aaf..63e0bc8 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -1,6 +1,6 @@
  AC_PREREQ(2.60)
  
--AC_INIT(mpd, 0.19.12, musicpd-dev-team@lists.sourceforge.net)
-+AC_INIT(mpd, 0.19.12-dsd, gtmkramer@xs4all.nl)
+-AC_INIT(mpd, 0.19.13, musicpd-dev-team@lists.sourceforge.net)
++AC_INIT(mpd, 0.19.13-dsd, gtmkramer@xs4all.nl)
  
  VERSION_MAJOR=0
  VERSION_MINOR=19
@@ -789,4 +783,3 @@ index b12d8fd..ec718be 100644
  	}
 -- 
 2.5.0
-
