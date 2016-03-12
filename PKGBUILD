@@ -1,7 +1,7 @@
 pkgname=firefox-esr-privacy
 _basever=38
 _pkgdir=mozilla-esr${_basever}
-pkgver=38.6.1
+pkgver=38.7.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=('i686' 'x86_64')
