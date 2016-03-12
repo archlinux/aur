@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=20160114.bc1dce5
+pkgver=20160312.9cd0555
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('i686' 'x86_64' )
@@ -13,7 +13,7 @@ depends=('desktop-file-utils'
          'libfdk-aac'
          'libcdio-paranoia'
          'openal'
-         'lua52'
+         'luajit'
          'libssh'
          'libcaca'
          'rsound'
@@ -97,13 +97,17 @@ prepare() {
         --enable-libsoxr" > ffmpeg_options
   echo "--prefix=/usr \
         --confdir=/etc/mpv \
+        --disable-test \
+        --disable-build-date
+        --enable-libmpv-shared \
         --enable-openal \
         --enable-sdl2 \
-        --enable-libmpv-shared \
         --enable-zsh-comp \
         --enable-libarchive \
-        --lua=52arch \
-        --enable-gpl3" > mpv_options
+        --lua=luajit \
+        --enable-gpl3 \
+        --enable-libavdevice \
+        --disable-vapoursynth-lazy" > mpv_options
 
   cd mpv
 
@@ -131,6 +135,4 @@ package() {
   sed 's|/usr/local/etc/mpv.conf|/etc/mpv.conf|g' -i "${pkgdir}/usr/share/doc/mpv/mpv.conf"
 
   (cd mpv/TOOLS/lua; for i in $(find . -type f); do install -Dm644 "${i}" "${pkgdir}/usr/share/mpv/scripts/${i}"; done)
-
-  (cd mpv/DOCS/client_api_examples; for i in $(find . -type f); do install -Dm644 "${i}" "${pkgdir}/usr/share/mpv/client_api_examples/${i}"; done)
 }
