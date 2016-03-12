@@ -1,6 +1,6 @@
 pkgbase = jdk-devel
 	pkgdesc = Oracle Java 9 Development Kit Snapshot
-	pkgver = 9b108
+	pkgver = 9b109
 	pkgrel = 1
 	url = https://jdk9.java.net/
 	install = jdk-devel.install
@@ -54,10 +54,10 @@ pkgbase = jdk-devel
 	md5sums = 003bb22b96f9b29f61de47190f843791
 	md5sums = 419f27776d367e0c06c76dac6f6c3485
 	md5sums = f09947a67691a2d78d20a3885889981c
-	source_i686 = http://www.java.net/download/java/jdk9/archive/108/binaries/jdk-9-ea+108_linux-x86_bin.tar.gz
-	md5sums_i686 = 0faa753d7cfaf55be0a083a118a384c0
-	source_x86_64 = http://www.java.net/download/java/jdk9/archive/108/binaries/jdk-9-ea+108_linux-x64_bin.tar.gz
-	md5sums_x86_64 = 2137cf4c9072c86c6442aaf66aac85f8
+	source_i686 = http://www.java.net/download/java/jdk9/archive/109/binaries/jdk-9-ea+109_linux-x86_bin.tar.gz
+	md5sums_i686 = 136d1a32d4dc356d9de5b2ce0c583458
+	source_x86_64 = http://www.java.net/download/java/jdk9/archive/109/binaries/jdk-9-ea+109_linux-x64_bin.tar.gz
+	md5sums_x86_64 = 111ea0dd42552e5272fcf8dcffa07ac6
 
 pkgname = jdk-devel
 
