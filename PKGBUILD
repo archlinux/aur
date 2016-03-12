@@ -1,31 +1,25 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=zdbsp
-pkgver=1.18.1
+pkgver=1.19
 pkgrel=1
-pkgdesc="A node builder optimized for ZDoom WADs"
+pkgdesc="Standalone version of ZDoom's internal node builder"
 arch=('i686' 'x86_64')
 url="http://www.zdoom.org/"
-license=('GPL2')
+license=('GPL')
 depends=('gcc-libs' 'zlib')
 makedepends=('cmake')
-source=(http://zdoom.org/files/utils/$pkgname/$pkgname-$pkgver-src.zip)
-noextract=($pkgname-$pkgver-src.zip)
-sha256sums=('f04ae1c1ee7cda6efc0ac341fcde9bfa48b929becf0057d4deb0ede09f133cd4')
+source=("http://zdoom.org/files/utils/${pkgname}/${pkgname}-${pkgver}-src.zip")
+sha256sums=('b98956fb1c52f5e25062f829b2468cb8028492add0b7672654763f78dec10249')
 
 prepare() {
-  unzip -d $pkgname-$pkgver -o -q $pkgname-$pkgver-src.zip
+    cmake -DCMAKE_BUILD_TYPE=Release .
 }
 
 build() {
-  cd $pkgname-$pkgver
-
-  cmake -DCMAKE_BUILD_TYPE=Release .
-  make
+    make
 }
 
 package() {
-  cd $pkgname-$pkgver
-
-  install -m755 -D zdbsp "$pkgdir/usr/bin/zdbsp"
+    install -D 'zdbsp' "${pkgdir}/usr/bin/zdbsp"
 }
