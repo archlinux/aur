@@ -1,7 +1,7 @@
 info_dir=/usr/share/info
 
 post_install() {
-    install-info ${info_dir}/guile-xcb.info.gz ${info_dir}/dir 
+    install-info ${info_dir}/guile-xcb.info.gz ${info_dir}/dir 2>/dev/null
     gtk-update-icon-cache -q -t -f usr/share/icons/hicolor	     
 }
 
@@ -10,7 +10,7 @@ post_upgrade() {
 }
 
 pre_remove() {
-    install-info --delete ${info_dir}/guile-xcb.info.gz ${info_dir}/dir
+    install-info --delete ${info_dir}/guile-xcb.info.gz ${info_dir}/dir 2>/dev/null
 }
 
 post_remove() {
