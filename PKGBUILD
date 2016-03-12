@@ -1,19 +1,19 @@
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Maintainer: Mikkel Oscar Lyderik <mikkeloscar at gmail dot com>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 # Contributor: Corrado Primier <bardo@aur.archlinux.org>
 # Contributor: William Rea <sillywilly@gmail.com>
 
-# Note: The patch is based on https://github.com/mikkeloscar/pulseaudio-raop2
-# which is basically https://github.com/hfujita/pulseaudio-raop2 rebased to
-# pulseaudio v7.1
+# Note: The patch is based on:
+# https://github.com/hfujita/pulseaudio-raop2/tree/hf/raop2-v4-v8.0
 
 _pkgbase=pulseaudio
 pkgbase=$_pkgbase-raop2
 pkgname=(pulseaudio-raop2 libpulse-raop2 pulseaudio-{gconf,zeroconf,lirc,xen,jack,bluetooth,equalizer}-raop2)
 pkgdesc="A featureful, general-purpose sound server with AirPlay/Airtunes/RAOP v2 patchset"
-pkgver=7.1
+pkgver=8.0
 pkgrel=1
-arch=(i686 x86_64)
+arch=('i686' 'x86_64')
 url="http://hfujita.github.io/pulseaudio-raop2/"
 license=(LGPL)
 makedepends=(libasyncns libcap attr libxtst libsm libsndfile libtool rtkit libsoxr
@@ -22,14 +22,24 @@ makedepends=(libasyncns libcap attr libxtst libsm libsndfile libtool rtkit libso
              check)
 options=(!emptydirs)
 source=("$pkgbase-$pkgver::git+http://anongit.freedesktop.org/git/pulseaudio/pulseaudio.git#commit=v$pkgver"
+        0001-Revert-module-switch-on-port-available-Route-to-pref.patch
+        0002-Revert-module-alsa-card-Report-available-ports-befor.patch
         padsp-lib32.patch
         raopv2.patch)
 sha256sums=('SKIP'
+            '4db15e8a696809acafc8a0a4e6c7cc64d34870e2566012618e9953ab65629174'
+            '52fbf7c69132d852e9f6dfd3c16fde78c6931333d2ca12bb1d97091e657da725'
             '572ff890dbed1e4a5654b7ed4ea3b3f2a91c871fb2224799bc789c317bb49964'
-            '8a88962ac4f9918d781f2dd7059991d5d8f68569f1abbaf0bee92c589e140044')
+            '72b377c6f179ae461415891c1fbb894d2baa954f60480c6867e8cee8686b48b9')
 
 prepare() {
   cd $pkgbase-$pkgver
+
+  # https://bugs.freedesktop.org/show_bug.cgi?id=93946
+  patch -Np1 -i ../0001-Revert-module-switch-on-port-available-Route-to-pref.patch
+
+  # https://bugs.archlinux.org/task/48306
+  patch -Np1 -i ../0002-Revert-module-alsa-card-Report-available-ports-befor.patch
 
   patch -p1 < ../raopv2.patch
 
@@ -74,11 +84,16 @@ package_pulseaudio-raop2() {
   cd "$pkgdir"
   patch -Np1 -i "$srcdir/padsp-lib32.patch"
 
-  sed -e '/flat-volumes/iflat-volumes=no' \
+  # Assumes that any volume adjustment is intended by the user, who can control
+  # each app's volume. Misbehaving clients can trigger earsplitting volume
+  # jumps. App volumes can diverge wildly and cause apps without their own
+  # volume control to fall below sink volume; a sink-only volume control will
+  # suddenly be unable to make such an app loud enough.
+  sed -e '/flat-volumes/iflat-volumes = no' \
       -i etc/pulse/daemon.conf
 
   # Superseded by socket activation
-  sed -e '/autospawn/iautospawn=no' \
+  sed -e '/autospawn/iautospawn = no' \
       -i etc/pulse/client.conf
 
   # Disable cork-request module, can result in e.g. media players unpausing
@@ -87,10 +102,6 @@ package_pulseaudio-raop2() {
       -i usr/bin/start-pulseaudio-x11
 
   rm etc/dbus-1/system.d/pulseaudio-system.conf
-
-  mkdir usr/lib/systemd/user/sockets.target.wants
-  ln -s ../pulseaudio.socket \
-    usr/lib/systemd/user/sockets.target.wants/pulseaudio.socket
 
 ### Split libpulse
 
