@@ -6,13 +6,13 @@
 
 pkgname=firefox-nightly-pl
 pkgdesc='Standalone web browser from mozilla.org, nightly build, Polish l10n'
-pkgver=47.0a1
+pkgver=48.0a1
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://nightly.mozilla.org/"
 source=("https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n/firefox-${pkgver}.pl.linux-${CARCH}.tar.bz2" 'firefox-nightly.desktop' 'firefox-nightly-safe.desktop')
-sha1sums=('5fbeb03e26d58430d2f32176cc379d69cda1ae3c'
+sha1sums=('5add9971e0add3ab432445878b68c43c5e398fe6'
           'd998c8a825bb0f58594f822a2e2fbb7c0a1a3ce8'
           'd98f7a35fd423a9701dcaef7d4bbffee939198c7')
 depends=('alsa-lib' 'libxt' 'libnotify' 'mime-types' 'nss' 'gtk2' 'sqlite' 'dbus-glib')
