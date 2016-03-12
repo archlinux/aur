@@ -19,7 +19,6 @@ pkgbase = zfs-dkms
 
 pkgname = zfs-dkms
 	pkgdesc = Kernel modules for the Zettabyte File System.
-	install = zfs.install
 	depends = spl-dkms=0.6.5.4
 	depends = zfs-utils=0.6.5.4-4
 	depends = dkms

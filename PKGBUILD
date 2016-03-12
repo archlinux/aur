@@ -42,7 +42,6 @@ package_zfs-dkms() {
     depends=("spl-dkms=${pkgver}" "zfs-utils=${pkgver}-${pkgrel}" "dkms")
     provides=("zfs")
     conflicts=("zfs-git" "zfs-lts")
-    install=zfs.install
 
     dkmsdir="${pkgdir}/usr/src/zfs-${pkgver}"
     install -d "${dkmsdir}"
