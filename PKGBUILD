@@ -37,4 +37,8 @@ package() {
   cd "dokku-0.4.14-arch-linux"
 
   install -Dm755 dokku "${pkgdir}/usr/bin/dokku"
+
+  cp -r plugins/* "${pkgdir}/var/lib/dokku/core-plugins/available"
+  find plugins/ -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | while read plugin; do touch "${pkgdir}/var/lib/dokku/core-plugins/available/$$plugin/.core"; done
+
 }
