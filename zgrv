@@ -2,4 +2,4 @@
 
 ZGRV_HOME=/opt/zgrviewer
 
-java -jar $ZGRV_HOME/target/zgrviewer-0.8.2.jar "$@"
+java -jar $ZGRV_HOME/target/zgrviewer-0.10.0.jar "$@"
