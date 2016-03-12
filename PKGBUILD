@@ -1,5 +1,5 @@
 pkgname=gammaray
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 epoch=
 pkgdesc="A tool for examining the internals of a Qt application and to some extent also manipulate it"
@@ -8,8 +8,7 @@ url="http://www.kdab.com/kdab-products/gammaray/"
 license=('GPL')
 depends=(graphviz qt5-script qt5-svg qt5-tools)
 source=(https://github.com/KDAB/GammaRay/archive/v$pkgver.tar.gz)
-md5sums=('0054f7c55506a866f03f07aea808139b')
-
+md5sums=('ef9d263075209242d6f55066c5c2fea6')
 build() {
 	cd "$srcdir/GammaRay-$pkgver"
 	mkdir -p build
@@ -22,4 +21,3 @@ package() {
 	cd "$srcdir/GammaRay-$pkgver/build"
 	make DESTDIR="$pkgdir/" install
 }
-md5sums=('4e303bae05cac908c6ac748cd65d21a1')
