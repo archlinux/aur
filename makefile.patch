@@ -1,0 +1,21 @@
+diff -Naur englabgui-0.3.0.orig/src/makefile englabgui-0.3.0.new/src/makefile
+--- englabgui-0.3.0.orig/src/makefile	2016-03-12 19:35:55.033288062 +0100
++++ englabgui-0.3.0.new/src/makefile	2016-03-12 19:52:48.446718141 +0100
+@@ -1,6 +1,6 @@
+ VPATH=$(OUT)
+-includedir=. /usr/include/qt4/ /usr/local/include/mgl /usr/include/qt4/QtGui/
+-DEPS=-lQtGui -lQtUiTools -lQtXml -lenglab -L`$(engdir)englab-paths --libdir`
++includedir=. /usr/include/qt4/ /usr/include/mgl /usr/include/qt4/QtGui/
++DEPS=-lQtGui -lQtUiTools -lQtXml -lQtNetwork -lQtCore -lenglab -L`$(engdir)englab-paths --libdir`
+ 
+ SOURCES= main.cpp englabgui.cpp qiotextbox.cpp hGUIGlobals.cpp qeditor.cpp \
+            engUiXmlHandler.cpp engwidget.cpp qmytablewidget.cpp \
+@@ -25,7 +25,7 @@
+ #	patch $@ $@.diff
+ 
+ moc_%.cpp: %.h
+-	moc $< -o $@
++	moc-qt4 $< -o $@
+ 
+ all:$(TARGET)
+ 
