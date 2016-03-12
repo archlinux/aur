@@ -1,0 +1,15 @@
+pkgbase = settimezone
+	pkgdesc = To change the timezone in Arch Linux.
+	pkgver = 0.2.1
+	pkgrel = 3
+	url = https://github.com/nsmathew/settimezone
+	install = settimezone.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = python
+	source = https://github.com/nsmathew/SetTimeZone/archive/v0.2.1.tar.gz
+	sha256sums = a3791910bbfc6cbb90228c89ceb146d699e376df11bd0898b8a73fb78a70de35
+
+pkgname = settimezone
+
