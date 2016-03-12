@@ -1,14 +1,15 @@
 # Contributor: dragonn <dragonn at op dot pl>
 # Contributor: Smola <smola at mail dot ua>
+# Contributor: Blitz67
 
 pkgname=obshutdown-noerror
 pkgver=0.1_rc1
-pkgrel=1
+pkgrel=2
 pkgdesc='Openbox shutdown manager - disabled error messages'
 arch=('i686' 'x86_64')
 provides=('obshutdown')
 conflicts=('obshutdown' 'obshutdown-git')
-url=('https://github.com/panjandrum')
+url='https://github.com/panjandrum'
 license=('GPL')
 depends=('gtk2' 'cairo')
 makedepends=('make')
