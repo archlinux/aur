@@ -2,7 +2,7 @@
 # Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
 
 pkgname=pantheon-photos-bzr
-pkgver=r2892
+pkgver=r2900
 pkgrel=1
 pkgdesc='The Pantheon Photos Manager'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'glibc'
          'libgee' 'libgexiv2' 'libgphoto2'
          'libraw' 'libsoup' 'libxml2' 'pango' 'rest' 'sqlite' 'webkit2gtk'
          'libgranite.so' 'libgudev-1.0.so')
-makedepends=('bzr' 'cmake' 'vala')
+makedepends=('bzr' 'cmake' 'intltool' 'vala')
 provides=('pantheon-photos')
 conflicts=('pantheon-photos')
 install='pantheon-photos.install'
