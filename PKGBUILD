@@ -27,7 +27,7 @@ source=(
   "${pkgname}.install"
 )
 sha256sums=('41894fc85399c6cf6d03e6cb15c2291dfc7fb83cfafd15fddcf28754effd0444'
-            '60a6d0da2bbdf777626999e0d295d899c2858aa892d2886c33d39ed519db2dcd')
+            'e173147ecb9887a0d558a7d624d0500f1242b91b70e86e35ada39c73fd80a29b')
 install=${pkgname}.install
 
 package() {
