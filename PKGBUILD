@@ -30,7 +30,7 @@ sha256sums=('SKIP'
 
 prepare() {
   cd pt3/
-  #patch -Np2 < ../thatfix
+  patch -Np2 < ../thatfix
 }
 
 build() {
