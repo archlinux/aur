@@ -3,14 +3,14 @@
 
 pkgname=scanmem-git
 pkgver=0.15.4.751.6a5e2e8
-pkgrel=1
+pkgrel=2
 pkgdesc="Memory scanner designed to isolate the address of an arbitrary variable in an executing process"
 url="https://github.com/scanmem/scanmem"
 arch=('i686' 'x86_64')
 license=('GPL3')
 provides=('scanmem')
 conflicts=('scanmem')
-depends=('pygtk' 'python-gobject' 'polkit')
+depends=('gtk3' 'python-gobject' 'polkit')
 makedepends=('git' 'intltool')
 install=scanmem.install
 source=(${pkgname}::git+https://github.com/scanmem/scanmem.git)
