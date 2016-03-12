@@ -26,6 +26,6 @@ md5sums=('61d9a0671eec40931adbbce878d3735d')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver/"
-  make install
+  make DESTDIR="${pkgdir}" install
   install -D -m644 LICENSE.md "$pkgdir/usr/share/licenses/${pkgname}/LICENSE.md"
 }
