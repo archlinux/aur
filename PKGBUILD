@@ -2,7 +2,7 @@
 
 pkgname=haste-server-git
 _gitname=haste-server
-pkgver=r238.45e19bc
+pkgver=r246.6835eef
 pkgrel=1
 pkgdesc="Prettiest, easiest to use pastebin ever made"
 arch=('any')
@@ -28,13 +28,13 @@ prepare() {
   sed -i '1i process.chdir(__dirname)' server.js
 
   # Adding missing files to package.json
-  sed -i '39i "config.js","about.md",' package.json
+  sed -i '42i "config.js","about.md",' package.json
 
   # Changing defaut storage to file
-  sed -i '27,31c "path": "./data","type": "file"' config.js
+  sed -i '36,40c "path": "./data","type": "file"' config.js
 
   # Unable to run haste from /usr/bin, so removing it
-  sed -i '33,35d' package.json
+  sed -i '37,39d' package.json
 }
 
 package() {
