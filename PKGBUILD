@@ -2,8 +2,8 @@
 # NOTE: Installs from a zipball since the git repository is very large
 # and takes a fortnight to download
 pkgname=miller-git
-pkgver=3.4.0+20160312
-pkgrel=1
+pkgver=3.4.0
+pkgrel=2
 epoch=2
 pkgdesc="Miller is like sed, awk, cut, join, and sort for name-indexed data such as CSV"
 arch=('x86_64' 'i686')
