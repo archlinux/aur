@@ -3,9 +3,9 @@
 
 pkgname=englabgui
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Graphical User Interface for Englab calculations platform" 
-url="http://www.englab.org/"
+url="https://sourceforge.net/projects/englab/"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('libenglab' 'qt4')
@@ -23,6 +23,7 @@ build() {
   ./configure --sysconfdir=/etc --prefix=/usr CXXFLAGS="-O0"
   make
 }
+
 package() {
   cd "$srcdir"/$pkgname-$pkgver
   make DESTDIR=$pkgdir install
