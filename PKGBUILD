@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://www.factorio.com/"
 license=('custom: commercial')
 depends=('libxcursor' 'alsa-lib' 'libxrandr' 'libxinerama' 'mesa')
-conflicts=('factorio')
+conflicts=('factorio' 'factorio-headless' 'factorio-experimental')
 source=(factorio.desktop
         LICENSE)
 source_i686=(factorio_demo_i386_${pkgver}.tar.gz::http://www.factorio.com/get-download/${pkgver}/demo/linux32)
