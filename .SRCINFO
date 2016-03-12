@@ -1,0 +1,15 @@
+pkgbase = xdxf_makedict-git
+	pkgdesc = XDXF dictionary format and "makedict" dictionary converting software
+	pkgver = 0.3.1beta1
+	pkgrel = 1
+	url = https://github.com/soshial/xdxf_makedict/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = git://github.com/soshial/xdxf_makedict.git
+	source = xdxf_makedict.patch
+	md5sums = SKIP
+	md5sums = 4999f8084679d8a5fcb95a60439ebe9e
+
+pkgname = xdxf_makedict-git
+
