@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-about-bzr
-pkgver=r321
+pkgver=r366
 pkgrel=1
 pkgdesc='About plug for Switchboard'
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ pkgver() {
 prepare() {
   cd switchboard-plug-about
 
-  patch -Np1 -i ../about-archlinux.patch
+  #patch -Np1 -i ../about-archlinux.patch
 }
 
 build() {
