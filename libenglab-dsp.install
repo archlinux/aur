@@ -1,0 +1,15 @@
+#e new package version
+post_install() {
+  /usr/bin/englab-ldconf
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  /usr/bin/englab-ldconf
+}
+
+## arg 1:  the old package version
+post_remove() {
+  /usr/bin/englab-ldconf
+}
