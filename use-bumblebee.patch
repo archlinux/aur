@@ -1,0 +1,21 @@
+diff -Naur nvdock-1.02/src/nvdock.h nvdock-1.02-patched/src/nvdock.h
+--- nvdock-1.02/src/nvdock.h	2007-10-19 06:07:19.000000000 -0400
++++ nvdock-1.02-patched/src/nvdock.h	2016-03-11 20:58:50.447203815 -0500
+@@ -43,11 +43,11 @@
+
+ #define CMD_SUFFIX " &> /dev/null &"
+ #define CMD_NVCLOCK_GTK "nvclock_gtk"
+-#define CMD_NVIDIA_RELOAD "nvidia-settings -load-config-only"
+-#define CMD_NVIDIA_SETTINGS "nvidia-settings"
+-#define CMD_NVIDIA_TEMP "nvidia-settings -q GPUCoreTemp | grep Attribute | cut -d ' ' -f 6 | cut -d '.' -f 1"
+-#define CMD_NVIDIA_LOAD "nvidia-settings -load-config-only"
+-#define CMD_NVIDIA_VERSION "nvidia-settings -q NvidiaDriverVersion | grep Attribute | cut -d : -f 3 | cut -d ' ' -f 2"
++#define CMD_NVIDIA_RELOAD "optirun -b none nvidia-settings -c :8 -load-config-only"
++#define CMD_NVIDIA_SETTINGS "optirun -b none nvidia-settings -c :8"
++#define CMD_NVIDIA_TEMP "optirun -b none nvidia-settings -c :8 -q GPUCoreTemp | grep Attribute | cut -d ' ' -f 6 | cut -d '.' -f 1"
++#define CMD_NVIDIA_LOAD "optirun -b none nvidia-settings -c :8 -load-config-only"
++#define CMD_NVIDIA_VERSION "optirun -b none nvidia-settings -c :8 -q NvidiaDriverVersion | grep Attribute | cut -d : -f 3 | cut -d ' ' -f 2"
+ #define CMD_WHICH_QUERY "which %s 2> /dev/null"
+
+ #define ICON "/usr/share/pixmaps/nvdock.png"
+
