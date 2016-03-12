@@ -1,6 +1,8 @@
---- src/pt3/Makefile	2016-01-13 04:14:31.405761427 +0900
-+++ src/pt3/Makefile.fixed	2016-01-13 04:21:07.879130219 +0900
-@@ -3,8 +3,12 @@
+diff --git a/Makefile b/Makefile
+index 493af6c..abd65b3 100644
+--- a/Makefile
++++ b/Makefile
+@@ -3,8 +3,12 @@ VERBOSITY = 0
  EXTRA_CFLAGS += -Wformat=2
  KVER ?= `uname -r`
  
@@ -14,37 +16,7 @@
  
  all: ${TARGET}
  
---- src/pt3/Makefile	2016-01-13 04:25:10.472789571 +0900
-+++ src/pt3/Makefile.fixed	2016-01-13 04:28:25.939069217 +0900
-@@ -38,7 +38,7 @@
- 
- dkms: $(TARGET)
- 	if [ -d /etc/udev/rules.d -a ! -f /etc/udev/rules.d/99-pt3.rules ] ; then \
--		install -m 644 etc/99-pt3.rules /etc/udev/rules.d ; \
-+		install -m 644 etc/99-pt3.rules $(DESTDIR)/etc/udev/rules.d ; \
- 	fi
- 
- install: uninstall dkms
---- src/pt3/Makefile	2016-01-13 04:30:13.494371342 +0900
-+++ src/pt3/Makefile.fixed	2016-01-13 04:33:14.093162149 +0900
-@@ -44,7 +44,7 @@
- install: uninstall dkms
- 	install -d $(INSTALL_DIR)
- 	install -m 644 $(TARGET) $(INSTALL_DIR)
--	depmod -a $(KVER)
-+	#depmod -a $(KVER)
- 
- install_compress: install
- 	. $(KBUILD)/.config ; \
-@@ -55,4 +55,4 @@
- 	elif [ $$CONFIG_DECOMPRESS_GZIP = "y" ] ; then \
- 		gzip  -9 $(INSTALL_DIR)/$(TARGET); \
- 	fi
--	depmod -a $(KVER)
-+	#depmod -a $(KVER)
---- src/pt3/Makefile	2016-03-06 12:27:17.166340836 +0900
-+++ src/pt3/Makefile.morefix	2016-03-06 12:35:27.716812866 +0900
-@@ -34,7 +34,7 @@
+@@ -30,17 +34,17 @@ version.h:
  	fi
  
  uninstall:
@@ -53,3 +25,22 @@
  
  dkms: $(TARGET)
  	if [ -d /etc/udev/rules.d -a ! -f /etc/udev/rules.d/99-pt3.rules ] ; then \
+-		install -m 644 etc/99-pt3.rules /etc/udev/rules.d ; \
++		install -m 644 etc/99-pt3.rules $(DESTDIR)/etc/udev/rules.d ; \
+ 	fi
+ 
+-install: uninstall dkms
++install: dkms
+ 	install -d $(INSTALL_DIR)
+ 	install -m 644 $(TARGET) $(INSTALL_DIR)
+-	depmod -a $(KVER)
++	#depmod -a $(KVER)
+ 
+ install_compress: install
+ 	. $(KBUILD)/.config ; \
+@@ -51,4 +55,4 @@ install_compress: install
+ 	elif [ $$CONFIG_DECOMPRESS_GZIP = "y" ] ; then \
+ 		gzip  -9 $(INSTALL_DIR)/$(TARGET); \
+ 	fi
+-	depmod -a $(KVER)
++	#depmod -a $(KVER)

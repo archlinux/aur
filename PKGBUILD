@@ -2,7 +2,7 @@
 
 pkgname=pt3-drv
 pkgver=2009.03.07
-pkgrel=2
+pkgrel=3
 install=pt3-drv.install
 pkgdesc="Japanese Driver for Earthsoft PT3 cards"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ url="http://eco.senritu.net/ubuntu13-10-pt3-epgrec/"
 source=(git+https://github.com/m-tsudo/pt3.git
         thatfix)
 sha256sums=('SKIP'
-            '3b2410392b65e058eaf9f1190f0e4365e56f55d9592d35f26a5680ae1c6d7a06')
+            '664115ab093b0aa8b5276559769800ba982792a72e8dac8ee94a35f7d825704d')
 
 #pkgver() {
 #	# remove ".r*.*" from package version
@@ -30,7 +30,7 @@ sha256sums=('SKIP'
 
 prepare() {
   cd pt3/
-  patch -Np2 < ../thatfix
+  #patch -Np2 < ../thatfix
 }
 
 build() {
