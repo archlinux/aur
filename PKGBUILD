@@ -3,7 +3,7 @@
 #   Thomas Baechler <thomas@archlinux.org>
 
 pkgname=(linux-lts314-ck linux-lts314-ck-headers)
-pkgver=3.14.63
+pkgver=3.14.64
 pkgrel=1
 arch=(i686 x86_64)
 url="https://www.kernel.org/"
@@ -33,7 +33,7 @@ source=(
 )
 
 sha512sums=(
-    "eb1e7a2fbdc62179b6f6b077064bee371c8f8b0ad7a774ac6036e411e48e2aebe30174749c0feeccebb2b63f226cc14468d21d7d04d37f1a231164823012ac07"
+    "91ab5f0e57729429b0a652a5ba68d966407363a03dc7574385c470638f84b42cc50cb044f4a86aad8ab1a09217db0a05f6adfdfde843f04f55231350be6ad179"
 
     "SKIP"
     "d745370376e660245e0a5cc4512f0c584a4c782ddb0747637d6ec60021d95afa09d5728f44756c48843b398ba3072823bea99b1713c0833c941a522da0b6f305"
