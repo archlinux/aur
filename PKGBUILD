@@ -29,4 +29,3 @@ package() {
   cd "$srcdir/$pkgname"
   ./waf --destdir="$pkgdir" install
 }
-
