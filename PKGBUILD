@@ -1,7 +1,7 @@
 # Maintainer: darkfeline@felesatra.moe
 
 pkgname=non-sessionmanager-git
-pkgver=1.1.0.r685.g18a299c
+pkgver=1.1.0.r710.g3946d39
 pkgrel=1
 pkgdesc="Jack audio session manager from the NON DAW"
 arch=('i686' 'x86_64')
