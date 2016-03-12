@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-unlimited-git
 pkgver=20160104.82fd775
-pkgrel=1
+pkgrel=2
 pkgdesc='Bitcoin Unlimited versions of Bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt, w/GUI and wallet'
 arch=('i686' 'x86_64')
 url="http://www.bitcoinunlimited.info/download.html"
