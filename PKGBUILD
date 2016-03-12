@@ -2,8 +2,9 @@
 # NOTE: Installs from a zipball since the git repository is very large
 # and takes a fortnight to download
 pkgname=miller-git
-pkgver=20151224
-pkgrel=3
+pkgver=3.4.0+20160312
+pkgrel=1
+epoch=2
 pkgdesc="Miller is like sed, awk, cut, join, and sort for name-indexed data such as CSV"
 arch=('x86_64' 'i686')
 url="https://github.com/johnkerl/miller"
@@ -16,7 +17,7 @@ source=(https://github.com/johnkerl/miller/archive/master.zip)
 md5sums=('SKIP')
 
 pkgver() {
-  date +%Y%m%d
+  printf "%s+%s" "$pkgver" "$(date +%Y%m%d)"
 }
 
 prepare() {
