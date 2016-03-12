@@ -1,10 +1,10 @@
 # Contributor: graysky <graysky AT archlinux dot us>
 pkgname=checkip
 pkgver=3.08
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple script that checks to see if your external IP address changed and if so sends an email with the new IP address.'
 arch=('any')
-url=('https://github.com/graysky2/checkip')
+url='https://github.com/graysky2/checkip'
 license=('MIT')
 depends=('curl' 'dnsutils' 'inetutils')
 optdepends=(
