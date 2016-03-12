@@ -1,7 +1,7 @@
 # Maintainer: TingPing tingping@tingping.se
 
 pkgname=hexchat-git
-pkgver=2.11.0.r1218.g5c534ac
+pkgver=2.11.0.r1244.g7c078db
 pkgrel=1
 pkgdesc='A GTK+ based IRC client'
 arch=('i686' 'x86_64' 'armv6h')
@@ -11,7 +11,7 @@ options=('!libtool')
 depends=('gtk2' 'openssl' 'dbus-glib'
          'libcanberra' 'libnotify' 'libproxy' 
          'hicolor-icon-theme' 'desktop-file-utils' 'sound-theme-freedesktop' 'iso-codes')
-makedepends=('intltool' 'git' 'perl' 'python')
+makedepends=('intltool' 'git' 'perl' 'python' 'autoconf-archive')
 optdepends=('enchant: for spell check'
             'perl: for perl plugin'
             'python: for python plugin')
@@ -21,6 +21,13 @@ conflicts=('hexchat')
 source=('git://github.com/hexchat/hexchat.git')
 md5sums=('SKIP')
 _gitname='hexchat'
+
+prepare() {
+  cd "$_gitname"
+
+  # Needed for pkgver()
+  aclocal --install
+}
 
 pkgver() {
   cd "$_gitname"
