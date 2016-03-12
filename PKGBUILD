@@ -2,7 +2,7 @@
 # Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
 
 pkgname=noise-player-bzr
-pkgver=r1902
+pkgver=r1909
 pkgrel=1
 pkgdesc='The Pantheon Music Player'
 arch=('i686' 'x86_64')
@@ -11,9 +11,10 @@ license=('GPL3')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'glibc'
          'gst-plugins-base-libs' 'gstreamer' 'gtk3' 'hicolor-icon-theme'
          'json-glib' 'libaccounts-glib' 'libgda' 'libgee' 'libgpod'
-         'libnotify' 'libpeas' 'libsoup' 'pango' 'taglib' 'zeitgeist'
+         'libgsignon-glib' 'libnotify' 'libpeas' 'libsoup' 'pango' 'taglib'
+         'zeitgeist'
          'libgranite.so')
-makedepends=('bzr' 'cmake' 'gobject-introspection' 'vala')
+makedepends=('bzr' 'cmake' 'gobject-introspection' 'intltool' 'vala')
 optdepends=('gst-plugins-base: "Base" plugin libraries'
             'gst-plugins-good: "Good" plugin libraries'
             'gst-plugins-bad: "Bad" plugin libraries'
