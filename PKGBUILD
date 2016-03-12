@@ -8,13 +8,13 @@
 
 pkgname=proggyfonts
 pkgver=0.1
-pkgrel=13
+pkgrel=14
 arch=('any')
 pkgdesc='A set of fixed-width fonts designed for code listings.'
 url="http://www.$pkgname.net"
 license=('custom')
 depends=('xorg-font-utils' 'fontconfig')
-install=("$pkgname.install")
+install="$pkgname.install"
 source=("$pkgname.install"
         "http://www.$pkgname.net/wp-content/download/CodingFontTobi.ttf.zip"
         "http://www.$pkgname.net/wp-content/download/Crisp.ttf.zip"
