@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=DisPass
+GenericNAme=Passphrase Generator
+Comment=Generate passphrases
+Exec=gdispass
+Type=Application
+StartupWMClass=Dispass
+Icon=dispass
