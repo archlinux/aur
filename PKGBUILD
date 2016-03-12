@@ -2,7 +2,7 @@
 # Contributor: sh4nks <sh4nks7@gmail.com
 
 pkgname=lightdm-pantheon-greeter-bzr
-pkgver=r414
+pkgver=r418
 pkgrel=1
 pkgdesc='Pantheon greeter for LightDM'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url='https://launchpad.net/pantheon-greeter'
 license=('GPL')
 groups=('pantheon-unstable')
 depends=('cairo' 'clutter' 'clutter-gtk' 'cogl' 'gdk-pixbuf2' 'glib2' 'glibc'
-         'gtk3' 'libgee' 'libgl' 'libx11' 'lightdm' 'lightdm-devel' 'pango'
+         'gtk3' 'libgee' 'libgl' 'libx11' 'lightdm' 'pango'
          'libgranite.so' 'libwingpanel-2.0.so')
 makedepends=('bzr' 'cmake' 'libxfixes' 'vala')
 provides=('lightdm-pantheon-greeter')
