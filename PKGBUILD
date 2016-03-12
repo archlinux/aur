@@ -4,7 +4,7 @@
 # Contributor: Klemen Košir <klemen913@gmail.com>
 
 pkgname=cataclysm-dda-git
-pkgver=0.C.2015.11.20
+pkgver=0.C.2016.03.12
 _pkgver=0.C
 pkgrel=1
 pkgdesc="A post-apocalyptic roguelike."
@@ -13,7 +13,8 @@ pkgdesc="A post-apocalyptic roguelike."
 url="http://en.cataclysmdda.com/"
 arch=('i686' 'x86_64')
 license=("CCPL:by-sa")
-depends=('ncurses' 'lua51')
+conflicts=('cataclysm-dda')
+depends=('ncurses' 'lua')
 makedepends=('sdl2_image' 'sdl2_ttf' 'sdl2_mixer' 'freetype2' 'git')
 optdepends=('sdl2_image: for tiles'
             'sdl2_ttf: for tiles'
@@ -26,8 +27,6 @@ conflicts=('cataclysm-dda', 'cataclysm-dda-ncurses' 'cataclysm-dda-sdl-git')
 # so download a snapshot while waiting for shallow clone support in makepkg
 source=('https://github.com/CleverRaven/Cataclysm-DDA/archive/master.zip')
 md5sums=('SKIP')
-
-# for some reason this one autodetects lua51?
 
 pkgver() {
   cd "Cataclysm-DDA-master"
@@ -48,6 +47,8 @@ build() {
   make PREFIX=/usr RELEASE=1 ZLEVELS=1 USE_HOME_DIR=1 LUA=1 TILES=1 SOUND=1
   #LUA_BINARY="/usr/bin/lua5.1"
   # USE_XDG_DIR=1 ?
+  # LOCALIZE = 0   to save 30MB
+  # DYNAMIC_LINKING = 1 ?
 
   # 'make install' needs this
   touch README.txt
@@ -58,7 +59,7 @@ package() {
 
   # no DESTDIR
   make PREFIX="$pkgdir/usr" \
-  RELEASE=1 ZLEVELS=1 USE_HOME_DIR=1 LUA=1 TILES=0 SOUND=0 \
+  RELEASE=1 ZLEVELS=1 USE_HOME_DIR=1 LUA=1 TILES='' SOUND='' \
   install
   # doesn't install executable?
   install -Dm755 cataclysm "$pkgdir/usr/bin/cataclysm"
