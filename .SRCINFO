@@ -1,4 +1,4 @@
-pkgbase = corewars-gtk2
+pkgbase = corewars
 	pkgdesc = Simulation game where a number of programs try to crash each other
 	pkgver = 0.9.13
 	pkgrel = 1
@@ -12,5 +12,5 @@ pkgbase = corewars-gtk2
 	md5sums = 0a0b8067533b83a96488109ee265f664
 	md5sums = 557e1601a94f76862014c271b4e06d8f
 
-pkgname = corewars-gtk2
+pkgname = corewars
 
