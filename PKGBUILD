@@ -4,7 +4,7 @@ pkgname=firefox-nightly-ru
 pkgdesc='Web browser from mozilla.org, nightly build, russian version'
 url='http://nightly.mozilla.org/'
 pkgver=48.0a1
-pkgrel=5
+pkgrel=6
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 _filename="firefox-${pkgver}.ru.linux-${CARCH}"
@@ -29,5 +29,5 @@ package() {
   ln -s /opt/firefox-nightly-ru/firefox "${pkgdir}/usr/bin/firefox-nightly"
   install -m644 "${srcdir}/firefox-nightly.desktop" "${pkgdir}/usr/share/applications/"
   install -m644 "${srcdir}/firefox/browser/icons/mozicon128.png" "${pkgdir}/usr/share/pixmaps/firefox-nightly-icon.png"
-  install -Dm644 "${srcdir}/vendor.js" "${pkgdir}/opt/firefox-nightly-ru/defaults/pref/vendor.js"
+  install -Dm644 "${srcdir}/vendor.js" "${pkgdir}/opt/firefox-nightly-ru/browser/defaults/preferences/vendor.js"
 }
