@@ -127,13 +127,13 @@
 #over_voltage=6
 
 #gpu_mem=64
-lcd_rotate=2
 
-mask_gpu_interrupt0=0x400   # VPU shouldn't handle V3D interrupts
-avoid_warnings=2            # VPU shouldn't smash our display setup.
-
+# for open source GPU acceleration:
+#mask_gpu_interrupt0=0x400   # VPU shouldn't handle V3D interrupts
+#avoid_warnings=2            # VPU shouldn't smash our display setup.
 #dtoverlay=vc4-kms-v3d
-dtoverlay=rpi-ft5406
 
-disable_overscan=1
+# for official touchscreen
+dtoverlay=rpi-ft5406
 dtoverlay=rpi-backlight
+lcd_rotate=2
