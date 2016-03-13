@@ -9,7 +9,7 @@
 pkgname=ncurses5-compat-libs
 _pkgname=ncurses
 pkgver=6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='System V Release 4.0 curses emulation library, ABI 5'
 arch=('i686' 'x86_64')
 url='http://invisible-island.net/ncurses/ncurses.html'
@@ -24,9 +24,8 @@ build() {
   cd $_pkgname-${pkgver/_/-}
 
   ./configure --prefix=/usr --mandir=/usr/share/man \
-    --with-pkg-config-libdir=/usr/share --with-shared --with-normal \
-    --without-debug --without-ada --enable-widec --enable-pc-files \
-    --with-cxx-binding --with-cxx-shared --with-abi-version=5
+    --with-shared --with-normal --without-debug --without-ada --enable-widec \
+    --disable-pc-files --with-cxx-binding --with-cxx-shared --with-abi-version=5
   make
 }
 
