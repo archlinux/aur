@@ -19,6 +19,7 @@ depends=(
     'python-isodate>=0.5.4' # for agate
     'python-parsedatetime>=1.5' # for agate
     'python-pytimeparse>=1.1.5' #for agate
+    'python-pip'
 )
 makedepends=(
     'git'
