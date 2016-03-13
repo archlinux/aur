@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=OpenGL Hardware Capability Viewer
+Comment=OpenGL Hardware Capability Viewer
+Exec=/opt/glcapsviewer/glcapsviewer
+Path=/opt/glcapsviewer
+Terminal=false
+Type=Application
+StartupNotify=false

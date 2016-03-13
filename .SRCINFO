@@ -1,0 +1,23 @@
+pkgbase = glcapsviewer-git
+	pkgdesc = OpenGL Hardware Capability Viewer
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://www.saschawillems.de/?page_id=771/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = boost-libs
+	depends = glew
+	depends = glfw
+	depends = qt5-base
+	source = git+https://github.com/SaschaWillems/glCapsViewer
+	source = https://github.com/proudzhu/glCapsViewer/commit/45044a7a0c754d95f6ae9c63ff25b6b107878651.patch
+	source = glcapsviewer.desktop
+	sha256sums = SKIP
+	sha256sums = fe350e9391cf76ad18ddea4e04e4f9be86dd3375440a64216cf17fa092854248
+	sha256sums = e9b0f64c620ccbaea7574d418cffa673c81b3e82d68a995e44158b0003a2211a
+
+pkgname = glcapsviewer-git
+
