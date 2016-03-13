@@ -67,7 +67,6 @@ package_xgboost-git() {
   cp -r include/xgboost "${pkgdir}/usr/include"
   cp -r dmlc-core/include/dmlc "${pkgdir}/usr/include"
   cp -r rabit/include/rabit "${pkgdir}/usr/include"
-  cp rabit/include/{rabit.h,rabit_serializable.h} "${pkgdir}/usr/include"
 
   # Copy the demos to opt/xgboost
   mkdir -p "${pkgdir}"/opt/xgboost
