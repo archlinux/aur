@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# ./check4u -- check for updates of a software package
+
+twelf_latest() {
+    local WEBPAGE='http://twelf.org/wiki/Download'
+    local DOWNLOAD_LINK=`curl --silent $WEBPAGE |
+         grep -oP --color=NEVER '"http://twelf\.org/releases/twelf-src-[\w.]+\.tar\.gz"'`
+    LATEST=${DOWNLOAD_LINK#*/twelf-src-}
+    LATEST=${LATEST%.tar.gz\"}
+}
+twelf_current() {
+    source PKGBUILD &&
+        CURRENT="$pkgver"
+}
+
+twelf_latest && twelf_current
+
+if [[ "$LATEST" != "$CURRENT" ]]; then
+    echo -e "Latest release   : $LATEST"
+    echo -e "Currently on AUR : $CURRENT"
+    exit 1
+fi
