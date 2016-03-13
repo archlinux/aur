@@ -93,10 +93,10 @@ idle_server_daemon() {
 				if [[ "${no_player}" -ge "${IDLE_IF_TIME}" ]]; then
 					IDLE_SERVER="false" ${myname} stop
 					# Wait for game server to go down
-					for i in {1..90}; do
+					for i in {1..100}; do
 						screen -S "${SESSION_NAME}" -Q select . > /dev/null
 						[[ $? -eq 1 ]] && break
-						[[ $i -eq 90 ]] && echo -e "\e[39;1m An error occured while trying to reset the idle_server! \e[0m"
+						[[ $i -eq 100 ]] && echo -e "An \e[39;1merror\e[0m occured while trying to reset the idle_server!"
 						sleep 0.1
 					done
 					# Listen on port ${GAME_PORT} for incoming connections
@@ -142,10 +142,10 @@ server_start() {
 		if [[ $? -eq 0 ]]; then
 			${SUDO_CMD} screen -S "${IDLE_SESSION_NAME}" -X quit
 			# Restart as soon as the idle_server_daemon has shut down completely
-			for i in {1..30}; do
+			for i in {1..100}; do
 				${SUDO_CMD} screen -S "${IDLE_SESSION_NAME}" -Q select . > /dev/null
 				[[ $? -eq 1 ]] && ${SUDO_CMD} screen -dmS "${IDLE_SESSION_NAME}" /bin/bash -c "${myname} idle_server_daemon" && break
-				[[ $i -eq 30 ]] && echo -e "\e[39;1m An error occured while trying to reset the idle_server! \e[0m"
+				[[ $i -eq 100 ]] && echo -e "An \e[39;1merror\e[0m occured while trying to reset the idle_server!"
 				sleep 0.1
 			done
 		else
@@ -182,7 +182,7 @@ server_stop() {
 		game_command save-all
 		game_command say "Server is going down in 10 seconds! HURRY UP WITH WHATEVER YOU ARE DOING!" # Warning the users
 		echo -en "Server is going down in... "
-		for i in $(seq 1 10); do
+		for i in {1..10}; do
 			game_command say "down in... $(expr 10 - $i)"
 			echo -n " $(expr 10 - $i)"
 			sleep 1
@@ -190,10 +190,10 @@ server_stop() {
 		game_command stop
 
 		# Finish as soon as the server has shut down completely
-		for i in {1..30}; do
+		for i in {1..100}; do
 			${SUDO_CMD} screen -S "${SESSION_NAME}" -Q select . > /dev/null
 			[[ $? -eq 1 ]] && echo -e "\e[39;1m done\e[0m" && break
-			[[ $i -eq 30 ]] && echo -e "\e[39;1m ERROR\e[0m"
+			[[ $i -eq 100 ]] && echo -e "\e[39;1m timed out\e[0m"
 			sleep 0.1
 		done
 	else
@@ -358,10 +358,10 @@ server_command() {
 
 	${SUDO_CMD} screen -S "${SESSION_NAME}" -Q select . > /dev/null
 	if [[ $? -eq 0 ]]; then
-		sleep 0.2s &
+		sleep 0.2 &
 		sleep_pid=$!
-		game_command "$@" &
-		tail -f --pid=${sleep_pid} -n 0 "${LOGPATH}/latest.log"
+		game_command "$@"
+		${SUDO_CMD} tail -f --pid=${sleep_pid} -n 0 "${LOGPATH}/latest.log"
 	else
 		echo "There is no ${SESSION_NAME} session to connect to."
 	fi
