@@ -3,7 +3,7 @@
 
 pkgname=openfwwf
 pkgver=5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Free firmware for some Broadcom 43xx series WLAN chips"
 arch=('any')
 url="http://www.ing.unibs.it/openfwwf/"
@@ -27,7 +27,7 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  make PREFIX="$pkgdir/usr/lib/firmware" install
+  make PREFIX="$pkgdir/usr/lib/firmware/b43-open" install
 
   install -d -m755 $pkgdir/usr/share/licenses/$pkgname
   install -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname
