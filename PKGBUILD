@@ -1,4 +1,5 @@
 # Contributor: Johannes Dewender arch at JonnyJD dot net
+pkgbase='essentia-acousticbrainz'
 pkgname=('essentia-acousticbrainz' 'lib32-essentia-acousticbrainz')
 pkgver=2.1_beta2
 pkgrel=1
@@ -27,8 +28,8 @@ package_essentia-acousticbrainz() {
 
 package_lib32-essentia-acousticbrainz() {
     arch=('x86_64')
-    provides=($pkgbase=$pkgver)
-    conflicts=($pkgbase)
+    provides=("$pkgbase=$pkgver")
+    conflicts=("$pkgbase")
     cd "$srcdir"
     install -D streaming_extractor_music_i686 \
 	    $pkgdir/usr/bin/streaming_extractor_music
