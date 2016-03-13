@@ -50,5 +50,5 @@ package() {
   gzip                 "$pkgdir"/usr/lib/modules/extramodules-"$_kernmajor"-lts/wl.ko
 
   install -Dm644 lib/LICENSE.txt "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
-  install -Dm644 modprobe.d "$pkgdir"/usr/lib/modprobe.d/broadcom-wl.conf
+  install -Dm644 modprobe.d "$pkgdir"/usr/lib/modprobe.d/broadcom-wl-lts.conf
 }
