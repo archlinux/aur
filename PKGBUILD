@@ -24,9 +24,9 @@ build() {
   cd $_pkgname-${pkgver/_/-}
 
   ./configure --prefix=/usr --mandir=/usr/share/man \
-     --with-shared --with-normal --without-debug --without-ada \
-     --enable-widec --enable-pc-files --with-cxx-binding --with-cxx-shared \
-     --with-abi-version=5
+    --with-pkg-config-libdir=/usr/share --with-shared --with-normal \
+    --without-debug --without-ada --enable-widec --enable-pc-files \
+    --with-cxx-binding --with-cxx-shared --with-abi-version=5
   make
 }
 
