@@ -1,7 +1,6 @@
 post_install () {
   # Create users/groups
   getent group rkt >/dev/null || groupadd -r rkt
-  rkt install &>/dev/null
 }
 
 post_upgrade () {
