@@ -1,6 +1,6 @@
 pkgbase = yaate
 	pkgdesc = Simple yet powerful command line audio tag editor written in Python and using the TagLib library
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/N3mesis98/yaate
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = yaate
 	depends = python-pytaglib
 	provides = yaate
 	conflicts = yaate
-	source = https://github.com/N3mesis98/yaate/archive/1.0.1.tar.gz
-	md5sums = c3ecb031d9c9c7582eeb4b6e89f41d31
+	source = https://github.com/N3mesis98/yaate/archive/1.0.2.tar.gz
+	md5sums = b1086941da3836e90c795c3689836c4a
 
 pkgname = yaate
 
