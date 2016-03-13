@@ -1,6 +1,6 @@
 # Maintainer: N3mesis98 <adrienjacquet at openmailbox dot org>
 pkgname=yaate
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Simple yet powerful command line audio tag editor written in Python and using the TagLib library"
 arch=('any')
@@ -9,7 +9,7 @@ license=('LGPL3+')
 depends=('python' 'taglib' 'python-pytaglib')
 makedepends=()
 source=("https://github.com/N3mesis98/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('213e07323c06761deb8f7de77dfb7fdb')
+md5sums=('b1086941da3836e90c795c3689836c4a')
 provides=($pkgname)
 conflicts=($pkgname)
 
