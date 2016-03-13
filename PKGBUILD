@@ -19,9 +19,9 @@ source=("http://www.arachnoid.com/$pkgname/$_pkgname.jar"
 	"http://www.arachnoid.com/arachnophilia/index.php"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-md5sums=('655fa3322d93900ca2cf7e78e90968af'
+md5sums=('2468516cad33b7e19bb7a11d0cafd2fb'
          'b2c3dc9852bff89756c89f957089374f'
-         '13091becf6c42c91765f606875754d0e'
+         '9556ac44243b3181d088fdfe2fd55f1a'
          'a41385032fe3a726321d02cd85f9ba55'
          '27010dd0f2b690ca78392dffcc25f210')
 DLAGENTS=('http::/usr/bin/curl -A "Mozilla/4.0" -fLC - --retry 3 --retry-delay 3 -o %o %u')
