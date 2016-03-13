@@ -1,6 +1,6 @@
 # Maintainer: deadhead <deadhead3492@gmail.com>
 pkgname=fetchmirrors
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Fetch and rank new pacman mirrorlist"
 arch=('any')
@@ -11,7 +11,7 @@ optdepends=(
   'wget: better than curl'
 )
 source=('https://raw.githubusercontent.com/deadhead420/fetchmirrors/master/fetchmirrors.sh')
-md5sums=('12971aba783b946b07261aa2c9b34dc6')
+md5sums=('f098e10059f238e3cbf20bf9af9b8838')
 
 package() {
   cd "${srcdir}"
