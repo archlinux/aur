@@ -7,15 +7,13 @@
 #
 
 pkgname=emacs-git
-pkgver=25.1.50.r125149
+pkgver=25.1.50.r125353
 pkgrel=1
 pkgdesc="GNU Emacs. Master development branch."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
 license=('GPL')
-depends=('librsvg' 'gpm' 'giflib' 'libxpm' 'libotf' 'm17n-lib' 
-	 'gtk3' 'hicolor-icon-theme' 'desktop-file-utils'
-	 'alsa-lib' 'imagemagick' 'gnutls')
+depends=('gtk3' 'gpm' 'giflib' 'm17n-lib' 'desktop-file-utils' 'alsa-lib' 'imagemagick')
 makedepends=('git')
 conflicts=('emacs')
 provides=('emacs')
@@ -54,7 +52,8 @@ build() {
     --with-sound=alsa 
     --without-gconf 
     --with-x-toolkit=gtk3 
-    --with-xft)
+    --with-xft
+    --with-modules)
 
   ./configure ${_conf[@]}
 
