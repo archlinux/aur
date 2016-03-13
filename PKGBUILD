@@ -5,7 +5,7 @@
 
 pkgname=flexget
 _pkgname=FlexGet
-pkgver=1.2.436
+pkgver=1.2.481
 pkgrel=2
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -29,22 +29,21 @@ depends=('python2'
          'python2-requests'
          'python2-dateutil'
          'python2-jsonschema'
-         'python2-tmdb3' #AUR#
+#         'python2-tmdb3' #AUR#
          'python2-path' #AUR#
-         'python2-guessit>=2.0rc5'
+         'python2-guessit>=2.0.3'
          'python2-apscheduler' #AUR#
+         'python2-pytvmaze>=1.4.5' #AUR#
+         'python2-ordereddict'
+         'python2-cherrypy>=3.7.0'
          'python2-flask'
          'python2-flask-restful' #AUR#
-         'python2-ordereddict'
          'python2-flask-restplus' #AUR#
-         'python2-cherrypy>=3.7.0'
-         'python2-flask-assets>=0.11' #AUR#
-         'python2-cssmin' #AUR#
          'python2-flask-compress'
          'python2-flask-login>=0.3.2'
+         'python2-flask-cors>=2.1.2'
          'python2-pyparsing>=2.0.3'
-         'python2-pyscss>=1.3.4'
-         'python2-pytvmaze>=1.4.4' #AUR#
+         'python2-safe'
          )
 optdepends=('python2-guppy: for memusage plugin' #AUR#
             'python2-transmissionrpc: Transmission support' #AUR#
@@ -61,7 +60,7 @@ source=("https://pypi.python.org/packages/source/F/FlexGet/${_pkgname}-${pkgver}
 
 changelog=ChangeLog
 
-sha256sums=('a7d44df937220a93476f480861ad78e83631f9366e1d9c41126130f58ab14f76'
+sha256sums=('62e3a9cb59dced0885874db1ad494d48556e06251d0f6454def60e6da231d9fd'
             'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
             'dcc1bc676b8c2b798fa9a7e0ed2b6853323e9e9d8ff696696dddeaf29cbc13d6')
 
