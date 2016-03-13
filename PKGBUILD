@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=alacryd
-pkgver=0.0.4
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Expedient Perl6 module installation"
 arch=('any')
@@ -10,7 +10,7 @@ groups=('perl6')
 url="https://github.com/atweiden/alacryd"
 license=('UNLICENSE')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/atweiden/$pkgname/tar.gz/$pkgver)
-sha256sums=('6e511a82a56a30ab86d3bea3db14c7b4bc1a69c05804d96d6cebcc093ae4b3a9')
+sha256sums=('f08539d994d30e0cad07545d3e0207a766f56e3e8f01ef4b808ede7dd2789bd9')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -22,5 +22,18 @@ package() {
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/alacryd"
 
   msg2 'Installing...'
-  install -Dm 755 alacryd -t "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/perl6/vendor"
+  export RAKUDO_LOG_PRECOMP=1
+  PERL6LIB=lib perl6 \
+    -I"inst#$pkgdir/usr/share/perl6/vendor" \
+    -MAlacryd -e 'install()'
+
+  msg2 'Removing redundant precomp file dependencies...'
+  _precomp=($(pacman -Qqg perl6 | pacman -Qql - | grep -E 'dist|precomp' || true))
+  for _pc in "${_precomp[@]}"; do
+    [[ -f "$pkgdir/$_pc" ]] && rm -f "$pkgdir/$_pc"
+  done
+
+  msg2 'Cleaning up pkgdir...'
+  find "$pkgdir" -type f -name "*.lock" -exec rm '{}' \;
 }
