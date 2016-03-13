@@ -2,7 +2,7 @@
 
 _pkgname=vdirsyncer
 pkgname=python-${_pkgname}-git
-pkgver=0.9.1.r0.g108c375
+pkgver=0.9.2.r0.gdac6295
 pkgrel=1
 pkgdesc="Synchronize CalDAV and CardDAV."
 arch=('i686' 'x86_64')
@@ -45,6 +45,9 @@ build() {
 
 check(){
   cd "${srcdir}/${_pkgname}"
+
+  # Needed for the tests, especially when building in clean chroot
+  [[ ${LANG} = C ]] && export LANG=en_US.UTF8
 
   make test
 }
