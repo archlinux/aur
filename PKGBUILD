@@ -42,7 +42,10 @@ package() {
   echo
   echo "Remember to add sh ~/.wallpapers/wp_init.sh"
   echo "to your startup programs"
-  sleep 1
+  echo
+  echo "To run just type wpg"
+  echo
+  sleep 3
 }
 
 # vim:set et sw=2 sts=2 tw=80:
