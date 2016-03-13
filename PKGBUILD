@@ -6,13 +6,13 @@
 pkgname=openresolv-openrc
 _pkgname=openresolv
 pkgver=3.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="resolv.conf management framework (resolvconf)"
 arch=(any)
 url="http://roy.marples.name/projects/openresolv"
 license=('custom:BSD')
 backup=(etc/resolvconf.conf)
-depends=(bash openrc-core)
+depends=(bash openrc)
 provides=(openresolv)
 conflicts=(openresolv)
 source=("http://roy.marples.name/downloads/openresolv/${_pkgname}-${pkgver}.tar.bz2"
