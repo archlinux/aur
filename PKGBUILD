@@ -14,8 +14,8 @@ source=('firefox-nightly.desktop'
         'firefox-nightly-safe.desktop' 
         'firefox-nightly-ru.install' 
         "${_baseurl}/${_filename}.tar.bz2")
-md5sums=('aa4eb1b1b9dc42c610847b384ac968d7' 
-         '92de362052d776a06ef4e53e9e0a3ddc' 
+md5sums=('39ee4860ee7598e3d85bdaa9e60f0c15' 
+         '5996fd382818b6f1d617148d30aab237' 
          '04793335a2ba7d17d1bd92085461e77e' 
          "${_md5sum}")
 install=${pkgname}.install
