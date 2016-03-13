@@ -1,17 +1,12 @@
-# megasync.install
-
-
 post_install() {
+	xdg-icon-resource forceupdate --theme hicolor &> /dev/null
 	update-desktop-database -q
-	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-	ln -s /usr/lib/libcryptopp.so /usr/lib/libcryptopp-5.6.2.so.0
 }
-
+ 
 post_upgrade() {
-	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+	post_install
 }
-
+ 
 post_remove() {
-	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-	rm /usr/lib/libcryptopp-5.6.2.so.0
+	post_install
 }
