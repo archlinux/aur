@@ -7,9 +7,9 @@ pkgrel=1
 pkgdesc="CryFS encrypts your files, so you can safely store them anywhere"
 arch=('i686' 'x86_64')
 url="https://www.cryfs.org"
-license=('LGPL')
-depends=('fuse' 'openssl' 'crypto++')
-makedepends=('git' 'cmake' 'boost' 'python2')
+license=('LGPL3')
+depends=('fuse' 'openssl' 'crypto++' 'curl')
+makedepends=('git' 'cmake' 'boost' 'python')
 provides=('cryfs')
 conflicts=('cryfs')
 
@@ -24,7 +24,7 @@ pkgver() {
 prepare() {
 	cd "$srcdir/$_pkgname"
 	mkdir cmake && cd cmake
-	cmake ..
+	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
 }
 
 build() {
@@ -34,5 +34,5 @@ build() {
 
 package() {
 	cd "$srcdir/$_pkgname/cmake"
-	make DESTDIR="$pkgdir/" PREFIX="/usr" install
+	make DESTDIR="$pkgdir/" install
 }
