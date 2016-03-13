@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=Firefox Nightly - Safe Mode
+StartupWMClass=Firefox
 GenericName=Firefox nightly, русская версия - безопасный режим
 Icon=/usr/share/pixmaps/firefox-nightly-icon.png
 Type=Application
