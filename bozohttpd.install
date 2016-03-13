@@ -6,8 +6,8 @@ post_install() {
 	echo
 	echo "'systemctl start bozohttpd.service' starts the web server."
 	echo "Web server root is /srv/http. CGI dir is /usr/lib/cgi-bin."
-	echo "To enable CGI, PHP, and dir indexing"
-	echo "modify /usr/lib/systemd/system/bozohttpd.service ."
+	echo "To enable CGI, PHP, Lua and dir indexing, modify"
+	echo "/usr/lib/systemd/system/bozohttpd.service ."
 	echo
 }
 

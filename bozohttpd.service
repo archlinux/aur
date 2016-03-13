@@ -6,14 +6,21 @@ After=network.target
 [Service]
 PIDFile=/run/bozohttpd.pid
 StandardOutput=null
+#
 # Simplest use:
 ExecStart=/usr/bin/bozohttpd -b -f -s -U nobody -P /run/bozohttpd.pid /srv/http
-# Enable directory index:
+#
+# Enable directory indexing:
 #ExecStart=/usr/bin/bozohttpd -b -f -s -U nobody -P /run/bozohttpd.pid -X /srv/http
+#
 # Enable CGI:
 #ExecStart=/usr/bin/bozohttpd -b -f -s -U nobody -P /run/bozohttpd.pid -c /usr/lib/cgi-bin /srv/http
+#
 # Enable PHP and set default to index.php (instead of index.html):
 #ExecStart=/usr/bin/bozohttpd -b -f -s -U nobody -P /run/bozohttpd.pid -x index.php -C .php /usr/bin/php-cgi /srv/http
+#
+# Enable Lua scripting:
+#ExecStart=/usr/bin/bozohttpd -L rest /usr/lib/cgi-bin/printenv.lua -b -f -s -U nobody -P /run/bozohttpd.pid /srv/http
 
 [Install]
 WantedBy=multi-user.target
