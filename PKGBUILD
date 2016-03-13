@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python-yaml')
 makedepends=('cmake')
 install=
-source=("https://codeload.github.com/baruch/$pkgname/tar.gz/$pkgver")
+source=("https://github.com/baruch/$pkgname/archive/$pkgver.tar.gz")
 
 sha256sums=('92a7298af99043e1e584e4343040b6574b9229f44c122e1cbcb90ba478d928d1')
 #sha256sums=(SKIP)
