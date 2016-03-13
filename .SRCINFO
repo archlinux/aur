@@ -1,0 +1,31 @@
+pkgbase = kigo-git
+	pkgdesc = An open-source implementation of the popular Go game. (GIT version)
+	pkgver = v14.12.0.59.g62e3750
+	pkgrel = 1
+	url = https://www.kde.org/applications/games/kigo/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = qt5-base
+	depends = qt5-svg
+	depends = kcoreaddons
+	depends = kconfig
+	depends = kcrash
+	depends = kdbusaddons
+	depends = kdoctools
+	depends = kconfigwidgets
+	depends = ktextwidgets
+	depends = kxmlgui
+	depends = kio
+	depends = knotifyconfig
+	depends = knewstuff
+	depends = hicolor-icon-theme
+	depends = libkdegames
+	conflicts = kdegames-kigo
+	source = git://anongit.kde.org/kigo.git#branch=frameworks
+	sha1sums = SKIP
+
+pkgname = kigo-git
+
