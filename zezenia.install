@@ -1,0 +1,28 @@
+post_install() {
+  APP_DIR="/usr/share/applications/"
+  FILE_NAME=zezenia.desktop
+cat > "${FILE_NAME}" << EOF
+[Desktop Entry]
+Name=Zezenia
+Comment=2D fantasy MMORPG
+Exec=zezenia
+Icon=preferences-system-windows-actions 
+Terminal=false
+Type=Application
+Categories=Game;
+EOF
+
+cat > "zezenia" << EOF
+#!/bin/sh
+cd /opt/Zezenia
+./zezeniaclient
+EOF
+chmod -R a+x /opt/Zezenia/*
+
+
+mkdir -p "${APP_DIR}"
+mv "${FILE_NAME}" "${APP_DIR}"
+mv zezenia /usr/bin
+chmod a+x /usr/bin/zezenia
+}
+
