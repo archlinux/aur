@@ -3,14 +3,14 @@
 # Contributor: Matthew Bentley <matthew@mtbentley.us>
 
 pkgname=godot
-pkgver=2.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine"
 url="http://www.godotengine.org"
 license=('MIT')
 arch=('i686' 'x86_64')
-makedepends=('scons')
-depends=('glu' 'libxcursor' 'alsa-lib' 'freetype2' 'mesa')
+makedepends=('scons' 'pulseaudio')
+depends=('glu' 'libxcursor' 'libxinerama' 'alsa-lib' 'freetype2' 'mesa')
 optdepends=()
 conflicts=("godot-git")
 _arch=''
@@ -21,7 +21,7 @@ else
 fi
 
 source=(
-  "https://github.com/okamstudio/godot/archive/${pkgver}-stable.tar.gz"
+  "https://github.com/godotengine/godot/archive/${pkgver}-stable.tar.gz"
   godot.desktop
   icon.png
 )
@@ -50,3 +50,6 @@ package() {
   install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/godot/LICENSE
 }
 
+md5sums=('5539d540b932d1bd34c0645d8d713d21'
+         'dca7c5c5682bdc8cc83386034e0d7d07'
+         'f756e85756a9cbc06a328414abf74585')
