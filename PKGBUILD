@@ -4,10 +4,10 @@
 
 pkgbase=gtk3-ubuntu-multilib
 pkgname=({lib32-,}gtk3-ubuntu-multilib)
-pkgver=3.18.6
-_debrel=1ubuntu1
-pkgrel=3
-pkgdesc="GObject-based multi-platform toolkit (v3) with Canonical patchset (multarch)"
+pkgver=3.18.8
+_debrel=1ubuntu2
+pkgrel=4
+pkgdesc="GObject-based multi-platform toolkit with Canonical patchset (multarch)"
 depends=(adwaita-icon-theme gtk-update-icon-cache shared-mime-info)
 arch=(i686 x86_64)
 url="https://launchpad.net/ubuntu/+source/gtk+3.0/"
@@ -15,8 +15,8 @@ license=(LGPL)
 source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/${pkgver:0:4}/gtk+-$pkgver.tar.xz
         https://launchpad.net/ubuntu/+archive/primary/+files/gtk+3.0_$pkgver-$_debrel.debian.tar.xz
         settings.ini)
-sha256sums=('78cabf0fd5a662f8723f62d5ac633072c76c557c1d700454c9c3deaa37e441ef'
-            '61cedf302ec1b64c3489da45931fb1a1813b976b7a2f9982b066780d3c78887f'
+sha256sums=('1c53ef1bb55364698f7183ecd185b547f92f4a3a7abfafd531400232e2e052f8'
+            'cb878e3816b5dd8cbee7133efeb4de60430e4e46855191a6badfd5b61100fb01'
             '14369dfd1d325c393e17c105d5d5cc5501663277bd4047ea04a50abb3cfbd119')
 
 prepare() {
@@ -89,8 +89,7 @@ lib{cups,x{cursor,inerama,randr,i,composite,damage,kbcommon,11,ext}})
 
 package_lib32-gtk3-ubuntu-multilib() {
   pkgdesc+=" (32bit)"
-  
-depends+=(lib32-{glib2,atk,cairo,pango,colord,at-spi2-atk,wayland,lib{cups,x{cursor,inerama,randr,i,composite,damage,kbcommon,11,ext}}})
+  depends+=(lib32-{glib2,atk,cairo,pango,colord,at-spi2-atk,wayland,lib{cups,x{cursor,inerama,randr,i,composite,damage,kbcommon,11,ext}}})
   makedepends=(lib32-{gobject-introspection,python2} 'gcc-multilib')
   provides=(lib32-gtk{3{,-ubuntu},-update-icon-cache}=${pkgver})
   conflicts=(lib32-gtk{3{,-ubuntu},-update-icon-cache})
