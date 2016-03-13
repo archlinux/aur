@@ -1,0 +1,16 @@
+#!/bin/sh
+
+if [ $# -eq 1 ]; then
+    COZY_DOMAIN=$1
+
+    CURRENT_DOMAIN=`/usr/bin/cozy_management get_cozy_param domain`
+    if [ "$CURRENT_DOMAIN" = "$COZY_DOMAIN" ]; then
+        echo "Cozy already configured with domain: $COZY_DOMAIN"
+    else
+        echo "Configure Cozy with domain: $COZY_DOMAIN"
+        coffee /usr/local/cozy/apps/home/commands.coffee setdomain $COZY_DOMAIN
+    fi
+else
+    echo "Usage: /usr/bin/configure-cozy-domain cozy.example.tld"
+    echo "Replace \"cozy.example.tld\" by your Cozy's own domain"
+fi

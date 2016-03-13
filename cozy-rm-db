@@ -1,0 +1,8 @@
+#!/bin/sh
+
+COUCH_USER=$(sed -n '1,1p' /tmp/couch.login)
+COUCH_PASS=$(sed -n '2,1p' /tmp/couch.login)
+echo "Purging cozy database"
+curl -X DELETE http://${COUCH_USER}:${COUCH_PASS}@127.0.0.1:5984/cozy
+echo "Purging CouchDB cozy user"
+curl -X DELETE http://${COUCH_USER}:${COUCH_PASS}@127.0.0.1:5984/_config/admins/${COUCH_USER}
