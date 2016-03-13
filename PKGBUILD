@@ -7,7 +7,7 @@
 
 pkgname=courier-mta
 pkgver=0.75.0
-pkgrel=3
+pkgrel=4
 pkgdesc="IMAP(s)/POP3(s) and SMTP Server with ML-manager, webmail and webconfig"
 arch=(i686 x86_64)
 license=('GPL2')
@@ -20,7 +20,7 @@ backup=('etc/courier/imapd.cnf' 'etc/courier/pop3d.cnf' \
         'etc/courier/webadmin/password' 'etc/courier/esmtpauthclient' \
         'etc/conf.d/courier-mta')
 url="http://courier-mta.org"
-depends=('courier-authlib' 'gamin' 'gcc-libs' 'gdbm' 'pcre' 'mime-types' 'ca-certificates')
+depends=('courier-authlib' 'gamin' 'gcc-libs' 'gdbm' 'pcre' 'mime-types' 'ca-certificates' 'gnutls')
 optdepends=('libldap')
 makedepends=('pam' 'expect' 'gnupg' 'libldap' 'gamin')
 provides=('smtp-server' 'smtp-forwarder' 'imap-server' 'pop3-server' 'courier-imap' 'courier-maildrop')
