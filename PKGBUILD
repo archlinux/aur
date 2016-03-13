@@ -1,9 +1,10 @@
-# Maintainer: Hilton Medeiros <medeiros.hilton@gmail.com>
+# Maintainer: GordonGR <ntheo1979@gmail.com>
+# Contributor: Hilton Medeiros <medeiros.hilton@gmail.com>
 
 pkgname=otf-cm-unicode
 _pkgname=cm-unicode
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A font family converted from D. Knuth's Computer Modern metafont."
 arch=('any')
 url="http://canopus.iacp.dvo.ru/~panov/cm-unicode/"
@@ -13,14 +14,10 @@ install=cm-unicode.install
 source=("http://downloads.sourceforge.net/$_pkgname/$_pkgname-$pkgver-otf.tar.xz")
 md5sums=('8503cc1316103d97a668a9efa71d0e3c')
 
-build() {
-  /bin/true
-}
-
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
+cd "$srcdir/$_pkgname-$pkgver"
 
-  install -d "$pkgdir/usr/share/fonts/OTF"
-  install -m644 *.otf "$pkgdir/usr/share/fonts/OTF/"
-  install -Dm644 OFL.txt "$pkgdir/usr/share/licenses/$pkgname/OFL.txt"
+install -d "$pkgdir/usr/share/fonts/OTF"
+install -m644 *.otf "$pkgdir/usr/share/fonts/OTF/"
+install -Dm644 OFL.txt "$pkgdir/usr/share/licenses/$pkgname/OFL.txt"
 }
