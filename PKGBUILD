@@ -6,7 +6,7 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-staging-steam
-pkgver=1.9.4
+pkgver=1.9.5
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
@@ -14,7 +14,7 @@ _pkgbasever=${pkgver/rc/-rc}
 source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbasever.tar.gz"
         30-win32-aliases.conf
 	steam.patch)
-sha1sums=('679d51220b9cf86eee04bbf5f69d42415e5d004a'
+sha1sums=('1caa585b63f21a68835226c2c201deda8d9c5093'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
           '5fe7c53773b3bc2b6b3e9f1b7bee90e97c67f761')
 
