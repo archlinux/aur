@@ -28,7 +28,7 @@ source=(
   "https://github.com/MorrisJobke/dokku/archive/v0.4.14-arch-linux.zip"
   "${pkgname}.install"
 )
-sha256sums=('60c14af9bc7b040a155fe00e71afc9c2dd483611f4a19d237c7feb4bf50f35b6'
+sha256sums=('3f2de8924ea1c155b84fed7d81b7b033fe1266cfcd7532d6a4bccf0ee29c92c5'
             'e173147ecb9887a0d558a7d624d0500f1242b91b70e86e35ada39c73fd80a29b')
 install=${pkgname}.install
 
