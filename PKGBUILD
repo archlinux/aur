@@ -5,7 +5,7 @@
 
 pkgbase=virtualbox-modules-mainline
 pkgname=('virtualbox-host-modules-mainline' 'virtualbox-guest-modules-mainline')
-pkgver=5.0.14
+pkgver=5.0.16
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
@@ -24,12 +24,18 @@ build() {
 
   echo "dkms_tree='$srcdir/dkms'" > dkms.conf
   
+  sudo ln -s "/usr/src/vboxhost-${pkgver}_OSE" "/usr/src/vboxhost-$pkgver"
+  sudo ln -s "/usr/src/vboxguest-${pkgver}_OSE" "/usr/src/vboxguest-$pkgver"
+
   # build host modules
   msg2 'Host modules'
   dkms --dkmsframework dkms.conf build "vboxhost/$pkgver" -k "$_kernver"
   # build guest modules
   msg2 'Guest modules'
   dkms --dkmsframework dkms.conf build "vboxguest/$pkgver" -k "$_kernver"
+
+  sudo rm "/usr/src/vboxhost-$pkgver"
+  sudo rm "/usr/src/vboxguest-$pkgver"
 }
 
 package_virtualbox-host-modules-mainline(){
