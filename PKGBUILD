@@ -1,11 +1,12 @@
-# Maintainer: Charles Bos <charlesbos1 AT gmail>
+# Maintainer: Que Quotion <quequotion at bugmenot dot com>
+# Contributor: Charles Bos <charlesbos1 AT gmail>
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname=gnome-settings-daemon-compat
 _pkgname=gnome-settings-daemon
 pkgver=3.6.4
-pkgrel=9
+pkgrel=10
 pkgdesc='Compatibility package that provides the background, media keys and mount helpers from GNOME Settings Daemon 3.6'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -20,16 +21,18 @@ source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgname/${pkgver%.*}/$_pkgname-
         revert-input-sources.patch
         xinput.patch 
         remove-libgsd-dependency.patch
-        move-desktop-file.patch)
+        move-desktop-file.patch
+        libsystemd.patch)
 sha256sums=('3db993f2dbabc0c9d06a309bb12c9a7104b9cdda414ac4b1c301f5114a441c15'
             '2e7e40175533556493bb58795a2c1b4e53b4baba35d151e632b933c6077456d9'
-            'ddc4dfaa8083ff24a7d2fb6138b8c3fee5d4e6c60c24b4e80a39392d0c8f2162'
+            'c41640f51cc2b0165b94cf39971fabfaed3cd678e24cddb3efecfe1b673fc33f'
             '1b6b8216434b766e1389e876cba5d6ab61498c5824f6d2cc5d67dcf58a07842a'
             '0821f469cd168f3a131da513a5f9dd352c06f9bc31d57d79de4dc063fa2de915'
             '02da2467e287620c3b717c7ff5ffea7403cce714d5aa32e27d051b6571451e2a'
             'fe8cafee074e36a7a393c9ae7f65db1c13a0959213aaae94ab8a3543bf20a25d'
             '730f11d5689892fbab9aa2896f3720e813d17e2455f34fd3a0751e49f5b4c26c'
-            'c58ace67581a1e14dc21efc8d22dd1f385cd05483d67e8a385b0767a8daf9fb4')
+            'c58ace67581a1e14dc21efc8d22dd1f385cd05483d67e8a385b0767a8daf9fb4'
+            'd8bf24b8917adbc06cfdd70a841e03111b329928889df7b8048089f20034b1c5')
 
 prepare() {
   cd $_pkgname-$pkgver
@@ -54,6 +57,8 @@ prepare() {
   # Move desktop files out of autostart, so they can be easily reusable in custom sessions
   patch -Np1 < ../move-desktop-file.patch
 
+  # libsystemd-login is now just libsystemd.
+  patch -Np2 < ../libsystemd.patch
 }
 
 build() {

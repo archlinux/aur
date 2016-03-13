@@ -123,6 +123,24 @@ diff -Naur gnome-settings-daemon-3.6.4.orig/plugins/media-keys/gsd-media-keys-ma
  }
  
  static void
+@@ -1650,7 +1641,7 @@
+                   gpointer             user_data)
+ {
+         GError *error = NULL;
+-        guint percentage;
++        gint32 percentage;
+         GVariant *new_percentage;
+         GsdMediaKeysManager *manager = GSD_MEDIA_KEYS_MANAGER (user_data);
+ 
+@@ -1664,7 +1655,7 @@
+         }
+ 
+         /* update the dialog with the new value */
+-        g_variant_get (new_percentage, "(u)", &percentage);
++        g_variant_get (new_percentage, "(ii)", &percentage, NULL);
+         dialog_init (manager);
+         gsd_osd_window_set_action_custom (GSD_OSD_WINDOW (manager->priv->dialog),
+                                                  "display-brightness-symbolic",
 @@ -2090,7 +2085,6 @@
          char *theme_name;
  

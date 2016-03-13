@@ -1,0 +1,11 @@
+--- src/gnome-settings-daemon-3.6.4/configure.ac	2013-01-10 22:40:17.000000000 +0900
++++ src/gnome-settings-daemon-3.6.4/configure.ac.new	2016-03-13 14:59:51.761927015 +0900
+@@ -348,7 +348,7 @@
+               [with_systemd=$enableval],
+               [with_systemd=no])
+ if test "$with_systemd" = "yes" ; then
+-  PKG_CHECK_MODULES(SYSTEMD, [libsystemd-login])
++  PKG_CHECK_MODULES(SYSTEMD, [libsystemd])
+   AC_DEFINE(HAVE_SYSTEMD, 1, [Define if systemd is used for session tracking])
+   SESSION_TRACKING=systemd
+ else
