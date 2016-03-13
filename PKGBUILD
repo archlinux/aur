@@ -4,15 +4,16 @@
 # Contributor: <damir at archlinux dot org>
 
 pkgname=ms-sys
-pkgver=2.5.3
+pkgver=2.4.1
 pkgrel=1
+epoch=1
 pkgdesc="Used to create Microsoft compatible boot records"
 arch=('i686' 'x86_64')
 url="http://ms-sys.sourceforge.net/"
 license=('GPL')
 depends=('glibc')
 source=(http://prdownloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('e03e78f6684e30dbf9d97ecb1d75c1bf16350b1d3e4273a3a224cac504723256')
+sha256sums=('cca2a36cf0a18c123088210dc5b406cc825e2f3695a7858238090be68ed98c61')
 
 build() {
   cd $pkgname-$pkgver
