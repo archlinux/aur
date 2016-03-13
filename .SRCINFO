@@ -3,6 +3,7 @@ pkgbase = xkb-qwerty-fr
 	pkgver = 0.5
 	pkgrel = 1
 	url = http://marin.jb.free.fr/qwerty-fr/
+	install = xkb-qwerty-fr.install
 	arch = any
 	license = GPL2
 	makedepends = binutils

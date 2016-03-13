@@ -10,7 +10,7 @@ url="http://marin.jb.free.fr/qwerty-fr/"
 license=('GPL2')
 depends=('xkeyboard-config')
 makedepends=('binutils')
-#install=${pkgname}.install
+install=${pkgname}.install
 source=("http://marin.jb.free.fr/qwerty-fr/${pkgname}_${pkgver}_all.deb")
 
 build() {
