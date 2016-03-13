@@ -1,6 +1,6 @@
 # Maintainer: Ashley Towns <mail(at)ashleytowns(dot)id(dot)au>
 
-_version=2.2-SNAPSHOT-2016-02-24-a
+_version=2.2-SNAPSHOT-2016-03-01-a
 
 pkgname=swift-bin
 pkgver=${_version//-/.}
@@ -20,7 +20,7 @@ source=(
   "https://swift.org/builds/swift-2.2-branch/ubuntu1510/swift-${_version}/swift-${_version}-ubuntu15.10.tar.gz"
   "https://swift.org/builds/swift-2.2-branch/ubuntu1510/swift-${_version}/swift-${_version}-ubuntu15.10.tar.gz.sig"
 )
-sha256sums=('a6fcaef0ff9e377b36990e8f81de45261e450ad888a07510c51a4f5e2c7eb883'
+sha256sums=('21af53d5aa15cf394d5ccc6343f0f13193ee4432a81c838b4d38b8823ef56552'
             'SKIP')
 
 package() {
