@@ -1,7 +1,7 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=glcapsviewer-git
-pkgver=1.1
+pkgver=r109.b635159
 pkgrel=1
 pkgdesc='OpenGL Hardware Capability Viewer'
 url='http://www.saschawillems.de/?page_id=771/'

@@ -1,6 +1,6 @@
 pkgbase = glcapsviewer-git
 	pkgdesc = OpenGL Hardware Capability Viewer
-	pkgver = 1.1
+	pkgver = r109.b635159
 	pkgrel = 1
 	url = http://www.saschawillems.de/?page_id=771/
 	arch = i686
