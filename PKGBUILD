@@ -1,3 +1,4 @@
+# Maintainer: Ian D. Scott <ian@iandouglasscott.com>
 pkgname=lego-udev-rules
 pkgver=1
 pkgrel=1
