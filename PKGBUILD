@@ -15,8 +15,8 @@
 # intel-media-sdk (experimental Intel QSV support only for x86_64)
 
 pkgname=ffmpeg-full-git
-pkgver=N.79015.g4aea2c7
-pkgrel=2
+pkgver=N.79022.g58cb1fb
+pkgrel=1
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
 url="http://www.ffmpeg.org/"
@@ -34,6 +34,7 @@ depends=(
     'libmfx-git' 'opencl-headers' 'ocl-icd' 'libvdpau' 'mesa' 'openssl' 'xavs' 'nvidia-sdk'
     'blackmagic-decklink-sdk' 'jdk8-openjdk'
 )
+depends_x86_64=('cuda')
 optdepends_x86_64=('intel-media-sdk: for Intel QSV support (experimental)')
 makedepends=('git' 'yasm')
 provides=(
@@ -68,14 +69,26 @@ prepare() {
 build() {
 	cd "${srcdir}/${pkgname}"
 	
+	# Add cuda to the build if architecture is x86_64 (cuda is x86_64 only)
+	if [ "$CARCH" = "x86_64" ]; then
+	    _cuda="--enable-cuda"
+	    _cudainc="-I/opt/cuda/include"
+	    _cudalib=":/opt/cuda/lib64"
+	else
+	    _cuda=""
+	    _cudainc=""
+	    _cudalib=""
+	fi
+	
 	msg2 "Running ffmpeg configure script. Please wait..."
 	
 	./configure \
 	        --prefix=/usr \
 	        --extra-cflags="-I/usr/include/nvidia-sdk \
+	                        ${_cudainc} \
 	                        -I/usr/lib/jvm/java-8-openjdk/include \
 	                        -I/usr/lib/jvm/java-8-openjdk/include/linux" \
-	        --extra-ldflags="-Wl,-rpath -Wl,/opt/intel/mediasdk/lib64" \
+	        --extra-ldflags="-Wl,-rpath -Wl,/opt/intel/mediasdk/lib64${_cudalib}" \
 	        \
 	        --enable-rpath \
 	        --enable-gpl \
@@ -88,6 +101,7 @@ build() {
 	        --enable-videotoolbox \
 	        \
 	        --enable-avisynth \
+	        "$_cuda" \
 	        --enable-chromaprint \
 	        --enable-fontconfig \
 	        --enable-frei0r \
