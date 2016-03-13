@@ -4,12 +4,12 @@
 pkgname=evilvte-git
 _pkgname=evilvte
 pkgver=150.8dfa41e
-pkgrel=3
+pkgrel=4
 pkgdesc='VTE based, highly customizable terminal emulator.'
 arch=('i686' 'x86_64')
 url="http://www.calno.com/evilvte/"
 license=('GPL2')
-depends=('hicolor-icon-theme' 'vte3')
+depends=('hicolor-icon-theme' 'vte')
 makedepends=('git' 'pkg-config')
 provides=('evilvte')
 conflicts=('evilvte')
@@ -32,11 +32,12 @@ prepare() {
     cp "$srcdir/$_pkgname/src/config.h" config.h
     echo "Edit $startdir/config.h and recompile to change your settings."
   fi
-}
+ }
 
 build(){
+LANG=C
   cd "$srcdir/$_pkgname"
-  ./configure --prefix=/usr --with-gtk=3.0
+  ./configure --prefix=/usr --with-gtk=2.0 
   make
 }
 
