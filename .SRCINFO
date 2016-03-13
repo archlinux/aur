@@ -1,0 +1,41 @@
+pkgbase = firefox-beta-zh-cn
+pkgdesc = Chinese Simplified For Firefox Beta
+pkgver = 46.0b1
+pkgrel = 1
+url = https://www.mozilla.org/zh-CN/firefox/channel/#beta
+install = firefox-beta-zh-cn.install
+arch = i686
+arch = x86_64
+license = MPL
+license = GPL
+license = LGPL
+makedepends = pacman>=4.2.0
+depends = alsa-lib
+depends = dbus-glib
+depends = desktop-file-utils
+depends = gtk2
+depends = gtk3
+depends = hicolor-icon-theme
+depends = icu
+depends = libevent
+depends = libvpx
+depends = libxt
+depends = mime-types
+depends = nss
+depends = sqlite
+optdepends = ffmpeg: additional video and audio decoders
+optdepends = libpulse: PulseAudio driver
+optdepends = networkmanager: Location detection via available WiFi networks
+optdepends = upower: Battery API
+provides = firefox=46.0b1
+source = firefox-beta-zh-cn.desktop
+source = vendor.js
+sha512sums = f7490c086d165bef8f71f704cc85263d6664fc681dd3129fc432741dc9a10b0d7eb62ec2f9fd6ed5efb52dab893e76a8c890df882c1ca279fdf184f55c385e3f
+sha512sums = a42e7f11b6570151616dcbc9a9b5786636465786cffd9da28c46101b4d96d7dc6a21a03c31064958141a11fdc41da8b016d0b5d0ab4fcd064fdccf39745dd0d8
+source_i686 = https://ftp.mozilla.org/pub/firefox/candidates/46.0b1-candidates/build8/linux-i686/zh-CN/firefox-46.0b1.tar.bz2
+sha512sums_i686 = a9b7ad28f753af3b0139d644d7fd44f5210549f2b3bf1871fdf0c6868de0fc1b0e3c2b2ea7cd66a47eea2f0b57c43e1dda55255435e176465449c702ab6e975c
+source_x86_64 = https://ftp.mozilla.org/pub/firefox/candidates/46.0b1-candidates/build8/linux-x86_64/zh-CN/firefox-46.0b1.tar.bz2
+sha512sums_x86_64 = e535ef266d3ec806f595aa6d73b5a9d4965f6f10df7206fd67649fbdc62726a7d2b5579ed12b4d0a093eba78a6336a1cc8888de07808667c98e8e4e400346f13
+
+pkgname = firefox-beta-zh-cn
+
