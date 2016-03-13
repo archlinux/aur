@@ -1,32 +1,52 @@
-# Maintainer: Daniel Wallace <danielwallace at gtmanfred dot com>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
 # Contributor: Thomas S Hatch <thatch45@gmail.com>
 
+pkgbase=python-ioflo
 pkgname=('python-ioflo' 'python2-ioflo')
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='Flo based programming interface in python'
 arch=('any')
 url='http://ioflo.com'
-license=('APACHE')
-source=("https://pypi.python.org/packages/source/i/ioflo/ioflo-$pkgver.tar.gz")
-md5sums=('a5b7f9ef70c918c205db4a497384356d')
-makedepends=(python-setuptools python2-setuptools)
+license=('Apache')
+makedepends=('python-setuptools' 'python2-setuptools' 'git')
+checkdepends=('python-nose' 'python2-nose')
+source=("git+https://github.com/ioflo/ioflo.git#tag=v$pkgver")
+md5sums=('SKIP')
 
 prepare() {
-  cd $srcdir
-  cp -r ioflo-$pkgver python2-ioflo-$pkgver
+  cp -a ioflo{,-py2}
+}
+
+build() {
+  cd "$srcdir"/ioflo
+  python setup.py build
+
+  cd "$srcdir"/ioflo-py2
+  python2 setup.py build
+}
+
+check() {
+  cd "$srcdir"/ioflo
+  python setup.py nosetests || warning "Tests failed"
+
+  cd "$srcdir"/ioflo-py2
+  python2 setup.py nosetests || warning "Tests failed"
 }
 
 package_python-ioflo() {
   depends=('python')
-  cd "$srcdir/ioflo-$pkgver"
-  python3 setup.py install --root="$pkgdir" -O1
+
+  cd ioflo
+  python setup.py install --root="$pkgdir" -O1
 }
 
 package_python2-ioflo() {
   depends=('python2')
-  cd "$srcdir/python2-ioflo-$pkgver"
-  python2 setup.py install --root="$pkgdir" -O1
-  mv $pkgdir/usr/bin/ioflo $pkgdir/usr/bin/ioflo2
-}
 
+  cd ioflo-py2
+  python2 setup.py install --root="$pkgdir" -O1
+
+  rm "$pkgdir"/usr/bin/ioflo
+}
