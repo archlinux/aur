@@ -1,7 +1,7 @@
 # Maintainer: Eric Pfeiffer <computerfreak@computerfr33k.com>
 pkgname=paycoin-qt-bin
-pkgver=0.3.3.0
-pkgrel=2
+pkgver=0.3.3.1
+pkgrel=1
 epoch=
 pkgdesc="PayCoin is a global currency that lets you send money to anyone, anywhere, anytime. Sending and accepting money is virtually free, lightning fast and insanely easy."
 arch=('i386' 'x86_64')
@@ -27,8 +27,8 @@ source_i386=("https://github.com/PaycoinFoundation/paycoin/releases/download/v${
 source_x86_64=("https://github.com/PaycoinFoundation/paycoin/releases/download/v${pkgver}/linux64.zip")
 
 sha256sums=('711d5c86aab6e324aef38ab52dc5426b24a18b2daab63cc0bbfcb490a6216a0b')
-sha256sums_i386=('101eccff7cbb2a4f1e4306d9292a95d4e66bf4e5c6b9da9d2e7873dc09ad4014')
-sha256sums_x86_64=('6c698bc453e3de5869460cf85c9473b474913d1a2926b82de453bf753ec1a0e5')
+sha256sums_i386=('f29e9d092f9c95db34328d753b6d297d3aea2e6b2e58587a2098983068caf30a')
+sha256sums_x86_64=('efb38666580724b42d244ab8bff95598c07ada549cb6b1e8a2cd9c6d3db87348')
 
 package() {
 	if [ "$CARCH" = "x86_64" ]; then
@@ -39,8 +39,8 @@ package() {
 
 	install -d "$pkgdir"/opt/Paycoin
 	
-	mv "$srcdir"/paycoin-qt "$pkgdir"/opt/Paycoin/paycoin-qt
-	mv "$srcdir"/paycoind "$pkgdir"/opt/Paycoin/paycoind
+	mv "$srcdir"/linux$_source_arch/paycoin-qt "$pkgdir"/opt/Paycoin/paycoin-qt
+	mv "$srcdir"/linux$_source_arch/paycoind "$pkgdir"/opt/Paycoin/paycoind
 
 	chmod 755 "$pkgdir"/opt/Paycoin/paycoin-qt
 	chmod 755 "$pkgdir"/opt/Paycoin/paycoind
