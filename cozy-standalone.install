@@ -1,0 +1,191 @@
+#!/bin/sh
+# Install scripts for Cozy
+# Maintainer: Brendan Abolivier <brendan@cozycloud.cc>
+
+# Fancy message is fancy
+msg() {
+    printf "${blue}==>${bold} $1${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+
+post_install() {
+    msg "Checking ports availability"
+    lsof -i :9002 > /dev/null 2>&1
+    if [ $? = "0" ]; then
+        msg "Port 9002 (used by the Cozy controller) is already in use on this machine."
+        exit 1
+    fi
+    lsof -i :9101 > /dev/null 2>&1
+    if [ $? = "0" ]; then
+        msg "Port 9101 (used by the Cozy Data System) is already in use on this machine."
+        exit 1
+    fi
+    lsof -i :9103 > /dev/null 2>&1
+    if [ $? = "0" ]; then
+        msg "Port 9103 (used by the Cozy Home) is already in use on this machine."
+        exit 1
+    fi
+    lsof -i :9104 > /dev/null 2>&1
+    if [ $? = "0" ]; then
+        msg "Port 9104 (used by the Cozy authentication proxy) is already in use on this machine."
+        exit 1
+    fi
+
+    msg "Installing CoffeeScript"
+    npm install -g coffee-script
+
+    msg 'Installing NPM dependencies...'
+    npm config set python /usr/bin/python2
+    [ ! -d /usr/local/lib/node_modules/cozy-controller ] && npm install -g cozy-controller
+    [ ! -d /usr/local/lib/node_modules/cozy-monitor ] && npm install -g cozy-monitor
+
+    msg 'Creating UNIX users...'
+    id cozy >/dev/null 2>&1 || useradd -M cozy
+    id cozy-data-system >/dev/null 2>&1 || useradd -M cozy-data-system
+    id cozy-home >/dev/null 2>&1 || useradd -M cozy-home
+
+    chown -hR cozy /etc/cozy
+
+    if [ ! -f /etc/cozy/couchdb.login ]; then
+        msg 'Generating CouchDB tokens...'
+        pwgen -1 > /etc/cozy/couchdb.login && \
+        pwgen -1 >> /etc/cozy/couchdb.login
+        msg 'Enabling CouchDB'
+        systemctl enable couchdb
+        systemctl restart couchdb
+        COUNT=0;MAX=20
+        while ! curl -s 127.0.0.1:5984 >/dev/null; do
+            let "COUNT += 1"
+            msg "Waiting for CouchDB to start... ($COUNT/$MAX)"
+            if [[ $COUNT -ge $MAX ]]; then
+                msg "CouchDB is too long to start"
+                exit 1
+            fi
+            sleep 5
+        done
+        curl -s -X PUT 127.0.0.1:5984/_config/admins/$(head -n1 /etc/cozy/couchdb.login) -d "\"$(tail -n1 /etc/cozy/couchdb.login)\""
+    fi
+    chown cozy-data-system /etc/cozy/couchdb.login
+    chmod 640 /etc/cozy/couchdb.login
+
+    msg 'Configuring Cozy Controller...'
+    CONFIGFILE=/etc/supervisor.d/cozy-controller.ini
+    if [ -f $CONFIGFILE ]; then
+        echo "Old configuration moved to /etc/supervisor.d/cozy-controller.ini.old"
+        mv /etc/supervisor.d/cozy-controller.ini /etc/supervisor.d/cozy-controller.ini.old
+    fi
+    mv /usr/share/cozy/supervisor-cozy-controller /etc/supervisor.d/cozy-controller.ini
+
+    msg 'Starting supervisor'
+    systemctl enable supervisord
+    systemctl restart supervisord
+
+    COUNT=0;MAX=20
+    while ! curl -s 127.0.0.1:9002 >/dev/null; do
+        let "COUNT += 1"
+        msg "Waiting for Cozy Controller to start... ($COUNT/$MAX)"
+        if [[ $COUNT -ge $MAX ]]; then
+            msg "Cozy Controller is too long to start"
+            exit 1
+        fi
+        sleep 5
+    done
+
+    msg 'Installing Cozy Platform apps...'
+    if [ ! -d /usr/local/cozy/apps/data-system ]; then
+        cozy-monitor install-cozy-stack
+        if [ $? = "1" ]; then echo "Error while installing the platform" && exit 1; fi
+    fi
+    cozy-monitor start data-system
+    if [ ! -d /usr/local/cozy/apps/home ]; then
+        cozy-monitor install home
+        if [ $? = "1" ]; then echo "Error while installing the platform" && exit 1; fi
+    fi
+    cozy-monitor start home
+    if [ ! -d /usr/local/cozy/apps/proxy ]; then
+        cozy-monitor install proxy
+        if [ $? = "1" ]; then echo "Error while installing the platform" && exit 1; fi
+    fi
+    cozy-monitor start proxy
+
+ 
+    CURRENT_BACKGROUND=`/usr/bin/cozy_management get_cozy_param background`
+    if [ "$CURRENT_BACKGROUND" != "None" ]; then
+        echo "Cozy already configured with a background: $CURRENT_BACKGROUND"
+    else
+        echo "Configure Cozy with default background"
+        curl -X POST http://localhost:9103/api/instance -H "Content-Type: application/json" -d '{"background":"background-07"}'
+    fi
+
+    # Correcting display here
+    echo ""
+    msg "Installing default apps"
+    for app in calendar contacts photos emails files sync; do
+        if [ ! -f /usr/local/cozy/apps/.first-install-$app ]; then
+            if [ -d /usr/local/cozy/apps/$app ]; then
+                touch /usr/local/cozy/apps/.first-install-$app
+            else
+                cozy-monitor install $app && touch /usr/local/cozy/apps/.first-install-$app
+            fi
+        fi
+    done
+
+    if [ ! -f /usr/local/cozy/apps/.first-install-import-from-google ]; then
+        if [ -d /usr/local/cozy/apps/import-from-google ]; then
+            touch /usr/local/cozy/apps/.first-install-import-from-google
+        else
+            cozy-monitor install import-from-google -r https://github.com/cozy-labs/import-from-google.git && touch /usr/local/cozy/apps/.first-install-import-from-google
+        fi
+    fi
+
+
+    msg "This package does not come with any configuration for reverse proxying, which is crucial for Cozy's well behaviour. In order for the platform to work, please configure a reverse proxy.\nFor more information, please visit https://docs.cozy.io/en/host/install/install-on-archlinux.html"
+    echo "Before being able to use Cozy, you need to run the first-time-configuration script:"
+    echo "    # /usr/bin/configure-cozy-domain cozy.example.tld"
+    echo "With your Cozy's own domain instead of \"cozy.example.tld\""
+}
+
+pre_remove() {
+    which cozy-monitor >/dev/null 2>&1
+    RESULT=$?
+    if [ "$RESULT" = "0" ]; then
+        APPS="$(cozy-monitor status | grep -vE '(mta|postfix|couch|controller|data-system|ds|home|proxy|error)' | sed 's/:.*//;s/\[Error//' | xargs echo)"
+        APPS="$APPS proxy home data-system"
+        for app in $APPS ; do cozy-monitor uninstall $app ; done
+    fi
+    which supervisorctl >/dev/null 2>&1 && supervisorctl stop cozy-controller
+}
+
+post_remove() {
+    mv /etc/cozy/couchdb.login /tmp/couchdb.login
+    [ -d /etc/cozy ] && msg "Deleting /etc/cozy directory" && rm -rf /etc/cozy
+    [ -d /usr/local/var/log/cozy ] && msg "Deleting /usr/local/var/log/cozy directory" && rm -rf /usr/local/var/log/cozy
+    [ -d /usr/local/cozy ] && msg "Deleting /usr/local/cozy directory" && rm -rf /usr/local/cozy
+    msg "Erasing scripts and folders"
+    [ -f /usr/local/sbin/debian-reconfigure-cozy-domain.sh ] && rm -f /usr/local/sbin/debian-reconfigure-cozy-domain.sh
+    [ -d /usr/local/var/cozy ] && rm -rf /usr/local/var/cozy
+    [ -d /usr/share/cozy ] && rm -rf /usr/share/cozy
+    msg "Removing NPM dependencies"
+    [ -f /usr/bin/cozy-controller ] && npm remove -g cozy-controller
+    [ -f /usr/bin/cozy-controller ] && npm remove -g cozy-monitor
+    msg "Removing supervisor configuration"
+    test -e /etc/supervisor.d/cozy* && rm /etc/supervisor.d/cozy*
+    supervisorctl reload
+    echo "The Cozy database contains all your user data. Keeping it could be troublesome for further installations. However, it will not be removed, unless you do it manually."
+    echo "Moved the admin logins to /tmp/couchdb.login"
+    echo "Please don't forget to move it elsewhere if you don't want to lose access to your whole database."
+}
+
+post_upgrade() {
+    # Check if the install went well
+    cozy-monitor status > /dev/null 2>&1
+    if [ $? = "1" ]; then
+        post_install
+    else
+        # Do update here
+        echo "Hello world" > /dev/null
+    fi
+}

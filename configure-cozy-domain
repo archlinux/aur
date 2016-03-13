@@ -1,0 +1,26 @@
+#!/bin/sh
+
+if [ $# -eq 1 ]; then
+    COZY_DOMAIN=$1
+
+    CURRENT_DOMAIN=`/usr/bin/cozy_management get_cozy_param domain`
+    if [ "$CURRENT_DOMAIN" = "$COZY_DOMAIN" ]; then
+        echo "Cozy already configured with domain: $COZY_DOMAIN"
+    else
+        echo "Configuring Cozy with domain: $COZY_DOMAIN"
+        coffee /usr/local/cozy/apps/home/commands.coffee setdomain $COZY_DOMAIN
+    fi
+
+    echo 'Generating SSL keys and certificates...'
+    if [ ! -f /etc/cozy/dh.pem ]; then
+        openssl dhparam -out /etc/cozy/dh.pem -outform PEM -2 2048
+        chmod 400 /etc/cozy/dh.pem
+    fi
+    if [ ! -f /etc/cozy/server.crt ]; then
+    	cozy_management normalize_cert_dir
+        cozy_management generate_certificate ${COZY_DOMAIN}
+    fi
+else
+    echo "Usage: /usr/bin/configure-cozy-domain cozy.example.tld"
+    echo "Replace \"cozy.example.tld\" by your Cozy's own domain"
+fi
