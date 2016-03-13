@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# ./check4u -- check for updates of a software package
+
+kawa_latest() {
+    local WEBPAGE='http://www.gnu.org/software/kawa/Getting-Kawa.html'
+    local DOWNLOAD_LINK=`curl --silent $WEBPAGE |
+         grep -oP --color=NEVER '"ftp://ftp\.gnu\.org/pub/gnu/kawa/kawa-[\w.]+\.tar\.gz"'`
+    LATEST=${DOWNLOAD_LINK#*/kawa-}
+    LATEST=${LATEST%.tar.gz\"}
+}
+kawa_current() {
+    source PKGBUILD &&
+        CURRENT="$pkgver"
+}
+
+kawa_latest && kawa_current
+
+if [[ "$LATEST" != "$CURRENT" ]]; then
+    echo -e "Latest release   : $LATEST"
+    echo -e "Currently on AUR : $CURRENT"
+    exit 1
+fi
