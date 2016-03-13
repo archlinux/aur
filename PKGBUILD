@@ -11,7 +11,7 @@ optdepends=(
   'wget: better than curl'
 )
 source=('https://raw.githubusercontent.com/deadhead420/fetchmirrors/master/fetchmirrors.sh')
-md5sums=('f098e10059f238e3cbf20bf9af9b8838')
+md5sums=('644b6aeed120fb6a35283fc4c8cf5d40')
 
 package() {
   cd "${srcdir}"
