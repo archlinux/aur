@@ -17,7 +17,7 @@ pkgbase = linux-rpi2-default-git
 	source = cmdline.txt
 	source = config.overrides
 	md5sums = SKIP
-	md5sums = cf4603b0f054a07fdf794f440f8abb18
+	md5sums = deb8153da7782d08964db23820cb6748
 	md5sums = 0244ab7cb2e385a8efe9a7fba9bfcb48
 	md5sums = 52d6ecfbfbd617c05324d0e6cd2d7d18
 
