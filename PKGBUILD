@@ -1,5 +1,5 @@
-# Maintainer Jens Staal <staal1978@gmail.com>
-# Big thanks to: ids1024 !
+# Maintainer: Ian D. Scott <ian@iandouglasscott.com>
+# old maintainer: Jens Staal <staal1978@gmail.com>
 # old maintainer: Anton Bazhenov <anton.bazhenov at gmail>
 
 pkgname=blackpenguin
