@@ -1,49 +1,39 @@
 # Maintainer: Mort Yao <soi@mort.ninja>
 
 pkgname=fstar-git
-pkgver=20151009
+pkgver=20160312
 pkgrel=1
-pkgdesc='An ML-like language with a type system for program verification'
-url='http://research.microsoft.com/en-us/projects/fstar/'
+pkgdesc='A Higher-Order Effectful Language Designed for Program Verification'
+url='https://fstar-lang.org/'
 license=('Apache')
-depends=('mono>=4.0.3.20' 'z3')
-makedepends=('fsharp' 'ocaml' 'opam')
-provides=('fstar')
 arch=('i686' 'x86_64')
-source="fstar"
-md5sums=('a942264ee14c8645f575e26aad30f0a2')
+depends=('z3')
+makedepends=('fsharp' 'ocaml>=4.02' 'ocaml-batteries' 'ocaml-findlib')
+provides=('fstar')
+conflicts=('fstar' 'fstar-bin')
+source=("${pkgname}::git://github.com/FStarLang/FStar.git")
+md5sums=('SKIP')
 
-_gitroot="https://github.com/FStarLang/FStar"
-_gitname="FStar"
+pkgver() {
+  cd "$pkgname"
+  git log -1 --pretty=format:%cd --date=short | sed 's/-//g'
+}
+
 build() {
-  cd $startdir/src
-  msg "Connecting to github.com GIT server...."
+  cd "$pkgname"
 
-  if [ -d $startdir/src/$_gitname ] ; then
-    cd $_gitname && git pull origin
-    msg "The local files are updated."
-  else
-    git clone $_gitroot
-  fi
-
-  msg "GIT checkout done or server timeout"
-
-  cd $startdir/src/$_gitname
-
+  # Step 1. Building F* from sources using the F# compiler
   make -C src
-
-  opam init -n
-  eval $(opam config env)
-  opam install ocamlfind batteries
-
-  make -C src ocaml
+  # Step 2. Extracting the sources of F* itself to OCaml
+  make ocaml -C src
+  # Step 3. Building F* from the OCaml snapshot
   make -C src/ocaml-output
 }
 
 package() {
-  cd $startdir/src/$_gitname
+  cd "$pkgname"
 
-  install -d -m755 $pkgdir/opt/fstar
-  install -D -m755 $startdir/fstar $pkgdir/usr/bin/fstar
+  install -d -m755 $pkgdir/opt/fstar $pkgdir/usr/bin
   cp -r bin/ doc/ examples/ lib/ $pkgdir/opt/fstar
+  ln -s /opt/fstar/bin/fstar.exe $pkgdir/usr/bin/fstar
 }
