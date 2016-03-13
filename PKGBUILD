@@ -28,7 +28,7 @@ build() {
   cd "${srcdir}/netcdf-${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure --enable-dll --enable-netcdf-4 --enable-dap-netcdf --enable-cxx-4
+    ${_arch}-configure --enable-dll --enable-netcdf-4
     make
     popd
   done
