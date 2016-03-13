@@ -39,6 +39,10 @@ package() {
   install -D -m775 ./wpg ${pkgdir}/usr/bin/wpg
   install -D -m755 ./functions ${pkgdir}/usr/bin/wpgtk/functions
   bash ./installaur.sh
+  echo
+  echo "Remember to add sh ~/.wallpapers/wp_init.sh"
+  echo "to your startup programs"
+  sleep 1
 }
 
 # vim:set et sw=2 sts=2 tw=80:
