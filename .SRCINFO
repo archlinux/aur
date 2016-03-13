@@ -1,0 +1,34 @@
+pkgbase = ultrastardx-git
+	pkgdesc = Free and open source karaoke game. (GIT)
+	pkgver = r141.b14cc1b
+	pkgrel = 1
+	url = http://ultrastardeluxe.org/
+	arch = i686
+	arch = x86_64
+	groups = usdx
+	license = GPL
+	makedepends = git
+	makedepends = fpc
+	depends = ffmpeg2.8
+	depends = lua51
+	depends = portaudio
+	depends = sdl2
+	depends = sdl2_gfx
+	depends = sdl2_mixer
+	depends = sdl2_net
+	depends = sdl2_ttf
+	depends = sdl2_image
+	depends = opencv
+	depends = ttf-dejavu
+	depends = ttf-freefont
+	depends = wqy-microhei
+	depends = pcre
+	provides = ultrastardx
+	conflicts = ultrastardx
+	source = git://github.com/UltraStar-Deluxe/USDX.git
+	source = usdx.patch
+	sha256sums = SKIP
+	sha256sums = 2f0c8713230976e293b519db8c9058e7937e8be04d54de821067334f7481e533
+
+pkgname = ultrastardx-git
+

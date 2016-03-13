@@ -1,0 +1,10 @@
++++ src/config-linux.inc	2016-03-13 17:39:33.676342097 +0100
+@@ -6,7 +6,7 @@
+ {* Libraries *}
+ 
+ {$IF Defined(IncludeConstants)}
+-  lua_lib_name = '';
++  lua_lib_name = 'lua5.1';
+   LUA_VERSION_INT     = 5001005;
+   LUA_VERSION_RELEASE = '5';
+   LUA_VERSION_MINOR   = '1';
