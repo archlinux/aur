@@ -1,13 +1,13 @@
 # Maintainer: Leif Warner <abimelech@gmail.com>
 _gitname=ghcmod-vim
 pkgname=vim-ghcmod-git
-pkgver=v1.3.1.r13.3e012a5
+pkgver=v1.3.1.r19.815616e
 pkgrel=1
 pkgdesc="ghc-mod powered editing in vim"
 arch=('any')
 url="https://github.com/eagletmt/ghcmod-vim"
 license=('BSD3')
-depends=('vim-vimproc' 'haskell-ghc-mod')
+depends=('vim-vimproc' 'ghc-mod')
 makedepends=('git')
 provides=(vim-ghcmod)
 conflicts=(vim-ghcmod)
