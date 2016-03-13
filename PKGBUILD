@@ -1,7 +1,7 @@
 # Maintainer: Soukyuu <chrno-sphered at hotmail dot com>
 # Contributor: archtux <antonio dot arias99999 at gmail dot com>
 pkgname=deadbeef-git
-pkgver=r5866.8631953
+pkgver=r6511.88b9879
 pkgrel=1
 pkgdesc="Music player based on GTK2 (devel branch)"
 url="http://deadbeef.sourceforge.net"
@@ -40,25 +40,25 @@ source=('git+https://github.com/Alexey-Yakovenko/deadbeef')
 md5sums=('SKIP')
 
 prepare() {
-  cd $srcdir/deadbeef
+  cd "$srcdir/deadbeef"
  
   ./autogen.sh
   ./configure --prefix=/usr --enable-ffmpeg --enable-gtk2 --disable-gtk3
 }
 
 build() {
-  cd $srcdir/deadbeef
+  cd "$srcdir/deadbeef"
   
   make
 }
 
 package() {
-  cd $srcdir/deadbeef
+  cd "$srcdir/deadbeef"
 
-  make DESTDIR=$pkgdir install
+  make DESTDIR="$pkgdir" install
 }
 
 pkgver() {
-  cd $srcdir/deadbeef
+  cd "$srcdir/deadbeef"
   echo r$(git rev-list --count master).$(git rev-parse --short master)
 }
