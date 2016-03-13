@@ -1,0 +1,7 @@
+post_install() {
+  echo "Run xdiffextsetup for the first time to configure your diff tool."
+}
+
+post_upgrade() {
+  post_install $1
+}
