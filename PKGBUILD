@@ -6,7 +6,7 @@
 
 pkgname=courier-imap
 pkgver=4.16.2
-pkgrel=2
+pkgrel=3
 pkgdesc="IMAP(s)/POP3(s) Server"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -22,15 +22,20 @@ source=(http://downloads.sourceforge.net/project/courier/imap/${pkgver}/${pkgnam
 	courier-imapd-ssl.service
 	courier-imapd.service
 	courier-pop3d.service
-	courier-pop3d-ssl.service)
+	courier-pop3d-ssl.service
+	SSLV3.patch)
 sha512sums=('42a685324b630835fe0c8735a67879e099f96eadf091c803368a9dd478a80b4ab47225fda6142942569c96b21355b5dac5e174ff434bcdc78784a810d2088609'
 	    'fcbc553e2b4542f246762ed1b20f1ae6a8f2b7c808e9ac537577e21ad933a0b1b4ea04eabb900ef423e2f4d037f973e73bf5f7e8ff6f0e3f7997f26dfd39b09f'
 	    'daec41de02a8b056a0b54e9c5446e144192762e4354875fb18b306473e006eadee74664e65f45e07e071b70158f741720a9acd41c14474d61ee0c619a59e8a98'
 	    '329ae0f76d5db53ed5392584ddfe7c4a10bfcec51a50c80d10fda1c318ab4929251ecc206403e045dba2c1d7388334473e2d8bf04dcfcc3d07301e89a609ea57'
-	    '337639e7c666e972ffc9d9fe58a897b3643582c80c22cf2503d616319c3e69969bba2fc629b4ae7f94a6f6a97ae0524b8c12426c5f05be4240e742a1f7c9d934')
+	    '337639e7c666e972ffc9d9fe58a897b3643582c80c22cf2503d616319c3e69969bba2fc629b4ae7f94a6f6a97ae0524b8c12426c5f05be4240e742a1f7c9d934'
+
+'a8a4fa9f1fc24ebb420d1d09df96251a66abf2133bc7e6ffd7d5051e4153d96492fe7ca29b5ef8cffa9601ad8ebe277c9a91bce4418111c604fd08869f60f1f2')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
+
+  patch -p1 -i "$srcdir/SSLV3.patch"
 
   # fix a tiny bug
   sed -i -e \

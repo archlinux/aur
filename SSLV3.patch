@@ -1,0 +1,10 @@
+--- a/libs/tcpd/libcouriertls.c	2015-06-10 02:08:23.000000000 +0200
++++ b/libs/tcpd/libcouriertls.c	2016-03-13 16:41:59.000000000 +0100
+@@ -74,7 +74,6 @@
+     { "TLSv1",     &TLSv1_method,   SSL_OP_ALL },
+     { "TLS1",      &TLSv1_method,   SSL_OP_ALL },
+     { "SSL3+",     &SSLv23_method,  SSL_OP_ALL|SSL_OP_NO_SSLv2 },
+-    { "SSL3",      &SSLv3_method,   SSL_OP_ALL },
+     { "SSL23",     &SSLv23_method,  SSL_OP_ALL },
+     { "",          &SSLv23_method,  SSL_OP_ALL|SSL_OP_NO_SSLv2|SSL_OP_NO_SSLv3 },
+     { NULL,        &SSLv23_method,  SSL_OP_ALL|SSL_OP_NO_SSLv2|SSL_OP_NO_SSLv3 },
