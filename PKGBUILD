@@ -9,7 +9,6 @@ pkgdesc="A suite of utilities for converting to and working with CSV."
 arch=('any')
 url="http://csvkit.readthedocs.org"
 license=('MIT')
-makedepends=('git')
 depends=(
     'python'
     'python-xlrd>=0.9.4' # for csvkit and agate
