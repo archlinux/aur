@@ -2,10 +2,10 @@
 
 pkgrealname=webcamoid
 pkgname=webcamoid-git
-pkgver=7.0.0.r1.gaa93f6a
+pkgver=7.0.0.r27.gbdf16c2
 pkgrel=1
 pkgdesc="Webcamoid is a full featured webcam capture application."
-url='https://github.com/hipersayanX/webcamoid'
+url='https://webcamoid.github.io/'
 license=('GPL')
 arch=('i686' 'x86_64' 'armv6h')
 depends=('qt5-quickcontrols' 'qt5-svg' 'libpulse' 'v4l-utils' 'ffmpeg')
@@ -20,7 +20,7 @@ optdepends=('v4l2loopback-dkms: Virtual camera support')
 #            'gst-plugins-ugly')
 makedepends=('git' 'qt5-tools')
 provides=('webcamoid')
-source=("git://github.com/hipersayanX/${pkgrealname}.git")
+source=("git://github.com/${pkgrealname}/${pkgrealname}.git")
 md5sums=('SKIP')
 
 pkgver() {
