@@ -1,7 +1,7 @@
 #Maintainer: Nathan Isom nathanisom27[AT]gmail[DOT]com
 
 pkgname=ttf-font-linux
-pkgver=v0.1
+pkgver=v0.4
 pkgrel=1
 pkgdesc="tty release of the font-linux font"
 arch=(any)
