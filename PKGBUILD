@@ -6,7 +6,7 @@
 # Contributor: Gatekeeper <cool_work@yahoo.com>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=mlterm
-pkgver=3.6.3
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="Multi Lingual TERMinal emulator on X"
 url="http://mlterm.sourceforge.net/"
@@ -16,11 +16,11 @@ depends=('gtk2' 'gtk3' 'm17n-lib' 'libutempter')
 makedepends=('intltool' 'librsvg' 'ncurses')
 options=(!libtool)
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz $pkgname.desktop)
-md5sums=('5410e4f70a1f4e43ba7390ddef1ea81e'
+md5sums=('d78560a6abb8add553c84a94b6a41c20'
          'd019c571f28c7b765610e219d9e52e35')
-sha1sums=('b069a0bc47a5bcb4256ebb87294c9451ed25c5c6'
+sha1sums=('10900f0303c39cdc6e5d52da6eab569b4410c777'
           '6a2c46265b0751ccf016e7521fdf48d1f9ac459f')
-sha256sums=('021935df82fd63a280500185e7c4b2ae833bd8c1f58e4386d0d772c55d4d2743'
+sha256sums=('4a81d9e1957e4f0b8f8e0838ddad0cf4776fabc73465d886f2211bb8d990c339'
             'b254755e320a94a05d3d745cd582a5b91f5ed33fd69396feca0511cf5c6b3ce0')
 
 build() {
@@ -34,7 +34,7 @@ build() {
               --with-type-engines=xft,cairo,xcore \
               --with-gtk=2.0,3.0 \
               --with-scrollbars \
-              --with-tools=mlconfig,mlterm-zoom,mlterm-menu,mlclient,mlcc \
+              --with-tools=mlconfig,mlterm-zoom,mlterm-menu,mlclient,mlcc,mlfc \
               --with-imagelib=gdk-pixbuf
   make
 }
