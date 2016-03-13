@@ -5,7 +5,7 @@ pkgbase=xgboost-git
 pkgname=('xgboost-git'
          'python-xgboost-git'
          'python2-xgboost-git')
-pkgver=r2367.70d9732
+pkgver=r2571.3ce3356
 pkgrel=1
 url='https://github.com/dmlc/xgboost'
 license=('APACHE')
@@ -13,6 +13,7 @@ source=('git+https://github.com/dmlc/xgboost.git'
         'git+https://github.com/dmlc/dmlc-core'
         'git+https://github.com/dmlc/rabit'
         'python_no_libs.patch')
+makedepends=('python2-setuptools' 'python-setuptools')
 arch=('x86_64')
 sha256sums=('SKIP'
             'SKIP'
@@ -79,7 +80,6 @@ package_python2-xgboost-git() {
            'python2'
            'python2-numpy'
            'python2-scipy')
-  makedepends=('python2-setuptools')
   conflicts=('python2-xgboost')
   provides=('python2-xgboost')
 
@@ -94,7 +94,6 @@ package_python-xgboost-git() {
            'python'
            'python-numpy'
            'python-scipy')
-  makedepends=('python-setuptools')
   conflicts=('python-xgboost')
   provides=('python-xgboost')
 
