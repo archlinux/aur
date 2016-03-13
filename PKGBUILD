@@ -20,6 +20,7 @@ depends=(
 	'gliderlabs-sigil'
 	'lsb-release'
 	'bind-tools'
+	'python'
 )
 
 source=(
