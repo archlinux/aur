@@ -1,3 +1,4 @@
+# Maintainer: Leif Warner <abimelech@gmail.com>
 # Maintainer: Daniel Nagy <danielnagy at gmx de>
 # Contributor: Lex Black <autumn-wind at web dot de>
 # Contributor: Don Stewart <dons@galois.com>
@@ -5,7 +6,7 @@
 pkgname=haskell-diff
 _hkgname=Diff
 _licensefile=LICENSE
-pkgver=0.3.0
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="O(ND) diff algorithm in haskell."
 url="http://hackage.haskell.org/package/${_hkgname}"
@@ -16,7 +17,7 @@ depends=('haskell-array')
 options=('strip')
 source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
 install="${pkgname}.install"
-sha256sums=('28f96d7f4bb0f88a13fa0b59e89cc8b93fa901c6cbe6ca82e84540cb2291ee4c')
+sha256sums=('7f032b9842228c2282a66d096e0c943b830138493fbbc5f176a7b2a66ec5388e')
 
 build() {
     cd ${srcdir}/${_hkgname}-${pkgver}
