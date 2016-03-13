@@ -7,20 +7,20 @@
 # this package will not touch the kernel or system libraries.  Only the SDK
 # files will be provided in '/opt'.
 
-_year=2015
-_release=R6
-_sdkver=16.4.2.1
+_year=2016
+_release="" # R1
+_sdkver=16.4.4
 pkgname=intel-media-sdk
-pkgver="$_year"."$_release"
-pkgrel=5
+pkgver="$_year" # ."$_release"
+pkgrel=1
 pkgdesc="Intel Media SDK (only SDK files, no kernel patches, no system modifications)"
 arch=('x86_64')
 url="https://software.intel.com/en-us/intel-media-server-studio"
 license=('custom' 'BSD')
 makedepends=('poppler')
-provides=('libmfx' 'libmfx.a' 'iHD_drv_video.so' 'libmfxhw64.so' 'libmfxsw64.so' 'libmfx_h264la_hw64.so' 'libmfx_vp8d_hw64.so' 'libmfx_vp8e_hw64.so')
-source=('http://registrationcenter-download.intel.com/akdlm/irc_nas/7719/MediaServerStudioEssentials2015R6.tar.gz')
-sha256sums=('c9f9dc6064a6f15c3275f475d795407f6cfaee621fe87221949ba1dbaeb34e93')
+provides=('libmfx' 'libmfx.a' 'iHD_drv_video.so' 'libmfxhw64.so' 'libmfxsw64.so' 'libmfx_h264la_hw64.so' 'libmfx_vp8d_hw64.so')
+source=('http://registrationcenter-download.intel.com/akdlm/irc_nas/8684/MediaServerStudioEssentials2016.tar.gz')
+sha256sums=('a6f8d44678a4ad2bcd385f948328aa1ac50fe4fd413a189864010da54b9de4c4')
 
 prepare() {
         cd "${srcdir}/MediaServerStudioEssentials${_year}${_release}"
