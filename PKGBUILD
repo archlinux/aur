@@ -4,15 +4,15 @@
 
 pkgname=ocaml-sqlite3
 _pkgname=sqlite3-ocaml
-pkgver=4.0.2
-pkgrel=2
+pkgver=4.0.3
+pkgrel=1
 pkgdesc="SQLite3 bindings for OCaml"
 arch=('i686' 'x86_64')
 url="https://github.com/mmottl/sqlite3-ocaml"
 license=('MIT')
 makedepends=('ocaml' 'ocaml-findlib' 'sqlite3')
 source=("https://github.com/mmottl/sqlite3-ocaml/releases/download/v$pkgver/sqlite3-ocaml-$pkgver.tar.gz")
-md5sums=('77d9d5c50c8982bf8adc34d12c6d6c54')
+md5sums=('e09802160820271c5016170dc1f5405e')
 options=('!makeflags' 'staticlibs')
 
 _pkgdir="$_pkgname-$pkgver"
