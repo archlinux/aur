@@ -15,7 +15,7 @@ source=("https://github.com/ellysh/mxu11x0.git"
         "dkms.conf"
         "mxu11x0.conf"  )
 sha256sums=('SKIP'
-            '5061f16520a52fd74e48ecfe2bcaf90abf260bed4c826fca8342fe12fba70571'
+            '04857821b110daaa39eedbbe031ff13cd1f18103cb751f6392eb032b1422832d'
             'a80410b68b562c731e80419eb77849766c0acaf4882d84dfe5d865221d3f3a76')
 
 build() {
