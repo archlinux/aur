@@ -1,0 +1,8 @@
+[Unit]
+Description=Anki Sync Server
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/paster serve --quiet /etc/webapps/anki-sync-server/production.ini
+User=anki-sync-server
+Group=anki-sync-server

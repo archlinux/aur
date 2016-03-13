@@ -1,0 +1,90 @@
+--- ankiserverctl.py.orig	2016-03-13 20:18:43.119078359 +0100
++++ ankiserverctl.py	2016-03-13 20:20:44.351755216 +0100
+@@ -1,68 +1,25 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ import os
+ import sys
+-import signal
+-import subprocess
+ import binascii
+ import getpass
+ import hashlib
+ import sqlite3
+ 
+-SERVERCONFIG = "production.ini"
+-AUTHDBPATH = "auth.db"
+-PIDPATH = "/tmp/ankiserver.pid"
+-COLLECTIONPATH = "collections/"
++SERVERCONFIG = "/etc/anki-sync-server/production.ini"
++AUTHDBPATH = "/var/lib/anki-sync-server/auth.db"
++COLLECTIONPATH = "/var/lib/anki-sync-server/collections/"
+ 
+ def usage():
+     print "usage: "+sys.argv[0]+" <command> [<args>]"
+     print
+     print "Commands:"
+-    print "  start [configfile] - start the server"
+-    print "  debug [configfile] - start the server in debug mode"
+-    print "  stop               - stop the server"
+     print "  adduser <username> - add a new user"
+     print "  deluser <username> - delete a user"
+     print "  lsuser             - list users"
+     print "  passwd <username>  - change password of a user"
+ 
+-def startsrv(configpath, debug):
+-    if not configpath:
+-        configpath = SERVERCONFIG
+-
+-    # We change to the directory containing the config file
+-    # so that all the paths will be relative to it.
+-    configdir = os.path.dirname(configpath)
+-    if configdir != '':
+-        os.chdir(configdir)
+-    configpath = os.path.basename(configpath)
+-
+-    if debug:
+-        # Start it in the foreground and wait for it to complete.
+-        subprocess.call( ["paster", "serve", configpath], shell=False)
+-        return
+-
+-    devnull = open(os.devnull, "w")
+-    pid = subprocess.Popen( ["paster", "serve", configpath],
+-                            stdout=devnull,
+-                            stderr=devnull).pid
+-
+-    with open(PIDPATH, "w") as pidfile:
+-        pidfile.write(str(pid))
+-
+-def stopsrv():
+-    if os.path.isfile(PIDPATH):
+-        try:
+-            with open(PIDPATH) as pidfile:
+-                pid = int(pidfile.read())
+-
+-                os.kill(pid, signal.SIGKILL)
+-                os.remove(PIDPATH)
+-        except Exception, error:
+-            print >>sys.stderr, sys.argv[0]+": Failed to stop server: "+error.message
+-    else:
+-        print >>sys.stderr, sys.argv[0]+": The server is not running"
+-
+ def adduser(username):
+     if username:
+         print "Enter password for "+username+": "
+@@ -145,13 +102,7 @@
+         if argc < 3:
+             sys.argv.append(None)
+ 
+-        if sys.argv[1] == "start":
+-            startsrv(sys.argv[2], False)
+-        elif sys.argv[1] == "debug":
+-            startsrv(sys.argv[2], True)
+-        elif sys.argv[1] == "stop":
+-            stopsrv()
+-        elif sys.argv[1] == "adduser":
++        if sys.argv[1] == "adduser":
+             adduser(sys.argv[2])
+         elif sys.argv[1] == "deluser":
+             deluser(sys.argv[2])
