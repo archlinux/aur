@@ -4,19 +4,17 @@ pkgname=firefox-nightly-ru
 pkgdesc='Web browser from mozilla.org, nightly build, russian version'
 url='http://nightly.mozilla.org/'
 pkgver=48.0a1
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 _filename="firefox-${pkgver}.ru.linux-${CARCH}"
 _baseurl="https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n"
 _md5sum="$(curl -vs "${_baseurl}/${_filename}.checksums" 2>&1 | grep bz | grep md5 | cut -d " " -f1)"
 source=('firefox-nightly.desktop' 
-        'firefox-nightly-safe.desktop' 
         'firefox-nightly-ru.install' 
         "${_baseurl}/${_filename}.tar.bz2")
-md5sums=('39ee4860ee7598e3d85bdaa9e60f0c15' 
-         '5996fd382818b6f1d617148d30aab237' 
-         '04793335a2ba7d17d1bd92085461e77e' 
+md5sums=('fb1cd230fed616b263b46f49c3c17f0c'
+         '04793335a2ba7d17d1bd92085461e77e'
          "${_md5sum}")
 install=${pkgname}.install
 depends=('alsa-lib' 'libxt' 'libnotify' 'mime-types' 'nss' 'gtk2' 'gtk3' 
