@@ -116,13 +116,13 @@ post_install() {
     cozy-monitor start proxy
 
  
-	CURRENT_BACKGROUND=`/usr/bin/cozy_management get_cozy_param background`
-	if [ "$CURRENT_BACKGROUND" != "None" ]; then
-		echo "Cozy already configured with a background: $CURRENT_BACKGROUND"
-	else
-		echo "Configure Cozy with default background"
-		curl -X POST http://localhost:9103/api/instance -H "Content-Type: application/json" -d '{"background":"background-07"}'
-	fi
+    CURRENT_BACKGROUND=`/usr/bin/cozy_management get_cozy_param background`
+    if [ "$CURRENT_BACKGROUND" != "None" ]; then
+        echo "Cozy already configured with a background: $CURRENT_BACKGROUND"
+    else
+        echo "Configure Cozy with default background"
+        curl -X POST http://localhost:9103/api/instance -H "Content-Type: application/json" -d '{"background":"background-07"}'
+    fi
 
 
     msg "Installing default apps"
