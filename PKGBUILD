@@ -2,14 +2,14 @@
 
 pkgname=modules-load-openrc
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 modules_load_git_ver=51490201120cdc6e78373228e5da67505e47096c
 pkgdesc="systemd module loading compatibility script for OpenRC"
 arch=('any')
 license=('GPL')
 groups=('openrc')
 url="https://bitbucket.com/aadityabagga/openrc-systemdcompat"
-depends=('bash' 'openrc-core')
+depends=('bash' 'openrc')
 source=("https://sourceforge.net/projects/mefiles/files/Manjaro/init.d/modules_load-0.2"
 	"https://bitbucket.org/aadityabagga/openrc-systemdcompat/raw/$modules_load_git_ver/modules-load.sh")
 sha1sums=('760ad18a6461db1457b096768f92997c5d7d112a'
