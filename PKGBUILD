@@ -1,5 +1,5 @@
 # Maintainer: Brendan Abolivier <brendan@cozycloud.cc>
-pkgname=cozy-standalone
+pkgname=cozy
 pkgver=2.0
 pkgrel=1
 epoch=
