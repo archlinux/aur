@@ -17,7 +17,7 @@ pkgbase = linux-rpi3-default-git
 	source = cmdline.txt
 	source = config.overrides
 	md5sums = SKIP
-	md5sums = 09506f9d6c56d174d59a5e760145ac76
+	md5sums = 86d3a60e6da55ee537a95d28e4183724
 	md5sums = 0244ab7cb2e385a8efe9a7fba9bfcb48
 	md5sums = 52d6ecfbfbd617c05324d0e6cd2d7d18
 
