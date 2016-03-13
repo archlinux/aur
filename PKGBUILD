@@ -4,7 +4,7 @@
 
 pkgname=xkb-qwerty-fr
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="French qwerty keymap - provides a keymap for french users of qwerty keyboard. All French characters are directly accessible with AltGr and smartly mapped."
 arch=('any')
 url="http://marin.jb.free.fr/qwerty-fr/"
