@@ -1,12 +1,12 @@
 # Maintainer: Benjamin Chrétien <chretien at lirmm dot fr>
 _name=tensorflow
 pkgname=python2-tensorflow-cuda
-pkgver=0.5.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Open source software library for numerical computation using data flow graphs"
 url="http://tensorflow.org"
 # TODO: add missing dependencies
-depends=('python2' 'python2-numpy' 'python2-protobuf3' 'cuda-7.0' 'cudnn')
+depends=('python2' 'python2-numpy' 'python2-protobuf3' 'cuda' 'cudnn')
 makedepends=('python2' 'python2-pip')
 license=('Apache')
 replace=('python2-tensorflow')
@@ -32,7 +32,4 @@ package() {
     --install-option="--install-data=${pkgdir}/var/lib/${_name}" \
     --install-option="--root=${pkgdir}" \
     ${srcdir}/${_filename}
-
-  # FIXME: solve this in the pip command...
-  rm -r "${pkgdir}/usr/lib/python2.7/site-packages/google"
 }
