@@ -46,7 +46,7 @@ build(){
 		--prefix=/usr
  
 	cd ../..
-	qmake-qt4 CONFIG+="release with_ext" MEGA.pro
+	qmake-qt4 CONFIG+="release" MEGA.pro
 	lrelease-qt4 MEGASync/MEGASync.pro
 	make
 }
