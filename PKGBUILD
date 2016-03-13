@@ -4,8 +4,8 @@
 
 pkgname=light-locker-consolekit
 _pkgname=light-locker
-pkgver=1.6.0
-pkgrel=1.4
+pkgver=1.7.0
+pkgrel=1
 pkgdesc='A simple session locker, with consolekit support'
 arch=('i686' 'x86_64')
 url='https://github.com/the-cavalry/light-locker'
@@ -16,7 +16,7 @@ conflicts=('light-locker' 'light-locker-upower')
 provides=('light-locker')
 install='light-locker.install'
 source=("https://github.com/the-cavalry/light-locker/releases/download/v${pkgver}/light-locker-${pkgver}.tar.bz2")
-sha256sums=('63e0cbcc7ceb8ad695b4bbe7eb9ba5fee32f47790ccde048748d8a47edd32ad0')
+sha256sums=('938baae14576e91b1fa0af963941bae6ef8d141bd83b513ff02256d8b6e79e29')
 
 build () {
   cd light-locker-${pkgver}
