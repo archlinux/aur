@@ -1,4 +1,5 @@
-# Maintainer: cantabile <cantabile dot desu at gmail dot com>
+# Maintainer: Niluge_KiWi <kiwiiii@gmail.com>
+# Contributor: cantabile <cantabile dot desu at gmail dot com>
 # created by cantabile <cantabile dot desu at gmail dot com>
 
 pkgname=xkb-qwerty-fr
