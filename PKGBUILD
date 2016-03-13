@@ -1,5 +1,5 @@
 pkgname=mingw-w64-hdf5
-pkgver=1.8.16
+pkgver=1.8.15_patch1
 pkgrel=1
 arch=('any')
 pkgdesc="General purpose library and file format for storing scientific data (mingw-w64)"
@@ -8,8 +8,8 @@ license=('custom')
 depends=('mingw-w64-crt' 'mingw-w64-zlib')
 makedepends=('mingw-w64-cmake' 'wine')
 options=('!strip' '!buildflags' 'staticlibs')
-source=("https://www.hdfgroup.org/ftp/HDF5/releases/hdf5-${pkgver}/src/hdf5-${pkgver}.tar.bz2")
-sha1sums=('a7b631778cb289edec670f665d2c3265983a0d53')
+source=("https://www.hdfgroup.org/ftp/HDF5/releases/hdf5-${pkgver/_/-}/src/hdf5-${pkgver/_/-}.tar.bz2")
+sha1sums=('82ed248e5d0293bc1dba4c13c9b2880a26643ee0')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -29,7 +29,6 @@ build() {
     mkdir -p build-${_arch}-static && pushd build-${_arch}-static
     ${_arch}-cmake \
       -DCMAKE_BUILD_TYPE=Release \
-      -DBUILD_SHARED_LIBS=OFF \
       -DBUILD_TESTING=OFF \
       -DHDF5_BUILD_TOOLS=OFF \
       -DHDF5_BUILD_EXAMPLES=OFF \
@@ -42,6 +41,7 @@ build() {
       -DBUILD_TESTING=OFF \
       -DHDF5_BUILD_TOOLS=OFF \
       -DHDF5_BUILD_EXAMPLES=OFF \
+      -DBUILD_SHARED_LIBS=ON \
       ..
     make
     popd
@@ -54,7 +54,7 @@ package() {
     make DESTDIR="${pkgdir}" install
     cd "$srcdir/hdf5-${pkgver/_/-}/build-${_arch}"
     make DESTDIR="${pkgdir}" install
-    rm "$pkgdir"/usr/${_arch}/*.txt
+    rm "$pkgdir"/usr/${_arch}/{COPYING,*.txt}
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
