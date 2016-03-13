@@ -1,0 +1,13 @@
+post_install() {
+  cat <<EOF
+*************************************************
+Twelf Emacs Integration
+*************************************************
+Add
+
+(setq twelf-root "/opt/twelf/")
+(load (concat twelf-root "emacs/twelf-init.el"))
+
+to your .emacs file
+EOF
+}
