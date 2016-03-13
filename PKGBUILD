@@ -13,6 +13,7 @@ groups=('darling-git')
 depends=('darling-mach-git' 'xz' 'fuse' 'libxml2' 'icu' 'openssl' 'lbzip2' 'zlib' 'libunwind' 'curl' 'systemd' 'libffi' 'bzip2' 'libxslt')
 depends_x86_64=('lib32-systemd' 'lib32-libffi' 'lib32-bzip2' 'lib32-libxslt')
 makedepends=('git' 'cmake' 'clang' 'bison' 'flex')
+makedepends_x86_64=('gcc-multilib')
 source=('git+https://github.com/darlinghq/darling.git')
 md5sums=('SKIP')
 
