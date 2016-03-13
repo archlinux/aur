@@ -1,0 +1,1 @@
+KERNEL=="lp[0-9]", SYMLINK+="%k", GROUP="lp"
