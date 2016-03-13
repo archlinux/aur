@@ -129,11 +129,11 @@
 #gpu_mem=64
 lcd_rotate=2
 
-mask_gpu_interrupt0=0x400   # VPU shouldn't handle V3D interrupts
-avoid_warnings=2            # VPU shouldn't smash our display setup.
+#mask_gpu_interrupt0=0x400   # VPU shouldn't handle V3D interrupts
+#avoid_warnings=2            # VPU shouldn't smash our display setup.
 
-dtoverlay=vc4-kms-v3d
-#dtoverlay=rpi-ft5406
+#dtoverlay=vc4-kms-v3d
+dtoverlay=rpi-ft5406
 
 #disable_overscan=1
-#dtoverlay=rpi-backlight
+dtoverlay=rpi-backlight
