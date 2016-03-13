@@ -3,21 +3,21 @@
 
 pkgname=quake3-rally
 pkgver=0.0.0.3
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A car driving and car combat mod for Quake III Arena/OpenArena"
 arch=('any')
-url="http://www.moddb.com/mods/quake-3-rally"
+url="https://sourceforge.net/projects/q3rallysa/"
 license=('GPL2')
 depends=('quake3')
-source=("http://media1.gamefront.com/moddb/2014/11/25/q3rally_v0003.zip")
-sha256sums=('a8b1cb8fdbeee9a266166eb82b5d6bd30305f8e1bd4ffa5735091e5cae374c27')
+source=("https://downloads.sourceforge.net/project/q3rallysa/Pre-Alpha%20Releases/q3rally_v${pkgver//./}.zip")
+sha256sums=('99b52baef5bd48c840eefbfddc17e8d7fba102689045feb8aaa92c6b57a8409d')
 
 package() {
   cd "Q3Rally"
 
   # Remove unneeded files
-  rm baseq3r/*.dll
+  rm baseq3r/*.{dll,so}
 
   # Copy mod files
   mkdir -p "${pkgdir}/opt/quake3"
