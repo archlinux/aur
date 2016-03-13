@@ -4,14 +4,14 @@
 pkgname=python-ruamel.yaml
 _pkgname=ruamel.yaml
 pkgver=0.10.12
-pkgrel=2
+pkgrel=3
 pkgdesc="YAML parser/emitter that supports roundtrip preservation of comments, seq/map flow style, and map key order"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/ruamel/yaml"
 license=('MIT')
 groups=('devel')
 depends=('python')
-makedepends=()
+makedepends=('python-pip')
 provides=()
 conflicts=()
 replaces=()
