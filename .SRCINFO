@@ -1,0 +1,13 @@
+pkgbase = vim-apprentice
+	pkgdesc = A dark, low-contrast colorscheme for Vim based on Sorcerer by Jeet Sukumaran
+	pkgver = 1.9
+	pkgrel = 1
+	url = https://github.com/romainl/Apprentice
+	arch = any
+	license = MIT
+	depends = vim
+	source = https://github.com/romainl/Apprentice/archive/v1.9.tar.gz
+	md5sums = 5cfaa954ea227a0fc4acd8aeaf10d94f
+
+pkgname = vim-apprentice
+
