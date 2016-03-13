@@ -6,8 +6,8 @@ pkgbase=gtk3-ubuntu-multilib
 pkgname=({lib32-,}gtk3-ubuntu-multilib)
 pkgver=3.18.6
 _debrel=1ubuntu1
-pkgrel=2
-pkgdesc="GObject-based multi-platform toolkit (v3) from Ubuntu"
+pkgrel=3
+pkgdesc="GObject-based multi-platform toolkit (v3) with Canonical patchset (multarch)"
 depends=(adwaita-icon-theme gtk-update-icon-cache shared-mime-info)
 arch=(i686 x86_64)
 url="https://launchpad.net/ubuntu/+source/gtk+3.0/"
@@ -76,11 +76,11 @@ build() {
 }
 
 package_gtk3-ubuntu-multilib() {
-  depends+=(atk cairo glib2 pango colord at-spi2-atk wayland 
+  depends+=(glib2 atk cairo pango colord at-spi2-atk wayland 
 lib{cups,x{cursor,inerama,randr,i,composite,damage,kbcommon,11,ext}})
   makedepends=(gobject-introspection python2)
   provides=(gtk{3{,-ubuntu},-update-icon-cache}=${pkgver})
-  conflicts=('gtk{3{,-ubuntu},-update-icon-cache}')
+  conflicts=(gtk{3{,-ubuntu},-update-icon-cache})
   install=gtk3-ubuntu.install
   cd "gtk+-$pkgver/build-x86_64"
   make DESTDIR="$pkgdir" install
@@ -90,10 +90,10 @@ lib{cups,x{cursor,inerama,randr,i,composite,damage,kbcommon,11,ext}})
 package_lib32-gtk3-ubuntu-multilib() {
   pkgdesc+=" (32bit)"
   
-depends+=(lib32-{glib2,atk,cairo,pango,colord,at-spi2-atk,wayland,lib{cups,xcursor,xinerama,xrandr,xi,xcomposite,xdamage,xkbcommon,x11,xext}})
+depends+=(lib32-{glib2,atk,cairo,pango,colord,at-spi2-atk,wayland,lib{cups,x{cursor,inerama,randr,i,composite,damage,kbcommon,11,ext}}})
   makedepends=(lib32-{gobject-introspection,python2} 'gcc-multilib')
   provides=(lib32-gtk{3{,-ubuntu},-update-icon-cache}=${pkgver})
-  conflicts=('lib32-gtk{3{,-ubuntu},-update-icon-cache}')
+  conflicts=(lib32-gtk{3{,-ubuntu},-update-icon-cache})
   install=lib32-gtk3-ubuntu.install
   cd "gtk+-$pkgver/build-i686"
   make DESTDIR="$pkgdir" install
