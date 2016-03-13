@@ -1,5 +1,5 @@
 # Maintainer: Forest Crossman <cyrozap at gmail dot com>
-# Maintainer: Orlando Arias <orlandoarias at gmail <dot> com>
+# Contributor: Orlando Arias <orlandoarias at gmail <dot> com>
 
 # Based on msp430-elf-gcc
 
