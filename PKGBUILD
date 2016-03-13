@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="https://mega.nz/#sync"
 license=('custom:MEGA LIMITED CODE REVIEW LICENCE')
 conflicts=('megatools')
-depends=('openssl' 'c-ares' 'libgcrypt' 'crypto++' 'qt4' 'libpng' 'qtchooser' 'sqlite')
+depends=('openssl' 'c-ares' 'libgcrypt' 'crypto++' 'qt4' 'libpng' 'qtchooser' 'sqlite' 'libuv')
 makedepends=('git')
 optdepends=('sni-qt: fix systray issue on KDE and LXQt')
 source=("git+https://github.com/meganz/MEGAsync.git#commit=fd9cafb46ca9287ae2871aca24ea336a99fc9363"
