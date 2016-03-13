@@ -12,7 +12,7 @@ arch=("i686" "x86_64" "armv7l" "armv7h")
 url="https://www.arangodb.com/"
 license=('APACHE')
 depends=("glibc" "gcc-libs" "openssl" "readline" "systemd")
-makedepends=("python2 go")
+makedepends=("python go")
 provides=("arangodb=$pkgver")
 conflicts=("arangodb-latest" "arangodb-git")
 backup=('etc/arangodb/arangob.conf'
@@ -31,8 +31,6 @@ sha256sums=('7517c1ab7df5e5ef95c7447fd380a72d02f5f21f9250172476035fa7ae5f3fde'
             'ccde74e481761e2879845a0c9fbef601f4cdd73465d425549d3ad6714e99443d')
 
 build() {
-  msg2 "Symlinking 'python' to python2."
-  ln -s -f /usr/bin/python2 python
   export PATH="`pwd`:$PATH"
   export CFLAGS="-g -O2"
   export CXXFLAGS="-g -O2"
