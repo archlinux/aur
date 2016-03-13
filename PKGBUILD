@@ -6,7 +6,7 @@
 
 pkgname=mingw-w64-angleproject
 pkgver=2.1.r5637.0e49e6b
-pkgrel=1
+pkgrel=2
 pkgdesc='ANGLE project (mingw-w64)'
 arch=('any')
 url='https://chromium.googlesource.com/angle/angle/+/master/README.md'
@@ -93,6 +93,13 @@ build() {
     gyp -D OS=win -D TARGET=$target --format make -D MSVS_VERSION="" --depth . -I ../build/common.gypi ../src/angle.gyp -D angle_gl_library_type=static_library
     make -j1 V=1
 
+    # the static libs produced by the build script are just thin archives so they don't contain any objects themselves
+    # -> repackage them to actually contain the object files
+    for lib in out/Debug/src/lib*.a; do
+      ${_arch}-ar -t $lib | xargs ${_arch}-ar rvs $lib.new && mv $lib.new $lib;
+      ${_arch}-ranlib $lib
+    done
+
     popd
   done
 }
@@ -107,7 +114,6 @@ package() {
     cp -Rv ../include/* "${pkgdir}/usr/${_arch}/include/"
 
     ${_arch}-strip --strip-unneeded "${pkgdir}/usr/${_arch}/bin/"*.dll
-    ${_arch}-strip -g "${pkgdir}/usr/${_arch}/lib/"*.dll.a
-    # static libs seem to be thin archives which mustn't be stripped
+    ${_arch}-strip -g "${pkgdir}/usr/${_arch}/lib/"*.a
   done
 }
