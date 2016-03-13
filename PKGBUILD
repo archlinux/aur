@@ -1,8 +1,8 @@
 # Maintainer: Bjarno Oeyen <aur _AT_ bjarno _DOT_ be>
 
 pkgname=game-jolt-client
-pkgrel=2
-pkgver=0.3.0
+pkgrel=1
+pkgver=0.3.2
 pkgdesc="Play games. Make games. Stay indie."
 url="http://gamejolt.com/client"
 provides=('game-jolt-client')
@@ -12,8 +12,8 @@ depends=('gtk2' 'alsa-lib' 'libnotify' 'gconf' 'nss' 'libxtst' 'nodejs')
 makedepends=()
 backup=()
 install=''
-source=("https://n3b6p5n5.ssl.hwcdn.net/data/client/releases/v0.3.0/game-jolt-client.tar.gz")
-md5sums=('c45e565fd83aa49cdfeecd74649c07b6')
+source=("https://n3b6p5n5.ssl.hwcdn.net/data/client/releases/v0.3.2/game-jolt-client.tar.gz")
+md5sums=('2768d72a2b82f38916afce0496414886')
 options=(!strip)
 
 package() {
