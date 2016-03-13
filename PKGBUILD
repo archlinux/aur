@@ -8,8 +8,8 @@ pkgdesc="CryFS encrypts your files, so you can safely store them anywhere"
 arch=('i686' 'x86_64')
 url="https://www.cryfs.org"
 license=('LGPL')
-depends=('fuse' 'python2' 'openssl' 'crypto++')
-makedepends=('git' 'cmake' 'boost')
+depends=('fuse' 'openssl' 'crypto++')
+makedepends=('git' 'cmake' 'boost' 'python2')
 provides=('cryfs')
 conflicts=('cryfs')
 
