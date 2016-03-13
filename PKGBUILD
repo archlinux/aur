@@ -12,6 +12,7 @@ depends=('xkeyboard-config')
 makedepends=('binutils')
 install=${pkgname}.install
 source=("http://marin.jb.free.fr/qwerty-fr/${pkgname}_${pkgver}_all.deb")
+md5sums=('cefc7f02f2a23633d1160c32caa6c132')
 
 build() {
   cd "$srcdir"
@@ -32,5 +33,3 @@ package() {
 
   install -D -m 644 usr/share/man/man7/qwerty-fr.7.gz ${pkgdir}/usr/share/man/man7/qwerty-fr.7.gz
 }
-
-md5sums=('cefc7f02f2a23633d1160c32caa6c132')
