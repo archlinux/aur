@@ -1,6 +1,7 @@
 # Maintainer: Steven Cook <visage@deadhexagon.com>
+# Contributor: Adam Eberlin <ae@adameberlin.com>
 pkgname=anope
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="A set of IRC Services designed for flexibility and ease of use"
 arch=('i686' 'x86_64')
@@ -8,18 +9,18 @@ url="http://www.anope.org/"
 license=('GPL')
 makedepends=('cmake')
 optdepends=(
-    'mariadb: MySQL database support'
-    'sqlite: SQLite database support'
+    'mariadb: MySQL database backend support'
+    'sqlite: SQLite database backend support'
     'cyrus-sasl: SASL authentication support'
 )
 install="anope.install"
 source=(
-    "http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-stable/Anope%20${pkgver}/${pkgname}-${pkgver}-source.tar.gz"
+    "https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}-source.tar.gz"
     "anope.install"
     "anope.service"
     "anope.tmpfiles"
 )
-sha1sums=('ae365d90edbc4cecbfa64cc79f39dca2db0e851c'
+sha1sums=('dca45d491a04bff18359f0973e89e181c67c6640'
           '6cc27cc78fdbac84efbc7e40986fa9412d5f7e9f'
           '9ffa7e103e05cc7fee52e13794ecf7172f3e3f42'
           '7d38218fef729433ca32b81514264beea9981cf8')
@@ -41,8 +42,7 @@ EXTRA_CONFIG_ARGS=""
 EOF
 
     ./Config -nointro -quick
-    cd build
-    make
+    cd build && make
 }
 
 package() {
