@@ -21,7 +21,7 @@ source=("https://downloads.sourceforge.net/project/bluemusic/blue/2.5.x/blue_${p
 sha256sums=('f5af74275e4d6f7cc14230feb010d836691ef6576aee0c7f519c50121fcd04f0'
             '06dcc0dbade0b9c2eb904815aefa86d32e8e21de47fd7cd8873f139c1fb24fe6'
             '60240d02dd3f25b9df684efaf93a5fd05e520b5f46e94f24b58de60604dbae36'
-            '1c1bc8b197c31416aa2efb7d6c7af1fb43b0a0fb34b883d6fb92a53da8683114')
+            '14b104d7cd229923186ab0ec8b11d481d758e7a7ed756be0ae5defae179d271e')
 options=(!strip)
 install=blue.install
 
