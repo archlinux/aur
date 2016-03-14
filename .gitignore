@@ -4,3 +4,6 @@ tvheadend
 *.log
 pkg
 src
+tvheadend-git
+dvb-scan-tables
+
