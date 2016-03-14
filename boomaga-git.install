@@ -1,16 +1,24 @@
-post_install() {
-    /usr/bin/installPrinter.sh --force
+_check_and_install_printer() {
+    lpstat -v boomaga &> /dev/null
+    [ $? -ne 0 ] && /usr/bin/installPrinter.sh
+}
+
+_update_resources() {
     update-desktop-database -q
     update-mime-database usr/share/mime
     xdg-icon-resource forceupdate
+}
+
+post_install() {
+    _check_and_install_printer $1
+    _update_resources $1
 }
 
 post_upgrade() {
-  post_install $1
+    _check_and_install_printer $1
+    _update_resources $1
 }
 
 post_remove() {
-    update-desktop-database -q
-    update-mime-database usr/share/mime
-    xdg-icon-resource forceupdate
+    _update_resources $1
 }
