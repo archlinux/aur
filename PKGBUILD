@@ -1,7 +1,7 @@
 # Maintainer: David Phillips <dbphillipsnz gmail>
 
 pkgname=farbfeld
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="conversion tools for the suckless image format"
 url="http://tools.suckless.org/farbfeld/"
@@ -11,9 +11,8 @@ depends=('libjpeg-turbo' 'libpng')
 makedepends=()
 provides=()
 conflicts=(${pkgname}-git)
-epoch=1
 source=(http://git.suckless.org/${pkgname}/snapshot/${pkgname}-${pkgver}.tar.bz2)
-sha512sums=('9f39a1503b6e531b0f2dafa40c56fb3e7906cbca988319aac8435b1dc48ca7f1dbcf4e1c3386ac76b0fed6b5100e453aa42c16e69bd71e1d70f58cee4a9cab41')
+sha512sums=('a76dc5730ec108c711e0f45955e3db183a0da8c1a3c1a53396a9e5fea91292e4f78dd3681f96cc0110025fc24320a564f3d52aef68abbb29fec691d57023564c')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
