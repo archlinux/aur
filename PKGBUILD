@@ -1,4 +1,4 @@
-# Maintainer: Florian Dejonckheere <florian@floriandejonckheere.be>
+# Maintainer: Florian Dejonckheere <florian at floriandejonckheere dot be>
 # Contributor: Anton Larionov <diffident dot cat at gmail dot com>
 # Contributor: Diego <cdprincipe@at@gmail@dot@com>
 # Contributor: Scott Horowitz <stonecrest[at]gmail[dot]com>
