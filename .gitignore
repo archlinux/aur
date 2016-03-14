@@ -6,4 +6,5 @@ src
 *.log
 tvheadend
 tvheadend-git
+dvb-scan-tables
 
