@@ -8,6 +8,7 @@ pkgbase = osvr-leap-motion-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = osvr-core-git
+	makedepends = leap-motion-sdk
 	source = osvr-leap-motion::git+https://github.com/feilen/OSVR-Leap-Motion.git
 	md5sums = SKIP
 
