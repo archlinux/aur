@@ -1,4 +1,4 @@
-# Maintainer: Florian Dejonckheere <florian@floriandejonckheere.be>
+# Maintainer: Florian Dejonckheere <florian at floriandejonckheere dot be>
 # Contributor: Robert Ransom <rransom.8774@gmail.com>
 # Contributor: Corrado Primier <bardo@aur.archlinux.org>
 # Contributor: William Rea <sillywilly@gmail.com>
