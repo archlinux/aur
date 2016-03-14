@@ -3,7 +3,7 @@
 _pkgver_minor=
 _python2_ver_major=$(pacman -Qi python2|gawk '$1~/Version/{split($3,v,".");print v[1] "." v[2]}')
 pkgname=mesos
-pkgver=0.27.1
+pkgver=0.27.2
 pkgrel=1
 pkgdesc="A cluster manager that simplifies the complexity of running applications on a shared pool of servers"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ source=("http://www.apache.org/dist/$pkgname/$pkgver/$pkgname-${pkgver}.tar.gz"
 
 # official signature file:
 #  "http://www.apache.org/dist/$pkgname/$pkgver/$pkgname-${pkgver}.tar.gz.asc"
-md5sums=('9504a8ec96631313a542bc7e75f19a18'
+md5sums=('b897e19e3ac437107cc331321324281d'
          'f313fac94525bf770bafa2392c8147c6'
          '69df716316170056ff2a54c5299d8cb4'
          '1447c9572f4bb8fbc22d016e4483950a')
@@ -45,8 +45,8 @@ build() {
   cd "$srcdir/$pkgname-$pkgver${_pkgver_minor}"/build
   PYTHON_VERSION=${_python2_ver_major} \
   LIBS='-lprotobuf -lglog' \
-  CXXFLAGS='-Wno-error' \
   ../configure \
+   --enable-optimize \
    --prefix=/usr \
    --sysconfdir=/etc \
    --libexecdir=/usr/lib \
