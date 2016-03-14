@@ -1,0 +1,13 @@
+diff --git a/cups/backend/boomaga b/cups/backend/boomaga
+index 23b5d43..a0cb9db 100755
+--- a/cups/backend/boomaga
++++ b/cups/backend/boomaga
+@@ -28,7 +28,7 @@ inputFile=$6
+ # in parameter expansion) to construct valid cmd string.
+ title="${title//\"/\\\\\\\"}"
+ 
+-cmd="@NONGUI_DIR@/boomagabackend  ${jobID} \\\"${title}\\\" ${count} \\\"${options}\\\""
++cmd="@NONGUI_DIR@/boomagabackend  ${jobID} \"${title}\" ${count} \"${options}\""
+ 
+ echo "DEBUG: [Boomaga] Start $cmd" >&2
+ 

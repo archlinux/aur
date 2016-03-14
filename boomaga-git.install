@@ -1,0 +1,16 @@
+post_install() {
+    /usr/bin/installPrinter.sh --force
+    update-desktop-database -q
+    update-mime-database usr/share/mime
+    xdg-icon-resource forceupdate
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+    update-desktop-database -q
+    update-mime-database usr/share/mime
+    xdg-icon-resource forceupdate
+}
