@@ -1,6 +1,6 @@
 # Maintainer: Roberto Catini <roberto.catini@gmail.com>
 pkgname=python-crank
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Generalized Object based Dispatch mechanism for use across frameworks."
 arch=('any')
