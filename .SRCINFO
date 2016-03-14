@@ -1,0 +1,17 @@
+pkgbase = nginx-mod-headers-more-git
+	pkgdesc = Nginx module for setting and clearing input and output headers
+	pkgver = 0.29.r8.gf5559ec
+	pkgrel = 1
+	url = https://github.com/openresty/headers-more-nginx-module
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = nginx-mainline=1.9.12
+	source = git://github.com/openresty/headers-more-nginx-module.git
+	source = http://nginx.org/download/nginx-1.9.12.tar.gz
+	md5sums = SKIP
+	md5sums = 0afe4a7e589a0de43b7b54aa055a4351
+
+pkgname = nginx-mod-headers-more-git
+
