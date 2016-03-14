@@ -2,7 +2,7 @@
 
 pkgname=terminix-git
 _pkgname=terminix
-pkgver=0.52.1.r0.23a14fa
+pkgver=0.53.0.r4.98d6c93
 pkgrel=1
 pkgdesc="A tiling terminal emulator based on GTK+ 3 (git master)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ install=$pkgname.install
 source=('git+https://github.com/gnunn1/terminix')
 md5sums=('SKIP')
 
-_gtkdver="3.2.2"
+_gtkdver="~master"
 
 pkgver() {
   cd "$_pkgname"
