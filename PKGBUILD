@@ -3,9 +3,9 @@
 
 pkgname=(linux-luca020400 linux-luca020400-headers linux-luca020400-docs)
 _kernelname=-luca020400
-_srcname=linux-4.4
-pkgver=4.4.5
-pkgrel=1
+_srcname=linux-4.5
+pkgver=4.5
+pkgrel=2
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -17,8 +17,8 @@ _bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/${_bfqkern}-$
 _stable_queue="http://git.kernel.org/cgit/linux/kernel/git/stable/stable-queue.git/plain"
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         'linux.install'
         'linux.preset'
         'config'
@@ -27,13 +27,11 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "0003-bfq.patch::${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqrel}-for.patch"
         'change-default-console-loglevel.patch'
         'enable_additional_cpu_optimizations_for_gcc.patch')
-sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
-            'SKIP'
-            'a570680ad5624eff0687c74d652158cbd9ec92fdd177ac5ff812988a24d54ab5'
+sha256sums=('a40defb401e01b37d6b8c8ad5c1bbab665be6ac6310cdeed59950c96b31a519c'
             'SKIP'
             'e1195de2d0bebc1fc81d8ad887f4b30376fe7b428e59a587e0544c0b34a80b84'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            '6cd3b25a64f8fcfbfd1a3444a671e571c491ca12db2d5e4374c815d9b825aaf9'
+            '7d832660a1b1f49ee6d5952e78fc225e27009d203b8444c909ee363ce929b09a'
             'd1cf14cc696b0f716454fe8eb9746383700889d5d22ad829611f0433cc77b4ce'
             'b17c3fb18c5b8c20a45a38198f293679ca6aef08d16f12cd816a5cfafac4b2c4'
             '69a21bc286a628128cfc4723558829cb6ff6c2d7c4dfd4468457898674187b25'
@@ -48,12 +46,12 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  patch -Np1 -i "${srcdir}/patch-${pkgver}"
+  #patch -Np1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
-  for path_queue in `curl ${_stable_queue}/queue-4.4/series`; do
+  for path_queue in `curl ${_stable_queue}/queue-${_srcname}/series`; do
     if [[ $path_queue == *".patch"* ]]; then
         curl "${_stable_queue}/queue-4.4/$path_queue" | patch -Np1
     fi
