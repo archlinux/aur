@@ -11,7 +11,7 @@ license=('MIT')
 depends=('xcb-util-image' 'xcb-util-keysyms' 'pam' 'libev' 'libx11' 'cairo')
 provides=('i3lock')
 conflicts=('i3lock')
-makedepends=('git')
+makedepends=('git' 'libxkbcommon-x11')
 source=("git+https://github.com/Arcaena/$_gitname.git")
 md5sums=('SKIP')
 
