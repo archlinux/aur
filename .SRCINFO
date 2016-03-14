@@ -7,7 +7,7 @@ pkgbase = pellet
 	url = http://clarkparsia.com/pellet
 	arch = any
 	license = AGPL
-	makedepends = git
+	makedepends = git maven
 	provides = pellet
 	conflicts = pellet
 	source = pellet::git+https://github.com/Complexible/pellet.git#commit=bb99c19f9b9abf4e2c9e65098ee3e4d624e14894
