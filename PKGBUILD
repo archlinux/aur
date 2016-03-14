@@ -2,7 +2,7 @@
 # Contributor: Egon Geerardyn <egon [dot] geerardyn [at] gmail [dot] com>
 # Contributor: Bill Durr <billyburly [at] gmail [dot] com>
 pkgname=crashplan
-pkgver=4.5.2
+pkgver=4.6.0
 pkgrel=1
 pkgdesc="An online/offsite backup solution"
 url="http://www.crashplan.com"
@@ -12,16 +12,14 @@ depends=('bash' 'java-runtime-headless')
 makedepends=('cpio')
 optdepents=('java-runtime - For Crashplan GUI'
             'gtk2 - For Crashplan GUI')
-backup=('opt/crashplan/bin/run.conf'
-	'opt/crashplan/conf/my.service.xml'
-	'opt/crashplan/conf/service.model')
+backup=('opt/crashplan/bin/run.conf')
 install=crashplan.install
 source=("http://download.crashplan.com/installs/linux/install/CrashPlan/CrashPlan_${pkgver}_Linux.tgz"
 	'https://raw.githubusercontent.com/pdemonaco/init/master/crashplan/crashplan'
 	'crashplan.service'
 	'install.vars'
 	'sysctl-crashplan.conf')
-sha256sums=('91dfa5993af83311007ec37a40b92865303d7d7313f33757532521000fa1d036'
+sha256sums=('8730b5333549c18329a8b3898b679d9ce0134d279b50c4020874b71ba2993f41'
             '259d38afa8fc34246ac0ecfeefc701d47501c552eb0ffcd1bd4b8e9a2751c3c8'
             'a2b4d4469847721f8e68970fb55a2c78655441e124ad8db151e047ff6a592416'
             'c6dc626a180671d6b01f46f22158857c3fa86cd3eec79e3388284a2ab2682617'
