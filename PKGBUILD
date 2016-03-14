@@ -1,6 +1,6 @@
 # Maintainer: Charles Duffy <charles@dyfis.net>
 pkgname=ns-exec-tools
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Lightweight, execline-style tools to build restricted Linux namespaces"
 arch=( any )
