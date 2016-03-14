@@ -1,13 +1,13 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 pkgname=mininim
 pkgver=0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="the Advanced Prince of Persia Engine, based on 1989 release"
 arch=('i686' 'x86_64')
 url="https://oitofelix.github.io/mininim/"
 license=('GPL3')
 depends=('allegro')
-makedepends=('gnulib')
+makedepends=('gnulib' 'help2man')
 source=(https://github.com/oitofelix/mininim/archive/v$pkgver.tar.gz)
 md5sums=('4c503c3250a4203b21f839b56885b8e2')
 
