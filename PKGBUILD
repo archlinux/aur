@@ -1,7 +1,7 @@
 # Contributor: ant32 <antreimer@gmail.com>
 
 pkgname=mingw-w64-curl
-pkgver=7.44.0
+pkgver=7.47.1
 pkgrel=1
 pkgdesc="An URL retrival utility and library (mingw-w64)"
 arch=('any')
@@ -16,7 +16,7 @@ depends=('mingw-w64-crt'
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!strip' '!buildflags')
 source=("$url/download/curl-$pkgver.tar.bz2")
-md5sums=('6b952ca00e5473b16a11f05f06aa8dae')
+md5sums=('9ea3123449439bbd960cd25cf98796fb')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
