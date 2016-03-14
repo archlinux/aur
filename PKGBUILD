@@ -2,7 +2,7 @@
 # Maintainer: Daniel Milde <daniel / milde.cz>
 
 pkgname=winbox
-pkgver=3.1
+pkgver=3.3
 pkgrel=1
 pkgdesc="Mikrotik RouterOS GUI Configurator (wine)"
 url="http://www.mikrotik.com"
@@ -17,10 +17,10 @@ source=("http://download2.mikrotik.com/routeros/winbox/${pkgver}/${pkgname}.exe"
         "${pkgname}.desktop"
         "${pkgname}.png"
         "${pkgname}")
-sha256sums=('3ebac0313215c4de1153ed67d1a525231f70999becc628d75a936e8f1545ad97'
-         'bd9e0f61fc1178be53e7c16cf1e558bc71a487daa45d718c3eb69c2a95cb7115'
-         '603eaed8dfb5b6146712c5cee801e6d77f1f45d6bd5c4b545f9f84193834d380'
-         'e7d6a2ffc0eda07ac40db88d92629bf8b1e2fa9433f3b74b1eef3437c1d0f6c6')
+sha256sums=('836dd05ab4daf0b25e7a07b020faee9cd85edfcf310f6012f83eadb706586148'
+            'bd9e0f61fc1178be53e7c16cf1e558bc71a487daa45d718c3eb69c2a95cb7115'
+            '603eaed8dfb5b6146712c5cee801e6d77f1f45d6bd5c4b545f9f84193834d380'
+            'e7d6a2ffc0eda07ac40db88d92629bf8b1e2fa9433f3b74b1eef3437c1d0f6c6')
 
 package() {
   install -Dm755 "${srcdir}/${pkgname}.exe" "${pkgdir}/usr/share/${pkgname}/${pkgname}.exe"
