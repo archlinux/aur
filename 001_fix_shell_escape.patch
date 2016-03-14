@@ -1,0 +1,31 @@
+--- a/urwid_ui.py	2016-03-14 02:28:17.425313918 +0100
++++ b/urwid_ui.py	2016-03-14 02:29:22.807844809 +0100
+@@ -5,6 +5,7 @@
+ """
+ import subprocess
+ import shlex
++import pipes
+ import logging
+ logger = logging.getLogger(__name__)
+ 
+@@ -323,16 +324,16 @@
+ 
+         elif key in ["enter"]:
+             if self.selected_note:
+-                system(self.editor + ' ' + self.selected_note.abspath, self.loop)
++                system(self.editor + ' ' + pipes.quote(self.selected_note.abspath), self.loop)
+             else:
+                 if self.search_box.edit_text:
+                     try:
+                         note = self.notebook.add_new(self.search_box.edit_text)
+-                        system(self.editor + ' ' + note.abspath, self.loop)
++                        system(self.editor + ' ' + pipes.quote(note.abspath), self.loop)
+                     except notebook.NoteAlreadyExistsError:
+                         # Try to open the existing note instead.
+-                        system(self.editor + ' ' + self.search_box.edit_text +
+-                                self.notebook.extension,
++                        system(self.editor + ' ' + pipes.quote(self.search_box.edit_text +
++                                self.notebook.extension),
+                             self.loop)
+                     except notebook.InvalidNoteTitleError:
+                         # TODO: Display error message to user.
