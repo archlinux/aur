@@ -1,4 +1,4 @@
-# Contributor: Florian Dejonckheere <florian@floriandejonckheere.be>
+# Contributor: Florian Dejonckheere <florian at floriandejonckheere dot be>
 # Contributor: Murtuza Akhtari <inxsible at gmail dot com>
 
 pkgname=thinkalert
