@@ -1,6 +1,9 @@
 # Maintainer: Dan Ziemba <zman0900@gmail.com>
 # Contributor: Benjamin Hedrich <kiwisauce (a) pagenotfound (dot) de>
 
+# To enable hdhomerun, add 'libhdhomerun' to depends and '--enable-hdhomerun_client' to
+# the configure command in build().
+
 pkgname=tvheadend-git
 _gitname='tvheadend-git'
 pkgver=4.1.r1672.g3927788
@@ -29,7 +32,12 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_gitname}"
-    ./configure --prefix=/usr --mandir=/usr/share/man/man1 --python=python2 --release
+    ./configure --prefix=/usr --mandir=/usr/share/man/man1 --python=python2 --release \
+        --disable-libffmpeg_static --disable-libx264_static \
+        --disable-libx265_static --enable-libx265 \
+        --enable-vdpau --enable-nvenc \
+        --disable-libmfx_static --enable-libmfx \
+        --disable-hdhomerun_static 
     make
 }
 
