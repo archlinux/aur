@@ -33,7 +33,7 @@ prepare() {
 
 build() {
   cd $pkgname
-
+  export CFLAGS="$CFLAGS -Wno-error"
   ./autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib/$pkgname \
                --disable-schemas-compile
   make
