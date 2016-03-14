@@ -6,7 +6,7 @@
 
 pkgname=eigen3-hg
 _name=eigen3
-pkgver=3.2.90.r6545
+pkgver=3.2.92.r8463
 pkgver() {
   cd ${_name}
   _revision=$(hg identify -n)
@@ -31,7 +31,8 @@ build() {
   cd ${srcdir}/build
   cmake ../${_name} \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR="lib"
 }
 
 package() {
