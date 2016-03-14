@@ -2,7 +2,7 @@
 # Contributor: Justin Dray <justin@dray.be>
 pkgname="sonarr"
 pkgver="2.0.0.3953"
-pkgrel=1
+pkgrel=2
 pkgdesc="PVR for newsgroup users. Formerly known as NZBDrone"
 arch=(any)
 url="http://www.sonarr.tv"

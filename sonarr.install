@@ -18,8 +18,8 @@ post_install() {
             echo "A previous installation of nzbdrone has been detected. Copying previous configuration to Sonarr"
             cp -r /var/lib/nzbdrone/* /var/lib/sonarr
         fi
+        chown -R sonarr: /var/lib/sonarr
     fi
-    chown -R sonarr: /var/lib/sonarr
 }
 
 post_upgrade() {
