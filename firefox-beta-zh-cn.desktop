@@ -12,8 +12,6 @@ StartupNotify=false
 StartupWMClass=Firefox
 Actions=NewTab;NewWindow;NewPrivateWindow;
 
-Name[zh_CN]=firefox-beta-zh-cn
-
 [Desktop Action NewTab]
 Name=打开新标签页
 Exec=firefox-beta -new-tab about:newtab
