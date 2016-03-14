@@ -1,7 +1,7 @@
 pkgbase = zezenia
 	pkgdesc = Zezenia Online is an actively developed free-to-play 2D MMORPG.
 	pkgver = 570
-	pkgrel = 2
+	pkgrel = 3
 	url = http://zezeniaonline.com/
 	install = zezenia.install
 	arch = i686
