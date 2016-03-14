@@ -11,15 +11,14 @@ url="http://csvkit.readthedocs.org"
 license=('MIT')
 depends=(
     'python'
-    'python-xlrd>=0.9.4' # for csvkit and agate
-    'python-dateutil>=2.2'
-    'python-sqlalchemy>=0.9.3'
-    'python-openpyxl>=2.0.3' # for csvkit and agate
-    'python-six>=1.6.1' # for csvkit and agate
-    'python-isodate>=0.5.4' # for agate
-    'python-parsedatetime>=1.5' # for agate
-    'python-pytimeparse>=1.1.5' #for agate
-    'python-pip'
+    'python-xlrd' # >=0.9.4 for csvkit and agate
+    'python-dateutil' # >=2.2
+    'python-sqlalchemy' # >=0.9.3
+    'python-openpyxl' # >=2.0.3 for csvkit and agate
+    'python-six' # >=1.6.1 for csvkit and agate
+    'python-isodate' # >= 0.5.4 for agate
+    'python-parsedatetime' # >=1.5 for agate
+    'python-pytimeparse' # >= 1.1.5 for agate
 )
 makedepends=(
     'git'
