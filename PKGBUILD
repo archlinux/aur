@@ -1,13 +1,12 @@
 # Maintainer: Thibaud Hulin <thibaud.hulin.cl.atgmail.com>
 pkgname=visp
-_pkgname=ViSP
-pkgver=2.10.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A modular library for visual tracking and visual servoing"
 arch=('i686' 'x86_64')
 url="http://www.irisa.fr/lagadic/visp/"
 license=('GPL2' 'custom:ViSP Professional Edition License')
-depends=('libdmtx' 'opencv>=2.2.0' 'coin' 'gsl' 'lapack' 'zbar')
+depends=('libdmtx' 'opencv>=2.2.0' 'gsl' 'coin' 'lapack' 'zbar')
 makedepends=('cmake')
 optdepends=(
 	'xorg-server: used for the image display'
@@ -32,14 +31,16 @@ optdepends=(
 #	'lapack: provides routines for solving systems of simultaneous linear equations'
 #	'opencv: provides image converters, a renderer, a feature point tracker and point matching classes'
 #	'libdmtx: used to read Data Matrix bar codes'
-source=("http://gforge.inria.fr/frs/download.php/latestfile/475/${_pkgname}-$pkgver.tar.gz")
-md5sums=('85b5015a192d20fa0db3a70d620bb0d3')
+source=("http://gforge.inria.fr/frs/download.php/latestfile/475/${pkgname}-$pkgver.tar.gz")
+md5sums=('0d27f8d8dcafb40064cf421b2f788c5d')
 
 build() {
-	cd "${srcdir}/${_pkgname}-$pkgver"
+	cd "${srcdir}/${pkgname}-$pkgver"
 	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr \
 		-DCMAKE_INSTALL_LIBDIR="lib"\
-		-DUSE_ZBAR=ON \
+		-DBUILD_EXAMPLES=OFF \
+		-DBUILD_TUTORIALS=OFF \
+		-DBUILD_TESTS=OFF \
 		-DBUILD_DEMOS=OFF .
 	make -j4
 	cat << 'EOF' > ./COPYING
@@ -57,7 +58,8 @@ EOF
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}-$pkgver"
+	cd "${srcdir}/${pkgname}-$pkgver"
 	make DESTDIR="$pkgdir/" install
 	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
