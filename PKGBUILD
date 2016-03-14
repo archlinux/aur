@@ -3,7 +3,7 @@
 pkgname=pellet
 _version='2.4.0'
 pkgver=20150814.bb99c19
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Pellet is an OWL 2 reasoner in Java"
 url="http://clarkparsia.com/pellet"
@@ -11,7 +11,7 @@ license=('AGPL')
 provides=('pellet')
 conflicts=('pellet')
 arch=('any')
-makedepends=('git')
+makedepends=('git' 'maven')
 _commit='bb99c19f9b9abf4e2c9e65098ee3e4d624e14894'
 source=("${pkgname}::git+https://github.com/Complexible/pellet.git#commit=${_commit}")
 sha512sums=('SKIP')
