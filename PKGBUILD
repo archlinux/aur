@@ -3,7 +3,7 @@
 pkgname=perl-xml-easy
 pkgver=0.009
 pkgrel=1
-pkgdesc="XML::Easy - XML processing with a clean interface"
+pkgdesc="XML processing with a clean interface"
 _dist=XML-Easy
 url="http://search.cpan.org/dist/$_dist/"
 license=("PerlArtistic")
@@ -31,7 +31,4 @@ package() {
   cd "$srcdir/$_dist-$pkgver"
   unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
   ./Build install installdirs=vendor destdir="$pkgdir"
-
-  find $pkgdir -name '.packlist' -delete && \
-  find $pkgdir -name '*.pod' -delete
 }
