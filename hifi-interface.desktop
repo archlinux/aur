@@ -6,4 +6,5 @@ Exec=/opt/hifi/interface/interface
 Icon=/usr/share/pixmaps/hifi-interface.png
 Terminal=false
 StartupNotify=true
-Categories=Network;Game;3DGraphics;Qt
+Categories=Network;Game;3DGraphics
+MimeType=x-scheme-handler/hifi;

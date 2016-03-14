@@ -4,7 +4,7 @@
 # Issues: https://github.com/toastercup/aur-packages/issues
 
 pkgname=hifi-interface-git
-pkgver=r39957.f21815e
+pkgver=r40509.9e0d9f5
 pkgrel=1
 pkgdesc="High Fidelity is an open, decentralized virtual world using sensors to control avatars and dynamically assigned devices as servers (git - master)"
 arch=('i686' 'x86_64')
@@ -70,7 +70,7 @@ build() {
 
 package() {
   install -Dm644 hifi-interface.png "$pkgdir/usr/share/pixmaps/hifi-interface.png"
-  install -Dm644 hifi-interface.desktop "$pkgdir/usr/share/applications/hifi-interface.desktop"
+  xdg-desktop-menu install --mode system hifi-interface.desktop
 
   mkdir -p "$pkgdir/usr/bin"
   cd "$srcdir/build"
