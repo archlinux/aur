@@ -2,7 +2,7 @@
 
 pkgname=vdirsyncer
 _pkgname=vdirsyncer
-pkgver=0.9.0
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Synchronize CalDAV and CardDAV."
 arch=('any')
@@ -14,13 +14,14 @@ depends=('python-click' 'python-setuptools' 'python-lxml'
 optdepends=('python-requests-oauthlib: Remotestorage support')
 checkdepends=('python-pytest' 'python-wsgi-intercept'
               'radicale' 'python-werkzeug' 'python-pytest-xprocess'
-              'python-pytest-localserver' 'python-hypothesis')
+              'python-pytest-localserver' 'python-hypothesis'
+              'python-pytest-subtesthack')
 source=("https://pypi.python.org/packages/source/v/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('af3d676341526e40b7191d28a0b95027')
+md5sums=('4b70083971020e96017d77fa9462c871')
 
 check() {
   cd "$srcdir/${_pkgname}-$pkgver"
-  DAV_SERVER=skip REMOTESTORAGE_SERVER=skip python setup.py test
+  make test
 }
 
 build() {
