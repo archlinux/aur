@@ -13,7 +13,7 @@ provides=("xqilla")
 backup=()
 changelog=
 source=("http://downloads.sourceforge.net/project/xqilla/XQilla-2.3.2.tar.gz"
-		"https://www.apache.org/dist/xerces/c/3/sources/xerces-c-3.1.2.tar.gz")
+        "https://archive.apache.org/dist/xerces/c/3/sources/xerces-c-3.1.2.tar.gz")
 noextract=()
 sha256sums=("5ae0aed4091521d5c2f541093e02a81ebe55a9087ba735f80b110068584e217c"
 			"743bd0a029bf8de56a587c270d97031e0099fe2b7142cef03e0da16e282655a0")
