@@ -1,7 +1,7 @@
 # Maintainer: Alejandro Baez <https://keybase.io/baez>
 
 pkgname='textadept-rust'
-pkgver=r133.8273cacd1ff8
+pkgver=r137.b8cf0f253043
 pkgrel=1
 pkgdesc="A Rust module and lexer for Textadept"
 arch=('any')
