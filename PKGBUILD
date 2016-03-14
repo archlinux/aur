@@ -7,12 +7,10 @@ pkgdesc="i3 scratchpad manager"
 arch=("any")
 url="https://github.com/mstg/zx"
 license=('MIT')
-depends=("glib2" "i3ipc-glib-git" "pango")
+depends=("glib2" "i3ipc-glib-git" "pango" "cairo")
 makedepends=("libxcb")
 source=("${srcname}::git+https://github.com/mstg/zx.git")
 sha512sums=("SKIP")
-optdepends=('cairo: needed for pango font support (one cairo package is required)',
-  'cairo-infinality-ultimate: if you are running infinality cairo')
 
 pkgver() {
   cd "${srcdir}/${srcname}"
