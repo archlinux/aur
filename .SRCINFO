@@ -1,6 +1,6 @@
 pkgbase = visp
 	pkgdesc = A modular library for visual tracking and visual servoing
-	pkgver = 2.10.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = http://www.irisa.fr/lagadic/visp/
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = visp
 	makedepends = cmake
 	depends = libdmtx
 	depends = opencv>=2.2.0
-	depends = coin
 	depends = gsl
+	depends = coin
 	depends = lapack
 	depends = zbar
 	optdepends = xorg-server: used for the image display
@@ -30,8 +30,8 @@ pkgbase = visp
 	optdepends = libpng: to convert png files
 	optdepends = doxygen: for documentation
 	optdepends = biclops: used for motion control device of Traclabs
-	source = http://gforge.inria.fr/frs/download.php/latestfile/475/ViSP-2.10.0.tar.gz
-	md5sums = 85b5015a192d20fa0db3a70d620bb0d3
+	source = http://gforge.inria.fr/frs/download.php/latestfile/475/visp-3.0.0.tar.gz
+	md5sums = 0d27f8d8dcafb40064cf421b2f788c5d
 
 pkgname = visp
 
