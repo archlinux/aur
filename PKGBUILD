@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=krdc-git
-pkgver=15.12.1.r24.g7947f47
+pkgver=15.12.2.r28.g0891645
 pkgrel=1
 pkgdesc='Remote Desktop Client (frameworks branch)'
 url='http://kde.org/applications/internet/krdc/'
@@ -13,7 +13,7 @@ optdepends=('freerdp: RDP support'
             'kdebase-keditbookmarks: to edit bookmarks')
 provides=(kdenetwork-krdc)
 conflicts=(kdenetwork-krdc)
-source=('git://anongit.kde.org/krdc.git#branch=frameworks')
+source=('git://anongit.kde.org/krdc.git')
 md5sums=('SKIP')
 
 pkgver() {
