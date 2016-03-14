@@ -24,6 +24,7 @@ depends=(
 makedepends=(
     'git'
     'python-setuptools'
+    'python-pip'
 )
 md5sums=(
     'SKIP'
