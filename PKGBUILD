@@ -12,7 +12,7 @@ source=("https://github.com/giampaolo/pyftpdlib/archive/release-${pkgver}.tar.gz
 depends=('python')
 optdepends=("python-pyopenssl: required for SSL/TLS connections"
             "python-sendfile: required for using the sendfile call")
-md5sums=('43ef0dd20d65443d296dc27f128a6998')
+md5sums=('29267d266302387f80c3728b6f7234c9')
 
 build(){
   cd ${srcdir}/pyftpdlib-release-${pkgver}
