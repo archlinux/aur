@@ -2,7 +2,7 @@
 
 pkgname=clasp
 groups=('potassco')
-pkgver=3.1.3
+pkgver=3.1.4
 pkgrel=1
 pkgdesc="A conflict-driven nogood learning answer set solver."
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
@@ -10,7 +10,7 @@ url="http://potassco.sourceforge.net/"
 license=('GPL3')
 makedepends=('clang')
 source=("http://downloads.sourceforge.net/project/potassco/${pkgname}/${pkgver}/${pkgname}-${pkgver}-source.tar.gz")
-sha1sums=(9a261b64586092179cc3b327895b9b3521818ee2)
+sha1sums=(5be43c2a912cdf1ea513e99c3f7173db1cad290d)
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
