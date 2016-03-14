@@ -52,12 +52,12 @@ post_install() {
 
     if [ ! -f /etc/cozy/couchdb.login ]; then
         if [ ! -f /tmp/couchdb.login ]; then
-            msg 'Found tokens from previous installation'
-            cp /tmp/couchdb.login /etc/cozy/couchdb.login
-        else
             msg 'Generating CouchDB tokens...'
             pwgen -1 > /etc/cozy/couchdb.login && \
             pwgen -1 >> /etc/cozy/couchdb.login
+        else
+            msg 'Found tokens from previous installation'
+            cp /tmp/couchdb.login /etc/cozy/couchdb.login
         fi
         msg 'Enabling CouchDB'
         systemctl enable couchdb
@@ -72,7 +72,9 @@ post_install() {
             fi
             sleep 5
         done
-        curl -s -X PUT 127.0.0.1:5984/_config/admins/$(head -n1 /etc/cozy/couchdb.login) -d "\"$(tail -n1 /etc/cozy/couchdb.login)\""
+        if [ ! -f /tmp/couchdb.login ]; then
+            curl -s -X PUT 127.0.0.1:5984/_config/admins/$(head -n1 /etc/cozy/couchdb.login) -d "\"$(tail -n1 /etc/cozy/couchdb.login)\""
+        fi
     fi
     chown cozy-data-system /etc/cozy/couchdb.login
     chmod 640 /etc/cozy/couchdb.login
