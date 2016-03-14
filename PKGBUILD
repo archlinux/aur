@@ -3,14 +3,14 @@
 _gemname=jekyll
 pkgname=ruby-$_gemname
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple, blog aware, static site generator.'
 arch=(any)
 url='http://github.com/mojombo/jekyll'
 license=(MIT)
 #depends=('ruby>=2.0.0' 'ruby-liquid-2' 'ruby-kramdown>=1.3' 'ruby-mercenary' 'ruby-safe_yaml' 'ruby-colorator>=0.1' 'ruby-pygments.rb' 'ruby-redcarpet' 'ruby-toml'
 #         'ruby-jekyll-paginate' 'ruby-jekyll-gist' 'ruby-jekyll-coffeescript' 'ruby-jekyll-sass-converter>=1.0' 'ruby-classifier-reborn' 'ruby-jekyll-watch>=1.1')
-depends=('ruby' 'ruby-colorator' 'ruby-jekyll-sass-converter' 'ruby-jekyll-watch' 'ruby-kramdown' 'ruby-liquid-3' 'ruby-mercenary' 'ruby-rouge' 'ruby-safe_yaml')
+depends=('ruby' 'ruby-colorator' 'ruby-jekyll-sass-converter' 'ruby-jekyll-watch' 'ruby-kramdown' 'ruby-liquid-3' 'ruby-mercenary' 'ruby-rouge' 'ruby-safe_yaml' 'ruby-rb-fsevent' 'ruby-rb-inotify')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
