@@ -1,6 +1,6 @@
 pkgbase = libratbag
 	pkgdesc = A library to configure gaming mice
-	pkgver = 0.3
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://github.com/libratbag/libratbag
 	install = libratbag.install
@@ -13,8 +13,8 @@ pkgbase = libratbag
 	depends = libevdev
 	depends = libudev.so
 	conflicts = libratbag-git
-	source = https://github.com/libratbag/libratbag/archive/v0.3.tar.gz
-	sha256sums = 89e440c96e737938d04724caca031a1e1ce55835e5066ddf8805dd733223696c
+	source = https://github.com/libratbag/libratbag/archive/v0.4.tar.gz
+	sha256sums = 75365cf6a3571a65bcbcb0444bf638ba5190cb68d1bf65213a6173e6843062f0
 
 pkgname = libratbag
 
