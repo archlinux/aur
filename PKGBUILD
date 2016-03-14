@@ -3,7 +3,7 @@
 
 _gemname=rmail
 pkgname=ruby-$_gemname
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='A MIME mail parsing and generation library.'
 arch=(any)
@@ -14,7 +14,7 @@ conflicts=(ruby-rmail-sup)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('ce98b288105900f7f81ccd4410f2f46b1f356548')
+md5sums=('326990ba7325b68a6c9134ae965ea9a7')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
