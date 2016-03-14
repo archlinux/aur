@@ -21,7 +21,7 @@
 # Inconsolata: Google ships a modified version.
 
 pkgname=ttf-google-fonts-opinionated-git
-pkgver=20150721
+pkgver=20160311
 pkgrel=1
 pkgdesc="TrueType fonts from the Google Fonts project"
 arch=('any')
@@ -40,6 +40,7 @@ depends=('fontconfig'
 makedepends=('git')
 conflicts=('adobe-source-code-pro-fonts'
            'adobe-source-sans-pro-fonts'
+           'adobe-source-serif-pro-fonts'
            'googlefontdirectory'
            'jsmath-fonts'
            'lohit-fonts'
@@ -52,6 +53,7 @@ conflicts=('adobe-source-code-pro-fonts'
            'ttf-cardo'
            'ttf-chromeos-fonts'
            'ttf-comfortaa'
+           'ttf-croscore'
            'ttf-google-fonts-git'
            'ttf-google-fonts-hg'
            'ttf-google-webfonts'
@@ -80,7 +82,7 @@ conflicts=('adobe-source-code-pro-fonts'
            'ttf-vollkorn'
            'ttf-lato')
 provides=("${conflicts[@]}" 'ttf-font')
-source=("git://github.com/google/fonts.git")
+source=("git+https://github.com/google/fonts.git")
 md5sums=('SKIP')
 install=ttf-google-fonts-opinionated-git.install
 
