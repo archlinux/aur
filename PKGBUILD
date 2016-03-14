@@ -1,23 +1,23 @@
 # Maintainer: James An <james@jamesan.ca>
 # Contributor: Tess 'socketwench' Flynn <tess@deninet.com>
 
-_pkgname=drush
-pkgname=$_pkgname-git
-pkgver=8.0.0.r64.gc7e08f7
+pkgname=drush-git
+_pkgname=${pkgname%-git}
+pkgver=9.0.0.alpha1.r1.gb96621d
 pkgrel=1
 pkgdesc='The Drupal command-line shell, git version.'
 arch=('any')
-url="https://github.com/drush-ops/$pkgname"
+url="http://$_pkgname.org"
 license=('GPL')
 depends=('bash' 'php-composer' 'php-gd')
-makedepends=('git')
+makedepends=('git' 'php-box')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 install=$pkgname.install
-source=("$_pkgname"::"git+https://github.com/drush-ops/$_pkgname.git"
-        "req.$_pkgname.ini")
+source=("$_pkgname"::"git+https://github.com/$_pkgname-ops/$_pkgname.git#branch=master"
+        "php.ini")
 md5sums=('SKIP'
-         'fd34300a8ce7ca8e826cb8b9a5ed2b89')
+          '938cbe5548e3381e63668ea865ad7aa1')
 
 pkgver() {
     cd "$_pkgname"
@@ -29,38 +29,42 @@ pkgver() {
 }
 
 prepare() {
-  composer update --prefer-source --no-interaction --working-dir "$_pkgname"
-  composer install --prefer-source --no-interaction --working-dir "$_pkgname"
-  for extension in gd mysqli pdo_mysql; do
-    echo "extension=$extension.so" >| "$extension.$_pkgname.ini"
-  done
-  sed -r 's/^([^;$])/;\1/' "$_pkgname/examples/example.$_pkgname.ini" >| "$_pkgname.ini"
+  composer --no-interaction --working-dir="$_pkgname" install --prefer-source
+
+  # Generate empty drush.ini from the example by
+  # commenting out all line starting with word character.
+  sed 's/^\b/;/' "$_pkgname/examples/example.$_pkgname.ini" >| "$_pkgname.ini"
+}
+
+build() {
+  cd "$_pkgname"
+
+  php -d phar.readonly=Off /usr/bin/php-box build
 }
 
 check() {
   cd "$_pkgname"
 
-  #~ msg2 'Testing on Drupal 6'
-  #~ UNISH_DRUPAL_MAJOR_VERSION=6 ./unish.sh
-  #~ msg2 'Testing on Drupal 7'
-  #~ UNISH_DRUPAL_MAJOR_VERSION=7 ./unish.sh
-  #~ msg2 'Testing on Drupal 8'
-  #~ UNISH_DRUPAL_MAJOR_VERSION=8 ./unish.sh
+  msg2 'Verifying PHAR file'
+  php -d phar.readonly=Off /usr/bin/php-box verify $_pkgname.phar
+
+  msg2 'Testing on Drupal 6'
+  UNISH_DRUPAL_MAJOR_VERSION=6 ./unish.sh
+  msg2 'Testing on Drupal 7'
+  UNISH_DRUPAL_MAJOR_VERSION=7 ./unish.sh
+  msg2 'Testing on Drupal 8'
+  UNISH_DRUPAL_MAJOR_VERSION=8 ./unish.sh
 }
 
 package() {
-  # Install PHP configuration files
-  for conf in gd mysqli pdo_mysql req; do
-    install -Dm644 "$conf.$_pkgname.ini" "$pkgdir/etc/php/conf.d/$conf.$_pkgname.ini"
-  done
 
   # Set up directory structure
-  install --directory "$pkgdir/etc/bash_completion.d"
   install --owner=http --group=http --mode=6775  --directory "$pkgdir/etc/drush"
   install --owner=http --group=http --mode=644 "$_pkgname.ini" "$pkgdir/etc/$_pkgname/$_pkgname.ini"
   install --directory "$pkgdir/usr/bin"
   install --directory "$pkgdir/usr/share/webapps/$_pkgname"
   install --directory "$pkgdir/usr/share/doc/$_pkgname/misc"
+  install -Dm644 php.ini "$pkgdir/etc/php/conf.d/$_pkgname.ini"
 
   # Copy main application files
   cd "$_pkgname"
@@ -69,4 +73,9 @@ package() {
   rm -rf "$pkgdir/usr/share/doc/$_pkgname/"{CONTRIBUTING.md,README.md,docs,examples,misc/windrush_build}
   ln -s "/usr/share/webapps/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
   ln -s "/usr/share/webapps/$_pkgname/$_pkgname.complete.sh" "$pkgdir/etc/bash_completion.d"
+
+  install -Dm644 "$_pkgname.complete.sh" "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
+  install -Dm644 "examples/example.$_pkgname.ini" "${pkgdir}/etc/$_pkgname/$_pkgname.ini"
+  install -Dm644 "examples/example.aliases.${_pkgname}rc.php" "${pkgdir}/etc/$_pkgname/aliases.${_pkgname}rc.php"
+  install -Dm644 "examples/example.${_pkgname}rc.php" "${pkgdir}/etc/$_pkgname/${_pkgname}rc.php"
 }
