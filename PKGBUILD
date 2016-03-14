@@ -2,7 +2,7 @@
 # Contributor: mrbit <giacomogiorgianni@gmail.com>
 
 pkgname=curlew
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=2
 pkgdesc='Easy to use, Free and Open-Source Multimedia converter for Linux in Python'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('python>=3.3' 'ffmpeg>=0.8' 'ffmpeg-compat' 'python-gobject>=3.10' 'hic
 makedepends=('intltool' 'librsvg')
 optdepends=('curl: Aurploader support')
 source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('a6c7adc06686a72379ba21d9500d3277796cc295315d9c427727212a67c05abd')
+sha256sums=('b2432c97997655543ebd759adfebb37594d270bad980e02db48368886f45e60f')
 install="${pkgname}.install"
 
 package() {
