@@ -1,6 +1,6 @@
 # Maintainer: Tarn Burton <twburton at gmail dot com>
 pkgname='cadabra2-git'
-pkgver=r506.37aff1a
+pkgver=r514.c7f25d6
 pkgrel=1
 pkgdesc="A computer algebra system (pre-release version) designed specifically for the solution of problems encountered in field theory."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('python2-matplotlib' 'gtkmm3' 'jsoncpp' 'mathjax' 'boost-libs<1.60.0' '
 makedepends=('cmake' 'gcc' 'boost<1.60.0')
 source=("$pkgname::git+https://github.com/kpeeters/cadabra2" "package.patch" "cadabra2.desktop")
 md5sums=('SKIP'
-         'cb724c009a3c2b2e3a1e30652c02f223'
+         '9524a7c24d4fc70c6da409106048d04c'
          '3675066ab3a7f79b79f1657477dc03c4')
 install=package.install
 
@@ -41,5 +41,4 @@ package() {
   install -Dm644 "${srcdir}/cadabra2.desktop" "$pkgdir/usr/share/applications/cadabra2.desktop"
   install -Dm644 ../images/cadabra.png "$pkgdir/usr/share/icons/hicolor/64x64/apps/cadabra2.png"
   install -Dm644 ../images/cadabra.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/cadabra2.svg"
-  mv "$pkgdir/usr/share/texmf/tex/latex/cadabra" "$pkgdir/usr/share/texmf/tex/latex/cadabra2"
 }
