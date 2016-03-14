@@ -17,12 +17,11 @@ cat > "zezenia" << EOF
 cd /opt/Zezenia
 ./zezeniaclient
 EOF
-chmod -R a+x /opt/Zezenia/*
-
 
 mkdir -p "${APP_DIR}"
 mv "${FILE_NAME}" "${APP_DIR}"
 mv zezenia /usr/bin
 chmod a+x /usr/bin/zezenia
+echo "[IMPORTANT] You need to add yourself to "games" group in order to play (you will probably be able to run the game, but minimap won't be saved after closing"
 }
 

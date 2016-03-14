@@ -2,7 +2,7 @@
 
 pkgname=zezenia
 pkgver=570
-pkgrel=1
+pkgrel=2
 pkgdesc="Zezenia Online is an actively developed free-to-play 2D MMORPG."
 arch=('i686' 'x86_64')
 url=http://zezeniaonline.com/
@@ -22,5 +22,7 @@ build()
 package()
 {
   mkdir -p $pkgdir/opt/Zezenia
+  rm "$pkgname"_"$pkgver"_linux.zip
   cp -R $srcdir/* $pkgdir/opt/Zezenia/
+  chown -R :games $pkgdir/opt/Zezenia
 }
