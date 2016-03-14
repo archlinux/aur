@@ -3,7 +3,7 @@
 pkgbase = pellet
 	pkgdesc = Pellet is an OWL 2 reasoner in Java
 	pkgver = 20150814.bb99c19
-	pkgrel = 1
+	pkgrel = 2
 	url = http://clarkparsia.com/pellet
 	arch = any
 	license = AGPL
