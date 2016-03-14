@@ -3,7 +3,7 @@
 pkgname=xdiff-ext-git
 _pkgver=0.2.0
 pkgver=${_pkgver}.r18
-pkgrel=1
+pkgrel=2
 pkgdesc="A Thunar extension for launching file comparison tools"
 arch=('i686' 'x86_64')
 url="https://github.com/timxx/xdiff-ext"
