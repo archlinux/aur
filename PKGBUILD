@@ -5,7 +5,7 @@
 
 pkgname=flexget-git
 _pkgname=Flexget
-pkgver=1.2.442.r7500.8197f29
+pkgver=1.2.482.r8269.372fa62
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -32,20 +32,20 @@ depends=('python2'
          'python2-requests<2.99'
          'python2-dateutil'
          'python2-jsonschema>=2.0' #AUR#
-         'python2-tmdb3' #AUR#
-         'python2-path>=5.1' #AUR#
+         'python2-path' #AUR#
          'python2-guessit>=2.0.1'
          'python2-apscheduler' #AUR#
-         'python2-flask'
-         'python2-flask-restful' #AUR#
-         'python2-ordereddict'
-         'python2-flask-restplus=0.8.6'
-         'python2-cherrypy>=3.7.0'
-         'python2-flask-compress'
-         'python2-flask-login>=0.3.2'
-         'python2-pyparsing>=2.0.3'
          'python2-pytvmaze>=1.4.4'
+         'python2-ordereddict>=1.1'
+         'python2-cherrypy>=3.7.0'
+         'python2-flask>=0.7'
+         'python2-flask-restful>=0.3.3' #AUR#
+         'python2-flask-restplus=0.8.6'
+         'python2-flask-compress>=1.2.1'
+         'python2-flask-login>=0.3.2'
          'python2-flask-cors>=2.1.2'
+         'python2-pyparsing>=2.0.3'
+         'python2-safe'
          )
 optdepends=('python2-guppy: for memusage plugin' #AUR#
             'python2-transmissionrpc: Transmission support' #AUR#
@@ -59,7 +59,7 @@ makedepends=('python2-paver'
              'gulp'
              )
 
-checkdepends=('python2-vcr')
+#checkdepends=('python2-vcr')
 
 provides=('flexget')
 conflicts=('flexget')
@@ -93,11 +93,11 @@ build() {
   XDG_CONFIG_HOME="${_srcdir}" gulp
 }
 
-check() {
-  cd "${_pkgname}"
-
-  python2 setup.py test
-}
+#check() {
+#  cd "${_pkgname}"
+#
+#  python2 setup.py test
+#}
 
 package() {
   cd "${_pkgname}"
