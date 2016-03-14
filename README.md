@@ -19,22 +19,7 @@ Install software:
 
      sudo pacman -S wget java-environment bash base-devel namcap pkgbuild-introspection
 
-If you are the current AUR maintainer, setup burp:
-
-     sudo pacman -S burp
-     mkdir -p $XDG_CONFIG_HOME/burp
-     echo 'User=something' > $XDG_CONFIG_HOME/burp/burp.conf
-     echo 'Password=something' >> $XDG_CONFIG_HOME/burp/burp.conf
-
-Clone as follows (if you are the current AUR maintainer, use your own
-fork as the `upload` script will push commits to your repository):
-
-     git clone git://github.com/benalexau/ib-tws.git
-     cd ib-tws
-     git submodule init
-     git submodule update
-
-From ib-tws, add symbolic links for the utilities:
+From the Git cloned ib-tws directory, add symbolic links for the utilities:
 
      ln -s `pwd`/tws_scripts/tws_get_version $HOME/bin/tws_get_version
      ln -s `pwd`/tws_scripts/tws_check_update $HOME/bin/tws_check_update
@@ -56,7 +41,6 @@ If you *are not* the current AUR maintainer, run `update`. This will:
 If you *are* the current AUR maintainer, run `upload`. This will:
 
 * Run `update` (refer above)
-* If any changes were made, `burp` is used to upload the new version
 * If any changes were made, a Git commit and push is performed
 
 If you are the current AUR maintainer but used `tws_check_update` and it
