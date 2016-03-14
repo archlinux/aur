@@ -5,7 +5,7 @@ pkgname=('visual-pdf-diff-git')
 _gitname=visual-pdf-diff
 #The actual value is calculated by pkgver() function
 pkgver=v1.0.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Merges two PDF files into one PDF file and highlights their visual differences."
 url="https://github.com/momeni/${_gitname}"
@@ -13,7 +13,7 @@ url="https://github.com/momeni/${_gitname}"
 arch=('any')
 license=('GPL3')
 
-depends=('imagemagick' 'gawk' 'bash' 'coreutils')
+depends=('imagemagick' 'gawk' 'bash' 'coreutils' 'ghostscript')
 conflicts=('visual-pdf-diff')
 provides=('visual-pdf-diff')
 makedepends=('git')

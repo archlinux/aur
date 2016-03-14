@@ -1,7 +1,7 @@
 pkgbase = visual-pdf-diff-git
 	pkgdesc = Merges two PDF files into one PDF file and highlights their visual differences.
 	pkgver = v1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/momeni/visual-pdf-diff
 	arch = any
 	license = GPL3
@@ -10,6 +10,7 @@ pkgbase = visual-pdf-diff-git
 	depends = gawk
 	depends = bash
 	depends = coreutils
+	depends = ghostscript
 	provides = visual-pdf-diff
 	conflicts = visual-pdf-diff
 	source = git+https://github.com/momeni/visual-pdf-diff.git
