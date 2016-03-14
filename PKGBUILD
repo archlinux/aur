@@ -1,23 +1,22 @@
 # Maintainer: Virgil Dupras <hsoft@hardcoded.net>
 pkgname=moneyguru
-pkgver=2.9.4
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="Personal finance management application"
 arch=(any)
 url="http://www.hardcoded.net/moneyguru/"
 license=('BSD')
-depends=('python' 'python-pyqt4')
+depends=('python' 'python-pyqt5')
 makedepends=(
 )
 source=(https://download.hardcoded.net/$pkgname-src-$pkgver.tar.gz)
-md5sums=('1be793ad95ae09ad8e96360de797914b')
+md5sums=('03f95b21530cd8987453484612dc83eb')
 
 build() {
   cd "$srcdir"
   ./bootstrap.sh
   msg "Starting build..."
   . env/bin/activate
-  python configure.py
   python build.py --clean
 }
 
@@ -36,3 +35,4 @@ package() {
   mkdir -p "$pkgdir/usr/bin"
   ln -s ../share/${pkgname}/run.py "$pkgdir/usr/bin/${pkgname}"
 }
+
