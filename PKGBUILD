@@ -30,7 +30,7 @@ validpgpkeys=('E3036906AD9F30807351FAC32D5D5E97F6978A26')
 source=("https://download.owncloud.org/community/owncloud-${pkgver}.tar.bz2"{,.asc} "apache.example.conf")
 md5sums=('1f14d7f2faa0ba704901e062301854db'
          'SKIP'
-         'e392cbbb21e674a605c3ff7f23852bfa')
+         'bf523e475fd8cf1e2048018952da5c34')
 
 options=(!strip emptydirs)
 
