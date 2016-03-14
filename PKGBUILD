@@ -1,16 +1,17 @@
 # Maintainer: Matthias Blaicher <matthias at blaicher dot com>
+# Co-Maintainer: Danny Dutton <duttondj@vt.edu>
 #
 # NOTE: If you plan on using the usbblaster make sure you are member of the plugdev group.
 # NOTE: Altera has dramatically changed their packing in regards to version 12. This
 #       PKGBUILD will install the full Altera suite now. Be aware that the space requirement
-#       is around 13GB.
+#       is around 14GB.
 #
 pkgname=quartus-free
-pkgver=15.0.0.145
-pkgrel=2
-pkgdesc="Quartus II Web Edition design software for Altera FPGA's"
+pkgver=15.1.0.185
+pkgrel=1
+pkgdesc="Quartus Prime Lite Edition design software for Altera FPGA's"
 arch=('i686' 'x86_64')
-url="https://dl.altera.com/?edition=web"
+url="https://dl.altera.com/?edition=lite"
 license=('custom')
 
 _build_nr=$(echo ${pkgver} | cut -d '.' -f4)
@@ -42,10 +43,10 @@ fi
 
 makedepends=('bash')
 
-source=("http://download.altera.com/akdlm/software/acdsinst/${pkgver%.*.*}/${_build_nr}/ib_tar/Quartus-web-${pkgver}-linux.tar"
-        "http://seblu.net/a/arm/2013/10/11/multilib/os/x86_64/lib32-freetype2-2.5.0.1-1-x86_64.pkg.tar.xz"   # Used for a freetype bugfix HACK
+source=("http://download.altera.com/akdlm/software/acdsinst/${pkgver%.*.*}/${_build_nr}/ib_tar/Quartus-lite-${pkgver}-linux.tar"
+        "http://gaming.jhu.edu/mirror/archlinux/multilib/os/x86_64/lib32-freetype2-2.5.0.1-1-x86_64.pkg.tar.xz"   # Used for a freetype bugfix HACK
 	"quartus.sh" "quartus.desktop" "51-usbblaster.rules" "quartus.install" "modelsim-ase.desktop")
-md5sums=('6bbe995747baf100d7f5bc04246971d7'
+md5sums=('EF0D9EB90E24338AD31864D3069151B0'
          'd3b3b7cdf874b6dd0b60c40d84dd9128'
          '067c444cae7fe31d3608245712b43ce8'
          '32b17cb8b992fc2dccd33d87f0dcd8ce'
