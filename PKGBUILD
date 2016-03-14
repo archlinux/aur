@@ -47,7 +47,7 @@ source=("$_githifi::git+https://github.com/highfidelity/hifi.git"
         'hifi-interface.png')
 md5sums=('SKIP'
          'SKIP'
-         'ab7ce0aa0c41f4d0c120d90667ca8897'
+         '2cc1b0cbdc7b044d76fce091117d09cb'
          'a261965ec09a8dfd93175fdabb7cafbe')
 
 pkgver() {
