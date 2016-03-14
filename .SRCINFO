@@ -1,0 +1,15 @@
+pkgbase = osvr-leap-motion-git
+	pkgdesc = A plugin for OSVR that provides access to Leap Motion trackers from OSVR applications.
+	pkgver = r39.a078bea
+	pkgrel = 1
+	url = https://github.com/OSVR/OSVR-Leap-Motion
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	makedepends = cmake
+	makedepends = osvr-core-git
+	source = osvr-leap-motion::git+https://github.com/feilen/OSVR-Leap-Motion.git
+	md5sums = SKIP
+
+pkgname = osvr-leap-motion-git
+
