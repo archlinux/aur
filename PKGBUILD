@@ -1,7 +1,7 @@
 # Maintainer: Pavol Hluchy (Lopo) <lopo AT losys DOT eu>
 
 pkgname=php-gmagick
-pkgver=2.0.2RC1
+pkgver=2.0.2RC2
 pkgrel=1
 pkgdesc="PHP extension for GMagick"
 license=('PHP')
@@ -14,7 +14,7 @@ depends=(
 backup=('etc/php/conf.d/gmagick.ini')
 install=php-gmagick.install
 source=("http://pecl.php.net/get/gmagick-$pkgver.tgz")
-sha512sums=('21ee127345eb483d4954efaeff35a2734070d77ec0a9f38fde7993566a226186be68925a6425b0c54a782255d5ad5c466dddbb61d97a195fd04424eacb49d901')
+sha512sums=('a677a9aa0eec98646f21a8e1dd3be89c567b8393f83a311dcc94597ad02634ae596998867bf647466d46045ae372d8afd699e3694dd28f6274b3b041ebd0c4a7')
 
 build() {
 	cd "$srcdir/gmagick-$pkgver"
