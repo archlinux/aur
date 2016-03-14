@@ -1,7 +1,7 @@
 # Maintainer: Cravix ( dr dot neemous at google dot com )
  
 pkgname=seamonkey-i18n-zh-cn
-pkgver=2.39
+pkgver=2.40
 pkgrel=1
 _lang=zh-CN
 pkgdesc="Simplified Chinese language pack for SeaMonkey"
@@ -17,4 +17,4 @@ package() {
     "${pkgdir}/usr/lib/seamonkey-${pkgver}/extensions/langpack-${_lang}@seamonkey.mozilla.org.xpi"
 }
 
-md5sums=('e377af1fae5ab68be79b24231c029d6e')
+md5sums=('e303b82bc80c74ea23bd77ca674b9d2c')
