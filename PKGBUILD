@@ -3,9 +3,9 @@
 
 pkgname=xonsh
 pkgver=0.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python-ish, BASHwards-compatible shell"
-url="http://xonsh.org"
+url="http://xon.sh/"
 arch=('any')
 license=('FreeBSD')
 depends=('python' 'python-ply')

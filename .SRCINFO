@@ -1,8 +1,8 @@
 pkgbase = xonsh
 	pkgdesc = A Python-ish, BASHwards-compatible shell
 	pkgver = 0.2.6
-	pkgrel = 1
-	url = http://xonsh.org
+	pkgrel = 2
+	url = http://xon.sh/
 	install = xonsh.install
 	arch = any
 	license = FreeBSD
