@@ -1,0 +1,11 @@
+--- main.go	2016-03-10 01:47:48.000000000 +0100
++++ main.go2	2016-03-14 11:20:17.326143866 +0100
+@@ -14,7 +14,7 @@
+
+ package main
+
+-import "github.com/dropbox/dbxcli/cmd"
++import "./cmd"
+
+ func main() {
+ 	cmd.Execute()
