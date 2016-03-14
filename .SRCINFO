@@ -1,0 +1,15 @@
+pkgbase = distel
+	pkgdesc = Distributed Emacs Lisp for Erlang.
+	pkgver = 20160223
+	pkgrel = 1
+	url = https://github.com/massemanet/distel
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = erlang
+	depends = emacs
+	source = distel::git+https://github.com/massemanet/distel
+	md5sums = SKIP
+
+pkgname = distel
+
