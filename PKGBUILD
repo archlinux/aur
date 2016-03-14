@@ -18,18 +18,18 @@
 _sysroot=/mnt/pi
 
 # Options
-_skip_web_engine=true
+_skip_web_engine=false
 _static_build=false
 _build_from_head=false
 _local_qt5_repo="/opt/dev/src/qtproject/qt5"
-_wayland_compositor_workaround=false
+_wayland_compositor_workaround=true
 
-_pkgvermajmin="5.7"
+_pkgvermajmin="5.6"
 pkgver="${_pkgvermajmin}.0"
 
 # 5.6: 12
 # 5.7: 1
-pkgrel=1
+pkgrel=13
 
 # PKGBUILD
 _piver=2
@@ -48,14 +48,18 @@ conflicts=("${pkgname}")
 _packaginguser=$(whoami)
 _libspkgname="${pkgname}-target-libs"
 _mkspec="linux-rpi${_piver}-g++"
-#_pkgver=${pkgver}-rc
-_pkgver=${pkgver}-alpha
+
+_pkgver=${pkgver}-rc
+#_pkgver=${pkgver}-alpha
+
 _baseprefix=/opt
 _installprefix=${_baseprefix}/${pkgname}
 _qt_package_name_prefix="qt-everywhere-opensource-src"
 _source_package_name=${_qt_package_name_prefix}-${_pkgver}
-#_source_unpackaged_name=${_source_package_name}
-_source_unpackaged_name=${_qt_package_name_prefix}-${pkgver}
+
+_source_unpackaged_name=${_source_package_name}
+#_source_unpackaged_name=${_qt_package_name_prefix}-${pkgver}
+
 pkgdesc="Qt SDK for the Raspberry Pi${_piver}"
 arch=("x86_64")
 url="http://www.qt.io"
@@ -63,8 +67,10 @@ license=("LGPL3" "GPL3")
 depends=("qpi-toolchain" "qtcreator")
 makedepends=("git" "pkgconfig" "gcc")
 source=("git://github.com/sirspudd/mkspecs.git" "https://download.qt.io/development_releases/qt/${_pkgvermajmin}/${_pkgver}/single/${_source_package_name}.7z")
-#sha256sums=("SKIP" "82ed4bc1bf7735747e1612f322f8723dfd84f05fa4dca9398863e6527a0c1971")
-sha256sums=("SKIP" "5d8d12bc72f12532323737894beadd0d0021ee1b4321e53798e722b0352bbc24")
+
+sha256sums=("SKIP" "82ed4bc1bf7735747e1612f322f8723dfd84f05fa4dca9398863e6527a0c1971")
+#sha256sums=("SKIP" "5d8d12bc72f12532323737894beadd0d0021ee1b4321e53798e722b0352bbc24")
+
 options=('!strip')
 install=qpi.install
 _fully_qualified_install_script="${startdir}/${install}"
@@ -104,7 +110,7 @@ if $_wayland_compositor_workaround; then
 fi
 
 # bug(s) in Qt 5.7.0-alpha
-_device_configure_flags="$_device_configure_flags -skip qtlocation -skip qtwayland"
+#_device_configure_flags="$_device_configure_flags -skip qtlocation -skip qtwayland"
 
 build() {
   local _srcdir="${srcdir}/${_source_unpackaged_name}"
@@ -150,7 +156,7 @@ fi
   # incorporate journald fix
   local _patch_dir=${startdir}
   cd ${_basedir}
-  #patch -p1 < ${_patch_dir}/0001-Search-for-libsystemd-first-fall-back-to-libsystemd-.patch
+  patch -p1 < ${_patch_dir}/0001-Search-for-libsystemd-first-fall-back-to-libsystemd-.patch
   patch -p1 < ${_patch_dir}/0001-journald-test-will-fail-with-certain-toolchains.patch
 
   # end patch
