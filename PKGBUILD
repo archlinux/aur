@@ -57,6 +57,9 @@ package() {
 
   cd "$srcdir/agate"
   python setup.py install --root="$pkgdir/"
+  PYTHON_MINOR_VERSION=`python --version | cut -d ' ' -f 2 | cut -d '.' -f -2`
+  ADDREGATIONS_DIR="$pkgdir/usr/lib/python$PYTHON_MINOR_VERSION/site-packages/agate/aggregations"
+  test -d "$AGGREGATIONS_DIR" || cp --recursive "$srcdir/agate/agate/aggregations" "$ADDREGATIONS_DIR"
 
   cd "$srcdir/agate-excel"
   python setup.py install --root="$pkgdir/"
