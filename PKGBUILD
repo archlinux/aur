@@ -1,7 +1,7 @@
 # Maintainer: Dan Printzell <xwildn00bx@gmail.com>
 
 pkgname=("dinu-git")
-pkgver=r43.9b15586
+pkgver=r46.c54ad0f
 pkgrel=1
 pkgdesc="Launcher, file manager, one-way terminal"
 arch=("i686" "x86_64")
@@ -16,11 +16,9 @@ options=("!strip")
 
 source=(
 	"git+https://github.com/weltensturm/dinu"
-	"https://github.com/weltensturm/dinu/pull/4.patch"
 )
 sha256sums=(
 	"SKIP"
-	"252e2aca3a23508d7bb055dfccd9d83a13749fefd5e02affa759158e2861819c"
 )
 
 pkgver() {
@@ -30,12 +28,12 @@ pkgver() {
 
 prepare() {
 	cd $srcdir/dinu
-	patch -Np1 -i $srcdir/4.patch
+	dub upgrade
 }
 
 build() {
 	cd $srcdir/dinu
-	dub build --cache=local
+	dub build
 
 	strip ./bin/dinu
 }
