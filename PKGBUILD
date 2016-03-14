@@ -1,6 +1,6 @@
 # Maintainer: Roberto Catini <roberto.catini@gmail.com>
 pkgname=python-turbogears
-pkgver=2.3.5
+pkgver=2.3.8
 pkgrel=1
 pkgdesc="A hybrid web framework able to act both as a Full Stack framework or as a Microframework"
 arch=('any')
