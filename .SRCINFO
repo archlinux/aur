@@ -1,7 +1,7 @@
 pkgbase = plex-media-player
 	pkgdesc = Next generation Plex Desktop Client
 	pkgver = 1.0.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/plexinc/plex-media-player
 	install = plex-media-player.install
 	arch = i686
@@ -12,12 +12,12 @@ pkgbase = plex-media-player
 	depends = qt5-webengine>=5.6
 	depends = libcec
 	depends = sdl2
-	noextract = plex-web-client-konvergo-3263b2f.cpp.tbz2
+	noextract = plex-web-client-konvergo-518bc23.cpp.tbz2
 	source = plex-media-player-1.0.5.210-9c69e092.tar.gz::https://github.com/plexinc/plex-media-player/archive/v1.0.5.210-9c69e092.tar.gz
-	source = https://nightlies.plex.tv/directdl/plex-dependencies/plex-web-client-plexmediaplayer/latest/plex-web-client-konvergo-3263b2f.cpp.tbz2
+	source = https://nightlies.plex.tv/directdl/plex-dependencies/plex-web-client-plexmediaplayer/latest/plex-web-client-konvergo-518bc23.cpp.tbz2
 	source = plex-media-player.desktop
 	sha256sums = 4b62ffc9502a5938fcaaca8d4d6aa9767903995a90d2c022ff9562613422dfc5
-	sha256sums = bb33cfdcdfa95e9736f78e751695cc477519c21a4e1fb59144e0f93e975edbf6
+	sha256sums = 8124f0fb79da7e0bbd2da47d1f7bed6c030d61244d5c2fdad147efa83e98e53b
 	sha256sums = b03845b761cc18a88252b72d0c83e439006224660444d9174f53cc577f9498b6
 
 pkgname = plex-media-player
