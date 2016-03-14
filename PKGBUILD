@@ -1,10 +1,9 @@
-# Contributer: Jan Kroulik <jk at wo dot cz>
+# Maintainer: Jan Kroulik <jk at wo dot cz>
 
 _pkgname=boomaga
 pkgname=${_pkgname}-git
-name=Boomaga
 pkgver=r229.89cf61b
-pkgrel=6
+pkgrel=7
 pkgdesc="A virtual printer for viewing a document before printing it out using the physical printer"
 arch=('i686' 'x86_64')
 url="http://www.boomaga.org"

@@ -1,7 +1,7 @@
 pkgbase = boomaga-git
 	pkgdesc = A virtual printer for viewing a document before printing it out using the physical printer
 	pkgver = r229.89cf61b
-	pkgrel = 5
+	pkgrel = 7
 	url = http://www.boomaga.org
 	install = boomaga-git.install
 	arch = i686
@@ -10,9 +10,11 @@ pkgbase = boomaga-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = gcc
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = shared-mime-info
 	depends = qt5-base
 	depends = poppler>=0.26.5
-	depends = bash
 	depends = libcups
 	provides = boomaga
 	conflicts = boomaga
