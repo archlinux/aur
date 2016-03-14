@@ -22,8 +22,8 @@ source=("$pkgname.desktop"
         "vendor.js")
 source_i686=("https://ftp.mozilla.org/pub/firefox/candidates/$pkgver-candidates/$build/linux-i686/zh-CN/firefox-$pkgver.tar.bz2")
 source_x86_64=("https://ftp.mozilla.org/pub/firefox/candidates/$pkgver-candidates/$build/linux-x86_64/zh-CN/firefox-$pkgver.tar.bz2")
-sha512sums=('08d64573dc23eafcc61f24557f713e14234264da1cc4cc6e487db068245e56fde5b8bf3e28ec34070cc9e7ad7a3ff5b509dcf104a1b68bd84a064c4ae3765d7b'
-            'a42e7f11b6570151616dcbc9a9b5786636465786cffd9da28c46101b4d96d7dc6a21a03c31064958141a11fdc41da8b016d0b5d0ab4fcd064fdccf39745dd0d8')
+sha512sums=('SKIP'
+            'SKIP')
 sha512sums_i686=('a9b7ad28f753af3b0139d644d7fd44f5210549f2b3bf1871fdf0c6868de0fc1b0e3c2b2ea7cd66a47eea2f0b57c43e1dda55255435e176465449c702ab6e975c')
 sha512sums_x86_64=('e535ef266d3ec806f595aa6d73b5a9d4965f6f10df7206fd67649fbdc62726a7d2b5579ed12b4d0a093eba78a6336a1cc8888de07808667c98e8e4e400346f13')
 
