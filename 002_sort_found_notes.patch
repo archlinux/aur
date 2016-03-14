@@ -1,0 +1,11 @@
+--- a/urwid_ui.py	2016-03-14 02:56:30.348210225 +0100
++++ b/urwid_ui.py	2016-03-14 02:56:38.421447101 +0100
+@@ -409,7 +409,7 @@
+ 
+         # Sort the notes.
+         # TODO: Support different sort orderings.
+-        matching_notes.sort(key=lambda x: x.mtime, reverse=True)
++        matching_notes.sort(key=lambda x: x.title)
+ 
+         # Tell the list box to show only the matching notes.
+         self.list_box.filter(matching_notes)
