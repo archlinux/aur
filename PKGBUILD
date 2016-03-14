@@ -5,7 +5,7 @@
 
 pkgbase=linux-git
 _srcname=linux
-pkgver=4.5rc7.r0.gf6cede5
+pkgver=4.5.r0.gb562e44
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
