@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# ff-downloader v0.6.0.1
+# ff-downloader v0.6.0.2
 ## Copyright 2011-15 Simone Sclavi 'Ito'
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -295,7 +295,8 @@ get_url( $ff_url, 'SHA512SUMS' ) or die qq(:: ERROR - can't download SHA512SUMS\
 print ':: verifying sha512 checksum ... ';
 
 my @sha512_file = read_file('SHA512SUMS');
-my $search_string = "linux-${ARCH}/${LANG}/${ff_bz2}";
+my ($final_ver,) = split(/(rc|b)\d+$/, $VER);
+my $search_string = "firefox-${final_ver}.${LANG}.linux-${ARCH}.tar.bz2";
 my $sha512s;
 for (@sha512_file)
 {
