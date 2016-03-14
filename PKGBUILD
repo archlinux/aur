@@ -47,8 +47,8 @@ build() {
   cd ${srcdir}
 
   # Thanks to http://finance.groups.yahoo.com/group/TWSAPI/files/RPM%20spec%20file/
-  jar xf jts.jar trader/common/images/ibapp_icon_48x48.gif
-  jar xf jts.jar trader/common/images/quote_details_48x48.jpg
+  jar xf jts4launch.jar trader/common/images/ibapp_icon_48x48.gif
+  jar xf jts4launch.jar trader/common/images/quote_details_48x48.jpg
   convert trader/common/images/ibapp_icon_48x48.gif ${pkgname}.png
   convert trader/common/images/ibapp_icon_48x48.gif -resize 66.666% ${pkgname}-32x32.png
   convert trader/common/images/ibapp_icon_48x48.gif -resize 33.333% ${pkgname}-16x16.png
