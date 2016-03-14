@@ -15,6 +15,7 @@ pkgbase = wpgtk-git
 	depends = libxslt
 	provides = wpgtk
 	conflicts = wpgtk
+	conflicts = nitrogen
 	source = git://github.com/deviantfero/wpgtk#branch=master
 	sha512sums = SKIP
 
