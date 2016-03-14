@@ -7,8 +7,8 @@
 
 pkgname=geany-gtk3
 _pkgname=geany
-pkgver=1.26
-pkgrel=2
+pkgver=1.27
+pkgrel=1
 pkgdesc='Fast and lightweight IDE'
 arch=('x86_64' 'i686')
 url='http://www.geany.org/'
@@ -22,7 +22,7 @@ provides=('geany')
 conflicts=('geany')
 install="$pkgname.install"
 source=("http://download.geany.org/${_pkgname}-$pkgver.tar.bz2")
-md5sums=('bd457caba57099cfa23b063e78b6f819')
+md5sums=('7c23f835f45def89d10884c1343fa29e')
 
 prepare() {
 cd "${_pkgname}-$pkgver"
@@ -32,6 +32,7 @@ sed -i '0,/on/s//on2/' data/templates/files/main.py
 
 # Syntax highlighting for PKGBUILD files
 sed -i 's/Sh=/Sh=PKGBUILD;/' data/filetype_extensions.conf
+# getver: geany.org/Documentation/ChangeLog
 }
 
 build() {
