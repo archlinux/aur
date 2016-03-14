@@ -1,7 +1,7 @@
 # Maintainer: Peter Reschenhofer < peterreschenhofer at gmail dot com >
 # Contributor: Familia < carlosfamilia at gmail dot com >
 pkgname=rstudio-server-bin
-pkgver=0.99.878
+pkgver=0.99.892
 pkgrel=1
 pkgdesc="A integrated development environment (IDE) for R (binary version from RStudio official website)"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ conflicts=('rstudio-server' 'rstudio-server-git')
 provides=("rstudio-server=${pkgver}")
 #options=(!strip)
 
-_deb_x86_md5=e6e032a5f48d6f37c5d3319398c40bea
-_deb_x64_md5=c23a273f5e9e779efca1f3d51ce22383
+_deb_x86_md5=97bdc0be11fce3ce17a224701cb2f2f6
+_deb_x64_md5=f1c7b0838352a9048d32d38256d8d916
 _rstudioservice_md5=eea28f7865720f6c8d5de12f3f631880
 
 case "${CARCH}" in
