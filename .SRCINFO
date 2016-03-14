@@ -8,6 +8,9 @@ pkgbase = zx-git
 	makedepends = libxcb
 	depends = glib2
 	depends = i3ipc-glib-git
+	depends = pango
+	optdepends = cairo: needed for pango font support (one cairo package is required),
+	optdepends = cairo-infinality-ultimate: if you are running infinality cairo
 	source = zx::git+https://github.com/mstg/zx.git
 	sha512sums = SKIP
 
