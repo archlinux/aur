@@ -2,7 +2,7 @@
 
 pkgname=gringo
 groups=('potassco')
-pkgver=4.5.3
+pkgver=4.5.4
 pkgrel=1
 pkgdesc="Grounding tools for (disjunctive) logic programs."
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
@@ -12,7 +12,7 @@ depends=()
 makedepends=('bison' 're2c' 'scons')
 source=(
     "http://downloads.sourceforge.net/project/potassco/${pkgname}/${pkgver}/${pkgname}-${pkgver}-source.tar.gz")
-sha1sums=(3c050fdfda0cd7aa196eaac6e529f8e47a8b5ce9)
+sha1sums=(5eb5e077cf9e1a87baf2c18322e431158090d656)
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}-source"
     scons --build-dir=release ${pkgname}

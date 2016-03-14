@@ -1,6 +1,6 @@
 pkgbase = gringo
 	pkgdesc = Grounding tools for (disjunctive) logic programs.
-	pkgver = 4.5.3
+	pkgver = 4.5.4
 	pkgrel = 1
 	url = http://potassco.sourceforge.net/
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = gringo
 	makedepends = bison
 	makedepends = re2c
 	makedepends = scons
-	source = http://downloads.sourceforge.net/project/potassco/gringo/4.5.3/gringo-4.5.3-source.tar.gz
-	sha1sums = 3c050fdfda0cd7aa196eaac6e529f8e47a8b5ce9
+	source = http://downloads.sourceforge.net/project/potassco/gringo/4.5.4/gringo-4.5.4-source.tar.gz
+	sha1sums = 5eb5e077cf9e1a87baf2c18322e431158090d656
 
 pkgname = gringo
 
