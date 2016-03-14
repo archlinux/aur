@@ -1,4 +1,4 @@
-# Maintainer: Florian Dejonckheere <florian@floriandejonckheere.be>
+# Maintainer: Florian Dejonckheere <florian at floriandejonckheere dot be>
 
 pkgname=cover_grabber
 pkgver=1.2.1
