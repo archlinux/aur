@@ -1,0 +1,18 @@
+pkgbase = perl-xml-easy
+	pkgdesc = XML::Easy - XML processing with a clean interface
+	pkgver = 0.009
+	pkgrel = 1
+	url = http://search.cpan.org/dist/XML-Easy/
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	makedepends = perl-module-build
+	depends = perl
+	depends = perl-params-classify
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/Z/ZE/ZEFRAM/XML-Easy-0.009.tar.gz
+	md5sums = f263b36b7197eb5e83ec3a39c8b0327c
+
+pkgname = perl-xml-easy
+
