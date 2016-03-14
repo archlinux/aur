@@ -21,7 +21,7 @@ optdepends=(
 provides=('awesome' 'notification-daemon')
 backup=('etc/xdg/awesome/rc.lua')
 conflicts=('awesome' 'awesome-git' 'awesome34' 'awesome34-luajit')
-source=("git+https://github.com/awesomeWM/awesome.git#tag=v3.5.6"
+source=("git+https://github.com/awesomeWM/awesome.git#tag=v3.5.9"
         0001-add-luajit.patch
         awesome.desktop
         awesomeksm.desktop)
