@@ -1,4 +1,4 @@
-# Maintainer: Florian Dejonckheere <florian@floriandejonckheere.be>
+# Maintainer: Florian Dejonckheere <florian at floriandejonckheere dot be>
 # Contributor:  jyantis <yantis@yantis.net>
 
 pkgname=oh-my-zsh-powerlevel9k-theme-git
