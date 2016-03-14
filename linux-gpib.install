@@ -1,0 +1,19 @@
+post_install() {
+
+    getent group gpib || groupadd -r gpib
+    udevadm control --reload-rules 2>/dev/null
+
+    cat << EOF
+===> You must load gpib modules manually before starting gpib_config
+===> For example:
+===> # modprobe ni_usb_gpib
+EOF
+}
+
+post_upgrade() {
+    echo 'In order to use the new version, reload all gpib modules manually.'
+}
+
+post_remove() {
+    groupdel gpib >/dev/null 2>&1 || true
+}
