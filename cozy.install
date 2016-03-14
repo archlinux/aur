@@ -53,7 +53,7 @@ post_install() {
     if [ ! -f /etc/cozy/couchdb.login ]; then
         if [ ! -f /tmp/couchdb.login ]; then
             msg 'Found tokens from previous installation'
-            mv /tmp/couchdb.login /etc/cozy/couchdb.login
+            cp /tmp/couchdb.login /etc/cozy/couchdb.login
         else
             msg 'Generating CouchDB tokens...'
             pwgen -1 > /etc/cozy/couchdb.login && \
