@@ -8,13 +8,31 @@ pkgdesc="libiphone is a software library that talks the native Apple USB protoco
 url="http://libimobiledevice.org/"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('gnutls' 'libusb' 'fuse' 'glib2' 'libxml2' 'libxml++' 'libplist' 'usbmuxd')
-makedepends=('gcc' 'git' 'automake' 'autoconf' 'make' 'pkgconfig')
+depends=('gnutls'
+#	'fuse'
+#	'glib2'
+	'libplist'
+	'libusb'
+#	'libxml2'
+#	'libxml++' 
+	'usbmuxd')
+makedepends=('autoconf'
+	'automake'
+	'gcc'
+	'git'
+	'make'
+	'pkgconfig')
 optdepends=('doxygen: Documentation')
-#optdepends=('cython: Python bindings' 'doxygen: Documentation')
 provides=('libiphone')
-source=('libiphone::git+http://git.sukimashita.com/libimobiledevice.git')
-md5sums=('SKIP')
+source=('libiphone::git+http://git.sukimashita.com/libimobiledevice.git'
+	'SSLv23.patch')
+md5sums=('SKIP'
+         '1cf25e39d353e02c7c8daaa41bd671e9')
+
+prepare() {
+	cd libiphone
+	patch -p1 < ../SSLv23.patch
+}
 
 pkgver() {
 	cd libiphone

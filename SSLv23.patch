@@ -1,0 +1,12 @@
+diff -rupN libiphone.orig/src/idevice.c libiphone/src/idevice.c
+--- libiphone.orig/src/idevice.c	2016-03-14 23:30:17.705117000 +0100
++++ libiphone/src/idevice.c	2016-03-14 23:33:39.937235698 +0100
+@@ -678,7 +678,7 @@ LIBIMOBILEDEVICE_API idevice_error_t ide
+ 	}
+ 	BIO_set_fd(ssl_bio, (int)(long)connection->data, BIO_NOCLOSE);
+ 
+-	SSL_CTX *ssl_ctx = SSL_CTX_new(SSLv3_method());
++	SSL_CTX *ssl_ctx = SSL_CTX_new(SSLv23_method());
+ 	if (ssl_ctx == NULL) {
+ 		debug_info("ERROR: Could not create SSL context.");
+ 		BIO_free(ssl_bio);
