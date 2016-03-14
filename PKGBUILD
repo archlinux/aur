@@ -4,7 +4,7 @@
 
 pkgname=csvkit-git
 pkgver=0.9.1.r280.g48f9602
-pkgrel=2
+pkgrel=3
 pkgdesc="A suite of utilities for converting to and working with CSV."
 arch=('any')
 url="http://csvkit.readthedocs.org"
