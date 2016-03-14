@@ -15,7 +15,7 @@ arch=('any')
 depends=('python' 'python2' 'python2-pillow' 'feh' 'python-gobject' 'gtk3' 'libxslt')
 makedepends=('git')
 optdepends=()
-conflicts=("${_gitname}")
+conflicts=("${_gitname}" 'nitrogen')
 provides=("${_gitname}")
 
 pkgver() {
