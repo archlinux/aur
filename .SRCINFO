@@ -1,5 +1,5 @@
 pkgbase = perl-xml-easy
-	pkgdesc = XML::Easy - XML processing with a clean interface
+	pkgdesc = XML processing with a clean interface
 	pkgver = 0.009
 	pkgrel = 1
 	url = http://search.cpan.org/dist/XML-Easy/
