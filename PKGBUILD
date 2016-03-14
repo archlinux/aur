@@ -7,7 +7,7 @@
 pkgname=tvheadend-git
 _gitname='tvheadend-git'
 pkgver=4.1.r1672.g3927788
-pkgrel=2
+pkgrel=3
 pkgdesc="TV streaming server for Linux"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://tvheadend.org/"
@@ -45,8 +45,8 @@ build() {
     ./configure --prefix=/usr --mandir=/usr/share/man/man1 --python=python2 --release \
         --disable-libffmpeg_static --disable-libx264_static \
         --disable-libx265_static --enable-libx265 \
-        --enable-vdpau --enable-nvenc \
-        --disable-libmfx_static --enable-libmfx \
+        --enable-vdpau \
+        --disable-libmfx_static \
         --disable-hdhomerun_static 
     make
 }
