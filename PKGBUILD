@@ -3,7 +3,7 @@
 pkgbase='lsl-registration'
 pkgname=('lsl-registration' 'lsl-registration-lib')
 pkgver='0.1.3'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='A library for working with LIDAR data'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/branoholy/lsl'
@@ -25,11 +25,11 @@ build() {
 	cd lsl-$pkgver
 
 	mkdir -p builds/lsl-registration && cd builds/lsl-registration
-	cmake -Dinstall-headers:bool=on -Dlibrary:string=registration -DCMAKE_INSTALL_PREFIX=/usr ..
+	cmake -Dinstall-headers:bool=on -Dlibrary:string=registration -DCMAKE_INSTALL_PREFIX=/usr ../..
 	make
 
 	mkdir -p ../lsl-registration-lib && cd ../lsl-registration-lib
-	cmake -Dinstall-library:bool=on -Dlibrary:string=registration -DCMAKE_INSTALL_PREFIX=/usr ..
+	cmake -Dinstall-library:bool=on -Dlibrary:string=registration -DCMAKE_INSTALL_PREFIX=/usr ../..
 	make
 }
 
