@@ -19,7 +19,7 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git'
         "${pkgbase}.preset")
 sha256sums=('SKIP'
             'd402c67f5a7334ac9e242344055ef4ac63fe43a1d8f1cda82eddd59d7242a63e'
-            '752b1b7ec8fea86a6e10d49c64523a0500397a2a8e00a704333ff39ba4ae2e3f'
+            'a73da48ae6fac7832265d0ecfee091e04d19235041b536803bcedc95b19e56d3'
             '95fcfdfcb9d540d1a1428ce61e493ddf2c2a8ec96c8573deeadbb4ee407508c7')
 
 _kernelname=${pkgbase#linux}
