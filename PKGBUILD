@@ -3,7 +3,7 @@
 _theme=petrichor
 _pkgname=lightdm-webkit-theme-${_theme}
 pkgname=${_pkgname}-git
-pkgver=r14.b4607e0
+pkgver=1.0.r0.gd6bb5c0
 pkgrel=1
 pkgdesc="Simple and tidy theme for LightDM's webkit2 greeter"
 arch=('any')
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "${pkgname}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package () {
