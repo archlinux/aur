@@ -4,7 +4,7 @@
 
 _gitname=gimp
 pkgname="$_gitname"-gtk3-git
-pkgver=2.9.2.r292.g359c00a
+pkgver=2.9.2.r452.ga885dd9
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program"
 arch=('i686' 'x86_64')
@@ -26,29 +26,30 @@ install=$pkgname.install
 replaces=('gimp')
 provides=('gimp')
 conflicts=('gimp')
-source=(git://git.gnome.org/gimp
+source=(git://git.gnome.org/gimp#branch=gtk3-port
 		linux.gpl)
 md5sums=('SKIP' #generate with 'makepkg -g'
          'bb27bc214261d36484093e857f015f38')
 
 pkgver() {
-    cd $_gitname
-    git describe --long | sed 's/GIMP_//;s/\([^-]*-g\)/r\1/;s/-/./g;s/_/\./g'
+	cd $_gitname
+	git describe --long | sed 's/GIMP_//;s/\([^-]*-g\)/r\1/;s/-/./g;s/_/\./g'
+}
+
+prepare() {
+	cd $_gitname
+	sed -i -e 's/automake-1.11/automake-1.14/g' \
+                        -e 's/aclocal-1.11/aclocal-1.14/g' autogen.sh
 }
 
 build() {
-
 	cd $_gitname
-	git checkout -b gtk3-port origin/gtk3-port
-
-	sed -i -e 's/automake-1.11/automake-1.14/g' \
-			-e 's/aclocal-1.11/aclocal-1.14/g' autogen.sh
 
 	./autogen.sh --prefix=/usr --sysconfdir=/etc \
-    --enable-mp --enable-gimp-console \
-    --disable-python --with-gif-compression=lzw --with-libcurl \
-    --without-aa --without-hal --without-gvfs --without-gnomevfs \
-    --disable-gtk-doc
+	--enable-mp --enable-gimp-console \
+	--disable-python --with-gif-compression=lzw --with-libcurl \
+	--without-aa --without-hal --without-gvfs --without-gnomevfs \
+	--disable-gtk-doc
 	make
 }
 
