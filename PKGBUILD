@@ -3,7 +3,7 @@
 pkgbase=('python-django-pgallery')
 pkgname=('python-django-pgallery')
 _module='django-pgallery'
-pkgver='0.7.dev0'
+pkgver='0.7.1.dev0'
 pkgrel=1
 pkgdesc="Photo gallery app for PostgreSQL and Django."
 url="https://github.com/zsiciarz/django-pgallery"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://pypi.python.org/packages/source/d/django-pgallery/django-pgallery-${pkgver}.tar.gz")
-sha256sums=('d30d0fd716c1c383cb9b8e5d25fc80d9854b2ba57cd15807f5de845f530b4674')
+sha256sums=('df86e0fe7c3d864eec6012290e60c22d090eb24a40e2ecf6ef464288eb6f711f')
 
 package() {
     depends+=()
