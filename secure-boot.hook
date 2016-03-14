@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = linux
+
+[Action]
+When = PostTransaction
+Exec = /usr/bin/secure-boot update
+Depends = sbsigntools
+Depends = make
