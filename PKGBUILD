@@ -5,7 +5,7 @@
 # Contributor: Olaf Leidinger <leidola@newcon.de>
 
 pkgname=perl-pdf-api2
-pkgver=2.025
+pkgver=2.027
 pkgrel=1
 pkgdesc="A module chain to faciliate the creation and modification of high-quality PDF files"
 _dist=PDF-API2
@@ -15,7 +15,7 @@ license=('LGPL')
 depends=('perl>=5.8.5' 'perl-font-ttf')
 options=('!emptydirs' 'purge')
 source=("$_dist-$pkgver.tar.gz::http://cpan.metacpan.org/authors/id/S/SS/SSIMMS/$_dist-$pkgver.tar.gz")
-sha256sums=('123b49cd459526662d9e0c98c68a52294132051327abe07af1255d599e6d62ea')
+sha256sums=('d24db02d902198406270551857830633b289ad39f5a9ba5431246f8cd60e7599')
 
 build() {
   cd "$srcdir/$_dist-$pkgver"

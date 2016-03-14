@@ -1,6 +1,6 @@
 pkgbase = perl-pdf-api2
 	pkgdesc = A module chain to faciliate the creation and modification of high-quality PDF files
-	pkgver = 2.025
+	pkgver = 2.027
 	pkgrel = 1
 	url = https://metacpan.org/release/PDF-API2
 	arch = any
@@ -8,8 +8,9 @@ pkgbase = perl-pdf-api2
 	depends = perl>=5.8.5
 	depends = perl-font-ttf
 	options = !emptydirs
-	source = PDF-API2-2.025.tar.gz::http://cpan.metacpan.org/authors/id/S/SS/SSIMMS/PDF-API2-2.025.tar.gz
-	sha256sums = 123b49cd459526662d9e0c98c68a52294132051327abe07af1255d599e6d62ea
+	options = purge
+	source = PDF-API2-2.027.tar.gz::http://cpan.metacpan.org/authors/id/S/SS/SSIMMS/PDF-API2-2.027.tar.gz
+	sha256sums = d24db02d902198406270551857830633b289ad39f5a9ba5431246f8cd60e7599
 
 pkgname = perl-pdf-api2
 
