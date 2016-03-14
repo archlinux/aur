@@ -3,7 +3,7 @@
 pkgbase='lsl-core'
 pkgname=('lsl-core' 'lsl-core-lib')
 pkgver='0.1.3'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='A library for working with LIDAR data'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/branoholy/lsl'
