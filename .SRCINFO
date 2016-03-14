@@ -1,0 +1,15 @@
+pkgbase = lap-git
+	pkgdesc = A functional style C++11 library for parsing command line arguments
+	pkgver = r14.6af1ab9
+	pkgrel = 1
+	url = https://github.com/gilzoide/lap
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = scons
+	source = lap-git::git://github.com/gilzoide/lap.git
+	md5sums = SKIP
+
+pkgname = lap-git
+
