@@ -2,7 +2,7 @@
 # Maintainer: beest <gnubeest@gmail.com>
 
 pkgname=duc
-pkgver=1.3.3
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A library and suite of tools for inspecting disk usage."
 arch=('i686' 'x86_64')
@@ -27,9 +27,9 @@ package() {
 	make DESTDIR="$pkgdir/" install
 }
 
-sha1sums=('757c958452fe7da4e5067474e17534dd6a26d027'
-          '6633e6dbfab7e00cc659b6210379afb9166384f1')
-sha256sums=('73f4260994dea91a975b8e8cf7ba9a3b144e4787bc125d37747a106d3043b726'
-            '8f927a37cf749fa6f279cc4c74dd82d5d7932901e8e86265309121785fd6cb14')
-md5sums=('20a3a2e470f49c8748757801d96b16d8'
+md5sums=('c2108ef00f20784a9401ae95550adf2e'
          'a43e8bafaa9e16266e3d8d4a7f602df6')
+sha1sums=('c177ffe483522c9700c2ca2508d19b2c7ea6374d'
+          '6633e6dbfab7e00cc659b6210379afb9166384f1')
+sha256sums=('04c75ea1cb3ce2d66c5628d999eae2accf66f56b74a9a6879dc8ffb8c9d66bf3'
+            '8f927a37cf749fa6f279cc4c74dd82d5d7932901e8e86265309121785fd6cb14')
