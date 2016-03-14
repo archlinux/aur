@@ -67,5 +67,6 @@ package() {
   test -d "$srcdir/tmp" || mkdir "$srcdir/tmp"
   #chmod +r "$pkgdir"
   TMPDIR="$srcdir/tmp" pip install 'Babel>=2.0' dbfread --root "$pkgdir/"
+  TMPDIR="$srcdir/tmp" pip install 'dbfread>=2.0.5' --root "$pkgdir/"
 }
 
