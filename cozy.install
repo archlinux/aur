@@ -12,6 +12,7 @@ bold="${all_off}$(tput bold)"
 blue="${bold}$(tput setaf 4)"
 
 post_install() {
+    msg "Please not that this package comes from the Cozy community and is not an official Cozy port. Please report any trouble to the maintainer in the ways discribed at https://github.com/babolivier/cozy-archlinux#get-in-touch"
     msg "Checking ports availability"
     lsof -i :9002 > /dev/null 2>&1
     if [ $? = "0" ]; then
