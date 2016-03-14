@@ -2,7 +2,7 @@
 
 pkgname=xdiff-ext-git
 _pkgver=0.2.0
-pkgver=${_pkgver}.r16
+pkgver=${_pkgver}.r18
 pkgrel=1
 pkgdesc="A Thunar extension for launching file comparison tools"
 arch=('i686' 'x86_64')
