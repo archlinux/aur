@@ -2,7 +2,7 @@
 pkgname=poe
 pkgver=20160315.1_74131fa
 pkgrel=1
-pkgdesc="examine, list and fix suspicious constructs"
+pkgdesc="examine, list and fix suspicious constructs in Go source code"
 arch=('i686' 'x86_64')
 license=('GPL')
 makedepends=('go' 'git')
