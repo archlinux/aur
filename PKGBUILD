@@ -6,7 +6,7 @@
 pkgname=emacs-pretest
 _pkgname=emacs
 pkgver=25.0.92
-pkgrel=2
+pkgrel=3
 pkgdesc="The extensible, customizable, self-documenting real-time display editor -- pretest version"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
@@ -18,8 +18,7 @@ conflicts=('emacs')
 source=(ftp://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$pkgver.tar.xz{,.sig})
 sha384sums=('1d8f0a4aa0bb51589f917c5d7f639ce6fa483b60e6b74ef2e13294b3ce6ad7295cf9823693dd626e65f9c89fda028c1d'
             'SKIP')
-#validpgkkeys=('28D3BED851FDF3AB57FEF93C233587A47C207910') # import key hash and uncomment line if you want
-                                                          # crypto secure file verification with gpg.
+validpgkkeys=('28D3BED851FDF3AB57FEF93C233587A47C207910')
 
 build() {
   cd "$srcdir"/$_pkgname-$pkgver
