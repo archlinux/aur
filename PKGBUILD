@@ -14,27 +14,27 @@ source=("https://github.com/chewing/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('1ce0a98d7cbabe3d03d8dcc9bd1b0a05b8dd37d069b60cbf83bd4cef99939367')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-$pkgver"
 
-  mkdir build
+    mkdir build
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver/build"
+    cd "$srcdir/$pkgname-$pkgver/build"
 
-  cmake ../ -DCMAKE_INSTALL_PREFIX='/usr'
-  make
+    cmake ../ -DCMAKE_INSTALL_PREFIX='/usr'
+    make
 }
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver/build"
+    cd "$srcdir/$pkgname-$pkgver/build"
 
-  ./run-test
+    ./run-test
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver/build"
+    cd "$srcdir/$pkgname-$pkgver/build"
 
-  make DESTDIR="$pkgdir" install
-  install -Dm644 ../COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+    make DESTDIR="$pkgdir" install
+    install -Dm644 ../COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
