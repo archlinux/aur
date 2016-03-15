@@ -10,6 +10,7 @@ license=('GPL2')
 depends=('gtk3')
 makedepends=('cargo')
 provides=('systemd-manager')
+conflicts=('systemd-manager')
 source=("$pkgname::git+https://github.com/mmstick/systemd-manager/#branch=master")
 md5sums=('SKIP')
 
