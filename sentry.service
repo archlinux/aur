@@ -8,6 +8,7 @@ User=sentry
 Restart=always
 Environment=PATH=/opt/sentry/bin
 ExecStart=/opt/sentry/bin/sentry --config=/etc/sentry/sentry.conf.py start
+KillSignal=SIGINT
 
 [Install]
 WantedBy=multi-user.target
