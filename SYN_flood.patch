@@ -1,0 +1,25 @@
+From f54d1707ed6cbdfe8bd33dc9a49d9a20e2f684b7 Mon Sep 17 00:00:00 2001
+From: Almar Klein <almar.klein@gmail.com>
+Date: Tue, 15 Mar 2016 11:35:44 +0100
+Subject: [PATCH] fix slowness on new Linux kernel. issue #381
+
+---
+ pyzo/yoton/connection_tcp.py | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/pyzo/yoton/connection_tcp.py b/pyzo/yoton/connection_tcp.py
+index dc3a279..e8725fd 100644
+--- a/pyzo/yoton/connection_tcp.py
++++ b/pyzo/yoton/connection_tcp.py
+@@ -180,8 +180,9 @@ def _bind(self, hostname, port, max_tries=1):
+             tmp = "Could not bind to any of the " + tmp + " ports tried."
+             raise IOError(tmp)
+         
+-        # Tell the socket it is a host, backlog of zero
+-        s.listen(0)
++        # Tell the socket it is a host. Backlog of at least 1 to avoid linux 
++        # kernel from detecting SYN flood and throttling the connection (#381)
++        s.listen(1)
+         
+         # Set connected (status 1: waiting for connection)
+         # Will be called with status 2 by the hostThread on success

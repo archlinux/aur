@@ -1,7 +1,7 @@
 #Contributor: Hector Mtz-Seara <hseara.#at#.gmail*.*com>
 pkgname=iep
 pkgver=3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Pronounced as 'eep'is a cross-platform Python IDE focused on interactivity and introspection, which makes it very suitable for scientific computing. Its practical design is aimed at simplicity and efficiency."
 url="http://iep-project.org"
 license=("BSD")
@@ -14,8 +14,16 @@ optdepends=(
 makedepends=('python-setuptools')
 
 
-source=("http://bitbucket.org/iep-project/iep/downloads/iep-${pkgver}.source.zip")
-sha1sums=('4c5251813934f876b8aca6f213e5ff36686174c4')
+source=("http://bitbucket.org/iep-project/iep/downloads/iep-${pkgver}.source.zip"
+        "SYN_flood.patch")
+
+sha1sums=('4c5251813934f876b8aca6f213e5ff36686174c4'
+          '037799e6b50934e1fca169af90fddc2f47799cc9')
+prepare(){
+  cp SYN_flood.patch ${srcdir}/${pkgname}-${pkgver}/iep/yoton
+  cd "${srcdir}/${pkgname}-${pkgver}"/iep/yoton
+  patch connection_tcp.py < SYN_flood.patch
+}
 
 build(){
   cd "${srcdir}/${pkgname}-${pkgver}"
