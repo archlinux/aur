@@ -7,7 +7,7 @@ license=('GPL2')
 depends=("keepass")
 makedepends=('unzip')
 url="http://keepass.info/translations.html"
-source=(http://downloads.sourceforge.net/keepass/KeePass-2.32-Chinese_Simplified.zip)
+source=(https://downloads.sourceforge.net/keepass/KeePass-2.32-Chinese_Simplified.zip)
 arch=(any)
 sha512sums=('SKIP')
 
