@@ -10,7 +10,6 @@ post_install() {
     echo ">>>   sudo usermod -a -G tor zeronet"
     echo ">>>   sudo mkdir -m 750 /var/lib/tor-auth && sudo chown tor:tor /var/lib/tor-auth"
     echo ">>> Add/edit the following options in /etc/tor/torrc:"
-    echo ">>>   CookieAuth 1"
     echo ">>>   CookieAuthentication 1"
     echo ">>>   CookieAuthFileGroupReadable 1"
     echo ">>>   CookieAuthFile /var/lib/tor-auth/control_auth_cookie"
