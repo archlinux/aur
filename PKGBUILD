@@ -2,13 +2,15 @@
 
 _plug=dfttest
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r3.6.g2b7bd20
+pkgver=r3.9.gbe43cc7
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=171678'
 license=('GPL')
-depends=('vapoursynth' 'fftw')
+depends=('vapoursynth'
+         'fftw'
+         )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -22,9 +24,10 @@ pkgver() {
 
 build() {
   cd "${_plug}"
-  ./configure --install="${pkgdir}/usr/lib/vapoursynth" \
-              --extra-cxxflags="${CXXFLAGS} ${CPPFLAGS} -mno-xop" \
-              --extra-ldflags="${LDFLAGS}"
+  ./configure \
+    --install="${pkgdir}/usr/lib/vapoursynth" \
+    --extra-cxxflags="${CXXFLAGS} ${CPPFLAGS}" \
+    --extra-ldflags="${LDFLAGS}"
   make
 }
 
