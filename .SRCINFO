@@ -7,7 +7,6 @@ pkgbase = chewing-editor
 	arch = i686
 	arch = x86_64
 	license = GPL
-	license = BSD
 	makedepends = cmake
 	makedepends = qt5-tools
 	depends = libchewing

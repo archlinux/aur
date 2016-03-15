@@ -1,4 +1,4 @@
-# Maintainer: Mike Tzou <github27049215-aru AT yahoo.com.tw>
+# Maintainer: Chocobo1
 
 pkgname=chewing-editor
 pkgver=0.0.2
@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Cross platform chewing user phrase editor"
 arch=('i686' 'x86_64')
 url="http://chewing.im"
-license=('GPL' 'BSD')
+license=('GPL')
 depends=('libchewing' 'qt5-base' 'hicolor-icon-theme')
 makedepends=('cmake' 'qt5-tools')
 install=$pkgname.install
