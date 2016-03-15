@@ -37,7 +37,6 @@ package() {
 
   msg2 "Moving stuff in place..."
   # Install
-  rm -f firefox/update* firefox/icons/update*
   cp -r firefox/ "$pkgdir"/opt/$_pkgname
 
   # /usr/bin symlinks
