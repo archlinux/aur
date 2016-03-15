@@ -2,7 +2,7 @@
 # Contributor: Benjamin van der Burgh <benjaminvdb@gmail.com>
 
 pkgname=octave-hg
-pkgver=4.1.0+21445.de155ca994d4
+pkgver=4.1.0+21446.822dc5a202c9
 pkgrel=1
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
