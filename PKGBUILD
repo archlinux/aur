@@ -3,7 +3,7 @@
 
 pkgname=drush-git
 _pkgname=${pkgname%-git}
-pkgver=9.0.0.alpha1.r1.gb96621d
+pkgver=9.0.0.alpha1.r7.gce82b94
 pkgrel=1
 pkgdesc='The Drupal command-line shell, git version.'
 arch=('any')
@@ -61,6 +61,7 @@ package() {
   # Set up directory structure
   install --owner=http --group=http --mode=6775  --directory "$pkgdir/etc/drush"
   install --owner=http --group=http --mode=644 "$_pkgname.ini" "$pkgdir/etc/$_pkgname/$_pkgname.ini"
+  install --directory "$pkgdir/etc/bash_completion.d"
   install --directory "$pkgdir/usr/bin"
   install --directory "$pkgdir/usr/share/webapps/$_pkgname"
   install --directory "$pkgdir/usr/share/doc/$_pkgname/misc"
