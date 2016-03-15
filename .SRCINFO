@@ -1,0 +1,19 @@
+pkgbase = ii-git
+	pkgdesc = A minimalist FIFO and filesystem-based IRC client
+	pkgver = v1.7.7.gf79e2f0
+	pkgrel = 1
+	epoch = 1
+	url = http://tools.suckless.org/ii
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	depends = sh
+	provides = ii
+	conflicts = ii
+	source = ii::git+http://git.suckless.org/ii
+	md5sums = SKIP
+
+pkgname = ii-git
+
