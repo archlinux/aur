@@ -25,8 +25,8 @@ source_x86_64=("https://www.dashpay.io/binaries/dash-$pkgver-linux64.tar.gz")
 md5sums=('0d4112bc393f50dc2d0f7d615aa81f39'
          '700c3a8588e7f65cdea7d433c6345ce1'
          'a959a99a436ddca2af3ddc0b428faec2')
-md5sums_i686=('310bd1ed179911299f65035bbede4844')
-md5sums_x86_64=('7645dbd0d41be87105c7f8dcf06ad105')
+md5sums_i686=('789fa100c47ab7ae1e4358a79eaef82b')
+md5sums_x86_64=('910b5eeea1af779135d65db4bfaa45f6')
 
 package() {
   install -D -m755 "$srcdir/$_gitname-${pkgver%.*}/bin/dash-qt" "$pkgdir/usr/bin/dash-qt"
