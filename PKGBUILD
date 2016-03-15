@@ -2,14 +2,15 @@
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com> ([community] package)
 
 pkgname=remmina-git
-pkgver=1.2.0.rcgit.4.r1.g6700f29
+pkgver=1.2.0.rcgit.10.r6.gac2a205
 pkgrel=1
 pkgdesc='A remote desktop client written in GTK+ - git checkout'
 arch=(i686 x86_64)
 url='http://www.remmina.org/'
 license=('GPL')
 depends=('gtk2' 'zlib' 'libjpeg' 'libssh' 'libunique' 'avahi' 'vte3'
-	'libgcrypt' 'libxdmcp' 'libgnome-keyring' 'libvncserver')
+	'libgcrypt' 'libxdmcp' 'libgnome-keyring' 'libvncserver'
+	'libsecret' 'webkit2gtk')
 makedepends=('git' 'intltool' 'pkgconfig' 'cmake'
 	'avahi' 'libxkbfile' 'freerdp-git' 'telepathy-glib')
 optdepends=('avahi' 'libxkbfile' 'freerdp-git' 'telepathy-glib')
@@ -17,7 +18,7 @@ replaces=('remmina-plugins')
 provides=('remmina' 'grdc' "grdc=${pkgver}" 'remmina-plugins')
 conflicts=('remmina' 'grdc')
 install=remmina.install
-source=('remmina::git://github.com/FreeRDP/Remmina#branch=next')
+source=('remmina::git://github.com/FreeRDP/Remmina.git#branch=next')
 sha256sums=('SKIP')
 
 pkgver() {
