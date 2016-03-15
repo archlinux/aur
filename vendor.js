@@ -13,7 +13,7 @@ pref("full-screen-api.approval-required", false);
 pref("layout.word_select.eat_space_to_next_word", false); 
 pref("lightweightThemes.recommendedThemes", "");
 pref("loop.enabled", false);
-pref("extensions.pocket.enabled", false);
+pref("browser.pocket.enabled", false);
 pref("media.peerconnection.enabled", false);
 pref("startup.homepage_welcome_url", "");
 pref("security.OCSP.enabled", 0);
