@@ -42,6 +42,7 @@ package() {
   cp -a owncloud "${pkgdir}/usr/share/webapps/."
   
   install -m644 -D ${srcdir}/apache.example.conf -t ${pkgdir}/etc/webapps/owncloud
+  mkdir -p ${pkgdir}/usr/bin
   ln -s /usr/share/webapps/owncloud/occ ${pkgdir}/usr/bin/occ
 }
 
