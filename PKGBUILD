@@ -3,7 +3,7 @@
 # Contributor: minorsecond <minorsecond at gmail dot com>
 pkgname=wspr-svn
 pkgver=2460
-pkgrel=3
+pkgrel=4
 pkgdesc="Weak Signal Propagation Reporter"
 arch=('x86_64' 'i686' 'armv5h' 'armv6h' 'armv7h')
 url="http://physics.princeton.edu/pulsar/K1JT/wspr.html"
