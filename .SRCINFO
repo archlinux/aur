@@ -1,8 +1,8 @@
 pkgbase = yaourt-gui
 	pkgdesc = A bash GUI for yaourt
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 2
-	url = http://alexiobash.com/yaourt-gui-a-bash-gui-per-yaourt-3/
+	url = https://github.com/alexiobash/yaourt-gui/wiki
 	install = yaourt-gui.install
 	arch = any
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = yaourt-gui
 	depends = git
 	optdepends = aurvote: Tool to vote for favorite AUR packages
 	conflicts = yaourt-gui-manjaro
-	source = yaourt-gui::git+http://git.alexiobash.com/git/yaourt-gui
+	source = yaourt-gui::git+https://github.com/alexiobash/yaourt-gui.git
 	md5sums = SKIP
 
 pkgname = yaourt-gui
