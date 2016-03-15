@@ -6,7 +6,7 @@ url='https://github.com/F1ash/qt-virt-manager'
 makedepends=('cmake')
 arch=('i686' 'x86_64')
 license=('GPL2')
-pkgrel=1
+pkgrel=2
 pkgver=0.22.45
 source=("git+https://github.com/F1ash/qt-virt-manager.git#tag=$pkgver")
 depends+=('qt5-base' 'qt5-svg' 'qtermwidget-git' 'spice-protocol' 'spice-glib' 'libvirt' 'scrub')
@@ -36,9 +36,6 @@ build()
 
 package()
 {
-    depends+=('qt5-base' 'qt5-svg' 'qtermwidget')
-    pkgname='virt-manager-qt5'
-
     cd "$srcdir"/build
     make install DESTDIR=$pkgdir
 }
