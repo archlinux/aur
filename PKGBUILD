@@ -53,9 +53,6 @@ package() {
 
    mkdir -p "$pkgdir/opt/zeronet"
 
-   # zeronet.py expects log directory to exist
-   mkdir -p "$pkgdir/opt/zeronet/log"
-
    # There is no setup.py shipped, so brute-force copy
    cp -a "$srcdir/$_gitname/." "$pkgdir/opt/zeronet/"
 
