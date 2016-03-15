@@ -2,7 +2,7 @@
 
 pkgname='zeronet'
 pkgver=0.3.5
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://zeronet.io/"
 depends=('python2>=2.7.10'
@@ -15,10 +15,11 @@ source=("https://github.com/HelloZeroNet/ZeroNet/archive/v$pkgver.tar.gz"
         "zeronet.conf"
         "zeronet.service")
 md5sums=('879a0882fcbd3618020a78a56bb6597f'
-         '1c2281156533c912e407cf64f6a57e96'
-	 '5ff9b2c9b8f913bf4fd29b61e61e2334')
+         'c5216860cfc435a4861c55fd3933391c'
+         '5404c37540131f41f10e9be873d11fcc')
 install="zeronet.install"
 backup=("etc/zeronet.conf")
+options=(!strip) # ignore test binaries in the depsendency libs that fail strip
 
 # Upstream uses camel case
 _pkgarchive="ZeroNet-$pkgver"
@@ -27,9 +28,6 @@ package() {
    cd "$srcdir/$_gitname"
 
    mkdir -p "$pkgdir/opt/zeronet"
-
-   # zeronet.py expects log directory to exist
-   mkdir -p "$pkgdir/opt/zeronet/log"
 
    # There is no setup.py shipped, so brute-force copy
    cp -a "$srcdir/$_pkgarchive/." "$pkgdir/opt/zeronet/"
