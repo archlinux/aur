@@ -3,7 +3,7 @@
 #
 pkgname=epsxe
 pkgver=1.9.25
-pkgrel=9
+pkgrel=10
 pkgdesc="Enhanced PSX emulator"
 url="http://epsxe.com"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ source=(${pkgname}.desktop ${pkgname}.png ${pkgname}.sh
        "http://www.epsxe.com/files/epsxe${pkgver//./}lin.zip")
 md5sums=('f4bdb7ccbebc31f818d34198a5a32e29'
          'eb0c46b8ae1355c589792f6be1835e47'
-         'd047ea203979b52cc51c2ac21c852a37'
+         'ebe97b79a25e2622b3595d09f5b2764d'
          'dc54e1e3406b0010e0552cffabb16c0f')
 _ncurses="$(pacman -Q ncurses | awk '{sub(/-[0-9]+/, "", $2); print $2}')"
 _lib32_ncurses="$(pacman -Q lib32-ncurses | awk '{sub(/-[0-9]+/, "", $2); print $2}')"
