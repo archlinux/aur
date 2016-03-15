@@ -35,9 +35,6 @@ post_install() {
         exit 1
     fi
 
-    msg "Installing CoffeeScript"
-    npm install -g coffee-script
-
     msg 'Installing NPM dependencies...'
     npm config set python /usr/bin/python2
     [ ! -d /usr/local/lib/node_modules/cozy-controller ] && npm install -g cozy-controller
@@ -178,7 +175,7 @@ post_remove() {
     [ -d /usr/share/cozy ] && rm -rf /usr/share/cozy
     msg "Removing NPM dependencies"
     [ -f /usr/bin/cozy-controller ] && npm remove -g cozy-controller
-    [ -f /usr/bin/cozy-controller ] && npm remove -g cozy-monitor
+    [ -f /usr/bin/cozy-monitor ] && npm remove -g cozy-monitor
     msg "Removing supervisor configuration"
     test -e /etc/supervisor.d/cozy* && rm /etc/supervisor.d/cozy*
     supervisorctl reload

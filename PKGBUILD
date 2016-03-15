@@ -1,14 +1,14 @@
 # Maintainer: Brendan Abolivier <brendan@cozycloud.cc>
 pkgname=cozy
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A personal cloud you can hack, host and delete."
 arch=('any')
 url="https://cozy.io/"
 license=('GPL3')
 groups=()
-depends=('ca-certificates' 'couchdb' 'supervisor' 'bash' 'curl' 'git' 'imagemagick'
+depends=('ca-certificates' 'couchdb' 'supervisor' 'bash' 'curl' 'git' 'imagemagick' 'coffee-script'
     'openssl' 'libxml2' 'libxslt' 'python2' 'python2-setuptools' 'python2-virtualenv' 'sqlite'
     'nodejs-lts-bin' 'pwgen' 'pngcrush' 'lsof' 'cozy-management')
 makedepends=()
