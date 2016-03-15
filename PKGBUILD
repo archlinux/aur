@@ -16,9 +16,7 @@ sha512sums=('6bd57bb0ec2c5d04e0ac815bd1da75c175bf50597d5dae7b3b04f8eecd1035f6521
 
 package() {
     install -d "$pkgdir"/usr/share/webapps
-    install -d "$pkgdir"/etc/webapps/invoiceplane
     cp -a "$_pkgname-$pkgver" "$pkgdir"/usr/share/webapps/invoiceplane
-    ln -fs /etc/webapps/invoiceplane/database.php "$pkgdir"/usr/share/webapps/invoiceplane/application/config/database.php
 
     install -Dm644 "$_pkgname-$pkgver"/license.txt "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
