@@ -1,7 +1,7 @@
 # Maintainer: Manuel Schneider  <manuelschneid3r at googles mail>
 pkgname_=albert
 pkgname=${pkgname_}-git
-pkgver=0.8.2.r0.g1547a65
+pkgver=0.8.4.r0.geb9c420
 pkgrel=1
 pkgdesc="A DE agnostic omnilauncher."
 arch=('i686' 'x86_64')
