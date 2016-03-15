@@ -5,7 +5,7 @@ set -e
 _pi_ver=2
 pkgname="qcec"
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 provides=("$pkgname")
 conflicts=("$pkgname")
 pkgdesc="Qt CEC keyboard plugin for the Raspberry Pi"
@@ -36,10 +36,13 @@ package() {
   local repo_src=${srcdir}/${pkgname}
   local deploy_path=${pkgdir}/opt/qt-sdk-raspberry-pi${_pi_ver}/plugins/generic
   local ceclib_deploy_path=${pkgdir}/usr/lib
+  local pkgprofiled="${pkgdir}/etc/profile.d"
 
-  mkdir -p $deploy_path
+  mkdir -p ${deploy_path}
   mkdir -p ${ceclib_deploy_path}
+  mkdir -p ${pkgprofiled}
 
   cp ${repo_src}/out/* ${deploy_path}
   cp -a ${repo_src}/local/lib/libcec* ${ceclib_deploy_path}
+  cp ${startdir}/qcec.sh ${pkgprofiled} || exit 1
 }
