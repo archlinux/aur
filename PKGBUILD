@@ -17,15 +17,15 @@ source=("$_pkgname"::"git+https://github.com/dz0ny/$_pkgname")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$_pkgname"
-	git describe --always --long --tag | sed 's|-|.|g'
+  cd "$_pkgname"
+  git describe --always --long --tag | sed 's|-|.|g'
 }
 
 prepare() {
-	true
+  true
 }
 
 package() {
-	cd "$_pkgname"
-	python2.7 setup.py install --root="${pkgdir}" --optimize=1
+  cd "$_pkgname"
+  python2.7 setup.py install --root="${pkgdir}" --optimize=1
 }
