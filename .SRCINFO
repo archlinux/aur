@@ -1,0 +1,39 @@
+pkgbase = firefox-developer-zh-cn
+pkgdesc = Chinese Simplified For Firefox Developer (Aurora)
+pkgver = 47.0a2
+pkgrel = 1
+url = https://www.mozilla.org/zh-CN/firefox/developer/
+install = firefox-developer-zh-cn.install
+arch = i686
+arch = x86_64
+license = MPL
+license = GPL
+license = LGPL
+makedepends = pacman>=4.2.0
+depends = alsa-lib
+depends = dbus-glib
+depends = desktop-file-utils
+depends = gtk2
+depends = gtk3
+depends = hicolor-icon-theme
+depends = icu
+depends = libevent
+depends = libvpx
+depends = libxt
+depends = mime-types
+depends = nss
+depends = sqlite
+optdepends = ffmpeg: additional video and audio decoders
+optdepends = libpulse: PulseAudio driver
+optdepends = networkmanager: Location detection via available WiFi networks
+optdepends = upower: Battery API
+provides = firefox developer
+source = firefox-developer-zh-cn.desktop
+source = vendor.js
+source = https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-aurora-l10n/firefox-47.0a2.zh-CN.linux-.tar.bz2
+sha512sums = SKIP
+sha512sums = SKIP
+sha512sums = 
+
+pkgname = firefox-developer-zh-cn
+
