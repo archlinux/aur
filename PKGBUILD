@@ -2,7 +2,7 @@
 
 _plug=yadifmod
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r8.6.g9fb9467
+pkgver=r9.2.gdf73634
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT Version)"
 arch=('i686' 'x86_64')
@@ -22,9 +22,10 @@ pkgver() {
 
 build() {
   cd "${_plug}"
-  ./configure --install="${pkgdir}/usr/lib/vapoursynth" \
-              --extra-cxxflags="${CXXFLAGS} ${CPPFLAGS} -mno-xop" \
-              --extra-ldflags="${LDFLAGS}"
+  ./configure \
+    --install="${pkgdir}/usr/lib/vapoursynth" \
+    --extra-cxxflags="${CXXFLAGS} ${CPPFLAGS}" \
+    --extra-ldflags="${LDFLAGS}"
   make
 }
 
