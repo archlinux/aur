@@ -2,7 +2,7 @@
 
 pkgbase=reposurgeon
 pkgname=({cy,}reposurgeon)
-pkgver=3.35
+pkgver=3.37
 pkgrel=1
 pkgdesc="Performs surgery on version control repositories."
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=('bzr'
             'src'
             'subversion')
 source=("$url$pkgbase-$pkgver.tar.xz")
-sha256sums=('c8af962ed574387819502ee56cdadfe03e8953f09f3ff730de7e408ebeb5776b')
+sha256sums=('563dfffd71baa45a70796260f7851c00f9b47960678e0c7e81b00edfc9935a91')
 
 prepare() {
   cd "$srcdir/$pkgbase-$pkgver"
