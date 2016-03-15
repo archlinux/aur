@@ -2,7 +2,7 @@
 
 pkgname=yabar-git
 _pkgname=yabar
-pkgver=0.1.0.r0.gea4f877
+pkgver=0.1.0.r6.gdb362ad
 pkgrel=1
 pkgdesc="Modern and lightweight status bar for X window managers"
 arch=('i686' 'x86_64')
@@ -22,13 +22,13 @@ pkgver() {
 }
 
 build() {
-	cd $_pkgname
+  cd $_pkgname
 
-	make
+  make
 }
 
 package() {
-	cd $_pkgname
+  cd $_pkgname
 
-	make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" install
 }
