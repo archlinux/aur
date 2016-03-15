@@ -4,8 +4,8 @@
 pkgname="leapcast-git"
 _pkgname=${pkgname%-git}
 pkgdesc="ChromeCast emulation app for any device"
-pkgver=0.1.3.10.g6142d0a
-pkgrel=2
+pkgver=0.1.3.r10.g6142d0a
+pkgrel=3
 url="https://github.com/dz0ny/$_pkgname"
 license=('MIT')
 arch=('any')
@@ -18,14 +18,14 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --always --long --tag | sed 's|-|.|g'
-}
-
-prepare() {
-  true
+  (
+    set -o pipefail
+    git describe --long --tag | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 package() {
   cd "$_pkgname"
-  python2.7 setup.py install --root="${pkgdir}" --optimize=1
+  python2 setup.py install --root="${pkgdir}" --optimize=1
 }
