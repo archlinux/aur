@@ -2,7 +2,7 @@
 
 pkgname=alacryd-git
 pkgver=20160313
-pkgrel=1
+pkgrel=2
 pkgdesc="Expedient Perl6 module installation"
 arch=('any')
 depends=('perl6')
@@ -13,6 +13,7 @@ source=(git+https://github.com/atweiden/alacryd)
 sha256sums=('SKIP')
 provides=('alacryd')
 conflicts=('alacryd')
+install=alacryd.install
 
 pkgver() {
   cd ${pkgname%-git}
