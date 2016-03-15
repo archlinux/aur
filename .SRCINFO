@@ -1,0 +1,39 @@
+pkgbase = firefox-nightly-zh-cn
+pkgdesc = Chinese Simplified For Firefox Nightly
+pkgver = 48.0a1
+pkgrel = 1
+url = https://www.mozilla.org/zh-CN/firefox/nightly/
+install = firefox-nightly-zh-cn.install
+arch = i686
+arch = x86_64
+license = MPL
+license = GPL
+license = LGPL
+makedepends = pacman>=4.2.0
+depends = alsa-lib
+depends = dbus-glib
+depends = desktop-file-utils
+depends = gtk2
+depends = gtk3
+depends = hicolor-icon-theme
+depends = icu
+depends = libevent
+depends = libvpx
+depends = libxt
+depends = mime-types
+depends = nss
+depends = sqlite
+optdepends = ffmpeg: additional video and audio decoders
+optdepends = libpulse: PulseAudio driver
+optdepends = networkmanager: Location detection via available WiFi networks
+optdepends = upower: Battery API
+provides = firefox=48.0a1
+source = firefox-nightly-zh-cn.desktop
+source = vendor.js
+source = https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-48.0a1.zh-CN.linux-.tar.bz2
+sha512sums = 4b69f7eba4dcfd59437e63d62fd3c315294c26b766abca7311b41304732224f8ae61ee81e8ddf757dd88f259b11d8b3231b4dac05207f9a5de0d8f6aa5bc80cc
+sha512sums = SKIP
+sha512sums = 
+
+pkgname = firefox-nightly-zh-cn
+
