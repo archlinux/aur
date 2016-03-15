@@ -1,7 +1,7 @@
 post_install() {
     getent passwd zeronet &>/dev/null || {
         echo -n ">>> Creating zeronet user... "
-        useradd --system --user-group --home /opt/zeronet zeronet
+        useradd --system --user-group --home /var/lib/zeronet zeronet
         echo "done"
     }
     post_upgrade
@@ -27,6 +27,13 @@ post_install() {
 
 post_upgrade() {
     chown -R zeronet:zeronet /opt/zeronet
+
+    # Because prior versions did not use /var/lib for zeronet user home
+    mkdir -p /var/lib/zeronet
+    chown zeronet:zeronet /var/lib/zeronet
+
+    mkdir -p /var/log/zeronet
+    chown zeronet:zeronet /var/log/zeronet
 }
 
 pre_remove() {

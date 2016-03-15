@@ -22,8 +22,8 @@ source=("git://github.com/HelloZeroNet/ZeroNet.git"
         "zeronet.conf"
         "zeronet.service")
 md5sums=('SKIP'
-         '1c2281156533c912e407cf64f6a57e96'
-         '35a1d8325701eb000a4c3a28b7499096')
+         'c5216860cfc435a4861c55fd3933391c'
+         'b7733fe1d55d954f3eb7c04cf9e73e0d')
 install="zeronet.install"
 backup=("etc/zeronet.conf")
 options=(!strip) # attempt to strip binaries fromA dependent libs fial
