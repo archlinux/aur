@@ -3,7 +3,7 @@
 # Contributor: jebaum <jebaum at ucla dot edu>
 
 pkgname=fzf-git
-pkgver=20160303
+pkgver=20160315
 pkgrel=1
 pkgdesc="Command-line fuzzy finder"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
