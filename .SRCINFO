@@ -1,14 +1,14 @@
 pkgbase = adapta-gtk-theme
 	pkgdesc = An adaptive Gtk+ theme based on Material Design Guidelines.
-	pkgver = 3.18.8.233
+	pkgver = 3.18.8.238
 	pkgrel = 1
 	url = https://github.com/tista500/Adapta
 	arch = any
 	license = GPL2
 	depends = gtk2
 	depends = gtk3
-	source = https://github.com/tista500/Adapta/archive/3.18.8.233.tar.gz
-	sha256sums = 40cab040e2c502ee83e439babea700b1b341261392c3ac5bbee729c5a984fd42
+	source = https://github.com/tista500/Adapta/archive/3.18.8.238.tar.gz
+	sha256sums = 9826432ef9824e75666b4aa9896115df572691e6f58d6552a536e02b6eb5fbe5
 
 pkgname = adapta-gtk-theme
 
