@@ -1,7 +1,7 @@
 pkgbase = python-err
 	pkgdesc = A plugin based chatbot designed to be easily deployable, extensible and maintainable.
 	pkgver = 4.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://errbot.net
 	arch = any
 	license = GPL
@@ -20,7 +20,7 @@ pkgbase = python-err
 	optdepends = python-pyasn1: XMPP backend
 	optdepends = python-pyasn1-modules: XMPP backend
 	optdepends = python-dnspython: XMPP backend
-	optdepends = python-tox-git: TOX backend
+	optdepends = python-tox: TOX backend
 	optdepends = python-irc: IRC backend
 	options = !emptydirs
 	source = https://pypi.python.org/packages/source/e/errbot/errbot-4.0.1.tar.gz
