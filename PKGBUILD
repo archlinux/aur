@@ -1,29 +1,31 @@
 # Maintainer: Thomas Jost <schnouki@schnouki.net>
+# Comaintainer: Pedro A. López-Valencia <https://aur.archlinux.org/user/vorbote/>
 # Contributor: Juergen Hoetzel <juergen@archlinux.org>
 # Contributor: Renchi Raju <renchi@green.tam.uiuc.edu>
 
 pkgname=emacs-pretest
 _pkgname=emacs
 pkgver=25.0.92
-pkgrel=1
+pkgrel=2
 pkgdesc="The extensible, customizable, self-documenting real-time display editor -- pretest version"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
 license=('GPL3')
-depends=('librsvg' 'gpm' 'giflib' 'libxpm' 'libotf' 'm17n-lib' 'gtk3' 'hicolor-icon-theme' 'gconf' 'desktop-file-utils' 'alsa-lib' 'imagemagick' 'gnutls')
+depends=('gtk3' 'gpm' 'giflib' 'm17n-lib' 'desktop-file-utils' 'alsa-lib' 'imagemagick')
 install=$pkgname.install
 provides=('emacs')
 conflicts=('emacs')
 source=(ftp://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$pkgver.tar.xz{,.sig})
-whirlpoolsums=('26f937b8cd8bd87f61636f6193af9eecba9430cd01821015767c8800b9ad7ba61834215a8f8f382ae3eb0e60667fd10d94947980866b555028f24582f3a3dc8b'
-               'SKIP')
-validpgkkeys=('28D3BED851FDF3AB57FEF93C233587A47C207910')
+sha384sums=('1d8f0a4aa0bb51589f917c5d7f639ce6fa483b60e6b74ef2e13294b3ce6ad7295cf9823693dd626e65f9c89fda028c1d'
+            'SKIP')
+#validpgkkeys=('28D3BED851FDF3AB57FEF93C233587A47C207910') # import key hash and uncomment line if you want
+                                                          # crypto secure file verification with gpg.
 
 build() {
   cd "$srcdir"/$_pkgname-$pkgver
 
-  local confopts=(--prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib
-    --localstatedir=/var --with-x-toolkit=gtk3 --with-xft)
+  local confopts=(--prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib --localstatedir=/var 
+                  --with-x-toolkit=gtk3 --with-xft --without-gconf)
   ./configure "${confopts[@]}"
   make
 }
