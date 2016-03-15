@@ -1,0 +1,109 @@
+diff -Naur firefox-45.0esr.bak/browser/app/profile/firefox.js firefox-45.0esr/browser/app/profile/firefox.js
+--- firefox-45.0esr.bak/browser/app/profile/firefox.js	2016-03-13
++++ firefox-45.0esr/browser/app/profile/firefox.js	2016-03-13
+@@ -230,7 +230,7 @@
+ #endif
+ 
+ // At startup, check if we're the default browser and prompt user if not.
+-pref("browser.shell.checkDefaultBrowser", true);
++pref("browser.shell.checkDefaultBrowser", false);
+ pref("browser.shell.shortcutFavicons",true);
+ pref("browser.shell.mostRecentDateSetAsDefault", "");
+ pref("browser.shell.skipDefaultBrowserCheck", true);
+@@ -238,7 +238,7 @@
+ 
+ // 0 = blank, 1 = home (browser.startup.homepage), 2 = last visited page, 3 = resume previous browser session
+ // The behavior of option 3 is detailed at: http://wiki.mozilla.org/Session_Restore
+-pref("browser.startup.page",                1);
++pref("browser.startup.page",                0);
+ pref("browser.startup.homepage",            "chrome://branding/locale/browserconfig.properties");
+ 
+ pref("browser.slowStartup.notificationDisabled", false);
+@@ -312,7 +312,7 @@
+ pref("browser.urlbar.suggest.bookmark",             true);
+ pref("browser.urlbar.suggest.openpage",             true);
+ pref("browser.urlbar.suggest.searches",             false);
+-pref("browser.urlbar.userMadeSearchSuggestionsChoice", false);
++pref("browser.urlbar.userMadeSearchSuggestionsChoice", true);
+ 
+ // Limit the number of characters sent to the current search engine to fetch
+ // suggestions.
+@@ -426,7 +426,7 @@
+ // Tabbed browser
+ pref("browser.tabs.closeWindowWithLastTab", true);
+ pref("browser.tabs.insertRelatedAfterCurrent", true);
+-pref("browser.tabs.warnOnClose", true);
++pref("browser.tabs.warnOnClose", false);
+ pref("browser.tabs.warnOnCloseOtherTabs", true);
+ pref("browser.tabs.warnOnOpen", true);
+ pref("browser.tabs.maxOpenBeforeWarn", 15);
+@@ -1335,7 +1335,7 @@
+ pref("browser.newtab.preload", true);
+ 
+ // Remembers if the about:newtab intro has been shown
+-pref("browser.newtabpage.introShown", false);
++pref("browser.newtabpage.introShown", true);
+ 
+ // Toggles the content of 'about:newtab'. Shows the grid when enabled.
+ pref("browser.newtabpage.enabled", true);
+diff -Naur firefox-45.0esr.bak/browser/branding/official/pref/firefox-branding.js firefox-45.0esr/browser/branding/official/pref/firefox-branding.js
+--- firefox-45.0esr.bak/browser/branding/official/pref/firefox-branding.js	2016-03-13
++++ firefox-45.0esr/browser/branding/official/pref/firefox-branding.js	2016-03-13
+@@ -3,8 +3,7 @@
+  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+ 
+ pref("startup.homepage_override_url", "");
+-pref("startup.homepage_welcome_url", "https://www.mozilla.org/%LOCALE%/firefox/%VERSION%/firstrun/");
+-pref("startup.homepage_welcome_url.additional", "https://www.mozilla.org/%LOCALE%/firefox/%VERSION%/firstrun/learnmore/");
++pref("startup.homepage_welcome_url", "about:blank");
+ // Interval: Time between checks for a new version (in seconds)
+ pref("app.update.interval", 43200); // 12 hours
+ // The time interval between the downloading of mar file chunks in the
+diff -Naur firefox-45.0esr.bak/build/application.ini firefox-45.0esr/build/application.ini
+--- firefox-45.0esr.bak/build/application.ini	2016-03-13
++++ firefox-45.0esr/build/application.ini	2016-03-13
+@@ -41,7 +41,7 @@
+ 
+ [XRE]
+ #ifdef MOZ_PROFILE_MIGRATOR
+-EnableProfileMigrator=1
++EnableProfileMigrator=0
+ #endif
+ 
+ #if MOZ_CRASHREPORTER
+diff -Naur firefox-45.0esr.bak/modules/libpref/init/all.js firefox-45.0esr/modules/libpref/init/all.js
+--- firefox-45.0esr.bak/modules/libpref/init/all.js	2016-03-13
++++ firefox-45.0esr/modules/libpref/init/all.js	2016-03-13
+@@ -29,7 +29,7 @@
+ 
+ pref("general.config.obscure_value", 13); // for MCD .cfg files
+ 
+-pref("general.warnOnAboutConfig", true);
++pref("general.warnOnAboutConfig", false);
+ 
+ // maximum number of dated backups to keep at any time
+ pref("browser.bookmarks.max_backups",       5);
+@@ -4096,7 +4096,7 @@
+ 
+ // Satchel (Form Manager) prefs
+ pref("browser.formfill.debug",            false);
+-pref("browser.formfill.enable",           true);
++pref("browser.formfill.enable",           false);
+ pref("browser.formfill.expire_days",      180);
+ pref("browser.formfill.saveHttpsForms",   true);
+ pref("browser.formfill.agedWeight",       2);
+diff -Naur firefox-45.0esr.bak/services/healthreport/healthreport-prefs.js firefox-45.0esr/services/healthreport/healthreport-prefs.js
+--- firefox-45.0esr.bak/services/healthreport/healthreport-prefs.js	2016-03-13
++++ firefox-45.0esr/services/healthreport/healthreport-prefs.js	2016-03-13
+@@ -18,9 +18,9 @@
+ pref("datareporting.healthreport.pendingDeleteRemoteData", false);
+ 
+ // Health Report is enabled by default on all channels.
+-pref("datareporting.healthreport.uploadEnabled", true);
++pref("datareporting.healthreport.uploadEnabled", false);
+ 
+-pref("datareporting.healthreport.service.enabled", true);
++pref("datareporting.healthreport.service.enabled", false);
+ pref("datareporting.healthreport.service.loadDelayMsec", 10000);
+ pref("datareporting.healthreport.service.loadDelayFirstRunMsec", 60000);
+ 

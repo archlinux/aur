@@ -1,0 +1,1075 @@
+diff -Naur firefox-45.0esr.bak/browser/app/profile/firefox.js firefox-45.0esr/browser/app/profile/firefox.js
+--- firefox-45.0esr.bak/browser/app/profile/firefox.js	2016-03-13
++++ firefox-45.0esr/browser/app/profile/firefox.js	2016-03-13
+@@ -1617,13 +1617,6 @@
+ // and because (normally) these errors are not persisted anywhere.
+ pref("reader.errors.includeURLs", true);
+ 
+-pref("browser.pocket.enabled", true);
+-pref("browser.pocket.api", "api.getpocket.com");
+-pref("browser.pocket.site", "getpocket.com");
+-pref("browser.pocket.oAuthConsumerKey", "40249-e88c401e1b1f2242d9e441c4");
+-pref("browser.pocket.useLocaleList", true);
+-pref("browser.pocket.enabledLocales", "cs de en-GB en-US en-ZA es-ES es-MX fr hu it ja ja-JP-mac ko nl pl pt-BR pt-PT ru zh-CN zh-TW");
+-
+ pref("view_source.tab", true);
+ 
+ pref("dom.webnotifications.serviceworker.enabled", true);
+diff -Naur firefox-45.0esr.bak/browser/base/content/browser-context.inc firefox-45.0esr/browser/base/content/browser-context.inc
+--- firefox-45.0esr.bak/browser/base/content/browser-context.inc	2016-03-13
++++ firefox-45.0esr/browser/base/content/browser-context.inc	2016-03-13
+@@ -79,10 +79,6 @@
+                 label="&saveLinkCmd.label;"
+                 accesskey="&saveLinkCmd.accesskey;"
+                 oncommand="gContextMenu.saveLink();"/>
+-      <menuitem id="context-savelinktopocket"
+-                label="&saveLinkToPocketCmd.label;"
+-                accesskey="&saveLinkToPocketCmd.accesskey;"
+-                oncommand="gContextMenu.saveLinkToPocket();"/>
+       <menu id="context-marklinkMenu" label="&social.marklinkMenu.label;"
+             accesskey="&social.marklinkMenu.accesskey;">
+         <menupopup/>
+@@ -270,10 +266,6 @@
+                 label="&savePageCmd.label;"
+                 accesskey="&savePageCmd.accesskey2;"
+                 oncommand="gContextMenu.savePageAs();"/>
+-      <menuitem id="context-pocket"
+-                label="&saveToPocketCmd.label;"
+-                accesskey="&saveToPocketCmd.accesskey;"
+-                oncommand="gContextMenu.savePageToPocket();"/>
+       <menu id="context-markpageMenu" label="&social.markpageMenu.label;"
+             accesskey="&social.markpageMenu.accesskey;">
+         <menupopup/>
+diff -Naur firefox-45.0esr.bak/browser/base/content/browser.css firefox-45.0esr/browser/base/content/browser.css
+--- firefox-45.0esr.bak/browser/base/content/browser.css	2016-03-13
++++ firefox-45.0esr/browser/base/content/browser.css	2016-03-13
+@@ -18,30 +18,6 @@
+ %endif
+ }
+ 
+-/* These values are chosen to keep the Loop detached chat window from
+- * getting too small.  When it's too small, three bad things happen:
+- *
+- * - It looks terrible
+- * - It's not really usable
+- * - It's possible for the user to be transmitting video that's cropped by the
+- *   the edge of the window, so that they're not aware of it, which is a
+- *   privacy problem
+- *
+- * Note that if the chat window grows more users than Loop who want this
+- * ability, we'll need to generalize.  A partial patch for this is in
+- * bug 1112264.
+- */
+-
+-#chat-window {
+- /*
+-  * In some ideal world, we'd have a simple way to express "block resizing
+-  * along any dimension beyond the point at which an overflow event would
+-  * occur".  But none of -moz-{fit,max,min}-content do what we want here. So..
+-  */
+-  min-width: 260px;
+-  min-height: 315px;
+-}
+-
+ #main-window[customize-entered] {
+   min-width: -moz-fit-content;
+ }
+@@ -897,68 +873,6 @@
+   -moz-binding: url("chrome://browser/content/translation-infobar.xml#translationbar");
+ }
+ 
+-/* Social */
+-/* Note the chatbox 'width' values are duplicated in socialchat.xml */
+-chatbox {
+-  -moz-binding: url("chrome://browser/content/socialchat.xml#chatbox");
+-  transition: height 150ms ease-out, width 150ms ease-out;
+-  height: 290px;
+-  width: 300px; /* CHAT_WIDTH_OPEN in socialchat.xml */
+-}
+-
+-chatbox[customSize] {
+-  width: 350px; /* CHAT_WIDTH_OPEN_ALT in socialchat.xml */
+-}
+-
+-#chat-window[customSize] {
+-  min-width: 350px;
+-}
+-
+-chatbox[customSize="loopChatEnabled"] {
+-  /* 430px as defined per UX */
+-  height: 430px;
+-}
+-
+-#chat-window[customSize="loopChatEnabled"] {
+-  /* 325px + 30px top bar height. */
+-  min-height: calc(325px + 30px);
+-}
+-
+-chatbox[customSize="loopChatMessageAppended"] {
+-  /* 430px as defined per UX */
+-  height: 430px;
+-}
+-
+-chatbox[customSize="loopChatDisabledMessageAppended"] {
+-  /* 388px as defined per UX */
+-  height: 388px;
+-}
+-
+-#chat-window[customSize="loopChatMessageAppended"] {
+-  /* 445px + 30px top bar height. */
+-  min-height: calc(400px + 30px);
+-}
+-
+-chatbox[minimized="true"] {
+-  width: 160px;
+-  height: 20px; /* CHAT_WIDTH_MINIMIZED in socialchat.xml */
+-}
+-
+-chatbar {
+-  -moz-binding: url("chrome://browser/content/socialchat.xml#chatbar");
+-  height: 0;
+-  max-height: 0;
+-}
+-
+-.chatbar-innerbox {
+-  margin: -285px 0 0;
+-}
+-
+-chatbar[customSize] > .chatbar-innerbox {
+-  /* 450px to make room for the maximum custom-size chatbox; currently 'loopChatMessageAppended'. */
+-  margin-top: -450px;
+-}
+-
+ /* Apply crisp rendering for favicons at exactly 2dppx resolution */
+ @media (resolution: 2dppx) {
+   #social-sidebar-favico,
+diff -Naur firefox-45.0esr.bak/browser/base/content/browser.js firefox-45.0esr/browser/base/content/browser.js
+--- firefox-45.0esr.bak/browser/base/content/browser.js	2016-03-13
++++ firefox-45.0esr/browser/base/content/browser.js	2016-03-13
+@@ -53,37 +53,6 @@
+                                    "@mozilla.org/windows-ui-utils;1", "nsIWindowsUIUtils");
+ XPCOMUtils.defineLazyModuleGetter(this, "LightweightThemeManager",
+                                   "resource://gre/modules/LightweightThemeManager.jsm");
+-XPCOMUtils.defineLazyModuleGetter(this, "Pocket",
+-                                  "resource:///modules/Pocket.jsm");
+-
+-// Can't use XPCOMUtils for these because the scripts try to define the variables
+-// on window, and so the defineProperty inside defineLazyGetter fails.
+-Object.defineProperty(window, "pktApi", {
+-  get: function() {
+-    // Avoid this getter running again:
+-    delete window.pktApi;
+-    Services.scriptloader.loadSubScript("chrome://browser/content/pocket/pktApi.js", window);
+-    return window.pktApi;
+-  },
+-  configurable: true,
+-  enumerable: true
+-});
+-
+-function pktUIGetter(prop) {
+-  return {
+-    get: function() {
+-      // Avoid either of these getters running again:
+-      delete window.pktUI;
+-      delete window.pktUIMessaging;
+-      Services.scriptloader.loadSubScript("chrome://browser/content/pocket/main.js", window);
+-      return window[prop];
+-    },
+-    configurable: true,
+-    enumerable: true
+-  };
+-}
+-Object.defineProperty(window, "pktUI", pktUIGetter("pktUI"));
+-Object.defineProperty(window, "pktUIMessaging", pktUIGetter("pktUIMessaging"));
+ 
+ XPCOMUtils.defineLazyGetter(this, "gBrowserBundle", function() {
+   return Services.strings.createBundle('chrome://browser/locale/browser.properties');
+diff -Naur firefox-45.0esr.bak/browser/base/content/browser-menubar.inc firefox-45.0esr/browser/base/content/browser-menubar.inc
+--- firefox-45.0esr.bak/browser/base/content/browser-menubar.inc	2016-03-13
++++ firefox-45.0esr/browser/base/content/browser-menubar.inc	2016-03-13
+@@ -413,7 +413,6 @@
+                oncommand="BookmarksEventHandler.onCommand(event, this.parentNode._placesView);"
+                onclick="BookmarksEventHandler.onClick(event, this.parentNode._placesView);"
+                onpopupshowing="BookmarkingUI.onMainMenuPopupShowing(event);
+-                               BookmarkingUI.updatePocketItemVisibility('menu_');
+                                if (!this.parentNode._placesView)
+                                  new PlacesMenu(event, 'place:folder=BOOKMARKS_MENU');"
+                tooltip="bhTooltip" popupsinherittooltip="true">
+@@ -422,12 +421,6 @@
+                 command="Browser:ShowAllBookmarks"
+                 key="manBookmarkKb"/>
+       <menuseparator id="organizeBookmarksSeparator"/>
+-      <menuitem id="menu_pocket" label="&pocketMenuitem.label;"
+-#ifndef XP_MACOSX
+-                class="menuitem-iconic"
+-#endif
+-                oncommand="openUILink(Pocket.listURL, event);"/>
+-      <menuseparator id="menu_pocketSeparator"/>
+       <menuitem id="menu_bookmarkThisPage"
+                 command="Browser:AddBookmarkAs"
+                 observes="bookmarkThisPageBroadcaster"
+@@ -500,11 +493,6 @@
+                         key="key_openAddons"
+                         command="Tools:Addons"/>
+ 
+-              <menuitem id="menu_openLoop"
+-                        label="&loopMenuItem.label;"
+-                        accesskey = "&loopMenuItem.accesskey;"
+-                        oncommand="LoopUI.togglePanel();"/>
+-
+               <!-- only one of sync-setup, sync-syncnowitem or sync-reauthitem will be showing at once -->
+               <menuitem id="sync-setup"
+                         label="&syncSignIn.label;"
+diff -Naur firefox-45.0esr.bak/browser/base/content/browser-places.js firefox-45.0esr/browser/base/content/browser-places.js
+--- firefox-45.0esr.bak/browser/base/content/browser-places.js	2016-03-13
++++ firefox-45.0esr/browser/base/content/browser-places.js	2016-03-13
+@@ -1552,12 +1552,6 @@
+     PlacesCommandHook.updateBookmarkAllTabsCommand();
+   },
+ 
+-  updatePocketItemVisibility: function BUI_updatePocketItemVisibility(prefix) {
+-    let hidden = !CustomizableUI.getPlacementOfWidget("pocket-button");
+-    document.getElementById(prefix + "pocket").hidden = hidden;
+-    document.getElementById(prefix + "pocketSeparator").hidden = hidden;
+-  },
+-
+   _showBookmarkedNotification: function BUI_showBookmarkedNotification() {
+     function getCenteringTransformForRects(rectToPosition, referenceRect) {
+       let topDiff = referenceRect.top - rectToPosition.top;
+@@ -1679,7 +1673,6 @@
+ 
+   onPanelMenuViewShowing: function BUI_onViewShowing(aEvent) {
+     this._updateBookmarkPageMenuItem();
+-    this.updatePocketItemVisibility("panelMenu_");
+     // Update checked status of the toolbar toggle.
+     let viewToolbar = document.getElementById("panelMenu_viewBookmarksToolbar");
+     let personalToolbar = document.getElementById("PersonalToolbar");
+diff -Naur firefox-45.0esr.bak/browser/base/content/browser.xul firefox-45.0esr/browser/base/content/browser.xul
+--- firefox-45.0esr.bak/browser/base/content/browser.xul	2016-03-13
++++ firefox-45.0esr/browser/base/content/browser.xul	2016-03-13
+@@ -290,18 +290,6 @@
+            noautofocus="true"
+            position="topcenter topright"/>
+ 
+-    <panel id="loop-notification-panel"
+-           class="loop-panel social-panel"
+-           type="arrow"
+-           hidden="true"
+-           noautofocus="true"/>
+-
+-    <panel id="loop-panel"
+-           class="loop-panel social-panel"
+-           type="arrow"
+-           orient="horizontal"
+-           hidden="true"/>
+-
+     <menupopup id="toolbar-context-menu"
+                onpopupshowing="onViewToolbarsPopupShowing(event, document.getElementById('viewToolbarsMenuSeparator'));">
+       <menuitem oncommand="gCustomizeMode.addToPanel(document.popupNode)"
+@@ -609,9 +597,9 @@
+              fullscreentoolbar="true" mode="icons" customizable="true"
+              iconsize="small"
+ #ifdef MOZ_DEV_EDITION
+-             defaultset="urlbar-container,search-container,developer-button,bookmarks-menu-button,pocket-button,downloads-button,home-button,loop-button"
++             defaultset="urlbar-container,search-container,developer-button,bookmarks-menu-button,downloads-button,home-button"
+ #else
+-             defaultset="urlbar-container,search-container,bookmarks-menu-button,pocket-button,downloads-button,home-button,loop-button"
++             defaultset="urlbar-container,search-container,bookmarks-menu-button,downloads-button,home-button"
+ #endif
+              customizationtarget="nav-bar-customization-target"
+              overflowable="true"
+@@ -787,7 +775,6 @@
+                      oncommand="BookmarksEventHandler.onCommand(event, this.parentNode._placesView);"
+                      onclick="BookmarksEventHandler.onClick(event, this.parentNode._placesView);"
+                      onpopupshowing="BookmarkingUI.onPopupShowing(event);
+-                                     BookmarkingUI.updatePocketItemVisibility('BMB_');
+                                      BookmarkingUI.attachPlacesView(event, this);"
+                      tooltip="bhTooltip" popupsinherittooltip="true">
+             <menuitem id="BMB_viewBookmarksSidebar"
+@@ -804,11 +791,6 @@
+                       command="Browser:ShowAllBookmarks"
+                       key="manBookmarkKb"/>
+             <menuseparator/>
+-            <menuitem id="BMB_pocket"
+-                      class="menuitem-iconic bookmark-item subviewbutton"
+-                      label="&pocketMenuitem.label;"
+-                      oncommand="openUILink(Pocket.listURL, event);"/>
+-            <menuseparator id="BMB_pocketSeparator"/>
+             <menuitem id="BMB_subscribeToPageMenuitem"
+ #ifndef XP_MACOSX
+                       class="menuitem-iconic subviewbutton"
+diff -Naur firefox-45.0esr.bak/browser/base/content/nsContextMenu.js firefox-45.0esr/browser/base/content/nsContextMenu.js
+--- firefox-45.0esr.bak/browser/base/content/nsContextMenu.js	2016-03-13
++++ firefox-45.0esr/browser/base/content/nsContextMenu.js	2016-03-13
+@@ -13,8 +13,6 @@
+ 
+ XPCOMUtils.defineLazyModuleGetter(this, "CustomizableUI",
+   "resource:///modules/CustomizableUI.jsm");
+-XPCOMUtils.defineLazyModuleGetter(this, "Pocket",
+-  "resource:///modules/Pocket.jsm");
+ XPCOMUtils.defineLazyModuleGetter(this, "LoginHelper",
+   "resource://gre/modules/LoginHelper.jsm");
+ 
+@@ -216,25 +214,6 @@
+                      SimpleServiceDiscovery.services.length > 0 &&
+                      CastingApps.getServicesForVideo(this.target).length > 0;
+     this.setItemAttr("context-castvideo", "disabled", !shouldShowCast);
+-
+-    this.initPocketItems();
+-  },
+-
+-  initPocketItems: function CM_initPocketItems() {
+-    var showSaveCurrentPageToPocket = !(this.onTextInput || this.onLink ||
+-                                        this.isContentSelected || this.onImage ||
+-                                        this.onCanvas || this.onVideo || this.onAudio);
+-    let targetURI = (this.onSaveableLink || this.onPlainTextLink) ? this.linkURI : this.browser.currentURI;
+-    let canPocket = CustomizableUI.getPlacementOfWidget("pocket-button") &&
+-                    window.pktApi && window.pktApi.isUserLoggedIn();
+-    canPocket = canPocket && (targetURI.schemeIs("http") || targetURI.schemeIs("https") ||
+-                              (targetURI.schemeIs("about") && ReaderMode.getOriginalUrl(targetURI.spec)));
+-    canPocket = canPocket && window.gBrowser && this.browser.getTabBrowser() == window.gBrowser;
+-
+-    this.showItem("context-pocket", canPocket && showSaveCurrentPageToPocket);
+-    let showSaveLinkToPocket = canPocket && !showSaveCurrentPageToPocket &&
+-                               (this.onSaveableLink || this.onPlainTextLink);
+-    this.showItem("context-savelinktopocket", showSaveLinkToPocket);
+   },
+ 
+   initViewItems: function CM_initViewItems() {
+@@ -1723,14 +1702,6 @@
+     saveBrowser(this.browser);
+   },
+ 
+-  saveLinkToPocket: function CM_saveLinkToPocket() {
+-    Pocket.savePage(this.browser, this.linkURL);
+-  },
+-
+-  savePageToPocket: function CM_saveToPocket() {
+-    Pocket.savePage(this.browser, this.browser.currentURI.spec, this.browser.contentTitle);
+-  },
+-
+   printFrame: function CM_printFrame() {
+     PrintUtils.printWindow(this.frameOuterWindowID, this.browser);
+   },
+diff -Naur firefox-45.0esr.bak/browser/components/customizableui/content/panelUI.inc.xul firefox-45.0esr/browser/components/customizableui/content/panelUI.inc.xul
+--- firefox-45.0esr.bak/browser/components/customizableui/content/panelUI.inc.xul	2016-03-13
++++ firefox-45.0esr/browser/components/customizableui/content/panelUI.inc.xul	2016-03-13
+@@ -196,10 +196,6 @@
+                        observes="bookmarkThisPageBroadcaster"
+                        command="Browser:AddBookmarkAs"
+                        onclick="PanelUI.hide();"/>
+-        <toolbarseparator id="panelMenu_pocketSeparator"/>
+-        <toolbarbutton id="panelMenu_pocket" label="&pocketMenuitem.label;"
+-                       class="subviewbutton cui-withicon"
+-                       oncommand="openUILink(Pocket.listURL, event);"/>
+         <toolbarseparator/>
+         <toolbarbutton id="panelMenu_viewBookmarksSidebar"
+                        label="&viewBookmarksSidebar2.label;"
+@@ -243,8 +239,6 @@
+ 
+     <panelview id="PanelUI-socialapi" flex="1"/>
+ 
+-    <panelview id="PanelUI-loopapi" flex="1"/>
+-
+     <panelview id="PanelUI-feeds" flex="1" oncommand="FeedHandler.subscribeToFeed(null, event);">
+       <label value="&feedsMenu.label;" class="panel-subview-header"/>
+     </panelview>
+@@ -315,11 +309,6 @@
+       </vbox>
+     </panelview>
+ 
+-    <panelview id="PanelUI-pocketView" flex="1">
+-      <vbox class="panel-subview-body">
+-      </vbox>
+-    </panelview>
+-
+ 
+   </panelmultiview>
+   <!-- These menupopups are located here to prevent flickering,
+diff -Naur firefox-45.0esr.bak/browser/components/customizableui/CustomizableUI.jsm firefox-45.0esr/browser/components/customizableui/CustomizableUI.jsm
+--- firefox-45.0esr.bak/browser/components/customizableui/CustomizableUI.jsm	2016-03-13
++++ firefox-45.0esr/browser/components/customizableui/CustomizableUI.jsm	2016-03-13
+@@ -64,7 +64,6 @@
+  * version the button is removed in as the value.  e.g. "pocket-button": 5
+  */
+ var ObsoleteBuiltinButtons = {
+-  "loop-button": 5
+ };
+ 
+ /**
+@@ -219,18 +218,8 @@
+       "bookmarks-menu-button",
+       "downloads-button",
+       "home-button",
+-      "loop-button",
+     ];
+ 
+-    // Insert the Pocket button after the bookmarks button if it's present.
+-    for (let widgetDefinition of CustomizableWidgets) {
+-      if (widgetDefinition.id == "pocket-button") {
+-        let idx = navbarPlacements.indexOf("bookmarks-menu-button") + 1;
+-        navbarPlacements.splice(idx, 0, widgetDefinition.id);
+-        break;
+-      }
+-    }
+-
+     if (Services.prefs.getBoolPref(kPrefWebIDEInNavbar)) {
+       navbarPlacements.push("webide-button");
+     }
+@@ -355,15 +344,6 @@
+         }
+       }
+     }
+-
+-    if (currentVersion < 2) {
+-      // Nuke the old 'loop-call-button' out of orbit.
+-      CustomizableUI.removeWidgetFromArea("loop-call-button");
+-    }
+-
+-    if (currentVersion < 4) {
+-      CustomizableUI.removeWidgetFromArea("loop-button-throttled");
+-    }
+   },
+ 
+   /**
+diff -Naur firefox-45.0esr.bak/browser/components/customizableui/CustomizableWidgets.jsm firefox-45.0esr/browser/components/customizableui/CustomizableWidgets.jsm
+--- firefox-45.0esr.bak/browser/components/customizableui/CustomizableWidgets.jsm	2016-03-13
++++ firefox-45.0esr/browser/components/customizableui/CustomizableWidgets.jsm	2016-03-13
+@@ -18,8 +18,6 @@
+   "resource:///modules/PlacesUIUtils.jsm");
+ XPCOMUtils.defineLazyModuleGetter(this, "RecentlyClosedTabsAndWindowsMenuUtils",
+   "resource:///modules/sessionstore/RecentlyClosedTabsAndWindowsMenuUtils.jsm");
+-XPCOMUtils.defineLazyModuleGetter(this, "Pocket",
+-  "resource:///modules/Pocket.jsm");
+ XPCOMUtils.defineLazyModuleGetter(this, "ShortcutUtils",
+   "resource://gre/modules/ShortcutUtils.jsm");
+ XPCOMUtils.defineLazyModuleGetter(this, "CharsetMenu",
+@@ -1219,68 +1217,6 @@
+   });
+ }
+ 
+-if (Services.prefs.getBoolPref("browser.pocket.enabled")) {
+-  let isEnabledForLocale = true;
+-  if (Services.prefs.getBoolPref("browser.pocket.useLocaleList")) {
+-    let chromeRegistry = Cc["@mozilla.org/chrome/chrome-registry;1"]
+-                           .getService(Ci.nsIXULChromeRegistry);
+-    let browserLocale = chromeRegistry.getSelectedLocale("browser");
+-    let enabledLocales = [];
+-    try {
+-      enabledLocales = Services.prefs.getCharPref("browser.pocket.enabledLocales").split(' ');
+-    } catch (ex) {
+-      Cu.reportError(ex);
+-    }
+-    isEnabledForLocale = enabledLocales.indexOf(browserLocale) != -1;
+-  }
+-
+-  if (isEnabledForLocale) {
+-    let pocketButton = {
+-      id: "pocket-button",
+-      defaultArea: CustomizableUI.AREA_NAVBAR,
+-      introducedInVersion: "pref",
+-      type: "view",
+-      viewId: "PanelUI-pocketView",
+-      // Use forwarding functions here to avoid loading Pocket.jsm on startup:
+-      onViewShowing: function() {
+-        return Pocket.onPanelViewShowing.apply(this, arguments);
+-      },
+-      onViewHiding: function() {
+-        return Pocket.onPanelViewHiding.apply(this, arguments);
+-      },
+-
+-      // If the user has the "classic" Pocket add-on installed, use that instead
+-      // and destroy the widget.
+-      conditionalDestroyPromise: new Promise(resolve => {
+-        AddonManager.getAddonByID("isreaditlater@ideashower.com", addon => {
+-          resolve(addon && addon.isActive);
+-        });
+-      }),
+-    };
+-
+-    CustomizableWidgets.push(pocketButton);
+-    CustomizableUI.addListener(pocketButton);
+-
+-    // Uninstall the Pocket social provider if it exists, but only if we haven't
+-    // already uninstalled it in this manner.  That way the user can reinstall
+-    // it if they prefer it without its being uninstalled every time they start
+-    // the browser.
+-    let origin = "https://getpocket.com";
+-    SocialService.getProvider(origin, provider => {
+-      if (provider) {
+-        let pref = "social.backup.getpocket-com";
+-        if (!Services.prefs.prefHasUserValue(pref)) {
+-          let str = Cc["@mozilla.org/supports-string;1"].
+-                    createInstance(Ci.nsISupportsString);
+-          str.data = JSON.stringify(provider.manifest);
+-          Services.prefs.setComplexValue(pref, Ci.nsISupportsString, str);
+-          SocialService.uninstallProvider(origin, () => {});
+-        }
+-      }
+-    });
+-  }
+-}
+-
+ #ifdef E10S_TESTING_ONLY
+ var e10sDisabled = false;
+ #ifdef XP_MACOSX
+diff -Naur firefox-45.0esr.bak/browser/components/moz.build firefox-45.0esr/browser/components/moz.build
+--- firefox-45.0esr.bak/browser/components/moz.build	2016-03-13
++++ firefox-45.0esr/browser/components/moz.build	2016-03-13
+@@ -15,7 +15,6 @@
+     'migration',
+     'newtab',
+     'places',
+-    'pocket',
+     'preferences',
+     'privatebrowsing',
+     'search',
+diff -Naur firefox-45.0esr.bak/browser/components/pocket/moz.build firefox-45.0esr/browser/components/pocket/moz.build
+--- firefox-45.0esr.bak/browser/components/pocket/moz.build	2016-03-13
++++ firefox-45.0esr/browser/components/pocket/moz.build	2016-03-13
+@@ -3,5 +3,3 @@
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ JAR_MANIFESTS += ['jar.mn']
+-
+-EXTRA_JS_MODULES += ['Pocket.jsm']
+diff -Naur firefox-45.0esr.bak/browser/components/uitour/UITour.jsm firefox-45.0esr/browser/components/uitour/UITour.jsm
+--- firefox-45.0esr.bak/browser/components/uitour/UITour.jsm	2016-03-13
++++ firefox-45.0esr/browser/components/uitour/UITour.jsm	2016-03-13
+@@ -152,59 +152,6 @@
+       query: "#panic-button",
+       widgetName: "panic-button",
+     }],
+-    ["loop",        {
+-      allowAdd: true,
+-      query: "#loop-button",
+-      widgetName: "loop-button",
+-    }],
+-    ["loop-newRoom", {
+-      infoPanelPosition: "leftcenter topright",
+-      query: (aDocument) => {
+-        let loopUI = aDocument.defaultView.LoopUI;
+-        // Use the parentElement full-width container of the button so our arrow
+-        // doesn't overlap the panel contents much.
+-        return loopUI.browser.contentDocument.querySelector(".new-room-button").parentElement;
+-      },
+-    }],
+-    ["loop-roomList", {
+-      infoPanelPosition: "leftcenter topright",
+-      query: (aDocument) => {
+-        let loopUI = aDocument.defaultView.LoopUI;
+-        return loopUI.browser.contentDocument.querySelector(".room-list");
+-      },
+-    }],
+-    ["loop-selectedRoomButtons", {
+-      infoPanelOffsetY: -20,
+-      infoPanelPosition: "start_after",
+-      query: (aDocument) => {
+-        let chatbox = aDocument.querySelector("chatbox[src^='about\:loopconversation'][selected]");
+-
+-        // Check that the real target actually exists
+-        if (!chatbox || !chatbox.contentDocument ||
+-            !chatbox.contentDocument.querySelector(".call-action-group")) {
+-          return null;
+-        }
+-
+-        // But anchor on the <browser> in the chatbox so the panel doesn't jump to undefined
+-        // positions when the copy/email buttons disappear e.g. when the feedback form opens or
+-        // somebody else joins the room.
+-        return chatbox.content;
+-      },
+-    }],
+-    ["loop-signInUpLink", {
+-      query: (aDocument) => {
+-        let loopBrowser = aDocument.defaultView.LoopUI.browser;
+-        if (!loopBrowser) {
+-          return null;
+-        }
+-        return loopBrowser.contentDocument.querySelector(".signin-link");
+-      },
+-    }],
+-    ["pocket", {
+-      allowAdd: true,
+-      query: "#pocket-button",
+-      widgetName: "pocket-button",
+-    }],
+     ["privateWindow",  {query: "#privatebrowsing-button"}],
+     ["quit",        {query: "#PanelUI-quit"}],
+     ["readerMode-urlBar", {query: "#reader-mode-button"}],
+@@ -869,16 +816,12 @@
+     this.hideInfo(aWindow);
+     // Ensure the menu panel is hidden before calling recreatePopup so popup events occur.
+     this.hideMenu(aWindow, "appMenu");
+-    this.hideMenu(aWindow, "loop");
+     this.hideMenu(aWindow, "controlCenter");
+ 
+     // Clean up panel listeners after calling hideMenu above.
+     aWindow.PanelUI.panel.removeEventListener("popuphiding", this.hideAppMenuAnnotations);
+     aWindow.PanelUI.panel.removeEventListener("ViewShowing", this.hideAppMenuAnnotations);
+     aWindow.PanelUI.panel.removeEventListener("popuphidden", this.onPanelHidden);
+-    let loopPanel = aWindow.document.getElementById("loop-notification-panel");
+-    loopPanel.removeEventListener("popuphidden", this.onPanelHidden);
+-    loopPanel.removeEventListener("popuphiding", this.hideLoopPanelAnnotations);
+     let controlCenterPanel = aWindow.gIdentityHandler._identityPopup;
+     controlCenterPanel.removeEventListener("popuphidden", this.onPanelHidden);
+     controlCenterPanel.removeEventListener("popuphiding", this.hideControlCenterAnnotations);
+@@ -1592,71 +1535,6 @@
+         popup.addEventListener("popupshown", onPopupShown);
+       }
+       aWindow.document.getElementById("identity-box").click();
+-    } else if (aMenuName == "loop") {
+-      let toolbarButton = aWindow.LoopUI.toolbarButton;
+-      // It's possible to have a node that isn't placed anywhere
+-      if (!toolbarButton || !toolbarButton.node ||
+-          !CustomizableUI.getPlacementOfWidget(toolbarButton.node.id)) {
+-        log.debug("Can't show the Loop menu since the toolbarButton isn't placed");
+-        return;
+-      }
+-
+-      let panel = aWindow.document.getElementById("loop-notification-panel");
+-      panel.setAttribute("noautohide", true);
+-      if (panel.state != "open") {
+-        this.recreatePopup(panel);
+-        this.availableTargetsCache.clear();
+-      }
+-
+-      // An event object is expected but we don't want to toggle the panel with a click if the panel
+-      // is already open.
+-      aWindow.LoopUI.openCallPanel({ target: toolbarButton.node, }, "rooms").then(() => {
+-        if (aOpenCallback) {
+-          aOpenCallback();
+-        }
+-      });
+-      panel.addEventListener("popuphidden", this.onPanelHidden);
+-      panel.addEventListener("popuphiding", this.hideLoopPanelAnnotations);
+-    } else if (aMenuName == "pocket") {
+-      this.getTarget(aWindow, "pocket").then(Task.async(function* onPocketTarget(target) {
+-        let widgetGroupWrapper = CustomizableUI.getWidget(target.widgetName);
+-        if (widgetGroupWrapper.type != "view" || !widgetGroupWrapper.viewId) {
+-          log.error("Can't open the pocket menu without a view");
+-          return;
+-        }
+-        let placement = CustomizableUI.getPlacementOfWidget(target.widgetName);
+-        if (!placement || !placement.area) {
+-          log.error("Can't open the pocket menu without a placement");
+-          return;
+-        }
+-
+-        if (placement.area == CustomizableUI.AREA_PANEL) {
+-          // Open the appMenu and wait for it if it's not already opened or showing a subview.
+-          yield new Promise((resolve, reject) => {
+-            if (aWindow.PanelUI.panel.state != "closed") {
+-              if (aWindow.PanelUI.multiView.showingSubView) {
+-                reject("A subview is already showing");
+-                return;
+-              }
+-
+-              resolve();
+-              return;
+-            }
+-
+-            aWindow.PanelUI.panel.addEventListener("popupshown", function onShown() {
+-              aWindow.PanelUI.panel.removeEventListener("popupshown", onShown);
+-              resolve();
+-            });
+-
+-            aWindow.PanelUI.show();
+-          });
+-        }
+-
+-        let widgetWrapper = widgetGroupWrapper.forWindow(aWindow);
+-        aWindow.PanelUI.showSubView(widgetGroupWrapper.viewId,
+-                                    widgetWrapper.anchor,
+-                                    placement.area);
+-      })).catch(log.error);
+     }
+   },
+ 
+@@ -1675,9 +1553,6 @@
+     } else if (aMenuName == "controlCenter") {
+       let panel = aWindow.gIdentityHandler._identityPopup;
+       panel.hidePopup();
+-    } else if (aMenuName == "loop") {
+-      let panel = aWindow.document.getElementById("loop-notification-panel");
+-      panel.hidePopup();
+     }
+   },
+ 
+@@ -1710,12 +1585,6 @@
+     UITour.hideAnnotationsForPanel(aEvent, UITour.targetIsInAppMenu);
+   },
+ 
+-  hideLoopPanelAnnotations: function(aEvent) {
+-    UITour.hideAnnotationsForPanel(aEvent, (aTarget) => {
+-      return aTarget.targetName.startsWith("loop-") && aTarget.targetName != "loop-selectedRoomButtons";
+-    });
+-  },
+-
+   hideControlCenterAnnotations(aEvent) {
+     UITour.hideAnnotationsForPanel(aEvent, (aTarget) => {
+       return aTarget.targetName.startsWith("controlCenter-");
+@@ -1813,11 +1682,6 @@
+       case "availableTargets":
+         this.getAvailableTargets(aMessageManager, aWindow, aCallbackID);
+         break;
+-      case "loop":
+-        this.sendPageCallback(aMessageManager, aCallbackID, {
+-          gettingStartedSeen: Services.prefs.getBoolPref("loop.gettingStarted.seen"),
+-        });
+-        break;
+       case "search":
+       case "selectedSearchEngine":
+         Services.search.init(rv => {
+@@ -1859,10 +1723,6 @@
+           }
+         } catch (e) {}
+         break;
+-      case "Loop:ResumeTourOnFirstJoin":
+-        // Ignore aValue in this case to avoid accidentally setting it to false.
+-        Services.prefs.setBoolPref("loop.gettingStarted.resumeOnFirstJoin", true);
+-        break;
+       default:
+         log.error("setConfiguration: Unknown configuration requested: " + aConfiguration);
+         break;
+diff -Naur firefox-45.0esr.bak/browser/extensions/moz.build firefox-45.0esr/browser/extensions/moz.build
+--- firefox-45.0esr.bak/browser/extensions/moz.build	2016-03-13
++++ firefox-45.0esr/browser/extensions/moz.build	2016-03-13
+@@ -5,7 +5,6 @@
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ DIRS += [
+-    'loop',
+     'pdfjs',
+     'shumway',
+ ]
+diff -Naur firefox-45.0esr.bak/browser/locales/en-US/chrome/browser/browser.dtd firefox-45.0esr/browser/locales/en-US/chrome/browser/browser.dtd
+--- firefox-45.0esr.bak/browser/locales/en-US/chrome/browser/browser.dtd	2016-03-13
++++ firefox-45.0esr/browser/locales/en-US/chrome/browser/browser.dtd	2016-03-13
+@@ -252,8 +252,6 @@
+ <!ENTITY addons.commandkey            "A">
+ <!ENTITY webapps.label                "Apps">
+ <!ENTITY webapps.accesskey            "p">
+-<!ENTITY loopMenuItem.label           "Start a conversation…">
+-<!ENTITY loopMenuItem.accesskey       "t">
+ 
+ <!ENTITY webDeveloperMenu.label       "Web Developer">
+ <!ENTITY webDeveloperMenu.accesskey   "W">
+@@ -936,10 +934,3 @@
+ <!ENTITY emeNotificationsNotNow.accesskey         "N">
+ <!ENTITY emeNotificationsDontAskAgain.label       "Don't ask me again">
+ <!ENTITY emeNotificationsDontAskAgain.accesskey   "D">
+-
+-<!-- LOCALIZATION NOTE (saveToPocketCmd.label, saveLinkToPocketCmd.label, pocketMenuitem.label): Pocket is a brand name -->
+-<!ENTITY saveToPocketCmd.label     "Save Page to Pocket">
+-<!ENTITY saveToPocketCmd.accesskey "k">
+-<!ENTITY saveLinkToPocketCmd.label     "Save Link to Pocket">
+-<!ENTITY saveLinkToPocketCmd.accesskey "o">
+-<!ENTITY pocketMenuitem.label      "View Pocket List">
+diff -Naur firefox-45.0esr.bak/browser/locales/en-US/chrome/browser/customizableui/customizableWidgets.properties firefox-45.0esr/browser/locales/en-US/chrome/browser/customizableui/customizableWidgets.properties
+--- firefox-45.0esr.bak/browser/locales/en-US/chrome/browser/customizableui/customizableWidgets.properties	2016-03-13
++++ firefox-45.0esr/browser/locales/en-US/chrome/browser/customizableui/customizableWidgets.properties	2016-03-13
+@@ -96,19 +96,6 @@
+ # %2$S is the keyboard shortcut
+ quit-button.tooltiptext.mac = Quit %1$S (%2$S)
+ 
+-# LOCALIZATION NOTE(loop-call-button3.label): This is a brand name, request
+-# approval before you change it.
+-loop-call-button3.label = Hello
+-loop-call-button3.tooltiptext2 = Browse this page with a friend
+-loop-call-button3-error.tooltiptext = Error!
+-loop-call-button3-donotdisturb.tooltiptext = Do not disturb
+-loop-call-button3-screensharing.tooltiptext = You are sharing your screen
+-loop-call-button3-active.tooltiptext2 = You are sharing your tabs
+-loop-call-button3-participantswaiting.tooltiptext2 = Someone is waiting for you
+-# LOCALIZATION NOTE(loop-call-button3-pb.tooltiptext): Shown when the button is
+-# placed inside a Private Browsing window. %S is the value of loop-call-button3.label.
+-loop-call-button3-pb.tooltiptext = %S is not available in Private Browsing
+-
+ social-share-button.label = Share This Page
+ social-share-button.tooltiptext = Share this page
+ 
+@@ -124,10 +111,5 @@
+ devtools-webide-button2.label = WebIDE
+ devtools-webide-button2.tooltiptext = Open WebIDE (%S)
+ 
+-# LOCALIZATION NOTE(pocket-button.label, pocket-button.tooltiptext): "Pocket"
+-# is a brand name.
+-pocket-button.label = Pocket
+-pocket-button.tooltiptext = Save to Pocket
+-
+ e10s-button.label = New Non-e10s Window
+ e10s-button.tooltiptext = Open a new Non-e10s Window
+diff -Naur firefox-45.0esr.bak/browser/locales/jar.mn firefox-45.0esr/browser/locales/jar.mn
+--- firefox-45.0esr.bak/browser/locales/jar.mn	2016-03-13
++++ firefox-45.0esr/browser/locales/jar.mn	2016-03-13
+@@ -24,10 +24,8 @@
+     locale/browser/browser.dtd                     (%chrome/browser/browser.dtd)
+     locale/browser/baseMenuOverlay.dtd             (%chrome/browser/baseMenuOverlay.dtd)
+     locale/browser/browser.properties              (%chrome/browser/browser.properties)
+-    locale/browser/browser-pocket.properties       (%chrome/browser/browser-pocket.properties)
+     locale/browser/customizableui/customizableWidgets.properties (%chrome/browser/customizableui/customizableWidgets.properties)
+     locale/browser/lightweightThemes.properties    (%chrome/browser/lightweightThemes.properties)
+-    locale/browser/loop/loop.properties            (%chrome/browser/loop/loop.properties)
+     locale/browser/newTab.dtd                      (%chrome/browser/newTab.dtd)
+     locale/browser/newTab.properties               (%chrome/browser/newTab.properties)
+     locale/browser/pageInfo.dtd                    (%chrome/browser/pageInfo.dtd)
+diff -Naur firefox-45.0esr.bak/browser/modules/BrowserUITelemetry.jsm firefox-45.0esr/browser/modules/BrowserUITelemetry.jsm
+--- firefox-45.0esr.bak/browser/modules/BrowserUITelemetry.jsm	2016-03-13
++++ firefox-45.0esr/browser/modules/BrowserUITelemetry.jsm	2016-03-13
+@@ -49,7 +49,6 @@
+       "urlbar-container",
+       "search-container",
+       "bookmarks-menu-button",
+-      "pocket-button",
+       "downloads-button",
+       "home-button",
+       "social-share-button",
+@@ -668,7 +667,7 @@
+     "copyvideourl", "copyaudiourl", "saveimage", "shareimage", "sendimage",
+     "setDesktopBackground", "viewimageinfo", "viewimagedesc", "savevideo",
+     "sharevideo", "saveaudio", "video-saveimage", "sendvideo", "sendaudio",
+-    "ctp-play", "ctp-hide", "sharepage", "savepage", "pocket", "markpageMenu",
++    "ctp-play", "ctp-hide", "sharepage", "savepage", "markpageMenu",
+     "viewbgimage", "undo", "cut", "copy", "paste", "delete", "selectall",
+     "keywordfield", "searchselect", "shareselect", "frame", "showonlythisframe",
+     "openframeintab", "openframe", "reloadframe", "bookmarkframe", "saveframe",
+diff -Naur firefox-45.0esr.bak/browser/modules/ReaderParent.jsm firefox-45.0esr/browser/modules/ReaderParent.jsm
+--- firefox-45.0esr.bak/browser/modules/ReaderParent.jsm	2016-03-13
++++ firefox-45.0esr/browser/modules/ReaderParent.jsm	2016-03-13
+@@ -25,11 +25,9 @@
+ 
+   MESSAGES: [
+     "Reader:AddToList",
+-    "Reader:AddToPocket",
+     "Reader:ArticleGet",
+     "Reader:FaviconRequest",
+     "Reader:ListStatusRequest",
+-    "Reader:PocketEnabledGet",
+     "Reader:RemoveFromList",
+     "Reader:Share",
+     "Reader:SystemUIVisibility",
+@@ -47,24 +45,6 @@
+ 
+   receiveMessage: function(message) {
+     switch (message.name) {
+-      case "Reader:AddToPocket": {
+-        let doc = message.target.ownerDocument;
+-        let pocketWidget = doc.getElementById("pocket-button");
+-        let placement = CustomizableUI.getPlacementOfWidget("pocket-button");
+-        if (placement) {
+-          if (placement.area == CustomizableUI.AREA_PANEL) {
+-            doc.defaultView.PanelUI.show().then(function() {
+-              // The DOM node might not exist yet if the panel wasn't opened before.
+-              pocketWidget = doc.getElementById("pocket-button");
+-              pocketWidget.doCommand();
+-            });
+-          } else {
+-            pocketWidget.doCommand();
+-          }
+-        }
+-        break;
+-      }
+-
+       case "Reader:ArticleGet":
+         this._getArticle(message.data.url, message.target).then((article) => {
+           // Make sure the target browser is still alive before trying to send data back.
+@@ -78,13 +58,6 @@
+         });
+         break;
+ 
+-      case "Reader:PocketEnabledGet": {
+-        let pocketPlacement = CustomizableUI.getPlacementOfWidget("pocket-button");
+-        let isPocketEnabled = pocketPlacement && pocketPlacement.area;
+-        message.target.messageManager.sendAsyncMessage("Reader:PocketEnabledData", { enabled: !!isPocketEnabled});
+-        break;
+-      }
+-
+       case "Reader:FaviconRequest": {
+         if (message.target.messageManager) {
+           let faviconUrl = PlacesUtils.promiseFaviconLinkUrl(message.data.url);
+diff -Naur firefox-45.0esr.bak/browser/themes/linux/browser.css firefox-45.0esr/browser/themes/linux/browser.css
+--- firefox-45.0esr.bak/browser/themes/linux/browser.css	2016-03-13
++++ firefox-45.0esr/browser/themes/linux/browser.css	2016-03-13
+@@ -525,12 +525,6 @@
+   list-style-image: url("chrome://browser/skin/places/unsortedBookmarks.png");
+ }
+ 
+-#panelMenu_pocket,
+-#menu_pocket,
+-#BMB_pocket {
+-  list-style-image: url("chrome://browser/content/pocket/panels/img/pocketmenuitem16.png");
+-}
+-
+ #menu_openDownloads {
+   list-style-image: url("chrome://browser/skin/Toolbar-small.png");
+   -moz-image-region: rect(0px 16px 16px 0px);
+diff -Naur firefox-45.0esr.bak/browser/themes/osx/browser.css firefox-45.0esr/browser/themes/osx/browser.css
+--- firefox-45.0esr.bak/browser/themes/osx/browser.css	2016-03-13
++++ firefox-45.0esr/browser/themes/osx/browser.css	2016-03-13
+@@ -576,24 +576,6 @@
+   }
+ }
+ 
+-#panelMenu_pocket,
+-#menu_pocket,
+-#BMB_pocket {
+-  list-style-image: url("chrome://browser/content/pocket/panels/img/pocketmenuitem16.png");
+-}
+-
+-@media (min-resolution: 2dppx) {
+-  #panelMenu_pocket,
+-  #menu_pocket,
+-  #BMB_pocket {
+-    list-style-image: url("chrome://browser/content/pocket/panels/img/pocketmenuitem16@2x.png");
+-  }
+-
+-  #panelMenu_pocket > .toolbarbutton-icon {
+-    width: 16px;
+-  }
+-}
+-
+ /* ----- PRIMARY TOOLBAR BUTTONS ----- */
+ 
+ :-moz-any(toolbar, .widget-overflow-list) .toolbarbutton-1 > .toolbarbutton-icon,
+@@ -822,10 +804,6 @@
+     -moz-image-region: rect(18px, 738px, 36px, 720px);
+   }
+ 
+-  #pocket-button@toolbarButtonPressed@ {
+-    -moz-image-region: rect(18px, 774px, 36px, 756px);
+-  }
+-
+   #new-tab-button@toolbarButtonPressed@ {
+     -moz-image-region: rect(18px, 360px, 36px, 342px);
+   }
+@@ -985,10 +963,6 @@
+     -moz-image-region: rect(36px, 1476px, 72px, 1440px);
+   }
+ 
+-  #pocket-button@toolbarButtonPressed@ {
+-    -moz-image-region: rect(36px, 1548px, 72px, 1512px);
+-  }
+-
+   #new-tab-button@toolbarButtonPressed@ {
+     -moz-image-region: rect(36px, 720px, 72px, 684px);
+   }
+diff -Naur firefox-45.0esr.bak/browser/themes/shared/browser.inc firefox-45.0esr/browser/themes/shared/browser.inc
+--- firefox-45.0esr.bak/browser/themes/shared/browser.inc	2016-03-13
++++ firefox-45.0esr/browser/themes/shared/browser.inc	2016-03-13
+@@ -2,7 +2,7 @@
+ 
+ % Note that zoom-reset-button is a bit different since it doesn't use an image and thus has the image with display: none.
+ %define nestedButtons #zoom-out-button, #zoom-reset-button, #zoom-in-button, #cut-button, #copy-button, #paste-button
+-%define primaryToolbarButtons #back-button, #forward-button, #home-button, #print-button, #downloads-button, #bookmarks-menu-button, #new-tab-button, #new-window-button, #fullscreen-button, #sync-button, #feed-button, #social-share-button, #open-file-button, #find-button, #developer-button, #preferences-button, #privatebrowsing-button, #save-page-button, #add-ons-button, #history-panelmenu, #nav-bar-overflow-button, #PanelUI-menu-button, #characterencoding-button, #email-link-button, #sidebar-button, @nestedButtons@, #e10s-button, #panic-button, #webide-button, #pocket-button
++%define primaryToolbarButtons #back-button, #forward-button, #home-button, #print-button, #downloads-button, #bookmarks-menu-button, #new-tab-button, #new-window-button, #fullscreen-button, #sync-button, #feed-button, #social-share-button, #open-file-button, #find-button, #developer-button, #preferences-button, #privatebrowsing-button, #save-page-button, #add-ons-button, #history-panelmenu, #nav-bar-overflow-button, #PanelUI-menu-button, #characterencoding-button, #email-link-button, #sidebar-button, @nestedButtons@, #e10s-button, #panic-button, #webide-button
+ 
+ %ifdef XP_MACOSX
+ % Prior to 10.7 there wasn't a native fullscreen button so we use #restore-button to exit fullscreen
+diff -Naur firefox-45.0esr.bak/browser/themes/shared/menupanel.inc.css firefox-45.0esr/browser/themes/shared/menupanel.inc.css
+--- firefox-45.0esr.bak/browser/themes/shared/menupanel.inc.css	2016-03-13
++++ firefox-45.0esr/browser/themes/shared/menupanel.inc.css	2016-03-13
+@@ -163,15 +163,6 @@
+     -moz-image-region: rect(0px, 960px, 32px, 928px);
+   }
+ 
+-  #pocket-button[cui-areatype="menu-panel"],
+-  toolbarpaletteitem[place="palette"] > #pocket-button {
+-    -moz-image-region: rect(0px, 992px, 32px, 960px);
+-  }
+-
+-  #pocket-button[cui-areatype="menu-panel"][panel-multiview-anchor=true] {
+-    -moz-image-region: rect(32px, 992px, 64px, 960px);
+-  }
+-
+   toolbaritem[sdkstylewidget="true"] > toolbarbutton {
+     -moz-image-region: rect(0, 832px, 32px, 800px);
+   }
+@@ -310,15 +301,6 @@
+     -moz-image-region: rect(0px, 1920px, 64px, 1856px);
+   }
+ 
+-  #pocket-button[cui-areatype="menu-panel"],
+-  toolbarpaletteitem[place="palette"] > #pocket-button {
+-    -moz-image-region: rect(0px, 1984px, 64px, 1920px);
+-  }
+-
+-  #pocket-button[cui-areatype="menu-panel"][panel-multiview-anchor=true] {
+-    -moz-image-region: rect(64px, 1984px, 128px, 1920px);
+-  }
+-
+   #new-tab-button[cui-areatype="menu-panel"],
+   toolbarpaletteitem[place="palette"] > #new-tab-button {
+     -moz-image-region: rect(0px, 1088px, 64px, 1024px);
+diff -Naur firefox-45.0esr.bak/browser/themes/shared/toolbarbuttons.inc.css firefox-45.0esr/browser/themes/shared/toolbarbuttons.inc.css
+--- firefox-45.0esr.bak/browser/themes/shared/toolbarbuttons.inc.css	2016-03-13
++++ firefox-45.0esr/browser/themes/shared/toolbarbuttons.inc.css	2016-03-13
+@@ -171,18 +171,6 @@
+   -moz-image-region: rect(0, 738px, 18px, 720px);
+ }
+ 
+-#pocket-button[cui-areatype="toolbar"] {
+-  -moz-image-region: rect(0, 774px, 18px, 756px);
+-}
+-
+-#pocket-button[cui-areatype="toolbar"][open] {
+-%ifdef XP_MACOSX
+-  -moz-image-region: rect(36px, 774px, 54px, 756px);
+-%else
+-  -moz-image-region: rect(18px, 774px, 36px, 756px);
+-%endif
+-}
+-
+ %if defined(XP_WIN) || defined(XP_MACOSX)
+ @media (min-resolution: 1.1dppx) {
+   :-moz-any(@primaryToolbarButtons@),
+@@ -350,16 +338,4 @@
+     -moz-image-region: rect(0, 1476px, 36px, 1440px);
+   }
+ 
+-  #pocket-button[cui-areatype="toolbar"] {
+-    -moz-image-region: rect(0, 1548px, 36px, 1512px);
+-  }
+-
+-  #pocket-button[cui-areatype="toolbar"][open] {
+-%ifdef XP_MACOSX
+-    -moz-image-region: rect(72px, 1548px, 108px, 1512px);
+-%else
+-    -moz-image-region: rect(36px, 1548px, 72px, 1512px);
+-%endif
+-  }
+-}
+ %endif
+diff -Naur firefox-45.0esr.bak/browser/themes/windows/browser.css firefox-45.0esr/browser/themes/windows/browser.css
+--- firefox-45.0esr.bak/browser/themes/windows/browser.css	2016-03-13
++++ firefox-45.0esr/browser/themes/windows/browser.css	2016-03-13
+@@ -2305,12 +2305,6 @@
+   -moz-image-region: auto;
+ }
+ 
+-#panelMenu_pocket,
+-#menu_pocket,
+-#BMB_pocket {
+-  list-style-image: url("chrome://browser/content/pocket/panels/img/pocketmenuitem16.png");
+-}
+-
+ /* ::::: Keyboard UI Panel ::::: */
+ 
+ .KUI-panel {
+diff -Naur firefox-45.0esr.bak/toolkit/themes/shared/aboutReaderControls.css firefox-45.0esr/toolkit/themes/shared/aboutReaderControls.css
+--- firefox-45.0esr.bak/toolkit/themes/shared/aboutReaderControls.css	2016-03-13
++++ firefox-45.0esr/toolkit/themes/shared/aboutReaderControls.css	2016-03-13
+@@ -379,14 +379,6 @@
+   background-image: url("chrome://global/skin/reader/RM-Plus-24x24.svg");
+ }
+ 
+-#pocket-button {
+-  background-image: url("chrome://global/skin/reader/pocket.svg#pocket-mark");
+-}
+-
+-#pocket-button:hover:active {
+-  background-image: url("chrome://global/skin/reader/pocket.svg#pocket-mark-added");
+-}
+-
+ @media print {
+   .toolbar {
+     display: none !important;

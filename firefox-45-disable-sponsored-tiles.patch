@@ -1,6 +1,6 @@
---- mozilla-esr38.bak/browser/modules/DirectoryLinksProvider.jsm	2015-10-01 22:55:45.276046367 +0200
-+++ mozilla-esr38/browser/modules/DirectoryLinksProvider.jsm	2015-10-01 22:57:17.964047568 +0200
-@@ -33,16 +33,16 @@
+--- firefox-45.0esr.bak/browser/modules/DirectoryLinksProvider.jsm	2016-03-13
++++ firefox-45.0esr/browser/modules/DirectoryLinksProvider.jsm	2016-03-13
+@@ -58,16 +58,16 @@
  const DIRECTORY_LINKS_TYPE = "application/json";
  
  // The preference that tells whether to match the OS locale
@@ -21,7 +21,7 @@
  
  // The preference that tells if newtab is enhanced
  const PREF_NEWTAB_ENHANCED = "browser.newtabpage.enhanced";
-@@ -108,30 +108,6 @@
+@@ -200,30 +200,6 @@
     * @return  the selected locale or "en-US" if none is selected
     */
    get locale() {
@@ -52,29 +52,33 @@
      return "en-US";
    },
  
-@@ -188,43 +164,6 @@
+@@ -294,13 +270,6 @@
    },
  
    _fetchAndCacheLinks: function DirectoryLinksProvider_fetchAndCacheLinks(uri) {
 -    // Replace with the same display locale used for selecting links data
 -    uri = uri.replace("%LOCALE%", this.locale);
+-    uri = uri.replace("%CHANNEL%", UpdateUtils.UpdateChannel);
 -
+-    return this._downloadJsonData(uri).then(json => {
+-      return OS.File.writeAtomic(this._directoryFilePath, json, {tmpPath: this._directoryFilePath + ".tmp"});
+-    });
+   },
+ 
+   /**
+@@ -309,33 +278,6 @@
+    * @return promise resolved to json string, "{}" returned if status != 200
+    */
+   _downloadJsonData: function DirectoryLinksProvider__downloadJsonData(uri) {
 -    let deferred = Promise.defer();
--    let xmlHttp = new XMLHttpRequest();
+-    let xmlHttp = this._newXHR();
 -
--    let self = this;
 -    xmlHttp.onload = function(aResponse) {
 -      let json = this.responseText;
 -      if (this.status && this.status != 200) {
 -        json = "{}";
 -      }
--      OS.File.writeAtomic(self._directoryFilePath, json, {tmpPath: self._directoryFilePath + ".tmp"})
--        .then(() => {
--          deferred.resolve();
--        },
--        () => {
--          deferred.reject("Error writing uri data in profD.");
--        });
+-      deferred.resolve(json);
 -    };
 -
 -    xmlHttp.onerror = function(e) {
@@ -96,7 +100,7 @@
    },
  
    /**
-@@ -232,30 +171,6 @@
+@@ -343,30 +285,6 @@
     * @return promise resolved immediately if no download needed, or upon completion
     */
    _fetchAndCacheLinksIfNecessary: function DirectoryLinksProvider_fetchAndCacheLinksIfNecessary(forceDownload=false) {
@@ -127,7 +131,7 @@
    },
  
    /**
-@@ -309,51 +224,6 @@
+@@ -574,40 +492,6 @@
      }
      catch (ex) {}
  
@@ -156,6 +160,7 @@
 -            id: id || site.enhancedId,
 -            pin: site.isPinned() ? 1 : undefined,
 -            pos: pos != tilesIndex ? pos : undefined,
+-            past_impressions: pos == triggeringSiteIndex ? pastImpressions : undefined,
 -            score: Math.round(link.frecency / PING_SCORE_DIVISOR) || undefined,
 -            url: site.enhancedId && "",
 -          });
@@ -164,18 +169,24 @@
 -      }, []),
 -    };
 -
--    // Provide a direct index to the tile triggering the action
--    if (actionIndex !== undefined) {
--      data[action] = actionIndex;
--    }
+     // Provide a direct index to the tile triggering the action
+     if (actionIndex !== undefined) {
+       data[action] = actionIndex;
+@@ -1021,17 +905,6 @@
+    * @return a promise resolved when lookup Set for sites is built
+    */
+   _loadInadjacentSites: function DirectoryLinksProvider_loadInadjacentSites() {
+-    return this._downloadJsonData(this._inadjacentSitesUrl).then(jsonString => {
+-      let jsonObject = {};
+-      try {
+-        jsonObject = JSON.parse(jsonString);
+-      }
+-      catch (e) {
+-        Cu.reportError(e);
+-      }
 -
--    // Package the data to be sent with the ping
--    let ping = new XMLHttpRequest();
--    ping.open("POST", pingEndPoint + (action == "view" ? "view" : "click"));
--    ping.send(JSON.stringify(data));
--
--    // Use this as an opportunity to potentially fetch new links
--    return this._fetchAndCacheLinksIfNecessary();
+-      this._inadjacentSites = new Set(jsonObject.domains);
+-    });
    },
  
    /**

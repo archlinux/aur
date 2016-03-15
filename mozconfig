@@ -39,5 +39,6 @@ ac_add_options --with-system-libvpx
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
 ac_add_options --with-system-icu
+ac_add_options --disable-gconf
 
 mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/firefox-build-dir

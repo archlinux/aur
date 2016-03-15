@@ -1,7 +1,6 @@
 pkgname=firefox-esr-privacy
-_basever=38
-_pkgdir=mozilla-esr${_basever}
-pkgver=38.7.0
+_basever=45
+pkgver=45.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=('i686' 'x86_64')
@@ -13,49 +12,67 @@ depends=('gtk3' 'gtk2' 'libxt' 'startup-notification'
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'xorg-server' 'inetutils')
 install=firefox.install
 options=('!emptydirs')
-source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.bz2
+conflicts=('firefox')
+source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz
         firefox-install-dir.patch
         firefox-${_basever}-disable-location.services.mozilla.com.patch
-        firefox-${_basever}-disable-loop.patch
+        firefox-${_basever}-disable-loop-pocket.patch
         firefox-${_basever}-disable-sponsored-tiles.patch
         firefox-${_basever}-prefs.patch
+        firefox-${_basever}-disable-telemetry.patch
         firefox.desktop
         firefox-fixed-loading-icon.png
         mozconfig)
-sha256sums=('91174d0118ac7178b5902bd6e82743b4eab5d567ec6431abebf4da093ffbd0ff'
+sha256sums=('0f46f6c2e6b4f7efea2cd688c27b154a2f000cf5a7e5cb676def8a6dbf3839a0'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
-            '67a3aa79643837965902118927a37cecd098a83696d7e1b58e2040ce82b823df'
-            '1579b3221638ab012782d898c26014024ccae02363b7be674c3192e1b8031608'
-            '6e0dcac677bf2e47df6a56b30c153e8bbd712fab7d4f7c05fc27c83bf60afbd9'
-            'c618470c7cc8e42fd8b582980d94a132efad8a3533093703cbfc10169f036f70'
+            '8d9afa1f940a9dac689ead40a57990d1491f34a1787b2222f8f5b5e485d54103'
+            '4ffefee2f47e2de114df0d8a0c9a7b964d6e6959ce691e274e259ad8fd85682e'
+            '1926a3d3b8996cdbdd8b970a12d9880e3272181fd4b07c2c9277ca7290b159c3'
+            '23e76c382612ef694a4d62cc91996c063266ebb2620cab8149cd22a59ca11293'
+            '5f97739f5962c98c94c0cf7a7361d9dac01be1366773cb2b45d2bd5938569fde'
             '0bcfe168964338ec9c6e781479f2f8d06aa44f2262d6405ff8fa42983be89630'
             '68e3a5b47c6d175cc95b98b069a15205f027cab83af9e075818d38610feb6213'
-            '7b6729423fba99e45c022c1d5638554c0e6f19ff5ef79c466861a9418062ce4c')
+            '28b56c316c2f3a4072f1f9bb773eb355b204f66805654cb96d5dcda6d2a9a73e')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 
 prepare() {
-  cd ${_pkgdir}
+  cd firefox-${pkgver}esr
 
   cp ${srcdir}/mozconfig mozconfig
   
   # Disable sponsored tiles
   patch -Np1 -i ${srcdir}/firefox-${_basever}-disable-sponsored-tiles.patch
-  # Disable Loop (Firefox Hello)
-  patch -Np1 -i ${srcdir}/firefox-${_basever}-disable-loop.patch
+
+  # Disable Loop (Firefox Hello) and Pocket integration
+  patch -Np1 -i ${srcdir}/firefox-${_basever}-disable-loop-pocket.patch
+  # Remove loop and pocket source directories
+  rm -fr browser/extensions/loop/ browser/components/pocket/
+  
   # Disable geo IP lookup on first run
   patch -Np1 -i ${srcdir}/firefox-${_basever}-disable-location.services.mozilla.com.patch
+  
   # Set some sensible defaults
   patch -Np1 -i ${srcdir}/firefox-${_basever}-prefs.patch
+  
+  # Disable telemetry options
+  patch -Np1 -i ${srcdir}/firefox-${_basever}-disable-telemetry.patch
+  
   # Fix build with Fontconfig 2.6
   sed -i '/^ftcache.h/a ftfntfmt.h' config/system-headers
+  
   # Fix tab loading icon not working with libpng 1.6
   cp ${srcdir}/firefox-fixed-loading-icon.png browser/themes/linux/tabbrowser/loading.png
+  
   # Install in /usr/lib/firefox without version number
   patch -Np1 -i ${srcdir}/firefox-install-dir.patch
+
+  # Don't install files from the browser/features directory
+  # This directory only contains the loop program, which is not built
+  sed -i 's#@RESPATH@/browser/features/*#; @RESPATH@/browser/features/*#' browser/installer/package-manifest.in
 }
 
 build() {
-  cd ${_pkgdir}
+  cd firefox-${pkgver}esr
   
   # Fix configure: error: Your toolchain does not support C++0x/C++11 mode properly. Please upgrade your toolchain
   unset CPPFLAGS
@@ -64,7 +81,7 @@ build() {
 }
 
 package() {
-  cd ${_pkgdir}
+  cd firefox-${pkgver}esr
   make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
 
   install -Dm644 ${srcdir}/firefox.desktop "$pkgdir/usr/share/applications/firefox.desktop"
