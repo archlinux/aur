@@ -1,10 +1,10 @@
 # Maintainer: Christoph Korn <christoph.korn at posteo dot de>
 pkgname=beebeep
-_pkgver=650
-pkgver=3.0.4
+_pkgver=691
+pkgver=3.0.5
 pkgrel=1
 pkgdesc="Secure LAN Messenger"
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/beebeep/" 
 license=('GPL3')
 depends=('qt4' 'phonon-qt4' 'libxcb' 'avahi')
@@ -15,7 +15,7 @@ source=("http://netcologne.dl.sourceforge.net/project/${pkgname}/Sources/${pkgna
         "${pkgname}.xpm"
         "${pkgname}.desktop"
         "${pkgname}_script")
-md5sums=('1b4124ceb2a6f92fa297894ffb1beba2'
+md5sums=('92b17a4563c5199983157fa95ae3ac7e'
          'cdf0b999e22d0cc030359cbb95d794dd'
          '08e15ed0d7e938c863e5437984e9c597'
          'e89c5abe353abcbbbb2b9ae9be3e46bc'
