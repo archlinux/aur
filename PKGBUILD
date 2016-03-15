@@ -8,7 +8,7 @@
 # Server = http://smoothware.net/$repo/$arch
 
 pkgname=subtitlecomposer
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A KDE subtitle editor"
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ optdepends=('mpv: for MPV backend'
             'ruby: for scripting'
             'python: for scripting')
 source=("https://github.com/maxrd2/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('b06553ff2d86bb94da180812970f221b230a7ef7b81ddfcee1654d5b25244e77')
+sha256sums=('a49c7b7e5d8f1137373a65c9110a0934da6d827a7362dd6e7face708582c1d51')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
