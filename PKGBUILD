@@ -3,12 +3,12 @@
 # Contributor: minorsecond <minorsecond at gmail dot com>
 pkgname=wspr-svn
 pkgver=2460
-pkgrel=4
+pkgrel=5
 pkgdesc="Weak Signal Propagation Reporter"
 arch=('x86_64' 'i686' 'armv5h' 'armv6h' 'armv7h')
 url="http://physics.princeton.edu/pulsar/K1JT/wspr.html"
 license=('GPL')
-depends=('python2' 'python-imaging' 'python2-numpy' 'libsamplerate' 'portaudio' 'fftw' 'gcc-fortran')
+depends=('python2' 'python2-pillow' 'python2-numpy' 'libsamplerate' 'portaudio' 'fftw' 'gcc-fortran')
 makedepends=('subversion')
 source=(padevsub.c.patch
 	wspr.py.patch
