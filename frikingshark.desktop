@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Friking Shark
+Comment=Flying Shark arcade remake
+Exec=frikingshark
+Terminal=false
+Type=Application
+Categories=Game;ArcadeGame;
+Icon=frikingshark
