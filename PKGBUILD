@@ -1,7 +1,7 @@
 # Maintainer: 3ED <krzysztof1987 at gmail>
 
 pkgname=seamonkey-i18n-nb-no
-pkgver=2.39
+pkgver=2.40
 pkgrel=1
 _lang=nb-NO
 pkgdesc="Norwegian (Bokmal) language pack for SeaMonkey"
@@ -11,7 +11,7 @@ url="http://www.seamonkey-project.org/"
 depends=("seamonkey>=${pkgver}")
 source=(https://ftp.mozilla.org/pub/seamonkey/releases/${pkgver}/langpack/seamonkey-${pkgver}.${_lang}.langpack.xpi)
 noextract=(seamonkey-${pkgver}.${_lang}.langpack.xpi)
-sha256sums=('9a7280be0ae9bdf0f21ad89749cbd050dcac588989c33b016bf79496ad3660df')
+sha256sums=('2762bcddb6b4d36b2d14bb961e6b3604420e099216d5efc60b8835bc2709251d')
 
 package() {
   install -Dm644 "${srcdir}/seamonkey-${pkgver}.${_lang}.langpack.xpi" \
