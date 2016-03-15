@@ -5,13 +5,13 @@
 _mods_dir='etc/httpd/conf/mods-available'
 
 pkgname=a2enmod-git
-pkgver=1.2
-pkgrel=2
+pkgver=r3.5ff0dc9
+pkgrel=1
 pkgdesc='Apache enable/disable module/site. From Debian package.'
 arch=('any')
 url='http://httpd.apache.org/'
 license=('APACHE')
-depends=(perl apache)
+depends=(apache)
 optdepends=(
 'php-apache: php support'
 'openssl: https support, to generate a certificate'
@@ -69,8 +69,11 @@ install='a2enmod.install'
 source=('git://github.com/dracorp/a2enmod.git')
 _gitname='a2enmod'
 md5sums=('SKIP')
+pkgver() {
+  cd $_gitname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
 package(){
-  cd "$srcdir"/$_gitname
-  msg2 "Starting make install"
-  make DESTDIR="$pkgdir" install
+  cd $_gitname
+  make DESTDIR="$pkgdir" SBINDIR=/usr/bin install
 }
