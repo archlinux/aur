@@ -10,7 +10,7 @@ license=('unknown')
 depends=('pango' 'libconfig')
 provides=()
 conflicts=()
-source=($pkgname-$pkgver::https://github.com/geommer/yabar/archive/$pkgver.tar.gz)
+source=($pkgname-$pkgver.tar.gz::https://github.com/geommer/yabar/archive/$pkgver.tar.gz)
 md5sums=('b05be823ad9670cf9657120022eba1e4')
 
 build() {
