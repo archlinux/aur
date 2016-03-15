@@ -1,0 +1,10 @@
+[Unit]
+Description=Graphite-api daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/gunicorn -w2 graphite_api.app:app -b 0.0.0.0:8888
+Type=simple
+
+[Install]
+WantedBy=multi-user.target

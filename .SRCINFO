@@ -1,0 +1,30 @@
+pkgbase = graphite-api
+	pkgdesc = Graphite-web, without the interface. Just the rendering HTTP API.
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/brutasse/graphite-api
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python-mock
+	depends = python
+	depends = python-pytz
+	depends = python-six
+	depends = python-flask
+	depends = python-structlog
+	depends = python-yaml
+	depends = python-tzlocal
+	depends = python-cairocffi
+	depends = python-pyparsing
+	depends = gunicorn
+	optdepends = python-flask-cache: For caching
+	optdepends = python-raven: For sentry support
+	optdepends = python-statsd: For statsd support
+	backup = etc/graphite-api.yaml
+	source = https://github.com/brutasse/graphite-api/archive/1.1.2.tar.gz
+	source = graphite-api.service
+	sha256sums = fd370342a510f839f1b4d3b690a0e259e61690b75a5ab00f8dcda4a1c7d644be
+	sha256sums = 08a960632c1db95ee0c46cdb0b5c8a511cf0fe7c0ffac7a0ed0adb877aa2af37
+
+pkgname = graphite-api
+
