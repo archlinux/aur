@@ -21,12 +21,3 @@ post_upgrade() {
     post_install $1
 }
 
-pre_remove() {
-    /bin/true
-}
-
-op=$1
-shift
-
-$op $*
-

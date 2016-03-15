@@ -8,7 +8,7 @@ pkgdesc="The de-facto OSS Quake 3 distribution. You need the retail/demo .pk3 fi
 url="http://ioquake3.org/"
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('curl' 'freetype2' 'libjpeg' 'libvorbis' 'openal' 'opus' 'opusfile' 'sdl2' 'speex' 'zlib')
+depends=('curl' 'freetype2' 'libjpeg' 'libvorbis' 'openal' 'opus' 'opusfile' 'sdl2' 'zlib')
 makedepends=('git')
 optdepends=('mumble: Mumble VoIP support')
 conflicts=('quake3' 'quake3-icculus-svn' 'quake3-svn' 'ioquake3-svn')
@@ -37,6 +37,8 @@ prepare() {
 }
 
 q3make() {
+    export CFLAGS+=" ${CPPFLAGS}"
+
     make $@ \
         BUILD_CLIENT=1                \
         BUILD_SERVER=1                \
