@@ -35,19 +35,6 @@ pkgver() {
   echo -n $(grep -oP '(?<=self.version = ").+(?=")' src/Config.py).r$(grep -oP '(?<=self.rev = )\w+$' src/Config.py).g$(git rev-parse --short HEAD)
 }
 
-build() {
-        cd ${srcdir}
-        msg "Connecting to GIT server...."
-
-        if [ -d "$_gitname" ] ; then
-                cd "$_gitname" && git pull origin master
-                msg "The local files are updated."
-        else
-                git clone ${_gitroot}
-        fi
-        msg "GIT checkout done or server timeout"
-}
-
 package() {
    cd "$srcdir/$_gitname"
 
