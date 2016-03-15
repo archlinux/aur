@@ -2,7 +2,7 @@
 # Contributor: skydrome <skydrome@tormail.org>
 pkgname=tlsdate-git
 pkgver=707.ae396da
-pkgrel=1
+pkgrel=2
 pkgdesc="A secure rdate replacement to update local time over HTTPS, git version"
 arch=('i686' 'x86_64' 'armv6l' 'armv6h' 'arm7l' 'arm7h')
 url="https://github.com/ioerror/tlsdate"
@@ -16,10 +16,12 @@ backup=('etc/conf.d/tlsdate'
         'etc/tlsdate/tlsdated.conf')
 source=('git+https://github.com/ioerror/tlsdate.git'
         'tlsdate.conf.d'
-        'tlsdate.service')
+        'tlsdate.service'
+        'no_sslv3.patch')
 sha256sums=('SKIP'
             '1498a74913feb66c6e2e7d982f43b07fc48881947543969668a75ef4323503aa'
-            'fe3fb8181be0a9214f351c64461680f603ea27b7b7c566c9eec189084783aa92')
+            'fe3fb8181be0a9214f351c64461680f603ea27b7b7c566c9eec189084783aa92'
+            '897661cd7a131e3b28678ffeb32477d44cccea7a4e069f9cbd27a1d17563a427')
 
 pkgver() {
   cd "$srcdir/tlsdate"
@@ -28,6 +30,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/tlsdate"
+  patch -N -p1 -i ../no_sslv3.patch
   ./autogen.sh
 }
 

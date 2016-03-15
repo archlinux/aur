@@ -1,0 +1,65 @@
+diff --git a/man/tlsdate.1 b/man/tlsdate.1
+index b052e48..b2ea687 100644
+--- a/man/tlsdate.1
++++ b/man/tlsdate.1
+@@ -5,7 +5,7 @@
+ .SH NAME
+ tlsdate \- secure parasitic rdate replacement
+ .SH SYNOPSIS
+-.B tlsdate [\-hnvVstlw] [\-H [hostname]] [\-p [port]] [\-P [sslv23|sslv3|tlsv1]] \
++.B tlsdate [\-hnvVstlw] [\-H [hostname]] [\-p [port]] [\-P [sslv23|tlsv1]] \
+ [\-\-certdir [dirname]] [\-x [\-\-proxy] proxy\-type://proxyhost:proxyport]
+ .SH DESCRIPTION
+ .B tlsdate
+@@ -30,7 +30,7 @@ Set remote hostname (default: 'google.com')
+ Do not set the system clock to the time of the remote server
+ .IP "\-p | \-\-port [port]"
+ Set remote port (default: '443')
+-.IP "\-P | \-\-protocol [sslv23|sslv3|tlsv1]"
++.IP "\-P | \-\-protocol [sslv23|tlsv1]"
+ Set protocol to use when communicating with server (default: 'tlsv1')
+ .IP "\-C | \-\-certdir [dirname]"
+ Set the local directory where certificates are located
+diff --git a/src/tlsdate-helper-plan9.c b/src/tlsdate-helper-plan9.c
+index 3c532aa..bd79cf5 100644
+--- a/src/tlsdate-helper-plan9.c
++++ b/src/tlsdate-helper-plan9.c
+@@ -978,10 +978,6 @@ run_ssl (uint32_t *time_map, int time_is_an_illusion)
+   {
+     verb ("V: using SSLv23_client_method()\n");
+     ctx = SSL_CTX_new(SSLv23_client_method());
+-  } else if (0 == strcmp("sslv3", protocol))
+-  {
+-    verb ("V: using SSLv3_client_method()\n");
+-    ctx = SSL_CTX_new(SSLv3_client_method());
+   } else if (0 == strcmp("tlsv1", protocol))
+   {
+     verb ("V: using TLSv1_client_method()\n");
+diff --git a/src/tlsdate-helper.c b/src/tlsdate-helper.c
+index 877c67e..ba115e7 100644
+--- a/src/tlsdate-helper.c
++++ b/src/tlsdate-helper.c
+@@ -1133,10 +1133,6 @@ run_ssl (uint32_t *time_map, int time_is_an_illusion, int http)
+   {
+     verb ("V: using SSLv23_client_method()");
+     ctx = SSL_CTX_new(SSLv23_client_method());
+-  } else if (0 == strcmp("sslv3", protocol))
+-  {
+-    verb ("V: using SSLv3_client_method()");
+-    ctx = SSL_CTX_new(SSLv3_client_method());
+   } else if (0 == strcmp("tlsv1", protocol))
+   {
+     verb ("V: using TLSv1_client_method()");
+diff --git a/src/tlsdate.c b/src/tlsdate.c
+index dd7f993..b4404d7 100644
+--- a/src/tlsdate.c
++++ b/src/tlsdate.c
+@@ -88,7 +88,7 @@ usage (void)
+            " [-n|--dont-set-clock]\n"
+            " [-H|--host] [hostname|ip]\n"
+            " [-p|--port] [port number]\n"
+-           " [-P|--protocol] [sslv23|sslv3|tlsv1]\n"
++           " [-P|--protocol] [sslv23|tlsv1]\n"
+            " [-C|--certcontainer] [dirname|filename]\n"
+            " [-v|--verbose]\n"
+            " [-V|--showtime] [human|raw]\n"
