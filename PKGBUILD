@@ -3,15 +3,15 @@
 
 pkgname=wine-unity3d-git
 _gitname="wine"
-pkgver=1.7.38.r69.g862d7da
+pkgver=1.7.54.r0.gcbaab82
 pkgrel=1
 pkgdesc="A compatibility layer for running Windows programs, with patches to make unity3d '-force-opengl' work."
 url="http://www.winehq.com"
 arch=('i686' 'x86_64')
-license='LGPL'
+license=('LGPL')
 install='wine-git.install'
 
-source=('wine-unity3d-git::git://source.winehq.org/git/wine.git'
+source=('wine-unity3d-git::git://source.winehq.org/git/wine.git#commit=cbaab82d086e36dacaa22c6adf80f9114bb820fb'
 		'unity3d::git+https://github.com/Unity3D-Wine-Support/Unity3D-on-Wine.git'
         '30-win32-aliases.conf')
 md5sums=('SKIP'
