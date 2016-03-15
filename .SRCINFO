@@ -1,0 +1,21 @@
+pkgbase = chewing-editor-git
+	pkgdesc = Cross platform chewing user phrase editor
+	pkgver = 0.0.2.r17.gd9b7f53
+	pkgrel = 1
+	url = http://chewing.im
+	install = chewing-editor-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = libchewing
+	depends = qt5-base
+	depends = hicolor-icon-theme
+	source = git://github.com/chewing/chewing-editor.git
+	md5sums = SKIP
+
+pkgname = chewing-editor-git
+
