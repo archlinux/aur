@@ -1,7 +1,7 @@
 # Maintainer: Your Name <ryexander@gmail.com>
 pkgname=airtime
 pkgver=2.5.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Open broadcast software for scheduling and station management."
 arch=('i686' 'x86_64')
 url="http://www.sourcefabric.org/en/airtime"
@@ -57,7 +57,8 @@ sha256sums=('ba3ed67f1a60032e1624a021fffa4bb11d9055ddc4c3773b40f334854adf6930'
 
 prepare() {
 	cd "$srcdir/${_pkgsrc_name}"
-  grep -rl '/usr/bin/python' 'python_apps' 'utils' | xargs  sed -i "s%/usr/bin/python%/usr/bin/python2%g"
+    grep -rl '/usr/bin/python' 'python_apps' 'utils' | xargs  sed -i "s%/usr/bin/python%/usr/bin/python2%g"
+    grep -rl 'www-data' . | xargs  sed -i "s%www-data%http%g"
 }
 #
 # build() {
@@ -76,13 +77,13 @@ package() {
     web_user=http
 
     # web frontend
-    mkdir -p "${pkgdir}/usr/share/airtime"
+    install -d -m755 "${pkgdir}/usr/share/airtime"
     cp -r "${_pkgsrc_name}/airtime_mvc" "${pkgdir}/usr/share/airtime"
     cp -r "${_pkgsrc_name}/python_apps" "${pkgdir}/usr/share/airtime"
     cp -r "${_pkgsrc_name}/utils" "${pkgdir}/usr/share/airtime"
     chmod -R 755 "${pkgdir}/usr/share/airtime"
 
-    mkdir -p "${pkgdir}/usr/share/doc/airtime/examples/"
+    install -d -m644 "${pkgdir}/usr/share/doc/airtime/examples/"
     cp -r "${_pkgsrc_name}/widgets" "${pkgdir}/usr/share/doc/airtime/examples/"
     chmod -R 755 "${pkgdir}/usr/share/doc/airtime/examples/"
     install -D -m644 "${_pkgsrc_name}/CREDITS" "${pkgdir}/usr/share/doc/airtime/CREDITS"
@@ -96,24 +97,20 @@ package() {
     install -D -m644 "${_pkgsrc_name}/airtime_mvc/build/airtime-php.logrotate" "${pkgdir}/etc/logrotate.d/airtime-php"
     install -D -m644 "${_pkgsrc_name}/python_apps/pypo/liquidsoap/airtime-liquidsoap.logrotate" "${pkgdir}/etc/logrotate.d/airtime-liquidsoap"
 
-    mkdir -p "${pkgdir}/var/tmp/airtime/show-recorder/"
+    install -d -m777 "${pkgdir}/var/tmp/airtime/show-recorder/"
 
-    mkdir -p "${pkgdir}/var/log/airtime"
+    install -d -m755 "${pkgdir}/var/log/airtime"
 
+    install -d -m777 "${pkgdir}/var/tmp/airtime"
 
+    install -d -m655 "${pkgdir}/etc/airtime"
+    install -d -m655 "${pkgdir}/etc/airtime/php"
+    install -d -m655 "${pkgdir}/etc/airtime/apache"
+    install -d -m655 "${pkgdir}/etc/airtime/nginx"
 
-    mkdir -p "${pkgdir}/var/tmp/airtime"
-
-
-
-    mkdir -p "${pkgdir}/etc/airtime"
-
-    install -D -m 755 "${_pkgsrc_name}/installer/php/airtime.ini" "${pkgdir}/etc/airtime/airtime.ini"
-    install -D -m 755 "${_pkgsrc_name}/installer/apache/airtime-vhost" "${pkgdir}/etc/airtime/apache.vhost.tpl"
-    install -D -m 755 "${_pkgsrc_name}/installer/apache/airtime-vhost-2.4" "${pkgdir}/etc/airtime/apache24.vhost.tpl"
-    install -D -m 755 "${_pkgsrc_name}/airtime_mvc/build/airtime.example.conf" "${pkgdir}/etc/airtime/airtime.conf"
-
-
+    install -D -m 755 "${_pkgsrc_name}/installer/php/airtime.ini" "${pkgdir}/etc/airtime/php/airtime.ini"
+    install -D -m 755 "${_pkgsrc_name}/installer/apache/airtime-vhost" "${pkgdir}/etc/airtime/apache/apache.vhost.tpl"
+    install -D -m 755 "${_pkgsrc_name}/installer/apache/airtime-vhost-2.4" "${pkgdir}/etc/airtime/apache/apache24.vhost.tpl"
 
     install -D -m 755 airtime-media-monitor.service "${pkgdir}/usr/lib/systemd/system/airtime-media-monitor.service"
     install -D -m 755 airtime-liquidsoap.service "${pkgdir}/usr/lib/systemd/system/airtime-liquidsoap.service"
@@ -129,8 +126,8 @@ package() {
     python2 "${_pkgsrc_name}/python_apps/pypo/setup.py" install \
         --root="${pkgdir}/" --optimize=1 --install-scripts=/usr/bin
 
-    chmod -R a+x "${pkgdir}/var/tmp/airtime"
-    chmod -R a+x "${pkgdir}/var/log/airtime"
+    chmod -R 777 "${pkgdir}/var/tmp/airtime"
+    chmod -R 755 "${pkgdir}/var/log/airtime"
 
     chown -R ${web_user}:${web_user} "${pkgdir}/var/tmp/airtime"
     chown -R ${web_user}:${web_user} "${pkgdir}/var/log/airtime"
