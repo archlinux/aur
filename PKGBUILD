@@ -1,16 +1,16 @@
 # Maintainer: Archadept
-#   Revision: 2016-01-19
+#   Revision: 2016-03-15
 
 pkgname=wesnoth-git
 _gitname=wesnoth
-pkgver=1.13.2.414.gb0659d7
+pkgver=1.13.4.104.g3f58231
 pkgrel=1
 pkgdesc="The latest version of a turn-based strategy game on a fantasy world"
 arch=('x86_64')
 url="http://www.wesnoth.org/"
 license=('GPL')
-depends=('boost' 'fribidi' 'lua' 'sdl2' 'sdl2_ttf' 'sdl2_net' 'sdl2_mixer' 'sdl2_image')
-makedepends=('openssh' 'python' 'scons' 'git')
+depends=('boost' 'boost-libs' 'fribidi' 'sdl2' 'sdl2_ttf' 'sdl2_net' 'sdl2_mixer' 'sdl2_image' 'libvorbis' 'pango' 'python')
+makedepends=('openssh' 'scons' 'git')
 conflicts=('wesnoth' 'wesnoth-data' 'wesnoth-devel')
 provides=('wesnoth')
 
