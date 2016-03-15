@@ -8,32 +8,35 @@
 # Server = http://smoothware.net/$repo/$arch
 
 pkgname=subtitlecomposer
-pkgver=0.5.9
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A KDE subtitle editor"
 arch=('i686' 'x86_64')
 url="https://github.com/maxrd2/${pkgname}"
 license=('GPL')
-depends=('kcoreaddons' 'sonnet' 'kcodecs' 'kio' 'kross' 'kxmlgui' 'ki18n')
-# Comment/uncomment the following dependencies to disable/enable support for
-# MPV, gstreamer and/or Xine backend.
-# These are not optdepends as they must be present at build time.
-# Also ensure these deps aren't installed if you don't want to link against them
-# because Subtitle Composer will always link against them if available.
-#depends+=('mpv')
-depends+=('gstreamer')
-depends+=('xine-lib')
+depends=('kcoreaddons' 'sonnet' 'kcodecs' 'kross' 'kxmlgui' 'ki18n' 'gstreamer')
 makedepends=('extra-cmake-modules')
+# Comment/uncomment the following dependencies to disable/enable
+# building of plugins for MPV and Xine player backends.
+makedepends+=('xine-lib')
+makedepends+=('mpv')
 install=${pkgname}.install
-optdepends=('mplayer: for MPlayer backend'
+optdepends=('mpv: for MPV backend'
+            'mplayer: for MPlayer backend'
+            'xine-lib: for Xine backend'
             'ruby: for scripting'
             'python: for scripting')
 source=("https://github.com/maxrd2/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('e2ce6a23b58645401dd3df6f2cd27f1f')
+sha256sums=('b06553ff2d86bb94da180812970f221b230a7ef7b81ddfcee1654d5b25244e77')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  cmake -DCMAKE_INSTALL_PREFIX=/usr
+  cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+    -DBUILD_TESTING=OFF
   make
 }
 
