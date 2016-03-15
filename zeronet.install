@@ -20,9 +20,13 @@ post_install() {
     echo ">>>   sudo systemctl status zeronet"
     echo ">>>   sudo journalctl -u zeronet"
     echo ">>> NOTE: all operations including editing zerosite files,"
-    echo ">>>       should be done as user zeronet (one of the following ways):"
-    echo ">>>   sudo -u zeronet python2 zeronet.py ..."
+    echo ">>>       should be done as user zeronet and config must be passed"
+    echo ">>>       for data directory to be selected to /var/lib/zeronet: "
+    echo ">>>   sudo -u zeronet python2 zeronet.py --config_file /etc/zeronet.conf ..."
+    echo ">>>      OR"
     echo ">>>   sudo su - zeronet"
+    echo ">>>   cd /opt/zeronet"
+    echo ">>>   python2 zeronet.py --config_file /etc/zeronet.conf ..."
 }
 
 post_upgrade() {
