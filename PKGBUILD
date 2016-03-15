@@ -2,7 +2,7 @@
 # Source: https://github.com/zancarius/archlinux-pkgbuilds
 
 pkgname=sentry
-pkgver=8.1.2
+pkgver=8.2.3
 pkgrel=1
 pkgdesc="Python-based realtime logging and aggregation server."
 arch=(any)
@@ -28,7 +28,7 @@ source=(
 )
 md5sums=(
     a923b21928a227eda35dd76d599fbac1 # sentry.install
-    8d1d8d166a88bc89ad2265fd67ab3523 # sentry.service
+    1559e7fcb42e4f0aeaaf8139baaac0d7 # sentry.service
     78dd3e18109c2bf92f7f884de0237781 # sentry-celery.service
 )
 
