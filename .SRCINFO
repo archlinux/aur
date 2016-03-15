@@ -1,0 +1,15 @@
+pkgbase = python2-libbde
+	pkgdesc = Library and tools to access the BitLocker Drive Encryption (BDE) encrypted volumes
+	pkgver = 20160119
+	pkgrel = 1
+	url = https://github.com/libyal/libbde/
+	arch = any
+	license = LGPLv3+
+	makedepends = python2
+	makedepends = gcc
+	depends = python2
+	source = https://pypi.python.org/packages/source/l/libbde-python/libbde-python-20160119.tar.gz#md5=dff1506bd61db422a92100677e70ba07
+	md5sums = dff1506bd61db422a92100677e70ba07
+
+pkgname = python2-libbde
+
