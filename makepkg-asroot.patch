@@ -1,6 +1,6 @@
---- makepkg.orig	2016-02-03 19:26:28.315550968 +0100
-+++ makepkg	2016-02-03 19:27:58.235547900 +0100
-@@ -1869,6 +1869,7 @@
+--- makepkg.orig	2016-03-15 20:56:16.544704090 +0100
++++ makepkg	2016-03-15 20:57:38.081374330 +0100
+@@ -1876,6 +1876,7 @@
  	printf -- "$(gettext "  --skipinteg      Do not perform any verification checks on source files")\n"
  	printf -- "$(gettext "  --skippgpcheck   Do not verify source files with PGP signatures")\n"
  	printf -- "$(gettext "  --verifysource   Download source files (if needed) and perform integrity checks")\n"
@@ -8,16 +8,16 @@
  	echo
  	printf -- "$(gettext "These options can be passed to %s:")\n" "pacman"
  	echo
-@@ -1910,7 +1911,7 @@
-           'help' 'holdver' 'ignorearch' 'install' 'key:' 'log' 'noarchive' 'nobuild'
-           'nocolor' 'nocheck' 'nodeps' 'noextract' 'noprepare' 'nosign' 'packagelist'
-           'pkg:' 'printsrcinfo' 'repackage' 'rmdeps' 'sign' 'skipchecksums' 'skipinteg'
--          'skippgpcheck' 'source' 'syncdeps' 'verifysource' 'version')
-+          'skippgpcheck' 'source' 'syncdeps' 'verifysource' 'version' 'asroot')
+@@ -1919,6 +1920,8 @@
+           'printsrcinfo' 'repackage' 'rmdeps' 'sign' 'skipchecksums' 'skipinteg'
+           'skippgpcheck' 'source' 'syncdeps' 'verifysource' 'version')
  
++OPT_LONG+=('asroot')
++
  # Pacman Options
  OPT_LONG+=('asdeps' 'noconfirm' 'needed' 'noprogressbar')
-@@ -2106,9 +2107,7 @@
+ 
+@@ -2114,9 +2117,7 @@
  
  if (( ! INFAKEROOT )); then
  	if (( EUID == 0 )); then
