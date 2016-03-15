@@ -19,6 +19,10 @@ post_install() {
     echo ">>> Run daemon and check status:"
     echo ">>>   sudo systemctl start zeronet"
     echo ">>>   sudo systemctl status zeronet"
+    echo ">>> NOTE: all operations including editing zerosite files,"
+    echo ">>>       should be done as user zeronet (one of the following ways):"
+    echo ">>>   sudo -u zeronet python2 zeronet.py ..."
+    echo ">>>   sudo su - zeronet"
 }
 
 post_upgrade() {
