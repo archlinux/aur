@@ -1,0 +1,3 @@
+post_install() {
+  echo be sure /usr/share/perl6/vendor/bin is in \$PATH
+}
