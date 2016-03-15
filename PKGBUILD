@@ -5,7 +5,7 @@
 
 pkgname='dashcore'
 _gitname='dash'
-pkgver=0.12.0.55
+pkgver=0.12.0.56
 pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.dashpay.io/"
