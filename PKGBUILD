@@ -23,9 +23,10 @@ _sha512sum="$(curl -s "${_baseurl}${_filename}.checksums" | grep "${_filename}.t
 source=("$pkgname.desktop"
         "vendor.js"
         "${_baseurl}${_filename}.tar.bz2")
-sha512sums=('4b69f7eba4dcfd59437e63d62fd3c315294c26b766abca7311b41304732224f8ae61ee81e8ddf757dd88f259b11d8b3231b4dac05207f9a5de0d8f6aa5bc80cc'
+sha512sums=('SKIP'
             'SKIP'
             "${_sha512sum}")
+
 
 package() {
   # Create directories

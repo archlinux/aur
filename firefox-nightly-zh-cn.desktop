@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Firefox Nightly
+Name=Nightly
 GenericName=Web Browser
 Comment=Browse the World Wide Web
 Exec=firefox-nightly %u

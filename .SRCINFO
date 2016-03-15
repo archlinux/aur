@@ -31,7 +31,7 @@ provides = firefox=48.0a1
 source = firefox-nightly-zh-cn.desktop
 source = vendor.js
 source = https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-48.0a1.zh-CN.linux-.tar.bz2
-sha512sums = 4b69f7eba4dcfd59437e63d62fd3c315294c26b766abca7311b41304732224f8ae61ee81e8ddf757dd88f259b11d8b3231b4dac05207f9a5de0d8f6aa5bc80cc
+sha512sums = SKIP
 sha512sums = SKIP
 sha512sums = 
 
