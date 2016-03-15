@@ -42,7 +42,7 @@ package() {
   cp -a owncloud "${pkgdir}/usr/share/webapps/."
   
   install -m644 -D ${srcdir}/apache.example.conf -t ${pkgdir}/etc/webapps/owncloud
-  install -m755 -D ${srcdir}/owncloud/occ -t ${pkgdir}/usr/bin
+  ln -s /usr/share/webapps/owncloud/occ ${pkgdir}/usr/bin/occ
 }
 
 # vim:set ts=2 sw=2 et:
