@@ -5,9 +5,8 @@ pkgver=1.0.5
 _gitrev=210
 _gitver=9c69e092
 _fullname="$pkgname-$pkgver.$_gitrev-$_gitver"
-_webclientver=518bc23 # Set in CMakeModules/WebClientVariables.cmake
-_webclienthash=8b54929fd1de21375e45797de4112336734b9000
-pkgrel=4
+_webclientver=3263b2f # Set in CMakeModules/WebClientVariables.cmake
+pkgrel=5
 pkgdesc='Next generation Plex Desktop Client'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -16,12 +15,22 @@ depends=('mpv' 'qt5-webengine>=5.6' 'libcec' 'sdl2')
 makedepends=('cmake')
 install='plex-media-player.install'
 source=("$_fullname.tar.gz::https://github.com/plexinc/plex-media-player/archive/v${pkgver}.${_gitrev}-${_gitver}.tar.gz"
-        "https://nightlies.plex.tv/directdl/plex-dependencies/plex-web-client-plexmediaplayer/latest/plex-web-client-konvergo-${_webclientver}.cpp.tbz2"
+        "https://dl.tingping.se/mirror/plex-web-client-konvergo-${_webclientver}.cpp.tbz2"
         'plex-media-player.desktop')
 noextract=("plex-web-client-konvergo-$_webclientver.cpp.tbz2")
 sha256sums=('4b62ffc9502a5938fcaaca8d4d6aa9767903995a90d2c022ff9562613422dfc5'
-            '8124f0fb79da7e0bbd2da47d1f7bed6c030d61244d5c2fdad147efa83e98e53b'
+            'bb33cfdcdfa95e9736f78e751695cc477519c21a4e1fb59144e0f93e975edbf6'
             'b03845b761cc18a88252b72d0c83e439006224660444d9174f53cc577f9498b6')
+
+# NOTE:
+# They host their web-client file on a nightly server that deletes things
+# each release, so I simply mirror the file on my personal server.
+# The build system verifies the checksum of the file and it must be
+# a GPL compatible license so everything should be kosher.
+#
+# The orignal URL should it be needed:
+# "https://nightlies.plex.tv/directdl/plex-dependencies/plex-web-client-plexmediaplayer/latest/plex-web-client-konvergo-${_webclientver}.cpp.tbz2"
+#
 
 prepare() {
 	cd "$_fullname"
@@ -39,14 +48,9 @@ prepare() {
 	sed -i 's|list(REMOVE_DUPLICATES QT5_CFLAGS)|list(APPEND QT5_CFLAGS -fPIC)|' \
 	       CMakeModules/QtConfiguration.cmake
 
-	# Fix enabling SDL2 input
+	# Fix enabling SDL2 input: https://github.com/plexinc/plex-media-player/pull/258
 	sed -i 's|set(DL_FOUND)|set(DL_FOUND TRUE)|' \
 	       CMakeModules/FindDL.cmake
-
-	# They delete old versions from the mirror so we just use the latest
-	sed -i "s|WEB_CLIENT_VERSION [^)]*|WEB_CLIENT_VERSION $_webclientver|
-	        s|WEB_CLIENT_HASH [^)]*|WEB_CLIENT_HASH $_webclienthash|" \
-	       CMakeModules/WebClientVariables.cmake
 
 	# Use our downloaded copy of web-client
 	mkdir -p build/src
