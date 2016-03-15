@@ -1,6 +1,12 @@
---- wspr.py.orig        2015-01-22 19:32:59.000000000 +0100
-+++ wspr.py     2015-01-22 19:43:27.133581716 +0100
-@@ -35,7 +35,7 @@
++++ wspr.py	2016-03-15 14:10:21.385193623 +0100
+--- wspr.py.orig	2016-03-15 14:09:59.529132801 +0100
+@@ -30,12 +30,12 @@
+ from WsprMod import palettes
+ from math import log10
+ try:
+-    from numpy.oldnumeric import zeros
++    from numpy import zeros
+ except: 
      from Numeric import zeros
  import array
  import dircache

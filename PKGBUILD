@@ -1,4 +1,4 @@
-# Maintainer: Carsten DL1CAF <archlinux at carstenfeuls dot de>
+# Maintainer: Carsten Feuls <archlinux at carstenfeuls dot de>
 # Submitter: Mike WB2FKO <mph at sportscliche dot com>
 # Contributor: minorsecond <minorsecond at gmail dot com>
 pkgname=wspr-svn
@@ -11,9 +11,11 @@ license=('GPL')
 depends=('python2' 'python-imaging' 'python2-numpy' 'libsamplerate' 'portaudio' 'fftw' 'gcc-fortran')
 makedepends=('subversion')
 source=(padevsub.c.patch
+	wspr.py.patch
         $pkgname.png
         $pkgname.desktop)
 sha512sums=('6e774feb45b327a10da759e476960344314e894d1aa0e9c7d1b11fda092d82b4c629e04ef58b46a273f184c60a526c434160004f77fbe9f38304d1099f327451'
+            '927622b5423d109812ae25ef3c43d1ce1ea5eea224f9a66f59acda1e559077276cf88181c53771d23f4dea4c5efbd5e3b6a43deef7dc5d007712335f07fb9718'
             '9fb794b5cd645e816ea72e9e12d5cbe8e95d3782ff290d92c40266a7ac17d212c9465e84b32f2bab23d3e45456d0f1456ff39ebf869eb544a4cc88c85cf64102'
             '71a813e21d5299a7efec3081cfc08dcb024dc72542eaba7a5ced52323ebbdfe1b09bbdfd2a270f85067d49c8d7091e8c0ff94c28a2f0f74ed8ec0a6b38f1b396')
 
@@ -50,6 +52,7 @@ build() {
 package() {
   cd "$srcdir/$_svnmod-build"
   rm -rf build/
+  patch -p0 < ${srcdir}/wspr.py.patch
   python2 setup.py install --root=$pkgdir/ 
   sed -i 's:python -O wspr.py:python2 -O /usr/bin/wspr.py:' wspr
   install -Dm755 wspr $pkgdir/usr/bin/wspr
