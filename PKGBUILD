@@ -1,12 +1,12 @@
 # Maintainer: Jose Riha
-# $Id: PKGBUILD 260664 2016-03-03 15:54:53Z tpowa $
+# $Id: PKGBUILD 261286 2016-03-10 16:07:13Z tpowa $
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-pae
 #pkgbase=linux-pae
 _srcname=linux-4.4
-pkgver=4.4.3
+pkgver=4.4.5
 pkgrel=1
 arch=(i686)
 url="http://www.kernel.org/"
@@ -26,7 +26,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            '4a24c79c40b2cb820ce9f22d44f31edcbde5971432753ab0289772946ed05b7b'
+            'a570680ad5624eff0687c74d652158cbd9ec92fdd177ac5ff812988a24d54ab5'
             'SKIP'
             '168e599d2326d45bddc749b71578508b452dc864809fc43642927c03902648d5'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
