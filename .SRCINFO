@@ -1,13 +1,13 @@
 pkgbase = fetchmirrors
 	pkgdesc = Fetch new pacman mirrorlist and rank the best
-	pkgver = 0.2
-	pkgrel = 3
+	pkgver = 0.3
+	pkgrel = 1
 	url = https://github.com/deadhead420/fetchmirrors
 	arch = any
 	license = GPL
-	depends = bash
+	depends = bash,curl
 	source = https://raw.githubusercontent.com/deadhead420/fetchmirrors/master/fetchmirrors.sh
-	md5sums = d7dbb4db617669111bef5b9fafd21d3d
+	md5sums = 17935f1f5d703c42ab3dc7f4c18d9c5e
 
 pkgname = fetchmirrors
 
