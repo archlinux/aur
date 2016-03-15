@@ -4,4 +4,6 @@ post_upgrade() {
 
 post_install() {
     post_upgrade;
+    echo "The binary is called $(tput bold)urn-gtk$(tput sgr0)"
+    echo "An example split file is provided at $(tput bold)/usr/share/urn/splits/sotn.json$(tput sgr0)"
 }

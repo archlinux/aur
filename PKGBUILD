@@ -1,7 +1,7 @@
 # Maintainer: codl <codl@codl.fr>
 pkgname='urn-git'
 pkgver=r89.0a5c551
-pkgrel=1
+pkgrel=2
 pkgdesc='Split timer for speedrunning'
 url='https://github.com/3snowp7im/urn'
 arch=('i686' 'x86_64')
@@ -47,6 +47,8 @@ package () {
     install -D -m 644 urn-gtk.gschema.xml "$pkgdir/usr/share/glib-2.0/schemas/urn-gtk.gschema.xml"
     mkdir -p "$pkgdir/usr/share/urn/themes"
     cp -a themes/* "$pkgdir/usr/share/urn/themes/"
+    mkdir -p "$pkgdir/usr/share/urn/splits"
+    cp -a splits/* "$pkgdir/usr/share/urn/splits/"
 
     for size in 16 22 24 32 36 48 64 72 96 128 256 512; do
         convert urn.svg -resize ${size}x${size} urn.png
