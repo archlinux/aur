@@ -4,22 +4,21 @@
 
 pkgname=phc-intel
 _phcver=0.3.2
-pkgver=$_phcver.12.19
-_realver=pack-rev19
-pkgrel=2
+pkgver=$_phcver.12.20
+_realver=pack-rev20
+pkgrel=1
 pkgdesc="frequency driver for Intel CPUs with undervolting feature"
 url="http://www.linux-phc.org"
 arch=('any')
 license=('GPL')
 depends=('dkms')
-optdepends=('linux-headers' 'linux-lts-headers')
 provides=('linux-phc')
 backup=('etc/default/phc-intel')
 install=phc-intel.install
-source=(phc-intel-$_realver.tar.bz2::$url/forum/download/file.php?id=168
+source=(phc-intel-$_realver.tar.bz2::$url/forum/download/file.php?id=169
         phc-intel.{default,sh,sleep,system-sleep}
         dkms.conf)
-sha256sums=('48e1e866e42cee5b80cabbbf62ca4d96f4cc6337f375bd2553c3a99bc595fbaa'
+sha256sums=('69b8f975271496764b9ca6da5f1c1f1193fd4b09b38017875fbd0b54ab1c5507'
             'ce08a5a4107be1d5723f1f169d515e67b6c77893f3994fc2d0d2ccf611307ed3'
             'b526f3e8e66f6495531f13f2e6867d3a07b2ec7a7c3b8aa061f22be1cd6e770f'
             '569b85988cb38380fec85c25688b76abc24a46601aa8f58eb24eaebf863eebef'
