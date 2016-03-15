@@ -2,12 +2,12 @@
 
 pkgname=nodejs-lts-bin
 pkgver=4.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Evented I/O for V8 javascript'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://nodejs.org/'
 license=('MIT')
-depends=('openssl' 'zlib' 'python2', 'icu')
+depends=('openssl' 'zlib' 'python2' 'icu')
 provides=('nodejs' 'npm')
 conflicts=('nodejs' 'npm')
 
