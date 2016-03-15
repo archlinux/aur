@@ -14,6 +14,8 @@ post_install() {
     echo ">>>   CookieAuthentication 1"
     echo ">>>   CookieAuthFileGroupReadable 1"
     echo ">>>   CookieAuthFile /var/lib/tor-auth/control_auth_cookie"
+    echo ">>> Restart tor (reload not enough):"
+    echo ">>>   sudo systemctl restart tor"
     echo ">>> Run daemon and check status:"
     echo ">>>   sudo systemctl start zeronet"
     echo ">>>   sudo systemctl status zeronet"
