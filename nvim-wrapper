@@ -58,6 +58,10 @@ def processArgv():
         else:
             nvimOptions.append(arg)
 
+    # launch the wrapper in the current directory by default
+    if not any([o.startswith('--working-directory') for o in gtermOptions]):
+        gtermOptions.append('--working-directory='+os.path.abspath(os.curdir))
+
     return {
         'gterm': gtermOptions,
         'nvim': nvimOptions

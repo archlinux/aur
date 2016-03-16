@@ -1,7 +1,7 @@
 # Maintainer: Felipe Morales <hel.sheep@gmail.com>
 pkgname=neovim-gnome-terminal-wrapper
 pkgver=2
-pkgrel=4
+pkgrel=5
 pkgdesc="A wrapper for running neovim in a separate instance of gnome-terminal"
 arch=(any)
 url="http://github.com/fmoralesc/"
