@@ -1,0 +1,17 @@
+pkgbase = notes
+	pkgdesc = Note taking application, write down your thoughts.
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/nuttyartist/notes
+	arch = i686
+	arch = x86_64
+	license = MPL
+	makedepends = qtcreator
+	depends = qt5-base
+	provides = notes
+	conflicts = notes
+	source = notes-0.8.0.tar.gz::https://github.com/nuttyartist/notes/archive/v0.8.0.tar.gz
+	md5sums = b642fdada866bc2cdd24bf834abbaa68
+
+pkgname = notes
+
