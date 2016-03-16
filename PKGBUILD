@@ -3,7 +3,7 @@
 # Contributor: Alessio Sergi <asergi at archlinux dot us>
 
 pkgname=xfce-theme-greybird-git
-pkgver=1.6.2.r633
+pkgver=1.6.2.r648
 pkgrel=1
 pkgdesc="Desktop theme suite from Xubuntu, with support for Xfce, Metacity and Unity"
 arch=('any')
@@ -13,8 +13,7 @@ depends=('gtk-engine-murrine')
 makedepends=('git')
 optdepends=('elementary-xfce-icons: matching icon theme'
             'emerald: emerald theme'
-            'lightdm-gtk2-greeter: lightdm GTK+2 theme'
-            'lightdm-gtk3-greeter: lightdm GTK+3 theme'
+            'lightdm-gtk-greeter: lightdm GTK+3 theme'
             'lightdm-unity-greeter: lightdm unity theme')
 provides=('xfce-theme-greybird')
 conflicts=('xfce-theme-greybird')
