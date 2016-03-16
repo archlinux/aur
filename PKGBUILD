@@ -4,7 +4,7 @@
 _modname="tuxedo-wmi"
 pkgname="${_modname}-dkms"
 pkgver="1.5.1"
-pkgrel=1
+pkgrel=2
 pkgdesc='A reverse engineering driver for the Clevo P150EM/P170EM/P150SM/P157SM/P170SM/P177SM backlight keyboard, by Christoph Jaeger (DKMS version)'
 arch=('any')
 license=('GPL')
