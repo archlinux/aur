@@ -10,16 +10,13 @@ license=('GPL')
 depends=('gnome-sharp>=2' 'gnome-icon-theme' 'gnome-keyring-sharp' 'mono>=2')
 makedepends=('intltool>=0.35' 'pkgconfig>=0.9')
 install=$pkgname.install
-source=(http://www.bareftp.org/release/$pkgname-$pkgver.tar.gz
-        fix.patch)
-sha256sums=('efb22c6b03a84a74ad734e493d5fa711b2c6cfea75db1bedf68c713a31d62727'
-            '2d4a99fe5ff363a7dc97d1abb85fb8f124ee4935801855eef656b0c089c2a5c3')
+source=(http://www.bareftp.org/release/$pkgname-$pkgver.tar.gz)
+sha256sums=('efb22c6b03a84a74ad734e493d5fa711b2c6cfea75db1bedf68c713a31d62727')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
   export MONO_SHARED_DIR=$(pwd)
   ./configure --prefix=/usr
-  patch -p1 -i ../fix.patch
 }
 
 build() {
