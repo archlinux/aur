@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=mattermost
-pkgver=2.0.0
+pkgver=2.1.0
 _pkgver=${pkgver/rc/-rc}
 pkgrel=1
 pkgdesc="Open source Slack-alternative in Golang and React"
@@ -18,7 +18,7 @@ install=mattermost.install
 source=(https://github.com/mattermost/platform/archive/v$_pkgver/$pkgname-$_pkgver.tar.gz
         mattermost.service
         mattermost-user.conf)
-sha256sums=('80b7288af3973e952bb606f4e2c2e9b8eb0c352997930e7300ea9bc1da1d7641'
+sha256sums=('b477803cbef30fac7de691af3df9902d04ed7d17f7807e3afad48328ef9ad97b'
             'b02a0bdbffd17a3a02b6d0098d2a10363ad595070ce6985513b7e6496f9b655a'
             '7cd154ed034a09f6671cab68bc9c30a7fd84e777e801e2aaf93a567cfa0dccfd')
 
@@ -84,8 +84,17 @@ package() {
 	mv web/static/js/bundle{,-$pkgver}.min.js
 	mv web/static/js/libs{,-$pkgver}.min.js
 
-	sed -ri 's/(react-with-addons|jquery|bootstrap|perfect-scrollbar)(-[0-9\.]+)?\.js/\1\2.min.js/g' web/templates/head.html
-	sed -ri "s/(bundle|libs)(\.min)?\.js/\1-$pkgver.min.js/g" web/templates/head.html
+	for ext in js css; do
+		for asset in web/static/$ext/*.$ext; do
+			asset=$(basename "$asset" ".$ext")
+			if [ -f "web/static/$ext/$asset.min.$ext" ]; then
+				sed -ri "s#/static/$ext/$asset\.$ext#/static/$ext/$asset.min.$ext#g" web/templates/head.html
+				rm "web/static/$ext/$asset.$ext"
+			fi
+		done
+	done
+
+	sed -ri "s#/static/js/(bundle|libs)(\.min)?\.js#/static/js/\1-$pkgver.min.js#g" web/templates/head.html
 
 	sed -e 's@"StorageDirectory": ".*"@"StorageDirectory": "/var/lib/mattermost/"@g' \
 	    -e 's@tcp(dockerhost:3306)@unix(/run/mysqld/mysqld.sock)@g' \
