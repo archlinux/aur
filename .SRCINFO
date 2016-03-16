@@ -1,14 +1,14 @@
 pkgbase = selektor
 	pkgdesc = Tor launcher and exit node chooser
-	pkgver = 3.13.59
+	pkgver = 3.13.60
 	pkgrel = 1
 	url = http://www.dazzleships.net/?page_id=71
 	arch = any
 	license = GPL2
 	depends = tor
 	depends = java-environment
-	source = selektor-3.13-59_all.tar.gz::http://www.dazzleships.net/?wpdmact=process&did=My5ob3RsaW5r
-	sha256sums = a21c18a44ffd63206ad24c935a1e3342393ddb084724dafad1b3889b94ca258f
+	source = selektor-3.13-60_all.tar.gz::http://www.dazzleships.net/?wpdmact=process&did=My5ob3RsaW5r
+	sha256sums = 00912afbe36778a583e82bfc4df5635d9bf25c0106d0a4b97222b426485467a8
 
 pkgname = selektor
 
