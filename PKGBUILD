@@ -1,14 +1,14 @@
 
 _pkgname=dontpanic
 pkgname=${_pkgname}-git
-pkgver=0.9.r17.g556fb1c
+pkgver=1.2.r10.g2111bf5
 pkgrel=1
 pkgdesc="Dontpanic is a python app to look for any movie or serie and watch them in 'streaming'. It looks like popcorntime, but doesn't depend of a centralized api."
 arch=(any)
 url=https://git.framasoft.org/Thuban/$_pkgname
 license=(GPL3)
 
-depends=('python-bottle' 'python-requests' 'python-beautifulsoup4' 'python-libtorrent-rasterbar' 'sqlite')
+depends=('python-bottle' 'python-requests' 'python-beautifulsoup4' 'python-libtorrent-rasterbar>=1.0.8' 'sqlite')
 optdepends=('python-cherrypy: for server mode')
 makedepends=('git')
 
