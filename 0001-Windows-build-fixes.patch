@@ -1,0 +1,38 @@
+From 23fac7a739cec68f584e4b35bf589a975bfac692 Mon Sep 17 00:00:00 2001
+From: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date: Wed, 16 Mar 2016 18:29:56 -0400
+Subject: [PATCH] Windows build fixes
+
+---
+ cmake_unofficial/CMakeLists.txt | 1 +
+ programs/lz4io.c                | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/cmake_unofficial/CMakeLists.txt b/cmake_unofficial/CMakeLists.txt
+index a986f43..c91a52c 100644
+--- a/cmake_unofficial/CMakeLists.txt
++++ b/cmake_unofficial/CMakeLists.txt
+@@ -52,6 +52,7 @@ if(BUILD_LIBS)
+         
+     install(TARGETS liblz4
+     LIBRARY DESTINATION lib
++    RUNTIME DESTINATION bin
+     ARCHIVE DESTINATION lib
+     )
+ 
+diff --git a/programs/lz4io.c b/programs/lz4io.c
+index 14bbf0e..e4823dc 100644
+--- a/programs/lz4io.c
++++ b/programs/lz4io.c
+@@ -66,7 +66,7 @@
+ #  include <io.h>      /* _setmode, _fileno, _get_osfhandle */
+ #  if !defined(__DJGPP__)
+ #    define SET_BINARY_MODE(file) { int unused=_setmode(_fileno(file), _O_BINARY); (void)unused; }
+-#    include <Windows.h> /* DeviceIoControl, HANDLE, FSCTL_SET_SPARSE */
++#    include <windows.h> /* DeviceIoControl, HANDLE, FSCTL_SET_SPARSE */
+ #    define SET_SPARSE_FILE_MODE(file) { DWORD dw; DeviceIoControl((HANDLE) _get_osfhandle(_fileno(file)), FSCTL_SET_SPARSE, 0, 0, 0, 0, &dw, 0); }
+ #    if defined(_MSC_VER) && (_MSC_VER >= 1400)  /* Avoid MSVC fseek()'s 2GiB barrier */
+ #      define fseek _fseeki64
+-- 
+2.7.3
+
