@@ -1,0 +1,44 @@
+diff -rupN face-analysis-sdk-stable/src/map-list/main.cpp /home/cobra/ice/face-analysis-sdk-stable/src/map-list/main.cpp
+--- face-analysis-sdk-stable/src/map-list/main.cpp	2013-06-18 20:53:13.000000000 -0300
++++ /home/cobra/ice/face-analysis-sdk-stable/src/map-list/main.cpp	2016-03-16 13:51:15.000000000 -0300
+@@ -19,6 +19,7 @@
+ 
+ #include "utils/helpers.hpp"
+ #include "utils/command-line-arguments.hpp"
++#include <unistd.h>
+ #include <iostream>
+ #include <iterator>
+ #include <cerrno>
+diff -rupN face-analysis-sdk-stable/src/test/command-line-options.cpp /home/cobra/ice/face-analysis-sdk-stable/src/test/command-line-options.cpp
+--- face-analysis-sdk-stable/src/test/command-line-options.cpp	2013-06-18 20:53:13.000000000 -0300
++++ /home/cobra/ice/face-analysis-sdk-stable/src/test/command-line-options.cpp	2016-03-16 13:50:50.000000000 -0300
+@@ -17,6 +17,7 @@
+ 
+ // Copyright CSIRO 2013
+ 
++#include <algorithm>
+ #include "command-line-options.hpp"
+ #include <iostream>
+ #include <sstream>
+diff -rupN face-analysis-sdk-stable/src/utils/helpers.cpp /home/cobra/ice/face-analysis-sdk-stable/src/utils/helpers.cpp
+--- face-analysis-sdk-stable/src/utils/helpers.cpp	2013-06-18 20:53:13.000000000 -0300
++++ /home/cobra/ice/face-analysis-sdk-stable/src/utils/helpers.cpp	2016-03-16 16:48:01.000000000 -0300
+@@ -24,6 +24,7 @@
+ #include <opencv2/imgproc/imgproc.hpp>
+ #include <functional>
+ #include <iostream>
++#include <cstdarg>
+ 
+ bool
+ nan_p(double value)
+diff -rupN face-analysis-sdk-stable/src/utils/helpers.hpp /home/cobra/ice/face-analysis-sdk-stable/src/utils/helpers.hpp
+--- face-analysis-sdk-stable/src/utils/helpers.hpp	2013-06-18 20:53:13.000000000 -0300
++++ /home/cobra/ice/face-analysis-sdk-stable/src/utils/helpers.hpp	2016-03-16 16:48:23.000000000 -0300
+@@ -20,6 +20,7 @@
+ #ifndef _HELPERS_HPP_
+ #define _HELPERS_HPP_
+ 
++#include <cstdarg>
+ #include <opencv2/core/core.hpp>
+ #include <list>
+ #include <stdexcept>
