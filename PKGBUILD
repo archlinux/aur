@@ -29,7 +29,7 @@ pkgver="${_pkgvermajmin}.0"
 pkgrel=2
 
 # PKGBUILD
-_piver=2
+_piver=3
 pkgname="qt-sdk-raspberry-pi${_piver}"
 
 if $_static_build; then
@@ -108,6 +108,7 @@ build() {
   local _srcdir="${srcdir}/${_source_unpackaged_name}"
   local _basedir="${_srcdir}/qtbase"
   local _waylanddir="${_srcdir}/qtwayland"
+  local _webenginedir="${_srcdir}/qtwebengine"
   local _bindir="${_srcdir}"
   local _mkspec_dir="${_basedir}/mkspecs/devices/${_mkspec}"
 
@@ -152,6 +153,8 @@ fi
   patch -p1 < ${_patch_dir}/0001-journald-test-will-fail-with-certain-toolchains.patch
   cd ${_waylanddir}
   patch -p1 < ${_patch_dir}/0001-Adjust-Raspberry-Pi-integration-to-new-API.patch
+  cd ${_webenginedir}
+  patch -p1 < ${_patch_dir}/0001-Include-neon-support-for-any-fpu-.-neon.patch
 
   # end patch
 
