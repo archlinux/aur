@@ -1,4 +1,4 @@
-# Maintainer: Adria Arrufat <adria.arrufat@protonmail.ch>
+# Maintainer: Adria Arrufat <adria.arrufat+AUR@protonmail.ch>
 # Contributor: Limao Luo <luolimao+AUR@gmail.com>
 # Contributor: Thomas Dziedzic <gostrc@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
