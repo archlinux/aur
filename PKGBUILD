@@ -1,6 +1,6 @@
 # Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
 pkgname=yotta
-pkgver=0.14.1
+pkgver=0.14.2
 pkgrel=1
 pkgdesc="Tool for managing reusable components for C/C++ by mbed"
 url="http://yottadocs.mbed.com/"
@@ -26,7 +26,7 @@ optdepends=()
 license=('Apache')
 arch=('any')
 source=("https://github.com/ARMmbed/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('1a5de18a0bc593101aca13f059a416560e80b9496bb1725858050baa68e5fe2245138da0e63240175b833eeb1392349203f64fccfe2bd78dbfe4a9d5aff4614b')
+sha512sums=('1ad41815930a914dedfd043c55ca89aa1074045c9aac459df32a72ac62fd163044c5a591b667c061bfbb432a4b20bbdeea1b29be4b131808f4e86f72cb2b1bc4')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -36,6 +36,9 @@ build() {
 
     # Pathlib is in Python3
     sed -i -e '/.*pathlib.*/d' setup.py
+
+    # 0.14.2 release failed to update version.txt
+    sed -i -e 's/0.14.1/0.14.2/' yotta/version.txt
 
     python setup.py build
 }
