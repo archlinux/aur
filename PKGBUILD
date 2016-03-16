@@ -2,8 +2,8 @@
 
 _pkgname=boomaga
 pkgname=${_pkgname}-git
-pkgver=r229.89cf61b
-pkgrel=7
+pkgver=r230.15362b8
+pkgrel=1
 pkgdesc="A virtual printer for viewing a document before printing it out using the physical printer"
 arch=('i686' 'x86_64')
 url="http://www.boomaga.org"
@@ -20,11 +20,6 @@ md5sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${_pkgname}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    cd "${srcdir}/${_pkgname}"
-    patch -Np1 < ${startdir}/20160314-backend.patch
 }
 
 build() {
