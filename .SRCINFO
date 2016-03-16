@@ -1,0 +1,15 @@
+pkgbase = python2-libevt
+	pkgdesc = Library and tools to access the Windows Event Log (EVT) format.
+	pkgver = 20151206
+	pkgrel = 1
+	url = https://github.com/libyal/libevt/
+	arch = any
+	license = LGPLv3+
+	makedepends = python2
+	makedepends = gcc
+	depends = python2
+	source = https://pypi.python.org/packages/source/l/libevt-python/libevt-python-20151206.tar.gz#md5=346f2e6cb320d6e3c1861cba3e924cf8
+	md5sums = 346f2e6cb320d6e3c1861cba3e924cf8
+
+pkgname = python2-libevt
+
