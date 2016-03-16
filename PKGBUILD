@@ -1,20 +1,22 @@
 # Maintainer: superlex
 
-# Based on Parabola GNU/Linux iceweasel-libre PKGBUILD :
+# Based on Parabola GNU/Linux-libre iceweasel-libre PKGBUILD :
 
+# Maintainer: André Silva <emulatorman@parabola.nu>
+# Contributor: Márcio Silva <coadde@parabola.nu>
 # Contributor (ConnochaetOS): Henry Jensen <hjensen@connochaetos.org>
-# Contributor (Parabola): Luke Shumaker <lukeshu@sbcglobal.net>
-# Contributor: Figue <ffigue at gmail>
-# Contributor (Parabola): fauno <fauno@kiwwwi.com.ar>
-# Contributor (Parabola): vando <facundo@esdebian.org>
-# Contributor (Parabola): André Silva <emulatorman@lavabit.com>
-# Contributor (Parabola): Márcio Silva <coadde@lavabit.com>
+# Contributor: Luke Shumaker <lukeshu@sbcglobal.net>
+# Contributor: fauno <fauno@kiwwwi.com.ar>
+# Contributor: vando <facundo@esdebian.org>
 # Contributor (Arch): Jakub Schmidtke <sjakub@gmail.com>
+# Contributor: Figue <ffigue at gmail>
+# Contributor: taro-k <taro-k@movasense_com>
+# Contributor: Michał Masłowski <mtjm@mtjm.eu>
 # Thank you very much to the older contributors:
 # Contributor: evr <evanroman at gmail>
-# Contributor: Muhammad 'MJ' Jassim <UnbreakableMJ@gmail.com> 
+# Contributor: Muhammad 'MJ' Jassim <UnbreakableMJ@gmail.com>
 
-# Firefox PKGBUILD (Arch Linux):
+# Firefox PKGBUILD (Arch Linux) :
 
 # Maintainer : Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
@@ -22,43 +24,44 @@
 _pgo=false
 
 # We're getting this from Debian Sid
-_debname=iceweasel
-_debver=44.0.2
+_debname=firefox
+_debver=45.0
 _debrel=1
-_debrepo=http://ftp.debian.org/debian/pool/main/i/
+_debrepo=http://ftp.debian.org/debian/pool/main/f
+_parabolarepo=https://repo.parabola.nu/other/iceweasel
+_brandingrel=1
 
 pkgname=iceweasel
 pkgver=$_debver.deb$_debrel
 pkgrel=1
-pkgdesc="Debian Browser based on Mozilla Firefox"
+pkgdesc="Debian Browser based on Mozilla Firefox, with Parabola GNU/Linux-libre branding"
 arch=('i686' 'x86_64')
 license=('GPL' 'MPL' 'LGPL')
-depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme' 'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite')
-makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'libpulse' 'inetutils' 'quilt' 'pkg-config' 'nss>=3.18.1' 'libidl2'  'librsvg' 'libxslt' 'autoconf2.13' 'imagemagick' 'gconf')
-
+depends=(alsa-lib dbus-glib desktop-file-utils ffmpeg gtk2 gtk3 hicolor-icon-theme hunspell icu libevent libvpx libxt mime-types mozilla-common nss sqlite startup-notification ttf-font)
+makedepends=(autoconf2.13 diffutils gconf imake inetutils libidl2 libpulse librsvg libxslt mesa pkg-config python2 quilt unzip yasm zip nss imagemagick)
 options=(!emptydirs !makeflags debug)
 if $_pgo; then
   makedepends+=(xorg-server-xvfb)
   options+=(!ccache)
 fi
-
 optdepends=('networkmanager: Location detection via available WiFi networks'
 			'upower: Battery API'
 			'ffmpeg: H264/AAC/MP3 decoding'
-            'iceweasel-extension-archsearch: Iceweasel Arch search engines'
-            'iceweasel-extension-archforumsearch-it: Iceweasel search engines for Arch Linux Italian forum')
+            'iceweasel-extension-archsearch: Iceweasel Arch search engines')
 url="https://packages.debian.org/source/sid/iceweasel"
 install=iceweasel.install
 provides=("$_debname"="$_debver")
 source=("${_debrepo}/${_debname}/${_debname}_${_debver}.orig.tar.xz"
 		"${_debrepo}/${_debname}/${_debname}_${_debver}-${_debrel}.debian.tar.xz"
-        'mozconfig'
-        'iceweasel.desktop'
-        'iceweasel-install-dir.patch'
-        'vendor.js'
-		'iceweasel-fixed-loading-icon.png')
-md5sums=('889fcf1f5ddf3b3c4ee0831d320d3a02'
-         'bcd572d67ae8502ff7941743d0a5223d'
+		"$_parabolarepo/${pkgname}_$_debver-$_brandingrel.branding.tar.xz"
+        mozconfig
+        iceweasel.desktop
+        iceweasel-install-dir.patch
+        vendor.js
+		iceweasel-fixed-loading-icon.png)
+md5sums=('f5e07751e3df66044a1dc9b3c6e21b6b'
+         'f94e8c63d20f08830a550a67931859cd'
+         'aa8cee1d3731faf031a522dec8e1471d'
          '9f8cd36718fa474ce593c90979d14b38'
          '7b9e5996dd9fe0b186a43a297db1c6b5'
          '1c42509891cf6843660a5f3c69896e80'
@@ -66,14 +69,15 @@ md5sums=('889fcf1f5ddf3b3c4ee0831d320d3a02'
          '6e335a517c68488941340ee1c23f97b0')
 
 prepare() {
-  export DEBIAN_BUILD="firefox-$_debver"
+  cd "$srcdir/$_debname-$_debver"
+  mv "$srcdir/debian" .
+  mv "$srcdir/$pkgname-$_debver/branding" debian
+  mv "$srcdir/$pkgname-$_debver/patches/iceweasel-branding" debian/patches
+  cat "$srcdir/$pkgname-$_debver/patches/series" >> debian/patches/series
   
   export QUILT_PATCHES=debian/patches
   export QUILT_REFRESH_ARGS='-p ab --no-timestamps --no-index'
   export QUILT_DIFF_ARGS='--no-timestamps'
-  
-  mv debian "$srcdir/$DEBIAN_BUILD/"
-  cd "$srcdir/$DEBIAN_BUILD"
   
   # We wont save user profile in .mozilla/iceweasel
   sed -i 's/MOZ_APP_PROFILE=mozilla\/firefox/MOZ_APP_PROFILE=mozilla\/iceweasel/g' "debian/branding/configure.sh"
@@ -106,25 +110,22 @@ prepare() {
 }
 
 build() {
-  export DEBIAN_BUILD="firefox-$_debver"
-  
-  cd "$srcdir/$DEBIAN_BUILD"
+  cd "$srcdir/$_debname-$_debver"
 
-  export PATH="$srcdir/python2-path:$PATH"
+  export PATH="$srcdir/path:$PATH"
   export PYTHON="/usr/bin/python2"
 
   if $_pgo; then
+    # Do PGO
     xvfb-run -a -s "-extension GLX -screen 0 1280x1024x24" \
-    make -f client.mk build MOZ_PGO=1
+      make -f client.mk build MOZ_PGO=1
   else
     make -f client.mk build
   fi
 }
 
 package() {
-  export DEBIAN_BUILD="firefox-$_debver"
-
-  cd "$srcdir/$DEBIAN_BUILD"
+  cd "$srcdir/$_debname-$_debver"
   make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
 
   install -Dm644 ../vendor.js "$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
@@ -133,9 +134,7 @@ package() {
   brandingdir=moz-objdir/$_brandingdir
   icondir="$pkgdir/usr/share/icons/hicolor"
   for i in 16 22 24 32 48 64 128 192 256 384; do
-    convert -background none "$_brandingdir/${pkgname}_icon.svg" \
-      -resize ${i}x${i}^ -gravity center -extent ${i}x${i} \
-      "$brandingdir/default$i.png"
+    rsvg-convert -w $i -h $i "$_brandingdir/${pkgname}_icon.svg" -o "$brandingdir/default$i.png"
     install -Dm644 "$brandingdir/default$i.png" "$icondir/${i}x${i}/apps/$pkgname.png"
   done
 
@@ -156,10 +155,6 @@ package() {
 
   # Workaround for now: https://bugzilla.mozilla.org/show_bug.cgi?id=658850
   ln -sf $pkgname "$pkgdir/usr/lib/$pkgname/$pkgname-bin"
-
-
-  # Remove $srcdir refers
-  sed -i '1d' "$pkgdir/usr/lib/$pkgname/defaults/pref/channel-prefs.js"
   
     
   # Searchplugins section
@@ -168,13 +163,6 @@ package() {
   install -d "$pkgdir/etc/${pkgname}/searchplugins/common"
   
   # Add common web searchplugins
-  # install -Dm644 "$srcdir/$DEBIAN_BUILD/debian/duckduckgo.xml" "$pkgdir/etc/${pkgname}/searchplugins/common/duckduckgo.xml"
-  install -Dm644 "$srcdir/$DEBIAN_BUILD/debian/debsearch.xml" "$pkgdir/etc/${pkgname}/searchplugins/common/debsearch.xml"
-  
-  # Add web searchplugins for default locale (en-US)
-  # WORNING!! It seems they aren't included anymore
-  # install -d "$pkgdir/etc/${pkgname}/searchplugins/locale"
-  # cp -R "$pkgdir/usr/lib/$pkgname/browser/searchplugins" "$pkgdir/etc/${pkgname}/searchplugins/locale/en-US"
-  # rm -rv "$pkgdir/usr/lib/$pkgname/browser/searchplugins"    
+  install -Dm644 "$srcdir/$_debname-$_debver/debian/debsearch.xml" "$pkgdir/etc/${pkgname}/searchplugins/common/debsearch.xml" 
 }
 
