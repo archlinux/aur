@@ -5,9 +5,9 @@
 # Contributor: Ace <a.mad.coder at gmail dot com>
 
 pkgname=unity-editor
-_version=5.3.3
+_version=5.3.4
 _build=f1
-_buildtag=20160223
+_buildtag=20160316
 pkgver=${_version}${_build}+${_buildtag}
 pkgrel=1
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
@@ -41,7 +41,7 @@ source=("http://download.unity3d.com/download_unity/linux/unity-editor-installer
         'monodevelop-unity'
         'unity-monodevelop.png')
 noextract=("unity-editor-installer-${pkgver}.sh")
-sha256sums=('f9e443bc7c5d7cb7239cc3e64919150dc1c50dfbb90bf7cdaaec4f825cd68ff5'
+sha256sums=('501e548e4f958ffc4e404155291e3db464ae65f6995e0e78becc717b3d5d3046'
             'aca6e932a624acd98f634428af0b33a36587b6c41887969477db944975d4d8b4'
             'b54b2823b2973729d04b0ca01619f489657ff60908f4367c55c5efffc20df42f'
             '7309ac206fbb6eb5f1a073bf22e2571e1a574410ab410138a19fb66c3eee21e3'
