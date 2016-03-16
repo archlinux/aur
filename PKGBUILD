@@ -4,7 +4,7 @@
 # NOTE: If you plan on using the usbblaster make sure you are member of the plugdev group.
 # NOTE: Altera has dramatically changed their packing in regards to version 12. This
 #       PKGBUILD will install the full Altera suite now. Be aware that the space requirement
-#       is around 14GB.
+#       for installation is around 14GB but packaging may require up to 38GB of space.
 #
 pkgname=quartus-free
 pkgver=15.1.0.185
@@ -15,7 +15,10 @@ url="https://dl.altera.com/?edition=lite"
 license=('custom')
 
 _build_nr=$(echo ${pkgver} | cut -d '.' -f4)
-_alteradir="/opt/altera"
+_alteradir="/opt/altera/${pkgver%.*.*}"
+
+# Change this to "ae" if using ModelSim Subscription Edition
+_modelsimver="ase"
 
 # According to the installer script, these dependencies are needed for the installer
 if [[ $CARCH = i686 ]]
@@ -43,56 +46,66 @@ fi
 
 makedepends=('bash')
 
+# A more permanent source for lib32-freetype2-2.5.0.1-1-x86-64 should be found
 source=("http://download.altera.com/akdlm/software/acdsinst/${pkgver%.*.*}/${_build_nr}/ib_tar/Quartus-lite-${pkgver}-linux.tar"
         "http://gaming.jhu.edu/mirror/archlinux/multilib/os/x86_64/lib32-freetype2-2.5.0.1-1-x86_64.pkg.tar.xz"   # Used for a freetype bugfix HACK
-	"quartus.sh" "quartus.desktop" "51-usbblaster.rules" "quartus.install" "modelsim-ase.desktop")
+	"quartus.sh" "quartus.desktop" "51-usbblaster.rules" "quartus.install" "modelsim-ase.desktop" "modelsim-ae.desktop")
 md5sums=('EF0D9EB90E24338AD31864D3069151B0'
          'd3b3b7cdf874b6dd0b60c40d84dd9128'
          '067c444cae7fe31d3608245712b43ce8'
          '32b17cb8b992fc2dccd33d87f0dcd8ce'
          'f5744dc4820725b93917e3a24df13da9'
          'a331a81c44aed062a7af6d28542c3d82'
-         'bb11a542139ea8ded899ea42588ec0f7')
+         'bb11a542139ea8ded899ea42588ec0f7'
+         'eb4fbf2b7b3a2ffa59ccac57fff968e5')
 
 options=('!strip' '!upx') # Stripping and UPX will takes ages, I'd avoid it.
 install='quartus.install'
 PKGEXT=".pkg.tar"
 
-package() {
+# Need to patch some Quartus/ModelSim files 
+prepare() {
     cd "${srcdir}"
     
-    DISPLAY="" bash ./setup.sh --mode unattended --unattendedmodeui none --installdir "${pkgdir}/${_alteradir}"
-    
+    echo "Notice: May require up to 38GB of free space during package building!"
+    echo "Extracting install binaries and scripts from downloaded tar..."
+    # Run setup.sh to extract Quartus, ModelSim, and device/help files
+    DISPLAY="" bash ./setup.sh --mode unattended --unattendedmodeui none --installdir "${srcdir}${_alteradir}"
+    echo "Finished extracting binaries and scripts."
+
     # Remove uninstaller and install logs since we have a working package management
-    rm -r "${pkgdir}${_alteradir}/uninstall"
-    rm -r "${pkgdir}${_alteradir}/logs"
+    rm -r "${srcdir}${_alteradir}/uninstall"
+    rm -r "${srcdir}${_alteradir}/logs"
     
     # Replace altera directory in integration files
     sed -i.bak "s,_alteradir,$_alteradir,g" quartus.sh
     sed -i.bak "s,_alteradir,$_alteradir,g" quartus.desktop
-    sed -i.bak "s,_alteradir,$_alteradir,g" modelsim-ase.desktop
+    sed -i.bak "s,_alteradir,$_alteradir,g" "modelsim-${_modelsimver}.desktop"
     
-    # Fix modelsim startup code for Linux Kernel 4.0
+    # Fix modelsim startup code for Linux Kernel >=4.0
     # see https://wiki.archlinux.org/index.php/Altera_Design_Software
-    sed -i.bak "s,linux_rh60,linux,g" "${pkgdir}${_alteradir}/modelsim_ase/vco"
-    sed -i.bak "s,linux_rh60,linux,g" "${pkgdir}${_alteradir}/modelsim_ae/vco"
+    sed -i.bak "s,linux_rh60,linux,g" "${srcdir}${_alteradir}/modelsim_${_modelsimver}/vco"  
 
-    # Modelsim requires old freetype libraries...
+    # Tell ModelSim where to find the specific lib32-freetype2 libraries it requires
     # see https://wiki.archlinux.org/index.php/Altera_Design_Software#With_freetype2_2.5.0.1-1
-    sed -i.bak2 "10s,^,export LD_LIBRARY_PATH=${_alteradir}/modelsim_ase/lib \n,g" "${pkgdir}${_alteradir}/modelsim_ase/vco"
-    sed -i.bak2 "10s,^,export LD_LIBRARY_PATH=${_alteradir}/modelsim_ase/lib \n,g" "${pkgdir}${_alteradir}/modelsim_ase/vco"
-    install -D -m755 usr/lib32/libfreetype.so* "${pkgdir}${_alteradir}/modelsim_ae/lib"
-    install -D -m755 usr/lib32/libfreetype.so* "${pkgdir}${_alteradir}/modelsim_ase/lib"
-    
+    sed -i.bak2 "10s,^,export LD_LIBRARY_PATH=${_alteradir}/modelsim_${_modelsimver}/lib \n,g" "${srcdir}${_alteradir}/modelsim_${_modelsimver}/vco"
+}
+
+package() {
+    # Move Quartus over to pkgdir for installation
+    mkdir -p "${pkgdir}${_alteradir}"
+    mv "${srcdir}${_alteradir}"/* "${pkgdir}${_alteradir}"
+
+    # Place the lib32-freetype2 libraries where ModelSim is now expecting them to be
+    # see https://wiki.archlinux.org/index.php/Altera_Design_Software#With_freetype2_2.5.0.1-1
+    install -D -m755 usr/lib32/libfreetype.so* "${pkgdir}${_alteradir}/modelsim_${_modelsimver}/lib"
     
     # Copy license file
     install -D -m644 "${pkgdir}${_alteradir}/licenses/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    
+
     # Install integration files
     install -D -m755 quartus.sh "${pkgdir}/etc/profile.d/quartus.sh"
     install -D -m644 51-usbblaster.rules "${pkgdir}/etc/udev/rules.d/51-usbblaster.rules"
     install -D -m644 quartus.desktop "${pkgdir}/usr/share/applications/quartus.desktop"
-    install -D -m644 modelsim-ase.desktop "${pkgdir}/usr/share/applications/modelsim-ase.desktop"
+    install -D -m644 modelsim-${_modelsimver}.desktop "${pkgdir}/usr/share/applications/modelsim-${_modelsimver}.desktop"
 }
-
-# vim:set ts=2 sw=2 et:
