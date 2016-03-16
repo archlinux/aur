@@ -1,0 +1,15 @@
+pkgbase = python2-libfwsi
+	pkgdesc = Library to access the Windows Shell Item format
+	pkgver = 20150822
+	pkgrel = 1
+	url = https://github.com/libyal/libfwsi/
+	arch = any
+	license = LGPLv3+
+	makedepends = python2
+	makedepends = gcc
+	depends = python2
+	source = https://pypi.python.org/packages/source/l/libfwsi-python/libfwsi-python-20150822.tar.gz#md5=78ee381b517d56c61c817a9e53576b89
+	md5sums = 78ee381b517d56c61c817a9e53576b89
+
+pkgname = python2-libfwsi
+
