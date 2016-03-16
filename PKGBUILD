@@ -155,6 +155,7 @@ fi
   patch -p1 < ${_patch_dir}/0001-Adjust-Raspberry-Pi-integration-to-new-API.patch
   cd ${_webenginedir}
   patch -p1 < ${_patch_dir}/0001-Include-neon-support-for-any-fpu-.-neon.patch
+  patch -p1 < ${_patch_dir}/0001-Always-define-arm_thumb.patch
 
   # end patch
 
