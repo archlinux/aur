@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Gluon-scenebuilder
+Comment=JavaFX visual layout tool with sereral improvements by Gluon
+Exec=gluon-scenebuilder
+Icon=gluon-scenebuilder
+Terminal=false
+StartupNotify=false
+Categories=Application;

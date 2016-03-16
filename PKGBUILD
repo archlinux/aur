@@ -2,14 +2,14 @@
 
 pkgname=gluon-scenebuilder
 pkgver=8.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="JavaFX visual layout tool with sereral improvements by Gluon"
 arch=('any')
 url="http://gluonhq.com/open-source/scene-builder/"
 license=('Oracle BSD License')
 groups=()
 depends=('bash' 'java-environment')
-makedepends=('gendesk')
+makedepends=('')
 checkdepends=()
 optdepends=()
 provides=()
@@ -21,25 +21,24 @@ install=
 changelog=
 source=(
         http://download.gluonhq.com/scenebuilder/$pkgver/SceneBuilder-$pkgver.jar
-	$pkgname.png
+        $pkgname.desktop
         $pkgname
 )
 noextract=(SceneBuilder-$pkgver.jar)
 sha256sums=('189c2ecd20e9258a797c7e604d2ec735ca92f48036a7a5d363cad2ea20702064'
-            '963a57d2c61b23cd4a09f2d33924a0e206174e72a8c28f13a4a68f2c643827a8'
+            'd50d10cafeb801582bd9b30500a04a1b36e4589f1ad2243722107a1eec4ce80a'
             '5dc69e3d4dcc395204567c54243105053c54e7f4633fdeac5de19aec7fc5fd1d')
-prepare() {
-  gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc"
-  unzip SceneBuilder-$pkgver.jar LICENSE
-}
+prepare=()
 package() {
+  bsdcpio --extract --make-directories LICENSE "com/oracle/javafx/scenebuilder/app/about/scenebuilder-logo.png" < SceneBuilder-$pkgver.jar 
+
   # copy files
   cd "$srcdir"
   mkdir -p "$pkgdir/opt/$pkgname"
   mkdir -p "$pkgdir/usr/bin"
   install -m755 SceneBuilder-$pkgver.jar "$pkgdir/opt/$pkgname/$pkgname.jar"
   install -m755 $pkgname "$pkgdir/usr/bin/$pkgname"  
-  install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop" 
-  install -Dm644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
-  install -D -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop" 
+  install -Dm644 "com/oracle/javafx/scenebuilder/app/about/scenebuilder-logo.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
