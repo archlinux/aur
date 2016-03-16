@@ -4,11 +4,11 @@
 # NOTE: If you plan on using the usbblaster make sure you are member of the plugdev group.
 # NOTE: Altera has dramatically changed their packing in regards to version 12. This
 #       PKGBUILD will install the full Altera suite now. Be aware that the space requirement
-#       for installation is around 14GB but packaging may require up to 38GB of space.
+#       for installation is around 14GB but packaging may require up to 54GB of space.
 #
 pkgname=quartus-free
 pkgver=15.1.0.185
-pkgrel=1
+pkgrel=2
 pkgdesc="Quartus Prime Lite Edition design software for Altera FPGA's"
 arch=('i686' 'x86_64')
 url="https://dl.altera.com/?edition=lite"
@@ -67,7 +67,7 @@ PKGEXT=".pkg.tar"
 prepare() {
     cd "${srcdir}"
     
-    echo "Notice: May require up to 38GB of free space during package building!"
+    echo "Notice: May require up to 54GB of free space during package building!"
     echo "Extracting install binaries and scripts from downloaded tar..."
     # Run setup.sh to extract Quartus, ModelSim, and device/help files
     DISPLAY="" bash ./setup.sh --mode unattended --unattendedmodeui none --installdir "${srcdir}${_alteradir}"
@@ -92,9 +92,9 @@ prepare() {
 }
 
 package() {
-    # Move Quartus over to pkgdir for installation
+    # Copy Quartus over to pkgdir for installation
     mkdir -p "${pkgdir}${_alteradir}"
-    mv "${srcdir}${_alteradir}"/* "${pkgdir}${_alteradir}"
+    cp -r "${srcdir}${_alteradir}"/* "${pkgdir}${_alteradir}"
 
     # Place the lib32-freetype2 libraries where ModelSim is now expecting them to be
     # see https://wiki.archlinux.org/index.php/Altera_Design_Software#With_freetype2_2.5.0.1-1
