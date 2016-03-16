@@ -3,7 +3,7 @@
 
 PKGNAMESHORT=musicqueue
 pkgname=${PKGNAMESHORT}-git
-pkgver=0.4
+pkgver=0.4.0
 pkgrel=0
 pkgdesc='Lightweight music player'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ optdepends=('gstreamer0.10-good-plugins: Support for additional file formats'
             'gstreamer0.10-bad-plugins: Support for additional file formats'
             'gstreamer0.10-ugly-plugins: Support for additional file formats'
             'gvfs: Support for external devices')
-source=("${PKGNAMESHORT}::git+https://gitlab.com/digifuzzy/${PKGNAMESHORT}.git#tag=v${pkgver}.${pkgrel}")
+source=("${PKGNAMESHORT}::git+https://gitlab.com/digifuzzy/${PKGNAMESHORT}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 BUILDFLDR='localbuild'
 
