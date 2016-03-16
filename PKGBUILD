@@ -3,16 +3,18 @@
 
 pkgname=retroarch
 _pkgname=RetroArch
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Simple frontend for the Libretro API. Stable version."
 
 url="http://www.libretro.com/"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 
 license=('GPL')
-depends=('ffmpeg' 'libgl' 'libusb' 'libxinerama' 'libxkbcommon'
-         'libxv' 'mesa' 'nvidia-cg-toolkit' 'openal' 'python' 'sdl2')
+depends=('ffmpeg' 'libgl' 'libusb' 'libxinerama' 'libxkbcommon' 'libxv' 'mesa'
+         'openal' 'python' 'sdl2' 'perl-net-dbus' 'perl-x11-protocol')
+depends_i686=('nvidia-cg-toolkit')
+depends_x86_64=('nvidia-cg-toolkit')
 optdepends=('jack2')
 install=retroarch.install
 
@@ -23,7 +25,7 @@ source=("https://github.com/libretro/${_pkgname}/archive/v${pkgver}.tar.gz"
         "retroarch.desktop"
         "retroarch-32x32.png"
         "retroarch-64x64.png")
-md5sums=('349ad135e4435eb4d4b531efca9da41d'
+md5sums=('b9f0789845a0cfcbb0d154708dd20b31'
          '8da1d1725bcc4dce7c778c2c37f14996'
          '356fe1a16aff78d62325e319ca95b8e9'
          'e38c12b3c1c2acd08fe5ea7483f62572')
