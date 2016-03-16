@@ -1,0 +1,14 @@
+pkgbase = xbcg
+	pkgdesc = A gamma-contrast-brightness modifier of Linux's laptops
+	pkgver = 0.12
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	depends = libx11
+	depends = libxxf86vm
+	options = !emptydirs
+	source = http://mirror.jkanetwork.com/Third-Party/xbcg-0.12.tar.bz2
+	md5sums = 9a017edaf817678776f7821cdd718467
+
+pkgname = xbcg
+
