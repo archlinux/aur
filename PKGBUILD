@@ -3,7 +3,7 @@
 # https://aur.archlinux.org/packages/poco/
 
 pkgname=libpoco-basic
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="C++ class libraries for network-centric, portable applications, basic edition"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ source=(
 	${url}/releases/poco-${pkgver}/poco-${pkgver}.tar.gz
 #	RegularExpression.h.patch
 )
-sha256sums=('583b00117a3cba8842c10a04675cabe5c3e0abc0a02a52c3d6431ea03a93320d')
+sha256sums=('7e49692742702f75277b6fa7eb56e8209f8065be409f027cf41d5f7227d7d7b4')
 prepare() {
 	# apply patch for static build
 	cd poco-$pkgver
