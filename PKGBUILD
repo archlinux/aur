@@ -1,7 +1,7 @@
 # Maintainer: Sander Zuidema <s.zuidema at bazix dot nl>
 
 pkgname=gluon-scenebuilder
-pkgver=8.1.0
+pkgver=8.1.1
 pkgrel=1
 pkgdesc="JavaFX visual layout tool with sereral improvements by Gluon"
 arch=('any')
@@ -25,7 +25,7 @@ source=(
         $pkgname
 )
 noextract=(SceneBuilder-$pkgver.jar)
-sha256sums=('7c7eabcf2018f5ad05c288d4f1c6982247d29a0dadc9d02fc548a6a9c35f3e17'
+sha256sums=('189c2ecd20e9258a797c7e604d2ec735ca92f48036a7a5d363cad2ea20702064'
             '963a57d2c61b23cd4a09f2d33924a0e206174e72a8c28f13a4a68f2c643827a8'
             '5dc69e3d4dcc395204567c54243105053c54e7f4633fdeac5de19aec7fc5fd1d')
 prepare() {
