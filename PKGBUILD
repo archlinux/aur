@@ -2,7 +2,7 @@ pkgname=pacutils
 pkgdesc='alpm front-end tools'
 url='https://github.com/andrewgregory/pacutils'
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 depends=('pacman>=5.0')
 makedepends=('git')
@@ -18,6 +18,9 @@ prepare() {
     git config submodule.ext/mini.c.url "$srcdir/mini.c"
     git config submodule.t/tap.c.url "$srcdir/tap.c"
     git submodule update
+
+    # fix for SYSCONFDIR not getting passed through to pacreport
+    git cherry-pick 0bb7b603afb3807f31536239b9daac48a58a9a45
 }
 
 build() {
