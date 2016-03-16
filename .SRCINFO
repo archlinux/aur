@@ -1,6 +1,6 @@
 pkgbase = python-themer-git
 	pkgdesc = Themer is a colorscheme generator and manager for your desktop.
-	pkgver = 1.3
+	pkgver = 0.0.0
 	pkgrel = 2
 	url = https://github.com/s0lll0s/themer
 	install = themer.install
@@ -13,7 +13,7 @@ pkgbase = python-themer-git
 	depends = python-yaml
 	depends = python-jinja
 	depends = python-requests
-	optdepends = i3: default-supported windowmanager
+	optdepends = i3-wm: default-supported windowmanager
 	optdepends = fish: supports completion
 	source = themer::git://github.com/s0lll0s/themer.git#branch=master
 	source = themer.install
