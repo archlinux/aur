@@ -1,0 +1,16 @@
+pkgbase = phcpack
+	pkgdesc = software package to solve polynomial systems by homotopy continuation methods
+	pkgver = 2.4.12
+	pkgrel = 1
+	url = http://homepages.math.uic.edu/~jan/PHCpack/phcpack.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc-ada
+	makedepends = qd
+	depends = glibc
+	source = https://github.com/janverschelde/PHCpack/archive/v2.4.12.tar.gz
+	sha256sums = 7abf5916fc259a829a1c71f123fceaae001ae9d32fe000a69c843288662458fa
+
+pkgname = phcpack
+
