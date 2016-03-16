@@ -35,19 +35,19 @@ build() {
 	cd "${srcdir}/${pkgbase}-gtk2"
 	./configure --prefix='/usr' --sysconfdir='/etc' --localstatedir='/var' --libdir=/usr/lib32 \
 	            --disable-{dumper,static,tests} --with-gtk=2
-	make
+	make -j1
 
 	cd "${srcdir}/${pkgbase}-gtk3"
 	./configure --prefix='/usr' --sysconfdir='/etc' --localstatedir='/var' --libdir=/usr/lib32 \
 	            --disable-{dumper,static,tests} --with-gtk=3
-	make
+	make -j1
 }
 
 package_lib32-libdbusmenu-glib() {
 	depends=('lib32-glib2' "${_pkgbase}-glib")
 
 	cd "${srcdir}/${pkgbase}-gtk3"
-	make -C "${_pkgbase}-glib" DESTDIR="${pkgdir}" install
+	make -j1 -C "${_pkgbase}-glib" DESTDIR="${pkgdir}" install
 	rm -rf "${pkgdir}"/usr/{include,share,lib,bin}
 }
 
@@ -56,9 +56,9 @@ package_lib32-libdbusmenu-gtk2() {
 	depends=('lib32-gtk2' "lib32-${_pkgbase}-glib" "${_pkgbase}-gtk2")
 
 	cd "${srcdir}/${pkgname}"
-	make -C "${_pkgbase}-glib" DESTDIR="${pkgdir}" install
-	make -C "${_pkgbase}-gtk"  DESTDIR="${pkgdir}" install
-	make -C "${_pkgbase}-glib" DESTDIR="${pkgdir}" uninstall
+	make -j1 -C "${_pkgbase}-glib" DESTDIR="${pkgdir}" install
+	make -j1 -C "${_pkgbase}-gtk"  DESTDIR="${pkgdir}" install
+	make -j1 -C "${_pkgbase}-glib" DESTDIR="${pkgdir}" uninstall
 	rm -rf "${pkgdir}"/usr/{include,share,lib,bin}
 }
 
@@ -67,8 +67,8 @@ package_lib32-libdbusmenu-gtk3() {
 	depends=('lib32-gtk3' "lib32-${_pkgbase}-glib" "${_pkgbase}-gtk3")
 
 	cd "${srcdir}/${pkgname}"
-	make -C "${_pkgbase}-glib" DESTDIR="${pkgdir}" install
-	make -C "${_pkgbase}-gtk"  DESTDIR="${pkgdir}" install
-	make -C "${_pkgbase}-glib" DESTDIR="${pkgdir}" uninstall
+	make -j1 -C "${_pkgbase}-glib" DESTDIR="${pkgdir}" install
+	make -j1 -C "${_pkgbase}-gtk"  DESTDIR="${pkgdir}" install
+	make -j1 -C "${_pkgbase}-glib" DESTDIR="${pkgdir}" uninstall
 	rm -rf "${pkgdir}"/usr/{include,share,lib,bin}
 }
