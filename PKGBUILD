@@ -25,6 +25,8 @@ prepare() {
 
 build() {
   cd ${PKGNAMESHORT}
+  git clean -dfx
+  git reset --hard HEAD
   mkdir ${BUILDFLDR}
   cd ${BUILDFLDR}
 
