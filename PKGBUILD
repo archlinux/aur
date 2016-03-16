@@ -6,7 +6,7 @@
 
 _pkgname=rhythmbox
 pkgname=$_pkgname-git
-pkgver=3.2.1.44.gf572661
+pkgver=3.3.0.28.ga61f8a4
 pkgrel=1
 pkgdesc="Music playback and management application"
 arch=(i686 x86_64)
@@ -33,12 +33,25 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd $pkgname/
-    git describe | sed 's/^v//;s/-/./g'
+    # count the number of dots and add a 0 to the version if there's only 1
+    dots=`git describe | grep -o '\.' | wc -l`
+    if [ ${dots} -eq 1 ]
+    then
+        git describe | sed 's/^v//;s/-/.0./;s/-/./g'
+    else
+        git describe | sed 's/^v//;s/-/./g'
+    fi
 }
 
 prepare() {
-	cd $pkgname/
-	sed "{:q;N;s/(\[rhythmbox\],\n\t\[\([0-9]\).\([0-9]\).\([0-9]\)\],/(\[rhythmbox\],\n\t[$pkgver],/g;t q}" -i configure.ac
+    cd $pkgname/
+    dots=`git describe | grep -o '\.' | wc -l`
+    # use a different regex depending on the version
+    if [ ${dots} -eq 1 ]
+    then
+        sed "{:q;N;s/(\[rhythmbox\],\n\t\[\([0-9]\).\([0-9]\)\],/(\[rhythmbox\],\n\t[$pkgver],/g;t q}" -i configure.ac
+    fi
+    sed "{:q;N;s/(\[rhythmbox\],\n\t\[\([0-9]\).\([0-9]\).\([0-9]\)\],/(\[rhythmbox\],\n\t[$pkgver],/g;t q}" -i configure.ac
 }
 
 build() {
@@ -49,7 +62,8 @@ build() {
     ./configure --prefix=/usr --sysconfdir=/etc \
         --libexecdir=/usr/lib/rhythmbox \
         --localstatedir=/var --disable-static \
-        --enable-daap --enable-python --enable-vala
+        --enable-daap --enable-python --enable-vala \
+	--disable-Werror
     make
 }
 
