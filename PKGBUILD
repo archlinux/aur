@@ -2,11 +2,12 @@
 
 pkgname=lzma_alone
 pkgver=15.14
-pkgrel=1
+pkgrel=2
 pkgdesc="An algorithm used to perform lossless data compression"
 arch=('i686' 'x86_64')
 url="http://www.7-zip.org/sdk.html"
 license=('custom')
+depends=('gcc-libs')
 source=("http://www.7-zip.org/a/lzma$(echo ${pkgver} | tr -d '.').7z")
 noextract=("lzma$(echo ${pkgver} | tr -d '.').7z")
 sha256sums=('bcf89594572465cecfac86c2d8f73428593b36ab76d980ca20db47e3e742c0d3')
