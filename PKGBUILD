@@ -3,10 +3,10 @@
 _srcname=littleutils
 pkgname=littleutils-full
 pkgver=1.0.35
-pkgrel=1
+pkgrel=2
 pkgdesc="Utilities for compression, file manipulation, text cleanup, and images/PDF optimization (with all features and extras)"
 arch=('i686' 'x86_64')
-url="http://http://littleutils.sourceforge.net/"
+url="http://littleutils.sourceforge.net/"
 license=('custom' 'GPL3')
 depends=('bash' 'dash' 'perl' 'python2' 'file' 'gifsicle' 'libjpeg-turbo' 'libpng'
          'pngcrush' 'bzip2' 'gzip' 'lzip' 'lzma_alone' 'lzop' 'xz' 'p7zip'
