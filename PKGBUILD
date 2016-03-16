@@ -4,11 +4,12 @@ _pkgname=('mdm')
 pkgname=("zarafa-webapp-${_pkgname}")
 groups=('zarafa')
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Mdm plugin for Zarafa Webapp'
 arch=('any')
 source=("https://download.zarafa.com/community/final/WebApp/plugins/MDM%201.0/fedora-22/zarafa-webapp-plugins-mdm-1.0.1453470163.f6c94a8-34.2.noarch.rpm"
-	"compress-static")
+	"compress-static"
+	"zarafa-webapp-mdm.ini")
 backup=("etc/webapps/zarafa-webapp/plugins/${_pkgname}/config.php")
 license=('AGPL3')
 depends=('zarafa-webapp'
@@ -16,7 +17,8 @@ depends=('zarafa-webapp'
 	 'php<7'
 	 'php-fpm<7')
 md5sums=('87c70369dbda5974c8c4aa6589f71f15'
-         'd737d82dfab24adc516c001238a4119f')
+         'd737d82dfab24adc516c001238a4119f'
+         'de837fc5ad2e8f2d70df5037f2a0a107')
 
 package() {
     # plugin
@@ -44,4 +46,8 @@ package() {
 
     ## config examples      
     cp ${pkgdir}/etc/webapps/zarafa-webapp/plugins/${_pkgname}/config.php ${pkgdir}/etc/webapps/zarafa-webapp/plugins/${_pkgname}/config.example.php
+
+    # php
+    mkdir -p ${pkgdir}/etc/php/conf.d
+    cp ${srcdir}/${pkgname}.ini ${pkgdir}/etc/php/conf.d
 }
