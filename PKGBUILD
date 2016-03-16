@@ -1,7 +1,7 @@
 pkgname=sabnzbd
 _pkgname=SABnzbd
-pkgver=0.7.20
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="A web-interface based binary newsgrabber with NZB file support"
 url="http://www.sabnzbd.org"
 arch=("any")
@@ -14,7 +14,7 @@ install="${pkgname}.install"
 backup=("etc/conf.d/sabnzbd" "opt/${pkgname}/${pkgname}.ini")
 source=("https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz"
         "${pkgname}" "${pkgname}.desktop" "addnzb.sh" "nzb-2.png" "sab2_64.png" "x-nzb.xml" "${pkgname}.service" "${pkgname}.confd")
-md5sums=('f9e4ddb38fd7e6829b10cc80159bbd0d'
+md5sums=('003c758eafb6b9407cc3b2592a8ea4d6'
          '48d60a1c626503c7fef1bc5374390513'
          'f9bd5485072714b11f8c30a28024dc4d'
          '69b9bcbcf67ff3e7a4cdd9f26e001341'
@@ -38,7 +38,6 @@ package() {
   find "${pkgdir}/opt/${pkgname}" -type d -exec chmod 755 {} \;
   find "${pkgdir}/opt/${pkgname}" -type f -exec chmod 644 {} \;
   chmod 755 "${pkgdir}/opt/${pkgname}/${_pkgname}.py"
-  chmod 755 "${pkgdir}/opt/${pkgname}/Sample-PostProc.sh"
 
   install -Dm755 "${srcdir}/${pkgname}"       "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "${srcdir}/${pkgname}.confd" "${pkgdir}/etc/conf.d/${pkgname}"
