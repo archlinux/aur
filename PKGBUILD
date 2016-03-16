@@ -9,7 +9,7 @@
 
 _pkgname=synergy
 pkgname=$_pkgname-git
-pkgver=20151130.r2417.7a207b4
+pkgver=20160315.r2453.2ed3d26
 pkgrel=1
 pkgdesc='Share a single mouse and keyboard between multiple computers'
 url='http://synergy-foss.org'
@@ -48,6 +48,7 @@ prepare() {
   cd $_pkgname
   patch -p1 < ../missing-include-fix.patch
   cd ext
+  rm -rf gmock-1.6.0 gtest-1.6.0
   unzip gmock-1.6.0.zip -d gmock-1.6.0
   unzip gtest-1.6.0.zip -d gtest-1.6.0
 }
