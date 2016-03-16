@@ -1,0 +1,12 @@
+post_install() {
+  getent group showcase >/dev/null || groupadd --system showcase &>/dev/null
+  getent passwd showcase >/dev/null || useradd --system -g showcase -G video,power,network -m -d /var/lib/showcase -s /bin/false showcase &>/dev/null
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  getent passwd showcase > /dev/null && userdel showcase
+}
