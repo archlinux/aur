@@ -20,7 +20,7 @@ _mingw_arch=(i686-w64-mingw32 x86_64-w64-mingw32)
 
 prepare() {
     cd lz4
-    git am ../0001-Windows-build-fixes.patch
+    patch -p1 -i ../0001-Windows-build-fixes.patch
 }
 
 build() {
