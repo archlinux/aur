@@ -2,7 +2,7 @@
 # vim: set expandtab ts=2 sw=2:
 
 pkgname=gx
-pkgver=0.4.0.r0.gb82b91b
+pkgver=0.4.0.r4.gbced6a3
 pkgrel=1
 epoch=
 pkgdesc="Packaging tool built around the distributed, content addressed filesystem IPFS. It aims to be flexible, powerful and simple."
