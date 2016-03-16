@@ -1,9 +1,10 @@
 # $Id: PKGBUILD 240297 2015-06-03 10:22:03Z fyan $
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: Michael Hansen <zrax0111 gmail com>
 
 pkgname=qt5-doc
-_qtver=5.6.0-rc
+_qtver=5.6.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('any')
@@ -15,8 +16,8 @@ makedepends=('qt5-tools' 'python2')
 conflicts=('qt')
 groups=('qt' 'qt5')
 _pkgfqn="qt-everywhere-opensource-src-${_qtver}"
-source=("http://download.qt.io/development_releases/qt/${pkgver%.*}/${_qtver}/single/${_pkgfqn}.tar.xz")
-md5sums=('7320f21e0aff25aa40d85a9376e15bc9')
+source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/single/${_pkgfqn}.tar.xz")
+md5sums=('47763c168f58b1196271b231f03c8bae')
 
 prepare() {
   cd ${_pkgfqn}
