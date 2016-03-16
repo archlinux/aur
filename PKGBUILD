@@ -9,7 +9,7 @@ pkgdesc="Wayland and QtQuick based desktop shell for Papyros"
 arch=("i686" "x86_64")
 url="https://github.com/papyros/papyros-shell"
 license=("GPL")
-depends=("qt5-base-dev-git" "qt5-declarative" "qt5-quickcontrols" "qt5-wayland-dev-git" "qt5-graphicaleffects" "greenisland-git" "qml-material-git" "kdeclarative" "pam" "libpulse" "libqtxdg" "solid" "kconfig" "networkmanager-qt" "ttf-dejavu" "ttf-droid" "libpapyros-git" )
+depends=("qt5-base-dev-git" "qt5-declarative" "qt5-quickcontrols" "qt5-wayland-dev-git" "qt5-graphicaleffects" "greenisland" "qml-material-git" "kdeclarative" "pam" "libpulse" "libqtxdg" "solid" "kconfig" "networkmanager-qt" "ttf-dejavu" "ttf-droid" "libpapyros-git" )
 optdepends=(
 'networkmanager: networking support'
 'paper-icon-theme: default icon theme'
