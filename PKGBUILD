@@ -1,7 +1,8 @@
 pkgname=mingw-w64-mpfr
-_pkgver=3.1.3
+_pkgver=3.1.4
 _patchlevel=p4
-pkgver=$_pkgver.$_patchlevel
+pkgver=$_pkgver
+#.$_patchlevel
 pkgrel=1
 pkgdesc="Multiple-precision floating-point library (mingw-w64)"
 arch=(any)
@@ -10,18 +11,16 @@ license=("LGPL")
 makedepends=('mingw-w64-configure')
 depends=("mingw-w64-gmp>=5.0")
 options=('staticlibs' '!strip' '!buildflags')
-source=("http://www.mpfr.org/mpfr-current/mpfr-${_pkgver}.tar.xz"{,.asc}
-        "mpfr-${_pkgver}-${_patchlevel}.patch")
-md5sums=('6969398cd2fbc56a6af570b5273c56a9'
-         'SKIP'
-         'e502185ebb22b41c528f183bb22a7569')
+source=("http://www.mpfr.org/mpfr-current/mpfr-${_pkgver}.tar.xz"{,.asc})
+md5sums=('064b2c18185038e404a401b830d59be8'
+         'SKIP')
 validpgpkeys=('07F3DBBECC1A39605078094D980C197698C3739D')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "$srcdir"/mpfr-$_pkgver
-  patch -p1 -i "$srcdir"/mpfr-${_pkgver}-${_patchlevel}.patch
+  #patch -p1 -i "$srcdir"/mpfr-${_pkgver}-${_patchlevel}.patch
 }
 
 build() {
