@@ -1,7 +1,7 @@
 pkgbase = chewing-editor
 	pkgdesc = Cross platform chewing user phrase editor
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://chewing.im
 	install = chewing-editor.install
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = chewing-editor
 	license = GPL
 	makedepends = cmake
 	makedepends = qt5-tools
+	makedepends = help2man
 	depends = libchewing
 	depends = qt5-base
 	depends = hicolor-icon-theme

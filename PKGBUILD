@@ -2,7 +2,7 @@
 
 pkgname=chewing-editor
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross platform chewing user phrase editor"
 arch=('i686' 'x86_64')
 url="http://chewing.im"
