@@ -1,7 +1,7 @@
 #Maintainer: M0Rf30
 
 pkgname=openbazaar
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon"
 arch=(any)
@@ -44,6 +44,6 @@ msg2 "Installing icons and desktop menu entry"
   install -Dm644 $srcdir/$pkgname.desktop "$pkgdir"/usr/share/applications/openbazaar.desktop
 }
 
-md5sums=('71c917c6773e60842f9ea51ff5714dba'
+md5sums=('ad8c71a82ed8dcae07beda0b90cdbb79'
          '2f915aa854435ce7cd1dfca4eccd0112'
          'dbca9273e9fc18a7aa5d1c395508fe60')
