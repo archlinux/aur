@@ -43,13 +43,17 @@ depends=(${ros_depends[@]}
 
 _tag=release/indigo/image_view/${pkgver}-${_pkgver_patch}
 _dir=image_view
-source=("${_dir}"::"git+https://github.com/ros-gbp/image_pipeline-release.git"#tag=${_tag})
-md5sums=('SKIP')
+source=("${_dir}"::"git+https://github.com/ros-gbp/image_pipeline-release.git"#tag=${_tag}
+        "dynamic_reconfigure.patch")
+sha256sums=('SKIP'
+            'f8c49fe1e62ec86ba46a0bdce1ced50aec74b4c4e495865534a2959fea0444f3')
 
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
   [ -f /opt/ros/indigo/setup.bash ] && source /opt/ros/indigo/setup.bash
+
+  git -C "${srcdir}/${_dir}" apply "${srcdir}/dynamic_reconfigure.patch"
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build

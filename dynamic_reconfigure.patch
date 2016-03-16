@@ -1,0 +1,29 @@
+From 3ad75a15430ce46b25341233665bcce40e3afa70 Mon Sep 17 00:00:00 2001
+From: Kentaro Wada <www.kentaro.wada@gmail.com>
+Date: Mon, 14 Mar 2016 00:56:57 +0900
+Subject: [PATCH] Remove code for roslib on .cfg files
+
+Closes #185
+---
+ image_view/cfg/ImageView.cfg | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
+
+diff --git a/cfg/ImageView.cfg b/cfg/ImageView.cfg
+index 8441c17..5eb3116 100755
+--- a/cfg/ImageView.cfg
++++ b/cfg/ImageView.cfg
+@@ -1,13 +1,7 @@
+ #! /usr/bin/env python
+ 
+ PACKAGE='image_view'
+-try:
+-    import imp
+-    imp.find_module(PACKAGE)
+-    from dynamic_reconfigure.parameter_generator_catkin import *
+-except:
+-    import roslib; roslib.load_manifest(PACKAGE)
+-    from dynamic_reconfigure.parameter_generator import *
++from dynamic_reconfigure.parameter_generator_catkin import *
+ 
+ gen = ParameterGenerator()
+ 
