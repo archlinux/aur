@@ -1,12 +1,12 @@
 # Maintainer Martin Peres <martin.peres@ensi-bourges.fr>
 pkgname=arduide-git
-pkgver=0.r340.8beb733
+pkgver=0.r360.9fc057e
 pkgrel=1
 pkgdesc="ArduIDE is a Qt-based IDE for the open-source Arduino electronics prototyping platform."
 arch=('i686' 'x86_64')
 url="http://mupuf.org/project/arduide.html"
 license=('GPL')
-depends=('qt4>=4.5' 'qtwebkit' 'qscintilla' 'grantlee-qt4>=0.1' 'udev' 'gcc-libs' 'avr-gcc' 'avr-libc')
+depends=('qt4>=4.5' 'qtwebkit' 'qscintilla' 'grantlee-qt4>=0.1' 'udev' 'gcc-libs' 'avr-gcc' 'avr-libc' 'avrdude')
 makedepends=('git' 'cmake')
 
 source=("${pkgname}::git+https://github.com/mupuf/arduide.git")
