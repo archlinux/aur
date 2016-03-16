@@ -1,4 +1,4 @@
-# Maintainer: Adria Arrufat <swiftscythe@gmail.com>
+# Maintainer: Adria Arrufat <adria.arrufat@protonmail.ch>
 # Contributor: Limao Luo <luolimao+AUR@gmail.com>
 # Contributor: Thomas Dziedzic <gostrc@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
