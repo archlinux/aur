@@ -1,7 +1,7 @@
 # Maintainer Denis Demidov <dennis.demidov@gmail.com>
 pkgname=hpx
 pkgver=0.9.11
-pkgrel=5
+pkgrel=6
 pkgdesc="A general purpose C++ runtime system for parallel and distributed applications of any scale"
 arch=("any")
 url="http://stellar-group.org/libraries/hpx"
@@ -10,7 +10,7 @@ conflicts=("hpx-git")
 license=("boost")
 options=("staticlibs")
 
-source="http://stellar.cct.lsu.edu/files/${pkgname}_${pkgver}.tar.bz2"
+source=("http://stellar.cct.lsu.edu/files/${pkgname}_${pkgver}.tar.bz2")
 
 md5sums=("86a71189fb6344d27bf53d6aa2b33122")
 
