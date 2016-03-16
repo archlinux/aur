@@ -3,7 +3,7 @@
 
 pkgname=moneydance
 pkgver=2015.1358
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A personal finance manager for Mac, Windows and Linux"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ source=('moneydance.sh'
         'moneydance.patch')
 source_i686+=(http://infinitekind.com/stabledl/2015/Moneydance_linux_x86.tar.gz)
 source_x86_64+=(http://infinitekind.com/stabledl/2015/Moneydance_linux_amd64.tar.gz)
-sha256sums=('9c45324e6929c3ef52d195cfbbc6014e666b2f34a1be03c0bd81cd50b44cd89a'
+sha256sums=('2afec424853974a22690657376edfdbe7924a2adae7ea57c0e3aa98d8cd62947'
             '4e48af0efb968910304767fe0bbab733aaa7b15f4d05b6a82c9fdac78351776f')
 sha256sums_i686=('a4d18b832eda92580d593d8d2afbcad2e06a5f6609b1355516b32ca7a5a1c4a8')
 sha256sums_x86_64=('64bc32f5d6fc6bffb5e2f923d04a0250a993cb3f3394626352cda933a77d4b95')
