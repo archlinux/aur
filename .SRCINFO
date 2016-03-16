@@ -1,0 +1,15 @@
+pkgbase = python2-libfsntfs
+	pkgdesc = Library and tools to access the New Technology File System (NTFS)
+	pkgver = 20160109
+	pkgrel = 1
+	url = https://github.com/libyal/libfsntfs/
+	arch = any
+	license = LGPLv3+
+	makedepends = python2
+	makedepends = gcc
+	depends = python2
+	source = https://pypi.python.org/packages/source/l/libfsntfs-python/libfsntfs-python-20160109.tar.gz#md5=2674915e10ae43a03e7f1aba7366ef40
+	md5sums = 2674915e10ae43a03e7f1aba7366ef40
+
+pkgname = python2-libfsntfs
+
