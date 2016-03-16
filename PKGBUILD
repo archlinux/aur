@@ -3,13 +3,13 @@
 pkgname=moxa-uport11x0-git-dkms
 _pkgbase=moxa-uport11x0-git
 pkgver=1.3.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Moxa UPort 11x0 USB to Serial Hub driver'
 url='http://www.moxa.com/product/usb_to_serial_converters.htm'
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('linux')
-makedepends=('dkms' 'make' 'git')
+depends=('dkms')
+makedepends=('make' 'git')
 conflicts=('moxa-uport11x0-git')
 source=("https://github.com/ellysh/mxu11x0.git"
         "dkms.conf"
