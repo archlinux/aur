@@ -1,0 +1,27 @@
+post_install() {
+  echo ''
+  echo 'Contrary to upstream configuration, ppf-scripts are installed'
+  echo 'in /usr/bin and /usr/lib/ppf-scripts.'
+  echo ''
+  echo 'To make use of them you will have to modify your Alpine'
+  echo 'config. First make a backup of your config, then start Alpine'
+  echo "and type M for \"Menu\" (if you're not already there), S for"
+  echo '"Setup" and C for "Config". To verify and/or decrypt files'
+  echo 'put the following in your display-filters option, exactly as'
+  echo 'shown:'
+  echo ''
+  echo "_LEADING(\"-----BEGIN PGP SIGNED \")_ /usr/lib/ppf-scripts/ppf_verify _TMPFILE_"
+  echo "_LEADING(\"-----BEGIN PGP MESSAGE\")_ /usr/lib/ppf-scripts/ppf_decrypt _TMPFILE_"
+  echo ''
+  echo 'To sign and/or encrypt messages that you send, put the'
+  echo 'following in your sending-filters option:'
+  echo ''
+  echo '/usr/lib/ppf-scripts/ppf_sign _INCLUDEALLHDRS_'
+  echo '/usr/lib/ppf-scripts/ppf_encrypt _INCLUDEALLHDRS_ _RECIPIENTS_'
+  echo ''
+  echo 'For more information, please refer to /usr/share/doc/ppf-scripts/INSTALL'
+}
+
+post_upgrade() {
+  post_install
+}
