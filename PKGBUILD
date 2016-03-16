@@ -13,13 +13,13 @@ options=('!strip')
 
 source=("http://download.arduino.org/studio/bundle/$pkgver/arduinostudio-$pkgver-linux32.tar.gz"
         'start.sh')
-md5sums=('4aaafe10001baa230ab7b6ad36f27c0c'
+md5sums=('2abf81f520e2c10fc94a7c1fcf632e61'
          '6d11582f8e12d79e1f09ff017d299f4c')
 
-if [ "$CARCH" == "x6_64" ]; then
+if [ "$CARCH" == "x86_64" ]; then
   source_x86_64=("http://download.arduino.org/studio/bundle/$pkgver/arduinostudio-$pkgver-linux64.tar.gz"
                  'start.sh')
-  md5sums_x86_64=('8f3f2b0689ec73c655e3890a06fa9b1a'
+  md5sums_x86_64=('8fd6ba75ec1c85f6b292943bac1a4953'
                   '6d11582f8e12d79e1f09ff017d299f4c')
 fi
 
@@ -32,7 +32,7 @@ package() {
   mkdir -p "${pkgdir}/opt/arduino-studio"
   cp -r * "${pkgdir}/opt/arduino-studio/"
 
-  # TODO: Clean up the folder from stuff which comes with other pakages
+  # TODO: Clean up the folder from stuff which comes with other packages
 
   install -Dm755 "${srcdir}/start.sh" "${pkgdir}/usr/bin/arduinostudio"
 }
