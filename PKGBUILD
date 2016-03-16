@@ -3,7 +3,7 @@
 
 pkgname=moneydance
 pkgver=2015.1358
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A personal finance manager for Mac, Windows and Linux"
 arch=('i686' 'x86_64')
