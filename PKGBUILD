@@ -2,8 +2,8 @@
 # Contributor: Pierre Chapuis <catwell at archlinux dot us>
 
 pkgname=gsi-sshterm
-pkgver=0.91d
-pkgrel=3
+pkgver=0.91h
+pkgrel=1
 pkgdesc='Java Grid authentication program by the UK National Grid Service'
 arch=('i686' 'x86_64')
 url='http://wiki.ngs.ac.uk/index.php?title=GSI-SSHTerm'
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('java-runtime')
 makedepends=('apache-ant')
 source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('f692f19b5cd20cdef0f1245dcbd6b412')
+sha256sums=('6321ca4aea8fac276db1fb182fa8331303fdbf52367bc9b1252affaf0aa15364')
 
 build() {
   cd "sshtools"
