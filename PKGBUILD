@@ -1,6 +1,6 @@
 pkgname=mingw-w64-gmp
-pkgver=6.0.0
-pkgrel=2
+pkgver=6.1.0
+pkgrel=1
 pkgdesc="A free library for arbitrary precision arithmetic (mingw-w64)"
 arch=(any)
 url="http://gmplib.org"
@@ -9,7 +9,7 @@ depends=(mingw-w64-crt)
 makedepends=(mingw-w64-configure)
 options=(staticlibs !strip !buildflags)
 source=("ftp://ftp.gmplib.org/pub/gmp-${pkgver}/gmp-${pkgver}.tar.xz")
-md5sums=('4dc314ac6d3059cc8d712aad4a6d162e')
+md5sums=('a9868ef2556ad6a2909babcd1428f3c7')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
