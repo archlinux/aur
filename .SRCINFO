@@ -1,0 +1,16 @@
+pkgbase = syasokoban
+	pkgdesc = Still Yet Another Sokoban
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = http://grayskygames.com/sokoban.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl
+	source = http://grayskygames.com/sokoban/syasokoban-2.0.1.tar.gz
+	source = syasokoban.patch
+	md5sums = 3735ea7f164587165d4d03805a87b1a5
+	md5sums = ae55b562a3b3b0a87bf139d58d1897ea
+
+pkgname = syasokoban
+
