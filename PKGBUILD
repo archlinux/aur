@@ -5,9 +5,9 @@
 pkgname=openblas-lapack
 _PkgName=OpenBLAS
 _pkgname=openblas
-pkgver=0.2.15
-_lapackver=3.5.0
-pkgrel=4
+pkgver=0.2.16
+_lapackver=3.6.0
+pkgrel=1
 pkgdesc="Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas)"
 arch=('i686' 'x86_64')
 url="http://xianyi.github.com/OpenBLAS/"
@@ -18,9 +18,12 @@ provides=('openblas' "blas=${_lapackver}" "lapack=${_lapackver}" "cblas=${_lapac
 conflicts=('openblas' 'blas' 'lapack' 'cblas' 'lapacke')
 options=(!emptydirs)
 source=(${_PkgName}-${pkgver}.tar.gz::https://github.com/xianyi/${_PkgName}/archive/v${pkgver}.tar.gz)
-sha256sums=('73c40ace5978282224e5e122a41c8388c5a19e65a6f2329c2b7c0b61bacc9044')
+sha256sums=('766f350d0a4be614812d535cead8c816fc3ad3b9afcd93167ea5e4df9d61869b')
 
-_config="FC=gfortran USE_OPENMP=0 USE_THREAD=1 MAJOR_VERSION=3 NO_LAPACK=0"
+# Add the following line to the _config variable if you want to set the number of make jobs
+#  MAKE_NB_JOBS=2 \
+_config="FC=gfortran USE_OPENMP=0 USE_THREAD=1 \
+  MAJOR_VERSION=3 NO_LAPACK=0 BUILD_LAPACK_DEPRECATED=1"
 
 build(){
   cd "${srcdir}/${_PkgName}-${pkgver}"
