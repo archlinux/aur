@@ -4,8 +4,8 @@ set -e
 
 _pi_ver=2
 pkgname="pi-compositor"
-pkgver=0.0.1
-pkgrel=2
+pkgver=0.0.2
+pkgrel=1
 provides=("pi-launcher")
 conflicts=("pi-launcher")
 replaces=("pi-launcher")
@@ -14,7 +14,7 @@ arch=("any")
 url="http://www.qt.io"
 license=("LGPL3" "GPL3")
 makedepends=("qt-sdk-raspberry-pi${_pi_ver}")
-depends=("qt-sdk-raspberry-pi${_pi_ver}-target-libs")
+depends=("qt-sdk-raspberry-pi-target-libs")
 source=("git://github.com/sirspudd/${pkgname}.git")
 sha256sums=("SKIP")
 options=('!strip')
