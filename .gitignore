@@ -2,9 +2,9 @@
 !.gitignore
 !PKGBUILD
 !*.install
-!unity-editor
-!monodevelop-unity
+!unity-editor-beta
+!monodevelop-unity-beta
 !EULA
 !update-eula
 !.SRCINFO
-!unity-monodevelop.png
+!unity-monodevelop-beta.png
