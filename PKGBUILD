@@ -2,13 +2,13 @@
 # Contributor: Robert Schwarz <mail@rschwarz.net>
 pkgname="porta"
 pkgver="1.4.1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="POlyhedron Representation Transformation Algorithm"
 arch=("i686" "x86_64")
-url="http://typo.zib.de/opt-long_projects/Software/Porta/"
+url="http://porta.zib.de/"
 license=("GPL")
 depends=("glibc")
-source=("http://typo.zib.de/opt-long_projects/Software/Porta/$pkgname-$pkgver/$pkgname-$pkgver.tgz")
+source=("http://porta.zib.de//$pkgname-$pkgver.tgz")
 md5sums=("585179bf19d214ed364663a5d17bd5fc")
 
 build() {
