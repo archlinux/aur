@@ -1,0 +1,15 @@
+pkgbase = python2-libmsiecf
+	pkgdesc = Library and tools to access the Microsoft Internet Explorer (MSIE) Cache File (index.dat) files
+	pkgver = 20151220
+	pkgrel = 1
+	url = https://github.com/libyal/libmsiecf/
+	arch = any
+	license = LGPLv3+
+	makedepends = python2
+	makedepends = gcc
+	depends = python2
+	source = https://pypi.python.org/packages/source/l/libmsiecf-python/libmsiecf-python-20151220.tar.gz#md5=fd85fa5eb63c7a92386dc6d7877323db
+	md5sums = fd85fa5eb63c7a92386dc6d7877323db
+
+pkgname = python2-libmsiecf
+
