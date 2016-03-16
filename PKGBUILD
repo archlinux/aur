@@ -2,13 +2,14 @@
 #Maintainer:  Yahya Mohajer <yaya_2013 {AT} yahoo {DOT} com >
 
 pkgname=nexus
-pkgver=2.11.4
+pkgver=2.12.1
 patchver=01
-pkgrel=2
+pkgrel=1
 pkgdesc="A Maven Repository Manager. Nexus 2"
 url="http://nexus.sonatype.org"
 arch=('i686' 
-      'x86_64')
+      'x86_64'
+      'armv7h')
 license=('GPL3')
 depends=('java-environment')
 optdepends=('apache: a full featured webserver'
@@ -26,7 +27,7 @@ source=("http://www.sonatype.org/downloads/nexus-${pkgver}-${patchver}-bundle.ta
         'nexus'
         'nexus.service')	
 
-md5sums=('e274d6622560d41002b0f12d24c9c383'
+md5sums=('3c8add2306b7facf69c55deb394aab7b'
          '8c1e180aba2b3991bcf107e899a96cbd'
          'fee6289e0ee48ee5705da54660f7595d'
          'ac7c0c60bb3c77ff67965ec160ef2517')
