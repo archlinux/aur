@@ -6,15 +6,16 @@
 # Use the archive without the bundled JDK - make sure you use your own,
 # either through JAVA_HOME or by setting the path to the JDK 
 # in ~/.IntelliJIdea2016.1/config/idea.jdk
-_use_no_jdk_archive=
+_use_no_jdk_archive=y
 
 ### Do no edit below this line unless you know what you're doing
 
 pkgname=intellij-idea-ue-eap
 _pkgname=idea-IU
-_buildver=145.256.33
+_buildver=145.257.12
 _veryear=2016
 _verrelease=1
+_verextra=RC2
 pkgver=${_veryear}.${_verrelease}.${_buildver}
 pkgrel=1
 pkgdesc="Early access version of the upcoming version of Intellij Idea IDE (ultimate version)"
@@ -24,13 +25,8 @@ url="http://www.jetbrains.com/idea/"
 license=('custom')
 depends=('java-environment' 'giflib' 'libxtst')
 makedepends=('wget')
-if [ -n "$_use_no_jdk_archive" ]; then
-	source=("http://download.jetbrains.com/idea/ideaIU-${_buildver}-no-jdk.tar.gz")
-  sha256sums=($(wget -q "${source}.sha256" && cat "ideaIU-${_buildver}-no-jdk.tar.gz.sha256" | cut -f1 -d" "))
-else
-	source=("http://download.jetbrains.com/idea/ideaIU-${_buildver}.tar.gz")
-  sha256sums=($(wget -q "${source}.sha256" && cat "ideaIU-${_buildver}.tar.gz.sha256" | cut -f1 -d" "))
-fi
+source=("http://download.jetbrains.com/idea/ideaIU-${_veryear}.${_verrelease}-${_verextra}.tar.gz")
+sha256sums=($(wget -q "${source}.sha256" && cat "ideaIU-${_veryear}.${_verrelease}-${_verextra}.tar.gz.sha256" | cut -f1 -d" "))
 
 package() {
     cd "$srcdir"
@@ -39,6 +35,9 @@ package() {
     if [[ $CARCH = 'i686' ]]; then
         rm -f "${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux64.so"
         rm -f "${pkgdir}/opt/${pkgname}/bin/fsnotifier64"
+    fi
+    if [ -n ${_use_no_jdk_archive} ]; then
+      rm -rf "${pkgdir}/opt/${pkgname}/jre"
     fi
 (
 cat <<EOF
