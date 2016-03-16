@@ -2,7 +2,7 @@
 
 pkgname=python2-cyvlfeat
 _pyname=cyvlfeat
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc='A thin Cython wrapper around select areas of vlfeat'
 arch=('any')
@@ -14,7 +14,7 @@ depends=('cython2>=0.22'
 makedepends=()
 optdepends=()
 source=("https://github.com/menpo/${_pyname}/archive/v${pkgver}.tar.gz")
-sha256sums=('0034f220437267e2fa404cea2ed54ce8f1147e5e5ead36f1e45c2ec7e46e90c9')
+sha256sums=('323867011e83f3987d2825ba928d90d1ee45f466bcb5f5257b799c08ffc2eeed')
 
 build() {
 	cd "$_pyname-$pkgver"
