@@ -3,8 +3,8 @@
 
 pkgname=gpmdp
 pkgver=3.0.1
-pkgrel=1
-pkgdesc="A beautiful cross platform Desktop Player for Google Play Music"
+pkgrel=2
+pkgdesc="A beautiful cross platform Desktop Player for Google Play Music. Stable release."
 arch=('i686' 'x86_64')
 url="http://www.googleplaymusicdesktopplayer.com"
 source=("https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-")
@@ -27,4 +27,6 @@ source=("https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNO
 
 package() {
 	tar -xf data.tar.xz -C "${pkgdir}"
+	rm -rf "${pkgdir}"/usr/share/lintian
+	chmod -R 755 "${pkgdir}"/usr
 }
