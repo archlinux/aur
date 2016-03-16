@@ -2,8 +2,8 @@
 
 _name=packer
 pkgname=packer-io
-pkgver=0.9.0
-pkgrel=2
+pkgver=0.10.0
+pkgrel=1
 pkgdesc="Packer is a tool for creating identical machine images for multiple platforms from a single source configuration."
 url="http://www.packer.io"
 arch=('x86_64' 'i686')
@@ -13,10 +13,10 @@ optdepends=()
 conflicts=()
 if test "$CARCH" == i686; then
 source=("${_name}-${pkgver}.zip::https://releases.hashicorp.com/packer/${pkgver}/packer_${pkgver}_linux_386.zip")
-sha256sums=('f3b3dea98f7b7e852d4919074d7a3878f7cc7072338f18e3e5c5e55628b43bf1')
+sha256sums=('0d2460f645e73e070cb203e540b64624027f27d82268f7d939898af1c358abaf')
 else
 source=("${_name}-${pkgver}.zip::https://releases.hashicorp.com/packer/${pkgver}/packer_${pkgver}_linux_amd64.zip")
-sha256sums=('4119d711855e8b85edb37f2299311f08c215fca884d3e941433f85081387e17c')
+sha256sums=('eadd33bc0f8fa42034059fc1cda5f43ed6f540746e767480f0706ebed49b45e5')
 fi
 noextract=(${source[@]%%::*})
 
