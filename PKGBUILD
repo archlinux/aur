@@ -1,9 +1,12 @@
 # Maintainer: Andrzej Giniewicz <gginiu@gmail.com>
 
+# TODO: python-scimath: for unit parser in pyface.wx.spreadsheet
+# TODO: look for more hidden dependencies
+
 pkgbase=python-pyface
 pkgname=('python2-pyface' 'python-pyface')
 pkgver=5.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Traits-capable windowing framework"
 arch=('any')
 url="https://github.com/enthought/pyface"
@@ -38,6 +41,9 @@ package_python2-pyface() {
   depends=('python2-traits')
   optdepends=('python2-pyqt4: for Qt backend (or python2-pyside)'
               'python2-pyside: for Qt backend (or python2-pyqt4)'
+              'python2-pygments: for syntax coloring in Qt backend'
+              'python2-setuptools: to locate resources inside zip and egg files'
+              'ipython2: for IPython widget'
               'wxpython: for wx backend')
 
   cd "$srcdir"/pyface-py2-$pkgver
@@ -50,7 +56,10 @@ package_python2-pyface() {
 package_python-pyface() {
   depends=('python-traits')
   optdepends=('python-pyqt4: for Qt backend (or python2-pyside)'
-              'python-pyside: for Qt backend (or python2-pyqt4)')
+              'python-pyside: for Qt backend (or python2-pyqt4)'
+              'python-pygments: for syntax coloring in Qt backend'
+              'python-setuptools: to locate resources inside zip and egg files'
+              'ipython: for IPython widget')
 
   cd "$srcdir"/pyface-$pkgver
 
