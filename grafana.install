@@ -1,0 +1,13 @@
+post_install() {
+	getent group grafana >/dev/null || groupadd -r grafana
+	getent passwd grafana >/dev/null || useradd -d /var/lib/grafana -g grafana -r -M -s /bin/false grafana
+	chown grafana:grafana /var/{lib,log}/grafana
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	userdel grafana
+}

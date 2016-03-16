@@ -1,0 +1,19 @@
+[Unit]
+Description=Grafana server
+Documentation=http://docs.grafana.org
+After=network.target
+
+[Service]
+User=grafana
+Group=grafana
+Type=simple
+WorkingDirectory=/usr/share/grafana
+ExecStart=/usr/bin/grafana-server                  \
+          --config=/etc/grafana/grafana.ini        \
+          cfg:default.paths.logs=/var/log/grafana  \
+          cfg:default.paths.data=/var/lib/grafana
+LimitNOFILE=10000
+TimeoutStopSec=20
+
+[Install]
+WantedBy=multi-user.target
