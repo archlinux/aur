@@ -1,0 +1,26 @@
+--- a/ide/bin/launcher.sh
++++ b/ide/bin/launcher.sh
+@@ -671,21 +671,9 @@
+   # Once the new path for java has been determined, truncate the /bin/java
+   # ending portion of it and set javahome with the trucated path
+   #
+-  if [ -f "$tmpvar" ]
++  tmpvar=/usr/lib/jvm/default
++  if [ -d "$tmpvar" ]
+   then
+-    while [ -h "$tmpvar" ]
+-    do
+-        EchoIfVerbose "Found symlinked JDK, following symlink: $tmpvar"
+-        tmpvar2=`ls -ls "$tmpvar"`
+-        tmpvar2=`expr "$tmpvar2" : '.*-> \(.*\)$'`
+-        if [ `expr "$tmpvar2" : "\.\/"` -gt 0 -o `expr "$tmpvar2" : "\.\.\/"` -gt 0 -o `expr "$tmpvar2" : ".*/.*"` -le 0 ]
+-        then
+-          tmpvar="`dirname "$tmpvar"`/$tmpvar2"
+-        else
+-          tmpvar="$tmpvar2"
+-        fi
+-    done
+-    tmpvar=`expr "$tmpvar" : '\(.*\)\/bin\/[^\/]*$'`
+     SetJavaHome "$tmpvar"
+     EchoIfVerbose "Found existing default JDK $tmpvar"
+   else

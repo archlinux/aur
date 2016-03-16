@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Oracle SQL Database Modeling
+Comment=A graphical tool for database modeling.
+Icon=/opt/oracle-datamodeler/datamodeler/icon.png
+Exec=/usr/bin/oracle-datamodeler
+Terminal=false
+Type=Application
+Categories=Development;
+StartupNotify=true
+StartupWMClass=sun-awt-X11-XFramePeer
