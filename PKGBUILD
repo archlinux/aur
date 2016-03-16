@@ -19,8 +19,8 @@
 # THE SOFTWARE.
 
 pkgname=irccd
-pkgver=2.0.0
-pkgrel=3
+pkgver=2.0.1
+pkgrel=1
 epoch=
 pkgdesc="IRC client daemon"
 arch=('i686' 'x86_64')
@@ -39,7 +39,7 @@ options=()
 changelog="ChangeLog"
 source=("http://releases.malikania.fr/$pkgname/$pkgname-$pkgver.tar.xz")
 noextract=()
-md5sums=('a85ba5aa169935ed2a45a468a03d7b63')
+md5sums=('e206daecc412929ddac6c5b7bef15dc6')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver

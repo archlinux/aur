@@ -1,7 +1,11 @@
+2016-03-16 Pierre Choffet <peuc@wanadoo.fr>
+	* 2.0.1-1 :
+	Upstream update to 2.0.1
+
 2016-03-01 Pierre Choffet <peuc@wanadoo.fr>
 	* 2.0.0-3 :
 	Remove useless lib-xdgbasedir and libircclient dependencies
-	
+
 	* 2.0.0-2 :
 	Remove useless mercurial dependency
 	
@@ -16,15 +20,15 @@
 2015-02-27 Pierre Choffet <peuc@wanadoo.fr>
 	* 1.1.5-1 :
 	Upstream update to 1.1.5
-	
+
 2014-03-28 Pierre Choffet <peuc@wanadoo.fr>
 	* 1.1.4-1 :
 	Upstream update to 1.1.4
-	
+
 2014-03-24 Pierre Choffet <peuc@wanadoo.fr>
 	* 1.1.3-1 :
 	Upstream update to 1.1.3
-	
+
 2014-02-24 Pierre Choffet <peuc@wanadoo.fr>
 	* 1.1.2-1 :
 	Upstream update to 1.1.2
