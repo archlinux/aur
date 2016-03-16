@@ -50,7 +50,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'iceweasel-extension-archsearch: Iceweasel Arch search engines')
 url="https://packages.debian.org/source/sid/iceweasel"
 install=iceweasel.install
-provides=("$_debname"="$_debver")
+provides=("$pkgname"="$_debver")
 source=("${_debrepo}/${_debname}/${_debname}_${_debver}.orig.tar.xz"
 		"${_debrepo}/${_debname}/${_debname}_${_debver}-${_debrel}.debian.tar.xz"
 		"$_parabolarepo/${pkgname}_$_debver-$_brandingrel.branding.tar.xz"
