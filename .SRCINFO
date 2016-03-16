@@ -1,6 +1,6 @@
 pkgbase = lxpanel-git
 	pkgdesc = Lightweight X11 desktop panel for LXDE
-	pkgver = 0.8.2.r2305.20160226
+	pkgver = 0.8.2.r2308.20160312
 	pkgrel = 1
 	url = http://lxde.org/
 	arch = i686
