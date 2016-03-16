@@ -1,8 +1,9 @@
 # Maintainer: Donald Carr <sirspudd@gmail.com>
 
 pkgname=libspkgname
-provides=("${pkgname}")
-conflicts=("${pkgname}")
+_provides_pkgname="qt-sdk-raspberry-pi-target-libs"
+provides=("${_provides_pkgname}")
+conflicts=("${_provides_pkgname}")
 pkgver=libspkgver
 pkgrel=libspkgrel
 pkgdesc="Qt ${pkgver} libs cross compiled for the Raspberry Pi libspiversion"
