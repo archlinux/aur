@@ -1,0 +1,16 @@
+pkgbase = mpsolve2
+	pkgdesc = Multiprecision rootfinder for complex roots of univariate polynomials (version 2)
+	pkgver = 2.2
+	pkgrel = 1
+	url = http://numpi.dm.unipi.it/software/mpsolve
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gmp
+	source = http://numpi.dm.unipi.it/mpsolve-2.2/mpsolve.tgz
+	source = http://numpi.dm.unipi.it/mpsolve-2.2/copyright.htm
+	sha256sums = 2b3ad94d9ba88492fedb7c33c8084aa14e97acb5c90e5a0558ed79ef29c9230f
+	sha256sums = e8f83c91148adb6eb9a0802652640bfb060d903823cdf76f4c324cc1bb073292
+
+pkgname = mpsolve2
+
