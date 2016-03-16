@@ -2,24 +2,23 @@
 # Contrubutor: raininja <raijin@rai.ninja>
 
 pkgname=slimjet
-pkgver=8.0.4.0
-pkgrel=2
+pkgver=8.0.5.0
+pkgrel=1
 pkgdesc="Fast, smart and powerful browser based on Blink"
 arch=('i686' 'x86_64')
 url="http://www.slimjet.com"
 license=('custom:slimjet')
 depends=('alsa-lib' 'desktop-file-utils' 'flac' 'gconf' 'gtk2' 'harfbuzz' 'harfbuzz-icu' 'hicolor-icon-theme'
          'icu' 'libpng' 'libxss' 'libxtst' 'nss' 'openssl' 'nspr' 'opus' 'snappy' 'speech-dispatcher' 'ttf-font' 'xdg-utils')
-optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
-            'ttf-liberation: fix fonts for some PDFs')
+optdepends=('kdebase-kdialog: needed for file dialogs in KDE' 'ttf-liberation: fix fonts for some PDFs')
 makedepends=('pacman>=4.2.0')
 provides=('slimjet' 'pepper-flash')
 options=('!emptydirs' '!strip')
 _channel=release
 source_i686=("${pkgname}-${pkgver}_i386.deb::http://www.slimjet.com/${_channel}/${pkgname}_i386.deb")
 source_x86_64=("${pkgname}-${pkgver}_amd64.deb::http://www.slimjet.com/{$_channel}/${pkgname}_amd64.deb")
-sha512sums_i686=('f11d4f5387753d3fd71f8df3609bedbba9f528f267159b54692fd31d5df80ae6415309bd243d652da781f2cb0564f023ca48c9e6857dc3275320785828605631')
-sha512sums_x86_64=('ad7ef76cf52dd866c9e69219d8e52935616a742be515c646c735d9a7f613ac1a065e189ee23675a64adebea52c5dec34f4a732995be138df9df3533a1bea8ae0')
+sha512sums_i686=('4aceec778c6b5fb54006aa8d5fece4a6275d4b265928acd1887a14137d015db8405a487dc57633b15e79c64d77656b310406e7c4782e92f9023c5ecf637474a0')
+sha512sums_x86_64=('91e3a8a4abbcc49a364172c297a8e6451c983df5ec0fc5d95d12f98424fbe1b4714bd38d63e3113303f9b5f38b46725fe5a72efc3ed2aeb7dcfaf03eccea24fe')
 
 package() {
     msg2 "Extracting the data.tar.lzma..."
