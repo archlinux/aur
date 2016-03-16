@@ -1,6 +1,6 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 pkgname=littleutils
-pkgver=1.0.34
+pkgver=1.0.35
 pkgrel=1
 pkgdesc="Utils for image optimization, finding file dups, cleaning source."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ optdepends=('gifsicle: for opt-gif'
             'lzip: for to-lzip'
             'python2: for zip2tarcat')
 source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname-source/$pkgver/$pkgname-$pkgver.tar.bz2")
-md5sums=('9b437a66bf99cdba506166e3f6175adb')
+md5sums=('7c11fee370f162630d64d26bc0b332bb')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
