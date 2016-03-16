@@ -5,7 +5,7 @@
 # Contributor: max1m <mr[dot]mxm86[at]gmail[dot]com>
 
 pkgname=2gis
-pkgver=3.15.10.0
+pkgver=3.16.3.0
 pkgrel=1
 pkgdesc="Geographic Information System (GIS) for some Russian and Ukrainian cities."
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ source=("http://download.2gis.ru/arhives/2GISShell-${pkgver}.orig.zip"
 	"2gis.desktop"
 	"LICENSE.ru"
 	"LICENSE.ua")
-sha256sums=('c6b47cb84ba4c5930e8efa7c04968ed1c38c2851f7d01bd3ccee5c95f13c7693'
+sha256sums=('ceae9226ad9960e15b362a8252a32acecc14c584b2158d4f7495562ba750cb60'
 
 	'1bf3ca1fdc82e17b56aec1aa8ee9a42967a6f3e91eaf5313178399529c92f37f'
 	'2a832905089d8fc36eaa6b6a150ae0b45d234676adff462bbb6658b1e0ae8ee5'
