@@ -2,8 +2,8 @@
 # Contributor: Ner0
 
 pkgname=chromium-pepper-flash-dev
-pkgver=21.0.0.172
-pkgrel=2
+pkgver=21.0.0.182
+pkgrel=1
 pkgdesc="Google Chrome's Pepper Flash plugin for Chromium (Dev Channel)"
 arch=('x86_64')
 url='http://www.google.com/chrome'
