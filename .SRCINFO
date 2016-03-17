@@ -1,0 +1,14 @@
+pkgbase = dargite3d
+	pkgdesc = A pong-clone made with opengl, highly moddable
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://darkdimensiongames.blogspot.com
+	arch = x86_64
+	license = GPL
+	depends = freeglut
+	depends = glew
+	source = https://www.dropbox.com/s/p75xt2rrii5o8lf/dargite3d-1.0.0.tar.gz?dl=0
+	md5sums = 90879138571e4e6f5f2f7b05ecd24477
+
+pkgname = dargite3d
+
