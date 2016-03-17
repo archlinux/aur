@@ -7,7 +7,7 @@
 pkgname=('nquake-base' 'nquake-nonfree' 'nquake-fortress' 'nquake-arena' 'nquake-textures')
 pkgbase="nquake"
 pkgver=2.3
-pkgrel=6
+pkgrel=7
 pkgdesc="The easiest, quickest, and most popular QuakeWorld client."
 url="http://nquake.sourceforge.net/"
 license=('GPL' 'Custom:CC0-1.0')
@@ -17,8 +17,8 @@ arch=('any')
 _alt_pkgver=$(echo ${pkgver} | sed -e 's/\.//g')
 
 # http://nquake.sourceforge.net/nquake.ini for list of mirrors
-_nQ_MIRROR="http://qw.quakephil.com/nquake" # NY, US
-#_nQ_MIRROR="http://quakeservers.nquake.com" # Dusseldorf, DE
+#_nQ_MIRROR="http://qw.quakephil.com/nquake" # NY, US
+_nQ_MIRROR="http://quakeservers.nquake.com" # Dusseldorf, DE
 #_nQ_MIRROR="http://nquake.localghost.net" # Lulea, SE
 #_nQ_MIRROR="http://fnu.nquake.com" # Uppsala, SE
 
@@ -31,7 +31,7 @@ source=("${_nQ_MIRROR}/gpl.zip"
 	"CC0-1.0::https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt")
 
 sha256sums=('fa4e166d06f6af88339448a4beaa9108418168493310242c457c644e7fc1ac00'
-	    '7146726f483b66951c1ed01c28127b4c2c16d60573f993427ff8d7add9f74d7d'
+	    '207267e0202bc2ad9f45a34a02f4c353c1ece83c10572188781732eb184e448f'
 	    '6ab154fdefca8bc7e080565ac61d74ccce7cf0599de1bb2f82cf32309d9cc767'
 	    'a3df93400b03e44f6d87c1781f1205fc846d555945c43b81e5381b9df9b8da04'
 	    '029ccc6764fc442a50b6ceac319377f61183060d67bde8f26137c4101862b09d'
