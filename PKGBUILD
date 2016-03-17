@@ -13,7 +13,7 @@ local _foobar="
 #requirements-docs.txt
 Sphinx==1.1.3
 #requirements.txt
-tox==1.4
+tox>=2.3.1,<3.0.0
 docutils>=0.10
 # botocore and the awscli packages are typically developed
 # in tandem, so we're requiring the latest develop
@@ -31,7 +31,7 @@ wheel==0.24.0
 import awscli
 
 
-requires = ['botocore==1.4.3',
+requires = ['botocore==1.4.4',
             'colorama>=0.2.5,<=0.3.3',
             'docutils>=0.10',
             'rsa>=3.1.2,<=3.3.0',
@@ -50,7 +50,7 @@ else
 pkgname="${_pyver}-${_pybase}"
 _pyverother='python'
 fi
-pkgver=1.10.12
+pkgver=1.10.13
 # Generally when this version changes, the version of botocore also changes
 pkgrel=1
 pkgdesc='Universal Command Line Interface for Amazon Web Services awscli'
@@ -59,17 +59,17 @@ url="https://github.com/aws/${_pybase}"
 license=('Apache') # Apache License 2.0
 _pydepends=( # See setup.py, README.rst, and requirements.txt for version dependencies
   "${_pyver}-bcdoc"           # AUR
-  "${_pyver}-botocore>=1.4.3" # AUR == would make upgrades from AUR impossible. See below.
+  "${_pyver}-botocore>=1.4.4" # AUR == would make upgrades from AUR impossible. See below.
   #"${_pyver}-colorama"{">=0.2.5","<=0.3.3"}   # COM
   "${_pyver}-colorama>=0.2.5"   # COM requested by phw
   #"${_pyver}-rsa-3.1.2"{">=3.1.2","<=3.3.0"} # AUR
-  "${_pyver}-rsa"{">=3.2","<=3.3.0"}        # COM
+  "${_pyver}-rsa"{'>=3.2','<=3.3.0'}        # COM
   "${_pyver}-s3transfer>=0.0.1" # AUR
 
   ### These are from python-botocore
   "${_pyver}-wheel>=0.24.0"   # AUR ==
   "${_pyver}-jmespath>=0.7.1" # AUR == is possible for repositories. Makes upgrades impossible in AUR.
-  "${_pyver}-tox>=1.4"        # COM == is possible because this is from a repository. Unfortunatley Arch isnt the primary dev environment for botocore/aws so our packages are likely to be newer.
+  "${_pyver}-tox"{'>=2.3.1','<3.0.0'} # COM
   "${_pyver}-dateutil"{">=2.1","<3.0.0"} # COM
   "${_pyver}-nose>=1.3.0"     # COM ==
   "${_pyver}-mock>=1.3.0"     # COM ==
@@ -77,7 +77,7 @@ _pydepends=( # See setup.py, README.rst, and requirements.txt for version depend
   "${_pyver}-six>=1.1.0"      # COM This is in the sources but I'm not sure where the version comes from.
   # requirements-docs.txt
   #"${_pyver}-sphinx>=1.1.3" #"${_pyver}-sphinx"{>=1.1.3,<1.3}     # COM Arch is already newer. Documentation might not work.
-  "${_pyver}-guzzle-sphinx-theme"{">=0.7.10","<0.8"}
+  "${_pyver}-guzzle-sphinx-theme"{'>=0.7.10','<0.8'}
 )
 if [ "${_pyver}" = 'python2' ]; then
   _pydepends+=('python2-futures')
@@ -86,7 +86,7 @@ depends=("${_pyver}" "${_pydepends[@]}")
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 options=('!emptydirs' '!strip')
 source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('b1eaab59898b366f9fc72c18a741945bb1adf9275e05f940c83f99b3548021cc')
+sha256sums=('cd17f5e9fb0045e32f63969aa4e7acdda54598469ef411cb30a087c7e65f7eb9')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pybase}"
