@@ -2,7 +2,7 @@
 
 pkgname=icmptunnel-git
 pkgver=r58.7a1a5a8
-pkgrel=3
+pkgrel=4
 pkgdesc="Transparently tunnel your IP traffic through ICMP echo and reply packets."
 arch=('i686' 'x86_64')
 url="https://github.com/DhavalKapil/icmptunnel"
@@ -11,8 +11,10 @@ depends=('net-tools')
 makedepends=('git')
 provides=('icmptunnel')
 conflicts=('icmptunnel')
-source=('git://github.com/DhavalKapil/icmptunnel.git')
-md5sums=('SKIP')
+source=('git://github.com/DhavalKapil/icmptunnel.git'
+        'http://dhaval.mit-license.org/license.txt')
+sha256sums=('SKIP'
+            'e9d8fd95de3a96aa5b015e0f3afd75e7d24450f6702e0971a0f02062fd5891d4')
 
 pkgver() {
     cd "$srcdir/icmptunnel"
@@ -37,4 +39,7 @@ package(){
 
     install -Dm0755 client.sh "$pkgdir"/usr/bin/icmptunnel-client
     install -Dm0755 server.sh "$pkgdir"/usr/bin/icmptunnel-server
+
+    install -Dm0644 "$srcdir/license.txt" \
+        "$pkgdir/usr/share/licenses/icmptunnel/license.txt"
 }
