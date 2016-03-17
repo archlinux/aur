@@ -7,9 +7,9 @@
 set -u
 _pkgname='relax-and-recover'
 pkgname="${_pkgname}-git"
-pkgver=1.17.2.r1689.g7a24cfb
+pkgver=1.18.r1928.g9cfd922
 pkgrel=1
-pkgdesc='Relax-and-Recover bootable Linux disaster recovery, formerly rear'
+pkgdesc='bootable Linux disaster recovery, formerly rear'
 arch=('any')
 url='http://relax-and-recover.org/'
 license=('GPL')
