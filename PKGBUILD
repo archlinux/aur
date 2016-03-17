@@ -10,7 +10,7 @@ url="https://pypi.python.org/pypi/habitica"
 license=('MIT')
 depends=('python' 'python-docopt' 'python-requests')
 makedepends=('python-setuptools')
-source=('https://pypi.python.org/packages/source/h/habitica/${_pkgname}-$pkgver.tar.gz'
+source=("https://pypi.python.org/packages/source/h/habitica/${_pkgname}-$pkgver.tar.gz"
         auth.cfg.sample)
 md5sums=('4fffa63a0f2c97a72826dbb77a603163'
          '73203917ea9a075cafaf287f9d707a15')
