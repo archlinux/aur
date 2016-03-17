@@ -1,0 +1,16 @@
+pkgbase = python-pyscard
+	pkgdesc = Framework for building smart card aware applications in Python
+	pkgver = 1.9.2
+	pkgrel = 1
+	url = http://pyscard.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = swig
+	depends = python
+	depends = pcsclite
+	source = https://pypi.python.org/packages/source/p/pyscard/pyscard-1.9.2.tar.gz
+	md5sums = 88043f2c892982927ad56c87600aa774
+
+pkgname = python-pyscard
+
