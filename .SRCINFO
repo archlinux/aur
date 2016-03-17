@@ -13,6 +13,7 @@ pkgbase = servo-git
 	makedepends = python2-virtualenv
 	makedepends = gperf
 	makedepends = cmake
+	makedepends = rust
 	depends = freetype2
 	depends = mesa
 	depends = libxrandr
@@ -26,7 +27,6 @@ pkgbase = servo-git
 	depends = libxmu
 	provides = servo
 	conflicts = servo
-	conflicts = rust
 	source = git+https://github.com/servo/servo.git
 	md5sums = SKIP
 

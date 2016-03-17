@@ -13,9 +13,9 @@ depends=('freetype2' 'mesa' 'libxrandr' 'libxi' 'libgl' 'glu' 'fontconfig'
          'ttf-font' 'bzip2' 'libxcursor' 'libxmu')
 install="$pkgname.install"
 makedepends=('git' 'curl' 'python2' 'python2-virtualenv' 'gperf'
-             'cmake')
+'cmake' 'rust')
 provides=("$_pkgname")
-conflicts=("$_pkgname" 'rust')
+conflicts=("$_pkgname")
 source=('git+https://github.com/servo/servo.git')
 md5sums=('SKIP')
 
