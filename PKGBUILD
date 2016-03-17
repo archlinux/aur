@@ -5,7 +5,7 @@
 pkgname=peazip-qt-opensuse
 pkgver=6.0.0
 _rpmrel=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="QT archiver utility (openSUSE x86_64 RPM)"
 arch=(x86_64)
 url=http://peazip.sourceforge.net/peazip-linux.html
@@ -18,8 +18,9 @@ source=(http://download.opensuse.org/repositories/devel:/languages:/pascal/openS
 sha256sums=('7e2ac057678fb6386c427c978de83f70689d02769ab2501e80cd1bb0c317bff3')
 
 prepare() {
-	rm -R "$srcdir/usr/share/doc"
-	chmod go-w "$srcdir"/usr/bin/*
+        cd $srcdir/usr
+	rm -R "share/doc"
+	mv lib64 lib
 }
 
 package() {
