@@ -4,7 +4,7 @@
 pkgname=texlive-aastex6
 pkgdesc="Package for preparing papers in American Astronomical Society (AAS) journals "
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://journals.aas.org/authors/aastex.html"
 depends=('texlive-core')
@@ -12,8 +12,8 @@ provides=('texlive-aastex6')
 install=texlive-aastex6.install
 source=('http://journals.aas.org/authors/aastex/aastex6.cls'
         'http://journals.aas.org/authors/aastex/aasjournal.bst')
-sha1sums=('f4e9a8157c9375db3a3d444c8678407615ae7b38'
-          '1f07745f3576b78268cea940effe9898c148abe3')
+sha1sums=('f80e893e9d75b2e8c10fc08db613334e152f2bfa'
+          'bea068ae11acc248b75b5861e7a3915cc2dfc735')
 
 package() {
   cd "$srcdir"
