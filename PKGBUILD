@@ -1,12 +1,12 @@
 # Maintainer: TingPing <tingping@tingping.se>
 
 pkgname=plex-media-player
-pkgver=1.0.5
-_gitrev=210
-_gitver=9c69e092
+pkgver=1.0.6
+_gitrev=229
+_gitver=1ce41570
 _fullname="$pkgname-$pkgver.$_gitrev-$_gitver"
-_webclientver=3263b2f # Set in CMakeModules/WebClientVariables.cmake
-pkgrel=5
+_webclientver=f61ba32 # Set in CMakeModules/WebClientVariables.cmake
+pkgrel=1
 pkgdesc='Next generation Plex Desktop Client'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -18,8 +18,8 @@ source=("$_fullname.tar.gz::https://github.com/plexinc/plex-media-player/archive
         "https://dl.tingping.se/mirror/plex-web-client-konvergo-${_webclientver}.cpp.tbz2"
         'plex-media-player.desktop')
 noextract=("plex-web-client-konvergo-$_webclientver.cpp.tbz2")
-sha256sums=('4b62ffc9502a5938fcaaca8d4d6aa9767903995a90d2c022ff9562613422dfc5'
-            'bb33cfdcdfa95e9736f78e751695cc477519c21a4e1fb59144e0f93e975edbf6'
+sha256sums=('e7d27493d30532080ad6589187bc8f6d45b3a52f83b9f763470e01f78e6a539f'
+            '4e99bbd7f3116542c0927ad1476c8cbe31fb288bac2cb8fa1e9f2680c4a6773c'
             'b03845b761cc18a88252b72d0c83e439006224660444d9174f53cc577f9498b6')
 
 # NOTE:
@@ -44,13 +44,9 @@ prepare() {
 	sed -i 's|file(WRITE ${QTROOT}/bin/qt.conf ${QTCONFCONTENT})||' \
 	       CMakeModules/QtConfiguration.cmake
 
-	# Fix two errors: https://github.com/plexinc/plex-media-player/issues/256
-	sed -i 's|list(REMOVE_DUPLICATES QT5_CFLAGS)|list(APPEND QT5_CFLAGS -fPIC)|' \
+	# Fix build error: https://github.com/plexinc/plex-media-player/issues/256
+	sed -i 's|^if(QT5_CFLAGS)$|list(APPEND QT5_CFLAGS -fPIC)\nif(QT5_CFLAGS)|' \
 	       CMakeModules/QtConfiguration.cmake
-
-	# Fix enabling SDL2 input: https://github.com/plexinc/plex-media-player/pull/258
-	sed -i 's|set(DL_FOUND)|set(DL_FOUND TRUE)|' \
-	       CMakeModules/FindDL.cmake
 
 	# Use our downloaded copy of web-client
 	mkdir -p build/src
