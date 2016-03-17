@@ -1,7 +1,7 @@
 pkgbase = modutils
-	pkgdesc = modutils
+	pkgdesc = Work with the Linux kernel modules
 	pkgver = 2.4.27
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.kernel.org/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = modutils
 	makedepends = binutils
 	makedepends = bison
 	makedepends = flex
-	depends = glibc
 	conflicts = module-init-tools
 	source = http://www.kernel.org/pub/linux/utils/kernel/modutils/v2.4/modutils-2.4.27.tar.gz
 	source = http://englanders.cc/pub/linux/patches/notmine/modutils-gcc40.patch
