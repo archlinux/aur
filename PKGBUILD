@@ -1,7 +1,7 @@
 # Contributor: Nathan Owe. ndowens04 at gmail dot com
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=xaric
-pkgver=0.13.6
+pkgver=0.13.7
 pkgrel=1
 pkgdesc="A UNIX irc client similar to (and forked from) BitchX and ircII."
 arch=('i686' 'x86_64')
@@ -12,14 +12,14 @@ conflicts=('xaric-git')
 conflicts=()
 replaces=()
 source=("http://xaric.org/software/xaric/releases/$pkgname-$pkgver.tar.gz")
-md5sums=('3523edcd8c8d5234b87c56c86c2dfdfc')
-sha1sums=('ed10e395dea29fdf7bbc0d65389d789d7d4ca09b')
-sha256sums=('dbed41ed43efcea05baac0af0fe87cca36eebd96e5b7d4838b38cca3da4518bb')
+md5sums=('46f4460dfab17819dd6d7e543be75206')
+sha1sums=('c0cded0d57beddb11b04926b9c748835ef9da876')
+sha256sums=('fd8cd677e2403e44ff525eac7c239cd8d64b7448aaf56a1272d1b0c53df1140c')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   ./configure --prefix=/usr
-  make 
+  make LIBS="-lncursesw -lpthread"
 }
 package() {
   cd "$srcdir/$pkgname-$pkgver"
