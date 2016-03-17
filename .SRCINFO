@@ -3,6 +3,7 @@ pkgbase = twitchnotifier-git
 	pkgver = 20150214
 	pkgrel = 3
 	url = https://github.com/GiedriusS/TwitchNotifier
+	install = TwitchNotifier.install
 	arch = any
 	license = GPL
 	makedepends = git
