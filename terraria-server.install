@@ -1,15 +1,21 @@
 post_install() {
     if ! getent group terraria &>/dev/null; then
-      groupadd -r -g 197 terraria >/dev/null
+      groupadd -r -g 697 terraria >/dev/null
     fi
 
     if ! getent passwd terraria &>/dev/null; then
-        useradd -r -u 197 -g terraria -d /var/lib/terraria-server/ \
+        useradd -r -u 697 -g terraria -d /var/lib/terraria-server/ \
             -s /bin/bash terraria >/dev/null
     fi
 }
 
 post_upgrade() {
+    if getent passwd terraria && [[ $(id -u terraria) == 197 ]]; then
+        userdel terraria
+    fi
+    if getent group terraria && [[ $(id -g terraria) == 197 ]]; then
+        groupdel terraria
+    fi
     post_install
 }
 
