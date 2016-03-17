@@ -1,0 +1,34 @@
+pkgbase = myrepos-git
+	pkgdesc = Multiple Repository management tool
+	pkgver = 1.20160122
+	pkgrel = 1
+	url = http://myrepos.branchable.com
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = perl
+	optdepends = bzr: support for bzr repositories
+	optdepends = cvs: support for cvs repositories
+	optdepends = darcs: support for darcs repositories
+	optdepends = git-annex: support for git-annex clones
+	optdepends = gitk: support for visualizing git repository history
+	optdepends = git: support for git repositories
+	optdepends = mercurial: support for mercurial repositories
+	optdepends = perl-html-parser: support for webcheckout
+	optdepends = perl-libwww: support for webcheckout
+	optdepends = perl-uri: support for webcheckout heuristically guessing partial URLs
+	optdepends = repo: support for repo repositories
+	optdepends = svn: support for subversion repositories
+	optdepends = unison: support for unison as a vcs
+	optdepends = vcsh: support for vcsh
+	provides = mr
+	provides = myrepos
+	provides = webcheckout
+	conflicts = mr
+	conflicts = myrepos
+	conflicts = webcheckout
+	source = myrepos::git+https://github.com/joeyh/myrepos
+	sha256sums = SKIP
+
+pkgname = myrepos-git
+
