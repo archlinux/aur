@@ -4,8 +4,8 @@
 
 pkgbase=notepadqq
 pkgname=('notepadqq-bin' 'notepadqq-common')
-pkgver=0.50.6
-_pkgver=0.50.6-0~wily1
+pkgver=0.51.0
+_pkgver=0.51.0-0~wily1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://notepadqq.altervista.org/wp/"
@@ -18,9 +18,9 @@ source_x86_64=("notepadqq-bin_x86_64.deb::http://ppa.launchpad.net/notepadqq-tea
 
 noextract=("${source[@]%%::*}" "${source_i686[@]%%::*}" "${source_x86_64[@]%%:*}")
 
-md5sums=('6eaaadd8d8058cddf69737cbfbca1b23')
-md5sums_i686=('408a176a6adcd27a71ddaf9ffab361fc')
-md5sums_x86_64=('5fb34f99f47334c66e49685e9b17e90c')
+md5sums=('a6d31a35c6cd0847c5c3f73afad93e39')
+md5sums_i686=('7630ac0086302f9e9e7590656ab524c3')
+md5sums_x86_64=('e65a9ce7319fe2684917f7781ea71b64')
 
 package_notepadqq-bin() {
   pkgdesc="A Linux clone of Notepad++"
