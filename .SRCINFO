@@ -1,0 +1,15 @@
+pkgbase = python2-libsmdev
+	pkgdesc = Library to access to storage media devices
+	pkgver = 20160111
+	pkgrel = 1
+	url = https://github.com/libyal/libsmdev/
+	arch = any
+	license = LGPLv3+
+	makedepends = python2
+	makedepends = gcc
+	depends = python2
+	source = https://pypi.python.org/packages/source/l/libsmdev-python/libsmdev-python-20160111.tar.gz#md5=fac8ccfd1a1172d0cb68a8b2e765ee73
+	md5sums = fac8ccfd1a1172d0cb68a8b2e765ee73
+
+pkgname = python2-libsmdev
+
