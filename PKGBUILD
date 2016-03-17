@@ -3,7 +3,7 @@
 _gemname=rails-html-sanitizer
 pkgname=ruby-$_gemname
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='HTML sanitization for Rails applications'
 arch=(any)
 url='https://github.com/rails/rails-html-sanitizer'
@@ -19,6 +19,5 @@ package() {
   gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" \
     -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/MIT-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/MIT-LICENSE"
 }
 
