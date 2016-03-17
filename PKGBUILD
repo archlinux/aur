@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=teamviewer-quicksupport
-pkgver=11.0.53191
+pkgver='11.0.53191~b'
 _pkgver_major=${pkgver%%.*}
 pkgrel=1
 pkgdesc='Teamviewer Quicksupport - All-In-One Software for Remote Support and Online Meetings'
@@ -24,12 +24,12 @@ depends_i686=(
 conflicts=('teamviewer')
 license=('custom')
 source=("teamviewer_qs-${pkgver}.tar.gz::http://download.teamviewer.com/download/version_${_pkgver_major}x/teamviewer_qs.tar.gz")
-sha256sums=('0b39d9fb7ad91acb458869361152ea99643a0b601c43ca80c8591da998b8d0d9')
+sha256sums=('caa2b9f97e62082f05d4e40da71d8849c7667837affe64bca3812c422ba5fb19')
 
 prepare() {
 	cd teamviewerqs/
 
-	if ! grep -q "^TV_VERSION=\"${pkgver}\"\$" tv_bin/script/tvw_config; then
+	if ! grep -q "^TV_VERSION=\"${pkgver/\~/ }\"\$" tv_bin/script/tvw_config; then
 		msg "Version does not match!"
 		exit 1
 	fi
