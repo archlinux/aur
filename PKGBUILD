@@ -2,8 +2,8 @@
 
 pkgname=bittorrent2player
 pkgver=1.5
-pkgrel=1
-url=("http://www.beroal.in.ua/prg/bittorrent2player/")
+pkgrel=2
+url=http://www.beroal.in.ua/prg/bittorrent2player/
 pkgdesc="Transfers data from the BitTorrent network to another protocol (currently HTTP) which is more suitable for media players."
 arch=("any")
 license=("LGPL")
