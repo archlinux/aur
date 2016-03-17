@@ -1,0 +1,15 @@
+pkgbase = python2-libsmraw
+	pkgdesc = Library and tools to access the (split) RAW image format
+	pkgver = 20151219
+	pkgrel = 1
+	url = https://github.com/libyal/libsmraw/
+	arch = any
+	license = LGPLv3+
+	makedepends = python2
+	makedepends = gcc
+	depends = python2
+	source = https://pypi.python.org/packages/source/l/libsmraw-python/libsmraw-python-20151219.tar.gz#md5=fdf655999e42183ba8c941128a3aca3f
+	md5sums = fdf655999e42183ba8c941128a3aca3f
+
+pkgname = python2-libsmraw
+
