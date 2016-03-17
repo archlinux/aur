@@ -1,6 +1,6 @@
 # Maintainer: Danilo Bargen aur ât dbrgn döt ch
 pkgname=upscrot
-pkgver=1.0.0b1
+pkgver=1.0.0b2
 pkgrel=1
 _wheel="${pkgname}-${pkgver}-py3-none-any.whl"
 pkgdesc="Take a screenshot using the Linux scrot command and upload it directly to your SSH server."
@@ -15,7 +15,7 @@ provides=('upscrot')
 conflicts=('upscrot')
 noextract=(${_wheel})
 source=("https://pypi.python.org/packages/py3/u/${pkgname}/${_wheel}")
-sha256sums=('100a8b34ec4b5cd8218d97d2a3bf2361a54710a3117f3f5441ede2085c6148e2')
+sha256sums=('d04b88f7fc7e93b0a49e5a76d0c4c2f60fad2a943de25d605046f2993680a801')
 
 package() {
   cd "$srcdir"
