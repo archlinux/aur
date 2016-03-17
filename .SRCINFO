@@ -1,0 +1,15 @@
+pkgbase = diffpac-git
+	pkgdesc = Standalone replacement for pacdiffviewer
+	pkgver = 20140613
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	makedepends = git
+	optdepends = colordiff: colorized diff output
+	provides = diffpac
+	conflicts = diffpac
+	source = git://github.com/bruenig/diffpac.git
+	md5sums = SKIP
+
+pkgname = diffpac-git
+
