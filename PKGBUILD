@@ -1,8 +1,8 @@
 # Maintainer: Dylan Whichard <dylan@whichard.com>
 _name=idiotic
 pkgname=idiotic-git
-pkgver=0.1.6-1-g20fbf19
-pkgrel=1
+pkgver=0.1.6.r1-g20fbf19
+pkgrel=2
 pkgdesc='Distributed home automation controller'
 arch=('any')
 url="https://github.com/umbc-hackafe/$_name"
@@ -14,12 +14,12 @@ backup=('etc/idiotic/conf.json')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_name"
-  git describe
+    cd "$pkgname"
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-	cd "$srcdir/$_name-$pkgver"
-	python setup.py install --root="$pkgdir" --optimize=1 || return 1
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "$srcdir/$_name-$pkgver"
+    python setup.py install --root="$pkgdir" --optimize=1 || return 1
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
