@@ -1,20 +1,20 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 pkgbase=micropython
 pkgname=(micropython micropython-lib)
-pkgver=1.5
-_libver=0.5
+pkgver=1.6
+_libver=1.0
 pkgrel=1
 pkgdesc="Python3 for microcontrollers, with stdlib.  (unix version)"
 arch=('i686' 'x86_64')
 url="http://micropython.org/"
 license=('MIT')
 depends=('readline' 'libffi')
-makedepends=('python')
+makedepends=('python' 'python-setuptools')
 options=('!emptydirs')
 source=("https://github.com/micropython/micropython/archive/v$pkgver.tar.gz"
         "https://github.com/micropython/micropython-lib/archive/v$_libver.tar.gz")
-md5sums=('d2d0cfdcb6b5978e37f35b5b0ab39743'
-         '35e72a1885b61daf391279fd1dc3c7a8')
+md5sums=('e5c53c2c19bb454d0854b2ed8896e43c'
+         'd4092764630314609ef2a4d2d9d26d14')
 
 # todo:
 # fix 'imported as namespace package' warnings from stdlib
