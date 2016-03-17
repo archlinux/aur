@@ -2,7 +2,7 @@
 _name=idiotic
 pkgname=idiotic-git
 pkgver=0.1.6.r1.g20fbf19
-pkgrel=3
+pkgrel=4
 pkgdesc='Distributed home automation controller'
 arch=('any')
 url="https://github.com/umbc-hackafe/$_name"
@@ -14,7 +14,7 @@ backup=('etc/idiotic/conf.json')
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
+    cd "$_name"
     git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
