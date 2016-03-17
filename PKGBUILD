@@ -1,4 +1,4 @@
-# Maintainer ugjka <ugis.germanis@gmmail.com>
+# Maintainer ugjka <ugis.germanis@gmail.com>
 # Contributor: Bill Sun <billksun@gmail.com>
 # Contributor magnific0
 pkgname=wondershaper-git
