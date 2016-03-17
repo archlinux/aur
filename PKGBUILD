@@ -3,7 +3,7 @@
 
 pkgname=ezquake-git
 pkgver=r4621.4bf8793
-pkgrel=2
+pkgrel=3
 pkgdesc="One of the most Popular QuakeWorld clients for Linux/BSD/OSX/Win32. You need the retail pak files to play. (Git version)"
 url="http://ezquake.sourceforge.net/"
 license=('GPL')
@@ -32,7 +32,7 @@ sha256sums=("SKIP"
 	    "SKIP" ## TODO[3]
 	    #"SKIP" ## TODO[2]
 	    #'SKIP' ## TODO[1]
-            'f6c71961b06a38d11fc9ead5231f070484bd248bbcb70266c8c1bfff9b9e2b45'
+            '3a5084a92a3d61c03403c0352c92deab09be82f2fc7399ecf3c9963b06b4b0fe'
             'e92b9cdeac5eadced50a6167eb53b1343b0772d3bf8afa310eb281b88bf7e677'
             '2a6a5484ddb4cfaf8518b51df39ffd1fa8ce768402eab6401415bececb8e8ab2')
 pkgver() {
