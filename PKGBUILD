@@ -4,11 +4,11 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=rider-eap
-_buildver=144.4571
+_buildver=144.4757
 _pkgver=1.0
 _eap="True"
 pkgver="${_pkgver}.${_buildver}"
-pkgrel=2
+pkgrel=1
 pkgdesc="A cross-platform C# IDE by JetBrains."
 arch=('any')
 options=('!strip')
@@ -22,7 +22,7 @@ groups=("development" "IDE" "editor" "jetbrains")
 
 source=("file://riderRS-${_buildver}.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('1fac27c55e4c1bb64ee67f554cc44b01d8c326bdda1ddaa42e6df924ad0d4565'
+sha256sums=('91662bc185709109f43ca1d25c07a5eba341e52fc50a41c9a294af2b22c74901'
             'e2782e2af1b0fb35c4fcf7c53fde1d215a069b027818ad125b2cb0bc0481dbfc')
 
 package() {
