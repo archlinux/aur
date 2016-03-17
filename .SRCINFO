@@ -1,6 +1,6 @@
 pkgbase = java-service-wrapper
 	pkgdesc = Enables a Java Application to be run as a Windows Service or Unix Daemon
-	pkgver = 3.5.27
+	pkgver = 3.5.29
 	pkgrel = 1
 	url = http://wrapper.tanukisoftware.com
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = java-service-wrapper
 	makedepends = apache-ant
 	makedepends = java-environment>=7
 	conflicts = java-service-wrapper-bin
-	source = http://wrapper.tanukisoftware.com/download/3.5.27/wrapper_3.5.27_src.tar.gz
-	sha256sums = 0a4eeb97227c7bceba301a66eabf18512bcc6f303590cabd8a47aac8023a9cec
+	source = http://wrapper.tanukisoftware.com/download/3.5.29/wrapper_3.5.29_src.tar.gz
+	sha256sums = 828875f246df05c4328bc13087f82c388a61d1f2ebad707951bdca5165c81b28
 
 pkgname = java-service-wrapper
 
