@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Steel <jsteel at archlinux.org>
 
 pkgname=hiera
-pkgver=3.0.6
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Lightweight pluggable hierarchical database"
 arch=('any')
@@ -10,7 +10,7 @@ license=('APACHE')
 depends=('ruby')
 backup=('etc/hiera.yaml')
 source=(https://downloads.puppetlabs.com/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('596be5ef2521f5a8c98d05760f5c86ad')
+md5sums=('3d2e81aa9a2aed377cc58ec62f202e93')
 
 package() {
   cd $pkgname-$pkgver
