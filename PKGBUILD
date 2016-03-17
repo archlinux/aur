@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=xaric-git
-pkgver=20100001
+pkgver=0.13.7.r1.g9803117
 pkgrel=1
 epoch=
 pkgdesc="An IRC client similar to ircII, BotchX, or ircII EPIC."
@@ -36,7 +36,7 @@ build() {
               --prefix=/usr                 \
               --datarootdir=/usr/share/doc  \
               --mandir=/usr/share/man
-  make
+  make LIBS="-lncursesw -lpthread"
 }
 
 package() {
