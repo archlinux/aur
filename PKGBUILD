@@ -3,8 +3,7 @@
 pkgname=firefox-beta-zh-cn
 _pkgname=firefox-beta
 pkgver=46.0b2
-build=build3
-pkgrel=1
+pkgrel=3
 pkgdesc="Chinese Simplified For Firefox ESR"
 arch=('i686' 'x86_64')
 url="https://www.mozilla.org/zh-CN/firefox/channel/#esr"
@@ -20,8 +19,8 @@ provides=("firefox=$pkgver")
 install=$pkgname.install
 source=("$pkgname.desktop"
         "vendor.js")
-source_i686=("https://ftp.mozilla.org/pub/firefox/candidates/$pkgver-candidates/$build/linux-i686/zh-CN/firefox-$pkgver.tar.bz2")
-source_x86_64=("https://ftp.mozilla.org/pub/firefox/candidates/$pkgver-candidates/$build/linux-x86_64/zh-CN/firefox-$pkgver.tar.bz2")
+source_i3=("https://ftp.mozilla.org/pub/firefox/candidates/$pkgver-candidates/build$pkgrel/linux-i686/zh-CN/firefox-$pkgver.tar.bz2")
+source_x3_64=("https://ftp.mozilla.org/pub/firefox/candidates/$pkgver-candidates/build$pkgrel/linux-x86_64/zh-CN/firefox-$pkgver.tar.bz2")
 sha512sums=('SKIP'
             'SKIP')
 sha512sums_i686=('99ee14f28dafb9edf5b7feda4580d96877b23a58e8e11bac085ebb73d83e6e890ffc323cedbe88301ddfd59e543bb1e089d8b3ade6a8f6625021b0b285930b22')
