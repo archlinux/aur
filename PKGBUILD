@@ -1,16 +1,16 @@
 # Maintainer: Michele Mocciola <mickele>
 
 pkgname=astk
-pkgver=1.13.6
+pkgver=1.13.7
 pkgrel=1
 pkgdesc="Tcl/Tk interface to run Code-Aster (prepare and start calculations)."
 url="http://www.code-aster.org/"
-license="GPL"
-depends=('python' 'tcl' 'tk' 'openssh' 'x11-ssh-askpass')
+license=("GPL")
+depends=('python' 'tcl' 'tk' 'openssh')
 makedepends=('desktop-file-utils' 'sed' 'patch')
-optdepends=('inetutils: if you want to connect to aster server with rsh' 'eficas>=6.6.0: to edit Code_Aster command files' 'gibi>=2000: to generate and post-process meshes' 'gmsh: to generate and post-process mesh' 'gnuplot: to plot outputs to X11, PostScript, PNG, GIF, and others' 'grace: to plot outputs in 2D graphs' 'tkpng: to display better colors')
+optdepends=('inetutils: if you connect to code-aster server with rsh' 'openssh: if you connect to code-aster server with ssh' 'eficas>=2015.2: to edit Code_Aster command files' 'gibi>=2000: to generate and post-process meshes' 'gmsh: to generate and post-process mesh' 'gnuplot: to plot outputs to X11, PostScript, PNG, GIF, and others' 'grace: to plot outputs in 2D graphs' 'tkpng: to display better colors')
 arch=('i686' 'x86_64')
-_asterver=12.4.0
+_asterver=12.5.0
 _astersubver=1
 source=("http://www.code-aster.org/FICHIERS/aster-full-src-${_asterver}-${_astersubver}.noarch.tar.gz" "astk-ssh" "astk.png" "astk.desktop")
 backup=('opt/aster/etc/codeaster/aster')
@@ -50,7 +50,7 @@ package() {
     # mv etc from /usr to /
     mv "${pkgdir}${_installdir}/etc/" "${pkgdir}"
 }
-md5sums=('5378bf134ae67ef80e74967b73c3d0e5'
-         '6fba5ebcdf75cccea2122c85df5a6306'
+md5sums=('58224ee70b508e2bf0a0e0f0fab6a57d'
+         'd1c0da1ae3d8f38f2d09094e2f498b6e'
          '3d432dfac21b5351cf96ac80ae55811d'
          '79e3e1cf77a476d0b9e9d9aa21a1e723')
