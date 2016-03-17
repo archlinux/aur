@@ -8,8 +8,7 @@ pkgbase = shot-git
 	depends = git
 	depends = gcc
 	depends = xorg-xrandr
-	depends = python
-	depends = wget
+	depends = cmake
 	source = shot-git::git://github.com/rr-/shot.git
 	sha256sums = SKIP
 

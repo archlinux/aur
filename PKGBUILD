@@ -7,7 +7,7 @@ pkgdesc='A minimal screenshot tool aiming to provide good control over screensho
 arch=('any')
 url='https://github.com/rr-/shot'
 license=('GPL')
-depends=('git' 'gcc' 'xorg-xrandr' 'python' 'wget')
+depends=('git' 'gcc' 'xorg-xrandr' 'cmake')
 source=("$pkgname::git://github.com/rr-/shot.git")
 sha256sums=('SKIP')
 
