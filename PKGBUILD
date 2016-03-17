@@ -84,11 +84,10 @@ source 'PKGBUILD.local'
 # rmdir /usr/bin/dgrp/config
 # rmdir /usr/bin/dgrp
 
-############################### Arch PKGBUILD #################################
 set -u
 pkgname='dgrp'
-pkgver='1.9.35'
-pkgrel=2
+pkgver='1.9.36'
+pkgrel='1'
 pkgdesc="tty driver for Digi ${_opt_RealPort} Connect EtherLite Flex One CM PortServer IBM RAN"
 #_pkgdescshort="Digi ${_opt_RealPort} driver for Ethernet serial servers" # For when we used to generate the autorebuild from here
 arch=('i686' 'x86_64')
@@ -101,8 +100,8 @@ backup=('etc/dgrp.backing.store')
 options=('!docs' '!emptydirs')
 install="${pkgname}-install.sh"
 _verwatch=('http://www.digi.com/support/includes/drivers.aspx?pid=2240&osvid=218' 'Realport Driver for Linux ver\. \([0-9\.]\+\), tgz version' 't')
-source=("${pkgname}-${pkgver}-81000137_W.tgz::http://ftp1.digi.com/support/driver/81000137_W.tgz" 'drpadmin' 'drpadmin.1' "autorebuild-${pkgname}.sh")
-sha256sums=('218c3a873f8623d2e663735efdee384f7dac784327cea9e7211eddce700fe1c8'
+source=("${pkgname}-${pkgver}-81000137_X.tgz::http://ftp1.digi.com/support/driver/81000137_X.tgz" 'drpadmin' 'drpadmin.1' "autorebuild-${pkgname}.sh")
+sha256sums=('a6f39d6034960162a9df8cb979a76daa55559ceb9c4e24a68df74773374a78c0'
             '1ab0ccdc361760ae078f9b69f603e99b40849cdf97ad69bb028ad6af27012634'
             '66f8b106a052b4807513ace92978e5e6347cef08eee39e4b4ae31c60284cc0a3'
             '4d9ae1a36fe044f78c96358e13f8e0ed0dcd49ca056b67f3d6c7e5360408617e')
