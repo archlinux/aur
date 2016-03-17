@@ -15,6 +15,7 @@ install=geiser.install
 source=("git+https://github.com/jaor/geiser.git")
 _gitname="geiser"
 md5sums=('SKIP')
+options=('!makeflags')
 
 pkgver() {
   cd "$_gitname"
