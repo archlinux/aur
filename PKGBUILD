@@ -1,13 +1,13 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=kde-servicemenus-peazip
-pkgver=20160104
+pkgver=20160317
 pkgrel=1
 pkgdesc="PeaZip archiver services, fixed for Dolphin KF5."
 arch=('any')
 url="http://peazip.org"
 license=('GPL')
-depends=('dolphin' 'peazip-gtk2') ### NOTE: peazip-qt is corrupted and doesn't work at all
+depends=('dolphin' 'peazip-qt-opensuse') ### NOTE: peazip-qt is corrupted and doesn't work at all, but version from openSUSE working fine.
 source=('peazipadd.desktop' 'peazipext.desktop' 'peazipextfolder.desktop' 'peazipexthere.desktop' 'peazipopen.desktop')
 sha256sums=('f7327d11418109548a62874dd72d03722db0450c5aaefd0f07dd336b1088d766'
             '6a7f7508b387c174efaafad21c1aa08a9f9b84c87975ca570bd1927249ded404'

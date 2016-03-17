@@ -1,0 +1,9 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!peazipadd.desktop
+!peazipext.desktop
+!peazipextfolder.desktop
+!peazipexthere.desktop
+!peazipopen.desktop
