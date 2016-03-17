@@ -6,8 +6,8 @@
 # Maintainer: Rick <rick.2889@gmail.com>
 
 pkgname=pamac-pacaur
-pkgver=3.2.0
-_pkgver=3.2.0
+pkgver=3.2.1
+_pkgver=3.2.1
 pkgrel=1
 # This is the release package so the below _gitcommit variable should (usually) be commented out.
 #_gitcommit="7266a5766441725210e7e4af3ee7da501cf0e38f"
@@ -33,7 +33,7 @@ else
   source=("pamac-$pkgver.tar.gz::$url/archive/v$pkgver-patched.tar.gz")
 fi
 
-sha256sums=('76738039266bcc202acce4c8624e7b4726ec93eb29e01f000ab8139cdd69bb4f')
+sha256sums=('8a25c4ce26b03b325ae6d3aa33877e461057bf13a8696425e2ef7062ba80acf4')
 
 prepare() {
   if [ "$_gitcommit" != "" ]; then
