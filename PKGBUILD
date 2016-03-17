@@ -1,8 +1,8 @@
 # Maintainer: Dylan Whichard <dylan@whichard.com>
 _name=idiotic
 pkgname=idiotic-git
-pkgver=0.1.6.r1-g20fbf19
-pkgrel=2
+pkgver=0.1.6.r1.g20fbf19
+pkgrel=3
 pkgdesc='Distributed home automation controller'
 arch=('any')
 url="https://github.com/umbc-hackafe/$_name"
