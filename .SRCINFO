@@ -10,7 +10,7 @@ pkgbase = python2-mutagen-1.30
 	provides = python2-mutagen=1.30
 	conflicts = python2-mutagen
 	source = https://pypi.python.org/packages/source/m/mutagen/mutagen-1.30.tar.gz
-	md5sums = e0ce768dee1e961ad5a02bf459334abc
+	md5sums = 2c2069bd6a8245f99845f160da37f2ac
 
 pkgname = python2-mutagen-1.30
 
