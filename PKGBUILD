@@ -41,6 +41,7 @@ package() {
 
   mkdir -p "${pkgdir}/usr/bin"
   ln -s /usr/share/gopreload/bin/Prepare.sh "${pkgdir}/usr/bin/gopreload-prepare"
+  ln -s /usr/share/gopreload/bin/batch_refresh.sh "${pkgdir}/usr/bin/gopreload-batch-refresh.sh"
 }
 
 # vim:set ts=2 sw=2 et:
