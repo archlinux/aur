@@ -1,9 +1,10 @@
-# Maintainer: Scott Lawrence <bytbox@gmail.com>
+# Maintainer: Frank Siegert <frank.siegert@googlemail.com>
+# Contributor: Scott Lawrence <bytbox@gmail.com>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: Sebastian Voecking <voeck@web.de>
 
 pkgname=root
-pkgver=6.06.00
+pkgver=6.06.02
 pkgrel=1
 pkgdesc='C++ data analysis framework and interpreter from CERN.'
 arch=('i686' 'x86_64')
@@ -36,11 +37,11 @@ source=("ftp://root.cern.ch/root/root_v${pkgver}.source.tar.gz"
 'root.xml'
 'python3.diff'
 'param.diff')
-md5sums=('65675a1dbaa4810df0479dbcf62f0ba0'
+md5sums=('e9b8b86838f65b0a78d8d02c66c2ec55'
          '0e883ad44f99da9bc7c23bc102800b62'
          'efd06bfa230cc2194b38e0c8939e72af'
          'e2cf69b204192b5889ceb5b4dedc66f7'
-	 '1777520d65cc545b5416ee2fed0cd45c'
+         '1777520d65cc545b5416ee2fed0cd45c'
          'b76fed6aae7b48c8ec0b756670ccde91')
 						   
 prepare(){
@@ -66,7 +67,7 @@ build() {
 		sys_libs+="-Dbuiltin_${sys_lib}=ON "
 	done
 
-	cmake ${srcdir}/${pkgname}-${pkgver} \
+	CXXFLAGS="-D_GLIBCXX_USE_CXX11_ABI=0" CFLAGS="-D_GLIBCXX_USE_CXX11_ABI=0" CPPFLAGS="-D_GLIBCXX_USE_CXX11_ABI=0" CLINGCXXFLAGS="-D_GLIBCXX_USE_CXX11_ABI=0" cmake ${srcdir}/${pkgname}-${pkgver} \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-Dgnuinstall=ON \
@@ -75,7 +76,7 @@ build() {
 		-Dcastor=OFF \
 		${sys_libs}
 
-	make
+	CXXFLAGS="-D_GLIBCXX_USE_CXX11_ABI=0" CFLAGS="-D_GLIBCXX_USE_CXX11_ABI=0" CPPFLAGS="-D_GLIBCXX_USE_CXX11_ABI=0" CLINGCXXFLAGS="-D_GLIBCXX_USE_CXX11_ABI=0" make
 }
 
 package() {
