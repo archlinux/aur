@@ -32,10 +32,10 @@ source = firefox-beta-zh-cn.desktop
 source = vendor.js
 sha512sums = SKIP
 sha512sums = SKIP
-source_i686 = https://ftp.mozilla.org/pub/firefox/candidates/46.0b2-candidates/build2/linux-i686/zh-CN/firefox-46.0b2.tar.bz2
-sha512sums_i686 = a72f77b649b3379516f4f2a998153f9c5474e1eed1875f3e957d8d89575c7e3c06a4223b845384d6843751c14a40e150610c92582f3d78e8679b9248a6cbb657
-source_x86_64 = https://ftp.mozilla.org/pub/firefox/candidates/46.0b2-candidates/build2/linux-x86_64/zh-CN/firefox-46.0b2.tar.bz2
-sha512sums_x86_64 = a8f96d3e3bd98df5b4f5af9df80358a7c36d01603e0920f5029d7b273c62413ec718cd65698ea630afe6507478b198361460bc2d9477f0f7f1182d44f1a3b77f
+source_i686 = https://ftp.mozilla.org/pub/firefox/candidates/46.0b2-candidates/build3/linux-i686/zh-CN/firefox-46.0b2.tar.bz2
+sha512sums_i686 = 99ee14f28dafb9edf5b7feda4580d96877b23a58e8e11bac085ebb73d83e6e890ffc323cedbe88301ddfd59e543bb1e089d8b3ade6a8f6625021b0b285930b22
+source_x86_64 = https://ftp.mozilla.org/pub/firefox/candidates/46.0b2-candidates/build3/linux-x86_64/zh-CN/firefox-46.0b2.tar.bz2
+sha512sums_x86_64 = 9f9163f46da64d2b5d758d3b81155f7962b38069b86741fdc80db36d3d09aca8b43a7efd1f70c36d780789bc6648f58c22c846543ea6b4d03783997f4837ab7e
 
 pkgname = firefox-beta-zh-cn
 
