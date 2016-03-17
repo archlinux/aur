@@ -1,0 +1,14 @@
+pkgbase = python2-schedule
+	pkgdesc = Python job scheduling for humans.
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/dbader/schedule
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python>=2.3
+	source = https://pypi.python.org/packages/source/s/schedule/schedule-0.3.2.tar.gz
+	md5sums = e0ce768dee1e961ad5a02bf459334abc
+
+pkgname = python2-schedule
+
