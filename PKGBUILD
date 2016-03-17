@@ -18,13 +18,14 @@ pkgver() {
 
 build() {
     cd "$pkgname"
-    ./bootstrap
-    ./waf configure
-    ./waf
+    mkdir -p build
+    cd build
+    cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_RELEASE_TYPE=Release
+    make
 }
 
 package() {
     cd "$pkgname"
-    install -Dm755 build/shot "$pkgdir/usr/bin/shot"
-    install -Dm644 docs/shot.1 "$pkgdir/usr/share/man/man1/shot.1p"
+    cd build
+    make DESTDIR="$pkgdir" install
 }
