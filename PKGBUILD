@@ -4,7 +4,7 @@
 
 pkgname=('pidgin-hg' 'libpurple-hg' 'finch-hg')
 _hgname=pidgin
-pkgver=37576.3cf4744a9521
+pkgver=3.r37585.a8e63f1a5b5c
 pkgrel=1
 pkgdesc="Multi-protocol instant messaging client. Latest mercurial build."
 arch=('i686' 'x86_64')
@@ -18,13 +18,13 @@ makedepends=('mercurial' 'python2' 'avahi' 'tk' 'ca-certificates' 'intltool'
              'libgnome-keyring' 'gplugin')
 makedepends+=('libx11' 'python')
 options=('!libtool')
-source=('pidgin::hg+https://hg.pidgin.im/pidgin/main')
+source=('pidgin::hg+https://hg.pidgin.im/pidgin/main#branch=default')
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir"/pidgin
 
-  hg identify -ni | awk 'BEGIN{OFS=".";} {print $2,$1}'
+  printf "3.r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
 
 prepare() {
