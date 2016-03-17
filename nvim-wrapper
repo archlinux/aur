@@ -62,6 +62,9 @@ def processArgv():
     if not any([o.startswith('--working-directory') for o in gtermOptions]):
         gtermOptions.append('--working-directory='+os.path.abspath(os.curdir))
 
+    # enable title by default
+    nvimOptions.append("+set title")
+
     return {
         'gterm': gtermOptions,
         'nvim': nvimOptions
