@@ -2,8 +2,8 @@
 # Maintainer: Zeph <zeph33@gmail.com>
 
 pkgname=pamac-aur
-pkgver=3.2.0
-_pkgver=3.2.0
+pkgver=3.2.1
+_pkgver=3.2.1
 pkgrel=1
 # This is the release package so the below _gitcommit variable should (usually) be commented out.
 #_gitcommit="7266a5766441725210e7e4af3ee7da501cf0e38f"
@@ -29,7 +29,7 @@ else
   source=("pamac-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 fi
 
-sha256sums=('13c5eaaa0b1302e59542a6ca922f305ee5312c017763d05eb7b21d484a40b152')
+sha256sums=('45d15a8cb5d1bf9cf06be0b19cfa0552cb1a2c8a52a2c09848d58140e4235090')
 
 prepare() {
   if [ "$_gitcommit" != "" ]; then
