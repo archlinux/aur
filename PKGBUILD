@@ -1,18 +1,19 @@
-# Maintainer: Shanto <shanto@hotmail.com>
+# Maintainer: Arthur Zamarin <arthurzam@gmail.com>
+# Contributer: Shanto <shanto@hotmail.com>
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=eclipse-dltk-xotcl
-pkgver=5.0.0
-pkgrel=2
-_pkgdate=201306060709
+pkgver=5.4
+pkgrel=1
+_pkgdate="201602110510"
 pkgdesc="XOTcl IDE for Eclipse"
 arch=('i686' 'x86_64')
 url="http://www.eclipse.org/dltk/"
 license=('EPL')
 depends=("eclipse-dltk-tcl")
 _mirror="http://www.eclipse.org/downloads/download.php?r=1&file="
-source=("$_mirror/technology/dltk/downloads/drops/R${pkgver:0:3}/R-${pkgver:0:3}-$_pkgdate/${pkgname#eclipse-}-I-$_pkgdate.zip")
-md5sums=('b8cddb0cdd5fc7363bb3ba4f4727d32b')
+source=("$_mirror/technology/dltk/downloads/drops/R${pkgver:0:3}/R-$pkgver-$_pkgdate/${pkgname#eclipse-}-R-$pkgver-$_pkgdate.zip")
+md5sums=('817191dde9292cadc4893116f1707b94')
 
 package() {
 	_dest=$pkgdir/usr/lib/eclipse/dropins/${pkgname#eclipse-}/eclipse
