@@ -1,0 +1,16 @@
+pkgbase = python2-mutagen-1.30
+	pkgdesc = read and write audio tags for many formats
+	pkgver = 1.30
+	pkgrel = 1
+	url = https://bitbucket.org/lazka/mutagen
+	arch = any
+	license = GPL2
+	makedepends = python2-setuptools
+	depends = python2
+	provides = python2-mutagen=1.30
+	conflicts = python2-mutagen
+	source = https://pypi.python.org/packages/source/m/mutagen/mutagen-1.30.tar.gz
+	md5sums = e0ce768dee1e961ad5a02bf459334abc
+
+pkgname = python2-mutagen-1.30
+
