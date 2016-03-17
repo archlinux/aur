@@ -2,10 +2,10 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoind-unlimited-git
-pkgver=20151227.bffc279
+pkgver=20160311.a2f713f
 pkgrel=1
 pkgdesc="Bitcoin Unlimited versions of bitcoind, bitcoin-cli, and bitcoin-tx"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://www.bitcoinunlimited.info/software"
 depends=('boost'
          'boost-libs'
@@ -21,7 +21,7 @@ makedepends=('autoconf'
              'make'
              'pkg-config')
 license=('MIT')
-source=(git+https://github.com/gandrewstone/BitcoinUnlimited.git#branch=0.11cfg_stats
+source=(git+https://github.com/gandrewstone/BitcoinUnlimited.git#branch=0.12bu
         bitcoin.conf
         bitcoin.logrotate)
 sha256sums=('SKIP'
@@ -56,7 +56,8 @@ build() {
     --localstatedir=/var/lib/bitcoin \
     --enable-hardening \
     --with-gui=no \
-    --with-gnu-ld
+    --with-gnu-ld \
+    --with-incompatible-bdb
   make
 }
 
