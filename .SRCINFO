@@ -1,0 +1,16 @@
+pkgbase = python2-libewf
+	pkgdesc = Libewf is a library to access the Expert Witness Compression Format (EWF)
+	pkgver = 20160124
+	pkgrel = 1
+	url = https://github.com/libyal/libewf/
+	arch = any
+	license = LGPLv3+
+	makedepends = python2
+	makedepends = gcc
+	depends = python2
+	provides = libewf
+	source = https://pypi.python.org/packages/source/l/libewf-python/libewf-python-20160124.tar.gz#md5=c134579eccc45c3cd25ee5b26c2f3035
+	md5sums = c134579eccc45c3cd25ee5b26c2f3035
+
+pkgname = python2-libewf
+
