@@ -1,10 +1,11 @@
-# Maintainer: Shanto <shanto@hotmail.com>
+# Maintainer: Arthur Zamarin <arthurzam@gmail.com>
+# Contributer: Shanto <shanto@hotmail.com>
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=eclipse-dltk-mylyn
-pkgver=5.0
+pkgver=5.4
 pkgrel=1
-_pkgdate=201306060709
+_pkgdate="201602110510"
 pkgdesc="Mylyn support for DLTK in Eclipse"
 arch=('i686' 'x86_64')
 url="http://www.eclipse.org/dltk/"
@@ -12,7 +13,7 @@ license=('EPL')
 depends=("eclipse-dltk-core>=$pkgver" "eclipse-mylyn")
 _mirror="http://www.eclipse.org/downloads/download.php?r=1&file="
 source=("$_mirror/technology/dltk/downloads/drops/R${pkgver:0:3}/R-$pkgver-$_pkgdate/${pkgname#eclipse-}-R-$pkgver-$_pkgdate.zip")
-md5sums=('86445eb13ab34de3cff86c834021e95c')
+md5sums=('5704a8206a5c010bdef98bb02195fd22')
 
 package() {
 	cd $srcdir || return 1
