@@ -2,7 +2,7 @@
 # Contributor: Duncan K. <duncank@fastmail.fm>
 
 pkgname=terraform-bin
-pkgver=0.6.12
+pkgver=0.6.13
 pkgrel=1
 pkgdesc="Tool for building, changing, and versioning infrastructure safely and efficiently"
 url='http://www.terraform.io/'
@@ -12,8 +12,8 @@ conflicts=('terraform')
 
 source_i686=("https://releases.hashicorp.com/terraform/${pkgver}/terraform_${pkgver}_linux_386.zip")
 source_x86_64=("https://releases.hashicorp.com/terraform/${pkgver}/terraform_${pkgver}_linux_amd64.zip")
-sha256sums_i686=('c936e073988cef78dd1c1d29873276f85a7ec44329074bc353a022054fbd5e06')
-sha256sums_x86_64=('37513aba20f751705f8f98cd0518ebb6a4a9c2148453236b9a5c30074e2edd8d')
+sha256sums_i686=('cb03081f2347ce164d7745aadbc0fa9d0fd0d26d3381f87065645c9d3e1f4865')
+sha256sums_x86_64=('8eeddca53958d5c871de93a624eb0f5971f97cbaf107e0b2d1cc289f2ac21b79')
 
 package() {
     install -d ${pkgdir}/usr/bin
