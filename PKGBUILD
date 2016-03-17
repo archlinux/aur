@@ -4,7 +4,7 @@
 pkgname=vim-pydyn-xclip
 pkgver=7.4.1529
 _versiondir=74
-pkgrel=1
+pkgrel=2
 pkgdesc='Vi Improved with dynamic python (python/dyn, python3/dyn) and clipboard support'
 arch=(i686 x86_64)
 url='http://www.vim.org'
@@ -16,7 +16,7 @@ conflicts=('vim-minimal' 'vim' 'vim-python3' 'gvim' 'gvim-python3')
 source=(vim-$pkgver.tar.gz::http://github.com/vim/vim/archive/v$pkgver.tar.gz
         vimrc
         archlinux.vim)
-sha1sums=('3381f960d02a5eeaffc91c6c9f13f327d3d3501e'
+sha1sums=('cc590fc23c36141c33bf7908c92657e5ffccbdf7'
           '15ebf3f48693f1f219fe2d8edb7643683139eb6b'
           '94f7bb87b5d06bace86bc4b3ef1372813b4eedf2')
 
@@ -85,6 +85,3 @@ package() {
   install -Dm644 runtime/doc/uganda.txt \
     "${pkgdir}"/usr/share/licenses/${pkgname}/license.txt
 }
-sha1sums=('5a16a08693059eb17dbce5cb9add7cb43b1f7c2f'
-          '15ebf3f48693f1f219fe2d8edb7643683139eb6b'
-          '94f7bb87b5d06bace86bc4b3ef1372813b4eedf2')
