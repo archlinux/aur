@@ -29,7 +29,7 @@ pkgver() {
 
 package() {
   cd "${srcdir}/${_gitname}"
-  echo "#!/bin/bash" > ./wpg
+  echo '#!/bin/bash' > ./wpg
   echo "/usr/bin/wpgtk/src/wpg.py" >> ./wpg
   mkdir -p ${pkgdir}/usr/bin/wpgtk/py
   mkdir -p ${pkgdir}/usr/bin/wpgtk/src
