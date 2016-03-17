@@ -2,7 +2,7 @@
 _name=idiotic
 pkgname=idiotic-git
 pkgver=0.1.6.r1.g20fbf19
-pkgrel=4
+pkgrel=5
 pkgdesc='Distributed home automation controller'
 arch=('any')
 url="https://github.com/umbc-hackafe/$_name"
@@ -19,7 +19,7 @@ pkgver() {
 }
 
 package() {
-    cd "$srcdir/$_name-$pkgver"
+    cd "$srcdir/$_name"
     python setup.py install --root="$pkgdir" --optimize=1 || return 1
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
