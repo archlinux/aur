@@ -1,0 +1,13 @@
+
+
+# Backup and replace by the patched HTTP plugin
+post_install() {
+	sudo mv /usr/lib/qmmp/Transports/libhttp.so /usr/lib/qmmp/Transports/libhttp.so.bak
+}
+
+
+# Restore the original HTTP plugin
+pre_remove() {
+	sudo mv /usr/lib/qmmp/Transports/libhttp.so.bak /usr/lib/qmmp/Transports/libhttp.so
+}
+
