@@ -2,7 +2,7 @@
 # Current Maintainer: Leopold Bloom <blinxwang@gmail.com>
 pkgname=beignet
 pkgver=1.1.1
-pkgrel=5
+pkgrel=6
 pkgdesc='A GPGPU System for Intel Ivybridge GPUs'
 arch=('x86_64')
 url='http://cgit.freedesktop.org/beignet/'
@@ -33,6 +33,7 @@ build() {
 	cp llvm-3.7-patch-3.patch "$srcdir/Beignet-$pkgver-Source"
 	cp llvm-3.7-patch-4.patch "$srcdir/Beignet-$pkgver-Source"
 	cp llvm-3.7-patch-5.patch "$srcdir/Beignet-$pkgver-Source"
+	cp isnan.patch "$srcdir/Beignet-$pkgver-Source"
 	cd "$srcdir/Beignet-$pkgver-Source"
 	patch -Np1 -i llvm-3.7-patch-1.patch
 	patch -Np1 -i llvm-3.7-patch-2.patch
