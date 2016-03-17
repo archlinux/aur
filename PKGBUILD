@@ -5,7 +5,7 @@ pkgver=4.10.0
 pkgrel=1
 pkgdesc="Sparse solver library using Gaussian elimination"
 url="http://mumps.enseeiht.fr"
-license="custom"
+license=("custom")
 depends=('lapack' 'openmpi' 'scotch>=6.0.3-3' 'scalapack' 'metis4' 'bzip2')
 makedepends=()
 provides=(mumps=4.10.0)
