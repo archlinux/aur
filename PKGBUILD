@@ -4,7 +4,7 @@ pkgname=atom-editor-beta
 _pkgbeta=0
 _pkgver=1.7.0
 pkgver="${_pkgver}.beta${_pkgbeta}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Chrome-based text editor from Github - Beta Channel'
 arch=('x86_64' 'i686')
 url='https://github.com/atom/atom'
@@ -22,6 +22,11 @@ prepare() {
 
 	sed -i -e "/exception-reporting/d" \
 		-e "/metrics/d" package.json
+
+	if pacman -Qi freetype2 | grep "2.6.3-1" &>/dev/null; then
+		echo -e "\x1b[1;31mwarning: \x1b[0mAtom has issues with the latest version of Freetype2 [2.6.3-1]."
+		echo "         Downgrade to 2.6.2-1 to ensure everything will run smoothly."
+	fi
 }
 
 build() {
