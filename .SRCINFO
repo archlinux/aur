@@ -1,0 +1,15 @@
+pkgbase = python2-libqcow
+	pkgdesc = ibrary and tools to access the QEMU Copy-On-Write (QCOW) image format
+	pkgver = 20160119
+	pkgrel = 1
+	url = https://github.com/libyal/libqcow/
+	arch = any
+	license = LGPLv3+
+	makedepends = python2
+	makedepends = gcc
+	depends = python2
+	source = https://pypi.python.org/packages/source/l/libqcow-python/libqcow-python-20160119.tar.gz#md5=96b1188e693ab3dd97d49d9fe69d3d07
+	md5sums = 96b1188e693ab3dd97d49d9fe69d3d07
+
+pkgname = python2-libqcow
+
