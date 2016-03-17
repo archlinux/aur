@@ -26,7 +26,7 @@ install=${pkgname}.install
 if [ "${CARCH}" = 'i686' ]; then
   depends=('pacman' 'ssx' 'libx11' 'gcc-libs' 'libxrender')
   source=("pacmanxg.tar.bz2::http://almin-soft.ru/data/files/repo/i686/download.php?get=pacmanxg")
-
+  sha512sums=('0dee637f89dffcc19ec35120ccade95a8f9d3c9e391d4d40c679299a2f0c14345e0171313e6229fc51e6263920940f68d916535ccbcce8943f1427f73a55184b')
 fi
 
 package() {
