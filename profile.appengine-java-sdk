@@ -1,2 +1,2 @@
-#!/bin/bash
+#!/bin/sh
 export PATH="$PATH:/opt/google-appengine-java/bin"
