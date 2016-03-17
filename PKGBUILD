@@ -1,8 +1,8 @@
 # Maintainer: Matheus de Alcantara <matheus.de.alcantara@gmail.com>
 
 pkgname=atom-editor-beta
-_pkgbeta=8
-_pkgver=1.6.0
+_pkgbeta=0
+_pkgver=1.7.0
 pkgver="${_pkgver}.beta${_pkgbeta}"
 pkgrel=1
 pkgdesc='Chrome-based text editor from Github - Beta Channel'
