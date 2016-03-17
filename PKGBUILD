@@ -2,7 +2,7 @@
 
 pkgname=brave-browser-bin
 pkgver=0.8.1
-pkgrel=4 # Yes, this is RC4 and checksums changed !!!
+pkgrel=5 # Yes, this is final (RC5) and checksums changed !!!
 pkgdesc="A chromium-based web browser that stops ads and trackers by Brendan Eich and Co. Binary release."
 arch=('x86_64') # No 32-bit builds for you! (Upstream only supports 64bit intel/amd).
 url="https://www.brave.com/"
@@ -17,9 +17,9 @@ source=("$pkgname-$pkgver.tar.bz2::https://github.com/brave/browser-laptop/relea
         'brave-browser-bin.desktop'
         'launcher.sh')
 options=(!strip)
-sha384sums=('9e56f2a6ec5dd4d7fbcd879b572c8da50ae45d7f19eedb1b4e1da4dd127231a62fbbae5c14fcc7f0abe38c9421ad10c2'
+sha384sums=('ff0f0e9b1693041fdfd3441627eeca0dd1a6161fcfa8fdc78e32fc6231f83699d30e04631dab4fcaa615e92c56664532'
             '850b39853a44cb86fca09c82a201ad9ac8d4c6938c82ad1cfffcb40a9b2868a15ebc80a1c7d7597e9dfedf0144584381'
-            'b026be4ba5d7397a2b9b0d1ab8a561906a436fc1a9e6d366d241c4f3bf4d0173358bfbdfc6ce60528130c9c688dfe43e'
+            'b69f0aa7334d0406eee4fb57705057a7d81852e47982bcbd427cb308e15ff1fb87a5b3b9ab544bd402d47b50ed87e934'
             '5297c00bad54eedd71fbb0a25ab13eb60fefdf42e093fd07b808e6aee598a1873626157c421dc7429e6367d7d3894614')
 
 
