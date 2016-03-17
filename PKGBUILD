@@ -1,34 +1,29 @@
-# Contributor: Sergio Tridente <tioduke at gmail dot com>
+# Maintainer: Sergio Tridente <tioduke (at) gmail (dot) com>
 
 _pkgname=habitica
 pkgname=python-habitica
-pkgver=0.0.12
+pkgver=0.0.13
 pkgrel=1
 pkgdesc="Commandline interface to Habitica."
 arch=('any')
-url="https://github.com/philadams/habitica"
+url="https://pypi.python.org/pypi/habitica"
 license=('MIT')
 depends=('python' 'python-docopt' 'python-requests')
-makedepends=('git' 'python-setuptools')
-source=('git+https://github.com/philadams/habitica.git#branch=master'
-        python3-compat.patch)
-md5sums=('SKIP'
-         '9cff7cfe5d8ad78c92971ec73b56a509')
+makedepends=('python-setuptools')
+source=('https://pypi.python.org/packages/source/h/habitica/habitica-0.0.13.tar.gz'
+        auth.cfg.sample)
+md5sums=('4fffa63a0f2c97a72826dbb77a603163'
+         '73203917ea9a075cafaf287f9d707a15')
 
-
-prepare() {
-  cd "$srcdir"
-  patch -p0 -i python3-compat.patch
-}
 
 build() {
-  cd "$srcdir/${_pkgname}"
+  cd "$srcdir/${_pkgname}-$pkgver"
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/${_pkgname}"
+  cd "$srcdir/${_pkgname}-$pkgver"
   python setup.py install --skip-build --root="$pkgdir" --optimize=1
   install -Dm644 README.md "$pkgdir"/usr/share/doc/${_pkgname}/README.txt
-  install -Dm644 netrc.sample "$pkgdir"/usr/share/examples/${_pkgname}/netrc.sample
+  install -Dm644 "$srcdir"/auth.cfg.sample "$pkgdir"/usr/share/examples/${_pkgname}/auth.cfg.sample
 }
