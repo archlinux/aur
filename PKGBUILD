@@ -1,7 +1,7 @@
 # Maintainer: Dylan Araps <dyl@tfwno.gf>
 pkgname=neofetch
 _pkgname=neofetch
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="CLI script to show your system's info and display an image using w3m."
 arch=('any')
