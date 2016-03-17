@@ -5,7 +5,8 @@
 #PKGEXT=.pkg.tar
 
 pkgname=clion
-pkgver=1.2.4
+_pkgname=CLion
+pkgver=2016.1
 _pkgver=${pkgver}
 pkgrel=1
 pkgdesc="C/C++ IDE. Free 30-day trial."
@@ -20,15 +21,18 @@ optdepends=(
   'gcc: GNU compiler'
   'clang: LLVM compiler'
   'biicode: C/C++ dependency manager'
-  'gtest: C++ testing'
+  'gtest: C++ testing',
+  'swift-language: Swift programming language support (Also requires the plugin)',
+  'python: Python programming language support (Also requires the plugin)',
+  'python2: Python 2 programming language support (Also requires the plugin)'
 )
-source=("https://download.jetbrains.com/cpp/${pkgname}-${_pkgver}.tar.gz")
-sha256sums=('a2d6960afbfae77f59481c5ad30bc7c5afe9451bdf9d12cd9435f605b57b522b')
-noextract=("${pkgname}-${_pkgver}.tar.gz")
+source=("https://download.jetbrains.com/cpp/${_pkgname}-${_pkgver}.tar.gz")
+sha256sums=('4d5289fe57d7951c0316034e79325f8bce9ad91e9ded6fa63d161141e6ebec42')
+noextract=("${_pkgname}-${_pkgver}.tar.gz")
 
 package() {
   mkdir -p "${pkgdir}/opt/${pkgname}"
-  bsdtar --strip-components 1 -xf "${pkgname}-${_pkgver}.tar.gz" -C "${pkgdir}/opt/${pkgname}"
+  bsdtar --strip-components 1 -xf "${_pkgname}-${_pkgver}.tar.gz" -C "${pkgdir}/opt/${pkgname}"
 
   # Uncomment to use system JRE, CMake and/or GDB instead of the bundled one(s)
   #rm -r "${pkgdir}/opt/${pkgname}/jre"
@@ -49,7 +53,7 @@ cat <<EOF
 [Desktop Entry]
 Type=Application
 Version=1.0
-Name=CLion
+Name=${_pkgname}
 GenericName=${pkgname}
 Comment=${pkgdesc}
 Icon=${pkgname}
@@ -59,14 +63,14 @@ Categories=Development;IDE;
 StartupNotify=true
 StartupWMClass=jetbrains-${pkgname}
 EOF
-) > ${startdir}/${pkgname}.desktop
+) > ${startdir}/jetbrains-${pkgname}.desktop
 
   mkdir -p "${pkgdir}/usr/bin/"
   mkdir -p "${pkgdir}/usr/share/applications/"
   mkdir -p "${pkgdir}/usr/share/pixmaps/"
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
 
-  install -m 644 "${startdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
+  install -m 644 "${startdir}/jetbrains-${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
 
   ln -s "/opt/${pkgname}/bin/${pkgname}.svg"                "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
   ln -s "/opt/${pkgname}/license/CLion_Preview_License.txt" "${pkgdir}/usr/share/licenses/${pkgname}"
