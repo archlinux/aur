@@ -1,8 +1,8 @@
 # Maintainer: Aetf <aetf at unlimitedcodeworks dor xyz>
 pkgname=libtsm-patched-git
 _gitname=libtsm
-pkgver=0.0.0
-pkgrel=4
+pkgver=3.r17.gb73acb4
+pkgrel=1
 pkgdesc="Terminal-emulator State Machine. Patched flavor (using patches from http://github.com/Aetf/libtsm)"
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/kmscon/$_gitname"
@@ -26,17 +26,22 @@ pkgver() {
   git describe --long | sed -r "s/^$_gitname-//;s/([^-]*-g)/r\\1/;s/-/./g"
 }
 
-build() {
+prepare() {
   cd "$srcdir/$_gitname"
-  echo 'Apply patch addon-underline.patch'
+
+  msg2 'Apply patch addon-underline.patch'
   patch -p1 -i ../addon-underline.patch
-  echo 'Apply patch addon-soft-black.patch'
+  msg2 'Apply patch addon-soft-black.patch'
   patch -p1 -i ../addon-soft-black.patch
-  echo 'Apply patch addon-true-color.patch'
+  msg2 'Apply patch addon-true-color.patch'
   patch -p1 -i ../addon-true-color.patch
 
   test -f ./configure || NOCONFIGURE=1 ./autogen.sh
   ./configure --prefix=/usr
+}
+
+build() {
+  cd "$srcdir/$_gitname"
   make
 }
 
