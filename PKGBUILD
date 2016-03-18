@@ -20,11 +20,16 @@ pkgver() {
   git describe --long | sed -r "s/^$_gitname-//;s/([^-]*-g)/r\\1/;s/-/./g"
 }
 
-build() {
+prepare() {
   cd "$srcdir/$_gitname"
 
   test -f ./configure || NOCONFIGURE=1 ./autogen.sh
   ./configure --prefix=/usr
+}
+
+build() {
+  cd "$srcdir/$_gitname"
+
   make
 }
 
