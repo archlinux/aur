@@ -12,5 +12,10 @@ if [ ! -d "$HOME/.captvty" ]; then
 fi
 
 winetricks -q dotnet45 comctl32
-wine "$HOME/.captvty/Captvty.exe"
+if [ $(uname -m) = 'x86_64' ]; then
+  LD_PRELOAD='/usr/lib32/libjpeg.so.62' wine "$HOME/.captvty/Captvty.exe"
+else
+  wine "$HOME/.captvty/Captvty.exe"
+fi
+
 
