@@ -2,9 +2,9 @@
 pkgname=arrayfire-git
 pkgdesc="High performance software library for parallel computing with an easy-to-use API"
 url='http://arrayfire.com'
-pkgver=3.2.2
+pkgver=3.3.1
 arch=('i686' 'x86_64')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 makedepends=('cmake' 'doxygen' 'git')
 depends=('cblas' 'fftw' 'lapack' 'freeimage' 'glfw' 'glew')
