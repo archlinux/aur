@@ -12,13 +12,11 @@ depends=('python2' 'python2-pycommand')
 makedepends=('python2-distribute' 'git')
 optdepends=('tk: for gdispass')
 arch=('any')
-source=("git://github.com/babab/$_name.git"
-        dispass.desktop)
+source=("git://github.com/babab/$_name.git")
 url="http://dispass.babab.nl/"
 license=("custom:ISC")
 conflicts=(python2-dispass)
-md5sums=('SKIP'
-         '16168222774d693d5ade0d88aba4f35e')
+md5sums=('SKIP')
 install=dispass.install
 
 pkgver() {
