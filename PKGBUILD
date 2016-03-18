@@ -3,21 +3,23 @@
 pkgname=vim-vjde
 pkgver=2.6.18
 _scriptid=17026
-_ext=tgz
-pkgrel=5
+pkgrel=6
 pkgdesc='Just a Development Environment for VIM'
 arch=('i686' 'x86_64')
 url='http://www.vim.org/scripts/script.php?script_id=1213'
 license=('GPL')
 groups=('vim-plugins')
-depends=('vim-runtime')
+depends=(
+vim-runtime
+java-environment
+)
 optdepends=(
 'ctags: to replace readtags'
 'jdk: to install java-runtime and java-environment'
 'jre: to install java-runtime'
 )
 install='vimdoc.install'
-source=("$pkgname-$pkgver.${_ext}::http://www.vim.org/scripts/download_script.php?src_id=${_scriptid}")
+source=("$pkgname-$pkgver.tgz::http://www.vim.org/scripts/download_script.php?src_id=${_scriptid}")
 sha256sums=('fa6169dfff44ce68e96b45b2a495177ae8c9913757d20e69a16e520cdf4b6930')
 _fix_files() {
   local orig_file=$1
@@ -34,7 +36,7 @@ _fix_files() {
 }
 export -f _fix_files
 package() {
-	_vim_dir='/usr/share/vim/vimfiles'
+  _vim_dir='/usr/share/vim/vimfiles'
 
   # compile readtags
   cd "$srcdir"/src
@@ -49,7 +51,7 @@ package() {
   install -dm755 "$pkgdir"/usr/bin
 
   tar -c ./  \
-    --exclude $pkgname-$pkgver.${_ext} \
+    --exclude $pkgname-$pkgver.tgz \
     --exclude src \
     | tar -xC "$pkgdir"/${_vim_dir}
 
@@ -61,4 +63,3 @@ package() {
   # fixing files
   find "$pkgdir"/${_vim_dir} -type f -a ! -name '*.class' -a ! -name '*.jar' -exec bash -c '_fix_files {}' ';'
 }
-
