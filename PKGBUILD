@@ -1,5 +1,5 @@
 pkgname=aurutils-git
-pkgver=r325.2218881
+pkgver=r335.e9c99b8
 pkgrel=1
 pkgdesc='AUR helpers tools'
 arch=('any')
@@ -12,17 +12,18 @@ makedepends=('git')
 optdepends=('devtools: aurbuild -c'
 	    'setconf: aurbuild -R'
 	    'vifm: better interaction with source files')
-           
+
 pkgver() {
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd aurutils
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-    cd aurutils
-    install -d "$pkgdir"/usr/{bin,share{/licenses,/doc}/aurutils}
+  cd aurutils
+  install -d "$pkgdir"/usr/{bin,share{/licenses,/doc}/aurutils}
 
-    install -m755 ./aur* repofind -t "$pkgdir"/usr/bin
-    install -m644 LICENSE -t "$pkgdir"/usr/share/licenses/aurutils
-    install -m644 CREDITS README.md -t "$pkgdir"/usr/share/doc/aurutils
+  install -m755 ./aur* repofind -t "$pkgdir"/usr/bin
+  install -m644 LICENSE -t "$pkgdir"/usr/share/licenses/aurutils
+  install -m644 CREDITS README.md -t "$pkgdir"/usr/share/doc/aurutils
 }
 
