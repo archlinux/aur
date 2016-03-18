@@ -2,7 +2,7 @@
 
 pkgname='sslyze'
 pkgver=0.13.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and full-featured SSL scanner."
 arch=('i686' 'x86_64')
 url='https://github.com/nabla-c0d3/sslyze'
@@ -17,9 +17,13 @@ package() {
 	cp -a $srcdir/${pkgname}-${pkgver}/. $pkgdir/opt/sslyze
 	pip2 install -r $pkgdir/opt/sslyze/requirements.txt --target $pkgdir/opt/sslyze/lib
 
-	# Create cli launcher symlink in /usr/bin
+	# Create an indirect launcher in /usr/bin
 	mkdir -p "$pkgdir/usr/bin"
-	ln -s /opt/sslyze/sslyze_cli.py "$pkgdir/usr/bin/sslyze"
-	chmod 755 "$pkgdir/opt/sslyze/sslyze_cli.py"
+
+cat << EOF > "$pkgdir/usr/bin/sslyze"
+#!/usr/bin/bash
+python2 /opt/sslyze/sslyze_cli.py \$@
+EOF
+	chmod 755 "$pkgdir/usr/bin/sslyze"
 
 }
