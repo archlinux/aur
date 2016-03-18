@@ -1,6 +1,6 @@
 pkgname=mint-backgrounds-rosa
 pkgver=1.2
-pkgrel=2
+pkgrel=1
 pkgdesc="The backgrounds included in Linux Mint 17.3 Rosa"
 license=('Various')
 arch=('any')
