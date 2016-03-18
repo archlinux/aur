@@ -2,7 +2,7 @@
 # Contributor: Sebastian Krebs <sebastian at krebs dot one>
 
 pkgname=consul
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc='Service discovery and high-available (CP) KV storage'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -15,10 +15,10 @@ source_armv6h=("https://releases.hashicorp.com/${pkgname}/${pkgver}/${pkgname}_$
 source_armv7h=("https://releases.hashicorp.com/${pkgname}/${pkgver}/${pkgname}_${pkgver}_linux_arm.zip")
 source=("https://raw.githubusercontent.com/hashicorp/${pkgname}/v${pkgver}/LICENSE")
 sha256sums=('bef1747eda88b9ed46e94830b0d978c3499dad5dfe38d364971760881901dadd')
-sha256sums_i686=('2afb65383ab913344daaa9af827c1e8576c7cae16e93798048122929b6e4cc92')
-sha256sums_x86_64=('b0532c61fec4a4f6d130c893fd8954ec007a6ad93effbe283a39224ed237e250')
-sha256sums_armv6h=('c5fd5278be2757d2468bc7e263af15bc9a9e80fc5108fec658755804ea9bca56')
-sha256sums_armv7h=('c5fd5278be2757d2468bc7e263af15bc9a9e80fc5108fec658755804ea9bca56')
+sha256sums_i686=('dbaf5ad1c95aa7dce1625d61b6686d3775e53cb3e7d6c426d29ea96622d248a8')
+sha256sums_x86_64=('abdf0e1856292468e2c9971420d73b805e93888e006c76324ae39416edcf0627')
+sha256sums_armv6h=('81200fc8b7965dfc6048c336925211eaf2c7247be5d050946a5dd4d53ec9817e')
+sha256sums_armv7h=('81200fc8b7965dfc6048c336925211eaf2c7247be5d050946a5dd4d53ec9817e')
 
 package() {
   install -m755 -D consul "$pkgdir/usr/bin/consul"
