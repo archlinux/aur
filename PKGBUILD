@@ -2,7 +2,7 @@
 
 pkgname=google-play-music-desktop-player-git
 _name=Google-Play-Music-Desktop-Player-UNOFFICIAL-
-pkgver=3.0.1.20.g49d108b
+pkgver=3.0.1.48.g36ec8a5
 pkgrel=1
 pkgdesc="A beautiful cross platform Desktop Player for Google Play Music."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('libnotify' 'alsa-lib' 'gconf' 'gtk2' 'nss')
 makedepends=('nodejs' 'electron' 'npm' 'git')
 optdepends=('gnome-keyring' 'lsb-release' 'libxtst' 'desktop-file-utils: Needed to update desktop icon database')
 install=google-play-music-desktop-player-git.install
-source=("git+https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-.git#commit=49d108b210b385e3d9a0b6dc1b48b257d03b17eb"
+source=("git+https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-.git"
         "google-play-music-desktop-player.desktop"
         "google-play-music-desktop-player-git.install")
 md5sums=('SKIP'
