@@ -5,8 +5,8 @@
 
 pkgname=flexget
 _pkgname=FlexGet
-pkgver=1.2.481
-pkgrel=2
+pkgver=1.2.491
+pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
 
@@ -38,7 +38,7 @@ depends=('python2'
          'python2-cherrypy>=3.7.0'
          'python2-flask'
          'python2-flask-restful' #AUR#
-         'python2-flask-restplus' #AUR#
+         'python2-flask-restplus=0.8.6' #AUR#
          'python2-flask-compress'
          'python2-flask-login>=0.3.2'
          'python2-flask-cors>=2.1.2'
@@ -60,7 +60,7 @@ source=("https://pypi.python.org/packages/source/F/FlexGet/${_pkgname}-${pkgver}
 
 changelog=ChangeLog
 
-sha256sums=('62e3a9cb59dced0885874db1ad494d48556e06251d0f6454def60e6da231d9fd'
+sha256sums=('16fb4d7b3c0cb58c0dd13c62d1b4d0314a4eb3cd1491e7a8b199977b98bf494c'
             'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
             'dcc1bc676b8c2b798fa9a7e0ed2b6853323e9e9d8ff696696dddeaf29cbc13d6')
 
