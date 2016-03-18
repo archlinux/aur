@@ -1,6 +1,6 @@
 pkgbase = apm_planner
 	pkgdesc = Ground Control Station for MAVlink based autopilots (e.g. Ardupilot)
-	pkgver = 2.0.18
+	pkgver = 2.0.20
 	pkgrel = 1
 	url = http://planner2.ardupilot.com
 	arch = i686
@@ -12,11 +12,11 @@ pkgbase = apm_planner
 	depends = qt5-script
 	depends = qt5-declarative
 	depends = sdl2
-	depends = flite-full
+	depends = flite
 	depends = libsndfile
-	depends = qt5-webkit
-	source = https://github.com/diydrones/apm_planner/archive/2.0.18.tar.gz
-	md5sums = ef3c076a82c5d1865e065de7fd290e28
+	depends = python
+	source = https://github.com/diydrones/apm_planner/archive/2.0.20.tar.gz
+	md5sums = 7e71ca0be711d3b756f76059e12b4767
 
 pkgname = apm_planner
 
