@@ -35,8 +35,6 @@ package() {
     cd "$srcdir/$_name"
     make install-src DESTDIR="$pkgdir"
 
-    install -Dm644 "${srcdir}/${_name}/skel/labelfile" \
-        "${pkgdir}/etc/skel/.dispass/labels"
     install -Dm644 "${srcdir}/${_name}/LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/${_name}/README.rst" \
