@@ -2,7 +2,7 @@
 
 pkgname=python-powerlaw-git
 pkgrel=1
-pkgver=r1.4.d666092
+pkgver=r1.4.1.ba804a6
 pkgdesc='A Python Package for Analysis of Heavy-Tailed Distributions'
 arch=('any')
 url='https://github.com/jeffalstott/powerlaw'
