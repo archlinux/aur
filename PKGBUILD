@@ -1,8 +1,8 @@
 # Maintainer: Steven Honeyman <stevenhoneyman at gmail com>
 
 pkgname=testdisk-wip
-pkgver=7.0
-pkgrel=5
+pkgver=7.1
+pkgrel=1
 pkgdesc="Checks and undeletes partitions. Includes PhotoRec signature based recovery tool. WIP version"
 arch=('i686' 'x86_64')
 url="http://www.cgsecurity.org/wiki/TestDisk"
