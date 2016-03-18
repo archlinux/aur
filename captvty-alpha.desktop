@@ -4,6 +4,6 @@ Comment=Access to the live and shows provided by various french TV channels
 Comment[fr]=Accédez aux directs et à une multitude d’émissions proposées au rattrapage par différentes chaînes de télévision
 Type=Application
 Icon=/usr/share/captvty/captvty.png
-Exec=/usr/bin/captvty
+Exec=/usr/bin/captvty-alpha
 Terminal=false
 Categories=Wine;
