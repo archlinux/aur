@@ -1,6 +1,6 @@
 # Maintainer: Chris Höppner <me@mkaito.com>
 pkgname=dasht
-pkgver=1.2.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="API documentation in your terminal"
 arch=(any)
@@ -10,7 +10,7 @@ depends=('bash' 'sqlite' 'wget' 'socat' 'w3m')
 makedepends=('git')
 conflicts=('dasht-git')
 source=("https://github.com/sunaku/dasht/archive/v$pkgver.tar.gz")
-sha1sums=('39ccbef5e8dabec03e4f6e0c2e2cbdceb820cf40')
+sha1sums=('309fc587592ef6eef5a9d6f61eb6a7f969208d84')
 
 # pkgver() {
 #     cd "$srcdir/$_pkgname"
