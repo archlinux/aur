@@ -2,27 +2,27 @@
 
 _pkgname=dotrix
 pkgname=$_pkgname-git
-pkgver=0.1.0.r1.g1929a8d
+pkgver=0.1.1.r0.gdd5540f
 pkgrel=1
 pkgdesc="The pedantic dotfiles manager"
 arch=(i686 x86_64)
-url="https://gitlab.com/dennis.hamester/dotrix"
+url="https://gitlab.com/dennis-hamester/dotrix"
 license=('custom:ISC')
 makedepends=('rust' 'cargo')
-source=("git+https://gitlab.com/dennis.hamester/dotrix.git")
+source=("git+https://gitlab.com/dennis-hamester/dotrix.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd $_pkgname
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
+  cd $_pkgname
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
 }
 
 build() {
-    cd $_pkgname
-    cargo build --release
+  cd $_pkgname
+  cargo build --release
 }
 
 package() {
-    install -Dm755 "$srcdir"/$_pkgname/target/release/$_pkgname "$pkgdir"/usr/bin/$_pkgname
-    install -Dm644 "$srcdir"/$_pkgname/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm755 "$srcdir"/$_pkgname/target/release/$_pkgname "$pkgdir"/usr/bin/$_pkgname
+  install -Dm644 "$srcdir"/$_pkgname/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
