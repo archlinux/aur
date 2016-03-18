@@ -2,12 +2,12 @@
 
 pkgname=gincamalarm
 pkgver=0.0.4
-pkgrel=16
+pkgrel=18
 pkgdesc="Gin server to manage camera with motion"
 arch=('any')
 url="https://github.com/Chipsterjulien/gincamalarm"
 license=('WTFPL')
-makedepends=('go')
+makedepends=('go' 'mjpg-streamer-git')
 options=('!strip')
 backup=('etc/gincamalarm/gincamalarm.toml')
 source=("$pkgname-$pkgver.tar.gz")
@@ -81,4 +81,4 @@ package() {
         "$pkgdir"/usr/bin/$pkgname || return 1
 }
 
-sha512sums=('aa1fe4591ceea1e21c492c5b098d9c36f88386221b51b5c8039757cf958fdfd2ece341b17da0f9f52465005f1b25264a2e05bcfbd17f6373a82eeafea457fe8e')
+sha512sums=('79342bf85545d07f0dc266a24afe5df4d0713ff5abce2b0786baf2151d51335a665c681140dc7626cb00b7163c76ba14a4bdb3a96481350da66255c19423910d')
