@@ -8,8 +8,8 @@
 
 _pack=octcdf
 pkgname=octave-$_pack
-pkgver=1.1.8
-pkgrel=4
+pkgver=1.1.10
+pkgrel=1
 pkgdesc="A NetCDF interface for octave. This interface is depreciated. Please use the netcdf package instead (possibly in combination with ncarray)."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
@@ -24,7 +24,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("http://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('981f0937cdf45415f966ea1886ba8136')
+md5sums=('bc108bf2d21a7e90f932df4e6870f3af')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
