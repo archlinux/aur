@@ -5,8 +5,8 @@
 _cfgdir=/opt/openresty/nginx/conf
 _tmpdir=/var/lib/openresty
 pkgname=openresty
-pkgver=1.9.7.3
-pkgrel=3
+pkgver=1.9.7.4
+pkgrel=1
 pkgdesc="A Fast and Scalable Web Platform by Extending NGINX with Lua"
 arch=('i686' 'x86_64')
 url="http://openresty.org/"
@@ -19,7 +19,7 @@ source=(http://openresty.org/download/$pkgname-$pkgver.tar.gz
 	$pkgname.install
 	)
 noextract=()
-sha256sums=('3e4422576d11773a03264021ff7985cd2eeac3382b511ae3052e835210a9a69a'
+sha256sums=('aa5dcae035dda6e483bc1bd3d969d7113205dc2d0a3702ece0ad496c88a653c5'
             'ec55ac7da98f5f5ec54d096c5f79b656edec0ebca835b6b9f1d20fb7be7119c5'
             '613b0ed3fe4b5ee505ddb5122ee41604f464a5049be81c97601ee93970763a23'
             'f071e0fd8d0d588f03fcc7db6f3cb3f7ea1b870d3416a0bde142d9aeb839d0f6')
@@ -55,6 +55,7 @@ build() {
     --with-http_v2_module \
     --with-stream \
     --with-stream_ssl_module \
+    --with-http_iconv_module \
     # --without-http_echo_module         \ # disable ngx_http_echo_module
     # --without-http_xss_module          \ # disable ngx_http_xss_module
     # --without-http_coolkit_module      \ # disable ngx_http_coolkit_module
@@ -203,7 +204,7 @@ build() {
     # --dry-run                          \ # dry running the configure, for testing only
     # --platform=PLATFORM                \ # forcibly specify a platform name, for testing only
 
-  make -j`nproc`
+  make
 }
 
 package() {
