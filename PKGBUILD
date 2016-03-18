@@ -2,8 +2,8 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoind-unlimited-git
-pkgver=20160311.a2f713f
-pkgrel=1
+pkgver=20160315.9b1890e
+pkgrel=2
 pkgdesc="Bitcoin Unlimited versions of bitcoind, bitcoin-cli, and bitcoin-tx"
 arch=('any')
 url="http://www.bitcoinunlimited.info/software"
@@ -21,7 +21,7 @@ makedepends=('autoconf'
              'make'
              'pkg-config')
 license=('MIT')
-source=(git+https://github.com/gandrewstone/BitcoinUnlimited.git#branch=0.12bu
+source=(git+https://github.com/BitcoinUnlimited/BitcoinUnlimited.git#branch=0.12bu
         bitcoin.conf
         bitcoin.logrotate)
 sha256sums=('SKIP'
