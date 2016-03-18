@@ -4,7 +4,7 @@ pkgbase=('python-django-jquery')
 pkgname=('python-django-jquery')
 _module='django-jquery'
 pkgver='1.12.2'
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast, small, and feature-rich JavaScript library for Django."
 url="http://bitbucket.org/massimilianoravelli/django-jquery"
 depends=('python' 'python-django')
@@ -23,7 +23,7 @@ sha256sums=('99cebaa1f066550ffe1a4b149571287915a19dd2feef8632c1ee19f97738a0bb'
 prepare() {
     cd "${srcdir}/${_module}-${pkgver}"
     mv jquery/static/js/jquery.js jquery/static/js/jquery.min.js
-    cp ../jquery-1.12.2.js jquery/static/js/
+    cp ../jquery-1.12.2.js jquery/static/js/jquery.js
     patch -p1 < ../addDevJS.patch
 }
 
