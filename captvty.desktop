@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+
+export WINEARCH='win32'
+export WINEPREFIX="$HOME/.wine32"
+export WINEDEBUG=fixme-all
+
+if [ ! -d "$HOME/.captvty" ]; then
+  mkdir -p "$HOME/.captvty"
+  ln -s /usr/share/captvty/Captvty.exe "$HOME/.captvty/"
+  ln -s /usr/share/captvty/Captvty.exe.config "$HOME/.captvty/"
+  ln -s /usr/share/captvty/tools "$HOME/.captvty/tools"
+fi
+
+winetricks -q dotnet45 comctl32
+wine "$HOME/.captvty/Captvty.exe"
+
