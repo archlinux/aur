@@ -1,8 +1,8 @@
 # Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=bitcoin-unlimited-git
-pkgver=20160311.a2f713f
-pkgrel=1
+pkgver=20160315.9b1890e
+pkgrel=2
 pkgdesc='Bitcoin Unlimited versions of Bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt, w/GUI and wallet'
 arch=('i686' 'x86_64')
 url="http://www.bitcoinunlimited.info/download.html"
@@ -12,7 +12,7 @@ makedepends=('boost' 'automoc4' 'qrencode' 'miniupnpc' 'protobuf')
 provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 install=bitcoin-qt.install
-source=('git+https://github.com/gandrewstone/BitcoinUnlimited.git#branch=0.12bu'
+source=('git+https://github.com/BitcoinUnlimited/BitcoinUnlimited.git#branch=0.12bu'
 				'bitcoin-qt.install')
 sha256sums=('SKIP'
             'ebf7090ca1202e2c2ccd1aa5bb03e6ac911c458141a1cedda9b41f9c26c2602c')
