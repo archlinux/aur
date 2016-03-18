@@ -2,8 +2,9 @@
 
 _pkgname=ttl2c
 pkgname="${_pkgname}-git"
-pkgver=r1.b09ea6d
+pkgver=1.0.0.r3.d832ab8
 pkgrel=1
+epoch=1
 pkgdesc="Turtle to header conversion utility for LV2 Plugin developers "
 arch=('i686' 'x86_64')
 url="https://github.com/lvtk/ttl2c"
@@ -18,7 +19,7 @@ md5sums=('SKIP')
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-  echo r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  echo $(git describe --tags).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
