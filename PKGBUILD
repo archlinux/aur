@@ -2,7 +2,7 @@
 
 _pkgname=drupalconsole
 pkgname=${_pkgname}
-pkgver=0.10.12
+pkgver=0.10.13
 pkgrel=1
 pkgdesc="The Drupal Console is a suite of tools that you run on a command line interface (CLI) to generate boilerplate code and interact with a Drupal 8 installation."
 arch=('any')
