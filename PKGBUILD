@@ -2,7 +2,7 @@
 # Contributor: florianbw <florian.bw@gmail.com>
 
 pkgname=cytoscape
-pkgver=3.2.1
+pkgver=3.3.0
 pkgrel=1
 pkgdesc='A software for visualizing molecular interaction networks and integration with gene expression profiles and other state data.'
 arch=('any')
@@ -13,7 +13,7 @@ source=("http://chianti.ucsd.edu/cytoscape-$pkgver/cytoscape-$pkgver.tar.gz" \
         'cytoscape.desktop' \
         'cytoscape.png' \
         'cytoscape')
-md5sums=('803a8e222291106386877539f9c53e54'
+md5sums=('0b3e94e21d3ff151e922813b11744751'
          '0a960d9cfb84b986136c2645f4ee4eab'
          'cbf3c0c062055861c8e2d82105afcc33'
          '64521a6620ba82895411c450d4ab639c')
