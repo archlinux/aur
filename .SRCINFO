@@ -1,0 +1,26 @@
+pkgbase = captvty-alpha
+	pkgdesc = Access to the live and shows provided by various french TV channels
+	pkgver = 3.0.0.38312
+	pkgrel = 1
+	url = http://www.captvty.fr
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	depends = winetricks
+	depends = wine-mono
+	depends = libjpeg6-turbo
+	depends = lib32-libjpeg6-turbo
+	source = http://releases.captvty.fr/5160a87732f3f835b4e1eba7a5dbe348bd5456e0/captvty-3.0.0.38312.zip
+	source = captvty.ico::http://captvty.fr/favicon.ico?v=2
+	source = captvty-alpha.desktop
+	source = captvty-alpha
+	source = LICENSE
+	sha1sums = 5b44958d554b6a74b18fd972b876b0c947b56ed0
+	sha1sums = 7210acfa98cb21ab32de463ccf0456743241b48e
+	sha1sums = 1a48045215bdc7ac9b2cc0e06bab3203ba9ba201
+	sha1sums = 2977883980e01ae3487aecbd0a243d4f324e3847
+	sha1sums = a1a03fcff4541bbf212eb20730d5e344ae817a5d
+
+pkgname = captvty-alpha
+

@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+
+export WINEARCH='win32'
+export WINEPREFIX="$HOME/.wine32"
+export WINEDEBUG=fixme-all
+
+if [ ! -d "$HOME/.captvty-alpha" ]; then
+  mkdir -p "$HOME/.captvty-alpha"
+  ln -s /usr/share/captvty-alpha/Captvty.exe "$HOME/.captvty-alpha/"
+  ln -s /usr/share/captvty-alpha/Captvty.exe.config "$HOME/.captvty-alpha/"
+  ln -s /usr/share/captvty-alpha/bin "$HOME/.captvty-alpha/bin"
+fi
+
+winetricks -q dotnet45 comctl32
+if [ $(uname -m) = 'x86_64' ]; then
+  LD_PRELOAD='/usr/lib32/libjpeg.so.62' wine "$HOME/.captvty-alpha/Captvty.exe"
+else
+  wine "$HOME/.captvty-alpha/Captvty.exe"
+fi
+
