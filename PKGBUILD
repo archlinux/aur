@@ -20,7 +20,7 @@ build() {
 package() {
 
   cd $srcdir/$pkgname-$pkgver/
-  install -m655 -d $pkgdir/usr/lib/$pkgname/ $pkgdir/usr/include/$pkgname/
+  install -dm644 $pkgdir/usr/include/$pkgname/
   cp -r lib/* $pkgdir/usr/lib/
   cp -r include/$pkgname/* $pkgdir/usr/include/
 }
