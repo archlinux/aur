@@ -4,16 +4,18 @@ python=python2
 name=DisPass
 
 pkgname=$python-dispass
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Generate and disperse/dispell passwords"
-depends=('python2')
+depends=('python2' 'python2-pycommand')
 makedepends=('python2-distribute')
+optdepends=('tk: for gdispass')
 arch=('any')
 source=(http://pypi.python.org/packages/source/D/DisPass/$name-$pkgver.tar.gz)
-md5sums=('7cd80e7130f0228b8bf446b544e7ceca')
-url="http://dispass.babab.nl/"
+md5sums=('b64b628c19f0ebde9ef111c9f4deb7a2')
+url="https://dispass.org"
 license=("custom:ISC")
+intall=dispass.install
 
 build() {
     cd $srcdir/$name-$pkgver
@@ -22,10 +24,8 @@ build() {
 
 package() {
     cd $srcdir/$name-$pkgver
-    python2 setup.py install --root=$pkgdir
+    make install-src DESTDIR="$pkgdir"
 
-    install -Dm644 "${srcdir}/${name}-${pkgver}/dispass.1" \
-        "${pkgdir}/usr/share/man/man1/dispass.1"
     install -Dm644 "${srcdir}/${name}-${pkgver}/LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/${name}-${pkgver}/README.rst" \
