@@ -1,6 +1,17 @@
-post_install() {
+INFO_DIR=usr/share/info
+
+update_icons() {
     if [ -x usr/bin/xdg-icon-resource ]; then
         xdg-icon-resource forceupdate --theme hicolor > /dev/null 2>&1
+    fi
+}
+
+post_install() {
+    update_icons
+
+    if [ -x usr/bin/install-info ]; then
+        install-info ${INFO_DIR}/dispass.info ${INFO_DIR}/dir \
+                     2> /dev/null
     fi
 }
 
@@ -9,5 +20,10 @@ post_upgrade() {
 }
 
 post_remove() {
-    post_install "$1"
+    update_icons
+
+    if [ -x usr/bin/install-info ]; then
+        install-info --delete ${INFO_DIR}/dispass.info ${INFO_DIR}/dir \
+                     2> /dev/null
+    fi
 }
