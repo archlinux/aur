@@ -1,6 +1,6 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 pkgname=firestorm-bin
-pkgver=4.7.5.47975
+pkgver=4.7.7.48706
 pkgrel=1
 pkgdesc="Firestorm is a feature-packed third-party viewer for Second Life."
 url="http://www.firestormviewer.org/"
@@ -23,19 +23,19 @@ if [ "$CARCH" = "i686" ]; then
           firestorm.install
           firestorm.desktop
           firestorm.launcher)
-  sha256sums=(6e5a3d981ec057471b7bc34ad5eca32147989899f8eb1124a4c7359b9c6cadb8
-	      ed579cd61cadda55956e5dd8063a34f3c02b8263372e52e9312966a2bf79b55c
-	      6dffebc474fd98d23bf8d9f4a7592795642dbddf3a0b585f89d25ff11ae15cc1
-	      b2ce32d268f76f4324807d50c4098a3480b489ec447133ce8d9b9c4a7bc05530)
+  sha256sums=(b826d89dd2b98e90f26fd0ec7b63351c30e55d17dda7e68188f1258b725737a3
+              ed579cd61cadda55956e5dd8063a34f3c02b8263372e52e9312966a2bf79b55c
+              6dffebc474fd98d23bf8d9f4a7592795642dbddf3a0b585f89d25ff11ae15cc1
+              b2ce32d268f76f4324807d50c4098a3480b489ec447133ce8d9b9c4a7bc05530)
 else
   source=("http://downloads.firestormviewer.org/linux/Phoenix_FirestormOS-Releasex64_x86_64_$pkgver.tar.xz"
-	  firestorm.install
-	  firestorm.desktop
-	  firestorm.launcher)
-  sha256sums=(a7cf04676bd87864899ae8b032cb2c279e1b1d0289a2cdfce3a4f3192b4c6618
-	      ed579cd61cadda55956e5dd8063a34f3c02b8263372e52e9312966a2bf79b55c
-	      6dffebc474fd98d23bf8d9f4a7592795642dbddf3a0b585f89d25ff11ae15cc1
-	      b2ce32d268f76f4324807d50c4098a3480b489ec447133ce8d9b9c4a7bc05530)
+          firestorm.install
+          firestorm.desktop
+          firestorm.launcher)
+  sha256sums=(e90877eba293266701590e4c528ebf8684f751932307b14cf30da578246eae00
+              ed579cd61cadda55956e5dd8063a34f3c02b8263372e52e9312966a2bf79b55c
+              6dffebc474fd98d23bf8d9f4a7592795642dbddf3a0b585f89d25ff11ae15cc1
+              b2ce32d268f76f4324807d50c4098a3480b489ec447133ce8d9b9c4a7bc05530)
 fi
 
 prepare() {
