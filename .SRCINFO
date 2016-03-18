@@ -25,3 +25,57 @@ pkgbase = irpf
 
 pkgname = irpf
 
+pkgbase = irpf
+	pkgdesc = Programa Oficial da Receita para elaboração do IRPF
+	pkgver = 2016.1.1
+	pkgrel = 2
+	url = http://www.receita.fazenda.gov.br
+	install = irpf.install
+	arch = any
+	license = custom
+	depends = java-runtime=8
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	optdepends = receitanet: Para envio do IRPF
+	source = http://downloadirpf.receita.fazenda.gov.br/irpf/2016/IRPF2016-1.1.zip
+	source = Copyright
+	source = irpf.png
+	source = irpf.desktop
+	source = irpf.install
+	source = irpf
+	md5sums = 3c1af085035e558be73a5c80ffd400bc
+	md5sums = 56a8372f7b4e1e1e51a6fff6255365d4
+	md5sums = 43d8c9617118578f03b2c4eeb1c72c57
+	md5sums = 5c3f364ed6e30e8aac69ad4394deabba
+	md5sums = 268c8018f98be22e77d8ca711140292a
+	md5sums = 1393bb1d170a8aeaccfe0c2ee2c818cf
+
+pkgname = irpf
+
+pkgbase = irpf
+	pkgdesc = Programa Oficial da Receita para elaboração do IRPF
+	pkgver = 2016.1.1
+	pkgrel = 3
+	url = http://www.receita.fazenda.gov.br
+	install = irpf.install
+	arch = any
+	license = custom
+	depends = java-runtime=8
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	optdepends = receitanet: Para envio do IRPF
+	source = http://downloadirpf.receita.fazenda.gov.br/irpf/2016/IRPF2016-1.1.zip
+	source = Copyright
+	source = irpf.png
+	source = irpf.desktop
+	source = irpf.install
+	source = irpf
+	md5sums = 3c1af085035e558be73a5c80ffd400bc
+	md5sums = 56a8372f7b4e1e1e51a6fff6255365d4
+	md5sums = 43d8c9617118578f03b2c4eeb1c72c57
+	md5sums = 5c3f364ed6e30e8aac69ad4394deabba
+	md5sums = 268c8018f98be22e77d8ca711140292a
+	md5sums = 1393bb1d170a8aeaccfe0c2ee2c818cf
+
+pkgname = irpf
+
