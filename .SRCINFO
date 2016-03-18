@@ -12,12 +12,11 @@ pkgbase = python-tensorflow-git
 	depends = python-numpy
 	depends = swig
 	depends = python-wheel
+	depends = python-protobuf3
 	provides = tensorflow
 	conflicts = tensorflow
 	conflicts = tensorflow-git,
 	conflicts = python-tensorflow
-	md5sums = SKIP
-	md5sums = SKIP
 
 pkgname = python-tensorflow-git
 

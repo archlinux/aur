@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 
 provides=('tensorflow')
 conflicts=('tensorflow' 'tensorflow-git', 'python-tensorflow')
-depends=('python-numpy' 'swig' 'python-wheel')
+depends=('python-numpy' 'swig' 'python-wheel' 'python-protobuf3')
 makedepends=('git' 'python-pip' 'bazel')
 
 
