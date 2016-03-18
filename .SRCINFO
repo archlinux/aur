@@ -1,15 +1,15 @@
 pkgbase = dotrix
 	pkgdesc = The pedantic dotfiles manager
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
-	url = https://gitlab.com/dennis.hamester/dotrix
+	url = https://gitlab.com/dennis-hamester/dotrix
 	arch = i686
 	arch = x86_64
 	license = custom:ISC
 	makedepends = rust
 	makedepends = cargo
-	source = dotrix-v0.1.0.tar.gz::https://gitlab.com/dennis.hamester/dotrix/repository/archive.tar.gz?ref=v0.1.0
-	sha256sums = 33c1042cc0cc33cb57ddb747330f681642aa15384719cca9614fb9ab6a6311a7
+	source = dotrix-v0.1.1.tar.gz::https://gitlab.com/dennis-hamester/dotrix/repository/archive.tar.gz?ref=v0.1.1
+	sha256sums = 36283425909b083a2b6fbaba04710506c9e3c6f69ce1a465e1bfcd534171a041
 
 pkgname = dotrix
 
