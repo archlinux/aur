@@ -3,14 +3,14 @@
 _pkgname=serd
 pkgname="${_pkgname}-git"
 pkgver=0.22.3.r500.bb8f19e
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight C library for RDF syntax which supports reading and writing Turtle and NTriples"
 arch=('i686' 'x86_64')
 url="http://drobilla.net/software/serd/"
 license=('custom:ISC')
 makedepends=('git' 'python')
 conflicts=("${_pkgname}" "${_pkgname}-svn")
-provides=("${_pkgname}" "${_pkgname}==${pkgver}")
+provides=("${_pkgname}" "${_pkgname}=${pkgver}")
 install="${_pkgname}.install"
 source=("$_pkgname::git+http://git.drobilla.net/serd.git")
 md5sums=('SKIP')
