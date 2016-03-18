@@ -6,7 +6,7 @@
 
 _pkgname=rhythmbox
 pkgname=$_pkgname-git
-pkgver=3.3.0.28.ga61f8a4
+pkgver=3.3.0.r31.g11c6fd7
 pkgrel=1
 pkgdesc="Music playback and management application"
 arch=(i686 x86_64)
@@ -37,21 +37,24 @@ pkgver() {
     dots=`git describe | grep -o '\.' | wc -l`
     if [ ${dots} -eq 1 ]
     then
-        git describe | sed 's/^v//;s/-/.0./;s/-/./g'
+        git describe | sed 's/^v//;s/\([^-]*-g\)/0.r\1/;s/-/./g'
     else
-        git describe | sed 's/^v//;s/-/./g'
+        git describe | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
     fi
 }
 
 prepare() {
     cd $pkgname/
     dots=`git describe | grep -o '\.' | wc -l`
+    # reset to the original version so that regex works
+    git checkout configure.ac
     # use a different regex depending on the version
     if [ ${dots} -eq 1 ]
     then
         sed "{:q;N;s/(\[rhythmbox\],\n\t\[\([0-9]\).\([0-9]\)\],/(\[rhythmbox\],\n\t[$pkgver],/g;t q}" -i configure.ac
+    else
+        sed "{:q;N;s/(\[rhythmbox\],\n\t\[\([0-9]\).\([0-9]\).\([0-9]\)\],/(\[rhythmbox\],\n\t[$pkgver],/g;t q}" -i configure.ac
     fi
-    sed "{:q;N;s/(\[rhythmbox\],\n\t\[\([0-9]\).\([0-9]\).\([0-9]\)\],/(\[rhythmbox\],\n\t[$pkgver],/g;t q}" -i configure.ac
 }
 
 build() {
