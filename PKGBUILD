@@ -16,7 +16,7 @@ source=("http://releases.captvty.fr/$_code/captvty-$pkgver.zip"
         'LICENSE')
 sha1sums=('ef95a4b228aa0a95f2b85cb606b16961cd9b98f1'
           '7210acfa98cb21ab32de463ccf0456743241b48e'
-          'e5f914d88a1c740dd3d06ed9a38405be7f105f16'
+          'c2780184a4580a4dbccac05e8cba1a9fd0129061'
           'b0dd6f93522393f1d5b849988fb0256ad872b3fc'
           'a1a03fcff4541bbf212eb20730d5e344ae817a5d')
 

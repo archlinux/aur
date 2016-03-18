@@ -1,16 +1,9 @@
-#!/usr/bin/env sh
-
-export WINEARCH='win32'
-export WINEPREFIX="$HOME/.wine32"
-export WINEDEBUG=fixme-all
-
-if [ ! -d "$HOME/.captvty" ]; then
-  mkdir -p "$HOME/.captvty"
-  ln -s /usr/share/captvty/Captvty.exe "$HOME/.captvty/"
-  ln -s /usr/share/captvty/Captvty.exe.config "$HOME/.captvty/"
-  ln -s /usr/share/captvty/tools "$HOME/.captvty/tools"
-fi
-
-winetricks -q dotnet45 comctl32
-wine "$HOME/.captvty/Captvty.exe"
-
+[Desktop Entry]
+Name=Captvty
+Comment=Access to the live and shows provided by various french TV channels
+Comment[fr]=Accédez aux directs et à une multitude d’émissions proposées au rattrapage par différentes chaînes de télévision
+Type=Application
+Icon=/usr/share/captvty/captvty.png
+Exec=/usr/bin/captvty
+Terminal=false
+Categories=Wine;
