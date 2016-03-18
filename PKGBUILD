@@ -4,13 +4,13 @@
 
 _pkgname=lilv
 pkgname="${_pkgname}-git"
-pkgver=0.22.1.r1071.59601f4
+pkgver=0.22.1.r1074.4a1e47e
 pkgrel=1
 pkgdesc="A C library interface to the LV2 plug-in standard"
 arch=('i686' 'x86_64')
 url="http://drobilla.net/software/lilv"
 license=("custom:ISC")
-depends=('lv2' 'sratom' 'python-numpy')
+depends=('sratom' 'python-numpy')
 makedepends=('subversion' 'swig')
 optdepends=("bash-completion: auto-complete words")
 provides=("${_pkgname}")
