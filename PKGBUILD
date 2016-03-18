@@ -1,7 +1,7 @@
-# Maintainer: Egor Panfilov <multicolor{dot}mood{at}gmail{dot}com>
+# Maintainer: Vladislav Odobesku positivcheg94@gmail.com
 
 pkgname=python-tensorflow-git
-pkgver=0.6.0
+pkgver=0.7
 pkgrel=1
 
 pkgdesc="Open source software library for numerical computation using data flow graphs."
@@ -14,21 +14,11 @@ provides=('tensorflow')
 conflicts=('tensorflow' 'tensorflow-git', 'python-tensorflow')
 depends=('python-numpy' 'swig' 'python-wheel')
 makedepends=('git' 'python-pip' 'bazel')
-source=("git+https://github.com/tensorflow/tensorflow"
-        "git+https://github.com/google/protobuf")
+
 md5sums=('SKIP' 'SKIP')
 
-pkgver() {
-  cd "$srcdir/tensorflow"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
-}
-
 prepare() {
-  cd "$srcdir/tensorflow"
-  git submodule init
-  git config submodule.google/protobuf.url $srcdir/protobuf
-  git submodule update
-
+  git clone --recurse-submodules https://github.com/tensorflow/tensorflow -b r0.7
   mkdir -p "$srcdir/tmp"
 }
 
