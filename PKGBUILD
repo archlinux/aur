@@ -2,7 +2,7 @@
 
 _pkgname=sord
 pkgname="${_pkgname}-git"
-pkgver=0.14.1.r334.19cd4c9
+pkgver=0.15.1.r336.2843ab1
 pkgrel=1
 pkgdesc="A lightweight C library for storing RDF statements in memory"
 arch=('i686' 'x86_64')
@@ -11,9 +11,9 @@ license=('custom:ISC')
 depends=('pcre' 'serd')
 makedepends=('git' 'python')
 conflicts=("${_pkgname}" "${_pkgname}-svn")
-provides=("${_pkgname}")
+provides=("${_pkgname}" "${_pkgname}==${pkgver}")
 install="${_pkgname}.install"
-source="${_pkgname}::git+http://git.drobilla.net/sord.git"
+source=("${_pkgname}::git+http://git.drobilla.net/sord.git")
 md5sums=('SKIP')
 
 pkgver() {
