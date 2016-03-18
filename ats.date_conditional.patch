@@ -1,0 +1,121 @@
+Allows you to construct format expressions based on relative dates.
+
+This adds conditionality features to mutt's date-formatting operators,
+so that you can build conditions based on whether the date in question
+is less than or grater than some amount in the past.
+
+Example: %?[1y?less than one year&greater than one year?
+Example: %?[3d?less than three days&greater than three days?
+
+This is particularly useful in concert with nested_if.  For example,
+this expression:
+    %<[1y?%<[1w?%<[1d?%[ %H:%M]&%[%a %d]>&%[%b %d]>&%[%y%m%d]>
+
+means to show the YYMMDD date for messages older than one year, the "mon
+dd" date for messages from one week to one year, the "day dd" date for
+messages from 1 to 7 days old, and the HH:MM time for messages under one
+day old.
+
+diff -r e2b6d94be38e hdrline.c
+--- a/hdrline.c	Mon Jan 03 13:24:23 2011 -0600
++++ b/hdrline.c	Mon Jan 03 13:24:27 2011 -0600
+@@ -341,6 +341,53 @@
+ 	const char *cp;
+ 	struct tm *tm; 
+ 	time_t T;
++	int i = 0, invert = 0;
++
++	if (optional && (op == '[' || op == '(')) {
++	  char *is;
++	  T = time(NULL);
++	  T -= (op == '(') ? hdr->received : hdr->date_sent;
++
++	  is = (char *)prefix;
++	  if( *is == '>' ) {
++	    invert = 1;
++	    ++is;
++	  }
++
++	  while( *is && *is != '?' ) {
++	    int t = strtol (is, &is, 10);
++	    switch (*(is++)) {
++	      case '?':
++		break;
++	      case 'y':
++		t *= 365 * 24 * 60 * 60;
++		break;
++	      case 'M':
++		t *= 30 * 24 * 60 * 60;
++		break;
++	      case 'w':
++		t *= 7 * 24 * 60 * 60;
++		break;
++	      case 'd':
++		t *= 24 * 60 * 60;
++		break;
++	      case 'h':
++		t *= 60 * 60;
++		break;
++	      case 'm':
++		t *= 60;
++		break;
++	    }
++	    i += t;
++	  }
++
++	  if (i < 0)
++	    i *= -1;
++
++	  if( (T > i || T < -1*i) ^ invert )
++	    optional = 0;
++	  break;
++	}
+ 
+ 	p = dest;
+ 
+@@ -364,6 +411,7 @@
+ 	  {
+ 	    cp++;
+ 	    if ((*cp == 'Z' || *cp == 'z') && (op == 'd' || op == '{'))
++	    /* brace balancer: } */
+ 	    {
+ 	      if (len >= 5)
+ 	      {
+diff -r e2b6d94be38e muttlib.c
+--- a/muttlib.c	Mon Jan 03 13:24:23 2011 -0600
++++ b/muttlib.c	Mon Jan 03 13:24:27 2011 -0600
+@@ -1239,7 +1239,16 @@
+       if (*src == '?')
+       {
+ 	flags |= M_FORMAT_OPTIONAL;
++	ch = *(++src); /* save the character to switch on */
+ 	src++;
++	cp = prefix;
++	count = 0;
++	while (count < sizeof (prefix) && *src != '?')
++	{
++	  *cp++ = *src++;
++	  count++;
++	}
++	*cp = 0;
+       }
+       else
+       {
+@@ -1255,12 +1264,13 @@
+ 	  count++;
+ 	}
+ 	*cp = 0;
++
++        if (!*src)
++	  break; /* bad format */
++
++        ch = *src++; /* save the character to switch on */
+       }
+ 
+-      if (!*src)
+-	break; /* bad format */
+-
+-      ch = *src++; /* save the character to switch on */
+ 
+       if (flags & M_FORMAT_OPTIONAL)
+       {

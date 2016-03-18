@@ -4,7 +4,7 @@
 
 pkgname=mutt-patched
 pkgver=1.5.24
-pkgrel=3
+pkgrel=4
 pkgdesc='Small but very powerful text-based mail client (plus a huge pile of patches mostly from debian)'
 url='http://www.mutt.org/'
 license=('GPL')
@@ -59,6 +59,7 @@ source=(
   'sidebar-compose.patch'
   'sidebar-new.patch'
   'nntp.patch'
+  'ats.date_conditional.patch'
 )
 sha1sums=('38a2da5eb01ff83a90a2caee28fa2e95dbfe6898'
           '1ad77bdf742ff584b5695f1908dde83044195c0e'
@@ -101,8 +102,9 @@ sha1sums=('38a2da5eb01ff83a90a2caee28fa2e95dbfe6898'
           '19fd36f9a1f15d4481f08d90f9a88d3912e12cdb'
           'ba0a5082ef9da710644f4bd71d08b25ccfb7fb8a'
           'ffc14992c112e262d994929102369df2be729ea9'
-          'f0f0278d0b369d7d42c338f0c751e46fa5ec915a')
-
+          'f0f0278d0b369d7d42c338f0c751e46fa5ec915a'
+          '8ccb2a97bbe13936be10577c8526893309666f1a'
+)
 install=install
 
 prepare() {
@@ -149,6 +151,7 @@ prepare() {
   patch -Np1 -i "${srcdir}/sidebar-compose.patch"
   patch -Np1 -i "${srcdir}/sidebar-new.patch"
   patch -Np1 -i "${srcdir}/nntp.patch"
+  patch -Np1 -i "${srcdir}/ats.date_conditional.patch"
 
   autoreconf -vfi
 }
