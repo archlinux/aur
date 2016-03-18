@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 
 pkgname='pyload-git'
-pkgver=2621.76e7c4b
+pkgver=5415.ed91dde
 pkgrel=1
 pkgdesc="Downloadtool for One-Click-Hoster written in python. Latest stable branch"
 url="https://github.com/pyload/pyload"
@@ -10,7 +10,7 @@ arch=('any')
 provides=('pyload')
 conflicts=('pyload' 'pyload-hg')
 backup=('var/lib/pyload/pyload.conf')
-depends=('python2' 'python2-crypto' 'python2-pycurl' 'tesseract' 
+depends=('python2' 'python2-crypto' 'python2-funcsigs' 'python2-pycurl' 'tesseract' 
          'python2-pillow' 'python2-jinja' 'python2-beaker' 'python2-pyopenssl')
 optdepends=('python2-pyqt4: Gui'
           'python2-flup: for additional webservers'
