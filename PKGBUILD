@@ -1,4 +1,4 @@
-# Maintainer: Aetf <7437103@gmail.com>
+# Maintainer: Aetf <aetf at unlimitedcodeworks dor xyz>
 pkgname=libtsm-patched-git
 _gitname=libtsm
 pkgver=0.0.0
