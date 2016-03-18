@@ -22,7 +22,7 @@ optdepends=(
   'xorg-xdpyinfo: Resolution Detection'
 )
 source=("https://github.com/dylanaraps/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('61d9a0671eec40931adbbce878d3735d')
+md5sums=('e49f0d09efce0f129c17886b0611e82b')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver/"
