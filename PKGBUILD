@@ -3,7 +3,7 @@
  
 pkgname=leao
 pkgver=2016.1.0
-pkgrel=2
+pkgrel=3
 license=('custom')
  
 arch=(any)
@@ -24,7 +24,7 @@ md5sums=('4a1f49ba72a511a1fedb0e9856ae91db'
          'b0a5c911f4a3ce472699aa8b81d21b3d'
 		 'c5f9c5c6d9acd1d0db7effb401f4e685')
  
-depends=('jre8-openjdk' 'hicolor-icon-theme' 'desktop-file-utils')
+depends=('java-runtime=8' 'hicolor-icon-theme' 'desktop-file-utils')
 optdepends=('receitanet: Para envio do IRPF')
 install=$pkgname.install
  
