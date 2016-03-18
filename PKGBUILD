@@ -2,10 +2,10 @@
 
 pkgname=atmel-firmware
 pkgver=1.3
-pkgrel=2
+pkgrel=3
 _atmel=$pkgname-$pkgver.orig
 pkgdesc="Firmware and aplications for Atmel at76c5XXx wireless networking chips"
-url=("http://www.thekelleys.org.uk/atmel")
+url="http://www.thekelleys.org.uk/atmel"
 license=('custom:GPL')
 arch=('any')
 source=("$pkgname.tar.gz::http://ftp.de.debian.org/debian/pool/non-free/a/atmel-firmware/atmel-firmware_1.3.orig.tar.gz")
