@@ -1,0 +1,11 @@
+diff -aur django-jquery-ui-1.11.4.o/django_jquery_ui.egg-info/SOURCES.txt django-jquery-ui-1.11.4/django_jquery_ui.egg-info/SOURCES.txt
+--- django-jquery-ui-1.11.4.o/django_jquery_ui.egg-info/SOURCES.txt	2015-10-05 07:45:56.000000000 -0700
++++ django-jquery-ui-1.11.4/django_jquery_ui.egg-info/SOURCES.txt	2016-03-18 12:07:29.475930040 -0700
+@@ -420,4 +420,5 @@
+ jquery_ui/static/css/jquery-ui/vader/images/ui-icons_cccccc_256x240.png
+ jquery_ui/static/css/jquery-ui/vader/images/ui-icons_cd0a0a_256x240.png
+ jquery_ui/static/css/jquery-ui/vader/images/ui-icons_f29a00_256x240.png
+-jquery_ui/static/js/jquery-ui.js
+\ No newline at end of file
++jquery_ui/static/js/jquery-ui.js
++jquery_ui/static/js/jquery-ui.min.js
