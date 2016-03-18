@@ -11,7 +11,7 @@ url="http://www.gnutls.org/"
 license=(LGPL3)
 depends=(libgcrypt11 libtasn1-3 p11-kit)
 
-_debver=deb7u3
+_debver=deb7u5
 _deburl="http://security.debian.org/debian-security/pool/updates/main/g/gnutls26/"
 
 if [ "${CARCH}" = "x86_64" ] ; then
@@ -23,10 +23,10 @@ else
 fi
 
 source=()
-md5sums_i686=('4ee5211cb476f0df31ce33b890d06a2b')
-md5sums_x86_64=('1159d2cd1c8c437a04af150d85d9afb2')
 source_i686=(${_deburl}/${pkgname}_${pkgver}-${pkgrel}+${_debver}_i386.deb)
 source_x86_64=(${_deburl}/${pkgname}_${pkgver}-${pkgrel}+${_debver}_amd64.deb)
+md5sums_i686=('08380f92802253f935415bf011f04035')
+md5sums_x86_64=('2b2555405c406153acb083e0157fc577')
 
 package() {
   ar vx $srcdir/${pkgname}_${pkgver}-${pkgrel}+${_debver}_${_arch}.deb
