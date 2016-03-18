@@ -2,18 +2,18 @@
 pkgname=arrayfire
 pkgdesc="High performance software library for parallel computing with an easy-to-use API"
 url='http://arrayfire.com'
-pkgver=3.2.2
+pkgver=3.3.0
 arch=('i686' 'x86_64')
 pkgrel=1
 license=('BSD')
-makedepends=('cmake' 'graphviz' 'doxygen' 'opencl-headers' 'glfw' 'glew' 'boost' 'git')
+makedepends=('cmake' 'graphviz' 'doxygen' 'opencl-headers' 'glfw' 'glew' 'boost' 'git' 'python')
 makedepends_x86_64=('cuda' 'nvidia-utils')
 depends=('cblas' 'fftw' 'boost-libs' 'lapacke' 'forge' 'freeimage' 'glfw' 'glew')
 optdepends=('cuda: Required for using CUDA backend'
             'nvidia-utils: Required for using CUDA backend'
             'libclc: Required for using OpenCL backend')
 source=(http://arrayfire.com/arrayfire_source/arrayfire-full-${pkgver}.tar.bz2)
-md5sums=('2b7f354c249bdbeef158513c0136b4a5')
+md5sums=('14dbc9e0c489263c3592ab3d83663b2f')
 
 check() {
   cd "${srcdir}/arrayfire-full-${pkgver}/build"
