@@ -2,11 +2,11 @@
 
 _name=cuda-z
 pkgname=cuda-z-svn
-pkgver=245
+pkgver=267
 pkgrel=1
 pkgdesc="CUDA Information Utility."
 url="http://cuda-z.sourceforge.net/"
-license="GPL3"
+license=("GPL3")
 arch=("x86_64")
 makedepends=("svn")
 depends=("cuda" "qt5-base")
