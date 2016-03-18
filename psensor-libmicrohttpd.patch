@@ -1,5 +1,5 @@
---- src/psensor-1.1.3/src/server/server.c.old
-+++ src/psensor-1.1.3/src/server/server.c
+--- a/src/server/server.c
++++ b/src/server/server.c
 @@ -192,8 +192,8 @@
  	if (page) {
  		*rp_code = MHD_HTTP_OK;

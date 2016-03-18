@@ -4,7 +4,7 @@
 
 pkgname=psensor
 pkgver=1.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A graphical hardware temperature monitor for Linux"
 arch=('i686' 'x86_64')
 url="http://wpitchoune.net/psensor"
@@ -23,16 +23,17 @@ install=$pkgname.install
 source=("http://wpitchoune.net/$pkgname/files/$pkgname-$pkgver.tar.gz"
 	"psensor-libmicrohttpd.patch")
 md5sums=('c3a3c1dea4dbfe12bbfb8088b86c3d4f'
-         '9021367693c716c9c0457dfb57817aeb')
+         '6d0414028c191c9c88f42dc765f3ecfd')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
-	patch -Np2 -i $srcdir/psensor-libmicrohttpd.patch
+	patch -Np1 -i "$srcdir/psensor-libmicrohttpd.patch"
 }
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	./configure --prefix=/usr --sysconfdir=/usr/share --without-server
+	autoreconf --install
+	./configure --prefix=/usr
 	make
 }
 
