@@ -3,7 +3,7 @@
 pkgname=python-powerlaw
 _pkgname=powerlaw
 pkgrel=1
-pkgver=1.4
+pkgver=1.4.1
 pkgdesc='A Python Package for Analysis of Heavy-Tailed Distributions'
 arch=('any')
 url='https://github.com/jeffalstott/powerlaw'
@@ -11,10 +11,10 @@ depends=('python' 'python-numpy' 'python-scipy' 'python-matplotlib')
 optdepends=('python-mpmath: support for gamma function fitting')
 makedepends=('git' 'awk' 'sed')
 license=('MIT')
-md5sums=('26e9e3b29885cc3be91dc2bab9ec87ee')
-sha256sums=('ef7279b86beb3bbb80e5294eb656d8c2d39cb72a3ee0f34eef0acbbf74a4f530')
+md5sums=('3b9af3cef3691acf31c0ea8bea70b4c0')
+sha256sums=('ddc5afd003cc0b2511210072a18d8cf55bacf47a4fb27250b75fc980f193934e')
 
-source=('https://pypi.python.org/packages/source/p/powerlaw/powerlaw-1.4.tar.gz')
+source=('https://pypi.python.org/packages/source/p/powerlaw/powerlaw-1.4.1.tar.gz')
 
 package() {
   cd "$_pkgname-$pkgver"
