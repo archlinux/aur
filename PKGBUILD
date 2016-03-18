@@ -7,7 +7,7 @@ pkgname=leap-motion-driver
 _major=2.3.1
 _build=31549
 pkgver=${_major}
-pkgrel=2
+pkgrel=3
 pkgdesc="The Leap Motion Driver"
 arch=('i686' 'x86_64')
 url="https://developer.leapmotion.com/downloads"
@@ -32,22 +32,24 @@ package() {
     bsdtar xf Leap-${_major}+${_build}-x86.deb
   fi
 
-  xz -d data.tar.xz
-  tar xvf data.tar
+  tar xf data.tar.xz
 
-  # Copy binaries, headers, examples & libraries
+# Use systemd's user ACL to manage device access
+  sed -i -e 's/MODE="666", GROUP="plugdev"/TAG+="uaccess"/' lib/udev/rules.d/25-com-leapmotion-leap.rules
+  
+# Copy binaries, headers, examples & libraries
   cp -r usr ${pkgdir}
   mv ${pkgdir}/usr/sbin/leapd ${pkgdir}/usr/bin
   rm -r ${pkgdir}/usr/sbin
   cp -r lib ${pkgdir}/usr/
 
-  # Install systemd service
+# Install systemd service
   install -Dm644 "${srcdir}/leapd.service" "${pkgdir}/usr/lib/systemd/system/leapd.service"
 
-  # Copy license
+# Copy license
   install -D -m644 "${srcdir}"/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-	# Install desktop file
+# Install desktop file
 	install -Dm644 "${srcdir}/leapmotion.desktop" "${pkgdir}/usr/share/applications/leapmotion.desktop"
 
 	for i in 16x16 22x22 24x24 32x32 48x48 256x256; do
