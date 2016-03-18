@@ -1,0 +1,17 @@
+pkgbase = python-fiona
+	pkgdesc = Reads and writes spatial data files
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = https://github.com/Toblerity/Fiona
+	arch = any
+	license = BSD
+	depends = python
+	depends = python-six
+	depends = python-cligj
+	depends = gdal
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/F/Fiona/Fiona-1.6.3.tar.gz
+	md5sums = f6b70e1a30fc8db597c360e375d186de
+
+pkgname = python-fiona
+
