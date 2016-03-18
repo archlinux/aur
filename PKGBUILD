@@ -5,7 +5,7 @@
 
 pkgname=mitmproxy
 pkgver=0.16
-pkgrel=1
+pkgrel=2
 pkgdesc="SSL-capable man-in-the-middle HTTP proxy"
 arch=('any')
 url="http://mitmproxy.org/"
@@ -22,6 +22,10 @@ checkdepends=('python2-pytest-runner' 'pathod' 'python2-mock')
 provides=('python2-libmproxy')
 source=("git+https://github.com/mitmproxy/mitmproxy.git#tag=v$pkgver")
 sha256sums=('SKIP')
+
+prepare() {
+  sed -i 's/lxml>=3.5.0, <3.6/lxml>=3.5.0, <3.7/' mitmproxy/setup.py
+}
 
 check() {
   cd "$srcdir/$pkgname"
