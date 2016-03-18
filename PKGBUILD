@@ -3,11 +3,12 @@
 # Contributor: Ner0
 
 pkgname=nemo-git
-pkgver=2.8.6.r20.gf539ba5
+pkgver=2.8.7.r0.gf1dfc68
 pkgrel=1
 pkgdesc="Cinnamon file manager, git-version"
 arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/nemo"
+_branch='2.8-maintenance'
 license=('GPL')
 depends=('cinnamon-desktop'
 	'cinnamon-translations'
@@ -30,12 +31,12 @@ conflicts=('nemo')
 provides=('nemo')
 options=('!emptydirs')
 install=nemo.install
-source=("git+https://github.com/linuxmint/nemo.git")
+source=("git+https://github.com/linuxmint/nemo#branch=$_branch")
 sha256sums=('SKIP')
 
 pkgver() {
   cd nemo
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
