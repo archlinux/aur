@@ -18,9 +18,13 @@ build() {
 }
 
 package() {
-
   cd $srcdir/$pkgname-$pkgver/
-  install -m644 -d $pkgdir/usr/include/$pkgname/ $pkgdir/usr/lib/
+  mkdir -p $pkgdir/usr/include/$pkgname
+  mkdir -p $pkgdir/usr/lib/
   cp -r lib/* $pkgdir/usr/lib/
   cp -r include/$pkgname/* $pkgdir/usr/include/$pkgname
+  getent group realsense || groupadd realsense
+  cp $scrdir/99-realsense-libusb.rules $pkgdir/etc/udev/rules.d/
+  echo "You need to make a uvcvideo patch ( see more on official git )"
+  echo "Don't forget to add user to realsense group"
 }
