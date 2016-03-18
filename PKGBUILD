@@ -1,6 +1,6 @@
 # Maintainer: Nicolas F. <aur@fratti.ch>
 pkgname=("zopfli-git" "libzopfli-git" "zopflipng-git" "libzopflipng-git")
-pkgver=1.0.0.r49.g0aa5474
+pkgver=1.0.1.r15.g1dd5eba
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="https://github.com/google/zopfli"
@@ -12,7 +12,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/zopfli"
-    git describe | sed -r 's/zopfli-//; s/([^-]*-g)/r\1/; s/-/./g'
+    git describe --tag | sed -r 's/zopfli-//; s/([^-]*-g)/r\1/; s/-/./g'
 }
 
 build() {
