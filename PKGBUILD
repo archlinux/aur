@@ -11,7 +11,7 @@ license=('custom:ISC')
 depends=('pcre' 'serd')
 makedepends=('git' 'python')
 conflicts=("${_pkgname}" "${_pkgname}-svn")
-provides=("${_pkgname}" "${_pkgname}==${pkgver}")
+provides=("${_pkgname}" "${_pkgname}=${pkgver}")
 install="${_pkgname}.install"
 source=("${_pkgname}::git+http://git.drobilla.net/sord.git")
 md5sums=('SKIP')
