@@ -2,11 +2,11 @@
 
 pkgname=jack-select
 pkgver=0.1b1
-pkgrel=1
+pkgrel=2
 pkgdesc="A systray app to set the JACK configuration from QjackCtl presets via DBus."
 arch=('any')
 url="https://github.com/SpotlightKid/jack-select"
-license=('custom:Public Domain')
+license=('MIT')
 depends=('desktop-file-utils' 'gtk-update-icon-cache' 'python-dbus'
          'python-gobject' 'python-setuptools' 'python-xdg')
 source=("https://github.com/SpotlightKid/${pkgname}/archive/v${pkgver}.tar.gz")
