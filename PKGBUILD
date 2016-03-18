@@ -1,7 +1,7 @@
 # Maintainer: Ingo Bürk <admin at airblader dot de>
 _pkgname=util-xrm
 pkgname=xcb-${_pkgname}-git
-pkgver=0.9.0.r0.g706ddea
+pkgver=0.9.0.r2.gb1ae5c7
 pkgrel=1
 pkgdesc='XCB utility functions for the X resource manager'
 arch=('i686' 'x86_64')
