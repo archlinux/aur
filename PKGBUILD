@@ -2,9 +2,9 @@
 
 pkgname=libertas-firmware
 pkgver=9.70.7.p0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Firmware for Marvell's libertas wireless chip series"
-url=("http://dev.laptop.org/pub/firmware/libertas/")
+url="http://dev.laptop.org/pub/firmware/libertas/"
 license=("custom")
 arch=("any")
 # Use Debian Sid source, they found (now) missing firmwares in upstream server
