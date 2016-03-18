@@ -14,6 +14,7 @@ provides=('tensorflow')
 conflicts=('tensorflow' 'tensorflow-git','python-tensorflow-git')
 depends=('python-numpy' 'swig' 'python-wheel' 'python-protobuf3')
 makedepends=('git' 'python-pip' 'bazel')
+optdepends=('cuda: GPU support' 'cudnn: GPU support')
 
 
 
