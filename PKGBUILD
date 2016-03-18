@@ -1,15 +1,15 @@
 # Maintainer: Jonathan Steel <jsteel at archlinux.org>
 
 pkgname=yabar
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="Modern and lightweight status bar for X window managers"
 arch=('i686' 'x86_64')
 url="https://github.com/geommer/yabar"
 license=('unknown')
 depends=('pango' 'libconfig')
 source=($pkgname-$pkgver.tar.gz::https://github.com/geommer/yabar/archive/$pkgver.tar.gz)
-md5sums=('d84c0e9107f9f3f7099efaf5ff14223d')
+md5sums=('15c0795aa1cf370858a6ad27ce0b72b4')
 
 build() {
   cd $pkgname-$pkgver
