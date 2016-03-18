@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 
 pkgname=atraci-git
-pkgver=r397.06706a1
+pkgver=r405.5c94eb4
 pkgrel=1
 pkgdesc="Free music streaming player"
 arch=('i686' 'x86_64')
@@ -34,7 +34,9 @@ prepare() {
 
   # Get dependencies
   npm install
+  npm install coffeelint
 
+  sed -i 's/dl.node-webkit.org/dl.nwjs.io/g' node_modules/node-webkit-builder/lib/index.js
 : << 'COMMENT'
   # Copy local node-webkit (will be used if grunt wants the same version)
   if [ -d /usr/lib/node-webkit/ ]
@@ -72,7 +74,7 @@ package() {
 
 
   # Link to program
-#  msg2 "Symlink /usr/bin/${provides[0]} -> ${_DEST}/Atraci"
+  msg2 "Symlink /usr/bin/${provides[0]} -> ${_DEST}/Atraci"
   install -dm755 "${pkgdir}/usr/bin"
 #  ln -s "${_DEST}/Atraci" "${pkgdir}/usr/bin/${provides[0]}"
   install -m755 ${srcdir}/${_gitname}.sh ${pkgdir}/usr/bin/${provides[0]}
