@@ -2,7 +2,7 @@
 
 pkgname=r-studio
 pkgver=4.7.1568
-pkgrel=1
+pkgrel=2
 pkgdesc="Undelete and data recovery software"
 arch=('i686' 'x86_64')
 url="http://www.r-tt.com/data_recovery_linux/"
@@ -14,10 +14,10 @@ source=(http://www.r-tt.com/downloads/RStudio3_$_arch.deb
         $pkgname.desktop
         $pkgname.png)
         
-md5sums=('c7d3b9f62863a9f737a48640dda5909a'
+md5sums=('8d3cc04d581d0a53210f6aa6e1c742cc'
          '023626f715a2581768dac0c6de07ebae'
          '21f1baf671cd9c49c740d92b506203f9')
-[[ "$CARCH" == 'x86_64' ]] && md5sums[0]='55333be5559dc603766d68c7ca12744b'
+[[ "$CARCH" == 'x86_64' ]] && md5sums[0]='678b3f7fc75a50e7e6c0515be71e1cde'
 
 package() {
   cd $srcdir
@@ -30,6 +30,3 @@ package() {
   install -vDm644 $srcdir/$pkgname.png $pkgdir/usr/share/pixmaps/$pkgname.png
 }
 
-md5sums=('55333be5559dc603766d68c7ca12744b'
-         '023626f715a2581768dac0c6de07ebae'
-         '21f1baf671cd9c49c740d92b506203f9')
