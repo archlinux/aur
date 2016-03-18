@@ -2,13 +2,13 @@
 
 pkgname=atraci
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free music streaming player"
 arch=('i686' 'x86_64')
 url="http://getatraci.net/"
 license=('GPL3')
 depends=('nodejs' 'libnotify')
-makedepends=('git' 'nodejs-grunt-cli' 'ruby-compass-alpha')
+makedepends=('git' 'nodejs-grunt-cli' 'ruby-compass')
 optdepends=('node-webkit: Allows you to skip downloading node-webkit')
 conflicts=('atraci-git' 'atraci-bin')
 provides=("atraci")
@@ -26,7 +26,8 @@ prepare() {
 
   # Get dependencies
   npm install
-
+  npm install coffeelint
+  sed -i 's/dl.node-webkit.org/dl.nwjs.io/g' node_modules/node-webkit-builder/lib/index.js
 : << 'COMMENT'
   # Copy local node-webkit (will be used if grunt wants the same version)
   if [ -d /usr/lib/node-webkit/ ]
