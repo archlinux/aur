@@ -2,9 +2,9 @@
 
 pkgname=dynamic-colors-git
 pkgver=35325f4
-pkgrel=1
+pkgrel=2
 pkgdesc="Change terminal colors on the fly"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/sos4nt/dynamic-colors"
 makedepends=('git')
 provides=('dynamic-colors')
