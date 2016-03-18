@@ -1,0 +1,50 @@
+diff -aur django-jquery-1.12.2.o/django_jquery.egg-info/PKG-INFO django-jquery-1.12.2/django_jquery.egg-info/PKG-INFO
+--- django-jquery-1.12.2.o/django_jquery.egg-info/PKG-INFO	2016-03-17 14:41:25.000000000 -0700
++++ django-jquery-1.12.2/django_jquery.egg-info/PKG-INFO	2016-03-18 11:40:16.709793366 -0700
+@@ -71,6 +71,10 @@
+                     # ...
+                     return html
+         
++        Deployment::
++            
++            Use the minified jquery.min.js instead of jquery.js
++
+ Keywords: django,jquery,staticfiles
+ Platform: any
+ Classifier: Development Status :: 5 - Production/Stable
+diff -aur django-jquery-1.12.2.o/django_jquery.egg-info/SOURCES.txt django-jquery-1.12.2/django_jquery.egg-info/SOURCES.txt
+--- django-jquery-1.12.2.o/django_jquery.egg-info/SOURCES.txt	2016-03-17 14:41:25.000000000 -0700
++++ django-jquery-1.12.2/django_jquery.egg-info/SOURCES.txt	2016-03-18 11:40:08.086654140 -0700
+@@ -11,4 +11,5 @@
+ django_jquery.egg-info/top_level.txt
+ jquery/__init__.py
+ jquery/models.py
+-jquery/static/js/jquery.js
+\ No newline at end of file
++jquery/static/js/jquery.js
++jquery/static/js/jquery.min.js
+diff -aur django-jquery-1.12.2.o/PKG-INFO django-jquery-1.12.2/PKG-INFO
+--- django-jquery-1.12.2.o/PKG-INFO	2016-03-17 14:41:25.000000000 -0700
++++ django-jquery-1.12.2/PKG-INFO	2016-03-18 11:40:23.806300635 -0700
+@@ -71,6 +71,10 @@
+                     # ...
+                     return html
+         
++        Deployment::
++            
++            Use the minified jquery.min.js instead of jquery.js
++
+ Keywords: django,jquery,staticfiles
+ Platform: any
+ Classifier: Development Status :: 5 - Production/Stable
+diff -aur django-jquery-1.12.2.o/README.rst django-jquery-1.12.2/README.rst
+--- django-jquery-1.12.2.o/README.rst	2016-03-17 14:20:21.000000000 -0700
++++ django-jquery-1.12.2/README.rst	2016-03-18 11:40:31.012805748 -0700
+@@ -62,3 +62,7 @@
+             html = super(MyWidget, self).render(name, value, attrs=attrs)
+             # ...
+             return html
++
++Deployment::
++
++    Use the minified jquery.min.js instead of jquery.js
