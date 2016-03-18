@@ -12,6 +12,8 @@ changelog=''
 source=("https://github.com/IntelRealSense/librealsense/archive/v${pkgver}.tar.gz")
 md5sums=('8b30a944b51a9ff3fa00f2d1652ae9d9')
 
+udev_rules="etc/udev/rules.d/99-realsense-libusb.rules"
+
 build() {
   cd "$pkgname-$pkgver"
   make
@@ -21,10 +23,13 @@ package() {
   cd $srcdir/$pkgname-$pkgver/
   mkdir -p $pkgdir/usr/include/$pkgname
   mkdir -p $pkgdir/usr/lib/
+  mkdir -p $pkgdir/etc/udev/rules.d/
   cp -r lib/* $pkgdir/usr/lib/
   cp -r include/$pkgname/* $pkgdir/usr/include/$pkgname
   getent group realsense || groupadd realsense
-  cp $scrdir/99-realsense-libusb.rules $pkgdir/etc/udev/rules.d/
-  echo "You need to make a uvcvideo patch ( see more on official git )"
-  echo "Don't forget to add user to realsense group"
+echo "SUBSYSTEMS==\"usb\", ENV{DEVTYPE}==\"usb_device\", ATTRS{idVendor}==\"8086\", ATTRS{idProduct}==\"0a80\", MODE=\"0666\", GROUP=\"realsense\"" > $pkgdir/$udev_rules
+echo "SUBSYSTEMS==\"usb\", ENV{DEVTYPE}==\"usb_device\", ATTRS{idVendor}==\"8086\", ATTRS{idProduct}==\"0a66\", MODE=\"0666\", GROUP=\"realsense\"" >>$pkgdir/$udev_rules
+echo "SUBSYSTEMS==\"usb\", ENV{DEVTYPE}==\"usb_device\", ATTRS{idVendor}==\"8086\", ATTRS{idProduct}==\"0aa5\", MODE=\"0666\", GROUP=\"realsense\"" >>$pkgdir/$udev_rules
+  echo "You need to make an V4L2 patch"
+  echo "Don't forget adding user to realsense group"
 }
