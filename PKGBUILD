@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Maciej Nowak <com[dot]gmail[at]tmn505>
 pkgname='minisatip-git'
 pkgdesc="SAT>IP server, tested with DVB-S, DVB-S2, DVB-T, DVB-T2, DVB-C, DVB-C2, ATSC and ISDB-T cards (experimental)"
-pkgver=0.5.35_1d93df5
+pkgver=0.5.39_a30e471
 pkgrel=1
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://minisatip.org"
@@ -29,8 +29,9 @@ pkgver() {
 
 build() {
 	cd ${srcdir}/minisatip
+	./configure
 	sed -i 's/FLAGS?/FLAGS/g' Makefile
-	make DVBCA=yes EXTRA_CFLAGS="${CFLAGS}" EXTRA_LDFLAGS+="${LDFLAGS}"
+	make EXTRA_CFLAGS="${CFLAGS}" EXTRA_LDFLAGS="${LDFLAGS}"
 }
 
 package() {
