@@ -2,7 +2,7 @@
 
 _pkgname=rpgmakertrans
 pkgname=$_pkgname-hg
-pkgver=r683.3a6ad2356893
+pkgver=2016.03.19.r808.b698918e3f5c
 pkgrel=1
 pkgdesc="Translation Tool for RPGMaker Games"
 arch=("i686" "x86_64")
@@ -15,7 +15,7 @@ depends=("python" "python-pyside" "python-autopep8" "python-coverage"
 makedepends=("mercurial")
 provides=("$_pkgname")
 install=$pkgname.install
-source=("hg+https://bitbucket.org/habisain/rpgmakertrans#branch=default"
+source=("hg+https://bitbucket.org/rpgmakertrans/rpgmakertrans#branch=default"
         "rpgmakertrans-gui" "rpgmakertrans-cli"
 )
 
@@ -25,7 +25,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+    printf "%s.r%s.%s" "$(date -I | tr '-' '.')" "$(hg identify -n)" "$(hg identify -i)"
 }
 
 package() {
