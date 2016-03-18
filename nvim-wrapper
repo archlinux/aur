@@ -42,6 +42,7 @@ GTERM_PASSTHROUGH_OPTIONS = [
     '--full-screen',
     '--maximize',
     '--profile',
+    '--geometry',
     '--working-directory',
     '--display'
 ]
