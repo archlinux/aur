@@ -3,7 +3,7 @@ PR_DIR=plexrequests
 
 post_install() {
 	getent group ${PR_USER} &>/dev/null || groupadd -r ${PR_USER} >/dev/null
-	getent passwd ${PR_USER} &>/dev/null || useradd -r -g ${PR_USER} -d /home/${PR_USER} -s /bin/false -c ${PR_USER} ${PR_USER} >/dev/null
+	getent passwd ${PR_USER} &>/dev/null || useradd -r -g ${PR_USER} -d /home/${PR_USER} -s /bin/nologin -c ${PR_USER} ${PR_USER} >/dev/null
 	mkdir /home/${PR_USER}
 	chown -R ${PR_USER}:${PR_USER} /home/${PR_USER}
 	chown -R ${PR_USER}:${PR_USER} /opt/${PR_DIR}

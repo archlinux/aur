@@ -3,16 +3,13 @@ Description=PlexRequests
 After=network.target
 
 [Service]
-User=plexrequests 
+User=plexrequests
+Group=plexrequests
 Type=simple
 WorkingDirectory=/opt/plexrequests
 ExecStart=/usr/bin/meteor
 KillMode=process
 Restart=always
-StandardOutput=syslog
-StandardError=syslog
-SyslogIdentifier=plexrequests
-User=plexrequests
 
 [Install]
 WantedBy=multi-user.target

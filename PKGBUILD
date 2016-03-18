@@ -1,6 +1,6 @@
 # Maintainer: Zack Baldwin <zack@zackb.com>
 pkgname=plexrequests
-pkgver=1.3.0
+pkgver=1.7.4
 pkgrel=1
 pkgdesc="Simple automated way for users to request new content for Plex"
 arch=('any')
@@ -11,8 +11,8 @@ optdepends=('couchpotato' 'sickrage' 'sonarr')
 install='plexrequests.install'
 source=("https://github.com/lokenx/plexrequests-meteor/archive/v${pkgver}.tar.gz"
         "${pkgname}.service")
-md5sums=('cf6f3e3a2171deda713eea634e34c02e'
-         'f3b655ae8dda417d1f4fe08f565d3b86')
+sha256sums=('fe3f4e43404de525f43d73e1cd84681a5dea6577741dc4ea6b973af83fa5102a'
+         '3790e9af329bc211f4116fae8742901f9dfd9d9f34abb2092119a298e5b3dbb1')
 
 package() {
   install -d "${pkgdir}/opt/${pkgname}"
