@@ -1,15 +1,15 @@
 pkgbase = mrbayes
 	pkgdesc = A program for the Bayesian estimation of phylogeny
-	pkgver = 3.2.5
-	pkgrel = 2
+	pkgver = 3.2.6
+	pkgrel = 1
 	url = http://mrbayes.csit.fsu.edu
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = readline
 	optdepends = beagle-lib: for using GPU calculations among other enhancements - rebuild package after installing this dep
-	source = http://downloads.sourceforge.net/mrbayes/mrbayes-3.2.5.tar.gz
-	md5sums = a85a63e5382bc7ea36b1ce1c2138ee6e
+	source = http://downloads.sourceforge.net/mrbayes/mrbayes-3.2.6.tar.gz
+	md5sums = 95f9822f24be47b976bf87540b55d1fe
 
 pkgname = mrbayes
 
