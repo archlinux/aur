@@ -7,7 +7,7 @@ post_install() {
 
 
 # Restore the original HTTP plugin
-pre_remove() {
+post_remove() {
 	sudo mv /usr/lib/qmmp/Transports/libhttp.so.bak /usr/lib/qmmp/Transports/libhttp.so
 }
 

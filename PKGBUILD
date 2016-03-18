@@ -28,7 +28,7 @@ build() {
   cd "$pkgname-$pkgver"/
 
   qmake
-  make -j8
+  make -j4
   
   # HTTP plugin build
   cd ../"qmmp-$_qmmpver"/
