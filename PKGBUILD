@@ -8,8 +8,8 @@
 
 _pack=database
 pkgname=octave-$_pack
-pkgver=2.3.2
-pkgrel=3
+pkgver=2.4.0
+pkgrel=1
 pkgdesc="Interface to SQL databases, currently only postgresql using libpq."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
@@ -24,7 +24,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("http://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('519198074eacbd0ebb5008fbab939e54')
+md5sums=('a75662b03d34fc11dade8dc4c5dc643c')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
