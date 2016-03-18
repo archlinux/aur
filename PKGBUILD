@@ -15,7 +15,7 @@ conflicts=('tensorflow' 'tensorflow-git', 'python-tensorflow')
 depends=('python-numpy' 'swig' 'python-wheel')
 makedepends=('git' 'python-pip' 'bazel')
 
-md5sums=('SKIP' 'SKIP')
+
 
 prepare() {
   git clone --recurse-submodules https://github.com/tensorflow/tensorflow -b r0.7
