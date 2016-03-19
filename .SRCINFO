@@ -1,0 +1,22 @@
+pkgbase = systester
+	pkgdesc = System Stability Tester is a RAM/CPU burning and benchmarking program based on calculating pi.
+	pkgver = 1.5.1
+	pkgrel = 3
+	url = http://systester.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = qt4>=4.5.3
+	makedepends = gmp>=4.2.1
+	source = http://sourceforge.net/projects/systester/files/systester/1.5.0/systester-1.5.1.tar.gz
+	sha256sums = 8e88b368d35f45303c586f4028ee010a0e5e67d89d8494cad0fd53359b741df5
+
+pkgname = systester
+	pkgdesc = System Stability Tester is a RAM/CPU burning and benchmarking program based on calculating pi.
+	depends = qt4>=4.5.3
+	depends = gmp>=4.2.1
+
+pkgname = systester-cli
+	pkgdesc = System Stability Tester is a RAM/CPU burning and benchmarking program based on calculating pi.
+	depends = gmp>=4.2.1
+
