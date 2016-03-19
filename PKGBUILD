@@ -4,8 +4,9 @@
 
 pkgbase=transmission-sequential
 pkgname=('transmission-sequential-cli' 'transmission-sequential-gtk' 'transmission-sequential-qt')
-pkgver=2.84
-pkgrel=2
+pkgver=2.92
+pkgrel=1
+svnrev=14714 #The SVN revision corresponding to the tag ${pkgver}
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.transmissionbt.com/"
 license=('MIT')
@@ -14,10 +15,8 @@ makedepends=('gtk3' 'intltool' 'curl' 'qt5-base' 'libevent')
 provides=('transmission-cli')
 conflicts=('transmission-cli')
 install=transmission-cli.install
-source=("https://transmission.cachefly.net/transmission-$pkgver.tar.xz" "sequential.patch" "upnp-fix.patch")
-md5sums=('411aec1c418c14f6765710d89743ae42'
-         'cbbee2c84c25183d7322babfc8ab11e3'
-         '7a6ccecb24b1d4186b7304a563419f7e')
+source=("https://github.com/Mikayex/transmission/archive/${pkgver}-seq.tar.gz")
+md5sums=('432fa500829c7890a9278966dd65cb2a')
 
 _inarray() {
   local e
@@ -26,19 +25,18 @@ _inarray() {
 }
 
 prepare() {
-  cd transmission-$pkgver
-  patch -Np1 -i $srcdir/sequential.patch
-  patch -Np1 -i $srcdir/upnp-fix.patch
+  cd transmission-$pkgver-seq
+  echo ${svnrev} > REVISION
 }
 
 build() {
-  cd transmission-$pkgver
+  cd transmission-$pkgver-seq
 
 #Don't build if not needed since long to build
   if _inarray 'transmission-sequential-gtk' "${pkgname[@]}"; then
-    ./configure --prefix=/usr
+    ./autogen.sh --prefix=/usr
   else
-    ./configure --prefix=/usr --without-gtk
+    ./autogen.sh --prefix=/usr --without-gtk
   fi
   make
 
@@ -57,14 +55,14 @@ package_transmission-sequential-cli() {
   conflicts=('transmission-cli')
   install=transmission-cli.install
 
-  cd transmission-$pkgver
+  cd transmission-$pkgver-seq
 
   for dir in daemon cli web utils
   do
       make -C "$dir" DESTDIR="$pkgdir" install
   done
 
-  install -D -m644 "$srcdir/transmission-$pkgver/daemon/transmission-daemon.service" "$pkgdir/usr/lib/systemd/system/transmission.service"
+  install -D -m644 daemon/transmission-daemon.service "$pkgdir/usr/lib/systemd/system/transmission.service"
   install -D -m644 COPYING "$pkgdir/usr/share/licenses/transmission-sequential-cli/COPYING"
 }
 
@@ -77,7 +75,7 @@ package_transmission-sequential-gtk() {
   conflicts=('transmission-gtk')
   install=transmission-gtk.install
 
-  cd transmission-$pkgver
+  cd transmission-$pkgver-seq
 
   make -C gtk DESTDIR="$pkgdir" install
   make -C po DESTDIR="$pkgdir" install
@@ -92,7 +90,7 @@ package_transmission-sequential-qt() {
   conflicts=('transmission-qt')
   install=transmission-qt.install
 
-  cd transmission-$pkgver
+  cd transmission-$pkgver-seq
 
   make -C qt INSTALL_ROOT="$pkgdir"/usr install
 
