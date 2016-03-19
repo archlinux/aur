@@ -1,6 +1,6 @@
 pkgbase = pup-git
 	pkgdesc = Parsing HTML at the command line
-	pkgver = r68.17ba91a
+	pkgver = r84.468df5e
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/EricChiang/pup
