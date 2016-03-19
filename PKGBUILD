@@ -10,6 +10,7 @@ pkgdesc="A notification system for tiling window managers"
 arch=('any')
 url="https://github.com/cyrozap/twmn"
 license=('LGPL3')
+provides=('notification-daemon')
 depends=('qt5-base' 'qt5-x11extras' 'boost-libs>=1.46' 'libxext' 'libxkbcommon-x11')
 makedepends=('git' 'pkg-config' 'boost>=1.46')
 conflicts=('twmn')
