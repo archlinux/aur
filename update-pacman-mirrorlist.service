@@ -1,6 +1,7 @@
 [Unit]
 Description=Update the pacman mirrorlist.
 After=network-online.target
+Wants=network-online.target
 
 [Service]
 ExecStart=/usr/bin/update-pacman-mirrorlist

@@ -2,7 +2,6 @@
 Description=Daily update of the pacman mirrorlist.
 
 [Timer]
-AccuracySec=12h
 OnCalendar=daily
 Persistent=true
 
