@@ -1,0 +1,16 @@
+pkgbase = python-luckydonald-utils
+	pkgdesc = A collection of generic utilities for use in any python project
+	pkgver = 0.41
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/luckydonald-utils/0.41
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.python.org/packages/source/l/luckydonald-utils/luckydonald-utils-0.41.tar.gz
+	source = https://raw.githubusercontent.com/luckydonald/luckydonald-utils/master/LICENSE
+	sha256sums = cdef1432aac4a931ff2df50cf498f57132c5faab763a0cdf1973efadbf5bff32
+	sha256sums = c03cea027b4b40e4402fabd08557736727ec3d5bc54ad64ab6472de432198cad
+
+pkgname = python-luckydonald-utils
+
