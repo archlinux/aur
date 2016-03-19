@@ -1,7 +1,7 @@
 
 pkgname=mingw-w64-openblas
 pkgrel=1
-pkgver=0.2.15
+pkgver=0.2.16
 pkgdesc="An optimized BLAS library based on GotoBLAS2 1.13 BSD (mingw-w64)"
 arch=('any')
 url="http://www.openblas.net/"
@@ -12,18 +12,12 @@ makedepends=("mingw-w64-gcc")
 provides=("mingw-w64-blas")
 conflicts=("mingw-w64-blas")
 source=(http://github.com/xianyi/OpenBLAS/archive/v${pkgver}.tar.gz)
-md5sums=('b1190f3d3471685f17cfd1ec1d252ac9')
+md5sums=('fef46ab92463bdbb1479dcec594ef6dc')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
   cd "${srcdir}/OpenBLAS-${pkgver}"
-  sed -i "s|libs netlib tests shared|libs netlib shared|g" Makefile
-  sed -i "s|-lib /machine|#-lib /machine|g" exports/Makefile
-
-  # https://github.com/xianyi/OpenBLAS/pull/527
-  sed -i "s|@-cp \$(LIBDLLNAME) \$(OPENBLAS_BINARY_DIR)|@-cp \$(LIBDLLNAME) \$(DESTDIR)\$(OPENBLAS_BINARY_DIR)|g" Makefile.install
-  sed -i "s|@-cp \$(LIBDLLNAME).a \$(OPENBLAS_LIBRARY_DIR)|@-cp \$(LIBDLLNAME).a \$(DESTDIR)\$(OPENBLAS_BINARY_DIR)|g" Makefile.install
 }
 
 build () {
@@ -42,7 +36,7 @@ build () {
     make CC=${_arch}-gcc FC=${_arch}-gfortran BINARY=$binary HOSTCC=gcc \
       CFLAGS="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4" \
       USE_OPENMP=1 NO_LAPACK=1 NUM_THREADS=$NCORE LIBPREFIX=$libprefix \
-      MAJOR_VERSION=3 NO_CBLAS=1 NO_AFFINITY=1
+      MAJOR_VERSION=3 NO_CBLAS=1 NO_AFFINITY=1 CROSS=1
     sed -i "1iLIBRARY $libprefix.dll\n" exports/libopenblas.def
     ${_arch}-dlltool -d exports/libopenblas.def -l $libprefix.dll.a
     popd
