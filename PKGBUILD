@@ -1,6 +1,6 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 pkgname=z80e
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 license=('MIT')
 pkgdesc='An emulation library and client programs for z80 calculators'
@@ -9,7 +9,7 @@ makedepends=("cmake" "asciidoc")
 arch=("i386" "x86_64")
 url='https://github.com/KnightOS/z80e'
 source=("https://github.com/KnightOS/z80e/archive/${pkgver}.tar.gz")
-sha1sums=('73fcb38d6deebc90c3fd0f1560dc16d161d5b22b')
+sha1sums=('2e862580f29897120a4be6865a2e5bafa6a72efa')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
