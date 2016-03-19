@@ -5,7 +5,7 @@
 _name=twmn
 pkgname="${_name}-git"
 pkgver=171.6660f7e
-pkgrel=1
+pkgrel=2
 pkgdesc="A notification system for tiling window managers"
 arch=('any')
 url="https://github.com/cyrozap/twmn"
