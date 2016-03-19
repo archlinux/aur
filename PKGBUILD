@@ -2,7 +2,7 @@
 
 _pkgname=podget
 pkgname=$_pkgname-git
-pkgver=r2.8b92d8b
+pkgver=0.7.11.r0.gfedd0af
 pkgrel=1
 pkgdesc="Simple tool to automate downloading of podcasts"
 arch=('any')
@@ -17,14 +17,18 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
   cd $pkgname
+
   make prefix=/usr DESTDIR="$pkgdir" changelog.gz install
+
   install -Dm644 README "$pkgdir/usr/share/$pkgname/README"
-  cp -a SCRIPTS/ "$pkgdir/usr/share/$pkgname/scripts/"
+
+  cp -r SCRIPTS/ "$pkgdir/usr/share/$pkgname/scripts/"
   find "$pkgdir/usr/share/$pkgname/scripts/" -type d -exec chmod 755 '{}' \;
+  find "$pkgdir/usr/share/$pkgname/scripts/" -type f -exec chmod 644 '{}' \;
 }
 
