@@ -53,8 +53,8 @@
 _bldtype=Release
 
 _zipcode_rel=201511
-_mozcver=2.17.2313.102
-_utdicver=20160303
+_mozcver=2.17.2315.102
+_utdicver=20160317
 _protobuf_rev=172019c40bf548908ab09bfd276074c929d48415
 _gyp_rev=e2e928bacd07fead99a18cb08d64cb24e131d3e5
 _jsoncpp_rev=11086dd6a7eba04289944367ca82cea71299ed70
@@ -84,7 +84,7 @@ source=(mozc-${_mozcver}::git+https://github.com/google/mozc.git#commit=${_mozc_
         "x-ken-all-${_zipcode_rel}.zip::http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=naoina&DownloadId=1527310&FileTime=130941443058430000&Build=21031"
         "edict-${_utdicver}.gz::http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=naoina&DownloadId=1527309&FileTime=130945321365000000&Build=21031"
         "jigyosyo-${_zipcode_rel}.zip::http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=naoina&DownloadId=1527311&FileTime=130941443059370000&Build=21031"
-        mozcdic-ut-${_utdicver}.tar.bz2::https://osdn.jp/frs/chamber_redir.php?f=%2Fusers%2F9%2F9993%2Fmozcdic-ut-${_utdicver}.tar.bz2
+        mozcdic-ut-${_utdicver}.tar.bz2::https://osdn.jp/frs/chamber_redir.php?f=%2Fusers%2F10%2F10032%2Fmozcdic-ut-${_utdicver}.tar.bz2
         EDICT_license.html
         mod-generate-mozc-ut.sh
         http://findbugs.googlecode.com/svn/repos/release-repository/com/google/code/findbugs/jsr305/$_jsr305_ver/jsr305-$_jsr305_ver.jar
@@ -193,7 +193,7 @@ sha512sums=('SKIP'
             'bacb68bc64dd62322d332f38babf3c9933bf4a113081d795c8bc7e33a8e8e4e3e47320fd520f522c55830f519337c828c115ddb3275ace3076ebff4480b20805'
             '35c8c0b283e53f9c249b1a66e668acfe439223cabe4e0ba83fdc5fcc250c53ce2cf9df20f0e74cc66ee670f6684286f316f7dd855620aa14248a74e516366293'
             '9ebc0565366533ade36c5af19e47165641bb4d75393f87ba971e27d5bed038795731cb7426d769740ebf6cc3b91ca7c1f5cab200ac82097a3f880414a220d166'
-            '405039d3fc6ef1625c5803a1ee6a34efeb9cb240bd4f326ec2f25ebb99f5ebddc52efeea6ff83cfea2db293eb9dcc395190102ec02cd893616aa85fb5172a3dc'
+            'fc375df668be82743adb1ced3803008b5324ee426dd5804c7f564d4fb03a4e7de8d8df9af0028ad991319c6f45f1269a614be582005be8f967caa7014de1babb'
             '4899c7ee01e387c7c5c628356a0b32e7ba28643580701b779138361ca657864ec17ae0f38d298d60e44093e52a3dfe37d922f780b791e3bd17fc4f056f22dbbb'
             '5e014b3238539d4f7887a1086e15baf27f5c32363d5881dffdf5882a24ff1e28b4f2b36614f7c0b7534d92a5313bc900e89de1256f3ed4169960aa32b7bf73dd'
             'b3b832489ef9249b22d8a0b9d6eee1895c9d93ef53d5968724a65184cb3f04e17cc74938128b98916da7829c6566be0bc6d60fa8801248cc24620730a060eac6'
