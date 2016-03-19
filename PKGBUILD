@@ -18,8 +18,11 @@ sha256sums=('b35811bb330576631e64f7885c66720e0be4ca81afb04328b3a0f288a708e37f')
 sha256sums_i686=('7401ad3698a28bf2b45e350fd2b941c44cb51dbb3f87b0e7dd1a2da72c42f594')
 sha256sums_x86_64=('dc273de84f6f2dad563bcbbb2e62312cd2a61d6ed41e10398bff7fdc1883d6cc')
 
-pkgver() {
+prepare() {
   bsdtar -xf data.tar.xz opt/google/chrome/{chrome,libwidevinecdm.so}
+}
+
+pkgver() {
   strings opt/google/chrome/chrome | sed -n '/ (version:/{n;p}'
 }
 
