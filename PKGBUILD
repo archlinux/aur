@@ -12,7 +12,7 @@ url="https://github.com/cyrozap/twmn"
 license=('LGPL3')
 depends=('qt5-base' 'qt5-x11extras' 'boost-libs>=1.46' 'libxext' 'libxkbcommon-x11')
 makedepends=('git' 'pkg-config' 'boost>=1.46')
-replaces=('twmn')
+conflicts=('twmn')
 source=("${_name}::git+https://github.com/cyrozap/${_name}.git")
 sha256sums=('SKIP')
 
