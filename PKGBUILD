@@ -3,8 +3,8 @@
 pkgname=ricin-git
 _pkgname=Ricin
 _submodule=tox-vapi
-pkgver=0.385.2f01896
-pkgrel=2
+pkgver=0.452.b519ec3
+pkgrel=1
 pkgdesc="Lightweight and Fully-Hackable Tox client powered by Vala & Gtk3"
 url="https://github.com/RicinApp/Ricin"
 arch=('i686' 'x86_64')
@@ -34,7 +34,7 @@ pkgver() {
 build() {
     cd "${srcdir}/${_pkgname}"
     mkdir build
-    meson . build
+    meson.py . build
     make compile
 }
 
