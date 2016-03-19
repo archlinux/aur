@@ -5,35 +5,29 @@
 # Contributor: Tom Vincent <http://tlvince.com/contact>
 # Contributor: Alexander <iam.asm89@gmail.com>
 
-# I maintain this on github, feel free to submit a pull request to
-# https://github.com/jkl1337/packages-archlinux.git
-
 pkgname=hipchat
-pkgver=2.2.1388
-pkgrel=3
+pkgver=4.0.1631
+pkgrel=1
 pkgdesc="Persistent group chat using XMPP"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://www.hipchat.com/linux"
 license=('unknown')
-depends=('libltdl' 'mesa' 'libxslt' 'hicolor-icon-theme'
-         'libxcomposite' 'libpulse' 'gstreamer0.10' 'gstreamer0.10-base' 'xcb-util-keysyms')
+depends=('fontconfig' 'libgl' 'libltdl' 'libxslt' 'hicolor-icon-theme'
+         'libxcomposite' 'libxcursor' 'libxkbcommon' 'libxrandr' 'libxslt' 'libxss'
+         'libpulse' 'xcb-util-keysyms' 'nss')
 install='hipchat.install'
-# remove pkg in basename to avoid confusing AUR helpers such as packer
-source=(${pkgname}-${pkgver}-$CARCH.tar.xz::http://downloads.hipchat.com/linux/arch/$CARCH/${pkgname}-${pkgver}-$CARCH.pkg.tar.xz)
+source=("https://atlassian.artifactoryonline.com/atlassian/hipchat-apt-client/pool/HipChat4-${pkgver}-Linux.deb")
+sha1sums=('98c4fd337fa3d8258b089f1da989840276705790')
 
-if [ "$CARCH" == "i686" ]; then
-  sha1sums=('273a9abce4ac4cc6f3002657a50a38e2afa9e50a')
-
-else
-  sha1sums=('0f0ee7c25d85912b744f74c7ab85fa980e9a992e')
-fi
+prepare() {
+  cd "${srcdir}"
+  mkdir "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
+  tar xzf "${srcdir}"/data.tar.gz
+}
 
 package() {
-  cp -R $srcdir/{opt,usr} "$pkgdir"
-
-  # Fix for libstdc++
-  # https://bbs.archlinux.org/viewtopic.php?id=181171
-  # https://bugs.archlinux.org/task/40253
-  # https://bbs.archlinux.org/viewtopic.php?pid=1413827
-  ln -sf /usr/lib/libstdc++.so.6.0.20 $pkgdir/opt/HipChat/lib/libstdc++.so.6.0.18
+  cp -R "${srcdir}/${pkgname}-${pkgver}"/{opt,usr} "${pkgdir}"
+  mkdir -p "${pkgdir}/usr/bin"
+  ln -nsf "/opt/HipChat4/bin/HipChat4" "${pkgdir}/usr/bin/HipChat4"
 }
