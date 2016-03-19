@@ -11,6 +11,7 @@ pre_install() {
             mv /opt/capanalysis/cfg/canalysis.cfg /opt/capanalysis/cfg/canalysis.cfg.last
             cp /opt/capanalysis/cfg/canalysis.cfg.backup /opt/capanalysis/cfg/canalysis.cfg
   fi
+    mkdir -p /opt/capanalysis/www/app/tmp/cache/persistent
     mkdir -p /opt/capanalysis/www/app/tmp/cache/models/
     mkdir -p  /opt/capanalysis/www/app/tmp/cache/views/
     mkdir -p  /opt/capanalysis/www/app/tmp/sessions/
