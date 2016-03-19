@@ -1,15 +1,15 @@
-# Maintainer:
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 # Contributor: Liberion <liberion[at]gmail[.]com> patch libpng compile 
+# Maintainer: SanskritFritz (gmail)
 
 pkgname=briquolo
 pkgver=0.5.7
-pkgrel=5
-pkgdesc="An addictive block game"
+pkgrel=6
+pkgdesc="Breakout game with 3D representation based on OpenGL."
 arch=('i686' 'x86_64')
 url="http://briquolo.free.fr/"
 license=('GPL')
-depends=('sdl' 'sdl_mixer' 'libpng' 'sdl_ttf' 'mesa' 'desktop-file-utils' 'glu')
+depends=('sdl_mixer' 'sdl_ttf' 'desktop-file-utils' 'glu')
 makedepends=('patch' 'autoconf' 'automake' 'cvs')
 install=$pkgname.install
 options=('!makeflags')
@@ -28,9 +28,6 @@ prepare() {
   patch -Np0 -i "${srcdir}"/$pkgname-gcc.patch
 # Fixes libpng compilation problem
   patch -Np1 -i "${srcdir}"/$pkgname-libpng.patch
-# Fix for buggy Makefile - give it a desktop file to process
-  install -Dm644 "${srcdir}"/$pkgname.desktop \
-    "${pkgdir}"/usr/share/applications/$pkgname.desktop
 }
 
 build() {
@@ -43,16 +40,16 @@ build() {
 
 package() {
   cd "${srcdir}"/$pkgname-$pkgver
+# Fix for buggy Makefile - give it a desktop file to process
+  install -Dm644 "${srcdir}"/$pkgname.desktop "${pkgdir}"/usr/share/applications/$pkgname.desktop
+
   make prefix="${pkgdir}"/usr install
 #  make DESTDIR="${pkgdir}" install
 
 # Icons
-  install -Dm644 "${srcdir}"/$pkgname-$pkgver/desktop/$pkgname.svg \
-    "${pkgdir}"/usr/share/pixmaps/$pkgname.svg
-  install -Dm644 $pkgname.png \
-    "${pkgdir}"/usr/share/pixmaps/$pkgname.png
+  install -Dm644 "$srcdir/$pkgname-$pkgver/desktop/$pkgname.svg" "$pkgdir/usr/share/pixmaps/$pkgname.svg"
+  install -Dm644 "$srcdir/$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 
 # Force usage of correct desktop entry
-  install -Dm644 $pkgname.desktop \
-    "${pkgdir}"/usr/share/applications/$pkgname.desktop
+  install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir"/usr/share/applications/$pkgname.desktop
 }
