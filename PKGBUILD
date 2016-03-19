@@ -9,11 +9,11 @@ url='https://github.com/eternnoir/pyTelegramBotAPI'
 license=('GPL2')
 depends=('python2' 'python2-pytest' 'python2-requests' 'python2-six')
 
-source=("https://github.com/eternnoir/$_name/archive/$pkgver.$pkgrel.tar.gz")
+source=("https://github.com/eternnoir/$_name/archive/$pkgver.tar.gz")
 md5sums=('6c42100fa178f09e4a9db5a618782054') 
 
 package() {
-	cd "$srcdir/$_name-$pkgver.$pkgrel"
+	cd "$srcdir/$_name-$pkgver"
 	python2 setup.py install --root="$pkgdir/" 
 
 	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
