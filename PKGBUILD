@@ -3,7 +3,7 @@
 # Maintainer: Arthur Zamarin <arthurzam@gmail.com>
 
 pkgname=eclipse-linuxtools
-pkgver=4.1.0
+pkgver=4.2.2
 pkgrel=1
 pkgdesc="Eclipse Linux Tools Project"
 url="http://www.eclipse.org/linuxtools"
@@ -19,7 +19,7 @@ optdepends=(
 )
 makedepends=('java-environment')
 source=("http://www.eclipse.org/downloads/download.php?r=1&file=/linuxtools/linuxtools-${pkgver}.zip")
-sha256sums=('ea5e28a92085d83df3b60d8b3cb43bbcce97f34c3d9a81536eaac449a25bb8a8')
+sha256sums=('5ae38475a68d1ee5b6a9c5b56c6ab505682250cee1686262e682d240b59b231e')
 
 package() {
   d="$pkgdir/usr/lib/eclipse/dropins/linuxtools/eclipse"
