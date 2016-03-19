@@ -1,0 +1,19 @@
+# arg 1:  the new package version
+# arg 2:  the old package version
+
+path='/usr/share/webapps/emoncms'
+htuser='http'
+htgroup='http'
+rootuser='root'
+
+fix_perms () {
+  chown -R $htuser $path
+}
+
+post_install () {
+  fix_perms
+}
+
+post_upgrade() {
+  fix_perms
+}
