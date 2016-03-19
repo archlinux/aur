@@ -1,0 +1,15 @@
+pkgbase = python-dictobject
+	pkgdesc = Python DictObject allows attribute access on dicts.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/DictObject/0.1.2
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	depends = python-luckydonald-utils
+	source = https://pypi.python.org/packages/source/D/DictObject/DictObject-0.1.2.tar.gz
+	sha256sums = 1243b6458516b839c59116e036a17d86a5767d488b2e7d9d03a10fbda1a3877a
+
+pkgname = python-dictobject
+
