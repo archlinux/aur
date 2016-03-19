@@ -7,7 +7,7 @@ url="http://uberwriter.wolfvollprecht.de/"
 license=('GPL')
 source=(http://ppa.launchpad.net/w-vollprecht/ppa/ubuntu/pool/main/u/uberwriter/uberwriter_$pkgver-publicubuntu4_all.deb)
 md5sums=('SKIP')
-depends=('python-gtkspellcheck' 'python-gobject' 'ttf-ubuntu-font-family' 'pandoc-bin' 'dconf' 'desktop-file-utils' 'gnome-web-photo' 'hicolor-icon-theme' 'morituri' 'passenger' 'python' 'python-cairo' 'python-levenshtein' 'python-pyenchant' 'texlive-bin' 'yelp' 'python-regex')
+depends=('python-gtkspellcheck' 'python-gobject' 'ttf-ubuntu-font-family' 'pandoc' 'dconf' 'desktop-file-utils' 'gnome-web-photo' 'hicolor-icon-theme' 'morituri' 'passenger' 'python' 'python-cairo' 'python-levenshtein' 'python-pyenchant' 'texlive-bin' 'yelp' 'python-regex')
 # I got the above dependencies from debtap
 
 package() {
