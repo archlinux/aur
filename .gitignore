@@ -1,4 +1,5 @@
 *.xz
 *.gz
-pkg
-src
+pkg/
+src/
+*.pdf
