@@ -12,7 +12,7 @@
 
 pkgbase=bcompare
 pkgname=('bcompare' 'bcompare-kde' 'bcompare-nautilus' 'bcompare-thunar' 'bcompare-cinnamon' 'bcompare-mate')
-pkgver=4.1.4.20978
+pkgver=4.1.5.21031
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.scootersoftware.com"
@@ -22,8 +22,8 @@ depends=('qt4' 'fontconfig' 'libsm' 'libxcursor' 'libxft' 'libxinerama'  'libxra
 makedepends=('sed')
 source_x86_64=("http://www.scootersoftware.com/${pkgbase}-${pkgver}.x86_64.tar.gz")
 source_i686=("http://www.scootersoftware.com/${pkgbase}-${pkgver}.i386.tar.gz")
-sha256sums_i686=('dcf25a953356f7cbd72653807fcf451ae46e3b6d506148b59b430fb71eeb69e2')
-sha256sums_x86_64=('81072dc4d6404f0f03d7e666e01d2d913f878498448e78495c448d93e3c504ab')
+sha256sums_i686=('516a9a3440e998ba855c50e4b8b14bbde2ed009b0a314fd41b64cdbd5acfeae8')
+sha256sums_x86_64=('8fc3f7036213726b395755d27c285ed4b6234a380128f0bc8a0d0e071503199d')
 options=('!strip') # Do not strip binaries because it breaks them down
 
  prepare() {
@@ -49,6 +49,7 @@ options=('!strip') # Do not strip binaries because it breaks them down
   # Apply some fixes on install.sh script
   cd "${pkgbase}-${pkgver}"
   sed -i 's|/usr/|${PREFIX}/usr/|g' install.sh
+  sed -i 's|${PREFIX}/usr/bin|/usr/bin|g' install.sh
   sed -i '/-h \/lib64/{N;N;d;}' install.sh
  }
 
