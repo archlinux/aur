@@ -8,7 +8,7 @@ pkgname=phpstorm
 _pkgname=PhpStorm
 pkgver=2016.1
 _pkgver=145.258.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight and Smart PHP IDE"
 arch=('x86_64' 'i686')
 options=('!strip')
@@ -31,12 +31,11 @@ package() {
   install -d -m 755 ${pkgdir}/etc/profile.d/
 
   cp -a ${srcdir}/${_pkgname}-${_pkgver} $pkgdir/opt/${pkgname}
-  # to force system java, have a look at /etc/profile.d/${pkgname}.sh
   # if using system java you may remove the bundled jre and save about 100M
   #rm -rf $pkgdir/opt/${pkgname}/jre
 
   ln -s /opt/$pkgname/bin/${pkgname}.sh $pkgdir/usr/bin/${pkgname}
   install -D -m 644 ${srcdir}/jetbrains-${pkgname}.desktop ${pkgdir}/usr/share/applications/
-  install -D -m 644 ${srcdir}/phpstorm.sh ${pkgdir}/etc/profile.d/
+  install -D -m 644 ${srcdir}/${pkgname}.sh ${pkgdir}/etc/profile.d/
   install -D -m 644 "${pkgdir}/opt/${pkgname}/bin/webide.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
