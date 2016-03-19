@@ -1,12 +1,6 @@
  
 pre_install() {
   if [ -f /opt/capanalysis/cfg/canalysis.cfg ]; then
-            if [ -d /opt/capanalysis/www/app/tmp/cache ]; then
-                rm -rf /opt/capanalysis/www/app/tmp/cache/models/*
-                rm -rf /opt/capanalysis/www/app/tmp/cache/views/*
-                rm -rf /opt/capanalysis/www/app/tmp/sessions/*
-                rm -rf /opt/capanalysis/www/app/tmp/logs/*
-            fi
             cp /opt/capanalysis/cfg/canalysis.cfg /opt/capanalysis/cfg/canalysis.cfg.backup
   fi
 
@@ -17,7 +11,10 @@ pre_install() {
             mv /opt/capanalysis/cfg/canalysis.cfg /opt/capanalysis/cfg/canalysis.cfg.last
             cp /opt/capanalysis/cfg/canalysis.cfg.backup /opt/capanalysis/cfg/canalysis.cfg
   fi
-      
+    mkdir -p /opt/capanalysis/www/app/tmp/cache/models/
+    mkdir -p  /opt/capanalysis/www/app/tmp/cache/views/
+    mkdir -p  /opt/capanalysis/www/app/tmp/sessions/
+    mkdir -p  /opt/capanalysis/www/app/tmp/logs/
     chown -R http:http /opt/capanalysis
     echo "Rember to paste this line"
     echo "   # Capanalysis"
@@ -29,11 +26,18 @@ pre_install() {
 
 post_remove(){
    if [ -d /opt/capanalysis ]; then
-            rm -rf /opt/capanalysis
+            if [ -d /opt/capanalysis/www/app/tmp/cache ]; then
+                rm -rf /opt/capanalysis/www/app/tmp/cache/models/*
+                rm -rf /opt/capanalysis/www/app/tmp/cache/views/*
+                rm -rf /opt/capanalysis/www/app/tmp/sessions/*
+                rm -rf /opt/capanalysis/www/app/tmp/logs/*
+            fi
             echo 'drop database capanalysis;' > /tmp/dbrm
             echo 'drop user capana;' >> /tmp/dbrm
             sudo -u postgres psql -f /tmp/dbrm
             rm -f /tmp/dbrm
    fi
-  echo "Don't forget to restore php.ini and httpd.conf files"
+  echo "Don't forget to:"
+  echo "                 restore php.ini and httpd.conf files"
+  echo "                 delete capanalysis folder"
 }
