@@ -2,7 +2,7 @@
 
 _plug=fmtconv
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=r18
+pkgver=r19
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url='http://forum.doom9.org/showthread.php?t=166504'
 license=('custom:WTFPL')
 depends=('vapoursynth')
 source=("http://ldesoras.free.fr/src/vs/${_plug}-${pkgver}.zip")
-sha1sums=('d7af1d95b8c37adc7e2fb6a59a751933355a882f')
+sha1sums=('d9344c9a83d5392a579f01a2a68fc486920a3f55')
 
 prepare() {
   rm -fr src/VapourSynth.h
