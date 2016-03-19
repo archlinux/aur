@@ -4,9 +4,9 @@ pkgname=firefox-beta-zh-cn
 _pkgname=firefox-beta
 pkgver=46.0b2
 pkgrel=3
-pkgdesc="Chinese Simplified For Firefox ESR"
+pkgdesc="Chinese Simplified For Firefox Beta"
 arch=('i686' 'x86_64')
-url="https://www.mozilla.org/zh-CN/firefox/channel/#esr"
+url="https://www.mozilla.org/zh-CN/firefox/channel/#beta"
 license=('MPL' 'GPL' 'LGPL')
 depends=('alsa-lib' 'dbus-glib' 'desktop-file-utils' 'gtk2' 'gtk3' 'hicolor-icon-theme'
          'icu' 'libevent' 'libvpx' 'libxt' 'mime-types' 'nss' 'sqlite')
