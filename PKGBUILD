@@ -26,7 +26,7 @@ build() {
 }
 
 check() {
-	GOPATH="$GOPATH:$srcdir" go test -v -x ${_gourl}
+	GOPATH="$GOPATH${GOPATH+:}$srcdir" go test -v -x ${_gourl}
 }
 
 package() {
