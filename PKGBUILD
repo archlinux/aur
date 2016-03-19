@@ -6,7 +6,7 @@
 pkgname=oscam-git
 pkgver=11213
 _gitrev=64c739f95fe4f6f9dbf0d6693606743185c15ff6
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Conditional Access Module software"
 url="http://www.streamboard.tv/oscam"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -17,15 +17,22 @@ optdepends=('pcsclite: for use with PC/SC readers'
             'ccid: PC/SC reader generic driver')
 install='oscam.install'
 source=("git+http://www.oscam.cc/git/oscam-mirror#commit=$_gitrev"
+        'oscam-remove-sslv3.diff'
         'oscam.service'
         'oscam.sysuser')
 md5sums=('SKIP'
+         '6dbe54b15419308a343bea08aad6d65c'
          '596b902e3f4a66d39e7f993437feec74'
          'be0d9d7a5fdd8cf4918c4ea91cebd989')
 
 pkgver() {
   cd "$srcdir/oscam-mirror"
   git log -1 | grep git-svn-id | cut -d'@' -f2 | cut -d' ' -f1
+}
+
+prepare() {
+  cd "$srcdir/oscam-mirror"
+  patch -p1 -i "$srcdir/oscam-replace-sslv3.diff"
 }
 
 build() {
