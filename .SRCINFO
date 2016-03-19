@@ -1,0 +1,21 @@
+pkgbase = rocket-depot-git
+        pkgdesc = rdesktop/xfreerdp frontend - git version
+        pkgver = r290.1ce2db4
+        pkgrel = 1
+        url = https://github.com/robled/rocket-depot
+        arch = any
+        license = GPL3
+        makedepends = git
+        depends = python2-setuptools
+        depends = xterm
+        depends = rdesktop
+        depends = freerdp
+        depends = python2-gobject2
+        provides = rocket-depot
+        conflicts = rocket-depot
+        source = git://github.com/robled/rocket-depot.git
+        validpgpkeys = B824D205724FFCA441BC7EB8FB2520321683174C
+        md5sums = SKIP
+
+pkgname = rocket-depot-git
+
