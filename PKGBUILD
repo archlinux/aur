@@ -2,13 +2,14 @@
 
 pkgname=pantheon-notes-bzr
 pkgver=r10
-pkgrel=1
+pkgrel=2
 pkgdesc='Pantheon note taking app'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/pantheon-notes'
 license=('GPL3')
 groups=('pantheon-unstable')
 depends=('clutter-gtk' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgee' 'wayland'
+         'gtksourceview3'
          'libgranite.so')
 makedepends=('bzr' 'cmake' 'vala')
 provides=('pantheon-notes')
