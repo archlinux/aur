@@ -1,0 +1,16 @@
+pkgbase = pytg
+	pkgdesc = Connect to the Telegram CLI, receive and send Telegram messages.
+	pkgver = 0.4.9
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/pytg/0.4.9
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	depends = python-dictobject
+	depends = python-luckydonald-utils>=0.17
+	source = https://pypi.python.org/packages/source/p/pytg/pytg-0.4.9.tar.gz
+	sha256sums = b0c3f33a1a90b5bc2252a05f3fed34e53001ac9ac647f24a1e13306307d2f84d
+
+pkgname = pytg
+
