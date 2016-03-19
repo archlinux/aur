@@ -7,7 +7,7 @@
 # Contributor: Adrian C. <anrxc..sysphere.org>
 
 pkgname=xf86-video-intel-git
-pkgver=2.99.917.392.g8090a65
+pkgver=2.99.917+560+gd167280
 pkgrel=1
 
 pkgdesc="X.org Intel i810/i830/i915/945G/G965+ video drivers"
@@ -16,7 +16,7 @@ arch=("i686" "x86_64")
 license=("custom")
 
 depends=("intel-dri" "libxvmc" "libpciaccess" "libdrm" "dri2proto" "xcb-util" "libxfixes" "udev")
-makedepends=("git" "xorg-server-devel" "X-ABI-VIDEODRV_VERSION=19" "libx11"
+makedepends=("git" "xorg-server-devel" "X-ABI-VIDEODRV_VERSION=20" "libx11"
              "xf86driproto" "glproto" "resourceproto" "scrnsaverproto" "mesa" "libxrender")
 provides=("xf86-video-intel")
 conflicts=("xf86-video-intel")
