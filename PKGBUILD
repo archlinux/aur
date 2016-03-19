@@ -2,7 +2,7 @@
 
 _pkgname=podget
 pkgname=$_pkgname-cvs
-pkgver=20150609
+pkgver=20160319
 pkgrel=1
 pkgdesc="Simple tool to automate downloading of podcasts"
 arch=('any')
@@ -29,9 +29,13 @@ prepare() {
 
 package() {
   cd $_pkgname
+
   make prefix=/usr DESTDIR="$pkgdir" changelog.gz install
+
   install -Dm644 README "$pkgdir/usr/share/$pkgname/README"
-  install -dm755 "$pkgdir/usr/share/$_pkgname/scripts/"
-  cp -a SCRIPTS/* "$pkgdir/usr/share/$_pkgname/scripts/"
+
+  cp -r SCRIPTS/ "$pkgdir/usr/share/$pkgname/scripts/"
+  find "$pkgdir/usr/share/$pkgname/scripts/" -type d -exec chmod 755 '{}' \;
+  find "$pkgdir/usr/share/$pkgname/scripts/" -type f -exec chmod 644 '{}' \;
 }
 
