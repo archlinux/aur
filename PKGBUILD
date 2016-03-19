@@ -1,14 +1,14 @@
 # Maintainer: Lance Chen <cyen0312@gmail.com>
 
 pkgname=jo
-pkgver=0.7
+pkgver=1.0
 pkgrel=1
 pkgdesc="JSON output from a shell"
 arch=(any)
 url="https://github.com/jpmens/jo"
 license=('GPL2')
 source=("https://github.com/jpmens/jo/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('4cfe59a03e8ce21105c93f1c74bdba09')
+md5sums=('529373bef809ab1281b9e3c01c65f331')
 validpgpkeys=()
 
 build() {
