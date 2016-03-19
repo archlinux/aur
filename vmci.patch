@@ -1,11 +1,5 @@
- vmci/linux/{ => }/driver.c             | 15 ++++++++++++++-
- vmci/linux/{ => }/vmciKernelIf.c       | 17 +++++++++++++++++
- vmci/shared/{ => }/vm_device_version.h |  2 ++
- vmci/shared/{ => }/vmci_kernel_if.h    |  2 +-
- 4 files changed, 34 insertions(+), 2 deletions(-)
-
 diff --git a/vmci/linux/driver.c b/vmci/linux/driver.c
-index 64a3cca..4bde0cc 100644
+index 64a3cca..08ec0c5 100644
 --- a/vmci/linux/driver.c
 +++ b/vmci/linux/driver.c
 @@ -26,6 +26,7 @@
@@ -61,6 +55,23 @@ index 64a3cca..4bde0cc 100644
        guestDeviceInit = FALSE;
     }
  
+@@ -2479,12 +2492,16 @@ vmci_exit(void)
+ 
+       VMCI_HostCleanup();
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 3, 0)
+       retval = misc_deregister(&linuxState.misc);
+       if (retval) {
+          Warning(LGPFX "Module %s: error unregistering\n", VMCI_MODULE_NAME);
+       } else {
+          Log(LGPFX"Module %s: unloaded\n", VMCI_MODULE_NAME);
+       }
++#else
++      misc_deregister(&linuxState.misc);
++#endif
+ 
+       hostDeviceInit = FALSE;
+    }
 diff --git a/vmci/linux/vmciKernelIf.c b/vmci/linux/vmciKernelIf.c
 index 8b1788f..15766bf 100644
 --- a/vmci/linux/vmciKernelIf.c
