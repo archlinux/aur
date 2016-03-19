@@ -1,0 +1,17 @@
+pkgbase = rainicorn
+	pkgdesc = Rainicorn is a tool intended for use by Rust IDEs.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/RustDT/Rainicorn
+	arch = x86
+	arch = x86_64
+	license = APACHE
+	makedepends = cargo
+	depends = gcc-libs
+	provides = rainicorn
+	conflicts = rainicorn-git
+	source = rainicorn::git+https://github.com/RustDT/Rainicorn.git
+	sha1sums = SKIP
+
+pkgname = rainicorn
+
