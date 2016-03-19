@@ -6,7 +6,8 @@ arch=(any)
 url='http://elementary.io'
 license=(LGPL)
 install='pantheon-bzr-meta.install'
-depends=(audience-bzr
+depends=(appcenter-bzr
+	audience-bzr
 	cerbere-bzr
 	contractor-bzr
 	elementary-dpms-helper-bzr
