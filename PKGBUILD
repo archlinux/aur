@@ -2,7 +2,7 @@
 # Maintainer: Jérôme M. Berger <jerome.berger@sagemcom.com>
 
 pkgname=abi-compliance-checker
-pkgver=1.99.14
+pkgver=1.99.17
 pkgrel=1
 pkgdesc="Check ABI compatibility between library versions"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://ispras.linuxbase.org/index.php/ABI_compliance_checker"
 license=('GPL')
 depends=(gcc binutils perl)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/lvc/abi-compliance-checker/archive/${pkgver}.tar.gz)
-md5sums=('e9c4575ea8433b957314caef99af4831')
+md5sums=('a8866fd26ef1445c6e806f7681356b0e')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
