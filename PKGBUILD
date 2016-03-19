@@ -1,21 +1,21 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.28
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-text-xslate'
-pkgver='3.3.3'
+pkgver='3.3.9'
 pkgrel='1'
 pkgdesc="Scalable template engine for Perl5"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-data-messagepack>=0.38' 'perl-mouse>=0.61' 'perl>=5.8.1')
+depends=('perl-data-messagepack>=0.38' 'perl-mouse>=2.4.5' 'perl>=5.8.1')
 makedepends=('perl-file-copy-recursive')
 checkdepends=('perl-test-requires')
-url='http://search.mcpan.org/dist/Text-Xslate'
-source=('http://search.mcpan.org/CPAN/authors/id/S/SY/SYOHEX/Text-Xslate-3.3.3.tar.gz')
-md5sums=('95d1195448276d450e39c696636abb44')
-sha512sums=('d20aee0118f3e32c7d4efd2681bcf9af2fd29a2e9f81753804e7fe9bbe5172cf8ed2a8f876661c823505fce27c82a707d39bfb41149a6296da821f140212f8d9')
-_distdir="Text-Xslate-3.3.3"
+url='https://metacpan.org/release/Text-Xslate'
+source=('http://search.cpan.org/CPAN/authors/id/S/SY/SYOHEX/Text-Xslate-3.3.9.tar.gz')
+md5sums=('4fc78a4cc4558cd7c73ae63f9f79ca9c')
+sha512sums=('5463fd0c2e5ce00d8ebf438863a5ed8f937da6084491bfade9fd175beb9fc2f9abb0c26c889211ddc7c007b45cd50d82cd873ac1c4d6e92cc97b9f430270dd84')
+_distdir="Text-Xslate-3.3.9"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -40,7 +40,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
