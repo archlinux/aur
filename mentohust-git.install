@@ -2,3 +2,7 @@ post_install () {
     chmod a+xs "/usr/bin/mentohust"
     echo ">>> For first time, you must run mentohust to configure once."
 }
+post_upgrade () {
+    chmod a+xs "/usr/bin/mentohust"
+    echo ">>> For first time, you must run mentohust to configure once."
+}
