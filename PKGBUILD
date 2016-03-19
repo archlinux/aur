@@ -3,12 +3,12 @@
 
 pkgname=cadabra
 pkgver=1.33
-pkgrel=4
+pkgrel=5
 pkgdesc="A computer algebra system designed specifically for the solution of problems encountered in field theory."
 arch=('i686' 'x86_64')
 url="http://cadabra.phi-sci.com/"
 license=('GPL')
-depends=('conlie' 'modglue' 'gmp' 'pcre') # for gui: 'gtkmm' 'dvipng' 'texlive' 'breqn' http://www.ctan.org/pkg/breqn
+depends=('lie' 'modglue' 'gmp' 'pcre' 'gtkmm' 'texlive-core') # for gui: 'gtkmm' 'dvipng' 'texlive' 'breqn' http://www.ctan.org/pkg/breqn
 install="$pkgname.install"
 source=("http://cadabra.phi-sci.com/$pkgname-$pkgver.tar.gz" "package.patch")
 md5sums=('cee8ae23c169958aba09b64e4ea479ce'
