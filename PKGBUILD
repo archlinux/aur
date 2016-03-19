@@ -1,37 +1,42 @@
 # Contributor: M0Rf30
 
 pkgname=capanalysis
-pkgver=1.1.3
+pkgver=v1.2.0
 pkgrel=1
 arch=(i686 x86_64)
 pkgdesc="PCAP files from another point of view"
 url="http://www.capanalysis.net/"
 license=('GPL')
-_arch='amd64'
-[[ "${CARCH}" = i686 ]] && _arch='i386'
-depends=('glibc' 'libpcap' 'libpqxx' 'sqlite' 'openssl098' 'zlib' 'wireshark-cli' 'apache' 'php-apache' 'php-sqlite' 'php-pgsql' 'postgresql')
-
-source=(http://www.capanalysis.net/pkg/${pkgname}_${pkgver}-trial_${_arch}.deb
+depends=('glibc' 'libpcap' 'libpqxx' 'sqlite' 'openssl' 'zlib' 'wireshark-cli' 'apache' 'php-apache' 'php-sqlite' 'php-pgsql' 'postgresql')
+makedepends=(xxd xplico)
+source=('capanalysis::git+https://github.com/M0Rf30/capanalysis.git'
 	capanalysis.service
 	capana.conf)
 install=capanalysis.install
-md5sums=('5964cb23c2442013c8fae4ae0f5f9390'
-	 '9c33942e477795f97539cc7e57e404cf'
-	 '9c8e3ca78f5dd0b8616b6c8b1e5e4e1e')
-[[ "${CARCH}" = i686 ]] && md5sums[0]='a8ec6f3c02118ee8597683c73a14eaa0'
 
+prepare() {
+    cd capanalysis
+    make pkgbin
+    make subdir capanalysis check_version
+    mkdir ../xplico
+    cd ../xplico
+    ln -sr /opt/xplico/bin/xplico .
+    ln -sr /opt/xplico/bin/modules/ .
+}
 package() {
-    cd $srcdir/
-    tar xvf data.tar.gz
-    mv {etc,opt,usr} $pkgdir
+    cd capanalysis
+    make INSTALL_DIR=$pkgdir/opt/capanalysis install
     mkdir -p $pkgdir/etc/httpd/conf/extra
-    cp capana.conf $pkgdir/etc/httpd/conf/extra/httpd-capana.conf
-    rm -r $pkgdir/etc/{apache2,init.d}
-    rm -r $pkgdir/usr/share/applications
-    install -Dm644 capanalysis.service "${pkgdir}"/usr/lib/systemd/system/capanalysis.service
-    sed -i 's/sudo service capanalysis start/sudo systemctl start capanalysis.service/g' $pkgdir/opt/capanalysis/www/capinstall/app/pages/default/default.php
-    sed -i 's/sudo service postgresql restart/sudo systemctl start postgresql.service/g' $pkgdir/opt/capanalysis/www/capinstall/app/pages/default/default.php
+    cp ../capana.conf $pkgdir/etc/httpd/conf/extra/httpd-capana.conf
+    install -Dm644 ../capanalysis.service "${pkgdir}"/usr/lib/systemd/system/capanalysis.service
 
-    ln -s -r /usr/lib/libpcap.so $pkgdir/usr/lib/libpcap.so.0.8
 }
 
+pkgver() {
+  cd capanalysis
+  echo $(git tag)
+}
+
+md5sums=('SKIP'
+         '9c33942e477795f97539cc7e57e404cf'
+         '9c8e3ca78f5dd0b8616b6c8b1e5e4e1e')
