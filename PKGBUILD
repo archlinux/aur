@@ -2,14 +2,14 @@
 
 pkgname=appcenter-bzr
 pkgver=r153
-pkgrel=1
+pkgrel=2
 pkgdesc='The indie, open, pay-what-you-want app store'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/appcenter'
 license=('GPL3')
 groups=('pantheon-unstable')
 depends=('clutter-gtk' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgee' 'wayland'
-         'appstream-glib' 'appstream' 'archlinux-appstream-data'
+         'packagekit' 'appstream-glib' 'appstream' 'archlinux-appstream-data'
          'libgranite.so')
 makedepends=('bzr' 'cmake' 'vala' 'cmake-elementary-bzr')
 provides=('appcenter')
