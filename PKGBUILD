@@ -4,7 +4,7 @@ pkgname=ricin-git
 _pkgname=Ricin
 _submodule=tox-vapi
 pkgver=0.452.b519ec3
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight and Fully-Hackable Tox client powered by Vala & Gtk3"
 url="https://github.com/RicinApp/Ricin"
 arch=('i686' 'x86_64')
@@ -22,8 +22,6 @@ prepare() {
     git submodule init
     git config submodule.${_submodule}.url $srcdir/${_submodule}
     git submodule update
-    echo 'compile: ./build/' >> Makefile
-    echo '	type ninja-build 2>/dev/null && ninja-build -C build || ninja -C build' >> Makefile
 }
 
 pkgver() {
@@ -33,11 +31,18 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    mkdir build
-    meson.py . build
-    make compile
+    mkdir build > /dev/null
+    if [ -f "/usr/bin/meson" ]; then
+        meson . build
+    else
+        meson.py . build
+    fi
+    make release
 }
 
 package() {
-    install -Dm755 "${srcdir}/${_pkgname}/build/${_pkgname}" "${pkgdir}/usr/bin/ricin"
+    cd "${srcdir}/${_pkgname}"
+
+    install -Dm644 "misc/ricin.desktop" "${pkgdir}/usr/share/applications/ricin.desktop"
+    install -Dm755 "build/${_pkgname}" "${pkgdir}/usr/bin/ricin"
 }
