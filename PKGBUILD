@@ -1,30 +1,39 @@
 # Maintainer: David Manouchehri <manouchehri@riseup.net>
 
-pkgname="bindiff"
+pkgname=bindiff
 pkgver=4.2
-pkgrel=1
-pkgdesc="A comparison tool for binary files, that assists vulnerability researchers and engineers to quickly find differences and similarities in disassembled code."
+pkgrel=2
+pkgdesc="A comparison tool for binary files that assists vulnerability researchers and engineers to quickly find differences and similarities in disassembled code."
+arch=('i686' 'x86_64')
 url="http://www.zynamics.com/bindiff.html"
-license=('unknown')
-source=("https://dl.google.com/dl/zynamics/bindiff420-debian8-amd64.deb"
-        "https://dl.google.com/dl/zynamics/bindiff-license-key.zip")
-# https://dl.google.com/dl/zynamics/bindiff420-debian8-i386.deb
-sha512sums=('18f20c1a5f9fe2c305e89f960b42b21107d03775a86ba1a50f02a7bf0217dd9793ffb91c55b5f83cbb398ebb678f61a7ca7c6d9cfbd721a9482af700ea96746a'
-            'e07258362f04d250c6f00c4ca3c6e92fc2b014c63a9ad8b36d813591053c64118283724a594fbae3a4517cba112a952bcc7ab4557cd1e14ab711076fd70bcc7e')
-arch=('x86_64') # arch=('i686' 'x86_64')
-depends=('java-runtime')
+license=('custom')
+depends=('desktop-file-utils' 'java-runtime>=8')
+options=('!strip')
+install=${pkgname}.install
+backup=('etc/opt/zynamics/BinDiff/bindiff.xml' 'etc/opt/zynamics/BinDiff/config.xml')
+source=("https://dl.google.com/dl/zynamics/bindiff-license-key.zip")
+source_i686=("https://dl.google.com/dl/zynamics/bindiff420-debian8-i386.deb")
+source_x86_64=("https://dl.google.com/dl/zynamics/bindiff420-debian8-amd64.deb")
+sha1sums=("95715a8bd7469106fc60b03f94f3cc87604e354c")
+sha1sums_i686=('49cdd6ae7ebe5b1813a5fcafaae9fde19005c824')
+sha1sums_x86_64=('38fbea8070495fc8730d7c86eae03bc68fde291f')
 
 package() {
-  cd "${srcdir}/"
-  tar -xvf 'data.tar.xz' -C "${pkgdir}/"
+  # Extract
+  tar -xJf data.tar.xz --exclude="usr/share/lintian" -C "${pkgdir}"/
 
-  install -m 0444 'zynamics BinDiff License Key.txt' "${pkgdir}/opt/zynamics/BinDiff/bin/"
+  # Install the license key
+  install -m 0644 "zynamics BinDiff License Key.txt" "${pkgdir}/opt/zynamics/BinDiff/bin/"
 
-  mkdir -p "${pkgdir}/usr/bin/"
+  # Install links to the binaries
+  install -dm 755 "${pkgdir}/usr/bin"
   ln -s "/opt/zynamics/BinDiff/bin/bindiff.sh" "${pkgdir}/usr/bin/bindiff"
+  ln -s "/opt/zynamics/BinDiff/bin/differ" "${pkgdir}/usr/bin/differ"
 
-  printf "\033[31;1mYou will need to fetch the IDA plugins.\n"
-  printf "https://dl.google.com/dl/zynamics/bindiff420-win-pluginsonly.zip\n"
+  # Install license files
+  install -dm 755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -s "/usr/share/doc/${pkgname}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/"
+  ln -s "/opt/zynamics/BinDiff/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
 # vim:set et sw=2 sts=2 tw=80:
