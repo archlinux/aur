@@ -14,6 +14,11 @@ then
   fi
 fi
 
-# run it in a temporary WINEPREFIX in /tmp/arch to not mess with default ~/.wine
-# also ~/.wine might be a user-defined 32 bits prefix, which will fail to run x86_64 exes
-WINEPREFIX=~/.wine-@TRIPLE@ wine "$@"
+# run it in a custom WINEPREFIX to not mess with default ~/.wine
+# also default prefix might be a 32 bits prefix, which will fail to run x86_64 exes
+if ! test -d "${WINEPREFIX}"
+then
+  WINEPREFIX=~/.wine-@TRIPLE@ wine "$@"
+else
+  wine "$@"
+fi
