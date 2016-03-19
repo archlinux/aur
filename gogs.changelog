@@ -1,3 +1,14 @@
+2016-03-19
+
+	* V0.9.13
+	Bug fix: Site admin cannot see private repositories on organization home page #2372
+	Bug fix: Non-local users can reset their password #2811
+	Bug fix: 500 when compare branches with name contains '#' #2822
+	Bug fix: Potential concurrency issue with builtin SSH server #2850
+	Improvement: Set HTML meta values for repository #2670
+	Improvement: Able to search user with username and full name #2792
+	Features: Support search user and repository on both explore page and admin panel #13
+
 2016-03-07
 
 	* V0.9.0
