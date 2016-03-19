@@ -6,7 +6,7 @@ pkgname=webstorm
 _pkgname=WebStorm
 pkgver=2016.1
 _pkgver=145.258.3
-pkgrel=2
+pkgrel=3
 pkgdesc="JavaScript IDE and HTML editor."
 arch=('x86_64' 'i686')
 options=('!strip')
@@ -29,9 +29,8 @@ package() {
   install -d -m 755 ${pkgdir}/etc/profile.d/
 
   cp -a ${srcdir}/${_pkgname}-${_pkgver} $pkgdir/opt/${pkgname}
-  # to force system java, have a look at /etc/profile.d/${pkgname}.sh
   # if using system java you may remove the bundled jre and save about 100M
-  rm -rf $pkgdir/opt/${pkgname}/jre
+  #rm -rf $pkgdir/opt/${pkgname}/jre
 
   ln -s /opt/$pkgname/bin/${pkgname}.sh $pkgdir/usr/bin/${pkgname}
   install -D -m 644 ${srcdir}/jetbrains-${pkgname}.desktop ${pkgdir}/usr/share/applications/
