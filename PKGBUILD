@@ -22,6 +22,7 @@ depends=(appcenter-bzr
 	pantheon-files-bzr
 	pantheon-notes-bzr
 	pantheon-session-bzr
+	pantheon-terminal-bzr
 	plank-theme-pantheon-bzr
 	screenshot-tool-bzr
 	slingshot-launcher-bzr
