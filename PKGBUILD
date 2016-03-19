@@ -4,10 +4,10 @@
 
 pkgname=bibletime-git
 _gitname="bibletime"
-pkgver=v2.10_rc1.r162.g6748de7
+pkgver=v2.10_rc1.r796.gfb42edb
 pkgrel=1
 epoch=2
-pkgdesc="Bible study tool for KDE4."
+pkgdesc="Bible study tool."
 arch=('x86_64' 'i686')
 url="http://www.bibletime.info/"
 license=('GPL2')
