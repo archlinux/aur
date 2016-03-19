@@ -1,13 +1,12 @@
 pkgname=pantheon-bzr-meta
 pkgver=20160319
-pkgrel=1
+pkgrel=2
 pkgdesc='Meta package for the complete Pantheon desktop & apps'
 arch=(any)
 url='http://elementary.io'
 license=(LGPL)
 install='pantheon-bzr-meta.install'
-depends=(appcenter-bzr
-	audience-bzr
+depends=(audience-bzr
 	cerbere-bzr
 	contractor-bzr
 	elementary-dpms-helper-bzr
