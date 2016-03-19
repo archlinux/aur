@@ -1,5 +1,4 @@
-# Maintainer: Panagiotis Anastasiadis
-# Contributor: graysky <graysky AT archlinux DOT us>
+# Maintainer: graysky <graysky AT archlinux DOT us>
 # Contributor: WAntilles <wantilles@adslgr.com>
 # Contributor: Lucas Tsatiris
 
@@ -7,7 +6,7 @@ pkgname=systester
 pkgname=(systester systester-cli)
 _pkgname=systester
 pkgver=1.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc="System Stability Tester is a RAM/CPU burning and benchmarking program based on calculating pi."
 license=('GPL')
 arch=('i686' 'x86_64')
