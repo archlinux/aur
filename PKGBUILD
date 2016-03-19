@@ -1,6 +1,6 @@
 # Maintainer: Kobus van Schoor <pbscube at gmail dot com>
 pkgname=dotgit
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="A simple bash program to backup all your dotfiles (read multiple hosts) in a single git repo"
 url="http://github.com/Cube777/dotgit"
@@ -16,4 +16,5 @@ prepare() {
 
 package() {
 	install -Dm755 "$srcdir/$pkgname/dotgit" "$pkgdir/usr/bin/dotgit"
+	install -Dm644 "$srcdir/$pkgname/bash_completion" "$pkgdir/usr/share/bash-completion/completions/dotgit"
 }
