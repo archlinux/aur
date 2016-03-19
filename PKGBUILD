@@ -1,6 +1,6 @@
 # Maintainer: A. Richard <dubitae@gmail.com>
 pkgname=gmusicproxy-stable
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Let's stream Google Play Music using any media-player"
 arch=('any')
@@ -25,14 +25,14 @@ options=(!emptydirs)
 install=
 changelog=
 source=(
-    'https://github.com/diraimondo/gmusicproxy/archive/v1.0.3.tar.gz'
+    'https://github.com/diraimondo/gmusicproxy/archive/v1.0.4.tar.gz'
     'gmusicproxy.cfg.sample'
     'gmusicproxy.user.service'
     'gmusicproxy.system.service'
 )
 noextract=()
 md5sums=(
-    '644721458417e5f47ec766dbc66a9919'
+    '28408c8877e04c42e7680ca0eb2182b5'
     'e03e8f0937997fd8e86f60c3c28d1d26'
     'f4abb012aabe7eec77f3b7b83a61d404'
     '3edc1b7f6e5e47704f35e4cb6237a8be'
