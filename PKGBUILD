@@ -24,5 +24,5 @@ package() {
     python3 setup.py install --root="$pkgdir/" --optimize=1
 
     install -D -m644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -D -m644 example.ini "$pkgdir/etc/${_pkgname}.ini.skel"
+    install -D -m644 "${_pkgname}/example.ini" "$pkgdir/etc/${_pkgname}.ini.skel"
 }
