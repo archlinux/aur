@@ -1,17 +1,17 @@
 # Maintainer: OS Hazard <oshazard+aur@gmail.com>
 pkgname=withlock
-pkgver=0.4
-pkgrel=2
+pkgver=0.5
+pkgrel=1
 pkgdesc="A locking wrapper script to make sure that some program is not run more than once"
 url="http://github.com/poeml/withlock"
-license="Apache"
+license=('Apache')
 arch=('any')
 makedepends=('')
-depends=('python2')
+depends=('python')
 provides=('withlock' 'withlock-svn')
 replaces=('withlock-svn')
 source=("https://github.com/poeml/withlock/archive/master.tar.gz")
-md5sums=('18f2c2cb6f7b6356113a7f641d1d5cb3')
+md5sums=('c9e6cd3e5919115a06fa578894f800fc')
 
 package() {
   cd "${srcdir}/withlock-master"
