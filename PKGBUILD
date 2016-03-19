@@ -1,0 +1,53 @@
+pkgname=pantheon-bzr-meta
+pkgver=20160319
+pkgrel=1
+pkgdesc='Meta package for the complete Pantheon desktop & apps'
+arch=(any)
+url='http://elementary.io'
+license=(LGPL)
+install='pantheon-bzr-meta.install'
+depends=(appcenter-bzr
+	audience-bzr
+	cerbere-bzr
+	contractor-bzr
+	elementary-dpms-helper-bzr
+	elementary-icon-theme-bzr
+	gala-bzr
+	granite-bzr
+	gtk-theme-elementary-bzr
+	lightdm-pantheon-greeter-bzr
+	pantheon-backgrounds-bzr
+	pantheon-calculator-bzr
+	pantheon-default-settings-bzr
+	pantheon-files-bzr
+	pantheon-notes-bzr
+	pantheon-session-bzr
+	plank-theme-pantheon-bzr
+	screenshot-tool-bzr
+	slingshot-launcher-bzr
+	switchboard-bzr
+	switchboard-plug-about-bzr
+	switchboard-plug-applications-bzr
+	switchboard-plug-datetime-bzr
+	switchboard-plug-desktop-bzr
+	switchboard-plug-display-bzr
+	switchboard-plug-elementary-tweaks-bzr
+	switchboard-plug-keyboard-bzr
+	switchboard-plug-mouse-touchpad-bzr
+	switchboard-plug-network-bzr
+	switchboard-plug-notifications-bzr
+	switchboard-plug-power-bzr
+	switchboard-plug-printers-bzr
+	switchboard-plug-sharing-bzr
+	wingpanel-bzr
+	wingpanel-indicator-bluetooth-bzr
+	wingpanel-indicator-datetime-bzr
+	wingpanel-indicator-network-bzr
+	wingpanel-indicator-notifications-bzr
+	wingpanel-indicator-power-bzr
+	wingpanel-indicator-session-bzr
+	wingpanel-indicator-sound-bzr)
+
+package(){
+  /bin/true
+}
