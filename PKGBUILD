@@ -8,7 +8,7 @@
 #
 
 pkgname=electrum-git
-pkgver=20160301
+pkgver=20160319
 pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
