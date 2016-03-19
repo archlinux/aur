@@ -4,7 +4,7 @@
 pkgname=obfs4proxy
 _gitname=obfs4
 pkgver=0.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='The obfourscator - a pluggable transport proxy written in Go'
 arch=('i686' 'x86_64')
 url='https://gitweb.torproject.org/pluggable-transports/obfs4.git/'
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 build()	{
   cd "${srcdir}/${_gitname}/obfs4proxy"
-  GOPATH="$srcdir" GOBIN="." go get -v
+  GOPATH="$srcdir" GOBIN="$PWD" go get -v
 }
 
 package()	{
