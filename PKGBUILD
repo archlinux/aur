@@ -19,7 +19,7 @@ source=(https://download.jetbrains.com/webstorm/${_pkgname}-${pkgver}.tar.gz
         webstorm.sh)
 sha256sums=('0e14107d7527a6d204e42e39b436f3f8fe05a787c1cf63b13c2f286c85d46787'
             'df1155779ec87c1f9e3237a2b79a0bea1242f4f2661d3d0f5f152ef24af93166'
-            '803093f27b726fbd9feba542b9c5e481b95624e0d96c11b3025a12bc600ed545')
+            '0b55a4b9bb9269960390ab39c2c41b97f2f09b793c94f5ee9f9999372d4600d9')
 
 package() {
   install -d -m 755 ${pkgdir}/opt/
