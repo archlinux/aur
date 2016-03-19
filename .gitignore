@@ -1,0 +1,6 @@
+pkg/
+src/
+.AURINFO
+beatslash-lv2/
+beatslash-lv2-git-*.tar.xz
+beatslash-lv2-git-*.src.tar.gz
