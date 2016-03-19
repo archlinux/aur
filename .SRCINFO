@@ -1,6 +1,6 @@
 pkgbase = transmission-sequential
 	pkgver = 2.92
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.transmissionbt.com/
 	install = transmission-cli.install
 	arch = i686
@@ -15,20 +15,23 @@ pkgbase = transmission-sequential
 	makedepends = curl
 	makedepends = qt5-base
 	makedepends = libevent
+	makedepends = systemd
 	depends = curl
 	depends = libevent
 	depends = systemd
 	provides = transmission-cli
 	conflicts = transmission-cli
 	source = https://github.com/Mikayex/transmission/archive/2.92-seq.tar.gz
+	source = transmission-2.90-libsystemd.patch
 	md5sums = 432fa500829c7890a9278966dd65cb2a
+	md5sums = bcb54fdb9fec00992960d9bd3b449d4d
 
 pkgname = transmission-sequential-cli
 	pkgdesc = Fast, easy, and free BitTorrent client (CLI tools, daemon and web client) (+sequential patch)
 	install = transmission-cli.install
 	depends = curl
 	depends = libevent
-	depends = systemd
+	depends = libsystemd
 	provides = transmission-cli
 	conflicts = transmission-cli
 

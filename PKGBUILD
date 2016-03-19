@@ -5,18 +5,19 @@
 pkgbase=transmission-sequential
 pkgname=('transmission-sequential-cli' 'transmission-sequential-gtk' 'transmission-sequential-qt')
 pkgver=2.92
-pkgrel=1
+pkgrel=2
 svnrev=14714 #The SVN revision corresponding to the tag ${pkgver}
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.transmissionbt.com/"
 license=('MIT')
 depends=('curl' 'libevent' 'systemd')
-makedepends=('gtk3' 'intltool' 'curl' 'qt5-base' 'libevent')
+makedepends=('gtk3' 'intltool' 'curl' 'qt5-base' 'libevent' 'systemd')
 provides=('transmission-cli')
 conflicts=('transmission-cli')
 install=transmission-cli.install
-source=("https://github.com/Mikayex/transmission/archive/${pkgver}-seq.tar.gz")
-md5sums=('432fa500829c7890a9278966dd65cb2a')
+source=("https://github.com/Mikayex/transmission/archive/${pkgver}-seq.tar.gz" transmission-2.90-libsystemd.patch)
+md5sums=('432fa500829c7890a9278966dd65cb2a'
+         'bcb54fdb9fec00992960d9bd3b449d4d')
 
 _inarray() {
   local e
@@ -27,6 +28,7 @@ _inarray() {
 prepare() {
   cd transmission-$pkgver-seq
   echo ${svnrev} > REVISION
+  patch -p1 -i "$srcdir/transmission-2.90-libsystemd.patch"
 }
 
 build() {
@@ -42,15 +44,19 @@ build() {
 
 #Don't build if not needed since long to build
   if _inarray 'transmission-sequential-qt' "${pkgname[@]}"; then
-    pushd qt
+    cd qt
     qmake qtr.pro
     make
   fi
 }
 
+check() {
+  make check
+}
+
 package_transmission-sequential-cli() {
   pkgdesc="Fast, easy, and free BitTorrent client (CLI tools, daemon and web client) (+sequential patch)"
-  depends=('curl' 'libevent' 'systemd')
+  depends=('curl' 'libevent' 'libsystemd')
   provides=('transmission-cli')
   conflicts=('transmission-cli')
   install=transmission-cli.install
@@ -62,8 +68,8 @@ package_transmission-sequential-cli() {
       make -C "$dir" DESTDIR="$pkgdir" install
   done
 
-  install -D -m644 daemon/transmission-daemon.service "$pkgdir/usr/lib/systemd/system/transmission.service"
-  install -D -m644 COPYING "$pkgdir/usr/share/licenses/transmission-sequential-cli/COPYING"
+  install -Dm644 daemon/transmission-daemon.service "$pkgdir/usr/lib/systemd/system/transmission.service"
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/transmission-sequential-cli/COPYING"
 }
 
 package_transmission-sequential-gtk() {
@@ -79,7 +85,7 @@ package_transmission-sequential-gtk() {
 
   make -C gtk DESTDIR="$pkgdir" install
   make -C po DESTDIR="$pkgdir" install
-  install -D -m644 COPYING "$pkgdir/usr/share/licenses/transmission-sequential-gtk/COPYING"
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/transmission-sequential-gtk/COPYING"
 }
 
 package_transmission-sequential-qt() {
@@ -94,7 +100,7 @@ package_transmission-sequential-qt() {
 
   make -C qt INSTALL_ROOT="$pkgdir"/usr install
 
-  install -D -m644 COPYING "$pkgdir/usr/share/licenses/transmission-sequential-qt/COPYING"
-  install -D -m644 qt/icons/transmission.png "$pkgdir/usr/share/pixmaps/transmission-qt.png"
-  install -D -m644 qt/transmission-qt.desktop "$pkgdir/usr/share/applications/transmission-qt.desktop"
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/transmission-sequential-qt/COPYING"
+  install -Dm644 qt/icons/transmission.png "$pkgdir/usr/share/pixmaps/transmission-qt.png"
+  install -Dm644 qt/transmission-qt.desktop "$pkgdir/usr/share/applications/transmission-qt.desktop"
 }
