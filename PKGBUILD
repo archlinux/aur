@@ -1,12 +1,12 @@
 # Maintainer: Det <nimetonmaili g-mail>
 
 pkgname=lastpass
-pkgver=4.0.0
+pkgver=4.1.2
 _universal=$pkgver-1  # Version of the universal installer: https://lastpass.com/misc_download2.php
 _chromver=4.1.3-1     # The actual extensions' versions
 #_chromver_linux=4.0.6-1     # The actual extensions' versions
 _ffver=4.1.5a-1
-pkgrel=11
+pkgrel=1
 pkgdesc="The Universal LastPass installer for Firefox, Chrome, and Opera"
 arch=('i686' 'x86_64')
 url="https://lastpass.com"
