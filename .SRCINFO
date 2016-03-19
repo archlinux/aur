@@ -1,0 +1,19 @@
+pkgbase = linapple-git
+	pkgdesc = Apple 2e emulator
+	pkgver = 2015.06.29.g956f676
+	pkgrel = 1
+	url = https://github.com/timob/linapple
+	arch = i686
+	license = GPL2
+	makedepends = git
+	depends = sdl
+	depends = zlib
+	depends = libzip
+	depends = curl
+	provides = linapple
+	conflicts = linapple
+	source = linapple::git+https://github.com/timob/linapple.git
+	sha256sums = SKIP
+
+pkgname = linapple-git
+
