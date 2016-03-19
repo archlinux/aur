@@ -1,0 +1,6 @@
+post_install() {
+    echo "Copy '/etc/grade_change_emailer.ini.skel' to"
+    echo "'~/.config/grade_change_emailer/default.ini' and configure your"
+    echo "credentials.You can also set GRADE_CHANGE_EMAILER_CONFIG_FILE to a custom"
+    echo "location for the config file."
+}
