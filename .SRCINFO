@@ -1,7 +1,7 @@
 pkgbase = leo
 	pkgdesc = Literate programmer's editor, outliner, and project manager
-	pkgver = 5.1
-	pkgrel = 2
+	pkgver = 5.2
+	pkgrel = 1
 	url = http://leoeditor.com/
 	install = leo.install
 	arch = any
@@ -13,10 +13,10 @@ pkgbase = leo
 	optdepends = python-pyenchant: spellchecking support
 	optdepends = python-docutils: viewrendered support
 	optdepends = python-sphinx: documentation support
-	source = http://downloads.sourceforge.net/sourceforge/leo/Leo-5.1-final.zip
+	source = http://downloads.sourceforge.net/sourceforge/leo/Leo-5.2-final.zip
 	source = leo.desktop
 	source = leo.xml
-	sha256sums = 2d742f9825959ba5c7624d1179b9f3065e14e055c90272fbce199f91770de826
+	sha256sums = 2df0ac372be832a837157ce289ada1c34cf883aace5cf760df62ae8ceeb6858f
 	sha256sums = 7b326791378eefedecee2474c4e1a497838d2a06ff4259a195d817c38588395b
 	sha256sums = 630852279324b0d9acf656c4684f16777d64f49b4062bd101c5cddbfc33c82cb
 
