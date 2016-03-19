@@ -1,0 +1,15 @@
+pkgbase = python-usersettings
+	pkgdesc = Python module for easily managing persistent settings using an editable format and stored in an OS-appropriate location.
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/usersettings/1.0.7
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = python-appdirs
+	source = https://pypi.python.org/packages/source/u/usersettings/usersettings-1.0.7.tar.gz
+	sha256sums = c48c48f7bc1f00facc74da5ecfb6e1d95c66fc46d9e054c774958570f780d535
+
+pkgname = python-usersettings
+

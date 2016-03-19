@@ -1,0 +1,51 @@
+From c2bd739181bed34c8b6a916d5ee849568fd2301f Mon Sep 17 00:00:00 2001
+From: Matt Russell <mgrbyte@users.noreply.github.com>
+Date: Sun, 27 Sep 2015 14:55:58 +0100
+Subject: [PATCH] Python3 compat
+
+---
+ usersettings.py | 16 +++++++++++-----
+ 1 file changed, 11 insertions(+), 5 deletions(-)
+
+diff --git a/usersettings.py b/usersettings.py
+index bf46267..7b55c29 100644
+--- a/usersettings.py
++++ b/usersettings.py
+@@ -2,9 +2,15 @@
+ """
+ Provide interface for persistent portable editable user settings
+ """
+-import os
+-import ConfigParser
+ import ast
++import os
++import sys
++
++PY3 = sys.version_info[0] == 3
++if PY3:
++    import configparser
++else:
++    import ConfigParser as configparser
+ 
+ import appdirs
+ 
+@@ -44,7 +50,7 @@ def load_settings(self):
+             super(Settings, self).__setitem__(key, value)
+ 
+         # Load the stored values
+-        parser = ConfigParser.RawConfigParser()
++        parser = configparser.RawConfigParser()
+         try:
+             with open(self.settings_file, 'r') as settings_fp:
+                 parser.readfp(settings_fp)
+@@ -75,8 +81,8 @@ def load_settings(self):
+     def save_settings(self):
+         """ Write the settings data to disk """
+         if not os.path.exists(self.settings_directory):
+-            os.makedirs(self.settings_directory, 0755)
+-        parser = ConfigParser.RawConfigParser()
++            os.makedirs(self.settings_directory, 0o755)
++        parser = configparser.RawConfigParser()
+         parser.add_section('settings')
+         for key, value in self.items():
+             parser.set('settings', key, value)
