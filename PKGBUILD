@@ -1,6 +1,6 @@
 pkgname=pantheon-bzr-meta
 pkgver=20160319
-pkgrel=2
+pkgrel=3
 pkgdesc='Meta package for the complete Pantheon desktop & apps'
 arch=(any)
 url='http://elementary.io'
@@ -22,7 +22,6 @@ depends=(appcenter-bzr
 	pantheon-files-bzr
 	pantheon-notes-bzr
 	pantheon-session-bzr
-	pantheon-terminal-bzr
 	plank-theme-pantheon-bzr
 	screenshot-tool-bzr
 	slingshot-launcher-bzr
