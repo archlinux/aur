@@ -1,0 +1,11 @@
+diff -Naur bluez-5.38/tools/hciattach_bcm43xx.c bluez-5.38-patched/tools/hciattach_bcm43xx.c
+--- bluez-5.38/tools/hciattach_bcm43xx.c	2015-03-11 12:01:57.000000000 +0200
++++ bluez-5.38-patched/tools/hciattach_bcm43xx.c	2016-03-19 21:56:11.485964208 +0200
+@@ -380,6 +380,7 @@
+ 			return -1;
+ 		}
+ 
++		sleep(1);
+ 		if (bcm43xx_reset(fd))
+ 			return -1;
+ 	}
