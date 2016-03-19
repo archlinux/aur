@@ -1,0 +1,9 @@
+[Unit]
+Description=NodeQuery Timer
+
+[Timer]
+OnBootSec=3min
+OnUnitActiveSec=3min
+
+[Install]
+WantedBy=timers.target

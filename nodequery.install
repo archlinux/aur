@@ -1,0 +1,8 @@
+readonly PKGNAME="nodequery"
+post_install() {
+	useradd -rs /usr/bin/nologin "${PKGNAME}"
+	chown -R "${PKGNAME}:${PKGNAME}" "/etc/${PKGNAME}"
+	chmod -R 700 "/etc/${PKGNAME}"
+
+	echo "NodeQuery is ready. In order to activate it you should put your access token in /etc/nodequer/nq-auth.log and then enable/start nodequery.timer."
+}

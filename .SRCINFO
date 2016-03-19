@@ -1,0 +1,19 @@
+pkgbase = nodequery
+	pkgdesc = A lightweight and easy to use Linux server monitoring service.
+	pkgver = 0.7.7
+	pkgrel = 1
+	url = https://nodequery.com
+	install = nodequery.install
+	arch = any
+	license = MIT
+	depends = wget
+	source = nodequery-0.7.7.sh
+	source = nodequery.service
+	source = nodequery.timer
+	source = LICENSE
+	sha256sums = 9c213ffc655e7591add8231a8c45536d7c16ce975004d73494bb431b731e8f06
+	sha256sums = f65e6444204d4abe45348ce7ebbc01e8cdd5373f6655833383ffe22afcb79e08
+	sha256sums = dd8268a04f6cd0cd20a697c9bbadf02945660fabbf2b8ab2f872ec19914b8bc2
+	sha256sums = 5a7a4287d7ab9b40b09094cce2f0ba7899a8f3cce0f14c794ea968a93bdeab42
+
+pkgname = nodequery

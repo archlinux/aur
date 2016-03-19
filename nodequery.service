@@ -1,0 +1,12 @@
+[Unit]
+Description=NodeQuery Service
+
+[Service]
+Type=simple
+WorkingDirectory=/etc/nodequery
+ExecStart=/etc/nodequery/nq-agent.sh 
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=NodeQuery
+User=nodequery
+Group=nodequery
