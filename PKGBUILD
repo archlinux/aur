@@ -1,9 +1,9 @@
 # Maintainer : Florent H. CARRÉ <colundrum@gmail.com>
 
 _npmname=generator-karma
-_npmver=1.0.1
+_npmver=2.0.0
 pkgname=nodejs-generator-karma
-pkgver=1.0.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Yeoman generator for Karma"
 arch=(any)
@@ -13,7 +13,7 @@ depends=('nodejs-yeoman')
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(b3ff10681bdbbf0a2aeea68dcda9a83b75de5df1)
+sha1sums=(194f400caa970539d43dabb3c5425d96fb4343ad)
 
 package() {
   cd "$srcdir"
