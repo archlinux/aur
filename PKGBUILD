@@ -146,46 +146,46 @@ package_llvm-split() {
   make -C build DESTDIR="$pkgdir" install
 
   # Remove documentation sources
-  rm -r "$pkgdir"/usr/share/doc/llvm/html/{_sources,.buildinfo}
+  rm -r "$pkgdir"${_prefix}/share/doc/llvm/html/{_sources,.buildinfo}
 
   # The runtime libraries go into llvm-libs
-  mv -f "$pkgdir"/usr/lib/lib{LLVM,LTO}.so* "$srcdir"
-  mv -f "$pkgdir"/usr/lib/LLVMgold.so "$srcdir"
+  mv -f "$pkgdir"${_prefix}/lib/lib{LLVM,LTO}.so* "$srcdir"
+  mv -f "$pkgdir"${_prefix}/lib/LLVMgold.so "$srcdir"
 
   # OCaml bindings go to a separate package
   rm -rf "$srcdir"/ocaml.{lib,doc}
-  mv "$pkgdir/usr/lib/ocaml" "$srcdir/ocaml.lib"
-  mv "$pkgdir/usr/docs/ocaml/html" "$srcdir/ocaml.doc"
-  rm -r "$pkgdir/usr/docs"
+  mv "$pkgdir${_prefix}/lib/ocaml" "$srcdir/ocaml.lib"
+  mv "$pkgdir${_prefix}/docs/ocaml/html" "$srcdir/ocaml.doc"
+  rm -r "$pkgdir${_prefix}/docs"
 
   if [[ $CARCH == x86_64 ]]; then
     # Needed for multilib (https://bugs.archlinux.org/task/29951)
     # Header stub is taken from Fedora
-    mv "$pkgdir/usr/include/llvm/Config/llvm-config"{,-64}.h
+    mv "$pkgdir${_prefix}/include/llvm/Config/llvm-config"{,-64}.h
     cp "$srcdir/llvm-Config-llvm-config.h" \
-      "$pkgdir/usr/include/llvm/Config/llvm-config.h"
+      "$pkgdir${_prefix}/include/llvm/Config/llvm-config.h"
   fi
 
-  install -Dm644 LICENSE.TXT "$pkgdir/usr/share/licenses/llvm/LICENSE"
+  install -Dm644 LICENSE.TXT "$pkgdir${_prefix}/share/licenses/llvm/LICENSE"
 }
 
 package_llvm-libs-split() {
   pkgdesc="LLVM (runtime libraries, installed in ${_prefix})"
   depends=('gcc-libs' 'zlib' 'libffi' 'libedit' 'ncurses')
 
-  install -d "$pkgdir/usr/lib"
+  install -d "$pkgdir${_prefix}/lib"
   cp -P \
     "$srcdir"/lib{LLVM,LTO}.so* \
     "$srcdir"/LLVMgold.so \
-    "$pkgdir/usr/lib/"
+    "$pkgdir${_prefix}/lib/"
 
   # Symlink LLVMgold.so from /usr/lib/bfd-plugins
   # https://bugs.archlinux.org/task/28479
-  install -d "$pkgdir/usr/lib/bfd-plugins"
-  ln -s ../LLVMgold.so "$pkgdir/usr/lib/bfd-plugins/LLVMgold.so"
+  install -d "$pkgdir${_prefix}/lib/bfd-plugins"
+  ln -s ../LLVMgold.so "$pkgdir${_prefix}/lib/bfd-plugins/LLVMgold.so"
 
   install -Dm644 "$srcdir/llvm-$pkgver.src/LICENSE.TXT" \
-    "$pkgdir/usr/share/licenses/llvm-libs/LICENSE"
+    "$pkgdir${_prefix}/share/licenses/llvm-libs/LICENSE"
 }
 
 package_llvm-ocaml-split() {
@@ -194,11 +194,11 @@ package_llvm-ocaml-split() {
 
   cd "$srcdir/llvm-$pkgver.src"
 
-  install -d "$pkgdir"/{usr/lib,usr/share/doc}
-  cp -a "$srcdir/ocaml.lib" "$pkgdir/usr/lib/ocaml"
-  cp -a "$srcdir/ocaml.doc" "$pkgdir/usr/share/doc/$pkgname"
+  install -d "$pkgdir${_prefix}"/{lib,share/doc}
+  cp -a "$srcdir/ocaml.lib" "$pkgdir${_prefix}/lib/ocaml"
+  cp -a "$srcdir/ocaml.doc" "$pkgdir${_prefix}/share/doc/$pkgname"
 
-  install -Dm644 LICENSE.TXT "$pkgdir/usr/share/licenses/llvm-ocaml/LICENSE"
+  install -Dm644 LICENSE.TXT "$pkgdir${_prefix}/share/licenses/llvm-ocaml/LICENSE"
 }
 
 package_lldb-split() {
@@ -211,10 +211,10 @@ package_lldb-split() {
   make -C build/tools/lldb DESTDIR="$pkgdir" install
 
   # Compile Python scripts
-  python2 -m compileall "$pkgdir/usr/lib/python2.7/site-packages/lldb"
-  python2 -O -m compileall "$pkgdir/usr/lib/python2.7/site-packages/lldb"
+  python2 -m compileall "$pkgdir${_prefix}/lib/python2.7/site-packages/lldb"
+  python2 -O -m compileall "$pkgdir${_prefix}/lib/python2.7/site-packages/lldb"
 
-  install -Dm644 tools/lldb/LICENSE.TXT "$pkgdir/usr/share/licenses/lldb/LICENSE"
+  install -Dm644 tools/lldb/LICENSE.TXT "$pkgdir${_prefix}/share/licenses/lldb/LICENSE"
 }
 
 package_clang-split() {
@@ -229,21 +229,21 @@ package_clang-split() {
   make -C build/projects/compiler-rt DESTDIR="$pkgdir" install
 
   # Remove documentation sources
-  rm -r "$pkgdir"/usr/share/doc/clang/html/{_sources,.buildinfo}
+  rm -r "$pkgdir"${_prefix}/share/doc/clang/html/{_sources,.buildinfo}
 
   # Install Python bindings
-  install -d "$pkgdir/usr/lib/python2.7/site-packages"
-  cp -a tools/clang/bindings/python/clang "$pkgdir/usr/lib/python2.7/site-packages/"
-  python2 -m compileall "$pkgdir/usr/lib/python2.7/site-packages/clang"
-  python2 -O -m compileall "$pkgdir/usr/lib/python2.7/site-packages/clang"
+  install -d "$pkgdir${_prefix}/lib/python2.7/site-packages"
+  cp -a tools/clang/bindings/python/clang "$pkgdir${_prefix}/lib/python2.7/site-packages/"
+  python2 -m compileall "$pkgdir${_prefix}/lib/python2.7/site-packages/clang"
+  python2 -O -m compileall "$pkgdir${_prefix}/lib/python2.7/site-packages/clang"
 
   # Use Python 2
   sed -i 's|/usr/bin/env python|&2|' \
-    "$pkgdir/usr/bin/git-clang-format" \
-    "$pkgdir/usr/share/clang/clang-format-diff.py"
+    "$pkgdir${_prefix}/bin/git-clang-format" \
+    "$pkgdir${_prefix}/share/clang/clang-format-diff.py"
 
   install -Dm644 tools/clang/LICENSE.TXT \
-    "$pkgdir/usr/share/licenses/clang/LICENSE"
+    "$pkgdir${_prefix}/share/licenses/clang/LICENSE"
 }
 
 package_clang-analyzer-split() {
@@ -253,32 +253,32 @@ package_clang-analyzer-split() {
 
   cd "$srcdir/llvm-$pkgver.src/tools/clang"
 
-  install -d "$pkgdir"/usr/{bin,lib/clang-analyzer}
+  install -d "$pkgdir"${_prefix}/{bin,lib/clang-analyzer}
   for _tool in scan-{build,view}; do
-    cp -a tools/$_tool "$pkgdir/usr/lib/clang-analyzer/"
-    ln -s /usr/lib/clang-analyzer/$_tool/$_tool "$pkgdir/usr/bin/"
+    cp -a tools/$_tool "$pkgdir${_prefix}/lib/clang-analyzer/"
+    ln -s ${_prefix}/lib/clang-analyzer/$_tool/$_tool "$pkgdir${_prefix}/bin/"
   done
 
   # scan-build looks for clang within the same directory
-  ln -s /usr/bin/clang "$pkgdir/usr/lib/clang-analyzer/scan-build/"
+  ln -s ${_prefix}/bin/clang "$pkgdir${_prefix}/lib/clang-analyzer/scan-build/"
 
   # Relocate man page
-  install -d "$pkgdir/usr/share/man/man1"
-  mv "$pkgdir/usr/lib/clang-analyzer/scan-build/scan-build.1" \
-    "$pkgdir/usr/share/man/man1/"
+  install -d "$pkgdir${_prefix}/share/man/man1"
+  mv "$pkgdir${_prefix}/lib/clang-analyzer/scan-build/scan-build.1" \
+    "$pkgdir${_prefix}/share/man/man1/"
 
   # Use Python 2
   sed -i \
     -e 's|env python$|&2|' \
     -e 's|/usr/bin/python$|&2|' \
-    "$pkgdir/usr/lib/clang-analyzer/scan-view/scan-view" \
-    "$pkgdir/usr/lib/clang-analyzer/scan-build/set-xcode-analyzer"
+    "$pkgdir${_prefix}/lib/clang-analyzer/scan-view/scan-view" \
+    "$pkgdir${_prefix}/lib/clang-analyzer/scan-build/set-xcode-analyzer"
 
   # Compile Python scripts
-  python2 -m compileall "$pkgdir/usr/lib/clang-analyzer"
-  python2 -O -m compileall "$pkgdir/usr/lib/clang-analyzer"
+  python2 -m compileall "$pkgdir${_prefix}/lib/clang-analyzer"
+  python2 -O -m compileall "$pkgdir${_prefix}/lib/clang-analyzer"
 
-  install -Dm644 LICENSE.TXT "$pkgdir/usr/share/licenses/clang-analyzer/LICENSE"
+  install -Dm644 LICENSE.TXT "$pkgdir${_prefix}/share/licenses/clang-analyzer/LICENSE"
 }
 
 package_clang-tools-extra-split() {
@@ -294,10 +294,10 @@ package_clang-tools-extra-split() {
   sed -i \
     -e 's|env python$|&2|' \
     -e 's|/usr/bin/python$|&2|' \
-    "$pkgdir"/usr/share/clang/{clang-tidy-diff,run-clang-tidy}.py
+    "$pkgdir"${_prefix}/share/clang/{clang-tidy-diff,run-clang-tidy}.py
 
   install -Dm644 tools/clang/tools/extra/LICENSE.TXT \
-    "$pkgdir/usr/share/licenses/clang-tools-extra/LICENSE"
+    "$pkgdir${_prefix}/share/licenses/clang-tools-extra/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
