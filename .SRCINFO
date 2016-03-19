@@ -1,11 +1,12 @@
 pkgbase = letsencrypt-cli
 	pkgdesc = Yet another Letsencrypt (ACME) client using Ruby.
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zealot128/ruby-letsencrypt-cli
 	arch = any
 	license = MIT
 	depends = ruby
+	depends = ruby-acme-client
 	source = https://github.com/zealot128/ruby-letsencrypt-cli/archive/v0.2.0.tar.gz
 	md5sums = 67625b8efa3e73980448f4600f7577ac
 
