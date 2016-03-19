@@ -3,8 +3,8 @@
 # Contributor: Daniel Bomar <dbdaniel42@gmail.com>
 
 pkgname=libjson-rpc-cpp-git
-pkgver=20160119
-pkgrel=2
+pkgver=20160317
+pkgrel=1
 pkgdesc="C++ framework for json-rpc 1.0 and 2.0"
 arch=('i686' 'x86_64')
 depends=('argtable' 'curl' 'jsoncpp' 'libmicrohttpd')
@@ -23,10 +23,6 @@ pkgver() {
   git log -1 --format="%cd" --date=short | sed "s|-||g"
 }
 
-prepare() {
- cd "${srcdir}"/${pkgname%-git}
- patch -Np1 -i ../gcc5.patch
-}
 
 build() {
   msg2 "Creating build directories"
