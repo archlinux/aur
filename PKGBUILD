@@ -15,7 +15,7 @@
 # intel-media-sdk (experimental Intel QSV support only for x86_64)
 
 pkgname=ffmpeg-full-git
-pkgver=N.79022.g58cb1fb
+pkgver=N.79085.g48bda6c
 pkgrel=1
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
@@ -73,7 +73,7 @@ build() {
 	if [ "$CARCH" = "x86_64" ]; then
 	    _cuda="--enable-cuda"
 	    _cudainc="-I/opt/cuda/include"
-	    _cudalib=":/opt/cuda/lib64"
+	    _cudalib="-L/opt/cuda/lib64"
 	else
 	    _cuda=""
 	    _cudainc=""
@@ -88,7 +88,7 @@ build() {
 	                        ${_cudainc} \
 	                        -I/usr/lib/jvm/java-8-openjdk/include \
 	                        -I/usr/lib/jvm/java-8-openjdk/include/linux" \
-	        --extra-ldflags="-Wl,-rpath -Wl,/opt/intel/mediasdk/lib64${_cudalib}" \
+	        --extra-ldflags="${_cudalib} -Wl,-rpath -Wl,/opt/intel/mediasdk/lib64" \
 	        \
 	        --enable-rpath \
 	        --enable-gpl \
@@ -101,7 +101,7 @@ build() {
 	        --enable-videotoolbox \
 	        \
 	        --enable-avisynth \
-	        "$_cuda" \
+	        $_cuda \
 	        --enable-chromaprint \
 	        --enable-fontconfig \
 	        --enable-frei0r \
