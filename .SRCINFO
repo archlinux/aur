@@ -1,0 +1,19 @@
+pkgbase = pi-bluetooth
+	pkgdesc = Services, firmware and udev rules to get integrated bluetooth running in Raspberry Pi 3
+	pkgver = 1
+	pkgrel = 1
+	install = pi-bluetooth.install
+	arch = armv7h
+	license = multiple
+	depends = hciattach-rpi3
+	source = BCM43430A1.hcd
+	source = brcm43438.service
+	source = LICENCE.broadcom_bcm43xx
+	source = 50-bluetooth-hci-auto-poweron.rules
+	md5sums = b95ee9032a723daa25ab9608a515e984
+	md5sums = 89d9171e5693d7d3b0a3ee1710dcbe0c
+	md5sums = 3160c14df7228891b868060e1951dfbc
+	md5sums = d236124f0a979685154e4e57dfebafd5
+
+pkgname = pi-bluetooth
+
