@@ -9,10 +9,11 @@ scale=4
 while getopts ":s:" option; do
         case $option in
                 s)
+                        scale="$OPTARG"
                         if [ "$scale" -ne 2 ] && [ "$scale" -ne 3 ] && [ "$scale" -ne 4 ]; then
                                 echo "Only scale factors of 2, 3 and 4 are supported"
+                                exit 1
                         fi
-                        scale="$OPTARG"
                 ;;
                 \?)
                         echo "Invalid option: -$OPTARG" >&2
