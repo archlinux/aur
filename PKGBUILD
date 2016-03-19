@@ -21,7 +21,7 @@ source=(https://download.jetbrains.com/webide/${_pkgname}-${pkgver}.tar.gz
         phpstorm.sh)
 sha256sums=('48b3b1d4e4dec954bb224193aea367b6aa6893d286c0e022775e9f81527251ce'
             '406b491d489228f7e4ba32ef160684bbef5056dacb233ac5d2ca9bca3013c939'
-            '803093f27b726fbd9feba542b9c5e481b95624e0d96c11b3025a12bc600ed545')
+            'd40b5a2c687a45680fc746e975a97086bc9152855de71a9b7f0e38fcee74817d')
 
 package() {
   install -d -m 755 ${pkgdir}/opt/
