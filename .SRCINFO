@@ -1,4 +1,4 @@
-pkgbase = llvm-split
+pkgbase = llvm37-split
 	pkgver = 3.7.1
 	pkgrel = 1
 	url = http://llvm.org/
@@ -55,12 +55,12 @@ pkgbase = llvm-split
 	sha256sums = f44e8fe3cef9b6f706d651f443922261e1dcf53bcaabdd0ac7edb1758e4bc44d
 	sha256sums = 597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48
 
-pkgname = llvm-split
+pkgname = llvm37-split
 	pkgdesc = LLVM (installed in /usr/lib/llvm-3.7/)
-	depends = llvm-libs-split=3.7.1-1
+	depends = llvm37-libs-split=3.7.1-1
 	depends = perl
 
-pkgname = llvm-libs-split
+pkgname = llvm37-libs-split
 	pkgdesc = LLVM (runtime libraries, installed in /usr/lib/llvm-3.7/)
 	depends = gcc-libs
 	depends = zlib
@@ -68,34 +68,34 @@ pkgname = llvm-libs-split
 	depends = libedit
 	depends = ncurses
 
-pkgname = llvm-ocaml-split
+pkgname = llvm37-ocaml-split
 	pkgdesc = OCaml bindings for LLVM (installed in /usr/lib/llvm-3.7/)
-	depends = llvm-split=3.7.1-1
+	depends = llvm37-split=3.7.1-1
 	depends = ocaml=4.02.3
 	depends = ocaml-ctypes
 
-pkgname = lldb-split
+pkgname = lldb37-split
 	pkgdesc = Next generation, high-performance debugger (installed in /usr/lib/llvm-3.7/)
 	url = http://lldb.llvm.org/
 	depends = libedit
 	depends = libxml2
 	depends = python2
 
-pkgname = clang-split
+pkgname = clang37-split
 	pkgdesc = C language family frontend for LLVM (installed in /usr/lib/llvm-3.7/)
 	url = http://clang.llvm.org/
-	depends = llvm-libs-split=3.7.1-1
+	depends = llvm37-libs-split=3.7.1-1
 	depends = gcc
 	optdepends = python2: for git-clang-format
 
-pkgname = clang-analyzer-split
+pkgname = clang37-analyzer-split
 	pkgdesc = A source code analysis framework (installed in /usr/lib/llvm-3.7/)
 	url = http://clang-analyzer.llvm.org/
-	depends = clang-split=3.7.1-1
+	depends = clang37-split=3.7.1-1
 	depends = python2
 
-pkgname = clang-tools-extra-split
+pkgname = clang37-tools-extra-split
 	pkgdesc = Extra tools built using Clang's tooling APIs (installed in /usr/lib/llvm-3.7/)
 	url = http://clang.llvm.org/
-	depends = clang-split=3.7.1-1
+	depends = clang37-split=3.7.1-1
 

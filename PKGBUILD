@@ -10,7 +10,7 @@
 # Contributor: Roberto Alsina <ralsina@kde.org>
 # Contributor: Gerardo Exequiel Pozzi <vmlinuz386@yahoo.com.ar>
 
-pkgname=('llvm-split' 'llvm-libs-split' 'llvm-ocaml-split' 'lldb-split' 'clang-split' 'clang-analyzer-split' 'clang-tools-extra-split')
+pkgname=('llvm37-split' 'llvm37-libs-split' 'llvm37-ocaml-split' 'lldb37-split' 'clang37-split' 'clang37-analyzer-split' 'clang37-tools-extra-split')
 pkgver=3.7.1
 _vers_short=`echo $pkgver | cut -d. -f 1-2`
 _prefix=/usr/lib/llvm-${_vers_short}/
@@ -137,9 +137,9 @@ check() {
     'Ignoring Clang test failures caused by name mangling differences'
 }
 
-package_llvm-split() {
+package_llvm37-split() {
   pkgdesc="LLVM (installed in ${_prefix})"
-  depends=("llvm-libs-split=$pkgver-$pkgrel" 'perl')
+  depends=("llvm37-libs-split=$pkgver-$pkgrel" 'perl')
 
   cd "$srcdir/llvm-$pkgver.src"
 
@@ -169,7 +169,7 @@ package_llvm-split() {
   install -Dm644 LICENSE.TXT "$pkgdir${_prefix}/share/licenses/llvm/LICENSE"
 }
 
-package_llvm-libs-split() {
+package_llvm37-libs-split() {
   pkgdesc="LLVM (runtime libraries, installed in ${_prefix})"
   depends=('gcc-libs' 'zlib' 'libffi' 'libedit' 'ncurses')
 
@@ -188,9 +188,9 @@ package_llvm-libs-split() {
     "$pkgdir${_prefix}/share/licenses/llvm-libs/LICENSE"
 }
 
-package_llvm-ocaml-split() {
+package_llvm37-ocaml-split() {
   pkgdesc="OCaml bindings for LLVM (installed in ${_prefix})"
-  depends=("llvm-split=$pkgver-$pkgrel" "ocaml=$_ocaml_ver" 'ocaml-ctypes')
+  depends=("llvm37-split=$pkgver-$pkgrel" "ocaml=$_ocaml_ver" 'ocaml-ctypes')
 
   cd "$srcdir/llvm-$pkgver.src"
 
@@ -201,7 +201,7 @@ package_llvm-ocaml-split() {
   install -Dm644 LICENSE.TXT "$pkgdir${_prefix}/share/licenses/llvm-ocaml/LICENSE"
 }
 
-package_lldb-split() {
+package_lldb37-split() {
   pkgdesc="Next generation, high-performance debugger (installed in ${_prefix})"
   url="http://lldb.llvm.org/"
   depends=('libedit' 'libxml2' 'python2')
@@ -217,10 +217,10 @@ package_lldb-split() {
   install -Dm644 tools/lldb/LICENSE.TXT "$pkgdir${_prefix}/share/licenses/lldb/LICENSE"
 }
 
-package_clang-split() {
+package_clang37-split() {
   pkgdesc="C language family frontend for LLVM (installed in ${_prefix})"
   url="http://clang.llvm.org/"
-  depends=("llvm-libs-split=$pkgver-$pkgrel" 'gcc')
+  depends=("llvm37-libs-split=$pkgver-$pkgrel" 'gcc')
   optdepends=('python2: for git-clang-format')
 
   cd "$srcdir/llvm-$pkgver.src"
@@ -246,10 +246,10 @@ package_clang-split() {
     "$pkgdir${_prefix}/share/licenses/clang/LICENSE"
 }
 
-package_clang-analyzer-split() {
+package_clang37-analyzer-split() {
   pkgdesc="A source code analysis framework (installed in ${_prefix})"
   url="http://clang-analyzer.llvm.org/"
-  depends=("clang-split=$pkgver-$pkgrel" 'python2')
+  depends=("clang37-split=$pkgver-$pkgrel" 'python2')
 
   cd "$srcdir/llvm-$pkgver.src/tools/clang"
 
@@ -281,10 +281,10 @@ package_clang-analyzer-split() {
   install -Dm644 LICENSE.TXT "$pkgdir${_prefix}/share/licenses/clang-analyzer/LICENSE"
 }
 
-package_clang-tools-extra-split() {
+package_clang37-tools-extra-split() {
   pkgdesc="Extra tools built using Clang's tooling APIs (installed in ${_prefix})"
   url="http://clang.llvm.org/"
-  depends=("clang-split=$pkgver-$pkgrel")
+  depends=("clang37-split=$pkgver-$pkgrel")
 
   cd "$srcdir/llvm-$pkgver.src"
 
