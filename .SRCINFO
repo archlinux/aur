@@ -1,6 +1,6 @@
 pkgbase = fortune-mod-mlp
 	pkgdesc = Fortune quotes from My Little Pony Friendship is Magic. Quotes come from ponysay.
-	pkgver = 3.0.2.50.ge06f67c
+	pkgver = 3.0.2.54.gc4fc895
 	pkgrel = 1
 	url = http://erkin.github.com/ponysay/
 	arch = any
