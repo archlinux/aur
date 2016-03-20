@@ -1,6 +1,6 @@
 # Maintainer: tuxce <tuxce.net@gmail.com>
 pkgname=package-query-git
-pkgver=1.8
+pkgver=1.8.r23.gf3d29a1
 pkgrel=1
 pkgdesc="Query ALPM and AUR"
 arch=('i686' 'x86_64' 'mips64el' 'armv6h' 'armv7h' 'arm')
@@ -16,7 +16,7 @@ _gitname=package-query
 
 pkgver () {
   cd $_gitname
-  echo $(git describe --always | sed 's/-/./g')
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
