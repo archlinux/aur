@@ -1,4 +1,5 @@
 # Maintainer: Dmitry Kharitonov <darksab0r at gmail com>
+# Contributor: Daniel Bermond < yahoo-com: danielbermond >
 # Contributor: rcpoison <rc dot poison at gmail dot com>
 # Contributor: Gerad Munsch <gmunsch@unforgivendevelopment.com>
 # Contributor: Rudolf Polzer <divVerent[at]xonotic[dot]org>
@@ -9,26 +10,27 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=3.0
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
 url="http://ffmpeg.org/"
 license=('GPL' 'custom:UNREDISTRIBUTABLE')
-depends=('alsa-lib' 'bzip2' 'celt' 'faac' 'fontconfig' 'frei0r-plugins' 'fribidi' 
-         'gnutls' 'gsm' 'jack' 'ladspa' 'lame' 'libass' 'libavc1394' 
-         'libbluray' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libcl' 'libdc1394'
-         'libfdk-aac' 'libgme' 'libiec61883' 'libmodplug' 'libpulse' 'libsoxr' 
-         'libutvideo-git' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libwebp'
-         'libxv' 'mesa' 'netcdf' 'openal' 'opencore-amr' 
-         'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex' 'rtmpdump' 'shine'
-         'twolame' 'v4l-utils' 'vid.stab' 'vo-amrwbenc' 'xvidcore' 
-         'wavpack' 'zeromq' 'zlib' 'zvbi' 'libdcadec.so'
-         'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so' 'libx265.so'
+depends=('alsa-lib' 'bzip2' 'celt' 'chromaprint' 'faac' 'fontconfig'
+         'frei0r-plugins' 'fribidi' 'gnutls' 'gsm' 'jack' 'kvazaar' 'ladspa' 'lame' 'libass' 
+         'libavc1394'  'libbluray' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libcl' 'libdc1394'
+         'libfdk-aac' 'libgme' 'libiec61883' 'libilbc' 'libmfx-git' 'libmodplug' 'libpulse' 
+         'libsoxr' 'libutvideo-git' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libwebp'
+         'libxv' 'mesa' 'netcdf' 'nut-multimedia-git' 'openal' 'opencore-amr' 
+         'openjpeg' 'opus' 'rubberband' 'rtmpdump' 'schroedinger' 'sdl' 'smbclient' 'speex' 'shine'
+         'tesseract' 'twolame' 'v4l-utils' 'vid.stab' 'vo-amrwbenc' 'libxcb' 'xvidcore' 
+         'wavpack' 'zeromq' 'zimg' 'zlib' 'zvbi' 'libdcadec.so'
+         'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so' 'x265'
          'snappy' 'openh264' 'xavs')
+depends_x86_64=('cuda')
 makedepends=('hardening-wrapper' 'libvdpau' 'nvidia-sdk' 'yasm')
 optdepends=('avxsynth-git: for Avisynth support'
-            'cuda: for CUDA support')
+            'chromaprint-fftw: for chromaprint which uses fftw for FFT calculations')
 conflicts=('ffmpeg' 'ffmpeg-full' 'ffmpeg-git' 'ffmpeg-full-git' 'ffmpeg-full-extra')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
@@ -43,19 +45,33 @@ sha256sums=('f19ff77a2f7f736a41dd1499eef4784bf3cb7461f07c13a268164823590113c0'
 build() {
   cd $_pkgbasename-$pkgver
 
+  # Add cuda to the build if architecture is x86_64 (cuda is x86_64 only)
+  if [ "$CARCH" = "x86_64" ]; then
+      _cuda="--enable-cuda"
+      _cudainc="-I/opt/cuda/include"
+      _cudalib="-L/opt/cuda/lib64"
+  else
+      _cuda=""
+      _cudainc=""
+      _cudalib=""
+  fi
+
   msg "Starting configure..."
   ./configure \
+    --prefix=/usr \
     --extra-cflags="-I/usr/include/nvidia-sdk" \
+    --enable-gpl \
+    --enable-version3 \
+    --enable-nonfree \
+    --disable-static \
     --enable-shared \
     --disable-debug \
-    --disable-static \
-    --prefix='/usr' \
-    --enable-avisynth \
     --enable-avresample \
+    --enable-avisynth \
+    --enable-chromaprint \
     --enable-decoder=atrac3 \
     --enable-decoder=atrac3p \
     --enable-bzlib \
-    --enable-dxva2 \
     --enable-fontconfig \
     --enable-frei0r \
     --enable-gnutls \
@@ -78,8 +94,12 @@ build() {
     --enable-libgme \
     --enable-libgsm \
     --enable-libiec61883 \
+    --enable-libilbc \
+    --enable-libkvazaar \
+    --enable-libmfx \
     --enable-libmodplug \
     --enable-libmp3lame \
+    --enable-libnut \
     --enable-libopencore-amrnb \
     --enable-libopencore-amrwb \
     --enable-libopencv \
@@ -87,12 +107,16 @@ build() {
     --enable-libopenjpeg \
     --enable-libopus \
     --enable-libpulse \
+    --enable-librubberband \
+    --enable-librtmp  \
     --enable-libschroedinger \
     --enable-libshine \
+    --enable-libsmbclient \
     --enable-libsnappy \
     --enable-libsoxr \
     --enable-libspeex \
     --enable-libssh \
+    --enable-libtesseract \
     --enable-libtheora \
     --enable-libtwolame \
     --enable-libutvideo \
@@ -103,29 +127,23 @@ build() {
     --enable-libvpx \
     --enable-libwavpack \
     --enable-libwebp \
+    --enable-libx264 \
+    --enable-libx265 \
     --enable-libxavs \
     --enable-libxcb \
     --enable-libxcb-shm \
     --enable-libxcb-xfixes \
     --enable-libxcb-shape \
-    --enable-libx264 \
-    --enable-libx265 \
     --enable-libxvid \
+    --enable-libzimg \
     --enable-libzmq \
     --enable-libzvbi \
     --enable-netcdf \
-    --enable-nonfree \
     --enable-nvenc \
     --enable-openal \
     --enable-opengl \
     --enable-openssl \
-    --enable-postproc\
-    --enable-runtime-cpudetect \
-    --enable-vaapi \
-    --enable-vda \
-    --enable-vdpau \
-    --enable-version3 \
-    --enable-zlib 
+    --enable-x11grab
     
   msg "Starting make"
   make
