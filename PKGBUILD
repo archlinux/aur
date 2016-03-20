@@ -19,16 +19,19 @@ depends=('python2-matrix-angular-sdk'
 makedepends=('python2-twisted' 'python2-mock' 'python2-setuptools_trial')
 source=("git://github.com/matrix-org/synapse#tag=v$_pkgver"
 		'sysusers-synapse.conf'
-		'deps-relax-pynacl-check.patch')
+		'deps-relax-pynacl-check.patch'
+		'deps-relax-pysaml2-check.patch')
 md5sums=('SKIP'
          'dfbffdd307c5559357a2ff51a1906700'
-         'a2b653d523161a33a36e931b60a234f2')
+         'a2b653d523161a33a36e931b60a234f2'
+         '80e8116e3f39889b16fb748b6cba83e8')
 backup=('etc/synapse/log_config.yaml')
 install='synapse.install'
 
 prepare() {
 	cd "synapse"
 	git am < "$srcdir/deps-relax-pynacl-check.patch"
+	git am < "$srcdir/deps-relax-pysaml2-check.patch"
 }
 
 build() {
