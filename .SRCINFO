@@ -1,0 +1,15 @@
+pkgbase = python-orderedmultidict
+	pkgdesc = Ordered multivalue dictionary that retains method parity with dict.
+	pkgver = 0.7.5
+	pkgrel = 1
+	url = https://github.com/gruns/orderedmultidict
+	arch = any
+	license = custom:UNLICENSE
+	makedepends = python3
+	depends = python
+	depends = python-six
+	source = https://pypi.python.org/packages/source/o/orderedmultidict/orderedmultidict-0.7.5.tar.gz
+	md5sums = 721b0454c088f4f72b22d10cb5f1a2d0
+
+pkgname = python-orderedmultidict
+
