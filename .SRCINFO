@@ -8,7 +8,7 @@ pkgbase = gnome-shell-extension-docker-integration-git
 	makedepends = git
 	depends = gnome-shell>=3.18
 	depends = networkmanager
-	provides = docker-integration-applet"
+	provides = docker-integration-applet
 	source = git://github.com/Trejjam/Gnome-Docker-integration.git
 	sha1sums = SKIP
 
