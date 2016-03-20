@@ -1,20 +1,20 @@
 pkgbase = oblige
 	pkgdesc = A random level maker for games based on the Doom engine
 	pkgver = 6.20
-	pkgrel = 1
+	pkgrel = 2
 	url = http://oblige.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = imagemagick
 	depends = fltk>=1.3.0
-	source = http://downloads.sourceforge.net/oblige/oblige-620-source.zip
+	source = http://downloads.sourceforge.net/oblige/oblige-620-source.tar.gz
 	source = compile-fix.patch
 	source = unix-fix.patch
 	source = oblige.desktop
-	sha256sums = 1b2f9d014c71db78a063fe4cf70d9bfabe027c789245079abeb041b2a381df06
-	sha256sums = ccc1163f6b2fa78a38bde724b5fd677d54415ed98a412433043f51062ba56235
-	sha256sums = e3a8dff89e78172c73a891c43e509887e8cee93b9ac4e0bed783552dc5a20ed5
+	sha256sums = c9f2d729035a5182635ded001d2d49db8702424ab989a71d6b4fc80d754f66f9
+	sha256sums = 8b074059bda801e9548c6217f0b55a7274cec5578e6ad53f8b216d818a02bb34
+	sha256sums = 0fe83e37c8b6baed81bed017eb5892a5efc767d50bd4a638cb5defb59451ce91
 	sha256sums = 20b95ae8676678de686d2f5ad179ff3741be375c46418c8c5455bfea3bb81fae
 
 pkgname = oblige

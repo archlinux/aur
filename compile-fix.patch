@@ -1,6 +1,6 @@
 diff -ur a/tools/qsavetex/u_util.cc b/tools/qsavetex/u_util.cc
---- a/tools/qsavetex/u_util.cc	2013-02-12 09:05:23.000000000 +0100
-+++ b/tools/qsavetex/u_util.cc	2014-07-29 22:12:55.212140172 +0200
+--- a/tools/qsavetex/u_util.cc	2013-02-12 09:05:24.000000000 +0100
++++ b/tools/qsavetex/u_util.cc	2016-03-20 20:01:07.303666947 +0100
 @@ -21,6 +21,7 @@
  #ifdef UNIX
  #include <sys/time.h>

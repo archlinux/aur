@@ -2,20 +2,20 @@
 
 pkgname=oblige
 pkgver=6.20
-pkgrel=1
+pkgrel=2
 pkgdesc="A random level maker for games based on the Doom engine"
 arch=('i686' 'x86_64')
 url="http://oblige.sourceforge.net/"
 license=('GPL')
 depends=('fltk>=1.3.0')
 makedepends=('imagemagick')
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-${pkgver/./}-source.zip
+source=(http://downloads.sourceforge.net/$pkgname/$pkgname-${pkgver/./}-source.tar.gz
         compile-fix.patch
         unix-fix.patch
         oblige.desktop)
-sha256sums=('1b2f9d014c71db78a063fe4cf70d9bfabe027c789245079abeb041b2a381df06'
-            'ccc1163f6b2fa78a38bde724b5fd677d54415ed98a412433043f51062ba56235'
-            'e3a8dff89e78172c73a891c43e509887e8cee93b9ac4e0bed783552dc5a20ed5'
+sha256sums=('c9f2d729035a5182635ded001d2d49db8702424ab989a71d6b4fc80d754f66f9'
+            '8b074059bda801e9548c6217f0b55a7274cec5578e6ad53f8b216d818a02bb34'
+            '0fe83e37c8b6baed81bed017eb5892a5efc767d50bd4a638cb5defb59451ce91'
             '20b95ae8676678de686d2f5ad179ff3741be375c46418c8c5455bfea3bb81fae')
 
 prepare() {
