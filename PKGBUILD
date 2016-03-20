@@ -3,20 +3,20 @@
 # Contributor: Filip Dvorak <fila@pruda.com>
 
 pkgname=mingw-w64-enca
-pkgver=1.16
-pkgrel=2
+pkgver=1.18
+pkgrel=1
 pkgdesc="Charset analyser and converter (mingw-w64)"
 arch=('any')
 url="http://cihar.com/software/enca/"
-options=('!strip' '!buildflags' 'staticlibs')
+options=('!strip' '!buildflags' 'staticlibs' '!makeflags')
 license=('GPL')
 depends=('mingw-w64-crt' 'mingw-w64-recode')
 makedepends=('mingw-w64-gcc' 'wine')
 source=("http://dl.cihar.com/enca/enca-${pkgver}.tar.xz"
         'configure.patch'
         'tools.patch')
-md5sums=('0a1483530b1fdb9e2a54786489ee0b69'
-         'efb65212b3dffbd29eb253ec07f2db63'
+md5sums=('a139a6ba811c375f50947f9c547b3306'
+         'ae3503817acea6331b3d443636704c7b'
          'e62da0e6fd31affa1f3e15171dbc95c6')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 

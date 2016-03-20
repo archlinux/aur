@@ -1,7 +1,7 @@
-diff -ru enca-1.15/configure.ac patched/configure.ac
---- enca-1.15/configure.ac	2013-09-30 09:48:22.000000000 +0200
-+++ patched/configure.ac	2014-03-30 14:34:59.632070945 +0200
-@@ -39,13 +39,15 @@
+diff -ru enca-1.18/configure.ac patched/configure.ac
+--- enca-1.18/configure.ac	2016-01-07 09:40:26.000000000 +0100
++++ patched/configure.ac	2016-03-20 09:56:42.073076423 +0100
+@@ -38,13 +38,15 @@
  AC_GNU_SOURCE
  AC_AIX
  AC_ISC_POSIX
@@ -18,30 +18,25 @@ diff -ru enca-1.15/configure.ac patched/configure.ac
  dnl With GCC, be paranoiac.  It should compile really cleanly.
  dnl Except -Wno-sign-compare, but older gcc's don't know it.
  if test "$GCC" = yes; then
-@@ -97,8 +99,17 @@
+@@ -96,6 +98,14 @@
  dnl And for gtk-doc
  gtk_CHECK_GTK_DOC
  
--dnl Check for good random number sources
--AC_CHECK_FILES(/dev/random /dev/urandom /dev/srandom /dev/arandom)
 +LIBENCA_LDFLAGS=""
 +case "$host_os" in
 +  mingw*)
-+    echo "no random number sources when cross-compiling"
 +    LIBENCA_LDFLAGS="-no-undefined ${wl}-no-undefined ${wl}-export-all-symbols" ;;
-+  *)
-+    dnl Check for good random number sources
-+    AC_CHECK_FILES(/dev/random /dev/urandom /dev/srandom /dev/arandom) ;;
 +esac
 +AC_MSG_RESULT([$LIBENCA_LDFLAGS])
 +AC_SUBST([LIBENCA_LDFLAGS])
++
+ dnl Checks for libraries.
+ ye_CHECK_LIBM
  
- dnl Dirty path hack.  Helps some people with badly set up search paths.
- if test "$prefix" = "NONE"; then
-diff -ru enca-1.15/lib/Makefile.am patched/lib/Makefile.am
---- enca-1.15/lib/Makefile.am	2013-09-30 09:48:22.000000000 +0200
-+++ patched/lib/Makefile.am	2014-03-30 14:33:54.664402842 +0200
-@@ -7,7 +7,7 @@
+diff -ru enca-1.18/lib/Makefile.am patched/lib/Makefile.am
+--- enca-1.18/lib/Makefile.am	2016-01-04 19:12:05.000000000 +0100
++++ patched/lib/Makefile.am	2016-03-20 09:53:54.120087567 +0100
+@@ -6,7 +6,7 @@
  # Any iface change    C++: 0:   A
  # Adding ifaces       C:   R:   A++
  # Changing ifaces     C:   R:   0
